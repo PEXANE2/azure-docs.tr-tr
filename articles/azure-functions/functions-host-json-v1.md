@@ -213,7 +213,7 @@ Tarafından yazılan günlükler için filtreleme denetimlerini bir [ILogger nes
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
 |categoryFilter|yok|Kategoriye göre filtreleme belirtir| 
-|defaultLevel|Bilgi|Belirtilen değil tüm kategorileri için `categoryLevels` dizi, bu düzeyde ve yukarıdaki günlükleri Application Insights'a Gönder.| 
+|defaultLevel|Information|Belirtilen değil tüm kategorileri için `categoryLevels` dizi, bu düzeyde ve yukarıdaki günlükleri Application Insights'a Gönder.| 
 |categoryLevels|yok|Her kategori için Application Insights'a gönderme için en düşük günlük düzeyi belirtir kategoriler dizisi. Burada belirtilen kategori aynı değeri ile başlayan tüm kategorileri denetler ve daha uzun değerleri önceliklidir. Yukarıdaki örnekte *host.json* dosyası günlüğüne "Host.Aggregator" ile başlayan tüm kategorileri `Information` düzeyi. "Ana" gibi "Host.Executor" ile başlayan diğer tüm kategorileri oturum `Error` düzeyi.| 
 
 ## <a name="queues"></a>Kuyruklar
