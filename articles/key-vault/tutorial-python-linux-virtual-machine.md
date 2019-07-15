@@ -7,14 +7,14 @@ manager: rajvijan
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 09/05/2018
-ms.author: pryerram
+ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: e5fbb4e6f6599d8f9560561fc219dbf57ac0cee1
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: f002a4d67ee782b11cd8f39784eb48b136328c89
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "66147750"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876697"
 ---
 # <a name="tutorial-use-a-linux-vm-and-a-python-app-to-store-secrets-in-azure-key-vault"></a>Öğretici: Gizli dizileri Azure Key Vault'ta depolamak için bir Linux VM ile bir Python uygulaması'nı kullanın
 
@@ -25,7 +25,7 @@ Bu öğreticide, Azure kaynakları için yönetilen kimliklerle bilgilerini Azur
 > [!div class="checklist"]
 > * Bir anahtar kasası oluşturma
 > * Anahtar kasanızda bir gizli dizi Store
-> * Linux sanal makinesi oluşturun
+> * Linux sanal makinesi oluşturma
 > * Etkinleştirme bir [yönetilen kimliği](../active-directory/managed-identities-azure-resources/overview.md) sanal makine için
 > * Anahtar kasasından verileri okumak konsol uygulaması için gerekli izinleri verin
 > * Key vault'ta bir gizli dizi alma
@@ -50,7 +50,7 @@ Sanal makineler, App Service ve işlevler gibi bir Azure hizmeti için MSI etkin
 
 Ardından, kodunuzu bir erişim belirteci almak için Azure kaynak üzerinde kullanılabilir olan bir yerel meta veri hizmeti çağırır. Kodunuzu yerel MSI uç noktasından bir Azure anahtar kasası hizmetinde kimlik doğrularken alır erişim belirtecini kullanır.
 
-## <a name="sign-in-to-azure"></a>Oturum açın: Azure
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 Azure CLI'yi kullanarak Azure'da oturum açmanız için şunu girin:
 
@@ -58,7 +58,7 @@ Azure CLI'yi kullanarak Azure'da oturum açmanız için şunu girin:
 az login
 ```
 
-## <a name="create-a-resource-group"></a>Kaynak grubu oluşturun
+## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
 Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
 
@@ -95,11 +95,11 @@ Anahtar kasasında *AppSecret* adlı bir gizli dizi oluşturmak için aşağıda
 az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --value "MySecret"
 ```
 
-## <a name="create-a-linux-virtual-machine"></a>Linux sanal makinesi oluşturun
+## <a name="create-a-linux-virtual-machine"></a>Linux sanal makinesi oluşturma
 
 Kullanarak bir VM oluşturma `az vm create` komutu.
 
-Aşağıdaki örnek, **myVM** adlı bir VM oluşturur ve **azureuser** adlı bir kullanıcı hesabı ekler. `--generate-ssh-keys` Parametre otomatik olarak bir SSH anahtarı oluşturur ve varsayılan anahtar konumunda koyar (**~/.ssh**). Bunun yerine belirli bir anahtar kümesini oluşturmak için kullanın `--ssh-key-value` seçeneği.
+Aşağıdaki örnek, **myVM** adlı bir VM oluşturur ve **azureuser** adlı bir kullanıcı hesabı ekler. `--generate-ssh-keys` Parametre otomatik olarak bir SSH anahtarı oluşturur ve varsayılan anahtar konumunda koyar ( **~/.ssh**). Bunun yerine belirli bir anahtar kümesini oluşturmak için kullanın `--ssh-key-value` seçeneği.
 
 ```azurecli-interactive
 az vm create \

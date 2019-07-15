@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 06/14/2019
 ms.author: thweiss
-ms.openlocfilehash: 07ca6278da6dd1f50f017f389c2c1389a42196f4
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 3d088da4c771c828db9788817e424c4d89586dd6
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67163832"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67986146"
 ---
 # <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>Azure Cosmos DB'de istek birimi ücretine ek olarak Bul
 
@@ -39,7 +39,8 @@ SQL API kullanıyorsanız, bir Azure Cosmos kapsayıcısına yönelik bir işlem
 
 ![Azure portalında bir SQL sorgu isteği ücret ekran görüntüsü](./media/find-request-unit-charge/portal-sql-query.png)
 
-### <a name="use-the-net-sdk-v2"></a>.NET SDK'sı V2 kullanın
+### <a name="use-the-net-sdk"></a>.NET SDK’yı kullanma
+### <a name="net-v2-sdk"></a>V2 .net SDK'sı
 
 Öğesinden döndürülen nesneleri [.NET SDK'sı v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) kullanıma bir `RequestCharge` özelliği:
 
@@ -73,6 +74,12 @@ while (query.HasMoreResults)
     requestCharge = queryResponse.RequestCharge;
 }
 ```
+
+### <a name="net-v3-sdk"></a>.NET V3 SDK'sı
+
+Öğesinden döndürülen nesneleri [.NET SDK'sı v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) kullanıma bir `RequestCharge` özelliği:
+
+[!code-csharp[](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/CustomDocsSampleCode.cs?name=GetRequestCharge)]
 
 Daha fazla bilgi için [hızlı başlangıç: Azure Cosmos DB SQL API hesabı kullanarak bir .NET web uygulaması derleme](create-sql-api-dotnet.md).
 

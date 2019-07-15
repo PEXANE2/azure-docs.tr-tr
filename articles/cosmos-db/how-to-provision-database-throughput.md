@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 07/03/2019
 ms.author: rimman
-ms.openlocfilehash: de39581f832c30c64a69797805df7e13ce47b439
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: e44017ea2df24445c28361a0f3d7fb2671317b6d
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565871"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68000656"
 ---
 # <a name="provision-throughput-on-a-database-in-azure-cosmos-db"></a>Azure Cosmos DB veritabanı aktarım hızını sağlama
 
@@ -59,6 +59,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
 > Tüm API'ler için sağlama aktarım hızı için SQL API'si için Cosmos Sdk'leri kullanabilirler. İsteğe bağlı olarak aşağıdaki örnekte Cassandra API için de kullanabilirsiniz.
 
 ### <a id="dotnet-all"></a>Tüm API’ler
+### <a name="net-v2-sdk"></a>V2 .net SDK'sı
 
 ```csharp
 //set the throughput for the database
@@ -72,6 +73,9 @@ await client.CreateDatabaseIfNotExistsAsync(
     new Database {Id = databaseName},  
     options);
 ```
+
+### <a name="net-v3-sdk"></a>.NET V3 SDK'sı
+[!code-csharp[](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/DatabaseDocsSampleCode.cs?name=DatabaseCreateWithThroughput)]
 
 ### <a id="dotnet-cassandra"></a>Cassandra API
 

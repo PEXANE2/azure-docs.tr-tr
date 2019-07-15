@@ -7,12 +7,12 @@ ms.service: lighthouse
 ms.topic: sample
 ms.date: 07/11/2019
 ms.author: jenhayes
-ms.openlocfilehash: 3bc4446b1964b28963166c92b59b55f782ceb67c
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: c0266bd3c88dccc8b0413e617bb4a5fcadbf3720
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67809102"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67971343"
 ---
 # <a name="azure-lighthouse-samples"></a>Azure Lighthouse örnekleri
 
@@ -21,7 +21,7 @@ Aşağıdaki tablo, Azure Lighthouse için önemli Azure Resource Manager şablo
 | **Şablon** | **Açıklama** |
 |---------|---------|
 | [create-multiple-rgs](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/create-multiple-rgs) | Tek bir Azure Resource Manager şablonu kullanarak birden çok kaynak grubu oluşturur. |
-| [cross-rg-deployment](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/cross-rg-deployment) | Depolama hesaplarını iki farklı kaynak grubuna dağıtır. |
+| [cross-rg-deployment](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/cross-rg-deployment) | Depolama hesaplarını iki farklı kaynak grubuna dağıtır. |
 | [cross-subscription-deployment](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/cross-subscription-deployment) | Azure Resource Manager şablonlarını birden fazla abonelikte dağıtır. |
 | [delegated-resource-management](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management) | Bir müşterinin aboneliğini, Azure tarafından atanan temsilcinin kaynak yönetimine ekler. |
 | [deploy-azure-mgmt-services](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/deploy-azure-mgmt-services) | Azure yönetim hizmetlerini oluşturur, bunları birbirine bağlar ve ek çözümler dağıtır. |

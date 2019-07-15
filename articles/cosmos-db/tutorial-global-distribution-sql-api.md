@@ -4,15 +4,15 @@ description: SQL API’sini kullanarak Azure Cosmos DB genel dağıtımını aya
 author: rimman
 ms.service: cosmos-db
 ms.topic: tutorial
-ms.date: 05/10/2019
+ms.date: 07/15/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 4f97d1f052cd8684674eecf479133051f2cfb76e
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: c4ce60e3532179efe3ac68c21b32850e73f92a69
+ms.sourcegitcommit: 1b7b0e1c915f586a906c33d7315a5dc7050a2f34
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480560"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67881215"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>SQL API’sini kullanarak Azure Cosmos DB genel dağıtımını ayarlama
 
@@ -47,7 +47,7 @@ PreferredLocations özelliği ayarlanmazsa, tüm istekler geçerli yazma bölges
 ## <a name="net-sdk"></a>.NET SDK
 SDK herhangi bir kod değişikliği olmadan kullanılabilir. Bu durumda SDK hem okuma hem de yazma işlemlerini otomatik olarak geçerli yazma bölgesine yönlendirir.
 
-.NET SDK’nın 1.8 ve sonraki sürümlerinde, DocumentClient oluşturucusu için ConnectionPolicy parametresi, Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations adlı bir özelliğe sahiptir. Bu özellik `<string>` Koleksiyonu türünde olup bölge adlarının listesini içermelidir. Dize değerleri, [Azure Bölgeleri][regions] sayfasındaki Bölge Adı sütununa göre biçimlendirilir ve ilk karakterden önce veya son karakterden sonra bir boşluk bulunmaz.
+.NET SDK’nın 1.8 ve sonraki sürümlerinde, DocumentClient oluşturucusu için ConnectionPolicy parametresi, Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations adlı bir özelliğe sahiptir. Bu özellik `<string>` Koleksiyonu türünde olup bölge adlarının listesini içermelidir. Bölge adı sütununa göre biçimlendirilir dize değerleri [Azure bölgeleri][regions] sayfasında, boşluk içermeyen önce veya sonra ilk ve son karakter.
 
 Geçerli yazma ve okuma uç noktaları sırasıyla DocumentClient.WriteEndpoint ve DocumentClient.ReadEndpoint içinde kullanılabilir.
 
@@ -78,10 +78,10 @@ DocumentClient docClient = new DocumentClient(
 await docClient.OpenAsync().ConfigureAwait(false);
 ```
 
-## <a name="nodejs-javascript-and-python-sdks"></a>NodeJS, JavaScript ve Python SDK’ları
+## <a name="nodejs-javascript-and-python-sdks"></a>Node.js, JavaScript ve Python SDK'ları
 SDK herhangi bir kod değişikliği olmadan kullanılabilir. Bu durumda SDK hem okuma hem de yazma işlemlerini otomatik olarak geçerli yazma bölgesine yönlendirir.
 
-Her bir SDK’nın 1.8 ve sonraki sürümlerinde, DocumentClient oluşturucusu için ConnectionPolicy parametresi, DocumentClient.ConnectionPolicy.PreferredLocations adlı yeni bir özelliğe sahiptir. Bu, bölge adlarının listesini alan bir dize dizisidir. Adlar, [Azure Bölgeleri][regions] sayfasındaki Bölge Adı sütununa göre biçimlendirilir. AzureDocuments.Regions kolaylık nesnesindeki önceden tanımlanmış sabitleri de kullanabilirsiniz
+Her bir SDK’nın 1.8 ve sonraki sürümlerinde, DocumentClient oluşturucusu için ConnectionPolicy parametresi, DocumentClient.ConnectionPolicy.PreferredLocations adlı yeni bir özelliğe sahiptir. Bu, bölge adlarının listesini alan bir dize dizisidir. Bölge adı sütununa başına biçimli adları [Azure bölgeleri][regions] sayfası. AzureDocuments.Regions kolaylık nesnesindeki önceden tanımlanmış sabitleri de kullanabilirsiniz
 
 Geçerli yazma ve okuma uç noktaları sırasıyla DocumentClient.getWriteEndpoint ve DocumentClient.getReadEndpoint içinde kullanılabilir.
 
@@ -90,7 +90,7 @@ Geçerli yazma ve okuma uç noktaları sırasıyla DocumentClient.getWriteEndpoi
 >
 >
 
-Aşağıda, NodeJS/Javascript için bir kod örneği verilmiştir. Python ve Java aynı düzeni izler.
+Bir kod örneği için Node.js/Javascript aşağıdadır. Python ve Java aynı düzeni izler.
 
 ```JavaScript
 // Creating a ConnectionPolicy object

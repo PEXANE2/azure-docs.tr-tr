@@ -9,20 +9,17 @@ ms.topic: tutorial
 ms.date: 06/05/2019
 ms.author: dech
 Customer intent: As a developer, I want to build a Node.js console application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: 61569159d83493bb5338f8eda5b9201ef9164143
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: c98d52e95a285c2979742c8572a86718238548f4
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66734575"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67985636"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Öğretici: Azure Cosmos DB SQL API verileri yönetmek için JavaScript SDK ile bir Node.js konsol uygulaması oluşturma
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
-> * [.NET (Önizleme)](sql-api-dotnet-get-started-preview.md)
-> * [.NET Core](sql-api-dotnetcore-get-started.md)
-> * [.NET core (Önizleme)](sql-api-dotnet-core-get-started-preview.md)
 > * [Java](sql-api-java-get-started.md)
 > * [Async Java](sql-api-async-java-get-started.md)
 > * [Node.js](sql-api-nodejs-get-started.md)
@@ -102,7 +99,7 @@ Uygulamanızı var, Azure Cosmos DB'ye konuşabilirsiniz emin olmanız gerekir. 
 
    JavaScript SDK'sını kullanan genel koşulları *kapsayıcı* ve *öğesi*. Bir kapsayıcı koleksiyon, grafik veya tablo olabilir. Öğe de kapsayıcının içinde bulunan belge, kenar/köşe veya satır olabilir. 
    
-   `module.exports = config;` dışarı aktarmak için isused kod, ```config``` nesne içinde başvurabilir, böylece ```app.js``` dosya.
+   `module.exports = config;` dışarı aktarma için kullanılan kod, ```config``` nesne içinde başvurabilir, böylece ```app.js``` dosya.
 
 ## <a id="Connect"></a>Bir Azure Cosmos DB hesabına bağlanma
 
@@ -155,7 +152,7 @@ Artık Azure Cosmos DB istemcisini başlatmaya yarayacak koda sahip olduğunuza 
 
    Bir veritabanını kullanarak oluşturulabilir `createIfNotExists` veya işlevi oluşturma **veritabanları** sınıfı. Veritabanı, kapsayıcılar genelinde bölümlenmiş öğelerin mantıksal bir kapsayıcısıdır. 
 
-2. **createDatabase** ve **readDatabase** yöntemlerini kopyalayıp app.js dosyasında ```databaseId``` ve ```containerId``` tanımlarının altına yapıştırın. **createDatabase** işlevi mevcut değilse ```config``` nesnesiyle belirtilen ```FamilyDatabase``` kimliğine sahip yeni bir veritabanı oluşturur. **readDatabase** işlevi, veritabanının mevcut olduğundan emin olmak için veritabanı tanımını okur.
+2. **createDatabase** ve **readDatabase** yöntemlerini kopyalayıp app.js dosyasında ```databaseId``` ve ```containerId``` tanımlarının altına yapıştırın. **CreateDatabase** işlevi kimliği ile yeni bir veritabanı oluşturur ```FamilyDatabase```, belirtilen ```config``` zaten mevcut değilse nesne. **readDatabase** işlevi, veritabanının mevcut olduğundan emin olmak için veritabanı tanımını okur.
 
    ```javascript
    /**
@@ -383,7 +380,7 @@ Bir kapsayıcı kullanarak oluşturulabilir `createIfNotExists` veya işlevden o
 
 Bir öğe oluşturma işlevi kullanılarak oluşturulabilir. **öğeleri** sınıfı. SQL API'sini kullanırken, öğeleri kullanıcı tanımlı (rastgele) JSON içeriği olan belgeleri olarak yansıtılan. Artık Azure Cosmos DB'ye bir öğe ekleyebilirsiniz.
 
-1. **createFamilyItem** işlevini kopyalayıp **readContainer** işlevinin altına yapıştırın. **createFamilyItem** işlevi, ```config``` nesnesinde kaydedilen JSON verilerini içeren öğeleri oluşturur. Öğe oluşturulmadan önce aynı kimliğe sahip başka bir öğenin olup olmadığı kontrol edilir.
+1. **createFamilyItem** işlevini kopyalayıp **readContainer** işlevinin altına yapıştırın. **createFamilyItem** işlevi, ```config``` nesnesinde kaydedilen JSON verilerini içeren öğeleri oluşturur. Aynı Kimliğe sahip bir öğe zaten oluşturmadan önce mevcut değil emin olmak için kontrol edeceğiz.
 
    ```javascript
    /**

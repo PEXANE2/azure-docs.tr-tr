@@ -7,14 +7,14 @@ manager: rajvijan
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 12/21/2018
-ms.author: pryerram
+ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 5129af1f34f8a2604e7b70c9638b370c7cad029a
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.openlocfilehash: 805893d6b5756c76ebc523187e0ed75c9fe24ed9
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66015536"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67874752"
 ---
 # <a name="tutorial-use-azure-key-vault-with-an-azure-web-app-in-net"></a>Öğretici: . NET'te bir Azure web uygulaması ile Azure anahtar kasası
 
@@ -64,7 +64,7 @@ Azure CLI'yi kullanarak Azure'da oturum açmak için, şunları girin:
 az login
 ```
 
-## <a name="create-a-resource-group"></a>Kaynak grubu oluşturun
+## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
 Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
 
@@ -208,7 +208,7 @@ az webapp identity assign --name "<YourAppName>" --resource-group "<YourResource
 Değiştirin \<Uygulamanızınadı > azure'da yayımlanan uygulamanın adı.  
     Örneğin, yayımlanan uygulama adı, **MyAwesomeapp.azurewebsites.net**, değiştirin \<Uygulamanızınadı > ile **MyAwesomeapp**.
 
-Not `PrincipalId` uygulamayı azure'a yayımlarken. 1. adımda komutunun çıkışı şu biçimde olmalıdır:
+Not `PrincipalId` uygulamayı azure'a yayımlarken. 1\. adımda komutunun çıkışı şu biçimde olmalıdır:
 
 ```json
 {

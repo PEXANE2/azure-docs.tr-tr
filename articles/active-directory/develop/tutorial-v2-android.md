@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71c6b0d4cd664b12dbd0fbd4e9423240c8dbebb3
-ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
+ms.openlocfilehash: cb1e322e0424debc14a29ad8a516c95acea54714
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67723803"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67872104"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>Bir Android uygulamasından Microsoft Graph'i çağırmaya ve kullanıcılarının oturumunu
 
@@ -33,61 +33,57 @@ Kılavuzu tamamladıktan sonra uygulamanızın oturum açma işlemleri kişisel 
 
 ![Bu öğretici tarafından oluşturulan örnek uygulamasını nasıl çalıştığını gösterir](../../../includes/media/active-directory-develop-guidedsetup-android-intro/android-intro.svg)
 
-Bu örnek uygulamasında kullanıcılarının oturumunu ve onların adına veri alın.  Bu veriler, yetkilendirme gerektiren bir korumalı API aracılığıyla (Microsoft Graph API) erişilir.
+Bu öğreticide uygulama kullanıcılarının oturumunu ve onların adına veri alın.  Bu veriler, yetkilendirme gerektirir ve Microsoft kimlik platformu tarafından korunan korumalı bir API (Microsoft Graph API) aracılığıyla erişilir.
 
 Daha ayrıntılı belirtmek gerekirse:
 
 * Uygulamanızı bir tarayıcı veya Microsoft Authenticator ve Intune Şirket portalı yoluyla kullanıcının oturum açmasını.
-* Son kullanıcının, uygulamanın istediği izinleri kabul eder. 
+* Son kullanıcının, uygulamanın istediği izinleri kabul eder.
 * Uygulamanızı Microsoft Graph API'si için bir erişim belirteci verilir.
 * HTTP isteği Web API'sine erişim belirtecinin dahil edilir.
 * Microsoft Graph yanıta işler.
 
-Bu örnek, kimlik doğrulaması uygulamak için Microsoft Authentication kitaplığı için Android (MSAL) kullanır. MSAL otomatik olarak yenileme belirteçleri, çoklu oturum açma (SSO) arasında cihazdaki diğer uygulamalar sunun ve hesapları yönetin.
+Bu örnek, kimlik doğrulaması uygulamak için Microsoft Authentication kitaplığı için Android (MSAL) kullanır: [com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal).
+
+ MSAL otomatik olarak yenileme belirteçleri, çoklu oturum açma (SSO) arasında cihazdaki diğer uygulamalar sunun ve hesapları yönetin.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Bu Kılavuzlu Kurulum Android Studio kullanır.
-* Android 16 veya üzeri gereklidir (19 + önerilir).
-
-## <a name="library"></a>Kitaplık
-
-Bu kılavuz, aşağıdaki kimlik doğrulama kitaplığı kullanır:
-
-|Kitaplık|Açıklama|
-|---|---|
-|[com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal)|Microsoft Authentication Library (MSAL)|
+* Bu öğreticide, Android Studio 16 veya sonraki bir sürümü gerektirir (19 + önerilir).
 
 ## <a name="create-a-project"></a>Proje oluşturma
 
 Bu öğreticide, yeni bir proje oluşturur. Tamamlanan öğretici bunun yerine, karşıdan yüklemek isterseniz [kodu indirmek](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip).
 
-1. Android Studio'yu açın ve seçin **yeni bir Android Studio projesi Başlat**
-2. Seçin **temel etkinlik** tıklatıp **sonraki**.
-3. Uygulamanızı adlandırın
-4. Paket adı kaydedin. Daha sonra Azure portalında girdiğiniz. 
+1. Android Studio'yu açın ve seçin **yeni bir Android Studio projesi Başlat**.
+2. Seçin **temel etkinlik** seçip **sonraki**.
+3. Uygulamanızı adlandırın.
+4. Paket adı kaydedin. Daha sonra Azure portalında girdiğiniz.
 5. Ayarlama **en düşük API düzeyi** için **API 19** veya daha yüksek tıklatıp **son**.
 6. Proje Görünümü'nde seçin **proje** açık kaynak ve kaynak olmayan proje dosyalarını görüntülemek için açılan listede **app/build.gradle** ayarlayıp `targetSdkVersion` için `27`.
 
 ## <a name="register-your-application"></a>Uygulamanızı kaydetme
 
-1. [Azure portal](https://aka.ms/MobileAppReg)'a gidin
+1. [Azure Portal](https://aka.ms/MobileAppReg) gidin.
 2. Açık [uygulama kayıtları dikey penceresinde](https://ms.portal.azure.com/?feature.broker=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) tıklatıp **+ yeni kaydı**.
 3. Girin bir **adı** uygulamanız için ve daha sonra bir yeniden yönlendirme URI'si ayarı olmadan **kaydetme**.
 4. İçinde **Yönet** görünürse, bölmenin seçin **kimlik doğrulaması** >  **+ bir platform Ekle** > **Android**.
 5. Proje paket adı girin. Kod indirdiyseniz, bu değer, `com.azuresamples.msalandroidapp`.
-6. İçinde **imza karma** bölümünü **Android uygulamanızı yapılandırın** sayfasında **bir geliştirme imza karma oluşturma.** ve platformunuz için kullanılacak KeyTool komutunu kopyalayın. Unutmayın, KeyTool.exe Java Development Kit (JDK) bir parçası olarak yüklenir ve ayrıca KeyTool komutu yürütmek için OpenSSL aracı yüklenmiş olması gerekir.
+6. İçinde **imza karma** bölümünü **Android uygulamanızı yapılandırın** sayfasında **bir geliştirme imza karma oluşturma.** ve platformunuz için kullanılacak KeyTool komutunu kopyalayın.
+
+   > [!Note]
+   > KeyTool.exe Java Development Kit (JDK) bir parçası olarak yüklenir. Ayrıca KeyTool komutu yürütmek için OpenSSL aracı yüklemeniz gerekir.
+
 7. Girin **imza karma** KeyTool tarafından oluşturulur.
 8. Tıklayın `Configure` kaydedip **MSAL yapılandırma** , görünür **Android yapılandırma** uygulamanızı daha sonra yapılandırdığınızda girebilmeniz için sayfa.  **Bitti**’ye tıklayın.
 
 ## <a name="build-your-app"></a>Uygulamanızı oluşturun
 
-### <a name="configure-your-android-app"></a>Android uygulamanızı yapılandırın
+### <a name="add-your-app-registration"></a>Uygulama kaydınızı Ekle
 
 1. Android Studio projesi bölmesinde gidin **app\src\main\res**.
 2. Sağ **res** ve **yeni** > **dizin**. Girin `raw` tıklayın ve yeni dizin adı olarak **Tamam**.
 3. İçinde **uygulama** > **src** > **res** > **ham**, adlı yeni bir JSON dosyası oluşturun`auth_config.json`daha önce kaydettiğiniz MSAL yapılandırmayı yapıştırın. Bkz: [daha fazla bilgi için MSAL yapılandırma](https://github.com/AzureAD/microsoft-authentication-library-for-android/wiki/Configuring-your-app).
-   <!-- Workaround for Docs conversion bug -->
 4. İçinde **uygulama** > **src** > **ana** > **AndroidManifest.xml**, ekleme`BrowserTabActivity`aşağıdaki etkinlik. Bu giriş, Microsoft'un kimlik doğrulaması tamamlandıktan sonra uygulamanıza geri arama sağlar:
 
     ```xml
@@ -118,7 +114,7 @@ Bu öğreticide, yeni bir proje oluşturur. Tamamlanan öğretici bunun yerine, 
 ### <a name="create-the-apps-ui"></a>Uygulamanın kullanıcı Arabirimi oluşturma
 
 1. Android Studio projesi penceresinde gidin **uygulama** > **src** > **ana** > **res**  >  **Düzen** açın **activity_main.xml** açın **metin** görünümü.
-2. Etkinlik, örneğin düzenini `<androidx.coordinatorlayout.widget.CoordinatorLayout` için `<androidx.coordinatorlayout.widget.LinearLayout`.
+2. Etkinlik düzenini değiştirin; örneğin: `<androidx.coordinatorlayout.widget.CoordinatorLayout` için `<androidx.coordinatorlayout.widget.LinearLayout`.
 3. Ekleme `android:orientation="vertical"` özelliğini `LinearLayout` düğümü.
 4. Aşağıdaki kodu yapıştırın `LinearLayout` düğümünün geçerli içerik değiştirme:
 
@@ -186,7 +182,7 @@ Bu öğreticide, yeni bir proje oluşturur. Tamamlanan öğretici bunun yerine, 
 ### <a name="use-msal"></a>MSAL kullanın
 
 İçinde değişiklik artık `MainActivity.java` ekleyip MSAL uygulamanızda kullanma.
-Android Studio projesi penceresinde gidin **uygulama** > **src** > **ana** > **java**  >  **com.example.msal**açın `MainActivity.java`
+Android Studio projesi penceresinde gidin **uygulama** > **src** > **ana** > **java**  >  **com.example.msal**açın `MainActivity.java`.
 
 #### <a name="required-imports"></a>Gerekli içeri aktarmaları
 
