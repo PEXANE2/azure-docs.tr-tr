@@ -443,6 +443,13 @@
           href: ./partner-center-portal/offer-creation-checklist.md
         - name: SaaS teklifi oluşturma
           href: ./partner-center-portal/create-new-saas-offer.md
+        - name: SaaS ölçülen faturalaması
+          href: ./partner-center-portal/saas-metered-billing.md
+          items:
+            - name: Market ölçüm hizmeti API’leri - SSS
+              href: ./partner-center-portal/marketplace-metering-service-apis-faq.md
+            - name: Market ölçüm hizmeti API’leri
+              href: ./partner-center-portal/marketplace-metering-service-apis.md
         - name: SaaS gerçekleştirme API'leri
           href: ./partner-center-portal/pc-saas-fulfillment-apis.md
           items:
@@ -452,6 +459,8 @@
               href: ./partner-center-portal/pc-saas-fulfillment-api-v2.md
             - name: SaaS Gerçekleştirme API’leri v1 (kullanım dışı)
               href: ./partner-center-portal/pc-saas-fulfillment-api-v1.md
+            - name: SaaS gerçekleştirme API’leri - SSS
+              href: ./partner-center-portal/saas-fulfillment-apis-faq.md
     - name: Yayın durumu
       href: ./partner-center-portal/publishing-status.md
     - name: Mevcut teklifleri güncelleştirme

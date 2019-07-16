@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: rhurey
-ms.openlocfilehash: 158819d481c0ce245539d783f194b159b2b9edb6
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: d73a63a8f58e14149121d0860268fc23930001bf
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606518"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226357"
 ---
 # <a name="phrase-lists-for-speech-to-text"></a>Konuşma metin için ifade listeleri
 
@@ -24,6 +24,9 @@ Bir ifade listesi konuşma Hizmetleri sağlayarak, konuşma tanıma doğruluğun
 Örneğin, bir komut varsa, "Taşı" ve "konuşulan, Atla" olası hedefi "Taşımak için Atla" bir giriş ekleyebilirsiniz. Bir ifade ekleme olasılığı artar, ne zaman ses tanınır "Taşıma doğru" yerine "Taşımak için Atla" tanınır.
 
 Tek sözcükleri veya tümcecikleri tam tümcecik listesine eklenebilir. Ses tam bir eşleşme içeriyorsa bir deyim listesindeki bir girdinin tanıma sırasında kullanılır. Önceki örnekten, ifade listesi "Taşımak için Atla" ve yakalanan deyimi içeriyorsa oluşturma "doğru yavaş taşıma" adıdır, ardından "Yavaş taşımak için Atla" tanıma sonuç olacaktır.
+
+>[!Note]
+> Şu anda tümcecik listeler yalnızca İngilizce Konuşmayı metne dönüştürme için destekler.
 
 ## <a name="how-to-use-phrase-lists"></a>İfade listeleri kullanma
 

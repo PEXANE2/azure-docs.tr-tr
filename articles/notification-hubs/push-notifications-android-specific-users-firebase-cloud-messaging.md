@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/01/2019
 ms.author: jowargo
-ms.openlocfilehash: 86a2cd824d1896211efd40bb8aa1d007149ef2db
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 67df6c84c5a88a3ffc82948898e356e0a913ba27
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65203571"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227779"
 ---
 # <a name="tutorial-push-notification-to-specific-android-application-users-by-using-azure-notification-hubs"></a>Öğretici: Belirli Android uygulama kullanıcıları için Azure Notification Hubs'ı kullanarak anında iletme bildirimi
 
@@ -259,7 +259,7 @@ Oluşturulan Android uygulamayı güncelleştirmek için sonraki adımdır [Öğ
     ```
 
     Bu bileşen için anında iletme bildirimleri kaydetmek için uygulama arka ucu iletişim kurması gerekir REST çağrılarını uygular. [Uygulama arka ucunuzdan kaydetme](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend) bölümünde açıklandığı gibi Bildirim Hub’ı tarafından oluşturulan *registrationId*’leri de yerel olarak depolar. ' A tıkladığınızda, yerel depolama alanında depolanan bir yetkilendirme belirteci kullanan **oturum** düğmesi.
-4. İçinde `MainActivity` sınıfı ve için bir alan eklemek `RegisterClient` sınıfı ve ASP.NET ucun uç noktası için bir dize. `<Enter Your Backend Endpoint>` değerini, önceden aldığınız gerçek arka ucun uç noktasıyla değiştirdiğinizden emin olun. Örneğin, `http://mybackend.azurewebsites.net`.
+4. İçinde `MainActivity` sınıfı ve için bir alan eklemek `RegisterClient` sınıfı ve ASP.NET ucun uç noktası için bir dize. `<Enter Your Backend Endpoint>` değerini, önceden aldığınız gerçek arka ucun uç noktasıyla değiştirdiğinizden emin olun. Örneğin: `http://mybackend.azurewebsites.net`.
 
     ```java
     private RegisterClient registerClient;
@@ -276,7 +276,7 @@ Oluşturulan Android uygulamayı güncelleştirmek için sonraki adımdır [Öğ
         super.onCreate(savedInstanceState);
 
         mainActivity = this;
-        MyHandler.createChannelAndHandleNotifications(getApplicationContext());
+        FirebaseService.createChannelAndHandleNotifications(getApplicationContext());
         fcm = FirebaseInstanceId.getInstance();
         registerClient = new RegisterClient(this, BACKEND_ENDPOINT);
         setContentView(R.layout.activity_main);

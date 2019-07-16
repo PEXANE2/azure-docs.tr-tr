@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/22/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 28eac814364b56f59b8edc6f59209a6d742ff403
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 590ba4b7a61fa437767d99ac6b9ae3e0fa94edc3
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67188617"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227785"
 ---
 ## <a name="create-the-webapi-project"></a>WebAPI projesi oluşturma
 
@@ -158,7 +158,7 @@ Bu bölümde, bildirim hub’ları için istemci kitaplığını kullanarak WebA
 
 3. Sonuç listesinde **Microsoft Azure Notification Hubs**’ı ve ardından **Yükle**’yi seçin. Yüklemeyi tamamlayın ve sonra NuGet Paket Yöneticisi penceresini kapatın.
 
-    Bu eylem [Microsoft.Azure.Notification Hubs NuGet paketini](http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) kullanarak Azure Notification Hubs SDK'sına bir başvuru ekler.
+    Bu eylem [Microsoft.Azure.Notification Hubs NuGet paketini](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) kullanarak Azure Notification Hubs SDK'sına bir başvuru ekler.
 
 4. Bildirimleri göndermek için kullanılan bildirim hub'ı bağlantısını temsil eden yeni bir sınıf dosyası oluşturun. Çözüm Gezgini'nde **Modeller** klasörüne sağ tıklayın, **Ekle**'yi ve ardından **Sınıf**'ı seçin. Yeni sınıfı **Notifications.cs** olarak adlandırın, ardından **Ekle**’yi seçerek sınıfı oluşturun.
 
@@ -170,7 +170,7 @@ Bu bölümde, bildirim hub’ları için istemci kitaplığını kullanarak WebA
     using Microsoft.Azure.NotificationHubs;
     ```
 
-6. `Notifications` sınıf tanımını aşağıdaki kodla değiştirin ve iki yer tutucuyu bildirim hub’ınızın bağlantı dizesi (tam erişimli) ve hub adı ile değiştirdiğinizden emin olun ([Azure portalında bulunabilir](http://portal.azure.com)):
+6. `Notifications` sınıf tanımını aşağıdaki kodla değiştirin ve iki yer tutucuyu bildirim hub’ınızın bağlantı dizesi (tam erişimli) ve hub adı ile değiştirdiğinizden emin olun ([Azure portalında bulunabilir](https://portal.azure.com)):
 
     ```csharp
     public class Notifications

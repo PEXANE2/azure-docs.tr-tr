@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e51c37f983162b82747760b05e2ec5e4e6553c0b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ccf3894daf71be0defe4271a08ec5e8d963e0d34
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106940"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227491"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>Öğretici: AnswerHub ile Azure Active Directory Tümleştirme
 
@@ -185,7 +185,7 @@ Bu bölümde, Azure portalında Britta Simon adlı bir test kullanıcısı oluş
     a. İçinde **adı** kutusuna **BrittaSimon**.
   
     b. İçinde **kullanıcı adı** kutusuna **brittasimon\@< yourcompanydomain.extension >** .  
-    Örneğin, BrittaSimon@contoso.com.
+    Örneğin: BrittaSimon@contoso.com.
 
     c. Seçin **Show parola** onay kutusunu işaretleyin ve ardından görüntülenen değeri yazın **parola** kutusu.
 
@@ -193,7 +193,7 @@ Bu bölümde, Azure portalında Britta Simon adlı bir test kullanıcısı oluş
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
-Bu bölümde, Azure AD çoklu oturum açma için AnswerHub erişim vererek kullanmak için Britta Simon ayarlayın.
+Bu bölümde, Azure AD çoklu oturum açma için AnswerHub kullanıcı erişimi vererek kullanmak için kullanıcı Britta Simon ayarlayın.
 
 **Azure AD test kullanıcı atamak için:**
 

@@ -58,7 +58,7 @@
           href: howto-power-bi-content-pack.md
         - name: Raporlama API'si için önkoşulları yapılandırma
           href: howto-configure-prerequisites-for-reporting-api.md
-        - name: Azure İzleyici çalışma kitaplarını kullanma
+        - name: Azure AD çalışma kitaplarını kullanma
           href: howto-use-azure-monitor-workbooks.md
     - name: İzleme
       items:
@@ -87,6 +87,8 @@
 - name: Başvuru
   expanded: true
   items:
+    - name: Raporlama için Azure AD PowerShell cmdlet’leri
+      href: reference-powershell-reporting.md
     - name: Denetim günlükleri API başvurusu
       href: 'https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit'
     - name: Oturum açma günlükleri API başvurusu

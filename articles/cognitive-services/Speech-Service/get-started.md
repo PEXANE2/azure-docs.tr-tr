@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: aaae84fcb7df2abfe7e78adb64c22fb19fe45f4e
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 203526b23a9571f0cccf3ebed432978772282418
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606724"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226415"
 ---
 # <a name="try-speech-services-for-free"></a>Konuşma Hizmetleri ücretsiz olarak deneyin
 
@@ -89,7 +89,7 @@ Azure hesabınızda bir konuşma Hizmetleri kaynak (ücretsiz veya Ücretli katm
 
    * Yeni kaynak için bir ad. Adı aynı hizmetin birden fazla aboneliğe arasında ayırt etmenize yardımcı olur.
    * Yeni kaynak ücretleri nasıl faturalandırılır belirlemek için ilişkili olduğu Azure aboneliğini seçin.
-   * Kaynağı nerede kullanılacak bir bölge seçin. Şu anda konuşma Hizmetleri Doğu Asya, Kuzey Avrupa ve Batı ABD bölgelerinde kullanılabilir.
+   * Seçin [bölge](regions.md) burada kaynak kullanılır.
    * Ya da ücretsiz veya Ücretli fiyatlandırma katmanı seçin. Tıklayın **fiyatlandırma ayrıntılarının tamamını görüntüle** her katman için fiyatlandırma ve kullanım Kotalar hakkında tam bilgi için.
    * Bu konuşma abonelik için yeni bir kaynak grubu oluşturun veya mevcut bir kaynak grubu aboneliği atayın. Kaynak düzenlenir, çeşitli Azure aboneliklerinizi tutmak Yardım gruplandırır.
    * Aboneliğinize gelecekte kolay erişim için seçin **panoya Sabitle** onay kutusu.

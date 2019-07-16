@@ -137,10 +137,14 @@
           href: how-to-update-iot-edge.md
     - name: DPS ile otomatik sağlama
       items:
-        - name: Linux
-          href: how-to-auto-provision-simulated-device-linux.md
-        - name: Windows
-          href: how-to-auto-provision-simulated-device-windows.md
+        - name: Simetrik anahtar kanıtlama
+          href: how-to-auto-provision-symmetric-keys.md
+        - name: TPM kanıtlama
+          items:
+            - name: Linux
+              href: how-to-auto-provision-simulated-device-linux.md
+            - name: Windows
+              href: how-to-auto-provision-simulated-device-windows.md
     - name: Özel modüller geliştirme ve bunlarda hata ayıklama
       items:
         - name: Visual Studio 2019
