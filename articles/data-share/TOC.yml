@@ -25,10 +25,18 @@
       href: how-to-configure-mapping.md
     - name: Sorun giderme
       href: data-share-troubleshoot.md
+    - name: Veri kümeleri ekleme
+      href: how-to-add-datasets.md
+    - name: Alıcı ekleme
+      href: how-to-add-recipients.md
+    - name: Davet silme
+      href: how-to-delete-invitation.md
+    - name: Paylaşım aboneliğini iptal etme
+      href: how-to-revoke-share-subscription.md
 - name: Kaynaklar
   items:
     - name: Blog
-      href: 'https://azure.microsoft.com/blog/tag/data-share'
+      href: 'https://azure.microsoft.com/blog/announcing-preview-of-azure-data-share/'
     - name: Microsoft Teknoloji Topluluğu
       href: 'https://techcommunity.microsoft.com/'
     - name: Ürün geri bildirimi
