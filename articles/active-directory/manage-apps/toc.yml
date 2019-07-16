@@ -59,9 +59,9 @@
           href: isv-create-sso-documentation.md
         - name: Çoklu oturum açma dağıtımını planlama
           href: plan-sso-deployment.md
-    - name: Tek Tıklamayla SSO
+    - name: Tek tıklamayla çoklu oturum açma
       items:
-        - name: Tek Tıklamayla SSO nedir
+        - name: Tek tıklamayla çoklu oturum açmayı yapılandırma
           href: one-click-sso-tutorial.md
     - name: Kullanıcıları ve grupları sağlama
       items:

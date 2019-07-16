@@ -242,7 +242,7 @@ $NIC | Set-AzNetworkInterface
    Invoke-WebRequest -Uri https://www.microsoft.com
    ```
 
-   www.google.com isteklerinin başarılı olması gerekir ve www.microsoft.com istekleri başarısız olması. Bu, güvenlik duvarı kurallarınız beklendiği gibi çalışıp çalışmadığını gösterir.
+   [www.google.com](www.google.com) isteklerinin başarılı olması gerekir ve www.microsoft.com istekleri başarısız olması. Bu, güvenlik duvarı kurallarınız beklendiği gibi çalışıp çalışmadığını gösterir.
 
 Şimdi güvenlik duvarı kuralları çalıştığını doğruladığınıza göre:
 
