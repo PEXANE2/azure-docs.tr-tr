@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 02/19/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 118ac858103776e880e7304199279a7d50ad71b1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2994f7b19d5a104b129dc4d7aff29dabbc89f0f4
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60599685"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275998"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Öğretici: Konuşma uç noktası inceleyerek emin değilseniz Öngörüler Düzelt
 Bu öğreticide, LUIS HTTP uç noktası üzerinden alınan ifadeleri doğrulayarak veya düzelterek LUIS'in emin olmadığı uygulama tahminlerini geliştireceksiniz. Bazı konuşmaların amaç, diğerlerinin ise varlık için doğrulanması gerekebilir. Zamanlanmış LUIS bakımınızın normal bir parçası olarak uç noktası konuşmalarını gözden geçirmeniz gerekir. 
@@ -56,7 +56,7 @@ Aşağıdaki adımları kullanın:
 
 1. Eğitim ve yeni uygulama yayımlama.
 
-1. Aşağıdaki Konuşma ekleme için uç noktayı kullanın. Ya da bunu bir [betik](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/demo-upload-endpoint-utterances/endpoint.js) veya bir tarayıcıda uç noktasından. Eklenecek ifadeler:
+1. Aşağıdaki Konuşma ekleme için uç noktayı kullanın. Ya da bunu bir [betik](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/demo-upload-endpoint-utterances/endpoint.js) veya bir tarayıcıda uç noktasından. Eklenecek konuşmalar:
 
    [!code-nodejs[Node.js code showing endpoint utterances to add](~/samples-luis/examples/demo-upload-endpoint-utterances/endpoint.js?range=15-26)]
 
@@ -74,31 +74,22 @@ Aşağıdaki adımları kullanın:
     
     [![Ekran gözden uç nokta konuşma varlıklarla vurgulanmış geçiş görüntüleyin](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png#lightbox)
 
+
+    Bu utterance `I'm looking for a job with Natural Language Processing`, amaca doğru değil. 
+
+    Utterance mispredicted neden olan **ApplyForJob** amacı güdülür; bu 7 konuşma karşılaştırıldığında 21 konuşma **GetJobInformation**. Daha fazla konuşma hedefle daha yüksek bir öngörü sahip olursunuz. Konuşma amaçları arasında kalitesini ve miktar dengeli önemlidir.
+
+1.  Bu utterance hizalamak için doğru hedefini seçin ve işi varlık içindeki işaretleyin. Değiştirilen utterance yeşil onay kutusunu seçerek uygulamaya ekleyin. 
+
     |İfade|Doğru amaç|Eksik varlıklar|
     |:--|:--|:--|
-    |Doğal Dil İşleme ile ilgili bir iş arıyorum|GetJobInfo|İş - "Doğal Dil İşleme"|
+    |`I'm looking for a job with Natural Language Processing`|GetJobInfo|İş - "Doğal Dil İşleme"|
 
-    Bu ifade doğru amaçta değildir ve puanı %50'den düşüktür. **ApplyForJob** amacının 21 ifadesi varken, **GetJobInformation** amacının yedi ifadesi vardır. Uç nokta ifadesini doğru eşleştirmenin yanı sıra, **GetJobInformation** amacına daha fazla ifade de eklenmelidir. Bu, kendi başınıza tamamlamanız için bir alıştırma olarak bırakılmıştır. **Hiçbiri** amacı dışındaki her amacın kabaca aynı sayıda örnek ifadesi olmalıdır. **Hiçbiri** amacındaki ifade sayısının, uygulamadaki ifadelerin %10'u kadar olması gerekir. 
+    Utterance ekleyerek gelen utterance taşır **gözden geçirin, konuşma uç noktası** için **GetJobInformation** hedefi. Uç nokta ifadesi şimdi söz konusu amaç için örnek bir ifade olmuştur. 
 
-1. `I'm looking for a job with Natual Language Processing` amacı olarak, **Eşleşmiş amaç** sütununda doğru amaç olan **GetJobInformation**'ı seçin. 
-
-    [![Ekran gözden uç nokta konuşma amaca utterance hizalama](./media/luis-tutorial-review-endpoint-utterances/align-intent-1.png)](./media/luis-tutorial-review-endpoint-utterances/align-intent-1.png#lightbox)
-
-1. Aynı ifadede `Natural Language Processing` varlığı keyPhrase'dir. Bunun yerine bu bir **Job** varlığı olmalıdır. `Natural Language Processing` öğesini ve ardından listede **Job** varlığını seçin.
-
-    [![Ekran gözden uç nokta konuşma utterance Varlık etiketleme](./media/luis-tutorial-review-endpoint-utterances/label-entity.png)](./media/luis-tutorial-review-endpoint-utterances/label-entity.png#lightbox)
-
-1. Aynı satırda, **Eşleşmiş amaca ekle** sütununda yuvarlak için alınmış onay işaretini seçin. 
-
-    [![Hedefi utterance hizalama sonlandırılıyor ekran görüntüsü](./media/luis-tutorial-review-endpoint-utterances/align-utterance.png)](./media/luis-tutorial-review-endpoint-utterances/align-utterance.png#lightbox)
-
-    Bu eylem ifadeyi **Uç nokta ifadelerini gözden geçir** ekranından **GetJobInformation** amacına taşır. Uç nokta ifadesi şimdi söz konusu amaç için örnek bir ifade olmuştur. 
+    Bu utterance doğru hizalama yanı sıra daha fazla konuşma eklenmelidir **GetJobInformation** hedefi. Bu, kendi başınıza tamamlamanız için bir alıştırma olarak bırakılmıştır. **Hiçbiri** amacı dışındaki her amacın kabaca aynı sayıda örnek ifadesi olmalıdır. **Hiçbiri** amacındaki ifade sayısının, uygulamadaki ifadelerin %10'u kadar olması gerekir. 
 
 1. Bu amaçtaki diğer ifadeleri gözden geçirin, ifadeleri etiketleyin ve **Eşleşmiş amaç** yanlışsa düzeltin.
-
-1. Tüm ifadeler doğru olduğunda, her satırdaki onay kutusunu seçin ve ardından **Seçileni ekle**'yi seçerek ifadeleri doğru eşleştirin. 
-
-    [![Kalan konuşma hizalanmış amaca sonlandırılıyor ekran görüntüsü](./media/luis-tutorial-review-endpoint-utterances/finalize-utterance-alignment.png)](./media/luis-tutorial-review-endpoint-utterances/finalize-utterance-alignment.png#lightbox)
 
 1. Artık listede bu ifadeler yer almamalıdır. Başka konuşmalar da görünürse, liste boşalana kadar amaçları düzelterek ve eksik varlıkları etiketleyerek listede çalışmaya devam edin. 
 

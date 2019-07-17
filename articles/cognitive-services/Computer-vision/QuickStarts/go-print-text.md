@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 03/11/2019
+ms.date: 07/15/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 68764587191288200ad8f69bb8357e7e44e55fa8
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 15cd01cd3c9cbf3a94d5aad31ae2c85959fed289
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605935"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68276481"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-with-go"></a>Hızlı Başlangıç: Görüntü işleme REST API'si ile Git kullanarak yazdırılan metin (OCR) ayıklayın
 
@@ -38,10 +38,10 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
     1. `subscriptionKey` değerini abonelik anahtarınızla değiştirin.
     1. Gerekirse `uriBase` değerini, abonelik anahtarlarınızı aldığınız Azure bölgesinden [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) yönteminin uç nokta URL’si ile değiştirin.
     1. İsteğe bağlı olarak `imageUrl` değerini, analiz etmek istediğiniz başka bir görüntünün URL’si ile değiştirin.
-1. Kodu, `.go` uzantısıyla bir dosya olarak kaydedin. Örneğin, `get-printed-text.go`.
+1. Kodu, `.go` uzantısıyla bir dosya olarak kaydedin. Örneğin: `get-printed-text.go`.
 1. Bir komut istemi penceresi açın.
-1. İstemde, dosyadan paketi derlemek için `go build` komutunu çalıştırın. Örneğin, `go build get-printed-text.go`.
-1. İstemde, derlenmiş paketi çalıştırın. Örneğin, `get-printed-text`.
+1. İstemde, dosyadan paketi derlemek için `go build` komutunu çalıştırın. Örneğin: `go build get-printed-text.go`.
+1. İstemde, derlenmiş paketi çalıştırın. Örneğin: `get-printed-text`.
 
 ```go
 package main

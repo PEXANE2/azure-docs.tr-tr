@@ -3,20 +3,20 @@ title: Amaçları tahmin edin
 titleSuffix: Azure Cognitive Services
 description: Bu öğreticide, bir kullanıcının engellemekse tahmin eden özel bir uygulama oluşturun. E-posta adresleri veya tarihler gibi konuşma metinlerinden çeşitli veri öğeleri ayıklamadığından bu uygulama en basit LUIS uygulaması türüdür.
 services: cognitive-services
-author: lingliw
-manager: digimobile
+author: diberry
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 04/19/19
-ms.author: v-lingwu
-ms.openlocfilehash: 067829a1d9425ede1320242e364eca7c30bb7053
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 07/16/2019
+ms.author: diberry
+ms.openlocfilehash: 534aa678df69a4ef71296005922fa59bbe7bbcfa
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66123918"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277574"
 ---
 # <a name="tutorial-build-luis-app-to-determine-user-intentions"></a>Öğretici: Kullanıcı amaçları belirlemek için LUIS uygulaması oluşturma
 
@@ -49,7 +49,7 @@ Bu uygulamanın birkaç amacı vardır.
 |--|--|
 |ApplyForJob|Kullanıcı bir iş uyguluyor belirleyin.|
 |GetJobInformation|Kullanıcı işleri genel olarak veya belirli bir işin hakkında bilgi için arıyor, belirleyin.|
-|None|Kullanıcı bir şey istemesi durumunda belirlemek uygulama yanıtlamak için gereken değil. Bu amaç, uygulama oluşturmanın bir parçası sağlanan ve silinemez. |
+|Yok.|Kullanıcı bir şey istemesi durumunda belirlemek uygulama yanıtlamak için gereken değil. Bu amaç, uygulama oluşturmanın bir parçası sağlanan ve silinemez. |
 
 ## <a name="create-a-new-app"></a>Yeni bir uygulama oluşturma
 
@@ -239,7 +239,3 @@ Bu uygulama ile devam [basit bir varlık ve deyim listesi ekleme](luis-quickstar
 
 > [!div class="nextstepaction"]
 > [Bu uygulamaya önceden derlenmiş amaçlar ve varlıklar ekleme](luis-tutorial-prebuilt-intents-entities.md)
-
-
-
-

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 03/11/2019
+ms.date: 07/15/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 844d2ca9c2aa0e6a79eb7abebbec986f0fd5c5bc
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: a28dd94f32eac3cba3443761671b3c846e52798c
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604252"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277620"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-php"></a>Hızlı Başlangıç: Görüntü işleme REST API'si ile PHP yazdırılan metin (OCR) ayıklayın
 
@@ -49,7 +49,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
     1. `subscriptionKey` değerini abonelik anahtarınızla değiştirin.
     1. Gerekirse `uriBase` değerini, abonelik anahtarlarınızı aldığınız Azure bölgesinden [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) yönteminin uç nokta URL’si ile değiştirin.
     1. İsteğe bağlı olarak, `imageUrl` değerini, içinden yazdırılan metni ayıklamak istediğiniz başka bir görüntünün URL’si ile değiştirin.
-1. Kodu, `.php` uzantısıyla bir dosya olarak kaydedin. Örneğin, `get-printed-text.php`.
+1. Kodu, `.php` uzantısıyla bir dosya olarak kaydedin. Örneğin: `get-printed-text.php`.
 1. PHP desteğiyle bir tarayıcı penceresini açın.
 1. Dosyayı tarayıcı penceresine sürükleyip bırakın.
 
@@ -219,7 +219,7 @@ Başarılı bir yanıt JSON biçiminde döndürülür. Örnek web sitesi aşağ�
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli değilse dosyayı silin ve sonra PHP5 `HTTP_Request2` paketini kaldırın. Paketi kaldırmak için aşağıdaki adımları uygulayın:
+Artık olduğunuzda projeyi kullanarak dosyayı silin ve PHP5 kaldırma `HTTP_Request2` paket. Paketi kaldırmak için aşağıdaki adımları uygulayın:
 
 1. Yönetici olarak bir komut istemi penceresini açın.
 2. Şu komutu çalıştırın:

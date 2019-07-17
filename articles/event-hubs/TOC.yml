@@ -59,6 +59,8 @@
   items:
     - name: Event Hubs terminolojisi
       href: event-hubs-features.md
+    - name: Olay işlemcisi konağı
+      href: event-hubs-event-processor-host.md
     - name: Kullanılabilirlik ve tutarlılık
       href: event-hubs-availability-and-consistency.md
     - name: Ölçeklenebilirlik
@@ -90,8 +92,6 @@
           href: event-hubs-exchange-events-different-protocols.md
         - name: Programlama kılavuzu
           href: event-hubs-programming-guide.md
-        - name: Olay İşlemcisi Konağı kullanarak olay alma
-          href: event-hubs-event-processor-host.md
     - name: Veri işleme
       items:
         - name: Azure Stream Analytics’i kullanarak verileri işleme

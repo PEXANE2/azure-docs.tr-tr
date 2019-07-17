@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 04/01/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: ea9a2df1f06ba6836ef88bc57dc3f95fd31e1ee9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a03a1224451411617f38c8cecafbef008aa08916
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66124213"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68276194"
 ---
 # <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>Öğretici: Varlığın ve deyim listesi ile adlarını Ayıkla
 
@@ -31,7 +31,7 @@ Basit varlık, sözcükler veya tümceciklerde bulunan tek bir veri kavramını 
 > * Örnek uygulamayı içeri aktarma
 > * Basit bir varlık ekleme 
 > * Sinyal sözcükleri artırmak üzere ifade listesi ekleme
-> * Eğit 
+> * Eğitim 
 > * Yayımlama 
 > * Uç noktadan amaçları ve varlıkları alma
 
@@ -223,13 +223,13 @@ Ad herhangi bir şey olabileceğinden LUIS, sinyali güçlendirecek bir tümceci
 
 ## <a name="to-boost-signal-of-the-job-related-words-add-a-phrase-list-of-job-related-words"></a>Boost sinyale işle ilgili sözcük, tümcecik listesini bir kelimelerin işle ilgili Ekle
 
-Açık [işleri tümcecik list.csv](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/job-phrase-list.csv) Azure örnekleri GitHub deposundan. 1. 000'den iş sözcük ve tümcecikleri listesidir. Listede size anlamlı gelen iş sözcüklerini bulun. İstediğiniz sözcükler ve tümcecikler listede değilse ekleyin.
+Açık [işleri tümcecik list.csv](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/job-phrase-list.csv) Azure örnekleri GitHub deposundan. 1\. 000'den iş sözcük ve tümcecikleri listesidir. Listede size anlamlı gelen iş sözcüklerini bulun. İstediğiniz sözcükler ve tümcecikler listede değilse ekleyin.
 
 1. LUIS uygulamasının **Build** (Derleme) bölümünde **Improve app performance** (Uygulama performansını geliştir) kısmındaki **Phrase lists** (Tümcecik listeleri) girişini seçin.
 
 1. **Create new phrase list** (Yeni tümcecik listesi oluştur) öğesini seçin. 
 
-1. Yeni tümcecik listesine `JobNames` adını verin ve jobs-phrase-list.csv dosyasındaki listeyi kopyalayıp **Values** (Değerler) metin kutusuna yapıştırın. Enter'a basın. 
+1. Yeni tümcecik listesine `JobNames` adını verin ve jobs-phrase-list.csv dosyasındaki listeyi kopyalayıp **Values** (Değerler) metin kutusuna yapıştırın.
 
     [![Ekran görüntüsü yeni ifade listesi iletişim kutusu açılır oluşturma](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "Oluştur ekran görüntüsü yeni ifade listesi iletişim kutusu açılır")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
 
@@ -237,7 +237,7 @@ Açık [işleri tümcecik list.csv](https://github.com/Azure-Samples/cognitive-s
 
     Tutmaya dikkat **birbirinin yerine bu değerleri** iade, çünkü bu değerleri tüm işler için eş anlamlı sözcükler olarak değerlendirilmelidir. Değiştirilebilir ve noninterchangeable hakkında daha fazla bilgi [listesi kavramları ifade](luis-concept-feature.md#how-to-use-phrase-lists).
 
-1. Tümcecik listesini etkinleştirmek için **Save** (Kaydet) öğesini seçin.
+1. Seçin **Bitti** tümcecik listesini etkinleştirmek için.
 
     [![Ekran görüntüsü oluşturma yeni ifade listesi iletişim kutusu açılır sözcük, tümcecik değerler listesinde](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "Oluştur ekran görüntüsü yeni ifade listesi iletişim kutusu açılır sözcük, tümcecik değerler listesinde")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
 

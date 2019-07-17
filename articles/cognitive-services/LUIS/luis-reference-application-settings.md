@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 05/29/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: a8a1f6fe9372d013d310c557161ceb813b8a478b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 3682b9e0c38344be1522440290b46f8c10bd5607
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67163646"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275920"
 ---
 # <a name="application-settings"></a>Uygulama ayarları
 
@@ -24,8 +24,8 @@ Bu uygulama ayarlarını depolanan [dışarı](https://westus.dev.cognitive.micr
 
 |Ayar|Varsayılan değer|Notlar|
 |--|--|--|
-|NormalizePunctuation|True|Noktalama işaretleri kaldırır.|
-|NormalizeDiacritics|True|Vurgu kaldırır.|
+|NormalizePunctuation|Doğru|Noktalama işaretleri kaldırır.|
+|NormalizeDiacritics|Doğru|Vurgu kaldırır.|
 
 ## <a name="diacritics-normalization"></a>Vurgu normalleştirme 
 
@@ -48,7 +48,7 @@ Aşağıdaki konuşma Aksanları normalleştirme konuşma nasıl etkilediğini g
 
 #### <a name="brazilian-portuguese-pt-br-diacritics"></a>Portekizce (Brezilya) `pt-br` Vurgu
 
-|Vurgu false olarak ayarlayın.|Vurgu false olarak ayarlayın.|
+|Vurgu false olarak ayarlayın.|Vurgu değeri true|
 |-|-|
 |`á`|`a`|
 |`â`|`a`|
@@ -66,7 +66,7 @@ Aşağıdaki konuşma Aksanları normalleştirme konuşma nasıl etkilediğini g
 
 #### <a name="dutch-nl-nl-diacritics"></a>Felemenkçe `nl-nl` Vurgu
 
-|Vurgu false olarak ayarlayın.|Vurgu false olarak ayarlayın.|
+|Vurgu false olarak ayarlayın.|Vurgu değeri true|
 |-|-|
 |`á`|`a`|
 |`à`|`a`|
@@ -85,7 +85,7 @@ Aşağıdaki konuşma Aksanları normalleştirme konuşma nasıl etkilediğini g
 
 Bu, Fransızca ve Kanada subcultures içerir.
 
-|Vurgu false olarak ayarlayın.|Vurgu false olarak ayarlayın.|
+|Vurgu false olarak ayarlayın.|Vurgu değeri true|
 |--|--|
 |`é`|`e`|
 |`à`|`a`|
@@ -104,7 +104,7 @@ Bu, Fransızca ve Kanada subcultures içerir.
 
 #### <a name="german-de-de-diacritics"></a>Almanca `de-de` Vurgu
 
-|Vurgu false olarak ayarlayın.|Vurgu false olarak ayarlayın.|
+|Vurgu false olarak ayarlayın.|Vurgu değeri true|
 |--|--|
 |`ä`|`a`|
 |`ö`|`o`| 
@@ -112,7 +112,7 @@ Bu, Fransızca ve Kanada subcultures içerir.
 
 #### <a name="italian-it-it-diacritics"></a>İtalyanca `it-it` Vurgu
 
-|Vurgu false olarak ayarlayın.|Vurgu false olarak ayarlayın.|
+|Vurgu false olarak ayarlayın.|Vurgu değeri true|
 |--|--|
 |`à`|`a`|
 |`è`|`e`|
@@ -129,7 +129,7 @@ Bu, Fransızca ve Kanada subcultures içerir.
 
 Bu, İspanyolca ve Kanada Meksika içerir.
 
-|Vurgu false olarak ayarlayın.|Vurgu false olarak ayarlayın.|
+|Vurgu false olarak ayarlayın.|Vurgu değeri true|
 |-|-|
 |`á`|`a`|
 |`é`|`e`|

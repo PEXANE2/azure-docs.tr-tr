@@ -4,20 +4,20 @@ titlesuffix: Azure Load Balancer
 description: Bu Azure PowerShell Betik Örneğinde, yüksek oranda kullanılabilirlik için VM’lerde trafik yük dengelemesi gösterilmektedir
 services: load-balancer
 documentationcenter: load-balancer
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.devlang: powershell
 ms.topic: sample
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/20/2018
-ms.author: kumud
-ms.openlocfilehash: 70752f9726ac78ec32d0735dfefe37675ae7be29
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: 956a67897fa08fdd2c0d602ba514fcf58fabc292
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66170662"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68273530"
 ---
 # <a name="azure-powershell-script-example-load-balance-traffic-to-vms-for-high-availability"></a>Azure PowerShell Betiği örneği: Yüksek kullanılabilirlik için Vm'lere Yük Dengeleme trafiği
 
@@ -50,15 +50,15 @@ Bu betik bir kaynak grubu, sanal makine, kullanılabilirlik kümesi, yük dengel
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
 | [Yeni AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) | Bir alt ağ yapılandırması oluşturur. Bu yapılandırma, sanal ağ oluşturma işlemiyle birlikte kullanılır. |
 | [Yeni AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | Bir Azure sanal ağı ve alt ağ oluşturur. |
-| [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress)  | Statik bir IP adresi ve ilişkili bir DNS adı ile bir genel IP adresi oluşturur. |
+| [Yeni AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress)  | Statik bir IP adresi ve ilişkili bir DNS adı ile bir genel IP adresi oluşturur. |
 | [Yeni AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer)  | Azure yük dengeleyici oluşturur. |
 | [Yeni AzLoadBalancerProbeConfig](/powershell/module/az.network/new-azloadbalancerprobeconfig) | Yük dengeleyici araştırması oluşturur. Yük dengeleyici araştırması, yük dengeleyici kümesindeki her bir VM’yi izlemek için kullanılır. Herhangi bir VM erişilemez hale gelirse trafik VM’ye yönlendirilmez. |
 | [Yeni AzLoadBalancerRuleConfig](/powershell/module/az.network/new-azloadbalancerruleconfig) | Yük dengeleyici kuralı oluşturur. Bu örnekte 80 numaralı bağlantı noktası için bir kural oluşturulur. HTTP trafiği yük dengeleyiciye ulaştığında, yük dengeleyici kümesindeki VM’lerden birinin 80 numaralı bağlantı noktasına yönlendirilir. |
 | [Yeni AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig) | Bir yük dengeleyici Ağ Adresi Çevirisi (NAT) kuralı oluşturur.  NAT kuralları, bir yük dengeleyici bağlantı noktasını VM üzerindeki bir bağlantı noktasına eşler. Bu örnekte, yük dengeleyici kümesindeki her bir VM’ye giden SSH trafiği için bir NAT kuralı oluşturulur.  |
-| [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) | İnternet ile sanal makine arasında güvenlik sınırı olan bir ağ güvenlik grubu (NSG) oluşturur. |
-| [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) | Gelen trafiğe izin veren bir NSG kuralı oluşturur. Bu örnekte 22 numaralı bağlantı noktası SSH trafiğine açılır. |
+| [Yeni AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) | İnternet ile sanal makine arasında güvenlik sınırı olan bir ağ güvenlik grubu (NSG) oluşturur. |
+| [Yeni AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) | Gelen trafiğe izin veren bir NSG kuralı oluşturur. Bu örnekte 22 numaralı bağlantı noktası SSH trafiğine açılır. |
 | [Yeni AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) | Sanal makine kartı oluşturur ve sanal ağa, alt ağa ve NSG’ye bağlar. |
-| [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) | Bir kullanılabilirlik kümesi oluşturur. Kullanılabilirlik kümeleri, hata oluşması durumunda tüm kümenin etkilenmemesi için sanal makineleri fiziksel kaynaklara yayarak uygulama çalışma süresi sağlar. |
+| [Yeni AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) | Bir kullanılabilirlik kümesi oluşturur. Kullanılabilirlik kümeleri, hata oluşması durumunda tüm kümenin etkilenmemesi için sanal makineleri fiziksel kaynaklara yayarak uygulama çalışma süresi sağlar. |
 | [Yeni AzVMConfig](/powershell/module/az.compute/new-azvmconfig) | Sanal makine yapılandırması oluşturur. Bu yapılandırma; sanal makine adı, işletim sistemi ve yönetici kimlik bilgileri gibi bilgileri içerir. Yapılandırma, sanal makine oluşturulurken kullanılır. |
 | [New-AzVM](/powershell/module/az.compute/new-azvm)  | Sanal makine oluşturur ve ağ kartına, sanal ağa, alt ağa ve NSG’ye bağlar. Bu komut ayrıca kullanılacak sanal makine görüntüsünü ve yönetici kimlik bilgilerini belirtir.  |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |

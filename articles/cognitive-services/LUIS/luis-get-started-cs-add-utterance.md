@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 04/08/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: e9f8d274d81cdefbf9dfb41708cd537b2d60471a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 01fd5b06a2e534a85c88d5c1a706713f07f40106
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60710394"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277558"
 ---
 # <a name="quickstart-change-model-using-c"></a>Hızlı Başlangıç: Modeli kullanarak değiştirinC#
 
@@ -51,7 +51,7 @@ Visual Studio projesinde **System.Web** gerekir. Çözüm Gezgini'nde sağ **ba�
 
 Visual Studio projesi için **JsonFormatterPlus** ve **CommandLineParser** gerekir. Çözüm Gezgini'nde **Başvurular**'a sağ tıklayın ve **NuGet Paketlerini Yönet...** öğesini seçin. Göz atın ve her iki paketlerin bir bölümünü ekleyin. 
 
-![3. taraf bağımlılıkları ekleme](./media/luis-quickstart-cs-add-utterance/add-dependencies.png)
+![3\. taraf bağımlılıkları ekleme](./media/luis-quickstart-cs-add-utterance/add-dependencies.png)
 
 
 ### <a name="write-the-c-code"></a>C# kodunu yazma

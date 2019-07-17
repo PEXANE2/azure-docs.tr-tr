@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 07/16/2019
 ms.author: erhopf
-ms.openlocfilehash: 121e94228ca85684b20f2ee43c0f7fa3af82fc73
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: cb30b476471e140f96fa1d159e9a16898f529607
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606327"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277484"
 ---
 # <a name="speech-devices-sdk-microphone-array-recommendations"></a>Konuşma cihaz SDK'sı mikrofon dizi önerileri
 
@@ -43,34 +43,34 @@ Mikrofon seçerken önerilen özellikler şunlardır:
 
 | Parametre                         | Önerilen                       |
 |-----------------------------------|-----------------------------------|
-| SNR                               | \> 65 dB (1 kHz sinyal 94 dBSPL, A ağırlıklı etkisiz)   |
-| Genliğe eşleştirme                | ± 1 dB @ 1 kHz                     |
+| SNR                               | \>= (1 kHz sinyal 94 dBSPL, A ağırlıklı gürültü) 65 dB   |
+| Genliğe eşleştirme                | ± 1 kHz @ 1 dB                     |
 | Eşleştirme aşaması                    | 1 kHz @ 2° ±                       |
-| Akustik aşırı yükleme noktası (AOP)     | \> 120 dBSPL (Bu = % 10)          |
+| Akustik aşırı yükleme noktası (AOP)     | \>= 120 dBSPL (Bu = % 10)          |
 | Bit hızı                          | En az 24-bit                    |
-| Örnekleme Oranı                     | Minimum 16 kHz\*                   |
-| Directivity                       | Mikrofonsa                   |
+| Örnekleme Oranı                     | En az 16 kHz\*                   |
 | Sıklık yanıt                | ± 3 dB, 200-8000 Hz kayan maskesi\*|
 | Güvenilirlik                       | Depolama sıcaklık aralığının-40 ° C-70 ° C<br />İşletim sıcaklık aralığının 55 ° C-20 ° C  |
 
-*\*Daha yüksek bir örnekleme oranı ya da "geniş" sıklığı aralıkları yüksek kaliteli iletişim (VoIP) uygulamaları için gerekli olabilir*
+*\* Daha yüksek bir örnekleme oranı ya da "geniş" sıklığı aralıkları yüksek kaliteli iletişim (VoIP) uygulamaları için gerekli olabilir*
 
 İyi Bileşen Seçimi kullanılan bileşenlerinin performansı impairing önlemek için iyi electroacoustic Tümleştirmesi ile eşleştirilmelidir. Benzersiz kullanım örnekleri ek gereksinimleri de başlatılmalarını (örneğin: sıcaklık aralıkları işletim).
 
 ## <a name="microphone-array-integration"></a>Mikrofon dizi tümleştirme
 
-Bir cihazı ve sonra herhangi bir sabit kazanç veya EQ tümleştirildiğinde dizilerin performans aşağıdaki önerileri karşılamalıdır:
+Bir cihazda oturum tümleştirildiğinde mikrofon dizi performansını bileşen belirtiminden farklılık gösterir. Mikrofon tümleştirmesinden sonra iyi eşleştirilir sağlamak önemlidir. Bu nedenle cihaz performansı, tüm sabit elde edin veya aşağıdaki önerileri EQ karşılaması gerektiğini sonra ölçülen:
 
 |  Parametre        |    Önerilen |
 |--------------------|----------------------------------------------------|
-|  SNR                 | \> 65 dB (1 kHz sinyal 94 dBSPL, A ağırlıklı etkisiz) |
+|  SNR                 | \> 63 dB (1 kHz sinyal 94 dBSPL, A ağırlıklı etkisiz) |
 |  Çıkış duyarlılık  | -26 dBFS/Pa 1 (önerilen) kHz @ |
 |  Genliğe eşleştirme  | ± 2 dB, 200-8000 Hz |
-|  Eşleştirme aşaması      | ± 5° 200-8000 Hz |
-| BU %                 | ≤ %1, 200-8000 Hz, 94 dBSPL, 5 sırası |
-|  Sıklık yanıt  | ± 6 dB, 200-8000 Hz kayan maskesi\* |
+| BU %\*                 | ≤ %1, 200-8000 Hz, 94 dBSPL, 5 sırası |
+|  Sıklık yanıt  | ± 6 dB, 200-8000 Hz kayan maskesi\*\* |
 
-*\*"Geniş" sıklığı aralıkları yüksek kaliteli iletişim (VoIP) uygulamaları için gerekli olabilir*
+*\*\* Düşük bozulma Konuşmacı bu (örneğin Neumann KH120) ölçmek için gereklidir*
+
+*\*\* "Geniş" sıklığı aralıkları yüksek kaliteli iletişim (VoIP) uygulamaları için gerekli olabilir*
 
 ## <a name="speaker-integration-recommendations"></a>Konuşmacı tümleştirme önerileri
 

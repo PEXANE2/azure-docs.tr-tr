@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: Bu öğreticide, bir Azure sanal ağındaki Vm'leri bağlantılar oluşturmak için Azure Load Balancer'ı kullanarak bağlantı noktası iletme yapılandırma işlemi gösterilmektedir.
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 Customer intent: As an IT administrator, I want to configure port forwarding in Azure Load Balancer to remotely connect to VMs in an Azure virtual network.
 ms.service: load-balancer
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
-ms.author: kumud
+ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: db94f1d241223a9c54a6e3d516840dd17fd0c576
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ee4ed818364d04f03caedc8b876ea29c41cb59b7
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61322649"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68273442"
 ---
 # <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>Öğretici: Portalı kullanarak Azure yük Dengeleyicide bağlantı noktası iletme'yi yapılandırma
 
@@ -47,17 +47,17 @@ Bu öğreticideki tüm adımları için Azure portalında oturum açın [ https:
 1. Ekranın sol üst kısmında **Kaynak oluştur** > **Ağ** > **Yük Dengeleyici**'ye tıklayın.
 2. İçinde **Temelleri** sekmesinde **yük dengeleyici Oluştur** sayfasında, girin veya aşağıdaki bilgileri seçin, geri kalan ayarlar için varsayılan değerleri kabul edin ve ardından **gözden geçir +Oluştur**:
 
-    | Ayar                 | Değer                                              |
+    | Ayar                 | Value                                              |
     | ---                     | ---                                                |
-    | Abonelik               | Aboneliğinizi seçin.    |    
-    | Kaynak grubu         | Seçin **Yeni Oluştur** ve türü *MyResourceGroupLB* metin kutusuna.|
+    | Subscription               | Aboneliğinizi seçin.    |    
+    | Resource group         | Seçin **Yeni Oluştur** ve türü *MyResourceGroupLB* metin kutusuna.|
     | Ad                   | *myLoadBalancer*                                   |
     | Bölge         | **Batı Avrupa**'yı seçin.                                        |
-    | Tür          | Seçin **genel**.                                        |
+    | Type          | Seçin **genel**.                                        |
     | SKU           | Seçin **standart**.                          |
     | Genel IP adresi | **Yeni oluştur**’u seçin. |
-    | Ortak IP adresi adı              | Tür *Mypublicıp* metin kutusuna.   |
-    |Kullanılabilirlik bölgesi| Seçin **bölgesel olarak yedekli**.    |
+    | Genel IP adresi adı              | Tür *Mypublicıp* metin kutusuna.   |
+    |Kullanılabilirlik alanı| Seçin **bölgesel olarak yedekli**.    |
      
     >[!NOTE]
      >Load Balancer'ınız ve tüm kaynaklar için kullanılabilirlik alanlarını destekleyen bir konumda oluşturduğunuzdan emin olun. Daha fazla bilgi için [kullanılabilirlik alanlarını destekleyen bölgeler](../availability-zones/az-overview.md#services-support-by-region). 

@@ -8,14 +8,14 @@ manager: daauld
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 03/21/2019
+ms.date: 07/15/2019
 ms.author: areddish
-ms.openlocfilehash: 94eacf6815a3fc0b65aa03d5620f19e783139a5e
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: f2b43349b1060739b44ab34f463300dd62569252
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593042"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68276468"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-go-sdk"></a>Hızlı Başlangıç: Özel görüntü işleme Go SDK'sı ile bir görüntü sınıflandırma projesi oluşturma
 
@@ -29,12 +29,12 @@ Bu makalede, bilgi ve yardımcı olması için örnek kod, bir görüntü sını
 
 Go için özel görüntü işleme hizmeti SDK'sını yüklemek için PowerShell'de aşağıdaki komutu çalıştırın:
 
-```
+```shell
 go get -u github.com/Azure/azure-sdk-for-go/...
 ```
 
-veya deponuzu içinde çalıştırmak, dep kullanıyorsanız:
-```
+veya kullanıyorsanız `dep`, içinde deponuzu çalıştırın:
+```shell
 dep ensure -add github.com/Azure/azure-sdk-for-go
 ```
 
@@ -91,9 +91,9 @@ func main() {
 Projenize sınıflandırma etiketleri oluşturmak için sonuna aşağıdaki kodu ekleyin *sqlserversample*:
 
 ```go
-    // Make two tags in the new project
-    hemlockTag, _ := trainer.CreateTag(ctx, *project.ID, "Hemlock", "Hemlock tree tag", string(training.Regular))
-    cherryTag, _ := trainer.CreateTag(ctx, *project.ID, "Japanese Cherry", "Japanese cherry tree tag", string(training.Regular))
+// Make two tags in the new project
+hemlockTag, _ := trainer.CreateTag(ctx, *project.ID, "Hemlock", "Hemlock tree tag", string(training.Regular))
+cherryTag, _ := trainer.CreateTag(ctx, *project.ID, "Japanese Cherry", "Japanese cherry tree tag", string(training.Regular))
 ```
 
 ### <a name="upload-and-tag-images"></a>Görüntüleri karşıya yükleme ve etiketleme
@@ -104,29 +104,29 @@ Projeye örnek görüntüleri eklemek için etiket oluşturduktan sonra aşağı
 > Bilişsel hizmetler Go SDK örnekleri proje daha önce indirdiğiniz üzerinde temel görüntülerin yolunu değiştirmeniz gerekir.
 
 ```go
-    fmt.Println("Adding images...")
-    japaneseCherryImages, err := ioutil.ReadDir(path.Join(sampleDataDirectory, "Japanese Cherry"))
-    if err != nil {
-        fmt.Println("Error finding Sample images")
-    }
+fmt.Println("Adding images...")
+japaneseCherryImages, err := ioutil.ReadDir(path.Join(sampleDataDirectory, "Japanese Cherry"))
+if err != nil {
+    fmt.Println("Error finding Sample images")
+}
 
-    hemLockImages, err := ioutil.ReadDir(path.Join(sampleDataDirectory, "Hemlock"))
-    if err != nil {
-        fmt.Println("Error finding Sample images")
-    }
+hemLockImages, err := ioutil.ReadDir(path.Join(sampleDataDirectory, "Hemlock"))
+if err != nil {
+    fmt.Println("Error finding Sample images")
+}
 
-    for _, file := range hemLockImages {
-        imageFile, _ := ioutil.ReadFile(path.Join(sampleDataDirectory, "Hemlock", file.Name()))
-        imageData := ioutil.NopCloser(bytes.NewReader(imageFile))
+for _, file := range hemLockImages {
+    imageFile, _ := ioutil.ReadFile(path.Join(sampleDataDirectory, "Hemlock", file.Name()))
+    imageData := ioutil.NopCloser(bytes.NewReader(imageFile))
 
-        trainer.CreateImagesFromData(ctx, *project.ID, imageData, []string{ hemlockTag.ID.String() })
-    }
+    trainer.CreateImagesFromData(ctx, *project.ID, imageData, []string{ hemlockTag.ID.String() })
+}
 
-    for _, file := range japaneseCherryImages {
-        imageFile, _ := ioutil.ReadFile(path.Join(sampleDataDirectory, "Japanese Cherry", file.Name()))
-        imageData := ioutil.NopCloser(bytes.NewReader(imageFile))
-        trainer.CreateImagesFromData(ctx, *project.ID, imageData, []string{ cherryTag.ID.String() })
-    }
+for _, file := range japaneseCherryImages {
+    imageFile, _ := ioutil.ReadFile(path.Join(sampleDataDirectory, "Japanese Cherry", file.Name()))
+    imageData := ioutil.NopCloser(bytes.NewReader(imageFile))
+    trainer.CreateImagesFromData(ctx, *project.ID, imageData, []string{ cherryTag.ID.String() })
+}
 ```
 
 ### <a name="train-the-classifier-and-publish"></a>Sınıflandırıcı eğitin ve yayımlayın
@@ -134,19 +134,19 @@ Projeye örnek görüntüleri eklemek için etiket oluşturduktan sonra aşağı
 Bu kod, ilk yineleme projede oluşturur ve ardından bu yineleme tahmin uç noktaya yayımlar. Yayımlanmış bir yineleme için verilen ad, tahmin istekleri göndermek için kullanılabilir. Yineleme yayımlanmadan tahmin uç noktasında kullanılabilir değil.
 
 ```go
-    fmt.Println("Training...")
-    iteration, _ := trainer.TrainProject(ctx, *project.ID)
-    for {
-        if *iteration.Status != "Training" {
-            break
-        }
-        fmt.Println("Training status: " + *iteration.Status)
-        time.Sleep(1 * time.Second)
-        iteration, _ = trainer.GetIteration(ctx, *project.ID, *iteration.ID)
+fmt.Println("Training...")
+iteration, _ := trainer.TrainProject(ctx, *project.ID)
+for {
+    if *iteration.Status != "Training" {
+        break
     }
     fmt.Println("Training status: " + *iteration.Status)
+    time.Sleep(1 * time.Second)
+    iteration, _ = trainer.GetIteration(ctx, *project.ID, *iteration.ID)
+}
+fmt.Println("Training status: " + *iteration.Status)
 
-    trainer.PublishIteration(ctx, *project.ID, *iteration.ID, iteration_publish_name, prediction_resource_id))
+trainer.PublishIteration(ctx, *project.ID, *iteration.ID, iteration_publish_name, prediction_resource_id))
 ```
 
 ### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Edinin ve öngörü uç noktasında yayımlanan yineleme kullanın
@@ -171,13 +171,13 @@ Tahmin uç noktasına bir görüntü göndermek ve tahmini almak için dosyanın
 
 Çalıştırma *sqlserversample*.
 
-```powershell
+```shell
 go run sample.go
 ```
 
 Uygulamanın çıkışı aşağıdaki metne benzer olmalıdır:
 
-```
+```console
 Creating project...
 Adding images...
 Training...

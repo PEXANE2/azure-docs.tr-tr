@@ -8,14 +8,14 @@ manager: daauld
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 03/21/2019
+ms.date: 07/15/2019
 ms.author: areddish
-ms.openlocfilehash: 92bcb7f81082c1a5a66efa2fa06a6922a79905d0
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.openlocfilehash: 92713fe16e482a3ed65b9593581749270b67a487
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827525"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277599"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-nodejs-sdk"></a>Hızlı Başlangıç: Özel görüntü işleme Node.js SDK'sı ile bir görüntü sınıflandırma projesi oluşturma
 
@@ -30,7 +30,7 @@ Bu makalede, bilgi ve yardımcı olması için örnek kod, bir görüntü sını
 
 Node.js için özel görüntü işleme hizmeti SDK'sını yüklemek için PowerShell'de aşağıdaki komutu çalıştırın:
 
-```powershell
+```shell
 npm install @azure/cognitiveservices-customvision-training
 npm install @azure/cognitiveservices-customvision-prediction
 ```
@@ -76,8 +76,8 @@ const trainer = new TrainingApiClient(trainingKey, endPoint);
 Projenize sınıflandırma etiketleri oluşturmak için sonuna aşağıdaki kodu ekleyin *sample.js*:
 
 ```javascript
-    const hemlockTag = await trainer.createTag(sampleProject.id, "Hemlock");
-    const cherryTag = await trainer.createTag(sampleProject.id, "Japanese Cherry");
+const hemlockTag = await trainer.createTag(sampleProject.id, "Hemlock");
+const cherryTag = await trainer.createTag(sampleProject.id, "Japanese Cherry");
 ```
 
 ### <a name="upload-and-tag-images"></a>Görüntüleri karşıya yükleme ve etiketleme
@@ -88,22 +88,22 @@ Projeye örnek görüntüleri eklemek için etiket oluşturduktan sonra aşağı
 > Değiştirmeniz gerekir *sampleDataRoot* Bilişsel Hizmetleri Node.js SDK'sı örnekleri indirdiğiniz üzerinde temel görüntü için daha önce proje.
 
 ```javascript
-    console.log("Adding images...");
-    let fileUploadPromises = [];
+console.log("Adding images...");
+let fileUploadPromises = [];
 
-    const hemlockDir = `${sampleDataRoot}/Hemlock`;
-    const hemlockFiles = fs.readdirSync(hemlockDir);
-    hemlockFiles.forEach(file => {
-        fileUploadPromises.push(trainer.createImagesFromData(sampleProject.id, fs.readFileSync(`${hemlockDir}/${file}`), { tagIds: [hemlockTag.id] }));
-    });
+const hemlockDir = `${sampleDataRoot}/Hemlock`;
+const hemlockFiles = fs.readdirSync(hemlockDir);
+hemlockFiles.forEach(file => {
+    fileUploadPromises.push(trainer.createImagesFromData(sampleProject.id, fs.readFileSync(`${hemlockDir}/${file}`), { tagIds: [hemlockTag.id] }));
+});
 
-    const cherryDir = `${sampleDataRoot}/Japanese Cherry`;
-    const japaneseCherryFiles = fs.readdirSync(cherryDir);
-    japaneseCherryFiles.forEach(file => {
-        fileUploadPromises.push(trainer.createImagesFromData(sampleProject.id, fs.readFileSync(`${cherryDir}/${file}`), { tagIds: [cherryTag.id] }));
-    });
+const cherryDir = `${sampleDataRoot}/Japanese Cherry`;
+const japaneseCherryFiles = fs.readdirSync(cherryDir);
+japaneseCherryFiles.forEach(file => {
+    fileUploadPromises.push(trainer.createImagesFromData(sampleProject.id, fs.readFileSync(`${cherryDir}/${file}`), { tagIds: [cherryTag.id] }));
+});
 
-    await Promise.all(fileUploadPromises);
+await Promise.all(fileUploadPromises);
 ```
 
 ### <a name="train-the-classifier-and-publish"></a>Sınıflandırıcı eğitin ve yayımlayın
@@ -111,20 +111,20 @@ Projeye örnek görüntüleri eklemek için etiket oluşturduktan sonra aşağı
 Bu kod, ilk yineleme projede oluşturur ve ardından bu yineleme tahmin uç noktaya yayımlar. Yayımlanmış bir yineleme için verilen ad, tahmin istekleri göndermek için kullanılabilir. Yineleme yayımlanmadan tahmin uç noktasında kullanılabilir değil.
 
 ```javascript
-    console.log("Training...");
-    let trainingIteration = await trainer.trainProject(sampleProject.id);
+console.log("Training...");
+let trainingIteration = await trainer.trainProject(sampleProject.id);
 
-    // Wait for training to complete
-    console.log("Training started...");
-    while (trainingIteration.status == "Training") {
-        console.log("Training status: " + trainingIteration.status);
-        await setTimeoutPromise(1000, null);
-        trainingIteration = await trainer.getIteration(sampleProject.id, trainingIteration.id)
-    }
+// Wait for training to complete
+console.log("Training started...");
+while (trainingIteration.status == "Training") {
     console.log("Training status: " + trainingIteration.status);
-    
-    // Publish the iteration to the end point
-    await trainer.publishIteration(sampleProject.id, trainingIteration.id, publishIterationName, predictionResourceId);
+    await setTimeoutPromise(1000, null);
+    trainingIteration = await trainer.getIteration(sampleProject.id, trainingIteration.id)
+}
+console.log("Training status: " + trainingIteration.status);
+
+// Publish the iteration to the end point
+await trainer.publishIteration(sampleProject.id, trainingIteration.id, publishIterationName, predictionResourceId);
 ```
 
 ### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Edinin ve öngörü uç noktasında yayımlanan yineleme kullanın
@@ -149,13 +149,13 @@ Tahmin uç noktasına bir görüntü göndermek ve tahmini almak için dosyanın
 
 Çalıştırma *sample.js*.
 
-```powershell
+```shell
 node sample.js
 ```
 
 Uygulamanın çıkışı aşağıdaki metne benzer olmalıdır:
 
-```
+```console
 Creating project...
 Adding images...
 Training...

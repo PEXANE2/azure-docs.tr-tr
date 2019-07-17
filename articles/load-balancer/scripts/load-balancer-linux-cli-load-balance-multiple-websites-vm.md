@@ -3,7 +3,7 @@ title: CLI Örneği - Azure CLI ile birden çok web sitesinin yük dengelemesi |
 description: Bu Azure CLI betiği örneğinde, aynı sanal makinede birden fazla web sitesi için yük dengeleme gösterilmektedir
 services: load-balancer
 documentationcenter: load-balancer
-author: KumudD
+author: asudbring
 manager: jeconnoc
 editor: tysonn
 tags: ''
@@ -14,13 +14,13 @@ ms.topic: sample
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/20/2018
-ms.author: kumud
-ms.openlocfilehash: 41f8a403694eec897ba4a6eb147ab71757d5caa5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: 63897da887230da74aaaddc464549e9c06ed9543
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60605598"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68273878"
 ---
 # <a name="azure-cli-script-example-load-balance-multiple-websites"></a>Azure CLI betik örneği: Yük Dengeleme, birden fazla Web sitesi
 

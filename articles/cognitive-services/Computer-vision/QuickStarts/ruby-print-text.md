@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 03/11/2019
+ms.date: 07/15/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 71fc32fb34ae67f6d3a4de556da8b107574cc920
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 7c9385078b1f9b42847cf627cf49ac16158d6b52
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603519"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68276424"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-ruby"></a>Hızlı Başlangıç: Görüntü işleme REST API'si ile Ruby yazdırılan metin (OCR) ayıklayın
 
@@ -34,13 +34,13 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 Örneği oluşturup çalıştırmak için aşağıdaki adımları uygulayın:
 
 1. Aşağıdaki kodu bir metin düzenleyicisine kopyalayın.
-1. Gerektiğinde kodda aşağıdaki değişiklikleri yapın:
+1. Kodu aşağıdaki değişiklikleri yapın:
     1. `<Subscription Key>` değerini abonelik anahtarınızla değiştirin.
     1. Gerekirse `https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/ocr` değerini, abonelik anahtarlarınızı aldığınız Azure bölgesindeki [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) yönteminin uç nokta URL’si ile değiştirin.
     1. İsteğe bağlı olarak, `https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Atomist_quote_from_Democritus.png/338px-Atomist_quote_from_Democritus.png\` değerini, içinden yazdırılan metni ayıklamak istediğiniz başka bir görüntünün URL’si ile değiştirin.
-1. Kodu, `.rb` uzantısıyla bir dosya olarak kaydedin. Örneğin, `get-printed-text.rb`.
+1. Kodu, `.rb` uzantısıyla bir dosya olarak kaydedin. Örneğin: `get-printed-text.rb`.
 1. Bir komut istemi penceresi açın.
-1. İstemde, örneği çalıştırmak için `ruby` komutunu kullanın. Örneğin, `ruby get-printed-text.rb`.
+1. İstemde, örneği çalıştırmak için `ruby` komutunu kullanın. Örneğin: `ruby get-printed-text.rb`.
 
 ```ruby
 require 'net/http'

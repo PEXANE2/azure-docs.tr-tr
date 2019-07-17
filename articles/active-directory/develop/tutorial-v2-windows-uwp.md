@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/11/2019
+ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42b7e59e39adbb485738ca66b7ad8e5ba8293ddc
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: ff2089e8abdde8e6a99de1be2be070fb457fa632
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65784988"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68276635"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Microsoft Graph API'sini çağırmak bir evrensel Windows platformu uygulaması (XAML)
 
@@ -60,7 +60,7 @@ Bu kılavuz, Graph API'si sorguları ve oturum kapatma düğmesi çağrıların�
 ### <a name="create-your-application"></a>Uygulamanızı oluşturma
 
 1. Visual Studio'da **dosya** > **yeni** > **proje**.
-2. Altında **şablonları**seçin **Visual C#**.
+2. Altında **şablonları**seçin **Visual C#** .
 3. **Boş Uygulama (Evrensel Windows)** seçeneğini belirleyin.
 4. Uygulama adını ve seçin **Tamam**.
 5. İstenirse, herhangi bir sürümünü seçin **hedef** ve **Minimum** sürümleri ve select **Tamam**.
@@ -147,7 +147,7 @@ Bu bölümde, Microsoft Graph API için bir belirteç almak için MSAL kullanmay
         }
 
         /// <summary>
-        /// Call AcquireTokenAsync - to acquire a token requiring user to sign-in
+        /// Call AcquireTokenInteractive - to acquire a token requiring user to sign-in
         /// </summary>
         private async void CallGraphButton_Click(object sender, RoutedEventArgs e)
         {
@@ -320,7 +320,7 @@ Bu örnek uygulamasında tek bir kullanıcı destekler. Ancak MSAL burada birden
 
 Kimlik belirteçlerini alınan aracılığıyla **Openıd Connect** kullanıcıya testlerinizle ilgili olabilecek bilgilere küçük bir kısmı da içerir. `DisplayBasicTokenInfo` belirteçteki temel bilgileri görüntüler. Kullanıcının görünen adı ve kimliği, sona erme tarihi belirteç ve erişim belirteci temsil eden dize verilebilir. Seçerseniz **Microsoft Graph API çağrısı** düğmesine birkaç kez, sonraki istekler için aynı belirteci yeniden olduğunu görürsünüz. Belirteci yenileme zamanı MSAL karar verdiğinde genişletilmiş sona erme tarihini de görebilirsiniz.
 
-## <a name="register-your-application"></a>Uygulamanızı kaydedin
+## <a name="register-your-application"></a>Uygulamanızı kaydetme
 
 Şimdi Microsoft uygulama kayıt Portalı'nda uygulamanızı kaydetmeniz gerekir:
 
@@ -334,7 +334,7 @@ Kimlik belirteçlerini alınan aracılığıyla **Openıd Connect** kullanıcıy
 1. Uygulamasında **genel bakış** sayfasında, bulmak **uygulama (istemci) kimliği** değeri ve daha sonra kullanmak üzere kaydedin. Visual Studio, açık dönün **MainPage.xaml.cs**, ClientID değerini yalnızca kayıtlı uygulama Kimliğiyle değiştirin:
 1. Uygulama sayfa listesinde **Kimlik doğrulaması**'nı seçin.
    1. İçinde **yeniden yönlendirme URI'leri** bölümünde yeniden yönlendirme URI'leri listesi:
-   1. İçinde **türü** Sütun Seç **genel istemci (Mobil ve Masaüstü)**.
+   1. İçinde **türü** Sütun Seç **genel istemci (Mobil ve Masaüstü)** .
    1. Girin `urn:ietf:wg:oauth:2.0:oob` içinde **yeniden yönlendirme URI'si** sütun.
 1. **Kaydet**’i seçin.
 1. Uygulama sayfaları listesinde seçin **API izinleri**
@@ -368,7 +368,7 @@ Test için hazır olduğunuzda **Microsoft Graph API çağrısı**. Daha sonra o
 
 ![Oturum açma sayfası](./media/tutorial-v2-windows-uwp/sign-in-page.png)
 
-### <a name="consent"></a>Onayla
+### <a name="consent"></a>Onayı
 
 İlk uygulamanızı, oturum açtığınızda aşağıdakine benzer bir onay ekranında eklemediğiniz. Seçin **Evet** açıkça onay verme erişmek için:
 
@@ -382,10 +382,10 @@ Test için hazır olduğunuzda **Microsoft Graph API çağrısı**. Daha sonra o
 
 Aracılığıyla edinilen belirteci hakkında temel bilgileri de görebilirsiniz `AcquireTokenInteractive` veya `AcquireTokenSilent` içinde **belirteci bilgilerini** kutusunda:
 
-|Özellik  |Biçim  |Açıklama |
+|Özellik  |Biçimi  |Açıklama |
 |---------|---------|---------|
 |**Kullanıcı Adı** |<span>user@domain.com</span> |Kullanıcıyı tanımlayan kullanıcı adı.|
-|**Belirteç süre sonu** |DateTime |Belirtecin süresinin sona erdiği zaman. MSAL, gerekirse belirteci yenilemeye tarafından sona erme tarihini genişleten.|
+|**Belirteç süre sonu** |Datetime |Belirtecin süresinin sona erdiği zaman. MSAL, gerekirse belirteci yenilemeye tarafından sona erme tarihini genişleten.|
 
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>Kapsamlar ve temsilci izinleri hakkında daha fazla bilgi
 
