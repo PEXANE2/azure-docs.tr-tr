@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec333ccff0a79f0f0c1d070785768b7abb36bfac
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: ed5370fda9be2573f773bd2fe653feb74defeb7d
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68228922"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68248854"
 ---
 # <a name="tutorial-integrate-hyperanna-with-azure-active-directory"></a>Öğretici: HyperAnna Azure Active Directory ile tümleştirme
 
@@ -88,7 +88,7 @@ Azure portalında Azure AD SSO'yu etkinleştirmek üzere aşağıdaki adımları
     | |
     |--|
     | `https://microsoft.hyperanna.com/userservice/auth/saml` |
-    |` https://anna.hyperanna.com/userservice/auth/saml` |
+    | `https://anna.hyperanna.com/userservice/auth/saml` |
 
 1. Tıklayın **ek URL'lerini ayarlayın** ve uygulamada yapılandırmak istiyorsanız, aşağıdaki adımı uygulayın **SP** başlatılan modu:
 
@@ -152,9 +152,9 @@ Erişim paneli HyperAnna kutucuğa tıkladığınızda, size otomatik olarak SSO
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [ SaaS uygulamaları Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamaları Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Uygulama erişimi ve Azure Active Directory ile çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

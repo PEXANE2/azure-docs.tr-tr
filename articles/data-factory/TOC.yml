@@ -564,6 +564,8 @@
           href: solution-template-copy-files-multiple-containers.md
         - name: LastModifiedDate parametresine göre yeni dosyaları kopyalama
           href: solution-template-copy-new-files-lastmodifieddate.md
+        - name: Dosyaları taşıma
+          href: solution-template-move-files.md
         - name: Denetim tablosuyla toplu kopyalama
           href: solution-template-bulk-copy-with-control-table.md
         - name: Denetim tablosuyla delta kopyalama
@@ -574,6 +576,8 @@
       items:
         - name: Etkinlik sorun giderme
           href: data-factory-troubleshoot-guide.md
+        - name: Azure-SSIS IR Yönetimi Sorunlarını Giderme
+          href: ssis-integration-runtime-management-troubleshoot.md
         - name: Azure-SSIS IR’de Paket Yürütme Sorunlarını Giderme
           href: ssis-integration-runtime-ssis-activity-faq.md
 - name: Başvuru

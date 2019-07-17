@@ -54,8 +54,16 @@
   items:
     - name: Azure Resource Manager
       href: ../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-    - name: Bölgeler ve kullanılabilirlik
-      href: regions-and-availability.md
+    - name: Bölgeler
+      href: regions.md
+    - name: Kullanılabilirlik ve performans
+      items:
+        - name: Kullanılabilirlik
+          href: availability.md
+        - name: Birlikte bulunma
+          href: co-location.md
+        - name: Ağ performansı
+          href: ../..//virtual-network/virtual-network-optimize-network-bandwidth.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
     - name: VM türleri ve boyutları
       href: sizes.md
       items:
@@ -299,6 +307,8 @@
           href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
         - name: Yüksek kullanılabilirlik
           href: manage-availability.md
+        - name: Yakınlık yerleştirme grubu oluşturma
+          href: proximity-placement-groups.md
         - name: Dikey olarak ölçeklendirme
           href: vertical-scaling-automation.md
         - name: Kullanılabilirlik alanında VM oluşturma

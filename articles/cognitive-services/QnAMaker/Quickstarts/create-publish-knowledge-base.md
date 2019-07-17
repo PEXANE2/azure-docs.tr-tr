@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 05/10/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 609d71898d8db027f1cfee9e1b73039367ec94f4
-ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
+ms.openlocfilehash: 03ce1047dd175ae4a676fa1461632a8e23122a8d
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66693365"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249724"
 ---
 # <a name="create-train-and-publish-your-qna-maker-knowledge-base"></a>Soru-Cevap Oluşturma bilgi bankanızı oluşturma, eğitme ve yayımlama
 
@@ -36,17 +36,17 @@ SSS sayfaları veya ürün kılavuzları gibi sahip olduğunuz içerikleri kulla
 
 1. **Create** (Oluştur) sayfasındaki 1. adımda **Create a QnA service** (Soru-Cevap hizmeti oluştur) öğesini seçin. Aboneliğinizde bir Soru-Cevap Oluşturma hizmeti ayarlamak için [Azure portala](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) yönlendirilirsiniz. Azure portal zaman aşımına uğrarsa sitede **Try again** (Yeniden deneyin) öğesini seçin. Bağlantı kurulduktan sonra Azure panonuz görünür.
 
-1. Azure'da yeni bir Soru-Cevap Oluşturma hizmetini başarıyla oluşturduktan sonra qnamaker.ai/create sayfasına geri dönün. 2. adımda aşağı açılan listelerden soru-cevap Oluşturucu hizmetinizi seçin. Yeni bir soru-cevap Oluşturucu hizmeti oluşturduysanız, sayfayı yenileyin emin olun.
+1. Azure'da yeni bir Soru-Cevap Oluşturma hizmetini başarıyla oluşturduktan sonra qnamaker.ai/create sayfasına geri dönün. 2\. adımda aşağı açılan listelerden soru-cevap Oluşturucu hizmetinizi seçin. Yeni bir soru-cevap Oluşturucu hizmeti oluşturduysanız, sayfayı yenileyin emin olun.
 
    ![Soru-cevap Oluşturucu hizmeti Bankası seçme işleminin ekran görüntüsü](../media/qnamaker-quickstart-kb/qnaservice-selection.png)
 
-1. 3. adımda bilgi bankanızı ad **My örnek soru-cevap KB**.
+1. 3\. adımda bilgi bankanızı ad **My örnek soru-cevap KB**.
 
-1. Bilgi Bankası'na içerik eklemek için üç türde veri kaynaklarını seçin. 4. adımdaki **Populate your KB** (KB'nizi doldurun) bölümünde **URL** kutusuna [BitLocker Kurtarma Hakkında SSS](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview-and-requirements-faq) sayfasının URL'sini girin.
+1. Bilgi Bankası'na içerik eklemek için üç türde veri kaynaklarını seçin. 4\. adımdaki **Populate your KB** (KB'nizi doldurun) bölümünde **URL** kutusuna [BitLocker Kurtarma Hakkında SSS](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview-and-requirements-faq) sayfasının URL'sini girin.
 
    ![Veri kaynaklarını ekleme işleminin ekran görüntüsü](../media/qnamaker-quickstart-kb/add-datasources.png)
 
-1. 5. adımda **Create your KB** (KB'nizi oluşturun) öğesini seçin.
+1. 5\. adımda **Create your KB** (KB'nizi oluşturun) öğesini seçin.
 
 1. Soru-cevap Oluşturucu Bilgi Bankası oluştururken bir açılır pencere görüntülenir. Ayıklama işleminin HTML sayfasını okuyup soruları ve yanıtları tanımlaması birkaç dakika sürer.
 

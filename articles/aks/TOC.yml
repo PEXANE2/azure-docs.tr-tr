@@ -126,6 +126,8 @@
           href: virtual-kubelet.md
         - name: Küme Otomatik Ölçeklendiricisi kullanma (önizleme)
           href: cluster-autoscaler.md
+        - name: Kullanılabilirlik Alanlarını kullanma (önizleme)
+          href: availability-zones.md
         - name: Birden çok düğüm havuzu kullanma (önizleme)
           href: use-multiple-node-pools.md
         - name: Terraform ile AKS’yi dağıtma
@@ -315,6 +317,8 @@
         - name: Azure DevOps Projesi
           href: ../devops-project/azure-devops-project-aks.md
           maintainContext: true
+        - name: Dağıtım Merkezi Başlatıcısı
+          href: deployment-center-launcher.md
     - name: Sorun giderme
       items:
         - name: Genel sorunlar

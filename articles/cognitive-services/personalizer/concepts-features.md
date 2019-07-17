@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: edjez
-ms.openlocfilehash: 94eaeb6e34e74e1a0f1a3958c23cf33b86c4adcd
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: c317cbec02b82743c233bf36f743cea808c30c69
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620276"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68253580"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Eylemler ve bağlamı hakkında bilgi özellikleridir
 
@@ -56,9 +56,9 @@ Ad alanları olarak düzenlenmiş özellikler personalizer alır. Ad kullandıys
 Uygulamaları tarafından kullanılan özellik ad alanları örnekleri aşağıda verilmiştir:
 
 * User_Profile_from_CRM
-* Zaman
+* Time
 * Mobile_Device_Info
-* http_user_agent
+* HTTP_USER_AGENT
 * VideoResolution
 * UserDeviceInfo
 * Hava durumu
@@ -66,9 +66,10 @@ Uygulamaları tarafından kullanılan özellik ad alanları örnekleri aşağıd
 * current_time
 * NewsArticle_TextAnalytics
 
-Geçerli JSON anahtarlarını oldukları sürece kendi kurallarına özellik ad alanı adı ekleyebilirsiniz.
+Geçerli JSON anahtarlarını oldukları sürece kendi kurallarına özellik ad alanı adı ekleyebilirsiniz. Ad alanları, Özellikler ayrı kümeler halinde düzenler ve özellikleri benzer adlarla ayırt etmek için kullanılır. Ad alanları 'öneki' olarak düşünebilirsiniz özellik adları eklenir. Ad alanlarında iç içe olamaz.
 
-Aşağıdaki json'da `user`, `state`, ve `device` özellik adları.
+
+Aşağıdaki json'da `user`, `state`, ve `device` özellik adları. Genel Önizleme Not: Şu anda size kesin adlarına göre UTF-8 özellik ad alanları için önerilir ve farklı harfler ile başlatın. Örneğin, `user`, `state`, ve `device` başlayın `u`, `s`, ve `d`. Şu anda ad alanları ile aynı ilk karakteri olan machine learning için kullanılan dizinlerde çakışmaları neden olabilir.
 
 JSON nesneleri, iç içe geçmiş JSON nesneleri ve basit özellik değerlerini içerebilir. Yalnızca sayılar dizi öğeleri, bir dizi dahil edilebilir. 
 
@@ -77,7 +78,7 @@ JSON nesneleri, iç içe geçmiş JSON nesneleri ve basit özellik değerlerini 
     "contextFeatures": [
         { 
             "user": {
-                "name":"Doug",
+                "profileType":"AnonymousUser",
                 "latlong": [47.6, -122.1]
             }
         },
@@ -167,7 +168,7 @@ Derece API'sine gönderdiğiniz Eylemler ne kişiselleştirmek çalışıyorsunu
 
 Bazı örnekler şunlardır:
 
-|Amaç|Eylem|
+|Amaç|Action|
 |--|--|
 |Hangi makale haber Web sitesinde vurgulanır kişiselleştirin.|Her eylem bir olası bir haber makaledir.|
 |Bir Web sitesinde ad yerleştirme iyileştirin.|Her eylem bir düzen veya reklam (örneğin, en üstte, sağ, küçük resimler büyük görüntüleri üzerinde) için bir düzen oluşturmak için kuralları olacaktır.|

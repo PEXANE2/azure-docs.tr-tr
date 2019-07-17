@@ -45,8 +45,10 @@
       href: azure-netapp-files-set-up-capacity-pool.md
     - name: Azure NetApp Files için bir alt ağı temsilci olarak belirleme
       href: azure-netapp-files-delegate-subnet.md
-    - name: Azure NetApp Files için birim oluşturma
+    - name: Azure NetApp Files için NFS birimi oluşturma
       href: azure-netapp-files-create-volumes.md
+    - name: Azure NetApp Files için SMB birimi oluşturma
+      href: azure-netapp-files-create-volumes-smb.md
     - name: NFS birimine yönelik dışarı aktarma ilkesini yapılandırma
       href: azure-netapp-files-configure-export-policy.md
     - name: Birimleri yönetme

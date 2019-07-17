@@ -54,34 +54,32 @@
       href: migrate-replication-appliance.md
     - name: Değerlendirmeler için en iyi yöntemler
       href: best-practices-assessment.md
-    - name: Değerlendirme hesaplamaları
+    - name: Değerlendirmelere genel bakış
       href: concepts-assessment-calculation.md
     - name: Bağımlılık görselleştirme
       href: concepts-dependency-visualization.md
 - name: Nasıl yapılır kılavuzları
   items:
-    - name: Geçiş örnekleri-Contoso serisi
-      href: contoso-migration-overview.md
-    - name: VMware değerlendirmesi/geçiş için bir gereç dağıtma (aracısız)
+    - name: Önceki sürümle çalışma
+      href: migrate-v1.md
+    - name: VMware aletini dağıtma
       href: how-to-set-up-appliance-vmware.md
-    - name: Hyper-V değerlendirmesi/geçiş için bir gereç dağıtma
+    - name: Hyper-V aletini dağıtma
       href: how-to-set-up-appliance-hyper-v.md
-    - name: Bir değerlendirmeyi/geçiş aracını ilk kez ekleme
+    - name: İlk kez araç ekleme
       href: how-to-add-tool-first-time.md
     - name: Değerlendirme araçları ekleme
       href: how-to-assess.md
-    - name: Geçiş araçları ekleme
-      href: how-to-migrate.md
     - name: Değerlendirme için grup makineleri
-      items:
-        - name: Grup oluşturma
-          href: how-to-create-a-group.md
-        - name: Makine bağımlılıkları kullanan grup makineleri
-          href: how-to-create-group-machine-dependencies.md
-        - name: Grup bağımlılıklarını kullanarak bir grubu daraltma
-          href: how-to-create-group-dependencies.md
+      href: how-to-create-a-group.md
+    - name: Bağımlılık görselleştirmesi kullanan grup makineleri
+      href: how-to-create-group-machine-dependencies.md
+    - name: Değerlendirme oluşturma
+      href: how-to-create-assessment.md
     - name: Bir değerlendirmeyi özelleştirme
       href: how-to-modify-assessment.md
+    - name: Geçiş araçları ekleme
+      href: how-to-migrate.md
     - name: Ölçek değerlendirmesi ve geçiş
       items:
         - name: Çok sayıda VMware VM’sini değerlendirme
@@ -90,6 +88,10 @@
           href: scale-hyper-v-assessment.md
         - name: Çok büyük sayıda VM'nin geçişini otomatikleştirme
           href: how-to-migrate-at-scale.md
+    - name: Geçiş örnekleri-Contoso serisi
+      href: contoso-migration-overview.md
+- name: Sorun giderme
+  items:
     - name: Azure Geçişi sorunlarını giderme
       href: troubleshooting-general.md
 - name: Kaynaklar

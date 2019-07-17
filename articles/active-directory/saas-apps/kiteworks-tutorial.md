@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 853e23d4dd2c9192c15ab477571ca5cd0059e965
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 52b113d92fa83795e94d5179ea47ed5d9d9e9a26
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68225455"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68248912"
 ---
 # <a name="tutorial-integrate-kiteworks-with-azure-active-directory"></a>Öğretici: Kiteworks, Azure Active Directory ile tümleştirme
 
@@ -104,7 +104,7 @@ Azure portalında Azure AD SSO'yu etkinleştirmek üzere aşağıdaki adımları
 
 1. Üst araç çubuğunda tıklatın **ayarları**.
 
-    ![Çoklu oturum açmayı yapılandırın](./media/kiteworks-tutorial/tutorial_kiteworks_06.png) 
+    ![Çoklu oturum açmayı yapılandırın](./media/kiteworks-tutorial/tutorial_kiteworks_06.png)
 
 1. İçinde **kimlik doğrulama ve yetkilendirme** bölümünde **SSO Kurulum**.
 
@@ -118,7 +118,7 @@ Azure portalında Azure AD SSO'yu etkinleştirmek üzere aşağıdaki adımları
 
     b. Seçin **başlatmak AuthnRequest**.
 
-    c. İçinde **IDP varlık kimliği** metin değerini yapıştırın **Azure AD tanımlayıcısı**, hangi Azure Portalı'ndan kopyaladığınız. 
+    c. İçinde **IDP varlık kimliği** metin değerini yapıştırın **Azure AD tanımlayıcısı**, hangi Azure Portalı'ndan kopyaladığınız.
 
     d. İçinde **çoklu oturum açma hizmeti URL'si** metin değerini yapıştırın **oturum açma URL'si**, hangi Azure Portalı'ndan kopyaladığınız.
 
@@ -135,7 +135,7 @@ Bu bölümde, bir test kullanıcısı B.Simon adlı Azure portalında oluşturac
 1. Azure Portalı'ndaki sol bölmeden seçin **Azure Active Directory**seçin **kullanıcılar**ve ardından **tüm kullanıcılar**.
 1. Seçin **yeni kullanıcı** ekranın üstünde.
 1. İçinde **kullanıcı** özellikleri, aşağıdaki adımları izleyin:
-   1. **Ad** alanına `B.Simon` girin.  
+   1. **Ad** alanına `B.Simon` girin.
    1. İçinde **kullanıcı adı** alanına username@companydomain.extension. Örneğin: `B.Simon@contoso.com`.
    1. Seçin **Show parola** onay kutusunu işaretleyin ve ardından görüntülenen değeri yazın **parola** kutusu.
    1.           **Oluştur**'a tıklayın.
@@ -162,7 +162,7 @@ Bu bölümde, Azure çoklu oturum açma kullanmak için Kiteworks erişim verere
 
 Bu bölümün amacı, Britta Simon Kiteworks adlı bir kullanıcı oluşturmaktır.
 
-Kiteworks tam zamanında sağlama, varsayılan olarak etkin olan destekler. Bu bölümde, hiçbir eylem öğesini yoktur. Yeni bir kullanıcı, henüz yoksa Kitewors erişme denemesi sırasında oluşturulur.
+Kiteworks tam zamanında sağlama, varsayılan olarak etkin olan destekler. Bu bölümde, hiçbir eylem öğesini yoktur. Yeni bir kullanıcı, henüz yoksa Kiteworks erişme denemesi sırasında oluşturulur.
 
 > [!NOTE]
 > Bir kullanıcı el ile oluşturmanız gerekiyorsa, iletişime geçmeniz [Kiteworks Destek ekibine](https://accellion.com/support).
@@ -175,8 +175,8 @@ Erişim panelinde Kiteworks kutucuğa tıkladığınızda, otomatik olarak SSO'y
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [ SaaS uygulamaları Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamaları Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Uygulama erişimi ve Azure Active Directory ile çoklu oturum açma nedir? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
