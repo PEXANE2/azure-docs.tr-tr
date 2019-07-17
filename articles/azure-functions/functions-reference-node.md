@@ -275,10 +275,10 @@ Varsayılan izleme düzeyinde akış işlev günlükleri yazmanızı sağlar. Ü
 
 | Yöntem                 | Açıklama                                |
 | ---------------------- | ------------------------------------------ |
-| **error (_message_)**   | Oturum açma veya daha düşük hata düzeyini yazar.   |
-| **warn (_message_)**    | Oturum açma veya daha düşük uyarı düzeyi için yazar. |
-| **info (_ileti_)**    | Oturum açma veya alt bilgi düzeyine yazar.    |
-| **verbose (_message_)** | Ayrıntılı düzeyinde günlüğe kaydetme için yazar.           |
+| **error(_message_)**   | Oturum açma veya daha düşük hata düzeyini yazar.   |
+| **warn(_message_)**    | Oturum açma veya daha düşük uyarı düzeyi için yazar. |
+| **info(_message_)**    | Oturum açma veya alt bilgi düzeyine yazar.    |
+| **verbose(_message_)** | Ayrıntılı düzeyinde günlüğe kaydetme için yazar.           |
 
 Aşağıdaki örnek, bir uyarı izleme düzeyini günlüğüne yazar:
 
