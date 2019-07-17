@@ -283,7 +283,7 @@ Değişken için ilk değeri ayarlarsanız, doğru veri türü olarak yapıland�
 |:--|:--|:--|:--|
 | string   | Değer, çift tırnak içine alın.  | "\"Merhaba Dünya\"" | "Hello world" |
 | numeric  | Tek tırnak işaretleri ile sayısal değer.| "64" | 64 |
-| boolean  | **true** veya **false** tırnak içinde.  Bu değer küçük harfli olması gerektiğini unutmayın. | "true" | true |
+| boolean  | **doğru** veya **false** tırnak içinde.  Bu değer küçük harfli olması gerektiğini unutmayın. | "true" | true |
 | datetime | Seri hale getirilmiş bir tarih değeri.<br>Bu değer için belirli bir tarih oluşturmak için PowerShell'de ConvertTo-Json cmdlet'ini kullanabilirsiniz.<br>Örnek: get-date "5/24/2017 13:14:57" \| ConvertTo-Json | "\\/Date(1495656897378)\\/" | 2017-05-24 13:14:57 |
 
 ## <a name="modules"></a>Modüller
