@@ -10,14 +10,14 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 3fc14b821064719f39eb877aa2253f8084496a66
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a88d7de69158a54995106d45683094c9b976896b
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65523507"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302516"
 ---
-# <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Dil anlama sözlüğü yaygın kelime ve kavramları
+# <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Dil ortak Sözlük ve kavramların sözlüğünü anlama
 LUIS API'si hizmeti ile çalışırken, Language Understanding (LUIS), koşulları sözlüğü açıklar karşılaşabilirsiniz.
 
 ## <a name="active-version"></a>Etkin sürümü
@@ -96,11 +96,11 @@ LUIS bağlamında bir **etki alanı** bilgi alanıdır. Etki alanınız, Bilgi B
 
 İçinde [toplu test](luis-interactive-test.md#batch-testing), testin doğruluğu ölçüsü.
 
-## <a name="false-negative"></a>Hatalı negatif (TN)
+## <a name="false-negative"></a>Yanlış negatif (FN)
 
 İçinde [toplu test](luis-interactive-test.md#batch-testing), konuşma, uygulamanızı yanlış tahmin edilen hedef hedefi/varlık olmaması veri noktalarını temsil eder.
 
-## <a name="false-positive"></a>Hatalı pozitif sonuç (TP)
+## <a name="false-positive"></a>Yanlış pozitif (FP)
 
 İçinde [toplu test](luis-interactive-test.md#batch-testing), veri noktalarının konuşma, uygulamanızı yanlış tahmin edilen hedef hedefi/varlık varlığını temsil eder.
 

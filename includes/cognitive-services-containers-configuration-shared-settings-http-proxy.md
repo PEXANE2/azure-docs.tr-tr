@@ -4,21 +4,21 @@ ms.author: dapine
 ms.date: 06/25/2019
 ms.service: cognitive-services
 ms.topic: include
-ms.openlocfilehash: 9911b1c92bdca6c0cdf064ea484cfb603e659467
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 664cea26f910fa5b3354e2879a33de50eb13a7f3
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67712570"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68286149"
 ---
-Giden istek yapmak için bir HTTP proxy yapılandırmanız gerekiyorsa, bu iki bağımsız değişkeni kullanın:
+Giden istekler oluşturmak için bir HTTP proxy 'si yapılandırmanız gerekiyorsa şu iki bağımsız değişkeni kullanın:
 
 | Ad | Veri türü | Açıklama |
 |--|--|--|
-|HTTP_PROXY|dize|Örneğin, kullanmak için proxy `http://proxy:8888`<br>< proxy URL'si >|
-|HTTP_PROXY_CREDS|dize|proxy'ye göre örneğin, kullanıcıadı kimlik doğrulaması için gereken tüm kimlik bilgileri.|
-|`<proxy-user>`|dize|Proxy kullanıcı.|
-|`proxy-password`|dize|İlişkili parolayı `<proxy-user>` proxy için.|
+|HTTP_PROXY|dize|Kullanılacak proxy, örneğin,`http://proxy:8888`<br>`<proxy-url>`|
+|HTTP_PROXY_CREDS|dize|Proxy için kimlik doğrulaması yapmak için gereken tüm kimlik bilgileri, örneğin, Kullanıcı adı: parola.|
+|`<proxy-user>`|dize|Proxy için Kullanıcı.|
+|`proxy-password`|dize|Ara sunucu için ile `<proxy-user>` ilişkili parola.|
 ||||
 
 
