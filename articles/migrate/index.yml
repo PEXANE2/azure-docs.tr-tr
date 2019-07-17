@@ -14,13 +14,30 @@ metadata:
   ms.date: 11/22/2017
   ms.author: raynew
 abstract:
-  description: 'Azure Geçişi, Azure’a geçiş için şirket içi makineleri keşfetmenize ve bu makinelerin uygunluğunu değerlendirmeniz yardımcı olur; ayrıca Azure VM’lerinin çalıştırılması için boyutlandırma ve maliyet tahminleri sunar.'
+  description: 'Azure Geçişi Azure bulutuna geçmenize yardımcı olur. Azure Geçişi şirket içi iş yüklerinin ve buluttaki sanal makinelerin bulunması, değerlendirilmesi ve geçişi için merkezi bir konum sağlar. Bu merkezi konum hem değerlendirme ve geçiş için Azure Geçişi araçlarını hem de bağımsız yazılım satıcılarının (ISV) tümleşik araçlarını sağlar.'
 sections:
   - title: Adım Adım Öğreticiler
     items:
       - type: paragraph
-        text: Azure’a geçiş için VMware VM’lerini değerlendirmeyi öğrenin
+        text: VMware VM’lerini değerlendirmeyi ve Azure'a geçirmeyi öğrenin
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="tutorial-prepare-vmware">VMware VM'lerini değerlendirme ve Azure'a geçiş için hazırlama</a>
+          - html: <a href="tutorial-assess-vmware">VMware VM’lerini Azure'a geçiş için değerlendirme</a>
+          - html: <a href="tutorial-migrate-vmware">VMware VM'lerini aracısız geçiş ile Azure'a geçirme</a>
+          - html: <a href="tutorial-migrate-vmware-agent">VMware VM'lerini aracı tabanlı geçiş ile Azure'a geçirme</a>
+      - type: paragraph
+        text: Hyper-V VM’lerini değerlendirmeyi ve Azure'a geçirmeyi öğrenin
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="tutorial-prepare-hyper-v">Hyper-V VM'lerini değerlendirme ve Azure'a geçiş için hazırlama</a>
+          - html: <a href="tutorial-assess-hyper-v">Hyper-V VM’lerini Azure'a geçiş için değerlendirme</a>
+          - html: <a href="tutorial-migrate-hyper-v">Hyper-V VM’lerini Azure’a geçirme</a>
+      - type: paragraph
+        text: 'Fiziksel sunucuları, sanallaştırılmış makineleri ve buluttaki VM''leri Azure''a geçirmeyi öğrenin'
       - type: list
         style: unordered
         items:
-          - html: <a href="tutorial-assessment-vmware">Şirket içi VMware VM’lerini keşfedin ve değerlendirin</a>
+          - html: <a href="tutorial-migrate-physical-virtual-machines">Fiziksel ve sanallaştırılmış sunucuları Azure'a geçirme</a>

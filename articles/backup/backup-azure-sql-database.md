@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: raynew
-ms.openlocfilehash: 8e7e5d871fa1bb557de4e6fce22658115bf0fe94
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 2957e784540f7c6450235d26da43121db2458dd1
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67806987"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249522"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Azure VM'lerindeki SQL Server Backup hakkında
 
@@ -46,7 +46,7 @@ Başlamadan önce doğrulama aşağıda:
 **Destek** | **Ayrıntılar**
 --- | ---
 **Desteklenen dağıtımlar** | SQL Marketplace Azure Vm'leri ve Market dışı (SQL Server el ile yüklenen) sanal makineleri desteklenir.
-**Desteklenen coğrafi bölgeler** | Avustralya Güneydoğu (ASE), Doğu Avustralya (AE) <br> Brezilya Güney (BRS)<br> Kanada Orta (CNC), Kanada Doğu (CE)<br> Güney Doğu Asya (SEA), Doğu Asya (EA) <br> East US (EUS), East US 2 (EUS2), West Central US (WCUS), West US (WUS); West US 2 (WUS 2) North Central US (NCUS) Central US (CUS) South Central US (SCUS) <br> Hindistan Orta (Inc), Hindistan Güney (INS) <br> Japonya Doğu (JPE), Japonya Batı (JPW) <br> Kore Orta (KRC), Kore Güney (KRS) <br> Kuzey Avrupa (NE), Batı Avrupa <br> UK Güney (UKS) BK Batı (UKW)
+**Desteklenen coğrafi bölgeler** | Avustralya Güneydoğu (ASE), Doğu Avustralya (AE) <br> Brezilya Güney (BRS)<br> Kanada Orta (CNC), Kanada Doğu (CE)<br> Güney Doğu Asya (SEA), Doğu Asya (EA) <br> Doğu ABD (EUS), Doğu ABD 2 (EUS2) Batı Orta ABD (WCUS), Batı ABD (WUS); Batı ABD 2 (WUS 2) Kuzey Orta ABD (NCUS) Orta ABD (CUS) Güney Orta ABD (SCUS) <br> Hindistan Orta (Inc), Hindistan Güney (INS) <br> Japonya Doğu (JPE), Japonya Batı (JPW) <br> Kore Orta (KRC), Kore Güney (KRS) <br> Kuzey Avrupa (NE), Batı Avrupa <br> UK Güney (UKS) BK Batı (UKW)
 **Desteklenen işletim sistemleri** | Windows Server 2016, Windows Server 2012 R2, Windows Server 2012<br/><br/> Linux şu anda desteklenmemektedir.
 **Desteklenen SQL Server sürümleri** | SQL Server 2017 ayrıntılı olarak [burada](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017), SQL Server 2016 ve ayrıntılı olarak Sp'ler [burada](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack), SQL Server 2014, SQL Server 2012.<br/><br/> Enterprise, Standard, Web, Developer, Express.
 **Desteklenen .NET sürümleri** | .NET framework 4.5.2 ve üzeri VM'de yüklü
@@ -76,7 +76,7 @@ Kullanıcılar, bu özellik genel olarak kullanılabilir olduğu saat kasa için
 - En fazla yedekleyebilirsiniz **~ 2000** kasasındaki SQL Server veritabanları. Veritabanlarının daha büyük bir sayı varsa, birden çok kasa oluşturabilirsiniz.
 - Yedekleme için en fazla yapılandırabilirsiniz **50** tek veritabanları gidin; bu kısıtlama, yedekleme yüklerini en iyi duruma yardımcı olur.
 - Veritabanlarına varan destekliyoruz **2TB** performans sorunlarını boyutu; değerinden büyük boyutları için ortaya çıkabilir.
-- Kaç tane veritabanları sunucu başına korunabilir dair bir fikir için bant genişliği, VM boyutu, yedekleme sıklığı, veritabanı boyutu, vb. gibi faktörleri dikkate alınması gereken ihtiyacımız var. Bu sayı, üzerinde kendi hesaplama yardımcı bir planner üzerinde çalışıyoruz. Biz kısa bir süre içinde yayımlama.
+- Kaç tane veritabanları sunucu başına korunabilir dair bir fikir için bant genişliği, VM boyutu, yedekleme sıklığı, veritabanı boyutu, vb. gibi faktörleri dikkate alınması gereken ihtiyacımız var. [İndirme](http://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) veritabanları yaklaşık sayısını veren kaynak planner, sunucu başına sanal makine kaynaklarının ve yedekleme ilkesini göre.
 - Kullanılabilirlik Grupları'olması durumunda yedekleme birkaç faktöre bağlı olarak farklı bir düğümler alınmıştır. Kullanılabilirlik grubu için yedekleme davranış aşağıda özetlenmiştir.
 
 ### <a name="back-up-behavior-in-case-of-always-on-availability-groups"></a>Kullanılabilirlik grupları her zaman durumunda davranış yedekleyin
@@ -89,7 +89,7 @@ Yedekleme yalnızca tek bir ağ düğümünde yapılandırıldığını önerili
 
 Yedekleme, yedekleme tercihi ve yedekleme türleri (tam/değişiklik/log/yalnızca kopya tam) bağlı olarak, belirli bir düğümden (birincil/ikincil) alınır.
 
-- **Yedekleme tercihi: Primary**
+- **Yedekleme tercihi: Birincil**
 
 **Yedekleme türü** | **Node**
     --- | ---
@@ -148,7 +148,7 @@ Diğer tüm sürümler için aşağıdaki adımlarla izinleri düzeltin:
 
       ![Oturum Aç - yeni iletişim kutusu, Ara'yı seçin](./media/backup-azure-sql-database/new-login-search.png)
 
-  4. Windows sanal hizmet hesabı **NT SERVICE\AzureWLBackupPluginSvc** SQL bulma aşamasından ve sanal makine kaydı sırasında oluşturuldu. Gösterildiği gibi hesap adını girin **Seçilecek nesne adını girin**. Seçin **Adları Denetle** adı çözümlenemedi. **Tamam**'ı tıklatın.
+  4. Windows sanal hizmet hesabı **NT SERVICE\AzureWLBackupPluginSvc** SQL bulma aşamasından ve sanal makine kaydı sırasında oluşturuldu. Gösterildiği gibi hesap adını girin **Seçilecek nesne adını girin**. Seçin **Adları Denetle** adı çözümlenemedi.           **Tamam**'ı tıklatın.
 
       ![Bilinmeyen hizmet adını çözümlemek için adları denetle seçin](./media/backup-azure-sql-database/check-name.png)
 

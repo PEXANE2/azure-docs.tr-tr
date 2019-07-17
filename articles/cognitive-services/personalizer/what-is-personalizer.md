@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: e5781af44732782936e1e1a87bf70bd4a9d4804d
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 286a19207236392367b924bea7e26e90fd0db8d5
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722266"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68253455"
 ---
 # <a name="what-is-personalizer"></a>Kişiselleştirme nedir?
 
@@ -29,14 +29,14 @@ Azure Kişiselleştirme, kullanıcıların gerçek zamanlı davranışlarından 
 
 ## <a name="how-does-personalizer-work"></a>Personalizer nasıl çalışır?
 
-Personalizer hangi eylemin bir bağlamda en yüksek boyut için keşfetmek için makine öğrenimi modelleri kullanır. İstemci uygulamanızı bunlarla ilgili bilgilerle eylemlerinin listesini sağlar. ve kullanıcı, cihaz, vb. hakkında bilgi içerebilecek bağlam hakkında bilgiler. Personalizer gerçekleştirilecek eylemi belirler. Seçilen eylem istemci uygulamanızın kullandığı sonra Personalizer biçiminde bir ödül puanı geri bildirim sağlar. Geri bildirim döngüsü tamamlandıktan sonra Personalizer kendi modeli gelecekteki sıralamalara sahip için kullanılan otomatik olarak güncelleştirir.
+Personalizer hangi eylemin bir bağlamda en yüksek boyut için keşfetmek için makine öğrenimi modelleri kullanır. İstemci uygulamanızı bunlarla ilgili bilgilerle eylemlerinin listesini sağlar. ve kullanıcı, cihaz, vb. hakkında bilgi içerebilecek bağlam hakkında bilgiler. Personalizer gerçekleştirilecek eylemi belirler. Seçilen eylem istemci uygulamanızın kullandığı sonra Personalizer biçiminde bir ödül puanı geri bildirim sağlar. Geri bildirim alındıktan sonra Personalizer kendi modeli gelecekteki sıralamalara sahip için kullanılan otomatik olarak güncelleştirir.
 
 ## <a name="how-do-i-use-the-personalizer"></a>Personalizer nasıl kullanabilirim?
 
 ![Bir kullanıcıya göstermek için video seçmek için Personalizer kullanma](media/what-is-personalizer/personalizer-example-highlevel.png)
 
 1. Bir deneyiminizi kişiselleştirmek için uygulamanızı seçin.
-1. Oluşturma ve kişiselleştirme hizmeti, Azure portalında yapılandırma
+1. Oluşturma ve kişiselleştirme Hizmeti'nin bir örneğini Azure portalında yapılandırın. Her bir Personalizer döngü örneğidir.
 1. Personalizer bilgilerle çağırmak için SDK'sını kullanma (_özellikleri_) kullanıcılarınız ve içerik hakkında (_eylemleri_). Veri Personalizer kullanmadan önce etiketlenmiş temizleyen, girmeniz gerekmez. 
 1. İstemci uygulamasında kullanıcı Personalizer tarafından seçilen eylem gösterir.
 1. SDK, kullanıcının Personalizer'ın eylem seçtiyseniz belirten Personalizer için geri bildirim sağlamak için kullanın. Bu bir _puanı ödüllendirin_genellikle -1 ile 1 arasında.

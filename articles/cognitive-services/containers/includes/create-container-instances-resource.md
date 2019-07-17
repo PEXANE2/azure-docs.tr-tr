@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 7/3/2019
 ms.author: dapine
-ms.openlocfilehash: 38addf4651373ba0f4df411325218a255c835508
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 05284d434e6bd22fd50957f7cc5ec966f88a4fd4
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67717168"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68229182"
 ---
 ## <a name="create-an-azure-container-instance-resource"></a>Bir Azure Container Instance kaynağı oluşturun
 
@@ -22,7 +22,7 @@ ms.locfileid: "67717168"
 
 2. Üzerinde **Temelleri** sekmesinde, aşağıdaki bilgileri girin:
 
-    |Ayar|Değer|
+    |Ayar|Value|
     |--|--|
     |Subscription|Aboneliğinizi seçin.|
     |Resource group|Kullanılabilir kaynak grubu seçin veya yeni bir tane oluşturmanız `cognitive-services`.|
@@ -39,12 +39,12 @@ ms.locfileid: "67717168"
     |--|--|
     |Bağlantı Noktaları|TCP bağlantı noktası olarak `5000`. Kapsayıcı 5000 numaralı bağlantı noktasında kullanıma sunar.|
 
-4. Üzerinde **Gelişmiş** sekmesinde, gerekli girin **ortam değişkenlerini** kapsayıcının [ayarları faturalama](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers#billing-arguments) ACI kaynak:
+4. Üzerinde **Gelişmiş** sekmesinde, gerekli girin **ortam değişkenlerini** için kapsayıcı faturalama ACI kaynak ayarları:
 
     | Anahtar | Değer |
     |--|--|
-    |`apikey`|Öğesinden kopyalanan **anahtarları** metin analizi kaynak sayfası. Boşluk veya tire ile 32 bir alfasayısal karakter dizesi olduğu `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|
-    |`billing`|Öğesinden kopyalanan **genel bakış** metin analizi kaynak sayfası. Örnek: `https://northeurope.api.cognitive.microsoft.com/text/analytics/v2.0`|
+    |`apikey`|Öğesinden kopyalanan **anahtarları** kaynak sayfası. Boşluk veya tire ile 32 bir alfasayısal karakter dizesi olduğu `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|
+    |`billing`|Öğesinden kopyalanan **genel bakış** kaynak sayfası.|
     |`eula`|`accept`|
 
 1. Tıklayın **gözden geçir ve Oluştur**

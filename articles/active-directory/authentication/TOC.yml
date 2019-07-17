@@ -16,8 +16,6 @@
       href: tutorial-sspr-pilot.md
     - name: SSPR şirket içi tümleştirmeyi etkinleştirme
       href: tutorial-enable-writeback.md
-    - name: Windows 10 parola sıfırlamayı etkinleştirme
-      href: tutorial-sspr-windows.md
     - name: Azure Identity Protection’ı tümleştirme
       href: tutorial-risk-based-sspr-mfa.md
 - name: Kavramlar
@@ -73,8 +71,8 @@
           href: howto-sspr-authenticationdata.md
         - name: Parola geri yazmayı etkinleştirme
           href: howto-sspr-writeback.md
-        - name: 'Windows 7, 8 ve 8.1 için SSPR'
-          href: howto-sspr-windows-7-8.md
+        - name: Windows istemcileri için SSPR
+          href: howto-sspr-windows.md
     - name: Bulut tabanlı MFA
       items:
         - name: Bulut tabanlı MFA dağıtma

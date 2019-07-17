@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
-ms.openlocfilehash: b48ecce1c87c0a29996e437d621c3ce396a84856
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2b28c38d2444f227d26df1f9ca2d70876ff41064
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60503564"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68260608"
 ---
 # <a name="manage-mailing-list-requests-with-azure-logic-apps"></a>Azure Logic Apps ile posta listesi isteklerini yönetme
 
@@ -61,10 +61,10 @@ Azure hesabınızın kimlik bilgileriyle <a href="https://portal.azure.com" targ
 
    | Ayar | Değer | Açıklama | 
    | ------- | ----- | ----------- | 
-   | **Ad** | LA-MailingList | Mantıksal uygulamanızın adı | 
+   | **Name** | LA-MailingList | Mantıksal uygulamanızın adı | 
    | **Abonelik** | <*your-Azure-subscription-name*> | Azure aboneliğinizin adı | 
    | **Kaynak grubu** | LA-MailingList-RG | İlgili kaynakların düzenlenmesi için kullanılan [Azure kaynak grubunun](../azure-resource-manager/resource-group-overview.md) adı | 
-   | **Konum** | Doğu ABD 2 | Mantıksal uygulamanızla ilgili bilgilerin depolanacağı bölge | 
+   | **Location** | Doğu ABD 2 | Mantıksal uygulamanızla ilgili bilgilerin depolanacağı bölge | 
    | **Log Analytics** | Kapalı | Tanılama günlüğüne kaydetme ayarını **Kapalı** durumda bırakın. | 
    |||| 
 
@@ -95,7 +95,7 @@ Her mantıksal uygulama, belirli bir olay gerçekleştiğinde veya yeni veriler 
       | Ayar | Değer | Açıklama | 
       | ------- | ----- | ----------- | 
       | **Klasör** | Gelen Kutusu | İzlenecek e-posta klasörü | 
-      | **Aralık** | 1 | Denetimler arasında beklenecek aralık sayısı | 
+      | **Aralık** | 1\. | Denetimler arasında beklenecek aralık sayısı | 
       | **Sıklık** | Saat | Denetimler arası her aralık için zaman birimi  | 
       |  |  |  | 
 
@@ -126,9 +126,9 @@ Artık tetikleyiciniz olduğuna göre, isteği onaylamak veya reddetmek üzere e
 
    | Ayar | Değer | Açıklama | 
    | ------- | ----- | ----------- | 
-   | **Alıcı** | <*onay-eposta-adresi*> | Onaylayanın e-posta adresi. Test için kendi adresinizi kullanabilirsiniz. | 
+   | **To** | <*onay-eposta-adresi*> | Onaylayanın e-posta adresi. Test için kendi adresinizi kullanabilirsiniz. | 
    | **Kullanıcı Seçenekleri** | Onayla, Reddet | Onaylayanın seçebileceği yanıt seçenekleri. Varsayılan olarak, onaylayan "Onayla" veya "Reddet" yanıtını seçebilir. | 
-   | **Konu** | test-members-ML için üye isteğini kabul etme | Açıklayıcı bir e-posta konusu | 
+   | **Subject** | test-members-ML için üye isteğini kabul etme | Açıklayıcı bir e-posta konusu | 
    |  |  |  | 
 
    Şimdilik, belirli düzenleme kutularının içine tıkladığınızda görüntülenen satır içi parametre listesini veya dinamik içerik listesini yoksayın. 
@@ -147,7 +147,7 @@ Ardından, onaylayanın seçtiği yanıtı denetlemek için bir koşul ekleyin.
 
 2. Koşulu daha iyi bir açıklama ile yeniden adlandırın.
 
-   1. Koşulun başlık çubuğunda **üç nokta** (**...**) düğmesini > **Yeniden Adlandır**’ı seçin.
+   1. Koşulun başlık çubuğunda **üç nokta** ( **...** ) düğmesini > **Yeniden Adlandır**’ı seçin.
 
       Örneğin, tarayıcınız dar görünümdeyse:
 
@@ -196,7 +196,7 @@ Ardından, gözden geçiren bir isteği onayladığında mantıksal uygulamanız
    | Ayar | Değer | Açıklama | 
    | ------- | ----- | ----------- | 
    | **Liste Kimliği** | test-members-ML | MailChimp posta listenizin adı | 
-   | **Durum** | abone olundu | Yeni üyenin abonelik durumu. Daha fazla bilgi için bkz. <a href="https://developer.mailchimp.com/documentation/mailchimp/guides/manage-subscribers-with-the-mailchimp-api/" target="_blank">MailChimp API'siyle aboneleri yönetme</a>. | 
+   | **Durumu** | abone olundu | Yeni üyenin abonelik durumu. Daha fazla bilgi için bkz. <a href="https://developer.mailchimp.com/documentation/mailchimp/guides/manage-subscribers-with-the-mailchimp-api/" target="_blank">MailChimp API'siyle aboneleri yönetme</a>. | 
    | **E-posta Adresi** | <*yeni-üye-eposta-adresi*> | Parametre listesinden veya dinamik içerik listesinden, **Yeni posta geldiğinde** bölümünde **Kimden**’i seçin. Bu, yeni üyenin e-posta adresinde verilir. 
    |  |  |  | 
 
@@ -206,7 +206,7 @@ Ardından, yeni üyenin posta listenize başarıyla katılıp katılmadığını
 
 ## <a name="check-for-success-or-failure"></a>Başarı veya başarısızlık durumunu denetleme
 
-1. **True ise** dalında, **Listeye üye ekle** eyleminin altında **Diğer...** > **Koşul ekle**'yi seçin.
+1. **True ise** dalında, **Listeye üye ekle** eyleminin altında **Diğer...**  > **Koşul ekle**'yi seçin.
 
 2. Koşulu şu açıklama ile yeniden adlandırın: ```If add member succeeded```
 
@@ -247,8 +247,8 @@ Ardından, onaylanan üyenin posta listenize katılımının başarılı veya ba
 
    | Ayar | Değer | Açıklama | 
    | ------- | ----- | ----------- | 
-   | **Alıcı** | <*eposta-adresiniz*> | Başarı e-postasının gönderileceği e-posta adresi. Test için kendi e-posta adresinizi kullanabilirsiniz. | 
-   | **Konu** | <*başarı-epostası-konusu*> | Başarı e-postasının konusu. Bu öğretici için, şu metni girin ve parametre listesinden veya dinamik içerik listesinden **Listeye üye ekle** altında belirlenen alanı seçin: <p>"Başarılı oldu! Üye 'test-members-ML için' eklendi: **E-posta adresi**" | 
+   | **To** | <*eposta-adresiniz*> | Başarı e-postasının gönderileceği e-posta adresi. Test için kendi e-posta adresinizi kullanabilirsiniz. | 
+   | **Subject** | <*başarı-epostası-konusu*> | Başarı e-postasının konusu. Bu öğretici için, şu metni girin ve parametre listesinden veya dinamik içerik listesinden **Listeye üye ekle** altında belirlenen alanı seçin: <p>"Başarılı oldu! Üye 'test-members-ML için' eklendi: **E-posta adresi**" | 
    | **Gövde** | <*başarı-e-postası-gövdesi*> | Başarı e-postasının gövde içeriği. Bu öğretici için, şu metni girin ve parametre listesinden veya dinamik içerik listesinden **Listeye üye ekle** altında belirlenen alanları seçin:  <p>"Yeni üye 'test-members-ML ' Listesine katıldı: **E-posta adresi**"</br>"Üye katılım durumu: **Durum**" | 
    | | | | 
 
@@ -272,8 +272,8 @@ Ardından, onaylanan üyenin posta listenize katılımının başarılı veya ba
 
    | Ayar | Değer | Açıklama | 
    | ------- | ----- | ----------- | 
-   | **Alıcı** | <*eposta-adresiniz*> | Başarısızlık e-postasının gönderileceği e-posta adresi. Test için kendi e-posta adresinizi kullanabilirsiniz. | 
-   | **Konu** | <*başarısızlık-epostası-konusu*> | Başarısızlık e-postasının konusu. Bu öğretici için, şu metni girin ve parametre listesinden veya dinamik içerik listesinden **Listeye üye ekle** altında belirlenen alanı seçin: <p>"Başarısız oldu, üye 'test-members-ML için' eklenmedi: **E-posta adresi**" | 
+   | **To** | <*eposta-adresiniz*> | Başarısızlık e-postasının gönderileceği e-posta adresi. Test için kendi e-posta adresinizi kullanabilirsiniz. | 
+   | **Subject** | <*başarısızlık-epostası-konusu*> | Başarısızlık e-postasının konusu. Bu öğretici için, şu metni girin ve parametre listesinden veya dinamik içerik listesinden **Listeye üye ekle** altında belirlenen alanı seçin: <p>"Başarısız oldu, üye 'test-members-ML için' eklenmedi: **E-posta adresi**" | 
    | **Gövde** | <*başarısızlık-epostası-gövdesi*> | Başarısızlık e-postasının gövde içeriği. Bu öğretici için şu metni girin: <p>"Üye zaten eklenmiş olabilir. MailChimp hesabınızı denetleyin." | 
    | | | | 
 

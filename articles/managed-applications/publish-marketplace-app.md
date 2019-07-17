@@ -8,14 +8,14 @@ ms.service: managed-applications
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.date: 06/04/2019
+ms.date: 07/15/2019
 ms.author: tomfitz
-ms.openlocfilehash: 40132f67b135b0dc081180c34361047e59776b81
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.openlocfilehash: 16b653d1018c0c9c090f027ebcd01468af0eefd8
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66688569"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234722"
 ---
 # <a name="azure-managed-applications-in-the-marketplace"></a>Market’teki Azure yönetilen uygulamaları
 
@@ -105,6 +105,10 @@ SKU, marketteki ana teklifin altında görünür. Azure portalında kendi başı
    * **Paket dosyası (.zip)** : Bu paket, sıkıştırılmış .zip pakete iki gerekli dosyaları içerir. Dosyalardan biri, yönetilen uygulamaya ilişkin dağıtılacak kaynakları tanımlayan Kaynak Yöneticisi şablonudur. İkinci dosya ise portal aracılığıyla yönetilen uygulamayı dağıtan tüketiciler için [kullanıcı arayüzünü](create-uidefinition-overview.md) tanımlamaktadır. Kullanıcı arayüzünde tüketicilerin parametre değerleri sağlamasına olanak tanıyan öğeleri belirlersiniz.
    * **Kiracı kimliği**: Erişim elde etmek için Kiracı kimliği hesabı.
    * **JIT erişmesini**: Seçin **Evet** etkinleştirmek için [tam zamanında erişim denetimi](request-just-in-time-access.md) hesabı. Etkinleştirildiğinde, belirtilen bir süre için tüketicinin hesabına erişim isteyin. Yönetilen uygulama tüketicileri, hesabınız kalıcı erişim izni istemek için seçin **Hayır**.
+   * **İzin verilen müşteri eylemleri özelleştirin?** : Seçin **Evet** hangi eylemleri belirtmek üzere tüketicileri, yönetilen kaynaklardaki gerçekleştirebilirsiniz.
+   * **Müşteri eylemlerine izin**: Seçerseniz **Evet** önceki ayar için hangi eylemlerin tüketicilere kullanarak izin verilen belirtebilirsiniz [atamaları Azure kaynakları için reddetme](../role-based-access-control/deny-assignments.md).
+
+     Kullanılabilir eylemler için bkz: [Azure Resource Manager kaynak sağlayıcısı işlemleri](../role-based-access-control/resource-provider-operations.md). Örneğin, sanal makineleri yeniden başlatmayı tüketiciler izin vermek için ekleme `Microsoft.Compute/virtualMachines/restart/action` izin verilen eylemleri. `*/read` Eyleme otomatik olarak izin için bu ayarı eklemeniz gerekmez.
    * **Principalıd**: Bu özellik bir kullanıcı, kullanıcı grubu veya verilen uygulamanın Azure Active Directory (Azure AD) tanımlayıcısıdır müşteri abonelik içindeki kaynaklara erişim. Rol Tanımı izinleri açıklar.
    * **Rol tanımı**: Bu özellik, Azure AD tarafından sağlanan tüm yerleşik rol tabanlı erişim denetimi (RBAC) rollerini listesidir. Müşteri adına kaynakları yönetmek için kullanılması en uygun olan rolü seçebilirsiniz.
    * **İlke ayarları**: Geçerli bir [Azure İlkesi](../governance/policy/overview.md) yönetilen uygulamanıza dağıtılan çözümleri uyumluluk gereksinimini belirtin. Kullanılabilir seçenekler arasından uygulanacak ilkeleri seçin. **İlke Parametreleri** için, parametre değerleriyle bir JSON dizesi sağlayın. İlke tanımları ve parametre değerlerinin biçimi için bkz. [Azure İlke Örnekleri](../governance/policy/samples/index.md).

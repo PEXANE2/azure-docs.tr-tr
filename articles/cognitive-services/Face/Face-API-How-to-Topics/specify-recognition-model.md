@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: longl
-ms.openlocfilehash: 0f1069c4a3d0a841b792cedf5a5a90aec80a4cc9
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: fd60923351970dfe5aa5705a0508dbd39941ef58
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592959"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68254353"
 ---
 # <a name="specify-a-face-recognition-model"></a>Yüz tanıma modeli belirtme
 
@@ -45,8 +45,7 @@ Kullanırken [Yüz tanıma - algılayın] API, model sürümüyle atama `recogni
 
 İsteğe bağlı olarak belirtebilirsiniz _returnRecognitionModel_ parametre (varsayılan **false**) göstermek için olup olmadığını _recognitionModel_ yanıtta döndürülmesi. Bunu, bir istek URL'sini [Yüz tanıma - algılayın] REST API şöyle görünür:
 
-`https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes][&recognitionModel][&returnRecognitionModel]
-&subscription-key=<Subscription key>`
+`https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes][&recognitionModel][&returnRecognitionModel]&subscription-key=<Subscription key>`
 
 İstemci kitaplığı kullanıyorsanız, değeri atayabilirsiniz `recognitionModel` sürümünü temsil eden bir dize geçirerek.
 Bunu atanmamış, varsayılan model sürüm bırakırsanız (_recognition_01_) kullanılacak. Aşağıdaki kod örneği için .NET istemci kitaplığı bakın.
