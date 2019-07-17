@@ -17,6 +17,8 @@
       href: notifications.md
     - name: Oturum açma deneyiminiz nedir?
       href: flows.md
+    - name: Kimlik Koruması ve B2B kullanıcıları
+      href: concept-identity-protection-b2b.md
 - name: Nasıl yapılır kılavuzları
   expanded: true
   items:

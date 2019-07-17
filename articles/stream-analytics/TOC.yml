@@ -94,10 +94,12 @@
           href: stream-analytics-clean-up-your-job.md
         - name: Güvenilirlik için işleri eşleştirme
           href: stream-analytics-job-reliability.md
-        - name: Yönetilen kimlikle kimlik doğrulaması
+        - name: Yönetilen kimlikle kimlik doğrulaması - ADLS 1. Nesil çıkışı
           href: stream-analytics-managed-identities-adls.md
         - name: SQL başvuru verisi kullanma
           href: sql-reference-data.md
+        - name: Yönetilen kimlikle kimlik doğrulaması - Blob çıkışı
+          href: blob-output-managed-identity.md
     - name: Çözüm oluşturma
       items:
         - name: Twitter yaklaşım analizi

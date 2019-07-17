@@ -68,6 +68,10 @@
       href: howto-conditional-access-session-lifetime.md
     - name: Klasik ilkeleri geçirme
       href: policy-migration.md
+    - name: Sorun giderme
+      items:
+        - name: What If aracını kullanarak sorun giderme
+          href: troubleshoot-conditional-access-what-if.md
 - name: Başvuru
   items:
     - name: Teknik başvuru

@@ -292,6 +292,14 @@
               href: ../common/storage-account-manage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Depolama hesabını yükseltme
               href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Kapsayıcı oluşturma ve yönetme
+          items:
+            - name: Kapsayıcı oluşturma veya silme (.NET)
+              href: storage-blob-container-create.md
+            - name: Kapsayıcıları listeleme (.NET)
+              href: storage-blob-containers-list.md
+            - name: Özellikleri ve meta verileri yönetme (.NET)
+              href: storage-blob-container-properties-metadata.md
         - name: Blob verilerinin güvenliğini sağlama
           items:
             - name: Blob verilerine erişimi yetkilendirme
@@ -358,8 +366,6 @@
               href: ../common/storage-use-azurite.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Azure Depolama öykünücüsü kullanma
               href: ../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Özellikler ile meta verileri ayarlama ve alma
-          href: storage-properties-metadata.md
         - name: Statik web sitesi barındırma
           href: storage-blob-static-website-how-to.md
         - name: HTTPS üzerinden erişim için Azure CDN’yi bir özel etki alanına eşleme

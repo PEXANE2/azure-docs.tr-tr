@@ -81,8 +81,8 @@
       href: sample-v2-code.md
     - name: Kavramlar
       items:
-        - name: Uygulama türleri
-          href: v2-app-types.md
+        - name: Kimlik doğrulama akışları ve uygulama senaryoları
+          href: authentication-flows-app-scenarios.md
         - name: Uygulama senaryoları
           items:
             - name: Hedef kitlenin oturumunu açma
@@ -227,6 +227,8 @@
                   href: msal-client-application-configuration.md
                 - name: Uygulamaları başlatma (.NET)
                   href: msal-net-initializing-client-applications.md
+                - name: İstemci onaylamaları (.NET)
+                  href: msal-net-client-assertions.md
                 - name: Uygulamaları başlatma (JS)
                   href: msal-js-initializing-client-applications.md
             - name: Hataları ve özel durumları işleme
@@ -267,10 +269,12 @@
                       href: msal-js-known-issues-ie-edge-browsers.md
                     - name: Bilinen sorunlar - Safari
                       href: msal-js-known-issues-safari-browser.md
-        - name: Kimlik Doğrulaması
+        - name: Kimlik doğrulama protokolü
           items:
             - name: Kimlik doğrulaması temel bilgileri
               href: authentication-scenarios.md
+            - name: Uygulama türleri ve OAuth2.0
+              href: v2-app-types.md
             - name: OAuth 2.0 ve OpenID Connect protokolleri
               href: active-directory-v2-protocols.md
             - name: OpenID Connect
