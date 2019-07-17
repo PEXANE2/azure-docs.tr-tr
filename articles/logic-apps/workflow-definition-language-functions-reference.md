@@ -11,7 +11,7 @@ ms.topic: reference
 ms.date: 08/15/2018
 ms.openlocfilehash: f5e2af7a7118eaa95e43049b3594ffd584aad4cc
 ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 06/18/2019
 ms.locfileid: "67203072"
@@ -87,13 +87,13 @@ Dize işlevleri yalnızca dizeler üzerinde çalışır.
 | [guid](../logic-apps/workflow-definition-language-functions-reference.md#guid) | Bir dize olarak bir genel benzersiz tanıtıcısı (GUID) oluşturur. |
 | [indexOf](../logic-apps/workflow-definition-language-functions-reference.md#indexof) | Bir alt dizenin başlangıç konumunu döndürür. |
 | [lastIndexOf](../logic-apps/workflow-definition-language-functions-reference.md#lastindexof) | Bir dizenin son a geçişi için başlangıç konumunu döndürür. |
-| [Değiştir](../logic-apps/workflow-definition-language-functions-reference.md#replace) | Belirtilen dizenin bir alt dizenin yerini ve güncelleştirilmiş dizeyi döndür. |
+| [replace](../logic-apps/workflow-definition-language-functions-reference.md#replace) | Belirtilen dizenin bir alt dizenin yerini ve güncelleştirilmiş dizeyi döndür. |
 | [split](../logic-apps/workflow-definition-language-functions-reference.md#split) | Belirtilen sınırlayıcı karakter özgün dizedeki göre daha büyük bir dizeden virgülle ayrılmış bir alt dizeler, içeren bir dizi döndürür. |
 | [startsWith](../logic-apps/workflow-definition-language-functions-reference.md#startswith) | Bir dizeyi belirli bir alt dizesi ile başlayıp başlamadığını kontrol edin. |
-| [alt dize](../logic-apps/workflow-definition-language-functions-reference.md#substring) | Belirtilen konumundan başlayan bir dizeden karakterleri döndürür. |
+| [substring](../logic-apps/workflow-definition-language-functions-reference.md#substring) | Belirtilen konumundan başlayan bir dizeden karakterleri döndürür. |
 | [toLower](../logic-apps/workflow-definition-language-functions-reference.md#toLower) | Küçük harf biçiminde bir dize döndürür. |
 | [toUpper](../logic-apps/workflow-definition-language-functions-reference.md#toUpper) | Büyük harf biçiminde bir dize döndürür. |
-| [Kırpma](../logic-apps/workflow-definition-language-functions-reference.md#trim) | Bir dizeden öndeki ve sondaki boşlukları kaldırın ve güncelleştirilmiş bir dize döndürür. |
+| [trim](../logic-apps/workflow-definition-language-functions-reference.md#trim) | Bir dizeden öndeki ve sondaki boşlukları kaldırın ve güncelleştirilmiş bir dize döndürür. |
 |||
 
 <a name="collection-functions"></a>
@@ -104,15 +104,15 @@ Koleksiyonlar, genellikle dizi, dizeleri ve sözlükleri ile bazen çalışmak i
 
 | Toplama işlevi | Görev |
 | ------------------- | ---- |
-| [içerir](../logic-apps/workflow-definition-language-functions-reference.md#contains) | Bir koleksiyon için belirli bir öğe olup olmadığını denetleyin. |
-| [boş](../logic-apps/workflow-definition-language-functions-reference.md#empty) | Bir koleksiyonun boş olup olmadığını denetleyin. |
-| [ilk](../logic-apps/workflow-definition-language-functions-reference.md#first) | Bir koleksiyondaki ilk öğeyi döndürür. |
-| [kesişimi](../logic-apps/workflow-definition-language-functions-reference.md#intersection) | Sahip bir koleksiyonun dönüş *yalnızca* belirtilen koleksiyonlarla arasında ortak öğeleri. |
-| [Öğesi](../logic-apps/workflow-definition-language-functions-reference.md#item) | Bir dizi üzerindeki bir yinelenen eylemi olduğu zaman içinde eylemin geçerli yineleme sırasında dizideki geçerli öğeyi döndürür. |
+| [contains](../logic-apps/workflow-definition-language-functions-reference.md#contains) | Bir koleksiyon için belirli bir öğe olup olmadığını denetleyin. |
+| [empty](../logic-apps/workflow-definition-language-functions-reference.md#empty) | Bir koleksiyonun boş olup olmadığını denetleyin. |
+| [first](../logic-apps/workflow-definition-language-functions-reference.md#first) | Bir koleksiyondaki ilk öğeyi döndürür. |
+| [intersection](../logic-apps/workflow-definition-language-functions-reference.md#intersection) | Sahip bir koleksiyonun dönüş *yalnızca* belirtilen koleksiyonlarla arasında ortak öğeleri. |
+| [item](../logic-apps/workflow-definition-language-functions-reference.md#item) | Bir dizi üzerindeki bir yinelenen eylemi olduğu zaman içinde eylemin geçerli yineleme sırasında dizideki geçerli öğeyi döndürür. |
 | [join](../logic-apps/workflow-definition-language-functions-reference.md#join) | İçeren bir dize döndürecek *tüm* bir dizi, öğeleri belirtilen karakteriyle ayrılmış. |
-| [Son](../logic-apps/workflow-definition-language-functions-reference.md#last) | Bir koleksiyondaki son öğeyi döndürür. |
-| [Uzunluğu](../logic-apps/workflow-definition-language-functions-reference.md#length) | Bir dize ya da dizideki öğe sayısını döndürür. |
-| [Atla](../logic-apps/workflow-definition-language-functions-reference.md#skip) | Bir koleksiyonun önünden öğeleri kaldırıp dönüş *diğer tüm* öğeleri. |
+| [last](../logic-apps/workflow-definition-language-functions-reference.md#last) | Bir koleksiyondaki son öğeyi döndürür. |
+| [length](../logic-apps/workflow-definition-language-functions-reference.md#length) | Bir dize ya da dizideki öğe sayısını döndürür. |
+| [skip](../logic-apps/workflow-definition-language-functions-reference.md#skip) | Bir koleksiyonun önünden öğeleri kaldırıp dönüş *diğer tüm* öğeleri. |
 | [take](../logic-apps/workflow-definition-language-functions-reference.md#take) | Bir koleksiyonun önünden öğelerini döndürür. |
 | [union](../logic-apps/workflow-definition-language-functions-reference.md#union) | Sahip bir koleksiyonun dönüş *tüm* belirtilen koleksiyonlarla öğelerinden. |
 |||
@@ -245,7 +245,7 @@ Her işlev hakkındaki tam başvuru için bkz: [alfabetik liste](../logic-apps/w
 | [body](#body) | Bir eylemin dönüş `body` çalışma zamanında çıktı. Ayrıca bkz: [actionBody](../logic-apps/workflow-definition-language-functions-reference.md#actionBody). |
 | [formDataMultiValues](../logic-apps/workflow-definition-language-functions-reference.md#formDataMultiValues) | Bir anahtar adı ile eşleşen değerleriyle bir dizi oluşturmak *form verilerini* veya *form kodlu* eylem çıktı. |
 | [formDataValue](../logic-apps/workflow-definition-language-functions-reference.md#formDataValue) | Bir eylem içinde bir anahtar adı ile eşleşen tek bir değer döndürmesi *form verisinin* veya *form kodlu çıkış*. |
-| [Öğesi](../logic-apps/workflow-definition-language-functions-reference.md#item) | Bir dizi üzerindeki bir yinelenen eylemi olduğu zaman içinde eylemin geçerli yineleme sırasında dizideki geçerli öğeyi döndürür. |
+| [item](../logic-apps/workflow-definition-language-functions-reference.md#item) | Bir dizi üzerindeki bir yinelenen eylemi olduğu zaman içinde eylemin geçerli yineleme sırasında dizideki geçerli öğeyi döndürür. |
 | [Öğeleri](../logic-apps/workflow-definition-language-functions-reference.md#items) | Bir Foreach, zaman içindeki ya da Until döngüsü belirtilen döngünün geçerli öğeyi döndürür.|
 | [iterationIndexes](../logic-apps/workflow-definition-language-functions-reference.md#iterationIndexes) | Bir Until döngü olduğu zaman içinde geçerli yineleme için dizin değerini döndürür. Döngüler kadar iç içe geçmiş içinde bu işlevi kullanabilirsiniz. |
 | [listCallbackUrl](../logic-apps/workflow-definition-language-functions-reference.md#listCallbackUrl) | "Bir tetikleyici veya eylemi çağırır geri çağırma URL'si" döndürür. |

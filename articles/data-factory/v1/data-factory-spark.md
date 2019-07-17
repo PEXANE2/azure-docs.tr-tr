@@ -351,7 +351,7 @@ HDInsight bağlı hizmeti tarafından başvurulan blob depolama alanındaki aşa
 | ---- | ----------- | -------- | ---- |
 | . | Spark işi depolama bağlı hizmeti kök yolu. | Evet | Klasör |
 | &lt;Kullanıcı tanımlı &gt; | Spark işi giriş dosyasına işaret eden yol. | Evet | Dosya |
-| . / jar'lar | Bu klasör altındaki tüm dosyaları karşıya ve küme Java sınıf yolu yerleştirilir. | Hayır | Klasör |
+| ./jars | Bu klasör altındaki tüm dosyaları karşıya ve küme Java sınıf yolu yerleştirilir. | Hayır | Klasör |
 | ./pyFiles | Bu klasör altındaki tüm dosyaları karşıya ve küme ise PYTHONPATH üzerinde yerleştirilir. | Hayır | Klasör |
 | ./files | Bu klasör altındaki tüm dosyaları karşıya ve yürütücü çalışma dizinine yerleştirilir. | Hayır | Klasör |
 | ./archives | Bu klasör altındaki tüm dosyaları sıkıştırılmamış. | Hayır | Klasör |
