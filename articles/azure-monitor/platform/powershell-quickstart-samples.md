@@ -156,7 +156,7 @@ Aşağıdaki tabloda, bir ölçüm kullanarak bir uyarı oluşturmak için kulla
 | Bu uyarı kuralının konumu |East US |
 | ResourceGroup |montest |
 | TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
-| Oluşturulan uyarının MetricName |\PhysicalDisk (_Total) \Disk Yazma/sn. Bkz: `Get-MetricDefinitions` cmdlet'i tam ölçüm adları almak nasıl hakkında |
+| Oluşturulan uyarının MetricName |\PhysicalDisk(_Total)\Disk Writes/sec. Bkz: `Get-MetricDefinitions` cmdlet'i tam ölçüm adları almak nasıl hakkında |
 | İşleci |GreaterThan |
 | Eşik değerini (sayısı/sn, bu ölçümün) |1 |
 | Pencereboyutu (ss: dd: biçimi) |00:05:00 |
