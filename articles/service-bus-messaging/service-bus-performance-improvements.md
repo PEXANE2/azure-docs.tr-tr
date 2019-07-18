@@ -82,9 +82,9 @@ Service Bus, alma ve silme işlemleri için işlemleri desteklemiyor. Ayrıca, g
 
 İstemci tarafı toplu işlem, belirli bir süreliğine bir ileti gönderme geciktirmek bir kuyruk veya konu istemci sağlar. İstemci bu süre içinde başka iletiler gönderirse, iletileri tek bir toplu iş olarak gönderir. İstemci tarafı toplu işleme da neden birden çok toplu iş bir kuyruk veya abonelik istemci **tam** istekleri tek bir istek. Toplu işleme yüklenebilir yalnızca zaman uyumsuz **Gönder** ve **tam** operations. Zaman uyumlu işlemler hemen Service Bus hizmetine gönderilir. Toplu işleme için Özet gerçekleşmezse veya alma işlemleri ya da toplu işlem istemci genelinde oluşuyor.
 
-Varsayılan olarak, bir istemci bir toplu iş aralığı 20 MS kullanır. Toplu iş aralığı ayarlayarak değiştirebilirsiniz [BatchFlushInterval] [ BatchFlushInterval] Mesajlaşma fabrikası oluşturmadan önce özelliği. Bu ayar, bu factory tarafından oluşturulan tüm istemcilerin etkiler.
+Varsayılan olarak, bir istemci bir toplu iş aralığı 20 MS kullanır. Toplu iş aralığı ayarlayarak değiştirebilirsiniz [BatchFlushInterval][BatchFlushInterval] Mesajlaşma fabrikası oluşturmadan önce özelliği. Bu ayar, bu factory tarafından oluşturulan tüm istemcilerin etkiler.
 
-Toplu işleme devre dışı bırakmak için ayarlanmış [BatchFlushInterval] [ BatchFlushInterval] özelliğini **değeri, TimeSpan.Zero**. Örneğin:
+Toplu işleme devre dışı bırakmak için ayarlanmış [BatchFlushInterval][BatchFlushInterval] özelliğini **değeri, TimeSpan.Zero**. Örneğin:
 
 ```csharp
 MessagingFactorySettings mfs = new MessagingFactorySettings();
@@ -113,7 +113,7 @@ Kendi iç deposuna yazarken kuyruk, konu veya abonelik verimini artırmak için 
 
 Bu zaman aralığı boyunca gerçekleşen ek depolama işlemleri toplu olarak eklenir. Toplu depolama erişim yalnızca etkiler **Gönder** ve **tam** işlemleri; alma işlemlerini etkilenmez. Toplu depolama erişimi bir varlık üzerindeki bir özelliktir. Toplu işlem, toplu depolama erişiminizi etkinleştirecek olan tüm varlıklar arasında gerçekleşir.
 
-Yeni Kuyruk, konu veya abonelik oluştururken, toplu depolama erişim varsayılan olarak etkindir. Toplu depolama erişimi devre dışı bırakmak için ayarlanmış [EnableBatchedOperations] [ EnableBatchedOperations] özelliğini **false** varlık oluşturmadan önce. Örneğin:
+Yeni Kuyruk, konu veya abonelik oluştururken, toplu depolama erişim varsayılan olarak etkindir. Toplu depolama erişimi devre dışı bırakmak için ayarlanmış [EnableBatchedOperations][EnableBatchedOperations] özelliğini **false** varlık oluşturmadan önce. Örneğin:
 
 ```csharp
 QueueDescription qd = new QueueDescription();

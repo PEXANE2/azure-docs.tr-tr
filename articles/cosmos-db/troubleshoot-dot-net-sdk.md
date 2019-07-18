@@ -88,7 +88,7 @@ Sağlanan aktarım hızı tüketilen işleme (RU/s) aştığından 'istek oranı
  <!--Anchors-->
 [Common issues and workarounds]: #common-issues-workarounds
 [Enable client SDK logging]: #logging
-[İstek oranı çok büyük]: #request-rate-too-large
+[istek oranı çok büyük]: #request-rate-too-large
 [Request Timeouts]: #request-timeouts
 [Azure SNAT (PAT) bağlantı noktası tükenmesi]: #snat
 [Production check list]: #production-check-list
