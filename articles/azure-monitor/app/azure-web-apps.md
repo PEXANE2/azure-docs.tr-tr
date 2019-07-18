@@ -11,7 +11,7 @@ ms.date: 04/26/2019
 ms.author: mbullwin
 ms.openlocfilehash: 5594c1f3517bf3d3f74841493df3c683304fa3f5
 ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/02/2019
 ms.locfileid: "67502077"
@@ -100,7 +100,7 @@ Azure App Services, barındırılan uygulamalar için uygulama izlemeyi etkinle�
 
 Katılımı için ASP.NET istemci-tarafı izleme. İstemci-tarafı izlemeyi etkinleştirmek için:
 
-* Seçin **ayarları** > ** ** *** Uygulama ayarları
+* Seçin **ayarları** > ** **Uygulama ayarları****
    * Uygulama ayarları, yeni bir ekleme **uygulama ayarı adı** ve **değer**:
 
      Adı: `APPINSIGHTS_JAVASCRIPT_ENABLED`

@@ -13,19 +13,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 05/21/2019
+ms.date: 07/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83f5b08e5fee17c0ea5577d4d56d4d3208a818e3
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: 5375d47c1b012a1c808a1115b7c902d99b05bf9d
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67625302"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304714"
 ---
-# <a name="quickstart-build-a-net-web-api-that-integrates-with-azure-ad-for-authentication-and-authorization"></a>Hızlı Başlangıç: .NET web API'si Azure AD kimlik doğrulaması ve yetkilendirme ile tümleşen oluşturma
+# <a name="quickstart-build-a-net-web-api-that-integrates-with-azure-ad-for-authentication-and-authorization"></a>Hızlı Başlangıç: Kimlik doğrulama ve yetkilendirme için Azure AD ile tümleşen bir .NET Web API 'SI oluşturun
 
 [!INCLUDE [active-directory-develop-applies-v1](../../../includes/active-directory-develop-applies-v1.md)]
 
@@ -49,7 +49,7 @@ Başlamak için şu önkoşulları tamamlayın:
 * [Uygulama çatısını indirin](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/skeleton.zip) veya [tamamlanmış örneği indirin](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/complete.zip). Bunların hepsi Visual Studio 2013 çözümüdür.
 * Uygulamanızı kaydedeceğiniz bir Azure AD kiracınız olmalıdır. Henüz kiracınız yoksa, [nasıl alacağınızı öğrenin](quickstart-create-new-tenant.md).
 
-## <a name="step-1-register-an-application-with-azure-ad"></a>1\. adım: Bir uygulamayı Azure AD'ye kaydetme
+## <a name="step-1-register-an-application-with-azure-ad"></a>1\. adım: Bir uygulamayı Azure AD 'ye kaydetme
 
 Uygulamanızın güvenliğini sağlamaya yardımcı olmak için, ilk olarak kiracınızda bir uygulama oluşturmalı ve Azure AD'de birkaç önemli bilgi parçası sağlamalısınız.
 
@@ -58,23 +58,32 @@ Uygulamanızın güvenliğini sağlamaya yardımcı olmak için, ilk olarak kira
     * Hesabınızın altında tek bir Azure AD kiracısı varsa veya uygun Azure AD kiracısını zaten seçtiyseniz, bu adımı atlayın.
 
 3. Sol taraftaki gezinti bölmesinde **Azure Active Directory**'yi seçin.
-4. Seçin **uygulama kayıtları**ve ardından **yeni kayıt**.
-5. Zaman **bir uygulamayı kaydetme** sayfası görüntülenirse, uygulamanız için bir ad girin.
-Altında **desteklenen hesap türleri**seçin **herhangi bir kuruluş dizinini ve kişisel Microsoft hesapları hesaplarında**.
-6. Seçin **Web** platform altında **yeniden yönlendirme URI'si** bölümünde ve değerine `https://localhost:44321/` (istediğiniz Azure AD belirteçleri döndürecektir konum).
-7. Bittiğinde **Kaydet**’i seçin. Uygulamasında **genel bakış** sayfa, Not **uygulama (istemci) kimliği** değeri.
-6. Seçin **bir API'yi kullanıma sunmak**, ardından tıklayarak uygulama kimliği URI'si güncelleştirin **ayarlamak**. Kiracıya özel bir tanımlayıcı girin. Örneğin, `https://contoso.onmicrosoft.com/TodoListService` girin.
-7. Yapılandırmayı kaydedin. Portalı açık bırakın, çünkü kısa süre sonra istemcinizi de kaydetmeniz gerekecektir.
+4. **Uygulama kayıtları**öğesini seçin ve ardından **Yeni kayıt**' ı seçin.
+5. **Bir uygulamayı kaydet** sayfası göründüğünde, uygulamanız için bir ad girin. Örneğin, "yapılacaklar listesi hizmeti".
+**Desteklenen hesap türleri**altında, **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesaplar**' ı seçin.
+6. **Yeniden yönlendirme URI 'si** bölümünün altında **Web** platformu ' nu seçin ve değeri olarak `https://localhost:44321/` ayarlayın (Azure AD 'nin belirteçleri döndürecek konum).
+7. Bittiğinde **Kaydet**’i seçin. Uygulamaya **genel bakış** sayfasında, **uygulama (istemci) kimliği** değerini aklınızda edin.
+8. **BIR API 'Yi kullanıma** sunma ' yı seçip **Kapsam Ekle**' ye tıklayın.
+9. **Kaydet ve devam et ' i**seçerek ÖNERILEN uygulama kimliği URI 'sini (API://{ClientID}) kabul edin.
+10. Aşağıdaki parametreleri girin:
+    1. **Kapsam adı**için "access_as_user" yazın.
+    1. **Yöneticiler ve kullanıcılar** seçeneğinin **Izin verebilen kim**için seçildiğinden emin olun.
+    1. **Yönetici onayı görünen adı**' nda "Kullanıcı olarak erişim TodoListService" yazın.
+    1. **Yönetici onayı açıklama** türü "TodoListService Web API 'sine Kullanıcı olarak erişir".
+    1. **Kullanıcı izni görünen adı** "Kullanıcı olarak erişim TodoListService" yazın.
+    1. **Kullanıcı onayı açıklama** türü "TodoListService Web API 'sine Kullanıcı olarak erişir" yazın.
+    1. **Durum**' da **etkin**' i seçin.
+11. Yapılandırmayı kaydetmek için **Kapsam Ekle** ' yi seçin. Portalı açık bırakın, çünkü kısa süre sonra istemcinizi de kaydetmeniz gerekecektir.
 
-## <a name="step-2-set-up-the-app-to-use-the-owin-authentication-pipeline"></a>2\. adım: OWIN kimlik doğrulaması işlem hattı kullanılacak uygulamasını ayarlama
+## <a name="step-2-set-up-the-app-to-use-the-owin-authentication-pipeline"></a>2\. adım: Uygulamayı OWıN kimlik doğrulama işlem hattını kullanacak şekilde ayarlama
 
 Gelen istekleri ve belirteçleri doğrulamak için, uygulamanızı Azure AD ile iletişim kuracak şekilde ayarlamanız gerekir.
 
 1. Başlangıç olarak, çözümü açın ve Paket Yöneticisi Konsolu'nu kullanarak TodoListService projesine OWIN ara yazılımı NuGet paketlerini ekleyin.
 
     ```
-    PM> Install-Package Microsoft.Owin.Security.ActiveDirectory -ProjectName TodoListService
-    PM> Install-Package Microsoft.Owin.Host.SystemWeb -ProjectName TodoListService
+    Install-Package Microsoft.Owin.Security.ActiveDirectory -ProjectName TodoListService
+    Install-Package Microsoft.Owin.Host.SystemWeb -ProjectName TodoListService
     ```
 
 2. TodoListService projesine `Startup.cs` adlı bir OWIN Startup sınıfı ekleyin.  Projeye sağ tıklayın, **Ekle > Yeni Öğe**'yi seçin, ardından **OWIN**'i aratın. OWIN ara yazılımı, uygulamanız başlatıldığında `Configuration(…)` yöntemini çağırır.
@@ -91,10 +100,10 @@ Gelen istekleri ve belirteçleri doğrulamak için, uygulamanızı Azure AD ile 
     }
     ```
 
-4. `App_Start\Startup.Auth.cs` dosyasını açın ve `ConfigureAuth(…)` yöntemini uygulayın. `WindowsAzureActiveDirectoryBearerAuthenticationOptions` içinde sağladığınız parametreler, uygulamanızın Azure AD ile iletişim kurması için koordinat işlevi görecektir. Bunları kullanmak için sınıfları kullanma gerekecektir `System.IdentityModel.Tokens` ad alanı.
+4. `App_Start\Startup.Auth.cs` dosyasını açın ve `ConfigureAuth(…)` yöntemini uygulayın. `WindowsAzureActiveDirectoryBearerAuthenticationOptions` içinde sağladığınız parametreler, uygulamanızın Azure AD ile iletişim kurması için koordinat işlevi görecektir. Bunları kullanmak için `System.IdentityModel.Tokens` ad alanındaki sınıfları kullanmanız gerekir.
 
     ```csharp
-    using System.IdentityModel.Tokens;
+    using Microsoft.IdentityModel.Tokens;
     ```
 
     ```csharp
@@ -143,14 +152,14 @@ Gelen istekleri ve belirteçleri doğrulamak için, uygulamanızı Azure AD ile 
     * `ida:Tenant`, Azure AD kiracınızın adıdır (örneğin, contoso.onmicrosoft.com).
     * `ida:Audience`, Azure portalına girdiğiniz uygulamanın Uygulama Kimliği URI'sidir.
 
-## <a name="step-3-configure-a-client-application-and-run-the-service"></a>3\. adım: Bir istemci uygulaması yapılandırma ve hizmet çalıştırma
+## <a name="step-3-configure-a-client-application-and-run-the-service"></a>3\. adım: İstemci uygulaması yapılandırma ve hizmeti çalıştırma
 
 To Do List Service'i iş başında görebilmek için önce To Do List istemcisini Azure AD'den belirteçleri alacak ve hizmete çağrı yapabilecek şekilde yapılandırmanız gerekir.
 
 1. [Azure portalına](https://portal.azure.com) geri dönün.
-1. Azure AD kiracınıza yeni bir uygulama kaydı oluşturun.  Girin bir **adı** girin, uygulamanızı kullanıcılara açıklayan `http://TodoListClient/` için **yeniden yönlendirme URI'si** değeri ve seçin **genel istemci (Mobil ve Masaüstü)** içinde açılır.
+1. Azure AD kiracınızda yeni bir uygulama kaydı oluşturun.  Uygulamanızı kullanıcılara açıklayan bir **ad** girin, **yeniden yönlendirme URI** değeri `https://TodoListClient/` girin ve açılan menüde **ortak istemci (mobil ve Masaüstü)** seçeneğini belirleyin.
 1. Kaydı bitirdikten sonra, Azure AD uygulamanıza benzersiz bir uygulama kimliği atar. Bu değeri sonraki adımlarda kullanacağınız için, uygulama sayfasından kopyalayın.
-1. Seçin **API izinleri**, ardından **bir izin eklemek**.  Bulun ve için yapmak listesi hizmeti seçin, ekleyin **user_impersonation erişim TodoListService** altında izin **Temsilcili izinler**ve ardından **izinlerieklemek**.
+1. **API izinleri**' ni seçin ve **izin ekleyin**.  **Yapılacaklar listesi hizmetini**bulun ve seçin, **temsilci Izinleri**altına **user_impersonation Access TodoListService** iznini ekleyin ve ardından **izin Ekle**' yi seçin.
 1. Visual Studio'da, TodoListClient projesinde `App.config` dosyasını açın ve `<appSettings>` bölümüne kendi yapılandırma değerlerinizi girin.
 
     * `ida:Tenant`, Azure AD kiracınızın adıdır (örneğin, contoso.onmicrosoft.com).

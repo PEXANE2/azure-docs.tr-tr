@@ -23,7 +23,7 @@ ms.locfileid: "65410310"
 DevTest Labs, makine adı geçersiz veya ilgili Laboratuvar ilkeyi ihlal Eğer uyarılar sağlar. Bazı durumlarda, kırmızı gördüğünüz `X` yanındaki Laboratuvarınızı bildiren bir sorun oluştu VM veya ortam durumu.  Bu makalede, altta yatan sorunu bulup neyse, gelecekte sorundan kurtulmak için kullanabileceğiniz birkaç püf noktaları sağlar.
 
 ## <a name="portal-notifications"></a>Portal bildirimleri
-Azure portalını kullanıyorsanız, bakmak için ilk yerdir **bildirimler panelinde**.  Bildirimler panelinde, tıklayarak ana komut çubuğunda kullanılabilir **zil simgesine**, VM veya ortam oluşturma Laboratuvar veya başarılı olup size bildirir.  Bir hata oluştuğunda, oluşturma hatası ile ilişkili hata iletisini görürsünüz. Ayrıntıları genellikle daha fazla sorunu gidermenize yardımcı olacak bilgiler sağlar. Aşağıdaki örnekte, sanal makine oluşturma, çekirdek bitmesi nedeniyle başarısız oldu. Ayrıntılı ileti sorunu düzeltin ve çekirdek kota artışı isteğinde anlatır.
+Azure portalını kullanıyorsanız, bakmak için ilk yerdir **bildirimler panelinde**.  Bildirimler panelinde, tıklayarak ana komut çubuğunda kullanılabilir **zil simgesine** , VM veya ortam oluşturma Laboratuvar veya başarılı olup size bildirir.  Bir hata oluştuğunda, oluşturma hatası ile ilişkili hata iletisini görürsünüz. Ayrıntıları genellikle daha fazla sorunu gidermenize yardımcı olacak bilgiler sağlar. Aşağıdaki örnekte, sanal makine oluşturma, çekirdek bitmesi nedeniyle başarısız oldu. Ayrıntılı ileti sorunu düzeltin ve çekirdek kota artışı isteğinde anlatır.
 
 ![Azure portal bildirimi](./media/troubleshoot-vm-environment-creation-failures/portal-notification.png)
 

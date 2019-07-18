@@ -1,7 +1,7 @@
 ---
-title: Linux üzerinde - Azure App Service'te Java web uygulaması oluşturma
+title: Linux 'ta Java Web uygulaması oluşturma-Azure App Service
 description: Bu hızlı başlangıçta, Linux üzerindeki Azure App Service’te ilk Java Merhaba Dünya uygulamanızı birkaç dakika içinde dağıtacaksınız.
-keywords: Azure app service, web uygulaması, linux, java, maven, hızlı başlangıç
+keywords: Azure, App Service, Web uygulaması, Linux, Java, Maven, hızlı başlangıç
 services: app-service\web
 documentationcenter: ''
 author: msangapu
@@ -16,19 +16,19 @@ ms.topic: quickstart
 ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: 09a3ad182ff5ee19a81b03557b3277343912a774
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 30689e05a2567646ff541818dc68a90c13da7a56
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67461441"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297249"
 ---
-# <a name="quickstart-create-a-java-app-in-app-service-on-linux"></a>Hızlı Başlangıç: Linux üzerinde App Service'te bir Java uygulaması oluşturma
+# <a name="quickstart-create-a-java-app-in-app-service-on-linux"></a>Hızlı Başlangıç: Linux üzerinde App Service bir Java uygulaması oluşturma
 
-[Linux üzerindeki App Service](app-service-linux-intro.md) Linux işletim sistemini kullanan yüksek oranda ölçeklenebilir, otomatik olarak düzeltme eki uygulayan bir web barındırma hizmeti sağlar. Bu hızlı başlangıçta nasıl kullanılacağını gösterir [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) ile [Azure App Service için Maven Plugin](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) bir Java web arşivi (WAR) dosyasına dağıtılacak.
+[Linux üzerindeki App Service](app-service-linux-intro.md) Linux işletim sistemini kullanan yüksek oranda ölçeklenebilir, otomatik olarak düzeltme eki uygulayan bir web barındırma hizmeti sağlar. Bu hızlı başlangıçta, Java Web arşivi (WAR) dosyasını dağıtmak üzere [Azure App Service Için Maven eklentisi](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) Ile [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 'nın nasıl kullanılacağı gösterilmektedir.
 > [!NOTE]
 >
-> Aynı şeyi de yapılabilir Intellij ve Eclipse gibi popüler Ide'leri kullanarak. Bizim benzer belgeleri kullanıma [Intellij Hızlı Başlangıç için Azure Araç Seti](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app) veya [Eclipse Hızlı Başlangıç için Azure Araç Seti](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app).
+> Aynı şey, IntelliJ ve tutulma gibi popüler Ides 'ler kullanılarak da yapılabilir. [Azure Toolkit for IntelliJ hızlı](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app) başlangıç veya [Azure Toolkit for Eclipse hızlı başlangıç](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app)aşamasında benzer belgelerimize göz atın.
 >
 ![Azure'da çalışan örnek uygulama](media/quickstart-java/java-hello-world-in-browser.png)
 
@@ -38,7 +38,7 @@ ms.locfileid: "67461441"
 
 ## <a name="create-a-java-app"></a>Java uygulaması oluşturma
 
-Cloud Shell isteminde adlı yeni bir uygulama oluşturmak için aşağıdaki Maven komutunu yürütün `helloworld`:
+Aşağıdaki Maven komutunu Cloud Shell istemine yürütün, adlı `helloworld`yeni bir uygulama oluşturun:
 
 ```bash
 mvn archetype:generate -DgroupId=example.demo -DartifactId=helloworld -DarchetypeArtifactId=maven-archetype-webapp
@@ -67,13 +67,13 @@ Sonra `pom.xml` dosyasının `<build>` öğesinin içine aşağıdaki eklenti ta
 </plugins>
 ```
 
-Azure App Service'e dağıtma işlemi, Azure clı'dan hesap kimlik bilgilerini kullanır. [Azure CLI ile oturum](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) devam etmeden önce.
+Azure App Service dağıtım işlemi, Azure CLı 'den hesap kimlik bilgilerini kullanır. Devam etmeden önce [Azure CLI Ile oturum açın](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) .
 
 ```azurecli
 az login
 ```
 
-Dağıtım yapılandırabileceğiniz sonra maven komutunu çalıştırın `mvn azure-webapp:config` komut isteminde ve varsayılan yapılandırmaları basarak kullanmak **ENTER** alana kadar **onaylayın (E/H)** , daha sonra sor basın **'y'** ve yapılandırmayı gerçekleştirilir.
+Ardından, dağıtımı yapılandırabilir, `mvn azure-webapp:config` komut isteminde Maven komutunu çalıştırabilir ve **Onayla (Y/N)** istemi görüntüleninceye ve ardından **' Y '** tuşuna basarak ve yapılandırma yapıldıktan sonra **ENTER** tuşuna basarak varsayılan yapılandırmaları kullanabilirsiniz .
 
 ```cmd
 ~@Azure:~/helloworld$ mvn azure-webapp:config
@@ -83,7 +83,7 @@ Dağıtım yapılandırabileceğiniz sonra maven komutunu çalıştırın `mvn a
 [INFO] Building helloworld Maven Webapp 1.0-SNAPSHOT
 [INFO] --------------------------------[ war ]---------------------------------
 [INFO]
-[INFO] --- azure-webapp-maven-plugin:1.6.0:config (default-cli) @ helloworld ---
+[INFO] --- azure-webapp-maven-plugin:1.7.0:config (default-cli) @ helloworld ---
 [WARNING] The plugin may not work if you change the os of an existing webapp.
 Define value for OS(Default: Linux):
 1. linux [*]
@@ -114,17 +114,17 @@ Confirm (Y/N)? : Y
 > [!NOTE]
 > Bu makalede yalnızca WAR dosyalarıyla paketlenmiş Java uygulamalarıyla çalışacağız. Eklenti ayrıca JAR web uygulamalarını da destekler. Denemek için [Linux'ta App Service'e Java SE JAR dosyası dağıtma](https://docs.microsoft.com/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
 
-Gidin `pom.xml` aşağıda listelenen gerekli, bazı yaygın olanları belirlerseniz yeniden eklentisi yapılandırma güncelleştirilir görmek için App Service için diğer yapılandırmalar doğrudan pom dosyanızın değiştirebilirsiniz:
+Eklenti yapılandırmasının güncelleştirildiğini görmek için bir kezdahaAppServicediğeryapılandırmaları,gerekirsedoğrudanPoddosyanızdadeğiştirebilirsiniz,bazıyaygınolanlaraşağıdalistelenmiştir:`pom.xml`
 
  Özellik | Gerekli | Açıklama | Version
 ---|---|---|---
-`<schemaVersion>` | false | Yapılandırma şeması sürümünü belirtin. Desteklenen değerler şunlardır: `v1`, `v2`. | 1.5.2
-`<resourceGroup>` | true | Web uygulamanız için Azure kaynak grubu. | 0.1.0+
-`<appName>` | true | Web uygulamanızın adı. | 0.1.0+
-[`<region>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#region) | true | Web uygulamanızı nerede barındırılacağını bölge belirtir. Varsayılan değer **westus**. Tüm geçerli bölgeler [desteklenen bölgeler](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#region) bölümü. | 0.1.0+
-[`<pricingTier>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme##pricingtier) | false | Web uygulamanız için bir fiyatlandırma katmanı. Varsayılan değer **P1V2**.| 0.1.0+
-[`<runtime>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#runtimesetting) | true | Çalışma zamanı ortamı yapılandırması ayrıntıları görebilir [burada](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#runtimesetting). | 0.1.0+
-[`<deployment>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#deploymentsetting) | true | Dağıtım yapılandırma ayrıntıları görebilir [burada](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#deploymentsetting). | 0.1.0+
+`<schemaVersion>` | false | Yapılandırma şemasının sürümünü belirtin. Desteklenen değerler şunlardır: `v1`, `v2`. | 1.5.2
+`<resourceGroup>` | true | Web uygulamanız için Azure Kaynak grubu. | 0.1.0 +
+`<appName>` | true | Web uygulamanızın adı. | 0.1.0 +
+[`<region>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#region) | true | Web uygulamanızın barındırılacak bölgeyi belirtir; Varsayılan değer **westus**' dir. [Desteklenen bölgelerde](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#region) tüm geçerli bölgeler bölümü. | 0.1.0 +
+[`<pricingTier>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme##pricingtier) | false | Web uygulamanız için fiyatlandırma katmanı. Varsayılan değer **P1V2**' dir.| 0.1.0 +
+[`<runtime>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#runtimesetting) | true | Çalışma zamanı ortamı yapılandırması, [burada](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#runtimesetting)ayrıntıları görebilirsiniz. | 0.1.0 +
+[`<deployment>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#deploymentsetting) | true | Dağıtım yapılandırması, ayrıntıları [burada](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#deploymentsetting)görebilirsiniz. | 0.1.0 +
 
 ## <a name="deploy-the-app"></a>Uygulamayı dağıtma
 
@@ -162,4 +162,4 @@ Bu komutun çalıştırılması bir dakika sürebilir.
 > [Jenkins ile CI/CD](/azure/jenkins/deploy-jenkins-app-service-plugin)
 
 > [!div class="nextstepaction"]
-> [Diğer Azure için Java geliştiricilerinin kaynakları](/java/azure/)
+> [Diğer Java geliştiricileri için Azure kaynakları](/java/azure/)

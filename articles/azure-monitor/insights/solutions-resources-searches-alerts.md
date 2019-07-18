@@ -76,7 +76,7 @@ Dahil [kayıtlı aramalar](../../azure-monitor/log-query/log-query-overview.md) 
 
 Kayıtlı bir aramayı her bir özellik aşağıdaki tabloda açıklanmıştır.
 
-| Özellik | description |
+| Özellik | Description |
 |:--- |:--- |
 | category | Kayıtlı arama için kategori.  Konsolunda birlikte gruplanır, böylece aynı çözüm içindeki tüm kayıtlı aramalar genellikle tek bir kategori paylaşın. |
 | displayName | Portalı'nda kayıtlı arama için görüntülenecek ad. |
@@ -121,7 +121,7 @@ Kayıtlı bir aramayı bir veya daha fazla zamanlama ayrı bir uyarı kuralı te
     }
 Zamanlama kaynakların özellikleri aşağıdaki tabloda açıklanmıştır.
 
-| Öğe adı | Gerekli | description |
+| Öğe adı | Gerekli | Description |
 |:--|:--|:--|
 | enabled       | Evet | Oluşturulduğunda uyarının etkinleştirilip etkinleştirilmeyeceğini belirtir. |
 | interval      | Evet | Ne sıklıkla sorgu dakikalar içinde çalışır. |
@@ -174,7 +174,7 @@ Uyarı eylemleri aşağıdaki yapıya sahiptir. Kopyalayabilir ve bu kod parçac
 
 Uyarı eylemi kaynakların özellikleri aşağıdaki tablolarda açıklanmıştır.
 
-| Öğe adı | Gerekli | description |
+| Öğe adı | Gerekli | Description |
 |:--|:--|:--|
 | Type | Evet | Eylem türü.  Bu **uyarı** uyarı eylemleri için. |
 | Name | Evet | Uyarı görünen adı.  Bu uyarı kuralı için konsolunda görüntülenen addır. |
@@ -185,7 +185,7 @@ Uyarı eylemi kaynakların özellikleri aşağıdaki tablolarda açıklanmışt�
 #### <a name="threshold"></a>Eşik
 Bu bölüm gereklidir. Uyarı eşiği için özellikleri tanımlar.
 
-| Öğe adı | Gerekli | description |
+| Öğe adı | Gerekli | Description |
 |:--|:--|:--|
 | Operator | Evet | Aşağıdaki değerlerden karşılaştırma işleci:<br><br>**gt = büyüktür<br>lt = kısa** |
 | Value | Evet | Sonuçları Karşılaştırılacak değer. |
@@ -196,17 +196,17 @@ Bu bölüm isteğe bağlıdır. Bu, bir ölçüm ölçüsü uyarı ekleyin.
 > [!NOTE]
 > Ölçüm ölçüsü uyarı şu anda genel Önizleme aşamasındadır.
 
-| Öğe adı | Gerekli | description |
+| Öğe adı | Gerekli | Description |
 |:--|:--|:--|
 | TriggerCondition | Evet | Eşik ihlallerini veya aşağıdaki değerlerden ardışık ihlaller toplam sayısı için uygun olup olmadığını belirtir:<br><br>**Toplam<br>ardışık** |
-| İşleç | Evet | Aşağıdaki değerlerden karşılaştırma işleci:<br><br>**gt = büyüktür<br>lt = kısa** |
-| Değer | Evet | Uyarı tetiklemek için ölçütleri sağlanmalıdır. deneme sayısı. |
+| Operator | Evet | Aşağıdaki değerlerden karşılaştırma işleci:<br><br>**gt = büyüktür<br>lt = kısa** |
+| Value | Evet | Uyarı tetiklemek için ölçütleri sağlanmalıdır. deneme sayısı. |
 
 
 #### <a name="throttling"></a>Azaltma
 Bu bölüm isteğe bağlıdır. Bazı uyarı oluşturulduktan sonra zaman miktarı için aynı kural uyarıları gizlemek istiyorsanız, bu bölüm içerir.
 
-| Öğe adı | Gerekli | description |
+| Öğe adı | Gerekli | Description |
 |:--|:--|:--|
 | Dakika Cinsiden Süre | Azaltma eklenen öğe varsa Evet | Aynı uyarı kuralı birinden oluşturulduktan sonra uyarıları bastırmak için dakika sayısı. |
 
@@ -215,7 +215,7 @@ Azure'daki tüm uyarılar eylemlerini işleyen varsayılan bir mekanizma olarak 
 
 Kimin uyarılarını - Azure'a genişletilmiş kullanıcının için bir zamanlama artık bir uyarı oluşturabilmek için eşik yanı sıra, geçirilen eylem grubu ayrıntıları olması gerekir. E-posta ayrıntıları, Web kancası URL'leri, Runbook Otomasyon ayrıntıları ve diğer eylemler olması gereken bir eylem grubu ilk önce bir uyarı; oluşturma tarafta tanımlanan bir izin oluşturabilir [Azure İzleyici'eylem grubundan](../../azure-monitor/platform/action-groups.md) portalı veya [eylem grubu - kaynak şablonu](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
 
-| Öğe adı | Gerekli | description |
+| Öğe adı | Gerekli | Description |
 |:--|:--|:--|
 | AzNsNotification | Evet | Uyarı ölçütleri karşılandığında gerekli eylemleri almak için uyarı ile ilişkilendirilecek Azure eylem grubu kaynak kimliği. |
 | CustomEmailSubject | Hayır | Özel konu satırı ilişkili eylem grubunda belirtilen tüm adreslere gönderilen e-postası. |
@@ -231,7 +231,7 @@ Her zamanlama varsa **uyarı** eylem. Bu, uyarı ve isteğe bağlı olarak bildi
 ##### <a name="emailnotification"></a>EmailNotification
  Bu bölümde, isteğe bağlı bir veya daha fazla alıcıya e-posta göndermek için uyarı istiyorsanız bunu ekleyin.
 
-| Öğe adı | Gerekli | description |
+| Öğe adı | Gerekli | Description |
 |:--|:--|:--|
 | Recipients | Evet | Virgülle ayrılmış bir uyarı aşağıdaki örnekte olduğu gibi oluşturulduğunda, bildirim göndermek için e-posta adresleri listesi.<br><br>**["recipient1\@contoso.com", "recipient2\@contoso.com"]** |
 | Subject | Evet | E-posta konu satırı. |
@@ -240,7 +240,7 @@ Her zamanlama varsa **uyarı** eylem. Bu, uyarı ve isteğe bağlı olarak bildi
 ##### <a name="remediation"></a>Düzeltme
 Bu bölüm isteğe bağlıdır ve uyarıya yanıt olarak başlatılması için bir runbook istiyorsanız bunu ekleyin. 
 
-| Öğe adı | Gerekli | description |
+| Öğe adı | Gerekli | Description |
 |:--|:--|:--|
 | RunbookName | Evet | Başlamak için runbook'un adı. |
 | WebhookUri | Evet | Runbook için bir Web kancası URI'si. |
@@ -269,10 +269,10 @@ Uyarınız bir Web kancasını çağıracak sonra türünde bir eylem kaynak ger
     }
 Web kancası eylemi kaynakların özellikleri aşağıdaki tablolarda açıklanmıştır.
 
-| Öğe adı | Gerekli | description |
+| Öğe adı | Gerekli | Description |
 |:--|:--|:--|
-| type | Evet | Eylem türü. Bu **Web kancası** Web kancası işlemleri için. |
-| name | Evet | Eylem görünen adı. Bu konsolunda görüntülenmez. |
+| Type | Evet | Eylem türü. Bu **Web kancası** Web kancası işlemleri için. |
+| Name | Evet | Eylem görünen adı. Bu konsolunda görüntülenmez. |
 | webhookUri | Evet | Web kancası için URI. |
 | customPayload | Hayır | Web kancası'na gönderilecek özel yükü. Biçim, Web kancası bekleniyor üzerinde bağlıdır. |
 

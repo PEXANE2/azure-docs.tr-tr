@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: Azure Load Balancer özelliklerine, mimarisine ve uygulamasına genel bakış. Load Balancer'ın nasıl çalıştığını ve bulutta nasıl faydalanabileceğinizi öğrenin.
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 Customer intent: As an IT administrator, I want to learn more about the Azure Load Balancer service and what I can use it for.
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/11/2019
-ms.author: kumud
-ms.openlocfilehash: c2f6a614524f0dfb242db11618fda94ce57e6e6a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: fb7c0c31ad91bfdb6ea360c1909a216f0779ebde
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60734899"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274609"
 ---
 # <a name="what-is-azure-load-balancer"></a>Azure Load Balancer nedir?
 
@@ -29,7 +29,7 @@ Load Balancer, ön ucuna ulaşan yeni gelen akışları kurallara ve sistem duru
 
 Genel bir Load Balancer ayrıca sanal ağınızdaki sanal makinelerin (VM) özel IP'lerini genel IP adreslerine dönüştürerek giden bağlantı desteği sunabilir.
 
-Azure Load Balancer iki Sku'da kullanılabilir: Temel ve Standart. Bu iki SKU arasında ölçek, özellik ve fiyatlandırma açısından farklar vardır. Temel Load Balancer ile gerçekleştirilebilen tüm senaryolar Standart Load Balancer ile de gerçekleştirilebilir ancak yaklaşımlar biraz farklı olabilir. Load Balancer hakkında bilgi edindikçe temel bilgilere ve SKU'ya özgü farklara hakim olmak önemlidir.
+Azure Load Balancer iki SKU 'da kullanılabilir: Temel ve Standart. Bu iki SKU arasında ölçek, özellik ve fiyatlandırma açısından farklar vardır. Temel Load Balancer ile gerçekleştirilebilen tüm senaryolar Standart Load Balancer ile de gerçekleştirilebilir ancak yaklaşımlar biraz farklı olabilir. Load Balancer hakkında bilgi edindikçe temel bilgilere ve SKU'ya özgü farklara hakim olmak önemlidir.
 
 ## <a name="why-use-load-balancer"></a>Neden Azure Load Balancer'ı kullanmalısınız? 
 
@@ -64,11 +64,11 @@ Load Balancer, TCP ve UDP uygulamaları için aşağıdaki temel özellikleri su
 
     ![Karma tabanlı dağıtım](./media/load-balancer-overview/load-balancer-distribution.png)
 
-    *Şekil: Karma tabanlı dağıtım*
+    *Rakam Karma tabanlı dağıtım*
 
 * **Bağlantı noktası iletme**
 
-    Load Balancer ile, IP adresinin belirli bir ön ucundaki belirli bir bağlantı noktasından trafiği sanal ağ içindeki belirli bir arka uçtaki belirli bir bağlantı noktasına iletmek için bir gelen NAT kuralı oluşturabilirsiniz. Bu işlem de yük dengeleme ile aynı karma tabanlı dağıtım kullanılarak gerçekleştirilir. Bu özellikle ilgili yaygın senaryolar Azure Sanal Ağı içindeki VM örnekleriyle kurulan Uzak Masaüstü Protokolü (RDP) veya Secure Shell (SSH) oturumlarıdır. Birden fazla iç uç noktayı aynı ön uç IP adresi üzerindeki farklı bağlantı noktalarına eşleyebilirsiniz. Ön uç IP adreslerini sanal makinelerinize ek atlama kutusunu gerek kalmadan internet üzerinden uzaktan kullanabilirsiniz.
+    Load Balancer ile, IP adresinin belirli bir ön ucundaki belirli bir bağlantı noktasından trafiği sanal ağ içindeki belirli bir arka uçtaki belirli bir bağlantı noktasına iletmek için bir gelen NAT kuralı oluşturabilirsiniz. Bu işlem de yük dengeleme ile aynı karma tabanlı dağıtım kullanılarak gerçekleştirilir. Bu özellikle ilgili yaygın senaryolar Azure Sanal Ağı içindeki VM örnekleriyle kurulan Uzak Masaüstü Protokolü (RDP) veya Secure Shell (SSH) oturumlarıdır. Birden fazla iç uç noktayı aynı ön uç IP adresi üzerindeki farklı bağlantı noktalarına eşleyebilirsiniz. VM 'lerinizi internet üzerinden uzaktan yönetmek için, ek bir sıçrama kutusu gerekmeden, ön uç IP adreslerini kullanabilirsiniz.
 
 * **Uygulamadan bağımsız ve saydam**
 
@@ -88,7 +88,7 @@ Load Balancer, TCP ve UDP uygulamaları için aşağıdaki temel özellikleri su
      
     Load Balancer TCP, HTTP ve HTTPS uç noktaları için [farklı sistem durumu yoklama türleri](load-balancer-custom-probe-overview.md#types) sunar.
 
-    Ayrıca, Klasik bulut Hizmetleri'ni kullanarak, ek bir tür izin verilir:  [Konuk Aracısı](load-balancer-custom-probe-overview.md#guestagent).  Bu seçenek sistem durumu yoklamaları için yalnızca son çare olarak kullanılmalıdır ve diğerleri kullanılabilir durumda olduğunda kullanılması önerilmez.
+    Ayrıca, klasik bulut Hizmetleri kullanılırken ek bir türe izin verilir:  [Konuk Aracısı](load-balancer-custom-probe-overview.md#guestagent).  Bu seçenek sistem durumu yoklamaları için yalnızca son çare olarak kullanılmalıdır ve diğerleri kullanılabilir durumda olduğunda kullanılması önerilmez.
     
 * **Giden bağlantılar (SNAT)**
 
@@ -131,7 +131,7 @@ Aşağıdaki şekilde genel ve 80 numaralı TCP bağlantı noktası için üç V
 
 ![Genel Load Balancer örneği](./media/load-balancer-overview/IC727496.png)
 
-*Şekil: Genel Load Balancer'ı kullanarak Web trafiğini Dengeleme yükleme*
+*Rakam Web trafiğini ortak bir Load Balancer kullanarak yük dengeleme*
 
 İnternet istemcileri 80 numaralı TCP bağlantı noktası üzerinden bir web uygulamasının genel IP adresine istek gönderdiğinde Azure Load Balancer bu isteği yük dengeleme kümesindeki üç VM arasında dağıtır. Load Balancer algoritmaları hakkında daha fazla bilgi için bu makalenin [Load Balancer özellikleri](load-balancer-overview.md##fundamental-load-balancer-features) bölümüne bakın.
 
@@ -139,25 +139,25 @@ Azure Load Balancer ağ trafiğini varsayılan olarak birden fazla VM örneği a
 
 ### <a name = "internalloadbalancer"></a> İç Load Balancer
 
-Bir iç Load Balancer, trafiği yalnızca bir sanal ağın içindeki veya Azure altyapısına bağlanmak için VPN kullanan kaynaklara yönlendirir. İç Load Balancer ile genel Load Balancer arasındaki fark budur. Azure altyapısı erişimi bir sanal ağın yük dengeli ön uç IP adresleriyle sınırlar. ön uç IP adresleri ve sanal ağlar, bir internet uç noktasına hiçbir zaman doğrudan kullanıma sunulur. İç iş kolu uygulamaları Azure'da çalışır ve Azure'dan veya şirket içi kaynaklardan erişim sağlanır.
+Bir iç Load Balancer, trafiği yalnızca bir sanal ağın içindeki veya Azure altyapısına bağlanmak için VPN kullanan kaynaklara yönlendirir. İç Load Balancer ile genel Load Balancer arasındaki fark budur. Azure altyapısı erişimi bir sanal ağın yük dengeli ön uç IP adresleriyle sınırlar. Ön uç IP adresleri ve sanal ağlar hiçbir şekilde doğrudan bir internet uç noktasına gösterilmez. İç iş kolu uygulamaları Azure'da çalışır ve Azure'dan veya şirket içi kaynaklardan erişim sağlanır.
 
 İç Load Balancer, aşağıdaki yük dengeleme türlerini destekler:
 
-* **Bir sanal ağ içindeki**: Vm'lerden sanal ağında bir dizi aynı sanal ağda bulunan VM'ler için Yük Dengeleme.
-* **Şirketler arası sanal ağ için**: Şirket içi bilgisayarlardan bir dizi aynı sanal ağda bulunan VM'ler için yük dengelemeyi. 
-* **Çok katmanlı uygulamalar için**: Yük Dengeleme internet'e yönelik çok katmanlı uygulamalar için arka uç katmanlarından internet'e yönelik olmadığı. Arka uç katmanları için internete yönelik katmandan trafik yük dengelemesi gerekir (aşağıdaki şekilde gösterilmiştir).
-* **Satır iş kolu uygulamaları için**: Yük Dengeleme için ek yük dengeleyici donanım veya yazılım Azure üzerinde barındırılan iş kolu satır uygulama. Bu senaryo, trafiğine yük dengeleme uygulanmış olan bilgisayar kümesinde bulunan şirket içi sunucuları da içerir.
+* **Bir sanal ağ içinde**: Sanal ağdaki VM 'lerden, aynı sanal ağ içinde bulunan bir VM kümesine yük dengeleme.
+* **Şirketler arası sanal ağ için**: Şirket içi bilgisayarlardan aynı sanal ağ içinde bulunan bir VM kümesine yük dengeleme. 
+* **Çok katmanlı uygulamalar için**: Arka uç katmanlarının internet 'e açık olmadığı internet 'e yönelik çok katmanlı uygulamalar için yük dengeleme. Arka uç katmanları için internete yönelik katmandan trafik yük dengelemesi gerekir (aşağıdaki şekilde gösterilmiştir).
+* **İş kolu uygulamaları için**: Ek yük dengeleyici donanım veya yazılım olmadan Azure 'da barındırılan iş kolu uygulamaları için yük dengeleme. Bu senaryo, trafiğine yük dengeleme uygulanmış olan bilgisayar kümesinde bulunan şirket içi sunucuları da içerir.
 
 ![İç Load Balancer örneği](./media/load-balancer-overview/IC744147.png)
 
-*Şekil: Çok katmanlı uygulamalar hem genel hem de iç Yük Dengeleyiciyi kullanarak yük dengelemenin*
+*Rakam Hem genel hem de iç Load Balancer kullanarak çok katmanlı uygulamaların yükünü dengeleme*
 
 ## <a name="pricing"></a>Fiyatlandırma
 
 Standart Load Balancer kullanım ücretlendirilir.
 
-- Yapılandırılmış Yük Dengeleme veya giden kuralları sayısı (gelen NAT kuralları yok sayma toplam kural sayısı karşı)
-- Veri miktarı, gelen ve giden bakılmadan, kural işlendi. 
+- Yapılandırılmış yük dengeleme ve giden kural sayısı (gelen NAT kuralları toplam kural sayısına göre sayılmaz)
+- Kural ne olursa olsun gelen ve giden işlenen veri miktarı. 
 
 Standart Load Balancer fiyatlandırma bilgileri için [Load Balancer fiyatlandırması](https://azure.microsoft.com/pricing/details/load-balancer/) sayfasını inceleyin.
 

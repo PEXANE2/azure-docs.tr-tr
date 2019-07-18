@@ -1,52 +1,41 @@
 ---
 title: Microsoft Azure Data Box Edge'e genel bakış | Microsoft Docs
-description: Azure ağ tabanlı aktarım için fiziksel cihaz kullanan bir depolama çözümü olan Azure Data Box Edge açıklanır.
+description: Azure 'a ağ tabanlı Aktarım için fiziksel bir cihaz kullanan bir depolama çözümü olan Azure Data Box Edge açıklar.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 07/09/2019
+ms.date: 07/17/2019
 ms.author: alkohli
-ms.openlocfilehash: bc6b9662a5d67f6ed315c33444bcb061115fe6d4
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 69580f956b603423ef302353953a45ad5d00391e
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67701468"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305430"
 ---
 # <a name="what-is-azure-data-box-edge"></a>Azure Data Box Edge nedir? 
 
-Azure Data Box Edge verileri işlemenizi ve ağ üzerinden Azure'a göndermenizi sağlayan bir depolama çözümüdür. Bu makalede Data Box Edge çözümüne, avantajlarına, önemli özelliklerine ve bu cihazı dağıtabileceğiniz senaryolara genel bir bakış sağlanır. 
+Azure Data Box Edge ağ veri aktarımı yetenekleri olan, AI özellikli bir uç bilgi işlem cihazıdır. Bu makalede Data Box Edge çözümüne, avantajlarına, önemli özelliklerine ve bu cihazı dağıtabileceğiniz senaryolara genel bir bakış sağlanır. 
 
-Data Box Edge güvenli veri aktarımını hızlandırmak için Microsoft tarafından sağlanan bir fiziksel cihaz kullanır. Fiziksel cihaz sizde durur ve NFS ile SMB protokollerini kullanarak buna verileri yazarsınız. 
-
-Data Box Edge'de Data Box Gateway'in tüm özellikleri bulunur. Bunlara ek olarak Data Box, verileri Azure blok blobuna, sayfa blobuna veya Azure Dosyalarına taşırken analiz etmeye, işlemeye veya filtrelemeye yardımcı olan AI özellikli uç bilgi işlem özellikleriyle donatılmıştır.  
+Data Box Edge bir hizmet olarak donanım çözümüdür. Microsoft, hızlandırılmış AI-ıncapatıes sağlayan ve bir depolama ağ geçidi 'nin tüm özelliklerine sahip olan, yerleşik bir alan programlanabilir geçit dizisi (FPGA) ile birlikte bulut tarafından yönetilen bir cihaz sunar. 
 
 ## <a name="use-cases"></a>Uygulama alanları
 
-Azure Data Box Edge ağ veri aktarımı yetenekleri olan, AI özellikli bir uç bilgi işlem cihazıdır. Burada Data Box Edge'in veri aktarım için kullanılabileceği çeşitli senaryoları bulabilirsiniz.
+Data Box Edge, en kenarda bulunan hızlı Machine Learning (ML) için kullanılabilen ve verileri Azure 'a göndermeden önce ön işleme için kullanılabilecek çeşitli senaryolar aşağıda verilmiştir.
 
-- **Verileri önceden işleme** - Verilerin oluşturulduğu noktanın yakınında kalarak hızla sonuç almak için verileri şirket içinden veya IoT cihazlarından analiz edin. Daha gelişmiş işleme veya daha derin analiz gerçekleştirmek için Data Box Edge veri kümesini eksiksiz bir biçimde buluta aktarır.  Önceden işleme şu amaçlarla kullanılabilir: 
+- **Azure Machine Learning Ile çıkarım** -Data Box Edge, veri buluta gönderilmeden önce üzerinde işlem yapılabilir hızlı sonuçlar almak için ml modellerini çalıştırabilirsiniz. Tam veri kümesi, ML modellerinizi yeniden eğitmeye ve artırmaya devam etmek için isteğe bağlı olarak aktarılabilir. Data Box Edge cihazında Azure ML donanım hızlandırılmış modellerini kullanma hakkında daha fazla bilgi için, bkz. [Data Box Edge Azure ML Hardware hızlandırılmış modellerini dağıtma](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server).
+
+- **Önceden işlem** yapılabilir bir veri kümesi oluşturmak Için verileri Azure 'a göndermeden önce veri dönüştürme. Önceden işleme şu amaçlarla kullanılabilir: 
 
     - Verileri toplama.
-    - Örneğin Kişisel Bilgileri (PII) kaldırmak için verilerde değişiklik yapma.
-    - Bulutta daha derin analiz için gereken verilerin alt kümesini oluşturma ve aktarma.
+    - Verileri değiştirin, örneğin kişisel verileri kaldırmak için.
+    - Depolama ve bant genişliğini iyileştirmek veya daha fazla analiz için verileri alt kümele.
     - IoT Olaylarını analiz etme ve bunlara yanıt verme. 
-
-- **Çıkarım Azure Machine Learning** - Data Box Edge ile, veriler buluta gönderilmeden önce üzerinde işlem yapılabilecek hızlı sonuçlar almak için Machine Learning (ML) modellerini çalıştırabilirsiniz. Tam veri kümesi, ML modelleri yeniden eğitme ve devam etmek için aktarılabilir. Azure ML donanım kullanma hakkında daha fazla bilgi için bkz: hızlandırılmış modellerde veri kutusu Edge cihazı [veri kutusu Edge üzerinde Azure ML dağıtma donanım hızlandırılmış modelleri](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server).
 
 - **Verileri ağ üzerinden Azure'a aktarma** - Daha fazla işlem ve analiz yapmak için veya arşiv amacıyla Data Box Edge kullanarak verileri kolayca ve hızla Azure'a aktarın. 
 
-## <a name="benefits"></a>Avantajlar
-
-Data Box Edge'in şöyle avantajları vardır:
-
-- **Kolay veri aktarımı**- Verileri Azure depolamasında içeri ve dışarı taşımayı, yerel ağ paylaşımıyla çalışma kadar kolaylaştırır.  
-- **Yüksek performans** - Azure'un içine ve dışına yüksek performanslı aktarımlar sağlar. 
-- **Hızlı erişim** - Şirket içi dosyalara hızlı erişim için en son kullanılan dosyaları önbelleğe alır.  
-- **Sınırlı bant genişliği kullanımı** - Yoğun iş saatlerinde kullanımı sınırlandırmak amacıyla ağ kısıtlandığında bile veriler Azure'a yazılabilir.  
-- **Verileri dönüştürme** - Verilerin Azure taşınırken analiz edilmesine, işlenmesine veya filtrelenmesine olanak tanır.
 
 ## <a name="key-capabilities"></a>Temel işlevler
 
@@ -54,15 +43,16 @@ Data Box Edge'in şöyle özellikleri vardır:
 
 |Özellik |Açıklama  |
 |---------|---------|
-|Yüksek performans     | Tümüyle otomatik ve son derece iyileştirilmiş veri aktarımı ve bant genişliği.|
-|Desteklenen protokoller     | Veri alımında standart SMB ve NFS protokolleri için destek. <br> Desteklenen sürümler hakkında daha fazla bilgi için bkz. [Data Box Edge sistem gereksinimleri](data-box-edge-system-requirements.md).|
+|Hızlandırılmış AI ınkrii| Yerleşik FPGA tarafından etkinleştirildi.|
 |Bilgi işlem       |Verilerin analizine, işlenmesine, filtrelenmesine olanak tanır.|
-|Veri erişimi     | Bulutta ek veri işleme için bulut API'lerini kullanarak Azure Depolama Blobları ve Azure Dosyaları'ndan doğrudan veri erişimi.|
-|Hızlı erişim     | En son kullanılan dosyalara hızlı erişim için cihazda yerel önbellek.|
+|Yüksek performans | Yüksek performanslı işlem ve veri aktarımları.|
+|Veri erişimi     | Bulutta ek veri işleme için bulut API'lerini kullanarak Azure Depolama Blobları ve Azure Dosyaları'ndan doğrudan veri erişimi. Cihazdaki yerel önbellek, en son kullanılan dosyalara hızlı erişim için kullanılır.|
+|Bulutta yönetilen     |Cihaz ve hizmet, Azure portal aracılığıyla yönetilir.  |
 |Çevrimdışı karşıya yükleme     | Bağlantısız mod, çevrimdışı karşıya yükleme senaryolarını destekler.|
+|Desteklenen protokoller     | Veri alımında standart SMB ve NFS protokolleri için destek. <br> Desteklenen sürümler hakkında daha fazla bilgi için bkz. [Data Box Edge sistem gereksinimleri](data-box-edge-system-requirements.md).|
 |Veri yenileme     | Yerel dosyaları buluttaki en son sürümle yenileme olanağı.|
-|Şifreleme    | Verileri yerel olarak şifrelemek ve *https* üzerinden buluta veri aktarımının güvenliğini sağlamak için BitLocker desteği.       |
-|Dayanıklılık     | Yerleşik ağ dayanıklılığı.        |
+|Şifreleme    | Verileri yerel olarak şifrelemek ve *https* üzerinden buluta veri aktarımının güvenliğini sağlamak için BitLocker desteği.|
+|Bant genişliği azaltma| Yoğun saatlerde bant genişliği kullanımını sınırlandırmaya kısıtlama.|
 
 
 ## <a name="components"></a>Bileşenler
@@ -75,7 +65,7 @@ Data Box Edge çözümü Data Box Edge kaynağından, Data Box Edge fiziksel cih
 
     <!--![The Data Box Edge service in Azure portal](media/data-box-overview/data-box-Edge-service1.png)-->
 
-    Daha fazla bilgi için Git [veri kutusu Edge cihazınız için bir sipariş oluşturma](data-box-edge-deploy-prep.md#create-a-new-resource).
+    Daha fazla bilgi için [Data Box Edge cihazınız için sipariş oluşturma](data-box-edge-deploy-prep.md#create-a-new-resource)bölümüne gidin.
 
 * **Data Box yerel web kullanıcı arabirimi** - Tanılama çalıştırmak, Data Box Edge cihazını kapatmak ve yeniden başlatmak, kopya günlüklerini görüntülemek ve hizmet isteğinde bulunmak üzere Microsoft Desteği'ne başvurmak için yerel web kullanıcı arabirimini kullanın.
 
@@ -88,9 +78,9 @@ Data Box Edge çözümü Data Box Edge kaynağından, Data Box Edge fiziksel cih
 
 Data Box Edge fiziksel cihazı, Azure kaynağı ve verileri aktardığınız hedef depolama hesabının üçünün de aynı bölgede bulunması gerekmez.
 
-- **Kaynak kullanılabilirliği** - gidin, kullanılabilir veri kutusu Edge kaynak olduğu bölgelerin listesi için [Azure bölgelere göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Veri kutusu Edge ayrıca Azure kamu bulutunda dağıtılabilir. Daha fazla bilgi için [Azure Government nedir?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome).
+- **Kaynak kullanılabilirliği** -Data Box Edge kaynağın kullanılabildiği tüm bölgelerin listesi için, [bölgeye göre kullanılabilir Azure ürünlerine](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)gidin. Data Box Edge, Azure Kamu Bulutu 'nda da dağıtılabilir. Daha fazla bilgi için bkz. [Azure Kamu nedir?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome).
     
-- **Hedef Depolama hesapları**: Verilerin depolandığı depolama hesapları, tüm Azure bölgelerinde sağlanır. Depolama hesapları veri kutusu kenar verileri depoladığınız bölgeleri cihaz için en iyi performansı bulunduğu yeri yakın bulunması gerekir. Cihazdan uzağa konumlandırılan depolama hesabı uzun gecikme sürelerine ve daha yavaş bir performansa yol açar. 
+- **Hedef Depolama hesapları**: Verilerin depolandığı depolama hesapları, tüm Azure bölgelerinde sağlanır. Depolama hesaplarının Data Box Edge verilerini depolayan bölgeler, cihazın en iyi performans için bulunduğu yere yakın yerde yerleştirilmelidir. Cihazdan uzağa konumlandırılan depolama hesabı uzun gecikme sürelerine ve daha yavaş bir performansa yol açar. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
