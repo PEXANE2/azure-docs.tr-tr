@@ -1,5 +1,5 @@
 ---
-title: SQL API'si için Azure Cosmos DB için node.js Öğreticisi
+title: Azure Cosmos DB için SQL API için Node. js öğreticisi
 description: SQL API ile Azure Cosmos DB bağlantısı kurma ve sorgulama yapma adımlarını gösteren bir Node.js öğreticisi
 author: deborahc
 ms.service: cosmos-db
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 06/05/2019
 ms.author: dech
 Customer intent: As a developer, I want to build a Node.js console application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: c98d52e95a285c2979742c8572a86718238548f4
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: ba1ec821bd25e3b9f4479c3d09fdf5ab981ab0a7
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67985636"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305520"
 ---
-# <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Öğretici: Azure Cosmos DB SQL API verileri yönetmek için JavaScript SDK ile bir Node.js konsol uygulaması oluşturma
+# <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Öğretici: Azure Cosmos DB SQL API verilerini yönetmek için JavaScript SDK ile Node. js konsol uygulaması oluşturma
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
@@ -25,17 +25,17 @@ ms.locfileid: "67985636"
 > * [Node.js](sql-api-nodejs-get-started.md)
 > 
 
-Bir geliştirici olarak, NoSQL belge verileri kullanan uygulamalar olabilir. Azure Cosmos DB SQL API hesabı, depolamak ve bu belge verilere erişmek için kullanabilirsiniz. Bu öğreticide, Azure Cosmos DB kaynaklarını oluşturmak ve bunları sorgulamak için bir Node.js konsol uygulaması oluşturma işlemini göstermektedir.
+Geliştirici olarak, NoSQL belge verileri kullanan uygulamalarınız olabilir. Bu belge verilerini depolamak ve erişmek için Azure Cosmos DB bir SQL API hesabı kullanabilirsiniz. Bu öğreticide, Azure Cosmos DB kaynakları oluşturmak ve sorgulamak için bir Node. js konsol uygulaması oluşturma işlemlerinin nasıl yapılacağı gösterilmektedir.
 
 Bu öğreticide şunları yapacaksınız:
 
 > [!div class="checklist"]
-> * Oluşturma ve bir Azure Cosmos DB hesabına bağlanın.
-> * Uygulamanızı ayarlama.
+> * Azure Cosmos DB bir hesap oluşturun ve bir hesabı bağlayın.
+> * Uygulamanızı ayarlayın.
 > * Bir veritabanı oluşturun.
 > * Bir kapsayıcı oluşturun.
-> * Öğeleri kapsayıcıya ekleyin.
-> * Temel öğeleri, kapsayıcı ve veritabanı işlemleri.
+> * Kapsayıcıya öğe ekleyin.
+> * Öğeler, kapsayıcı ve veritabanı üzerinde temel işlemleri gerçekleştirin.
 
 ## <a name="prerequisites"></a>Önkoşullar 
 
@@ -45,17 +45,17 @@ Aşağıdaki kaynaklara sahip olduğunuzdan emin olun:
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-* [Node.js](https://nodejs.org/) v6.0.0 veya üzeri.
+* [Node. js](https://nodejs.org/) v 6.0.0 veya üzeri.
 
-## <a name="create-azure-cosmos-db-account"></a>Azure Cosmos DB hesabı oluşturma
+## <a name="create-azure-cosmos-db-account"></a>Azure Cosmos DB hesabı oluştur
 
 Bir Azure Cosmos DB hesabı oluşturalım. Kullanmak istediğiniz bir hesap zaten varsa [Node.js uygulamanızı ayarlama](#SetupNode) adımına atlayabilirsiniz. Azure Cosmos DB Öykünücüsü’nü kullanıyorsanız öykünücünün kurulumunu gerçekleştirmek için [Azure Cosmos DB Öykünücüsü](local-emulator.md) konusundaki adımları izleyin ve [Node.js uygulamanızı ayarlama](#SetupNode) adımına atlayın. 
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a id="SetupNode"></a>Node.js uygulamanızı ayarlama
+## <a id="SetupNode"></a>Node. js uygulamanızı ayarlama
 
-Uygulamayı oluşturmak için kod yazmaya başlamadan önce uygulamanız için framework oluşturabilirsiniz. Framework kod Node.js uygulamanızı ayarlama için aşağıdaki adımları çalıştırın:
+Uygulamayı derlemek için kod yazmaya başlamadan önce, uygulamanızın çerçevesini oluşturabilirsiniz. Çerçeve kodu olan Node. js uygulamanızı ayarlamak için aşağıdaki adımları çalıştırın:
 
 1. Sık kullandığınız terminali açın.
 2. Node.js uygulamanızı kaydetmek istediğiniz klasör veya dizini bulun.
@@ -69,15 +69,15 @@ Uygulamayı oluşturmak için kod yazmaya başlamadan önce uygulamanız için f
      * ```touch app.js```
      * ```touch config.js```
 
-4. Oluşturma ve başlatma bir `package.json` dosya. Aşağıdaki komutu kullanın:
+4. Bir `package.json` dosya oluşturun ve başlatın. Aşağıdaki komutu kullanın:
    * ```npm init -y```
 
 5. npm aracılığıyla @azure/cosmos modülünü yükleyin. Aşağıdaki komutu kullanın:
    * ```npm install @azure/cosmos --save```
 
-## <a id="Config"></a>Uygulamanızın yapılandırmalarını ayarlama
+## <a id="Config"></a>Uygulamanızın yapılandırmasını ayarlama
 
-Uygulamanızı var, Azure Cosmos DB'ye konuşabilirsiniz emin olmanız gerekir. Birkaç yapılandırma ayarlarını güncelleştirerek, aşağıdaki adımlarda gösterildiği gibi Azure Cosmos DB'ye konuşmasını ister ayarlayabilirsiniz:
+Artık uygulamanız mevcut olduğuna göre, Azure Cosmos DB konuştuğunu unutmayın. Aşağıdaki adımlarda gösterildiği gibi, birkaç yapılandırma ayarını güncelleştirerek uygulamanızı Azure Cosmos DB konuşacak şekilde ayarlayabilirsiniz:
 
 1. Sık kullandığınız metin düzenleyicisinde ```config.js``` öğesini açın.
 
@@ -93,15 +93,15 @@ Uygulamanızı var, Azure Cosmos DB'ye konuşabilirsiniz emin olmanız gerekir. 
    config.primaryKey = "~your primary key here~";
    ``` 
 
-1. Aşağıdaki ```database```, ```container``` ve ```items``` verilerini kopyalayıp ```config.endpoint``` ve ```config.primaryKey``` özelliklerini ayarladığınız ```config``` nesnenize yapıştırın. Veritabanınızda depolamak istediğiniz veriler zaten varsa, verileri burada tanımlamak yerine Azure Cosmos DB veri geçiş aracı kullanabilirsiniz. Aşağıdaki kod, config.js. dosyasına sahip olmalıdır:
+1. Aşağıdaki ```database```, ```container``` ve ```items``` verilerini kopyalayıp ```config.endpoint``` ve ```config.primaryKey``` özelliklerini ayarladığınız ```config``` nesnenize yapıştırın. Veritabanınızda depolamak istediğiniz veriler zaten varsa, verileri burada tanımlamak yerine Azure Cosmos DB içindeki veri geçiş aracını kullanabilirsiniz. Config. js dosyanız aşağıdaki koda sahip olmalıdır:
 
    [!code-javascript[nodejs-get-started](~/cosmosdb-nodejs-get-started/config.js)]
 
-   JavaScript SDK'sını kullanan genel koşulları *kapsayıcı* ve *öğesi*. Bir kapsayıcı koleksiyon, grafik veya tablo olabilir. Öğe de kapsayıcının içinde bulunan belge, kenar/köşe veya satır olabilir. 
+   JavaScript SDK Genel terimler *kapsayıcısını* ve *öğesini*kullanır. Bir kapsayıcı koleksiyon, grafik veya tablo olabilir. Öğe de kapsayıcının içinde bulunan belge, kenar/köşe veya satır olabilir. 
    
-   `module.exports = config;` dışarı aktarma için kullanılan kod, ```config``` nesne içinde başvurabilir, böylece ```app.js``` dosya.
+   `module.exports = config;`kod, ```app.js``` dosyanızın içinde başvurabilmeniz ```config``` için, nesnenizin dışarı aktarılması için kullanılır.
 
-## <a id="Connect"></a>Bir Azure Cosmos DB hesabına bağlanma
+## <a id="Connect"></a>Azure Cosmos DB hesabına bağlanma
 
 1. Bir metin düzenleyicisinde boş ```app.js``` dosyanızı açın. ```@azure/cosmos``` modülünü ve yeni oluşturduğunuz ```config``` modülünü içeri aktarmak için aşağıdaki kodu kopyalayıp yapıştırın.
 
@@ -125,10 +125,11 @@ Uygulamanızı var, Azure Cosmos DB'ye konuşabilirsiniz emin olmanız gerekir. 
    ```
    
 > [!Note]
-> Bağlanma, **Cosmos DB öykünücüsü'nü**, özel bir bağlantı ilkesi oluşturarak SSL doğrulamayı devre dışı.
+> **Cosmos DB öykünücüye**bağlanıyorsanız, özel bir bağlantı ILKESI oluşturarak SSL doğrulamasını devre dışı bırakın.
 >   ```
->   const connectionPolicy = new cosmos.ConnectionPolicy ()
->   connectionPolicy.DisableSSLVerification = true
+>   const ConnectionPolicy = require('@azure/cosmos').ConnectionPolicy;
+>   const connectionPolicy = new ConnectionPolicy();
+>   connectionPolicy.DisableSSLVerification = true;
 >
 >   const client = new CosmosClient({ endpoint: endpoint, auth: { masterKey: masterKey }, connectionPolicy });
 >   ```
@@ -137,7 +138,7 @@ Artık Azure Cosmos DB istemcisini başlatmaya yarayacak koda sahip olduğunuza 
 
 ## <a name="create-a-database"></a>Veritabanı oluşturma
 
-1. Veritabanı kimliği ve kapsayıcı kimliği ayarlamak için aşağıdaki kodu kopyalayıp yapıştırın Bu kimlikleri, Azure Cosmos DB istemcisinin doğru veritabanı ve kapsayıcı nasıl bulma şeklidir.
+1. Veritabanı KIMLIĞINI ve kapsayıcı KIMLIĞINI ayarlamak için aşağıdaki kodu kopyalayın ve yapıştırın. Bu kimlikler Azure Cosmos DB istemcisinin doğru veritabanını ve kapsayıcıyı bulmasını sağlayacaktır.
 
    ```javascript
    const client = new CosmosClient({ endpoint: endpoint, auth: { masterKey: masterKey } });
@@ -150,9 +151,9 @@ Artık Azure Cosmos DB istemcisini başlatmaya yarayacak koda sahip olduğunuza 
    const partitionKey = { kind: "Hash", paths: ["/Country"] };
    ```
 
-   Bir veritabanını kullanarak oluşturulabilir `createIfNotExists` veya işlevi oluşturma **veritabanları** sınıfı. Veritabanı, kapsayıcılar genelinde bölümlenmiş öğelerin mantıksal bir kapsayıcısıdır. 
+   Bir veritabanı, `createIfNotExists` **Databases** sınıfının ya da Create işlevi kullanılarak oluşturulabilir. Veritabanı, kapsayıcılar genelinde bölümlenmiş öğelerin mantıksal bir kapsayıcısıdır. 
 
-2. **createDatabase** ve **readDatabase** yöntemlerini kopyalayıp app.js dosyasında ```databaseId``` ve ```containerId``` tanımlarının altına yapıştırın. **CreateDatabase** işlevi kimliği ile yeni bir veritabanı oluşturur ```FamilyDatabase```, belirtilen ```config``` zaten mevcut değilse nesne. **readDatabase** işlevi, veritabanının mevcut olduğundan emin olmak için veritabanı tanımını okur.
+2. **createDatabase** ve **readDatabase** yöntemlerini kopyalayıp app.js dosyasında ```databaseId``` ve ```containerId``` tanımlarının altına yapıştırın. **CreateDatabase** işlevi, zaten yoksa ```FamilyDatabase``` ```config``` nesnesinden belirtilen kimliğe sahip yeni bir veritabanı oluşturur. **readDatabase** işlevi, veritabanının mevcut olduğundan emin olmak için veritabanı tanımını okur.
 
    ```javascript
    /**
@@ -252,14 +253,14 @@ Artık Azure Cosmos DB istemcisini başlatmaya yarayacak koda sahip olduğunuza 
    node app.js
    ```
 
-## <a id="CreateContainer"></a>Bir kapsayıcı oluşturma
+## <a id="CreateContainer"></a>Kapsayıcı oluşturma
 
-Böylece depolamak ve sorgulamak, ardından Azure Cosmos DB hesabı içinde bir kapsayıcı oluşturun. 
+Ardından, verileri depolayabilmeniz ve sorgulayabilmeniz için Azure Cosmos DB hesabı içinde bir kapsayıcı oluşturun. 
 
 > [!WARNING]
-> Fiyatlandırmaya olan bir kapsayıcı oluşturma. Ziyaret bizim [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/cosmos-db/) beklenmesi gerekenler bilmesi.
+> Bir kapsayıcının oluşturulması fiyatlandırma etkilerine sahiptir. Beklendiklerinizi bilmeniz için [fiyatlandırma](https://azure.microsoft.com/pricing/details/cosmos-db/) sayfamızı ziyaret edin.
 
-Bir kapsayıcı kullanarak oluşturulabilir `createIfNotExists` veya işlevden oluşturma **kapsayıcıları** sınıfı.  Kapsayıcı öğelerden (SQL API kullanıldığında JSON belgeleri) ve ilişkili JavaScript uygulama mantığından oluşur.
+Bir kapsayıcı, `createIfNotExists` **kapsayıcılar** sınıfından or oluşturma işlevi kullanılarak oluşturulabilir.  Kapsayıcı öğelerden (SQL API kullanıldığında JSON belgeleri) ve ilişkili JavaScript uygulama mantığından oluşur.
 
 1. **createContainer** ve **readContainer** işlevini kopyalayıp app.js dosyasında **readDatabase** işlevinin altına yapıştırın. **createContainer** işlevi mevcut değilse ```config``` nesnesiyle belirtilen ```containerId``` bilgisine sahip yeni bir kapsayıcı oluşturur. **readContainer** işlevi, kapsayıcının mevcut olduğundan emin olmak için kapsayıcı tanımını okur.
 
@@ -376,11 +377,11 @@ Bir kapsayıcı kullanarak oluşturulabilir `createIfNotExists` veya işlevden o
    node app.js
    ```
 
-## <a id="CreateItem"></a>Bir öğe oluşturun
+## <a id="CreateItem"></a>Öğe oluşturma
 
-Bir öğe oluşturma işlevi kullanılarak oluşturulabilir. **öğeleri** sınıfı. SQL API'sini kullanırken, öğeleri kullanıcı tanımlı (rastgele) JSON içeriği olan belgeleri olarak yansıtılan. Artık Azure Cosmos DB'ye bir öğe ekleyebilirsiniz.
+**Öğeler** sınıfının Create işlevi kullanılarak bir öğe oluşturulabilir. SQL API 'sini kullanırken öğeler, Kullanıcı tanımlı (rastgele) JSON içeriği olan belgeler olarak yansıtılacaktır. Artık Azure Cosmos DB'ye bir öğe ekleyebilirsiniz.
 
-1. **createFamilyItem** işlevini kopyalayıp **readContainer** işlevinin altına yapıştırın. **createFamilyItem** işlevi, ```config``` nesnesinde kaydedilen JSON verilerini içeren öğeleri oluşturur. Aynı Kimliğe sahip bir öğe zaten oluşturmadan önce mevcut değil emin olmak için kontrol edeceğiz.
+1. **createFamilyItem** işlevini kopyalayıp **readContainer** işlevinin altına yapıştırın. **createFamilyItem** işlevi, ```config``` nesnesinde kaydedilen JSON verilerini içeren öğeleri oluşturur. Aynı KIMLIĞE sahip bir öğenin oluşturmadan önce mevcut olmadığından emin olmak için denetliyoruz.
 
    ```javascript
    /**
@@ -418,7 +419,7 @@ Bir öğe oluşturma işlevi kullanılarak oluşturulabilir. **öğeleri** sın�
 
 ## <a id="Query"></a>Azure Cosmos DB kaynaklarını sorgulama
 
-Azure Cosmos DB, her bir kapsayıcıda depolanan JSON belgeleri zengin sorguları destekler. Aşağıdaki örnek kod, kapsayıcınızdaki belgeler için çalıştırabileceğiniz bir sorguyu gösterir.
+Azure Cosmos DB, her kapsayıcıda depolanan JSON belgelerine karşı zengin sorguları destekler. Aşağıdaki örnek kod, kapsayıcınızdaki belgeler için çalıştırabileceğiniz bir sorguyu gösterir.
 
 1. **queryContainer** işlevini kopyalayıp app.js dosyasındaki **createFamilyItem** işlevinin altına yapıştırın. Azure Cosmos DB, aşağıda gösterildiği gibi SQL benzeri sorguları destekler.
 
@@ -473,7 +474,7 @@ Azure Cosmos DB, her bir kapsayıcıda depolanan JSON belgeleri zengin sorgular�
    ```
 
 
-## <a id="ReplaceItem"></a>Öğeyi değiştirin
+## <a id="ReplaceItem"></a>Bir öğeyi değiştirme
 Azure Cosmos DB, öğelerin içeriğini değiştirmeyi destekler.
 
 1. **replaceFamilyItem** işlevini kopyalayıp app.js dosyasındaki **queryContainer** işlevinin altına yapıştırın. Alt öğenin 'grade' özelliğini 6 yerine 5 olarak değiştirdiğimize dikkat edin.
@@ -518,7 +519,7 @@ Azure Cosmos DB, öğelerin içeriğini değiştirmeyi destekler.
    ```
 
 
-## <a id="DeleteItem"></a>Öğeyi Sil
+## <a id="DeleteItem"></a>Öğe silme
 
 Azure Cosmos DB, JSON öğelerini silmeyi destekler.
 
@@ -600,7 +601,7 @@ Oluşturulan veritabanı silindiğinde, veritabanı ve tüm alt kaynaklar (kapsa
       .catch((error) => { exit(`Completed with error ${JSON.stringify(error)}`) });
    ```
 
-## <a id="Run"></a>Node.js uygulamanızı çalıştırın
+## <a id="Run"></a>Node. js uygulamanızı çalıştırma
 
 Kodunuzun son hali şu şekilde olmalıdır:
 
@@ -655,16 +656,16 @@ Başlarken uygulamanızın çıktısını görmeniz gerekir. Çıktı aşağıda
 
 Bu öğreticideki adımları tamamlama fırsatınız olmadıysa veya yalnızca kodu indirmek isterseniz [GitHub](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-nodejs-getting-started )'dan ulaşabilirsiniz. 
 
-Bu makaledeki tüm kodu içeren alınırken başlangıç çözümü çalıştırmak için ihtiyacınız olacak: 
+Bu makaledeki tüm kodu içeren başlangıç çözümünü çalıştırmak için şunlar gerekir: 
 
-* Bir [Azure Cosmos DB hesabı][create-account]. 
+* [Azure Cosmos DB hesabı][create-account]. 
 * GitHub'da bulunan [Başlangıç](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-nodejs-getting-started) çözümü. 
 
-Proje bağımlılıklarınızı npm aracılığıyla yükleyin. Aşağıdaki komutu kullanın: 
+Projenin bağımlılıklarını NPM aracılığıyla yükler. Aşağıdaki komutu kullanın: 
 
 * ```npm install``` 
 
-Ardından ```config.js``` dosyasında, config.endpoint ve config.primaryKey açıklandığı gibi güncelleştirin [3. adım: Uygulamanızın yapılandırmalarını ayarlama](#Config).  
+Ardından, [dosyasında, config. Endpoint ve config. PrimaryKey değerlerini adım 3 ' te açıklandığı şekilde güncelleştirin: ```config.js``` Uygulamanızın yapılandırmasını](#Config)ayarlayın.  
 
 Ardından terminalinizde ```app.js``` dosyanızı bulun ve şu komutu çalıştırın:  
 
@@ -674,12 +675,12 @@ node app.js
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu kaynaklar artık gerekli olmadığında kaynak grubunu, Azure Cosmos DB hesabı ve tüm ilgili kaynakları silin. Bunu yapmak için Azure Cosmos DB hesabı için select kullandığınız kaynak grubunu seçin. **Sil**ve ardından silmek için kaynak grubunun adını onaylayın.
+Bu kaynaklara artık ihtiyaç duyulmadığında, kaynak grubunu, Azure Cosmos DB hesabı ve tüm ilgili kaynakları silebilirsiniz. Bunu yapmak için Azure Cosmos DB hesabı için kullandığınız kaynak grubunu seçin, **Sil**' i seçin ve ardından silinecek kaynak grubunun adını onaylayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Bir Azure Cosmos DB hesabı izleme](monitor-accounts.md)
+> [Azure Cosmos DB bir hesabı izleme](monitor-accounts.md)
 
 [create-account]: create-sql-api-dotnet.md#create-account
 [keys]: media/sql-api-nodejs-get-started/node-js-tutorial-keys.png

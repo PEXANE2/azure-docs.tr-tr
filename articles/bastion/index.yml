@@ -30,6 +30,6 @@ sections:
         style: unordered
         items:
           - html: <a href="/azure/bastion/bastion-create-host-portal">Azure Bastion konağı oluşturma ve değiştirme</a>
-          - html: <a href="/azure/bastion/bastion-connect-vm-ssh">Bir Windows sanal makinesine bağlanma</a>
-          - html: <a href="/azure/bastion/bastion-connect-vm-rdp">Bir Linux sanal makinesine bağlanma</a>
+          - html: <a href="/azure/bastion/bastion-connect-vm-rdp">Bir Windows sanal makinesine bağlanma</a>
+          - html: <a href="/azure/bastion/bastion-connect-vm-ssh">Bir Linux sanal makinesine bağlanma</a>
           - html: <a href="/azure/bastion/bastion-faq">Azure Bastion hakkında SSS’yi okuyun</a>
