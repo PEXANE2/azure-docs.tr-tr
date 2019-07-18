@@ -1,7 +1,7 @@
 ---
-title: Windows - Azure App Service'te Java web uygulaması oluşturma
-description: Bu hızlı başlangıçta, ilk Java Merhaba Dünya uygulamanızı Windows üzerinde Azure App Service'te dakikalar içinde dağıtın.
-keywords: Azure app service, web uygulaması, windows, java, maven, hızlı başlangıç
+title: Windows 'de Java Web uygulaması oluşturma-Azure App Service
+description: Bu hızlı başlangıçta, Windows 'da Azure App Service ilk Java Merhaba Dünya dakikalar içinde dağıtırsınız.
+keywords: Azure, App Service, Web uygulaması, Windows, Java, Maven, hızlı başlangıç
 services: app-service\web
 documentationcenter: ''
 author: msangapu-msft
@@ -16,23 +16,23 @@ ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: jafreebe
 ms.custom: mvc
-ms.openlocfilehash: 0ca50bae0748570932c7a4cc3bb10cde17c940f5
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 1e25f65cf7ec52b4a58386843a1d2f5796c66e65
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67617719"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297351"
 ---
-# <a name="quickstart-create-a-java-app-in-app-service"></a>Hızlı Başlangıç: App Service'te bir Java uygulaması oluşturma
+# <a name="quickstart-create-a-java-app-in-app-service"></a>Hızlı Başlangıç: App Service bir Java uygulaması oluşturma
 
 > [!NOTE]
-> Bu makalede bir uygulamanın Windows üzerinde App Service'e dağıtımı yapılır. App Service dağıtmak için _Linux_, bkz: [Linux üzerinde web uygulaması oluşturma Java](./containers/quickstart-java.md).
+> Bu makalede bir uygulamanın Windows üzerinde App Service'e dağıtımı yapılır. _Linux_üzerinde App Service dağıtmak için bkz. [Linux üzerinde Java Web uygulaması oluşturma](./containers/quickstart-java.md).
 >
 
-[Azure App Service](overview.md), yüksek oranda ölçeklenebilen, kendi kendine düzeltme eki uygulayan bir web barındırma hizmeti sunar.  Bu hızlı başlangıçta nasıl kullanılacağını gösterir [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) ile [Azure App Service için Maven Plugin](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) bir Java web arşivi (WAR) dosyasına dağıtılacak.
+[Azure App Service](overview.md), yüksek oranda ölçeklenebilen, kendi kendine düzeltme eki uygulayan bir web barındırma hizmeti sunar.  Bu hızlı başlangıçta, Java Web arşivi (WAR) dosyasını dağıtmak üzere [Azure App Service Için Maven eklentisi](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) Ile [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 'nın nasıl kullanılacağı gösterilmektedir.
 
 > [!NOTE]
-> Aynı şeyi de yapılabilir Intellij ve Eclipse gibi popüler Ide'leri kullanarak. Bizim benzer belgeleri kullanıma [Intellij Hızlı Başlangıç için Azure Araç Seti](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app) veya [Eclipse Hızlı Başlangıç için Azure Araç Seti](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app).
+> Aynı şey, IntelliJ ve tutulma gibi popüler Ides 'ler kullanılarak da yapılabilir. [Azure Toolkit for IntelliJ hızlı](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app) başlangıç veya [Azure Toolkit for Eclipse hızlı başlangıç](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app)aşamasında benzer belgelerimize göz atın.
 >
 ![Azure'da çalışan örnek uygulama](./media/app-service-web-get-started-java/java-hello-world-in-browser.png)
 
@@ -42,7 +42,7 @@ ms.locfileid: "67617719"
 
 ## <a name="create-a-java-app"></a>Java uygulaması oluşturma
 
-Cloud Shell isteminde adlı yeni bir uygulama oluşturmak için aşağıdaki Maven komutunu yürütün `helloworld`:
+Aşağıdaki Maven komutunu Cloud Shell istemine yürütün, adlı `helloworld`yeni bir uygulama oluşturun:
 
 ```bash
 mvn archetype:generate -DgroupId=example.demo -DartifactId=helloworld -DarchetypeArtifactId=maven-archetype-webapp
@@ -66,7 +66,7 @@ Sonra `pom.xml` dosyasının `<build>` öğesinin içine aşağıdaki eklenti ta
     <plugin>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>azure-webapp-maven-plugin</artifactId>
-        <version>1.6.0</version>
+        <version>1.7.0</version>
         <configuration>
             <!-- Specify v2 schema -->
             <schemaVersion>v2</schemaVersion>
@@ -104,10 +104,10 @@ Eklenti yapılandırmasında aşağıdaki yer tutucuları güncelleştirin:
 
 | Yer tutucu | Açıklama |
 | ----------- | ----------- |
-| `SUBSCRIPTION_ID` | Uygulamanıza dağıtmak istediğiniz abonelik benzersiz kimliği. Cloud Shell veya CLI kullanarak varsayılan aboneliğin kimliği bulunabilir `az account show` komutu. Kullanılabilir abonelikler tüm için kullanmak `az account list` komutu.|
-| `RESOURCEGROUP_NAME` | Uygulamanızın oluşturulacağı yeni kaynak grubunun adı. Uygulamanın tüm kaynaklarını bir gruba koyarak birlikte yönetebilirsiniz. Örneğin, kaynak grubunu sildiğinizde uygulamayla ilişkili tüm kaynaklar da silinir. Bu değer bir benzersiz yeni kaynak grubu adı ile Örneğin, güncelleştirme *myResourceGroup*. Bu kaynak grubunu daha sonraki bir bölümde tüm Azure kaynaklarını temizlemek için kullanacaksınız. |
-| `WEBAPP_NAME` | Uygulama adı (WEBAPP_NAME.azurewebsites.net) Azure'a dağıtırken uygulama için ana bilgisayar adı bölümü olacaktır. Bu değer Java uygulamanızı örneğin barındıracak yeni App Service uygulaması için benzersiz bir adla güncelleştirin *contoso*. |
-| `REGION` | Uygulamanın barındırıldığı, örneğin bir Azure bölgesi *westus2*. Cloud Shell'den veya CLI'dan `az account list-locations` komutunu kullanarak bölgelerin bir listesini alabilirsiniz. |
+| `SUBSCRIPTION_ID` | Uygulamanızı dağıtmak istediğiniz aboneliğin benzersiz KIMLIĞI. Varsayılan aboneliğin kimliği, Cloud Shell veya CLI 'dan `az account show` komutunu kullanarak bulunabilir. Tüm kullanılabilir abonelikler için `az account list` komutunu kullanın.|
+| `RESOURCEGROUP_NAME` | Uygulamanızın oluşturulacağı yeni kaynak grubunun adı. Uygulamanın tüm kaynaklarını bir gruba koyarak birlikte yönetebilirsiniz. Örneğin, kaynak grubunu sildiğinizde uygulamayla ilişkili tüm kaynaklar da silinir. Bu değeri, benzersiz bir yeni kaynak grubu adı (örneğin, *Myresourcegroup*) ile güncelleştirin. Bu kaynak grubunu daha sonraki bir bölümde tüm Azure kaynaklarını temizlemek için kullanacaksınız. |
+| `WEBAPP_NAME` | Uygulama adı, Azure 'a dağıtıldığında uygulamanın ana bilgisayar adının bir parçası olacaktır (WEBAPP_NAME. azurewebsites. net). Bu değeri, Java uygulamanızı barındıracak yeni App Service uygulaması için benzersiz bir adla güncelleştirin. Örneğin, *contoso*. |
+| `REGION` | Uygulamanın barındırıldığı bir Azure bölgesi; Örneğin, *westus2*. Cloud Shell'den veya CLI'dan `az account list-locations` komutunu kullanarak bölgelerin bir listesini alabilirsiniz. |
 
 ## <a name="deploy-the-app"></a>Uygulamayı dağıtma
 
@@ -121,14 +121,14 @@ Dağıtım tamamlandıktan sonra, web tarayıcınızda aşağıdaki URL’yi kul
 
 ![Azure'da çalışan örnek uygulama](./media/app-service-web-get-started-java/java-hello-world-in-browser.png)
 
-**Tebrikler!** Windows üzerinde App Service'e ilk Java uygulamanızı dağıttınız.
+**Tebrikler!** Windows üzerinde App Service için ilk Java uygulamanızı dağıttınız.
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure için Java geliştiricilerinin kaynakları](/java/azure/)
+> [Java geliştiricileri için Azure kaynakları](/java/azure/)
 
 > [!div class="nextstepaction"]
 > [Özel etki alanı eşleme](app-service-web-tutorial-custom-domain.md)

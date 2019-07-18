@@ -8,58 +8,58 @@ ms.custom: ''
 ms.devlang: go
 ms.topic: quickstart
 author: David-Engel
-ms.author: v-daveng
+ms.author: craigg
 ms.reviewer: MightyPen
 manager: craigg
 ms.date: 02/12/2019
-ms.openlocfilehash: 0014dc0edde0eafc153b40eec06c6bd6dc8446b5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 25de6fc2d752020ea47913bf6a4666735026b96f
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61409114"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67871672"
 ---
-# <a name="quickstart-use-golang-to-query-an-azure-sql-database"></a>Hızlı Başlangıç: Azure SQL veritabanını sorgulamaya Golang kullanın
+# <a name="quickstart-use-golang-to-query-an-azure-sql-database"></a>Hızlı Başlangıç: Golang kullanarak bir Azure SQL veritabanını sorgulama
 
-Bu hızlı başlangıçta kullanacaksınız [Golang](https://godoc.org/github.com/denisenkom/go-mssqldb) programlama dilini kullanarak Azure SQL veritabanına bağlanmak için. Ardından, verileri sorgulamak ve değiştirmek için Transact-SQL deyimleri çalıştıracaksınız. [Golang](https://golang.org/) basit, güvenilir ve verimli yazılım kolaylaştıran bir açık kaynak programlama dilidir.  
+Bu hızlı başlangıçta, bir Azure SQL veritabanına bağlanmak için [Golang](https://godoc.org/github.com/denisenkom/go-mssqldb) programlama dilini kullanacaksınız. Ardından, verileri sorgulamak ve değiştirmek için Transact-SQL deyimlerini çalıştıracaksınız. [Golang](https://golang.org/) basit, güvenilir ve verimli yazılım oluşturmayı kolaylaştıran açık kaynaklı bir programlama dilidir.  
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
-- Bir Azure SQL veritabanı. Şu hızlı başlangıçlardan biriyle oluşturmak ve ardından bir veritabanını Azure SQL veritabanı'nda yapılandırmak için kullanabilirsiniz:
+- Bir Azure SQL veritabanı. Azure SQL veritabanı 'nda bir veritabanı oluşturmak ve yapılandırmak için bu hızlı başlangıçlardan birini kullanabilirsiniz:
 
   || Tek veritabanı | Yönetilen örnek |
   |:--- |:--- |:---|
-  | Oluştur| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
+  | Create| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
   || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Yapılandırma | [sunucu düzeyinde IP güvenlik duvarı kuralı](sql-database-server-level-firewall-rule.md)| [Bir VM bağlantısı](sql-database-managed-instance-configure-vm.md)|
-  |||[Şirket içi bağlantısı](sql-database-managed-instance-configure-p2s.md)
-  |Veri yükleme|Adventure Works hızlı başlangıç yüklendi|[Wide World Importers geri yükleme](sql-database-managed-instance-get-started-restore.md)
-  |||Geri yükleme ya da Adventure Works'den içe [BACPAC](sql-database-import.md) dosya [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
+  | Yapılandırma | [Sunucu düzeyi IP güvenlik duvarı kuralı](sql-database-server-level-firewall-rule.md)| [Bir VM 'den bağlantı](sql-database-managed-instance-configure-vm.md)|
+  |||[Siteden bağlantı](sql-database-managed-instance-configure-p2s.md)
+  |Veri yükleme|Hızlı başlangıç başına yüklenen Adventure Works|[Geniş dünyada içeri aktarıcılar geri yükleme](sql-database-managed-instance-get-started-restore.md)
+  |||[GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) 'Dan [bacpac](sql-database-import.md) dosyasından Adventure Works 'ü geri yükleme veya içe aktarma|
   |||
 
   > [!IMPORTANT]
-  > Komut bu makalede, Adventure Works veritabanı kullanmak için yazılır. Yönetilen örnek sayesinde, Adventure Works veritabanı bir örneği veritabanına aktarmak veya betiklerde Wide World Importers veritabanını kullanmak için bu makaleyi değiştirin.
+  > Bu makaledeki betikler, Adventure Works veritabanını kullanmak için yazılmıştır. Yönetilen bir örnek ile, Adventure Works veritabanını bir örnek veritabanına aktarmanız veya bu makaledeki betikleri Wide World Importers veritabanını kullanacak şekilde değiştirmeniz gerekir.
 
-- Golang ve ilgili yazılımları yüklü bir işletim sistemi için:
+- Yüklü işletim sisteminiz için golang ve ilgili yazılımlar:
 
-  - **macOS**: Homebrew ve Golang yükleyin. Bkz. [Adım 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/mac/).
-  - **Ubuntu**:  Golang yükleyin. Bkz. [Adım 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/ubuntu/).
-  - **Windows**: Golang yükleyin. Bkz. [Adım 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/windows/).
+  - **MacOS**: Homebrew ve Golang 'yi yükler. Bkz. [Adım 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/mac/).
+  - **Ubuntu**:  Golang 'yi yükler. Bkz. [Adım 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/ubuntu/).
+  - **Windows**: Golang 'yi yükler. Bkz. [Adım 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/windows/).
 
-## <a name="get-sql-server-connection-information"></a>SQL server bağlantı bilgilerini alma
+## <a name="get-sql-server-connection-information"></a>SQL Server bağlantı bilgilerini al
 
-Azure SQL veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Yaklaşan yordamlar için tam sunucu adını veya ana bilgisayar adı, veritabanı adını ve oturum açma bilgileri gerekir.
+Azure SQL veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Yaklaşan yordamlar için tam sunucu adı veya ana bilgisayar adı, veritabanı adı ve oturum açma bilgileri gerekir.
 
 1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
-2. Gidin **SQL veritabanları** veya **SQL yönetilen örnekler** sayfası.
+2. **SQL veritabanları** veya **SQL yönetilen örnekler** sayfasına gidin.
 
-3. Üzerinde **genel bakış** sayfasında, tam sunucu adını gözden **sunucu adı** tek bir veritabanı veya tam sunucu adı yanındaki **konak** yönetilen bir örneği. Sunucu adı veya ana bilgisayar adı kopyalamak için üzerine gelin ve seçin **kopyalama** simgesi.
+3. **Genel bakış** sayfasında, tek bir veritabanı için **sunucu adı** ' nın yanında tam sunucu adını veya yönetilen örnek Için **ana bilgisayar ' ın** yanındaki tam sunucu adını gözden geçirin. Sunucu adını veya ana bilgisayar adını kopyalamak için üzerine gelin ve **Kopyala** simgesini seçin.
 
-## <a name="create-golang-project-and-dependencies"></a>Golang projesi ve bağımlılıklarını oluşturma
+## <a name="create-golang-project-and-dependencies"></a>Golang projesi ve bağımlılıkları oluşturma
 
 1. Terminalden, **SqlServerSample** adlı yeni bir proje klasörü oluşturun. 
 
@@ -67,7 +67,7 @@ Azure SQL veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Y
    mkdir SqlServerSample
    ```
 
-2. Gidin **SqlServerSample** ve Go için SQL Server sürücüsünü yükleyin.
+2. **Sqlserversample** ' a gidin ve Go için SQL Server sürücüsünü yükler.
 
    ```bash
    cd SqlServerSample
@@ -77,7 +77,7 @@ Azure SQL veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Y
 
 ## <a name="create-sample-data"></a>Örnek veri oluşturma
 
-1. Bir metin düzenleyicisinde adlı bir dosya oluşturun **Sqlserversample** içinde **SqlServerSample** klasör. Bir şema oluşturur, bu T-SQL kod dosyasına yapıştırın tablo ve birkaç satır ekler.
+1. Bir metin düzenleyicisinde, **Sqlserversample** klasöründe **createtestdata. SQL** adlı bir dosya oluşturun. Dosyasında, bir şema, tablo oluşturan ve birkaç satır ekleyen bu T-SQL kodunu yapıştırın.
 
    ```sql
    CREATE SCHEMA TestSchema;
@@ -100,7 +100,7 @@ Azure SQL veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Y
    GO
    ```
 
-2. Kullanım `sqlcmd` veritabanına bağlanın ve yeni oluşturulan SQL komut dosyasını çalıştırın. Sunucunuz, veritabanınız, kullanıcı adınız ve parolanız için uygun değerleri değiştirin.
+2. Veritabanına `sqlcmd` bağlanmak ve yeni oluşturulan SQL betiğini çalıştırmak için kullanın. Sunucunuz, veritabanınız, kullanıcı adınız ve parolanız için uygun değerleri değiştirin.
 
    ```bash
    sqlcmd -S <your_server>.database.windows.net -U <your_username> -P <your_password> -d <your_database> -i ./CreateTestData.sql
@@ -110,7 +110,7 @@ Azure SQL veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Y
 
 1. **SqlServerSample** klasöründe **sample.go** adlı bir dosya oluşturun.
 
-2. Bu kod dosyasına yapıştırın. Sunucu, veritabanı, kullanıcı adı ve parola değerlerini ekleyin. Bu örnekte Golang [context metotları](https://golang.org/pkg/context/) bir etkin veritabanı sunucu bağlantısı olduğundan emin olmak için.
+2. Dosyasında bu kodu yapıştırın. Sunucunuz, veritabanınız, Kullanıcı adınız ve parolanız için değerleri ekleyin. Bu örnek, etkin bir veritabanı sunucu bağlantısı olduğundan emin olmak için Golang [bağlam yöntemlerini](https://golang.org/pkg/context/) kullanır.
 
    ```go
    package main
@@ -329,6 +329,6 @@ Azure SQL veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Y
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [İlk Azure SQL veritabanınızı tasarlama](sql-database-design-first-database.md)
-- [Microsoft SQL Server için Golang sürücüsü](https://github.com/denisenkom/go-mssqldb)
+- [Microsoft SQL Server için golang sürücüsü](https://github.com/denisenkom/go-mssqldb)
 - [Sorun bildirin veya soru sorun](https://github.com/denisenkom/go-mssqldb/issues)
 

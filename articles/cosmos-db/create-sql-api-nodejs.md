@@ -1,5 +1,5 @@
 ---
-title: "Azure Cosmos DB: Azure Cosmos DB SQL API verileri yönetmek için JavaScript SDK'sını kullanarak bir Node.js uygulaması derleme"
+title: 'Azure Cosmos DB: Azure Cosmos DB SQL API verilerini yönetmek için JavaScript SDK kullanarak Node. js uygulaması oluşturma'
 description: Azure Cosmos DB SQL API'sine bağlanmak ve sorgu göndermek için kullanabileceğiniz bir Node.js kodu örneği sunar
 author: deborahc
 ms.service: cosmos-db
@@ -8,18 +8,17 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.author: dech
-ms.openlocfilehash: ec6f676933f5c275c49fa4da1af0e1c3084dab89
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 19312e6c6aa71a81c3339e7d40de582490c4ffff
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66754570"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67986335"
 ---
-# <a name="quickstart-build-a-nodejs-app-using-azure-cosmos-db-sql-api-account"></a>Hızlı Başlangıç: Azure Cosmos DB SQL API hesabı kullanarak bir Node.js uygulaması derleme
+# <a name="quickstart-build-a-nodejs-app-using-azure-cosmos-db-sql-api-account"></a>Hızlı Başlangıç: Azure Cosmos DB SQL API hesabı kullanarak bir Node. js uygulaması oluşturma
 
 > [!div class="op_single_selector"]
 > * [.NET](create-sql-api-dotnet.md)
-> * [.NET (Önizleme)](create-sql-api-dotnet-preview.md)
 > * [Java](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
@@ -43,7 +42,7 @@ Bu hızlı başlangıç belgesinde Azure portalını kullanarak bir Azure Cosmos
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a name="add-a-container"></a>Bir kapsayıcı ekleyin
+## <a name="add-a-container"></a>Kapsayıcı ekleme
 
 [!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
 
@@ -133,7 +132,7 @@ Aşağıdaki kod parçacıklarının tamamı, **app.js** dosyasından alınmış
 
 Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp uygulamaya ekleyin.
 
-1. İçinde [Azure portalında](https://portal.azure.com/), sol gezinti bölmesinde, Azure Cosmos hesabınızdaki tıklayın **anahtarları**ve ardından **okuma-yazma anahtarları**. Ekranın sağ tarafındaki kopyalama düğmelerini kullanarak URI ve Birincil Anahtar değerlerini kopyalayarak sonraki adımda `config.js` dosyasına yapıştırın.
+1. [Azure Portal](https://portal.azure.com/)Azure Cosmos hesabınızda, sol gezinti bölmesinde **anahtarlar**' a ve ardından **okuma-yazma anahtarları**' na tıklayın. Ekranın sağ tarafındaki kopyalama düğmelerini kullanarak URI ve Birincil Anahtar değerlerini kopyalayarak sonraki adımda `config.js` dosyasına yapıştırın.
 
     ![Azure portalında erişim anahtarı görüntüleme ve kopyalama, Anahtarlar dikey penceresi](./media/create-sql-api-dotnet/keys.png)
 
@@ -164,7 +163,7 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, Azure Cosmos hesap oluşturma, Veri Gezgini'ni kullanarak bir kapsayıcı oluşturun ve bir uygulamayı çalıştırmayı öğrendiniz. Şimdi Cosmos DB hesabınıza ek veri aktarabilirsiniz. 
+Bu hızlı başlangıçta Azure Cosmos hesabı oluşturmayı, Veri Gezgini kullanarak bir kapsayıcı oluşturmayı ve bir uygulamayı çalıştırmayı öğrendiniz. Şimdi Cosmos DB hesabınıza ek veri aktarabilirsiniz. 
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB hesabınıza veri aktarma](import-data.md)
