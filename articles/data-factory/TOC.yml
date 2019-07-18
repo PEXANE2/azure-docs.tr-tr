@@ -564,12 +564,12 @@
           href: solution-template-copy-files-multiple-containers.md
         - name: LastModifiedDate parametresine göre yeni dosyaları kopyalama
           href: solution-template-copy-new-files-lastmodifieddate.md
+        - name: Veritabanından toplu kopyalama
+          href: solution-template-bulk-copy-with-control-table.md
+        - name: Veritabanından delta kopyalama
+          href: solution-template-delta-copy-with-control-table.md
         - name: Dosyaları taşıma
           href: solution-template-move-files.md
-        - name: Denetim tablosuyla toplu kopyalama
-          href: solution-template-bulk-copy-with-control-table.md
-        - name: Denetim tablosuyla delta kopyalama
-          href: solution-template-delta-copy-with-control-table.md
         - name: Databricks ile verileri dönüştürme
           href: solution-template-databricks-notebook.md
     - name: Sorun giderme kılavuzu

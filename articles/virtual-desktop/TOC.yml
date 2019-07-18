@@ -84,3 +84,5 @@
   items:
     - name: Teknik Topluluk destek grubu
       href: 'https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop'
+    - name: UserVoice forumu
+      href: 'https://windowsvirtualdesktop.uservoice.com/forums/921118-general'

@@ -388,18 +388,26 @@
               items:
                 - name: Web uygulamaları
                   href: app/java-get-started.md
+                - name: Web uygulamaları (2.5.0-BETA)
+                  href: app/java-get-started-25-beta.md
                 - name: Docker uygulamaları
                   href: app/docker.md
                 - name: Günlük izlemeleri
                   href: app/java-trace-logs.md
+                - name: Günlük izlemeleri (2.5.0-BETA)
+                  href: app/java-trace-logs-25-beta.md
                 - name: UNIX ölçümleri
                   href: app/java-collectd.md
                 - name: Bağımlılıklar
                   href: app/java-agent.md
+                - name: Bağımlılıklar (2.5.0-BETA)
+                  href: app/java-agent-25-beta.md
                 - name: Telemetri filtreleme
                   href: app/java-filter-telemetry.md
                 - name: Micrometer ölçümleri
                   href: app/micrometer-java.md
+                - name: Micrometer Ölçümleri (2.5.0-BETA)
+                  href: app/micrometer-java-25-beta.md
                 - name: Spring Boot Başlatıcı uygulaması yapılandırma
                   href: /java/azure/spring-framework/configure-spring-boot-java-applicationinsights
             - name: Node.js uygulamaları

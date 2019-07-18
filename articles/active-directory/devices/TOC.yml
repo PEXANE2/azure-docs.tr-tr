@@ -55,7 +55,9 @@
       items:
         - name: Hibrit Azure AD’ye katılmış geçerli Windows cihazlarında sorun giderme
           href: troubleshoot-hybrid-join-windows-current.md
-        - name: Hibrit Azure AD’ye katılmış eski Windows cihazlarında sorun giderme
+        - name: dsregcmd kullanarak sorun giderme
+          href: troubleshoot-device-dsregcmd.md
+        - name: Hibrit Azure AD’ye katılmış alt düzey Windows cihazlarında sorun giderme
           href: troubleshoot-hybrid-join-windows-legacy.md
         - name: Enterprise State Roaming sorunlarını giderme
           href: enterprise-state-roaming-troubleshooting.md

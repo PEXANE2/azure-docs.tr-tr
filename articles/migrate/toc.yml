@@ -8,7 +8,7 @@
       href: whats-new.md
 - name: Öğreticiler
   items:
-    - name: VMware VM değerlendirmesi ve geçiş
+    - name: VMware VM’lerini değerlendirme ve geçirme
       items:
         - name: VMware’i değerlendirme ve geçişe hazırlama
           href: tutorial-prepare-vmware.md
@@ -22,7 +22,7 @@
               href: tutorial-migrate-vmware.md
             - name: VMware VM'leri aracı tabanlı geçiş ile geçirme
               href: tutorial-migrate-vmware-agent.md
-    - name: Hyper-V değerlendirmesi ve geçiş
+    - name: Hyper-V VM’lerini değerlendirme ve geçirme
       items:
         - name: Hyper-V’yi değerlendirme ve geçişe hazırlama
           href: tutorial-prepare-hyper-v.md
@@ -30,7 +30,7 @@
           href: tutorial-assess-hyper-v.md
         - name: Hyper-V VM’leri Azure’a Geçirme
           href: tutorial-migrate-hyper-v.md
-    - name: Fiziksel sunucuları ve sanal makineleri geçirme
+    - name: Fiziksel sunucuları ve VM’leri geçirme
       href: tutorial-migrate-physical-virtual-machines.md
 - name: Kavramlar
   items:
