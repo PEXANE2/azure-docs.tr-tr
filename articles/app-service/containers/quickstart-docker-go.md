@@ -1,5 +1,5 @@
 ---
-title: Linux'ta - Azure App Service Docker/Go uygulaması oluşturma
+title: Linux 'ta Docker/Go uygulaması oluşturma-Azure App Service
 description: Kapsayıcılar için Web App’e yönelik Go uygulaması çalıştıran bir Docker görüntüsü dağıtma.
 keywords: azure app service, web uygulaması, go, docker, kapsayıcı
 services: app-service
@@ -12,14 +12,14 @@ ms.topic: quickstart
 ms.date: 03/28/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 88c9996ce3f2d89ae58881c913f6bd4e549b5814
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: ec2b974e008ea4c7e266f5ae0d46cd67d2133e54
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62117756"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67854012"
 ---
-# <a name="run-a-custom-linux-container-in-azure-app-service"></a>Azure App Service'te özel bir Linux kapsayıcı çalıştırma
+# <a name="run-a-custom-linux-container-in-azure-app-service"></a>Azure App Service bir özel Linux kapsayıcısı çalıştırın
 
 [App Service Linux](app-service-linux-intro.md), Linux’ta .NET, PHP, Node.js ve diğer dilleri destekleyen önceden tanımlı uygulama yığınları sağlar. Ayrıca web uygulamanızı Azure’da zaten tanımlı olmayan bir uygulama yığınında çalıştırmak için özel bir Docker görüntüsü de kullanabilirsiniz. Bu hızlı başlangıçta bir web uygulaması oluşturma ve Docker Hub’dan Go görüntüsü dağıtma gösterilmektedir. Web uygulamasını [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) kullanarak oluşturursunuz.
 
@@ -35,7 +35,7 @@ ms.locfileid: "62117756"
 
 ## <a name="create-a-web-app"></a>Web uygulaması oluşturma
 
-[az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) komutuyla `myAppServicePlan` App Service planında bir [web uygulaması](../overview.md) oluşturun. `<app name>` değerini genel olarak benzersiz bir uygulama adıyla değiştirmeyi unutmayın.
+[az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) komutuyla `myAppServicePlan` App Service planında bir [web uygulaması](../overview.md) oluşturun. Genel olarak benzersiz bir `<app name>` uygulama adıyla değiştirmeyi unutmayın (geçerli `a-z`karakterler, `0-9`ve `-`).
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app name> --deployment-container-image-name microsoft/azure-appservices-go-quickstart
@@ -75,10 +75,10 @@ http://<app_name>.azurewebsites.net/hello
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Öğretici: Özel kapsayıcı deposundan dağıtın](tutorial-custom-docker-image.md)
+> [Öğretici: Özel kapsayıcı deposundan dağıtma](tutorial-custom-docker-image.md)
 
 > [!div class="nextstepaction"]
-> [Özel bir kapsayıcı yapılandırma](configure-custom-container.md)
+> [Özel kapsayıcı yapılandırma](configure-custom-container.md)
 
 > [!div class="nextstepaction"]
-> [Öğretici: WordPress çoklu kapsayıcı uygulaması](tutorial-multi-container-app.md)
+> [Öğretici: Çok Kapsayıcılı WordPress uygulaması](tutorial-multi-container-app.md)

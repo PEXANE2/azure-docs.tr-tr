@@ -13,15 +13,15 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 06/03/2019
 ms.author: mbullwin
-ms.openlocfilehash: cdaae4e539d5216cf4950c15349f01b54ae8acd2
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 5e42c36e6a321775e6017a2318857e20b7dcaf0d
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66496382"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876457"
 ---
 # <a name="what-is-application-insights"></a>Application Insights nedir?
-Application Insights, farklı platformlardaki web geliştiricilerine yönelik kapsamlı bir Uygulama Performans Yönetimi (APM) hizmetidir. Canlı web uygulamanızı izlemek için kullanabilirsiniz. Performans anormalliklerini otomatik olarak algılar. Sorunları tanılamanıza ve kullanıcıların uygulamanızla aslında neler yaptığını anlamanıza yardımcı olan güçlü analiz araçları içerir.  Performansı ve kullanılabilirliği sürekli geliştirmenize yardımcı olmak amacıyla tasarlanmıştır. .NET, Node.js ve Java EE dahil olmak üzere platformları üzerinde çeşitli uygulamalar için çalışır barındırılan şirket içi, karma veya herhangi bir genel bulut. DevOps işleminizle tümleştirilir ve çeşitli geliştirme araçlarıyla bağlantı noktaları vardır. Visual Studio App Center ile tümleştirerek mobil uygulamalardan telemetriyi izleyebilir ve çözümleyebilir.
+Application Insights, farklı platformlardaki web geliştiricilerine yönelik kapsamlı bir Uygulama Performans Yönetimi (APM) hizmetidir. Canlı web uygulamanızı izlemek için kullanabilirsiniz. Performans anormalliklerini otomatik olarak algılar. Sorunları tanılamanıza ve kullanıcıların uygulamanızla aslında neler yaptığını anlamanıza yardımcı olan güçlü analiz araçları içerir.  Performansı ve kullanılabilirliği sürekli geliştirmenize yardımcı olmak amacıyla tasarlanmıştır. .NET, Node. js ve Java EE dahil olmak üzere şirket içi, karma veya herhangi bir genel bulut gibi çok çeşitli platformlarda uygulamalar için geçerlidir. DevOps işleminizle tümleştirilir ve çeşitli geliştirme araçlarıyla bağlantı noktaları vardır. Visual Studio App Center ile tümleştirerek mobil uygulamalardan telemetriyi izleyebilir ve çözümleyebilir.
 
 ## <a name="how-does-application-insights-work"></a>Application Insights nasıl çalışır?
 Uygulamanıza küçük bir izleme paketi yüklersiniz ve Microsoft Azure portalında bir Application Insights kaynağı ayarlarsınız. İzleme aracı uygulamanızı izler ve telemetri verilerini portala gönderir. (Uygulamanın nerede çalıştığı önemli değildir ve Azure’da barındırılması gerekmez.)
@@ -44,7 +44,7 @@ Geliştirme takımına yönelik olan Application Insights, uygulamanızın perfo
 
 * **İstek oranları, yanıt süreleri ve hata oranları**: Hangi sayfaların günün hangi saatlerinde popüler olduğunu ve kullanıcılarınızın konumunu öğrenin. En iyi performansı hangi sayfaların gösterdiğini görün. Daha fazla istek olduğunda yanıt süreleriniz ve hata oranlarınız yükseliyorsa bir kaynak atama sorununuz olabilir. 
 * **Bağımlılık oranları, yanıt süreleri ve hata oranları**: Dış hizmetlerin sizi yavaşlatıp yavaşlatmadığını öğrenin.
-* **Özel durumlar** - toplu istatistikleri analiz edin veya belirli örnekler seçin ve yığın izlemesi ve ilgili isteklerin detayına gidin. Hem sunucu hem de tarayıcı özel durumları raporlanır.
+* **Özel durumlar** -toplu istatistikleri analiz edin veya belirli örnekleri seçip yığın izlemenin ve ilgili isteklerin detayına gidin. Hem sunucu hem de tarayıcı özel durumları raporlanır.
 * **Sayfa görüntüleme sayısı ve yükleme performansı**: Kullanıcılarınızın tarayıcıları tarafından gerçekleştirilir.
 * Web sayfalarından **AJAX çağrıları**: Oranlar, yanıt süreleri ve hata oranları.
 * **Kullanıcı ve oturum sayıları**.
@@ -79,7 +79,7 @@ Verilerinizi keşfetmenin birçok yolu vardır. Aşağıdaki makaleleri inceleyi
 ### <a name="monitor"></a>İzleme
 Application Insights’ı uygulamanıza yükleyin, [kullanılabilirlik web testleri](../../azure-monitor/app/monitor-web-app-availability.md) ayarlayın ve:
 
-* Kullanıma varsayılan [uygulama Panosu](../../azure-monitor/app/overview-dashboard.md) yüklemelerinin ve AJAX çağrıları, takım odası yük ve yanıt hızını bağımlılıklarınızın performansını takip etmek sayfa.
+* Yük, yanıt verme ve bağımlılıklarınızın, sayfa yüklerinizin ve AJAX çağrılarının performansını göz önünde tutmak için ekip odasına yönelik varsayılan [uygulama panosunu](../../azure-monitor/app/overview-dashboard.md) kullanıma alma.
 * En yavaş ve en çok başarısız olan isteklerin hangileri olduğunu keşfedin.
 * Yeni bir sürüm dağıttığınızda [Canlı Akış](../../azure-monitor/app/live-stream.md)’ı izleyerek herhangi bir performans düşüşünü anında görün.
 
@@ -87,7 +87,7 @@ Application Insights’ı uygulamanıza yükleyin, [kullanılabilirlik web testl
 Bir uyarı aldığınızda veya bir sorun bulduğunuzda:
 
 * Bu durumdan kaç kullanıcının etkilendiğini değerlendirin.
-* Hataları, özel durumlar, bağımlılık çağrıları ve izlemeler ile ilişkilendirin.
+* Özel durumlar, bağımlılık çağrıları ve izlemelerle hatalarla bağıntı kurun.
 * Profil oluşturucuyu, anlık görüntüleri, yığın dökümlerini ve izleme günlüklerini inceleyin.
 
 ### <a name="build-measure-learn"></a>Oluşturma, Ölçme, Öğrenme
@@ -102,23 +102,25 @@ Application Insights, Microsoft Azure’da barındırılan birçok hizmetten bir
 
 Hizmeti kullanmaya başlamanın birkaç yolu vardır. Sizin için en uygun yöntemi kullanarak başlayın. Diğerlerini daha sonra ekleyebilirsiniz.
 
-* **Çalışma zamanında: Sunucuda web uygulamanızı izleyin.** Önceden dağıtılan uygulamalar için idealdir. Kodda herhangi bir güncelleştirme yapmaktan kaçınır.
-  * [**IIS'de barındırılan ASP.NET uygulamaları şirket içinde veya bir VM**](../../azure-monitor/app/monitor-performance-live-website-now.md)
-  * [**Azure Web Apps üzerinde barındırılan ASP.NET veya ASP.NET Core uygulamaları**](../../azure-monitor/app/azure-web-apps.md)
-* **Geliştirme zamanında: Application Insights’ı kodunuza ekleyin.** Telemetri koleksiyonunu özelleştirme ve ek telemetri göndermesine olanak sağlar.
+* **Çalışma zamanında: Sunucuda web uygulamanızı izleyin.** Zaten dağıtılan uygulamalar için idealdir. Kodda herhangi bir güncelleştirme yapmaktan kaçınır.
+  * [**Azure Web Apps 'de barındırılan uygulamalar ASP.NET veya ASP.NET Core**](../../azure-monitor/app/azure-web-apps.md)
+  * [**Azure VM veya Azure sanal makine ölçek kümesi üzerinde IIS 'de barındırılan ASP.NET uygulamaları**](../../azure-monitor/app/azure-vm-vmss-apps.md)
+  * [**ASP.NET IIS şirket içi VM 'de barındırılan uygulamalar**](../../azure-monitor/app/monitor-performance-live-website-now.md)
+* **Geliştirme zamanında: Application Insights’ı kodunuza ekleyin.** Telemetri toplamayı özelleştirmenizi ve ek telemetri göndermenizi sağlar.
   * [ASP.NET uygulamaları](../../azure-monitor/app/asp-net.md)
-  * [ASP.NET Core uygulamaları](../../azure-monitor/app/asp-net-core.md)
+  * [ASP.NET Core uygulamalar](../../azure-monitor/app/asp-net-core.md)
   * [.NET konsol uygulamaları](../../azure-monitor/app/console.md)
   * [Java](../../azure-monitor/app/java-get-started.md)
   * [Node.js](../../azure-monitor/app/nodejs.md)
   * [Diğer platformlar](../../azure-monitor/app/platforms.md)
-* **[Web sayfalarınızı araçlama](../../azure-monitor/app/javascript.md)**  sayfa görünümü, AJAX ve diğer istemci tarafı telemetri.
+* **[Web sayfalarınızı](../../azure-monitor/app/javascript.md)** sayfa görünümü, Ajax ve diğer istemci tarafı telemetri için işaretleyin.
 * Visual Studio App Center ile tümleştirerek **[mobil uygulama kullanımını çözümleyin](../../azure-monitor/learn/mobile-center-quickstart.md)** .
 * **[Kullanılabilirlik testleri](../../azure-monitor/app/monitor-web-app-availability.md)** : Sunucularımızdan web sitenize düzenli aralıklarla ping gönderin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Çalışma zamanında şunlarla kullanmaya başlayın:
 
+* [Azure VM ve Azure sanal makine ölçek kümesi IIS tarafından barındırılan uygulamalar](../../azure-monitor/app/azure-vm-vmss-apps.md)
 * [IIS sunucusu](../../azure-monitor/app/monitor-performance-live-website-now.md)
 * [Azure Web Apps](../../azure-monitor/app/azure-web-apps.md)
 
@@ -141,9 +143,9 @@ Geliştirme zamanında şunlarla kullanmaya başlayın:
 
 ## <a name="videos"></a>Videolar
 
-- Dış video: [Application Insights ile ASP.NET uygulaması yapılandırma](https://www.youtube.com/watch?v=blnGAVgMAfA).
+- Dış video: [bir ASP.NET uygulamasıyla Application Insights yapılandırma](https://www.youtube.com/watch?v=blnGAVgMAfA).
 - Dış video: [ASP.NET Core ve Visual Studio ile Application Insights yapılandırma](https://www.youtube.com/watch?v=NoS9UhcR4gA&t).
-- Dış video: [Application Insights, Visual Studio Code ile ASP.NET Core ile yapılandırma](https://youtu.be/ygGt84GDync).
+- Dış video: [ASP.NET Core ve Visual Studio Code Application Insights yapılandırma](https://youtu.be/ygGt84GDync).
 
 <!--Link references-->
 

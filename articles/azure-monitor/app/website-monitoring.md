@@ -5,23 +5,23 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 10/29/2018
+ms.date: 07/15/2019
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: ece51892522721f7be3cdcadbb3b79705c9f83e4
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 9845329d30da40243751c00f7c0fa62fdcfe5a0d
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66384088"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67990085"
 ---
 # <a name="start-monitoring-your-website"></a>Web sitenizi izlemeye başlama
 
 Azure İzleyici Application Insights ile web sitenizi kullanılabilirlik, performans ve kullanım bakımından kolayca izleyebilirsiniz. Ayrıca, bir kullanıcının bildirmesini beklemeden uygulamanızdaki hataları hızlıca tanımlayıp tespit edebilirsiniz. Application Insights hem sunucu tarafı izleme hem de istemci/tarayıcı tarafı izleme özellikleri sunar.
 
-Bu hızlı başlangıçta, eklerken size kılavuzluk eder [açık kaynak Application Insights JavaScript SDK'sı](https://github.com/Microsoft/ApplicationInsights-JS) sitenizi ziyaret edenler için tarayıcı/istemci-tarafı deneyimini anlama sağlar.
+Bu hızlı başlangıç, Web sitenize ziyaretçi için istemci/tarayıcı tarafı deneyimini anlamanıza olanak sağlayan [Açık kaynaklı Application Insights JavaScript SDK 'sını](https://github.com/Microsoft/ApplicationInsights-JS) ekleme konusunda size rehberlik eder.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -41,16 +41,18 @@ Application Insights, şirket içinde veya bulutta çalışan İnternet’e bağ
 
 1. **Kaynak oluştur** > **Yönetim araçları** > **Application Insights** seçeneğini belirleyin.
 
+   > [!NOTE]
+   >İlk kez bir Application Insights kaynağı oluşturuyorsanız [Application Insights kaynak oluştur](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) makalesini ziyaret ederek daha fazla bilgi edinebilirsiniz.
+
    Bir yapılandırma kutusu görünür. Giriş alanlarını doldurmak için aşağıdaki tabloyu kullanın.
 
     | Ayarlar        | Değer           | Açıklama  |
    | ------------- |:-------------|:-----|
-   | **Ad**      | Genel Olarak Benzersiz Değer | İzlemekte olduğunuz uygulamayı tanımlayan ad |
-   | **Uygulama Türü** | Genel Uygulama | İzlemekte olduğunuz uygulamanın türü |
+   | **Name**      | Genel Olarak Benzersiz Değer | İzlemekte olduğunuz uygulamayı tanımlayan ad |
    | **Kaynak Grubu**     | myResourceGroup      | App Insights verilerini barındıran yeni kaynak grubunun adı |
-   | **Konum** | Doğu ABD | Yakınınızda bulunan veya uygulamanızın barındırıldığı konumun yakınında olan bir konum seçin |
+   | **Location** | East US | Yakınınızda bulunan veya uygulamanızın barındırıldığı konumun yakınında olan bir konum seçin |
 
-2. **Oluştur**’a tıklayın.
+2.           **Oluştur**'a tıklayın.
 
 ## <a name="create-an-html-file"></a>HTML dosyası oluşturma
 
