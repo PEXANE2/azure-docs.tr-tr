@@ -1,5 +1,5 @@
 ---
-title: Linux'ta - Azure App Service'e Python uygulaması oluşturma | Microsoft Docs
+title: Linux 'ta Python uygulaması oluşturma-Azure App Service | Microsoft Docs
 description: Linux üzerinde Azure App Service'te ilk Python merhaba dünya uygulamanızı birkaç dakika içinde dağıtın.
 services: app-service\web
 documentationcenter: ''
@@ -15,16 +15,16 @@ ms.topic: quickstart
 ms.date: 03/28/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: a386924be2f82aadafeaccbeadc68e5e27404855
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ea247907aebc241fb8f1b266ad55bc2fc983607f
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60396861"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67853984"
 ---
-# <a name="create-a-python-app-in-azure-app-service-on-linux-preview"></a>Linux (Önizleme) üzerinde Azure App Service'te bir Python uygulaması oluşturma
+# <a name="create-a-python-app-in-azure-app-service-on-linux-preview"></a>Linux üzerinde Azure App Service Python uygulaması oluşturma (Önizleme)
 
-[Linux’ta App Service](app-service-linux-intro.md) Linux işletim sistemini kullanan yüksek oranda ölçeklenebilir, otomatik olarak düzeltme eki uygulayan bir web barındırma hizmeti sağlar. Bu hızlı başlangıçta, kullanarak Linux üzerinde App Service'te yerleşik Python görüntüsünü (Önizleme) üzerinde bir Python uygulamasının nasıl dağıtılacağı gösterilmektedir [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
+[Linux’ta App Service](app-service-linux-intro.md) Linux işletim sistemini kullanan yüksek oranda ölçeklenebilir, otomatik olarak düzeltme eki uygulayan bir web barındırma hizmeti sağlar. Bu hızlı başlangıçta, [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)kullanılarak Linux üzerinde App Service Içinde yerleşik Python görüntüsünün (Önizleme) üzerine bir Python uygulamasının nasıl dağıtılacağı gösterilmektedir.
 
 Mac, Windows veya Linux makinesi kullanarak bu makaledeki adımları izleyebilirsiniz.
 
@@ -64,7 +64,7 @@ Checking connectivity... done.
 
 Örnek kodu içeren dizine geçin ve `az webapp up` komutunu çalıştırın.
 
-Aşağıdaki komutta <app_name> kısmını benzersiz uygulama adıyla değiştirin.
+Aşağıdaki örnekte *\<uygulama_adı>* kısmını genel olarak benzersiz bir uygulama adıyla değiştirin (geçerli karakterler `a-z`, `0-9` ve `-` şeklindedir).
 
 ```bash
 cd python-docs-hello-world
@@ -107,7 +107,7 @@ All done.
 
 - Belirtilen adla bir uygulama oluşturur.
 
-- [Zip dağıtma](https://docs.microsoft.com/azure/app-service/deploy-zip) dosyaları uygulamanın geçerli çalışma dizini.
+- [ZIP](https://docs.microsoft.com/azure/app-service/deploy-zip) dosyalarını geçerli çalışma dizininden uygulamaya dağıtın.
 
 ## <a name="browse-to-the-app"></a>Uygulamaya göz atma
 
@@ -117,7 +117,7 @@ Web tarayıcınızı kullanarak, dağıtılan uygulamanın konumuna gidin.
 http://<app_name>.azurewebsites.net
 ```
 
-Python örnek kodu, bir yerleşik görüntü ile Linux üzerinde App Service'te çalışıyor.
+Python örnek kodu, yerleşik bir görüntüyle Linux üzerinde App Service çalışmaktadır.
 
 ![Azure'da çalışan örnek uygulama](media/quickstart-python/hello-world-in-browser.png)
 
@@ -125,7 +125,7 @@ Python örnek kodu, bir yerleşik görüntü ile Linux üzerinde App Service'te 
 
 ## <a name="update-locally-and-redeploy-the-code"></a>Kodu yerel makinede güncelleştirme ve yeniden dağıtma
 
-Cloud Shell'de yazın `code application.py` Cloud Shell düzenleyiciyi açın.
+Cloud Shell, Cloud Shell düzenleyiciyi açmak `code application.py` için yazın.
 
 ![Kod application.py](media/quickstart-python/code-applicationpy.png)
 
@@ -135,9 +135,9 @@ Cloud Shell'de yazın `code application.py` Cloud Shell düzenleyiciyi açın.
 return "Hello Azure!"
 ```
 
-Yaptığınız değişiklikleri kaydedin ve düzenleyiciden çıkın. Kaydetmek için `^S` ve çıkmak için `^Q` komutunu kullanın.
+Değişikliklerinizi kaydedin ve düzenleyiciden çıkın. Kaydetmek için `^S` ve çıkmak için `^Q` komutunu kullanın.
 
-Şimdi uygulamayı yeniden dağıtacaksınız. Yedek `<app_name>` uygulamanızla.
+Şimdi uygulamayı yeniden dağıtacaksınız. Uygulamanız `<app_name>` ile değiştirin.
 
 ```bash
 az webapp up -n <app_name>
@@ -147,11 +147,11 @@ Dağıtım tamamlandıktan sonra **Uygulamaya göz atma** adımında açılan ta
 
 ![Azure'da çalışan güncelleştirilmiş örnek uygulama](media/quickstart-python/hello-azure-in-browser.png)
 
-## <a name="manage-your-new-azure-app"></a>Yeni Azure uygulamanızı yönetme
+## <a name="manage-your-new-azure-app"></a>Yeni Azure uygulamanızı yönetin
 
-Git <a href="https://portal.azure.com" target="_blank">Azure portalında</a> oluşturduğunuz uygulamayı yönetmek için.
+Oluşturduğunuz uygulamayı yönetmek için <a href="https://portal.azure.com" target="_blank">Azure Portal</a> gidin.
 
-Sol menüden **uygulama hizmetleri**ve ardından Azure uygulamanızın adına tıklayın.
+Sol menüden **uygulama hizmetleri**' ne ve ardından Azure uygulamanızın adına tıklayın.
 
 ![Azure uygulamasına portal gezintisi](./media/quickstart-python/app-service-list.png)
 
@@ -174,4 +174,4 @@ Linux'ta App Service hizmetindeki yerleşik Python görüntüsü şu anda Önizl
 > [Python uygulamasını yapılandırma](how-to-configure-python.md)
 
 > [!div class="nextstepaction"]
-> [Öğretici: Özel kapsayıcı deposundan dağıtın](tutorial-custom-docker-image.md)
+> [Öğretici: Özel kapsayıcı deposundan dağıtma](tutorial-custom-docker-image.md)

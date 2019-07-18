@@ -1,6 +1,6 @@
 ---
-title: Azure Logic Apps ile Kurumsal tümleştirme
-description: Otomatikleştirme ve görevleri, iş akışları ve kurum ve kuruluşlardaki uygulamaları, verileri, hizmetleri ve sistemleri tümleştiren iş süreçlerini işlemlerini, Kurumsal tümleştirme çözümleri oluşturmak hakkında genel bakış. Veri tümleştirmesi, sistem tümleştirmesi, kuruluş uygulaması tümleştirme (EAI) ve düzenleme senaryolarına yönelik çözümler oluşturun.
+title: Azure Logic Apps ile kurumsal tümleştirme
+description: Uygulamalar, iş akışları ve uygulamaları, verileri, hizmetleri ve sistemleri kuruluşlar ve kuruluşlar genelinde tümleştiren iş süreçlerini otomatikleştirerek ve düzenleyerek kurumsal tümleştirme çözümleri oluşturma hakkında genel bakış. Veri tümleştirmesi, sistem tümleştirmesi, kuruluş uygulaması tümleştirme (EAI) ve düzenleme senaryolarına yönelik çözümler oluşturun.
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -11,16 +11,16 @@ ms.reviewer: klam, LADocs
 ms.topic: overview
 ms.custom: mvc
 ms.date: 6/29/2018
-ms.openlocfilehash: 2892dc3b8f25624e7925c9b4aa86110c167ad616
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 90287ab45341f203905aaf32eb6325edd3687231
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66299119"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68273138"
 ---
 # <a name="what-is-azure-logic-apps"></a>Azure Logic Apps nedir?
 
-[Azure Logic Apps](https://azure.microsoft.com/services/logic-apps) zamanlayabilir, otomatikleştirin ve görevleri, iş süreçlerini yardımcı olan bir bulut hizmetidir ve [iş akışları](#logic-app-concepts) uygulamaları, verileri, sistemleri ve Hizmetleri kuruluşlar arasında tümleştirmek gerektiğinde veya kuruluşlar. Mantıksal uygulamalar tasarlama ve uygulama için ölçeklenebilen çözümler oluşturun basitleştirir [tümleştirme](https://azure.microsoft.com/product-categories/integration/), veri tümleştirmesi, sistem tümleştirmesi, kuruluş uygulaması tümleştirme (EAI) ve işletmeden işletmeye (B2B) iletişimi elinizin altında Bulut, şirket içi veya her ikisi de.
+[Azure Logic Apps](https://azure.microsoft.com/services/logic-apps) , uygulamaları, verileri, sistemleri ve Hizmetleri kuruluşlar veya kuruluşlar genelinde tümleştirmeniz gerektiğinde görevleri, iş süreçlerini ve [iş akışlarını](#logic-app-concepts) zamanlamanıza, otomatikleştirmenize ve yönetmenize yardımcı olan bir bulut hizmetidir. Logic Apps uygulama [tümleştirme](https://azure.microsoft.com/product-categories/integration/), veri tümleştirme, sistem tümleştirmesi, kurumsal uygulama TÜMLEŞTIRME (EAI) ve işletmeden IŞLETMEYE (B2B) iletişim için ölçeklendirilebilir çözümleri tasarlama ve oluşturma işlemlerini basitleştirerek bulutta, şirket içinde ya da her ikisi.
 
 Mantıksal uygulamalarla otomatikleştirebileceğiniz birkaç iş yükü örneği aşağıda verilmiştir:
 
@@ -29,19 +29,19 @@ Mantıksal uygulamalarla otomatikleştirebileceğiniz birkaç iş yükü örneğ
 * Karşıya yüklenen dosyaları bir SFTP veya FTP sunucusundan Azure Depolama’ya taşıma. 
 * Belirli bir konu için tweet’leri izleme, yaklaşımı analiz etme ve gözden geçirilmesi gereken öğeler için uyarılar veya görevler oluşturma.
 
-Azure Logic Apps ile kurumsal tümleştirme çözümleri oluşturmak için Azure Service Bus, İşlevler ve Depolama gibi Azure hizmetleri; SQL, Office 365, Dynamics, Salesforce, BizTalk, SAP, Oracle DB, dosya paylaşımları ve diğer birçok hizmet dahil olmak üzere [200'den fazla bağlayıcıya](../connectors/apis-list.md) sahip olan galeriden seçim yapabilirsiniz. [Bağlayıcılar](#logic-app-concepts), verilere gerçek zamanlı olarak güvenli bir şekilde erişen ve verileri işleyen mantıksal uygulamalar oluşturmaya yönelik [tetikleyiciler](#logic-app-concepts), [eylemler](#logic-app-concepts) veya her ikisini de sağlar.
+Azure Logic Apps ile kurumsal tümleştirme çözümleri oluşturmak için, Azure Service Bus, Işlevler ve depolama gibi hizmetleri dahil olmak üzere [yüzlerce kullanıma yönelik yerleşik bağlayıcı](../connectors/apis-list.md)ile büyüyen bir galeri arasından seçim yapabilirsiniz; SQL, Office 365, Dynamics, Salesforce, BizTalk, SAP, Oracle DB, dosya paylaşımları ve daha fazlası. [Bağlayıcılar](#logic-app-concepts), verilere gerçek zamanlı olarak güvenli bir şekilde erişen ve verileri işleyen mantıksal uygulamalar oluşturmaya yönelik [tetikleyiciler](#logic-app-concepts), [eylemler](#logic-app-concepts) veya her ikisini de sağlar.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Introducing-Azure-Logic-Apps/player]
 
 ## <a name="how-does-logic-apps-work"></a>Logic Apps nasıl çalışır? 
 
-Her mantıksal uygulama, belirli bir olay gerçekleştiğinde veya yeni kullanılabilir veriler belirli ölçütleri karşıladığında tetiklenen bir tetikleyici ile başlar. İş yüklerinizi çalışması nasıl düzenli olarak ayarlayabilirsiniz böylece birçok tetikleyici Logic apps'teki bağlayıcılar tarafından sağlanan temel zamanlama özellikleri içerir. Daha karmaşık zamanlama veya Gelişmiş yinelenme için bir iş akışındaki ilk adım olarak yinelenme tetikleyicisini kullanabilirsiniz. Daha fazla bilgi edinin [zamanlama tabanlı iş akışları](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md).
+Her mantıksal uygulama, belirli bir olay gerçekleştiğinde veya yeni kullanılabilir veriler belirli ölçütleri karşıladığında tetiklenen bir tetikleyici ile başlar. Logic Apps içindeki bağlayıcılar tarafından sunulan birçok tetikleyici, iş yüklerinizin ne kadar düzenli olarak çalışacağını ayarlayabilmeniz için temel zamanlama yeteneklerini içerir. Daha karmaşık zamanlama veya gelişmiş Yinelenmeler için herhangi bir iş akışındaki ilk adım olarak bir yinelenme tetikleyicisi kullanabilirsiniz. [Zamanlama tabanlı iş akışları](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)hakkında daha fazla bilgi edinin.
 
 Tetikleyici her tetiklendiğinde, Logic Apps altyapısı iş akışındaki eylemleri çalıştıran bir mantıksal uygulama örneği oluşturur. Bu eylemlere koşullu deyimler, switch deyimleri, döngüler ve dallanma gibi veri dönüşümleri ve akış denetimleri de dahil olabilir. Örneğin, bu mantıksal uygulama yerleşik olarak “Bir kayıt güncelleştirildiğinde” ölçütüne sahip olan bir Dynamics 365 tetikleyicisi ile başlatılır. Tetikleyici bu ölçütle eşleşen bir olay algıladığında tetiklenir ve iş akışının eylemlerini çalıştırır. Burada, bu eylemlere XML dönüşümü, veri güncelleştirmeleri, karar dallanması ve e-posta bildirimleri dahildir.
 
 ![Logic Apps Tasarımcısı - örnek mantıksal uygulama](./media/logic-apps-overview/overview.png)
 
-Mantıksal uygulamalarınızı tarayıcınız aracılığıyla Azure portalda ve Visual Studio’da sunulan Logic Apps Tasarımcısı ile görsel olarak oluşturabilirsiniz. Daha özel mantıksal uygulamalar için “kod görünümü” düzenleyicisinde çalışarak JavaScript Nesne Gösterimi (JSON) biçiminde mantıksal uygulama tanımları oluşturabilir ya da bu tanımları düzenleyebilirsiniz. Belirli görevler için Azure PowerShell komutlarını ve Azure Resource Manager şablonlarını da kullanabilirsiniz. Mantıksal uygulamalar Azure’a dağıtılarak bulutta çalıştırılır. Daha ayrıntılı bir giriş için bu videoyu izleyin: [Azure Kurumsal tümleştirme hizmetlerini uygun ölçekte bulut uygulamaları çalıştırmak için kullanın](https://channel9.msdn.com/Events/Connect/2017/T119/)
+Mantıksal uygulamalarınızı tarayıcınız aracılığıyla Azure portalda ve Visual Studio’da sunulan Logic Apps Tasarımcısı ile görsel olarak oluşturabilirsiniz. Daha özel mantıksal uygulamalar için “kod görünümü” düzenleyicisinde çalışarak JavaScript Nesne Gösterimi (JSON) biçiminde mantıksal uygulama tanımları oluşturabilir ya da bu tanımları düzenleyebilirsiniz. Belirli görevler için Azure PowerShell komutlarını ve Azure Resource Manager şablonlarını da kullanabilirsiniz. Mantıksal uygulamalar Azure’a dağıtılarak bulutta çalıştırılır. Daha ayrıntılı bir giriş için şu videoyu izleyin: [Bulut uygulamalarını ölçekli olarak çalıştırmak için Azure Kurumsal Tümleştirme hizmetlerini kullanma](https://channel9.msdn.com/Events/Connect/2017/T119/)
 
 ## <a name="why-use-logic-apps"></a>Logic Apps neden kullanılmalı?
 
@@ -116,15 +116,15 @@ Bu giriş videoları ile Logic Apps hakkında daha fazla bilgi edinin:
 
 ## <a name="key-terms"></a>Önemli terimler
 
-* **İş akışı**: Görselleştirme, tasarlamasına, hazırlamasına, otomatikleştirin ve iş süreçlerini adımları bir dizi olarak dağıtın.
+* **Iş akışı**: İş süreçlerini adım serileri olarak görselleştirin, tasarlayın, oluşturun, otomatikleştirin ve dağıtın.
 
-* **Yönetilen Bağlayıcılar**: Mantıksal uygulamalarınızın veri, hizmetlerinize ve sistemlerinize erişim gerekir. Önceden oluşturulmuş, Microsoft tarafından yönetilen ve verilerinize bağlanmak, erişmek ve verilerle çalışmak için tasarlanan bağlayıcıları kullanabilirsiniz. Bkz. [Azure Logic Apps için Bağlayıcılar](../connectors/apis-list.md)
+* **Yönetilen bağlayıcılar**: Mantıksal uygulamalarınızın veri, hizmet ve sistemlere erişmesi gerekir. Önceden oluşturulmuş, Microsoft tarafından yönetilen ve verilerinize bağlanmak, erişmek ve verilerle çalışmak için tasarlanan bağlayıcıları kullanabilirsiniz. Bkz. [Azure Logic Apps için Bağlayıcılar](../connectors/apis-list.md)
 
-* **Tetikleyiciler**: Birçok Microsoft tarafından yönetilen bağlayıcılar, olayları ya da yeni veri belirtilen koşulları karşıladığında tetiklenen Tetikleyiciler sağlar. Örneğin, bir olay e-posta alıyor veya Azure Depolama hesabınızdaki değişiklikleri algılıyor olabilir. Tetikleyici her tetiklendiğinde, Logic Apps altyapısı iş akışını çalıştıran yeni bir mantıksal uygulama örneği oluşturur.
+* **Tetikleyiciler**: Microsoft tarafından yönetilen birçok bağlayıcı, olaylar veya yeni veriler belirtilen koşullara uyuyorsa harekete geçiren Tetikleyiciler sağlar. Örneğin, bir olay e-posta alıyor veya Azure Depolama hesabınızdaki değişiklikleri algılıyor olabilir. Tetikleyici her tetiklendiğinde, Logic Apps altyapısı iş akışını çalıştıran yeni bir mantıksal uygulama örneği oluşturur.
 
-* **Eylemler**: Eylemler tetikleyiciden sonra gerçekleşen tüm adımlardır. Genellikle her eylem, yönetilen bir bağlayıcı, özel API veya özel bağlayıcı tarafından tanımlanan bir işlemle eşlenir.
+* **Eylemler**: Eylemler, tetikleyiciden sonra gerçekleşen tüm adımlardır. Genellikle her eylem, yönetilen bir bağlayıcı, özel API veya özel bağlayıcı tarafından tanımlanan bir işlemle eşlenir.
 
-* **Enterprise Integration Pack**: Daha gelişmiş tümleştirme senaryoları için Logic Apps, BizTalk Server özelliklerini içerir. Enterprise Integration Pack, mantıksal uygulamaların doğrulama ve dönüştürme gibi işlemleri kolayca gerçekleştirmesine yardımcı olan bağlayıcılar sağlar.
+* **Enterprise Integration Pack**: Daha gelişmiş tümleştirme senaryoları için Logic Apps BizTalk Server özellikleri içerir. Enterprise Integration Pack, mantıksal uygulamaların doğrulama ve dönüştürme gibi işlemleri kolayca gerçekleştirmesine yardımcı olan bağlayıcılar sağlar.
 
 ## <a name="how-does-logic-apps-differ-from-functions-webjobs-and-flow"></a>Logic Apps ile İşlevler, Web İşleri ve Flow arasındaki fark nedir?
 

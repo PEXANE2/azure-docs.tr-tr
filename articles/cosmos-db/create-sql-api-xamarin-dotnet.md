@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: Xamarin ile todo uygulaması derleme'
+title: 'Azure Cosmos DB: Xamarin ile ToDo uygulaması oluşturma'
 description: Azure Cosmos DB'ye bağlanmak ve veritabanını sorgulamak için kullanabileceğiniz bir Xamarin kod örneği sunar
 author: codemillmatt
 ms.service: cosmos-db
@@ -8,18 +8,17 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: masoucou
-ms.openlocfilehash: e0d439edc35e70bc8ac477cf56a6bc25e41df083
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 079f25cf9333b7ca090b5a3390d193b757117c1c
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66754733"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67986393"
 ---
-# <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>Hızlı Başlangıç: Azure Cosmos DB SQL API hesabı kullanarak Xamarin ile todo uygulaması derleme
+# <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>Hızlı Başlangıç: Azure Cosmos DB SQL API hesabı kullanarak Xamarin ile ToDo uygulaması oluşturma
 
 > [!div class="op_single_selector"]
 > * [.NET](create-sql-api-dotnet.md)
-> * [.NET (Önizleme)](create-sql-api-dotnet-preview.md)
 > * [Java](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
@@ -37,7 +36,7 @@ Bu hızlı başlangıç belgesinde Azure portalını kullanarak bir Azure Cosmos
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Windows üzerinde geliştirme yapıyorsanız ve Visual Studio yüklü 2019 önceden yüklü değilse, indirip kullanabilirsiniz **ücretsiz** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Visual Studio kurulumu sırasında **Azure geliştirme** ve **.NET ile Mobil Dağıtım** iş yüklerini etkinleştirdiğinizden emin olun.
+Windows üzerinde geliştirme yapıyorsanız ve henüz Visual Studio 2019 yüklü değilse, **ücretsiz** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)' ı indirip kullanabilirsiniz. Visual Studio kurulumu sırasında **Azure geliştirme** ve **.NET ile Mobil Dağıtım** iş yüklerini etkinleştirdiğinizden emin olun.
 
 Mac kullanıyorsanız, [Mac için Visual Studio](https://www.visualstudio.com/vs/mac/)’yu **ücretsiz** olarak indirebilirsiniz.
 
@@ -48,7 +47,7 @@ Mac kullanıyorsanız, [Mac için Visual Studio](https://www.visualstudio.com/vs
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a name="add-a-container"></a>Bir kapsayıcı ekleyin
+## <a name="add-a-container"></a>Kapsayıcı ekleme
 
 [!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
 
@@ -62,7 +61,7 @@ Mac kullanıyorsanız, [Mac için Visual Studio](https://www.visualstudio.com/vs
 
 ## <a name="clone-the-sample-application"></a>Örnek uygulamayı kopyalama
 
-Şimdi github'dan Xamarin SQL API'si uygulaması kopyalayalım, kodu gözden geçirin, API anahtarlarını edinin ve uygulamayı çalıştıralım. Verilerle program aracılığıyla çalışmanın ne kadar kolay olduğunu göreceksiniz.
+Şimdi Xamarin SQL API uygulamasını GitHub 'dan kopyalayalım, kodu gözden geçirin, API anahtarlarını edinin ve çalıştırın. Verilerle program aracılığıyla çalışmanın ne kadar kolay olduğunu göreceksiniz.
 
 1. Bir komut istemini açın, git-samples adlı yeni bir klasör oluşturun ve komut istemini kapatın.
 
@@ -92,7 +91,7 @@ Azure portalına geri dönerek API anahtarı bilgilerini alın ve uygulamaya kop
 
     ![Azure portalında erişim anahtarı görüntüleme ve kopyalama, Anahtarlar dikey penceresi](./media/create-sql-api-xamarin-dotnet/keys.png)
 
-2. Visual Studio 2019 veya Mac için Visual Studio azure-documentdb-dotnet/samples/xamarin/ToDoItems/ToDoItems.Core/Helpers klasöründen Apıkeys.cs dosyasını açın.
+2. Visual Studio 2019 veya Mac için Visual Studio ' de, APIKeys.cs dosyasını Azure-DocumentDB-DotNet/Samples/Xamarin/Todoıtems/Todoıtems. Core/yardımcılar klasöründe açın.
 
 3. Portaldaki URI değerinizi kopyalayın (kopyalama düğmesini kullanarak) ve APIKeys.cs dosyasındaki `CosmosEndpointUrl` değişkeninin değeri yapın.
 
@@ -112,9 +111,9 @@ Bu çözüm, Azure Cosmos DB SQL API ve Xamarin.Forms kullanarak bir ToDo uygula
 
 ToDoItems çözümündeki kod şunları içerir:
 
-* Todoıtems.Core: Bu, bir Xamarin.Forms projesi ve Azure Cosmos DB'de todo öğelerini sürdüren bir paylaşılan uygulama mantığı kod, .NET standart bir projedir.
-* Todoıtems.Android: Bu proje Android uygulamasını içerir.
-* Todoıtems.iOS: Bu proje iOS uygulamasını içerir.
+* Todoıtems. Core: Bu, Azure Cosmos DB içindeki Todo öğelerini tutan bir Xamarin. Forms projesi ve paylaşılan uygulama mantığı kodu tutan bir .NET Standard projem.
+* Todoıtems. Android: Bu proje Android uygulamasını içerir.
+* Todoıtems. iOS: Bu proje iOS uygulamasını içerir.
 
 Şimdi uygulamanın Azure Cosmos DB ile nasıl iletişim kurduğuna hızlıca göz atalım.
 
@@ -184,7 +183,7 @@ ToDoItems çözümündeki kod şunları içerir:
     }
     ```
 
-    Burada değiştirilecek belgeyi benzersiz olarak tanımlanabilmesi için yeni bir URI gerekiyor ve kullanılarak elde `UriFactory.CreateDocumentUri` ve veritabanı ile koleksiyon adlarının ve belgenin kimliği geçirme.
+    Burada, değiştirilecek belgeyi benzersiz bir şekilde tanımlamak için yeni bir URI gerekir ve kullanarak `UriFactory.CreateDocumentUri` veritabanı ve koleksiyon adlarını ve belge kimliğini geçirerek elde edilir.
 
     `DocumentClient.ReplaceDocumentAsync`, URI tarafından tanımlanan belgeyi parametre olarak belirtilen bir belgeyle değiştirir.
 
@@ -200,7 +199,7 @@ ToDoItems çözümündeki kod şunları içerir:
     }
     ```
 
-    Belgenin benzersiz olan URI'si oluşturulur ve geçirilen yeniden unutmayın `DocumentClient.DeleteDocumentAsync` işlevi.
+    Oluşturulan ve `DocumentClient.DeleteDocumentAsync` işleve geçirilen benzersiz belge URI 'sini yeniden aklınızda edin.
 
 ## <a name="run-the-app"></a>Uygulamayı çalıştırma
 
@@ -245,7 +244,7 @@ Aşağıdaki adımlarda, Mac için Visual Studio hata ayıklayıcısı kullanıl
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir Azure Cosmos hesabı oluşturmak, Veri Gezgini'ni kullanarak bir kapsayıcı oluşturmak öğrendiniz ve bir Xamarin uygulaması derleyip dağıtacaksınız. Şimdi, Azure Cosmos hesabınıza ek veri aktarabilirsiniz.
+Bu hızlı başlangıçta, bir Azure Cosmos hesabı oluşturmayı, Veri Gezgini kullanarak bir kapsayıcı oluşturmayı ve Xamarin uygulaması derleyip dağıtmayı öğrendiniz. Artık Azure Cosmos hesabınıza ek veri aktarabilirsiniz.
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB hesabınıza veri aktarma](import-data.md)
