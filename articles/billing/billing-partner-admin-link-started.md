@@ -155,6 +155,6 @@ Aşağıdaki nedenlerden dolayı raporlarında müşteri göremiyorum
 
 2. Kullanıcının sahip olduğu Azure aboneliğini [rol tabanlı erişim](https://docs.microsoft.com/azure/role-based-access-control/overview) erişimi tüm kullanım yok.
 
-**İş ortağı kimliği ile Azure Stack çalışır bağlantı mu?**
+**İş ortağı kimliği bağlantısı Azure Stack ile çalışır mı?**
 
-Evet, Azure Stack için iş ortağı Kimliğinizin bağlayabilirsiniz.
+Evet, Azure Stack için iş ortağı kimliğinizi bağlayabilirsiniz.
