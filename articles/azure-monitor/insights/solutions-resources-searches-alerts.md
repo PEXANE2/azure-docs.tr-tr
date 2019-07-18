@@ -176,9 +176,9 @@ Uyarı eylemi kaynakların özellikleri aşağıdaki tablolarda açıklanmışt�
 
 | Öğe adı | Gerekli | description |
 |:--|:--|:--|
-| type | Evet | Eylem türü.  Bu **uyarı** uyarı eylemleri için. |
-| name | Evet | Uyarı görünen adı.  Bu uyarı kuralı için konsolunda görüntülenen addır. |
-| description | Hayır | Uyarının isteğe bağlı bir açıklama. |
+| Type | Evet | Eylem türü.  Bu **uyarı** uyarı eylemleri için. |
+| Name | Evet | Uyarı görünen adı.  Bu uyarı kuralı için konsolunda görüntülenen addır. |
+| Description | Hayır | Uyarının isteğe bağlı bir açıklama. |
 | Severity | Evet | Önem derecesi uyarı kaydını aşağıdaki değerleri:<br><br> **Kritik**<br>**Uyarı**<br>**Bilgilendirme**
 
 
@@ -187,8 +187,8 @@ Bu bölüm gereklidir. Uyarı eşiği için özellikleri tanımlar.
 
 | Öğe adı | Gerekli | description |
 |:--|:--|:--|
-| İşleç | Evet | Aşağıdaki değerlerden karşılaştırma işleci:<br><br>**gt = büyüktür<br>lt = kısa** |
-| Değer | Evet | Sonuçları Karşılaştırılacak değer. |
+| Operator | Evet | Aşağıdaki değerlerden karşılaştırma işleci:<br><br>**gt = büyüktür<br>lt = kısa** |
+| Value | Evet | Sonuçları Karşılaştırılacak değer. |
 
 ##### <a name="metricstrigger"></a>MetricsTrigger
 Bu bölüm isteğe bağlıdır. Bu, bir ölçüm ölçüsü uyarı ekleyin.
