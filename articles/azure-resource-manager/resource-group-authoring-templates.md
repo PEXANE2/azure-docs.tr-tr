@@ -42,10 +42,10 @@ En basit yapısına bir şablon aşağıdaki öğelere sahiptir:
 | contentVersion |Evet |Şablon (örneğin, 1.0.0.0) sürümü. Bu öğe için herhangi bir değer sağlayabilirsiniz. Şablonunuzda önemli değişiklikleri belgelemek için bu değeri kullanın. Şablon kullanarak kaynakları dağıtırken, bu değer, en uygun şablonu kullanıldığından emin emin olmak için kullanılabilir. |
 | apiProfile |Hayır | API sürümleri için kaynak türleri koleksiyonu olarak görev yapan bir API sürümü. API sürümleri için her kaynak şablonda belirtmek zorunda kalmamak için bu değeri kullanın. Resource Manager API sürümü bir API profili sürümü belirttiğinizde ve bu nedenle kaynak türü için bir API sürümü belirtmeyin profilinde tanımlanan kaynak türü için kullanır.<br><br>API Profil özelliği için Azure Stack ve genel Azure gibi farklı ortamlarda şablonu dağıtırken özellikle yararlıdır. Şablonunuzu otomatik olarak her iki ortamlarda desteklenen sürümleri kullandığından emin olmak için API profil sürümü kullanın. Geçerli API profili sürümleri ve API sürümlerini profilinde tanımlanan kaynaklar listesi için bkz: [API profili](https://github.com/Azure/azure-rest-api-specs/tree/master/profile).<br><br>Daha fazla bilgi için [izleme API profillerini kullanarak sürümleri](templates-cloud-consistency.md#track-versions-using-api-profiles). |
 | [parametreler](#parameters) |Hayır |Kaynak bir dağıtımı özelleştirmek için dağıtım çalıştırıldığında, sağlanan değerler. |
-| [Değişkenleri](#variables) |Hayır |Şablonda, JSON parçaları olarak şablon dili ifadeleri basitleştirmek için kullanılan değerleri. |
-| [İşlevleri](#functions) |Hayır |Şablonda kullanılabilir olan kullanıcı tanımlı işlevler. |
-| [Kaynakları](#resources) |Evet |Dağıtılan ya da bir kaynak grubu veya abonelik güncelleştirilmiş kaynak türleri. |
-| [çıkışlar](#outputs) |Hayır |Dağıtımdan sonra döndürülen değerleri. |
+| [variables](#variables) |Hayır |Şablonda, JSON parçaları olarak şablon dili ifadeleri basitleştirmek için kullanılan değerleri. |
+| [functions](#functions) |Hayır |Şablonda kullanılabilir olan kullanıcı tanımlı işlevler. |
+| [resources](#resources) |Evet |Dağıtılan ya da bir kaynak grubu veya abonelik güncelleştirilmiş kaynak türleri. |
+| [outputs](#outputs) |Hayır |Dağıtımdan sonra döndürülen değerleri. |
 
 Her öğesinin özellikleri ayarlayabilirsiniz. Bu makalede daha ayrıntılı şablon bölümlerini açıklar.
 
@@ -132,7 +132,7 @@ Bir parametre için kullanılabilir özellikler şunlardır:
 | parameterName |Evet |Parametrenin adı. Geçerli bir JavaScript tanımlayıcı olmalıdır. |
 | type |Evet |Parametre değeri türü. İzin verilen türleri ve değerleri **dize**, **securestring**, **int**, **bool**, **nesne**, **secureObject**, ve **dizi**. |
 | defaultValue |Hayır |Parametresi, parametre için hiçbir değer sağlanmışsa varsayılan değeri. |
-| izin verilen değerler |Hayır |Doğru değeri sağlandığından emin olmak parametresi için izin verilen değerler dizisi. |
+| allowedValues |Hayır |Doğru değeri sağlandığından emin olmak parametresi için izin verilen değerler dizisi. |
 | minValue |Hayır |İnt türü parametreleri için en düşük değer, bu değer büyük/küçük harf dahildir. |
 | maxValue |Hayır |İnt türü parametreleri için maksimum değeri, bu değeri de dahildir. |
 | minLength |Hayır |Dize, güvenli dize ve dizi tür parametreleri için minimum uzunluğu, bu değer büyük/küçük harf dahildir. |
