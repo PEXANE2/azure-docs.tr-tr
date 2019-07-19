@@ -17,23 +17,23 @@ ms.locfileid: "67206386"
 
 Resource Manager, nesneleri ve dizileri ile çalışmak için çeşitli işlevler sunar.
 
-* [Dizi](#array)
-* [birleşim](#coalesce)
+* [array](#array)
+* [coalesce](#coalesce)
 * [concat](#concat)
-* [içerir](#contains)
+* [contains](#contains)
 * [createArray](#createarray)
-* [boş](#empty)
-* [ilk](#first)
-* [kesişimi](#intersection)
+* [empty](#empty)
+* [first](#first)
+* [intersection](#intersection)
 * [json](#json)
-* [Son](#last)
-* [Uzunluğu](#length)
-* [en fazla](#max)
-* [Min](#min)
-* [Aralığı](#range)
-* [Atla](#skip)
-* [sınav zamanı](#take)
-* [birleşim](#union)
+* [last](#last)
+* [length](#length)
+* [max](#max)
+* [min](#min)
+* [range](#range)
+* [skip](#skip)
+* [take](#take)
+* [union](#union)
 
 Bir dizi değere göre ayrılmış dize değerlerini almak için bkz. [bölme](resource-group-template-functions-string.md#split).
 
