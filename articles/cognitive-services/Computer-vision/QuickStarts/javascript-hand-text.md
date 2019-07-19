@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı Başlangıç: El yazısı metinleri - JavaScript ayıklamak'
+title: "Hızlı Başlangıç: Yazdırılmış ve el ile yazılmış metin-REST, JavaScript 'i Ayıkla"
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, JavaScript ile Görüntü İşleme API’sini kullanarak bir görüntüden el yazısı metni ayıklayacaksınız.
+description: Bu hızlı başlangıçta, JavaScript ile Görüntü İşleme API'si kullanarak bir görüntüden yazdırılmış ve el yazısı metni ayıkladığınızda.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,25 +11,25 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: f4e627286f6a32816eafa84e860cb8eb49111f67
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 42bb85b5dfab6c9799d89ff92ab5e5b3c0230019
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604335"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68312001"
 ---
-# <a name="quickstart-extract-handwritten-text-using-the-computer-vision-rest-api-and-javascript"></a>Hızlı Başlangıç: Görüntü işleme REST API'si ve JavaScript kullanarak resimlerdeki el yazısı metinleri ayıklamak
+# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-javascript"></a>Hızlı Başlangıç: Görüntü İşleme REST API ve JavaScript kullanarak yazdırılmış ve el yazısı metin Ayıkla
 
-Bu hızlı başlangıçta, Görüntü İşleme’nin REST API’sini kullanarak bir görüntüden el yazısı metni ayıklayacaksınız. İle [Batch okuma](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) API ve [okuma işleminin sonucunu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) API, bir resimdeki resimlerdeki el yazısı algılayabilir, ardından ayıklama tanınan karakterleri makine tarafından kullanılabilir bir karakter akışı halinde.
+Bu hızlı başlangıçta, Görüntü İşleme REST API kullanarak bir görüntüden yazdırılmış ve/veya el ile yazılmış metin ayıklanır. [Batch okuma](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) ve [okuma işlemi sonucu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) yöntemleriyle, görüntüdeki metni algılayabilir ve tanınan karakterleri makine tarafından okunabilen bir karakter akışına ayıklayabilirsiniz. API, her metin satırı için hangi tanıma modelinin kullanılacağını belirleyecek ve bu sayede hem yazdırılmış hem de el yazısı metinle birlikte görüntüleri destekler.
 
 > [!IMPORTANT]
-> Farklı [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) yöntemi [Batch okuma](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) yöntemi zaman uyumsuz olarak çalışır. Bu yöntem, başarılı bir yanıt gövdesinde herhangi bir bilgi döndürmez. Bunun yerine, Batch Read yöntemi değerinde bir URI döndürür `Operation-Content` yanıt üstbilgi alanı. Ardından temsil eder Bu URI çağırabilirsiniz [okuma işleminin sonucunu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) hem durumunu denetlemek ve Batch okuma yöntem çağrısının sonuçları döndürmek için yöntemi.
+> [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) yönteminden farklı olarak [Batch Read](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) yöntemi zaman uyumsuz olarak çalışır. Bu yöntem, başarılı bir yanıt gövdesinde herhangi bir bilgi döndürmez. Bunun yerine Batch Read yöntemi, `Operation-Content` yanıt üst bilgisi alanının değerinde bir URI döndürür. Ardından, durumu denetlemek ve toplu okuma yöntemi çağrısının sonuçlarını döndürmek için [okuma Işlemi sonucu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) yöntemini temsil eden bu URI 'yi çağırabilirsiniz.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) oluşturun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Ücretsiz bir deneme anahtarından alabilirsiniz [Bilişsel Hizmetler'i deneyin](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Veya yönergeleri [Bilişsel Hizmetler hesabı oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) görüntü işleme için abone ve anahtarınızı alın.
+Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Deneme bilişsel [Hizmetler](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)'den ücretsiz bir deneme anahtarı edinebilirsiniz. Ya da Görüntü İşleme abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin.
 
 ## <a name="create-and-run-the-sample"></a>Örnek oluşturma ve çalıştırma
 
@@ -38,9 +38,9 @@ Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Ücretsiz 
 1. Aşağıdaki kodu bir metin düzenleyicisine kopyalayın.
 1. Gerektiğinde kodda aşağıdaki değişiklikleri yapın:
     1. `subscriptionKey` değerini abonelik anahtarınızla değiştirin.
-    1. Değiştirin `uriBase` uç nokta URL'si ile [Batch okuma](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) burada elde ettiğiniz abonelik anahtarlarınızın gerekirse Azure bölgelerine yöntemi.
-    1. İsteğe bağlı olarak, `inputImage` denetimi için `value` özniteliğinin değerini, içinden el yazısı metni ayıklamak istediğiniz başka bir görüntünün URL’si ile değiştirin.
-1. Kodu, `.html` uzantısıyla bir dosya olarak kaydedin. Örneğin, `get-handwriting.html`.
+    1. Değerini `uriBase` , gerekirse abonelik anahtarlarınızı aldığınız Azure bölgesinden [toplu okuma](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) yönteminin uç nokta URL 'siyle değiştirin.
+    1. İsteğe bağlı olarak, `value` `inputImage` denetimin özniteliğinin değerini, metin çıkarmak istediğiniz farklı bir görüntünün URL 'siyle değiştirin.
+1. Kodu, `.html` uzantısıyla bir dosya olarak kaydedin. Örneğin: `get-text.html`.
 1. Tarayıcı penceresini açın.
 1. Tarayıcıda dosyayı tarayıcı penceresine sürükleyip bırakın.
 1. Tarayıcıda web sayfası görüntülendiğinde, **Görüntü oku** düğmesini seçin.
@@ -49,7 +49,7 @@ Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Ücretsiz 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Handwriting Sample</title>
+    <title>Text Recognition Sample</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 </head>
 <body>
@@ -99,10 +99,10 @@ Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Ücretsiz 
 
         .done(function(data, textStatus, jqXHR) {
             // Show progress.
-            $("#responseTextArea").val("Handwritten text submitted. " +
+            $("#responseTextArea").val("Text submitted. " +
                 "Waiting 10 seconds to retrieve the recognized text.");
 
-            // Note: The response may not be immediately available. Handwriting
+            // Note: The response may not be immediately available. Text
             // recognition is an asynchronous operation that can take a variable
             // amount of time depending on the length of the text you want to
             // recognize. You may need to wait or retry the GET operation.
@@ -160,8 +160,8 @@ Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Ücretsiz 
         });
     };
 </script>
-<h1>Read handwritten image:</h1>
-Enter the URL to an image of handwritten text, then click
+<h1>Read text from image:</h1>
+Enter the URL to an image of text, then click
 the <strong>Read image</strong> button.
 <br><br>
 Image to read:

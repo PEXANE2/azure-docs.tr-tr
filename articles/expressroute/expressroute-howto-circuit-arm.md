@@ -1,19 +1,20 @@
 ---
-title: 'Oluşturma ve bir ExpressRoute bağlantı hattı - PowerShell değiştirin: Azure | Microsoft Docs'
+title: 'ExpressRoute bağlantı hattı oluşturma ve değiştirme-PowerShell: Azure | Microsoft Docs'
 description: Oluşturma, sağlama, doğrulayın, güncelleştirme, silme ve bir ExpressRoute bağlantı hattının sağlamasını Kaldır.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: article
 ms.date: 02/20/2019
-ms.author: ganesr;cherylmc
+ms.author: cherylmc
+ms.reviewer: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 06f49dc00b83ee2190f6361ebb8e6f052384402a
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 2ff22a3c0087ff7e24517f792ba9abacbae76e3a
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657313"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846634"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell"></a>Oluşturma ve PowerShell kullanarak ExpressRoute devresi değiştirme
 > [!div class="op_single_selector"]
@@ -45,7 +46,7 @@ Başlamadan önce gözden [önkoşulları](expressroute-prerequisites.md) ve [i�
 ### <a name="2-get-the-list-of-supported-providers-locations-and-bandwidths"></a>2. Desteklenen sağlayıcılar, konumları ve bant genişlikleri listesini alın
 Bir ExpressRoute bağlantı hattı oluşturmadan önce desteklenen bağlantı sağlayıcıları ve konumları bant genişliği seçenekleri listesi gerekir.
 
-PowerShell cmdlet **Get-AzExpressRouteServiceProvider** , sonraki adımlarda kullanacağınız bu bilgileri döndürür:
+**Get-AzExpressRouteServiceProvider** PowerShell cmdlet 'i, sonraki adımlarda kullanacağınız bu bilgileri döndürür:
 
 ```azurepowershell-interactive
 Get-AzExpressRouteServiceProvider
@@ -90,7 +91,7 @@ get-help New-AzExpressRouteCircuit -detailed
 
 
 ### <a name="4-list-all-expressroute-circuits"></a>4. Tüm ExpressRoute devreleri listesi
-Oluşturduğunuz tüm ExpressRoute devreleri listesini almak için çalıştırın **Get-AzExpressRouteCircuit** komutu:
+Oluşturduğunuz tüm ExpressRoute devrelerinin listesini almak için **Get-Azexpressroutedevresi** komutunu çalıştırın:
 
 ```azurepowershell-interactive
 Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -216,7 +217,7 @@ Adım adım yönergeler için bkz: [ExpressRoute bağlantı hattı yönlendirme 
 Ardından, bir sanal ağ, ExpressRoute bağlantı hattına bağlayın. Kullanım [sanal ağları ExpressRoute devresine bağlama](expressroute-howto-linkvnet-arm.md) makale Resource Manager dağıtım modeliyle çalışırken.
 
 ## <a name="getting-the-status-of-an-expressroute-circuit"></a>ExpressRoute bağlantı hattının durumunu alma
-Dilediğiniz zaman bu bilgileri kullanarak alabilirsiniz **Get-AzExpressRouteCircuit** cmdlet'i. Parametresiz çağrıyı yapan tüm devreler listeler.
+**Get-Azexpressroutedevresi** cmdlet 'ini kullanarak bu bilgileri istediğiniz zaman alabilirsiniz. Parametresiz çağrıyı yapan tüm devreler listeler.
 
 ```azurepowershell-interactive
 Get-AzExpressRouteCircuit

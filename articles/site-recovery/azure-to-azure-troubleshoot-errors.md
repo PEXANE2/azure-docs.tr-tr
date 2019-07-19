@@ -387,7 +387,7 @@ GRUB yapılandırma dosyaları ("/ boot/grub/menu.lst", "/ boot/grub/grub.cfg", 
 
 
 - GRUB dosyasıdır aşağıdaki satırı **/boot/grub/menu.lst**
-  *çekirdek /boot/vmlinuz-3.0.101-63-default **kök = / dev/sda2** **= / dev/sda1 Sürdür ** splash sessiz crashkernel = 256M-:128M showopts vga = 0x314 =*
+  *çekirdek /boot/vmlinuz-3.0.101-63-default **kök = / dev/sda2** **= / dev/sda1 Sürdür** splash sessiz crashkernel = 256M-:128M showopts vga = 0x314 =*
 
 Yukarıdaki kalın dize gözlemlerseniz, GRUB parametreleri "root" ve "Devam" UUID yerine gerçek cihaz adları vardır.
 

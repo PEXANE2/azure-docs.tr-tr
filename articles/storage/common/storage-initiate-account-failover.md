@@ -1,6 +1,6 @@
 ---
-title: Bir depolama hesabı yük devretme (Önizleme) - Azure depolama başlatın
-description: Depolama hesabınızın birincil uç noktaya kullanılamaz hale gelmesi durumunda, bir hesap yük devretme başlatma hakkında bilgi edinin. Depolama hesabınız için birincil bölgesi halinde gelecek ikincil bölgeye yük devretme güncelleştirir.
+title: Depolama hesabı yük devretmesini başlatma (Önizleme)-Azure depolama
+description: Depolama hesabınızın birincil uç noktasının kullanılamaz duruma gelmesi durumunda, hesap yük devretmesini nasıl başlatacağınızı öğrenin. Yük devretme, ikincil bölgeyi depolama hesabınız için birincil bölge olacak şekilde güncelleştirir.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,80 +9,80 @@ ms.date: 02/11/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 94a385b7e41dd4a7664dc40418456b304ebef509
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 51e0379607c49019590a99c9fb7304f28be2afe5
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65150012"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305729"
 ---
-# <a name="initiate-a-storage-account-failover-preview"></a>Bir depolama hesabı yük devretme (Önizleme) başlatın
+# <a name="initiate-a-storage-account-failover-preview"></a>Depolama hesabı yük devretmesini başlatma (Önizleme)
 
-Coğrafi olarak yedekli depolama hesabınızın birincil uç noktadan herhangi bir nedenle kullanılamaz duruma gelirse, bir hesap yük devretme (Önizleme) başlatabilirsiniz. Bir hesap yük devretme için depolama hesabınızın birincil uç nokta olacak ikincil uç güncelleştirir. Yük devretme işlemi tamamlandıktan sonra istemciler yeni birincil bölgeye yazma başlayabilirsiniz. Zorlamalı yük devretme, uygulamalarınız için yüksek kullanılabilirliği sürdürmek sağlar.
+Coğrafi olarak yedekli depolama hesabınızın birincil uç noktası herhangi bir nedenle kullanılamaz duruma gelirse, hesap yük devretmesini (Önizleme) başlatabilirsiniz. Hesap yük devretmesi ikincil uç noktayı, depolama hesabınız için birincil uç nokta olacak şekilde güncelleştirir. Yük devretme işlemi tamamlandıktan sonra istemciler yeni birincil bölgeye yazmaya başlayabilir. Zorunlu yük devretme, uygulamalarınız için yüksek kullanılabilirlik sağlamanıza olanak sağlar.
 
-Bu makalede, Azure portal, PowerShell veya Azure CLI kullanarak depolama hesabınız için bir hesap yük devretmeyi başlatmak gösterilmektedir. Hesap yük devretme hakkında daha fazla bilgi için bkz: [olağanüstü durum kurtarma ve hesabı yük devretme (Önizleme) Azure Depolama'daki](storage-disaster-recovery-guidance.md).
+Bu makalede, Azure portal, PowerShell veya Azure CLı kullanarak depolama hesabınız için hesap yük devretmesinin nasıl başlatılacağı gösterilmektedir. Hesap yük devretmesi hakkında daha fazla bilgi için bkz. [Azure Storage 'Da olağanüstü durum kurtarma ve hesap yük devretme (Önizleme)](storage-disaster-recovery-guidance.md).
 
 > [!WARNING]
-> Bir hesap yük devretme, genellikle bazı veri kaybı ile sonuçlanır. Bir hesap yük devretme etkilerini anlamak ve veri kaybı için hazırlamak üzere gözden [hesap yük devretme işlemi anlamak](storage-disaster-recovery-guidance.md#understand-the-account-failover-process).
+> Hesap yük devretmesi genellikle bazı veri kaybıyla sonuçlanır. Hesap yük devretmesinin etkilerini anlamak ve veri kaybına hazırlanmak için, [Hesap yük devretme sürecini anlayın](storage-disaster-recovery-guidance.md#understand-the-account-failover-process).
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Depolama hesabınızdaki bir hesabı yük devretme gerçekleştirmeden önce aşağıdaki adımları gerçekleştirdiğinizden emin olun:
+Depolama hesabınızda bir hesap yük devretmesi gerçekleştirebilmeniz için önce aşağıdaki adımları gerçekleştirdiğinizden emin olun:
 
-- Hesap yük devretme Önizleme için kaydolun. Kaydetme hakkında daha fazla bilgi için bkz: [önizlemesi hakkında](storage-disaster-recovery-guidance.md#about-the-preview).
-- Depolama hesabınızda coğrafi olarak yedekli depolama (GRS) veya okuma erişimli coğrafi olarak yedekli depolama (RA-GRS) kullanacak şekilde yapılandırıldığından emin olun. Coğrafi olarak yedekli depolama hakkında daha fazla bilgi için bkz. [coğrafi olarak yedekli depolama (GRS): Azure depolama için bölgeler arası çoğaltma](storage-redundancy-grs.md). 
+- Hesap yük devretmesi önizlemesine kaydolun. Nasıl kaydedileceği hakkında bilgi için [Önizleme hakkında](storage-disaster-recovery-guidance.md#about-the-preview)bölümüne bakın.
+- Depolama hesabınızın coğrafi olarak yedekli depolama (GRS) veya Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS) kullanacak şekilde yapılandırıldığından emin olun. Coğrafi olarak yedekli depolama hakkında daha fazla bilgi için bkz [. coğrafi olarak yedekli depolama (GRS): Azure depolama](storage-redundancy-grs.md)için çapraz bölgesel çoğaltma. 
 
-## <a name="important-implications-of-account-failover"></a>Hesap yük devretme önemli etkileri
+## <a name="important-implications-of-account-failover"></a>Hesap yük devretmesinin önemli etkileri
 
-Depolama hesabınız için bir hesap yük devretme başlattığınızda, ikincil uç birincil uç noktaya dönüşür ikincil uç nokta için DNS kayıtlarını güncelleştirilir. Bir yük devretmeyi başlatmadan önce depolama hesabınıza olası etkilerini anladığınızdan emin olun.
+Depolama hesabınız için bir hesap yük devretmesi başlattığınızda, ikincil uç nokta için DNS kayıtları, ikincil uç nokta birincil uç nokta olacak şekilde güncelleştirilir. Yük devretme işlemine başlamadan önce depolama hesabınıza yönelik olası etkiyi anladığınızdan emin olun.
 
-Bir yük devretmeyi başlatmadan önce olası veri kaybı kapsamını tahmin etmek için kontrol **son eşitleme zamanı** özelliğini kullanarak `Get-AzStorageAccount` PowerShell cmdlet'ini ve `-IncludeGeoReplicationStats` parametresi. Denetleyin ardından `GeoReplicationStats` hesabınız için özellik. 
+Yük devretme başlamadan önce büyük olasılıkla veri kaybı kapsamını tahmin etmek için `Get-AzStorageAccount` PowerShell cmdlet 'ini kullanarak **son eşitleme zamanı** özelliğini denetleyin ve `-IncludeGeoReplicationStats` parametresini ekleyin. Ardından, `GeoReplicationStats` hesabınızın özelliğini denetleyin. 
 
-Yük devretmeden sonra otomatik olarak yeni bir birincil bölgede yerel olarak yedekli depolama (LRS), depolama hesabı türü dönüştürülür. Coğrafi olarak yedekli depolama (GRS) veya okuma erişimli coğrafi olarak yedekli depolama (RA-GRS) hesabı için yeniden etkinleştirebilirsiniz. Not LRS'den GRS'ye veya RA-GRS'ye dönüştürme ek bir ücret doğurur. Ek bilgi için bkz: [bant genişliği fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/bandwidth/). 
+Yük devretmenin ardından, depolama hesabı türü otomatik olarak yeni birincil bölgedeki yerel olarak yedekli depolama (LRS) olarak dönüştürülür. Hesap için coğrafi olarak yedekli depolamayı (GRS) veya Okuma Erişimli Coğrafi olarak yedekli depolamayı (RA-GRS) yeniden etkinleştirebilirsiniz. LRS 'den GRS 'ye veya RA-GRS ' ye dönüştürme ek bir maliyet doğurur. Daha fazla bilgi için bkz. [bant genişliği fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/bandwidth/). 
 
-GRS depolama hesabınız için yeniden etkinleştirdikten sonra Microsoft hesabınızdaki veriler, yeni ikincil bölgeye çoğaltma başlar. Çoğaltma zaman çoğaltılan veri miktarına bağlıdır.  
+Depolama hesabınız için GRS 'yi yeniden etkinleştirdikten sonra Microsoft, hesabınızdaki verileri yeni ikincil bölgeye çoğaltmaya başlar. Çoğaltma süresi, çoğaltılan veri miktarına bağlıdır.  
 
 ## <a name="azure-portal"></a>Azure portal
 
-Azure portalından bir hesap yük devretmeyi başlatmak için bu adımları izleyin:
+Azure portal hesap yük devretmesini başlatmak için aşağıdaki adımları izleyin:
 
 1. Depolama hesabınıza gidin.
-2. Altında **ayarları**seçin **coğrafi çoğaltma**. Aşağıdaki resimde, bir depolama hesabı coğrafi çoğaltma ve yük devretme durumunu gösterir.
+2. **Ayarlar**altında **coğrafi çoğaltma**' yı seçin. Aşağıdaki görüntüde, bir depolama hesabının coğrafi çoğaltma ve yük devretme durumu gösterilmektedir.
 
     ![Coğrafi çoğaltma ve yük devretme durumunu gösteren ekran görüntüsü](media/storage-initiate-account-failover/portal-failover-prepare.png)
 
-3. Depolama hesabınız için coğrafi olarak yedekli depolama (GRS) veya okuma erişimli coğrafi olarak yedekli depolama (RA-GRS) yapılandırıldığını doğrulayın. Yüklü değilse, ardından **yapılandırma** altında **ayarları** coğrafi yedekli olacak şekilde hesabınızı güncelleştirmek için. 
-4. **Son eşitleme zamanı** özelliği, ne kadar ikincil birincilden arkasındaysa gösterir. **Son eşitleme zamanı** kapsamın deneyimi, veri kaybı tahmini sağlar. yük devretme tamamlandıktan sonra.
-5. Seçin **hazırlama (Önizleme) için yük devretme**. 
-6. Onay iletişim kutusunda gözden geçirin. Hazır olduğunuzda girin **Evet** onaylayın ve yük devretme başlatın.
+3. Depolama hesabınızın coğrafi olarak yedekli depolama (GRS) veya Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS) için yapılandırıldığını doğrulayın. Aksi takdirde, hesabınız coğrafi olarak yedekli olacak şekilde güncelleştirmek için **Ayarlar** ' ın altında **yapılandırma** ' yı seçin. 
+4. **Son eşitleme zamanı** özelliği, ikinc'nin birincili hedeften gerisinde olduğunu gösterir. **Son eşitleme zamanı** , yük devretme tamamlandıktan sonra karşılaşabileceğiniz veri kaybı kapsamını tahmin eder.
+5. **Yük devretme Için hazırla (Önizleme)** seçeneğini belirleyin. 
+6. Onay iletişim kutusunu inceleyin. Hazırsanız, yük devretmeyi onaylamak ve başlatmak için **Evet** girin.
 
-    ![Ekran gösteren onay iletişim kutusunda bir hesap yük devretme](media/storage-initiate-account-failover/portal-failover-confirm.png)
+    ![Hesap yük devretmesi için onay iletişim kutusunu gösteren ekran görüntüsü](media/storage-initiate-account-failover/portal-failover-confirm.png)
 
 ## <a name="powershell"></a>PowerShell
 
-Bir hesap yük devretmeyi başlatmak için PowerShell kullanmak için önce 6.0.1 yüklemelisiniz Önizleme modülü. Modülü yüklemek için aşağıdaki adımları izleyin:
+Bir hesap yük devretmesi başlatmak üzere PowerShell 'i kullanmak için, önce 6.0.1 Preview modülünü yüklemeniz gerekir. Modülünü yüklemek için şu adımları izleyin:
 
-1. Azure PowerShell'in önceki yüklemeleri kaldırın:
+1. Azure PowerShell önceki tüm yüklemelerini kaldırın:
 
-    - Windows Azure PowerShell'in önceki yüklemeleri kaldırmaya **uygulamalar ve Özellikler** bölümündeki **ayarları**.
-    - Tümünü Kaldır **Azure*** modüllerden `%Program Files%\WindowsPowerShell\Modules`.
+    - **Ayarlar**altındaki **uygulamalar & Özellikler** ayarını kullanarak Windows 'un önceki Azure PowerShell yüklemelerini kaldırın.
+    - Tüm **Azure** modüllerini ' den `%Program Files%\WindowsPowerShell\Modules`kaldırın.
     
-1. PowerShellGet yüklü en son sürümüne sahip olduğunuzdan emin olun. Bir Windows PowerShell penceresi açın ve en son sürümünü yüklemek için aşağıdaki komutu çalıştırın:
+1. PowerShellGet 'in en son sürümüne sahip olduğunuzdan emin olun. Bir Windows PowerShell penceresi açın ve en son sürümü yüklemek için aşağıdaki komutu çalıştırın:
  
     ```powershell
     Install-Module PowerShellGet –Repository PSGallery –Force
     ```
-1. Kapatın ve PowerShellGet yükledikten sonra PowerShell penceresi açın. 
+1. PowerShellGet yükledikten sonra PowerShell penceresini kapatın ve yeniden açın. 
 
-1. Azure PowerShell'in en son sürümünü yükleyin:
+1. Azure PowerShell en son sürümünü yükler:
 
     ```powershell
     Install-Module Az –Repository PSGallery –AllowClobber
     ```
 
-1. Azure AD destekleyen bir Azure depolama Önizleme modülünü yükleyin:
+1. Azure AD 'yi destekleyen bir Azure depolama önizleme modülü yükler:
    
     ```powershell
     Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.1.1-preview –AllowPrerelease –AllowClobber –Force 
@@ -90,7 +90,7 @@ Bir hesap yük devretmeyi başlatmak için PowerShell kullanmak için önce 6.0.
 1. PowerShell penceresini kapatıp yeniden açın.
  
 
-Powershell'den bir hesabı yük devretmeyi başlatmak için aşağıdaki komutu yürütün:
+PowerShell 'den bir hesap yük devretmesi başlatmak için aşağıdaki komutu yürütün:
 
 ```powershell
 Invoke-AzStorageAccountFailover -ResourceGroupName <resource-group-name> -Name <account-name> 
@@ -98,7 +98,7 @@ Invoke-AzStorageAccountFailover -ResourceGroupName <resource-group-name> -Name <
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Bir hesap yük devretmeyi başlatmak için Azure CLI kullanmak için aşağıdaki komutları yürütün:
+Hesap yük devretmesi başlatmak için Azure CLı 'yı kullanmak üzere aşağıdaki komutları yürütün:
 
 ```cli
 az storage account show \ --name accountName \ --expand geoReplicationStats
@@ -107,6 +107,6 @@ az storage account failover \ --name accountName
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Olağanüstü durum kurtarma ve hesabı yük devretme (Önizleme) Azure Depolama'daki](storage-disaster-recovery-guidance.md)
+- [Azure Storage 'da olağanüstü durum kurtarma ve hesap yük devretmesi (Önizleme)](storage-disaster-recovery-guidance.md)
 - [RA-GRS’yi kullanarak yüksek kullanılabilirliğe sahip uygulamalar tasarlama](storage-designing-ha-apps-with-ragrs.md)
-- [Öğretici: Blob Depolama ile yüksek oranda kullanılabilir bir uygulama oluşturun](../blobs/storage-create-geo-redundant-storage.md) 
+- [Öğretici: BLOB depolama ile yüksek oranda kullanılabilir bir uygulama oluşturma](../blobs/storage-create-geo-redundant-storage.md) 

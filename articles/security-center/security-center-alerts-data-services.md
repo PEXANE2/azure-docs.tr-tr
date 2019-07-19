@@ -1,6 +1,6 @@
 ---
-title: Tehdit algılama için Azure Güvenlik Merkezi'nde Veri Hizmetleri | Microsoft Docs
-description: Bu konuda, Veri Hizmetleri uyarıları kullanılabilir Azure Güvenlik Merkezi'nde sunulmaktadır.
+title: Azure Güvenlik Merkezi 'nde veri Hizmetleri için tehdit algılama | Microsoft Docs
+description: Bu konuda, Azure Güvenlik Merkezi 'nde bulunan veri Hizmetleri uyarıları sunulmaktadır.
 services: security-center
 documentationcenter: na
 author: monhaber
@@ -13,60 +13,60 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/02/2019
-ms.author: monhaber
-ms.openlocfilehash: 87cfd2769e473d26c2dcae1b7b418f6fb1739915
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.author: v-mohabe
+ms.openlocfilehash: 1cafd8a3c766e57aed67634d7da8498c9a6ee120
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67626282"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68295832"
 ---
-# <a name="threat-detection-for-data-services-in-azure-security-center"></a>Tehdit algılama için Azure Güvenlik Merkezi'nde Veri Hizmetleri
+# <a name="threat-detection-for-data-services-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde veri Hizmetleri için tehdit algılama
 
- Güvenlik Merkezi, veri depolama hizmetlerinden günlükleri analiz eder ve veri kaynakları için bir tehdit algıladığında uyarı tetikler. Bu konu, aşağıdaki hizmetleri için Güvenlik Merkezi oluşturduğu uyarıların listeler:
+ Güvenlik Merkezi veri depolama hizmetleri günlüklerini analiz eder ve veri kaynaklarınız için bir tehdit algıladığında uyarıları tetikler. Bu konuda, güvenlik merkezi 'nin aşağıdaki hizmetler için oluşturduğu uyarılar listelenmektedir:
 
 * [Azure SQL veritabanı ve SQL veri ambarı](#data-sql)
 * [Azure Depolama](#azure-storage)
 
-## Azure SQL veritabanı ve SQL veri ambarı <a name="data-sql"></a>
+## Azure SQL veritabanı ve SQL veri ambarı<a name="data-sql"></a>
 
-SQL tehdit algılama, olağan dışı ve zararlı gösteren anormal etkinlikleri algılar, erişim veya veritabanı açıklarından yararlanmaya dener. Güvenlik Merkezi, SQL denetim günlüklerini analiz eder ve SQL altyapısı içinde yerel olarak çalışır.
+SQL tehdit algılama, veritabanlarına erişmek veya veritabanına yararlanmak için olağandışı ve potansiyel olarak zararlı girişimleri gösteren anormal etkinlikleri algılar. Güvenlik Merkezi, SQL denetim günlüklerini analiz eder ve SQL altyapısında yerel olarak çalışır.
 
 |Uyarı|Açıklama|
 |---|---|
-|**SQL ekleme güvenlik açığı**|Bir uygulama hatalı SQL deyimi veritabanında üretti. Bu, SQL ekleme saldırılarına karşı olası bir güvenlik açığını gösterebilir. Hatalı deyim oluşturulmasının iki olası nedeni vardır: Ya da, hatalı SQL deyimi uygulama kodunda bir hata oluşturulur. Alternatif olarak, uygulama kodu veya depolanan yordamlar kullanıcı girişi için SQL ekleme yararlanılabilir hatalı SQL deyimi yapılandırılırken sırasında bu açıktan kaydetmedi.|
-|**Olası SQL eklemesi**|SQL ekleme güvenlik açığı tanımlanan uygulama karşı etkin bir açıktan yararlanma oluştu. Bu, bir saldırganın güvenlik açığına sahip uygulama kodu kullanarak kötü amaçlı SQL deyimleri eklemeye çalıştığı veya saklı yordamları anlamına gelir.|
-|**Olağan dışı bir konumdan erişim**|SQL Server, burada kişi SQL sunucusuna olağan dışı bir coğrafi konumdan oturum açmış olduğu erişim düzeninde bir değişiklik meydana geldi. Bazı durumlarda uyarı güvenli işlemleri (yeni bir uygulama veya geliştirici bakımı gibi) de algılar. Diğer durumlarda, uyarı kötü amaçlı işlemleri (önceki çalışan ve şirket dışı saldırgan gibi) algılar.|
-|**Erişim**|SQL sunucusunun erişim deseninde değişiklik olmuştur - birisi bir sorumludan (SQL kullanıcısı) kullanarak SQL sunucusuna oturum. Bazı durumlarda uyarı güvenli işlemleri (yeni uygulama ve geliştirici bakımı gibi) de algılar. Diğer durumlarda, uyarı kötü amaçlı işlemleri (önceki çalışan ve şirket dışı saldırgan gibi) algılar.|
-|**Zararlı olabilecek bir uygulamadan erişim**|Zararlı bir uygulama, veritabanına erişmek için kullanılır. Bazı durumlarda, uyarı güvenlik testlerini algılar. Diğer durumlarda, yarı yaygın saldırı araçlarının kullandığı saldırıları algılar.|
-|**Deneme yanılma SQL kimlik bilgileri**|Farklı kimlik bilgileri başarısız oturum açma denemesi olağandışı yüksek sayıda oluştu. Bazı durumlarda, uyarı güvenlik testlerini algılar. Diğer durumlarda, uyarı deneme yanılma saldırılarını algılar.|
+|**SQL ekleme güvenlik açığı**|Bir uygulama veritabanında hatalı bir SQL açıklaması oluşturdu. Bu, SQL ekleme saldırılarına karşı olası bir güvenlik açığını gösterebilir. Hatalı deyim oluşturulmasının iki olası nedeni vardır: Ya da, uygulama kodundaki bir hata, hatalı SQL ifadesini oluşturulmuş. Ya da, uygulama kodu veya saklı yordamlar, SQL ekleme için yararlanılabilecek hatalı SQL ifadesini oluştururken Kullanıcı girişini temizlemeyen.|
+|**Olası SQL ekleme**|SQL ekleme ile güvenlik açığı bulunan tanımlı bir uygulamaya karşı etkin bir yararlanma gerçekleşti. Bu, bir saldırganın savunmasız uygulama kodunu veya saklı yordamları kullanarak kötü amaçlı SQL deyimleri eklemeye çalıştığı anlamına gelir.|
+|**Olağan dışı konumdan erişim**|SQL Server 'a erişim modelinde, birinin SQL Server 'da olağan dışı bir coğrafi konumdan oturum açtığı bir değişiklik vardı. Bazı durumlarda uyarı güvenli işlemleri (yeni bir uygulama veya geliştirici bakımı gibi) de algılar. Diğer durumlarda, uyarı kötü amaçlı işlemleri (önceki çalışan ve şirket dışı saldırgan gibi) algılar.|
+|**Bilmediğiniz sorumludan erişim**|SQL Server 'a erişim düzeninde bir değişiklik vardı. birisi SQL Server 'da olağan dışı bir sorumlu (SQL kullanıcısı) kullanarak oturum açtı. Bazı durumlarda uyarı güvenli işlemleri (yeni uygulama ve geliştirici bakımı gibi) de algılar. Diğer durumlarda, uyarı kötü amaçlı işlemleri (önceki çalışan ve şirket dışı saldırgan gibi) algılar.|
+|**Zararlı olabilecek bir uygulamadan erişim**|Veritabanına erişmek için zararlı olabilecek bir uygulama kullanıldı. Bazı durumlarda, uyarı güvenlik testlerini algılar. Diğer durumlarda, yarı yaygın saldırı araçlarının kullandığı saldırıları algılar.|
+|**Deneme yanılma SQL kimlik bilgilerini zorlama**|Farklı kimlik bilgileri ile olağan dışı yüksek sayıda başarısız oturum açma işlemi oluştu. Bazı durumlarda, uyarı güvenlik testlerini algılar. Diğer durumlarda, uyarı deneme yanılma saldırılarını algılar.|
 
-SQL tehdit algılama uyarıları Bkz hakkında daha fazla bilgi için[Azure SQL veritabanı tehdit algılama](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)ve tehdit algılama uyarıları bölümü gözden geçirin. Ayrıca bkz: [nasıl Azure Güvenlik Merkezi yardımcı olan bir Cyberattack açığa](https://azure.microsoft.com/blog/how-azure-security-center-helps-reveal-a-cyberattack/) kötü amaçlı SQL etkinliği algılama Güvenlik Merkezi bir saldırı bulmak için nasıl kullanılacağını gösteren bir örnek görüntülemek için.
+SQL tehdit algılama uyarıları hakkında daha fazla bilgi için bkz.[Azure SQL veritabanı tehdit algılama](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)ve tehdit algılama uyarıları bölümünü gözden geçirme. Ayrıca, Azure Güvenlik Merkezi 'nin bir saldırıyı saptamak için kötü amaçlı SQL etkinliği algılama özelliğinin nasıl kullanıldığını gösteren bir örnek görüntülemek için bir [siber saldırıya nasıl yardımcı olduğunu](https://azure.microsoft.com/blog/how-azure-security-center-helps-reveal-a-cyberattack/) görün.
 
 ## Azure depolama<a name="azure-storage"></a>
 
 >[!NOTE]
-> Azure depolama için Gelişmiş tehdit koruması yalnızca Blob Depolama için şu anda kullanılabilir. 
+> Azure depolama için Gelişmiş tehdit koruması Şu anda yalnızca BLOB depolama için kullanılabilir. 
 
-Azure Depolama için Gelişmiş Tehdit Koruması, depolama hesaplarına erişmeye veya güvenlik açıklarından yararlanmaya yönelik sıra dışı, zararlı olabilecek girişimleri algılayan güvenlik zekasına sahip ek bir güvenlik katmanı sağlar. Bu koruma katmanı tehditlerle için uzman güvenlik ve güvenlik izleme sistemlerine yönetmenize gerek kalmadan sağlar.
+Azure Depolama için Gelişmiş Tehdit Koruması, depolama hesaplarına erişmeye veya güvenlik açıklarından yararlanmaya yönelik sıra dışı, zararlı olabilecek girişimleri algılayan güvenlik zekasına sahip ek bir güvenlik katmanı sağlar. Bu koruma katmanı, güvenlik uzmanı olmanıza ve güvenlik izleme sistemlerini yönetmenize gerek kalmadan tehditleri ele almanıza olanak sağlar.
 
-Güvenlik Merkezi, okuma, yazma ve silme isteği sayısı tehditleri algılamak için Blob Depolama için tanılama günlüklerini analiz ederek ve anomalileri etkinlik gerçekleştiğinde uyarı tetikler. Daha fazla bilgi için bkz: [depolama analizi günlük tutmayı yapılandırma](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account#configure-logging) daha fazla bilgi için.
+Güvenlik Merkezi, tehditleri algılamak için blob depolamaya okuma, yazma ve silme isteklerinin tanılama günlüklerini analiz eder ve etkinlikteki bozukluklar gerçekleştiğinde uyarıları tetikler. Daha fazla bilgi için bkz. daha fazla bilgi için [depolama Analizi günlüğe kaydetmeyi yapılandırma](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account#configure-logging) .
 
 > [!div class="mx-tableFixed"]
 
 |Uyarı|Açıklama|
 |---|---|
-|**Sıra dışı bir konumdan erişim anomali**|Örneklenen ağ trafiği analizinde dağıtımınızdaki kaynak kaynaklanan anormal giden Uzak Masaüstü Protokolü (RDP) iletişimi algılandı. Bu etkinlik, bu ortam için anormal olarak kabul edilir ve kaynağınızın tehlikeye girdiğini ve deneme yanılma dış RDP uç noktası için artık kullanılan gösterebilir. Bu etkinlik türünün, IP’nizin dış varlıklar tarafından kötü amaçlı olarak işaretlenmesine neden olabileceğini unutmayın.|
-|**Uygulama erişim anomali**|Olağan dışı bir uygulama bu depolama hesabı eriştiğini belirtir. Olası bir nedeni, bir saldırganın yeni bir uygulama kullanarak depolama hesabınıza eriştiğini ' dir.|
-|**Anonim erişim anomali**|Bir depolama hesabına erişim düzeninde bir değişiklik olduğunu gösterir. Örneğin, hesap anonim olarak (herhangi bir kimlik doğrulaması), bu hesapta en son erişim düzeni ile karşılaştırıldığında beklenmeyen olduğu erişilmedi. Olası bir nedeni, bir saldırganın bir kapsayıcıya ayrı tutma depolama blobda genel okuma erişimini yararlandıktan ' dir.|
-|**Veri Sızdırma anomali**|Olağan dışı derecede büyük bir veri miktarını bu depolama kapsayıcısındaki son etkinliklere göre çıkartılan gösterir. Olası bir nedeni, bir saldırganın büyük miktarda veri içeren depolama blobda kapsayıcıdan ayıklanan ' dir.|
-|**Anomali beklenmeyen Sil**|Bir veya daha fazla beklenmeyen silme işlemleri Bu hesapta en son etkinlik ile karşılaştırıldığında bir depolama hesabı oluştu gösterir. Olası bir nedeni, bir saldırganın verileri depolama hesabınızdan silindi olmasıdır.|
-|**Azure bulut hizmeti paketi yükleme**|Bir Azure bulut hizmeti paketi (.cspkg dosyası) bir depolama hesabına Bu hesapta en son etkinlik ile karşılaştırıldığında, olağan dışı bir şekilde yüklendiğini gösterir. Olası bir nedeni, bir saldırgan kötü amaçlı kodu depolama hesabınızdan bir Azure bulut hizmeti dağıtmak hazırlama ' dir.|
-|**İzni erişim anomali**|Bu depolama kapsayıcısındaki erişim izni olağan dışı bir şekilde değiştiğini gösterir. Olası nedeni, bir saldırganın kapsayıcı izinlerini kendi güvenlik duruşunu zayıflatabilir veya Kalıcılık sağlamak için değiştiğidir.|
-|**İnceleme erişim anomali**|Bu hesapta en son etkinlik ile karşılaştırıldığında, olağan dışı bir şekilde bir depolama hesabına erişim izinlerini geçersiz inceledikten olmadığını gösterir. Olası bir nedeni bir saldırganın keşfi için gelecekteki bir saldırı gerçekleştirmesidir.|
-|**Veri araştırma anomali**|BLOB'ları veya bir depolama hesabındaki kapsayıcıları Bu hesapta en son etkinlik kıyasla anormal bir şekilde numaralandırılmış olduğunu gösterir. Olası bir nedeni bir saldırganın keşfi için gelecekteki bir saldırı gerçekleştirmesidir.|
+|**Olağan dışı konum erişim anomali**|Örneklenmiş ağ trafiği analizi, dağıtımınızdaki bir kaynaktan kaynaklanan anormal giden Uzak Masaüstü Protokolü (RDP) iletişimi algıladı. Bu etkinlik, bu ortam için anormal olarak kabul edilir ve kaynağınızın tehlikede olduğunu belirtebilir ve artık dış RDP uç noktası zorla deneme için kullanılır. Bu etkinlik türünün, IP’nizin dış varlıklar tarafından kötü amaçlı olarak işaretlenmesine neden olabileceğini unutmayın.|
+|**Uygulama erişimi anomali**|Olağan dışı bir uygulamanın bu depolama hesabına eriştiği anlamına gelir. Olası bir neden, bir saldırganın yeni bir uygulama kullanarak depolama hesabınıza eriştiği bir nedendir.|
+|**Anonim erişim anomali**|Bir depolama hesabına erişim modelinde değişiklik olduğunu gösterir. Örneğin, hesaba bu hesapta son erişim düzeniyle karşılaştırıldığında beklenmeyen bir şekilde (herhangi bir kimlik doğrulaması olmadan) erişilebilir. Olası bir neden, bir saldırganın BLOB depolama alanı tutan bir kapsayıcıya genel okuma erişiminin yararlanmasıdır.|
+|**Veri Taşalımı anomali**|Bu depolama kapsayıcısındaki en son etkinliğe kıyasla alışılmadık büyük miktarda verilerin ayıklandığını gösterir. Olası bir neden, bir saldırganın BLOB depolama alanı tutan bir kapsayıcıdan büyük miktarda veri ayıklamasıdır.|
+|**Beklenmeyen silme anomali**|Bir depolama hesabında bir veya daha fazla beklenmeyen silme işlemi gerçekleştiğini, bu hesaptaki en son etkinliğe kıyasla olduğunu gösterir. Olası bir neden, saldırganın depolama hesabınızdan veri sildiği bir nedendir.|
+|**Azure bulut hizmeti paketini karşıya yükle**|Bir Azure bulut hizmeti paketinin (. cspkg dosyası), bu hesaptaki en son etkinlikle karşılaştırıldığında, alışılmadık bir şekilde bir depolama hesabına yüklendiğini belirtir. Olası bir neden, bir saldırganın depolama hesabınızdan bir Azure bulut hizmetine kötü amaçlı kod dağıtmaya hazırlanmasıyla ilgili bir nedendir.|
+|**İzin erişimi anomali**|Bu depolama kapsayıcısının erişim izinlerinin olağan dışı bir şekilde değiştirildiğini belirtir. Olası nedeni, bir saldırganın güvenlik duruşunu yumuşatmak veya kalıcılık kazanmak için kapsayıcı izinlerini değiştirleridir.|
+|**Denetleme erişimi anomali**|Bir depolama hesabının erişim izinlerinin, bu hesaptaki en son etkinlikle karşılaştırıldığında olağan dışı bir şekilde incelenebileceğini belirtir. Olası bir neden, saldırganın gelecekteki bir saldırıya karşı keşif gerçekleştirmesinden dolayı gerçekleşir.|
+|**Veri araştırma anomali**|Bir depolama hesabındaki Blobların veya kapsayıcıların, bu hesaptaki en son etkinlikle karşılaştırıldığında anormal bir şekilde numaralandırıldığını gösterir. Olası bir neden, saldırganın gelecekteki bir saldırıya karşı keşif gerçekleştirmesinden dolayı gerçekleşir.|
 
 >[!NOTE]
->Gelişmiş tehdit koruması için Azure depolama şu anda Azure devlet kurumları ve bağımsız bulut bölgelerinde kullanılabilir değil.
+>Azure depolama için Gelişmiş tehdit koruması Şu anda Azure Kamu ve bağımsız bulut bölgelerinde kullanılamaz.
 
-Depolama için uyarılar hakkında daha fazla bilgi için bkz. [Azure depolama için Gelişmiş tehdit koruması](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection) makalesini inceleyin ve koruma uyarıları bölümü gözden geçirin.
+Depolama uyarıları hakkında daha fazla bilgi için bkz. [Azure Storage Için Gelişmiş tehdit koruması](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection) makalesi ve koruma uyarıları bölümünü gözden geçirme.

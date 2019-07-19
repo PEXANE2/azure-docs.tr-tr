@@ -8,14 +8,14 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2019
 ms.author: lbosq
-ms.openlocfilehash: a56fab3f8f572f277c11dc566c7d74104226b4fc
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: dd7d8658b8f1fbe01a8928963e7f78d2adbe1d74
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480566"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325514"
 ---
-# <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-the-java-sdk"></a>Hızlı Başlangıç: Azure Cosmos DB Java SDK'sını kullanarak bir grafik veritabanı oluşturma 
+# <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-the-java-sdk"></a>Hızlı Başlangıç: Java SDK 'sını kullanarak Azure Cosmos DB grafik veritabanı oluşturma 
 
 > [!div class="op_single_selector"]
 > * [Gremlin konsolu](create-graph-gremlin-console.md)
@@ -35,7 +35,7 @@ Bu hızlı başlangıç Azure Cosmos DB için Azure portal araçlarını kullana
 
 Buna ek olarak:
 
-* [Java Development Kit (JDK) 8 sürümü](https://aka.ms/azure-jdks)
+* [Java Development Kit (JDK) sürüm 8](https://aka.ms/azure-jdks)
     * JAVA_HOME ortam değişkenini JDK’nin yüklü olduğu klasöre işaret edecek şekilde ayarladığınızdan emin olun.
 * Bir [Maven](https://maven.apache.org/) ikili arşivi [indirin](https://maven.apache.org/download.cgi) ve [yükleyin](https://maven.apache.org/install.html)
     * Ubuntu’da Maven’i yüklemek için `apt-get install maven` komutunu çalıştırabilirsiniz.
@@ -150,13 +150,13 @@ Aşağıdaki kod parçacıklarının tümü C:\git-samples\azure-cosmos-db-graph
 
 2. Git terminal penceresinde aşağıdaki komutu kullanarak gerekli Java paketlerini yükleyin.
 
-   ```
+   ```git
    mvn package
    ```
 
 3. Git terminal penceresinde, Java uygulamasını başlatmak için aşağıdaki komutları kullanın.
     
-    ```
+    ```git
     mvn exec:java -D exec.mainClass=GetStarted.Program
     ```
 

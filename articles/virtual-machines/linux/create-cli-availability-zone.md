@@ -1,6 +1,6 @@
 ---
-title: Azure CLI ile ayrılmış bir Linux VM oluşturma | Microsoft Docs
-description: Azure CLI ile bir kullanılabilirlik alanında Linux VM oluşturma
+title: Azure CLı ile bölge özellikli bir Linux VM oluşturma | Microsoft Docs
+description: Azure CLı ile bir kullanılabilirlik bölgesinde Linux VM oluşturma
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: dlepow
@@ -16,26 +16,26 @@ ms.workload: infrastructure
 ms.date: 04/05/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 87263d11828ff5122122ef36850fade87949bcac
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 6bdbc566215fb7e68109b523fb2af9bca16c328c
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671623"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849696"
 ---
-# <a name="create-a-linux-virtual-machine-in-an-availability-zone-with-the-azure-cli"></a>Azure CLI ile bir kullanılabilirlik alanında Linux sanal makinesi oluşturma
+# <a name="create-a-linux-virtual-machine-in-an-availability-zone-with-the-azure-cli"></a>Azure CLı ile bir kullanılabilirlik alanında Linux sanal makinesi oluşturma
 
-Azure kullanılabilirlik alanında Linux VM oluşturmak için Azure CLI aracılığıyla bu makalede adımları. [Kullanılabilirlik alanı](../../availability-zones/az-overview.md), bir Azure bölgesinde fiziksel olarak ayrılmış bir alandır. Uygulamalarınızı beklenmeyen hatalardan veya tüm veri merkezinin kaybedilmesinden korumak için kullanılabilirlik alanlarından yararlanın.
+Bu makalede, Azure CLı bölgesinde bir Linux sanal makinesi oluşturmak için Azure CLı kullanma adımları sağlanır. [Kullanılabilirlik alanı](../../availability-zones/az-overview.md), bir Azure bölgesinde fiziksel olarak ayrılmış bir alandır. Uygulamalarınızı beklenmeyen hatalardan veya tüm veri merkezinin kaybedilmesinden korumak için kullanılabilirlik alanlarından yararlanın.
 
 Kullanılabilirlik alanı kullanmak için, [desteklenen bir Azure bölgesinde](../../availability-zones/az-overview.md#services-support-by-region) sanal makinenizi oluşturun.
 
-En son yüklediğinizden emin olun [Azure CLI](/cli/azure/install-az-cli2) ile bir Azure hesabında oturum açtığınızdan [az login](/cli/azure/reference-index).
+En son [Azure CLI](/cli/azure/install-az-cli2) 'yi yüklediğinizden ve [az Login](/cli/azure/reference-index)ile bir Azure hesabında oturum açtığınızdan emin olun.
 
 
 ## <a name="check-vm-sku-availability"></a>VM SKU kullanılabilirliğini denetleme
 VM boyutları veya SKU'ların kullanılabilirliği, bölge ve alanlara göre farklılık gösterebilir. Kullanılabilirlik Alanları kullanımını planlamanıza yardımcı olmak üzere, kullanılabilir VM SKU'larını Azure bölgesine ve alana göre listeleyebilirsiniz. Bu özellik, uygun bir VM boyutu seçmenizi ve alanlar arasında istenen dayanıklılığı elde etmenizi sağlar. Farklı VM türleri ve boyutları hakkında daha fazla bilgi için bkz. [VM Boyutlarına genel bakış](sizes.md).
 
-Kullanılabilir VM SKU'larına görüntüleyebileceğiniz [az vm listesi-skus](/cli/azure/vm) komutu. Aşağıdaki örnekte kullanılabilir VM SKU'ları *eastus2* bölgesinde içinde listelenmiştir:
+Kullanılabilir VM SKU 'Larını [az VM List-SKU](/cli/azure/vm) komutuyla görüntüleyebilirsiniz. Aşağıdaki örnekte kullanılabilir VM SKU'ları *eastus2* bölgesinde içinde listelenmiştir:
 
 ```azurecli
 az vm list-skus --location eastus2 --output table
@@ -64,25 +64,25 @@ virtualMachines   eastus2    Standard_E4_v3              Standard   E4_v3    1,2
 
 [az group create](/cli/azure/group) komutuyla bir kaynak grubu oluşturun.  
 
-Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Bir sanal makineden önce bir kaynak grubu oluşturulmalıdır. Bu örnekte, adlı bir kaynak grubu *Eastus* oluşturulur *eastus2* bölge. Doğu ABD 2, kullanılabilirlik alanlarını destekleyen Azure bölgelerinden biridir.
+Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Bir sanal makineden önce bir kaynak grubu oluşturulmalıdır. Bu örnekte, *eastus2* bölgesinde *Myresourcegroupvm* adlı bir kaynak grubu oluşturulur. Doğu ABD 2, kullanılabilirlik alanlarını destekleyen Azure bölgelerinden biridir.
 
 ```azurecli 
 az group create --name myResourceGroupVM --location eastus2
 ```
 
-Kaynak grubu oluştururken veya değiştirirken Bu makale boyunca görülebilir bir VM belirtilir.
+Kaynak grubu, bu makale boyunca görülemeyen bir VM oluştururken veya değiştirilirken belirtilir.
 
 ## <a name="create-virtual-machine"></a>Sanal makine oluşturma
 
 [az vm create](/cli/azure/vm) komutuyla bir sanal makine oluşturun. 
 
-Bir sanal makine oluştururken, işletim sistemi görüntüsü, disk boyutlandırma ve yönetici kimlik bilgileri gibi çeşitli seçenekler bulunur. Bu örnekte, Ubuntu Server çalıştıran *myVM* adlı bir sanal makine oluşturulmuştur. Sanal makine kullanılabilirlik alanında oluşturulur *1*. Varsayılan olarak, VM oluşturulduktan *Standard_DS1_v2* boyutu.
+Bir sanal makine oluştururken, işletim sistemi görüntüsü, disk boyutlandırma ve yönetici kimlik bilgileri gibi çeşitli seçenekler bulunur. Bu örnekte, Ubuntu Server çalıştıran *myVM* adlı bir sanal makine oluşturulmuştur. VM, kullanılabilirlik bölge *1*' de oluşturulur. Varsayılan olarak, VM *Standard_DS1_v2* boyutunda oluşturulur.
 
 ```azurecli-interactive 
 az vm create --resource-group myResourceGroupVM --name myVM --location eastus2 --image UbuntuLTS --generate-ssh-keys --zone 1
 ```
 
-VM’nin oluşturulması birkaç dakika sürebilir. VM oluşturulduktan sonra, Azure CLI VM hakkında bilgi çıkışı sağlar. Not `zones` VM çalışıyor kullanılabilirlik alanı belirten değer. 
+VM’nin oluşturulması birkaç dakika sürebilir. VM oluşturulduktan sonra, Azure CLI VM hakkında bilgi çıkışı sağlar. VM 'nin çalıştığı kullanılabilirlik `zones` bölgesini gösteren değeri bir yere göz atın. 
 
 ```azurecli 
 {
@@ -98,11 +98,11 @@ VM’nin oluşturulması birkaç dakika sürebilir. VM oluşturulduktan sonra, A
 }
 ```
 
-## <a name="confirm-zone-for-managed-disk-and-ip-address"></a>Yönetilen disk ve IP adresi için bölge onaylayın
+## <a name="confirm-zone-for-managed-disk-and-ip-address"></a>Yönetilen disk ve IP adresi için bölgeyi Onayla
 
-VM için yönetilen disk, sanal Makineyi bir kullanılabilirlik alanında dağıtıldığında, aynı kullanılabilirlik alanında oluşturulur. Varsayılan olarak, bir genel IP adresi de bu bölgede oluşturulur. Aşağıdaki örnekler, bu kaynaklar hakkında bilgi alın.
+VM bir kullanılabilirlik alanında dağıtıldığında, sanal makine için yönetilen bir disk aynı Kullanılabilirlik bölgesinde oluşturulur. Varsayılan olarak, bu bölgede genel bir IP adresi de oluşturulur. Aşağıdaki örneklerde bu kaynaklarla ilgili bilgiler yer alır.
 
-Yönetilen disk sanal makinenin kullanılabilirlik alanında olduğunu doğrulamak için [az vm show](/cli/azure/vm) disk kimliğini döndürmek için komutu Bu örnekte disk kimliği sonraki adımlardan birinde kullanılan bir değişkende depolanır. 
+VM 'nin yönetilen diskinin kullanılabilirlik bölgesinde olduğunu doğrulamak için [az VM Show](/cli/azure/vm) komutunu kullanarak disk kimliğini döndürün. Bu örnekte, disk KIMLIĞI sonraki bir adımda kullanılan bir değişkende depolanır. 
 
 ```azurecli-interactive
 osdiskname=$(az vm show -g myResourceGroupVM -n myVM --query "storageProfile.osDisk.name" -o tsv)
@@ -149,7 +149,7 @@ az disk show --resource-group myResourceGroupVM --name $osdiskname
 }
 ```
 
-Kullanım [az vm-IP-adreslerini](/cli/azure/vm) genel IP adresi kaynağı adını döndürmek için komutu *myVM*. Bu örnekte, bir sonraki adımda kullanılan bir değişken adı depolanır.
+*Myvm*'de genel IP adresi kaynağının adını döndürmek için [az VM List-ip-addresses](/cli/azure/vm) komutunu kullanın. Bu örnekte, ad sonraki bir adımda kullanılan bir değişkende depolanır.
 
 ```azurecli
 ipaddressname=$(az vm list-ip-addresses -g myResourceGroupVM -n myVM --query "[].virtualMachine.network.publicIpAddresses[].name" -o tsv)
@@ -161,7 +161,7 @@ Artık IP adresi hakkında bilgi edinebilirsiniz:
 az network public-ip show --resource-group myResourceGroupVM --name $ipaddressname
 ```
 
-Çıktı, IP adresi VM ile aynı kullanılabilirlik alanında olduğunu gösterir:
+Çıktı, IP adresinin VM ile aynı Kullanılabilirlik bölgesinde olduğunu gösterir:
 
 ```azurecli
 {
@@ -198,7 +198,7 @@ az network public-ip show --resource-group myResourceGroupVM --name $ipaddressna
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, kullanılabilirlik alanında nasıl sanal makine oluşturulacağını öğrendiniz. Azure VM’leri için [bölgeler ve kullanılabilirlik](regions-and-availability.md) hakkında daha fazla bilgi edinin.
+Bu makalede, kullanılabilirlik alanında nasıl sanal makine oluşturulacağını öğrendiniz. Azure VM 'Leri için [kullanılabilirlik](availability.md) hakkında daha fazla bilgi edinin.
 
 
 

@@ -1,5 +1,5 @@
 ---
-title: Kubernetes ve Held ile kullanma
+title: Kubernetes ve Helm ile kullanma
 titleSuffix: Azure Cognitive Services
 description: Kubernetes ve helk kullanarak konuşmadan metne ve metinden konuşmaya kapsayıcı görüntülerini tanımlamak için bir Kubernetes paketi oluşturacağız. Bu paket, şirket içi bir Kubernetes kümesine dağıtılacak.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 7/16/2019
 ms.author: dapine
-ms.openlocfilehash: ace519d9be5945754fb79dc4c6fbb244c665d98b
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: ba292a7d3bdf58ff78764bc2095fdf4a8c486070
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302602"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326201"
 ---
-# <a name="use-with-kubernetes-and-helm"></a>Kubernetes ve Held ile kullanma
+# <a name="use-with-kubernetes-and-helm"></a>Kubernetes ve Helm ile kullanma
 
-Kubernetes ve helk kullanarak konuşmadan metne ve metinden konuşmaya kapsayıcı görüntülerini tanımlamak için bir Kubernetes paketi oluşturacağız. Bu paket, şirket içi bir Kubernetes kümesine dağıtılacak. Son olarak, dağıtılan Hizmetleri ve çeşitli yapılandırma seçeneklerini nasıl test eteceksiniz. Kubernetes düzenlemesi olmadan Docker kapsayıcılarını çalıştırma hakkında daha fazla bilgi için bkz. [konuşma hizmeti kapsayıcıları 'nı yükleyip çalıştırma](speech-container-howto.md).
+Şirket içi konuşma kapsayılarınızı yönetmeye yönelik bir seçenek de Kubernetes ve Held 'yi kullanmaktır. Kubernetes ve helk kullanarak konuşmadan metne ve metinden konuşmaya kapsayıcı görüntülerini tanımlamak için bir Kubernetes paketi oluşturacağız. Bu paket, şirket içi bir Kubernetes kümesine dağıtılacak. Son olarak, dağıtılan Hizmetleri ve çeşitli yapılandırma seçeneklerini nasıl test eteceksiniz. Kubernetes düzenlemesi olmadan Docker kapsayıcılarını çalıştırma hakkında daha fazla bilgi için bkz. [konuşma hizmeti kapsayıcıları 'nı yükleyip çalıştırma](speech-container-howto.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 

@@ -3,21 +3,21 @@ title: Paralel iş yükü çalıştırma - Azure Batch Python
 description: Öğretici - Batch Python istemci kitaplığını kullanarak Azure Batch’te ffmpeg ile paralel medya dosyaları işleme
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.service: batch
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 364599c6eb555d1ec72e84c998ae0c4e9a43929b
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 92d8c6fb1bfa1689475774bbc4f62cd9ab38268f
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341609"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68321845"
 ---
-# <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>Öğretici: Python API'sini kullanarak Azure Batch ile paralel iş yükü çalıştırma
+# <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>Öğretici: Python API 'sini kullanarak Azure Batch ile paralel iş yükü çalıştırma
 
 Büyük ölçekli paralel ve yüksek performanslı bilgi işlem (HPC) toplu işlerini Azure’da verimli bir şekilde çalıştırmak için Azure Batch’i kullanın. Bu öğreticide, Batch kullanarak paralel iş yükü çalıştırmaya ilişkin bir Python örneği açıklanmaktadır. Genel bir Batch uygulaması iş akışı hakkında bilgi alacak ve Batch ve Depolama kaynakları ile programlı olarak etkileşimde bulunmayı öğreneceksiniz. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
@@ -165,7 +165,7 @@ input_files = [
 
 ### <a name="create-a-pool-of-compute-nodes"></a>İşlem düğümleri havuzu oluşturma
 
-Ardından örnek, `create_pool` çağrısıyla Batch hesabında bir işlem düğümü havuzu oluşturur. Bu tanımlı işlev; düğüm sayısını, VM boyutunu ve havuz yapılandırmasını ayarlamak üzere Batch [PoolAddParameter](/python/api/azure.batch.models.pooladdparameter) sınıfını kullanır. Burada bir [VirtualMachineConfiguration](/python/api/azure.batch.models.virtualmachineconfiguration) nesnesini belirtir bir [Imagereference](/python/api/azure.batch.models.imagereference) Azure Market'te yayımlanmış bir Ubuntu Server 18.04 LTS görüntüsüne. Batch, Azure Market’te çok çeşitli VM görüntülerinin yanı sıra özel VM görüntülerini destekler.
+Ardından örnek, `create_pool` çağrısıyla Batch hesabında bir işlem düğümü havuzu oluşturur. Bu tanımlı işlev; düğüm sayısını, VM boyutunu ve havuz yapılandırmasını ayarlamak üzere Batch [PoolAddParameter](/python/api/azure.batch.models.pooladdparameter) sınıfını kullanır. Burada [Virtualmachineconfiguration](/python/api/azure.batch.models.virtualmachineconfiguration) nesnesi, Azure Marketi 'Nde yayınlanan Ubuntu Server 18,04 LTS görüntüsüne bir [ImageReference](/python/api/azure.batch.models.imagereference) belirtir. Batch, Azure Market’te çok çeşitli VM görüntülerinin yanı sıra özel VM görüntülerini destekler.
 
 Düğüm sayısı ve VM boyutu, tanımlı sabitler kullanılarak ayarlanır. Batch, adanmış düğümleri ve [düşük öncelikli düğümleri](batch-low-pri-vms.md) destekler ve havuzlarınızda bunlardan birini ya da her ikisini birden kullanabilirsiniz. Adanmış düğümler, havuzunuz için ayrılmıştır. Düşük öncelikli düğümler ise Azure’daki fazlalık VM kapasitesinden indirimli bir fiyat karşılığında sunulur. Azure’da yeterli kapasite yoksa düşük öncelikli düğümler kullanılamaz duruma gelir. Örnek, varsayılan olarak *Standard_A1_v2* boyutunda yalnızca 5 düşük öncelikli düğüm içeren bir havuz oluşturur. 
 

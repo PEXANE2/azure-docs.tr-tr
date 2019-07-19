@@ -4,21 +4,21 @@ titlesuffix: Azure Load Balancer
 description: Giden kuralları giden ağ adresi çevirisi tanımlamak için kullanın
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/19/2018
-ms.author: kumud
-ms.openlocfilehash: 52fafa7e9dd46b6c78af3776797bae48b22ea8df
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 7/17/2019
+ms.author: allensu
+ms.openlocfilehash: 39a23fa277d7bb389098674556b65b1b13676ead
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64698441"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305575"
 ---
 # <a name="load-balancer-outbound-rules"></a>Yük Dengeleyici giden kuralları
 
@@ -34,7 +34,7 @@ Giden kuralları denetimine izin ver:
 - genel IP adresleri, hangi sanal makinelerin çevrilmesi gerekir. 
 - nasıl [giden SNAT bağlantı noktaları](load-balancer-outbound-connections.md#snat) ayrılmalıdır.
 - Giden çeviri sağlamak için hangi protokollerin.
-- Giden bağlantı boşta kalma zaman aşımı için (4-120 dakika) kullanmak için hangi süresi.
+- giden bağlantı boşta kalma zaman aşımı (4-120 dakika) için kullanılacak süre.
 - boşta kalma zaman aşımı (genel Önizleme) üzerinde bir TCP Sıfırla'ı gönderilip gönderilmeyeceğini belirtir. 
 
 Giden kuralları genişletin [Senaryo 2](load-balancer-outbound-connections.md#lb) içinde açıklanan [giden bağlantılar](load-balancer-outbound-connections.md) olarak kalır makale ve senaryo öncelik-olduğu.
@@ -84,13 +84,13 @@ Bağlantı noktalarını VM (NIC IP yapılandırması) başına 10.000 SNAT ayı
 
           "allocatedOutboundPorts": 10000
 
-Her bir giden kuralı tüm ön ortak IP adresini kullanmak için en fazla 51.200 kısa ömürlü bağlantı noktaları SNAT bağlantı noktaları katkıda bulunur.  Yük Dengeleyici SNAT katları 8 bağlantı noktası ayırır. 8 katı olmayan bir değer sağlarsanız, yapılandırma işlemi reddedilir.  Genel IP adresleri sayısına göre bulunandan daha fazla SNAT bağlantı noktaları ayırmak çalışırsanız, yapılandırma işlemi reddedilir.  Örneğin, VM ve 7 VM başına 10.000 bağlantı noktaları ayırdığınızda bir arka uç havuzu tek bir genel IP adresi paylaşımında yapabileceği, yapılandırma reddedilen (7 x 10.000 SNAT bağlantı noktaları > 51,200 SNAT bağlantı noktaları).  Daha fazla genel IP adresleri ön uç senaryoyu etkinleştirmek için bir giden kuralı ekleyebilirsiniz.
+Her bir giden kuralı tüm ön ortak IP adresini kullanmak için en fazla 51.200 kısa ömürlü bağlantı noktaları SNAT bağlantı noktaları katkıda bulunur.  Yük Dengeleyici SNAT katları 8 bağlantı noktası ayırır. 8 katı olmayan bir değer sağlarsanız, yapılandırma işlemi reddedilir.  Genel IP adresleri sayısına göre bulunandan daha fazla SNAT bağlantı noktaları ayırmak çalışırsanız, yapılandırma işlemi reddedilir.  Örneğin, VM başına 10.000 bağlantı noktası ve arka uç havuzunda 7 VM 'Ler ayırırsanız tek bir genel IP adresi paylaşabilir, yapılandırma reddedilir (7 x 10.000 SNAT bağlantı noktaları > 51.200 SNAT bağlantı noktaları).  Daha fazla genel IP adresleri ön uç senaryoyu etkinleştirmek için bir giden kuralı ekleyebilirsiniz.
 
 Geri döndürebilirsiniz [otomatik SNAT bağlantı noktası ayırma arka uç havuz boyutunu temel alarak](load-balancer-outbound-connections.md#preallocatedports) 0 bağlantı noktası numarası belirterek.
 
 ### <a name="idletimeout"></a> Denetim giden akış boşta kalma zaman aşımı
 
-Giden kuralları giden akış boşta kalma zaman aşımını denetleme ve uygulamanızın ihtiyaçlarını eşleştirmek için bir yapılandırma parametresi sağlayın.  4 dakikalık varsayılan giden boşta kalma zaman aşımı.  Parametresi, 120 dakika boşta kalma zaman aşımı için bu belirli bir kural eşleşen akışlar için belirli ile 4 arasında bir değer kabul eder.
+Giden kuralları giden akış boşta kalma zaman aşımını denetleme ve uygulamanızın ihtiyaçlarını eşleştirmek için bir yapılandırma parametresi sağlayın.  4 dakikalık varsayılan giden boşta kalma zaman aşımı.  Parametresi, belirli bir kuralla eşleşen akışlar için boşta kalma zaman aşımı için dakika sayısı kadar olan 4 ila 120 arasında bir değer kabul eder.
 
 Giden boşta kalma zaman aşımı 1 saate ayarlamak için aşağıdaki parametresini kullanın:
 
@@ -193,22 +193,22 @@ Giden bağlantı açıkça bildirilen kadar iç bir Standard Load Balancer kulla
    1. Yük Dengeleme kuralı giden SNAT devre dışı bırakın.
    2. Aynı yük Dengeleyicide bir giden kuralı yapılandırın.
    3. Sanal makineleriniz tarafından zaten kullanılan arka uç havuzu yeniden kullanın.
-   4. "Protokol" belirtin: "Tüm" kapsamında giden kuralı.
+   4. "Protokol" i belirtin: Giden kuralının bir parçası olarak "All".
 
 - Yalnızca gelen NAT kuralları kullanıldığında, giden NAT sağlanır.
 
    1. Vm'leri bir arka uç havuzuna yerleştirin.
    2. Genel IP adresleri veya ortak IP öneki ile bir veya daha fazla ön uç IP yapılandırmaları tanımlar.
    3. Aynı yük Dengeleyicide bir giden kuralı yapılandırın.
-   4. "Protokol" belirtin: Giden kuralı bir parçası olarak "Tüm"
+   4. "Protokol" i belirtin: Giden kuralının bir parçası olarak "tümü"
 
 ## <a name="limitations"></a>Sınırlamalar
 
 - En fazla ön uç IP adresi başına kullanılabilir kısa ömürlü bağlantı noktaları 51,200 sayısıdır.
-- 4 ila 120 dakika (240 için 7200 saniye) yapılandırılabilir giden boşta kalma zaman aşımı aralığı.
+- Yapılandırılabilir giden boşta kalma zaman aşımı aralığı 4 ila 120 dakikadır (240 ila 7200 saniye).
 - Yük Dengeleyici giden NAT için ICMP desteklemiyor
 - Portal, yapılandırma veya giden kuralları görüntülemek için kullanılamaz.  Bunun yerine şablonları, REST API, Az CLI 2. 0'ı veya PowerShell kullanın.
-- Giden kuralları, yalnızca birincil NIC ve birincil IP yapılandırması için uygulanabilir.
+- Giden kuralları, yalnızca bir NIC 'in birincil IP yapılandırmasına uygulanabilir.  Birden çok NIC desteklenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

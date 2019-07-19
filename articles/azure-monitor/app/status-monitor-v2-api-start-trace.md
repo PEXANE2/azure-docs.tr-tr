@@ -1,6 +1,6 @@
 ---
-title: 'Azure Durum İzleyicisi v2 API Başvurusu: İzlemeyi Başlat | Microsoft Docs'
-description: Durum İzleyicisi'ni v2 API'si başvurusu. Start-izleme. Durum İzleyicisi'ni ve Application Insights SDK'sı ETW günlükleri toplayın.
+title: 'Azure Durum İzleyicisi v2 API başvurusu: İzlemeyi Başlat | Microsoft Docs'
+description: Durum İzleyicisi v2 API başvurusu. Başlat-Izle. Durum İzleyicisi ve Application Insights SDK 'dan ETW günlüklerini toplayın.
 services: application-insights
 documentationcenter: .net
 author: MS-TimothyMothra
@@ -12,81 +12,76 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: b6787134707273a76290adb723a9bc9012252ebd
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 3060a48e297082f5b70c8bd96030fe519f6e8b6f
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807051"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326301"
 ---
-# <a name="status-monitor-v2-api-start-applicationinsightsmonitoringtrace-v040-alpha"></a>Durum İzleyicisi'ni v2 API'si: Start-ApplicationInsightsMonitoringTrace (v0.4.0-alpha)
+# <a name="status-monitor-v2-api-start-applicationinsightsmonitoringtrace"></a>Durum İzleyicisi v2 API 'SI: Start-Applicationınsiizsmonitoringtrace
 
-Bu makalede bir üyesi olan bir cmdlet [Az.ApplicationMonitor PowerShell Modülü](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
-
-> [!IMPORTANT]
-> Durum İzleyicisi'ni v2 şu anda genel Önizleme aşamasındadır.
-> Bu önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanmaktadır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor ve bazıları kısıtlı yeteneklere sahip.
-> Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Bu makalede, [az. ApplicationMonitor PowerShell modülünün](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)üyesi olan bir cmdlet açıklanmaktadır.
 
 ## <a name="description"></a>Açıklama
 
-Toplar [ETW olayları](https://docs.microsoft.com/windows/desktop/etw/event-tracing-portal) Kodsuz çalışma zamanı ekleyin. Bu cmdlet'in çalışması için bir alternatifidir [PerfView](https://github.com/microsoft/perfview).
+Kodsuz kullanacaksınız Attach çalışma zamanından [ETW olaylarını](https://docs.microsoft.com/windows/desktop/etw/event-tracing-portal) toplar. Bu cmdlet [PerfView](https://github.com/microsoft/perfview)çalıştırmaya alternatiftir.
 
-Toplanan olayları gerçek zamanlı ve kaydedilen bir ETL dosyası içindeki konsola yazdırılır. Çıkış ETL dosyası tarafından açılabilir [PerfView](https://github.com/microsoft/perfview) araştırılması için.
+Toplanan olaylar, gerçek zamanlı olarak konsola yazdırılır ve bir ETL dosyasına kaydedilir. Çıktı ETL dosyası, daha fazla araştırma için [PerfView](https://github.com/microsoft/perfview) tarafından açılabilir.
 
-Zaman aşımı süresini (varsayılan 5 dakika) ulaştığında veya el ile durduruldu kadar bu cmdlet'i çalışır (`Ctrl + C`).
+Bu cmdlet, zaman aşımı süresine (varsayılan 5 dakika) ulaşıncaya kadar veya el ile (`Ctrl + C`) durduruluncaya kadar çalışır.
 
 > [!IMPORTANT] 
-> Bu cmdlet, yönetici izinlerine sahip bir PowerShell oturumu gerektirir.
+> Bu cmdlet yönetici izinlerine sahip bir PowerShell oturumu gerektirir.
 
 ## <a name="examples"></a>Örnekler
 
 ### <a name="how-to-collect-events"></a>Olayları toplama
 
-Normalde olayları neden uygulamanızın izleme eklenmiş olmayan araştırmak için topladığınız sorduğu.
+Normalde, uygulamanızın neden görüntülenmediğini araştırmak için olay toplamanızı isteyeceğiz.
 
-Çalışma zamanı Kodsuz ekleme ETW olayları IIS başlatıldığında ve uygulamanızı başladığında yayar.
+Kodsuz kullanacaksınız Attach çalışma zamanı, IIS başlatıldığında ve uygulamanız başlatıldığında ETW olaylarını yayacaktır.
 
 Bu olayları toplamak için:
-1. Yönetici ayrıcalıklarıyla bir komut konsolunda yürütün `iisreset /stop` tüm web uygulamaları ile IIS açıp kapatmak için.
-2. Bu cmdlet'ini yürütün
-3. Yönetici ayrıcalıklarıyla bir komut konsolunda yürütün `iisreset /start` IIS başlatmak için.
-4. Uygulamanız için göz atmayı deneyin.
-5. Uygulamanızı yükleme tamamlandıktan sonra el ile durdurabilirsiniz (`Ctrl + C`) veya zaman aşımı'için bekleyin.
+1. Yönetici ayrıcalıklarına sahip bir cmd konsolunda, IIS 'yi `iisreset /stop` ve tüm Web uygulamalarını kapatmak için yürütün.
+2. Bu cmdlet 'i Yürüt
+3. Yönetici ayrıcalıklarına sahip bir cmd konsolunda, IIS 'yi `iisreset /start` başlatmak için yürütün.
+4. Uygulamanıza gözatmayı deneyin.
+5. Uygulamanızın yüklenmesi tamamlandıktan sonra, el ile durdurabilirsiniz (`Ctrl + C`) veya zaman aşımı süresini bekleyebilirsiniz.
 
-### <a name="what-events-to-collect"></a>Hangi olayları toplamak için
+### <a name="what-events-to-collect"></a>Toplanacak olaylar
 
-Olayları toplanırken üç seçeneğiniz vardır:
-1. Anahtarını kullanarak `-CollectSdkEvents` Application Insights SDK'sından yayılan olaylarını toplamak için.
-2. Anahtarını kullanarak `-CollectRedfieldEvents` Durum İzleyicisi'ni ve Redfield çalışma zamanı tarafından oluşturulan olayları toplamak için. IIS özel durumunda tanılama yaparken bu günlükler yararlı olur ve uygulama başlatma.
-3. Her iki olay türlerini, toplanacak her iki anahtarlarını kullanın.
-4. Her iki olay türleri toplanan hiçbir anahtarı belirtilmediyse, varsayılan olarak.
+Olayları toplarken üç seçeneğiniz vardır:
+1. Application Insights SDK 'dan `-CollectSdkEvents` yayılan olayları toplamak için anahtarını kullanın.
+2. Durum İzleyicisi ve Redfield çalışma zamanı tarafından yayılan olayları toplamak için anahtarını `-CollectRedfieldEvents` kullanın. Bu Günlükler IIS ve uygulama başlangıcını tanılarken yararlı olur.
+3. Her iki olay türünü de toplamak için her iki anahtarı kullanın.
+4. Varsayılan olarak, hiçbir anahtar belirtilmemişse olay türleri toplanacaktır.
 
 
 ## <a name="parameters"></a>Parametreler
 
 ### <a name="-maxdurationinminutes"></a>-MaxDurationInMinutes
-**İsteğe bağlı.** Bu betik, olayları ne kadar süreyle toplamanız gerekir ayarlamak için bu parametreyi kullanın. Varsayılan değer 5 dakikadır.
+**İsteğe bağlı.** Bu betiğin olay toplama süresini ayarlamak için bu parametreyi kullanın. Varsayılan değer 5 dakikadır.
 
 ### <a name="-logdirectory"></a>-LogDirectory
-**İsteğe bağlı.** ETL dosyasının çıkış dizinine ayarlamak için bu anahtarı kullanın. Varsayılan olarak, bu dosya PowerShell modülleri dizininde oluşturulur. Betik yürütme sırasında tam yolunu görüntülenir.
+**İsteğe bağlı.** ETL dosyasının çıkış dizinini ayarlamak için bu anahtarı kullanın. Varsayılan olarak, bu dosya PowerShell modülleri dizininde oluşturulur. Tam yol, betik yürütme sırasında görüntülenecektir.
 
 
 ### <a name="-collectsdkevents"></a>-CollectSdkEvents
-**İsteğe bağlı.** Application Insights SDK'sı olaylarını toplamak için bu anahtarı kullanın.
+**İsteğe bağlı.** Application Insights SDK olaylarını toplamak için bu anahtarı kullanın.
 
 ### <a name="-collectredfieldevents"></a>-CollectRedfieldEvents
-**İsteğe bağlı.** Durum İzleyicisi'ni ve Redfield çalışma zamanı olayları toplamak için bu anahtarı kullanın.
+**İsteğe bağlı.** Durum İzleyicisi ve Redfield çalışma zamanının olaylarını toplamak için bu anahtarı kullanın.
 
-### <a name="-verbose"></a>-Verbose
-**Ortak parametresi.** Ayrıntılı günlük çıktısını almak için bu anahtarı kullanın.
+### <a name="-verbose"></a>-Ayrıntılı
+**Ortak parametre.** Ayrıntılı günlükleri çıkarmak için bu anahtarı kullanın.
 
 
 
 ## <a name="output"></a>Output
 
 
-### <a name="example-of-application-startup-logs"></a>Uygulama başlatma günlükleri örneği
+### <a name="example-of-application-startup-logs"></a>Uygulama başlangıç günlüklerine örnek
 ```
 PS C:\Windows\system32> Start-ApplicationInsightsMonitoringTrace -ColectRedfieldEvents
 Starting...
@@ -120,13 +115,13 @@ Timeout Reached. Stopping...
 
 Ek sorun giderme:
 
-- Burada ek sorun giderme adımlarını gözden geçirin: https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-troubleshoot
-- Gözden geçirme [API Başvurusu](status-monitor-v2-overview.md#powershell-api-reference) kaçırdığınıza parametreleri hakkında bilgi edinmek için.
-- Ek yardıma ihtiyacınız varsa, bize üzerinde başvurabilirsiniz [GitHub](https://github.com/Microsoft/ApplicationInsights-Home/issues).
+- Aşağıdaki ek sorun giderme adımlarını gözden geçirin: https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-troubleshoot
+- Kaçırmış olabileceğiniz parametreler hakkında bilgi edinmek için [API başvurusunu](status-monitor-v2-overview.md#powershell-api-reference) gözden geçirin.
+- Ek yardıma ihtiyacınız varsa [GitHub](https://github.com/Microsoft/ApplicationInsights-Home/issues)' da bizimle iletişim kurmanız yeterlidir.
 
 
 
  Durum İzleyicisi v2 ile daha fazlasını yapın:
- - Kılavuzunu kullanın [sorun giderme](status-monitor-v2-troubleshoot.md) Durum İzleyicisi v2.
- - [Yapılandırmasını al](status-monitor-v2-api-get-config.md) ayarlarınızı doğru kaydedilmiş olduğunu onaylamak için.
- - [Durumu Al](status-monitor-v2-api-get-status.md) izleme incelemek için.
+ - Durum İzleyicisi v2 [sorunlarını gidermek](status-monitor-v2-troubleshoot.md) için kılavuzumuzu kullanın.
+ - Ayarlarınızın doğru kaydedildiğinden emin olmak için [yapılandırmayı alın](status-monitor-v2-api-get-config.md) .
+ - İzlemeyi İnceleme [durumunu alın](status-monitor-v2-api-get-status.md) .

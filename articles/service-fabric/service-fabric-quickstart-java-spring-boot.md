@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 01/29/2019
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 2c98b069e042f9cbd07ccee643028ac84b3471c6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f7cf3f4cc0ceba89c031f5c36e90bbd6ef3dd20a
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60728598"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68327166"
 ---
-# <a name="quickstart-deploy-a-java-spring-boot-application-to-service-fabric"></a>Hızlı Başlangıç: Bir Service Fabric Java Spring Boot uygulaması dağıtma
+# <a name="quickstart-deploy-a-java-spring-boot-application-to-service-fabric"></a>Hızlı Başlangıç: Service Fabric için bir Java Spring Boot uygulaması dağıtma
 
 Azure Service Fabric; mikro hizmetleri ve kapsayıcıları dağıtmayı ve yönetmeyi sağlayan bir dağıtılmış sistemler platformudur.
 
@@ -90,7 +90,7 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
     java -jar gs-spring-boot-0.1.0.jar
     ```
 
-1. **Uç noktalar** kaynağını `gs-spring-boot/SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/ServiceManifest.xml` dosyasına ekleme
+1. *GS-Spring-Boot/SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/ServiceManifest. xml* dosyasında **uç noktalar** kaynağını ekleyin
 
     ```xml 
         <Resources>
@@ -161,7 +161,7 @@ Bu aşamada, Spring Boot Kullanmaya Başlama örneği için Service Fabric’e d
     ./install.sh
     ```
 
-1. Sık kullandığınız web tarayıcınızı açın ve uygulama erişerek `http://localhost:8080`.
+1. En sevdiğiniz web tarayıcınızı açın ve uygulamasına erişerek `http://localhost:8080`uygulamaya erişin.
 
     ![Uygulama ön ucu Konumu](./media/service-fabric-quickstart-java-spring-boot/springbootsflocalhost.png)
 

@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/07/2017
-ms.author: jdial
-ms.openlocfilehash: 685896cdbd74788f138b8b9dc09efbcd68a5b565
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: timlt
+ms.openlocfilehash: 1cdc10157fb324ac9167860b9786f4902b1b8b81
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60624458"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68295570"
 ---
 # <a name="create-a-network-for-multi-tier-applications"></a>Çok katmanlı uygulamalar için ağ oluşturma
 
@@ -53,7 +53,7 @@ Bu betik, bir kaynak grubu, sanal ağ ve ağ güvenliği grupları oluşturmak i
 | [az group create](/cli/azure/group) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
 | [az network vnet create](/cli/azure/network/vnet) | Bir Azure sanal ağı ve ön uç alt ağı oluşturur. |
 | [az network subnet create](/cli/azure/network/vnet/subnet) | Bir arka uç alt ağı oluşturur. |
-| [az network public-ip create](/cli/azure/network/public-ip) | Internet'ten sanal Makineye erişmek için genel bir IP adresi oluşturur. |
+| [az network public-ip create](/cli/azure/network/public-ip) | Internet 'ten sanal makineye erişmek için bir genel IP adresi oluşturur. |
 | [az network nic create](/cli/azure/network/nic) | Sanal ağ arabirimleri oluşturur ve bunları sanal ağın ön uç ve arka uç alt ağlarına ekler. |
 | [az network nsg create](/cli/azure/network/nsg) | Ön uç ve arka uç alt ağlarıyla ilişkilendirilmiş ağ güvenlik grupları (NSG) oluşturur. |
 | [az network nsg rule create](/cli/azure/network/nsg/rule) |Belirli alt ağlara yönelik belirli bağlantı noktalarına izin veren veya engelleyen NSG kuralları oluşturur. |
@@ -64,4 +64,4 @@ Bu betik, bir kaynak grubu, sanal ağ ve ağ güvenliği grupları oluşturmak i
 
 Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](/cli/azure).
 
-Ek ağ CLI betiği örnekleri, içinde bulunabilir [Azure ağ iletişimi genel bakış belgeleri](../cli-samples.md)
+Ek ağ CLı betiği örnekleri, [Azure ağlarına genel bakış belgelerinde](../cli-samples.md) bulunabilir

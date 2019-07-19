@@ -10,35 +10,35 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: e92086ca18887b9b2c2362e97d855c33834b83bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6e62eb862cf6d6760ca67b9e948a724b16303e89
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799202"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305634"
 ---
 # <a name="upload-and-index-your-videos"></a>Videolarınızı karşıya yükleme ve dizinleme  
 
-Video Indexer API ile videoları karşıya yüklerken aşağıdaki karşıya yükleme seçenekleri vardır: 
+Videoları Video Indexer API ile karşıya yüklerken aşağıdaki karşıya yükleme seçenekleriniz vardır: 
 
 * Videonuzu bir URL'den karşıya yükleyin (tercih edilir).
-* İstek gövdesinde bir bayt dizisi olarak video dosyasını gönderin,
-* Var olan Azure Media Services varlığını sağlayarak kullanan [varlık kimliği](https://docs.microsoft.com/azure/media-services/latest/assets-concept) (yalnızca ücretli hesaplarında desteklenir).
+* video dosyasını istek gövdesinde bir bayt dizisi olarak gönderin,
+* [VARLıK kimliğini](https://docs.microsoft.com/azure/media-services/latest/assets-concept) sağlayarak mevcut Azure Media Services varlığını kullanın (yalnızca ücretli hesaplarda desteklenir).
 
 Bu makalede, videolarınızı bir URL’ye dayalı olarak karşıya yüklemek ve dizinlemek için [Karşıya video yükleme](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) API’sinin nasıl kullanılacağı açıklanmaktadır. Makaledeki kod örneği, bayt dizisinin nasıl yükleneceğini gösteren, açıklama satırı haline getirilmiş kod içerir. <br/>Makalede ayrıca API’ye ait süreci ve çıktıyı değiştirmek için API’de ayarlayabileceğiniz parametrelerin bazılarından bahsedilmektedir.
 
-Videonuz karşıya yüklendikten sonra Video Indexer, isteğe bağlı olarak kodlar videonun (makalesinde açıklanmıştır). Video Indexer hesabınızı oluştururken ücretsiz bir deneme hesabı (belirli sayıda ücretsiz dizin oluşturma dakikası elde edersiniz) veya ücretli bir seçenek (kota sınırlaması olmaz) arasından seçim yapabilirsiniz. Ücretsiz deneme kullanıldığında Video Indexer, web sitesi kullanıcılarına 600 dakikaya kadar ve API kullanıcılarına ise 2400 dakikaya kadar ücretsiz dizin oluşturma olanağı sunar. Bir Video Indexer hesabı oluşturduğunuz Ücretli seçeneğiyle [Azure aboneliğinizi ve Azure Media Services hesabı için bağlı](connect-to-azure.md). Dizin oluşturma faaliyeti yapılan dakika sayısının yanı sıra Medya Hesabı ile ilgili ücretler için ödeme yaparsınız. 
+Videonuz karşıya yüklendikten sonra Video Indexer, isteğe bağlı olarak videoyu kodlar (makalede ele alınmıştır). Video Indexer hesabınızı oluştururken ücretsiz bir deneme hesabı (belirli sayıda ücretsiz dizin oluşturma dakikası elde edersiniz) veya ücretli bir seçenek (kota sınırlaması olmaz) arasından seçim yapabilirsiniz. Ücretsiz deneme kullanıldığında Video Indexer, web sitesi kullanıcılarına 600 dakikaya kadar ve API kullanıcılarına ise 2400 dakikaya kadar ücretsiz dizin oluşturma olanağı sunar. Ücretli seçenekle, [Azure aboneliğinize ve bir Azure Media Services hesabına bağlı](connect-to-azure.md)bir video Indexer hesabı oluşturursunuz. Dizin oluşturma faaliyeti yapılan dakika sayısının yanı sıra Medya Hesabı ile ilgili ücretler için ödeme yaparsınız. 
 
 ## <a name="uploading-considerations"></a>Karşıya yükleme konusunda dikkat edilmesi gerekenler
 
 - Videonuzu URL’ye dayalı olarak karşıya yüklerken (tercih edilir) uç noktanın güvenliği TLS 1.2 (veya üzeri) ile sağlanmalıdır
-- URL seçeneği ile karşıya yükleme boyutu 30 GB ile sınırlıdır
-- İstek URL uzunluğu 2048 karakter ile sınırlıdır
-- Bayt dizisi seçeneği ile karşıya yükleme boyutu 2 GB ile sınırlıdır
-- Bayt dizisi seçeneği 30 dakika sonra zaman aşımına uğruyor
+- URL seçeneği ile karşıya yükleme boyutu, 30 ile sınırlıdır
+- İstek URL 'SI uzunluğu 2048 karakterle sınırlıdır
+- Bayt dizisi seçeneğiyle karşıya yükleme boyutu 2 GB ile sınırlıdır
+- Bayt dizisi seçeneği 30 dakikadan sonra zaman aşımına uğrar
 - `videoURL` parametresinde sağlanan URL kodlanmış olmalıdır
-- URL'den dizin olarak da aynı sınırlama sahip varlıklar Media Services dizin oluşturma
-- Video Indexer'ı tek bir dosya için 4 saat maksimum süre sınırı vardır
+- Dizin oluşturma Media Services varlıkların, URL 'den dizin oluşturma ile aynı sınırlaması vardır
+- Video Indexer tek bir dosya için maksimum süre sınırı olan 4 saat
 
 > [!Tip]
 > .NET Framework 4.6.2 veya üzeri bir sürümünü kullanmanız önerilir. Eski .NET Framework sürümlerinde varsayılan olarak TLS 1.2 ayarı kullanılmaz.
@@ -55,32 +55,32 @@ Bu parametre, video ile ilişkilendirilecek bir kimlik belirtmenize olanak sağl
 
 ### <a name="callbackurl"></a>callbackUrl
 
-Müşterinin (bir POST isteği kullanılarak) aşağıdaki olaylar hakkında bilgilendirmek için kullanılan URL:
+Aşağıdaki olaylar hakkında müşteriyi bilgilendirmek için kullanılan bir URL (POST isteği kullanılarak):
 
-- Dizin oluşturma durumu değişikliği: 
-    - Özellikler:    
+- Dizin oluşturma durum değişikliği: 
+    - Özelliklerinin    
     
         |Ad|Açıklama|
         |---|---|
-        |id|Video kimliği|
+        |id|Video KIMLIĞI|
         |state|Video durumu|  
-    - Örnek: https://test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed
+    - Örnek: https:\//test.com/notifyme?ProjectName=MyProject&id=1234abcd&State=processed
 - Videoda tanımlanan kişi:
   - Özellikler
     
       |Ad|Açıklama|
       |---|---|
-      |id| Video kimliği|
-      |Faceıd|Video dizinde görünür face ID|
-      |knownPersonId|Yüz tanıma model içinde benzersiz olan kişinin kimliği|
-      |PersonName|Kişinin adı|
+      |id| Video KIMLIĞI|
+      |FaceID|Video dizininde görünen yüz KIMLIĞI|
+      |Knownpersonıd|Bir yüz modeli içinde benzersiz olan kişi KIMLIĞI|
+      |kişi adı|Kişinin adı|
         
-    - Örnek: https://test.com/notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
+    - Örnek: https:\//test.com/notifyme?ProjectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
 
 #### <a name="notes"></a>Notlar
 
-- Video Indexer özgün URL'de sağlanan herhangi bir mevcut parametre döndürür.
-- Sağlanan URL kodlanmış olması gerekir.
+- Video Indexer, özgün URL 'de belirtilen mevcut parametreleri döndürür.
+- Belirtilen URL kodlanmalıdır.
 
 ### <a name="indexingpreset"></a>indexingPreset
 
@@ -92,11 +92,11 @@ Ham veya dış kayıtlar arka plan gürültüsü içeriyorsa bu parametreyi kull
 
 Fiyat, seçilen dizinleme seçeneğine bağlıdır.  
 
-### <a name="priority"></a>öncelik
+### <a name="priority"></a>priority
 
-Videolar, önceliklerine göre Video Indexer tarafından dizine eklenir. Kullanım **öncelik** dizin önceliğini belirtmek için parametre. Aşağıdaki değerler geçerlidir: **Düşük**, **Normal** (varsayılan), ve **yüksek**.
+Videoların önceliklerine göre Video Indexer dizini oluşturulur. Dizin önceliğini belirtmek için **Priority** parametresini kullanın. Aşağıdaki değerler geçerlidir: **Düşük**, **normal** (varsayılan) ve **yüksek**.
 
-**Öncelik** parametresi yalnızca ücretli hesapları için desteklenir.
+**Priority** parametresi yalnızca ücretli hesaplar için desteklenir.
 
 ### <a name="streamingpreset"></a>streamingPreset
 
@@ -291,4 +291,4 @@ Upload işlemi aşağıdaki tabloda listelenen durum kodlarını döndürebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[API tarafından üretilen Azure Video dizinleyici çıktısını İnceleme](video-indexer-output-json-v2.md)
+[API tarafından üretilen Azure Video Indexer çıkışını inceleyin](video-indexer-output-json-v2.md)

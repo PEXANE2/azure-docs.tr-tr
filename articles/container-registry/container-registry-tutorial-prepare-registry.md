@@ -1,19 +1,20 @@
 ---
-title: Öğretici - Azure'da coğrafi olarak çoğaltılmış Docker kayıt defteri oluşturma
+title: Öğretici-Azure 'da coğrafi olarak çoğaltılan bir Docker kayıt defteri oluşturma
 description: Bir Azure Container Registry oluşturun, coğrafi çoğaltma yapılandırın, bir Docker görüntüsü hazırlayın ve bunu kayıt defterine dağıtın. Üç bölümden oluşan bir serinin birinci bölümü.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: tutorial
 ms.date: 04/30/2017
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 7aec257335e3380fa99669c1191ee89857ec975d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 87746bd39e624699612bf5221258ad757cd462b3
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60870464"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68309578"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Öğretici: Coğrafi çoğaltmalı Azure Container Registry’yi hazırlama
 
@@ -49,8 +50,8 @@ Azure Cloud Shell, bu öğreticideki her adımı tamamlamak için gerekli olan D
 
 Aşağıdaki ayarlarla yeni kayıt defterinizi yapılandırın:
 
-* **Kayıt defteri adı**: Azure'da genel olarak benzersiz olan ve 5-50 alfasayısal karakterden oluşan bir kayıt defteri adı oluşturun
-* **Kaynak grubu**: **Yeni Oluştur** > `myResourceGroup`
+* **Kayıt defteri adı**: Azure 'da genel olarak benzersiz olan ve 5-50 alfasayısal karakter içeren bir kayıt defteri adı oluşturun
+* **Kaynak grubu**: **Yeni oluştur** > `myResourceGroup`
 * **Konum**: `West US`
 * **Yönetici kullanıcı**: `Enable` (Kapsayıcılar için Web App’in görüntüleri çekmesi için gereklidir)
 * **SKU**: `Premium` (coğrafi çoğaltma için gereklidir)
@@ -110,13 +111,13 @@ git clone https://github.com/Azure-Samples/acr-helloworld.git
 cd acr-helloworld
 ```
 
-`git` yüklenmemişse, doğrudan GitHub’dan [ZIP arşivini indirebilirsiniz][acr-helloworld-zip].
+Yüklü değilse, ZIP arşivini doğrudan GitHub 'dan [indirebilirsiniz.][acr-helloworld-zip] `git`
 
 ## <a name="update-dockerfile"></a>Dockerfile’ı güncelleştirme
 
-Örnekte bulunan Dockerfile, kapsayıcının nasıl yapılandırıldığını gösterir. Resmi bir [aspnetcore][dockerhub-aspnetcore] görüntüsünden başlatılır, uygulama dosyalarını kapsayıcıya kopyalar, bağımlılıkları yükler, resmi [aspnetcore-build][dockerhub-aspnetcore-build] görüntüsünü kullanarak çıktıyı derler ve son olarak iyileştirilmiş bir aspnetcore görüntüsü derler.
+Örnekte bulunan Dockerfile, kapsayıcının nasıl yapılandırıldığını gösterir. Resmi bir [aspnetcore][dockerhub-aspnetcore] image, copies the application files into the container, installs dependencies, compiles the output using the official [aspnetcore-build][dockerhub-aspnetcore-build] görüntüsünden başlar ve son olarak en iyi duruma getirilmiş bir aspnetcore görüntüsü oluşturur.
 
-[Dockerfile][dockerfile], kopyalanan kaynaktaki `./AcrHelloworld/Dockerfile` dizininde bulunur.
+[Dockerfile][dockerfile] , klonlanan kaynakta `./AcrHelloworld/Dockerfile` bulunur.
 
 ```Dockerfile
 FROM microsoft/aspnetcore:2.0 AS base
@@ -152,7 +153,7 @@ ENTRYPOINT ["dotnet", "AcrHelloworld.dll"]
 az acr show --name <acrName> --query "{acrLoginServer:loginServer}" --output table
 ```
 
-Çıkış:
+Çıktı:
 
 ```bash
 AcrLoginServer

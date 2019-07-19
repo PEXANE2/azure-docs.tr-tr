@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı Başlangıç: El yazısı metinleri - REST, Python ayıklamak'
+title: "Hızlı Başlangıç: Yazdırılmış ve el yazısı metin-REST, Python 'u Ayıkla"
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, Python ile Görüntü İşleme API’sini kullanarak bir görüntüden el yazısı metni ayıklayacaksınız.
+description: Bu hızlı başlangıçta, Python ile Görüntü İşleme API'si kullanarak bir görüntüden yazdırılmış ve el yazısı metni ayıkladığınızda.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,30 +11,30 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: ec58617556ff54bd2273160bb4af80e473ac1693
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 729228b224bdf708fbcf9caf4742f9bb7ad5cff3
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603556"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311972"
 ---
-# <a name="quickstart-extract-handwritten-text-using-the-computer-vision-rest-api-and-python"></a>Hızlı Başlangıç: Görüntü işleme REST API'si ve Python kullanarak resimlerdeki el yazısı metinleri ayıklamak
+# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-python"></a>Hızlı Başlangıç: Görüntü İşleme REST API ve Python kullanarak yazdırılmış ve el yazısı metin Ayıkla
 
-Bu hızlı başlangıçta, Görüntü İşleme’nin REST API’sini kullanarak bir görüntüden el yazısı metni ayıklayacaksınız. İle [Batch okuma](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) API ve [okuma işleminin sonucunu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) API, bir resimdeki resimlerdeki el yazısı algılayabilir, ardından ayıklama tanınan karakterleri makine tarafından kullanılabilir bir karakter akışı halinde.
+Bu hızlı başlangıçta, Görüntü İşleme REST API kullanarak bir görüntüden yazdırılmış ve/veya el ile yazılmış metin ayıklanır. [Batch okuma](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) ve [okuma işlemi sonucu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) yöntemleriyle, görüntüdeki metni algılayabilir ve tanınan karakterleri makine tarafından okunabilen bir karakter akışına ayıklayabilirsiniz. API, her metin satırı için hangi tanıma modelinin kullanılacağını belirleyecek ve bu sayede hem yazdırılmış hem de el yazısı metinle birlikte görüntüleri destekler.
 
 > [!IMPORTANT]
-> Farklı [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) yöntemi [Batch okuma](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) yöntemi zaman uyumsuz olarak çalışır. Bu yöntem, başarılı bir yanıt gövdesinde herhangi bir bilgi döndürmez. Bunun yerine, Batch Read yöntemi değerinde bir URI döndürür `Operation-Content` yanıt üstbilgi alanı. Ardından temsil eder Bu URI çağırabilirsiniz [okuma işleminin sonucunu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) hem durumunu denetlemek ve Batch okuma yöntem çağrısının sonuçları döndürmek için API.
+> [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) yönteminden farklı olarak [Batch Read](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) yöntemi zaman uyumsuz olarak çalışır. Bu yöntem, başarılı bir yanıt gövdesinde herhangi bir bilgi döndürmez. Bunun yerine Batch Read yöntemi, `Operation-Content` yanıt üst bilgisi alanının değerinde bir URI döndürür. Ardından, durumu denetlemek ve toplu okuma yöntemi çağrısının sonuçlarını döndürmek için [okuma Işlemi sonucu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) API 'sini temsil eden bu URI 'yi çağırabilirsiniz.
 
 [MyBinder](https://mybinder.org) üzerinde bir Jupyter not defteri kullanarak bu hızlı başlangıcı adım adım görüntülenecek şekilde çalıştırabilirsiniz. Bağlayıcıyı başlatmak için aşağıdaki düğmeyi seçin:
 
-[![Bağlayıcı düğmesini Başlat](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
+[![Cildi Başlat düğmesi](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/try/cognitive-services/) oluşturun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 - Örneği yerel olarak çalıştırmak istiyorsanız [Python](https://www.python.org/downloads/) yüklenmiş olmalıdır.
-- Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Ücretsiz bir deneme anahtarından alabilirsiniz [Bilişsel Hizmetler'i deneyin](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Veya yönergeleri [Bilişsel Hizmetler hesabı oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) görüntü işleme için abone ve anahtarınızı alın.
+- Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Deneme bilişsel [Hizmetler](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)'den ücretsiz bir deneme anahtarı edinebilirsiniz. Ya da Görüntü İşleme abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin.
 
 ## <a name="create-and-run-the-sample"></a>Örnek oluşturma ve çalıştırma
 
@@ -44,10 +44,10 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 1. Gerektiğinde kodda aşağıdaki değişiklikleri yapın:
     1. `subscription_key` değerini abonelik anahtarınızla değiştirin.
     1. Gerekirse `vision_base_url` değerini, abonelik anahtarlarınızı aldığınız Azure bölgesindeki Görüntü İşleme kaynağının uç nokta URL’si ile değiştirin.
-    1. İsteğe bağlı olarak, `image_url` değerini, içinden el yazısı metni ayıklamak istediğiniz başka bir görüntünün URL’si ile değiştirin.
-1. Kodu, `.py` uzantısıyla bir dosya olarak kaydedin. Örneğin, `get-handwritten-text.py`.
+    1. İsteğe bağlı olarak, değerini `image_url` , metin çıkarmak istediğiniz farklı bir görüntünün URL 'siyle değiştirin.
+1. Kodu, `.py` uzantısıyla bir dosya olarak kaydedin. Örneğin: `get-text.py`.
 1. Bir komut istemi penceresi açın.
-1. İstemde, örneği çalıştırmak için `python` komutunu kullanın. Örneğin, `python get-handwritten-text.py`.
+1. İstemde, örneği çalıştırmak için `python` komutunu kullanın. Örneğin: `python get-text.py`.
 
 ```python
 import requests
@@ -83,7 +83,7 @@ response = requests.post(
     text_recognition_url, headers=headers, json=data)
 response.raise_for_status()
 
-# Extracting handwritten text requires two API calls: One call to submit the
+# Extracting text requires two API calls: One call to submit the
 # image for processing, the other to retrieve the text found in the image.
 
 # Holds the URI used to retrieve the recognized text.

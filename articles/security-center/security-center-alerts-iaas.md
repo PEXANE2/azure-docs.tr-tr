@@ -1,6 +1,6 @@
 ---
-title: Tehdit algılama VM'ler için ve Azure Güvenlik Merkezi'nde sunucular | Microsoft Docs
-description: Bu konuda, VM ve sunucu uyarılarını kullanılabilir Azure Güvenlik Merkezi'nde sunulmaktadır.
+title: Azure Güvenlik Merkezi 'nde VM 'Ler & sunucular için tehdit algılama | Microsoft Docs
+description: Bu konuda, Azure Güvenlik Merkezi 'nde bulunan VM ve sunucu uyarıları sunulmaktadır.
 services: security-center
 documentationcenter: na
 author: monhaber
@@ -13,110 +13,110 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/02/2019
-ms.author: monhaber
-ms.openlocfilehash: 5487b4f49f5dbf7b968cd45d40555c69b54c329a
-ms.sourcegitcommit: 1e347ed89854dca2a6180106228bfafadc07c6e5
+ms.author: v-mohabe
+ms.openlocfilehash: f23865fc0a1943a5157e4ff8eb8de10a71ef0883
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67571588"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68295785"
 ---
-# <a name="threat-detection-for-vms--servers-in-azure-security-center"></a>Vm'lerinizi ve Azure Güvenlik Merkezi'nde sunucuları için tehdit algılama
+# <a name="threat-detection-for-vms--servers-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde VM 'Ler & sunucular için tehdit algılama
 
-Bu konuda, aşağıdaki işletim sistemi ile farklı türde algılama yöntemleri ve uyarılar kullanılabilir sanal makineleri ve sunucular için sunulmaktadır. Desteklenen sürümlerin listesi için bkz. [platformları ve Azure Güvenlik Merkezi tarafından desteklenen özellikler](https://docs.microsoft.com/azure/security-center/security-center-os-coverage).
+Bu konuda, aşağıdaki işletim sistemlerine sahip VM 'Ler ve sunucular için kullanılabilen farklı algılama yöntemleri ve uyarıları sunulmaktadır. Desteklenen sürümlerin listesi için bkz. [Azure Güvenlik Merkezi tarafından desteklenen platformlar ve Özellikler](https://docs.microsoft.com/azure/security-center/security-center-os-coverage).
 
 * [Windows](#windows-machines)
 * [Linux](#linux-machines)
 
-## Windows <a name="windows-machines"></a>
+## Pencerelerin<a name="windows-machines"></a>
 
-Güvenlik Merkezi, izlemek ve Windows tabanlı makinelerinizi korumak için Azure Hizmetleri ile tümleştirilir.  Güvenlik Merkezi uyarıları ve düzeltme önerileri tüm hizmetlerin kullanımı kolay bir biçimde sunar.
+Güvenlik Merkezi, Windows tabanlı makinelerinizi izlemek ve korumak için Azure hizmetleri ile tümleşir.  Güvenlik Merkezi, tüm bu hizmetlerden gelen uyarıları ve düzeltme önerilerini kullanımı kolay bir biçimde sunar.
 
-### Microsoft Server Defender ATP <a nanme="windows-atp"></a>
+### Microsoft Server Defender ATP<a nanme="windows-atp"></a>
 
-Azure Güvenlik Merkezi, Windows Defender Gelişmiş tehdit Koruması (ATP ile) tümleştirerek, bulut iş yükü koruması platformları genişletir. Bu kapsamlı uç nokta algılama ve yanıt (EDR) özellikleri sağlar.
+Azure Güvenlik Merkezi, Windows Defender Gelişmiş tehdit koruması (ATP) ile tümleştirerek bulut Iş yükü koruma platformlarını genişletir. Bu, kapsamlı uç nokta algılama ve yanıt (EDR) özellikleri sağlar.
 
 > [!NOTE]
-> Windows Server Defender ATP algılayıcısını eklenen Azure Güvenlik Merkezi'ne Windows sunucuları otomatik olarak etkinleştirilir.
+> Windows Server Defender ATP algılayıcısı, Azure Güvenlik Merkezi 'nde eklendi Windows sunucularında otomatik olarak etkinleştirilir.
 
-Windows Server Defender ATP bir tehdit algıladığında bir uyarı tetikler. Uyarı, Güvenlik Merkezi panosunda gösterilir. Panodan, saldırı kapsamını ortaya çıkarmak için ayrıntılı bir araştırma gerçekleştirmek için Windows Defender ATP Konsolu Özet. Windows Server Defender ATP hakkında daha fazla bilgi için bkz: [ekleme sunucuları Windows Defender ATP hizmetine](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints).
+Windows Server Defender ATP bir tehdit algıladığında bir uyarı tetikler. Uyarı, güvenlik merkezi panosunda gösterilir. Panodan, saldırının kapsamını açmaya yönelik ayrıntılı bir araştırma gerçekleştirmek için Windows Defender ATP konsoluna bir özet oluşturabilirsiniz. Windows Server Defender ATP hakkında daha fazla bilgi için bkz. [Windows Defender ATP hizmetine sunucu](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints)ekleme.
 
-### Kilitlenme dökümü analizi <a nanme="windows-dump"></a>
+### Kilitlenme bilgi döküm Analizi<a nanme="windows-dump"></a>
 
 Yazılım kilitlendiğinde bir kilitlenme dökümü kilitlenme sırasında belleğin bir kısmını yakalar.
 
-Kötü amaçlı yazılım tarafından bir kilitlenme kaynaklanmış olabilir veya kötü amaçlı yazılım içeremez. Kötü amaçlı yazılım çeşitli tür güvenlik ürünleri tarafından algılanma önlemek için disk veya yazılmış şifreleme yazılım bileşenlerini yazılmasını önler bir fileless saldırı kullanmanıza diske. Bu tür bir saldırı geleneksel disk tabanlı yaklaşımlarıyla algılanmasını zor olabilir.
+Kötü amaçlı yazılımdan koruma veya kötü amaçlı yazılım içeren bir kilitlenme oluşmuş olabilir. Güvenlik ürünleri tarafından algılanmayı önlemek için çeşitli kötü amaçlı yazılım biçimleri, diske yazmayı veya diske yazılmış yazılım bileşenlerini şifrelemeyi önleyen bir dosya daha az saldırı kullanır. Bu tür bir saldırı geleneksel disk tabanlı yaklaşımlar kullanılarak algılanarak tespit edilir.
 
-Ancak, bu tür bir saldırıya bellek analizi kullanılarak algılanabilir. Güvenlik Merkezi, kilitlenme bellek analiz ederek, yazılımdaki açıklardan yararlanmak, gizli verilere erişmek ve bir makineye gizlice kalıcı saldırı kullanarak teknikleri algılayabilir. Bu, ana bilgisayarlar için en az etki ile Güvenlik Merkezi arka ucu tarafından gerçekleştirilir.
+Ancak, bu tür bir saldırı bellek analizi kullanılarak algılanabilir. Güvenlik Merkezi, kilitlenme dökümündeki belleği analiz ederek, saldırının yazılım içindeki güvenlik açıklarından yararlanmak, gizli verilere erişmek ve güvenliği aşılmış bir makine dahilinde kalıcı olarak devam ettirmek için kullandığı teknikleri algılayabilir. Bu işlem, ana bilgisayarlara en düşük performans etkisi olan güvenlik merkezi arka ucu tarafından yapılır.
 
 > [!div class="mx-tableFixed"]
 
 |Uyarı|Açıklama|
 |---|---|
-|**Kod ekleme bulundu**|Kod ekleme, çalışmakta olan işlemlere veya iş parçacıklarına yürütülebilir modüllerin eklenmesidir. Bu teknik verilerine erişmek için kötü amaçlı yazılım tarafından başarıyla engellemek için kendisine gizleme bulundu ve çıkarılmakta olan sırasında kullanılır. <br/>Bu uyarı, eklenen bir modülün kilitlenme bilgi dökümünde mevcut olduğunu belirtir. Güvenlik Merkezi kötü amaçlı olan ve olmayan eklenen modülleri birbirinden ayırt etmek için eklenen modülün bir şüpheli davranış profiline uygun olup olmadığını denetler.|
-|**Şüpheli kod kesimi bulunan**|Bir kod kesiminin yansıtmalı ekleme ve boş işlem gibi standart olmayan yöntemler kullanılarak ayrıldığını belirtir. Uyarı özellikleri için bağlam sağlamak için işlenen kod kesiminin ek özelliklerini ve bildirilen kod kesiminin davranışlar sağlar.|
-|**Kabuk kodu bulundu**|Kabuk Kodu, kötü amaçlı yazılım bir yazılım güvenlik açığından yararlandıktan sonra çalıştırılan yüktür.<br/>Bu uyarı, kilitlenme dökümü analizinin kötü amaçlı yükler tarafından yaygın olarak gerçekleştirilen davranışları sergileyen yürütülebilir kod algıladığını belirtir. Kötü amaçlı olmayan yazılımlar da bu davranış olabilir, ancak normal yazılım geliştirme uygulamaları için alışıldık değil.|
+|**Kod ekleme bulundu**|Kod ekleme, çalışmakta olan işlemlere veya iş parçacıklarına yürütülebilir modüllerin eklenmesidir. Bu teknik, kötü amaçlı yazılım tarafından, bulunan ve kaldırılan verileri başarıyla gizlerken, verileri erişmek için kullanılır. <br/>Bu uyarı, eklenen bir modülün kilitlenme bilgi dökümünde mevcut olduğunu belirtir. Güvenlik Merkezi, kötü amaçlı olan ve olmayan eklenen modülleri birbirinden ayırt etmek için eklenen modülün bir şüpheli davranış profiline uygun olup olmadığını denetler.|
+|**Şüpheli kod segmenti bulundu**|Bir kod kesiminin, yansıtıcı ekleme ve işlem gizleme gibi standart olmayan yöntemler kullanılarak ayrıldığını gösterir. Uyarı, bildirilen kod segmentinin özellikleri ve davranışları için bağlam sağlamak üzere işlenmiş olan kod kesiminin ek özelliklerini sağlar.|
+|**Bulunan shellcode**|Kabuk Kodu, kötü amaçlı yazılım bir yazılım güvenlik açığından yararlandıktan sonra çalıştırılan yüktür.<br/>Bu uyarı, kilitlenme dökümü analizinin kötü amaçlı yükler tarafından yaygın olarak gerçekleştirilen davranışı gösteren yürütülebilir kod algıladığını gösterir. Kötü amaçlı olmayan yazılımlar da bu davranışı gerçekleştirebilir, ancak normal yazılım geliştirme uygulamalarından tipik değildir.|
 
-### Fileless saldırı algılama <a nanme="windows-fileless"></a>
+### Dosya daha az saldırı algılama<a nanme="windows-fileless"></a>
 
-Azure'da, düzenli olarak müşterilerimizin uç noktaları hedefleyen fileless saldırıları görüyoruz.
+Azure 'da, müşterilerinizin uç noktalarını hedefleyen dosya daha az saldırıları düzenli olarak görebiliyoruz.
 
-Algılama önlemek için kötü amaçlı yükler fileless saldırıları belleğe yerleştirir. Saldırgan güvenliği aşılmış işlemlerinin bellek içinde kalıcı hale getirmek ve çok çeşitli kötü amaçlı etkinlikler gerçekleştirmek.
+Algılamayı önlemek için, dosya daha az saldırı kötü amaçlı yükleri belleğe ekler. Saldırgan yükleri, güvenliği aşılmış işlemlerin belleğinde kalır ve çok çeşitli kötü amaçlı etkinlikler gerçekleştirir.
 
-Fileless saldırı algılama ile otomatik bellek adli teknikleri fileless saldırı araç Setleri, teknikler ve davranışları tanımlar. Bu çözüm, düzenli aralıklarla çalışma zamanında, makinenizi tarayan ve doğrudan güvenlik açısından kritik işlemler bellekten ınsights ayıklar.
+Dosya daha az saldırı algılaması sayesinde, otomatik bellek oluşturma teknikleri, dosya daha az saldırı araç takımları, teknikler ve davranışları belirler. Bu çözüm, çalışma zamanında makinenizi düzenli olarak tarar ve öngörüleri doğrudan güvenlik açısından kritik işlemlerin belleğinden ayıklar.
 
-Bu, yararlanılması, kod ekleme ve kötü amaçlı yükler yürütülmesini kanıt bulur. Fileless saldırı algılama uyarısı önceliklendirme, bağıntı ve aşağı akış yanıt süresini hızlandırmak için ayrıntılı güvenlik uyarıları oluşturur. Bu yaklaşım, olay tabanlı EDR çözümleri daha büyük olan algılama kapsamının sağlama tamamlar.
+Yararlanma, kod ekleme ve kötü amaçlı yükleri yürütme kanıtlarını bulur. Dosya daha az saldırı algılama, uyarı önceliklendirme, bağıntı ve aşağı akış yanıt süresini hızlandırmak için ayrıntılı güvenlik uyarıları üretir. Bu yaklaşım, daha fazla algılama kapsamı sağlayan olay tabanlı EDR çözümlerini tamamlar.
 
 > [!NOTE]
-> İndirme ile Windows uyarıları benzetimini yapabilirsiniz [Azure Güvenlik Merkezi Playbook](https://gallery.technet.microsoft.com/Azure-Security-Center-0ac8a5ef): Güvenlik uyarıları ve sağlanan yönergeleri izleyin
+> [Azure Güvenlik Merkezi PlayBook](https://gallery.technet.microsoft.com/Azure-Security-Center-0ac8a5ef)'U indirerek Windows uyarılarının benzetimini yapabilirsiniz: Güvenlik uyarıları ve belirtilen yönergeleri izleyin
 
 > [!div class="mx-tableFixed"]
 
 |Uyarı|Açıklama|
 |---|---|
-|**Algılanan fileless saldırı yöntemi**|Aşağıda belirtilen işlem belleğini fileless saldırı Araç Seti içerir: Meterpreter. Fileless saldırı araç Setleri genellikle bir varlık tarafından geleneksel virüsten koruma algılama zorlaşır dosya sisteminde yok.|
+|**Dosya Less saldırı tekniği algılandı**|Aşağıda belirtilen işlemin belleği bir dosya daha az saldırı araç seti içerir: Meterpreter. Dosya sisteminde genellikle dosya sisteminde bir varlık yoktur, bu da geleneksel Anti-Virus tarafından algılama işlemini zorlaştırır.|
 
 ### <a name="further-reading"></a>Daha fazla bilgi
 
-Örnekler ve Güvenlik Merkezi algılama hakkında daha fazla bilgi için:
+Örnekler ve Güvenlik Merkezi algılaması hakkında daha fazla bilgi için:
 
-* [Azure Güvenlik Merkezi algılama siber saldırı nasıl otomatikleştirir](https://azure.microsoft.com/blog/leverage-azure-security-center-to-detect-when-compromised-linux-machines-attack/)
-* [Azure Güvenlik Merkezi güvenlik açıklarını Yönetimsel Araçlar'ı kullanarak nasıl algılar](https://azure.microsoft.com/blog/azure-security-center-can-detect-emerging-vulnerabilities-in-linux/)
+* [Azure Güvenlik Merkezi, siber saldırısı algılamasını nasıl otomatikleştirir](https://azure.microsoft.com/blog/leverage-azure-security-center-to-detect-when-compromised-linux-machines-attack/)
+* [Azure Güvenlik Merkezi 'nin yönetimsel araçları kullanarak güvenlik açıklarını nasıl algıladığı](https://azure.microsoft.com/blog/azure-security-center-can-detect-emerging-vulnerabilities-in-linux/)
 
-## Linux <a name="linux-machines"></a>
+## 'Un<a name="linux-machines"></a>
 
-Güvenlik Merkezi toplanan denetim kayıtları kullanarak Linux makineleri **auditd**, bir çerçeveleri en yaygın Linux denetimi. auditd uzun ve ana hat çekirdek yaşayan süredir avantajına sahiptir. 
+Güvenlik Merkezi, en yaygın Linux denetim çerçevelerinden biri olan **auditd**kullanarak Linux makinelerden denetim kayıtları toplar. auditd, uzun bir süre içinde olma ve ana hat çekirdekte yaşayan avantajlardan yararlanmaktadır. 
 
-### Linux auditd uyarıları ve Microsoft Monitoring Agent (MMA) Tümleştirmesi <a name="linux-auditd"></a>
+### Linux auditd uyarıları ve Microsoft Monitoring Agent (MMA) Tümleştirmesi<a name="linux-auditd"></a>
 
-Sistem çağrıları izleme, bunları belirli bir kural kümesi tarafından filtre ve ileti kendileri için yuvaya yazılıyor sorumlu bir çekirdek düzeyindeki alt auditd sistem oluşur. Güvenlik Merkezi işlevlerini auditd paketinden içindeki Microsoft Monitoring Agent (MMA) tümleştirir. Bu tümleştirme, herhangi bir önkoşulu olmadan tüm desteklenen Linux dağıtımları auditd olayları koleksiyonda sağlar.  
+Auditd sistemi, sistem çağrılarını izlemekten, belirli bir kural kümesine göre filtrelemeden ve bunları bir soket için iletilerle ilgili olan çekirdek düzeyinde bir alt sistemden oluşur. Güvenlik Merkezi, Microsoft Monitoring Agent (MMA) içindeki auditd paketinden işlevleri tümleştirir. Bu tümleştirme, hiçbir önkoşul olmadan desteklenen tüm Linux dağıtımlarında auditd olayları toplamasını mümkün değildir.  
 
-auditd kayıtları zenginleştirilmiş, toplanan ve Linux MMA aracısını kullanarak olayları toplanır. Güvenlik Merkezi, yeni analizi, Linux bulut üzerinde kötü amaçlı davranışları algılamak bildirir ve şirket içi Linux makineleri bu Dengeleme ekleme sürekli çalışmaktadır. Benzer şekilde Windows özellikleri, bu analizleri şüpheli işlemlerin, güvenilmez oturum açma denemesi, çekirdek Modül yükleme ve bir makine ya da saldırı altında veya bir ihlal belirtmek diğer etkinlikler arasında yayılır.  
+auditd kayıtları toplanır, zenginleştirir ve Linux MMA Aracısı kullanılarak olaylara toplanır. Güvenlik Merkezi, bulut ve şirket içi Linux makinelerinde kötü amaçlı davranışları algılamak için Linux sinyallerine yararlanan yeni analizler ekleme konusunda sürekli olarak çalışmaktadır. Windows özelliklerine benzer şekilde, bu analizler şüpheli işlemlere, dubsin oturum açma girişimlerine, çekirdek modülü yüklemeye ve bir makinenin saldırıya açık ya da ihlal edilmiş olduğunu gösteren diğer etkinliklere yayılır.  
 
-Biz farklı aşamalarında saldırı yaşam döngüsü nasıl span göstermek analytics, çeşitli örnekleri aşağıdadır.
+Aşağıda, saldırı yaşam döngüsünün farklı aşamaları boyunca nasıl yayılacağını gösteren çeşitli analiz örnekleri verilmiştir.
 
 > [!div class="mx-tableFixed"]
 
 |Uyarı|Açıklama|
 |---|---|
-|**SSH yetkili anahtarlar dosyasına olağan dışı bir şekilde erişme görülen işlem**|SSH yetkili anahtarlar dosyası, bilinen kötü amaçlı yazılım kampanyalarına için benzer bir yöntem içinde erişilebilir. Bu erişim bir saldırganın bir makine kalıcı erişim kazanmak çalışıyor olduğunu gösteriyor olabilir|
-|**Algılanan Kalıcılık denemesi**|Konak veri analizi, tek kullanıcı moduna için başlatma betiği yüklendiğini algıladı. <br/>Herhangi bir yasal işlem bu modda çalıştırmak için gereken seyrek olduğundan, bu saldırgan her çalışma kalıcılığı sağlamak için düzeyi için kötü amaçlı bir işleme eklemiştir gösterebilir.|
-|**Algılanan zamanlanmış görev düzenleme**|Konak veri analizi, zamanlanmış görevlerin olası işleme algıladı. Saldırganlar, Kalıcılık sağlamak için gizliliğinin tehlikeye makinelerine genellikle zamanlanmış görevler ekleyin.|
-|**Şüpheli dosya zaman damgası değişikliği**|Konak veri analizi şüpheli zaman damgası değişiklik algılandı. Saldırganlar zaman damgaları genellikle bu yeni bırakılan dosyalar algılanmasını önlemek için yeni araçlar mevcut yasal dosyaların kopyalanacağı|
-|**Sudoers grubuna yeni bir kullanıcı eklendi**|Konak veri analizi, üyelerinin yüksek ayrıcalıklarla komutlar sağlayan sudoers grubuna bir kullanıcı eklendiğini algıladı.|
-|**Dhcp istemci DynoRoot güvenlik olası yararlanma**|Konak veri analizi dhclient betiğinin üst işlemin olağan dışı bir komut yürütülmesiyle algılandı.|
-|**Şüpheli bir çekirdek modülü algılandı**|Konak veri analizi bir çekirdek modülü yüklenen bir paylaşılan nesne dosyası algılandı. Bir gösterge makinelerinizi birinin tehlikeye girdiği veya bu yasal etkinlik olabilir.|
-|**Algılanan dijital para birimi araştırma ile ilişkili işlem**|Konak veri analizi, normalde dijital para birimi araştırma ile ilişkili bir işlemin yürütülmesi algılandı|
-|**Dış IP adresi için olası bir bağlantı noktası iletme**|Konak veri analizi başlatma bağlantı noktası iletme için dış IP adresi algılandı.|
+|**Beklenmedik bir şekilde SSH yetkili anahtarlar dosyasına erişim için işlem görüldü**|Bilinen kötü amaçlı yazılım kampanyalarına benzer bir yöntemde SSH yetkili anahtarları dosyasına erişildi. Bu erişim, bir saldırganın bir makineye kalıcı erişim kazanmaya çalıştığınızı belirtebilir|
+|**Algılanan Kalıcılık girişimi**|Konak veri analizi, tek kullanıcılı mod için bir başlangıç betiğinin yüklendiğini algıladı. <br/>Meşru bir işlemin bu modda yürütülmesi gerektiğinden nadir olduğundan, bu durum, bir saldırganın kalıcılığı garanti etmek için her çalışma düzeyine kötü amaçlı bir işlem eklediğini gösterir.|
+|**Zamanlanmış görevlerin işlenmesi algılandı**|Ana bilgisayar veri analizi, zamanlanmış görevler için olası bir düzenleme algıladı. Saldırganlar genellikle kalıcı görevleri riskli hale getikleri makinelere ekler.|
+|**Şüpheli dosya zaman damgası değişikliği**|Ana bilgisayar veri analizi şüpheli bir zaman damgası değişikliği algıladı. Saldırganlar, bu yeni bırakılan dosyaların algılanmasını önlemek için genellikle mevcut meşru dosyalardaki zaman damgalarını yeni araçlara kopyalar|
+|**Sudoers grubuna yeni bir kullanıcı eklendi**|Konak veri analizi, bir kullanıcının sudoers grubuna eklendiğini algıladı ve bu, üyelerinin yüksek ayrıcalıklarla komutları çalıştırmasına olanak sağlar.|
+|**DHCP istemcisinde DynoRoot güvenlik açığından büyük olasılıkla faydalanma**|Ana bilgisayar veri analizi, dhclient betiğinin ana işlemiyle olağan dışı bir komutun yürütülmesini algıladı.|
+|**Şüpheli çekirdek modülü algılandı**|Ana bilgisayar veri analizi, bir çekirdek modülü olarak yüklenen paylaşılan bir nesne dosyası algıladı. Bu yasal etkinlik olabilir veya makinelerinizden birinin tehlikeye girdiğinin göstergesidir.|
+|**Dijital para birimi madenciliği ile ilişkili işlem algılandı**|Ana bilgisayar veri analizi, normalde dijital para birimi madenciliği ile ilişkili bir işlemin yürütülmesini algıladı|
+|**Dış IP adresine yönelik olası bağlantı noktası iletme**|Ana bilgisayar veri analizi, bir dış IP adresine bağlantı noktası iletmeyi başlatma işlemini algıladı.|
 
 > [!NOTE]
-> İndirerek Windows uyarıları benzetimini yapabilirsiniz [Azure Güvenlik Merkezi Playbook: Güvenlik Uyarıları](https://gallery.technet.microsoft.com/Azure-Security-Center-0ac8a5ef) ve sağlanan yönergeleri izleyin.
+> Azure Güvenlik Merkezi PlayBook 'u indirerek [Windows uyarılarının benzetimini yapabilirsiniz: Güvenlik uyarıları](https://gallery.technet.microsoft.com/Azure-Security-Center-0ac8a5ef) ve belirtilen yönergeleri izleyin.
 
 
 Daha fazla bilgi için şu makalelere bakın:  
 
-* [Azure Güvenlik Merkezi saldırı Linux riskli makineleri algılayabilir için yararlanın](https://azure.microsoft.com/blog/leverage-azure-security-center-to-detect-when-compromised-linux-machines-attack/)
+* [Güvenliği tehlikeye giren Linux makinelerinin saldırı sırasında algılamak için Azure Güvenlik Merkezi 'Nden yararlanın](https://azure.microsoft.com/blog/leverage-azure-security-center-to-detect-when-compromised-linux-machines-attack/)
 
-* [Azure Güvenlik Merkezi, Linux'ta ortaya çıkan güvenlik açıklarını algılama](https://azure.microsoft.com/blog/azure-security-center-can-detect-emerging-vulnerabilities-in-linux/)
+* [Azure Güvenlik Merkezi, Linux 'ta gelişen güvenlik açıklarını algılayabilir](https://azure.microsoft.com/blog/azure-security-center-can-detect-emerging-vulnerabilities-in-linux/)
 
  

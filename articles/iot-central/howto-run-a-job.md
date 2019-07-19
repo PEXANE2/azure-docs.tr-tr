@@ -1,109 +1,109 @@
 ---
-title: Oluşturma ve Azure IOT Central, uygulamanızda işler çalıştırma | Microsoft Docs
-description: Azure IOT Central işleri gibi bir cihaz özelliğinin güncelleştirilmesi, ayarı veya bir komut yürütülürken toplu cihaz yönetimi özellikleri sağlar.
+title: Azure IoT Central uygulamanızda iş oluşturma ve çalıştırma | Microsoft Docs
+description: Azure IoT Central işleri, bir cihaz özelliğini güncelleştirme, ayarlama veya bir komutu yürütme gibi toplu cihaz yönetimi özelliklerine izin verir.
 ms.service: iot-central
 services: iot-central
 author: sarahhubbard
 ms.author: sahubbar
-ms.date: 03/18/2019
+ms.date: 07/08/2019
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: 903b4f1ea1484aec827c4b2d54c8dd8a9dd69d8f
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 298770b1b2da816ddef9154fafb20d7c6cb82df3
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509529"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849033"
 ---
-# <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Oluşturma ve Azure IOT Central uygulamanızda bir işi çalıştırma
+# <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Azure IoT Central uygulamanızda iş oluşturma ve çalıştırma
 
-Bağlı cihazlarınızın uygun ölçekte işleri kullanarak yönetmek için Microsoft Azure IOT Central kullanabilirsiniz. İşler sağlar, cihaz özelliklerini, ayarlarını ve komutları güncelleştirmeleri toplu. Bu makalede, kendi uygulamanıza işler kullanmaya başlama konusunda yol göstermektedir.
+Bağlı cihazlarınızı işler kullanarak ölçeklendirerek yönetmek için Microsoft Azure IoT Central kullanabilirsiniz. İşler cihaz özelliklerine, ayarlarına ve komutlarına toplu güncelleştirmeler yapmanızı sağlar. Bu makalede, kendi uygulamanızdaki işleri kullanmaya nasıl başlayacağınız anlatılmaktadır.
 
-## <a name="create-and-run-a-job"></a>Oluşturma ve bir işi çalıştırma
+## <a name="create-and-run-a-job"></a>İş oluşturma ve çalıştırma
 
-Bu bölümde, oluşturup bir iş çalıştırmak gösterilir. Birden çok refrigerated satış makineler için fanı hızını artırmak nasıl gösterir.
+Bu bölümde bir işi oluşturma ve çalıştırma işlemi gösterilmektedir. Bu, birden çok soğutma makinesi için fan hızını nasıl artırabileceğiniz gösterilmektedir.
 
-1. Gezinti bölmesinden işlerini gidin.
+1. Gezinti bölmesinden Işler ' e gidin.
 
-1. Seçin **+ yeni** yeni bir proje oluşturmak için.
+1. Yeni bir iş oluşturmak için **+ Yeni** ' yi seçin.
 
-    ![Yeni proje oluşturma](./media/howto-run-a-job/createnewjob.png)
+    ![Yeni iş oluştur](./media/howto-run-a-job/createnewjob.png)
 
-1. Bir ad ve oluşturmakta olduğunuz işi belirlemek için bir açıklama girin.
+1. Oluşturmakta olduğunuz işi tanımlamak için bir ad ve açıklama girin.
 
-1. İşinizi uygulamak istediğiniz cihaz kümesini seçin. Cihaz seçilerek ayarladıktan sonra cihaz kümesindeki aygıtlar ile doldurmak sağ tarafı bakın. Bozuk bir cihaz kümesi seçerseniz, cihaz görüntülemek ve cihaz kümenizi bozuk bir ileti görürsünüz.
+1. İşinizin uygulanmasını istediğiniz cihaz kümesini seçin. Cihaz kümesini seçtikten sonra, cihaz kümesindeki cihazlarla sağ taraftaki doldurma görürsünüz. Bozuk bir cihaz kümesi seçerseniz, hiçbir cihaz görüntülenmez ve cihazınızın ayarlanmış olduğunu belirten bir ileti görürsünüz.
 
-1. Ardından, (bir ayar, özelliği veya komutu) tanımlamak için proje türünü seçin. Seçin **+** yanındaki iş türünü seçtiğinizde ve işlemlerinizi ekleyin.
+1. Sonra, tanımlanacak iş türünü (bir ayar, özellik veya komut) seçin. Seçilen **+** iş türünün ileri ' yi seçin ve işlemlerinizi ekleyin.
 
-    ![Proje yapılandırma](./media/howto-run-a-job/configurejob.png)
+    ![İşi yapılandırma](./media/howto-run-a-job/configurejob.png)
 
-1. Sağ tarafta, işin üzerinde çalıştırılacağı istediğiniz cihazları seçin. Üstteki onay kutusunu seçerek, tüm cihazlar cihazın tamamını kümesinde seçilir. Yanında onay kutusunu seçerek **adı**, geçerli sayfadaki tüm aygıt seçilmedi.
+1. Sağ tarafta, işi çalıştırmak istediğiniz cihazları seçin. Üstteki onay kutusunu seçerek tüm cihaz kümesi tüm cihazlar seçilir. **Ad**' ın yanındaki onay kutusunu seçerek, geçerli sayfadaki tüm cihazlar seçilir.
 
-1. Cihazlarınızı seçtikten sonra seçin **çalıştırma** veya **Kaydet**. İş üzerinde ana görünür **işleri** sayfası. Bu görünümü, çalışmakta olan iş ve tüm daha önce işleri çalıştırma geçmişini görebilirsiniz. Çalışan iş her zaman listenin en üstünde gösterilir. İstediğiniz zaman yeniden düzenlemeye devam etmek veya çalıştırmak için kaydedilen işinizi açılabilir.
+1. Cihazlarınızı seçtikten sonra **Çalıştır** veya **Kaydet**' i seçin. İş artık ana **işler** sayfanızda görüntülenir. Bu görünümde, çalışmakta olan işinizi ve daha önce çalıştırılan işlerin geçmişini görebilirsiniz. Çalışan işiniz her zaman listenin en üstünde görünür. Kaydetme veya çalışmaya devam etmek için kaydettiğiniz iş dilediğiniz zaman yeniden açılabilir.
 
     ![İşi görüntüle](./media/howto-run-a-job/viewjob.png)
 
     > [!NOTE]
-    > En çok 30 gün önceden çalıştırılmış işlerinizi geçmişini görüntüleyebilirsiniz.
+    > Daha önce çalıştırılan işlerinizin geçmişini 30 güne kadar görüntüleyebilirsiniz.
 
-1. İşinizi genel bakışını almak için listeden görüntülemek için işi seçin. Bu genel bakış, iş ayrıntılarını, cihazları ve cihaz durum değerleri içeriyor. Bu genel bakış'tan, de seçebilirsiniz **indirme işi ayrıntıları** cihazların ve durum değerleri dahil olmak üzere, iş ayrıntılarını bir .csv dosyasını indirmek için. Bu bilgiler sorun giderme için yararlı olabilir.
+1. İşiniz hakkında genel bilgi almak için listeden görüntülenecek işi seçin. Bu genel bakışta iş ayrıntıları, cihazlar ve cihaz durumu değerleri bulunur. Bu genel bakışta, iş ayrıntılarınızın bir. csv dosyasını indirmek için, cihazlar ve bunların durum değerleri de dahil olmak üzere **Iş ayrıntılarını indir** ' i de seçebilirsiniz. Bu bilgiler, sorun giderme için yararlı olabilir.
 
     ![Cihaz durumunu görüntüle](./media/howto-run-a-job/downloaddetails.png)
 
-### <a name="stop-a-running-job"></a>Bir çalışan işi Durdur
+### <a name="stop-a-running-job"></a>Çalışan bir işi durdur
 
-Bir çalışan işi durdurmak için onu seçip **Durdur** panelde. İş durumu işi durduruldu yansıtacak şekilde değişir.
+Çalışan bir işi durdurmak için, seçin ve panelde **Durdur** ' u seçin. İş durumu işi yansıtacak şekilde değişir.
 
-   ![İşi Durdur](./media/howto-run-a-job/stopjob.png)
+   ![İşi durdur](./media/howto-run-a-job/stopjob.png)
 
-### <a name="run-a-stopped-job"></a>Durdurulan bir işi çalıştırma
+### <a name="run-a-stopped-job"></a>Durdurulmuş bir işi çalıştırma
 
-Şu anda durdurulan bir işi çalıştırmak için durdurulmuş iş'i seçin. Seçin **çalıştırma** panelde. İş yansıtacak şekilde iş durumu değişiklikleri şimdi çalışıyor yeniden.
+Şu anda durdurulmuş bir işi çalıştırmak için durdurulan işi seçin. Panelde **Çalıştır** ' ı seçin. İş durumu işi yansıtacak şekilde değişir.
 
-   ![Sürdürülen işi](./media/howto-run-a-job/resumejob.png)
+   ![İş sürdürülüyor](./media/howto-run-a-job/resumejob.png)
 
-## <a name="copy-a-job"></a>Bir işi Kopyala
+## <a name="copy-a-job"></a>İşi kopyalama
 
-Oluşturduğunuz var olan bir işi kopyalamak için ana işleri sayfasında seçin ve seçin **kopyalama**. İş Yapılandırması'nın yeni bir kopyasını düzenleme için açar. Yeni iş ya da kaydedin. Seçili cihaz kümenize herhangi bir değişiklik yapılmadıysa düzenlemek, bu kopyalanan iş yansıtılan.
+Oluşturduğunuz mevcut bir işi kopyalamak için ana işler sayfasından seçin ve **Kopyala**' yı seçin. Düzenlemeniz için iş yapılandırmasının yeni bir kopyası açılır. Yeni işi kaydedebilir veya çalıştırabilirsiniz. Seçtiğiniz cihaz kümesinde herhangi bir değişiklik yapıldıysa, bunlar düzenlemeniz için bu kopyalanmış işe yansıtılır.
 
-   ![Kopyalama işi](./media/howto-run-a-job/copyjob.png)
+   ![İşi Kopyala](./media/howto-run-a-job/copyjob.png)
 
 ## <a name="view-the-job-status"></a>İş durumunu görüntüleme
 
-Bir işi oluşturulduktan sonra **durumu** sütun güncelleştirmeleriyle işin en son durum iletisi. Aşağıdaki tabloda olası durum değerleri listelenmektedir:
+Bir iş oluşturulduktan sonra **durum** sütunu, işin en son durum iletisiyle güncellenir. Aşağıdaki tabloda olası durum değerleri listelenmektedir:
 
-| Durum iletisi       | Durum anlama                                          |
+| Durum iletisi       | Durum anlamı                                          |
 | -------------------- | ------------------------------------------------------- |
-| Tamamlandı            | Tüm cihazlarda bu işlemi çalıştırıldı.              |
-| Başarısız               | Bu iş, başarısız oldu ve cihazlarda tam olarak yürütülür.  |
-| Bekleniyor              | Bu proje, henüz cihazlarda yürütme başlamış edilmemiş.         |
-| Çalışıyor              | Bu iş şu anda cihazlarda yürütüyor.             |
-| Durduruldu              | Bu işlem, bir kullanıcı tarafından el ile durduruldu.           |
+| Tamamlandı            | Bu iş tüm cihazlarda yürütüldü.              |
+| Başarısız               | Bu iş başarısız oldu ve cihazlarda tam olarak yürütülmedi.  |
+| Bekleniyor              | Bu iş henüz cihazlarda yürütülmeye başlamadı.         |
+| Çalışıyor              | Bu iş şu anda cihazlarda yürütülüyor.             |
+| Durduruldu              | Bu iş, bir kullanıcı tarafından el ile durduruldu.           |
 
-Durum iletisi işinde cihazlar için genel bir bakış tarafından izlenir. Aşağıdaki tabloda olası cihaz durum değerleri listelenmektedir:
+Durum iletisinin ardından, işteki cihazlara bir genel bakış gönderilir. Aşağıdaki tabloda olası cihaz durumu değerleri listelenmektedir:
 
-| Durum iletisi       | Durum anlama                                                     |
+| Durum iletisi       | Durum anlamı                                                     |
 | -------------------- | ------------------------------------------------------------------ |
-| Başarılı oldu            | İş üzerinde başarıyla yürütüldü. cihazların sayısı.       |
-| Başarısız               | Proje, yürütmek için başarısız olan cihazların sayısı.       |
+| Başarılı oldu            | İşin başarıyla yürütüldüğü cihazların sayısı.       |
+| Başarısız               | İşin üzerinde yürütüleyemedi cihaz sayısı.       |
 
 ### <a name="view-the-device-status"></a>Cihaz durumunu görüntüleme
 
-İş ve etkilenen tüm cihazların durumunu görüntülemek için işi seçin. Cihazların ve durum değerleri listesi dahil olmak üzere iş ayrıntılarını içeren bir .csv dosyasını indirmek için seçin **indirme iş ayrıntılarını**. Her bir cihaz adının yanında, aşağıdaki durum iletileri birine bakın:
+İşin durumunu ve etkilenen tüm cihazları görüntülemek için işi seçin. Cihazların listesi ve durum değerleri dahil olmak üzere iş ayrıntılarını içeren bir. csv dosyasını indirmek için, **iş ayrıntılarını indir**' i seçin. Her bir cihaz adının yanında aşağıdaki durum iletilerinden birini görürsünüz:
 
-| Durum iletisi       | Durum anlama                                                                |
+| Durum iletisi       | Durum anlamı                                                                |
 | -------------------- | ----------------------------------------------------------------------------- |
-| Tamamlandı            | Bu cihaz üzerinde işlemi çalıştırıldı.                                     |
-| Başarısız               | Bu cihaz üzerinde çalıştırmak işi başarısız oldu. Hata iletisi, daha fazla bilgi gösterir.  |
-| Bekleniyor              | İşi henüz bu cihaz üzerinde yürütülen edilmemiş.                                   |
+| Tamamlandı            | Bu cihazda iş yürütüldü.                                     |
+| Başarısız               | İşin bu cihazda yürütmesi başarısız oldu. Hata iletisinde daha fazla bilgi gösterilir.  |
+| Bekleniyor              | İş bu cihazda henüz yürütülmedi.                                   |
 
 > [!NOTE]
-> Cihaz silinmişse, cihaz seçemezsiniz ve cihaz kimliği ile silinmiş görüntüler
+> Bir cihaz silinmişse cihazı seçemezsiniz ve cihaz KIMLIĞIYLE silinmiş olarak görüntülenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure IOT Central, uygulamanızda işler oluşturulacağını öğrendiniz, sonraki adımlardan birkaçı şunlardır:
+Azure IoT Central uygulamanızda nasıl iş oluşturulacağını öğrendiğinize göre, bazı sonraki adımlar aşağıda verilmiştir:
 
 - [Cihaz kümelerini kullanma](howto-use-device-sets.md)
 - [Cihazlarınızı yönetme](howto-manage-devices.md)
-- [Sürümü, cihaz şablonu](howto-version-device-template.md)
+- [Cihaz şablonunuzun sürümü](howto-version-device-template.md)

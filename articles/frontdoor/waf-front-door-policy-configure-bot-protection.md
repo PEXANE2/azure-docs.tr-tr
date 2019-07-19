@@ -1,6 +1,6 @@
 ---
-title: Azure ön kapısı (Önizleme) web uygulaması güvenlik duvarı için robot korumayı yapılandırma
-description: Web uygulaması Güvenlik Duvarı (WAF) hakkında bilgi edinin.
+title: Azure ön kapısına sahip Web uygulaması güvenlik duvarı için bot korumasını yapılandırma (Önizleme)
+description: Web uygulaması güvenlik duvarını (WAF) öğrenin.
 services: frontdoor
 author: KumudD
 ms.service: frontdoor
@@ -9,33 +9,34 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/31/2019
-ms.author: tyao;kumud
-ms.openlocfilehash: af92f3b9049862fc19c69965f979b7dfe8c62526
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: kumud
+ms.reviewer: tyao
+ms.openlocfilehash: 0f36ea33badad52c55cd11491874db955df5408b
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66481632"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846351"
 ---
-# <a name="configure-bot-protection-for-web-application-firewall-preview"></a>Web uygulaması Güvenlik Duvarı (Önizleme) için robot korumayı yapılandırma
-Bu makalede bot koruma kuralı, Azure CLI, Azure PowerShell veya Azure Resource Manager şablonu kullanarak ön kapısı Azure web uygulaması Güvenlik Duvarı (WAF) yapılandırma gösterilmektedir.
+# <a name="configure-bot-protection-for-web-application-firewall-preview"></a>Web uygulaması güvenlik duvarı için bot korumasını yapılandırma (Önizleme)
+Bu makalede, Azure CLı, Azure PowerShell veya Azure Resource Manager şablonu kullanarak ön kapıya yönelik Azure Web uygulaması güvenlik duvarı 'nda (WAF) bot koruma kuralını yapılandırma işlemi gösterilmektedir.
 
-Yönetilen bir Bot koruma kural kümesi, isteklerde bilinen kötü amaçlı IP adreslerinden özel eylemleri WAF için etkinleştirilebilir. IP adreslerini akışı Microsoft tehdit Zekasından elde edilir. [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence) Microsoft tehdit bilgileri güçlendirir ve Azure Güvenlik Merkezi de dahil olmak üzere birden çok hizmet tarafından kullanılır.
+WAF 'nizin bilinen kötü amaçlı IP adreslerinden gelen isteklere özel eylemler kazanması için yönetilen bir bot koruma kuralı kümesi etkinleştirilebilir. IP adresleri Microsoft Threat Intelligence akışından kaynaklıdır. [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence) , Microsoft Threat Intelligence 'ı güçlendirir ve Azure Güvenlik Merkezi dahil birden çok hizmet tarafından kullanılır.
 
 > [!IMPORTANT]
-> Bot koruma kural kümesi şu anda genel Önizleme aşamasındadır ve önizleme bir hizmet düzeyi sözleşmesi ile sağlanır. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.  Ayrıntılar için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Bot koruma kuralı kümesi şu anda genel önizleme aşamasındadır ve bir önizleme hizmet düzeyi sözleşmesi ile sunulmaktadır. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.  Ayrıntılar için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Açıklanan yönergeleri takip ederek temel bir WAF ilkesi için ön kapı oluşturmak [WAF ilke Azure portalını kullanarak Azure ön kapısı oluşturma](waf-front-door-create-portal.md).
+[Azure Portal kullanarak Azure ön kapısına yönelik BIR WAF Ilkesi oluşturma](waf-front-door-create-portal.md)bölümünde açıklanan yönergeleri Izleyerek ön kapıya yönelik temel bir WAF ilkesi oluşturun.
 
-## <a name="enable-bot-protection-rule-set"></a>Bot koruma kural kümesini etkinleştir
+## <a name="enable-bot-protection-rule-set"></a>Bot koruma kuralı kümesini etkinleştir
 
-1. Altında önceki bölümde oluşturduğunuz temel İlkesi sayfasında **ayarları**, tıklayın **kuralları**.
-2. Ayrıntılar sayfasında altında **kuralları yönetmek** bölümünde, aşağı açılan menüden kural önünde onay kutusunu seçin **BotProtection Önizleme 0,1**ve ardından **Kaydet**yukarıda.
+1. Önceki bölümde oluşturduğunuz temel ilke sayfasında, **Ayarlar**' ın altında **kurallar**' a tıklayın.
+2. Ayrıntılar sayfasında, **Kuralları Yönet** bölümünün altında, aşağı açılan menüden **botprotection-Preview-0,1**kuralının önündeki onay kutusunu seçin ve ardından yukarıya **Kaydet** ' i seçin.
     
    ![Bot koruma kuralı](./media/waf-front-door-configure-bot-protection/botprotect2.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bilgi edinmek için nasıl [WAF izleme](waf-front-door-monitor.md).
+- [WAF](waf-front-door-monitor.md)'yi nasıl izleyeceğinizi öğrenin.

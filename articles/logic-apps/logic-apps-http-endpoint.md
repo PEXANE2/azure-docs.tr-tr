@@ -1,29 +1,29 @@
 ---
-title: Çağrı, tetikleyici veya iç içe HTTP uç noktaları - Azure Logic Apps ile iş akışları
-description: Çağrı, tetikleyici veya iş akışları için Azure Logic Apps iç içe için HTTP uç noktaları ayarlama
+title: HTTP uç noktaları ile çağrı, tetikleyici veya iç içe iş akışları-Azure Logic Apps
+description: Azure Logic Apps için iş akışlarını çağırmak, tetiklemek veya iç içe aktarmak için HTTP uç noktalarını ayarlama
 services: logic-apps
 ms.service: logic-apps
 ms.workload: integration
 author: ecfan
-ms.author: klam; LADocs
+ms.author: klam
 ms.reviewer: jehollan, klam, LADocs
 manager: carmonm
 ms.assetid: 73ba2a70-03e9-4982-bfc8-ebfaad798bc2
 ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 03/31/2017
-ms.openlocfilehash: b091fb8c6f0b2b655ce0595188c362206f79d702
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f93e90ef442740e4fb17f166023fbe3d5f0bae66
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66495048"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875947"
 ---
-# <a name="call-trigger-or-nest-workflows-with-http-endpoints-in-azure-logic-apps"></a>Çağrı, tetikleyici veya iç içe iş akışları ile Azure Logic apps'te HTTP uç noktaları
+# <a name="call-trigger-or-nest-workflows-with-http-endpoints-in-azure-logic-apps"></a>Azure Logic Apps içindeki HTTP uç noktaları ile çağrı, tetikleyici veya iç içe geçme
 
-Tetiklemek ya da URL aracılığıyla, mantıksal uygulamaları çağırma logic apps'te tetikleyici olarak yerel olarak zaman uyumlu bir HTTP uç noktalarını kullanıma sunabilirsiniz. Çağrılabilir uç noktalar desenini kullanarak logic apps iş akışları da yerleştirebilirsiniz.
+Logic Apps 'te bir URL aracılığıyla tetikleyebilmeniz veya çağrabilmeniz için mantıksal uygulamalarda Tetikleyiciler olarak zaman uyumlu HTTP uç noktalarını yerel olarak kullanıma sunabilirsiniz. Ayrıca, çağrılabilir uç noktaların bir modelini kullanarak mantıksal uygulamalarınızda iş akışlarını iç içe geçirebilirsiniz.
 
-HTTP uç noktaları oluşturmak için logic apps, gelen istekleri alabilmesini sağlamak bu Tetikleyiciler ekleyebilirsiniz:
+HTTP uç noktaları oluşturmak için, mantıksal uygulamalarınızın gelen istekleri alabilmesi için bu Tetikleyicileri ekleyebilirsiniz:
 
 * [İstek](../connectors/connectors-native-reqres.md)
 
@@ -32,22 +32,22 @@ HTTP uç noktaları oluşturmak için logic apps, gelen istekleri alabilmesini s
 * [HTTP Web kancası](../connectors/connectors-native-webhook.md)
 
    > [!NOTE]
-   > Bu örneklerde rağmen **istek** tetikleyici listelenen HTTP Tetikleyicileri dilediğinizi kullanabilirsiniz ve tüm ilkeler diğer tetikleyici türleriyle aynı şekilde geçerlidir.
+   > Bu örneklerde **istek** tetikleyicisi kullanılsa da, listelenen http tetikleyicilerinin herhangi birini kullanabilir ve diğer tüm ilkeler diğer tetikleyici türleri için de geçerlidir.
 
 ## <a name="set-up-an-http-endpoint-for-your-logic-app"></a>Mantıksal uygulamanız için bir HTTP uç noktası ayarlama
 
-Bir HTTP uç noktası oluşturmak için gelen istekleri alabilecek bir tetikleyici ekleme.
+Bir HTTP uç noktası oluşturmak için gelen istekleri alabilen bir tetikleyici ekleyin.
 
-1. [Azure portalı](https://portal.azure.com "Azure portalı") oturumunu açın. Mantıksal uygulamanıza gidin ve mantıksal Uygulama Tasarımcısı'nı açın.
+1. [Azure portalı](https://portal.azure.com "Azure portalı") oturumunu açın. Mantıksal uygulamanıza gidin ve mantıksal uygulama Tasarımcısı ' nı açın.
 
-2. Mantıksal uygulamanız gelen istekleri almaya olanak tanıyan bir tetikleyici ekleme. Örneğin, ekleme **istek** mantıksal uygulamanızın tetikleyicisi.
+2. Mantıksal uygulamanızın gelen istekleri almasına imkan tanıyan bir tetikleyici ekleyin. Örneğin, mantıksal uygulamanıza **istek** tetikleyicisini ekleyin.
 
-3.  Altında **istek gövdesi JSON şeması**, isteğe bağlı olarak bir JSON şeması almak için tetikleyici beklediğiniz Yükü (veriler) girebilirsiniz.
+3.  **Istek GÖVDESI JSON şeması**altında, isteğe bağlı olarak, tetikleyicinin almasını beklediğinizi bekleyen yük (veri) IÇIN bir JSON şeması girebilirsiniz.
 
-    Tasarımcı, mantıksal uygulamanızı kullanmak, ayrıştırma ve tetikleme, iş akışı aracılığıyla veri geçirmek için kullanabileceğiniz belirteçleri oluşturmak için bu şema kullanır. 
-    Hakkında daha fazla bilgi [JSON şemalardan oluşturulan belirteçleri](#generated-tokens).
+    Tasarımcı, mantıksal uygulamanızın iş akışınız aracılığıyla tetikleyiciden verileri tüketmek, ayrıştırmak ve geçirebilmesi için kullanabileceği belirteçler oluşturmak için bu şemayı kullanır. 
+    [JSON şemalardan oluşturulan belirteçler](#generated-tokens)hakkında daha fazla bilgi.
 
-    Bu örnekte, şema Tasarımcısı'nda gösterilen girin:
+    Bu örnekte, tasarımcıda gösterilen şemayı girin:
 
     ```json
     {
@@ -63,12 +63,12 @@ Bir HTTP uç noktası oluşturmak için gelen istekleri alabilecek bir tetikleyi
     }
     ```
 
-    ![İstek Eylem Ekle][1]
+    ![Istek eylemini ekleyin][1]
 
     > [!TIP]
     > 
-    > Gibi bir araçla gelen bir örnek JSON yükü için bir şema oluşturmak [jsonschema.net](https://jsonschema.net/), veya **istek** seçerek tetikleyici **şema oluşturmak için örnek yük kullanma**. 
-    > Örnek yükünüzü girin ve **Bitti**.
+    > [Jsonschema.net](https://jsonschema.net/)gibi bir araçtan örnek bir JSON yükü için bir şema oluşturabilir veya **şema oluşturmak Için örnek yük kullan**' ı seçerek **istek** tetikleyebilirsiniz. 
+    > Örnek yükünüzü girip **bitti**' yi seçin.
 
     Örneğin, bu örnek yük:
 
@@ -78,7 +78,7 @@ Bir HTTP uç noktası oluşturmak için gelen istekleri alabilecek bir tetikleyi
     }
     ```
 
-    Bu şema oluşturur:
+    Bu şemayı oluşturur:
 
     ```json
     {
@@ -91,86 +91,86 @@ Bir HTTP uç noktası oluşturmak için gelen istekleri alabilecek bir tetikleyi
     }
     ```
 
-4.  Mantıksal uygulamanızı kaydedin. Altında **bu URL için HTTP POST**, artık bir geri çağırma URL'si oluşturuldu, bu örnekte olduğu gibi bulmanız gerekir:
+4.  Mantıksal uygulamanızı kaydedin. **Bu URL 'ye http post**' ın altında, şu örnekte olduğu gibi oluşturulmuş bir geri çağırma URL 'si bulmanız gerekir:
 
-    ![Uç noktası için oluşturulan geri çağırma URL'si](./media/logic-apps-http-endpoint/generated-endpoint-url.png)
+    ![Uç nokta için geri çağırma URL 'SI oluşturuldu](./media/logic-apps-http-endpoint/generated-endpoint-url.png)
 
-    Bu URL'yi kimlik doğrulaması için kullanılan sorgu parametreleri bir paylaşılan erişim imzası (SAS) anahtarı içerir. 
-    Azure portalında, mantıksal Uygulama'ya genel bakış sayfasından HTTP uç nokta URL'sini de edinebilirsiniz. Altında **tetikleyici geçmişi**, tetikleyici seçin:
+    Bu URL, kimlik doğrulaması için kullanılan sorgu parametrelerinde bir paylaşılan erişim Imzası (SAS) anahtarı içerir. 
+    Ayrıca, Azure portal mantıksal uygulamanıza genel bakış üzerinden HTTP uç noktası URL 'sini de alabilirsiniz. **Tetikleyici geçmişi**altında tetikleyiciyi seçin:
 
-    ![Azure portalından Get HTTP uç nokta URL'si][2]
+    ![Azure portal HTTP uç noktası URL 'SI al][2]
 
-    Ya da bu çağrıyı yaparak URL'sini alabilirsiniz:
+    Ya da bu çağrıyı yaparak URL 'YI edinebilirsiniz:
 
     ```
     POST https://management.azure.com/{logic-app-resourceID}/triggers/{myendpointtrigger}/listCallbackURL?api-version=2016-06-01
     ```
 
-## <a name="change-the-http-method-for-your-trigger"></a>Tetikleyicinize ait HTTP yöntemini değiştirme
+## <a name="change-the-http-method-for-your-trigger"></a>Tetikleyicinizin HTTP yöntemini değiştirme
 
-Varsayılan olarak, **isteği** tetikleyici, bir HTTP POST isteği bekliyor, ancak farklı bir HTTP yöntemini kullanabilirsiniz. 
+Varsayılan olarak, **istek** TETIKLEYICISI BIR http post isteği bekler, ancak farklı bir http yöntemi de kullanabilirsiniz. 
 
 > [!NOTE]
 > Yalnızca bir yöntem türü belirtebilirsiniz.
 
-1. Üzerinde **istek** tetikleme öğesini **Gelişmiş Seçenekleri Göster**.
+1. **İstek** tetikleyicisinde **Gelişmiş seçenekleri göster**' i seçin.
 
-2. Açık **yöntemi** listesi. Bu örnekte, seçin **alma** böylece daha sonra HTTP uç noktasının URL'sini test edebilirsiniz.
+2. **Yöntem** listesini açın. Bu örnek için, HTTP uç noktanızın URL 'sini daha sonra sınayabilmeniz için **Al** ' ı seçin.
 
     > [!NOTE]
-    > Herhangi bir HTTP yöntemini seçin veya kendi mantıksal uygulama için özel bir yönteme belirtin.
+    > Başka herhangi bir HTTP yöntemini seçebilir veya kendi mantıksal uygulamanız için özel bir yöntem belirtebilirsiniz.
 
-    ![HTTP yöntemini değiştirme](./media/logic-apps-http-endpoint/change-method.png)
+    ![HTTP yöntemini değiştir](./media/logic-apps-http-endpoint/change-method.png)
 
-## <a name="accept-parameters-through-your-http-endpoint-url"></a>HTTP uç nokta URL'nizi aracılığıyla parametreleri kabul eder
+## <a name="accept-parameters-through-your-http-endpoint-url"></a>HTTP uç noktası URL 'niz aracılığıyla parametreleri kabul etme
 
-Parametreler kabul etmek için HTTP uç nokta URL'nizi istediğinizde, tetikleyici göreli yol özelleştirin.
+HTTP uç noktası URL 'nizin parametreleri kabul etmesini istediğinizde, tetikleyicinizin göreli yolunu özelleştirin.
 
-1. Üzerinde **istek** tetikleme öğesini **Gelişmiş Seçenekleri Göster**. 
+1. **İstek** tetikleyicisinde **Gelişmiş seçenekleri göster**' i seçin. 
 
-2. Altında **yöntemi**, isteğiniz kullanmak istediğiniz HTTP yöntemini belirtin. Bu örnekte, seçin **alma** HTTP uç noktasının URL'sini test edebilmeniz, henüz kaydolmadıysanız yöntemi.
+2. **Yöntemi**altında, isteğinizin kullanmasını istediğiniz http yöntemini belirtin. Bu örnek için, henüz yapmadıysanız, HTTP uç noktanızın URL 'nizi test edebilmeniz için **Get** yöntemini seçin.
 
       > [!NOTE]
-      > Tetikleyiciniz için göreli bir yol belirttiğinizde, tetikleyici için bir HTTP yöntemini de açıkça belirtmeniz gerekir.
+      > Tetikleyiciniz için göreli bir yol belirttiğinizde, Tetikleyiciniz için de açıkça bir HTTP yöntemi belirtmeniz gerekir.
 
-3. Altında **göreli yol**, URL'niz, örneğin, kabul etmelidir parametresi göreli yolunu belirtin `customers/{customerID}`.
+3. **Göreli yol**altında URL 'nizin kabul edileceği parametrenin göreli yolunu belirtin, örneğin, `customers/{customerID}`.
 
-    ![HTTP yöntemi ve parametresi için göreli yolunu belirtin](./media/logic-apps-http-endpoint/relativeurl.png)
+    ![Parametre için HTTP yöntemini ve göreli yolu belirtin](./media/logic-apps-http-endpoint/relativeurl.png)
 
-4. Parametresini kullanmak için ekleme bir **yanıt** mantıksal uygulamanız için eylem. (Tetikleyicinizin altında seçin **yeni adım** > **Eylem Ekle** > **yanıt**) 
+4. Parametresini kullanmak için, mantıksal uygulamanıza bir **Yanıt** eylemi ekleyin. (Tetikleyiciniz altında **yeni adım** > **eylem** > **yanıtı**Ekle ' yi seçin) 
 
-5. İçinde yanıtın **gövdesi**, tetikleyicinin göreli yolda belirtilen parametresi için belirteci içerir.
+5. Yanıtınızın **gövdesinde**, tetikleyicinizin göreli yolunda belirttiğiniz parametrenin belirtecini ekleyin.
 
-    Örneğin, döndürülecek `Hello {customerID}`, güncelleştirme, yanıtın **gövdesi** ile `Hello {customerID token}`. 
-    Dinamik içerik listesi görüntülenir ve Göster `customerID` seçebilmeniz için belirteç.
+    Örneğin, döndürmek `Hello {customerID}`için, yanıt **gövdesini** ile `Hello {customerID token}`güncelleştirin. 
+    Dinamik içerik listesi görünmelidir ve seçtiğiniz `customerID` belirteci gösterir.
 
-    ![Yanıt gövdesi için parametre Ekle](./media/logic-apps-http-endpoint/relativeurlresponse.png)
+    ![Yanıt gövdesine parametre Ekle](./media/logic-apps-http-endpoint/relativeurlresponse.png)
 
-    **Gövdesi** şu örnekteki gibi görünmelidir:
+    **Gövde'niz** şu örnekteki gibi görünmelidir:
 
-    ![Parametresi ile yanıt gövdesi](./media/logic-apps-http-endpoint/relative-url-with-parameter.png)
+    ![Parametreli yanıt gövdesi](./media/logic-apps-http-endpoint/relative-url-with-parameter.png)
 
 6. Mantıksal uygulamanızı kaydedin. 
 
-    HTTP uç nokta URL'nizi artık göreli yol, örneğin içerir: 
+    HTTP uç noktası URL 'niz artık göreli yolu içerir, örneğin: 
 
-    https&#58;//prod-00.southcentralus.logic.azure.com/workflows/f90cb66c52ea4e9cabe0abf4e197deff/triggers/manual/paths/invoke/customers/{customerID}...
+    https&#58;//prod-00.southcentralus.Logic.Azure.com/Workflows/f90cb66c52ea4e9cabe0abf4e197deff/Triggers/Manual/Paths/invoke/Customers/{CustomerID}...
 
-7. HTTP uç noktanızı test etmek için kopyalayın ve başka bir tarayıcı penceresine güncelleştirilmiş URL'yi yapıştırın, ancak değiştirin `{customerID}` ile `123456`, ve Enter tuşuna basın.
+7. HTTP uç noktanızı test etmek için, güncelleştirilmiş URL 'yi kopyalayıp başka bir tarayıcı penceresine yapıştırın, ve ile `{customerID}` `123456`değiştirin ve ENTER tuşuna basın.
 
-    Tarayıcınız bu metin göstermelidir: 
+    Tarayıcınız şu metni göstermelidir: 
 
     `Hello 123456`
 
 <a name="generated-tokens"></a>
 
-### <a name="tokens-generated-from-json-schemas-for-your-logic-app"></a>Mantıksal uygulamanızın JSON şemalarının oluşturulan belirteçleri
+### <a name="tokens-generated-from-json-schemas-for-your-logic-app"></a>Mantıksal uygulamanıza yönelik JSON şemalardan oluşturulan belirteçler
 
-Bir JSON şemasında verdiğiniz zaman, **istek** tetikleyici, Logic Apps Tasarımcısı'Bu şemada özellikleri için belirteçleri oluşturur. Ardından, mantıksal uygulama iş akışınızı aracılığıyla veri geçirmek için bu belirteçleri kullanabilirsiniz.
+**İstek** Tetikleyiciniz IÇIN bir JSON şeması sağladığınızda, mantıksal uygulama Tasarımcısı bu şemadaki özellikler için belirteçler oluşturur. Daha sonra bu belirteçleri, mantıksal uygulama iş akışınız aracılığıyla veri geçirmek için kullanabilirsiniz.
 
-Bu örnekte, eklerseniz `title` ve `name` özellikleri, JSON şemasında belirteçleriyle artık sonraki iş akışı adımlarda kullanmak için kullanılabilir. 
+Bu örnekte, `title` ve `name` özelliklerini JSON şemanıza eklerseniz, belirteçleri daha sonra iş akışı adımlarında kullanılmak üzere kullanılabilir. 
 
-Tam JSON şeması şu şekildedir:
+Tüm JSON şeması aşağıda verilmiştir:
 
 ```json
 {
@@ -194,24 +194,24 @@ Tam JSON şeması şu şekildedir:
 }
 ```
 
-## <a name="create-nested-workflows-for-logic-apps"></a>Logic apps için iç içe geçmiş iş akışları oluşturun
+## <a name="create-nested-workflows-for-logic-apps"></a>Mantıksal uygulamalar için iç içe iş akışları oluşturma
 
-Diğer mantıksal uygulamalar, istekleri alabilen ekleyerek mantıksal uygulamanızı iş akışları iç içe yerleştirebilirsiniz. Bu mantıksal uygulamalar'ı dahil etmek için ekleme **Azure Logic Apps - Logic Apps iş akışı seçin** tetikleyicinize eylem. Ardından, uygun logic apps'ten da seçebilirsiniz.
+İstekleri alabilen diğer mantıksal uygulamaları ekleyerek mantıksal uygulamanıza iş akışlarını iç içe yerleştirebilirsiniz. Bu mantıksal uygulamaları eklemek için, tetikleyicinizin **Azure Logic Apps bir Logic Apps iş akışı eylemi seçin** . Daha sonra uygun Logic Apps arasından seçim yapabilirsiniz.
 
-![Başka bir mantıksal uygulama ekleme](./media/logic-apps-http-endpoint/choose-logic-apps-workflow.png)
+![Başka bir mantıksal uygulama ekleyin](./media/logic-apps-http-endpoint/choose-logic-apps-workflow.png)
 
-## <a name="call-or-trigger-logic-apps-through-http-endpoints"></a>Çağrı yapma veya HTTP uç noktaları aracılığıyla mantıksal uygulamalar'ı tetikleyicisi
+## <a name="call-or-trigger-logic-apps-through-http-endpoints"></a>HTTP uç noktaları aracılığıyla mantıksal uygulamaları çağırma veya tetikleme
 
-HTTP uç noktanızı oluşturmanızın ardından mantıksal uygulamanızı tetikleyecek bir `POST` yöntemi için tam URL. Logic apps, doğrudan erişim uç noktaları için yerleşik desteği vardır.
+HTTP uç noktanızı oluşturduktan sonra, mantıksal uygulamanızı tam URL 'ye bir `POST` yöntem aracılığıyla tetikleyebilirsiniz. Logic Apps, doğrudan erişimli uç noktalar için yerleşik desteğe sahiptir.
 
 > [!NOTE] 
-> Mantıksal uygulama kod görünümü ya da mantıksal Uygulama Tasarımcısı araç çubuğunda herhangi bir zamanda bir mantıksal uygulama'el ile çalıştırmayı **çalıştırma**.
+> Mantıksal uygulamayı dilediğiniz zaman el ile çalıştırmak için, mantıksal uygulama Tasarımcısı veya mantıksal uygulama kod görünümü araç çubuğunda **Çalıştır**' ı seçin.
 
-## <a name="reference-content-from-an-incoming-request"></a>Gelen bir istek başvuru içeriği
+## <a name="reference-content-from-an-incoming-request"></a>Gelen bir istekten başvuru içeriği
 
-İçeriğin türü ise `application/json`, gelen istekte özelliklerine başvurabilirsiniz. Aksi takdirde, içeriği, diğer API'ler geçirebileceğiniz tek bir ikili birim olarak kabul edilir. Bu içerik iş akışı içinde başvurmak için bu içeriği dönüştürmeniz gerekir. Örneğin, geçirirseniz `application/xml` içeriği kullanabilirsiniz `@xpath()` bir XPath ayıklama için veya `@json()` XML, JSON değerine dönüştürmek için. Hakkında bilgi edinin [içerik türleri ile çalışmaktan](../logic-apps/logic-apps-content-type.md).
+İçeriğin türü ise `application/json`, gelen istekten özelliklere başvurabilirsiniz. Aksi takdirde, içerik diğer API 'lere geçirebilmeniz için tek bir ikili birim olarak değerlendirilir. İş akışı içindeki bu içeriğe başvurmak için bu içeriği dönüştürmeniz gerekir. Örneğin, içerik geçirirseniz `application/xml` , bir XPath ayıklama veya `@json()` XML 'i `@xpath()` JSON 'a dönüştürmek için kullanabilirsiniz. [İçerik türleriyle çalışma](../logic-apps/logic-apps-content-type.md)hakkında bilgi edinin.
 
-Gelen isteğinden çıktısını almak için kullanabileceğiniz `@triggerOutputs()` işlevi. Çıktı şu örnekteki gibi görünebilir:
+Gelen bir istekten çıktıyı almak için `@triggerOutputs()` işlevini kullanabilirsiniz. Çıktı şu örnekteki gibi görünebilir:
 
 ```json
 {
@@ -224,30 +224,30 @@ Gelen isteğinden çıktısını almak için kullanabileceğiniz `@triggerOutput
 }
 ```
 
-Erişim için `body` özelliği özellikle kullanabileceğiniz `@triggerBody()` kısayol. 
+Özellikle `body` özelliğe erişmek için `@triggerBody()` kısayolunu kullanabilirsiniz. 
 
-## <a name="respond-to-requests"></a>İsteklerini yanıtlama
+## <a name="respond-to-requests"></a>İsteklere yanıt verme
 
-Bir mantıksal uygulama, içeriği çağırana döndürerek Başlat belirli isteklerine yanıt vermek isteyebilirsiniz. Durum kodu, üst bilgi ve yanıt için gövde oluşturmak için kullanabileceğiniz **yanıt** eylem. Bu eylem yalnızca sonunda, iş akışınızı, mantıksal uygulamanızı herhangi bir yerde görünebilir.
+Çağrıyı yapana içerik döndürerek mantıksal uygulama başlatan belirli isteklere yanıt vermek isteyebilirsiniz. Yanıtınız için durum kodunu, üstbilgiyi ve gövdesini oluşturmak için, **Yanıt** eylemini kullanabilirsiniz. Bu eylem, yalnızca iş akışınızın sonunda değil, mantıksal uygulamanızda herhangi bir yerde görünebilir.
 
 > [!NOTE] 
-> Mantıksal uygulamanızı içermiyorsa bir **yanıt**, HTTP uç noktasına yanıt *hemen* ile bir **202 kabul edildi** durumu. Ayrıca, özgün istek yanıt almak yanıt için gerekli tüm adımları içinde bitmesi gereken [istek zaman aşımı sınırı](./logic-apps-limits-and-config.md) olarak iç içe geçmiş mantıksal uygulama iş akışı çağırmadığınız sürece. Bu sınırı içinde yanıt durum olursa, gelen istek zaman aşımına uğrar ve HTTP yanıtı alır **408 istemci zaman aşımı**. İç içe mantıksal uygulamalar için üst mantıksal uygulama, ne kadar zaman gerekli bağımsız olarak tamamlanana kadar yanıt beklemesi devam eder.
+> Mantıksal uygulamanız bir **Yanıt**IÇERMIYORSA, HTTP uç noktası *hemen* **202 kabul edilen** bir durumla yanıt verir. Ayrıca, yanıtı almak için özgün istek için, iş akışını iç içe bir mantıksal uygulama olarak çağırmadığınız sürece yanıt için gereken tüm adımların [istek zaman aşımı sınırı](./logic-apps-limits-and-config.md) içinde bitmesi gerekir. Bu sınırın içinde yanıt yoksa, gelen istek zaman aşımına uğrar ve HTTP yanıt **408 istemci zaman aşımını**alır. İç içe mantıksal uygulamalar için, ne kadar süre gerekli olursa olsun, ana mantıksal uygulama tamamlanana kadar bir yanıt beklemeye devam eder.
 
-### <a name="construct-the-response"></a>Yanıt oluşturun
+### <a name="construct-the-response"></a>Yanıtı oluşturun
 
-Yanıt gövdesi içinde birden fazla üst bilgi ve herhangi bir türde içerik içerebilir. Yanıtın içerik türü var. örnek yanıt olarak, üst bilgiyi belirtir `application/json`. ve gövdesinde `title` ve `name`için daha önce güncelleştirilmiş JSON şeması göre **istek** tetikleyici.
+Yanıt gövdesine birden fazla üstbilgi ve herhangi bir içerik türü dahil edebilirsiniz. Örnek yanıtta, üst bilgi yanıtın içerik türüne `application/json`sahip olduğunu belirtir. ve gövde, daha `title` önce `name` **istek** tetikleyicisi için güncelleştirilmiş JSON şemasına göre ve içerir.
 
 ![HTTP yanıt eylemi][3]
 
-Yanıt şu özelliklere sahiptir:
+Yanıtlar şu özelliklere sahiptir:
 
 | Özellik | Açıklama |
 | --- | --- |
-| statusCode |Gelen istek için yanıt için HTTP durum kodu belirtir. Bu kod, 2xx, 4xx veya 5xx ile başlayan herhangi bir geçerli durum kodu olabilir. Ancak, 3xx durum kodları izin verilmez. |
-| Üst bilgileri |Yanıta eklenecek üstbilgi herhangi bir sayıda tanımlar. |
-| Gövde |Bir dize olabilir bir gövde nesnesi, JSON nesnesi veya bir önceki adımda başvurulan bile ikili içeriği belirtir. |
+| Durum |Gelen isteğe yanıt vermek için HTTP durum kodunu belirtir. Bu kod, 2xx, 4xx veya 5xx ile başlayan geçerli bir durum kodu olabilir. Ancak, 3xx durum kodlarına izin verilmez. |
+| Bilgisinde |Yanıta dahil edilecek herhangi bir sayıda üstbilgiyi tanımlar. |
+| bölümü |Bir dize, JSON nesnesi veya hatta bir önceki adımdan başvurulan ikili içerik olabilecek bir Body nesnesini belirtir. |
 
-İşte JSON şeması artık nasıl göründüğünü **yanıt** eylem:
+**Yanıt** eylemi için şu anda JSON şeması şöyle görünür:
 
 ``` json
 "Response": {
@@ -267,42 +267,42 @@ Yanıt şu özelliklere sahiptir:
 ```
 
 > [!TIP]
-> Mantıksal Uygulama Tasarımcısı mantıksal uygulamanız için tam JSON tanımı görüntülemek için seçin **kod görünümü**.
+> Mantıksal uygulamanızın tüm JSON tanımını görüntülemek için mantıksal uygulama Tasarımcısı 'nda **kod görünümü**' ne tıklayın.
 
 ## <a name="q--a"></a>Soru - Yanıt
 
-#### <a name="q-what-about-url-security"></a>S: URL güvenlik hakkında neler diyeceksiniz?
+#### <a name="q-what-about-url-security"></a>S: URL güvenliği hakkında ne olacak?
 
-Y: Azure paylaşılan erişim imzası (SAS) kullanarak mantıksal uygulama geri çağırma URL'leri güvenli bir şekilde oluşturur. Bu imza aracılığıyla bir sorgu parametresi olarak geçirir ve mantıksal uygulamanızı tetikleyebilir önce doğrulanması gerekir. Azure eşsiz bir bileşimiyle mantıksal uygulama, tetikleyici adını ve gerçekleştirilen işlem başına gizli bir anahtar kullanarak imzayı oluşturur. Bu nedenle birisi gizli mantıksal uygulama anahtarına erişime sahip olmadığı sürece, geçerli bir imzaya oluşturulamıyor.
+Y: Azure, paylaşılan erişim Imzası (SAS) kullanarak mantıksal uygulama geri çağırma URL 'Lerini güvenli şekilde oluşturur. Bu imza bir sorgu parametresi olarak geçirilir ve mantıksal uygulamanızın tetiklenmesi için doğrulanması gerekir. Azure, mantıksal uygulama başına bir gizli anahtar birleşimi, tetikleyici adı ve gerçekleştirilen işlem ile imza oluşturur. Bu nedenle, gizli mantıksal uygulama anahtarına birisi erişemediği takdirde, geçerli bir imza üretemiyor.
 
    > [!IMPORTANT]
-   > Üretim ve güvenlik sistemleri için mantıksal uygulamanızı doğrudan tarayıcıdan çünkü çağırma karşı öneririz:
+   > Üretim ve güvenli sistemler için, mantıksal uygulamanızı doğrudan tarayıcıdan çağırmaya kesinlikle önerilir, çünkü:
    > 
-   > * Paylaşılan erişim anahtarı URL'SİNDE görünür.
-   > * Mantıksal uygulama müşteriler arasında paylaşılan etki alanları nedeniyle güvenli içerik ilkelerini yönetemez.
+   > * Paylaşılan erişim anahtarı URL 'de görüntülenir.
+   > * Mantıksal uygulama müşterileri genelinde paylaşılan etki alanları nedeniyle güvenli içerik ilkelerini yönetemezsiniz.
 
-#### <a name="q-can-i-configure-http-endpoints-further"></a>S: Daha fazla HTTP uç noktalarını yapılandırabilirim?
+#### <a name="q-can-i-configure-http-endpoints-further"></a>S: HTTP uç noktalarını daha fazla yapılandırabilir miyim?
 
-Y: Evet, HTTP uç noktaları aracılığıyla daha gelişmiş yapılandırma desteği [ **API Management**](../api-management/api-management-key-concepts.md). Bu hizmet, tutarlı bir şekilde mantıksal uygulamalar da dahil olmak üzere tüm API'leri, yönetme, özel etki alanı adlarını ayarlama, daha fazla kimlik doğrulama yöntemleri ve diğer örneğin kullanmak özelliği de sunar:
+Y: Evet, HTTP uç noktaları [**API Management**](../api-management/api-management-key-concepts.md)aracılığıyla daha gelişmiş yapılandırmayı destekler. Bu hizmet ayrıca Logic Apps, özel etki alanı adları ayarlama, daha fazla kimlik doğrulama yöntemi kullanma ve daha fazlasını içeren tüm API 'lerinizi sürekli olarak yönetmenize olanak sağlar. Örneğin:
 
-* [Değişiklik isteği yöntemi](https://docs.microsoft.com/azure/api-management/api-management-advanced-policies#SetRequestMethod)
-* [İsteğin URL kesimleri değiştirme](https://docs.microsoft.com/azure/api-management/api-management-transformation-policies#RewriteURL)
-* API Management etki alanlarınızı ayarlama [Azure portalında](https://portal.azure.com/ "Azure portalı")
-* Temel kimlik doğrulaması için denetlenecek İlkesi ayarlama
+* [İstek yöntemini değiştirme](https://docs.microsoft.com/azure/api-management/api-management-advanced-policies#SetRequestMethod)
+* [İsteğin URL segmentlerini değiştirme](https://docs.microsoft.com/azure/api-management/api-management-transformation-policies#RewriteURL)
+* [Azure portal]API Management etki alanlarınızı ayarlayın(https://portal.azure.com/ "Azure Portal")
+* Temel kimlik doğrulamasını denetlemek için ilke ayarlama
 
-#### <a name="q-what-changed-when-the-schema-migrated-from-the-december-1-2014-preview"></a>S: 1 Aralık 2014'ten Önizleme şema geçişi olduğunda ne değişti?
+#### <a name="q-what-changed-when-the-schema-migrated-from-the-december-1-2014-preview"></a>S: Şema 1 Aralık 2014 önizlemesinden geçirildiğinde ne değişti?
 
-Y: Bu değişiklikler ile ilgili bir özeti aşağıda verilmiştir:
+Y: Bu değişiklikler hakkında bir özet aşağıda verilmiştir:
 
-| 1 Aralık 2014'ten preview | 1 Haziran 2016 |
+| 1 Aralık 2014 Preview | 1 Haziran 2016 |
 | --- | --- |
-| Tıklayın **HTTP dinleyicisi** API uygulaması |Tıklayın **el ile tetikleyici** (herhangi bir API uygulaması gereklidir) |
-| HTTP dinleyicisi ayarı "*yanıt otomatik olarak gönderir*" |Ya da içeren bir **yanıt** eylem veya iş akışı tanımı içinde değil |
-| Temel veya OAuth kimlik doğrulamasını yapılandırma |API Management |
-| HTTP yöntemini yapılandırma |Altında **Gelişmiş Seçenekleri Göster**, bir HTTP yöntemini seçin |
-| Göreli yolunu Yapılandır |Altında **Gelişmiş Seçenekleri Göster**, göreli bir yol ekleyin |
-| Üzerinden gelen gövdesi başvuru `@triggerOutputs().body.Content` |Aracılığıyla başvurusu `@triggerOutputs().body` |
-| **HTTP yanıt gönderme** HTTP dinleyicisi eylemi |Tıklayın **HTTP isteğine yanıt** (herhangi bir API uygulaması gereklidir) |
+| **Http dinleyicisi** API uygulaması ' na tıklayın |**El ile tetikleme** (API uygulaması gerekmez) seçeneğine tıklayın |
+| "*Yanıtı otomatik olarak gönderir*" http dinleyicisi ayarı |Bir **Yanıt** eylemi ekleyin veya iş akışı tanımında değil |
+| Temel veya OAuth kimlik doğrulamasını yapılandırma |API Management aracılığıyla |
+| HTTP yöntemini yapılandırma |**Gelişmiş seçenekleri göster**altında bir http yöntemi seçin |
+| Göreli yolu Yapılandır |**Gelişmiş seçenekleri göster**altında göreli bir yol ekleyin |
+| Gelen gövdeye şu şekilde başvur`@triggerOutputs().body.Content` |Başvuru`@triggerOutputs().body` |
+| Http dinleyicisinde **http yanıtı gönderme** eylemi |**Http Isteğine Yanıtla** ' ya tıklayın (API uygulaması gerekmez) |
 
 ## <a name="get-help"></a>Yardım alın
 

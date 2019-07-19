@@ -3,20 +3,20 @@ title: Bulutta bir sahneyi işleme - Azure Batch
 description: Öğretici - Batch Renderin Hizmetini ve Azure Komut Satırı Arabirimini kullanarak Autodesk 3ds Max sahnesini Arnold ile işleme
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.service: batch
 ms.topic: tutorial
 ms.date: 12/11/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 5abc2e673438a1ffa22e8d010bf2ee395cd521ae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0c87a6968e5c6fd0e587c240b0a5df0a73f9909b
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66127290"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68321646"
 ---
-# <a name="tutorial-render-a-scene-with-azure-batch"></a>Öğretici: Azure Batch ile bir Sahneyi işleme 
+# <a name="tutorial-render-a-scene-with-azure-batch"></a>Öğretici: Azure Batch bir sahneyi işleme 
 
 Azure Batch, kullanım başına ödeme temelinde bulut ölçekli işleme özellikleri sağlar. Azure Batch; Autodesk Maya, 3ds Max, Arnold ve V-Ray gibi işleme uygulamalarını destekler. Bu öğreticide, Azure Komut Satırı Arabirimi kullanılarak Batch ile küçük bir sahneyi işleme adımları gösterilir. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
@@ -186,7 +186,7 @@ se=2018-11-15&sp=rw&sv=2017-04-17&ss=b&srt=co&sig=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 ## <a name="render-a-single-frame-scene"></a>Tek kareli bir sahneyi işleme
 
-### <a name="create-a-job"></a>İş oluştur
+### <a name="create-a-job"></a>Bir iş oluşturma
 
 [az batch job create](/cli/azure/batch/job#az-batch-job-create) komutunu kullanarak havuzda çalıştırılacak bir işleme işi oluşturun. Başlangıçta iş hiçbir görev içermez.
 

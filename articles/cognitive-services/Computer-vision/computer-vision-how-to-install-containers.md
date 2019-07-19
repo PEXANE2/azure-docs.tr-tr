@@ -1,5 +1,5 @@
 ---
-title: Yükleme ve kapsayıcıları - görüntü işleme çalıştırın
+title: Kapsayıcıları yüklemek ve çalıştırmak-Görüntü İşleme
 titlesuffix: Azure Cognitive Services
 description: İndirme, yükleme ve bu izlenecek yol öğreticide görüntü işleme için kapsayıcıları çalıştırmak nasıl.
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: d72b47d375b8e50cde43e263261551d3010ba013
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: efde223061a873a57595bc4a577b7de55b1d8a46
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704709"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68321458"
 ---
-# <a name="install-and-run-recognize-text-containers"></a>Yükleme ve metni tanı kapsayıcıları çalıştırma
+# <a name="install-and-run-recognize-text-containers"></a>Metin Tanıma kapsayıcıları yükleyip çalıştırma
 
 Görüntü işleme metni tanı kısmı, bir Docker kapsayıcısı da sunulur. Algılayıp farklı yüzey ve arka planlar, giriş ve posterler kartvizitler gibi çeşitli nesne görüntülerdeki yazılı metni Ayıkla verir.  
 > [!IMPORTANT]
@@ -28,13 +28,13 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Metni Tanı kapsayıcıları kullanmadan önce aşağıdaki gereksinimleri karşılaması gerekir:
+Metin Tanıma kapsayıcıları kullanmadan önce aşağıdaki önkoşulları karşılamanız gerekir:
 
 |Gerekli|Amaç|
 |--|--|
-|Docker altyapısı| Docker Altyapısı'nın kurulu ihtiyacınız bir [ana bilgisayar](#the-host-computer). Docker üzerinde Docker ortamını yapılandıran paketler sağlar [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), ve [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Docker ve kapsayıcı temelleri hakkında bilgi için bkz: [Docker'a genel bakış](https://docs.docker.com/engine/docker-overview/).<br><br> Docker, kapsayıcılar ile bağlanma ve faturalama verileri Azure'a göndermek izin verecek şekilde yapılandırılmalıdır. <br><br> **Windows üzerinde**, Docker de Linux kapsayıcıları destekler şekilde yapılandırılmalıdır.<br><br>|
-|Docker ile aşinalık | Bir temel kavramlarını Docker kayıt defterleri, havuzları, kapsayıcılar ve kapsayıcı görüntülerinin yanı sıra temel bilgi gibi olmalıdır `docker` komutları.| 
-|Azure `Cognitive Services` kaynak |Kapsayıcı kullanabilmeniz için şunlara sahip olmalısınız:<br><br>A _Bilişsel Hizmetler_ anahtar Azure kaynak ve ilişkili faturalama, fatura uç noktası URI'si. Her iki değer kaynağın genel bakış ve anahtarları sayfalarında kullanılabilir ve kapsayıcı başlatma için gereklidir. Eklemenize gerek `vision/v2.0` BILLING_ENDPOINT_URI aşağıda gösterildiği gibi uç nokta URI'si yönlendirme. <br><br>**{BILLING_KEY}** : kaynak anahtarı<br><br>**{BILLING_ENDPOINT_URI}** : uç nokta URI'si örnektir: `https://westus.api.cognitive.microsoft.com/vision/v2.0`|
+|Docker altyapısı| Bir [ana bilgisayarda](#the-host-computer)Docker altyapısının yüklü olması gerekir. Docker, [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)ve [Linux](https://docs.docker.com/engine/installation/#supported-platforms)'ta Docker ortamını yapılandıran paketler sağlar. Docker ve kapsayıcı temelleri hakkında bilgi için bkz: [Docker'a genel bakış](https://docs.docker.com/engine/docker-overview/).<br><br> Docker, kapsayıcılar ile bağlanma ve faturalama verileri Azure'a göndermek izin verecek şekilde yapılandırılmalıdır. <br><br> **Windows 'da**Docker 'ın de Linux kapsayıcılarını destekleyecek şekilde yapılandırılması gerekir.<br><br>|
+|Docker ile benzerlik | Kayıt defterleri, depolar, kapsayıcılar ve kapsayıcı görüntüleri gibi Docker kavramlarının yanı sıra temel `docker` komutlar hakkında bilgi sahibi olmanız gerekir.| 
+|Görüntü İşleme kaynağı |Kapsayıcısını kullanabilmeniz için şunları yapmanız gerekir:<br><br>Uç nokta URI 'SI olan bir Azure **görüntü işleme** kaynağı ve ilişkili API anahtarı. Her iki değer de kaynak için genel bakış ve anahtarlar sayfalarında bulunur ve kapsayıcıyı başlatmak için gereklidir.<br><br>**{API_KEY}** : **Anahtarlar** sayfasındaki kullanılabilir iki kaynak anahtardan biri<br><br>**{ENDPOINT_URI}** : **Genel bakış** sayfasında belirtilen bitiş noktası|
 
 ## <a name="request-access-to-the-private-container-registry"></a>Özel kapsayıcı kayıt defterine erişim isteği
 
@@ -44,32 +44,31 @@ Metni Tanı kapsayıcıları kullanmadan önce aşağıdaki gereksinimleri karş
 
 [!INCLUDE [Host Computer requirements](../../../includes/cognitive-services-containers-host-computer.md)]
 
-
 ### <a name="container-requirements-and-recommendations"></a>Kapsayıcı gereksinimleri ve önerileri
 
-Aşağıdaki tabloda, en düşük ve önerilen CPU Çekirdeği ve her bir metin tanıma kapsayıcısı için ayrılacak bellek açıklanmaktadır.
+Aşağıdaki tabloda, her bir Metin Tanıma kapsayıcısı için ayrılacak minimum ve önerilen CPU çekirdekleri ve bellek açıklanmaktadır.
 
-| Kapsayıcı | Minimum | Önerilen |TPS<br>(Minimum, maksimum)|
+| Kapsayıcı | Minimum | Önerilen |TPS<br>(En düşük, en yüksek)|
 |-----------|---------|-------------|--|
-|Metin tanıma|1 çekirdek, 8 GB bellek, 0,5 TPS|2 Çekirdek, 8 GB bellek, 1 TPS|0.5, 1|
+|Metin Tanıma|1 çekirdek, 8 GB bellek, 0,5 TPS|2 çekirdek, 8 GB bellek, 1 TPS|0,5, 1|
 
-* Her çekirdeğe en az 2.6 gigahertz (GHz) olması ya da daha hızlı.
-* TPS - saniye başına işlem
+* Her çekirdek en az 2,6 gigahertz (GHz) veya daha hızlı olmalıdır.
+* TPS-saniye başına işlem
 
-Çekirdek ve bellek karşılık `--cpus` ve `--memory` parçası olarak kullanılan ayarları `docker run` komutu.
+Çekirdek ve bellek, `--cpus` `docker run` komutunun bir parçası `--memory` olarak kullanılan ve ayarlarına karşılık gelir.
 
-## <a name="get-the-container-image-with-docker-pull"></a>İle kapsayıcı görüntüsünü Al `docker pull`
+## <a name="get-the-container-image-with-docker-pull"></a>Kapsayıcı görüntüsünü al`docker pull`
 
-Kapsayıcı görüntülerini metin tanımak için kullanılabilir. 
+Metin Tanıma için kapsayıcı görüntüleri kullanılabilir. 
 
 | Kapsayıcı | Havuz |
 |-----------|------------|
-|Metin tanıma | `containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest` |
+|Metin Tanıma | `containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest` |
 
-Kullanım [ `docker pull` ](https://docs.docker.com/engine/reference/commandline/pull/) komutu, kapsayıcı görüntüsü indirilemedi.
+Bir kapsayıcı görüntüsünü indirmek için [komutunukullanın.`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/)
 
 
-### <a name="docker-pull-for-the-recognize-text-container"></a>Docker isteği metni tanı kapsayıcısı için
+### <a name="docker-pull-for-the-recognize-text-container"></a>Metin Tanıma kapsayıcısı için Docker Pull
 
 ```
 docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest
@@ -77,42 +76,42 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-t
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
-## <a name="how-to-use-the-container"></a>Kapsayıcı kullanma
+## <a name="how-to-use-the-container"></a>Kapsayıcıyı kullanma
 
-Kapsayıcı açıldığında [ana bilgisayar](#the-host-computer), kapsayıcı ile çalışmak için aşağıdaki işlemi kullanın.
+Kapsayıcı [ana bilgisayardan](#the-host-computer)olduktan sonra, kapsayıcında çalışmak için aşağıdaki işlemi kullanın.
 
-1. [Kapsayıcıyı çalıştırmak](#run-the-container-with-docker-run), gerekli faturalama ayarları. Daha fazla [örnekler](computer-vision-resource-container-config.md) , `docker run` komutu kullanılabilir. 
-1. [Kapsayıcının tahmini uç nokta sorgu](#query-the-containers-prediction-endpoint). 
+1. [Kapsayıcıyı](#run-the-container-with-docker-run)gerekli faturalandırma ayarlarıyla çalıştırın. `docker run` Komuta daha fazla [örnek](computer-vision-resource-container-config.md) kullanılabilir. 
+1. [Kapsayıcının tahmin uç noktasını sorgulayın](#query-the-containers-prediction-endpoint). 
 
-## <a name="run-the-container-with-docker-run"></a>Kapsayıcı ile çalıştırma `docker run`
+## <a name="run-the-container-with-docker-run"></a>Kapsayıcıyı ile çalıştırma`docker run`
 
-Kullanım [docker run](https://docs.docker.com/engine/reference/commandline/run/) kapsayıcıyı çalıştırmak için komutu. Komutu şu parametreleri kullanır:
+Kapsayıcıyı çalıştırmak için [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) komutunu kullanın. Komut aşağıdaki parametreleri kullanır:
 
 | Yer tutucu | Değer |
 |-------------|-------|
-|{BILLING_KEY} | Bu anahtar kapsayıcısı başlatmak için kullanılır ve Azure'da kullanılabilir `Cognitive Services` anahtarlar sayfasında.  |
-|{BILLING_ENDPOINT_URI} | Fatura uç noktası URI değeri. Örnek verilmiştir: `https://westus.api.cognitive.microsoft.com/vision/v2.0`|
+|{API_KEY} | Bu anahtar, kapsayıcıyı başlatmak için kullanılır ve Azure `Cognitive Services` anahtarları sayfasında kullanılabilir.  |
+|{ENDPOINT_URI} | Faturalandırma uç noktası URI değeri. Örnek:`https://westus.api.cognitive.microsoft.com/vision/v2.0`|
 
-Eklemenize gerek `vision/v2.0` BILLING_ENDPOINT_URI aşağıda gösterildiği gibi uç nokta URI'si yönlendirme.
+Aşağıdaki BILLING_ENDPOINT_URI örneğinde gösterildiği gibi `vision/v2.0` , yönlendirmeyi uç nokta URI 'sine eklemeniz gerekir.
 
-Bu parametreleri aşağıdaki örnekte kendi değerlerinizle değiştirin `docker run` komutu.
+Aşağıdaki örnek `docker run` komutta bu parametreleri kendi değerlerinizle değiştirin.
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
 containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
 Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY}
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
 ```
 
 Bu komut:
 
-* Tanı kapsayıcı kapsayıcı görüntüsünü çalıştırır.
-* Bir CPU Çekirdeği ve 4 gigabayt (GB) bellek ayırır.
+* Kapsayıcı görüntüsünden bir tanıma kapsayıcısı çalıştırır
+* Bir CPU çekirdeği ve 4 gigabayt (GB) bellek ayırır
 * 5000 numaralı TCP bağlantı noktasını kullanıma sunar ve sahte TTY için kapsayıcı ayırır.
-* Bunu çıktıktan sonra kapsayıcı otomatik olarak kaldırır. Kapsayıcı görüntüsü ana bilgisayarda kullanılabilir durumda kalır. 
+* Kapsayıcıyı çıktıktan sonra otomatik olarak kaldırır. Kapsayıcı görüntüsü hala ana bilgisayarda kullanılabilir. 
 
-Daha fazla [örnekler](./computer-vision-resource-container-config.md#example-docker-run-commands) , `docker run` komutu kullanılabilir. 
+`docker run` Komuta daha fazla [örnek](./computer-vision-resource-container-config.md#example-docker-run-commands) kullanılabilir. 
 
 > [!IMPORTANT]
 > `Eula`, `Billing`, Ve `ApiKey` kapsayıcıyı çalıştırmak için seçenekler belirtilmelidir; Aksi takdirde, kapsayıcı başlatılamıyor.  Daha fazla bilgi için [faturalama](#billing).
@@ -120,11 +119,11 @@ Daha fazla [örnekler](./computer-vision-resource-container-config.md#example-do
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
 
-## <a name="query-the-containers-prediction-endpoint"></a>Sorgu kapsayıcının tahmini uç noktası
+## <a name="query-the-containers-prediction-endpoint"></a>Kapsayıcının tahmin uç noktasını sorgulama
 
-Kapsayıcı, REST tabanlı sorgu tahmin uç nokta API'leri sağlar. 
+Kapsayıcı, REST tabanlı sorgu tahmin uç noktası API 'Leri sağlar. 
 
-Ana bilgisayarını kullanmak `http://localhost:5000`, kapsayıcı API'leri için.
+Kapsayıcı API 'leri için `http://localhost:5000`Konağı kullanın.
 
 ### <a name="asynchronous-text-recognition"></a>Zaman uyumsuz metin tanıma
 
@@ -132,46 +131,46 @@ Kullanabileceğiniz `POST /vision/v2.0/recognizeText` ve `GET /vision/v2.0/textO
 
 ### <a name="synchronous-text-recognition"></a>Zaman uyumlu metin tanıma
 
-Kullanabileceğiniz `POST /vision/v2.0/recognizeTextDirect` görüntüdeki basılı metin eş zamanlı olarak tanıyacak şekilde işlemi. Bu işlem zaman uyumlu olduğundan, bu işlem için istek gövdesi için aynıdır `POST /vision/v2.0/recognizeText` işlemi, ancak yanıt gövdesi için bu işlem tarafından döndürülen aynı `GET /vision/v2.0/textOperations/*{id}*` işlemi.
+Kullanabileceğiniz `POST /vision/v2.0/recognizeTextDirect` görüntüdeki basılı metin eş zamanlı olarak tanıyacak şekilde işlemi. Bu işlem zaman uyumlu olduğundan, bu işlem için istek gövdesi `POST /vision/v2.0/recognizeText` işlemle aynıdır, ancak bu işlemin yanıt gövdesi `GET /vision/v2.0/textOperations/*{id}*` işlem tarafından döndürülen ile aynıdır.
 
 <!--  ## Validate container is running -->
 
 [!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
 
-## <a name="stop-the-container"></a>Kapsayıcı Durdur
+## <a name="stop-the-container"></a>Kapsayıcıyı durdur
 
 [!INCLUDE [How to stop the container](../../../includes/cognitive-services-containers-stop.md)]
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-Kapsayıcı içeren bir çıktı çalıştırırsanız [bağlama](./computer-vision-resource-container-config.md#mount-settings) ve günlüğe kaydetme etkin, kapsayıcı başlatma veya kapsayıcı çalıştırma sırasında gerçekleşen sorunları gidermek yararlı olan günlük dosyalarını oluşturur. 
+Kapsayıcıyı bir çıkış [bağlaması](./computer-vision-resource-container-config.md#mount-settings) ve günlüğü etkin olarak çalıştırırsanız kapsayıcı, kapsayıcıyı başlatırken veya çalıştırırken oluşan sorunları gidermek için yararlı olan günlük dosyaları oluşturur. 
 
 
 ## <a name="billing"></a>Faturalandırma
 
-Azure için fatura, kullanarak metni tanı kapsayıcıları Gönder bir _metni tanı_ Azure hesabınız kaynaktaki. 
+Metin Tanıma kapsayıcıları Azure hesabınızdaki bir _metin tanıma_ kaynak kullanarak faturalandırma bilgilerini Azure 'a gönderir. 
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 Bu seçenekler hakkında daha fazla bilgi için bkz. [kapsayıcıları yapılandırma](./computer-vision-resource-container-config.md).
 
-<!--blogs/samples/video coures -->
+<!--blogs/samples/video course -->
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
 ## <a name="summary"></a>Özet
 
-Bu makalede, kavramlar ve indirme, yükleme ve çalışan metni tanı kapsayıcılar için iş akışı öğrendiniz. Özet:
+Bu makalede, Metin Tanıma kapsayıcıları indirmek, yüklemek ve çalıştırmak için kavramları ve iş akışını öğrendiniz. Özet:
 
-* Metin sağlayan bir Linux kapsayıcı tanımak için Docker, metin tanıma şifrelenmiş.
+* Metin Tanıma, Docker için bir Linux kapsayıcısı sağlar ve Kapsüllenen metni tanır.
 * Kapsayıcı görüntülerini azure'da Microsoft kapsayıcı kayıt defteri (MCR) alanından indirilir.
 * Docker kapsayıcı görüntüleri çalıştırın.
-* Ana kapsayıcısının URI belirterek metni tanı kapsayıcılarında işlemleri çağırmak için REST API veya SDK'sını kullanabilirsiniz.
+* Kapsayıcının ana bilgisayar URI 'sini belirterek Metin Tanıma kapsayıcılarındaki işlemleri çağırmak için REST API veya SDK kullanabilirsiniz.
 * Bir kapsayıcı örneği oluşturulurken, fatura bilgilerini belirtmeniz gerekir.
 
 > [!IMPORTANT]
-> Bilişsel hizmetler kapsayıcıları, kullanım ölçümü için Azure'a bağlanmadan çalıştırmak için lisanslanmaz. Müşteriler, her zaman faturalandırma bilgileri ölçüm hizmeti ile iletişim kurmak kapsayıcıları etkinleştirmeniz gerekiyor. Bilişsel hizmetler kapsayıcılar, Microsoft müşteri verilerini (örneğin, görüntü veya metin analiz edilen) göndermeyin.
+> Bilişsel hizmetler kapsayıcıları, kullanım ölçümü için Azure'a bağlanmadan çalıştırmak için lisanslanmaz. Müşteriler, her zaman faturalandırma bilgileri ölçüm hizmeti ile iletişim kurmak kapsayıcıları etkinleştirmeniz gerekiyor. Bilişsel hizmetler kapsayıcıları, müşteri verilerini (örneğin, çözümlenmekte olan resim veya metin) Microsoft 'a göndermez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -179,4 +178,4 @@ Bu makalede, kavramlar ve indirme, yükleme ve çalışan metni tanı kapsayıc�
 * Gözden geçirme [görüntü işleme genel bakış](Home.md) yazdırılan ve el yazısı metinleri tanıma hakkında daha fazla bilgi edinmek için  
 * Başvurmak [görüntü işleme API'si](//westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) kapsayıcı tarafından desteklenen yöntemleri hakkında ayrıntılar için.
 * Başvurmak [sık sorulan sorular (SSS)](FAQ.md) görüntü işleme işlevselliği ile ilgili sorunları gidermek için.
-* Daha fazla kullanmanız [Bilişsel Hizmetleri kapsayıcıları](../cognitive-services-container-support.md)
+* Daha fazla bilişsel [Hizmetler kapsayıcısı](../cognitive-services-container-support.md) kullanın

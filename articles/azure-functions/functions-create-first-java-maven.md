@@ -13,16 +13,16 @@ ms.date: 08/10/2018
 ms.author: routlaw
 ms.reviewer: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: fcbf181601230493dc52bde06e4f35db062f9a32
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 20327e64080182518fd28b1d367ffe37be5ce9a4
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807181"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323960"
 ---
 # <a name="create-your-first-function-with-java-and-maven"></a>Java ve Maven ile ilk işlevinizi oluşturma
 
-Bu makalede, derleme ve Azure işlevleri için Java işlevi yayımlamak için Maven komut satırı aracını kullanarak aracılığıyla size yol gösterir. İşiniz bittiğinde, işlev kodunuzun çalıştığı [tüketim planı](functions-scale.md#consumption-plan) azure'da ve bir HTTP isteği kullanılarak tetiklenebilir.
+Bu makale, Azure Işlevleri için bir Java işlevi derlemek ve yayımlamak üzere Maven komut satırı aracını kullanarak size rehberlik eder. İşiniz bittiğinde, işlev kodunuz Azure 'daki [Tüketim planı](functions-scale.md#consumption-plan) üzerinde çalışır ve bir http isteği kullanılarak tetiklenebilir.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -30,10 +30,10 @@ Bu makalede, derleme ve Azure işlevleri için Java işlevi yayımlamak için Ma
 
 Java kullanarak işlevleri geliştirmek için aşağıdakilerin yüklü olması gerekir:
 
-- [Java Developer Kit](https://aka.ms/azure-jdks), sürüm 8
-- [Apache Maven](https://maven.apache.org), sürüm 3.0 veya üzeri
+- [Java geliştirici seti](https://aka.ms/azure-jdks), sürüm 8
+- [Apache Maven](https://maven.apache.org), sürüm 3,0 veya üzeri
 - [Azure CLI](https://docs.microsoft.com/cli/azure)
-- [Azure işlevleri temel araçları](./functions-run-local.md#v2) 2.6.666 sürümü veya üzeri
+- [Azure Functions Core Tools](./functions-run-local.md#v2) sürüm 2.6.666 veya üzeri
 
 > [!IMPORTANT]
 > Bu hızlı başlangıcın tamamlanabilmesi için JAVA_HOME ortam değişkeni JDK’nin yükleme konumu olarak ayarlanmalıdır.
@@ -51,7 +51,7 @@ mvn archetype:generate \
 ```
 
 > [!NOTE]
-> Komutu çalıştırmadaki sorunları yaşıyorsanız, ne göz atın `maven-archetype-plugin` sürümü kullanılır. Boş bir dizin yok ile'komutu çalıştırdığınızdan `.pom` , onu uygulanmaya çalışılıyor, eski sürümden bir eklentiyi `~/.m2/repository/org/apache/maven/plugins/maven-archetype-plugin` Maven eski bir sürümden yükselttiyseniz. Bu durumda, silmeyi deneyin `maven-archetype-plugin` dizin ve komutu yeniden çalıştırılıyor.
+> Komutu çalıştırmaya ilişkin sorunlarla karşılaşıyorsanız, hangi `maven-archetype-plugin` sürümün kullanıldığını göz atın. Komutunu dosyası olmayan `.pom` boş bir dizinde çalıştırdığınız için, Maven 'nizi eski bir sürümden yükselttiyseniz eski `~/.m2/repository/org/apache/maven/plugins/maven-archetype-plugin` sürümünün bir eklentisini kullanmaya çalışıyor olabilir. Bu durumda, `maven-archetype-plugin` dizini silmeyi ve komutu yeniden çalıştırmayı deneyin.
 
 ### <a name="windows"></a>Windows
 
@@ -82,7 +82,7 @@ Define value for property 'resourceGroup' java-functions-group: :
 Confirm properties configuration: Y
 ```
 
-Maven, şu örnekte _artifactId_ adlı yeni bir klasörde proje dosyalarını oluşturur: `fabrikam-functions`. Projede oluşturulan kodu çalıştırmak için hazır bir [HTTP ile tetiklenen](/azure/azure-functions/functions-bindings-http-webhook) isteğin gövdesini yankılayan işlevi. Değiştirin *src/main/java/com/fabrikam/functions/Function.java* aşağıdaki kod ile: 
+Maven, şu örnekte _artifactId_ adlı yeni bir klasörde proje dosyalarını oluşturur: `fabrikam-functions`. Projede oluşturulan kodu çalıştırmaya hazırlanma, isteğin gövdesini yansıtan bir [http tetiklenen](/azure/azure-functions/functions-bindings-http-webhook) işlevdir. *Src/Main/Java/com/fabrikam/Functions/function. Java* ' yı şu kodla değiştirin: 
 
 ```java
 package com.fabrikam.functions;
@@ -117,7 +117,7 @@ public class Function {
 
 ```
 
-## <a name="enable-extension-bundles"></a>Uzantı paketleri etkinleştir
+## <a name="enable-extension-bundles"></a>Uzantı paketlerini etkinleştir
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
@@ -125,7 +125,7 @@ public class Function {
 
 Yeni oluşturulan proje klasörünün dizinine geçerek Maven ile işlevi derleyin ve çalıştırın:
 
-```
+```CMD
 cd fabrikam-function
 mvn clean package 
 mvn azure-functions:run
@@ -147,7 +147,7 @@ Http Functions:
 
 Yeni bir terminal penceresinde curl kullanarak komut satırından işlevi tetikleyin:
 
-```
+```CMD
 curl -w "\n" http://localhost:7071/api/hello -d LocalFunction
 ```
 
@@ -159,18 +159,18 @@ Hello LocalFunction!
 
 ## <a name="deploy-the-function-to-azure"></a>İşlevi Azure’a dağıtma
 
-Azure İşlevleri’ne dağıtım işlemi, Azure CLI’dan hesap kimlik bilgilerini kullanır. [Azure CLI ile oturum](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) devam etmeden önce.
+Azure İşlevleri’ne dağıtım işlemi, Azure CLI’dan hesap kimlik bilgilerini kullanır. Devam etmeden önce [Azure CLI Ile oturum açın](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) .
 
 ```azurecli
 az login
 ```
 
-`azure-functions:deploy` Maven hedefini kullanarak kodunuzu yeni bir İşlev uygulamasına dağıtın. Bunu gerçekleştiren bir [dağıtma Zip paketini çalıştırın](functions-deployment-technologies.md#zip-deploy) modu etkin.
+`azure-functions:deploy` Maven hedefini kullanarak kodunuzu yeni bir İşlev uygulamasına dağıtın. Bu [, paket modundan Çalıştır](functions-deployment-technologies.md#zip-deploy) özelliği etkinken bir ZIP dağıtımı gerçekleştirir.
 
 > [!NOTE]
-> İşlev uygulamanızı dağıtmak için Visual Studio Code kullandığınızda unutmayın olmayan ücretsiz bir abonelik seçin veya bir hata alırsınız. IDE'nin sol tarafında aboneliğinizi izleyebilirsiniz.
+> Işlev uygulamanızı dağıtmak için Visual Studio Code kullandığınızda, ücretsiz olmayan bir abonelik seçin ya da bir hata alırsınız. Aboneliğinizi IDE 'nin sol tarafında izleyebilirsiniz.
 
-```
+```azurecli
 mvn azure-functions:deploy
 ```
 
@@ -187,9 +187,9 @@ Dağıtım tamamlandığında, Azure işlev uygulamanıza erişmek için kullana
 Azure’da çalışan işlev uygulamasını `cURL` kullanarak test edin. Önceki adımdan kendi işlev uygulamanız için dağıtılan URL ile eşleşmek üzere aşağıdaki örnekten URL’yi değiştirmeniz gerekir.
 
 > [!NOTE]
-> Ayarladığınızdan emin olun **erişim hakları** için `Anonymous`. Varsayılan düzeyini seçtiğinizde `Function`, sunmak için gerekli [işlev anahtarı](../azure-functions/functions-bindings-http-webhook.md#authorization-keys) işlevi uç noktanızı erişmek için istek.
+> **Erişim haklarını** `Anonymous`' a ayarladığınızdan emin olun. Varsayılan düzeyini `Function`seçtiğinizde, işlev uç noktanıza erişmek için isteklerde [işlev anahtarı](../azure-functions/functions-bindings-http-webhook.md#authorization-keys) sunmak gerekir.
 
-```
+```azurecli
 curl -w "\n" https://fabrikam-function-20170920120101928.azurewebsites.net/api/hello -d AzureFunctions
 ```
 
@@ -211,7 +211,7 @@ return request.createResponse(200, "Hello, " + name);
 return request.createResponse(200, "Hi, " + name);
 ```
 
-Değişiklikleri kaydedin. Temiz çalışma mvn paket ve çalıştırarak yeniden dağıtma `azure-functions:deploy` terminalden önceki gibi. İşlev uygulaması güncelleştirilir ve bu isteğin:
+Değişiklikleri kaydedin. Daha önce olduğu gibi terminalden çalıştırarak `azure-functions:deploy` MVN Clean paketini çalıştırın ve yeniden dağıtın. İşlev uygulaması güncelleştirilir ve bu isteğin:
 
 ```bash
 curl -w '\n' -d AzureFunctionsTest https://fabrikam-functions-20170920120101928.azurewebsites.net/api/hello

@@ -1,9 +1,9 @@
 ---
-title: Azure Batch havuz silme başlangıç olayı | Microsoft Docs
-description: Başvuru için Batch havuz silme başlangıç olayı.
+title: Azure Batch havuzu silme başlangıç olayı | Microsoft Docs
+description: Batch havuzu silme başlangıç olayı başvurusu.
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.assetid: ''
 ms.service: batch
 ms.devlang: multiple
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: lahugh
-ms.openlocfilehash: 2352971af3844b56f93c16ebaf6cb23bd5fd8a5a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 65d20f2194b2bf83ecf32e19c1ab5b0f7bc7a004
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60774548"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323207"
 ---
 # <a name="pool-delete-start-event"></a>Havuz silme başlangıç olayı
 
- Havuz silme işlemi başlatıldığında bu olay yayılır. Havuz silme zaman uyumsuz bir olay olduğundan, silme işlemi tamamlandıktan sonra derleyicisindeki bir havuz silme tamamlama olayı bekleyebilirsiniz.
+ Bu olay, bir havuz silme işlemi başladığında yayınlanır. Havuz silme zaman uyumsuz bir olay olduğundan, silme işlemi tamamlandıktan sonra bir havuz silme tamamlandı olayının yayınlandığını bekleyebilir.
 
- Aşağıdaki örnek, bir havuz silme başlangıç olayı gövdesi gösterir.
+ Aşağıdaki örnekte, bir havuz silme başlangıç olayının gövdesi gösterilmektedir.
 
 ```
 {
@@ -31,6 +31,6 @@ ms.locfileid: "60774548"
 }
 ```
 
-|Öğe|Tür|Notlar|
+|Öğe|Type|Notlar|
 |-------------|----------|-----------|
-|id|String|Havuz kimliği.|
+|id|Dize|Havuzun kimliği.|

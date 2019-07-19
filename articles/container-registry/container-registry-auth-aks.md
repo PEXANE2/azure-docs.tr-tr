@@ -1,32 +1,33 @@
 ---
-title: Azure Container Registry'den Azure Kubernetes hizmeti ile kimlik doğrulaması
-description: Özel kapsayıcı kayıt defterinizde görüntüleri için Azure Kubernetes hizmetindeki bir Azure Active Directory Hizmet sorumlusu kullanarak erişmeyi öğrenin.
+title: Azure Kubernetes hizmetinden Azure Container Registry kimlik doğrulama
+description: Azure Active Directory hizmet sorumlusu kullanarak Azure Kubernetes hizmetinden özel kapsayıcı kayıt defterinizde görüntülere erişim sağlamayı öğrenin.
 services: container-service
 author: dlepow
+manager: gwallace
 ms.service: container-service
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: danlep
-ms.openlocfilehash: a541af77daf4136c0056cf9919d69c538d1dc5b6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9690f900b6fe8d81fbebc3fcf5b7022b12bc3b96
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754467"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310254"
 ---
-# <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Azure Container Registry'den Azure Kubernetes hizmeti ile kimlik doğrulaması
+# <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Azure Kubernetes hizmetinden Azure Container Registry kimlik doğrulama
 
-Azure Kubernetes Service (AKS) ile Azure Container Registry (ACR) kullanırken, bir kimlik doğrulama mekanizması kurulması gerekir. Bu makalede, bu iki Azure Hizmetleri arasındaki kimlik doğrulaması için önerilen yapılandırmaları açıklanmaktadır.
+Azure Kubernetes Service (AKS) ile Azure Container Registry (ACR) kullanırken, bir kimlik doğrulama mekanizmasının kurulması gerekir. Bu makalede, bu iki Azure hizmeti arasında kimlik doğrulaması için önerilen yapılandırmaların ayrıntıları yer aldığı açıklanır.
 
-Yalnızca bu kimlik doğrulama yöntemlerini birini yapılandırmanız gerekir. En yaygın bir yaklaşım [AKS hizmet sorumlusu kullanılarak erişim](#grant-aks-access-to-acr). Belirli gereksinimleriniz varsa, isteğe bağlı olarak yapabilecekleriniz [Kubernetes gizli dizileri kullanarak erişim izni](#access-with-kubernetes-secret).
+Yalnızca bu kimlik doğrulama yöntemlerinden birini yapılandırmanız yeterlidir. En yaygın yaklaşım, [AKS hizmet sorumlusunu kullanarak erişim verkullanmaktır](#grant-aks-access-to-acr). Belirli gereksinimleriniz varsa, isteğe bağlı olarak [Kubernetes gizli dizileri kullanarak erişim izni](#access-with-kubernetes-secret)verebilirsiniz.
 
-Bu makalede, bir AKS kümesi oluşturduğunuz ve kümeyle erişebilir varsayılır `kubectl` komut satırı istemcisi.
+Bu makalede, zaten bir aks kümesi oluşturduğunuz ve kümeye `kubectl` komut satırı istemcisiyle erişebildiğiniz varsayılmaktadır.
 
-## <a name="grant-aks-access-to-acr"></a>ACR verme AKS erişimi
+## <a name="grant-aks-access-to-acr"></a>ACR 'ye AKS erişimi verme
 
-Bir AKS kümesi oluşturduğunuzda, Azure da bir hizmet sorumlusu diğer Azure kaynakları ile küme çalışabilirlik desteklemek için oluşturur. Bu otomatik olarak oluşturulan hizmet sorumlusu, bir ACR kayıt defteri ile kimlik doğrulaması için kullanabilirsiniz. Bunu yapmak için Azure AD'yi oluşturmanız gerekir [rol ataması](../role-based-access-control/overview.md#role-assignments) , kapsayıcı kayıt defterine kümenin hizmet sorumlusu erişimi verir.
+Bir AKS kümesi oluşturduğunuzda, Azure aynı zamanda diğer Azure kaynaklarıyla küme çalışabilirliği desteklemek için bir hizmet sorumlusu oluşturur. Bir ACR kayıt defteri ile kimlik doğrulaması için otomatik olarak oluşturulan bu hizmet sorumlusunu kullanabilirsiniz. Bunu yapmak için, kümenin hizmet sorumlusu kapsayıcısını kapsayıcı kayıt defterine veren bir Azure AD [rol ataması](../role-based-access-control/overview.md#role-assignments) oluşturmanız gerekir.
 
-Azure container registry AKS tarafından oluşturulan hizmet sorumlusu çekme erişimi vermek için aşağıdaki betiği kullanın. Değiştirme `AKS_*` ve `ACR_*` betiği çalıştırmadan önce ortam değişkenleri.
+Azure Container Registry 'ye yönelik AKS tarafından oluşturulan hizmet sorumlusu çekme erişimine izin vermek için aşağıdaki betiği kullanın. Betiği çalıştırmadan önce `ACR_*` ortamınızın vedeğişkenlerinideğiştirin.`AKS_*`
 
 ```bash
 #!/bin/bash
@@ -46,11 +47,11 @@ ACR_ID=$(az acr show --name $ACR_NAME --resource-group $ACR_RESOURCE_GROUP --que
 az role assignment create --assignee $CLIENT_ID --role acrpull --scope $ACR_ID
 ```
 
-## <a name="access-with-kubernetes-secret"></a>Kubernetes gizli ile erişim
+## <a name="access-with-kubernetes-secret"></a>Kubernetes gizli anahtarı ile erişim
 
-Bazı durumlarda, ACR erişim verme otomatik olarak oluşturulan AKS hizmet sorumlusuna gerekli rol atamak mümkün olmayabilir. Örneğin, kuruluşunuzun güvenlik modeli nedeniyle, yeterli izinlere AKS tarafından oluşturulan hizmet sorumlusuna bir rol atamak için Azure Active Directory kiracınızdaki olmayabilir. Bir hizmet sorumlusuna bir rol atayarak yazma izni Azure AD kiracınız için Azure AD hesabınızın gerektirir. İzni yoksa, yeni bir hizmet sorumlusu oluşturun, ardından Kubernetes görüntü çekme gizli kullanarak kapsayıcı kayıt defterine erişim izni.
+Bazı örneklerde, ACR 'ye erişim izni veren otomatik oluşturulan AKS hizmet sorumlusuna gerekli rolü atamayamayabilir. Örneğin, kuruluşunuzun güvenlik modeli nedeniyle, AKS tarafından oluşturulan hizmet sorumlusuna bir rol atamak için Azure Active Directory kiracınızda yeterli izinlere sahip olmayabilirsiniz. Bir hizmet sorumlusuna rol atamak için Azure AD hesabınızın Azure AD kiracınızda yazma izni olması gerekir. İzniniz yoksa, yeni bir hizmet sorumlusu oluşturabilir ve ardından bir Kubernetes görüntü çekme gizli anahtarı kullanarak kapsayıcı kayıt defterine erişim izni verebilirsiniz.
 
-(Kubernetes görüntü çekme gizli için kimlik bilgilerini kullanacaksınız) yeni bir hizmet sorumlusu oluşturmak için aşağıdaki betiği kullanın. Değiştirme `ACR_NAME` betiği çalıştırmadan önce ortamınız için değişken.
+Yeni bir hizmet sorumlusu oluşturmak için aşağıdaki betiği kullanın (Kubernetes görüntü çekme sırrı için kimlik bilgilerini kullanacaksınız). Betiği çalıştırmadan önce ortamınızın değişkeninideğiştirin.`ACR_NAME`
 
 ```bash
 #!/bin/bash
@@ -73,15 +74,15 @@ echo "Service principal ID: $CLIENT_ID"
 echo "Service principal password: $SP_PASSWD"
 ```
 
-İçinde bir Kubernetes hizmet sorumlusunun kimlik bilgileri artık depolayabilirsiniz [görüntü çekme gizli][image-pull-secret], AKS kümenizin kapsayıcı çalıştırırken başvuran.
+Artık hizmet sorumlusunun kimlik bilgilerini bir Kubernetes [resim çekme gizli][image-pull-secret]dizisi içinde depolayacaksınız. Bu, kapsayıcıları çalıştırırken aks kümenizin başvurtukları olabilir.
 
-Aşağıdaki **kubectl** Kubernetes gizli dizi oluşturmak için komutu. Değiştirin `<acr-login-server>` (biçim "acrname.azurecr.io" olduğu) bir Azure kapsayıcı kayıt defterinizin tam ada sahip. Değiştirin `<service-principal-ID>` ve `<service-principal-password>` önceki betiği çalıştırarak aldığınız değerlerle. Değiştirin `<email-address>` herhangi bir iyi biçimlendirilmiş bir e-posta adresine sahip.
+Kubernetes gizli anahtarını oluşturmak için aşağıdaki **kubectl** komutunu kullanın. Azure `<acr-login-server>` Container Registry 'nizin tam adıyla değiştirin ("acrname.azurecr.io" biçimindedir). `<service-principal-ID>` Ve`<service-principal-password>` değerlerini, önceki betiği çalıştırarak elde ettiğiniz değerlerle değiştirin. İyi `<email-address>` biçimlendirilmiş bir e-posta adresiyle değiştirin.
 
 ```bash
 kubectl create secret docker-registry acr-auth --docker-server <acr-login-server> --docker-username <service-principal-ID> --docker-password <service-principal-password> --docker-email <email-address>
 ```
 
-Adını belirterek Kubernetes gizli pod dağıtımlarda artık kullanabilirsiniz (Bu durumda, "acr-auth") içinde `imagePullSecrets` parametresi:
+Artık `imagePullSecrets` parametre içindeki adı (Bu örnekte "ACR-Auth") belirterek Pod dağıtımlarında Kubernetes gizliliğini kullanabilirsiniz:
 
 ```yaml
 apiVersion: apps/v1beta1

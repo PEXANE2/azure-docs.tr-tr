@@ -1,6 +1,6 @@
 ---
-title: 'Azure Durum İzleyicisi v2 API Başvurusu: İzleme devre dışı bırakma | Microsoft Docs'
-description: Durum İzleyicisi'ni v2 API'si başvurusu. Disable-ApplicationInsightsMonitoring. Web sitesi yeniden dağıtmaya gerek kalmadan Web sitesi performansını izleyin. ASP.NET web uygulamaları ile çalışır, şirket içi Vm'leri içinde veya azure'da barındırılan.
+title: 'Azure Durum İzleyicisi v2 API başvurusu: İzlemeyi devre dışı bırak | Microsoft Docs'
+description: Durum İzleyicisi v2 API başvurusu. Disable-ApplicationInsightsMonitoring. Web sitesini yeniden dağıtmaya gerek kalmadan Web sitesi performansını izleyin. Şirket içinde, VM 'lerde veya Azure 'da barındırılan ASP.NET Web Apps ile birlikte kullanılır.
 services: application-insights
 documentationcenter: .net
 author: MS-TimothyMothra
@@ -12,29 +12,24 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 98171692284f5f28fb189e2658d207fb80d428ba
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 368365251ec61464869c6120ded2ec2237acffea
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807138"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326410"
 ---
-# <a name="status-monitor-v2-api-disable-applicationinsightsmonitoring-v040-alpha"></a>Durum İzleyicisi'ni v2 API'si: Disable-ApplicationInsightsMonitoring (v0.4.0-alpha)
+# <a name="status-monitor-v2-api-disable-applicationinsightsmonitoring"></a>Durum İzleyicisi v2 API 'SI: Disable-ApplicationInsightsMonitoring
 
-Bu makalede bir üyesi olan bir cmdlet [Az.ApplicationMonitor PowerShell Modülü](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
-
-> [!IMPORTANT]
-> Durum İzleyicisi'ni v2 şu anda genel Önizleme aşamasındadır.
-> Bu önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanmaktadır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor ve bazıları kısıtlı yeteneklere sahip.
-> Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Bu makalede, [az. ApplicationMonitor PowerShell modülünün](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)üyesi olan bir cmdlet açıklanmaktadır.
 
 ## <a name="description"></a>Açıklama
 
 Hedef bilgisayarda izlemeyi devre dışı bırakır.
-Bu cmdlet IIS applicationHost.config düzenlemeleri kaldırır ve kayıt defteri anahtarları kaldırın.
+Bu cmdlet, IIS applicationHost. config ' deki düzenlemeleri kaldırır ve kayıt defteri anahtarlarını kaldırır.
 
 > [!IMPORTANT] 
-> Bu cmdlet, yönetici izinlerine sahip bir PowerShell oturumu gerektirir.
+> Bu cmdlet yönetici izinlerine sahip bir PowerShell oturumu gerektirir.
 
 ## <a name="examples"></a>Örnekler
 
@@ -44,13 +39,13 @@ PS C:\> Disable-ApplicationInsightsMonitoring
 
 ## <a name="parameters"></a>Parametreler 
 
-### <a name="-verbose"></a>-Verbose
-**Ortak parametresi.** Ayrıntılı günlükleri görüntülemek için bu anahtarı kullanın.
+### <a name="-verbose"></a>-Ayrıntılı
+**Ortak parametre.** Ayrıntılı günlükleri göstermek için bu anahtarı kullanın.
 
 ## <a name="output"></a>Output
 
 
-#### <a name="example-output-from-successfully-disabling-monitoring"></a>Örnek çıktı öğesinden başarıyla izlemeyi devre dışı bırakma
+#### <a name="example-output-from-successfully-disabling-monitoring"></a>İzlemeyi başarıyla devre dışı bırakarak oluşan örnek çıkış
 
 ```
 Initiating Disable Process
@@ -77,4 +72,4 @@ Successfully disabled Application Insights Status Monitor
 ## <a name="next-steps"></a>Sonraki adımlar
 
  Durum İzleyicisi v2 ile daha fazlasını yapın:
- - Kılavuzunu kullanın [sorun giderme](status-monitor-v2-troubleshoot.md) Durum İzleyicisi v2.
+ - Durum İzleyicisi v2 [sorunlarını gidermek](status-monitor-v2-troubleshoot.md) için kılavuzumuzu kullanın.

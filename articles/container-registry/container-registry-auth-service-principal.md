@@ -1,56 +1,57 @@
 ---
-title: Bir hizmet sorumlusu ile Azure Container Registry kimlik doğrulaması
-description: Bir Azure Active Directory Hizmet sorumlusu kullanarak özel kapsayıcı kayıt defterinizde görüntülerine erişim sağlar.
+title: Hizmet sorumlusu ile kimlik doğrulaması Azure Container Registry
+description: Azure Active Directory hizmet sorumlusu kullanarak özel kapsayıcı kayıt defterinizde görüntülere erişim sağlayın.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: danlep
-ms.openlocfilehash: 5d8904b5906adbdab68989b3a5cf9c3975c23533
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 97c45a009b155eea7bc61a9dd337090b9e3c1b42
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61347092"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68309954"
 ---
-# <a name="azure-container-registry-authentication-with-service-principals"></a>Azure Container Registry kimlik doğrulama ile hizmet sorumluları
+# <a name="azure-container-registry-authentication-with-service-principals"></a>Hizmet sorumluları ile kimlik doğrulamasını Azure Container Registry
 
-Kapsayıcı görüntüsünü sağlamak için bir Azure Active Directory (Azure AD) hizmet sorumlusu kullanabilirsiniz `docker push` ve `pull` , kapsayıcı kayıt defterine erişim. Bir hizmet sorumlusu kullanarak "gözetimsiz" Hizmetler ve uygulamalar için erişim sağlayabilir.
+Kapsayıcı görüntü `docker push` ve `pull` kapsayıcı Kayıt defterinize erişim sağlamak için bir Azure Active Directory (Azure AD) hizmet sorumlusu kullanabilirsiniz. Hizmet sorumlusu kullanarak, "gözetimsiz" hizmetlere ve uygulamalarına erişim sağlayabilirsiniz.
 
 ## <a name="what-is-a-service-principal"></a>Hizmet sorumlusu nedir?
 
-Azure AD *hizmet sorumluları* , aboneliğiniz kapsamındaki Azure kaynaklarına erişim sağlama. Bir hizmeti "hizmet" herhangi bir uygulama, hizmet veya kaynaklara erişmesi platformu olduğu asıl kullanıcı kimliği için bir hizmet olarak düşünebilirsiniz. Yalnızca belirttiğiniz kaynakları için kapsamlı erişim haklarına sahip bir hizmet sorumlusu yapılandırabilirsiniz. Ardından, uygulamanızın veya hizmetinizin bu kaynakları erişmek için hizmet sorumlusunun kimlik bilgilerini kullanmak için yapılandırın.
+Azure AD *hizmet sorumluları* , aboneliğinizdeki Azure kaynaklarına erişim sağlar. Hizmet sorumlusunu bir hizmet için Kullanıcı kimliği olarak düşünebilirsiniz; burada "hizmet", kaynaklara erişmesi gereken herhangi bir uygulama, hizmet veya platformdur. Erişim haklarına sahip bir hizmet sorumlusunu, yalnızca belirttiğiniz kaynaklarla kapsamlı bir şekilde yapılandırabilirsiniz. Ardından, uygulamanızı veya hizmetinizi bu kaynaklara erişmek için hizmet sorumlusunun kimlik bilgilerini kullanacak şekilde yapılandırın.
 
-Azure Container Registry bağlamında, bir Azure AD hizmet sorumlusu çekme, gönderme ve çekme veya diğer izinler ile azure'da özel kayıt defterinize oluşturabilirsiniz. Tam bir listesi için bkz. [Azure Container Registry rolleri ve izinleri](container-registry-roles.md).
+Azure Container Registry bağlamında Azure 'da özel kayıt defteriniz için çekme, gönderme ve çekme veya diğer izinlerle bir Azure AD hizmet sorumlusu oluşturabilirsiniz. Tüm liste için, bkz. [Azure Container Registry roller ve izinler](container-registry-roles.md).
 
-## <a name="why-use-a-service-principal"></a>Bir hizmet sorumlusu neden kullanmalısınız?
+## <a name="why-use-a-service-principal"></a>Neden hizmet sorumlusu kullanmalıyım?
 
-Bir Azure AD hizmet sorumlusu kullanarak, özel kapsayıcı kayıt defterinizde kapsamlı erişim sağlayabilir. Uygulamaların veya hizmetlerin her kayıt için özel olarak uyarlanmış erişim hakları her biri için farklı hizmet sorumluları oluşturabilirsiniz. Hizmetler ve uygulamalar arasında kimlik bilgilerinin paylaşımı önlemek için kimlik bilgilerini döndürme veya yalnızca hizmet sorumlusu (ve bu nedenle uygulama) için seçtiğiniz erişimi iptal ve.
+Bir Azure AD hizmet sorumlusu kullanarak özel kapsayıcı Kayıt defterinize kapsamlı erişim sağlayabilirsiniz. Her biri Kayıt defterinize özel erişim hakları olan her bir uygulama veya hizmetlerinizin farklı hizmet sorumluları oluşturabilirsiniz. Ve, hizmetler ve uygulamalar arasında kimlik bilgilerinin paylaşılmasını önleyebileceğiniz için kimlik bilgilerini döndürebilir veya yalnızca hizmet sorumlusu (ve dolayısıyla uygulama) için erişimi iptal edebilirsiniz.
 
-Örneğin, web uygulamanız görüntüsüyle sağlayan bir hizmet sorumlusu kullanabilir `pull` yapı sisteminizi her ikisi de sağlayan bir hizmet sorumlusu kullanabilirsiniz, ancak yalnızca erişim `push` ve `pull` erişim. Uygulamanızın geliştirilmesi uygulamalı değişirse, derleme sistemi etkilemeden, hizmet asıl kimlik bilgileri döndürebilirsiniz.
+Örneğin, Web uygulamanız buna yalnızca görüntü `pull` erişimi sağlayan bir hizmet sorumlusu kullanabilir, ancak yapı sisteminiz, `pull` hem hem de `push` erişimiyle birlikte sağlayan bir hizmet sorumlusu kullanabilir. Uygulamanız geliştirmede değişiklik yaptıysanız, derleme sistemini etkilemeden hizmet ilkesi kimlik bilgilerini döndürebilirsiniz.
 
-## <a name="when-to-use-a-service-principal"></a>Bir hizmet sorumlusu kullanma zamanı
+## <a name="when-to-use-a-service-principal"></a>Hizmet sorumlusu ne zaman kullanılır?
 
-Kayıt defteri erişim sağlamak için bir hizmet sorumlusu kullanmalısınız **gözetimsiz senaryoları**. Diğer bir deyişle, herhangi bir uygulama, hizmet veya anında iletme veya kapsayıcı çekin gerekir betiği otomatik olarak veya başka bir katılımsız şekilde görüntüler.
+**Gözetimsiz senaryolarda**kayıt defteri erişimi sağlamak için bir hizmet sorumlusu kullanmanız gerekir. Diğer bir deyişle, kapsayıcı görüntülerini otomatik olarak veya başka bir şekilde katılımsız bir şekilde iletme veya çekme gerektiren herhangi bir uygulama, hizmet veya komut dosyası.
 
-Tek tek el ile bir kapsayıcı görüntüsü geliştirme istasyonunuza çekerken gibi bir kayıt defterine erişim için bunun yerine kendi kullanmalısınız [Azure AD kimlik](container-registry-authentication.md#individual-login-with-azure-ad) kayıt defteri erişimi için (örneğin, [az acr oturum açma][az-acr-login]).
+Bir kayıt defterine bireysel erişim için, örneğin, bir kapsayıcı görüntüsünü geliştirme iş istasyonunuza el ile çektiğinizde, bunun yerine kendi [Azure AD kimliğinizi](container-registry-authentication.md#individual-login-with-azure-ad) kayıt defteri erişimi (örneğin, [az ACR LOGIN][az-acr-login]ile) kullanmanız gerekir.
 
 [!INCLUDE [container-registry-service-principal](../../includes/container-registry-service-principal.md)]
 
 ## <a name="sample-scripts"></a>Örnek komut dosyaları
 
-Azure PowerShell için iyi bir sürüm olarak, github'da Azure CLI için önceki örnek betikler bulabilirsiniz:
+Azure CLı için yukarıdaki örnek betikleri GitHub 'da ve Azure PowerShell için de bulabilirsiniz:
 
 * [Azure CLI][acr-scripts-cli]
 * [Azure PowerShell][acr-scripts-psh]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kapsayıcı kayıt defterinizde erişim verdiyseniz bir hizmet sorumlusu oluşturduktan sonra uygulama ve hizmetlerinizin gözetimsiz kayıt defteri etkileşimi için kendi kimlik bilgilerini kullanabilirsiniz. Azure container registry ile hizmet sorumlusu kimlik bilgilerini doğrulanabilir herhangi bir Azure hizmeti kullanabilirsiniz. Örneklere şunlar dahildir:
+Kapsayıcı Kayıt defterinize erişim verdiğiniz bir hizmet sorumlusu olduktan sonra, uygulama ve hizmetinizdeki kimlik bilgilerini gözetimsiz kayıt defteri etkileşimi için kullanabilirsiniz. Azure Container Registry ile kimlik doğrulayabilecek herhangi bir Azure hizmetinden hizmet sorumlusu kimlik bilgilerini kullanabilirsiniz. Örneklere şunlar dahildir:
 
-* [Azure Container Registry'den Azure Kubernetes Service'i (AKS) ile kimlik doğrulaması](container-registry-auth-aks.md)
-* [Azure Container Registry'den Azure Container Instances (ACI) ile kimlik doğrulaması](container-registry-auth-aci.md)
+* [Azure Kubernetes Service (AKS) Azure Container Registry ile kimlik doğrulama](container-registry-auth-aks.md)
+* [Azure Container Instances (ACI) Azure Container Registry kimlik doğrulaması](container-registry-auth-aci.md)
 
 <!-- LINKS - External -->
 [acr-scripts-cli]: https://github.com/Azure/azure-docs-cli-python-samples/tree/master/container-registry

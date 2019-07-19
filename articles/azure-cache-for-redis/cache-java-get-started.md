@@ -1,6 +1,6 @@
 ---
-title: Azure önbelleği için Redis Java ile kullanma hakkında bilgi edinmek için hızlı başlangıç | Microsoft Docs
-description: Bu hızlı başlangıçta, Azure önbelleği için Redis kullanan yeni bir Java uygulaması oluşturacaksınız.
+title: Java ile redin için Azure önbelleğini nasıl kullanacağınızı öğrenmek için hızlı başlangıç | Microsoft Docs
+description: Bu hızlı başlangıçta, Redsıs için Azure önbelleği kullanan yeni bir Java uygulaması oluşturacaksınız
 services: cache
 documentationcenter: ''
 author: yegu-ms
@@ -15,32 +15,21 @@ ms.workload: tbd
 ms.date: 05/23/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 047350fa957d9ca1fdec50f97a590ba90a42e1b2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 01fb6f66ce71599a70a127a2b73eba6f848bf365
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60830577"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68324135"
 ---
-# <a name="quickstart-how-to-use-azure-cache-for-redis-with-java"></a>Hızlı Başlangıç: Redis ile Java için Azure önbellek kullanma
+# <a name="quickstart-use-azure-cache-for-redis-with-java"></a>Hızlı Başlangıç: Redsıs için Azure önbelleğini Java ile kullanma
 
-
-Azure önbelleği için Redis, Redis, Microsoft tarafından yönetilen için adanmış bir Azure önbellek hizmetine erişmenizi sağlar. Önbelleğinize Microsoft Azure’daki her uygulamadan erişilebilir.
-
-Bu makalede, Redis kullanmak için Azure önbelleği ile çalışmaya başlama işlemini göstermektedir [Jedis](https://github.com/xetorthio/jedis) Redis istemcisini Java için.
-
-![Önbellek uygulaması tamamlandı](./media/cache-java-get-started/cache-app-complete.png)
-
-Bu hızlı başlangıçtaki adımları tamamlamak için herhangi bir kod düzenleyicisini kullanabilirsiniz. Ancak, Windows, macOS ve Linux platformlarında sağlanan [Visual Studio Code](https://code.visualstudio.com/) mükemmel bir seçenektir.
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
+Bu hızlı başlangıçta, Azure 'daki herhangi bir uygulamadan erişilebilen güvenli, özel bir önbelleğe erişim sağlamak için [Jedsıs](https://github.com/xetorthio/jedis) redsıs Istemcisini kullanarak redsıs Için Azure önbelleğini bir Java uygulamasına dahil edersiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-[Apache Maven](https://maven.apache.org/)
-
-
+- Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
+- [Apache Maven](https://maven.apache.org/download.cgi)
 
 ## <a name="create-an-azure-cache-for-redis"></a>Bir Azure önbelleği için Redis oluşturma
 
@@ -50,7 +39,7 @@ Bu hızlı başlangıçtaki adımları tamamlamak için herhangi bir kod düzenl
 
 **ANA BİLGİSAYAR ADI** ve **Birincil** erişim anahtarınız için ortam değişkenleri ekleyin. Hassas bilgileri kodunuza doğrudan eklemek yerine kodunuzdaki bu değişkenleri kullanacaksınız.
 
-```
+```CMD 
 set REDISCACHEHOSTNAME=contosoCache.redis.cache.windows.net
 set REDISCACHEKEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
@@ -59,7 +48,7 @@ set REDISCACHEKEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 Maven kullanarak yeni bir quickstart uygulaması oluşturun:
 
-```
+```CMD
 mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.3 -DgroupId=example.demo -DartifactId=redistest -Dversion=1.0
 ```
 
@@ -131,7 +120,7 @@ public class App
 }
 ```
 
-Bu kod, bir Azure önbelleği için Redis örneği önbellek ana bilgisayar adı ve anahtar ortam değişkenlerini kullanarak bağlanmak nasıl gösterir. Kod ayrıca önbellekte bir dize değeri depolar ve alır. Ayrıca `PING` ve `CLIENT LIST` komutları da yürütülür. 
+Bu kod, önbellek ana bilgisayar adı ve anahtar ortam değişkenlerini kullanarak Redsıs örneği için bir Azure önbelleğine bağlanmayı gösterir. Kod ayrıca önbellekte bir dize değeri depolar ve alır. Ayrıca `PING` ve `CLIENT LIST` komutları da yürütülür. 
 
 *App.java*'yı kaydedin.
 
@@ -139,7 +128,7 @@ Bu kod, bir Azure önbelleği için Redis örneği önbellek ana bilgisayar adı
 
 Uygulamayı derlemek ve çalıştırmak için aşağıdaki Maven komutunu yürütün:
 
-```
+```CMD
 mvn compile
 mvn exec:java -D exec.mainClass=example.demo.App
 ```
@@ -147,7 +136,6 @@ mvn exec:java -D exec.mainClass=example.demo.App
 Aşağıdaki örnekte, `Message` anahtarının Azure portaldaki Redis Konsolu kullanılarak ayarlanan, önceden önbelleğe alınmış bir değer içerdiğini görebilirsiniz. Uygulama, önbelleğe alınan bu değeri güncelleştirdi. Ayrıca uygulama, `PING` ve `CLIENT LIST` komutlarını da yürüttü.
 
 ![Önbellek uygulaması tamamlandı](./media/cache-java-get-started/cache-app-complete.png)
-
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -169,14 +157,9 @@ Kaynak grubunun silinmesini onaylamanız istenir. Onaylamak için kaynak grubunu
 
 Birkaç dakika sonra kaynak grubu ve içerdiği kaynakların tümü silinir.
 
-
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, Azure Cache, Redis için Java uygulamasından kullanma öğrendiniz. Azure önbelleği için Redis ile ASP.NET web uygulaması kullanmak sonraki hızlı başlangıca devam edin.
+Bu hızlı başlangıçta, Java uygulamasından Redsıs için Azure önbelleğini nasıl kullanacağınızı öğrendiniz. Bir ASP.NET Web uygulamasıyla Redsıs için Azure önbelleği 'ni kullanmak üzere bir sonraki hızlı başlangıca devam edin.
 
 > [!div class="nextstepaction"]
-> [Bir Azure önbelleği için Redis kullanan ASP.NET web uygulaması oluşturun.](./cache-web-app-howto.md)
-
-
-
+> [Redsıs için Azure önbelleği kullanan bir ASP.NET Web uygulaması oluşturun.](./cache-web-app-howto.md)

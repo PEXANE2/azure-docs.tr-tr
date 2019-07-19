@@ -1,6 +1,6 @@
 ---
-title: Azure Güvenlik Merkezi'nde Iaas için Gelişmiş veri güvenliği | Microsoft Docs
-description: " Azure Güvenlik Merkezi'nde Iaas için Gelişmiş veri güvenliği etkinleştirme hakkında bilgi edinin. "
+title: Azure Güvenlik Merkezi 'nde IaaS için gelişmiş veri güvenliği | Microsoft Docs
+description: " Azure Güvenlik Merkezi 'nde IaaS için gelişmiş veri güvenliğini nasıl etkinleştirebileceğinizi öğrenin. "
 services: security-center
 documentationcenter: na
 author: monhaber
@@ -13,156 +13,156 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/29/2019
-ms.author: monhaber
-ms.openlocfilehash: ed94b92a34e2989c9f2226c344ac4d34a279eeac
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.author: v-mohabe
+ms.openlocfilehash: 0b83575baa2221f0b502abbf919654492c7ab6cf
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67551829"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68295750"
 ---
-# <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-public-preview"></a>SQL Server Azure sanal makinelerinde (genel Önizleme) için Gelişmiş veri güvenliği
-Azure Virtual Machines'de SQL sunucuları için Gelişmiş veri güvenliği, Gelişmiş SQL güvenlik özellikleri için birleştirilmiş bir pakettir. Bu şu anda (genel önizlemede) görünmesini ve olası veritabanı güvenlik açıklarını azaltmaya ve veritabanınız için tehdit oluşturabilecek anormal etkinlikleri algılamaya yönelik işlevselliği içerir. 
+# <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-public-preview"></a>Azure sanal makineler 'de SQL sunucuları için gelişmiş veri güvenliği (Genel Önizleme)
+Azure sanal makineler 'deki SQL sunucuları için gelişmiş veri güvenliği, gelişmiş SQL güvenlik özelliklerine yönelik Birleşik bir pakettir. Şu anda (genel önizlemede), ortaya çıkabilecek ve olası veritabanı güvenlik açıklarını azaltmaya ve veritabanınıza yönelik bir tehdit oluşturabilecek anormal etkinlikleri algılamakla ilgili işlevsellik içerir. 
 
-Bu güvenlik sunan Azure VM'lerin SQL sunucuları için kullanılan aynı temel teknoloji dayalı [Azure SQL veritabanı gelişmiş veri güvenliği paket](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security).
+Azure VM 'Leri için bu güvenlik teklifi SQL Server 'lar, [Azure SQL veritabanı gelişmiş veri güvenlik paketinde](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)kullanılan temel teknolojiyi temel alır.
 
 
 ## <a name="overview"></a>Genel Bakış
 
-Gelişmiş SQL güvenlik özellikleri, güvenlik açığı değerlendirmesi ve Gelişmiş tehdit koruması oluşan bir dizi gelişmiş veri güvenliği sağlar.
+Gelişmiş veri güvenliği, güvenlik açığı değerlendirmesinden ve Gelişmiş tehdit korumasından oluşan gelişmiş bir SQL güvenlik özellikleri kümesi sağlar.
 
-* [Güvenlik Açığı değerlendirmesi](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment) olduğu bir kolayca bulmak, izlemek ve yardımcı hizmetini yapılandırmak olası veritabanı güvenlik açıklarını düzeltin. Güvenlik durumunuzu görünürlük sağlar ve güvenlik sorunlarını çözün ve, veritabanı fortifications geliştirmek için gerekli adımları içerir.
-* [Gelişmiş tehdit koruması](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview) erişmek veya SQL server'ınızı yararlanmak için sıra dışı ve zararlı olabilecek girişimleri gösteren anormal etkinlikleri algılar. Sürekli olarak veritabanınızı şüpheli etkinlikler için izler ve anormal veritabanı erişim modellerinin üzerinde eylem odaklı güvenlik uyarıları sağlar. Bu uyarılar, şüpheli etkinlik ayrıntılarını sağlayın ve önerilen araştırmak ve tehdidi azaltmak için Eylemler.
+* [Güvenlik açığı değerlendirmesi](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment) , olası veritabanı güvenlik açıklarını düzeltebileceğiniz, izleyebileceğiniz ve bu sorunları gidermenize yardımcı olabilecek bir hizmeti kolayca yapılandırabilir. Güvenlik durumlarınızın görünürlüğünü sağlar ve güvenlik sorunlarını giderme ve veritabanınızın Fortifications geliştirilmesine yönelik adımları içerir.
+* [Gelişmiş tehdit koruması](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview) , SQL Server 'a erişmeye veya yararlanmaya yönelik olağan dışı ve zararlı olabilecek girişimleri gösteren anormal etkinlikleri algılar. Veritabanınızı sürekli şüpheli etkinlikler için izler ve anormal veritabanı erişim desenlerinde eyleme dayalı güvenlik uyarıları sağlar. Bu uyarılar, tehdidi araştırmak ve azaltmak için şüpheli etkinlik ayrıntılarını ve önerilen eylemleri sağlar.
 
-## <a name="get-started-with-advanced-data-security-for-sql-on-azure-vms"></a>Azure vm'lerde SQL gelişmiş veri güvenliği ile çalışmaya başlama
+## <a name="get-started-with-advanced-data-security-for-sql-on-azure-vms"></a>Azure VM 'lerinde SQL için gelişmiş veri güvenliği ile çalışmaya başlama
 
-Aşağıdaki adımlarda SQL Azure Vm'leri genel önizlemesi için Gelişmiş veri güvenliği ile başlamanıza yardımcı olmak.
+Aşağıdaki adımlar, Azure VM 'Leri genel önizleme üzerinde SQL için gelişmiş veri güvenliği ile çalışmaya başlamanızı ister.
 
-### <a name="set-up-advanced-data-security-for-sql-on-azure-vms"></a>Azure vm'lerde SQL için Gelişmiş veri güvenliği ayarlayın
+### <a name="set-up-advanced-data-security-for-sql-on-azure-vms"></a>Azure VM 'lerde SQL için gelişmiş veri güvenliğini ayarlama
 
-**Başlamadan önce**: Çözümlenen güvenlik günlükleri depolamak için bir Log Analytics çalışma alanı ihtiyacınız vardır. Elinizde değil sonra bir kolayca açıklandığı gibi oluşturabilirsiniz [Azure portalında Log Analytics çalışma alanı oluşturma](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
+**Başlamadan önce**: Çözümlenmekte olan güvenlik günlüklerini depolamak için bir Log Analytics çalışma alanı gerekir. Bir tane yoksa, [Azure portal Log Analytics çalışma alanı oluşturma](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)bölümünde açıklandığı gibi kolayca bir tane oluşturabilirsiniz.
 
-1. Log Analytics çalışma alanına SQL server'ı barındıran VM bağlanın. Yönergeler için [Azure İzleyici bağlanmak Windows bilgisayarlara](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windows).
+1. SQL Server 'ı barındıran VM 'yi Log Analytics çalışma alanına bağlayın. Yönergeler için bkz. [Windows bilgisayarlarını Azure izleyici 'ye bağlama](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windows).
 
-1. Azure Marketi'nde Git [SQL gelişmiş veri güvenliği çözüm](https://ms.portal.azure.com/#create/Microsoft.SQLAdvancedDataSecurity).
-(Bkz: aşağıdaki görüntüde olarak Market arama seçeneğini kullanarak bulabilirsiniz.) **SQL gelişmiş veri güvenliği** sayfası açılır.
+1. Azure Marketi 'nden [SQL gelişmiş veri güvenliği çözümüne](https://ms.portal.azure.com/#create/Microsoft.SQLAdvancedDataSecurity)gidin.
+(Aşağıdaki görüntüde gösterildiği gibi Market arama seçeneğini kullanarak bulabilirsiniz.) **SQL gelişmiş veri güvenliği** sayfası açılır.
 
-    ![Iaas için Gelişmiş veri güvenliği](./media/security-center-advanced-iaas-data/sql-advanced-data-security.png)
+    ![IaaS için gelişmiş veri güvenliği](./media/security-center-advanced-iaas-data/sql-advanced-data-security.png)
 
-1. **Oluştur**’a tıklayın. Çalışma görüntülenir.
+1.           **Oluştur**'a tıklayın. Çalışma yerleri görüntülenir.
 
     ![Gelişmiş veri güvenliği oluşturma](./media/security-center-advanced-iaas-data/sql-advanced-data-create.png)
 
-1. ' E tıklayın çalışma alanını seçin **Oluştur**.
+1. Kullanılacak çalışma alanını seçin ve **Oluştur**' a tıklayın.
 
    ![Çalışma alanını seçme](./media/security-center-advanced-iaas-data/sql-workspace.png)
 
-1. Yeniden [sanal makinenin SQL server](https://docs.microsoft.com/sql/database-engine/configure-windows/start-stop-pause-resume-restart-sql-server-services?view=sql-server-2017).
+1. [VM 'nın SQL Server](https://docs.microsoft.com/sql/database-engine/configure-windows/start-stop-pause-resume-restart-sql-server-services?view=sql-server-2017)'ı yeniden başlatın.
 
 
-## <a name="explore-and-investigate-security-alerts"></a>Keşfedin ve güvenlik uyarılarını inceleyin
+## <a name="explore-and-investigate-security-alerts"></a>Güvenlik uyarılarını araştır ve araştır
 
-Görüntüleyebilir ve geçerli güvenlik uyarılarınızı yönetme.
+Geçerli güvenlik uyarılarınızı görüntüleyebilir ve yönetebilirsiniz.
 
-1. Tıklayın **Güvenlik Merkezi** > **güvenlik uyarıları**ve bir uyarıya tıklayın.
+1. **Güvenlik Merkezi** > **güvenlik uyarıları**' na tıklayın ve bir uyarıya tıklayın.
 
-    ![Uyarı bulunamadı](./media/security-center-advanced-iaas-data/find-alert.png)
+    ![Uyarı bul](./media/security-center-advanced-iaas-data/find-alert.png)
 
-1. Gelen **Saldırıya uğrayan kaynak** sütun, Saldırıya uğramış bir kaynağa tıklayın.
+1. **Saldırıya** uğrayan kaynak sütunundan saldırıya uğrayan bir kaynağa tıklayın.
 
-1. Uyarı ayrıntılarını ve geçerli tehdit araştırma ve gelecekteki tehditleri adresleme eylemleri görmek için kaydırmanız **genel bilgiler** sayfasında ve **düzeltme adımları** bölümünde, üzerinde tıklayın **Araştırma ADIMLARININ** bağlantı.
+1. Geçerli tehdidi araştırmaya ve gelecekteki tehditleri gidermeye yönelik uyarı ayrıntılarını ve eylemlerini görüntülemek için, **genel bilgiler** sayfasını kaydırın ve **Düzeltme ADıMLARı** bölümünde **araştırma adımları** bağlantısına tıklayın.
 
     ![Düzeltme adımları](./media/security-center-advanced-iaas-data/remediation-steps.png)
 
-1. Uyarının tetiklenmesine ile ilişkili olan günlükleri görüntülemek için Git **günlük analizi çalışma alanı** ve aşağıdaki adımları uygulayın:
+1. Uyarının tetiklenmesi ile ilişkili günlükleri görüntülemek için **Log Analytics çalışma alanları** ' na gidin ve aşağıdaki adımları uygulayın:
 
      > [!NOTE]
-     > Varsa **günlük analizi çalışma alanı** sol menüde görünür değil'a tıklayın **tüm hizmetleri**, araması **günlük analizi çalışma alanı**.
+     > **Log Analytics çalışma alanları** sol menüde görünmezse, **tüm hizmetler**' e tıklayın ve **Log Analytics çalışma alanları**' nı arayın.
 
-    1. Sütunları görüntüleme mutlaka **fiyatlandırma katmanı** ve **Workspaceıd** sütunları. (**Günlük analizi çalışma alanı** > **sütunları Düzenle**, ekleme **fiyatlandırma katmanı** ve **Workspaceıd**.)
+    1. Sütunların **fiyatlandırma katmanını** ve çalışma alanı **kimliği** sütunlarını görüntülediğinden emin olun. (**Log Analytics çalışma alanları** > **Sütunları Düzenle**, **fiyatlandırma katmanı** ve çalışma alanı **kimliği**Ekle.)
 
-     ![Upravit Sloupce](./media/security-center-advanced-iaas-data/edit-columns.png)
+     ![Sütunları Düzenle](./media/security-center-advanced-iaas-data/edit-columns.png)
 
-    1. Uyarı günlükleri içeren çalışma alanını tıklatın.
+    1. Uyarı günlüklerine sahip çalışma alanına tıklayın.
 
-    1. Altında **genel** menüsünü tıklatın **günlükleri**
+    1. **Genel** menü altında **Günlükler** ' e tıklayın.
 
-    1. Göz tıklayın **SQLAdvancedThreatProtection** tablo. Günlükler listelenmektedir.
+    1. **SQLAdvancedThreatProtection** tablosunun yanındaki göz düğmesine tıklayın. Günlükler listelenir.
 
      ![Günlükleri görüntüle](./media/security-center-advanced-iaas-data/view-logs.png)
 
-## <a name="set-up-email-notification-for-atp-alerts"></a>ATP uyarılar için e-posta bildirimlerini ayarlama 
+## <a name="set-up-email-notification-for-atp-alerts"></a>ATP uyarıları için e-posta bildirimi ayarlama 
 
-ASC uyarılar oluşturulduğunda bir e-posta bildirimi almak için alıcıların listesi ayarlayabilirsiniz. E-posta, Azure Güvenlik Merkezi'nde uyarı ile ilgili tüm ayrıntılar için doğrudan bir bağlantı içerir. 
+Bir alıcı listesini ASC uyarıları oluşturulduğunda bir e-posta bildirimi alacak şekilde ayarlayabilirsiniz. E-posta, Azure Güvenlik Merkezi 'ndeki tüm ilgili ayrıntıların bulunduğu uyarıya doğrudan bir bağlantı içerir. 
 
-1. Git **Güvenlik Merkezi** > **fiyatlandırma & ayarları** ve ilgili aboneliğe tıklayın
+1. **Güvenlik Merkezi** > **fiyatlandırma & ayarlar** ' a gidin ve ilgili aboneliğe tıklayın
 
     ![Abonelik ayarları](./media/security-center-advanced-iaas-data/subscription-settings.png)
 
-1. Gelen **ayarları** menüsünü tıklatın **e-posta bildirimleri**. 
-1. İçinde **e-posta adresi** metin kutusunda, bildirim almak için e-posta adreslerini girin. E-posta adreslerini virgül (,) ile ayırarak birden fazla e-posta adresini girebilirsiniz.  Örneğin admin1@mycompany.com,admin2@mycompany.com,admin3@mycompany.com
+1. **Ayarlar** menüsünde **e-posta bildirimleri**' ne tıklayın. 
+1. **E-posta adresi** metin kutusuna bildirimleri alacak e-posta adreslerini girin. E-posta adreslerini virgülle ayırarak birden fazla e-posta adresi girebilirsiniz (,).  admin1@mycompany.comÖrneğinadmin2@mycompany.com,,admin3@mycompany.com
 
       ![E-posta Ayarları](./media/security-center-advanced-iaas-data/email-settings.png)
 
-1. İçinde **e-posta bildirimi** ayarlar, aşağıdaki seçenekleri:
+1. **E-posta bildirimi** ayarları ' nda, aşağıdaki seçenekleri ayarlayın:
   
-    * **Yüksek önem düzeyindeki uyarılar için e-posta bildirimi gönder**: Tüm uyarılar için e-posta göndermek yerine, yalnızca yüksek önem düzeyindeki uyarılar için gönderin.
-    * **Ayrıca abonelik sahiplerine e-posta bildirimleri gönder**:  Bildirim abonelikleri sahipleri için çok gönderin.
+    * **Yüksek öneme sahip uyarılar için e-posta bildirimi gönderin**: Tüm uyarılar için e-posta göndermek yerine yalnızca yüksek önem derecesi uyarıları gönderin.
+    * **Ayrıca, abonelik sahiplerine e-posta bildirimleri gönderin**:  Abonelik sahiplerine de bildirimler gönderin.
 
-1. Üst kısmındaki **e-posta bildirimleri** ekranında **Kaydet**.
+1. **E-posta bildirimleri** ekranının üst kısmında **Kaydet**' e tıklayın.
 
   > [!NOTE]
-  > Tıkladığınızdan emin olun **Kaydet** penceresi veya yeni kapatmadan önce **e-posta bildirimi** ayarlar kaydedilmeyecek.
+  > Pencereyi kapatmadan önce **Kaydet** ' i tıklattığınızdan emin olun veya yeni **e-posta bildirimi** ayarları kaydedilmez.
 
-## <a name="explore-vulnerability-assessment-reports"></a>Güvenlik Açığı değerlendirme raporları keşfedin
+## <a name="explore-vulnerability-assessment-reports"></a>Güvenlik açığı değerlendirme raporlarını keşfet
 
-Güvenlik Açığı değerlendirmesi Pano tüm veritabanlarınız arasında değerlendirme sonuçlarınızı genel bir bakış sağlar. Veritabanlarını SQL Server sürümü, veritabanları ve denetimleri risk dağıtım göre başarısız olan genel bir özeti ve başarısız bir özetiyle birlikte göre dağılımını görüntüleyebilirsiniz.
+Güvenlik açığı değerlendirme panosu, tüm veritabanlarınızdaki değerlendirme sonuçlarınıza genel bir bakış sağlar. Veritabanlarının SQL Server sürüme göre dağıtımını, veritabanlarının başarılı olup olmadığını ve risk dağıtımına göre başarısız olan denetimlerin genel özetini de görüntüleyebilirsiniz.
 
-Güvenlik Açığı değerlendirme sonuçlarını ve doğrudan Log Analytics raporları görüntüleyebilirsiniz.
+Güvenlik açığı değerlendirme sonuçlarınızı ve raporlarınızı doğrudan Log Analytics görüntüleyebilirsiniz.
 
-1. Gelişmiş Veri güvenlik çözümü ile Log Analytics çalışma alanınıza gidin.
-1. Gidin **çözümleri** seçip **SQL güvenlik açığı değerlendirmesi** çözüm.
-1. İçinde **özeti** bölmesinde tıklayın **özetini görüntüle** ve seçin, **SQL güvenlik açığı değerlendirmesi raporu**.
+1. Gelişmiş veri güvenliği çözümü ile Log Analytics çalışma alanınıza gidin.
+1. **Çözümler** ' e gidin ve **SQL güvenlik açığı değerlendirme** çözümünü seçin.
+1. **Özet** bölmesinde, **Özeti görüntüle** ' ye tıklayın ve **SQL güvenlik açığı değerlendirme raporunuzu**seçin.
 
-    ![SQL değerlendirmesi raporu](./media/security-center-advanced-iaas-data/ads-sql-server-1.png)
+    ![SQL Değerlendirmesi raporu](./media/security-center-advanced-iaas-data/ads-sql-server-1.png)
 
-    Rapor panosunu yükler. Zaman penceresi ayarlandığından emin olun en az **son 7 günde** 7 gün başına bir kez, sabit bir zamanlamada veritabanlarınızda güvenlik açığı değerlendirmesi tarama çalıştırıldığından.
+    Rapor panosu yüklenir. Güvenlik açığı değerlendirme taramalarının, veritabanlarınızda 7 günde bir kez sabit bir zamanlamaya göre çalıştırıldığı zaman penceresinin en az **son 7 güne** ayarlandığından emin olun.
 
-    ![Son 7 gün ayarlayın](./media/security-center-advanced-iaas-data/ads-sql-server-2.png)
+    ![Son 7 günü ayarla](./media/security-center-advanced-iaas-data/ads-sql-server-2.png)
 
-1. Daha fazla ayrıntı için detaya gitmek için herhangi bir Pano tıklayın. Örneğin:
+1. Daha ayrıntılı bilgi edinmek için Pano öğelerinden herhangi birine tıklayın. Örneğin:
 
-   1. Bir güvenlik açığı iade tıklayın **başarısız denetler özeti** tüm veritabanlarında bu denetim için sonuçları içeren bir Log Analytics tablo görüntülemek üzere bölüm. Sonuçlara sahip olanları önce listelenir.
+   1. Tüm veritabanları genelinde bu denetim sonuçlarının bulunduğu bir Log Analytics tablosunu görüntülemek için, **başarısız denetimler Özeti** bölümünde bir güvenlik açığına tıklayın. Sonuçlara sahip olanlar önce listelenir.
 
-   1. Ardından, güvenlik açığı açıklaması ve etkisi, durumu, ilişkili riski ve bu veritabanında gerçek sonuçlar dahil olmak üzere her güvenlik açığı ayrıntılarını görüntülemek için tıklayın. Ayrıca, bu güvenlik açığını çözümlemek için bu onay ve düzeltme bilgilerini gerçekleştirmek için çalıştırılan gerçek sorgu görebilirsiniz.
+   1. Ardından, güvenlik açığı açıklaması ve etkisi, durumu, ilişkili risk ve bu veritabanındaki gerçek sonuçlar dahil olmak üzere her güvenlik açığıyla ilgili ayrıntıları görüntülemek için öğesine tıklayın. Ayrıca, bu denetimi gerçekleştirmek için çalıştırılan gerçek sorguyu ve bu güvenlik açığını çözümlemek için düzeltme bilgilerini görebilirsiniz.
 
     ![Çalışma alanını seçme](./media/security-center-advanced-iaas-data/ads-sql-server-3.png)
 
     ![Çalışma alanını seçme](./media/security-center-advanced-iaas-data/ads-sql-server-4.png)
 
-1. Dilim ve verileri gereksinimlerinize göre nedensellik ilişkilerini, güvenlik açığı değerlendirmesi sonuçları verilerinizi Log Analytics sorguları çalıştırabilirsiniz.
+1. Gereksinimlerinize göre verileri dilimleyip zaratmak için güvenlik açığı değerlendirme sonuçları verilerinizde Log Analytics sorguları çalıştırabilirsiniz.
 
-## <a name="advanced-threat-protection-for-sql-servers-on-azure-vms-alerts"></a>Gelişmiş tehdit koruması için SQL Server Azure Vm'leri uyarılar
-Erişmek veya exploit SQL sunucuları için olağan dışı ve zararlı olabilecek girişimleri tarafından uyarılar oluşturulur. Bu olaylar aşağıdaki uyarılar tetikleyebilirsiniz:
+## <a name="advanced-threat-protection-for-sql-servers-on-azure-vms-alerts"></a>Azure VM 'lerinde SQL sunucuları için Gelişmiş tehdit koruması
+Uyarılar, SQL Server 'Lar için olağandışı ve olası zararlı saldırılara göre oluşturulur. Bu olaylar aşağıdaki uyarıları tetikleyebilir:
 
-### <a name="anomalous-access-pattern-alerts-supported-in-public-preview"></a>Anormal erişim düzeni uyarıları (genel önizlemede desteklenir)
+### <a name="anomalous-access-pattern-alerts-supported-in-public-preview"></a>Anormal erişim deseninin uyarıları (genel önizlemede desteklenir)
 
-* **Olağan dışı bir konumdan erişim:** SQL Server, burada kişi SQL sunucusuna olağan dışı bir coğrafi konumdan oturum açmış olduğu erişim deseninde değişiklik olduğunda bu uyarı tetiklenir. Olası nedenler:
-     * Bir saldırgan veya eski bir kötü amaçlı kullanan SQL Server'ınızı eriştiğini.
-     * Bir kullanıcının gönderdiğini, yeni bir konumdan SQL Server'ınızı eriştiğini.
-* **Zararlı olabilecek bir uygulamadan erişim**: zararlı bir uygulama veritabanına erişmek için kullanıldığında, bu uyarı tetiklenir. Olası nedenler:
-     * Bir saldırganın yaygın saldırı araçlarının kullandığı SQL ihlal çalışılıyor.
-     * Yasal bir güvenlik testlerini.
-* **Erişim**: SQL Server, burada birisi bir sorumludan (SQL kullanıcısı) kullanarak SQL sunucusuna oturum açmış olduğu erişim deseninde değişiklik olduğunda bu uyarı tetiklenir. Olası nedenler:
-     * Bir saldırgan veya eski bir kötü amaçlı kullanan SQL Server'ınızı eriştiğini. 
-     * Bir kullanıcının gönderdiğini, SQL Server'dan yeni bir sorumlunun eriştiğini.
-* **Deneme yanılma SQL kimlik**: Bu uyarı, bir olağandışı yüksek sayıda farklı kimlik bilgileri başarısız oturum açma denemesi olduğunda tetiklenir. Olası nedenler:
-     * Deneme yanılma kullanarak SQL güvenliğini aşmak çalışan bir saldırgan.
-     * Yasal bir güvenlik testlerini.
+* **Olağan dışı konumdan erişim:** Bu uyarı, SQL Server 'a erişim modelinde bir değişiklik olduğunda tetiklenir ve bu, birinin SQL Server 'da olağan dışı bir coğrafi konumdan oturum açtığı yerdir. Olası nedenler:
+     * Bir saldırgan veya eski bir kötü amaçlı, SQL Server erişti.
+     * Yasal bir Kullanıcı yeni bir konumdan SQL Server erişti.
+* **Zararlı olabilecek bir uygulamadan erişim**: veritabanına erişmek için potansiyel olarak zararlı bir uygulama kullanıldığında bu uyarı tetiklenir. Olası nedenler:
+     * Bir saldırgan ortak saldırı araçlarını kullanarak SQL 'nizi ihlal etmek üzere çalışıyor.
+     * Eylemde geçerli bir sızma testi.
+* **Bilmediğiniz sorumludan erişim**: Bu uyarı, SQL Server 'a erişim düzeninde bir değişiklik olduğunda tetiklenir ve bu, birinin SQL Server 'da olağan dışı bir sorumlu (SQL kullanıcısı) kullanarak oturum açmıştır. Olası nedenler:
+     * Bir saldırgan veya eski bir kötü amaçlı, SQL Server erişti. 
+     * Yasal bir Kullanıcı, SQL Server yeni bir sorumlu ile erişmiştir.
+* **Deneme YANıLMA SQL kimlik bilgilerini zorla**: Bu uyarı, farklı kimlik bilgileri ile olağan dışı yüksek sayıda başarısız oturum açma işlemi olduğunda tetiklenir. Olası nedenler:
+     * Bir saldırgan, deneme yanılma kullanarak SQL 'nizi ihlal etmeye çalışan bir saldırgan.
+     * Eylemde geçerli bir sızma testi.
 
 ### <a name="potential-sql-injection-attacks-coming"></a>Olası SQL ekleme saldırıları (gelen)
 
-* **SQL ekleme güvenlik açığı**: Bu uyarı, veritabanında bir uygulama hatalı SQL deyimi oluşturduğunda tetiklenir. Bu uyarı, SQL ekleme saldırılarına karşı olası bir güvenlik açığını gösterebilir. Olası nedenler:
+* **SQL ekleme güvenlik açığı**: Bu uyarı, bir uygulama veritabanında hatalı bir SQL açıklaması oluşturduğunda tetiklenir. Bu uyarı, SQL ekleme saldırılarına karşı olası bir güvenlik açığını gösterebilir. Olası nedenler:
      * Hatalı SQL deyimini oluşturan uygulama kodunda hata
      * Uygulama kodu veya depolanan yordamlar, hatalı SQL deyimi yapılandırılırken kullanıcı girişini temizlemez ve SQL Ekleme sırasında bu açıktan yararlanılabilir
-* **Olası SQL eklemesi**: Bu uyarı, SQL ekleme bir tanımlı uygulama güvenlik açığına karşı etkin bir açıktan yararlanma meydana geldiğinde tetiklenir. Bu, saldırganın güvenlik açığına sahip uygulama kodu veya depolanan yordamları kullanan kötü amaçlı SQL deyimleri eklemeye çalıştığı anlamına gelir.
+* **OLASı SQL ekleme**: Bu uyarı, SQL ekleme için tanımlanan uygulama güvenlik açığına karşı etkin bir yararlanma gerçekleştiğinde tetiklenir. Bu, saldırganın güvenlik açığına sahip uygulama kodu veya depolanan yordamları kullanan kötü amaçlı SQL deyimleri eklemeye çalıştığı anlamına gelir.

@@ -1,6 +1,6 @@
 ---
-title: Azure'da OpenSUSE VM'ye MySQL yükleme | Microsoft Docs
-description: Azure'da OpenSUSE Linux sanal bir makineye MySQL yükleme öğrenin.
+title: Azure 'da bir OpenSUSE VM 'ye MySQL 'i yükler | Microsoft Docs
+description: Azure 'da bir OpenSUSE Linux sanal makinesine MySQL yüklemeyi öğrenin.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2018
-ms.author: za-rhoads
-ms.openlocfilehash: 9f5ead43fb2d516697f7bbca5367cb02620152f9
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.author: cynthn
+ms.openlocfilehash: baa52f4a17b06b6927013c88f37d4f2bc24744f3
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67667511"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876016"
 ---
 # <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>Azure'da OpenSUSE Linux çalıştıran bir sanal makineye MySQL yükleme
 
-[MySQL](https://www.mysql.com) popüler, açık kaynaklı bir SQL veritabanı. Bu öğreticide, OpenSUSE Linux çalıştıran bir sanal makine oluşturun, sonra MySQL yükleme işlemini göstermektedir.
+[MySQL](https://www.mysql.com) popüler, açık KAYNAKLı bir SQL veritabanıdır. Bu öğreticide, OpenSUSE Linux çalıştıran bir sanal makinenin nasıl oluşturulacağı ve MySQL 'nin nasıl yükleneceği gösterilmektedir.
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
@@ -33,13 +33,13 @@ CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz Azure CLI 2.0 veya so
 
 ## <a name="create-a-virtual-machine-running-opensuse-linux"></a>OpenSUSE Linux çalıştıran bir sanal makine oluşturma
 
-İlk olarak bir kaynak grubu oluşturun. Bu örnekte, kaynak grubunun adı *mySQSUSEResourceGroup* içinde oluşturulan ve *Doğu ABD* bölge.
+İlk olarak bir kaynak grubu oluşturun. Bu örnekte, kaynak grubu *Mysqsuseresourcegroup* olarak adlandırılır ve *Doğu ABD* bölgesinde oluşturulur.
 
 ```azurecli-interactive
 az group create --name mySQLSUSEResourceGroup --location eastus
 ```
 
-Bir VM oluşturun. Bu örnekte, VM adlı *myVM* ve VM boyutu *Standard_D2s_v3*, ancak seçmeniz gereken [VM boyutu](sizes.md) yükünüz için en uygun olduğunu düşündüğünüz.
+VM 'yi oluşturun. Bu örnekte, VM *Myvm* olarak ADLANDıRıLıR ve VM boyutu *Standard_D2s_v3*olur, ancak iş yükünüz için en uygun olduğunu düşündüğünüz [VM boyutunu](sizes.md) seçmeniz gerekir.
 
 ```azurecli-interactive
 az vm create --resource-group mySQLSUSEResourceGroup \
@@ -49,7 +49,7 @@ az vm create --resource-group mySQLSUSEResourceGroup \
    --generate-ssh-keys
 ```
 
-Trafik için MySQL 3306 bağlantı noktası üzerinden izin vermek için ağ güvenlik grubu kuralı eklemeniz gerekir.
+Ayrıca, MySQL için 3306 numaralı bağlantı noktası üzerinden trafiğe izin vermek üzere ağ güvenlik grubuna bir kural eklemeniz gerekir.
 
 ```azurecli-interactive
 az vm open-port --port 3306 --resource-group mySQLSUSEResourceGroup --name myVM
@@ -57,44 +57,44 @@ az vm open-port --port 3306 --resource-group mySQLSUSEResourceGroup --name myVM
 
 ## <a name="connect-to-the-vm"></a>VM’ye bağlanma
 
-SSH, bir VM'ye bağlanmak için kullanacaksınız. Bu örnekte, sanal makinenin genel IP adresidir *10.111.112.113*. Sanal Makineyi oluştururken, çıkış IP adresini görebilirsiniz.
+SANAL makineye bağlanmak için SSH kullanacaksınız. Bu örnekte, VM 'nin genel IP adresi *10.111.112.113*' dir. Sanal makineyi oluştururken çıktıda IP adresini görebilirsiniz.
 
 ```azurecli-interactive  
 ssh 10.111.112.113
 ```
 
  
-## <a name="update-the-vm"></a>VM'yi güncelleştirin
+## <a name="update-the-vm"></a>VM 'yi güncelleştirme
  
-Sanal Makineye bağlandıktan sonra sistem güncelleştirmeleri ve yamaları yükleyin. 
+SANAL makineye bağlandıktan sonra, sistem güncelleştirmelerini ve düzeltme eklerini yükledikten sonra. 
    
 ```bash
 sudo zypper update
 ```
 
-Sanal makinenizin güncelleştirmek için yönergeleri izleyin.
+VM 'nizi güncelleştirmek için istemleri izleyin.
 
 ## <a name="install-mysql"></a>MySQL'i yükleme 
 
 
-MySQL, SSH üzerinden sanal Makineye yükleyin. Uygun şekilde istemleri yanıtlayın.
+MySQL 'i SSH üzerinden VM 'ye yükler. Uygun şekilde komut istemlerini yanıtlayın.
 
 ```bash
 sudo zypper install mysql
 ```
  
-Sistem önyüklendiğinde başlatmak için MySQL ayarlayın. 
+MySQL, sistem önyüklendiğinde başlatılacak şekilde ayarlanır. 
 
 ```bash
 sudo systemctl enable mysql
 ```
-MySQL etkin olduğunu doğrulayın.
+MySQL 'in etkinleştirildiğini doğrulayın.
 
 ```bash
 systemctl is-enabled mysql
 ```
 
-Bu döndürmelidir: etkin.
+Bu, döndürmelidir: etkin.
 
 Sunucuyu yeniden başlatın.
 
@@ -105,9 +105,9 @@ sudo reboot
 
 ## <a name="mysql-password"></a>MySQL parolası
 
-Yüklemeden sonra MySQL kök parolası varsayılan olarak boştur. Çalıştırma **mysql\_güvenli\_yükleme** MySQL güvenli hale getirmek için komut dosyası. Betiği, MySQL kök parolası değiştirmek, anonim kullanıcı hesaplarını kaldırın, uzak kök oturum açma devre dışı bırakmak, test veritabanlarını kaldırmanız ve ayrıcalıkları tablo yeniden isteyip istemediğinizi sorar. 
+Yüklemeden sonra MySQL kök parolası varsayılan olarak boştur. MySQL 'i güvenli hale getirmek için **\_MySQL güvenli\_yükleme** betiğini çalıştırın. Betik, MySQL kök parolasını değiştirmenizi, anonim kullanıcı hesaplarını kaldırmanızı, uzak kök oturum açmayı devre dışı bırakmayı, test veritabanlarını kaldırmanızı ve ayrıcalıklar tablosunu yeniden yüklemenizi ister. 
 
-Sunucu, ssh için VM yeniden yeniden başlatıldıktan sonra.
+Sunucu yeniden başlatıldıktan sonra, sanal makineye SSH tekrar.
 
 ```azurecli-interactive  
 ssh 10.111.112.113
@@ -119,14 +119,14 @@ ssh 10.111.112.113
 mysql_secure_installation
 ```
 
-## <a name="sign-in-to-mysql"></a>MySQL için oturum açın
+## <a name="sign-in-to-mysql"></a>MySQL 'de oturum açma
 
-Şimdi oturum açın ve MySQL isteminden girin.
+Artık oturum açabilir ve MySQL istemi ' ni girebilirsiniz.
 
 ```bash  
 mysql -u root -p
 ```
-Bu veritabanıyla etkileşime girmek için SQL deyimleri burada verebilir için MySQL isteminde geçer.
+Bu, veritabanı ile etkileşimde bulunmak için SQL deyimlerini oluşturabileceğiniz MySQL istemine geçer.
 
 Şimdi yeni bir MySQL kullanıcısı oluşturun.
 
@@ -134,28 +134,28 @@ Bu veritabanıyla etkileşime girmek için SQL deyimleri burada verebilir için 
 CREATE USER 'mysqluser'@'localhost' IDENTIFIED BY 'password';
 ```
    
-Noktalı virgülle (;) satırın sonunda sona erdirme komutu için çok önemlidir.
+Noktalı virgül (;) satırın sonunda, komutu sonlandırmak için çok önemlidir.
 
 
 ## <a name="create-a-database"></a>Veritabanı oluşturma
 
 
-Bir veritabanı oluşturma ve verme `mysqluser` kullanıcı izinleri.
+Bir veritabanı oluşturun ve `mysqluser` Kullanıcı izinlerini verin.
 
 ```sql
 CREATE DATABASE testdatabase;
 GRANT ALL ON testdatabase.* TO 'mysqluser'@'localhost' IDENTIFIED BY 'password';
 ```
    
-Yalnızca veritabanı kullanıcı adları ve parolalar veritabanına bağlanırken betikler tarafından kullanılır.  Veritabanı kullanıcı hesabı adları gerçek kullanıcı hesapları sistem üzerindeki göstermez.
+Veritabanı kullanıcı adları ve parolalar yalnızca veritabanına bağlanan betikler tarafından kullanılır.  Veritabanı kullanıcı hesabı adları, sistemdeki gerçek Kullanıcı hesaplarını temsil etmez.
 
-Oturum açma başka bir bilgisayardan etkinleştirin. Bu örnekte, gelen oturum açma izin vermek için bilgisayar IP adresidir *10.112.113.114*.
+Başka bir bilgisayardan oturum açmayı etkinleştirin. Bu örnekte, oturum açmaya izin verilecek bilgisayarın IP adresi *10.112.113.114*' dir.
 
 ```sql
 GRANT ALL ON testdatabase.* TO 'mysqluser'@'10.112.113.114' IDENTIFIED BY 'password';
 ```
    
-MySQL veritabanı yönetim yardımcı programından çıkın için şunu yazın:
+MySQL veritabanı yönetim yardımcı programından çıkmak için şunu yazın:
 
 ```    
 quit
@@ -163,7 +163,7 @@ quit
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-MySQL hakkında daha fazla ayrıntı için bkz: [MySQL belgeleri](https://dev.mysql.com/doc).
+MySQL hakkındaki ayrıntılar için [MySQL belgelerine](https://dev.mysql.com/doc)bakın.
 
 
 
