@@ -55,10 +55,10 @@ Bir uygulamanın iş mantığı, burada bir durumdan diğerine taşımak için i
 
 | Alan | Description | Gerekli | En büyük uzunluk |
 |-------|-------------|:--------:|-----------:|
-| Ad | Benzersiz iş akışının adı. Karşılık gelen akıllı sözleşmenin aynı kullanmalısınız **adı** uygulanabilir bir sözleşme sınıfı. | Evet | 50 |
+| Name | Benzersiz iş akışının adı. Karşılık gelen akıllı sözleşmenin aynı kullanmalısınız **adı** uygulanabilir bir sözleşme sınıfı. | Evet | 50 |
 | DisplayName | İş akışı kolay görünen adı. | Evet | 255 |
 | Description | İş akışı tanımı. | Hayır | 255 |
-| Başlatıcılar | Koleksiyonu [ApplicationRoles](#application-roles). İş akışında sözleşmeleri oluşturmak için yetkili kullanıcılara atanan roller. | Evet | |
+| Initiators | Koleksiyonu [ApplicationRoles](#application-roles). İş akışında sözleşmeleri oluşturmak için yetkili kullanıcılara atanan roller. | Evet | |
 | StartState | İş akışı yapının başlangıç durumunun adı. | Evet | |
 | Özellikler | Koleksiyonu [tanımlayıcıları](#identifiers). Araç zinciri kapalı veya bir kullanıcı görselleştirilen okunabilir temsil veri karşılaşırsınız. | Evet | |
 | Oluşturucusu | İş akışı örneği oluşturmak için giriş parametrelerini tanımlar. | Evet | |
