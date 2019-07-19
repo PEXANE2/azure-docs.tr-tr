@@ -1,7 +1,7 @@
 ---
-title: İzleyici ML modelleri için Azure Application ınsights'ı ayarlama
+title: ML modellerini izlemek için Azure Application Insights ayarlama
 titleSuffix: Azure Machine Learning service
-description: Azure Application ınsights'ı kullanarak Azure Machine Learning hizmeti ile dağıtılan web hizmetleri izleme
+description: Azure Application Insights kullanarak Azure Machine Learning hizmetiyle dağıtılan Web hizmetlerini izleme
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
-ms.date: 04/02/2019
+ms.date: 07/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 2e481a388d8cbd6baf66b95c74449396b2e70f7d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1c12f55228d77656ef57598da0fb002fdea29bd4
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60820169"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67871778"
 ---
 # <a name="monitor-your-azure-machine-learning-models-with-application-insights"></a>Azure Machine Learning Modellerinizi Application Insights ile izleme
 
@@ -30,13 +30,13 @@ Bu makalede, Azure Application ınsights'ı, Azure Machine Learning hizmeti içi
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. Deneyin [Azure Machine Learning hizmetinin ücretsiz veya Ücretli sürümüne](https://aka.ms/AMLFree) bugün.
+* Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning Service 'in ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
 * Bir Azure Machine Learning çalışma alanı, yüklü Python için betikleri ve Azure Machine Learning SDK'sını içeren yerel bir dizin. Bu Önkoşullar alma hakkında bilgi için bkz: [bir geliştirme ortamı yapılandırma](how-to-configure-environment.md).
 * Azure Kubernetes Service (AKS) veya Azure Container örneği (ACI) dağıtılması için eğitilen makine öğrenme modeli. Yoksa, bkz. [görüntü sınıflandırma modeli eğitme](tutorial-train-models-with-aml.md) öğretici.
 
 
-## <a name="use-sdk-to-configure"></a>SDK'sını yapılandırmak için kullanın 
+## <a name="use-sdk-to-configure"></a>Yapılandırmak için SDK 'Yı kullanma 
 
 ### <a name="update-a-deployed-service"></a>Dağıtılan bir hizmette güncelleştir
 1. Hizmet çalışma alanınızdaki belirleyin. Değeri `ws` çalışma alanınızın adıdır.
@@ -77,7 +77,7 @@ Application ınsights'ı devre dışı bırakmak için aşağıdaki kodu kullan�
 <service_name>.update(enable_app_insights=False)
 ```
     
-## <a name="use-portal-to-configure"></a>Yapılandırma için portalı kullanma
+## <a name="use-portal-to-configure"></a>Yapılandırmak için portalı kullanma
 
 Etkinleştirebilir ve Azure portalında Application ınsights'ı devre dışı bırakın.
 
@@ -131,11 +131,11 @@ Application Insights'ı kullanma hakkında daha fazla bilgi için bkz. [Applicat
 
 ## <a name="example-notebook"></a>Örneğin not defteri
 
-[How-to-use-azureml/deployment/enable-app-insights-in-production-service/enable-app-insights-in-production-service.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/enable-app-insights-in-production-service/enable-app-insights-in-production-service.ipynb) Not Defteri, bu makaledeki kavramları göstermektedir. 
+[Enable-App-Insights-in-Production-Service. ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/enable-app-insights-in-production-service/enable-app-insights-in-production-service.ipynb) Not defteri, bu makaledeki kavramları gösterir. 
  
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Modellerinizi üretimde şirket verilerini de toplayabilirsiniz. Makaleyi okuyun [üretimde modelleri için veri toplama](how-to-enable-data-collection.md). 
 
-Ayrıca okuma [kapsayıcılar için Azure İzleyici](https://docs.microsoft.com/azure/monitoring/monitoring-container-insights-overview?toc=%2fazure%2fmonitoring%2ftoc.json).
+Ayrıca [kapsayıcılar Için Azure izleyicisini](https://docs.microsoft.com/azure/monitoring/monitoring-container-insights-overview?toc=%2fazure%2fmonitoring%2ftoc.json)okuyun.

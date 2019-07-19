@@ -1,6 +1,6 @@
 ---
-title: Azure IOT Hub ileti zenginleştirmelerinin genel bakış
-description: Azure IOT Hub ileti için ileti zenginleştirmelerinin genel bakış
+title: Azure IoT Hub ileti zenginleştirme 'ye Genel Bakış
+description: Azure IoT Hub iletileri için ileti zenginlerinin Özeti
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -8,81 +8,84 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 13e35ab93fc37541548785c6355489eaf3a3efc2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b815ba80ac0860a4248b27e4013da4a8a9d12e18
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754555"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68321289"
 ---
-# <a name="message-enrichments-for-device-to-cloud-iot-hub-messages-preview"></a>İleti zenginleştirmelerinin CİHAZDAN buluta IOT hub'ı iletileri (Önizleme)
+# <a name="message-enrichments-for-device-to-cloud-iot-hub-messages-preview"></a>Cihazdan buluta IoT Hub iletileri için ileti zenginleştirmelerinin (Önizleme)
 
-*İleti zenginleştirmelerinin* IOT Hub'ına özelliğidir *damga* iletileri belirlenen uç noktasına gönderilmeden önce ek bilgilerle iletileri. İleti zenginleştirmelerinin kullanmak için bir neden, aşağı akış işleme basitleştirmek için kullanılan veri eklemektir. Örneğin, cihaz ikizi etiketi ile cihaz telemetri iletilerini zenginleştirme, müşterilerin, cihaz ikizi için bu bilgileri API çağrıları yapmak için yük azaltabilir.
+*İleti* zenginleştirmelerinin iletileri belirlenen uç noktaya gönderilmeden önce ek bilgilerle iletileri *damgalamak* IoT Hub yeteneğidir. İleti zenginleştirmelerinin tek bir nedeni, aşağı akış işlemeyi basitleştirmek için kullanılabilecek verileri içermektir. Örneğin, cihaz ikizi etiketiyle cihaz telemetri iletileri zenginleştirilmesi, bu bilgilere yönelik cihaz ikizi API çağrıları yapmak için müşterilerin yükünü azaltabilir.
 
-![İleti zenginleştirmelerinin akışı](./media/iot-hub-message-enrichments-overview/message-enrichments-flow.png)
+![İleti zenginleştirme akışı](./media/iot-hub-message-enrichments-overview/message-enrichments-flow.png)
 
-Bir ileti zenginleştirme, üç anahtar öğelerin sahiptir:
+Bir ileti zenginleştirmesi, üç temel öğeye sahiptir:
 
-* Zenginleştirme adı veya anahtar
+* Zenginleştirme adı veya anahtarı
 
 * Bir değer
 
-* Bir veya daha fazla [uç noktaları](iot-hub-devguide-endpoints.md) için zenginleştirme uygulanmalıdır.
+* Zenginleştirme için uygulanması gereken bir veya daha fazla [uç nokta](iot-hub-devguide-endpoints.md) .
 
-Herhangi bir dize olabilir.
+Anahtar herhangi bir dize olabilir.
 
-Değer aşağıdaki örnekler hiçbirini olabilir:
+Değer aşağıdaki örneklerden herhangi biri olabilir:
 
-* Herhangi bir statik dize. Koşullar, mantıksal, işlemler ve işlevler gibi dinamik değerler izin verilmez. Örneğin, çeşitli müşteriler tarafından kullanılan bir SaaS uygulaması geliştiriyorsanız, her müşteri için bir tanımlayıcı atayın ve tanımlayıcı uygulamada kullanılabilir hale getirebilirsiniz. Uygulama çalışırken, IOT Hub cihaz telemetri iletilerini müşterinin tanımlayıcısına sahip iletileri her müşteri için farklı şekilde işlemek üzere edinerek damgasının.
+* Herhangi bir statik dize. Koşullar, Logic, işlemler ve işlevler gibi dinamik değerlere izin verilmez. Örneğin, birkaç müşteri tarafından kullanılan bir SaaS uygulaması geliştirirseniz, her müşteriye bir tanımlayıcı atayabilir ve bu tanımlayıcıyı uygulamada kullanılabilir hale getirebilirsiniz. Uygulama çalıştığında IoT Hub, cihaz telemetri iletilerini müşterinin tanımlayıcısına göre damgalayıp, bu da iletileri her müşteri için farklı şekilde işlemeyi mümkün kılar.
 
-* Cihaz ikizini yolu gibi bilgileri. Örnekler olacak *$twin.tags.field* ve *$twin.tags.latitude*.
+* İletiyi gönderen IoT Hub 'ının adı. Bu değer *$iothubname*.
 
-* İletiyi gönderen IOT hub'ın adı. Bu değer *$iothubname*.
+* Cihaz ikizi bilgileri, örneğin yolu. Örnekler *$Twin. Tags. Field* ve *$Twin. Tags. Enlem*olacaktır.
 
-## <a name="applying-enrichments"></a>Zenginleştirmelerinin uygulanıyor
+   > [!NOTE]
+   > Şu anda yalnızca $iothubname, $twin. Tags, $twin. Properties. Desired ve $twin. Properties. bildirilen ileti zenginleştirme için desteklenen değişkenler.
 
-İletileri tarafından desteklenen herhangi bir veri kaynağından gelebilir [IOT Hub ileti yönlendirme](iot-hub-devguide-messages-d2c.md), aşağıdaki örnekler de dahil olmak üzere:
+## <a name="applying-enrichments"></a>Zenginler uygulanıyor
 
-* Sıcaklık veya baskısı gibi cihaz telemetrisi
-* cihaz ikizi değişiklik bildirimleri--cihaz ikizinde değişiklikleri
-* cihazın ne zaman oluşturulduğu veya silindiği gibi cihaz yaşam döngüsü olayları
+İletiler, aşağıdaki örnekler de dahil [IoT Hub ileti yönlendirme](iot-hub-devguide-messages-d2c.md)tarafından desteklenen herhangi bir veri kaynağından gelebilir:
 
-Bir IOT Hub'ın yerleşik uç noktaya giden iletileri ya da Azure Blob Depolama, Service Bus kuyruğu veya Service Bus konu gibi özel uç noktalar için yönlendirilmiş iletiler zenginleştirmelerinin ekleyebilirsiniz.
+* sıcaklık veya basınç gibi cihaz telemetrisi
+* cihaz ikizi değişiklik bildirimleri--cihazdaki değişiklikler ikizi
+* cihaz yaşam döngüsü olayları, Örneğin cihazın oluşturulduğu veya silindiği zaman
 
-Event Grid, Event Grid uç nokta seçerek yayımlanan iletileri zenginleştirmelerinin ekleyebilirsiniz. Daha fazla bilgi için [IOT Hub ve Event Grid](iot-hub-event-grid.md).
+IoT Hub yerleşik uç noktasına veya Azure Blob depolama, Service Bus kuyruğu veya Service Bus konu gibi özel uç noktalara yönlendirilmekte olan iletilere zenginleştirme ekleyebilirsiniz.
 
-Zenginleştirmelerinin uç noktası uygulanır. Belirli bir uç nokta için damgalı için beş zenginleştirmelerinin belirtirseniz, bu uç noktaya gitmesiyle tüm iletiler aynı beş zenginleştirmelerinin ile içerdiği.
+Ayrıca, Event Grid olarak uç noktayı seçerek Event Grid yayımlanmakta olan iletilere zenginleştirme ekleyebilirsiniz. Daha fazla bilgi için bkz. [IoT Hub ve Event Grid](iot-hub-event-grid.md).
 
-İletisi zenginleştirmelerinin denemek hakkında bilgi için bkz [ileti zenginleştirmelerinin Öğreticisi](tutorial-message-enrichments.md)
+Enzenginler, uç nokta başına uygulanır. Belirli bir uç nokta için damgalı olacak beş zenginleştirme belirtirseniz, bu uç noktaya giden tüm iletiler aynı beş enzenginle damgalı olur.
+
+İleti zenginleştirme hakkında bilgi edinmek için bkz. [ileti zenginleştirme öğreticisi](tutorial-message-enrichments.md)
 
 ## <a name="limitations"></a>Sınırlamalar
 
-* Bu hub'ları için IOT hub'ı başına en fazla 10 zenginleştirmelerinin standart veya temel katmanında ekleyebilirsiniz. IOT hub'ları için ücretsiz katmanda en fazla 2 zenginleştirmelerinin ekleyebilirsiniz.
+* Standart veya temel katmandaki bu hub 'lar için IoT Hub başına en fazla 10 zenginleştirme ekleyebilirsiniz. Ücretsiz katmanda IoT Hub 'Ları için 2 adede kadar zenginleştirme ekleyebilirsiniz.
 
-* Bir değeri bir etiket veya cihaz ikizindeki özelliği ayarlanmış bir zenginleştirme uyguluyorsanız bazı durumlarda, değeri dize değeri olarak damgalı. İçin $twin.tags.field zenginleştirme değeri ayarlarsanız, örneğin, iletileri "$twin.tags.field" dizesi ile bu alanın değeri yerine ikizinden damgalı. Bu, aşağıdaki durumlarda gerçekleşir:
+* Bazı durumlarda, bir değer ile cihaz ikizi bir etikete veya özelliğe ayarlanmış bir zenginleştirme uyguluyorsanız, değer bir dize değeri olarak damgalanacaktır. Örneğin, bir zenginleştirme değeri $twin. Tags. Field olarak ayarlandıysa, iletiler ikizi bu alanın değeri yerine "$twin. Tags. Field" dizesiyle damgalı olur. Bu durum aşağıdaki durumlarda oluşur:
 
-   * IOT Hub'ınıza temel katmanında ' dir. Cihaz ikizlerini temel katman IOT hub'ları desteklemez.
+   * IoT Hub temel katmanda. Temel katman IoT Hub 'ları, cihaz ikizlerini desteklemez.
 
-   * IOT Hub'ınıza standart katmanda, ancak iletiyi göndermeyi cihaz hiçbir cihaz ikizi.
+   * IoT Hub Standart katmanda, ancak iletiyi gönderen cihazda cihaz ikizi yok.
 
-   * IOT Hub'ınıza, standart katmanda olmakla birlikte zenginleştirme değeri için kullanılan cihaz ikizi yolu yok. Örneğin, zenginleştirme değeri $twin.tags.location için ayarlanır ve cihaz ikizinde etiketleri altında bir konum özelliği yoktur ileti "$twin.tags.location" dizesi ile damgalandı. 
+   * IoT Hub Standart katmanda, ancak zenginleştirme değeri için kullanılan Device ikizi yolu yok. Örneğin, zenginleştirme değeri $Twin. Tags. Location olarak ayarlanmışsa ve cihaz ikizi Etiketler altında bir konum özelliği yoksa, ileti "$Twin. Tags. Location" dizesiyle damgalı olur. 
 
-* Cihaz ikizi güncelleştirmeleri karşılık gelen zenginleştirme değeri yansıtılması beş dakika kadar sürebilir.
+* Bir cihaz ikizi güncelleştirmelerinin, ilgili zenginleştirme değerinde yansıtılması beş dakika kadar sürebilir.
 
-* Zenginleştirmelerinin dahil olmak üzere toplam ileti boyutu 256 KB aşamaz. İleti boyutu 256 KB aşarsa, IOT Hub ileti kaldıracağız. Kullanabileceğiniz [IOT hub'ı ölçümleri](iot-hub-metrics.md) bırakılan iletiler, hatalarını ayıklamanıza ve tanımlamak için. Örneğin, d2c.telemetry.egress.invalid izleyebilirsiniz.
+* En zenginler de dahil olmak üzere toplam ileti boyutu 256 KB 'yi aşamaz. İleti boyutu 256 KB 'yi aşarsa IoT Hub iletiyi bırakacak. İletiler bırakıldığında hataları tanımlamak ve hatalarını ayıklamak için [IoT Hub ölçümlerini](iot-hub-metrics.md) kullanabilirsiniz. Örneğin, D2C. telemetri. çıkış. geçersiz izleyebilirsiniz.
 
 ## <a name="pricing"></a>Fiyatlandırma
 
-İleti zenginleştirmelerinin için ek ücret ödemeden kullanılabilir. Şu anda, bir IOT Hub'ına ileti gönderirken ücretlendirilir. İleti için birden fazla uç nokta aşsa bile yalnızca bir kez bu ileti için ücretlendirilirsiniz.
+İleti zenginleştirme, ek ücret ödemeden kullanılabilir. Şu anda bir IoT Hub ileti gönderdiğinizde ücretlendirilirsiniz. İleti birden çok uç noktaya gitse bile, bu ileti için yalnızca bir kez ücretlendirilirsiniz.
 
 ## <a name="availability"></a>Kullanılabilirlik
 
-Bu özellik Önizleme aşamasındadır ve Doğu ABD, Batı ABD, Batı Avrupa dışındaki tüm bölgelerde kullanılabilir [Azure kamu](/azure/azure-government/documentation-government-welcome), [Azure Çin 21Vianet](/azure/china), ve [Azure Almanya](https://azure.microsoft.com/global-infrastructure/germany/).
+Bu özellik Önizleme sürümünde kullanılabilir ve Doğu ABD, Batı ABD, Batı Avrupa, [Azure Kamu](/azure/azure-government/documentation-government-welcome), [Azure Çin 21Vianet](/azure/china)ve [Azure Almanya](https://azure.microsoft.com/global-infrastructure/germany/)dışındaki tüm bölgelerde kullanılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir IOT hub'ına ileti yönlendirme konusunda daha fazla bilgi için şu makalelere göz atın:
+İletileri bir IoT Hub yönlendirme hakkında daha fazla bilgi için şu makalelere göz atın:
 
-* [Farklı uç noktalar için CİHAZDAN buluta iletileri göndermek için IOT Hub ileti yönlendirme kullanın](iot-hub-devguide-messages-d2c.md)
+* [Farklı uç noktalara cihazdan buluta iletiler göndermek için IoT Hub ileti yönlendirmeyi kullanma](iot-hub-devguide-messages-d2c.md)
 
-* [Öğretici: IOT Hub'ın Yönlendirme](tutorial-routing.md)
+* [Öğretici: IoT Hub yönlendirme](tutorial-routing.md)

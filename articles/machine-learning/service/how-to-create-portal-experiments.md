@@ -1,246 +1,246 @@
 ---
-title: Oluşturma ve Portalı'nda denemeleri keşfedin
+title: Portal 'da denemeleri oluşturma ve araştırma
 titleSuffix: Azure Machine Learning service
-description: Oluşturma ve otomatik makine öğrenimi denemelerini portalında yönetme hakkında bilgi edinin
+description: Portalda otomatik makine öğrenimi denemeleri oluşturma ve yönetme hakkında bilgi edinin
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: tsikiksr
+ms.author: cgronlun
 author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/2019
-ms.openlocfilehash: 714283628e1b2ac445d36d0b07fe299b589a1cf0
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: 5eb3e94ff65e8a8b74f357a4cb8a517fd3837c5a
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67312811"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67871821"
 ---
-# <a name="create-and-explore-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>Oluşturma ve otomatik makine öğrenimi denemelerini (Önizleme) Azure portalında keşfedin
+# <a name="create-and-explore-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>Azure portal (Önizleme) içinde otomatik makine öğrenimi denemeleri oluşturma ve araştırma
 
- Bu makalede, oluşturma, çalıştırma ve otomatik makine öğrenimi denemelerini tek satırlık bir kod olmadan Azure portalında keşfedin öğrenin. Otomatik makine öğrenimi belirli verileriniz için hızla bir machine learning modeli oluşturmak için kullanılacak en iyi algoritmayı seçme işlemini otomatikleştirir. [Otomatik machine learning hakkında daha fazla bilgi edinin](concept-automated-ml.md).
+ Bu makalede, tek bir kod satırı olmadan Azure portal otomatik makine öğrenimi denemeleri oluşturmayı, çalıştırmayı ve araştırmanızı öğrenirsiniz. Otomatik makine öğrenimi, belirli verileriniz için kullanılacak en iyi algoritmayı seçme sürecini otomatikleştirir, böylece bir makine öğrenimi modelini hızlıca oluşturabilirsiniz. [Otomatik makine öğrenimi hakkında daha fazla bilgi edinin](concept-automated-ml.md).
 
- Daha fazla kod tabanlı bir deneyim tercih ederseniz, ayrıca [otomatik, makine öğrenimi denemelerini python'da yapılandırma](how-to-configure-auto-train.md) ile [Azure Machine Learning SDK'sı](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
+ Daha fazla kod tabanlı bir deneyim tercih ediyorsanız, [otomatik makine öğrenimi denemeleri](how-to-configure-auto-train.md) [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)ile Python 'da da yapılandırabilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. Deneyin [Azure Machine Learning hizmetinin ücretsiz veya Ücretli sürümüne](https://aka.ms/AMLFree) bugün.
+* Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning Service 'in ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
-* Bir Azure Machine Learning hizmeti çalışma alanı. Bkz: [bir Azure Machine Learning hizmeti çalışma alanı oluşturma](https://docs.microsoft.com/azure/machine-learning/service/setup-create-workspace).
+* Bir Azure Machine Learning hizmeti çalışma alanı. Bkz. [Azure Machine Learning hizmet çalışma alanı oluşturma](https://docs.microsoft.com/azure/machine-learning/service/setup-create-workspace).
 
 ## <a name="get-started"></a>başlarken
 
-Çalışma alanınızın sol bölmesine gidin. Machine Learning otomatik yazma (Önizleme) bölümü altında seçin.
+Çalışma alanınızın sol bölmesine gidin. Yazma (Önizleme) bölümünün altındaki otomatik Machine Learning seçin.
 
-![Azure portalında gezinme bölmesi](media/how-to-create-portal-experiments/nav-pane.png)
+![Azure portal gezinti bölmesi](media/how-to-create-portal-experiments/nav-pane.png)
 
- Bu otomatik Machine Learning ile tüm denemeler yapmak, ilk kez kullanıyorsanız, aşağıdaki görürsünüz:
+ Otomatik Machine Learning ile ilk kez denemeleri, şunları görürsünüz:
 
 ![Azure portal deneme giriş sayfası](media/how-to-create-portal-experiments/landing-page.png)
 
-Aksi takdirde, otomatik machine learning panonuzu otomatik, makine öğrenimi denemelerini, SDK'sı ile oluşturulan dahil olmak üzere bir bakış görürsünüz. Burada filtreleyebilirsiniz ve tarihe göre çalıştırmalarınızı keşfedin, adı denemeler yapın ve çalıştırma durumu.
+Aksi takdirde, SDK ile oluşturulanlar da dahil olmak üzere otomatik makine öğrenimi panonuzun tüm otomatik makine öğrenimi denemeleri bir genel bakışı olduğunu göreceksiniz. Burada, çalıştırmaları Tarih, deneme adı ve çalışma durumu ile filtreleyebilir ve keşfedebilirsiniz.
 
-![Azure portal deneme Panosu](media/how-to-create-portal-experiments/dashboard.png)
+![Azure portal deneme panosu](media/how-to-create-portal-experiments/dashboard.png)
 
 ## <a name="create-an-experiment"></a>Deneme oluşturma
 
-Aşağıdaki formu doldurmak için deneme oluşturma düğmesini seçin.
+Aşağıdaki formu doldurmak için deneme Oluştur düğmesini seçin.
 
-![Deneme formu oluşturma](media/how-to-create-portal-experiments/create-exp-name-compute.png)
+![Deneme formu oluştur](media/how-to-create-portal-experiments/create-exp-name-compute.png)
 
 1. Deneme adınızı girin.
 
-1. Profil oluşturma verilerini ve eğitim işine yönelik bir işlem seçin. Açılır menüde, var olan hesaplar listesi kullanılabilir. Yeni bir işlem oluşturmak için adım 3'ndaki yönergeleri izleyin.
+1. Veri profili oluşturma ve eğitim işi için bir işlem seçin. Mevcut hesaplamalarınızın listesi açılan menüde bulunabilir. Yeni bir işlem oluşturmak için adım 3 ' teki yönergeleri izleyin.
 
-1. Açmak için yeni bir işlem düğme Oluştur'u seçin, bölmenin altındaki ve bu deneme için işlem bağlamınızın yapılandırın.
+1. Aşağıdaki bölmeyi açmak için yeni bir işlem Oluştur düğmesini seçin ve bu deneme için işlem bağlamını yapılandırın.
 
-    ![Deneme için yeni işlem oluşturma](media/how-to-create-portal-experiments/create-new-compute.png)
+    ![Deneme için yeni işlem oluştur](media/how-to-create-portal-experiments/create-new-compute.png)
 
     Alan|Açıklama
     ---|---
-    İşlem adı| İşlem bağlamınızın tanımlayan benzersiz bir ad girin.
-    Sanal makine boyutu| İşlem için sanal makine boyutu seçin.
-    Ek ayarlar| *En düşük düğüm*: İşlem için düğüm sayısı alt sınırı girin. AML işlem düğüm sayısı alt sınırı 0'dır. Profil oluşturma verilerini etkinleştirmek için 1 veya daha fazla düğüm olmalıdır. <br> *En fazla düğüm*: İşlem için en fazla düğüm sayısını girin. 6 düğümleri AML bir işlem için varsayılandır.
+    İşlem adı| İşlem bağlamını tanımlayan benzersiz bir ad girin.
+    Sanal makine boyutu| İşlem için sanal makine boyutunu seçin.
+    Ek ayarlar| *En az düğüm*: İşlem için en az düğüm sayısını girin. AML işlem için düğüm sayısı alt sınırı 0 ' dır. Veri profilini oluşturmayı etkinleştirmek için, 1 veya daha fazla düğüme sahip olmanız gerekir. <br> *En fazla düğüm*: İşlem için en fazla düğüm sayısını girin. Varsayılan değer bir AML Işlem için 6 düğümünüz.
 
-      Yeni işlem oluşturulmasını başlatmak için **Oluştur**. Bu işlem birkaç dakika sürebilir.
+      Yeni işlem oluşturma işlemine başlamak için **Oluştur**' u seçin. Bu işlem birkaç dakika sürebilir.
 
       >[!NOTE]
-      > İşlem adınızı seçin/oluşturduğunuz işlem olduğunu bildirecektir *etkinleştirilmiş profil oluşturma*. (Daha fazla ayrıntı için 7b, profil oluşturma verilerini bakın).
+      > İşlem adınız, seçtiğiniz işlem *profil oluşturma*/oluşturma işleminin etkin olup olmadığını gösterir. (Veri profili oluşturma hakkında daha fazla bilgi için bkz. 7B).
 
-1. Verileriniz için bir depolama hesabı seçin. Genel Önizleme, yalnızca yerel dosya karşıya yükleme ve Azure Blob Depolama hesaplarını destekler.
+1. Verileriniz için bir depolama hesabı seçin. Genel Önizleme yalnızca yerel dosya yüklemelerini ve Azure Blob depolama hesaplarını destekler.
 
 1. Bir depolama kapsayıcısı seçin.
 
-1. Bir veri dosyası, depolama kapsayıcısından seçin veya yerel bilgisayarınızdan bir dosyasını kapsayıcıya yükleyin.
+1. Depolama kapsayıcıınızdan bir veri dosyası seçin veya yerel bilgisayarınızdaki bir dosyayı kapsayıcıya yükleyin.
 
-    ![Deneme için verileri dosyası seçin](media/how-to-create-portal-experiments/select-file.png)
+    ![Deneme için veri dosyası seçin](media/how-to-create-portal-experiments/select-file.png)
 
-1. Bu deneme için verilerinizi daha fazla yapılandırmak için Önizleme ve profili sekmelerini kullanın.
+1. Bu deneme için verilerinizi daha fazla yapılandırmak üzere önizleme ve profil sekmelerini kullanın.
 
-    1. Önizleme sekmesinde verilerinizi üst bilgileri içerip içermediğini belirtmek ve eğitim kullanma (sütun) özellikleri seçin **dahil edilen** her özellik sütununda düğmeleri geçin.
+    1. Önizleme sekmesinde, verilerinizin üstbilgiler içerip içermeyeceğini belirtin ve her bir özellik sütunundaki **dahil edilen** anahtar düğmelerini kullanarak eğitim için özellikleri (sütunlar) seçin.
 
-        ![Veri önizlemesi](media/how-to-create-portal-experiments/data-preview.png)
+        ![Veri önizleme](media/how-to-create-portal-experiments/data-preview.png)
 
-    1. Profili sekmesinde görüntüleyebileceğiniz [veri profili](#profile) özelliği, hem de dağıtım, türü ve her Özet istatistikleri (ortalama, ORTANCA, en yüksek/dak ve benzeri).
+    1. Profil sekmesinde, her birinin dağıtım, tür ve Özet istatistikleri (ortalama, ortanca, en fazla/en düşük vb.) ile [veri profilini](#profile) de görüntüleyebilirsiniz.
 
         ![Veri profili sekmesi](media/how-to-create-portal-experiments/data-profile.png)
 
         >[!NOTE]
-        > Aşağıdaki hata iletisini işlem bağlamınızın ise görünür **değil** etkinleştirilmiş profil oluşturma: *Profil oluşturma verilerini, yalnızca çalışmakta olan işlem hedeflerine yönelik kullanılabilir*.
+        > İşlem **içeriğiniz profil oluşturma** etkinleştirilmemişse aşağıdaki hata iletisi görüntülenir: *Veri profili oluşturma yalnızca zaten çalışmakta olan işlem hedefleri için kullanılabilir*.
 
-1. Eğitim işi türünü seçin: Sınıflandırma, regresyon veya tahmin.
+1. Eğitim işi türünü seçin: sınıflandırma, regresyon veya tahmin.
 
-1. Hedef sütun seçin. Öngörüler yapmak istediğiniz sütun.
+1. Hedef sütun ' u seçin. Tahmin yapmak istediğiniz sütun.
 
 1. Tahmin için:
-    1. Saat sütununu seçin: Bu sütun için kullanılacak saat verilerini içerir.
-    1. Tahmin horizon seçin: Ne kadar zaman birimlerini (dakika/saat/gün/hafta/ay/yıl) modeli için geleceği tahmin etmeyi mümkün olacaktır gösterir. Daha fazla model, daha az doğru olacak geleceğe tahmin etmek için gereklidir. [Daha fazla hakkında tahmini ve tahmin öğrenin horizon](how-to-auto-train-forecast.md).
+    1. Zaman sütununu seçin: Bu sütun kullanılacak saat verilerini içerir.
+    1. Tahmin ufkunu seçin: Modelin kaç zaman birimi (dakika/saat/gün/hafta/ay/yıl) gelecek şekilde tahmin edemeyeceğini belirtin. Daha sonra modelin daha iyi tahmin edilmesi gerektiğinde, daha az doğru olacaktır. [Tahmin ve tahmin ufku hakkında daha fazla bilgi edinin](how-to-auto-train-forecast.md).
 
-1. (İsteğe bağlı) Gelişmiş ayarlar: eğitim işini daha iyi denetlemek için kullanabileceğiniz ek ayarlar.
+1. Seçim Gelişmiş ayarlar: eğitim işini daha iyi denetleyebilmeniz için kullanabileceğiniz ek ayarlar.
 
     Gelişmiş ayarlar|Açıklama
     ------|------
-    Birincil Metrik| Model Puanlama için kullanılan ana ölçümünü. [Model ölçümleri hakkında daha fazla bilgi](how-to-configure-auto-train.md#explore-model-metrics).
-    Sonlandırma kriteri| Aşağıdaki ölçütleri karşılandığında, eğitim işine tam tamamlanmadan önce sona erer. <br> *Eğitim işi süresi (dakika)* : Eğitim işini çalıştırmak izin vermek için ne kadar.  <br> *En yüksek yineleme sayısı*: Eğitim işi test etmek için işlem hatları (Yineleme) sayısı. İş belirtilen yineleme sayısını birden fazla çalışmaz. <br> *Ölçüm puanı eşiği*:  Tüm işlem hatları için en düşük ölçüm puanı. Bu, erişmek istediğiniz bir tanımlanmış hedef ölçüm varsa, daha fazla zaman eğitim işini daha harcadığınız değil, sağlar.
-    Ön işleme| Etkinleştirme veya devre dışı otomatik makine öğrenimi tarafından yapılan ön işleme seçin. Ön işleme otomatik veri temizleme, hazırlama ve dönüştürme yapay özellikleri oluşturulacak içerir. [Ön işleme hakkında daha fazla bilgi](#preprocess).
-    Doğrulama| Eğitim işi kullanmak için çapraz doğrulama seçeneklerden birini seçin. [Daha fazla doğrulama bilgi](how-to-configure-auto-train.md).
-    Eşzamanlılık| Çok çekirdekli işlem kullanırken istediğiniz çok çekirdekli sınırları seçin.
-    Engellenen algoritması| Algoritmalar ve eğitim işinden çıkarmak istediğiniz seçin.
+    Birincil ölçüm| Modelinize Puanlama için kullanılan ana ölçüm. [Model ölçümleri hakkında daha fazla bilgi edinin](how-to-configure-auto-train.md#explore-model-metrics).
+    Çıkış kriterleri| Bu ölçütlerden herhangi biri karşılandığında, eğitim işi tam tamamlanmadan önce sonlanır. <br> *Eğitim iş süresi (dakika)* : Eğitim işinin ne kadar süreyle çalışmasına izin verme.  <br> *En fazla yineleme sayısı*: Eğitim işinde sınanacak maksimum işlem hattı sayısı (yineleme). İş, belirtilen sayıda yinelemeden daha fazla çalıştırmayacak. <br> *Ölçüm puan eşiği*:  Tüm işlem hatları için en düşük ölçüm puanı. Bu, ulaşmak istediğiniz tanımlı bir hedef ölçüsünün olması durumunda eğitim işinde gerekli olandan daha fazla zaman harcamamanızı sağlar.
+    Ön| Otomatik makine öğrenimi tarafından gerçekleştirilen ön işleme özelliğini etkinleştirmek veya devre dışı bırakmak için seçin. Ön işleme, yapay özellikler oluşturmak için otomatik veri temizleme, hazırlama ve dönüştürme içerir. [Ön işleme hakkında daha fazla bilgi edinin](#preprocess).
+    Doğrulama| Eğitim işinde kullanmak için çapraz doğrulama seçeneklerinden birini seçin. [Çapraz doğrulama hakkında daha fazla bilgi edinin](how-to-configure-auto-train.md).
+    Eşzamanlılık| Çok çekirdekli işlem kullanırken kullanmak istediğiniz çok çekirdekli limitleri seçin.
+    Engellenen algoritma| Eğitim işinden dışlamak istediğiniz algoritmaları seçin.
 
-   ![Gelişmiş ayarları formu](media/how-to-create-portal-experiments/advanced-settings.png)
+   ![Gelişmiş ayarlar formu](media/how-to-create-portal-experiments/advanced-settings.png)
 
 > [!NOTE]
-> Bilgi araç ipucu alanları hakkında daha fazla bilgi için tıklayın.
+> Alanlar hakkında daha fazla bilgi için bilgi araç ipucu ' na tıklayın.
 
 <a name="profile"></a>
 
-### <a name="data-profiling"></a>Profil oluşturma veri
+### <a name="data-profiling"></a>Veri profili oluşturma
 
-Veri kümeniz ML kullanıma hazır olup olmadığını doğrulamak için veri kümesi arasında çok sayıda çeşitli Özet istatistikleri elde edebilirsiniz. Sayısal olmayan sütunlar için min, Maks ve hata sayısı gibi yalnızca temel istatistikleri içerirler. Sayısal sütunları için kendi istatistiksel dakika ve tahmini quantiles da gözden geçirebilirsiniz. Özellikle, bizim veri profili içerir:
+Veri ayarlanmış olup olmadığını doğrulamak için veri kümesi genelinde çok sayıda Özet istatistiği alabilir. Sayısal olmayan sütunlarda yalnızca min, Max ve Error Count gibi temel istatistikler bulunur. Sayısal sütunlarda, istatistiksel ve tahmini quantiles değerlerini de gözden geçirebilirsiniz. Veri profiliniz özellikle şunları içerir:
 
-* **Özellik**: özetlenen sütun adı.
+* **Özellik**: özetlenen sütunun adı.
 
-* **Profili**: satır içi görselleştirme tabanlı çıkarımı yapılan tür üzerinde. Örneğin, ondalık (sayısal) histogramlar benzetilir ancak dizeler, Boole ve tarihleri değer sayıları olacaktır. Bu, veri dağıtımını hızlı bir anlayış kazanmak sağlar.
+* **Profil**: gösterilen türü temel alan satır içi görselleştirme. Örneğin, dizeler, Boole değerleri ve tarihler değer sayılarına sahip olacaktır, ancak Ondalıklar (Numerics) de yaklaşık histogramlar olur. Bu, verilerin dağıtımını hızlı bir şekilde anlayabilmeniz için size izin verir.
 
-* **Dağıtım türü**: bir sütunda türleri bir satır içi değer sayısı. Null değerlere kendi türü olduğundan, bu görselleştirmeyi tek ya da eksik değerleri algılamak için faydalıdır.
+* **Tür dağıtımı**: bir sütun içindeki türlerin satır içi değer sayısı. Null değerler kendi türlerdir, bu nedenle bu görselleştirme tek veya eksik değerleri algılamak için yararlıdır.
 
-* **Tür**: çıkarsanan sütun türü. Olası değerler şunlardır: dizeler, Boole, tarihleri ve ondalık basamak.
+* **Tür**: sütunun Çıkarsanan türü. Olası değerler şunlardır: dizeler, Boole değerleri, tarihler ve ondalıklar.
 
-* **Min**: en düşük değer sütunun. Boş girişleri türü yok (örneğin, Boole) devralınan sıralama özellikler için görünür.
+* **Min**: sütunun minimum değeri. Boş girdiler, türü bir devralınan sıralamaya (örn. Boolean) sahip olmayan özellikler için görünür.
 
-* **En fazla**: sütun maksimum değer. "Min gibi" boş girişleri ilgisiz türlerine sahip özellikler için görünür.
+* **Max**: sütunun en büyük değeri. "Enaz" gibi boş girişler, ilgisiz türler içeren özellikler için görünür.
 
-* **Sayısı**: sütun eksik ve eksik giriş toplam sayısı.
+* **Sayı**: sütundaki eksik ve eksik olmayan girdilerin toplam sayısı.
 
-* **Sayısı eksik**: sütun eksik olmayan giriş sayısı. Bunlar "eksik yok sayma." katkıda bulunan olmayan şekilde boş dizeleri ve hataları değerler olarak kabul edilir olduğunu unutmayın.
+* **Eksik sayı**: sütundaki girdi sayısı eksik. Boş dizelerin ve hataların değer olarak değerlendirildiğine ve bu nedenle "eksik saymayacak" öğesine katkıda bulunmayacağını unutmayın.
 
-* **Quantiles** (aralıklarla 0.1, 1, 5, 25, 50, 75, 95, 99 ve % 99,9): bir fikir veri dağıtımını sağlamak için her quantile yaklaşık değerlerinde. Boş girişleri, ilgisiz türlerine sahip özellikler için görünür.
+* **Quantiles** (0,1, 1, 5, 25, 50, 75, 95, 99 ve 99,9% aralıklarında): her bir satışla, verilerin dağıtımına ilişkin bir fikir sağlamak için yaklaşık değerler. İlgisiz türler içeren özellikler için boş girdiler görüntülenir.
 
-* **Ortalama**: sütun aritmetik ortalaması. Boş girişleri, ilgisiz türlerine sahip özellikler için görünür.
+* **Ortalama**: sütunun aritmetik ortalaması. İlgisiz türler içeren özellikler için boş girdiler görüntülenir.
 
-* **Standart sapma**: sütunun standart sapması. Boş girişleri, ilgisiz türlerine sahip özellikler için görünür.
+* **Standart sapma**: sütunun standart sapması. İlgisiz türler içeren özellikler için boş girdiler görüntülenir.
 
-* **Varyans**: sütun sapması. Boş girişleri, ilgisiz türlerine sahip özellikler için görünür.
+* **Varyans**: sütunun varyansı. İlgisiz türler içeren özellikler için boş girdiler görüntülenir.
 
-* **Komutunu**: komutunu sütun. Boş girişleri, ilgisiz türlerine sahip özellikler için görünür.
+* **Çarpıklık**: sütunun çarpıklığı. İlgisiz türler içeren özellikler için boş girdiler görüntülenir.
 
-* **Basıklık**: basıklığını sütun. Boş girişleri, ilgisiz türlerine sahip özellikler için görünür.
+* **Basıklık**: sütunun basıklık. İlgisiz türler içeren özellikler için boş girdiler görüntülenir.
 
 <a name="preprocess"></a>
 
 ### <a name="advanced-preprocessing"></a>Gelişmiş ön işleme
 
-Denemelerinizi yapılandırırken, Gelişmiş ayarını etkinleştirebilirsiniz `Preprocess`. Bunu yapmak, aşağıdaki veri ön işleme ve özellik kazandırma sayesinde adımları otomatik olarak gerçekleştirilir böylece anlamına gelir.
+Denemeleri 'nizi yapılandırırken gelişmiş ayarı `Preprocess`etkinleştirebilirsiniz. Bunun yapılması, aşağıdaki veri ön işleme ve korleştirme adımlarının otomatik olarak gerçekleştirildiği anlamına gelir.
 
-|Ön işleme&nbsp;adımları| Açıklama |
+|Ön&nbsp;işleme adımları| Açıklama |
 | ------------- | ------------- |
-|Yüksek bir kardinalite veya herhangi bir fark özellik bırakın|Bu özellikler eksik, tüm satırlar boyunca veya son derece yüksek kardinalite (örneğin, karma, kimlikleri veya GUID'leri) ile aynı değeri tüm değerleri de dahil olmak üzere, eğitim ve doğrulama kümelerinden bırakın.|
-|Eksik değerleri impute|Sütundaki değerlerin ortalamasını ile sayısal özellikler için impute.<br/><br/>Kategorik özellikler için en sık kullanılan değerle impute.|
-|Ek özellikler oluşturma|DateTime özellikleri: Yıl, ay, gün, haftanın günü, yıl, Çeyrek, yıl, saat, dakika, saniye haftanın günü.<br/><br/>Metin özellikleri: Terim sıklığı unigrams, BI-gram ve üç karakter gram göre.|
-|Dönüştürme ve kodlama |Az sayıda benzersiz değere sayısal özelliklerle kategorik özelliklerini dönüştürülür.<br/><br/>Sık erişimli bir kodlama için düşük kardinalite kategorik gerçekleştirilir; yüksek kardinalite için biri-sık erişimli-hash kodlama.|
-|Word katıştırma|Metin özelliği vektörleri metin belirteçlerin önceden eğitilmiş bir modeli kullanarak cümle vektörleri dönüştürür Oluşturucu. Bir belgedeki her sözcüğün katıştırma vektör birlikte bir belge özelliği vektör üretmek için toplanır.|
-|Hedef kodlamaları|Kategorik özellikler için her kategori regresyon sorunları ve sınıf olasılığa sınıflandırma sorunlar için her sınıf için ortalama hedef değer ile eşler. Çapraz doğrulama sıklığa dayalı ağırlığı ve k Katlama sığdırma seyrek veri kategorilere göre neden gürültü ve eşleme üzerinden azaltmak için uygulanır.|
-|Hedef metin kodlaması|Metin girişi için sözcükleri paketi ile üst üste doğrusal bir model, her sınıf olasılığını oluşturmak için kullanılır.|
-|Kanıt (WoE) ağırlığı|WoE bağıntı hedef sütunu için kategorik sütunlar olarak hesaplar. Sınıfının vs sınıf olasılıklar oranını günlük olarak hesaplanır. Bu adım, bir sayısal özellik sütunu sınıfı başına çıkarır ve açıkça eksik değerleri ve aykırı işleme impute ihtiyacını ortadan kaldırır.|
-|Küme uzaklığı|Tüm sayısal sütunlarda k-ortalamaları kümeleme modeli eğitir.  Çıkışlar k yeni özellikler, her örnek için her kümenin kütle merkezi uzaklığı içeren küme başına yeni bir sayısal özellik.|
+|Yüksek bir kardinalite veya herhangi bir fark özellik bırakın|Tüm değerleri eksik olan özellikler de dahil olmak üzere eğitim ve doğrulama kümelerinden bunları bırakın, tüm satırlarda veya çok yüksek kardinalite (örneğin, karma, kimlik veya GUID) ile aynı değeri kullanın.|
+|Eksik değerleri impute|Sayısal özellikler için sütunundaki değerleri ortalama olan ımpute.<br/><br/>Kategorik özellikler için en sık değer içeren ımpute.|
+|Ek özellikler oluşturma|Tarih saat özellikleri için: Yıl, ay, gün, haftanın günü, yılın günü, çeyrek, yılın haftası, saat, dakika, saniye.<br/><br/>Metin özellikleri için: Tekli gram, Çift gram ve üçlü karakter-gram temelinde Dönem sıklığı.|
+|Dönüştür ve kodla |Birkaç benzersiz değer içeren sayısal özellikler kategorik özelliklere dönüştürülür.<br/><br/>Düşük kardinalite kategorik için tek bir etkin kodlama gerçekleştirilir; yüksek kardinalite, tek bir sıcak karma kodlama için.|
+|Sözcük katıştırlamaları|Metin belirteçlerinin vektörlerini, önceden eğitilen bir model kullanarak tümce vektörlerine dönüştüren metin korleştirici. Belge özellik vektörü oluşturmak için bir belgedeki her bir sözcüğün katıştırma vektörü birlikte toplanır.|
+|Hedef kodlamalar|Kategorik özellikler için, her bir kategoriyi gerileme sorunları için Ortalama hedef değeriyle ve sınıflandırma sorunları için her bir sınıfın sınıf olasılığa eşler. Sıklık tabanlı ağırlığa ve k katlamalı çapraz doğrulama, seyrek veri kategorilerinin neden olduğu eşlemenin ve gürültü üzerine gitmek için geçerlidir.|
+|Metin hedefi kodlaması|Metin girişi için, her bir sınıfın olasılığını oluşturmak için kelimeleri olan bir yığılmış Doğrusal model kullanılır.|
+|Kanıt ağırlığı (WoE)|, Kategorik sütunların bağıntısı olarak hedef sütuna bir ölçü olarak, WoE hesaplar. Sınıf içi ve sınıf dışı olasılıkların oranının günlüğü olarak hesaplanır. Bu adım, her sınıf için bir sayısal özellik sütunu verir ve eksik değerler ve aykırı değer işleme gereksinimini ortadan kaldırır.|
+|Küme uzaklığı|K. a, tüm sayısal sütunlarda kümeleme modeli anlamına gelir.  Her bir örneğin her bir kümenin centroıd değerine her bir örnek arasındaki mesafeyi içeren, her küme için yeni bir sayısal özellik olan yeni özellik çıkışları.|
 
-## <a name="run-experiment-and-view-results"></a>Denemeyi çalıştırma ve sonuçları görüntüleme
+## <a name="run-experiment-and-view-results"></a>Deneme çalıştırma ve sonuçları görüntüleme
 
-Denemeyi çalıştırmak için Başlat'a tıklayın. Denemeyi Hazırlama işlemi birkaç dakika sürer.
+Denemeyi çalıştırmak için Başlat ' a tıklayın. Deneme hazırlama işlemi birkaç dakika sürer.
 
 ### <a name="view-experiment-details"></a>Deneme ayrıntılarını görüntüle
 
-Deneme Hazırlık aşaması tamamlandıktan sonra Çalıştır ayrıntı ekranı görürsünüz. Bu size, tam oluşturulan modellerin listesini sağlar. Varsayılan olarak, en yüksek puanlar modeli, parametrelere dayalı listesinin üstünde. Daha fazla model eğitim işini çalışır gibi grafik ve yineleme listesi eklenir. Şu ana kadar üretilen modelleri için hızlı ölçümler karşılaştırması almak için yineleme grafik kullanın.
+Deneme hazırlığı aşaması tamamlandıktan sonra, ayrıntıları Çalıştır ekranını görürsünüz. Bu size oluşturulan modellerin tam bir listesini sağlar. Varsayılan olarak, parametrelerinizi temel alarak en yüksek düzeyde puan veren model listenin en üstünde yer alır. Eğitim işi daha fazla model denediğinde yineleme listesine ve grafiğe eklenir. Şimdiye kadar üretilen modellerin ölçümlerinin hızlı bir şekilde karşılaştırılmasını sağlamak için yineleme grafiğini kullanın.
 
-Eğitim işleri her işlem hattı çalıştırma tamamlanması biraz sürebilir.
+Eğitim işleri, her işlem hattının çalışmayı tamamlaması biraz zaman alabilir.
 
-![Çalıştırma ayrıntıları Panosu](media/how-to-create-portal-experiments/run-details.png)
+![Çalışma ayrıntıları panosu](media/how-to-create-portal-experiments/run-details.png)
 
-### <a name="view-training-run-details"></a>Çalıştırma Ayrıntıları görünümünü eğitim
+### <a name="view-training-run-details"></a>Eğitim çalışma ayrıntılarını görüntüle
 
-Herhangi bir eğitim gibi performans ölçümlerini ve dağılım grafikleri çalıştırma ayrıntılarını görmek için çıkış modelleri detayına gidin. [Grafikler hakkında daha fazla bilgi](how-to-track-experiments.md#understanding-automated-ml-charts).
+Performans ölçümleri ve dağıtım grafikleri gibi eğitim çalıştırma ayrıntılarını görmek için çıkış modellerinin herhangi birinin detayına gidin. [Grafikler hakkında daha fazla bilgi edinin](how-to-track-experiments.md#understanding-automated-ml-charts).
 
-![Yineleme ayrıntılarını](media/how-to-create-portal-experiments/iteration-details.png)
+![Yineleme ayrıntıları](media/how-to-create-portal-experiments/iteration-details.png)
 
 ## <a name="deploy-model"></a>Model dağıtma
 
-Eldeki en iyi modeli oluşturduktan sonra yeni veri tahmin etmek için bir web hizmeti olarak dağıtma zamanı geldi.
+En iyi modeli elde etmeniz durumunda, yeni verileri tahmin etmek için bunu bir Web hizmeti olarak dağıtmanız zaman alır.
 
-Otomatik ML model dağıtımı ile kod yazmadan yardımcı olur:
+Otomatikleştirilmiş ML, kodu yazmadan modeli dağıtmanıza yardımcı olur:
 
 1. Dağıtım için birkaç seçeneğiniz vardır. 
-    1. Deneme için seçin ölçüm ölçütleri temel alarak en iyi modeli dağıtmak istiyorsanız ayarladığınız **en iyi modeli dağıtma** gelen **çalıştırma ayrıntıları** sayfası.
+    1. Deneme için ayarladığınız ölçüm ölçütlerine göre en iyi modeli dağıtmak istiyorsanız, **ayrıntıları Çalıştır** sayfasından **en iyi modeli dağıt** ' ı seçin.
 
-        ![Dağıt düğmesi modeli](media/how-to-create-portal-experiments/deploy-model-button.png)
+        ![Modeli dağıt düğmesi](media/how-to-create-portal-experiments/deploy-model-button.png)
 
-    1. Bir modele yineleme dağıtmak istiyorsanız, kendi özel çalışma ayrıntı sayfası açın ve seçmek için model üzerinde detaya **Model dağıtma**.
+    1. Belirli bir model yinelemesini dağıtmak istiyorsanız, modelin detayına gidin ve özel çalışma ayrıntısı sayfasını açın ve **modeli dağıt**' ı seçin.
 
-        ![Dağıt düğmesi modeli](media/how-to-create-portal-experiments/deploy-model-button2.png)
+        ![Modeli dağıt düğmesi](media/how-to-create-portal-experiments/deploy-model-button2.png)
 
-1. Modeli kaydedin hizmete ilk adımdır. "Modeli Kaydet"'i seçin ve kayıt işleminin tamamlanması için bekleyin.
+1. İlk adım, modeli hizmete kaydettirebilir. "Modeli Kaydet" i seçin ve kayıt işleminin tamamlanmasını bekleyin.
 
-    ![Model dikey dağıtma](media/how-to-create-portal-experiments/deploy-model-blade.png)
+    ![Model dağıtma dikey penceresi](media/how-to-create-portal-experiments/deploy-model-blade.png)
 
-1. Model kaydedildiğinde, Puanlama betik (scoring.py) ve dağıtım sırasında kullanılacak ortamı betik (condaEnv.yml) indirmek mümkün olacaktır.
+1. Model kaydedildikten sonra, dağıtım sırasında kullanılacak Puanlama betiğini (scoring.py) ve ortam betiğini (Condadenv. yıml) indirebilirsiniz.
 
-1. Puanlama betiği ve ortam betik indirildiğinde, Git **varlıklar** seçin ve sol Gezinti Bölmesi Dikey penceresinde **modelleri**.
+1. Puanlama betiği ve ortam betiği indirildiğinde sol gezinti bölmesinin **varlıklar** dikey penceresine gidin ve **modeller**' ı seçin.
 
-    ![Gezinti bölmesinde modelleri](media/how-to-create-portal-experiments/nav-pane-models.png)
+    ![Gezinti Bölmesi modelleri](media/how-to-create-portal-experiments/nav-pane-models.png)
 
-1. Kaydettiğiniz model seçin ve "Görüntü Oluştur" seçeneğini belirleyin.
+1. Kaydettiğiniz modeli seçin ve "görüntü oluştur" ' u seçin.
 
-    Çalıştırma kimliği, yineleme sayısı aşağıdaki biçimde içerecektir açıklamasını tarafından modeli tanımlayabilirsiniz: *< Run_ID > _ < Iteration_number > _Model*
+    Aşağıdaki biçimde çalışma KIMLIĞI, yineleme numarası dahil olmak üzere modeli açıklamasına göre tanımlayabilirsiniz: *< Run_ID > _ < Iteration_number > _Model*
 
-    ![Modelleri: Görüntü oluşturma](media/how-to-create-portal-experiments/model-create-image.png)
+    ![Modelde Görüntü oluştur](media/how-to-create-portal-experiments/model-create-image.png)
 
 1. Görüntü için bir ad girin. 
-1. Seçin **Gözat** daha önce indirdiğiniz Puanlama dosyası (scoring.py) yüklemek için "Puanlama dosyası" kutusunun yanındaki düğmeyi.
+1. Daha önce indirdiğiniz Puanlama dosyasını (scoring.py) karşıya yüklemek için "Puanlama dosyası" kutusunun yanındaki **Git düğmesini seçin** .
 
-1. Seçin **Gözat** daha önce indirdiğiniz ortam dosyası (condaEnv.yml) yüklemek için "Conda dosya" kutusunun yanındaki düğmeyi.
+1. Daha önce indirdiğiniz ortam dosyasını (Condadenv. yıml) karşıya yüklemek için "Conda File" kutusunun yanındaki **göz at** düğmesini seçin.
 
-    Kendi Puanlama betiği ve conda dosyası kullanmak, yapabilir ek dosyaları karşıya yükleme. [Puanlama betiği hakkında daha fazla bilgi](how-to-deploy-and-where.md#script).
+    Kendi Puanlama betiğinizi ve Conda dosyanızı kullanabilir ve ek dosyaları karşıya yükleyebilirsiniz. [Puanlama betiği hakkında daha fazla bilgi edinin](how-to-deploy-and-where.md#script).
 
       >[!Important]
-      > Dosya adları gerekir altında 32 karakter olmalı ve başlamalı ve alfasayısal karakterler ile bitmelidir. Tire, alt çizgi, nokta ve arasında alfasayısal karakterler içerebilir. Alanları izin verilmez.
+      > Dosya adları 32 karakterden oluşmalıdır ve alfasayısal karakterlerle başlamalı ve bitmelidir. Arasına tire, alt çizgi, nokta ve alfasayısal karakterler içerebilir. Boşluklara izin verilmez.
 
-    ![Görüntü oluşturma](media/how-to-create-portal-experiments/create-image.png)
+    ![Görüntü oluştur](media/how-to-create-portal-experiments/create-image.png)
 
-1. Görüntü oluşturma işlemini başlatmak için "Oluştur" düğmesini seçin. Bu kez tamamlanması birkaç dakika sürer, üst çubukta bir ileti görürsünüz.
-1. "Görüntüler" sekmesine gidin, dağıtmak istediğiniz görüntüyü yanındaki onay kutusunu işaretleyin ve "dağıtım oluştur" seçeneğini belirleyin. [Dağıtımları hakkında daha fazla bilgi](how-to-deploy-and-where.md).
+1. Görüntü oluşturmayı başlatmak için "Oluştur" düğmesini seçin. Bunun tamamlanması birkaç dakika sürer, bu işlem tamamlandığında üstteki çubukta bir ileti görürsünüz.
+1. "Görüntüler" sekmesine gidin, dağıtmak istediğiniz görüntünün yanındaki onay kutusunu işaretleyin ve "dağıtım oluştur" ' u seçin. [Dağıtımlar hakkında daha fazla bilgi edinin](how-to-deploy-and-where.md).
 
     Dağıtım için 2 seçenek vardır.
-     + Azure Container Instance (ACI) - bu amacı yerine uygun ölçekte operasyonel dağıtımı test etmek için daha kullanılır. En az bir çekirdek için değerleri girin emin _CPU rezervasyon kapasitesi_ve en az bir gigabayt (GB) için _bellek ayırma kapasitesi_
-     + Azure Kubernetes Service'i (AKS)) - Bu seçenek, uygun ölçekte dağıtım için kullanılabilir. Hazır bir AKS göre işlem gerekir.
+     + Azure Container Instance (acı)-Bu, ölçekte işlemsel dağıtım yerine test amaçlı daha fazla kullanılır. _CPU Reserve kapasitesi_için en az bir çekirdek ve _bellek ayırma kapasitesi_ için en az bir gigabayt (GB) değerlerini doldurduğunuzdan emin olun
+     + Azure Kubernetes hizmeti (AKS))-Bu seçenek ölçekli dağıtım içindir. AKS tabanlı bir işlem için hazırlık yapmanız gerekir.
 
-     ![Görüntüler: Dağıtım oluşturma](media/how-to-create-portal-experiments/images-create-deployment.png)
+     ![Yansımasını Dağıtım oluşturma](media/how-to-create-portal-experiments/images-create-deployment.png)
 
-1. İşiniz bittiğinde **Oluştur**’u seçin. Modeli dağıtma, her işlem hattı çalıştırma tamamlanması birkaç dakika sürebilir.
+1. İşiniz bittiğinde **Oluştur**’u seçin. Modelin dağıtımı, her bir işlem hattının çalışmayı tamamlaması birkaç dakika sürebilir.
 
-1. İşte bu kadar! Tahminler üretmek için bir işletimsel web Hizmetim var.
+1. İşte bu kadar! Tahmin oluşturmak için işlemsel bir Web hizmetiniz vardır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Otomatik machine learning hakkında daha fazla bilgi edinin](concept-automated-ml.md) ve Azure Machine Learning.
-* [Bir web hizmetinin nasıl kullanılacağı hakkında bilgi edinin](https://docs.microsoft.com/azure/machine-learning/service/how-to-consume-web-service).
+* [Otomatik makine öğrenimi ve Azure Machine Learning hakkında daha fazla bilgi edinin](concept-automated-ml.md) .
+* [Bir Web hizmetini kullanmayı öğrenin](https://docs.microsoft.com/azure/machine-learning/service/how-to-consume-web-service).

@@ -1,6 +1,6 @@
 ---
-title: 'Azure Cosmos DB: SQL .NET API, SDK ve kaynakları'
-description: Tüm SQL .NET API ve yayın tarihleri, sona erme tarihlerini ve her bir Azure Cosmos DB .NET SDK'sı sürümü arasında yapılan değişiklikler dahil olmak üzere SDK'sı hakkında bilgi edinin.
+title: 'Azure Cosmos DB: SQL .NET API, SDK & kaynakları'
+description: Sürüm tarihleri, kullanımdan kaldırma tarihleri ve Azure Cosmos DB .NET SDK 'nın her sürümü arasında yapılan değişiklikler dahil olmak üzere SQL .NET API 'SI ve SDK hakkında bilgi edinin.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -8,16 +8,17 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/09/2018
 ms.author: sngun
-ms.openlocfilehash: 4f502984a09f81b5aaf0568c84b75832f8164151
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: d68e957ece5c634ed1ce069218df717a4fe0952f
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67541040"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68261262"
 ---
-# <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB SQL API'si için .NET SDK: İndirme ve sürüm notları
+# <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>SQL API için Azure Cosmos DB .NET SDK: Notları indir ve serbest bırak
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
+> * [.NET](sql-api-sdk-dotnet-standard.md)
 > * [.NET değişiklik akışı](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
@@ -34,42 +35,38 @@ ms.locfileid: "67541040"
 |---|---|
 |**SDK'sını indirme**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)|
 |**API belgeleri**|[.NET API başvuru belgeleri](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)|
-|**Örnekler**|[.NET kodu örnekleri](sql-api-dotnet-samples.md)|
+|**Örnekler**|[.NET kodu örnekleri](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples)|
 |**Kullanmaya başlama**|[Azure Cosmos DB .NET SDK ile çalışmaya başlama](sql-api-get-started.md)|
 |**Web uygulaması Öğreticisi**|[Azure Cosmos DB ile Web uygulaması geliştirme](sql-api-dotnet-application.md)|
 |**Geçerli desteklenen çerçevesi**|[Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)|
 
 ## <a name="release-notes"></a>Sürüm notları
 
-### <a name="a-name3001-preview3001-preview"></a><a name="3.0.0.1-preview"/>3.0.0.1-Preview
-* 1 önizlemesi [sürüm 3.0.0](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) genel önizlemesi için .NET SDK'sının.
-* Hedef .NET framework 4.6.1+ .NET ve .NET Core 2.0 + destekleyen standardı
-* Yeni nesne modeli, üst düzey CosmosClient ve yöntemleri ile ilgili CosmosDatabases ve CosmosContainers CosmosItems sınıflar arasında bölün. 
-* Akışları için destek. 
-* Durum kodu döndürür ve yanıt döndürüldüğünde yalnızca durum sunucudan CosmosResponseMessage güncelleştirildi. 
+> [!NOTE]
+> .NET Framework kullanıyorsanız, lütfen .NET Standard hedefleyen [.NET SDK 'sının](sql-api-sdk-dotnet-standard.md)en son sürüm 3. x sürümünü inceleyin. 
 
 ### <a name="a-name251251"></a><a name="2.5.1"/>2.5.1
 
-* SDK'ın System.Net.Http sürümü artık NuGet paketinde tanımlanan eşleşir.
-* Özgün biri başarısız olursa farklı bir bölgeye geri yazma isteklerine izin verin.
-* Oturumu yeniden deneme ilkesi için yazma isteği ekleyin.
+* SDK 'nın System .net. http sürümü artık NuGet paketinde tanımlananla eşleşiyor.
+* Özgün diğeri başarısız olursa, yazma isteklerinin farklı bir bölgeye geri dönüş yapmasına izin verin.
+* Yazma isteği için oturum yeniden deneme ilkesi ekleyin.
 
 ### <a name="a-name241241"></a><a name="2.4.1"/>2.4.1
 
-* Düzeltmeleri boş sayfalar neden sorgular için yarış durumu izleme
+* Boş sayfalara neden olan sorgular için izleme yarış durumunu düzeltir
 
 ### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
 
-* LINQ sorguları için Ondalık Duyarlığı boyutu artar.
-* Yeni eklenen sınıflarda CompositePath CompositePathSortOrder, SpatialSpec SpatialType ve PartitionKeyDefinitionVersion
-* DocumentCollection için eklenen TimeToLivePropertyPath
-* Eklenen CompositeIndexes ve SpatialIndexes IndexPolicy için
-* Eklenen PartitionKeyDefinition sürümüne
-* PartitionKey Yok'a eklendi
+* LINQ sorguları için artırılmış ondalık duyarlık boyutu.
+* Yeni sınıflar CompositePath, CompositePathSortOrder, SpatialSpec, SpatialType ve PartitionKeyDefinitionVersion eklendi
+* DocumentCollection 'a TimeToLivePropertyPath eklendi
+* Indexpolicy 'e Compositeındexes ve Spatıalındexes eklendi
+* PartitionKeyDefinition 'a eklenen sürüm
+* PartitionKey 'e None eklendi
 
 ### <a name="a-name230230"></a><a name="2.3.0"/>2.3.0
 
- * Eklenen IdleTcpConnectionTimeout, OpenTcpConnectionTimeout, MaxRequestsPerTcpConnection ve MaxTcpConnectionsPerEndpoint ConnectionPolicy için.
+ * ConnectionPolicy için ıdletcpconnectiontimeout, OpenTcpConnectionTimeout, MaxRequestsPerTcpConnection ve MaxTcpConnectionsPerEndpoint eklendi.
 
 ### <a name="a-name223223"></a><a name="2.2.3"/>2.2.3
 
@@ -77,27 +74,27 @@ ms.locfileid: "67541040"
 
 ### <a name="a-name222222"></a><a name="2.2.2"/>2.2.2
 
-* Eklenen ortam değişkeni ayarını "POCOSerializationOnly".
+* "POCOSerializationOnly" ortam değişkeni ayarı eklendi.
 
-* DocumentDB.Spatial.Sql.dll kaldırılır ve artık Microsoft.Azure.Documents.ServiceInterop.dll dahil
+* DocumentDB. uzamsal. Sql. dll kaldırıldı ve artık Microsoft. Azure. Documents. Serviceınterop. dll dosyasına eklendi
 
 ### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
 
-* Yeniden deneme mantığı için StoredProcedure gelişme yük devretme sırasında çağrıları yürütün.
+* StoredProcedure yürütme çağrılarına yük devretme sırasında yeniden deneme mantığı geliştirme.
 
-* Yapılan DocumentClientEventSource tekli. 
+* DocumentClientEventSource Singleton yapıldı. 
 
-* ConnectionPolicy RequestTimeout uygularken değil GatewayAddressCache zaman aşımı düzeltin.
+* GatewayAddressCache zaman aşımını çözme, ConnectionPolicy RequestTimeout özelliğini karşılamıyor.
 
 ### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
 
-* Doğrudan/TCP taşıma tanılama için TransportException, SDK'sının bir iç özel durum türü eklediniz. Bu tür, mevcut olduğunda özel durum iletileri, istemci bağlantısı sorunlarını gidermek için ek bilgi yazdırır.
+* Doğrudan/TCP Aktarım tanılaması için SDK 'nın iç özel durum türü TransportException eklenmiştir. Özel durum iletilerinde mevcut olduğunda, bu tür istemci bağlantı sorunlarını gidermek için ek bilgileri yazdırır.
 
-* HttpClient istekleri (örn., HttpClientHandler) göndermek için kullanılacak HTTP işleyici yığını bir HttpMessageHandler alan eklenen yeni oluşturucu aşırı yüklemesi.
+* HttpClient istekleri (ör. HttpClientHandler) göndermek için kullanılacak bir HTTP işleyici yığını olan bir HttpMessageHandler 'ı alan yeni Oluşturucu aşırı yüklemesi eklendi.
 
-* Burada üstbilgisi null değerlerle düzgün bir şekilde işlenmemiş olan hata düzeltildi.
+* Null değerli üstbilginin düzgün işlenmediğinden oluşan hatayı düzeltir.
 
-* Koleksiyon önbellek doğrulama geliştirildi.
+* Geliştirilmiş koleksiyon önbelleği doğrulaması.
 
 ### <a name="a-name213213"></a><a name="2.1.3"/>2.1.3
 
@@ -105,7 +102,7 @@ ms.locfileid: "67541040"
 
 ### <a name="a-name212212"></a><a name="2.1.2"/>2.1.2'yi
 
-* Tanılama izleme geliştirmeleri
+* Tanılama izleme iyileştirmeleri
 
 ### <a name="a-name211211"></a><a name="2.1.1"/>2.1.1
 
@@ -146,11 +143,11 @@ ms.locfileid: "67541040"
 ### <a name="a-name12111211"></a><a name="1.21.1"/>1.21.1
 
 * Çapraz bölüm sıralama ölçütü sorguları köşe durumlarda sabit KeyNotFoundException için.
-* Burada Item özniteliği LINQ sorguları için select yan tümcesinde değil kabul hata düzeltildi.
+* LINQ sorguları için select yan tümcesinde JsonProperty özniteliğinin kabul edildiği düzeltilmedi.
 
 ### <a name="a-name12021202"></a><a name="1.20.2"/>1.20.2
 
-* Aralıklı olarak sonuçlanan belirli yarış koşulları altında isabet hata düzeltildi "Microsoft.Azure.Documents.NotFoundException: Oturum tutarlılık düzeyi kullanılırken okuma oturumu için giriş Oturum belirteci kullanılabilir değil"hata.
+* Belirli yarış koşullarında oluşan hata düzeltildi, bu durum aralıklı olarak "Microsoft. Azure. Documents. NotFoundException" ile sonuçlanır: Oturum tutarlılığı düzeyi kullanılırken, okuma oturumu, giriş oturumu belirtecinin hataları için kullanılamaz.
 
 ### <a name="a-name12011201"></a><a name="1.20.1"/>1.20.1
 
@@ -173,7 +170,7 @@ ms.locfileid: "67541040"
 
 ### <a name="a-name11811181"></a><a name="1.18.1"/>1.18.1 
 
-* İç değişiklik Microsoft arkadaş derlemeleri için.
+* Microsoft arkadaş Derlemeleriyle ilgili dahili değişiklikler.
 
 ### <a name="a-name11801180"></a><a name="1.18.0"/>1.18.0 
 
@@ -188,14 +185,14 @@ ms.locfileid: "67541040"
 * Bir yığın taşması özel durumuna neden olabilir JsonSerializable sınıfında bir sorun düzeltildi.
 
 ### <a name="a-name11601160"></a><a name="1.16.0"/>1.16.0
-*   DocumentClient Oluşturucusu isteğe bağlı bir parametre olarak JsonSerializerSettings tanıtılması nedeniyle uygulama yeniden derlenmesi gereken bir sorun düzeltildi.
-* DocumentClient oluşturucusuna geçersiz ConsistencyLevel parametreleri ve varsayılan değerleri için ConnectionPolicy izin vermek için son parametre olarak, gerekli JsonSerializerSettings JsonSerializerSettings parametresinde geçerken işaretlenmiş.
+*   JsonSerializerSettings 'in DocumentClient oluşturucusunda isteğe bağlı bir parametre olarak eklenmesi nedeniyle uygulamanın yeniden derlenmesi için gereken bir sorun düzeltildi.
+* DocumentClient Oluşturucusu, jsonserializersettings parametresinde geçiş yaparken varsayılan ConnectionPolicy ve en fazla bağlantı parametrelerine izin veren son parametre olarak JsonSerializerSettings 'i zorunlu olarak işaretledi.
 
 ### <a name="a-name11501150"></a><a name="1.15.0"/>1.15.0
-*   Özel bir JsonSerializerSettings örneği oluşturulurken belirtme desteği eklendi [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient?view=azure-dotnet).
+*   [Documentclient](/dotnet/api/microsoft.azure.documents.client.documentclient?view=azure-dotnet)örneği oluşturulurken özel JsonSerializerSettings belirtilmesine yönelik destek eklendi.
 
 ### <a name="a-name11411141"></a><a name="1.14.1"/>1.14.1
-*   X64 etkilenen bir sorun düzeltildi SSE4 yönerge desteği yoktur ve Azure Cosmos DB SQL sorgu çalıştırırken bir SEHException throw makineleri.
+*   SSE4 yönergesini desteklemeyen ve Azure Cosmos DB SQL sorguları çalıştırırken bir şehir özel durumu oluşturan x64 makinelerin etkilendiğine ilişkin bir sorun düzeltildi.
 
 ### <a name="a-name11401140"></a><a name="1.14.0"/>1.14.0
 *   Yeni bir tutarlılık düzeyi için destek eklendi ConsistentPrefix çağrılır.
@@ -205,10 +202,10 @@ ms.locfileid: "67541040"
 *   SDK'ın bazı performans iyileştirmeleri yapıldı.
 
 ### <a name="a-name11341134"></a><a name="1.13.4"/>1.13.4
-* 1\.13.3 işlevsel olarak aynıdır. İç bazı değişiklikler yaptınız.
+* 1\.13.3 ile aynı işlev. Bazı iç değişiklikler yapıldı.
 
 ### <a name="a-name11331133"></a><a name="1.13.3"/>1.13.3
-* 1\.13.2 işlevsel olarak aynıdır. İç bazı değişiklikler yaptınız.
+* 1\.13.2 ile aynı işlev. Bazı iç değişiklikler yapıldı.
 
 ### <a name="a-name11321132"></a><a name="1.13.2"/>1.13.2
 * Toplam sorgularında FeedOptions içinde sağlanan PartitionKey değeri yok sayıldı bir sorun düzeltildi.
@@ -221,7 +218,7 @@ ms.locfileid: "67541040"
 * Belirli koşullar altında otomatik yük devretme karşı daha dayanıklı SDK yapmak için düzeltmeleri.
 
 ### <a name="a-name11221122"></a><a name="1.12.2"/>1.12.2
-* Bazen bir WebException neden olan bir sorunu için düzeltme: Uzak ad çözümlenemedi.
+* Bazen WebException neden olan bir sorun için çözüm: Uzak ad çözümlenemedi.
 * Doğrudan ReadDocumentAsync API'sine yeni aşırı yüklemeler ekleyerek türü belirtilmiş bir belgeyi okumak için destek eklendi.
 
 ### <a name="a-name11211121"></a><a name="1.12.1"/>1.12.1
@@ -235,150 +232,150 @@ ms.locfileid: "67541040"
 * Bölümlenmiş koleksiyonlardan 10,100 RU/sn 2500 RU/sn için en düşük aktarım hızını düşürdü.
 
 ### <a name="a-name11141114"></a><a name="1.11.4"/>1.11.4
-* Gibi bazı bölümler arası sorgular 32-bit ana işlemde başarısız olduğu sorun düzeltildi.
-* Burada görüntülerle oturumu kapsayıcı ağ geçidi modunda başarısız istekler için belirteci ile güncelleştirilmedi bir sorun düzeltildi.
-* Bazı durumlarda sorguda projeksiyon UDF çağrılarında burada görüntülerle gönderilememesi sorunu düzeltildi.
-* İstemci tarafı performans okuma ve yazma istekleri verimini artırmak için düzeltir.
+* 32 bit ana bilgisayar işleminde bazı çapraz bölüm sorgularının başarısız olduğu bir sorunu giderme.
+* Oturum kapsayıcısının Ağ Geçidi modundaki başarısız isteklerin belirteciyle güncelleştirilmemiş bir sorun için çözüm.
+* Bazı durumlarda projeksiyondaki UDF çağrılarına sahip bir sorgunun başarısız olduğu bir sorun için çözüm.
+* İsteklerin okuma ve yazma verimini artırmak için istemci tarafı performans düzeltmeleri.
 
 ### <a name="a-name11131113"></a><a name="1.11.3"/>1.11.3
-* Burada görüntülerle oturumu kapsayıcı başarısız istekler için belirteci ile güncelleştirilmedi bir sorun düzeltildi.
-* Bir 32-bit ana işlem olarak çalışacak şekilde SDK için destek eklendi. Çapraz bölüm sorguları kullanıyorsanız, 64-bit ana işleme daha iyi performans için önerilen unutmayın.
-* Çok sayıda bölüm anahtarı değerlerine IN deyimde sorgularıyla ilgili senaryolar için performansı İyileştirildi.
-* Çeşitli kaynak kotası istatistikleri ResourceResponse belge koleksiyonu PopulateQuotaInfo isteği seçenek ayarlandığında okuma istekleri için de doldurulur.
+* Oturum kapsayıcısının başarısız istekler için belirteçle güncelleştirilmemiş bir sorun için çözüm.
+* SDK 'nın 32 bitlik bir ana bilgisayar işleminde çalışması için destek eklendi. Çapraz bölüm sorguları kullanıyorsanız, gelişmiş performans için 64 bit ana bilgisayar işlemenin önerildiğini unutmayın.
+* Bir ın ifadesinde çok sayıda bölüm anahtarı değeri olan sorgular içeren senaryolar için iyileştirilmiş performans.
+* Populatequotaınfo istek seçeneği ayarlandığında belge koleksiyonu okuma istekleri için Resourceresıstadaki çeşitli kaynak kotası istatistikleri dolduruldu.
 
 ### <a name="a-name11111111"></a><a name="1.11.1"/>1.11.1
-* İçinde 1.11.0 Createdocumentcollectionıfnotexistsasync API'si için küçük bir performans düzeltme.
-* Performans, yüksek derecede eşzamanlı istek gerektiren senaryolar için SDK'sındaki düzeltin.
+* 1\.11.0 ' de tanıtılan CreateDocumentCollectionIfNotExistsAsync API 'sinin düşük performans düzeltmesini.
+* Yüksek derecede eşzamanlı istek içeren senaryolar için SDK 'da performans onarımı.
 
 ### <a name="a-name11101110"></a><a name="1.11.0"/>1.11.0
-* Yeni sınıflar ve işlemek için yöntemler için destek [değişiklik akışını](change-feed.md) , bir koleksiyonu içindeki belgeler.
-* Bölümler arası sorgu devamlılık ve bölümler arası sorgular için bazı performans geliştirmeleri için destek.
-* Ayrıca Createdatabaseasync ve Createdocumentcollectionıfnotexistsasync yöntemleri.
-* Sistem işlevleri için LINQ desteği: IsDefined, IsNull ve IsPrimitive.
-* Project.json araç projeleri ile Nuget paketini kullanarak uygulamanın bin klasörüne Microsoft.Azure.Documents.ServiceInterop.dll ve DocumentDB.Spatial.Sql.dll derlemelerin otomatik binplacing düzeltildi.
-* Hata ayıklama senaryoları yararlı olabilecek istemci tarafı ETW izlemeleri yayma desteği.
+* Bir koleksiyon içindeki belgelerin [değişiklik akışını](change-feed.md) işlemeye yönelik yeni sınıflar ve yöntemler için destek.
+* Bölümler arası sorgu devamlılığını ve çapraz bölüm sorguları için bazı performans iyileştirmeleri için destek.
+* CreateDatabaseIfNotExistsAsync ve CreateDocumentCollectionIfNotExistsAsync yöntemlerinin eklenmesi.
+* Sistem işlevleri için LINQ desteği: IsDefined, IsNull ve ısilkel.
+* NuGet paketini Project. JSON araçları olan projelerle birlikte kullanırken, Microsoft. Azure. Documents. Serviceınterop. dll ve DocumentDB. uzamsal. Sql. dll derlemelerinin uygulamanın bin klasörüne otomatik olarak yerleştirilmesi için çözüm yapın.
+* Hata ayıklama senaryolarında yararlı olabilecek istemci tarafı ETW izlemelerini yayma desteği.
 
 ### <a name="a-name11001100"></a><a name="1.10.0"/>1.10.0
-* Bölümlenmiş koleksiyonlar için eklenen doğrudan bağlantı desteği.
-* Sınırlanmış eskime durumu tutarlılık düzeyi için performansı İyileştirildi.
+* Bölümlenmiş koleksiyonlar için doğrudan bağlantı desteği eklendi.
+* Sınırlanmış Stalet tutarlılığı düzeyi için iyileştirilmiş performans.
 * Eklenen Çokgen ve dizin oluşturma ilkesi şirketin coğrafı uzamsal sorgular için koleksiyon belirtirken LineString veri türleri.
-* Koşullar çevrilirken LINQ için destek eklendi StringEnumConverter ve IsoDateTimeConverter UnixDateTimeConverter.
-* SDK çeşitli hata düzeltmeleri.
+* Koşullar çevrilirken StringEnumConverter, IsoDateTimeConverter ve UnixDateTimeConverter için LINQ desteği eklendi.
+* Çeşitli SDK hata düzeltmeleri.
 
 ### <a name="a-name195195"></a><a name="1.9.5"/>1.9.5
-* Aşağıdaki NotFoundException kaynaklanan bir sorun düzeltildi: Okuma oturum giriş Oturum belirteci için kullanılabilir değil. Bazı durumlarda coğrafi olarak dağıtılmış bir hesabı okuma-bölgesi için sorgulama bu özel durum oluştu.
-* Doğrudan erişim için temel alınan akışa bir yanıt sağlar sınıfını ResourceResponse ResponseStream özelliğinde ortaya çıkar.
+* Aşağıdaki NotFoundException neden olan bir sorun düzeltildi: Giriş oturum belirteci için oku oturumu kullanılamaz. Bu özel durum, coğrafi olarak dağıtılmış bir hesabın okuma bölgesi sorgulanırken bazı durumlarda meydana geldi.
+* Bir yanıttan temeldeki akışa doğrudan erişim sağlayan Resourceresıse sınıfında ResponseStream özelliği kullanıma sunuldu.
 
 ### <a name="a-name194194"></a><a name="1.9.4"/>1.9.4
-* Böylece dağıtım (TDD) tabanlı test için örnek karşılık gelen ortak arabirim uygulamak için ResourceResponse, FeedResponse StoredProcedureResponse ve MediaResponse sınıfları değiştirildi.
-* Hatalı biçimlendirilmiş bölüm anahtarı üstbilgi verilerin serileştirilmesi için özel bir JsonSerializerSettings nesne kullanırken neden olan bir sorun düzeltildi.
+* Resourceresrar, FeedResponse, StoredProcedureResponse ve Mediaresrarclasses ' ı, test odaklı dağıtım (TDD) için mocize erişebilmeleri için karşılık gelen ortak arabirimi uygulayacak şekilde değiştirdi.
+* Verileri seri hale getirmek için özel bir JsonSerializerSettings nesnesi kullanılırken hatalı biçimlendirilmiş bölüm anahtarı başlığına neden olan bir sorun düzeltildi.
 
 ### <a name="a-name193193"></a><a name="1.9.3"/>1.9.3
-* Uzun süren sorgular başarısız olmasına neden olan hata ile bir sorun düzeltildi: Şu anda yetkilendirme belirteci geçerli değil.
-* Çapraz bölüm üst/sırası-by sorguları gelen özgün SqlParameterCollection kaldırılan bir sorun düzeltildi.
+* Uzun süre çalışan sorguların hata vererek başarısız olmasına neden olan bir sorun düzeltildi: Yetkilendirme belirteci geçerli zamanda geçerli değil.
+* Özgün SqlParameterCollection 'ı, kesit üst/sıra sorgularının içinden kaldıran bir sorun düzeltildi.
 
 ### <a name="a-name192192"></a><a name="1.9.2"/>1.9.2
 * Bölümlenmiş koleksiyonlar için paralel sorgular için destek eklendi.
-* Çapraz bölüm ORDER BY ve üst sorguları bölümlenmiş koleksiyonlar için eklenen desteği.
-* Azure Cosmos DB Nuget paketine başvuru ile bir Azure Cosmos DB projesi başvururken kullanılır eksik başvurular DocumentDB.Spatial.Sql.dll ve Microsoft.Azure.Documents.ServiceInterop.dll düzeltildi.
-* Kullanıcı tanımlı işlevler üzerinde LINQ kullanırken farklı türde parametreler kullanma olanağı düzeltildi. 
-* Burada Upsert çağrıları okuma yazma konumlar yerine konumları yönlendirilmesi genel olarak çoğaltılan hesapları için bir hata düzeltildi.
-* Eksik eklenen yöntemleri IDocumentClient arabirimine: 
+* Bölümler arası SıRALAMA için ve bölümlenmiş koleksiyonlar için üst sorgulara yönelik destek eklendi.
+* Azure Cosmos DB NuGet paketine yönelik bir başvuruya sahip bir Azure Cosmos DB projesine başvururken gerekli olan DocumentDB. uzamsal. Sql. dll ve Microsoft. Azure. Documents. Serviceınterop. dll için eksik başvurular düzeltildi.
+* LINQ içinde Kullanıcı tanımlı işlevler kullanılırken farklı türlerin parametrelerini kullanma özelliği düzeltildi. 
+* Dünya dışı çağrıların yazma konumları yerine okuma konumlarına yönlendirildiği küresel olarak çoğaltılan hesaplar için bir hata düzeltildi.
+* Eksik olan ıdocumentclient arabirimine Yöntemler eklendi: 
   * MediaStream ve seçenekleri parametre olarak alan UpsertAttachmentAsync yöntemi
-  * Seçenekler, parametre olarak alır CreateAttachmentAsync yöntemi
-  * CreateOfferQuery yöntemi querySpec bir parametre olarak alır.
-* IDocumentClient arabiriminde sunulan korumasız Genel sınıflar.
+  * Parametre olarak seçenekleri alan CreateAttachmentAsync yöntemi
+  * QuerySpec 'i parametre olarak alan CreateOfferQuery yöntemi.
+* Idocumentclient arabiriminde kullanıma sunulan korumasız ortak sınıflar.
 
 ### <a name="a-name180180"></a><a name="1.8.0"/>1.8.0
 * Çoklu bölge veritabanı hesapları için destek eklendi.
-* Yeniden deneme sırasında daraltılmış istekler için destek eklendi.  Kullanıcı sayısını yeniden denemeler ve en fazla bekleme zamanı ConnectionPolicy.RetryOptions özelliğini yapılandırarak özelleştirebilirsiniz.
-* Tüm DocumentClient özellik ve yöntem imzaları tanımlayan yeni IDocumentClient arabirimi eklendi.  Bu değişikliğin bir parçası olarak Iqueryable IOrderedQueryable DocumentClient sınıfındaki yöntemleri oluşturup genişletme yöntemleri de değiştirildi.
-* Belirli Azure Cosmos DB uç noktası URI'si için ServicePoint.ConnectionLimit ayarlamak için ek yapılandırma seçeneği'ni kullanın.  ConnectionPolicy.MaxConnectionLimit 50 olarak ayarlandığını varsayılan değeri değiştirmek için kullanın.
-* Kullanım dışı IPartitionResolver ve uygulanması.  IPartitionResolver desteği artık kullanımdan kalkmıştır. Daha yüksek depolama ve aktarım hızı için bölümlenmiş koleksiyonlar kullanmanız önerilir.
+* Kısıtlanmış isteklerde yeniden deneme desteği eklendi.  Kullanıcı, ConnectionPolicy. RetryOptions özelliğini yapılandırarak yeniden deneme sayısını ve en uzun bekleme süresini özelleştirebilir.
+* Tüm DocumentClient özelliklerinin ve yöntemlerinin imzalarını tanımlayan yeni bir ıdocumentclient arabirimi eklendi.  Bu değişikliğin bir parçası olarak, IQueryable ve IOrderedQueryable oluşturan genişletme yöntemleri de DocumentClient sınıfının yöntemlerine değişti.
+* Belirli bir Azure Cosmos DB uç noktası URI 'Si için ServicePoint. ConnectionLimit ayarlamak üzere yapılandırma seçeneği eklendi.  50 olarak ayarlanan varsayılan değeri değiştirmek için ConnectionPolicy. MaxConnectionLimit komutunu kullanın.
+* Kullanım dışı bırakılmış IPartitionResolver ve uygulaması.  IPartitionResolver desteği artık kullanılmıyor. Daha yüksek depolama ve aktarım hızı için bölümlenmiş koleksiyonlar kullanmanız önerilir.
 
 ### <a name="a-name171171"></a><a name="1.7.1"/>1.7.1
-* RequestOptions parametresi olarak alan ExecuteStoredProcedureAsync yöntemi aşırı URI'ye dayalı eklendi.
+* Bir parametre olarak RequestOptions alan URI tabanlı ExecuteStoredProcedureAsync metoduna aşırı yükleme eklendi.
 
 ### <a name="a-name170170"></a><a name="1.7.0"/>1.7.0
 * Belgeler için eklenen zaman canlı (TTL) desteği.
 
 ### <a name="a-name163163"></a><a name="1.6.3"/>1.6.3
-* .NET SDK'sı Nuget paketlenmesi, bir Azure bulut hizmeti çözümün bir parçası olarak paketlemek için düzeltildi.
+* Azure bulut hizmeti çözümünün bir parçası olarak paketlenmesi için .NET SDK 'nın NuGet paketinizdeki bir hata düzeltildi.
 
 ### <a name="a-name162162"></a><a name="1.6.2"/>1.6.2
 * Uygulanan [bölümlenmiş koleksiyonları](partition-data.md) ve [kullanıcı tanımlı performans düzeyleri](performance-levels.md). 
 
 ### <a name="a-name153153"></a><a name="1.5.3"/>1.5.3
-* **[Düzeltildi]**  Sorgulama Azure Cosmos DB uç noktası oluşturur: 'System.Net.Http.HttpRequestException: Bir akışa içeriği kopyalanırken hata oluştu '.
+* **[Düzeltildi]** Azure Cosmos DB uç noktası sorgulaması: ' System .net. http. HttpRequestException: İçerik bir akışa kopyalanırken hata oluştu '.
 
 ### <a name="a-name152152"></a><a name="1.5.2"/>1.5.2
-* Genişletilmiş LINQ, disk belleği, koşullu ifade yeni işleçleri dahil olmak üzere destek ve karşılaştırma aralığı.
-  * LINQ seçin üst davranışı etkinleştirmek için işleci Al
-  * CompareTo işleci dize aralığı karşılaştırmaları etkinleştirmek için
-  * Koşullu (?) ve birleşim işleçlerini (?)
-* **[Düzeltildi]**  Modeli projeksiyon ile birleştirilirken üretiliyor nerede bileşeninde bir LINQ Sorgu. [#81](https://github.com/Azure/azure-documentdb-dotnet/issues/81)
+* Sayfalama, Koşullu ifadeler ve Aralık karşılaştırması için yeni işleçler dahil olmak üzere genişletilmiş LINQ desteği.
+  * LINQ 'te en ıyı davranışı seçme özelliğini etkinleştirmek için işleç al
+  * Dize aralığı karşılaştırmaları etkinleştirmek için CompareTo işleci
+  * Koşullu (?) ve birleşim işleçleri (??)
+* **[Düzeltildi]** Bir LINQ sorgusunda model projeksiyonunu birleştiren ArgumentOutOfRangeException. [#81](https://github.com/Azure/azure-documentdb-dotnet/issues/81)
 
 ### <a name="a-name151151"></a><a name="1.5.1"/>1.5.1
-* **[Düzeltildi]**  LINQ sağlayıcısı seçin son deyim değilse, projeksiyon kabul ve SELECT üretilen * yanlış.  [#58](https://github.com/Azure/azure-documentdb-dotnet/issues/58)
+* **[Düzeltildi]** Select, son ifade değilse, LINQ sağlayıcısı projeksiyonu kabul etmez ve SELECT * yanlış seçeneğini belirleyin.  [#58](https://github.com/Azure/azure-documentdb-dotnet/issues/58)
 
 ### <a name="a-name150150"></a><a name="1.5.0"/>1.5.0
-* Uygulanan Upsert, eklenen UpsertXXXAsync yöntemleri
-* Tüm istekler için performans geliştirmeleri
-* LINQ sağlayıcı desteği koşullu, coalesce ve dizeler için CompareTo Yöntemi
-* **[Düzeltildi]**  LINQ sağlayıcısı--> IEnumerable ve dizi gibi aynı SQL oluşturulacak liste yöntemi uygulama içerir
-* **[Düzeltildi]**  BackoffRetryUtility kullandığı aynı HttpRequestMessage yeniden denemedeki yeni bir tane oluşturmak yerine
-* **[Eski]**  UriFactory.CreateCollection--> UriFactory.CreateDocumentCollection kullanmak yerine artık
+* Uygulanan upsert, eklenen UpsertXXXAsync yöntemleri
+* Tüm istekler için performans iyileştirmeleri
+* Dizeler için koşullu, birleşim ve CompareTo yöntemlerine yönelik LINQ sağlayıcı desteği
+* **[Düzeltildi]** LINQ sağlayıcısı--> IEnumerable ve Array üzerinde aynı SQL ile oluşturmak için listedeki yöntemi Içerir
+* **[Düzeltildi]** BackoffRetryUtility yeniden deneme sırasında yeni bir tane oluşturmak yerine aynı HttpRequestMessage 'i kullanır
+* **[Geçersiz]** UriFactory. CreateCollection--> Şimdi UriFactory. CreateDocumentCollection kullanması gerekir
 
 ### <a name="a-name141141"></a><a name="1.4.1"/>1.4.1
-* **[Düzeltildi]**  Yerelleştirme, nl-NL, vb. gibi kültür bilgisi olmayan tr kullanırken sorunları. 
+* **[Düzeltildi]** NL-NL vb. gibi kültür olmayan bilgiler kullanılırken yerelleştirme sorunları. 
 
 ### <a name="a-name140140"></a><a name="1.4.0"/>1.4.0
-* Kimlik tabanlı yönlendirme eklendi
-  * Kimlik tabanlı kaynak bağlantıları oluşturma ile yardımcı olmak için yeni UriFactory Yardımcısı
-  * Yeni aşırı yüklemeler URI almak için DocumentClient üzerinde
-* IsValid() ve LINQ için Jeo-uzamsal IsValidDetailed() eklendi
-* Gelişmiş LINQ sağlayıcı desteği:
-  * **Matematik** -Abs, Acos, Asin, Atan, Exp, Floor, günlük, Log10, Pow, hepsini, oturum, Sin, Sqrt, Tan Cos Ceiling Kes
-  * **Dize** -EndsWith, IndexOf, sayısı, ToLower, TrimStart Concat, içerir, Değiştir, ters TrimEnd, StartsWith, SubString, ToUpper
-  * **Dizi** -Concat, içerir, sayısı
-  * **IN** işleci
+* KIMLIK tabanlı yönlendirme eklendi
+  * KIMLIK tabanlı kaynak bağlantıları oluşturmayla ilgili yardım almak için yeni UriFactory Yardımcısı
+  * DocumentClient 'ta URI içinde gerçekleştirilecek yeni aşırı yüklemeler
+* Jeo-uzamsal için LINQ içinde IsValid () ve ıvaliddetailed () eklendi
+* LINQ sağlayıcısı desteği geliştirildi:
+  * **Math** -ABS, acos, asin, atan, tavan, cos, exp, Floor, log, log10, Pow, yuvarlak, Sign, sin, sqrt, tan, Truncate
+  * **Dize** -Concat, Contains, EndsWith, IndexOf, Count, ToLower, kırma, Replace, Reverse, TrimEnd, StartsWith, SUBSTRING, ToUpper
+  * **Dizi** -Concat, Contains, Count
+  * **In** işleci
 
 ### <a name="a-name130130"></a><a name="1.3.0"/>1.3.0
-* Dizin oluşturma ilkeleri değiştirmek için destek eklendi.
-  * DocumentClient yeni ReplaceDocumentCollectionAsync yöntemi
-  * Yeni IndexTransformationProgress özelliğinde ResourceResponse<T> dizin İlkesi değişikliklerinin yüzde ilerlemesini izlemek için
-  * DocumentCollection.IndexingPolicy değişebilir
+* Dizin oluşturma ilkelerini değiştirme desteği eklendi.
+  * DocumentClient 'da yeni ReplaceDocumentCollectionAsync yöntemi
+  * Kaynak İlkesi değişikliklerinin tamamlanma yüzdesini izlemek için\<resourcereslationt ' de yeni ındexdönüşümtionprogress özelliği >
+  * DocumentCollection. ındexingpolicy artık değişebilir
 * Uzamsal dizin oluşturma ve sorgu için destek eklendi.
-  * Serileştirme/uzamsal türler seri durumdan çıkarmak için yeni Microsoft.Azure.Documents.Spatial ad alanı, nokta ve Çokgen gibi
-  * Cosmos DB'de depolanan GeoJSON veri dizinini oluşturmak için yeni SpatialIndex sınıfı
-* **[Düzeltildi]**  Bir LINQ ifadesini oluşturulan hatalı SQL sorgusu [#38](https://github.com/Azure/azure-documentdb-net/issues/38).
+  * Nokta ve çokgen gibi uzamsal türleri serileştirmek/seri durumdan çıkarmak için yeni Microsoft. Azure. Documents. uzamsal ad alanı
+  * Cosmos DB depolanan GeoJSON verilerinin dizinini oluşturmak için yeni Spatialındex sınıfı
+* **[Düzeltildi]** Bir LINQ ifadesinden [#38](https://github.com/Azure/azure-documentdb-net/issues/38)yanlış SQL sorgusu oluşturuldu.
 
 ### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
-* Bir bağımlılık Newtonsoft.Json v5.0.7 üzerinde eklendi.
-* Order By desteklemek için değişiklikler:
+* Newtonsoft. JSON v 5.0.7 üzerine bir bağımlılık ekledi.
+* Aşağıdakileri yaparak sıralamayı desteklemek için değişiklikler yapıldı:
   
-  * LINQ sağlayıcı desteği OrderBy() veya OrderByDescending()
-  * Order By desteklemek için IndexingPolicy 
+  * OrderBy () veya OrderByDescending () için LINQ sağlayıcı desteği
+  * Sıralamayı desteklemek için ındexingpolicy 
     
-    **Olası değişiklik** 
+    **Olası Son değişiklik** 
     
-    Özel bir dizin oluşturma ilkesini bu hükümleri koleksiyonlarla mevcut kodunuz varsa, mevcut kodunuzu yeni IndexingPolicy sınıfı destekleyecek şekilde güncelleştirilmesi gerekir. Ardından, hiçbir özel dizin oluşturma ilkesi varsa, bu değişiklik, etkilemez.
+    Özel bir dizin oluşturma ilkesiyle koleksiyonlar sağlayan mevcut kodunuz varsa, yeni ındexingpolicy sınıfını desteklemek için mevcut kodunuzun güncelleştirilmesi gerekir. Özel bir dizin oluşturma ilkeniz yoksa, bu değişiklik sizi etkilemez.
 
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
-* Yeni HashPartitionResolver ve RangePartitionResolver sınıfları ve IPartitionResolver kullanarak verileri bölümleme için destek eklendi.
+* Yeni HashPartitionResolver ve RangePartitionResolver sınıfları ve IPartitionResolver kullanılarak bölümlendirme verileri için destek eklendi.
 * DataContract serileştirme eklendi.
-* Eklenen GUID LINQ sağlayıcısı destekler.
-* Eklenen UDF LINQ destekler.
+* LINQ sağlayıcısında GUID desteği eklendi.
+* LINQ 'te UDF desteği eklendi.
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
 * GA SDK'SI
 
-## <a name="release--retirement-dates"></a>Yayın & sona erme tarihleri
-Microsoft'un sağladığı bildirim en az **12 ay** yeni/desteklenen bir sürüme geçiş hafifletmek için bir SDK'yı devre dışı bırakmadan önce.
+## <a name="release--retirement-dates"></a>Yayın & kullanımdan kaldırma tarihleri
+Microsoft, daha yeni/desteklenen bir sürüme geçişi düzgünleştirmek için SDK 'nın devre dışı bırakılmasının ardından en az **12 ay** önce bildirim sağlar.
 
-Geçerli SDK'sı yalnızca eklenen yeni özellikler ve işlevsellik ve en iyi duruma getirme, bu nedenle, her zaman en son SDK sürümüne erken mümkün olduğunca yükseltmeniz önerilir. 
+Yeni özellikler ve işlevler ve iyileştirmeler yalnızca geçerli SDK 'ya eklenir, bu nedenle en son SDK sürümüne her zaman olabildiğince erken yükseltmeniz önerilir. 
 
-Devre dışı bırakılan bir SDK'sı kullanarak Azure Cosmos DB yapılan tüm isteklere hizmet tarafından reddedilir.
+Kullanımdan kaldırılan bir SDK kullanarak Azure Cosmos DB yönelik istekler hizmet tarafından reddedilir.
 
 <br/>
 
@@ -390,8 +387,8 @@ Devre dışı bırakılan bir SDK'sı kullanarak Azure Cosmos DB yapılan tüm i
 | [2.3.0](#2.3.0) |04 Nisan 2019 |--- |
 | [2.2.3](#2.2.3) |11 Şubat 2019 |--- |
 | [2.2.2](#2.2.2) |06 Şubat 2019 |--- |
-| [2.2.1](#2.2.1) |Aralık 24 Mayıs 2018 |--- |
-| [2.2.0](#2.2.0) |07 aralık 2018'e |--- |
+| [2.2.1](#2.2.1) |24 Aralık 2018 |--- |
+| [2.2.0](#2.2.0) |07 Aralık 2018 |--- |
 | [2.1.3](#2.1.3) |15 Ekim 2018 |--- |
 | [2.1.2'yi](#2.1.2) |04 Ekim 2018 |--- |
 | [2.1.1](#2.1.1) |27 Eylül 2018'den |--- |
@@ -403,7 +400,7 @@ Devre dışı bırakılan bir SDK'sı kullanarak Azure Cosmos DB yapılan tüm i
 | [1.20.1](#1.20.1) |05 Şubat 2018 |--- |
 | [1.19.1](#1.19.1) |16 Kasım 2017 |--- |
 | [1.19.0](#1.19.0) |10 Kasım 2017 |--- |
-| [1.18.1](#1.18.1) |07 Kasım 2017 |--- |
+| [1.18.1](#1.18.1) |Kasım 07, 2017 |--- |
 | [1.18.0](#1.18.0) |17 Ekim 2017 |--- |
 | [1.17.0](#1.17.0) |10 Ağustos 2017 |--- |
 | [1.16.1](#1.16.1) |07 Ağustos 2017 |--- |
@@ -435,7 +432,7 @@ Devre dışı bırakılan bir SDK'sı kullanarak Azure Cosmos DB yapılan tüm i
 | [1.6.2](#1.6.2) |29 Mart 2016 |--- |
 | [1.5.3](#1.5.3) |19 Şubat 2016 |--- |
 | [1.5.2](#1.5.2) |14 Aralık 2015 |--- |
-| [1.5.1](#1.5.1) |November 23, 2015 |--- |
+| [1.5.1](#1.5.1) |23 Kasım 2015 |--- |
 | [1.5.0](#1.5.0) |05 Ekim 2015 |--- |
 | [1.4.1](#1.4.1) |25 Ağustos 2015 |--- |
 | [1.4.0](#1.4.0) |13 Ağustos 2015 |--- |

@@ -8,87 +8,115 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 91e9d3a99224c09ecfb5cc3b477a71a7f7bfed7a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 444e64488b185b1ff2aa7cc63fbeffafc591dbfe
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65199569"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68320000"
 ---
-## <a name="benefits-of-managed-disks"></a>Yönetilen disklerin avantajlarından
+## <a name="benefits-of-managed-disks"></a>Yönetilen disklerin avantajları
 
-Şimdi, yönetilen diskleri kullanarak elde avantajlarından bazıları üzerinden geçelim.
+Yönetilen diskleri kullanarak kazanmanızın avantajlarından bazılarını inceleyelim.
 
 ### <a name="highly-durable-and-available"></a>Yüksek oranda dayanıklı ve kullanılabilir
 
-Yönetilen diskleri % 99,999 kullanılabilirlik için tasarlanmıştır. Yönetilen diskler için yüksek bir dayanıklılık düzeyi izin verme, verilerinizin üç kopyasını sağlayarak elde edin. Çoğaltmaların birinde hatta ikisinde sorunlarla karşılaşılırsa, kalan çoğaltmalar verilerinizin kalıcı olmasını ve başarısızlıklara karşı yüksek tolerans gösterilmesini sağlar. Bu mimari Azure Kurumsal düzeyde tutarlı bir şekilde teslim olmuştur dayanıklılık düzeyi sunmak için altyapı (ıaas) olarak diskleri, endüstri lideri ile sıfır % değer yıllık hata oranı.
+Yönetilen diskler% 99,999 kullanılabilirlik için tasarlanmıştır. Yönetilen diskler, verilerinizin üç kopyasını sunarak, yüksek dayanıklılık elde etmenizi sağlar. Çoğaltmaların birinde hatta ikisinde sorunlarla karşılaşılırsa, kalan çoğaltmalar verilerinizin kalıcı olmasını ve başarısızlıklara karşı yüksek tolerans gösterilmesini sağlar. Bu mimari, sektördeki bir hizmet olarak altyapı (IaaS) diskleri için Azure 'un kurumsal düzeyde dayanıklılık kazandığını, sektör lideri% 0 yıllık hata oranı ile sürekli olarak sunmamıza yardımcı oldu.
 
 ### <a name="simple-and-scalable-vm-deployment"></a>Basit ve ölçeklenebilir VM dağıtımı
 
-Yönetilen diskleri kullanarak, en fazla 50.000 VM oluşturabilirsiniz **diskleri** bir abonelikte bölge başına bir tür binlerce oluşturmanızı sağlayan **Vm'leri** tek bir abonelik. Ayrıca bu özellik ölçeklenebilirliği artırır [sanal makine ölçek kümeleri](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) Market görüntüsü kullanarak bir sanal makine ölçek kümesinde 1000 adede kadar VM oluşturmak sağlayarak.
+Yönetilen diskleri kullanarak, her bölge için bir abonelikte en fazla 50.000 VM **diski** oluşturabilirsiniz, böylece tek bir abonelikte binlerce **VM** oluşturabilirsiniz. Bu özellik, bir market görüntüsü kullanarak bir sanal makine ölçek kümesinde en fazla 1.000 VM oluşturmanıza izin vererek [sanal makine ölçek kümelerinin](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) ölçeklenebilirliğini de artırır.
 
-### <a name="integration-with-availability-sets"></a>Kullanılabilirlik kümeleri ile tümleştirme
+### <a name="integration-with-availability-sets"></a>Kullanılabilirlik kümeleriyle tümleştirme
 
-Yönetilen diskler, diskler sağlamak için kullanılabilirlik kümeleri ile tümleşik [bir kullanılabilirlik kümesindeki VM'ler](../articles/virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) yeterince bir tek hata noktasını önlemek için birbirinden yalıtılmıştır. Diskleri otomatik olarak (damgaları ') farklı depolama ölçek birimlerine yerleştirilir. Bir damga donanım veya yazılım arızasından dolayı başarısız olursa, yalnızca bu Damgalar üzerinde diskleri olan VM örnekleri başarısız. Örneğin, beş Vm'lerde çalışan bir uygulamaya sahip ve bir kullanılabilirlik kümesi'nde vm'leridir varsayalım. Bu sanal makineler tümü aynı damgaya kaydedilmez için uygulamanın diğer örneklerini aşağı bir damga aşması durumunda diskleri şekilde çalışmaya devam eder.
+Yönetilen diskler, [bir kullanılabilirlik kümesindeki VM](../articles/virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) disklerinin tek bir başarısızlık noktasını önlemek için birbirinden yeterince yalıtılmış olmasını sağlamak üzere kullanılabilirlik kümeleriyle tümleştirilir. Diskler otomatik olarak farklı depolama ölçek birimlerine (damgalar) yerleştirilir. Bir damga, donanım veya yazılım arızası nedeniyle başarısız olursa, yalnızca bu damgalar üzerinde disklere sahip VM örnekleri başarısız olur. Örneğin, beş VM 'de çalışan bir uygulamanız olduğunu ve VM 'Lerin bir kullanılabilirlik kümesinde olduğunu varsayalım. Bu VM 'Lerin disklerin hepsi aynı damgada depolanmayacak, bu nedenle bir damga daha sonra uygulamanın diğer örnekleri çalışmaya devam eder.
 
-### <a name="integration-with-availability-zones"></a>Kullanılabilirlik alanları ile tümleştirme
+### <a name="integration-with-availability-zones"></a>Kullanılabilirlik Alanları ile tümleştirme
 
-Yönetilen diskleri destekler [kullanılabilirlik](../articles/availability-zones/az-overview.md), uygulamalarınızın veri merkezi arızasına karşı koruyan bir yüksek kullanılabilirlik sunan olduğu. Kullanılabilirlik, bir Azure bölgesi içinde benzersiz fiziksel konumlara bölgeleridir. Her bölge, soğutma ve ağ bağımsız güç ile donatılmış bir veya daha fazla veri merkezlerinden oluşur. Dayanıklılık sağlamak için üç ayrı bölge etkinleştirilmiş tüm bölgelerde en az yoktur. Kullanılabilirlik alanları ile Azure, sektördeki en iyi % 99,99 VM çalışma SLA'sı sunar.
+Yönetilen diskler, uygulamalarınızı veri merkezi hatalarından koruyan yüksek kullanılabilirliğe sahip bir teklif olan [kullanılabilirlik alanları](../articles/availability-zones/az-overview.md)destekler. Kullanılabilirlik, bir Azure bölgesi içinde benzersiz fiziksel konumlara bölgeleridir. Her bölge, soğutma ve ağ bağımsız güç ile donatılmış bir veya daha fazla veri merkezlerinden oluşur. Dayanıklılık sağlamak için, tüm etkin bölgelerde en az üç ayrı bölge vardır. Azure, Kullanılabilirlik Alanları sayesinde sektörün en iyi% 99,99 VM çalışma süresi SLA 'sını sunmaktadır.
 
-### <a name="azure-backup-support"></a>Azure yedekleme desteği
+### <a name="azure-backup-support"></a>Azure Backup desteği
 
-Bölgesel felaketlere karşı koruma sağlamak [Azure Backup](../articles/backup/backup-introduction-to-azure-backup.md) zaman tabanlı yedeklemeler ve yedekleme saklama ilkeleri ile bir yedekleme işi oluşturmak için kullanılabilir. Bu, en kolay VM geri yüklemeler gerçekleştirmeyi sağlar. Şu anda Azure Backup, dört tebibyte (TiB) diskleri kadar disk boyutları desteklemektedir. Daha fazla bilgi için [yönetilen disklere sahip VM'ler için Azure Backup'ı kullanarak](../articles/backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup).
+Bölgesel felate karşı korumak için [Azure Backup](../articles/backup/backup-overview.md) , zaman tabanlı yedeklemeler ve yedekleme bekletme ilkeleriyle bir yedekleme işi oluşturmak için kullanılabilir. Bu, ' de kolay VM geri 'leri gerçekleştirmenize olanak tanır. Şu anda Azure Backup en fazla dört tebibyte (TiB) disk boyutunu destekler.  Azure Backup yönetilen disklerin yedeklenmesini ve geri yüklenmesini destekler. Azure VM yedekleme desteği hakkında [daha fazla bilgi edinin](../articles/backup/backup-support-matrix-iaas.md) .
 
 ### <a name="granular-access-control"></a>Ayrıntılı erişim denetimi
 
-Kullanabileceğiniz [Azure rol tabanlı erişim denetimi (RBAC)](../articles/role-based-access-control/overview.md) bir veya daha fazla kullanıcı için yönetilen disk için belirli izinler atamak için. Çeşitli işlemler de dahil olmak üzere, bir yönetilen diskler sunmaya okuma, yazma (oluşturma/güncelleştirme), silme ve alınırken bir [paylaşılan erişim imzası (SAS) URI](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md) disk için. Yalnızca bir kişi, işlerini gerçekleştirmek için gereken işlemlere erişim izni verebilirsiniz. Örneğin, yönetilen disk bir depolama hesabına kopyalamak için bir kişi istemiyorsanız, bu yönetilen disk verme eylemi için erişim izni verilmemesi seçebilirsiniz. Benzer şekilde, bir kişi, yönetilen disk kopyalamak için bir SAS URI kullanmayı istemiyorsanız, bu yönetilen disk izni olmayan seçebilirsiniz.
+[Azure rol tabanlı erişim denetimi 'ni (RBAC)](../articles/role-based-access-control/overview.md) , yönetilen bir disk için bir veya daha fazla kullanıcıya belirli izinler atamak üzere kullanabilirsiniz. Yönetilen diskler, okuma, yazma (oluşturma/güncelleştirme), silme ve disk için [paylaşılan erişim imzası (SAS) URI 'sini](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md) alma gibi çeşitli işlemler sunar. Yalnızca bir kişinin işini gerçekleştirmesi için ihtiyaç duyacağı işlemlere erişim izni verebilirsiniz. Örneğin, bir kişinin yönetilen bir diski bir depolama hesabına kopyalamasını istemiyorsanız, bu yönetilen disk için dışarı aktarma eylemine erişim izni vermemeye izin vermeyi tercih edebilirsiniz. Benzer şekilde, bir kişinin yönetilen bir diski kopyalamak için SAS URI 'sini kullanmasını istemiyorsanız, bu izni yönetilen diske vermemenizi tercih edebilirsiniz.
+
+## <a name="encryption"></a>Şifreleme
+
+Yönetilen diskler iki farklı şifreleme türü sunar. Birincisi, depolama hizmeti tarafından gerçekleştirilen Depolama Hizmeti Şifrelemesi (SSE). İkincisi, sanal makinelerinize yönelik işletim sistemi ve veri diskleri üzerinde etkinleştirebileceğiniz Azure disk şifrelemesi ' dir.
+
+### <a name="storage-service-encryption-sse"></a>Depolama Hizmeti Şifrelemesi (SSE)
+
+[Azure depolama hizmeti şifrelemesi](../articles/storage/common/storage-service-encryption.md) , Rest 'ten şifreleme sağlar ve kurumsal güvenlik ve uyumluluk taahhütlerinizi karşılayacak şekilde verilerinizi korur. SSE, yönetilen disklerin kullanılabildiği tüm bölgelerde tüm yönetilen diskler, anlık görüntüler ve görüntüler için varsayılan olarak etkindir. Daha fazla ayrıntı için [yönetilen DISKLER SSS sayfasını](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption) ziyaret edin.
+
+### <a name="azure-disk-encryption-ade"></a>Azure disk şifrelemesi (ADE)
+
+Azure disk şifrelemesi, bir IaaS sanal makinesi tarafından kullanılan işletim sistemini ve veri disklerini şifrelemenizi sağlar. Bu şifreleme yönetilen diskler içerir. Windows için Sürücüler, sektör standardı BitLocker şifreleme teknolojisi kullanılarak şifrelenir. Linux için diskler DM-Crypt teknolojisi kullanılarak şifrelenir. Şifreleme işlemi, disk şifreleme anahtarlarını denetlemenize ve yönetmenize olanak tanımak için Azure Key Vault ile tümleşiktir. Daha fazla bilgi için bkz. [IaaS VM 'leri Için Azure disk şifrelemesi](../articles/security/azure-security-disk-encryption-overview.md).
 
 ## <a name="disk-roles"></a>Disk rolleri
 
-Azure'da üç ana disk rolü vardır: veri diski, işletim sistemi diski ve geçici disk. Bu roller, sanal makineye bağlı diskler eşleyin.
+Azure 'da üç ana disk rolü vardır: veri diski, işletim sistemi diski ve geçici disk. Bu roller, sanal makinenize bağlı disklerle eşlenir.
 
-![Eylem disk rolleri](media/virtual-machines-managed-disks-overview/disk-types.png)
+![Eylemde bulunan disk rolleri](media/virtual-machines-managed-disks-overview/disk-types.png)
 
 ### <a name="data-disk"></a>Veri diski
 
-Veri diski uygulama verileri veya tutmak için ihtiyacınız olan diğer verileri depolamak için bir sanal makineye bağlı yönetilen bir disktir. Veri diskleri SCSI sürücüsü olarak kaydedilir ve seçtiğiniz bir harf ile etiketlenir. Her veri diski 32.767 gibibayt (GiB) kapasiteye sahiptir. Bunu ve depolama türünü ekleyebilirsiniz kaç veri diskinin diskleri barındırmak için kullanabileceğiniz sanal makinenin boyutunu belirler.
+Veri diski, uygulama verilerini depolamak için bir sanal makineye bağlı yönetilen bir disktir veya saklamanız gereken diğer verileri sağlar. Veri diskleri SCSI sürücüler olarak kaydedilir ve seçtiğiniz bir harfle etiketlenir. Her veri diski maksimum 32.767 Gibibyte (gib) kapasiteye sahiptir. Sanal makinenin boyutu, kendisine ekleyebileceğiniz veri disklerinin sayısını ve diskleri barındırmak için kullanabileceğiniz depolama türünü belirler.
 
 ### <a name="os-disk"></a>İşletim sistemi diski
 
-Her bir sanal makinede bir ekli işletim sistemi diski var. Bu işletim sistemi diski, VM oluşturulduğunda, seçilen önceden yüklenmiş bir OS sahiptir.
+Her sanal makinenin bir bağlı işletim sistemi diski vardır. Bu işletim sistemi diskinde, VM oluşturulduğunda seçilen, önceden yüklenmiş bir işletim sistemi vardır.
 
-Bu diski 2.048 GiB kapasiteye sahiptir.
+Bu diskin en fazla 2.048 GiB kapasitesi vardır.
 
 ### <a name="temporary-disk"></a>Geçici disk
 
-Her VM için yönetilen disk değil geçici bir diskle içerir. Geçici disk, uygulamalar ve işlemler için kısa vadeli depolama sağlar ve yalnızca sayfa veya takas dosyaları gibi verileri depolamak için tasarlanmıştır. Geçici diskteki veriler kaybolabilir sırasında bir [bakım olayı](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) olay veya ne zaman, [bir VM'yi yeniden dağıtma](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json). Azure Linux vm'lerinde geçici disk /dev/sdb varsayılan olarak ve Windows Vm'lerinde geçici disk E: varsayılan olarak. Başarılı standart yeniden başlatma VM'nin sırasında geçici diskteki veriler korunur.
+Her VM, yönetilen bir disk olmayan geçici bir disk içerir. Geçici disk, uygulamalar ve süreçler için kısa vadeli depolama sağlar ve yalnızca sayfa veya takas dosyaları gibi verileri depolamak için tasarlanmıştır. Geçici diskteki veriler, [bakım olayı](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) olayı sırasında veya [bir VM 'yi](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json)yeniden dağıttığınızda kaybolabilir. Azure Linux VM 'lerinde geçici disk varsayılan olarak/dev/sdb ve Windows VM 'lerinde geçici disk D: varsayılan olarak olur. Sanal makinenin başarılı bir standart yeniden başlatması sırasında, geçici diskteki veriler devam edecektir.
 
 ## <a name="managed-disk-snapshots"></a>Yönetilen disk anlık görüntüleri
 
-Varsayılan olarak standart yönetilen disk olarak depolanan bir yönetilen diskin salt okunur tam kopya yönetilen disk anlık görüntüsüdür. Anlık görüntüler sayesinde, yönetilen diskleriniz herhangi bir noktada sürede yedekleyebilirsiniz. Bu anlık görüntüler kaynak disk bağımsız olarak mevcut ve yeni yönetilen diskler oluşturmak için kullanılabilir. Kullanılan boyutuna göre faturalandırılır. Örneğin, bu anlık görüntü sağlanan kapasitesi 64 GiB ve gerçek kullanılan veri boyutu 10 GiB ile bir yönetilen diskin anlık görüntüsünü oluşturursanız, yalnızca kullanılan veri boyutu 10 GiB için faturalandırılır.  
+Yönetilen disk anlık görüntüsü, varsayılan olarak standart yönetilen disk olarak depolanan bir yönetilen diskin salt okunurdur, kilitlenmeyle tutarlı bir tam kopyasıdır. Anlık görüntülerle, yönetilen disklerinizi dilediğiniz zaman bir noktada yedekleyebilirsiniz. Bu anlık görüntüler, kaynak diskten bağımsız olarak bulunur ve yeni yönetilen diskler oluşturmak için kullanılabilir. Bunlar, kullanılan boyuta göre faturalandırılır. Örneğin, sağlanan 64 GiB kapasitesine sahip bir yönetilen diskin anlık görüntüsünü ve 10 GiB 'nin gerçek kullanılan veri boyutunu oluşturursanız, bu anlık görüntü yalnızca 10 GiB 'nin kullanılan veri boyutu için faturalandırılır.  
 
-Yönetilen disklerle anlık görüntüleri oluşturma hakkında daha fazla bilgi için aşağıdaki kaynaklara bakın:
+Yönetilen disklerle anlık görüntü oluşturma hakkında daha fazla bilgi edinmek için aşağıdaki kaynaklara bakın:
 
-* [Windows anlık görüntüler kullanılarak yönetilen disk olarak depolanmış VHD kopyası oluşturma](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
+* [Windows 'da anlık görüntüler kullanılarak yönetilen disk olarak depolanmış VHD kopyası oluşturma](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
 * [Linux’ta anlık görüntüler kullanılarak yönetilen disk olarak depolanmış VHD kopyası oluşturma](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
 
 ### <a name="images"></a>Görüntüler
 
-Yönetilen diskler, yönetilen bir özel görüntü oluşturma da destekler. Bir depolama hesabındaki özel VHD'nizi veya doğrudan bir genelleştirilmiş (Sysprep kullanılarak hazırlanmış) VM görüntü oluşturabilirsiniz. Bu işlem, tek bir görüntüsünü yakalar. Bu görüntü, işletim sistemi ve veri diskleri dahil olmak üzere bir VM ile ilişkili tüm yönetilen diskler içerir. Bu yönetilen bir özel görüntü oluşturma yüzlerce VM kopyalayın veya tüm depolama hesaplarını yönetmenize gerek kalmadan özel görüntü kullanarak sağlar.
+Yönetilen diskler ayrıca yönetilen bir özel görüntü oluşturmayı destekler. Bir depolama hesabındaki özel VHD 'nizden veya doğrudan Genelleştirilmiş (Sysprep uygulanmış) bir VM 'den görüntü oluşturabilirsiniz. Bu işlem tek bir görüntüyü yakalar. Bu görüntü, hem işletim sistemi hem de veri diskleri dahil olmak üzere bir VM ile ilişkili tüm yönetilen diskleri içerir. Bu yönetilen özel görüntü, herhangi bir depolama hesabını kopyalamaya veya yönetmeye gerek olmadan özel görüntünüzü kullanarak yüzlerce VM oluşturulmasına olanak sağlar.
 
-Görüntüleri oluşturma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
+Görüntü oluşturma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
-* [Azure'da bir genelleştirilmiş VM'nin yönetilen görüntüsünü yakalama](../articles/virtual-machines/windows/capture-image-resource.md)
+* [Azure 'da genelleştirilmiş bir VM 'nin yönetilen görüntüsünü yakalama](../articles/virtual-machines/windows/capture-image-resource.md)
 * [Azure CLI'yi kullanarak Linux sanal makinelerini genelleştirme ve yakalama](../articles/virtual-machines/linux/capture-image.md)
 
-#### <a name="images-versus-snapshots"></a>Anlık görüntülerle
+#### <a name="images-versus-snapshots"></a>Anlık görüntülere karşı görüntüler
 
-Görüntüleri ve anlık görüntü arasındaki farkı anlamak önemlidir. Yönetilen diskler ile serbest bıraktı genelleştirilmiş bir sanal makine görüntüsü alabilir. Bu görüntü VM'ye bağlı disklerin tümünü içerir. Bu görüntü bir VM oluşturmak için kullanabileceğiniz ve disklerin tümünü içerir.
+Görüntüler ve anlık görüntüler arasındaki farkı anlamak önemlidir. Yönetilen disklerle, serbest bırakılmış olan genelleştirilmiş bir VM 'nin görüntüsünü alabilirsiniz. Bu görüntü, VM 'ye bağlı tüm diskleri içerir. Bu görüntüyü kullanarak bir VM oluşturabilirsiniz ve tüm diskleri içerir.
 
-Anlık görüntü bir noktada bir disk anlık görüntünün alınma sürede kopyasıdır. Bu, yalnızca bir diske uygulanır. Bir disk (işletim sistemi diski) sahip bir VM'niz varsa, bir anlık görüntü veya bir görüntüsünü alın ve anlık görüntünün veya görüntü bir VM oluşturun.
+Anlık görüntü, anlık görüntünün alındığı zaman noktasındaki bir diskin kopyasıdır. Yalnızca bir disk için geçerlidir. Bir disk (işletim sistemi diski) olan bir VM varsa, anlık görüntüyü veya görüntüsünü alabilir ve anlık görüntüden ya da görüntüden bir VM oluşturabilirsiniz.
 
-Anlık görüntü tanıma içerdiği dışındaki herhangi bir disk yok. Bu sorunlu şeritleme gibi birden çok disk eşgüdümünü gerektiren senaryolar kullanmasını sağlar. Birbiriyle koordine edebilmek anlık görüntüleri gerekir ve bu şu anda desteklenmiyor.
+Bir anlık görüntü, içerdiği bir disk dışında herhangi bir diskin farkında değildir. Bu, dizme gibi birden çok diskin koordinasyonunu gerektiren senaryolarda kullanılmasını soruna neden olur. Anlık görüntülerin birbirleriyle koordine kurabilmesi gerekir ve bu, şu anda desteklenmemektedir.
+
+## <a name="disk-allocation-and-performance"></a>Disk ayırma ve performans
+
+Aşağıdaki diyagramda, üç düzeyli bir sağlama sistemi kullanılarak, diskler için gerçek zamanlı bant genişliği ve ıOPS gösterilmektedir:
+
+![Bant genişliği ve ıOPS ayırmayı gösteren üç düzey sağlama sistemi](media/virtual-machines-managed-disks-overview/real-time-disk-allocation.png)
+
+İlk düzey sağlama, disk başına ıOPS ve bant genişliği atamasını belirler.  İkinci düzeyde, işlem sunucusu ana bilgisayarı SSD sağlama işlemini uygular ve yalnızca, önbelleğe alma (ReadWrite ve salt okunur) diskler ve yerel ve geçici disklere dahil olmak üzere yalnızca sunucunun SSD 'de depolanan verilere uygulanır. Son olarak, VM ağı sağlama işlemi, işlem konağının Azure depolama 'nın arka ucuna gönderdiği herhangi bir g/ç için üçüncü düzeyde gerçekleşir. Bu şemayla, VM 'nin performansı, sanal makinenin yerel SSD 'yi nasıl kullandığı, eklenen disklerin sayısı ve bağlı olduğu disklerin performans ve önbelleğe alma türü gibi çeşitli faktörlere bağlıdır.
+
+Bu sınırlamalara örnek olarak, bir Standard_DS1v1 VM 'nin, SSD ve ağ düzeylerindeki sınırlar nedeniyle önbelleğe alınıp alınmadığı, bir P30 disk için 5.000 ıOPS potansiyelini elde etmesinin engellenmektedir:
+
+![Standard_DS1v1 örnek ayırma](media/virtual-machines-managed-disks-overview/example-vm-allocation.png)
+
+Azure, ağ trafiğinin diğer düşük önceliğine göre önceliği alan, disk trafiği için öncelikli ağ kanalını kullanır. Bu, disklerin ağ çekişmelerinde beklenen performansını korumalarına yardımcı olur. Benzer şekilde, Azure depolama, kaynak çekişmelerini ve diğer sorunları otomatik yük dengeleme ile arka planda işler. Azure depolama, bir disk oluştururken gerekli kaynakları ayırır ve trafik düzeyini işlemek için kaynakların proaktif ve reaktif dengelemesini uygular. Bu, disklerin beklenen ıOPS ve üretilen iş hedeflerine dayanmasını sağlar. Gerektiğinde performans ve kurulum uyarılarını izlemek için VM düzeyi ve disk düzeyi ölçümlerini kullanabilirsiniz.
+
+İstediğiniz performansı elde edebilmeniz için VM + disk yapılandırmalarının iyileştirmesini sağlayan en iyi yöntemleri öğrenmek için [yüksek performanslı](../articles/virtual-machines/windows/premium-storage-performance.md) makalemize bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure'un sunduğu tek tek disk türleri hakkında daha fazla bilgi edinin ve disk türlerinde makalemizde gereksinimlerinize uygun türüdür.
+Azure 'un sunduğu ayrı disk türleri hakkında daha fazla bilgi edinin. bu tür, gereksinimlerinize uygun bir uyum ve disk türlerindeki makalemizdeki performans hedefleri hakkında bilgi edinin.

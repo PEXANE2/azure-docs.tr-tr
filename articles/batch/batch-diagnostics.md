@@ -1,10 +1,10 @@
 ---
-title: Ölçümler, uyarılar ve tanılama günlükleri - Azure Batch | Microsoft Docs
+title: Ölçümler, uyarılar ve tanılama günlükleri-Azure Batch | Microsoft Docs
 description: Kayıt ve tanılama günlüğü olaylarını havuzlar ve görevler gibi Azure Batch hesabı kaynakları için analiz edin.
 services: batch
 documentationcenter: ''
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: batch
@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 12/05/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: e1fc405951789305b0df86fd0f7b91890fb45c06
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 63d0196609e432b081e91a49b5b1410431223632
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242629"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323619"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Toplu ölçümleri, uyarılar ve değerlendirme tanılama ve izleme günlükleri
 
@@ -29,7 +29,7 @@ Bu makalede, bir Batch hesabı özelliklerini kullanarak izlemek açıklanmaktad
 
 ## <a name="batch-metrics"></a>Toplu ölçümleri
 
-(Performans sayaçları olarak da bilinir) Azure telemetri verilerini Azure İzleyici hizmeti tarafından kullanılan, Azure kaynaklarınızı tarafından yayılan ölçümleridir. Bir Batch hesabında örnek ölçümler şunları içerir: Havuz oluşturma olayları, düşük öncelikli düğüm sayısı ve görev olayları'nı tamamlayın. 
+(Performans sayaçları olarak da bilinir) Azure telemetri verilerini Azure İzleyici hizmeti tarafından kullanılan, Azure kaynaklarınızı tarafından yayılan ölçümleridir. Batch hesabındaki örnek ölçümler şunları içerir: Havuz oluşturma olayları, düşük öncelikli düğüm sayısı ve görev tamamlanma olayları. 
 
 Bkz: [Batch desteklenen ölçümlerin listesi](../azure-monitor/platform/metrics-supported.md#microsoftbatchbatchaccounts).
 
@@ -37,7 +37,7 @@ Bkz: [Batch desteklenen ölçümlerin listesi](../azure-monitor/platform/metrics
 
 * Her Batch hesabında bir ek yapılandırma olmadan varsayılan olarak etkin
 * Her 1 dakikada oluşturulan
-* Otomatik olarak kalıcı değil, ancak 30 günlük çalışırken geçmişi bulunur. Tanılama günlüğüne kaydetme bir parçası olarak etkinlik ölçümlerinin kalıcı hale getirebilirsiniz.
+* Otomatik olarak kalıcı değil, ancak 30 günlük çalışırken geçmişi bulunur. Tanılama günlüğü 'nün bir parçası olarak etkinlik ölçümlerini kalıcı hale getirebilirsiniz.
 
 ### <a name="view-metrics"></a>Ölçümleri görüntüle
 
@@ -91,7 +91,7 @@ Tanılama günlükleri için isteğe bağlı diğer hedefleri:
 
 * Batch tanılama günlüğü olaylarını Stream bir [Azure olay hub'ı](../event-hubs/event-hubs-what-is-event-hubs.md). Event hubs'ı, sonra dönüştürebilir ve herhangi bir gerçek zamanlı analiz sağlayıcısı kullanarak depolama, saniye başına milyonlarca olayı içe alabilir. 
 
-* Tanılama günlükleri gönderin [Azure İzleyici günlükleri](../log-analytics/log-analytics-overview.md), burada onları çözümleyebilir veya Power BI'ı veya Excel'i analizi için bunları dışarı aktarmak.
+* Tanılama günlüklerini [Azure izleyici günlüklerine](../log-analytics/log-analytics-overview.md)göndererek bunları analiz edebilir veya Power BI veya Excel 'de Analize aktarabilirsiniz.
 
 > [!NOTE]
 > Depolama veya Azure hizmetleriyle tanılama günlük verilerini işlemek için ek ücrete neden. 
@@ -101,7 +101,7 @@ Tanılama günlükleri için isteğe bağlı diğer hedefleri:
 
 1. Portalında **tüm hizmetleri** > **Batch hesapları**ve ardından Batch hesabınızın adına tıklayın.
 2. Altında **izleme**, tıklayın **tanılama günlükleri** > **tanılamayı Aç**.
-3. İçinde **tanılama ayarları**, ayar için bir ad girin ve bir günlük hedefi (mevcut bir depolama hesabı, olay hub'ı veya Azure İzleyici günlüklerine) seçin. Veya ikisini birden seçin **ServiceLog** ve **AllMetrics**.
+3. **Tanılama ayarları**' nda, ayar için bir ad girin ve bir günlük hedefi (mevcut depolama hesabı, Olay Hub 'ı veya Azure izleyici günlükleri) seçin. Veya ikisini birden seçin **ServiceLog** ve **AllMetrics**.
 
     İsteğe bağlı olarak bir depolama hesabını seçtiğinizde bir bekletme ilkesi ayarlayın. Veriler, birkaç gün bekletme için belirtmezseniz, depolama hesabının ömrü tutulur.
 

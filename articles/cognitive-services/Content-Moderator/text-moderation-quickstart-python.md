@@ -1,5 +1,5 @@
 ---
-title: "Hızlı Başlangıç: Metin içeriği python'da - Content Moderator analiz edin"
+title: "Hızlı Başlangıç: Python 'da metin içeriğini analiz etme-Content Moderator"
 titlesuffix: Azure Cognitive Services
 description: Metin içeriği için içerik Moderator SDK'sını kullanarak Python için çeşitli içeriklere analiz etme
 services: cognitive-services
@@ -10,14 +10,16 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 0fef3bffd30c19d0313e5fce7eb610ae7f6349f5
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 01c153f2f8836b7d99de57af60b8623e54c6d6fe
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67607003"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311920"
 ---
-# <a name="quickstart-analyze-text-content-for-objectionable-material-in-python"></a>Hızlı Başlangıç: Metin içeriği içeriklere python'da için analiz edin
+[!code-python[import declarations](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=imports)]
+
+# <a name="quickstart-analyze-text-content-for-objectionable-material-in-python"></a>Hızlı Başlangıç: Python 'da sakıncalı malzeme için metin içeriğini analiz etme
 
 Bu makalede bilgiler sağlar ve yardımcı olması için kod örnekleri Content Moderator SDK'sı için Python'ı kullanmaya başlayın. Uygunsuz olabilecek malzemeleri yönetmek için terim tabanlı filtreleme ve metin içeriğini sınıflandırma işlemlerini yürütmeyi öğreneceksiniz.
 
@@ -38,39 +40,34 @@ pip install azure-cognitiveservices-vision-contentmoderator
 
 ## <a name="import-modules"></a>Modülleri içeri aktarma
 
-Adlı yeni bir Python betiği oluşturmak _ContentModeratorQS.py_ ve SDK'yı gerekli bölümlerini içeri aktarmak için aşağıdaki kodu ekleyin.
+Adlı yeni bir Python betiği oluşturmak _ContentModeratorQS.py_ ve SDK'yı gerekli bölümlerini içeri aktarmak için aşağıdaki kodu ekleyin. Düzgün yazdırma modülü, JSON yanıtının okunması daha kolay bir hale gelir.
 
-[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/text-moderation-quickstart-python.py?range=1-10)]
-
-Ayrıca son çıktı işlemek için "düzgün yazdırma" işlev içeri aktarın.
-
-[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/text-moderation-quickstart-python.py?range=12)]
+[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/content_moderator_quickstart.py?name=imports)]
 
 
 ## <a name="initialize-variables"></a>Değişkenleri başlatma
 
-Ardından, değişkenleri, Content Moderator abonelik anahtarını ve uç nokta URL'sini ekleyin. Değiştirmeniz gerekecektir `<your subscription key>` anahtarınızı değerine sahip. Değerini değiştirmeniz gerekebilir `endpoint_url` kullanmak için abonelik anahtarınızı karşılık gelen bir bölge tanımlayıcısı. Ücretsiz deneme aboneliği anahtarları oluşturulur **westus** bölge.
+Ardından, değişkenleri, Content Moderator abonelik anahtarını ve uç nokta URL'sini ekleyin. Adı `CONTENT_MODERATOR_SUBSCRIPTION_KEY` ortam değişkenlerinizin içine eklemeniz ve abonelik anahtarınızı değer olarak eklemeniz gerekir. Temel uç nokta URL 'niz için, `CONTENT_MODERATOR_ENDPOINT` kendi değeri olarak bölge özel URL 'niz ile ortam değişkenlerinizi ekleyin (örneğin `https://westus.api.cognitive.microsoft.com`,). Ücretsiz deneme aboneliği anahtarları oluşturulur **westus** bölge.
 
-[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/text-moderation-quickstart-python.py?range=14-16)]
+[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/content_moderator_quickstart.py?name=authentication)]
 
+Bir dosyadan çok satırlı metnin bir dizesi aracılı olur. [Content_moderator_text_moderation. txt](https://github.com/Azure-Samples/cognitive-services-content-moderator-samples/blob/master/documentation-samples/python/content_moderator_text_moderation.txt) dosyasını yerel kök klasörünüze ekleyin ve dosya adını değişkenlerinizin içine ekleyin:
 
-Basitleştirmek amacıyla, doğrudan komut dosyasından metin analiz eder. Metin içeriğini denetlemek için yeni bir dize tanımlayın:
-
-[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/text-moderation-quickstart-python.py?range=18-21)]
-
+[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/content_moderator_quickstart.py?name=textModerationFile)]
 
 ## <a name="query-the-moderator-service"></a>Denetleyici hizmetini sorgulama
 
-Oluşturma bir **ContentModeratorClient** abonelik anahtarını ve uç nokta URL'nizi kullanarak örneği. Daha sonra kendi üyesi kullanın **TextModerationOperations** denetimi API'si çağırmak için örneği. Bkz: **[screen_text](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.textmoderationoperations?view=azure-python)** başvuru belgeleri çağırmak nasıl daha fazla bilgi için.
+Oluşturma bir **ContentModeratorClient** abonelik anahtarını ve uç nokta URL'nizi kullanarak örneği. 
 
-[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/text-moderation-quickstart-python.py?range=23-36)]
+[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/content_moderator_quickstart.py?name=client)]
 
-## <a name="print-the-response"></a>Yanıtı yazdırma
+Daha sonra, işleviyle `screen_text`birlikte denetleme API 'sini çağırmak için, kendi üye **textmoderationoperations** örneğiyle istemcinizi kullanın. Bkz: **[screen_text](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.textmoderationoperations?view=azure-python)** başvuru belgeleri çağırmak nasıl daha fazla bilgi için.
 
-Son olarak, çağrısı başarıyla tamamlandı ve döndürülen denetleyin bir **ekran** örneği. Daha sonra konsolda döndürülen veriler yazdırın.
+[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/content_moderator_quickstart.py?name=textModeration)]
 
-[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/text-moderation-quickstart-python.py?range=38-39)]
+## <a name="check-the-printed-response"></a>Yazdırılan yanıtı denetleyin
 
+Örneği çalıştırın ve yanıtı onaylayın. Başarıyla tamamlanmalıdır ve bir **ekran** örneği döndürdü. Başarılı bir sonuç aşağıda yazdırılır:
 
 Bu hızlı başlangıçta sonuçları aşağıdaki çıktıda kullanılan örnek metni:
 

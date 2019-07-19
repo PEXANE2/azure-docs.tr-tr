@@ -1,6 +1,6 @@
 ---
-title: Azure arama 2019-05-06-Preview için - REST API Önizleme Azure arama
-description: Azure arama hizmeti REST API sürümü 2019-05-06-Preview bilgi deposu ve müşteri tarafından yönetilen bir şifreleme anahtarları gibi Deneysel özellikler içerir.
+title: Önizleme REST API Azure Search 2019-05-06-önizleme-Azure Search
+description: Azure Search Service REST API sürüm 2019-05-06-önizleme bilgi deposu ve müşteri tarafından yönetilen şifreleme anahtarları gibi deneysel özellikleri içerir.
 services: search
 author: HeidiSteen
 manager: cgronlun
@@ -10,50 +10,50 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: search
 ms.date: 05/02/2019
-ms.author: HeidiSteen
+ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 5374ff896613dd8f8563a2054be8a92103e63fbb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 29d079c4e21352ced5fdcde44acaee66b79f6af9
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65523916"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876650"
 ---
-# <a name="azure-search-service-rest-api-version-2019-05-06-preview"></a>Azure arama hizmeti REST API sürümü 2019-05-06-Önizleme
-Bu makalede `api-version=2019-05-06-Preview` Azure Search Hizmeti REST API, Deneysel özellikler değil henüz genel kullanıma sunan bir sürümü.
+# <a name="azure-search-service-rest-api-version-2019-05-06-preview"></a>Azure Search Service REST API-sürüm 2019-05-06-Önizleme
+Bu makalede, henüz `api-version=2019-05-06-Preview` genel kullanıma sunulmayan Deneysel özellikler sunan Azure Search hizmeti REST API sürümü açıklanmaktadır.
 
 > [!NOTE]
-> Önizleme özellikleri, test ve geri bildirim toplamak amacıyla bir deneme için kullanılabilir ve değiştirilebilir. Önizleme API'leri üretim uygulamalarında kullanılmasını öneriyoruz.
+> Önizleme özellikleri, test ve deneme ile geri bildirim toplama amacını ve değişikliğe tabi bir şekilde kullanılabilir. Üretim uygulamalarında önizleme API 'Lerini kullanmayı önemle tavsiye ederiz.
 
 
-## <a name="new-in-2019-05-06-preview"></a>Yeni 2019-05-06-Önizleme
+## <a name="new-in-2019-05-06-preview"></a>2019-05-06 içinde yeni-önizleme
 
-[**Bilgi deposunu** ](knowledge-store-concept-intro.md) bir işlem hattının zenginleştirme yapay ZEKA tabanlı yeni bir hedef. Bir dizin ek olarak Azure depolama dizini oluşturma sırasında oluşturulan doldurulmuş veri yapılarını artık kalıcı hale getirebilirsiniz. Verilerinizi verileri tablo depolama veya Blob Depolama içinde depolanmasından bağımsız veri şeklinde nasıl ve birden çok görünüm olup olmadığı dahil olmak üzere bir beceri kümesi öğeleri aracılığıyla fiziksel yapıları denetim.
+[**Bilgi deposu**](knowledge-store-concept-intro.md) , bir AI tabanlı zenginleştirme işlem hattının yeni bir hedefi. Bir dizine ek olarak, Azure depolama 'da dizin oluşturma sırasında oluşturulan doldurulmuş veri yapılarını artık kalıcı hale getirebilirsiniz. Verilerin nasıl şekillendirilmiş olduğunu, verilerin tablo depolama veya blob depolama alanında mi depolandığını, yoksa birden çok görünüm mi olduğunu da kapsayan, verilerinizin fiziksel yapılarını bir beceri öğeleri aracılığıyla kontrol edersiniz.
 
-[**Müşteri tarafından yönetilen bir şifreleme anahtarları** ](search-security-manage-encryption-keys.md) için hizmet tarafı şifreleme bekleyen ayrıca yeni bir önizleme özelliğidir. Yerleşik şifreleme Microsoft tarafından yönetilen bekleyen ek olarak, şifreleme anahtarları tek sahibi olduğu bir ek katmanı uygulayabilirsiniz.
+Hizmet tarafı şifreleme için [**müşteri tarafından yönetilen şifreleme anahtarları**](search-security-manage-encryption-keys.md) Ayrıca yeni bir önizleme özelliğidir. Microsoft tarafından yönetilen yerleşik şifrelemeye ek olarak, anahtarların tek sahibi olduğunuz sırada ek bir şifreleme katmanı da uygulayabilirsiniz.
 
 ## <a name="other-preview-features"></a>Diğer Önizleme özellikleri
 
-Önceki önizlemelerde bildirilen özellikler hala genel Önizleme aşamasındadır. Bir önceki Önizleme api-version ile API arıyoruz ise bu sürümünü kullanın veya geçmek devam etmeden `2019-05-06-Preview` beklenen davranışın değişiklik yapmadan.
+Önceki önizlemelerde duyurulan Özellikler hala genel önizlemede. Daha önceki bir Preview API sürümü olan bir API 'yi arıyorsanız, bu sürümü kullanmaya devam edebilir veya beklenen davranışa hiçbir değişiklik yapmadan öğesine `2019-05-06-Preview` geçebilirsiniz.
 
-+ [moreLikeThis sorgu parametresi](search-more-like-this.md) belirli bir belge için uygun olan belgeleri bulur. Bu özellik, önceki önizlemelerde olmuştur. 
-* [CSV blob dizin](search-howto-index-csv-blobs.md) metin blob başına tek bir belge aksine, satır başına bir belgeyi oluşturur.
-* [Cosmos DB dizin oluşturucular için MongoDB API'si desteği](search-howto-index-cosmosdb.md) Önizleme aşamasındadır.
++ [Morelikethis sorgu parametresi](search-more-like-this.md) , belirli bir belgeyle ilgili belgeleri bulur. Bu özellik daha önceki önizlemelerde yer aldı. 
+* [CSV blobu dizin oluşturma](search-howto-index-csv-blobs.md) , her metin blobu için bir belge yerine her satır için bir belge oluşturur.
+* [Cosmos DB Dizin oluşturucular Için MongoDB API desteği](search-howto-index-cosmosdb.md) önizlemededir.
 
 
-## <a name="how-to-call-a-preview-api"></a>Bir önizleme API çağırma
+## <a name="how-to-call-a-preview-api"></a>Önizleme API 'sini çağırma
 
-Eski önizlemeler hala çalışır ancak zaman içinde eski haline gelir. Kodunuzu çağırırsa `api-version=2016-09-01-Preview` veya `api-version=2017-11-11-Preview`, bu çağrıları hala geçerli. Ancak, yalnızca en yeni önizleme sürümü ile geliştirmeleri yenilenir. 
+Daha eski önizlemeler hala çalışır, ancak zaman içinde eski hale gelir. Kodunuz veya `api-version=2016-09-01-Preview` `api-version=2017-11-11-Preview`çağırıyorsa, bu çağrılar hala geçerlidir. Ancak, geliştirmelerle yalnızca en yeni önizleme sürümü yenilenir. 
 
-Aşağıdaki örnek söz dizimini Önizleme API sürümü çağrıyı gösterir.
+Aşağıdaki örnek sözdizimi, önizleme API sürümüne yapılan çağrıyı gösterir.
 
     GET https://[service name].search.windows.net/indexes/[index name]/docs?search=*&api-version=2019-05-06-Preview
 
-Azure arama hizmeti içinde birden çok sürümü kullanılabilir. Daha fazla bilgi için [API sürümlerini](search-api-versions.md).
+Azure Search hizmeti birden çok sürümde kullanılabilir. Daha fazla bilgi için bkz. [API sürümleri](search-api-versions.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Search Hizmeti REST API başvuru belgelerini gözden geçirin. Sorunlarla karşılaşırsanız, bize yardım üzerinde isteyin [StackOverflow](https://stackoverflow.com/) veya [desteğe](https://azure.microsoft.com/support/community/?product=search).
+Azure Search hizmeti REST API başvuru belgelerini inceleyin. Sorunlarla karşılaşırsanız [StackOverflow](https://stackoverflow.com/) hakkında yardım isteyin veya [desteğe başvurun](https://azure.microsoft.com/support/community/?product=search).
 
 > [!div class="nextstepaction"]
-> [Arama hizmeti REST API Başvurusu](https://docs.microsoft.com/rest/api/searchservice/)
+> [Arama hizmeti REST API başvurusu](https://docs.microsoft.com/rest/api/searchservice/)

@@ -7,29 +7,29 @@ ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 36e881fb9ba3ab81611b94a36ef0beed8748d5b1
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: f457b316d9f499f2cab02452c1b03ad07a9aef27
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705112"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302822"
 ---
 # <a name="throttling-resource-manager-requests"></a>Resource Manager istekleri azaltma
 
-Her Azure aboneliği ve Kiracı için Resource Manager kadar saat başına istek 12.000 okuma ve yazma istekleri saatte 1.200 sağlar. Bu sınırlar, güvenlik sorumlusunu (kullanıcı veya uygulama) kapsamındaki istekleri ve abonelik kimliği veya Kiracı kimliği. İsteklerinizi güvenlik sorumlusu birden fazla geliyorsa, abonelik veya Kiracı genelinde sınırınızı 12.000 ve saatte 1.200 büyüktür.
+Her Azure aboneliği ve Kiracı için Resource Manager kadar saat başına istek 12.000 okuma ve yazma istekleri saatte 1.200 sağlar. Bu sınırlar, istekleri ve abonelik KIMLIĞINI ya da kiracı KIMLIĞINI yapan güvenlik sorumlusu (Kullanıcı veya uygulama) kapsamlandırılır. İstekleriniz birden fazla güvenlik sorumlusundan geliyorsa, abonelik veya kiracının sınırı 12.000 ve 1.200 saat üzerinden olur.
 
-İstekleri aboneliğiniz veya kiracınız için uygulanır. Abonelik, aboneliğinizdeki kaynak gruplarını almak gibi abonelik Kimliğinizi geçirme ilgili isteklerdir. Kiracı isteklerini, geçerli Azure konumlarının alma gibi abonelik Kimliğinizi dahil değildir.
+İstekleri aboneliğiniz veya kiracınız için uygulanır. Abonelik istekleri, aboneliğinizdeki kaynak gruplarını alma gibi abonelik KIMLIĞINIZI geçirmeyi içerir. Kiracı isteklerini, geçerli Azure konumlarının alma gibi abonelik Kimliğinizi dahil değildir.
 
 Bu limitler her bir Azure Resource Manager örneğine uygulayın. Her Azure bölgesi içinde birden çok örneği vardır ve Azure Resource Manager tüm Azure bölgelerine dağıtılır.  Uygulamada, sınırlar etkili bir şekilde bu sınırlardan daha yüksek olacak şekilde, kullanıcı olarak istekler genellikle birçok farklı örnekleri tarafından sunulur.
 
-Bu limitler ulaşırsa, uygulama veya betik, istek kısıtlama gerekir. Bu makalede, sahip olduğunuz sınırına ulaşmadan önce kalan istekler belirleme ve sınırına ulaştınız, yanıt nasıl gösterir.
+Bu limitler ulaşırsa, uygulama veya betik, istek kısıtlama gerekir. Bu makalede, sınıra ulaşmadan önce sahip olduğunuz kalan isteklerin nasıl belirleneceği ve sınıra ulaştığınızda yanıt verme işlemlerinin nasıl yapılacağı gösterilir.
 
 Sınıra ulaştığınızda, HTTP durum kodu alma **429 çok fazla istek**.
 
-Azure Kaynak Grafiği işlemlerini isteklerinin sayısını sınırlar. Kalan istekler ve nasıl sınırına ulaşıldığında yanıtlanacağını belirlemek için bu makaledeki adımlarda, kaynak grafiği için de geçerlidir. Ancak, kaynak grafiği kendi sınırı ve sıfırlama hızı ayarlar. Daha fazla bilgi için [kısıtlama Azure kaynak grafikte](../governance/resource-graph/overview.md#throttling).
+Azure Kaynak Grafiği, istek sayısını işlemlerine göre sınırlandırır. Kalan istekleri ve sınıra ulaşıldığında nasıl yanıt verileceğini öğrenmek için bu makaledeki adımlar kaynak grafı için de geçerlidir. Ancak, kaynak grafiği kendi sınırını ve sıfırlama oranını ayarlar. Daha fazla bilgi için bkz. [Azure Kaynak grafiğinde kısıtlama](../governance/resource-graph/overview.md#throttling).
 
 ## <a name="remaining-requests"></a>Kalan istekler
-Yanıt üst bilgilerini inceleyerek, kalan istek sayısını belirleyebilirsiniz. Okuma istekleri, kalan okuma isteklerinin sayısı için üst bilgisindeki bir değer döndürür. İstekler dahil kalan yazma isteklerinin sayısı'için bir değer yazın. Aşağıdaki tabloda, bu değerler için inceleyebilirsiniz yanıt üstbilgilerini açıklanmaktadır:
+Yanıt üst bilgilerini inceleyerek, kalan istek sayısını belirleyebilirsiniz. Okuma istekleri, kalan okuma isteklerinin sayısı için üst bilgide bir değer döndürür. Yazma istekleri, kalan yazma isteklerinin sayısı için bir değer içerir. Aşağıdaki tabloda, bu değerler için inceleyebilirsiniz yanıt üstbilgilerini açıklanmaktadır:
 
 | Yanıt üst bilgisi | Açıklama |
 | --- | --- |

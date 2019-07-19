@@ -1,7 +1,7 @@
 ---
-title: Konuşma kapsayıcılara yükleme
+title: Konuşma kapsayıcılarını yükler
 titleSuffix: Azure Cognitive Services
-description: Yükleme ve konuşma kapsayıcıları çalıştırın. Konuşma metin, ses akışları gerçek zamanlı olarak, uygulamalar, Araçlar veya cihazları kullanma veya görüntüleme metne dönüştürür. Metin okuma, giriş metni İnsan benzeri Sentezlenen konuşmaya dönüştürür.
+description: Konuşma kapsayıcılarını yükleyip çalıştırın. Konuşmadan metne dönüştürme, uygulamalarınızın, araçlarınızın veya cihazlarınızın tüketebileceği veya görüntüleyeceği gerçek zamanlı olarak metin halinde ses akışları. Metin okuma, giriş metnini insan benzeri sentezleştirilmiş konuşmaya dönüştürür.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,39 +10,39 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 8f395788d4dd3c845155a52bd6b4666998838fcd
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: ee7ba5cba464dbbc632908af22579d4869e3bd81
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67490227"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68321329"
 ---
-# <a name="install-and-run-speech-service-containers"></a>Yükleme ve konuşma hizmeti kapsayıcıları çalıştırma
+# <a name="install-and-run-speech-service-containers"></a>Konuşma hizmeti kapsayıcılarını yükleyip çalıştırma
 
-Konuşma kapsayıcıları hem güçlü bulut özellikleri hem de edge yerleşim yeri yararlanmak için iyileştirilmiş bir konuşma uygulama mimarisi yapı sağlar. 
+Konuşma kapsayıcıları, müşterilerin hem güçlü bulut özellikleri hem de kenar yerinin avantajlarından yararlanmak için optimize edilmiş bir konuşma uygulaması mimarisi oluşturmasına imkan tanır. 
 
-İki konuşma kapsayıcılardır **konuşma metin** ve **metin okuma**. 
+İki konuşma kapsayıcısı **konuşmadan metne** ve **metinden konuşmaya**. 
 
-|İşlev|Özellikler|en son|
+|İşlev|Özellikler|sürümü|
 |-|-|--|
-|Konuşmayı Metne Dönüştürme| <li>Sürekli gerçek zamanlı konuşma veya toplu ses kayıtları Ara sonuçlarla metne dönüştürür.|1.1.3|
-|Metin Okuma| <li>Metni, doğal sesli konuşmaya dönüştürür. düz metin girişi veya konuşma sentezi işaretleme dili (SSML'yi). |1.1.0|
+|Konuşmayı Metne Dönüştürme| <li>Sürekli gerçek zamanlı konuşmayı veya toplu ses kayıtlarını, ara sonuçlarla metin içine ekleyin.|1.1.3|
+|Metin Okuma| <li>Metni, doğal sesli konuşmaya dönüştürür. düz metin girişi veya konuşma sen, biçimlendirme dili (SSML) ile. |1.1.0|
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Konuşma kapsayıcıları kullanmadan önce aşağıdaki gereksinimleri karşılaması gerekir:
+Konuşma kapsayıcılarını kullanmadan önce aşağıdaki önkoşulları karşılamanız gerekir:
 
 |Gerekli|Amaç|
 |--|--|
-|Docker altyapısı| Docker Altyapısı'nın kurulu ihtiyacınız bir [ana bilgisayar](#the-host-computer). Docker üzerinde Docker ortamını yapılandıran paketler sağlar [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), ve [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Docker ve kapsayıcı temelleri hakkında bilgi için bkz: [Docker'a genel bakış](https://docs.docker.com/engine/docker-overview/).<br><br> Docker, kapsayıcılar ile bağlanma ve faturalama verileri Azure'a göndermek izin verecek şekilde yapılandırılmalıdır. <br><br> **Windows üzerinde**, Docker de Linux kapsayıcıları destekler şekilde yapılandırılmalıdır.<br><br>|
-|Docker ile aşinalık | Bir temel kavramlarını Docker kayıt defterleri, havuzları, kapsayıcılar ve kapsayıcı görüntülerinin yanı sıra temel bilgi gibi olmalıdır `docker` komutları.| 
-|Konuşma kaynak |Bu kapsayıcıların kullanabilmeniz için şunlara sahip olmalısınız:<br><br>A _konuşma_ fatura uç noktası URI'si ve ilişkili faturalandırma anahtarı almak için Azure kaynak. Her iki değeri de Azure portalında üzerinde kullanılabilir **konuşma** genel bakış ve anahtarları sayfaları ve bu, kapsayıcı başlatma için gerekli.<br><br>**{BILLING_KEY}** : kaynak anahtarı<br><br>**{BILLING_ENDPOINT_URI}** : uç nokta URI'si örnektir: `https://westus.api.cognitive.microsoft.com/sts/v1.0`|
+|Docker altyapısı| Bir [ana bilgisayarda](#the-host-computer)Docker altyapısının yüklü olması gerekir. Docker, [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)ve [Linux](https://docs.docker.com/engine/installation/#supported-platforms)'ta Docker ortamını yapılandıran paketler sağlar. Docker ve kapsayıcı temelleri hakkında bilgi için bkz: [Docker'a genel bakış](https://docs.docker.com/engine/docker-overview/).<br><br> Docker, kapsayıcılar ile bağlanma ve faturalama verileri Azure'a göndermek izin verecek şekilde yapılandırılmalıdır. <br><br> **Windows 'da**Docker 'ın de Linux kapsayıcılarını destekleyecek şekilde yapılandırılması gerekir.<br><br>|
+|Docker ile benzerlik | Kayıt defterleri, depolar, kapsayıcılar ve kapsayıcı görüntüleri gibi Docker kavramlarının yanı sıra temel `docker` komutlar hakkında bilgi sahibi olmanız gerekir.| 
+|Konuşma kaynağı |Bu kapsayıcıları kullanabilmeniz için, şunları yapmanız gerekir:<br><br>İlişkili API anahtarını ve uç nokta URI 'sini almak için bir Azure _konuşma_ kaynağı. Her iki değer de Azure portal **konuşmaya** genel bakış ve anahtarlar sayfalarında kullanılabilir. Kapsayıcının başlatılması için her ikisi de gereklidir.<br><br>**{API_KEY}** : **Anahtarlar** sayfasındaki kullanılabilir iki kaynak anahtardan biri<br><br>**{ENDPOINT_URI}** : **Genel bakış** sayfasında belirtilen bitiş noktası|
 
-## <a name="request-access-to-the-container-registry"></a>Kapsayıcı kayıt defterine erişim isteği
+## <a name="request-access-to-the-container-registry"></a>Kapsayıcı kayıt defterine erişim isteme
 
-Önce tamamlamanız ve gönderme gerekir [Bilişsel hizmetler konuşma kapsayıcıları istek formunu](https://aka.ms/speechcontainerspreview/) kapsayıcıya erişim istemek için. 
+Kapsayıcıya erişim istemek için önce bilişsel [Hizmetler konuşma kapsayıcıları istek formunu](https://aka.ms/speechcontainerspreview/) doldurmanız ve göndermeniz gerekir. 
 
 [!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
 
@@ -54,7 +54,7 @@ Konuşma kapsayıcıları kullanmadan önce aşağıdaki gereksinimleri karşıl
 
 ### <a name="advanced-vector-extension-support"></a>Gelişmiş vektör uzantısı desteği
 
-**Konak** , docker kapsayıcısı çalıştıran bilgisayardır. Konak desteklemelidir [Gelişmiş vektör uzantıları](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#CPUs_with_AVX2) (AVX2). Bu destek Linux Konaklara aşağıdaki komutla kontrol edebilirsiniz: 
+**Konak** , Docker kapsayıcısını çalıştıran bilgisayardır. Ana bilgisayar [Gelişmiş vektör uzantılarını](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#CPUs_with_AVX2) desteklemelidir (AVX2). Bu desteği Linux konaklarında aşağıdaki komutla kontrol edebilirsiniz: 
 
 ```console
 grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detected
@@ -62,51 +62,51 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 ### <a name="container-requirements-and-recommendations"></a>Kapsayıcı gereksinimleri ve önerileri
 
-Aşağıdaki tabloda, en düşük ve önerilen CPU Çekirdeği ve her bir konuşma kapsayıcısı için ayrılacak bellek açıklanmaktadır.
+Aşağıdaki tabloda, her bir konuşma kapsayıcısı için ayrılacak minimum ve önerilen CPU çekirdekleri ve bellek açıklanmaktadır.
 
 | Kapsayıcı | Minimum | Önerilen |
 |-----------|---------|-------------|
-|bilişsel hizmetler-konuşma-metne dönüştürme | 2 Çekirdek<br>2 GB bellek  | 4 çekirdek<br>4 GB bellek  |
-|bilişsel hizmetler-metin-için-konuşma | 1 çekirdek, 0,5 GB bellek| 2 Çekirdek, 1 GB bellek |
+|bilişsel hizmetler-konuşmayı metne dönüştürme | 2 çekirdek<br>2 GB bellek  | 4 çekirdek<br>4 GB bellek  |
+|bilişsel hizmetler-metinden konuşmaya | 1 çekirdek, 0,5 GB bellek| 2 çekirdek, 1 GB bellek |
 
-* Her çekirdeğe en az 2.6 gigahertz (GHz) olması ya da daha hızlı.
+* Her çekirdek en az 2,6 gigahertz (GHz) veya daha hızlı olmalıdır.
 
-Çekirdek ve bellek karşılık `--cpus` ve `--memory` parçası olarak kullanılan ayarları `docker run` komutu.
+Çekirdek ve bellek, `--cpus` `docker run` komutunun bir parçası `--memory` olarak kullanılan ve ayarlarına karşılık gelir.
 
-**Not**; En düşük ve önerilen Docker sınırları dışına dayalı *değil* ana makine kaynakları. Örneğin, büyük dil modeli ve konuşma metin kapsayıcıları bellek eşlemesi bölümleri olan _önerilen_ dosyanın tamamı bir ek 4-6 GB bellekte uyar. Ayrıca, belleğe modelleri havuzda olduğundan ya da kapsayıcı ilk çalışması daha uzun sürebilir.
+**Note**; En düşük ve önerilen, ana makine kaynaklarından *değil* , Docker sınırlarına dayanır. Örneğin, konuşmadan metne kapsayıcı bellek eşleme, büyük bir dil modelinin bölümlerine eşlenir ve tüm dosyanın belleğe sığması _önerilir_ , bu da ek 4-6 GB 'tır. Ayrıca, modellerin bellekte sayfalandığından kapsayıcının ilk çalışması daha uzun sürebilir.
 
-## <a name="get-the-container-image-with-docker-pull"></a>İle kapsayıcı görüntüsünü Al `docker pull`
+## <a name="get-the-container-image-with-docker-pull"></a>Kapsayıcı görüntüsünü al`docker pull`
 
-Kapsayıcı görüntülerini konuşma için kullanılabilir.
+Konuşma için kapsayıcı görüntüleri kullanılabilir.
 
 | Kapsayıcı | Havuz |
 |-----------|------------|
-| bilişsel hizmetler-konuşma-metne dönüştürme | `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text:latest` |
-| bilişsel hizmetler-metin-için-konuşma | `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech:latest` |
+| bilişsel hizmetler-konuşmayı metne dönüştürme | `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text:latest` |
+| bilişsel hizmetler-metinden konuşmaya | `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech:latest` |
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
-### <a name="language-locale-is-in-container-tag"></a>Kapsayıcı etikettir içinde dil yerel ayar
+### <a name="language-locale-is-in-container-tag"></a>Dil yerel ayarı kapsayıcı etiketinde
 
-`latest` Etiketi çeken `en-us` yerel ayar ve `jessarus` ses.
+Etiket, `en-us` yerel ayarı ve `jessarus` sesi çeker. `latest`
 
-#### <a name="speech-to-text-locales"></a>Konuşma metin yerel ayarlar
+#### <a name="speech-to-text-locales"></a>Konuşmayı metin yerel ayarlarına dönüştürme
 
-Tüm etiketleri dışında `latest` aşağıdaki biçimdedir burada `<culture>` yerel kapsayıcı gösterir:
+Dışındaki `latest` tüm Etiketler, yerel ayar kapsayıcısını `<culture>` gösterdiği şekilde aşağıdaki biçimdedir:
 
 ```
 <major>.<minor>.<patch>-<platform>-<culture>-<prerelease>
 ```
 
-Aşağıdaki etiketi biçimi örneğidir:
+Aşağıdaki etiket, biçiminin bir örneğidir:
 
 ```
 1.1.3-amd64-en-us-preview
 ```
 
-Aşağıdaki tabloda desteklenen yerel ayarlar için **konuşma metin** 1.1.3 içinde kapsayıcı sürümü:
+Aşağıdaki tabloda, kapsayıcının 1.1.3 sürümünde **konuşmayı metne** yönelik desteklenen yerel ayarlar listelenmiştir:
 
-|Dil yerel ayar|Tags|
+|Dil yerel ayarı|Tags|
 |--|--|
 |Çince|`zh-cn`|
 |Türkçe |`en-us`<br>`en-gb`<br>`en-au`<br>`en-in`|
@@ -118,40 +118,40 @@ Aşağıdaki tabloda desteklenen yerel ayarlar için **konuşma metin** 1.1.3 i�
 |Portekizce|`pt-br`|
 |İspanyolca|`es-es`<br>`es-mx`|
 
-#### <a name="text-to-speech-locales"></a>Metin okuma yerel ayarlar
+#### <a name="text-to-speech-locales"></a>Metinden konuşmaya yerel ayarları
 
-Tüm etiketleri dışında `latest` aşağıdaki biçimdedir burada `<culture>` yerel gösterir ve `<voice>` kapsayıcı sesini gösterir:
+Dışındaki `latest` tüm Etiketler aşağıdaki biçimdedir; `<culture>` burada, yerel ayarı `<voice>` gösterir ve kapsayıcının sesini gösterir:
 
 ```
 <major>.<minor>.<patch>-<platform>-<culture>-<voice>-<prerelease>
 ```
 
-Aşağıdaki etiketi biçimi örneğidir:
+Aşağıdaki etiket, biçiminin bir örneğidir:
 
 ```
 1.1.0-amd64-en-us-jessarus-preview
 ```
 
-Aşağıdaki tabloda desteklenen yerel ayarlar için **metin okuma** 1.1.0 içinde kapsayıcı sürümü:
+Aşağıdaki tabloda, kapsayıcının 1.1.0 sürümünde **metinden konuşmaya** için desteklenen yerel ayarlar listelenmektedir:
 
-|Dil yerel ayar|Tags|Desteklenen sesleri|
+|Dil yerel ayarı|Tags|Desteklenen sesler|
 |--|--|--|
-|Çince|`zh-cn`|huihuirus<br>kangkang-apollo<br>yaoyao apollo|
-|Türkçe |`en-au`|catherine<br>hayleyrus|
-|Türkçe |`en-gb`|George apollo<br>hazelrus<br>Susan apollo|
-|Türkçe |`en-in`|heera apollo<br>priyarus<br>ravi apollo<br>|
+|Çince|`zh-cn`|kuihuırus<br>kangkang-Apollo<br>yaoyao-Apollo|
+|Türkçe |`en-au`|Catherine<br>hayleyrus|
+|Türkçe |`en-gb`|George-Apollo<br>hazelrus<br>çiğdem-Apollo|
+|Türkçe |`en-in`|Heera-Apollo<br>Primus<br>rampadili-Apollo<br>|
 |Türkçe |`en-us`|jessarus<br>benjaminrus<br>jessa24krus<br>zirarus<br>guy24krus|
-|Fransızca|`fr-ca`|caroline<br>harmonierus|
-|Fransızca|`fr-fr`|hortenserus<br>Julie apollo<br>Paul apollo|
-|Almanca|`de-de`|hedda<br>heddarus<br>Stefan apollo|
-|İtalyanca|`it-it`|cosimo apollo<br>luciarus|
-|Japonca|`ja-jp`|ayumi apollo<br>harukarus<br>ichiro apollo|
+|Fransızca|`fr-ca`|Caroline dili<br>HARMİ Erus|
+|Fransızca|`fr-fr`|hortenserus<br>Julie-Apollo<br>Paul-Apollo|
+|Almanca|`de-de`|Hedda<br>heddarus<br>Stefan-Apollo|
+|İtalyanca|`it-it`|cosımo-Apollo<br>luciarus|
+|Japonca|`ja-jp`|Ayumi-Apollo<br>harukarus<br>Ichiro-Apollo|
 |Korece|`ko-kr`|heamirus|
-|Portekizce|`pt-br`|Daniel apollo<br>heloisarus|
-|İspanyolca|`es-es`|elenarus<br>Gamze apollo<br>Pablo apollo<br>|
-|İspanyolca|`es-mx`|hildarus<br>raul apollo|
+|Portekizce|`pt-br`|Daniel-Apollo<br>heloisarus|
+|İspanyolca|`es-es`|elenarus<br>gamze-Apollo<br>Pablo-Apollo<br>|
+|İspanyolca|`es-mx`|tepdarus<br>vaul-Apollo|
 
-### <a name="docker-pull-for-the-speech-containers"></a>Konuşma kapsayıcılar için docker isteği
+### <a name="docker-pull-for-the-speech-containers"></a>Konuşma kapsayıcıları için Docker çekme
 
 #### <a name="speech-to-text"></a>Konuşmayı Metne Dönüştürme
 
@@ -165,25 +165,25 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-t
 docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech:latest
 ```
 
-## <a name="how-to-use-the-container"></a>Kapsayıcı kullanma
+## <a name="how-to-use-the-container"></a>Kapsayıcıyı kullanma
 
-Kapsayıcı açıldığında [ana bilgisayar](#the-host-computer), kapsayıcı ile çalışmak için aşağıdaki işlemi kullanın.
+Kapsayıcı [ana bilgisayardan](#the-host-computer)olduktan sonra, kapsayıcında çalışmak için aşağıdaki işlemi kullanın.
 
-1. [Kapsayıcıyı çalıştırmak](#run-the-container-with-docker-run), gerekli, ancak kullanılmadı faturalama ayarları. Daha fazla [örnekler](speech-container-configuration.md#example-docker-run-commands) , `docker run` komutu kullanılabilir.
-1. [Kapsayıcının tahmini uç nokta sorgu](#query-the-containers-prediction-endpoint).
+1. [Kapsayıcıyı](#run-the-container-with-docker-run)gereken ancak kullanılmayan faturalandırma ayarlarıyla çalıştırın. `docker run` Komuta daha fazla [örnek](speech-container-configuration.md#example-docker-run-commands) kullanılabilir.
+1. [Kapsayıcının tahmin uç noktasını sorgulayın](#query-the-containers-prediction-endpoint).
 
-## <a name="run-the-container-with-docker-run"></a>Kapsayıcı ile çalıştırma `docker run`
+## <a name="run-the-container-with-docker-run"></a>Kapsayıcıyı ile çalıştırma`docker run`
 
-Kullanım [docker run](https://docs.docker.com/engine/reference/commandline/run/) üç kapsayıcı birini çalıştırmak için komutu. Komutu şu parametreleri kullanır:
+Üç kapsayıcının herhangi birini çalıştırmak için [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) komutunu kullanın. Komut aşağıdaki parametreleri kullanır:
 
-**Önizleme sırasında**faturalama ayarları kapsayıcı başlatmak için geçerli olması gerekir, ancak kullanım için faturalandırılır değildir.
+**Önizleme sırasında**, kapsayıcıyı başlatmak için faturalandırma ayarlarının geçerli olması gerekir, ancak kullanım için faturalandırılmaz.
 
-| Yer tutucu | Değer |
+| Yer tutucu | Value |
 |-------------|-------|
-|{BILLING_KEY} | Bu anahtar kapsayıcısı başlatmak için kullanılır ve Azure portalının konuşma anahtarlar sayfasında bulabilirsiniz.  |
-|{BILLING_ENDPOINT_URI} | Fatura uç noktası URI değerini Azure portalının konuşma genel bakış sayfasında kullanılabilir.|
+|{API_KEY} | Bu anahtar, kapsayıcıyı başlatmak için kullanılır ve Azure portal konuşma anahtarları sayfasında kullanılabilir.  |
+|{ENDPOINT_URI} | Faturalandırma uç noktası URI değeri Azure portal konuşmaya Genel Bakış sayfasında kullanılabilir.|
 
-Bu parametreleri aşağıdaki örnekte kendi değerlerinizle değiştirin `docker run` komutu.
+Aşağıdaki örnek `docker run` komutta bu parametreleri kendi değerlerinizle değiştirin.
 
 ### <a name="text-to-speech"></a>Metin okuma
 
@@ -191,8 +191,8 @@ Bu parametreleri aşağıdaki örnekte kendi değerlerinizle değiştirin `docke
 docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \
 containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech \
 Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY}
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
 ```
 
 ### <a name="speech-to-text"></a>Konuşmayı Metne Dönüştürme
@@ -201,42 +201,42 @@ ApiKey={BILLING_KEY}
 docker run --rm -it -p 5000:5000 --memory 2g --cpus 2 \
 containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text \
 Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY}
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
 ```
 
 Bu komut:
 
-* Bir konuşma kapsayıcı kapsayıcı görüntüsünü çalıştırır.
-* 2 CPU Çekirdeği ve 2 gigabayt (GB) bellek ayırır.
+* Kapsayıcı görüntüsünden bir konuşma kapsayıcısı çalıştırır
+* 2 CPU çekirdeği ve 2 gigabayt (GB) bellek ayırır
 * 5000 numaralı TCP bağlantı noktasını kullanıma sunar ve sahte TTY için kapsayıcı ayırır.
-* Bunu çıktıktan sonra kapsayıcı otomatik olarak kaldırır. Kapsayıcı görüntüsü ana bilgisayarda kullanılabilir durumda kalır.
+* Kapsayıcıyı çıktıktan sonra otomatik olarak kaldırır. Kapsayıcı görüntüsü hala ana bilgisayarda kullanılabilir.
 
 > [!IMPORTANT]
 > `Eula`, `Billing`, Ve `ApiKey` kapsayıcıyı çalıştırmak için seçenekler belirtilmelidir; Aksi takdirde, kapsayıcı başlatılamıyor.  Daha fazla bilgi için [faturalama](#billing).
 
-## <a name="query-the-containers-prediction-endpoint"></a>Sorgu kapsayıcının tahmini uç noktası
+## <a name="query-the-containers-prediction-endpoint"></a>Kapsayıcının tahmin uç noktasını sorgulama
 
 |Kapsayıcı|Uç Nokta|
 |--|--|
-|Konuşmayı Metne Dönüştürme|ws: / / localhost:5000/konuşma/tanıma/yazdırma/cognitiveservices/v1|
+|Konuşmayı Metne Dönüştürme|ws://localhost:5000/speech/recognition/dictation/cognitiveservices/v1|
 |Metin okuma|http://localhost:5000/speech/synthesize/cognitiveservices/v1|
 
 ### <a name="speech-to-text"></a>Konuşmayı Metne Dönüştürme
 
-Kapsayıcı websocket tabanlı sorgu uç noktası aracılığıyla erişilen API'ler sağlar [Speech SDK'sı](index.yml).
+Kapsayıcı, [konuşma SDK 'sı](index.yml)aracılığıyla erişilen WebSocket tabanlı sorgu uç noktası API 'leri sağlar.
 
-Varsayılan olarak, Speech SDK'sı çevrimiçi konuşma Hizmetleri kullanır. Kapsayıcı kullanmak için başlatma yöntemi değiştirmeniz gerekir. Aşağıdaki örneklere bakın.
+Varsayılan olarak, konuşma SDK 'Sı çevrimiçi konuşma hizmetlerini kullanır. Kapsayıcıyı kullanmak için başlatma yöntemini değiştirmeniz gerekir. Aşağıdaki örneklere bakın.
 
-#### <a name="for-c"></a>İçinC#
+#### <a name="for-c"></a>BekleniyorC#
 
-Bu Azure bulut başlatma çağrısı kullanarak değiştirin:
+Bu Azure-Cloud başlatma çağrısını kullanarak değiştirin:
 
 ```C#
 var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
 ```
 
-Bu çağrı, kapsayıcı uç noktasını kullanarak:
+kapsayıcı uç noktasını kullanarak bu çağrıya:
 
 ```C#
 var config = SpeechConfig.FromEndpoint(
@@ -246,14 +246,14 @@ var config = SpeechConfig.FromEndpoint(
 
 #### <a name="for-python"></a>Python için
 
-Bu Azure bulut başlatma çağrısı kullanarak değiştirme
+Bu Azure-Cloud başlatma çağrısını kullanarak Değiştir
 
 ```python
 speech_config = speechsdk.SpeechConfig(
     subscription=speech_key, region=service_region)
 ```
 
-Bu çağrı, kapsayıcı uç noktasını kullanarak:
+kapsayıcı uç noktasını kullanarak bu çağrıya:
 
 ```python
 speech_config = speechsdk.SpeechConfig(
@@ -262,21 +262,21 @@ speech_config = speechsdk.SpeechConfig(
 
 ### <a name="text-to-speech"></a>Metin okuma
 
-Kapsayıcı REST uç noktasını bulunabilir API'leri sağlar [burada](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-text-to-speech) ve örnekler bulunabilir [burada](https://azure.microsoft.com/resources/samples/cognitive-speech-tts/).
+Kapsayıcı, [burada](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-text-to-speech) bulunan REST uç nokta API 'lerini sağlar ve örnekleri [burada](https://azure.microsoft.com/resources/samples/cognitive-speech-tts/)bulabilirsiniz.
 
 [!INCLUDE [Validate container is running - Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
-## <a name="stop-the-container"></a>Kapsayıcı Durdur
+## <a name="stop-the-container"></a>Kapsayıcıyı durdur
 
 [!INCLUDE [How to stop the container](../../../includes/cognitive-services-containers-stop.md)]
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-Kapsayıcı çalıştırdığınızda, kapsayıcının kullanan **stdout** ve **stderr** başlatılıyor veya kapsayıcı çalıştırma sırasında gerçekleşen sorunları gidermek yararlı olan çıkış bilgiler.
+Kapsayıcıyı çalıştırdığınızda kapsayıcı, kapsayıcıyı başlatırken veya çalıştırırken oluşan sorunları gidermeye yardımcı olan bilgileri almak için **stdout** ve **stderr** kullanır.
 
 ## <a name="billing"></a>Faturalandırma
 
-Azure için fatura, kullanarak konuşma kapsayıcıları Gönder bir _konuşma_ Azure hesabınız kaynaktaki.
+Konuşma kapsayıcıları, Azure hesabınızdaki bir _konuşma_ kaynağını kullanarak faturalama bilgilerini Azure 'a gönderir.
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
@@ -288,13 +288,13 @@ Bu seçenekler hakkında daha fazla bilgi için bkz. [kapsayıcıları yapıland
 
 ## <a name="summary"></a>Özet
 
-Bu makalede, kavramlar ve indirme, yükleme ve konuşma kapsayıcıları çalıştırmak için iş akışı öğrendiniz. Özet:
+Bu makalede, konuşma kapsayıcılarını indirmek, yüklemek ve çalıştırmak için kavramları ve iş akışını öğrendiniz. Özet:
 
-* Konuşma, iki Linux kapsayıcıları için Docker, konuşma metin ve metin okuma için şifreleme sağlar.
-* Azure'da özel kapsayıcı kayıt defterinden kapsayıcı görüntülerini indirilir.
+* Konuşma, Docker için konuşmayı metin ve metinden konuşmaya bir şekilde kapsüllemek için iki Linux kapsayıcısı sağlar.
+* Kapsayıcı görüntüleri Azure 'daki özel kapsayıcı kayıt defterinden indirilir.
 * Docker kapsayıcı görüntüleri çalıştırın.
-* Ana kapsayıcısının URI belirterek konuşma kapsayıcılarında işlemleri çağırmak için REST API veya SDK'sını kullanabilirsiniz.
-* Bir kapsayıcı örneği oluşturulurken, fatura bilgilerini belirtmeniz gerekir.
+* Kapsayıcının ana bilgisayar URI 'sini belirterek, konuşma kapsayıcılarındaki işlemleri çağırmak için REST API veya SDK kullanabilirsiniz.
+* Bir kapsayıcıyı örnekledikten sonra faturalandırma bilgilerini sağlamanız gerekir.
 
 > [!IMPORTANT]
 >  Bilişsel hizmetler kapsayıcıları, kullanım ölçümü için Azure'a bağlanmadan çalıştırmak için lisanslanmaz. Müşteriler, her zaman faturalandırma bilgileri ölçüm hizmeti ile iletişim kurmak kapsayıcıları etkinleştirmeniz gerekiyor. Bilişsel hizmetler kapsayıcılar, Microsoft müşteri verilerini (örneğin, görüntü veya metin analiz edilen) göndermeyin.
@@ -302,4 +302,4 @@ Bu makalede, kavramlar ve indirme, yükleme ve konuşma kapsayıcıları çalı�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Gözden geçirme [kapsayıcıları yapılandırma](speech-container-configuration.md) yapılandırma ayarları
-* Daha fazla kullanmanız [Bilişsel Hizmetleri kapsayıcıları](../cognitive-services-container-support.md)
+* Daha fazla bilişsel [Hizmetler kapsayıcısı](../cognitive-services-container-support.md) kullanın

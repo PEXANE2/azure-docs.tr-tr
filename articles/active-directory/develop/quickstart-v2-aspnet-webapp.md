@@ -1,5 +1,5 @@
 ---
-title: Microsoft kimlik platformu ASP.NET web sunucusu hızlı başlangıç | Azure
+title: Microsoft Identity platform ASP.NET Web sunucusu hızlı başlangıç | Mavisi
 description: OpenID Connect kullanarak ASP.NET web uygulamasında Microsoft Oturum Açma işlemini yapmayı öğrenin.
 services: active-directory
 documentationcenter: dev-center-name
@@ -8,6 +8,7 @@ manager: CelesteDG
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
+ms.subservice: develop
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
@@ -16,49 +17,49 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d813cea28d968ae7f14d55d47855b361141d6089
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 8c6ec16d50990b066f8b5c487c5c1f5452622eaf
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565419"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68321085"
 ---
-# <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Hızlı Başlangıç: Oturum açma Microsoft ile bir ASP.NET web uygulamasına ekleme
+# <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Hızlı Başlangıç: Microsoft 'a bir ASP.NET Web uygulamasına oturum açma ekleme
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
 Bu hızlı başlangıçta, ASP.NET web uygulamasının herhangi bir Azure Active Directory (Azure AD) örneğinden kişisel hesaplarda (hotmail.com, outlook.com ve diğerleri), iş ve okul hesaplarında nasıl oturum açabildiğini öğreneceksiniz.
 
-![Bu Hızlı Başlangıç ile oluşturulan örnek uygulamasını nasıl çalıştığını gösterir](media/quickstart-v2-aspnet-webapp/aspnetwebapp-intro.svg)
+![Bu hızlı başlangıç tarafından oluşturulan örnek uygulamanın nasıl çalıştığını gösterir](media/quickstart-v2-aspnet-webapp/aspnetwebapp-intro.svg)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>Hızlı başlangıç uygulamanızı kaydetme ve indirme
 > Hızlı başlangıç uygulamanızı başlatmak için kullanabileceğiniz iki seçenek vardır:
-> * [Express] [Seçenek 1: Kaydet ve otomatik Uygulamanızı yapılandırmak ve ardından, kod örneğini indirin](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
-> * [El ile] [Seçeneği 2: Kaydetme ve uygulama ve kod örneğinizi el ile yapılandırma](#option-2-register-and-manually-configure-your-application-and-code-sample)
+> * Çaba [Seçenek 1: Uygulamanızı kaydedin ve otomatik olarak yapılandırın ve ardından kod örneğinizi indirin](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
+> * Kitabında [Seçenek 2: Uygulamanızı ve kod örneğinizi kaydetme ve el ile yapılandırma](#option-2-register-and-manually-configure-your-application-and-code-sample)
 >
-> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1\. seçenek: Kaydet ve otomatik Uygulamanızı yapılandırmak ve ardından, kod örneğini indirin
+> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Seçenek 1: Uygulamanızı kaydedin ve otomatik olarak yapılandırın ve ardından kod örneğinizi indirin
 >
-> 1. Yeni Git [Azure Portalı - Uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs) bölmesi.
+> 1. Yeni [Azure Portal-uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs) bölmesine gidin.
 > 1. Uygulamanız için bir ad girin ve **Kaydet**'e tıklayın.
 > 1. Yönergeleri izleyerek yeni uygulamanızı tek tıkla indirin ve otomatik olarak yapılandırın.
 >
-> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>2\. seçenek: Kaydetme ve uygulama ve kod örneğinizi el ile yapılandırma
+> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Seçenek 2: Uygulamanızı ve kod örneğinizi kaydetme ve el ile yapılandırma
 >
 > #### <a name="step-1-register-your-application"></a>1\. adım: Uygulamanızı kaydetme
 > Uygulamanızı kaydetmek ve uygulama kayıt bilgilerinizi çözümünüze el ile eklemek için şu adımları izleyin:
 >
 > 1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
 > 1. Hesabınız size birden fazla Azure AD kiracısına erişim sunuyorsa sağ üst köşeden hesabınızı seçin ve portal oturumunuzu istediğiniz Azure AD kiracısına ayarlayın.
-> 1. Geliştiriciler için Microsoft identity platformuna gidin [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfası.
-> 1. Seçin **yeni kayıt**.
+> 1. Geliştiriciler için Microsoft Identity platformu [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasına gidin.
+> 1. **Yeni kayıt**seçeneğini belirleyin.
 > 1. **Uygulama kaydet** sayfası göründüğünde uygulamanızın kayıt bilgilerini girin:
 >      - **Ad** alanına uygulama kullanıcılarına gösterilecek anlamlı bir uygulama adı girin, örneğin `ASPNET-Quickstart`.
->      - Ekleme `https://localhost:44368/` içinde **yeniden yönlendirme URI'si**, tıklatıp **kaydetme**.
+>      - `https://localhost:44368/` **Yeniden yönlendirme URI 'si**ekleyin ve **Kaydet**' e tıklayın.
 **Kimlik doğrulaması** menüsünü seçin, **Örtük izin verme** bölümünde **kimlik belirteçlerini** ayarlayın ve **Kaydet**'i seçin.
 
 > [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-1-configure-your-application-in-azure-portal"></a>1\. adım: Uygulamanızı Azure portalında yapılandırma
+> #### <a name="step-1-configure-your-application-in-azure-portal"></a>1\. adım: Uygulamanızı Azure portal yapılandırma
 > Bu hızlı başlangıçtaki kod örneğinin çalışması için `https://localhost:44368/` gibi bir yanıt URL’si eklemeniz gerekir.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Bu değişikliği benim için yap]()
@@ -68,14 +69,14 @@ Bu hızlı başlangıçta, ASP.NET web uygulamasının herhangi bir Azure Active
 
 #### <a name="step-2-download-your-project"></a>2\. adım: Projenizi indirin
 
-[Visual Studio 2019 çözümü indirin](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
+[Visual Studio 2019 çözümünü indirin](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
 
-#### <a name="step-3-configure-your-visual-studio-project"></a>3\. adım: Visual Studio projenizi yapılandırın
+#### <a name="step-3-configure-your-visual-studio-project"></a>3\. adım: Visual Studio projenizi yapılandırma
 
 1. Zip dosyasını kök klasöre yakın bir yerel klasöre (örneğin **C:\Azure-Samples**) açın
 1. Çözümü Visual Studio’da açın (AppModelv2-WebApp-OpenIDConnect-DotNet.sln)
-1. Visual Studio sürümüne bağlı olarak, projeye sağ tıklamanız gerekebilir `AppModelv2-WebApp-OpenIDConnect-DotNet` ve **geri NuGet paketleri**
-1. Paket Yöneticisi konsolunu açın (Görüntüle -> diğer Windows Paket Yöneticisi konsolu ->) ve çalıştırma `Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r`
+1. Visual Studio sürümüne bağlı olarak, projeye `AppModelv2-WebApp-OpenIDConnect-DotNet` sağ tıklayıp **NuGet paketlerini geri yüklemeniz** gerekebilir
+1. Paket Yöneticisi konsolunu açın (diğer Windows-> Paket Yöneticisi Konsolu > görüntüleyin) ve çalıştırın`Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r`
 1. **Web.config** dosyasını düzenleyip `ClientId` ve `Tenant` parametrelerini şu şekilde değiştirin:
 
     ```xml
@@ -84,7 +85,7 @@ Bu hızlı başlangıçta, ASP.NET web uygulamasının herhangi bir Azure Active
     ```
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
-> > Bu hızlı başlangıçta Enter_the_Supported_Account_Info_Here destekler. 
+> > Bu hızlı başlangıç, Enter_the_Supported_Account_Info_Here destekler. 
 
 > [!div renderon="docs"]
 > Konumlar:
@@ -99,7 +100,7 @@ Bu hızlı başlangıçta, ASP.NET web uygulamasının herhangi bir Azure Active
 
 ## <a name="more-information"></a>Daha fazla bilgi
 
-Bu bölümde, kullanıcıların oturumunu açmak için gereken koda genel bir bakış sağlanır. Bu genel bakışta kodu, main bağımsız değişkenleri, çalışma şeklini anlamanız için yararlı olabilir ve ayrıca mevcut bir ASP.NET uygulamasına oturum açma eklemek istiyorsanız.
+Bu bölümde, kullanıcıların oturumunu açmak için gereken koda genel bir bakış sağlanır. Bu genel bakış, kodun nasıl çalıştığını, ana bağımsız değişkenlerin ve ayrıca var olan bir ASP.NET uygulamasına oturum açma eklemek istiyorsanız yararlı olabilir.
 
 ### <a name="owin-middleware-nuget-packages"></a>OWIN ara yazılımı NuGet paketleri
 
@@ -113,7 +114,7 @@ Install-Package Microsoft.Owin.Host.SystemWeb
 
 ### <a name="owin-startup-class"></a>OWIN Startup Sınıfı
 
-OWIN ara yazılımı kullanan bir *başlangıç sınıfı* barındırma işlemi başlatıldığında çalışır. Bu hızlı başlangıçta, *startup.cs* Kök klasörde bulunan dosya. Aşağıdaki kod bu hızlı başlangıcın kullandığı parametreyi gösterir:
+OWıN ara yazılımı, barındırma işlemi başlatıldığında çalışan bir *Başlangıç sınıfı* kullanır. Bu hızlı başlangıçta, kök klasörde bulunan *Startup.cs* dosyası. Aşağıdaki kod bu hızlı başlangıcın kullandığı parametreyi gösterir:
 
 ```csharp
 public void Configuration(IAppBuilder app)
@@ -154,7 +155,7 @@ public void Configuration(IAppBuilder app)
 > |---------|---------|
 > | `ClientId`     | Azure portalına kaydedilen uygulamaya ait Uygulama Kimliği |
 > | `Authority`    | Kimlik doğrulaması yapılacak kullanıcı için STS uç noktası. Çoğunlukla, genel bulut için <https://login.microsoftonline.com/{tenant}/v2.0>; burada {tenant}, kiracınızın adı, kiracınızın kimliği veya ortak uç noktaya başvuru olarak *common* değeridir (çok kiracılı uygulamalarda kullanılır) |
-> | `RedirectUri`  | Microsoft kimlik platformu uç nokta kimlik doğrulaması sonra kullanıcıların nereye gönderileceğini URL'si |
+> | `RedirectUri`  | Microsoft Identity platform uç noktasında kimlik doğrulamasından sonra kullanıcıların gönderildiği URL |
 > | `PostLogoutRedirectUri`     | Oturum kapatıldıktan sonra kullanıcıların gönderildiği URL |
 > | `Scope`     | İstenen kapsamların listesi, boşlukla ayrılmış |
 > | `ResponseType`     | Kimlik doğrulamadan gelen yanıtın kimlik belirteci içerdiği istek |
@@ -163,7 +164,7 @@ public void Configuration(IAppBuilder app)
 
 
 > [!NOTE]
-> Ayar `ValidateIssuer = false` olduğu için bu hızlı başlangıçta bir basitleştirme. Gerçek uygulamalarda veren doğrulamanız gerekir.
+> Ayar `ValidateIssuer = false` , bu hızlı başlangıç için bir basitleştirmesi. Gerçek uygulamalarda, sertifikayı vereni doğrulamanız gerekir.
 > Bunun nasıl yapılacağını anlamak için örneklere bakın.
 
 ### <a name="initiate-an-authentication-challenge"></a>Kimlik doğrulaması sınamasını başlatma

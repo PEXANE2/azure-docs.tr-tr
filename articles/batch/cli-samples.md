@@ -3,8 +3,8 @@ title: Azure CLI Örnekleri - Batch | Microsoft Docs
 description: Batch hizmeti için Azure CLI Örnekleri
 services: batch
 documentationcenter: batch
-author: dlepow
-manager: jeconnoc
+author: laurenhughes
+manager: gwallace
 editor: ''
 tags: ''
 ms.assetid: ''
@@ -13,16 +13,15 @@ ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: ''
 ms.workload: ''
-origin.date: 01/29/2018
-ms.date: 05/15/2018
-ms.author: v-junlch
+ms.date: 01/29/2018
+ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 58e9799becd3f150f6fadd932ff4b599da9432d1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bbd0cea4be5322d97c3e45b5a9508a9e8cdc6db7
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60549743"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322559"
 ---
 # <a name="azure-cli-examples-for-azure-batch"></a>Azure Batch için Azure CLI örnekleri
 
@@ -41,5 +40,3 @@ Aşağıdaki tablo, Azure Batch için Azure CLI örnekleri bağlantılarını i�
 |**İşleri ve görevleri çalıştırma**||
 | [Batch ile bir iş ve görevlerini çalıştırma](./scripts/batch-cli-sample-run-job.md) | Bir işi çalıştırmayı ve görev eklemeyi gösterir. |
 
-
-<!-- Update_Description: update metedata properties -->

@@ -1,6 +1,6 @@
 ---
-title: Bir web uygulaması güvenlik duvarı oranı sınırı kuralı yapılandırmak için ön kapı - Azure PowerShell
-description: Mevcut bir ön uç noktası için oranı sınırı kural yapılandırmayı öğrenin.
+title: Ön kapı Azure PowerShell için bir Web uygulaması güvenlik duvarı hız sınırı kuralı yapılandırma
+description: Varolan bir ön kapı uç noktası için hız limiti kuralını yapılandırmayı öğrenin.
 services: frontdoor
 documentationcenter: ''
 author: KumudD
@@ -10,28 +10,29 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/31/2019
-ms.author: kumud;tyao
-ms.openlocfilehash: 903405c8fada6165b79e780a7828c6de3b95163e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: kumud
+ms.reviewer: tyao
+ms.openlocfilehash: 99af39e996aaadd572603f63d019ff929b679550
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66478912"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846255"
 ---
-# <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Azure PowerShell kullanarak web uygulaması güvenlik duvarı oranı sınırı kuralı yapılandırma
-Azure web uygulaması Güvenlik Duvarı (WAF) oranı sınırı kuralı için Azure ön kapısı, bir dakikalık süre bir tek istemci IP izin istekleri sayısını denetler.
-Bu makale, tek bir istemciden içeren bir web uygulaması için izin verilen istek sayısı denetleyen bir WAF oranı sınırı kural yapılandırma */promo* Azure PowerShell kullanarak URL.
+# <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Azure PowerShell kullanarak bir Web uygulaması güvenlik duvarı hız sınırı kuralı yapılandırma
+Azure ön kapısının Azure Web uygulaması güvenlik duvarı (WAF) hız sınırı kuralı, tek dakikalık bir süre içinde tek bir istemci IP 'sinden izin verilen isteklerin sayısını denetler.
+Bu makalede, tek bir istemciden Azure PowerShell kullanarak URL 'de */promosyon* içeren bir Web uygulamasına izin verilen isteklerin sayısını denetleyen bir WAF hız sınırı kuralının nasıl yapılandırılacağı gösterilmektedir.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="prerequisites"></a>Önkoşullar
-Bir hız sınırı İlkesi oluşturmaya başlamadan önce PowerShell ortamınızı ayarlamak ve ön kapısı profili oluşturun.
+Bir hız sınırı ilkesi ayarlamaya başlamadan önce, PowerShell ortamınızı ayarlayın ve bir ön kapı profili oluşturun.
 ### <a name="set-up-your-powershell-environment"></a>PowerShell ortamınızı hazırlama
 Azure PowerShell, Azure kaynaklarınızı yönetmek için [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) modelini kullanan bir dizi cmdlet sunar. 
 
-[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)'i yerel makinenize yükleyebilir ve herhangi bir PowerShell oturumunda kullanabilirsiniz. Azure kimlik bilgilerinizle oturum açmak için bu sayfadaki yönergeleri izleyin ve Az PowerShell modülünü yükleyin.
+[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)'i yerel makinenize yükleyebilir ve herhangi bir PowerShell oturumunda kullanabilirsiniz. Sayfadaki yönergeleri izleyerek Azure kimlik bilgilerinizle oturum açın ve az PowerShell Module ' ü kullanın.
 
-#### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>Oturum açma için etkileşimli bir iletişim kutusu ile Azure'a bağlanma
+#### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>Oturum açma için etkileşimli iletişim kutusuyla Azure 'a bağlanma
 ```
 Connect-AzAccount
 
@@ -42,17 +43,17 @@ Front Door modülünü yüklemeden önce geçerli PowerShellGet sürümünün y�
 Install-Module PowerShellGet -Force -AllowClobber
 ``` 
 
-#### <a name="install-azfrontdoor-module"></a>Az.FrontDoor modülünü yükleme 
+#### <a name="install-azfrontdoor-module"></a>Install az. Frontkapı Module 
 
 ```
 Install-Module -Name Az.FrontDoor
 ```
-### <a name="create-a-front-door-profile"></a>Bir ön kapısı profili oluşturma
-Açıklanan yönergeleri izleyerek bir ön kapısı profili oluşturma [hızlı başlangıç: Bir ön kapısı profili oluşturma](quickstart-create-front-door.md)
+### <a name="create-a-front-door-profile"></a>Ön kapı profili oluşturma
+Hızlı Başlangıç bölümünde [açıklanan yönergeleri izleyerek bir ön kapı profili oluşturun: Ön kapı profili oluşturma](quickstart-create-front-door.md)
 
-## <a name="define-url-match-conditions"></a>URL eşleştirme koşulları tanımlayın
-(URL /promo içerir) bir URL eşleşme koşulu tanımla kullanarak [yeni AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject).
-Aşağıdaki örnek eşleşir */promo* değeri olarak *RequestUri* değişkeni:
+## <a name="define-url-match-conditions"></a>URL eşleştirme koşullarını tanımlayın
+[New-AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject)kullanarak bir URL eşleştirme koşulu TANıMLAYıN (URL/promosyon içerir).
+Aşağıdaki örnek, *RequestUri* değişkeninin değeri olarak */promosyon* ile eşleşir:
 
 ```powershell-interactive
    $promoMatchCondition = New-AzFrontDoorWafMatchConditionObject `
@@ -60,8 +61,8 @@ Aşağıdaki örnek eşleşir */promo* değeri olarak *RequestUri* değişkeni:
      -OperatorProperty Contains `
      -MatchValue "/promo"
 ```
-## <a name="create-a-custom-rate-limit-rule"></a>Bir özel oranı sınırı kuralı oluşturma
-Hızı sınırı kullanılarak ayarlanan [yeni AzFrontDoorWafCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject). Aşağıdaki örnekte, sınırı 1000'e ayarlanır. Herhangi bir istemciden istekleri 1000 aşan bir dakika promosyon sayfasına, sonraki bir dakika başlatana kadar engellenir.
+## <a name="create-a-custom-rate-limit-rule"></a>Özel bir hız sınırı kuralı oluşturma
+[New-AzFrontDoorWafCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject)kullanarak bir hız sınırı ayarlayın. Aşağıdaki örnekte, sınır 1000 olarak ayarlanır. Bir dakika boyunca 1000 aşan promosyon sayfasına herhangi bir istemciden gelen istekler, bir sonraki dakika başlamadan önce engellenir.
 
 ```powershell-interactive
    $promoRateLimitRule = New-AzFrontDoorWafCustomRuleObject `
@@ -73,13 +74,13 @@ Hızı sınırı kullanılarak ayarlanan [yeni AzFrontDoorWafCustomRuleObject](/
 ```
 
 
-## <a name="configure-a-security-policy"></a>Güvenlik İlkesi yapılandırma
+## <a name="configure-a-security-policy"></a>Güvenlik ilkesi yapılandırma
 
-Ön kapısı profili kullanılarak içeren kaynak grubunun adını bulma `Get-AzureRmResourceGroup`. Ardından, özel oranı sınırı kuralı kullanarak bir güvenlik ilkesi yapılandırma [yeni AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) ön kapısı profilini içerir belirtilen kaynak grubunda.
+Kullanarak `Get-AzureRmResourceGroup`ön kapı profilini içeren kaynak grubunun adını bulun. Ardından, ön kapı profilini içeren belirtilen kaynak grubunda [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) kullanarak bir güvenlik ilkesini özel bir hız sınırı kuralıyla yapılandırın.
 
-Aşağıdaki örnekte kaynak grubu adı kullanan *myResourceGroupFD1* ön kapısı oluşturduğunuz varsayımıyla, sağlanan yönergeleri kullanarak profil [hızlı başlangıç: Bir ön kapı oluşturmak](quickstart-create-front-door.md) makalesi.
+Aşağıdaki örnek, [hızlı başlangıçta belirtilen yönergeleri kullanarak ön kapı profilini oluşturduğunuz varsayımıyla *myResourceGroupFD1* kaynak grubu adını kullanır: Ön kapı](quickstart-create-front-door.md) oluşturma makalesi.
 
- kullanarak [yeni AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy).
+ [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy)kullanma.
 
 ```powershell-interactive
    $ratePolicy = New-AzFrontDoorWafPolicy `
@@ -89,11 +90,11 @@ Aşağıdaki örnekte kaynak grubu adı kullanan *myResourceGroupFD1* ön kapıs
      -Mode Prevention `
      -EnabledState Enabled
 ```
-## <a name="link-policy-to-a-front-door-front-end-host"></a>Bir ön kapısı ön uç konağa bağlantı İlkesi
-Var olan bir ön kapısı ön uç ana bilgisayar Güvenlik İlkesi nesnesini bağlama ve ön kapısı özelliklerini güncelleştirir. Ön kapısı nesnesini kullanarak ilk alınması [Get-AzFrontDoor](/powershell/module/Az.FrontDoor/Get-AzFrontDoor) komutu.
-Ardından, ön uç Ayarla *WebApplicationFirewallPolicyLink* özelliğini *ResourceId* "önceki kullanarak adım oluşturulan $ratePolicy", [kümesi AzFrontDoor](/powershell/module/Az.FrontDoor/Set-AzFrontDoor) komutu. 
+## <a name="link-policy-to-a-front-door-front-end-host"></a>İlkeyi bir ön kapı ön uç konağına bağlama
+Güvenlik İlkesi nesnesini var olan bir ön kapı ön uç konağına bağlayın ve ön kapı özelliklerini güncelleştirin. İlk olarak [Get-Azfrontkapısı](/powershell/module/Az.FrontDoor/Get-AzFrontDoor) komutunu kullanarak ön kapı nesnesini alın.
+Ardından, ön uç *Webapplicationfirewallpolicylink* özelliğini, [set-azfrontkapısı](/powershell/module/Az.FrontDoor/Set-AzFrontDoor) komutunu kullanarak önceki adımda oluşturulan "$ratePolicy" öğesinin *RESOURCEID* değerini olarak ayarlayın. 
 
-Aşağıdaki örnekte kaynak grubu adı kullanan *myResourceGroupFD1* ön kapısı oluşturduğunuz varsayımıyla, sağlanan yönergeleri kullanarak profil [hızlı başlangıç: Bir ön kapı oluşturmak](quickstart-create-front-door.md) makalesi. Ayrıca, aşağıdaki örnekte, $frontDoorName ön kapısı profilinizin adı ile değiştirin. 
+Aşağıdaki örnek, [hızlı başlangıçta belirtilen yönergeleri kullanarak ön kapı profilini oluşturduğunuz varsayımıyla *myResourceGroupFD1* kaynak grubu adını kullanır: Ön kapı](quickstart-create-front-door.md) oluşturma makalesi. Ayrıca, aşağıdaki örnekte $frontDoorName, ön kapı profilinizin adıyla değiştirin. 
 
 ```powershell-interactive
    $FrontDoorObjectExample = Get-AzFrontDoor `
@@ -104,10 +105,10 @@ Aşağıdaki örnekte kaynak grubu adı kullanan *myResourceGroupFD1* ön kapıs
  ```
 
 > [!NOTE]
-> Yalnızca ayarlamanız gerekir *WebApplicationFirewallPolicyLink* ön kapısı ön uç için bir güvenlik ilkesi bağlamak için bir kez özelliği. Sonraki ilke güncelleştirmeleri otomatik olarak ön uç için uygulanır.
+> Bir güvenlik ilkesini ön kapı ön ucuna bağlamak için yalnızca *Webapplicationfirewallpolicylink* özelliğini bir kez ayarlamanız gerekir. Sonraki ilke güncelleştirmeleri otomatik olarak ön uca uygulanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Daha fazla bilgi edinin [ön kapısı](front-door-overview.md) 
+- [Ön kapı](front-door-overview.md) hakkında daha fazla bilgi 
 
 

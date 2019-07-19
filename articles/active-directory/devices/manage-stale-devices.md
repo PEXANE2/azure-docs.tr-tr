@@ -1,6 +1,6 @@
 ---
-title: Azure AD'de eski cihazları yönetme | Microsoft Docs
-description: Eski cihazları veritabanınızdan Azure Active Directory'de kayıtlı cihazların kaldırmayı öğrenin.
+title: Azure AD 'de eski cihazları yönetme | Microsoft Docs
+description: Azure Active Directory ' de kayıtlı cihazların veritabanından eski cihazları kaldırmayı öğrenin.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b64fd7efb00dabd1e1758ec631e6992d68bff2ab
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 8e9c11613a9bdcaedad1a69662b2d6bd7bfefc3b
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481645"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67867248"
 ---
-# <a name="how-to-manage-stale-devices-in-azure-ad"></a>Nasıl Yapılır: Azure AD'de eski cihazları yönetme
+# <a name="how-to-manage-stale-devices-in-azure-ad"></a>Nasıl Yapılır: Azure AD 'de eski cihazları yönetme
 
 İdeal koşullarda, kayıtlı cihazların yaşam döngüsünün tamamlanması için, bu cihazlara artık gerek kalmadığında kayıtlarının silinmesi gerekir. Bununla birlikte, örneğin kayıp, çalınmış, bozulmuş cihazlardan veya işletim sistemi yeniden yüklemelerinden dolayı ortamınızda eski cihazlar bulunur. BT yöneticisi olarak, büyük olasılıkla eski cihazları kaldırmak için bir yönteminiz olmasını istersiniz; böylelikle kaynaklarınızın gerçekten yönetilmesi gereken cihazların yönetimine odaklanmasını sağlayabilirsiniz.
 
@@ -43,7 +43,7 @@ Eski cihaz, belirli bir zaman çerçevesinde hiçbir bulut uygulamasına erişme
 
 Etkinlik zaman damgasının hesaplanması, bir cihazın kimlik doğrulama girişimiyle tetiklenir. Azure AD aşağıdaki durumlarda etkinlik zaman damgasını hesaplar:
 
-- Gerektiren bir koşullu erişim ilkeleri [yönetilen cihazlar](../conditional-access/require-managed-devices.md) veya [onaylı istemci uygulamalar](../conditional-access/app-based-conditional-access.md) tetiklendi.
+- [Yönetilen cihazlar](../conditional-access/require-managed-devices.md) veya [onaylanan istemci uygulamaları](../conditional-access/app-based-conditional-access.md) gerektiren bir koşullu erişim ilkesi tetiklendi.
 - Azure AD'ye katılmış veya hibrit Azure AD'ye katılmış Windows 10 cihazları ağda etkin olduğunda. 
 - Intune tarafından yönetilen cihazlar hizmete giriş yaptığında.
 
@@ -98,7 +98,7 @@ Hibrit Azure AD'ye katılmış cihazlarınızın şirket içi eski cihaz yöneti
 Azure AD'yi temizlemek için:
 
 - **Windows 10 cihazları** - Windows 10 cihazlarını şirket içi AD'nizde devre dışı bırakın veya silin, sonra da Azure AD Connect'in değişen cihaz durumunu Azure AD'ye eşitlemesini sağlayın.
-- **Windows 7/8** - devre dışı bırakın veya Windows 7/8 cihazları Azure AD'de silin. Windows 7/8 cihazlarını Azure AD'de devre dışı bırakmak veya silmek için Azure AD Connect kullanamazsınız.
+- **Windows 7/8** -Azure AD 'de Windows 7/8 cihazlarını devre dışı bırakma veya silme. Windows 7/8 cihazlarını Azure AD'de devre dışı bırakmak veya silmek için Azure AD Connect kullanamazsınız.
 
 ### <a name="azure-ad-joined-devices"></a>Azure AD’ye katılmış cihazlar
 
@@ -129,7 +129,7 @@ Get-MsolDevice -all | select-object -Property Enabled, DeviceId, DisplayName, De
 mateLastLogonTimestamp | export-csv devicelist-summary.csv
 ```
 
-dizininizde çok sayıda cihazlar varsa, zaman damgası filtresi, döndürülen cihaz sayısını daraltmak için kullanın. Zaman damgası belirli bir tarihten daha eski olan tüm cihazları almak ve döndürülen verileri CSV dosyasında depolamak için: 
+Dizininizde çok sayıda cihaz varsa, döndürülen cihaz sayısını daraltmak için zaman damgası filtresini kullanın. Zaman damgası belirli bir tarihten daha eski olan tüm cihazları almak ve döndürülen verileri CSV dosyasında depolamak için: 
 
 ```PowerShell
 $dt = [datetime]’2017/01/01’
@@ -145,6 +145,13 @@ Zaman damgası cihaz yaşam döngüsü senaryolarını desteklemek için güncel
 ### <a name="why-should-i-worry-about-my-bitlocker-keys"></a>BitLocker anahtarlarımla ilgili olarak neden kaygılanmam gerekiyor?
 
 Windows 10 cihazlarında BitLocker anahtarları yapılandırıldığında, bu anahtarlar Azure AD'deki cihaz nesnesinde depolanır. Eski cihazı silerseniz, cihazda depolanan BitLocker anahtarlarını da silersiniz. Eski cihazı silmeden önce, temizleme ilkenizin cihazınızın gerçek yaşam döngüsüyle uyumlu olup olmadığını saptamalısınız. 
+
+### <a name="why-should-i-worry-about-windows-autopilot-devices"></a>Windows Autopilot cihazları hakkında neden endişelenmeliyim?
+
+Bir Azure AD cihazı bir Windows Autopilot nesnesiyle ilişkilendirildiğinde, cihazın gelecekte yeniden oluşturulması durumunda aşağıdaki üç senaryo meydana gelebilir:
+- Windows Autopilot Kullanıcı odaklı dağıtımlarla, beyaz gloona kullanmadan yeni bir Azure AD cihazı oluşturulur, ancak bu, ZTDıD ile etiketlenmeyecektir.
+- Windows Autopilot Self-dağıtım modu dağıtımları ile, bir Azure AD cihazının ilişkilendirilmesi bulunamadığı için bunlar başarısız olur.  (Bu, hiçbir "ımpster" cihazlarının kimlik bilgileri olmadan Azure AD 'ye katılmayı denediğinizden emin olmak için bir güvenlik mekanizmasıdır.) Hata, ZTDıD uyuşmazlığını gösterir.
+- Windows Autopilot beyaz eldiven dağıtımlarında, ilişkili bir Azure AD cihazı bulunamadığı için bunlar başarısız olur. (Arka planda, beyaz eldiven dağıtımları aynı güvenlik mekanizmalarına zorlayabilmeleri için aynı kendi kendine dağıtım modu işlemini kullanır.)
 
 ### <a name="how-do-i-know-all-the-type-of-devices-joined"></a>Katılmış olan tüm cihaz türlerini nasıl bilebilirim?
 

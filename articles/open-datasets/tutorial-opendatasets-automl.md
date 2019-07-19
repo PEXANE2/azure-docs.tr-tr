@@ -1,7 +1,7 @@
 ---
-title: 'Öğretici: Bir otomatik makine öğrenme modelinin zenginleştirin'
+title: 'Öğretici: Otomatikleştirilmiş makine öğrenimi modelini zenginleştirme'
 titleSuffix: Azure Open Datasets
-description: Azure için açık veri kümeleri kolaylık NYC taksi taksi fiyatlarını tahmin etmek için regresyon modeli oluşturmak için Azure Machine Learning hizmeti gücünü birlikte kullanmayı öğrenin.
+description: NYC TAXI tarifeli havayolu fiyatlarını tahmin etmek üzere bir gerileme modeli oluşturmak için Azure açık veri kümelerinin kullanımını ve Azure Machine Learning hizmetinin gücünden nasıl yararlanacağınızı öğrenin.
 services: open-datasets
 ms.service: open-datasets
 ms.topic: tutorial
@@ -9,42 +9,42 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 05/02/2019
-ms.openlocfilehash: a1df79c59ede8cd9ad72a2ebb2edb4bdb64b802a
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: aafbef2c9a9328266a937d4c52c154a8b826c342
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67588966"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68312155"
 ---
-# <a name="tutorial-build-a-regression-model-with-automated-machine-learning-and-open-datasets"></a>Öğretici: Otomatik makine öğrenimi ve açık veri kümeleri ile bir regresyon modeli derler
+# <a name="tutorial-build-a-regression-model-with-automated-machine-learning-and-open-datasets"></a>Öğretici: Otomatik makine öğrenimi ve açık veri kümeleri ile regresyon modeli oluşturma
 
-Bu öğreticide, Azure için açık veri kümeleri kolaylık NYC taksi taksi fiyatlarını tahmin etmek için regresyon modeli oluşturmak için Azure Machine Learning hizmeti gücünü birlikte yararlanın. Kolayca bulunabilen taksi indirip, tatil hava durumu verileri ve bir otomatik makine öğrenimi denemesi Azure Machine Learning hizmetini kullanarak yapılandırın. Bu işlem, eğitim verilerini ve yapılandırma ayarlarını kabul eder ve otomatik olarak farklı özellik normalleştirme/Standardizasyon yöntemleri, modelleri ve en iyi modeli ulaşması için hiper parametre ayarları birleşimleri gezinir.
+Bu öğreticide, NYC TAXI tarifeli havayolu fiyatlarını tahmin etmek üzere bir gerileme modeli oluşturmak için Azure açık veri kümelerinin yanı da Azure Machine Learning hizmetin gücünden faydalanabilirsiniz. Genel olarak kullanılabilen TAXI, tatil ve hava durumu verilerini kolayca indirin ve Azure Machine Learning hizmeti kullanarak otomatik makine öğrenimi denemesi yapılandırın. Bu işlem, eğitim verilerini ve yapılandırma ayarlarını kabul eder ve en iyi modele ulaşmak için farklı özellik normalleştirme/standartlaştırma yöntemlerinin, modellerinin ve hiper parametre ayarlarının birleşimleri aracılığıyla otomatik olarak yinelenir.
 
-Bu öğreticide aşağıdaki görevleri öğrenin:
+Bu öğreticide aşağıdaki görevleri öğreneceksiniz:
 
 - Bir Azure Machine Learning hizmeti çalışma alanında yapılandırın
-- Yerel bir Python ortamını ayarlama
-- Erişim, dönüştürme ve Azure için açık veri kümeleri aracılığıyla verileri birleştirme
-- Otomatik bir machine learning regresyon modeli eğitimi
-- Model doğruluğu hesaplayın
+- Yerel bir Python ortamı ayarlama
+- Azure açık veri kümelerini kullanarak veriye erişme, dönüştürme ve bu verileri katma
+- Otomatik makine öğrenimi regresyon modelini eğitme
+- Model doğruluğunu hesapla
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticide, aşağıdaki önkoşulları gerektirir.
+Bu öğretici aşağıdaki önkoşulları gerektirir.
 
-* Bir Azure Machine Learning hizmeti çalışma
-* Bir Python 3.6 ortamı
+* Azure Machine Learning hizmet çalışma alanı
+* Python 3,6 ortamı
 
 ### <a name="create-a-workspace"></a>Çalışma alanı oluşturma
 
-İzleyin [yönergeleri](https://docs.microsoft.com/azure/machine-learning/service/setup-create-workspace#portal) zaten yoksa, Azure portalından, bir çalışma alanı oluşturmak için. Oluşturulduktan sonra çalışma alanı adı, kaynak grubu adı ve abonelik kimliğini not edin
+Henüz bir tane yoksa Azure portal bir çalışma alanı oluşturmak için [yönergeleri](https://docs.microsoft.com/azure/machine-learning/service/setup-create-workspace#portal) izleyin. Oluşturulduktan sonra çalışma alanı adınızı, kaynak grubu adını ve abonelik KIMLIĞINI unutmayın.
 
 ### <a name="create-a-python-environment"></a>Python ortamı oluşturma
 
-Bu örnek, Jupyter not defterleri ile Anaconda ortamı kullanır, ancak bu kod tüm 3.6.x ortamında ve herhangi bir metin düzenleyicisi veya IDE ile çalıştırabilirsiniz. Yeni bir geliştirme ortamı oluşturmak için aşağıdaki adımları kullanın.
+Bu örnek, jupi Not defterleri ile bir Anaconda ortamı kullanır, ancak bu kodu herhangi bir 3.6. x ortamında ve herhangi bir metin düzenleyici veya IDE ile çalıştırabilirsiniz. Yeni bir geliştirme ortamı oluşturmak için aşağıdaki adımları kullanın.
 
-1. Bu, zaten yoksa, [indirme](https://www.anaconda.com/distribution/) Anaconda yükleyin ve seçin **Python 3.7 Sürüm**.
-1. Anaconda istemi açın ve yeni bir ortam oluşturun. Bileşenleri ve paketleri indirilen ortamı oluşturmak için birkaç dakika sürer.
+1. Henüz yoksa, Anaconda [indirip](https://www.anaconda.com/distribution/) yükleyin ve **Python 3,7 sürümünü**seçin.
+1. Bir Anaconda istemi açın ve yeni bir ortam oluşturun. Bileşenler ve paketler indirilirken ortamın oluşturulması birkaç dakika sürer.
     ```
     conda create -n tutorialenv python=3.6.5
     ```
@@ -52,41 +52,41 @@ Bu örnek, Jupyter not defterleri ile Anaconda ortamı kullanır, ancak bu kod t
     ```
     conda activate tutorialenv
     ```
-1. Ortama özgü Ipython tekrar etkinleştirin.
+1. Ortama özel IPython kernels 'Yi etkinleştirin.
     ```
     conda install notebook ipykernel
     ```
-1. Çekirdek oluşturun.
+1. Çekirdeği oluşturun.
     ```
     ipython kernel install --user
     ```
-1. Bu öğretici için gereksinim paketlerin yükleyin. Bu paketler, büyük ve yüklemek için 5-10 dakika sürer.
+1. Bu öğretici için ihtiyacınız olan paketleri yükleyebilirsiniz. Bu paketler büyük olur ve yüklenmesi 5-10 dakika sürer.
     ```
-    pip install azureml-sdk[automl] azureml-contrib-opendatasets
+    pip install azureml-sdk[automl] azureml-opendatasets
     ```
-1. Bir not defteri çekirdek ortamınızdan başlatın.
+1. Ortamınızdan bir not defteri çekirdeği başlatın.
     ```
     jupyter notebook
     ```
 
-Bu adımları tamamladıktan sonra kopyalama [veri kümeleri açma not defteri depo](https://github.com/Azure/OpenDatasetsNotebooks) açın **tutorials/taxi-automl/01-tutorial-opendatasets-automl.ipynb** çalıştırmak için Not Defteri.
+Bu adımları tamamladıktan sonra, [açık veri kümeleri Not defteri](https://github.com/Azure/OpenDatasetsNotebooks) deposunu kopyalayın ve bu dosyayı çalıştırmak için **öğreticiler/Taxi-automl/01-tutorial-opendatasets-automl. ipynb** Not defterini açın.
 
-## <a name="download-and-prepare-data"></a>İndirin ve verileri hazırlama
+## <a name="download-and-prepare-data"></a>Verileri indirme ve hazırlama
 
-Gerekli paketlerini içeri aktarın. Açık veri kümeleri paketi her veri kaynağını temsil eden bir sınıf içeren (`NycTlcGreen` gibi) kolayca tarih parametrelerine indirmeden önce filtrelemek için.
+Gerekli paketleri içeri aktarın. Açık veri kümeleri paketi, indirilmeden önce tarih parametrelerini kolayca filtrelemek`NycTlcGreen` için her bir veri kaynağını temsil eden bir sınıf içerir (örneğin).
 
 
 ```python
-from azureml.contrib.opendatasets import NycTlcGreen
+from azureml.opendatasets import NycTlcGreen
 import pandas as pd
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 ```
 
-Taksi verileri tutmak için bir dataframe oluşturarak başlayın. Spark olmayan ortamda çalışırken, bir aylık veri birer birer önlemek için belirli sınıflarla indirme açık veri kümeleri yalnızca izin `MemoryError` ile büyük veri kümeleri. Bir yıllık taksi verileri indirmek için yinelemeli olarak bir zaman ve ekleme için önce bir ay fetch `green_taxi_df` rastgele, 2000 kayıtları dataframe fazla büyümesini önlemek için her bir aya ait örnek. Ardından verileri önizleyin.
+Taxı verilerini tutmak için bir veri çerçevesi oluşturarak başlayın. Spark olmayan bir ortamda çalışırken, açık veri kümeleri, büyük veri kümelerinde kaçınmak `MemoryError` için belirli sınıflarla tek seferde bir aydan verilerin indirilmesini sağlar. Bir yıllık TAXI verisi indirmek için, bir ay içinde bir ayda bir kez ve veri çerçevesini bloktan kaçınmak için her `green_taxi_df` aydan rastgele örnek 2000 kayıtlarına eklemeden önce bir ayı tekrarlayarak. Sonra verileri önizleyin.
 
 >[!NOTE]
-> Açık veri kümeleri, veri boyutu ve bellek önemli burada olmayan Spark ortamlarda çalışan için sınıflar yansıtma sahiptir.
+> Açık veri kümelerinde veri boyutunun ve belleğin sorun olmadığı Spark ortamlarında çalışmak için yansıtma sınıfları vardır.
 
 ```python
 green_taxi_df = pd.DataFrame([])
@@ -116,27 +116,27 @@ green_taxi_df.head(10)
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>VendorId</th>
+      <th>Konağında VendorID</th>
       <th>lpepPickupDatetime</th>
       <th>lpepDropoffDatetime</th>
       <th>passengerCount</th>
-      <th>tripDistance</th>
-      <th>puLocationId</th>
-      <th>doLocationId</th>
-      <th>pickupLongitude</th>
-      <th>pickupLatitude</th>
-      <th>dropoffLongitude</th>
+      <th>Üçlü mesafe</th>
+      <th>Pulocationıd</th>
+      <th>Dolocationıd</th>
+      <th>Pickupboylam</th>
+      <th>Pickupenlem</th>
+      <th>Açılan Boylam</th>
       <th>...</th>
       <th>paymentType</th>
       <th>fareAmount</th>
-      <th>Ek</th>
-      <th>mtaTax</th>
+      <th>ına</th>
+      <th>Mtavergisi</th>
       <th>improvementSurcharge</th>
       <th>tipAmount</th>
       <th>tollsAmount</th>
-      <th>ehailFee</th>
+      <th>Ehailücret</th>
       <th>totalAmount</th>
-      <th>tripType</th>
+      <th>Üçlü tür</th>
     </tr>
   </thead>
   <tbody>
@@ -145,19 +145,19 @@ green_taxi_df.head(10)
       <td>2</td>
       <td>2016-01-20 17:38:28</td>
       <td>2016-01-20 17:46:33</td>
-      <td>1</td>
-      <td>0.98</td>
-      <td>None</td>
-      <td>None</td>
-      <td>-73.921715</td>
-      <td>40.766682</td>
-      <td>-73.916908</td>
+      <td>1\.</td>
+      <td>0,98</td>
+      <td>Yok.</td>
+      <td>Yok.</td>
+      <td>-73,921715</td>
+      <td>40,766682</td>
+      <td>-73,916908</td>
       <td>...</td>
       <td>2.0</td>
       <td>7.0</td>
       <td>1.0</td>
       <td>0,5</td>
-      <td>0.3</td>
+      <td>0,3</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>NaN</td>
@@ -169,23 +169,23 @@ green_taxi_df.head(10)
       <td>2</td>
       <td>2016-01-01 21:53:28</td>
       <td>2016-01-02 00:00:00</td>
-      <td>1</td>
-      <td>3.08</td>
+      <td>1\.</td>
+      <td>3,08</td>
       <td>None</td>
-      <td>None</td>
-      <td>-73.979973</td>
-      <td>40.677071</td>
-      <td>-73.934349</td>
+      <td>Yok.</td>
+      <td>-73,979973</td>
+      <td>40,677071</td>
+      <td>-73,934349</td>
       <td>...</td>
       <td>2.0</td>
-      <td>11.5</td>
+      <td>11,5</td>
       <td>0,5</td>
       <td>0,5</td>
-      <td>0.3</td>
+      <td>0,3</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>NaN</td>
-      <td>12.8</td>
+      <td>12,8</td>
       <td>1.0</td>
     </tr>
     <tr>
@@ -193,23 +193,23 @@ green_taxi_df.head(10)
       <td>2</td>
       <td>2016-01-01 00:50:23</td>
       <td>2016-01-01 01:05:37</td>
-      <td>1</td>
+      <td>1\.</td>
       <td>2.44</td>
       <td>None</td>
       <td>None</td>
-      <td>-73.863045</td>
-      <td>40.882923</td>
-      <td>-73.839836</td>
+      <td>-73,863045</td>
+      <td>40,882923</td>
+      <td>-73,839836</td>
       <td>...</td>
       <td>2.0</td>
       <td>12,5</td>
       <td>0,5</td>
       <td>0,5</td>
-      <td>0.3</td>
+      <td>0,3</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>NaN</td>
-      <td>13.8</td>
+      <td>13,8</td>
       <td>1.0</td>
     </tr>
     <tr>
@@ -217,43 +217,43 @@ green_taxi_df.head(10)
       <td>2</td>
       <td>2016-01-04 17:50:03</td>
       <td>2016-01-04 18:03:43</td>
-      <td>1</td>
-      <td>2.87</td>
+      <td>1\.</td>
+      <td>2,87</td>
       <td>None</td>
-      <td>None</td>
-      <td>-73.977730</td>
-      <td>40.684647</td>
-      <td>-73.931259</td>
+      <td>Yok.</td>
+      <td>-73,977730</td>
+      <td>40,684647</td>
+      <td>-73,931259</td>
       <td>...</td>
       <td>1.0</td>
       <td>12.0</td>
       <td>1.0</td>
       <td>0,5</td>
-      <td>0.3</td>
+      <td>0,3</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>NaN</td>
-      <td>13.8</td>
+      <td>13,8</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>608125</th>
-      <td>1</td>
+      <td>1\.</td>
       <td>2016-01-13 08:48:20</td>
       <td>2016-01-13 08:52:16</td>
-      <td>1</td>
+      <td>1\.</td>
       <td>0.50</td>
       <td>None</td>
-      <td>None</td>
-      <td>-73.942589</td>
-      <td>40.841423</td>
-      <td>-73.943672</td>
+      <td>Yok.</td>
+      <td>-73,942589</td>
+      <td>40,841423</td>
+      <td>-73,943672</td>
       <td>...</td>
       <td>2.0</td>
       <td>4,5</td>
       <td>0.0</td>
       <td>0,5</td>
-      <td>0.3</td>
+      <td>0,3</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>NaN</td>
@@ -265,23 +265,23 @@ green_taxi_df.head(10)
       <td>2</td>
       <td>2016-01-29 17:16:18</td>
       <td>2016-01-29 17:27:52</td>
-      <td>1</td>
+      <td>1\.</td>
       <td>2.25</td>
-      <td>None</td>
-      <td>None</td>
-      <td>-73.830894</td>
-      <td>40.759434</td>
-      <td>-73.842422</td>
+      <td>Yok.</td>
+      <td>Yok.</td>
+      <td>-73,830894</td>
+      <td>40,759434</td>
+      <td>-73,842422</td>
       <td>...</td>
       <td>2.0</td>
       <td>10.5</td>
       <td>1.0</td>
       <td>0,5</td>
-      <td>0.3</td>
+      <td>0,3</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>NaN</td>
-      <td>12.3</td>
+      <td>12,3</td>
       <td>1.0</td>
     </tr>
     <tr>
@@ -289,43 +289,43 @@ green_taxi_df.head(10)
       <td>2</td>
       <td>2016-01-14 00:45:30</td>
       <td>2016-01-14 00:54:16</td>
-      <td>1</td>
+      <td>1\.</td>
       <td>1.93</td>
+      <td>Yok.</td>
       <td>None</td>
-      <td>None</td>
-      <td>-73.927109</td>
-      <td>40.762848</td>
-      <td>-73.909302</td>
+      <td>-73,927109</td>
+      <td>40,762848</td>
+      <td>-73,909302</td>
       <td>...</td>
       <td>1.0</td>
       <td>8.5</td>
       <td>0,5</td>
       <td>0,5</td>
-      <td>0.3</td>
+      <td>0,3</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>NaN</td>
-      <td>9.8</td>
+      <td>9,8</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>438204</th>
-      <td>1</td>
+      <td>1\.</td>
       <td>2016-01-09 14:25:02</td>
       <td>2016-01-09 14:32:48</td>
       <td>2</td>
-      <td>0.80</td>
+      <td>0,80</td>
+      <td>Yok.</td>
       <td>None</td>
-      <td>None</td>
-      <td>-73.881195</td>
-      <td>40.741779</td>
-      <td>-73.872086</td>
+      <td>-73,881195</td>
+      <td>40,741779</td>
+      <td>-73,872086</td>
       <td>...</td>
       <td>2.0</td>
       <td>6.5</td>
       <td>0.0</td>
       <td>0,5</td>
-      <td>0.3</td>
+      <td>0,3</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>NaN</td>
@@ -337,23 +337,23 @@ green_taxi_df.head(10)
       <td>2</td>
       <td>2016-01-25 18:13:47</td>
       <td>2016-01-25 18:23:50</td>
-      <td>1</td>
-      <td>1.04</td>
-      <td>None</td>
-      <td>None</td>
-      <td>-73.954376</td>
-      <td>40.805729</td>
-      <td>-73.939117</td>
+      <td>1\.</td>
+      <td>1,04</td>
+      <td>Yok.</td>
+      <td>Yok.</td>
+      <td>-73,954376</td>
+      <td>40,805729</td>
+      <td>-73,939117</td>
       <td>...</td>
       <td>1.0</td>
       <td>8.0</td>
       <td>1.0</td>
       <td>0,5</td>
-      <td>0.3</td>
+      <td>0,3</td>
       <td>1.5</td>
       <td>0.0</td>
       <td>NaN</td>
-      <td>11.3</td>
+      <td>11,3</td>
       <td>1.0</td>
     </tr>
     <tr>
@@ -362,32 +362,32 @@ green_taxi_df.head(10)
       <td>2016-01-24 20:46:50</td>
       <td>2016-01-24 21:04:03</td>
       <td>6</td>
-      <td>2.82</td>
+      <td>2,82</td>
+      <td>Yok.</td>
       <td>None</td>
-      <td>None</td>
-      <td>-73.845200</td>
-      <td>40.722134</td>
-      <td>-73.810638</td>
+      <td>-73,845200</td>
+      <td>40,722134</td>
+      <td>-73,810638</td>
       <td>...</td>
       <td>1.0</td>
       <td>13.0</td>
       <td>0,5</td>
       <td>0,5</td>
-      <td>0.3</td>
+      <td>0,3</td>
       <td>2.0</td>
       <td>0.0</td>
       <td>NaN</td>
-      <td>16.3</td>
+      <td>16,3</td>
       <td>1.0</td>
     </tr>
   </tbody>
 </table>
-<p>23 sütunları × 10 satırlar</p>
+<p>10 satır × 23 sütun</p>
 </div>
 
 
 
-İlk veriler yüklendikten sonra çeşitli özellik zaman tabanlı toplama datetime alanı oluşturmak için bir işlevi tanımlayın. Bu ay numarası, ayın günü, haftanın günü ve günün saati için yeni alanlar oluşturacak ve zamana bağlı mevsimsellik etkimesi model sağlar. İşlev ayrıca katılmak Yılbaşı veri ülke kodu için statik bir özellik ekler. Kullanım `apply()` yinelemeli olarak uygulamak için veri çerçevesi işlevi `build_time_features()` taksi verileri her satır için işlevi.
+Artık ilk veriler yüklendikten sonra, toplama tarih/saati alanından çeşitli zamana dayalı özellikler oluşturmak için bir işlev tanımlayın. Bu işlem, ay numarası, ay günü, haftanın günü ve günün saati için yeni alanlar oluşturur ve modelin zaman tabanlı mevsimsellik açısından çarpaya izin verir. İşlev Ayrıca, ülke kodu için tatil verilerini katmak üzere statik bir özellik ekler. İşlevi, TAXI verilerinde her satıra yinelemeli olarak `apply()` uygulamak için dataframe üzerindeki `build_time_features()` işlevini kullanın.
 
 
 ```python
@@ -420,22 +420,22 @@ green_taxi_df.head(10)
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>VendorId</th>
+      <th>Konağında VendorID</th>
       <th>lpepPickupDatetime</th>
       <th>lpepDropoffDatetime</th>
       <th>passengerCount</th>
-      <th>tripDistance</th>
-      <th>puLocationId</th>
-      <th>doLocationId</th>
-      <th>pickupLongitude</th>
-      <th>pickupLatitude</th>
-      <th>dropoffLongitude</th>
+      <th>Üçlü mesafe</th>
+      <th>Pulocationıd</th>
+      <th>Dolocationıd</th>
+      <th>Pickupboylam</th>
+      <th>Pickupenlem</th>
+      <th>Açılan Boylam</th>
       <th>...</th>
       <th>tipAmount</th>
       <th>tollsAmount</th>
-      <th>ehailFee</th>
+      <th>Ehailücret</th>
       <th>totalAmount</th>
-      <th>tripType</th>
+      <th>Üçlü tür</th>
       <th>month_num</th>
       <th>day_of_month</th>
       <th>day_of_week</th>
@@ -450,19 +450,19 @@ green_taxi_df.head(10)
       <td>2016-01-20 17:38:28</td>
       <td>2016-01-20 17:46:33</td>
       <td>1</td>
-      <td>0.98</td>
-      <td>None</td>
-      <td>None</td>
-      <td>-73.921715</td>
-      <td>40.766682</td>
-      <td>-73.916908</td>
+      <td>0,98</td>
+      <td>Yok.</td>
+      <td>Yok.</td>
+      <td>-73,921715</td>
+      <td>40,766682</td>
+      <td>-73,916908</td>
       <td>...</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>NaN</td>
       <td>8.8</td>
       <td>1.0</td>
-      <td>1</td>
+      <td>1\.</td>
       <td>20</td>
       <td>2</td>
       <td>17</td>
@@ -473,21 +473,21 @@ green_taxi_df.head(10)
       <td>2</td>
       <td>2016-01-01 21:53:28</td>
       <td>2016-01-02 00:00:00</td>
-      <td>1</td>
-      <td>3.08</td>
+      <td>1\.</td>
+      <td>3,08</td>
       <td>None</td>
-      <td>None</td>
-      <td>-73.979973</td>
-      <td>40.677071</td>
-      <td>-73.934349</td>
+      <td>Yok.</td>
+      <td>-73,979973</td>
+      <td>40,677071</td>
+      <td>-73,934349</td>
       <td>...</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>NaN</td>
-      <td>12.8</td>
+      <td>12,8</td>
       <td>1.0</td>
-      <td>1</td>
-      <td>1</td>
+      <td>1\.</td>
+      <td>1\.</td>
       <td>4</td>
       <td>21</td>
       <td>ABD</td>
@@ -497,21 +497,21 @@ green_taxi_df.head(10)
       <td>2</td>
       <td>2016-01-01 00:50:23</td>
       <td>2016-01-01 01:05:37</td>
-      <td>1</td>
+      <td>1\.</td>
       <td>2.44</td>
+      <td>Yok.</td>
       <td>None</td>
-      <td>None</td>
-      <td>-73.863045</td>
-      <td>40.882923</td>
-      <td>-73.839836</td>
+      <td>-73,863045</td>
+      <td>40,882923</td>
+      <td>-73,839836</td>
       <td>...</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>NaN</td>
-      <td>13.8</td>
+      <td>13,8</td>
       <td>1.0</td>
-      <td>1</td>
-      <td>1</td>
+      <td>1\.</td>
+      <td>1\.</td>
       <td>4</td>
       <td>0</td>
       <td>ABD</td>
@@ -522,19 +522,19 @@ green_taxi_df.head(10)
       <td>2016-01-04 17:50:03</td>
       <td>2016-01-04 18:03:43</td>
       <td>1</td>
-      <td>2.87</td>
+      <td>2,87</td>
       <td>None</td>
       <td>None</td>
-      <td>-73.977730</td>
-      <td>40.684647</td>
-      <td>-73.931259</td>
+      <td>-73,977730</td>
+      <td>40,684647</td>
+      <td>-73,931259</td>
       <td>...</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>NaN</td>
-      <td>13.8</td>
+      <td>13,8</td>
       <td>1.0</td>
-      <td>1</td>
+      <td>1\.</td>
       <td>4</td>
       <td>0</td>
       <td>17</td>
@@ -542,23 +542,23 @@ green_taxi_df.head(10)
     </tr>
     <tr>
       <th>608125</th>
-      <td>1</td>
+      <td>1\.</td>
       <td>2016-01-13 08:48:20</td>
       <td>2016-01-13 08:52:16</td>
-      <td>1</td>
+      <td>1\.</td>
       <td>0.50</td>
       <td>None</td>
-      <td>None</td>
-      <td>-73.942589</td>
-      <td>40.841423</td>
-      <td>-73.943672</td>
+      <td>Yok.</td>
+      <td>-73,942589</td>
+      <td>40,841423</td>
+      <td>-73,943672</td>
       <td>...</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>NaN</td>
       <td>5.3</td>
       <td>1.0</td>
-      <td>1</td>
+      <td>1\.</td>
       <td>13</td>
       <td>2</td>
       <td>8</td>
@@ -569,20 +569,20 @@ green_taxi_df.head(10)
       <td>2</td>
       <td>2016-01-29 17:16:18</td>
       <td>2016-01-29 17:27:52</td>
-      <td>1</td>
+      <td>1\.</td>
       <td>2.25</td>
-      <td>None</td>
-      <td>None</td>
-      <td>-73.830894</td>
-      <td>40.759434</td>
-      <td>-73.842422</td>
+      <td>Yok.</td>
+      <td>Yok.</td>
+      <td>-73,830894</td>
+      <td>40,759434</td>
+      <td>-73,842422</td>
       <td>...</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>NaN</td>
-      <td>12.3</td>
+      <td>12,3</td>
       <td>1.0</td>
-      <td>1</td>
+      <td>1\.</td>
       <td>29</td>
       <td>4</td>
       <td>17</td>
@@ -593,20 +593,20 @@ green_taxi_df.head(10)
       <td>2</td>
       <td>2016-01-14 00:45:30</td>
       <td>2016-01-14 00:54:16</td>
-      <td>1</td>
+      <td>1\.</td>
       <td>1.93</td>
-      <td>None</td>
-      <td>None</td>
-      <td>-73.927109</td>
-      <td>40.762848</td>
-      <td>-73.909302</td>
+      <td>Yok.</td>
+      <td>Yok.</td>
+      <td>-73,927109</td>
+      <td>40,762848</td>
+      <td>-73,909302</td>
       <td>...</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>NaN</td>
-      <td>9.8</td>
+      <td>9,8</td>
       <td>1.0</td>
-      <td>1</td>
+      <td>1\.</td>
       <td>14</td>
       <td>3</td>
       <td>0</td>
@@ -614,23 +614,23 @@ green_taxi_df.head(10)
     </tr>
     <tr>
       <th>438204</th>
-      <td>1</td>
+      <td>1\.</td>
       <td>2016-01-09 14:25:02</td>
       <td>2016-01-09 14:32:48</td>
       <td>2</td>
-      <td>0.80</td>
-      <td>None</td>
-      <td>None</td>
-      <td>-73.881195</td>
-      <td>40.741779</td>
-      <td>-73.872086</td>
+      <td>0,80</td>
+      <td>Yok.</td>
+      <td>Yok.</td>
+      <td>-73,881195</td>
+      <td>40,741779</td>
+      <td>-73,872086</td>
       <td>...</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>NaN</td>
       <td>7.3</td>
       <td>1.0</td>
-      <td>1</td>
+      <td>1\.</td>
       <td>9</td>
       <td>5</td>
       <td>14</td>
@@ -641,20 +641,20 @@ green_taxi_df.head(10)
       <td>2</td>
       <td>2016-01-25 18:13:47</td>
       <td>2016-01-25 18:23:50</td>
-      <td>1</td>
-      <td>1.04</td>
-      <td>None</td>
-      <td>None</td>
-      <td>-73.954376</td>
-      <td>40.805729</td>
-      <td>-73.939117</td>
+      <td>1\.</td>
+      <td>1,04</td>
+      <td>Yok.</td>
+      <td>Yok.</td>
+      <td>-73,954376</td>
+      <td>40,805729</td>
+      <td>-73,939117</td>
       <td>...</td>
       <td>1.5</td>
       <td>0.0</td>
       <td>NaN</td>
-      <td>11.3</td>
+      <td>11,3</td>
       <td>1.0</td>
-      <td>1</td>
+      <td>1\.</td>
       <td>25</td>
       <td>0</td>
       <td>18</td>
@@ -666,19 +666,19 @@ green_taxi_df.head(10)
       <td>2016-01-24 20:46:50</td>
       <td>2016-01-24 21:04:03</td>
       <td>6</td>
-      <td>2.82</td>
+      <td>2,82</td>
+      <td>Yok.</td>
       <td>None</td>
-      <td>None</td>
-      <td>-73.845200</td>
-      <td>40.722134</td>
-      <td>-73.810638</td>
+      <td>-73,845200</td>
+      <td>40,722134</td>
+      <td>-73,810638</td>
       <td>...</td>
       <td>2.0</td>
       <td>0.0</td>
       <td>NaN</td>
-      <td>16.3</td>
+      <td>16,3</td>
       <td>1.0</td>
-      <td>1</td>
+      <td>1\.</td>
       <td>24</td>
       <td>6</td>
       <td>20</td>
@@ -686,10 +686,10 @@ green_taxi_df.head(10)
     </tr>
   </tbody>
 </table>
-<p>28 sütunları × 10 satırlar</p>
+<p>10 satır × 28 sütun</p>
 </div>
 
-Bazı modelleme veya yapı ek özellik gerekmez sütunları kaldırın. Toplama süresi için zaman alanı yeniden adlandırma ve ayrıca saati gece yarısı kullanmaya dönüştürmeniz `pandas.Series.dt.normalize`. Bu tarih/saat bileşeni sonraki özellikleri bir anahtar olarak birlikte bir düzeyde günlük ayrıntı veri kümeleri eklerken kullanılan her zaman yapın.
+Modelleme veya ek özellik oluşturma için ihtiyaç duymayabilmeniz gereken bazı sütunları kaldırın. Toplama zamanı için saat alanını yeniden adlandırın ve ek olarak saati kullanarak `pandas.Series.dt.normalize`gece yarısına dönüştürün. Bu, tüm zaman özelliklerine göre yapılır, böylece tarih saat bileşeni daha sonra bir günlük ayrıntı düzeyi düzeyinde bir araya birleştirilirken bir anahtar olarak kullanılabilir.
 
 ```python
 columns_to_remove = ["lpepDropoffDatetime", "puLocationId", "doLocationId", "extra", "mtaTax",
@@ -719,14 +719,14 @@ green_taxi_df.head(5)
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>VendorId</th>
+      <th>Konağında VendorID</th>
       <th>datetime</th>
       <th>passengerCount</th>
-      <th>tripDistance</th>
-      <th>pickupLongitude</th>
-      <th>pickupLatitude</th>
-      <th>dropoffLongitude</th>
-      <th>dropoffLatitude</th>
+      <th>Üçlü mesafe</th>
+      <th>Pickupboylam</th>
+      <th>Pickupenlem</th>
+      <th>Açılan Boylam</th>
+      <th>Açılan Enlem</th>
       <th>totalAmount</th>
       <th>month_num</th>
       <th>day_of_month</th>
@@ -740,14 +740,14 @@ green_taxi_df.head(5)
       <th>117695</th>
       <td>2</td>
       <td>2016-01-20</td>
-      <td>1</td>
-      <td>0.98</td>
-      <td>-73.921715</td>
-      <td>40.766682</td>
-      <td>-73.916908</td>
-      <td>40.761257</td>
+      <td>1\.</td>
+      <td>0,98</td>
+      <td>-73,921715</td>
+      <td>40,766682</td>
+      <td>-73,916908</td>
+      <td>40,761257</td>
       <td>8.8</td>
-      <td>1</td>
+      <td>1\.</td>
       <td>20</td>
       <td>2</td>
       <td>17</td>
@@ -758,14 +758,14 @@ green_taxi_df.head(5)
       <td>2</td>
       <td>2016-01-01</td>
       <td>1</td>
-      <td>3.08</td>
-      <td>-73.979973</td>
-      <td>40.677071</td>
-      <td>-73.934349</td>
-      <td>40.671654</td>
-      <td>12.8</td>
-      <td>1</td>
-      <td>1</td>
+      <td>3,08</td>
+      <td>-73,979973</td>
+      <td>40,677071</td>
+      <td>-73,934349</td>
+      <td>40,671654</td>
+      <td>12,8</td>
+      <td>1\.</td>
+      <td>1\.</td>
       <td>4</td>
       <td>21</td>
       <td>ABD</td>
@@ -774,15 +774,15 @@ green_taxi_df.head(5)
       <th>1165078</th>
       <td>2</td>
       <td>2016-01-01</td>
-      <td>1</td>
+      <td>1\.</td>
       <td>2.44</td>
-      <td>-73.863045</td>
-      <td>40.882923</td>
-      <td>-73.839836</td>
-      <td>40.868336</td>
-      <td>13.8</td>
-      <td>1</td>
-      <td>1</td>
+      <td>-73,863045</td>
+      <td>40,882923</td>
+      <td>-73,839836</td>
+      <td>40,868336</td>
+      <td>13,8</td>
+      <td>1\.</td>
+      <td>1\.</td>
       <td>4</td>
       <td>0</td>
       <td>ABD</td>
@@ -791,14 +791,14 @@ green_taxi_df.head(5)
       <th>1345223</th>
       <td>2</td>
       <td>2016-01-04</td>
-      <td>1</td>
-      <td>2.87</td>
-      <td>-73.977730</td>
-      <td>40.684647</td>
-      <td>-73.931259</td>
-      <td>40.694248</td>
-      <td>13.8</td>
-      <td>1</td>
+      <td>1\.</td>
+      <td>2,87</td>
+      <td>-73,977730</td>
+      <td>40,684647</td>
+      <td>-73,931259</td>
+      <td>40,694248</td>
+      <td>13,8</td>
+      <td>1\.</td>
       <td>4</td>
       <td>0</td>
       <td>17</td>
@@ -806,16 +806,16 @@ green_taxi_df.head(5)
     </tr>
     <tr>
       <th>608125</th>
-      <td>1</td>
+      <td>1\.</td>
       <td>2016-01-13</td>
-      <td>1</td>
+      <td>1\.</td>
       <td>0.50</td>
-      <td>-73.942589</td>
-      <td>40.841423</td>
-      <td>-73.943672</td>
-      <td>40.834396</td>
+      <td>-73,942589</td>
+      <td>40,841423</td>
+      <td>-73,943672</td>
+      <td>40,834396</td>
       <td>5.3</td>
-      <td>1</td>
+      <td>1\.</td>
       <td>13</td>
       <td>2</td>
       <td>8</td>
@@ -825,12 +825,12 @@ green_taxi_df.head(5)
 </table>
 </div>
 
-### <a name="enrich-with-holiday-data"></a>Tatil verilerle zenginleştirin
+### <a name="enrich-with-holiday-data"></a>Tatil verileriyle zenginleştirme
 
-Taksi verileri indirilir ve kabaca hazır olduğuna göre tatil verilerinde ek özellikleri ekleyin. Ana tatiller süreleri gibi tatil özgü özellikler doğruluğu, yardımcı burada taksi talepleri arttığında önemli ölçüde ve tedarik sınırlı olur. Tatil dataset göreceli olarak küçüktür, kullanarak eksiksiz bir şekilde getirmek `PublicHolidays` sınıf oluşturucusu parametresiz filtreleme. Biçimini denetlemek için verileri önizleyin.
+Artık ve kabaca hazırlanan vergilenmm verisi olduğuna göre, tatil verilerini ek özellikler olarak ekleyin. Büyük tatiller, TAXI talebinin önemli ölçüde arttığı ve tedarikin sınırlı olacağı durumlar olduğu sürece, tatil açısından özel özellikler model doğruluğuna yardımcı olur. Tatil veri kümesi görece küçük olduğundan, filtre uygulamak üzere parametre olmadan `PublicHolidays` sınıf oluşturucusunu kullanarak tam kümeyi getirin. Biçimlendirmeyi denetlemek için verileri önizleyin.
 
 ```python
-from azureml.contrib.opendatasets import PublicHolidays
+from azureml.opendatasets import PublicHolidays
 # call default constructor to download full dataset
 holidays_df = PublicHolidays().to_pandas_dataframe()
 holidays_df.head(5)
@@ -860,7 +860,7 @@ holidays_df.head(5)
       <th></th>
       <th>countryOrRegion</th>
       <th>holidayName</th>
-      <th>isPaidTimeOff</th>
+      <th>ıpaidtimeoff</th>
       <th>countryRegionCode</th>
       <th>normalizeHolidayName</th>
       <th>date</th>
@@ -870,46 +870,46 @@ holidays_df.head(5)
     <tr>
       <th>40688</th>
       <td>Arnavutluk</td>
-      <td>Yılbaşı</td>
-      <td>None</td>
+      <td>Yılbaşı günü</td>
+      <td>Yok.</td>
       <td>AL</td>
-      <td>Yılbaşı</td>
+      <td>Yılbaşı günü</td>
       <td>2008-01-01</td>
     </tr>
     <tr>
       <th>40689</th>
       <td>Cezayir</td>
-      <td>Yılbaşı</td>
-      <td>None</td>
+      <td>Yılbaşı günü</td>
+      <td>Yok.</td>
       <td>DZ</td>
-      <td>Yılbaşı</td>
+      <td>Yılbaşı günü</td>
       <td>2008-01-01</td>
     </tr>
     <tr>
       <th>40690</th>
       <td>Andorra</td>
-      <td>Yılbaşı</td>
-      <td>None</td>
+      <td>Yılbaşı günü</td>
+      <td>Yok.</td>
       <td>AD</td>
-      <td>Yılbaşı</td>
+      <td>Yılbaşı günü</td>
       <td>2008-01-01</td>
     </tr>
     <tr>
       <th>40691</th>
       <td>Angola</td>
-      <td>Yılbaşı</td>
+      <td>Yılbaşı günü</td>
       <td>None</td>
       <td>AO</td>
-      <td>Yılbaşı</td>
+      <td>Yılbaşı günü</td>
       <td>2008-01-01</td>
     </tr>
     <tr>
       <th>40692</th>
       <td>Arjantin</td>
-      <td>Yılbaşı</td>
-      <td>None</td>
+      <td>Yılbaşı günü</td>
+      <td>Yok.</td>
       <td>AR</td>
-      <td>Yılbaşı</td>
+      <td>Yılbaşı günü</td>
       <td>2008-01-01</td>
     </tr>
   </tbody>
@@ -918,7 +918,7 @@ holidays_df.head(5)
 
 
 
-Yeniden adlandırma `countryRegionCode` ve `date` taksi verileri ilgili alan adlarının eşleşmesi ve bir anahtar olarak kullanılabilmesi için zaman da normalleştirmek için sütunları. Ardından, taksi verileri tatil verilerle Panda kullanarak bir left JOIN uygulayarak katılmak `merge()` işlevi. Bu tüm kayıtları korumak `green_taxi_df`, ancak tatil veri bulunduğu için ilgili ekleme `datetime` ve `country_code`, bu durumda olduğu her zaman `"US"`. Bunlar doğru birleştirildiğini doğrulamak için verileri önizleyin.
+`countryRegionCode` Ve`date` sütunlarını, TAXI verilerinden ilgili alan adlarıyla eşleşecek şekilde yeniden adlandırın ve aynı zamanda anahtar olarak kullanılabilmesi için süreyi normalleştirin. Ardından, Pandas `merge()` işlevini kullanarak bir sol katın gerçekleştirerek, vergileni verileriyle tatil verilerini birleştirin. Bu `green_taxi_df`, tüm kayıtları korur, ancak karşılık gelen `datetime` ve `country_code`bu durumda her zaman `"US"`olduğu gibi tatil verilerini ekler. Doğru birleştirildiklerini doğrulamak için verileri önizleyin.
 
 ```python
 holidays_df = holidays_df.rename(columns={"countryRegionCode": "country_code", "date": "datetime"})
@@ -945,21 +945,21 @@ taxi_holidays_df.head(5)
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>VendorId</th>
+      <th>Konağında VendorID</th>
       <th>datetime</th>
       <th>passengerCount</th>
-      <th>tripDistance</th>
-      <th>pickupLongitude</th>
-      <th>pickupLatitude</th>
-      <th>dropoffLongitude</th>
-      <th>dropoffLatitude</th>
+      <th>Üçlü mesafe</th>
+      <th>Pickupboylam</th>
+      <th>Pickupenlem</th>
+      <th>Açılan Boylam</th>
+      <th>Açılan Enlem</th>
       <th>totalAmount</th>
       <th>month_num</th>
       <th>day_of_month</th>
       <th>day_of_week</th>
       <th>hour_of_day</th>
       <th>country_code</th>
-      <th>isPaidTimeOff</th>
+      <th>ıpaidtimeoff</th>
       <th>normalizeHolidayName</th>
     </tr>
   </thead>
@@ -968,14 +968,14 @@ taxi_holidays_df.head(5)
       <th>0</th>
       <td>2</td>
       <td>2016-01-20</td>
-      <td>1</td>
-      <td>0.98</td>
-      <td>-73.921715</td>
-      <td>40.766682</td>
-      <td>-73.916908</td>
-      <td>40.761257</td>
+      <td>1\.</td>
+      <td>0,98</td>
+      <td>-73,921715</td>
+      <td>40,766682</td>
+      <td>-73,916908</td>
+      <td>40,761257</td>
       <td>8.8</td>
-      <td>1</td>
+      <td>1\.</td>
       <td>20</td>
       <td>2</td>
       <td>17</td>
@@ -987,52 +987,52 @@ taxi_holidays_df.head(5)
       <th>1</th>
       <td>2</td>
       <td>2016-01-01</td>
-      <td>1</td>
-      <td>3.08</td>
-      <td>-73.979973</td>
-      <td>40.677071</td>
-      <td>-73.934349</td>
-      <td>40.671654</td>
-      <td>12.8</td>
-      <td>1</td>
-      <td>1</td>
+      <td>1\.</td>
+      <td>3,08</td>
+      <td>-73,979973</td>
+      <td>40,677071</td>
+      <td>-73,934349</td>
+      <td>40,671654</td>
+      <td>12,8</td>
+      <td>1\.</td>
+      <td>1\.</td>
       <td>4</td>
       <td>21</td>
       <td>ABD</td>
-      <td>True</td>
-      <td>Yılbaşı</td>
+      <td>Doğru</td>
+      <td>Yılbaşı günü</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2</td>
       <td>2016-01-01</td>
-      <td>1</td>
+      <td>1\.</td>
       <td>2.44</td>
-      <td>-73.863045</td>
-      <td>40.882923</td>
-      <td>-73.839836</td>
-      <td>40.868336</td>
-      <td>13.8</td>
-      <td>1</td>
-      <td>1</td>
+      <td>-73,863045</td>
+      <td>40,882923</td>
+      <td>-73,839836</td>
+      <td>40,868336</td>
+      <td>13,8</td>
+      <td>1\.</td>
+      <td>1\.</td>
       <td>4</td>
       <td>0</td>
       <td>ABD</td>
-      <td>True</td>
-      <td>Yılbaşı</td>
+      <td>Doğru</td>
+      <td>Yılbaşı günü</td>
     </tr>
     <tr>
       <th>3</th>
       <td>2</td>
       <td>2016-01-04</td>
-      <td>1</td>
-      <td>2.87</td>
-      <td>-73.977730</td>
-      <td>40.684647</td>
-      <td>-73.931259</td>
-      <td>40.694248</td>
-      <td>13.8</td>
-      <td>1</td>
+      <td>1\.</td>
+      <td>2,87</td>
+      <td>-73,977730</td>
+      <td>40,684647</td>
+      <td>-73,931259</td>
+      <td>40,694248</td>
+      <td>13,8</td>
+      <td>1\.</td>
       <td>4</td>
       <td>0</td>
       <td>17</td>
@@ -1042,16 +1042,16 @@ taxi_holidays_df.head(5)
     </tr>
     <tr>
       <th>4</th>
-      <td>1</td>
+      <td>1\.</td>
       <td>2016-01-13</td>
-      <td>1</td>
+      <td>1\.</td>
       <td>0.50</td>
-      <td>-73.942589</td>
-      <td>40.841423</td>
-      <td>-73.943672</td>
-      <td>40.834396</td>
+      <td>-73,942589</td>
+      <td>40,841423</td>
+      <td>-73,943672</td>
+      <td>40,834396</td>
       <td>5.3</td>
-      <td>1</td>
+      <td>1\.</td>
       <td>13</td>
       <td>2</td>
       <td>8</td>
@@ -1063,12 +1063,12 @@ taxi_holidays_df.head(5)
 </table>
 </div>
 
-### <a name="enrich-with-weather-data"></a>Hava durumu verileri ile zenginleştirin
+### <a name="enrich-with-weather-data"></a>Hava durumu verileriyle zenginleştirme
 
-Artık taksi ve tatil verileri NOAA yüzey hava durumu verilerini ekleyin. Aynı anda bir ay çalıştırmalarınızı indirerek hava durumu verilerini almak için benzer bir yaklaşım kullanın. Ayrıca, belirtebilirsiniz `cols` parametresiyle yüklemek istediğiniz sütunları filtrelemek için bir dize dizisi. Bu hava durumu yüzey verilerden dünyanın dört bir yanındaki içeren çok büyük bir veri kümesi, böylece lat/uzun alanlar NYC kullanarak neredeyse her ay eklenmesinden önce Filtre `query()` dataframe işlevi. Bu garanti eder `weather_df` çok büyük elde edemez.
+Şimdi, TAXI ve tatil verilerine NOAA Surface Hava durumu verilerini ekleyin. Her seferinde bir ay indirerek Hava durumu verilerini getirmek için benzer bir yaklaşım kullanın. Ayrıca, indirmek istediğiniz `cols` sütunları filtrelemek için bir dizeler dizisi ile parametresini belirtin. Bu, dünyanın her yerinden hava durumu yüzey verilerini içeren çok büyük bir veri kümesidir. bu nedenle, her ay eklemeden önce, enlem/Long alanlarını dataframe üzerindeki `query()` işlevini kullanarak NYC yakınında olacak şekilde filtreleyin. Bu, `weather_df` çok büyük olmadığından emin olur.
 
 ```python
-from azureml.contrib.opendatasets import NoaaIsdWeather
+from azureml.opendatasets import NoaaIsdWeather
 
 weather_df = pd.DataFrame([])
 start = datetime.strptime("1/1/2016","%m/%d/%Y")
@@ -1103,15 +1103,15 @@ weather_df.head(10)
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>wban</th>
+      <th>wban dili</th>
       <th>precipTime</th>
-      <th>snowDepth</th>
+      <th>Kar derinliği</th>
       <th>sıcaklık</th>
       <th>Enlem</th>
       <th>precipDepth</th>
       <th>Boylam</th>
       <th>datetime</th>
-      <th>usaf</th>
+      <th>USAF</th>
     </tr>
   </thead>
   <tbody>
@@ -1121,9 +1121,9 @@ weather_df.head(10)
       <td>1.0</td>
       <td>NaN</td>
       <td>7.2</td>
-      <td>40.85</td>
+      <td>40,85</td>
       <td>0.0</td>
-      <td>-74.061</td>
+      <td>-74,061</td>
       <td>2016-01-01 00:51:00</td>
       <td>725025</td>
     </tr>
@@ -1133,9 +1133,9 @@ weather_df.head(10)
       <td>1.0</td>
       <td>NaN</td>
       <td>6.7</td>
-      <td>40.85</td>
+      <td>40,85</td>
       <td>0.0</td>
-      <td>-74.061</td>
+      <td>-74,061</td>
       <td>2016-01-01 01:51:00</td>
       <td>725025</td>
     </tr>
@@ -1145,9 +1145,9 @@ weather_df.head(10)
       <td>1.0</td>
       <td>NaN</td>
       <td>6.7</td>
-      <td>40.85</td>
+      <td>40,85</td>
       <td>0.0</td>
-      <td>-74.061</td>
+      <td>-74,061</td>
       <td>2016-01-01 02:51:00</td>
       <td>725025</td>
     </tr>
@@ -1157,9 +1157,9 @@ weather_df.head(10)
       <td>1.0</td>
       <td>NaN</td>
       <td>6.1</td>
-      <td>40.85</td>
+      <td>40,85</td>
       <td>0.0</td>
-      <td>-74.061</td>
+      <td>-74,061</td>
       <td>2016-01-01 03:51:00</td>
       <td>725025</td>
     </tr>
@@ -1169,21 +1169,21 @@ weather_df.head(10)
       <td>1.0</td>
       <td>NaN</td>
       <td>5.6</td>
-      <td>40.85</td>
+      <td>40,85</td>
       <td>0.0</td>
-      <td>-74.061</td>
+      <td>-74,061</td>
       <td>2016-01-01 04:51:00</td>
       <td>725025</td>
     </tr>
     <tr>
       <th>1754984</th>
       <td>94741</td>
-      <td>24.0</td>
+      <td>24,0</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>40.85</td>
+      <td>40,85</td>
       <td>5.0</td>
-      <td>-74.061</td>
+      <td>-74,061</td>
       <td>2016-01-01 04:59:00</td>
       <td>725025</td>
     </tr>
@@ -1193,9 +1193,9 @@ weather_df.head(10)
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>40.85</td>
+      <td>40,85</td>
       <td>NaN</td>
-      <td>-74.061</td>
+      <td>-74,061</td>
       <td>2016-01-01 04:59:00</td>
       <td>725025</td>
     </tr>
@@ -1205,9 +1205,9 @@ weather_df.head(10)
       <td>1.0</td>
       <td>NaN</td>
       <td>5.6</td>
-      <td>40.85</td>
+      <td>40,85</td>
       <td>0.0</td>
-      <td>-74.061</td>
+      <td>-74,061</td>
       <td>2016-01-01 05:51:00</td>
       <td>725025</td>
     </tr>
@@ -1217,9 +1217,9 @@ weather_df.head(10)
       <td>1.0</td>
       <td>NaN</td>
       <td>5.0</td>
-      <td>40.85</td>
+      <td>40,85</td>
       <td>0.0</td>
-      <td>-74.061</td>
+      <td>-74,061</td>
       <td>2016-01-01 06:51:00</td>
       <td>725025</td>
     </tr>
@@ -1229,9 +1229,9 @@ weather_df.head(10)
       <td>1.0</td>
       <td>NaN</td>
       <td>5.0</td>
-      <td>40.85</td>
+      <td>40,85</td>
       <td>0.0</td>
-      <td>-74.061</td>
+      <td>-74,061</td>
       <td>2016-01-01 07:51:00</td>
       <td>725025</td>
     </tr>
@@ -1239,9 +1239,9 @@ weather_df.head(10)
 </table>
 </div>
 
-Yeniden çağırın `pandas.Series.dt.normalize` üzerinde `datetime` zaman anahtarı eşleşecek şekilde hava durumu verilerini alanındaki `taxi_holidays_df`. Gereksiz sütunları silmek ve sıcaklık olduğu kayıtları süzer filtre `NaN`.
+Hava durumu `pandas.Series.dt.normalize` verilerinde, `datetime` içindeki `taxi_holidays_df`zaman anahtarıyla eşleşecek şekilde bu alana çağrı yapın. Gereksiz sütunları silin ve sıcaklığın olduğu `NaN`kayıtları filtreleyin.
 
-Böylece, her gün hava durumu değerleri toplu sonraki hava durumu verilerini gruplandırın. Bir, dict tanımlamak `aggregations` günlük düzeyinde her bir alanı toplamak nasıl tanımlamak için. İçin `snowDepth` ve `temperature` ortalamasını almak ve `precipTime` ve `precipDepth` günlük en fazla yararlanın. Kullanım `groupby()` veri grubuna toplamalar yanı sıra işlevi. Gün başına tek bir kayıt var. olmak için verileri önizleyin.
+Daha sonra günlük toplam hava durumu değerlerinizin olması için hava durumu verilerini gruplandırın. Her bir alanın günlük `aggregations` düzeyde nasıl toplanacağını tanımlamak için bir dict tanımlayın. İçin, ve için `precipTime` ortalama vegünlükenyüksekdeğerialın.`precipDepth` `snowDepth` `temperature` Verileri gruplandırmak için toplamaların birlikte işlevinikullanın.`groupby()` Günde bir kayıt olduğundan emin olmak için verileri önizleyin.
 
 ```python
 weather_df["datetime"] = weather_df["datetime"].dt.normalize()
@@ -1274,7 +1274,7 @@ weather_df_grouped.head(10)
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>snowDepth</th>
+      <th>Kar derinliği</th>
       <th>precipTime</th>
       <th>sıcaklık</th>
       <th>precipDepth</th>
@@ -1292,82 +1292,82 @@ weather_df_grouped.head(10)
       <th>2016-01-01</th>
       <td>NaN</td>
       <td>1.0</td>
-      <td>5.197345</td>
+      <td>5,197345</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>2016-01-02</th>
       <td>NaN</td>
       <td>1.0</td>
-      <td>2.567857</td>
+      <td>2,567857</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>2016-01-03</th>
       <td>NaN</td>
       <td>1.0</td>
-      <td>3.846429</td>
+      <td>3,846429</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>2016-01-04</th>
       <td>NaN</td>
       <td>1.0</td>
-      <td>0.123894</td>
+      <td>0,123894</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>2016-01-05</th>
       <td>NaN</td>
       <td>6.0</td>
-      <td>-7.206250</td>
+      <td>-7,206250</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>2016-01-06</th>
       <td>NaN</td>
       <td>6.0</td>
-      <td>-0.896396</td>
+      <td>-0,896396</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>2016-01-07</th>
       <td>NaN</td>
       <td>6.0</td>
-      <td>3.180645</td>
+      <td>3,180645</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>2016-01-08</th>
       <td>NaN</td>
       <td>1.0</td>
-      <td>4.384091</td>
+      <td>4,384091</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>2016-01-09</th>
       <td>NaN</td>
       <td>6.0</td>
-      <td>6.710274</td>
+      <td>6,710274</td>
       <td>3,0</td>
     </tr>
     <tr>
       <th>2016-01-10</th>
       <td>NaN</td>
-      <td>24.0</td>
-      <td>10.943655</td>
-      <td>254.0</td>
+      <td>24,0</td>
+      <td>10,943655</td>
+      <td>254,0</td>
     </tr>
   </tbody>
 </table>
 </div>
 
 > [!NOTE]
-> Bu öğreticideki örneklerde Pandas işlevleri ve özel toplamalar kullanarak veri birleştirme ancak bir kolayca birleştirme ve veri kümeleri zenginleştirmek için tasarlanmış sınıflarını açık veri kümeleri SDK'sı yoktur. Bkz: [not defteri](https://github.com/Azure/OpenDatasetsNotebooks/blob/master/tutorials/data-join/04-nyc-taxi-join-weather-in-pandas.ipynb) kod örnekleri, bu tasarım desenleri için.
+> Bu öğreticideki örnekler, Pandas işlevlerini ve özel toplamaları kullanarak verileri birleştirir, ancak açık veri kümeleri SDK 'Sı, veri kümelerini kolayca birleştirmek ve zenginleştirme amacıyla tasarlanan sınıflara sahiptir. Bu Tasarım desenlerinin kod örnekleri için [Not defterine](https://github.com/Azure/OpenDatasetsNotebooks/blob/master/tutorials/data-join/04-nyc-taxi-join-weather-in-pandas.ipynb) bakın.
 
 ### <a name="cleanse-data"></a>Verilerini temizlemek
 
-Hazırladığınız taksi ve tatil verileri yeni hava durumu verilerini ile birleştirin. Bu kez, yeterlidir `datetime` anahtar ve left JOIN verilerin yeniden gerçekleştirin. Çalıştırma `describe()` her alan için Özet istatistikleri görmek için yeni bir veri çerçevesi işlevi.
+Yeni hava durumu verileriyle hazırladığınız TAXI ve tatil verilerini birleştirin. Bu kez yalnızca `datetime` anahtara ihtiyacınız vardır ve verilerin bir LEFT-JOIN işlemini gerçekleştirirsiniz. Her bir alanın Özet istatistiklerini görmek için bu işleviyenidataframeüzerindeçalıştırın.`describe()`
 
 ```python
 taxi_holidays_weather_df = pd.merge(taxi_holidays_df, weather_df_grouped, how="left", on=["datetime"])
@@ -1389,19 +1389,19 @@ taxi_holidays_weather_df.describe()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>VendorId</th>
+      <th>Konağında VendorID</th>
       <th>passengerCount</th>
-      <th>tripDistance</th>
-      <th>pickupLongitude</th>
-      <th>pickupLatitude</th>
-      <th>dropoffLongitude</th>
-      <th>dropoffLatitude</th>
+      <th>Üçlü mesafe</th>
+      <th>Pickupboylam</th>
+      <th>Pickupenlem</th>
+      <th>Açılan Boylam</th>
+      <th>Açılan Enlem</th>
       <th>totalAmount</th>
       <th>month_num</th>
       <th>day_of_month</th>
       <th>day_of_week</th>
       <th>hour_of_day</th>
-      <th>snowDepth</th>
+      <th>Kar derinliği</th>
       <th>precipTime</th>
       <th>sıcaklık</th>
       <th>precipDepth</th>
@@ -1410,163 +1410,163 @@ taxi_holidays_weather_df.describe()
   <tbody>
     <tr>
       <th>count</th>
-      <td>24000.000000</td>
-      <td>24000.000000</td>
-      <td>24000.000000</td>
-      <td>24000.000000</td>
-      <td>24000.000000</td>
-      <td>24000.000000</td>
-      <td>24000.000000</td>
-      <td>24000.000000</td>
-      <td>24000.000000</td>
-      <td>24000.000000</td>
-      <td>24000.000000</td>
-      <td>24000.000000</td>
-      <td>1671.000000</td>
-      <td>24000.000000</td>
-      <td>24000.000000</td>
-      <td>24000.000000</td>
+      <td>24000,000000</td>
+      <td>24000,000000</td>
+      <td>24000,000000</td>
+      <td>24000,000000</td>
+      <td>24000,000000</td>
+      <td>24000,000000</td>
+      <td>24000,000000</td>
+      <td>24000,000000</td>
+      <td>24000,000000</td>
+      <td>24000,000000</td>
+      <td>24000,000000</td>
+      <td>24000,000000</td>
+      <td>1671,000000</td>
+      <td>24000,000000</td>
+      <td>24000,000000</td>
+      <td>24000,000000</td>
     </tr>
     <tr>
       <th>Ortalama</th>
-      <td>1.786583</td>
-      <td>6.576208</td>
-      <td>1.582588</td>
-      <td>20.505491</td>
-      <td>84.936413</td>
-      <td>-36.232825</td>
-      <td>21.723144</td>
-      <td>7.863018</td>
-      <td>6.500000</td>
-      <td>15.113708</td>
-      <td>3.240250</td>
-      <td>13.664125</td>
-      <td>11.764141</td>
-      <td>13.258875</td>
-      <td>13.903524</td>
-      <td>1056.644458</td>
+      <td>1,786583</td>
+      <td>6,576208</td>
+      <td>1,582588</td>
+      <td>20,505491</td>
+      <td>84,936413</td>
+      <td>-36,232825</td>
+      <td>21,723144</td>
+      <td>7,863018</td>
+      <td>6,500000</td>
+      <td>15,113708</td>
+      <td>3,240250</td>
+      <td>13,664125</td>
+      <td>11,764141</td>
+      <td>13,258875</td>
+      <td>13,903524</td>
+      <td>1056,644458</td>
     </tr>
     <tr>
-      <th>Std</th>
-      <td>0.409728</td>
-      <td>9.086857</td>
-      <td>2.418177</td>
-      <td>108.847821</td>
-      <td>70.678506</td>
-      <td>37.650276</td>
-      <td>19.104384</td>
-      <td>10.648766</td>
-      <td>3.452124</td>
-      <td>8.485155</td>
-      <td>1.956895</td>
-      <td>6.650676</td>
-      <td>15.651884</td>
-      <td>10.339720</td>
-      <td>9.474396</td>
-      <td>2815.592754</td>
+      <th>STD</th>
+      <td>0,409728</td>
+      <td>9,086857</td>
+      <td>2,418177</td>
+      <td>108,847821</td>
+      <td>70,678506</td>
+      <td>37,650276</td>
+      <td>19,104384</td>
+      <td>10,648766</td>
+      <td>3,452124</td>
+      <td>8,485155</td>
+      <td>1,956895</td>
+      <td>6,650676</td>
+      <td>15,651884</td>
+      <td>10,339720</td>
+      <td>9,474396</td>
+      <td>2815,592754</td>
     </tr>
     <tr>
       <th>dk</th>
-      <td>1.000000</td>
-      <td>-60.000000</td>
-      <td>-1.000000</td>
-      <td>-74.179482</td>
+      <td>1,000000</td>
+      <td>-60,000000</td>
+      <td>-1,000000</td>
+      <td>-74,179482</td>
       <td>0.000000</td>
-      <td>-74.190704</td>
+      <td>-74,190704</td>
       <td>0.000000</td>
-      <td>-52.800000</td>
-      <td>1.000000</td>
-      <td>1.000000</td>
+      <td>-52,800000</td>
+      <td>1,000000</td>
+      <td>1,000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>3.000000</td>
-      <td>1.000000</td>
-      <td>-13.379464</td>
+      <td>3,000000</td>
+      <td>1,000000</td>
+      <td>-13,379464</td>
       <td>0.000000</td>
     </tr>
     <tr>
       <th>%25</th>
-      <td>2.000000</td>
-      <td>1.000000</td>
-      <td>0.330000</td>
-      <td>-73.946680</td>
-      <td>40.717712</td>
-      <td>-73.945429</td>
-      <td>1.770000</td>
-      <td>1.000000</td>
-      <td>3.750000</td>
-      <td>8.000000</td>
-      <td>2.000000</td>
-      <td>9.000000</td>
-      <td>3.000000</td>
-      <td>1.000000</td>
-      <td>6.620773</td>
+      <td>2,000000</td>
+      <td>1,000000</td>
+      <td>0,330000</td>
+      <td>-73,946680</td>
+      <td>40,717712</td>
+      <td>-73,945429</td>
+      <td>1,770000</td>
+      <td>1,000000</td>
+      <td>3,750000</td>
+      <td>8,000000</td>
+      <td>2,000000</td>
+      <td>9,000000</td>
+      <td>3,000000</td>
+      <td>1,000000</td>
+      <td>6,620773</td>
       <td>0.000000</td>
     </tr>
     <tr>
       <th>50%</th>
-      <td>2.000000</td>
-      <td>4.000000</td>
-      <td>0.830000</td>
+      <td>2,000000</td>
+      <td>4,000000</td>
+      <td>0,830000</td>
       <td>1.500000</td>
-      <td>40.814129</td>
-      <td>0.500000</td>
-      <td>21.495000</td>
-      <td>2.000000</td>
-      <td>6.500000</td>
-      <td>15.000000</td>
-      <td>3.000000</td>
-      <td>15.000000</td>
-      <td>4.428571</td>
-      <td>6.000000</td>
-      <td>13.090753</td>
-      <td>10.000000</td>
+      <td>40,814129</td>
+      <td>0,500000</td>
+      <td>21,495000</td>
+      <td>2,000000</td>
+      <td>6,500000</td>
+      <td>15,000000</td>
+      <td>3,000000</td>
+      <td>15,000000</td>
+      <td>4,428571</td>
+      <td>6,000000</td>
+      <td>13,090753</td>
+      <td>10,000000</td>
     </tr>
     <tr>
-      <th>75%</th>
-      <td>2.000000</td>
-      <td>9.000000</td>
-      <td>1.870000</td>
-      <td>89.000000</td>
-      <td>129.000000</td>
-      <td>1.000000</td>
-      <td>40.746146</td>
-      <td>11.300000</td>
-      <td>9.250000</td>
-      <td>22.000000</td>
-      <td>5.000000</td>
-      <td>19.000000</td>
-      <td>12.722222</td>
-      <td>24.000000</td>
-      <td>22.944737</td>
-      <td>132.000000</td>
+      <th>% 75</th>
+      <td>2,000000</td>
+      <td>9,000000</td>
+      <td>1,870000</td>
+      <td>89,000000</td>
+      <td>129,000000</td>
+      <td>1,000000</td>
+      <td>40,746146</td>
+      <td>11,300000</td>
+      <td>9,250000</td>
+      <td>22,000000</td>
+      <td>5,000000</td>
+      <td>19,000000</td>
+      <td>12,722222</td>
+      <td>24,000000</td>
+      <td>22,944737</td>
+      <td>132,000000</td>
     </tr>
     <tr>
-      <th>en fazla</th>
-      <td>2.000000</td>
-      <td>460.000000</td>
-      <td>51.950000</td>
-      <td>265.000000</td>
-      <td>265.000000</td>
-      <td>6.000000</td>
-      <td>58.600000</td>
-      <td>498.000000</td>
-      <td>12.000000</td>
-      <td>30.000000</td>
-      <td>6.000000</td>
-      <td>23.000000</td>
-      <td>67.090909</td>
-      <td>24.000000</td>
-      <td>31.303665</td>
-      <td>9999.000000</td>
+      <th>Biçimlendir</th>
+      <td>2,000000</td>
+      <td>460,000000</td>
+      <td>51,950000</td>
+      <td>265,000000</td>
+      <td>265,000000</td>
+      <td>6,000000</td>
+      <td>58,600000</td>
+      <td>498,000000</td>
+      <td>12,000000</td>
+      <td>30,000000</td>
+      <td>6,000000</td>
+      <td>23,000000</td>
+      <td>67,090909</td>
+      <td>24,000000</td>
+      <td>31,303665</td>
+      <td>9999,000000</td>
     </tr>
   </tbody>
 </table>
 </div>
 
-Özet istatistikleri, aykırı değerler veya doğruluğu azaltacak değerleri olan çeşitli alanları olduğunu görürsünüz. İlk lat/uzun alanlar, hava durumu verileri filtreleme için kullanılan aynı sınırları içinde olacak şekilde filtreleyin. `tripDistance` Minimum değeri sıfırdan küçük olduğundan bazı hatalı veri alanı vardır. `passengerCount` Alanın 210 Yolcuların olan maksimum değeri ile bozuk veriler de vardır. Son olarak, `totalAmount` alanı modelimizi bağlamında anlamsız negatif değerler içeriyor.
+Özet istatistiklerinde, mantıksal veya daha fazla alan içeren birkaç alanın, model doğruluğunu azaltacak şekilde olduğunu görürsünüz. İlk olarak, Lat/Long alanlarını, hava durumu verilerini filtrelemek için kullandığınız sınırlar dahilinde olacak şekilde filtreleyin. En küçük değer negatif olduğundan, alandabazıhatalıverilervardır.`tripDistance` `passengerCount` Alan, en büyük değer olan 210 pasılcılar olacak şekilde hatalı veriler de içerir. Son olarak, `totalAmount` alanın, modelimizin bağlamında anlamamakta olmayan negatif değerleri vardır.
 
-Sorgu işlevleri kullanarak bu anomalileri filtrelemek ve eğitim için gereksiz son birkaç sütunları kaldırın.
+Sorgu işlevlerini kullanarak bu anomali filtreleme yapın ve ardından eğitim için gereksiz son sütunu kaldırın.
 
 ```python
 final_df = taxi_holidays_weather_df.query("pickupLatitude>=40.53 and pickupLatitude<=40.88")
@@ -1580,7 +1580,7 @@ for col in columns_to_remove_for_training:
     final_df.pop(col)
 ```
 
-Çağrı `describe()` yeniden temizleme beklendiği gibi çalıştı emin olmak için verileri. Artık taksi, tatil ve makine öğrenme modeli eğitimi için kullanılacak hava durumu verileri hazırlanmış ve Temizlenen kümesi var.
+Temizleme `describe()` 'nin beklendiği gibi çalıştığından emin olmak için verileri yeniden çağırın. Artık makine öğrenimi model eğitimi için kullanılacak, hazırlanmış ve yeniden hazırlanan bir TAXI, tatil ve hava durumu verisi ayarlamış olursunuz.
 
 ```python
 final_df.describe()
@@ -1601,15 +1601,15 @@ final_df.describe()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>VendorId</th>
+      <th>Konağında VendorID</th>
       <th>passengerCount</th>
-      <th>tripDistance</th>
+      <th>Üçlü mesafe</th>
       <th>totalAmount</th>
       <th>month_num</th>
       <th>day_of_month</th>
       <th>day_of_week</th>
       <th>hour_of_day</th>
-      <th>snowDepth</th>
+      <th>Kar derinliği</th>
       <th>precipTime</th>
       <th>sıcaklık</th>
       <th>precipDepth</th>
@@ -1618,123 +1618,123 @@ final_df.describe()
   <tbody>
     <tr>
       <th>count</th>
-      <td>11765.000000</td>
-      <td>11765.000000</td>
-      <td>11765.000000</td>
-      <td>11765.000000</td>
-      <td>11765.000000</td>
-      <td>11765.000000</td>
-      <td>11765.000000</td>
-      <td>11765.000000</td>
-      <td>1490.000000</td>
-      <td>11765.000000</td>
-      <td>11765.000000</td>
-      <td>11765.000000</td>
+      <td>11765,000000</td>
+      <td>11765,000000</td>
+      <td>11765,000000</td>
+      <td>11765,000000</td>
+      <td>11765,000000</td>
+      <td>11765,000000</td>
+      <td>11765,000000</td>
+      <td>11765,000000</td>
+      <td>1490,000000</td>
+      <td>11765,000000</td>
+      <td>11765,000000</td>
+      <td>11765,000000</td>
     </tr>
     <tr>
       <th>Ortalama</th>
-      <td>1.786910</td>
-      <td>1.343476</td>
-      <td>2.848488</td>
-      <td>14.689039</td>
-      <td>3.499788</td>
-      <td>14.948916</td>
-      <td>3.234254</td>
-      <td>13.647344</td>
-      <td>12.508581</td>
-      <td>11.855929</td>
-      <td>10.301433</td>
-      <td>208.432384</td>
+      <td>1,786910</td>
+      <td>1,343476</td>
+      <td>2,848488</td>
+      <td>14,689039</td>
+      <td>3,499788</td>
+      <td>14,948916</td>
+      <td>3,234254</td>
+      <td>13,647344</td>
+      <td>12,508581</td>
+      <td>11,855929</td>
+      <td>10,301433</td>
+      <td>208,432384</td>
     </tr>
     <tr>
-      <th>Std</th>
-      <td>0.409508</td>
-      <td>1.001232</td>
-      <td>2.895960</td>
-      <td>10.289832</td>
-      <td>1.707865</td>
-      <td>8.442438</td>
-      <td>1.958477</td>
-      <td>6.640280</td>
-      <td>16.203195</td>
-      <td>10.125701</td>
-      <td>8.553512</td>
-      <td>1284.892832</td>
+      <th>STD</th>
+      <td>0,409508</td>
+      <td>1,001232</td>
+      <td>2,895960</td>
+      <td>10,289832</td>
+      <td>1,707865</td>
+      <td>8,442438</td>
+      <td>1,958477</td>
+      <td>6,640280</td>
+      <td>16,203195</td>
+      <td>10,125701</td>
+      <td>8,553512</td>
+      <td>1284,892832</td>
     </tr>
     <tr>
       <th>dk</th>
-      <td>1.000000</td>
-      <td>1.000000</td>
-      <td>0.010000</td>
-      <td>3.300000</td>
-      <td>1.000000</td>
-      <td>1.000000</td>
+      <td>1,000000</td>
+      <td>1,000000</td>
+      <td>0,010000</td>
+      <td>3,300000</td>
+      <td>1,000000</td>
+      <td>1,000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>3.000000</td>
-      <td>1.000000</td>
-      <td>-13.379464</td>
+      <td>3,000000</td>
+      <td>1,000000</td>
+      <td>-13,379464</td>
       <td>0.000000</td>
     </tr>
     <tr>
       <th>%25</th>
-      <td>2.000000</td>
-      <td>1.000000</td>
-      <td>1.070000</td>
-      <td>8.160000</td>
-      <td>2.000000</td>
-      <td>8.000000</td>
-      <td>2.000000</td>
-      <td>9.000000</td>
-      <td>3.000000</td>
-      <td>1.000000</td>
-      <td>3.504580</td>
+      <td>2,000000</td>
+      <td>1,000000</td>
+      <td>1,070000</td>
+      <td>8,160000</td>
+      <td>2,000000</td>
+      <td>8,000000</td>
+      <td>2,000000</td>
+      <td>9,000000</td>
+      <td>3,000000</td>
+      <td>1,000000</td>
+      <td>3,504580</td>
       <td>0.000000</td>
     </tr>
     <tr>
       <th>50%</th>
-      <td>2.000000</td>
-      <td>1.000000</td>
-      <td>1.900000</td>
-      <td>11.300000</td>
-      <td>3.000000</td>
-      <td>15.000000</td>
-      <td>3.000000</td>
-      <td>15.000000</td>
-      <td>4.250000</td>
-      <td>6.000000</td>
-      <td>10.168182</td>
-      <td>3.000000</td>
+      <td>2,000000</td>
+      <td>1,000000</td>
+      <td>1,900000</td>
+      <td>11,300000</td>
+      <td>3,000000</td>
+      <td>15,000000</td>
+      <td>3,000000</td>
+      <td>15,000000</td>
+      <td>4,250000</td>
+      <td>6,000000</td>
+      <td>10,168182</td>
+      <td>3,000000</td>
     </tr>
     <tr>
-      <th>75%</th>
-      <td>2.000000</td>
-      <td>1.000000</td>
-      <td>3.550000</td>
-      <td>17.800000</td>
-      <td>5.000000</td>
-      <td>22.000000</td>
-      <td>5.000000</td>
-      <td>19.000000</td>
-      <td>15.647059</td>
-      <td>24.000000</td>
-      <td>16.966923</td>
-      <td>41.000000</td>
+      <th>% 75</th>
+      <td>2,000000</td>
+      <td>1,000000</td>
+      <td>3,550000</td>
+      <td>17,800000</td>
+      <td>5,000000</td>
+      <td>22,000000</td>
+      <td>5,000000</td>
+      <td>19,000000</td>
+      <td>15,647059</td>
+      <td>24,000000</td>
+      <td>16,966923</td>
+      <td>41,000000</td>
     </tr>
     <tr>
-      <th>en fazla</th>
-      <td>2.000000</td>
-      <td>6.000000</td>
-      <td>51.950000</td>
-      <td>150.300000</td>
-      <td>6.000000</td>
-      <td>30.000000</td>
-      <td>6.000000</td>
-      <td>23.000000</td>
-      <td>67.090909</td>
-      <td>24.000000</td>
-      <td>26.524107</td>
-      <td>9999.000000</td>
+      <th>Biçimlendir</th>
+      <td>2,000000</td>
+      <td>6,000000</td>
+      <td>51,950000</td>
+      <td>150,300000</td>
+      <td>6,000000</td>
+      <td>30,000000</td>
+      <td>6,000000</td>
+      <td>23,000000</td>
+      <td>67,090909</td>
+      <td>24,000000</td>
+      <td>26,524107</td>
+      <td>9999,000000</td>
     </tr>
   </tbody>
 </table>
@@ -1742,14 +1742,14 @@ final_df.describe()
 
 ## <a name="train-a-model"></a>Modeli eğitme
 
-Artık otomatik bir machine learning modeli eğitmek için hazırlanan verileri kullanın. Bölme tarafından başlangıç `final_df` özelliklerine (X değerleri) ve bu model taksi taksi maliyet etiketleri (y değeri).
+Artık hazırlanan verileri otomatik makine öğrenimi modelini eğitmek için kullanırsınız. Bu model için `final_df` TAXI tarifeli havayolu maliyeti olan Özellikler (X değerleri) ve Etiketler (y değeri) ile ayırarak başlayın.
 
 ```python
 y_df = final_df.pop("totalAmount")
 x_df = final_df
 ```
 
-Artık verileri eğitim halinde bölme ve kullanarak test kümelerini `train_test_split()` işlevi `scikit-learn` kitaplığı. `test_size` Parametresi test ayrılacak veri yüzdesini belirler. `random_state` Parametre, eğitin ve test bölmelerini belirleyici, böylece bu çekirdek rastgele sayı üretici için ayarlar.
+Artık, `train_test_split()` `scikit-learn` kitaplıktaki işlevini kullanarak verileri eğitim ve test kümelerine bölecektir. `test_size` Parametresi test ayrılacak veri yüzdesini belirler. `random_state` Parametresi, tren-test bölünmeleri belirleyici olacak şekilde rastgele sayı oluşturucusuna bir çekirdek ayarlar.
 
 
 ```python
@@ -1758,9 +1758,9 @@ from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, random_state=222)
 ```
 
-### <a name="load-workspace-and-configure-experiment"></a>Çalışma alanını yüklemek ve deneme yapılandırma
+### <a name="load-workspace-and-configure-experiment"></a>Çalışma alanını yükleme ve deneme yapılandırma
 
-Azure Machine Learning hizmetini kullanarak çalışma yük `get()` işlevi, abonelik ve çalışma alanı bilgileri. Deneme içinde depolamak ve model çalıştırmalarınızı izlemek için çalışma alanınızı oluşturun.
+Aboneliğiniz ve çalışma alanı bilgileriniz ile `get()` işlevini kullanarak Azure Machine Learning hizmeti çalışma alanınızı yükleyin. Modelinizin depolamak ve izlemek için çalışma alanınızda bir deneme oluşturun.
 
 
 ```python
@@ -1771,15 +1771,15 @@ workspace = Workspace.get(subscription_id="<your-subscription-id>", name="<your-
 experiment = Experiment(workspace, "opendatasets-ml")
 ```
 
-Denemeyi kullanmaya yönelik bir yapılandırma nesnesi oluşturun `AutoMLConfig` sınıfı. Eğitim verilerinizi ekleme ve buna ek olarak ayarlar ve eğitim işlemini denetleyen parametreler belirtin. Parametreleri aşağıdaki amaçları vardır:
+`AutoMLConfig` Sınıfını kullanarak deneme için bir yapılandırma nesnesi oluşturun. Eğitim verilerinizi iliştirmeye ve ayrıca eğitim sürecini denetleyen ayarları ve parametreleri de belirtebilirsiniz. Parametreler aşağıdaki amaçlara sahiptir:
 
-* `task`: çalıştırılacak deney türü.
-* `X`: özellikler eğitim.
-* `y`: Etiket eğitimi.
-* `iterations`: çalıştırmak için yineleme sayısı. Her yineleme farklı özellik normalleştirme/Standardizasyon yöntemleri ve farklı modelleri birden fazla hiper parametre ayarı kullanarak bir birleşimiyle çalışır.
-* `primary_metric`: model eğitim sırasında en iyi duruma getirmek için birincil ölçümü. Bu ölçüm temelinde en uygun model seçilir.
-* `preprocess`: deneme (sayısal, vb. için metin dönüştürme eksik veri işleme) giriş verileri ön işleme olup olmadığını denetler
-* `n_cross_validations`: Doğrulama verileri belirtilmediğinde gerçekleştirmek için çapraz doğrulama bölmelerini sayısı.
+* `task`: çalıştırılacak denemenin türü.
+* `X`: eğitim özellikleri.
+* `y`: eğitim etiketleri.
+* `iterations`: çalıştırılacak yineleme sayısı. Her yineleme, farklı özellik normalleştirme/standartlaştırma yöntemlerinin birleşimlerini ve birden çok hiper parametre ayarı kullanan farklı modelleri dener.
+* `primary_metric`: model eğitimi sırasında optimize edilecek birincil ölçüm. Bu ölçüm temelinde en uygun model seçilecek.
+* `preprocess`: denemenin giriş verilerini önceden işleyebilir (eksik verileri işleme, metni sayısal olarak dönüştürme vb.)
+* `n_cross_validations`: Doğrulama verileri belirtilmediğinde gerçekleştirilecek çapraz doğrulama bölme sayısı.
 
 
 ```python
@@ -1797,9 +1797,9 @@ automl_config = AutoMLConfig(task="regression",
 
 ### <a name="submit-experiment"></a>Denemeyi gönderme
 
-Eğitim için denemeyi gönderme. Denemeyi gönderdikten sonra işlemi farklı makine öğrenimi algoritmaları ve hiper parametre ayarlarını, tanımlanan kısıtlamalara gezinir. En uygun model tanımlı doğruluğu ölçüm iyileştirerek seçer. Geçirmek `automl_config` deneme nesne. Çıkış kümesine `True` deneme sırasında ilerleme durumunu görüntülemek için.
+Eğitim için denemeyi iletin. Deneme gönderdikten sonra işlem, farklı makine öğrenimi algoritmalarını ve hiper parametre ayarlarını kullanarak, tanımlı kısıtlamalarınız için uygun şekilde yinelenir. Tanımlanan doğruluk ölçüsünü en iyi duruma getirerek en uygun modeli seçer. `automl_config` Nesneyi denemenize geçirin. Deneme sırasında ilerlemeyi görüntülemek `True` için çıktıyı ayarlayın.
 
-Denemeyi gönderdikten sonra eğitim işlem için Canlı bir çıktı görürsünüz. Her yineleme için model türünü ve özellik normalleştirme/Standardizasyon yöntemi, çalışma süresini ve eğitim doğruluğu bakın. Alan `BEST` eğitim puan en iyi çalışan parçaları temel ölçüm türünüz üzerinde.
+Denemeyi gönderdikten sonra eğitim süreci için canlı çıktıyı görürsünüz. Her yineleme için model türü ve özellik normalleştirme/standartlaştırma yöntemi, çalışma süresi ve eğitim doğruluğunu görürsünüz. Alan `BEST` , ölçüm türünüz temelinde en iyi çalışan eğitim Puanını izler.
 
 ```python
 training_run = experiment.submit(automl_config, show_output=True)
@@ -1853,9 +1853,9 @@ training_run = experiment.submit(automl_config, show_output=True)
             18   VotingEnsemble                                 0:00:16       0.9380    0.9380
             19   StackEnsemble                                  0:00:17       0.9376    0.9380
 
-### <a name="retrieve-the-fitted-model"></a>Ekrana sığdırılmış model alma
+### <a name="retrieve-the-fitted-model"></a>Sığdırılmış modeli alma
 
-Tüm eğitim yinelemeler sonunda, tüm bireysel çalıştırmalar bagging veya yığın ile öğrenme sürecinde otomatik makine topluluğu algoritması oluşturur. Ekrana sığdırılmış topluluğu değişkene almak `fitted_model`ve en iyi bağımsız değişkeni içine `best_run`.
+Tüm eğitim yinelemelerinin sonunda, otomatik makine öğrenimi işlemi, tüm bireysel çalıştırmaların, Bagging veya yığınlama ile bir ensebir algoritma oluşturur. Değişkene `fitted_model`uydurulur ve en iyi bireyi değişkende `best_run`alın.
 
 ```python
 best_run, fitted_model = training_run.get_output()
@@ -1863,16 +1863,16 @@ print(best_run)
 print(fitted_model)
 ```
 
-## <a name="test-model-accuracy"></a>Test doğruluğu
+## <a name="test-model-accuracy"></a>Test modeli doğruluğu
 
-Taksi fares tahmin etmek için test veri kümesi üzerinde Öngörüler çalıştırma için Ekrana sığdırılmış topluluğu modelini kullanın. İşlev `predict()` Ekrana sığdırılmış modeli kullanır ve y, taksi taksi maliyeti, değerleri için tahmin `X_test` veri kümesi.
+Taksi Fares 'yi tahmin etmek için test veri kümesindeki tahminleri çalıştırmak üzere, bağlı olan bir modeli kullanın. İşlevi `predict()` , monte edilen modeli kullanır ve `X_test` veri kümesi için y, TAXI tarifeli havayolu Cost değerlerini tahmin eder.
 
 
 ```python
 y_predict = fitted_model.predict(X_test.values)
 ```
 
-Kök ortalama karesi alınmış hata sonuçları hesaplar. Kullanım `y_test` veri çerçevesi ve listeye dönüştürme `y_actual` için tahmin edilen değerleri karşılaştırmak için. İşlev `mean_squared_error` iki dizi değerlerini alır ve bunlar arasındaki ortalama karesi alınmış hata hesaplar. Sonuç verir kare kökünü aynı birimi y değişkeni olarak bir hata alma, maliyet. Bu kabaca ne kadar taksi taksi Öngörüler gerçek fares yoğun büyük hataları Ağırlıklandırma çalışırken gösterir.
+Sonuçların kök ortalama kare hatası sayısını hesaplayın. Veri çerçevesini kullanın ve tahmin edilen değerlerle karşılaştırmak için bir listeye `y_actual` dönüştürün. `y_test` İşlevi `mean_squared_error` iki dizi değer alır ve aralarındaki ortalama kare içinde hata sayısını hesaplar. Sonucun kare kökünü almak, y değişkeni ile aynı birimlerde bir hata verir. EPI tarifeli havayolu öngörülerinin gerçek farlıklardan ne kadar ilerlediğini, büyük bir süre içinde çok büyük bir hata olduğunu gösterir.
 
 
 ```python
@@ -1891,7 +1891,7 @@ rmse
 
 
 
-Ortalama mutlak tamamlanma hata (MAPE) tam hesaplamak için aşağıdaki kodu çalıştırın `y_actual` ve `y_predict` veri kümeleri. Bu ölçüm her öngörülen ve gerçek değerinin farkını tüm arasındaki mutlak bir farkı hesaplar. Ardından, TOPLA gerçek değerlerin toplamının yüzde ifade.
+Tam `y_actual` ve`y_predict` veri kümelerini kullanarak ortalama mutlak yüzde hatasını (mape) hesaplamak için aşağıdaki kodu çalıştırın. Bu ölçüm, tahmin edilen ve gerçek değerler arasındaki mutlak bir farkı hesaplar ve tüm farkları toplar. Ardından, bu toplamı gerçek değerlerin toplamının yüzdesi olarak ifade eder.
 
 
 ```python
@@ -1919,18 +1919,18 @@ print(1 - mean_abs_percent_error)
     Model Accuracy:
     0.8507638035507564
 
-Oldukça küçük bir örnek veri kümesinin tamamına göre veri kullandık koşuluyla, (n = 11748), doğruluğu 85 oranında oldukça yüksek taksi taksi fiyatını + - $4.00 hata etrafında RMSE ile. Daha fazla veri modeli yeniden eğitme için doğruluğunu artırmak, bu not defterinin ikinci hücreye geri dönün ve ayda 2.000 kayıtlardan örnek boyutunu artırın ve tüm çalıştırmak için olası sonraki adım olarak yeniden deneyin.
+Tam veri kümesine (n = 11748) göre çok küçük bir veri örneği kullandıysanız, model doğruluğu% 85 ' de oldukça yüksektir ve bu, TAXI tarifeli havayolu fiyatında tahmine dayalı olarak +-$4,00 hatası ile birlikte. Doğruluğu artırmak için olası bir sonraki adım olarak, bu not defterinin ikinci hücresine geri dönün ve ayda 2.000 kayıttan örnek boyutunu artırın ve daha fazla veri ile modeli yeniden eğmek için tüm denemeyi yeniden çalıştırın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Oluşturduğunuz kaynaklarını kullanmayı planlamıyorsanız, herhangi bir ücret ödememeniz bunları silin.
+Oluşturduğunuz kaynakları kullanmayı planlamıyorsanız, herhangi bir ücret ödemezsiniz.
 
 1. Azure portalının en sol tarafındaki **Kaynak gruplarını** seçin.
 1. Listeden oluşturduğunuz kaynak grubunu seçin.
 1. **Kaynak grubunu sil**'i seçin.
-1. Kaynak grubu adı girin. Ardından **Sil**’i seçin.
+1. Kaynak grubu adını girin. Ardından **Sil**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure açık veri kümelerinin [not defterlerini](https://github.com/Azure/OpenDatasetsNotebooks) daha fazla kod örnekleri için.
-* İzleyin [yapılır](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-auto-train) hakkında daha fazla bilgi için Azure Machine Learning hizmeti machine learning'de otomatik.
+* Daha fazla kod örneği için bkz. Azure açık veri kümeleri [Not defterleri](https://github.com/Azure/OpenDatasetsNotebooks) .
+* Azure Machine Learning hizmetinde otomatik makine öğrenimi hakkında daha fazla bilgi için [bkz. nasıl yapılır?](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-auto-train) .

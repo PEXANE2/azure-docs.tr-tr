@@ -1,29 +1,29 @@
 ---
-title: Azure Container Instances'da canlılık araştırmalarını yapılandırma
-description: Azure Container Instances'da sağlıksız kapsayıcıları yeniden canlılık araştırmalarını yapılandırma hakkında bilgi edinin
+title: Azure Container Instances için lizleştirme araştırmalarını yapılandırma
+description: Azure Container Instances ' de uygun olmayan kapsayıcıları yeniden başlatmak için Lida araştırmaların nasıl yapılandırılacağını öğrenin
 services: container-instances
 author: dlepow
-manager: jeconnoc
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 06/08/2018
 ms.author: danlep
-ms.openlocfilehash: 89b76fc68c113b7931894c0cf003ffd846c646ab
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 28205d6db85d7a5051f283445d95dd2375e174c8
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60583848"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325862"
 ---
 # <a name="configure-liveness-probes"></a>Canlılık yoklaması yapılandırma
 
-Kapsayıcılı uygulamaları için kapsayıcıyı yeniden başlatarak onarılması gerekebilir bozuk bildiren výsledek uzun süre çalışabilir. Azure Container Instances kapsayıcınızı kritik işlevler çalışmıyorsa yeniden başlayabilmesi için yapılandırmaları içerecek şekilde canlılık araştırmaları destekler.
+Kapsayıcılı uygulamalar, kapsayıcıyı yeniden başlatarak onarılması gerekebilecek, bozuk durumlara neden olan uzun süreler için çalıştırılabilir. Azure Container Instances, yapılandırmaların, kritik işlevler çalışmıyorsa kapsayıcının yeniden başlatılmasına olanak sağlayacak şekilde yapılandırma eklemek için lilik araştırmaları destekler.
 
-Bu makalede sanal sağlıksız kapsayıcı otomatik yeniden başlatma gösteren bir canlılık araştırması içeren bir kapsayıcı grubu dağıtmayı açıklar.
+Bu makalede, sanal sağlıksız bir kapsayıcının otomatik olarak yeniden başlatılmasını gösteren, limize Me araştırması içeren bir kapsayıcı grubunun nasıl dağıtılacağı açıklanır.
 
-## <a name="yaml-deployment"></a>YAML dağıtım
+## <a name="yaml-deployment"></a>YAML dağıtımı
 
-Oluşturma bir `liveness-probe.yaml` aşağıdaki kod parçacığı dosyası. Bu dosya sonunda kötüleşir bir NGNIX kapsayıcının oluşan bir kapsayıcı grubunu tanımlar.
+Aşağıdaki kod `liveness-probe.yaml` parçacığına sahip bir dosya oluşturun. Bu dosya, sonunda sağlıksız hale gelen NGNX kapsayıcısından oluşan bir kapsayıcı grubunu tanımlar.
 
 ```yaml
 apiVersion: 2018-06-01
@@ -55,7 +55,7 @@ tags: null
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-Yukarıdaki YAML yapılandırma bu kapsayıcı grubu dağıtmak için aşağıdaki komutu çalıştırın:
+Yukarıdaki YAML yapılandırmasıyla Bu kapsayıcı grubunu dağıtmak için aşağıdaki komutu çalıştırın:
 
 ```azurecli-interactive
 az container create --resource-group myResourceGroup --name livenesstest -f liveness-probe.yaml
@@ -63,45 +63,45 @@ az container create --resource-group myResourceGroup --name livenesstest -f live
 
 ### <a name="start-command"></a>Başlat komutu
 
-Kapsayıcı ilk kez başlatıldığında, tarafından tanımlanan çalıştırılan çalıştırmak için bir başlangıç komutu dağıtım tanımlar `command` kabul eden bir dize dizisi özelliği. Bu örnekte, bir bash oturumu başlatın ve adlı bir dosya oluşturun `healthy` içinde `/tmp` bu komut geçirerek dizin:
+Dağıtım, kapsayıcı ilk kez çalışmaya başladığında çalıştırılacak başlangıç komutunu tanımlar ve bir dize dizisini kabul eden `command` özelliği tarafından tanımlanır. Bu örnekte, bir bash oturumu başlatacak ve şu komutu geçirerek `healthy` `/tmp` dizin içinde adlı bir dosya oluşturacaktır:
 
 ```bash
 /bin/sh -c "touch /tmp/healthy; sleep 30; rm -rf /tmp/healthy; sleep 600"
 ```
 
- Ardından dosyayı silmeden önce 30 saniye için uyku, ardından 10 dakika uyku girer.
+ Daha sonra dosyayı silmeden önce 30 saniye sürer ve sonra 10 dakikalık bir uyku moduna girer.
 
-### <a name="liveness-command"></a>Canlılık komutu
+### <a name="liveness-command"></a>Lida komutu
 
-Bu dağıtım tanımlayan bir `livenessProbe` destekleyen bir `exec` canlılık denetimi olarak davranan canlılık komutu. Bu komut ile sıfır olmayan bir değer varsa, kapsayıcıyı sonlandırıldı ve yeniden, sinyal `healthy` dosyası bulunamadı. Bu komut 0 çıkış kodu ile başarıyla çıkılıyorsa hiçbir eylem gerçekleştirilebilir.
+Bu dağıtım, lietler denetimi olarak `exec` davranan bir lise komutunu destekleyen bir `livenessProbe` tanımlar. Bu komut sıfır olmayan bir değerle çıkış alıyorsa, kapsayıcı sonlandırılır ve yeniden başlatılır, `healthy` bu dosya bulunamamıştır. Bu komut, çıkış kodu 0 ile başarılı bir şekilde çıkılırken hiçbir işlem yapılmaz.
 
-`periodSeconds` Özellik atar canlılık bağlamını 5 saniyede.
+`periodSeconds` Özelliği, ebilmelidir komutunun her 5 saniyede bir yürütülmesi gerektiğini gösterir.
 
-## <a name="verify-liveness-output"></a>Canlılık çıktıyı doğrulama
+## <a name="verify-liveness-output"></a>Libir çıktıyı doğrula
 
-İlk 30 saniye içinde `healthy` başlangıç komutu tarafından oluşturulan dosya yok. Canlılık komut zaman denetler `healthy` dosyanın varlığını durum kodu, hiçbir yeniden başlatma gerçekleşir. Bu nedenle, başarı, sinyal sıfır döndürür.
+İlk 30 saniye içinde, `healthy` start komutu tarafından oluşturulan dosya vardır. Liki komutu `healthy` dosyanın varlığını denetlediğinde, durum kodu sıfır döndürür, başarılı olarak sinyal verir ve yeniden başlatma gerçekleşmez.
 
-30 saniye sonra `cat /tmp/healthy` başarısız olmasına neden oluşacak sağlıksız ve sonlandırma olayları başlar.
+30 saniye `cat /tmp/healthy` sonra, başarısız olarak başlayacak, sağlıksız ve olayların oluşmasına neden olur.
 
-Bu olaylar, Azure portal veya Azure CLI görüntülenebilir.
+Bu olaylar Azure portal veya Azure CLı 'dan görüntülenebilir.
 
-![Portal sağlıksız olay][portal-unhealthy]
+![Portalın sağlıksız olayı][portal-unhealthy]
 
-Azure portalında, olay türü olayları görüntüleyerek `Unhealthy` canlılık komutu başarısız olan temel tetiklenir. Sonraki olay türünde olacaktır `Killing`, yeniden başlatma başlayabilmesi için kapsayıcı silme işlemini gösterir. Bu her ortaya çıktığında kapsayıcı için yeniden başlatma sayısını artırır.
+Azure Portal olayları görüntüleyerek, türündeki `Unhealthy` olaylar, uygun olmayan komut başarısız olduğunda tetiklenecektir. Sonraki olay, bir yeniden başlatmanın başlaması `Killing`için bir kapsayıcı silme işlemini belirten türünde olacaktır. Bu her gerçekleştiğinde kapsayıcının yeniden başlatma sayısı artacaktır.
 
-Yeniden başlatma tamamlandıktan düğüme özgü içeriği korunur ve kaynaklar gibi genel IP adresleri için yerinde.
+Yeniden başlatmalar, genel IP adresleri ve düğüme özgü içerikler gibi kaynakların korunabilmesi için yerinde tamamlanır.
 
-![Portal yeniden sayacı][portal-restart]
+![Portal yeniden başlatma sayacı][portal-restart]
 
-Canlılık araştırması sürekli olarak başarısız olursa ve çok fazla yeniden tetikleyen bir üstel geri gecikme alma kapsayıcınızı girer.
+Destekleneme araştırması sürekli olarak başarısız olur ve çok fazla yeniden başlatma tetiklerse, Kapsayıcınız bir üstel geri dönme gecikmesi girer.
 
-## <a name="liveness-probes-and-restart-policies"></a>Canlılık araştırmaları ve yeniden başlatma ilkeleri
+## <a name="liveness-probes-and-restart-policies"></a>Lizleştirme araştırmaları ve yeniden başlatma ilkeleri
 
-Yeniden başlatma ilkeleri canlılık araştırmalarla tetiklenen yeniden başlatma davranışı geçersiz kılar. Örneğin, ayarlarsanız bir `restartPolicy = Never` *ve* bir canlılık araştırması başarısız canlılık onay durumunda kapsayıcı grubu yeniden başlatmaz. Kapsayıcı grubu için kapsayıcı grubun yeniden başlatma ilkesi bunun yerine geçecektir `Never`.
+Yeniden başlatma ilkeleri, lilezleştirme araştırmaları tarafından tetiklenen yeniden başlatma davranışının yerini alır Örneğin, bir `restartPolicy = Never` *ve* bir limi araştırması ayarlarsanız, başarısız bir denetim durumunda kapsayıcı grubu yeniden başlatmaz. Kapsayıcı grubu bunun yerine kapsayıcı grubunun yeniden başlatma ilkesine göre `Never`değişir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Görev tabanlı senaryoları önkoşul işlevi düzgün çalışmıyorsa, otomatik yeniden başlatmaları etkinleştirmek için bir canlılık araştırması gerektirebilir. Görev tabanlı kapsayıcı çalıştırma hakkında daha fazla bilgi için bkz. [Azure Container Instances'da kapsayıcılı görevleri çalıştırma](container-instances-restart-policy.md).
+Önkoşul olmayan bir işlev düzgün çalışmıyorsa, görev tabanlı senaryolar otomatik yeniden başlatmaları etkinleştirmek için bir araştırma gerektirebilir. Görev tabanlı kapsayıcılar çalıştırma hakkında daha fazla bilgi için, bkz. [Azure Container Instances Kapsayıcılı görevleri çalıştırma](container-instances-restart-policy.md).
 
 <!-- IMAGES -->
 [portal-unhealthy]: ./media/container-instances-liveness-probe/unhealthy-killing.png

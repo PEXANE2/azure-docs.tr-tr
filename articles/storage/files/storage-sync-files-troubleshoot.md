@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/16/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 1e35ef9eab841878ecc147d7b22a82860f27e7d9
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
-ms.translationtype: HT
+ms.openlocfilehash: 2cf0093d08c37c0941e86f9fc82b864aea14ebfe
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297690"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68327096"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure Dosya Eşitleme ile ilgili sorunları giderme
 Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server 'ı Azure dosya paylaşımınızın hızlı önbelleğine dönüştürür. SMB, NFS ve FTPS dahil olmak üzere verilerinize yerel olarak erişmek için Windows Server 'da bulunan herhangi bir protokolü kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.
@@ -250,7 +250,8 @@ Bu hataları görmek için, açık tanıtıcılar, desteklenmeyen karakterler ve
 | 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | Dosya kullanımda olduğundan eşitlenemiyor. Dosya artık kullanımda olmadığında eşitlenecek. | Eylem gerekmiyor. Azure Dosya Eşitleme, açık tanıtıcıların bulunduğu dosyaları eşitlemek için sunucuda günde bir kez geçici bir VSS anlık görüntüsü oluşturur. |
 | 0x80c8031d | -2134375651 | ECS_E_CONCURRENCY_CHECK_FAILED | Bir dosya değişti, ancak değişiklik eşitleme tarafından henüz algılanmadı. Eşitleme, bu değişiklik algılandıktan sonra kurtarılacak. | Eylem gerekmiyor. |
 | 0x80c8603e | -2134351810 | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED | Azure dosya paylaşımının sınırına ulaşıldığından dosya eşitlenemiyor. | Bu sorunu çözmek için sorun giderme kılavuzundaki [Azure dosya paylaşma depolama sınırı bölümüne ulaştınız](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134351810) . |
-| 0x80070005 | -2147024891 | E_ACCESSDENIED | Bu hata şu nedenlerle oluşabilir: Dosya desteklenmeyen bir çözüm (NTFS EFS gibi) tarafından şifrelenir, dosyada silme beklemede bir durum veya dosya DFS-R salt okunurdur çoğaltma klasöründe bulunur | Dosya desteklenmeyen bir çözüm tarafından şifrelendiyse, dosyanın şifresini çözün ve desteklenen bir şifreleme çözümü kullanın. Destek çözümlerinin bir listesi için, planlama kılavuzundaki [şifreleme çözümleri](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#encryption-solutions) bölümüne bakın. Dosya silme bekleme durumundaysa, tüm açık dosya tutamaçları kapatıldıktan sonra dosya silinir. Dosya, bir DFS-R salt okuma çoğaltma klasöründe bulunuyorsa, Azure dosya eşitleme, DFS-R salt okuma çoğaltma klasörlerindeki sunucu uç noktalarını desteklemez. Daha fazla bilgi için bkz. [Planlama Kılavuzu](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#distributed-file-system-dfs) .
+| 0x80c8027C | -2134375812 | ECS_E_ACCESS_DENIED_EFS | Dosya desteklenmeyen bir çözümle (NTFS EFS gibi) şifrelenir. | Dosyanın şifresini çözün ve desteklenen bir şifreleme çözümünü kullanın. Destek çözümlerinin bir listesi için, planlama kılavuzundaki [şifreleme çözümleri](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#encryption-solutions) bölümüne bakın. |
+| 0x80070005 | -2147024891 | E_ACCESSDENIED | Bu hata, aşağıdaki nedenlerden dolayı oluşabilir: Dosyada silme beklemede durumu bulunuyor veya dosya DFS-R salt okuma çoğaltma klasöründe bulunuyor. | Dosya silme bekleme durumundaysa, tüm açık dosya tutamaçları kapatıldıktan sonra dosya silinir. Dosya, bir DFS-R salt okuma çoğaltma klasöründe bulunuyorsa, Azure dosya eşitleme, DFS-R salt okuma çoğaltma klasörlerindeki sunucu uç noktalarını desteklemez. Daha fazla bilgi için bkz. [Planlama Kılavuzu](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#distributed-file-system-dfs) . |
 | 0x80070020 | -2147024864 | ERROR_SHARING_VIOLATION | Dosya kullanımda olduğundan eşitlenemiyor. Dosya artık kullanımda olmadığında eşitlenecek. | Eylem gerekmiyor. |
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Eşitleme sırasında bir dosya değiştirildi, bu nedenle yeniden eşitlenmesi gerekiyor. | Eylem gerekmiyor. |
 
@@ -742,7 +743,7 @@ if ($fileShare -eq $null) {
 
     **Karma dosya eşitleme hizmeti** listede görünmezse, aşağıdaki adımları uygulayın:
 
-    - **Ekle**'yi tıklatın.
+    -           **Ekle**'yi tıklatın.
     - **Rol** alanında, **okuyucu ve veri erişimi**' ni seçin.
     - **Seç** alanına **karma dosya eşitleme hizmeti**yazın, rolü seçin ve **Kaydet**' e tıklayın.
 

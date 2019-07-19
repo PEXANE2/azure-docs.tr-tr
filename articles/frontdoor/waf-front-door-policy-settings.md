@@ -1,6 +1,6 @@
 ---
-title: Web uygulaması güvenlik duvarı ile Azure ön kapı için ilke ayarları
-description: Web uygulaması Güvenlik Duvarı (WAF) hakkında bilgi edinin.
+title: Azure ön kapılı Web uygulaması güvenlik duvarı için ilke ayarları
+description: Web uygulaması güvenlik duvarını (WAF) öğrenin.
 services: frontdoor
 author: KumudD
 ms.service: frontdoor
@@ -9,50 +9,51 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/08/2019
-ms.author: tyao;kumud
-ms.openlocfilehash: 4c2f070e9b3c972f063008df8880b196ddb069cc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: kumud
+ms.reviewer: tyao
+ms.openlocfilehash: 8f51cb6944221416b098a9b953db417053155f1e
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61459377"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849101"
 ---
-# <a name="policy-settings-for-web-application-firewall-with-azure-front-door"></a>Web uygulaması güvenlik duvarı ile Azure ön kapı için ilke ayarları
+# <a name="policy-settings-for-web-application-firewall-with-azure-front-door"></a>Azure ön kapılı Web uygulaması güvenlik duvarı için ilke ayarları
 
-Bir Web uygulaması Güvenlik Duvarı (WAF) ilkesi tarafından özel ve yönetilen kurallar kümesi, web uygulamalarına erişim denetlemenizi sağlar. WAF ilke adı benzersiz olmalıdır. Varolan bir adı kullanmaya çalışırsanız, bir doğrulama hatası alırsınız. Bu makalede anlatıldığı gibi yönelik olan ilkeye belirtilen tüm kuralları uygulamak birden çok ilke düzeyi ayarları vardır.
+Web uygulaması güvenlik duvarı (WAF) ilkesi, Web uygulamalarınıza erişimi bir dizi özel ve yönetilen kuralla denetlemenize olanak tanır. WAF ilkesi adı benzersiz olmalıdır. Mevcut bir adı kullanmayı denerseniz, doğrulama hatası alırsınız. Bu makalede açıklandığı gibi, bu ilke için belirtilen tüm kurallara uygulanan birden çok ilke düzeyi ayarı vardır.
 
 ## <a name="waf-state"></a>WAF durumu
 
-WAF ilke ön kapı için aşağıdaki iki durumdan birinde olabilir:
-- **Etkin:** Bir ilke etkinleştirildiğinde, WAF gelen istekleri etkin bir şekilde inceliyor ve kuralı tanımlarına göre ilgili eylemleri gerçekleştirir
-- **Devre dışı:** - ilke devre dışı bırakıldığında, WAF İnceleme duraklatıldı. Gelen istekler, WAF atlayacaktır ve arka uçları ön kapısı üretim akışında göre gönderilir.
+Ön kapı için bir WAF ilkesi aşağıdaki iki durumdan birinde olabilir:
+- **Etkinletir** Bir ilke etkinleştirildiğinde WAF, gelen istekleri etkin bir şekilde inceliyor ve kural tanımlarına göre ilgili eylemleri alır
+- **Devre dışı:** -bir ilke devre dışı bırakıldığında WAF incelemesi duraklatılır. Gelen istekler WAF 'yi atlar ve ön kapıya yönlendirme temelinde arka uca gönderilir.
 
 ## <a name="waf-mode"></a>WAF modu
 
-WAF İlkesi, aşağıdaki iki modda çalışacak şekilde yapılandırılabilir:
+WAF ilkesi aşağıdaki iki modda çalışacak şekilde yapılandırılabilir:
 
-- **Algılama modu** algılama modunda çalıştırdığınızda, WAF değil İzleyici dışındaki herhangi bir eylem gerçekleştirmenizi ve istek ve kendi eşleşen WAF kural WAF günlüklerine Kaydet. Ön kapısı günlük tanılamayı Aç (portal kullanırken bu giderek ulaşılabilecek **tanılama** Azure portalında bölümü).
+- **Algılama modu** Algılama modunda çalıştırıldığında WAF, Monitor dışında bir eylem gerçekleştirmez ve isteği ve eşleşen WAF kuralını WAF günlüklerine kaydeder. Ön kapı için günlük tanılamayı açın (portal kullanırken, Azure portal) **Tanılama** bölümüne giderek bu elde edilebilir.
 
-- **Önleme modu** isteği bir kuralla eşleşirse önleme modunda çalışacak şekilde yapılandırıldığında, WAF belirtilen eylemi gerçekleştirir. Eşleşen tüm istekleri de WAF günlüklerine kaydedilir.
+- **Önleme modu** Önleme modunda çalışacak şekilde yapılandırıldığında, bir istek bir kuralla eşleşiyorsa WAF belirtilen eylemi alır. Tüm eşleşen istekler de WAF günlüklerine kaydedilir.
 
-## <a name="waf-response-for-blocked-requests"></a>WAF yanıt Engellenen istekler için
+## <a name="waf-response-for-blocked-requests"></a>Engellenen istekler için WAF yanıtı
 
-Varsayılan olarak, WAF eşleşen kural nedeniyle, bir istek engellediğinde bir 403 durum kodu ile - döndürür **istek engellendi** ileti. Bir başvuru dizesi için günlük kaydını da döndürülür.
+Varsayılan olarak, WAF eşleşen bir kural nedeniyle isteği engellediğinde, **istek engellendi** iletisi olan 403 durum kodunu döndürür. Günlüğe kaydetme için bir başvuru dizesi de döndürülür.
 
-Bir isteği WAF tarafından engellendiğinde, bir özel yanıt durum kodu ve yanıt iletisi tanımlayabilirsiniz. Aşağıdaki özel durum kodları desteklenir:
+Bir istek WAF tarafından engellendiğinde özel bir yanıt durum kodu ve yanıt iletisi tanımlayabilirsiniz. Aşağıdaki özel durum kodları desteklenir:
 
 - 200 TAMAM
 - 403 Yasak
-- 405 Yönteme izin verilmiyor
-- 406 değil kabul edilebilir
+- 405 yöntemine izin verilmiyor
+- 406 kabul edilemez
 - 429 çok fazla istek
 
-Özel yanıtı durum kodu ve yanıt iletisi bir ilke düzeyi ayarıdır. Yapılandırıldıktan sonra tüm engellenen isteklerin aynı özel yanıt durumu ve yanıt iletisi alın.
+Özel yanıt durum kodu ve yanıt iletisi bir ilke düzeyi ayarıdır. Yapılandırıldıktan sonra, tüm Engellenen istekler aynı özel yanıt durumunu ve yanıt iletisini alır.
 
-## <a name="uri-for-redirect-action"></a>Eylem yeniden yönlendirme URI'si
+## <a name="uri-for-redirect-action"></a>Yeniden yönlendirme eylemi URI 'SI
 
-IF için yeniden yönlendirme istekleri için bir URI tanımlar için gerekli olan **yeniden yönlendirme** herhangi bir WAF ilkesinde yer alan kurallar için seçili eylem. Bu yeniden yönlendirme URI'si geçerli bir HTTP (S) site olması gerekir ve yapılandırıldıktan sonra tüm istekleri "Yeniden yönlendirme" eylemi ile eşleşen kural belirtilen siteye yönlendirileceksiniz.
+Bir WAF ilkesinde bulunan kuralların herhangi biri için **yeniden yönlendirme** eylemi seçildiyse, istekleri yeniden yönlendirmek IÇIN bir URI tanımlamanız gerekir. Bu yeniden yönlendirme URI 'sinin geçerli bir HTTP (S) sitesi olması ve yapılandırıldıktan sonra, "REDIRECT" eylemine sahip kurallarla eşleşen tüm istekler belirtilen siteye yönlendirilir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- WAF tanımlamayı öğrenin [özel yanıtlar](waf-front-door-configure-custom-response-code.md)
+- WAF [özel yanıtlarını](waf-front-door-configure-custom-response-code.md) nasıl tanımlayacağınızı öğrenin

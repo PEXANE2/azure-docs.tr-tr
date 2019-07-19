@@ -4,14 +4,14 @@ description: Modüler şablon çözüm oluşturmak için bir Azure Resource Mana
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 05/01/2019
+ms.date: 07/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: 4a5fe1bd2bf57fbec240ab242dd889014dde9578
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: c79429d1a39e975c6bcc7fce191846a6205f9a86
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206442"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311696"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Bağlı, şablonları Azure kaynakları dağıtılırken iç içe kullanma
 
@@ -24,7 +24,7 @@ Bağlı şablonlar kullanırken, dağıtım sırasında parametre değerleri ala
 Bir öğretici için bkz. [Öğreticisi: bağlı bir Azure Resource Manager şablonları oluşturma](./resource-manager-tutorial-create-linked-templates.md).
 
 > [!NOTE]
-> Bağlantılı veya iç içe geçmiş şablonlar için yalnızca kullanabilirsiniz [artımlı](deployment-modes.md) dağıtım modu.
+> Bağlantılı veya iç içe şablonlar için yalnızca [artımlı](deployment-modes.md) Dağıtım modunu kullanabilirsiniz.
 >
 
 ## <a name="link-or-nest-a-template"></a>Bir şablonu içe veya bağlantı
@@ -83,14 +83,14 @@ Ana şablon içinde şablonun içine yerleştirmek için kullanmanız **şablon*
 > [!NOTE]
 > İç içe geçmiş şablonlar için parametreleri veya iç içe geçmiş şablon içinde tanımlanan değişkenler kullanamazsınız. Parametreler ve değişkenler ana kullanabilirsiniz. Önceki örnekte `[variables('storageName')]` ana şablonu, iç içe geçmiş şablon değil bir değer alır. Bu kısıtlama, dış şablonları için geçerli değildir.
 >
-> İki kaynak içinde tanımlanan bir iç içe geçmiş şablon ve bir kaynak birbirine bağlıdır, bağımlı kaynak adını yalnızca bağımlılık değeridir:
+> İç içe yerleştirilmiş bir şablonda tanımlı iki kaynak ve bir kaynak diğerine bağlı olduğunda, bağımlılığın değeri yalnızca bağımlı kaynağın adıdır:
 > ```json
 > "dependsOn": [
 >   "[variables('storageAccountName')]"
 > ],
 > ```
 >
-> Kullanamazsınız `reference` çıktılar bölümünü iç içe geçmiş şablon işlevinde. Dönüş değerleri dağıtılan kaynağın içinde iç içe geçmiş bir şablon için iç içe geçmiş şablon bağlantılı şablona dönüştürebilirsiniz.
+> İç içe yerleştirilmiş şablonda `reference` dağıttığınız bir kaynak için iç içe geçmiş bir şablonun çıktılar bölümünde işlevini kullanamazsınız. Dönüş değerleri dağıtılan kaynağın içinde iç içe geçmiş bir şablon için iç içe geçmiş şablon bağlantılı şablona dönüştürebilirsiniz.
 
 İç içe geçmiş şablon için gerekli [aynı özellikleri](resource-group-authoring-templates.md) standart şablon olarak.
 
@@ -147,11 +147,11 @@ Bir değer, bağlı şablonun ana şablonu geçirmek için kullanın **parametre
 ]
 ```
 
-## <a name="using-copy"></a>Kullanarak kopyalama
+## <a name="using-copy"></a>Kopyayı kullanma
 
-Copy öğesinde bir iç içe geçmiş şablon ile birden çok kaynak örneğini oluşturmak için düzeyinde ekleme **Microsoft.Resources/deployments** kaynak.
+İç içe geçmiş şablonla bir kaynağın birden çok örneğini oluşturmak için, **Microsoft. resources/dağıtımlar** kaynağı düzeyinde kopyalama öğesini ekleyin.
 
-Aşağıdaki örnek şablonu, kopyalama ile iç içe geçmiş şablon kullanma işlemi gösterilmektedir.
+Aşağıdaki örnek şablon, kopyalamanın iç içe geçmiş bir şablonla nasıl kullanılacağını göstermektedir.
 
 ```json
 "resources": [
@@ -508,7 +508,7 @@ Aşağıdaki örnek, bir şablona bağlanırken bir SAS belirteci geçirilecek g
 }
 ```
 
-PowerShell'de, bir belirteç almak için kapsayıcı ve aşağıdaki komutları kullanarak şablonları dağıtabilirsiniz. Dikkat **containerSasToken** parametre şablonunda tanımlanır. Bir parametre değil **yeni AzResourceGroupDeployment** komutu.
+PowerShell'de, bir belirteç almak için kapsayıcı ve aşağıdaki komutları kullanarak şablonları dağıtabilirsiniz. Dikkat **containerSasToken** parametre şablonunda tanımlanır. **New-AzResourceGroupDeployment** komutunda bir parametre değildir.
 
 ```azurepowershell-interactive
 Set-AzCurrentStorageAccount -ResourceGroupName ManageGroup -Name storagecontosotemplates

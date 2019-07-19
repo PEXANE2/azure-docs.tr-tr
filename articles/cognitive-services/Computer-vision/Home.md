@@ -1,5 +1,5 @@
 ---
-title: Görüntü İşleme API’si nedir? -Görüntü işleme
+title: Görüntü İşleme API’si nedir? -Görüntü İşleme
 titlesuffix: Azure Cognitive Services
 description: Görüntü İşleme hizmeti geliştiricilerin görüntü işlemeye ve bilgi döndürmeye yönelik gelişmiş algoritmalara erişmesini sağlar.
 services: cognitive-services
@@ -11,52 +11,52 @@ ms.topic: overview
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: f92d8ce8e95962558b3bdb7b4a4d8fe70c725f46
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 523c839ad274b8234a79a89ec45be9a9a4551bf5
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604488"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68312040"
 ---
 # <a name="what-is-computer-vision"></a>Görüntü İşleme nedir?
 
-Azure'un görüntü işleme hizmeti, geliştiricilerin erişimine resimleri işleyen ve döndürmesini gelişmiş algoritmalar sağlar. Bir görüntüyü analiz etmek için görüntü yükleyebilir veya görüntü URL'si belirtebilirsiniz. Görüntü işleme algoritmaları, ilgilendiğiniz görsel özelliklere bağlı olarak birkaç farklı yolla içeriği çözümleyebilirsiniz. Örneğin, bir görüntü yetişkinlere yönelik veya müstehcen içerikli ya da bir resimdeki İnsan yüzlerini tüm bulma görüntü işleme belirleyebilirsiniz.
+Azure 'un Görüntü İşleme Hizmeti, geliştiricilere resimleri işleyen ve bilgileri döndüren gelişmiş algoritmalara erişim sağlar. Bir görüntüyü analiz etmek için görüntü yükleyebilir veya görüntü URL'si belirtebilirsiniz. Görüntü işleme algoritmaları, ilgilendiğiniz görsel özelliklere bağlı olarak içeriği birkaç farklı şekilde çözümleyebilir. Örneğin, Görüntü İşleme bir görüntünün yetişkinlere yönelik veya yoğun içerik içerip içermediğini belirleyebilir ya da bir görüntüdeki tüm insan yüzlerini bulabilir.
 
-Görüntü işleme, uygulamanızda kullanarak yerel bir SDK veya REST API'sini doğrudan çağırmak kullanabilirsiniz. Bu sayfa problem görüntü işleme ile yapabilecekleriniz ele alınmaktadır.
+Uygulamanızdaki Görüntü İşleme yerel bir SDK kullanarak veya doğrudan REST API çağırarak kullanabilirsiniz. Bu sayfa, Görüntü İşleme ile yapabileceklerinizi büyük ölçüde ele alır.
 
-## <a name="analyze-images-for-insight"></a>Öngörü görüntülerini analiz edin
+## <a name="analyze-images-for-insight"></a>Öngörüler için görüntüleri analiz etme
 
-Algılayıp, görsel özelliklerini ve özellikler hakkında bilgiler sağlamak için görüntüleri analiz edebilirsiniz. Tüm özellikler aşağıdaki tabloda tarafından sağlanan [analiz görüntü](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API.
+Görsel özellikleri ve özellikleri hakkında öngörüleri tespit etmek ve sağlamak için görüntüleri analiz edebilirsiniz. Aşağıdaki tabloda bulunan tüm özellikler, [görüntüyü çözümle](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 'si tarafından sağlanır.
 
-| Eylem | Açıklama |
+| Action | Açıklama |
 | ------ | ----------- |
-|**[Görsel özellikleri etiketleme](concept-tagging-images.md)**|Belirleyin ve tanınabilir nesne, oturma şey, manzara ve Eylemler binlerce kümesinden bir görüntüde, görsel özellikler etiketleyin. Etiketlerin belirsiz olduğunda veya bilinmediği API yanıtı etiketin bağlam açıklamak için ipuçları sağlar. Etiketleme yalnızca temel konu ile sınırlı kalmayıp ortam (iç mekân veya dış mekân), mobilyalar, aletler, bitkiler, hayvanlar, aksesuarlar, araçlar ve benzer öğeleri de kapsar.|
-|**[Nesneleri algılayın](concept-object-detection.md)**| Nesne algılama etiketleme için benzer, ancak uygulanan her etiket için sınırlama kutusu koordinatları API döndürür. Örneğin, bir görüntü köpek, cat ve kişi içeriyorsa, Algıla işlemi görüntüde onların koordinatları ile birlikte bu nesneleri listeler. Daha fazla görüntü nesneleri arasındaki ilişkileri işlemek için bu işlevi kullanabilirsiniz. Ayrıca, aynı etiketi görüntünün birden fazla örneği bulunduğunda bilmenizi sağlar.|
-|**[Markalarını Algıla](concept-brand-detection.md)**|Resim veya video genel logoları binlerce veritabanı ticari markaları belirleyin. Örneğin, hangi markaları en popüler sosyal medyada veya medya ürün yerleşimiyle en yaygın olduğunu öğrenmek için bu özelliği kullanabilirsiniz.|
+|**[Görsel özellikleri etiketleme](concept-tagging-images.md)**|Görüntüde görsel özellikleri, binlerce tanınabilir nesne, çok sayıda, manzara ve eylem kümesinden belirleyin ve etiketleyin. Etiketler belirsiz veya ortak olmayan bir bilgi olmadığında, API yanıtı etiketin bağlamını açıklığa kavuşturmak için ipuçları sağlar. Etiketleme yalnızca temel konu ile sınırlı kalmayıp ortam (iç mekân veya dış mekân), mobilyalar, aletler, bitkiler, hayvanlar, aksesuarlar, araçlar ve benzer öğeleri de kapsar.|
+|**[Nesneleri Algıla](concept-object-detection.md)**| Nesne algılama, etiketlemeyle benzerdir ancak API, uygulanan her bir etiket için sınırlayıcı kutu koordinatlarını döndürür. Örneğin, bir görüntü köpek, kedi ve kişi içeriyorsa, Algıla işlemi bu nesneleri görüntüdeki koordinatlarıyla birlikte listeler. Görüntüdeki nesneler arasında daha fazla ilişki işlemek için bu işlevi kullanabilirsiniz. Ayrıca, görüntüde aynı etiketin birden çok örneği olduğunu da bilmenizi sağlar.|
+|**[Markalar Algıla](concept-brand-detection.md)**|Binlerce küresel logo veritabanındaki resimlerde veya videolarda ticari markalar belirler. Bu özelliği örneğin, sosyal medya veya en popüler medya ürün yerleştirmesi üzerinde en popüler olan markalar öğrenmek için kullanabilirsiniz.|
 |**[Bir görüntüyü kategorilere ayırma](concept-categorizing-images.md)**|Üst/alt öğe kalıtım hiyerarşileri içeren bir [kategori sınıflandırması](Category-Taxonomy.md) kullanarak bir görüntüyü bütünüyle tanımlayın ve kategorilere ayırın. Kategoriler tek başına veya yeni etiketleme modellerimizle birlikte kullanılabilir.<br/>Şu anda, görüntülerin etiketlenmesi ve kategorilere ayrılması için yalnızca İngilizce desteklenmektedir.|
 |**[Bir görüntüyü açıklama](concept-describing-images.md)**|Tam cümleler kullanarak bir görüntünün tamamı için okunabilir açıklamalar oluşturun. Görüntü İşleme algoritmaları, görüntüde tanımlanan nesneleri temel alan çeşitli açıklamalar oluşturur. Açıklamaların her biri değerlendirilir ve bir güvenilirlik puanı oluşturulur. Ardından, güvenilirlik puanı için azalan düzende sıralı bir liste döndürülür.|
-|**[Yüz algılama](concept-detecting-faces.md)** |Bir görüntüdeki yüzleri algılayın ve algılanan her bir yüz için bilgiler sunun. Görüntü İşleme algılanan her bir yüz için koordinatları, dikdörtgeni, cinsiyeti ve yaşı döndürür.<br/>Görüntü işleme, bir alt kümesini sağlayan [yüz](/azure/cognitive-services/face/) hizmet işlevselliği. Yüz tanıma gibi daha ayrıntılı analiz için yüz hizmeti kullanmak ve algılama konusunda sizi uyarmayı.|
+|**[Yüz algılama](concept-detecting-faces.md)** |Bir görüntüdeki yüzleri algılayın ve algılanan her bir yüz için bilgiler sunun. Görüntü İşleme algılanan her bir yüz için koordinatları, dikdörtgeni, cinsiyeti ve yaşı döndürür.<br/>Görüntü İşleme [yüz](/azure/cognitive-services/face/) hizmeti işlevlerinin bir alt kümesini sağlar. Yüz tanıma ve poz algılama gibi daha ayrıntılı analizler için yüz hizmetini kullanabilirsiniz.|
 |**[Görüntü türünü algılama](concept-detecting-image-types.md)**|Bir görüntü ile ilgili özellikleri (görüntünün çizim olup olmaması veya küçük resim olup olmama olasılığı gibi) algılayın.|
-|**[Etki alanına özgü içeriği algılama](concept-detecting-domain-content.md)**|Bir görüntüde yer alan, ünlüler ve önemli yerler gibi etki alanına özgü içerikleri algılamak ve tanımak için etki alanı modelleri kullanın. Görüntü kişi içeriyorsa, örneğin, görüntü işleme ünlüleri için bir etki alanı modeli görüntüde algılanan kişiler ünlüleri biliniyorsa belirlemek için kullanabilirsiniz.|
+|**[Etki alanına özgü içeriği algılama](concept-detecting-domain-content.md)**|Bir görüntüde yer alan, ünlüler ve önemli yerler gibi etki alanına özgü içerikleri algılamak ve tanımak için etki alanı modelleri kullanın. Örneğin, bir görüntü kişi içeriyorsa Görüntü İşleme, görüntüde algılanan kişilerin bilinen ünlüler olup olmadığını tespit etmek üzere Ünlüler için bir etki alanı modeli kullanabilir.|
 |**[Renk düzenini algılama](concept-detecting-color-schemes.md)**|Bir görüntüdeki renk kullanımını analiz edin. Görüntü İşleme, bir görüntünün siyah-beyaz olup olmadığını belirlemenin yanı sıra renkli görüntüler için baskın renkleri ve vurgu renklerini tanıyabilir.|
-|**[Küçük resim oluşturma](concept-generating-thumbnails.md)**|Görüntülere uygun küçük resimler oluşturmak üzere söz konusu görüntülerin içeriklerini analiz edin. Görüntü işleme ilk yüksek kaliteli bir küçük resim oluşturur ve ardından belirlemek için resim içindeki nesneleri analiz eder *ilgi*. Görüntü işleme, ardından ilgi alanı gereksinimlerini resmi kırpar. Oluşturulan küçük resim, ihtiyaçlarınız doğrultusunda, özgün görüntünün en boy oranından farklı bir en boy oranı kullanılarak sunulabilir.|
-|**[İlgi alanı Al](concept-generating-thumbnails.md#area-of-interest)**|Çözümle koordinatlarını döndürmek için bir görüntü içeriğini *ilgi*. Çağıran uygulamanın orijinal görüntünün istediğiniz şekilde değiştirebilmesi görüntü kırpma ve bir küçük resim oluşturma yerine, görüntü işleme, bölge sınırlama kutusu koordinatları döndürür.|
+|**[Küçük resim oluşturma](concept-generating-thumbnails.md)**|Görüntülere uygun küçük resimler oluşturmak üzere söz konusu görüntülerin içeriklerini analiz edin. Görüntü İşleme ilk olarak yüksek kaliteli bir küçük resim oluşturur ve sonra *ilgilendiğiniz alanı*öğrenmek için görüntü içindeki nesneleri analiz eder. Görüntü İşleme sonra görüntüyü, ilgilendiğiniz alanın gereksinimlerine uyacak şekilde kırpar. Oluşturulan küçük resim, ihtiyaçlarınız doğrultusunda, özgün görüntünün en boy oranından farklı bir en boy oranı kullanılarak sunulabilir.|
+|**[İlgilendiğiniz alanı alın](concept-generating-thumbnails.md#area-of-interest)**|*İlgilendiğiniz alanın*koordinatlarını döndürmek için bir görüntünün içeriğini analiz edin. Görüntüyü kırpmak ve küçük resim oluşturmak yerine, Görüntü İşleme bölgenin sınırlayıcı kutusu koordinatlarını döndürür, böylece çağıran uygulama özgün görüntüyü istediğiniz gibi değiştirebilir.|
 
-## <a name="extract-text-from-images"></a>Metni ayıklayın
+## <a name="extract-text-from-images"></a>Görüntülerden metin Ayıkla
 
-Görüntü işleme kullanabileceğiniz [okuma API](concept-recognizing-text.md#read-api) için yazdırılan ve el yazısı metinleri bir makine tarafından okunabilir bir karakter akışı halinde ayıklayın. Okuma API'si, sunduğumuz en son modelleri kullanır ve yüzey ve arka planlar, giriş, posterler, kartvizit, harf ve beyaz tahtalar gibi çeşitli metinle çalışır. Şu anda İngilizce yalnızca desteklenen dilidir.
+Görüntülerden, yazdırılmış ve el yazısı metinleri makine tarafından okunabilen bir karakter akışına ayıklamak için Görüntü İşleme [okuma API 'sini](concept-recognizing-text.md#read-api) kullanabilirsiniz. Okuma API 'SI, en son modellerimizi kullanır ve alındılar, posterler, iş kartları, mektuplar ve beyaz tahtalar gibi çeşitli yüzeyler ve arka planlar üzerinde metinle birlikte çalışmaktadır. Şu anda Ingilizce desteklenen tek dildir.
 
-Ayrıca [optik karakter tanıma (OCR)](concept-recognizing-text.md#ocr-optical-character-recognition-api) çeşitli dillerde yazdırılan metin ayıklamak için API. Gerekirse, OCR tanınan metin döndürmesini düzeltir ve her sözcüğün çerçeve koordinatlarını sağlar. OCR, 25 dilleri desteklemektedir ve tanınan metin dili otomatik olarak algılar.
+Aynı zamanda, yazdırılan metni birkaç dilde ayıklamak için [optik karakter tanıma (OCR)](concept-recognizing-text.md#ocr-optical-character-recognition-api) API 'sini de kullanabilirsiniz. Gerekirse, OCR tanınan metnin dönüşünü düzeltir ve her sözcüğün kare koordinatlarını sağlar. OCR, 25 dili destekler ve tanınan metnin dilini otomatik olarak algılar.
 
 
 
-## <a name="moderate-content-in-images"></a>Orta içeriklerin
+## <a name="moderate-content-in-images"></a>Görüntülerde orta içerik
 
-Görüntü işleme için kullanabileceğiniz [yetişkinlere yönelik ve müstehcen içerikleri algılama](concept-detecting-adult-content.md) bir görüntü ve bir güvenilirlik için her ikisi de puan döndürür. Yetişkinlere yönelik ve müstehcen içerik algılama için filtre tercihleriniz uyum sağlamak için bir kaydırıcı ölçeğini üzerinde ayarlayabilirsiniz.
+Bir görüntüdeki [yetişkinlere yönelik içeriği algılayıp](concept-detecting-adult-content.md) her ikisi için de Güvenirlik puanı döndürebilmeniz için görüntü işleme kullanabilirsiniz. Tercihlerinizi karşılayacak şekilde, bir kayan ölçekte yetişkinlere yönelik ve yoğun içerik algılaması için filtre ayarlayabilirsiniz.
 
 ## <a name="use-containers"></a>Kapsayıcıları kullanma
 
-[Görüntü işleme kapsayıcılarını](computer-vision-how-to-install-containers.md) verilerinize yakın standartlaştırılmış bir Docker kapsayıcısı yükleyerek yazdırılan ve el yazısı metinleri yerel olarak tanınması için.
+Verilerinize yaklaşarak standartlaştırılmış bir Docker kapsayıcısı yükleyerek, yazdırılmış ve el yazısı metinleri yerel olarak tanımak için [görüntü işleme kapsayıcıları kullanın](computer-vision-how-to-install-containers.md) .
 
 ## <a name="image-requirements"></a>Görüntü gereksinimleri
 
@@ -65,16 +65,16 @@ Görüntü İşleme, şu gereksinimleri karşılayan görüntüleri analiz edebi
 - Sunulan görüntünün JPEG, PNG, GIF veya BMP biçiminde olması gerekir
 - Görüntünün dosya boyutunun 4 megabayt (MB) değerini aşmaması gerekir
 - Görüntünün boyutlarının 50 x 50 pikselden büyük olması gerekir
-  - OCR için görüntü boyutlarının 50 x 50 ile 4200 x 4200 piksel arasında olması gerekir
+  - Okuma API 'SI için, resmin boyutları 50 x 50 ve 10000 x 10000 piksel arasında olmalıdır.
 
 ## <a name="data-privacy-and-security"></a>Veri gizliliği ve güvenliği
 
-Olarak tüm Bilişsel hizmetler görüntü işleme hizmeti kullanan geliştiricilerin Microsoft'un müşteri verilerini ilkelerinin bilmeniz gerekir. Bkz: [Bilişsel Hizmetler sayfasına](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) daha fazla bilgi için Microsoft Trust Center.
+Tüm bilişsel hizmetlerde olduğu gibi, Görüntü İşleme hizmetini kullanan geliştiriciler Microsoft 'un müşteri verileri ilkelerine göre farkında olmalıdır. Daha fazla bilgi edinmek için Microsoft Güven Merkezi ' nde bilişsel [Hizmetler sayfasına](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Görüntü işleme ile Hızlı Başlangıç Kılavuzu izleyerek kullanmaya başlayın:
+Hızlı Başlangıç kılavuzunu izleyerek Görüntü İşleme kullanmaya başlayın:
 
-- [Hızlı Başlangıç: Bir resmi çözümleme](quickstarts-sdk/csharp-analyze-sdk.md)
-- [Hızlı Başlangıç: El yazısı metinleri ayıklamak](quickstarts-sdk/csharp-hand-text-sdk.md)
-- [Hızlı Başlangıç: Küçük resim oluşturma](quickstarts-sdk/csharp-thumb-sdk.md)
+- [Hızlı Başlangıç: Görüntü çözümleme](quickstarts-sdk/csharp-analyze-sdk.md)
+- [Hızlı Başlangıç: El yazısı metin Ayıkla](quickstarts-sdk/csharp-hand-text-sdk.md)
+- [Hızlı Başlangıç: Küçük resim oluştur](quickstarts-sdk/csharp-thumb-sdk.md)

@@ -1,6 +1,6 @@
 ---
 title: PHP için Azure SDK'sını indirme
-description: İndirme ve PHP için Azure SDK'sını yükleme hakkında bilgi edinin.
+description: PHP için Azure SDK 'sını indirme ve yükleme hakkında bilgi edinin.
 documentationcenter: php
 services: app-service\web
 author: allclark
@@ -13,45 +13,45 @@ ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
 ms.date: 06/01/2016
-ms.author: allclark;yaqiyang
-ms.openlocfilehash: f6b21f288b94e06414fe66ff775ebb264368c0b8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: yaya
+ms.openlocfilehash: 9dd336ef973b603108aad62c90e4dab385d20317
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65411589"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67873889"
 ---
 # <a name="download-the-azure-sdk-for-php"></a>PHP için Azure SDK'sını indirme
 
 ## <a name="overview"></a>Genel Bakış
 
-PHP için Azure SDK'sı, geliştirmek, dağıtmak ve Azure için PHP uygulamaları yönetmenize olanak tanıyan bileşenlerini içerir. Özellikle, PHP için Azure SDK aşağıdakileri içerir:
+PHP için Azure SDK 'Sı, Azure için PHP uygulamaları geliştirmenize, dağıtmanıza ve yönetmenize imkan tanıyan bileşenleri içerir. Özellikle, PHP için Azure SDK 'Sı şunları içerir:
 
-* **Azure için PHP istemci kitaplıkları**. Bu sınıf kitaplıkları, Veri Yönetimi Hizmetleri gibi Azure özelliklere erişmek için bir arabirim sağlar ve bulut Hizmetleri.
-* **Mac, Linux ve Windows (Azure CLI) için Azure komut satırı arabirimi**. Bu, Azure Web siteleri ve Azure sanal makineler gibi Azure hizmetlerini dağıtıp yönetmeye yönelik komutlar kümesidir. Azure CLI iş Mac, Linux ve Windows dahil olmak üzere herhangi bir platformda.
-* **Azure PowerShell (yalnızca Windows)** . Bu, bulut Hizmetleri ve sanal makineler gibi Azure hizmetlerini dağıtıp yönetmeye yönelik PowerShell cmdlet'leri kümesidir.
-* **Azure Öykünücüleri (yalnızca Windows)** . İşlem ve depolama öykünücüsünü bulut Hizmetleri ve bir uygulamayı yerel olarak test olanak tanıyan veri yönetim hizmetlerinin yerel öykünücüleri ' dir. Azure Öykünücüleri yalnızca Windows üzerinde çalıştırın.
+* **Azure IÇIN php istemci kitaplıkları**. Bu sınıf kitaplıkları, veri yönetimi hizmetleri ve bulut hizmetleri gibi Azure özelliklerine erişim için bir arabirim sağlar.
+* **Mac, Linux ve Windows Için Azure komut satırı arabirimi (Azure CLI)** . Bu, Azure Web siteleri ve Azure sanal makineleri gibi Azure hizmetlerini dağıtmaya ve yönetmeye yönelik bir dizi komut kümesidir. Azure CLı, Mac, Linux ve Windows dahil tüm platformlarda çalışır.
+* **Azure PowerShell (yalnızca Windows)** . Bu, Cloud Services ve sanal makineler gibi Azure hizmetlerini dağıtmak ve yönetmek için bir PowerShell cmdlet kümesidir.
+* **Azure öykünücüleri (yalnızca Windows)** . İşlem ve depolama öykünücüleri, bir uygulamayı yerel olarak test etme izni veren bulut hizmetleri ve veri yönetimi hizmetleri 'nin yerel öykünücülerdir. Azure öykünücüleri yalnızca Windows 'da çalışır.
 
-Aşağıdaki bölümler, yukarıda açıklanan bileşenlere karşıdan yüklenip kurulacak açıklanmaktadır.
+Aşağıdaki bölümlerde yukarıda açıklanan bileşenlerin nasıl indirileceği ve kurulacağı açıklanmaktadır.
 
-Bu konudaki yönergeler sahip olduğunuzu varsayın [PHP] [ install-php] yüklü.
+Bu konudaki yönergeler, [php][install-php] 'nin yüklü olduğunu varsayar.
 
 > [!NOTE]
-> Azure için PHP istemci kitaplıklarını kullanmanız için PHP 5.5 ya da daha yüksek olmalıdır.
+> Azure için PHP istemci kitaplıklarını kullanmak için PHP 5,5 veya üzeri bir sürüme sahip olmanız gerekir.
 >
 >
 
 ## <a name="php-client-libraries-for-azure"></a>Azure için PHP istemci kitaplıkları
 
-Azure için PHP istemci kitaplıkları, Veri Yönetimi Hizmetleri gibi Azure özelliklere erişmek için bir arabirim sağlar ve bulut hizmetlerinden herhangi bir işletim sistemi. Bu kitaplıklar Oluşturucusu yüklenebilir.
+Azure için PHP Istemci kitaplıkları, herhangi bir işletim sisteminden veri yönetimi hizmetleri ve bulut hizmetleri gibi Azure özelliklerine erişmek için bir arabirim sağlar. Bu kitaplıklar, besteci aracılığıyla yüklenebilir.
 
-Azure için PHP istemci kitaplıklarını kullanma hakkında daha fazla bilgi için bkz: [Blob hizmetini kullanma][blob-service], [tablo hizmetini kullanma] [ table-service]ve [kuyruk hizmeti kullanmayı][queue-service].
+Azure için php istemci kitaplıklarını kullanma hakkında daha fazla bilgi için bkz. [BLOB hizmetini][blob-service] , [How to Use the Table Service][table-service] kullanma ve [Queue Service][Queue-Service]hizmetini kullanma.
 
-### <a name="install-via-composer"></a>Oluşturucu yükleme
+### <a name="install-via-composer"></a>Besteci aracılığıyla Install
 
-1. [Git'i yükleyin][install-git]. Windows üzerinde çalıştırılabilir Git PATH ortam değişkeninize eklemeniz gerekir.
+1. [Git’i yükleyin][install-git]. Windows 'da, git yürütülebilir dosyasını yol ortam değişkeniniz olarak da eklemeniz gerekir.
 
-2. Adlı bir dosya oluşturun **composer.json** projenizin kökünde ve aşağıdaki kodu ekleyin:
+2. Projenizin kökünde **besteci. JSON** adlı bir dosya oluşturun ve bu dosyaya aşağıdaki kodu ekleyin:
 
         {
             "require": {
@@ -59,27 +59,27 @@ Azure için PHP istemci kitaplıklarını kullanma hakkında daha fazla bilgi i�
             }
         }
 
-3. İndirme **[composer.phar] [ composer-phar]** proje kökünüze içinde.
+3. Proje kökünde **[besteci. phar][composer-phar]** 'yi indirin.
 
-4. Bir komut istemi açın ve bu proje kökünüze yürütün
+4. Bir komut istemi açın ve bunu proje kökünde yürütün
 
         php composer.phar install
 
-## <a name="azure-powershell-and-azure-emulators"></a>Azure PowerShell ve Azure Öykünücüleri
+## <a name="azure-powershell-and-azure-emulators"></a>Azure PowerShell ve Azure öykünücüleri
 
-Azure PowerShell (bulut Hizmetleri ve sanal makineler için gibi) Azure hizmetlerini dağıtıp yönetmeye yönelik PowerShell cmdlet'leri kümesidir. Azure Öykünücüleri bulut Hizmetleri ve bir uygulamayı yerel olarak test olanak tanıyan veri yönetim hizmetlerinin öykünücüleri ' dir. Bu bileşenler desteklenen yalnızca Windows.
+Azure PowerShell, Azure hizmetlerini dağıtmak ve yönetmek için bir PowerShell cmdlet 'leri kümesidir (örneğin, Cloud Services ve sanal makineler). Azure öykünücüleri, bir uygulamayı yerel olarak test etme izni veren bulut hizmetleri ve veri yönetimi hizmetleri öykünücülerdir. Bu bileşenler yalnızca desteklenen Windows bileşenleridir.
 
-Azure PowerShell ve Azure Öykünücüleri yüklemek için önerilen yöntem kullanmaktır [Microsoft Web Platformu yükleyicisi][download-wpi]. Ayrıca, PHP, SQL Server, SQL Server için PHP ve WebMatrix için Microsoft Drivers gibi diğer geliştirme bileşenlerini yüklemek seçebileceğiniz olduğunu unutmayın.
+Azure PowerShell yüklemek için önerilen yöntem ve Azure öykünücüleri [Microsoft Web Platformu Yükleyicisi][download-wpi]kullanmaktır. PHP, SQL Server, PHP için SQL Server Microsoft sürücüleri ve WebMatrix gibi diğer geliştirme bileşenlerini de yüklemeyi seçebileceğinizi unutmayın.
 
-Azure PowerShell'in nasıl kullanılacağı hakkında daha fazla bilgi için bkz. [Azure PowerShell kullanmak için nasıl][powershell-tools].
+Azure PowerShell kullanma hakkında daha fazla bilgi için bkz. [Azure PowerShell kullanma][powershell-tools].
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Azure CLI, Azure Web siteleri ve Azure sanal makineler gibi Azure hizmetlerini dağıtıp yönetmeye yönelik komutlar kümesidir. Azure CLI yükleme hakkında daha fazla bilgi için bkz: [Azure CLI'yı yükleme](cli-install-nodejs.md).
+Azure CLı, Azure Web siteleri ve Azure sanal makineleri gibi Azure hizmetlerini dağıtmaya ve yönetmeye yönelik bir dizi komut kümesidir. Azure CLı yükleme hakkında daha fazla bilgi için bkz. [Azure CLI 'Yı yükleme](cli-install-nodejs.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi için [PHP Geliştirici Merkezi](https://azure.microsoft.com/develop/php/).
+Daha fazla bilgi için bkz. [php Geliştirici Merkezi](https://azure.microsoft.com/develop/php/).
 
 [install-php]: https://www.php.net/manual/en/install.php
 [composer-github]: https://github.com/composer/composer

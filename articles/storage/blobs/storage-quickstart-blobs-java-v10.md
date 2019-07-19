@@ -1,5 +1,5 @@
 ---
-title: "Azure hızlı başlangıç: Java depolama SDK'sı V10 kullanarak nesne depolamada blob oluşturma | Microsoft Docs"
+title: 'Azure hızlı başlangıç: Java Storage SDK Ile v10 arasındaki kullanarak nesne depolamada blob oluşturma | Microsoft Docs'
 description: Bu hızlı başlangıçta, Java Depolama SDK'sını kullanarak nesne (Azure Blob) depolamasında kapsayıcı oluşturacak, dosya yükleyecek, nesneleri listeleyecek ve indireceksiniz.
 services: storage
 author: mhopkins-msft
@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.date: 11/14/2018
 ms.author: mhopkins
 ms.reviewer: seguler
-ms.openlocfilehash: f023f3fdbc82960f3994f8e5763310dc95ca1c2f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 2aa004ffa98730341c8de105f16feea6e3931a86
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65152792"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326676"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-by-using-the-java-storage-sdk-v10"></a>Hızlı Başlangıç: Karşıya yükleme, indirme ve Java için depolama SDK'sı V10 kullanarak blobları Listele
+# <a name="quickstart-upload-download-and-list-blobs-by-using-the-java-storage-sdk-v10"></a>Hızlı Başlangıç: Java depolama SDK 'sını kullanarak Blobları karşıya yükleme, indirme ve listeleme Ile v10 arasındaki
 
 Bu hızlı başlangıçta, Azure Blob depolamadaki bir kapsayıcıda blok bloblarını karşıya yüklemek, indirmek ve listelemek için yeni Java Depolama SDK’sını nasıl kullanabileceğinizi öğreneceksiniz. Yeni Java SDK'sı RxJava ile duyarlı programlama modelini kullanarak zaman uyumsuz işlemler sağlar. [Java VM için RxJava duyarlı uzantıları](https://github.com/ReactiveX/RxJava) hakkında daha fazla bilgi edinin. 
 
@@ -26,7 +26,7 @@ Bu hızlı başlangıçta, Azure Blob depolamadaki bir kapsayıcıda blok blobla
 
 Aşağıdaki ek önkoşulların yüklü olduğundan emin olun:
 
-* [Maven](https://maven.apache.org/download.cgi) komut satırı veya tercih ettiğiniz herhangi bir Java tümleşik geliştirme ortamında çalışmaya.
+* [Maven](https://maven.apache.org/download.cgi) , komut satırından veya tercih ettiğiniz herhangi bir Java tümleşik geliştirme ortamından çalışır.
 * [JDK](https://aka.ms/azure-jdks)
 
 ## <a name="download-the-sample-application"></a>Örnek uygulamayı indirin:
@@ -50,14 +50,14 @@ Bu çözüm için depolama hesabınızın adını ve anahtarını güvenli bir �
 
 ### <a name="linux-example"></a>Linux örneği
 
-```
+```bash
 export AZURE_STORAGE_ACCOUNT="<youraccountname>"
 export AZURE_STORAGE_ACCESS_KEY="<youraccountkey>"
 ```
 
 ### <a name="windows-example"></a>Windows örneği
 
-```
+```CMD
 setx AZURE_STORAGE_ACCOUNT "<youraccountname>"
 setx AZURE_STORAGE_ACCESS_KEY "<youraccountkey>"
 ```
@@ -74,7 +74,7 @@ Bu örnekte Windows kullanıcıları için **AppData\Local\Temp** varsayılan di
 
 Bu örnekte uygulamayı Windows'da çalıştırdığınızda elde edeceğiniz çıkış gösterilmiştir.
 
-```
+```Output
 Created quickstart container
 Enter a command
 (P)utBlob | (L)istBlobs | (G)etBlob | (D)eleteBlobs | (E)xitSample

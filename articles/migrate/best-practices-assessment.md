@@ -1,66 +1,62 @@
 ---
-title: Azure geçişi Server değerlendirmesi ile değerlendirme oluşturmak için en iyi yöntemler | Microsoft Docs
-description: Azure geçişi Server değerlendirmesi ile değerlendirmeleri oluşturmaya yönelik ipuçları verilmektedir.
+title: Azure geçişi sunucu değerlendirmesi ile değerlendirme oluşturmak için en iyi uygulamalar | Microsoft Docs
+description: Azure geçişi sunucu değerlendirmesi ile değerlendirmeler oluşturmaya yönelik ipuçları sağlar.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 07/15/2019
 ms.author: raynew
-ms.openlocfilehash: d417efd4abf14247af171ea77b479f590e14fe76
-ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
+ms.openlocfilehash: 18b82b5553f7045c38c9de532199c2a0fd815ee1
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67812970"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234308"
 ---
-# <a name="best-practices-for-creating-assessments"></a>Değerlendirmeleri oluşturmaya yönelik en iyi uygulamalar
+# <a name="best-practices-for-creating-assessments"></a>Değerlendirme oluşturmak için en iyi uygulamalar
 
-[Azure geçişi](migrate-overview.md) hub'ı keşfedin, değerlendirin ve uygulamalar ve altyapı iş yükleri Microsoft Azure'a geçirmek için yardımcı araçlar sağlar. Hub, Azure geçişi araçları ve üçüncü taraf bağımsız yazılım satıcısı (ISV) teklifleri içerir. 
+[Azure geçişi](migrate-overview.md) , Microsoft Azure için uygulamaları, altyapıyı ve iş yüklerini keşfetmenize, değerlendirmenize ve geçirmenize yardımcı olan araçların merkezini sağlar. Hub, Azure geçiş araçları ve üçüncü taraf bağımsız yazılım satıcısı (ISV) tekliflerini içerir.
 
-Bu makalede Azure geçişi Server değerlendirmesi aracını kullanarak değerlendirmeler oluştururken en iyi uygulamalar özetlenmektedir. 
+Bu makalede, Azure geçişi sunucu değerlendirmesi Aracı kullanılarak değerlendirmeler oluşturulurken en iyi yöntemler özetlenmektedir.
 
 ## <a name="about-assessments"></a>Değerlendirmeler hakkında
 
-Azure geçişi Server değerlendirmesi ile oluşturduğunuz değerlendirmeleri veri noktası zamanında anlık görüntüsünü ' dir. Azure Geçişi'ndeki değerlendirmeleri iki tür vardır.
+Azure geçişi sunucu değerlendirmesi ile oluşturduğunuz değerlendirmeler, verilerin bir zaman noktası anlık görüntüsüdür. Azure geçişi 'nde iki tür değerlendirme vardır.
 
 **Değerlendirme türü** | **Ayrıntılar** | **Veri**
 --- | --- | ---
-**Performans tabanlı** | Toplanan performans verilerini temel alarak önerilerde değerlendirmeleri | Sanal makine boyutu önerisi, CPU ve bellek kullanım verileri temel alır.<br/><br/> Disk türü önerisi (standart veya premium yönetilen diskler), şirket içi disk aktarım hızı ve IOPS hakkında temel alır.
-**Olarak-şirket içi** | Değerlendirme önerilerde için performans verilerini kullanmayın. | Sanal makine boyutu önerisi, şirket içi VM boyutuna göre<br/><br> Önerilen disk türü, hangi depolama türünü değerlendirme için seçtiğiniz üzerinde temel alır.
+**Performans tabanlı** | Toplanan performans verilerine dayalı öneriler oluşturan değerlendirmeler | VM boyutu önerisi, CPU ve bellek kullanımı verilerine göre belirlenir.<br/><br/> Disk türü önerisi (Standart HDD/SSD veya Premium yönetilen diskler), şirket içi disklerin ıOPS ve aktarım hızını temel alır.
+**Şirket içi olarak** | Öneriler oluşturmak için performans verilerini kullanmayan değerlendirmeler. | VM boyutu önerisi, şirket içi VM boyutunu temel alır<br/><br> Önerilen disk türü, değerlendirme için depolama türü ayarında neleri seçdiklerinize bağlıdır.
 
 ### <a name="example"></a>Örnek
-Örnek olarak, % 20 oranında kullanılan ve 8 GB bellek % 10 kullanımı ile dört çekirdek içeren bir şirket içi VM varsa değerlendirmeleri gibi olur:
+Örnek olarak,% 20 ' de dört çekirdekli bir şirket içi sanal makine ve% 10 kullanımı ile 8 GB bellek varsa, değerlendirmeler aşağıdaki gibi olacaktır:
 
 - **Performans tabanlı değerlendirme**:
-    - Çekirdek ve bellek çekirdek (0,8 çekirdek) ve (0,8 GB) bellek kullanımı göre önerir.
-    - Değerlendirme % 30'luk varsayılan konfor katsayısı geçerlidir.
-    - Sanal makine önerisi: ~1.4 çekirdek (0,8 x1.3) ve ~1.4 GB bellek.
-- **Olarak-(şirket içi) değerlendirmesi**:
-    -  Bir VM ile dört çekirdek önerir; 8 GB bellek.
+    - Core (4 x 0,20 = 0,8) ve bellek (8 GB x 0,10 = 0,8) kullanımı temel alınarak etkin çekirdekleri ve bellek tanımlar.
+    - Boyutlandırma için kullanılacak değerleri almak için değerlendirme özelliklerinde belirtilen rahatlık faktörünü (le'ts söyleyin 1.3 x) uygular. 
+    - , Azure 'da ~ 1,4 çekirdek (0,8 x 1,3) ve ~ 1,4 GB (0,8 x 1,3) belleği destekleyebilen en yakın VM boyutunu önerir.
 
-## <a name="best-practices-for-creating-assessments"></a>Değerlendirmeleri oluşturmaya yönelik en iyi uygulamalar
+- **As (Şirket içi) değerlendirmesi**:
+    -  Dört çekirdekli bir VM önerir; 8 GB bellek.
 
-Azure geçişi Gereci sürekli olarak şirket içi ortamınızın profilini ve meta verileri ve performans verilerini Azure'a gönderir. Değerlendirme oluşturmak için bu en iyi uygulamaları izleyin:
+## <a name="best-practices-for-creating-assessments"></a>Değerlendirme oluşturmak için en iyi uygulamalar
 
-- **Olarak oluşturma-değerlendirmeleri olan**: Olarak oluşturabileceğiniz-değerlendirmeleri olduğu hemen sonra bulma.
-- **Performans tabanlı Değerlendirme Oluştur**: Discovery'yi ayarlama ayarladıktan sonra en az bir performans tabanlı değerlendirmesi çalıştırmadan önce bir gün beklemenizi öneririz:
-    - Performans verileri toplama zaman alır. En az bir gün bekledikten, değerlendirmeyi çalıştırmadan önce yeterli performans veri noktası olmasını sağlar.
-    - Performans verileri, gereç her 20 saniyede her performans ölçümü için gerçek zamanlı veri noktaları toplar ve bunları tek bir beş dakikalık veri noktaya kadar yapar. Gereç, beş dakikalık veri değerlendirmesi hesaplaması için her saat için Azure'nın üzerine gönderir.  
-- **En son verileri alın**: Değerlendirmeler, en son verilerle otomatik olarak güncelleştirilmez. En son verileriyle bir değerlendirme güncelleştirmek için yeniden gerekir. 
-- **Süreleri eşleştiğinden emin olun**: Performans tabanlı değerlendirmeleri çalıştırırken profilinizi emin olun, ortamınız için değerlendirme süresi. Örneğin, bir hafta için ayarlanmış bir performans süresini bir değerlendirme oluşturursanız, bulma, toplanacak tüm veri noktaları için başlattıktan sonra en az bir hafta bekleyin gerekir. Değerlendirme, aksi takdirde, beş Yıldıza elde etmezsiniz. 
-- **Veri noktaları gözden kaçırmamak**: Aşağıdaki sorunlar, veri noktalarının performans tabanlı değerlendirmede eksik neden olabilir:
-    - Vm'leri kapatmak değerlendirme sırasında desteklenir ve performans verileri toplanmaz. 
-    - Performans geçmişi temel ay boyunca VM oluşturursanız. Bu sanal makineler için verilerin bir aydan kısa olacaktır. 
-    - Değerlendirme bulunduktan hemen sonra oluşturulur veya performans verileri toplama süresi değerlendirme anında eşleşmiyor.
+Azure geçişi gereci, şirket içi ortamınızı sürekli olarak profiller ve meta verileri ve performans verilerini Azure 'a gönderir. Değerlendirme oluşturmak için aşağıdaki en iyi yöntemleri izleyin:
 
-## <a name="best-practices-for-confidence-ratings"></a>Güvenle derecelendirmeleri için en iyi uygulamalar
+- **As-to değerlendirmeleri oluşturma**: Makineleriniz Azure geçişi portalında gösterildikten hemen sonra as-to değerlendirmesi oluşturabilirsiniz.
+- **Performans tabanlı değerlendirme oluşturma**: Bulmayı ayarladıktan sonra, performans tabanlı bir değerlendirmeyi çalıştırmadan önce en az bir gün beklemeniz önerilir:
+    - Performans verilerinin toplanması zaman alır. En az bir günün beklenmesi, değerlendirmeyi çalıştırmadan önce yeterli performans veri noktası olmasını sağlar.
+    - Performans tabanlı değerlendirmeler çalıştırırken ortamınızı değerlendirme süresi boyunca profillediğinizden emin olun. Örneğin, bir haftalık olarak ayarlanan performans süresiyle bir değerlendirme oluşturursanız, tüm veri noktalarının toplanması için bulmayı başlattıktan sonra en az bir hafta beklemeniz gerekir. Aksi takdirde, değerlendirme beş yıldızlı bir derecelendirme almaz.
+- **Değerlendirmeleri yeniden hesapla**: Değerlendirmeler, zaman içinde nokta anlık görüntüleri olduğundan, en son verilerle otomatik olarak güncellenmez. En son verilerle bir değerlendirmeyi güncelleştirmek için yeniden hesaplamanız gerekir.
 
-Performans tabanlı değerlendirmeleri çalıştırdığınızda, 1 yıldızdan 5 yıldızlı için (yüksek) (en düşük) derecelendirme bir güvenle değerlendirmesiyle hak kazanan. Güvenle derecelendirmeleri kullanmak için etkili bir şekilde:
-- Azure geçişi Server değerlendirmesi, sanal makine CPU/bellek ve disk IOPS/işleme veri kullanım verileri gerekir.
-- Bir VM'ye bağlı her ağ bağdaştırıcısı için Azure geçişi, içeri/dışarı veri ağ gerekir.
-- Kullanım verileri vCenter Server'da mevcut değilse Azure Geçişi'nin yaptığı boyut önerisi güvenilir olmayabilir. 
+## <a name="best-practices-for-confidence-ratings"></a>Güvenirlik derecelendirmeleri için en iyi uygulamalar
 
-Veri noktaları kullanılabilir yüzdesi bağlı olarak, bir değerlendirme için güvenilirlik derecelendirmelerini aşağıdaki tabloda özetlenmiştir.
+Performans tabanlı değerlendirmeler çalıştırdığınızda, değerlendirmeye 1-yıldız (en düşük) ile 5 yıldız (en yüksek) arasında bir güvenilirlik derecesi verilir. Güvenilirlik derecelendirmelerini etkin bir şekilde kullanmak için:
+- Azure geçişi sunucu değerlendirmesi VM CPU 'SU/belleği için kullanım verilerine ihtiyaç duyuyor.
+- Şirket içi VM 'ye bağlı her disk için okuma/yazma ıOPS/aktarım hızı verileri gerekir.
+- SANAL makineye bağlı her ağ bağdaştırıcısı için ağ/çıkış verileri gerekir.
+
+Seçilen süre için kullanılabilir olan veri noktalarının yüzdesine bağlı olarak, bir değerlendirmenin güvenilirlik derecelendirmesi aşağıdaki tabloda özetlenen şekilde sağlanır.
 
    **Veri noktası kullanılabilirliği** | **Güvenilirlik derecelendirmesi**
    --- | ---
@@ -70,31 +66,31 @@ Veri noktaları kullanılabilir yüzdesi bağlı olarak, bir değerlendirme içi
    %61-%80 | 4 Yıldız
    %81-%100 | 5 Yıldız
 
-- Güvenilirlik derecelendirmesi, beş yıldızlı değerlendirme için alırsanız, en az bir gün bekleyin ve ardından değerlendirmeyi yeniden hesaplamak.
-- Düşük derecelendirme önerileri boyutlandırma güvenilir olmayabileceği anlamına gelir. Bu durumda, olarak kullanılacak değerlendirme özelliklerini değiştirmenizi öneririz-şirket içi değerlendirmesi.
 
 ## <a name="common-assessment-issues"></a>Ortak değerlendirme sorunları
 
-Değerlendirmeler etkileyen bazı ortak bir ortam sorunları nasıl çözeceğinize aşağıda verilmiştir.
+Değerlendirmeleri etkileyen bazı yaygın ortam sorunlarının nasıl ele alınacağını aşağıda bulabilirsiniz.
 
-###  <a name="out-of-sync-assessments"></a>Eşitleme dışı değerlendirmesi
+###  <a name="out-of-sync-assessments"></a>Eşitleme dışı değerlendirmeler
 
-Ekleme veya bir değerlendirme oluşturduktan sonra makineleri gruptan kaldırdığınızda, oluşturduğunuz değerlendirme işaretlenecek **eşitleme dışı**. Değerlendirmeyi yeniden çalıştırın (**yeniden hesapla**) grubu değişiklikleri yansıtacak şekilde.
+Bir değerlendirme oluşturduktan sonra bir gruba makine ekler veya kaldırırsanız, oluşturduğunuz değerlendirme **eşitlenmemiş**olarak işaretlenir. Grup değişikliklerini yansıtmak için değerlendirmeyi yeniden çalıştırın (**yeniden hesapla**).
 
-### <a name="outdated-assessments"></a>Güncel olmayan değerlendirmeleri
+### <a name="outdated-assessments"></a>Güncel olmayan değerlendirmeler
 
-Şirket içi değişiklikleri dikkate alınır bir grup VM'ler varsa, değerlendirme işaretlenmiş **eski**. Değişiklikleri yansıtacak şekilde yeniden değerlendirmeyi çalıştırın.
+Değerlendirilen bir gruptaki VM 'lerde şirket içi değişiklikler varsa, değerlendirme **güncelliğini yitirmiş**olarak işaretlenir. Değişiklikleri yansıtmak için değerlendirmeyi yeniden çalıştırın.
 
-### <a name="missing-data-points"></a>Veri noktaları
+### <a name="low-confidence-rating"></a>Düşük güvenilirlikli derecelendirme
 
-Değerlendirme için pek çok tüm veri noktalarına sahip olmayabilir:
+Bir değerlendirme, birkaç nedenden dolayı tüm veri noktalarına sahip olmayabilir:
 
-- Sanal makineleri değerlendirme sırasında kapalı ve performans verileri toplanmaz. 
-- VM'lerin hangi performans geçmişi temel alır bir ay sırasında oluşturulmuş olabilir, böylece performans verilerine bir aydan kısa olan. 
-- Değerlendirme bulunduktan hemen sonra oluşturulur. Belirtilen bir zaman miktarı için performans verilerini toplamak için bir değerlendirmeyi çalıştırmadan önce belirtilen süre beklemeniz gerekir. Örneğin, bir hafta için performans verilerini değerlendirmek istiyorsanız, bir hafta sonra bulma beklemenize gerek. Değerlendirme yoksa beş Yıldıza elde etmezsiniz. 
+- Değerlendirmeyi oluşturduğunuz süre boyunca ortamınızın profilini oluşturmadınız. Örneğin, performans süresi bir hafta olarak ayarlanan *performans tabanlı bir değerlendirme* oluşturuyorsanız, toplanan tüm veri noktaları için bulmayı başlattıktan sonra en az bir hafta beklemeniz gerekir. En son geçerli güvenilirlik derecelendirmesini görmek için her zaman **yeniden hesapla** ' yı tıklayabilirsiniz. Güvenilirlik derecelendirmesi yalnızca *performans tabanlı* bir değerlendirme oluşturduğunuzda uygulanabilir.
+
+- Değerlendirmenin hesaplandığı dönem boyunca birkaç sanal makine kapatılmıştır. Bazı VM 'Ler bir süre için kapatılmışsa, sunucu değerlendirmesi söz konusu döneme ait performans verilerini toplayamaz.
+
+- Sunucu değerlendirmesinde bulma işlemi başlatıldıktan sonra birkaç VM oluşturuldu. Örneğin, son bir ayın performans geçmişi için değerlendirme oluşturuyorsanız, ancak yalnızca bir hafta önce ortamda birkaç sanal makine oluşturulduysa. Bu durumda, yeni VM 'Ler için performans verileri sürenin tamamına uygun olmayacaktır ve güvenirlik derecelendirmesi düşük olacaktır.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Bilgi](concepts-assessment-calculation.md) değerlendirmelerin nasıl hesaplandığı.
-- [Bilgi](how-to-modify-assessment.md) kapsamında bir değerlendirmeyi özelleştirme.
+- Değerlendirmelerin nasıl hesaplanacağını [öğrenin](concepts-assessment-calculation.md) .
+- Bir değerlendirmeyi özelleştirmeyi [öğrenin](how-to-modify-assessment.md) .

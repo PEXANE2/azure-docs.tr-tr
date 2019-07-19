@@ -1,8 +1,8 @@
 ---
 layout: HubPage
 hide_bc: false
-title: Azure İzleyici Application ınsights belgeleri - öğreticiler, API Başvurusu | Microsoft Docs
-description: Azure İzleyici Application Insights, kod düzeyinde ayrıntılı uygulama performansı izleme sağlar.
+title: Azure Izleyici Application Insights belgeleri-öğreticiler, API başvurusu | Microsoft Docs
+description: Azure Izleyici Application Insights derin kod düzeyinde uygulama performansı izleme sağlar.
 services: application-insights
 author: mrbullwinkle
 manager: carmonm
@@ -10,17 +10,17 @@ ms.service: application-insights
 ms.topic: landing-page
 ms.date: 01/15/2019
 ms.author: mbullwin
-ms.openlocfilehash: 451a2d6e658c08823d1629270bb7503ebd236c02
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5571f84de5c6dd4f5dffea5869c744b7e5c02e24
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66255692"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875298"
 ---
 <div id="main" class="v2">
     <div class="container">
-        <h1>Azure İzleyici Application Insights belgeleri</h1>
-        <p>Azure İzleyici Application Insights, kod düzeyinde ayrıntılı uygulama performansı izleme sağlar.</p>
+        <h1>Azure Izleyici Application Insights belgeleri</h1>
+        <p>Azure Izleyici Application Insights derin kod düzeyinde uygulama performansı izleme sağlar.</p>
         <hr style="margin: 30px 0;" />
         <ul class="pivots">
             <li>
@@ -45,7 +45,7 @@ ms.locfileid: "66255692"
                                                                     </div>
                                                                 </div>
                                                                 <div class="cardText" style="padding-left: 0px">
-                                                                    <h3>Temel özellikleri öğrenin</h3>
+                                                                    <h3>Temelleri öğrenin</h3>
                                                                     <p>
                                                                         <a href="./app/app-insights-overview.md">Application Insights nedir?</a><br>
                                                                     </p>
@@ -66,8 +66,9 @@ ms.locfileid: "66255692"
                                                     <div class="cardText">
                                                         <h3>Yenilikler</h3>
                                                         <p>
-                                                            <a href="./app/kubernetes.md">Kubernetes uygulamaları izleme</a><br>
-                                                            <a href="./app/status-monitor-v2-overview.md">Durum İzleyicisi v2 için IIS uygulamaları</a><br>
+                                                            <a href="./app/azure-vm-vmss-apps.md">Azure VM ve Azure sanal makine ölçek kümesi uygulamaları için codeless izleme</a><br>
+                                                            <a href="./app/kubernetes.md">Kubernetes uygulamalarını izleme</a><br>
+                                                            <a href="./app/status-monitor-v2-overview.md">IIS uygulamaları için Durum İzleyicisi v2</a><br>
                                                         </p>
                                                         <br><br>
                                                         <h3>Hızlı girişler</h3>
@@ -76,7 +77,7 @@ ms.locfileid: "66255692"
                                                             <a href="./learn/dotnetcore-quick-start.md">ASP.NET Core</a><br>
                                                             <a href="./learn/nodejs-quick-start.md">Node.js</a><br>
                                                             <a href="./learn/java-quick-start.md">Java</a><br>
-                                                            <a href="./learn/mobile-center-quickstart.md">Mobil</a><br>
+                                                            <a href="./learn/mobile-center-quickstart.md">Mo</a><br>
                                                             <a href="./app/website-monitoring.md">Tarayıcı/istemci tarafı izleme</a>
                                                         </p>
                                                         <br><br>
@@ -85,34 +86,34 @@ ms.locfileid: "66255692"
                                                             <a href="./learn/tutorial-runtime-exceptions.md">Çalışma zamanı özel durumlarını bulma ve tanılama</a><br>
                                                             <a href="./learn/tutorial-performance.md">Performans sorunlarını bulma ve tanılama</a><br>
                                                             <a href="./learn/tutorial-alert.md">Uygulama durumunu izleme ve uyarılar gönderme</a><br>
-                                                            <a href="./learn/tutorial-users.md">Kullanıcı davranışını anlayın</a><br>
+                                                            <a href="./learn/tutorial-users.md">Kullanıcı davranışını anlama</a><br>
                                                             <a href="./learn/tutorial-app-dashboards.md">Özel panolar oluşturma</a>
                                                             </p>
                                                         <br><br>
                                                         <h3>Dağıtılmış izleme</h3>
                                                         <p>
-                                                            <a href="./app/distributed-tracing.md">Ne izleme dağıtılır?</a><br>
+                                                            <a href="./app/distributed-tracing.md">Dağıtılmış izleme nedir?</a><br>
                                                             <a href="./app/opencensus-python.md">Python için OpenCensus</a><br>
                                                             <a href="./app/opencensus-go.md">Go için OpenCensus</a><br>
-                                                            <a href="./app/opencensus-local-forwarder.md">Yerel ileticisi</a>
+                                                            <a href="./app/opencensus-local-forwarder.md">Yerel iletici</a>
                                                             </p>
                                                         <br><br>
-                                                        <h3>Otomatik bir akıllı algılama</h3>
+                                                        <h3>Otomatik akıllı algılama</h3>
                                                         <p>
                                                             <a href="./app/proactive-failure-diagnostics.md">Hata anormallikleri</a><br>
                                                             <a href="./app/proactive-performance-diagnostics.md">Performans anormallikleri</a><br>
-                                                            <a href="./app/proactive-trace-severity.md">Performans düşüşünü izleme</a><br>
-                                                            <a href="./app/proactive-exception-volume.md">Olağan dışı artışlar özel durumları</a><br>
+                                                            <a href="./app/proactive-trace-severity.md">İzleme performansında azalma</a><br>
+                                                            <a href="./app/proactive-exception-volume.md">Özel durumlarda anormal RID</a><br>
                                                             <a href="./app/proactive-potential-memory-leak.md">Bellek sızıntıları</a><br>
                                                             <a href="./app/proactive-low-utilization-cloud-resources.md">Düşük CPU kullanımı</a><br>
                                                             <a href="./app/proactive-application-security-detection-pack.md">Güvenlik sorunları</a><br>
                                                             <a href="./app/proactive-cloud-services.md">Azure Cloud Services</a><br>
-                                                            <a href="./app/proactive-arm-config.md">Akıllı algılama şablonları ile yönetme</a>
+                                                            <a href="./app/proactive-arm-config.md">Şablonlar ile akıllı algılamayı yönetme</a>
                                                         </p>
                                                         <br><br>
                                                         <h3>Başvuru</h3>
                                                         <p>
-                                                            <a href="./app/auto-collect-dependencies.md">Bağımlılık otomatik toplama</a><br>
+                                                            <a href="./app/auto-collect-dependencies.md">Bağımlılık otomatik koleksiyonu</a><br>
                                                             <a href="./app/correlation.md">Telemetri bağıntısı</a><br>
                                                             <a href="./app/nuget.md">NuGet paketleri</a><br>
                                                             <a href="./app/azure-functions-supported-features.md">Azure İşlevleri</a>
@@ -129,47 +130,48 @@ ms.locfileid: "66255692"
                                                     <div class="cardText">
                                                         <h3>Java uygulamaları</h3>
                                                         <p>
-                                                            <a href="./app/java-get-started.md">Ayrıntılı izleme yapılandırması</a><br>
-                                                            <a href="https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights?view=azure-java-stable">Spring Boot Başlatıcı</a><br>
-                                                            <a href="./app/micrometer-java.md">Micrometer ölçümleri</a><br>
+                                                            <a href="./app/java-get-started.md">Derinlemesine izleme yapılandırması</a><br>
+                                                            <a href="https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights?view=azure-java-stable">Spring Boot Starter</a><br>
+                                                            <a href="./app/micrometer-java.md">Mikro ölçüm ölçümleri</a><br>
                                                             <a href="./app/java-filter-telemetry.md">Telemetri filtreleme</a><br>
                                                             <a href="./app/java-trace-logs.md">İzleme günlüğü</a><br>
-                                                            <a href="./app/java-agent.md">Bağımlılık izleme için aracı yapılandırma</a><br>
+                                                            <a href="./app/java-agent.md">Bağımlılık izleme için aracı yapılandırması</a><br>
                                                             <a href="./app/api-custom-events-metrics.md">Özel etkinlikler ve ölçümler</a><br>
                                                             <a href="https://docs.microsoft.com/azure/azure-monitor/app/configuration-with-applicationinsights-config#channel-parameters-java
-">Yapılandırma .xml</a><br>
-                                                            <a href="https://github.com/Microsoft/ApplicationInsights-Java">Açık kaynak Java SDK'sı GitHub deposu</a>
+">Config. xml</a><br>
+                                                            <a href="https://github.com/Microsoft/ApplicationInsights-Java">Açık kaynak Java SDK GitHub deposu</a>
                                                         </p>
                                                         <br><br>
                                                         <h3>.NET uygulamaları</h3>
                                                         <p>
-                                                            <a href="./app/asp-net.md">Ayrıntılı izleme yapılandırması</a><br>
+                                                            <a href="./app/asp-net.md">Derinlemesine izleme yapılandırması</a><br>
                                                             <a href="./app/monitor-performance-live-website-now.md">Durum İzleyicisi</a><br>
-                                                            <a href="./app/azure-web-apps.md">App Service'nın izleme</a><br>
+                                                            <a href="./app/azure-web-apps.md">App Service izleme</a><br>
+                                                            <a href="./app/azure-vm-vmss-apps.md">VM ve sanal makine ölçek kümesi uygulama izleme</a><br>
                                                             <a href="./app/api-custom-events-metrics.md">Özel etkinlikler ve ölçümler</a><br>
-                                                            <a href="https://github.com/Microsoft/ApplicationInsights-dotnet">Açık kaynak .NET SDK'sı GitHub deposu</a>
+                                                            <a href="https://github.com/Microsoft/ApplicationInsights-dotnet">Açık kaynak .NET SDK GitHub deposu</a>
                                                         </p>
                                                         <br><br>
-                                                          <h3>.NET core uygulamaları</h3>
+                                                          <h3>.NET Core Uygulamaları</h3>
                                                         <p>
-                                                            <a href="./app/asp-net-core.md">Ayrıntılı izleme yapılandırması</a><br>
-                                                            <a href="./app/profiler-aspnetcore-linux.md">ASP.NET Core profil oluşturma</a><br>
+                                                            <a href="./app/asp-net-core.md">Derinlemesine izleme yapılandırması</a><br>
+                                                            <a href="./app/profiler-aspnetcore-linux.md">ASP.NET Core profili oluşturma</a><br>
                                                             <a href="./app/api-custom-events-metrics.md">Özel etkinlikler ve ölçümler</a><br>
-                                                            <a href="https://github.com/Microsoft/ApplicationInsights-aspnetcore">Açık kaynak .NET Core SDK'sı GitHub deposu</a>
+                                                            <a href="https://github.com/Microsoft/ApplicationInsights-aspnetcore">Açık kaynak .NET Core SDK GitHub deposu</a>
                                                         </p>
                                                         <br><br>
-                                                          <h3>Node.js uygulamaları</h3>
+                                                          <h3>Node. js uygulamaları</h3>
                                                         <p>
-                                                            <a href="./app/nodejs.md">Ayrıntılı izleme yapılandırması</a><br>
+                                                            <a href="./app/nodejs.md">Derinlemesine izleme yapılandırması</a><br>
                                                             <a href="./app/api-custom-events-metrics.md">Özel etkinlikler ve ölçümler</a><br>
-                                                            <a href="https://github.com/Microsoft/ApplicationInsights-node.js">Kaynak Node.js SDK'sı GitHub deposunu açın</a>
+                                                            <a href="https://github.com/Microsoft/ApplicationInsights-node.js">Açık kaynak Node. js SDK GitHub deposu</a>
                                                         </p>
                                                         <br><br>
-                                                        <h3>Tarayıcı/istemci-tarafı izleme</h3>
+                                                        <h3>İstemci/tarayıcı tarafı izleme</h3>
                                                         <p>
-                                                            <a href="./app/javascript.md">Ayrıntılı izleme yapılandırması</a><br>
+                                                            <a href="./app/javascript.md">Derinlemesine izleme yapılandırması</a><br>
                                                             <a href="./app/api-custom-events-metrics.md">Özel etkinlikler ve ölçümler</a><br>
-                                                            <a href="https://github.com/Microsoft/ApplicationInsights-JS">Kaynak JavaScript SDK'sı GitHub deposunu açın</a><br>
+                                                            <a href="https://github.com/Microsoft/ApplicationInsights-JS">Açık kaynak JavaScript SDK GitHub deposu</a><br>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -181,37 +183,37 @@ ms.locfileid: "66255692"
                                             <div class="cardPadding">
                                                 <div class="card">
                                                     <div class="cardText">
-                                                        <h3>Kullanıcı davranış analizi</h3>
+                                                        <h3>Kullanıcı davranışı Analizi</h3>
                                                         <p>
                                                             <a href="./app/usage-overview.md">Genel bakış</a><br>
-                                                            <a href="./app/usage-send-user-context.md">Kimlikleri kullanıcı bağlamı gönderme</a><br>
+                                                            <a href="./app/usage-send-user-context.md">Kullanıcı bağlamı kimlikleri gönder</a><br>
                                                             <a href="./app/usage-segmentation.md">Kullanıcılar, oturumlar ve olaylar</a><br>
                                                             <a href="./app/usage-funnels.md">Huniler</a><br>
                                                             <a href="./app/usage-cohorts.md">Kohortlar</a><br>
                                                             <a href="./app/usage-impact.md">Etkisi</a><br>
                                                             <a href="./app/usage-retention.md">Bekletme</a><br>
-                                                            <a href="./app/usage-flows.md">Kullanıcı akışları</a>
+                                                            <a href="./app/usage-flows.md">Kullanıcı Akışları</a>
                                                         </p>
                                                         <br><br>
-                                                        <h3>Gerçek zamanlı izleme<br> Görselleştirme, &amp; analizi</h3>
+                                                        <h3>Gerçek zamanlı izleme,<br> görselleştirme, &amp; analiz</h3>
                                                         <p>
-                                                            <a href="./app/overview-dashboard.md">Genel Bakış Panosu'nu &amp; uygulama Panosu</a><br>
-                                                            <a href="./app/monitor-web-app-availability.md">Genel kullanılabilirlik izlemesi</a><br>
+                                                            <a href="./app/overview-dashboard.md">Genel Bakış &amp; panosu uygulama panosu</a><br>
+                                                            <a href="./app/monitor-web-app-availability.md">Küresel kullanılabilirlik izleme</a><br>
                                                             <a href="./app/live-stream.md">Canlı ölçüm akışı</a><br>
                                                             <a href="./app/app-map.md">Dağıtılmış uygulama eşlemesi</a><br>
-                                                            <a href="../monitoring-and-diagnostics/resource-group-insights.md">Kaynak grubu düzeyi izleme</a><br>
+                                                            <a href="../monitoring-and-diagnostics/resource-group-insights.md">Kaynak grubu düzeyinde izleme</a><br>
                                                             <a href="./app/usage-workbooks.md">Etkileşimli raporlama</a><br>
-                                                            <a href="./app/export-power-bi.md">Power BI tümleştirmesi</a><br>
+                                                            <a href="./app/export-power-bi.md">Power BI tümleştirme</a><br>
                                                             <a href="https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-metric-charts">Ölçümleri araştırın</a>
                                                         </p>
                                                         <br><br>
                                                         <h3>Gizlilik, güvenlik, kullanım &amp; maliyeti</h3>
                                                         <p>
                                                             <a href="https://docs.microsoft.com/azure/log-analytics/log-analytics-personal-data-mgmt">Kişisel verileri işleme</a><br>
-                                                            <a href="./app/data-retention-privacy.md">Veri toplama, bekletme, &amp; depolama</a><br>
+                                                            <a href="./app/data-retention-privacy.md">Veri toplama, saklama, &amp; depolama</a><br>
                                                             <a href="./app/resources-roles-access-control.md">Rol tabanlı erişim</a><br>
                                                             <a href="./app/ip-addresses.md">IP adresi &amp; güvenlik duvarı özel durumları</a><br>
-                                                            <a href="https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs">Kullanım ve Tahmini maliyetler</a>
+                                                            <a href="https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs">Kullanım ve tahmini maliyetler</a>
                                                         </p>
                                                         <br><br>
                                                         <h3>Veri modeli</h3>

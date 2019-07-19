@@ -1,6 +1,6 @@
 ---
-title: Azure Windows VM boyutları - HPC | Microsoft Docs
-description: Farklı Windows yüksek performanslı Azure sanal makinelere bilgi işlem için kullanılabilir boyutları listeler. Vcpu, veri diskleri ve NIC yanı sıra bu serideki boyutları için depolama aktarım hızı ve ağ bant sayısı hakkında bilgiler listelenir.
+title: Azure Windows VM boyutları-HPC | Microsoft Docs
+description: Azure 'da Windows yüksek performanslı bilgi işlem sanal makineleri için kullanılabilen farklı boyutları listeler. Bu serideki boyutlarda vCPU sayısı, veri diskleri ve NIC 'lerin yanı sıra depolama aktarım hızı ve ağ bant genişliği hakkındaki bilgileri listeler.
 services: virtual-machines-windows
 documentationcenter: ''
 author: vermagit
@@ -14,15 +14,16 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
-ms.author: jonbeck;amverma
-ms.openlocfilehash: 62c6bb906d9c9935be2da148f24d5285cbf0ed67
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.author: amverma
+ms.reviewer: jonbeck
+ms.openlocfilehash: 6fd08ca912c14a50064f4b6da18334d8bf9df0ca
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710332"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67871586"
 ---
-# <a name="high-performance-compute-vm-sizes"></a>Yüksek performanslı bilgi işlem VM boyutları
+# <a name="high-performance-compute-vm-sizes"></a>Yüksek performanslı işlem VM boyutları
 
 [!INCLUDE [virtual-machines-common-sizes-hpc](../../../includes/virtual-machines-common-sizes-hpc.md)]
 
@@ -31,20 +32,20 @@ ms.locfileid: "67710332"
 [!INCLUDE [virtual-machines-common-a8-a9-a10-a11-specs](../../../includes/virtual-machines-common-a8-a9-a10-a11-specs.md)]
 
 
-* **İşletim sistemi** -Windows Server 2016'da tüm yukarıdaki HPC serisi VM'ler. Windows Server 2012 R2, Windows Server 2012, (Bu nedenle HB ve HC hariç) SR-IOV olmayan etkin Vm'lerde de desteklenir.
+* **İşletim sistemi** -Windows Server 2016 yukarıdaki HPC serisi VM 'lerde. Windows Server 2012 R2, Windows Server 2012, SR-ıOV olmayan VM 'Lerde de desteklenir (Bu nedenle HB ve HC hariç).
 
-* **MPI** -SR-IOV etkin VM boyutları (HB, HC) Azure üzerinde neredeyse her Mellanox OFED ile kullanılacak MPI örneğinizin izin.
-SR-IOV olmayan etkin Vm'lerde desteklenen MPI uygulamaları örnekleri arasında iletişim kurmak için Microsoft ağ doğrudan (ND) kullanıcı arabirimini kullanın. Bu nedenle, yalnızca Microsoft MPI (MS-MPI) 2012 R2 veya üzeri ve Intel MPI 5.x sürümleri desteklenir. Sonraki sürümlerinde (2017, 2018) Intel MPI çalışma zamanı kitaplığı olabilir veya Azure RDMA sürücüleri ile uyumlu olmayabilir.
+* **MPI** -Azure 'daki SR-ıOV etkin VM boyutları (HB, HC), her türlü MPI 'ın Mellanox ile kullanılmasına izin verir.
+SR-ıOV olmayan VM 'lerde desteklenen MPı uygulamaları, örnekler arasında iletişim kurmak için Microsoft ağ doğrudan (ND) arabirimini kullanır. Bu nedenle, yalnızca Microsoft MPı (MS-MPı) 2012 R2 veya üzeri ve Intel MPı 5. x sürümleri desteklenir. Intel MPı çalışma zamanı kitaplığı 'nın sonraki sürümleri (2017, 2018), Azure RDMA sürücüleriyle uyumlu olmayabilir veya olmayabilir.
 
-* **InfiniBandDriverWindows VM uzantısı** - RDMA özellikli VM'ler, InfiniBand etkinleştirmek için InfiniBandDriverWindows uzantısını ekleyin. Bu Windows VM uzantısı (SR-IOV olmayan vm'lerde) doğrudan Windows ağ sürücüleri veya RDMA bağlantısı için Mellanox OFED sürücülerini (vm'lerde SR-IOV) yükler.
-A8 ve A9 örnekleri bazı dağıtımlarda HpcVmDrivers uzantısı otomatik olarak eklenir. Not; HpcVmDrivers VM uzantısı onaylanmaz. güncelleştirilmez. Bir VM için VM uzantısı eklemek için kullanabileceğiniz [Azure PowerShell](/powershell/azure/overview) cmdlet'leri. 
+* **INFINIBANDDRIVERWINDOWS VM Uzantısı** -RDMA özellikli VM 'Lerde, InfiniBand 'i etkinleştirmek Için ınfinibanddriverwindows uzantısını ekleyin. Bu Windows sanal makine uzantısı, RDMA bağlantısı için Windows ağ doğrudan sürücülerini (SR-ıOV olmayan VM 'Lere) veya (SR-ıOV VM 'lerinde) Mellanox sürücüleri (SR-ıOV sanal makinelerinde) kurar.
+A8 ve A9 örneklerinin bazı dağıtımlarında, HpcVmDrivers uzantısı otomatik olarak eklenir. HpcVmDrivers VM uzantısının kullanım dışı olduğunu unutmayın; güncellenmeyecektir. VM uzantısını bir VM 'ye eklemek için [Azure PowerShell](/powershell/azure/overview) cmdlet 'lerini kullanabilirsiniz. 
 
-  Aşağıdaki komutu adlı bir mevcut RDMA özellikli sanal makinesinde en son sürüm 1.0 InfiniBandDriverWindows uzantıyı yükler *myVM* adlı kaynak grubunda dağıtılan *myResourceGroup* içinde *Batı ABD* bölgesi:
+  Aşağıdaki komut, *Batı ABD* bölgesinde *myresourcegroup* adlı kaynak grubunda dağıtılan *MYVM* adlı mevcut bir RDMA özellikli sanal makineye en son 1,0 ınfinibanddriverwindows uzantısını yükleme:
 
   ```powershell
   Set-AzVMExtension -ResourceGroupName "myResourceGroup" -Location "westus" -VMName "myVM" -ExtensionName "InfiniBandDriverWindows" -Publisher "Microsoft.HpcCompute" -Type "InfiniBandDriverWindows" -TypeHandlerVersion "1.0"
   ```
-  Alternatif olarak, VM uzantılarını aşağıdaki JSON öğesi ile kolay dağıtım için Azure Resource Manager şablonları eklenebilir:
+  Alternatif olarak, VM uzantıları, aşağıdaki JSON öğesiyle kolay dağıtım için Azure Resource Manager şablonlarına dahil edilebilir:
   ```json
   "properties":{
   "publisher": "Microsoft.HpcCompute",
@@ -53,7 +54,7 @@ A8 ve A9 örnekleri bazı dağıtımlarda HpcVmDrivers uzantısı otomatik olara
   } 
   ```
 
-  Aşağıdaki komut, mevcut bir VM ölçek kümesini adlandırılmış RDMA özellikli tüm sanal makineler en son sürüm 1.0 InfiniBandDriverWindows uzantıyı yükler. *myVMSS* adlı kaynak grubunda dağıtılan *myResourceGroup*:
+  Aşağıdaki komut, *Myresourcegroup*adlı kaynak grubunda dağıtılan *myvmss* adlı mevcut bir VM Ölçek kümesindeki tüm RDMA özellikli vm 'Lere en son 1,0 ınfinibanddriverwindows uzantısını yükleme:
 
   ```powershell
   $VMSS = Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS"
@@ -62,39 +63,39 @@ A8 ve A9 örnekleri bazı dağıtımlarda HpcVmDrivers uzantısı otomatik olara
   Update-AzVmssInstance -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS" -InstanceId "*"
   ```
 
-  Daha fazla bilgi için [sanal makine uzantıları ve özellikleri](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Uzantıları ile dağıtılmış VM'ler için çalışabilir [Klasik dağıtım modeli](classic/manage-extensions.md).
+  Daha fazla bilgi için bkz. [sanal makine uzantıları ve özellikleri](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). [Klasik dağıtım modelinde](classic/manage-extensions.md)dağıtılan VM 'ler için uzantılara de çalışabilirsiniz.
 
-* **RDMA ağ adres alanı** -azure'da RDMA ağ adres alanı 172.16.0.0/16 ayırır. Bir Azure sanal ağında dağıtılan örneklerinde MPI uygulamalarını çalıştırmak için sanal ağ adres alanı RDMA ağ çakışmadığından emin olun.
+* **RDMA ağ adresi alanı** -Azure 'daki RDMA ağı, 172.16.0.0/16 adres alanını ayırır. MPı uygulamalarını bir Azure sanal ağında dağıtılan örneklerde çalıştırmak için, sanal ağ adres alanının RDMA ağıyla çakışmadığından emin olun.
 
 
 ### <a name="cluster-configuration-options"></a>Küme yapılandırma seçenekleri
 
-Azure, RDMA ağ aracılığıyla iletişim kuran bir Windows HPC VM kümeleri oluşturmak için çeşitli seçenekler sunar dahil olmak üzere: 
+Azure, RDMA ağını kullanarak iletişim kurabilen Windows HPC VM kümeleri oluşturmak için çeşitli seçenekler sunar; örneğin: 
 
-* **Sanal makineler** -RDMA özellikli HPC VM'lerin aynı kullanılabilirlik (Azure Resource Manager dağıtım modeli kullandığınız zaman) kümesinde dağıtın. Klasik dağıtım modelini kullanıyorsanız, aynı bulut hizmetindeki sanal makineleri dağıtın. 
+* **Sanal makineler** -RDMA özellikli HPC VM 'lerini aynı Kullanılabilirlik kümesinde dağıtın (Azure Resource Manager dağıtım modelini kullandığınızda). Klasik dağıtım modelini kullanıyorsanız, VM 'Leri aynı bulut hizmetinde dağıtın. 
 
-* **Sanal makine ölçek kümeleri** - bir sanal makine ölçek kümesi, tek bir yerleştirme grubu dağıtımı sınırladığınızdan emin olun. Örneğin, bir Resource Manager şablonunda ayarlamak `singlePlacementGroup` özelliğini `true`. 
+* **Sanal Makine Ölçek Kümeleri** -sanal makine ölçek kümesinde dağıtımı tek bir yerleştirme grubuyla sınırlandırtığınızdan emin olun. Örneğin, bir kaynak yöneticisi şablonunda, `singlePlacementGroup` özelliğini olarak `true`ayarlayın. 
 
-* **Sanal makineler arasında MPI** - Vm'leri de aynı kullanılabilirlik kümesinde veya sanal aynı makine MPI iletişim sanal makineleri (VM'ler) arasında gerekirse sağlamak, Ölçek kümesi.
+* **Sanal makineler arasında MPI** -sanal makineler (VM 'ler) arasında gerekliyse MPI iletişimi varsa, VM 'lerin aynı Kullanılabilirlik kümesinde veya sanal makinede aynı ölçek kümesinde olduğundan emin olun.
 
-* **Azure CycleCloud** -bir HPC kümesi oluşturma [Azure CycleCloud](/azure/cyclecloud/) Windows düğümlerinde MPI işlerini çalıştırma için.
+* **Azure CycleCloud** -Windows düğümlerinde MPI işlerini çalıştırmak Için [Azure CYCLECLOUD](/azure/cyclecloud/) 'te bir HPC kümesi oluşturun.
 
-* **Azure Batch** -oluşturma bir [Azure Batch](/azure/batch/) Windows Server'da MPI iş yüklerini çalıştırmak için havuz işlem düğümlerini. Daha fazla bilgi için [kullanım RDMA özellikli veya GPU özellikli örnekler Batch havuzlarında](../../batch/batch-pool-compute-intensive-sizes.md). Ayrıca bkz: [Batch Shipyard](https://github.com/Azure/batch-shipyard) toplu olarak kapsayıcı tabanlı iş yüklerini çalıştırmaya yönelik proje.
+* **Azure Batch** -Windows Server işlem düğümlerinde MPI iş yüklerini çalıştırmak için bir [Azure Batch](/azure/batch/) havuzu oluşturun. Daha fazla bilgi için bkz. [Batch havuzlarında RDMA özellikli veya GPU özellikli örnekler kullanma](../../batch/batch-pool-compute-intensive-sizes.md). Toplu iş üzerinde kapsayıcı tabanlı iş yüklerini çalıştırmak için [Batch Shipbahçe](https://github.com/Azure/batch-shipyard) projesine de bakın.
 
-* **Microsoft HPC Pack** - [HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview) RDMA Özellikli Windows Vm'lerinde dağıtılan Azure RDMA ağ kullanan MS MPI çalışma zamanı ortamı içerir. Örneğin dağıtımlar için bkz. [MPI uygulamalarını çalıştırmak için HPC Pack ile Windows RDMA kümesi ayarlama](classic/hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+* **Microsoft HPC Pack** - [HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview) , RDMA özellikli Windows VM 'lerinde dağıtıldığında Azure RDMA ağını kullanan MS-MPI için bir çalışma zamanı ortamı içerir. Örneğin, dağıtımlar için bkz. [MPI uygulamalarını çalıştırmak IÇIN HPC Pack Ile WINDOWS RDMA kümesi ayarlama](classic/hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
-## <a name="other-sizes"></a>Diğer boyutları
+## <a name="other-sizes"></a>Diğer boyutlar
 - [Genel amaçlı](sizes-general.md)
 - [İşlem için iyileştirilmiş](sizes-compute.md)
 - [Bellek için iyileştirilmiş](../virtual-machines-windows-sizes-memory.md)
 - [Depolama için iyileştirilmiş](../virtual-machines-windows-sizes-storage.md)
 - [GPU için iyileştirilmiş](sizes-gpu.md)
-- [Önceki nesil](sizes-previous-gen.md)
+- [Önceki nesiller](sizes-previous-gen.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Yoğun işlem gücü kullanımlı örnekler Windows Server'da HPC Pack ile kullanmak için bkz [MPI uygulamalarını çalıştırmak için HPC Pack ile Windows RDMA kümesi ayarlama](classic/hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+- Windows Server 'da HPC Pack ile işlem yoğunluğu kullanan örnekleri kullanmak için denetim listeleri için bkz. [MPI uygulamalarını çalıştırmak IÇIN HPC Pack Ile WINDOWS RDMA kümesi ayarlama](classic/hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
-- Yoğun işlem gücü kullanımlı örnekler MPI uygulamalarını Azure Batch ile çalışırken kullanmak için bkz: [Azure Batch'de ileti geçirme arabirimi (MPI) uygulamalarını çalıştırmak için çok örnekli görevleri kullanma](../../batch/batch-mpi.md).
+- MPı uygulamalarını Azure Batch ile çalıştırırken yoğun işlem yoğunluklu örnekler kullanmak için bkz. [Azure Batch 'de Ileti geçirme arabirimi (MPı) uygulamalarını çalıştırmak için çok örnekli görevleri kullanma](../../batch/batch-mpi.md).
 
-- Hakkında daha fazla bilgi [Azure işlem birimleri (ACU)](acu.md) Azure SKU'ları arasında işlem performansını karşılaştırmanıza yardımcı olabilir.
+- Azure [işlem birimlerinin (ACU)](acu.md) Azure SKU 'ları genelinde işlem performansını karşılaştırmanıza nasıl yardımcı olabileceğini öğrenin.

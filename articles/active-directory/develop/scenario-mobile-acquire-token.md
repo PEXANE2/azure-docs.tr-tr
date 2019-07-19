@@ -1,9 +1,9 @@
 ---
-title: Mobil uygulama çağrıları API'leri uygulama için bir belirteç alma - web | Microsoft kimlik platformu
-description: Web API'ları (uygulama için bir belirteç alma) çağıran bir mobil uygulama oluşturmayı öğrenin
+title: Web API 'Lerini çağıran mobil uygulama-uygulama için belirteç alma | Microsoft Identity platformu
+description: Web API 'Lerini çağıran bir mobil uygulama oluşturmayı öğrenin (uygulama için belirteç alma)
 services: active-directory
 documentationcenter: dev-center-name
-author: danieldobalian
+author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -16,22 +16,22 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 590184c25fa0aa3cb3219aa9c185a31e62090ba9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5c1ac880aa8274cc9a4ea554de84dcb46476236f
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67111139"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68320903"
 ---
-# <a name="mobile-app-that-calls-web-apis---get-a-token"></a>Web API - çağıran mobil uygulama belirteci Al
+# <a name="mobile-app-that-calls-web-apis---get-a-token"></a>Web API 'Lerini çağıran mobil uygulama-belirteç al
 
-Korumalı çağırma başlamadan önce web API'leri, uygulamanıza bir erişim belirteci gerekir. Bu makalede, Microsoft kimlik doğrulama kitaplığı (MSAL) kullanarak bir belirteç alma işleminde size yol gösterir.
+Korumalı Web API 'Lerini çağırmaya başlamadan önce, uygulamanız bir erişim belirtecine sahip olacak. Bu makalede, Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanarak bir belirteç alma sürecinde adım adım açıklanır.
 
-## <a name="scopes-to-request"></a>İstek için kapsamları
+## <a name="scopes-to-request"></a>İstek için kapsamlar
 
-Bir belirteç isteğinde bulunduğunuzda bir kapsam tanımlama gerekir. Uygulamanıza erişmek hangi verilerin kapsamı belirler.  
+Bir belirteç istediğinizde, bir kapsam tanımlamanız gerekir. Kapsam, uygulamanızın erişebileceği verileri belirler.  
 
-En kolay yaklaşım istenen web API'SİNİN birleştirmek, `App ID URI` kapsamlı `.default`. Bunun yapılması, uygulamanız portalda tüm kapsamlar ayarlamak için gerekli olan Microsoft kimlik platformu söyler.
+En kolay yaklaşım, istenen Web API 'sinin `App ID URI` kapsamını kapsamıyla `.default`birleştirmenin bir yoludur. Bunun yapılması, Microsoft Identity platformunu uygulamanızın portalda ayarlanmış tüm kapsamları gerektirdiğini söyler.
 
 #### <a name="android"></a>Android
 ```Java
@@ -48,11 +48,11 @@ let scopes: [String] = ["https://graph.microsoft.com/.default"]
 var scopes = new [] {"https://graph.microsoft.com/.default"};
 ```
 
-## <a name="get-tokens"></a>Belirteç Al
+## <a name="get-tokens"></a>Belirteçleri al
 
-### <a name="via-msal"></a>Via MSAL
+### <a name="via-msal"></a>MSAL aracılığıyla
 
-MSAL uygulamaları sessizce ve etkileşimli olarak belirteçlerini almak sağlar. Yalnızca bu yöntemleri çağırmak ve MSAL istenen kapsamlar için erişim belirteci döndürür. Doğru sessiz bir isteği gerçekleştirmek ve etkileşimli bir isteği dönmesi modelidir.
+MSAL, uygulamaların belirteçleri sessizce ve etkileşimli olarak almasına izin verir. Yalnızca bu yöntemleri çağırın ve MSAL istenen kapsamlar için bir erişim belirteci döndürür. Doğru model, sessiz bir istek gerçekleştirmek ve etkileşimli bir isteğe geri dönememektedir.
 
 #### <a name="android"></a>Android
 
@@ -161,13 +161,13 @@ catch(MsalUiRequiredException e)
 }
 ```
 
-### <a name="via-the-protocol"></a>Protokol üzerinden
+### <a name="via-the-protocol"></a>Protokol aracılığıyla
 
-Protokolü kullanarak doğrudan önerilmemektedir. Bunu yaparsanız, uygulamanın bazı çoklu oturum açma (SSO), cihaz yönetimi ve koşullu erişim senaryoları desteklemesi gerekmez.
+Protokolü doğrudan kullanmanızı önermiyoruz. Bunu yaparsanız uygulama, bazı çoklu oturum açma (SSO), cihaz yönetimi ve koşullu erişim senaryolarını desteklemez.
 
-Belirteçlerini almak için mobil uygulamalar için protokol kullandığınızda, iki isteği yapmanız gerekir: bir yetkilendirme kodu alın ve için bir belirteç değişimi.
+Mobil uygulamalar için belirteçleri almak üzere Protokolü kullandığınızda iki istek yapmanız gerekir: bir yetkilendirme kodu alın ve belirteç için Exchange 'i değiştirin.
 
-#### <a name="get-authorization-code"></a>Yetkilendirme kodu alın
+#### <a name="get-authorization-code"></a>Yetkilendirme kodunu al
 
 ```Text
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?
@@ -179,7 +179,7 @@ client_id=<CLIENT_ID>
 &state=12345
 ```
 
-#### <a name="get-access-and-refresh-token"></a>Erişim ve yenileme belirteci alma
+#### <a name="get-access-and-refresh-token"></a>Erişim ve yenileme belirtecini al
 
 ```Text
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1
@@ -196,4 +196,4 @@ client_id=<CLIENT_ID>
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Web API'si çağırma](scenario-mobile-call-api.md)
+> [Web API 'SI çağırma](scenario-mobile-call-api.md)

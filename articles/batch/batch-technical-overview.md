@@ -4,7 +4,7 @@ description: Büyük ölçekli paralel ve HPC iş yükleri için Azure Batch hiz
 services: batch
 documentationcenter: ''
 author: mscurrell
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: batch
@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 01/19/2018
 ms.author: markscu
 ms.custom: mvc
-ms.openlocfilehash: 1dbd31b3c666857765b8b20a11d4d0c7ea8ea37b
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: c55b831903ed8dad124156013c8379536f676efa
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704757"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322792"
 ---
 # <a name="what-is-azure-batch"></a>Azure Batch nedir?
 
@@ -30,7 +30,7 @@ Geliştiriciler, büyük ölçekli yürütmenin gerekli olduğu SaaS uygulamalar
 
 Batch kullanımından ek ücret alınmaz. Yalnızca sanal makineler, depolama ve ağ gibi kullanılan temel kaynaklar için ödeme yaparsınız.
 
-Batch ve azure'daki diğer HPC çözüm seçenekleri arasında bir karşılaştırma için bkz. [yüksek performanslı bilgi işlem (HPC) azure'da](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/).
+Azure 'da Batch ve diğer HPC çözüm seçenekleri arasında bir karşılaştırma için bkz. [Azure 'Da yüksek performanslı bilgi işlem (HPC)](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/).
 
 ## <a name="run-parallel-workloads"></a>Paralel iş yükleri çalıştırma
 Batch, doğası gereği paralel ("utandırıcı derecede paralel" olarak da bilinir) iş yükleriyle düzgün çalışır. Doğası gereği paralel iş yükleri, uygulamaların birbirinden bağımsız olarak çalışabildiği ve her örneğin işin bir kısmını tamamladığı iş yükleridir. Uygulamalar yürütülürken bazı ortak verilere erişebilir, ancak uygulamanın diğer örnekleri iletişim kurmazlar. Bu nedenle doğası gereği paralel iş yükleri, uygulamaları eşzamanlı çalıştırmak için kullanılabilen işlem kaynaklarının miktarına göre belirlenen büyük bir ölçekte çalışır.

@@ -1,6 +1,6 @@
 ---
-title: 'Azure Active Directory etki alanı Hizmetleri: Sorun giderme güvenli LDAP yapılandırma | Microsoft Docs'
-description: Güvenli LDAP için Azure AD Domain Services sorunlarını giderme
+title: 'Azure Active Directory Domain Services: Güvenli LDAP sorunlarını giderme | Microsoft Docs'
+description: Azure AD Domain Services için Güvenli LDAP sorun giderme
 services: active-directory-ds
 documentationcenter: ''
 author: iainfoulds
@@ -15,54 +15,54 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 453018f486ca3fda91d8447208fe3d936722522e
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 8a542f7927ddd834c7273f6ef8b251ddc35e8436
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67473946"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234182"
 ---
-# <a name="azure-ad-domain-services---troubleshooting-secure-ldap-configuration"></a>Azure AD etki alanı Hizmetleri - sorun giderme güvenli LDAP yapılandırma
+# <a name="azure-ad-domain-services---troubleshooting-secure-ldap-configuration"></a>Azure AD Domain Services-Güvenli LDAP yapılandırma sorunlarını giderme
 
-Bu makale için yaygın kullanılan raporlayabileceği ne zaman sorunları [güvenli LDAP yapılandırılıyor](configure-ldaps.md) Azure AD Domain Services için.
+Bu makalede, Azure AD Domain Services için [GÜVENLI LDAP yapılandırılırken](configure-ldaps.md) sık karşılaşılan sorunlara yönelik çözümler sağlanmaktadır.
 
-## <a name="aadds101-secure-ldap-network-security-group-configuration"></a>AADDS101: Güvenli LDAP ağ güvenlik grubu yapılandırma
+## <a name="aadds101-secure-ldap-network-security-group-configuration"></a>AADDS101: Güvenli LDAP ağ güvenlik grubu yapılandırması
 
 **Uyarı iletisi:**
 
-*İnternet üzerinden güvenli LDAP, yönetilen etki alanı için etkinleştirilir. Ancak 636 numaralı bağlantı noktasına erişim bir ağ güvenlik grubu kullanılarak kilitlenmemiş kilitli değil. Bu kullanıcı hesaplarını parola deneme yanılma saldırıları için yönetilen etki alanındaki getirebilir.*
+*Internet üzerinden Güvenli LDAP, yönetilen etki alanı için etkinleştirilmiştir. Ancak, 636 numaralı bağlantı noktasına erişim bir ağ güvenlik grubu kullanılarak kilitlenmemiştir. Bu, yönetilen etki alanındaki Kullanıcı hesaplarını parola yanılma saldırısı saldırılarına maruz bırakabilir.*
 
 ### <a name="secure-ldap-port"></a>Güvenli LDAP bağlantı noktası
 
-Güvenli LDAP etkin olduğunda, yalnızca belirli IP adreslerinden gelen LDAPS erişime izin vermek için ek kurallar oluşturmanızı öneririz. Bu kurallar, etki alanı güvenlik tehdidi doğuracak deneme yanılma saldırılarına karşı koruyun. Bağlantı noktası 636 yönetilen etki alanınıza erişim sağlar. Güvenli LDAP için erişime izin vermek için NSG güncelleştirmek nasıl aşağıda verilmiştir:
+Güvenli LDAP etkinleştirildiğinde, yalnızca belirli IP adreslerinden gelen LDAPS erişimine izin vermek için ek kurallar oluşturmanız önerilir. Bu kurallar, etki alanınızı bir güvenlik tehdidi oluşturabilecek deneme yanılma saldırılarına karşı korur. Bağlantı noktası 636, yönetilen etki alanınız için erişime izin verir. Güvenli LDAP erişimine izin vermek için NSG 'nizi güncelleştirme işlemi şu şekildedir:
 
-1. Gidin [ağ güvenlik grupları sekmesini](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FNetworkSecurityGroups) Azure portalında
-2. Tablodan, etki alanı ile ilişkili NSG seçin.
-3. Tıklayarak **gelen güvenlik kuralları**
+1. Azure portal [ağ güvenlik grupları sekmesine](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FNetworkSecurityGroups) gidin
+2. Tablodan etki alanınız ile ilişkili NSG 'yi seçin.
+3. **Gelen güvenlik kuralları** ' na tıklayın
 4. Bağlantı noktası 636 kuralı oluşturma
-   1. Tıklayın **Ekle** üst gezinti çubuğunda.
-   2. Seçin **IP adresleri** kaynağı için.
-   3. Bu kural için kaynak bağlantı noktası aralıkları belirtin.
-   4. Hedef bağlantı noktası aralıkları için giriş "636".
-   5. Protokolüdür **TCP**.
-   6. Kural, bir uygun adını, açıklamasını ve öncelik verin. Varsa bu kuralın önceliğini "Reddet tüm" kuralının önceliği yüksek olmalıdır.
-   7. **Tamam**'ı tıklatın.
-5. Kural oluşturulduğunu doğrulayın.
-6. Adımları doğru şekilde tamamladığınızdan emin olmak için iki saat içinde etki alanınızın sistem durumunu denetleyin.
+   1. Üst gezinti çubuğunda **Ekle** ' ye tıklayın.
+   2. Kaynak için **IP adreslerini** seçin.
+   3. Bu kural için kaynak bağlantı noktası aralıklarını belirtin.
+   4. Hedef bağlantı noktası aralıkları için "636" girişi.
+   5. Protokol **TCP**'dir.
+   6. Kurala uygun bir ad, açıklama ve öncelik verin. Bu kuralın önceliği, varsa "Tümünü Reddet" kuralının önceliği 'nden daha yüksek olmalıdır.
+   7.           **Tamam**'ı tıklatın.
+5. Kuralınızın oluşturulduğunu doğrulayın.
+6. Adımları doğru tamamladığınızdan emin olmak için etki alanının sistem durumunu iki saat içinde denetleyin.
 
 > [!TIP]
-> Bağlantı noktası 636 sorunsuz bir şekilde çalıştırmak Azure AD Domain Services için gereken yalnızca kural değil. Daha fazla bilgi için ziyaret [ağ yönergeleri](network-considerations.md) veya [sorun giderme NSG yapılandırmasını](alert-nsg.md) makaleler.
+> Bağlantı noktası 636 Azure AD Domain Services düzgün çalışması için gereken tek kural değildir. Daha fazla bilgi edinmek için [ağ kılavuzlarını](network-considerations.md) ziyaret edin veya [NSG yapılandırma makaleleriyle ilgili sorunları giderin](alert-nsg.md) .
 >
 
-## <a name="aadds502-secure-ldap-certificate-expiring"></a>AADDS502: Güvenli LDAP sertifikası sona erecek
+## <a name="aadds502-secure-ldap-certificate-expiring"></a>AADDS502: Güvenli LDAP sertifikanın süresi doluyor
 
 **Uyarı iletisi:**
 
-*Yönetilen etki alanı için güvenli LDAP sertifikasını [date] dolacak].*
+*Yönetilen etki alanı için Güvenli LDAP sertifikasının kullanım süreleri [Date]].*
 
 **Çözüm:**
 
-Özetlenen adımları izleyerek yeni bir güvenli LDAP sertifikası oluşturma [güvenli LDAP yapılandırma](configure-ldaps.md) makalesi.
+[GÜVENLI LDAP yapılandırma](configure-ldaps.md) makalesinde özetlenen adımları izleyerek yeni BIR Güvenli LDAP sertifikası oluşturun.
 
 ## <a name="contact-us"></a>Bizimle iletişim kurun
-Azure Active Directory Domain Services ürün ekibiyle [geri bildirim paylaşma veya destek](contact-us.md).
+[Geri bildirim paylaşmak veya destek için](contact-us.md)Azure Active Directory Domain Services ürün ekibine başvurun.

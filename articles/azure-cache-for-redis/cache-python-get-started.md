@@ -1,6 +1,6 @@
 ---
-title: Azure önbelleği için Redis kullanan bir Python uygulaması oluşturma Hızlı başlangıcı | Microsoft Docs
-description: Bu hızlı başlangıçta, Azure önbelleği için Redis kullanan bir Python uygulaması oluşturmayı öğrenin
+title: Redsıs için Azure önbelleği kullanan bir Python uygulaması oluşturmak için hızlı başlangıç | Microsoft Docs
+description: Bu hızlı başlangıçta, redin için Azure önbelleği kullanan bir Python uygulaması oluşturmayı öğreneceksiniz.
 services: cache
 documentationcenter: ''
 author: yegu-ms
@@ -15,38 +15,32 @@ ms.workload: tbd
 ms.date: 05/11/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 73c14b3d3023dcca113589d63276216fcfdd17f1
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 70a8e4cd694a90e83bf78e00a7c725a8c887b2eb
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67513451"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68324067"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-python"></a>Hızlı Başlangıç: Azure önbelleği için Redis Python ile kullanın
+# <a name="quickstart-use-azure-cache-for-redis-with-python"></a>Hızlı Başlangıç: Python ile Redsıs için Azure önbelleğini kullanma
 
-
-## <a name="introduction"></a>Giriş
-
-Bu hızlı başlangıçta, bir Azure önbelleği için Redis okumak ve yazmak için bir önbellek için Python ile bağlanma işlemi gösterilmektedir. 
-
-![Python testi tamamlandı](./media/cache-python-get-started/cache-python-completed.png)
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+Bu hızlı başlangıçta, Azure 'daki herhangi bir uygulamadan erişilebilen güvenli, ayrılmış bir önbelleğe erişim sağlamak için Redsıs için Azure önbelleğini bir Python uygulamasına katabilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* [pip](https://pypi.org/project/pip/) ile yüklü [Python 2 veya Python 3 ortamı](https://www.python.org/downloads/). 
+- Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
+- [Python 2 veya 3](https://www.python.org/downloads/)
 
-## <a name="create-an-azure-cache-for-redis-on-azure"></a>Azure Redis için bir Azure önbelleği oluşturma
+## <a name="create-an-azure-cache-for-redis-on-azure"></a>Azure üzerinde Redsıs için Azure önbelleği oluşturma
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
 
 ## <a name="install-redis-py"></a>redis-py yükleyin
 
-[Redis-py](https://github.com/andymccurdy/redis-py) bir Python Azure önbelleği için Redis için arabirimidir. Python paketleri aracı olan *pip*’i kullanarak redis-py paketini yükleyin. 
+[Redin-](https://github.com/andymccurdy/redis-py) , Redsıs Için Azure önbelleğine yönelik bir Python arabirimidir. Python paketleri aracı olan *pip*’i kullanarak redis-py paketini yükleyin. 
 
-Aşağıdaki örnekte *pip3* bir Visual Studio 2019 Geliştirici komutu yükseltilmiş yönetici ayrıcalıklarıyla çalıştırıyor İstemi'ni kullanarak Windows 10 redis-py paketini yüklemek Python3 için.
+Aşağıdaki örnek, yükseltilmiş yönetici ayrıcalıklarıyla çalışan bir Visual Studio 2019 Geliştirici komut istemi kullanarak Windows 10 ' da reddo-Kopyala paketini yüklemek için *pip3* for Python3 kullanır.
 
 ```python
     pip3 install redis
@@ -57,7 +51,7 @@ Aşağıdaki örnekte *pip3* bir Visual Studio 2019 Geliştirici komutu yükselt
 
 ## <a name="read-and-write-to-the-cache"></a>Önbellek üzerinde okuma ve yazma
 
-Python’u çalıştırın ve komut satırındaki önbelleği kullanarak test edin. Değiştirin `<Your Host Name>` ve `<Your Access Key>` , Azure önbelleği için Redis için değerlerle. 
+Python’u çalıştırın ve komut satırındaki önbelleği kullanarak test edin. `<Your Host Name>` Ve`<Your Access Key>` değerlerini, redin için Azure önbelleğiniz ile değiştirin. 
 
 ```python
 >>> import redis
@@ -70,13 +64,13 @@ b'bar'
 ```
 
 > [!IMPORTANT]
-> Redis için sürümü 3.0 veya üzeri SSL sertifikası denetimi zorunlu. Redis'e bağlanırken ssl_ca_certs açıkça ayarlanmalıdır. RH Linux durumunda ssl_ca_certs bulunabilir "/ etc/pki/tls/certs/ca-bundle.crt" Sertifika modülü.
+> Redsıs sürümü 3,0 veya daha yüksekse, SSL sertifikası denetimi zorlanır. Redsıs 'e bağlanılırken ssl_ca_certs açıkça ayarlanması gerekir. RH Linux söz konusu olduğunda, ssl_ca_certs "/etc/pki/TLS/certs/CA-Paketleyici Le.CRT" sertifika modülünde bulunabilir.
 
 ## <a name="create-a-python-script"></a>Python betiği oluşturma
 
 *PythonApplication1.py* adlı yeni bir betik metni dosyası oluşturun.
 
-Aşağıdaki betiği *PythonApplication1.py* dosyasına ekleyin ve dosyayı kaydedin. Bu betik, önbellek erişimini test eder. Değiştirin `<Your Host Name>` ve `<Your Access Key>` , Azure önbelleği için Redis için değerlerle. 
+Aşağıdaki betiği *PythonApplication1.py* dosyasına ekleyin ve dosyayı kaydedin. Bu betik, önbellek erişimini test eder. `<Your Host Name>` Ve`<Your Access Key>` değerlerini, redin için Azure önbelleğiniz ile değiştirin. 
 
 ```python
 import redis
@@ -127,13 +121,10 @@ Kaynak grubunun silinmesini onaylamanız istenir. Onaylamak için kaynak grubunu
 
 Birkaç dakika sonra kaynak grubu ve içerdiği kaynakların tümü silinir.
 
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Bir Azure önbelleği için Redis kullanan basit bir ASP.NET web uygulaması oluşturun.](./cache-web-app-howto.md)
-
-
+> [Redsıs için Azure önbelleği kullanan basit bir ASP.NET Web uygulaması oluşturun.](./cache-web-app-howto.md)
 
 <!--Image references-->
 [1]: ./media/cache-python-get-started/redis-cache-new-cache-menu.png

@@ -1,9 +1,9 @@
 ---
-title: Mobil uygulama web API'leri - uygulama kodu yapılandırma çağrıları | Microsoft kimlik platformu
-description: Bir mobil uygulama oluşturmayı öğrenin çağrıları veritabanını web API'leri (uygulama kodu yapılandırma)
+title: Web API 'Lerini çağıran mobil uygulama-uygulamanın kod yapılandırması | Microsoft Identity platformu
+description: Web API 'Lerini (uygulamanın kod yapılandırması) çağıran bir mobil uygulama oluşturmayı öğrenin
 services: active-directory
 documentationcenter: dev-center-name
-author: danieldobalian
+author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -16,38 +16,38 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b6ebab0eeca6895e1c7a0f6008972030d81da42
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f43ae9da51f68c9765a36d27c993d1c9935d61fa
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65962397"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326118"
 ---
-# <a name="mobile-app-that-calls-web-apis---app-registration"></a>Mobil uygulama web API'leri - uygulama kaydı çağrıları
+# <a name="mobile-app-that-calls-web-apis---app-registration"></a>Web API 'Lerini çağıran mobil uygulama-uygulama kaydı
 
-Bu makale, bir mobil uygulama oluşturmak için uygulama kayıt yönergeleri içerir.
+Bu makale, bir mobil uygulama oluşturmaya yönelik uygulama kayıt yönergelerini içerir.
 
 ## <a name="supported-account-types"></a>Desteklenen hesap türleri
 
-Mobil uygulamalarda desteklenen hesap türleri, etkinleştirmek istediğiniz deneyimi ve uygulamanızın hedeflediği kullanıcılar bağlıdır.
+Mobil uygulamalarda desteklenen hesap türleri etkinleştirmek istediğiniz deneyime ve uygulamanızın hedeflediği kullanıcılara bağlıdır.
 
-## <a name="platform-configuration-and-redirect-uris"></a>Platform yapılandırmasını ve yeniden yönlendirme URI'leri  
+## <a name="platform-configuration-and-redirect-uris"></a>Platform yapılandırma ve yeniden yönlendirme URI 'Leri  
 
-Bir mobil uygulama oluştururken, en önemli kayıt yeniden yönlendirme URI'si adımdır. Bu, aracılığıyla ayarlanabilir [platform yapılandırmasını kimlik doğrulaması dikey penceresinde](https://aka.ms/MobileAppReg).
+Bir mobil uygulama oluştururken, en kritik kayıt adımı yeniden yönlendirme URI 'sidir. Bu, [kimlik doğrulama dikey penceresindeki platform yapılandırması](https://aka.ms/MobileAppReg)aracılığıyla ayarlanabilir.
 
-Bu deneyim, çoklu oturum açma (SSO) Microsoft Authenticator (ve android'de Intune Şirket portalı) aracılığıyla destek yanı sıra cihaz Yönetimi ilkeleri için uygulamanızı sağlayacaktır.
+Bu deneyim, uygulamanızın Microsoft Authenticator (ve Android 'de Intune Şirket Portalı) aracılığıyla çoklu oturum açma (SSO) ve cihaz yönetim ilkelerini destekleme olanağı sağlar.
 
-El ile yeniden yönlendirme URI'si yapılandırmak isterseniz, uygulama bildirimi bunu yapabilirsiniz. Önerilen biçimi aşağıdaki şekildedir:
+Yeniden yönlendirme URI 'sini el ile yapılandırmayı tercih ediyorsanız, bunu uygulama bildirimi aracılığıyla yapabilirsiniz. Önerilen biçim aşağıda verilmiştir:
 
-- ***iOS***: `msauth.<BUNDLE_ID>://auth`
-- ***Android***: `msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
-  - Android imza karma KeyTool komutu aracılığıyla yayınlama veya hata ayıklama anahtarlar kullanılarak oluşturulabilir.
+- ***iOS***:`msauth.<BUNDLE_ID>://auth`
+- ***Android***:`msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
+  - Android imza karması, anahtar aracı komutu aracılığıyla sürüm veya hata ayıklama anahtarları kullanılarak oluşturulabilir.
 
 ## <a name="api-permissions"></a>API izinleri
 
-Mobil uygulamaları, oturum açmış kullanıcı adına API'lerini çağırma. Kapsamı olarak da adlandırılan temsilci izinleri istemek uygulamanız gerekir. İstenen deneyimi bağlı olarak, bu statik olarak Azure portalı üzerinden veya çalışma zamanında dinamik olarak yapılabilir. Statik olarak izinleri kaydetme, uygulamanızı kolayca onaylanacak yöneticilerinin sağlar ve önerilir.
+Mobil uygulamalar, oturum açmış kullanıcı adına API 'Leri çağırır. Uygulamanızın, kapsam olarak da adlandırılan, temsilci izinleri istemesi gerekir. İstenen deneyime bağlı olarak, bu Azure portal statik olarak veya çalışma zamanında dinamik olarak yapılabilir. Statik olarak kayıt izinleri, yöneticilerin uygulamanızı kolayca onaylamasını sağlar ve önerilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Bir belirteç alınırken](scenario-mobile-acquire-token.md)
+> [Belirteç alma](scenario-mobile-acquire-token.md)

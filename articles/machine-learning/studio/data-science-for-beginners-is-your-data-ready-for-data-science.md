@@ -7,18 +7,18 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: sdgilley
-ms.author: sgilleye
+ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: d38a5066304a11ff2cd53a0168e51a0d74fda555
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1d9475b49b3ef8a2e672e1ce505a7d94d19cb14f
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60751492"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875317"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>Verileriniz veri bilimi için hazır mı?
-## <a name="video-2-data-science-for-beginners-series"></a>Video 2: Seri yeni başlayanlar için veri bilimi
+## <a name="video-2-data-science-for-beginners-series"></a>Video 2: Yeni başlayanlar için veri bilimi serisi
 Veri bilimi için hazır olmasını temel ölçütleri karşıladığından emin olmak için verilerinizi değerlendirin öğrenin.
 
 En yetersiz serisi almak için tüm bunları izleyin. [Videoları listesine Git](#other-videos-in-this-series)
@@ -31,13 +31,13 @@ En yetersiz serisi almak için tüm bunları izleyin. [Videoları listesine Git]
 ## <a name="other-videos-in-this-series"></a>Bu serideki diğer videolar
 *Yeni başlayanlar için veri bilimi* beş kısa videoyu veri bilimine hızlı bir giriş niteliğindedir.
 
-* Video 1: [5 veri biliminin yanıtladığı sorular](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 en az 14 sn)*
+* Video 1: [5 soruda veri bilimi yanıtları](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 dakikalık 14 sn)*
 * Video 2: Verileriniz veri bilimi için hazır mı?
-* Video 3: [Yanıt verileri ile soru](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 dk 17 sn)*
-* Video 4: [Basit bir model ile yanıtı tahmin etme](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 dk 42 sn)*
-* Video 5: [Veri bilimi için başkalarının çalışmalarını kopyalama](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 dk 18 sn)*
+* Video 3: [Verilerle yanıtlayacağınız bir soru sorun](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 dakikalık 17 sn)*
+* Video 4: [Basit bir modelle bir yanıt tahmin](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) etme *(7 dakikalık 42 sn)*
+* Video 5: [Diğer insanların işini veri bilimi olarak Kopyala](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 en az 18 sn)*
 
-## <a name="transcript-is-your-data-ready-for-data-science"></a>Transkript: Verileriniz veri bilimi için hazır mı?
+## <a name="transcript-is-your-data-ready-for-data-science"></a>Döküm Verileriniz veri bilimi için hazır mı?
 Hoş Geldiniz "verileriniz veri bilimi için hazır mı?" serinin ikinci videoda *yeni başlayanlar için veri bilimi*.  
 
 Veri bilimi istediğiniz yanıt vermeden önce çalışmak için bazı yüksek kaliteli ham madde vermeniz gerekir. Pizza, daha iyi, daha iyi son ürün Başlat malzemeleri yalnızca yapma gibi. 
@@ -100,7 +100,7 @@ Daha fazla veri ekledikçe resmi daha anlaşılır hale gelir ve daha ayrıntıl
 
 İlgili, bağlı olarak doğru veri ile yeteri kadar sahip tüm malzemeleri gereken bazı yüksek kaliteli veri bilimi.
 
-Diğer dört videoları kullanıma mutlaka *yeni başlayanlar için veri bilimi* Microsoft Azure Machine Learning Studio'dan.
+Microsoft Azure Machine Learning Studio *Yeni başlayanlar Için veri bilimi* 'ndeki diğer dört videoyu kullanıma aldığınızdan emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Bir Machine Learning Studio'da ilk veri bilimi deneyinde deneyin](create-experiment.md)

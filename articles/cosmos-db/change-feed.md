@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 51a554586c67842ead40cd4a1bfaaa51bbdd8a18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e450c0682a22a6e667a2bca153ce5d706a5bea96
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65954404"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67986244"
 ---
-# <a name="change-feed-in-azure-cosmos-db---overview"></a>Değişiklik akışı Azure Cosmos DB'de - genel bakış
+# <a name="change-feed-in-azure-cosmos-db---overview"></a>Azure Cosmos DB akışı değiştirme-genel bakış
 
 Azure Cosmos DB geliştirilme akış desteği, herhangi bir değişiklik için bir Azure Cosmos DB kapsayıcısı için dinleyerek değiştirin. Ardından, değiştirilmiş olan sırayla değiştirilen belgelerin sıralanmış listesini çıkarır. Değişiklikler kalıcı hale getirilir, zaman uyumsuz ve artırımlı olarak işlenebilir ve çıkış, paralel işleme için bir veya daha fazla tüketiciye dağıtılabilir. 
 
@@ -33,7 +33,7 @@ Değişiklik Azure Cosmos DB'de akışı, aşağıdaki görüntüde gösterildi�
 
 Bu özellik şu anda aşağıdaki Azure Cosmos DB API'ları ve istemci SDK'ları tarafından desteklenmektedir.
 
-| **İstemci sürücüleri** | **Azure CLI** | **SQL API'Sİ** | **Cassandra API'si** | **Azure Cosmos DB'nin MongoDB API'si** | **Gremlin API**|**Tablo API’si** |
+| **İstemci sürücüleri** | **Azure CLI** | **SQL API'Sİ** | **Cassandra API'si** | **MongoDB için Azure Cosmos DB API 'SI** | **Gremlin API**|**Tablo API’si** |
 | --- | --- | --- | --- | --- | --- | --- |
 | .NET | NA | Evet | Hayır | Hayır | Evet | Hayır |
 |Java|NA|Evet|Hayır|Hayır|Evet|Hayır|
@@ -58,7 +58,7 @@ Değişiklik akışı, bir TTL (yaşam süresi) özelliği bir öğe üzerinde -
 
 ### <a name="change-feed-and-etag-lsn-or-ts"></a>Değişiklik akışı ve _etag, _lsn veya _ts
 
-_Etag biçimi dahili kullanım içindir ve dilediğiniz zaman değiştirebilirsiniz çünkü, bağımlılık üzerinde almamalıdır. _ts bir değişiklik ya da oluşturma zaman damgası ' dir. _Ts kronolojik bir karşılaştırması için kullanabilirsiniz. _lsn için değişiklik yalnızca akışı eklenen bir toplu iş kimliği:; Bu işlem kimliğini temsil eder Birçok öğe aynı _lsn olabilir. ETag FeedResponse üzerinde öğede gördüğünüz _etag farklıdır. _etag dahili bir tanımlayıcıdır ve eşzamanlılık için kullanılan denetim öğesi sürümü hakkında akışın sıralama için ETag kullanılırken söyler.
+_Etag biçimi dahili kullanım içindir ve dilediğiniz zaman değiştirebilirsiniz çünkü, bağımlılık üzerinde almamalıdır. _ts bir değişiklik ya da oluşturma zaman damgası ' dir. _Ts kronolojik bir karşılaştırması için kullanabilirsiniz. _lsn yalnızca değişiklik akışı için eklenen bir toplu iş KIMLIĞIDIR; işlem KIMLIĞINI temsil eder. Birçok öğe aynı _lsn olabilir. ETag FeedResponse üzerinde öğede gördüğünüz _etag farklıdır. _etag dahili bir tanımlayıcıdır ve eşzamanlılık için kullanılan denetim öğesi sürümü hakkında akışın sıralama için ETag kullanılırken söyler.
 
 ## <a name="change-feed-use-cases-and-scenarios"></a>Kullanım örnekleri ve senaryoları değişiklik akışı
 
@@ -94,7 +94,7 @@ Değişiklik akışı ile kolayca uygulayabilirsiniz senaryolardan bazıları ş
 Aşağıdaki seçenekleri kullanarak değişiklik akışı ile çalışabilirsiniz:
 
 * [Azure işlevleri ile akış Değiştir](change-feed-functions.md)
-* [Değişiklik kullanarak değişiklik akışı işlemci kitaplığı içeren akış](change-feed-processor.md) 
+* [Değişiklik akışı işlemcisi ile değişiklik akışını kullanma](change-feed-processor.md) 
 
 Değişiklik akışı kapsayıcıdaki her bir mantıksal bölüm anahtarı için kullanılabilir ve, paralel işleme için bir veya daha fazla tüketicileri arasında aşağıdaki resimde gösterildiği gibi dağıtılabilir.
 
@@ -108,7 +108,7 @@ Değişiklik akışı kapsayıcıdaki her bir mantıksal bölüm anahtarı için
 
 * Değişiklik akışı, ekler ve kapsayıcı içindeki öğelerde yapılan güncelleştirme işlemlerini içerir. Siler yakalayabilirsiniz öğelerinizi (örneğin, belgeleri) içinde "geçici silme" bayrak ayarlayarak yerine siler. Alternatif olarak, sınırlı bir süre için öğelerinizle ayarlayabilirsiniz [TTL özelliği](time-to-live.md). Örneğin, 24 saat ve kullanım yakalamak için bu özelliğin değerini siler. Bu çözüm sayesinde, TTL sona erme süresinden daha kısa bir süre içinde değişiklikleri işleme gerekir. 
 
-* Her değişiklik için bir öğe değişiklik akışı tam bir kez görünür ve istemcilerin denetim noktası oluşturma mantığı yönetmeniz gerekir. Kontrol noktalarını yönetme karmaşasından kaçınmak istiyorsanız, değişiklik akışı işlemci kitaplığı otomatik denetim noktası oluşturma ve "en az bir kez" semantiği sağlar. Bkz: [değişiklik akışa değişiklik akışı işlemci kitaplığı ile](change-feed-processor.md).
+* Her değişiklik için bir öğe değişiklik akışı tam bir kez görünür ve istemcilerin denetim noktası oluşturma mantığı yönetmeniz gerekir. Kontrol noktalarını yönetme karmaşıklığına engel olmak istiyorsanız, değişiklik akışı işlemcisi otomatik onay işareti ve "en az bir kez" semantiği sağlar. Bkz. [değişiklik akışı işlemcisi ile değişiklik akışını kullanma](change-feed-processor.md).
 
 * Yalnızca belirli bir öğe en son değişikliğin değişiklik günlüğünde bulunur. Ara değişikliklerin kullanılamayabilir.
 
@@ -118,7 +118,7 @@ Değişiklik akışı kapsayıcıdaki her bir mantıksal bölüm anahtarı için
 
 * Değişiklikler, paralel bir Azure Cosmos kapsayıcının tüm mantıksal bölüm anahtarları için kullanılabilir. Bu özellik paralel olarak birden fazla tüketici tarafından işlenmek üzere büyük kapsayıcıları değişikliklerini tanır.
 
-* Uygulamaları aynı anda birden çok değişiklik akışlarından aynı kapsayıcıda genericread isteyebilir. ChangeFeedOptions.StartTime ilk bir başlangıç noktası sağlamak için kullanılabilir. Örneğin, belirli bir saatin karşılık gelen devamlılık belirteci bulunamadı. ContinuationToken belirtilmişse StartTime ve StartFromBeginning değerlerin kazanır. ~ 5 saniye duyarlığını ChangeFeedOptions.StartTime olur. 
+* Uygulamalar aynı kapsayıcıda aynı anda birden fazla değişiklik akışı talep edebilir. ChangeFeedOptions.StartTime ilk bir başlangıç noktası sağlamak için kullanılabilir. Örneğin, belirli bir saatin karşılık gelen devamlılık belirteci bulunamadı. ContinuationToken belirtilmişse StartTime ve StartFromBeginning değerlerin kazanır. ~ 5 saniye duyarlığını ChangeFeedOptions.StartTime olur. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -126,4 +126,4 @@ Aşağıdaki makaleler de akış değiştirme hakkında daha fazla bilgi edinmek
 
 * [Değişiklik akışını okumak için seçenekleri](read-change-feed.md)
 * [Azure işlevleri ile akış Değiştir](change-feed-functions.md)
-* [Kullanarak değişiklik akışı işlemci kitaplığı](change-feed-processor.md)
+* [Değişiklik akışı işlemcisini kullanma](change-feed-processor.md)

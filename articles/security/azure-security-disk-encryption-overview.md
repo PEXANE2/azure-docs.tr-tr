@@ -1,22 +1,22 @@
 ---
-title: Azure Disk şifrelemesi nedir?
-description: Bu makalede Azure Disk Şifrelemesi'ne genel bakış sağlar.
+title: Azure disk şifrelemesi nedir?
+description: Bu makalede, Azure disk şifrelemesi 'ne genel bakış sunulmaktadır
 author: msmbaldwin
 ms.service: security
 ms.topic: article
 ms.author: mbaldwin
-ms.date: 06/05/2019
+ms.date: 07/17/2019
 ms.custom: seodec18
-ms.openlocfilehash: 58c5c8321e505fe2c1c7d19c58fe0d031b75b3e4
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: a67f19f0823827dad74e7aba15a92d696fbf580b
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67294857"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304277"
 ---
-# <a name="azure-disk-encryption-overview"></a>Azure Disk Şifrelemesi'ne genel bakış
+# <a name="azure-disk-encryption-overview"></a>Azure disk şifrelemeye genel bakış
 
-Azure Disk şifrelemesi koruyun ve organizasyonel güvenlik ve uyumluluk yükümlülüklerinizin yerine verilerinizin korunmasına yardımcı olur. Kullandığı [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) Windows özelliğidir ve [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) Linux Azure sanal makinelerini (VM) işletim sistemi ve veri diskleri için birim şifrelemesi sağlamak için bir özelliğidir. İle de tümleştirilen [Azure anahtar kasası](https://azure.microsoft.com/documentation/services/key-vault/) denetlemenize ve disk şifreleme anahtarlarını ve gizli yönetmenize yardımcı olmak için ve sanal makine disklerindeki tüm veriler Azure depolama bölgesinde, bekleyen şifrelenmesini sağlar. Azure için Disk şifreleme Windows ve Linux Vm'leri, genel kullanıma sunulmuştur tüm Azure genel bölgeler ve standart VM'ler ve Azure Premium depolama ile sanal makineleri için Azure kamu bölgeleri. 
+Azure disk şifrelemesi, kuruluşunuzun güvenlik ve uyumluluk taahhütlerinizi karşılamak için verilerinizi korumanıza ve korumaya yardımcı olur. Azure sanal makinelerinin (VM 'Ler) işletim sistemi ve veri diskleri için birim şifrelemesi sağlamak üzere Windows 'un [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) özelliğini ve Linux 'un [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) özelliğini kullanır. Ayrıca, disk şifreleme anahtarlarını ve gizli dizileri denetlemenize ve yönetmenize yardımcı olmak için [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) ile TÜMLEŞIKTIR ve VM disklerindeki tüm verilerin Azure Storage 'da Rest 'te şifrelenmesini sağlar. Windows ve Linux sanal makineleri için Azure disk şifrelemesi, Azure Premium Depolama ile standart sanal makineler ve sanal makineler için tüm Azure genel bölgelerinde ve Azure Kamu bölgelerinde genel kullanıma açıktır. 
 
 Azure Güvenlik Merkezi kullanırsanız, şifreli olmayan VM'ler varsa uyarı. Uyarılar yüksek önem derecesine sahip olarak gösterir ve bu VM'lerin şifrelemek için önerilir.
 
@@ -28,70 +28,70 @@ Azure Güvenlik Merkezi kullanırsanız, şifreli olmayan VM'ler varsa uyarı. U
 
 ## <a name="encryption-scenarios"></a>Şifreleme senaryoları
 
-Azure Disk şifrelemesi ile bekleyen endüstri standardı şifreleme teknolojisini kullanarak Azure sanal makinelerinize güvenli hale getirme Kurumsal güvenlik ve uyumluluk gereksinimlerini karşılayabilirsiniz. Ayrıca, müşteri tarafından denetlenen anahtarları ve ilkeleri (BYOK) altında önyüklemek için Vm'leri yapılandırma ve anahtar kasanıza Bu anahtarları kullanımını denetleme.
+Azure disk şifrelemesi sayesinde, sektör standardı şifreleme teknolojisini kullanarak Azure VM 'lerinizi Rest 'ten güvenli hale getirerek kurumsal güvenlik ve uyumluluk gereksinimlerini ele alabilirsiniz. Ayrıca, VM 'Leri müşteri denetimli anahtarlar ve ilkeler (BYOK) altında önyüklenecek şekilde yapılandırabilir ve bu anahtarların anahtar kasasında kullanımını kontrol edebilirsiniz.
 
-Azure Disk şifrelemesi aşağıdaki müşteri senaryoları destekler:
+Azure disk şifrelemesi aşağıdaki müşteri senaryolarını destekler:
 
-* Etkinleştirme ve desteklenen Azure galeri görüntüleri kullanılarak oluşturulan yeni VM üzerinde şifrelemeyi devre dışı bırakma.
-* Etkinleştirmek ve Azure'da çalıştıran var olan sanal makineler üzerinde şifrelemeyi devre dışı bırakılıyor.
-* Etkinleştirme ve önceden şifrelenmiş VHD ve şifreleme anahtarlarını oluşturulan yeni Windows vm'lerinde şifreleme devre dışı bırakma.
-* Windows sanal makine ölçek üzerinde şifrelemeyi devre dışı bırakma ve etkinleştirme ayarlar.
-* Linux sanal makine ölçek kümeleri için veri şifrelemeyi devre dışı bırakma ve etkinleştirme beraberinde getirir.
-* Etkinleştirme ve yönetilen disk Vm'lerinin şifrelemesini devre dışı bırakma.
-* Mevcut şifrelenmiş Premium ve Premium Storage VM'si şifreleme ayarları güncelleştiriliyor.
-* Şifrelenmiş Vm'leri yedekleme ve geri yükleme.
-* Kendi şifreleme (BYOE) getirin ve müşterilerin kendi şifreleme anahtarlarını kullanmak ve bir Azure anahtar kasası depolamaya kendi anahtarı (BYOK) senaryolarını getirin.
+* Desteklenen Azure Galeri görüntülerinden oluşturulan yeni VM 'lerde şifrelemeyi etkinleştirme ve devre dışı bırakma.
+* Azure 'da çalışan mevcut VM 'lerde şifrelemeyi etkinleştirme ve devre dışı bırakma.
+* Önceden şifrelenen VHD ve şifreleme anahtarlarından oluşturulan yeni Windows VM 'lerinde şifrelemeyi etkinleştirme ve devre dışı bırakma.
+* Windows sanal makine ölçek kümelerinde şifrelemeyi etkinleştirme ve devre dışı bırakma.
+* Linux sanal makine ölçek kümeleri için veri sürücülerinde şifrelemeyi etkinleştirme ve devre dışı bırakma.
+* Yönetilen disk VM 'lerinin şifrelemesini etkinleştirme ve devre dışı bırakma.
+* Mevcut bir şifrelenmiş Premium ve Premium olmayan depolama VM 'sinin şifreleme ayarları güncelleştiriliyor.
+* Şifrelenmiş VM 'Leri yedekleme ve geri yükleme.
+* Kendi şifrelemesini getirin (BYOE) ve kendi anahtar (BYOK) senaryolarınızı getirin ve müşterilerin kendi şifreleme anahtarlarını kullanır ve bunları bir Azure Anahtar Kasası 'nda depolar.
 
-Microsoft Azure'da etkin olduğunda da VM'ler için aşağıdaki senaryoları destekler:
+Ayrıca, Microsoft Azure ' de etkinleştirildiklerinde VM 'Ler için aşağıdaki senaryoları destekler:
 
 * Azure anahtar kasası ile tümleştirme.
-* [Standart katmanı Vm'lerini](https://azure.microsoft.com/pricing/details/virtual-machines/) karşılayan [en düşük bellek gereksinimi](azure-security-disk-encryption-prerequisites.md#supported-vm-sizes). 
-* Windows ve Linux Vm'leri, yönetilen disk ve ölçek üzerinde şifrelemeyi etkinleştirme Vm'leri desteklenen Azure galeri görüntüleri kullanılarak ayarlayın.
-* İşletim sistemi ve veri şifrelemeyi devre dışı sürücüler için Windows Vm'leri, Ölçek, vm'leri ve yönetilen disk sanal makinelerini.
-* Veri sürücülerinde devre dışı bırakma şifreleme için Linux Vm'leri, Ölçek, vm'leri ve yönetilen disk sanal makinelerini.
-* Windows istemci işletim sistemi çalıştıran sanal makineler üzerinde şifrelemeyi etkinleştirme.
-* Bağlama yolu içeren birimlerde şifreleme etkinleştiriliyor.
-* Şifreleme (RAID) mdadm kullanarak bölümlenerek disk ile yapılandırılmış Linux vm'lerinde etkinleştiriliyor.
-* Şifrelemeyi etkinleştirme Linux vm'lerinde LVM veri diskleri için kullanın.
-* Linux VM işletim sistemi ve veri diskleri üzerinde şifrelemeyi etkinleştirme.
+* [Minimum bellek gereksinimini](azure-security-disk-encryption-prerequisites.md#supported-vm-sizes)karşılayan [Standart katman VM 'leri](https://azure.microsoft.com/pricing/details/virtual-machines/) . 
+* Desteklenen Azure Galeri görüntülerinden Windows ve Linux VM 'lerinde, yönetilen diskte ve ölçek kümesi VM 'lerinde şifrelemeyi etkinleştirme.
+* Windows VM 'leri, ölçek kümesi VM 'leri ve yönetilen disk VM 'Leri için işletim sistemi ve veri sürücülerinde şifrelemeyi devre dışı bırakma.
+* Linux VM 'Leri, ölçek kümesi VM 'leri ve yönetilen disk VM 'Leri için veri sürücülerinde şifrelemeyi devre dışı bırakma.
+* Windows Istemci işletim sistemini çalıştıran VM 'lerde şifrelemeyi etkinleştirme.
+* Bağlama yollarındaki birimlerde şifrelemeyi etkinleştirme.
+* Mdaddm kullanılarak disk şeridi (RAID) ile yapılandırılmış Linux VM 'lerinde şifrelemeyi etkinleştirme.
+* Veri diskleri için LVM kullanan Linux sanal makinelerinde şifrelemeyi etkinleştirme.
+* Linux VM işletim sistemi ve veri disklerinde şifrelemeyi etkinleştirme.
 
    > [!NOTE]
-   > Bazı Linux dağıtımlarında için işletim sistemi Sürücü Şifrelemesi desteklenmez. Daha fazla bilgi için [Azure Disk şifrelemesi desteklenen işletim sistemleri: Linux](azure-security-disk-encryption-prerequisites.md#linux).
+   > Bazı Linux dağıtımlarında için işletim sistemi Sürücü Şifrelemesi desteklenmez. Daha fazla bilgi için bkz [. Azure Disk Şifrelemesi tarafından desteklenen işletim sistemleri: Linux](azure-security-disk-encryption-prerequisites.md#linux).
    
-* Windows Server 2016'dan itibaren Windows depolama alanları ile yapılandırılmış VM üzerinde şifrelemeyi etkinleştirme.
-* Yedekleme ve anahtar şifreleme anahtarı (KEK) ve KEK olmayan senaryolar için şifrelenmiş Vm'leri geri yükleme.
+* Windows Server 2016 ' de başlayan Windows depolama alanları ile yapılandırılmış VM 'lerde şifrelemeyi etkinleştirme. Depolama Alanları Doğrudan (S2D) henüz desteklenmiyor.
+* Hem anahtar şifreleme anahtarı (KEK) hem de KEK olmayan senaryolar için şifrelenmiş VM 'Leri yedekleme ve geri yükleme.
 
-Azure Disk şifrelemesi, aşağıdaki senaryolarda, özellikler ve teknolojisi için çalışmaz:
+Azure disk şifrelemesi, aşağıdaki senaryolar, Özellikler ve teknolojiler için çalışmaz:
 
-* Temel katman sanal makine veya sanal makineleri Klasik VM oluşturma yöntemiyle oluşturulan şifreleme.
-* İşletim sistemi sürücü şifrelendiğinde, bir işletim sistemi veya veri sürücüsü bir Linux VM üzerinde şifrelemeyi devre dışı bırakılıyor.
-* Linux sanal makine ölçek kümesi için işletim sistemi sürücüsünü şifrelemek ayarlar.
-* Yazılım tabanlı RAID sistemler ile yapılandırılan Windows VM şifreleme.
-* Linux vm'lerinde şifreleme özel görüntüler.
-* Bir şirket içi anahtar yönetimi sistemi ile tümleştirme.
+* Klasik VM oluşturma yöntemiyle oluşturulan temel katman VM veya VM 'Leri şifreleme.
+* IŞLETIM sistemi sürücüsü şifrelendiğinde bir işletim sistemi sürücüsünde veya Linux sanal makinesinin veri sürücüsünde şifrelemeyi devre dışı bırakma.
+* Linux sanal makine ölçek kümeleri için işletim sistemi sürücüsü şifreleme.
+* Yazılım tabanlı RAID sistemleriyle yapılandırılmış Windows VM 'Leri şifreleme.
+* Linux VM 'lerde özel görüntüleri şifreleme.
+* Şirket içi anahtar yönetim sistemiyle tümleştirme.
 * Azure dosyaları (paylaşılan dosya sistemi).
 * Ağ dosya sistemi (NFS).
 * Dinamik birimler.
 
 ## <a name="encryption-features"></a>Şifreleme özellikleri
 
-Etkinleştirme ve Azure Vm'leri için Azure Disk şifrelemesi dağıtma ne zaman etkin için aşağıdaki özellikleri yapılandırabilirsiniz:
+Azure sanal makineleri için Azure disk şifrelemesini etkinleştirip dağıttığınızda, aşağıdaki özellikleri etkinleştirilecek şekilde yapılandırabilirsiniz:
 
-* İşletim sistemi birimi ve önyükleme birimi depolama alanınızda bekleyen korumak için şifreleme.
-* Veri birimleri, depolama alanınızı bölgesinde, bekleyen veri birimlerini korumak için şifreleme.
-* Windows VM'ler için işletim sistemi ve veri sürücülerini şifreleme devre dışı bırakılıyor.
-* (Yalnızca işletim sistemi sürücüsünü şifreli olmayan olduğunda) verileri şifrelemeyi devre dışı bırakma Linux Vm'leri için sürücüler.
-* Şifreleme anahtarlarını ve gizli anahtarları Azure Key Vault aboneliğinizdeki koruma.
-* Şifrelenmiş sanal Makineyi şifreleme durumunu raporlama.
-* Disk şifreleme yapılandırma ayarlarını VM'den kaldırılıyor.
-* Yedekleme ve Azure Backup hizmetini kullanarak şifrelenmiş Vm'leri geri yükleme.
+* Depolama biriminizdeki geri yükleme birimini korumak için işletim sistemi birimini şifreleme.
+* Depolama ortamınızdaki bekleyen veri birimlerini korumak için veri birimlerini şifreleme.
+* Windows VM 'Leri için işletim sistemi ve veri sürücülerinde şifrelemeyi devre dışı bırakma.
+* Linux VM 'Leri için veri sürücülerinde şifrelemeyi devre dışı bırakma (yalnızca işletim sistemi sürücüsü şifrelenmediğinde).
+* Azure Key Vault aboneliğinizdeki şifreleme anahtarlarını ve gizli dizileri koruma altına al.
+* Şifrelenmiş VM 'nin şifreleme durumunu raporlama.
+* VM 'den disk şifrelemesi yapılandırma ayarları kaldırılıyor.
+* Azure Backup hizmetini kullanarak şifrelenmiş VM 'Leri yedekleme ve geri yükleme.
 
-VM'ler için Windows ve Linux için Azure Disk şifrelemesi içerir:
+Windows ve Linux için sanal makineler için Azure disk şifrelemesi şunları içerir:
 
-* [Windows için disk şifrelemesi uzantısını](../virtual-machines/extensions/azure-disk-enc-windows.md).
-* [Linux için disk şifrelemesi uzantısını](../virtual-machines/extensions/azure-disk-enc-linux.md).
-* [Disk şifreleme PowerShell cmdlet'lerini](/powershell/module/az.compute/set-azvmdiskencryptionextension?view=azps-2.2.0).
-* [Azure CLI disk şifreleme cmdlet'leri](/cli/azure/vm/encryption?view=azure-cli-latest).
+* [Windows için disk şifreleme uzantısı](../virtual-machines/extensions/azure-disk-enc-windows.md).
+* [Linux için disk şifreleme uzantısı](../virtual-machines/extensions/azure-disk-enc-linux.md).
+* [PowerShell disk şifrelemesi cmdlet 'leri](/powershell/module/az.compute/set-azvmdiskencryptionextension?view=azps-2.2.0).
+* [Azure CLI disk şifrelemesi cmdlet 'leri](/cli/azure/vm/encryption?view=azure-cli-latest).
 * [Azure Resource Manager disk şifreleme şablonları](azure-security-disk-encryption-appendix.md#resource-manager-templates).
 
 > [!NOTE]
@@ -103,23 +103,23 @@ Windows ve Linux Vm'leri için disk şifrelemeyi etkinleştirmek için aşağıd
 
 1. Azure Disk şifrelemesi Resource Manager şablonu, PowerShell cmdlet'leri veya Azure CLI üzerinden disk şifrelemeyi etkinleştirmek için katılım ve şifreleme yapılandırması belirtin.
 
-   * Müşteri şifrelenmiş VHD senaryosu için depolama hesabınızı ve şifreleme anahtar malzemesi anahtar kasanıza şifrelenmiş VHD yükleyin. Ardından, yeni bir VM üzerinde şifrelemeyi etkinleştirmek için şifreleme yapılandırmasını sağlar.
-   * Desteklenen galeri görüntüleri kullanılarak oluşturulan yeni VM'ler ve Azure'da çalışması zaten var olan VM'ler için VM üzerinde şifrelemeyi etkinleştirmek için şifreleme yapılandırması sağlar.
+   * Müşteri şifrelenmiş VHD senaryosu için depolama hesabınızı ve şifreleme anahtar malzemesi anahtar kasanıza şifrelenmiş VHD yükleyin. Ardından, yeni bir VM 'de şifrelemeyi etkinleştirmek için şifreleme yapılandırmasını sağlayın.
+   * Desteklenen Galeri görüntülerinden oluşturulan yeni VM 'Ler ve Azure 'da zaten çalışan mevcut VM 'Ler için VM 'de şifrelemeyi etkinleştirmek üzere şifreleme yapılandırması sağlayın.
 
-1. Şifreleme anahtar malzemesi (BitLocker şifreleme anahtarlarını Windows sistemleri için) ve parolayı Linux için VM üzerinde şifrelemeyi etkinleştirmek için anahtar kasanıza okumak üzere Azure platformunun erişim izni verin.
+1. VM 'de şifrelemeyi etkinleştirmek için şifreleme anahtarı malzemesini (Windows sistemleri için BitLocker şifreleme anahtarları ve Linux için parola) okumak üzere Azure platformuna erişim izni verin.
 
 1. Azure VM hizmet modeli şifrelemesi ile key vault yapılandırması güncelleştirir ve, şifrelenmiş sanal Makineyi ayarlar.
 
    ![Azure’da Microsoft Kötü Amaçlı Yazılımdan Koruma](./media/azure-security-disk-encryption/disk-encryption-fig1.png)
 
 ## <a name="decryption-workflow"></a>Şifre çözme iş akışı
-Sanal makineler için disk şifreleme devre dışı bırakmak için aşağıdaki üst düzey adımları tamamlayın:
+VM 'Ler için disk şifrelemeyi devre dışı bırakmak için aşağıdaki üst düzey adımları izleyin:
 
-1. Şifreleme (şifre çözme) devre dışı bırakmak azure'da çalışan bir VM seçin ve şifre çözme yapılandırmayı belirtin. Azure Disk şifrelemesi Resource Manager şablonu, PowerShell cmdlet'leri ve Azure CLI devre dışı bırakabilirsiniz.
+1. Azure 'da çalışan bir VM 'de şifrelemeyi (şifre çözme) devre dışı bırakmayı seçin ve şifre çözme yapılandırmasını belirtin. Azure Disk şifrelemesi Resource Manager şablonu, PowerShell cmdlet'leri ve Azure CLI devre dışı bırakabilirsiniz.
 
-   Bu adım işletim sistemi veya veri hacmi ya da hem de çalışan bir Windows VM şifreleme devre dışı bırakır. Önceki bölümde belirtildiği gibi Linux işletim sistemi disk şifreleme devre dışı bırakma özelliği desteklenmiyor. İşletim sistemi diski şifreli değil sürece şifre çözme adım yalnızca Linux vm'lerinde veri sürücülerine izin verilir.
+   Bu adım işletim sistemi veya veri birimi şifrelemesini devre dışı bırakır ve her ikisi de çalışan Windows VM üzerinde. Önceki bölümde belirtildiği gibi Linux işletim sistemi disk şifreleme devre dışı bırakma özelliği desteklenmiyor. İşletim sistemi diski şifreli değil sürece şifre çözme adım yalnızca Linux vm'lerinde veri sürücülerine izin verilir.
 
-1. Azure güncelleştirmeleri VM hizmet modeli ve VM olarak işaretlenmiş şifresi. VM içeriğini artık bekleme durumundayken şifrelenir.
+1. Azure, VM hizmeti modelini güncelleştirir ve VM, şifresi çözülmüş olarak işaretlenir. VM içeriğini artık bekleme durumundayken şifrelenir.
 
    > [!NOTE]
    > Devre dışı bırakma şifreleme işlemi, anahtar kasanıza ve şifreleme anahtar malzemesi (BitLocker şifreleme anahtarlarını Windows sistemleri için) veya Linux için parola silmez.
@@ -137,31 +137,31 @@ Azure Disk Şifrelemesi'nın yeni sürümüne VM disk şifrelemeyi etkinleştirm
 
 1. Azure Disk şifrelemesi Resource Manager şablonu, PowerShell cmdlet'leri veya Azure CLI üzerinden disk şifrelemeyi etkinleştirmek için katılım ve şifreleme yapılandırması belirtin.
 
-   * Müşteri şifrelenmiş VHD senaryosu için depolama hesabınızı ve şifreleme anahtar malzemesi anahtar kasanıza şifrelenmiş VHD yükleyin. Ardından, yeni bir VM üzerinde şifrelemeyi etkinleştirmek için şifreleme yapılandırmasını sağlar.
-   * Marketten oluşturulan yeni VM'ler ve Azure'da çalışması zaten var olan VM'ler için VM üzerinde şifrelemeyi etkinleştirmek için şifreleme yapılandırması sağlar.
+   * Müşteri şifrelenmiş VHD senaryosu için depolama hesabınızı ve şifreleme anahtar malzemesi anahtar kasanıza şifrelenmiş VHD yükleyin. Ardından, yeni bir VM 'de şifrelemeyi etkinleştirmek için şifreleme yapılandırmasını sağlayın.
+   * Market 'ten ve Azure 'da zaten çalışan mevcut VM 'lerden oluşturulan yeni VM 'Ler için, VM 'de şifrelemeyi etkinleştirmek üzere şifreleme yapılandırmasını sağlayın.
 
-1. Şifreleme anahtar malzemesi (BitLocker şifreleme anahtarlarını Windows sistemleri için) ve parolayı Linux için VM üzerinde şifrelemeyi etkinleştirmek için anahtar kasanıza okumak üzere Azure platformunun erişim izni verin.
+1. VM 'de şifrelemeyi etkinleştirmek için şifreleme anahtarı malzemesini (Windows sistemleri için BitLocker şifreleme anahtarları ve Linux için parola) okumak üzere Azure platformuna erişim izni verin.
 
-1. Anahtar kasanızı malzeme şifreleme anahtarını yazmak için Azure AD uygulama kimliği sağlayın. Bu adım 2. adımda bahsedilen senaryolar için VM üzerinde şifrelemeyi etkinleştirir.
+1. Anahtar kasanızı malzeme şifreleme anahtarını yazmak için Azure AD uygulama kimliği sağlayın. Bu adım 2. adımda bahsedilen senaryolar için VM 'de şifrelemeyi mümkün bir şekilde sunar.
 
 1. Azure VM hizmet modeli şifrelemesi ile key vault yapılandırması güncelleştirir ve, şifrelenmiş sanal Makineyi ayarlar.
 
 
 ## <a name="terminology"></a>Terminoloji
-Aşağıdaki tabloda bazı Azure disk şifrelemesi belgelerde kullanılan yaygın terimlerin tanımlar:
+Aşağıdaki tabloda, Azure disk şifrelemesi belgelerinde kullanılan bazı yaygın terimler tanımlanmaktadır:
 
 | Terminoloji | Tanım |
 | --- | --- |
 | Azure AD | Bir [Azure AD'ye](https://azure.microsoft.com/documentation/services/active-directory/) hesap kimlik doğrulaması, depolama ve gizli dizileri anahtar kasasından almak için kullanılır. |
 | Azure Key Vault | Key Vault, Federal Bilgi işleme standartları (FIPS) üzerinde doğrulanmış donanım güvenlik modülleri dayanıyor bir şifreleme ve anahtar yönetim hizmetidir. Bu standartlar, şifreleme anahtarlarını ve gizli gizli anahtarlarınızı yardımcı olur. Daha fazla bilgi için [Azure anahtar kasası](https://azure.microsoft.com/services/key-vault/) belgeleri. |
-| BitLocker |[BitLocker](https://technet.microsoft.com/library/hh831713.aspx) Windows Vm'leri disk şifrelemesini etkinleştirmek için kullanılan bir sektörde tanınmış Windows birim şifreleme teknolojisidir. |
+| BitLocker |[BitLocker](https://technet.microsoft.com/library/hh831713.aspx) , Windows VM 'lerinde disk şifrelemeyi etkinleştirmek için kullanılan sektör tarafından tanınan bir Windows birimi şifreleme teknolojisidir. |
 | BEK | BitLocker şifreleme anahtarları (BEK), veri hacimleri ve işletim sistemi önyükleme birimi şifrelemek için kullanılır. BEKs anahtar kasasında gizli dizi olarak korunur. |
 | Azure CLI | [Azure CLI'yı](/cli/azure/install-azure-cli) Azure kaynaklarını komut satırından yönetmek ve için optimize edilmiştir.|
-| DM-Crypt |[DM-Crypt](https://gitlab.com/cryptsetup/cryptsetup/wikis/DMCrypt) Linux vm'lerinde disk şifrelemeyi etkinleştirmek için kullanılan Linux tabanlı, saydam disk şifreleme alt sistemi. |
-| Anahtar şifreleme anahtarı (KEK) | Dosya korumak veya gizli dizi sarmalamak için kullanabileceğiniz asimetrik anahtardır (RSA 2048). Bir donanım güvenlik modülü (HSM) sağladığınız-korumalı bir anahtar veya yazılım korumalı anahtarı. Daha fazla bilgi için [Azure anahtar kasası](https://azure.microsoft.com/services/key-vault/) belgeleri. |
+| DM-Crypt |[Dm-crypt](https://gitlab.com/cryptsetup/cryptsetup/wikis/DMCrypt) , Linux sanal makinelerinde disk şifrelemeyi etkinleştirmek Için kullanılan Linux tabanlı, saydam disk şifreleme alt sistemidir. |
+| Anahtar şifreleme anahtarı (KEK) | Gizli anahtarı korumak veya kaydırmak için kullanabileceğiniz asimetrik anahtar (RSA 2048). Bir donanım güvenlik modülü (HSM) sağladığınız-korumalı bir anahtar veya yazılım korumalı anahtarı. Daha fazla bilgi için [Azure anahtar kasası](https://azure.microsoft.com/services/key-vault/) belgeleri. |
 | PowerShell cmdlet'leri | Daha fazla bilgi için [Azure PowerShell cmdlet'lerini](/powershell/azure/overview). |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Başlamak için bkz: [Azure Disk şifrelemesi önkoşulları](azure-security-disk-encryption-prerequisites.md).
+Başlamak için bkz. [Azure disk şifrelemesi önkoşulları](azure-security-disk-encryption-prerequisites.md).
 
