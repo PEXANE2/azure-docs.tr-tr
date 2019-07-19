@@ -36,11 +36,11 @@ Yeni bir kullanıcı oluşturur.
 | **Ad**             | **Açıklama**                                      |
 |----------------------|------------------------------------------------------|
 | requestId            | İstemci tarafından sağlanan GUID                                |
-| FirstName            | Kullanıcı adı                              |
-| Soyadı             | Kullanıcının soyadı                               |
-| EmailAddress         | Kullanıcının e-posta adresi                           |
+| firstName            | Kullanıcı adı                              |
+| lastName             | Kullanıcının soyadı                               |
+| emailAddress         | Kullanıcının e-posta adresi                           |
 | externalId           | Kullanıcının Azure AD nesnesi kimliği                      |
-| ConnectionID         | Blok zinciri bağlantı için benzersiz tanımlayıcı |
+| connectionId         | Blok zinciri bağlantı için benzersiz tanımlayıcı |
 | messageSchemaVersion | Mesajlaşma şema sürümü                            |
 | messageName          | **CreateUserRequest**                               |
 
