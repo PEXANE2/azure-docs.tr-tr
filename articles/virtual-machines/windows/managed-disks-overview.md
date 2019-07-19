@@ -1,6 +1,6 @@
 ---
-title: Windows VM'ler için Azure Disk Depolama yönetilen disk genel bakış | Microsoft Docs
-description: Depolama hesapları, Azure Windows sanal makineleri kullanırken işleme yönetilen diskler, Azure genel bakış
+title: Windows VM 'Leri için yönetilen diske genel bakış Azure Disk Depolama | Microsoft Docs
+description: Azure Windows VM 'Leri kullanılırken depolama hesaplarını işleyen Azure yönetilen disklere genel bakış
 services: virtual-machines-windows,storage
 author: roygara
 ms.service: virtual-machines-windows
@@ -11,19 +11,19 @@ ms.date: 04/22/2019
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: fb1ee8556935b141dfee6a18c96ecafb476aa584
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 07/18/2019
 ms.locfileid: "64725823"
 ---
-# <a name="introduction-to-azure-managed-disks"></a>Yönetilen diskleri azure'a giriş
+# <a name="introduction-to-azure-managed-disks"></a>Azure yönetilen disklere giriş
 
-Azure yönetilen diski olan bir sanal sabit disk (VHD). Bunu, ancak, sanallaştırılmış bir şirket içi sunucu fiziksel bir disk gibi düşünebilirsiniz. Azure yönetilen diskler, azure'da rastgele g/ç depolama nesnesi olan sayfa blobları olarak depolanır. ', Sayfa blobları, blob kapsayıcıları ve Azure depolama hesabı üzerinde bir Özet olduğundan yönetilen' yönetilen disk diyoruz. Yönetilen disklerle yapmanız gereken tek şey sağlama disk ve Azure geri kalanını üstlenir.
+Azure yönetilen disk, bir sanal sabit disktir (VHD). Bunu, şirket içi sunucuda bir fiziksel disk gibi düşünebilirsiniz, ancak sanallaştırılabilir. Azure yönetilen diskler, Azure 'daki bir rastgele GÇ depolama nesnesi olan sayfa Blobları olarak depolanır. Sayfa Blobları, blob kapsayıcıları ve Azure depolama hesapları üzerinde bir soyutlama olduğundan, yönetilen bir disk ' Managed ' çağrısı yaptık. Yönetilen disklerle, tüm yapmanız gereken diski temin etmek ve Azure 'un geri kalanını yapması gerekir.
 
-Yönetilen diskler ile iş yüklerinizi Azure kullanmasını seçtiğinizde, Azure oluşturur ve diski oluşturup yönetebilmesi. Kullanılabilir diskler Ultra katı hal sürücüleri (SSD) (Önizleme), Premium SSD, standart bir SSD ve standart Sabit Disk sürücülerinin (HDD) türleridir. Her bağımsız disk türü hakkında daha fazla bilgi için bkz. [Iaas VM'ler için bir disk türü seçin](disks-types.md).
+Azure yönetilen diskleri iş yükleriniz ile kullanmayı seçtiğinizde, Azure bu diski sizin için oluşturur ve yönetir. Kullanılabilir disk türleri, Ultra katı hal sürücüleri (SSD) (Önizleme), Premium SSD, Standart SSD ve standart sabit disk sürücüleri (HDD). Her bir disk türü hakkında daha fazla bilgi için bkz. [IaaS VM 'leri için disk türü seçme](disks-types.md).
 
 [!INCLUDE [virtual-machines-managed-disks-overview.md](../../../includes/virtual-machines-managed-disks-overview.md)]
 
 > [!div class="nextstepaction"]
-> [Iaas VM'ler için bir disk türü seçin](disks-types.md)
+> [IaaS VM 'Leri için bir disk türü seçin](disks-types.md)

@@ -1,6 +1,6 @@
 ---
-title: Başlarken azure AD v2.0 ASP.NET web sunucusu | Microsoft Docs
-description: Microsoft oturum açma standart Openıd Connect kullanarak geleneksel web tarayıcı tabanlı bir uygulama ile bir ASP.NET çözüm üzerinde uygulama
+title: Azure AD v 2.0 ASP.NET Web sunucusu Başlarken | Microsoft Docs
+description: OpenID Connect standardını kullanarak geleneksel bir Web tarayıcısı tabanlı uygulama ile ASP.NET çözümünde Microsoft oturum açma uygulama
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -16,12 +16,12 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 589554188bfe8bd53b5dd3adcd6d57abe95c2d23
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: da78ebfee642961ef0f34ab1088078d22539fbf8
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60298236"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68334102"
 ---
 [!INCLUDE [1. Introduction](../../../includes/active-directory-develop-guidedsetup-aspnetwebapp-introduction.md)]
 [!INCLUDE [2. Setup](../../../includes/active-directory-develop-guidedsetup-aspnetwebapp-setup.md)]
@@ -31,11 +31,16 @@ ms.locfileid: "60298236"
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Web API'leri çağırma Web apps hakkında bilgi edinin:.
+Web API 'Lerini çağıran Web Apps hakkında bilgi edinin:.
 
 ### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>Bu hızlı başlangıçta kullanılan uygulamayı oluşturma adımlarını öğrenin
 
 > [!div class="nextstepaction"]
-> [Web uygulamalarını Web API'lerini çağırma]( https://aka.ms/msal-net-authorization-code)
+> [Web API 'Lerini çağıran Web uygulamaları]( https://aka.ms/msal-net-authorization-code)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
+Microsoft Identity platformunu geliştirmemize yardımcı olun. Kısa bir iki sorulık anketi tamamlayarak düşüncelerinizi bize söyleyin.
+
+> [!div class="nextstepaction"]
+> [Microsoft Identity platform Anketi](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

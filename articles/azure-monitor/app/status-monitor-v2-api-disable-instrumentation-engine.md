@@ -1,6 +1,6 @@
 ---
-title: 'Azure Durum İzleyicisi v2 API Başvurusu: İzleme altyapısı devre dışı bırakma | Microsoft Docs'
-description: Durum İzleyicisi'ni v2 API'si başvurusu. Disable-InstrumentationEngine. Web sitesi yeniden dağıtmaya gerek kalmadan Web sitesi performansını izleyin. ASP.NET web uygulamaları ile çalışır, şirket içi Vm'leri içinde veya azure'da barındırılan.
+title: 'Azure Durum İzleyicisi v2 API başvurusu: İzleme altyapısını devre dışı bırak | Microsoft Docs'
+description: Durum İzleyicisi v2 API başvurusu. Disable-ınstrumentationengine. Web sitesini yeniden dağıtmaya gerek kalmadan Web sitesi performansını izleyin. Şirket içinde, VM 'lerde veya Azure 'da barındırılan ASP.NET Web Apps ile birlikte kullanılır.
 services: application-insights
 documentationcenter: .net
 author: MS-TimothyMothra
@@ -12,28 +12,23 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: cd35af6ead2d734fa68b85b199aac219daf8dcd9
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 827f8555718a22979617c9b0794dce3bd92207f4
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807150"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326401"
 ---
-# <a name="status-monitor-v2-api-disable-instrumentationengine-v040-alpha"></a>Durum İzleyicisi'ni v2 API'si: Disable-InstrumentationEngine (v0.4.0-alpha)
+# <a name="status-monitor-v2-api-disable-instrumentationengine"></a>Durum İzleyicisi v2 API 'SI: Disable-ınstrumentationengine
 
-Bu makalede bir üyesi olan bir cmdlet [Az.ApplicationMonitor PowerShell Modülü](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
-
-> [!IMPORTANT]
-> Durum İzleyicisi'ni v2 şu anda genel Önizleme aşamasındadır.
-> Bu önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanmaktadır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor ve bazıları kısıtlı yeteneklere sahip.
-> Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Bu makalede, [az. ApplicationMonitor PowerShell modülünün](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)üyesi olan bir cmdlet açıklanmaktadır.
 
 ## <a name="description"></a>Açıklama
-İzleme altyapısının bazı kayıt defteri anahtarlarını kaldırarak devre dışı bırakır.
-Değişikliklerin etkili olması için IIS yeniden başlatın.
+Bazı kayıt defteri anahtarlarını kaldırarak izleme altyapısını devre dışı bırakır.
+Değişikliklerin etkili olması için IIS 'yi yeniden başlatın.
 
 > [!IMPORTANT] 
-> Bu cmdlet, yönetici izinlerine sahip bir PowerShell oturumu gerektirir.
+> Bu cmdlet yönetici izinlerine sahip bir PowerShell oturumu gerektirir.
 
 ## <a name="examples"></a>Örnekler
 
@@ -43,13 +38,13 @@ PS C:\> Disable-InstrumentationEngine
 
 ## <a name="parameters"></a>Parametreler 
 
-### <a name="-verbose"></a>-Verbose
-**Ortak parametresi.** Ayrıntılı günlük çıktısını almak için bu anahtarı kullanın.
+### <a name="-verbose"></a>-Ayrıntılı
+**Ortak parametre.** Ayrıntılı günlükleri çıkarmak için bu anahtarı kullanın.
 
 ## <a name="output"></a>Output
 
 
-#### <a name="example-output-from-successfully-disabling-the-instrumentation-engine"></a>Örnek çıktı öğesinden başarıyla izleme altyapısı devre dışı bırakma
+#### <a name="example-output-from-successfully-disabling-the-instrumentation-engine"></a>İzleme altyapısını başarıyla devre dışı bırakma örnek çıkışı
 
 ```
 Configuring IIS Environment for instrumentation engine...
@@ -63,4 +58,4 @@ Configuring registry for instrumentation engine...
 ## <a name="next-steps"></a>Sonraki adımlar
 
  Durum İzleyicisi v2 ile daha fazlasını yapın:
- - Kılavuzunu kullanın [sorun giderme](status-monitor-v2-troubleshoot.md) Durum İzleyicisi v2.
+ - Durum İzleyicisi v2 [sorunlarını gidermek](status-monitor-v2-troubleshoot.md) için kılavuzumuzu kullanın.

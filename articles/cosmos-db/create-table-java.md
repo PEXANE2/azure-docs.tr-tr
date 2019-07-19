@@ -1,5 +1,5 @@
 ---
-title: "Hızlı Başlangıç: Tablo API'si ile Java - Azure Cosmos DB"
+title: "Hızlı Başlangıç: Java ile Tablo API'si Azure Cosmos DB"
 description: Bu hızlı başlangıçta Azure portalı ve Java ile uygulama oluşturmak için Azure Cosmos DB Tablo API’sinin nasıl kullanılacağı gösterilmektedir
 author: SnehaGunda
 ms.service: cosmos-db
@@ -8,14 +8,14 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
-ms.openlocfilehash: 22d5aea119d71553afc02ee923fab5cf5ead5ce0
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.openlocfilehash: 3610a5be356f306e4f92ea35d399a888f568d6d3
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65519042"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326189"
 ---
-# <a name="quickstart-build-a-table-api-app-with-java-and-azure-cosmos-db"></a>Hızlı Başlangıç: API uygulamasını Java ve Azure Cosmos DB ile tablo oluşturma
+# <a name="quickstart-build-a-table-api-app-with-java-and-azure-cosmos-db"></a>Hızlı Başlangıç: Java ve Azure Cosmos DB Tablo API'si uygulama oluşturma
 
 > [!div class="op_single_selector"]
 > * [.NET](create-table-dotnet.md)
@@ -35,7 +35,7 @@ Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritaba
 
 Buna ek olarak: 
 
-* [Java Geliştirme Seti (JDK) 8](https://aka.ms/azure-jdks)
+* [Java Development Kit (JDK) 8](https://aka.ms/azure-jdks)
     * JAVA_HOME ortam değişkenini JDK’nin yüklü olduğu klasöre işaret edecek şekilde ayarladığınızdan emin olun.
 * Bir [Maven](https://maven.apache.org/) ikili arşivi [indirin](https://maven.apache.org/download.cgi) ve [yükleyin](https://maven.apache.org/install.html)
     * Ubuntu’da Maven’i yüklemek için `apt-get install maven` komutunu çalıştırabilirsiniz.
@@ -94,7 +94,7 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
 
 5. Birinci satırı açıklama satırı yapın ve ikinci satırın açıklamasını kaldırın. İlk iki satır şöyle görünmelidir.
 
-    ```
+    ```xml
     #StorageConnectionString = UseDevelopmentStorage=true
     StorageConnectionString = DefaultEndpointsProtocol=https;AccountName=[ACCOUNTNAME];AccountKey=[ACCOUNTKEY]
     ```

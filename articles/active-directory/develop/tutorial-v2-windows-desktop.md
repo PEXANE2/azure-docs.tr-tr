@@ -1,6 +1,6 @@
 ---
-title: Microsoft kimlik platformu Windows desktop ile çalışmaya başlama | Microsoft Docs
-description: Nasıl bir Windows Masaüstü .NET (XAML) uygulama erişim belirteci almak ve Microsoft kimlik platformu tarafından korunan bir API çağrısı.
+title: Microsoft Identity Platform Windows Desktop 'ı kullanmaya başlama | Microsoft Docs
+description: Bir Windows Masaüstü .NET (XAML) uygulaması, bir erişim belirteci alabilir ve Microsoft Identity platform tarafından korunan bir API 'YI çağırabilir.
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -16,15 +16,20 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f80f5fa85bd66b1431d024d860a5986769b6347
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e18cb2ba0cba9ea1f07261435f98b07aad7cf6a3
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60297750"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335570"
 ---
 [!INCLUDE [1. Introduction](../../../includes/active-directory-develop-guidedsetup-windesktop-introduction.md)]
 [!INCLUDE [2. Setup](../../../includes/active-directory-develop-guidedsetup-windesktop-setup.md)]
 [!INCLUDE [3. Use](../../../includes/active-directory-develop-guidedsetup-windesktop-use.md)]
 [!INCLUDE [4. Configure](../../../includes/active-directory-develop-guidedsetup-windesktop-configure.md)]
 [!INCLUDE [5. Test and Validate](../../../includes/active-directory-develop-guidedsetup-windesktop-test.md)]
+
+Microsoft Identity platformunu geliştirmemize yardımcı olun. Kısa bir iki sorulık anketi tamamlayarak düşüncelerinizi bize söyleyin.
+
+> [!div class="nextstepaction"]
+> [Microsoft Identity platform Anketi](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

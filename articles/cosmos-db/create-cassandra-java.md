@@ -1,5 +1,5 @@
 ---
-title: "Hızlı Başlangıç: Java - Azure Cosmos DB ile Cassandra API'si"
+title: 'Hızlı Başlangıç: Java ile Cassandra API Azure Cosmos DB'
 description: Bu hızlı başlangıçta Azure portalı ve Java ile profil uygulaması oluşturmak için Azure Cosmos DB Cassandra API’sinin nasıl kullanılacağı gösterilmektedir
 ms.service: cosmos-db
 author: SnehaGunda
@@ -8,14 +8,14 @@ ms.subservice: cosmosdb-cassandra
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: c3bfcffacee7df8a5abf59676a1c47fa283dee7b
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.openlocfilehash: 968c43ed78c59e5c1f147aaaa5bb33484d95c7a9
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65519030"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325474"
 ---
-# <a name="quickstart-build-a-cassandra-app-with-java-sdk-and-azure-cosmos-db"></a>Hızlı Başlangıç: Java ile Cassandra uygulaması derleme SDK ve Azure Cosmos DB
+# <a name="quickstart-build-a-cassandra-app-with-java-sdk-and-azure-cosmos-db"></a>Hızlı Başlangıç: Java SDK ve Azure Cosmos DB Cassandra uygulaması derleme
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
@@ -34,7 +34,7 @@ Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritaba
 
 Ayrıca, şunlar gerekir:
 
-* [Java Development Kit (JDK) 8 sürümü](https://aka.ms/azure-jdks)
+* [Java Development Kit (JDK) sürüm 8](https://aka.ms/azure-jdks)
     * JAVA_HOME ortam değişkenini JDK’nin yüklü olduğu klasöre işaret edecek şekilde ayarladığınızdan emin olun.
 * Bir [Maven](https://maven.apache.org/) ikili arşivi [indirin](https://maven.apache.org/download.cgi) ve [yükleyin](https://maven.apache.org/install.html)
     * Ubuntu’da Maven’i yüklemek için `apt-get install maven` komutunu çalıştırabilirsiniz.
@@ -71,7 +71,7 @@ Bir belge veritabanı oluşturmadan önce Azure Cosmos DB ile bir Cassandra hesa
 
 ## <a name="review-the-code"></a>Kodu gözden geçirin
 
-Bu adım isteğe bağlıdır. Kodun veritabanı kaynaklarını nasıl oluşturduğunu öğrenmek istiyorsanız aşağıdaki kod parçacıklarını gözden geçirebilirsiniz. Aksi durumda, [Bağlantı dizenizi güncelleştirme](#update-your-connection-string) bölümüne atlayabilirsiniz. Bu kod parçacıklarının tamamı `src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java` dosyasından alınmıştır.  
+Bu adım isteğe bağlıdır. Kodun veritabanı kaynaklarını nasıl oluşturduğunu öğrenmek istiyorsanız aşağıdaki kod parçacıklarını gözden geçirebilirsiniz. Aksi durumda, [Bağlantı dizenizi güncelleştirme](#update-your-connection-string) bölümüne atlayabilirsiniz. Bu kod parçacıklarının tümü *src/Main/Java/com/Azure/cosmosdb/Cassandra/Util/CassandraUtils. Java* dosyasından alınmıştır.  
 
 * Cassandra konağı, bağlantı noktası, kullanıcı adı, parola ve SSL seçenekleri ayarlanmıştır. Bağlantı dizesi bilgileri Azure portalındaki bağlantı dizesi sayfasından gelir.
 
@@ -85,7 +85,7 @@ Bu adım isteğe bağlıdır. Kodun veritabanı kaynaklarını nasıl oluşturdu
     return cluster.connect();
     ```
 
-Aşağıdaki kod parçacıkları `src/main/java/com/azure/cosmosdb/cassandra/repository/UserRepository.java` dosyasından alınmıştır.
+Aşağıdaki kod parçacıkları *src/Main/Java/com/Azure/cosmosdb/Cassandra/depo/UserRepository. Java* dosyasından alınır.
 
 * Yeni bir anahtar alanı oluşturun.
 
@@ -177,7 +177,7 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
 
 5. Belirli bir SSL sertifikasını kullanmak istiyorsanız 6. satırda `<SSL key store file location>` değerini SSL sertifikasının konumuyla değiştirin. Bir değer sağlanmamışsa, <JAVA_HOME>/jre/lib/security/cacerts konumuna yüklenen JDK sertifikası kullanılır. 
 
-6. 6. satırı belirli bir SSL sertifikası kullanmak üzere değiştirdiyseniz, 7. satırı bu sertifikanın parolasını kullanacak şekilde güncelleştirin. 
+6. 6\. satırı belirli bir SSL sertifikası kullanmak üzere değiştirdiyseniz, 7. satırı bu sertifikanın parolasını kullanacak şekilde güncelleştirin. 
 
 7. `config.properties` dosyasını kaydedin.
 

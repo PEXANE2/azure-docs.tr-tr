@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 07/18/2019
 ms.author: mbullwin
-ms.openlocfilehash: e59b82c3b1000d679e6faa0fc3c55c624a255443
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
-ms.translationtype: HT
+ms.openlocfilehash: 3d2aefa7040ca2082e0e584d250d99f1ca00edf7
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302533"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326433"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Application Insights ve Log Analytics tarafından kullanılan IP adresleri
 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) hizmeti, birkaç IP adresi kullanır. İzlemekte olduğunuz uygulama bir güvenlik duvarının arkasında barındırılıyorsa, bu adresleri bilmeniz gerekebilir.
@@ -52,7 +52,7 @@ Durum İzleyicisi yapılandırma-yalnızca değişiklik yapıldığında gerekli
 | Yapılandırma |`secure.aadcdn.microsoftonline-p.com` | |`443` |
 | Yapılandırma |`auth.gfx.ms` | |`443` |
 | Yapılandırma |`login.live.com` | |`443` |
-| Yükleme |`packages.nuget.org`,,, (NuGetİndirmeleri)`az320820.vo.msecnd.net` `nuget.org` `api.nuget.org` | |`443` |
+| Yükleme | `globalcdn.nuget.org`, `packages.nuget.org` ,`api.nuget.org/v3/index.json` `nuget.org`, `api.nuget.org`,`dc.services.vsallin.net` | |`443` |
 
 ## <a name="availability-tests"></a>Kullanılabilirlik testleri
 Bu, [kullanılabilirlik Web testlerinin](../../azure-monitor/app/monitor-web-app-availability.md) çalıştırıldığı adreslerin listesidir. Uygulamanızda Web testleri çalıştırmak istiyorsanız, ancak Web sunucunuz belirli istemcilere hizmet vermeye karşı kısıtlanmışsa, kullanılabilirlik testi sunucularımızdan gelen trafiğe izin vermeniz gerekir.

@@ -3,21 +3,21 @@ title: Azure Hızlı Başlangıç - Batch işi çalıştırma - Python
 description: Bir Batch işini ve görevleri Batch Python istemci kitaplığı kullanarak hızlıca çalıştırın.
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.service: batch
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/27/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 5788f6e699833c606b1bdeaf63a9aac13da2a0e9
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: f7170fbb4a258e9d8290ad9d207028087b22003a
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67513284"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322309"
 ---
-# <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>Hızlı Başlangıç: Python API'si ile ilk Batch işinizi çalıştırma
+# <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>Hızlı Başlangıç: Python API 'SI ile ilk Batch işinizi çalıştırma
 
 Bu hızlı başlangıç, Azure Batch Python API üzerinde derlenmiş bir uygulamadan Azure Batch işi çalıştırır. Uygulama, Azure depolamaya birkaç veri dosyası yükler ve sonra Batch işlem düğümlerinin (sanal makine) *havuzunu* oluşturur. Daha sonra, temel bir komut kullanarak havuz üzerindeki her bir giriş dosyasını işlemek üzere *görevler* çalıştıran örnek bir *iş* oluşturur. Bu hızlı başlangıcı tamamladıktan sonra, Batch hizmetinin temel kavramlarını anlayacak ve Batch’i daha büyük ölçekte daha gerçekçi iş yükleri ile denemeye hazır olacaksınız.
  
@@ -108,7 +108,7 @@ Varsayılan yapılandırmasında uygulama çalıştırıldığında tipik yürü
 Bu hızlı başlangıçtaki Python uygulaması şunları yapar:
 
 * Azure depolama hesabınızdaki blob kapsayıcısına üç küçük metin dosyası yükler. Bu dosyalar, Batch görevleri tarafından işlenecek girdilerdir.
-* Ubuntu 18.04 LTS çalıştıran iki işlem düğümleri havuzu oluşturur.
+* Ubuntu 18,04 LTS çalıştıran iki işlem düğümü havuzu oluşturur.
 * Düğümler üzerinde çalıştırılacak bir iş ve üç görev oluşturur. Her görev bir Bash kabuk komut satırı kullanarak giriş dosyalarından birini işler.
 * Görevler tarafından döndürülen dosyaları gösterir.
 
@@ -149,7 +149,7 @@ batch_client = batch.BatchServiceClient(
 
 ### <a name="create-a-pool-of-compute-nodes"></a>İşlem düğümleri havuzu oluşturma
 
-Uygulama, Batch havuzu oluşturmak için düğüm sayısını, VM boyutunu ve havuz yapılandırmasını ayarlamak üzere Batch [PoolAddParameter](/python/api/azure.batch.models.pooladdparameter) sınıfını kullanır. Burada bir [VirtualMachineConfiguration](/python/api/azure.batch.models.virtualmachineconfiguration) nesnesini belirtir bir [Imagereference](/python/api/azure.batch.models.imagereference) Azure Market'te yayımlanmış bir Ubuntu Server 18.04 LTS görüntüsüne. Batch, Azure Market’te çok çeşitli Linux ve Windows Server görüntülerinin yanı sıra özel VM görüntülerini destekler.
+Uygulama, Batch havuzu oluşturmak için düğüm sayısını, VM boyutunu ve havuz yapılandırmasını ayarlamak üzere Batch [PoolAddParameter](/python/api/azure.batch.models.pooladdparameter) sınıfını kullanır. Burada [Virtualmachineconfiguration](/python/api/azure.batch.models.virtualmachineconfiguration) nesnesi, Azure Marketi 'Nde yayınlanan Ubuntu Server 18,04 LTS görüntüsüne bir [ImageReference](/python/api/azure.batch.models.imagereference) belirtir. Batch, Azure Market’te çok çeşitli Linux ve Windows Server görüntülerinin yanı sıra özel VM görüntülerini destekler.
 
 Düğüm sayısı (`_POOL_NODE_COUNT`) ve VM boyutu (`_POOL_VM_SIZE`), tanımlı sabitlerdir. Varsayılan olarak, örnek 2 boyutunda *Standard_A1_v2* düğümleri havuzu oluşturur. Önerilen boyut, bu hızlı örnek için performans ile maliyetin iyi bir dengesini sunar.
 

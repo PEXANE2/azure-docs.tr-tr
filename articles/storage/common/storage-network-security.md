@@ -9,21 +9,21 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: f6422bf2ccc42c12d8f2d20a5a7ece8d37e8b48e
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
-ms.translationtype: MT
+ms.openlocfilehash: 398b2236caa77e4aef5b471079407a5edeeeee2d
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449720"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326943"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure depolama güvenlik duvarlarını ve sanal ağları yapılandırma
 
 Azure depolama, katmanlı güvenlik modeli sağlar. Bu model, desteklenen ağları belirli bir kümesi, depolama hesaplarınıza güvenli olanak tanır. Ağ kuralları yapılandırıldığında, yalnızca belirtilen ağlar kümesini projelerimizin veri isteyen uygulamalar bir depolama hesabına erişebilir.
 
-Bir depolama hesabı ağ kuralları geçerli olduğunda erişen bir uygulama istek üzerine uygun yetkilendirme gerektirir. Yetkilendirme, BLOB'lar ve Kuyruklar için Azure Active Directory (Azure AD) kimlik bilgilerini, geçerli hesap erişim anahtarı ile veya bir SAS belirteci ile desteklenir.
+Bir depolama hesabı ağ kuralları geçerli olduğunda erişen bir uygulama istek üzerine uygun yetkilendirme gerektirir. Yetkilendirme, geçerli bir hesap erişim anahtarı veya SAS belirteci ile blob 'lar ve kuyruklar için Azure Active Directory (Azure AD) kimlik bilgileri ile desteklenir.
 
 > [!IMPORTANT]
-> Azure dosya eşitleme, güvenlik duvarları ve sanal ağlar henüz desteklemiyor. Azure dosya eşitleme, depolama hesabınızda kullandığınız ve bunlar etkinleştirirseniz, Azure dosya eşitleme eşitlenmez.
+> Azure Dosya Eşitleme henüz güvenlik duvarlarını ve sanal ağları desteklemez. Depolama hesabınızda Azure Dosya Eşitleme kullanıyorsanız ve bu ayarı etkinleştirirseniz Azure Dosya Eşitleme eşitlenmez.
 >
 > Bir Azure sanal ağı (VNet) içinde çalışan bir hizmet isteği gelen sürece depolama hesabınız için güvenlik duvarı kurallarını etkinleştirmek varsayılan olarak, veri gelen istekleri engeller. Engellenen istekleri, Azure portalından, günlük ve ölçüm hizmetlerden, diğer Azure hizmetlerinden gelen içerir ve benzeri.
 >
@@ -244,7 +244,7 @@ Her Depolama hesabı ile birleştirilebilir, 100'e kadar IP ağ kurallarını de
 
 Depolama hesabınıza bir IP ağ kuralı ile şirket içi ağlarınızı erişim vermek için internet'e yönelik ağınız tarafından kullanılan IP adreslerini tanımlamanız gerekir. Yardım için ağ yöneticinize başvurun.
 
-Kullanıyorsanız [ExpressRoute](/azure/expressroute/expressroute-introduction) şirket içinden ortak eşleme veya Microsoft eşlemesi için kullanılan NAT IP adreslerini tanımlamanız gerekecek. Ortak eşleme için, her bir ExpressRoute varsayılan olarak bağlantı hattında trafik Microsoft Azure omurga ağına girdiğinde Azure hizmet trafiğine uygulanan iki NAT IP adresi kullanılır. Microsoft eşlemesi için, kullanılan NAT IP adresleri müşteri tarafından sağlanır veya hizmet sağlayıcısı tarafından sağlanır. Hizmet kaynaklarınıza erişime izin vermek için, bu genel IP adreslerine kaynak IP güvenlik duvarı ayarında izin vermeniz gerekir. Ortak eşleme ExpressRoute bağlantı hattı IP adreslerinizi bulmak için Azure portalında [ExpressRoute ile bir destek bileti açın](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). [ExpressRoute genel ve Microsoft eşlemesi için NAT](/azure/expressroute/expressroute-nat#nat-requirements-for-azure-public-peering) hakkında daha fazla bilgi edinin.
+Şirket içinde genel eşleme veya Microsoft eşlemesi için [ExpressRoute](/azure/expressroute/expressroute-introduction) kullanıyorsanız, kullanılan NAT IP adreslerini belirlemeniz gerekir. Ortak eşleme için, her bir ExpressRoute varsayılan olarak bağlantı hattında trafik Microsoft Azure omurga ağına girdiğinde Azure hizmet trafiğine uygulanan iki NAT IP adresi kullanılır. Microsoft eşlemesi için, kullanılan NAT IP adresleri müşteri tarafından sağlanır veya hizmet sağlayıcısı tarafından sağlanır. Hizmet kaynaklarınıza erişime izin vermek için, bu genel IP adreslerine kaynak IP güvenlik duvarı ayarında izin vermeniz gerekir. Ortak eşleme ExpressRoute bağlantı hattı IP adreslerinizi bulmak için Azure portalında [ExpressRoute ile bir destek bileti açın](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). [ExpressRoute genel ve Microsoft eşlemesi için NAT](/azure/expressroute/expressroute-nat#nat-requirements-for-azure-public-peering) hakkında daha fazla bilgi edinin.
 
 ### <a name="managing-ip-network-rules"></a>IP ağ kurallarını yönetme
 
@@ -352,16 +352,17 @@ Etkinleştirirseniz **izin güvenilen Microsoft Hizmetleri...**  özel durum, a�
 
 |Hizmet|Kaynak sağlayıcı adı|Amaç|
 |:------|:---------------------|:------|
-|Azure Backup|Microsoft.RecoveryServices|Yedekleme ve geri yüklemeler yönetilmeyen diskler, IAAS sanal makinelerde çalıştırır. (yönetilen diskler için gerekli değildir). [Daha fazla bilgi edinin](/azure/backup/backup-introduction-to-azure-backup).|
-|Azure Data Box|Microsoft.DataBox|Data Box'ı kullanarak azure'a veri aktarımını sağlar. [Daha fazla bilgi edinin](/azure/databox/data-box-overview).|
+|Azure Backup|Microsoft. RecoveryServices|Yedekleme ve geri yüklemeler yönetilmeyen diskler, IAAS sanal makinelerde çalıştırır. (yönetilen diskler için gerekli değildir). [Daha fazla bilgi edinin](/azure/backup/backup-introduction-to-azure-backup).|
+|Azure Data Box|Microsoft. DataBox|Data Box kullanarak Azure 'a veri aktarmayı sağlar. [Daha fazla bilgi edinin](/azure/databox/data-box-overview).|
 |Azure DevTest Labs|Microsoft.DevTestLab|Özel görüntü oluşturma ve yapıt yükleme. [Daha fazla bilgi edinin](/azure/devtest-lab/devtest-lab-overview).|
 |Azure Event Grid|Microsoft.EventGrid|BLOB Depolama olayı yayımlamayı etkinleştirme ve depolama kuyrukları yayımlamak Event Grid sağlar. Hakkında bilgi edinin [blob depolama olayları](/azure/event-grid/event-sources) ve [sıralara yayımlama](/azure/event-grid/event-handlers).|
 |Azure Event Hubs|Microsoft.EventHub|Event Hubs yakalama ile verileri arşivleme. [Daha fazla bilgi edinin](/azure/event-hubs/event-hubs-capture-overview).|
-|Azure HDInsight|Microsoft.HDInsight|Yeni bir HDInsight kümesinin varsayılan dosya sistemi ilk içeriğini sağlayın. [Daha fazla bilgi edinin](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/).|
+| Azure Dosya Eşitleme| Microsoft.StorageSync| Şirket içi dosya sunucunuzu Azure dosya paylaşımları için bir önbelleğe dönüştürmenizi sağlar. Çok siteli eşitleme, hızlı olağanüstü durum kurtarma ve bulut tarafı yedekleme için izin verme. [Daha fazla bilgi edinin](../files/storage-sync-files-planning.md)|
+|Azure HDInsight|Microsoft.HDInsight|Yeni bir HDInsight kümesi için varsayılan dosya sisteminin başlangıçtaki içeriğini sağlayın. [Daha fazla bilgi edinin](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/).|
 |Azure İzleyici|Microsoft.Insights|İzleme verilerinin bir güvenli depolama hesabına yazma sağlayan [daha fazla bilgi edinin](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security).|
 |Azure Ağı|Microsoft.Network|Store ve ağ trafik günlüklerini analiz edin. [Daha fazla bilgi edinin](/azure/network-watcher/network-watcher-packet-capture-overview).|
 |Azure Site Recovery|Microsoft.SiteRecovery |Olağanüstü durum kurtarma, Azure Iaas sanal makineler için çoğaltma etkinleştirerek yapılandırın. Güvenlik Duvarı etkin önbellek depolama hesabı veya kaynak depolama hesabı veya hedef depolama hesabı kullanıyorsanız, bu gereklidir.  [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication).|
-|Azure SQL Veri Ambarı|Microsoft.Sql|İçeri aktarma sağlar ve PolyBase kullanarak belirli SQL veritabanları örneklerden senaryoları verin. [Daha fazla bilgi edinin](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview).|
+|Azure SQL Veri Ambarı|Microsoft.Sql|PolyBase kullanarak belirli SQL veritabanları örneklerinden içeri ve dışarı aktarma senaryolarına izin verir. [Daha fazla bilgi edinin](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview).|
 
 ### <a name="storage-analytics-data-access"></a>Depolama analizi veri erişimi
 

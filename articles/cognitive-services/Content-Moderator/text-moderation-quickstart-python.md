@@ -10,15 +10,13 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 01c153f2f8836b7d99de57af60b8623e54c6d6fe
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: bb0e44f83e2101a7b21e7b7ec6fdc75974c6d6d8
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311920"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68333599"
 ---
-[!code-python[import declarations](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=imports)]
-
 # <a name="quickstart-analyze-text-content-for-objectionable-material-in-python"></a>Hızlı Başlangıç: Python 'da sakıncalı malzeme için metin içeriğini analiz etme
 
 Bu makalede bilgiler sağlar ve yardımcı olması için kod örnekleri Content Moderator SDK'sı için Python'ı kullanmaya başlayın. Uygunsuz olabilecek malzemeleri yönetmek için terim tabanlı filtreleme ve metin içeriğini sınıflandırma işlemlerini yürütmeyi öğreneceksiniz.
@@ -47,7 +45,7 @@ Adlı yeni bir Python betiği oluşturmak _ContentModeratorQS.py_ ve SDK'yı ger
 
 ## <a name="initialize-variables"></a>Değişkenleri başlatma
 
-Ardından, değişkenleri, Content Moderator abonelik anahtarını ve uç nokta URL'sini ekleyin. Adı `CONTENT_MODERATOR_SUBSCRIPTION_KEY` ortam değişkenlerinizin içine eklemeniz ve abonelik anahtarınızı değer olarak eklemeniz gerekir. Temel uç nokta URL 'niz için, `CONTENT_MODERATOR_ENDPOINT` kendi değeri olarak bölge özel URL 'niz ile ortam değişkenlerinizi ekleyin (örneğin `https://westus.api.cognitive.microsoft.com`,). Ücretsiz deneme aboneliği anahtarları oluşturulur **westus** bölge.
+Ardından, değişkenleri, Content Moderator abonelik anahtarını ve uç nokta URL'sini ekleyin. Ad olarak abonelik `CONTENT_MODERATOR_SUBSCRIPTION_KEY` anahtarınızla birlikte ortam değişkenlerinizin adını ekleyin. Temel uç nokta URL 'niz için, `CONTENT_MODERATOR_ENDPOINT` kendi değeri olarak bölge özel URL 'niz ile ortam değişkenlerinizi ekleyin (örneğin `https://westus.api.cognitive.microsoft.com`,). Ücretsiz deneme aboneliği anahtarları oluşturulur **westus** bölge.
 
 [!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/content_moderator_quickstart.py?name=authentication)]
 
@@ -67,9 +65,7 @@ Daha sonra, işleviyle `screen_text`birlikte denetleme API 'sini çağırmak iç
 
 ## <a name="check-the-printed-response"></a>Yazdırılan yanıtı denetleyin
 
-Örneği çalıştırın ve yanıtı onaylayın. Başarıyla tamamlanmalıdır ve bir **ekran** örneği döndürdü. Başarılı bir sonuç aşağıda yazdırılır:
-
-Bu hızlı başlangıçta sonuçları aşağıdaki çıktıda kullanılan örnek metni:
+Örneği çalıştırın ve yanıtı onaylayın. Başarıyla tamamlandıktan sonra bir **ekran** örneği döndürür. Başarılı bir sonuç aşağıda gösterilmektedir:
 
 ```console
 {'auto_corrected_text': '" Is this a garbage email abide@ abed. com, phone: '

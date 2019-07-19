@@ -1,6 +1,6 @@
 ---
-title: Azure Danışmanı'nı kullanarak hizmet maliyetlerinin azaltılmasına | Microsoft Docs
-description: Azure Danışmanı, Azure dağıtımlarınızı maliyetini en iyi duruma getirmek için kullanın.
+title: Azure Advisor 'ı kullanarak hizmet maliyetlerini azaltma | Microsoft Docs
+description: Azure dağıtımlarınızın maliyetini iyileştirmek için Azure Advisor 'ı kullanın.
 services: advisor
 documentationcenter: NA
 author: kasparks
@@ -8,61 +8,61 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: fef7b82e6969de16d1815250d2373c99021b0e86
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 96e939f8e3da58a123d9a6733b71b74c2ff0ba87
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66254715"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311908"
 ---
-# <a name="reduce-service-costs-using-azure-advisor"></a>Azure Danışmanı'nı kullanarak hizmet maliyetlerini azaltın
+# <a name="reduce-service-costs-using-azure-advisor"></a>Azure Advisor 'ı kullanarak hizmet maliyetlerini azaltma
 
-En iyi duruma getirmek ve genel Azure azaltmak advisor yardımcı olur, boş ve az kullanılan kaynakları belirleyerek ayırın. Önerileri maliyet **maliyet** Danışman Panosu sekmesinde.
+Danışman, boşta ve az kullanılan kaynakları tanımlayarak Genel Azure harcamalarınızı iyileştirmenize ve azaltmanıza yardımcı olur. Danışman panosundaki **Maliyet** sekmesinden maliyet önerileri alabilirsiniz.
 
-## <a name="optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances"></a>En iyi duruma getirme sanal makine harcama yeniden boyutlandırabilir veya az kullanılan örneklerini kapatılıyor 
+## <a name="optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances"></a>Az kullanılan örnekleri yeniden boyutlandırarak veya kapatarak sanal makineyi harcamayı iyileştirin 
 
-Uygulama belirli senaryolar tasarım gereği düşük kullanımı neden olabilir ancak, genellikle, sanal makinelerin sayısını ve boyutunu yöneterek tasarruf sağlayabilirsiniz. Advisor için 7 gün, sanal makine kullanımını izler ve ardından kullanımı düşük sanal makineleri tanımlar. Sanal makineler, düşük kullanımı, CPU kullanımı % 5'ise veya daha az olarak kabul edilir ve kendi ağ kullanımı % 2'den az veya daha küçük bir sanal makine boyutu tarafından yerleştirilebilecek geçerli iş yükünü.
+Bazı uygulama senaryoları tasarım tarafından düşük kullanıma yol açabilir, ancak sanal makinelerinizin boyutunu ve sayısını yöneterek paradan tasarruf edebilirsiniz. Danışman, sanal makine kullanımınızı 7 gün boyunca izler ve düşük kullanım sanal makinelerini belirler. CPU kullanımı% 5 veya daha az olursa ve ağ kullanımı% 2 ' den küçük veya geçerli iş yükünün daha küçük bir sanal makine boyutuyla ele alınabiliyorsa, sanal makineler düşük kullanım olarak değerlendirilir.
 
-Advisor da kapatın veya yeniden boyutlandırın seçebilir, sanal makinenizi çalıştırmaya devam tahmini maliyeti gösterir.
+Danışman, sanal makinenizi çalıştırmaya devam etmenin tahmini maliyetini gösterir. bu sayede, kapatmayı veya yeniden boyutlandırmayı seçebilirsiniz.
 
-Az kullanılan sanal makineleri saptamayı daha ısrarlı olmasını istiyorsanız, ortalama CPU kullanımı Kural başına abonelik temelinde ayarlayabilirsiniz.
+Aşırı kullanılan sanal makineleri tanımlamaya daha Agresif olmak istiyorsanız, CPU kullanım kuralını abonelik başına temelinde ayarlayabilirsiniz.
 
-## <a name="reduce-costs-by-eliminating-unprovisioned-expressroute-circuits"></a>Sağlaması yapılmamış bir ExpressRoute bağlantı hatları ortadan kaldırarak maliyetleri azaltın
+## <a name="reduce-costs-by-eliminating-unprovisioned-expressroute-circuits"></a>Sağlaması kaldırılan ExpressRoute devreleri ortadan kaldırarak maliyetleri düşürün
 
-Advisor tanımlayan sağlayıcı durumu içinde olan ExpressRoute bağlantı hatları *sağlanmadı* birden fazla ay ve bağlantınızı ile bağlantı hattını sağlamasını planlamıyorsanız devreyi önerir Sağlayıcı.
+Danışman, sağlayıcı durumunda bir aydan daha fazla *sağlanmamış* olan ExpressRoute devreleri tanımlar ve bağlantı sağlayıcınızla devreyi sağlamayı planlamadıysanız devreyi silmeyi önerir.
 
-## <a name="reduce-costs-by-deleting-or-reconfiguring-idle-virtual-network-gateways"></a>Silme veya boşta olan sanal ağ geçitlerini yeniden maliyetleri azaltın
+## <a name="reduce-costs-by-deleting-or-reconfiguring-idle-virtual-network-gateways"></a>Boştaki Sanal ağ geçitlerini silerek veya yeniden yapılandırarak maliyetleri azaltın
 
-Advisor 90 gün boyunca boşta sanal ağ geçitleri tanımlar. Bu ağ geçidi saatlik olarak faturalandırılır ve sonra yeniden yapılandırma ya da artık kullanmayı düşünmüyorsanız, silerek düşünmelisiniz. 
+Advisor 90 gün boyunca boşta olan sanal ağ geçitlerini tanımlar. Bu ağ geçitleri saatlik olarak faturalandırıladıklarından, bunları artık kullanmayı düşünmüyorsanız onları yeniden yapılandırmanızı veya silmeyi düşünmelisiniz. 
 
-## <a name="buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs"></a>Kullandıkça Öde maliyetlerinden tasarruf sağlamak için ayrılmış sanal makine örnekleri satın alın
+## <a name="buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs"></a>Kullandıkça Öde maliyetlerinden tasarruf etmek için ayrılmış sanal makine örnekleri satın alın
 
-Danışman son 30 gün içindeki sanal makine kullanımınızı gözden geçirin ve bir Azure rezervasyon satın alarak para tasarrufu, belirleyebilirsiniz. Danışman, potansiyel olarak çoğu tasarruf sahip ve rezervasyon satın alma gelen tahmini tasarruf gösterecektir boyutları ve bölgeler gösterilir. Azure ayırma ile taban maliyetlerini sanal makineleriniz için önceden satın alabilirsiniz. İndirimler aynı büyüklük ve bölge ayırmalarınızın yeni veya mevcut Vm'leri otomatik olarak uygulanır. [Azure ayrılmış VM örnekleri hakkında daha fazla bilgi edinin.](https://azure.microsoft.com/pricing/reserved-vm-instances/)
+Danışman, son 30 gün içinde sanal makine kullanımınızı inceleyerek bir Azure ayırması satın alarak para tasarrufu sağlayabilmeniz gerektiğini belirlemektir. Danışman size en fazla tasarruf ettiğiniz bölgeleri ve boyutları gösterir ve satın alma rezervasyonlarından Tahmini tasarruf sağlar. Azure ayırmaları sayesinde, sanal makinelerinizin temel maliyetlerini önceden satın alabilirsiniz. İndirimler, ayırmalarıyla aynı boyuta ve bölgeye sahip yeni veya mevcut VM 'lere otomatik olarak uygulanacaktır. [Azure ayrılmış VM örnekleri hakkında daha fazla bilgi edinin.](https://azure.microsoft.com/pricing/reserved-vm-instances/)
 
-Danışman, sonraki 30 gün içinde sona erecek olan ayrılmış örnekleri de bildirir. Kullandıkça Öde fiyatlandırması ödeme yapmaktan kaçınmak üzere yeni ayrılmış örnekler satın önerir.
+Danışman Ayrıca, sonraki 30 gün içinde sona erecektir olan ayrılmış örnekleri size bildirir. Kullandıkça Öde fiyatlandırmasını önlemeyi önlemek için yeni ayrılmış örnekler satın almanızı öneririz.
 
-## <a name="delete-unassociated-public-ip-addresses-to-save-money"></a>İlişkilendirilmemiş genel IP adreslerini tasarruf Sil
+## <a name="delete-unassociated-public-ip-addresses-to-save-money"></a>Paradan tasarruf etmek için ilişkilendirilmemiş genel IP adreslerini silin
 
-Danışman, yük Dengeleyiciler veya VM'ler gibi Azure kaynakları için şu anda ilişkili olmayan genel IP adresleri tanımlar. Bu genel IP adreslerinin nominal bir ücret ile gelir. Bunları kullanmayı planlamıyorsanız silerek maliyet tasarruf sağlayabilir.
+Danışman, şu anda yük dengeleyiciler veya VM 'Ler gibi Azure kaynaklarıyla ilişkili olmayan genel IP adreslerini tanımlar. Bu genel IP adresleri nominal bir ücret ile gelir. Bunları kullanmayı planlamıyorsanız, bunların silinmesi maliyet tasarruflarına yol açabilir.
 
-## <a name="delete-azure-data-factory-pipelines-that-are-failing"></a>Başarısız olan Azure Data Factory işlem hatlarını silin
+## <a name="delete-azure-data-factory-pipelines-that-are-failing"></a>Başarısız olan Azure Data Factory işlem hatlarını silme
 
-Azure Danışmanı, Azure Data Factory işlem hatlarını art arda başarısız ve sorunları gidermek veya artık gerekli değilse, başarısız olan işlem hatları silme önerilir algılar. Başarısız olan ancak yine de, hizmet verdikleri değil olsa bile bu işlem hatları için faturalandırılırsınız. 
+Azure Advisor, tekrar tekrar başarısız olan Azure Data Factory işlem hatlarını algılar ve artık gerekli değilse sorunları çözmenize veya başarısız olan işlem hatlarını silmeye önerilir. Bu işlem hatları için, başarısız olduklarında hizmet vermese bile faturalandırılırsınız. 
 
-## <a name="use-standard-snapshots-for-managed-disks"></a>Standart anlık görüntüler için yönetilen diskleri kullanma
-% 60'maliyet kaydetmek için standart depolama, üst disk depolama türü ne olursa olsun, anlık görüntüler depolamanızı öneririz. Yönetilen diskler, anlık görüntüler için varsayılan seçenek budur. Azure Danışmanı saklı Premium depolama ve anlık Premium'dan standart depolama alanına geçirme öneri anlık görüntüleri tanımlar. [Yönetilen Disk fiyatları hakkında daha fazla bilgi edinin](https://aka.ms/aa_manageddisksnapshot_learnmore)
+## <a name="use-standard-snapshots-for-managed-disks"></a>Yönetilen diskler için standart anlık görüntüleri kullanma
+Maliyetin% 60 ' i kaydetmek için, üst diskin depolama türünden bağımsız olarak anlık görüntülerinizi standart depolamada depolamanızı öneririz. Bu, yönetilen diskler anlık görüntüleri için varsayılan seçenektir. Azure Danışmanı, Premium Depolama depolanan anlık görüntüleri belirler ve anlık görüntü ortamınızı Premium 'dan standart depolamaya geçirmeyi öneririz. [Yönetilen disk fiyatlandırması hakkında daha fazla bilgi edinin](https://aka.ms/aa_manageddisksnapshot_learnmore)
 
-## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Maliyet önerileri Azure Danışmanı'nda erişme
+## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Azure Danışmanı 'nda maliyet önerilerine erişme
 
-1. Oturum [Azure portalında](https://portal.azure.com)ve ardından açın [Advisor](https://aka.ms/azureadvisordashboard).
+1. [Azure Portal](https://portal.azure.com)oturum açın ve [danışman](https://aka.ms/azureadvisordashboard)' yi açın.
 
-2.  Advisor panosunda **maliyet** sekmesi.
+2.  Danışman panosunda **Maliyet** sekmesine tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Danışman önerileri hakkında daha fazla bilgi için bkz:
-* [Advisor giriş](advisor-overview.md)
+Danışman önerileri hakkında daha fazla bilgi edinmek için bkz.:
+* [Advisor 'a giriş](advisor-overview.md)
 * [Kullanmaya Başlama](advisor-get-started.md)
-* [Danışmanı performans önerileri](advisor-cost-recommendations.md)
-* [Advisor yüksek kullanılabilirlik önerisi](advisor-cost-recommendations.md)
-* [Advisor güvenlik önerileri](advisor-cost-recommendations.md)
+* [Advisor performans önerileri](advisor-cost-recommendations.md)
+* [Danışman yüksek kullanılabilirlik önerileri](advisor-cost-recommendations.md)
+* [Danışman güvenlik önerileri](advisor-cost-recommendations.md)

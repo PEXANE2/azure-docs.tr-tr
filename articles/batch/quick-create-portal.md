@@ -3,21 +3,21 @@ title: Azure Hızlı Başlangıç - Batch işi çalıştırma - Portal
 description: Azure portalı ile bir Batch işi çalıştırmayı hızlı bir şekilde öğrenin.
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.service: batch
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 07/03/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: d478307ff4393d84a854fcd3b2ea0efd77de7135
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 33455a95dff946676e3dfffbd2737ed36be59c64
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60619960"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322358"
 ---
-# <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Hızlı Başlangıç: Azure portalında ilk Batch işinizi çalıştırma
+# <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Hızlı Başlangıç: Azure portal ilk Batch işinizi çalıştırma
 
 Bu hızlı başlangıçta, Azure portalını kullanarak bir Batch hesabı, bir işlem düğümleri (sanal makine) *havuzu* ve havuz üzerinde temel *görevler* çalıştıran bir *iş* oluşturma işlemi gösterilmektedir. Bu hızlı başlangıcı tamamladıktan sonra, Batch hizmetinin temel kavramlarını anlayacak ve Batch’i daha büyük ölçekte daha gerçekçi iş yükleri ile denemeye hazır olacaksınız.
 
@@ -25,7 +25,7 @@ Bu hızlı başlangıçta, Azure portalını kullanarak bir Batch hesabı, bir i
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma 
 
-https://portal.azure.com adresinden Azure portalında oturum açın.
+[https://portal.azure.com](https://portal.azure.com ) adresinden Azure portalında oturum açın.
 
 ## <a name="create-a-batch-account"></a>Batch hesabı oluşturma
 
@@ -57,7 +57,7 @@ Bir Batch hesabı edindikten sonra, test amacıyla örnek bir Windows işlem dü
 
 3. **İşletim Sistemi** menüsünde aşağıdaki ayarları seçin (diğer seçenekleri araştırabilirsiniz).
   
-   |Ayar  |Değer  |
+   |Ayar  |Value  |
    |---------|---------|
    |**Görüntü Türü**|Market (Linux/Windows)|
    |**Yayımcı**     |MicrosoftWindowsServer|
@@ -68,7 +68,7 @@ Bir Batch hesabı edindikten sonra, test amacıyla örnek bir Windows işlem dü
 
 4. Aşağıya kaydırarak **Düğüm Boyutu** ve **Ölçek** ayarlarına girin. Önerilen düğüm boyutu, bu hızlı örnek için performans ile maliyetin iyi bir dengesini sunar.
   
-   |Ayar  |Değer  |
+   |Ayar  |Value  |
    |---------|---------|
    |**Düğüm fiyatlandırma katmanı**     |Standard_A1|
    |**Hedef adanmış düğümler**     |2|
@@ -109,7 +109,7 @@ Batch kullandığınızda komut satırı, uygulamanızı veya betiğinizi belirt
 
 3. **Komut satırı**’na `cmd /c "set AZ_BATCH & timeout /t 90 > NUL"` girin. Diğer ayarlar için varsayılan değerleri kabul edin ve **Tamam**'ı seçin.
 
-   ![Görev oluşturma][task_create]
+   ![Bir görev oluşturun][task_create]
 
 Bir görev oluşturduktan sonra Batch, görevi havuzda çalışmak üzere kuyruğa alır. Görevi çalıştıracak bir düğüm kullanılabilir olduğunda, görev çalışır.
 

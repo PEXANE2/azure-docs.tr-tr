@@ -1,5 +1,5 @@
 ---
-title: DPS - Azure IOT Edge ile Linux cihazı otomatik olarak hazırlarsınız | Microsoft Docs
+title: DPS ile Linux cihazlarını otomatik olarak Sağlama-Azure IoT Edge | Microsoft Docs
 description: Azure cihaz sağlama hizmeti, Azure IOT Edge için test etmek için bir Linux VM üzerinde sanal bir TPM kullanma
 author: kgremban
 manager: philmea
@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 5ab85a8fb56789dbf3ecd6cf1cbc63e338615915
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 1a13c130c45c746a42c0acf1ec2646f3c8f9bc51
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67439134"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227525"
 ---
-# <a name="create-and-provision-an-iot-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>Bir Linux sanal makinesinde sanal bir TPM ile IOT Edge cihazı oluşturma ve sağlama
+# <a name="create-and-provision-an-iot-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>Linux sanal makinesinde sanal TPM ile bir IoT Edge cihazı oluşturma ve sağlama
 
-Azure IOT Edge cihazları otomatik olarak sağlanabilir kullanarak [cihaz sağlama hizmeti](../iot-dps/index.yml). Autoprovisioning işlemine bilmiyorsanız gözden [autoprovisioning kavramları](../iot-dps/concepts-auto-provisioning.md) devam etmeden önce. 
+Azure IoT Edge cihazlar [cihaz sağlama hizmeti](../iot-dps/index.yml)kullanılarak otomatik olarak sağlanabilir. Autoprovisioning işlemine bilmiyorsanız gözden [autoprovisioning kavramları](../iot-dps/concepts-auto-provisioning.md) devam etmeden önce. 
 
-Bu makalede aşağıdaki adımlarla benzetimli bir IOT Edge cihazı üzerindeki autoprovisioning test gösterilmektedir: 
+Bu makalede, aşağıdaki adımlarla sanal bir IoT Edge cihazında, oto sağlamayı test etme işlemi gösterilmektedir: 
 
 * Hyper-V ile bir sanal Güvenilir Platform Modülü (TPM) donanımı güvenlik için bir Linux sanal makinesini (VM) oluşturun.
 * Bir örnek, IOT Hub cihaz sağlama hizmeti (DPS) oluşturun.
@@ -36,13 +36,13 @@ Bu makaledeki adımlarda, test amacıyla yöneliktir.
 
 ## <a name="create-a-linux-virtual-machine-with-a-virtual-tpm"></a>Sanal bir TPM ile bir Linux sanal makinesi oluşturma
 
-Bu bölümde, Hyper-V üzerinde yeni bir Linux sanal makine oluşturun. Böylece IOT Edge ile nasıl otomatik sağlama works test etmek için bunu kullanabilirsiniz Bu sanal makineye sanal bir TPM ile yapılandırılmış. 
+Bu bölümde, Hyper-V üzerinde yeni bir Linux sanal makinesi oluşturacaksınız. Otomatik sağlamanın IoT Edge ile nasıl çalıştığını test etmek üzere kullanabilmeniz için, bu sanal makineyi sanal bir TPM ile yapılandırdınız. 
 
 ### <a name="create-a-virtual-switch"></a>Sanal anahtar oluşturma
 
 Bir sanal anahtar, fiziksel bir ağa bağlanmak sanal makinenizi sağlar.
 
-1. Windows makinenizde Hyper-V Yöneticisi'ni açın. 
+1. Windows makinenizde Hyper-V Yöneticisi 'Ni açın. 
 
 2. İçinde **eylemleri** menüsünde **sanal Anahtar Yöneticisi**. 
 
@@ -58,23 +58,23 @@ Yeni sanal anahtar oluştururken hatalar görürseniz, diğer bir anahtarlar eth
 
 1. Sanal makineniz için kullanın ve yerel olarak kaydetmek için disk görüntü dosyasını indirin. Örneğin, [Ubuntu server](https://www.ubuntu.com/download/server). 
 
-2. Hyper-V Yöneticisi'nde yeniden seçin **yeni** > **sanal makine** içinde **eylemleri** menüsü.
+2. Hyper-V Yöneticisi 'nde, **Eylemler** menüsünde **Yeni** > **sanal makine** ' yi seçin.
 
 3. Tamamlamak **yeni sanal makine Sihirbazı** aşağıdaki yapılandırmalarla:
 
-   1. **Nesli belirtmeniz**: Seçin **2. nesil**. 2\. nesil sanal makineler sanallaştırma etkinken bir sanal makine üzerinde IOT Edge çalıştırmak için gerekli olan iç içe geçmiş.
-   2. **Ağ Yapılandırma**: Değerini **bağlantı** , önceki bölümde oluşturduğunuz sanal anahtara. 
-   3. **Yükleme Seçenekleri**: Seçin **bir önyükleme görüntü dosyasından bir işletim sistemini yüklemek** ve yerel olarak kaydettiğiniz disk görüntü dosyasına göz atın.
+   1. **Oluşturma belirtin**: **2. nesil**seçeneğini belirleyin. 2\. nesil sanal makinelerde, bir sanal makinede IoT Edge çalıştırmak için gereken iç içe sanallaştırma etkinleştirilmiş.
+   2. **Ağı Yapılandır**: Önceki bölümde oluşturduğunuz sanal anahtarla **bağlantı** değerini ayarlayın. 
+   3. **Yükleme seçenekleri**: **Önyüklenebilir bir görüntü dosyasından işletim sistemi yüklemesi** ' ni seçin ve yerel olarak kaydettiğiniz disk görüntü dosyasına gidin.
 
-4. Seçin **son** sanal makine oluşturma Sihirbazı'nda.
+4. Sanal makineyi oluşturmak için sihirbazda **son** ' u seçin.
 
 Bu, yeni bir VM oluşturmak için birkaç dakika sürebilir. 
 
 ### <a name="enable-virtual-tpm"></a>Sanal TPM etkinleştir
 
-VM oluşturulduktan sonra cihaz autoprovision sağlayan sanal güvenilir platform Modülü (TPM) etkinleştirmek için ayarlarını açın. 
+VM 'niz oluşturulduktan sonra, cihazı yeniden sağlamanıza olanak tanıyan sanal Güvenilir Platform Modülü 'nü (TPM) etkinleştirmek için ayarlarını açın. 
 
-1. Sanal makineyi seçin ve ardından açın, **ayarları**.
+1. Sanal makineyi seçin ve ardından **ayarlarını**açın.
 
 2. Gidin **güvenlik**. 
 
@@ -88,14 +88,14 @@ VM oluşturulduktan sonra cihaz autoprovision sağlayan sanal güvenilir platfor
 
 Sanal makine, derleme, cihazın almak için kullanabileceğiniz bir C SDK'sı aracı **kayıt kimliği** ve **onay anahtarını**. 
 
-1. Sanal makineyi başlatmak ve ona bağlanabilirsiniz.
+1. Sanal makinenizi başlatın ve bu sunucuya bağlanın.
 
-2. Makineyi yeniden başlatın ve yükleme işlemini bitirmek için sanal makine içindeki yönergeleri izleyin. 
+2. Yükleme işlemini tamamlaması ve makineyi yeniden başlatmak için sanal makinedeki istemleri izleyin. 
 
-3. Sanal makinenizde oturum açın ve ardından adımları [bir Linux geliştirme ortamı ayarlama](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#linux) yükleyin ve c için Azure IOT cihaz SDK'sını derleme 
+3. SANAL makinenizde oturum açın ve ardından, C için Azure IoT cihaz SDK 'sını yüklemek ve derlemek için [bir Linux geliştirme ortamı ayarlama](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#linux) bölümündeki adımları izleyin. 
 
    >[!TIP]
-   >Bu makalede sırasında kopyalayın ve Hyper-V Yöneticisi'ni bağlantı uygulama kolay değil, sanal makineden yapıştırın. Sanal makineye Hyper-V IP adresini almak için Yöneticisi aracılığıyla bir kez bağlamak isteyebilirsiniz: `ifconfig`. Ardından, SSH bağlanmak için bir IP adresi kullanabilirsiniz: `ssh <username>@<ipaddress>`.
+   >Bu makalede, Hyper-V Yöneticisi bağlantı uygulaması aracılığıyla kolay olmayan sanal makineye kopyalanacak ve buradan yapıştırılacak. IP adresini almak için sanal makineye Hyper-V Yöneticisi üzerinden bir kez bağlanmak isteyebilirsiniz: `ifconfig`. Ardından, SSH aracılığıyla bağlanmak için IP adresini kullanabilirsiniz: `ssh <username>@<ipaddress>`.
 
 4. Derleme, cihaz sağlama bilgilerini alır bir C SDK'sı aracı için aşağıdaki komutları çalıştırın. 
 
@@ -107,7 +107,7 @@ Sanal makine, derleme, cihazın almak için kullanabileceğiniz bir C SDK'sı ar
    sudo ./tpm_device_provision
    ```
    >[!TIP]
-   >TPM simülatör ile test ediyorsanız, ek bir parametre yerleştirme gerekecektir `-Duse_tpm_simulator:BOOL=ON` etkinleştirin. Tam komut `cmake -Duse_prov_client:BOOL=ON -Duse_tpm_simulator:BOOL=ON ..`.
+   >TPM simülatörü ile test ediyorsanız, bunu etkinleştirmek için ek bir parametre `-Duse_tpm_simulator:BOOL=ON` koymanız gerekir. Tam komut `cmake -Duse_prov_client:BOOL=ON -Duse_tpm_simulator:BOOL=ON ..`olacaktır.
 
 5. Değerlerini kopyalayın **kayıt kimliği** ve **onay anahtarını**. DPS, cihazınız için bireysel kayıt oluşturmak için bu değerleri kullanırsınız. 
 
@@ -123,8 +123,7 @@ Sanal makinenizden sağlama bilgilerini almak ve, cihaz sağlama hizmetinde bire
 
 DPS'de bir kayıt oluşturduğunuzda, bildirme fırsatına sahip bir **ilk cihaz İkizi durumu**. Cihaz ikizinde bölge, ortam, konuma veya cihaz türü gibi çözümünüzdeki gereken herhangi bir ölçümü tarafından cihazları için etiketler ayarlayabilirsiniz. Bu etiketleri oluşturmak için kullanılan [otomatik dağıtımlar](how-to-deploy-monitor.md). 
 
-
-1. İçinde [Azure portalında](https://portal.azure.com)ve IOT Hub cihazı sağlama hizmeti örneğine gidin. 
+1. [Azure Portal](https://portal.azure.com), IoT Hub cihaz sağlama hizmeti örneğinize gidin. 
 
 2. Altında **ayarları**seçin **kayıtları Yönet**. 
 
@@ -132,13 +131,13 @@ DPS'de bir kayıt oluşturduğunuzda, bildirme fırsatına sahip bir **ilk cihaz
 
    1. İçin **mekanizması**seçin **TPM**. 
    
-   2. Sağlamak **onay anahtarını** ve **kayıt kimliği** sanal makinenizden kopyaladığınız.
+   2. Sanal makinenizden kopyaladığınız **onay anahtarını** ve **kayıt kimliğini** sağlayın.
    
-   3. Seçin **True** bu sanal makinenin bir IOT Edge cihazı olduğunu bildirmek için. 
+   3. Bu sanal makinenin IoT Edge bir cihaz olduğunu bildirmek için **true** ' ı seçin. 
    
-   4. Bağlantılı seçin **IOT hub'ı** cihazınıza bağlanmak istiyorsanız. Birden çok hub'a seçebilir ve cihaz seçilen ayırma ilkesine göre bunları birine atanır. 
+   4. Bağlantılı seçin **IOT hub'ı** cihazınıza bağlanmak istiyorsanız. Birden çok hub seçebilirsiniz ve bu cihaz, seçilen ayırma ilkesine göre bu cihazdan birine atanır. 
    
-   5. İsterseniz cihazınız için bir kimlik belirtin. Cihaz kimliklerini modülü dağıtımı için tek bir cihaza hedeflemek için kullanabilirsiniz. Bir cihaz kimliği sağlamıyorsa, kayıt kimliği kullanılır.
+   5. İsterseniz cihazınız için bir kimlik belirtin. Cihaz kimliklerini modülü dağıtımı için tek bir cihaza hedeflemek için kullanabilirsiniz. Bir cihaz KIMLIĞI sağlamazsanız, kayıt KIMLIĞI kullanılır.
    
    6. Etiketi değer eklemek **ilk cihaz İkizi durumu** istiyorsanız. Hedef cihaz gruplarına etiketleri modülü dağıtımı için kullanabilirsiniz. Örneğin: 
 
@@ -155,7 +154,7 @@ DPS'de bir kayıt oluşturduğunuzda, bildirme fırsatına sahip bir **ilk cihaz
 
    7. **Kaydet**’i seçin. 
 
-Bu cihaz için bir kayıt var, IOT Edge çalışma zamanı yüklemesi sırasında cihaz otomatik olarak sağlayabilirsiniz. 
+Bu cihaz için bir kayıt mevcut olduğuna göre, IoT Edge çalışma zamanı cihazı yükleme sırasında otomatik olarak sağlayabilir. 
 
 ## <a name="install-the-iot-edge-runtime"></a>IOT Edge çalışma zamanını yükleme
 
@@ -163,8 +162,8 @@ IoT Edge çalışma zamanı tüm IoT Edge cihazlarına dağıtılır. Bileşenle
 
 DPS'niz bilmeniz **kimlik kapsamı** ve cihaz **kayıt kimliği** cihaz türünüzle eşleşen makaleye başlamadan önce. Örnek Ubuntu server yüklü değilse, kullanın **x64** yönergeleri. Otomatik değil el ile sağlama için IOT Edge çalışma zamanı yapılandırdığınızdan emin olun. 
 
-* [Azure IOT Edge çalışma zamanı (x64) Linux'ta yükleme](how-to-install-iot-edge-linux.md)
-* [Azure IOT Edge çalışma zamanı (ARM32v7/armhf) Linux'ta yükleme](how-to-install-iot-edge-linux-arm.md)
+* [Linux (x64) üzerinde Azure IoT Edge çalışma zamanını yükler](how-to-install-iot-edge-linux.md)
+* [Linux 'ta Azure IoT Edge çalışma zamanını (ARM32v7/armhf) yükler](how-to-install-iot-edge-linux-arm.md)
 
 ## <a name="give-iot-edge-access-to-the-tpm"></a>IOT Edge erişmesini TPM'ye
 
@@ -292,7 +291,7 @@ journalctl -u iotedge --no-pager --no-full
 iotedge list
 ```
 
-Cihaz sağlama hizmetinde oluşturduğunuz bireysel kayıt kullanıldığını doğrulayabilirsiniz. Azure portalında cihaz sağlama hizmeti Örneğinize gidin. Kayıt ayrıntıları, oluşturduğunuz tek kayıt için açın. Kayıt durumu olduğuna dikkat edin **atanan** ve cihaz kimliği listelenir. 
+Cihaz sağlama hizmeti 'nde oluşturduğunuz bireysel kaydın kullanıldığını doğrulayabilirsiniz. Azure portal cihaz sağlama hizmeti örneğinize gidin. Oluşturduğunuz bireysel kayıt için kayıt ayrıntılarını açın. Kayıt durumunun **atandığını** ve cihaz kimliğinin listelendiğini unutmayın. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

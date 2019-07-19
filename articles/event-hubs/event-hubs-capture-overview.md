@@ -15,20 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 96b9d90ce942b7755feae8298a408f46f20bf04d
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 4ba3109460616be98b5330ec7175f161a6a3b750
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67461684"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326173"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Azure Blob Depolama veya Azure Data Lake Storage Azure Event Hubs ile olayları yakalama
 Azure olay hub'ları otomatik olarak Event Hubs akış verilerini yakalamanıza olanak sağlayan bir [Azure Blob Depolama](https://azure.microsoft.com/services/storage/blobs/) veya [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/) eklenen esnekliğini tercih ettiğiniz Hesapla bir zaman veya boyut aralığı belirtme. Yakalama ayarı hızlı, çalıştırmak için hiçbir yönetim maliyeti yoktur ve Event Hubs ile otomatik olarak ölçeklenen [üretilen iş birimleri](event-hubs-scalability.md#throughput-units). Event Hubs yakalama, Azure'a akış verileri yüklemenin en kolay yoludur ve veri yakalama yerine veri işleme odaklanmasını sağlar.
 
 Event Hubs yakalama, aynı akışta gerçek zamanlı ve toplu işlem tabanlı işlem hatlarını işlemenizi sağlar. Başka bir deyişle, gereksinimlerinizi zamanla ile büyütün çözümleri oluşturabilirsiniz. Event Hubs yakalama batch tabanlı sistemlerde göz önünde doğrultusunda gelecekteki gerçek zamanlı işleme ile bugün oluşturuyorsunuz ve verimli bir Durgun yol var olan bir gerçek zamanlı çözüme eklemek istediğiniz olsun, akış verileri daha kolay ile çalışma hale getirir.
-
-> [!NOTE]
-> Şu anda yalnızca Gen 1, Azure Data Lake Store, Gen 2 Event Hubs yakalama özelliğini destekler. 
 
 ## <a name="how-event-hubs-capture-works"></a>Event Hubs yakalama nasıl çalışır
 
@@ -36,7 +33,7 @@ Event Hubs, telemetri giriş, dağıtılmış bir günlük için benzer bir sakl
 
 Event Hubs yakalama, kendi Azure Blob Depolama hesabı ve kapsayıcı veya yakalanan verileri depolamak için kullanılan Azure Data Lake Store hesabı belirtmenizi sağlar. Bu hesaplar, olay hub'ı ile aynı bölgede veya başka bir bölgede Event Hubs yakalama özelliğini esnekliğini ekleme olabilir.
 
-Yakalanan verileri yazılmış [Apache Avro][Apache Avro] biçimi: satır içi şema ile zengin veri yapılarını sağlar compact, hızlı ve ikili biçimi. Bu biçim, Hadoop ekosistemi, Stream Analytics ve Azure Data Factory yaygın olarak kullanılır. Avro ile çalışma hakkında daha fazla bilgi makalenin sonraki bölümlerinde kullanılabilir.
+Yakalanan veriler [Apache avro][Apache Avro] biçiminde yazılır: satır içi şema ile zengin veri yapıları sağlayan kompakt, hızlı, ikili bir biçimdir. Bu biçim, Hadoop ekosistemi, Stream Analytics ve Azure Data Factory yaygın olarak kullanılır. Avro ile çalışma hakkında daha fazla bilgi makalenin sonraki bölümlerinde kullanılabilir.
 
 ### <a name="capture-windowing"></a>Pencereleme yakalama
 
@@ -52,11 +49,11 @@ Tarih değerlerini sıfırlarla doldurulur dikkat edin. bir örnek dosya adı ol
 https://mystorageaccount.blob.core.windows.net/mycontainer/mynamespace/myeventhub/0/2017/12/08/03/03/17.avro
 ```
 
-Azure storage blobunuza geçici olarak kullanılamıyor, olay, Event Hubs yakalama olay hub'ınızın yapılandırılmış veri saklama süresi için verilerinizi korumak ve depolama hesabınıza yeniden kullanılabilir olduğunda verileri geri doldurun.
+Azure Storage blob 'larınızın geçici olarak kullanılamadığı bir durumda, Event Hubs yakalama, Olay Hub 'ınız üzerinde yapılandırılan veri saklama süresi için verilerinizi korur ve depolama hesabınız yeniden kullanılabilir olduğunda verileri dolduracaktır.
 
 ### <a name="scaling-to-throughput-units"></a>İşleme birimleri ile ölçeklendirme
 
-Olay hub'ları trafiği tarafından denetlenir [üretilen iş birimleri](event-hubs-scalability.md#throughput-units). Tek bir işleme birimi, ikinci veya 1000 olay giriş ve çıkış miktarı iki kez saniye başına 1 MB sağlar. Standart Event Hubs, 1-20 üretilen iş birimleri ile yapılandırılabilir ve daha fazlasını satın alabilirsiniz ile kota artırma [destek isteği][support request]. Kullanım, satın alınan işleme birimlerinin ötesinde kısıtlanır. Event Hubs yakalama doğrudan İç olay hub'ları depolama alanındaki verileri, aktarım hızı birimi çıkış kotaları atlayarak ve Stream Analytics veya Spark gibi diğer işleme okuyucular için çıkış kaydetme kopyalar.
+Olay hub'ları trafiği tarafından denetlenir [üretilen iş birimleri](event-hubs-scalability.md#throughput-units). Tek bir işleme birimi, ikinci veya 1000 olay giriş ve çıkış miktarı iki kez saniye başına 1 MB sağlar. Standart Event Hubs 1-20 üretilen iş birimiyle yapılandırılabilir ve bir kota artışı [destek isteğiyle][support request]daha fazla satın alabilirsiniz. Kullanım, satın alınan işleme birimlerinin ötesinde kısıtlanır. Event Hubs yakalama doğrudan İç olay hub'ları depolama alanındaki verileri, aktarım hızı birimi çıkış kotaları atlayarak ve Stream Analytics veya Spark gibi diğer işleme okuyucular için çıkış kaydetme kopyalar.
 
 Event Hubs yakalama yapılandırıldıktan sonra ilk olay gönderdiğinizde, otomatik olarak çalışır ve çalışmaya devam eder. İşlemin çalıştığını bilmek, aşağı akış işleme kolaylaştırmak için hiçbir veri olduğunda olay hub'ları boş dosyalarını yazar. Bu işlem, tahmin edilebilir temposu ve, batch işlemci besleyebilecek işaret sunar.
 
@@ -70,40 +67,40 @@ Olay hub'ı kullanarak, oluşturma sırasında yakalama özelliğini yapılandı
 
 ## <a name="exploring-the-captured-files-and-working-with-avro"></a>Yakalanan dosyaları keşfetme ve Avro ile çalışma
 
-Event Hubs yakalama, yapılandırılmış zaman penceresi belirtildiği gibi Avro biçiminde dosyaları oluşturur. Bu dosyalar gibi herhangi bir aracı görüntüleyebilirsiniz [Azure Depolama Gezgini][Azure Storage Explorer]. Yerel olarak çalışacak şekilde dosyalarını indirebilirsiniz.
+Event Hubs yakalama, yapılandırılmış zaman penceresi belirtildiği gibi Avro biçiminde dosyaları oluşturur. Bu dosyaları, [Azure Depolama Gezgini][Azure Storage Explorer]gibi herhangi bir araçta görüntüleyebilirsiniz. Yerel olarak çalışacak şekilde dosyalarını indirebilirsiniz.
 
 Event Hubs yakalama tarafından üretilen dosyalar aşağıdaki Avro şemanın vardır:
 
 ![Avro şeması][3]
 
-Avro dosyalarının keşfetmek için kolay bir yol kullanmaktır [Avro Araçları][Avro Tools] jar from Apache. You can also use [Apache Drill][Apache Drill] için basit bir SQL odaklı deneyimdir veya [Apache Spark][Apache Spark] gerçekleştirmek için işleme alınan veriler üzerinde karmaşık dağıtılmış. 
+Avro dosyalarını keşfetmeye yönelik kolay bir yol, basit bir SQL odaklı deneyim için [avro araçları][Avro Tools] jar from Apache. You can also use [Apache Drill][Apache Drill] 'nı veya alınan verilerde karmaşık dağıtılmış işleme gerçekleştirmek için[Apache Spark] [Apache Spark]. 
 
-### <a name="use-apache-drill"></a>Apache ayrıntıya kullanın
+### <a name="use-apache-drill"></a>Apache detaya gitme kullan
 
-[Apache ayrıntıya][Apache Drill] "yapılandırılmış ve yarı yapılandırılmış verileri sorgulayabilir, nerede olurlarsa olsun, açık kaynaklı SQL sorgu büyük bir veri keşfi için" motorudur. Altyapı, bir tek başına düğüm veya muhteşem bir performans için çok büyük bir küme olarak çalıştırabilirsiniz.
+[Apache detaya gitme][Apache Drill] , yapılandırılmış ve yarı yapılandırılmış verileri nerede olursa olsun Sorgulayabileceğiniz "büyük veri araştırması için açık KAYNAKLı bir SQL sorgu altyapısıdır". Motor tek başına bir düğüm olarak veya harika bir performans için çok büyük bir küme olarak çalışabilir.
 
-Azure Blob Depolama için yerel destek, verileri sorgulamak için bir Avro dosyasında kolaylaştırır belgelerinde açıklanan şekilde kullanılabilir:
+Azure Blob depolama 'ya yerel bir destek sağlanır. Bu, belgelerde açıklandığı şekilde, verileri bir avro dosyasında sorgulamayı kolaylaştırır.
 
-[Apache ayrıntıya: Azure Blob Depolama eklentisi][Apache Drill: Azure Blob Storage Plugin]
+[Apache detaya gitme: Azure Blob depolama eklentisi][Apache Drill: Azure Blob Storage Plugin]
 
-Yakalanan dosyaları kolayca sorgulamak için oluşturabilir ve Azure Blob depolamaya erişmek için bir kapsayıcı etkin Apache ayrıntıya sahip bir VM yürütün:
+Yakalanan dosyaları kolayca sorgulamak için Azure Blob depolamaya erişmek üzere bir kapsayıcı aracılığıyla Apache detaya sahip bir VM oluşturup yürütebilirsiniz:
 
 https://github.com/yorek/apache-drill-azure-blob
 
-Baştan sona tam örnek, Ölçek deposunda akış bölgelerde kullanılabilir:
+Eksiksiz bir uçtan uca örnek, akış üzerinde ölçek deposunda mevcuttur:
 
-[Uygun ölçekte akış: Event Hubs yakalama]
+[Ölçekte akış: Event Hubs yakalama]
 
-### <a name="use-apache-spark"></a>Apache Spark kullanma
+### <a name="use-apache-spark"></a>Apache Spark kullan
 
-[Apache Spark][Apache Spark] bir "Birleşik analiz altyapısı için büyük ölçekli veri işleme." Bu, SQL gibi farklı dilleri desteklemektedir ve Azure Blob Depolama kolayca erişebilirsiniz. Apache Spark'ı Azure'da çalıştırmak için iki seçenek vardır ve her ikisi de Azure Blob Depolama için kolay erişim sağlar:
+[Apache Spark][Apache Spark] , büyük ölçekli veri işleme için birleştirilmiş bir analiz altyapısıdır. " SQL dahil farklı dilleri destekler ve Azure Blob depolamaya kolayca erişebilir. Azure 'da Apache Spark çalıştırmak için iki seçenek vardır ve her ikisi de Azure Blob depolamaya kolay erişim sağlar:
 
-- [HDInsight: Azure depolamada dosyaları adresleme][HDInsight: Address files in Azure storage]
-- [Azure Databricks: Azure Blob Depolama][Azure Databricks: Azure Blob Storage]
+- ['Tan Azure Storage 'daki adres dosyaları][HDInsight: Address files in Azure storage]
+- [Azure Databricks: Azure Blob depolama][Azure Databricks: Azure Blob Storage]
 
-### <a name="use-avro-tools"></a>Avro araçlarını kullanın
+### <a name="use-avro-tools"></a>Avro araçlarını kullanma
 
-[Avro Araçları][Avro Tools] bir jar paketi olarak kullanılabilir. Jar dosyasını indirdikten sonra aşağıdaki komutu çalıştırarak belirli bir Avro dosya şeması görebilirsiniz:
+[Avro araçları][Avro Tools] jar paketi olarak kullanılabilir. Jar dosyasını indirdikten sonra, aşağıdaki komutu çalıştırarak belirli bir avro dosyasının şemasını görebilirsiniz:
 
 ```shell
 java -jar avro-tools-1.8.2.jar getschema <name of capture file>
@@ -132,17 +129,17 @@ Avro araçları, dosya JSON biçimine dönüştürün ve başka bir işlem gerç
 
 Daha gelişmiş işleme gerçekleştirmek için indirin ve kendi seçtiğiniz platform için Avro yükleyin. Bu makalenin yazıldığı sırada, kullanılabilir uygulamalar için C, C++, C\#, Java, NodeJS, Perl, PHP, Python ve Ruby.
 
-Apache Avro için tam Başlarken kılavuzları sahip [Java][Java] and [Python][Python]. Ayrıca okuyabilirsiniz [Event Hubs yakalama ile çalışmaya başlama](event-hubs-capture-python.md) makalesi.
+Apache avro, [Java][Java] and [Python][Python]için Başlarken kılavuzlarını içerir. Ayrıca okuyabilirsiniz [Event Hubs yakalama ile çalışmaya başlama](event-hubs-capture-python.md) makalesi.
 
 ## <a name="how-event-hubs-capture-is-charged"></a>Event Hubs yakalama nasıl ücretlendirilir
 
 Event Hubs yakalama ölçülen benzer şekilde üretilen iş birimleri: saatlik bir ücret olarak. Ücretlendirme, ad alanı için satın alınan işleme birimlerinin sayısı doğrudan orantılıdır. İşleme birimleri artan ve azalan olarak Event Hubs yakalama ölçümleri artırın ve eşleşen performans sağlayacak şekilde azaltın. Ölçümleri dağıtımınızla oluşur. Fiyatlandırma ayrıntıları için bkz: [Event Hubs fiyatlandırması](https://azure.microsoft.com/pricing/details/event-hubs/). 
 
-Ayrı ayrı faturalandırıldığını olarak yakalama çıkış kotasının tüketmez unutmayın. 
+Yakalama, ayrı olarak faturalandırılırken çıkış kotasının tüketilmediğini unutmayın. 
 
 ## <a name="integration-with-event-grid"></a>Event Grid ile tümleştirme 
 
-Bir Event Hubs ad alanı ile kaynağı olarak Azure Event Grid aboneliği oluşturabilirsiniz. Aşağıdaki öğreticiye kaynağı olarak bir olay hub'ı ve havuz olarak bir Azure işlev uygulaması ile Event Grid aboneliği oluşturulacağını gösterir: [İşlem ve Event Grid ve Azure işlevleri'ni kullanarak bir SQL veri ambarı yakalanan Event Hubs verilerini geçirme](store-captured-data-data-warehouse.md).
+Bir Event Hubs ad alanı ile kaynağı olarak Azure Event Grid aboneliği oluşturabilirsiniz. Aşağıdaki öğreticide, havuz olarak bir olay hub 'ı kaynak ve Azure Işlevleri uygulaması olarak bir Event Grid aboneliği oluşturma işlemleri gösterilmektedir: [Event Grid ve Azure işlevlerini kullanarak yakalanan Event Hubs verilerini BIR SQL veri ambarına işleyin ve geçirin](store-captured-data-data-warehouse.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -166,4 +163,4 @@ Aşağıdaki bağlantıları inceleyerek Event Hubs hakkında daha fazla bilgi e
 [HDInsight: Address files in Azure storage]:https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-blob-storage#address-files-in-azure-storage
 [Azure Databricks: Azure Blob Storage]:https://docs.databricks.com/spark/latest/data-sources/azure/azure-storage.html
 [Apache Drill: Azure Blob Storage Plugin]:https://drill.apache.org/docs/azure-blob-storage-plugin/
-[Uygun ölçekte akış: Event Hubs yakalama]: https://github.com/yorek/streaming-at-scale/tree/master/event-hubs-capture
+[Ölçekte akış: Event Hubs yakalama]: https://github.com/yorek/streaming-at-scale/tree/master/event-hubs-capture

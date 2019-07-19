@@ -1,32 +1,32 @@
 ---
-title: Azure SignalR hizmeti olayları Event Grid'e göndermek nasıl
-description: Event Grid olaylarını SignalR hizmetiniz için etkinleştirme işlemini göstermek için bir kılavuz ardından gönderin istemci bağlantısı bağlı/bağlantısız olayları için örnek bir uygulama.
-services: azure-signalr
+title: Event Grid için Azure SignalR hizmeti olaylarını gönderme
+description: SignalR hizmetiniz için Event Grid olaylarını nasıl etkinleştireceğinizi ve ardından istemci bağlantısı bağlı/bağlantısı kesilen olayları örnek bir uygulamaya göndermenizi gösteren bir kılavuz.
+services: signalr
 author: chenyl
 ms.service: azure-signalr
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: chenyl
-ms.openlocfilehash: 2d782306938136ce6d21a331185f591316f58a29
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 52e4194acd6a3abfed3fabadb892b0de76025b7e
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67789182"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68296855"
 ---
-# <a name="how-to-send-events-from-azure-signalr-service-to-event-grid"></a>Event Grid için Azure SignalR hizmeti olayları göndermek nasıl
+# <a name="how-to-send-events-from-azure-signalr-service-to-event-grid"></a>Azure SignalR hizmetinden olayları Event Grid 'a gönderme
 
-Azure Event Grid bir yayımlama-abonelik modeli kullanarak tek düzen olay tüketimine sağlayan tam olarak yönetilen olay yönlendirme hizmetidir. Bu kılavuzda, Azure SignalR hizmeti oluşturma, bağlantı olaylarına abone olma ve olaylarını almak için örnek bir web uygulamasına dağıtmak için Azure CLI'yı kullanın. Son olarak, bağlanabilir ve bağlantıyı kes ve örnek uygulamayı olay yükünde bakın.
+Azure Event Grid, bir yayın-alt modeli kullanarak Tekdüzen olay tüketimi sağlayan, tam olarak yönetilen bir olay yönlendirme hizmetidir. Bu kılavuzda, Azure CLı 'yi kullanarak Azure SignalR hizmeti oluşturun, bağlantı olaylarına abone olur ve olayları almak için örnek bir Web uygulaması dağıtabilirsiniz. Son olarak, bağlanıp bağlantısını kesebilir ve örnek uygulamada olay yükünü görebilirsiniz.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap][azure-account] oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Bu makalede Azure CLI komutları için biçimlendirilmiş **Bash** Kabuğu. PowerShell veya komut istemi gibi farklı bir kabuk kullanıyorsanız, satır devamlılığı karakteri veya değişken ataması satırları uygun şekilde ayarlamanız gerekebilir. Bu makalede, gerekli komut düzenleme miktarını en aza indirmek için değişkenleri kullanır.
+Bu makaledeki Azure CLı komutları **Bash** kabuğu için biçimlendirilir. PowerShell veya komut Istemi gibi farklı bir kabuk kullanıyorsanız, satır devamlılık karakterlerini veya değişken atama satırlarını uygun şekilde ayarlamanız gerekebilir. Bu makale, gerekli komut düzenlemesini en aza indirmek için değişkenleri kullanır.
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Bir Azure kaynak grubu, dağıtma ve Azure kaynaklarınızı yönetmek mantıksal bir kapsayıcıdır. Aşağıdaki [az grubu oluşturma][az-group-create] komut adlı bir kaynak grubu oluşturur *myResourceGroup* içinde *eastus* bölge. Kaynak grubunuz için farklı bir ad kullanmak istiyorsanız, `RESOURCE_GROUP_NAME` için farklı bir değer.
+Azure Kaynak grubu, Azure kaynaklarınızı dağıttığınız ve yönettiğiniz bir mantıksal kapsayıcıdır. Aşağıdaki [az Group Create][az-group-create] komutu, *Eastus* bölgesinde *myresourcegroup* adlı bir kaynak grubu oluşturur. Kaynak grubunuz için farklı bir ad kullanmak istiyorsanız, farklı bir değere ayarlayın `RESOURCE_GROUP_NAME` .
 
 ```azurecli-interactive
 RESOURCE_GROUP_NAME=myResourceGroup
@@ -36,14 +36,14 @@ az group create --name $RESOURCE_GROUP_NAME --location eastus
 
 ## <a name="create-a-signalr-service"></a>SignalR Hizmeti oluşturma
 
-Ardından, aşağıdaki komutlarla kaynak grubuna bir Azure Signalr hizmeti dağıtın.
+Ardından, aşağıdaki komutlarla kaynak grubuna bir Azure SignalR hizmeti dağıtın.
 ```azurecli-interactive
 SIGNALR_NAME=SignalRTestSvc
 
 az signalr create --resource-group $RESOURCE_GROUP_NAME --name $SIGNALR_NAME --sku Free_F1
 ```
 
-SignalR hizmeti oluşturulduktan sonra Azure CLI çıktı aşağıdakine benzer döndürür:
+SignalR hizmeti oluşturulduktan sonra Azure CLı, aşağıdakine benzer bir çıktı döndürür:
 
 ```json
 {
@@ -71,11 +71,11 @@ SignalR hizmeti oluşturulduktan sonra Azure CLI çıktı aşağıdakine benzer 
 
 ```
 
-## <a name="create-an-event-endpoint"></a>Bir olay uç noktası oluşturma
+## <a name="create-an-event-endpoint"></a>Olay uç noktası oluşturma
 
-Bu bölümde, Azure App Service için önceden oluşturulmuş bir örnek bir web uygulamasına dağıtmak için GitHub deposunda bulunan bir Resource Manager şablonu kullanın. Daha sonra kayıt defterinin Event Grid olaylarına abone olma ve bu uygulama olayları için gönderildiği uç noktası olarak belirtin.
+Bu bölümde, önceden oluşturulmuş örnek bir Web uygulamasını Azure App Service dağıtmak için GitHub deposunda bulunan Kaynak Yöneticisi şablonunu kullanırsınız. Daha sonra, kayıt defterinizin Event Grid olaylarına abone olur ve bu uygulamayı olayların gönderildiği uç nokta olarak belirtirsiniz.
 
-Örnek uygulamayı dağıtmak için ayarlanmış `SITE_NAME` web uygulamanız için benzersiz bir ad ve aşağıdaki komutları yürütün. Site adı, tam etki alanı adı (FQDN) web uygulamasının parçası oluşturur çünkü Azure içinde benzersiz olmalıdır. Bir sonraki bölümde, bir web tarayıcısında için uygulamanın FQDN, kayıt defterinin olayları görüntülemek için gidin.
+Örnek uygulamayı dağıtmak için, Web uygulamanız `SITE_NAME` için benzersiz bir ad ayarlayın ve aşağıdaki komutları yürütün. Site adı, Web uygulamasının tam etki alanı adının (FQDN) bir kısmını oluşturduğundan Azure içinde benzersiz olmalıdır. Daha sonraki bir bölümde, kayıt defterinizin olaylarını görüntülemek için bir Web tarayıcısında uygulamanın FQDN 'sine gidebilirsiniz.
 
 ```azurecli-interactive
 SITE_NAME=<your-site-name>
@@ -86,7 +86,7 @@ az group deployment create \
     --parameters siteName=$SITE_NAME hostingPlanName=$SITE_NAME-plan
 ```
 
-Dağıtım başarılı olduktan sonra (birkaç dakika sürebilir), bir tarayıcı açın ve emin olmak için web uygulamanıza gidin çalışıyor:
+Dağıtım başarılı olduktan sonra (birkaç dakika sürebilir), bir tarayıcı açın ve çalıştığından emin olmak için Web uygulamanıza gidin:
 
 `http://<your-site-name>.azurewebsites.net`
 
@@ -94,7 +94,7 @@ Dağıtım başarılı olduktan sonra (birkaç dakika sürebilir), bir tarayıc�
 
 ## <a name="subscribe-to-registry-events"></a>Kayıt defteri olaylarına abone olma
 
-Event Grid, abone olduğunuz bir *konu* hangi olayları izlemek istediğinizi ve bunları gönderileceği söylemek için. Aşağıdaki [az eventgrid olay aboneliği oluşturma][az-eventgrid-event-subscription-create] komut aboneliği Azure SignalR hizmeti oluşturuldu ve uç noktası için göndermeden olaylar olarak web uygulamanızın URL'sini belirtir. Düzenleme yok, gerekli olacak şekilde, önceki bölümlerde doldurulmuş ortam değişkenleri burada yeniden kullanılır.
+Event Grid, izlemek istediğiniz olayları ve nereden gönderileceğini söylemek için bir *konuya* abone olursunuz. Aşağıdaki [az eventgrid olay-abonelik oluştur][az-eventgrid-event-subscription-create] komutu oluşturduğunuz Azure SignalR hizmetine abone olur ve Web uygulamanızın URL 'sini, olayların gönderileceği uç nokta olarak belirtir. Önceki bölümlerde doldurmuş olduğunuz ortam değişkenleri burada yeniden kullanılır, bu nedenle hiçbir düzenleme gerekmez.
 
 ```azurecli-interactive
 SIGNALR_SERVICE_ID=$(az signalr show --resource-group $RESOURCE_GROUP_NAME --name $SIGNALR_NAME --query id --output tsv)
@@ -106,7 +106,7 @@ az eventgrid event-subscription create \
     --endpoint $APP_ENDPOINT
 ```
 
-Abonelik tamamlandığında, aşağıdakine benzer bir çıktı görmeniz gerekir:
+Abonelik tamamlandığında aşağıdakine benzer bir çıktı görmeniz gerekir:
 
 ```JSON
 {
@@ -139,9 +139,9 @@ Abonelik tamamlandığında, aşağıdakine benzer bir çıktı görmeniz gereki
 }
 ```
 
-## <a name="trigger-registry-events"></a>Kayıt defteri olayları Tetikle
+## <a name="trigger-registry-events"></a>Kayıt defteri olaylarını tetikleme
 
-Hizmet moduna geçin `Serverless Mode` ve SignalR Service istemci bağlantısı kurma. Gerçekleştirebileceğiniz [sunucusuz örnek](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/Serverless) başvuru olarak.
+Hizmet moduna `Serverless Mode` geçin ve SignalR hizmetine bir istemci bağlantısı kurun. Bir başvuru olarak [sunucusuz örnek](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/Serverless) gerçekleştirebilirsiniz.
 
 ```bash
 git clone git@github.com:aspnet/AzureSignalR-samples.git
@@ -160,9 +160,9 @@ cd SignalRClient
 dotnet run
 ```
 
-## <a name="view-registry-events"></a>Kayıt defteri olaylarını görüntüle
+## <a name="view-registry-events"></a>Kayıt defteri olaylarını görüntüleme
 
-Artık bir istemci için SignalR hizmeti bağlamış olursunuz. Event Grid Görüntüleyicisi web uygulamanıza gidin ve görmelisiniz bir `ClientConnectionConnected` olay. İstemci sonlandırılması durumunda da göreceksiniz bir `ClientConnectionDisconnected` olay.
+Artık bir istemciyi SignalR hizmetine bağladınız. Event Grid Viewer Web uygulamanıza gidin ve bir `ClientConnectionConnected` olay görmeniz gerekir. İstemciyi sona erdirirsiniz, bir `ClientConnectionDisconnected` olay da görürsünüz.
 
 <!-- LINKS - External -->
 [azure-account]: https://azure.microsoft.com/free/?WT.mc_id=A261C142F

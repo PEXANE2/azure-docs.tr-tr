@@ -1,32 +1,33 @@
 ---
-title: Azure Container ınstances'da kapsayıcı güncelleştir
-description: Azure Container Instances'a kapsayıcı gruplarınızı içinde çalışan kapsayıcıları güncelleştirme hakkında bilgi edinin.
+title: Azure Container Instances kapsayıcıları güncelleştirme
+description: Azure Container Instances kapsayıcı gruplarınızdaki çalışan kapsayıcıları güncelleştirme hakkında bilgi edinin.
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 08/01/2018
 ms.author: danlep
-ms.openlocfilehash: 2df6a2724cbdcd6bbb6c6ca6636256b7e399da8e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d555ba6b8c2b32fc6ec56d6c51dda9626b6f0cb0
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60686900"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325541"
 ---
-# <a name="update-containers-in-azure-container-instances"></a>Azure Container ınstances'da kapsayıcı güncelleştir
+# <a name="update-containers-in-azure-container-instances"></a>Azure Container Instances kapsayıcıları güncelleştirme
 
-Kapsayıcı örneklerinizin normal işlem sırasında bir kapsayıcı grubundaki kapsayıcı güncelleştirmek gerekli bulabilirsiniz. Örneğin, görüntü sürümü güncelleştirme, bir DNS adını değiştirmek, ortam değişkenlerini güncelleştirmeniz veya bir kapsayıcı, uygulaması kilitlenen durumunu yenilemek isteyebilir.
+Kapsayıcı örneklerinizin normal işlemleri sırasında bir kapsayıcı grubundaki kapsayıcıları güncelleştirmek için gerekli olduğunu fark edebilirsiniz. Örneğin, görüntü sürümünü güncelleştirmek, bir DNS adını değiştirmek, ortam değişkenlerini güncelleştirmek veya uygulaması kilitlenen bir kapsayıcının durumunu yenilemek isteyebilirsiniz.
 
-## <a name="update-a-container-group"></a>Bir kapsayıcı grubunu güncelleştir
+## <a name="update-a-container-group"></a>Kapsayıcı grubunu güncelleştirme
 
-Bir kapsayıcı grubundaki kapsayıcı değiştirilmiş en az bir özellik ile varolan bir grubu yeniden dağıtmaya gerek güncelleştirin. Kapsayıcı grubu güncelleştirdiğinizde, gruptaki tüm çalışan kapsayıcıları yeniden yerinde.
+Bir kapsayıcı grubundaki kapsayıcıları, var olan bir grubu en az bir Modified özelliği ile yeniden dağıtarak güncelleştirin. Bir kapsayıcı grubunu güncelleştirdiğinizde gruptaki tüm çalışan kapsayıcılar yerinde yeniden başlatılır.
 
-Create komutu (veya Azure portalını kullanın) vererek var olan bir kapsayıcı grubunu yeniden dağıtın ve mevcut bir grubun adını belirtin. Yeniden dağıtım tetiklemek için create komutu verdiğinizde grubunun en az bir geçerli özellik değiştirin. Tüm kapsayıcı grubu özelliklerini, yeniden dağıtım için geçerlidir. Bkz: [silme için gereken özellikleri](#properties-that-require-container-delete) desteklenmeyen özelliklerin bir listesi için.
+Oluşturma komutunu vererek mevcut bir kapsayıcı grubunu yeniden dağıtın (veya Azure portal kullanın) ve var olan bir grubun adını belirtin. Yeniden dağıtımı tetiklemek için Create komutunu verdiğinizde, grubun en az bir geçerli özelliğini değiştirin. Tüm kapsayıcı grubu özellikleri yeniden dağıtım için geçerli değildir. Desteklenmeyen özelliklerin listesi için [silme gerektiren özelliklere](#properties-that-require-container-delete) bakın.
 
-Aşağıdaki Azure CLI örnek, bir kapsayıcı grubu yeni bir DNS ad etiketi ile güncelleştirir. DNS ad etiketi özelliği grubuna değiştiğinden kapsayıcı grubunun imzalanmasını ve kapsayıcılarında yeniden başlatıldı.
+Aşağıdaki Azure CLı örneği, bir kapsayıcı grubunu yeni bir DNS ad etiketi ile güncelleştirir. Grubun DNS ad etiketi özelliği değiştirildiğinden, kapsayıcı grubu yeniden dağıtılır ve kapsayıcıları yeniden başlatılır.
 
-İlk dağıtımı DNS ad etiketi ile *myapplication hazırlama*:
+DNS ad etiketi *MyApplication-hazırlama*ile ilk dağıtım:
 
 ```azurecli-interactive
 # Create container group
@@ -34,7 +35,7 @@ az container create --resource-group myResourceGroup --name mycontainer \
     --image nginx:alpine --dns-name-label myapplication-staging
 ```
 
-Kapsayıcı grubu ile yeni bir DNS ad etiketi, güncelleştirme *myapplication*:
+Kapsayıcı grubunu yeni bir DNS adı etiketiyle güncelleştirin, *MyApplication*:
 
 ```azurecli-interactive
 # Update container group (restarts container)
@@ -44,25 +45,25 @@ az container create --resource-group myResourceGroup --name mycontainer \
 
 ## <a name="update-benefits"></a>Güncelleştirme avantajları
 
-Var olan bir kapsayıcı grubu güncelleştiriliyor birincil avantajı, daha hızlı dağıtımıdır. Var olan bir kapsayıcı grubunu yeniden dağıtırken, kapsayıcı görüntüsü katmanları arasından önceki bir dağıtım tarafından önbelleğe alınır. Tüm görüntü katmanlarını yeni bir kayıt defteri ile yeni dağıtımlar bitti olarak çekmek yerine, yalnızca değiştirilen katmanları (varsa) alınır.
+Mevcut bir kapsayıcı grubunu güncelleştirmenin birincil avantajı daha hızlı dağıtımdır. Var olan bir kapsayıcı grubunu yeniden dağıttığınızda, kapsayıcı görüntüsü katmanları önceki dağıtım tarafından önbelleğe alınmış olanlardan alınır. Yeni dağıtımlarla yapıldığı gibi tüm görüntü katmanlarını kayıt defterinden yeni bir şekilde çekmek yerine yalnızca değiştirilen Katmanlar (varsa) çekilerek.
 
-Windows Server Core yerine güncelleştirdiğinizde dağıtım hızını önemli bir iyileştirme görebilirsiniz gibi daha büyük kapsayıcı görüntülerini temel alan uygulamaları silin ve yeni dağıtın.
+Windows Server Core gibi daha büyük kapsayıcı görüntülerini temel alan uygulamalar, silme ve yeni dağıtım yerine güncelleştirme yaptığınızda dağıtım hızında önemli bir geliştirme görülebilirler.
 
 ## <a name="limitations"></a>Sınırlamalar
 
-Bir kapsayıcı grubunun tüm özelliklerini güncelleştirmelerini destekler. Bir kapsayıcı grubunun bazı özelliklerini değiştirmek için önce silin, ardından gerekir grubuna yeniden dağıtın. Ayrıntılar için bkz [kapsayıcı gerektiren özellikleri Sil](#properties-that-require-container-delete).
+Bir kapsayıcı grubunun tüm özellikleri güncelleştirmeleri desteklemez. Bir kapsayıcı grubunun bazı özelliklerini değiştirmek için, önce grubu silmeniz ve sonra yeniden dağıtmanız gerekir. Ayrıntılar için bkz. [kapsayıcı silme gerektiren özellikler](#properties-that-require-container-delete).
 
-Kapsayıcı grubu güncelleştirdiğinizde, bir kapsayıcı grubundaki tüm kapsayıcılar yeniden başlatılır. Bir güncelleştirme veya yerinde yeniden belirli bir kapsayıcı bir çoklu kapsayıcı grubunda gerçekleştirilemiyor.
+Kapsayıcı grubunu güncelleştirdiğinizde bir kapsayıcı grubundaki tüm kapsayıcılar yeniden başlatılır. Çok kapsayıcılı bir gruptaki belirli bir kapsayıcının güncelleştirmesini veya yerinde yeniden başlatılmasını gerçekleştiremezsiniz.
 
-Bir kapsayıcının IP adresi arasında güncelleştirmeleri genellikle değiştirmez, ancak aynı kalması garantili. Kapsayıcı grubu, aynı temel alınan ana bilgisayarına dağıtılır sürece, kapsayıcı grubu IP adresini tutar. Ender olsa ve Azure Container Instances aynı ana bilgisayara dağıtmanız için her türlü çabayı yaparken, farklı bir konağa yeniden dağıtma işlemi neden olabilecek bazı Azure iç olaylar vardır. Bu sorunu gidermek için her zaman kapsayıcı örneklerinizin bir DNS ad etiketi kullanın.
+Bir kapsayıcının IP adresi genellikle güncelleştirmeler arasında değişiklik görmez, ancak aynı kalmayacağından garanti edilmez. Kapsayıcı grubu aynı temel ana bilgisayara dağıtıldığı sürece kapsayıcı grubu IP adresini korur. Nadir olarak Azure Container Instances, ancak aynı ana bilgisayara yeniden dağıtmaya yönelik her çabaya rağmen, farklı bir konağa yeniden dağıtım yapılmasına neden olabilecek bazı Azure iç olayları vardır. Bu sorunu azaltmak için, kapsayıcı örneklerinizin her zaman bir DNS ad etiketi kullanın.
 
-Sonlandırılan ya da silinen kapsayıcı grubu güncelleştirilemiyor. Kapsayıcı grubu durdurulduğunda (bulunduğu *kesildi* durumu) veya silindi, gruba yeni olarak dağıtılır.
+Sonlandırılan veya silinen kapsayıcı grupları güncelleştirilemiyor. Bir kapsayıcı grubu durdurulduğunda ( *sonlandırılmış* durumdaysa) veya silinmişse, grup yeni olarak dağıtılır.
 
-## <a name="properties-that-require-container-delete"></a>Kapsayıcı için gereken özellikleri Sil
+## <a name="properties-that-require-container-delete"></a>Kapsayıcı silme gerektiren özellikler
 
-Daha önce bahsedildiği gibi tüm kapsayıcı grubu özelliklerini güncelleştirilebilir. Örneğin, yeniden başlatma ilkesi kapsayıcı ya da bağlantı noktalarını değiştirmek için önce kapsayıcı grubunu silin, ardından gerekir yeniden oluşturun.
+Daha önce belirtildiği gibi, tüm kapsayıcı grubu özellikleri güncelleştirilemeyebilir. Örneğin, bağlantı noktalarını değiştirmek veya bir kapsayıcının ilkesini yeniden başlatmak için, önce kapsayıcı grubunu silip yeniden oluşturmanız gerekir.
 
-Kapsayıcı grubu silme işlemini yeniden dağıtım öncesinde bu özellikleri gerektirir:
+Bu özellikler yeniden dağıtım öncesinde kapsayıcı grubu silmeyi gerektirir:
 
 * İşletim sistemi türü
 * CPU
@@ -70,15 +71,15 @@ Kapsayıcı grubu silme işlemini yeniden dağıtım öncesinde bu özellikleri 
 * Yeniden başlatma ilkesi
 * Bağlantı Noktaları
 
-Bir kapsayıcı grubunu silin ve yeniden oluşturun, bunu değil "imzalanmasını" olsa da, yeni oluşturulan. Tüm görüntü katmanlarını yeni alınır kayıt defterinden, değil, önceki bir dağıtım tarafından önbelleğe. Kapsayıcının IP adresini de temel alınan farklı bir konağa dağıtılan nedeniyle değişebilir.
+Bir kapsayıcı grubunu silip yeniden oluşturduğunuzda, "yeniden dağıtılır" ancak yeni oluşturulur. Tüm görüntü katmanları, önceki bir dağıtım tarafından önbelleğe alınanlardan değil, kayıt defterinden alınır. Kapsayıcının IP adresi, farklı bir temel konağa dağıtılmadığı için de değişebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede birkaç kez olduğundan belirtilen **kapsayıcı grubu**. Her kapsayıcıyı Azure Container ınstances'da bir kapsayıcı grubunda dağıtılır ve kapsayıcı grupları, birden fazla kapsayıcı içerebilir.
+Bu makalede birkaç kez bahsedildiği **kapsayıcı grubu**. Azure Container Instances içindeki her kapsayıcı bir kapsayıcı grubuna dağıtılır ve kapsayıcı grupları birden fazla kapsayıcı içerebilir.
 
 [Azure Container Instances’taki kapsayıcı grupları](container-instances-container-groups.md)
 
-[Çok kapsayıcılı bir grup dağıtma](container-instances-multi-container-group.md)
+[Çok kapsayıcılı bir grup dağıtın](container-instances-multi-container-group.md)
 
 <!-- LINKS - External -->
 
