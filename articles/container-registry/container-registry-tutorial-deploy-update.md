@@ -1,21 +1,22 @@
 ---
-title: Öğretici - kapsayıcı görüntüsü anında iletme, bölgesel Azure uygulama dağıtımları güncelleştirildi.
-description: Değiştirilmiş bir Docker görüntüsünü, coğrafi olarak çoğaltılmış Azure kapsayıcı kayıt defterine gönderin ve birden çok bölgede çalıştırılan web uygulamalarına otomatik olarak dağıtılan değişiklikleri görebilirsiniz. Üç bölümden oluşan bir serinin üçüncü bölümü.
+title: Öğretici-güncelleştirilmiş kapsayıcı görüntüsünü bölgesel Azure Uygulama dağıtımlarına gönderme
+description: Yinelenen bir Docker görüntüsünü coğrafi olarak çoğaltılan Azure Container Registry 'nize gönderin, daha sonra birden çok bölgede çalışan Web uygulamalarına otomatik olarak dağıtılan değişikliklere bakın. Üç bölümden oluşan bir serinin üçüncü bölümü.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: tutorial
 ms.date: 04/30/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: d9faa89d33dde7da35ad4490b78b9a1d023274ae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e01fdc41d0cc2e65951bd92378eb59f0fd35816a
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61333424"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310423"
 ---
-# <a name="tutorial-push-an-updated-container-image-to-a-geo-replicated-container-registry-for-regional-web-app-deployments"></a>Öğretici: Güncelleştirilmiş kapsayıcı görüntüsü bölgesel web uygulaması dağıtımları için bir coğrafi olarak çoğaltılmış kapsayıcı kayıt defterine itme
+# <a name="tutorial-push-an-updated-container-image-to-a-geo-replicated-container-registry-for-regional-web-app-deployments"></a>Öğretici: Bölgesel Web uygulaması dağıtımları için coğrafi olarak çoğaltılan bir kapsayıcı kayıt defterine güncelleştirilmiş bir kapsayıcı görüntüsü gönderme
 
 Bu, üç bölümden oluşan bir öğretici serisinin üçüncü bölümüdür. [Önceki öğreticide](container-registry-tutorial-deploy-app.md) coğrafi çoğaltma, iki farklı bölgesel Web Uygulaması dağıtımı için yapılandırılmıştır. Bu öğreticide ilk olarak uygulamayı değiştirir, ardından yeni bir kapsayıcı görüntüsü derler ve bunu coğrafi olarak çoğaltılmış kayıt defterinize gönderirsiniz. Son olarak, her iki Web Uygulaması örneğinde, Azure Container Registry web kancaları tarafından otomatik olarak dağıtılan değişikliği görüntülersiniz.
 
@@ -133,7 +134,7 @@ Tek bir `docker push` ile, her iki bölgesel Web App dağıtımında çalışan 
 
 Bu öğreticide, web uygulaması kapsayıcısını güncelleştirdiniz ve web uygulaması kapsayıcısının yeni bir sürümünü coğrafi olarak çoğaltılmış kayıt defterinize gönderdiniz. Azure Container Registry’deki web kancaları, Kapsayıcılar için Web Apps’e güncelleştirmeyi bildirdi ve bu da en yakın kayıt defteri çoğaltmasından yerel bir çekme işlemini tetikledi.
 
-### <a name="acr-build-automated-image-build-and-patch"></a>ACR oluşturma: Otomatik görüntü derleme ve yama yapma
+### <a name="acr-build-automated-image-build-and-patch"></a>ACR derlemesi: Otomatik görüntü oluşturma ve düzeltme eki
 
 Coğrafi çoğaltmaya ek olarak ACR Build, Azure Container Registry’nin kapsayıcı dağıtım işlem hattınızın iyileştirilmesine yardımcı olabilecek başka bir özelliğidir. Özellikleri hakkında bir fikir edinmek için ACR Build’a genel bakış ile başlayın:
 

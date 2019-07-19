@@ -12,18 +12,18 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: lagayhar
-ms.openlocfilehash: a453e82f47bb9eed25c8d5caf986bc854085e8ac
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d3edfa1ca63560f447d2c9ea3da3588e069b7af1
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061206"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226835"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java web projesinde Application Insights ile başlarken
 
-[Application Insights](https://azure.microsoft.com/services/application-insights/), web geliştiricileri için canlı uygulamanızın performansını ve kullanımını anlamanıza yardımcı olan genişletilebilir bir analiz hizmetidir. Bunu kullanın [otomatik olarak gereç istek bağımlılıkları izleme ve toplama performans sayaçları](auto-collect-dependencies.md#java), performans sorunlarını ve özel durumlar, tanılayın ve [kod yazma] [ api] uygulamanızla kullanıcıların ne yaptığını izlemek için. 
+[Application Insights](https://azure.microsoft.com/services/application-insights/), web geliştiricileri için canlı uygulamanızın performansını ve kullanımını anlamanıza yardımcı olan genişletilebilir bir analiz hizmetidir. [İsteği otomatik olarak işaretlemek, bağımlılıkları izlemek ve performans sayaçlarını toplamak](auto-collect-dependencies.md#java), performans sorunlarını ve özel durumları tanılamak ve uygulamanızdaki kullanıcıları izlemek için [kod yazmak][api] üzere kullanın. 
 
-![Örnek veriler genel bakış görüntüsü](./media/java-get-started/overview-graphs.png)
+![Genel Bakış örnek verilerinin ekran görüntüsü](./media/java-get-started/overview-graphs.png)
 
 Application Insights; Linux, Unix veya Windows üzerinde çalışan Java uygulamalarını destekler.
 
@@ -91,7 +91,7 @@ Daha sonra, proje bağımlılıklarını ikili dosyaları indirmek için yeniley
 ```
 
 #### <a name="if-youre-using-eclipse-to-create-a-dynamic-web-project-"></a>Dinamik Web projesi oluşturmak için Eclipse kullanıyorsanız...
-[Java eklentisi için Application Insights SDK'sı][eclipse] kullanın. Not: Bu eklentiyi kullanarak Application Insights’ı daha hızlı kullanmaya başlayabilseniz de (Maven/Gradle kullanmadığınız varsayılarak), bu bir bağımlılık yönetim sistemi değildir. Bu nedenle, eklenti güncelleştirildiğinde, projenizdeki Application Insights kitaplıkları otomatik olarak güncelleştirilmez.
+[Java eklentisi için APPLICATION INSIGHTS SDK][eclipse]'yı kullanın. Not: Bu eklentiyi kullanarak Application Insights’ı daha hızlı kullanmaya başlayabilseniz de (Maven/Gradle kullanmadığınız varsayılarak), bu bir bağımlılık yönetim sistemi değildir. Bu nedenle, eklenti güncelleştirildiğinde, projenizdeki Application Insights kitaplıkları otomatik olarak güncelleştirilmez.
 
 * *Derleme veya sağlama toplamı doğrulama hataları mı var?* `version:'2.0.n'` gibi belirli bir sürümü kullanmayı deneyin. En son sürümü [SDK sürüm notlarında](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) veya [Maven yapıtları](https://search.maven.org/#search%7Cga%7C1%7Capplicationinsights) sitesinde bulacaksınız.
 * *Yeni bir SDK’ya güncelleştirmek için* Proje bağımlılıklarınızı yenileyin.
@@ -150,14 +150,14 @@ Azure portalından aldığınız izleme anahtarını bununla değiştirin.
 
 * İzleme anahtarı telemetrinin her öğesiyle birlikte gönderilir ve Application Insights’ın bunu kaynağınızda görüntülemesini isteyin.
 * HTTP isteği bileşeni isteğe bağlıdır. İstek ve yanıt süreleri hakkında telemetriyi otomatik olarak portala gönderir.
-* Olay bağıntısı, HTTP isteği bileşenine bir ektir. Sunucu tarafından alınan her istek için bir tanımlayıcı atar ve bu tanımlayıcıyı bir özellik olarak, telemetrinin her öğesine 'Operation.Id' özelliği olarak ekler. [Tanı aramaya][diagnostic] bir filtre ayarlayarak her istekle ilişkili telemetrinin bağıntısını kurmanızı sağlar.
+* Olay bağıntısı, HTTP isteği bileşenine bir ektir. Sunucu tarafından alınan her istek için bir tanımlayıcı atar ve bu tanımlayıcıyı bir özellik olarak, telemetrinin her öğesine 'Operation.Id' özelliği olarak ekler. [Tanılama aramasında][diagnostic]bir filtre ayarlayarak her istekle ilişkili Telemetriyi ilişkilendirmenize olanak tanır.
 
 ### <a name="alternative-ways-to-set-the-instrumentation-key"></a>İzleme anahtarını ayarlamak için alternatif yollar
 Application Insights SDK’sı anahtarı şu sırayla arar:
 
 1. Sistem özelliği: -DAPPLICATION_INSIGHTS_IKEY=your_ikey
 2. Ortam değişkeni: APPLICATION_INSIGHTS_IKEY
-3. Yapılandırma dosyası: ApplicationInsights.xml
+3. Yapılandırma dosyası: ApplicationInsights. xml
 
 Ayrıca [kod içinde ayarlayabilirsiniz](../../azure-monitor/app/api-custom-events-metrics.md#ikey):
 
@@ -169,6 +169,8 @@ Ayrıca [kod içinde ayarlayabilirsiniz](../../azure-monitor/app/api-custom-even
         TelemetryConfiguration.getActive().setInstrumentationKey(instrumentationKey);
     }
 ```
+
+[Canlı ölçümler](https://docs.microsoft.com/azure/azure-monitor/app/live-stream) , koddan izleme anahtarını okumayı desteklemediğine lütfen unutmayın.
 
 ## <a name="4-add-an-http-filter"></a>4. HTTP filtresi ekleme
 Son yapılandırma adımı HTTP isteği bileşeninin her web isteğini kaydetmesini sağlar. (Yalnızca tam API istiyorsanız gerekmez.)
@@ -304,13 +306,13 @@ Geliştirme makinenizde hata ayıklama modunda çalıştırın ya da sunucunuza 
 
 HTTP isteklerine ilişkin veriler genel bakış dikey penceresinde görüntülenir. (Orada değilse, birkaç saniye bekleyip Yenile’ye tıklayın.)
 
-![Örnek veriler genel bakış görüntüsü](./media/java-get-started/overview-graphs.png)
+![Genel Bakış örnek verilerinin ekran görüntüsü](./media/java-get-started/overview-graphs.png)
 
 [Ölçümler hakkında daha fazla bilgi edinin.][metrics]
 
 Daha ayrıntılı derlenmiş ölçümler görmek için herhangi bir grafiğe tıklayın.
 
-![Application Insights hataları bölmesinde grafiklerle](./media/java-get-started/006-barcharts.png)
+![Grafiklerle Application Insights başarısızlık bölmesi](./media/java-get-started/006-barcharts.png)
 
 > Application Insights, MVC uygulamaları için HTTP isteklerinin biçiminin şu olduğunu varsayar: `VERB controller/action`. Örneğin, `GET Home/Product/f9anuh81`, `GET Home/Product/2dffwrf5` ve `GET Home/Product/sdf96vws`; `GET Home/Product` içinde gruplandırılır. Bu gruplandırma, istek sayısı veya isteklerin yürütülme süresi gibi anlamlı istek toplamalarını etkinleştirir.
 >
@@ -319,9 +321,9 @@ Daha ayrıntılı derlenmiş ölçümler görmek için herhangi bir grafiğe tı
 ### <a name="instance-data"></a>Örnek veriler
 Ayrı ayrı örnekleri görmek için belirli bir istek türüne tıklayın.
 
-![Belirli bir örnek görünüme detaya gidin](./media/java-get-started/007-instance.png)
+![Belirli bir örnek görünüm detayına gitme](./media/java-get-started/007-instance.png)
 
-### <a name="analytics-powerful-query-language"></a>Analytics: Güçlü sorgu dili
+### <a name="analytics-powerful-query-language"></a>Analiz Güçlü sorgu dili
 Daha fazla veri birleştirdiğinizde hem veri toplama, hem de tek tek örneklerini bulmak için sorguları çalıştırabilirsiniz.  [Analiz](../../azure-monitor/app/analytics.md) hem performans, hem de kullanım için olmasının yanı sıra tanılama için de güçlü bir araçtır.
 
 ![Analizi örneği](./media/java-get-started/0025.png)
@@ -342,9 +344,9 @@ Artık uygulamanızı sunucuya yayımlayın, herkesin kullanmasını sağlayın 
 
     (Bu bileşen, performans sayaçlarını etkinleştirir.)
 
-## <a name="azure-app-service-config-spring-boot"></a>Azure App Service yapılandırma (Spring Boot)
+## <a name="azure-app-service-config-spring-boot"></a>Azure App Service config (Spring Boot)
 
-Spring önyükleme uygulamalar Windows üzerinde çalışan Azure App Services'ta çalıştırmak için ek yapılandırma gerektirir. Değiştirme **web.config** ve aşağıdakileri ekleyin:
+Windows üzerinde çalışan Spring Boot uygulamaları, Azure Uygulama Hizmetleri 'nde çalışması için ek yapılandırma gerektirir. **Web. config** 'i değiştirin ve aşağıdakileri ekleyin:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -360,11 +362,11 @@ Spring önyükleme uygulamalar Windows üzerinde çalışan Azure App Services't
 ```
 
 ## <a name="exceptions-and-request-failures"></a>Özel durumlar ve istek hataları
-İşlenmeyen özel durumları otomatik olarak toplanır.
+İşlenmeyen özel durumlar otomatik olarak toplanır.
 
 Diğer özel durumlar hakkında veri toplamak için iki seçeneğiniz vardır:
 
-* [Kodunuzda trackException() çağrıları ekleme][apiexceptions].
+* [Kodunuzda trackException () çağrıları ekleyin][apiexceptions].
 * [Sunucunuza Java Agent yükleme](java-agent.md). İzlemek istediğiniz yöntemleri belirtin.
 
 ## <a name="monitor-method-calls-and-external-dependencies"></a>Yöntem çağrılarını ve dış bağımlılıkları izleme
@@ -372,16 +374,16 @@ Zamanlama verileriyle JDBC üzerinden yapılan belirli dahili yöntemleri ve ça
 
 ## <a name="w3c-distributed-tracing"></a>W3C dağıtılmış izleme
 
-Application Insights Java SDK'sı artık destekliyor [W3C dağıtılmış izleme](https://w3c.github.io/trace-context/).
+Application Insights Java SDK 'Sı artık [W3C dağıtılmış izlemeyi](https://w3c.github.io/trace-context/)destekliyor.
 
-Gelen SDK yapılandırması daha fazla makalemizde üzerinde açıklanmıştır [bağıntı](correlation.md#w3c-distributed-tracing).
+Gelen SDK yapılandırması daha fazla [bağıntı](correlation.md#w3c-distributed-tracing)makalesinde açıklanmıştır.
 
-Giden SDK yapılandırması tanımlanmış [AI Agent.xml](java-agent.md) dosya.
+Giden SDK yapılandırması [AI-Agent. xml](java-agent.md) dosyasında tanımlanmıştır.
 
 ## <a name="performance-counters"></a>Performans sayaçları
-Açık **Araştır**, **ölçümleri**çeşitli performans sayaçlarını görmek için.
+Bir dizi performans sayacını görmek için **Araştır**, **ölçümler**' i açın.
 
-![Seçili işlem özel baytlar ölçümleri bölmesinin ekran görüntüsü](./media/java-get-started/011-perf-counters.png)
+![İşlem özel baytları seçiliyken ölçüm bölmesinin ekran görüntüsü](./media/java-get-started/011-perf-counters.png)
 
 ### <a name="customize-performance-counter-collection"></a>Performans sayacı koleksiyonunu özelleştirme
 Standart performans sayaçları dizisinin koleksiyonunu devre dışı bırakmak için aşağıdaki kodu ApplicationInsights.xml dosyasının kök düğümü altına ekleyin:
@@ -434,35 +436,11 @@ Her [Windows performans sayacı](https://msdn.microsoft.com/library/windows/desk
 ### <a name="unix-performance-counters"></a>Unix Performans sayaçları
 * Çok çeşitli sistem ve ağ verisi almak için [Application Insights eklentisiyle collectd yükleyin](java-collectd.md).
 
-## <a name="local-forwarder"></a>Yerel iletici
-
-[Yerel ileticisi](https://docs.microsoft.com/azure/application-insights/local-forwarder) Application Insights tarafından toplanan bir aracı veya [OpenCensus](https://opencensus.io/) çeşitli SDK'lar ve çerçeveleri alınan telemetri ve uygulama anlayışları'na yönlendirir. Bu, Windows ve Linux altında çalıştırma yeteneğine sahiptir.
-
-```xml
-<Channel type="com.microsoft.applicationinsights.channel.concrete.localforwarder.LocalForwarderTelemetryChannel">
-<DeveloperMode>false</DeveloperMode>
-<EndpointAddress><!-- put the hostname:port of your LocalForwarder instance here --></EndpointAddress>
-<!-- The properties below are optional. The values shown are the defaults for each property -->
-<FlushIntervalInSeconds>5</FlushIntervalInSeconds><!-- must be between [1, 500]. values outside the bound will be rounded to nearest bound -->
-<MaxTelemetryBufferCapacity>500</MaxTelemetryBufferCapacity><!-- units=number of telemetry items; must be between [1, 1000] -->
-</Channel>
-```
-
-SpringBoot başlangıç kullanıyorsanız, aşağıdaki yapılandırma dosyanız (application.properties) ekleyin:
-
-```yml
-azure.application-insights.channel.local-forwarder.endpoint-address=<!--put the hostname:port of your LocalForwarder instance here-->
-azure.application-insights.channel.local-forwarder.flush-interval-in-seconds=<!--optional-->
-azure.application-insights.channel.local-forwarder.max-telemetry-buffer-capacity=<!--optional-->
-```
-
-Varsayılan değerleri SpringBoot application.properties ve applicationınsights.XML yapılandırması için aynıdır.
-
 ## <a name="get-user-and-session-data"></a>Kullanıcı ve oturum verilerini alma
 Tamam, web sunucunuzdan telemetri gönderiyorsunuz. Uygulamanızın 360 derecelik tam görünümünü almak için izlemeye katabileceğiniz birkaç şey daha vardır:
 
-* Sayfa görünümlerini ve kullanıcı ölçümlerini izlemek için [web sayfalarınıza telemetri ekleyin][usage].
-* Uygulamanızın canlı ve duyarlı kaldığından emin olmak için [web testleri oluşturun][availability].
+* Sayfa görünümlerini ve Kullanıcı ölçümlerini izlemek için [Web sayfalarınıza telemetri ekleyin][usage] .
+* Uygulamanızın canlı ve hızlı bir şekilde kaldığından emin olmak için [Web testleri ayarlayın][availability] .
 
 ## <a name="capture-log-traces"></a>Günlük izlemelerini yakalama
 Log4J, Logback veya diğer günlük altyapılarına ait günlükleri ayrıntılı incelemek için Application Insights’ı kullanabilirsiniz. Günlükleri HTTP istekleri ve başka telemetriyle ilişkilendirebilirsiniz. [Nasıl olduğunu öğrenin][javalogs].
@@ -470,13 +448,13 @@ Log4J, Logback veya diğer günlük altyapılarına ait günlükleri ayrıntıl�
 ## <a name="send-your-own-telemetry"></a>Kendi telemetrinizi gönderme
 Artık SDK'yı da yüklediğinize göre, kendi telemetrinizi göndermek için API'yi kullanabilirsiniz.
 
-* Uygulamanızla kullanıcıların ne yaptıklarını öğrenmek için [Özel olayları ve ölçümleri izleyin][api].
-* Sorunların tanımlanması için [Olayları ve günlükleri arayın][diagnostic].
+* Uygulamanızda kullanıcıların neler yaptığını öğrenmek için [özel olayları ve ölçümleri izleyin][api] .
+* Sorunları tanılamanıza yardımcı olması için [olayları ve günlükleri arayın][diagnostic] .
 
 ## <a name="availability-web-tests"></a>Kullanılabilirlik web testleri
 Kullanıma hazır ve düzgün yanıt verdiğini denetlemek için Application Insights belirli aralıklarla web sitenizi test edebilir.
 
-[Kullanılabilirlik web testleri ayarlama hakkında daha fazla bilgi edinin.][availability]
+[Kullanılabilirlik Web testlerini ayarlama hakkında daha fazla bilgi edinin.][availability]
 
 ## <a name="questions-problems"></a>Sorularınız mı var? Sorunlarınız mı var?
 [Java Sorun Giderme](java-troubleshoot.md)

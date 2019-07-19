@@ -1,6 +1,6 @@
 ---
-title: 'Application Insights: programlama dilleri, platformlar ve tümleştirmeler| Microsoft Belgeleri'
-description: Application Insights için programlama dilleri, platformlar ve tümleştirmeler bulunmaktadır
+title: 'Application Insights: diller, platformlar ve tümleştirmeler | Microsoft Docs'
+description: Application Insights için kullanılabilen diller, platformlar ve tümleştirmeler
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -13,32 +13,36 @@ ms.topic: conceptual
 ms.date: 07/06/2019
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: 100f1f8875dd53f954e99c50f0bc5b9cd3fee31b
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: db79f2b1d3857aac2f71d2e18a3949f068b746eb
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67617815"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67990068"
 ---
-# <a name="languages---officially-supported-by-application-insights-team"></a>Application Insights ekibi tarafından resmi olarak desteklenen programlama dilleri
+# <a name="languages---officially-supported-by-application-insights-team"></a>Diller-Application Insights ekibi tarafından resmi olarak desteklenir
+
 * [C#|VB (.NET)](../../azure-monitor/app/asp-net.md)
 * [Java](../../azure-monitor/app/java-get-started.md)
 * [JavaScript web sayfaları](../../azure-monitor/app/javascript.md)
 * [Node.JS](../../azure-monitor/app/nodejs.md)
 
-## <a name="languages---community-supported"></a>Topluluk tarafından desteklenen programlama dilleri
+## <a name="community-sdks"></a>Topluluk SDK 'Ları
 
-Topluluk desteklenen Application Insights çoğu, ilk olarak Microsoft tarafından yazılmış SDK'ları, bir dizi vardır. Topluluk tarafından desteklenen SDK'ları, Microsoft tarafından resmi olarak korunmaz ve resmi olarak desteklenen listede olmayan herhangi bir SDK için desteği sağlamak amacıyla belirleyemiyoruz. Bu SDK, Deneysel kabul edilir ve üretim sırasında kullanım için önerilmez.
+Çoğunlukla Microsoft tarafından yazılan çok sayıda topluluk Azure Application Insights SDK 'Sı vardır. Topluluk SDK 'Ları Microsoft tarafından resmi olarak korunmaz. Resmi olarak desteklenen listede olmayan herhangi bir SDK için destek sağlayamıyoruz. Bu SDK 'lar deneysel olarak değerlendirilir ve üretim kullanımı için önerilmez.
 
 ## <a name="platforms-and-frameworks"></a>Platformlar ve altyapıları
-* [ASP.NET](../../azure-monitor/app/asp-net.md)
+### <a name="instrumentation-for-already-deployed-applications-codeless-agent-based"></a>Zaten dağıtılan uygulamalar için izleme (codeless, aracı tabanlı)
+* [Azure VM ve Azure sanal makine ölçek kümeleri](../../azure-monitor/app/azure-vm-vmss-apps.md)
+* [Azure uygulama hizmeti](../../azure-monitor/app/azure-web-apps.md)
 * [ASP.NET - zaten canlı olan uygulamalar için](../../azure-monitor/app/monitor-performance-live-website-now.md)
+* Hem Web hem de çalışan rolleri dahil olmak üzere [Azure Cloud Services](../../azure-monitor/app/cloudservices.md)
+* [Azure İşlevleri](https://docs.microsoft.com/azure/azure-functions/functions-monitoring)
+### <a name="instrumentation-through-code-sdks"></a>Kod üzerinden izleme (SDK)
+* [ASP.NET](../../azure-monitor/app/asp-net.md)
 * [ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
 * [Android](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
 * [Android](https://github.com/Microsoft/ApplicationInsights-Android) (App Center)
-* [Azure uygulama hizmeti](../../azure-monitor/app/azure-web-apps.md)
-* [Azure bulut Hizmetleri](../../azure-monitor/app/cloudservices.md) (Web ve çalışan rolleri)
-* [Azure İşlevleri](https://docs.microsoft.com/azure/azure-functions/functions-monitoring)
 * [iOS](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
 * [Java EE](../../azure-monitor/app/java-get-started.md)
 * [Node.JS](https://www.npmjs.com/package/applicationinsights)
@@ -52,6 +56,6 @@ Topluluk desteklenen Application Insights çoğu, ilk olarak Microsoft tarafınd
 * [LogStash eklentisi](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-output-applicationinsights)
 * [Azure İzleyici](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)
 
-## <a name="export-and-data-analysis"></a>Dışarı Aktarma ve Veri Analizi
+## <a name="export-and-data-analysis"></a>Dışarı aktarma ve veri analizi
 * [Power BI](https://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx)
 * [Akış Analizi](../../azure-monitor/app/export-power-bi.md)

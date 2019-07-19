@@ -1,6 +1,6 @@
 ---
-title: Azure İzleyici'de IIS günlüklerini | Microsoft Docs
-description: Internet Information Services (IIS) kullanıcı etkinliği Azure İzleyici tarafından toplanan günlük dosyalarını depolar.  Bu makalede, IIS günlükler koleksiyonunu ve ayrıntıları Azure İzleyicisi'nde oluşturdukları kayıtlarının nasıl yapılandırılacağı açıklanır.
+title: Azure Izleyici 'de IIS günlükleri | Microsoft Docs
+description: Internet Information Services (IIS), Azure Izleyici tarafından toplanabilecek günlük dosyalarındaki Kullanıcı etkinliklerini depolar.  Bu makalede, Azure Izleyici 'de oluşturdukları kayıtların IIS günlüklerinin ve ayrıntılarının nasıl yapılandırılacağı açıklanır.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,68 +13,68 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: bwren
-ms.openlocfilehash: 5843ee11a615a2780e9fea2d89f7b18fb45706d8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 05d9dc8f676589dcb301c19b0a2e80e9fd4c1fa0
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65604366"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249752"
 ---
-# <a name="collect-iis-logs-in-azure-monitor"></a>Azure İzleyici'de toplama IIS Günlükler
-Internet Information Services (IIS), Azure İzleyici tarafından toplanan ve depolanan günlük dosyalarında kullanıcı etkinliğini depolar [günlük verilerini](data-platform.md).
+# <a name="collect-iis-logs-in-azure-monitor"></a>Azure Izleyici 'de IIS günlükleri toplama
+Internet Information Services (IIS), Azure Izleyici tarafından toplanabilecek ve [günlük verileri](data-platform.md)olarak depolanan günlük dosyalarındaki Kullanıcı etkinliklerini depolar.
 
 ![IIS günlükleri](media/data-sources-iis-logs/overview.png)
 
-## <a name="configuring-iis-logs"></a>IIS yapılandırma günlükleri
-Azure İzleyici girdileri gerekir, böylece IIS tarafından oluşturulan günlük dosyalarını toplar [IIS için günlüğe kaydetmeyi yapılandırma](https://technet.microsoft.com/library/hh831775.aspx).
+## <a name="configuring-iis-logs"></a>IIS günlüklerini yapılandırma
+Azure Izleyici, IIS tarafından oluşturulan günlük dosyalarından girişler toplar, bu nedenle [IIS 'yi günlüğe kaydetmek için yapılandırmanız](https://technet.microsoft.com/library/hh831775.aspx)gerekir.
 
-Azure İzleyici, yalnızca depolanan W3C biçiminde IIS günlük dosyalarını destekler ve özel alanlar veya Gelişmiş IIS günlüğü desteklemez. NCSA veya IIS yerel biçiminde günlükleri toplamaz.
+Azure Izleyici yalnızca W3C biçiminde depolanan IIS günlük dosyalarını destekler ve özel alanları veya IIS gelişmiş günlüğe kaydetmeyi desteklemez. NCSA veya IIS yerel biçiminde Günlükler toplanmaz.
 
-Azure İzleyici'den IIS günlükler yapılandırmak [Gelişmiş Ayarlar menüsünden](agent-data-sources.md#configuring-data-sources).  Yapılandırma gerekli seçerek dışındaki yoktur **toplamak W3C biçiminde IIS dosya günlükleri**.
+[Gelişmiş ayarlar menüsünden](agent-data-sources.md#configuring-data-sources)Azure IZLEYICI 'de IIS günlüklerini yapılandırın.  **W3C BIÇIM IIS günlük dosyalarını topla**seçeneğinin belirlenmesi dışında bir yapılandırma gerekmez.
 
 
 ## <a name="data-collection"></a>Veri toplama
-Azure İzleyici, IIS günlük girişi günlüğü her kapatıldığında ve yeni bir tane oluşturulur. her Aracıdan toplar. Bu sıklığı tarafından denetlenir **günlük dosyası aktarma zamanlaması** varsayılan olarak günde bir kez olan IIS sitesi ayarlama. Örneğin, ayarları ise **saatlik**, sonra Azure İzleyici her saat bir günlük toplar.  Ayar **günlük**, ardından Azure izleyici günlüğü 24 saatte bir toplar.
+Azure Izleyici, günlük zaman damgası her değiştiğinde veya yeni bir dosya oluşturulduğunda her bir aracıdan IIS günlük girişleri toplar. Günlük her 5 dakikada bir okunurdur. Yeni dosya oluşturma sıklığı, varsayılan olarak günde bir kez olan IIS sitesi için **günlük dosyası aktarma zamanlaması** ayarıyla denetlenir. Herhangi bir nedenden dolayı IIS, geçiş zamanından önce zaman damgasını güncelleştirmezse, ayar **saatlik**ise, Azure İzleyici günlüğü her saat toplar. Ayar **günlük**Ise Azure izleyici, günlüğü her 24 saatte bir toplar.
 
 
 ## <a name="iis-log-record-properties"></a>IIS günlük kaydı özellikleri
-IIS günlük kayıtları sahip bir tür **w3cııslog** ve aşağıdaki tabloda gösterilen özelliklere sahiptir:
+IIS günlük kayıtları bir tür **W3CIISLog** ve aşağıdaki tabloda bulunan özelliklere sahiptir:
 
 | Özellik | Açıklama |
 |:--- |:--- |
-| Computer |Olay toplandığı bilgisayarın adı. |
-| CIP |İstemci IP adresi. |
-| csMethod |GET veya POST gibi istek yöntemi. |
-| csReferer |Kullanıcının geçerli siteye bağlantıdan takip sitesi. |
-| csUserAgent |İstemci tarayıcısı türü. |
-| csUserName |Sunucuya erişen kimliği doğrulanmış kullanıcının adı. Anonim kullanıcılar bir tire işaretiyle gösterilir. |
-| csUriStem |İsteği gibi bir web sayfası hedefi. |
-| csUriQuery |Sorgu, varsa istemcinin gerçekleştirmeye çalıştığı. |
+| Computer |Olayın toplandığı bilgisayarın adı. |
+| CIP |İstemcinin IP adresi. |
+| csMethod |İsteğin GET veya POST gibi yöntemi. |
+| csReferer |Kullanıcının geçerli siteye bir bağlantıyı takip ettiği site. |
+| csUserAgent |İstemcinin tarayıcı türü. |
+| csUserName |Sunucuya erişen kimliği doğrulanmış kullanıcının adı. Anonim kullanıcılar bir tire ile belirtilir. |
+| csUriStem |İsteğin hedefi bir Web sayfası. |
+| csUriQuery |Varsa, istemcisinin gerçekleştirmeye çalıştığı sorgu. |
 | ManagementGroupName |Operations Manager aracıları için yönetim grubunun adı.  Diğer aracılar için AOI - budur\<çalışma alanı kimliği\> |
-| RemoteIPCountry |İstemci IP adresini ülke/bölge. |
-| RemoteIPLatitude |İstemci IP adresi bulunduğu enlem. |
-| RemoteIPLongitude |İstemci IP adresi bulunduğu boylam. |
+| RemoteIPCountry |İstemcinin IP adresinin ülkesi/bölgesi. |
+| RemoteIPLatitude |İstemci IP adresinin enlem. |
+| RemoteIPLongitude |İstemci IP adresinin boylam. |
 | scStatus |HTTP durum kodu. |
-| scSubStatus |Alt hata kodu. |
+| Scalt durum |Alt durum hata kodu. |
 | scWin32Status |Windows durum kodu. |
-| SIP |Web sunucusunun IP adresi. |
+| Istemcinin |Web sunucusunun IP adresi. |
 | SourceSystem |OpsMgr |
-| Spor |' % S'sunucusuna bağlı istemci bağlantı noktası. |
-| sSiteName |IIS site adı. |
-| TimeGenerated |Tarih ve saat giriş günlüğe kaydedildi. |
-| timeTaken |Süreyi milisaniye cinsinden İstek işlenemedi. |
+| Spor |İstemcinin bağlandığı sunucudaki bağlantı noktası. |
+| sSiteName |IIS sitesinin adı. |
+| TimeGenerated |Girişin günlüğe kaydedildiği tarih ve saat. |
+| TimeTaken |İsteğin milisaniye cinsinden işlenmesi için geçen süre. |
 
-## <a name="log-queries-with-iis-logs"></a>IIS günlükleri ile günlük sorguları
-Aşağıdaki tabloda IIS günlük kayıtları almak günlük sorguları farklı örnekler sağlar.
+## <a name="log-queries-with-iis-logs"></a>IIS günlükleri ile sorguları günlüğe kaydet
+Aşağıdaki tabloda, IIS günlük kayıtlarını alan günlük sorgularının farklı örnekleri verilmiştir.
 
 | Sorgu | Açıklama |
 |:--- |:--- |
-| W3CIISLog |Tüm IIS günlük kaydı. |
-| W3cııslog &#124; burada scStatus 500 == |Tüm IIS günlük kayıtları 500 dönüş durumu. |
-| W3cııslog &#124; Count() işlevi tarafından CIP özetleme |İstemci IP adresine göre sayısı, IIS günlük girdilerinin. |
-| W3cııslog &#124; burada csHost == "www\.contoso.com" &#124; Count() işlevi tarafından csUriStem özetleme |Konak www URL'sine göre sayısı, IIS günlük girişi\.contoso.com. |
-| W3cııslog &#124; sum(csBytes) bilgisayara göre özetlemek &#124; 500000 Al |Her IIS bilgisayarına göre alınan toplam bayt sayısı. |
+| W3CIISLog |Tüm IIS günlük kayıtları. |
+| W3CIISLog &#124; burada scstatus = = 500 |Tüm IIS günlük kayıtları 500 dönüş durumuna sahiptir. |
+| W3CIISLog &#124; özetleme sayısı (), CIP |İstemci IP adresine göre IIS günlük girişi sayısı. |
+| W3CIISLog &#124; WHERE cshost = = "www\.contoso.com" &#124; Count () öğesini csUriStem ile özetleme |Host www\.contoso.com için URL 'ye göre IIS günlük girişi sayısı. |
+| W3CIISLog &#124; özetleme toplamı (csbytes) bilgisayar &#124; tarafından 500000 al |Her IIS bilgisayarı tarafından alınan toplam bayt sayısı. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Azure İzleyici'nın diğer toplamak için yapılandırma [veri kaynakları](agent-data-sources.md) analiz.
+* Azure Izleyici 'yi analize yönelik diğer [veri kaynaklarını](agent-data-sources.md) toplayacak şekilde yapılandırın.
 * Hakkında bilgi edinin [oturum sorguları](../log-query/log-query-overview.md) veri kaynakları ve çözümlerinden toplanan verileri analiz etmek için.

@@ -1,6 +1,6 @@
 ---
-title: Buluta - ESP8266 Feather HUZZAH ESP8266 Azure IOT Hub'ına bağlanma | Microsoft Docs
-description: Kurulum ve Bu öğreticide Azure bulut platformuna veri göndermek için Azure IOT Hub için bunu Adafruit Feather HUZZAH ESP8266 bağlanma hakkında bilgi edinin.
+title: ESP8266 to Cloud-geçiş yumuşatma HUZZAH ESP8266 Azure IoT Hub | Microsoft Docs
+description: Bu öğreticide Azure Cloud Platform 'a veri göndermek için Adameyve HUZZAH ESP8266 Azure IoT Hub 'yi nasıl ayarlayacağınızı ve bağlayacağınızı öğrenin.
 author: wesmc7777
 manager: philmea
 ms.service: iot-hub
@@ -9,100 +9,103 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: wesmc
-ms.openlocfilehash: de4029d7c454ed590fdf974771d5f55c52590c93
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 8e97a979c37af8ade51b4ff6ca4b2c5b4eec126e
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839044"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68232734"
 ---
-# <a name="connect-adafruit-feather-huzzah-esp8266-to-azure-iot-hub-in-the-cloud"></a>Adafruit Feather HUZZAH ESP8266 bulutta Azure IOT hub'a bağlanma
+# <a name="connect-adafruit-feather-huzzah-esp8266-to-azure-iot-hub-in-the-cloud"></a>Adameyve geçiş yumuşatma HUZZAH ESP8266 'i Bulutta Azure IoT Hub bağlayın
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
-![DHT22 Feather HUZZAH ESP8266 ve IOT hub'ı arasında bir bağlantı](./media/iot-hub-arduino-huzzah-esp8266-get-started/1_connection-hdt22-feather-huzzah-iot-hub.png)
+![DHT22, geçiş yumuşatma HUZZAH ESP8266 ve IoT Hub arasında bağlantı](./media/iot-hub-arduino-huzzah-esp8266-get-started/1_connection-hdt22-feather-huzzah-iot-hub.png)
 
-## <a name="what-you-do"></a>Neler
+## <a name="what-you-do"></a>Yapabilecekleriniz
 
-Adafruit Feather HUZZAH ESP8266 oluşturduğunuz IOT hub'a bağlayın. Ardından, ESP8266 DHT22 algılayıcıdan sıcaklık ve nem verileri toplamak için örnek uygulamayı çalıştırın. Son olarak, IOT hub'ınıza sensör verilerini gönderin.
+Adameyve geçiş yumuşatma HUZZAH ESP8266 ' nı oluşturduğunuz bir IoT Hub 'ına bağlayın. Daha sonra, bir DHT22 sensörden sıcaklık ve nem verisi toplamak için ESP8266 üzerinde örnek bir uygulama çalıştırırsınız. Son olarak, algılayıcı verilerini IoT Hub 'ınıza gönderirsiniz.
 
 > [!NOTE]
-> Diğer ESP8266 panoları kullanıyorsanız, IOT hub'ınıza bağlanmak için aşağıdaki adımları yine de takip edebilirsiniz. Kullanmakta olduğunuz ESP8266 tablosu bağlı olarak, yeniden yapılandırmanız gerekebilir `LED_PIN`. Yapay ZEKA Thinker gelen ESP8266 kullanıyorsanız, örneğin, ondan değişebilir `0` için `2`. Bir paket henüz yok mu? Yararlanabileceğimi [Azure Web sitesi](https://azure.com/iotstarterkits).
+> Diğer ESP8266 panoları kullanıyorsanız, IoT Hub 'ınıza bağlamak için bu adımları yine de izleyebilirsiniz. Kullanmakta olduğunuz ESP8266 panosuna bağlı olarak, `LED_PIN`' yi yeniden yapılandırmanız gerekebilir. Örneğin, AI-ölçülü ker 'dan ESP8266 kullanıyorsanız, bunu `0` olarak `2`değiştirebilirsiniz. Henüz bir paketi yok mu? [Azure Web sitesinden](https://azure.com/iotstarterkits)alın.
 
 ## <a name="what-you-learn"></a>Öğrenecekleriniz
 
-* IOT hub'ı oluşturma ve bir cihaz kaydetmek için Feather HUZZAH ESP8266
-* Algılayıcı ve bilgisayarınızla Feather HUZZAH ESP8266 bağlanma
-* Feather HUZZAH ESP8266 örnek uygulamayı çalıştırarak algılayıcı verilerini toplamak nasıl
-* IOT hub'ınıza sensör verilerini gönderme
+* Bir IoT Hub 'ı oluşturma ve bir cihazı geçiş yumuşatma HUZZAH ESP8266 için kaydetme
+* Geçiş yumuşatma HUZZAH ESP8266 'nı algılayıcı ve bilgisayarınız ile bağlama
+* Geçiş yumuşatma HUZZAH ESP8266 üzerinde örnek uygulama çalıştırarak algılayıcı verilerini toplama
+* IoT Hub 'ınıza algılayıcı verileri gönderme
 
 ## <a name="what-you-need"></a>Ne gerekiyor
 
-![Öğretici için gerekli olan bölümleri](./media/iot-hub-arduino-huzzah-esp8266-get-started/2_parts-needed-for-the-tutorial.png)
+![Öğretici için gereken parçalar](./media/iot-hub-arduino-huzzah-esp8266-get-started/2_parts-needed-for-the-tutorial.png)
 
-Bu işlemi tamamlamak için aşağıdaki bölümleri Feather HUZZAH ESP8266 başlangıç Seti gerekir:
+Bu işlemi gerçekleştirmek için, geçiş yumuşatma HUZZAH ESP8266 Starter Kit ' inizden aşağıdaki bölümlere ihtiyacınız vardır:
 
-* Feather HUZZAH ESP8266 Panosu
-* Bir mikro USB türü bir USB kablosu
+* Geçiş yumuşatma HUZZAH ESP8266 panosu
+* USB kablosu yazmak için mikro USB
 
-Ayrıca geliştirme ortamınız için aşağıdakiler gerekir:
+Geliştirme ortamınız için aşağıdaki işlemleri de yapmanız gerekir:
 
-* Etkin bir Azure aboneliği. Azure hesabınız yoksa, [ücretsiz Azure deneme hesabı oluşturma](https://azure.microsoft.com/free/) yalnızca birkaç dakika içinde.
-* Bir Mac veya Windows veya Ubuntu çalıştıran bir bilgisayar.
-* Kablosuz ağa bağlanmak Feather HUZZAH ESP8266 için.
-* Yapılandırma Aracı indirmek için Internet bağlantısı.
+* Etkin bir Azure aboneliği. Azure hesabınız yoksa yalnızca birkaç dakika içinde [ücretsiz bir Azure deneme hesabı oluşturun](https://azure.microsoft.com/free/) .
+* Windows veya Ubuntu çalıştıran bir Mac veya bılgısayar.
+* [GIT](https://git-scm.com/download)
+* [Arduino](https://www.arduino.cc/en/main/software#download)
+* [USB için adameyve Huzzah ESP8266 sürücüsü](https://learn.adafruit.com/adafruit-feather-huzzah-esp8266/using-arduino-ide)
+* Geçiş yumuşatma HUZZAH ESP8266 için kablosuz ağ bağlantısı.
+* Yapılandırma aracını indirmek için Internet bağlantısı.
 * [Arduino için Visual Studio Code uzantısı](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-arduino).
 
 > [!Note]
-> Arduino 1.6.8 olması için Visual Studio Code uzantısı tarafından kullanılan Arduino IDE sürümü veya üzeri. Önceki sürümlerde AzureIoT kitaplığı ile çalışmaz.
+> Arduino için Visual Studio Code uzantısı tarafından kullanılan Arduino IDE sürümü Version 1.6.8 veya üzeri olmalıdır. Önceki sürümler AzureIoT kitaplığıyla çalışmaz.
 
-Algılayıcı yok durumunda aşağıdaki öğeler isteğe bağlıdır. Ayrıca, sanal sensör verilerini kullanma seçeneğiniz de vardır.
+Bir sensöre sahip olmadığınız durumlarda aşağıdaki öğeler isteğe bağlıdır. Ayrıca, sanal algılayıcı verisi kullanma seçeneğiniz de vardır.
 
-* Adafruit DHT22 sıcaklık ve nem algılayıcısı
-* Bir breadboard
-* M/dk anahtar kabloları
+* Adameyve DHT22 sıcaklığı ve nem algılayıcısı
+* Bir enine Pano
+* A/y atlatıcı kabloları
 
 ## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="register-a-new-device-in-the-iot-hub"></a>Yeni bir cihaz IOT hub'ı Kaydet
+## <a name="register-a-new-device-in-the-iot-hub"></a>IoT Hub 'a yeni bir cihaz kaydetme
 
 [!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
-## <a name="connect-feather-huzzah-esp8266-with-the-sensor-and-your-computer"></a>Algılayıcı ve bilgisayarınızla Feather HUZZAH ESP8266 bağlanma
+## <a name="connect-feather-huzzah-esp8266-with-the-sensor-and-your-computer"></a>Geçiş yumuşatma HUZZAH ESP8266 'nı algılayıcı ve bilgisayarınız ile bağlama
 
-Bu bölümde, panonuza algılayıcıları bağlayın. Ardından bilgisayarınıza başka amaçlarla kullanmak için cihaz takın.
+Bu bölümde Sensörlerinizi panonuza bağlayaöğreneceksiniz. Daha sonra daha fazla kullanım için cihazınızı bilgisayarınıza takmaktır.
 
-### <a name="connect-a-dht22-temperature-and-humidity-sensor-to-feather-huzzah-esp8266"></a>DHT22 sıcaklık ve nem algılayıcı bağlanmak için Feather HUZZAH ESP8266
+### <a name="connect-a-dht22-temperature-and-humidity-sensor-to-feather-huzzah-esp8266"></a>DHT22 sıcaklık ve nem sensöri geçiş yumuşatma HUZZAH ESP8266 bağlama
 
-Şu şekilde bağlantı kurmak için breadboard ve anahtar kablo kullanın. Algılayıcı yoksa, bunun yerine sanal sensör verilerini kullanabileceğinizden bu bölümü atlayın.
+Bağlantıyı aşağıdaki şekilde yapmak için enine ve atlatıcı kablolarını kullanın. Bir sensör yoksa, bunun yerine sanal algılayıcı verilerini kullanabileceğiniz için bu bölümü atlayın.
 
-![Bağlantı Başvurusu](./media/iot-hub-arduino-huzzah-esp8266-get-started/17_connections_on_breadboard.png)
+![Bağlantı başvurusu](./media/iot-hub-arduino-huzzah-esp8266-get-started/17_connections_on_breadboard.png)
 
-Algılayıcı sabitlemek için aşağıdaki bağlantı kullanın:
+Algılayıcı PIN 'leri için aşağıdaki kabloyı kullanın:
 
-| Başlangıç (algılayıcı)           | Bitiş (Pano)            | Kablo rengi   |
+| Başlat (algılayıcı)           | Bitiş (Pano)            | Kablo rengi   |
 | -----------------------  | ---------------------- | ------------  |
-| VDD (PIN 31F)            | 3v (sabitleme 58H)           | Kırmızı kablosu     |
-| Veri (PIN 32F)           | GPIO 2 (Pin 46A)       | Mavi kablosu    |
-| GND (PIN 34F)            | GND (PIN 56I)          | Siyah kablo   |
+| VDD (pin 31F)            | 3V (PIN 58H)           | Kırmızı kablo     |
+| VERI (Iğne 32F)           | GPıO 2 (Iğne 46A)       | Mavi kablo    |
+| PLAN (Iğne 34F)            | PLAN (Iğne 56ı)          | Siyah kablo   |
 
-Daha fazla bilgi için [Adafruit DHT22 algılayıcı Kurulum](https://learn.adafruit.com/dht/connecting-to-a-dhtxx-sensor) ve [Adafruit Feather HUZZAH Esp8266 no'lu](https://learn.adafruit.com/adafruit-feather-huzzah-esp8266/using-arduino-ide?view=all#pinouts).
+Daha fazla bilgi için bkz. [ADAMEYVE DHT22 algılayıcı kurulumu](https://learn.adafruit.com/dht/connecting-to-a-dhtxx-sensor) ve [Adameyve geçiş yumuşatma HUZZAH Esp8266](https://learn.adafruit.com/adafruit-feather-huzzah-esp8266/using-arduino-ide?view=all#pinouts)pinsörü.
 
-Şimdi, Feather Huzzah ESP8266 çalışma algılayıcısı ile bağlanmalıdır.
+Artık geçiş yumuşatma Huzzah ESP8266, çalışan bir sensör ile bağlanmalıdır.
 
-![DHT22 Feather Huzzah ile bağlanma](media/iot-hub-arduino-huzzah-esp8266-get-started/8_connect-dht22-feather-huzzah.png)
+![DHT22 ile bağlantı yumuşatma Huzzah](media/iot-hub-arduino-huzzah-esp8266-get-started/8_connect-dht22-feather-huzzah.png)
 
-### <a name="connect-feather-huzzah-esp8266-to-your-computer"></a>Feather HUZZAH ESP8266 bilgisayarınıza bağlayın
+### <a name="connect-feather-huzzah-esp8266-to-your-computer"></a>Geçiş yumuşatma HUZZAH ESP8266 'i bilgisayarınıza bağlayın
 
-Sonraki gösterildiği gibi Feather HUZZAH ESP8266 bilgisayarınıza bağlanmak için mikro USB türü bir USB kablosu kullanın.
+Daha sonra gösterildiği gibi, geçiş yumuşatma HUZZAH ESP8266 'i bilgisayarınıza bağlamak için mikro USB 'yi kullanarak bir USB kablosu yazın.
 
-![Feather Huzzah bilgisayarınıza bağlayın](media/iot-hub-arduino-huzzah-esp8266-get-started/9_connect-feather-huzzah-computer.png)
+![Huzzah geçiş yumuşatma bilgisayarınıza bağlanır](media/iot-hub-arduino-huzzah-esp8266-get-started/9_connect-feather-huzzah-computer.png)
 
-### <a name="add-serial-port-permissions-ubuntu-only"></a>Seri bağlantı noktası izinleri (sadece Ubuntu) ekleme
+### <a name="add-serial-port-permissions-ubuntu-only"></a>Seri bağlantı noktası izinleri ekleme (yalnızca Ubuntu)
 
-Ubuntu kullanırsanız, USB bağlantı noktası, Feather HUZZAH ESP8266 üzerinde çalışmak için izinlere sahip olduğunuzdan emin olun. Seri bağlantı noktası izinleri eklemek için aşağıdaki adımları izleyin:
+Ubuntu kullanırsanız, geçiş yumuşatma HUZZAH ESP8266 USB bağlantı noktasında çalışmak için izinleriniz olduğundan emin olun. Seri bağlantı noktası izinleri eklemek için aşağıdaki adımları izleyin:
 
 1. Bir terminalde aşağıdaki komutları çalıştırın:
 
@@ -111,34 +114,34 @@ Ubuntu kullanırsanız, USB bağlantı noktası, Feather HUZZAH ESP8266 üzerind
    ls -l /dev/ttyACM*
    ```
 
-   Aşağıdaki çıktıları birini olursunuz:
+   Aşağıdaki çıktılardan birini alırsınız:
 
-   * 1 kök uucp xxxxxxxx crw-rw---
-   * 1 kök araması xxxxxxxx crw-rw---
+   * CRW-RW----1 root UUCP xxxxxxxx
+   * CRW-RW----1 root dialout xxxxxxxx
 
-   Çıktıda dikkat `uucp` veya `dialout` USB bağlantı noktasına Grup sahibi adıdır.
+   Çıktıda, USB bağlantı noktasının grup `uucp` sahibinin `dialout` adı olduğuna dikkat edin.
 
-2. Kullanıcı, aşağıdaki komutu çalıştırarak gruba ekleyin:
+2. Aşağıdaki komutu çalıştırarak kullanıcıyı gruba ekleyin:
 
    ```bash
    sudo usermod -a -G <group-owner-name> <username>
    ```
 
-   `<group-owner-name>` Önceki adımda elde ettiğiniz Grup sahibi adıdır. `<username>` Ubuntu kullanıcı adınızdır.
+   `<group-owner-name>`, önceki adımda elde ettiğiniz Grup sahibi adıdır. `<username>`Ubuntu Kullanıcı adınız.
 
-3. Ubuntu dışında oturum açın ve yeniden değişikliğin görünmesi için oturum açın.
+3. Ubuntu oturumunu kapatın ve değişikliğin görünmesi için yeniden oturum açın.
 
-## <a name="collect-sensor-data-and-send-it-to-your-iot-hub"></a>Algılayıcı verilerini toplamak ve IOT hub'ına gönderme
+## <a name="collect-sensor-data-and-send-it-to-your-iot-hub"></a>Algılayıcı verilerini toplayın ve IoT Hub 'ınıza gönderin
 
-Bu bölümde, dağıtın ve Feather HUZZAH ESP8266 hakkında bir örnek uygulamayı çalıştırın. Örnek uygulamayı LED Feather HUZZAH ESP8266 üzerinde yanıp ve IOT hub'ınıza DHT22 algılayıcıdan toplanan sıcaklık ve nem verileri gönderir.
+Bu bölümde, geçiş yumuşatma HUZZAH ESP8266 üzerinde örnek bir uygulama dağıtır ve çalıştırırsınız. Örnek uygulama, geçiş yumuşatma HUZZAH ESP8266 üzerindeki ışığı yanıp sönmesini sağlar ve DHT22 sensörden IoT Hub 'ınıza toplanan sıcaklık ve nem verilerini gönderir.
 
-### <a name="get-the-sample-application-from-github"></a>Örnek uygulamayı Github'dan alma
+### <a name="get-the-sample-application-from-github"></a>GitHub 'dan örnek uygulamayı edinme
 
-Örnek uygulama, GitHub üzerinde barındırılır. Github'dan örnek uygulamayı içeren örnek depoyu kopyalayın. Örnek depoyu kopyalamak için şu adımları izleyin:
+Örnek uygulama GitHub üzerinde barındırılır. Örnek uygulamayı GitHub 'dan içeren örnek depoyu kopyalayın. Örnek depoyu kopyalamak için aşağıdaki adımları izleyin:
 
-1. Bir komut istemi veya terminal penceresi açın.
+1. Bir komut istemi veya bir Terminal penceresi açın.
 
-2. Depolanması için örnek uygulamayı istediğiniz klasöre gidin.
+2. Örnek uygulamanın depolanmasını istediğiniz klasöre gidin.
 
 3. Şu komutu çalıştırın:
 
@@ -146,51 +149,51 @@ Bu bölümde, dağıtın ve Feather HUZZAH ESP8266 hakkında bir örnek uygulama
    git clone https://github.com/Azure-Samples/iot-hub-feather-huzzah-client-app.git
    ```
 
-   Ardından, Visual Studio code'da Feather HUZZAH ESP8266 için paketi yükleyin.
+   Sonra, Visual Studio Code geçiş yumuşatma HUZZAH ESP8266 paketini yükler.
 
-4. Örnek uygulamayı depolandığı klasörü açın.
+4. Örnek uygulamanın depolandığı klasörü açın.
 
-5. Visual Studio code'da uygulama klasörü app.ino dosyasını açın.
+5. Visual Studio Code App klasöründe app. ino dosyasını açın.
 
-   ![Örnek uygulamayı Visual Studio Code'da açın](media/iot-hub-arduino-huzzah-esp8266-get-started/10_vscode-open-sample-app.png)
+   ![Örnek uygulamayı Visual Studio Code açın](media/iot-hub-arduino-huzzah-esp8266-get-started/10_vscode-open-sample-app.png)
 
-6. Visual Studio Code'da girin `F1`.
+6. Visual Studio Code, girin `F1`.
 
-7. Tür **Arduino** seçip **Arduino: Pano Yöneticisi'ni**.
+7. **Arduino** yazın ve Arduino seçin **: Pano Yöneticisi**.
 
-8. İçinde **Arduino Panosu Manager** sekmesinde **ek URL'ler**.
+8. **Arduino Pano Yöneticisi** sekmesinde, **ek URL 'ler**' e tıklayın.
 
-   ![VS Code Arduino Panosu Yöneticisi](media/iot-hub-arduino-huzzah-esp8266-get-started/11_vscode-arduino-board-manager.png)
+   ![VS Code Arduino Pano Yöneticisi](media/iot-hub-arduino-huzzah-esp8266-get-started/11_vscode-arduino-board-manager.png)
 
-9. İçinde **kullanıcı ayarları** penceresinde, aşağıdaki dosya sonunda kopyalayıp
+9. **Kullanıcı ayarları** penceresinde, dosyanın sonuna şunu kopyalayın ve yapıştırın
 
    ```json
    "arduino.additionalUrls": "https://arduino.esp8266.com/stable/package_esp8266com_index.json"
    ```
 
-   ![VS Code'da Arduino paket URL'si yapılandırın](media/iot-hub-arduino-huzzah-esp8266-get-started/12_vscode-package-url.png)
+   ![VS Code Arduino paket URL 'sini yapılandırma](media/iot-hub-arduino-huzzah-esp8266-get-started/12_vscode-package-url.png)
 
-10. Dosyayı kaydedin ve kapatın **kullanıcı ayarları** sekmesi.
+10. Dosyayı kaydedin ve **Kullanıcı ayarları** sekmesini kapatın.
 
-11. Tıklayın **yenileme paket dizinleri**. Yenileme tamamlandıktan sonra arama **esp8266**.
+11. **Paket dizinlerini Yenile**' ye tıklayın. Yenileme bittikten sonra, **ESP8266**için arama yapın.
 
-12. Tıklayın **yükleme** esp8266 düğmesi.
+12. ESP8266 için **Install** düğmesine tıklayın.
 
-    Panoları Manager ESP8266 2.2.0 veya sonraki bir sürümü ile yüklü olduğunu gösterir.
+    Panolar Yöneticisi, 2.2.0 veya üzeri bir sürümü olan ESP8266 'in yüklü olduğunu gösterir.
 
-    ![Esp8266 paketin yüklü](media/iot-hub-arduino-huzzah-esp8266-get-started/13_vscode-esp8266-installed.png)
+    ![ESP8266 paketi yüklendi](media/iot-hub-arduino-huzzah-esp8266-get-started/13_vscode-esp8266-installed.png)
 
-13. Girin `F1`, Anahtar'a **Arduino** seçip **Arduino: Pano Config**.
+13. Girip `F1` **Arduino** yazın ve Arduino **seçin: Pano yapılandırması**.
 
-14. İçin kutusu **Seçilen Pano:** ve türü **esp8266**, ardından **Adafruit HUZZAH ESP8266 (esp8266)** .
+14. **Seçili Pano** için Box ' a tıklayın ve **ESP8266**yazın ve ardından **adameyve HUZZAH ESP8266 (ESP8266)** öğesini seçin.
 
-    ![Esp8266 panosunu seçin](media/iot-hub-arduino-huzzah-esp8266-get-started/14_vscode-select-esp8266.png)
+    ![ESP8266 panosunu seçin](media/iot-hub-arduino-huzzah-esp8266-get-started/14_vscode-select-esp8266.png)
 
-### <a name="install-necessary-libraries"></a>Gerekli kitaplıkları yükleme
+### <a name="install-necessary-libraries"></a>Gerekli kitaplıkları yükler
 
-1. Visual Studio Code'da girin `F1`, Anahtar'a **Arduino** seçip **Arduino: Kitaplık Yöneticisi**.
+1. Visual Studio Code, girip `F1` **Arduino** yazın ve Arduino ' ı **seçin: Kitaplık Yöneticisi**.
 
-2. Aşağıdaki kitaplık arama tek tek adları. Bulduğunuz her Kitaplığı'nı **yükleme**.
+2. Aşağıdaki kitaplık adlarını tek tek arayın. Bulduğunuz her kitaplık için, **yüklensin**' e tıklayın.
    * `AzureIoTHub`
    * `AzureIoTUtility`
    * `AzureIoTProtocol_MQTT`
@@ -198,63 +201,63 @@ Bu bölümde, dağıtın ve Feather HUZZAH ESP8266 hakkında bir örnek uygulama
    * `DHT sensor library`
    * `Adafruit Unified Sensor`
 
-### <a name="dont-have-a-real-dht22-sensor"></a>Gerçek bir DHT22 algılayıcı yok mu?
+### <a name="dont-have-a-real-dht22-sensor"></a>Gerçek bir DHT22 sensör yok mu?
 
-Örnek uygulama, gerçek DHT22 algılayıcı yok durumunda sıcaklık ve nem veri benzetimini yapabilirsiniz. Sanal veri kullanmak için örnek uygulamayı ayarlamak için aşağıdaki adımları izleyin:
+Örnek uygulama, gerçek bir DHT22 sensöre sahip olmadığınız durumlarda sıcaklık ve nem verilerinin benzetimini yapabilir. Örnek uygulamayı sanal verileri kullanmak üzere ayarlamak için aşağıdaki adımları izleyin:
 
-1. Açık `config.h` dosyası `app` klasör.
+1. `config.h` Dosyasını`app` klasöründe açın.
 
-2. Aşağıdaki kod satırını bulun ve değerini `false` için `true`:
+2. Aşağıdaki kod satırını bulun ve değerini `false` olarak `true`değiştirin:
 
    ```c
    define SIMULATED_DATA true
    ```
 
-   ![Sanal veri kullanmak için örnek uygulamayı yapılandırma](media/iot-hub-arduino-huzzah-esp8266-get-started/15_vscode-configure-app-use-simulated-data.png)
+   ![Örnek uygulamayı sanal verileri kullanacak şekilde yapılandırma](media/iot-hub-arduino-huzzah-esp8266-get-started/15_vscode-configure-app-use-simulated-data.png)
 
 3. Dosyayı kaydedin.
 
-### <a name="deploy-the-sample-application-to-feather-huzzah-esp8266"></a>Feather HUZZAH ESP8266 örnek uygulamayı dağıtma
+### <a name="deploy-the-sample-application-to-feather-huzzah-esp8266"></a>Örnek uygulamayı geçiş yumuşatma HUZZAH ESP8266 'e dağıtma
 
-1. Visual Studio Code'da tıklayın  **\<seçin seri bağlantı noktası >** durumunu çubuk ve seri bağlantı noktası için Feather HUZZAH ESP8266'ye tıklayın.
+1. Visual Studio Code, durum çubuğunda  **\<seri bağlantı noktası > Seç** ' e tıklayın ve ardından geçiş yumuşatma HUZZAH ESP8266 için seri bağlantı noktasına tıklayın.
 
-2. Girin `F1`, Anahtar'a **Arduino** seçip **Arduino: Karşıya yükleme** oluşturup Feather HUZZAH ESP8266 için örnek uygulama dağıtırsınız.
+2. Girip `F1` **Arduino** yazın ve Arduino **seçin: Örnek** uygulamayı derlemek ve HUZZAH ESP8266 'e dağıtmak için karşıya yükleyin.
 
 ### <a name="enter-your-credentials"></a>Kimlik bilgilerinizi girin
 
-Karşıya yükleme başarıyla tamamlandıktan sonra kimlik bilgilerinizi girmek için aşağıdaki adımları izleyin:
+Karşıya yükleme başarıyla tamamlandıktan sonra, kimlik bilgilerinizi girmek için aşağıdaki adımları izleyin:
 
-1. Arduino IDE açın, **Araçları** > **seri İzleyici**.
+1. Arduino IDE 'yi açın, **Araçlar** > **seri izleyici**' ye tıklayın.
 
-2. Seri İzleyicisi penceresinde sağ alt köşedeki iki açılır liste dikkat edin.
+2. Seri izleyici penceresinde, sağ alt köşedeki iki açılan listeye dikkat edin.
 
-3. Seçin **sondaysa satır** sol aşağı açılan listesi.
+3. Sol aşağı açılan liste için **son satır yok** ' u seçin.
 
-4. Seçin **115200 baud** sağda açılan listesi.
+4. Sağ açılan listede **115200 baud** ' yı seçin.
 
-5. İstenirse bunları sağlayın ve ardından seri İzleyici penceresinin en üstünde yer alan giriş kutusuna aşağıdaki bilgileri girin. **Gönder**.
+5. Seri İzleyici penceresinin en üstünde bulunan giriş kutusunda, sağlamanız istenirse aşağıdaki bilgileri girin ve ardından **Gönder**' e tıklayın.
 
    * Wi-Fi SSID
    * Wi-Fi parolası
    * Cihaz bağlantı dizesi
 
 > [!Note]
-> Kimlik bilgisi EEPROM, Feather HUZZAH ESP8266 içinde depolanır. Feather HUZZAH ESP8266 panosuna Sıfırla düğmesine tıklarsanız, örnek uygulama bilgileri silmek isteyip istemediğinizi sorar. Girin `Y` silinmesi bilgisi yok. İkinci kez bilgileri vermeniz istenir.
+> Kimlik bilgisi bilgileri, HUZZAH ESP8266 'ın EEPROM 'ı üzerinde depolanır. Geçiş yumuşatma HUZZAH ESP8266 panosunda Sıfırla düğmesine tıklarsanız, örnek uygulama, bilgileri silmek isteyip istemediğinizi sorar. Bilgilerin `Y` silinmesini sağlamak için girin. Bilgileri ikinci bir kez girmeniz istenir.
 
-### <a name="verify-the-sample-application-is-running-successfully"></a>Örnek Uygulama başarıyla çalıştığını doğrulayın
+### <a name="verify-the-sample-application-is-running-successfully"></a>Örnek uygulamanın başarıyla çalıştığını doğrulama
 
-Feather HUZZAH ESP8266 üzerinde aşağıdaki çıktıyı seri İzleme penceresi ve yanıp sönen LED görürseniz örnek uygulama başarıyla çalışıyor.
+Seri izleyici penceresinde aşağıdaki çıktıyı ve geçiş yumuşatma HUZZAH ESP8266 üzerinde yanıp sönen ışığı görürseniz, örnek uygulama başarıyla çalışıyor demektir.
 
-![Arduino IDE içindeki son çıkış](media/iot-hub-arduino-huzzah-esp8266-get-started/16_arduino-ide-final-output.png)
+![Arduino IDE 'de nihai çıkış](media/iot-hub-arduino-huzzah-esp8266-get-started/16_arduino-ide-final-output.png)
 
-## <a name="read-the-messages-received-by-your-hub"></a>Hub'ınıza tarafından alınan iletileri okuma
+## <a name="read-the-messages-received-by-your-hub"></a>Hub 'ınız tarafından alınan iletileri okuyun
 
-Cihazınızdan IOT hub tarafından alınan iletileri izlemeye yönelik bir yolu, Visual Studio Code için Azure IOT araçları kullanmaktır. Daha fazla bilgi için bkz. [göndermek ve IOT Hub ve cihaz arasında iletileri almak Visual Studio Code için Azure IOT Araçları](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md).
+Cihazınızdan IoT Hub 'ınız tarafından alınan iletileri izlemenin bir yolu, Visual Studio Code için Azure IoT araçlarını kullanmaktır. Daha fazla bilgi edinmek için bkz. [Visual Studio Code Için Azure IoT araçlarını kullanarak cihazınız ve IoT Hub arasında ileti gönderme ve alma](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md).
 
-Cihazınız tarafından gönderilen verileri işlemek daha fazla yolu için açın sonraki bölüme devam edin.
+Cihazınız tarafından gönderilen verileri daha fazla şekilde işlemek için bir sonraki bölüme geçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Başarıyla Feather HUZZAH ESP8266 IOT hub'ınıza bağlanan ve yakalanan sensör verilerini IOT hub'ına gönderilen.
+Bir geçiş yumuşatma HUZZAH ESP8266 'i IoT Hub 'ınıza başarıyla bağladınız ve yakalanan algılayıcı verilerini IoT Hub 'ınıza gönderdiniz.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

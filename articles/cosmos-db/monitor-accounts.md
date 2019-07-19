@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 02bbde9a2d744c79cc8a7e95b0732b775c4dc695
-ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
+ms.openlocfilehash: 1c12007e04ff8cd08ddb7afdf9a3c2add9638de3
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "66241619"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277439"
 ---
 # <a name="monitor-performance-and-storage-metrics-in-azure-cosmos-db"></a>Azure Cosmos DB performans ve depolama ölçümlerini izleyin
 
@@ -27,7 +27,7 @@ Hesap sayfasında, yeni ölçümler sayfası veya Azure İzleyici ölçümleri g
 
    Azure portalında mevcut olan koleksiyon ölçümler paketini görüntüler. Aktarım hızı, depolama, kullanılabilirlik, gecikme süresi ve tutarlılık ölçümler üzerinde ayrı sekmeler verildiğini unutmayın. Sağlanan üst köşesindeki çift oku tıklatın ölçümlere ilişkin ek ayrıntılar her ölçümleri bölmesinde sağ almak için.
 
-   ![Ölçüm paketi gösteren izleme lens ekran görüntüsü](./media/monitor-accounts/metrics-suite.png)
+   ![Ölçüm paketini gösteren Izleme lens ekranının ekran görüntüsü](./media/monitor-accounts/metrics-suite.png)
 
 ## <a name="view-performance-metrics-by-using-azure-monitoring"></a>Azure izleme kullanarak performans ölçümlerini görüntüleme
 1. İçinde [Azure portalında](https://portal.azure.com/), tıklayın **İzleyici** sol taraftaki çubukta.
@@ -43,14 +43,18 @@ Hesap sayfasında, yeni ölçümler sayfası veya Azure İzleyici ölçümleri g
    * Geçerli gün için toplam istek sayısı.
    * Kullanılan depolama alanı.
    
-   ![İstekler ve depolama kullanımını gösteren izleme lens ekran görüntüsü](./media/monitor-accounts/documentdb-total-requests-and-usage.png)
+   ![İstekleri ve depolama kullanımını gösteren Izleme merceği ekran görüntüsü](./media/monitor-accounts/documentdb-total-requests-and-usage.png)
 3. Sağ üst tarafındaki çift-oka tıklayarak **istekleri** kutucuk ayrıntılı bir açılır **ölçüm** sayfası.
 4. **Ölçüm** sayfası toplam istek ayrıntılarını gösterir. 
 
 ## <a name="set-up-alerts-in-the-portal"></a>Portalında uyarıları ayarlama
+
+> [!NOTE]
+> Azure Izleyici 'deki klasik uyarılar 31 Ağustos 2019 tarihinde kullanımdan kaldırılacaktır. Azure portal, klasik uyarı kurallarını geçirmek için bir [geçiş aracı](../azure-monitor/platform/alerts-using-migration-tool.md) sağlar. Ancak, Azure Cosmos DB ölçümlerinde bulunan tüm klasik uyarılar geçirilemeyebilir, bazı özel durumlar vardır ve geçirilemeyen klasik uyarıların bir listesi için [Azure izleyici](../azure-monitor/platform/alerts-understand-migration.md#cosmos-db-metrics) makalesine bakın. 
+
 1. İçinde [Azure portalında](https://portal.azure.com/), tıklayın **tüm hizmetleri**, tıklayın **Azure Cosmos DB**ve ardından, istediğiniz performansını ayarlamak Azure Cosmos DB hesabının adına tıklayın Ölçüm uyarıları.
 2. Kaynak menüden **uyarı kuralları** uyarı kuralları sayfasını açmak için.  
-   ![Seçili uyarı kuralları bölümünün ekran görüntüsü](./media/monitor-accounts/madocdb10.5.png)
+   ![Uyarı kuralları bölümünün seçili olduğu ekran görüntüsü](./media/monitor-accounts/madocdb10.5.png)
 3. İçinde **uyarı kuralları** sayfasında **uyarısı Ekle**.  
    ![Uyarı Ekle düğmesi vurgulanmış uyarı kuralları sayfasının ekran görüntüsü](./media/monitor-accounts/madocdb11.png)
 4. İçinde **bir uyarı kuralı Ekle** sayfasında, belirtin:
@@ -61,7 +65,7 @@ Hesap sayfasında, yeni ölçümler sayfası veya Azure İzleyici ölçümleri g
    * Ne zaman uyarı etkinleştirir belirlemek koşulu, eşiği ve dönem. Örneğin, bir sunucu hatası sayısı 5'ten büyük son 15 dakika boyunca.
    * Uyarı tetiklendiğinde olup diğer yöneticiler ve Hizmet Yöneticisi e-posta gönderilir.
    * Uyarı bildirimleri için ek e-posta adresleri.  
-     ![Bir uyarı kuralı Sayfası Ekle ekran görüntüsü](./media/monitor-accounts/madocdb12.png)
+     ![Uyarı kuralı ekle sayfasının ekran görüntüsü](./media/monitor-accounts/madocdb12.png)
 
 ## <a name="monitor-azure-cosmos-db-programmatically"></a>Azure Cosmos DB program aracılığıyla izleyin
 Hesap düzeyindeki ölçümleri hesap depolama kullanım ve toplam istekleri gibi Portalı'nda SQL API'leri üzerinden kullanılabilir değil. Ancak, SQL API'leri kullanarak koleksiyon düzeyinde kullanım verileri alabilir. Koleksiyon düzeyi verileri almak için aşağıdakileri yapın:

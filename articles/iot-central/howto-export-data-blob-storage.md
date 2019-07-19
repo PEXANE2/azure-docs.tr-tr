@@ -1,112 +1,112 @@
 ---
-title: Verilerinizi Azure Blob depolama alanına dışarı aktarma | Microsoft Docs
-description: Azure Blob Depolama için Azure IOT Central uygulamanızdan veri dışarı aktarma
+title: Verilerinizi Azure Blob depolamaya aktarma | Microsoft Docs
+description: Azure IoT Central uygulamanızdan Azure Blob depolama alanına veri aktarma
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 03/20/2019
+ms.date: 07/08/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: 9ae57b8ab26780ea975ad74f3348a0deaf8c9cc8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 609d16994cf88f1777584243b1031368ddc79724
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65464635"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849064"
 ---
-# <a name="export-your-data-to-azure-blob-storage"></a>Verilerinizi Azure Blob depolama alanına dışarı aktarma
+# <a name="export-your-data-to-azure-blob-storage"></a>Verilerinizi Azure Blob depolama alanına aktarma
 
 *Bu konu, Yöneticiler için geçerlidir.*
 
-Bu makalede sürekli veri dışa aktarma Özelliği Azure IOT Central düzenli aralıklarla verileri dışarı aktarmak için nasıl kullanılacağını açıklar, **Azure Blob Depolama hesabı**. Dışarı aktarabilirsiniz **ölçümleri**, **cihazları**, ve **cihaz şablonları** dosyalara Apache Avro biçimi. Dışarı aktarılan verileri eğitim modeller Azure Machine Learning veya Microsoft Power BI uzun vadeli eğilim analizi gibi Durgun yoldaki analiz için kullanılabilir.
+Bu makalede, Azure **BLOB depolama hesabınıza**düzenli aralıklarla veri aktarmak için Azure IoT Central sürekli veri dışa aktarma özelliğinin nasıl kullanılacağı açıklanır. **Ölçümleri**, **cihazları**ve **cihaz şablonlarını** Apache avro biçimindeki dosyalara aktarabilirsiniz. Bu veriler, Microsoft Power BI 'de Azure Machine Learning veya uzun süreli eğilim analizinde eğitim modelleri gibi soğuk yol analizi için kullanılabilir.
 
 > [!Note]
-> Bir kez daha, verileri sürekli dışarı aktarma üzerinde etkinleştirdiğinizde, ileriye doğru o andan itibaren yalnızca verileri alın. Şu anda, verileri sürekli dışarı aktarma kapalıydı ne zaman bir kez verileri alınamıyor. Daha fazla geçmiş verileri korumak için verileri sürekli dışarı aktarma üzerinde erken açın.
+> Bir kez daha, sürekli veri dışarı aktarmayı açtığınızda, yalnızca o andan itibaren verileri alırsınız. Şu anda, sürekli veri dışa aktarma kapalı olduğunda veriler bir saat için alınamaz. Daha fazla geçmiş verileri sürdürmek için sürekli veri dışa aktarmayı erken açın.
 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- IOT Central uygulamanızda yönetici olmanız gerekir
+- IoT Central uygulamanızda yönetici olmanız gerekir
 
 
-## <a name="set-up-export-destination"></a>Dışarı aktarma hedef ayarlayın
+## <a name="set-up-export-destination"></a>Dışarı aktarma hedefini ayarla
 
-Vermek için mevcut bir depolama yoksa, şu adımları izleyin:
+Uygulamasına dışarı aktarmak için mevcut bir depolama alanı yoksa, aşağıdaki adımları izleyin:
 
-## <a name="create-storage-account"></a>Depolama hesabı oluşturma
+## <a name="create-storage-account"></a>Depolama hesabı oluştur
 
-1. Oluşturma bir [Azure portalında yeni depolama hesabı](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Daha fazla bilgi [Azure depolama belgeleri](https://aka.ms/blobdocscreatestorageaccount).
-2. Hesap türü seçin **genel amaçlı** veya **Blob Depolama**.
+1. [Azure Portal yeni bir depolama hesabı](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)oluşturun. [Azure depolama belgeleri](https://aka.ms/blobdocscreatestorageaccount)' nde daha fazla bilgi edinebilirsiniz.
+2. Hesap türü için **genel amaçlı** veya **BLOB depolama**' yı seçin.
 3. Bir abonelik seçin. 
 
     > [!Note] 
-    > Artık olan diğer abonelikler için verileri dışarı aktarabilirsiniz **aynı** bir Kullandıkça Öde IOT Central uygulamanız için. Bu durumda bir bağlantı dizesi kullanarak bağlanır.
+    > Artık verileri, Kullandıkça Öde IoT Central uygulamanızla **aynı olmayan** diğer aboneliklerle dışarı aktarabilirsiniz. Bu durumda bir bağlantı dizesi kullanarak bağlanacaksınız.
 
-4. Depolama hesabınızdaki bir kapsayıcı oluşturun. Depolama hesabınıza gidin. Altında **Blob hizmeti**seçin **Blob'lara göz at**. Seçin **+ kapsayıcı** üst yeni bir kapsayıcı oluşturmak için
+4. Depolama hesabınızda bir kapsayıcı oluşturun. Depolama hesabınıza gidin. **BLOB hizmeti**altında bloblara **gözatamıyorum**' ı seçin. Yeni bir kapsayıcı oluşturmak için üstte **+ kapsayıcı** seçin
 
 
-## <a name="set-up-continuous-data-export"></a>Verileri sürekli dışarı aktarma ayarlayın
+## <a name="set-up-continuous-data-export"></a>Sürekli veri dışarı aktarma ayarlama
 
-Verileri dışarı aktarmak için bir depolama hedefi olduğuna göre verileri sürekli dışarı aktarma ' için bu adımları izleyin. 
+Verilerin dışarı aktarılacağı bir depolama hedefine sahip olduğunuza göre, sürekli veri dışa aktarma ayarlamak için aşağıdaki adımları izleyin. 
 
-1. IOT Central uygulamanız için oturum açın.
+1. IoT Central uygulamanızda oturum açın.
 
-2. Sol menüde **verileri sürekli dışarı aktarma**.
+2. Sol taraftaki menüden **sürekli veri dışarı aktarma**' yı seçin.
 
     > [!Note]
-    > Verileri sürekli dışarı aktarma sol taraftaki menüde görmüyorsanız, yöneticinin uygulamanızda değildir. Verileri dışarı aktarma ' için yöneticinin konuşun.
+    > Sol menüde sürekli veri dışa aktarma görmüyorsanız, uygulamanızda yönetici değilsiniz demektir. Verilerin dışarı aktarılmasını ayarlamak için bir yöneticiye danışın.
 
-    ![Yeni değerinde olay hub'ı oluşturma](media/howto-export-data/export_menu1.png)
+    ![Yeni CDE Olay Hub 'ı oluştur](media/howto-export-data/export_menu1.png)
 
-3. Seçin **+ yeni** sağ üst köşesindeki düğme. Seçin **Azure Blob Depolama** dışarı aktarma hedefi olarak. 
-
-    > [!NOTE] 
-    > Dışarı aktarmalar uygulama başına en fazla sayısı beştir. 
-
-    ![Yeni verileri sürekli dışarı aktarma oluştur](media/howto-export-data/export_new1.png)
-
-4. Aşağı açılan liste kutusunda, **depolama hesabı ad alanı**. Son seçenek, listeden seçebilirsiniz **bir bağlantı dizesi girin**. 
+3. Sağ üst köşedeki **+ Yeni** düğmesini seçin. Dışarı aktarma işlemi hedefi olarak **Azure Blob depolama** ' yı seçin. 
 
     > [!NOTE] 
-    > Depolama hesapları ad alanlarında yalnızca göreceksiniz **IOT Central uygulamanız ile aynı abonelikte**. Bu abonelik dışında bir hedefe dışarı aktarmak istiyorsanız seçin **bir bağlantı dizesi girin** ve 5. adıma bakın.
+    > Uygulama başına en fazla dışarı aktarma sayısı beştir. 
+
+    ![Yeni sürekli veri dışa aktarma oluştur](media/howto-export-data/export_new1.png)
+
+4. Aşağı açılan liste kutusunda **depolama hesabı ad**alanınızı seçin. Ayrıca, listede **bir bağlantı dizesi girerek**son seçeneği de seçebilirsiniz. 
 
     > [!NOTE] 
-    > 7 günlük deneme uygulamaları, verileri sürekli yapılandırmak için tek yolu dışarı aktarmak için bir bağlantı dizesidir. 7 günlük deneme uygulamalar, ilişkili Azure aboneliği olmadığı için budur.
+    > Depolama hesabı ad alanlarını yalnızca **IoT Central uygulamanızla aynı abonelikte**görürsünüz. Bu aboneliğin dışında bir hedefe aktarmak istiyorsanız, **bir bağlantı dizesi girin** ' i seçin ve 5. adıma bakın.
 
-    ![Yeni değerinde olay hub'ı oluşturma](media/howto-export-data/export-create-blob.png)
+    > [!NOTE] 
+    > 7 günlük deneme uygulamaları için sürekli veri vermeyi yapılandırmanın tek yolu bir bağlantı dizesidir. Bunun nedeni 7 günlük deneme uygulamalarının ilişkili bir Azure aboneliğine sahip olmaması olabilir.
 
-5. (İsteğe bağlı) Seçerseniz, **bir bağlantı dizesi girin**, bağlantı dizenizi yapıştırmak için yeni kutusu görünür. Bağlantı dizesini almak için:
-    - Depolama hesabı, Azure portalında depolama hesabı'na gidin.
-        - Altında **ayarları**seçin **erişim anahtarları**
-        - Key1 bağlantı dizesini veya key2 bağlantı dizesini kopyalayın.
+    ![Yeni CDE Olay Hub 'ı oluştur](media/howto-export-data/export-create-blob.png)
+
+5. Seçim **Bir bağlantı dizesi girin**' i seçerseniz, Bağlantı dizenizi yapıştırmanız için yeni bir kutu belirir. İçin bağlantı dizesini almak için:
+    - Depolama hesabı, Azure portal depolama hesabına gidin.
+        - **Ayarlar**altında **erişim anahtarları** ' nı seçin.
+        - KEY1 bağlantı dizesini veya key2 bağlantı dizesini kopyalayın
  
-6. Aşağı açılan liste kutusundan bir kapsayıcı seçin.
+6. Açılan liste kutusundan bir kapsayıcı seçin.
 
-7. Altında **dışarı aktarmak için veri**, her tür ayarlayarak dışarı aktarmak için veri türü belirtin **üzerinde**.
+7. **Dışarı aktarılacak veriler**' in altında, türü **üzerine**ayarlayarak dışarı aktarılacak her bir veri türünü belirtin.
 
-6. Verileri sürekli dışarı aktarma üzerinde etkinleştirmek için emin **verileri dışarı aktarma** olduğu **üzerinde**. **Kaydet**’i seçin.
+6. Sürekli veri dışa aktarmayı açmak için, **veri dışa aktarmanın** **Açık**olduğundan emin olun. **Kaydet**’i seçin.
 
-   ![Yapılandırma verileri sürekli dışarı aktarma](media/howto-export-data/export-list-blob.png)
+   ![Sürekli veri vermeyi yapılandırma](media/howto-export-data/export-list-blob.png)
 
-7. Birkaç dakika sonra verilerinizi, seçtiğiniz hedef olarak görünür.
+7. Birkaç dakika sonra verileriniz seçtiğiniz hedefte görüntülenir.
 
 
-## <a name="export-to-azure-blob-storage"></a>Azure Blob depolamaya Aktar
+## <a name="export-to-azure-blob-storage"></a>Azure Blob depolama 'ya aktarma
 
-Depolama hesabınıza bir kez dakikada ölçümleri, cihazları ve cihaz şablonları verileri son dosyasına dışarı aktardığınız beri toplu değişiklikler içeren her bir dosya ile aktarılır. Dışarı aktarılan veriler [Apache Avro](https://avro.apache.org/docs/current/index.html) biçimlendirmek ve içinde üç klasöre aktarılır. Depolama hesabınızdaki varsayılan yollar şunlardır:
-- İleti: {container}/measurements/{hubname}/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
-- Aygıtlar: {container}/devices/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
-- Cihaz şablonları: {container}/deviceTemplates/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
+Ölçümler, cihazlar ve cihaz şablonları verileri, depolama hesabınıza dakikada bir kez, son verilden bu yana yapılan değişiklikleri içeren her bir dosyayla birlikte verilir. Bu veriler [Apache avro](https://avro.apache.org/docs/current/index.html) biçiminde bulunur ve üç klasöre aktaralınacaktır. Depolama hesabınızdaki varsayılan yollar şunlardır:
+- İletiler: {Container}/measurements/{hubname}/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
+- Cihazlar: {Container}/devices/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
+- Cihaz şablonları: {Container}/deviceTemplates/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
 
 ### <a name="measurements"></a>Ölçümler
 
-Dışarı aktarılan ölçümleri veri ile IOT Central, bu süre boyunca tüm cihazlardan alınan tüm yeni iletisi yok. Dışarı aktarılan dosyalar tarafından dışarı aktarılan ileti dosyaları olarak aynı biçimi kullanır. [IOT Hub ileti yönlendirme](https://docs.microsoft.com/azure/iot-hub/iot-hub-csharp-csharp-process-d2c) Blob Depolama.
+Yayımlanan ölçüm verilerinde, bu süre boyunca tüm cihazlardan IoT Central tarafından alınan tüm yeni iletiler bulunur. İçeri aktarılmış dosyalar, blob depolamaya [IoT Hub ileti yönlendirme tarafından içeri](https://docs.microsoft.com/azure/iot-hub/iot-hub-csharp-csharp-process-d2c) aktarılmış ileti dosyalarıyla aynı biçimi kullanır.
 
 > [!NOTE]
-> Ölçümler gönderen cihazları (aşağıdaki bölümlere bakın) cihaz kimlikleri tarafından temsil edilir. Cihaz adları almak için cihaz anlık görüntülerin dışarı aktarın. Her bir ileti kaydı kullanarak ilişkilendirmek **connectionDeviceId** eşleşen **DeviceID** cihaz kaydının.
+> Ölçümleri gönderen cihazlar cihaz kimliklerine göre temsil edilir (aşağıdaki bölümlere bakın). Cihazların adlarını almak için cihaz anlık görüntülerini dışarı aktarın. Her ileti kaydını, cihaz kaydının **DeviceID** 'Siyle eşleşen **connectiondeviceıd** kullanarak ilişkilendirin.
 
-Aşağıdaki örnek, bir kaydı bir kodu çözülmüş Avro dosyasında gösterir:
+Aşağıdaki örnek, kodu çözülmüş bir avro dosyasındaki kaydı gösterir:
 
 ```json
 {
@@ -124,25 +124,25 @@ Aşağıdaki örnek, bir kaydı bir kodu çözülmüş Avro dosyasında gösteri
 
 ### <a name="devices"></a>Cihazlar
 
-Verileri sürekli dışarı aktarma ilk açıldığında, tüm cihazlar ile tek bir anlık görüntüyü dışarı aktarılır. Her cihaz içerir:
-- `id` IOT Central'ın aygıt
-- `name` Aygıt
-- `deviceId` gelen [cihaz sağlama hizmeti](https://aka.ms/iotcentraldocsdps)
-- Cihaz şablon bilgisi
+Sürekli veri dışa aktarma ilk açıldığında, tüm cihazları içeren tek bir anlık görüntü dışa aktarılabilir. Her cihaz şunları içerir:
+- `id`IoT Central cihaz
+- `name`Cihazın
+- `deviceId`[cihaz sağlama hizmeti](https://aka.ms/iotcentraldocsdps) 'nden
+- Cihaz şablonu bilgileri
 - Özellik değerleri
 - Ayar değerleri
 
-Yeni bir anlık görüntü bir kez dakikada yazılır. Anlık görüntü içerir:
+Dakikada yeni bir anlık görüntü yazılır. Anlık görüntü şunları içerir:
 
-- Yeni cihazları son anlık görüntünün beri eklenmiş.
-- Değiştirilmiş özellik ve değerlerini beri son anlık görüntünün ayarlama olan cihazlar.
+- Son anlık görüntüden bu yana eklenen yeni cihazlar.
+- Değiştirilen özelliği olan ve son anlık görüntüden bu yana değerleri ayarlayarak cihazlar.
 
 > [!NOTE]
-> Cihazlar olmayan son anlık görüntünün dışarı beri silindi. Şu anda anlık görüntüleri göstergeleri silinen cihazlar için yok.
+> Son anlık görüntü aktarılmadığından cihazlar silindi. Şu anda anlık görüntülerde silinen cihazlar için göstergeler yok.
 >
-> Her bir cihaza ait cihaz şablonu cihaz şablon kimliği ile temsil edilir Cihaz şablonunun adını almak için cihaz şablonu anlık görüntülerin dışarı aktarın.
+> Her cihazın ait olduğu cihaz şablonu, bir cihaz şablonu KIMLIĞI ile temsil edilir. Cihaz şablonunun adını almak için cihaz şablonu anlık görüntülerini dışarı aktarın.
 
-Kodu çözülen Avro dosyasında bir kaydı gibi görünebilir:
+Kodu çözülmüş avro dosyasındaki bir kayıt şöyle görünebilir:
 
 ```json
 {
@@ -174,23 +174,23 @@ Kodu çözülen Avro dosyasında bir kaydı gibi görünebilir:
 
 ### <a name="device-templates"></a>Cihaz şablonları
 
-Verileri sürekli dışarı aktarma ilk açıldığında, tüm cihaz şablonları ile tek bir anlık görüntüyü dışarı aktarılır. Her cihaz şablonu içerir:
-- `id` cihaz şablonu
-- `name` cihaz şablonu
-- `version` cihaz şablonu
-- Ölçüm veri türleri ve en düşük/en yüksek değerleri.
-- Özellik veri türleri ve varsayılan değerleri.
-- Veri türleri ve varsayılan değerleri ayarlama.
+Sürekli veri dışa aktarma ilk açıldığında, tüm cihaz şablonlarının bulunduğu tek bir anlık görüntü dışa aktarılabilir. Her cihaz şablonu şunları içerir:
+- `id`cihaz şablonu
+- `name`cihaz şablonu
+- `version`cihaz şablonu
+- Ölçüm veri türleri ve min/max değerleri.
+- Özellik veri türleri ve varsayılan değerler.
+- Veri türleri ve varsayılan değerler ayarlanıyor.
 
-Yeni bir anlık görüntü bir kez dakikada yazılır. Anlık görüntü içerir:
+Dakikada yeni bir anlık görüntü yazılır. Anlık görüntü şunları içerir:
 
-- Son anlık görüntünün bu yana eklenen yeni cihaz şablonları.
-- Değiştirilen ölçümleri, özellik ve tanımları beri son anlık görüntünün ayarlama şablonlarıyla cihaz.
+- Son anlık görüntüden bu yana yeni cihaz şablonları eklendi.
+- Son anlık görüntüden bu yana değiştirilen ölçümler, özellik ve ayar tanımlarına sahip cihaz şablonları.
 
 > [!NOTE]
-> Bu yana son anlık görüntü silinmiş cihaz şablonlarını dışa aktarılmaz. Şu anda anlık görüntüleri göstergeleri silinen cihaz şablonları için yok.
+> Son anlık görüntü aktarılmadığından, cihaz şablonları silinir. Şu anda anlık görüntülerde Silinen cihaz şablonları için göstergeler yok.
 
-Bir kayıt kodu çözülmüş Avro dosyasında şöyle görünebilir:
+Kodu çözülmüş avro dosyasındaki bir kayıt şöyle görünebilir:
 
 ```json
 {
@@ -266,20 +266,20 @@ Bir kayıt kodu çözülmüş Avro dosyasında şöyle görünebilir:
 }
 ```
 
-## <a name="read-exported-avro-files"></a>Verilen Avro dosyaları okuma
+## <a name="read-exported-avro-files"></a>İçe aktarılmış avro dosyalarını oku
 
-Avro bir ikili biçimi olduğundan ham durumlarını dosyaları okunamıyor. Dosyaları JSON biçimine çözülebilir. Aşağıdaki örnekler, ölçümleri, cihazları ve cihaz şablonları Avro dosyalarını ayrıştırmak gösterilmektedir. Örnekler önceki bölümde açıklanan örnekler karşılık gelir.
+Avro ikili bir biçimdir, bu nedenle dosyalar ham durumunda okunamaz. Dosyalar JSON biçiminde çözülebilir. Aşağıdaki örneklerde ölçümlerin, cihazların ve cihaz şablonlarının avro dosyalarının nasıl ayrıştırılacak gösterilmektedir. Örnekler, önceki bölümde açıklanan örneklere karşılık gelir.
 
 ### <a name="read-avro-files-by-using-python"></a>Python kullanarak avro dosyalarını okuma
 
-#### <a name="install-pandas-and-the-pandavro-package"></a>Pandas ve pandavro paket yükleme
+#### <a name="install-pandas-and-the-pandavro-package"></a>Pandas ve pandavro paketini yükler
 
 ```python
 pip install pandas
 pip install pandavro
 ```
 
-#### <a name="parse-a-measurements-avro-file"></a>Ölçümleri Avro dosyası ayrıştırılamıyor
+#### <a name="parse-a-measurements-avro-file"></a>Ölçümler avro dosyasını Ayrıştır
 
 ```python
 import json
@@ -309,7 +309,7 @@ def parse(filePath):
 
 ```
 
-#### <a name="parse-a-devices-avro-file"></a>Cihazları Avro dosyası ayrıştırılamıyor
+#### <a name="parse-a-devices-avro-file"></a>Bir cihazlar avro dosyasını Ayrıştır
 
 ```python
 import json
@@ -343,7 +343,7 @@ def parse(filePath):
 
 ```
 
-#### <a name="parse-a-device-templates-avro-file"></a>Bir cihaz şablonları Avro dosyası ayrıştırılamıyor
+#### <a name="parse-a-device-templates-avro-file"></a>Bir cihaz şablonları avro dosyasını Ayrıştır
 
 ```python
 import json
@@ -372,15 +372,15 @@ def parse(filePath):
     print(transformed)
 ```
 
-### <a name="read-avro-files-by-using-c"></a>Okuma Avro dosyalarını kullanarakC#
+### <a name="read-avro-files-by-using-c"></a>Kullanarak avro dosyalarını okumaC#
 
-#### <a name="install-the-microsofthadoopavro-package"></a>Microsoft.Hadoop.Avro paketi yükleyin
+#### <a name="install-the-microsofthadoopavro-package"></a>Microsoft. Hadoop. avro paketini yükler
 
 ```csharp
 Install-Package Microsoft.Hadoop.Avro -Version 1.5.6
 ```
 
-#### <a name="parse-a-measurements-avro-file"></a>Ölçümleri Avro dosyası ayrıştırılamıyor
+#### <a name="parse-a-measurements-avro-file"></a>Ölçümler avro dosyasını Ayrıştır
 
 ```csharp
 using Microsoft.Hadoop.Avro;
@@ -420,7 +420,7 @@ public static async Task Run(string filePath)
 }
 ```
 
-#### <a name="parse-a-devices-avro-file"></a>Cihazları Avro dosyası ayrıştırılamıyor
+#### <a name="parse-a-devices-avro-file"></a>Bir cihazlar avro dosyasını Ayrıştır
 
 ```csharp
 using Microsoft.Hadoop.Avro;
@@ -471,7 +471,7 @@ public static async Task Run(string filePath)
 
 ```
 
-#### <a name="parse-a-device-templates-avro-file"></a>Bir cihaz şablonları Avro dosyası ayrıştırılamıyor
+#### <a name="parse-a-device-templates-avro-file"></a>Bir cihaz şablonları avro dosyasını Ayrıştır
 
 ```csharp
 using Microsoft.Hadoop.Avro;
@@ -515,15 +515,15 @@ public static async Task Run(string filePath)
 }
 ```
 
-### <a name="read-avro-files-by-using-javascript"></a>Javascript kullanarak avro dosyalarını okuma
+### <a name="read-avro-files-by-using-javascript"></a>JavaScript kullanarak avro dosyalarını okuma
 
-#### <a name="install-the-avsc-package"></a>Avsc paketi yükleyin
+#### <a name="install-the-avsc-package"></a>Avsc paketini yükler
 
 ```javascript
 npm install avsc
 ```
 
-#### <a name="parse-a-measurements-avro-file"></a>Ölçümleri Avro dosyası ayrıştırılamıyor
+#### <a name="parse-a-measurements-avro-file"></a>Ölçümler avro dosyasını Ayrıştır
 
 ```javascript
 const avro = require('avsc');
@@ -560,7 +560,7 @@ function load(filePath) {
 }
 ```
 
-#### <a name="parse-a-devices-avro-file"></a>Cihazları Avro dosyası ayrıştırılamıyor
+#### <a name="parse-a-devices-avro-file"></a>Bir cihazlar avro dosyasını Ayrıştır
 
 ```javascript
 const avro = require('avsc');
@@ -598,7 +598,7 @@ function load(filePath) {
 }
 ```
 
-#### <a name="parse-a-device-templates-avro-file"></a>Bir cihaz şablonları Avro dosyası ayrıştırılamıyor
+#### <a name="parse-a-device-templates-avro-file"></a>Bir cihaz şablonları avro dosyasını Ayrıştır
 
 ```javascript
 const avro = require('avsc');
@@ -635,7 +635,7 @@ function load(filePath) {
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Verileriniz dışarı aktarma artık bildiğinize göre sonraki adıma devam edin:
+Artık verilerinizi dışarı aktarmayı öğrenmiş olduğunuza göre, sonraki adıma geçin:
 
 > [!div class="nextstepaction"]
-> [Nasıl verilerinizi Power bı'da görselleştirin](howto-connect-powerbi.md)
+> [Power BI verilerinizi görselleştirme](howto-connect-powerbi.md)

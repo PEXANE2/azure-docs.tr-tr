@@ -1,6 +1,6 @@
 ---
-title: Web uygulaması çağrıları API'leri (kod yapılandırması) - web Microsoft kimlik platformu
-description: Bir Web uygulaması oluşturmayı öğrenin çağrıları veritabanını web API'leri (uygulama kodu yapılandırma)
+title: Web API 'Lerini çağıran Web uygulaması (kod yapılandırması)-Microsoft Identity platform
+description: Web API 'Lerini (uygulamanın kod yapılandırması) çağıran bir Web uygulaması oluşturmayı öğrenin
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -11,40 +11,40 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c78a951258e3c279f96f44ceac469e4c38cf22c
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 15c12aebccf34957db8442034ebbcd6ac7c107e1
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67785566"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68276722"
 ---
-# <a name="web-app-that-calls-web-apis---code-configuration"></a>Web uygulaması web API'leri - kod yapılandırma çağrıları
+# <a name="web-app-that-calls-web-apis---code-configuration"></a>Web API 'Lerini çağıran Web uygulaması-kod yapılandırması
 
-Görüldüğü [Web uygulaması oturum açtığında kullanıcı senaryosu](scenario-web-app-sign-user-overview.md)düşünüldüğünde, kullanıcı oturum açma Kimliğine temsilci (OIDC) ara yazılım bağlayın, kanca artırmayı OIDC işlemde istiyor. Bunu yapmanın bir yolu, bağlı olarak farklıdır, kullanılan (burada ASP.NET ve ASP.NET Core), ancak ara yazılım OIDC olaylarına abone sonunda. İlke olmasıdır:
+Web uygulaması oturum açma [kullanıcıları senaryosunda](scenario-web-app-sign-user-overview.md)görüldüğü gibi, kullanıcının oturum açması, açık kimlik Connect (OIDC) ara yazılımı için temsilci olarak verildiğinde, OIDC işlemine bağlanmak istiyorsunuz. Bunu yapmanın yolu, kullandığınız çerçeveye göre farklılık gösteren (burada ASP.NET ve ASP.NET Core), ancak sonunda, ara yazılım OıDC olaylarına abone olacaksınız. Prensibi şunlardır:
 
-- ASP.NET veya ASP.NET bildirelim çekirdek isteği bir yetkilendirme kodu. Yaparak bu ASP.NET/ASP.NET çekirdek işlem, kullanıcının oturum açın ve kullanıcının onaylaması izin ver
-- Web uygulaması tarafından yetkilendirme kodu alımını abone olmak.
-- Kimlik doğrulama kodunu aldığınızda kodu ve sonuçta elde edilen erişim belirteçleri almak ve belirteçleri deposunda belirteç önbelleği yenilemek için MSAL kitaplıkları'nı kullanacaksınız. Burada, önbellek diğer belirteçlerini sessiz bir şekilde almak için uygulamanın diğer kısımlarını kullanılabilir.
+- ASP.NET veya ASP.NET Core 'un bir yetkilendirme kodu istemesine izin vereceksiniz. Bu ASP.NET/ASP.NET çekirdeğini yaparak kullanıcının oturum açmasını ve izin vermesini sağlar,
+- Web uygulaması tarafından yetkilendirme kodunun alımına abone olacaksınız.
+- Kimlik doğrulama kodu alındığında, kodu ve sonuç erişim belirteçlerini ve belirteç önbelleğinde belirteç deposunu yenilemek için MSAL kitaplıklarını kullanacaksınız. Buradan, önbellek diğer belirteçleri sessizce almak için uygulamanın diğer bölümlerinde kullanılabilir.
 
-## <a name="libraries-supporting-web-app-scenarios"></a>Web uygulaması senaryoları destek kitaplıkları
+## <a name="libraries-supporting-web-app-scenarios"></a>Web uygulaması senaryolarını destekleyen kitaplıklar
 
-Yetkilendirme kod akışı, Web uygulamaları için destek kitaplıkları şunlardır:
+Web Apps için yetkilendirme kodu akışını destekleyen kitaplıklar şunlardır:
 
 | MSAL kitaplığı | Açıklama |
 |--------------|-------------|
-| ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Desteklenen platformlar olan .NET Framework ve .NET Core platformlar (UWP değil, Xamarin.iOS ve Xamarin.Android bu platformları olarak ortak istemci uygulamaları oluşturmak için kullanılır) |
-| ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL.Python | Genel önizlemeye sunuldu - sürmekte olan geliştirme |
-| ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL.Java | Genel önizlemeye sunuldu - sürmekte olan geliştirme |
+| ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Desteklenen platformlar .NET Framework ve .NET Core platformları (UWP, Xamarin. iOS ve Xamarin. Android değil, bu platformlar ortak istemci uygulamaları oluşturmak için kullanılır) |
+| ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL. Python | Geliştirme devam ediyor-genel önizlemede |
+| ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL. Java | Geliştirme devam ediyor-genel önizlemede |
 
-## <a name="aspnet-core-configuration"></a>ASP.NET Core yapılandırma
+## <a name="aspnet-core-configuration"></a>ASP.NET Core yapılandırması
 
-ASP.NET Core, olacaklar `Startup.cs` dosya. Abone olmak istediğiniz `OnAuthorizationCodeReceived` kimliği açık olay bağlanmak ve bu olaydan MSAL çağırın. NET'in yöntem `AcquireTokenFromAuthorizationCode` belirteç önbelleği ve istenen kapsamlar için erişim belirteci süre sonu yaklaştığında olduğunda erişim belirtecini yenilemek için ya da aynı kullanıcı adına bir belirteç almak için kullanılacak bir yenileme belirteci depolamak etkisi vardır , ancak farklı bir kaynak için.
+ASP.NET Core, `Startup.cs` dosyada şeyler meydana gelir. `OnAuthorizationCodeReceived` Açık kimlik Connect olayına abone olmak ve bu olaydan msal çağrısı yapmak isteyeceksiniz. NET 'in, `AcquireTokenFromAuthorizationCode` belirteç önbelleğinde depolamanın etkisi, istenen kapsamlar için erişim belirteci ve zaman aşımı süresi sona ermeden veya aynı kullanıcı adına bir belirteç almak için kullanılacak yenileme belirtecinin bulunduğu Yöntem , ancak farklı bir kaynak için.
 
-Aşağıdaki kod açıklamaları MSAL.NET ve ASP.NET Core weaving beceri gerektiren bazı yönlerini anlamanıza yardımcı olur. Tüm Ayrıntılar sağlanır [ASP.NET Core Web uygulaması artımlı Eğitmeni, bölüm 2](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph)
+Aşağıdaki koddaki açıklamalar, dalgalı MSAL.NET ve ASP.NET Core karmaşık yönlerini anlamanıza yardımcı olur. [ASP.NET Core Web uygulaması artımlı öğreticisi, Bölüm 2 '](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph) de tam ayrıntılar sunulmaktadır
 
 ```CSharp
   services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options =>
@@ -88,7 +88,7 @@ Aşağıdaki kod açıklamaları MSAL.NET ve ASP.NET Core weaving beceri gerekti
    };
 ```
 
-ASP.NET Core, gizli bir istemci uygulaması oluşturma HttpContext bilgileri kullanır. Web uygulaması ve oturum açmış kullanıcı bu HttpContext URL hakkında bilir (içinde bir `ClaimsPrincipal`). Ayrıca bir "AzureAD" bölümü vardır ve bağlı ASP.NET Core yapılandırma kullanır `_applicationOptions` veri yapısı. Son olarak uygulama belirteci önbellekler tutması gerekir.
+ASP.NET Core, gizli istemci uygulaması oluşturmak HttpContext 'teki bilgileri kullanır. Bu HttpContext, Web uygulamasının URL 'sini ve oturum açmış kullanıcıyı (bir `ClaimsPrincipal`) bilir. Ayrıca, "azuread" bölümü olan ve `_applicationOptions` veri yapısına bağlantılı ASP.NET Core yapılandırmayı kullanır. Son olarak, uygulamanın belirteç önbelleklerini koruması gerekir.
 
 ```CSharp
 /// <summary>
@@ -128,11 +128,11 @@ private IConfidentialClientApplication BuildConfidentialClientApplication(HttpCo
 }
 ```
 
-`AcquireTokenByAuthorizationCode` gerçekten ASP.NET tarafından istenen yetkilendirme kodu redeems ve MSAL.NET kullanıcı belirteci önbelleğe eklenen belirteçlerini alır. Buradan sonra oldukları ASP.NET Core denetleyicileri kullanılır.
+`AcquireTokenByAuthorizationCode`ASP.NET tarafından istenen yetkilendirme kodunu gerçekten yapın ve MSAL.NET Kullanıcı belirteci önbelleğine eklenen belirteçleri alır. Buradan, ASP.NET Core denetleyicilerinde kullanılır.
 
 ## <a name="aspnet-configuration"></a>ASP.NET yapılandırması
 
-ASP.NET şeyler işleme benzer dışında Openıdconnect ve aboneliğe yapılandırmasını `OnAuthorizationCodeReceived` olay gerçekleştiğinde `App_Start\Startup.Auth.cs` dosya. Burada RedirectUri biraz daha az yapılandırma dosyasında belirtmeniz gerekecek dışında benzer kavramları sağlam bulabilirsiniz:
+ASP.NET yöntemi, openıdconnect yapılandırması ve `OnAuthorizationCodeReceived` olay `App_Start\Startup.Auth.cs` aboneliği dosyada olması dışında, şeyleri işler. Benzer kavramları bulacaksınız, burada, daha az dayanıklı olan yapılandırma dosyasında RedirectUri belirtmeniz gerekir:
 
 ```CSharp
 private void ConfigureAuth(IAppBuilder app)
@@ -180,18 +180,21 @@ private async Task OnAuthorizationCodeReceived(AuthorizationCodeReceivedNotifica
 }
 ```
 
-### <a name="msalnet-token-cache-for-a-aspnet-core-web-app"></a>(Temel) ASP.NET Web uygulaması için MSAL.NET belirteç önbelleği
+Son olarak, gizli istemci uygulaması, bir istemci sertifikası veya bir istemci onayı kullanarak kimliğini de kanıtlayabilirler.
+İstemci onaylamaları kullanmak, [istemci onaylamaları](msal-net-client-assertions.md) hakkında ayrıntılı olarak açıklanan gelişmiş bir senaryodur
 
-Web apps (veya web API sağlasa da, olgu olarak), belirteç önbelleği Masaüstü uygulamaları belirteç önbelleği uygulamalarının farklı uygulamasıdır (genellikle olduğu [dosya tabanlı](scenario-desktop-acquire-token.md#file-based-token-cache). ASP.NET/ASP.NET çekirdek oturumu veya bir Redis önbelleği veya bir veritabanı veya hatta Azure Blob Depolama kullanabilirsiniz. Kod parçacığı bunun üzerinde nesnesidir `EnablePersistence(HttpContext, clientApp.UserTokenCache, clientApp.AppTokenCache);` bağlanan Azure önbellek hizmeti yöntemi araması. Ayrıntı ne İşte senaryo bu kılavuzun kapsamı dışındadır, ancak aşağıda bağlantıları verilen'olmuyor.
+### <a name="msalnet-token-cache-for-a-aspnet-core-web-app"></a>ASP.NET (Core) Web uygulaması için MSAL.NET Token Cache
+
+Web uygulamalarında (veya aslında Web API 'Lerinde), belirteç önbelleği uygulaması masaüstü uygulamaları belirteç önbelleği uygulamalarından farklıdır (genellikle [dosya tabanlı](scenario-desktop-acquire-token.md#file-based-token-cache)olur. ASP.NET/ASP.NET Core oturumu veya bir Redsıs önbelleği veya bir veritabanı ya da Azure Blob depolama alanı kullanabilir. Yukarıdaki kod parçacığında, bu, bir önbellek hizmetini bağlayan `EnablePersistence(HttpContext, clientApp.UserTokenCache, clientApp.AppTokenCache);` yöntem çağrısının nesnesidir. Burada ne olacağı hakkında ayrıntı bu senaryo kılavuzunun kapsamı dışındadır, ancak bağlantılar aşağıda verilmiştir.
 
 > [!IMPORTANT]
-> Hayata geçirmek için çok önemli bir şey, web uygulamaları ve web API'leri için olması gereken bir belirteç önbelleği kullanıcı (başına hesabı) olabilir. Her hesap için belirteç önbelleği serileştirmek gerekir.
+> Web uygulamaları ve Web API 'Leri için çok önemli bir şey, Kullanıcı başına (hesap başına) bir belirteç önbelleği olmalıdır. Her hesap için belirteç önbelleğini seri hale getirmeniz gerekir.
 
-Belirteç önbellekler için Web apps ve web API'leri nasıl kullanılacağını örnekleri kullanılabilir [ASP.NET Core Web uygulaması Öğreticisi](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) aşamada [2-2 belirteç önbelleği](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache). Uygulamaları aşağıdaki klasöre bakmak için [TokenCacheProviders](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Web/TokenCacheProviders) içinde [microsoft-kimlik doğrulama-extensions-için-dotnet](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet) kitaplığı (içinde [ Microsoft.Identity.Client.Extensions.Web](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Web) klasör.
+Web uygulamaları ve Web API 'Leri için belirteç önbelleklerinin nasıl kullanılacağına ilişkin örnekler, aşama [2-2 belirteç önbelleğindeki](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache) [ASP.NET Core Web uygulaması öğreticisinde](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) bulunabilir. Uygulamalar için, [Microsoft-Authentication-Extensions-for-DotNet](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet) kitaplığındaki ( [Microsoft. Identity. Client. Extensions. Web](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Web) klasöründe) [tokencacheproviders](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Web/TokenCacheProviders) ' a aşağıdaki klasöre göz atalım.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu noktada, kullanıcı oturum açtığında bir belirteç belirteci önbellekte depolanır. Web uygulamasının diğer bölümlerinde ardından nasıl kullanıldığını görelim.
+Bu noktada, Kullanıcı bir belirteçle oturum açtığında belirteç önbelleğinde depolanır. Daha sonra, Web uygulamasının diğer bölümlerinde nasıl kullanıldığını görelim.
 
 > [!div class="nextstepaction"]
-> [Web uygulamasına oturum açın](scenario-web-app-call-api-sign-in.md)
+> [Web uygulamasında oturum açma](scenario-web-app-call-api-sign-in.md)

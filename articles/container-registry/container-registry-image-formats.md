@@ -1,48 +1,48 @@
 ---
 title: Azure Container Registry içerik biçimleri
-description: Azure Container Registry'de desteklenen içerik biçimleri hakkında bilgi edinin.
+description: Azure Container Registry desteklenen içerik biçimleri hakkında bilgi edinin.
 services: container-registry
 author: dlepow
-manager: jeconnoc
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 04/18/2019
 ms.author: danlep
-ms.openlocfilehash: fe129847e685c7151a9b7ad7ea65abbd38530733
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c804dd7b73ea4a51c02c8b342a4ac60d992ec7c5
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60827468"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310686"
 ---
-# <a name="content-formats-supported-in-azure-container-registry"></a>Azure Container Registry'de desteklenen içerik biçimleri
+# <a name="content-formats-supported-in-azure-container-registry"></a>Azure Container Registry desteklenen içerik biçimleri
 
-Özel depo, Azure Container Registry'de içerik aşağıdaki biçimlerden birini yönetmek için kullanın. 
+Aşağıdaki içerik biçimlerinden birini yönetmek için Azure Container Registry bir özel depo kullanın. 
 
 ## <a name="docker-compatible-container-images"></a>Docker ile uyumlu kapsayıcı görüntüleri
 
-Aşağıdaki Docker kapsayıcı görüntüsü biçimleri desteklenir:
+Aşağıdaki Docker kapsayıcı görüntü biçimleri desteklenir:
 
-* [Docker görüntüsü bildirim V2, Şeması 1](https://docs.docker.com/registry/spec/manifest-v2-1/)
+* [Docker görüntü bildirimi v2, şema 1](https://docs.docker.com/registry/spec/manifest-v2-1/)
 
-* [Docker görüntüsü bildirim V2, şema 2](https://docs.docker.com/registry/spec/manifest-v2-2/) -bildirim tek "image: tag" başvuru altında birden çok platform görüntüleri depolamak kayıt defterleri sağlayan listeler içerir
+* [Docker Image manifest v2, şema 2](https://docs.docker.com/registry/spec/manifest-v2-2/) -kayıt defterlerinin çoklu platform görüntülerini tek bir "Image: Tag" başvurusu altında depolamasına Izin veren bildirim listeleri içerir
 
-## <a name="oci-images"></a>OCI görüntüleri
+## <a name="oci-images"></a>OCı görüntüleri
 
-Azure Container Registry de karşılayan görüntüleri destekler [açık kapsayıcı girişim (OCI) görüntü biçim belirtimi](https://github.com/opencontainers/image-spec/blob/master/spec.md). Paketleme biçimler [Singularity görüntü biçimi (SIF)](https://www.sylabs.io/2018/03/sif-containing-your-containers/).
+Azure Container Registry, [Açık kapsayıcı girişimi (OCI) görüntü biçimi belirtimini](https://github.com/opencontainers/image-spec/blob/master/spec.md)karşılayan görüntüleri de destekler. Paketleme biçimleri, [Singularımage Format (SIF)](https://www.sylabs.io/2018/03/sif-containing-your-containers/)içerir.
 
-## <a name="helm-charts"></a>Helm grafikleri
+## <a name="helm-charts"></a>Helb grafikleri
 
-Azure Container Registry için depoları barındırabilir [Helm grafikleri](https://helm.sh/), hızlı bir şekilde yönetmek ve Kubernetes için uygulamaları dağıtmak için kullanılan bir paketleme biçimi. [Helm istemci](https://docs.helm.sh/using_helm/#installing-helm) 2.11.0 sürümü veya üzeri desteklenir.
+Azure Container Registry, Kubernetes için uygulamaları hızlı bir şekilde yönetmek ve dağıtmak üzere kullanılan bir paketleme biçimi olan [helk grafikleri](https://helm.sh/)için depolar barındırabilir. [Held Client](https://docs.helm.sh/using_helm/#installing-helm) Version 2.11.0 veya üzeri desteklenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Bkz. nasıl [gönderme ve çekme](container-registry-get-started-docker-cli.md) görüntülerini Azure Container Registry ile.
+* Azure Container Registry görüntüleri [gönderme ve çekme](container-registry-get-started-docker-cli.md) hakkında bilgi edinme.
 
-* Kullanım [ACR görevleri](container-registry-tasks-overview.md) oluşturmak ve kapsayıcı görüntüleri test etmek için. 
+* Kapsayıcı görüntülerini derlemek ve test etmek için [ACR görevlerini](container-registry-tasks-overview.md) kullanın. 
 
-* Kullanım [Moby BuildKit](https://github.com/moby/buildkit) derlemek ve paketlemek OCI biçimde kapsayıcılar için.
+* Kapsayıcıları OCı biçiminde derlemek ve paketlemek için [Moby BuildKit](https://github.com/moby/buildkit) ' i kullanın.
 
-* Ayarlanmış bir [Helm deposu](container-registry-helm-repos.md) Azure Container Registry'de barındırılan. 
+* Azure Container Registry barındırılan bir [Held deposu](container-registry-helm-repos.md) ayarlayın. 
 
 

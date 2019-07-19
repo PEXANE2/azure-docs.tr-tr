@@ -1,6 +1,6 @@
 ---
-title: Kullanıcıların tarayıcı olmayan cihazlarda oturum açmak için Microsoft kimlik platformu kullan | Azure
-description: Cihaz kodu verme kullanan katıştırılmış ve tarayıcı olmayan kimlik doğrulaması akışlar oluşturun.
+title: Tarayıcıda daha az cihazda oturum açmak için Microsoft Identity platform 'u kullanın | Mavisi
+description: Cihaz kodu vermeyi kullanarak gömülü ve tarayıcı tarafından daha az kimlik doğrulama akışları oluşturun.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -17,47 +17,47 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e92e4d0e296e83b413cfd2a67041a5749c16699e
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 274c4e89ff3f996cc71cdacdfb7b5b72e813ae4b
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482226"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297653"
 ---
-# <a name="microsoft-identity-platform-and-the-oauth-20-device-code-flow"></a>Microsoft kimlik platformu ve OAuth 2.0 cihaz kod akışı
+# <a name="microsoft-identity-platform-and-the-oauth-20-device-code-flow"></a>Microsoft Identity platform ve OAuth 2,0 cihaz kod akışı
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
-Microsoft kimlik platformu destekleyen [cihaz kodu verme](https://tools.ietf.org/html/draft-ietf-oauth-device-flow-12), giriş kısıtlı cihazları akıllı TV gibi IOT cihaz veya yazıcı oturum açmalarını sağlar.  Bu akış etkinleştirmek için cihaz tarayıcısında oturum açmak için başka bir cihazda kullanıcı bir Web sayfasını ziyaret edin sahiptir.  Kullanıcı oturum açtıktan sonra cihazın erişim belirteci alma ve gerektiğinde yenileme belirteçlerini kullanabilirsiniz.  
+Microsoft Identity platformu, kullanıcıların akıllı TV, IoT cihazı veya yazıcı gibi giriş kısıtlı cihazlarda oturum açmasına olanak tanıyan [cihaz kodu vermeyi](https://tools.ietf.org/html/draft-ietf-oauth-device-flow-12)destekler.  Bu akışı etkinleştirmek için, cihazda kullanıcının oturum açmasını sağlamak üzere başka bir cihazdaki tarayıcıda bir Web sayfasını ziyaret ettiği bir cihaz vardır.  Kullanıcı oturum açtıktan sonra cihaz, erişim belirteçlerini alabilir ve belirteçleri gerektiği şekilde yenileyebilir.  
 
 > [!IMPORTANT]
-> Şu anda Microsoft kimlik platformu uç noktası yalnızca Azure AD kiracıları, ancak değil kişisel hesaplar için cihaz akışını destekler.  Kiracı olarak ayarlanmış bir uç nokta kullanmanız gerekir yani veya `organizations` uç noktası.  Bu destek yakında etkinleştirilecek. 
+> Şu anda, Microsoft Identity platform uç noktası yalnızca Azure AD kiracılarının cihaz akışını destekler, ancak kişisel hesaplara yönelik değildir.  Bu, bir kiracı veya `organizations` uç nokta olarak ayarlanmış bir uç nokta kullanmanız gerektiği anlamına gelir.  Bu destek yakında etkinleştirilecek. 
 >
-> Bir Azure AD kiracısına davet kişisel hesaplar, cihaz akış grant, ancak yalnızca Kiracı bağlamında kullanmanız mümkün olacaktır.
+> Bir Azure AD kiracısına davet edilen kişisel hesaplar cihaz akışı iznini yalnızca kiracı bağlamında kullanabilir.
 >
-> Ek bir not olarak `verification_uri_complete` yanıt alanı dahil değil veya şu anda desteklenmiyor.  
+> Ek bir not olarak, `verification_uri_complete` yanıt alanı şu anda dahil değildir veya desteklenmez.  
 
 > [!NOTE]
-> Microsoft kimlik platformu uç nokta, tüm Azure Active Directory senaryolarını ve özelliklerini desteklemez. Microsoft kimlik platformu uç noktasını kullanması gerekip gerekmediğini belirlemek için aşağıdaki hakkında bilgi edinin: [Microsoft Identity platform sınırlamaları](active-directory-v2-limitations.md).
+> Microsoft Identity platform uç noktası, tüm Azure Active Directory senaryolarını ve özelliklerini desteklemez. Microsoft Identity platform uç noktasını kullanmanız gerekip gerekmediğini öğrenmek için [Microsoft Identity platform sınırlamaları](active-directory-v2-limitations.md)hakkında bilgi edinin.
 
 ## <a name="protocol-diagram"></a>Protokol diyagramı
 
-Cihazın tamamını kod akışı, sonraki diyagrama benzer. Bu makaledeki adımların her biri açıklanmaktadır.
+Tüm cihaz kod akışı, sonraki diyagrama benzer şekilde görünür. Bu makalenin ilerleyen kısımlarında bulunan adımların her birini açıklıyoruz.
 
 ![Cihaz kod akışı](./media/v2-oauth2-device-code/v2-oauth-device-flow.svg)
 
 ## <a name="device-authorization-request"></a>Cihaz yetkilendirme isteği
 
-İstemci kimlik doğrulama sunucusu için kimlik doğrulaması'nı başlatmak için kullanılan bir cihaz ve kullanıcı kodu ile ilk işaretlemeniz gerekir. İstemci bu istekten toplar `/devicecode` uç noktası. Bu istekte istemcinin kullanıcıdan almak için gerekli olan izinleri de içermelidir. Bu istek gönderilir andan itibaren kullanıcının oturum açmak için yalnızca 15 dakika sahip (normal değeri `expires_in`), bu nedenle yalnızca kullanıcının oturum açmak hazır olduklarını istendiğinde bu isteği yapmak.
+İstemcinin, kimlik doğrulamasını başlatmak için kullanılan bir cihaz ve Kullanıcı kodu için kimlik doğrulama sunucusunu denetlemesi gerekir. İstemci bu isteği `/devicecode` uç noktadan toplar. Bu istekte, istemci ayrıca kullanıcıdan almaları gereken izinleri de içermelidir. Bu isteğin gönderildiği andan itibaren, kullanıcının oturum açması için yalnızca 15 dakika sürer (için `expires_in`normal değer), bu nedenle yalnızca Kullanıcı oturum açmaya hazırsanız bu isteği yapın.
 
 > [!TIP]
-> Postman içinde bu isteğin yürütülmesi deneyin!
-> [![Bu isteği Postman içinde çalıştırmayı deneyin](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> Bu isteği Postman 'da yürütmeyi deneyin!
+> [![Bu isteği Postman 'da çalıştırmayı deneyin](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 ```
 // Line breaks are for legibility only.
 
-POST https://login.microsoftonline.com/{tenant}/devicecode
+POST https://login.microsoftonline.com/{tenant}/oauth2/v2.0/devicecode
 Content-Type: application/x-www-form-urlencoded
 
 client_id=6731de76-14a6-49ae-97bc-6eba6914391e
@@ -67,28 +67,28 @@ scope=user.read%20openid%20profile
 
 | Parametre | Koşul | Açıklama |
 | --- | --- | --- |
-| `tenant` | Gerekli |İzni istemek için istediğiniz dizinin Kiracı. Bu GUID veya kolay adı biçiminde olabilir.  |
-| `client_id` | Gerekli | **Uygulama (istemci) kimliği** , [Azure portalında – uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) uygulamanıza atanan deneyimi. |
-| `scope` | Önerilen | Boşlukla ayrılmış bir listesini [kapsamları](v2-permissions-and-consent.md) onay kullanıcıya istiyor.  |
+| `tenant` | Gerekli |İzin istemek istediğiniz dizin kiracısı. Bu, GUID veya kolay ad biçiminde olabilir.  |
+| `client_id` | Gerekli | [Azure Portal – uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyiminin uygulamanıza atandığı **uygulama (istemci) kimliği** . |
+| `scope` | Önerilen | Kullanıcının onay vermesini istediğiniz [kapsamların](v2-permissions-and-consent.md) , boşlukla ayrılmış bir listesi.  |
 
-### <a name="device-authorization-response"></a>Cihaz kimlik doğrulama yanıtı
+### <a name="device-authorization-response"></a>Cihaz yetkilendirme yanıtı
 
-Başarılı yanıt, oturum açmak izin vermek için gerekli bilgileri içeren bir JSON nesnesi olur.  
+Başarılı bir yanıt, kullanıcının oturum açmasını sağlamak için gerekli bilgileri içeren bir JSON nesnesi olacaktır.  
 
 | Parametre | Biçimi | Açıklama |
 | ---              | --- | --- |
-|`device_code`     | String | Yetkilendirme sunucusu ile istemci arasında oturum doğrulamak için kullanılan bir uzun dize. İstemci, yetkilendirme sunucusundan erişim belirteci istemek için bu parametreyi kullanır. |
-|`user_code`       | String | İkincil bir cihazda oturum tanımlamak için kullanılan kullanıcı için gösterilen bir kısa dize.|
-|`verification_uri`| URI | Kullanıcı Git ile URI `user_code` oturum açmak için. |
-|`expires_in`      | int | Saniye önce `device_code` ve `user_code` süresi dolar. |
-|`interval`        | int | İstemci yoklama istekleri arasında beklemesi gereken saniye sayısı. |
-| `message`        | String | Kullanıcı için yönergeler insanlar tarafından okunabilen bir dize. Bu dahil ederek yerelleştirilebilen bir **sorgu parametresi** istek formunun `?mkt=xx-XX`, uygun dil kültür kodu doldurma. |
+|`device_code`     | Dize | İstemci ile yetkilendirme sunucusu arasındaki oturumu doğrulamak için kullanılan uzun bir dize. İstemci, yetkilendirme sunucusundan erişim belirtecini istemek için bu parametreyi kullanır. |
+|`user_code`       | Dize | Bir ikincil cihazda oturumu tanımlamak için kullanılan kullanıcıya gösterilen kısa bir dize.|
+|`verification_uri`| URI | Kullanıcının oturum açmak için uygulamasına `user_code` gitmesi gereken URI. |
+|`expires_in`      | int | `device_code` Ve`user_code` süresi dolmadan önce geçmesi gereken saniye sayısı. |
+|`interval`        | int | İstemcinin yoklama istekleri arasında beklemesi gereken saniye sayısı. |
+| `message`        | Dize | Kullanıcı yönergelerine sahip, insan tarafından okunabilen bir dize. Bu, formun `?mkt=xx-XX`isteğine bir **sorgu parametresi** eklenerek, uygun dil kültür kodu doldurularak yerelleştirilebilecek. |
 
-## <a name="authenticating-the-user"></a>Kullanıcı kimlik doğrulaması
+## <a name="authenticating-the-user"></a>Kullanıcının kimliğini doğrulama
 
-Alma sonra `user_code` ve `verification_uri`, istemci bu kullanıcı için bunları cep telefonu veya bilgisayar tarayıcı ile oturum açması söyleyen görüntüler.  İstemci görüntülemek için bir QR kodu veya benzer bir mekanizma ayrıca kullanabilirsiniz `verfication_uri_complete`, girme adım alacağınız `user_code` kullanıcı.
+`user_code` Ve`verification_uri`aldıktan sonra istemci bunları kullanıcıya görüntüler ve bunları mobil telefonlarını veya bilgisayar tarayıcısını kullanarak oturum açmasını ister.  Ayrıca, istemci, Kullanıcı `verfication_uri_complete` `user_code` için girilme adımını alacak bir QR kodu veya benzer bir mekanizma kullanarak öğesini görüntüleyebilir.
 
-Kullanıcı, kimlik doğrulaması sırasında `verification_uri`, istemci yoklama `/token` istenen belirteç kullanmaya yönelik uç nokta `device_code`.
+Kullanıcı, `verification_uri`üzerinde kimlik doğrulaması yaparken, istemci, istenen belirtecin `/token` uç noktasını kullanarak `device_code`yoklamalıdır.
 
 ``` 
 POST https://login.microsoftonline.com/tenant/oauth2/v2.0/token
@@ -101,24 +101,24 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8
 
 | Parametre | Gerekli | Açıklama|
 | -------- | -------- | ---------- |
-| `grant_type` | Gerekli | olmalıdır `urn:ietf:params:oauth:grant-type:device_code`|
-| `client_id`  | Gerekli | Eşleşmelidir `client_id` ilk istekte kullanılan. |
-| `device_code`| Gerekli | `device_code` Cihaz yetkilendirme isteğine döndürdü.  |
+| `grant_type` | Gerekli | Olmalıdır`urn:ietf:params:oauth:grant-type:device_code`|
+| `client_id`  | Gerekli | İlk istekte `client_id` kullanılan ile aynı olmalıdır. |
+| `device_code`| Gerekli | Cihaz yetkilendirme isteğinde döndürüldü. `device_code`  |
 
-### <a name="expected-errors"></a>Beklenen hataları
+### <a name="expected-errors"></a>Beklenen hatalar
 
-Cihaz kod akışını yoklama Protokolü olduğundan, istemci kimlik doğrulaması kullanıcı bitmeden önce hataları almayı gerekir.  
+Cihaz kod akışı bir yoklama protokolüdür, bu nedenle kullanıcının kimlik doğrulaması tamamlanmadan önce hata alması beklenir.  
 
 | Hata | Açıklama | İstemci eylemi |
 | ------ | ----------- | -------------|
-| `authorization_pending` | Kullanıcı kimlik doğrulaması tamamlanmadı ancak Akış iptal edilmemiş. | İstekten sonra yineleyin en az `interval` saniye. |
-| `authorization_declined` | Son kullanıcı yetkilendirme isteği reddedildi.| Yoklama durdurun ve kimliği doğrulanmamış bir duruma geri döndürebilir.  |
-| `bad_verification_code`| `device_code` Gönderilen `/token` değildi uç nokta tanınan. | İstemci doğru gönderdiğini doğrulayın `device_code` istek. |
-| `expired_token` | En az `expires_in` saniye geçtikten ve kimlik doğrulama artık bu mümkün `device_code`. | Yoklama durdurun ve kimliği doğrulanmamış bir duruma geri döndürebilir. |
+| `authorization_pending` | Kullanıcı kimlik doğrulamasını tamamlamadı, ancak akışı iptal edilmedi. | İsteği en az `interval` saniye sonra tekrarlayın. |
+| `authorization_declined` | Son Kullanıcı Yetkilendirme isteğini reddetti.| Yoklamayı durdurun ve kimliği doğrulanmamış bir duruma dönün.  |
+| `bad_verification_code`| Uçnoktaya`/token`gönderilentanınmadı. `device_code` | İstemcinin istekte doğru `device_code` şekilde gönderdiğini doğrulayın. |
+| `expired_token` | En az `expires_in` saniye geçti ve kimlik doğrulaması artık bu `device_code`ile mümkün değil. | Yoklamayı durdurun ve kimliği doğrulanmamış bir duruma dönün. |
 
-### <a name="successful-authentication-response"></a>Başarılı kimlik doğrulaması yanıtını
+### <a name="successful-authentication-response"></a>Başarılı kimlik doğrulama yanıtı
 
-Başarılı bir token yanıt şöyle görünecektir:
+Başarılı bir belirteç yanıtı şöyle görünür:
 
 ```json
 {
@@ -133,11 +133,11 @@ Başarılı bir token yanıt şöyle görünecektir:
 
 | Parametre | Biçimi | Açıklama |
 | --------- | ------ | ----------- |
-| `token_type` | String| Her zaman "Bearer. |
-| `scope` | Ayrılmış boşluk dizeleri | Bu, bir erişim belirteci döndürdüyse kapsamlar için erişim belirteci geçerliyse listeler. |
-| `expires_in`| int | Dahil edilen erişim belirtecinin saniye için geçerlidir. |
-| `access_token`| Donuk dize | Çıkarılan [kapsamları](v2-permissions-and-consent.md) , istendi.  |
-| `id_token`   | JWT | Verilen if özgün `scope` parametresi dahil `openid` kapsam.  |
-| `refresh_token` | Donuk dize | Verilen if özgün `scope` parametresi dahil `offline_access`.  |
+| `token_type` | Dize| Always "taşıyıcı. |
+| `scope` | Boşlukla ayrılmış dizeler | Erişim belirteci döndürülürse, bu, erişim belirtecinin geçerli olduğu kapsamları listeler. |
+| `expires_in`| int | Dahil edilen erişim belirtecinin geçerli olması için geçmesi gereken saniye sayısı. |
+| `access_token`| Donuk dize | İstenen [kapsamlar](v2-permissions-and-consent.md) için verildi.  |
+| `id_token`   | JWT | Özgün `scope` parametre`openid` kapsamı içeriyorsa verildi.  |
+| `refresh_token` | Donuk dize | Özgün `scope` parametre dahil `offline_access`ise verildi.  |
 
-Yenileme belirtecinin yeni erişim belirteçleri almak ve yenileme belirteçlerini belirtilmiştir aynı akışı kullanarak kullanabileceğiniz [OAuth kod flow belgeleri](v2-oauth2-auth-code-flow.md#refresh-the-access-token).  
+Yenileme belirtecini, [OAuth kod akışı belgelerinde](v2-oauth2-auth-code-flow.md#refresh-the-access-token)belgelenen akışı kullanarak yeni erişim belirteçleri elde etmek ve belirteçleri yenilemek için kullanabilirsiniz.  
