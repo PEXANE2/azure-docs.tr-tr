@@ -1,6 +1,6 @@
 ---
-title: Öğretici - Azure Active Directory B2C kiracısı oluşturma
-description: Azure portalını kullanarak bir Azure Active Directory B2C kiracısı oluşturarak, uygulamalarınızı kaydetmek için hazırlamayı öğrenin.
+title: Öğretici-Azure Active Directory B2C kiracı oluşturma
+description: Azure portal kullanarak Azure Active Directory B2C kiracı oluşturarak uygulamalarınızı kaydetmeye nasıl hazırlanacağınızı öğrenin.
 services: B2C
 author: mmacy
 manager: celestedg
@@ -10,62 +10,62 @@ ms.topic: conceptual
 ms.date: 06/07/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 711b9152f9f3fa1b3573e39d1950f18b628c268a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ce389d1f434fb0eb37413873b02e3ddfff8f7fba
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67056327"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849387"
 ---
-# <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Öğretici: Azure Active Directory B2C kiracısı oluşturma
+# <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Öğretici: Azure Active Directory B2C kiracı oluşturma
 
-Uygulamalarınızı Azure Active Directory (Azure AD) B2C ile etkileşim kurabilmesi yönettiğiniz bir kiracıda kayıtlı olmaları gerekir.
+Uygulamalarınızın Azure Active Directory (Azure AD) B2C ile etkileşime geçmesini sağlamak için, yönettiğiniz bir kiracıda kayıtlı olmaları gerekir.
 
 Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure AD B2C kiracısı oluşturma
-> * Kiracı aboneliğinize bağlayın
+> * Kiracınızı aboneliğinize bağlama
 
-Sonraki öğreticide bir uygulamayı kaydetme öğrenin.
+Bir uygulamayı sonraki öğreticide nasıl kaydedeceğinizi öğrenirsiniz.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="create-an-azure-ad-b2c-tenant"></a>Azure AD B2C kiracısı oluşturma
 
 1. [Azure Portal](https://portal.azure.com/) oturum açın.
-2. Aboneliğinizi içeren dizine kullandığınızdan emin olun. Tıklayın **dizin ve abonelik filtresi** üst menüden, ardından aboneliğinizi içeren dizini seçin. Bu Azure AD B2C kiracınızı içerecek farklı dizindir.
+2. Aboneliğinizi içeren dizini kullandığınızdan emin olun. Üst menüdeki **Dizin ve abonelik filtresi** ' ne tıklayın, ardından aboneliğinizi içeren dizini seçin. Bu dizin Azure AD B2C kiracınızı içerecek olan dizinden farklıdır.
 
-    ![Abonelik dizinine geçin](./media/tutorial-create-tenant/switch-directory-subscription.PNG)
+    ![Abonelik kiracısı seçiliyken dizin ve abonelik filtresi](./media/tutorial-create-tenant/switch-directory-subscription.PNG)
 
-3. Seçin **kaynak Oluştur** Azure portalının sol üst köşedeki içinde.
-4. Arayın ve seçin **Active Directory B2C**ve ardından **Oluştur**.
-5. Seçin **yeni bir Azure AD B2C Kiracısı oluşturma** bir kuruluş adı ve ilk etki alanı adı girin. (Bunu daha sonra değiştirilemez) ülke/bölge seçin ve ardından **Oluştur**.
+3. Azure portal, sol üst köşedeki **kaynak oluştur ' a** tıklayın.
+4. **Active Directory B2C**bulun ve seçin ve ardından **Oluştur**' a tıklayın.
+5. **Yeni Azure AD B2C kiracı oluştur ' a** tıklayın ve bir kuruluş adı ve ilk etki alanı adı girin. Ülke/bölge seçin (daha sonra değiştirilemez) ve ardından **Oluştur**' a tıklayın.
 
-    İlk etki alanı adı, kiracınızın adının bir parçası olarak kullanılır. Bu örnekte, Kiracı addır *contoso0926Tenant.onmicrosoft.com*:
+    İlk etki alanı adı, kiracı adınızın bir parçası olarak kullanılır. Bu örnekte, kiracı adı *contoso0926Tenant.onmicrosoft.com*' dir:
 
-    ![Kiracı oluşturma](./media/tutorial-create-tenant/create-tenant.PNG)
+    ![B2C kiracı oluşturma sayfası Azure portal](./media/tutorial-create-tenant/create-tenant.PNG)
 
-6. Üzerinde **yeni B2C Kiracısı oluşturun veya mevcut Kiracıya bağlantı** sayfasında **Azure Aboneliğimi bağlantı var olan bir Azure AD B2C Kiracısına**.
+6. **Yenı B2C kiracısı oluştur veya mevcut kiracıya bağla** sayfasında, **mevcut bir Azure AD B2C kiracıyı Azure aboneliğime bağla**' yı seçin.
 
-    Oluşturduğunuz Kiracı seçin ve aboneliğinizi seçin.
+    Oluşturduğunuz kiracıyı seçin ve aboneliğinizi seçin.
 
-    Kaynak grubunu seçin **Yeni Oluştur**. Kiracı içeren, konumu seçin ve ardından kaynak grubu için bir ad girin **Oluştur**.
-1. Yeni Kiracı kullanmaya başlamak için Azure AD B2C kiracınızı tıklayarak içeren dizine kullandığınızdan emin olun **dizin ve abonelik filtresi** üst menü ve onu içeren dizine seçme.
+    Kaynak grubu için **Yeni oluştur**' u seçin. Kiracıyı içerecek kaynak grubu için bir ad girin, konumu seçin ve ardından **Oluştur**' a tıklayın.
+1. Yeni kiracınızı kullanmaya başlamak için üst menüdeki **Dizin ve abonelik filtresi** ' ne tıklayarak ve onu içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
 
-    İlk olarak yeni Azure B2C kiracınızın listede görmüyorsanız, tarayıcı pencerenizi yenileyin ve ardından **dizin ve abonelik filtresi** üst menüde.
+    İlk olarak listede yeni Azure B2C kiracınızı görmüyorsanız tarayıcı pencerenizi yenileyin, ardından üst menüdeki **Dizin ve abonelik filtresini** yeniden seçin.
 
-    ![Dizin Kiracı anahtarı](./media/tutorial-create-tenant/switch-directories.PNG)
+    ![B2C kiracısı seçiliyken dizin ve abonelik filtresi](./media/tutorial-create-tenant/switch-directories.PNG)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, öğrendiğiniz nasıl yapılır:
+Bu makalede, şu şekilde nasıl yapılacağını öğrendiniz:
 
 > [!div class="checklist"]
 > * Azure AD B2C kiracısı oluşturma
-> * Kiracı aboneliğinize bağlayın
+> * Kiracınızı aboneliğinize bağlama
 
-Ardından, yeni kiracınızda bir web uygulaması kaydetme konusunda bilgi edinin.
+Ardından, yeni kiracınızda bir Web uygulamasını nasıl kaydedeceğinizi öğrenin.
 
 > [!div class="nextstepaction"]
-> [Uygulamalarınızı kayıt >](tutorial-register-applications.md)
+> [Uygulamalarınızı kaydedin >](tutorial-register-applications.md)

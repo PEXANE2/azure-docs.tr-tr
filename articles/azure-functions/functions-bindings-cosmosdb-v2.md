@@ -1,5 +1,5 @@
 ---
-title: İşlevleri için Azure Cosmos DB bağlamaları 2.x
+title: 2\. x Işlevleri için Azure Cosmos DB bağlamaları
 description: Azure Cosmos DB Tetikleyicileri ve bağlamaları Azure işlevleri'nde nasıl kullanılacağını anlayın.
 services: functions
 documentationcenter: na
@@ -11,35 +11,35 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 1a505fc5ef09fe9842e72488843155af7c0888cb
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: b0f8b5efcf7e22a3f9d98d5c812ba4821a8b2124
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67480810"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68254777"
 ---
-# <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>Azure işlevleri için Azure Cosmos DB bağlamaları 2.x
+# <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>Azure Işlevleri için Azure Cosmos DB bağlamaları 2. x
 
-> [!div class="op_single_selector" title1="Kullanmakta olduğunuz Azure işlevleri çalışma zamanı sürümünü seçin: "]
+> [!div class="op_single_selector" title1="Kullanmakta olduğunuz Azure Işlevleri çalışma zamanının sürümünü seçin: "]
 > * [Sürüm 1](functions-bindings-cosmosdb.md)
 > * [Sürüm 2](functions-bindings-cosmosdb-v2.md)
 
-Bu makalede ile nasıl çalışılacağı açıklanmaktadır [Azure Cosmos DB](../cosmos-db/serverless-computing-database.md) Azure işlevleri'nde bağlamaları 2.x. Tetiklemek, giriş ve çıktı bağlaması Azure Cosmos DB için Azure işlevleri destekler.
+Bu makalede, Azure Işlevleri 2. x içinde [Azure Cosmos DB](../cosmos-db/serverless-computing-database.md) bağlamalarıyla nasıl çalışılacağı açıklanmaktadır. Tetiklemek, giriş ve çıktı bağlaması Azure Cosmos DB için Azure işlevleri destekler.
 
 > [!NOTE]
-> Bu makalede içindir [Azure işlevleri sürüm 2.x](functions-versions.md).  Bu bağlamaları işlevlerini kullanma hakkında daha fazla bilgi için 1.x bkz [Azure işlevleri için Azure Cosmos DB bağlamaları 1.x](functions-bindings-cosmosdb.md).
+> Bu makale, [Azure işlevleri sürüm 2. x](functions-versions.md)içindir.  Bu bağlamaları 1. x Işlevleri içinde kullanma hakkında daha fazla bilgi için bkz. [Azure işlevleri için Azure Cosmos DB bağlamaları 1. x](functions-bindings-cosmosdb.md).
 >
-> Bu bağlama başlangıçta DocumentDB olarak adlandırılıyordu. İşlevleri sürüm 2.x, tetikleyici, bağlamalar ve paket tüm Cosmos DB adlandırılır.
+> Bu bağlama başlangıçta DocumentDB olarak adlandırılıyordu. Işlevler sürüm 2. x, tetikleyici, bağlamalar ve paketin adı Cosmos DB.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="supported-apis"></a>Desteklenen API'ler
+## <a name="supported-apis"></a>Desteklenen API 'Ler
 
 [!INCLUDE [SQL API support only](../../includes/functions-cosmosdb-sqlapi-note.md)]
 
 ## <a name="packages---functions-2x"></a>Paketler - 2.x işlevleri
 
-Azure Cosmos DB bağlamaları için işlevleri sürüm 2.x altında sağlanmıştır [Microsoft.Azure.WebJobs.Extensions.CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB) NuGet paketi sürüm 3.x. Bağlamaları için kaynak kodu konusu [azure webjobs sdk uzantıları](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/) GitHub deposu.
+2\. x Işlevleri için Azure Cosmos DB bağlamaları [Microsoft. Azure. WebJobs. Extensions. CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB) NuGet paketi, sürüm 3. x içinde verilmiştir. Bağlamaları için kaynak kodu konusu [azure webjobs sdk uzantıları](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/) GitHub deposu.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -57,7 +57,7 @@ Dile özgü örneğe bakın:
 * [JavaScript](#trigger---javascript-example)
 * [Python](#trigger---python-example)
 
-Tetikleyici örnekler atla
+Tetikleyici örneklerini atla
 
 ### <a name="trigger---c-example"></a>Tetikleyici - C# örneği
 
@@ -93,7 +93,7 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-Tetikleyici örnekler atla
+Tetikleyici örneklerini atla
 
 ### <a name="trigger---c-script-example"></a>Tetikleyici - C# betiği örneği
 
@@ -131,7 +131,7 @@ C# betik kodunu şu şekildedir:
     }
 ```
 
-Tetikleyici örnekler atla
+Tetikleyici örneklerini atla
 
 ### <a name="trigger---javascript-example"></a>Tetikleyici - JavaScript örneği
 
@@ -164,7 +164,7 @@ JavaScript kod aşağıdaki gibidir:
 
 ### <a name="trigger---java-example"></a>Tetikleyici - Java örnek
 
-Aşağıdaki örnek, bağlama bir Cosmos DB tetikleyicisi gösterir *function.json* dosyası ve bir [Java işlevi](functions-reference-java.md) bağlama kullanan. İşlevi, eklemeleri olduğunda karmaşıktır veya belirtilen veritabanı ve koleksiyonu güncelleştirir.
+Aşağıdaki örnek, *function. JSON* dosyasında Cosmos DB tetikleyici bağlamayı ve bağlamayı kullanan bir [Java işlevini](functions-reference-java.md) gösterir. Bu işlev, belirtilen veritabanında ve koleksiyonda ekleme veya güncelleştirme olduğunda dahil edilir.
 
 ```json
 {
@@ -196,14 +196,14 @@ Java kod aşağıdaki gibidir:
 ```
 
 
-İçinde [Java Çalışma Zamanı Kitaplığı işlevleri](/java/api/overview/azure/functions/runtime), kullanın `@CosmosDBTrigger` ek açıklama parametreleri değeri, Cosmos DB'den gelmesi.  Bu ek açıklama yerel Java türler, pojo'ları veya isteğe bağlı kullanarak boş değer atanabilir değer ile kullanılabilir<T>.
+[Java işlevleri çalışma zamanı kitaplığı](/java/api/overview/azure/functions/runtime)'nda, değeri Cosmos DB `@CosmosDBTrigger` geldiği parametrelerde ek açıklamayı kullanın.  Bu ek açıklama, isteğe bağlı\<T > kullanan yerel Java türleri, POJOs veya null atanabilir değerlerle kullanılabilir.
 
 
-Tetikleyici örnekler atla
+Tetikleyici örneklerini atla
 
-### <a name="trigger---python-example"></a>Tetikleyici - Python örnek
+### <a name="trigger---python-example"></a>Trigger-Python örneği
 
-Aşağıdaki örnek, bağlama bir Cosmos DB tetikleyicisi gösterir. bir *function.json* dosyası ve bir [funkce Pythonu](functions-reference-python.md) bağlama kullanan. Cosmos DB kayıt değiştirildiğinde işlevi günlük iletisi yazar.
+Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir Cosmos DB tetikleyicisi bağlamasını ve bağlamayı kullanan bir [Python işlevini](functions-reference-python.md) gösterir. Cosmos DB kayıt değiştirildiğinde işlevi günlük iletisi yazar.
 
 Veri bağlama işte *function.json* dosyası:
 
@@ -220,7 +220,7 @@ Veri bağlama işte *function.json* dosyası:
 }
 ```
 
-Python kod aşağıdaki gibidir:
+Python kodu aşağıda verilmiştir:
 
 ```python
     import logging
@@ -232,7 +232,7 @@ Python kod aşağıdaki gibidir:
             logging.info('First document Id modified: %s', documents[0]['id'])
 ```
 
-## <a name="trigger---c-attributes"></a>Tetikleyici - C# öznitelikleri
+## <a name="trigger---c-attributes"></a>Tetikleyici- C# öznitelikler
 
 İçinde [C# sınıfı kitaplıklar](functions-dotnet-class-library.md), kullanın [CosmosDBTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/Trigger/CosmosDBTriggerAttribute.cs) özniteliği.
 
@@ -274,9 +274,9 @@ Aşağıdaki tabloda ayarladığınız bağlama yapılandırma özelliklerini a�
 |**leaseAcquireInterval**| **leaseAcquireInterval**| (İsteğe bağlı) Ayarlandığında, bu, milisaniye cinsinden aralığı bölümler bilinen barındırma örnekleri arasında eşit olarak dağıtılmış, işlem için bir görev başlatabilir tanımlar. 13000 (13 saniye) varsayılandır.
 |**leaseExpirationInterval**| **leaseExpirationInterval**| (İsteğe bağlı) Ayarlandığında, bu, milisaniye cinsinden kira bir bölüm temsil eden bir kira alınmış aralığı tanımlar. Kira bu aralıkta yenilenmezse, süresi dolacak şekilde neden olur ve bölüm sahipliğini başka bir örneğine taşınır. 60000 (60 saniye) varsayılandır.
 |**leaseRenewInterval**| **leaseRenewInterval**| (İsteğe bağlı) Ayarlandığında, bu, milisaniye cinsinden geçerli bir örnek tarafından tutulan bölümler için tüm kira yenileme aralığı tanımlar. 17000 (17 saniye) varsayılandır.
-|**checkpointFrequency**| **checkpointFrequency**| (İsteğe bağlı) Ayarlandığında, bu, milisaniye cinsinden kira kontrol noktaları arasındaki süreyi tanımlar. Her zaman her işlev çağrısından sonra varsayılandır.
+|**checkpointFrequency**| **checkpointFrequency**| (İsteğe bağlı) Ayarlandığında, bu, milisaniye cinsinden kira kontrol noktaları arasındaki süreyi tanımlar. Varsayılan değer her bir Işlev çağrısından sonra olur.
 |**maxItemsPerInvocation**| **maxItemsPerInvocation**| (İsteğe bağlı) Ayarlandığında, işlev çağrısı alınan öğeleri en uzun süreyi özelleştirir.
-|**startFromBeginning**| **startFromBeginning**| (İsteğe bağlı) Ayarlandığında, değişiklik geçmişini geçerli zamanı yerine koleksiyonunun başından itibaren okumaya başlamak için tetikleyici söyler. Bu, yalnızca tetikleyici başladığında, sonraki çalıştırmaları, kontrol noktaları gibi zaten depolanmış ilk kez çalışır. Bu ayar `true` olduğunda önceden oluşturulmuş kiraları etkisi yoktur.
+|**Startfromstarted**| **Startfromstarted**| Seçim Ayarlandığında, tetikleyicisine, geçerli saat yerine koleksiyonun geçmişinden başlayarak değişiklikleri okumaya başlamasını söyler. Bu, sonraki çalışmalarda olduğu gibi, yalnızca tetikleyici başlatıldığında çalışır ve kontrol noktaları zaten depolanır. Zaten oluşturulan kiralamalar `true` varsa bunu olarak ayarlamanın hiçbir etkisi olmaz.
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -387,7 +387,7 @@ namespace CosmosDBSamplesV2
 Aşağıdaki örnekte gösterildiği bir [C# işlevi](functions-dotnet-class-library.md) , tek bir belge alır. İşlevi, aranacak kimliği belirtmek için bir sorgu dizesi kullanan bir HTTP isteği tarafından tetiklenir. Kimliği almak için kullanılan bir `ToDoItem` belge belirtilen veritabanı ve koleksiyonu.
 
 >[!NOTE]
->HTTP sorgu dizesi parametresi büyük/küçük harf duyarlıdır.
+>HTTP sorgu dizesi parametresi, büyük/küçük harfe duyarlıdır.
 >
 
 ```cs
@@ -480,7 +480,7 @@ namespace CosmosDBSamplesV2
 
 Aşağıdaki örnekte gösterildiği bir [C# işlevi](functions-dotnet-class-library.md) , tek bir belge alır. İşlevi, kullandığı veri aramak için kimliği belirtmek için yol bir HTTP isteği tarafından tetiklenir. Kimliği almak için kullanılan bir `ToDoItem` belge belirtilen veritabanı ve koleksiyonu.
 
-Örnek bir bağlama ifadesinde kullanma işlemini gösterir `SqlQuery` parametresi. Rota verilerini geçirebilirsiniz `SqlQuery` ancak şu anda, gösterildiği gibi parametre [sorgu dizesi değerlerini geçirilemez](https://github.com/Azure/azure-functions-host/issues/2554#issuecomment-392084583).
+Örnek, bir bağlama ifadesinin `SqlQuery` parametresini nasıl kullanacağınızı gösterir. Veri `SqlQuery` yolu parametresini gösterildiği gibi parametreye geçirebilirsiniz, ancak şu anda [sorgu dizesi değerlerini geçiremezsiniz](https://github.com/Azure/azure-functions-host/issues/2554#issuecomment-392084583).
 
 
 ```cs
@@ -990,7 +990,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, Docume
 
 ### <a name="input---javascript-examples"></a>Giriş - JavaScript örnekleri
 
-Bu bölüm, çeşitli kaynaklardan bir kimliği değerini belirterek tek bir belge okuma aşağıdaki örnekleri içerir:
+Bu bölüm, çeşitli kaynaklardan bir KIMLIK değeri belirterek tek bir belgeyi okuyan aşağıdaki örnekleri içerir:
 
 * [Kuyruk tetikleyicisi, JSON Kimliğinden Ara](#queue-trigger-look-up-id-from-json-javascript)
 * [HTTP tetikleyicisi, Sorgu dizesinden Kimliği Ara](#http-trigger-look-up-id-from-query-string-javascript)
@@ -1196,9 +1196,9 @@ JavaScript kod aşağıdaki gibidir:
 
 [Giriş örnekleri atla](#input---attributes)
 
-### <a name="input---python-examples"></a>Giriş - Python örnekleri
+### <a name="input---python-examples"></a>Input-Python örnekleri
 
-Bu bölüm, çeşitli kaynaklardan bir kimliği değerini belirterek tek bir belge okuma aşağıdaki örnekleri içerir:
+Bu bölüm, çeşitli kaynaklardan bir KIMLIK değeri belirterek tek bir belgeyi okuyan aşağıdaki örnekleri içerir:
 
 * [Kuyruk tetikleyicisi, JSON Kimliğinden Ara](#queue-trigger-look-up-id-from-json-python)
 * [HTTP tetikleyicisi, Sorgu dizesinden Kimliği Ara](#http-trigger-look-up-id-from-query-string-python)
@@ -1207,9 +1207,9 @@ Bu bölüm, çeşitli kaynaklardan bir kimliği değerini belirterek tek bir bel
 
 [Giriş örnekleri atla](#input---attributes)
 
-#### <a name="queue-trigger-look-up-id-from-json-python"></a>Kuyruk tetikleyicisi, JSON (Python) Kimliğinden Ara
+#### <a name="queue-trigger-look-up-id-from-json-python"></a>Kuyruk tetikleyicisi, JSON 'dan KIMLIK arama (Python)
 
-Aşağıdaki örnek, bir Cosmos DB giriş bağlama gösterir. bir *function.json* dosyası ve bir [funkce Pythonu](functions-reference-python.md) bağlama kullanan. İşlevi, tek bir belge okur ve belgenin metin değerini güncelleştirir.
+Aşağıdaki örnek, bir *function. JSON* dosyasında bir Cosmos DB girişi bağlamasını ve bağlamayı kullanan bir [Python işlevini](functions-reference-python.md) gösterir. İşlevi, tek bir belge okur ve belgenin metin değerini güncelleştirir.
 
 Veri bağlama işte *function.json* dosyası:
 
@@ -1238,7 +1238,7 @@ Veri bağlama işte *function.json* dosyası:
 
 [Yapılandırma](#input---configuration) bölümde, bu özellikleri açıklanmaktadır.
 
-Python kod aşağıdaki gibidir:
+Python kodu aşağıda verilmiştir:
 
 ```python
 import azure.functions as func
@@ -1253,9 +1253,9 @@ def main(queuemsg: func.QueueMessage, documents: func.DocumentList) -> func.Docu
 
 [Giriş örnekleri atla](#input---attributes)
 
-#### <a name="http-trigger-look-up-id-from-query-string-python"></a>HTTP tetikleyicisi, kimliği arama Sorgu dizesinden (Python)
+#### <a name="http-trigger-look-up-id-from-query-string-python"></a>HTTP tetikleyicisi, sorgu dizesinden KIMLIĞI ara (Python)
 
-Aşağıdaki örnekte gösterildiği bir [funkce Pythonu](functions-reference-python.md) , tek bir belge alır. İşlevi, aranacak kimliği belirtmek için bir sorgu dizesi kullanan bir HTTP isteği tarafından tetiklenir. Kimliği almak için kullanılan bir `ToDoItem` belge belirtilen veritabanı ve koleksiyonu.
+Aşağıdaki örnekte, tek bir belgeyi alan bir [Python işlevi](functions-reference-python.md) gösterilmektedir. İşlevi, aranacak kimliği belirtmek için bir sorgu dizesi kullanan bir HTTP isteği tarafından tetiklenir. Kimliği almak için kullanılan bir `ToDoItem` belge belirtilen veritabanı ve koleksiyonu.
 
 İşte *function.json* dosyası:
 
@@ -1292,7 +1292,7 @@ Aşağıdaki örnekte gösterildiği bir [funkce Pythonu](functions-reference-py
 }
 ```
 
-Python kod aşağıdaki gibidir:
+Python kodu aşağıda verilmiştir:
 
 ```python
 import logging
@@ -1311,9 +1311,9 @@ def main(req: func.HttpRequest, todoitems: func.DocumentList) -> str:
 
 [Giriş örnekleri atla](#input---attributes)
 
-#### <a name="http-trigger-look-up-id-from-route-data-python"></a>HTTP tetikleyicisi, kimliği bir ara rota verilerinden (Python)
+#### <a name="http-trigger-look-up-id-from-route-data-python"></a>HTTP tetikleyicisi, rota verilerinden KIMLIK arama (Python)
 
-Aşağıdaki örnekte gösterildiği bir [funkce Pythonu](functions-reference-python.md) , tek bir belge alır. İşlevi, aranacak kimliği belirtmek için bir sorgu dizesi kullanan bir HTTP isteği tarafından tetiklenir. Kimliği almak için kullanılan bir `ToDoItem` belge belirtilen veritabanı ve koleksiyonu.
+Aşağıdaki örnekte, tek bir belgeyi alan bir [Python işlevi](functions-reference-python.md) gösterilmektedir. İşlevi, aranacak kimliği belirtmek için bir sorgu dizesi kullanan bir HTTP isteği tarafından tetiklenir. Kimliği almak için kullanılan bir `ToDoItem` belge belirtilen veritabanı ve koleksiyonu.
 
 İşte *function.json* dosyası:
 
@@ -1351,7 +1351,7 @@ Aşağıdaki örnekte gösterildiği bir [funkce Pythonu](functions-reference-py
 }
 ```
 
-Python kod aşağıdaki gibidir:
+Python kodu aşağıda verilmiştir:
 
 ```python
 import logging
@@ -1369,9 +1369,9 @@ def main(req: func.HttpRequest, todoitems: func.DocumentList) -> str:
 
 [Giriş örnekleri atla](#input---attributes)
 
-#### <a name="queue-trigger-get-multiple-docs-using-sqlquery-python"></a>Tetikleyici kuyruk, SqlQuery (Python) kullanarak birden çok belgeleri edinin
+#### <a name="queue-trigger-get-multiple-docs-using-sqlquery-python"></a>Kuyruk tetikleyicisi, SqlQuery (Python) kullanarak birden çok belge alma
 
-Aşağıdaki örnek, bir Azure Cosmos DB giriş bağlama gösterir. bir *function.json* dosyası ve bir [funkce Pythonu](functions-reference-python.md) bağlama kullanan. İşlevi, belirtilen sorgu parametrelerini özelleştirmek için bir kuyruk tetikleyicisi kullanarak bir SQL sorgusu tarafından birden çok belge alır.
+Aşağıdaki örnek, bir *function. JSON* dosyasında bir Azure Cosmos DB girişi bağlamasını ve bağlamayı kullanan bir [Python işlevini](functions-reference-python.md) gösterir. İşlevi, belirtilen sorgu parametrelerini özelleştirmek için bir kuyruk tetikleyicisi kullanarak bir SQL sorgusu tarafından birden çok belge alır.
 
 Kuyruk tetikleyicisi parametre sağlar `departmentId`. Bir kuyruk iletisinin `{ "departmentId" : "Finance" }` Finans departmanı için tüm kayıtları döndürür.
 
@@ -1391,7 +1391,7 @@ Veri bağlama işte *function.json* dosyası:
 
 [Yapılandırma](#input---configuration) bölümde, bu özellikleri açıklanmaktadır.
 
-Python kod aşağıdaki gibidir:
+Python kodu aşağıda verilmiştir:
 
 ```python
 import azure.functions as func
@@ -1452,15 +1452,15 @@ Bu örnekte gerektiren bir `project.json` belirten dosyası `FSharp.Interop.Dyna
 
 Eklemek için bir `project.json` bkz [ F# paket Yönetimi](functions-reference-fsharp.md#package).
 
-### <a name="input---java-examples"></a>Giriş - Java örnekleri
+### <a name="input---java-examples"></a>Input-Java örnekleri
 
 Bu bölüm aşağıdaki örnekleri içerir:
 
-* [HTTP tetikleyicisi, sorgu dize - dize parametresi değerinden Kimliği Ara](#http-trigger-look-up-id-from-query-string---string-parameter-java)
-* [HTTP tetikleyicisi, Sorgu dizesinden - POJO'ya parametre Kimliği Ara](#http-trigger-look-up-id-from-query-string---pojo-parameter-java)
+* [HTTP tetikleyicisi, sorgu dizesinden KIMLIĞI ara dize parametresi](#http-trigger-look-up-id-from-query-string---string-parameter-java)
+* [HTTP tetikleyicisi, sorgu dizesinden KIMLIĞI ara-POJO parametresi](#http-trigger-look-up-id-from-query-string---pojo-parameter-java)
 * [HTTP tetikleyicisi, rota verilerinden Kimliği Ara](#http-trigger-look-up-id-from-route-data-java)
 * [HTTP tetikleyicisi, SqlQuery kullanarak rota verilerinden Kimliği Ara](#http-trigger-look-up-id-from-route-data-using-sqlquery-java)
-* [HTTP tetikleyicisi, SqlQuery kullanarak rota verileri, birden çok belgeleri edinin](#http-trigger-get-multiple-docs-from-route-data-using-sqlquery-java)
+* [HTTP tetikleyicisi, SqlQuery kullanarak rota verilerinden birden çok belge alın](#http-trigger-get-multiple-docs-from-route-data-using-sqlquery-java)
 
 Örnekler için basit bir başvuru `ToDoItem` türü:
 
@@ -1485,9 +1485,9 @@ public class ToDoItem {
 }
 ```
 
-#### <a name="http-trigger-look-up-id-from-query-string---string-parameter-java"></a>HTTP tetikleyicisi, kimliği arama Sorgu dizesinden - dize parametresi (Java)
+#### <a name="http-trigger-look-up-id-from-query-string---string-parameter-java"></a>HTTP tetikleyicisi, sorgu dizesinden KIMLIK arama dizesi-dize parametresi (Java)
 
-Aşağıdaki örnek, tek bir belge alır bir Java işlev gösterir. İşlevi, aranacak kimliği belirtmek için bir sorgu dizesi kullanan bir HTTP isteği tarafından tetiklenir. Bu kimliği belirtilen veritabanı ve koleksiyonunu, dize biçiminde bir belge almak için kullanılır.
+Aşağıdaki örnekte, tek bir belgeyi alan bir Java işlevi gösterilmektedir. İşlev, aranacak KIMLIĞI belirtmek için bir sorgu dizesi kullanan bir HTTP isteği tarafından tetiklenir. Bu KIMLIK, dize biçiminde belirtilen veritabanından ve koleksiyondan bir belge almak için kullanılır.
 
 ```java
 public class DocByIdFromQueryString {
@@ -1529,11 +1529,11 @@ public class DocByIdFromQueryString {
 }
  ```
 
-İçinde [Java Çalışma Zamanı Kitaplığı işlevleri](/java/api/overview/azure/functions/runtime), kullanın `@CosmosDBInput` ek açıklamayı işlevi parametre değeri, Cosmos DB'den gelmesi.  Bu ek açıklama yerel Java türler, pojo'ları veya isteğe bağlı kullanarak boş değer atanabilir değer ile kullanılabilir<T>.
+[Java işlevleri çalışma zamanı kitaplığı](/java/api/overview/azure/functions/runtime)'nda, değeri Cosmos DB `@CosmosDBInput` gelen işlev parametrelerinde ek açıklamayı kullanın.  Bu ek açıklama, isteğe bağlı\<T > kullanan yerel Java türleri, POJOs veya null atanabilir değerlerle kullanılabilir.
 
-#### <a name="http-trigger-look-up-id-from-query-string---pojo-parameter-java"></a>HTTP tetikleyicisi, kimliği arama Sorgu dizesinden - POJO'ya parametre (Java)
+#### <a name="http-trigger-look-up-id-from-query-string---pojo-parameter-java"></a>HTTP tetikleyicisi, sorgu dizesinden KIMLIĞI ara-POJO parametresi (Java)
 
-Aşağıdaki örnek, tek bir belge alır bir Java işlev gösterir. İşlevi, aranacak kimliği belirtmek için bir sorgu dizesi kullanan bir HTTP isteği tarafından tetiklenir. Bu kimlik, bir belge belirtilen veritabanı ve koleksiyonu almak için kullanılır. Belgeyi daha sonra örneğine dönüştürülür ```ToDoItem``` daha önce oluşturduğunuz ve bağımsız değişken olarak işleve geçirilen POJO'ya.
+Aşağıdaki örnekte, tek bir belgeyi alan bir Java işlevi gösterilmektedir. İşlev, aranacak KIMLIĞI belirtmek için bir sorgu dizesi kullanan bir HTTP isteği tarafından tetiklenir. Bu KIMLIK, belirtilen veritabanından ve koleksiyondan bir belgeyi almak için kullanılır. Daha sonra belge daha önce oluşturulan ```ToDoItem``` Pojo örneğine dönüştürülür ve işleve bağımsız değişken olarak geçirilir.
 
 ```java
 public class DocByIdFromQueryStringPojo {
@@ -1573,9 +1573,9 @@ public class DocByIdFromQueryStringPojo {
 }
  ```
 
-#### <a name="http-trigger-look-up-id-from-route-data-java"></a>HTTP tetikleyicisi, kimliği bir ara rota verilerinden (Java)
+#### <a name="http-trigger-look-up-id-from-route-data-java"></a>HTTP tetikleyicisi, rota verilerinden KIMLIK arama (Java)
 
-Aşağıdaki örnek, tek bir belge alır bir Java işlev gösterir. İşlevi, aranacak kimliği belirtmek için bir rota parametresini kullanan bir HTTP isteği tarafından tetiklenir. Olarak döndürmeden kimliği bir belge belirtilen veritabanı ve koleksiyonu almak için kullanılır bir ```Optional<String>```.
+Aşağıdaki örnekte, tek bir belgeyi alan bir Java işlevi gösterilmektedir. İşlev, aranacak KIMLIĞI belirtmek için yol parametresi kullanan bir HTTP isteği tarafından tetiklenir. Bu KIMLIK, belirtilen veritabanından ve koleksiyondan ```Optional<String>```bir belgeyi almak için kullanılır.
 
 ```java
 public class DocByIdFromRoute {
@@ -1618,9 +1618,9 @@ public class DocByIdFromRoute {
 }
  ```
 
-#### <a name="http-trigger-look-up-id-from-route-data-using-sqlquery-java"></a>HTTP tetikleyicisi, SqlQuery (Java) kullanarak rota verilerinden Kimliği Ara
+#### <a name="http-trigger-look-up-id-from-route-data-using-sqlquery-java"></a>HTTP tetikleyicisi, SqlQuery (Java) kullanarak rota verilerinden KIMLIK arama
 
-Aşağıdaki örnek, tek bir belge alır bir Java işlev gösterir. İşlevi, aranacak kimliği belirtmek için bir rota parametresini kullanan bir HTTP isteği tarafından tetiklenir. Dönüştürme sonucu kimliği bir belge belirtilen veritabanı ve koleksiyonu almak için kullanılan,'ı kümesine bir ```ToDoItem[]```, bu yana ölçütlerini bağlı olarak çok sayıda belge döndürülebilir.
+Aşağıdaki örnekte, tek bir belgeyi alan bir Java işlevi gösterilmektedir. İşlev, aranacak KIMLIĞI belirtmek için yol parametresi kullanan bir HTTP isteği tarafından tetiklenir. Bu kimlik, sorgu ölçütlerine bağlı olarak çok sayıda belge döndürüldüğünden, belirtilen veritabanından ve koleksiyondan ```ToDoItem[]```bir belgeyi almak için kullanılır.
 
 ```java
 public class DocByIdFromRouteSqlQuery {
@@ -1660,9 +1660,9 @@ public class DocByIdFromRouteSqlQuery {
 }
  ```
 
-#### <a name="http-trigger-get-multiple-docs-from-route-data-using-sqlquery-java"></a>HTTP tetikleyicisi, SqlQuery (Java) kullanarak rota verileri, birden çok belgeleri edinin
+#### <a name="http-trigger-get-multiple-docs-from-route-data-using-sqlquery-java"></a>HTTP tetikleyicisi, SqlQuery (Java) kullanarak rota verilerinden birden çok belge edinme
 
-Aşağıdaki örnek bir Java işlev gösteren birden çok belge. İşlev bir rota parametresini kullanan bir HTTP isteği tarafından tetiklenip tetiklenmediğini ```desc``` dize için arama belirtmek için ```description``` alan. Arama terimi koleksiyonu, sonuç kümesi dönüştürme ve belirtilen veritabanı bir belge koleksiyonu almak için kullanılan bir ```ToDoItem[]``` ve işleve bağımsız değişken olarak geçirme.
+Aşağıdaki örnekte, birden çok belgeyi gösteren bir Java işlevi gösterilmektedir. İşlevi, ```desc``` ```description``` alanında aranacak dizeyi belirtmek için bir Route parametresi kullanan bir http isteği tarafından tetiklenir. Arama terimi, belirtilen veritabanından ve koleksiyondan bir belge koleksiyonunu almak, sonuç kümesini öğesine ```ToDoItem[]``` dönüştürmek ve işleve bağımsız değişken olarak geçirmek için kullanılır.
 
 ```java
 public class DocsFromRouteSqlQuery {
@@ -1704,7 +1704,7 @@ public class DocsFromRouteSqlQuery {
 
 ## <a name="input---attributes"></a>Giriş - öznitelikleri
 
-İçinde [C# sınıfı kitaplıklar](functions-dotnet-class-library.md), kullanın [CosmosDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) özniteliği.
+[ C# Sınıf kitaplıkları](functions-dotnet-class-library.md)' nda [cosmosdb](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) özniteliğini kullanın.
 
 Özniteliğin oluşturucusu, koleksiyon adı ve veritabanı adını alır. Bu ayarlar ve yapılandırabileceğiniz diğer özellikleri hakkında daha fazla bilgi için bkz. [aşağıdaki yapılandırma bölümüne](#input---configuration).
 
@@ -1730,7 +1730,7 @@ Aşağıdaki tabloda ayarladığınız bağlama yapılandırma özelliklerini a�
 
 İçinde C# ve F# İşlevler, işlev giriş belgesi adlandırılmış giriş aracılığıyla yapılan tüm değişiklikler başarıyla çıktığında parametreleri otomatik olarak kalıcı olur.
 
-JavaScript işlevleri'nde güncelleştirmeleri otomatik olarak işlevi çıkıştan sonra duruma getirilmez. Bunun yerine, `context.bindings.<documentName>In` ve `context.bindings.<documentName>Out` güncelleştirmeleri yapmak. JavaScript örneğe bakın.
+JavaScript işlevleri'nde güncelleştirmeleri otomatik olarak işlevi çıkıştan sonra duruma getirilmez. Bunun yerine, `context.bindings.<documentName>In` ve `context.bindings.<documentName>Out` güncelleştirmeleri yapmak. Bkz. JavaScript örneği.
 
 ## <a name="output"></a>Output
 
@@ -2114,17 +2114,17 @@ Bu örnekte gerektiren bir `project.json` belirten dosyası `FSharp.Interop.Dyna
 
 Eklemek için bir `project.json` bkz [ F# paket Yönetimi](functions-reference-fsharp.md#package).
 
-### <a name="output---java-examples"></a>Çıkış - Java örnekleri
+### <a name="output---java-examples"></a>Output-Java örnekleri
 
-* [Kuyruk tetikleyicisi, dönüş değeri aracılığıyla veritabanı iletiyi kaydet](#queue-trigger-save-message-to-database-via-return-value-java)
-* [HTTP tetikleyicisi, dönüş değeri aracılığıyla veritabanına bir belge kaydetme](#http-trigger-save-one-document-to-database-via-return-value-java)
-* [HTTP tetikleyicisi, bir belge OutputBinding aracılığıyla veritabanına kaydetme](#http-trigger-save-one-document-to-database-via-outputbinding-java)
-* [HTTP tetikleyicisi, birden çok belge OutputBinding veritabanına kaydetme](#http-trigger-save-multiple-documents-to-database-via-outputbinding-java)
+* [Kuyruk tetikleyicisi, dönüş değeri aracılığıyla iletiyi veritabanına kaydet](#queue-trigger-save-message-to-database-via-return-value-java)
+* [HTTP tetikleyicisi, bir belgeyi veritabanına dönüş değeri aracılığıyla Kaydet](#http-trigger-save-one-document-to-database-via-return-value-java)
+* [HTTP tetikleyicisi, OutputBinding aracılığıyla bir belgeyi veritabanına kaydetme](#http-trigger-save-one-document-to-database-via-outputbinding-java)
+* [HTTP tetikleyicisi, OutputBinding aracılığıyla birden çok belgeyi veritabanına kaydetme](#http-trigger-save-multiple-documents-to-database-via-outputbinding-java)
 
 
-#### <a name="queue-trigger-save-message-to-database-via-return-value-java"></a>Kuyruk tetikleyicisi, dönüş değeri (Java) aracılığıyla veritabanına ileti Kaydet
+#### <a name="queue-trigger-save-message-to-database-via-return-value-java"></a>Kuyruk tetikleyicisi, dönüş değeri aracılığıyla iletiyi veritabanına Kaydet (Java)
 
-Aşağıdaki örnek, bir belge verilerle bir veritabanı için kuyruk depolama alanında bir ileti ekler bir Java işlev gösterir.
+Aşağıdaki örnek, kuyruk depolama alanındaki bir iletiden alınan verilerle bir belgeyi veritabanına ekleyen bir Java işlevini gösterir.
 
 ```java
 @FunctionName("getItem")
@@ -2142,9 +2142,9 @@ public String cosmosDbQueryById(
    }
 ```
 
-#### <a name="http-trigger-save-one-document-to-database-via-return-value-java"></a>HTTP tetikleyicisi, dönüş değeri (Java) aracılığıyla veritabanına bir belge kaydetme
+#### <a name="http-trigger-save-one-document-to-database-via-return-value-java"></a>HTTP tetikleyicisi, bir belgeyi veritabanına dönüş değeri (Java) yoluyla kaydetme
 
-Aşağıdaki örnek bir Java işlev imzası ile ek açıklamalı gösterir ```@CosmosDBOutput``` ve dönüş değeri ```String```. İşlevin döndürdüğü JSON belgesi, karşılık gelen CosmosDB koleksiyona otomatik olarak yazılır.
+Aşağıdaki örnek, imzasına açıklama eklenmiş ```@CosmosDBOutput``` olan ve türünde ```String```dönüş değeri olan bir Java işlevini gösterir. İşlevin döndürdüğü JSON belgesi, ilgili CosmosDB koleksiyonuna otomatik olarak yazılır.
 
 ```java
     @FunctionName("WriteOneDoc")
@@ -2179,9 +2179,9 @@ Aşağıdaki örnek bir Java işlev imzası ile ek açıklamalı gösterir ```@C
     }
 ```
 
-#### <a name="http-trigger-save-one-document-to-database-via-outputbinding-java"></a>HTTP tetikleyicisi, bir belge OutputBinding (Java) aracılığıyla veritabanına kaydetme
+#### <a name="http-trigger-save-one-document-to-database-via-outputbinding-java"></a>HTTP tetikleyicisi, OutputBinding aracılığıyla bir belgeyi veritabanına kaydetme (Java)
 
-Aşağıdaki örnek, bir belge CosmosDB Yazar bir Java işlev gösterir. bir ```OutputBinding<T>``` çıkış parametresi. Bu kurulum, bu olduğuna dikkat edin ```outputItem``` ile Açıklama gereken parametre ```@CosmosDBOutput```, işlev imzası yok. Kullanarak ```OutputBinding<T>``` da işlevi çağıran bir JSON veya XML belgesi gibi farklı bir değer döndüren olanak tanıyan belge adı CosmosDB olarak yazmak için bağlama yararlanmak işlevinizi olanak tanır.
+Aşağıdaki örnek, bir ```OutputBinding<T>``` çıktı parametresi aracılığıyla cosmosdb 'ye bir belge yazan bir Java işlevini gösterir. Bu kurulumda ```outputItem``` , işlev imzasıyla değil, ile ```@CosmosDBOutput```açıklanması gereken parametredir. Kullanmak ```OutputBinding<T>``` , işlevinizin, bir JSON veya XML belgesi gibi, işleve farklı bir değer döndürmeye izin verirken bir belgeyi cosmosdb 'ye yazmak için bağlamadan faydalanmasını sağlar.
 
 ```java
     @FunctionName("WriteOneDocOutputBinding")
@@ -2223,9 +2223,9 @@ Aşağıdaki örnek, bir belge CosmosDB Yazar bir Java işlev gösterir. bir ```
     }
 ```
 
-#### <a name="http-trigger-save-multiple-documents-to-database-via-outputbinding-java"></a>HTTP tetikleyicisi, birden çok belge OutputBinding (Java) veritabanına kaydetme
+#### <a name="http-trigger-save-multiple-documents-to-database-via-outputbinding-java"></a>HTTP tetikleyicisi, birden çok belgeyi OutputBinding (Java) yoluyla veritabanına kaydetme
 
-Aşağıdaki örnek, birden çok belge CosmosDB yazan bir Java işlev gösterir. bir ```OutputBinding<T>``` çıkış parametresi. Bu kurulum, bu olduğuna dikkat edin ```outputItem``` ile Açıklama gereken parametre ```@CosmosDBOutput```, işlev imzası yok. Çıkış parametresi ```outputItem``` listesine sahip ```ToDoItem``` nesneler, şablon parametre türü olarak. Kullanarak ```OutputBinding<T>``` da işlevi çağıran bir JSON veya XML belgesi gibi farklı bir değer döndüren olanak tanıyan belgeleri adı CosmosDB olarak yazmak için bağlama yararlanmak işlevinizi olanak tanır.
+Aşağıdaki örnek, bir ```OutputBinding<T>``` çıkış parametresi aracılığıyla cosmosdb 'ye birden çok belge yazan bir Java işlevini gösterir. Bu kurulumda ```outputItem``` , işlev imzasıyla değil, ile ```@CosmosDBOutput```açıklanması gereken parametredir. Output parametresi, ```outputItem``` şablon parametresi türü olarak ```ToDoItem``` nesnelerin bir listesini içerir. Kullanmak ```OutputBinding<T>``` , işlevinizin, bir JSON veya XML belgesi gibi, işleve farklı bir değer döndürmeye izin verirken cosmosdb 'ye belge yazmak için bağlamadan faydalanmasını sağlar.
 
 ```java
     @FunctionName("WriteMultipleDocsOutputBinding")
@@ -2272,12 +2272,12 @@ Aşağıdaki örnek, birden çok belge CosmosDB yazan bir Java işlev gösterir.
     }
 ```
 
-İçinde [Java Çalışma Zamanı Kitaplığı işlevleri](/java/api/overview/azure/functions/runtime), kullanın `@CosmosDBOutput` Cosmos DB'ye yazılacak parametre üzerindeki ek açıklama.  Ek açıklama parametre türü olmalıdır ```OutputBinding<T>```, yerel bir Java türü veya bir POJO'ya T olduğu.
+[Java işlevleri çalışma zamanı kitaplığı](/java/api/overview/azure/functions/runtime)'nda, Cosmos DB yazılacak `@CosmosDBOutput` parametrelerde ek açıklamayı kullanın.  Ek açıklama parametre türü olmalıdır ```OutputBinding<T>```; burada T, yerel bir Java türü ya da Pojo.
 
 
 ## <a name="output---attributes"></a>Çıkış - öznitelikleri
 
-İçinde [C# sınıfı kitaplıklar](functions-dotnet-class-library.md), kullanın [CosmosDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/master/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) özniteliği.
+[ C# Sınıf kitaplıkları](functions-dotnet-class-library.md)' nda [cosmosdb](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/master/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) özniteliğini kullanın.
 
 Özniteliğin oluşturucusu, koleksiyon adı ve veritabanı adını alır. Bu ayarlar ve yapılandırabileceğiniz diğer özellikleri hakkında daha fazla bilgi için bkz. [çıkışı - yapılandırma](#output---configuration). İşte bir `CosmosDB` özniteliği örnek bir yöntem imzası:
 
@@ -2291,7 +2291,7 @@ Aşağıdaki örnek, birden çok belge CosmosDB yazan bir Java işlev gösterir.
     }
 ```
 
-Çıkış - tam bir örnek için bkz. C# örnek.
+Tam bir örnek için bkz. Çıkış- C# örnek.
 
 ## <a name="output---configuration"></a>Çıkış - yapılandırma
 
@@ -2347,9 +2347,9 @@ Bu bölümde sürümünde bu bağlama için kullanılabilen genel yapılandırma
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
-|GatewayMode|Ağ geçidi|Azure Cosmos DB hizmetine bağlanırken işlev tarafından kullanılan bağlantı modu. Seçenekler `Direct` ve `Gateway`|
-|Protocol|HTTPS|İşlev tarafından kullanılan bağlantı protokolü, Azure Cosmos DB hizmetine bağlantı.  Okuma [burada her iki modun açıklaması](../cosmos-db/performance-tips.md#networking)| 
-|leasePrefix|yok|Bir uygulamadaki tüm işlevleri arasında kullanılacak kira öneki.| 
+|GatewayMode|Ağ geçidi|Azure Cosmos DB hizmetine bağlanırken işlev tarafından kullanılan bağlantı modu. `Direct` Seçenekler ve`Gateway`|
+|Protocol|'Dir|Azure Cosmos DB hizmetine bağlantı sırasında işlev tarafından kullanılan bağlantı protokolü.  [Her iki modun açıklaması için buraya](../cosmos-db/performance-tips.md#networking) okuyun| 
+|leasePrefix|yok|Bir uygulamadaki tüm işlevler genelinde kullanılacak kira öneki.| 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

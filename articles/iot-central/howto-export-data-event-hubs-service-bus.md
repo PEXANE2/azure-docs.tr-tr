@@ -1,120 +1,120 @@
 ---
-title: Azure Event Hubs ve Azure Service Bus verilerinizi dışarı aktarma | Microsoft Docs
-description: Azure Event Hubs'a ve Azure Service Bus için Azure IOT Central uygulamanızdan veri dışarı aktarma
+title: Verilerinizi Azure Event Hubs 'ye aktarın ve Azure Service Bus | Microsoft Docs
+description: Azure IoT Central uygulamanızdan Azure Event Hubs ve Azure Service Bus verileri dışarı aktarma
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 03/20/2019
+ms.date: 07/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: 78edeb0c418f5c426771d241464d389f8a632e96
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c6f10352646350152c5aac795885231697e81fe7
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65463946"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67850201"
 ---
-# <a name="export-your-data-in-azure-iot-central"></a>Azure IOT Central verilerinizi dışarı aktarma
+# <a name="export-your-data-in-azure-iot-central"></a>Azure IoT Central verilerinizi dışarı aktarın
 
 *Bu konu, Yöneticiler için geçerlidir.*
 
-Bu makalede sürekli veri dışa aktarma Özelliği Azure IOT Central verilerinizi kendi değerlerinizle dışarı aktarmak için nasıl kullanılacağını açıklar **Azure Event Hubs**, ve **Azure Service Bus** örnekleri. Dışarı aktarabilirsiniz **ölçümleri**, **cihazları**, ve **cihaz şablonları** Orta Gecikmeli kanaldan öngörü ve analizler için kendi hedef. Bu, Azure Stream analytics'te özel kurallar tetikleme, Azure Logic apps'te özel iş akışları tetikleyen veya veri dönüştürme ve Azure işlevleri aracılığıyla iletmeden içerir. 
+Bu makalede verilerinizi kendi **azure Event Hubs**ve **Azure Service Bus** örneklerine aktarmak için Azure IoT Central sürekli veri dışa aktarma özelliğinin nasıl kullanılacağı açıklanır. Normal yol öngörüleri ve analizler için **ölçümleri**, **cihazları**ve **cihaz şablonlarını** kendi Hedefinizdeki dışa aktarabilirsiniz. Bu, Azure Stream Analytics özel kuralları tetiklemeyi, Azure Logic Apps özel iş akışlarını tetiklemeyi veya verileri dönüştürmeyi ve Azure Işlevleri aracılığıyla geçirmeyi içerir. 
 
 > [!Note]
-> Bir kez daha, verileri sürekli dışarı aktarma üzerinde etkinleştirdiğinizde, ileriye doğru o andan itibaren yalnızca verileri alın. Şu anda, verileri sürekli dışarı aktarma kapalıydı ne zaman bir kez verileri alınamıyor. Daha fazla geçmiş verileri korumak için verileri sürekli dışarı aktarma üzerinde erken açın.
+> Bir kez daha, sürekli veri dışarı aktarmayı açtığınızda, yalnızca o andan itibaren verileri alırsınız. Şu anda, sürekli veri dışa aktarma kapalı olduğunda veriler bir saat için alınamaz. Daha fazla geçmiş verileri sürdürmek için sürekli veri dışa aktarmayı erken açın.
 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- IOT Central uygulamanızda yönetici olmanız gerekir
+- IoT Central uygulamanızda yönetici olmanız gerekir
 
-## <a name="set-up-export-destination"></a>Dışarı aktarma hedef ayarlayın
+## <a name="set-up-export-destination"></a>Dışarı aktarma hedefini ayarla
 
-Vermek için mevcut bir olay hub'ları / Service Bus sahip değilseniz, şu adımları izleyin:
+Uygulamasına dışarı aktarmak için mevcut bir Event Hubs/Service Bus yoksa, aşağıdaki adımları izleyin:
 
-## <a name="create-event-hubs-namespace"></a>Event Hubs ad alanı oluşturma
+## <a name="create-event-hubs-namespace"></a>Event Hubs ad alanı oluştur
 
-1. Oluşturma bir [Azure portalında yeni Event Hubs ad alanı](https://ms.portal.azure.com/#create/Microsoft.EventHub). Daha fazla bilgi [Azure Event Hubs belgeleri](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).
+1. [Azure Portal yeni bir Event Hubs ad alanı](https://ms.portal.azure.com/#create/Microsoft.EventHub)oluşturun. [Azure Event Hubs docs](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)'ta daha fazla bilgi edinebilirsiniz.
 2. Bir abonelik seçin. 
 
     > [!Note] 
-    > Artık olan diğer abonelikler için verileri dışarı aktarabilirsiniz **aynı** bir Kullandıkça Öde IOT Central uygulamanız için. Bu durumda bir bağlantı dizesi kullanarak bağlanır.
-3. Event Hubs ad alanınız içinde bir olay hub'ı oluşturun. Ad alanınıza gidin ve seçin **+ olay hub'ı** en üstünde bir olay hub'ı örneği oluşturulamadı.
+    > Artık verileri, Kullandıkça Öde IoT Central uygulamanızla **aynı olmayan** diğer aboneliklerle dışarı aktarabilirsiniz. Bu durumda bir bağlantı dizesi kullanarak bağlanacaksınız.
+3. Event Hubs ad alanında bir olay hub 'ı oluşturun. Ad alanına gidin ve bir olay hub 'ı örneği oluşturmak için en üstteki **+ Olay Hub 'ını** seçin.
 
-## <a name="create-service-bus-namespace"></a>Service Bus ad alanı oluşturma
+## <a name="create-service-bus-namespace"></a>Service Bus ad alanı oluştur
 
-1. Oluşturma bir [Azure portalında yeni hizmet veri yolu ad alanı](https://ms.portal.azure.com/#create/Microsoft.ServiceBus.1.0.5) . Daha fazla bilgi [Azure Service Bus belgeleri](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-create-namespace-portal).
+1. [Azure Portal yeni bir Service Bus ad alanı](https://ms.portal.azure.com/#create/Microsoft.ServiceBus.1.0.5) oluşturun. [Azure Service Bus docs](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-create-namespace-portal)' de daha fazla bilgi edinebilirsiniz.
 2. Bir abonelik seçin. 
 
     > [!Note] 
-    > Artık olan diğer abonelikler için verileri dışarı aktarabilirsiniz **aynı** bir Kullandıkça Öde IOT Central uygulamanız için. Bu durumda bir bağlantı dizesi kullanarak bağlanır.
+    > Artık verileri, Kullandıkça Öde IoT Central uygulamanızla **aynı olmayan** diğer aboneliklerle dışarı aktarabilirsiniz. Bu durumda bir bağlantı dizesi kullanarak bağlanacaksınız.
 
-3. Service Bus ad alanınıza gidin ve seçin **+ kuyruk** veya **+ konu** en üstünde bir kuyruk veya konuda vermek için oluşturulacak.
+3. Service Bus ad alanına gidin ve en üstteki **+ kuyruk** veya **+ Konu** başlığını seçerek dışarı aktarılacak bir kuyruk veya konu oluşturun.
 
 
-## <a name="set-up-continuous-data-export"></a>Verileri sürekli dışarı aktarma ayarlayın
+## <a name="set-up-continuous-data-export"></a>Sürekli veri dışarı aktarma ayarlama
 
-Verileri dışarı aktarmak için bir olay hub'ları / Service Bus hedef olduğuna göre verileri sürekli dışarı aktarma ' için bu adımları izleyin. 
+Verilerin dışarı aktarılacağı Event Hubs/Service Bus hedefine sahip olduğunuza göre, sürekli veri dışa aktarma ayarlamak için aşağıdaki adımları izleyin. 
 
-1. IOT Central uygulamanız için oturum açın.
+1. IoT Central uygulamanızda oturum açın.
 
-2. Sol menüde **verileri sürekli dışarı aktarma**.
+2. Sol taraftaki menüden **sürekli veri dışarı aktarma**' yı seçin.
 
     > [!Note]
-    > Verileri sürekli dışarı aktarma sol taraftaki menüde görmüyorsanız, yöneticinin uygulamanızda değildir. Verileri dışarı aktarma ' için yöneticinin konuşun.
+    > Sol menüde sürekli veri dışa aktarma görmüyorsanız, uygulamanızda yönetici değilsiniz demektir. Verilerin dışarı aktarılmasını ayarlamak için bir yöneticiye danışın.
 
-    ![Yeni değerinde olay hub'ı oluşturma](media/howto-export-data/export_menu1.png)
+    ![Yeni CDE Olay Hub 'ı oluştur](media/howto-export-data/export_menu1.png)
 
-3. Seçin **+ yeni** sağ üst köşesindeki düğme. Birini **Azure Event Hubs** veya **Azure Service Bus** dışarı aktarma hedefi olarak. 
-
-    > [!NOTE] 
-    > Dışarı aktarmalar uygulama başına en fazla sayısı beştir. 
-
-    ![Yeni verileri sürekli dışarı aktarma oluştur](media/howto-export-data/export_new1.png)
-
-4. Aşağı açılan liste kutusunda, **Event Hubs ad alanı/Service Bus ad alanı**. Son seçenek, listeden seçebilirsiniz **bir bağlantı dizesi girin**. 
+3. Sağ üst köşedeki **+ Yeni** düğmesini seçin. Dışarı aktarmanın hedefi olarak **Azure Event Hubs** veya **Azure Service Bus** birini seçin. 
 
     > [!NOTE] 
-    > Depolama hesapları/Event Hubs ad alanlarını/hizmet veri yolu ad alanları yalnızca göreceksiniz **IOT Central uygulamanız ile aynı abonelikte**. Bu abonelik dışında bir hedefe dışarı aktarmak istiyorsanız seçin **bir bağlantı dizesi girin** ve 5. adıma bakın.
+    > Uygulama başına en fazla dışarı aktarma sayısı beştir. 
+
+    ![Yeni sürekli veri dışa aktarma oluştur](media/howto-export-data/export_new1.png)
+
+4. Aşağı açılan liste kutusunda **Event Hubs ad alanı/Service Bus ad alanını**seçin. Ayrıca, listede **bir bağlantı dizesi girerek**son seçeneği de seçebilirsiniz. 
 
     > [!NOTE] 
-    > 7 günlük deneme uygulamaları, verileri sürekli yapılandırmak için tek yolu dışarı aktarmak için bir bağlantı dizesidir. 7 günlük deneme uygulamalar, ilişkili Azure aboneliği olmadığı için budur.
+    > Depolama hesapları/Event Hubs ad alanları/Service Bus ad alanlarını **IoT Central uygulamanız ile aynı abonelikte**görürsünüz. Bu aboneliğin dışında bir hedefe aktarmak istiyorsanız, **bir bağlantı dizesi girin** ' i seçin ve 5. adıma bakın.
 
-    ![Yeni değerinde olay hub'ı oluşturma](media/howto-export-data/export_create1.png)
+    > [!NOTE] 
+    > 7 günlük deneme uygulamaları için sürekli veri vermeyi yapılandırmanın tek yolu bir bağlantı dizesidir. Bunun nedeni 7 günlük deneme uygulamalarının ilişkili bir Azure aboneliğine sahip olmaması olabilir.
 
-5. (İsteğe bağlı) Seçerseniz, **bir bağlantı dizesi girin**, bağlantı dizenizi yapıştırmak için yeni kutusu görünür. Bağlantı dizesini almak için:
-    - Olay hub'ları veya Service Bus, Azure portalında ad alanına gidin.
-        - Altında **ayarları**seçin **paylaşılan erişim ilkeleri**
-        - Varsayılan seçin **RootManageSharedAccessKey** veya yeni bir tane oluşturun
+    ![Yeni CDE Olay Hub 'ı oluştur](media/howto-export-data/export_create1.png)
+
+5. Seçim **Bir bağlantı dizesi girin**' i seçerseniz, Bağlantı dizenizi yapıştırmanız için yeni bir kutu belirir. İçin bağlantı dizesini almak için:
+    - Event Hubs veya Service Bus, Azure portal ad alanına gidin.
+        - **Ayarlar**altında, **paylaşılan erişim ilkeleri** ' ni seçin.
+        - Varsayılan **RootManageSharedAccessKey** seçin veya yeni bir tane oluşturun
         - Birincil veya ikincil bağlantı dizesini kopyalayın
  
-6. Bir olay hub'ı / kuyruk veya konuda aşağı açılan liste kutusundan seçin.
+6. Açılan liste kutusundan bir olay hub 'ı/kuyruğu veya konu başlığını seçin.
 
-7. Altında **dışarı aktarmak için veri**, her tür ayarlayarak dışarı aktarmak için veri türü belirtin **üzerinde**.
+7. **Dışarı aktarılacak veriler**' in altında, türü **üzerine**ayarlayarak dışarı aktarılacak her bir veri türünü belirtin.
 
-6. Verileri sürekli dışarı aktarma üzerinde etkinleştirmek için emin **verileri dışarı aktarma** olduğu **üzerinde**. **Kaydet**’i seçin.
+6. Sürekli veri dışa aktarmayı açmak için, **veri dışa aktarmanın** **Açık**olduğundan emin olun. **Kaydet**’i seçin.
 
-    ![Yapılandırma verileri sürekli dışarı aktarma](media/howto-export-data/export_list1.png)
+    ![Sürekli veri vermeyi yapılandırma](media/howto-export-data/export_list1.png)
 
-7. Birkaç dakika sonra verilerinizi, seçtiğiniz hedef olarak görünür.
+7. Birkaç dakika sonra verileriniz seçtiğiniz hedefte görüntülenir.
 
 
-## <a name="export-to-azure-event-hubs-and-azure-service-bus"></a>Azure Event Hubs'a ve Azure hizmet veri yolu dışarı aktarma
+## <a name="export-to-azure-event-hubs-and-azure-service-bus"></a>Azure Event Hubs ve Azure Service Bus dışarı aktarma
 
-Olay hub'ı veya Service Bus kuyruğuna veya konusuna neredeyse gerçek zamanlı ölçümler, cihazları ve cihaz şablonları veri aktarılır. Dışarı aktarılan ölçümleri veri iletinin tamamen IOT Central için gönderilen cihazlarınızı yalnızca ölçüleri değerlerini içerir. Dışarı aktarılan cihazlar veri değişiklikleri tüm cihazların ayarları ve özellikleri içerir ve dışarı aktarılan cihaz şablonları tüm cihaz şablonlarına yapılan değişiklikleri içerir. Dışarı aktarılan veriler "body" özelliğine ve JSON biçimindedir.
+Ölçümler, cihazlar ve cihaz şablonları verileri, Olay Hub 'ınıza veya Service Bus kuyruğuna veya konuya neredeyse gerçek zamanlı olarak verilir. Aktarılmış ölçüm verileri, cihazlarınızın yalnızca ölçümlerin değerlerini değil, IoT Central gönderilen iletinin tamamını içerir. Aktarılmış cihazlar verileri tüm cihazların özelliklerine ve ayarlarına yapılan değişiklikleri içerir ve aktarılmış cihaz şablonları tüm cihaz şablonlarında değişiklikler içerir. "Body" özelliği olan ve JSON biçiminde olan veriler.
 
 > [!NOTE]
-> Service Bus, kuyruklar ve konular dışa aktarma hedefi seçerken **oturumları veya yinelenen algılama etkin olmamalıdır**. Bu seçeneklerden birini etkinse, bazı iletiler kuyruğuna veya konusuna geldiğinde olmaz.
+> Dışarı aktarma hedefi olarak bir Service Bus seçerken, kuyruklar ve konuların **oturumları veya yinelenen algılama özelliği etkin olmalıdır**. Bu seçeneklerden biri etkinleştirilirse, bazı iletiler kuyruğunuza veya konuya ulaşmayacaktır.
 
 ### <a name="measurements"></a>Ölçümler
 
-IOT Central bir CİHAZDAN ileti aldıktan sonra yeni bir ileti hızlı bir şekilde aktarılır. Service Bus Event Hubs, dışarı aktarılan her ileti tam ileti JSON biçiminde "body" özelliğine gönderilen cihaz içerir. 
+IoT Central bir cihazdan ileti aldıktan sonra yeni bir ileti hızlı bir şekilde verilir. Event Hubs ve Service Bus içindeki her bir dışarıya gönderilen ileti, cihazın JSON biçimindeki "Body" özelliğinde gönderildiği tam iletiyi içerir. 
 
 > [!NOTE]
-> Ölçümler gönderen cihazları (aşağıdaki bölümlere bakın) cihaz kimlikleri tarafından temsil edilir. Cihazları adlarını almak için cihaz verilerini dışarı aktarma ve her iletinin kullanarak ilişkilendirin **connectionDeviceId** eşleşen **DeviceID** cihaz ileti.
+> Ölçümleri gönderen cihazlar cihaz kimliklerine göre temsil edilir (aşağıdaki bölümlere bakın). Cihazların adlarını almak için, cihaz verilerini dışa aktarın ve cihaz iletisinin **DeviceID** 'Siyle eşleşen **connectiondeviceıd** 'yi kullanarak her bir ileti ile bağıntı kurun.
 
-Aşağıdaki örnekte gösterildiği olay hub'ı veya Service Bus kuyruğuna veya konusuna ölçümleri veriler hakkında bir ileti alındı.
+Aşağıdaki örnek, Olay Hub 'ında veya Service Bus kuyruğu veya konusunda alınan ölçüm verileri hakkında bir ileti gösterir.
 
 ```json
 {
@@ -155,24 +155,24 @@ Aşağıdaki örnekte gösterildiği olay hub'ı veya Service Bus kuyruğuna vey
 
 ### <a name="devices"></a>Cihazlar
 
-Cihaz verilerini içeren iletileri, olay hub'ı veya Service Bus kuyruğuna veya konusuna birkaç dakikada bir kez gönderilir. Bu, birkaç dakikada hakkında ile verileri toplu olarak mesaj ulaşır anlamına gelir.
-- Eklenen yeni cihazları
-- Cihazları değiştirilmiş özellik ve değerlerini ayarlama
+Cihaz verileri içeren iletiler, her birkaç dakikada bir olay hub 'ınıza veya Service Bus kuyruğuna veya konuya gönderilir. Bu, birkaç dakika içinde, bir dizi iletinin bir toplu iş hakkında verilerle birlikte geldiğini
+- Eklenen yeni cihazlar
+- Değiştirilen özellik ve ayar değerleri içeren cihazlar
 
-Her ileti için bir cihaz son dışarı aktarılan yapılacak itibaren bir veya daha fazla değişiklik temsil eder. Her iletiye gönderilen bilgiler içerir:
-- `id` IOT Central'ın aygıt
-- `name` Aygıt
-- `deviceId` gelen [cihaz sağlama hizmeti](https://aka.ms/iotcentraldocsdps)
-- Cihaz şablon bilgisi
+Her ileti, son dışarıya alınan iletiden bu yana bir cihazdaki bir veya daha fazla değişikliği temsil eder. Her iletide gönderilecek bilgiler şunları içerir:
+- `id`IoT Central cihaz
+- `name`Cihazın
+- `deviceId`[cihaz sağlama hizmeti](https://aka.ms/iotcentraldocsdps) 'nden
+- Cihaz şablonu bilgileri
 - Özellik değerleri
 - Ayar değerleri
 
 > [!NOTE]
-> Cihazları son toplu olmayan dışarı beri silindi. Şu anda yok gösterge silinen cihazlar için verilen iletileri.
+> Son Batch, bu yana silinen cihazlar tarafından silindi. Şu anda, silinen cihazlar için, aktarılmış iletilerde hiçbir gösterge yok.
 >
-> Her bir cihaza ait cihaz şablonu cihaz şablon kimliği ile temsil edilir Cihaz şablonunun adını almak için çok cihaz şablonu verileri dışarı aktarma emin olun.
+> Her cihazın ait olduğu cihaz şablonu, bir cihaz şablonu KIMLIĞI ile temsil edilir. Cihaz şablonunun adını almak için, cihaz şablonu verilerini de dışarı aktardığınızdan emin olun.
 
-Aşağıdaki örnek, olay hub'ı veya Service Bus kuyruğuna veya konusuna cihaz verileri hakkında bir ileti gösterir:
+Aşağıdaki örnek, Olay Hub 'ındaki veya Service Bus kuyruğu veya konusunun cihaz verileri hakkında bir ileti gösterir:
 
 
 ```json
@@ -216,22 +216,22 @@ Aşağıdaki örnek, olay hub'ı veya Service Bus kuyruğuna veya konusuna cihaz
 
 ### <a name="device-templates"></a>Cihaz şablonları
 
-Cihaz şablonları verileri içeren iletileri, olay hub'ı veya Service Bus kuyruğuna veya konusuna birkaç dakikada bir kez gönderilir. Bu, birkaç dakikada hakkında ile verileri toplu olarak mesaj ulaşır anlamına gelir.
+Cihaz şablonu verilerini içeren iletiler, her birkaç dakikada bir olay hub 'ınıza veya Service Bus kuyruğuna veya konuya gönderilir. Bu, birkaç dakika içinde, bir dizi iletinin bir toplu iş hakkında verilerle birlikte geldiğini
 - Eklenen yeni cihaz şablonları
-- Cihaz şablonlarıyla değiştirilen ölçümleri, özellik ve tanımları ayarlama
+- Değiştirilen ölçümler, özellik ve ayar tanımlarına sahip cihaz şablonları
 
-Her ileti için cihaz şablonu son dışarı aktarılan yapılacak itibaren bir veya daha fazla değişiklik temsil eder. Her iletiye gönderilen bilgiler içerir:
-- `id` cihaz şablonu
-- `name` cihaz şablonu
-- `version` cihaz şablonu
-- Ölçüm veri türleri ve en düşük/en yüksek değerleri
-- Özellik veri türleri ve varsayılan değerleri
-- Veri türleri ve varsayılan değerleri ayarlama
+Her ileti, son dışarıya alınan iletiden bu yana bir cihaz şablonunda yapılan bir veya daha fazla değişikliği temsil eder. Her iletide gönderilecek bilgiler şunları içerir:
+- `id`cihaz şablonu
+- `name`cihaz şablonu
+- `version`cihaz şablonu
+- Ölçüm veri türleri ve min/max değerleri
+- Özellik veri türleri ve varsayılan değerler
+- Veri türlerini ve varsayılan değerleri ayarlama
 
 > [!NOTE]
-> Bu yana son toplu iş silindi cihaz şablonlarını dışa aktarılmaz. Şu anda yok gösterge silinen cihaz şablonları dışarı aktarılan iletileri.
+> Son Batch 'in aktarılmasından bu yana cihaz şablonları silindi. Şu anda, Silinen cihaz şablonları için, aktarılmış iletilerde hiçbir gösterge yok.
 
-Aşağıdaki örnek, olay hub'ı veya Service Bus kuyruğuna veya konusuna cihaz şablonları verileri hakkında bir ileti gösterir:
+Aşağıdaki örnek, Olay Hub 'ında veya Service Bus kuyruğu veya konusunun cihaz şablonları verileri hakkında bir ileti gösterir:
 
 ```json
 {
@@ -295,7 +295,7 @@ Aşağıdaki örnek, olay hub'ı veya Service Bus kuyruğuna veya konusuna cihaz
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Event Hubs'a ve Azure Service Bus için verilerinizi dışarı aktarma artık bildiğinize göre sonraki adıma devam edin:
+Artık verilerinizi Azure Event Hubs ve Azure Service Bus dışarı aktarmayı öğrenmiş olduğunuza göre, bir sonraki adımla devam edin:
 
 > [!div class="nextstepaction"]
-> [Azure işlevleri'ni tetikleme](howto-trigger-azure-functions.md)
+> [Azure Işlevleri 'ni tetikleme](howto-trigger-azure-functions.md)
