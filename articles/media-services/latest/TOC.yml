@@ -93,12 +93,13 @@
           href: streaming-policy-concept.md
         - name: Akış Uç Noktası hata kodları
           href: streaming-endpoint-error-codes.md
-    - name: Dinamik şifreleme ve anahtar teslimi
+    - name: İçerik koruma
       items:
-        - name: Akış protokolleri ve şifreleme türleri
-          displayName: 'dynamic, encryption, content protection, PlayReady, Widevine, FairPlay'
+        - name: Dinamik şifreleme ve anahtar teslimi
+          displayName: 'content protection, streaming protocols, encryption types, content protection, PlayReady, Widevine, FairPlay'
           href: content-protection-overview.md
-        - name: Erişim denetimiyle çoklu DRM sistemi
+        - name: Çoklu DRM sisteminin tasarımı
+          displayName: 'drm, access control'
           href: design-multi-drm-system-with-access-control.md
         - name: DRM lisansları
           items:

@@ -179,7 +179,7 @@ Uyarı eylemi kaynakların özellikleri aşağıdaki tablolarda açıklanmışt�
 | Type | Evet | Eylem türü.  Bu **uyarı** uyarı eylemleri için. |
 | Name | Evet | Uyarı görünen adı.  Bu uyarı kuralı için konsolunda görüntülenen addır. |
 | Description | Hayır | Uyarının isteğe bağlı bir açıklama. |
-| Severity | Evet | Önem derecesi uyarı kaydını aşağıdaki değerleri:<br><br> **Kritik**<br>**Uyarı**<br>**Bilgilendirme**
+| severity | Evet | Önem derecesi uyarı kaydını aşağıdaki değerleri:<br><br> **Kritik**<br>**Uyarı**<br>**Bilgilendirme**
 
 
 #### <a name="threshold"></a>Eşik

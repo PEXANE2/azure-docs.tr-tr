@@ -111,7 +111,7 @@ Otomatik ölçeklendirme ayarı şema göstermek için aşağıdaki otomatik öl
 | rule | scaleAction | Kuralın metricTrigger tetiklendiğinde gerçekleştirilecek eylem. |
 | scaleAction | direction | "Ölçeği ya da"Azaltmak"için ölçek artırma".|
 | scaleAction | value | Artırmak veya kaynak kapasitesinin azaltmak için ne kadar. |
-| scaleAction | dakikaysa | Sonra bir ölçeklendirme işlemi yeniden ölçeklendirmeden önce beklenecek süre miktarı. Örneğin, varsa **dakikaysa "PT10M" =** , başka bir 10 dakika için yeniden ölçeklendirmek otomatik ölçeklendirme denemez. Dakikaysa eklenmesi veya kaldırılmasını örnekleri sonra ölçümlerin sağlamaktır. |
+| scaleAction | cooldown | Sonra bir ölçeklendirme işlemi yeniden ölçeklendirmeden önce beklenecek süre miktarı. Örneğin, varsa **dakikaysa "PT10M" =** , başka bir 10 dakika için yeniden ölçeklendirmek otomatik ölçeklendirme denemez. Dakikaysa eklenmesi veya kaldırılmasını örnekleri sonra ölçümlerin sağlamaktır. |
 
 ## <a name="autoscale-profiles"></a>Otomatik ölçeklendirme profilleri
 

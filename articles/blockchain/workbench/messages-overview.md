@@ -36,11 +36,11 @@ Yeni bir kullanıcı oluşturur.
 | **Ad**             | **Açıklama**                                      |
 |----------------------|------------------------------------------------------|
 | requestId            | İstemci tarafından sağlanan GUID                                |
-| FirstName            | Kullanıcı adı                              |
-| Soyadı             | Kullanıcının soyadı                               |
-| EmailAddress         | Kullanıcının e-posta adresi                           |
+| firstName            | Kullanıcı adı                              |
+| lastName             | Kullanıcının soyadı                               |
+| emailAddress         | Kullanıcının e-posta adresi                           |
 | externalId           | Kullanıcının Azure AD nesnesi kimliği                      |
-| ConnectionID         | Blok zinciri bağlantı için benzersiz tanımlayıcı |
+| connectionId         | Blok zinciri bağlantı için benzersiz tanımlayıcı |
 | messageSchemaVersion | Mesajlaşma şema sürümü                            |
 | messageName          | **CreateUserRequest**                               |
 
@@ -65,12 +65,12 @@ Blockchain Workbench'i şu alanlara sahip bir yanıt döndürür:
 |-----------------------|-----------------------------------------------------------------------------------------------------------------------------|
 | requestId             | İstemci tarafından sağlanan GUID |
 | userId                | Oluşturulan kullanıcının kimliği |
-| UserChainIdentifier   | Blok zinciri ağ üzerinde oluşturulan kullanıcı adresi. Ethereum, kullanıcının adresidir **zincir** adresi. |
-| ConnectionID          | Blok zinciri bağlantı için benzersiz tanımlayıcı|
+| userChainIdentifier   | Blok zinciri ağ üzerinde oluşturulan kullanıcı adresi. Ethereum, kullanıcının adresidir **zincir** adresi. |
+| connectionId          | Blok zinciri bağlantı için benzersiz tanımlayıcı|
 | messageSchemaVersion  | Mesajlaşma şema sürümü |
 | messageName           | **CreateUserUpdate** |
 | status                | Kullanıcı oluşturma isteği durumu.  Başarılı, değer olup olmadığını **başarı**. Hata durumunda değerdir **hatası**.     |
-| AdditionalInformation | Ek bilgi sağlanan temel durumu |
+| additionalInformation | Ek bilgi sağlanan temel durumu |
 
 Örnek başarılı **oluşturacağı** Blockchain Workbench'i gelen yanıt:
 
@@ -114,12 +114,12 @@ Yeni bir sözleşmeyi oluşturur.
 | **Ad**             | **Açıklama**                                                                                                           |
 |----------------------|---------------------------------------------------------------------------------------------------------------------------|
 | requestId            | İstemci tarafından sağlanan GUID |
-| UserChainIdentifier  | Blok zinciri ağ üzerinde oluşturulan kullanıcı adresi. Ethereum bu kullanıcının adresidir **zincirinde** adresi. |
-| ApplicationName      | Uygulamanın adı |
+| userChainIdentifier  | Blok zinciri ağ üzerinde oluşturulan kullanıcı adresi. Ethereum bu kullanıcının adresidir **zincirinde** adresi. |
+| applicationName      | Uygulamanın adı |
 | version              | Uygulamanın sürümü. Etkin bir uygulama birden çok sürümünü varsa gereklidir. Aksi takdirde sürüm isteğe bağlıdır. Uygulama sürümü hakkında daha fazla bilgi için bkz. [Azure Blockchain Workbench uygulama sürümü](version-app.md). |
-| WorkflowName         | İş akışının adı |
+| workflowName         | İş akışının adı |
 | parametreler           | Sözleşme oluşturma için giriş parametreleri |
-| ConnectionID         | Blok zinciri bağlantı için benzersiz tanımlayıcı |
+| connectionId         | Blok zinciri bağlantı için benzersiz tanımlayıcı |
 | messageSchemaVersion | Mesajlaşma şema sürümü |
 | messageName          | **CreateContractRequest** |
 
@@ -155,11 +155,11 @@ Blockchain Workbench'i şu alanlara sahip bir yanıt döndürür:
 | requestId                | İstemci tarafından sağlanan GUID                                                             |
 | ContractId               | Azure Blockchain Workbench içinde sözleşme için benzersiz tanımlayıcı |
 | ContractLedgerIdentifier | Genel muhasebe sözleşme adresi                                            |
-| ConnectionID             | Blok zinciri bağlantı için benzersiz tanımlayıcı                               |
+| connectionId             | Blok zinciri bağlantı için benzersiz tanımlayıcı                               |
 | messageSchemaVersion     | Mesajlaşma şema sürümü                                                         |
 | messageName              | **CreateContractUpdate**                                                      |
 | status                   | Sözleşme oluşturma isteği durumu.  Olası değerler: **Gönderilen**, **kaydedilmiş**, **hatası**.  |
-| AdditionalInformation    | Ek bilgi sağlanan temel durumu                              |
+| additionalInformation    | Ek bilgi sağlanan temel durumu                              |
 
 Gönderilen bir örneği **sözleşmesi oluşturma** Blockchain Workbench'i gelen yanıt:
 
@@ -218,12 +218,12 @@ Yeni bir sözleşme eylem oluşturur.
 | **Ad**                 | **Açıklama**                                                                                                           |
 |--------------------------|---------------------------------------------------------------------------------------------------------------------------|
 | requestId                | İstemci tarafından sağlanan GUID |
-| UserChainIdentifier      | Blok zinciri ağ üzerinde oluşturulan kullanıcı adresi. Ethereum bu kullanıcının adresidir **zincirinde** adresi. |
+| userChainIdentifier      | Blok zinciri ağ üzerinde oluşturulan kullanıcı adresi. Ethereum bu kullanıcının adresidir **zincirinde** adresi. |
 | ContractLedgerIdentifier | Genel muhasebe sözleşme adresi |
 | version                  | Uygulamanın sürümü. Etkin bir uygulama birden çok sürümünü varsa gereklidir. Aksi takdirde sürüm isteğe bağlıdır. Uygulama sürümü hakkında daha fazla bilgi için bkz. [Azure Blockchain Workbench uygulama sürümü](version-app.md). |
 | WorkflowFunctionName     | İş akışı işlevinin adı |
 | parametreler               | Sözleşme oluşturma için giriş parametreleri |
-| ConnectionID             | Blok zinciri bağlantı için benzersiz tanımlayıcı |
+| connectionId             | Blok zinciri bağlantı için benzersiz tanımlayıcı |
 | messageSchemaVersion     | Mesajlaşma şema sürümü |
 | messageName              | **CreateContractActionRequest** |
 
@@ -258,11 +258,11 @@ Blockchain Workbench'i şu alanlara sahip bir yanıt döndürür:
 |-----------------------|-----------------------------------------------------------------------------------|
 | requestId             | İstemci tarafından sağlanan GUID|
 | ContractId            | Azure Blockchain Workbench içinde sözleşme için benzersiz tanımlayıcı |
-| ConnectionID          | Blok zinciri bağlantı için benzersiz tanımlayıcı |
+| connectionId          | Blok zinciri bağlantı için benzersiz tanımlayıcı |
 | messageSchemaVersion  | Mesajlaşma şema sürümü |
 | messageName           | **CreateContractActionUpdate** |
 | status                | Sözleşme eylem isteğinin durumu. Olası değerler: **Gönderilen**, **kaydedilmiş**, **hatası**.                         |
-| AdditionalInformation | Ek bilgi sağlanan temel durumu |
+| additionalInformation | Ek bilgi sağlanan temel durumu |
 
 Gönderilen bir örneği **sözleşme Eylem oluştur** Blockchain Workbench'i gelen yanıt:
 
@@ -385,10 +385,10 @@ Tek tek bloklar hakkında bilgi içerir. *BlockMessage* blok düzeyi bilgileri i
 |------|-------------|
 | Blok | İçeren [bilgi engelle](#block-information) |
 | işlem | Bir koleksiyon içeren [işlem bilgilerini](#transaction-information) blok için |
-| ConnectionID | Bağlantı için benzersiz tanımlayıcı |
+| connectionId | Bağlantı için benzersiz tanımlayıcı |
 | messageSchemaVersion | Mesajlaşma şema sürümü |
 | messageName | **BlockMessage** |
-| AdditionalInformation | Ek bilgiler sağlanmıştır |
+| additionalInformation | Ek bilgiler sağlanmıştır |
 
 #### <a name="block-information"></a>Blok bilgileri
 
@@ -457,10 +457,10 @@ Bir sözleşme hakkında bilgi içerir. İleti sözleşmesi özelliklere sahip b
 | ContractLedgerIdentifier | Genel muhasebe sözleşme için benzersiz tanımlayıcı |
 | contractProperties | [Sözleşme özellikleri](#contract-properties) |
 | isNewContract | Bu sözleşmeyi yeni oluşturulmuş olup olmadığını gösterir. Olası değerler şunlardır: true: Bu sözleşme oluşturulan yeni bir sözleşme oluştu. false: Bu sözleşmenin bir sözleşme güncelleştirmesidir. |
-| ConnectionID | Bağlantı için benzersiz tanımlayıcı |
+| connectionId | Bağlantı için benzersiz tanımlayıcı |
 | messageSchemaVersion | Mesajlaşma şema sürümü |
 | messageName | **ContractMessage** |
-| AdditionalInformation | Ek bilgiler sağlanmıştır |
+| additionalInformation | Ek bilgiler sağlanmıştır |
 
 #### <a name="modifying-transaction-information"></a>İşlem bilgilerini değiştirme
 
@@ -570,10 +570,10 @@ Bir sözleşme işlevi çağrıldığında işlev adı, parametreleri giriş ve 
 | parametreler                  | [Parametre bilgileri](#parameter-information) |
 | İşlem                 | İşlem bilgileri |
 | inTransactionSequenceNumber | İşlem bloğundaki sıra numarası |
-| ConnectionID                | Bağlantı için benzersiz tanımlayıcı |
+| connectionId                | Bağlantı için benzersiz tanımlayıcı |
 | messageSchemaVersion        | Mesajlaşma şema sürümü |
 | messageName                 | **EventMessage** |
-| AdditionalInformation       | Ek bilgiler sağlanmıştır |
+| additionalInformation       | Ek bilgiler sağlanmıştır |
 
 #### <a name="caller-information"></a>Arayan bilgileri
 
@@ -644,17 +644,17 @@ Workbench için bir uygulama yüklendiğinde adı ve sürümü gibi bilgileri i�
 |------|-------------|
 | EventName | **ApplicationIngestion** |
 | ApplicationId | Azure Blockchain Workbench içindeki uygulama için benzersiz tanımlayıcı |
-| ApplicationName | Uygulama adı |
+| applicationName | Uygulama adı |
 | ApplicationDisplayName | Uygulama görünen adı |
 | ApplicationVersion | Uygulama sürümü |
 | applicationDefinitionLocation | Uygulama yapılandırma dosyasının bulunduğu URL'si |
 | contractCodes | Koleksiyonu [sözleşme kodları](#contract-code-information) uygulama |
 | ApplicationRoles | Koleksiyonu [uygulama rolleri](#application-role-information) uygulama |
 | applicationWorkflows | Koleksiyonu [uygulama iş akışlarını](#application-workflow-information) uygulama |
-| ConnectionID | Bağlantı için benzersiz tanımlayıcı |
+| connectionId | Bağlantı için benzersiz tanımlayıcı |
 | messageSchemaVersion | Mesajlaşma şema sürümü |
 | messageName | **EventMessage** |
-| AdditionalInformation | Burada sağlanan ek bilgiler uygulama iş akışı durumlarını ve geçiş bilgilerini içerir. |
+| additionalInformation | Burada sağlanan ek bilgiler uygulama iş akışı durumlarını ve geçiş bilgilerini içerir. |
 
 #### <a name="contract-code-information"></a>Kod bilgi Sözleşmesi
 
@@ -838,16 +838,16 @@ Bir kullanıcı rol ataması ve karşılık gelen uygulama ve rol adını gerçe
 |------|-------------|
 | EventName | **RoleAssignment** |
 | ApplicationId | Azure Blockchain Workbench içindeki uygulama için benzersiz tanımlayıcı |
-| ApplicationName | Uygulama adı |
+| applicationName | Uygulama adı |
 | ApplicationDisplayName | Uygulama görünen adı |
 | ApplicationVersion | Uygulama sürümü |
 | applicationRole        | Hakkında bilgi [uygulama rolü](#roleassignment-application-role) |
 | atayan               | Hakkında bilgi [atayan](#roleassignment-assigner) |
 | atanan               | Hakkında bilgi [atanan](#roleassignment-assignee) |
-| ConnectionID           | Bağlantı için benzersiz tanımlayıcı |
+| connectionId           | Bağlantı için benzersiz tanımlayıcı |
 | messageSchemaVersion   | Mesajlaşma şema sürümü |
 | messageName            | **EventMessage** |
-| AdditionalInformation  | Ek bilgiler sağlanmıştır |
+| additionalInformation  | Ek bilgiler sağlanmıştır |
 
 #### <a name="roleassignment-application-role"></a>RoleAssignment uygulama rolü
 
