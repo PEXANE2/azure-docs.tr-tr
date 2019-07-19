@@ -1,46 +1,47 @@
 ---
-title: .NET Azure işlevleri'nde bağımlılık ekleme kullanın
-description: Bağımlılık ekleme, kaydetme ve Hizmetleri içinde .NET işlevleri kullanmak için kullanmayı öğrenin
+title: .NET Azure Işlevlerinde bağımlılık ekleme 'yi kullanma
+description: .NET işlevlerinde Hizmetleri kaydetmek ve kullanmak için bağımlılık ekleme eklemeyi nasıl kullanacağınızı öğrenin
 services: functions
 documentationcenter: na
 author: craigshoemaker
 manager: gwallace
-keywords: Azure işlevleri, İşlevler, sunucusuz mimari
+keywords: Azure işlevleri, işlevler, sunucusuz mimari
 ms.service: azure-functions
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 05/28/2019
-ms.author: jehollan, cshoe
-ms.openlocfilehash: 781bcdc158cb362b7c46e1ba9771b6a92ebc56a8
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.author: cshoe
+ms.reviewer: jehollan
+ms.openlocfilehash: 1ebb2fd77830074648a580dddad98e05e10c9c75
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67479613"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67850029"
 ---
-# <a name="use-dependency-injection-in-net-azure-functions"></a>.NET Azure işlevleri'nde bağımlılık ekleme kullanın
+# <a name="use-dependency-injection-in-net-azure-functions"></a>.NET Azure Işlevlerinde bağımlılık ekleme 'yi kullanma
 
-Azure işlevlerini destekleyen bir tekniktir elde etmek için bağımlılık ekleme (dı) yazılım tasarım deseni [denetimi tersine çevirme (IOC)](https://docs.microsoft.com/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) sınıfları ve bunların bağımlılıklarını arasında.
+Azure Işlevleri, sınıflar ve bunların bağımlılıkları arasında [denetimin (IOC) bir Iç sürümünü](https://docs.microsoft.com/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) elde etmek için bir tekniktir olan bağımlılık ekleme (dı) yazılım tasarım modelini destekler.
 
-Azure işlevleri üzerinde ASP.NET Core bağımlılık ekleme özellikleri oluşturur. Hizmetleri, yaşam süresi ve tasarım desenlerini farkına varmadan [ASP.NET Core bağımlılık ekleme](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection) DI özellikler bir Azure işlevleri'nde kullanmadan önce uygulama önerilir.
+Azure Işlevleri ASP.NET Core bağımlılığı ekleme özelliklerinin üzerine oluşturulur. Azure Işlevleri uygulamasında dı özelliklerinin kullanılmadan önce, [ASP.NET Core bağımlılık ekleme](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection) ' nin hizmetler, yaşam süreleri ve Tasarım desenlerinin farkında olması önerilir.
 
-Bağımlılık ekleme, Azure işlevleri ile başlayan desteği 2.x.
+Bağımlılık ekleme desteği, Azure Işlevleri 2. x ile başlar.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bağımlılık ekleme kullanabilmeniz için aşağıdaki NuGet paketlerini yüklemeniz gerekir:
+Bağımlılık ekleme 'yi kullanabilmeniz için aşağıdaki NuGet paketlerini yüklemelisiniz:
 
-- [Microsoft.Azure.Functions.Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/)
+- [Microsoft. Azure. Functions. uzantıları](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/)
 
-- [Microsoft.NET.Sdk.Functions paketi](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) 1.0.28 sürümü veya üzeri
+- [Microsoft. net. SDK. Functions paket](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) sürümü 1.0.28 veya üzeri
 
-- İsteğe bağlı: [Microsoft.Extensions.Http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) yalnızca başlangıçta HttpClient kaydetmek için gereklidir.
+- İsteğe bağlı: Yalnızca HttpClient 'ı başlangıçta kaydettirmek için [Microsoft. Extensions. http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) gereklidir
 
-## <a name="register-services"></a>Kayıt Hizmetleri
+## <a name="register-services"></a>Hizmetleri Kaydet
 
-Hizmetleri kaydolmak için yapılandırıp bileşenleri eklemek için bir yöntem oluşturabilirsiniz bir `IFunctionsHostBuilder` örneği.  Azure işlevleri ana bilgisayar örneği oluşturur `IFunctionsHostBuilder` ve doğrudan yönteme geçirir.
+Hizmetleri kaydetmek için bir `IFunctionsHostBuilder` örneğe bileşen yapılandırmak ve eklemek üzere bir yöntem oluşturabilirsiniz.  Azure işlevleri ana makinesi bir örneği oluşturur `IFunctionsHostBuilder` ve doğrudan kendi yönteğinize geçirir.
 
-Register yöntemi ekleyin `FunctionsStartup` türü adını belirten derleme özniteliğini başlatma sırasında kullanılır. Ayrıca kod in yayın öncesi başvuruyor [Microsoft.Azure.Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) Nuget üzerinde.
+Yöntemi kaydetmek için başlangıç sırasında kullanılan tür `FunctionsStartup` adını belirten derleme özniteliğini ekleyin. Ayrıca kod, NuGet üzerindeki [Microsoft. Azure. Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) 'in bir ön sürümüne başvuruyorlar.
 
 ```csharp
 using System;
@@ -68,9 +69,9 @@ namespace MyNamespace
 }
 ```
 
-## <a name="use-injected-dependencies"></a>Eklenen bağımlılıkları kullanın
+## <a name="use-injected-dependencies"></a>Eklenen bağımlılıkları kullan
 
-ASP.NET Core Oluşturucu ekleme bağımlılıklarınızı işlevinizi kullanılabilir hale getirmek için kullanır. Aşağıdaki örnekte nasıl `IMyService` ve `HttpClient` bağımlılıkları HTTP ile tetiklenen bir işlev eklenmiş.
+ASP.NET Core, bağımlılıklarınızı işleviniz için kullanılabilir hale getirmek için Oluşturucu ekleme işlemini kullanır. Aşağıdaki örnek, `IMyService` ve `HttpClient` bağımlılıklarının http ile tetiklenen bir işleve nasıl eklendiğini gösterir.
 
 ```csharp
 using System;
@@ -111,43 +112,43 @@ namespace MyNamespace
 }
 ```
 
-Oluşturucu ekleme kullanımını bağımlılık ekleme yararlanmak isterseniz, statik işlevler kullanmamalısınız anlamına gelir.
+Oluşturucu Ekleme kullanımı, bağımlılık ekleme özelliğinden faydalanmak istiyorsanız statik işlevler kullanmamalısınız.
 
-## <a name="service-lifetimes"></a>Hizmet yaşam süresi yok
+## <a name="service-lifetimes"></a>Hizmet yaşam süreleri
 
-Azure işlev uygulamaları olarak aynı hizmet yaşam süreleri sağlamak [ASP.NET bağımlılık ekleme](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection#service-lifetimes): geçici, kapsamı belirlenmiş ve tekil.
+Azure Işlevleri uygulamaları, [ASP.net bağımlılığı ekleme](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection#service-lifetimes): geçici, kapsamlı ve tek hizmet yaşam sürelerinin aynısını sunar.
 
-Bir işlev uygulamasında, işlevi yürütme ömrü kapsamlı hizmet ömrü eşleşir. Kapsamlı hizmet, yürütme bir kez oluşturulur. Sonraki istekleri yürütme sırasında bu hizmeti için mevcut hizmet örneği yeniden kullanın. Singleton hizmet ömrü konak ömrü eşleşen ve işlev yürütmelerini örneğine arasında yeniden.
+Bir işlevler uygulamasında, kapsamlı hizmet ömrü bir işlev yürütme ömrüyle eşleşir. Kapsamlı hizmetler, her yürütme için bir kez oluşturulur. Yürütme sırasında o hizmetin sonraki istekleri, var olan hizmet örneğini yeniden kullanır. Tek bir hizmet ömrü, ana bilgisayar ömrüyle eşleşir ve bu örnekteki işlev Yürütmelerinde yeniden kullanılır.
 
-Singleton ömrü Hizmetleri önerilir bağlantıları ve istemciler için örneğin `SqlConnection`, `CloudBlobClient`, veya `HttpClient` örnekleri.
+Tek ömür Hizmetleri, bağlantılar ve istemciler için, örneğin `SqlConnection` `CloudBlobClient`veya `HttpClient` örnekler için önerilir.
 
-Görüntüleme veya indirme bir [farklı hizmet yaşam süreleri, örnek](https://aka.ms/functions/di-sample) GitHub üzerinde.
+GitHub üzerinde [farklı hizmet yaşam sürelerinin bir örneğini](https://aka.ms/functions/di-sample) görüntüleyin veya indirin.
 
-## <a name="logging-services"></a>Günlüğe kaydetme Hizmetleri
+## <a name="logging-services"></a>Günlüğe kaydetme hizmetleri
 
-Kendi oturum açma sağlayıcısı gerekirse kaydetmek için önerilen yöntem olduğu bir `ILoggerProvider` örneği. Application ınsights'ı Azure işlevleri tarafından otomatik olarak eklenir.
+Kendi günlük sağlayıcınıza ihtiyacınız varsa, önerilen yol bir `ILoggerProvider` örneği kaydetmek olacaktır. Application Insights, Azure Işlevleri tarafından otomatik olarak eklenir.
 
 > [!WARNING]
-> Eklemeyin `AddApplicationInsightsTelemetry()` haliyle Hizmetleri koleksiyonuna çakışan Hizmetleri kayıtları'ortam tarafından sağlanan hizmetlerle.
+> Ortam tarafından sunulan `AddApplicationInsightsTelemetry()` hizmetlerle çakışan Hizmetleri kaydederken hizmetler koleksiyonuna eklemeyin.
 
-## <a name="function-app-provided-services"></a>Sağlanan uygulama hizmetleri işlevi
+## <a name="function-app-provided-services"></a>İşlev uygulaması tarafından sunulan hizmetler
 
-Birçok hizmet işlevi konağa kaydeder. Aşağıdaki hizmetler bir bağımlılık, uygulamanızda olarak yararlanmak güvenli şunlardır:
+İşlev Konağı birçok hizmeti kaydeder. Aşağıdaki hizmetler uygulamanızda bir bağımlılık olarak ele alınır:
 
-|Hizmet Türü|Yaşam süresi|Açıklama|
+|Hizmet Türü|Süre|Açıklama|
 |--|--|--|
-|`Microsoft.Extensions.Configuration.IConfiguration`|singleton|Çalışma zamanı yapılandırma|
-|`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|singleton|Sorumlu Kimliği ana bilgisayar örneği sağlamak için|
+|`Microsoft.Extensions.Configuration.IConfiguration`|Adet|Çalışma zamanı yapılandırması|
+|`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|Adet|Konak örneğinin KIMLIĞINI sağlamaktan sorumlu|
 
-Bir bağımlılık yap istediğiniz diğer hizmetleri varsa [bir sorun oluşturun ve bunları Github'da önerilen](https://github.com/azure/azure-functions-host).
+Bağımlılığı almak istediğiniz başka hizmetler varsa, [bir sorun oluşturun ve bunları GitHub 'da önerin](https://github.com/azure/azure-functions-host).
 
-### <a name="overriding-host-services"></a>Ana Bilgisayar Hizmetleri geçersiz kılma
+### <a name="overriding-host-services"></a>Konak hizmetlerini geçersiz kılma
 
-Ana bilgisayar tarafından sağlanan hizmetleri geçersiz kılma şu anda desteklenmiyor.  Geçersiz kılmak istediğiniz hizmetleri varsa [bir sorun oluşturun ve bunları Github'da önerilen](https://github.com/azure/azure-functions-host).
+Konak tarafından belirtilen geçersiz kılma Hizmetleri şu anda desteklenmiyor.  Geçersiz kılmak istediğiniz hizmetler varsa, [bir sorun oluşturun ve bunları GitHub 'da önerin](https://github.com/azure/azure-functions-host).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Daha fazla bilgi için aşağıdaki kaynaklara bakın:
 
 - [İşlev uygulamanızı izleme](functions-monitoring.md)
-- [İşlevleri için en iyi uygulamalar](functions-best-practices.md)
+- [İşlevler için en iyi uygulamalar](functions-best-practices.md)

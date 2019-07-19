@@ -1,6 +1,6 @@
 ---
-title: Verileri olay hub'ları Azure Stream Analytics'i kullanarak işleyebilir | Microsoft Docs
-description: Bu makalede Azure Stream Analytics işi Azure olay hub'ınıza gelen verilerin nasıl işleneceğini gösterir.
+title: Stream Analytics kullanarak Azure Event Hubs verileri işleme | Microsoft Docs
+description: Bu makalede, Azure Event hub 'ınızdaki verileri bir Azure Stream Analytics işi kullanarak nasıl işleyebilmeniz gösterilmektedir.
 services: event-hubs
 author: spelluru
 manager: ''
@@ -8,79 +8,82 @@ ms.author: spelluru
 ms.date: 07/09/2019
 ms.topic: article
 ms.service: event-hubs
-ms.openlocfilehash: f179687b0983e145244e228a3d3b06b4eabead48
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 003e68b36ff71fb2991cf087ef33f72aba73a8be
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67723421"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68233970"
 ---
-# <a name="process-data-from-your-event-hub-using-azure-stream-analytics"></a>Azure Stream Analytics'i kullanarak, olay hub'ından verileri işleme
-Azure Stream Analytics hizmeti, işlem, alma ve Azure Event hubs'tan akış verilerini analiz etmek gerçek zamanlı eylemlerden güçlü içgörüler etkinleştirme kolaylaştırır. Bu tümleştirme hot yolu analytics işlem hattı hızlıca oluşturmanıza olanak sağlar. Azure portalı, gelen verileri görselleştirmek ve bir Stream Analytics sorgusunu yazmak için kullanabilirsiniz. Sorgunuzu hazır hale geldikten sonra yalnızca birkaç tıklamayla üretime taşıyabilirsiniz. 
+# <a name="process-data-from-your-event-hub-using-azure-stream-analytics-preview"></a>Azure Stream Analytics kullanarak Olay Hub 'ınızdaki verileri işleme (Önizleme)
+Azure Stream Analytics hizmeti, Azure Event Hubs akış verilerini almak, işlemek ve analiz etmeyi kolaylaştırır, böylece gerçek zamanlı eylemler için güçlü öngörüler sağlar. Bu tümleştirme, hızlı bir şekilde bir etkin yol analizi işlem hattı oluşturmanıza olanak sağlar. Gelen verileri görselleştirmek ve bir Stream Analytics sorgusu yazmak için Azure portal kullanabilirsiniz. Sorgunuz hazırlandıktan sonra, bunu yalnızca birkaç tıklamayla üretime taşıyabilirsiniz. 
+
+> [!NOTE]
+> Bu özellik şu anda önizleme sürümündedir. 
 
 ## <a name="key-benefits"></a>Önemli avantajlar
-Azure Event Hubs ve Azure Stream Analytics tümleştirmesi öne çıkan avantajları şunlardır: 
-- **Verileri Önizle** – Azure portalında bir olay hub'ından gelen verilerin önizlemesini görebilirsiniz.
-- **Sorgunuzu test** : bir dönüşüm sorgusu hazırlamak ve doğrudan Azure Portalı'nda test. Sorgu dili söz dizimi için bkz. [Stream Analytics sorgu dili](/stream-analytics-query/built-in-functions-azure-stream-analytics) belgeleri.
-- **Sorgunuzu üretime dağıtma** – sorgu oluşturma ve Azure Stream Analytics işi başlatılıyor üretime dağıtabilirsiniz.
+Azure Event Hubs ve Azure Stream Analytics tümleştirmenin temel avantajları aşağıda verilmiştir: 
+- **Veri önizleme** : Azure Portal bir olay hub 'ından gelen verileri önizleyebilirsiniz.
+- **Sorgunuzu test edin** – bir dönüştürme sorgusu hazırlayın ve bunu doğrudan Azure Portal test edin. Sorgu dili sözdizimi için bkz. [Stream Analytics sorgu dili](/stream-analytics-query/built-in-functions-azure-stream-analytics) belgeleri.
+- **Sorgunuzu üretime dağıtma** – bir Azure Stream Analytics işi oluşturup başlatarak sorguyu üretime dağıtabilirsiniz.
 
 ## <a name="end-to-end-flow"></a>Uçtan uca akış
 
 1. [Azure Portal](https://portal.azure.com) oturum açın. 
-1. Gidin, **Event Hubs ad alanı** gidin **olay hub'ı**, gelen veri vardır. 
-1. Seçin **işlem verileri** olay hub'ı sayfasında.  
+1. **Event Hubs ad alanına** gidin ve ardından gelen verileri içeren **Olay Hub 'ına**gidin. 
+1. Olay Hub 'ı sayfasında **Işlem verileri** ' ni seçin.  
 
-    ![İşlem veri kutucuğu](./media/process-data-azure-stream-analytics/process-data-tile.png)
-1. Seçin **Araştır** üzerinde **etkinleştirme olaylarını gerçek zamanlı içgörüler** Döşe. 
+    ![İşlem verileri kutucuğu](./media/process-data-azure-stream-analytics/process-data-tile.png)
+1. Olaylar kutucuğunun **gerçek zamanlı** Içgörüleri etkinleştir kutucuğunda **keşfet** ' i seçin. 
 
     ![Stream Analytics seçin](./media/process-data-azure-stream-analytics/process-data-page-explore-stream-analytics.png)
-1. Aşağıdaki alanlar için önceden ayarlanmış değerlerle sorgu sayfayı görürsünüz:
-    1. **Olay hub'ı** sorgu için bir giriş olarak.
-    1. Örnek **SQL sorgusu** SELECT deyimi ile. 
-    1. Bir **çıkış** diğer test sonuçlarınıza bakın. 
+1. Aşağıdaki alanlar için önceden ayarlanmış değerler içeren bir sorgu sayfası görürsünüz:
+    1. Sorgu için giriş olarak **Olay Hub** 'ınız.
+    1. SELECT ifadesiyle örnek **SQL sorgusu** . 
+    1. Sorgu test sonuçlarınıza başvurmak için bir **Çıkış** diğer adı. 
 
         ![Sorgu Düzenleyicisi](./media/process-data-azure-stream-analytics/query-editor.png)
         
         > [!NOTE]
-        >  Bu sayfa, bu özelliği ilk kez kullandığınızda, gelen verilerin önizlemesini görmek için bir tüketici grubu ve olay hub'ınız için bir ilke oluşturmak izninizi isteyen.
-1. Seçin **Oluştur** içinde **giriş Önizleme** önceki resimde gösterildiği gibi bölmesi. 
-1. Bu sekme en son gelen verilerin bir anlık görüntü hemen görürsünüz.
-    - Serileştirme türü verilerinizde otomatik olarak olur (JSON/CSV) algılandı. CSV/JSON/AVRO için de el ile değiştirebilirsiniz.
-    - Gelen veriler tablo biçiminde veya ham biçimde önizleyebilirsiniz. 
-    - Gösterilen verilerinizi geçerli değilse, seçin **Yenile** en son olayları görmek için. 
+        >  Bu özelliği ilk kez kullandığınızda, Bu sayfa, gelen verileri önizlemek için bir tüketici grubu ve Olay Hub 'ınız için bir ilke oluşturma izninizi ister.
+1. Önceki görüntüde gösterildiği gibi **giriş önizleme** bölmesinde **Oluştur** ' u seçin. 
+1. Bu sekmede, en son gelen verilerin anlık görüntüsünü hemen görürsünüz.
+    - Verilerinizde serileştirme türü otomatik olarak algılanır (JSON/CSV). Bunu, JSON/CSV/AVRO ile el ile değiştirebilirsiniz.
+    - Gelen verileri tablo biçiminde veya ham biçimde önizleyebilirsiniz. 
+    - Gösterilen veriniz güncel değilse, en son olayları görmek için **Yenile** ' yi seçin. 
 
-        İşte bir örnek veri **tablo biçimi**:   ![Tablo biçiminde sonuçları](./media/process-data-azure-stream-analytics/snapshot-results.png)
+        **Tablo biçiminde**bir veri örneği aşağıda verilmiştir:   ![Tablo biçiminde sonuçlar](./media/process-data-azure-stream-analytics/snapshot-results.png)
 
-        İşte bir örnek veri **ham biçimde**: 
+        **Ham biçimdeki**verilerin bir örneği aşağıda verilmiştir: 
 
-        ![Sonuçları ham biçimde](./media/process-data-azure-stream-analytics/snapshot-results-raw-format.png)
-1. Seçin **Test sorgusu** sorgu sonuçları anlık görüntüsünü görmek için **Test sonuçları** sekmesi. Sonuçları da indirebilirsiniz.
+        ![Ham biçimde sonuçlar](./media/process-data-azure-stream-analytics/snapshot-results-raw-format.png)
+1. Test **sonuçları** sekmesinde sorgunuzun test sonuçlarının anlık görüntüsünü görmek için **Test sorgusu** ' nu seçin. Sonuçları da indirebilirsiniz.
 
-    ![Sorgu sonuçları test](./media/process-data-azure-stream-analytics/test-results.png)
-1. Verileri dönüştürmek için kendi sorgunuzu yazın. Bkz: [Stream Analytics sorgu dili başvurusu](/stream-analytics-query/stream-analytics-query-language-reference).
-1. Sorguyu test ettikten sonra üretime, seçme taşımak istediğiniz **Dağıt sorgu**. Sorgu dağıtmak için burada, bir çıkış işiniz için ayarlayabilir ve işin başlaması Azure Stream Analytics işi oluşturun. Bir Stream Analytics işi oluşturmak için iş için bir ad belirtin ve seçin **Oluştur**.
+    ![Test sorgu sonuçları](./media/process-data-azure-stream-analytics/test-results.png)
+1. Verileri dönüştürmek için kendi sorgunuzu yazın. Bkz. [Stream Analytics sorgu dili başvurusu](/stream-analytics-query/stream-analytics-query-language-reference).
+1. Sorguyu test edildikten ve bunu üretime taşımak istediğinizde **sorguyu dağıt**' ı seçin. Sorguyu dağıtmak için, işiniz için bir çıktı ayarlayabileceğiniz bir Azure Stream Analytics işi oluşturun ve işi başlatın. Stream Analytics işi oluşturmak için, iş için bir ad belirtin ve **Oluştur**' u seçin.
 
       ![Azure Stream Analytics işi oluşturma](./media/process-data-azure-stream-analytics/create-stream-analytics-job.png)
 
       > [!NOTE] 
-      >  Bir tüketici grubu ve Event Hubs sayfasından oluşturduğunuz her yeni bir Azure Stream Analytics işi için bir ilke oluşturmanızı öneririz. Her iş için ayrılmış bir tüketici grubu sağlayarak bu sınırını aşmasını ortaya çıkan hatalar sorundan kaçınmak için tüketici grupları yalnızca beş eş zamanlı okuyucu sağlar. Bir ayrılmış ilke anahtarınızı döndürme veya diğer kaynaklara etkilemeden izinlerini iptal etme sağlar. 
-1. Stream Analytics işinizi, şimdi burada sorgunuzu test aynıdır ve olay hub'ınıza giriştir oluşturulur. 
+      >  Event Hubs sayfasından oluşturduğunuz her yeni Azure Stream Analytics işi için bir tüketici grubu ve ilke oluşturmanızı öneririz. Tüketici grupları yalnızca beş eşzamanlı okuyucu sağlar; bu nedenle her iş için adanmış bir tüketici grubu sağlanması bu sınırı aşmaktan kaynaklanan hatalardan kaçınacaktır. Adanmış bir ilke, diğer kaynakları etkilemeden anahtarınızı döndürmenize veya izinleri iptal etmenize olanak tanır. 
+1. Stream Analytics işiniz, sorgunuz test ettiğiniz ve Olay Hub 'ınız olan girişte oluşturulur. 
 
-9.  İşlem hattı tamamlanacak şekilde ayarlanacağını **çıkış** seçin ve sorgu **Başlat** işi başlatmak için.
+9.  İşlem hattını tamamladıktan sonra, sorgunun **çıkışını** ayarlayın ve işi başlatmak için **Başlat** ' ı seçin.
 
     > [!NOTE]
-    > İşi başlatmadan önce outputalias Azure Stream Analytics'te oluşturulan çıktı adıyla değiştirmeyi unutmayın.
+    > İşi başlatmadan önce, outputalias öğesini Azure Stream Analytics oluşturduğunuz çıkış adına göre değiştirmeyi unutmayın.
 
-      ![Çıkış ayarlayın ve işi başlatın](./media/process-data-azure-stream-analytics/set-output-start-job.png)
+      ![Çıktıyı ayarlama ve işi başlatma](./media/process-data-azure-stream-analytics/set-output-start-job.png)
 
 
 ## <a name="known-limitations"></a>Bilinen sınırlamalar
-Sorgunuzu test ederken, test sonuçlarını yüklemek için yaklaşık 6 dakika sürer. Sınama performansı geliştirme konusunda durmaksızın çalışıyoruz. Ancak, üretim ortamında dağıtıldığında, Azure Stream Analytics subsecond gecikme süresine sahiptir.
+Sorgunuzu test ederken, test sonuçlarının yüklenmesi yaklaşık 6 saniye sürer. Sınama performansını geliştirmeye çalışıyoruz. Ancak, üretimde dağıtıldığında, Azure Stream Analytics ikinci saniye gecikme süresine sahip olur.
 
 ## <a name="streaming-units"></a>Akış birimleri
-Varsayılan olarak üç akış birimleri (su) Azure Stream Analytics işi. Bu ayar ayarlamak için **ölçek** sol menüde **Stream Analytics işi** Azure portalında sayfası. Akış birimleri hakkında daha fazla bilgi için bkz: [anlayın ve akış birimi Ayarla](../stream-analytics/stream-analytics-streaming-unit-consumption.md).
+Azure Stream Analytics işiniz varsayılan olarak üç akış birimine (SUs) sahiptir. Bu ayarı ayarlamak için, Azure portal **Stream Analytics iş** sayfasında sol menüdeki **Ölçek** ' i seçin. Akış birimleri hakkında daha fazla bilgi edinmek için bkz. [akış birimlerini anlama ve ayarlama](../stream-analytics/stream-analytics-streaming-unit-consumption.md).
 
-![Akış birimleri ile ölçeklendirme](./media/process-data-azure-stream-analytics/scale.png)
+![Akış birimlerini ölçeklendirme](./media/process-data-azure-stream-analytics/scale.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Stream Analytics sorguları hakkında daha fazla bilgi için bkz: [Stream Analytics sorgu dili](/stream-analytics-query/built-in-functions-azure-stream-analytics)
+Stream Analytics sorguları hakkında daha fazla bilgi edinmek için bkz. [Stream Analytics sorgu dili](/stream-analytics-query/built-in-functions-azure-stream-analytics)

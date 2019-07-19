@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory ile otomatik kullanıcı hazırlama için dizin Federasyon yapılandırma | Microsoft Docs'
-description: Otomatik olarak sağlamak ve kullanıcı hesaplarını Directory'ye federe sağlamasını için Azure Active Directory yapılandırmayı öğrenin.
+title: 'Öğretici: Azure Active Directory için Federasyon dizinini otomatik Kullanıcı sağlaması için yapılandırın | Microsoft Docs'
+description: Federasyon dizinine kullanıcı hesaplarını otomatik olarak sağlamak ve devre dışı bırakmak için Azure Active Directory yapılandırmayı öğrenin.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -8,178 +8,178 @@ writer: zchia
 manager: beatrizd
 ms.assetid: na
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: 19f5690a6852161abce2565a8c4a52ce86ff5187
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: bc19a64fc72fef6407416f65cdc3b60a4c4f9464
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67840595"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68296081"
 ---
-# <a name="tutorial-configure-federated-directory-for-automatic-user-provisioning"></a>Öğretici: Otomatik kullanıcı hazırlama için Federasyon dizinini yapılandırın
+# <a name="tutorial-configure-federated-directory-for-automatic-user-provisioning"></a>Öğretici: Otomatik Kullanıcı sağlaması için Federasyon dizinini yapılandırma
 
-Bu öğreticinin amacı otomatik olarak sağlamak ve kullanıcılara ve/veya dizin Federasyon gruplarına sağlamasını için Federasyon Directory ve Azure Active Directory (Azure AD) Azure AD yapılandırmak için gerçekleştirilmesi gereken adımlar göstermektir.
+Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları Federasyon dizinine otomatik olarak sağlamak ve devre dışı bırakmak üzere yapılandırmak için Federasyon dizini ve Azure Active Directory (Azure AD) içinde gerçekleştirilecek adımları göstermektir.
 
 > [!NOTE]
->  Bu öğreticide, Azure AD kullanıcı sağlama hizmeti üzerinde oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmet yapar, nasıl çalıştığını ve sık sorulan sorular önemli ayrıntılar için bkz. [otomatik kullanıcı hazırlama ve sağlamayı kaldırma Azure Active Directory ile SaaS uygulamalarına](../manage-apps/user-provisioning.md).
+>  Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../manage-apps/user-provisioning.md).
 >
-> Bu bağlayıcı, şu anda genel Önizleme aşamasındadır. Genel Microsoft Azure için kullanım koşulları Önizleme özellikleri hakkında daha fazla bilgi için bkz. [ek kullanım koşulları, Microsoft Azure önizlemeleri için](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulları zaten sahip olduğunuzu varsayar:
+Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
 * Azure AD kiracısı.
-* [Bir dizin Federasyon](https://www.federated.directory/pricing).
-* Dizin Federasyon yönetici izinlerine sahip bir kullanıcı hesabı.
+* [Federasyon dizini](https://www.federated.directory/pricing).
+* Federasyon dizininde yönetici izinlerine sahip bir kullanıcı hesabı.
 
 ## <a name="assign-users-to-federated-directory"></a>Federasyon dizinine kullanıcı atama
-Azure Active Directory atamaları adlı bir kavram, hangi kullanıcıların seçilen uygulamalara erişimi alması belirlemek için kullanır. Otomatik kullanıcı hazırlama bağlamında, yalnızca kullanıcı ve/veya Azure AD'de bir uygulamaya atanan gruplar eşitlenir.
+Azure Active Directory seçili uygulamalara hangi kullanıcıların erişimi alacağını belirleyen atama adı verilen bir kavram kullanır. Otomatik Kullanıcı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya atanmış olan kullanıcılar ve/veya gruplar eşitlenir.
 
-Yapılandırma ve otomatik kullanıcı hazırlama etkinleştirmeden önce hangi kullanıcılara ve/veya Azure AD'de grupları Federasyon Directory erişmesi karar vermeniz gerekir. Karar sonra buradaki yönergeleri izleyerek Federasyon dizinine bu kullanıcılara ve/veya grupları atayabilirsiniz:
+Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların ve/veya grupların Federasyon dizinine erişmesi gerektiğine karar vermeniz gerekir. Karar verdikten sonra buradaki yönergeleri izleyerek bu kullanıcıları ve/veya grupları Federasyon dizinine atayabilirsiniz:
 
- * [Kurumsal bir uygulamayı kullanıcı veya grup atama](../manage-apps/assign-user-or-group-access-portal.md) 
+ * [Kurumsal uygulamaya Kullanıcı veya Grup atama](../manage-apps/assign-user-or-group-access-portal.md) 
  
- ## <a name="important-tips-for-assigning-users-to-federated-directory"></a>Federasyon dizinine kullanıcı atama önemli ipuçları
- * Önerilir tek bir Azure AD kullanıcı sağlama yapılandırmasını otomatik kullanıcı test etmek için Federasyon dizinine atanır. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
+ ## <a name="important-tips-for-assigning-users-to-federated-directory"></a>Federasyon dizinine Kullanıcı atamaya yönelik önemli ipuçları
+ * Otomatik Kullanıcı sağlama yapılandırmasını test etmek için Federasyon dizinine tek bir Azure AD kullanıcısının atanması önerilir. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
 
-* Federasyon dizinine kullanıcı atama, atama iletişim kutusunda (varsa) geçerli bir uygulamaya özgü rolü seçmeniz gerekir. Varsayılan erişim rolüne sahip kullanıcılar, sağlamasından bırakılır.
+* Federasyon dizinine bir Kullanıcı atarken, atama iletişim kutusunda uygulamaya özgü geçerli herhangi bir rolü (varsa) seçmeniz gerekir. Varsayılan erişim rolüne sahip kullanıcılar, sağlanmasından çıkarılır.
     
- ## <a name="set-up-federated-directory-for-provisioning"></a>Dizini Federasyon sağlama için ayarlama
+ ## <a name="set-up-federated-directory-for-provisioning"></a>Federasyon dizinini sağlama için ayarlama
 
-Azure AD ile otomatik kullanıcı hazırlama için Federasyon Directory yapılandırmadan önce Federal dizinlerde SCIM sağlamayı etkinleştirmek gerekir.
+Federasyon dizinini Azure AD ile otomatik Kullanıcı sağlaması için yapılandırmadan önce, Federasyon dizininde SCıM sağlamasını etkinleştirmeniz gerekir.
 
-1. Oturum açın, [dizin Yönetici konsolunda federasyon](https://federated.directory/of)
+1. [Federasyon Dizin Yöneticisi konsolunuza](https://federated.directory/of) oturum açın
 
-    ![Federasyon Directory öğreticisini](media/federated-directory-provisioning-tutorial/companyname.png)
+    ![Federasyon Dizin öğreticisi](media/federated-directory-provisioning-tutorial/companyname.png)
 
-2. Gidin **dizinleri > Kullanıcı dizini** kiracınızı seçin. 
+2. **Dizinler > Kullanıcı dizinleri** ' ne gidin ve kiracınızı seçin. 
 
     ![Federasyon dizini](media/federated-directory-provisioning-tutorial/ad-user-directories.png)
 
-3.  Kalıcı taşıyıcı belirteci oluşturmak için gidin **dizin anahtarlar > Yeni anahtarı oluşturun.** 
+3.  Kalıcı bir taşıyıcı belirteci oluşturmak için **Dizin anahtarları > yeni anahtar oluştur** ' a gidin. 
 
     ![Federasyon dizini](media/federated-directory-provisioning-tutorial/federated01.png)
 
-4. Dizin anahtarı oluşturun. 
+4. Bir dizin anahtarı oluşturun. 
 
     ![Federasyon dizini](media/federated-directory-provisioning-tutorial/federated02.png)
     
 
-5. Kopyalama **erişim belirteci** değeri. Bu değer girilir **gizli belirteç** dizin Federasyon uygulamanızın Azure portalında sağlama sekmesindeki alan. 
+5. **Erişim belirteci** değerini kopyalayın. Bu değer, Azure portal Federasyon Dizin uygulamanızın sağlama sekmesinde bulunan **gizli dizi belirteci** alanına girilecektir. 
 
     ![Federasyon dizini](media/federated-directory-provisioning-tutorial/federated03.png)
     
-## <a name="add-federated-directory-from-the-gallery"></a>Galeriden Federasyon Dizin Ekle
+## <a name="add-federated-directory-from-the-gallery"></a>Galeriden Federasyon dizini ekleme
 
-Otomatik kullanıcı hazırlama Azure AD ile Federasyon Directory yapılandırmak için dizin Federasyon Azure AD uygulama galerisinden yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
+Azure AD ile otomatik Kullanıcı sağlaması için Federasyon dizinini yapılandırmak üzere, Azure AD uygulama galerisindeki Federasyon dizinini yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-**Azure AD uygulama galerisinden Federasyon dizin eklemek için aşağıdaki adımları gerçekleştirin:**
+**Azure AD Uygulama Galerisi 'nden federe dizin eklemek için aşağıdaki adımları uygulayın:**
 
-1. İçinde  **[Azure portalında](https://portal.azure.com)** , sol gezinti panelinde seçin **Azure Active Directory**.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
 
     ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. Git **kurumsal uygulamalar**ve ardından **tüm uygulamaları**.
+2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-3. Yeni bir uygulama eklemek için seçin **yeni uygulama** bölmenin üstünde düğme.
+3. Yeni bir uygulama eklemek için bölmenin üst kısmındaki **Yeni uygulama** düğmesini seçin.
 
     ![Yeni Uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Federasyon Directory**seçin **Federasyon Directory** Sonuçlar panelinde.
+4. Arama kutusuna **federe Dizin**girin, sonuçlar panelinde **federe Dizin** ' i seçin.
 
     ![Sonuç listesinde Federasyon dizini](common/search-new-app.png)
 
-5. Gidin **URL** vurgulanmış altındaki ayrı bir tarayıcı. 
+5. Aşağıda vurgulanan **URL** 'yi ayrı bir tarayıcıda gezin. 
 
     ![Federasyon dizini](media/federated-directory-provisioning-tutorial/loginpage1.png)
 
-6. Tıklayın **oturum**.
+6. **Oturum aç**' a tıklayın.
 
     ![Federasyon dizini](media/federated-directory-provisioning-tutorial/federated04.png)
 
-7.  Microsoft iş hesabınızı kullanarak dizin Federasyon oturum açma Federasyon Directory Openıdconnect uygulama olduğundan,'ı seçin.
+7.  Federasyon dizini bir Openıdconnect uygulaması olduğundan, Federasyon dizininde Microsoft iş hesabınızı kullanarak oturum açmayı seçin.
     
     ![Federasyon dizini](media/federated-directory-provisioning-tutorial/loginpage3.png)
  
-8. Başarılı bir kimlik doğrulamasından sonra onay sayfası için onay istemi kabul edin. Uygulama kiracınıza sonra bir otomatik olarak eklenir ve Federal Directory hesabınızla yönlendirilir.
+8. Başarılı bir kimlik doğrulamasından sonra, onay sayfasının onay isteğini kabul edin. Uygulama daha sonra kiracınıza otomatik olarak eklenir ve Federasyon Dizin hesabınıza yönlendirilirsiniz.
 
-    ![Federasyon directory SCIM Ekle](media/federated-directory-provisioning-tutorial/premission.png)
+    ![Federasyon dizini SCıM Ekle](media/federated-directory-provisioning-tutorial/premission.png)
 
 
 
-## <a name="configuring-automatic-user-provisioning-to-federated-directory"></a>Federasyon dizinine otomatik kullanıcı sağlamayı yapılandırma 
+## <a name="configuring-automatic-user-provisioning-to-federated-directory"></a>Federasyon dizinine otomatik Kullanıcı sağlamayı yapılandırma 
 
-Bu bölümde oluşturmak, güncelleştirmek ve kullanıcılara ve/veya Azure AD'de kullanıcı ve/veya grup atamalarını temel dizin Federasyon gruplarında devre dışı bırakmak için Azure AD sağlama hizmeti yapılandırmak için gereken adımları size kılavuzluk eder.
+Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak Federasyon dizininde bulunan kullanıcıları ve/veya grupları Azure AD 'de Kullanıcı ve/veya grup atamalarına göre oluşturma, güncelleştirme ve devre dışı bırakma adımları adım adım kılavuzluk eder.
 
-### <a name="to-configure-automatic-user-provisioning-for-federated-directory-in-azure-ad"></a>Azure AD'de Federasyon dizin için otomatik kullanıcı hazırlama yapılandırmak için:
+### <a name="to-configure-automatic-user-provisioning-for-federated-directory-in-azure-ad"></a>Azure AD 'de Federasyon dizini için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. Seçin **kurumsal uygulamalar**, ardından **tüm uygulamaları**.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Federasyon Directory**.
+2. Uygulamalar listesinde, **Federasyon dizini**' ni seçin.
 
-    ![Uygulamalar listesinde Federasyon dizin bağlantısı](common/all-applications.png)
+    ![Uygulamalar listesindeki Federasyon dizini bağlantısı](common/all-applications.png)
 
-3. Seçin **sağlama** sekmesi.
+3. **Sağlama** sekmesini seçin.
 
-    ![Sağlama sekmesinde](common/provisioning.png)
+    ![Sağlama sekmesi](common/provisioning.png)
 
-4. Ayarlama **hazırlama modu** için **otomatik**.
+4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
 
-    ![Sağlama sekmesinde](common/provisioning-automatic.png)
+    ![Sağlama sekmesi](common/provisioning-automatic.png)
 
-5. Altında **yönetici kimlik bilgileri** giriş bölümünde `https://api.federated.directory/v2/` Kiracı URL. Giriş alınır ve Federal dizininden daha önce kaydettiğiniz değeri **gizli belirteç**. Tıklayın **Test Bağlantısı** olun Azure AD Federasyon dizinine bağlanabilirsiniz. Bağlantı başarısız olursa, Federasyon Directory hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5. **Yönetici kimlik bilgileri** bölümünün altında, kiracı `https://api.federated.directory/v2/` URL 'sini girin. Daha önce aldığınız ve daha önce Federasyon dizininden **gizli bir belirteçte**kaydettiğiniz değeri girin. Azure AD 'nin Federasyon dizinine bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Federasyon Dizin hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
-    ![Kiracı URL'si + simgesi](common/provisioning-testconnection-tenanturltoken.png)
+    ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-8. İçinde **bildirim e-posta** alanında, bir kişi veya grubun ve sağlama hata bildirimleri almak - onay e-posta adresi girin **birhataoluşursa,bire-postabildirimigönder**.
+8. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
 
     ![Bildirim e-postası](common/provisioning-notification-email.png)
 
 9. **Kaydet**’e tıklayın.
 
-10. Altında **eşlemeleri** bölümünden **eşitleme Azure Active Directory Kullanıcıları Federasyon dizinine**.
+10. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Federasyon dizini olarak eşitler**' ı seçin.
 
-    ![Federasyon Directory öğreticisini](media/federated-directory-provisioning-tutorial/user-mappings.png)
+    ![Federasyon Dizin öğreticisi](media/federated-directory-provisioning-tutorial/user-mappings.png)
     
     
-11. Federasyon dizinine Azure AD'den eşitlenen kullanıcı özniteliklerini gözden **eşleme özniteliği** bölümü. Seçilen öznitelikler **eşleşen** özellikleri Federasyon dizinindeki kullanıcı hesaplarını güncelleştirme işlemleri eşleştirmek için kullanılır. Seçin **Kaydet** düğmesine değişiklikleri uygulayın.
+11. **Öznitelik eşleme** bölümünde Azure AD 'Den Federasyon dizinine eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşlenen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Federasyon dizinindeki Kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-    ![Federasyon Directory öğreticisini](media/federated-directory-provisioning-tutorial/user-attributes.png)
+    ![Federasyon Dizin öğreticisi](media/federated-directory-provisioning-tutorial/user-attributes.png)
     
 
-12. Kapsam belirleme filtrelerini yapılandırmak için aşağıdaki yönergelere bakın [Scoping filtre öğretici](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+12. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
 
-13. Azure AD Directory Federasyon Hizmeti sağlama etkinleştirmek için değiştirin **sağlama durumu** için **üzerinde** içinde **ayarları** bölümü.
+13. Federasyon dizini için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
-    ![Açıkken sağlama durumu](common/provisioning-toggle-on.png)
+    ![Sağlama durumu değiştirildi](common/provisioning-toggle-on.png)
 
-14. Kullanıcılara ve/veya istediğiniz grupları dizine Federasyon sağlama istenen değerleri seçerek tanımlamak **kapsam** içinde **ayarları** bölümü.
+14. **Ayarlar** bölümünde **kapsam** Içindeki Istenen değerleri seçerek Federasyon dizinine sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
-    ![Kapsam sağlama](common/provisioning-scope.png)
+    ![Sağlama kapsamı](common/provisioning-scope.png)
 
-15. Sağlama için hazır olduğunuzda, tıklayın **Kaydet**.
+15. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
 
-    ![Sağlama yapılandırmasını kaydetme](common/provisioning-configuration-save.png)
+    ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
 
-Bu işlem, tüm kullanıcıların ilk eşitleme başlar ve/veya tanımlı gruplar **kapsam** içinde **ayarları** bölümü. İlk eşitleme yaklaşık 40 dakikada Azure AD sağlama hizmeti çalışıyor sürece oluşan sonraki eşitlemeler uzun sürer. Kullanabileceğiniz **eşitleme ayrıntıları** bölüm ilerlemeyi izlemek ve Azure AD Directory federe bir hizmette sağlama tarafından gerçekleştirilen tüm eylemler açıklayan Etkinlik Raporu sağlama için bağlantıları izleyin.
+Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. İlerlemeyi izlemek ve Federasyon dizininde Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan, sağlama etkinliği raporuna ilişkin bağlantıları izlemek için **eşitleme ayrıntıları** bölümünü kullanabilirsiniz.
 
-Azure AD günlüklerini sağlama okuma hakkında daha fazla bilgi için bkz. [raporlama hesabı otomatik kullanıcı hazırlama](../manage-apps/check-status-user-account-provisioning.md)
+Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlamayı raporlama](../manage-apps/check-status-user-account-provisioning.md)
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kullanıcı hesabı, kurumsal uygulamalar için sağlamayı yönetme](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri gözden geçirin ve sağlama etkinliği raporları alma hakkında bilgi edinin](../manage-apps/check-status-user-account-provisioning.md)
+* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../manage-apps/check-status-user-account-provisioning.md)

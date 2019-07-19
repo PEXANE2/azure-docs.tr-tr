@@ -1,6 +1,6 @@
 ---
-title: Arka plan programı uygulama çağıran web API'leri (Uygulama Yapılandırması) - Microsoft kimlik platformu
-description: Daemon uygulamasının nasıl oluşturulacağını öğrenin çağrıları veritabanını web API'leri (Uygulama Yapılandırması)
+title: Web API 'Lerini çağıran Daemon uygulaması (uygulama yapılandırma)-Microsoft Identity platform
+description: Web API 'Lerini (App Configuration) çağıran bir Daemon uygulaması derlemeyi öğrenin
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -12,63 +12,63 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd2da6baecdce3ab85a45347f27f573bf814445d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 705545fd5167087be1a001c45f58907d6ff225e8
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055759"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277833"
 ---
-# <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Arka plan programı uygulama çağrıları web API'leri - kod yapılandırma
+# <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Web API 'Lerini çağıran Daemon uygulaması-kod yapılandırması
 
-Kod çağrıları web API'leri arka plan programı uygulamanız için yapılandırmayı öğrenin.
+Web API 'Lerini çağıran Daemon uygulamanız için kodu yapılandırmayı öğrenin.
 
-## <a name="msal-libraries-supporting-daemon-apps"></a>MSAL kitaplıkları destekleyen arka plan programları
+## <a name="msal-libraries-supporting-daemon-apps"></a>Daemon uygulamalarını destekleyen MSAL kitaplıkları
 
-Arka plan programı uygulamaları destekleyen Microsoft kitaplıkları şunlardır:
+Daemon uygulamalarını destekleyen Microsoft kitaplıkları şunlardır:
 
   MSAL kitaplığı | Açıklama
   ------------ | ----------
-  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Bir arka plan programı uygulaması derlemek için desteklenen platformları olan .NET Framework ve .NET Core platformlar (UWP değil, Xamarin.iOS ve Xamarin.Android bu platformları olarak ortak istemci uygulamaları oluşturmak için kullanılır)
-  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL.Python | Genel önizlemeye sunuldu - sürmekte olan geliştirme
-  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL.Java | Genel önizlemeye sunuldu - sürmekte olan geliştirme
+  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Bir Daemon uygulaması derlemek için desteklenen platformlar .NET Framework ve .NET Core platformları (UWP, Xamarin. iOS ve Xamarin. Android değil, ortak istemci uygulamaları oluşturmak için kullanılır)
+  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL. Python | Geliştirme devam ediyor-genel önizlemede
+  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL. Java | Geliştirme devam ediyor-genel önizlemede
 
-## <a name="configuration-of-the-authority"></a>Yapılandırma yetkilisi
+## <a name="configuration-of-the-authority"></a>Yetkilisinin yapılandırması
 
-Temsilci izinleri, ancak uygulama izinleri, arka plan programı uygulamalarını kullanma koşuluyla, kendi *hesap türü desteklenen* olamaz *hesaplarında herhangi bir kuruluş dizinini ve kişisel Microsoft hesapları ( Örneğin, Skype, Xbox, Outlook.com)* . Aslında, kişisel Microsoft hesapları için arka plan programı uygulamaya izin vermek için bir kiracı Yöneticisi yok yoktur. Seçmeniz gerekir *hesapları Kuruluşumdaki* veya *hesapları herhangi bir kuruluştaki*.
+Daemon uygulamalarının temsilci izinleri kullanmadığında, ancak uygulama izinleri, *Desteklenen hesap türü* *herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesap olamaz (örneğin, Skype, Xbox, Outlook.com)* . Aslında, Microsoft kişisel hesapları için Daemon uygulamasına izin vermek üzere kiracı yöneticisi yoktur. *Kuruluşumdaki hesaplar* veya *herhangi bir kuruluştaki hesaplar*' ı seçmeniz gerekir.
 
-Bu nedenle uygulama yapılandırmasında belirtilen yetkilisi Kiracı ed (Kiracı kimliği veya kuruluşunuz ile ilişkilendirilen bir etki alanı adı belirterek) olmalıdır.
+Bu nedenle, uygulama yapılandırmasında belirtilen yetkilinin kiracı ile bağlantılı olması gerekir (kiracı KIMLIĞI veya kuruluşunuzla ilişkili bir etki alanı adı belirterek).
 
-Bir ISV ve çok kiracılı bir araç sağlamak istiyorsanız, kullanabileceğiniz `organizations`. Ancak, müşterileriniz için yönetici onayı vermek anlatan gerekecek göz önünde bulundurun. Bkz: [tamamını bir kiracı için onay isteme](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant) Ayrıntılar için. Ayrıca şu anda bir sınırlama yoktur MSAL içinde `organizations` istemci kimlik bilgileri, bir uygulama gizli anahtarı (sertifika değil) olduğunda yalnızca izin verilir. Bkz: [MSAL.NET hata #891](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/891)
+Bir ISV iseniz ve çok kiracılı bir araç sağlamak istiyorsanız, kullanabilirsiniz `organizations`. Ancak, müşterilere yönetici onayı verme hakkında da dikkat etmeniz gerektiğini unutmayın. Ayrıntılar için [bir kiracının tamamına Izin isteme](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant) konusuna bakın. MSAL ' de `organizations` , yalnızca istemci kimlik bilgileri bir uygulama gizli anahtarı (sertifika değil) olduğunda izin verilen bir sınırlama vardır. Bkz. [msal.net bug #891](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/891)
 
-## <a name="application-configuration-and-instantiation"></a>Uygulama Yapılandırması ve örnek oluşturma
+## <a name="application-configuration-and-instantiation"></a>Uygulama yapılandırma ve örnekleme
 
-MSAL kitaplıklarında, istemci kimlik bilgileri (parola veya sertifika) gizli bir istemci uygulaması oluşturma işleminin bir parametre olarak geçirilir.
+MSAL kitaplıklarında, istemci kimlik bilgileri (gizli veya sertifika) gizli istemci uygulaması oluşturma parametresi olarak geçirilir.
 
 > [!IMPORTANT]
-> Uygulamanızı bir konsol uygulaması olsa bile bir arka plan programı uygulamasıysa, bir hizmet olarak çalışan, gizli bir istemci uygulaması olması gerekir.
+> Uygulamanız hizmet olarak çalışan bir konsol uygulaması olsa da, bir Daemon uygulaması ise gizli bir istemci uygulaması olması gerekir.
 
 ### <a name="msalnet"></a>MSAL.NET
 
-Ekleme [Microsoft.IdentityClient](https://www.nuget.org/packages/Microsoft.Identity.Client) uygulamanıza NuGet paketi.
+Uygulamanıza [Microsoft. ıdentityclient](https://www.nuget.org/packages/Microsoft.Identity.Client) NuGet paketini ekleyin.
 
-MSAL.NET ad alanı kullanın
+MSAL.NET ad alanını kullan
 
 ```CSharp
 using Microsoft.Identity.Client;
 ```
 
-Arka plan programı uygulama tarafından sunulan bir `IConfidentialClientApplication`
+Daemon uygulaması şu şekilde sunulacaktır`IConfidentialClientApplication`
 
 ```CSharp
 IConfidentialClientApplication app;
 ```
 
-Bir uygulama gizli anahtarı ile bir uygulama oluşturmak için kod aşağıdaki gibidir:
+Uygulama gizli anahtarı ile uygulama derlemek için kod aşağıda verilmiştir:
 
 ```CSharp
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
@@ -77,7 +77,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
            .Build();
 ```
 
-Bir sertifika ile bir uygulama oluşturmak için kod aşağıdaki gibidir:
+Sertifika ile bir uygulama oluşturmak için kod aşağıda verilmiştir:
 
 ```CSharp
 X509Certificate2 certificate = ReadCertificate(config.CertificateName);
@@ -87,7 +87,10 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
     .Build();
 ```
 
-### <a name="msalpython"></a>MSAL.Python
+Son olarak, bir istemci parolası veya bir sertifika yerine gizli istemci uygulaması, istemci onayları kullanarak kimliğini kanıtlayabilirler. Bu gelişmiş senaryo [istemci onaylamaları](msal-net-client-assertions.md) hakkında ayrıntılı
+
+
+### <a name="msalpython"></a>MSAL. Python
 
 ```Python
 # Create a preferably long-lived app instance which maintains a token cache.
@@ -102,7 +105,7 @@ app = msal.ConfidentialClientApplication(
     )
 ```
 
-### <a name="msaljava"></a>MSAL.Java
+### <a name="msaljava"></a>MSAL. Java
 
 ```Java
 PrivateKey key = getPrivateKey();
@@ -120,4 +123,4 @@ ConfidentialClientApplication cca = ConfidentialClientApplication
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Arka plan programı app - uygulama belirteçlerini almak](./scenario-daemon-acquire-token.md)
+> [Daemon uygulaması-uygulama belirteçleri alınıyor](./scenario-daemon-acquire-token.md)

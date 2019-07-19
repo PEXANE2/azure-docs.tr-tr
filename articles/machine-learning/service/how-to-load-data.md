@@ -1,5 +1,5 @@
 ---
-title: "Yük: Python SDK'sı veri hazırlama"
+title: "Yükleme: Data Prep Python SDK 'Sı"
 titleSuffix: Azure Machine Learning service
 description: Azure Machine Learning veri hazırlığı SDK'sı ile veri yükleme hakkında bilgi edinin. Farklı türde giriş verileri yükleme, dosya türleri ve parametreleri belirtin veya dosya türü otomatik olarak algılamak için SDK'sı akıllı okuma işlevini kullanın.
 services: machine-learning
@@ -10,40 +10,40 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: jmartens
-ms.date: 02/22/2019
+ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: fef3281f1f4e727b58878439e3f6456fee3b6241
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0fa60198af66154e0ddc703f90224adf5be89447
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66752939"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876417"
 ---
-# <a name="load-and-read-data-with-the-azure-machine-learning-data-prep-sdk"></a>Yükleme ve Azure Machine Learning veri hazırlığı SDK'sı ile veri okuma
-Bu makalede, Azure Machine Learning veri hazırlığı SDK'sını kullanarak veri yükleme farklı yöntemleri öğrenin.  SDK'sı dahil olmak üzere birden çok veri alımı özellikleri destekler:
+# <a name="load-and-read-data-with-the-azure-machine-learning-data-prep-sdk"></a>Azure Machine Learning Data Prep SDK ile verileri yükleme ve okuma
+Bu makalede, veri yükleme Azure Machine Learning Data Prep SDK 'sını kullanarak farklı yöntemler öğreneceksiniz.  SDK'sı dahil olmak üzere birden çok veri alımı özellikleri destekler:
 
 * Birçok dosya türünü parametre çıkarımı (kodlama, ayırıcı, üst bilgiler) ayrıştırma ile yükleme
 * Tür-dönüştürme çıkarımı kullanılarak sırasında dosya yükleniyor
 * MS SQL Server ve Azure Data Lake Storage bağlantı desteği
 
 > [!Important]
-> Yeni bir çözüm oluşturuyorsanız deneyin [Azure Machine Learning veri kümeleri](how-to-explore-prepare-data.md) (Önizleme) için bir veri keşfi ve hazırlama. Veri kümeleri, veri hazırlığı SDK'sı, yapay ZEKA çözümleri, veri kümelerini yönetmek için genişletilmiş işlevselliği sunan sonraki sürümüdür.
-> Kullanırsanız `azureml-dataprep` Bağlantılarınızdaki kullanmak yerine bir veri akışı oluşturmak için paket `azureml-datasets` bir veri kümesini oluşturmak için paket, anlık görüntüler veya tutulan veri kümeleri, daha sonra kullanmak üzere mümkün olmayacaktır.
+> Yeni bir çözüm oluşturuyorsanız veri araştırması ve hazırlığı için [Azure Machine Learning veri kümelerini](how-to-explore-prepare-data.md) (Önizleme) deneyin. Veri kümeleri, veri hazırlama SDK 'sının bir sonraki sürümüdür ve veri kümelerinin AI çözümlerinde yönetilmesi için genişletilmiş işlevler sunar.
 
-Aşağıdaki tabloda, genel dosya türlerinden verileri yüklemek için kullanılan işlevleri seçimini gösterir.
+
+Aşağıdaki tabloda, ortak dosya türlerinden veri yüklemek için kullanılan işlevlerin bir seçimi gösterilmektedir.
 
 | Dosya türü | İşlev | Başvuru bağlantısı |
 |-------|-------|-------|
-|Tüm|`auto_read_file()`|[Başvuru](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep?view=azure-dataprep-py#auto-read-file-path--filepath--include-path--bool---false-----azureml-dataprep-api-dataflow-dataflow)|
+|Any|`auto_read_file()`|[Başvuru](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep?view=azure-dataprep-py#auto-read-file-path--filepath--include-path--bool---false-----azureml-dataprep-api-dataflow-dataflow)|
 |Text|`read_lines()`|[Başvuru](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep#read-lines-path--filepath--header--azureml-dataprep-api-dataflow-promoteheadersmode----promoteheadersmode-none--0---encoding--azureml-dataprep-api-engineapi-typedefinitions-fileencoding----fileencoding-utf8--0---skip-rows--int---0--skip-mode--azureml-dataprep-api-dataflow-skipmode----skipmode-none--0---comment--str---none--include-path--bool---false--verify-exists--bool---true-----azureml-dataprep-api-dataflow-dataflow)|
 |CSV|`read_csv()`|[Başvuru](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep#read-csv-path--filepath--separator--str--------header--azureml-dataprep-api-dataflow-promoteheadersmode----promoteheadersmode-constantgrouped--3---encoding--azureml-dataprep-api-engineapi-typedefinitions-fileencoding----fileencoding-utf8--0---quoting--bool---false--inference-arguments--azureml-dataprep-api-builders-inferencearguments---none--skip-rows--int---0--skip-mode--azureml-dataprep-api-dataflow-skipmode----skipmode-none--0---comment--str---none--include-path--bool---false--archive-options--azureml-dataprep-api--archiveoption-archiveoptions---none--infer-column-types--bool---false--verify-exists--bool---true-----azureml-dataprep-api-dataflow-dataflow)|
 |Excel|`read_excel()`|[Başvuru](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep#read-excel-path--filepath--sheet-name--str---none--use-column-headers--bool---false--inference-arguments--azureml-dataprep-api-builders-inferencearguments---none--skip-rows--int---0--include-path--bool---false--infer-column-types--bool---false--verify-exists--bool---true-----azureml-dataprep-api-dataflow-dataflow)|
 |Sabit Genişlik|`read_fwf()`|[Başvuru](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep#read-fwf-path--filepath--offsets--typing-list-int---header--azureml-dataprep-api-dataflow-promoteheadersmode----promoteheadersmode-constantgrouped--3---encoding--azureml-dataprep-api-engineapi-typedefinitions-fileencoding----fileencoding-utf8--0---inference-arguments--azureml-dataprep-api-builders-inferencearguments---none--skip-rows--int---0--skip-mode--azureml-dataprep-api-dataflow-skipmode----skipmode-none--0---include-path--bool---false--infer-column-types--bool---false--verify-exists--bool---true-----azureml-dataprep-api-dataflow-dataflow)|
 |JSON|`read_json()`|[Başvuru](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep?view=azure-dataprep-py#read-json-path--filepath--encoding--azureml-dataprep-api-engineapi-typedefinitions-fileencoding----fileencoding-utf8--0---flatten-nested-arrays--bool---false--include-path--bool---false-----azureml-dataprep-api-dataflow-dataflow)|
 
-## <a name="load-data-automatically"></a>Otomatik olarak veri yükleme
+## <a name="load-data-automatically"></a>Verileri otomatik olarak yükle
 
-Dosya türü belirtmeden verileri otomatik olarak yüklemek için kullanmak `auto_read_file()` işlevi. Dosya ve okumak için gerekli bağımsız değişken türü olayla otomatik olarak.
+Dosya türünü belirtmeden verileri otomatik olarak yüklemek için `auto_read_file()` işlevini kullanın. Dosya türü ve okumak için gereken bağımsız değişkenler otomatik olarak algılanır.
 
 ```python
 import azureml.dataprep as dprep
@@ -51,13 +51,13 @@ import azureml.dataprep as dprep
 dflow = dprep.auto_read_file(path='./data/any-file.txt')
 ```
 
-Bu işlev, dosya türü, kodlama ve diğer ayrıştırma bağımsız değişkenler tek bir kullanışlı giriş noktasından tüm otomatik olarak algılamak için yararlıdır. İşlev da otomatik olarak ayrılmış verileri yüklenirken yaygın olarak gerçekleştirilen aşağıdaki adımları gerçekleştirir:
+Bu işlev, tek bir kullanışlı giriş noktasından dosya türünü, kodlamayı ve diğer ayrıştırma bağımsız değişkenlerini otomatik olarak algılamak için yararlıdır. İşlev Ayrıca, sınırlandırılmış verileri yüklerken yaygın olarak gerçekleştirilen aşağıdaki adımları otomatik olarak gerçekleştirir:
 
-* Çıkarımını yapma ve sınırlayıcı ayarlama
-* Dosyanın üst boş kayıtları
-* Çıkarımını yapma ve üst bilgi satırı ayarlama
+* Sınırlandırıcıyı erteleme ve ayarlama
+* Dosyanın en üstünde boş kayıtlar atlanıyor
+* Üst bilgi satırını erteleme ve ayarlama
 
-Alternatif olarak, önceden yazın ve açıkça bu ayrıştırılır şeklini denetlemek istediğiniz dosyanın biliyorsanız, dosya özel işlevleri kullanın.
+Alternatif olarak, dosya türünü sürenin önünde biliyorsanız ve ayrıştırılma şeklini açıkça denetlemek istiyorsanız, dosyaya özgü işlevleri kullanın.
 
 ## <a name="load-text-line-data"></a>Metin satırı veri yükleme
 
@@ -128,7 +128,7 @@ dflow.dtypes
 
 Varsayılan olarak, Azure Machine Learning veri hazırlığı SDK'sı, veri türünü değiştirmez. Makaleyi okuduğunuz veri kaynağı bir metin dosyası olduğundan SDK tüm değerleri dize olarak okur. Bu örnekte, sayı olarak sayısal sütunları ayrıştırılması gerekip. Ayarlama `inference_arguments` parametresi `InferenceArguments.current_culture()` otomatik olarak çıkarır ve dosyanın okuma sırasında sütun türlerini dönüştürmek için.
 
-```
+```python
 dflow = dprep.read_csv(path='https://dpreptestfiles.blob.core.windows.net/testfiles/read_csv_duplicate_headers.csv',
                           skip_rows=1,
                           inference_arguments=dprep.InferenceArguments.current_culture())
@@ -178,7 +178,7 @@ dflow = dprep.read_excel(path='./data/excel.xlsx', sheet_name='Sheet2', use_colu
 
 ## <a name="load-fixed-width-data-files"></a>Sabit genişlikte veri dosyalarını yükleme
 
-Sabit genişlikte dosyaları yüklemek için karakter ofsetleri listesini belirtin. İlk sütunda, her zaman sıfır uzaklığında başlatmak için varsayılır.
+Sabit genişlikte dosyaları yüklemek için karakter uzaklıkları listesini belirtirsiniz. İlk sütunda, her zaman sıfır uzaklığında başlatmak için varsayılır.
 
 ```python
 dflow = dprep.read_fwf('./data/fixed_width_file.txt', offsets=[7, 13, 43, 46, 52, 58, 65, 73])
@@ -207,7 +207,7 @@ dflow = dprep.read_fwf('./data/fixed_width_file.txt',
 
 ## <a name="load-sql-data"></a>SQL veri yükleme
 
-SDK Ayrıca verileri bir SQL kaynağı'ndan yükleyin. Şu anda yalnızca Microsoft SQL Server desteklenir. Oluşturma bir SQL server verilerini okumak için bir [ `MSSQLDataSource` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.mssqldatasource?view=azure-dataprep-py) bağlantı parametrelerini içeren nesne. Parola parametresi `MSSQLDataSource` kabul eden bir [ `Secret` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep?view=azure-dataprep-py#register-secret-value--str--id--str---none-----azureml-dataprep-api-engineapi-typedefinitions-secret) nesne. Gizli bir nesne iki şekilde oluşturabilirsiniz:
+SDK Ayrıca verileri bir SQL kaynağı'ndan yükleyin. Şu anda yalnızca Microsoft SQL Server desteklenir. Bir SQL Server 'dan verileri okumak için, bağlantı parametrelerini [`MSSQLDataSource`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.mssqldatasource?view=azure-dataprep-py) içeren bir nesne oluşturun. Öğesinin `MSSQLDataSource` password parametresi bir [`Secret`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep?view=azure-dataprep-py#register-secret-value--str--id--str---none-----azureml-dataprep-api-engineapi-typedefinitions-secret) nesneyi kabul eder. Gizli bir nesne iki şekilde oluşturabilirsiniz:
 
 * Gizli anahtarı ve değeri yürütme altyapısı ile kaydedin.
 * Gizli dizi ile yalnızca oluşturma bir `id` (gizli değer zaten yürütme ortamında kayıtlı olup olmadığını) kullanarak `dprep.create_secret("[SECRET-ID]")`.
@@ -294,7 +294,7 @@ servicePrincipalAppId = "8dd38f34-1fcb-4ff9-accd-7cd60b757174"
 
 ### <a name="acquire-an-oauth-access-token"></a>OAuth erişim belirteci alma
 
-Kullanım `adal` paket (`pip install adal`) kimlik doğrulaması bağlamını MSFT Kiracı'da oluşturmak ve bir OAuth erişim belirteci almak için. ADLS için kaynak belirteci isteği için olmalıdır ' https:\//datalake.azure.net', çoğu diğer Azure kaynaklarından farklı.
+Kullanım `adal` paket (`pip install adal`) kimlik doğrulaması bağlamını MSFT Kiracı'da oluşturmak ve bir OAuth erişim belirteci almak için. ADLS için, belirteç isteğindeki kaynak, diğer Azure kaynaklarından farklı olan ' https:\//datalake.Azure.net ' için olmalıdır.
 
 ```python
 import adal
@@ -316,4 +316,4 @@ dflow.to_pandas_dataframe().head()
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Machine Learning veri hazırlığı SDK'sı bkz [öğretici](tutorial-data-prep.md) çözmenin belirli bir senaryo örneği
+* Belirli bir senaryoyu çözme örneği için bkz. Azure Machine Learning Data Prep SDK [öğreticisi](tutorial-data-prep.md)

@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: SQL .NET Core API, SDK ve kaynakları'
+title: 'Azure Cosmos DB: SQL .NET Core API, SDK & kaynakları'
 description: Tüm SQL .NET Core API ve yayın tarihleri, sona erme tarihlerini ve her bir Azure Cosmos DB .NET Core SDK'sı sürümü arasında yapılan değişiklikler dahil olmak üzere SDK'sı hakkında bilgi edinin.
 author: SnehaGunda
 ms.service: cosmos-db
@@ -8,18 +8,19 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: 14350125f88c315a813eb64e3ce2b88dbec2aa24
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: de712d63fa2315a85c6c0eaf392d9c17758e4999
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67340189"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226174"
 ---
-# <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK'sı SQL API'si için: Sürüm Notları ve kaynakları
+# <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>SQL API için Azure Cosmos DB .NET Core SDK: Sürüm notları ve kaynakları
 > [!div class="op_single_selector"]
+> * [.NET Core](sql-api-sdk-dotnet-core.md)
+> * [.NET Standard](sql-api-sdk-dotnet-standard.md)
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET değişiklik akışı](sql-api-sdk-dotnet-changefeed.md)
-> * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Async Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
@@ -35,38 +36,32 @@ ms.locfileid: "67340189"
 |**SDK'sını indirme**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/)|
 |**API belgeleri**|[.NET API başvuru belgeleri](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)|
 |**Örnekler**|[.NET kodu örnekleri](sql-api-dotnet-samples.md)|
-|**Kullanmaya başlama**|[Azure Cosmos DB .NET Core SDK ile çalışmaya başlama](sql-api-dotnet-core-get-started-preview.md)|
+|**Kullanmaya başlama**|[Azure Cosmos DB .NET ile çalışmaya başlama](sql-api-sdk-dotnet.md)|
 |**Web uygulaması Öğreticisi**|[Azure Cosmos DB ile Web uygulaması geliştirme](sql-api-dotnet-application.md)|
 |**Geçerli desteklenen çerçevesi**|[.NET standard 1.6 ve .NET standart 1.5](https://www.nuget.org/packages/NETStandard.Library)|
 
 ## <a name="release-notes"></a>Sürüm Notları
 
-Azure Cosmos DB .NET Core SDK'sı özellik eşliği ile en son sürümüne sahip [Azure Cosmos DB .NET SDK'sı](sql-api-sdk-dotnet.md).
-
-### <a name="a-name3001-preview3001-preview"></a><a name="3.0.0.1-preview"/>3.0.0.1-Preview
-* 1 önizlemesi [sürüm 3.0.0](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) genel önizlemesi için .NET SDK'sının.
-* Hedef .NET framework 4.6.1+ .NET ve .NET Core 2.0 + destekleyen standardı
-* Yeni nesne modeli, üst düzey CosmosClient ve yöntemleri ile ilgili CosmosDatabases ve CosmosContainers CosmosItems sınıflar arasında bölün.
-* Akışları için destek.
-* Durum kodu döndürür ve yanıt döndürüldüğünde yalnızca durum sunucudan CosmosResponseMessage güncelleştirildi.
+> [!NOTE]
+> .NET Core kullanıyorsanız, lütfen .NET Standard hedefleyen [.NET SDK 'sının](sql-api-sdk-dotnet-standard.md)en son sürüm 3. x sürümünü inceleyin. 
 
 ### <a name="a-name241241"></a><a name="2.4.1"/>2.4.1
 
-* Düzeltmeleri boş sayfalar neden sorgular için yarış durumu izleme
+* Boş sayfalara neden olan sorgular için izleme yarış durumunu düzeltir
 
 ### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
 
-* NuGet paketinde tanımlanan SDK'ın System.Net.Http sürümle eşleşen
-* LINQ sorguları için Ondalık Duyarlığı boyutu artar.
-* Yeni eklenen sınıflarda CompositePath CompositePathSortOrder, SpatialSpec SpatialType ve PartitionKeyDefinitionVersion
-* DocumentCollection için eklenen TimeToLivePropertyPath
-* Eklenen CompositeIndexes ve SpatialIndexes IndexPolicy için
-* Eklenen PartitionKeyDefinition sürümüne
-* PartitionKey Yok'a eklendi
+* SDK 'nın System .net. http sürümü NuGet paketinde tanımlananla eşleşiyor
+* LINQ sorguları için artırılmış ondalık duyarlık boyutu.
+* Yeni sınıflar CompositePath, CompositePathSortOrder, SpatialSpec, SpatialType ve PartitionKeyDefinitionVersion eklendi
+* DocumentCollection 'a TimeToLivePropertyPath eklendi
+* Indexpolicy 'e Compositeındexes ve Spatıalındexes eklendi
+* PartitionKeyDefinition 'a eklenen sürüm
+* PartitionKey 'e None eklendi
 
 ### <a name="a-name230230"></a><a name="2.3.0"/>2.3.0
 
- * Eklenen IdleTcpConnectionTimeout, OpenTcpConnectionTimeout, MaxRequestsPerTcpConnection ve MaxTcpConnectionsPerEndpoint ConnectionPolicy için.
+ * ConnectionPolicy için ıdletcpconnectiontimeout, OpenTcpConnectionTimeout, MaxRequestsPerTcpConnection ve MaxTcpConnectionsPerEndpoint eklendi.
  
 ### <a name="a-name223223"></a><a name="2.2.3"/>2.2.3
 
@@ -74,27 +69,27 @@ Azure Cosmos DB .NET Core SDK'sı özellik eşliği ile en son sürümüne sahip
 
 ### <a name="a-name222222"></a><a name="2.2.2"/>2.2.2
 
-* Eklenen ortam değişkeni ayarını "POCOSerializationOnly".
+* "POCOSerializationOnly" ortam değişkeni ayarı eklendi.
 
-* DocumentDB.Spatial.Sql.dll kaldırılır ve artık Microsoft.Azure.Documents.ServiceInterop.dll dahil
+* DocumentDB. uzamsal. Sql. dll kaldırıldı ve artık Microsoft. Azure. Documents. Serviceınterop. dll dosyasına eklendi
 
 ### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
 
-* Yeniden deneme mantığı için StoredProcedure gelişme yük devretme sırasında çağrıları yürütün.
+* StoredProcedure yürütme çağrılarına yük devretme sırasında yeniden deneme mantığı geliştirme.
 
-* Yapılan DocumentClientEventSource tekli. 
+* DocumentClientEventSource Singleton yapıldı. 
 
-* ConnectionPolicy RequestTimeout uygularken değil GatewayAddressCache zaman aşımı düzeltin.
+* GatewayAddressCache zaman aşımını çözme, ConnectionPolicy RequestTimeout özelliğini karşılamıyor.
 
 ### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
 
-* Doğrudan/TCP taşıma tanılama için TransportException, SDK'sının bir iç özel durum türü eklediniz. Bu tür, mevcut olduğunda özel durum iletileri, istemci bağlantısı sorunlarını gidermek için ek bilgi yazdırır.
+* Doğrudan/TCP Aktarım tanılaması için SDK 'nın iç özel durum türü TransportException eklenmiştir. Özel durum iletilerinde mevcut olduğunda, bu tür istemci bağlantı sorunlarını gidermek için ek bilgileri yazdırır.
 
-* HttpClient istekleri (örn., HttpClientHandler) göndermek için kullanılacak HTTP işleyici yığını bir HttpMessageHandler alan eklenen yeni oluşturucu aşırı yüklemesi.
+* HttpClient istekleri (ör. HttpClientHandler) göndermek için kullanılacak bir HTTP işleyici yığını olan bir HttpMessageHandler 'ı alan yeni Oluşturucu aşırı yüklemesi eklendi.
 
-* Burada üstbilgisi null değerlerle düzgün bir şekilde işlenmemiş olan hata düzeltildi.
+* Null değerli üstbilginin düzgün işlenmediğinden oluşan hatayı düzeltir.
 
-* Koleksiyon önbellek doğrulama geliştirildi.
+* Geliştirilmiş koleksiyon önbelleği doğrulaması.
 
 ### <a name="a-name213213"></a><a name="2.1.3"/>2.1.3
 
@@ -143,11 +138,11 @@ Azure Cosmos DB .NET Core SDK'sı özellik eşliği ile en son sürümüne sahip
 ### <a name="a-name191191"></a><a name="1.9.1"/>1.9.1
 
 * Çapraz bölüm sıralama ölçütü sorguları köşe durumlarda sabit KeyNotFoundException için.
-* Burada Item özniteliği LINQ sorguları için select yan tümcesinde değil kabul hata düzeltildi.
+* LINQ sorguları için select yan tümcesinde JsonProperty özniteliğinin kabul edildiği düzeltilmedi.
 
 ### <a name="a-name182182"></a><a name="1.8.2"/>1.8.2
 
-* Aralıklı olarak sonuçlanan belirli yarış koşulları altında isabet hata düzeltildi "Microsoft.Azure.Documents.NotFoundException: Oturum tutarlılık düzeyi kullanılırken okuma oturumu için giriş Oturum belirteci kullanılabilir değil"hata.
+* Belirli yarış koşullarında oluşan hata düzeltildi, bu durum aralıklı olarak "Microsoft. Azure. Documents. NotFoundException" ile sonuçlanır: Oturum tutarlılığı düzeyi kullanılırken, okuma oturumu, giriş oturumu belirtecinin hataları için kullanılamaz.
 
 ### <a name="a-name181181"></a><a name="1.8.1"/>1.8.1
 
@@ -220,7 +215,7 @@ Azure Cosmos DB .NET Core SDK'sı özellik eşliği ile en son sürümüne sahip
 
 ### <a name="a-name112112"></a><a name="1.1.2"/>1.1.2
 
-* Bazen bir WebException neden olan bir sorunu için düzeltme: Uzak ad çözümlenemedi.
+* Bazen WebException neden olan bir sorun için çözüm: Uzak ad çözümlenemedi.
 * Doğrudan ReadDocumentAsync API'sine yeni aşırı yüklemeler ekleyerek türü belirtilmiş bir belgeyi okumak için destek eklendi.
 
 ### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
@@ -244,12 +239,12 @@ Azure Cosmos DB .NET Core SDK'sı hızlı, platformlar arası oluşturmanıza ol
 Azure Cosmos DB .NET Core Önizleme SDK'sı hızlı, platformlar arası oluşturmanıza olanak sağlayan [ASP.NET Core](https://www.asp.net/core) ve [.NET Core](https://www.microsoft.com/net/core#windows) uygulamaları Windows, Mac ve Linux üzerinde çalıştırılacak.
 
 Azure Cosmos DB .NET Core Önizleme SDK'sı özellik eşliği ile en son sürümüne sahip [Azure Cosmos DB .NET SDK'sı](sql-api-sdk-dotnet.md) ve aşağıdakileri destekler:
-* Tüm [bağlantı modları](performance-tips.md#networking): Ağ geçidi modu, doğrudan TCP ve doğrudan HTTPs.
-* Tüm [tutarlılık düzeyleri](consistency-levels.md): Sınırlanmış eskime durumu, güçlü, oturum ve nihai.
+* Tüm [bağlantı modları](performance-tips.md#networking): Ağ Geçidi modu, doğrudan TCP ve doğrudan HTTPs.
+* Tüm [tutarlılık düzeyleri](consistency-levels.md): Güçlü, oturum, sınırlanmış Eskime durumu ve nihai.
 * [Bölümlenmiş koleksiyonları](partition-data.md).
 * [Çoklu bölge veritabanı hesapları ve coğrafi çoğaltma](distribute-data-globally.md).
 
-Bu SDK ilgili sorularınız varsa postalayabilir [StackOverflow](https://stackoverflow.com/questions/tagged/azure-documentdb), veya bir sorunu bildirin [GitHub deposu](https://github.com/Azure/azure-documentdb-dotnet/issues).
+Bu SDK ile ilgili sorularınız varsa, [StackOverflow](https://stackoverflow.com/questions/tagged/azure-documentdb)' a gönderin veya [GitHub deposunda](https://github.com/Azure/azure-documentdb-dotnet/issues)bir sorun yapın.
 
 ## <a name="release--retirement-dates"></a>Yayın ve sona erme tarihlerini
 
@@ -260,8 +255,8 @@ Bu SDK ilgili sorularınız varsa postalayabilir [StackOverflow](https://stackov
 | [2.3.0](#2.3.0) |04 Nisan 2019 |--- |
 | [2.2.3](#2.2.3) |11 Mart 2019 |--- |
 | [2.2.2](#2.2.2) |06 Şubat 2019 |--- |
-| [2.2.1](#2.2.1) |Aralık 24 Mayıs 2018 |--- |
-| [2.2.0](#2.2.0) |07 aralık 2018'e |--- |
+| [2.2.1](#2.2.1) |24 Aralık 2018 |--- |
+| [2.2.0](#2.2.0) |07 Aralık 2018 |--- |
 | [2.1.3](#2.1.3) |15 Ekim 2018 |--- |
 | [2.1.2'yi](#2.1.2) |04 Ekim 2018 |--- |
 | [2.1.1](#2.1.1) |27 Eylül 2018'den |--- |

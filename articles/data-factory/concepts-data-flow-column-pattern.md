@@ -1,32 +1,42 @@
 ---
-title: Azure veri fabrikası veri akışı sütunu desen eşleştirme
-description: Azure veri fabrikası sütun desenleri alanları temel alınan şema meta verilerini bakılmaksızın bir veri akışı dönüştürme genelleştirilmiş şablon modellerini oluşturmak için veri akışı eşleme kullanmayı öğrenin
+title: Azure Data Factory eşleme veri akışı sütun desenleri
+description: Veri akışlarında eşleme Azure Data Factory sütun desenleri kullanarak Genelleştirilmiş veri dönüştürme desenleri oluşturma
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 08cdaafe00b7dc586ea75f6ff03fdb89107edee9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d24988dfd5cbaf20e92c5afbbc39dc0c78e3ef6a
+ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66430761"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68314848"
 ---
-# <a name="azure-data-factory-mapping-data-flows-column-patterns"></a>Azure veri fabrikası eşleme veri akışları sütun desenleri
+# <a name="azure-data-factory-mapping-data-flows-column-patterns"></a>Azure Data Factory eşleme veri akışları sütun desenleri
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Sabit kodlanmış sütun adları yerine desenleri temel şablon sütunları oluşturabilmesi çeşitli Azure veri fabrikası, veri akışı dönüşümleri "Sütunları desenleri" fikrini destekler. İfade oluşturucu içinde bu özellik, tam ve özel alan adları yerine dönüştürme için sütunları eşleştirmeye desenleri tanımlamak için kullanabilirsiniz. Gelen kaynak alanları genellikle, özellikle metin dosyalarında veya NoSQL veritabanları sütunları değiştirme söz konusu olduğunda değiştirirseniz desenleri kullanışlıdır. Bu durum bazen "Şema değişikliklerini" adlandırılır.
+Birçok Azure Data Factory veri akışı dönüştürmesi "sütun desenleri" fikrini destekler, böylece sabit kodlanmış sütun adları yerine desenleri temel alan şablon sütunları oluşturabilirsiniz. Bu özelliği Ifade Oluşturucu içinde, tam, belirli alan adları istemek yerine dönüştürme için sütunlarla eşleşecek desenler tanımlamak üzere kullanabilirsiniz. Desenler, özellikle metin dosyalarındaki veya NoSQL veritabanlarındaki sütunları değiştirmek durumunda, gelen kaynak alanları sık değiştirilirse yararlıdır. Bu durum bazen "Schema drift" olarak adlandırılır.
 
-![Sütun desenleri](media/data-flow/columnpattern2.png "sütun desenleri")
+![sütun desenleri](media/data-flow/columnpattern2.png "Sütun desenleri")
 
-Sütun desenleri, hem şema değişikliklerini senaryoları, hem de genel senaryoları işlenmesi için kullanışlıdır. Bu, tam sütun adlarını bilmeniz mümkün olmadığı için koşullar geçerlidir. Desen sütun adına eşleşmesi ve sütun verilerini yazın ve bu işlemi herhangi bir alan veri akışında eşleşen gerçekleştirecek bir dönüştürme için bir ifade oluşturmak, `name`  &  `type` desenleri.
+Sütun desenleri, hem şema DRFT senaryolarını hem de genel senaryoları işlemek için yararlıdır. Her sütun adını tam olarak bildiğiniz koşullarda iyidir. Sütun adı ve sütun veri türünde bir eşleme deseni oluşturabilir ve bu işlemi, deseniniz `name`  &  `type` ile eşleşen veri akışındaki herhangi bir alana karşı gerçekleştirecek bir dönüştürme ifadesi oluşturabilirsiniz.
 
-Bir ifade desenleri kabul eden bir dönüştürme eklerken, "Sütun deseni Ekle"'i seçin. Sütun desenleri şema değişikliklerini sütun eşleme desenleri sağlar.
+Desenleri kabul eden bir dönüşüme ifade eklerken, "sütun düzeni Ekle" yi seçin. Sütun desenleri, şema DRFT sütun eşleştirme desenlerine izin verir.
 
-Şablon sütun modellerini oluştururken kullanmanız `$$` ifadesindeki eşleşen her alan için başvuru giriş veri akışını göstermek için.
+Şablon sütun desenleri oluştururken, giriş veri `$$` akışından eşleşen her alan için bir başvuruyu temsil etmek üzere ifadesinde kullanın.
 
-İfade Oluşturucu regex işlevlerden birini kullanmayı seçerseniz, ardından daha sonra kullanabileceğiniz $1, 2 $ $3... regex ifadeniz eşleşen alt desenlerin başvuracak şekilde değiştirin.
+Ifade Oluşturucu Regex işlevlerinden birini kullanmayı seçerseniz, daha sonra $1, $2, $3... seçeneğini kullanabilirsiniz. Regex deyiminizden eşleşen alt desenlere başvurmak için.
 
-Sütun düzeni senaryoya örnek olarak, toplam gelen alan bir dizi kullanıyor. Toplama SUM toplama dönüşümü hesaplamalardır. Ardından, TOPLA "tamsayı" eşleşen ve ardından her bir eşleştirmeyi ifadeniz başvurmak için $ kullanan alan türlerinin her eşleşme kullanabilirsiniz.
+Sütun deseninin bir örneği, bir dizi gelen alanları içeren TOPLAMı kullanmaktır. Toplam SUM hesaplamaları toplam dönüşümde bulunur. Daha sonra, "integer" ile eşleşen alan türlerinin her biriyle TOPLAMı kullanabilir ve sonra deyiminizdeki her eşleştirmeye başvurmak için $ $ kullanabilirsiniz.
+
+## <a name="match-columns"></a>Sütunları Eşleştir
+![sütun stili türleri](media/data-flow/pattern2.png "Model türleri")
+
+Sütunları temel alan desenler oluşturmak için, sütun adı, tür, akış veya konum üzerinde eşleştirebilir ve ifade işlevleri ve normal ifadelerle bunların herhangi bir birleşimini kullanabilirsiniz.
+
+![sütun konumu](media/data-flow/position.png "Sütun konumu")
+
+## <a name="next-steps"></a>Sonraki adımlar
+Veri dönüştürmeleri için ADF eşleme veri akışı [ifade dili](http://aka.ms/dataflowexpressions) hakkında daha fazla bilgi edinin

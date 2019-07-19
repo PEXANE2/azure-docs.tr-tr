@@ -1,56 +1,56 @@
 ---
 title: Azure bakım zamanlamaları (Önizleme) | Microsoft Docs
-description: Bakım zamanlaması, müşterilerin yeni özellikler, yükseltmeleri ve düzeltme eklerini alma için Azure SQL veri ambarı hizmetini kullanan gerekli zamanlanmış bakım olayları geçici planı sağlar.
+description: Bakım zamanlaması, müşterilerin Azure SQL veri ambarı hizmeti 'nin yeni özellikleri, yükseltmeleri ve düzeltme eklerini almak için kullandığı gerekli zamanlanmış bakım olaylarını planlayabilmesini sağlar.
 services: sql-data-warehouse
 author: antvgski
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
-ms.date: 03/13/2019
+ms.date: 07/16/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: ab6efb858cc86495c687055ce3049cfc0cca7433
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 3875106e8c6301c95bc8d0fbce6a1c0400d07f78
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807906"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68278119"
 ---
-# <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>Hizmet güncelleştirmeleri ve Bakım yönetmek için bakım zamanlamaları kullanın
+# <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>Bakım zamanlamalarını kullanarak hizmet güncelleştirmelerini ve bakımını yönetme
 
-Bakım zamanlamaları, artık tüm Azure SQL veri ambarı bölgelerinde kullanılabilir. Bu özellik, hizmet durumu planlı bakım bildirimlerini, kaynak sistem durumu İzleyicisi'ni kontrol edin ve Azure SQL veri ambarı bakım zamanlama hizmetini tümleştirir.
+Bakım zamanlamaları artık tüm Azure SQL veri ambarı bölgelerinde kullanılabilir. Bu özellik, hizmet durumu planlı bakım bildirimlerini, Kaynak Durumu denetim Izleyicisini ve Azure SQL veri ambarı bakım zamanlaması hizmetini tümleştirir.
 
-Yeni özellikler, yükseltmeleri ve düzeltme eki almaya uygun olduğunda, bir zaman penceresi seçmek için zamanlama bakım kullanırsınız. Yedi günlük süre içinde bir birincil ve ikincil bir bakım penceresi seçin. Örnek bir Cumartesi birincil penceredir 22:00 ile Pazar 01:00 ve ikincil bir pencere, Çarşamba 19:00 için 22:00. SQL veri ambarı bakım, birincil bir bakım penceresi sırasında gerçekleştiremiyorsanız bakım, ikincil bir bakım penceresi sırasında yeniden deneyecek. Hizmet bakımı, hem birincil hem de ikincil windows sırasında ortaya çıkabilir. Tüm bakım işlemleri hızla tamamlanmasını sağlamak için DW400(c) ve daha düşük veri ambarı katmanları belirlenen bir bakım penceresi dışında bakım işlemi tamamlanamadı.
+Yeni özellikler, yükseltmeler ve düzeltme ekleri almak için uygun olduğunda bir zaman penceresi seçmek için bakım zamanlamasını kullanırsınız. Birincil ve ikincil bakım penceresini yedi günlük bir süre içinde seçersiniz. Bir örnek, Cumartesi 22:00 ' nin Pazar 01:00 ' nin birincil bir penceresidir ve Çarşamba 19:00 ' nin ikinci bir penceresinde 22:00. Birincil bakım pencereniz sırasında SQL Data Warehouse bakım gerçekleştiremediği takdirde, bakım, ikincil bakım pencereniz sırasında yeniden denenecek. Hizmet bakımı hem birincil hem de Ikincil pencereler sırasında gerçekleşebilir. Tüm bakım işlemlerinin hızlı bir şekilde tamamlanmasını sağlamak için, DW400 (c) ve daha düşük veri ambarı katmanları, belirli bir bakım penceresi dışında bakım işlemini tamamlayabilir.
 
-Tüm yeni Azure SQL veri ambarı oluşturulan dağıtım sırasında uygulanan bir sistem tarafından tanımlanan bakım zamanlaması örnekleri sahip olur. Dağıtım tamamlandıktan hemen sonra zamanlama düzenlenebilir.
+Yeni oluşturulan tüm Azure SQL veri ambarı örneklerinin, dağıtım sırasında uygulanan sistem tanımlı bir bakım zamanlaması olacaktır. Zamanlama, dağıtım tamamlandıktan hemen sonra düzenlenebilir.
 
-Her bir bakım penceresi için üç sekiz saat olabilir. Bakım penceresi içinde herhangi bir zamanda meydana gelebilir. Hizmet, veri ambarınızı yeni kod dağıtır gibi kısa bir bağlantı kaybı beklemelisiniz.
+Her bakım penceresi üç ile sekiz saat arasında olabilir. Bakım, pencerenin içinde herhangi bir zamanda gerçekleşebilir. Bakım başladığında, tüm etkin oturumlar iptal edilir ve teslim edilmemiş işlemler geri alınacaktır. Hizmet, veri ambarınıza yeni kod dağıttığı için bağlantıda birden çok kısa kayıp beklemeniz gerekir. Veri Ambarınızda bakım tamamlandıktan hemen sonra bilgilendirilirsiniz
 
-Bu özelliği kullanmak için birincil ve ikincil bir pencere içinde ayrı bir gün aralığı tanımlamak gerekir. Tüm bakım işlemleri zamanlanmış bakım pencereleri içinde tamamlanmalıdır. Herhangi bir bakım önceden bildirimde bulunmadan belirtilen bakım penceresi dışında yer alacak. Planlanan bakım sırasında veri ambarınız duraklatıldığı, sürdürme işlemi sırasında güncelleştirilir.  
+Bu özelliği kullanmak için, ayrı gün aralıklarında bir birincil ve ikincil pencere belirlemeniz gerekir. Tüm bakım işlemleri, zamanlanmış bakım pencereleri içinde bitmelidir. Önceki bildirim olmadan belirtilen bakım pencerelerinin dışında hiçbir bakım gerçekleşmeyecektir. Zamanlanan Bakım sırasında veri ambarınız duraklatıldıysa, sürdürme işlemi sırasında güncelleştirilir.  
 
-## <a name="alerts-and-monitoring"></a>Uyarı ve izleme
+## <a name="alerts-and-monitoring"></a>Uyarılar ve izleme
 
-Hizmet durumu bildirimi ve kaynak sistem durumu İzleyicisi denetleyin ile tümleştirme, müşterilerin yaklaşan bakım etkinliğini bilgilendirilmenizi sağlar. Yeni Otomasyon Azure İzleyici yararlanır. Yaklaşan bakım olayları almak istediğiniz karar verebilirsiniz. Ayrıca hangi otomatikleştirilmiş akışlar kapalı kalma süresi yönetmenize ve işlemlerinizi etkisini en aza yardımcı olabilir karar verin.
+Hizmet durumu bildirimleri ve Kaynak Durumu Check Monitor ile tümleştirme, müşterilerin yaklaşan bakım etkinliklerinden haberdar olmasına olanak sağlar. Yeni otomasyon, Azure Izleyici 'den yararlanır. Yaklaşan bakım olayları hakkında nasıl bilgilendirilmek istediğinize karar verebilirsiniz. Ayrıca, hangi otomatikleştirilmiş akışların kapalı kalma süresini yönetmenize ve işlemlerinizin etkisini en aza indirmenize yardımcı olmaya karar verin
 
-Bir 24 saatlik sağladığımız ön bildirimi DW400c ve alt katmanları geçerli durumun tüm bakım olayları önce gelir. Örnek kapalı kalma süresini en aza indirmek için veri Ambarınızı seçilen bakım süreniz önce hiçbir uzun süre çalışan işlemler olduğundan emin olun. Bakım başladığında, tüm etkin oturumlar iptal edilir. Olmayan kaydedilen işlem geri alınacak ve veri ambarınız bir kısa bağlantı kaybı yaşar. Hemen bakım veri ambarınıza tamamlandığında size bildirilir.
+24 saatlik bir ön bildirim, DW400c ve alt katmanların geçerli özel durumu ile tüm bakım olaylarının önüne gelir. Örnek kapalı kalma süresini en aza indirmek için, veri ambarınızın seçtiğiniz bakım süresinden önce uzun süre çalışan işlemlere sahip olmadığından emin olun.
 
 > [!NOTE]
-> Bir zaman kritik güncelleştirme dağıtımı için duyuyoruz olayda Gelişmiş bildirim zamanlarını önemli ölçüde azaltılabilir.
+> Zaman açısından kritik güncelleştirme dağıtımı için gerekli olan olayda gelişmiş bildirim süreleri önemli ölçüde azaltılabilir.
 
-Bakım gerçekleşir, ancak SQL veri ambarı, bu süre boyunca bakım gerçekleştiremiyor sağladığımız ön bildirimi aldıysanız, iptal bildirimi alırsınız. Bakım, ardından bir sonraki zamanlanmış bakım süresi boyunca devam edecek.
+Bakımın gerçekleştireceğiz, ancak SQL veri ambarı bu süre içinde bakım gerçekleştiremediği halde bir iptal bildirimi alacaksınız. Bakım daha sonra zamanlanan bir sonraki bakım döneminde sürdürülecek.
 
-Tüm etkin bakım olayları görünür **hizmet durumu - planlı Bakım** bölümü. Hizmet durumu geçmişi geçmiş olayların tam bir kaydını içerir. Etkin bir olayı sırasında bakım aracılığıyla Azure hizmet durumu onay portal panosunda izleyebilirsiniz.
+Tüm etkin bakım olayları, **hizmet durumu-planlı bakım** bölümünde görünür. Hizmet durumu geçmişi geçmiş olayların tam kaydını içerir. Etkin bir olay sırasında Azure hizmet durumu denetimi Portal panosu aracılığıyla Bakımı izleyebilirsiniz.
 
-### <a name="maintenance-schedule-availability"></a>Bakım zamanlaması kullanılabilirlik
+### <a name="maintenance-schedule-availability"></a>Bakım zamanlaması kullanılabilirliği
 
-Bakım zamanlaması, seçili bölgesinde kullanılabilir durumda değilse, görüntüleyebilir ve Bakım zamanlamanızı herhangi bir zamanda düzenleyin. Bakım zamanlaması Bölgenizde kullanılabilir hale geldiğinde, tanımlanan zamanlamaya hemen veri ambarınıza etkin hale gelir.
+Bakım zamanlaması seçtiğiniz bölgede mevcut olmasa bile, bakım zamanlamanızı dilediğiniz zaman görüntüleyebilir ve düzenleyebilirsiniz. Bölgede bakım zamanlaması kullanılabilir hale geldiğinde, belirlenen zamanlama hemen veri Ambarınızda etkin olur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Daha fazla bilgi edinin](viewing-maintenance-schedule.md) bakım zamanlaması görüntüleme hakkında.
-- [Daha fazla bilgi edinin](changing-maintenance-schedule.md) bakım zamanlamasını değiştirme hakkında.
-- [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-usage) oluşturma, görüntüleme ve Azure İzleyici'yi kullanarak Uyarıları yönetme hakkında.
-- [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook) günlük uyarısı kuralları için Web kancası eylemleri hakkında.
-- [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) oluşturma ve Eylem grupları yönetme.
-- [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/service-health/service-health-overview) Azure hizmet durumu hakkında.
+- Bakım zamanlamasını görüntüleme hakkında [daha fazla bilgi edinin](viewing-maintenance-schedule.md) .
+- Bakım zamanlamasını değiştirme hakkında [daha fazla bilgi edinin](changing-maintenance-schedule.md) .
+- Azure Izleyici 'yi kullanarak uyarı oluşturma, görüntüleme ve yönetme hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-usage) .
+- Günlük uyarı kuralları için Web kancası eylemleri hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook) .
+- [Daha fazla bilgi](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) Eylem grupları oluşturma ve yönetme.
+- Azure hizmet durumu hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/service-health/service-health-overview) .

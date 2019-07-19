@@ -1,6 +1,6 @@
 ---
-title: Azure Önizleme Gözcü Syslog verilere | Microsoft Docs
-description: Azure Gözcü için Syslog veri bağlanmayı öğreneceksiniz.
+title: Syslog verilerini Azure Sentinel önizlemesine bağlama | Microsoft Docs
+description: Syslog verilerini Azure Sentinel 'e bağlamayı öğrenin.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -13,47 +13,58 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
+ms.date: 07/10/2019
 ms.author: rkarlin
-ms.openlocfilehash: ee7b31a57bc9627776b9ca5445132a4662506134
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: fef9fa128d2ebb84fb82579f254735fdb9aa7ee2
+ms.sourcegitcommit: 1b7b0e1c915f586a906c33d7315a5dc7050a2f34
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67611325"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67881059"
 ---
-# <a name="connect-your-external-solution-using-syslog"></a>Syslog kullanarak dış çözümünüzü bağlayın
+# <a name="connect-your-external-solution-using-syslog"></a>Syslog kullanarak dış çözümünüzü bağlama
 
 > [!IMPORTANT]
-> Azure Sentinel şu anda genel Önizleme aşamasındadır.
+> Azure Sentinel Şu anda genel önizlemededir.
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Syslog ile Azure Gözcü destekleyen herhangi bir şirket içi gereç bağlanabilirsiniz. Bu, bir Linux makineye Gereci ve Azure Gözcü arasında dayalı bir aracı kullanarak gerçekleştirilir. Azure'da Linux makinenizde ise gereç veya uygulamayı Azure'da oluşturun ve bağlayın ayrılmış bir çalışma günlüklerinden akışını yapabilirsiniz. Azure'da Linux makinenizde değilse, günlükler, gereçten ayrılmış bir akışını şirket içi VM veya makine Linux için aracıyı yüklediğiniz. 
+Syslog 'yi destekleyen şirket içi gereçlerden Azure Sentinel 'e bağlanabilirsiniz. Bu, Gereç ve Azure Sentinel arasında Linux makinesine dayalı bir aracı kullanılarak yapılır. Linux makineniz Azure 'da ise, cihazınızdan veya uygulamanızdan günlükleri Azure 'da oluşturduğunuz ayrılmış bir çalışma alanına akışa alabilir ve bağlayabilirsiniz. Linux makineniz Azure 'da değilse, Aracıınızdan günlükleri Linux için aracıyı yüklediğiniz bir adanmış şirket içi VM 'ye veya makineye akışını sağlayabilirsiniz. 
 
 > [!NOTE]
-> Gerecinize Syslog CEF destekliyorsa, daha kapsamlı bir bağlantıdır ve bu seçeneği belirleyin ve yönergeleri izleyin, [CEF verilere bağlanma](connect-common-event-format.md).
+> Gereciniz Syslog CEF 'yi destekliyorsa, bağlantı daha tamamlanmıştır ve bu seçeneği seçmeniz ve [CEF 'deki verileri bağlama](connect-common-event-format.md)bölümündeki yönergeleri izlemeniz gerekir.
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
-Syslog bağlantı, Linux için aracıyı kullanılarak elde edilir. Varsayılan olarak, Linux için aracıyı olayların Syslog daemon'dan UDP üzerinden ancak gibi Linux Aracısı olaylar diğer cihazlardan alındığında, yapılandırma şekilde değiştirilir burada bir Linux makineye yüksek hacimli Syslog olayları toplamak için beklenen durumlarda alır Syslog daemon'ı ve aracıyı arasında TCP aktarımı kullanın.
+Syslog Linux için ortak olan olay günlüğü protokolüdür. Uygulamaları, yerel makinede depolanan veya bir Syslog Toplayıcıya teslim olabilir iletileri gönderir. Linux için Log Analytics Aracısı yüklendiğinde, iletileri aracıya iletmek için yerel Syslog Daemon programını yapılandırır. Aracı daha sonra iletiyi ilgili kaydın oluşturulduğu Azure Izleyici 'ye gönderir.
 
-## <a name="connect-your-syslog-appliance"></a>Syslog gerecinize bağlanma
+Daha fazla bilgi için bkz. [Azure izleyici 'de Syslog veri kaynakları](../azure-monitor/platform/data-sources-syslog.md).
 
-1. Gözcü Azure portalında **veri bağlayıcıları** ve **Syslog** Döşe.
-2. Linux makinenizi Azure içinde değilse, indirip Azure Gözcü **Linux için aracıyı** appliance'ınız üzerinde. 
-1. Azure'da çalışıyorsanız seçin veya bir VM, Syslog iletileri almaya ayrılmış Azure Gözcü çalışma alanı içinde oluşturun. Azure Gözcü çalışma alanlarında VM'yi seçin ve tıklayın **Connect** sol bölmenin üstünde.
-3. Tıklayın **bağlanması için günlüklerini yapılandırma** Syslog bağlayıcı Kurulumu edilene. 
-4. Tıklayın **yapılandırma dikey penceresini açmak için buraya basın**.
-1. Seçin **veri** ardından **Syslog**.
-   - Tabloda, gönderdiğiniz her tesis Syslog tarafından olduğundan emin olun. Her özellik için oluşturacağınız izlemek için bir önem derecesini ayarlayın. **Uygula**'ya tıklayın.
-1. Syslog makineniz bu tesislerde gönderiyorsanız emin olun. 
+> [!NOTE]
+> Aracı, birden fazla kaynaktaki günlükleri toplayabilir, ancak adanmış ara sunucu makinesine yüklenmiş olmalıdır.
 
-3. İlgili şema Log Analytics'te Syslog günlükleri için kullanmak için arama **Syslog**.
+## <a name="connect-your-syslog-appliance"></a>Syslog gerecinizi bağlama
+
+1. Azure Sentinel portalında **veri bağlayıcıları** ' nı seçin ve tablodaki **Syslog** satırını seçin ve sağdaki Syslog bölmesinde **bağlayıcı sayfasını aç**' a tıklayın.
+2. Linux makineniz Azure içindeyse, **indir ve aracıyı Azure Linux sanal makinesine**Yükle ' yi seçin. Sanal makineler penceresinde, aracıyı yüklemek istediğiniz makineleri seçin ve üst kısımdaki **Bağlan** ' a tıklayın.
+1. Linux makineniz Azure 'da değilse, **Linux 'U Linux olmayan makineye indir ve yükle**' yi seçin. **Doğrudan aracı** penceresinde, **Linux için indirme ve ekleme Aracısı** altındaki komutu kopyalayın ve makinenizde çalıştırın. 
+1. Günlükleri, syslog Bağlayıcısı Kurulumu penceresinde **bağlanacak şekilde yapılandırın** altında şu yönergeleri izleyin:
+    1. **Çalışma alanı Gelişmiş ayarları yapılandırmanızı açmak**için bağlantıya tıklayın. 
+    1. **Verileri**seçin ve sonra **Syslog**' ı seçin.
+    1. Ardından, tabloda Syslog 'ın toplamasını istediğiniz tesislerin toplanmasını istediğinizi belirleyin. Syslog gerecinizin günlük üst bilgilerinde içerdiği tesisleri eklemeniz ya da seçmeniz gerekir. Bu yapılandırmayı, şu klasörde Syslog-d ' d e n Syslog:/etc/rsyslog.exe klasöründe ve/etc/syslog-ng/Security-config-omsagent.exe altındaki r-Syslog içinde görebilirsiniz. 
+       > [!NOTE]
+       > **Aşağıdaki yapılandırmayı makinelerime uygulamak**için onay kutusunu seçerseniz bu yapılandırma, bu çalışma alanına bağlı tüm Linux makinelere uygulanır. Bu yapılandırmayı Syslog makinenizde şu şekilde görebilirsiniz: 
+1. **Yapılandırma dikey penceresini açmak için buraya bas**' ye tıklayın.
+1. **Veri** ve ardından **Syslog**öğesini seçin.
+   - Syslog tarafından gönderdiğiniz her bir özelliğin tabloda olduğundan emin olun. İzlenecek her tesis için bir önem derecesi belirleyin. **Uygula**'ya tıklayın.
+1. Syslog makinenizde bu tesisleri gönderdiğinizden emin olun. 
+
+1. Syslog günlükleri için Log Analytics ilgili şemayı kullanmak için **Syslog**araması yapın.
+1. Syslog iletilerinizi ayrıştırmak ve sonra yeni bir Log Analytics işlevi olarak kaydetmek ve sonra işlevi yeni bir veri türü olarak kullanmak için [Azure izleyici günlük sorgularındaki Işlevleri kullanma](../azure-monitor/log-query/functions.md) bölümünde açıklanan kusto işlevini kullanabilirsiniz.
 
 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu belgede, Azure Gözcü için Syslog şirket içi cihazları bağlayın öğrendiniz. Azure Gözcü hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
-- Bilgi nasıl [görünürlük almak, veri ve olası tehditleri](quickstart-get-visibility.md).
-- Başlama [Azure Gözcü kullanarak tehditleri algılama](tutorial-detect-threats.md).
+Bu belgede, syslog şirket içi gereçlerini Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
+- [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
+- [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats.md)başlayın.

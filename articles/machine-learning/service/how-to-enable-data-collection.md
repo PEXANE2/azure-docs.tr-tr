@@ -1,5 +1,5 @@
 ---
-title: Üretim Modellerinizi verileri toplama
+title: Üretim modellerinizde veri toplama
 titleSuffix: Azure Machine Learning service
 description: Azure Blob depolama alanındaki Azure Machine Learning modeli giriş verilerini nasıl toplayacağınızı öğrenin.
 services: machine-learning
@@ -9,21 +9,21 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
-ms.date: 12/03/2018
+ms.date: 07/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: f596fb3a066017f0236de5b79586891dd21efb11
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 81ffe8618e07f2e49e4439ea57e254e5d37974f9
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443989"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227957"
 ---
 # <a name="collect-data-for-models-in-production"></a>Üretimde modelleri için veri toplama
 
 Bu makalede, giriş model verileri, dağıttınız Azure Machine Learning hizmetlerinden Azure Kubernetes kümesi (AKS) ile bir Azure Blob depolama alanına toplamak nasıl öğrenebilirsiniz. 
 
 Etkinleştirildikten sonra bu verileri, Topla, yardımcı olur:
-* [İzleme verileri drifts](how-to-monitor-data-drift.md) üretim veri modelinizi girdikçe
+* Üretim verileri modelinize girdiğinde [veri Drifts izleme](how-to-monitor-data-drift.md)
 
 * Daha iyi kararlar üzerinde ne zaman yeniden eğitme veya modelinizi iyileştirin
 
@@ -50,7 +50,7 @@ Aşağıdaki veriler toplanabilir:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. Deneyin [Azure Machine Learning hizmetinin ücretsiz veya Ücretli sürümüne](https://aka.ms/AMLFree) bugün.
+- Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning Service 'in ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
 - Bir Azure Machine Learning hizmeti çalışma alanında, yüklü Python için betikleri ve Azure Machine Learning SDK'sını içeren yerel bir dizin. Kullanarak şu önkoşul olarak gerekenleri edinin öğrenin [bir geliştirme ortamı yapılandırma](how-to-configure-environment.md) belge.
 
@@ -81,7 +81,7 @@ Bunu etkinleştirmek için şunları yapmanız:
     prediction_dc = ModelDataCollector("best_model", identifier="predictions", feature_names=["prediction1", "prediction2"])
     ```
 
-    *Correlationıd* isteğe bağlı bir parametre modelinizi gerektirmiyorsa ayarlamanız gerekmez. Yerinde bir bağıntı kimliği olan diğer verilerle daha kolay eşlemesi için yardımcı olur. (Örnekler: LoanNumber CustomerID, vs.)
+    *Correlationıd* isteğe bağlı bir parametre modelinizi gerektirmiyorsa ayarlamanız gerekmez. Yerinde bir bağıntı kimliği olan diğer verilerle daha kolay eşlemesi için yardımcı olur. (Örnekler şunlardır: Krete numarası, CustomerID, vb.)
     
     *Tanımlayıcı* daha sonra BLOB klasör yapısını oluşturmak için kullanılan, onu "işlenen" yerine "ham" verileri bölme için kullanılabilir.
 

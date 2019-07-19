@@ -1,6 +1,6 @@
 ---
-title: Tehdit algılama için Azure Güvenlik Merkezi'nde bulut yerel işlem | Microsoft Docs
-description: Bu konuda, Azure Güvenlik Merkezi'nde kullanılabilir yerel işlem uyarılarını bulut sunulmaktadır. Azure Güvenlik Merkezi'nde.
+title: Azure Güvenlik Merkezi 'nde bulut Yerel işlem için tehdit algılama | Microsoft Docs
+description: Bu konuda, Azure Güvenlik Merkezi 'nde bulunan bulut Yerel işlem uyarıları sunulmaktadır. Azure Güvenlik Merkezi 'nde.
 services: security-center
 documentationcenter: na
 author: monhaber
@@ -13,49 +13,49 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/02/2019
-ms.author: monhaber
-ms.openlocfilehash: bc3cb66d43e71777e06c6bd63dcff35e2ff19df8
-ms.sourcegitcommit: 1e347ed89854dca2a6180106228bfafadc07c6e5
+ms.author: v-mohabe
+ms.openlocfilehash: 14433806a28e31cef1a278e16cb69e7c9b1a2458
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67571692"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68295837"
 ---
-# <a name="threat-detection-for-cloud-native-compute-in-azure-security-center"></a>Tehdit algılama için Azure Güvenlik Merkezi'nde yerel işlem bulut
+# <a name="threat-detection-for-cloud-native-compute-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde bulut Yerel işlem için tehdit algılama
 
-Bir bulut sağlayıcısı olarak, Güvenlik Merkezi, iç günlüklerini analiz etme ve birden çok hedef üzerinde saldırı yöntemleri tanımlamak için olan benzersiz görünürlük yararlanır. Bu konu, aşağıdaki Azure Hizmetleri için kullanılabilir uyarıları sunar:
+Bulut sağlayıcısı olarak, Güvenlik Merkezi, iç günlükleri çözümlemek ve birden çok hedef üzerinde saldırı yöntemini belirlemek için sahip olduğu benzersiz görünürlüğe yararlanır. Bu konuda, aşağıdaki Azure hizmetleri için kullanılabilen uyarılar sunulmaktadır:
 
 * [Azure uygulama hizmeti](#app-services)
 * [Kapsayıcılar](#azure-containers) 
 
-## Azure uygulama hizmeti <a name="app-services"></a>
+## Azure App Service<a name="app-services"></a>
 
-Güvenlik Merkezi, Azure App Service üzerinde çalışan müşterilerin uygulamalarını hedefleyen saldırılara tanımlamak için bulutun ölçek yararlanır. Neredeyse tüm modern ağında olan web uygulamalarıyla saldırganlar zayıf yararlanma ve bunları bulmak için araştırma. Belirli ortamlara yönlendirilmeden önce Azure'da çalışan uygulamalar için istekleri inceledi günlüğe kaydedilir ve burada çeşitli ağ geçitleri üzerinden gider. Bu veriler, ardından açıklarını, saldırganlar, tanımlamak ve daha sonra kullanılacak yeni desenler bilgi almak için kullanılır.
+Güvenlik Merkezi, Azure App Service üzerinde çalışan müşterilerin uygulamalarını hedefleyen saldırıları belirlemek için bulutun ölçeğinden yararlanır. Web uygulamalarıyla neredeyse modern bir ağda, saldırganlar araştırılarak bu ve açıktan yararlanma zayıflığı bulunur. Belirli ortamlara yönlendirilmeden önce, Azure 'da çalışan uygulamalara yönelik istekler, incelendikleri ve günlüğe kaydedildiği çeşitli ağ geçitleri aracılığıyla yapılır. Daha sonra bu veriler, daha sonra kullanılacak yeni desenler öğrenmek için yararlanma ve saldırganlar 'i tanımlamak üzere kullanılır.
 
-Bir bulut sağlayıcısı olarak Azure olan görünürlüğü yararlanarak, Güvenlik Merkezi, birden çok hedef üzerinde saldırı yöntemleri tanımlamak için App Service iç günlüklerini analiz eder. Örneğin, yaygın tarama ve dağıtılmış saldırıları. Bu tür bir saldırı, genelde küçük bir kısmı IP'ler gelir ve arama savunmasız sayfası veya eklenti için birden çok ana bilgisayarda benzer uç noktalar ile gezinme, desenleri sergiler. Bu bulut kullanılarak algılanabilir ancak tek bir ana açısından tanımlanamıyor.
+Güvenlik Merkezi, Azure 'un bulut sağlayıcısı olarak sahip olduğu görünürlüğden yararlanarak, birden çok hedef üzerinde saldırı yöntemini belirlemek üzere iç günlükleri App Service analiz eder. Örneğin, yaygın tarama ve dağıtılmış saldırılar. Bu tür bir saldırı genellikle, IP 'lerin küçük bir alt kümesinden gelir ve birden çok konaktaki benzer uç noktalara gezinme desenleri sergiler, bu da savunmasız bir sayfa veya eklenti arar. Bu, bulut kullanılarak algılanabilir, ancak tek bir konağın açısından tanımlanamaz.
 
-Güvenlik Merkezi temel alınan sanal ve sanal makineleri için ayrıca erişebilir. Bellek adli birlikte altyapı hikayeyi, müşteri makinelerde güvenlik ihlalleri için yazılımların döngüye yeni bir saldırı söyleyebilirsiniz. Bu nedenle, Güvenlik Merkezi yararlanılmasını sonra web uygulamaları uzun saldırıları algılayabilir.
+Güvenlik Merkezi 'nin Ayrıca temel alınan sanal makinelere ve VM 'lere erişimi vardır. Bellek ile birlikte, altyapı, müşteri makineleriyle ilgili olarak, kısa bir bir saldırıya karşı çok daha fazla bilgi almak için bu hikayeye işaret edebilir. Bu nedenle, Güvenlik Merkezi, daha sonra Web uygulamalarına karşı saldırıları algılayabilir.
 
 > [!div class="mx-tableFixed"]
 
 |Uyarı|Açıklama|
 |---|---|
-|**Algılanan kuşkulu WordPress tema çağırma**|Azure App Service etkinlik günlüğü, App Service kaynak olası kod ekleme faaliyete gösterir.<br/> Bu şüpheli etkinlik, doğrudan web isteği tarafından yönetilebilen bir tema dosyası çağırmak ve ardından kod, sunucu tarafı yürütülmesini desteklemek için bir WordPress tema işleyen etkinliği benzer. Bu tür bir etkinlik geçmişte bir saldırı kampanyasını bir parçası olarak WordPress görüldü.|
-|**Web sayfası bağlantısı anormal IP adresi algılandı**|Azure App Service etkinliği günlük daha önce hiç bağlı bir kaynak adresten hassas bir web sayfasına bir bağlantı gösterir. Bu, biri Web uygulaması yönetim sayfalarınıza doğrudan bir deneme yanılma saldırısı çalışıyor olduğunu gösteriyor olabilir. Geçerli bir kullanıcı tarafından kullanılan yeni bir IP adresi sonucunu de olabilir.|
-|**Tehdit zekası, Azure App Service FTP arabirime bağlı bir IP bulundu**|Azure App Service FTP günlükleri analiz, tehdit zekası akışı bulunan bir kaynak adresinden bağlantı algıladı. Bu bağlantı sırasında bir kullanıcı, aşağıda listelenen sayfaları erişilir.|
-|**Algılanan Web izinden**|Azure App Service etkinlik günlüğü, App Service kaynak etkinliği izinden olası bir web gösterir. <br/>Bu şüpheli etkinlik algılandı görme fil adlı bir aracı ile ilişkilidir. Aracı web sunucusu parmak izi ve yüklü uygulamalar ve bunların sürümlerini algılamaya çalışır. Saldırganlar genellikle bu araç web uygulamalarının yoklaması için güvenlik açıkları bulmak için kullanın.|
-|**Büyük olasılıkla saldırılara açık web sayfasına algılanan şüpheli erişim**|Azure uygulama hizmeti Etkinlik günlüğünü hassas görünüyor bir web sayfası erişildi gösterir. <br/>Bir web tarayıcısı olan erişim desenine benzer bir kaynak adresinden kaynaklanan bu şüpheli etkinlik. Genellikle bu tür bir etkinlik gerçekleştirip deneyin ve hassas veya savunmasız web sayfalarına erişim kazanmak için bir saldırgan tarafından denemesi ile ilişkili.|
-|**PHP dosyasını karşıya yükleme klasörü**|Azure uygulama hizmeti Etkinlik günlüğünü bir şey karşıya yükleme klasöründe yer alan şüpheli bir PHP sayfasına eriştiğini belirtir. <br/>Bu tür bir klasör, genellikle PHP dosya içermiyor. Bu dosya türü varlığını rastgele dosya karşıya yükleme güvenlik açıklarından faydalanarak bir istismar gösterebilir.|
-|**Bir Windows App Service'te Linux komutlarını çalıştırma denemesi**|App Service işlemlerin analiz Windows App Service üzerinde bir Linux komutu çalıştırma denemesi algıladı. Bu eylem, web uygulaması tarafından çalışıyordu. Bu davranışı çok yaygın bir web uygulamasının bir güvenlik açığından yararlandıktan kampanyaları sırasında görülür.|
-|**Algılanan şüpheli PHP yürütme**|Makine günlükleri belirten bir şüpheli bir PHP işlemi çalışıyor. İşletim sistemi komutları veya PHP kodunu PHP işlemi kullanarak komut satırından çalıştırma denemesi eylemi dahil. Bu davranış yasal olabilir, ancak web uygulamalarında bu davranışı Ayrıca Web siteleri ile web Kabukları bulaşmak girişimleri gibi kötü amaçlı etkinlikleri gözlemlenen.|
-|**Geçici klasörden işlem yürütme**|App Service işlemler analiz, bir uygulamanın geçici klasöründen bir işlemin yürütülmesi algıladı. Web uygulamalarında bu davranış yasal olabilir, ancak bu davranış kötü amaçlı etkinlikleri de gözlenir.|
-|**Algılanan yüksek ayrıcalık komut çalıştırma denemesi**|App Service işlemlerin analiz yüksek ayrıcalıkları gerektiren bir komut çalıştırma denemesi algıladı. Web uygulaması bağlamında bir komut çalıştı. Web uygulamalarında bu davranış yasal olabilir, ancak bu davranış kötü amaçlı etkinlikleri de gözlenir.|
+|**Şüpheli WordPress teması çağırma algılandı**|Azure App Service etkinlik günlüğü, App Service kaynağınızın olası bir kod ekleme etkinliğini gösterir.<br/> Bu şüpheli etkinlik, bir WordPress temasını, bu kodun sunucu tarafı yürütmesini desteklemek için, ardından doğrudan bir Web isteği tarafından istenen tema dosyasını çağırmaya yönelik şekilde işleyen etkinliklere benzer. Bu tür bir etkinlik, geçmişte WordPress üzerinden saldırı kampanyasının bir parçası olarak görülmüştür.|
+|**Anormal IP adresinden Web sayfasına bağlantı algılandı**|Azure App Service etkinlik günlüğü, daha önce hiçbir şekilde bağlanmayan bir kaynak adresinden hassas bir Web sayfasına bağlantı gösterir. Bu durum, birisinin web uygulaması yönetim sayfalarınıza bir deneme yanılma saldırısı girişiminde bulunduğunu gösterebilir. Ayrıca, meşru bir kullanıcı tarafından kullanılan yeni bir IP adresinin sonucu da olabilir.|
+|**Tehdit zekasından Azure App Service FTP arayüzüne bağlı bir IP bulundu**|Azure App Service FTP günlükleri analizi, tehdit bilgileri akışında bulunan bir kaynak adresten bağlantı algıladı. Bu bağlantı sırasında, bir Kullanıcı aşağıda listelenen sayfalara erişti.|
+|**Web parmak baskısı algılandı**|Azure App Service etkinlik günlüğü, App Service kaynağınızın olası bir Web parmak izi etkinliğini gösterir. <br/>Algılanan bu şüpheli etkinlik, görünmeyen Elephant adlı bir araçla ilişkili. Araç parmak izi Web sunucularını yazdırır ve yüklü uygulamaları ve bunların sürümlerini algılamaya çalışır. Saldırganlar genellikle bu aracı, Web uygulamalarının güvenlik açıklarını bulmasını yoklayıp kullanır.|
+|**Olası savunmasız Web sayfasına şüpheli erişim algılandı**|Azure App Service etkinlik günlüğü, gizli olarak görünen bir Web sayfasına erişildiğini belirtir. <br/>Bu şüpheli etkinlik, erişim deseninin bir Web tarayıcısı ile aynı olduğu bir kaynak adresinden kaynaklıır. Bu tür bir etkinlik, genellikle bir saldırganın ağınıza tarayarak hassas veya güvenlik açığı bulunan Web sayfalarına erişim sağlamaya yönelik bir girişimle ilişkilendirilir.|
+|**Karşıya yükleme klasöründeki PHP dosyası**|Azure App Service etkinlik günlüğü, karşıya yükleme klasöründe bulunan şüpheli bir PHP sayfasına bir şeyin eriştiğini gösterir. <br/>Bu klasör türü genellikle PHP dosyalarını içermez. Bu tür bir dosyanın varlığı, rastgele dosya karşıya yükleme güvenlik açıklarından faydalanması anlamına gelebilir.|
+|**Windows App Service Linux komutlarını çalıştırma girişimi**|App Service işlemlerin çözümlenmesi bir Windows App Service üzerinde Linux komutu çalıştırma girişimi algıladı. Bu eylem Web uygulaması tarafından çalıştırılıyor. Bu davranış genellikle ortak bir Web uygulamasındaki bir güvenlik açığından yararlanan kampanyalar sırasında görülür.|
+|**Şüpheli PHP yürütmesi algılandı**|Makine günlükleri şüpheli bir PHP işleminin çalıştığını gösterir. Eylem, PHP işlemini kullanarak komut satırından işletim sistemi komutlarını veya PHP kodunu çalıştırma girişiminde bulunur. Bu davranış meşru olsa da, Web uygulamalarında bu davranış Web kabuklarını etkileyen Web sitelerine yönelik girişimler gibi kötü amaçlı etkinliklerde de gözlemlenmiştir.|
+|**Geçici klasörden işlem yürütme**|App Service işlemler analizi, uygulamanın geçici klasöründen bir işlemin yürütülmesini algıladı. Bu davranış meşru olsa da, Web uygulamalarında bu davranış kötü amaçlı etkinliklerle de gözlemlenmiştir.|
+|**Yüksek ayrıcalık komutu çalıştırma denemesi algılandı**|App Service işlemlerin çözümlenmesi, yüksek ayrıcalık gerektiren bir komutu çalıştırma girişimi algıladı. Komut, Web uygulaması bağlamında çalıştırıldı. Bu davranış meşru olsa da, Web uygulamalarında bu davranış kötü amaçlı etkinliklerle de gözlemlenmiştir.|
 
 > [!NOTE]
-> App Service için Güvenlik Merkezi tehdit algılama şu anda Azure devlet kurumları ve bağımsız bulut bölgelerinde kullanılabilir değil.
+> App Service için Güvenlik Merkezi tehdit algılama Şu anda Azure Kamu ve bağımsız bulut bölgelerinde kullanılamaz.
 
-Uyarılar, App Service tehdit algılama hakkında daha fazla bilgi için Azure Güvenlik Merkezi ile koruma App Service'ı ziyaret edin ve izleme ve App Service iş yüklerinizi korumasını etkinleştirmek nasıl gözden geçirin.
+App Service tehdit algılama uyarıları hakkında daha fazla bilgi için bkz. Azure Güvenlik Merkezi ile koruma App Service 'yi ziyaret edin ve App Service iş yüklerinizin izlenmesini ve korunmasını nasıl etkinleştireceğinizi inceleyin.
 
-## Kapsayıcıları <a name="azure-containers"></a>
+## Kapsayıcıları<a name="azure-containers"></a>
 
-Güvenlik Merkezi, gerçek zamanlı algılama için kapsayıcılarınızı auditd framework tabanlı Linux makinelerinde sağlar. Uyarıları göstergesidir güvenli Kabuk (SSH) sunucusunun bir Docker kapsayıcısı ya da şifreleme madencilerinin kullanımını içinde çalışan bir ana bilgisayarda ayrıcalıklı bir kapsayıcı oluşturma gibi birkaç şüpheli Docker etkinliği tanımlayın. Bu bilgileri kullanarak güvenlik sorunlarını hızlı bir şekilde çözebilir ve kapsayıcılarınızın güvenlik düzeyini artırabilirsiniz. Linux algılamalar yanı sıra Güvenlik Merkezi ayrıca kapsayıcıları dağıtımları için ayrıntılı analizler sunar.
+Güvenlik Merkezi, auditd çerçevesini temel alan Linux makinelerinde kapsayıcılarınız için gerçek zamanlı tehdit algılama sağlar. Uyarılar, bir konakta ayrıcalıklı bir kapsayıcı oluşturma, bir Docker kapsayıcısı içinde çalışan Secure Shell (SSH) sunucusu veya şifre Miners kullanımı gibi birçok şüpheli Docker etkinliğini belirler. Bu bilgileri kullanarak güvenlik sorunlarını hızlı bir şekilde çözebilir ve kapsayıcılarınızın güvenlik düzeyini artırabilirsiniz. Ayrıca, Güvenlik Merkezi, Linux algılamalarının yanı sıra kapsayıcılar dağıtımları için daha özel analizler de sunar.

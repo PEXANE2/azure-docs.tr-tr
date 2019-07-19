@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: Azure CLI kullanarak IPv6 ile genel yük dengeleyici oluşturmayı öğrenin.
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 keywords: IPv6, azure yük dengeleyici, ikili yığın, genel IP, yerel IPv6, mobil veya IOT
 ms.service: load-balancer
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
-ms.author: kumud
-ms.openlocfilehash: 1caa8e7554024c3b2e3d86436d3d494d7995169a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: 0ee85a92753845e0e67fff22da894a048acb1b14
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60516693"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274950"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>Azure CLI kullanarak IPv6 ile genel yük dengeleyici oluşturma
 
@@ -46,11 +46,11 @@ Aşağıdaki adımlarda, Azure CLI kullanarak herkese açık yük dengeleyici ol
 
 Yük Dengeleyici dağıtmak için oluşturun ve aşağıdaki nesneleri yapılandırın:
 
-* **Ön uç IP yapılandırmasını**: Gelen ağ trafiği için genel IP adreslerini içerir.
-* **Arka uç adres havuzu**: Sanal makinelerin yük dengeleyiciden ağ trafiği alması için ağ arabirimlerini (NIC'ler) içerir.
-* **Yük Dengeleme kuralları**: Yük Dengeleyici üzerindeki bir genel bağlantı noktasını arka uç adres havuzundaki bağlantı noktasına eşleyen kuralları içerir.
-* **Gelen NAT kuralları**: Yük Dengeleyici üzerindeki bir genel bağlantı noktasını arka uç adres havuzundaki belirli bir sanal makineye ait bağlantı noktasına eşlenen ağ adresi çevirisi (NAT) kuralları içerir.
-* **Araştırmalar**: Arka uç adres havuzundaki sanal makine örneklerinin kullanılabilirliğini kontrol etmek için kullanılan durum araştırmalarını içerir.
+* **Ön uç IP yapılandırması**: Gelen ağ trafiği için genel IP adreslerini içerir.
+* **Arka uç adres havuzu**: Sanal makinelerin yük dengeleyiciden ağ trafiği alması için ağ arabirimlerini (NIC 'ler) içerir.
+* **Yük Dengeleme kuralları**: Yük dengeleyicideki genel bağlantı noktasını arka uç adres havuzundaki bir bağlantı noktasına eşleyen kuralları içerir.
+* **Gelen NAT kuralları**: Yük dengeleyicideki genel bağlantı noktasını arka uç adres havuzundaki belirli bir sanal makineye yönelik bir bağlantı noktasına eşleyen ağ adresi çevirisi (NAT) kurallarını içerir.
+* **Yoklamalar**: Arka uç adres havuzundaki sanal makine örneklerinin kullanılabilirliğini kontrol etmek için kullanılan durum araştırmalarını içerir.
 
 ## <a name="set-up-azure-cli"></a>Azure CLI'yı ayarlama
 

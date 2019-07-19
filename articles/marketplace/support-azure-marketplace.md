@@ -1,53 +1,53 @@
 ---
-title: Azure Market ve AppSource desteği | Azure
-description: Destek bilgileri ve bağlantılar için Azure Market ve AppSource
+title: Azure Market ve AppSource desteği | Mavisi
+description: Azure Market ve AppSource için destek bilgileri ve bağlantılar
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: yijenj
 manager: nunoc
 ms.service: marketplace
 ms.topic: article
 ms.date: 10/05/2018
-ms.author: yijenj
-ms.openlocfilehash: 496fef7cfd93004e77a710942cffabbf23d6b29a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: nunoc
+ms.openlocfilehash: 1c27b85aca45f25354d6351c1a335b14cb9bc446
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64937693"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297815"
 ---
 # <a name="support-for-the-marketplace"></a>Market için destek  
-Market'e destek seçeneklerin bir listesi aşağıda verilmiştir.  
+Market için destek seçeneklerinin bir listesi aşağıda verilmiştir.  
 
-Ayrıca, birçok içinde sorularınızın yanıtlarını alabilirsiniz [C + AI Topluluk Forumu Market kanalı](https://www.microsoftpartnercommunity.com/t5/Marketplace/bd-p/2222).  
+Ayrıca, [C + AI topluluk Forumunun Market kanalında](https://www.microsoftpartnercommunity.com/t5/Marketplace/bd-p/2222)cevaplanlarınızın birçoğuna ulaşabilirsiniz.  
 
 ## <a name="onboarding"></a>Ekleme
 
-Microsoft ile bilet [Market yayımcısı Destek](https://support.microsoft.com/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&forceorigin=esmc&ccsid=636595105151894820) ekleme ve Başlarken veya Microsoft ile sorunları [iş ortağı Destek](https://partner.microsoft.com/support) Microsoft iş ortağı ağı hakkında sorularınız varsa.
+Ekleme ve Başlarken ile ilgili sorunlar için Microsoft [Market Publisher desteğiyle](https://support.microsoft.com/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&forceorigin=esmc&ccsid=636595105151894820) bir bilet açın veya Microsoft iş ortağı ağı sorularınız varsa Microsoft [iş ortağı desteğiyle](https://partner.microsoft.com/support) birlikte açın.
 
 ## <a name="cloud-partner-portal"></a>Bulut İş Ortağı Portalı  
 
-| Kanal desteği | Açıklama | Kullanılabilirlik |  
+| Destek kanalı | Açıklama | Kullanılabilirlik |  
 |:--- |:--- |:--- |  
-| Yardım almak için bir olay sayfasında bulunan Oluştur ziyaret [Market desteği](https://go.microsoft.com/fwlink/?linkid=844975)</li> </ul> | Bulut iş ortağı portalı desteği. | Desteği, 6 am - 6 pm PST arasında sunulur. |  
+| Yardım için [Market 'te](https://go.microsoft.com/fwlink/?linkid=844975) bulunan bir olay oluştur sayfasını ziyaret edin</li> </ul> | Bulut İş Ortağı Portalı için destek. | 6har-18:00 PST arasında destek sağlanır. |  
 
 ## <a name="technical"></a>Teknik  
 
-| Kanal desteği | Açıklama |  
+| Destek kanalı | Açıklama |  
 |:--- |:--- |  
-| MSDN Forumları için: Market'te bulunan [social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket) | Microsoft Developer Network Forumu. |  
-| Yığın taşması: Azure bulunan [stackoverflow.com/questions/tagged/azure](https://stackoverflow.com/questions/tagged/azure) | Taşma ortam çözümleri edinin ve Azure Marketi'nde ilgili her şeyi hakkında sorular sormak için yığın.<ul> <li>Yığın taşması: Azure Marketi'nde bulunan [stackoverflow.com/questions/tagged/azure-marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace)</li> <li>Yığın taşması: Azure Resource Manager bulunan [stackoverflow.com/questions/tagged/azure-resource-manager](https://stackoverflow.com/questions/tagged/azure-resource-manager)</li> <li>Yığın taşması: Azure sanal makinelerinde bulunan [stackoverflow.com/questions/tagged/azure-virtual-machine](https://stackoverflow.com/questions/tagged/azure-virtual-machine)</li> <li>Yığın taşması: Kapsayıcıları Azure üzerinde bulunan [stackoverflow.com/search?q=azure+container](https://stackoverflow.com/search?q=azure+container)</li> </ul> |
-| AppSource desteği: [appsourcecrm@Microsoft.com](mailto:appsourcecrm@microsoft.com) | Dynamics uygulamaları için yayımlamayı desteği |
+| MSDN forumları: [Social.msdn.Microsoft.com/forums/Azure/Home?Forum=DataMarket](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket) adresinde bulunan Market | Microsoft Developer Network Forumu. |  
+| Stack Overflow: [StackOverflow.com/Questions/Tagged/Azure](https://stackoverflow.com/questions/tagged/azure) adresinde bulunan Azure | Azure Market ile ilgili her şey hakkında çözüm almak ve soru sormak için Stack Overflow ortam.<ul> <li>Stack Overflow: [StackOverflow.com/Questions/Tagged/Azure-Marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace) adresinde bulunan Azure Marketi</li> <li>Stack Overflow: [StackOverflow.com/Questions/Tagged/Azure-Resource-Manager](https://stackoverflow.com/questions/tagged/azure-resource-manager) adresinde bulunan Azure Resource Manager</li> <li>Stack Overflow: Azure 'daki sanal makineler [StackOverflow.com/Questions/Tagged/Azure-Virtual-Machine](https://stackoverflow.com/questions/tagged/azure-virtual-machine) adresinde bulunur</li> <li>Stack Overflow: Azure 'da [StackOverflow.com/search?q=Azure+Container](https://stackoverflow.com/search?q=azure+container) adresinde bulunan kapsayıcılar</li> </ul> |
+| AppSource desteği:[appsourcecrm@Microsoft.com](mailto:appsourcecrm@microsoft.com) | Dynamics uygulamaları için yayımlamayı destekle |
 
-## <a name="marketing-resources"></a>Pazarlama kaynakları  
+## <a name="marketing-resources"></a>Pazarlama Kaynakları  
 
-| Kanal desteği | Açıklama | Kullanılabilirlik |  
+| Destek kanalı | Açıklama | Kullanılabilirlik |  
 |:--- |:--- |:--- |  
-| E-posta: [cosell@microsoft.com](mailto:cosell@microsoft.com) | Ekleme işlemleri ve ortak satış programıyla ilgili sorular için destek. | Pasifik saat diliminde temel. |  
-| E-posta: [gtm@microsoft.com](mailto:gtm@microsoft.com) | Avantajlarımız ve program sorular için destek. | Çalışma saatleri, Pasifik saat diliminde arasındadır. |  
-| E-posta: [cebrand@microsoft.com](mailto:cebrand@microsoft.com) | Azure logoları ve marka kullanım ilgili soruların yanıtları bulunur. |  |  
+| E-posta:[cosell@microsoft.com](mailto:cosell@microsoft.com) | Ortak satış programıyla ilgili ekleme işlemlerine ve sorulara yönelik destek. | Pasifik saati dilimine göre. |  
+| E-posta:[gtm@microsoft.com](mailto:gtm@microsoft.com) | GTM avantajları ve program soruları için destek. | İş saatleri Pasifik saati dilimlidir. |  
+| E-posta:[cebrand@microsoft.com](mailto:cebrand@microsoft.com) | Azure logoları ve marka kullanımı hakkında soruların yanıtları. |  |  
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Ziyaret [Azure Market ve AppSource yayımcı Kılavuzu](./marketplace-publishers-guide.md) sayfası.  
+[Azure Marketi ve AppSource yayımcı Kılavuzu](./marketplace-publishers-guide.md) sayfasını ziyaret edin.  
  
 ---

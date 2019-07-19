@@ -1,6 +1,6 @@
 ---
-title: Uygulama değişikliği analizi, web uygulaması sorunlarını bulmak için Azure İzleyici'de kullanın. | Microsoft Docs
-description: Uygulama değişikliği analizi, Azure İzleyici'de canlı sitelerde Azure App Service üzerindeki uygulama sorunlarını gidermek için kullanın.
+title: Web uygulaması sorunlarını bulmak için Azure Izleyici 'de uygulama değişikliği analizini kullanma | Microsoft Docs
+description: Azure App Service üzerindeki canlı sitelerde uygulama sorunlarını gidermek için Azure Izleyici 'de uygulama değişikliği analizini kullanın.
 services: application-insights
 author: cawams
 manager: carmonm
@@ -10,91 +10,91 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: cawa
-ms.openlocfilehash: 45df8f9e57223ea60a11c6af2187d362184cae2b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 3efa26a1eaea8f522d9717efb0de0ec8e1682e0e
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443363"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875143"
 ---
-# <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Azure İzleyici'de uygulama değişikliği analizi (Önizleme) kullanma
+# <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Azure Izleyici 'de uygulama değişikliği analizini (Önizleme) kullanma
 
-Canlı site sorun veya kesinti oluştuğunda, hızlı bir şekilde kök nedeni belirlemek önemlidir. Standart izleme çözümleri için sorun uyarı gönderebilir. Bunlar bile hangi bileşenin başarısız olduğunu gösteriyor olabilir. Ancak, bu uyarı, hemen her zaman hata'nın neden açıklayan olmaz. Siteniz beş dakika önce çalışan ve artık bozduğunu bildiğiniz. Son beş dakika içinde değişiklikler? Bu soru ise, uygulama değişikliği analizi, Azure İzleyici'de yanıtlamak için tasarlanmıştır.
+Canlı bir site sorunu veya kesintisi oluştuğunda, kök nedenin hızla belirlenmesi kritik öneme sahiptir. Standart izleme çözümleri sizi bir sorunla ilgili olarak uyarabilir. Bunlar, hangi bileşenin başarısız olduğunu bile gösterebilir. Ancak bu uyarı hatanın nedenini her zaman açıklamayacaktır. Sitenizde beş dakika önce çalıştık ve artık bozulmuş. Son beş dakika içinde ne değişti? Bu, uygulama değişikliği analizinin Azure Izleyici 'de yanıtlamak üzere tasarlandığına yönelik sorudır.
 
-Gücünü oluşturmaya [Azure kaynak Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview), değişiklik analiz observability artırmak ve MTTR (onarmak için saati) azaltmak için Azure uygulama değişikliklerinizi dair Öngörüler sağlar.
+[Azure Kaynak Grafiği](https://docs.microsoft.com/azure/governance/resource-graph/overview)'nin gücüyle çalışırken, değişiklik Analizi Observability artırmak ve MTTR 'i azaltmak için Azure uygulamanızın değişiklikleriyle ilgili öngörüler sağlar (ortalama onarım süresi).
 
 > [!IMPORTANT]
-> Değişiklik analizi şu anda Önizleme aşamasındadır. Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi sağlanmaktadır. Bu sürüm, üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor veya kısıtlı yeteneklere sahip. Daha fazla bilgi için [Microsoft Azure önizlemeleri için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Değişiklik Analizi Şu anda önizleme aşamasındadır. Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sunulmaktadır. Bu sürüm, üretim iş yükleri için önerilmez. Bazı özellikler desteklenmeyebilir veya kısıtlı özelliklere sahip olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="overview"></a>Genel Bakış
 
-Değişiklik analiz, altyapı katmanını uygulama dağıtımı için tüm değişikliklerden çeşitli türlerde algılar. Kaynak abonelik değişikliklerde abonelik düzeyinde Azure kaynak sağlayıcısıdır. Kullanıcıların ne değişiklikler anlamalarına yardımcı olmak çeşitli tanılama araçları için veri sorunları neden olabilecek değişiklik analizini sağlar.
+Değişiklik analizi, altyapı katmanından uygulama dağıtımına kadar olan çeşitli değişiklik türlerini algılar. Bu, abonelikteki kaynak değişikliklerini denetleyen abonelik düzeyinde bir Azure Kaynak sağlayıcısıdır. Değişiklik analizi, kullanıcıların sorunlara neden olabilecek değişiklikler olduğunu anlamalarına yardımcı olmak için çeşitli tanılama araçları için veri sağlar.
 
-Aşağıdaki diyagramda, değişiklik analiz mimarisi gösterilmektedir:
+Aşağıdaki diyagramda değişiklik analizinin mimarisi gösterilmektedir:
 
-![Değiştirme analizi nasıl değişiklik verilerini alır ve istemci araçları sağlar mimarisi diyagramı](./media/change-analysis/overview.png)
+![Değişiklik analizinin değişiklik verilerini nasıl aldığı ve istemci araçlarına sağladığı mimari diyagramı](./media/change-analysis/overview.png)
 
-Şu anda değişiklik analiz içinde tümleşik olarak **Tanıla ve problemleri çözmenize** App Service web uygulamasında deneyimi. Değişiklik algılama etkinleştirmek ve web uygulamasında değişiklikleri görüntülemek için bkz: *Web Apps özelliğini değiştirmek analize* bu makalenin devamındaki bölümüne.
+Şu anda değişiklik Analizi App Service Web uygulamasındaki **sorunları Tanıla ve çöz** deneyimiyle tümleşiktir. Değişiklik algılamayı etkinleştirmek ve Web uygulamasındaki değişiklikleri görüntülemek için, bu makalenin ilerleyen kısımlarında *Web Apps özelliği Için değişiklik Analizi* bölümüne bakın.
 
-### <a name="azure-resource-manager-deployment-changes"></a>Azure Resource Manager dağıtım değişiklikleri
+### <a name="azure-resource-manager-deployment-changes"></a>Dağıtım değişikliklerini Azure Resource Manager
 
-Kullanarak [Azure kaynak Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview), uygulamanızı barındıran Azure kaynaklarını zamanla nasıl değiştiğini geçmiş kaydını değişiklik analizini sağlar. Değişiklik analiz algılayabilir, örneğin, IP yapılandırma kuralları, yönetilen kimlikleri ve SSL ayarları değiştirir. Bu nedenle bir web uygulaması için bir etiket eklenirse, analiz değiştirme değişikliği yansıtır. Bu bilgi kullanılabilir olduğu sürece `Microsoft.ChangeAnalysis` kaynak sağlayıcısı, Azure aboneliğinde etkinleştirilir.
+[Azure Kaynak Grafiği](https://docs.microsoft.com/azure/governance/resource-graph/overview)'ni kullanarak, değişiklik analizi, uygulamanızı barındıran Azure kaynaklarının zaman içinde nasıl değiştiğini gösteren bir geçmiş kaydı sağlar. Değişiklik analizi, IP yapılandırma kuralları, Yönetilen kimlikler ve SSL ayarlarındaki değişiklikleri algılayabilir. Bu nedenle, bir Web uygulamasına bir etiket eklenirse değişiklik Analizi değişikliği yansıtır. Bu bilgiler, Azure aboneliğinde `Microsoft.ChangeAnalysis` kaynak sağlayıcısı etkinleştirildiği sürece kullanılabilir.
 
-### <a name="changes-in-web-app-deployment-and-configuration"></a>Web uygulaması dağıtma ve yapılandırma değişiklikleri
+### <a name="changes-in-web-app-deployment-and-configuration"></a>Web uygulaması dağıtımı ve yapılandırmasındaki değişiklikler
 
-Değişiklik analiz 4 saatte bir uygulama dağıtımını ve yapılandırmasını durumunu yakalar. Bu, örneğin, uygulama ortam değişkenleri içindeki değişiklikleri algılayabilir. Araç farkları hesaplar ve nelerin değiştiğini gösterir. Resource Manager değişiklikleri, kod dağıtım bilgilerini değiştirme aracı hemen kullanılamayabilir. Değişiklik analizi en son değişiklikleri görüntülemek için seçin **tarama değişiklikleri şimdi**.
+Değişiklik analizi, bir uygulamanın dağıtım ve yapılandırma durumunu her 4 saatte bir yakalar. Uygulama ortamı değişkenlerindeki değişiklikleri algılayabilir. Araç farkları hesaplar ve nelerin değiştiğini gösterir. Kaynak Yöneticisi değişikliklerden farklı olarak, kod dağıtımı değişiklik bilgileri araç içinde hemen kullanılamayabilir. Değişiklik analizinde yapılan en son değişiklikleri görüntülemek için **değişiklikleri şimdi Tara**' yı seçin.
 
-!["Artık tarama değişiklikleri" düğmesinin Ekran görüntüsü](./media/change-analysis/scan-changes.png)
+!["Değişiklikleri şimdi Tara" düğmesinin ekran görüntüsü](./media/change-analysis/scan-changes.png)
 
 ### <a name="dependency-changes"></a>Bağımlılık değişiklikleri
 
-Kaynak bağımlılıkları değişiklikler bir web uygulamasında sorunlara neden olabilir. Örneğin, bir web uygulamasını Redis önbelleğine çağırırsa, Redis önbelleği SKU web uygulaması performansını etkileyebilir. Bağımlılıkları değişikliklerini algılamak için web uygulamanızın DNS kaydı değişiklik analiz denetler. Bu şekilde, bu değişiklikleri sorunlarına neden olabileceği tüm uygulama bileşenleri tanımlar.
+Kaynak bağımlılıklarındaki değişiklikler de bir Web uygulamasında sorunlara neden olabilir. Örneğin, bir Web uygulaması Redsıs önbelleğine çağırırsa, Redsıs Cache SKU 'SU Web uygulaması performansını etkileyebilir. Bağımlılıklarda yapılan değişiklikleri algılamak için, değişiklik Analizi Web uygulamasının DNS kaydını denetler. Bu şekilde, tüm uygulama bileşenlerinde sorunlara neden olabilecek değişiklikler tanımlanmaktadır.
 
-## <a name="change-analysis-for-the-web-apps-feature"></a>Web Apps özelliği için değişiklik analizi
+## <a name="change-analysis-for-the-web-apps-feature"></a>Web Apps özelliği için değişiklik Analizi
 
-Azure İzleyici'de değişiklik analiz Self Servis şu anda yerleşik **tanılayın ve sorunlarını çözmek** deneyimi. Bu deneyimden erişim **genel bakış** App Service uygulamanızı sayfası.
+Azure Izleyici 'de, değişiklik Analizi Şu anda self servis **Tanılama ve çözme sorunları** deneyiminde yerleşik olarak bulunur. App Service uygulamanızın **genel bakış** sayfasından bu deneyimle erişin.
 
-!["Genel bakış" düğmesinin Ekran görüntüsü ve "tanılama ve sorun çözme" düğmesi](./media/change-analysis/change-analysis.png)
+!["Genel bakış" düğmesinin ve "sorunları tanılama ve çözme" düğmesinin ekran görüntüsü](./media/change-analysis/change-analysis.png)
 
-### <a name="enable-change-analysis-in-the-diagnose-and-solve-problems-tool"></a>Tanılama içinde değişiklik analizini etkinleştirme ve aracı sorunları çözün
+### <a name="enable-change-analysis-in-the-diagnose-and-solve-problems-tool"></a>Sorunları tanılama ve çözme aracında değişiklik analizini etkinleştirme
 
-1. Seçin **kullanılabilirliğini ve performansını**.
+1. **Kullanılabilirlik ve performans ' ı**seçin.
 
-    !["Kullanılabilirlik ve sorun giderme seçenekleri performans" ekran görüntüsü](./media/change-analysis/availability-and-performance.png)
+    !["Kullanılabilirlik ve performans" sorun giderme seçeneklerinin ekran görüntüsü](./media/change-analysis/availability-and-performance.png)
 
-1. Seçin **uygulama değişiklikleri**. Bu özellik ayrıca içinde kullanılabilir değil **uygulama kilitlenmeleri**.
+1. **Uygulama değişikliklerini**seçin. Özelliği **uygulama Kilitlenmelerinde**da kullanılabilir değildir.
 
-   !["Uygulama kilitlenmeleri" düğmesinin Ekran görüntüsü](./media/change-analysis/application-changes.png)
+   !["Uygulama kilitlenmeler" düğmesinin ekran görüntüsü](./media/change-analysis/application-changes.png)
 
-1. Değişiklik analiz etkinleştirmek için seçin **şimdi etkinleştirmek**.
+1. Değişiklik analizini etkinleştirmek için **Şimdi etkinleştir**' i seçin.
 
-   !["Uygulama kilitlenmeleri" seçeneklerinin ekran görüntüsü](./media/change-analysis/enable-changeanalysis.png)
+   !["Uygulama kilitlenmeler" seçeneklerinin ekran görüntüsü](./media/change-analysis/enable-changeanalysis.png)
 
-1. Açma **değişiklik analiz** seçip **Kaydet**.
+1. **Değişiklik analizini** açın ve **Kaydet**' i seçin.
 
-    !["Değişiklik analizini etkinleştir" kullanıcı arabiriminin ekran görüntüsü](./media/change-analysis/change-analysis-on.png)
+    !["Değişiklik analizini etkinleştir" Kullanıcı arabiriminin ekran görüntüsü](./media/change-analysis/change-analysis-on.png)
 
 
-1. Değişiklik analiz erişmek için seçin **Tanıla ve problemleri çözmenize** > **kullanılabilirliğini ve performansını** > **uygulama kilitlenmeleri**. Bu değişiklikler hakkında ayrıntılı bilgi ile birlikte zaman içinde tür değişiklikler özetleyen bir grafik görürsünüz:
+1. Değişiklik analizine erişmek için, **sorunları Tanıla ve çöz sorun** > **kullanılabilirliği ve performans** > **uygulaması kilitlenmeleri**' ni seçin. Zaman içinde değişiklik türlerini özetleyen bir grafik görürsünüz ve bu değişiklikler hakkındaki ayrıntılarla birlikte:
 
      ![Değişiklik fark görünümünün ekran görüntüsü](./media/change-analysis/change-view.png)
 
 
-### <a name="enable-change-analysis-at-scale"></a>Uygun ölçekte değişiklik analizini etkinleştirme
+### <a name="enable-change-analysis-at-scale"></a>Ölçek üzerinde değişiklik analizini etkinleştir
 
-Aboneliğinizi çok sayıda web uygulaması içeriyorsa, web uygulamasının düzeyinde hizmetini etkinleştirme verimsiz olabilir. Bu durumda, bu diğer yönergeleri izleyin.
+Aboneliğiniz çok sayıda Web uygulaması içeriyorsa, hizmeti Web uygulaması düzeyinde etkinleştirmek verimsiz olur. Bu durumda, bu alternatif yönergeleri izleyin.
 
-### <a name="register-the-change-analysis-resource-provider-for-your-subscription"></a>Aboneliğiniz için değişiklik analiz kaynak sağlayıcısını kaydetme
+### <a name="register-the-change-analysis-resource-provider-for-your-subscription"></a>Aboneliğiniz için değişiklik Analizi kaynak sağlayıcısını kaydedin
 
-1. Değişiklik analiz özellik bayrağını (Önizleme) kaydedin. Özellik bayrağı Önizleme aşamasında olduğundan, aboneliğinize görebilmesi için kaydetmeniz gerekir:
+1. Değişiklik Analizi Özellik bayrağını (Önizleme) kaydedin. Özellik bayrağı önizlemede olduğundan, aboneliğiniz için görünür olması için kaydetmeniz gerekir:
 
    1. [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/)'i açın.
 
-      ![Cloud Shell değişimin ekran görüntüsü](./media/change-analysis/cloud-shell.png)
+      ![Değişiklik Cloud Shell ekran görüntüsü](./media/change-analysis/cloud-shell.png)
 
-   1. Kabuk türe çeviremezsiniz **PowerShell**.
+   1. Kabuk türünü **PowerShell**olarak değiştirin.
 
-      ![Cloud Shell değişimin ekran görüntüsü](./media/change-analysis/choose-powershell.png)
+      ![Değişiklik Cloud Shell ekran görüntüsü](./media/change-analysis/choose-powershell.png)
 
    1. Aşağıdaki PowerShell komutunu çalıştırın:
 
@@ -104,17 +104,17 @@ Aboneliğinizi çok sayıda web uygulaması içeriyorsa, web uygulamasının dü
         Register-AzureRmProviderFeature -FeatureName PreviewAccess -ProviderNamespace Microsoft.ChangeAnalysis #Register feature flag
         ```
 
-1. Abonelik için değişiklik analiz kaynak sağlayıcısını kaydedin.
+1. Abonelik için değişiklik Analizi kaynak sağlayıcısını kaydedin.
 
-   - Git **abonelikleri**ve değişiklik hizmeti etkinleştirmek istediğiniz aboneliği seçin. Ardından kaynak sağlayıcılarını seçin:
+   - **Abonelikler**' e gidin ve değişiklik hizmetinde etkinleştirmek istediğiniz aboneliği seçin. Sonra kaynak sağlayıcıları ' nı seçin:
 
-        ![Değişiklik analiz kaynak sağlayıcısını kaydetme gösteren ekran görüntüsü](./media/change-analysis/register-rp.png)
+        ![Değişiklik Analizi kaynak sağlayıcısının nasıl kaydedileceği gösteren ekran görüntüsü](./media/change-analysis/register-rp.png)
 
-       - Seçin **Microsoft.ChangeAnalysis**. Sayfanın üst kısmında seçip **kaydetme**.
+       - **Microsoft. ChangeAnalysis**öğesini seçin. Ardından sayfanın en üstünde **Kaydet**' i seçin.
 
-       - Kaynak sağlayıcısı etkinleştirildikten sonra dağıtım düzeyinde değişikliklerini algılamak için web uygulaması gizli etiket ayarlayabilirsiniz. Gizli bir etiket ayarlamak için yönergeleri uygulayın. **değişiklik analiz bilgileri getirilemiyor**.
+       - Kaynak sağlayıcı etkinleştirildikten sonra, dağıtım düzeyindeki değişiklikleri algılamak için Web uygulamasında gizli bir etiket ayarlayabilirsiniz. Gizli bir etiket ayarlamak için, **değişiklik Analizi bilgilerini getirmek için**aşağıdaki yönergeleri izleyin.
 
-   - Alternatif olarak, kaynak sağlayıcısını kaydetmek için bir PowerShell Betiği kullanabilirsiniz:
+   - Alternatif olarak, kaynak sağlayıcısını kaydetmek için bir PowerShell betiği de kullanabilirsiniz:
 
         ```PowerShell
         Get-AzureRmResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState #Check if RP is ready for registration
@@ -122,7 +122,7 @@ Aboneliğinizi çok sayıda web uygulaması içeriyorsa, web uygulamasının dü
         Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.ChangeAnalysis" #Register the Change Analysis RP
         ```
 
-        Bir web uygulaması gizli bir etiket ayarlamak için PowerShell kullanmak için aşağıdaki komutu çalıştırın:
+        Bir Web uygulamasında gizli bir etiket ayarlamak üzere PowerShell 'i kullanmak için şu komutu çalıştırın:
 
         ```powershell
         $webapp=Get-AzWebApp -Name <name_of_your_webapp>
@@ -132,9 +132,10 @@ Aboneliğinizi çok sayıda web uygulaması içeriyorsa, web uygulamasının dü
         ```
 
      > [!NOTE]
-     > Gizli etiket ekledikten sonra değişiklikleri görmesini başlamadan önce en fazla 4 saat beklemeniz gerekebilir. Değişiklik analiz 4 saatte bir yalnızca web uygulamanızı taradığından sonuçları gecikir. 4 saatlik zamanlama taramanın performans etkisini sınırlar.
+     > Gizli etiketi ekledikten sonra, değişiklikleri görmeye başlamadan önce 4 saate kadar beklemeniz gerekebilir. Değişiklik Analizi Web uygulamanızı yalnızca 4 saatte bir taradığından sonuçlar gecikiyor. 4 saatlik zamanlama, taramanın performans etkisini sınırlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- App Service izlemek daha etkili bir şekilde göre [Application Insights özelliklerini etkinleştirme](azure-web-apps.md) Azure İzleyici'de.
-- Daha fazla bilgi edinin [Azure kaynak Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview), güç değişiklik analiz yardımcı olur.
+- [Azure Uygulama Hizmetleri uygulamaları](azure-web-apps.md)için Application Insights etkinleştirin.
+- [Azure VM ve Azure sanal makine ölçek kümesi için Application Insights ETKINLEŞTIRME IIS tarafından barındırılan uygulamalar](azure-vm-vmss-apps.md).
+- Power Change analizine yardımcı olan [Azure Kaynak Grafiği](https://docs.microsoft.com/azure/governance/resource-graph/overview)hakkında daha fazla bilgi edinin.

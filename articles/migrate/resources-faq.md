@@ -1,231 +1,205 @@
 ---
-title: Azure geçişi - sık sorulan sorular (SSS) | Microsoft Docs
-description: Azure geçişi hakkında sık sorulan sorular adresleri
+title: Azure geçişi-sık sorulan sorular (SSS) | Microsoft Docs
+description: Azure geçişi hakkında sık sorulan soruları adresleyen
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 03/28/2019
+ms.date: 07/17/2019
 ms.author: snehaa
-ms.openlocfilehash: 08a0312f12b3daab8b7f5e88da118b5bcbeb2f4c
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: e5b4777adfcbb5babbf5db792a10d025c79b1a8b
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807318"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302362"
 ---
-# <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure geçişi - sık sorulan sorular (SSS)
+# <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure geçişi-sık sorulan sorular (SSS)
 
-Bu makale, Azure geçişi hakkında sık sorulan sorular içerir. Bu makaleyi okuduktan sonra başka sorgular varsa, gönderin [Azure geçişi Forumu](https://aka.ms/AzureMigrateForum).
+Bu makalede, Azure geçişi hakkında sık sorulan sorular yer almaktadır. Bu makaleyi okuduktan sonra başka sorgular varsa, bunları [Azure geçişi forumuna](https://aka.ms/AzureMigrateForum)gönderin.
 
 ## <a name="general"></a>Genel
 
-### <a name="which-azure-geographies-are-supported-by-azure-migrate"></a>Hangi Azure coğrafyaları Azure geçişi tarafından destekleniyor mu?
-Azure geçişi şu anda Azure geçişi projesini oluşturulabilir coğrafyalar destekler. Yalnızca bu coğrafyalardaki projeleri oluşturabilirsiniz, ancak yine de makineleriniz diğer hedef konumları için değerlendirebilirsiniz. Proje Coğrafya, yalnızca bulunan meta verileri depolamak için kullanılır.
-
-**Coğrafya** | **meta veri depolama konumu** Azure kamu | ABD Devleti Virginia Asya | Güneydoğu Asya veya Doğu Asya, Avrupa | Güney Avrupa veya Amerika Birleşik Krallık Batı Avrupa | UK Güney veya UK Batı ABD | Orta ABD ve Batı ABD 2
-
-### <a name="how-is-azure-migrate-different-from-azure-site-recovery"></a>Nasıl Azure geçişi Azure Site Recovery'den farkı nedir?
-
-Azure geçişi, keşfedin, değerlendirin ve makineler ve iş yüklerini Azure'a geçirmek için yardımcı araçlar sağlar. [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure) bir olağanüstü durum kurtarma çözümüdür. Her iki hizmet de, bazı bileşenler paylaşın.
-
-## <a name="azure-migrate-appliance-vmwarephysical-servers"></a>Azure geçişi Gereci (VMware/fiziksel sunucuları)
-
-### <a name="how-does-the-azure-migrate-appliance-connect-to-azure"></a>Azure geçişi Gereci Azure'a nasıl bağlanıyor?
-
-Genel eşdüzey hizmet sağlama ile Expressroute'u kullanabilirsiniz veya internet üzerinden bağlantı olabilir.
-
-### <a name="what-network-connectivity-requirements-are-needed-for-azure-migrate-server-assessment-and-migration"></a>Azure geçişi Server değerlendirme ve geçiş için hangi ağ bağlantısı gereksinimlerini gereklidir
-
-URL'ler ve Azure geçişi için gereken bağlantı noktaları için Azure ile iletişim kurmak, gözden [VMWare](migrate-support-matrix-vmware.md) ve [Hyper-V](migrate-support-matrix-hyper-v.md) matrislerde destekler.
-
-### <a name="can-i-harden-the-appliance-vmware-vm-i-set-up-with-the-ova-template"></a>Ben Gereci VMware VM OVA şablonla ayarlamak sağlamlaştırmak?
-
-İletişim ve güvenlik duvarı kuralları sola re Azure geçişi Gereci için gerekli olduğu sürece ek bileşenler (örneğin, virüsten koruma) OVA şablonlarına eklenebilir.   
-
-### <a name="to-harden-the-azure-migrate-appliance-what-are-the-recommended-antivirus-av-exclusions"></a>Azure geçişi Gereci sağlamlaştırmak için önerilen (AV) virüsten koruma dışlamaları nelerdir?
-
-Gerecinde taramanın dışında aşağıdaki klasörleri dışarıda yapmanız gerekir:
-
-- Azure geçişi hizmeti için ikili dosyaları içeren klasör. Tüm alt klasörleri hariç tutun.
-- %ProgramFiles%\ProfilerService  
-- Azure geçişi Web uygulaması. Tüm alt klasörleri hariç tutun.
-- %SystemDrive%\inetpub\wwwroot
-- Veritabanı ve günlük dosyaları için yerel önbelleği. Azure geçişi hizmeti okuma/bu klasöre yazma erişimi.
-  - %SystemDrive%\Profiler
-
-### <a name="what-data-is-collected-by-azure-migrate"></a>Azure geçişi tarafından verilerin ne toplanır?
-
-Azure geçişi Gereci dahil olmak üzere şirket içi sanal makineleri için meta verileri toplar:
-
-**Sanal makinenin yapılandırma verileri**
-- VM görünen adı (temel, vCenter)
-- VM envanteri yolu (konak/küme/klasör vcenter)
-- IP adresi
-- MAC adresi
-- İşletim sistemi
-- Çekirdek, disk, NIC sayısı
-- Bellek boyutu, Disk boyutları
-
-**VM'nin performans verileri**
-- CPU kullanımı
-- Bellek kullanımı
-- Sanal Makineye eklenmiş her disk için:
-  - Disk aktarım hızı okuma
-  - Disk aktarım hızı yazar.
-  - Disk okuma işlemleri / sn
-  - Disk işlemleri / sn yazar.
-- VM'ye bağlı her ağ bağdaştırıcısı için:
-  - Ağ içine
-  - Ağ dışına
-
-Bağımlılık eşlemesini dağıtırsanız Tn ek olarak, bağımlılık eşlemesini aracıları makine FQDN, işletim sistemi, IP adresi ve MAC adresi, VM ve VM için gelen ve giden TCP bağlantılarını içinde çalışan işlemler içeren bilgiler toplayın. Bu bulma, bulma için bağımlılık eşlemesi etkinleştirirseniz, yalnızca kullanılan isteğe bağlıdır.
-
-### <a name="is-there-any-performance-impact-on-the-analyzed-esxi-host-environment"></a>Bir performans etkisi çözümlenen ESXi ana bilgisayar ortamının mı?
-
-Sürekli performans verilerini profil oluşturma ile Azure geçişi Gereci profilleri şirket içi makineleri VM performans verilerini ölçme. ESXi konaklarında yanı sıra vCenter Server neredeyse sıfır performans etkisi vardır.
-
-### <a name="where-is-the-collected-data-stored-and-for-how-long"></a>Toplanan verileri uzun depolanan ve için nasıl nerede?
-
-Azure geçişi Gereci tarafından toplanan veriler, geçiş projesi oluştururken, belirttiğiniz Azure konumunda depolanır. Veriler Microsoft abonelikte güvenli bir şekilde depolanır ve Azure geçişi projesi sildiğinizde silinir.
-
-Aracıları Vm'lerde yüklerseniz, bağımlılık görselleştirmesi için Azure aboneliği için oluşturulan bir Log Analytics çalışma alanında ABD bağımlılık aracıları tarafından toplanan veriler depolanır. Aboneliğinizde Log Analytics çalışma alanını sildiğinizde, bu verileri silinir. [Daha fazla bilgi edinin](concepts-dependency-visualization.md).
-
-### <a name="what-is-the-volume-of-data-uploaded-by-azure-migrate-during-continuous-profiling"></a>Azure geçişi tarafından sürekli olarak profil oluşturma sırasında yüklenen veri hacmi nedir?
-
-Azure geçişi için gönderilen veri hacmini birkaç parametre göre değişir. 10 (her bir disk ve bir NIC ile), makineleri Azure geçişi projesini bir göstergesi numarası vermek için yaklaşık 50 MB / gün gönderir. Değişiklikleri NIC'ler için veri noktalarının sayısını temel alan bir yaklaşık değer ve diskleri (gönderilen verilerin makineler, NIC'ler veya disk sayısını artırmak istiyorsanız doğrusal olmayan) budur.
-
-### <a name="is-the-data-encrypted-at-rest-and-in-transit"></a>Şifrelenmiş verilerin bekleyen ve aktarım sırasında mi?
-
-Hem Evet. Meta veriler için Azure geçişi hizmeti, https üzerinden internet üzerinden güvenli bir şekilde gönderilir. İçinde depolanan meta veriler bir [Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/database-encryption-at-rest)hem de [Azure blob depolama](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) Microsoft Abonelikteki ve çalışmıyorken şifrelendiğinden.
-
-Bağımlılık aracısı tarafından toplanan veriler ayrıca içinde şifrelenmiş Aktarım (güvenli HTTPS) ve kullanıcı aboneliği bir Log Analytics çalışma alanında depolanır. Ayrıca çalışmıyorken şifrelendiğinden bir hizmettir.
-
-### <a name="how-does-the-azure-migrate-appliance-communicate-with-the-vcenter-server-and-the-azure-migrate-service"></a>Azure geçişi Gereci vCenter Server ve Azure geçişi hizmeti ile nasıl iletişim?
-
-Gereci vCenter Server'a (bağlantı noktası 443) bağlanır, gereç ayarladığınızda sağlanan kimlik bilgilerini kullanarak. Bu, vCenter Server vCenter Server tarafından yönetilen sanal makineleri ile ilgili meta verileri toplamak için VMware powerclı'yı kullanarak sorgular. Geçen ay için her bir VM'nin performans geçmişi yanı sıra VM'ler (çekirdekler, bellek, disk, NIC vb.) hakkında her iki yapılandırma verilerini toplar. Toplanan meta veriler daha sonra (internet üzerinden HTTPS üzerinden) Azure geçişi Server değerlendirmesi için değerlendirme için gönderilir. 
-
-### <a name="can-i-connect-the-same-appliance-to-multiple-vcenter-servers"></a>Birden fazla vCenter sunucunuz için aynı gereç bağlanabilir miyim?
-
-Evet, tek bir Azure geçişi Gereci birden fazla vCenter sunucularını bulmak için kullanılabilir ancak aynı anda değil. Bulmaları birbiri ardına çalıştırmanız gerekir.
-
-### <a name="is-the-ova-template-used-by-site-recovery-integrated-with-the-ova-used-by-azure-migrate"></a>Site Recovery tarafından kullanılan OVA şablonu, Azure geçişi tarafından kullanılan OVA tümleşiktir?
-
-Şu anda hiçbir tümleştirme yoktur. . OVA şablonu Site recovery'de VMware VM'LERİNİ/fiziksel sunucu çoğaltma için bir Site Recovery yapılandırma sunucusu kurmak için kullanılır. . Azure geçişi tarafından kullanılan OVA değerlendirme ve geçiş amaçları doğrultusunda bir vCenter sunucusu tarafından yönetilen VMware Vm'leri bulmak için kullanılır.
-
-### <a name="i-changed-my-machine-size-can-i-rerun-an-assessment"></a>Makine boyut değiştirdim. Bir değerlendirmeyi yeniden çalıştırabilir miyim?
-Azure geçişi Gereci sürekli olarak şirket içi ortamı hakkında bilgi toplar. Ancak, değerlendirme, şirket içi Vm'leri zaman içinde nokta anlık görüntüsüdür. Değerlendirmek istediğiniz VM ayarlarını değiştirirseniz, değerlendirme en son değişikliklerle güncelleştirmek için 'Yeniden Hesapla' seçeneğini kullanın.
-
-### <a name="how-can-i-discover-a-multi-tenant-environment-in-azure-migrate"></a>Azure Geçişi'ndeki çok kiracılı bir ortam nasıl bulabilecek kişileri?
-
-VMware için kiracılar genelinde paylaşılan bir ortamda sahip olduğunuz ve başka bir kiracının Abonelikteki bir kiracı Vm'leri bulmak istemiyorsanız, bulmak istediğiniz VM'lerin erişimi olan sunucu kimlik bilgileri vCenter oluşturun. Ardından Azure geçişi Gereci bulmayı devre dışı başlatma sırasında kimlik bilgilerini kullanın.
-
-Hyper-V için bulma Hyper-V ana bilgisayar kimlik bilgileriyle kullanan VM'ler aynı Hyper-V ana bilgisayarı paylaşıyorsanız, şu anda bulma ayırmak için bir yolu yoktur.  
-
-### <a name="how-many-vms-can-be-discovered-using-a-single-migration-appliance"></a>Kaç tane Vm'niz tek geçiş gereciyle bulunabilir?
-
-VMware Vm'lerini 10.000 adede kadar ve tek bir geçiş gereciyle 5.000 Hyper-V Vm'leri bulabilir.  Daha fazla makine şirket içi ortamınızda varsa, nasıl ölçeklendireceğinizi öğrenin [Hyper-V](scale-hyper-v-assessment.md) ve [VMware](scale-vmware-assessment.md) değerlendirme.
+### <a name="which-azure-geographies-are-supported-by-azure-migrate"></a>Azure geçişi tarafından hangi Azure coğrafi ve desteklenen?
+Azure geçişi Şu anda bir Azure geçişi projesinin oluşturulabilmesi için bir dizi coğrafi konumu desteklemektedir. Bu coğrafi makinelere yalnızca projeler oluşturabilirsiniz, ancak yine de diğer hedef konumlar için makinelerinizi değerlendirebilir ya da geçirebilirsiniz. Proje Coğrafya yalnızca keşfedilen meta verileri depolamak için kullanılır.
 
 
-## <a name="azure-migrate-server-assessment"></a>Azure geçişi: Server değerlendirmesi
+**Coğrafya** | **Meta veri depolama konumu**
+--- | ---
+Azure Kamu | ABD Devleti Virginia
+Asya | Güneydoğu Asya veya Doğu Asya
+Avrupa | Güney Avrupa veya Batı Avrupa
+Birleşik Krallık | UK Güney veya UK Batı
+Amerika Birleşik Devletleri | Orta ABD veya Batı ABD 2
 
-### <a name="does-azure-migrate-server-assessment-support-assessment-of-physical-servers"></a>Azure geçişini sağlamaz: Server değerlendirmesi fiziksel sunucuları değerlendirmesini destekliyor?
 
-Hayır, Azure geçişi şu anda fiziksel sunucularını değerlendirme desteklememektedir. 
+> [!NOTE]
+> Azure Kamu desteği şu anda yalnızca Azure geçişi 'nin [eski sürümünde](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions) sunulmaktadır.
 
-### <a name="does-azure-migrate-need-vcenter-server-to-discover-a-vmware-environment"></a>Azure geçişi, vCenter sunucusunu bir VMware ortamını keşfetmeye gerekiyor mu?
+### <a name="how-is-azure-migrate-different-from-azure-site-recovery"></a>Azure Azure Site Recovery 'den farklı bir şekilde geçiş?
 
-Evet, Azure geçişi, vCenter sunucusunu bir VMware ortamını keşfetmeye gerekir. Bunu, vCenter Server tarafından yönetilmeyen bir ESXi ana bilgisayarları bulmayı desteklemiyor.
+Azure geçişi, Azure 'da makineler ve iş yüklerini başlatmak, çalıştırmak ve izlemek için merkezi bir merkez sağlar. [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure) bir olağanüstü durum kurtarma çözümüdür. Azure geçişi sunucu geçişi, şirket içi makinelerin geçiş ve çapraz geçişi için geçiş senaryolarını etkinleştirmek üzere arka uçta Azure Site Recovery yararlanır.
 
-### <a name="whats-the-difference-between-using-azure-migrate-server-assessment-and-the-map-toolkit"></a>Azure Geçişi'nın kullanımı arasındaki fark nedir: Server değerlendirmesi ve Map Araç Kiti?
+## <a name="azure-migrate-appliance-vmwarephysical-servers"></a>Azure geçişi gereci (VMware/fiziksel sunucular)
 
-Azure geçişi: Server değerlendirmesi, geçiş değerlendirmesi, geçiş hazırlığı ve iş yüklerini azure'a geçiş için değerlendirmeyi yardımcı olmak için sağlar. [Microsoft Assessment ve planlama (eşleme) Araç Seti](https://www.microsoft.com/download/details.aspx?id=7826) geçiş Windows istemci ve sunucu işletim sistemleri ve yazılım kullanımını izleme daha yeni sürümleri için planlama gibi diğer işlevlere sahiptir. Bu senaryolarda, MAP Araç Kiti kullanmaya devam edin.
+### <a name="how-does-the-azure-migrate-appliance-connect-to-azure"></a>Azure geçişi gereci Azure 'a nasıl bağlanır?
 
-### <a name="how-is-azure-migrate-server-assessment-different-from-azure-site-recovery-deployment-planner"></a>Azure geçişi nasıl şöyledir: Azure Site Recovery dağıtım Planlayıcısı farklı Server değerlendirmesi?
+Bağlantı Internet üzerinden olabilir veya ExpressRoute 'u ortak/Microsoft eşlemesi ile birlikte kullanabilirsiniz.
 
-Azure geçişi: Server değerlendirmesi planlama aracı geçiştir. Azure Site Recovery dağıtım planlayıcısı aracı planlama bir olağanüstü durum kurtarma ' dir.
+### <a name="what-network-connectivity-requirements-are-needed-for-azure-migrate-server-assessment-and-migration"></a>Azure geçişi sunucu değerlendirmesi ve geçişi için gereken ağ bağlantısı gereksinimleri
 
-- **Vmware'den/Hyper-v'den azure'a geçiş**: Şirket içi sunucularınızı Azure'a geçirmek istiyorsanız, Azure geçişi kullanın: Geçiş planlaması için sunucu değerlendirme aracı. Araç, şirket içi iş yüklerini değerlendirir ve rehberlik, Öngörüler ve Azure'a geçirmenizde yardımcı mekanizmaları sağlar. Geçiş planınızla hazır olduğunuzda, Azure geçişi gibi araçları kullanabilirsiniz: Sunucu geçiş, makineleri Azure'a geçirmek için.
-- **Vmware'den/Hyper-v'den azure'a olağanüstü durum kurtarma**: Site Recovery kullanarak azure'a olağanüstü durum kurtarma için Site Recovery dağıtım Planlayıcısı, olağanüstü durum kurtarma planlaması için kullanın. Site Recovery dağıtım Planlayıcısı, şirket içi ortamınızın kapsamlı, Site Recovery özgü değerlendirme yapar. Bu, çoğaltma ve yük devretme sanal makinelerinin gibi başarılı olağanüstü durum işlemler için Site Recovery tarafından gerekli önerileri sağlar. 
+Azure geçişi 'nin Azure ile iletişim kurması için gereken URL 'Ler ve bağlantı noktaları için, [VMware](migrate-support-matrix-vmware.md) ve [Hyper-V](migrate-support-matrix-hyper-v.md) destek matrislerini gözden geçirin.
 
-### <a name="does-azure-migrate-support-enterprise-agreement-ea-based-cost-estimation"></a>Azure geçişi, Kurumsal Anlaşma EA tabanlı maliyet tahmini destekliyor mu?
+### <a name="can-i-harden-the-appliance-vm-i-set-up-with-the-template"></a>Şablonla ayarladığım gereç sanal makinesini kullanabilir miyim?
 
-Azure geçişi şu anda desteklemez için maliyet tahmini [Kurumsal Anlaşma teklif](https://azure.microsoft.com/offers/enterprise-agreement-support/). Geçici çözüm, Kullandıkça Öde teklifi olarak ve el ile değerlendirme Özellikleri 'İndirim' alanına (abonelik için geçerli) indirim yüzdesindeki belirtin sağlamaktır.
+Azure geçişi gereci için gereken iletişim ve güvenlik duvarı kuralları, olduğu sürece şablona eklenebilir (örneğin, virüsten koruma için).   
+
+### <a name="what-data-is-collected-by-azure-migrate-appliance"></a>Azure geçişi gereci hangi verileri toplamıştır?
+
+Azure geçiş gereci tarafından toplanan veriler hakkında ayrıntılı bilgi [edinebilirsiniz.](https://docs.microsoft.com/azure/migrate/migrate-appliance#collected-performance-data-vmware)
+
+### <a name="is-there-any-performance-impact-on-the-analyzed-vmware-or-hyper-v-environment"></a>Çözümlenen VMware veya Hyper-V ortamında herhangi bir performans etkisi var mı?
+
+Performans verilerinin sürekli profilini oluşturmak için Azure geçişi, sanal makine performans verilerini ölçmek üzere şirket içi makineler sağlar. Bu, Hyper-V/ESXi konaklarının yanı sıra vCenter Server de neredeyse sıfır performans etkisine sahiptir.
+
+### <a name="where-is-the-collected-data-stored-and-for-how-long"></a>Toplanan veriler ve ne kadar süreyle depolanıyor?
+
+Azure geçişi gereci tarafından toplanan veriler, geçiş projesi oluştururken belirttiğiniz Azure konumunda depolanır. Veriler bir Microsoft aboneliğine güvenli bir şekilde depolanır ve Azure geçişi projesini sildiğinizde silinir.
+
+Bağımlılık görselleştirmesi için, VM 'Lere aracılar yüklerseniz, bağımlılık aracıları tarafından toplanan veriler ABD 'de, Azure aboneliğinde oluşturulan bir Log Analytics çalışma alanında depolanır. Bu veriler, aboneliğinizdeki Log Analytics çalışma alanını sildiğinizde silinir. [Daha fazla bilgi edinin](concepts-dependency-visualization.md).
+
+### <a name="what-is-the-volume-of-data-uploaded-by-azure-migrate-appliance-during-continuous-profiling"></a>Sürekli profil oluşturma sırasında Azure geçiş gereci tarafından karşıya yüklenen verilerin hacmi nedir?
+
+Azure geçişi 'ne gönderilen verilerin hacmi, birkaç parametreye göre farklılık gösterir. 10 makineyle (her biri bir disk ve bir NIC ile) bir Azure geçişi projesi olan, bir dizi numaraya sahip olmak için günde 50 MB arasında bir değer gönderir. Bu, NIC 'Lerin ve disklerin veri noktası sayısına göre değişiklik gösteren yaklaşık bir değerdir (makine, NIC 'ler veya disk sayısı artıdıkça gönderilen veriler doğrusal değildir).
+
+### <a name="is-the-data-encrypted-at-rest-and-in-transit"></a>Veriler REST ve aktarım sırasında mi şifrelendi?
+
+Her ikisi için Evet. Meta veriler, https üzerinden Azure geçişi hizmetine internet üzerinden güvenli bir şekilde gönderilir. Meta veriler bir Microsoft aboneliğinde [Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/database-encryption-at-rest)ve [Azure Blob depolama](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) alanında depolanır ve REST 'te şifrelenir.
+
+Bağımlılık aracıları tarafından toplanan veriler de aktarım (güvenli HTTPS) ile şifrelenir ve Kullanıcı aboneliğindeki bir Log Analytics çalışma alanında depolanır. Ayrıca, Rest 'ten de şifrelenir.
+
+### <a name="how-does-the-azure-migrate-appliance-communicate-with-the-vcenter-server-and-the-azure-migrate-service"></a>Azure geçişi gereci vCenter Server ve Azure geçişi hizmeti ile nasıl iletişim kurar?
+
+Gereç, gereci ayarlarken belirtilen kimlik bilgilerini kullanarak vCenter Server (bağlantı noktası 443) bağlanır. VCenter Server tarafından yönetilen VM 'Lerle ilgili meta verileri toplamak için VMware PowerCLI kullanarak vCenter Server sorgular. VM 'Ler (çekirdekler, bellek, diskler, NIC vs.) ile ilgili yapılandırma verilerini ve geçen ay için her VM 'nin performans geçmişini toplar. Toplanan meta veriler daha sonra değerlendirme için Azure geçişi sunucu değerlendirmesine (HTTPS üzerinden Internet üzerinden) gönderilir.
+
+### <a name="can-i-connect-the-same-appliance-to-multiple-vcenter-servers"></a>Aynı gereci birden çok vCenter sunucusuna bağlanabilir miyim?
+
+Evet, tek bir Azure geçişi gereci birden çok vCenter sunucusunu (eşzamanlı değil) keşfetmesi için kullanılabilir. Bulmalar ' dan sonra bir tane çalıştırmanız gerekir.
+
+### <a name="i-changed-my-machine-size-can-i-rerun-an-assessment"></a>Makine boyutumu değiştirdim. Bir değerlendirmeyi yeniden çalıştırabilir miyim?
+
+Azure geçişi gereci, şirket içi ortam hakkındaki bilgileri sürekli olarak toplar. Bununla birlikte, değerlendirme, şirket içi VM 'lerin bir zaman noktası anlık görüntüsüdür. Değerlendirmek istediğiniz bir VM 'deki ayarları değiştirirseniz, en son değişikliklerle değerlendirmesi güncelleştirmek için ' yeniden hesapla ' seçeneğini kullanın.
+
+### <a name="how-can-i-discover-a-multi-tenant-environment-in-azure-migrate-server-assessment"></a>Azure geçişi sunucu değerlendirmesi 'nde çok kiracılı bir ortamı nasıl keşfedebilirim?
+
+VMware için, kiracılar genelinde paylaşılan bir ortamınız varsa ve başka bir kiracının aboneliğindeki bir kiracının VM 'lerini öğrenmek istemiyorsanız, yalnızca öğrenmek istediğiniz VM 'Ler için erişim ile vCenter Server kimlik bilgileri oluşturun. Ardından, Azure geçişi gerecinde keşfi devre dışı bırakıldığında kimlik bilgilerini kullanın.
+
+Hyper-V için bulma, Hyper-v ana bilgisayar kimlik bilgilerini kullanır, VM 'Ler aynı Hyper-V konağını paylaşıyorsa, şu anda bulmayı ayırmanın bir yolu yoktur.  
+
+### <a name="how-many-vms-can-be-discovered-using-a-single-migration-appliance"></a>Tek bir geçiş gereci kullanılarak kaç VM bulunabilir?
+
+En fazla 10.000 VMware VM ve tek bir geçiş gereci kullanarak en çok 5.000 Hyper-V VM 'Leri bulabilirsiniz.  Şirket içi ortamınızda daha fazla makineniz varsa, [Hyper-V](scale-hyper-v-assessment.md) ve [VMware](scale-vmware-assessment.md) değerlendirmesini nasıl ölçeklentireceğinizi öğrenin.
+
+## <a name="azure-migrate-server-assessment"></a>Azure Geçişi: Sunucu Değerlendirmesi
+
+### <a name="does-azure-migrate-server-assessment-support-assessment-of-physical-servers"></a>Azure geçişi yapar: Sunucu değerlendirmesi fiziksel sunucu değerlendirmesi destekliyor mu?
+
+Hayır, Azure geçişi Şu anda fiziksel sunucu değerlendirmesini desteklemiyor.
+
+### <a name="does-azure-migrate-need-vcenter-server-to-discover-a-vmware-environment"></a>Azure geçişi 'nin bir VMware ortamını bulması vCenter Server gerekir mi?
+
+Evet, Azure geçişi 'nin bir VMware ortamını bulması için vCenter Server gerekir. VCenter Server tarafından yönetilmeyen ESXi konaklarının bulunmasını desteklemez.
+
+### <a name="whats-the-difference-between-using-azure-migrate-server-assessment-and-the-map-toolkit"></a>Azure geçişi kullanımı arasındaki fark nedir: Sunucu değerlendirmesi ve harita araç seti?
+
+Azure Geçişi: Sunucu değerlendirmesi, geçiş hazırlığı ve Azure 'a geçiş için iş yüklerinin değerlendirilmesi konusunda yardımcı olmak üzere geçiş değerlendirmesi sağlar. [Microsoft Assessment and planlama (Map) araç seti](https://www.microsoft.com/download/details.aspx?id=7826) , Windows istemci ve sunucu işletim sistemlerinin daha yeni sürümleri için geçiş planlaması ve yazılım kullanımı izleme gibi diğer işlevlere sahiptir. Bu senaryolar için harıta araç setini kullanmaya devam edin.
+
+### <a name="how-is-azure-migrate-server-assessment-different-from-azure-site-recovery-deployment-planner"></a>Azure geçişi: Sunucu değerlendirmesi Azure Site Recovery Dağıtım Planlayıcısı farklı mi?
+
+Azure Geçişi: Sunucu değerlendirmesi bir geçiş planlama aracıdır. Azure Site Recovery Dağıtım Planlayıcısı bir olağanüstü durum kurtarma planlama aracıdır.
+
+- **VMware/Hyper-V ' d e Azure 'A geçiş**: Şirket içi sunucularınızı Azure 'a geçirmeyi planlıyorsanız Azure geçişini kullanın: Geçiş planlaması için sunucu değerlendirmesi aracı. Araç, şirket içi iş yüklerini değerlendirir ve Azure 'a geçiş yaparken size yardımcı olacak yönergeler, Öngörüler ve mekanizmalar sağlar. Geçiş planınızla çalışmaya başladıktan sonra Azure geçişi gibi araçları kullanabilirsiniz: Makineleri Azure 'a geçirmek için sunucu geçişi.
+- **VMware/Hyper-V ' d e olağanüstü durum kurtarma**: Site Recovery kullanarak Azure 'a olağanüstü durum kurtarma için, olağanüstü durum kurtarma planlaması için Site Recovery Dağıtım Planlayıcısı kullanın. Site Recovery Dağıtım Planlayıcısı, şirket içi ortamınızın ayrıntılı ve Site Recovery özgü bir değerlendirmesini yapar. Çoğaltma ve VM 'lerin yük devretmesi gibi başarılı olağanüstü durum işlemleri için Site Recovery gereken öneriler sağlar.
+
+### <a name="does-azure-migrate-support-enterprise-agreement-ea-based-cost-estimation"></a>Azure, Kurumsal Anlaşma (EA) tabanlı maliyet tahmini desteği ister misiniz?
+
+Azure geçişi Şu anda [Kurumsal anlaşma teklifi](https://azure.microsoft.com/offers/enterprise-agreement-support/)için maliyet tahmini desteklememektedir. Geçici çözüm, teklif olarak Kullandıkça Öde 'yi belirtmek ve değerlendirme özelliklerinin ' Indirim ' alanındaki indirim yüzdesini (abonelik için geçerlidir) el ile belirtmektir.
 
   ![İndirim](./media/resources-faq/discount.png)
 
-### <a name="whats-the-difference-between-as-on-premises-sizing-and-performance-based-sizing"></a>Olarak şirket içi boyutlandırma ve performans tabanlı boyutlandırma arasındaki fark nedir?
+### <a name="whats-the-difference-between-as-on-premises-sizing-and-performance-based-sizing"></a>Şirket içi boyutlandırma ve performans tabanlı boyutlandırma arasındaki fark nedir?
 
-- İçinde şirket içi boyutlandırma, gibi Azure geçişi VM performans verilerini dikkate almaz. Bu, sanal makinelerinizi şirket yapılandırmasına göre boyutlandırır. Performansa dayalı boyutlandırma-boyutlandırma hakkında kullanım verileri temel alır.
-- Örneğin, 4 çekirdek ve 8 GB bellek % 50 CPU kullanımı ve bellek kullanımı % 50 ile şirket içi VM varsa, şirket içi olarak boyutlandırma 4 çekirdek ve 8 GB bellek ile bir Azure VM SKU'su önerir. Kullanım yüzdesi olarak kabul edildiğinden performans tabanlı boyutlandırma, ancak, bir sanal makine SKU'su 2 Çekirdek ve 4 GB önerir.
-- Benzer şekilde, disk boyutlandırma ölçütü ve depolama türü boyutlandırma iki değerlendirme özelliklerine - bağlıdır.
-= Boyutlandırma ölçütü performansa dayalı ve depolama türünün otomatik olduğundan, diskin IOPS ve aktarım hızı değerleri hedef disk türünü (standart veya Premium) tanımlamak için kullanıldığında olarak kabul edilir.
-- Boyutlandırma ölçütü performansa dayalı ve premium depolama türü ise, bir premium disk önerilir. Premium disk SKU seçili, şirket içi disk boyutuna bağlı. Aynı mantığı boyutlandırma, şirket içi boyutlandırma olarak boyutlandırma ölçütü olduğunda ve depolama türü standart veya premium disk için kullanılır.
+- Şirket içi boyutlandırma olarak Azure geçişi, VM performans verilerini kabul etmez. VM 'Leri, şirket içi yapılandırmaya göre boyutlandırır. -Performans tabanlı boyutlandırma bölümünde, boyutlandırma kullanım verilerini temel alır.
+- Örneğin, şirket içi bir VM 4 çekirdeğe ve% 50 CPU kullanımı ve% 50 bellek kullanımı ile 8 GB belleğe sahipse, şirket içi boyutlandırma dört çekirdekli ve 8 GB bellekle bir Azure VM SKU 'SU önerir. Ancak, performans tabanlı boyutlandırma, kullanım yüzdesi kabul edildiği için iki çekirdeğin ve 4 GB 'lik bir VM SKU 'SU önerir.
+- Benzer şekilde, disk boyutlandırma iki değerlendirme özelliklerine ve boyutlandırma ölçütüne ve depolama türüne bağlıdır.
+= Boyutlandırma ölçütü performans tabanlı ve depolama türü otomatiktir ise, diskin ıOPS ve aktarım hızı değerleri, hedef disk türü (Standart veya Premium) tanımlanırken kabul edilir.
+- Boyutlandırma ölçütü performans tabanlıdır ve depolama türü Premium ise, Premium bir disk önerilir. Premium disk SKU 'SU, şirket içi diskin boyutuna göre belirlenir. Aynı mantık, boyutlandırma ölçütü şirket içi boyutlandırmadır ve depolama türü standart veya Premium olduğunda disk boyutlandırmayı yapmak için kullanılır.
 
-### <a name="what-impact-does-performance-history-and-percentile-utilization-have-on-the-size-recommendations"></a>Boyut önerileri üzerinde performans geçmişi ve yüzdebirlik kullanımı nasıl bir etkisi var mı?
+### <a name="what-impact-does-performance-history-and-percentile-utilization-have-on-the-size-recommendations"></a>Performans geçmişi ve yüzdebirlik kullanımı, boyut önerilerinde ne etkiler?
 
 Bu özellikler yalnızca performans tabanlı boyutlandırma için geçerlidir.
 
-- Azure geçişi, şirket içi makinelerin performans geçmişi toplar ve Azure VM boyutu ve disk türü önermek için kullanır.
-- Gereç her 20 saniyede gerçek zamanlı kullanım verilerini toplamak için şirket içi ortamı sürekli olarak profiller. Alet, 20 saniyelik örnekler toparlar ve her 15 dakika için tek bir veri noktası oluşturur. Tek veri noktasını oluşturmak için alet tüm 20 saniyelik örneklerden en yüksek değerleri seçer ve Azure’a gönderir.
-- Azure geçişi (performans süresi ve performans geçmişi yüzdelik dilim değeri göre) azure'da bir değerlendirme oluşturmak, etkili kullanımı değeri hesaplar ve boyutlandırma için kullanır.
-- Örneğin, performans süresini bir gün olacak şekilde ayarlayın ve 95. yüzdebirlik Azure geçişi için yüzdelik dilim değeri son gününün toplayıcı tarafından gönderilen 15 dakika örnek noktası kullanır, bunları artan düzende sıralar ve 95. yüzdebirlik olarak seçer etkili kullanımı.
-- 95. yüzdebirlik 99. yüzdebirlik dilimde kullanırsanız, ortaya çıkabilecek herhangi bir aykırı değer yoksayıyorsunuz sağlar. Dönemin en yüksek kullanımını seçmek ve aykırı değerleri kaçırmamak istiyorsanız 99. yüzdebirliği seçmelisiniz.
+- Azure geçişi, şirket içi makinelerin performans geçmişini toplar ve Azure 'da VM boyutunu ve disk türünü önermek için kullanır.
+- Gereç, her 20 saniyede bir gerçek zamanlı kullanım verilerini toplamak için şirket içi ortamı sürekli olarak profillerdir. Alet, 20 saniyelik örnekler toparlar ve her 15 dakika için tek bir veri noktası oluşturur. Tek veri noktasını oluşturmak için alet tüm 20 saniyelik örneklerden en yüksek değerleri seçer ve Azure’a gönderir.
+- Azure 'da bir değerlendirme oluşturduğunuzda (performans süresi ve performans geçmişi yüzdelik değeri temelinde), Azure geçişi etkin kullanım değerini hesaplar ve boyutlandırmak için kullanır.
+- Örneğin, performans süresini bir gün olacak şekilde ayarlarsanız ve yüzdelik değer olarak 95 yüzdebirlik değerini belirtirseniz Azure geçişi, son gün için toplayıcı tarafından gönderilen 15 dakikalık örnek noktalarını kullanır, bunları artan düzende sıralar ve 95. yüzdebirlik değerini şu şekilde seçer. etkin kullanım.
+- 95. yüzdebirlik değeri, 99. yüzdebirlik değerini kullanırsanız oluşabilecek tüm aykırı değerleri yok saymanızı sağlar. Dönemin en yüksek kullanımını seçmek ve aykırı değerleri kaçırmamak istiyorsanız 99. yüzdebirliği seçmelisiniz.
 
 ### <a name="what-is-dependency-visualization"></a>Bağımlılık görselleştirmesi nedir?
 
-Bağımlılık görselleştirme daha büyük bir güvenle geçiş için VM grupları değerlendirmenize olanak tanır. Çapraz-makine bağımlılıklarını kapsamında bir değerlendirmeyi çalıştırmadan önce olup olmadığını denetler. Bağımlılık görselleştirme, hiçbir şey geride emin olun ve Azure'a geçirirken beklenmedik kesintileri önlemek yardımcı olur. Azure geçişi, bağımlılık görselleştirmesi etkinleştirmek için Azure İzleyici günlüklerine, hizmet eşlemesi çözümünü yararlanır.
+Bağımlılık görselleştirme, daha fazla güvenle geçiş için VM gruplarını değerlendirmenizi sağlar. Değerlendirme çalıştırmadan önce makine bağımlılıklarını çapraz denetler. Bağımlılık görselleştirme, hiçbir şeyin geri ayrılmaması ve Azure 'a geçiş yaparken beklenmedik kesintilerden kaçınılmasını sağlar. Azure geçişi, bağımlılık görselleştirmesini etkinleştirmek için Azure Izleyici günlüklerindeki Hizmet Eşlemesi çözümünü kullanır.
 
 > [!NOTE]
-> Bağımlılık görselleştirme işlevini Azure Kamu'da kullanılabilir değil.
+> Bağımlılık görselleştirme işlevselliği Azure Kamu 'da kullanılamaz.
 
-### <a name="do-i-need-to-pay-to-use-the-dependency-visualization-feature"></a>Bağımlılık görselleştirmesi özelliğini kullanmak için ücret ödemem gerekiyor mu?
+### <a name="do-i-need-to-pay-to-use-the-dependency-visualization-feature"></a>Bağımlılık görselleştirme özelliğini kullanmak için ödeme yapmam gerekir mi?
 
 Hayır. Azure Geçişi fiyatlandırması hakkında [daha fazla bilgi edinin](https://azure.microsoft.com/pricing/details/azure-migrate/).
 
-### <a name="do-i-need-to-install-anything-for-dependency-visualization"></a>Bağımlılık görselleştirmesi için herhangi bir şey yüklemeniz gerekiyor mu?
+### <a name="do-i-need-to-install-anything-for-dependency-visualization"></a>Bağımlılık görselleştirmesi için bir şey yüklemem gerekiyor mu?
 
-Bağımlılık görselleştirmesi kullanmak için indirip değerlendirmek istediğiniz her bir şirket içi makineye aracılar yüklemeniz gerekir.
+Bağımlılık görselleştirmesini kullanmak için, değerlendirmek istediğiniz her şirket içi makineye aracıları indirip yüklemeniz gerekir.
 
-- [Microsoft Monitoring agent(MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows) her makinede yüklü olması gerekir.
-- [Bağımlılık aracısını](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure) her makinede yüklü olması gerekir.
-- Ayrıca, internet bağlantısı olmayan makineleriniz varsa, indirmek ve Log Analytics gateway yükler gerekir.
+- [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows) her makineye yüklenmelidir.
+- [Bağımlılık aracısının](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure) her makinede yüklü olması gerekir.
+- Ayrıca, internet bağlantısı olmayan makineleriniz varsa Log Analytics ağ geçidini indirip yüklemeniz gerekir.
 
-Bağımlılık görselleştirmesi kullandığınız sürece bu aracıları gerekmez.
+Bağımlılık görselleştirmesi kullanmadığınız takdirde bu aracılara ihtiyacınız yoktur.
 
 ### <a name="can-i-use-an-existing-workspace-for-dependency-visualization"></a>Bağımlılık görselleştirmesi için mevcut bir çalışma alanını kullanabilir miyim?
 
-Evet, mevcut bir çalışma geçiş projesine ekleyin ve bağımlılık görselleştirmesi için yararlanın. [Daha fazla bilgi edinin](concepts-dependency-visualization.md#how-does-it-work).
+Evet, var olan bir çalışma alanını geçiş projesine iliştirebilir ve bunu bağımlılık görselleştirmesi için kullanabilirsiniz. [Daha fazla bilgi edinin](concepts-dependency-visualization.md#how-does-it-work).
 
 ### <a name="can-i-export-the-dependency-visualization-report"></a>Bağımlılık görselleştirme raporunu dışarı aktarabilir miyim?
 
-Hayır, bağımlılık görselleştirmesi dışarı aktarılamaz. Ancak, Azure geçişi kullandığı hizmet eşlemesi için bağımlılık görselleştirmeyi kullanabilirsiniz [hizmet eşlemesi REST API'lerini](https://docs.microsoft.com/rest/api/servicemap/machines/listconnections) bağımlılıkları bir json biçiminde alın.
+Hayır, bağımlılık görselleştirmesi verilemiyor. Bununla birlikte, Azure geçişi bağımlılık görselleştirmesi için Hizmet Eşlemesi kullandığından, bağımlılıkları JSON biçiminde almak için [HIZMET EŞLEMESI REST API 'lerini](https://docs.microsoft.com/rest/api/servicemap/machines/listconnections) kullanabilirsiniz.
 
-### <a name="how-can-i-automate-the-installation-of-microsoft-monitoring-agent-mma-and-dependency-agent"></a>Microsoft Monitoring Agent (MMA) ve bağımlılık aracısını yükleme nasıl otomatikleştirebilirim?
+### <a name="how-can-i-automate-the-installation-of-microsoft-monitoring-agent-mma-and-dependency-agent"></a>Microsoft Monitoring Agent (MMA) ve bağımlılık aracısının yüklenmesini nasıl otomatikleştirebilirim?
 
-[Bu betiği kullanın](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples) aracıların yüklemesi için. [Bu yönergeleri izleyin](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) komut satırı veya Otomasyon kullanarak MMA'yı yüklemek için. MMA'yı için yararlanarak [bu betik](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab).
+Aracıları yüklemek için [bu betiği kullanın](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples) . Komut satırını veya Otomasyonu kullanarak MMA 'yı yüklemek için [Bu yönergeleri izleyin](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) . MMA için [Bu betikten](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab)yararlanın.
 
-Betiklerin yanı sıra dağıtım araçları gibi System Center Configuration Manager, kullanabileceğiniz [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) vb. aracıları dağıtmak için.
+Betiklerin yanı sıra, aracıları dağıtmak için System Center Configuration Manager, [ıntigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) vb. gibi dağıtım araçlarını kullanabilirsiniz.
 
-### <a name="what-operating-systems-are-supported-by-mma"></a>Hangi işletim sistemlerini MMA tarafından destekleniyor mu?
+### <a name="what-operating-systems-are-supported-by-mma"></a>MMA tarafından desteklenen işletim sistemleri nelerdir?
 
-- [Gözden geçirme](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-windows-operating-systems) MMA tarafından desteklenen Windows işletim sistemleri listesi.
-- [İnceleyin] https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems) MMA tarafından desteklenen Linux işletim sistemleri listesi.
+- MMA tarafından desteklenen Windows işletim sistemlerinin listesini [gözden geçirin](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-windows-operating-systems) .
+- MMA tarafından desteklenen Linux işletim sistemlerinin listesini [gözden geçirin](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems) .
 
-### <a name="what-are-the-operating-systems-supported-by-the-dependency-agent"></a>Bağımlılık aracısı tarafından desteklenen işletim sistemleri nelerdir?
+### <a name="what-are-the-operating-systems-supported-by-the-dependency-agent"></a>Bağımlılık Aracısı tarafından desteklenen işletim sistemleri nelerdir?
 
-[Gözden geçirme](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-windows-operating-systems) bağımlılık aracı tarafından desteklenen Windows işletim sistemleri.
-[Gözden geçirme](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems) bağımlılık aracı tarafından desteklenen Linux işletim sistemleri listesi.
+Bağımlılık Aracısı tarafından desteklenen Windows işletim sistemlerini [gözden geçirin](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-windows-operating-systems) .
+Bağımlılık Aracısı tarafından desteklenen Linux işletim sistemlerinin listesini [gözden geçirin](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems) .
 
-### <a name="can-i-visualize-dependencies-in-azure-migrate-for-more-than-an-hour"></a>Azure Geçişi'ndeki bağımlılıkları için bir saatten görselleştirebilir miyim?
-Hayır, en fazla bir saatlik bağımlılıkları görselleştirebilirsiniz. Belirli bir tarihe geçmişindeki son ayda dönebilirsiniz ancak görselleştirme için en uzun süresi bir saattir. Örneğin, süre için dün bağımlılıkları görüntülemek için bağımlılık haritada kullanabilirsiniz ancak bir saatlik pencere için bir yalnızca görüntüleyebilir. Ancak, Azure İzleyici günlüklerine kullanabilirsiniz [bağımlılık veri sorgulama](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) üzerinden uzun bir süre.
+### <a name="can-i-visualize-dependencies-in-azure-migrate-for-more-than-an-hour"></a>Bir saatten uzun bir süre boyunca Azure geçişi bağımlılıklarını görselleştirebilir miyim?
+Hayır, bağımlılıkları bir saate kadar görselleştirebilirsiniz. Geçmişte geçen aya kadar belirli bir tarihe gidebilirsiniz, ancak görselleştirme için en uzun süre bir saattir. Örneğin, dün bağımlılıklarını görüntülemek için bağımlılık eşlemesindeki süre süresini kullanabilirsiniz, ancak yalnızca bir saatlik pencere için görüntüleyebilir. Ancak, Azure Izleyici günlüklerini daha uzun bir süre boyunca [bağımlılık verilerini sorgulamak](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) için kullanabilirsiniz.
 
-### <a name="is-dependency-visualization-supported-for-groups-with-more-than-ten-vms"></a>Bağımlılık görselleştirme, ondan fazla Vm'leri gruplar için destekleniyor mu?
-Yapabilecekleriniz [grupları için bağımlılıkları görselleştirme](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) en fazla on vm'lerle. On vm'lerle grubunuz varsa, biz grubunda küçük kullanıcı gruplarına ayırmak için önerilir ve ardından bağımlılıkları görselleştirin.
+### <a name="is-dependency-visualization-supported-for-groups-with-more-than-10-vms"></a>10 ' dan fazla VM 'ye sahip gruplar için bağımlılık görselleştirmesi destekleniyor mu?
+10 adede kadar VM içeren [gruplar için bağımlılıkları görselleştirebilirsiniz](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) . 10 ' dan fazla VM içeren bir grubunuz varsa, grubu daha küçük gruplara bölmeniz ve sonra bağımlılıkları görselleştirmeniz önerilir.
 
-## <a name="azure-migrate-server-migration"></a>Azure geçişi: Sunucu geçiş
+## <a name="azure-migrate-server-migration"></a>Azure Geçişi: Server Geçişi
 
-### <a name="how-is-azure-migrate-server-migration-different-from-azure-site-recovery"></a>Azure geçişi nasıl şöyledir: Azure Site Recovery'den farklı sunucu geçişi?
+### <a name="how-is-azure-migrate-server-migration-different-from-azure-site-recovery"></a>Azure geçişi: Sunucu geçişi Azure Site Recovery 'den farklı mi?
 
-Azure geçişi: Sunucu geçiş aracı tabanlı sunucuların geçişi, Azure için Site Recovery'nin çoğaltma motoru yararlanır.
+Azure Geçişi: Sunucu geçişi, VMware VM 'lerinin aracı tabanlı geçişi, Hyper-V VM 'lerinin geçirilmesi ve fiziksel sunucuların Azure 'a geçirilmesi için Site Recovery çoğaltma altyapısından yararlanır. VMware VM 'lerini geçirmeye yönelik aracısız seçeneği, sunucu geçişinde yerel olarak oluşturulmuştur.
+
 ## <a name="next-steps"></a>Sonraki adımlar
-Okuma [Azure geçişi genel bakış](migrate-services-overview.md)
+[Azure geçişi 'ne genel bakış](migrate-services-overview.md) konusunu okuyun

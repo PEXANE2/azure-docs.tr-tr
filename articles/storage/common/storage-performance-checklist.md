@@ -1,6 +1,6 @@
 ---
 title: Azure depolama performansı ve ölçeklenebilirlik denetim listesi | Microsoft Docs
-description: Azure depolama ile yüksek performanslı uygulamalar geliştirmek kullanmak için kendini kanıtlamış yöntemleri listesi.
+description: Performans uygulamaları geliştirmeye yönelik Azure Storage ile kullanım için kanıtlanmış uygulamaların denetim listesi.
 services: storage
 author: tamram
 ms.service: storage
@@ -8,485 +8,483 @@ ms.topic: article
 ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: c5bbd19969349965ea20fa4cfc09e10119a9a86c
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: ee216bd4d6994179e347465c30039f2f8e293c85
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295741"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68233008"
 ---
-# <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Microsoft Azure depolama performansı ve ölçeklenebilirlik denetim listesi
+# <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Microsoft Azure Depolama performans ve ölçeklenebilirlik denetim listesi
 
-Microsoft Azure depolama hizmetleri sürümü,'den itibaren Microsoft, yüksek performanslı bir şekilde bu hizmetleri kullanmaya yönelik kendini kanıtlamış bir dizi geliştirdi ve bunların en önemli bir denetim stili listesine birleştirmek için bu makalede hizmet. Bu makalede amacınıza uygulama geliştiricileri, kendini kanıtlamış Azure depolama ile kullandığınızdan emin olun ve benimsemeyi düşünmelisiniz diğer kendini kanıtlamış belirlemenize yardımcı olmak amacıyla ' dir. Bu makalede, her olası performans ve ölçeklenebilirlik iyileştirme kapsayacak şekilde denemez — etkilerine küçük veya kapsamlı olarak uygulanabilir olanlar hariç tutar. Uygulamanın davranışını tasarım sırasında tahmin edilebilmesi için toplasa bile, bu performans sorunlarla karşılaşırsanız çalıştıracak tasarımları erkenden önlemek için göz önünde tutmak kullanışlıdır.  
+Microsoft Azure Depolama hizmetlerinin yayınlanmasından bu yana, Microsoft bu Hizmetleri performans açısından kullanmaya yönelik bir dizi kanıtlanmış uygulama geliştirmiştir ve bu makale, bunların en önemlileri bir denetim listesi stili listesine konsolide eder. Bu makalenin amacı, uygulama geliştiricilerinin Azure depolama ile kendini kanıtlamış uygulamalar kullandığını ve bu uygulamaların benimsemeleri gereken diğer kanıtlanmış uygulamaları belirlemesine yardımcı olmak için tasarlanmıştır. Bu makale, olası her performans ve ölçeklenebilirlik iyileştirmesini kapsamaya çalışmaz; bu, etkileri düşük olan veya genel olarak geçerli olmayan olanları dışlar. Tasarım sırasında uygulamanın davranışının tahmin edilebileceği ölçüde, performans sorunlarından çalışacak tasarımları önlemek için bunları erken önünde tutmanız yararlı olur.  
 
-Azure depolama kullanan her uygulama geliştiricisine, bu makaleyi okuyun ve uygulamalarını her biri aşağıda listelenen kendini kanıtlamış izlediğini denetlemek için zamanınız olması gerekir.  
+Azure Storage kullanan her uygulama geliştiricisi, bu makaleyi okumak için zaman almalıdır ve uygulamasının aşağıda listelenen kanıtlanmış uygulamaların her birini takip edip uygulamadığı denetlenir.  
 
 ## <a name="checklist"></a>Denetim listesi
 
-Bu makalede, kendini kanıtlamış yöntemleri aşağıdaki gruplar halinde düzenler. Kendini kanıtlamış yöntemleri uygulanabilir:  
+Bu makalede, kanıtlanmış uygulamalar aşağıdaki gruplar halinde düzenler. İçin geçerli kanıtlanmış uygulamalar:  
 
-* Tüm Azure depolama hizmetleri (BLOB'lar, tablolar, kuyruklar ve dosyalar)
+* Tüm Azure depolama hizmetleri (blob 'lar, tablolar, kuyruklar ve dosyalar)
 * Bloblar
 * Tablolar
 * Kuyruklar  
 
-| Bitti | Alan | Kategori | Soru |
+| Bitti | Alan | Category | Soru |
 | --- | --- | --- | --- |
-| &nbsp; | Tüm Hizmetler |Ölçeklenebilirlik hedefleri |[Uygulamanızı ölçeklenebilirlik hedefleri yaklaşan önlemek için tasarlanmıştır?](#subheading1) |
-| &nbsp; | Tüm Hizmetler |Ölçeklenebilirlik hedefleri |[Adlandırma kuralınızın, daha iyi Yük Dengeleme sağlamak için tasarlanmıştır?](#subheading47) |
-| &nbsp; | Tüm Hizmetler |Ağ |[İstemci tarafı cihazları yeterince yüksek bant genişliği ve gerekli performans elde etmek için düşük gecikme süresi var mı?](#subheading2) |
-| &nbsp; | Tüm Hizmetler |Ağ |[İstemci tarafı cihazları yeterince yüksek kaliteli bağlantı var mı?](#subheading3) |
-| &nbsp; | Tüm Hizmetler |Ağ |[İstemci uygulaması "neredeyse" depolama hesabı bulunur?](#subheading4) |
-| &nbsp; | Tüm Hizmetler |İçerik Dağıtımı |[İçerik dağıtımı için bir CDN kullanıyorsunuz?](#subheading5) |
-| &nbsp; | Tüm Hizmetler |Doğrudan istemci erişimi |[Depolama proxy yerine doğrudan erişmesine izin vermek için SAS ve CORS kullanıyorsunuz?](#subheading6) |
-| &nbsp; | Tüm Hizmetler |Önbelleğe alma |[Sürekli olarak kullanılan uygulama verileri önbelleğe alma ve değişiklikleri nadiren mi?](#subheading7) |
-| &nbsp; | Tüm Hizmetler |Önbelleğe alma |[Uygulamanız, (bunların istemci tarafı önbelleğe alma ve sonra daha büyük kümeleri karşıya) güncelleştirmeleri'toplu işlem?](#subheading8) |
-| &nbsp; | Tüm Hizmetler |.NET yapılandırma |[Yeterli sayıda eş zamanlı bağlantı kullanmak için istemcinizi yapılandırdıktan?](#subheading9) |
-| &nbsp; | Tüm Hizmetler |.NET yapılandırma |[.NET iş parçacığı yeterli sayıda kullanmak için yapılandırdığınız?](#subheading10) |
-| &nbsp; | Tüm Hizmetler |.NET yapılandırma |[.NET 4.5 kullandığınız ya da daha sonra çöp toplama geliştirmiştir?](#subheading11) |
-| &nbsp; | Tüm Hizmetler |Paralellik |[Böylece, istemci yeteneklerini veya ölçeklenebilirlik hedefleri aşırı yükleme yapmaz paralellik uygun şekilde sınırlanmış sağlamış olursunuz?](#subheading12) |
-| &nbsp; | Tüm Hizmetler |Araçlar |[Microsoft en son sürümünü kullanarak istemci kitaplıkları ve araçları sağlanır?](#subheading13) |
-| &nbsp; | Tüm Hizmetler |Yeniden deneme sayısı |[Kullanarak bir üstel geri alma yeniden deneme ilkesi hatalarını ve zaman aşımları azaltma için misiniz?](#subheading14) |
-| &nbsp; | Tüm Hizmetler |Yeniden deneme sayısı |[Uygulama kaçınarak yeniden deneme denenemeyen hata mı?](#subheading15) |
-| &nbsp; | Bloblar |Ölçeklenebilirlik hedefleri |[Çok sayıda eşzamanlı olarak tek bir nesne erişen istemciler var mı?](#subheading46) |
-| &nbsp; | Bloblar |Ölçeklenebilirlik hedefleri |[Uygulamanızın içinde tek bir blob için bant genişliği veya işlem ölçeklenebilirlik hedefine kalıyor?](#subheading16) |
-| &nbsp; | Bloblar |Blobları kopyalama |[Verimli bir şekilde, kopyalama blobları misiniz?](#subheading17) |
-| &nbsp; | Bloblar |Blobları kopyalama |[BLOB toplu kopyaları için AzCopy kullanıyorsunuz?](#subheading18) |
-| &nbsp; | Bloblar |Blobları kopyalama |[Azure içeri/dışarı aktarma, büyük hacimli verileri aktarmak için kullanıyorsunuz?](#subheading19) |
-| &nbsp; | Bloblar |Meta verileri kullanın |[BLOB'ları hakkında sık kullanılan meta verileri, meta verileri depoladığını?](#subheading20) |
-| &nbsp; | Bloblar |Hızlı yükleme |[Bir blob hızla yüklenmeye çalışılırken paralel bloklarında yüklüyorsunuz?](#subheading21) |
-| &nbsp; | Bloblar |Hızlı yükleme |[Çok sayıda BLOB'ları hızlıca yüklenmeye çalışılırken blobları paralel yüklüyorsunuz?](#subheading22) |
-| &nbsp; | Bloblar |Doğru Blob türü |[Sayfa blobları ya da blok blobları uygun olduğunda kullanıyorsunuz?](#subheading23) |
-| &nbsp; | Tablolar |Ölçeklenebilirlik hedefleri |[Saniye başına varlıklar için ölçeklenebilirlik hedefleri yaklaştığı?](#subheading24) |
-| &nbsp; | Tablolar |Yapılandırma |[Tablo isteklerinizi JSON kullanıyor musunuz?](#subheading25) |
-| &nbsp; | Tablolar |Yapılandırma |[Nagle küçük isteklerinin performansını artırmak için devre dışı bırakmış?](#subheading26) |
-| &nbsp; | Tablolar |Tablolar ve bölümler |[Düzgün bir şekilde verilerinizi bölümlere?](#subheading27) |
-| &nbsp; | Tablolar |Etkin bölümler |[Salt eklenir ve yalnızca önüne ekleyin desenleri önleme?](#subheading28) |
-| &nbsp; | Tablolar |Etkin bölümler |[Eklemeler/güncelleştirmeler birçok bölümler arasında yayılır mı?](#subheading29) |
-| &nbsp; | Tablolar |Sorgu kapsamı |[Çoğu durumda kullanılacak noktası sorgular ve gerektiğinde kullanılmak üzere tablo sorguları için izin vermek için şema tasarladığınız?](#subheading30) |
-| &nbsp; | Tablolar |Sorgu yoğunluğu |[Sorgular genellikle yalnızca, tarama yapmak ve uygulamanızın kullanacağı satırları döndürür?](#subheading31) |
-| &nbsp; | Tablolar |Döndürülen verileri sınırlama |[Gerekli olmayan varlıklar döndürüyor önlemek için filtreleme kullanıyorsunuz?](#subheading32) |
-| &nbsp; | Tablolar |Döndürülen verileri sınırlama |[Gerekli olmayan özellikler döndüren önlemek için yansıtma kullanıyorsunuz?](#subheading33) |
-| &nbsp; | Tablolar |Normalleştirilmişlikten çıkarma |[Veri alınmaya çalışılırken verimsiz sorguları ya da birden çok okuma isteklerinin kaçının, verilerinizi normal dışı?](#subheading34) |
-| &nbsp; | Tablolar |Ekleme/güncelleştirme/silme |[Toplu işleme, işlem için gereken istekleri veya gidiş dönüş azaltmak için aynı anda yapılabilir mi?](#subheading35) |
-| &nbsp; | Tablolar |Ekleme/güncelleştirme/silme |[Yalnızca ekleme veya güncelleştirme aramak belirlemek için bir varlık alma önleme?](#subheading36) |
-| &nbsp; | Tablolar |Ekleme/güncelleştirme/silme |[Sık alınır veri serisi, tek bir varlık yerine birden çok varlık özellikleri olarak birlikte depolama bulundurduğunuzdan?](#subheading37) |
-| &nbsp; | Tablolar |Ekleme/güncelleştirme/silme |[Her zaman birlikte alınır ve toplu (örneğin, zaman serisi verileri) olarak yazılan varlıklar için BLOB'ları, tabloları yerine kullanarak bulundurduğunuzdan?](#subheading38) |
-| &nbsp; | Kuyruklar |Ölçeklenebilirlik hedefleri |[Saniye başına ileti için ölçeklenebilirlik hedefleri yaklaştığı?](#subheading39) |
-| &nbsp; | Kuyruklar |Yapılandırma |[Nagle küçük isteklerinin performansını artırmak için devre dışı bırakmış?](#subheading40) |
-| &nbsp; | Kuyruklar |İleti Boyutu |[Kuyruğun performansını artırmak için iletileri compact misiniz?](#subheading41) |
-| &nbsp; | Kuyruklar |Toplu Al |["Get" tek bir işlemde birden çok ileti alıyor?](#subheading42) |
-| &nbsp; | Kuyruklar |Yoklama sıklığı |[Uygulamanızı algılanan gecikme süresini azaltmak için yoklama sıklıkta?](#subheading43) |
-| &nbsp; | Kuyruklar |İletiyi güncelleştirme |[Bir hata oluşursa, iletinin tamamı yeniden işlemek zorunda ilerleme iletilerini işleme depolamak için UpdateMessage kullanıyorsunuz?](#subheading44) |
-| &nbsp; | Kuyruklar |Mimari |[Uzun süre çalışan iş yükleri kritik yol dışında tutarak tüm uygulamanızın daha ölçeklenebilir yapmak ve birbirinden bağımsız olarak ölçeklendirme için kuyrukları kullanıyorsunuz?](#subheading45) |
+| &nbsp; | Tüm Hizmetler |Ölçeklenebilirlik hedefleri |[Uygulamanız ölçeklenebilirlik hedeflerine yaklaşmamak için tasarlandı mi?](#subheading1) |
+| &nbsp; | Tüm Hizmetler |Ölçeklenebilirlik hedefleri |[Adlandırma kuralınızın daha iyi yük dengelemesini sağlamak üzere tasarlandı mı?](#subheading47) |
+| &nbsp; | Tüm Hizmetler |Ağ |[İstemci tarafı cihazlarının gerekli performans düzeyine ulaşmak için yeterli yüksek bant genişliğine ve düşük gecikme süresine sahip olması gerekir mi?](#subheading2) |
+| &nbsp; | Tüm Hizmetler |Ağ |[İstemci tarafı cihazlarının yeterince yüksek kaliteli bağlantısı var mı?](#subheading3) |
+| &nbsp; | Tüm Hizmetler |Ağ |[İstemci uygulaması, depolama hesabının "yakınında" bulunuyor mu?](#subheading4) |
+| &nbsp; | Tüm Hizmetler |İçerik Dağıtımı |[İçerik dağıtımı için CDN kullanıyor musunuz?](#subheading5) |
+| &nbsp; | Tüm Hizmetler |Doğrudan Istemci erişimi |[Proxy yerine depolamaya doğrudan erişim sağlamak için SAS ve CORS kullanıyor musunuz?](#subheading6) |
+| &nbsp; | Tüm Hizmetler |Önbelleğe alma |[Uygulamanız sürekli olarak kullanılan ve sık sık değişen verileriniz önbelleğe alınıyor mu?](#subheading7) |
+| &nbsp; | Tüm Hizmetler |Önbelleğe alma |[Uygulamanız için güncelleştirmeleri toplu işleme (istemci tarafında önbelleğe alma ve daha büyük kümelere yükleme) midir?](#subheading8) |
+| &nbsp; | Tüm Hizmetler |.NET yapılandırması |[İstemcinizi yeterli sayıda eşzamanlı bağlantı kullanacak şekilde yapılandırdınız mı?](#subheading9) |
+| &nbsp; | Tüm Hizmetler |.NET yapılandırması |[.NET 'i yeterli sayıda iş parçacığı kullanacak şekilde yapılandırdınız mı?](#subheading10) |
+| &nbsp; | Tüm Hizmetler |.NET yapılandırması |[Gelişmiş atık toplamayı kullanan .NET 4,5 veya sonraki bir sürümü mi kullanıyorsunuz?](#subheading11) |
+| &nbsp; | Tüm Hizmetler |Paralellik |[Paralellik 'in, istemci olanaklarınızı veya ölçeklenebilirlik hedeflerini aşırı yüklemeden emin misiniz?](#subheading12) |
+| &nbsp; | Tüm Hizmetler |Araçlar |[Microsoft tarafından sunulan istemci kitaplıkları ve araçları 'nın en son sürümünü kullanıyor musunuz?](#subheading13) |
+| &nbsp; | Tüm Hizmetler |Yeniden deneme sayısı |[Azaltma hataları ve zaman aşımları için bir üstel geri alma yeniden deneme İlkesi kullanıyor musunuz?](#subheading14) |
+| &nbsp; | Tüm Hizmetler |Yeniden deneme sayısı |[Uygulamanız yeniden denenmeyen hatalara karşı yeniden denemeyi önler mi?](#subheading15) |
+| &nbsp; | Bloblar |Ölçeklenebilirlik hedefleri |[Aynı anda tek bir nesneye erişen çok sayıda istemciniz var mı?](#subheading46) |
+| &nbsp; | Bloblar |Ölçeklenebilirlik hedefleri |[Uygulamanız tek bir blob için bant genişliği veya işlem ölçeklenebilirliği hedefi içinde kalıyor mu?](#subheading16) |
+| &nbsp; | Bloblar |Blobları kopyalama |[Blobları etkili bir şekilde kopyaladığınızı biliyor musunuz?](#subheading17) |
+| &nbsp; | Bloblar |Blobları kopyalama |[Blob 'ların toplu kopyaları için AzCopy mi kullanıyorsunuz?](#subheading18) |
+| &nbsp; | Bloblar |Blobları kopyalama |[Büyük hacimli verileri aktarmak için Azure Içeri/dışarı aktarma kullanıyor musunuz?](#subheading19) |
+| &nbsp; | Bloblar |Meta verileri kullan |[Blob 'lar hakkında sık kullanılan meta verileri meta verilerinde depoluyorsanız mi?](#subheading20) |
+| &nbsp; | Bloblar |Hızlı karşıya yükleniyor |[Bir blobu hızlıca karşıya yüklemeye çalışırken blokları paralel olarak karşıya yüklüyor musunuz?](#subheading21) |
+| &nbsp; | Bloblar |Hızlı karşıya yükleniyor |[Çok sayıda blobu hızlıca yüklemeye çalışırken blob 'ları paralel olarak karşıya yüklüyor musunuz?](#subheading22) |
+| &nbsp; | Bloblar |Doğru blob türü |[Uygun durumlarda sayfa Blobları mı kullanıyorsunuz, blob 'ları mi engelliyor?](#subheading23) |
+| &nbsp; | Tablolar |Ölçeklenebilirlik hedefleri |[Saniye başına ölçeklenebilirlik hedeflerine yaklaşıyor musunuz?](#subheading24) |
+| &nbsp; | Tablolar |Yapılandırma |[Tablo istekleriniz için JSON kullanıyor musunuz?](#subheading25) |
+| &nbsp; | Tablolar |Yapılandırma |[Küçük isteklerin performansını artırmak için Nagle 'ı açtınız musunuz?](#subheading26) |
+| &nbsp; | Tablolar |Tablolar ve bölümler |[Verilerinizi düzgün şekilde bölümlensin mi?](#subheading27) |
+| &nbsp; | Tablolar |Sık kullanılan bölümler |[Yalnızca Append ve yalnızca bitiş desenlerinin önüne mi sahip olabilirsiniz?](#subheading28) |
+| &nbsp; | Tablolar |Sık kullanılan bölümler |[Eklemi/güncelleştirmeleriniz birçok bölüme yayılıyor?](#subheading29) |
+| &nbsp; | Tablolar |Sorgu kapsamı |[Şemanızı, nokta sorgularının çoğu durumda kullanılmasına izin vermek ve tablo sorguları gelişigüzel şekilde kullanılmak üzere tasarlamış musunuz?](#subheading30) |
+| &nbsp; | Tablolar |Sorgu yoğunluğu |[Sorgularınız genellikle uygulamanızın kullanacağı satırları tarar ve döndürür mi?](#subheading31) |
+| &nbsp; | Tablolar |Döndürülen verileri sınırlama |[Gerekli olmayan varlıkların döndürülmemek için filtreleme kullanıyor musunuz?](#subheading32) |
+| &nbsp; | Tablolar |Döndürülen verileri sınırlama |[Gerekli olmayan özellikleri döndürmemek için projeksiyon kullanıyor musunuz?](#subheading33) |
+| &nbsp; | Tablolar |Normalleştirilmemiş |[Verileri almaya çalışırken verimsiz sorgulardan veya birden çok okuma isteğinin oluşmasını önlemenize izin veriyor musunuz?](#subheading34) |
+| &nbsp; | Tablolar |Ekle/güncelleştir/Sil |[İşlem olması gereken veya gidiş dönüş sayısını azaltmak için aynı anda yapılabilecek istekleri toplu olarak gerçekleştirebilirsiniz mu?](#subheading35) |
+| &nbsp; | Tablolar |Ekle/güncelleştir/Sil |[Yalnızca ekleme veya güncelleştirme çağrısı yapılıp yapılmayacağını öğrenmek için bir varlığı alma](#subheading36) |
+| &nbsp; | Tablolar |Ekle/güncelleştir/Sil |[Sık sık tek bir varlıkta birden çok varlık yerine özellikler olarak bir araya getirilen veri serisini mi saklayacaksınız?](#subheading37) |
+| &nbsp; | Tablolar |Ekle/güncelleştir/Sil |[Her zaman birlikte alınacak ve toplu işlemlere (örneğin, zaman serisi verileri) yazılabilecekleri varlıklar için tablolar yerine blob 'ları kullanarak göz önünde bulundurmanız gerekir mi?](#subheading38) |
+| &nbsp; | Kuyruklar |Ölçeklenebilirlik hedefleri |[Saniye başına ölçeklenebilirlik hedeflerine yaklaşıyor musunuz?](#subheading39) |
+| &nbsp; | Kuyruklar |Yapılandırma |[Küçük isteklerin performansını artırmak için Nagle 'ı açtınız musunuz?](#subheading40) |
+| &nbsp; | Kuyruklar |İleti Boyutu |[İletiniz, sıranın performansını geliştirmek için sıkıştırmı?](#subheading41) |
+| &nbsp; | Kuyruklar |Toplu alma |[Tek bir "Get" işleminde birden çok ileti alıyor musunuz?](#subheading42) |
+| &nbsp; | Kuyruklar |Yoklama sıklığı |[Uygulamanızın algılanan gecikmesini azaltmak için yeterince sık yoklanıyor musunuz?](#subheading43) |
+| &nbsp; | Kuyruklar |Güncelleştirme Iletisi |[Hata oluştuğunda tüm iletiyi yeniden işlemek zorunda kalmadan, iletileri işlerken ilerlemeyi depolamak için UpdateMessage kullanıyor musunuz?](#subheading44) |
+| &nbsp; | Kuyruklar |Mimari |[Uzun süre çalışan iş yüklerini kritik yoldan tutarak ve sonra bağımsız olarak ölçeklendirerek, tüm uygulamanızı daha ölçeklenebilir hale getirmek için kuyrukları kullanıyor musunuz?](#subheading45) |
 
 ## <a name="allservices"></a>Tüm hizmetler
 
-Bu bölüm, herhangi bir Azure depolama hizmeti (BLOB, tablo, kuyruk veya dosyaları) için geçerlidir, kendini kanıtlamış uygulamaları listeler.  
+Bu bölümde, Azure depolama hizmetlerinden (blob, tablo, kuyruk veya dosya) herhangi birinin kullanımı için geçerli olan kanıtlanmış uygulamalar listelenmektedir.  
 
-### <a name="subheading1"></a>ölçeklenebilirlik hedefleri
+### <a name="subheading1"></a>Ölçeklenebilirlik hedefleri
 
-Azure depolama kendisini her Abonelikteki bölge başına 250 depolama hesapları sınırı vardır. Bu sınıra ulaşırsanız bu abonelik/bölge bileşiminde daha fazla depolama hesabı oluşturamayacaksınız.
+Azure Storage 'ın, her abonelik için bölge başına 250 depolama hesabı sınırlaması vardır. Bu sınıra ulaşırsanız bu abonelik/bölge bileşiminde daha fazla depolama hesabı oluşturamayacaksınız.
 
-Azure Depolama hizmetlerinin her biri, Kapasite (GB), işlem hızı ve bant genişliği için ölçeklenebilirlik hedefleri sahiptir. Uygulamanızı yaklaştığında veya herhangi bir ölçeklenebilirlik hedefleri aşıyor, yüksek işlem gecikme süresi veya azaltma karşılaşabilirsiniz. Uygulamanızı bir depolama hizmetine kısıtlar, "503 Sunucu meşgul" veya "500 işlem zaman aşımı" hata kodları bazı depolama işlemleri için döndürülecek hizmetin başlar. Bu bölümde, özellikle ölçeklenebilirlik hedefleri ve bant genişliği ölçeklenebilirlik hedefleri ile ilgili iki genel yaklaşım ele alınmaktadır. Ayrı ayrı depolama hizmetleri ile ilgili sonraki bölümlerde, belirli bir hizmet bağlamında ölçeklenebilirlik hedefleri açıklanmaktadır:  
+Azure Storage hizmetlerinin her birinde kapasite (GB), işlem hızı ve bant genişliği için ölçeklenebilirlik hedefleri vardır. Uygulamanız ölçeklenebilirlik hedeflerinin herhangi birini yaklaşırsa veya aşarsa, daha fazla işlem gecikmeleri veya azaltmasıyla karşılaşabilirler. Bir depolama hizmeti uygulamanızı kısıtsalken, hizmet bazı depolama işlemleri için "503 sunucu meşgul" veya "500 Işlem zaman aşımı" hata kodlarını döndürmeye başlar. Bu bölümde, ölçeklenebilirlik hedefleri ve bant genişliği ölçeklenebilirlik hedefleri ile ilgili genel yaklaşım, özellikle de açıklanmaktadır. Tek tek depolama hizmetleri ile ilgilenen daha sonraki bölümlerde, ölçeklenebilirlik hedefleri ilgili hizmetin bağlamında ele alınmaktadır:  
 
-* [BLOB bant genişliği ve saniyede istek](#subheading16)
+* [Blob bant genişliği ve saniye başına istek](#subheading16)
 * [Saniye başına tablo varlıkları](#subheading24)
-* [Saniye başına kuyruk iletileri](#subheading39)  
+* [Saniye başına kuyruk iletisi sayısı](#subheading39)  
 
-#### <a name="sub1bandwidth"></a>Tüm hizmetler için bant genişliği ölçeklenebilirlik hedefine
+#### <a name="sub1bandwidth"></a>Tüm hizmetler için bant genişliği ölçeklenebilirlik hedefi
 
-Makalenin yazıldığı sırada, bant genişliği hedefleri coğrafi olarak yedekli depolama (GRS) hesabı için ABD'de 10 Gigabit / saniye (Gbps) (depolama hesabına gönderilen veriler) giriş ve çıkış (depolama hesabından gönderilen veriler) için 20 GB/sn içindir. Bir yerel olarak yedekli depolama (LRS) hesabı için sınırları daha yüksek – 20 GB/sn giriş ve çıkış için 30 GB/sn.  Uluslararası bant genişliği sınırlarını daha düşük olabilir ve bulunabilir bizim [ölçeklenebilirlik hedefleri sayfa](https://msdn.microsoft.com/library/azure/dn249410.aspx).  Depolama yedekliliği seçenekleri hakkında daha fazla bilgi için faydalı kaynaklar aşağıdaki bağlantılara bakın.  
+Yazma sırasında, coğrafi olarak yedekli depolama (GRS) hesabı için ABD 'deki bant genişliği hedefleri, giriş için 10 Gigabit/saniye (Gbps) (depolama hesabına gönderilen veriler) ve çıkış için 20 Gbps (depolama hesabından gönderilen veriler). Yerel olarak yedekli depolama (LRS) hesabı için sınırlar, çıkış için 30 Gbps ve çıkış için 20 Gbps daha yüksektir.  Uluslararası bant genişliği sınırları daha düşük olabilir ve [ölçeklenebilirlik hedefleri sayfamızda](https://msdn.microsoft.com/library/azure/dn249410.aspx)bulunabilir.  Depolama artıklığı seçenekleri hakkında daha fazla bilgi için aşağıdaki yararlı kaynaklarda bulunan bağlantılara bakın.  
 
-#### <a name="what-to-do-when-approaching-a-scalability-target"></a>Ölçeklenebilirlik hedefine bölümüyle iletişime geçerken yapmanız gerekenler
+#### <a name="what-to-do-when-approaching-a-scalability-target"></a>Ölçeklenebilirlik hedefine yaklaştığı sırada Yapılacaklar
 
-Depolama hesabı içinde bir belirli aboneliğe/bölge birleşimi olabilir sınırına yaklaşılıyor, uygulama ve depolama hesapları kullanımını değerlendirin ve Bu koşullardan herhangi biri geçerli olup olmadığına belirleyin.
+Belirli bir abonelik/bölge birleşimi içinde sahip olduğunuz depolama hesabı sınırına yaklaşdıysanız, uygulamanızı ve depolama hesapları kullanımınızı değerlendirin ve bu koşulların herhangi birinin geçerli olup olmadığını belirleyebilirsiniz.
 
-* Yönetilmeyen diskler depolama hesaplarının kullanılması ve sanal makinelerinize bu diskleri ekleme. Bu senaryoda kullanılması önerilir [yönetilen diskler](../../virtual-machines/windows/managed-disks-overview.md)depolama disk ölçeklenebilirliği, ayrı depolama hesaplarını oluşturur ve yönetirken gerek kalmadan işledikleri gibi.
-* Veri yalıtımı amacıyla, müşteri başına temelinde bir depolama hesabı kullanma. Bu senaryoda depolama kapsayıcıları tüm depolama hesabınız yerine her müşteri için kullanmanızı öneririz. Azure depolama artık rol tabanlı erişim denetimi üzerinde belirtmenize olanak verir bir başına [kapsayıcı temel](storage-auth-aad-rbac-portal.md).
-* Birden çok depolama hesabında parçalara ayırmak için giriş/çıkış/IOPS/kapasitesi daha büyük ölçeklendirme kullanma. Bu senaryoda, mümkünse, avantajından öneririz [artırılmış sınırlar](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/) yükünüz için gerekli depolama hesapları sayısını azaltmak için standart depolama hesabı.
+* Depolama hesaplarını yönetilmeyen diskler olarak kullanma ve bu diskleri sanal makinelerinize ekleme. Bu senaryoda, ayrı depolama hesapları oluşturup yönetmeniz gerekmeden, sizin için depolama disk ölçeklenebilirliğini idare ettikleri için [yönetilen diskleri](../../virtual-machines/windows/managed-disks-overview.md)kullanmanızı öneririz.
+* Veri yalıtımının amacı doğrultusunda, her müşteri için tek bir depolama hesabı kullanma. Bu senaryoda, tüm depolama hesabı yerine her müşteri için depolama kapsayıcıları kullanmanızı öneririz. Azure depolama artık [kapsayıcı temelinde](storage-auth-aad-rbac-portal.md)rol tabanlı erişim denetimi belirtmenize olanak tanır.
+* Giriş/çıkış/IOPS/kapasite hakkında daha fazla ölçeklenebilirlik sağlamak için birden fazla depolama hesabı kullanma. Bu senaryoda, mümkünse, iş yükünüz için gereken depolama hesabı sayısını azaltmak için standart depolama hesaplarının [artan limitlerinin](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/) avantajlarından yararlanmanızı öneririz.
 
-Uygulamanız için bir tek bir depolama hesabı ölçeklenebilirlik hedefleri yaklaşıyorsa, aşağıdaki yaklaşımlardan birini benimsemeyi göz önünde bulundurun:  
+Uygulamanız tek bir depolama hesabı için ölçeklenebilirlik hedeflerine yaklaşıyorsa, aşağıdaki yaklaşımlardan birini benimsede düşünün:  
 
-* Uygulamanızın yaklaşımını veya ölçeklenebilirlik hedef en fazla iş yükü yeniden belirleyin. Daha az bant genişliği veya kapasite ya da daha az işlem farklı kullanacak şekilde tasarlayabilirsiniz?
-* Bir uygulama ölçeklenebilirlik hedefleri birini aşması gereken, uygulama verilerinizi birden çok depolama hesapları ve bölüm bu birden çok depolama hesabında yer oluşturmanız gerekir. Bu düzeni kullanın, ardından Yük Dengeleme için depolama hesabı daha sonra ekleyebilirsiniz. böylece uygulamanızı tasarlayın emin olun. Makalenin yazıldığı sırada, her bir Azure aboneliği (Azure Resource Manager modeliyle dağıtıldığında) bölge başına en fazla 250 depolama hesabı olabilir.  Depolama hesapları, ücretsiz dışındaki kullanımınız açısından depolanan veriler, yapılan işlemleri ve aktarılan veriler de var.
-* Uygulamanızı bant hedefleri olursa, veri depolama hizmetine göndermek için gereken bant genişliğini azaltmak üzere istemci verileri sıkıştırma göz önünde bulundurun.  Bu bant genişliğinden tasarruf ve ağ performansı, ancak ayrıca bazı olumsuz etkileri olabilir.  Bu performans etkisi nedeniyle, sıkıştırma ve veri İstemcisi'nde açma ek işleme gereksinimleri belirlemelidir. Ayrıca, sıkıştırılmış veri depolama, standart araçlarını kullanarak depolanan verileri görüntülemek daha zor olabilir beri sorunlarını gidermek daha zor zorlaştırabilir.
-* Uygulamanız için ölçeklenebilirlik hedefleri değerse, ardından yeniden deneme sayısı için bir üstel geri alma kullandığınızdan emin olun (bkz [deneme](#subheading14)).  Hiçbir zaman (yukarıdaki yöntemlerden birini kullanarak) ölçeklenebilirlik hedefleri yaklaşımı, ancak bu uygulama yalnızca hızlı bir şekilde, daha da kötüsü azaltma yapmadan yeniden denemeye devam olmaz sağlayacak emin olmak daha iyidir.  
+* Uygulamanızın ölçeklenebilirlik hedefini yaklaşımını veya aşmasına neden olan iş yükünü yeniden değerlendirin. Daha az bant genişliği veya kapasite veya daha az işlem kullanmak için farklı bir şekilde tasarlayabilirsiniz mi?
+* Bir uygulamanın ölçeklenebilirlik hedeflerinin birini aşmaması gerekiyorsa, birden çok depolama hesabı oluşturmanız ve uygulama verilerinizi bu birden çok depolama hesabı genelinde bölümlememelisiniz. Bu kalıbı kullanırsanız, daha sonra yük dengelemeye yönelik daha fazla depolama hesabı ekleyebilmeniz için uygulamanızı tasarlayadığınızdan emin olun. Yazma sırasında her bir Azure aboneliğinin bölge başına en fazla 250 depolama hesabı olabilir (Azure Resource Manager modeliyle dağıtıldığında).  Depolama hesaplarında Ayrıca, depolanan veri, işlemler veya aktarılan veriler açısından kullanımınız dışında bir ücret de yoktur.
+* Uygulamanız bant genişliği hedeflerini ziyaret ediyor, verileri depolama hizmetine göndermek için gereken bant genişliğini azaltmak için istemcideki verileri sıkıştırmayı göz önünde bulundurun.  Bant genişliği tasarruf edebilir ve ağ performansını iyileştireken, bazı olumsuz etkileri de olabilir.  İstemcideki verileri sıkıştırmak ve sıkıştırmayı açmaya yönelik ek işleme gereksinimleri nedeniyle bunun performans etkisini değerlendirmelisiniz. Ayrıca, sıkıştırılmış verilerin depolanması, standart araçları kullanarak depolanan verileri görüntülemek daha zor olacağından sorunları gidermeye daha zor hale gelebilir.
+* Uygulamanız ölçeklenebilirlik hedeflerini ziyaret ediyorsanız, yeniden denemeler için üstel geri alma kullandığınızdan emin olun (bkz. [yeniden deneme](#subheading14)).  Ölçeklenebilirlik hedeflerine hiçbir değişiklik yapmayın (yukarıdaki yöntemlerden birini kullanarak), ancak bu, azaltmadan daha kötüleşmeye devam etmeyeceğinden uygulamanızın hızla yeniden denenmemesini sağlar.  
 
 #### <a name="useful-resources"></a>Yararlı kaynaklar
 
 Aşağıdaki bağlantılar ölçeklenebilirlik hedefleri hakkında ek ayrıntılar sağlar:
 
-* Bkz: [Azure Storage ölçeklenebilirlik ve performans hedefleri](storage-scalability-targets.md) ölçeklenebilirlik hedefleri hakkında bilgi için.
-* Bkz: [Azure depolama çoğaltma](storage-redundancy.md) ve blog gönderisinde [Azure depolama Yedekliliği seçenekleri ve okuma erişimli coğrafi olarak yedekli depolama](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx) depolama yedekliliği seçenekleri hakkında bilgi için.
-* Azure Hizmetleri için fiyatlandırma hakkında güncel bilgiler için bkz [Azure fiyatlandırması](https://azure.microsoft.com/pricing/overview/).  
+* Ölçeklenebilirlik hedefleri hakkında bilgi için bkz. [Azure Storage ölçeklenebilirlik ve performans hedefleri](storage-scalability-targets.md) .
+* Depolama artıklığı seçenekleri hakkında bilgi için bkz. [Azure Storage çoğaltma](storage-redundancy.md) ve [Azure depolama yedekliliği ve Okuma Erişimli Coğrafi olarak yedekli depolama](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx) .
+* Azure hizmetleri fiyatlandırması hakkında güncel bilgiler için bkz. [Azure fiyatlandırması](https://azure.microsoft.com/pricing/overview/).  
 
-### <a name="subheading47"></a>Bölüm adlandırma kuralları
+### <a name="subheading47"></a>Bölüm adlandırma kuralı
 
-Azure depolama, bir aralık tabanlı bölümleme düzeni için ölçek ve Yük Dengeleme sistemi kullanır. Bölüm anahtarı (hesap + kapsayıcı + blob) aralıkları ve bu aralıklar veri yük sistem dengeli bölüm için kullanılır. Sözcük sıralama gibi adlandırma kuralları bu anlamına gelir (örneğin, *mypayroll*, *myperformance*, *myemployees*, vs.) ya da zaman damgaları kullanarak ( *log20160101*, *log20160102*, *log20160102*, vs.) kendisi büyük olasılıkla aynı bölüm sunucuda kadar eş konumlu bölüm kiralamak bir Yük Dengeleme işlemi bunları daha küçük aralıkları böler. Örneğin, bir kapsayıcıdaki tüm BLOB'lar bu bloblarda yükü daha fazla bölüm aralığı yeniden Dengeleme gerektiren kadar tek bir sunucu tarafından sunulabilir. Benzer şekilde, hafifçe yüklü hesaplarıyla sözcük sırayla düzenlenmiş adları bir grup kadar bir yükleme tek bir sunucu tarafından sunulacak veya tüm bu hesaplarının bunları birden çok bölüm sunucular arasında bölünmesi gereken gerektirir. Her yük dengeleme işlemi, işlem sırasında depolama çağrıları gecikme süresini etkileyebilir. Yük Dengeleme işlemi kicks açma ve bölüm anahtar aralığı yeniden dengeler kadar tek bölüm sunucu ölçeklenebilirliğini tarafından sistemin bir bölüme trafik ani bir aşırı işleme yeteneği sınırlıdır.
+Azure depolama, sistemin ölçeğini ölçeklendirmek ve yükünü dengelemek için Aralık tabanlı bölümleme şeması kullanır. Bölüm anahtarı (hesap + kapsayıcı + blob), verileri aralıklar halinde bölümlemek için kullanılır ve bu aralıklar sistem genelinde yük dengedir. Bu, sözcük temelli sıralama (örneğin, *mypayroll*, *myperformance*, *MyEmployees*, vb.) gibi adlandırma kurallarının veya zaman damgalarının (*log20160101*, *log20160102*, *log20160102*, vb.) nasıl olacağını gösterir bir yük dengeleme işlemi bunları daha küçük aralıklar halinde bölümlendirene kadar, kendisini aynı bölüm sunucusunda birlikte bulunan bölümlere da ekleyebilirsiniz. Örneğin, bir kapsayıcı içindeki tüm Bloblar, bu bloblarda yük, Bölüm aralıklarının yeniden dengelenmesini gerektirene kadar tek bir sunucu tarafından sunulabilir. Benzer şekilde, adları sözcük temelli sırada düzenlenmiş, bu hesapların bir veya tümünün birden çok bölüm sunucusuna bölünmesi gerekene kadar, adlarına sahip hafif bir şekilde yüklenmiş hesaplar grubu tek bir sunucu tarafından sunulabilir. Her yük dengeleme işlemi, işlem sırasında depolama çağrılarının gecikmesini etkileyebilir. Sistemin bir bölüme ani trafik artışını işleme yeteneği, yük dengeleme işlemi kullanıma alınana ve bölüm anahtar aralığını yeniden dengeleyene kadar tek bir bölüm sunucusunun ölçeklenebilirliği ile sınırlıdır.
 
-Bu işlemler sıklığını azaltmak için bazı en iyi uygulamaları takip edebilirsiniz.  
+Bu tür işlemlerin sıklığını azaltmak için bazı en iyi yöntemleri izleyebilirsiniz.  
 
-* Mümkünse, yüksek performanslı blok Blob (HTBB) etkinleştirmek için (standart hesapları için 4 MiB büyüktür ve premium hesapları için 256 KiB değerinden) daha büyük Put blobu veya blok yerleştirme boyutlarını kullanın. HTBB sağlayan yüksek performans alma, bölüm adlandırma tarafından etkilenmez.
-* Hesapları, kapsayıcıları, blobları, tablolar ve Kuyruklar, yakından kullandığınız adlandırma kuralını inceleyin. Hesabı, kapsayıcı veya blob adları, ihtiyaçlarınıza uygun bir karma işlevi kullanarak 3 haneli karma ile önek göz önünde bulundurun.  
-* Zaman damgaları veya sayısal tanımlayıcıları kullanarak verilerinizi düzenlemek, bir yalnızca ekleme (veya yalnızca önüne ekleyin) trafiği desenlerini kullanmıyorsanız emin olmak zorunda. Bu desenleri için bir aralık uygun değil-Sistem bölümleme tabanlı ve müşteri adayı sistemden etkili bir şekilde sınırlama ve tek bir bölüme giden tüm trafik için Yük Dengeleme. Örneği için bir blob nesnesi gibi bir zaman damgası ile kullandığınız günlük işlemler varsa *yyyymmdd*, sonra da günlük bu işlem için tüm trafik, bir tek bölüm sunucusu tarafından sunulan tek bir nesneye yönlendirilir. Konum olup başına blob limitler ve bölüm başına limitler gereksinimlerinizi karşılayacak ve bu işlemi gerekiyorsa birden çok BLOB olarak bozucu göz önünde bulundurun. Tabloları zaman serisi verilerini depolamak, benzer şekilde, tüm trafik olabilir son anahtar ad parçası gösterilmiştir. Zaman damgaları veya sayısal kimlikleri kullanmanız gerekirse, önek kimliği 3 haneli karma veya zaman damgası söz konusu olduğunda önek zamanın saniye parçası gibi *ssyyyymmdd*. Listeleme ve sorgulama işlemleri düzenli olarak gerçekleştirilir, sorgular, sayısını sınırlar bir karma işlevi seçin. Diğer durumlarda, rastgele bir önek yeterli olabilir.  
-* Azure Depolama'da kullanılan bölümleme düzeni hakkında ek bilgi için bkz: [Azure Depolama: Güçlü tutarlılık ile yüksek oranda kullanılabilir bulut depolama hizmeti](https://sigops.org/sosp/sosp11/current/2011-Cascais/printable/11-calder.pdf).
+* Mümkünse, yüksek verimlilik Blok Blobu (HTBB) etkinleştirmek için daha büyük put Blobu veya yerleştirme boyutları (Standart hesaplar için 4 MIB 'den büyük ve Premium hesaplar için 256 KiB 'den fazla) kullanın. HTBB, Bölüm adlandırmayla etkilenmeyen yüksek performanslı alma olanağı sağlar.
+* Hesaplar, kapsayıcılar, Bloblar, tablolar ve kuyruklar için kullandığınız adlandırma kuralını yakından inceleyin. Gereksinimlerinize en uygun bir karma işlevi kullanarak hesap, kapsayıcı veya blob adlarını 3 basamaklı bir karma ile önek olarak düşünün.  
+* Verilerinizi zaman damgaları veya sayısal tanımlayıcılar kullanarak düzenlediğinizde, salt bir Append (veya yalnızca sonuna kadar) trafik desenleri kullanmadığınız emin olmanız gerekir. Bu desenler, Aralık tabanlı bölümleme sistemi için uygun değildir ve tek bir bölüme giden ve sistemi etkin yük dengelemeden sınırlayan tüm trafiğe yol açabilir. Örneğin, *YYYYMMDD*gibi bir zaman damgasıyla blob nesnesi kullanan günlük işlemyaptıysanız, bu günlük işlem için tüm trafik tek bir bölüm sunucusu tarafından sunulan tek bir nesneye yönlendirilir. Blob başına limitlerin ve bölüm sınırlarının gereksinimlerinizi karşılayıp karşılamadığını ve gerekirse bu işlemi birden çok blob 'a bölmek için göz atın. Benzer şekilde, tablolarınızda zaman serisi verilerini depolarsanız, tüm trafik anahtar ad alanının son bölümüne yönlendirilebilir. Zaman damgaları veya sayısal kimlikler kullanmanız gerekiyorsa, KIMLIĞI 3 basamaklı bir karma ile önek olarak veya zaman damgalarına önek olarak *ssyyyymmdd*gibi sürenin saniye bir parçası olması gerekir. Listeleme ve sorgulama işlemleri düzenli olarak gerçekleştirilirse, sorgu sayısını sınırlayan bir karma işlev seçin. Diğer durumlarda rastgele bir ön ek yeterli olabilir.  
+* Azure depolama 'da kullanılan bölümleme şeması hakkında daha fazla bilgi için bkz [. Azure Storage: Güçlü tutarlılığı](https://sigops.org/sosp/sosp11/current/2011-Cascais/printable/11-calder.pdf)olan yüksek oranda kullanılabilir bir bulut depolama hizmeti.
 
 ### <a name="networking"></a>Ağ
 
-Genellikle uygulamanın fiziksel ağ kısıtlamaları yalnızca birkaç API çağrısı sırasında performansı büyük bir etkiye sahip. Aşağıdaki sınırlamalar kullanıcının karşılaşabileceği bazılarını açıklar.  
+API önemli ölçüde çağırdığında, genellikle uygulamanın fiziksel ağ kısıtlamalarının performansı önemli ölçüde etkiler. Aşağıda, kullanıcıların karşılaşabileceği bazı sınırlamalar açıklanır.  
 
 #### <a name="client-network-capability"></a>İstemci ağ özelliği
 
-##### <a name="subheading2"></a>Aktarım hızı
+##### <a name="subheading2"></a>Trafiği
 
-İçin bant genişliği, sorun genellikle istemci yeteneklerini olmasıdır. Örneğin, 10 GB/sn veya daha fazla giriş tek bir depolama hesabında işleyebilir sırada (bkz [bant genişliği ölçeklenebilirlik hedefleri](#sub1bandwidth)), "Küçük" Azure çalışan rolü örneği cinsinden ağ hızı yalnızca yaklaşık 100 MB/sn bant yeteneğine sahiptir. Tek bir makineden daha yüksek ağ limitlere ihtiyacınız varsa daha büyük bir örnek veya daha fazla sanal makine kullanmayı düşünmeniz gerekir böylece büyük Azure örneklerinde NIC büyük kapasitede bulunur. Açık bir şirket içi uygulamaya ait bir depolama hizmetine eriştiğiniz sonra aynı kural uygulanır: istemci cihazı ve ağ bağlantısı Azure depolama konumu için ağ yeteneklerini anlamalarına ve ya da bunları gerektiği gibi artırın veya tasarım, yeteneklerini içinde çalışmak için uygulama.  
+Bant genişliği için genellikle bu sorun istemcinin yeteneklerine yöneliktir. Örneğin, tek bir depolama hesabı 10 Gbps veya daha fazlasını (bkz. [bant genişliği ölçeklenebilirlik hedeflerini](#sub1bandwidth)) işleyebilir, "küçük" Azure çalışan rolü örneğindeki ağ hızı yalnızca yaklaşık 100 Mbps olabilir. Daha büyük Azure örneklerinin NIC 'Leri daha fazla kapasiteye sahip olduğundan, tek bir makineden daha yüksek ağ sınırlarına ihtiyaç duyuyorsanız daha büyük bir örnek veya daha fazla VM kullanmayı düşünmelisiniz. Bir depolama hizmetine şirket içi bir uygulamadan erişiyorsanız, aynı kural geçerlidir: istemci cihazının ağ yeteneklerini ve Azure depolama konumuna ağ bağlantısını anlayın ve bunları gerektiği şekilde geliştirir veya uygulamanın özellikleri içinde çalışması.  
 
 ##### <a name="subheading3"></a>Bağlantı kalitesi
 
-Tüm ağ kullanımla olduğu gibi hataları ve paket kaybı ağ koşulları etkin aktarım hızı yavaşlatır unutmayın.  WireShark veya NetMon kullanarak bu sorunu tanılamaya yardımcı olabilir.  
+Her türlü ağ kullanımında olduğu gibi, ağ koşullarının hatalara ve paket kaybına neden olduğunu unutmayın.  WireShark veya NetMon kullanmak bu sorunu tanılamanıza yardımcı olabilir.  
 
 ##### <a name="useful-resources"></a>Yararlı kaynaklar
 
-Sanal makine boyutları ve ayrılmış bant genişliği hakkında daha fazla bilgi için bkz: [Windows VM boyutları](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) veya [Linux VM boyutları](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  
+Sanal makine boyutları ve ayrılan bant genişliği hakkında daha fazla bilgi için bkz. [WINDOWS VM boyutları](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) veya [Linux VM boyutları](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  
 
-#### <a name="subheading4"></a>Konum
+#### <a name="subheading4"></a>Konumuna
 
-Dağıtılmış bir ortamda istemci yakın sunucu yerleştirme en iyi performans sunar. En düşük gecikme ile Azure depolama erişimi için en iyi istemci için aynı Azure bölgesinde konumdur. Azure depolama kullanan bir Azure Web siteniz varsa, örneğin, her ikisinin de tek bir bölgede (örneğin, Batı ABD veya Güneydoğu Asya) bulmanıza. Bu gecikme süresini ve maliyetini azaltır — makalenin yazıldığı sırada, tek bir bölgede bant genişliği kullanımı ücretsizdir.  
+Dağıtılmış bir ortamda, istemciyi sunucuya eklemek en iyi performansı sağlar. En düşük gecikme süresi ile Azure depolama erişimi için, istemciniz için en iyi konum aynı Azure bölgesi içindedir. Örneğin, Azure Storage kullanan bir Azure Web siteniz varsa, bunları her ikisi de tek bir bölgede (örneğin, ABD Batı veya Asya Güneydoğu) bulmanız gerekir. Bu, gecikme süresini ve maliyeti azaltır; yazma sırasında tek bir bölgedeki bant genişliği kullanımı ücretsizdir.  
 
-Uygulamaları Azure içinde (mobil cihaz uygulamaları gibi veya şirket içi Kurumsal Hizmetler), daha sonra tekrar barındırılmamaktadır istemciniz, erişen cihazların yakın bir bölgede depolama hesabına yerleştirilmesi genellikle gecikme süresi azaltacak durumunda. İstemcilerinize (için örnek, bazı Kuzey Amerika ve Avrupa'daki bazı) geniş çapta dağıtılan sonra birden fazla depolama hesabı kullanmayı düşünmelisiniz: Kuzey Amerika bölgesi, diğeri Avrupa bölgesinde bulunan. Bu, her iki bölgede de kullanıcılar için gecikme süresini azaltmak için yardımcı olur. Bu yaklaşım, uygulama verilerini depolayan, uygulamanız bireysel kullanıcılar için özeldir ve depolama hesapları arasında verilerin çoğaltılması gerektirmez çok daha kolay olur.  Geniş içerik dağıtımı için bir CDN önerilir: daha fazla ayrıntı için sonraki bölüme bakın.  
+İstemci uygulamalarınız Azure 'da barındırılmaz (mobil cihaz uygulamaları veya şirket içi kurumsal hizmetler gibi), daha sonra depolama hesabını ona erişecek cihazların yakınında bir bölgeye yerleştirmek, genellikle gecikmeyi azaltır. İstemcileriniz büyük ölçüde dağıtılmışsa (örneğin, bazıları Kuzey Amerika, bazıları Avrupa 'da), birden çok depolama hesabı kullanmayı göz önünde bulundurmanız gerekir: bir Kuzey Amerika bölgesinde bulunan diğeri Avrupa bölgesinde. Bu, her iki bölgedeki kullanıcılar için gecikme süresini azaltmaya yardımcı olur. Uygulamanın depoladığı veriler bireysel kullanıcılara özgü ise ve depolama hesapları arasında veri çoğaltmayı gerektirmiyorsa, bu yaklaşım daha kolay bir şekilde uygulanır.  Geniş içerik dağıtımı için CDN önerilir; daha fazla bilgi için sonraki bölüme bakın.  
 
 ### <a name="subheading5"></a>İçerik dağıtımı
 
-Bazen, çok sayıda kullanıcı (bir Web sitesinin giriş sayfasında kullanılır. Örneğin, bir ürün tanıtım videosu), aynı veya birden çok bölgede bulunan aynı içerik sunmak bir uygulama gerekir. Bu senaryoda, Content Delivery Network (CDN) gibi Azure CDN kullanmalıdır ve CDN, Azure depolama veri kaynağı kullanırsınız. Tek bir bölgede mevcut olan ve diğer bölgeler için düşük gecikme süresine sahip, içerik teslim edilemiyor bir Azure depolama hesabı farklı olarak, Azure CDN, dünyanın dört bir yanındaki birden fazla veri merkezinde sunucuları kullanır. Ayrıca, bir CDN genellikle tek bir depolama hesabında çok daha yüksek çıkış sınırlardan destekleyebilir.  
+Bazen, bir uygulamanın aynı içeriği aynı içeriğe (örneğin, bir Web sitesinin giriş sayfasında kullanılan bir ürün tanıtımı Videosu) aynı veya birden çok bölgede yer aldığı şekilde sunması gerekir. Bu senaryoda, Azure CDN gibi bir Content Delivery Network (CDN) kullanmanız gerekir ve CDN, verilerin kaynağı olarak Azure Storage 'ı kullanır. Tek bir bölgede bulunan ve diğer bölgelere düşük gecikme süresiyle içerik teslim edebilen bir Azure depolama hesabının aksine, Azure CDN dünyanın dört bir yanındaki birden fazla veri merkezinde sunucu kullanır. Ayrıca, bir CDN genellikle tek bir depolama hesabından çok daha yüksek çıkış limitlerini destekleyebilir.  
 
 Azure CDN hakkında daha fazla bilgi için bkz. [Azure CDN](https://azure.microsoft.com/services/cdn/).  
 
 ### <a name="subheading6"></a>SAS ve CORS kullanma
 
-JavaScript gibi bir kod bir kullanıcının web tarayıcısında veya mobil telefon uygulaması Azure Depolama'daki verilere erişme yetkisi vermek, ihtiyacınız olduğunda, bir uygulamanın web rolü, proxy olarak kullanmak için bir yaklaşım ise: kullanıcının cihazına web rolüyle kimliğini doğrular. , hangi sırayla yetkilendirir depolama kaynaklarına erişim. Bu şekilde, güvenli olmayan cihazlarda, depolama hesabı anahtarlarını gösterme önleyebilirsiniz. Kullanıcının cihaz ve depolama hizmeti arasında aktarılan tüm veriler web rolü geçmesi gerekir çünkü Bununla birlikte, bu önemli bir ek yük web rolünde yerleştirir. Bir web rolü bir proxy olarak depolama hizmeti için paylaşılan erişim imzaları (SAS) bazen üstbilgileri çıkış noktaları arası kaynak paylaşımı (CORS) ile birlikte kullanarak önleyebilirsiniz. SAS kullanarak, kullanıcı cihazının bir sınırlı erişim belirteci kullanarak bir depolama hizmetine doğrudan isteğinde bulunmak izin verebilirsiniz. Örneğin, bir kullanıcı bir fotoğraf uygulamanızı karşıya yüklemek isterse, web rolü oluşturma ve sonraki 30 (sonra SAS belirteci süre sonu) dakika boyunca bir bloba veya kapsayıcıya yazma izni veren bir SAS belirteci kullanıcının cihazına gönderin.
+Bir kullanıcının Web tarayıcısında JavaScript gibi bir kodun veya bir cep telefonu uygulamasının Azure Storage 'daki verilere erişmesi için kimlik doğrulaması yapmanız gerektiğinde, bir yaklaşım, Web rolünde bir uygulamayı ara sunucu olarak kullanmalıdır: kullanıcının cihazı Web rolüyle kimliğini doğrular , bu da depolama kaynaklarına erişim yetkisi verir. Bu şekilde, depolama hesabı anahtarlarınızı güvenli olmayan cihazlarda açığa çıkarmaktan kaçınabilirsiniz. Ancak, bu, kullanıcının cihazı ile depolama hizmeti arasında aktarılan tüm verilerin web rolünden geçmesi gerektiğinden Web rolüne önemli bir ek yük koyar. Paylaşılan erişim Imzalarını (SAS) kullanarak, bazı durumlarda, bazen çıkış noktaları arası kaynak paylaşımı üstbilgileri (CORS) ile birlikte, bir Web rolünü depolama hizmeti için proxy olarak kullanmaktan kaçınabilirsiniz. SAS kullanarak, Kullanıcı cihazının sınırlı erişim belirteci aracılığıyla doğrudan bir depolama hizmetine istek yapmasına izin verebilirsiniz. Örneğin, bir Kullanıcı uygulamanıza fotoğraf yüklemek isterse, Web rolünüzün bir sonraki 30 dakika (SAS belirtecinin süresi dolduktan sonra) için belirli bir blob veya kapsayıcıya yazma izni veren bir SAS belirteci kullanıcı cihazına oluşturabilir ve gönderebilir.
 
-Normalde, bir tarayıcıda JavaScript bir "başka bir etki alanı için PUT" gibi belirli işlemleri gerçekleştirmek için bir etki alanındaki bir Web sitesi tarafından barındırılan bir sayfada izin vermez. Örneğin, "aynı çıkış noktası İlkesi" tarayıcı "contosomarketing.cloudapp.net" bir web rolü barındırmak ve blob depolama hesabınıza "contosoproducts.blob.core.windows.net" yüklemek için istemci tarafı JavaScript kullanmak istiyorsanız, bu işlem yasaklar. CORS tarayıcıya (Bu durumda web rolü) kaynak etki alanındaki kaynaklanan istekler güvenleri iletişim kurmak için hedef etki alanında (Bu durumda depolama hesabı) sağlayan bir tarayıcı özelliğidir.  
+Normalde, bir tarayıcı, bir etki alanındaki Web sitesi tarafından barındırılan bir sayfada JavaScript 'e, başka bir etki alanına "PUT" gibi belirli işlemleri gerçekleştirmek için izin vermez. Örneğin, "contosomarketing.cloudapp.net" konumunda bir Web rolü barındırdıysanız ve "contosoproducts.blob.core.windows.net" konumundaki depolama hesabınıza bir blob yüklemek için istemci tarafı JavaScript kullanmak istiyorsanız, "aynı kaynak ilkesi" tarayıcıları bu işlemi yeniden kullanır. CORS, hedef etki alanının (Bu durumda depolama hesabı) kaynak etki alanında (Bu durumda Web rolü) gelen isteklere güvendiği tarayıcıyla iletişim kurmasını sağlayan bir tarayıcı özelliğidir.  
 
-Bu iki teknoloji gereksiz yük (ve performans sorunlarını) web uygulamanızda önlemenize yardımcı olabilir.  
+Bu teknolojilerin her ikisi de Web uygulamanızda gereksiz yük (ve performans sorunlarını) önlemenize yardımcı olabilir.  
 
 #### <a name="useful-resources"></a>Yararlı kaynaklar
 
-SAS hakkında daha fazla bilgi için bkz: [paylaşılan erişim imzaları, 1. Bölüm: SAS modelini anlama](../storage-dotnet-shared-access-signature-part-1.md).  
+SAS hakkında daha fazla bilgi için bkz [. paylaşılan erişim imzaları, 1. Bölüm: SAS modelini](../storage-dotnet-shared-access-signature-part-1.md)anlama.  
 
-CORS hakkında daha fazla bilgi için bkz: [Azure Storage Hizmetleri için çıkış noktaları arası kaynak paylaşımı (CORS) desteği](https://msdn.microsoft.com/library/azure/dn535601.aspx).  
+CORS hakkında daha fazla bilgi için bkz. [Azure depolama hizmetleri Için çıkış noktaları arası kaynak paylaşımı (CORS) desteği](https://msdn.microsoft.com/library/azure/dn535601.aspx).  
 
 ### <a name="caching"></a>Önbelleğe alma
 
 #### <a name="subheading7"></a>Veri alma
 
-Genel olarak, bir hizmetten veri alma, bir kez daha iki kez alma daha iyidir. Zaten 50 MB'lık bir blobun bir kullanıcıya içerik olarak görev yapacak Depolama hizmetinden alınan bir web rolünde çalışan bir MVC web uygulaması örneği göz önünde bulundurun. Uygulama, daha sonra bir kullanıcı istekte ya da yerel olarak disk ve sonraki kullanıcı istekleri için önbelleğe alınmış sürümünü yeniden önbelleğe alınamadı, aynı blob alabilir. Ayrıca, her bir kullanıcı verileri, uygulama sorunu, değiştirilmemiş varsa tüm blob girmeyi önlemek değiştirme saati için koşullu bir üstbilgiyle ALABİLİR ister. Bu aynı deseni tablo varlıklarla çalışmaya uygulayabilirsiniz.  
+Genel olarak, bir hizmetten bir kez veri almak, iki kez alınması daha iyidir. Bir kullanıcıya içerik olarak hizmet vermek için depolama hizmetinden 50-MB blobu zaten alınmış bir Web rolünde çalışan bir MVC web uygulaması örneğini göz önünde bulundurun. Uygulama, bir kullanıcı tarafından her istekte aynı blobu alabilir ya da bunu diske yerel olarak önbelleğe alabilir ve sonraki Kullanıcı istekleri için önbelleğe alınmış sürümü yeniden kullanabilir. Ayrıca, bir kullanıcı verileri her istediğinde, değişiklik zaman için koşullu bir üst bilgiyle alma verebilir, bu da değişiklik yapılmadıysa tüm Blobun alınmasını önler. Tablo varlıklarıyla çalışmak için bu kalıbı de uygulayabilirsiniz.  
 
-Bazı durumlarda, uygulamanızın blob alınması sonra kısa bir süre için geçerli kalmasını ve bu dönemde uygulamanın blob değiştirildiği denetlemek gerekmeyen varsayabilirsiniz karar verebilirsiniz.
+Bazı durumlarda, uygulamanızın blob 'u aldıktan sonra kısa bir süre için geçerli kalacağını varsaymasına ve bu süre boyunca uygulamanın Blobun değiştirilip değiştirilmediğini denetlemesi gerekmediğine karar verebilirsiniz.
 
-Yapılandırma, arama ve her zaman uygulama tarafından kullanılan diğer veri önbelleğe almak için iyi adaylar olan.  
+Uygulama tarafından her zaman kullanılan yapılandırma, arama ve diğer veriler, önbelleğe alma için harika adaylardır.  
 
-.NET kullanarak son değiştirilme tarihi bulmak için bir blob'un özellikleri almak nasıl bir örnek için bkz [ayarlama ve alma özellikleri ve meta verileri](../blobs/storage-properties-metadata.md). Koşullu indirmeler hakkında daha fazla bilgi için bkz: [koşullu olarak bir Blob yerel bir kopyasını yenilemek](https://msdn.microsoft.com/library/azure/dd179371.aspx).  
+Koşullu indirmeler hakkında daha fazla bilgi için bkz. [BLOB hizmeti işlemleri için koşullu üstbilgiler belirtme](/rest/api/storageservices/specifying-conditional-headers-for-blob-service-operations).  
 
-#### <a name="subheading8"></a>Toplu veri yükleme
+#### <a name="subheading8"></a>Toplu işlemlere veri yükleme
 
-Bazı uygulama senaryolarında yerel olarak veri toplama ve sonra düzenli aralıklarla hemen her veri parçası karşıya yerine toplu karşıya yükleyin. Örneğin, bir web uygulaması etkinliklerinin bir günlük dosyası tutabilir: (birçok depolama işlemleri gerektiren) Tablo varlığı olur veya Etkinlik ayrıntıları yerel bir günlük dosyasına kaydedebilir uygulama ya da her etkinlik ayrıntılarını yükleyebilir ve ardından düzenli aralıklarla tüm etkinlik ayrıntılarını bir bloba sınırlandırılmış bir dosyanın olarak karşıya yükleyin. Her günlük girişinin, 1 KB boyutundaki ise, binlerce (64 MB'lik boyutu tek bir işlemde bir blob karşıya yükleyebilirsiniz) tek bir "yerleştirme Blob" işlemde karşıya yükleyebilirsiniz. Yerel makinede karşıya yükleme öncesinde çökerse, potansiyel olarak bazı günlük verileri kaybedersiniz: uygulama geliştiricisi tasarlamak için istemci cihaz olasılığını veya karşıya yükleme hataları.  Etkinlik verileri timespans (yalnızca tek etkinliği) için indirilmesi gerekiyorsa, BLOB'ları tablolar üzerindeki tavsiye edilir.
+Bazı uygulama senaryolarında, verileri yerel olarak toplayabilir ve sonra her bir veri parçasını hemen karşıya yüklemek yerine bir toplu işe düzenli olarak yükleyebilirsiniz. Örneğin, bir Web uygulaması etkinliklerin günlük dosyasını tutabilir: uygulama, her etkinliğin ayrıntılarını bir tablo varlığı (çok sayıda depolama işlemi gerektiren) gibi) karşıya yükleyebilir ya da etkinlik ayrıntılarını yerel bir günlük dosyasına kaydedebilir ve ardından Tüm etkinlik ayrıntılarını düzenli olarak bir blob 'a ayrılmış bir dosya olarak karşıya yükleyin. Her günlük girişinin boyutu 1 KB ise, tek bir "put blobu" işleminde binlerce karşıya yükleyebilirsiniz (tek bir işlemde boyutu 64 MB 'a kadar olan bir blobu yükleyebilirsiniz). Yerel makine karşıya yüklemeden önce kilitlenirse, bazı günlük verilerini kaybedebilirsiniz: uygulama geliştiricisi, istemci cihazı veya karşıya yükleme hatalarının olasılığını tasarlaması gerekir.  Etkinlik verilerinin zaman içinde zaman bölmeleri (tek bir etkinlik değil) için indirilmesi gerekiyorsa, Bloblar tablo üzerinde önerilir.
 
-### <a name="net-configuration"></a>.NET yapılandırma
+### <a name="net-configuration"></a>.NET yapılandırması
 
-.NET Framework kullanıyorsa, bu bölümde, önemli performans geliştirmeleri yapmak için kullanabileceğiniz birkaç Hızlı yapılandırma ayarları listelenir.  Diğer dillerde kullanıyorsanız benzer kavramları seçtiğiniz dilde uygulanacaksa denetleyin.  
+.NET Framework kullanılıyorsa, bu bölümde önemli performans iyileştirmeleri yapmak için kullanabileceğiniz çeşitli hızlı yapılandırma ayarları listelenir.  Diğer dilleri kullanıyorsanız, seçtiğiniz dilde benzer kavramların uygulayıp uygulamamın olup olmadığını kontrol edin.  
 
-#### <a name="subheading9"></a>Varsayılan bağlantı sınırını artırmak
+#### <a name="subheading9"></a>Varsayılan bağlantı sınırını artır
 
-. NET'te, aşağıdaki kod (genellikle olan bir istemci ortamda 2 ya da bir sunucu ortamında 10) varsayılan bağlantı sınırı 100 artırır. Genellikle, yaklaşık uygulamanız tarafından kullanılan iş parçacıklarının sayısı değeri ayarlamanız gerekir.  
+.NET ' te aşağıdaki kod, varsayılan bağlantı sınırını (genellikle bir istemci ortamında 2 veya bir sunucu ortamında 10 ' a) 100 olarak artırır. Genellikle, değerini uygulamanız tarafından kullanılan iş parçacığı sayısı için yaklaşık olarak ayarlamanız gerekir.  
 
 ```csharp
 ServicePointManager.DefaultConnectionLimit = 100; //(Or More)  
 ```
 
-Tüm bağlantıları açmadan önce bağlantı üst sınırına ayarlamanız gerekir.  
+Herhangi bir bağlantı açmadan önce bağlantı sınırını ayarlamanız gerekir.  
 
-Diğer programlama dili için nasıl bağlantı üst sınırına ayarlanacağını belirlemek için dil belgelerine bakın.  
+Diğer programlama dilleri için, bağlantı sınırının nasıl ayarlanacağını öğrenmek için bu dilin belgelerine bakın.  
 
-Daha fazla bilgi için bkz. blog gönderisine [Web Hizmetleri: Eş zamanlı bağlantı](https://blogs.msdn.com/b/darrenj/archive/2005/03/07/386655.aspx).  
+Daha fazla bilgi için bkz. blog gönderisi [Web Hizmetleri: Eşzamanlı bağlantılar](https://blogs.msdn.com/b/darrenj/archive/2005/03/07/386655.aspx).  
 
-#### <a name="subheading10"></a>Eş zamanlı kod ile zaman uyumsuz görevleri kullanıyorsanız en az iş parçacığı sayısını artırın
+#### <a name="subheading10"></a>Zaman uyumsuz görevlerle zaman uyumlu kod kullanıyorsanız, en az sayıda iş parçacığı artırın
 
-Bu kod, en az iş parçacığı havuzundaki iş parçacığı sayısını artırır:  
+Bu kod, iş parçacığı havuzundaki en düşük iş parçacığı sayısını artırır:  
 
 ```csharp
 ThreadPool.SetMinThreads(100,100); //(Determine the right number for your application)  
 ```
 
-Daha fazla bilgi için [ThreadPool.SetMinThreads yöntemi](https://msdn.microsoft.com/library/system.threading.threadpool.setminthreads%28v=vs.110%29.aspx).  
+Daha fazla bilgi için bkz. [ThreadPool. SetMinThreads metodu](https://msdn.microsoft.com/library/system.threading.threadpool.setminthreads%28v=vs.110%29.aspx).  
 
-#### <a name="subheading11"></a>.NET 4.5 ve daha yüksek bir çöp toplama yararlanın
+#### <a name="subheading11"></a>.NET 4,5 ve üzeri atık toplamanın avantajlarından yararlanın
 
-.NET 4.5 veya sonraki istemci uygulaması için sunucu çöp toplamada performans iyileştirmelerinden yararlanmak için kullanın.
+İstemci uygulaması için, sunucu atık toplamada performans geliştirmelerinden yararlanmak üzere .NET 4,5 veya üstünü kullanın.
 
-Daha fazla bilgi için bkz [bir genel bakış, performans geliştirmeleri .NET 4.5](https://msdn.microsoft.com/magazine/hh882452.aspx).  
+Daha fazla bilgi için [.net 4,5 'Deki performans Iyileştirmelerine genel bakış](https://msdn.microsoft.com/magazine/hh882452.aspx)makalesine bakın.  
 
-### <a name="subheading12"></a>Sınırsız paralellik
+### <a name="subheading12"></a>Sınırlandırılmamış paralellik
 
-Paralellik performans için harika olabilir, ancak sınırsız paralellik (iş parçacıkları ve/veya paralel istekler sayısı sınır) karşıya yükleyin veya birden çok bölüme erişmek için birden fazla çalışana kullanarak verileri yüklemek için kullanırken dikkatli (kapsayıcılar, kuyruklar, veya Tablo bölümleri) aynı depolama hesabındaki veya birden çok öğe aynı bölüme erişmek için. Paralellik sınırsız ise, uygulamanızın istemci cihazın özelliklerini aşabilir miyim veya depolama hesabının ölçeklenebilirlik elde edilen uzun gecikme süreleri ve azaltma hedefler.  
+Paralellik performansı performans için harika hale getirilmiş olsa da, verileri karşıya yüklemek veya indirmek için sınırsız paralellik (iş parçacığı sayısı ve/veya paralel istekler için sınır yoktur) ve birden çok bölüme erişmek için birden fazla çalışan kullanarak (kapsayıcılar, kuyruklar veya Tablo bölümleri) aynı depolama hesabında veya aynı bölümdeki birden çok öğeye erişmek için. Paralellik sınırsız ise, uygulamanız istemci cihazının yeteneklerini aşabilir veya depolama hesabının ölçeklenebilirlik hedefleri, daha uzun gecikme süreleri ve azaltmaya neden olabilir.  
 
-### <a name="subheading13"></a>Depolama istemci kitaplıkları ve araçları
+### <a name="subheading13"></a>Depolama Istemci kitaplıkları ve araçları
 
-Her zaman en son Microsoft sağlanan istemci kitaplıkları ve araçları kullanın. Makalenin yazıldığı sırada, diğer diller için Önizleme kitaplıkları yanı sıra .NET, Windows Phone, Windows çalışma zamanı, Java ve C++ için kullanılabilir olan istemci kitaplıkları vardır. Ayrıca, Microsoft, PowerShell cmdlet'leri ve Azure depolama ile çalışmak için Azure CLI komutlarını kullanıma sundu. Microsoft etkin bir şekilde performans aklınızda bu araçlarla geliştiren, en son hizmet sürümleri ile güncel kalmasını sağlar ve kanıtlanmış performansından uygulamalarının dahili olarak işledikleri sağlar.  
+Her zaman en son Microsoft tarafından sunulan istemci kitaplıklarını ve araçları kullanın. Yazma sırasında, .NET, Windows Phone, Windows Çalışma Zamanı, Java ve C++diğer dillere ait önizleme kitaplıklarında kullanılabilen istemci kitaplıkları vardır. Ayrıca, Microsoft, Azure depolama ile çalışmak için PowerShell cmdlet 'leri ve Azure CLı komutları yayımlamıştır. Microsoft bu araçları göz önünde bulundurularak etkin bir şekilde geliştirir, en son hizmet sürümleriyle güncel tutar ve kendini kanıtlamış performans uygulamalarının birçoğunu dahili olarak işlemesini sağlar.  
 
 ### <a name="retries"></a>Yeniden deneme sayısı
 
-#### <a name="subheading14"></a>Azaltma ve sunucu meşgul hataları
+#### <a name="subheading14"></a>Daraltma ve sunucu meşgul hataları
 
-Bazı durumlarda, depolama hizmeti, uygulamanızın azaltma veya yalnızca bazı geçici koşul nedeniyle isteği hizmet ve "503 Sunucu meşgul" iletisi veya "500 zaman aşımı" dönmek olabilir.  Uygulamanızı herhangi bir ölçeklenebilirlik hedefleri yaklaştığını veya bölümlenmiş verilerinizi daha yüksek aktarım hızı için izin vermek için sistemin yeniden Dengeleme yoksa bu durum oluşabilir.  İstemci uygulaması genellikle, bu tür bir hataya neden olan işlemi yeniden denemesinin: daha sonra aynı istek denemesi başarılı olabilir. Bununla birlikte, ölçeklenebilirlik hedefleri aşılıyor çünkü depolama hizmeti, uygulamanızın azaltma veya hizmet isteği başka bir nedenle hizmet kuramadı olsa bile, agresif yeniden deneme genellikle sorun daha da kötüsü oluşturur. Bu nedenle, bir üstel geri alma (Bu davranışı için istemci kitaplıkları varsayılan) kullanmanız gerekir. Örneğin, uygulamanız 2 saniye sonra 4 saniye sonra 10 saniye sonra 30 saniye sonra yeniden deneyin ve tamamen vazgeçerlerdi. Bu davranış, önemli ölçüde hizmet yüküne azaltma yerine problemleri exacerbating uygulamanızda sonuçlanır.  
+Bazı durumlarda, depolama hizmeti uygulamanızı kısıtlayabilir veya bazı geçici bir durum nedeniyle isteği yalnızca bir "503 sunucu meşgul" iletisi veya "500 zaman aşımı" döndürecek şekilde veremeyebilirsiniz.  Bu durum, uygulamanız ölçeklenebilirlik hedeflerinin herhangi birine yaklaşıyorsa veya sistem bölümlenmiş verilerinizi daha yüksek aktarım hızına izin verecek şekilde yeniden dengelerse meydana gelebilir.  İstemci uygulaması genellikle bu tür bir hataya neden olan işlemi yeniden denemelidir: aynı isteğin daha sonra denenmesine daha sonra başarılı olabilir. Ancak, ölçeklenebilirlik hedeflerini aştığından depolama hizmeti uygulamanızı azaltsa veya hizmet isteği başka bir nedenle hizmet veremese bile, agresif denemeler genellikle sorunu daha kötüleştir. Bu nedenle, bir üstel geri kapatma (istemci kitaplıklarının varsayılan davranışını bu davranışa) kullanmanız gerekir. Örneğin, uygulamanız 2 saniye sonra, 4 saniye, sonra 10 saniye, 30 saniye sonra yeniden deneyebilir ve ardından tamamen daha fazla verebilir. Bu davranış, uygulamanızın herhangi bir sorun exacerbating değil, hizmetin yükünü önemli ölçüde azaltmasına neden olur.  
 
-Azaltma sonucu değildir ve geçici olması nedeniyle bağlantı hataları hemen yeniden denenebilir.  
+Bağlantı hataları, azaltma sonucu olmadığı ve geçici olması beklenen için hemen yeniden denenebilir.  
 
-#### <a name="subheading15"></a>Yeniden denenemeyen hata
+#### <a name="subheading15"></a>Yeniden denenmeyen hatalar
 
-İstemci kitaplıkları, hangi hataları yeniden deneme yapabilir ve desteklenmeyen farkındayız. Depolama REST API'sini karşı kendi kod yazıyorsanız, Bununla birlikte, yeniden bazı hatalar unutmayın: Örneğin, bir 400 (hatalı yanıt, istemci uygulama, olmadığından işlenemedi bir istek gönderdiğini gösterir istek) Beklenen bir biçimde. Hiçbir noktası, yeniden deneniyor, bu nedenle bu isteği yeniden her zaman aynı yanıtı neden olur. Depolama REST API'sini karşı kendi kod yazıyorsanız, hata kodlarını ne anlama geliyor ve (veya etkinleştirmezsiniz) yeniden denemek için en uygun yolu unutmayın her biri için.  
+İstemci kitaplıkları, hangi hataların yeniden deneneceğini ve hangilerinin hangilerinin olduğunu bilmez. Ancak, depolama REST API karşı kendi kodunuzu yazıyorsanız, yeniden denenmemelisiniz bazı hatalar olduğunu unutmayın: Örneğin, 400 (Hatalı Istek) yanıtı, istemci uygulamanın, olmadığı için işlenemeyen bir istek gönderdiğini gösterir beklenen bir biçimde. Bu isteği yeniden gönderme işlemi her seferinde aynı yanıtı elde eder, bu nedenle yeniden denendiğinde hiçbir nokta yoktur. Depolama REST API karşı kendi kodunuzu yazıyorsanız, hata kodlarının ne anlama geldiğini ve bunların her biri için yeniden deneme (veya Not) yolunu unutmayın.  
 
 #### <a name="useful-resources"></a>Yararlı kaynaklar
 
-Depolama hata kodları hakkında daha fazla bilgi için bkz. [durumu ve hata kodları](https://msdn.microsoft.com/library/azure/dd179382.aspx) Microsoft Azure web sitesinde.  
+Depolama hata kodları hakkında daha fazla bilgi için bkz. Microsoft Azure Web sitesindeki [durum ve hata kodları](https://msdn.microsoft.com/library/azure/dd179382.aspx) .  
 
 ## <a name="blobs"></a>Bloblar
 
-Kendini kanıtlamış yöntemleri için ek olarak [tüm hizmetleri](#allservices) daha önce açıklandığı gibi başarısı kanıtlanmış yöntemler aşağıdaki özel olarak Blob hizmeti için geçerlidir.  
+Daha önce açıklanan [tüm hizmetler](#allservices) için kanıtlanmış uygulamalara ek olarak, aşağıdaki kanıtlanmış yöntemler özellikle blob hizmeti için geçerlidir.  
 
-### <a name="blob-specific-scalability-targets"></a>BLOB özgü ölçeklenebilirlik hedefleri
+### <a name="blob-specific-scalability-targets"></a>Blob 'a özgü ölçeklenebilirlik hedefleri
 
-#### <a name="subheading46"></a>Birden çok istemci aynı anda tek bir nesneye erişme
+#### <a name="subheading46"></a>Aynı anda tek bir nesneye erişen birden çok istemci
 
-Çok sayıda eşzamanlı olarak tek bir nesne erişen istemciler varsa, nesne ve depolama hesabı ölçeklenebilirlik hedefleri göz önünde bulundurmanız gerekir. Tek bir nesne erişen istemcilerin sayısına nesnesi eşzamanlı olarak isteyen istemcilerin nesnenin boyutu sayısı gibi faktörlere bağlı olarak değişir, vb. koşulları ağ.
+Aynı anda tek bir nesneye erişen çok sayıda istemciniz varsa, nesne ve depolama hesabı ölçeklenebilirlik hedefleri başına göz önünde bulundurmanız gerekir. Tek bir nesneye erişebilen istemcilerin tam sayısı, nesneyi aynı anda isteyen istemci sayısı, nesne boyutu, ağ koşulları vb. gibi etkenlere bağlı olarak değişir.
 
-Nesne aracılığıyla dağıtılabilmesi durumunda bir Web sitesinden bir CDN görüntü veya video gibi hizmet ve CDN kullanmanız gerekir. Bkz: [burada](#subheading5).
+Nesne, bir Web sitesinden sunulan resimler veya videolar gibi bir CDN aracılığıyla dağıtılıyorsa, CDN kullanmanız gerekir. [Buraya](#subheading5)bakın.
 
-Bilimsel benzetimleri veriyi gizli olduğu gibi diğer senaryolarda, iki seçeneğiniz vardır. İş yükünüzün erişim sağlayacak şekilde nesnesi aynı anda erişilen süresine karşılık verinceye erişilen basamaklandırmak için davranıştır. Alternatif olarak, bu nedenle toplam IOPS nesne başına ve depolama hesaplarınız arasında artan birden fazla depolama hesabı için geçici olarak nesne kopyalayabilirsiniz. Sınırlı testinde, 100 GB'lık blob (her sanal makine 32 iş parçacığı kullanarak indirme paralelleştirmek) paralel yaklaşık 25 sanal makineleri aynı anda yüklenemedi bulduk. Nesneye erişmek için önce ikinci bir depolama hesabına kopyalayın ve sonra gerek kalmadan 100 istemci olsaydı ilk 50 Vm'leri ilk blob ve ikinci 50 Vm'leri erişim ikinci blob erişin. Bu tasarım sırasında test etmeniz gerekir, böylece sonuçlar, uygulama davranışına bağlı olarak değişir. 
+Verilerin gizli olduğu bilimsel benzetimler gibi diğer senaryolarda iki seçeneğiniz vardır. Birincisi, nesneye aynı anda erişilmek üzere bir süre içinde erişilmek üzere iş yükünüzün erişimini şaşırtmakta. Alternatif olarak, nesneyi geçici olarak birden fazla depolama hesabına kopyalayabilir, böylece nesne başına ve depolama hesaplarında toplam ıOPS 'yi artırabilirsiniz. Sınırlı testte, 25 GB 'lık 100 bir blob 'u aynı anda paralel olarak indirecek (her VM, indirme iş parçacıkları 32 kullanılarak indirmeyi paralelleştirdi) bulduk. Nesneye erişmesi gereken 100 istemciniz varsa, önce onu ikinci bir depolama hesabına kopyalayın ve ardından ilk 50 VM 'Lerin ilk bloba erişmesini ve ikinci 50 VM 'Leri ikinci bloba erişmesini sağlayabilirsiniz. Sonuçlar uygulamalarınızın davranışına bağlı olarak farklılık gösterir, bu sayede tasarımı sırasında bunu test etmeniz gerekir. 
 
-#### <a name="subheading16"></a>Bant genişliği ve blob başına işlem
+#### <a name="subheading16"></a>Blob başına bant genişliği ve işlemler
 
-Okuma veya yazma sırasında tek bir bloba en fazla 60 MB/saniye (yaklaşık 480 Mb/sn aşıyor (fiziksel NIC'ye istemci cihazdaki dahil) çok sayıda istemci tarafı ağ yeteneklerini budur. Ayrıca, tek bir blob, saniyede en fazla 500 istek destekler. Aynı blob okumak için gereken birden çok istemci varsa ve bu limitlerin, blob dağıtmak için bir CDN kullanmayı düşünmeniz gerekir.  
+En fazla 60 MB/saniye olan tek bir blobu okuyabilir veya yazabilirsiniz (Bu yaklaşık 480 Mbps 'dir ve bu, çoğu istemci tarafı ağın yeteneklerini (istemci cihazdaki fiziksel NIC dahil) aşıyor. Ayrıca, tek bir blob saniyede en fazla 500 isteği destekler. Aynı blobu okuması gereken birden fazla istemciniz varsa ve bu sınırları aşarsanız, blobu dağıtmak için bir CDN kullanmayı göz önünde bulundurmanız gerekir.  
 
-Blobları hedef performans düzeyleri hakkında daha fazla bilgi için bkz. [Azure Storage ölçeklenebilirlik ve performans hedefleri](storage-scalability-targets.md).  
+Bloblara yönelik hedef verimlilik hakkında daha fazla bilgi için bkz. [Azure Storage ölçeklenebilirlik ve performans hedefleri](storage-scalability-targets.md).  
 
-### <a name="copying-and-moving-blobs"></a>Kopyalama ve BLOB'ları taşıma
+### <a name="copying-and-moving-blobs"></a>Blob 'ları kopyalama ve taşıma
 
-#### <a name="subheading17"></a>Kopya blob'u
+#### <a name="subheading17"></a>Blobu Kopyala
 
-Depolama REST API sürümü 2012-02-12 yararlı blobları hesapları arasında kopyalama olanağı sundu: bir istemci uygulaması (büyük olasılıkla farklı depolama hesabındaki) başka bir kaynaktan bir bloba kopyalamak için depolama hizmeti isteyin ve ardından hizmet gerçekleştirme sağlar kopya zaman uyumsuz olarak. Bu, indirmek ve verileri karşıya yüklemek gerekmez çünkü, diğer depolama hesaplarından veri geçişi sırasında uygulama için gereken bant genişliğini önemli ölçüde azaltabilir.  
+Depolama REST API sürüm 2012-02-12, Blobları hesaplar arasında kopyalamak için yararlı bir özelliği kullanıma sunmuştur: bir istemci uygulaması, depolama hizmetine başka bir kaynaktan (muhtemelen farklı bir depolama hesabında) bir blob kopyalamasını ve sonra da hizmetin gerçekleştirmesine izin vermek için talimat verebilir kopyayı zaman uyumsuz olarak Kopyala. Bu, verileri indirmek ve karşıya yüklemek zorunda olmadığınızdan, uygulama için gereken bant genişliğini önemli ölçüde azaltabilir.  
 
-Bir göz önünde bulundurarak, ancak depolama hesapları arasında kopyalama yapılırken, kopyalama tamamlandığında üzerinde süresi garantisi yoktur. Uygulamanızı hızlı bir şekilde denetiminiz altında bir blob kopyası tamamlaması gerektiğinde, bir VM'ye indirerek ve hedef olarak karşıya yükleme blob kopyalamak daha iyi olabilir.  Bu durumda tam öngörülebilirlik için aynı Azure bölgesinde çalışan bir VM tarafından gerçekleştirilen kopyalama, aksi takdirde, ağ koşulları kopyalama performansınızı etkileyen olabilir ve muhtemelen emin olun.  Ayrıca, program aracılığıyla bir zaman uyumsuz kopya ilerlemesini izleyebilirsiniz.  
+Ancak, depolama hesapları arasında kopyalama yaparken, kopyalamanın tamamlanmasında hiçbir zaman garantisi olmaması, ancak bir noktadır. Uygulamanızın denetiminizin altında bir blob kopyası tamamlaması gerekiyorsa, bir VM 'ye indirerek ve sonra da hedefe yükleyerek blobu kopyalamak daha iyi olabilir.  Bu durumda tam öngörülebilirlik için, kopyanın aynı Azure bölgesinde çalışan bir VM tarafından gerçekleştirildiğinden emin olun, aksi takdirde ağ koşulları da (ve muhtemelen) kopyalama performansınızı etkileyebilir.  Ayrıca, zaman uyumsuz bir kopyanın ilerlemesini programlı bir şekilde izleyebilirsiniz.  
 
-Aynı depolama hesabında kendisini kopyaları genellikle hızlı bir şekilde tamamlanır.  
+Aynı depolama hesabı içindeki kopyaların kendisi genellikle hızlı tamamlanır.  
 
-Daha fazla bilgi için [kopya blob'u](https://msdn.microsoft.com/library/azure/dd894037.aspx).  
+Daha fazla bilgi için bkz. [blobu kopyalama](https://msdn.microsoft.com/library/azure/dd894037.aspx).  
 
-#### <a name="subheading18"></a>Azcopy'yi kullanma
+#### <a name="subheading18"></a>AzCopy kullanma
 
-Azure depolama ekibi bir komut satırı aracı "AzCopy" yayınlandı birçok bloblar için gelen ve depolama hesaplarınız arasında aktarma toplu yardımcı olmak amacıyla tasarlanmıştır.  Bu araç, bu senaryo için en iyi duruma getirilmiş ve yüksek aktarım hızı elde edebilirsiniz.  Kullanımı toplu karşıya yükleme, indirme ve kopyalama senaryoları için önerilir. Hakkında daha fazla bilgi edinin ve indirmek için bkz: [AzCopy komut satırı yardımcı programı ile veri aktarma](storage-use-azcopy.md).  
+Azure depolama ekibi, depolama hesaplarına birçok blobunun,, ve bunların tamamında toplu aktarma konusunda yardımcı olmak amacıyla "AzCopy" komut satırı aracını yayımladı.  Bu araç, bu senaryo için en iyi duruma getirilmiştir ve yüksek aktarım ücretleri elde edebilir.  Kullanımı toplu karşıya yükleme, indirme ve kopyalama senaryoları için önerilir. Bunun hakkında daha fazla bilgi edinmek ve indirmek için bkz. [AzCopy komut satırı yardımcı programıyla veri aktarma](storage-use-azcopy.md).  
 
-#### <a name="subheading19"></a>Azure içeri/dışarı aktarma hizmeti
+#### <a name="subheading19"></a>Azure Içeri/dışarı aktarma hizmeti
 
-Büyük hacimli verileri (1 TB'den fazla) için Azure Depolama'ya yükleme ve blob depolama alanından sevkiyat sabit sürücüler tarafından indirme veren içeri/dışarı aktarma hizmeti sunar.  Bir sabit sürücüde verilerinizden ve karşıya yükleme için Microsoft'a göndermek veya boş bir sabit sürücü verileri indirmek için Microsoft'a gönderin.  Daha fazla bilgi için bkz. [Blob Depolama'ya Veri Aktarmak için Microsoft Azure İçeri/Dışarı Aktarma Hizmetini Kullanma](../storage-import-export-service.md).  Bu, karşıya yükleme/bu veri hacmini ağ üzerinden indirilmesine göre çok daha verimli olabilir.  
+Büyük hacimde veri (1 TB 'tan fazla) için Azure depolama, sabit sürücüler sunarak blob depolamadan karşıya yükleme ve indirme olanağı sağlayan Içeri/dışarı aktarma hizmeti sunar.  Verilerinizi bir sabit sürücüye yerleştirebilir ve karşıya yükleme için Microsoft 'a gönderebilir ya da verileri indirmek için Microsoft 'a boş bir sabit sürücü gönderebilirsiniz.  Daha fazla bilgi için bkz. [Blob Depolama'ya Veri Aktarmak için Microsoft Azure İçeri/Dışarı Aktarma Hizmetini Kullanma](../storage-import-export-service.md).  Bu, ağ üzerinden bu veri hacminin karşıya yüklenmesi/indirilmesiyle çok daha verimli olabilir.  
 
-### <a name="subheading20"></a>Meta verileri kullanın
+### <a name="subheading20"></a>Meta verileri kullan
 
-Blob hizmeti, blob meta verilerini içeren head isteklerini destekler. Örneğin, bir fotoğraf dışında EXIF verilerine uygulamanız gerekirse, fotoğraf alabilir ve ayıklayın. Uygulamanın karşıya fotoğraf, bant genişliği kazandırabilir ve performansı artırmak için uygulamanızı EXIF verilerine blobun meta verilerde depolayabilir: önemli bant genişliğinden daha sonra yalnızca bir HEAD isteği kullanarak meta verilerini EXIF verilerinde alabilir ve işleme süresi, her blobun okunur EXIF verileri ayıklamak gerekli. Bu, yalnızca meta verilerin yanı sıra, bir blob değil tam içeriği gereken senaryolarda yararlı olabilir.  Böylece veriler, boyutu uygun değilse, size bu yaklaşımı kullanmak mümkün olmayabilir (hizmet deposu birden çok, bir istek kabul etmeyecek), blob başına yalnızca 8 KB'lık meta verileri depolanabilir.  
+Blob hizmeti, blob hakkında meta veriler içerebilen baş isteklerini destekler. Örneğin, uygulamanız EXIF verilerini bir fotoğrafta gerektirdiğinde fotoğrafı alabilir ve ayıklayabilir. Bant genişliğini kaydetmek ve performansı artırmak için, uygulamanız fotoğrafı karşıya yüklerken uygulamanız EXIF verilerini Blobun meta verilerinde saklayabilir: yalnızca bir baş istek kullanarak EXIF verilerini meta verilerde alabilir, önemli bant genişliğini kaydedebilir ve blob her okunışında EXIF verilerini ayıklamak için gereken işleme süresi. Bu, bir Blobun tam içeriğini değil yalnızca meta verilere ihtiyaç duyduğunuz senaryolarda yararlı olabilir.  Blob başına yalnızca 8 KB 'lık meta veri depolanabilir (hizmet bundan daha fazlasını depolamak için bir istek kabul etmez), bu nedenle veriler bu boyuta uymuyorsa Bu yaklaşımı kullanmeyebilirsiniz.  
 
-.NET kullanarak bir blobun meta verilerini almak nasıl bir örnek için bkz [ayarlama ve alma özellikleri ve meta verileri](../blobs/storage-properties-metadata.md).  
+### <a name="rapid-uploading"></a>Hızlı karşıya yükleme
 
-### <a name="rapid-uploading"></a>Hızlı yükleme
+Blob 'ları hızlı bir şekilde yüklemek için answer 'a ilk soru: bir blob veya çok sayıda karşıya yükleniyor musunuz?  Senaryonuza bağlı olarak kullanılacak doğru yöntemi öğrenmek için aşağıdaki kılavuzu kullanın.  
 
-Hızlı bir şekilde blobları karşıya yüklemek için ilk soru olduğu: olan, bir blob ya da birden çok yükleme?  Kullanan aşağıdaki senaryonuza bağlı olarak kullanmak için doğru yöntemini belirlemek üzere Kılavuzu.  
+#### <a name="subheading21"></a>Tek bir büyük blobu hızla karşıya yükleme
 
-#### <a name="subheading21"></a>Bir büyük blob hızlı bir şekilde karşıya yükleme
+Tek bir büyük Blobun hızlı bir şekilde karşıya yüklemek için, istemci uygulamanızın blokları veya sayfalarını paralel olarak (tek blob 'lar ve depolama hesabı için bir bütün olarak ölçeklenebilirlik hedefleri) karşıya yüklemesi gerekir.  Resmi Microsoft tarafından sunulan RTM depolama Istemci kitaplıkları (.NET, Java) bunu yapma imkanına sahiptir.  Kitaplıkların her biri için, eşzamanlılık düzeyini ayarlamak için aşağıdaki belirtilen nesneyi/özelliği kullanın:  
 
-Tek bir büyük blob hızlı bir şekilde karşıya yüklemek için İstemci uygulamanızın, blokları veya sayfaları paralel (oluşturduğunu tek tek bloblar ve bir bütün olarak depolama hesabı için ölçeklenebilirlik hedefleri olan) yüklemeniz gerekir.  Resmi Microsoft tarafından sağlanan RTM depolama istemcisi kitaplıkları (.NET, Java) bunu yapmak için sahipsiniz.  Her kitaplık eşzamanlılık düzeyini ayarlamak için belirtilen nesne/özelliği altında:  
+* .NET: Kullanılacak bir BlobRequestOptions nesnesinde ParallelOperationThreadCount değerini ayarlayın.
+* Java/Android: BlobRequestOptions. setConcurrentRequestCount () kullanın
+* Node. js: İstek seçeneklerinde veya blob hizmetinde parallelOperationThreadCount kullanın.
+* C++: Blob_request_options:: set_parallelism_factor yöntemini kullanın.
 
-* .NET: ParallelOperationThreadCount kullanılacak Locationmode nesnesi üzerinde ayarlayın.
-* Java/Android: Use BlobRequestOptions.setConcurrentRequestCount()
-* Node.js: İstek seçenekleri veya Blob hizmetinde parallelOperationThreadCount kullanın.
-* C++: Blob_request_options::set_parallelism_factor yöntemi kullanın.
+#### <a name="subheading22"></a>Birçok blob hızla karşıya yükleniyor
 
-#### <a name="subheading22"></a>Hızlı bir şekilde birçok blobları karşıya yükleme
+Birçok blobu hızlıca karşıya yüklemek için Blobları paralel olarak karşıya yükleyin. Bu, aynı anda tek blob 'ları, paralel blok yüklemeleri ile karşıya yüklemeden daha hızlıdır. bu nedenle, yükleme işlemini depolama hizmetinin birden çok bölümü arasında yayar. Tek bir blob yalnızca 60 MB/saniye aktarım hızını destekler (yaklaşık 480 Mbps). Yazma sırasında, ABD tabanlı LRS hesabı, tek bir blob tarafından desteklenen aktarım hızına göre çok daha fazla 20 Gbps girişi destekler.  [AzCopy](#subheading18) , yüklemeler için varsayılan olarak paralel olarak çalışır ve bu senaryo için önerilir.  
 
-Hızlı bir şekilde birçok blobları karşıya yüklemek için BLOB'ları paralel karşıya yükleyin. Bu, depolama hizmetinin birden çok bölümde karşıya yükleme yayılan çünkü tek bloblar aynı anda paralel blok karşıya karşıya daha hızlıdır. Tek bir blob aktarım hızı 60 MB/saniye (yaklaşık 480 Mb/sn) yalnızca destekler. Makalenin yazıldığı sırada bir ABD bankasına bağlı LRS hesabına daha fazladır tek bir blob tarafından desteklenen üretilen iş 20 GB/sn giriş kadar destekler.  [AzCopy](#subheading18) yüklemeleri varsayılan olarak paralel olarak gerçekleştirir ve bu senaryo için önerilir.  
+### <a name="subheading23"></a>Doğru blob türünü seçme
 
-### <a name="subheading23"></a>Blob doğru türünü seçme
+Azure depolama iki tür blobu destekler: *sayfa* Blobları ve *blok* Blobları. Belirli bir kullanım senaryosunda, blob türü seçiminiz çözümünüzün performansını ve ölçeklenebilirliğini etkileyecektir. Blok Blobları, büyük miktarlarda verileri verimli bir şekilde yüklemek istediğinizde uygundur: Örneğin, bir istemci uygulamanın, BLOB depolama alanına fotoğraf veya video yüklemesi gerekebilir. Uygulamanın verilerde rastgele yazma işlemleri yapması gerekiyorsa sayfa Blobları uygundur: Örneğin, Azure VHD 'leri sayfa Blobları olarak depolanır.  
 
-Azure depolama blob iki tür destekler: *sayfa* blobları ve *blok* blobları. Belirli kullanım senaryosu için seçtiğiniz blob türü, performans ve ölçeklenebilirlik çözümünüzün etkiler. Blok blobları, büyük miktarlarda verileri verimli bir şekilde karşıya yüklemek istediğiniz zaman uygundur: Örneğin, blob depolama alanına fotoğraf veya videoyu karşıya yüklemek bir istemci uygulaması gerekebilir. Sayfa blobları, rastgele yazmaları veriler üzerinde gerçekleştirmek uygulamanın gerekiyorsa uygun: Örneğin, Azure VHD'leri sayfa blobları depolanır.  
-
-Daha fazla bilgi için [anlama blok Blobları, ekleme Blobları ve sayfa Blobları](https://msdn.microsoft.com/library/azure/ee691964.aspx).  
+Daha fazla bilgi için bkz. [blok bloblarını, ekleme bloblarını ve sayfa Bloblarını anlama](https://msdn.microsoft.com/library/azure/ee691964.aspx).  
 
 ## <a name="tables"></a>Tablolar
 
-Kendini kanıtlamış yöntemleri için ek olarak [tüm hizmetleri](#allservices) daha önce açıklandığı gibi başarısı kanıtlanmış yöntemler aşağıdaki tabloda hizmete özellikle uygulayın.  
+Daha önce açıklanan [tüm hizmetler](#allservices) için kanıtlanmış uygulamalara ek olarak, aşağıdaki kanıtlanmış yöntemler özellikle tablo hizmeti için geçerlidir.  
 
-### <a name="subheading24"></a>Tablo özgü ölçeklenebilirlik hedefleri
+### <a name="subheading24"></a>Tabloya özgü ölçeklenebilirlik hedefleri
 
-Ek olarak bir depolama hesabının tamamını bant genişliği sınırlamaları tabloların aşağıdaki belirli ölçeklenebilirlik sınırı vardır.  Sistem, trafiği arttıkça Yük Dengelemesi, ancak ani artışları trafiğiniz varsa, bu aktarım hızı birimi hemen almak mümkün olmayabilir.  Desen ani artışlar içeriyorsa, azaltma ve/veya zaman aşımları aşırı depolama sırasında otomatik olarak yük dengeleyen tablonuzun kullanıma hizmet görmeyi beklemelisiniz.  Yukarı yavaş genellikle ramping uygun şekilde yük dengelemesi için sistem saatini verir gibi daha iyi sonuçlar sahiptir.  
+Tüm depolama hesabının bant genişliği kısıtlamalarına ek olarak, tablolarda aşağıdaki belirli ölçeklenebilirlik limiti vardır.  Trafiğiniz arttıkça sistem yük dengelemeye başlayacaktır, ancak trafiğiniz ani bursts içeriyorsa, bu üretilen iş hacmini hemen alamıyoruz.  Düzeniniz bursts içeriyorsa, depolama hizmeti otomatik olarak tablonuzun dengeleneceği sırada, veri bloğu sırasında azaltma ve/veya zaman aşımlarını görmeyi beklemelisiniz.  Yavaş yavaş artırma işlemi, sistem zamanının uygun şekilde yük dengelemesine verdiği için genellikle daha iyi sonuçlar elde etmenizi sağlar.  
 
-#### <a name="entities-per-second-storage-account"></a>Varlıkları (depolama hesabı) saniye başına
+#### <a name="entities-per-second-storage-account"></a>Saniyedeki varlık sayısı (depolama hesabı)
 
-Tabloları erişmek için ölçeklenebilirlik sınırı kadar 20.000 varlıklar (1 KB her) başına ikinci bir hesabı içindir.  Genel olarak, eklenen her varlık güncelleştirildi, silinen veya bu hedef doğru sayar taranır.  Bu nedenle 100 varlık içeren bir toplu yerleştirme, 100 varlık sayılacaktır.  1000 varlıkları tarar ve 5 döndüren bir sorgu 1000 varlıklar olarak sayılacaktır.  
+Tablolara erişim için ölçeklenebilirlik sınırı, her bir hesap için saniyede 20.000 varlık (1 KB her) kadar olur.  Genel olarak, eklenen, güncellenen, silinen veya taranan her varlık bu hedefe doğru sayılır.  Bu nedenle 100 varlıkları içeren bir toplu ekleme, 100 varlık olarak sayılır.  1000 varlıklarını tarayan ve 5 değerini döndüren bir sorgu, 1000 varlık olarak sayılır.  
 
-#### <a name="entities-per-second-partition"></a>Varlıkları / saniye (bölüm)
+#### <a name="entities-per-second-partition"></a>Saniyedeki varlık sayısı (bölüm)
 
-Tek bir bölüm içinde tablolar erişmek için ölçeklenebilirlik 2.000 varlıklar (1 KB her) önceki bölümde açıklandığı gibi aynı sayım kullanarak saniyede hedefidir.  
+Tek bir bölümde, tablolara erişim için ölçeklenebilirlik hedefi, önceki bölümde açıklanan şekilde aynı sayımı kullanarak saniyede 2.000 varlıklardır (1 KB her).  
 
 ### <a name="configuration"></a>Yapılandırma
 
-Bu bölümde, tablo hizmetinde önemli performans geliştirmeleri yapmak için kullanabileceğiniz birkaç Hızlı yapılandırma ayarları listelenmiştir:  
+Bu bölümde, tablo hizmetinde önemli performans iyileştirmeleri yapmak için kullanabileceğiniz çeşitli hızlı yapılandırma ayarları listelenmektedir:  
 
-#### <a name="subheading25"></a>JSON kullanın
+#### <a name="subheading25"></a>JSON kullanma
 
-Depolama hizmeti sürüm 2013-08-15 ile başlayarak, tablo hizmeti JSON XML tabanlı AtomPub biçimi yerine tablo verilerini aktarmak için kullanarak destekler. Bu, yük boyutları olarak 75 oranında azaltabilir ve uygulamanızın performansını önemli ölçüde artırabilir.
+Storage hizmeti sürüm 2013-08-15 ' den başlayarak tablo hizmeti, tablo verilerini aktarmak için XML tabanlı AtomPub biçimi yerine JSON kullanımını destekler. Bu, yük boyutunu% 75 kadar azaltabilir ve uygulamanızın performansını önemli ölçüde geliştirebilirler.
 
-Daha fazla bilgi için gönderiye bakın [Microsoft Azure tabloları: JSON ile tanışın](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/05/windows-azure-tables-introducing-json.aspx) ve [tablo hizmeti işlemleri için yükü biçimi](https://msdn.microsoft.com/library/azure/dn535600.aspx).
+Daha fazla bilgi için bkz. Gönderi [Microsoft Azure tabloları: ](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/05/windows-azure-tables-introducing-json.aspx) [Tablo hizmeti işlemlerine yönelik JSON ve yük biçimi](https://msdn.microsoft.com/library/azure/dn535600.aspx)ile tanışın.
 
-#### <a name="subheading26"></a>Nagle devre dışı bırak
+#### <a name="subheading26"></a>Nagle 'ı devre dışı bırak
 
-Nagle'nın algoritması, yaygın olarak TCP/IP ağları arasında ağ performansını artırmak için bir yol uygulanır. Ancak, tüm durumlarda (örneğin, yüksek oranda etkileşimli ortamları) uygun değil. Azure depolama için Nagle'nın algoritması, tablo ve kuyruk hizmetlere yönelik istekler, performans üzerinde olumsuz bir etkisi yoktur. ve mümkünse devre dışı.
+Nagle 'ın algoritması, TCP/IP ağlarında yaygın olarak, ağ performansının geliştirilmesi için bir yol olarak uygulanır. Ancak, tüm koşullarda en uygun değildir (yüksek oranda etkileşimli ortamlar gibi). Azure depolama için, Nagle 'ın algoritması tablo ve kuyruk hizmetlerine yönelik isteklerin performansı üzerinde olumsuz bir etkiye sahiptir ve mümkünse onu devre dışı bırakmanız gerekir.
 
 ### <a name="schema"></a>Şema
 
-Nasıl temsil eder ve verilerinizi sorgulayın, tablo Hizmeti performansını etkileyen en büyük tek faktördür. Her uygulama farklı olsa da, bu bölümde ile ilgili bazı genel kendini kanıtlamış yöntemleri açıklar:  
+Verilerinizi nasıl temsil edersiniz ve sorgular, tablo hizmetinin performansını etkileyen en büyük tek etmendir. Her uygulama farklı olsa da, bu bölümde ilgili genel olarak kanıtlanmış bazı yöntemler özetlenmektedir:  
 
-* Tablo Tasarımı
-* Verimli sorgular
+* Tablo tasarımı
+* Etkili sorgular
 * Verimli veri güncelleştirmeleri  
 
 #### <a name="subheading27"></a>Tablolar ve bölümler
 
-Tablolar bölümlere ayrılır. Bir bölüm içinde depolanan her varlık aynı bölüm anahtarına paylaşır ve bu bölüm içinde tanımlamak için benzersiz bir satır anahtarına sahiptir. Bölümler avantajları sağlar, ancak sıra ölçeklenebilirlik sınırları uygular.  
+Tablolar bölümlere ayrılmıştır. Bir bölümde depolanan her varlık aynı bölüm anahtarını paylaşır ve bu bölüm içinde tanımlamak için benzersiz bir satır anahtarına sahiptir. Bölümler avantajlar sağlar, ancak ölçeklenebilirlik sınırları da getirir.  
 
-* Avantajlar: En fazla 100 ayrı depolama işlemleri (4 MB Toplam boyut sınırı) içeren bir tek atomic, toplu işlem aynı bölümde varlıklarda güncelleştirebilirsiniz. Alınacak varlıkları aynı sayıda varsayıldığında, ayrıca tek bir bölüm içindeki verileri kapsayan (ancak tablo verilerini sorgulama hakkında daha fazla öneri için okumaya devam edin) bölümleri verileri daha verimli sorgulayabilirsiniz.
-* Ölçeklenebilirlik sınırı: Tek bir bölüm içinde depolanan varlıklara erişimi-atomik toplu işlem bölümleri tarafından desteklemediklerinden dengeli yük olamaz. Bu nedenle, tek tek tablo bölümü için ölçeklenebilirlik hedefine bir bütün olarak için tablo hizmeti daha düşüktür.  
+* Avantajlar: Aynı bölümdeki varlıkları, en fazla 100 ayrı depolama işlemi (Toplam 4 MB 'lık sınır) içeren tek bir atomik, toplu işlemde güncelleştirebilirsiniz. Aynı sayıda varlık alınması varsayıldığında, tek bir bölümdeki verileri bölümlere yayılan verilerden daha verimli bir şekilde sorgulayabilirsiniz (ancak tablo verilerini sorgulama hakkında daha fazla öneri için okumaya devam edebilirsiniz).
+* Ölçeklenebilirlik sınırı: Bölümler atomik toplu işlem işlemlerini desteklediği için tek bir bölümde depolanan varlıklara erişim yük dengeli olamaz. Bu nedenle, tek bir tablo bölümünün ölçeklenebilirlik hedefi tablo hizmeti 'nin tamamına göre daha düşüktür.  
 
-Tablolar ve bölümler bu özelliklerini nedeniyle, aşağıdaki tasarım ilkeleri benimseyin:  
+Bu tablo ve bölümlerin bu özellikleri nedeniyle, aşağıdaki tasarım ilkelerini benimsemelisiniz:  
 
-* İstemci uygulamanızı sık güncelleştirilen veya iş aynı mantıksal biriminde sorgulanan veriler aynı bölümde yer almalıdır.  Bu, uygulamanızı yazma araya getirdiği anlamına gelir veya atomik toplu işlemleri yararlanmak istediğinden olabilir.  Ayrıca, tek bir bölüm verileri daha verimli bir şekilde tek bir sorguda veri bölümler arasında sorgulanabilir.
-* İstemci uygulamanızı değil ekleme/güncelleştirme verileri veya sorgu iş (tek bir sorgu veya toplu güncelleştirme) aynı mantıksal biriminde ayrı bölümlerde yer almalıdır.  Önemli bir Not, bir sorun değildir ve performansı etkilenmez bölüm anahtarları milyonlarca sahip sınırsız sayıda bölüm anahtarı tek bir tabloda olduğunu ' dir.  Uygulamanızın kullanıcı oturum açma ile popüler bir Web sitesi ise, örneğin, bölüm anahtarı olarak kullanıcı Kimliğini kullanarak iyi bir seçim olabilir.  
+* İstemci uygulamanızın aynı mantıksal çalışma biriminde sıkça güncelleştirildiği veya sorgulandığı veriler aynı bölümde bulunmalıdır.  Bunun nedeni, uygulamanızın yazmaları birleştirme, ya da atomik toplu işlem işlemlerinden yararlanmak isteyebilirsiniz.  Ayrıca, tek bir bölümdeki veriler, bölümler genelinde verilerin tek bir sorgusunda daha verimli bir şekilde sorgulanmasını sağlar.
+* İstemci uygulamanızın aynı mantıksal iş birimi (tek sorgu veya toplu güncelleştirme) içinde ekleme/güncelleştirme veya sorgu olmadığı veriler ayrı bölümlerde yer almalıdır.  Önemli bir not, tek bir tablodaki bölüm anahtarlarının sayısı için bir sınır olmaması, bu nedenle milyonlarca bölüm anahtarında sorun olmaması ve performansı etkilemeyecektir.  Örneğin, uygulamanız kullanıcı oturum açma içeren popüler bir Web sitesidir, bölüm anahtarı olarak kullanıcı KIMLIĞINI kullanmak iyi bir seçenek olabilir.  
 
-#### <a name="hot-partitions"></a>Etkin bölümler
+#### <a name="hot-partitions"></a>Sık kullanılan bölümler
 
-Sık erişimli bir bölüm trafiğin bir hesaba orantısız bir yüzde alan biridir ve tek bir bölüm olduğundan, yük dengeli olamaz.  Genel olarak, etkin bölümler iki yoldan biriyle oluşturulur:  
+Etkin bir bölüm, bir hesaba giden trafiğin orantısız yüzdesini alan ve tek bir bölüm olduğundan yük dengeli bir bölümdür.  Genel olarak, sık kullanılan bölümler iki şekilde oluşturulur:  
 
-##### <a name="subheading28"></a>Yalnızca ekleme ve yalnızca desenleri önüne ekleyin
+##### <a name="subheading28"></a>Yalnızca sonuna ekle ve yalnızca önüne Ekle desenleri
 
-"Yalnızca ekleme" burada verilen PK trafiği tüm (veya neredeyse tüm) artırır ve azaltır göre geçerli zaman bir desendir.  Uygulamanız için günlük verileri bölüm anahtarı olarak geçerli tarihi kullandıysanız bir örnektir.  Bu tüm giderek ekler son bölüm tablonuzdaki olur ve tüm yazma tablonun sonuna kadar giderek çünkü sistem Bakiye yüklenemiyor.  Bu bölüm için trafik bölüm düzeyinde ölçeklenebilirlik hedefine aşarsa, azaltma sonuçlanır.  Trafiği tablonuzun arasında istekleri birden fazla bölüme yük dengelemeyi etkinleştirmek için gönderilir emin olmak daha iyidir.  
+"Yalnızca Append" deseninin belirli bir PK trafiğinin tümünün (veya neredeyse hepsi) geçerli saate göre arttığı veya azaldığı bir tane vardır.  Uygulamanızın günlük verileri için bir bölüm anahtarı olarak geçerli tarihi kullanbir örnek bir örnektir.  Bu, tüm eklemelerin tablonuzun son bölümüne gittiğinden oluşur ve tüm yazmam tablonuzun sonuna gittiğinden sistem yük dengelenemez.  Bu bölüme giden trafik hacmi bölüm düzeyi ölçeklenebilirlik hedefini aşarsa, azaltma ile sonuçlanır.  Trafiğin, isteklerin tablo genelinde yük dengelenmesi için birden çok bölüme gönderilmesini sağlamak daha iyidir.  
 
 ##### <a name="subheading29"></a>Yüksek trafik verileri
 
-Bölümleme düzeninizi yalnızca diğer bölümler çok fazla kullanılan verileri içeren tek bir bölüm sonuçlanırsa, bölüm tek bir bölüm için ölçeklenebilirlik hedefine yaklaşıyor olarak azaltma de görebilirsiniz.  Bölümleme düzeninizi hiçbir tek bölüm ölçeklenebilirlik hedefleri yaklaşan sonuçları emin olmak daha iyidir.  
+Bölümleme düzeniniz yalnızca diğer bölümlerden daha fazla kullanılan verilerin bulunduğu tek bir bölüm ile sonuçlanırsa, bu bölüm tek bir bölüm için ölçeklenebilirlik hedefine yaklaşırsa azaltma da görebilirsiniz.  Bölüm şemanızın ölçeklenebilirlik hedeflerine yaklaştığı tek bir bölüm içermediğinden emin olmak daha iyidir.  
 
 #### <a name="querying"></a>Sorgulama
 
-Bu bölümde, tablo hizmeti sorgulamak için kendini kanıtlamış yöntemleri açıklar.  
+Bu bölümde, tablo hizmetini sorgulamak için kanıtlanmış uygulamalar açıklanmaktadır.  
 
 ##### <a name="subheading30"></a>Sorgu kapsamı
 
-Sorgu varlıklara aralığını belirtmek için çeşitli yollar vardır.  Her biri hakkında ayrıntılı bilgi verilmiştir.  
+Sorgulanacak varlık aralığını belirtmek için birkaç yol vardır.  Aşağıda, her birinin kullanımları hakkında bir tartışma verilmiştir.  
 
-Genel olarak, taramalar (sorgular tek bir varlık büyük) kaçının, ancak tarama gerekir, böylece, taramalar tarama veya önemli miktarda ihtiyacınız olmayan varlıklar döndürüyor ihtiyacınız olan verileri alma, verilerinizi düzenlemek deneyin.  
+Genel olarak, taramalardan kaçının (tek bir varlıktan daha büyük olan sorgular), ancak tarama yapmanız gerekirse, taramalarınızın ihtiyaç duymadığınız önemli miktarda varlığı taramadan veya döndürmeksizin ihtiyacınız olan verileri alabilmesi için verilerinizi düzenlemeyi deneyin.  
 
-###### <a name="point-queries"></a>Nokta sorgu
+###### <a name="point-queries"></a>Nokta sorguları
 
-Bir nokta sorgu tam olarak bir varlığı alır. Bölüm anahtarını ve satır anahtarı almak için varlık belirterek bunu yapar. Bu sorguların verimli olması ve mümkünse kullanmanız gerekir.  
+Nokta sorgusu tam olarak bir varlık alır. Bunu, alınacak varlığın bölüm anahtarını ve satır anahtarını belirterek yapar. Bu sorgular verimlidir ve bunları mümkün olan yerlerde kullanmanız gerekir.  
 
 ###### <a name="partition-queries"></a>Bölüm sorguları
 
-Bölüm sorgusu ortak bir bölüm anahtarı paylaşan veri kümesi alır bir sorgudur. Genellikle, sorgu, bir dizi satır anahtarı değerlerinin veya ek bir bölüm anahtarı olarak bazı varlık özelliği için değer aralığını belirtir. Bu nokta sorgu daha az verimlidir ve kullanılmamalıdır.  
+Bölüm sorgusu, ortak bir bölüm anahtarını paylaşan bir veri kümesini alan bir sorgudur. Genellikle sorgu, bölüm anahtarına ek olarak, bazı varlık özelliklerine ilişkin bir dizi satır anahtarı veya bir değer aralığı belirtir. Bunlar nokta sorgularından daha verimlidir ve çok dikkatli kullanılmalıdır.  
 
 ###### <a name="table-queries"></a>Tablo sorguları
 
-Tablo sorgusu, ortak bir bölüm anahtarı paylaşmaz varlık kümesini alır bir sorgudur. Bu sorguları verimli değildir ve mümkünse kaçınmanız gerekir.  
+Tablo sorgusu, ortak bir bölüm anahtarını paylaşmayan bir varlık kümesini alan bir sorgudur. Bu sorgular etkili değildir ve mümkünse bunları kullanmaktan kaçının.  
 
 ##### <a name="subheading31"></a>Sorgu yoğunluğu
 
-Sorgu verimliliği başka bir anahtarı faktörünü döndürülen kümesi bulmak için taranan varlıkların sayısı karşılaştırıldığında döndürülen varlıkları sayısıdır. Uygulamanızı bir tablo sorgusu yalnızca %1 veri paylaşımları, 100 varlık döndürdüğü her bir varlık için sorgu tarama bir özellik değeri için bir filtre ile uyguluyorsa. Ele alınan tablo ölçeklenebilirlik hedefleri daha önce tüm taranan varlıkların sayısı ve döndürülen varlık sayısını ilişkilendirebilirsiniz: düşük sorgusunu yoğunluk kolayca tablo hizmeti, çok sayıda varlıklara tarama gerekir çünkü, uygulamanın kısıtlanmasına neden olabilir Aradığınız varlığı alır.  Aşağıdaki bölümde bkz üzerinde [normalleştirilmişlikten çıkarma](#subheading34) bu durumu önlemek nasıl daha fazla bilgi için.  
+Sorgu verimliliği ' nda başka bir anahtar faktörü, döndürülen kümeyi bulmak için taranan varlık sayısına kıyasla döndürülen varlıkların sayısıdır. Uygulamanız veri paylaşımlarının yalnızca% 1 ' i olan özellik değeri için filtre içeren bir tablo sorgusu gerçekleştirdiğinde, sorgu döndürdüğü her bir varlık için 100 varlıklarını tarar. Daha önce ele alınan tablo ölçeklenebilirliği hedefleri, döndürülen varlıkların sayısıyla değil, taranan varlık sayısıyla ilgilidir: düşük bir sorgu yoğunluğu, tablo hizmetinin uygulamanızı daha fazla sayıda varlık taraması gerektiği için kolayca genişletmesine neden olabilir. Aradığınız varlığı alın.  Bundan kaçınmak hakkında daha fazla [bilgi için aşağıdaki](#subheading34) bölüme bakın.  
 
-##### <a name="limiting-the-amount-of-data-returned"></a>Döndürülen veri miktarına sınırlama
+##### <a name="limiting-the-amount-of-data-returned"></a>Döndürülen veri miktarını sınırlama
 
-###### <a name="subheading32"></a>Filtreleme
+###### <a name="subheading32"></a>Menin
 
-Sorgu istemci uygulamasına ihtiyacınız olmayan varlıkları döndürme bildiğiniz durumlarda, döndürülen kümesinin boyutunu azaltmak için bir filtre kullanan göz önünde bulundurun. İstemciye döndürülen değil varlık hala doğru ölçeklenebilirlik sınırları sayısı, ancak daha düşük ağ yükü boyutu ve daha az istemci uygulamanızı işlemelisiniz varlıkların sayısı nedeniyle uygulama performansınızı artırır.  Not bakın [sorgusunu yoğunluk](#subheading31), ancak – ölçeklenebilirlik hedefleri taranan varlıkların sayısı için ilişkili şekilde birkaç varlıkları döndürülen bile çok varlık filtreleyen sorgu hala kısıtlama, neden olabilir.  
+Bir sorgunun istemci uygulamada ihtiyaç duymayacak varlıkları döndürmeyeceğini Bildiğiniz yerde, döndürülen küme boyutunu azaltmak için bir filtre kullanmayı düşünün. İstemciye döndürülmediği varlıklar hala ölçeklenebilirlik sınırlarına yaklaşmaya devam ederken, daha az ağ yükü boyutu ve istemci uygulamanızın işlemesi gereken daha az sayıda varlık nedeniyle uygulama performansından iyileşecek.  Bkz. [sorgu yoğunluğu](#subheading31)üzerine yukarıdaki notta. ancak, ölçeklenebilirlik hedefleri taranan varlık sayısıyla ilgilidir, bu nedenle çok sayıda varlığı filtreleyen bir sorgu, birkaç varlık döndürülse bile yine de azaltmasına neden olabilir.  
 
-###### <a name="subheading33"></a>Projeksiyon
+###### <a name="subheading33"></a>Yansıtma
 
-Tablonuzdaki varlıkları özelliklerinden yalnızca sınırlı sayıda istemci uygulamanız gerekiyorsa, döndürülen veri kümesinin boyutunu sınırlamak için yansıtma kullanabilirsiniz. Sahip olarak filtreleme, bu ağ yükü ve işleme istemci azaltmaya yardımcı olur.  
+İstemci uygulamanız, tablonuzdaki varlıklardan yalnızca sınırlı bir özellik kümesine ihtiyaç duyuyorsa, döndürülen veri kümesinin boyutunu sınırlamak için projeksiyonu kullanabilirsiniz. Filtrelemede olduğu gibi, bu, ağ yükü ve istemci işlemesini azaltmaya yardımcı olur.  
 
-##### <a name="subheading34"></a>Normalleştirilmişlikten çıkarma
+##### <a name="subheading34"></a>Normalleştirilmemiş
 
-İlişkisel veritabanları ile çalışma aksine, verimli bir şekilde tablo verilerini sorgulama için kendini kanıtlamış verilerinizi normal durumdan çıkarmayı sağlama. Diğer bir deyişle, aynı verileri birden çok varlık (verileri bulmak üzere kullanabilir her anahtar için bir tane) çoğaltma istemci verileri bulmak üzere bir sorgu taraması varlık sayısını en aza indirmek için gerekli varlıkları uygulamanıza verileri bulmak için çok sayıda taramak zorunda yerine Uygulama gerekir.  Örneğin, bir e-ticaret Web sitesinde bir sipariş hem müşteri Kimliğine göre bulmak istediğiniz (bu müşterinin sipariş ver) ve tarihe göre (bir tarihte sipariş ver).  Tablo depolamada varlık (veya buna bir başvuru) depolamak en iyi iki kez – bir kez tablo adıyla PK ve ağ Yazıcılarına müşteri tarafından bulma kolaylaştırmak için kimlik, bir kez tarihe göre bulma kolaylaştırmak için.  
+İlişkisel veritabanlarıyla çalışmaktan farklı olarak, tablo verilerinin etkin bir şekilde sorgulanmasına yönelik kanıtlanmış uygulamalar, verilerinizin normalleştirilmesi için Diğer bir deyişle, bir sorgunun,, uygulamanızın verileri bulmak için çok sayıda varlığı taramak zorunda kalmadan, istemci ihtiyacı olan verileri bulmak için taraması gereken varlıkların sayısını en aza indirmek için, aynı verileri birden çok varlıkta çoğaltma (verileri bulmak için kullanabileceğiniz her anahtar için bir tane) uygulaması gerekiyor.  Örneğin, bir e-ticaret Web sitesinde, hem müşteri KIMLIĞI hem de (bu müşterinin emirlerini bana) ve tarihe göre (bir tarih için bana sipariş siparişi ver) bir sipariş bulmak isteyebilirsiniz.  Tablo depolama alanında, müşteri KIMLIĞINE göre bulmayı kolaylaştırmak için bir kez tablo adı, PK ve RK ile her iki kez bir kez (veya bir başvuru) depolamak en iyi yöntemdir.  
 
-#### <a name="insertupdatedelete"></a>Ekleme/güncelleştirme/silme
+#### <a name="insertupdatedelete"></a>Ekle/güncelleştir/Sil
 
-Bu bölümde, tablo hizmetinde saklanan varlıkları değiştirmek için kendini kanıtlamış yöntemleri açıklar.  
+Bu bölümde, tablo hizmetinde depolanan varlıkları değiştirmeye yönelik kanıtlanmış uygulamalar açıklanmaktadır.  
 
-##### <a name="subheading35"></a>Toplu işleme
+##### <a name="subheading35"></a>İşlem
 
-Toplu işlem, Azure Depolama'daki varlık grubu işlemleri (ETG) olarak bilinir; bir ETG içindeki tüm işlemler tek bir tablodaki tek bir bölüm olmalıdır. Mümkünse, ETGs toplu olarak ekleme, güncelleştirme ve silme gerçekleştirmek için kullanın. Bu istemci uygulamanızın sunucuya gidiş dönüş sayısını azaltan, (bir ETG faturalama amacıyla tek bir işlem olarak sayılır ve 100'e kadar depolama işlemleri içerebilir) Faturalanabilir işlem sayısını azaltır ve atomik güncelleştirmeleri (tümü sağlar işlemleri başarılı veya içinde bir ETG tümü başarısız). Mobil cihazlar gibi yüksek gecikme süreleriyle ortamları ETGs kullanımından büyük ölçüde avantaj sağlayacaktır.  
+Toplu işlemler, Azure Storage 'da varlık grubu Işlemleri (ETG) olarak bilinir; bir ETG içindeki tüm işlemler tek bir tabloda tek bir bölümde olmalıdır. Mümkün olduğunda, toplu olarak ekleme, güncelleştirme ve silme işlemleri gerçekleştirmek için ETG 'leri kullanın. Bu, istemci uygulamanızdan sunucuya gidiş dönüş sayısını azaltır, faturalandırılabilir işlem sayısını (Faturalandırma amacıyla tek bir işlem olarak sayar ve en fazla 100 depolama işlemi içerebilir) ve atomik güncelleştirmeleri sağlar (tümü işlemler başarılı veya bir ETG içinde başarısız olur). Mobil cihazlar gibi yüksek gecikme sürelerine sahip ortamlar, ETG 'leri kullanmaktan büyük ölçüde yararlanır.  
 
 ##### <a name="subheading36"></a>Upsert
 
-Kullanımı tablo **Upsert** işlemlerini mümkün olan her yerde. İki tür vardır **Upsert**, ikisi için de geleneksel bir daha verimli olabilir **Ekle** ve **güncelleştirme** işlemleri:  
+Mümkün olan her yerde tablo ön **Ekle** işlemlerini kullanın. Her ikisi de geleneksel bir **ekleme** ve **güncelleştirme** işlemlerinden daha verimli olabilecek iki tür **upsert**vardır:  
 
-* **InsertOrMerge**: Bir varlığın özellik alt kümesi karşıya yüklemek istediğiniz, ancak emin değilseniz varlık zaten var olup, bunu kullanın. Varlık varsa, bu çağrı dahil özelliklerini güncelleştirir. **Upsert** işlemi ve tüm mevcut özellikler çıktığında varlık mevcut değilse, olduğu gibi yeni bir varlık ekler. Değiştirmekte olduğunuz özelliklerini yüklemek yalnızca gerektiren bu sorguda projeksiyon kullanmaya benzer.
-* **Insertorreplace**: Tamamen yeni bir varlık karşıya yüklemek istediğiniz, ancak zaten var olup olmadığını emin değilseniz bu kullanın. Yeni yüklenen varlık tamamen eski varlık yazdığından tamamen doğru olduğunu bildiğiniz durumlarda yalnızca bu kullanmanız gerekir. Örneğin, uygulama daha önce depolanan kullanıcı konum verileri olup olmadığına bakılmaksızın, bir kullanıcının geçerli konumuna depolar varlık güncelleştirmek istediğiniz; Yeni bir konum varlık tamamlandıktan ve önceki herhangi bir varlık bilgileri gerekmez.
+* **Insertormerge**: Varlığın özelliklerinin bir alt kümesini karşıya yüklemek istediğinizde bunu kullanın, ancak varlığın zaten var olup olmadığından emin olun. Varlık varsa, bu çağrı, **upsert** işleme dahil olan özellikleri güncelleştirir ve tüm mevcut özellikleri olduğu gibi bırakır; varlık yoksa, yeni varlığı ekler. Bu, bir sorguda projeksiyon kullanılmasına benzerdir, ancak yalnızca değişen özellikleri karşıya yüklemeniz yeterlidir.
+* **Insertorreplace**: Tamamen yeni bir varlık yüklemek istediğinizde bunu kullanın, ancak zaten var olup olmadığından emin değilsiniz. Bunu yalnızca yeni yüklenen varlığın tamamen doğru olduğunu bildiğiniz durumlarda kullanmanız gerekir çünkü eski varlığın üzerine yazar. Örneğin, uygulamanın daha önce Kullanıcı için konum verilerini depoladığına bakılmaksızın kullanıcının geçerli konumunu depolayan varlığı güncelleştirmek istersiniz; Yeni konum varlığı tamamlanmıştır ve önceki varlıklardan herhangi bir bilgi almanız gerekmez.
 
-##### <a name="subheading37"></a>Veri serisi içinde tek bir varlık depolama
+##### <a name="subheading37"></a>Veri serisini tek bir varlıkta depolama
 
-Bazı durumlarda, bir uygulamayı sık tümünü tek seferde almak için gereken verileri bir dizi depolar: Örneğin, bir uygulamanın CPU kullanım zaman içinde son 24 saat verileri sıralı bir grafiği çizmek için izleyebilir. Belirli bir saati temsil eden ve CPU kullanımı bu saat için depolama her bir varlık ile bir tablo varlık, saatlik bir yaklaşımdır. Bu verileri çizmek için uygulamanın en son 24 saatten verileri tutan varlıkları alma gerekir.  
+Bazen, bir uygulama, sıklıkla tümünü bir kez almak için ihtiyaç duyduğunu bir veri serisini depolar: Örneğin, bir uygulama, son 24 saat içindeki verilerin sıralı bir grafiğini çizmek için zaman içinde CPU kullanımını izleyebilir. Tek bir yaklaşım, her bir varlığa belirli bir saati temsil eden ve bu saat için CPU kullanımını depolayan her bir bir saat için bir adet tablo varlığına sahiptir. Bu verileri çizmek için, uygulamanın verileri en son 24 saatten tutan varlıkları alması gerekir.  
 
-Uygulamanızı ayrı özelliği tek bir varlık olarak her saat için alternatif olarak, CPU kullanımı depolayabilir: her saat güncelleştirmek için uygulamanız tek bir kullanabilir **InsertOrMerge Upsert** değeri için en son güncelleştirmeye çağrısı saat. Veri çizimi için uygulamanın yalnızca 24, verimli bir sorgu için yapmak yerine tek bir varlık alma gerekir (tartışmaya bakın [query kapsamın](#subheading30)).
+Alternatif olarak, uygulamanız her saat için CPU kullanımını tek bir varlığın ayrı bir özelliği olarak saklayabilir: her saat güncelleştirmek için, uygulamanız en son saatin değerini güncelleştirmek üzere tek bir **ınsertormerge upsert** çağrısı kullanabilir. Verilerin çizilmesi için, uygulamanın yalnızca 24 yerine tek bir varlık alması gerekir (etkin bir sorgu için bkz. [sorgu kapsamında](#subheading30)tartışmayı yukarıdaki tartışmaya bakın).
 
-##### <a name="subheading38"></a>Bloblar yapılandırılmış verileri depolama
+##### <a name="subheading38"></a>Yapılandırılmış verileri bloblarda depolama
 
-Bazen yapılandırılmış verileri tablolarda, gitmesi gereken ancak aralıkları varlıklar her zaman birlikte alınır ve batch eklenebilir gibi hissettirir.  Bunun iyi bir örnek günlük dosyasıdır.  Bu durumda, birkaç dakikadan günlükler batch, bunları eklemek ve ardından, her zaman aynı anda de günlüklerinin birkaç dakika alıyor.  Bu durumda, performans için yazılan /, genellikle yapılan gereken isteklerinin sayısı yanı sıra döndürülen nesne sayısını önemli ölçüde azaltabilirsiniz beri tabloları yerine, BLOB'ları kullanmak en iyisidir.  
+Bazen benzer şekilde yapılandırılmış veriler tablolara gitmelidir, ancak varlık aralıkları her zaman birlikte alınır ve toplu olarak eklenebilir.  Bunun iyi bir örneği bir günlük dosyasıdır.  Bu durumda, birkaç dakikalık günlüğü toplu olarak çalıştırabilirsiniz, ekleyebilir ve aynı zamanda birkaç dakikalık günlüğü her zaman alabilirsiniz.  Bu durumda, performans için, yazılan/döndürülen nesne sayısını ve genellikle yapılması gereken istek sayısını önemli ölçüde azaltabileceğinizden, tablolar yerine blob 'ları kullanmak daha iyidir.  
 
 ## <a name="queues"></a>Kuyruklar
 
-Kendini kanıtlamış yöntemleri için ek olarak [tüm hizmetleri](#allservices) daha önce açıklandığı gibi aşağıdaki başarısı kanıtlanmış yöntemler özellikle sıra hizmete uygulayın.  
+Daha önce açıklanan [tüm hizmetler](#allservices) için kanıtlanmış uygulamalara ek olarak, aşağıdaki kanıtlanmış uygulamalar özellikle kuyruk hizmeti için geçerlidir.  
 
 ### <a name="subheading39"></a>Ölçeklenebilirlik sınırları
 
-Tek bir sıra (burada bir ileti olarak her AddMessage GetMessage ve DeleteMessage sayısı) saniyede yaklaşık 2.000 ileti (1 KB her) işleyebilir. Bu, uygulamanız için yetersiz kalırsa, birden fazla kuyruk kullanan ve iletileri bunların arasında yaymaktır gerekir.  
+Tek bir sıra, yaklaşık 2.000 iletiyi (her biri bir saniyede bir ileti olarak) (her AddMessage, GetMessage ve DeleteMessage Count) işleyebilir. Bu uygulama için yeterli değilse, birden çok kuyruk kullanmanız ve iletileri bunlara yaymalısınız.  
 
-En geçerli ölçeklenebilirlik hedeflerini görüntülemek [Azure Storage ölçeklenebilirlik ve performans hedefleri](storage-scalability-targets.md).  
+[Azure depolama ölçeklenebilirlik ve performans hedefleri '](storage-scalability-targets.md)nde geçerli ölçeklenebilirlik hedeflerini görüntüleyin.  
 
-### <a name="subheading40"></a>Nagle devre dışı bırak
+### <a name="subheading40"></a>Nagle 'ı devre dışı bırak
 
-Nagle algoritması ele tablo yapılandırma bölümüne bakın: Nagle algoritmasıdır sıra isteklerini performansı için genellikle hatalı ve devre dışı bırakmalısınız.  
+Nagle algoritmasını etkileyen tablo yapılandırması bölümüne bakın; Nagle algoritması sıra isteklerinin performansı için genellikle hatalı olur ve devre dışı bırakmanız gerekir.  
 
 ### <a name="subheading41"></a>İleti boyutu
 
-İleti boyutu arttıkça, kuyruk performans ve ölçeklenebilirlik azalır. Bir ileti yalnızca bir alıcı gerekli bilgileri yerleştirmeniz gerekir.  
+İleti boyutu arttıkça kuyruk performansı ve ölçeklenebilirlik azalmasını azaltır. Yalnızca alıcının ihtiyacı olan bilgileri bir iletiye yerleştirmeniz gerekir.  
 
-### <a name="subheading42"></a>Batch alma
+### <a name="subheading42"></a>Toplu iş alımı
 
-Tek bir işlemde bir kuyruktan 32 adede kadar iletileri alabilirsiniz. Bu gidiş-dönüş sayısı, mobil cihazlar gibi ortamlarda kullanışlıdır istemci uygulamadan alınan yüksek gecikme süresiyle azaltabilir.  
+Tek bir işlemde bir kuyruktan en fazla 32 ileti alabilirsiniz. Bu, özellikle mobil cihazlar gibi yüksek gecikme süresine sahip olan ortamlar için yararlı olan istemci uygulamasından gelen gidiş dönüş sayısını azaltabilir.  
 
-### <a name="subheading43"></a>Kuyruk yoklama aralığı
+### <a name="subheading43"></a>Sıra yoklama aralığı
 
-Çoğu uygulama için uygulama işlemlerinin büyük kaynaklardan biri olabilir bir kuyruktan ileti için yoklama. Akıllıca, yoklama aralığı seçin: sıra için ölçeklenebilirlik hedefleri yaklaşım uygulamanız çok sık yoklama neden olabilir. Ancak, (yazma sırasında) $0,01 için 200.000 işlemleri bir ay boyunca her saniye kadar maliyet küçüktür 15 Sent maliyeti sonra yoklama tek bir işlemcinin genellikle yoklama aralığı tercih ettiğiniz etkileyen bir faktör değildir.  
+Çoğu uygulama, bu uygulama için en büyük işlem kaynaklarından biri olabilen bir kuyruktaki iletileri yoklamalıdır. Yoklama sıklığından daha seyrek seçim yapın: çok sık yoklama, uygulamanızın sıraya yönelik ölçeklenebilirlik hedeflerine yaklaşımına neden olabilir. Ancak, $0,01 (yazma sırasında) için 200.000 işlem sırasında, ayda her saniye bir kez tek bir işlemci yoklaması 15 aldan düşük bir değer olduğundan, maliyet genellikle yoklama aralığı seçiminizi etkileyen bir faktör değildir.  
 
-Maliyet güncel bilgi için bkz: [Azure depolama fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/).  
+Güncel maliyet bilgileri için bkz. [Azure Depolama fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/).  
 
-### <a name="subheading44"></a>İletiyi güncelleştirme
+### <a name="subheading44"></a>Güncelleştirme iletisi
 
-Kullanabileceğiniz **güncelleştirme iletisi** görünmezlik zaman aşımı süresini artırın veya iletinin durum bilgilerini güncelleştirmek için işlem. Bu güçlü olmakla birlikte, her unutmayın **güncelleştirme iletisi** ölçeklenebilirlik hedef işlem sayılır. Ancak, bu işin her adımı tamamlandı olarak bir iş, bir kuyruktan yanında, geçirir. bir iş akışı sahip daha çok daha etkili bir yaklaşım olabilir. Kullanarak **güncelleştirme iletisi** işlemi iletiyi iş durumu Kaydet ve bir adım tamamlanan her zaman yapılacak işin bir sonraki adım için requeuing yerine çalışma, devam etmek, uygulamanızın sağlar.  
+**Güncelleştirme iletisi** işlemini, bir iletinin durum bilgilerini artırmak veya bir iletinin durum bilgilerini güncelleştirmek için kullanabilirsiniz. Bu güçlü bir işlem olsa da, her bir **güncelleştirme iletisi** işleminin ölçeklenebilirlik hedefine doğru olduğunu unutmayın. Ancak, işin her adımı tamamlandıktan sonra, bir işi bir kuyruktan bir sonrakine geçiren iş akışına sahip olmanın çok daha etkili bir yaklaşımı olabilir. **Iletiyi Güncelleştir** işleminin kullanılması, uygulamanızın iş durumunu iletiye kaydetmesini ve sonra bir adım her tamamlandığında işin bir sonraki adımına requeuing yerine çalışmaya devam etmesini sağlar.  
 
-Daha fazla bilgi için bkz [nasıl yapılır: Kuyruğa Alınan iletinin içeriğini değiştirme](../queues/storage-dotnet-how-to-use-queues.md#change-the-contents-of-a-queued-message).  
+Daha fazla bilgi için bkz [. nasıl yapılır: Sıraya alınan iletinin](../queues/storage-dotnet-how-to-use-queues.md#change-the-contents-of-a-queued-message)içeriğini değiştirin.  
 
 ### <a name="subheading45"></a>Uygulama mimarisi
 
-Uygulama Mimarinizi ölçeklenebilir hale getirmek için kuyrukları kullanmanız gerekir. Kuyruklar, uygulamanızın daha ölçeklenebilir hale getirmek için kullanabileceğiniz bazı yollarını listeler:  
+Uygulama mimarinizi ölçeklenebilir hale getirmek için kuyrukları kullanmanız gerekir. Aşağıda, uygulamanızı daha ölçeklenebilir hale getirmek için kuyrukları kullanabileceğiniz bazı yollar listelenmiştir:  
 
-* İşleme iş biriktirme listeleri oluşturun ve uygulamanızda iş yüklerinin ölçeğini düzgün kuyruklarını kullanabilirsiniz. Örneğin, karşıya yüklenen görüntüleri yeniden boyutlandırmayı gibi işlemci yoğunluklu işlerini yapmak için kullanıcılardan gelen istekleri oluşturan kuyruğa alınamadı.
-* Kuyruklar, uygulamanızın parçalarını birbirinden bağımsız şekilde ölçeklenebilmek böylece ayırmak için kullanabilirsiniz. Örneğin, bir web ön ucu, kullanıcıların anket sonuçlarını sonraki çözümleme ve depolama için bir kuyruğun içine koyabilir. Kuyruk verileri gereken şekilde işlemek için daha fazla çalışan rolü örnekleri ekleyebilirsiniz.  
+* Uygulamanızdaki iş yüklerini işlemek ve düzgünleştirmek için biriktirme listeleri oluşturmak üzere kuyrukları kullanabilirsiniz. Örneğin, karşıya yüklenen görüntüleri yeniden boyutlandırma gibi işlemci yoğunluklu işleri gerçekleştirmek için kullanıcılardan gelen istekleri sıraya alabilirsiniz.
+* Sıralarını bağımsız olarak ölçeklendirebilmeniz için, uygulamanızın parçalarını ayırmak için kuyrukları kullanabilirsiniz. Örneğin, bir Web ön ucu, daha sonra analiz ve depolama için kullanıcılardan anket sonuçlarını bir kuyruğa yerleştirebilir. Sıra verilerini gerektiği gibi işlemek için daha fazla çalışan rolü örneği ekleyebilirsiniz.  
 
 ## <a name="conclusion"></a>Sonuç
 
-Bu makalede başarısı kanıtlanmış uygulamalar, Azure depolama kullanırken performansı iyileştirmek için en yaygın bazıları açıklanmıştır. Biz, her uygulama geliştiricisine, yukarıda belirtilen yöntemlerin her biri ile uygulamalarını değerlendirmelerini ve Azure Depolama kullanan uygulamalarından mükemmel performans alma önerilerini dikkate almalarını öneririz.
+Bu makalede, Azure Storage kullanırken performansı iyileştirmek için en yaygın ve kanıtlanmış uygulamalardan bazıları ele alınmıştır. Biz, her uygulama geliştiricisine, yukarıda belirtilen yöntemlerin her biri ile uygulamalarını değerlendirmelerini ve Azure Depolama kullanan uygulamalarından mükemmel performans alma önerilerini dikkate almalarını öneririz.

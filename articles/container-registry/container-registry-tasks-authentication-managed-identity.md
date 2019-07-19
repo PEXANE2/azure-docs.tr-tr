@@ -1,60 +1,61 @@
 ---
-title: Azure kapsayıcı kayıt defteri görevler ile yönetilen bir kimlik kullanın
-description: Azure kaynakları için yönetilen bir kimlik atayarak diğer özel kapsayıcı kayıt defterleri dahil olmak üzere Azure kaynakları için bir Azure Container Registry görev erişim sağlar.
+title: Azure Container Registry görevlerle yönetilen bir kimlik kullanma
+description: Azure kaynakları için yönetilen bir kimlik atayarak diğer özel kapsayıcı kayıt defterleri dahil olmak üzere Azure kaynaklarına bir Azure Container Registry görevi erişimi sağlayın.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: danlep
-ms.openlocfilehash: 5b60727472a06aaac8ccd3dce8609461e8972311
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 46351af375ab4c6e59a3ddfba3c05c1e517fab0d
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67148041"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311528"
 ---
-# <a name="use-an-azure-managed-identity-in-acr-tasks"></a>Azure kullanan yönetilen kimliği ACR görevler 
+# <a name="use-an-azure-managed-identity-in-acr-tasks"></a>ACR görevlerinde Azure yönetilen kimliği kullanma 
 
-Kullanım bir [yönetilen Azure kaynakları için kimliği](../active-directory/managed-identities-azure-resources/overview.md) sağlayın veya kod kimlik bilgilerini yönetmek Azure container registry veya diğer Azure kaynakları için ACR görevlerden olmadan kimliğini gerek kalmadan. Örneğin, bir görevin adımı olarak başka bir kayıt defterine kapsayıcı görüntüleri İtme veya çekme için yönetilen bir kimlik kullanın.
+Bir Azure kapsayıcısı kayıt defterine veya diğer Azure kaynaklarına kimlik doğrulaması gerçekleştirmek için [Azure kaynakları için yönetilen bir kimlik](../active-directory/managed-identities-azure-resources/overview.md) , kodda kimlik bilgileri sağlamaya veya yönetmeye gerek kalmadan kullanın. Örneğin, bir görevde bir adım olarak kapsayıcı görüntülerini başka bir kayıt defterine çekmek veya göndermek için yönetilen bir kimlik kullanın.
 
-Bu makalede, yönetilen kimlikleri hakkında daha fazla bilgi edinmek ve nasıl yapılır:
+Bu makalede, Yönetilen kimlikler ve nasıl yapılır hakkında daha fazla bilgi edinebilirsiniz:
 
 > [!div class="checklist"]
-> * Sistem tarafından atanan bir kimlik veya bir ACR görevde bir kullanıcı tarafından atanan kimliği etkinleştirme
-> * Kimlik gibi diğer Azure kapsayıcısı kayıt defterleri Azure kaynaklarına erişim
-> * Bir görevden kaynaklara erişmek için yönetilen kimliği kullanma 
+> * ACR görevinde sistem tarafından atanan bir kimlik veya Kullanıcı tarafından atanan bir kimlik etkinleştirme
+> * Diğer Azure Container kayıt defterleri gibi Azure kaynaklarına kimlik erişimi verme
+> * Bir görevden kaynaklara erişmek için yönetilen kimliği kullanın 
 
-Azure kaynaklarını oluşturmak için bu makalede, Azure CLI Sürüm 2.0.66 çalıştırmanızı gerektirir veya üzeri. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli].
+Azure kaynaklarını oluşturmak için bu makale, Azure CLı sürüm 2.0.66 veya üstünü çalıştırmanızı gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme][azure-cli].
 
-## <a name="why-use-a-managed-identity"></a>Yönetilen bir kimlik neden kullanmalısınız?
+## <a name="why-use-a-managed-identity"></a>Yönetilen kimlik neden kullanılmalıdır?
 
-Azure kaynakları için yönetilen bir kimlik Azure Active Directory'de (Azure AD) otomatik olarak yönetilen bir kimlikle Azure hizmetleri sağlar. Yapılandırabileceğiniz [belirli Azure kaynaklarına](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md), yönetilen bir kimlikle ACR görevler de dahil olmak üzere. Ardından, kod veya betiklerde kimlik bilgilerini geçmeden diğer Azure kaynaklarına erişmek için kimliğini kullanın.
+Azure kaynakları için yönetilen bir kimlik, Azure hizmetlerini Azure Active Directory (Azure AD) içinde otomatik olarak yönetilen kimlik sağlar. Bir yönetilen kimlikle ACR görevleri dahil olmak üzere [belirli Azure kaynaklarını](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)yapılandırabilirsiniz. Daha sonra, kodu veya betiklerdeki kimlik bilgilerini geçirmeden diğer Azure kaynaklarına erişmek için bu kimliği kullanın.
 
-Yönetilen kimlik iki türleri şunlardır:
+Yönetilen kimlikler iki türtür:
 
-* *Kullanıcı tarafından atanan kimlikleri*, birden çok kaynağa atayın ve istediğiniz sürece için kalıcı. Kullanıcı tarafından atanan kimlikleri, şu anda Önizleme aşamasındadır.
+* Birden fazla kaynağa atayabileceğiniz ve istediğiniz sürece devam eden *Kullanıcı tarafından atanan kimlikler*. Kullanıcı tarafından atanan kimlikler Şu anda önizlemededir.
 
-* A *sistem yönetilen kimliği*, ACR görev gibi belirli bir kaynağa benzersizdir ve bu kaynağın ömrü boyunca sürer.
+* ACR görevi gibi belirli bir kaynak için benzersiz olan ve söz konusu kaynağın kullanım ömrü boyunca kullanılan *sistem tarafından yönetilen bir kimlik*.
 
-Yönetilen bir kimlik ile bir Azure kaynağı ayarladıktan sonra herhangi bir güvenlik sorumlusu gibi başka bir kaynak kimliği erişimi verin. Örneğin, yönetilen bir kimlik, bir özel kapsayıcı kayıt defterine Azure çekme, gönderme ve çekme veya diğer izinler sahip bir rol atayın. (Kayıt defteri rolleri tam bir listesi için bkz. [Azure Container Registry rolleri ve izinleri](container-registry-roles.md).) Bir veya daha fazla kaynak için bir kimlik erişimi verebilirsiniz.
+Yönetilen kimliğe sahip bir Azure kaynağı ayarladıktan sonra, her türlü güvenlik sorumlusu gibi başka bir kaynağa kimlik erişimi verin. Örneğin, Azure 'da özel bir kapsayıcı kayıt defterine çekme, gönderme ve çekme veya diğer izinlerle yönetilen bir kimlik atayın. (Kayıt defteri rollerinin tüm listesi için bkz. [Azure Container Registry roller ve izinler](container-registry-roles.md).) Bir veya daha fazla kaynağa bir kimlik erişimi verebilirsiniz.
 
 ## <a name="create-container-registries"></a>Kapsayıcı kayıt defterleri oluşturma
 
-Bu öğretici için üç kapsayıcı kayıt defterleri gerekir:
+Bu öğretici için üç kapsayıcı kayıt defterlerine ihtiyacınız vardır:
 
-* İlk kayıt defteri oluşturmak ve ACR görevleri yürütmek için kullanın. Bu makalede, bu kaynak kayıt defteri adlı *myregistry*. 
-* İkinci ve üçüncü kayıt defterleri yapıların görüntü gönderebilmeniz ilk örnek görev için hedef kayıt defterleri ' dir. Bu makalede, hedef kayıt defterleri adlandırılır *customregistry1* ve *customregistry2*.
+* ACR görevlerini oluşturmak ve yürütmek için ilk kayıt defterini kullanın. Bu makalede, bu kaynak kayıt defteri *myregistry*olarak adlandırılmıştır. 
+* İkinci ve üçüncü kayıt defterleri, oluşturduğu bir görüntüyü göndermek için ilk örnek görevin hedef kayıt defterlerine yöneliktir. Bu makalede, hedef kayıt defterleri *customregistry1* ve *customregistry2*olarak adlandırılır.
 
-Sonraki adımlarda kendi kayıt defteri adıyla değiştirin.
+Sonraki adımlarda kendi kayıt defteri adlarınızla değiştirin.
 
-Gerekli Azure kapsayıcısı kayıt defterleri yoksa bkz [hızlı başlangıç: Azure CLI kullanarak bir özel kapsayıcı kayıt defteri oluşturma](container-registry-get-started-azure-cli.md). Registry'ye görüntüleri gönderme, henüz gerek yoktur.
+Gerekli Azure Container Registry 'ye zaten sahip değilseniz, bkz [. hızlı başlangıç: Azure CLı](container-registry-get-started-azure-cli.md)kullanarak özel bir kapsayıcı kayıt defteri oluşturun. Görüntüleri kayıt defterine henüz göndermeniz gerekmez.
 
-## <a name="example-task-with-a-system-assigned-identity"></a>Örnek: Sistem tarafından atanan bir kimlikle görevi
+## <a name="example-task-with-a-system-assigned-identity"></a>Örnek: Sistem tarafından atanan kimliğe sahip görev
 
-Bu örnek nasıl oluşturulacağını gösterir bir [çok adımlı görev](container-registry-tasks-multi-step.md) sistem tarafından atanan bir kimlikle. Görev, bir görüntü oluşturur ve görüntü gönderebilmeniz için iki hedef kayıt defterleri ile kimlik doğrulaması için kimlik'i kullanır.
+Bu örnekte, sistem tarafından atanan kimlik ile [çok adımlı bir görevin](container-registry-tasks-multi-step.md) nasıl oluşturulacağı gösterilmektedir. Görev bir görüntü oluşturur ve sonra görüntüyü göndermek için iki hedef kayıt defterlerinden kimlik doğrulaması yapmak üzere kimliğini kullanır.
 
-Bu örnek görev için adımları tanımlanan bir [YAML dosyası](container-registry-tasks-reference-yaml.md) adlı `testtask.yaml`. Dosya multipleRegistries dizininde bulunan [acr görevleri](https://github.com/Azure-Samples/acr-tasks) depo örnekleri. Dosya burada tekrar üretilmektedir:
+Bu örnek görevin adımları adlı `testtask.yaml`bir [YAML dosyasında](container-registry-tasks-reference-yaml.md) tanımlanmıştır. Dosya, [ACR-Tasks](https://github.com/Azure-Samples/acr-tasks) örnek deposunun Multipleregisdenemeler dizininde bulunur. Dosya şurada yeniden oluşturulur:
 
 ```yml
 version: v1.0.0
@@ -65,9 +66,9 @@ steps:
   - push: ["{{.Values.REGISTRY2}}/hello-world:{{.Run.ID}}"]
 ```
 
-### <a name="create-task-with-system-assigned-identity"></a>Sistem tarafından atanan kimlikle görev oluşturma
+### <a name="create-task-with-system-assigned-identity"></a>Sistem tarafından atanan kimlikle görev oluştur
 
-Görev oluşturma *birden çok kayıt defteri* aşağıdaki yürüterek [az acr görev oluşturma] [ az-acr-task-create] komutu. Görev bağlamı multipleRegistries örnekleri deponun bir klasördür ve komut dosyası başvuruları `testtask.yaml` depodaki. `--assign-identity` Parametresi ek değer içermeyen bir görev için sistem tarafından atanan kimliği oluşturur. Bu görev, el ile tetiklemek sahip olduğunuz, ancak bunu depoya yürütmelere veya bir çekme isteğinde yapılan çalıştırılacak ayarlama böylece ayarlanır. 
+Aşağıdaki [az ACR Task Create][az-acr-task-create] komutunu yürüterek görevi *birden çok reg* oluşturun. Görev bağlamı, örnek deposunun multipleregisdenemeler klasörüdür ve komut depodaki dosyaya `testtask.yaml` başvurur. Ek değer içermeyen parametre, görev için sistem tarafından atanan bir kimlik oluşturur. `--assign-identity` Bu görev, el ile tetiklemeniz için ayarlandı, ancak depoyu depoya gönderildiğinde veya bir çekme isteği yapıldığında çalışacak şekilde ayarlayabilirsiniz. 
 
 ```azurecli
 az acr task create \
@@ -80,7 +81,7 @@ az acr task create \
   --assign-identity
 ```
 
-Komut çıktısında `identity` bölüm gösterir bir kimlik türü `SystemAssigned` görevde ayarlanır. `principalId` Kimliğini hizmet asıl kimliği:
+Komut çıkışında, `identity` bölümünde türünde `SystemAssigned` bir kimlik ayarlanır. , `principalId` Kimliğin hizmet sorumlusu kimliğidir:
 
 ```console
 [...]
@@ -94,33 +95,33 @@ Komut çıktısında `identity` bölüm gösterir bir kimlik türü `SystemAssig
 [...]
 ``` 
 
-Kullanma [az acr görev Göster] [ az-acr-task-show] depolamak için komut `principalId` değişkeninde daha sonraki komutlarda kullanmak için:
+Daha sonraki komutlarda kullanmak için bir değişkende depolamak `principalId` üzere [az ACR Task Show][az-acr-task-show] komutunu kullanın:
 
 ```azurecli
 principalID=$(az acr task show --name multiple-reg --registry myregistry --query identity.principalId --output tsv)
 ```
 
-### <a name="give-identity-push-permissions-to-two-target-container-registries"></a>İki hedef kapsayıcı kayıt defterleri için kimlik gönderme izni verin
+### <a name="give-identity-push-permissions-to-two-target-container-registries"></a>İki hedef kapsayıcı kayıt defterlerine kimlik gönderme izinleri verin
 
-Bu bölümde, sistem tarafından atanan kimlik adlı iki hedef kayıt defterlerinde gönderme izni vermek *customregistry1* ve *customregistry2*.
+Bu bölümde, *customregistry1* ve *customregistry2*adlı iki hedef kayıt defterlerine göndermek için sistem tarafından atanan kimlik izinlerini verin.
 
-İlk olarak [az acr show] [ az-acr-show] her kayıt defteri kaynak Kimliğini alın ve değişkenleri kimliklerini depolamak için komut:
+İlk olarak, her bir kayıt defterinin kaynak KIMLIĞINI almak için [az ACR Show][az-acr-show] komutunu kullanın ve kimlikleri değişkenlerde depolayın:
 
 ```azurecli
 reg1_id=$(az acr show --name customregistry1 --query id --output tsv)
 reg2_id=$(az acr show --name customregistry2 --query id --output tsv)
 ```
 
-Kullanım [az rol ataması oluşturma] [ az-role-assignment-create] kimliği atamak için komutu `acrpush` her kayıt için rol. Bu rol, bir kapsayıcı kayıt defterine görüntü çekme ve itme izinlere sahip.
+`acrpush` Rolü her kayıt defterine atamak için [az role atama Create][az-role-assignment-create] komutunu kullanın. Bu rol, bir kapsayıcı kayıt defterine görüntü çekme ve gönderme izinlerine sahiptir.
 
 ```azurecli
 az role assignment create --assignee $principalID --scope $reg1_id --role acrpush
 az role assignment create --assignee $principalID --scope $reg2_id --role acrpush
 ```
 
-### <a name="add-target-registry-credentials-to-task"></a>Görev hedef kayıt defteri kimlik bilgilerini ekleyin
+### <a name="add-target-registry-credentials-to-task"></a>Göreve hedef kayıt defteri kimlik bilgilerini ekle
 
-Artık [az acr görev kimlik bilgileri ekleme] [ az-acr-task-credential-add] ile hem de hedef kayıt defterleri gerçekleştirebilmesi göreve kimliğin kimlik bilgilerini eklemek için komutu.
+Şimdi, kimliğin kimlik bilgilerini, hedef kayıt defterlerine göre kimlik doğrulayabilmesi için göreve eklemek üzere [az ACR Task Credential Add][az-acr-task-credential-add] komutunu kullanın.
 
 ```azurecli
 az acr task credential add \
@@ -136,9 +137,9 @@ az acr task credential add \
   --use-identity [system]
 ```
 
-### <a name="manually-run-the-task"></a>El ile görevi çalıştır
+### <a name="manually-run-the-task"></a>Görevi el ile çalıştırın
 
-Kullanım [az acr görevi Çalıştır] [ az-acr-task-run] el ile tetikleyici için komutu. `--set` Parametre, iki hedef kayıt defterleri oturum açma sunucusu adını olarak görev değişkenlerin değerlerini geçirmek için kullanılır `REGISTRY1` ve `REGISTRY2`.
+Görevi el ile tetiklemek için [az ACR Task Run][az-acr-task-run] komutunu kullanın. Parametresi, iki hedef kayıt defterlerinin oturum açma sunucusu adlarını görev `REGISTRY2`değişkenleri `REGISTRY1` için değer olarak geçirmek için kullanılır. `--set`
 
 ```azurecli
 az acr task run \
@@ -219,25 +220,25 @@ cf31: digest: sha256:92c7f9c92844bbbb5d0a101b22f7c2a7949e40f8ea90c8b3bc396879d95
 Run ID: cf31 was successful after 35s
 ```
 
-## <a name="example-task-with-a-user-assigned-identity"></a>Örnek: Bir kullanıcı tarafından atanan kimlikle görevi
+## <a name="example-task-with-a-user-assigned-identity"></a>Örnek: Kullanıcı tarafından atanan kimliği olan görev
 
-Bu örnekte bir Azure anahtar kasasından gizli dizileri Okuma izinlerine sahip bir kullanıcı tarafından atanan kimliği oluşturma. Gizli dizi okur, görüntüyü oluşturur ve resim etiketi okumak için Azure CLI ile oturum açtığında çok adımlı bir görev için bu kimlik atadığınız.
+Bu örnekte, bir Azure anahtar kasasından gizli dizileri okumak için izinleri olan kullanıcı tarafından atanan bir kimlik oluşturursunuz. Bu kimliği, gizli dizi okur, bir görüntü oluşturur ve resim etiketini okumak için Azure CLı 'de oturum açar.
 
-### <a name="create-a-key-vault-and-store-a-secret"></a>Key vault oluşturma ve bir gizli
+### <a name="create-a-key-vault-and-store-a-secret"></a>Anahtar Kasası oluşturma ve gizli dizi depolama
 
-Gerekiyorsa, ilk olarak, adlı bir kaynak grubu oluşturma *myResourceGroup* içinde *eastus* aşağıdaki konum [az grubu oluşturma] [ az-group-create]komutu:
+İlk olarak, gerekirse, *eastus* konumunda *myresourcegroup* adlı bir kaynak grubunu aşağıdaki [az Group Create][az-group-create] komutuyla oluşturun:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Kullanım [az keyvault oluşturma] [ az-keyvault-create] anahtar kasası oluşturma komutu. Benzersiz anahtar kasası adı belirttiğinizden emin olun. 
+Bir Anahtar Kasası oluşturmak için [az keykasacreate][az-keyvault-create] komutunu kullanın. Benzersiz bir Anahtar Kasası adı belirttiğinizden emin olun. 
 
 ```azurecli-interactive
 az keyvault create --name mykeyvault --resource-group myResourceGroup --location eastus
 ```
 
-Bir örnek gizli dizi kullanarak anahtar kasası Store [az keyvault secret set] [ az-keyvault-secret-set] komutu:
+[Az keykasasecret set][az-keyvault-secret-set] komutunu kullanarak anahtar kasasında örnek bir gizli dizi depolayın:
 
 ```azurecli
 az keyvault secret set \
@@ -247,17 +248,17 @@ az keyvault secret set \
   --vault-name mykeyvault
 ```
 
-Örneğin, özel bir görüntü çekebilirsiniz için özel bir Docker kayıt defteri ile kimlik doğrulaması için kimlik bilgilerini saklamak isteyebilirsiniz.
+Örneğin, özel bir Docker kayıt defteri ile kimlik doğrulaması yapmak için kimlik bilgilerini depolamak isteyebilirsiniz, böylece özel bir görüntü çekebilirsiniz.
 
-### <a name="create-an-identity"></a>Bir kimlik oluşturun
+### <a name="create-an-identity"></a>Kimlik oluşturma
 
-Adlı bir kimliği oluşturma *myACRTasksId* aboneliği kullanarak [az kimliği oluşturma] [ az-identity-create] komutu. Daha önce bir kapsayıcı kayıt defteri veya anahtar kasası veya farklı bir tane oluşturmak için kullanılan aynı kaynak grubunu kullanabilirsiniz.
+[Az Identity Create][az-identity-create] komutunu kullanarak aboneliğinizde *Myacrtasksıd* adlı bir kimlik oluşturun. Daha önce bir kapsayıcı kayıt defteri veya Anahtar Kasası oluşturmak için kullandığınız kaynak grubunu kullanabilir veya farklı bir tane oluşturabilirsiniz.
 
 ```azurecli-interactive
 az identity create --resource-group myResourceGroup --name myACRTasksId
 ```
 
-Aşağıdaki adımlarda kimliğini yapılandırmak için kullanın [az kimlik show] [ az-identity-show] kimliğin kaynağı kimliği ve hizmet sorumlusu kimliği değişkenlerinde depolanacak komutu.
+Aşağıdaki adımlarda kimliği yapılandırmak için [az Identity Show][az-identity-show] komutunu kullanarak KIMLIğIN kaynak kimliğini ve hızmet sorumlusu kimliğini değişkenlere depolayın.
 
 ```azurecli
 # Get resource ID of the user-assigned identity
@@ -267,25 +268,25 @@ resourceID=$(az identity show --resource-group myResourceGroup --name myACRTasks
 principalID=$(az identity show --resource-group myResourceGroup --name myACRTasksId --query principalId --output tsv)
 ```
 
-### <a name="grant-identity-access-to-keyvault-to-read-secret"></a>Gizli dizi okumak için keyvault kimlik erişimi verme
+### <a name="grant-identity-access-to-keyvault-to-read-secret"></a>Gizli dizi okumak için anahtar kasasına kimlik erişimi verme
 
-Aşağıdaki komutu çalıştırın [az keyvault set-policy] [ az-keyvault-set-policy] anahtar kasasında bir erişim ilkesi ayarlamak için komutu. Aşağıdaki örnekte, gizli dizileri anahtar kasasından almak kullanıcı tarafından atanan kimlik sağlar. Bu erişim, daha sonra bir çok adımlı görevi başarıyla çalışması için gereklidir.
+Anahtar kasasında bir erişim ilkesi ayarlamak için aşağıdaki [az keykasası Set-Policy][az-keyvault-set-policy] komutunu çalıştırın. Aşağıdaki örnek, Kullanıcı tarafından atanan kimliğin anahtar kasasından gizli dizileri almasına izin verir. Bu erişim daha sonra çok adımlı bir görevi başarıyla çalıştırmak için gereklidir.
 
 ```azurecli-interactive
  az keyvault set-policy --name mykeyvault --resource-group myResourceGroup --object-id $principalID --secret-permissions get
 ```
 
-### <a name="grant-identity-reader-access-to-the-resource-group-for-registry"></a>Kayıt defteri için kaynak grubu kimlik okuyucu erişimi verme
+### <a name="grant-identity-reader-access-to-the-resource-group-for-registry"></a>Kayıt defteri için kaynak grubuna kimlik okuyucusu erişimi verme
 
-Aşağıdaki komutu çalıştırın [az rol ataması oluşturma] [ az-role-assignment-create] kimlik bir okuyucu rolüne bu durumda kaynak kayıt içeren kaynak grubunu atamak için komutu. Bu rol, daha sonra bir çok adımlı görevi başarıyla çalışması için gereklidir.
+Bir okuyucu rolü kimliğini bu durumda kaynak kayıt defteri 'ni içeren kaynak grubuna atamak için aşağıdaki [az role atama Create][az-role-assignment-create] komutunu çalıştırın. Bu rol, daha sonra çok adımlı bir görevi başarıyla çalıştırmak için gereklidir.
 
 ```azurecli
 az role assignment create --role reader --resource-group myResourceGroup --assignee $principalID
 ```
 
-### <a name="create-task-with-user-assigned-identity"></a>Kullanıcı tarafından atanan kimlikle görev oluşturma
+### <a name="create-task-with-user-assigned-identity"></a>Kullanıcı tarafından atanan kimlikle görev oluştur
 
-Şimdi oluşturmak bir [çok adımlı görev](container-registry-tasks-multi-step.md) ve kullanıcı tarafından atanan kimliği atayın. Bu örnek görev oluşturmak bir [YAML dosyası](container-registry-tasks-reference-yaml.md) adlı `managed-identities.yaml` bir yerel çalışma dizinindeki ve aşağıdaki içeriği yapıştırın. Anahtar kasası adı dosyasındaki anahtar kasanıza adı ile değiştirdiğinizden emin olun
+Şimdi [çok adımlı bir görev](container-registry-tasks-multi-step.md) oluşturun ve Kullanıcı tarafından atanan kimliği atayın. Bu örnek görev için, yerel çalışma dizininde adlı `managed-identities.yaml` bir [YAML dosyası](container-registry-tasks-reference-yaml.md) oluşturun ve aşağıdaki içeriği yapıştırın. Dosyadaki Anahtar Kasası adını anahtar kasanızın adıyla değiştirdiğinizden emin olun
 
 ```yml
 version: v1.0.0
@@ -309,13 +310,13 @@ steps:
   - cmd: microsoft/azure-cli az acr repository show-tags -n {{.Values.registryName}} --repository my-website
 ```
 
-Bu görevi, şunları yapar:
+Bu görev şunları yapar:
 
-* Bu anahtar kasanızdaki gizli erişebildiğini doğrular. Bu adım gösterim amaçları içindir. Gerçek hayattaki bir senaryoda, özel bir Docker Hub deposunu erişmek için kimlik bilgilerini almak için bir görev adımı gerekebilir.
-* Yapıları ve gönderim `mywebsite` kaynak kayıt defterine görüntü.
-* Azure CLI'yı listesine oturum açtığı `my-website` etiketleri kaynak kayıt defterindeki görüntü.
+* Anahtar kasasındaki gizli dizi erişimine erişebileceğini doğrular. Bu adım tanıtım amaçlıdır. Gerçek dünyada bir senaryoda, özel bir Docker Hub deposuna erişmek için kimlik bilgilerini almak üzere bir görev adımı gerekebilir.
+* `mywebsite` Görüntüyü kaynak kayıt defterine oluşturur ve gönderir.
+* Kaynak kayıt defterindeki `my-website` resim etiketlerini listelemek için Azure CLI 'da oturum açar.
 
-Çağrılan bir görev oluşturma *msitask* ve daha önce oluşturduğunuz kullanıcı tarafından atanan kimliği kaynak kimliği geçirin. Bu örnek görevi oluşturulur `managed-identities.yaml` el ile tetiklemek sahip olduğunuz için yerel çalışma dizininizde kaydettiğiniz dosya.
+*Msıtask* adlı bir görev oluşturun ve daha önce oluşturduğunuz Kullanıcı tarafından atanan KIMLIğIN kaynak kimliği ' ni geçirin. Bu örnek görev, yerel çalışma dizininizde `managed-identities.yaml` kaydettiğiniz dosyadan oluşturulur, bu nedenle el ile tetiklemeniz gerekir.
 
 ```azurecli
 az acr task create \
@@ -328,7 +329,7 @@ az acr task create \
   --assign-identity $resourceID
 ```
 
-Komut çıktısında `identity` bölüm gösterir bir kimlik türü `UserAssigned` görevde ayarlanır. `principalId` Kimliğini hizmet asıl kimliği:
+Komut çıkışında, `identity` bölümünde türünde `UserAssigned` bir kimlik ayarlanır. , `principalId` Kimliğin hizmet sorumlusu kimliğidir:
 
 ```console
 [...]
@@ -344,15 +345,15 @@ Komut çıktısında `identity` bölüm gösterir bir kimlik türü `UserAssigne
 [...]
 ```
 
-### <a name="manually-run-the-task"></a>El ile görevi çalıştır
+### <a name="manually-run-the-task"></a>Görevi el ile çalıştırın
 
-Kullanım [az acr görevi Çalıştır] [ az-acr-task-run] el ile tetikleyici için komutu. `--set` Parametresi, kaynak kayıt defteri adlarında göreve geçirmek için kullanılır:
+Görevi el ile tetiklemek için [az ACR Task Run][az-acr-task-run] komutunu kullanın. `--set` Parametresi, kaynak kayıt defteri adını göreve geçirmek için kullanılır:
 
 ```azurecli
 az acr task run --name msitask --registry myregistry --set registryName=myregistry  
 ```
 
-Gizli dizi Çözüldü, görüntünün başarıyla oluşturulmuş ve gönderildi ve resim etiketi kaynak kayıt defterinden okumak için Azure CLI kimlik ile oturum görev açtığı çıktı gösterilmektedir:
+Çıktıda gizli dizi çözümlendiğini, görüntünün başarıyla oluşturulup gönderildiği ve görevin, kaynak kayıt defterinden görüntü etiketini okumak üzere kimlik ile Azure CLı 'da oturum açtığı gösterilmektedir:
 
 ```console
 Queued a run with ID: cf32
@@ -412,14 +413,14 @@ cf32: digest: sha256:cbb4aa83b33f6959d83e84bfd43ca901084966a9f91c42f111766473dc9
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, yönetilen Azure kapsayıcı kayıt defteri görevlerle kimliklerle ilgili öğrendiniz ve nasıl yapılır:
+Bu makalede, Azure Container Registry görevlerle Yönetilen kimlikler kullanma hakkında bilgi edindiniz ve şunları yapabilirsiniz:
 
 > [!div class="checklist"]
-> * Sistem tarafından atanan bir kimliğini etkinleştirme veya kullanıcı tarafından atanan bir ACR görevi
-> * Kimlik gibi diğer Azure kapsayıcısı kayıt defterleri Azure kaynaklarına erişim
-> * Bir görevden kaynaklara erişmek için yönetilen kimliği kullanma  
+> * Bir ACR görevinde sistem tarafından atanan bir kimlik veya kullanıcı atama özelliğini etkinleştirme
+> * Diğer Azure Container kayıt defterleri gibi Azure kaynaklarına kimlik erişimi verme
+> * Bir görevden kaynaklara erişmek için yönetilen kimliği kullanın  
 
-* Daha fazla bilgi edinin [kimliklerini Azure kaynakları için yönetilen](/azure/active-directory/managed-identities-azure-resources/).
+* [Azure kaynakları için Yönetilen kimlikler](/azure/active-directory/managed-identities-azure-resources/)hakkında daha fazla bilgi edinin.
 
 <!-- LINKS - Internal -->
 [az-login]: /cli/azure/reference-index#az-login

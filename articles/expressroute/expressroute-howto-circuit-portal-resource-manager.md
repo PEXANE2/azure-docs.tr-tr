@@ -1,19 +1,20 @@
 ---
-title: 'Bir ExpressRoute bağlantı hattı - oluşturup portalı: Azure | Microsoft Docs'
+title: 'ExpressRoute bağlantı hattı oluşturma ve değiştirme-Portal: Azure | Microsoft Docs'
 description: Oluşturma, sağlama, doğrulayın, güncelleştirme, silme ve bir ExpressRoute bağlantı hattının sağlamasını Kaldır.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: article
 ms.date: 10/20/2018
-ms.author: cherylmc;ganesr
+ms.author: cherylmc
+ms.reviewer: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: ce6d64f1df7a91f68e4621189553c36b36709039
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 25821f60f47b1279e70cba2574901cd5df3d327f
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657217"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846594"
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>ExpressRoute devre oluşturma ve değiştirme
 
@@ -54,10 +55,10 @@ Bir tarayıcıdan [Azure portalına](https://portal.azure.com) gidin ve Azure he
    ![SKU katmanı ve ölçüm verilerini yapılandırma](./media/expressroute-howto-circuit-portal-resource-manager/createcircuit.png)
 
    * **Katman** ExpressRoute standart ya da ExpressRoute premium eklenti etkin olup olmadığını belirler. Belirtebileceğiniz **standart** standart SKU'nun almak veya **Premium** premium eklenti için.
-   * **Ölçüm verileri** fatura türünü belirler. Belirtebileceğiniz **ölçülen** ölçülen veri planı için ve **sınırsız** sınırsız veri planı için. Fatura türünden değiştirebileceğinizi unutmayın **ölçülen** için **sınırsız**.
+   * **Ölçüm verileri** fatura türünü belirler. Belirtebileceğiniz **ölçülen** ölçülen veri planı için ve **sınırsız** sınırsız veri planı için. Faturalandırma türünü **tarifeli** iken **sınırsız**olarak değiştirebileceğinizi unutmayın.
 
      > [!IMPORTANT]
-     > Türünü değiştiremezsiniz **sınırsız** için **ölçülen**.
+     > Türü **sınırsız** iken **tarifeli**olarak değiştiremezsiniz.
 
    * **Eşdüzey hizmet sağlama konumu** nerede sizin eşlemeyi Microsoft ile fiziksel konumu.
 
@@ -84,20 +85,20 @@ Bu sayfada **sağlayıcısı durumu** hizmet sağlayıcı tarafında sağlama ge
 
 Yeni bir ExpressRoute bağlantı hattı'ı oluşturduğunuzda, bağlantı hattı şu durumda olur:
 
-Sağlayıcı Durumu: Sağlanmadı<BR>
-Bağlantı hattı durumu: Enabled
+Sağlayıcı durumu: Sağlanmadı<BR>
+Devre durumu: Enabled
 
 ![Sağlama işlemini başlatın](./media/expressroute-howto-circuit-portal-resource-manager/status.png)
 
 Bağlantı sağlayıcısı, etkinleştirmeden sürecinde olduğunda bağlantı hattının aşağıdaki duruma değiştirir:
 
-Sağlayıcı Durumu: Sağlama<BR>
-Bağlantı hattı durumu: Enabled
+Sağlayıcı durumu: Sağlama<BR>
+Devre durumu: Enabled
 
 Bir ExpressRoute bağlantı hattı kullanabilmek için şu durumda olmalıdır:
 
-Sağlayıcı Durumu: Sağlanan<BR>
-Bağlantı hattı durumu: Enabled
+Sağlayıcı durumu: Sağlanan<BR>
+Devre durumu: Enabled
 
 ### <a name="5-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>5. Durum ve bağlantı hattı tuşunun durumunu düzenli aralıklarla denetleyin
 

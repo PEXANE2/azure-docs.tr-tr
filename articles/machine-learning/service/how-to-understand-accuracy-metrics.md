@@ -1,37 +1,47 @@
 ---
-title: Otomatik ML doğruluğu ölçümlerde eğitim
+title: Otomatikleştirilmiş ML 'de Eğitim doğruluğu ölçümleri
 titleSuffix: Azure Machine Learning service
-description: Doğruluk ölçümleri her çalışmalarınız için öğrenme otomatik makine hakkında bilgi edinin.
+description: Çalışmalarınızın her biri için otomatik makine öğrenimi doğruluk ölçümleri hakkında bilgi edinin.
 author: j-martens
 ms.author: jmartens
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 06/20/2019
-ms.openlocfilehash: 44dfa387b289afe4dc5f030cca0b13325c04e811
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.date: 07/16/2019
+ms.openlocfilehash: dc147fd0252b2b5ec4ce334d6c1c464d9cde8ef5
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67313302"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297905"
 ---
-# <a name="evaluate-training-accuracy-in-automated-ml-with-metrics"></a>Eğitim doğruluğunu otomatik ML ölçümlerle değerlendir
+# <a name="evaluate-training-accuracy-in-automated-ml-with-metrics"></a>Ölçümler ile otomatikleştirilmiş ML 'de Eğitim doğruluğunu değerlendirin
 
-Her çalıştırma yineleme için eğitim doğruluğu ölçümleri görüntülemek için birden çok yolu vardır.
+Bu makalede, Azure Machine Learning ' de otomatik ml modelleri için kullanılabilen farklı ölçümler hakkında bilgi edineceksiniz. 
 
-* Kullanım [Jupyter pencere öğesi](how-to-track-experiments.md#view-run-details)
-* Kullanım [ `get_metrics()` işlevi](how-to-track-experiments.md#query-run-metrics) herhangi `Run` nesnesi
-* Görünüm [Azure portalında deneme ölçümleri](how-to-track-experiments.md#view-the-experiment-in-the-azure-portal)
+Her bir çalışma yinelemesi için eğitim doğruluk ölçümlerini görüntülemenin birden çok yolu vardır.
+* [Jupyıter pencere öğesi](how-to-track-experiments.md#view-run-details) kullanma
+* İşlevi herhangi bir `Run` nesnede kullanın [ `get_metrics()` ](how-to-track-experiments.md#query-run-metrics)
+* [Azure Portal deneme ölçümlerini](how-to-track-experiments.md#view-the-experiment-in-the-azure-portal) görüntüleyin
+
+## <a name="prerequisites"></a>Önkoşullar
+ 
+* Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning Service 'in ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
+ 
+* SDK ile veya Azure portal otomatik makine öğrenimi denemesi oluşturun.
+ 
+    * Bir [sınıflandırma modeli](how-to-auto-train-remote.md) veya [regresyon modeli](tutorial-auto-train-models.md) oluşturmak için SDK 'yı kullanma
+    * Uygun verileri karşıya yükleyerek bir sınıflandırma veya regresyon modeli oluşturmak için [Azure Portal](how-to-create-portal-experiments.md) kullanın.
 
 ## <a name="classification-metrics"></a>Sınıflandırma ölçümleri
 
-Aşağıdaki ölçümler için bir sınıflandırma görevi çalıştırma her yinelemede kaydedilir.
+Aşağıdaki ölçümler, bir sınıflandırma görevinin her bir çalıştırma yinelemesinde kaydedilir.
 
 |Ölçüm|Açıklama|Hesaplama|Ek parametreler
 --|--|--|--|
 AUC_Macro| AUC alıcı çalıştırma özellikleri eğrisi altında alandır. Her sınıf için AUC aritmetik ortalamasını makrodur.  | [Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | Ortalama "makrosu" =|
-AUC_Micro| AUC alıcı çalıştırma özellikleri eğrisi altında alandır. Mikro genel doğru pozitif sonuçlar ve hatalı pozitif sonuçları her sınıftaki birleştirilerek hesaplanır| [Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | Ortalama "micro" =|
+AUC_Micro| AUC alıcı çalıştırma özellikleri eğrisi altında alandır. Micro, her bir sınıftan doğru pozitif sonuçları ve hatalı pozitif sonuçları birleştirerek Global olarak hesaplanır| [Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | Ortalama "micro" =|
 AUC_Weighted  | AUC alıcı çalıştırma özellikleri eğrisi altında alandır. Ağırlıklı ortalamasını puanın ağırlıklı true örnekleri her sınıfta sayısına göre her sınıf için olan| [Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html)|Ortalama "ağırlıklı" =
 accuracy|Doğruluk true etiketlerin tam olarak eşleşen tahmin edilen etiketleri yüzdesi ' dir. |[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html) |None|
 average_precision_score_macro|Ortalama kesinlik, duyarlık geri çekme eğri Precision bilgisayarlar daha önceki eşiği ağırlık kullanılan bölümden artış ile her Eşikte elde ağırlıklı ortalamasını olarak özetler. Her sınıf ortalama duyarlılık puanı aritmetik ortalamasını makrodur|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|Ortalama "makrosu" =|
@@ -53,7 +63,7 @@ weighted_accuracy|Her örnek için verilen ağırlık o örneğin true sınıfı
 
 ## <a name="regression-and-forecasting-metrics"></a>Regresyon ve tahmin ölçümleri
 
-Aşağıdaki ölçümler, gerileme veya tahmin görev çalıştırma her yinelemede kaydedilir.
+Aşağıdaki ölçümler, bir gerileme veya tahmin görevi için her bir çalıştırma yinelemesinde kaydedilir.
 
 |Ölçüm|Açıklama|Hesaplama|Ek parametreler
 --|--|--|--|
@@ -67,4 +77,8 @@ normalized_median_absolute_error|Veri aralığı tarafından ayrılmış ortalam
 root_mean_squared_error|Kök ortalama karesi alınmış hata hedef ve tahmin arasındaki karesi alınmış Beklenen fark kare köküdür|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|None|
 normalized_root_mean_squared_error|Normalleştirilmiş kök ortalama karesi alınmış hata kök ortalama karesi alınmış hata veri aralığını tarafından ayrılmış olan|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|Veri aralığına göre Böl|
 root_mean_squared_log_error|Kök ortalama karesi alınmış günlük hatadır Logaritmik beklenen karesi alınmış hata kare kökünü|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|None|
-normalized_root_mean_squared_log_error|Veri aralığına göre bölünmüş kök ortalama karesi alınmış günlük hata normalleştirilmiş kök ortalama karesi alınmış günlük hatadır|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Veri aralığına göre Böl|
+normalized_root_mean_squared_log_error|Normalleştirilmiş kök ortalama kare günlük hatası, kök ortalama kareler günlük hatası veri aralığına bölünür|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Veri aralığına göre Böl|
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Azure Machine Learning 'de [Otomatikleştirilmiş ml](concept-automated-ml.md) hakkında daha fazla bilgi edinin.

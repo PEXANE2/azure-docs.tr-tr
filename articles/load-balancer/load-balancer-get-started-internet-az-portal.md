@@ -1,10 +1,10 @@
 ---
-title: Bölgesel olarak yedekli frontend - Azure portalı ile bir yük dengeleyici oluşturma
+title: Bölgesel olarak yedekli ön uç Azure portal Load Balancer oluşturma
 titlesuffix: Azure Load Balancer
 description: Azure portalı ile bölgesel olarak yedekli genel IP adresi ön uç ile genel bir Standard Load Balancer oluşturma konusunda bilgi edinin
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 ms.service: load-balancer
 ms.devlang: na
@@ -13,17 +13,17 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2018
-ms.author: kumud
-ms.openlocfilehash: 448ae5f8a615a526460ac92eaaf6c7d16761aec2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: a875fc3446944b8a39f43b29440ab1d7179b847d
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60684926"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275076"
 ---
 #  <a name="create-a-standard-load-balancer-with-zone-redundant-frontend-using-azure-portal"></a>Azure portalını kullanarak bölgesel olarak yedekli ön uç ile standart yük dengeleyici oluşturma
 
-Bu makalede adımları genel oluşturma işleminde [Standard Load Balancer](https://aka.ms/azureloadbalancerstandard) genel IP standart bir adres kullanarak bölgesel olarak yedekli bir ön uç ile. Bölgesel olarak yedekli varsayılan olarak standart yük dengeleyici üzerindeki bir tek bir ön uç IP adresi.
+Bu makalede, genel bir IP standart adresi kullanılarak bölge yedekli ön uçta ortak [Standart Load Balancer](https://aka.ms/azureloadbalancerstandard) oluşturma adımları sağlanır. Bölgesel olarak yedekli varsayılan olarak standart yük dengeleyici üzerindeki bir tek bir ön uç IP adresi.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 

@@ -1,6 +1,6 @@
 ---
-title: SQL Server sanal makine Azure'da SQL VM kaynak sağlayıcısı ile kaydetme | Microsoft Docs
-description: SQL Server VM'nize yönetilebilirlik iyileştirmek için SQL VM kaynak sağlayıcısını kaydedin.
+title: SQL VM kaynak sağlayıcısı ile Azure 'da SQL Server sanal makinesini kaydetme | Microsoft Docs
+description: Yönetilebilirlik arttırmak için SQL Server VM SQL VM kaynak sağlayıcısı ile kaydedin.
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -14,85 +14,85 @@ ms.workload: iaas-sql-server
 ms.date: 06/24/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 7d7d04299c2d6c7a498701df9fb39c8990484a79
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 95a167cbc8fde4488e3f46ffd850f0619cf1b651
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807265"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305862"
 ---
-# <a name="register-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>SQL Server sanal makine Azure'da ile SQL VM kaynak sağlayıcısını kaydedin.
+# <a name="register-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>SQL VM kaynak sağlayıcısı ile Azure 'da SQL Server sanal makinesini kaydetme
 
-Bu makalede, Azure SQL Server sanal makinesi (VM) ile SQL VM kaynak sağlayıcısını kaydetme. 
+Bu makalede, Azure SQL Server sanal makinenizin (VM) SQL VM kaynak sağlayıcısına nasıl kaydedileceği açıklanmaktadır. 
 
-SQL Server VM, Azure portalı üzerinden bir SQL Server VM Market görüntüsü otomatik olarak dağıtma ile kaynak sağlayıcısını kaydeder. SQL Server yerine Azure Marketi'nden bir görüntü seçerek Azure sanal makinesi üzerinde Self yüklemeyi seçerseniz, ancak daha sonra SQL Server VM'nize bugün kaynak sağlayıcısı ile kayıt işlemi:
+Azure portal üzerinden SQL Server VM Market görüntüsü dağıtmak, SQL Server VM kaynak sağlayıcısıyla otomatik olarak kaydeder. Bununla birlikte, Azure Marketi 'nden bir görüntü seçmek yerine bir Azure sanal makinesine SQL Server kendi kendine yüklemeyi tercih ediyorsanız, SQL Server VM şu şekilde kaynak sağlayıcısına kaydetmeniz gerekir:
 
--  **Uyumluluk** – kullanan müşteriler, Microsoft Ürün koşulları [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/) Azure hibrit avantajı - kullanırken, Microsoft ve ile SQL VM kaynak sağlayıcısını kaydetmeniz gerekir Bunu yapmak için belirtmeniz gerekir. 
+-  **Uyumluluk** – Microsoft ürün koşulları uyarınca, [Azure Hibrit Avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/) kullanan müşteriler Azure hibrit avantajı kullanırken Microsoft 'a işaret etmelidir ve bunu yapmak için, SQL VM kaynak sağlayıcısı 'na kaydolmaları gerekir. 
 
--  **Özellik avantajları** -kaynak sağlayıcısı ile SQL Server VM'nize kaydetme kilidini açarak [otomatik düzeltme eki uygulama](virtual-machines-windows-sql-automated-patching.md), [otomatik yedekleme](virtual-machines-windows-sql-automated-backup-v2.md), yanısıra,izlemeveyönetilebilirliközellikleri[lisanslama](virtual-machines-windows-sql-ahb.md) ve [edition](virtual-machines-windows-sql-change-edition.md) esneklik. Daha önce bu yalnızca SQL Server VM görüntüleri Azure Marketi'nde kullanılabilir.
+-  **Özellik avantajları** -SQL Server VM kaynak sağlayıcıyla kaydetme, [otomatik düzeltme eki uygulama](virtual-machines-windows-sql-automated-patching.md), [otomatik yedekleme](virtual-machines-windows-sql-automated-backup-v2.md), izleme ve yönetilebilirlik özelliklerinin yanı sıra [lisanslama](virtual-machines-windows-sql-ahb.md) ve [Sürüm](virtual-machines-windows-sql-change-edition.md) esnekliği de sağlar. Bu, daha önce yalnızca Azure Marketi 'ndeki SQL Server VM görüntülerle sunulmaktadır.
 
-Azure VM'de SQL Server Self yükleme veya Azure VM'deki SQL Server ile özel bir VHD'den sağlama müşteriler ile SQL VM kaynak kaydederek kullanan Microsoft belirtmek koşul ile SQL Server için Azure hibrit avantajı ile uyumludur. Sağlayıcı. 
+Azure VM 'de SQL Server kendi kendine yükleme veya bir Azure VM 'yi SQL Server ile özel bir VHD 'den sağlama, müşterilerin SQL VM kaynağı ile kaydolarak Microsoft 'a yönelik olduğunu belirtebileceği SQL Server Azure Hibrit Avantajı ile uyumludur sağlayıcısını. 
 
-SQL VM kaynak sağlayıcısını kullanmak için Ayrıca, aboneliğiniz ile SQL VM kaynak sağlayıcısını kaydetmeniz gerekir. Bu, Azure portalı, Azure CLI ve PowerShell ile gerçekleştirilebilir. 
+SQL VM kaynak sağlayıcısını kullanmak için, aboneliğiniz ile SQL VM kaynak sağlayıcısını da kaydetmeniz gerekir. Bu, Azure portal, Azure CLı ve PowerShell ile gerçekleştirilebilir. 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-SQL Server VM'nize kaynak sağlayıcısı ile kaydolmak için aşağıdakiler gerekir: 
+SQL Server VM kaynak sağlayıcısına kaydetmek için şunlar gerekir: 
 
 - Bir [Azure aboneliği](https://azure.microsoft.com/free/).
-- A [SQL Server sanal makinesi](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision). 
+- Bir [SQL Server VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision). 
 - [Azure CLI](/cli/azure/install-azure-cli) ve [PowerShell](/powershell/azure/new-azureps-module-az). 
 
-## <a name="register-with-sql-vm-resource-provider"></a>SQL VM ile kaynak sağlayıcısını kaydetme
-Varsa [SQL Iaas uzantısı](virtual-machines-windows-sql-server-agent-extension.md) ile SQL VM kaynak sağlayıcısı kaydediliyor yalnızca bir meta veri kaynağı türü Microsoft.SqlVirtualMachine/SqlVirtualMachines oluşturuyor sonra sanal makinede zaten yüklü. SQL Iaas uzantısı VM'de yüklü ise SQL VM kaynak sağlayıcısı ile kaydolmak için kod parçacığı aşağıdadır. SQL Server Lisans ile SQL sanal makinesi olarak ya da kaynak Sağlayıcısı kaydı sırasında istenen türünü sağlamanız gereken ' PAYG ' veya 'AHUB'. 
+## <a name="register-with-sql-vm-resource-provider"></a>SQL VM kaynak sağlayıcısına kaydolun
+[SQL IaaS UZANTıSı](virtual-machines-windows-sql-server-agent-extension.md) VM 'de zaten YÜKLÜYSE, SQL VM kaynak sağlayıcısına kaydolmak yalnızca Microsoft. SqlVirtualMachine/SqlVirtualMachines türünde bir meta veri kaynağı oluşturmaktır. SQL IaaS uzantısı VM 'de zaten yüklüyse SQL VM kaynak sağlayıcısı 'na kaydolmak için kod parçacığı aşağıda verilmiştir. SQL VM kaynak sağlayıcısı 'nı ' PAYG ' veya ' AHUB ' olarak kaydederken istediğiniz SQL Server Lisansı türünü sağlamanız gerekir. 
 
-Aşağıdaki kod parçacığı ile PowerShell kullanarak SQL Server VM kaydedin:
+Aşağıdaki kod parçacığı ile PowerShell 'i kullanarak SQL Server VM kaydedin:
 
   ```powershell-interactive
-     // Get the existing  Compute VM
+     # Get the existing  Compute VM
      $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
           
-     // Register with SQL VM resource provider
+     # Register with SQL VM resource provider
      New-AzResource -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
         -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines `
         -Properties @{virtualMachineResourceId=$vm.Id;SqlServerLicenseType='AHUB'}  
   
   ```
 
-SQL Iaas uzantısı VM'de yüklü değilse, basit SQL Yönetim modu belirterek SQL VM kaynak sağlayıcısı ile kaydedebilirsiniz. Basit SQL Yönetim modunda SQL VM kaynak sağlayıcısı otomatik olarak yüklemeniz SQL Iaas uzantısı'nda [basit mod](virtual-machines-windows-sql-server-agent-extension.md#install-in-lightweight-mode) ve SQL Server doğrulama örnek meta veri; bu işlem, SQL Server hizmetini başlatın değil. SQL Server Lisans ile SQL sanal makinesi olarak ya da kaynak Sağlayıcısı kaydı sırasında istenen türünü sağlamanız gereken ' PAYG ' veya 'AHUB'. 
+SQL IaaS uzantısı VM 'de yüklü değilse, basit SQL yönetim modunu belirterek SQL VM kaynak sağlayıcısı ile kayıt yapabilirsiniz. Basit SQL yönetim modunda SQL VM kaynak sağlayıcısı, SQL IaaS uzantısını [hafif modda](virtual-machines-windows-sql-server-agent-extension.md#install-in-lightweight-mode) otomatik olarak yükleyecek ve SQL Server örnek meta verilerini doğrulayacaktır; Bu, SQL Server hizmeti 'ni yeniden başlatmaz. SQL VM kaynak sağlayıcısı 'nı ' PAYG ' veya ' AHUB ' olarak kaydederken istediğiniz SQL Server Lisansı türünü sağlamanız gerekir. 
 
-PowerShell ile aşağıdaki kod parçacığını kullanarak basit SQL Yönetimi modunda SQL Server VM kaydedin:
+PowerShell kullanarak aşağıdaki kod parçacığı ile basit SQL yönetim modunda SQL Server VM kaydedin:
 
   ```powershell-interactive
-     // Get the existing  Compute VM
+     # Get the existing  Compute VM
      $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
           
-     // Register SQL VM with 'Lightweight' SQL IaaS agent
+     # Register SQL VM with 'Lightweight' SQL IaaS agent
      New-AzResource -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
         -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines `
         -Properties @{virtualMachineResourceId=$vm.Id;SqlServerLicenseType='AHUB';sqlManagement='LightWeight'}  
   
   ```
 
-SQL VM kaynak sağlayıcısı ile kaydetme [basit mod](virtual-machines-windows-sql-server-agent-extension.md#install-in-lightweight-mode) uyumluluk sağlamak ve esnek Lisanslamayı etkinleştirmek yanı sıra yerinde SQL Server sürümü güncelleştirmeleri. Yük devretme kümesi örnekleri ve çok örnekli dağıtımları, yalnızca basit modda SQL VM kaynak sağlayıcısı ile kaydedilebilir. Yükseltmek için Azure portalında bulunan yönergeleri izleyerek [tam modu](virtual-machines-windows-sql-server-agent-extension.md#full-mode-installation) ve yönetilebilirlik kapsamlı özellik kümesi bir SQL Server yeniden başlatma ile dilediğiniz zaman etkinleştirin. 
+SQL VM kaynak sağlayıcısı ile [hafif modda](virtual-machines-windows-sql-server-agent-extension.md#install-in-lightweight-mode) kaydolmak uyumluluk sağlar ve esnek lisansın yanı sıra yerinde SQL Server Edition güncelleştirmelerini etkinleştirir. Yük devretme kümesi örnekleri ve çok örnekli dağıtımlar, yalnızca hafif modda SQL VM kaynak sağlayıcısı ile kaydedilebilir. [Tam moda](virtual-machines-windows-sql-server-agent-extension.md#full-mode-installation) yükseltmek için Azure Portal bulunan yönergeleri izleyerek, her zaman SQL Server yeniden başlatmaya sahip kapsamlı yönetilebilirlik özelliği kümesini etkinleştirebilirsiniz. 
 
-## <a name="register-sql-server-2008r2-on-windows-server-2008-vms"></a>SQL Server 2008/R2'de Windows Server 2008 Vm'leri kaydedin
+## <a name="register-sql-server-2008r2-on-windows-server-2008-vms"></a>Windows Server 2008 VM 'lerinde SQL Server 2008/R2 'yi kaydetme
 
-SQL kaynak sağlamak, VM ile SQL Server 2008 ve 2008 R2, Windows Server 2008'de yüklü kaydedilebilir [NoAgent](virtual-machines-windows-sql-server-agent-extension.md) modu. Bu seçenek, uyumluluk sağlar ve Azure portalında sınırlı işlevsellikle izlenmesi SQL Server VM sağlar.
+Windows Server 2008 ' de yüklü olan SQL Server 2008 ve 2008 R2, [Noagent](virtual-machines-windows-sql-server-agent-extension.md) modunda SQL VM kaynağına eklenebilir. Bu seçenek uyumluluk sağlar ve Azure portal sınırlı işlevlerle birlikte SQL Server VM izlenmesini sağlar.
 
-Aşağıdaki tabloda, kayıt sırasında sağlanan parametreleri için kabul edilebilir değerler ayrıntıları:
+Aşağıdaki tabloda, kayıt sırasında belirtilen parametreler için kabul edilebilir değerlerin ayrıntıları verilmiştir:
 
 | Parametre | Kabul edilebilir değerler                                 |
 | :------------------| :--------------------------------------- |
-| **sqlLicenseType** | `'AHUB'`, veya `'PAYG'`                    |
-| **sqlImageOffer**  | `'SQL2008-WS2008'` veya `'SQL2008R2-WS2008`|
+| **sqlLicenseType** | `'AHUB'`veya`'PAYG'`                    |
+| **Sqlimageteklifini**  | `'SQL2008-WS2008'` veya `'SQL2008R2-WS2008`|
 | &nbsp;             | &nbsp;                                   |
 
 
-SQL Server 2008 veya 2008 R2'de Windows Server 2008 örneğini kaydetmek için aşağıdaki Powershell kod parçacığını kullanın:  
+SQL Server 2008 veya 2008 R2 'yi Windows Server 2008 örneğine kaydetmek için aşağıdaki PowerShell kod parçacığını kullanın:  
 
   ```powershell-interactive
-     // Get the existing  Compute VM
+     # Get the existing  Compute VM
      $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
           
     New-AzResource -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
@@ -101,22 +101,22 @@ SQL Server 2008 veya 2008 R2'de Windows Server 2008 örneğini kaydetmek için a
        sqlManagement='NoAgent';sqlImageSku='Standard';sqlImageOffer='SQL2008R2-WS2008'}
   ```
 
-## <a name="verify-registration-status"></a>Kayıt durumunu doğrulayın
-SQL Server Azure portalı, Azure CLI veya PowerShell kullanarak SQL VM kaynak sağlayıcısı ile zaten kayıtlı olmadığını doğrulayabilirsiniz. 
+## <a name="verify-registration-status"></a>Kayıt durumunu doğrula
+SQL Server, SQL VM kaynak sağlayıcısı ile Azure portal, Azure CLı veya PowerShell kullanarak zaten kaydedilmiş olduğunu doğrulayabilirsiniz. 
 
-### <a name="azure-portal"></a>Azure Portal 
-Azure portalını kullanarak kayıt durumunu doğrulamak için aşağıdakileri yapın.
+### <a name="azure-portal"></a>Azure portal 
+Azure portal kullanarak kayıt durumunu doğrulamak için, aşağıdakileri yapın.
 
 1. [Azure portal](https://portal.azure.com) oturum açın. 
-1. Gidin, [SQL sanal makineleri](virtual-machines-windows-sql-manage-portal.md).
-1. SQL Server VM'nize listeden seçin. SQL Server VM'nize burada listelenmiyorsa, SQL Server VM'nize SQL VM kaynak sağlayıcısına kayıtlı değil olasıdır. 
-1. Değerin altında görüntülemek `Status`. Varsa `Status = Succeeded`, sonra da SQL Server VM ile SQL VM kaynak sağlayıcısı başarıyla kaydedildi. 
+1. [SQL sanal makinelerinize](virtual-machines-windows-sql-manage-portal.md)gidin.
+1. Listeden SQL Server VM seçin. SQL Server VM burada listelenmiyorsa, SQL Server VM SQL VM kaynak sağlayıcısına kaydedilmemiş olabilir. 
+1. Değerini altında `Status`görüntüleyin. `Status = Succeeded`Daha sonra SQL Server VM, SQL VM kaynak sağlayıcısına başarıyla kaydedilir. 
 
-    ![SQL RP kaydı ile durumunu doğrulayın](media/virtual-machines-windows-sql-register-with-rp/verify-registration-status.png)
+    ![SQL RP kaydıyla durumu doğrulama](media/virtual-machines-windows-sql-register-with-rp/verify-registration-status.png)
 
-### <a name="az-cli"></a>Az CLI
+### <a name="az-cli"></a>Az CLı
 
-Geçerli SQL Server VM kayıt durumu aşağıdaki AZ CLI komutu ile doğrulayın. `ProvisioningState` gösterecektir `Succeeded` kayıt başarılı olursa. 
+Şu AZ CLı komutuyla geçerli SQL Server VM kayıt durumunu doğrulayın. `ProvisioningState`, kaydın `Succeeded` başarılı olup olmadığını gösterir. 
 
   ```azurecli-interactive
   az sql vm show -n <vm_name> -g <resource_group>
@@ -125,33 +125,33 @@ Geçerli SQL Server VM kayıt durumu aşağıdaki AZ CLI komutu ile doğrulayın
 
 ### <a name="powershell"></a>PowerShell
 
-Aşağıdaki PowerShell cmdlet'i ile geçerli SQL Server VM kayıt durumunu doğrulayın. `ProvisioningState` gösterecektir `Succeeded` kayıt başarılı olursa. 
+Geçerli SQL Server VM kayıt durumunu aşağıdaki PowerShell cmdlet 'i ile doğrulayın. `ProvisioningState`, kaydın `Succeeded` başarılı olup olmadığını gösterir. 
 
   ```powershell-interactive
   Get-AzResource -ResourceName <vm_name> -ResourceGroupName <resource_group> -ResourceType Microsoft.SqlVirtualMachine/sqlVirtualMachines
   ```
-SQL Server VM kaynak sağlayıcısı ile kaydedilmemiş bir hata gösterir. 
+Bir hata, SQL Server VM kaynak sağlayıcıya kaydedilmemiş olduğunu gösterir. 
 
 ---
 
-## <a name="register-sql-vm-resource-provider-with-subscription"></a>Abonelik ile SQL VM kaynak sağlayıcısını kaydetme 
+## <a name="register-sql-vm-resource-provider-with-subscription"></a>SQL VM kaynak sağlayıcısını abonelikle Kaydet 
 
-SQL Server VM'nize SQL VM kaynak sağlayıcısı ile kaydolmak için aboneliğinize kaynak sağlayıcısını kaydetmeniz gerekir. Azure portal veya Azure CLI ile bunu yapabilirsiniz.
+SQL Server VM SQL VM kaynak sağlayıcısına kaydetmek için, kaynak sağlayıcısını aboneliğinize kaydetmeniz gerekir. Bunu Azure portal veya Azure CLı ile yapabilirsiniz.
 
 ### <a name="azure-portal"></a>Azure portal
 
-Aşağıdaki adımlar, Azure portalını kullanarak Azure aboneliğinizde SQL VM kaynak sağlayıcısını kaydeder. 
+Aşağıdaki adımlar, Azure portal kullanarak SQL VM kaynak sağlayıcısını Azure aboneliğinize kaydeder. 
 
-1. Azure portalını açın ve gidin **tüm hizmetleri**. 
-1. Gidin **abonelikleri** ve ilgi aboneliği seçin.  
-1. Üzerinde **abonelikleri** sayfasında, gitmek **kaynak sağlayıcıları**. 
-1. Tür `sql` filtresindeki SQL ile ilgili kaynak sağlayıcıları taşıyın. 
-1. Şunlardan birini seçin *kaydetme*, *yeniden kaydettirin*, veya *Unregister* için **Microsoft.SqlVirtualMachine** sağlayıcısına bağlı olarak, İstenen eylem. 
+1. Azure portal açın ve **tüm hizmetlere**gidin. 
+1. **Abonelikler** ' e gidin ve ilgilendiğiniz aboneliği seçin.  
+1. **Abonelikler** sayfasında, **kaynak sağlayıcıları**' na gidin. 
+1. SQL `sql` ile ilgili kaynak sağlayıcılarını getirmek için filtreye yazın. 
+1. İstediğiniz eyleme bağlı olarak **Microsoft. SqlVirtualMachine** sağlayıcısı için *Kaydet*, *yeniden kaydet*veya *kaydı kaldır* ' ı seçin. 
 
-   ![Sağlayıcı değiştirme](media/virtual-machines-windows-sql-ahb/select-resource-provider-sql.png)
+   ![Sağlayıcıyı değiştirme](media/virtual-machines-windows-sql-ahb/select-resource-provider-sql.png)
 
-### <a name="az-cli"></a>Az CLI
-Aşağıdaki kod parçacığı, Azure aboneliğinizde SQL VM kaynak sağlayıcısını kaydeder. 
+### <a name="az-cli"></a>Az CLı
+Aşağıdaki kod parçacığı, SQL VM kaynak sağlayıcısını Azure aboneliğinize kaydeder. 
 
 ```azurecli-interactive
 # Register the new SQL VM resource provider to your subscription 
@@ -160,7 +160,7 @@ az provider register --namespace Microsoft.SqlVirtualMachine
 
 ### <a name="powershell"></a>PowerShell
 
-Aşağıdaki PowerShell kod parçacığı, Azure aboneliğinizde SQL VM kaynak sağlayıcısını kaydeder.
+Aşağıdaki PowerShell kod parçacığı, SQL VM kaynak sağlayıcısını Azure aboneliğinize kaydeder.
 
 ```powershell-interactive
 # Register the new SQL VM resource provider to your subscription
@@ -170,16 +170,92 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 
 ## <a name="remarks"></a>Açıklamalar
 
- - SQL VM kaynak sağlayıcısı, yalnızca SQL Server ' Kaynak Yöneticisi ' kullanılarak dağıtılan Vm'leri destekler. 'Klasik modeli' desteklenmeyen'ı kullanarak SQL Server Vm'leri dağıtılabilir. 
- - SQL VM kaynak sağlayıcısı, yalnızca SQL Server genel buluta dağıtılan sanal makineleri destekler. Özel veya kamu bulut dağıtımları desteklenmez. 
+ - SQL VM kaynak sağlayıcısı yalnızca ' Kaynak Yöneticisi ' kullanılarak dağıtılan SQL Server VM 'Leri destekler. ' Klasik model ' kullanılarak dağıtılan SQL Server VM 'Ler desteklenmez. 
+ - SQL VM kaynak sağlayıcısı yalnızca genel buluta dağıtılan SQL Server VM 'Leri destekler. Özel veya kamu bulutuna dağıtımlar desteklenmez. 
+ 
+## <a name="frequently-asked-questions"></a>Sık sorulan sorular 
+
+**Azure Market 'teki bir SQL görüntüsünden sağlanan SQL Server VM kaydetmem gerekir mi?**
+
+Hayır. Microsoft, Azure Marketi 'ndeki SQL görüntülerinden sağlanan VM 'Leri kaydeder. SQL VM kaynak sağlayıcısına kaydolmak yalnızca VM 'nin Azure Marketi 'ndeki SQL görüntülerinden sağlanması ve SQL Server kendi kendine yüklenmesi durumunda gereklidir.
+
+**SQL VM kaynak sağlayıcısını tüm müşteriler kullanabilir mi?** 
+
+Evet. Müşteriler, Azure Marketi 'nden bir SQL Server görüntüsü kullanmayan veya kendi özel VHD 'sini getirilen SQL Server SQL Server VM SQL VM kaynak sağlayıcısı ile kaydetmesi gerekir. Tüm abonelik türlerinin (doğrudan, EA ve CSP) sahip olduğu VM 'Ler SQL VM kaynak sağlayıcısına kaydoabilir.
+
+**SQL Server VM SQL IaaS uzantısı zaten yüklüyse SQL VM kaynak sağlayıcısı ile kaydolmalı mı?**
+
+SQL Server VM kendi kendine yüklenmişse, Azure Marketi 'ndeki SQL görüntülerinden sağlanmadıysa, SQL IaaS uzantısını yüklemiş olsanız bile SQL VM kaynak sağlayıcısına kaydolmanız gerekir. SQL VM kaynak sağlayıcısına kaydolmak, Microsoft. SqlVirtualMachines türünde yeni bir kaynak oluşturur. SQL IaaS uzantısını yüklemek o kaynağı oluşturmaz.
+
+**SQL VM kaynak sağlayıcısı ile kaydolurken varsayılan SQL yönetim modu nedir?**
+
+SQL VM RP 'ye kaydolurken varsayılan SQL yönetim modu _dolu_. SQL yönetim özelliği SQL VM kaynak sağlayıcısı ile kaydolurken ayarlanmamışsa, mod tam yönetilebilirlik olarak ayarlanır. VM 'de SQL IaaS uzantısının yüklü olması, SQL VM kaynak sağlayıcısı 'na tam yönetilebilirlik modunda kaydolma önkoşuludur.
+
+**SQL VM kaynak sağlayıcısı 'na kaydolmak için Önkoşullar nelerdir?**
+
+Basit modda veya aracı olmayan bir modda SQL VM kaynak sağlayıcısı 'na kaydolmak için herhangi bir önkoşul yoktur. SQL VM kaynak sağlayıcısına tam modda kaydolma önkoşulları VM 'de SQL IaaS uzantısının yüklü olmasını sağlar.
+
+**VM 'de SQL IaaS uzantısı yüklü değilse SQL VM kaynak sağlayıcısı ile kayıt yapabilir miyim?**
+
+Evet, VM 'de SQL IaaS uzantısı yüklü değilse, basit yönetim modunda SQL VM kaynak sağlayıcısı ile kayıt yapabilirsiniz. Basit modda SQL VM kaynağı sağlayıcısı, SQL örneğinin sürümünü doğrulamak için bir konsol uygulaması kullanacaktır. Konsol uygulaması, VM üzerinde çalışan en az bir SQL örneği olduğunu doğruladıktan sonra kendisini kapatır. SQL VM kaynak sağlayıcısı ile hafif modda kaydolma SQL Server yeniden başlatmaz ve sanal makinede bir aracı oluşturmaz.
+
+**SQL VM kaynak sağlayıcısı ile kaydolacaktır, VM 'imde bir aracı yükler mi?**
+
+Hayır. SQL VM kaynak sağlayıcısına kaydolmak yalnızca yeni bir meta veri kaynağı oluşturacak ve VM 'ye bir aracı yüklemecektir. SQL IaaS uzantısı yalnızca tam yönetilebilirlik sağlamak için gereklidir, bu nedenle yönetilebilirlik modunu hafif 'dan tam 'e yükseltmek SQL IaaS uzantısını yükler ve SQL Server yeniden başlatır.
+
+**VM 'de SQL VM kaynak sağlayıcısı yeniden başlatma SQL Server kaydedilecek mı?**
+
+Hayır. SQL VM kaynak sağlayıcısına kaydolmak yalnızca yeni bir meta veri kaynağı oluşturacak ve VM 'de SQL Server yeniden başlatmayacak. SQL Server yeniden başlatma yalnızca SQL IaaS uzantısını yüklemek için gereklidir; Tam yönetilebilirliği etkinleştirmek için ve SQL IaaS uzantısı gereklidir. Yönetilebilirlik modunu hafif 'dan tam 'e yükseltmek, SQL IaaS uzantısını yükler ve SQL Server yeniden başlatır.
+
+**SQL VM kaynak sağlayıcısı ile kaydolurken basit ve olmayan aracı yönetimi modları arasındaki fark nedir?** 
+
+Aracı yönetim modu, yalnızca Windows Server 2008 ' de SQL Server 2008/R2 için kullanılabilir; ve bu sürümler için kullanılabilen tek yönetim modudur. Tüm SQL Server diğer sürümlerinde, kullanılabilir iki yönetilebilirlik modu hafif ve tamamludur. Aracı modu, SQL Server sürüm ve sürüm özelliklerinin müşteri tarafından ayarlanmasını gerektirir; hafif mod, SQL örneğinin sürümü ve sürümünü bulmak için VM 'yi sorgular.
+
+**Azure CLı ile basit veya aracı olmayan bir modda SQL VM kaynak sağlayıcısı ile kayıt yapabilir miyim?**
+
+Hayır. SQL yönetim modu özelliği yalnızca Azure PowerShell ile SQL VM kaynak sağlayıcısı ile kaydedilirken kullanılabilir. Azure CLı, SQL yönetilebilirlik özelliğinin ayarlanmasını desteklemez ve SQL VM kaynak sağlayıcısı ile her zaman varsayılan modda tam yönetilebilirlik olarak kaydedilir.
+
+**SQL lisans türünü belirtmeden SQL VM kaynak sağlayıcısı ile kayıt yapabilir miyim?**
+
+Hayır. SQL VM RP 'ye kaydolurken SQL lisans türü isteğe bağlı bir özellik değildir. SQL VM kaynak sağlayıcısı 'nı yalnızca AZ CLı ve PowerShell ile her yönetilebilirlik modunda (Hayır-Agent, hafif ve tam) kaydederken, PAYG veya AHUB olarak SQL lisans türünü ayarlamanız gerekir.
+
+**SQL IaaS uzantısını aracı olmayan moddan tam moda yükseltebilir miyim?**
+
+Hayır. SQL yönetilebilirlik modunu tam veya hafif sürümüne yükseltmek, aracı olmayan mod için kullanılamaz. Bu, Windows Server 2008 ' in teknik sınırlamasıdır.
+
+**SQL IaaS uzantısını hafif moddan tam moda yükseltebilir miyim?**
+
+Evet. SQL yönetilebilirlik modunu hafif ' dan Full ' a yükseltmek PowerShell veya Azure portal ile desteklenir; Ayrıca, SQL Server yeniden başlatılmasını gerektirir.
+
+**SQL IaaS uzantısını tam moddan aracı olmayan veya hafif yönetim modlarına indirgeyebilirim miyim?**
+
+Hayır. SQL IaaS uzantısı yönetilebilirlik modunu eski sürüme indirme desteklenmiyor. SQL yönetilebilirlik modu, tam moddan hafif veya aracı olmayan moda düşürülemez; ve basit moddan aracı olmayan moda düşürülemez. Yönetilebilirlik modunu tam yönetilebilirlik olarak değiştirmek için SQL IaaS uzantısını kaldırın; Micorsoft. SqlVirtualMachine kaynağını bırakın ve SQL VM kaynak sağlayıcısı ile SQL Server VM yeniden kaydedin.
+
+**Azure portal 'den SQL VM kaynak sağlayıcısı ile kayıt yapabilir miyim?**
+
+Hayır. SQL VM kaynak sağlayıcısına kaydolma Azure portal kullanılamıyor. SQL VM kaynak sağlayıcısı ile tam yönetilebilirlik modunda kaydolmak, Azure CLı veya PowerShell ile desteklenir; ve basit veya aracı olmayan yönetilebilirlik modundaki SQL VM kaynak sağlayıcısına kaydolmak yalnızca Azure PowerShell API 'Leri tarafından desteklenir.
+
+**SQL Server yüklenmeden önce SQL VM kaynak sağlayıcısı ile bir VM 'yi kaydedebilir miyim?**
+
+Hayır. VM, SQL VM kaynak sağlayıcısına başarıyla kaydolmak için en az bir SQL örneğine sahip olmalıdır. VM 'de SQL örneği yoksa, yeni Micosoft. SqlVirtualMachine kaynağı başarısız durumda olur.
+
+**Birden çok SQL örneği varsa SQL VM kaynağı ile bir VM 'yi kaydedebilir miyim?**
+
+Evet. SQL VM kaynak sağlayıcısı yalnızca bir SQL örneğini kaydeder. SQL VM kaynak sağlayıcısı, birden çok örnek olması durumunda varsayılan SQL örneğini kaydeder. Varsayılan örnek yoksa, yalnızca hafif modda kaydolma desteklenir. Hafif ' den tam yönetilebilirlik moduna yükseltmek için, varsayılan SQL örneği var olmalıdır veya VM yalnızca bir tane adlandırılmış SQL örneğine sahip olmalıdır.
+
+**SQL Server yük devretme kümesi örneğini SQL VM kaynak sağlayıcısı ile kaydedebilir miyim?**
+
+Evet. Azure VM 'deki SQL FCı örnekleri, SQL VM kaynak sağlayıcısı ile hafif modda kaydedilebilir. Ancak, SQL FCı örnekleri tam yönetilebilirlik moduna yükseltilemez.
+
+**Her zaman açık kullanılabilirlik grubu yapılandırılmışsa VM 'imi SQL VM RP ile kaydedebilir miyim?**
+
+Evet. Her zaman açık kullanılabilirlik grubu yapılandırmasına katılırınızda SQL VM kaynak sağlayıcısı ile bir Azure VM 'de SQL Server örneğini kaydetme kısıtlaması yoktur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Daha fazla bilgi için aşağıdaki makalelere bakın: 
 
-* [Bir Windows VM üzerinde SQL Server'a genel bakış](virtual-machines-windows-sql-server-iaas-overview.md)
-* [SQL Server üzerindeki bir Windows VM ile ilgili SSS](virtual-machines-windows-sql-server-iaas-faq.md)
-* [Fiyatlandırma Kılavuzu bir Windows VM'de SQL Server](virtual-machines-windows-sql-server-pricing-guidance.md)
-* [SQL Server Windows VM sürüm notları](virtual-machines-windows-sql-server-iaas-release-notes.md)
-
-
+* [Windows VM 'de SQL Server genel bakış](virtual-machines-windows-sql-server-iaas-overview.md)
+* [Windows VM 'de SQL Server SSS](virtual-machines-windows-sql-server-iaas-faq.md)
+* [Windows VM fiyatlandırma kılavuzunda SQL Server](virtual-machines-windows-sql-server-pricing-guidance.md)
+* [Windows VM sürüm notlarında SQL Server](virtual-machines-windows-sql-server-iaas-release-notes.md)

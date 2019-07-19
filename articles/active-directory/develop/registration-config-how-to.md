@@ -1,6 +1,6 @@
 ---
-title: Belirli bir API için izinleri seçme | Microsoft Docs
-description: Kimlik doğrulama uç noktaları için özel bir uygulama geliştirirken veya Azure AD'ye kaydetme bulmak nasıl.
+title: Uç noktaları yapılandırma | Microsoft Docs
+description: Azure AD ile geliştirdiğiniz veya kaydolurken özel bir uygulama için kimlik doğrulama uç noktalarını bulma.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -12,29 +12,29 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/11/2018
+ms.date: 07/15/2019
 ms.author: ryanwi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcfeec7e90f1c582a11889619811330bcf488bbf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: b48e19df2ea1bbf7d09ee9a2108d0f34f01a4929
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545910"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277839"
 ---
-# <a name="how-to-configure-endpoints"></a>Uç noktalarını yapılandırma
+# <a name="how-to-configure-endpoints"></a>Uç noktaları yapılandırma
 
-Uygulamanıza yönelik kimlik doğrulama uç noktaları bulabilirsiniz [Azure portalında](https://portal.azure.com).
+Uygulamanız için kimlik doğrulama uç noktalarını [Azure Portal](https://portal.azure.com)bulabilirsiniz.
 
 -   [Azure portalına](https://portal.azure.com) gidin.
 
--   Sol gezinti bölmesinden tıklayın **Azure Active Directory**.
+-   Sol gezinti bölmesinden **Azure Active Directory**' ye tıklayın.
 
--   Tıklayın **uygulama kayıtları** ve **uç noktaları**.
+-   **Uygulama kayıtları** ' na tıklayıp **bitiş noktaları**' nı seçin.
 
--   Bu açık **uç noktaları** sayfasında, kiracınız için tüm kimlik doğrulama uç noktaları listesi.
+-   Bu, kiracınız için tüm kimlik doğrulama uç noktalarını listeme **bitiş noktaları** sayfasını açar.
 
--   Kullandığınız kimlik doğrulama protokolü için belirli uç noktası kullanma, uygulama kimliği ile kimlik doğrulaması çalışıyorlardı birlikte uygulamanıza özgü istek.
+-   Uygulamanıza özgü kimlik doğrulama isteğini yapmak için uygulama KIMLIĞIYLE birlikte, kullanmakta olduğunuz kimlik doğrulama protokolüne özgü uç noktayı kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Azure Active Directory geliştirici kılavuzu](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)

@@ -1,40 +1,43 @@
 ---
-title: Azure veri fabrikası veri akışı seçin dönüştürme eşlemesi
-description: Azure veri fabrikası veri akışı seçin dönüştürme eşlemesi
+title: Azure Data Factory eşleme veri akışı dönüşümü seçme
+description: Azure Data Factory eşleme veri akışı dönüşümü seçme
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: bc83b41067d587adce41658a2c4b3d68969750ba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 15c74637a2dc42ec44f582878b5505d94637cd7b
+ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61364482"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68314205"
 ---
-# <a name="azure-data-factory-mapping-data-flow-select-transformation"></a>Azure veri fabrikası veri akışı seçin dönüştürme eşlemesi
-
+# <a name="azure-data-factory-mapping-data-flow-select-transformation"></a>Azure Data Factory eşleme veri akışı dönüşümü seçme
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Bu dönüştürme için sütun seçiciliği (sütun sayısı azaltılırsa) kullanın veya diğer sütunları ve akışı adları.
+Seçiciliği (sütun sayısını azaltma), diğer ad sütunları ve akış adları ve sütunları yeniden sıralama için bu dönüşümü kullanın.
 
-Select dönüştürme, diğer tüm bir akışı sağlar veya bu akıştaki sütunları farklı adlardır (takma adlardır) atayın ve ardından bu yeni adları daha sonra veri akışı başvuru. Bu dönüşüm, kendi kendine birleşme senaryoları için kullanışlıdır. Kendi kendine birleşme ADF veri akışı uygulamak için bir akış dalı "Dalı" yazıp hemen sonra ekleyin "Seçin" dönüşüm gerçekleştirilecek yoludur. Bu akış artık kendi kendine birleşme oluşturma geri özgün akışına katılmak için kullanabileceğiniz yeni bir adı olacaktır:
+## <a name="how-to-use-select-transformation"></a>Seçme dönüşümünü kullanma
+Seçim dönüşümü, bir akışın tamamına veya bu akıştaki sütunlara diğer ad atamanıza, farklı adlar atamanıza (diğer adlar) ve ardından bu yeni adlara daha sonra veri akışınızda başvurmasına olanak tanır. Bu dönüşüm, kendine katılacak senaryolar için yararlıdır. ADF veri akışında kendi kendine katılmayı uygulama yolu bir akış almak, bunu "yeni dal" ile dallandırma ve sonra hemen sonra da "Select" dönüştürmesi eklemektir. Bu akış artık özgün akışa geri katılabilmek için kullanabileceğiniz yeni bir ada sahip olur ve kendi kendine katılması oluşturursunuz:
 
-![Kendi kendine birleşme](media/data-flow/selfjoin.png "kendi kendine birleşim")
+![Kendi kendine Birleştir](media/data-flow/selfjoin.png "Kendi kendine Birleştir")
 
-Yukarıdaki diyagramda, Select dönüştürme en üstünde alır. Diğer ad kullanımı "OrigSourceBatting" özgün akışa budur. Aşağıdaki higlighted birleştirme dönüştürme bu seçim diğer akış sağ birleştirme, aynı anahtarı sol ve sağ tarafında iç birleşim başvurmak bize verme kullandığımızı görebilirsiniz.
+Yukarıdaki diyagramda, select Transform en üstte. Bu, özgün akışın "OrigSourceBatting" olarak diğer adını alıyor. Aşağıdaki Vurgulanan birleşim dönüşümünden, bu Select diğer ad akışını sağ birleşim olarak kullandığımızdan, Iç birleştirmenin sağ & sağ tarafında aynı anahtara başvurmamızı sağlayabilirsiniz.
 
-Bir yol seçimini gibi veri akışınız sütunları seçin de kullanılabilir. Örneğin, havuzunuzu içinde tanımlanan 6 sütunları vardır, ancak yalnızca dönüştürmek ve ardından havuza akış için belirli bir 3 seçmek istiyorsanız, select dönüştürme kullanarak yalnızca 3 seçebilirsiniz.
+Ayrıca, veri akışınızdan sütunları seçmek için bir yöntem olarak da kullanılabilir. Örneğin, havuzunuzu tanımlanmış 6 sütunlarınız varsa, ancak yalnızca belirli bir 3 ' ü dönüştürmek ve havuza akışa almak istiyorsanız, select Transform 'u kullanarak yalnızca bu 3 ' ü seçebilirsiniz.
 
 > [!NOTE]
-> "Yalnızca belirli sütunları seçmek için Tümünü Seç" geçmelidir
+> Yalnızca belirli sütunları seçmek için "Tümünü Seç" seçeneğini kapatmanız gerekir
 
-Seçenekler
+![Dönüşüm seçin](media/data-flow/select001.png "Diğer ad Seç")
 
-Varsayılan ayar "Seçin" için tüm gelen sütunlarını ekleyin ve bu özgün adlarını saklamak sağlamaktır. Akış diğer adı seçin dönüştürme adını ayarlayarak yapabilirsiniz.
+## <a name="options"></a>Seçenekler
+* "Select" için varsayılan ayar tüm gelen sütunları dahil etmek ve bu özgün adları tutmak içindir. Seçim dönüşümünün adını ayarlayarak akışa diğer ad verebilirsiniz.
+* Tek tek sütunlara, "Tümünü Seç" seçimini kaldırın ve alt kısımdaki sütun eşlemesini kullanın.
+* Giriş veya çıkış meta verilerinden yinelenen sütunları kaldırmak için Yinelenenleri atla ' yı seçin.
 
-Diğer tek tek sütunlara yapılan "Tümünü Seç" seçimini kaldırın ve sütun eşleme altındaki kullanın.
+![Yinelenenleri atla](media/data-flow/select-skip-dup.png "Yinelenenleri atla")
 
-![Dönüştürme seçin](media/data-flow/select001.png "diğer adı seçin")
+## <a name="next-steps"></a>Sonraki adımlar
+* Yeniden adlandırma, yeniden sıralama ve diğer ad Sütunlarını Seç ' i kullandıktan sonra, verileri bir veri deposuna eklemek için [Havuz dönüştürmeyi](data-flow-sink.md) kullanın.

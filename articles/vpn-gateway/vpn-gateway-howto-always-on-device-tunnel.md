@@ -1,58 +1,58 @@
 ---
-title: Her zaman açık VPN tüneli için VPN ağ geçidi yapılandırma
-description: Her zaman açık VPN tüneli için VPN ağ geçidi yapılandırma adımları
+title: VPN Gateway için her zaman açık VPN tüneli yapılandırma
+description: VPN Gateway için Always on VPN tünelini yapılandırma adımları
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptional
+ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: cherylmc
-ms.openlocfilehash: 81822297dcf9370fc8ce7f7ce0285689c31606ce
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 98d8c2f6870be16f3eb92219fc3d02f988390a41
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67695765"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68295458"
 ---
 # <a name="configure-an-always-on-vpn-device-tunnel"></a>Always On VPN cihazı tüneli yapılandırma
 
-Windows 10 sanal özel ağ (VPN) istemcinin yeni özelliklerin bir VPN bağlantısı bakımını yapma olanağı biridir. Always On etkin VPN profilini otomatik olarak bağlanmasına ve Tetikleyicileri temel alan bağlı kalmasını sağlayan bir özelliktir Windows 10 — yani, kullanıcı oturum açma, ağ durumu değişikliği veya etkin cihaz ekranı.
+Windows 10 sanal özel ağ (VPN) istemcisinin yeni özelliklerinden biri, VPN bağlantısını sürdürme olanağıdır. Her zaman açık, etkin VPN profilinin otomatik olarak bağlanmasını ve tetikleyicilere göre bağlı kalmasını sağlayan bir Windows 10 özelliğidir; yani Kullanıcı oturum açma, ağ durumu değişikliği veya cihaz ekranı etkin olur.
 
-Azure sanal ağ geçitleri Windows 10 Always On ile azure'a cihaz tüneller yanı sıra kalıcı kullanıcı tünel oluşturmak için kullanılabilir. Bu makalede her zaman açık VPN cihaz tüneli yapılandırmanıza yardımcı olur.
+Azure sanal ağ geçitleri, kalıcı Kullanıcı tünellerinin yanı sıra Azure 'a yönelik cihaz tünellerini oluşturmak için Windows 10 her zaman açık ile kullanılabilir. Bu makale, her zaman açık bir VPN cihaz tüneli yapılandırmanıza yardımcı olur.
 
-Her zaman açık VPN bağlantıları iki tünel türlerini içerir:
+Her zaman VPN bağlantılarında iki tür tünel vardır:
 
-* **Cihaz tünel** kullanıcılar cihazda oturum önce belirtilen VPN sunucularına bağlanır. Oturum açma öncesi bağlantı senaryoları ve cihaz yönetim amacıyla cihaz tünel kullanın.
+* **Cihaz tüneli** , kullanıcılar cihazda oturum açmadan önce belirtilen VPN sunucularına bağlanır. Oturum açma öncesi bağlantı senaryoları ve cihaz yönetimi amaçları cihaz tüneli kullanır.
 
-* **Kullanıcı tüneli** yalnızca bir kullanıcı oturum açma cihaz sonra bağlanır. Kullanıcı tüneli üzerinden VPN sunucuları kuruluş kaynaklarına erişmesine olanak tanır.
+* **Kullanıcı tüneli** yalnızca, bir Kullanıcı cihazda oturum açtıktan sonra bağlanır. Kullanıcı tüneli, kullanıcıların VPN sunucuları aracılığıyla kuruluş kaynaklarına erişmesini sağlar.
 
-Hem cihaz tünel hem de kullanıcı tünel VPN profillerini bağımsız olarak çalışır. Bunlar aynı anda bağlanabilir ve farklı kimlik doğrulama yöntemleri ve diğer VPN yapılandırma ayarlarına uygun olarak kullanabilirsiniz.
+Hem cihaz tüneli hem de Kullanıcı tüneli VPN profilleriyle bağımsız olarak çalışır. Bunlar aynı anda birbirine bağlanabilir ve uygun şekilde farklı kimlik doğrulama yöntemleri ve diğer VPN yapılandırma ayarlarını kullanabilir.
 
 ## <a name="1-configure-the-gateway"></a>1. Ağ geçidini yapılandırma
 
-Ikev2 ve sertifika tabanlı kimlik doğrulaması kullanan VPN ağ geçidini yapılandırma [noktadan siteye makale](vpn-gateway-howto-point-to-site-resource-manager-portal.md).
+VPN ağ geçidini, bu [Noktadan siteye bu makaleyi](vpn-gateway-howto-point-to-site-resource-manager-portal.md)kullanarak Ikev2 ve sertifika tabanlı kimlik doğrulaması kullanacak şekilde yapılandırın.
 
 ## <a name="2-configure-the-user-tunnel"></a>2. Kullanıcı tüneli yapılandırma
 
-1. Bu konuda gösterildiği gibi Windows 10 istemci üzerinde istemci sertifikalarını yükleme [noktadan siteye VPN istemci makale](point-to-site-how-to-vpn-client-install-azure-cert.md). Sertifika geçerli kullanıcı Store olması gerekiyor
-2. PowerShell, SCCM veya Intune aracılığıyla her zaman açık VPN istemcisi yapılandırma [bu yönergeleri](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections).
+1. İstemci sertifikalarını, bu [noktadan sıteye VPN istemci makalesinde](point-to-site-how-to-vpn-client-install-azure-cert.md)gösterildiği gibi Windows 10 istemcisine yükler. Sertifikanın geçerli kullanıcı deposunda olması gerekir
+2. [Bu yönergeleri](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections)kullanarak her zaman on VPN istemcisini POWERSHELL, SCCM veya Intune aracılığıyla yapılandırın.
 
-## <a name="3-configure-the-device-tunnel"></a>3. Cihaz tünel yapılandırma
+## <a name="3-configure-the-device-tunnel"></a>3. Cihaz tüneli yapılandırma
 
-Bir cihaz tüneli başarıyla oluşturmak için aşağıdaki gereksinimler karşılanmalıdır:
+Bir cihaz tünelini başarıyla kurmak için aşağıdaki gereksinimlerin karşılanması gerekir:
 
-* Cihazın Windows 10 Enterprise veya eğitim sürüm 1709 veya sonraki sürümünü çalıştıran bir etki alanına katılan bilgisayarın olması gerekir.
-* Tünel yalnızca Windows yerleşik VPN çözümü için yapılandırılabilir ve Ikev2 bilgisayar sertifikası kimlik doğrulamasını kullanarak kurulur. 
-* Cihaz başına yalnızca bir cihaz tünel yapılandırılabilir.
+* Cihaz, Windows 10 Enterprise veya eğitim sürüm 1709 veya üstünü çalıştıran etki alanına katılmış bir bilgisayar olmalıdır.
+* Tünel yalnızca Windows yerleşik VPN çözümü için yapılandırılabilir ve bilgisayar sertifikası kimlik doğrulamasıyla Ikev2 kullanılarak oluşturulmuştur. 
+* Her cihaz için yalnızca bir cihaz tüneli yapılandırılabilir.
 
-1. Bu konuda gösterildiği gibi Windows 10 istemci üzerinde istemci sertifikalarını yükleme [noktadan siteye VPN istemci makale](point-to-site-how-to-vpn-client-install-azure-cert.md). Sertifika, yerel makine deposuna olması gerekiyor.
-1. Kullanım [bu yönergeleri](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/vpn-device-tunnel-config#vpn-device-tunnel-configuration) VPN profili oluşturma ve yerel sistem hesabı bağlamında cihaz tüneli yapılandırın.
+1. İstemci sertifikalarını, bu [noktadan sıteye VPN istemci makalesinde](point-to-site-how-to-vpn-client-install-azure-cert.md)gösterildiği gibi Windows 10 istemcisine yükler. Sertifikanın yerel makine deposunda olması gerekir.
+1. [Bu yönergeleri](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/vpn-device-tunnel-config#vpn-device-tunnel-configuration) kullanarak bir VPN profili oluşturun ve cihaz TÜNELINI yerel sistem hesabı bağlamında yapılandırın.
 
-### <a name="configuration-example-for-device-tunnel"></a>Cihaz tünel için yapılandırma örneği
+### <a name="configuration-example-for-device-tunnel"></a>Cihaz tüneli için yapılandırma örneği
 
-Sanal ağ geçidi yapılandırılmış ve Windows 10 istemci üzerindeki yerel makine deposunda istemci sertifikası yüklü sonra bir istemci cihaz tünel yapılandırmak için aşağıdaki örnekleri kullanın.
+Sanal ağ geçidini yapılandırdıktan ve istemci sertifikasını Windows 10 istemcisindeki yerel makine deposuna yükledikten sonra, bir istemci cihaz tüneli yapılandırmak için aşağıdaki örnekleri kullanın.
 
-1. Aşağıdaki metni kopyalayın ve kaydedileceği ***devicecert.ps1***.
+1. Aşağıdaki metni kopyalayın ve ***devicecert. ps1***olarak kaydedin.
 
    ```
    Param(
@@ -104,7 +104,7 @@ Sanal ağ geçidi yapılandırılmış ve Windows 10 istemci üzerindeki yerel m
    $Message = "Complete."
    Write-Host "$Message"
    ```
-1. Aşağıdaki metni kopyalayın ve kaydedileceği ***VPNProfile.xml*** aynı klasörde **devicecert.ps1**. Aşağıdaki metni ortamınızla eşleşecek şekilde düzenleyin.
+1. Aşağıdaki metni kopyalayın ve ***Vpnprofile. xml*** olarak, **devecert. ps1**ile aynı klasöre kaydedin. Ortamınıza uyması için aşağıdaki metni düzenleyin.
 
    * `<Servers>azuregateway-1234-56-78dc.cloudapp.net</Servers>`
    * `<Address>192.168.3.5</Address>`
@@ -139,8 +139,8 @@ Sanal ağ geçidi yapılandırılmış ve Windows 10 istemci üzerindeki yerel m
    <RegisterDNS>true</RegisterDNS>
    </VPNProfile>
    ```
-1. İndirme **PsExec** gelen [Sysinternals](https://docs.microsoft.com/sysinternals/downloads/psexec) ve dosyaları ayıklayın **C:\PSTools**.
-1. Bir yönetici komut isteminden çalıştırarak PowerShell'i başlatın:
+1. [Sysinternals](https://docs.microsoft.com/sysinternals/downloads/psexec) 'Dan **PsExec** indirin ve dosyaları **c:\padstools dizinine**ayıklayın.
+1. Yönetici CMD isteminde şunu çalıştırarak PowerShell 'i başlatın:
 
    ```
    C:\PsTools\PsExec.exe Powershell for 32-bit Windows
@@ -148,27 +148,27 @@ Sanal ağ geçidi yapılandırılmış ve Windows 10 istemci üzerindeki yerel m
    ```
 
    ![PowerShell](./media/vpn-gateway-howto-always-on-device-tunnel/powershell.png)
-1. PowerShell'de, klasöre geçin burada **devicecert.ps1** ve **VPNProfile.xml** bulunur ve aşağıdaki komutu çalıştırın:
+1. PowerShell 'de, **devicecert. ps1** ve **vpnprofile. xml** ' nin bulunduğu klasöre geçin ve aşağıdaki komutu çalıştırın:
 
    ```powershell
    C:\> .\devicecert.ps1 .\VPNProfile.xml MachineCertTest
    ```
    
-   ![MachineCertTest](./media/vpn-gateway-howto-always-on-device-tunnel/machinecerttest.png)
-1. Çalıştırma **rasphone**.
+   ![Machineccerttest](./media/vpn-gateway-howto-always-on-device-tunnel/machinecerttest.png)
+1. **RASPHONE**çalıştırın.
 
-   ![Rasphone](./media/vpn-gateway-howto-always-on-device-tunnel/rasphone.png)
-1. Aranacak **MachineCertTest** girişi ve tıklatın **Connect**.
+   ![belirlen](./media/vpn-gateway-howto-always-on-device-tunnel/rasphone.png)
+1. **Machineccerttest** girişini bulun ve **Bağlan**' a tıklayın.
 
    ![Bağlan](./media/vpn-gateway-howto-always-on-device-tunnel/connect.png)
 1. Bağlantı başarılı olursa, bilgisayarı yeniden başlatın. Tünel otomatik olarak bağlanır.
 
 ## <a name="cleanup"></a>Temizleme
 
-Profilini kaldırmak için aşağıdaki komutu çalıştırın:
+Profili kaldırmak için aşağıdaki komutu çalıştırın:
 
 ![Temizleme](./media/vpn-gateway-howto-always-on-device-tunnel/cleanup.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sorun giderme için bkz: [Azure noktadan siteye bağlantı sorunları](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)
+Sorun giderme için bkz. [Azure Noktadan siteye bağlantı sorunları](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)

@@ -1,6 +1,6 @@
 ---
-title: Web uygulaması güvenlik duvarı için özel bir yanıt Azure ön Kapıda yapılandırın
-description: Web uygulaması Güvenlik Duvarı (WAF), bir istek engellediğinde bir özel yanıt kodu ve şu iletiyle yapılandırmayı öğrenin.
+title: Azure ön kapıda Web uygulaması güvenlik duvarı için özel bir yanıt yapılandırma
+description: Web uygulaması güvenlik duvarı (WAF) bir isteği engellediğinde özel yanıt kodunu ve iletiyi nasıl yapılandıracağınızı öğrenin.
 services: frontdoor
 author: KumudD
 ms.service: frontdoor
@@ -9,34 +9,35 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/21/2019
-ms.author: tyao;kumud
-ms.openlocfilehash: 146d17fe457751fb950f723c34826e43516e4e86
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.author: kumud
+ms.reviewer: tyao
+ms.openlocfilehash: 657dc3a43302d16bc403d790bf2c34c2d147dd6c
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165367"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846364"
 ---
-# <a name="configure-a-custom-response-for-azure-web-application-firewall"></a>Azure web uygulaması güvenlik duvarı için özel bir yanıt yapılandırın
+# <a name="configure-a-custom-response-for-azure-web-application-firewall"></a>Azure Web uygulaması güvenlik duvarı için özel bir yanıt yapılandırma
 
-Varsayılan olarak, Azure web uygulaması Güvenlik Duvarı (WAF) ile Azure ön kapısı eşleşen kural nedeniyle, bir istek engellediğinde 403 durum koduyla döndürür **istek engellendi** ileti. Bu makalede, bir istek WAF tarafından engellendiğinde özel yanıt durum kodu ve yanıt iletisi yapılandırma açıklanır.
+Varsayılan olarak, Azure ön kapısına sahip Azure Web uygulaması güvenlik duvarı (WAF), eşleşen bir kural nedeniyle bir isteği engellediğinde, **istek engellendi** iletisiyle 403 durum kodu döndürür. Bu makalede bir istek WAF tarafından engellendiğinde özel yanıt durum kodu ve yanıt iletisinin nasıl yapılandırılacağı açıklanır.
 
 ## <a name="set-up-your-powershell-environment"></a>PowerShell ortamınızı hazırlama
 Azure PowerShell, Azure kaynaklarınızı yönetmek için [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) modelini kullanan bir dizi cmdlet sunar. 
 
-[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)'i yerel makinenize yükleyebilir ve herhangi bir PowerShell oturumunda kullanabilirsiniz. Azure kimlik bilgilerinizle oturum açmak için bu sayfadaki yönergeleri izleyin ve Az PowerShell modülünü yükleyin.
+[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)'i yerel makinenize yükleyebilir ve herhangi bir PowerShell oturumunda kullanabilirsiniz. Azure kimlik bilgilerinizle oturum açmak ve az PowerShell modülünü yüklemek için sayfadaki yönergeleri izleyin.
 
-### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>Oturum açma için etkileşimli bir iletişim kutusu ile Azure'a bağlanma
+### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>Oturum açma için etkileşimli iletişim kutusuyla Azure 'a bağlanma
 ```
 Connect-AzAccount
 Install-Module -Name Az
 ```
-PowerShellGet yüklü geçerli sürümü olduğundan emin olun. Aşağıdaki komutu çalıştırın ve PowerShell'i yeniden açın.
+PowerShellGet 'in güncel sürümünün yüklü olduğundan emin olun. Aşağıdaki komutu çalıştırın ve PowerShell'i yeniden açın.
 
 ```
 Install-Module PowerShellGet -Force -AllowClobber
 ``` 
-### <a name="install-azfrontdoor-module"></a>Az.FrontDoor modülünü yükleme 
+### <a name="install-azfrontdoor-module"></a>Install az. Frontkapı Module 
 
 ```
 Install-Module -Name Az.FrontDoor
@@ -44,15 +45,15 @@ Install-Module -Name Az.FrontDoor
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Azure'da, bir kaynak grubu için ilgili kaynakları ayırın. Bu örnekte, bir kaynak grubu kullanarak oluşturduğunuz [yeni AzResourceGroup](/powershell/module/Az.resources/new-Azresourcegroup).
+Azure 'da, ilgili kaynakları bir kaynak grubuna ayırabilirsiniz. Bu örnekte, [New-AzResourceGroup](/powershell/module/Az.resources/new-Azresourcegroup)kullanarak bir kaynak grubu oluşturacaksınız.
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroupWAF
 ```
 
-## <a name="create-a-new-waf-policy-with-custom-response"></a>Özel yanıtı ile yeni bir WAF ilkesi oluşturma 
+## <a name="create-a-new-waf-policy-with-custom-response"></a>Özel Yanıtla yeni bir WAF ilkesi oluşturma 
 
-405 ve ileti için ayarlanan özel yanıt durum kodu ile yeni bir WAF ilkesi oluşturma örneği aşağıda verilmiştir **bloke edilir.** kullanarak [yeni AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy).
+Aşağıda, özel yanıt durum kodu 405 olarak ayarlanan yeni bir WAF ilkesi oluşturma örneği verilmiştir ve bu ileti **engellenir.** [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy)kullanma.
 
 ```azurepowershell
 # WAF policy setting
@@ -65,7 +66,7 @@ New-AzFrontDoorWafPolicy `
 -CustomBlockResponseBody "<html><head><title>You are blocked.</title></head><body></body></html>"
 ```
 
-Özel yanıt kodu veya yanıt gövdesi ayarlarını var olan bir WAF ilkenin kullanarak [güncelleştirme AzFrontDoorFireWallPolicy](/powershell/module/az.frontdoor/Update-AzFrontDoorWafPolicy).
+[Update-AzFrontDoorFireWallPolicy](/powershell/module/az.frontdoor/Update-AzFrontDoorWafPolicy)kullanarak var olan bir WAF ilkesinin özel yanıt kodunu veya yanıt gövdesi ayarlarını değiştirin.
 
 ```azurepowershell
 # modify WAF response code
@@ -86,4 +87,4 @@ Update-AzFrontDoorFireWallPolicy `
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Daha fazla bilgi edinin [ön kapısı](front-door-overview.md)
+- [Ön kapı](front-door-overview.md) hakkında daha fazla bilgi

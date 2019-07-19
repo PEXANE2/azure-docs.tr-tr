@@ -1,21 +1,22 @@
 ---
-title: "Öğretici: azure'da Docker kayıt defteri coğrafi olarak çoğaltılmış uygulaması dağıtma"
-description: İki farklı Azure bölgelerine coğrafi olarak çoğaltılmış Azure kapsayıcı kayıt defterinden bir kapsayıcı görüntüsü kullanarak Linux tabanlı bir web uygulaması dağıtın. Üç bölümden oluşan bir serinin ikinci bölümü.
+title: Öğretici-Azure 'da coğrafi olarak çoğaltılan Docker kayıt defterinden uygulama dağıtma
+description: Coğrafi olarak çoğaltılan bir Azure Container Registry 'den bir kapsayıcı görüntüsü kullanarak Linux tabanlı bir Web uygulamasını iki farklı Azure bölgesine dağıtın. Üç bölümden oluşan bir serinin ikinci bölümü.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: tutorial
 ms.date: 08/20/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: e5a38e2b6550d763f30c2462944b154f76bbe92c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5a3ffcc75ac37dac1284d0ffb5af234fd2f376cd
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60508257"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310455"
 ---
-# <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Öğretici: Coğrafi çoğaltmalı Azure container registry'den web uygulaması dağıtma
+# <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Öğretici: Coğrafi olarak çoğaltılan bir Azure Container Registry 'den Web uygulaması dağıtma
 
 Bu, üç bölümden oluşan bir öğretici serisinin ikinci bölümüdür. [Birinci bölümde](container-registry-tutorial-prepare-registry.md), özel bir coğrafi olarak çoğaltılmış kapsayıcı kayıt defteri oluşturuldu, kaynaktan bir kapsayıcı görüntüsü derlendi ve kayıt defterine gönderildi. Bu makalede, kapsayıcıyı farklı Azure bölgelerinde bulunan iki Web App örneğine dağıtarak coğrafi olarak çoğaltılmış kayıt defterinin ağa yakın özelliğinden yararlanacaksınız. Ardından her bir örnek, kapsayıcı görüntüsünü en yakın kayıt defterinden çeker.
 
@@ -49,7 +50,7 @@ Bu adımda, *Batı ABD* bölgesinde bir Kapsayıcılar için Web App örneği ol
 
 "Web uygulamasında dağıt"ı seçtikten sonra görüntülenen **Kapsayıcılar için Web App** bölümünde, her bir ayar için aşağıdaki değerleri belirtin:
 
-| Ayar | Değer |
+| Ayar | Value |
 |---|---|
 | **Site Adı** | Web uygulaması için genel benzersiz bir ad. Bu örnekte, web uygulamasının içinden dağıtıldığı bölgeyi ve kayıt defterini kolayca belirlemek için `<acrName>-westus` biçimini kullanıyoruz. |
 | **Kaynak Grubu** | **Var olanı kullan** > `myResourceGroup` |
@@ -78,7 +79,7 @@ Coğrafi olarak çoğaltılmış kapsayıcı kayıt defterinizden Docker görün
 
 İkinci bir web uygulamasını *Doğu ABD* bölgesine dağıtmak için önceki bölümde açıklanan yordamı kullanın. **Kapsayıcılar için Web App** bölümünde aşağıdaki değerleri belirtin:
 
-| Ayar | Değer |
+| Ayar | Value |
 |---|---|
 | **Site Adı** | Web uygulaması için genel benzersiz bir ad. Bu örnekte, web uygulamasının içinden dağıtıldığı bölgeyi ve kayıt defterini kolayca belirlemek için `<acrName>-eastus` biçimini kullanıyoruz. |
 | **Kaynak Grubu** | **Var olanı kullan** > `myResourceGroup` |

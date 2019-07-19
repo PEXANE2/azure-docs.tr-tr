@@ -1,5 +1,5 @@
 ---
-title: "Dönüşümleri: Python SDK'sı veri hazırlama"
+title: "Dönüşümler: Data Prep Python SDK 'Sı"
 titleSuffix: Azure Machine Learning service
 description: Azure Machine Learning veri hazırlığı SDK'sı ile verileri temizleme ve dönüştürme hakkında bilgi edinin. Sütun ekleme, istenmeyen satırları veya sütunları filtrelemek ve eksik değerleri impute dönüştürme yöntemleri kullanın.
 services: machine-learning
@@ -10,23 +10,23 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: jmartens
-ms.date: 05/02/2019
+ms.date: 07/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: db23c8af7eaa4a86691ccb0bb831ce2cc28d635c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6c5d60bb51a96725f766c6b49d61ac20fb2a1b58
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65471828"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297914"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>Azure Machine Learning veri hazırlığı SDK'sı ile verileri dönüştürün
 
-Bu makalede, farklı yöntemler kullanarak verileri dönüştürme bilgi `azureml-dataprep` paket. Paket eksik değerleri impute sütunlar eklemek ve istenmeyen satırları veya sütunları filtrelemek basit hale getirmek işlevleri sunar. Tam başvuru belgelerine bakın [azureml dataprep paket](https://aka.ms/data-prep-sdk).
+Bu makalede, `azureml-dataprep` paketini kullanarak farklı veri dönüştürme yöntemleri öğrenirsiniz. Paket, sütun eklemeyi, istenmeyen satırları veya sütunları filtrelemeyi ve ımpute eksik değerleri daha kolay hale getirmek için işlevler sunar. [Azureml-dataprep paketi](https://aka.ms/data-prep-sdk)için tam başvuru belgelerine bakın.
 
 > [!Important]
-> Yeni bir çözüm oluşturuyorsanız deneyin [Azure Machine Learning veri kümeleri](how-to-explore-prepare-data.md) (Önizleme) verileri, anlık görüntü verileri dönüştürme ve tutulan veri kümesi tanımlarını depolar. Veri kümeleri, veri hazırlığı SDK'sı, yapay ZEKA çözümlerini veri kümelerini yönetmek için genişletilmiş işlevselliği sunan sonraki sürümüdür. Kullanırsanız `azureml-dataprep` Bağlantılarınızdaki kullanmak yerine bir veri akışı oluşturmak için paket `azureml-datasets` bir veri kümesini oluşturmak için paket, anlık görüntüler veya tutulan veri kümeleri, daha sonra kullanmak üzere mümkün olmayacaktır.
+> Yeni bir çözüm oluşturuyorsanız, verilerinizi dönüştürmek için Azure Machine Learning veri [kümelerini](how-to-explore-prepare-data.md) (Önizleme) deneyin, verileri anlık görüntü yapın ve sürümü tutulan veri kümesi tanımlarını depolayın. Veri kümeleri, veri hazırlama SDK 'sının bir sonraki sürümüdür ve AI çözümlerinde veri kümelerini yönetmek için genişletilmiş işlevler sunar. Bir veri kümesi oluşturmak `azureml-dataprep` için `azureml-datasets` paketini kullanmak yerine dönüşümlerinizde bir veri akışı oluşturmak için paketini kullanırsanız, anlık görüntüleri veya sürümlenmiş veri kümelerini daha sonra kullanamazsınız.
 
-Bu nasıl yapılır örnekler için aşağıdaki görevleri gösterir:
+Bu nasıl yapılır, aşağıdaki görevler için örnekler gösterir:
 
 - Bir ifade kullanarak sütun ekleme
 - [Eksik değerleri impute](#impute-missing-values)
@@ -100,9 +100,9 @@ dflow.head(3)
 |1|10139776|false|42.008124|-87.659550|
 |2|10140270|false|NaN|NaN|
 
-Üçüncü kayıt enlem ve boylam değerleri eksik. Bu eksik değerleri impute için kullanmanız [ `ImputeMissingValuesBuilder` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.api.builders.imputemissingvaluesbuilder?view=azure-dataprep-py) sabit bir ifade öğrenin. Ya da bir hesaplanmış sütunları impute `MIN`, `MAX`, `MEAN` değeri veya `CUSTOM` değeri. Zaman `group_by_columns` belirtilirse, eksik değerler imputed grubuyla tarafından `MIN`, `MAX`, ve `MEAN` grubuna göre hesaplanır.
+Üçüncü kayıt enlem ve boylam değerleri eksik. Eksik değerleri bir şekilde kullanmak [`ImputeMissingValuesBuilder`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.api.builders.imputemissingvaluesbuilder?view=azure-dataprep-py) için, sabit bir ifade öğrenirsiniz. Ya da bir hesaplanmış sütunları impute `MIN`, `MAX`, `MEAN` değeri veya `CUSTOM` değeri. Zaman `group_by_columns` belirtilirse, eksik değerler imputed grubuyla tarafından `MIN`, `MAX`, ve `MEAN` grubuna göre hesaplanır.
 
-Denetleme `MEAN` enlem kullanarak sütun değeri [ `summarize()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#summarize-summary-columns--typing-union-typing-list-azureml-dataprep-api-dataflow-summarycolumnsvalue---nonetype----none--group-by-columns--typing-union-typing-list-str---nonetype----none--join-back--bool---false--join-back-columns-prefix--typing-union-str--nonetype----none-----azureml-dataprep-api-dataflow-dataflow) işlevi. Bu işlev dizi sütunların kabul `group_by_columns` toplama düzeyini belirtmek için parametre. `summary_columns` Parametreyi kabul eden bir `SummaryColumnsValue` çağırın. Bu işlev çağrısı geçerli sütun adı olan yeni hesaplanan alan adı belirtir ve `SummaryFunction` gerçekleştirilecek.
+İşlevini kullanarak Enlem sütununun `MEAN` [`summarize()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#summarize-summary-columns--typing-union-typing-list-azureml-dataprep-api-dataflow-summarycolumnsvalue---nonetype----none--group-by-columns--typing-union-typing-list-str---nonetype----none--join-back--bool---false--join-back-columns-prefix--typing-union-str--nonetype----none-----azureml-dataprep-api-dataflow-dataflow) değerini denetleyin. Bu işlev dizi sütunların kabul `group_by_columns` toplama düzeyini belirtmek için parametre. `summary_columns` Parametreyi kabul eden bir `SummaryColumnsValue` çağırın. Bu işlev çağrısı geçerli sütun adı olan yeni hesaplanan alan adı belirtir ve `SummaryFunction` gerçekleştirilecek.
 
 ```python
 dflow_mean = dflow.summarize(group_by_columns=['Arrest'],
@@ -190,7 +190,7 @@ Son olarak, çağrı `builder.preview(skip=30, count=5)` kaynak sütunun yanınd
 Şimdi, istediğiniz satır sayısını geçirin `skip` satırları görmek için üst birazcık daha indiğimde.
 
 > [!NOTE]
-> Preview() işlevi satırları atlar, ancak çıktı dizini yeniden sayı değil. Aşağıdaki örnekte, ' % s'dizini 0 tabloda veri akışı 30 dizinde karşılık gelir.
+> Preview () işlevi satırları atlar ancak çıkış dizinini yeniden oluşturmaz. Aşağıdaki örnekte, tablodaki 0 dizini veri akışındaki 30 dizinine karşılık gelir.
 
 ```python
 builder.preview(skip=30, count=5)
@@ -204,7 +204,7 @@ builder.preview(skip=30, count=5)
 |3|1/2/2015 0:54|1 Şubat 2015 12: 00 - 02: 00|
 |4|1/2/2015 1:00|1 Şubat 2015 12: 00 - 02: 00|
 
-Burada oluşturulan program ile ilgili bir sorun görürsünüz. Yalnızca yukarıda sağlanan bir örneğe bağlı olarak, bu durumda istediklerinizi değil olduğu "Gün/ay/yıl" olarak bir tarihi ayrıştırmak türet program seçtiniz. Bu sorunu düzeltmek için belirli bir kayıt dizinini hedef ve kullanarak başka bir örnek sağlar `add_example()` işlevini `builder` değişkeni.
+Burada oluşturulan program ile ilgili bir sorun görürsünüz. Yalnızca yukarıda sağlanan bir örneğe bağlı olarak, bu durumda istediklerinizi değil olduğu "Gün/ay/yıl" olarak bir tarihi ayrıştırmak türet program seçtiniz. Bu sorunu onarmak için, belirli bir kayıt dizinini hedefleyin ve `add_example()` `builder` değişkende işlevini kullanarak başka bir örnek sağlayın.
 
 ```python
 builder.add_example(source_data=dflow.iloc[3], example_value='Jan 2, 2015 12AM-2AM')
@@ -219,7 +219,7 @@ builder.preview(skip=30, count=5)
 |3|1/2/2015 0:54|2 Ocak 2015 12: 00 - 02: 00|
 |4|1/2/2015 1:00|2 Ocak 2015 12: 00 - 02: 00|
 
-Satırları doğru bir şekilde işlemek artık ' 1/2/2015' olarak '2 Ocak 2015', ancak ötesinde bakarsanız dizin türetilmiş sütun 76, sonunda değerlere hiçbir şey türetilmiş sütununa sahip görürsünüz.
+Artık satırlar ' 1/2/2015 ' öğesini ' Ocak 2, 2015 ' olarak doğru işleyecektir, ancak türetilmiş sütunun dizin 76 ' nin ötesine bakarsanız, sonundaki değerlerin türetilmiş sütunda hiçbir şey olmadığını görürsünüz.
 
 ```python
 builder.preview(skip=75, count=5)
@@ -228,11 +228,11 @@ builder.preview(skip=75, count=5)
 
 ||DATE|date_timerange|
 |-----|-----|-----|
-|0|1/3/2015 7:00|3 Ocak 2015 6 AM - 8: 00|
-|1|1/3/2015 7:54|3 Ocak 2015 6 AM - 8: 00|
-|2|1/29/2015 6:54|None|
-|3|1/29/2015 7:00|None|
-|4|1/29/2015 7:54|None|
+|0|1/3/2015 7:00|3 Ocak 2015, 18:00|
+|1|1/3/2015 7:54|3 Ocak 2015, 18:00|
+|2|1/29/2015 6:54|Yok.|
+|3|1/29/2015 7:00|Yok.|
+|4|1/29/2015 7:54|Yok.|
 
 ```python
 builder.add_example(source_data=dflow.iloc[77], example_value='Jan 29, 2015 6AM-8AM')
@@ -241,13 +241,13 @@ builder.preview(skip=75, count=5)
 
 ||DATE|date_timerange|
 |-----|-----|-----|
-|0|1/3/2015 7:00|3 Ocak 2015 6 AM - 8: 00|
-|1|1/3/2015 7:54|3 Ocak 2015 6 AM - 8: 00|
-|2|1/29/2015 6:54|29 Ocak 2015 6 AM - 8: 00|
-|3|1/29/2015 7:00|29 Ocak 2015 6 AM - 8: 00|
-|4|1/29/2015 7:54|29 Ocak 2015 6 AM - 8: 00|
+|0|1/3/2015 7:00|3 Ocak 2015, 18:00|
+|1|1/3/2015 7:54|3 Ocak 2015, 18:00|
+|2|1/29/2015 6:54|29 Ocak 2015 6:00:00-08:00|
+|3|1/29/2015 7:00|29 Ocak 2015 6:00:00-08:00|
+|4|1/29/2015 7:54|29 Ocak 2015 6:00:00-08:00|
 
- Geçerli örnek türetme arama listesini görmek için `list_examples()` Oluşturucu nesne üzerinde.
+ Oluşturucu nesnesinde geçerli örnek türetmeler çağrısının `list_examples()` listesini görmek için.
 
 ```python
 examples = builder.list_examples()
@@ -260,21 +260,26 @@ examples = builder.list_examples()
 |2|29/1/2015 20:54|29 Ocak 2015'te 8-10 PM|-3|
 
 
-Yanlış örnek silmek istiyorsanız bazı durumlarda ya da geçirebilirsiniz `example_row` pandas DataFrame, gelen veya `example_id` değeri. Örneğin, çalıştırdığınız `builder.delete_example(example_id=-1)`, ilk dönüştürme örnek siler.
+Bazı durumlarda, yanlış örnekleri silmek istiyorsanız, Pandas dataframe veya `example_row` `example_id` Value 'dan geçiş yapabilirsiniz. Örneğin, çalıştırırsanız `builder.delete_example(example_id=-1)`, ilk dönüştürme örneğini siler.
 
 
-Çağrı `to_dataflow()` eklenen istenen türetilmiş sütunlar bir veri akışı döndürür Oluşturucusu '.
+İstenen `to_dataflow()` türetilmiş sütunları eklenen bir veri akışı döndüren Oluşturucu üzerinde çağrı yapın.
 
 ```python
 dflow = builder.to_dataflow()
 df = dflow.to_pandas_dataframe()
 ```
 
-## <a name="filtering"></a>Filtering
+## <a name="filtering"></a>Filtreleme
 
-SDK'sı yöntemleri içerir [ `drop_columns()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#drop-columns-columns--multicolumnselection-----azureml-dataprep-api-dataflow-dataflow) ve [ `filter()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py) izin verecek şekilde satırları veya sütunları filtreleyin.
+SDK, yöntemleri [`drop_columns()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#drop-columns-columns--multicolumnselection-----azureml-dataprep-api-dataflow-dataflow) içerir ve [`filter()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py) sütunları veya satırları filtrelemenizi sağlar.
 
 ### <a name="initial-setup"></a>Başlangıç kurulumu
+
+> [!Note]
+> Aynı örnekteki URL Bu bir URL değil. Bunun yerine, blob 'daki demo klasörünü ifade eder. Verilerin tam URL 'SI https://dprepdata.blob.core.windows.net/demo/green-small/green_tripdata_2013-08.csv
+
+Öğreticide yaptığımız özellikler, klasörün içindeki tüm dosyaları yüklemek ve sonucu green_df_raw ve yellow_df_raw olarak toplamanız.
 
 ```python
 import azureml.dataprep as dprep
@@ -293,7 +298,7 @@ dflow.head(5)
 
 ### <a name="filtering-columns"></a>Sütunları filtreleme
 
-Sütunları filtrelemek, kullanın `drop_columns()`. Bu yöntem bırakmak sütun listesini alır veya daha karmaşık bir bağımsız değişken olarak adlandırılan [ `ColumnSelector` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.columnselector?view=azure-dataprep-py).
+Sütunları filtrelemek, kullanın `drop_columns()`. Bu yöntem, bırakılacak sütunların bir listesini veya adlı [`ColumnSelector`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.columnselector?view=azure-dataprep-py)daha karmaşık bir bağımsız değişkeni alır.
 
 #### <a name="filtering-columns-with-list-of-strings"></a>Sütunları içeren bir dize listesi filtreleme
 
@@ -416,7 +421,7 @@ dflow.head(2)
 |0|ALABAMA|1|101710|Hale ilçe|10171002158| |
 |1|ALABAMA|1|101710|Hale ilçe|10171002162| |
 
-Veri kümesinin trim ve sütunları kaldırma, değerleri değiştirerek ve türlerini dönüştürme gibi bazı temel dönüşümler yapın.
+Veri kümesini kırpın ve sütunları kaldırma, değerleri değiştirme ve türleri dönüştürme dahil bazı temel dönüşümler yapın.
 
 ```python
 dflow = dflow.keep_columns(['stnam', 'leanm10', 'ncessch', 'MAM_MTH00numvalid_1011'])
@@ -443,7 +448,7 @@ dflow.filter(col('MAM_MTH00numvalid_1011').is_null()).head(2)
 
 ### <a name="transform-partition"></a>Bölüm dönüştürme
 
-Kullanım [ `transform_partition()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#transform-partition-script--str-----azureml-dataprep-api-dataflow-dataflow) tüm null değerleri 0 ile değiştirilecek. Bu kod, tek seferde tüm veri kümesi üzerinde bir bölümü tarafından çalıştırılır. Başka bir deyişle, bir büyük veri kümesini temel çalışma zamanı tarafından bölüm bölüm veri işlerken paralel olarak bu kod çalıştırabilir.
+Tüm [`transform_partition()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#transform-partition-script--str-----azureml-dataprep-api-dataflow-dataflow) null değerlerini 0 ile değiştirmek için kullanın. Bu kod, tek seferde tüm veri kümesi üzerinde bir bölümü tarafından çalıştırılır. Başka bir deyişle, bir büyük veri kümesini temel çalışma zamanı tarafından bölüm bölüm veri işlerken paralel olarak bu kod çalıştırabilir.
 
 Python betiğini çağrılan bir işlev tanımlamalıdır `transform()` iki bağımsız değişkeni almayan `df` ve `index`. `df` Bağımsız değişken bölümü için veri içeren bir pandas dataframe olacaktır ve `index` değişkendir bölümünün benzersiz bir tanımlayıcı. Dönüştürme işlevi tam olarak geçirilen veri çerçevesi düzenleyebilirsiniz ancak bir dataframe döndürmelidir. Python betiğini içe aktaran tüm kitaplıkları, veri akışı çalıştırıldığı ortama mevcut olması gerekir.
 
@@ -463,7 +468,7 @@ df.head(2)
 
 ### <a name="new-script-column"></a>Yeni bir betik sütun
 
-Ülke adı ve durum adı olan yeni bir sütun oluşturmak için ve eyalet adı harf yapılacak bir Python betiği kullanabilirsiniz. Bunu yapmak için [ `new_script_column()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#new-script-column-new-column-name--str--insert-after--str--script--str-----azureml-dataprep-api-dataflow-dataflow) veri akışı üzerinde yöntemi.
+İlçe adı ve eyalet adına sahip yeni bir sütun oluşturmak ve ayrıca durum adını büyük harfle almak için bir Python betiği kullanabilirsiniz. Bunu yapmak için veri akışındaki [`new_script_column()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#new-script-column-new-column-name--str--insert-after--str--script--str-----azureml-dataprep-api-dataflow-dataflow) yöntemi kullanın.
 
 Python betiğini çağrılan bir işlev tanımlamalıdır `newvalue()` tek bir bağımsız değişken almayan `row`. `row` Bağımsız değişkeni olan bir, dict (`key`: sütun adı `val`: geçerli değer) ve veri kümesindeki her satır için bu işleve geçirilir. Bu işlev, yeni bir sütun kullanılacak bir değer döndürmesi gerekir. Python betiğini içe aktaran tüm kitaplıkları, veri akışı çalıştırıldığı ortama mevcut olması gerekir.
 
@@ -482,7 +487,7 @@ dflow.head(2)
 
 ### <a name="new-script-filter"></a>Yeni betik filtresi
 
-Python kullanarak ifade derleme [ `new_script_filter()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#new-script-filter-script--str-----azureml-dataprep-api-dataflow-dataflow) 'Hale' olduğu yeni satırlar için veri kümesini filtrelemek için `county_state` sütun. Bir ifade döndürür `True` satır tutmak istiyorsanız ve `False` satır bırakmak.
+Veri kümesini yalnızca ' hale [`new_script_filter()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#new-script-filter-script--str-----azureml-dataprep-api-dataflow-dataflow) ' sütununun yeni `county_state` sütununda olmadığı satırlara filtrelemek için kullanarak bir Python ifadesi oluşturun. Bir ifade döndürür `True` satır tutmak istiyorsanız ve `False` satır bırakmak.
 
 ```python
 dflow = dflow.new_script_filter("""
@@ -500,4 +505,4 @@ dflow.head(2)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Machine Learning veri hazırlığı SDK'sı bkz [öğretici](tutorial-data-prep.md) çözmenin belirli bir senaryo örneği
+* Belirli bir senaryoyu çözme örneği için bkz. Azure Machine Learning Data Prep SDK [öğreticisi](tutorial-data-prep.md)

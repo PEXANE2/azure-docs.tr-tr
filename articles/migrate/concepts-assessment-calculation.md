@@ -1,140 +1,149 @@
 ---
-title: Azure Geçişi'ndeki değerlendirme hesaplamaları | Microsoft Docs
-description: Azure geçişi hizmetinde değerlendirme hesaplamaları genel bir bakış sağlar.
+title: Azure geçişi 'nde değerlendirme hesaplamaları | Microsoft Docs
+description: Azure geçişi hizmetindeki değerlendirme hesaplamalarına genel bir bakış sağlar.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 02/19/2019
+ms.date: 07/15/2019
 ms.author: raynew
-ms.openlocfilehash: a328549307772cbdf470160cc1ad713fe1ee5e05
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 87aa48c992b7887ce86c43cac29910dcc57b3e91
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67805978"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234285"
 ---
 # <a name="assessment-calculations"></a>Değerlendirme hesaplamaları
 
-Azure geçişi Server değerlendirmesi, Azure'a geçiş için şirket içi iş yüklerini değerlendirir. Bu makalede değerlendirmelerin nasıl hesaplandığı hakkında bilgi sağlar.
+[Azure geçişi](migrate-services-overview.md) , şirket içi uygulamalarınızı, iş yüklerinizi ve özel/genel bulut örneklerini Azure 'a bulmayı, değerlendirmeyi ve geçirmeyi izlemek için bir merkezi Merkez sağlar. Hub, değerlendirme ve geçiş için Azure geçiş araçları ve ayrıca üçüncü taraf bağımsız yazılım satıcısı (ISV) teklifleri sağlar.
 
-
-[Azure geçişi](migrate-services-overview.md) bulma, değerlendirme ve şirket içi uygulamalarınızı ve iş yükleri ve private/public bulut örneklerini azure'a geçişini izlemek için merkezi bir nokta sağlar. Hub araçları Azure geçişi, değerlendirme ve geçiş, ek olarak üçüncü taraf bağımsız yazılım satıcısı (ISV) teklifleri sağlar.
-
-## <a name="overview"></a>Genel Bakış
-
-Azure geçişi Server değerlendirmesi değerlendirme üç aşamadan oluşur. Boyutlandırma tarafından izlenen bir uygunluğu analiziyle değerlendirme başlar ve son olarak, bir aylık maliyet tahmini. Öncekine geçerse bir makine yalnızca bir sonraki aşamaya taşır. Azure uygunluk denetimi bir makine başarısız olursa, Azure ve boyutlandırma ve maliyet yapılmaz için örneğin, bunu uygun olarak işaretlenir.
-
+Sunucu değerlendirmesi, Azure 'da değerlendirir şirket içi sunucuları Azure 'a geçiş için geçirme konusunda bir araçtır. Bu makalede, değerlendirmelerin nasıl hesaplandığı hakkında bilgi sağlanır.
 
 ## <a name="whats-in-an-assessment"></a>Bir değerlendirme neleri içerir?
 
 **Özellik** | **Ayrıntılar**
 --- | ---
-**Hedef konum** | Geçişi yapmak istediğiniz Azure konumu.<br/><br/> Azure geçişi şu anda bu hedef bölgeler destekler: Avustralya Doğu, Avustralya Güneydoğu, Brezilya Güney, Kanada Orta, Kanada Doğu, Orta Hindistan, Orta ABD, Çin Doğu, Kuzey Çin, Doğu Asya, Doğu ABD, Doğu ABD 2, Almanya Orta, Almanya Kuzeydoğu, Doğu, Japonya Batı, Kore Orta, Kore Japonya Güney, Kuzey Orta ABD, Kuzey Avrupa, Güney Orta ABD, Güneydoğu Asya, Hindistan Güney, UK Güney, UK Batı, ABD Devleti Arizona, ABD Devleti Texas, ABD Devleti Virginia, Batı Orta ABD, Batı Avrupa, Batı Hindistan, Batı ABD ve Batı ABD 2.<br/> Varsayılan hedef bölge, Batı ABD 2 olarak ayarlanır.
-**Depolama türü** | Standart HHD diskler/standart SSD disk/Premium.<br/><br/> Disk önerisi, değerlendirme içinde otomatik olarak depolama türü belirttiğinizde, disklerin (IOPS ve aktarım hızı) performans verileri üzerinde temel alır.<br/><br/> Premium veya standart depolama türü belirtirseniz, SKU'nun disk depolama türü içinde bir değerlendirme önerir seçili.<br/><br/> Tek bir örneği sanal makine SLA'sı % 99,9 elde etmek istiyorsanız, depolama türü Premium yönetilen diskler ayarlayabilirsiniz. Ardından tüm değerlendirmesi diskler, Premium yönetilen diskler önerilecektir. <br/> Azure Geçişi yalnızca yönetilen disklerin geçiş değerlendirmesini destekler.<br/> 
-**Ayrılmış örnekleri (RI)** | Ayrılmış örnekleriniz varsa bu özelliği belirtin. Maliyet tahminleri değerlendirmede RI indirimleri hesaba katması. Ayrılmış örnekleri şu anda yalnızca Azure geçişi Kullandıkça Öde teklifleri için desteklenir.
-**Boyutlandırma ölçütü** | Doğru boyuta VM'ler için kullanılır. Performans tabanlı boyutlandırma olabilir veya as-performans geçmişini dikkate almadan şirket içinde olduğu.
-**Performans geçmişi** | VM performansı değerlendirmek için dikkate alınacak süre. Bu özellik yalnızca boyutlandırma performans tabanlı olduğunda geçerlidir.
-**Yüzdebirlik kullanımı** | Doğru boyutlandırma VM'ler için kullanılan performans örnek yüzdelik dilim değeri. Bu özellik yalnızca boyutlandırma performans tabanlı olduğunda geçerlidir.
-**VM serisi** | VM serisi, boyut tahmini için kullanılır. Örneğin, Azure’da A serisi VM’lere geçirmeyi planlamadığınız bir üretim ortamınız varsa, A serisini liste veya serilerin dışında bırakabilirsiniz. Boyutlandırma yalnızca seçili serilerde yapılır.
-**Konfor katsayısı** | Azure geçişi Server değerlendirmesi değerlendirme sırasında bir Tamponu (konfor katsayısı) göz önünde bulundurur. Bu tampon, VM’lerin makine kullanım verilerinin (CPU, bellek, disk ve ağ) üzerine uygulanır. Konfor katsayısı; sezona özgü kullanım, kısa performans geçmişi ve gelecek kullanımlarda oluşabilecek artışlar gibi konuları hesaba katar.<br/><br/> Örneğin, %20 kullanıma sahip 10 çekirdekli bir VM normalde 2 çekirdekli VM ile sonuçlanır. Ancak, 2.0x konfor katsayısı ile sonuç 4 çekirdekli VM olur.
+**Hedef konum** | Geçişi yapmak istediğiniz Azure konumu.<br/> Sunucu değerlendirmesi Şu anda bu hedef bölgeleri destekliyor: Avustralya Doğu, Avustralya Güneydoğu, Brezilya Güney, Kanada Orta, Kanada Doğu, Orta Hindistan, Orta ABD, Çin Doğu, Çin Kuzey, Doğu Asya, Doğu ABD, Doğu ABD2, Almanya Orta, Almanya Kuzeydoğu, Japonya Doğu, Japonya Batı, Kore Orta, Kore Güney, Kuzey Orta ABD, Kuzey Avrupa, Orta Güney ABD, Güneydoğu Asya, Güney Hindistan, UK Güney, UK Batı, US Gov Arizona, US Gov Teksas, US Gov Virginia, Orta Batı ABD, Batı Avrupa, Batı Hindistan, Batı ABD ve Batı ABD2.
+**Depolama türü** | Azure 'da, ' ye taşımak istediğiniz disk türünü belirtmek için bu özelliği kullanabilirsiniz. <br/><br/> Şirket içi olarak boyutlandırma için, hedef depolama türünü Premium yönetilen diskler, Standart SSD yönetilen diskler veya Standart HDD tarafından yönetilen diskler olarak belirtebilirsiniz. Performans tabanlı boyutlandırma için, hedef disk türünü otomatik, Premium yönetilen diskler, Standart HDD yönetilen diskler veya Standart SSD tarafından yönetilen diskler olarak belirtebilirsiniz.<br/><br/> Depolama türünü otomatik olarak belirttiğinizde, disk önerisi, disklerin performans verilerine (ıOPS ve aktarım hızı) göre yapılır. Depolama türünü Premium/standart olarak belirtirseniz, değerlendirme, seçilen depolama türü içinde bir disk SKU 'SU önerir. % 99,9 tek örnekli bir VM SLA 'Sı elde etmek istiyorsanız, depolama türünü Premium ile yönetilen diskler olarak belirtmek isteyebilirsiniz. Bu, değerlendirmede tüm disklerin Premium tarafından yönetilen diskler olarak önerilmesini sağlar. Azure Geçişi’nin yönetilen diskleri yalnızca geçiş değerlendirmesi için desteklediğini unutmayın.
+**Ayrılmış örnekler (RI)** | Bu özellik, Azure 'da [ayrılmış örneklere](https://azure.microsoft.com/pricing/reserved-vm-instances/) sahip olup olmadığını belirtmenize yardımcı olur, değerlendirmede maliyet tahminleri daha sonra RI indirimlerine göre yapılır. Ayrılmış örnekler şu anda yalnızca Azure geçişi 'nde Kullandıkça Öde teklifi için desteklenmektedir.
+**Boyutlandırma ölçütü** | Azure için VM 'Leri doğru şekilde boyutlandırma için kullanılacak ölçüt. Performans geçmişini dikkate almadan, *performans tabanlı* boyutlandırma yapabilir veya VM 'leri *Şirket içinde olacak şekilde boyut olarak*ayarlayabilirsiniz.
+**Performans geçmişi** | Makinelerin performans verilerini değerlendirmek için göz önünde bulundurulması gereken süre. Bu özellik yalnızca boyutlandırma ölçütü *performans tabanlı*olduğunda geçerlidir.
+**Yüzdebirlik kullanımı** | Doğru boyutlandırma için dikkate alınacak performans örnek kümesinin yüzdebirlik değeri. Bu özellik yalnızca boyutlandırma *performans tabanlı*olduğunda geçerlidir.
+**VM serisi** |     Uygun boyutlandırma için değerlendirmek istediğiniz bir VM serisini belirtebilirsiniz. Örneğin, Azure 'da bir serisi VM 'lere geçirmeyi planlamadığınız bir üretim ortamınız varsa, bir serisi listeden veya seriden hariç tutabilir ve sağ boyutlandırma yalnızca seçili seriler içinde yapılır.
+**Konfor katsayısı** | Azure geçişi sunucu değerlendirmesi, değerlendirme sırasında bir arabellek (rahatetken) kabul eder. Bu tampon, VM’lerin makine kullanım verilerinin (CPU, bellek, disk ve ağ) üzerine uygulanır. Konfor katsayısı; sezona özgü kullanım, kısa performans geçmişi ve gelecek kullanımlarda oluşabilecek artışlar gibi konuları hesaba katar.<br/><br/> Örneğin, %20 kullanıma sahip 10 çekirdekli bir VM normalde 2 çekirdekli VM ile sonuçlanır. Ancak, 2.0x konfor katsayısı ile sonuç 4 çekirdekli VM olur.
 **Teklif** | Kaydolduğunuz [Azure teklifi](https://azure.microsoft.com/support/legal/offer-details/). Azure Geçişi, buna göre bir maliyet tahmini oluşturur.
-**Para Birimi** | Fatura para birimi. 
+**Para Birimi** | Fatura para birimi.
 **İndirim (%)** | Azure teklifinin yanı sıra aldığınız, aboneliğe özgü indirim.<br/> Varsayılan ayar, %0’dır.
-**VM çalışma süresi** | Sanal makinelerinizi Azure'da 7/24 çalıştırılması kullanmayacaksanız, bunlar çalıştırıyordur için süresi (gün / ay sayısı) ve her gün saat sayısı belirtebilirsiniz ve maliyet tahminleri buna göre uygulanır.<br/> 31 gün / ay ve günde 24 saat varsayılan değerdir.
-**Azure Hibrit Avantajı** | Yazılım Güvencesine sahip ve için uygun olup olmadığını belirtir [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-use-benefit/). Evet olarak ayarlanırsa, Windows sanal makineleri için Windows olmayan Azure fiyatları dikkate alınır. 
+**VM çalışma süresi** | VM 'leriniz Azure 'da 7/24 çalışmaya devam etmeyeceklerse, çalıştırılacağı süreyi (aylık gün sayısı ve gün başına saat sayısı), maliyet tahminleri de uygun şekilde yapılacak şekilde belirtebilirsiniz.<br/> Varsayılan değer ayda 31 gün ve günde 24 saat olur.
+**Azure Hibrit Avantajı** | Yazılım Güvencesi olup olmadığını ve [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-use-benefit/)için uygun olup olmadığını belirtin. Evet olarak ayarlanırsa, Windows sanal makineleri için Windows olmayan Azure fiyatları dikkate alınır. Varsayılan değer Evet’tir.
 
+## <a name="how-are-assessments-calculated"></a>Değerlendirmeler nasıl hesaplanır?
 
+Azure geçişi sunucu değerlendirmesi ' nde bir değerlendirme, şirket içi sunucular hakkında toplanan meta veriler kullanılarak hesaplanır. Değerlendirme hesaplaması üç aşamada yapılır; değerlendirme hesaplaması, her bir sunucu için Azure uygunluk analizi, ardından boyutlandırma ve son olarak aylık maliyet tahmini ile başlar. Bir sunucu, bir öncekini geçerse yalnızca sonraki bir aşamaya geçer. Örneğin, bir sunucu, Azure uygunluk denetiminde başarısız olursa, Azure için uygun değil olarak işaretlenir ve boyutlandırma ve maliyetlendirme aynı şekilde yapılmaz.
 
-## <a name="azure-suitability-analysis"></a>Azure uygunluk analizi
+## <a name="azure-suitability-analysis"></a>Azure uygunluk Analizi
 
-Tüm makineler, Azure'da çalıştırmak için uygundur. Azure geçişi Server değerlendirmesi, her geçiş için şirket içi makinede değerlendirir ve makinelerin uygunluğunu kategoriden birine kategorilere ayırır:
-- **Azure için hazır** -makine olarak geçirilebilir-hiçbir değişiklik yapmadan azure'dur. Tam Azure desteği ile Azure'da önyükleme yapmaz.
-- **Azure için koşullu olarak hazır** -makine Azure'da önyüklenebilir ancak Azure tam desteğine sahip olmayabilir. Örneğin, daha eski Windows Server işletim sistemi sürümüne sahip bir makine Azure'da desteklenmiyor. Değerlendirmesi geçiş yapmadan önce hazır olma durumu sorunlarını gidermek için önerilen düzeltme yönergeleri izleyin ve bu makinelerin Azure'a geçiş yapmadan önce dikkat gerekir.
-- **Azure için hazır değil** -makine Azure'da önyükleme yapmaz. Örneğin, bir şirket içi makinede bir diski boyutunun 4 TB bağlı birden fazla varsa, Azure üzerinde barındırılamaz. Azure'a geçiş yapmadan önce hazırlık sorunu düzeltmek için değerlendirme önerilen düzeltme yönergeleri gerekir. Doğru boyutlandırma ve maliyet tahmini, Azure için hazır değil olarak işaretlenir makineler için yapılmaz.
-- **Hazır olma durumu bilinmiyor** -Azure geçişi vCenter Server'da mevcut yetersiz veri nedeniyle makine hazır olma bulamadı.
+Tüm makineler Azure 'da çalışmaya uygun değildir. Azure geçişi sunucu değerlendirmesi, her şirket içi makineyi Azure 'a uygunluk için değerlendirir ve değerlendirilen makineleri aşağıdaki uygunluk kategorilerinden birine kategorilere ayırır:
+- **Azure Için hazırlanıyor** -makine herhangi bir değişiklik yapılmadan Azure 'a olarak geçirilebilir. Azure 'da tam Azure desteğiyle önyükleme yapılır.
+- **Azure Için koşullu** olarak kullanılabilir-makine Azure 'da başlatılabilir, ancak tam Azure desteği olmayabilir. Örneğin, eski bir Windows Server işletim sistemi sürümüne sahip bir makine Azure 'da desteklenmez. Bu makineleri Azure 'a geçirmeden önce dikkatli olmanız ve geçirmeden önce hazırlık sorunlarını gidermek için değerlendirmede önerilen düzeltme kılavuzunu izlemeniz gerekir.
+- **Azure için hazırlanma** -makine Azure 'da önyükleme olmayacak. Örneğin, şirket içi bir makinede 64 TB 'den daha fazla disk varsa, Azure üzerinde barındırılamaz. Azure 'a geçiş yapmadan önce hazırlık sorununu onarmak için değerlendirmede önerilen düzeltme kılavuzunu izlemeniz gerekir. Doğru boyut ve maliyet tahmini, Azure için uygun değil olarak işaretlenen makineler için yapılmaz.
+- **Hazır olma durumu bilinmiyor** -şirket içi ortamdan toplanan meta veriler nedeniyle Azure geçişi makinenin hazır olup olmadığını bulamadı.
 
-
+Azure geçişi sunucu değerlendirmesi, şirket içi makinenin Azure 'un hazır olduğunu belirlemek için makine özelliklerini ve konuk işletim sistemini gözden geçirir.
 
 ### <a name="machine-properties"></a>Makine özellikleri
 
-Azure geçişi şirket içi VM'nin Azure'da çalıştırabilirsiniz olup olmadığını belirlemek için aşağıdaki özellikleri gözden geçirir.
+Sunucu değerlendirmesi, Azure üzerinde çalışıp çalışmadığını belirlemek için şirket içi VM 'nin aşağıdaki özelliklerini gözden geçirir.
 
-**Özellik** | **Ayrıntılar** | **Azure için hazır olma durumu**
+**Özellik** | **Ayrıntılar** | **Azure hazırlık durumu**
 --- | --- | ---
-**Önyükleme türü** | Azure, BIOS ve UEFI değil olarak önyükleme türündeki sanal makineleri destekler. | Önyükleme türü UEFI ise koşullu olarak hazır.
-**Çekirdek** | Çekirdek makinelerde eşit veya çekirdek (128 çekirdek) bir Azure sanal makinesi için desteklenen en fazla sayısından daha az olmalıdır.<br/><br/> Performans geçmişi kullanılabilir haldeyse, Azure geçişi, karşılaştırma için kullanılan çekirdek olarak değerlendirir. Konfor katsayısı değerlendirme ayarlarında belirtilmişse konfor katsayısı tarafından kullanılan çekirdek sayısı çarpılır.<br/><br/> Performans geçmişi yok ise, Azure geçişi, konfor katsayısı uygulamadan ayrılmış çekirdekler kullanır. | Hazır değilse, küçüktür veya eşittir sınırları.
-**Bellek** | Makine bellek boyutu eşit veya en yüksek belleğinden daha az olmalıdır (Azure M serisi Standard_M128m 3892 GB&nbsp;<sup>2</sup>) bir Azure sanal makine için izin verilir. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Performans geçmişi kullanılabilir haldeyse, Azure geçişi, karşılaştırma için kullanılan bellek kabul eder. Konfor katsayısı belirtilirse, kullanılan bellek konfor katsayısı ile çarpılır.<br/><br/> Geçmiş yok ise konfor katsayısı uygulamadan ayrılan bellek kullanılır.<br/><br/> | Varsa sınırları içinde hazır.
-**Depolama diski** | Ayrılmış bir diskin boyutu 4 TB (4096 GB) olması gerekir ya da daha az.<br/><br/> Makineye bağlı disk sayısı, 65 veya less, işletim sistemi diskini dahil olmak üzere olması gerekir. | Varsa sınırları içinde hazır.
-**Ağ** | Daha az NIC bağlı veya bir makine 32 olmalıdır. | Varsa sınırları içinde hazır.
+**Önyükleme türü** | Azure, önyükleme türü olan VM 'Leri, UEFı değil, BIOS olarak destekler. | Önyükleme türü UEFı ise koşullu olarak hazırlanın.
+**Sayısı** | Makinelerdeki çekirdek sayısı, bir Azure VM için desteklenen en yüksek çekirdek sayısına (128 çekirdek) eşit veya ondan daha az olmalıdır.<br/><br/> Performans geçmişi varsa, Azure geçişi karşılaştırma için kullanılan çekirdekleri dikkate alır. Değerlendirme ayarlarında bir rahatlık faktörü belirtilmişse, kullanılan çekirdek sayısı, rahatlık faktörüyle çarpılarak çarpılır.<br/><br/> Hiçbir performans geçmişi yoksa, Azure geçişi,, rahatlık faktörünü uygulamadan ayrılmış çekirdekleri kullanır. | Sınırlara eşit veya daha küçükse hazırlanın.
+**Bellek** | Makinenin bellek boyutu, bir Azure sanal makinesi için izin verilen en büyük bellekten (Azure 14serisi Standard_M128m&nbsp;<sup>2</sup>' de 3892 GB) eşit veya ondan küçük olmalıdır. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Performans geçmişi varsa, Azure geçişi karşılaştırma için kullanılan belleği kabul eder. Bir rakip faktörü belirtilmişse, kullanılan bellek, rahatlık faktörüyle çarpılarak çarpılır.<br/><br/> Hiçbir geçmiş yoksa, rahatlık faktörünü uygulamadan ayrılan bellek kullanılır.<br/><br/> | Sınırlar içindeyse hazırlanın.
+**Depolama diski** | Bir diskin ayrılan boyutu 32TB veya daha az olmalıdır.<br/><br/> Makineye bağlı disk sayısı, işletim sistemi diski dahil 65 veya daha az olmalıdır. | Sınırlar içindeyse hazırlanın.
+**Ağ** | Bir makinenin kendisine bağlı 32 veya daha az NIC 'e sahip olması gerekir. | Sınırlar içindeyse hazırlanın.
 
 ### <a name="guest-operating-system"></a>Konuk işletim sistemi
-VM özellikleriyle birlikte, konuk işletim sistemi Azure'da çalıştırabilirsiniz olup olmadığını belirlemek için makineleri Azure geçişi Server değerlendirmesi bakar.
+VM özellikleriyle birlikte Azure geçişi sunucu değerlendirmesi, Azure üzerinde çalışıp çalışmadığını belirlemek için makinelerin Konuk işletim sistemine bakar.
 
 > [!NOTE]
-> Azure geçişi Server değerlendirmesi için vcenter sunucusu analizi için VM belirtilen işletim sistemi kullanır. Gereç tabanlı VM bulma için Azure geçişi Server değerlendirmesi ve sanal makinede çalışan işletim sisteminin vCenter Server'da belirtilenle aynı olup olmadığını doğrulayamıyor.
+> VMware VM 'Leri için Azure geçişi sunucu değerlendirmesi, Konuk IŞLETIM sistemi analizini yapmak üzere vCenter Server ' de VM için belirtilen işletim sistemini kullanır. VMware üzerinde çalışan Linux VM 'Leri için şu anda Konuk işletim sisteminin tam çekirdek sürümünü tanımlamaz.
 
-Aşağıdaki mantık, Azure geçişi Server değerlendirmesi tarafından işletim sistemini temel alan Azure için hazır olma tanımlamak için kullanılır.
+Aşağıdaki mantık, Azure geçişi sunucu değerlendirmesi tarafından, işletim sistemine göre Azure hazırlığını belirlemek için kullanılır.
 
-**İşletim Sistemi** | **Ayrıntılar** | **Azure için hazır olma durumu**
+**İşletim Sistemi** | **Ayrıntılar** | **Azure hazırlık durumu**
 --- | --- | ---
-Windows Server 2016 ve tüm Sp'ler | Azure, tam destek sağlar. | Azure için hazır
-Windows Server 2012 R2 & tüm Sp'ler | Azure, tam destek sağlar. | Azure için hazır
-Windows Server 2012 & tüm Sp'ler | Azure, tam destek sağlar. | Azure için hazır
-Windows Server 2008 R2 ile tüm Sp'ler | Azure, tam destek sağlar.| Azure için hazır
-Windows Server 2008 (32-bit ve 64-bit) | Azure, tam destek sağlar. | Azure için hazır
-Windows Server 2003, 2003 R2 | Bu işletim sistemlerinin kendi destek tarihi ve gereksinim sonuna başarılı bir [özel destek anlaşması (CSA)](https://aka.ms/WSosstatement) Azure desteği için. | Koşullu olarak Azure için hazır, Azure'a geçiş yapmadan önce işletim sistemini yükseltmeyi düşünün.
-Windows 2000, 98, 95 ' NT 3.1, MS-DOS | Bu işletim sistemlerinin kendi destek sonu tarihi geçtiğinde, makine Azure'da önyüklenebilir ancak Azure tarafından işletim sistemi desteği sağlanmaz. | Azure için koşullu olarak hazır, Azure'a geçiş yapmadan önce işletim sistemi yükseltmesi önerilir.
-Windows istemci 7, 8 ve 10 | Azure desteği ile sağlar [yalnızca Visual Studio aboneliği.](https://docs.microsoft.com/azure/virtual-machines/windows/client-images) | Azure için koşullu olarak hazır
-Windows 10 Pro Masaüstü | Azure desteği ile sağlar [çok Kiracılı barındırma hakları.](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment) | Azure için koşullu olarak hazır
-Windows Vista, XP Professional | Bu işletim sistemlerinin kendi destek sonu tarihi geçtiğinde, makine Azure'da önyüklenebilir ancak Azure tarafından işletim sistemi desteği sağlanmaz. | Azure için koşullu olarak hazır, Azure'a geçiş yapmadan önce işletim sistemi yükseltmesi önerilir.
-Linux | Azure bu onayladığı [Linux işletim sistemleri](../virtual-machines/linux/endorsed-distros.md). Diğer Linux işletim sistemleri, Azure'da önyüklenebilir ancak Azure'a geçiş yapmadan önce işletim Sisteminin desteklenen bir sürüme yükseltmek için tavsiye edilir. | Sürüm desteklenen, Azure için hazır.<br/><br/>Sürüm değil onaylı koşullu olarak hazır.
-Diğer işletim sistemleri<br/><br/> Örneğin, Oracle Solaris Apple Mac işletim sistemi vb., FreeBSD, vs. | Azure, bu işletim sistemlerini desteklemez. Makine Azure'da önyüklenebilir ancak Azure tarafından işletim sistemi desteği sağlanır. | Koşullu olarak Azure için hazır, Azure'a geçiş yapmadan önce desteklenen bir işletim sistemini yüklemeniz önerilir.  
-İşletim sistemi olarak belirtilen **diğer** vcenter sunucusu | Azure geçişi, bu durumda işletim sistemi tanımlanamıyor. | Hazırlık bilinmiyor. Azure'da sanal makine içinde çalışan işletim Sisteminin desteklendiğinden emin olmak.
-32 bit işletim sistemleri | Makine Azure'da önyüklenebilir ancak Azure tam destek sağlamaz. | Koşullu olarak Azure için hazır, Azure'a geçiş yapmadan önce makinenin işletim sistemini 32-bit işletim sistemi 64-bit işletim sistemine yükseltmeniz önerilir.
+Tüm SPs & Windows Server 2016 | Azure tam destek sağlar. | Azure için hazır
+Tüm SPs & Windows Server 2012 R2 | Azure tam destek sağlar. | Azure için hazır
+Tüm SPs & Windows Server 2012 | Azure tam destek sağlar. | Azure için hazır
+Tüm SPs 'ler ile Windows Server 2008 R2 | Azure tam destek sağlar.| Azure için hazır
+Windows Server 2008 (32-bit ve 64-bit) | Azure tam destek sağlar. | Azure için hazır
+Windows Server 2003, 2003 R2 | Bu işletim sistemleri destek tarihlerinden geçen ve Azure 'da destek için [özel bir destek sözleşmesine (CSA)](https://aka.ms/WSosstatement) ihtiyaç duyuyor. | Azure için koşullu olarak, Azure 'a geçiş yapmadan önce işletim sistemini yükseltmeyi düşünün.
+Windows 2000, 98, 95, NT, 3,1, MS-DOS | Bu işletim sistemleri, destek tarihi sonunu geçti, makine Azure 'da başlatılabilir, ancak hiçbir işletim sistemi desteği Azure tarafından sağlanmaz. | Azure için koşullu olarak, Azure 'a geçiş yapmadan önce işletim sistemini yükseltmeniz önerilir.
+Windows Istemcisi 7, 8 ve 10 | Azure [yalnızca Visual Studio aboneliği](https://docs.microsoft.com/azure/virtual-machines/windows/client-images) için destek sağlar. | Azure için koşullu olarak hazır
+Windows 10 Pro masaüstü | Azure, [çok kiracılı barındırma haklarıyla](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment) destek sağlar. | Azure için koşullu olarak hazır
+Windows Vista, XP Professional | Bu işletim sistemleri, destek tarihi sonunu geçti, makine Azure 'da başlatılabilir, ancak hiçbir işletim sistemi desteği Azure tarafından sağlanmaz. | Azure için koşullu olarak, Azure 'a geçiş yapmadan önce işletim sistemini yükseltmeniz önerilir.
+Linux | Azure bu [Linux işletim sistemlerini](../virtual-machines/linux/endorsed-distros.md)doğrubir şekilde algılar. Diğer Linux işletim sistemleri Azure 'da önbaşlatılabilir, ancak Azure 'a geçiş yapmadan önce işletim sistemini onaylı bir sürüme yükseltmeniz önerilir. | Sürüm onaylanmış ise Azure için hazırlanın.<br/><br/>Sürüm henüz hazırlanmadığından koşullu olarak kabul edilebilir.
+Diğer işletim sistemleri<br/><br/> Örneğin, Oracle Solaris, Apple Mac OS vb., FreeBSD vb. | Azure, bu işletim sistemlerini desteklemez. Makine Azure 'da başlatılabilir, ancak Azure tarafından bir işletim sistemi desteği sağlanmaz. | Azure için koşullu olarak, Azure 'a geçiş yapmadan önce desteklenen bir işletim sistemi yüklenmesi önerilir.  
+VCenter Server içinde **diğeri** olarak belirtilen işletim sistemi | Azure geçişi bu durumda işletim sistemini tanımlayamıyor. | Bilinmeyen hazırlık. VM içinde çalışan işletim sisteminin Azure 'da desteklendiğinden emin olun.
+32 bit işletim sistemleri | Makine Azure 'da önbaşlatılabilir, ancak Azure tam destek sunmayabilir. | Azure için koşullu olarak, Azure 'a geçiş yapmadan önce makinenin işletim sistemini 32 bitlik IŞLETIM sisteminden 64 bit işletim sistemine yükseltmeyi düşünün.
 
 ## <a name="sizing"></a>Boyutlandırma
 
-Bir makine, Azure için hazır olarak işaretlendikten sonra Azure Geçişi sanal makine ve disklerine için Azure boyutları.
+Bir makine Azure için hazırlanın olarak işaretlendikten sonra sunucu değerlendirmesi, şirket içi VM için uygun Azure VM ve disk SKU 'sunu tanımlamayı içeren boyutlandırma işlemini gerçekleştirir. Boyut önerileri, belirtilen değerlendirme özelliklerine göre farklılık gösterir.
 
-- Değerlendirme performansa dayalı boyutlandırma kullanıyorsa, Azure geçişi, makinenin Azure VM boyutu ve disk türünü tanımlamak için performans geçmişi dikkate alır. Bu yöntem, şirket içi VM, fazladan ayrıldı ancak kullanımı düşüktür ve maliyet tasarrufu için azure'da VM için doğru boyutu istiyorsanız özellikle yardımcı olur.
-- Size bir olarak kullanarak şirket içi değerlendirmesi, Azure geçişi Server değerlendirmesi kullanımı verilerini göz önüne almadan şirket ayarlarını temel alan VM boyutu. Disk boyutlandırma, bu durumda, depolama türü (standart disk veya Premium disk) değerlendirme özelliklerinde belirttiğiniz temel alır.
+- Değerlendirme *performans tabanlı boyutlandırma*kullanıyorsa, Azure geçişi, Azure 'da VM boyutunu ve disk türünü belirlemek için makinenin performans geçmişini dikkate alır. Bu yöntem, şirket içi VM 'yi aşırı ayırdıysanız, ancak kullanım düşükse ve Azure 'da VM 'yi doğru boyuta kaydederek maliyetleri kazanmak için yararlıdır. Bu yöntem, geçiş sırasında boyutları iyileştirmenize yardımcı olur.
+- VM boyutlandırma için performans verilerini göz önünde bulundurmayın ve şirket içi makineleri Azure 'da olduğu gibi almak istiyorsanız, boyutlandırma ölçütünü *Şirket* içi olarak belirtebilir ve sunucu değerlendirmesi, VM 'leri şirket içine göre boyutlandıracaktır kullanım verilerini dikkate almadan yapılandırma. Bu durumda disk boyutlandırma, değerlendirme özelliklerinde (Standart HDD diskler, Standart SSD diskler veya Premium diskler) belirttiğiniz depolama türüne göre yapılır.
 
-### <a name="performance-based-sizing"></a>Performansa dayalı boyutlandırma
+### <a name="performance-based-sizing"></a>Performans tabanlı boyutlandırma
 
-Performansa dayalı boyutlandırma için Azure geçişi ağ bağdaştırıcıları tarafından izlenen VM, bağlı diskler ile başlar ve ardından eşlemeleri bir Azure sanal makinesi şirket içi VM hesaplama gereksinimlerine göre temel.
+Performans tabanlı boyutlandırma için, Azure geçişi sunucu değerlendirmesi, VM 'ye bağlı olan disklerle başlar, ardından ağ bağdaştırıcıları gelir ve ardından Şirket içi VM 'nin işlem gereksinimlerine bağlı olarak bir Azure VM SKU 'sunu eşler. Azure geçişi gereci, CPU, bellek, disk ve ağ bağdaştırıcısı için performans verilerini toplamak üzere şirket içi ortamı profiller.
 
-- **Depolama**: Azure geçişi, azure'da bir diski makineye bağlı her disk eşlemek çalışır.
-    - Etkin disk g/ç (IOPS) ve üretilen iş (MBps) başına almak için Azure geçişi disk IOPS ve aktarım hızı konfor katsayısı ile çarpar. Disk, azure'daki standart veya premium diske eşlenmelidir etkili IOPS ve aktarım hızı değerleri bağlı olarak, Azure geçişi belirtir.
-    - Azure geçişi gereken IOPS ve aktarım hızı sahip bir diski bulamazsanız, Azure için makine uyumsuz olarak işaretler. [Daha fazla bilgi edinin](../azure-subscription-service-limits.md#storage-limits) Azure hakkında disk ve VM sınırlar.
-    - Azure geçişi, uygun bir diskler kümesi bulursa, depolama yedekliliği yöntemi ve değerlendirme ayarlarında belirtilen konuma destekleyen olanları seçer.
-    - Birden fazla uygun disk varsa, düşük maliyetli bir seçer.
-    - Diskler için performans verilerini kullanılamıyorsa, tüm disklerin standart diskler azure'da eşlenir.
+**Performans verileri toplama**
 
-- **Ağ**: Azure geçişi, şirket içi makineye bağlı ağ bağdaştırıcıları ve bu ağ bağdaştırıcıları tarafından gerekli performansı sayısını destekleyen bir Azure VM bulmayı dener.
-    - Şirket içi sanal makinenin en etkili ağ performansı elde etmek Azure geçişi, tüm ağ bağdaştırıcıları (ağ) kullanıma makine dışında (MBps) saniye başına aktarılan verileri toplar ve konfor katsayısı uygular. Bu sayı, gerekli ağ performansı destekleyen bir Azure VM bulmak için kullanılır.
-    - Ağ performansı ile birlikte, ayrıca Azure VM gerekli destekleyip desteklemediğini dikkate ağ bağdaştırıcılarının sayısı.
-    - Ağ performansı verileri kullanılabilir ise, yalnızca ağ bağdaştırıcıları sayısı için VM boyutu olarak kabul edilir.
+- VMware VM 'Leri için Azure geçişi gereci her 20 saniyelik aralıkta gerçek zamanlı bir örnek noktası toplayıp, Hyper-V VM 'lerinde gerçek zamanlı örnek noktanın her 30 saniyelik aralığa göre toplanması gerekir.
+- Böylece gereç, her 10 dakikada toplanan örnek noktaların dökümünü yapar ve son 10 dakikalık en büyük değeri Azure geçişi sunucu değerlendirmesi 'ne gönderir.
+- Azure geçişi sunucu değerlendirmesi, son bir ay için 10 dakikalık tüm örnek noktaları depolar ve *performans geçmişi* ve *yüzdebirlik kullanımı*için belirtilen değerlendirme özelliklerine bağlı olarak, uygun veri noktasını tanımlar Bu, doğru boyutlandırma için kullanılmalıdır. Örneğin, performans geçmişi bir güne ayarlanmışsa ve yüzdebirlik kullanımı 95. yüzdebirlik ise, son bir gün için 10 dakikalık örnek noktalarını kullanır, bunları artan düzende sıralar ve sağ boyutlandırma için 95. yüzdebirlik değerini seçer.
+- Daha sonra yukarıdaki değer, her ölçüm için etkili performans kullanım verilerini (CPU kullanımı, bellek kullanımı, disk ıOPS (okuma ve yazma), disk aktarım hızı (okuma ve yazma), ağ üretimi (gelen ve giden)) almak için rahatlık faktörüyle çarpılır. Gereç toplar.
+- Etkin kullanım değeri tanımlandıktan sonra, işlem, depolama ve ağ boyutlandırma aşağıdaki gibi yapılır:
 
-- **İşlem**: Depolama ve ağ gereksinimleri hesaplandıktan sonra Azure geçişi, Azure'da uygun bir VM boyutu bulmak için CPU ve bellek gereksinimleri dikkate alır.
-    - Azure geçişi, kullanılan çekirdek ve bellek arar ve konfor katsayısı etkili çekirdek ve bellek almak için geçerlidir. Bu sayıya göre Azure'da uygun bir VM boyutu bulmak çalışır.
-    - Uygun boyut bulunursa, makine uygunsuz Azure için işaretlenir.
-    - Azure geçişi, uygun bir boyut bulunursa, depolama ve ağ hesaplamalar geçerlidir. Ardından, konum ve fiyatlandırma katmanı ayarları, son sanal makine boyutu önerisi için de geçerlidir.
+**Depolama boyutu**: Azure geçişi, makineye bağlı her diski Azure 'daki bir diske eşlemeye çalışır.
+
+> [!NOTE]
+> Azure Geçişi: Sunucu değerlendirmesi yalnızca değerlendirme için yönetilen diskleri destekler.
+
+  - Diskin okuma ve yazma ıOPS 'si, her diskin toplam aktarım hızını almak için gereken toplam ıOPS 'yi, benzer okuma ve yazma işleme değerlerini almak üzere eklenmiştir
+  - Depolama türünü otomatik olarak belirttiyseniz, etkin ıOPS ve aktarım hızı değerlerine göre Azure geçişi sunucu değerlendirmesi, diskin bir standart HDD, standart SSD veya Azure 'da bir Premium diskle eşlenmesi gerekip gerekmediğini tanımlar. Depolama türü Standart HDD/SSD/Premium olarak ayarlandıysa, seçilen depolama türü (Standart HDD/SSD/Premium diskler) içinde bir disk SKU 'SU bulmaya çalışır.
+  - Sunucu değerlendirmesi gereken ıOPS & işleme sahip bir disk bulamazsa, makineyi Azure için uygun değil olarak işaretler.
+  - Uygun bir disk kümesi bulunursa, değerlendirme ayarlarında belirtilen konumu destekleyen olanları seçer.
+  - Birden fazla uygun disk varsa, en düşük maliyetli olanı seçer.
+  - Kullanılamayan bir disk için performans verileri, Azure 'da standart bir SSD disk bulmak için diskin yapılandırma verileri (disk boyutu) kullanılır.
+
+**Ağ boyutlandırma**: Azure geçişi sunucu değerlendirmesi, şirket içi makineye bağlı ağ bağdaştırıcılarının sayısını ve bu ağ bağdaştırıcılarının gerektirdiği performansı destekleyebilen bir Azure VM bulmaya çalışır.
+    - Şirket içi VM 'nin etkili ağ performansını almak için sunucu değerlendirmesi, saniyede aktarılan verileri (MB/sn), tüm ağ bağdaştırıcılarında (ağ üzerinden) toplar ve rahatlık faktörünü uygular. Bu sayı, gerekli ağ performansını destekleyebilen bir Azure VM bulmak için kullanılır.
+    - Ayrıca, ağ performansının yanı sıra Azure VM 'nin gerekli ağ bağdaştırıcısı sayısını destekleyebilirler.
+    - Kullanılabilir ağ performans verisi yoksa, VM boyutlandırma için yalnızca ağ bağdaştırıcılarının sayısı kabul edilir.
+
+**İşlem boyutlandırma**: Depolama ve ağ gereksinimleri hesaplandıktan sonra, Azure geçişi sunucu değerlendirmesi, Azure 'da uygun bir VM boyutu bulmak için CPU ve bellek gereksinimlerini dikkate alır.
+    - Azure geçişi, Azure 'da uygun bir VM boyutu bulmak için kullanılan etkin çekirdekler ve belleğe bakar.
+    - Uygun boyut bulunamazsa, makine Azure için uygun olmayan olarak işaretlenir.
+    - Uygun bir boyut bulunursa Azure geçişi depolama ve ağ hesaplamalarını uygular. Ardından, son VM boyutu önerisi için konum ve fiyatlandırma katmanı ayarlarını uygular.
     - Birden fazla uygun Azure sanal makinesi boyutu varsa, en düşük maliyetli olan önerilir.
 
-### <a name="as-on-premises-sizing"></a>Boyutlandırma şirket
+### <a name="as-on-premises-sizing"></a>Şirket içi boyutlandırma olarak
 
-Şirket içi boyutlandırma olarak kullanırsanız, bir VM SKU boyutu şirket içi tabanlı azure'da Server değerlendirmesi ayırır. Benzer şekilde, disk boyutlandırma için bunu depolama türü (standart/Premium) değerlendirme özelliklerinde belirtilen bakar ve disk türü uygun şekilde önerir. Varsayılan depolama Premium diskler türüdür.
+*Şirket içi boyutlandırma*olarak kullanıyorsanız, sunucu değerlendirmesi VM 'lerin ve disklerin performans geçmişini dikkate almaz ve şirket içinde ayrılan boyuta göre Azure 'DA BIR VM SKU 'su ayırır. Benzer şekilde disk boyutlandırması için, değerlendirme özelliklerinde belirtilen depolama türüne bakar (Standart HDD/SSD/Premium) ve disk türünü uygun şekilde önerir. Varsayılan depolama türü Premium disklerdir.
 
-## <a name="confidence-ratings"></a>Güvenle derecelendirmeleri
-Azure Geçişi'ndeki her bir performans tabanlı değerlendirme beş başlatır (yüksek) diğerine (en düşük) değişen bir güvenilirlik derecesiyle ilişkilendirilir.
+## <a name="confidence-ratings"></a>Güven derecelendirmeleri
+Azure geçişi 'ndeki her performans tabanlı değerlendirme, bir (en düşük) ila beş ' a (en yüksek) kadar uzanan bir güvenirlik derecelendirmesi ile ilişkilendirilir.
 - Güvenilirlik derecelendirmesi, değerlendirmeyi hesaplamak için gereken veri noktalarının kullanılabilirliği temelinde bir değerlendirmeye atanır.
 - Bir değerlendirmenin güvenilirlik derecesi, Azure Geçişi tarafından sağlanan boyut önerilerinin güvenilirliğini tahmin etmenize yardımcı olur.
-- Güvenilirlik derecelendirmesi şirket değerlendirmeleri gibi için geçerli değildir.
-- Performansa dayalı boyutlandırma için Azure geçişi Server değerlendirmesi gerekir:
-    - CPU kullanımı verilerini ve VM bellek.
+- Güvenilirlik derecelendirmesi, şirket içi değerlendirmelere uygun değildir.
+- Performans tabanlı boyutlandırma için Azure geçişi sunucu değerlendirmesi şunları gerektirir:
+    - CPU ve VM belleği için kullanım verileri.
     - Bunlara ek olarak, VM'ye eklenen her disk için disk IOPS ve aktarım hızı değerleri de gerekir.
-    - Benzer şekilde bir VM'ye bağlı her ağ bağdaştırıcısı için performansa dayalı boyutlandırma gerçekleştirmek amacıyla ağ g/ç güvenilirlik derecelendirmesi gerekir.
-    - Yukarıdaki kullanım rakamlarından herhangi birini vCenter Server'da mevcut değilse, boyut önerisi güvenilir olmayabilir. 
+    - Aynı şekilde, bir VM 'ye bağlı her ağ bağdaştırıcısı için, güven derecelendirmesi ağ g/ç 'ye performans tabanlı boyutlandırma yapmak için ihtiyaç duyuyor.
+    - Yukarıdaki kullanım numaralarının herhangi biri vCenter Server yoksa, boyut önerisi güvenilir olmayabilir.
 
 Kullanılabilir veri noktalarının yüzdesine bağlı olarak değerlendirme için aşağıdaki gibi güvenilirlik derecelendirmesi sağlanır:
 
@@ -146,31 +155,31 @@ Kullanılabilir veri noktalarının yüzdesine bağlı olarak değerlendirme iç
    %61-%80 | 4 Yıldız
    %81-%100 | 5 Yıldız
 
-### <a name="low-confidence-ratings"></a>Düşük güven derecelendirmeleri
+### <a name="low-confidence-ratings"></a>Düşük güvenilirlikli derecelendirmeler
 
-Birkaç nedenleri neden, düşük güvenilirlik derecelendirmesi değerlendirme alabilir:
+Bir değerlendirmenin en düşük güvenilirlik derecelendirmesine neden olabilecek nedenlerden bazıları:
 
-- Değerlendirme oluşturma süresi boyunca ortamınızın profilini kaydetmedi. Örneğin, performans süresi 1 gün olarak ayarlayın, değerlendirmesi oluşturursanız, için en az toplanan almak tüm veri noktaları için bulma başlattıktan sonra bir gün beklemeniz gerekir.
-- Değerlendirmenin hesaplandığı dönem boyunca bazı VM'ler kapatılmıştır. Herhangi bir VM için bazı süresi kapalı, Azure geçişi Server değerlendirmesi, bu dönem için performans verilerini toplayamazsınız.
-- Değerlendirmenin hesaplandığı dönem arasında bazı VM'ler oluşturulur. Örneğin, son bir ayın performans geçmişi için değerlendirme oluşturun, ancak bazı VM'ler yalnızca bir hafta önce ortamda oluşturulmuş olan yeni sanal makinelerin performans geçmişi yok sürenin tamamı boyunca olmayacaktır.
+- Değerlendirmeyi oluşturduğunuz süre için ortamınızı profildiniz. Örneğin, performans süresi ile bir gün ayarlanmış bir değerlendirme oluşturursanız, toplanan tüm veri noktaları için bulmayı başlattıktan sonra en az bir gün beklemeniz gerekir.
+- Bazı sanal makineler, değerlendirmenin hesaplanmakta olduğu süre boyunca kapatıldı. Herhangi bir sanal makine bir süre için kapatılmışsa, Azure geçişi sunucu değerlendirmesi bu döneme ait performans verilerini toplayamıyor.
+- Bazı VM 'Ler, değerlendirmenin hesaplandığı dönem arasında oluşturulmuştur. Örneğin, son bir ayın performans geçmişi için bir değerlendirme oluşturursanız, ancak bazı sanal makineler ortamda yalnızca bir hafta önce oluşturulduysa, yeni VM 'lerin performans geçmişi sürenin tamamına göre olmaz.
 
-  > [!NOTE]
-  > Herhangi bir değerlendirmenin güvenilirlik derecesi beş yıldızdan düşükse, en az gereç ortamı profil bir gün bekleyin ve ardından değerlendirmeyi yeniden hesaplamak öneririz. Aksi takdirde, performansa dayalı boyutlandırma güvenilir olmayabilir ve biz ve şirket içi boyutlandırma olarak kullanılmak üzere değerlendirme geçiş önerilir.
-  
+> [!NOTE]
+> Herhangi bir değerlendirmenin güvenilirlik derecelendirmesi beş yıldızın altındaysa, gerecin ortamın profilini oluşturup daha sonra değerlendirmeyi yeniden hesaplayabilmeniz için en az bir gün beklemeniz önerilir. Aksi takdirde, performans tabanlı boyutlandırma güvenilir olmayabilir ve değerlendirmesi şirket içi boyutlandırma olarak kullanmak üzere geçmeniz önerilir.
+
 ## <a name="monthly-cost-estimation"></a>Aylık maliyet tahmini
 
-Boyutlandırma önerileri tamamlandıktan sonra Azure geçişi geçişten sonra işlem ve depolama maliyetleri için hesaplar.
+Boyutlandırma önerileri tamamlandıktan sonra, Azure geçişi geçişten sonra işlem ve depolama maliyetlerini hesaplar.
 
-- **İşlem maliyetine**: Önerilen Azure VM boyutu kullanarak, Azure geçişi faturalandırma API'si bir VM için aylık maliyeti hesaplamak için kullanır.
-    - Hesaplama, işletim sistemi, Yazılım Güvencesi, ayrılmış örnekler, VM çalışma süresi, konum ve para birimi ayarlarını dikkate alır.
-    - Toplam aylık işlem maliyeti hesaplamak için tüm makineler arasında maliyeti araya getirir.
-- **Depolama maliyeti**: Aylık depolama maliyeti bir makine için aylık maliyet makineye bağlı tüm disklerin toplayarak hesaplanır
-    - Azure geçişi Server değerlendirmesi, aylık toplam depolama maliyetlerini tüm makinelerin depolama maliyetlerini toplayarak hesaplar.
-    - Şu anda, hesaplama değerlendirme ayarlarını göz önüne belirtilen teklifler almaz.
+- **İşlem maliyeti**: Azure geçişi, önerilen Azure VM boyutunu kullanarak VM 'nin aylık maliyetini hesaplamak için faturalandırma API 'sini kullanır.
+    - Hesaplama, işletim sistemi, yazılım güvencesi, ayrılmış örnekler, VM çalışma süresi, konum ve para birimi ayarlarını hesaba göre alır.
+    - Toplam aylık işlem maliyetini hesaplamak için tüm makinelerdeki maliyeti toplar.
+- **Depolama maliyeti**: Bir makineye yönelik aylık depolama maliyeti, makineye bağlı tüm disklerin aylık maliyeti toplayarak hesaplanır
+    - Azure geçişi sunucu değerlendirmesi, tüm makinelerin depolama maliyetlerini toplayarak aylık toplam depolama maliyetlerini hesaplar.
+    - Şu anda hesaplama, değerlendirme ayarlarında belirtilen teklifleri hesaba götüremez.
 
-Maliyetleri değerlendirme ayarlarında belirtilen para birimi görüntülenir.
+Ücretler, değerlendirme ayarlarında belirtilen para biriminde görüntülenir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Değerlendirme için oluşturmak [VMware Vm'lerini](tutorial-assess-vmware.md) veya [Hyper-V Vm'lerini](tutorial-assess-hyper-v.md).
+[VMware VM](tutorial-assess-vmware.md) 'Leri veya [Hyper-V VM 'leri](tutorial-assess-hyper-v.md)için bir değerlendirme oluşturun.

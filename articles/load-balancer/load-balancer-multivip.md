@@ -1,10 +1,10 @@
 ---
-title: Bir bulut hizmeti için birden çok VIP
+title: Bulut hizmeti için birden çok VIP
 titlesuffix: Azure Load Balancer
-description: MultiVIP ve bir bulut hizmetinde birden çok VIP ayarlama genel bakış
+description: Çoklu VIP 'ye genel bakış ve bir bulut hizmetinde birden çok VIP ayarlama
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -12,71 +12,71 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
-ms.author: kumud
-ms.openlocfilehash: bf5721e206316a4ce576253743e9ac65de47094a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: 3e97bea85d4d97b159168b21b4a6e932e655ccfb
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60591743"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274699"
 ---
-# <a name="configure-multiple-vips-for-a-cloud-service"></a>Bir bulut hizmeti için birden çok VIP yapılandırma
+# <a name="configure-multiple-vips-for-a-cloud-service"></a>Bulut hizmeti için birden çok VIP yapılandırma
 
 [!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
-Azure bulut Hizmetleri, Azure tarafından sağlanan bir IP adresi kullanarak, bir genel Internet üzerinden erişebilirsiniz. Bu genel IP adresi için bir VIP (sanal IP) adlandırılır, Azure yük dengeleyiciye bağlı ve bulut hizmetinden değil sanal makine (VM) örnekleri. Bir bulut hizmetindeki herhangi bir VM örneği, tek bir VIP kullanarak erişebilirsiniz.
+Azure bulut hizmetlerine, Azure tarafından sunulan bir IP adresi kullanarak genel Internet üzerinden erişebilirsiniz. Bu genel IP adresi, bulut hizmetindeki sanal makine (VM) örnekleri değil, Azure yük dengeleyiciye bağlı olduğundan VIP (sanal IP) olarak adlandırılır. Bir bulut hizmeti içindeki herhangi bir sanal makine örneğine tek bir VIP kullanarak erişebilirsiniz.
 
-Ancak, birden fazla VIP olarak bir giriş noktası aynı bulut hizmetine gerektiren senaryolar da vardır. Örneğin, bulut hizmetinizin her site için farklı bir müşteri barındırılan olarak kullanarak varsayılan bağlantı noktası 443, SSL bağlantısı gerektiren veya Kiracı birden fazla Web sitesi barındırabilir. Bu senaryoda, farklı bir genel kullanıma yönelik IP adresi her Web sitesi için olması gerekir. Aşağıdaki diyagram tipik bir çok kiracılı web aynı ortak bağlantı noktasında birden çok SSL sertifikası ihtiyacı olan barındırma gösterilmektedir.
+Ancak, aynı bulut hizmetine giriş noktası olarak birden fazla VIP gereksinimi olabilecek senaryolar vardır. Örneğin, bulut hizmetiniz, her site farklı bir müşteri veya kiracı için barındırıldığından, varsayılan 443 bağlantı noktasını kullanarak SSL bağlantısı gerektiren birden çok Web sitesini barındırabilir. Bu senaryoda, her Web sitesi için bir genel kullanıma yönelik IP adresine sahip olmanız gerekir. Aşağıdaki diyagramda, aynı genel bağlantı noktasında birden çok SSL sertifikası için ihtiyacı olan tipik bir çok kiracılı web barındırma görülmektedir.
 
-![Birden çok VIP SSL senaryosu](./media/load-balancer-multivip/Figure1.png)
+![Çoklu VIP SSL senaryosu](./media/load-balancer-multivip/Figure1.png)
 
-Yukarıdaki örnekte, tüm VIP aynı genel bağlantı noktası (443) kullanın ve trafiği birine yönlendirilen veya daha fazla yük dengeli VM'ler tüm Web sitelerinin barındıran bulut hizmetinin iç IP adresi için benzersiz bir özel bağlantı.
-
-> [!NOTE]
-> Birden çok VIP kullanımı gerektiren başka bir durum, aynı küme sanal makinede birden fazla SQL AlwaysOn Kullanılabilirlik grubu dinleyicisi barındırıyor.
-
-VIP'ler, yani bulut hizmetine atanan gerçek IP adresini zaman içinde değişebilir ve varsayılan olarak dinamiktir. Oluşmasını önlemek için hizmetiniz için bir VIP ayırabilirsiniz. Ayrılmış VIP hakkında daha fazla bilgi için bkz: [ayrılmış genel IP](../virtual-network/virtual-networks-reserved-public-ip.md).
+Yukarıdaki örnekte, tüm VIP 'Ler aynı ortak bağlantı noktasını (443) kullanır ve trafik, tüm Web sitelerini barındıran bulut hizmetinin iç IP adresi için benzersiz bir özel bağlantı noktasındaki bir veya daha fazla yük dengeli VM 'ye yönlendirilir.
 
 > [!NOTE]
-> Lütfen [IP adresi fiyatlandırması](https://azure.microsoft.com/pricing/details/ip-addresses/) fiyatlandırması hakkında daha fazla VIP ve ayrılan IP'ler hakkında bilgi için.
+> Birden çok VIP kullanılması gereken başka bir durum da aynı sanal makine kümesinde birden çok SQL AlwaysOn kullanılabilirlik grubu dinleyicisi barındırıyor.
 
-Bulut Hizmetleri tarafından kullanılan VIP doğrulamak için PowerShell kullanma yanı sıra ekleyin ve VIP'ler kaldırın, bir uç nokta için bir VIP ilişkilendirmek ve belirli bir VIP yük dengelemeyi yapılandırın.
+VIP 'ler varsayılan olarak dinamiktir. Bu, bulut hizmetine atanan gerçek IP adresinin zamanla değiştirebileceği anlamına gelir. Bunun gerçekleşmesini engellemek için hizmetiniz için bir VIP ayırabilirsiniz. Ayrılmış VIP 'ler hakkında daha fazla bilgi için bkz. [ayrılmış genel IP](../virtual-network/virtual-networks-reserved-public-ip.md).
+
+> [!NOTE]
+> VIP 'Ler ve ayrılmış IP 'lerde fiyatlandırma hakkında bilgi için lütfen [IP adresi fiyatlandırmasına](https://azure.microsoft.com/pricing/details/ip-addresses/) bakın.
+
+Cloud Services tarafından kullanılan VIP 'leri doğrulamak, VIP 'leri eklemek ve kaldırmak, VIP 'yi bir uç noktayla ilişkilendirmek ve belirli bir VIP üzerinde yük dengelemeyi yapılandırmak için PowerShell 'i kullanabilirsiniz.
 
 ## <a name="limitations"></a>Sınırlamalar
 
-Şu anda aşağıdaki senaryolar için birden çok VIP işlevsellik sınırlıdır:
+Şu anda, çoklu VIP işlevselliği aşağıdaki senaryolarla sınırlandırılmıştır:
 
-* **Iaas yalnızca**. Bu gibi durumlarda, birden çok VIP yalnızca sanal makineleri içeren bulut Hizmetleri için etkinleştirebilirsiniz. Birden çok VIP PaaS rol örnekleri senaryolarıyla kullanamazsınız.
-* **Yalnızca PowerShell**. Birden çok VIP yalnızca PowerShell kullanarak da yönetebilirsiniz.
+* **Yalnızca IaaS**. VM 'Leri içeren bulut hizmetleri için yalnızca çoklu VIP 'yi etkinleştirebilirsiniz. PaaS senaryolarında rol örnekleriyle çoklu VIP kullanamazsınız.
+* **Yalnızca PowerShell**. Yalnızca PowerShell kullanarak birden çok VIP yönetebilirsiniz.
 
-Bu sınırlamalar, geçicidir ve herhangi bir zamanda değişebilir. Gelecekteki değişiklikleri doğrulamak için bu sayfayı yeniden ziyaret etmeniz emin olun.
+Bu sınırlamalar geçicidir ve herhangi bir zamanda değişebilir. Gelecekteki değişiklikleri doğrulamak için bu sayfayı yeniden ziyaret ettiğinizden emin olun.
 
-## <a name="how-to-add-a-vip-to-a-cloud-service"></a>Bir bulut hizmetine bir VIP ekleme
+## <a name="how-to-add-a-vip-to-a-cloud-service"></a>Bulut hizmetine VIP ekleme
 Hizmetinize bir VIP eklemek için aşağıdaki PowerShell komutunu çalıştırın:
 
 ```powershell
 Add-AzureVirtualIP -VirtualIPName Vip3 -ServiceName myService
 ```
 
-Bu komut, aşağıdaki örneğe benzer bir sonuç gösterir:
+Bu komut, aşağıdaki örneğe benzer bir sonuç görüntüler:
 
     OperationDescription OperationId                          OperationStatus
     -------------------- -----------                          ---------------
     Add-AzureVirtualIP   4bd7b638-d2e7-216f-ba38-5221233d70ce Succeeded
 
-## <a name="how-to-remove-a-vip-from-a-cloud-service"></a>Bir bulut hizmetine bir VIP kaldırma
-Yukarıdaki örnekte hizmetine eklenen VIP kaldırmak için aşağıdaki PowerShell komutunu çalıştırın:
+## <a name="how-to-remove-a-vip-from-a-cloud-service"></a>Bulut hizmetinden VIP kaldırma
+Yukarıdaki örnekte hizmetinize eklenen VIP 'yi kaldırmak için aşağıdaki PowerShell komutunu çalıştırın:
 
 ```powershell
 Remove-AzureVirtualIP -VirtualIPName Vip3 -ServiceName myService
 ```
 
 > [!IMPORTANT]
-> İlişkili uç nokta varsa, yalnızca bir VIP kaldırabilirsiniz.
+> Bir VIP 'yi yalnızca kendisiyle ilişkili bir uç nokta yoksa kaldırabilirsiniz.
 
 
-## <a name="how-to-retrieve-vip-information-from-a-cloud-service"></a>Bir bulut hizmetinden VIP bilgilerini alma
-Bir bulut hizmetiyle ilişkili VIP'ler almak için aşağıdaki PowerShell betiğini çalıştırın:
+## <a name="how-to-retrieve-vip-information-from-a-cloud-service"></a>Bulut hizmetinden VIP bilgileri alma
+Bir bulut hizmeti ile ilişkili VIP 'leri almak için aşağıdaki PowerShell betiğini çalıştırın:
 
 ```powershell
 $deployment = Get-AzureDeployment -ServiceName myService
@@ -103,17 +103,17 @@ Betik, aşağıdaki örneğe benzer bir sonuç görüntüler:
     ReservedIPName  :
     ExtensionData   :
 
-Bu örnekte, bulut hizmeti 3 olan VIP'ler:
+Bu örnekte, bulut hizmetinde 3 VIP vardır:
 
-* **Vıp1** varsayılan VIP, bildiğiniz IsDnsProgrammedName değeri ayarlandığından true.
-* **Vıp2** ve **Vip3** , herhangi bir IP adresi olmadığı olarak kullanılmaz. Bir uç noktaya VIP ilişkilendirirseniz yalnızca kullanılır.
+* Varsayılan VIP olan **VIP1** , ıdnsprogrammedname değeri true olarak ayarlandığından emin olmalısınız.
+* **Vip2** ve **VIP3** , hiçbir IP adresi olmadığı için kullanılmaz. Yalnızca bir uç noktayı VIP ile ilişkilendirdiğinizde bu bunlar kullanılacaktır.
 
 > [!NOTE]
-> Aboneliğiniz, yalnızca bir uç noktası ile ilişkili olduğunda ek VIP'ler için ücretlendirilirsiniz. Fiyatlandırma hakkında daha fazla bilgi için bkz. [IP adresi fiyatlandırması](https://azure.microsoft.com/pricing/details/ip-addresses/).
+> Aboneliğiniz, bir uç nokta ile ilişkilendirildikten sonra yalnızca ek VIP 'ler için ücretlendirilir. Fiyatlandırma hakkında daha fazla bilgi için bkz. [IP adresi fiyatlandırması](https://azure.microsoft.com/pricing/details/ip-addresses/).
 
-## <a name="how-to-associate-a-vip-to-an-endpoint"></a>Bir uç nokta için bir VIP ilişkilendirme
+## <a name="how-to-associate-a-vip-to-an-endpoint"></a>Bir VIP 'yi bir uç noktayla ilişkilendirme
 
-Bir bulut hizmeti bir uç nokta için bir VIP ilişkilendirmek için aşağıdaki PowerShell komutunu çalıştırın:
+Bulut hizmetindeki bir VIP 'yi bir uç noktayla ilişkilendirmek için aşağıdaki PowerShell komutunu çalıştırın:
 
 ```powershell
 Get-AzureVM -ServiceName myService -Name myVM1 |
@@ -121,7 +121,7 @@ Get-AzureVM -ServiceName myService -Name myVM1 |
     Update-AzureVM
 ```
 
-Komut adlı VIP için bağlı bir uç nokta oluşturur *vıp2* noktasında *80*ve adlı VM'ye bağlantılar *myVM1* bir bulut hizmetinde adlı *myService* kullanarak *TCP* noktasında *8080*.
+Bu komut, *80*numaralı bağlantı noktasında *Vip2* adlı VIP 'ye bağlı bir uç nokta oluşturur ve bu bağlantıyı, numaralı bağlantı *8080*noktasında *TCP* kullanarak *hizmetim* adlı bir bulut hizmetinde *myVM1* adlı VM 'ye bağlar.
 
 Yapılandırmayı doğrulamak için aşağıdaki PowerShell komutunu çalıştırın:
 
@@ -130,7 +130,7 @@ $deployment = Get-AzureDeployment -ServiceName myService
 $deployment.VirtualIPs
 ```
 
-Çıktı aşağıdaki örneğe benzer:
+Çıktı aşağıdaki örneğe benzer şekilde görünür:
 
     Address         : 191.238.74.148
     IsDnsProgrammed : True
@@ -150,9 +150,9 @@ $deployment.VirtualIPs
     ReservedIPName  :
     ExtensionData   :
 
-## <a name="how-to-enable-load-balancing-on-a-specific-vip"></a>Belirli bir VIP yük dengelemeyi etkinleştirme
+## <a name="how-to-enable-load-balancing-on-a-specific-vip"></a>Belirli bir VIP üzerinde yük dengelemeyi etkinleştirme
 
-Yük Dengeleme amaçlar için birden çok sanal makine ile tek bir VIP ilişkilendirebilirsiniz. Örneğin, bir bulut hizmeti adlı sahip *myService*ve adlı iki sanal makine *myVM1* ve *myVM2*. Ve bulut hizmetinizi bunlardan birinin adında birden çok VIP *vıp2*. Tüm trafik için bağlantı noktası emin olmak istiyorsanız *81* üzerinde *vıp2* arasında dengeli *myVM1* ve *myVM2* noktasında *8181* , aşağıdaki PowerShell betiğini çalıştırın:
+Yük Dengeleme amacıyla, birden çok sanal makineyle tek bir VIP 'yi ilişkilendirebilirsiniz. Örneğin, *hizmetim*adlı bir bulut hizmetiniz ve *myVM1* ve *myVM2*adlı iki sanal makine vardır. Bulut hizmetinizde, biri *Vip2*adlı birden çok VIP vardır. *Vip2* üzerinde bağlantı noktası *81* ' e giden tüm trafiğin, bağlantı noktası *8181*' de *myVM1* ve *myVM2* arasında dengelenmesi sağlamak istiyorsanız, aşağıdaki PowerShell betiğini çalıştırın:
 
 ```powershell
 Get-AzureVM -ServiceName myService -Name myVM1 |
@@ -164,7 +164,7 @@ Get-AzureVM -ServiceName myService -Name myVM2 |
     Update-AzureVM
 ```
 
-Farklı bir VIP kullanmak için yük dengeleyicinizi de güncelleştirebilirsiniz. Örneğin, aşağıdaki PowerShell komutu çalıştırırsanız, yük dengeleyici kümesi vıp1 adlı bir VIP kullanmak için değiştirilecektir:
+Ayrıca, yük dengeleyiciyi farklı bir VIP kullanmak üzere güncelleştirebilirsiniz. Örneğin, aşağıdaki PowerShell komutunu çalıştırırsanız, yük dengeleme kümesini Vıp1 adlı bir VIP kullanacak şekilde değiştirirsiniz:
 
 ```powershell
 Set-AzureLoadBalancedEndpoint -ServiceName myService -LBSetName myLBSet -VirtualIPName Vip1
@@ -172,12 +172,12 @@ Set-AzureLoadBalancedEndpoint -ServiceName myService -LBSetName myLBSet -Virtual
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-[Azure Yük Dengeleme için Azure izleme günlükleri](load-balancer-monitor-log.md)
+[Azure Yük Dengelemesi için Azure Izleyici günlükleri](load-balancer-monitor-log.md)
 
-[Internet'e yönelik yük dengeleyiciye genel bakış](load-balancer-internet-overview.md)
+[Internet 'e yönelik yük dengeleyiciye genel bakış](load-balancer-internet-overview.md)
 
-[E yönelik Yük Dengeleyici Internet'te kullanmaya başlayın](load-balancer-get-started-internet-arm-ps.md)
+[Internet 'e yönelik yük dengeleyiciye başlayın](load-balancer-get-started-internet-arm-ps.md)
 
 [Sanal Ağ’a Genel Bakış](../virtual-network/virtual-networks-overview.md)
 
-[Ayrılmış IP REST API'leri](https://msdn.microsoft.com/library/azure/dn722420.aspx)
+[REST API 'Leri Ayrılmış IP](https://msdn.microsoft.com/library/azure/dn722420.aspx)

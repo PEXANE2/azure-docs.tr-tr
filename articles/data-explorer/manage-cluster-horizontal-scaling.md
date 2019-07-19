@@ -1,105 +1,112 @@
 ---
-title: Bir Azure Veri Gezgini kümesini ölçeklendirme
-description: Ölçeği genişletme ve ölçeklendirmek için adımlar bu makalede bir Azure Veri Gezgini kümesinde göre değişen isteğe bağlı.
+title: Değişiklik talebini karşılamak için Azure Veri Gezgini küme yatay ölçeklendirmeyi (genişleme) yönetme
+description: Bu makalede, değişen talebe göre bir Azure Veri Gezgini kümesinde ölçek genişletme ve ölçeklendirme adımları açıklanır.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 06/30/2019
-ms.openlocfilehash: 29bfcc42462a667850f0b2e1bbda3d29cd1597ab
-ms.sourcegitcommit: 1e347ed89854dca2a6180106228bfafadc07c6e5
+ms.date: 07/14/2019
+ms.openlocfilehash: 70e6bdfcf9718244632ad02e09d3ddadee71a617
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67571523"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311567"
 ---
-# <a name="manage-cluster-horizontal-scaling-to-accommodate-changing-demand"></a>Küme değişen talepleri karşılamak için yatay ölçeklendirmeyi yönetme
+# <a name="manage-cluster-horizontal-scaling-scale-out-in-azure-data-explorer-to-accommodate-changing-demand"></a>Değişiklik talebini karşılamak için Azure Veri Gezgini küme yatay ölçeklendirmeyi (genişleme) yönetme
 
-Bir küme uygun şekilde boyutlandırma Azure Veri Gezgini performansı için kritik öneme sahiptir. Ancak, isteğe bağlı olarak bir küme mutlak doğrulukla tahmin edilemez. Statik küme boyutu için Yardım'ı veya overutilization, hangi hiçbiri idealdir açabilir.
+Bir kümeyi uygun şekilde boyutlandırmak, Azure Veri Gezgini performansı açısından önemlidir. Statik küme boyutu, ne kadar ideal bir deyişle, kullanımı veya kullanımı aşırı olabilir.
 
-Daha iyi bir yaklaşım *ölçek* ekleme ve kaldırma kapasitesini isteğe bağlı olarak değişen bir küme. Ölçeklendirme için iki iş akışı vardır: 
-* Yatay ölçeklendirme, olarak da adlandırılır ve ölçeklendirme.
-* Dikey ölçeklendirme, olarak da adlandırılır yukarı ve aşağı ölçeklendirme.
+Bir kümedeki talep mutlak doğrulukla tahmin edilebileceği için, değişen talebe sahip kapasite ve CPU kaynakları ekleme ve kaldırma, bir kümeyi *ölçeklendirmek* daha iyidir. 
 
-Bu makalede, yatay ölçeklendirme iş akışını açıklar.
+Azure Veri Gezgini kümesinin ölçeklendirilmesi için iki iş akışı vardır: 
 
-Yatay ölçeklendirme, örnek sayısını otomatik olarak önceden tanımlanmış kurallar ve zamanlamaları göre ölçeklendirmenize olanak tanır. Bu makalede açıklanan Azure portalında kümenizin otomatik ölçeklendirme ayarlarınızı belirtin.
+* Yatay ölçekleme, Ayrıca, ölçeklendirilmesi ve çıkışı da denir.
+* [Dikey ölçekleme](manage-cluster-vertical-scaling.md), ölçeği artırma ve azaltma olarak da bilinir.
 
-## <a name="steps-to-configure-horizontal-scaling"></a>Yatay ölçeklendirme yapılandırma adımları
+Bu makalede yatay ölçeklendirme iş akışı açıklanmaktadır.
 
-Azure portalında Veri Gezgini küme kaynağınıza gidin. Altında **ayarları** başlığı seçin **ölçeğini**. 
+## <a name="configure-horizontal-scaling"></a>Yatay ölçeklendirmeyi Yapılandır
 
-İstenen otomatik ölçeklendirme yönteminizi seçin: **El ile ölçeklendirmenin**, **otomatik ölçeklendirme en iyi duruma getirilmiş** veya **özel otomatik ölçeklendirme**.
+Yatay ölçeklendirmeyi kullanarak, önceden tanımlanmış kurallara ve zamanlamaya göre örnek sayısını otomatik olarak ölçeklendirebilirsiniz. Kümenizin otomatik ölçeklendirme ayarlarını belirtmek için:
+
+1. Azure portal Azure Veri Gezgini küme kaynağına gidin. **Ayarlar**altında **ölçeği Genişlet**' i seçin. 
+
+2. **Genişleme** penceresinde, istediğiniz otomatik ölçeklendirme yöntemini seçin: **El ile ölçeklendirme**, **iyileştirilmiş otomatik**ölçeklendirme veya **özel otomatik ölçeklendirme**.
 
 ### <a name="manual-scale"></a>El ile ölçeklendirme
 
-El ile ölçek kümesi oluşturma ile varsayılan ayardır. Küme anlamına otomatik olarak değişmez statik küme kapasitesi vardır. Çubuğunu kullanarak statik kapasiteyi seçebilir ve sonraki ayarı bir kümenin ölçeğini değiştirir kadar değiştirmez.
+El ile ölçeklendirme, küme oluşturma sırasında varsayılan ayardır. Küme otomatik olarak değişmeyen bir statik kapasiteye sahiptir. **Örnek sayısı** çubuğunu kullanarak statik kapasiteyi seçersiniz. Kümenin ölçeklendirilmesi, başka bir değişiklik yapana kadar bu ayarda kalır.
 
-   ![El ile ölçeklendirmenin yöntemi](media/manage-cluster-horizontal-scaling/manual-scale-method.png)
+   ![El ile ölçeklendirme yöntemi](media/manage-cluster-horizontal-scaling/manual-scale-method.png)
 
-### <a name="optimized-autoscale"></a>En iyi duruma getirilmiş otomatik ölçeklendirme
+### <a name="optimized-autoscale"></a>İyileştirilmiş otomatik ölçeklendirme
 
-En iyi duruma getirilmiş otomatik ölçeklendirme için önerilen otomatik ölçeklendirme yöntemdir. En iyi duruma getirilmiş otomatik ölçeklendirme yapılandırma adımları:
+İyileştirilmiş otomatik ölçeklendirme önerilen otomatik ölçeklendirme yöntemidir. Bu yöntem, küme performansını ve maliyetlerini iyileştirir. Küme, kullanım kapsamında bir duruma yaklaşırsa, bu, içinde ölçeklendirilir. Bu eylem maliyetleri düşürür, ancak performans düzeyini korur. Küme, aşırı kullanım durumuna yaklaşırsa, en iyi performansı elde etmek için bu durum ayarlanır. En Iyileştirilmiş otomatik ölçeklendirmeyi yapılandırmak için:
 
-1. En iyi duruma getirilmiş otomatik ölçeklendirme seçeneği ve daha düşük bir sınır ve küme örneklerini miktarı için üst sınır seçin, sonra da bu sınırlar arasında otomatik ölçeklendirme yapılır.
-2. Kaydet’e tıklayın.
+1. **En iyileştirilmiş otomatik ölçeklendirme**seçeneğini belirleyin. 
 
-   ![En iyi duruma getirilmiş otomatik ölçeklendirme yöntemi](media/manage-cluster-horizontal-scaling/optimized-autoscale-method.png)
+1. Minimum örnek sayısı ve en fazla örnek sayısı seçin. Küme otomatik ölçeklendirme, yük temel alınarak bu iki sayı arasında aralıklar.
 
-En iyi duruma getirilmiş otomatik ölçeklendirme mekanizması tıklayarak çalışmaya başlar ve olduktan sonra eylemleri küme etkinlik günlüğünde görünür olur. Bu otomatik ölçeklendirme yöntemi, maliyetleri ve küme performansı iyileştirme: küme için aynı ve daha düşük maliyetler performans bırakın, ölçeği açma işleminin durumunu almak başlar ve küme için durumunu almak başlar overutilization, iyi durumda olduğundan emin olmak için genişletilmiş olur
+1. **Kaydet**’i seçin.
 
-### <a name="custom-autoscale"></a>Özel bir otomatik ölçeklendirme
+   ![İyileştirilmiş otomatik ölçeklendirme yöntemi](media/manage-cluster-horizontal-scaling/optimized-autoscale-method.png)
 
-Özel ölçeklendirme yöntemi sayesinde kümenizi dinamik olarak belirttiğiniz ölçümlere göre ölçeklendirin. Aşağıdaki grafikte, flow ve özel otomatik ölçeklendirme yapılandırma adımları gösterilmektedir. Daha ayrıntılı bilgi grafiği izleyin.
+İyileştirilmiş otomatik ölçeklendirme çalışmaya başlar. Eylemleri artık kümenin Azure etkinlik günlüğünde görünür.
 
-1. İçinde **otomatik ölçeklendirme ayarı adı** kutusunda, gibi bir ad verin *genişleme: önbellek kullanımı*. 
+### <a name="custom-autoscale"></a>Özel otomatik ölçeklendirme
+
+Özel otomatik ölçeklendirmeyi kullanarak, belirttiğiniz ölçümlere göre kümenizi dinamik olarak ölçeklendirebilirsiniz. Aşağıdaki grafikte, özel otomatik ölçeklendirmeyi yapılandırmak için akış ve adımlar gösterilmektedir. Daha fazla ayrıntı grafiği izler.
+
+1. **Otomatik ölçeklendirme ayarı adı** kutusuna, *genişleme: önbellek kullanımı*gibi bir ad girin. 
 
    ![Ölçek kuralı](media/manage-cluster-horizontal-scaling/custom-autoscale-method.png)
 
-2. İçin **ölçek modu**seçin **ölçek dayalı bir ölçüme göre**. Bu mod, dinamik ölçeklendirme sağlar. Belirleyebilirsiniz **belirli bir örnek sayısına ölçeklendirin**.
+2. **Ölçek modu**için, **ölçüm temelinde ölçek**' i seçin. Bu mod dinamik ölçeklendirme sağlar. Ayrıca, **belirli bir örnek sayısına göre ölçeklendir**' i de seçebilirsiniz.
 
-3. Seçin **+ alınabilecek**.
+3. **+ Kural Ekle**' yi seçin.
 
-4. İçinde **ölçek kuralı** bölümünde sağ tarafta, her ayar için değerler sağlayın.
+4. Sağdaki **Ölçek kuralı** bölümünde her bir ayar için değerler girin.
 
     **Ölçütler**
 
     | Ayar | Açıklama ve değer |
     | --- | --- |
-    | **Zaman toplama** | Gibi bir toplama ölçütü seçin **ortalama**. |
-    | **Ölçüm adı** | Ölçeklendirme işlemi, aşağıdakiler gibi temel alınmasını istediğiniz ölçümü seçin **önbellek kullanımı**. |
-    | **Zaman dilimi İstatistiği** | Arasında seçim **ortalama**, **Minimum**, **maksimum**, ve **toplam**. |
-    | **İşleci** | Uygun bir seçeneği gibi belirleyin **büyüktür veya eşittir**. |
-    | **Eşik** | Uygun bir değer seçin. Örneğin, önbellek kullanımı için yüzde 80'i iyi bir başlangıç noktası ' dir. |
-    | **Süre (dakika cinsinden)** | Uygun miktarda bir sistemin geri ölçümleri hesaplanırken aramak saati seçin. Varsayılan 10 dakika ile başlayın. |
+    | **Zaman toplama** | **Ortalama**gibi bir toplama ölçütü seçin. |
+    | **Ölçüm adı** | Ölçek işleminin, **önbellek kullanımı**gibi temel alarak olmasını istediğiniz ölçümü seçin. |
+    | **Zaman dilimi istatistiği** | **Ortalama**, **En düşük**, **en yüksek**ve **Toplam**arasında seçim yapın. |
+    | **İşleci** | **Büyük veya eşittir**gibi uygun seçeneği belirleyin. |
+    | **Eşiği** | Uygun bir değer seçin. Örneğin, önbellek kullanımı için yüzde 80 iyi bir başlangıç noktasıdır. |
+    | **Süre (dakika cinsinden)** | Sistemin ölçümleri hesaplarken geri araması için uygun bir süre seçin. Varsayılan 10 dakikalık ile başlayın. |
     |  |  |
 
     **Eylem**
 
     | Ayar | Açıklama ve değer |
     | --- | --- |
-    | **İşlem** | Ölçeklendirme veya ölçeği genişletmek için uygun seçeneği belirleyin. |
-    | **Örnek sayısı** | Düğümleri veya örneklerini eklemek veya bir ölçüm koşul karşılandığında kaldırmak istiyorsanız sayısını seçin. |
-    | **Seyrek erişimli (dakika)** | Ölçek işlemleri arasında beklenecek bir uygun zaman aralığı seçin. Varsayılan beş dakika ile başlayın. |
+    | **İşlem** | Ölçeklemek veya ölçeklendirmek için uygun seçeneği belirleyin. |
+    | **Örnek sayısı** | Ölçüm koşulu karşılandığında eklemek veya kaldırmak istediğiniz düğüm veya örnek sayısını seçin. |
+    | **Seyrek Erişimli (dakika)** | Ölçek işlemleri arasında beklenecek uygun bir zaman aralığı seçin. Varsayılan beş dakikalık bir başlangıç yapın. |
     |  |  |
 
 5. **Add (Ekle)** seçeneğini belirleyin.
 
-6. İçinde **örnek limitleri** bölümünde sol tarafta, her ayar için değerler sağlayın.
+6. Sol taraftaki **örnek sınırları** bölümünde her bir ayar için değerler girin.
 
     | Ayar | Açıklama ve değer |
     | --- | --- |
-    | **En az** | Kümenizi aşağıdaki bağımsız olarak kullanımı Ölçekle örnek sayısı. |
-    | **En fazla** | Kümenizi yukarıdaki kullanımı bağımsız olarak ölçeklendirme olmaz örnek sayısı. |
-    | **Varsayılan** | Varsayılan örnek sayısı. Kaynak ölçümlerin okunmasıyla ile ilgili sorun varsa, bu ayar kullanılır. |
+    | **En düşük** | Kullanıma almadan, kümenizin aşağıda ölçeklendirmeyeceği örnek sayısı. |
+    | **Çok** | Kullanıma göre, kümenizin üzerine ölçeklenmeyeceği örnek sayısı. |
+    | **Varsayılan** | Varsayılan örnek sayısı. Bu ayar, kaynak ölçümlerini okumada sorunlar varsa kullanılır. |
     |  |  |
 
 7. **Kaydet**’i seçin.
 
-Bir ölçek genişletme işlemi, Azure Veri Gezgini kümeniz şimdi yapılandırdınız. Bir ölçeklendirme işlemi için başka bir kural ekleyin. Küme ölçeklendirme sorunlarla ilgili yardıma ihtiyacınız varsa [bir destek isteği açın](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) Azure portalında.
+Azure Veri Gezgini kümeniz için artık yatay ölçeklendirmeyi yapılandırdınız. Dikey ölçeklendirme için başka bir kural ekleyin. Küme ölçeklendirme sorunlarıyla ilgili yardıma ihtiyacınız varsa Azure portal [bir destek isteği açın](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Veri Gezgini performansını, sistem durumu ve kullanım ölçümleri ile izleme](using-metrics.md)
-* [Küme dikey olarak ölçeklendirmeyi yönetmeniz](manage-cluster-vertical-scaling.md) bir küme uygun boyutlandırması için.
+* [Ölçümler ile Azure Veri Gezgini performansını, sistem durumunu ve kullanımını izleyin](using-metrics.md)
+
+* Kümenin uygun boyutu için [küme dikey ölçeklendirmesini yönetin](manage-cluster-vertical-scaling.md) .
