@@ -81,6 +81,8 @@
       href: sample-v2-code.md
     - name: Kavramlar
       items:
+        - name: Kimlik doğrulaması temel bilgileri
+          href: authentication-scenarios.md
         - name: Kimlik doğrulama akışları ve uygulama senaryoları
           href: authentication-flows-app-scenarios.md
         - name: Uygulama senaryoları
@@ -271,8 +273,6 @@
                       href: msal-js-known-issues-safari-browser.md
         - name: Kimlik doğrulama protokolü
           items:
-            - name: Kimlik doğrulaması temel bilgileri
-              href: authentication-scenarios.md
             - name: Uygulama türleri ve OAuth2.0
               href: v2-app-types.md
             - name: OAuth 2.0 ve OpenID Connect protokolleri

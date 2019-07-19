@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 01fd5b06a2e534a85c88d5c1a706713f07f40106
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: d44877e35687745ddba51d4d015729e62106c9ca
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277558"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348440"
 ---
-# <a name="quickstart-change-model-using-c"></a>Hızlı Başlangıç: Modeli kullanarak değiştirinC#
+# <a name="quickstart-change-model-using-c"></a>Hızlı Başlangıç: Modeli kullanarak DeğiştirC#
 
 [!INCLUDE [Quickstart introduction for change model](../../../includes/cognitive-services-luis-qs-change-model-intro-para.md)]
 
@@ -37,19 +37,19 @@ ms.locfileid: "68277558"
 
 ## <a name="create-quickstart-code"></a>Hızlı başlangıç kodu oluşturma 
 
-Visual Studio'da yeni bir oluşturma **Windows Klasik Masaüstü Konsolu** .NET Framework kullanarak uygulama. Projeyi adlandırın `ConsoleApp1`.
+Visual Studio 'da, .NET Framework kullanarak yeni bir **Windows Klasik Masaüstü konsol** uygulaması oluşturun. Projeyi `ConsoleApp1`adlandırın.
 
 ![Visual Studio proje türü](./media/luis-quickstart-cs-add-utterance/vs-project-type.png)
 
 ### <a name="add-the-systemweb-dependency"></a>System.Web bağımlılığını ekleyin
 
-Visual Studio projesinde **System.Web** gerekir. Çözüm Gezgini'nde sağ **başvuruları** seçip **Başvuru Ekle** derlemeleri bölümünden.
+Visual Studio projesinde **System.Web** gerekir. Çözüm Gezgini, **Başvurular** ' a sağ tıklayın ve derlemeler bölümünden **Başvuru Ekle** ' yi seçin.
 
 ![System.web başvurusunu ekleyin](./media/luis-quickstart-cs-add-utterance/system.web.png)
 
 ### <a name="add-other-dependencies"></a>Diğer bağımlılıkları ekleyin
 
-Visual Studio projesi için **JsonFormatterPlus** ve **CommandLineParser** gerekir. Çözüm Gezgini'nde **Başvurular**'a sağ tıklayın ve **NuGet Paketlerini Yönet...** öğesini seçin. Göz atın ve her iki paketlerin bir bölümünü ekleyin. 
+Visual Studio projesi için **JsonFormatterPlus** ve **CommandLineParser** gerekir. Çözüm Gezgini'nde **Başvurular**'a sağ tıklayın ve **NuGet Paketlerini Yönet...** öğesini seçin. Her iki paketin birine gözatıp ekleyin. 
 
 ![3\. taraf bağımlılıkları ekleme](./media/luis-quickstart-cs-add-utterance/add-dependencies.png)
 
@@ -57,7 +57,7 @@ Visual Studio projesi için **JsonFormatterPlus** ve **CommandLineParser** gerek
 ### <a name="write-the-c-code"></a>C# kodunu yazma
 **Program.cs** dosyasının şu şekilde olması gerekir:
 
-```C#
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -75,7 +75,7 @@ namespace ConsoleApp1
 }
 ```
 
-Bağımlılıkları olan güncelleştirin:
+Bağımlılıkları şu şekilde güncelleştirin:
 
    [!code-csharp[Add the dependencies](~/samples-luis/documentation-samples/quickstarts/change-model/csharp/ConsoleApp1/Program.cs?range=1-11 "Add the dependencies")]
 
@@ -115,7 +115,7 @@ Komut satırı bağımsız değişkenlerini yönetmek için ana kodu ekleyin. **
 
 ### <a name="copy-utterancesjson-to-output-directory"></a>utterances.json dosyasını çıkış dizinine kopyalayın
 
-Çözüm Gezgini'nde ekleme `utterances.json` Solution Explorer'ın Proje adına sağ tıklayarak seçip **Ekle**, ardından seçerek **varolan öğe**. Seçin `utterances.json` dosya. Bu dosyayı projeye ekler. Ardından çıktı yönü eklenmesi gerekir. Sağ `utterances.json` seçip **özellikleri**. Özellikler penceresinde `Content` öğesinin **Derleme Eylemi** ve `Copy Always` öğesinin **Çıkış Dizinine Kopyala** seçeneğini işaretleyin.  
+Çözüm Gezgini, Çözüm Gezgini proje adına sağ `utterances.json` tıklayıp ardından **Ekle**' yi ve ardından **Varolan öğe**' yi seçerek öğesini ekleyin. `utterances.json` Dosyayı seçin. Bu, dosyayı projeye ekler. Ardından, çıkış yönüne eklenmesi gerekir. Öğesine sağ tıklayın `utterances.json` ve **Özellikler**' i seçin. Özellikler penceresinde `Content` öğesinin **Derleme Eylemi** ve `Copy Always` öğesinin **Çıkış Dizinine Kopyala** seçeneğini işaretleyin.  
 
 ![JSON dosyasını içerik olarak işaretleme](./media/luis-quickstart-cs-add-utterance/content-properties.png)
 

@@ -1,5 +1,5 @@
 ---
-title: Öğretici - erişim izni verme bir ASP.NET Core web API'si tek sayfalı bir uygulamadan - Azure Active Directory B2C | Microsoft Docs
+title: Öğretici-tek sayfalı bir uygulamadan ASP.NET Core Web API 'sine erişim Izni verme-Azure Active Directory B2C | Microsoft Docs
 description: Bir .NET Core web API’sini korumak ve tek sayfalı bir uygulamadan çağırmak için Active Directory B2C kullanmaya yönelik öğretici.
 services: active-directory-b2c
 author: mmacy
@@ -10,73 +10,73 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 609e7bc4104a445c5d77109c9470fb487b2f1336
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: cbea29320c896637190766d1b2b60c09f7db5163
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66507742"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68347172"
 ---
-# <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-application-using-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C kullanarak bir tek sayfa uygulamasında erişime bir ASP.NET Core Web API'si
+# <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-application-using-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C kullanarak tek sayfalı bir uygulamadan ASP.NET Core Web API 'sine erişim izni verme
 
-Bu öğretici için Azure Active Directory (Azure AD) B2C korumalı ASP.NET Core web API kaynağını çağırma tek sayfalı bir uygulamadan gösterir.
+Bu öğreticide, tek sayfalı bir uygulamadan Azure Active Directory (Azure AD) B2C korumalı ASP.NET Core Web API kaynağını çağırma gösterilmektedir.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Web API'si uygulaması ekleme
-> * Web API'si için Kapsamları yapılandırma
-> * Web API'sine izinler verin
-> * Örnek uygulamayı yapılandırma
+> * Bir Web API 'SI için Kapsamları yapılandırma
+> * Web API 'sine izin verme
+> * Uygulamayı kullanmak için örneği yapılandırma
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Önkoşullar ve adımlar tamamlamak [Öğreticisi: Azure Active Directory B2C kullanarak hesaplarla tek sayfalı uygulama kimlik doğrulamasını etkinleştirme](active-directory-b2c-tutorials-spa.md).
+[Öğreticideki adımları ve önkoşulları doldurun: Azure Active Directory B2C](active-directory-b2c-tutorials-spa.md)kullanarak hesaplarla tek sayfalı uygulama kimlik doğrulamasını etkinleştirin.
 
 ## <a name="add-a-web-api-application"></a>Web API'si uygulaması ekleme
 
-Web API'si kaynaklarına kabul edebilir ve korunan kaynak isteklerini yanıtlamak önce kiracınızda bir erişim belirteci mevcut istemci uygulamalar tarafından kayıtlı olması gerekir.
+Web API kaynakları, erişim belirteci sunan istemci uygulamalarına göre korunan kaynak isteklerini kabul etmeden ve bunlara yanıt verebilmeleri için kiracınızda kayıtlı olmalıdır.
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. Azure AD B2C kiracınızı tıklayarak içeren dizine kullandığınızdan emin olun **dizin ve abonelik filtresi** üst menü ve kiracınız içeren dizine seçme.
-3. Seçin **tüm hizmetleri** Azure portalı ve ardından arayın ve seçin, sol üst köşedeki **Azure AD B2C**.
-4. Seçin **uygulamaları**ve ardından **Ekle**.
+3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
+4. **Uygulamalar**' ı seçin ve ardından **Ekle**' yi seçin.
 5. Uygulama için bir ad girin. Örneğin, *webapi1*.
-6. İçin **içeren web uygulaması / web API'sini** ve **örtük akışa izin ver**seçin **Evet**.
-7. İçin **yanıt URL'si**, Azure AD B2C, uygulamanız tarafından istenen belirteçleri döndürdüğü bir uç noktasını girin. Bu öğreticide örnek yerel olarak çalışır ve adresindeki dinler `https://localhost:5000`.
-8. İçin **uygulama kimliği URI'si**, web API'niz için kullanılan tanımlayıcı girin. Tam etki alanı ile birlikte URI tanımlayıcısı sizin için oluşturulur. Örneğin, `https://contosotenant.onmicrosoft.com/api`.
-9. **Oluştur**’a tıklayın.
-10. Özellikler sayfasında, web uygulamasını yapılandırırken kullanacağınız uygulama Kimliğini kaydedin.
+6. **Web uygulaması/Web API 'Si Ekle** ve **örtük akışa Izin ver**için **Evet**' i seçin.
+7. **Yanıt URL 'si**için Azure AD B2C uygulamanızın isteklerinizin belirteçleri döndürmesi gereken bir uç nokta girin. Bu öğreticide, örnek yerel olarak çalışır ve tarihinde `https://localhost:5000`dinler.
+8. **Uygulama kimliği URI 'si**için, Web API 'niz için kullanılan tanımlayıcıyı girin. Tam etki alanı ile birlikte URI tanımlayıcısı sizin için oluşturulur. Örneğin: `https://contosotenant.onmicrosoft.com/api`.
+9.           **Oluştur**'a tıklayın.
+10. Özellikler sayfasında, Web uygulamasını yapılandırırken kullanacağınız uygulama KIMLIĞINI kaydedin.
 
-## <a name="configure-scopes"></a>Kapsamlarını yapılandırma
+## <a name="configure-scopes"></a>Kapsamları yapılandırma
 
-Kapsamlar korumalı kaynaklara erişimi yönetmenin bir yolunu sağlar. Kapsamlar web API’si tarafından kapsam tabanlı erişim denetimi uygulamak için kullanılır. Örneğin, bazı kullanıcılar hem okuma hem de yazma erişimine sahipken diğer kullanıcıların salt okunur izinleri olabilir. Bu öğreticide web API’si için okuma izinlerini tanımlayacaksınız.
+Kapsamlar, korumalı kaynaklara erişimi yönetmek için bir yol sağlar. Kapsamlar web API’si tarafından kapsam tabanlı erişim denetimi uygulamak için kullanılır. Örneğin, bazı kullanıcılar hem okuma hem de yazma erişimine sahipken diğer kullanıcıların salt okunur izinleri olabilir. Bu öğreticide web API’si için okuma izinlerini tanımlayacaksınız.
 
-1. Seçin **uygulamaları**ve ardından *webapi1*.
-2. Seçin **yayımlanan kapsamlar**.
-3. İçin **kapsam**, girin `Hello.Read`ve açıklama yazın `Read access to hello`.
-4. İçin **kapsam**, girin `Hello.Write`ve açıklama yazın `Write access to hello`.
+1. **Uygulamalar**' ı seçin ve ardından *webapi1*' ı seçin.
+2. **Yayımlanan kapsamları**seçin.
+3. **Kapsam**için girin `Hello.Read`ve açıklama için girin. `Read access to hello`
+4. **Kapsam**için girin `Hello.Write`ve açıklama için girin. `Write access to hello`
 5. **Kaydet**’e tıklayın.
 
 Yayımlanan kapsamlar web API’sine bir istemci uygulama izni vermek için kullanılabilir.
 
 ## <a name="grant-permissions"></a>İzinleri verme
 
-Bir uygulamadan korumalı web API'sini çağırmak için API'ye uygulama izinleri vermeniz gerekir. Önkoşul öğreticisinde, Azure AD B2C'adlı bir web uygulamasında oluşturulan *webapp1*. Web API'sini çağırmak için bu uygulamayı kullanın.
+Bir uygulamadan korumalı bir Web API 'SI çağırmak için uygulamanızın API 'sine izin vermeniz gerekir. Önkoşul öğreticisinde, Azure AD B2C adlı *WebApp1*adlı bir Web uygulaması oluşturdunuz. Web API 'sini çağırmak için bu uygulamayı kullanın.
 
-1. Seçin **uygulamaları**ve ardından *webapp1*.
-2. Seçin **API erişimi**ve ardından **Ekle**.
-3. İçinde **API seçin** açılır menüsünde, select *webapi1*.
-4. İçinde **kapsamları seçin** açılır menüsünde, select **Hello.Read** ve **Hello.Write** daha önce tanımladığınız kapsamları.
+1. **Uygulamalar**' ı seçin ve ardından *WebApp1*' ı seçin.
+2. **API erişimi**' ni seçin ve ardından **Ekle**' yi seçin.
+3. **API Seç** açılan menüsünde *webapi1*' yi seçin.
+4. **Kapsamları Seç** açılan menüsünde, daha önce tanımladığınız **Merhaba. Read** ve **Hello. Write** kapsamlarını seçin.
 5. **Tamam**'ı tıklatın.
 
-**Örnek tek sayfalı uygulamam**, korumalı **Hello Core API**’sini çağırmak için kaydedilir. Bir kullanıcı, tek sayfalı uygulamayı kullanmak için Azure AD B2C ile kimliğini doğrular. Tek sayfalı uygulamayı bir yetkilendirme izni korumalı web API'sine erişmek için Azure AD B2C alır.
+**Örnek tek sayfalı uygulamam**, korumalı **Hello Core API**’sini çağırmak için kaydedilir. Bir kullanıcı tek sayfalı uygulamayı kullanmak üzere Azure AD B2C kimliğini doğrular. Tek sayfalı uygulama, korumalı Web API 'sine erişmek için Azure AD B2C bir yetkilendirme izni alır.
 
-## <a name="configure-the-sample"></a>Örnek yapılandırma
+## <a name="configure-the-sample"></a>Örneği yapılandırma
 
-API'yi kaydettikten ve kapsamları tanımladıktan sonra web API kodunda Azure AD B2C kiracınızı kullanacak şekilde yapılandırın. Bu öğreticide, Github'dan indirebileceğiniz örnek .NET Core web uygulamasını yapılandırın. GitHub’dan [zip dosyasını indirin](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapi/archive/master.zip) veya örnek web uygulamasını kopyalayın.
+Web API 'SI kayıtlı olduğuna ve kapsamlarınızın tanımlandığından, Web API kodunu Azure AD B2C kiracınızı kullanacak şekilde yapılandırırsınız. Bu öğreticide, GitHub 'dan indirebileceğiniz örnek bir .NET Core Web uygulaması yapılandırırsınız. GitHub’dan [zip dosyasını indirin](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapi/archive/master.zip) veya örnek web uygulamasını kopyalayın.
 
 ```
 git clone https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapi.git
@@ -99,18 +99,18 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webap
 
 #### <a name="enable-cors"></a>CORS'yi etkinleştirme
 
-Tek sayfalı uygulamanızın ASP.NET Core web API'sini çağırmasına izin vermek için etkinleştirmeniz gerekir [CORS](https://docs.microsoft.com/aspnet/core/security/cors).
+Tek sayfalı uygulamanızın ASP.NET Core Web API 'sini çağırmasını sağlamak için [CORS](https://docs.microsoft.com/aspnet/core/security/cors)'yi etkinleştirmeniz gerekir.
 
 1. **Startup.cs** dosyasında `ConfigureServices()` yöntemine CORS ekleyin.
 
-    ```C#
+    ```csharp
     public void ConfigureServices(IServiceCollection services) {
       services.AddCors();
     ```
 
 2. **Startup.cs** dosyasında, `Configure()` yönteminde CORS’yi yapılandırın.
 
-    ```C#
+    ```csharp
     public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory) {
       app.UseCors(builder =>
         builder.WithOrigins("http://localhost:6420").AllowAnyHeader().AllowAnyMethod());
@@ -120,7 +120,7 @@ Tek sayfalı uygulamanızın ASP.NET Core web API'sini çağırmasına izin verm
 
 ### <a name="configure-the-single-page-application"></a>Tek sayfalı uygulamayı yapılandırma
 
-Tek sayfalı uygulama kaydolma, oturum açma kullanıcı için Azure AD B2C kullanır ve korumalı ASP.NET Core web API'sini çağırır. .NET Core web API'sini çağırmak için tek sayfalı uygulama güncelle
+Tek sayfalı uygulama, Kullanıcı kaydı, oturum açma için Azure AD B2C kullanır ve korunan ASP.NET Core Web API 'sini çağırır. .NET Core Web API 'sini çağırmak için tek sayfalı uygulamayı güncelleştirin.
 
 Uygulama ayarlarını değiştirmek için:
 
@@ -137,9 +137,9 @@ Uygulama ayarlarını değiştirmek için:
     };
     ```
 
-## <a name="run-the-spa-application-and-web-api"></a>SPA uygulamasını ve web API'sini çalıştırma
+## <a name="run-the-spa-application-and-web-api"></a>SPA uygulamasını ve Web API 'sini çalıştırma
 
-Hem Node.js tek sayfalı uygulama hem de .NET Core web API'sini çalıştırmanız gerekir.
+Hem Node. js tek sayfalı uygulamayı hem de .NET Core Web API 'sini çalıştırmanız gerekir.
 
 ### <a name="run-the-aspnet-core-web-api"></a>ASP.NET Core Web API’sini çalıştırma 
 
@@ -157,15 +157,15 @@ Proje başlatıldığında varsayılan tarayıcınızda web api’sinin istekler
     node server.js
     ```
 
-    Konsol penceresi uygulamanın barındırıldığı bağlantı noktası numarasını görüntüler.
+    Konsol penceresi, uygulamanın barındırıldığı bağlantı noktası numarasını görüntüler.
     
     ```
     Listening on port 6420...
     ```
 
-4. Adresine gidin, bir tarayıcı kullanın `http://localhost:6420` uygulamayı görüntülemek için.
+4. Uygulamayı görüntülemek için adrese `http://localhost:6420` gitmek üzere bir tarayıcı kullanın.
 5. [Tek sayfalı bir uygulamada Azure Active Directory B2C ile kullanıcılar için kimlik doğrulaması gerçekleştirme (Javascript)](active-directory-b2c-tutorials-spa.md) kullanılan e-posta adresi ve parolayı kullanarak oturum açın.
-6. Tıklayın **API çağrısı**.
+6. **API çağır**' a tıklayın.
 
 Kaydolduktan veya bir kullanıcı hesabıyla oturum açtıktan sonra örnek, korumalı web api’sini çağırır ve bir sonuç döndürür.
 
@@ -175,9 +175,9 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 
 > [!div class="checklist"]
 > * Web API'si uygulaması ekleme
-> * Web API'si için Kapsamları yapılandırma
-> * Web API'sine izinler verin
-> * Örnek uygulamayı yapılandırma
+> * Bir Web API 'SI için Kapsamları yapılandırma
+> * Web API 'sine izin verme
+> * Uygulamayı kullanmak için örneği yapılandırma
 
 > [!div class="nextstepaction"]
-> [Öğretici: Kimlik sağlayıcıları Azure Active Directory B2C uygulamalarınızın ekleyin](tutorial-add-identity-providers.md)
+> [Öğretici: Azure Active Directory B2C ' deki uygulamalarınıza kimlik sağlayıcıları ekleyin](tutorial-add-identity-providers.md)

@@ -4,27 +4,29 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/24/2019
 ms.author: aahi
-ms.openlocfilehash: ad1527a5e7f1cb2ff1beb9ddace5460f41bb8a87
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 674dd30ff3e493ec4c4036f032f82624a6ca5749
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67461506"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68334236"
 ---
-## <a name="azure-cognitive-service-subscription-types"></a>Azure Bilişsel hizmet aboneliği türleri
+## <a name="azure-cognitive-service-resource-types"></a>Azure bilişsel hizmet kaynak türleri
 
 > [!NOTE]
-> Abonelik sahipleri, Bilişsel hizmetler hesapları için kaynak gruplarında ve Aboneliklerde oluşturulmasını uygulayarak kapatabilir [Azure İlkesi](https://docs.microsoft.com/azure/governance/policy/overview#policy-definition)"izin verilmeyen kaynak türleri" için bir ilke tanımı atadıktan ve belirtme**Microsoft.CognitiveServices/accounts** hedef kaynak türü.
+> Abonelik sahipleri, [Azure ilkesini](https://docs.microsoft.com/azure/governance/policy/overview#policy-definition)uygulayarak, "izin verilmeyen kaynak türleri" ilke tanımına atayarak ve şunları belirterek **kaynak grupları ve abonelikler için bilişsel hizmetler kaynaklarının oluşturulmasını devre dışı bırakabilir Hedef kaynak türü olarak Microsoft. Biliveservices/hesapları** .
 
-Azure Bilişsel hizmetler iki farklı Aboneliklerde erişebilirsiniz: Birden çok hizmet bir abonelik veya bir tek hizmet biri. Bu abonelikler için tek bir hizmet veya birden fazla hizmeti aynı anda bağlamanızı sağlar.
+Azure bilişsel hizmetlere iki farklı kaynak üzerinden erişebilirsiniz: Çoklu hizmet kaynağı veya tek hizmet bir. Bu abonelikler, aynı anda tek bir hizmete veya birden çok hizmete bağlanmanızı sağlar.
 
-### <a name="multi-service-subscription"></a>Birden çok hizmet aboneliği
+### <a name="multi-service-resource"></a>Çoklu hizmet kaynağı
 
 >[!WARNING]
-> Şu anda bu hizmetler **yoksa** çok hizmet anahtarlarını destekler: Soru-cevap Oluşturucu, konuşma Hizmetleri, özel görüntü işleme ve Anomali algılayıcısı.
+> Şu anda, **Bu hizmetler çoklu** hizmet anahtarlarını desteklemez: Soru-Cevap Oluşturma, konuşma Hizmetleri, Özel Görüntü İşleme ve anomali algılayıcısı.
 
-Azure Bilişsel hizmetler için çok hizmet bir abonelik, Azure Bilişsel Hizmetler'in bir çoğu için tek bir abonelik ve Azure kaynak kullanmanıza olanak sağlar ve kullandığınız hizmetlerden faturalama birleştirir. Bkz: [Bilişsel hizmetler fiyatlandırması](https://azure.microsoft.com/pricing/details/cognitive-services/) ek bilgi için.
+Çok hizmet bilişsel hizmetler kaynağına abone olma:
+* Azure bilişsel hizmetler için tek bir Azure kaynağı kullanmanıza olanak sağlar.
+* Kullandığınız hizmetlerden faturalandırmayı birleştirir. Ek bilgi için bkz. bilişsel [Hizmetler fiyatlandırması](https://azure.microsoft.com/pricing/details/cognitive-services/) .
 
-### <a name="single-service-subscription"></a>Tek hizmet aboneliği
+### <a name="single-service-resource"></a>Tek hizmet kaynağı
 
-Görüntü işleme veya konuşma Hizmetleri gibi tek bir hizmet için bir abonelik. Bu kaynak için bir tek hizmet aboneliği sınırlıdır. 
+Tek hizmet kaynakları (Görüntü İşleme veya konuşma hizmetleri gibi), belirtilen hizmet ile kısıtlıdır.

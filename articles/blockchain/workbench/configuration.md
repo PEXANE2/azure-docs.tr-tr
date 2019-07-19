@@ -209,7 +209,7 @@ Bir iş akışı örneği için giriş parametrelerini tanımlar.
 
 | Alan | Description | Gerekli | En büyük uzunluk |
 |-------|-------------|:--------:|-----------:|
-| Ad | İşlev benzersiz adı. Karşılık gelen akıllı sözleşmenin aynı kullanmalısınız **adı** geçerli işlev. | Evet | 50 |
+| Name | İşlev benzersiz adı. Karşılık gelen akıllı sözleşmenin aynı kullanmalısınız **adı** geçerli işlev. | Evet | 50 |
 | DisplayName | İşlev kolay görünen adı. | Evet | 255 |
 | Description | İşlev açıklaması | Hayır | 255 |
 | Parametreler | Koleksiyonu [tanımlayıcıları](#identifiers) karşılık gelen işlevin parametreleri. | Evet | |
@@ -257,7 +257,7 @@ Bir iş akışındaki benzersiz durumlar koleksiyonudur. Her durum, iş mantığ
 
 | Alan | Description | Gerekli | En büyük uzunluk |
 |-------|-------------|:--------:|-----------:|
-| Ad | Durumun benzersiz adı. Karşılık gelen akıllı sözleşmenin aynı kullanmalısınız **adı** geçerli durumu için. | Evet | 50 |
+| Name | Durumun benzersiz adı. Karşılık gelen akıllı sözleşmenin aynı kullanmalısınız **adı** geçerli durumu için. | Evet | 50 |
 | DisplayName | Durumun kolay görünen adı. | Evet | 255 |
 | Description | Durum açıklaması. | Hayır | 255 |
 | PercentComplete | İş mantığı denetim akışı içinde ilerleme durumunu göstermek için Blockchain Workbench'i kullanıcı arabiriminde görüntülenen bir tamsayı değeri. | Evet | |
@@ -371,7 +371,7 @@ Uygulama rolleri hareket ya da uygulama içinde katılmak istiyorsanız kullanı
 
 | Alan | Description | Gerekli | En büyük uzunluk |
 |-------|-------------|:--------:|-----------:|
-| Ad | Uygulama rolünün benzersiz adı. Karşılık gelen akıllı sözleşmenin aynı kullanmalısınız **adı** uygun rolü için. Temel tür adları ayrılmıştır. Aynı ada sahip bir uygulama rolü adlandırılamıyor [türü](#type)| Evet | 50 |
+| Name | Uygulama rolünün benzersiz adı. Karşılık gelen akıllı sözleşmenin aynı kullanmalısınız **adı** uygun rolü için. Temel tür adları ayrılmıştır. Aynı ada sahip bir uygulama rolü adlandırılamıyor [türü](#type)| Evet | 50 |
 | Description | Uygulama rolü açıklaması. | Hayır | 255 |
 
 ### <a name="application-roles-example"></a>Uygulama rolleri örneği
@@ -394,7 +394,7 @@ Tanımlayıcılar, iş akışı özellikleri, kurucu ve işlev parametrelerini t
 
 | Alan | Description | Gerekli | En büyük uzunluk |
 |-------|-------------|:--------:|-----------:|
-| Ad | Özellik veya parametre benzersiz adı. Karşılık gelen akıllı sözleşmenin aynı kullanmalısınız **adı** için geçerli bir özellik veya parametre. | Evet | 50 |
+| Name | Özellik veya parametre benzersiz adı. Karşılık gelen akıllı sözleşmenin aynı kullanmalısınız **adı** için geçerli bir özellik veya parametre. | Evet | 50 |
 | DisplayName | Özellik veya parametre kolay görünen adı. | Evet | 255 |
 | Description | Özellik veya parametre açıklaması. | Hayır | 255 |
 
