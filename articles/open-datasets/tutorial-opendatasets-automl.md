@@ -9,12 +9,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 05/02/2019
-ms.openlocfilehash: aafbef2c9a9328266a937d4c52c154a8b826c342
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 963e4f7e9db638450a89dd4ae0091019fc58e2a4
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68312155"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359436"
 ---
 # <a name="tutorial-build-a-regression-model-with-automated-machine-learning-and-open-datasets"></a>Öğretici: Otomatik makine öğrenimi ve açık veri kümeleri ile regresyon modeli oluşturma
 
@@ -90,8 +90,8 @@ Taxı verilerini tutmak için bir veri çerçevesi oluşturarak başlayın. Spar
 
 ```python
 green_taxi_df = pd.DataFrame([])
-start = datetime.strptime("1/1/2016","%m/%d/%Y")
-end = datetime.strptime("1/31/2016","%m/%d/%Y")
+start = datetime.strptime("1/1/2016", "%m/%d/%Y")
+end = datetime.strptime("1/31/2016", "%m/%d/%Y")
 
 for sample_month in range(12):
     temp_df_green = NycTlcGreen(start + relativedelta(months=sample_month), end + relativedelta(months=sample_month)) \
@@ -147,7 +147,7 @@ green_taxi_df.head(10)
       <td>2016-01-20 17:46:33</td>
       <td>1\.</td>
       <td>0,98</td>
-      <td>Yok.</td>
+      <td>None</td>
       <td>Yok.</td>
       <td>-73,921715</td>
       <td>40,766682</td>
@@ -172,7 +172,7 @@ green_taxi_df.head(10)
       <td>1\.</td>
       <td>3,08</td>
       <td>None</td>
-      <td>Yok.</td>
+      <td>None</td>
       <td>-73,979973</td>
       <td>40,677071</td>
       <td>-73,934349</td>
@@ -195,8 +195,8 @@ green_taxi_df.head(10)
       <td>2016-01-01 01:05:37</td>
       <td>1\.</td>
       <td>2.44</td>
-      <td>None</td>
-      <td>None</td>
+      <td>Yok.</td>
+      <td>Yok.</td>
       <td>-73,863045</td>
       <td>40,882923</td>
       <td>-73,839836</td>
@@ -219,7 +219,7 @@ green_taxi_df.head(10)
       <td>2016-01-04 18:03:43</td>
       <td>1\.</td>
       <td>2,87</td>
-      <td>None</td>
+      <td>Yok.</td>
       <td>Yok.</td>
       <td>-73,977730</td>
       <td>40,684647</td>
@@ -243,7 +243,7 @@ green_taxi_df.head(10)
       <td>2016-01-13 08:52:16</td>
       <td>1\.</td>
       <td>0.50</td>
-      <td>None</td>
+      <td>Yok.</td>
       <td>Yok.</td>
       <td>-73,942589</td>
       <td>40,841423</td>
@@ -267,8 +267,8 @@ green_taxi_df.head(10)
       <td>2016-01-29 17:27:52</td>
       <td>1\.</td>
       <td>2.25</td>
-      <td>Yok.</td>
-      <td>Yok.</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,830894</td>
       <td>40,759434</td>
       <td>-73,842422</td>
@@ -291,8 +291,8 @@ green_taxi_df.head(10)
       <td>2016-01-14 00:54:16</td>
       <td>1\.</td>
       <td>1.93</td>
-      <td>Yok.</td>
       <td>None</td>
+      <td>Yok.</td>
       <td>-73,927109</td>
       <td>40,762848</td>
       <td>-73,909302</td>
@@ -315,8 +315,8 @@ green_taxi_df.head(10)
       <td>2016-01-09 14:32:48</td>
       <td>2</td>
       <td>0,80</td>
-      <td>Yok.</td>
       <td>None</td>
+      <td>Yok.</td>
       <td>-73,881195</td>
       <td>40,741779</td>
       <td>-73,872086</td>
@@ -401,7 +401,9 @@ def build_time_features(vector):
 
     return pd.Series((month_num, day_of_month, day_of_week, hour_of_day, country_code))
 
-green_taxi_df[["month_num", "day_of_month","day_of_week", "hour_of_day", "country_code"]] = green_taxi_df[["lpepPickupDatetime"]].apply(build_time_features, axis=1)
+
+green_taxi_df[["month_num", "day_of_month", "day_of_week", "hour_of_day", "country_code"]
+              ] = green_taxi_df[["lpepPickupDatetime"]].apply(build_time_features, axis=1)
 green_taxi_df.head(10)
 ```
 
@@ -449,9 +451,9 @@ green_taxi_df.head(10)
       <td>2</td>
       <td>2016-01-20 17:38:28</td>
       <td>2016-01-20 17:46:33</td>
-      <td>1</td>
+      <td>1\.</td>
       <td>0,98</td>
-      <td>Yok.</td>
+      <td>None</td>
       <td>Yok.</td>
       <td>-73,921715</td>
       <td>40,766682</td>
@@ -475,7 +477,7 @@ green_taxi_df.head(10)
       <td>2016-01-02 00:00:00</td>
       <td>1\.</td>
       <td>3,08</td>
-      <td>None</td>
+      <td>Yok.</td>
       <td>Yok.</td>
       <td>-73,979973</td>
       <td>40,677071</td>
@@ -500,7 +502,7 @@ green_taxi_df.head(10)
       <td>1\.</td>
       <td>2.44</td>
       <td>Yok.</td>
-      <td>None</td>
+      <td>Yok.</td>
       <td>-73,863045</td>
       <td>40,882923</td>
       <td>-73,839836</td>
@@ -521,10 +523,10 @@ green_taxi_df.head(10)
       <td>2</td>
       <td>2016-01-04 17:50:03</td>
       <td>2016-01-04 18:03:43</td>
-      <td>1</td>
+      <td>1\.</td>
       <td>2,87</td>
-      <td>None</td>
-      <td>None</td>
+      <td>Yok.</td>
+      <td>Yok.</td>
       <td>-73,977730</td>
       <td>40,684647</td>
       <td>-73,931259</td>
@@ -569,10 +571,10 @@ green_taxi_df.head(10)
       <td>2</td>
       <td>2016-01-29 17:16:18</td>
       <td>2016-01-29 17:27:52</td>
-      <td>1\.</td>
+      <td>1</td>
       <td>2.25</td>
-      <td>Yok.</td>
-      <td>Yok.</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,830894</td>
       <td>40,759434</td>
       <td>-73,842422</td>
@@ -595,7 +597,7 @@ green_taxi_df.head(10)
       <td>2016-01-14 00:54:16</td>
       <td>1\.</td>
       <td>1.93</td>
-      <td>Yok.</td>
+      <td>None</td>
       <td>Yok.</td>
       <td>-73,927109</td>
       <td>40,762848</td>
@@ -644,7 +646,7 @@ green_taxi_df.head(10)
       <td>1\.</td>
       <td>1,04</td>
       <td>Yok.</td>
-      <td>Yok.</td>
+      <td>None</td>
       <td>-73,954376</td>
       <td>40,805729</td>
       <td>-73,939117</td>
@@ -668,7 +670,7 @@ green_taxi_df.head(10)
       <td>6</td>
       <td>2,82</td>
       <td>Yok.</td>
-      <td>None</td>
+      <td>Yok.</td>
       <td>-73,845200</td>
       <td>40,722134</td>
       <td>-73,810638</td>
@@ -695,11 +697,12 @@ Modelleme veya ek özellik oluşturma için ihtiyaç duymayabilmeniz gereken baz
 columns_to_remove = ["lpepDropoffDatetime", "puLocationId", "doLocationId", "extra", "mtaTax",
                      "improvementSurcharge", "tollsAmount", "ehailFee", "tripType", "rateCodeID",
                      "storeAndFwdFlag", "paymentType", "fareAmount", "tipAmount"
-                    ]
+                     ]
 for col in columns_to_remove:
     green_taxi_df.pop(col)
 
-green_taxi_df = green_taxi_df.rename(columns={"lpepPickupDatetime": "datetime"})
+green_taxi_df = green_taxi_df.rename(
+    columns={"lpepPickupDatetime": "datetime"})
 green_taxi_df["datetime"] = green_taxi_df["datetime"].dt.normalize()
 green_taxi_df.head(5)
 ```
@@ -757,7 +760,7 @@ green_taxi_df.head(5)
       <th>1221794</th>
       <td>2</td>
       <td>2016-01-01</td>
-      <td>1</td>
+      <td>1\.</td>
       <td>3,08</td>
       <td>-73,979973</td>
       <td>40,677071</td>
@@ -880,7 +883,7 @@ holidays_df.head(5)
       <th>40689</th>
       <td>Cezayir</td>
       <td>Yılbaşı günü</td>
-      <td>Yok.</td>
+      <td>None</td>
       <td>DZ</td>
       <td>Yılbaşı günü</td>
       <td>2008-01-01</td>
@@ -898,7 +901,7 @@ holidays_df.head(5)
       <th>40691</th>
       <td>Angola</td>
       <td>Yılbaşı günü</td>
-      <td>None</td>
+      <td>Yok.</td>
       <td>AO</td>
       <td>Yılbaşı günü</td>
       <td>2008-01-01</td>
@@ -921,12 +924,14 @@ holidays_df.head(5)
 `countryRegionCode` Ve`date` sütunlarını, TAXI verilerinden ilgili alan adlarıyla eşleşecek şekilde yeniden adlandırın ve aynı zamanda anahtar olarak kullanılabilmesi için süreyi normalleştirin. Ardından, Pandas `merge()` işlevini kullanarak bir sol katın gerçekleştirerek, vergileni verileriyle tatil verilerini birleştirin. Bu `green_taxi_df`, tüm kayıtları korur, ancak karşılık gelen `datetime` ve `country_code`bu durumda her zaman `"US"`olduğu gibi tatil verilerini ekler. Doğru birleştirildiklerini doğrulamak için verileri önizleyin.
 
 ```python
-holidays_df = holidays_df.rename(columns={"countryRegionCode": "country_code", "date": "datetime"})
+holidays_df = holidays_df.rename(
+    columns={"countryRegionCode": "country_code", "date": "datetime"})
 holidays_df["datetime"] = holidays_df["datetime"].dt.normalize()
 holidays_df.pop("countryOrRegion")
 holidays_df.pop("holidayName")
 
-taxi_holidays_df = pd.merge(green_taxi_df, holidays_df, how="left", on=["datetime", "country_code"])
+taxi_holidays_df = pd.merge(green_taxi_df, holidays_df, how="left", on=[
+                            "datetime", "country_code"])
 taxi_holidays_df.head(5)
 ```
 
@@ -984,7 +989,7 @@ taxi_holidays_df.head(5)
       <td>NaN</td>
     </tr>
     <tr>
-      <th>1</th>
+      <th>1\.</th>
       <td>2</td>
       <td>2016-01-01</td>
       <td>1\.</td>
@@ -1071,8 +1076,8 @@ taxi_holidays_df.head(5)
 from azureml.opendatasets import NoaaIsdWeather
 
 weather_df = pd.DataFrame([])
-start = datetime.strptime("1/1/2016","%m/%d/%Y")
-end = datetime.strptime("1/31/2016","%m/%d/%Y")
+start = datetime.strptime("1/1/2016", "%m/%d/%Y")
+end = datetime.strptime("1/31/2016", "%m/%d/%Y")
 
 for sample_month in range(12):
     tmp_df = NoaaIsdWeather(cols=["temperature", "precipTime", "precipDepth", "snowDepth"], start_date=start + relativedelta(months=sample_month), end_date=end + relativedelta(months=sample_month))\
@@ -1254,7 +1259,8 @@ weather_df.pop("latitude")
 weather_df = weather_df.query("temperature==temperature")
 
 # group by datetime
-aggregations = {"snowDepth": "mean", "precipTime": "max", "temperature": "mean", "precipDepth": "max"}
+aggregations = {"snowDepth": "mean", "precipTime": "max",
+                "temperature": "mean", "precipDepth": "max"}
 weather_df_grouped = weather_df.groupby("datetime").agg(aggregations)
 weather_df_grouped.head(10)
 ```
@@ -1370,7 +1376,8 @@ weather_df_grouped.head(10)
 Yeni hava durumu verileriyle hazırladığınız TAXI ve tatil verilerini birleştirin. Bu kez yalnızca `datetime` anahtara ihtiyacınız vardır ve verilerin bir LEFT-JOIN işlemini gerçekleştirirsiniz. Her bir alanın Özet istatistiklerini görmek için bu işleviyenidataframeüzerindeçalıştırın.`describe()`
 
 ```python
-taxi_holidays_weather_df = pd.merge(taxi_holidays_df, weather_df_grouped, how="left", on=["datetime"])
+taxi_holidays_weather_df = pd.merge(
+    taxi_holidays_df, weather_df_grouped, how="left", on=["datetime"])
 taxi_holidays_weather_df.describe()
 ```
 
@@ -1542,7 +1549,7 @@ taxi_holidays_weather_df.describe()
       <td>132,000000</td>
     </tr>
     <tr>
-      <th>Biçimlendir</th>
+      <th>en çok</th>
       <td>2,000000</td>
       <td>460,000000</td>
       <td>51,950000</td>
@@ -1569,13 +1576,16 @@ taxi_holidays_weather_df.describe()
 Sorgu işlevlerini kullanarak bu anomali filtreleme yapın ve ardından eğitim için gereksiz son sütunu kaldırın.
 
 ```python
-final_df = taxi_holidays_weather_df.query("pickupLatitude>=40.53 and pickupLatitude<=40.88")
-final_df = final_df.query("pickupLongitude>=-74.09 and pickupLongitude<=-73.72")
+final_df = taxi_holidays_weather_df.query(
+    "pickupLatitude>=40.53 and pickupLatitude<=40.88")
+final_df = final_df.query(
+    "pickupLongitude>=-74.09 and pickupLongitude<=-73.72")
 final_df = final_df.query("tripDistance>0 and tripDistance<75")
 final_df = final_df.query("passengerCount>0 and passengerCount<100")
 final_df = final_df.query("totalAmount>0")
 
-columns_to_remove_for_training = ["datetime", "pickupLongitude", "pickupLatitude", "dropoffLongitude", "dropoffLatitude", "country_code"]
+columns_to_remove_for_training = ["datetime", "pickupLongitude",
+                                  "pickupLatitude", "dropoffLongitude", "dropoffLatitude", "country_code"]
 for col in columns_to_remove_for_training:
     final_df.pop(col)
 ```
@@ -1722,7 +1732,7 @@ final_df.describe()
       <td>41,000000</td>
     </tr>
     <tr>
-      <th>Biçimlendir</th>
+      <th>en çok</th>
       <td>2,000000</td>
       <td>6,000000</td>
       <td>51,950000</td>
@@ -1755,7 +1765,8 @@ Artık, `train_test_split()` `scikit-learn` kitaplıktaki işlevini kullanarak v
 ```python
 from sklearn.model_selection import train_test_split
 
-X_train, X_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, random_state=222)
+X_train, X_test, y_train, y_test = train_test_split(
+    x_df, y_df, test_size=0.2, random_state=222)
 ```
 
 ### <a name="load-workspace-and-configure-experiment"></a>Çalışma alanını yükleme ve deneme yapılandırma
@@ -1767,7 +1778,8 @@ Aboneliğiniz ve çalışma alanı bilgileriniz ile `get()` işlevini kullanarak
 from azureml.core.workspace import Workspace
 from azureml.core.experiment import Experiment
 
-workspace = Workspace.get(subscription_id="<your-subscription-id>", name="<your-workspace-name>", resource_group="<your-resource-group>")
+workspace = Workspace.get(subscription_id="<your-subscription-id>",
+                          name="<your-workspace-name>", resource_group="<your-resource-group>")
 experiment = Experiment(workspace, "opendatasets-ml")
 ```
 
@@ -1792,7 +1804,7 @@ automl_config = AutoMLConfig(task="regression",
                              primary_metric="spearman_correlation",
                              preprocess=True,
                              n_cross_validations=5
-                            )
+                             )
 ```
 
 ### <a name="submit-experiment"></a>Denemeyi gönderme

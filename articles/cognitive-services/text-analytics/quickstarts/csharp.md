@@ -1,50 +1,50 @@
 ---
-title: "Hızlı Başlangıç: .NET için Azure SDK'sını kullanarak metin analizi hizmeti çağırmak veC#"
+title: "Hızlı Başlangıç: .NET için Azure SDK 'sını kullanarak Metin Analizi hizmetini çağırın veC#"
 titleSuffix: Azure Cognitive Services
-description: Metin analizi hizmeti kullanmaya başlamanıza yardımcı olacak bilgiler ve kod örnekleri ve C#.
+description: Metin Analizi hizmetini ve ' i C#kullanmaya başlamanıza yardımcı olacak bilgiler ve kod örnekleri.
 services: cognitive-services
 author: raymondl
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 05/28/2019
+ms.date: 07/18/2019
 ms.author: assafi
-ms.openlocfilehash: 82297842a56930cec2b4de90998b4ffb904543bb
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 09713528f51675f6e9d7f3073b6c81b095d23631
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446978"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68356968"
 ---
-# <a name="quickstart-use-the-net-sdk-and-c-to-call-the-text-analytics-service"></a>Hızlı Başlangıç: .NET SDK'yı kullanın ve C# metin analizi hizmeti çağırmak için
+# <a name="quickstart-use-the-net-sdk-and-c-to-call-the-text-analytics-service"></a>Hızlı Başlangıç: .NET SDK ve C# metin analizi hizmetini çağırmak için kullanın
 <a name="HOLTop"></a>
 
-Bu hızlı başlangıçta, .NET için Azure SDK'sını kullanmaya başlamak yardımcı olur ve C# dil analiz etmek için. Ancak [metin analizi](//go.microsoft.com/fwlink/?LinkID=759711) çoğu programlama dilleri ile uyumlu REST API, SDK hizmeti uygulamalarınızla tümleştirmek için kolay bir yol sağlar.
+Bu hızlı başlangıç, .NET için Azure SDK 'Yı kullanmaya ve C# dili çözümlemeye başlamanıza yardımcı olur. [Metin Analizi](//go.microsoft.com/fwlink/?LinkID=759711) REST API çoğu programlama dili ile uyumlu olsa da SDK, hizmeti uygulamalarınızla tümleştirmenin kolay bir yolunu sunar.
 
 > [!NOTE]
 > Bu örneğin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/samples/TextAnalytics)’da mevcuttur.
 
-Teknik Ayrıntılar için .NET için SDK'sına başvurun [metin analizi başvuru](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-dotnet).
+Teknik Ayrıntılar için, .NET [metin analizi Reference](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-dotnet)SDK 'sına bakın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Herhangi bir sürümünü [visual studio 2017 veya sonraki]
-* Metin analizi [.NET için SDK'sı](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics)
+* Herhangi bir [Visual Studio 2017 veya üzeri] sürümü
+* [.NET için metin analizi SDK 'sı](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics)
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
-Ayrıca gerekir [uç noktası ve erişim anahtarı](../How-tos/text-analytics-how-to-access-key.md) oluşturulan, kayıt sırasında.
+Kaydolma sırasında sizin için oluşturulan [uç nokta ve erişim anahtarına](../How-tos/text-analytics-how-to-access-key.md) de ihtiyacınız vardır.
 
-## <a name="create-the-visual-studio-solution-and-install-the-sdk"></a>Visual Studio çözümü oluşturun ve SDK'sını yükleyin
+## <a name="create-the-visual-studio-solution-and-install-the-sdk"></a>Visual Studio çözümünü oluşturma ve SDK 'Yı yüklemeye
 
-1. Yeni bir konsol uygulaması (.NET Core) projesi oluşturun. [Visual Studio erişim](https://visualstudio.microsoft.com/vs/).
-1. Çözüme sağ tıklayıp **çözüm için NuGet paketlerini Yönet**.
-1. **Gözat** sekmesini seçin. Arama **Microsoft.Azure.CognitiveServices.Language.TextAnalytics**.
+1. Yeni bir konsol uygulaması (.NET Core) projesi oluşturun. [Visual Studio 'Ya erişin](https://visualstudio.microsoft.com/vs/).
+1. Çözüme sağ tıklayın ve **çözüm Için NuGet Paketlerini Yönet**' i seçin.
+1. **Gözat** sekmesini seçin. **Microsoft. Azure. Biliveservices. Language. TextAnalytics**için arama yapın.
 
-## <a name="authenticate-your-credentials"></a>Kimlik bilgileriniz kimlik doğrulaması
+## <a name="authenticate-your-credentials"></a>Kimlik bilgilerinizi doğrulama
 
-1. Aşağıdaki `using` deyimleri ana sınıfı dosyasına (Program.cs varsayılan olarak olan).
+1. Aşağıdaki `using` deyimlerini ana sınıf dosyasına ekleyin (varsayılan olarak program.cs olur).
 
     ```csharp
     using System;
@@ -52,68 +52,55 @@ Ayrıca gerekir [uç noktası ve erişim anahtarı](../How-tos/text-analytics-ho
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
-
     using Microsoft.Azure.CognitiveServices.Language.TextAnalytics;
     using Microsoft.Azure.CognitiveServices.Language.TextAnalytics.Models;
     using Microsoft.Rest;
     ```
 
-2. Yeni bir `ApiKeyServiceClientCredentials` kimlik bilgilerini depolamak ve bunları her istek için eklemek için sınıfı.
+2. Kimlik bilgilerini depolamak `ApiKeyServiceClientCredentials` ve her istek için eklemek üzere yeni bir sınıf oluşturun.
 
     ```csharp
-    /// <summary>
-    /// Allows authentication to the API by using a basic apiKey mechanism
-    /// </summary>
     class ApiKeyServiceClientCredentials : ServiceClientCredentials
     {
-        private readonly string subscriptionKey;
+        private readonly string apiKey;
 
-        /// <summary>
-        /// Creates a new instance of the ApiKeyServiceClientCredentails class
-        /// </summary>
-        /// <param name="subscriptionKey">The subscription key to authenticate and authorize as</param>
-        public ApiKeyServiceClientCredentials(string subscriptionKey)
+        public ApiKeyServiceClientCredentials(string apiKey)
         {
-            this.subscriptionKey = subscriptionKey;
+            this.apiKey = apiKey;
         }
 
-        /// <summary>
-        /// Add the Basic Authentication Header to each outgoing request
-        /// </summary>
-        /// <param name="request">The outgoing request</param>
-        /// <param name="cancellationToken">A token to cancel the operation</param>
         public override Task ProcessHttpRequestAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             if (request == null)
             {
                 throw new ArgumentNullException("request");
             }
-
-            request.Headers.Add("Ocp-Apim-Subscription-Key", this.subscriptionKey);
+            request.Headers.Add("Ocp-Apim-Subscription-Key", this.apiKey);
             return base.ProcessHttpRequestAsync(request, cancellationToken);
         }
     }
     ```
 
-3. Güncelleştirme `Program` sınıfı. Metin analizi abonelik anahtarınız için sabit bir üye ve başka bir hizmet uç noktası ekleyin. Metin analizi aboneliğiniz için doğru Azure bölgesi kullanmanız gerektiğini unutmayın.
+3. `Program` Sınıfını güncelleştirin. Metin Analizi API'si anahtarınız için bir sabit üye ve hizmet uç noktası için bir tane ekleyin. Metin Analizi kaynağınız için doğru Azure konumunu kullanmayı unutmayın.
 
     ```csharp
-    private const string SubscriptionKey = "enter-your-key-here";
-
-    private const string Endpoint = "enter-your-service-endpoint-here"; // For example: "https://westus.api.cognitive.microsoft.com";
+    //Enter your Text Analytics (TA) API Key (available in Azure Portal -> your TA resource -> Keys)
+    private const string ApiKey = "enter-your-textanalytics-api-key-here";
+    //You can get the resource location from Azure Portal -> your TA resource -> Overview
+    private const string Endpoint = "enter-your-service-endpoint-here"; // For example: "https://<your-location>.api.cognitive.microsoft.com";
     ```
 > [!Tip]
-> Üretim sistemleri gizli dizileri güvenliğini artırmak için kullanmanızı öneririz [Azure anahtar kasası](https://docs.microsoft.com/azure/key-vault/quick-create-net).
+> Üretim sistemlerindeki gizli dizi güvenliğini artırmak için [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-net)kullanmanızı öneririz.
 >
 
-## <a name="create-a-text-analytics-client"></a>Metin analizi istemcisi oluşturma
+## <a name="create-a-text-analytics-client"></a>Metin Analizi istemcisi oluşturma
 
-İçinde `Main` işlevi projenizi çağırmak istediğiniz örnek yöntemi çağırın. Geçirmek `Endpoint` ve `SubscriptionKey` tanımladığınız parametreleri.
+`Main` Projenizin işlevinde, çağırmak istediğiniz örnek yöntemi çağırın. `Endpoint` Tanımladığınız ve `ApiKey` parametrelerini geçirin.
 
 ```csharp
     public static void Main(string[] args)
     {
-        var credentials = new ApiKeyServiceClientCredentials(SubscriptionKey);
+        var credentials = new ApiKeyServiceClientCredentials(ApiKey);
         var client = new TextAnalyticsClient(credentials)
         {
             Endpoint = Endpoint
@@ -129,12 +116,12 @@ Ayrıca gerekir [uç noktası ve erişim anahtarı](../How-tos/text-analytics-ho
     }
 ```
 
-Aşağıdaki bölümlerde her hizmeti özelliği çağırmak nasıl açıklanmaktadır.
+Aşağıdaki bölümlerde her bir hizmet özelliğinin nasıl çağrılacağını açıklamaktadır.
 
-## <a name="perform-sentiment-analysis"></a>Yaklaşım analizi gerçekleştirme
+## <a name="perform-sentiment-analysis"></a>Yaklaşım analizini gerçekleştirme
 
-1. Yeni bir işlev oluşturma `SentimentAnalysisExample()` daha önce oluşturduğunuz istemci alır.
-2. Listesini oluşturmak `MultiLanguageInput` çözümlemek istediğiniz belge içeren nesne.
+1. Daha önce oluşturduğunuz istemciyi `SentimentAnalysisExample()` alan yeni bir işlev oluşturun.
+2. Çözümlemek istediğiniz belgeleri içeren `MultiLanguageInput` nesnelerin bir listesini oluşturun.
 
     ```csharp
     public static async Task SentimentAnalysisExample(TextAnalyticsClient client)
@@ -143,16 +130,13 @@ Aşağıdaki bölümlerde her hizmeti özelliği çağırmak nasıl açıklanmak
         var inputDocuments = new MultiLanguageBatchInput(
             new List<MultiLanguageInput>
             {
-                new MultiLanguageInput("en", "1", "I had the best day of my life."),
-                new MultiLanguageInput("en", "2", "This was a waste of my time. The speaker put me to sleep."),
-                new MultiLanguageInput("es", "3", "No tengo dinero ni nada que dar..."),
-                new MultiLanguageInput("it", "4", "L'hotel veneziano era meraviglioso. È un bellissimo pezzo di architettura."),
+                new MultiLanguageInput("en", "1", "I had the best day of my life.")
             });
         //...
     }
     ```
 
-3. Aynı işlev çağrısında `client.SentimentAsync()` ve sonucu alın. Ardından sonuçlarını yinelemek. Her bir belgenin kimliği ve yaklaşım puanı yazdırın. 1'e yakın bir puan pozitif yaklaşımı çağrılırken 0 yakın bir puan bir negatif yaklaşımı gösterir.
+3. Aynı işlevde, sonucunu çağırın `client.SentimentAsync()` ve elde edin. Sonra sonuçlar arasında yineleme yapın. Her belgenin KIMLIĞINI ve yaklaşım Puanını yazdır. 0 ' a yakın olan bir puan negatif bir yaklaşımı gösterir, 1 ' e yakın bir puan pozitif bir yaklaşımı gösterir.
 
     ```csharp
     var result = await client.SentimentAsync(false, inputDocuments);
@@ -168,15 +152,12 @@ Aşağıdaki bölümlerde her hizmeti özelliği çağırmak nasıl açıklanmak
 
 ```console
 Document ID: 1 , Sentiment Score: 0.87
-Document ID: 2 , Sentiment Score: 0.11
-Document ID: 3 , Sentiment Score: 0.44
-Document ID: 4 , Sentiment Score: 1.00
 ```
 
-## <a name="perform-language-detection"></a>Dil algılama
+## <a name="perform-language-detection"></a>Dil algılamayı gerçekleştir
 
-1. Yeni bir işlev oluşturma `DetectLanguageExample()` daha önce oluşturduğunuz istemci alır.
-2. Listesini oluşturmak `LanguageInput` belgelerinizi içeren nesne.
+1. Daha önce oluşturduğunuz istemciyi `DetectLanguageExample()` alan yeni bir işlev oluşturun.
+2. Belgelerinizi içeren `LanguageInput` nesnelerin bir listesini oluşturun.
 
     ```csharp
     public static async Task DetectLanguageExample(TextAnalyticsClient client)
@@ -186,15 +167,13 @@ Document ID: 4 , Sentiment Score: 1.00
         var inputDocuments = new LanguageBatchInput(
                 new List<LanguageInput>
                     {
-                        new LanguageInput(id: "1", text: "This is a document written in English."),
-                        new LanguageInput(id: "2", text: "Este es un document escrito en Español."),
-                        new LanguageInput(id: "3", text: "这是一个用中文写的文件")
+                        new LanguageInput(id: "1", text: "This is a document written in English.")
                     });
         //...
     }
     ```
 
-3. Aynı işlev çağrısında `client.DetectLanguageAsync()` ve sonucu alın. Ardından sonuçlarını yinelemek. Her bir belgenin kimliği ve ilk döndürülen dil yazdırın.
+3. Aynı işlevde, sonucunu çağırın `client.DetectLanguageAsync()` ve elde edin. Sonra sonuçlar arasında yineleme yapın. Her belgenin KIMLIĞINI ve döndürülen ilk dili yazdır.
 
     ```csharp
     var langResults = await client.DetectLanguageAsync(false, inputDocuments);
@@ -211,31 +190,27 @@ Document ID: 4 , Sentiment Score: 1.00
 ```console
 ===== LANGUAGE EXTRACTION ======
 Document ID: 1 , Language: English
-Document ID: 2 , Language: Spanish
-Document ID: 3 , Language: Chinese_Simplified
 ```
 
-## <a name="perform-entity-recognition"></a>Varlık tanıma gerçekleştirin
+## <a name="perform-entity-recognition"></a>Varlık tanıma gerçekleştir
 
-1. Yeni bir işlev oluşturma `RecognizeEntitiesExample()` daha önce oluşturduğunuz istemci alır.
-2. Listesini oluşturmak `MultiLanguageBatchInput` belgelerinizi içeren nesne.
+1. Daha önce oluşturduğunuz istemciyi `RecognizeEntitiesExample()` alan yeni bir işlev oluşturun.
+2. Belgelerinizi içeren `MultiLanguageBatchInput` nesnelerin bir listesini oluşturun.
 
     ```csharp
     public static async Task RecognizeEntitiesExample(TextAnalyticsClient client)
     {
-
         // The documents to be submitted for entity recognition. The ID can be any value.
         var inputDocuments = new MultiLanguageBatchInput(
             new List<MultiLanguageInput>
             {
-                new MultiLanguageInput("en", "1", "Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, to develop and sell BASIC interpreters for the Altair 8800."),
-                new MultiLanguageInput("es", "2", "La sede principal de Microsoft se encuentra en la ciudad de Redmond, a 21 kilómetros de Seattle.")
+                new MultiLanguageInput("en", "1", "Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, to develop and sell BASIC interpreters for the Altair 8800.")
             });
         //...
     }
     ```
 
-3. Aynı işlev çağrısında `client.EntitiesAsync()` ve sonucu alın. Ardından sonuçlarını yinelemek. Her bir belgenin kimliği yazdırma (Varsa) için algılanan her varlık, orijinal metni konumlarda yanı sıra Wikipedia adını ve türünü ve subtypes yazdırın.
+3. Aynı işlevde, sonucunu çağırın `client.EntitiesAsync()` ve elde edin. Sonra sonuçlar arasında yineleme yapın. Her belgenin KIMLIĞINI yazdır. Algılanan her varlık için, bu dosyanın Visede adını ve türünü ve alt türlerini (varsa) ve özgün metindeki konumları yazdırın.
 
     ```csharp
     var entitiesResult = await client.EntitiesAsync(false, inputDocuments);
@@ -276,22 +251,12 @@ Document ID: 1
                         Offset: 89,     Length: 5,      Score: 0.800
                 Name: Altair 8800,      Type: Other,    Sub-Type: N/A
                         Offset: 116,    Length: 11,     Score: 0.800
-Document ID: 2
-         Entities:
-                Name: Microsoft,        Type: Organization,     Sub-Type: N/A
-                        Offset: 21,     Length: 9,      Score: 1.000
-                Name: Redmond (Washington),     Type: Location, Sub-Type: N/A
-                        Offset: 60,     Length: 7,      Score: 0.991
-                Name: 21 kilómetros,    Type: Quantity, Sub-Type: Dimension
-                        Offset: 71,     Length: 13,     Score: 0.800
-                Name: Seattle,  Type: Location, Sub-Type: N/A
-                        Offset: 88,     Length: 7,      Score: 1.000
 ```
 
-## <a name="perform-key-phrase-extraction"></a>Anahtar ifade ayıklama gerçekleştirin
+## <a name="perform-key-phrase-extraction"></a>Anahtar tümceciği ayıklama gerçekleştir
 
-1. Yeni bir işlev oluşturma `KeyPhraseExtractionExample()` daha önce oluşturduğunuz istemci alır.
-2. Listesini oluşturmak `MultiLanguageBatchInput` belgelerinizi içeren nesne.
+1. Daha önce oluşturduğunuz istemciyi `KeyPhraseExtractionExample()` alan yeni bir işlev oluşturun.
+2. Belgelerinizi içeren `MultiLanguageBatchInput` nesnelerin bir listesini oluşturun.
 
     ```csharp
     public static async Task KeyPhraseExtractionExample(TextAnalyticsClient client)
@@ -299,16 +264,13 @@ Document ID: 2
         var inputDocuments = new MultiLanguageBatchInput(
                     new List<MultiLanguageInput>
                     {
-                        new MultiLanguageInput("ja", "1", "猫は幸せ"),
-                        new MultiLanguageInput("de", "2", "Fahrt nach Stuttgart und dann zum Hotel zu Fu."),
-                        new MultiLanguageInput("en", "3", "My cat might need to see a veterinarian."),
-                        new MultiLanguageInput("es", "4", "A mi me encanta el fútbol!")
+                        new MultiLanguageInput("en", "1", "My cat might need to see a veterinarian.")
                     });
         //...
     }
     ```
 
-3. Aynı işlev çağrısında `client.KeyPhrasesAsync()` ve sonucu alın. Ardından sonuçlarını yinelemek. Her bir belgenin kimliği ve algılanan tüm anahtar ifadeleri yazdırın.
+3. Aynı işlevde, sonucunu çağırın `client.KeyPhrasesAsync()` ve elde edin. Sonra sonuçlar arasında yineleme yapın. Her belgenin KIMLIĞINI ve algılanan anahtar tümceleri yazdır.
 
     ```csharp
     var kpResults = await client.KeyPhrasesAsync(false, inputDocuments);
@@ -332,20 +294,8 @@ Document ID: 2
 ```console
 Document ID: 1
          Key phrases:
-                幸せ
-Document ID: 2
-         Key phrases:
-                Stuttgart
-                Hotel
-                Fahrt
-                Fu
-Document ID: 3
-         Key phrases:
                 cat
                 veterinarian
-Document ID: 4
-         Key phrases:
-                fútbol
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

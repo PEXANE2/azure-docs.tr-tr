@@ -6,20 +6,20 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 06/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: eedb52dc58c28ad3f10e91835e5dda36902f2c2c
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 96171d4729187ca03f1e9529551a7fb6a26c6976
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67986002"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360365"
 ---
-# <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Azure Cosmos DB'de Çakışma çözümlemesi ilkelerini yönetme
+# <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Azure Cosmos DB çakışma çözümleme ilkelerini yönetme
 
-Birden çok istemci aynı öğeye yazdığında, çok bölgeli yazma ile çakışmaları oluşabilir. Bir çakışma oluştuğunda, farklı çakışma çözümlemesi ilkeleri kullanarak çakışmayı çözebilirsiniz. Bu makalede, Çakışma çözümlemesi ilkelerini yönetmek açıklar.
+Çok bölgeli yazmalarda, birden fazla istemci aynı öğeye yazdığında çakışmalar oluşabilir. Bir çakışma oluştuğunda, farklı çakışma çözümleme ilkeleri kullanarak çakışmayı çözebilirsiniz. Bu makalede, çakışma çözümleme ilkelerinin nasıl yönetileceği açıklanır.
 
-## <a name="create-a-last-writer-wins-conflict-resolution-policy"></a>Son yazıcı WINS çakışma çözüm ilkesi oluşturma
+## <a name="create-a-last-writer-wins-conflict-resolution-policy"></a>Son yazıcı oluşturma-WINS çakışma çözümü ilkesi
 
-Bu örnekler, son yazıcı WINS çakışma çözüm ilkesi içeren bir kapsayıcıya nasıl gösterir. Zaman damgası alanı varsayılan yoldur son yazıcı WINS veya `_ts` özelliği. Bu da bir sayısal tür için bir kullanıcı tanımlı yol için ayarlanabilir. İçinde bir çakışma, en yüksek değer kazanır. Yolu ayarlanmamış veya geçersiz ise varsayılan `_ts`. Bu ilkeyle çözümlediği çakışma çakışması akıştaki gösterilmez. Bu ilke, tüm API'ları tarafından kullanılabilir.
+Bu örnekler, son yazıcı WINS çakışma çözümleme ilkesiyle bir kapsayıcının nasıl ayarlanacağını gösterir. Son-yazıcı için varsayılan yol, zaman damgası alanı veya `_ts` özelliğidir. Bu, sayısal bir tür için Kullanıcı tanımlı bir yol olarak da ayarlanabilir. Çakışma durumunda en yüksek değer kazanır. Yol ayarlanmamışsa veya geçersizse, varsayılan olarak `_ts`olur. Bu ilkeyle çözümlenen çakışmalar çakışma akışında gösterilmez. Bu ilke, tüm API 'Ler tarafından kullanılabilir.
 
 ### <a id="create-custom-conflict-resolution-policy-lww-dotnet"></a>.NET SDK V2
 
@@ -89,33 +89,34 @@ const { container: lwwContainer } = await database.containers.createIfNotExists(
 
 ```python
 udp_collection = {
-                'id': self.udp_collection_name,
-                'conflictResolutionPolicy': {
-                    'mode': 'LastWriterWins',
-                    'conflictResolutionPath': '/myCustomId'
-                    }
-                }
-udp_collection = self.try_create_document_collection(create_client, database, udp_collection)
+    'id': self.udp_collection_name,
+    'conflictResolutionPolicy': {
+        'mode': 'LastWriterWins',
+        'conflictResolutionPath': '/myCustomId'
+    }
+}
+udp_collection = self.try_create_document_collection(
+    create_client, database, udp_collection)
 ```
 
-## <a name="create-a-custom-conflict-resolution-policy-using-a-stored-procedure"></a>Bir saklı yordamı kullanarak bir özel çakışma çözüm ilkesi oluşturma
+## <a name="create-a-custom-conflict-resolution-policy-using-a-stored-procedure"></a>Saklı yordam kullanarak özel bir çakışma çözümleme ilkesi oluşturma
 
-Bu örnekler çakışmayı çözümlemek için saklı yordama içeren özel çakışma çözümleme ilkesine sahip bir kapsayıcı ayarlama adımlarını göstermektedir. Bu çakışmaları, saklı yordamda hata olmadığı sürece akış çakışma görünmüyor. İlke ile kapsayıcı oluşturulduktan sonra saklı yordam oluşturmak gerekir. .NET SDK'sı aşağıdaki örnekte, bir örnek gösterilmektedir. Bu ilke yalnızca çekirdek (SQL) API desteklenir.
+Bu örnekler çakışmayı çözümlemek için saklı yordama içeren özel çakışma çözümleme ilkesine sahip bir kapsayıcı ayarlama adımlarını göstermektedir. Bu çakışmalar, saklı yordamınızdaki bir hata olmadığı takdirde çakışma akışında gösterilmez. İlke kapsayıcı ile oluşturulduktan sonra, saklı yordamı oluşturmanız gerekir. Aşağıdaki .NET SDK örneği bir örnek gösterir. Bu ilke yalnızca çekirdek (SQL) API 'sinde desteklenir.
 
-### <a name="sample-custom-conflict-resolution-stored-procedure"></a>Saklı yordamı örnek özel çakışma çözümü
+### <a name="sample-custom-conflict-resolution-stored-procedure"></a>Örnek özel çakışma çözümü saklı yordamı
 
-Aşağıda gösterilen işlev imzası kullanarak özel çakışma çözümlemesi depolanan yordamları uygulanmalıdır. İşlev adı saklı yordamı ile kapsayıcı kaydolurken kullandığınız adıyla eşleşmesi gerekmez ancak adlandırma basitleştirin. Bu saklı yordam için uygulanması gereken parametreler açıklaması aşağıda verilmiştir.
+Özel çakışma çözümü saklı yordamları aşağıda gösterilen işlev imzası kullanılarak uygulanmalıdır. İşlev adının, saklı yordamı kapsayıcı ile kaydedilirken kullanılan adla eşleşmesi gerekmez, ancak adlandırmayı basitleştirir. Bu saklı yordam için uygulanması gereken parametrelerin açıklaması aşağıdadır.
 
-- **incomingItem**: Öğe eklendiğinde veya çakışmasına neden işlemede güncelleştirildi. Silme işlemleri için null olur.
-- **existingItem**: Şu anda taahhüt öğe. Bu değer null olmayan bir güncelleştirmede ve ekleme için null veya siler.
-- **isTombstone**: Daha önce silinmiş bir öğeyle çakışan incomingItem olup olmadığını belirten bir Boole değeri. ExistingItem da doğru olduğunda null olur.
-- **conflictingItems**: İşlenmiş sürüm incomingItem kimliği ile çakışan kapsayıcıdaki tüm öğelerini veya diğer bir benzersiz dizin özellikleri dizisi.
+- **ıncomingıtem**: Çakışmaların üretilerek işlemede eklenen veya güncellenen öğe. , Silme işlemleri için null.
+- **Existingıtem**: Şu anda taahhüt edilen öğe. Bu değer bir güncelleştirmede null değil ve INSERT veya delete için null.
+- **Isınkaldırılma**: Incomingıtem 'ın daha önce silinmiş bir öğeyle çakışıp çakışmadığını gösteren Boolean. Doğru olduğunda, existingItem da null olur.
+- **Conflictingıtems**: Kapsayıcıda, ID veya diğer benzersiz dizin özelliklerindeki ıncomingıtem ile çakışan tüm öğelerin taahhüt edilen sürümünün dizisi.
 
 > [!IMPORTANT]
-> Gibi herhangi bir saklı yordamı ile özel çakışma çözümleme yordamı aynı bölüm anahtarı ile tüm verilere erişmek ve herhangi INSERT işlemi, güncelleştirme veya silme işlemi çakışmaları çözümlemek için.
+> Her türlü saklı yordamda olduğu gibi, özel bir çakışma çözümü yordamı aynı bölüm anahtarına sahip tüm verilere erişebilir ve çakışmaları çözümlemek için herhangi bir ekleme, güncelleştirme veya silme işlemi gerçekleştirebilir.
 
 
-Bu örnek depolanan yordam en düşük değerden seçerek çakışmaları çözer `/myCustomId` yolu.
+Bu örnek saklı yordam, `/myCustomId` yoldan en düşük değeri seçerek çakışmaları çözer.
 
 ```javascript
 function resolver(incomingItem, existingItem, isTombstone, conflictingItems) {
@@ -222,7 +223,7 @@ collection.setConflictResolutionPolicy(policy);
 DocumentCollection createdCollection = client.createCollection(databaseUri, collection, null).toBlocking().value();
 ```
 
-Kapsayıcı oluşturulduktan sonra oluşturmalısınız `resolver` saklı yordamı.
+Kapsayıcınız oluşturulduktan sonra `resolver` saklı yordamı oluşturmanız gerekir.
 
 ### <a id="create-custom-conflict-resolution-policy-stored-proc-java-sync"></a>Java Sync SDK’sı
 
@@ -235,7 +236,7 @@ udpCollection.setConflictResolutionPolicy(udpPolicy);
 DocumentCollection createdCollection = this.tryCreateDocumentCollection(createClient, database, udpCollection);
 ```
 
-Kapsayıcı oluşturulduktan sonra oluşturmalısınız `resolver` saklı yordamı.
+Kapsayıcınız oluşturulduktan sonra `resolver` saklı yordamı oluşturmanız gerekir.
 
 ### <a id="create-custom-conflict-resolution-policy-stored-proc-javascript"></a>Node.js/JavaScript/TypeScript SDK
 
@@ -254,27 +255,28 @@ const { container: udpContainer } = await database.containers.createIfNotExists(
 );
 ```
 
-Kapsayıcı oluşturulduktan sonra oluşturmalısınız `resolver` saklı yordamı.
+Kapsayıcınız oluşturulduktan sonra `resolver` saklı yordamı oluşturmanız gerekir.
 
 ### <a id="create-custom-conflict-resolution-policy-stored-proc-python"></a>Python SDK’sı
 
 ```python
 udp_collection = {
-  'id': self.udp_collection_name,
-  'conflictResolutionPolicy': {
-      'mode': 'Custom',
-      'conflictResolutionProcedure': 'dbs/' + self.database_name + "/colls/" + self.udp_collection_name + '/sprocs/resolver'
-      }
-  }
-udp_collection = self.try_create_document_collection(create_client, database, udp_collection)
+    'id': self.udp_collection_name,
+    'conflictResolutionPolicy': {
+        'mode': 'Custom',
+        'conflictResolutionProcedure': 'dbs/' + self.database_name + "/colls/" + self.udp_collection_name + '/sprocs/resolver'
+    }
+}
+udp_collection = self.try_create_document_collection(
+    create_client, database, udp_collection)
 ```
 
-Kapsayıcı oluşturulduktan sonra oluşturmalısınız `resolver` saklı yordamı.
+Kapsayıcınız oluşturulduktan sonra `resolver` saklı yordamı oluşturmanız gerekir.
 
 
 ## <a name="create-a-custom-conflict-resolution-policy"></a>Özel bir çakışma çözümleme ilkesi oluşturma
 
-Bu örnekler özel çakışma çözümleme ilkesine sahip bir kapsayıcı ayarlama adımlarını göstermektedir. Bu çakışmaları çakışması akıştaki gösterilir.
+Bu örnekler özel çakışma çözümleme ilkesine sahip bir kapsayıcı ayarlama adımlarını göstermektedir. Bu çakışmalar çakışma akışında görünür.
 
 ### <a id="create-custom-conflict-resolution-policy-dotnet"></a>.NET SDK V2
 
@@ -342,17 +344,17 @@ const {
 ```python
 database = client.ReadDatabase("dbs/" + self.database_name)
 manual_collection = {
-                    'id': self.manual_collection_name,
-                    'conflictResolutionPolicy': {
-                          'mode': 'Custom'
-                        }
-                    }
+    'id': self.manual_collection_name,
+    'conflictResolutionPolicy': {
+        'mode': 'Custom'
+    }
+}
 manual_collection = client.CreateContainer(database['_self'], collection)
 ```
 
 ## <a name="read-from-conflict-feed"></a>Çakışma akışından okuma
 
-Bu örnekler, kapsayıcının çakışma akışından okuma yöntemlerini göstermektedir. Yalnızca bunlar otomatik olarak çözümlenip olmayan veya özel çakışma İlkesi kullanarak akış çakışmayı çakışmaları gösterilir.
+Bu örnekler, kapsayıcının çakışma akışından okuma yöntemlerini göstermektedir. Çakışmalar yalnızca otomatik olarak çözümlenmezse veya özel bir çakışma ilkesi kullanılıyorsa çakışma akışında gösterilir.
 
 ### <a id="read-from-conflict-feed-dotnet"></a>.NET SDK V2
 
@@ -426,10 +428,10 @@ while conflict:
 
 Aşağıdaki Azure Cosmos DB kavramları hakkında bilgi edinin:
 
-* [Genel dağıtım - başlık altında](global-dist-under-the-hood.md)
-* [Çok yöneticili uygulamalarınızda yapılandırma](how-to-multi-master.md)
-* [Birden çok giriş için istemcileri yapılandırma](how-to-manage-database-account.md#configure-multiple-write-regions)
-* [Bölge ekleme veya Azure Cosmos DB hesabınızdan kaldırma](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
-* [Çok yöneticili uygulamalarınızda yapılandırma](how-to-multi-master.md).
+* [Küresel dağıtım-alt düzey](global-dist-under-the-hood.md)
+* [Uygulamalarınızda çoklu yönetici yapılandırma](how-to-multi-master.md)
+* [İstemcileri çoklu barındırma için yapılandırma](how-to-manage-database-account.md#configure-multiple-write-regions)
+* [Azure Cosmos DB hesabınızdan bölge ekleme veya kaldırma](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
+* [Uygulamalarınızda çoklu yönetici yapılandırma](how-to-multi-master.md).
 * [Bölümleme ve veri dağıtımı](partition-data.md)
-* [Azure Cosmos DB'yi dizine ekleme](indexing-policies.md)
+* [Azure Cosmos DB 'de dizin oluşturma](indexing-policies.md)

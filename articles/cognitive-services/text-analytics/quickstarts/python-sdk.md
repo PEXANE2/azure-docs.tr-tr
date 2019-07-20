@@ -1,7 +1,7 @@
 ---
-title: "Hızlı Başlangıç: Python SDK'sını kullanarak metin analizi hizmeti çağırma"
+title: "Hızlı Başlangıç: Python SDK 'sını kullanarak Metin Analizi hizmetini çağırma"
 titleSuffix: Azure Cognitive Services
-description: Hızlı bir şekilde yardımcı olması için alma bilgileri ve kod örnekleri, Azure Bilişsel hizmetler metin analizi API'sini kullanarak başlayın.
+description: Azure bilişsel hizmetler 'de Metin Analizi API'si kullanmaya hızlı bir şekilde başlamanıza yardımcı olması için bilgi ve kod örnekleri alın.
 services: cognitive-services
 author: ctufts
 manager: assafi
@@ -10,55 +10,55 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 03/28/2019
 ms.author: aahi
-ms.openlocfilehash: b319abf22f9aa4cdd9a5fef91be0628672d47bd4
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: c24979d9aef74b6cc840427a010b9ce70f2c0b8a
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66297796"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68356944"
 ---
-# <a name="quickstart-call-the-text-analytics-service-using-the-python-sdk"></a>Hızlı Başlangıç: Python SDK'sını kullanarak metin analizi hizmeti çağırma 
+# <a name="quickstart-call-the-text-analytics-service-using-the-python-sdk"></a>Hızlı Başlangıç: Python SDK 'sını kullanarak Metin Analizi hizmetini çağırma 
 <a name="HOLTop"></a>
 
-Bu hızlı başlangıçta Python için metin analizi SDK'sı ile dil incelemeye başlamak için kullanın. Metin analizi REST API'si ile çoğu programlama dilinden uyumlu olsa da, SDK hizmeti seri hale getirme ve JSON seri durumdan çıkarılırken uygulamalarınızla tümleştirmek için kolay bir yol sağlar. Bu örnek için kaynak kodu bulunabilir [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/language/text_analytics_samples.py).
+Python için Metin Analizi SDK ile dili çözümlemeye başlamak için bu hızlı başlangıcı kullanın. Metin Analizi REST API çoğu programlama dili ile uyumlu olsa da SDK, JSON serileştirilmeden ve seri durumdan çıkarılırken hizmeti uygulamalarınıza tümleştirmenin kolay bir yolunu sunar. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/language/text_analytics_samples.py)' da bulunabilir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* [Python 3.x](https://www.python.org/)
+* [Python 3. x](https://www.python.org/)
 
-* Metin analizi [için python SDK'sı](https://pypi.org/project/azure-cognitiveservices-language-textanalytics/) paketi yükleyebilirsiniz:
+* [Python için metin analizi SDK 'sı](https://pypi.org/project/azure-cognitiveservices-language-textanalytics/) ile paketi yükleyebilirsiniz:
 
     `pip install --upgrade azure-cognitiveservices-language-textanalytics`
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
-Sahip olmalısınız [uç noktası ve erişim anahtarı](../How-tos/text-analytics-how-to-access-key.md) , oluşturuldu, kayıt sırasında.
+Kaydolma sırasında sizin için oluşturulan [uç nokta ve erişim anahtarına](../How-tos/text-analytics-how-to-access-key.md) de sahip olmanız gerekir.
 
 ## <a name="create-a-new-python-application"></a>Yeni Python uygulaması oluşturma
 
-Tercih ettiğiniz düzenleyiciyi veya IDE içinde yeni bir Python uygulaması oluşturun. Ardından dosyanızı içeri aktarma deyimlerini ekleyin.
+En sevdiğiniz düzenleyicide veya IDE 'de yeni bir Python uygulaması oluşturun. Ardından, dosyanıza aşağıdaki import deyimlerini ekleyin.
 
 ```python
 from azure.cognitiveservices.language.textanalytics import TextAnalyticsClient
 from msrest.authentication import CognitiveServicesCredentials
 ```
 
-## <a name="authenticate-your-credentials"></a>Kimlik bilgileriniz kimlik doğrulaması
+## <a name="authenticate-your-credentials"></a>Kimlik bilgilerinizi doğrulama
 
 > [!Tip]
-> Üretim sistemlerine gizli dizileri güvenli dağıtımı için kullanmanızı öneririz [Azure anahtar kasası](https://docs.microsoft.com/azure/key-vault/quick-create-net).
+> Üretim sistemlerinde parolaların güvenli dağıtımı için [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-net)kullanmanızı öneririz.
 >
 
-Metin analizi abonelik anahtarınız için bir değişken yaptıktan sonra örneği bir `CognitiveServicesCredentials` olan nesne.
+Metin analizi abonelik anahtarınız için bir değişken oluşturduktan sonra, onunla bir `CognitiveServicesCredentials` nesne örneğini oluşturun.
 
 ```python
 subscription_key = "enter-your-key-here"
 credentials = CognitiveServicesCredentials(subscription_key)
 ```
 
-## <a name="create-a-text-analytics-client"></a>Metin analizi istemcisi oluşturma
+## <a name="create-a-text-analytics-client"></a>Metin Analizi istemcisi oluşturma
 
-Yeni bir `TextAnalyticsClient` nesnesi ile `credentials` ve `text_analytics_url` bir parametre olarak. Metin analizi aboneliğiniz için doğru Azure bölgesi kullanın (örneğin `westcentralus`).
+Parametresi olarak ve `TextAnalyticsClient` `credentials` ile`text_analytics_url` yeni bir nesne oluşturun. Metin Analizi aboneliğiniz için doğru Azure bölgesini kullanın (örneğin `westcentralus`).
 
 ```
 text_analytics_url = "https://westcentralus.api.cognitive.microsoft.com/"
@@ -67,42 +67,43 @@ text_analytics = TextAnalyticsClient(endpoint=text_analytics_url, credentials=cr
 
 ## <a name="sentiment-analysis"></a>Yaklaşım analizi
 
-API yükü bir listesinden oluşur `documents`, hangi olan sözlükleri içeren bir `id` ve `text` özniteliği. `text` Öznitelik depolarının Analiz edilecek metin ve `id` herhangi bir değer olabilir. 
+API 'nin yükü, bir `documents` `id` ve `text` özniteliği içeren sözlükler olan bir listesinden oluşur. Özniteliği çözümlenecek metni depolar `id` ve herhangi bir değer olabilir. `text` 
 
 ```python
 documents = [
-  {
-    "id": "1", 
-    "language": "en", 
-    "text": "I had the best day of my life."
-  },
-  {
-    "id": "2", 
-    "language": "en", 
-    "text": "This was a waste of my time. The speaker put me to sleep."
-  },  
-  {
-    "id": "3", 
-    "language": "es", 
-    "text": "No tengo dinero ni nada que dar..."
-  },  
-  {
-    "id": "4", 
-    "language": "it", 
-    "text": "L'hotel veneziano era meraviglioso. È un bellissimo pezzo di architettura."
-  }
+    {
+        "id": "1",
+        "language": "en",
+        "text": "I had the best day of my life."
+    },
+    {
+        "id": "2",
+        "language": "en",
+        "text": "This was a waste of my time. The speaker put me to sleep."
+    },
+    {
+        "id": "3",
+        "language": "es",
+        "text": "No tengo dinero ni nada que dar..."
+    },
+    {
+        "id": "4",
+        "language": "it",
+        "text": "L'hotel veneziano era meraviglioso. È un bellissimo pezzo di architettura."
+    }
 ]
 ```
 
-Çağrı `sentiment()` işlev ve sonucu alın. Ardından sonuçlarını yinelemek ve her bir belgenin kimliği ve yaklaşım puanını yazdırın. Bir puan yakın 1 pozitif yaklaşımı çağrılırken bir puan yakın 0 bir negatif yaklaşımı gösterir.
+`sentiment()` İşlevi çağırın ve sonucu alın. Ardından sonuçları yineleyin ve her belge KIMLIĞINI ve yaklaşım Puanını yazdırın. 0 ' a yakın bir puan negatif bir yaklaşım gösterir, 1 ' e yaklaşarak pozitif bir yaklaşım gösterilir.
 
 ```python
 response = text_analytics.sentiment(documents=documents)
 for document in response.documents:
-     print("Document Id: ", document.id, ", Sentiment Score: ", "{:.2f}".format(document.score))
+    print("Document Id: ", document.id, ", Sentiment Score: ",
+          "{:.2f}".format(document.score))
 ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Output
 
 ```console
 Document Id:  1 , Sentiment Score:  0.87
@@ -113,34 +114,35 @@ Document Id:  4 , Sentiment Score:  1.00
 
 ## <a name="language-detection"></a>Dil algılama
 
-Sözlük, her analiz etmek istediğiniz belgeyi içeren bir liste oluşturur. `text` Öznitelik depolarının Analiz edilecek metin ve `id` herhangi bir değer olabilir. 
+Her biri çözümlemek istediğiniz belgeyi içeren sözlüklerin bir listesini oluşturun. Özniteliği çözümlenecek metni depolar `id` ve herhangi bir değer olabilir. `text` 
 
 ```python
 documents = [
-    { 
-        'id': '1', 
-        'text': 'This is a document written in English.' 
+    {
+        'id': '1',
+        'text': 'This is a document written in English.'
     },
     {
-        'id': '2', 
-        'text': 'Este es un document escrito en Español.' 
+        'id': '2',
+        'text': 'Este es un document escrito en Español.'
     },
-    { 
-        'id': '3', 
-        'text': '这是一个用中文写的文件' 
+    {
+        'id': '3',
+        'text': '这是一个用中文写的文件'
     }
 ]
-``` 
+```
 
-Daha önce oluşturulan istemciyi kullanarak, çağrı `detect_language()` ve sonucu alın. Ardından sonuçlarını yinelemek ve her bir belgenin kimliği ve ilk döndürülen dil yazdırın.
+Daha önce oluşturulan istemciyi kullanarak, sonucunu `detect_language()` çağırın ve elde edin. Sonra sonuçlar arasında yineleme yapın ve her belgenin KIMLIĞINI ve ilk döndürülen dili yazdırın.
 
 ```python
 response = text_analytics.detect_language(documents=documents)
 for document in response.documents:
-    print("Document Id: ", document.id , ", Language: ", document.detected_languages[0].name)
+    print("Document Id: ", document.id, ", Language: ",
+          document.detected_languages[0].name)
 ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Output
 
 ```console
 Document Id:  1 , Language:  English
@@ -150,25 +152,25 @@ Document Id:  3 , Language:  Chinese_Simplified
 
 ## <a name="entity-recognition"></a>Varlık tanıma
 
-Sözlük, çözümlemek istediğiniz belgeleri içeren bir liste oluşturur. `text` Öznitelik depolarının Analiz edilecek metin ve `id` herhangi bir değer olabilir. 
+Çözümlemek istediğiniz belgeleri içeren sözlüklerin bir listesini oluşturun. Özniteliği çözümlenecek metni depolar `id` ve herhangi bir değer olabilir. `text` 
 
 
 ```python
 documents = [
     {
         "id": "1",
-        "language": "en", 
+        "language": "en",
         "text": "Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, to develop and sell BASIC interpreters for the Altair 8800."
     },
     {
         "id": "2",
-        "language": "es", 
+        "language": "es",
         "text": "La sede principal de Microsoft se encuentra en la ciudad de Redmond, a 21 kilómetros de Seattle."
     }
 ]
 ```
 
-Daha önce oluşturulan istemciyi kullanarak, çağrı `entities()` işlev ve sonucu alın. Ardından sonuçlarını yinelemek ve her bir belgenin kimliği ve içerdiği varlıklar yazdırın.
+Daha önce oluşturulan istemciyi kullanarak işlevini çağırın `entities()` ve sonucu alın. Sonra sonuçlar arasında yineleme yapın ve her belgenin KIMLIĞINI ve içerdiği varlıkları yazdırın.
 
 ```python
 response = text_analytics.entities(documents=documents)
@@ -177,14 +179,15 @@ for document in response.documents:
     print("Document Id: ", document.id)
     print("\tKey Entities:")
     for entity in document.entities:
-        print("\t\t", "NAME: ",entity.name, "\tType: ", entity.type, "\tSub-type: ", entity.sub_type)
+        print("\t\t", "NAME: ", entity.name, "\tType: ",
+              entity.type, "\tSub-type: ", entity.sub_type)
         for match in entity.matches:
             print("\t\t\tOffset: ", match.offset, "\tLength: ", match.length, "\tScore: ",
                   "{:.2f}".format(match.entity_type_score))
 ```
 
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Output
 
 ```console
 Document Id:  1
@@ -217,35 +220,35 @@ Document Id:  2
 
 ## <a name="key-phrase-extraction"></a>Anahtar tümcecik ayıklama
 
-Sözlük, çözümlemek istediğiniz belgeleri içeren bir liste oluşturur. `text` Öznitelik depolarının Analiz edilecek metin ve `id` herhangi bir değer olabilir. 
+Çözümlemek istediğiniz belgeleri içeren sözlüklerin bir listesini oluşturun. Özniteliği çözümlenecek metni depolar `id` ve herhangi bir değer olabilir. `text` 
 
 
 ```python
 documents = [
     {
-        "id": "1", 
-        "language": "ja", 
+        "id": "1",
+        "language": "ja",
         "text": "猫は幸せ"
     },
     {
-        "id": "2", 
-        "language": "de", 
+        "id": "2",
+        "language": "de",
         "text": "Fahrt nach Stuttgart und dann zum Hotel zu Fu."
     },
     {
-        "id": "3", 
+        "id": "3",
         "language": "en",
         "text": "My cat might need to see a veterinarian."
     },
     {
-        "id": "4", 
-        "language": "es", 
+        "id": "4",
+        "language": "es",
         "text": "A mi me encanta el fútbol!"
     }
 ]
 ```
 
-Daha önce oluşturulan istemciyi kullanarak, çağrı `key_phrases()` işlev ve sonucu alın. Ardından sonuçlarını yinelemek ve her bir belgenin kimliği ve içerdiği anahtar ifadeleri yazdırın.
+Daha önce oluşturulan istemciyi kullanarak işlevini çağırın `key_phrases()` ve sonucu alın. Sonra sonuçlar arasında yineleme yapın, her belge KIMLIĞINI ve içerdiği anahtar tümceleri yazdırın.
 
 ```python
 response = text_analytics.key_phrases(documents=documents)
@@ -254,10 +257,10 @@ for document in response.documents:
     print("Document Id: ", document.id)
     print("\tKey Phrases:")
     for phrase in document.key_phrases:
-        print("\t\t",phrase)
+        print("\t\t", phrase)
 ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Output
 
 ```console
 Document Id:  1
@@ -285,6 +288,6 @@ Document Id:  4
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [Metin analizi API'si nedir?](../overview.md)
+* [Metin Analizi API'si nedir?](../overview.md)
 * [Örnek kullanıcı senaryoları](../text-analytics-user-scenarios.md)
 * [Sık sorulan sorular (SSS)](../text-analytics-resource-faq.md)
