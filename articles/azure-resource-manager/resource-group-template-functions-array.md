@@ -33,7 +33,7 @@ Resource Manager, nesneleri ve dizileri ile çalışmak için çeşitli işlevle
 * [range](#range)
 * [skip](#skip)
 * [take](#take)
-* [coalesce](#union)
+* [union](#union)
 
 Bir dizi değere göre ayrılmış dize değerlerini almak için bkz. [bölme](resource-group-template-functions-string.md#split).
 

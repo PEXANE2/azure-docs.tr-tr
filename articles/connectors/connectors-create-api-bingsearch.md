@@ -56,8 +56,8 @@ Veya, bağlantınız zaten varsa, tetikleyici için gerekli bilgileri sağlayın
    | Özellik | Gereklidir | Value | Açıklama |
    |----------|----------|-------|-------------|
    | Search Query | Evet | <*search-words*> | Kullanmak istediğiniz arama anahtar sözcükleri girin. |
-   | Market | Evet | <*locale*> | Arama yerel ayar. Varsayılan "en-US" olduğu, ancak başka bir değer seçebilirsiniz. |
-   | Safe Search | Evet | <*search-level*> | Yetişkinlere yönelik içeriğe Dışlama filtresi düzeyi. Varsayılan "Orta" dır, ancak başka bir düzeyi seçin. |
+   | Market | Evet | <*Yerel ayar*> | Arama yerel ayar. Varsayılan "en-US" olduğu, ancak başka bir değer seçebilirsiniz. |
+   | Safe Search | Evet | <*Arama düzeyi*> | Yetişkinlere yönelik içeriğe Dışlama filtresi düzeyi. Varsayılan "Orta" dır, ancak başka bir düzeyi seçin. |
    | Count | Hayır | <*results-count*> | Belirtilen sonuç sayısını döndürür. Varsayılan değer 20'dir, ancak başka bir değer belirtebilirsiniz. Döndürülen sonuç gerçek sayı belirtilen sayıdan daha az olabilir. |
    | Offset | Hayır | <*skip-value*> | Sonuç döndürülmeden önce atlanacak sonuç sayısı |
    |||||
@@ -109,8 +109,8 @@ Eylem listesinden istediğiniz eylemi seçin.
    | Search Query | Evet | <*search-expression*> | Tetikleyici sonuçlarını sorgulama için bir ifade girin. Dinamik içerik listesindeki alanları seçin veya bir ifade ifade Oluşturucu ile oluşturun. |
    | Market | Evet | <*Yerel ayar*> | Arama yerel ayar. Varsayılan "en-US" olduğu, ancak başka bir değer seçebilirsiniz. |
    | Safe Search | Evet | <*Arama düzeyi*> | Yetişkinlere yönelik içeriğe Dışlama filtresi düzeyi. Varsayılan "Orta" dır, ancak başka bir düzeyi seçin. |
-   | Count | Hayır | <*sonuç sayısı*> | Belirtilen sonuç sayısını döndürür. Varsayılan değer 20'dir, ancak başka bir değer belirtebilirsiniz. Döndürülen sonuç gerçek sayı belirtilen sayıdan daha az olabilir. |
-   | Offset | Hayır | <*atlama değeri*> | Sonuç döndürülmeden önce atlanacak sonuç sayısı |
+   | Count | Hayır | <*results-count*> | Belirtilen sonuç sayısını döndürür. Varsayılan değer 20'dir, ancak başka bir değer belirtebilirsiniz. Döndürülen sonuç gerçek sayı belirtilen sayıdan daha az olabilir. |
+   | Offset | Hayır | <*skip-value*> | Sonuç döndürülmeden önce atlanacak sonuç sayısı |
    |||||
 
    Örneğin, kategori adları "teknik" sözcüğünü içeren sonuçları istediğinizi varsayalım.
