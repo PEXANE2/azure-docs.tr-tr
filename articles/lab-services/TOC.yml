@@ -56,8 +56,6 @@
           href: best-practices-distributive-collaborative-development-environment.md
         - name: Azure DevOps ile tümleştirme
           href: devtest-lab-dev-ops.md
-        - name: Beyan özelliklerini kullanma
-          href: devtest-lab-use-claim-capabilities.md
         - name: Senaryolar
           items:
             - name: DevTest Labs’i kullanmaya yönelik popüler senaryolar
@@ -68,6 +66,8 @@
               href: devtest-lab-test-env.md
             - name: Eğitim için laboratuvar kullanma
               href: devtest-lab-training-lab.md
+            - name: Talep edilebilir VM’lerin kullanılmasına yönelik senaryolar
+              href: devtest-lab-use-claim-capabilities.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Sınıf laboratuvarları
@@ -158,11 +158,11 @@
           items:
             - name: VM oluşturma - Azure portalı
               href: devtest-lab-add-vm.md
-            - name: Azure PowerShell kullanarak VM oluşturma
+            - name: VM Oluşturma - Azure PowerShell
               href: devtest-lab-vm-powershell.md
-            - name: Azure CLI kullanarak VM oluşturma ve yönetme
+            - name: VM Oluşturma - Azure CLI
               href: devtest-lab-vmcli.md
-            - name: Resource Manager şablonundan VM oluşturma
+            - name: VM Oluşturma - Resource Manager şablonu
               href: devtest-lab-use-resource-manager-template.md
             - name: PowerShell veya CLI kullanarak bir sanal makineyi başlatma veya durdurma
               href: use-command-line-start-stop-virtual-machines.md
@@ -172,6 +172,8 @@
               href: devtest-lab-resize-vm.md
             - name: Bir VM’yi yeniden dağıtma
               href: devtest-lab-redeploy-vm.md
+            - name: VM’nin otomatik kapatılmasını yapılandırma
+              href: devtest-lab-auto-shutdown-vm.md
             - name: Talep edilebilir VM’ler oluşturma ve yönetme
               href: devtest-lab-add-claimable-vm.md
             - name: Gizli dizileri yapılandırma
@@ -210,9 +212,9 @@
               items:
                 - name: VM’den özel görüntü oluşturma
                   href: devtest-lab-create-custom-image-from-vm-using-portal.md
-                - name: Azure portalını kullanarak VHD'den özel görüntü oluşturma
+                - name: VHD’den özel görüntü oluşturma - Azure portalı
                   href: devtest-lab-create-template.md
-                - name: PowerShell kullanarak VHD'den özel görüntü oluşturma
+                - name: VHD’den özel görüntü oluşturma - PowerShell
                   href: devtest-lab-create-custom-image-from-vhd-using-powershell.md
                 - name: AzCopy kullanarak karşıya VHD dosyası yükleme
                   href: devtest-lab-upload-vhd-using-azcopy.md

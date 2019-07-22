@@ -61,6 +61,8 @@
           href: batch-account-create-portal.md
         - name: Toplu İşlem Yönetimi .NET ile Batch hesaplarını yönetme
           href: batch-management-dotnet.md
+        - name: Maliyet analizi ve bütçeler
+          href: budget.md
     - name: Azure AD ile kimlik doğrulaması
       items:
         - name: Batch hizmeti ile Azure AD

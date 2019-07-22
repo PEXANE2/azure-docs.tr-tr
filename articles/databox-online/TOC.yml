@@ -47,6 +47,8 @@
           href: data-box-gateway-monitor.md
         - name: Sorun giderme
           href: data-box-gateway-troubleshoot.md
+        - name: Microsoft Desteği’ne başvurma
+          href: data-box-edge-contact-microsoft-support.md
     - name: Sürüm notları
       items:
         - name: 1905 - Geçerli
@@ -105,9 +107,11 @@
               href: data-box-edge-connect-powershell-interface.md
         - name: Sorun giderme
           href: data-box-edge-troubleshoot.md
+        - name: Microsoft Desteği’ne başvurma
+          href: data-box-edge-contact-microsoft-support.md
         - name: İzleme
           href: data-box-edge-monitor.md
-        - name: Cihazın iade edilmesi
+        - name: Cihazı iade etme veya değiştirme
           href: data-box-edge-return-device.md
     - name: Sürüm notları
       items:
