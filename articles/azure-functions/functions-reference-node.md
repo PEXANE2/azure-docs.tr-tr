@@ -110,7 +110,7 @@ JavaScript'te [bağlamaları](functions-triggers-bindings.md) yapılandırılır
 
 ### <a name="inputs"></a>Girişler
 Giriş, Azure işlevleri'nde iki kategoriye ayrılmıştır: Tetikleyici girişi biridir ve diğer ek girişi. Tetikleyici ve diğer giriş bağlamaları (bağlamalarını `direction === "in"`) üç yolla bir işlev tarafından okunabilir:
- - ** _[Önerilen]_  İşlevinize geçirilen parametreler olarak.** İçinde tanımlanan aynı sırada işlevine geçirilen *function.json*. `name` Tanımlanan özellik *function.json* olması gerektiği olsa da, parametre adıyla eşleşmesi gerekmez.
+ - **_[Önerilen]_  İşlevinize geçirilen parametreler olarak.** İçinde tanımlanan aynı sırada işlevine geçirilen *function.json*. `name` Tanımlanan özellik *function.json* olması gerektiği olsa da, parametre adıyla eşleşmesi gerekmez.
  
    ```javascript
    module.exports = async function(context, myTrigger, myInput, myOtherInput) { ... };
@@ -141,7 +141,7 @@ Giriş, Azure işlevleri'nde iki kategoriye ayrılmıştır: Tetikleyici girişi
 
 Veri (Bu yöntemleri birleştirmek yok) aşağıdaki yollardan biriyle bir çıkış bağlamaları atayabilirsiniz:
 
-- ** _[Birden çok çıkış için önerilen]_  Döndüren bir nesne.** İşlev döndüren bir zaman uyumsuz/Promise kullanıyorsanız, bir nesne ile atanan çıktı verilerini döndürebilir. Aşağıdaki örnekte çıkış bağlamaları "httpResponse" ve "queueOutput" olarak adlandırılan *function.json*.
+- **_[Birden çok çıkış için önerilen]_  Döndüren bir nesne.** İşlev döndüren bir zaman uyumsuz/Promise kullanıyorsanız, bir nesne ile atanan çıktı verilerini döndürebilir. Aşağıdaki örnekte çıkış bağlamaları "httpResponse" ve "queueOutput" olarak adlandırılan *function.json*.
 
   ```javascript
   module.exports = async function(context) {
@@ -156,7 +156,7 @@ Veri (Bu yöntemleri birleştirmek yok) aşağıdaki yollardan biriyle bir çık
   ```
 
   Zaman uyumlu bir işlevin kullanıyorsanız, bu nesneyi kullanarak döndürebilir [ `context.done` ](#contextdone-method) (örneğe bakın).
-- ** _[Tek çıkış için önerilen]_  $Return bağlama adını kullanarak ve doğrudan değer döndürüyor.** Bu, yalnızca zaman uyumsuz/döndüren işlevleri Promise çalışır. Örnekte bakın [bir zaman uyumsuz işlev dışarı aktarma](#exporting-an-async-function). 
+- **_[Tek çıkış için önerilen]_  $Return bağlama adını kullanarak ve doğrudan değer döndürüyor.** Bu, yalnızca zaman uyumsuz/döndüren işlevleri Promise çalışır. Örnekte bakın [bir zaman uyumsuz işlev dışarı aktarma](#exporting-an-async-function). 
 - **Değerler atamada `context.bindings`**  doğrudan context.bindings için değerler atayabilirsiniz.
 
   ```javascript
@@ -397,9 +397,9 @@ HTTP tetikleyicileri ile çalışırken, çeşitli yollarla HTTP istek ve yanıt
     ```javascript
     context.bindings.response = { status: 201, body: "Insert succeeded." };
     ```
-+ ** _[Yalnızca yanıtı]_  Çağırarak `context.res.send(body?: any)`.** Bir HTTP yanıtı girişi ile oluşturulan `body` yanıt gövdesi olarak. `context.done()` örtük olarak çağrılır.
++ **_[Yalnızca yanıtı]_  Çağırarak `context.res.send(body?: any)`.** Bir HTTP yanıtı girişi ile oluşturulan `body` yanıt gövdesi olarak. `context.done()` örtük olarak çağrılır.
 
-+ ** _[Yalnızca yanıtı]_  Çağırarak `context.done()`.** Özel bir HTTP bağlaması türü geçirilir yanıt verir `context.done()` yöntemi. Aşağıdaki HTTP çıktı bağlamasını tanımlar bir `$return` çıkış parametresi:
++ **_[Yalnızca yanıtı]_  Çağırarak `context.done()`.** Özel bir HTTP bağlaması türü geçirilir yanıt verir `context.done()` yöntemi. Aşağıdaki HTTP çıktı bağlamasını tanımlar bir `$return` çıkış parametresi:
 
     ```json
     {
