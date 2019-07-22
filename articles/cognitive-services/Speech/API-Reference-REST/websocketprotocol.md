@@ -311,7 +311,7 @@ Kullanıcının bir şekilde konuşma sonu sinyal olanak tanıyan istemci uygula
 | `Path` | `telemetry` |
 | X-Timestamp | İstemci UTC saati ISO 8601 biçimli zaman damgası |
 | Content-Type | `application/json` |
-| Gövde | Aç istemci bilgilerini içeren bir JSON yapısı |
+| Body | Aç istemci bilgilerini içeren bir JSON yapısı |
 
 Gövdesi için şema `telemetry` ileti tanımlanmış [Telemetri şema](#telemetry-schema) bölümü.
 
