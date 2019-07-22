@@ -1,5 +1,5 @@
 ---
-title: "Hızlı Başlangıç: Metin, Python - Translator metin çevirisi API'si alfabeye"
+title: "Hızlı Başlangıç: Metin, Python-Translator Metin Çevirisi API'si"
 titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıçta Python ve Translator Metin Çevirisi API'sini kullanarak bir metni bir alfabeden başka bir alfabeye çevirmeyi (dönüştürmeyi) öğreneceksiniz. Bu örnekte Japonca, Latin alfabesine dönüştürülmektedir.
 services: cognitive-services
@@ -10,21 +10,21 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: c6c6bb526c78ce87b9ee2acca05f478fee0ae5ff
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: cafaf67cfaa07d27bf4569efbc7f76196222cc2a
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704336"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348737"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-transliterate-text-using-python"></a>Hızlı Başlangıç: Python kullanarak metin alfabeye için Translator Text API kullanın
+# <a name="quickstart-use-the-translator-text-api-to-transliterate-text-using-python"></a>Hızlı Başlangıç: Python kullanarak metni alfabeden ayırmak için Translator Metin Çevirisi API'si kullanın
 
 Bu hızlı başlangıçta Python ve Translator Metin Çevirisi API'sini kullanarak bir metni bir alfabeden başka bir alfabeye çevirmeyi (dönüştürmeyi) öğreneceksiniz. Verilen örnekte Japonca, Latin alfabesine dönüştürülmektedir.
 
 Bu hızlı başlangıç, Translator Metin Çevirisi kaynağına sahip bir [Azure Bilişsel Hizmetler hesabı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) gerektirir. Bir hesabınız yoksa, abonelik anahtarı almak için [ücretsiz deneme sürümünü](https://azure.microsoft.com/try/cognitive-services/) kullanabilirsiniz.
 
 >[!TIP]
-> Tek seferde tüm kodu görmek istiyorsanız, bu örnek için kaynak kodunu şurada bulunur [GitHub]().
+> Tüm kodu aynı anda görmek isterseniz, bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Python)' da kullanılabilir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -35,7 +35,7 @@ Bu hızlı başlangıç şunları gerektirir:
 
 ## <a name="create-a-project-and-import-required-modules"></a>Bir proje oluşturun ve gerekli modülleri içeri aktarın
 
-Adlı bir dosya ile en sevdiğiniz IDE veya düzenleyici ya da yeni bir klasör kullanarak yeni bir proje oluşturma `transliterate-text.py` masaüstünüzde. Ardından bu kod parçacığı proje/dosyanıza kopyalayın:
+En sevdiğiniz IDE veya düzenleyiciyi kullanarak yeni bir proje oluşturun veya masaüstünüzde adlı `transliterate-text.py` bir dosya içeren yeni bir klasör oluşturun. Sonra bu kod parçacığını projenize/dosyanıza kopyalayın:
 
 ```python
 # -*- coding: utf-8 -*-
@@ -70,12 +70,12 @@ else:
 #subscriptionKey = 'put_your_key_here'
 ```
 
-Translator metin çevirisi genel uç noktası olarak ayarlandığından `base_url`. `path`, `transliterate` rotasını ayarlar ve API sürüm 3’ü kullanmak istediğimizi belirler.
+Translator Metin Çevirisi genel uç noktası olarak `base_url`ayarlanır. `path`, `transliterate` rotasını ayarlar ve API sürüm 3’ü kullanmak istediğimizi belirler.
 
 `params`, giriş diline en olarak giriş ve çıkış betiklerini ayarlamak için kullanılır. Bu örnekte Japonca metni Latin alfabesine dönüştürüyoruz.
 
 >[!NOTE]
-> Uç noktaları, yollar ve istek parametreleri hakkında daha fazla bilgi için bkz: [Translator Text API 3.0: Alfabeye](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-transliterate).
+> Uç noktalar, rotalar ve istek parametreleri hakkında daha fazla bilgi için bkz [. Translator metin çevirisi API'si 3,0: Alfabede olacak şekilde.](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-transliterate)
 
 ```python
 base_url = 'https://api.cognitive.microsofttranslator.com'
@@ -98,7 +98,7 @@ headers = {
 }
 ```
 
-Bilişsel hizmetler çok hizmet aboneliği kullanıyorsanız de içermelidir `Ocp-Apim-Subscription-Region` , istek parametreleri. [Birden çok hizmet aboneliği ile kimlik doğrulaması hakkında daha fazla bilgi](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Bilişsel hizmetler çoklu hizmet aboneliği kullanıyorsanız, istek parametrelerinize de dahil `Ocp-Apim-Subscription-Region` etmeniz gerekir. [Multi-Service aboneliğiyle kimlik doğrulama hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
 ## <a name="create-a-request-to-transliterate-text"></a>Metni başka alfabeye çevirmek için bir istek oluşturma
 
@@ -155,14 +155,14 @@ Abonelik anahtarınızı programınıza sabit kodladıysanız, bu hızlı başla
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Translator metin çevirisi API'si ile yapabileceğiniz her şeyi anlamak için API Başvurusu göz atın.
+Translator Metin Çevirisi API'si ile yapabileceğiniz her şeyi anlamak için API başvurusuna göz atın.
 
 > [!div class="nextstepaction"]
 > [API başvurusu](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-Translator metin çevirisi API'si için kullanmayı öğrenin:
+Translator Metin Çevirisi API'si nasıl kullanacağınızı öğrenin:
 
 * [Metin çevirme](quickstart-python-translate.md)
 * [Girişe göre dili belirleyin](quickstart-python-detect.md)

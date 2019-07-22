@@ -31,9 +31,9 @@
           href: ../aks/tutorial-kubernetes-prepare-app.md
 - name: Hızlı Başlangıçlar
   items:
-    - name: Azure portalı kullanarak bir hesap oluşturma
+    - name: Azure portalını kullanarak yeni kaynak oluşturma
       href: cognitive-services-apis-create-account.md
-    - name: Azure CLI kullanarak bir hesap oluşturma
+    - name: Azure CLI’yi kullanarak yeni kaynak oluşturma
       href: cognitive-services-apis-create-account-cli.md
     - name: Kimlik Doğrulaması
       href: authentication.md

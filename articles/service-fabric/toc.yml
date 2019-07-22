@@ -274,7 +274,7 @@
           items:
             - name: Azure kümelerine genel bakış
               href: service-fabric-azure-clusters-overview.md
-            - name: Düğüm türleri ve VM Ölçek Kümeleri
+            - name: Düğüm türleri ve sanal makine ölçek kümeleri
               href: service-fabric-cluster-nodetypes.md
             - name: Azure’da kümeleri yükseltme
               href: service-fabric-cluster-upgrade.md
@@ -547,8 +547,8 @@
           href: service-fabric-cloud-services-migration-worker-role-stateless-service.md
         - name: Önerilen uygulamalar
           href: /azure/architecture/service-fabric/migrate-from-cloud-services
-        - name: Geçirilmiş bir uygulamayı yeniden düzenleme
-          href: /azure/architecture/service-fabric/refactor-migrated-app
+        - name: Uygulamalarınızı modernleştirme
+          href: /azure/architecture/service-fabric/modernize-app-azure-service-fabric
     - name: Uygulama yaşam döngüsünü yönetme
       items:
         - name: Uygulamaları paketleme

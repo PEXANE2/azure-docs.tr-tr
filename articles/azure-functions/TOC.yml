@@ -53,6 +53,8 @@
       href: functions-twitter-email.md
     - name: Sunucusuz API oluşturma
       href: functions-create-serverless-api.md
+    - name: VS Code ile Python işlevleri geliştirme
+      href: tutorial-vs-code-serverless-python.md
     - name: OpenAPI tanımı oluşturma
       href: functions-openapi-definition.md
     - name: Sanal Ağa bağlanma

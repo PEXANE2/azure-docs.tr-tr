@@ -334,8 +334,6 @@
           href: cognitive-search-skill-keyphrases.md
         - name: Dil Algılama
           href: cognitive-search-skill-language-detection.md
-        - name: Adlandırılmış Varlık Tanıma
-          href: cognitive-search-skill-named-entity-recognition.md
         - name: Varlık Tanıma
           href: cognitive-search-skill-entity-recognition.md
         - name: Metin Birleştirme
@@ -344,6 +342,8 @@
           href: cognitive-search-skill-textsplit.md
         - name: Yaklaşım
           href: cognitive-search-skill-sentiment.md
+        - name: Metin Çevirisi (Önizleme)
+          href: cognitive-search-skill-text-translation.md
         - name: Görüntü Analizi
           href: cognitive-search-skill-image-analysis.md
         - name: OCR
@@ -352,12 +352,15 @@
           href: cognitive-search-skill-shaper.md
         - name: Koşullu
           href: cognitive-search-skill-conditional.md
-        - name: Kullanım Dışı Bırakılmış Beceriler
-          href: cognitive-search-skill-deprecated.md
     - name: Özel beceriler
       items:
         - name: Özel Web API'si
           href: cognitive-search-custom-skill-web-api.md
+    - name: Kullanım Dışı Bırakılmış Beceriler
+      href: cognitive-search-skill-deprecated.md
+      items:
+        - name: Adlandırılmış Varlık Tanıma
+          href: cognitive-search-skill-named-entity-recognition.md
 - name: Kaynaklar
   items:
     - name: Azure Topluluk Desteği

@@ -29,6 +29,8 @@
       href: publish-service-catalog-app.md
     - name: Market uygulaması yayımlama
       href: publish-marketplace-app.md
+    - name: Özel sağlayıcı ile yönetilen uygulama oluşturma
+      href: tutorial-create-managed-app-with-custom-provider.md
 - name: Örnekler
   items:
     - name: Azure CLI
@@ -83,6 +85,14 @@
           href: custom-providers-proxy-cache-resource-endpoint-reference.md
         - name: Özel sağlayıcı RESTful uç nokta başvurusu
           href: reference-custom-providers-csharp-endpoint.md
+    - name: Uygulama yapıtları
+      items:
+        - name: Kullanıcı arabirimi öğeleri
+          href: reference-createuidefinition-artifact.md
+        - name: Dağıtım şablonu
+          href: reference-main-template-artifact.md
+        - name: Tanımı görüntüleme
+          href: reference-view-definition-artifact.md
     - name: Azure CLI
       href: /cli/azure/managedapp
     - name: PowerShell
