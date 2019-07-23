@@ -1,7 +1,7 @@
 ---
-title: Azure Kubernetes hizmeti çalıştırın
+title: Azure Kubernetes hizmetini çalıştırma
 titleSuffix: Text Analytics - Azure Cognitive Services
-description: Azure Kubernetes hizmetlere ve yaklaşım analizi görüntüsüyle metin analizi kapsayıcıları dağıtın ve bir web tarayıcısında test.
+description: Azure Kubernetes hizmetine Metin Analizi kapsayıcılarını, yaklaşım Analizi görüntüsüyle dağıtın ve bir Web tarayıcısında test edin.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,66 +10,66 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
 ms.author: dapine
-ms.openlocfilehash: a419ed3b9c0d2c4db9c552642dc5c662786f6730
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: 290a01e7e478f718607c0550702474cd31979a63
+ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67561244"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68377423"
 ---
-# <a name="deploy-a-sentiment-analysis-container-to-azure-kubernetes-services-aks"></a>Azure Kubernetes Hizmetleri (AKS) için bir yaklaşım analizi kapsayıcısı dağıtma
+# <a name="deploy-a-sentiment-analysis-container-to-azure-kubernetes-service"></a>Azure Kubernetes hizmetine bir yaklaşım Analizi kapsayıcısı dağıtın
 
-Bilişsel hizmetler dağıtmayı öğrenirsiniz [metin analizi](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers) yaklaşım analizi görüntüyü Azure Kubernetes Hizmetleri (AKS) ile kapsayıcı. Bu yordam, metin analizi kaynak oluşturmayı, ilgili yaklaşım analizi görüntü ve bu ikisinin bir tarayıcıdan düzenleme çalışma olanağı oluşturulmasını exemplifies. Kapsayıcıları kullanarak, bunun yerine, uygulama geliştirme odaklanarak altyapı Yönetimi işlerini hayatınızdan çıkarın, geliştiricilerin dikkat kaydırabilirsiniz.
+Azure bilişsel Hizmetler [metin analizi](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers) kapsayıcısını Azure Kubernetes Service (aks) ile ilgili yaklaşım Analizi görüntüsüyle dağıtmayı öğrenin. Bu yordamda, bir Metin Analizi kaynağı oluşturma, ilişkili bir yaklaşım Analizi görüntüsü oluşturma ve bu iki tarayıcıyı tarayıcıdan nasıl alıştırma yapılacağı gösterilmektedir. Kapsayıcıları kullanmak, dikkat etmeniz gereken altyapıyı, uygulama geliştirmeye odaklanmak yerine altyapıya kadar bir yere kaydırabilirler.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu yordam, yüklü ve yerel olarak çalıştırma çeşitli araçlar gerektirir. Azure Cloud Shell'i kullanmayın.
+Bu yordam, yüklenmesi ve yerel olarak çalıştırılması gereken çeşitli araçlar gerektirir. Azure Cloud Shell kullanmayın. Şunlar gerekir:
 
-* Bir Azure aboneliği kullanın. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
-* Metin düzenleyici, örneğin: [Visual Studio Code](https://code.visualstudio.com/download).
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)’yi yükleyin.
-* Yükleme [Kubernetes CLI](https://kubernetes.io/docs/tasks/tools/install-kubectl/).
-* Doğru fiyatlandırma katmanı ile bir Azure kaynağı. Tüm fiyatlandırma katmanları bu kapsayıcısı ile çalışır:
-    * **Metin analizi** kaynak F0 veya standart fiyatlandırma katmanlarını yalnızca.
-    * **Bilişsel Hizmetler** kaynak fiyatlandırma katmanı S0 ile.
+* Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+* Bir metin Düzenleyicisi, örneğin [Visual Studio Code](https://code.visualstudio.com/download).
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) yüklendi.
+* [Kubernetes CLI](https://kubernetes.io/docs/tasks/tools/install-kubectl/) yüklendi.
+* Doğru fiyatlandırma katmanına sahip bir Azure kaynağı. Fiyatlandırma katmanlarının tümü bu kapsayıcı ile çalışmaz:
+    * Yalnızca F0 veya standart fiyatlandırma katmanlarına sahip **Azure metin analizi** kaynağı.
+    * S0 fiyatlandırma katmanı ile Azure bilişsel **Hizmetler** kaynağı.
 
 [!INCLUDE [Create a Cognitive Services Text Analytics resource](../includes/create-text-analytics-resource.md)]
 
-[!INCLUDE [Create a Text Analytics Containers on Azure Kubernetes Services (AKS)](../../containers/includes/create-aks-resource.md)]
+[!INCLUDE [Create a Text Analytics container on Azure Kubernetes Service (AKS)](../../containers/includes/create-aks-resource.md)]
 
-## <a name="deploy-text-analytics-container-to-an-aks-cluster"></a>Metin analizi kapsayıcı için AKS kümesi dağıtma
+## <a name="deploy-a-text-analytics-container-to-an-aks-cluster"></a>AKS kümesine Metin Analizi kapsayıcısı dağıtma
 
-1. Oturum açma ve Azure CLI, Azure'da oturum açın
+1. Azure CLı 'yi açın ve Azure 'da oturum açın.
 
     ```azurecli
     az login
     ```
 
-1. AKS kümesi için oturum açın (Değiştir `your-cluster-name` ve `your-resource-group` uygun değerlerle)
+1. AKS kümesinde oturum açın. `your-cluster-name` Ve`your-resource-group` değerlerini uygun değerlerle değiştirin.
 
     ```azurecli
     az aks get-credentials -n your-cluster-name -g -your-resource-group
     ```
 
-    Bu komut yürütüldükten sonra aşağıdakine benzer bir ileti raporları:
+    Bu komut çalıştıktan sonra şuna benzer bir ileti bildirir:
 
     ```console
     Merged "your-cluster-name" as current context in /home/username/.kube/config
     ```
 
     > [!WARNING]
-    > Azure hesabınızda kullanılabilen birden fazla aboneliğiniz varsa ve `az aks get-credentials` komutu ile bir hata döndürür, yanlış aboneliğe kullandığınız ortak bir sorunu. Yalnızca kaynaklarla oluşturulan aynı aboneliği kullanmak için Azure CLI oturumunuzu bağlamını ayarlayın ve yeniden deneyin.
+    > Azure hesabınızda kullanabileceğiniz birden çok aboneliğiniz varsa ve `az aks get-credentials` komut bir hatayla döndürülürse, yaygın bir sorun, yanlış aboneliği kullanıyor olmanız olabilir. Azure CLı oturumunuzun bağlamını, kaynaklarını oluşturduğunuz aboneliğin aynısını kullanacak şekilde ayarlayın ve yeniden deneyin.
     > ```azurecli
     >  az account set -s subscription-id
     > ```
 
-1. Tercih ettiğiniz metin düzenleyiciyi açın (Bu örnekte __Visual Studio Code__):
+1. İstediğiniz metin düzenleyicisini açın. Bu örnek Visual Studio Code kullanır.
 
     ```azurecli
     code .
     ```
 
-1. Metin Düzenleyici içinde adlı yeni bir dosya oluşturmak _sentiment.yaml_ aşağıdaki YAML yapıştırın. Değiştirdiğinizden emin olun `billing/value` ve `apikey/value` ile kendi.
+1. Metin Düzenleyicisi içinde, _Sentiment. YAML_adlı yeni bir dosya oluşturun ve içine aşağıdaki YAML 'yi yapıştırın. `billing/value` Ve`apikey/value` bilgilerinizi kendi bilgileriniz ile değiştirdiğinizden emin olun.
 
     ```yaml
     apiVersion: apps/v1beta1
@@ -108,39 +108,39 @@ Bu yordam, yüklü ve yerel olarak çalıştırma çeşitli araçlar gerektirir.
         app: sentiment-app
     ```
 
-1. Dosyayı kaydedin ve Metin Düzenleyicisi'ni kapatın.
-1. Kubernetes yürütme `apply` komutunu _sentiment.yaml_ hedef olarak:
+1. Dosyayı kaydedin ve metin düzenleyicisini kapatın.
+1. _Sentiment. YAML_ ile `apply` Kubernetes komutunu hedefi olarak çalıştırın:
 
     ```console
     kuberctl apply -f sentiment.yaml
     ```
 
-    Komuttan sonra dağıtım yapılandırması, aşağıdaki çıktıya benzer bir ileti başarıyla uygulanmış:
+    Komut, dağıtım yapılandırmasını başarılı bir şekilde uyguladıktan sonra aşağıdaki çıktıya benzer bir ileti görünür:
 
     ```
     deployment.apps "sentiment" created
     service "sentiment" created
     ```
-1. POD dağıtıldığını doğrulayın:
+1. Pod 'ın dağıtıldığını doğrulayın:
 
     ```console
     kubectl get pods
     ```
 
-    Bu POD çalışan durumunu çıkarır:
+    Pod 'un çalışma durumunun çıkışı:
 
     ```
     NAME                         READY     STATUS    RESTARTS   AGE
     sentiment-5c9ccdf575-mf6k5   1/1       Running   0          1m
     ```
 
-1. Hizmetin kullanılabilir olduğundan emin olun ve IP adresini alın:
+1. Hizmetin kullanılabilir olduğunu doğrulayın ve IP adresini alın.
 
     ```console
     kubectl get services
     ```
 
-    Bu çalışma durumunu çıkarır _yaklaşım_ POD hizmeti:
+    Pod 'daki _yaklaşım hizmetinin çalışma_ durumunun çıkışı:
 
     ```
     NAME         TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)          AGE
@@ -148,9 +148,9 @@ Bu yordam, yüklü ve yerel olarak çalıştırma çeşitli araçlar gerektirir.
     sentiment    LoadBalancer   10.0.100.64   168.61.156.180   5000:31234/TCP   2m
     ```
 
-[!INCLUDE [Verify the Sentiment Analysis container instance](../includes/verify-sentiment-analysis-container.md)]
+[!INCLUDE [Verify the sentiment analysis container instance](../includes/verify-sentiment-analysis-container.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Daha fazla kullanmanız [Bilişsel Hizmetleri kapsayıcıları](../../cognitive-services-container-support.md)
-* Kullanım [metin analizi bağlı hizmeti](../vs-text-connected-service.md)
+* Daha fazla bilişsel [Hizmetler kapsayıcısı](../../cognitive-services-container-support.md) kullanın
+* [Metin analizi bağlı hizmetini](../vs-text-connected-service.md) kullanma

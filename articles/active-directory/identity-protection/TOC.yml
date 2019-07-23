@@ -52,8 +52,6 @@
           href: howto-provide-risk-event-feedback.md
         - name: Risk ilkelerini yapılandırma
           href: howto-configure-risk-policies.md
-        - name: Algılama doğruluğunu geliştirme
-          href: howto-improve-detection-accuracy.md
         - name: SSS ve bilinen sorunlar
           href: known-issues.md
 - name: Başvuru

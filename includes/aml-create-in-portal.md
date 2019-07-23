@@ -8,43 +8,41 @@ ms.author: sgilley
 manager: cgronlund
 ms.custom: include file
 ms.topic: include
-ms.date: 05/21/2019
-ms.openlocfilehash: 2ec45b67367198c14fc9d03cdb659a51aed8a504
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.date: 07/21/2019
+ms.openlocfilehash: 51bd3dfb33b1f445db8672e1b987ee6c6242e09c
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67841506"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68370884"
 ---
-1. Oturum [Azure portalında](https://portal.azure.com/) kullandığınız Azure aboneliği için kimlik bilgilerini kullanarak. 
+1. Kullandığınız Azure aboneliğine ait kimlik bilgilerini kullanarak [Azure Portal](https://portal.azure.com/) oturum açın. 
 
-   ![Azure portal](./media/aml-create-in-portal/portal-dashboard-05-2019.png)
-
-1. Portalın sol üst köşedeki seçin **kaynak Oluştur**.
+1. Portalın sol üst köşesinde **kaynak oluştur**' u seçin.
 
    ![Azure portalında kaynak oluşturma](./media/aml-create-in-portal/portal-create-a-resource-07-2019.png)
 
-1. Arama çubuğunu kullanarak **Machine Learning hizmeti çalışma alanında**.
+1. **Machine Learning hizmeti çalışma alanını**bulmak için arama çubuğunu kullanın.
 
-   ![Bir çalışma alanı arayın](./media/aml-create-in-portal/allservices-search.png)
+1. **Machine Learning hizmet çalışma alanı**' nı seçin.
 
-1. İçinde **ML hizmeti çalışma alanında** bölmesinde **Oluştur** başlamak için.
+1. **Ml hizmeti çalışma alanı** bölmesinde başlamak için **Oluştur** ' u seçin.
 
-    ![Oluştur düğmesi](./media/aml-create-in-portal/portal-create-button.png)
-
-1. İçinde **ML hizmeti çalışma alanında** bölmesinde, çalışma alanınızı yapılandırın.
+1. Yeni çalışma alanınızı, çalışma alanı adı, abonelik, kaynak grubu ve konum sağlayarak yapılandırın.
 
     ![Çalışma alanı oluşturma](./media/aml-create-in-portal/workspace-create-main-tab.png)
 
    Alan|Açıklama
    ---|---
-   Çalışma alanı adı |Çalışma alanınızı tanımlayan benzersiz bir ad girin. Bu örnekte **docs ws**. Arasında kaynak grubu adları benzersiz olmalıdır. Geri çağırma ve başkaları tarafından oluşturulan çalışma alanlarından ayırt etmek kolay bir ad kullanın.  
+   Çalışma alanı adı |Çalışma alanınızı tanımlayan benzersiz bir ad girin. Bu örnekte **docs-WS**kullanıyoruz. Adlar, kaynak grubu genelinde benzersiz olmalıdır. Başkaları tarafından oluşturulan çalışma alanlarını birbirinden ayırmak ve geri çekmek için kolay bir ad kullanın.  
    Subscription |Kullanmak istediğiniz Azure aboneliğini seçin.
-   Resource group | Aboneliğinizde mevcut bir kaynak grubunu kullanın veya yeni bir kaynak grubu oluşturmak için bir ad girin. Bir kaynak grubu, bir Azure çözümü için ilgili kaynakları içerir. Bu örnekte **docs aml**. 
-   Location | Kullanıcılarınızı ve veri kaynakları için en yakın konumu seçin. Çalışma alanı oluşturulduğu bu konumdur.
+   Resource group | Aboneliğinizde var olan bir kaynak grubunu kullanın veya yeni bir kaynak grubu oluşturmak için bir ad girin. Kaynak grubu, bir Azure çözümü için ilgili kaynakları barındırır. Bu örnekte **docs-AML**kullanılır. 
+   Location | Çalışma alanınızı oluşturmak için kullanıcılarınıza en yakın konumu ve veri kaynaklarını seçin.
 
-1. Çalışma alanı yapılandırmanızı gözden geçirin ve seçin **Oluştur**. Uygulamanın, çalışma alanı oluşturmak için birkaç dakika sürebilir.
+1. Çalışma alanını yapılandırmayı tamamladıktan sonra **Oluştur**' u seçin. 
 
-1. İşlem tamamlandığında, bir dağıtım başarı iletisi görünür. Ayrıca, bildirimleri bölümünde de mevcuttur. Yeni çalışma alanı görüntülemek için seçin **kaynağa Git**.
+   Çalışma alanını oluşturmak birkaç dakika sürebilir.
+
+   İşlem tamamlandığında, bir dağıtım başarı iletisi görüntülenir. Ayrıca Bildirimler bölümünde de bulunur. Yeni çalışma alanını görüntülemek için **Kaynağa Git**' i seçin.
 
    ![Çalışma alanı oluşturma durumu](./media/aml-create-in-portal/notifications.png)

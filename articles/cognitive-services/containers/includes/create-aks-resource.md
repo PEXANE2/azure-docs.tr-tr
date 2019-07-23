@@ -1,7 +1,7 @@
 ---
-title: Bir Azure Kubernetes hizmeti küme kaynağı oluşturun
+title: Azure Kubernetes hizmet kümesi kaynağı oluşturma
 titleSuffix: Azure Cognitive Services
-description: Azure Kubernetes Service (AKS) kaynak oluşturmayı öğrenin.
+description: Azure Kubernetes hizmeti (AKS) kaynağı oluşturmayı öğrenin.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -9,43 +9,43 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 7/3/2019
 ms.author: dapine
-ms.openlocfilehash: ab7ce8b4a538e6a286a00285069a22878c5d88d9
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 5e442f38a8e81170eeeac2f31f00a7d0eeb08d2b
+ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67877457"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68377388"
 ---
-## <a name="create-an-azure-kubernetes-service-cluster-resource"></a>Bir Azure Kubernetes hizmeti küme kaynağı oluşturun
+## <a name="create-an-azure-kubernetes-service-cluster-resource"></a>Azure Kubernetes hizmet kümesi kaynağı oluşturma
 
-1. Git [Azure Kubernetes hizmeti](https://ms.portal.azure.com/#create/microsoft.aks) seçip **Oluştur**.
+1. [Azure Kubernetes hizmetine](https://ms.portal.azure.com/#create/microsoft.aks)gidin ve **Oluştur**' u seçin.
 
-1. Üzerinde **Temelleri** sekmesinde, aşağıdaki bilgileri girin:
-
-    |Ayar|Değer|
-    |--|--|
-    |Subscription|Uygun bir abonelik seçin|
-    |Resource group|Kullanılabilir kaynak grubu seçin|
-    |Kubernetes küme adı|(Küçük) bir ad girin|
-    |Bölge|Yakın bir konum seçin|
-    |Kubernetes sürümü|1.12.8 (varsayılan)|
-    |DNS adı ön eki|Otomatik olarak oluşturuldu ancak geçersiz kılabilirsiniz|
-    |Düğüm boyutu|Standart DS2 v2'de:<br>`2 vCPUs`, `7 GB`|
-    |Düğüm sayısı|Kaydırıcı varsayılan değerde bırakın|
-
-1. Üzerinde **ölçek** sekmesinde **sanal düğümler** ve **sanal makine ölçek kümeleri (Önizleme)** varsayılan değerlere ayarlayın.
-1. Üzerinde **kimlik doğrulaması** sekmesinde **hizmet sorumlusu** ve **etkinleştirme RBAC** varsayılan değerlere ayarlayın.
-1. Üzerinde **ağ** sekmesinde, aşağıdaki seçimleri girin:
+1. **Temel bilgiler** sekmesinde, aşağıdaki bilgileri girin:
 
     |Ayar|Value|
     |--|--|
-    |HTTP uygulaması yönlendirme|Hayır|
+    |Subscription|Uygun bir abonelik seçin.|
+    |Resource group|Kullanılabilir bir kaynak grubu seçin.|
+    |Kubernetes küme adı|Bir ad girin (küçük harf).|
+    |Bölge|Yakın bir konum seçin.|
+    |Kubernetes sürümü|1.12.8 (varsayılan).|
+    |DNS adı ön eki|Otomatik olarak oluşturulur, ancak geçersiz kılabilirsiniz.|
+    |Düğüm boyutu|Standart DS2 v2:<br>`2 vCPUs`, `7 GB`|
+    |Düğüm sayısı|Kaydırıcıyı varsayılan değerde bırakın.|
+
+1. **Ölçek** sekmesinde **sanal düğümleri** ve **sanal makine ölçek kümelerini (Önizleme)** varsayılan değerlere ayarlayın.
+1. **Kimlik doğrulama** sekmesinde **hizmet sorumlusu** ' nı bırakın ve **RBAC** kümesini varsayılan değerlere etkinleştirin.
+1. **Ağ** sekmesinde, aşağıdaki seçimleri girin:
+
+    |Ayar|Değer|
+    |--|--|
+    |HTTP uygulama yönlendirmesi|Hayır|
     |Ağ yapılandırması|Temel|
 
-1. Üzerinde **izleme** sekmesinde, emin **kapsayıcı izlemeyi etkinleştir** ayarlanır **Evet**, bırakıp **Log Analytics çalışma alanı** olarak Varsayılan değer.
-1. Üzerinde **etiketleri** sekmesinde, ad/değer çiftleri şimdilik boş bırakın.
-1. Seçin **gözden geçir ve Oluştur**.
-1. Doğrulama denetimini geçtikten seçin **Oluştur**.
+1. **İzleme** sekmesinde, **kapsayıcı izlemeyi etkinleştir** ' in **Evet**olarak ayarlandığından emin olun ve **Log Analytics çalışma alanını** varsayılan değer olarak bırakın.
+1. **Etiketler** sekmesinde, ad/değer çiftlerini şimdilik boş bırakın.
+1. **Gözden geçir ve Oluştur '** u seçin.
+1. Doğrulama geçtikten sonra **Oluştur**' u seçin.
 
 > [!NOTE]
-> Doğrulama başarısız olursa, bir "Hizmet sorumlusu" hatası nedeniyle olabilir. Geri gidin **kimlik doğrulaması** sekmesine ve ardından yeniden **gözden geçir + Oluştur**, nerede doğrulama çalıştırın ve ardından geçirin.
+> Doğrulama başarısız olursa, bunun nedeni "hizmet sorumlusu" hatası olabilir. **Kimlik doğrulama** sekmesine dönün ve ardından doğrulama ' nın ardından Pass ve sonra geçmesi gereken **İnceleme + oluştur**' a geri dönün.
