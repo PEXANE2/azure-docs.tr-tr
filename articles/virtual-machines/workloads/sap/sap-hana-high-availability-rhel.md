@@ -4,7 +4,7 @@ description: Azure sanal makinelerinde (VM'ler) SAP hana yüksek kullanılabilir
 services: virtual-machines-linux
 documentationcenter: ''
 author: MSSedusch
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 1eca9dd82bec120e5554627ade71688c82be7763
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 66e1e4603602835d6ed5be9af58eb09a24b00b63
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64922125"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709113"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux Vm'lerinde Azure üzerinde SAP hana yüksek kullanılabilirlik
 
@@ -101,7 +101,7 @@ Azure marketi, SAP HANA için yeni sanal makineleri dağıtmak için kullanabile
 Github üzerindeki tüm gerekli kaynakları dağıtmak için hızlı başlangıç şablonlarından birini kullanabilirsiniz. Şablonu, sanal makineler, Yük Dengeleyiciyi kullanılabilirlik kümesi ve benzeri dağıtır.
 Şablonu dağıtmak için aşağıdaki adımları izleyin:
 
-1. Açık [veritabanı şablonu] [ template-multisid-db] Azure portalında.
+1. Açık [veritabanı şablonu][template-multisid-db] Azure portalında.
 1. Aşağıdaki parametreleri girin:
     * **SAP sistem kimliği**: Yüklemek istediğiniz SAP sistemine SAP sistemi Kimliğini girin. Kimlik ön eki olarak dağıtılan kaynaklar için kullanılır.
     * **İşletim sistemi türü**: Linux dağıtımları birini seçin. Bu örnekte, seçin **RHEL 7**.
@@ -335,7 +335,7 @@ Aşağıdaki ön ekleri bu bölümdeki adımları kullanın:
 
 1. **[A]**  SAP konak aracısını yükseltin.
 
-   En son SAP konak Aracısı arşivden indirme [SAP Software Center] [ sap-swcenter] ve aracıyı yükseltmek için aşağıdaki komutu çalıştırın. İndirdiğiniz dosyaya işaret edecek şekilde arşiv yolunu değiştirin:
+   En son SAP konak Aracısı arşivden indirme [SAP Software Center][sap-swcenter] ve aracıyı yükseltmek için aşağıdaki komutu çalıştırın. İndirdiğiniz dosyaya işaret edecek şekilde arşiv yolunu değiştirin:
 
    <pre><code>sudo /usr/sap/hostctrl/exe/saphostexec -upgrade -archive &lt;path to SAP Host Agent SAR&gt;
    </code></pre>

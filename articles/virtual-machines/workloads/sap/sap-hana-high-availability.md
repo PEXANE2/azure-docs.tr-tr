@@ -4,7 +4,7 @@ description: SUSE Linux Enterprise Server Vm'lerinde Azure üzerinde SAP hana y�
 services: virtual-machines-linux
 documentationcenter: ''
 author: MSSedusch
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 3d59fc48f1f6f6931ca18e09a420fdbccc7d53dc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 78d14add09a89b7ec4d4844a12ffa0434d714b3a
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64922279"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709090"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server Vm'lerinde Azure üzerinde SAP hana yüksek kullanılabilirlik
 
@@ -71,9 +71,9 @@ Bu makalede, dağıtın ve sanal makineleri yapılandırma, küme Framework'ü y
 * SAP notu [401162] "adresi zaten kullanımda" HANA sistem çoğaltması ' ayarlarken kaçınılması hakkında bilgi içeriyor.
 * [SAP topluluk WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) tüm gerekli SAP notları için Linux sahiptir.
 * [SAP HANA sertifikalı Iaas platformları](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)
-* [Azure sanal makineleri planlama ve uygulama için Linux üzerinde SAP] [ planning-guide] Kılavuzu.
-* [Azure sanal makineler dağıtım için Linux'ta SAP] [ deployment-guide] (Bu makale).
-* [Linux'ta SAP için Azure sanal makineleri DBMS dağıtım] [ dbms-guide] Kılavuzu.
+* [Azure sanal makineleri planlama ve uygulama için Linux üzerinde SAP][planning-guide] Kılavuzu.
+* [Azure sanal makineler dağıtım için Linux'ta SAP][deployment-guide] (Bu makale).
+* [Linux'ta SAP için Azure sanal makineleri DBMS dağıtım][dbms-guide] Kılavuzu.
 * [SUSE Linux Enterprise Server SAP uygulamaları 12 SP3 en iyi uygulamalar kılavuzları][sles-for-sap-bp]
   * SAP HANA SR performans için iyileştirilmiş altyapı (SLES SAP uygulamaları 12 SP1'de) ayarlama. Kılavuz tüm SAP HANA sistem çoğaltması ' için şirket içi geliştirme ayarlamak için gerekli bilgileri içerir. Bu kılavuzu temel olarak kullanın.
   * Bir SAP HANA SR en iyi duruma getirilmiş altyapısı maliyetini (SLES SAP uygulamaları 12 SP1'de) ayarlama
@@ -101,8 +101,8 @@ Azure Market görüntü için SUSE Linux Enterprise Server SAP uygulamaları 12 
 Github üzerindeki tüm gerekli kaynakları dağıtmak için hızlı başlangıç şablonlarından birini kullanabilirsiniz. Şablonu, sanal makineler, Yük Dengeleyiciyi kullanılabilirlik kümesi ve benzeri dağıtır.
 Şablonu dağıtmak için aşağıdaki adımları izleyin:
 
-1. Açık [veritabanı şablonu] [ template-multisid-db] veya [şablon yakınsanmış] [ template-converged] Azure portalında. 
-    Yük Dengeleme kuralları yalnızca bir veritabanı için veritabanı şablon oluşturur. Yakınsanmış şablonu ayrıca bir ASCS/SCS ve Ağıranlar (yalnızca Linux) örneği için Yük Dengeleme kuralları oluşturur. SAP NetWeaver tabanlı bir sistemin yüklemeyi planladığınız ve ASCS/SCS örneği aynı makinelerde yüklemek kullanmak istiyorsanız [şablon yakınsanmış][template-converged].
+1. Açık [veritabanı şablonu][template-multisid-db] or the [converged template][template-converged] on the Azure portal. 
+    The database template creates the load-balancing rules for a database only. The converged template also creates the load-balancing rules for an ASCS/SCS and ERS (Linux only) instance. If you plan to install an SAP NetWeaver-based system and you want to install the ASCS/SCS instance on the same machines, use the [converged template][template-converged].
 
 1. Aşağıdaki parametreleri girin:
     - **SAP sistem kimliği**: Yüklemek istediğiniz SAP sistemine SAP sistemi Kimliğini girin. Kimlik ön eki olarak dağıtılan kaynaklar için kullanılır.
@@ -347,7 +347,7 @@ SAP HANA sistem çoğaltması yüklemek için Bölüm 4 izleyin [SAP HANA SR per
 
 1. **[A]**  SAP konak aracısını yükseltin.
 
-   En son SAP konak Aracısı arşivden indirme [SAP Software Center] [ sap-swcenter] ve aracıyı yükseltmek için aşağıdaki komutu çalıştırın. İndirdiğiniz dosyaya işaret edecek şekilde arşiv yolunu değiştirin:
+   En son SAP konak Aracısı arşivden indirme [SAP Software Center][sap-swcenter] ve aracıyı yükseltmek için aşağıdaki komutu çalıştırın. İndirdiğiniz dosyaya işaret edecek şekilde arşiv yolunu değiştirin:
 
    <pre><code>sudo /usr/sap/hostctrl/exe/saphostexec -upgrade -archive &lt;path to SAP Host Agent SAR&gt;
    </code></pre>
