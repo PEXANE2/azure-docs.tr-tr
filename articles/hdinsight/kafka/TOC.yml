@@ -220,8 +220,6 @@
           href: ../hdinsight-virtual-network-architecture.md
         - name: Giden trafiği kısıtlamak için güvenlik duvarı kullanma
           href: ../hdinsight-restrict-outbound-traffic.md
-        - name: Azure VNet’te HDInsight
-          href: ../hdinsight-extend-hadoop-virtual-network.md
         - name: HDInsight’a şirket içi ağınızla bağlanma
           href: ../connect-on-premises-network.md
     - name: Azure İzleyici günlüklerini kullanarak izleme
