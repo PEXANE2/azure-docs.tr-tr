@@ -7,7 +7,6 @@
     - name: Terminoloji değişiklikleri
       href: terminology.md
 - name: Hızlı Başlangıçlar
-  expanded: true
   items:
     - name: Uygulamalar
       items:
@@ -96,9 +95,9 @@
           href: platform/personal-data-mgmt.md
         - name: 'Uygulama verilerini toplama, bekletme ve depolama'
           href: app/data-retention-privacy.md
-    - name: Olaylara yanıt verme
+    - name: Uyarılar
       items:
-        - name: Uyarılar
+        - name: Genel Bakış
           href: platform/alerts-overview.md
         - name: Klasik uyarılar
           href: platform/alerts-classic.overview.md
@@ -114,8 +113,6 @@
           href: platform/alerts-action-rules.md
         - name: Akıllı gruplar
           href: platform/alerts-smartgroups-overview.md
-        - name: Otomatik Ölçeklendirme
-          href: platform/autoscale-overview.md
         - name: Değişiklik analizi
           href: app/change-analysis.md
     - name: Verileri görselleştirme
@@ -954,6 +951,8 @@
       items:
         - name: Otomatik Ölçeklendirme
           items:
+            - name: Genel Bakış
+              href: platform/autoscale-overview.md
             - name: Kılavuz
               href: platform/autoscale-get-started.md
             - name: Ayarlar

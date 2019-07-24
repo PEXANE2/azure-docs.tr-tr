@@ -156,8 +156,8 @@
         - name: API eğitme
           href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train'
       href: 'https://go.microsoft.com/fwlink/?linkid=2092179'
-    - name: SSS
-      href: faqs.md
+    - name: Sorun giderme
+      href: troubleshooting.md
     - name: Sınırlar
       href: limits.md
     - name: Sözlük

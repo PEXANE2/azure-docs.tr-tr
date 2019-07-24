@@ -1,22 +1,24 @@
 ---
-title: Veri için Azure Data Box Disk kopyalama için öğretici | Microsoft Docs
+title: Azure Data Box Disk verileri kopyalama öğreticisi | Microsoft Docs
 description: Azure Data Box Disk'inizi nasıl veri kopyalayacağınızı öğrenmek için bu öğreticiyi kullanın
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 04/16/2019
+ms.date: 07/23/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 70890dcd72cadc55e56410381a94ac071b248a91
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 336cc7dae00d06e38e4be8671f1cb11ed73e5edc
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147524"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68414649"
 ---
-# <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>Öğretici: Veri için Azure Data Box Disk kopyalama ve doğrulayın
+::: zone target="docs"
+
+# <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>Öğretici: Azure Data Box Disk verileri kopyalama ve doğrulama
 
 Bu öğreticide ana bilgisayarınızdan veri kopyalama ve veri bütünlüğünü doğrulamak için sağlama toplamı oluşturma adımları anlatılmaktadır.
 
@@ -29,57 +31,57 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 ## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce aşağıdakilerden emin olun:
-- Tamamladığınızda [Öğreticisi: Yükleme ve yapılandırma, Azure Data Box Disk](data-box-disk-deploy-set-up.md).
+- [Öğreticiyi tamamladınız: Azure Data Box Disk](data-box-disk-deploy-set-up.md)yükleyip yapılandırın.
 - Disklerinizin kilitleri açılır ve diskler bir istemci bilgisayara bağlanır.
 - Disklere veri kopyalamak için kullanılan istemci bilgisayar [Desteklenen işletim sistemi](data-box-disk-system-requirements.md##supported-operating-systems-for-clients) çalıştırmalıdır.
 - Verileriniz için hedeflenen depolama türünün [Desteklenen depolama türleri](data-box-disk-system-requirements.md#supported-storage-types-for-upload) ile eşleştiğinden emin olun.
-- Gözden geçirme [yönetilen disk limitleri Azure nesne boyutu sınırları](data-box-disk-limits.md#azure-object-size-limits).
+- [Azure nesne boyut sınırları 'Ndaki yönetilen disk sınırlarını](data-box-disk-limits.md#azure-object-size-limits)gözden geçirin.
 
 
 ## <a name="copy-data-to-disks"></a>Disklere veri kopyalama
 
-Veri diskleri kopyalamadan önce aşağıdaki konuları gözden geçirin:
+Verileri disklere kopyalamanız için aşağıdaki konuları gözden geçirin:
 
 - Verilerin uygun dosya biçimine karşılık gelen klasörlere kopyalandığından emin olmak sizin sorumluluğunuzdur. Örneğin blok blobu verilerinin blok blobu klasörlerine kopyalanması gerekir. Veri biçimi uygun klasörle (depolama türü) eşleşmiyorsa veriler Azure'a yüklenemez.
 - Veri kopyalama sırasında veri boyutunun [Azure depolama ve Data Box Disk sınırları](data-box-disk-limits.md) içinde belirtilen boyut sınırlarına uygun olduğundan emin olun.
 - Data Box Disk tarafından yüklenen verilerin Data Box Disk haricinde başka bir uygulama tarafından da yüklenmesi durumunda yükleme işinde hata oluşabilir ve veri bozulması yaşanabilir.
 
    > [!IMPORTANT]
-   >  Yönetilen diskler depolama konumlarını biri olarak sipariş oluşturma sırasında belirttiyseniz, aşağıdaki bölümde geçerlidir.
+   >  Sipariş oluşturma sırasında depolama hedeflerinden biri olarak yönetilen diskler belirttiyseniz, aşağıdaki bölüm geçerlidir.
 
-- Belirli bir ada sahip bir yönetilen diski yalnızca bir kaynak grubunda ve tüm Data Box Disk precreated tüm klasörler arasında olabilir. Başka bir gelir precreated klasörlere karşıya VHD'ler benzersiz adlara sahip olmalıdır. Belirtilen ada, bir kaynak grubunda zaten mevcut bir yönetilen disk eşleşmiyor emin olun. VHD'leri aynı ada sahipse, bu ada sahip yönetilen disk için yalnızca bir VHD dönüştürülür. Diğer VHD'ler sayfa BLOB'ları hazırlama depolama hesabına yüklenir.
-- Her zaman VHD'lerin precreated klasörlerden birine kopyalayın. VHD'ler, bu klasörleri dışında veya oluşturduğunuz bir klasöre kopyalamak, VHD'ler sayfa blobları Azure depolama hesabına yüklenir ve yönetilen diskler değil.
-- Yönetilen disk oluşturmak için yalnızca sabit VHD'lerin karşıya yüklenebilir. Dinamik VHD, fark kayıt VHD veya VHDX dosyaları desteklenmez.
+- Yalnızca bir kaynak grubunda verilen ada sahip tek bir yönetilen diske, önceden oluşan tüm klasörlerde ve tüm Data Box Disk erişebilirsiniz. Bu, önceden düzenlenen klasörlere yüklenen VHD 'Lerin benzersiz adlara sahip olması gerektiğini gösterir. Verilen adın bir kaynak grubunda zaten var olan bir yönetilen diskle eşleşmediğinden emin olun. VHD 'ler aynı ada sahip ise, yalnızca bir VHD bu adı taşıyan yönetilen diske dönüştürülür. Diğer VHD 'ler, hazırlama depolama hesabına sayfa Blobları olarak yüklenir.
+- VHD 'leri her zaman önceden düzenlenen klasörlerden birine kopyalayın. VHD 'leri bu klasörlerin dışına veya oluşturduğunuz bir klasöre kopyalarsanız, VHD 'ler, yönetilen diskler değil, Azure depolama hesabına sayfa Blobları olarak yüklenir.
+- Yönetilen diskler oluşturmak için yalnızca sabit VHD 'ler karşıya yüklenebilir. Dinamik VHD 'ler, fark kayıt vhd 'leri veya VHDX dosyaları desteklenmez.
 
 
 Bilgisayarınızla Data Box Disk arasında bağlantı kurmak ve veri kopyalamak için aşağıdaki adımları gerçekleştirin.
 
-1. Kilidi açılan sürücünün içeriğini görüntüleyin. Precreated klasörler ve alt klasörlerin listesini, sürücü Data Box Disk Siparişiniz yerleştirme sırasında seçilen seçeneklere olarak farklıdır.
+1. Kilidi açılan sürücünün içeriğini görüntüleyin. Sürücüdeki önceden düzenlenen klasörlerin ve alt klasörlerin listesi, Data Box Disk sırası yerleştirilirken seçilen seçeneklere bağlı olarak değişir.
 
-    |Seçili depolama hedefi  |Depolama hesabı türü|Hazırlama depolama hesabı türü |Klasörler ve alt klasörleri  |
+    |Seçili depolama hedefi  |Depolama hesabı türü|Hazırlama depolama hesabı türü |Klasörler ve alt klasörler  |
     |---------|---------|---------|------------------|
-    |Depolama hesabı     |GPv1 veya GPv2                 | NA | BlockBlob <br> PageBlob <br> AzureFile        |
-    |Depolama hesabı     |BLOB Depolama hesabı         | NA | BlockBlob        |
+    |Depolama hesabı     |GPv1 veya GPv2                 | NA | Blok Blobu <br> PageBlob <br> AzureFile        |
+    |Depolama hesabı     |BLOB depolama hesabı         | NA | Blok Blobu        |
     |Yönetilen diskler     |NA | GPv1 veya GPv2         | ManagedDisk<ul> <li>PremiumSSD</li><li>StandardSSD</li><li>StandardHDD</li></ul>        |
-    |Depolama hesabı <br> Yönetilen diskler     |GPv1 veya GPv2 | GPv1 veya GPv2         |BlockBlob <br> PageBlob <br> AzureFile <br> ManagedDisk<ul> <li> PremiumSSD </li><li>StandardSSD</li><li>StandardHDD</li></ul>         |
-    |Depolama hesabı <br> Yönetilen diskler    |BLOB Depolama hesabı | GPv1 veya GPv2         |BlockBlob <br> ManagedDisk<ul> <li>PremiumSSD</li><li>StandardSSD</li><li>StandardHDD</li></ul>         |
+    |Depolama hesabı <br> Yönetilen diskler     |GPv1 veya GPv2 | GPv1 veya GPv2         |Blok Blobu <br> PageBlob <br> AzureFile <br> ManagedDisk<ul> <li> PremiumSSD </li><li>StandardSSD</li><li>StandardHDD</li></ul>         |
+    |Depolama hesabı <br> Yönetilen diskler    |BLOB depolama hesabı | GPv1 veya GPv2         |Blok Blobu <br> ManagedDisk<ul> <li>PremiumSSD</li><li>StandardSSD</li><li>StandardHDD</li></ul>         |
 
-    GPv2 depolama hesabına burada belirtilen bir siparişin örnek bir ekran görüntüsü aşağıda gösterilmiştir:
+    Bir GPv2 depolama hesabının belirtildiği bir sıranın örnek ekran görüntüsü aşağıda gösterilmiştir:
 
     ![Disk sürücüsünün içeriği](media/data-box-disk-deploy-copy-data/data-box-disk-content.png)
  
-2. Blok blobları için olarak içeri aktarılması gereken veri kopyalama *BlockBlob* klasör. Benzer şekilde, VHD/VHDX gibi verileri kopyalama *PageBlob* klasör ve içindeki verileri *AzureFile* klasör.
+2. Blok Blobları olarak içeri aktarılması gereken verileri *blockblob* klasörüne kopyalayın. Benzer şekilde, VHD/VHDX gibi verileri *Pageblob* klasörüne ve içindeki verileri de *AzureFile* klasörüne kopyalayın.
 
     BlockBlob ve PageBlob klasörlerinin altındaki her klasör için Azure depolama hesabında bir kapsayıcı oluşturulur. BlockBlob ve PageBlob klasörlerinin altındaki tüm dosyalar Azure Depolama hesabındaki varsayılan `$root` kapsayıcısına kopyalanır. `$root` kapsayıcısındaki tüm dosyalar her zaman blok blobu olarak yüklenir.
 
-   Bir klasördeki dosyaları kopyalayın *AzureFile* klasör. Bir alt klasörü içinde *AzureFile* klasörüne bir dosya paylaşımını oluşturur. Doğrudan kopyalanan dosya *AzureFile* klasör başarısız olur ve bu blok blobları olarak karşıya yüklendi.
+   Dosyaları *AzureFile* klasörü içindeki bir klasöre kopyalayın. *AzureFile* klasöründeki bir alt klasör bir FileShare oluşturur. Doğrudan *AzureFile* klasörüne kopyalanan dosyalar başarısız olur ve blok Blobları olarak karşıya yüklenir.
 
     Kök dizinde dosya ve klasörler varsa veri kopyalama işlemine başlamadan önce bunları farklı bir klasöre taşımanız gerekir.
 
     > [!IMPORTANT]
-    > Tüm kapsayıcıları, blobları ve dosya adları için uyması gereken [Azure adlandırma kurallarına](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions). Bu kurallara uyulmaması halinde veriler Azure'a yüklenemez.
+    > Tüm kapsayıcılar, Bloblar ve dosya adları [Azure adlandırma kurallarına](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions)uymalıdır. Bu kurallara uyulmaması halinde veriler Azure'a yüklenemez.
 
-3. Dosya kopyalarken dosyaları ~4.7 TiB blok blobları, sayfa blobları için ~ 8 TiB ve Azure dosyaları için yaklaşık 1 TiB aşmamasını sağlayın. 
+3. Dosyaları kopyalarken, dosyaların blok Blobları için ~ 4,7 TiB, sayfa Blobları için yaklaşık 8 TiB ve Azure dosyaları için ~ 1 TiB 'yi aşmadığından emin olun. 
 4. Verileri kopyalamak için Veri Gezgini'nde sürükle ve bırak komutlarını kullanabilirsiniz. Verilerinizi kopyalamak için Robocopy gibi SMB uyumlu herhangi bir dosya kopyalama aracını da kullanabilirsiniz. Aşağıdaki Robocopy komutunu kullanarak birden fazla kopyalama işlemini başlatabilirsiniz:
 
     `Robocopy <source> <destination>  * /MT:64 /E /R:1 /W:1 /NFL /NDL /FFT /Log:c:\RobocopyLog.txt` 
@@ -88,16 +90,16 @@ Bilgisayarınızla Data Box Disk arasında bağlantı kurmak ve veri kopyalamak 
     
     |Parametreler/Seçenekler  |Açıklama |
     |--------------------|------------|
-    |source            | Kaynak dizin yolunu belirtir.        |
+    |Source            | Kaynak dizin yolunu belirtir.        |
     |Hedef       | Hedef dizin yolunu belirtir.        |
     |/E                  | Boş dizinler dahil olmak üzere alt dizinleri kopyalar. |
     |/MT[:N]             | N iş parçacığına sahip çoklu iş parçacıklı kopyalama işlemleri oluşturur ve burada N, 1 ile 128 arasında bir tam sayıdır. <br>N için varsayılan değer 8 olarak belirlenmiştir.        |
-    |/ R: \<N &GT;             | Başarısız kopyalama işlemleri için yeniden deneme sayısını belirtir. N için varsayılan değer 1.000.000 (bir milyon yeniden deneme) olarak belirlenmiştir.        |
-    |/ W \<N &GT;             | Yeniden deneme işlemleri arasındaki bekleme süresini saniye cinsinden belirtir. N için varsayılan değer 30 (30 saniyelik bekleme süresi) olarak belirlenmiştir.        |
+    |SAĞ \<N >             | Başarısız kopyalama işlemleri için yeniden deneme sayısını belirtir. N için varsayılan değer 1.000.000 (bir milyon yeniden deneme) olarak belirlenmiştir.        |
+    |ANLATIMI \<N >             | Yeniden deneme işlemleri arasındaki bekleme süresini saniye cinsinden belirtir. N için varsayılan değer 30 (30 saniyelik bekleme süresi) olarak belirlenmiştir.        |
     |/NFL                | Dosya adlarının günlüğü alınmayacağını belirtir.        |
     |/NDL                | Dizin adlarının günlüğü alınmayacağını belirtir.        |
     |/FFT                | FAT dosya sürelerini (iki saniyelik duyarlık) kullanır.        |
-    |/ Log:\<günlük dosyası >     | Durum çıkışını günlük dosyasına yazar (var olan günlük dosyasının üzerine yazar).         |
+    |/Log:\<günlük dosyası >     | Durum çıkışını günlük dosyasına yazar (var olan günlük dosyasının üzerine yazar).         |
 
     Her birinde birden fazla işin çalıştığı birden fazla disk kullanılabilir.
 
@@ -171,24 +173,24 @@ Bilgisayarınızla Data Box Disk arasında bağlantı kurmak ve veri kopyalamak 
 
     |    Platform    |    Çoğunlukla küçük dosyalar, 512 KB altı                           |    Çoğunlukla orta büyüklükteki dosyalar, 512 KB-1 MB arası                      |    Çoğunlukla büyük dosyalar, 1 MB üzeri                             |   
     |----------------|--------------------------------------------------------|--------------------------------------------------------|--------------------------------------------------------|
-    |    Data Box Disk        |    4 Robocopy oturumları * <br> Oturum başına 16 iş parçacığı    |    2 Robocopy oturumları * <br> Oturum başına 16 iş parçacığı    |    2 Robocopy oturumları * <br> Oturum başına 16 iş parçacığı    |
+    |    Data Box Disk        |    4 Robocopy oturumu * <br> Oturum başına 16 iş parçacığı    |    2 Robocopy oturumu * <br> Oturum başına 16 iş parçacığı    |    2 Robocopy oturumu * <br> Oturum başına 16 iş parçacığı    |
     
-    **Her Robocopy oturum 7000 dizinleri ve dosyaları 150 milyon en fazla olabilir.*
+    **Her Robocopy oturumunda en fazla 7.000 dizin ve 150.000.000 dosyası olabilir.*
     
     >[!NOTE]
-    > Yukarıdaki önerilen parametreleri inhouse sınama aşamasında kullanılan ortam temel alır.
+    > Yukarıda önerilen parametreler, Inhouse testinde kullanılan ortama dayalıdır.
     
     Robocopy komutu hakkında daha fazla bilgi için bkz. [Robocopy ve birkaç örnek](https://social.technet.microsoft.com/wiki/contents/articles/1073.robocopy-and-a-few-examples.aspx).
 
-6. Kopyalanan dosyaları görüntülemek ve doğrulamak için hedef klasörü açın. Kopyalama işlemi sırasında hatayla karşılaşırsanız sorun giderme için günlük dosyalarını indirin. Günlük dosyaları robocopy komutunu belirtildiği yer alır.
+6. Kopyalanan dosyaları görüntülemek ve doğrulamak için hedef klasörü açın. Kopyalama işlemi sırasında hatayla karşılaşırsanız sorun giderme için günlük dosyalarını indirin. Günlük dosyaları Robocopy komutunda belirtilen şekilde bulunur.
  
 ### <a name="split-and-copy-data-to-disks"></a>Verileri bölme ve disklere kopyalama
 
 Birden fazla disk kullanıyorsanız ve bölünerek tüm disklere kopyalanması gereken büyük bir veri kümesine sahipseniz bu isteğe bağlı yordamı kullanabilirsiniz. Data Box Split Copy aracı Windows bilgisayarlarda veri bölme ve kopyalama işlemlerini gerçekleştirmenize yardımcı olur.
 
 >[!IMPORTANT]
-> Veri kutusu bölünmüş kopyalama aracı verilerinizi de doğrular. Verileri kopyalamak için veri kutusu bölünmüş kopyalama aracı kullanmanız durumunda atlayabilirsiniz [doğrulama adımını](#validate-data).
-> Bölünmüş kopyalama aracı ile yönetilen diskleri desteklenmiyor.
+> Data Box bölünmüş kopyalama aracı verilerinizi de doğrular. Verileri kopyalamak için Data Box bölünmüş kopyalama aracı kullanırsanız, [doğrulama adımını](#validate-data)atlayabilirsiniz.
+> Bölünmüş kopyalama aracı, yönetilen disklerle desteklenmez.
 
 1. Data Box Split Copy aracını Windows bilgisayarınıza indirip yerel bir klasöre ayıkladığınızdan emin olun. Bu araç Windows için Data Box Disk araç takımıyla birlikte indirilmiştir.
 2. Dosya Gezgini'ni açın. Veri kaynağı sürücüsünü ve Data Box Disk'e atanmış olan sürücü harflerini not edin. 
@@ -204,26 +206,26 @@ Birden fazla disk kullanıyorsanız ve bölünerek tüm disklere kopyalanması g
 
          ![Verileri bölme ve kopyalama](media/data-box-disk-deploy-copy-data/split-copy-3.png)
  
-4. Yazılımı ayıkladığınız klasöre gidin. Bulun `SampleConfig.json` klasördeki bir dosya. Bu değiştirip kaydedebileceğiniz bir salt okunur dosyadır.
+4. Yazılımı ayıkladığınız klasöre gidin. `SampleConfig.json` Dosyayı bu klasörde bulun. Bu değiştirip kaydedebileceğiniz bir salt okunur dosyadır.
 
    ![Verileri bölme ve kopyalama](media/data-box-disk-deploy-copy-data/split-copy-4.png)
  
-5. Değiştirme `SampleConfig.json` dosya.
+5. `SampleConfig.json` Dosyayı değiştirin.
  
    - İş adı girin. Bunu yaptığınızda Data Box Disk'te bir klasör oluşturulur ve aynı ad Azure depolama hesabında bu disklerle ilişkilendirilmiş olan kapsayıcı için de kullanılır. İş adının Azure kapsayıcı adlandırma kurallarına uygun olması gerekir. 
-   - Yol biçiminde Not yaparak kaynak yolunu sağlamanız `SampleConfigFile.json`. 
+   - İçindeki yol biçimini notunun kaynak yolunu sağlayın `SampleConfigFile.json`. 
    - Hedef disklere karşılık gelen sürücü harflerini girin. Veriler kaynak yoldan alınarak birden fazla diske kopyalanır.
-   - Günlük dosyaları için bir yol belirtin. Varsayılan olarak, bunu geçerli dizine gönderilen burada `.exe` bulunur.
+   - Günlük dosyaları için bir yol belirtin. Varsayılan olarak, bulunduğu geçerli dizine `.exe` gönderilir.
 
      ![Verileri bölme ve kopyalama](media/data-box-disk-deploy-copy-data/split-copy-5.png)
 
-6. Dosya biçimi doğrulamak için Git `JSONlint`. Dosyayı Farklı Kaydet `ConfigFile.json`. 
+6. Dosya biçimini doğrulamak için adresine gidin `JSONlint`. Dosyayı farklı `ConfigFile.json`kaydedin. 
 
      ![Verileri bölme ve kopyalama](media/data-box-disk-deploy-copy-data/split-copy-6.png)
  
 7. Bir komut istemi penceresi açın. 
 
-8. Çalıştırma `DataBoxDiskSplitCopy.exe`. Tür
+8. Öğesini çalıştırın `DataBoxDiskSplitCopy.exe`. Type
 
     `DataBoxDiskSplitCopy.exe PrepImport /config:<Your-config-file-name.json>`
 
@@ -239,10 +241,10 @@ Birden fazla disk kullanıyorsanız ve bölünerek tüm disklere kopyalanması g
  
 11. Verilerin hedef disklere bölündüğünü doğrulayın. 
  
-    ![Veri kopyalama bölme](media/data-box-disk-deploy-copy-data/split-copy-10.png)
-    ![bölünmüş veri kopyalama](media/data-box-disk-deploy-copy-data/split-copy-11.png)
+    ![Bölünmüş kopya verileri](media/data-box-disk-deploy-copy-data/split-copy-10.png)
+    ![bölünmüş kopya verileri](media/data-box-disk-deploy-copy-data/split-copy-11.png)
      
-    İçeriğini incelerseniz `n:` daha fazla sürücü, iki alt klasör için blok blobu ve sayfa blobu biçim verilerine karşılık gelen oluşturulduğunu görürsünüz.
+    `n:` Sürücünün içeriğini daha fazla inceleyebilirsiniz, Blok Blobu ve Sayfa Blobu biçim verilerine karşılık gelen iki alt klasör oluşturulduğunu görürsünüz.
     
      ![Verileri bölme ve kopyalama](media/data-box-disk-deploy-copy-data/split-copy-12.png)
 
@@ -250,14 +252,14 @@ Birden fazla disk kullanıyorsanız ve bölünerek tüm disklere kopyalanması g
 
     `DataBoxDiskSplitCopy.exe PrepImport /config:<configFile.json> /ResumeSession`
 
-Nasıl yapılır bölünmüş kopyalama aracını kullanarak hatalar görürseniz, Git [bölünmüş kopyalama aracı hatalarını giderme](data-box-disk-troubleshoot-data-copy.md).
+Bölünmüş kopyalama aracını kullanarak hatalar görürseniz, [bölünmüş kopyalama aracı hatalarıyla ilgili sorunları giderme](data-box-disk-troubleshoot-data-copy.md)bölümüne gidin.
 
-Veri kopyalama işlemi tamamlandıktan sonra verilerinizi doğrulamak için geçebilirsiniz. Bölünmüş kopyalama aracı kullandıysanız, (bölme de aracı doğrulama kopya) doğrulamasını atlayın ve sonraki öğreticiye ilerleyin.
+Veri kopyalama işlemi tamamlandıktan sonra verilerinizi doğrulamaya devam edebilirsiniz. Bölünmüş kopyalama aracını kullandıysanız, doğrulamayı atlayın (bölünmüş kopyalama aracı da doğrular) ve sonraki öğreticiye ilerleyin.
 
 
 ## <a name="validate-data"></a>Verileri doğrulama
 
-Verileri kopyalamak için bölünmüş kopyalama aracı kullanmadıysanız, verilerinizi doğrulamak gerekir. Verileri doğrulamak için aşağıdaki adımları uygulayın.
+Verileri kopyalamak için bölünmüş kopyalama aracını kullanmıyorsanız, verilerinizi doğrulamanız gerekir. Verileri doğrulamak için aşağıdaki adımları uygulayın.
 
 1. Sağlama toplamı doğrulaması için sürücünüzün *DataBoxDiskImport* klasöründe `DataBoxDiskValidation.cmd` komutunu çalıştırın.
     
@@ -269,11 +271,11 @@ Verileri kopyalamak için bölünmüş kopyalama aracı kullanmadıysanız, veri
 
     > [!TIP]
     > - İki çalıştırma arasında aracı sıfırlayın.
-    > - Seçenek 1 küçük dosyaları içeren, büyük bir veri kümesiyle ilgili kullanırsanız (~ KB'leri). Bu seçenek, yalnızca sağlama toplamı oluşturulması çok uzun zaman alabilir ve performansının çok yavaş olabilir dosyaları doğrular.
+    > - Küçük dosyalar (~ KBs) içeren büyük veri kümesiyle uğraşıyorsanız 1 seçeneğini kullanın. Bu seçenek, yalnızca dosyaları doğrular, sağlama toplamı oluşturma çok uzun zaman alabilir ve performans çok yavaş olabilir.
 
 3. Birden çok disk kullanıyorsanız, komutu her disk için çalıştırın.
 
-Doğrulama sırasında hatalar görürseniz, bkz. [doğrulama hatalarını giderme](data-box-disk-troubleshoot.md).
+Doğrulama sırasında hata görürseniz bkz. [doğrulama hatalarını giderme](data-box-disk-troubleshoot.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -287,3 +289,43 @@ Data Box Disk'i iade etme ve Azure'a yüklenen verileri doğrulama adımları ha
 
 > [!div class="nextstepaction"]
 > [Azure Data Box verilerinizi Microsoft'a geri gönderme](./data-box-disk-deploy-picked-up.md)
+
+::: zone-end
+
+::: zone target="chromeless"
+
+## <a name="copy-data-to-disks"></a>Disklere veri kopyalama
+
+Data Box Disk bağlanıp bilgisayarınızdan veri kopyalamak için aşağıdaki adımları uygulayın.
+
+1. Kilidi açılan sürücünün içeriğini görüntüleyin. Sürücüdeki önceden düzenlenen klasörlerin ve alt klasörlerin listesi, Data Box Disk sırası yerleştirilirken seçilen seçeneklere bağlı olarak değişir.
+2. Verileri uygun veri biçimine karşılık gelen klasörlere kopyalayın. Örneğin, yapılandırılmamış verileri *Blok Blobu* klasörü, VHD veya vhdx verileri Için *pageblob* klasörüne ve dosyaları *AzureFile*klasörüne kopyalayın. Veri biçimi uygun klasörle (depolama türü) eşleşmiyorsa, daha sonraki bir adımda Azure 'a yüklenen veriler başarısız olur.
+
+    - BlockBlob ve PageBlob klasörlerinin altındaki her klasör için Azure depolama hesabında bir kapsayıcı oluşturulur. *Blockblob* ve *pageblob* klasörlerinin altındaki tüm dosyalar, Azure depolama hesabı altında $root varsayılan bir kapsayıcıya kopyalanır. 
+    - $Root kapsayıcısındaki tüm dosyalar her zaman blok blob 'ları olarak yüklenir.
+    - Dosyaları *AzureFile* klasörü içindeki bir klasöre kopyalayın. *AzureFile* klasöründeki bir alt klasör bir FileShare oluşturur. Doğrudan *AzureFile* klasörüne kopyalanan dosyalar başarısız olur ve blok Blobları olarak karşıya yüklenir.
+    - Kök dizinde dosya ve klasörler varsa veri kopyalama işlemine başlamadan önce bunları farklı bir klasöre taşımanız gerekir.
+    - Siparişinizin depolama hedeflerinden biri olarak yönetilen diskleri varsa, bkz. [yönetilen diskler](data-box-disk-limits.md#managed-disk-naming-conventions)için adlandırma kuralları.
+
+    > [!IMPORTANT]
+    > Tüm kapsayıcılar, Bloblar ve dosya [Azure adlandırma kurallarına](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions) ve [Azure nesne boyutu sınırlarına](data-box-disk-limits.md#azure-object-size-limits)uymalıdır. Bu kurallara veya sınırlara uyulmazsa, verileri Azure 'a yükleme başarısız olur.
+
+3. Dosya Gezgini ile sürükleyip bırakmayı veya verilerinizi kopyalamak için Robocopy gibi herhangi bir SMB uyumlu dosya kopyalama aracını kullanın. Birden çok kopyalama işi aşağıdaki komut kullanılarak başlatılabilir:
+
+    ```
+    Robocopy <source> <destination>  * /MT:64 /E /R:1 /W:1 /NFL /NDL /FFT /Log:c:\RobocopyLog.txt
+    ```
+4. Kopyalanan dosyaları görüntülemek ve doğrulamak için hedef klasörü açın. Kopyalama işlemi sırasında hatayla karşılaşırsanız sorun giderme için günlük dosyalarını indirin. Günlük dosyaları Robocopy komutunda belirtilen şekilde bulunur.
+
+Birden çok disk kullandığınızda ve tüm disklerde bölünmesi ve kopyalanması gereken büyük bir veri kümesine sahip olduğunuzda, [bölme ve kopyalama](data-box-disk-deploy-copy-data.md#split-and-copy-data-to-disks) için isteğe bağlı prosedürü kullanın.
+
+## <a name="validate-data"></a>Verileri doğrulama
+
+Verilerinizi doğrulamak için aşağıdaki adımları uygulayın.
+
+1. Sağlama toplamı doğrulaması için sürücünüzün *DataBoxDiskImport* klasöründe `DataBoxDiskValidation.cmd` komutunu çalıştırın.
+2. Dosyalarınızı doğrulamak ve sağlama toplamı oluşturmak için 2 seçeneğini kullanın. Bu adım verilerinizin boyutuna bağlı olarak uzun sürebilir. Doğrulama ve sağlama toplamı alma sırasında herhangi bir hata olursa size bildirilir ve hata günlüklerine bir bağlantı sunulur.
+
+    Doğrulama sırasında hata görürseniz bkz. [doğrulama hatalarını giderme](data-box-disk-troubleshoot.md).
+
+::: zone-end

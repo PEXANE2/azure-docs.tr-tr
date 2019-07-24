@@ -3,20 +3,20 @@ title: SDK'sı - konuşma Hizmetleri Konuşma ile uygulama geliştirme
 titleSuffix: Azure Cognitive Services
 description: Konuşma SDK'yı kullanarak uygulamaları oluşturmayı öğrenin.
 services: cognitive-services
-author: wolfma61
+author: jhakulin
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
-ms.author: wolfma
+ms.date: 07/23/2019
+ms.author: jhakulin
 ms.custom: seodec18
-ms.openlocfilehash: 7c698abb133c14f32b60b22acbbccc37a191a02e
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 8fc27002af4ebef0825b23c806cfedbe7adf9642
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604854"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68404817"
 ---
 # <a name="ship-an-application"></a>Bir uygulama teslim edin
 
@@ -28,7 +28,7 @@ Platforma bağlı olarak, uygulamanızı çalıştırmak için farklı bağıml�
 
 Bilişsel hizmetler konuşma SDK'sı, Windows 10 ve Windows Server 2016 üzerinde test edilir.
 
-Bilişsel hizmetler konuşma SDK'sı gerektirir [Microsoft Visual C++ yeniden dağıtılabilir için Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) sistem üzerinde. En son sürümü için yükleyicileri indirebileceğiniz `Microsoft Visual C++ Redistributable for Visual Studio 2019` burada:
+Bilişsel hizmetler konuşma SDK 'Sı, sistemde [Visual C++ Studio 2019 için Microsoft Visual Redistributable](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) gerektirir. En son sürümü için yükleyicileri indirebileceğiniz `Microsoft Visual C++ Redistributable for Visual Studio 2019` burada:
 
 - [Win32](https://aka.ms/vs/16/release/vc_redist.x86.exe)
 - [x64](https://aka.ms/vs/16/release/vc_redist.x64.exe)
@@ -45,29 +45,29 @@ Gerekli dosyaları Speech SDK'sı, uygulamanızın aynı dizinde dağıtılabili
 | `Microsoft.CognitiveServices.Speech.csharp.dll` | Yönetilen dağıtım için gerekli
 
 >[!NOTE]
-> Dosya sürümünden 1.3.0 başlayarak `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` (önceki sürümlerde sevk) artık gerekli değildir. İşlevselliği artık çekirdek SDK'sı tümleşiktir.
+> 1\.3.0 sürümünden itibaren (önceki sürümlerde sunulan `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` ) dosya artık gerekli değildir. İşlevselliği artık çekirdek SDK 'sında tümleşiktir.
 
 >[!NOTE]
-> Windows Forms uygulaması (.NET Framework) için C# proje, kitaplıkları, projenizin dağıtım ayarlarında dahil olduğundan emin olun. İşbu sözleşmenin denetleyebilirsiniz `Properties -> Publish Section`. Tıklayın `Application Files` düğmesi ve karşılık gelen kitaplıklarından listesini aşağı kaydırın bulun. Emin değeri ayarı `Included`. Visual Studio Proje yayımlanan ve dağıtılmış olduğunda dosya içerir.
+> Windows Forms App (.NET Framework) C# projesi için, kitaplıkların projenizin dağıtım ayarlarına eklendiğinden emin olun. Bunu altında `Properties -> Publish Section`kontrol edebilirsiniz. `Application Files` Düğmeye tıklayın ve aşağı kaydırma listesinden ilgili kitaplıkları bulun. Değerin olarak `Included`ayarlandığından emin olun. Proje yayımlandığında/dağıtıldığında, Visual Studio dosyayı içerecektir.
 
 ## <a name="linux"></a>Linux
 
-Speech SDK'sı şu anda Ubuntu 16.04, Ubuntu 18.04 ve Debian 9 dağıtımlarını destekler.
+Konuşma SDK 'Sı Şu anda Ubuntu 16,04, Ubuntu 18,04 ve demı 9 dağıtımlarını desteklemektedir.
 Yerel bir uygulama için Speech SDK'sı kitaplığı göndermeye gerek `libMicrosoft.CognitiveServices.Speech.core.so`.
 Uygulamanızı eşleşen sürümünü (x86, x64) seçtiğinizden emin olun. Linux sürümüne göre aşağıdaki bağımlılıkları içerecek şekilde gerekebilir:
 
 * GNU C Kitaplığı'nın paylaşılan kitaplıklar (iş parçacıkları POSIX programlama kitaplığı dahil olmak üzere `libpthreads`)
-* OpenSSL kitaplığını (`libssl.so.1.0.0` veya `libssl.so.1.0.2`)
+* OpenSSL kitaplığı (`libssl.so.1.0.0` veya `libssl.so.1.0.2`)
 * ALSA uygulamalar için paylaşılan kitaplığı (`libasound.so.2`)
 
-Ubuntu'da GNU C kitaplıklarını zaten varsayılan olarak yüklü olması gerekir. Son üç şu komutları kullanarak yüklenebilir:
+Ubuntu 'da, GNU C kitaplıklarının varsayılan olarak zaten yüklü olması gerekir. Son üç şu komutları kullanarak yüklenebilir:
 
 ```sh
 sudo apt-get update
 sudo apt-get install libssl1.0.0 libasound2
 ```
 
-Debian 9'da bu paketleri yükleyin:
+DEYON 9 ' da şu paketleri yükler:
 
 ```sh
 sudo apt-get update

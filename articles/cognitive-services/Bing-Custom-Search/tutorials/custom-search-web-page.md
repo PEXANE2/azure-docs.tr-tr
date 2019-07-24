@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Bir özel arama web sayfası - Bing özel arama oluştur'
-titlesuffix: Azure Cognitive Services
+title: 'Öğretici: Özel arama Web sayfası oluşturma-Bing Özel Arama'
+titleSuffix: Azure Cognitive Services
 description: Özel arama örneği yapılandırma ve bunu bir web sayfasıyla tümleştirme adımları açıklanmaktadır.
 services: cognitive-services
 author: aahill
@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 0870983fe9f0ae64090652f02c526a370064b8ab
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 3a8d6a831adf24212191a103dcf356bbe74d7962
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595898"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405221"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Öğretici: Özel Arama web sayfası derleme
 
@@ -35,7 +35,7 @@ Ele alınan görevler şunlardır:
 ## <a name="prerequisites"></a>Önkoşullar
 
 - Öğreticiyi takip edebilmek için Bing Özel Arama API'si için bir abonelik anahtarına ihtiyacınız olacaktır.  Anahtar almak için bkz. [Bilişsel Hizmetleri Deneme](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search).
-- Visual Studio 2017 zaten yoksa veya sonraki bir sürümü yüklüyse, indirip kullanabilirsiniz **ücretsiz** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/).
+- Visual Studio 2017 veya sonraki bir sürümü yüklü değilse, **ücretsiz** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)' ı indirip kullanabilirsiniz.
 
 ## <a name="create-a-custom-search-instance"></a>Özel arama örneği oluşturma
 
@@ -45,7 +45,7 @@ Bing Özel Arama örneği oluşturmak için:
   
 2. Özel arama [portalına](https://customsearch.ai) gidin.  
   
-3. Bir Microsoft hesabı (MSA) kullanarak portalda oturum açın. Hesabınız yoksa **Microsoft hesabı oluşturun**'a tıklayın. Portalı ilk kez kullanıyorsanız verilerinize erişim izni istenir. **Evet**'e tıklayın.  
+3. Bir Microsoft hesabı (MSA) kullanarak portalda oturum açın. Hesabınız yoksa **Microsoft hesabı oluşturun**'a tıklayın. Portalı ilk kez kullanıyorsanız verilerinize erişim izni istenir. Yordamı tamamlamak için **Evet**yüklemesini desteklemesi gerekir.  
   
 4. Oturum açtıktan sonra **Yeni özel arama**'ya tıklayın. **Yeni özel arama örneği oluştur** penceresinde kolay anlaşılır ve arama tarafından döndürülen içeriğin türüne uygun bir ad girin. Adı dilediğiniz zaman değiştirebilirsiniz.  
   
@@ -127,10 +127,10 @@ Belirli bir web sayfasını arama sonuçlarının en üstüne sabitlemek için i
 
 Barındırılan kullanıcı arabirimini kullanmanın iki yolu vardır.  
 
-- 1. seçenek: Sağlanan JavaScript kod parçacığını uygulamanızla tümleştirin.
-- 2. seçenek: Sağlanan uç nokta HTML kullanın.
+- Seçenek 1: Sağlanmış JavaScript kod parçacığını uygulamanızla tümleştirin.
+- Seçenek 2: Belirtilen HTML uç noktasını kullanın.
 
-Bu öğreticinin geri kalanında gösterir **1. seçenek: JavaScript kod parçacığını**.  
+Bu öğreticinin geri kalanında 1 **seçeneği gösterilmektedir: JavaScript kod**parçacığı.  
 
 ## <a name="set-up-your-visual-studio-solution"></a>Visual Studio çözümünüzü kurma
 

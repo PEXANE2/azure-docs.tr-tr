@@ -1,31 +1,31 @@
 ---
-title: 'Hızlı Başlangıç: Konuşma tanıma C# (UWP) - konuşma Hizmetleri'
+title: 'Hızlı Başlangıç: Konuşmayı tanıma, C# (UWP)-konuşma Hizmetleri'
 titleSuffix: Azure Cognitive Services
 description: Bu makalede, oluşturduğunuz bir C# Bilişsel hizmetler konuşma SDK'sı kullanarak evrensel Windows Platformu (UWP) uygulama. Cihazınızın mikrofonundan gerçek zamanda konuşmayı metne dönüştüreceksiniz. Uygulama, konuşma SDK'sı NuGet paketi ve Microsoft Visual Studio 2017 ile oluşturulmuştur.
 services: cognitive-services
-author: wolfma61
+author: lisaweixu
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 07/05/2019
-ms.author: wolfma
+ms.date: 07/23/2019
+ms.author: lisaweixu
 ms.custom: seodec18
-ms.openlocfilehash: 30a12c504071cd178ed3e7563f9d7d967d8ba36d
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 25b3474e33351d6365af37d78f442768aba88625
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606401"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405920"
 ---
-# <a name="quickstart-recognize-speech-in-a-uwp-app-by-using-the-speech-sdk"></a>Hızlı Başlangıç: Speech SDK'sı kullanarak bir UWP uygulamasında konuşma tanıma
+# <a name="quickstart-recognize-speech-in-a-uwp-app-by-using-the-speech-sdk"></a>Hızlı Başlangıç: Konuşma SDK 'sını kullanarak UWP uygulamasındaki konuşmayı tanıma
 
-Hızlı Başlangıçlar ücret karşılığında ayrıca [metin okuma](quickstart-text-to-speech-csharp-uwp.md), [konuşma çevirisi](quickstart-translate-speech-uwp.md) ve [ses öncelikli sanal asistan](quickstart-virtual-assistant-csharp-uwp.md).
+Hızlı başlangıç, [metinden konuşmaya](quickstart-text-to-speech-csharp-uwp.md), [konuşma çevirisi](quickstart-translate-speech-uwp.md) ve [ses-ilk Sanal Yardımcısı](quickstart-virtual-assistant-csharp-uwp.md)için de kullanılabilir.
 
-İsterseniz, farklı programlama dili ve/veya ortamı seçin:<br/>
+İsterseniz, farklı bir programlama dili ve/veya ortamı seçin:<br/>
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-Bu makalede, geliştirdiğiniz bir C# Evrensel Windows Platformu (UWP; Windows sürüm 1709 daha sonra) uygulama Bilişsel hizmetler kullanarak [Speech SDK'sı](speech-sdk.md). Program, cihazınızın mikrofondan gerçek zamanlı olarak metne konuşma tanıma özelliği. Uygulama [Konuşma SDK'sı NuGet Paketi](https://aka.ms/csspeech/nuget) ve Microsoft Visual Studio 2017 (herhangi bir sürüm) ile geliştirilmiştir.
+Bu makalede bir C# Evrensel Windows platformu geliştirirsiniz (UWP; Bilişsel Hizmetler [konuşma SDK 'sını](speech-sdk.md)kullanarak Windows sürüm 1709 sonrası) uygulaması. Program, cihazınızın mikrofonunuzdan gerçek zamanlı olarak konuşmayı metne dönüştürme. Uygulama [Konuşma SDK'sı NuGet Paketi](https://aka.ms/csspeech/nuget) ve Microsoft Visual Studio 2017 (herhangi bir sürüm) ile geliştirilmiştir.
 
 > [!NOTE]
 > Evrensel Windows Platformu; PC, Xbox, Surface Hub ve diğer cihazlar dahil olmak üzere Windows 10 destekleyen tüm cihazlarda çalışan uygulamalar geliştirmenize olanak tanır.
@@ -35,7 +35,7 @@ Bu makalede, geliştirdiğiniz bir C# Evrensel Windows Platformu (UWP; Windows s
 Bu hızlı başlangıç şunları gerektirir:
 
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
-* Konuşma hizmeti için bir Azure aboneliği anahtarı. [Ücretsiz edinin](get-started.md).
+* Konuşma hizmeti için bir Azure abonelik anahtarı. [Ücretsiz bir tane alın](get-started.md).
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio projesi oluşturma
 
@@ -71,14 +71,14 @@ Bu hızlı başlangıç şunları gerektirir:
 
     ![İzin isteğinin ekran görüntüsü](media/sdk/qs-csharp-uwp-10-access-prompt.png "Uygulamayı hata ayıklamada başlat")
 
-1. **Mikrofon girdisi ile konuşma tanıma**’yı seçin ve cihazınızın mikrofonuna İngilizce bir deyim ya da cümle söyleyin. Konuşma konuşma hizmetlere iletilen ve transcribed pencerede görünen metin.
+1. **Mikrofon girdisi ile konuşma tanıma**’yı seçin ve cihazınızın mikrofonuna İngilizce bir deyim ya da cümle söyleyin. Konuşma, konuşma hizmetlerine iletilir ve pencerede görüntülenen metne gönderilir.
 
     ![Konuşma tanıma kullanıcı arabiriminin ekran görüntüsü](media/sdk/qs-csharp-uwp-11-ui-result.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Keşfedin C# github'da örnekleri](https://aka.ms/csspeech/samples)
+> [GitHub C# 'daki örnekleri keşfet](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

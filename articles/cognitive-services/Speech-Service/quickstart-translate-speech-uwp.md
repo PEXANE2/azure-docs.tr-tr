@@ -1,39 +1,38 @@
 ---
-title: 'Hızlı Başlangıç: Konuşma tanıma, çeviri C# (UWP) - konuşma Hizmetleri'
+title: 'Hızlı Başlangıç: Konuşmayı çevir, C# (UWP)-konuşma Hizmetleri'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, komut satırına metin çıktısı kullanıcı konuşma yakalamak ve başka bir dile çevirmek için basit bir evrensel Windows Platformu (UWP) uygulaması oluşturacaksınız. Bu kılavuz, Windows kullanıcıları için tasarlanmıştır.
+description: Bu hızlı başlangıçta, Kullanıcı konuşmayı yakalamak, başka bir dile çevirmek ve metni komut satırına çıkarmak için basit bir Evrensel Windows Platformu (UWP) uygulaması oluşturacaksınız. Bu kılavuz Windows kullanıcıları için tasarlanmıştır.
 services: cognitive-services
-author: wolfma61
+author: lisaweixu
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
-ms.date: 07/05/2019
+ms.date: 07/23/2019
 ms.author: erhopf
-ms.openlocfilehash: 108edfeb7bfe24184219e0011f054c36c22c9890
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: dafcbd6bbe7f542d4eabc6b7cf858ac4871caae8
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602777"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68404895"
 ---
-# <a name="quickstart-translate-speech-with-the-speech-sdk-for-c-uwp"></a>Hızlı Başlangıç: Konuşma Speech SDK'sı ile çevir C# (UWP)
+# <a name="quickstart-translate-speech-with-the-speech-sdk-for-c-uwp"></a>Hızlı Başlangıç: Konuşmayı konuşma SDK 'Sı C# (UWP) ile çevirin
 
-Hızlı Başlangıçlar ücret karşılığında ayrıca [konuşma metin](quickstart-csharp-uwp.md), [metin okuma](quickstart-text-to-speech-csharp-uwp.md) ve [ses öncelikli sanal asistan](quickstart-virtual-assistant-csharp-uwp.md).
+Hızlı başlangıç, [konuşmadan metne](quickstart-csharp-uwp.md), [metinden konuşmaya](quickstart-text-to-speech-csharp-uwp.md) ve [ses-ilk Sanal Yardımcısı](quickstart-virtual-assistant-csharp-uwp.md)için de kullanılabilir.
 
-Bu hızlı başlangıçta, bilgisayarınızın mikrofondan gelen kullanıcı konuşma yakalar, konuşma çevirir ve gerçek zamanlı olarak komut satırında çevrilmiş metne dönüştürür basit bir evrensel Windows Platformu (UWP) uygulaması oluşturacaksınız. Bu uygulama, 64 bit Windows üzerinde çalışacak şekilde tasarlanmıştır ve ile oluşturulmuş [konuşma SDK'sı NuGet paketi](https://aka.ms/csspeech/nuget) ve Microsoft Visual Studio 2017.
+Bu hızlı başlangıçta, bilgisayarınızın mikrofonunuzdan Kullanıcı konuşmayı yakalayan, konuşmayı çeviren ve çevrilmiş metni gerçek zamanlı olarak komut satırına seçtiğiniz basit bir Evrensel Windows Platformu (UWP) uygulaması oluşturacaksınız. Bu uygulama, 64 bit Windows üzerinde çalışmak üzere tasarlanmıştır ve [konuşma SDK 'Sı NuGet paketi](https://aka.ms/csspeech/nuget) ve Microsoft Visual Studio 2017 ile oluşturulmuştur.
 
-Konuşma çevirisi için kullanılabilen dilleri tam bir listesi için bkz. [dil desteği](language-support.md).
+Konuşma çevirisi için kullanılabilen dillerin tüm listesi için bkz. [dil desteği](language-support.md).
 
 > [!NOTE]
-> UWP, Windows 10 bilgisayarları, Xbox, Surface Hub ve diğer cihazları dahil olmak üzere, destekleyen herhangi bir cihaz üzerinde çalışan uygulamalar geliştirmenize olanak tanır.
+> UWP, bilgisayarlar, Xbox, Surface Hub ve diğer cihazlar dahil olmak üzere Windows 10 ' u destekleyen herhangi bir cihazda çalışan uygulamalar geliştirmenize olanak sağlar.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıç şunları gerektirir:
 
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
-* Konuşma hizmeti için bir Azure aboneliği anahtarı. [Ücretsiz edinin](get-started.md).
+* Konuşma hizmeti için bir Azure abonelik anahtarı. [Ücretsiz bir tane alın](get-started.md).
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio projesi oluşturma
 
@@ -41,7 +40,7 @@ Bu hızlı başlangıç şunları gerektirir:
 
 ## <a name="add-sample-code"></a>Örnek kodu ekleme
 
-1. Uygulamanın kullanıcı arabirimini XAML kullanılarak tanımlanır. `MainPage.xaml` dosyasını Çözüm Gezgini'nde açın. Tasarımcının XAML görünümünde arasında aşağıdaki XAML kod parçacığı Ekle `<Grid>` ve `</Grid>`.
+1. Uygulamanın kullanıcı arabirimini XAML kullanılarak tanımlanır. `MainPage.xaml` dosyasını Çözüm Gezgini'nde açın. Tasarımcı xaml görünümünde, ve `<Grid>` `</Grid>`arasında aşağıdaki xaml kod parçacığını ekleyin.
 
     [!code-xml[UI elements](~/samples-cognitive-services-speech-sdk/quickstart/speech-translation/csharp-uwp/helloworld/MainPage.xaml#StackPanel)]
 
@@ -76,7 +75,7 @@ Bu hızlı başlangıç şunları gerektirir:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Keşfedin C# github'da örnekleri](https://aka.ms/csspeech/samples)
+> [GitHub C# 'daki örnekleri keşfet](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

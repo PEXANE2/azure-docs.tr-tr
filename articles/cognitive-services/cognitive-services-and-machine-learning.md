@@ -7,14 +7,14 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 07/18/2019
+ms.date: 07/23/2019
 ms.author: diberry
-ms.openlocfilehash: c99e5f9b810499dd67be55d137a2e451a59be0b6
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 15faacccfa1e0f7dd759f719c02e106918d735bb
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68386654"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68414696"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Bilişsel hizmetler ve makine öğrenimi
 
@@ -54,7 +54,7 @@ Bilişsel hizmet, bir makine öğrenimi çözümünde bileşenlerin bir kısmın
 
 ## <a name="how-are-cognitive-services-and-azure-machine-learning-aml-similar"></a>Bilişsel hizmetler ve Azure Machine Learning (AML) nasıl benzerdir?
 
-Her ikisi de iş işlemlerini geliştirmek üzere yapay zeka (AI) uygulamanın son hedefine sahiptir, ancak bu, ilgili tekliflerde bunu sağlar. 
+Her ikisi de iş işlemlerini geliştirmek üzere yapay zeka (AI) uygulamanın son hedefine sahiptir, ancak her birinin ilgili tekliflerde bunu sağladığı her bir farklılık farklıdır. 
 
 Genellikle, izleyiciler farklıdır:
 
@@ -117,6 +117,10 @@ Aşağıdaki veriler her hizmeti, izin verdiği veya gerektirdiği veri türüne
  
 Hizmetler, REST API veya SDK çağrısı yapan tüm uygulamalar için kullanılır. Uygulama örnekleri arasında Web siteleri, botlar, sanal veya karma gerçeklik, masaüstü ve mobil uygulamalar sayılabilir. 
 
+## <a name="how-is-cognitive-search-related-to-cognitive-services"></a>Bilişsel hizmetler ile ilgili bilişsel arama nasıl?
+
+[Azure Search](../search/search-what-is-azure-search.md) , bu özelliği sağlamak için bilişsel hizmetler kullanır. Bilişsel hizmetler, tek tek API 'Leri çevreleyecek [yerleşik yetenekler](../search/cognitive-search-predefined-skills.md) aracılığıyla Azure Search kullanıma sunulur. İzlenecek yollar için ücretsiz bir kaynak kullanabilirsiniz, ancak daha büyük birimler için [faturalanabilir bir kaynak](../search/cognitive-search-attach-cognitive-services.md) oluşturma ve ekleme planlaması gerçekleştirebilirsiniz.
+
 ## <a name="how-can-you-use-cognitive-services"></a>Bilişsel hizmetleri nasıl kullanabilirsiniz?
 
 Her hizmet, verileriniz hakkında bilgi sağlar. Konuşmayı (ses) metne dönüştürme, metni birçok dile çevirme ve ardından bir bilgi tabanından yanıt almak için çevrilmiş dilleri kullanma gibi çözümleri zincirlemek üzere Hizmetleri birlikte birleştirebilirsiniz. Bilişsel hizmetler, kendi kendilerine akıllı çözümler oluşturmak için kullanılabilir olsa da, modelleri desteklemek veya geliştirme sürecini hızlandırmak için geleneksel makine öğrenimi projeleriyle de birleştirilebilir. 
@@ -125,7 +129,7 @@ Diğer makine öğrenimi araçları için aktarılmış modeller sağlayan bili�
 
 |Bilişsel Hizmet|Model bilgileri|
 |--|--|
-|Özel Görüntü İşleme|Android için TensorFlow için dışarı aktarma, iOS11 için CoreML, Windows ML için ONNX|
+|[Özel Görüntü İşleme](./custom-vision-service/home.md)|Android için TensorFlow için [dışarı aktarma](./Custom-Vision-Service/export-model-python.md) , IOS11 Için Coreml, Windows ml IÇIN onnx|
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
