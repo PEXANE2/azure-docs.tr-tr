@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: c20f86fe7fdcfc7ecc940923a8c98fa1fbf4cf65
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: a2994602f857c2c8ff9f935b649a8d3e94c10dca
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67188147"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444098"
 ---
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -21,4 +21,5 @@ Cloud Shell kullanmıyorsanız önce `az login` kullanarak oturum açın.
 ```azurecli-interactive
 az group create --name myResourceGroup --location westeurope
 ```
-Genellikle kaynak grubunuzu ve kaynakları kendinize yakın bir bölgede oluşturursunuz. App Service planları için desteklenen tüm konumları görüntülemek için [az appservice list-locations](/cli/azure/appservice#az-appservice-list-locations) komutunu çalıştırın.
+
+Genellikle kaynak grubunuzu ve kaynaklarınızı size yakın bir [bölgede](https://azure.microsoft.com/global-infrastructure/regions/) oluşturursunuz. 

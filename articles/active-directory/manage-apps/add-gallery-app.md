@@ -1,0 +1,108 @@
+---
+title: Galeri uygulaması ekleme-Azure Active Directory | Microsoft Docs
+description: Azure AD galerisinden Azure Kurumsal uygulamalarınıza uygulama eklemeyi öğrenin.
+services: active-directory
+author: msmimart
+manager: CelesteDG
+ms.service: active-directory
+ms.subservice: app-mgmt
+ms.topic: tutorial
+ms.workload: identity
+ms.date: 06/18/2019
+ms.author: mimart
+ms.reviewer: arvinh,luleon
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: efe9ac4580afc066c3addfd6e19004d0562284c4
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68425954"
+---
+# <a name="add-a-gallery-app-to-your-azure-ad-organization"></a>Azure AD kuruluşunuza Galeri uygulaması ekleme
+
+Azure Active Directory (Azure AD), Kurumsal Çoklu oturum açma ile etkinleştirilen binlerce önceden tümleştirilmiş uygulamayı içeren bir galersahiptir. Bu makalede, Galeriden Azure AD kuruluşunuza bir uygulama eklemeye yönelik genel adımlar açıklanmaktadır.
+
+> [!IMPORTANT]
+> İlk olarak, [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesinden](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/)uygulamanızı kontrol edin. Büyük olasılıkla eklemek istediğiniz Galeri uygulamasını eklemek ve yapılandırmak için adım adım yönergeler bulacaksınız.
+
+## <a name="add-a-gallery-application"></a>Galeri uygulaması ekleme
+
+1. [Azure portalda](https://portal.azure.com) Azure AD kiracınızın genel yönetici, bulut uygulaması yöneticisi veya uygulama yöneticisi hesabıyla oturum açın.
+
+1. [Azure Portal](https://portal.azure.com)sol gezinti panelinde **Azure Active Directory**' i seçin.
+
+1. **Azure Active Directory** bölmesinde **Kurumsal uygulamalar**' ı seçin.
+
+    ![Kurumsal uygulamaları açın](media/add-application-portal/open-enterprise-apps.png)
+
+1. **Yeni uygulama**’yı seçin.
+
+    ![Yeni uygulama](media/add-application-portal/new-application.png)
+
+1. **Galeriden Ekle**' nin altında, ara kutusuna eklemek istediğiniz uygulamanın adını girin. 
+
+    ![Ada veya kategoriye göre arama](media/add-application-portal/categories.png)
+
+1. Sonuçlardan uygulamayı seçin.
+
+1. Seçim Uygulamaya özgü formunda, kuruluşunuzun gereksinimlerini karşılayacak şekilde uygulamanın adını düzenleyebilirsiniz.
+
+1. **Add (Ekle)** seçeneğini belirleyin. Uygulamaya **genel bakış** sayfası açılır.
+
+## <a name="configure-user-sign-in-properties"></a>Kullanıcı oturum açma özelliklerini yapılandırma
+
+1. Özellikler bölmesini düzenlenmek üzere açmak için **Özellikler** ' i seçin.
+
+    ![Özellikler bölmesini Düzenle](media/add-application-portal/edit-properties.png)
+
+1. Uygulamanın atandığı veya atanmamış olduğu kullanıcıların uygulamada oturum açıp görebilmesine ve bir kullanıcının erişim panelinde uygulamayı görebilmesi için aşağıdaki seçenekleri ayarlayın.
+
+    - **Kullanıcıların oturum açması için etkinleştirildi**, uygulamaya atanan kullanıcıların oturum açıp açamayacağını belirler.
+    - **Gerekli Kullanıcı Ataması** , uygulamaya atanmamış kullanıcıların oturum açıp açamayacağını belirler.
+    - **Kullanıcıya görünür**, uygulamaya atanan kullanıcıların uygulamayı erişim panelinde ve O365 başlatıcısında görüp göremeyeceğini belirler.
+
+      **Atanan** kullanıcılar için davranış:
+
+       | Uygulama özelliği ayarları | | | Atanan kullanıcı deneyimi | |
+       |---|---|---|---|---|
+       | Kullanıcıların oturum açması için etkinleştirildi mi? | Kullanıcı ataması gerekli mi? | Kullanıcılara görünür mü? | Atanan kullanıcılar oturum açabilir mi? | Atanan kullanıcılar uygulamayı görebilir mi?* |
+       | evet | evet | evet | evet | evet  |
+       | evet | evet | hayır  | evet | hayır   |
+       | evet | hayır  | evet | evet | evet  |
+       | evet | hayır  | hayır  | evet | hayır   |
+       | hayır  | evet | evet | hayır  | hayır   |
+       | hayır  | evet | hayır  | hayır  | hayır   |
+       | hayır  | hayır  | evet | hayır  | hayır   |
+       | hayır  | hayır  | hayır  | hayır  | hayır   |
+
+      **Atanmayan** kullanıcılar için davranış:
+
+       | Uygulama özelliği ayarları | | | Atanmayan kullanıcı deneyimi | |
+       |---|---|---|---|---|
+       | Kullanıcıların oturum açması için etkinleştirildi mi? | Kullanıcı ataması gerekli mi? | Kullanıcılara görünür mü? | Atanmayan kullanıcılar oturum açabilir mi? | Atanmayan kullanıcılar uygulamayı görebilir mi?* |
+       | evet | evet | evet | hayır  | hayır   |
+       | evet | evet | hayır  | hayır  | hayır   |
+       | evet | hayır  | evet | evet | hayır   |
+       | evet | hayır  | hayır  | evet | hayır   |
+       | hayır  | evet | evet | hayır  | hayır   |
+       | hayır  | evet | hayır  | hayır  | hayır   |
+       | hayır  | hayır  | evet | hayır  | hayır   |
+       | hayır  | hayır  | hayır  | hayır  | hayır   |
+
+     *Kullanıcı uygulamayı erişim panelinde ve Office 365 uygulama başlatıcıda görebilir mi?
+
+1. Özel bir logo kullanmak için 215 piksel 215 ile arasında bir logo oluşturun ve bunu PNG biçiminde kaydedin. Ardından logonuzu inceleyin ve karşıya yükleyin.
+
+    ![Logoyu değiştirme](media/add-application-portal/change-logo.png)
+
+1. İşiniz bittiğinde **Kaydet**' i seçin.
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Artık uygulamayı Azure AD kuruluşunuza eklemişseniz, kullanmak istediğiniz [tek bir oturum açma yöntemi seçin](what-is-single-sign-on.md#choosing-a-single-sign-on-method) ve aşağıdaki ilgili makaleye başvurun:
+
+- [SAML tabanlı çoklu oturum açmayı yapılandırma](configure-single-sign-on-portal.md)
+- [Parola çoklu oturum açmayı yapılandırma](configure-password-single-sign-on-non-gallery-applications.md)
+- [Bağlantılı oturum açmayı Yapılandır](configure-linked-sign-on.md)
+

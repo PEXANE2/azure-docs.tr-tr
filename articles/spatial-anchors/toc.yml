@@ -5,6 +5,7 @@
     - name: Spatial Anchors hakkında
       href: overview.md
 - name: Hızlı Başlangıçlar
+  expanded: true
   items:
     - name: Unity uygulaması oluşturma
       href: unity-overview.yml

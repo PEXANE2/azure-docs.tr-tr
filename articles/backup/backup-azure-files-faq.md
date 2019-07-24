@@ -1,19 +1,18 @@
 ---
 title: Azure Dosyalarını yedekleme hakkında SSS
 description: Bu makalede, Azure dosya paylaşımlarınızın nasıl korunacağına ilişkin ayrıntılar sağlanır.
-services: backup
 author: dcurwin
 ms.author: dacurwin
 ms.date: 01/31/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 868f965c42649119207560aa5027ba6375c73a6f
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: e3f94badb3af2e3f26a857f27f0b68a78338db92
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333661"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466303"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Azure Dosyalarını yedekleme ile ilgili sorular
 Bu makale, Azure Dosyalarını yedekleme hakkındaki yaygın sorulara yanıtlar sunar. Bazı yanıtlarda, kapsamlı bilgiler içeren makalelerin bağlantıları vardır. Ayrıca Azure Backup hizmeti ile ilgili sorularınızı [tartışma forumunda](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup) paylaşabilirsiniz.
@@ -76,7 +75,7 @@ Yukarıda belirtilmeyen bir bölgede kullanmanız gerekiyorsa [AskAzureBackupTea
 ### <a name="can-i-protect-two-different-file-shares-from-the-same-storage-account-to-different-vaults"></a>Aynı Depolama Hesabından, farklı Kasalara iki farklı dosya paylaşımını koruyabilir miyim?
 Hayır. Depolama Hesabındaki tüm dosya paylaşımları, aynı Kasa tarafından korunabilir.
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>Yedekle
 
 ### <a name="how-many-on-demand-backups-can-i-take-per-file-share-br"></a>Dosya paylaşımı başına kaç tane İsteğe Bağlı yedekleme alabilirim? <br/>
 Zamanın herhangi bir noktasında dosya paylaşımı için en fazla 200 Anlık Görüntüye sahip olabilirsiniz. Sınır, ilkenizde tanımlandığı şekilde, Azure Backup tarafından alınan anlık görüntüleri içerir. Sınıra ulaştıktan sonra yedekleriniz başarısız olmaya başlarsa, daha sonraki yedeklemelerin başarılı olması için İsteğe Bağlı geri yükleme noktalarını silin.
@@ -84,7 +83,7 @@ Zamanın herhangi bir noktasında dosya paylaşımı için en fazla 200 Anlık G
 ### <a name="after-enabling-virtual-networks-on-my-storage-account-the-backup-of-file-shares-in-the-account-started-failing-why"></a>Depolama Hesabımda Sanal Ağlar etkinleştirildikten sonra, hesaptaki dosya paylaşımlarının Yedeklemesi başarısız olmaya başladı. Neden?
 Azure dosya paylaşımları için Yedekleme, Sanal Ağların etkin olduğu Depolama Hesaplarını desteklemez. Başarılı bir yedekleme işlemleri için Depolama Hesaplarında Sanal Ağları devre dışı bırakın.
 
-## <a name="restore"></a>Geri Yükleme
+## <a name="restore"></a>Geri yükle
 
 ### <a name="can-i-recover-from-a-deleted-azure-file-share-br"></a>Silinen bir Azure dosya paylaşımından kurtarma gerçekleştirebilir miyim? <br/>
 Bir Azure dosya paylaşımı silindiğinde, size silinecek yedeklemelerin listesi gösterilir ve onay beklenir. Silinen Azure dosya paylaşımı geri yüklenemez.

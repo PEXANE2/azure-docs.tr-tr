@@ -1,7 +1,7 @@
 ---
 title: Bing Yazım Denetimi API’sine istek gönderme
-titlesuffix: Azure Cognitive Services
-description: Bing yazım denetimi modları, ayarları ve API için ilgili diğer bilgileri hakkında bilgi edinin.
+titleSuffix: Azure Cognitive Services
+description: Bing Yazım Denetimi modları, ayarları ve API ile ilgili diğer bilgiler hakkında bilgi edinin.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: overview
 ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: 2b33c27e7af603c73bf7b7c6188bd9aef5ebc669
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: ef5d812b1e55713f30928582d9aa9e61bba7c7a6
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67542711"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423533"
 ---
 # <a name="sending-requests-to-the-bing-spell-check-api"></a>Bing Yazım Denetimi API’sine istek gönderme
 
@@ -27,11 +27,11 @@ https://api.cognitive.microsoft.com/bing/v7.0/spellcheck
   
 İstek, HTTPS protokolünü kullanmalıdır.
 
-Tüm isteklerin bir sunucudan gönderilmesini öneririz. Anahtarı bir istemci uygulamanın parçası olarak dağıtmak, kötü amaçlı bir üçüncü tarafa anahtara erişmek için daha fazla fırsat sunar. Sunucu, tek bir yükseltme noktası API'ın gelecek sürümleri için de sağlar.
+Tüm isteklerin bir sunucudan gönderilmesini öneririz. Anahtarı bir istemci uygulamanın parçası olarak dağıtmak, kötü amaçlı bir üçüncü tarafa anahtara erişmek için daha fazla fırsat sunar. Sunucu Ayrıca API 'nin gelecekteki sürümleri için tek bir yükseltme noktası sağlar.
 
 İstek denetlenecek metin dizesini içeren [text](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#text) sorgu parametresini belirtmelidir. Tercihe bağlı olmakla birlikte, istek, sonuçların gelmesini istediğiniz pazarı tanımlayan [mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#mkt) sorgu parametresini de belirtmelidir. `mode` gibi isteğe bağlı sorgu parametrelerinin bir listesi için bkz. [Sorgu Parametreleri](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#query-parameters). Tüm sorgu parametre değerleri URL olarak kodlanmış olmalıdır.  
   
-İstek [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#subscriptionkey) üstbilgisini belirtmelidir. İsteğe bağlı olsa da, aşağıdaki üst bilgileri de belirtmeniz önerilir. Bu üst bilgiler, Bing yazım denetimi API'si daha doğru sonuçlar yardımcı olur:  
+İstek [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#subscriptionkey) üstbilgisini belirtmelidir. İsteğe bağlı olmakla birlikte, aşağıdaki üst bilgileri de belirtmeniz önerilir. Bu üst bilgiler Bing Yazım Denetimi API'si daha doğru sonuçlar döndürmesini yardımcı olur:  
   
 -   [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#useragent)  
 -   [X-MSEdge-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#clientid)  
@@ -40,15 +40,15 @@ Tüm isteklerin bir sunucudan gönderilmesini öneririz. Anahtarı bir istemci u
 
 Tüm istek ve yanıt üstbilgilerinin bir listesi için bkz. [Üst Bilgiler](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#headers).
 
-Bing yazım denetimi kullanarak JavaScript API'si çağrılırken, tarayıcınızın yerleşik güvenlik özellikleri bu üstbilgi değerlerini erişmesini engelleyebilir.
+JavaScript kullanarak Bing Yazım Denetimi API'si çağrılırken, tarayıcınızın yerleşik güvenlik özellikleri bu üstbilgilerin değerlerine erişmenizi engelleyebilir.
 
-Bu sorunu çözmek için Bing yazım denetimi API'si isteği bir CORS Ara sunucu aracılığıyla yapabilirsiniz. Böyle bir ara sunucu yanıtı sahip bir `Access-Control-Expose-Headers` üst bilgi, beyaz yanıt üst bilgileri ve JavaScript için kullanılabilir hale getirir.
+Bu sorunu çözmek için, bir CORS proxy üzerinden Bing Yazım Denetimi API'si isteği yapabilirsiniz. Bu tür bir ara sunucudan yanıt, yanıt `Access-Control-Expose-Headers` üstbilgilerini beyaz listeleyen ve JavaScript için kullanılabilir hale getiren bir üstbilgiye sahiptir.
 
-İzin vermek için bir CORS Ara Sunucusu'nun yükleneceği kolaydır [öğretici uygulama](../tutorials/spellcheck.md) isteğe bağlı istemci üstbilgileri erişmek için. İlk olarak, henüz yüklemediyseniz [Node.js'yi yükleyin](https://nodejs.org/en/download/). Ardından bir komut isteminde aşağıdaki komutu girin.
+[Öğretici uygulamasının](../tutorials/spellcheck.md) isteğe bağlı istemci üst bilgilerine erişmesine izin vermek IÇIN bir CORS proxy yüklemek kolaydır. İlk olarak, henüz yüklemediyseniz [Node.js'yi yükleyin](https://nodejs.org/en/download/). Sonra bir komut isteminde aşağıdaki komutu girin.
 
     npm install -g cors-proxy-server
 
-Ardından, Bing yazım denetimi API'si uç nokta HTML dosyasındaki değiştirin:
+Sonra, HTML dosyasındaki Bing Yazım Denetimi API'si uç noktasını şu şekilde değiştirin:
 
     http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/spellcheck/
 
@@ -56,7 +56,7 @@ Son olarak, aşağıdaki komutla CORS ara sunucusunu başlatın:
 
     cors-proxy-server
 
-Öğretici uygulamasını kullanırken komut penceresini açık bırakın; pencere kapatılırsa ara sunucu durdurulur. Arama sonuçları altında Genişletilebilir HTTP üstbilgileri bölümünde artık görebilirsiniz `X-MSEdge-ClientID` üst bilgisi (diğerlerinin arasında) ve her istek için aynı olduğunu doğrulayın.
+Öğretici uygulamasını kullanırken komut penceresini açık bırakın; pencere kapatılırsa ara sunucu durdurulur. Arama sonuçlarının altındaki Genişletilebilir http üstbilgileri bölümünde artık `X-MSEdge-ClientID` üstbilgiyi görebilir (diğerleri arasından) ve her istek için aynı olduğunu doğrulayabilirsiniz.
 
 ## <a name="example-api-request"></a>Örnek API isteği
 
@@ -123,5 +123,5 @@ BingAPIs-Market: en-US
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Bing yazım denetimi API'si nedir?](../overview.md)
+- [Bing Yazım Denetimi API'si nedir?](../overview.md)
 - [Bing Yazım Denetimi API’si v7 Başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

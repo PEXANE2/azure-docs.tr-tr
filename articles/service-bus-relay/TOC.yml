@@ -48,8 +48,6 @@
       items:
         - name: Ad alanı oluşturma
           href: relay-create-namespace-portal.md
-        - name: WCF hizmetlerini dış istemcilere sunmak için WCF Geçişini kullanma
-          href: relay-wcf-dotnet-get-started.md
         - name: Kullanılabilir API’ler
           href: relay-api-overview.md
           items:

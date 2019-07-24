@@ -1,7 +1,7 @@
 ---
-title: "Öğretici: Bing haber arama API'si kullanarak tek sayfalı web uygulaması oluşturma"
-titlesuffix: Azure Cognitive Services
-description: Bing haber API'sine arama sorguları göndermek ve sonuçları içinde Web sayfası görüntüleme bir tek sayfalı web uygulaması oluşturmak için bu öğreticiyi kullanın.
+title: "Öğretici: Bing Haber Arama API'si kullanarak tek sayfalı bir Web uygulaması oluşturma"
+titleSuffix: Azure Cognitive Services
+description: Bing Haberler API 'sine arama sorguları gönderebilen tek sayfalı bir Web uygulaması oluşturmak ve sonuçları Web sayfası içinde görüntülemek için bu öğreticiyi kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 10798b471012d53b5820b078b4be7c9c648d3233
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 424fdc9fa0f31b3de664945ff49b119939488fed
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868354"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423611"
 ---
 # <a name="tutorial-create-a-single-page-web-app"></a>Öğretici: Tek sayfalı web uygulaması oluşturma
 
@@ -397,7 +397,7 @@ Tarayıcı güvenlik ilkeleri (CORS) `X-MSEdge-ClientID` üst bilgisinin JavaScr
 > [!NOTE]
 > Üretim ortamındaki bir Web uygulamasında, isteği sunucu tarafından gerçekleştirmeniz gerekir. Aksi takdirde, Bing Arama API'si anahtarınızın Web sayfasına eklenmesi gerekir ve bu durumda kaynağı görüntüleyen herkes tarafından görülebilir. API abonelik anahtarınız altında gerçekleştirilen tüm kullanım, yetkisiz tarafların yaptığı istekler bile size faturalandırılır; dolayısıyla anahtarınızı açıklamamanız önemlidir.
 
-Geliştirme amacıyla, Bing Web Araması API’si isteğini CORS ara sunucusu aracılığıyla yapabilirsiniz. Böyle bir ara sunucu yanıtı sahip bir `Access-Control-Expose-Headers` üst bilgisi yanıt üst bilgilerini sağlar ve JavaScript için kullanılabilir hale getirir.
+Geliştirme amacıyla, Bing Web Araması API’si isteğini CORS ara sunucusu aracılığıyla yapabilirsiniz. Bu tür bir ara sunucudan alınan yanıtın, `Access-Control-Expose-Headers` yanıt üst bilgilerine izin veren ve JavaScript için kullanılabilir hale getiren bir üstbilgisi vardır.
 
 Öğretici uygulamamızın istemci kimliği üst bilgisine erişebilmesi için CORS ara sunucusu kolayca yüklenebilir. İlk olarak, henüz yüklemediyseniz [Node.js'yi yükleyin](https://nodejs.org/en/download/). Ardından komut penceresinde aşağıdaki komutu yürütün:
 

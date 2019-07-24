@@ -1,21 +1,19 @@
 ---
 title: Azure Backup PowerShell Örnekleri
 description: Azure Backup PowerShell Örnekleri
-services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: sample
-origin.date: 09/07/2017
-ms.date: 07/06/2018
-ms.author: v-junlch
+ms.date: 01/31/2019
+ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 0fa22ea85d05ef6514c8b7da0d148a3262a1bbc3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: adfefcd4553f064b08f095dcd9028ac3466b7e45
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60781877"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467234"
 ---
 # <a name="azure-backup-powershell-samples"></a>Azure Backup PowerShell örnekleri
 
@@ -27,5 +25,3 @@ Aşağıdaki tablo, verileri yedekleyip geri yüklemek için Azure Backup kullan
 | [Şifrelenmiş sanal makineyi Azure’a yedekleme](./scripts/backup-powershell-sample-backup-encrypted-vm.md) | Şifrelenmiş sanal makinedeki tüm verileri yedekleyin.|
 | | |
 
-
-<!-- Update_Description: update metedata properties -->

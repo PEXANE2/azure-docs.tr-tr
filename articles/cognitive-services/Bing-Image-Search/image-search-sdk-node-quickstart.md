@@ -1,7 +1,7 @@
 ---
-title: "Hızlı Başlangıç: Görüntüleri - Bing resim arama SDK'sı için Node.js arayın"
-description: Bu öğreticiyi API için bir sarmalayıcı olan ve aynı özellikleri içeren Bing Resim Arama SDK'sını kullanarak ilk görüntü aramanızı yapmak için kullanın. Bu basit Node.js uygulaması, bir görüntü arama sorgusu gönderir, JSON yanıtını ayrıştırır ve döndürülen ilk görüntünün URL'sini görüntüler.
+title: 'Hızlı Başlangıç: Görüntü arama-Node. js için Bing Resim Arama SDK'
 titleSuffix: Azure Cognitive Services
+description: Bu öğreticiyi API için bir sarmalayıcı olan ve aynı özellikleri içeren Bing Resim Arama SDK'sını kullanarak ilk görüntü aramanızı yapmak için kullanın. Bu basit Node.js uygulaması, bir görüntü arama sorgusu gönderir, JSON yanıtını ayrıştırır ve döndürülen ilk görüntünün URL'sini görüntüler.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 43de847452c5318fd66ae883301ba1667e6a4f05
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 24f6de759f233b82cb19a21401d3886a80bd746f
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66384351"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423896"
 ---
-# <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-nodejs"></a>Hızlı Başlangıç: Node.js için Bing resim arama SDK'sı ile görüntüleri için arama
+# <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-nodejs"></a>Hızlı Başlangıç: Node. js için Bing Resim Arama SDK ile görüntü arama
 
 Bu öğreticiyi API için bir sarmalayıcı olan ve aynı özellikleri içeren Bing Resim Arama SDK'sını kullanarak ilk görüntü aramanızı yapmak için kullanın. Bu basit JavaScript uygulaması bir görüntü arama sorgusu gönderir, JSON yanıtını ayrıştırır ve döndürülen ilk görüntünün URL'sini görüntüler.
 
