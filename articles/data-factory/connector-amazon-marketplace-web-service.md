@@ -46,7 +46,7 @@ Amazon Market Web bağlı hizmeti için aşağıdaki özellikleri destekler:
 |:--- |:--- |:--- |
 | type | Type özelliği ayarlanmalıdır: **AmazonMWS** | Evet |
 | endpoint | (Diğer bir deyişle, mws.amazonservices.com) Amazon MWS sunucu uç noktası  | Evet |
-| marketplaceID | Verileri almak istediğiniz Amazon Market kimliği. Virgül ile ayırarak birden çok Market kimlikleri veri almak için (`,`). (diğer bir deyişle, A2EUQ1WTGCTBG2)  | Evet |
+| marketplaceID | Verileri almak istediğiniz Amazon Market ID. Virgül ile ayırarak birden çok Market kimlikleri veri almak için (`,`). (diğer bir deyişle, A2EUQ1WTGCTBG2)  | Evet |
 | sellerID | Amazon satıcı kimliği  | Evet |
 | mwsAuthToken | Amazon MWS kimlik doğrulama belirteci. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Evet |
 | accessKeyId | Erişim kimliği verilere erişmek için kullanılan anahtar.  | Evet |
