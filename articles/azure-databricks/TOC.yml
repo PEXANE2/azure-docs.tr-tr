@@ -17,6 +17,8 @@
   items:
     - name: Docker kapsayıcısında çalışan SQL Server’ı sorgulama
       href: vnet-injection-sql-server.md
+    - name: Azure Key Vault kullanarak depolama alanına erişme
+      href: store-secrets-azure-key-vault.md
     - name: Cosmos DB hizmet uç noktasını kullanma
       href: service-endpoint-cosmosdb.md
     - name: ETL işlemleri gerçekleştirme
