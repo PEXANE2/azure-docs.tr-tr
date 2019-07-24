@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 07/18/2019
+ms.date: 07/22/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b366352d19b3f1e03e32e5fbddf0cb2816fa1ba3
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: b90b4806e86ed0ba33500cf31a6ed892241ceabe
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68320299"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423462"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>Soru-cevap Oluşturucu Bilgi Bankası sınırları ve sınır
 
@@ -60,7 +60,8 @@ Bilgi Bankası'nda içeriği genel sınırlamaları:
 * Dosya adı uzunluğu: 200
 * Desteklenen dosya biçimleri: ".tsv", ".pdf", ".txt", ".docx", ".xlsx".
 * Alternatif soruların maksimum sayısı: 300
-* En yüksek soru-yanıt çifti sayısı: Seçilen **[Azure Search katmanı sınırlarına](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#document-limits)** bağlıdır. Soru ve yanıt çifti, Azure Search dizininizdeki bir belgedir. 
+* En yüksek soru-yanıt çifti sayısı: Seçilen **[Azure Search katmanına](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#document-limits)** bağlıdır. Soru ve yanıt çifti Azure Search dizindeki bir belgeyle eşlenir. 
+* URL/HTML sayfası: 1.000.000 karakter
 
 ## <a name="create-knowledge-base-call-limits"></a>Bilgi Bankası araması sınırları oluşturun:
 Bu temsil Bilgi Bankası eylem her sınırları oluşturmak; diğer bir deyişle, tıklayıp *oluşturma KB* veya CreateKnowledgeBase API'ye çağrı yapma.
