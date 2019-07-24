@@ -1,9 +1,9 @@
 ---
-title: Microsoft kimlik platformu Android hızlı başlangıç | Azure
-description: Bilgi nasıl Android uygulamaları Microsoft kimlik platformu uç noktası tarafından erişim belirteçlerini gerektiren bir API çağrısı.
+title: Microsoft Identity platform Android hızlı başlangıç | Mavisi
+description: Android uygulamalarının Microsoft Identity platform uç noktası tarafından erişim belirteçleri gerektiren bir API 'YI nasıl çağırabileceğinizi öğrenin.
 services: active-directory
 documentationcenter: dev-center-name
-author: danieldobalian
+author: rwike77
 manager: CelesteDG
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
@@ -13,24 +13,24 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/26/2019
+ms.date: 07/17/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 547eafac8cc1acf2b60416f93804e819a1c549b0
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 1c22d93d39f086aaa6e2f103d3becbe9376b49b0
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67702754"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68324556"
 ---
-# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Hızlı Başlangıç: Kullanıcılar oturum ve bir Android uygulamasından Microsoft Graph API çağırma
+# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Hızlı Başlangıç: Kullanıcıların oturum açması ve Android uygulamasından Microsoft Graph API 'sini çağırma
 
 [!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
 Bu hızlı başlangıç, bir Android uygulaması ile kişisel, iş ve okul hesaplarının oturumunu açmayı, erişim belirteci almayı ve Microsoft Graph API’sini çağırmayı gösteren bir kod örneği içerir.
 
-![Bu Hızlı Başlangıç ile oluşturulan örnek uygulamasını nasıl çalıştığını gösterir](media/quickstart-v2-android/android-intro.svg)
+![Bu hızlı başlangıç tarafından oluşturulan örnek uygulamanın nasıl çalıştığını gösterir](media/quickstart-v2-android/android-intro.svg)
 
 > [!NOTE]
 > **Önkoşullar**
@@ -41,54 +41,54 @@ Bu hızlı başlangıç, bir Android uygulaması ile kişisel, iş ve okul hesap
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>Hızlı başlangıç uygulamanızı kaydetme ve indirme
 > Hızlı başlangıç uygulamanızı başlatmak için kullanabileceğiniz iki seçenek vardır:
-> * [Express] [Seçenek 1: Kaydet ve otomatik Uygulamanızı yapılandırmak ve ardından, kod örneğini indirin](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
-> * [El ile] [Seçeneği 2: Kaydetme ve uygulama ve kod örneğinizi el ile yapılandırma](#option-2-register-and-manually-configure-your-application-and-code-sample)
+> * Çaba [Seçenek 1: Uygulamanızı kaydedin ve otomatik olarak yapılandırın ve ardından kod örneğinizi indirin](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
+> * Kitabında [Seçenek 2: Uygulamanızı ve kod örneğinizi kaydetme ve el ile yapılandırma](#option-2-register-and-manually-configure-your-application-and-code-sample)
 >
-> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1\. seçenek: Kaydet ve otomatik Uygulamanızı yapılandırmak ve ardından, kod örneğini indirin
+> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Seçenek 1: Uygulamanızı kaydedin ve otomatik olarak yapılandırın ve ardından kod örneğinizi indirin
 > #### <a name="step-1-register-your-application"></a>1\. adım: Uygulamanızı kaydetme
 > Uygulamanızı kaydetmek için
-> 1. Yeni Git [Azure Portalı - Uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AndroidQuickstartPage/sourceType/docs) bölmesi.
+> 1. Yeni [Azure Portal-uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AndroidQuickstartPage/sourceType/docs) bölmesine gidin.
 > 1. Uygulamanız için bir ad girin ve **Kaydet**'i seçin.
 > 1. Yönergeleri izleyerek yeni uygulamanızı yalnızca tek tıklamayla indirin ve otomatik olarak yapılandırın.
 >
-> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>2\. seçenek: Kaydetme ve uygulama ve kod örneğinizi el ile yapılandırma
+> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Seçenek 2: Uygulamanızı ve kod örneğinizi kaydetme ve el ile yapılandırma
 >
 > #### <a name="step-1-register-your-application"></a>1\. adım: Uygulamanızı kaydetme
 > Uygulamanızı kaydetmek ve uygulama kayıt bilgilerinizi çözümünüze el ile eklemek için şu adımları izleyin:
 >
-> 1. Geliştiriciler için Microsoft identity platformuna gidin [uygulama kayıtları](https://aka.ms/MobileAppReg) sayfası.
-> 1. Seçin **yeni kayıt**.
+> 1. Geliştiriciler için Microsoft Identity platformu [uygulama kayıtları](https://aka.ms/MobileAppReg) sayfasına gidin.
+> 1. **Yeni kayıt**seçeneğini belirleyin.
 > 1. **Uygulama kaydet** sayfası göründüğünde uygulamanızın kayıt bilgilerini girin:
 >      - **Ad** alanına uygulama kullanıcılarına gösterilecek anlamlı bir uygulama adı girin, örneğin `AndroidQuickstart`.
->      - Bu sayfada diğer yapılandırmalar atlayabilirsiniz. 
->      - İsabet `Register` düğmesi.
-> 1. Yeni uygulama tıklayın > Git `Authentication`  >  `Add Platform`  >  `Android`.    
->      - Android studio projenizden paket adı girin. 
->      - İmza karma oluşturun. Yönergeler için portalına bakın.
-> 1. Seçin `Configure` kaydedip ***MSAL yapılandırma*** JSON için daha sonra. 
+>      - Bu sayfadaki diğer konfigürasyonları atlayabilirsiniz. 
+>      - `Register` Düğmeye basın.
+> 1. Git `Authentication` >Yeni`Add Platform`uygulamaya tıklayın .`Android`  >   >     
+>      - Android Studio projenizden paket adını girin. 
+>      - Imza karması oluşturun. Yönergeler için portala başvurun.
+> 1. Daha `Configure` sonra için ***msal Configuration*** JSON ' ı seçin ve kaydedin. 
 
 > [!div renderon="portal" class="sxs-lookup"]
 > #### <a name="step-1-configure-your-application"></a>1\. adım: Uygulamanızı yapılandırma
-> Çalışmak bu hızlı başlangıç için kod örneği için bir yeniden yönlendirme URI'si ile kimlik doğrulama Aracısı uyumlu eklemeniz gerekir. 
+> Bu hızlı başlangıçta çalışması için kod örneği için, auth broker ile uyumlu bir yeniden yönlendirme URI 'SI eklemeniz gerekir. 
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Bu değişikliği benim için yap]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Zaten yapılandırılmış](media/quickstart-v2-android/green-check.png) Uygulamanız bu özniteliklerle yapılandırılmış
 
-#### <a name="step-2-download-the-project"></a>2\. adım: Projenizi indirin
+#### <a name="step-2-download-the-project"></a>2\. adım: Projeyi indirin
 
 * [Kod örneğini indirin](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip)
 
-#### <a name="step-3-configure-your-project"></a>3\. adım: Projenizi yapılandırın
+#### <a name="step-3-configure-your-project"></a>3\. adım: Projenizi yapılandırma
 
 > [!div renderon="docs"]
-> Yukarıdaki seçeneği 1'i seçtiyseniz, şu adımları atlayabilirsiniz. 
+> Yukarıdaki 1. seçeneği belirlediyseniz, bu adımları atlayabilirsiniz. 
 
 > [!div renderon="portal" class="sxs-lookup"]
 > 1. Projeyi ayıklayın ve Android Studio’da açın.
-> 1. İçinde **uygulama** > **src** > **ana** > **res**  >   **Ham**açın **auth_config.json**.
-> 1. Düzen **auth_config.json** Azure portalından JSON ile değiştirin. Bunun yerine el ile değişiklik yapmak istiyorsanız:
+> 1. **App** src ana res RAW içinde, auth_config. JSON öğesini açın. >  >  >  > 
+> 1. **Auth_config. JSON** öğesini düzenleyin ve Azure Portal JSON ile değiştirin. Bunun yerine, değişiklikleri el ile yapmak istiyorsanız:
 >    ```javascript
 >    {
 >       "client_id" : "Enter_the_Application_Id_Here",
@@ -104,8 +104,10 @@ Bu hızlı başlangıç, bir Android uygulaması ile kişisel, iş ve okul hesap
 >          }
 >       ]
 >    }
-> 1. Inside **app** > **manifests**, open  **AndroidManifest.xml**.
-> 1. Paste the following activity to the **manifest\application** node: 
+>    ```
+> 
+> 1. **Uygulama** > **bildirimleri**içinde **AndroidManifest. xml**' yi açın.
+> 1. Aşağıdaki etkinliği **manifest\application** node öğesine yapıştırın: 
 >    ```xml
 >    <!--Intent filter to catch Microsoft's callback after Sign In-->
 >    <activity
@@ -120,17 +122,21 @@ Bu hızlı başlangıç, bir Android uygulaması ile kişisel, iş ve okul hesap
 >        </intent-filter>
 >    </activity>
 >    ```
-> > 1. Uygulamayı çalıştırın! 
+> 1. Uygulamayı çalıştırın! 
+
+> [!div class="sxs-lookup" renderon="portal"]
+> > [!NOTE]
+> > Bu hızlı başlangıç, Enter_the_Supported_Account_Info_Here destekler.
 
 > [!div renderon="docs"]
 > 1. Projeyi ayıklayın ve Android Studio’da açın.
-> 1. İçinde **uygulama** > **res** > **ham**açın **auth_config.json**.
-> 1. Düzen **auth_config.json** Azure portalından JSON ile değiştirin. Bunun yerine el ile bu değişiklik yapmak istiyorsanız:
+> 1. **Uygulama** > **res** RAW içinde, auth_config. json ' u açın. > 
+> 1. **Auth_config. JSON** öğesini düzenleyin ve Azure Portal JSON ile değiştirin. Bunun yerine, bu değişiklikleri el ile yapmak istiyorsanız:
 >    ```javascript
 >    "client_id" : "ENTER_YOUR_APPLICATION_ID",
 >    "redirect_uri": "ENTER_YOUR_REDIRECT_URI", 
 >     ```
-> 1. İçinde **uygulama** > **bildirimlerini**açın **AndroidManifest.xml**.
+> 1. **Uygulama** > **bildirimleri**içinde **AndroidManifest. xml**' yi açın.
 > 1. Aşağıdaki etkinliği **manifest\application** düğümüne ekleyin. Bu kod parçacığı, kimlik doğrulaması tamamlandıktan sonra işletim sisteminin uygulamanızı sürdürmesini sağlamak için bir **BrowserTabActivity** kaydeder:
 >    ```xml
 >    <!--Intent filter to catch Microsoft's callback after Sign In-->
@@ -146,7 +152,7 @@ Bu hızlı başlangıç, bir Android uygulaması ile kişisel, iş ve okul hesap
 >        </intent-filter>
 >    </activity>
 >    ```
-> 1. Değiştirin `Enter_the_Package_Name` ve `Enter_the_Signature_Hash` Azure portalında kaydettiğiniz değerlerle. 
+> 1. `Enter_the_Package_Name` Ve`Enter_the_Signature_Hash` değerlerini Azure Portal kaydettiğiniz değerlerle değiştirin. 
 > 1. Uygulamayı çalıştırın! 
 
 ## <a name="more-information"></a>Daha Fazla Bilgi
@@ -155,7 +161,7 @@ Bu hızlı başlangıç hakkında daha fazla bilgi için aşağıdaki bölümler
 
 ### <a name="getting-msal"></a>MSAL alma
 
-MSAL ([com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal)) kullanıcılarının oturumunu ve Microsoft kimlik platformu tarafından korunan bir API'ye erişmek için kullanılan belirteci istemek için kullanılan bir kitaplık sunulmaktadır. Gradle 3.0 + aşağıdakileri ekleyerek yüklemek için kullanabileceğiniz **Gradle betiklerini** > **build.gradle (modül: uygulama)** altında **bağımlılıkları**:
+MSAL ([com. Microsoft. Identity. Client](https://javadoc.io/doc/com.microsoft.identity.client/msal)), kullanıcıların oturum açmasını ve Microsoft Identity platformu tarafından korunan bir API 'ye erişmek için kullanılan belirteçleri ister. **Bağımlılıklar**altında **Gradle komut dosyası** > **Build. Gradle (Module: App)** bölümüne şunu ekleyerek yüklemek için Gradle 3.0 + kullanabilirsiniz:
 
 ```gradle  
 implementation 'com.android.volley:volley:1.1.1'
@@ -180,22 +186,22 @@ Sonra şu kodu kullanarak MSAL'yi başlatın:
 
 > |Konumlar: ||
 > |---------|---------|
-> |`R.raw.auth_config` | Bu dosya, uygulama/istemci kimliği, oturum açma hedef kitle, yeniden yönlendirme URI'sini ve çeşitli diğer özelleştirme seçeneklerinin dahil olmak üzere, uygulama yapılandırmalarını içerir. |
+> |`R.raw.auth_config` | Bu dosya, uygulamanız/Istemci KIMLIĞINIZ, oturum açma hedef kitlesi, yeniden yönlendirme URI 'SI ve diğer çeşitli özelleştirme seçenekleri de dahil olmak üzere uygulamanızın yapılandırmasını içerir. |
 
 ### <a name="requesting-tokens"></a>Belirteç isteme
 
 MSAL’in belirteç almak için kullanılan iki yöntemi vardır: `acquireToken` ve `acquireTokenSilentAsync`
 
-#### <a name="acquiretoken-getting-a-token-interactively"></a>acquireToken: Etkileşimli bir belirteci alma
+#### <a name="acquiretoken-getting-a-token-interactively"></a>acquireToken: Belirteci etkileşimli olarak alma
 
-Bazı durumlarda kullanıcıların Microsoft kimlik platformu ile etkileşime geçmesini gerektirir. Bu durumlarda, son kullanıcı hesabını seçin, kimlik bilgilerini girin veya uygulamanızı istedi izni onayı için gerekebilir. Örneğin, 
+Bazı durumlar, kullanıcıların Microsoft Identity platformu ile etkileşime girmesini gerektirir. Bu durumlarda, son kullanıcının hesabını seçmeniz, kimlik bilgilerini girmesi veya uygulamanızın istediği izinlere izin vermeniz gerekebilir. Örneğin, 
 
 * Kullanıcılar uygulamada ilk kez oturum açtığında
-* Bir kullanıcının parolasını sıfırlar, bunlar kimlik bilgilerini girmeniz gerekir 
-* İzni iptal edilirse 
-* Uygulamanızı açıkça onayı gerektirip gerektirmediğini. 
-* Ne zaman, uygulama bir kaynağa erişim ilk kez istiyor
-* Mfa'yı veya diğer koşullu erişim ilkelerini gerekli olduğunda
+* Kullanıcı parolasını sıfırlarsa, kimlik bilgilerini girmeleri gerekir 
+* Onay iptal edildiğinde 
+* Uygulamanız açıkça izin gerektiriyorsa. 
+* Uygulamanız bir kaynağa ilk kez erişim isteğinde bulunduğunda
+* MFA veya diğer koşullu erişim ilkeleri gerektiğinde
 
 ```java
 sampleApp.acquireToken(this, SCOPES, getAuthInteractiveCallback());
@@ -208,7 +214,7 @@ sampleApp.acquireToken(this, SCOPES, getAuthInteractiveCallback());
 
 #### <a name="acquiretokensilent-getting-a-user-token-silently"></a>acquireTokenSilent: Kullanıcı belirtecini sessizce alma
 
-Uygulamaları bir belirteç istediklerinde her zaman oturum açmak kullanıcıları gerekmez. Kullanıcı zaten açtıysa, bu yöntem sessizce belirteçler istemek uygulamalar sağlar.
+Uygulamalar, kullanıcıların her belirteç istediklerinde oturum açmasını gerektirmemelidir. Kullanıcı zaten oturum açmışsa, bu yöntem uygulamaların belirteçleri sessizce istemesine izin verir.
 
 ```java
     sampleApp.getAccounts(new PublicClientApplication.AccountsLoadedCallback() {
@@ -227,7 +233,7 @@ Uygulamaları bir belirteç istediklerinde her zaman oturum açmak kullanıcıla
 > |Konumlar:||
 > |---------|---------|
 > | `SCOPES` | İstenen kapsamları barındırır (Microsoft Graph için `{ "user.read" }` veya Web API’leri için `{ "<Application ID URL>/scope" }` (başka bir deyişle `api://<Application ID>/access_as_user`) |
-> | `getAccounts(...)` | Belirteçleri için'ı sessizce almaya çalıştığınız hesabın içerir |
+> | `getAccounts(...)` | Sessizce belirteç almaya çalıştığınız hesabı içerir |
 > | `getAuthSilentCallback()` | Kimlik doğrulamasından sonra denetim uygulamaya geri verildiğinde yürütülen geri arama |
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -247,3 +253,8 @@ Android için MSAL kitaplığı hakkındaki diğer yazıları okuyun:
 > [Android için MSAL kitaplığı wiki'si](https://github.com/AzureAD/microsoft-authentication-library-for-android/wiki)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
+Microsoft Identity platformunu geliştirmemize yardımcı olun. Kısa bir iki sorulık anketi tamamlayarak düşüncelerinizi bize söyleyin.
+
+> [!div class="nextstepaction"]
+> [Microsoft Identity platform Anketi](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

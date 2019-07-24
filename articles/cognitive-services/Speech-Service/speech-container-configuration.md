@@ -1,7 +1,7 @@
 ---
-title: Konuşma kapsayıcılar'ı yapılandırma
+title: Konuşma kapsayıcılarını yapılandırma
 titleSuffix: Azure Cognitive Services
-description: Konuşma kapsayıcı
+description: Konuşma kapsayıcısı
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: dapine
-ms.openlocfilehash: 2dd1769d2d0a940176fb51954f44859cb42f30d9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8a8b0e18c1db7a2e2fc08819aa2f2d64d650ded6
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072433"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68321362"
 ---
-# <a name="configure-speech-service-containers"></a>Konuşma hizmeti kapsayıcıları yapılandırın
+# <a name="configure-speech-service-containers"></a>Konuşma hizmeti kapsayıcılarını yapılandırma
 
-Konuşma kapsayıcıları hem güçlü bulut özellikleri hem de edge yerleşim yeri yararlanmak için iyileştirilmiş bir konuşma uygulama mimarisi yapı sağlar. Artık desteklediğimiz iki konuşma kapsayıcılardır **konuşma metin** ve **metin okuma**. 
+Konuşma kapsayıcıları, müşterilerin hem güçlü bulut özellikleri hem de kenar yerinin avantajlarından yararlanmak için optimize edilmiş bir konuşma uygulaması mimarisi oluşturmasına imkan tanır. Şu anda destekdiğimiz iki konuşma kapsayıcısı, **konuşmadan metne** ve **metinden konuşmaya**. 
 
-**Konuşma** kapsayıcı çalışma zamanı ortamı kullanarak yapılandırılmış `docker run` komut bağımsız değişkenleri. Bu kapsayıcı birkaç isteğe bağlı ayarları ile birlikte gerekli birkaç ayar vardır. Birkaç [örnekler](#example-docker-run-commands) komutu kullanılabilir. Kapsayıcı özgü ayarları faturalandırma ayarlarıdır. 
+**Konuşma** kapsayıcısı çalışma zamanı ortamı, `docker run` komut bağımsız değişkenleri kullanılarak yapılandırılır. Bu kapsayıcıda bazı gerekli ayarlar ve bazı isteğe bağlı ayarlar vardır. Birkaç [örnekler](#example-docker-run-commands) komutu kullanılabilir. Kapsayıcıya özgü ayarlar faturalandırma ayarlardır. 
 
 # <a name="configuration-settings"></a>Yapılandırma ayarları
 
@@ -32,11 +32,11 @@ Konuşma kapsayıcıları hem güçlü bulut özellikleri hem de edge yerleşim 
 
 ## <a name="apikey-configuration-setting"></a>ApiKey yapılandırma ayarı
 
-`ApiKey` Ayar kapsayıcısı için fatura bilgileri izlemek için kullanılan Azure kaynak anahtarını belirtir. ApiKey için bir değer belirtmeniz gerekir ve değer için geçerli bir anahtar olmalıdır _konuşma_ için belirtilen kaynak [ `Billing` ](#billing-configuration-setting) yapılandırma ayarı.
+`ApiKey` Ayar kapsayıcısı için fatura bilgileri izlemek için kullanılan Azure kaynak anahtarını belirtir. Apikey için bir değer belirtmeniz gerekir ve değerin [`Billing`](#billing-configuration-setting) yapılandırma ayarı için belirtilen _konuşma_ kaynağı için geçerli bir anahtar olması gerekir.
 
-Bu ayar, aşağıdaki yerinde bulunabilir:
+Bu ayar aşağıdaki yerde bulunabilir:
 
-* Azure portalı: **Konuşma'nın** kaynak yönetimi altında **anahtarları**
+* Azure portal: **Konuşma 'nın** Kaynak yönetimi, **anahtarlar** altında
 
 ## <a name="applicationinsights-setting"></a>Applicationınsights ayarı
 
@@ -44,11 +44,11 @@ Bu ayar, aşağıdaki yerinde bulunabilir:
 
 ## <a name="billing-configuration-setting"></a>Yapılandırma ayarı faturalama
 
-`Billing` Ayar uç noktası URI'si belirtir, _konuşma_ azure'da kaynak kapsayıcısı için fatura bilgileri ölçmek için kullanılır. Bu yapılandırma ayarı için bir değer belirtmeniz gerekir ve değeri geçerli bir uç noktası URI'si olmalıdır için bir _konuşma_ azure'da kaynak. Kapsayıcı yaklaşık her 10 ila 15 dakika kullanım raporları.
+Ayar, Azure 'daki, kapsayıcının fatura bilgilerini ölçmek için kullanılan konuşma kaynağının uç nokta URI 'sini belirtir.  `Billing` Bu yapılandırma ayarı için bir değer belirtmeniz gerekir ve değer Azure 'da bir _konuşma_ kaynağı için geçerli bir uç nokta URI 'si olmalıdır. Kapsayıcı her 10 ila 15 dakikada bir kullanım raporu sağlar.
 
-Bu ayar, aşağıdaki yerinde bulunabilir:
+Bu ayar aşağıdaki yerde bulunabilir:
 
-* Azure portalı: **Konuşma'nın** etiketli genel bakış `Endpoint`
+* Azure portal: **Konuşma 'nın** Genel bakış, etiketli`Endpoint`
 
 |Gerekli| Ad | Veri türü | Açıklama |
 |--|------|-----------|-------------|
@@ -62,7 +62,7 @@ Bu ayar, aşağıdaki yerinde bulunabilir:
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
 
-## <a name="http-proxy-credentials-settings"></a>HTTP proxy kimlik bilgileri ayarları
+## <a name="http-proxy-credentials-settings"></a>Http proxy kimlik bilgileri ayarları
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
 
@@ -74,45 +74,45 @@ Bu ayar, aşağıdaki yerinde bulunabilir:
 
 Kullanım bağlama okumak ve kapsayıcı gelen ve giden veri yazmak için bağlar. Bir giriş bağlama belirtin veya çıkış bağlama belirterek `--mount` seçeneğini [docker run](https://docs.docker.com/engine/reference/commandline/run/) komutu.
 
-Konuşma kapsayıcıları giriş kullanmıyorum veya eğitim veya hizmeti verilerini depolamak için çıkış bağlar. 
+Konuşma kapsayıcıları, eğitim veya hizmet verilerini depolamak için giriş veya çıkış taklarını kullanmaz. 
 
 Konak bağlama konumu söz dizimi konak işletim sistemine göre değişir. Ayrıca, [ana bilgisayar](speech-container-howto.md#the-host-computer)'s bağlama konumu docker hizmet hesabı tarafından kullanılan izinler arasında bir çakışma nedeniyle erişilebilir olmayabilir ve konak yeri izinleri bağlayın. 
 
-|İsteğe bağlı| Ad | Veri türü | Açıklama |
+|İsteğe Bağlı| Ad | Veri türü | Açıklama |
 |-------|------|-----------|-------------|
-|İzin verilmiyor| `Input` | String | Konuşma kapsayıcıları bu kullanmayın.|
-|İsteğe bağlı| `Output` | String | Çıkış bağlama hedefi. Varsayılan değer `/output` şeklindedir. Bu günlükler konumdur. Bu, kapsayıcı günlükleri içerir. <br><br>Örnek:<br>`--mount type=bind,src=c:\output,target=/output`|
+|İzin verilmiyor| `Input` | Dize | Konuşma kapsayıcıları bunu kullanmaz.|
+|İsteğe Bağlı| `Output` | Dize | Çıkış bağlama hedefi. Varsayılan değer `/output` şeklindedir. Bu günlükler konumdur. Bu, kapsayıcı günlüklerini içerir. <br><br>Örnek:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Örnek docker komutlarını çalıştırın 
 
 Aşağıdaki örnekler, yazma ve kullanma göstermek için yapılandırma ayarlarını kullanır. `docker run` komutları.  Kapsayıcıyı çalıştıran sonra dek çalıştırmaya devam [Durdur](speech-container-howto.md#stop-the-container) bu.
 
-* **Satır devamlılığı karakteri**: Aşağıdaki bölümlerde Docker komutları ters eğik çizgi kullanın `\`, satır devamı karakteri olarak. Bu konak işletim sisteminin gereksinimlerine göre kaldırın veya değiştirin. 
-* **Bağımsız değişken sırası**: Docker kapsayıcıları ile çok iyi bilmiyorsanız, bağımsız değişkenlerin sırası değiştirmeyin.
+* **Satır devamlılık karakteri**: Aşağıdaki bölümlerdeki Docker komutları, satır devamlılık karakteri olarak ters eğik `\`çizgi kullanır. Bu konak işletim sisteminin gereksinimlerine göre kaldırın veya değiştirin. 
+* **Bağımsız değişken sırası**: Docker Kapsayıcıları hakkında bilginiz yoksa bağımsız değişkenlerin sırasını değiştirmeyin.
 
 Yerine {_argument_name_} kendi değerlerinizle:
 
 | Yer tutucu | Değer | Biçim veya örnek |
 |-------------|-------|---|
-|{BILLING_KEY} | Konuşma kaynak uç noktası anahtarı. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{BILLING_ENDPOINT_URI} | Bölge dahil olmak üzere faturalandırma uç nokta değeri.|`https://westus.api.cognitive.microsoft.com/sts/v1.0`|
+|{API_KEY} | Konuşma kaynağının API anahtarı. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
+|{ENDPOINT_URI} | Bölge dahil uç nokta değeri.|`https://westus.api.cognitive.microsoft.com/sts/v1.0`|
 
 > [!IMPORTANT]
 > `Eula`, `Billing`, Ve `ApiKey` kapsayıcıyı çalıştırmak için seçenekler belirtilmelidir; Aksi takdirde, kapsayıcı başlatılamıyor.  Daha fazla bilgi için [faturalama](#billing-configuration-setting).
-> ApiKey değer **anahtar** Azure konuşma kaynak anahtarlar sayfasındaki. 
+> ApiKey değeri, Azure konuşma kaynak anahtarları sayfasından alınan **anahtardır** . 
 
-## <a name="speech-container-docker-examples"></a>Konuşma kapsayıcı Docker örnekleri
+## <a name="speech-container-docker-examples"></a>Konuşma kapsayıcısı Docker örnekleri
 
-Aşağıdaki Docker konuşma kapsayıcı için verilebilir. 
+Aşağıdaki Docker örnekleri konuşma kapsayıcısına yöneliktir. 
 
-### <a name="basic-example-for-speech-to-text"></a>Metni konuşma temel örnek
+### <a name="basic-example-for-speech-to-text"></a>Konuşmayı metne yönelik temel örnek
 
 ```Docker
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 2 \
 containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text \
 Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY}   
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
 ```
 
 ### <a name="basic-example-for-text-to-speech"></a>Metin okuma için temel örnek
@@ -121,30 +121,30 @@ ApiKey={BILLING_KEY}
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 2 \
 containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech \
 Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY}  
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
 ```
 
-### <a name="logging-example-for-speech-to-text"></a>Metni konuşma örneğin günlüğe kaydetme
+### <a name="logging-example-for-speech-to-text"></a>Konuşmayı metne dönüştürme için günlüğe kaydetme örneği
 
 ```Docker
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 2 \
 containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text \
 Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY}   
-  Logging:Console:LogLevel:Default=Information
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY} \
+Logging:Console:LogLevel:Default=Information
 ```
 
-### <a name="logging-example-for-text-to-speech"></a>Örnek metin okuma için günlüğe kaydetme
+### <a name="logging-example-for-text-to-speech"></a>Metin okuma için günlüğe kaydetme örneği
 
 ```Docker
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 2 \
 containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech \
 Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY}  
-  Logging:Console:LogLevel:Default=Information
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY} \
+Logging:Console:LogLevel:Default=Information
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

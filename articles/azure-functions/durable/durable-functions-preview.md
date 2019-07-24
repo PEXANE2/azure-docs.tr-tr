@@ -1,6 +1,6 @@
 ---
-title: Dayanıklı işlevler Önizleme özellikleri - Azure işlevleri
-description: Önizleme özellikleri hakkında bilgi edinmek için dayanıklı işlevler.
+title: Dayanıklı İşlevler Önizleme özellikleri-Azure Işlevleri
+description: Dayanıklı İşlevler için Önizleme özellikleri hakkında bilgi edinin.
 services: functions
 author: cgillum
 manager: jeconnoc
@@ -10,33 +10,33 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 7101519aa4a87995dac3a7f11046eed84a2c09b6
-ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
+ms.openlocfilehash: 7356541ed6288603a66d5caa43138284d8d4d918
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67812773"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68320479"
 ---
-# <a name="durable-functions-20-preview-azure-functions"></a>Dayanıklı işlevler 2.0 Önizleme (Azure işlevleri)
+# <a name="durable-functions-20-preview-azure-functions"></a>Dayanıklı İşlevler 2,0 Preview (Azure Işlevleri)
 
-*Dayanıklı işlevler* uzantısıdır [Azure işlevleri](../functions-overview.md) ve [Azure WebJobs](../../app-service/web-sites-create-web-jobs.md) durum bilgisi olan işlevleri, sunucusuz bir ortamda yazmanızı sağlayan. Uzantı sizin için durumu, denetim noktalarını ve yeniden başlatmaları yönetir. Dayanıklı işlevler ile bilginiz yok olup [genel bakış belgeleri](durable-functions-overview.md).
+*Dayanıklı işlevler* , [Azure Işlevleri](../functions-overview.md) ve [Azure Web işleri](../../app-service/web-sites-create-web-jobs.md) 'nin bir uzantısıdır ve bu da sunucusuz bir ortamda durum bilgisi olan işlevler yazmanızı sağlar. Uzantı sizin için durumu, denetim noktalarını ve yeniden başlatmaları yönetir. Daha önce Dayanıklı İşlevler hakkında bilginiz yoksa [genel bakış belgelerine](durable-functions-overview.md)bakın.
 
-Dayanıklı işlevler 1.x Azure işlevleri, genel kullanım (genel kullanıma sunuldu) özelliğidir, ancak şu anda genel Önizleme aşamasında olan çeşitli özellikler de içerir. Bu makalede, yeni yayımlanmış Önizleme özelliklerini açıklar ve nasıl çalıştıkları ve bunları kullanarak nasıl başlatabilirsiniz ayrıntılarına geçer.
+Dayanıklı İşlevler 1. x, Azure Işlevlerinin bir GA (genel kullanıma sunuldu) özelliğidir, ancak şu anda genel önizleme aşamasında olan çeşitli alt özellikleri de içerir. Bu makalede yeni yayınlanan Önizleme özellikleri açıklanmakta ve bunların nasıl çalıştığı ve bunları nasıl kullanabileceğiniz hakkında ayrıntılı bilgiler yer alır.
 
 > [!NOTE]
-> Bu önizleme özellikleri şu anda bir dayanıklı işlevler 2.0 sürümünün bir parçası olan bir **Önizleme kalite sürümü** ile çeşitli önemli değişiklikler. Azure işlevleri uzantı paketi derlemeleri kalıcı biçiminde sürümleriyle nuget.org bulunabilir **2.0.0-betaX**. Bu yapıları üretim iş yükleri için tasarlanmamıştır ve sonraki sürümlerde ek bozucu değişiklikleri içerebilir.
+> Bu Önizleme özellikleri, şu anda birçok önemli değişiklik içeren bir **Önizleme kalitesi sürümü** olan dayanıklı işlevler 2,0 sürümünün bir parçasıdır. Azure Işlevleri dayanıklı Uzantı paketi yapıları, **2.0.0-betaX**biçimindeki sürümlerle NuGet.org üzerinde bulunabilir. Bu derlemeler üretim iş yükleri için tasarlanmamıştır ve sonraki sürümlerde ek son değişiklikler olabilir.
 
 ## <a name="breaking-changes"></a>Yeni değişiklikler
 
-Birkaç önemli değişiklikler dayanıklı işlevler 2.0 sürümünde kullanıma sunulmuştur. Mevcut uygulamaları kod değişikliği yapmadan dayanıklı işlevler 2.0 ile uyumlu olması beklenmez. Bu bölümde, bazı değişiklikler listelenmiştir:
+Dayanıklı İşlevler 2,0 ' de birçok önemli değişiklik sunulmuştur. Mevcut uygulamaların kod değişikliği olmadan Dayanıklı İşlevler 2,0 ile uyumlu olması beklenmez. Bu bölümde bazı değişiklikler listelenir:
 
-### <a name="hostjson-schema"></a>Host.JSON şeması
+### <a name="hostjson-schema"></a>Host. JSON şeması
 
-Aşağıdaki kod parçacığında, yeni şema host.json için gösterir. Dikkat edilmesi gereken ana değişiklikleri yeni alt bölümleri şunlardır:
+Aşağıdaki kod parçacığında Host. JSON için yeni şema gösterilmektedir. Dikkat edilecek ana değişiklikler yeni alt kısımlar:
 
-* `"storageProvider"` (ve `"azureStorage"` alt) için depolama özgü yapılandırma
-* `"tracking"` İzleme ve günlük kaydı yapılandırması
-* `"notifications"` (ve `"eventGrid"` alt) için event grid bildirim yapılandırması
+* `"storageProvider"`depolama birimine özgü `"azureStorage"` yapılandırma için (ve alt bölüm)
+* `"tracking"`izleme ve günlüğe kaydetme yapılandırması için
+* `"notifications"`Event Grid bildirim `"eventGrid"` yapılandırması için (ve alt bölüm)
 
 ```json
 {
@@ -79,29 +79,29 @@ Aşağıdaki kod parçacığında, yeni şema host.json için gösterir. Dikkat 
 }
 ```
 
-İçin kararlı dayanıklı işlevler 2.0 devam ettikçe daha fazla değişiklik görülecektir `durableTask` host.json bölümü. Bu değişiklikler hakkında daha fazla bilgi için bkz. [bu GitHub sorunu](https://github.com/Azure/azure-functions-durable-extension/issues/641).
+Dayanıklı işlevler 2,0 kararlı olmaya devam ettiğinden, Host. JSON `durableTask` bölümüne daha fazla değişiklik sunulacaktır. Bu değişiklikler hakkında daha fazla bilgi için [Bu GitHub sorununa](https://github.com/Azure/azure-functions-durable-extension/issues/641)bakın.
 
 ### <a name="public-interface-changes"></a>Ortak arabirim değişiklikleri
 
-Dayanıklı işlevler tarafından desteklenen çeşitli "bağlam" nesneleri birim testi kullanımda yönelik olarak soyut taban sınıfları vardı. Dayanıklı işlevler 2.0 bir parçası olarak, bu soyut taban sınıfları, arabirimleri ile değiştirilmiştir. Doğrudan somut türleri kullanan işlev kodu etkilenmez.
+Dayanıklı İşlevler tarafından desteklenen çeşitli "bağlam" nesneleri, birim testinde kullanılmak üzere tasarlanan soyut temel sınıflara sahipti. Dayanıklı İşlevler 2,0 ' nın bir parçası olarak bu soyut temel sınıflar, arabirimlerle değiştirilmiştir. Somut türleri doğrudan kullanan işlev kodu bundan etkilenmez.
 
-Aşağıdaki tabloda ana değişiklikleri temsil eder:
+Aşağıdaki tablo, ana değişiklikleri temsil eder:
 
-| Eski türü | Yeni tür |
+| Eski tür | Yeni tür |
 |----------|----------|
-| DurableOrchestrationClientBase | IDurableOrchestrationClient |
+| DurableOrchestrationClientBase | Idurableorchestrationclient |
 | DurableOrchestrationContextBase | IDurableOrchestrationContext |
-| DurableActivityContextBase | IDurableActivityContext |
+| DurableActivityContextBase | Idurableactivitycontext |
 
-Soyut bir temel sınıf sanal yöntemler bulunduğu durumlarda, bu sanal yöntemler içinde tanımlanan genişletme yöntemleri tarafından değiştirilmiştir `DurableContextExtensions`.
+Soyut bir temel sınıfın sanal yöntemler içerdiği durumlarda, bu sanal yöntemler ' de `DurableContextExtensions`tanımlanan genişletme yöntemleriyle değiştirilmiştir.
 
 ## <a name="entity-functions"></a>Varlık işlevleri
 
-Varlık işlevleri tanımlayın okuma ve küçük parçaları olarak bilinen durumunu güncelleştirmek için işlemleri *dayanıklı varlıkları*. Bir özel tetikleyici türü işlevleriyle orchestrator işlevler gibi varlık işlevlerdir *varlık tetikleyici*. Orchestrator işlevleri farklı olarak, belirli bir kod kısıtlamalardan varlık işlevleri yoktur. Varlık işlevlerini de yönetmek durumu açıkça örtük olarak durumu aracılığıyla denetim akışını temsil eden yerine.
+Varlık işlevleri, *dayanıklı varlıklar*olarak bilinen küçük durum parçalarını okumak ve güncelleştirmek için işlemleri tanımlar. Orchestrator işlevleri gibi, varlık işlevleri de özel tetikleyici türü, *varlık tetikleyicisi*olan işlevlerdir. Orchestrator işlevlerinin aksine, varlık işlevlerinin belirli kod kısıtlamaları yoktur. Varlık işlevleri, durumu denetim akışı aracılığıyla örtük olarak temsil etmek yerine, durumu açıkça da yönetir.
 
-### <a name="net-programing-models"></a>.NET ölçeklenebilirliğinden modelleri
+### <a name="net-programing-models"></a>.NET programlama modelleri
 
-Dayanıklı varlıkları yazmak için iki isteğe bağlı programlama modeli vardır. Aşağıdaki kod, basit bir örnektir *sayacı* varlık standart bir işlev uygulanır. Bu işlev, üç tanımlar *işlemleri*, `add`, `reset`, ve `get`, her bir tamsayı durum değeri üzerinde çalıştığınız, `currentValue`.
+Dayanıklı varlıklar yazmak için iki isteğe bağlı programlama modeli vardır. Aşağıdaki kod, standart bir işlev olarak uygulanan basit bir *sayaç* varlığına bir örnektir. Bu işlev, `get` `add` `reset`  herbiribirtamsayıdurumdeğeriüzerindeçalışanüçişlem,,,ve`currentValue`tanımlar.
 
 ```csharp
 [FunctionName("Counter")]
@@ -127,7 +127,7 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 }
 ```
 
-Bu model, varlığın uygulamaları veya dinamik bir dizi işlemlerini sahip uygulamaları en iyi şekilde çalışır. Ancak, var. Ayrıca statik olan, ancak daha karmaşık uygulamalara sahip varlıklar için kullanışlı olan bir sınıf tabanlı programlama modeli Aşağıdaki örnek eşdeğer uygulamasıdır `Counter` varlık .NET sınıflar ve yöntemler kullanma.
+Bu model basit varlık uygulamaları veya dinamik bir işlem kümesi olan uygulamalar için en iyi şekilde kullanılır. Ancak, statik olan ancak daha karmaşık uygulamalar içeren varlıklar için yararlı olan sınıf tabanlı bir programlama modeli de vardır. Aşağıdaki örnek, .NET sınıfları ve yöntemleri kullanılarak `Counter` varlığın eşdeğer bir uygulamasıdır.
 
 ```csharp
 public class Counter
@@ -147,63 +147,63 @@ public class Counter
 }
 ```
 
-Sınıf tabanlı model olarak popüler bir programlama modeli benzer [Orleans](https://www.microsoft.com/research/project/orleans-virtual-actors/). Bu modelde, bir varlık türü bir .NET sınıfı tanımlanır. Sınıfının her bir yöntemi, bir dış istemci tarafından çağrılabilen bir işlemdir. Orleans, ancak .NET arabirimleri isteğe bağlıdır. Önceki *sayacı* örnek bir arabirim kullanmayan ancak HTTP API çağrıları veya diğer işlevleri aracılığıyla yine de çağrılabilir.
+Sınıf tabanlı model, [Orleans](https://www.microsoft.com/research/project/orleans-virtual-actors/)tarafından popularile benzerdir. Bu modelde, bir varlık türü .NET sınıfı olarak tanımlanmıştır. Sınıfının her yöntemi, bir dış istemci tarafından çağrılabilen bir işlemdir. Ancak, Orleans 'un aksine .NET arabirimleri isteğe bağlıdır. Önceki *sayaç* örneği bir arabirim kullanmadı, ancak yine de diğer IŞLEVLER veya HTTP API çağrıları aracılığıyla çağrılabilir.
 
-Varlık *örnekleri* benzersiz bir tanımlayıcı erişilen *varlık kimliği*. Yalnızca bir varlık örneğini benzersiz şekilde tanımlayan bir çift dizelerden oluşan bir varlık kimliğidir. Şunlardan oluşur:
+Varlık *örneklerine* benzersiz bir tanımlayıcı, *varlık kimliği*üzerinden erişilir. Bir varlık KIMLIĞI, bir varlık örneğini benzersiz bir şekilde tanımlayan dizelerin bir çiftidir. Aşağıdakilerden oluşur:
 
-* Bir **varlık adı**: varlık türü (örneğin, "Sayaç") tanımlayan bir ad.
-* Bir **Varlık anahtarı**: Varlık (örneğin, bir GUID) aynı ada sahip diğer tüm varlıkları arasında benzersiz olarak tanımlayan bir dize.
+* Bir **varlık adı**: varlığın türünü tanımlayan bir ad (örneğin, "Counter").
+* Bir **varlık anahtarı**: varlığı, aynı ada sahip diğer tüm varlıklar arasında benzersiz şekilde tanımlayan bir dize (örneğin, bir GUID).
 
-Örneğin, bir *sayacı* varlık işlevi çevrimiçi bir oyun puan tutmak için kullanılabilir. Her bir oyun örneğini bir benzersiz varlık kimliği gibi olacaktır `@Counter@Game1`, `@Counter@Game2`ve benzeri.
+Örneğin, bir *sayaç* varlığı işlevi çevrimiçi bir oyunda puanı korumak için kullanılabilir. Oyunun her bir örneği, ve gibi benzersiz bir varlık kimliğine `@Counter@Game1` `@Counter@Game2`sahip olacaktır.
 
 ### <a name="comparison-with-virtual-actors"></a>Sanal aktörler ile karşılaştırma
 
-Dayanıklı varlıkları tasarımını yoğun tarafından etkilenir [aktör modeli](https://en.wikipedia.org/wiki/Actor_model). Zaten Actors hizmetini kullanmaya hakkında bilginiz varsa, dayanıklı varlıkları kavramları alışık olduğunuz olmalıdır. Özellikle, dayanıklı varlıkları benzer [sanal aktörler](https://research.microsoft.com/projects/orleans/) birçok yönden:
+Dayanıklı varlıkların tasarımı, [aktör modeliyle](https://en.wikipedia.org/wiki/Actor_model)büyük ölçüde etkilenir. Aktörlerle zaten bilgi sahibiyseniz, dayanıklı varlıkların arkasındaki kavramların size tanıdık olması gerekir. Özellikle, dayanıklı varlıklar [sanal aktörlerin](https://research.microsoft.com/projects/orleans/) çoğunu birçok şekilde benzerdir:
 
-* Aracılığıyla dayanıklı varlık adreslenebilir bir *varlık kimliği*.
-* Dayanıklı entity operations seri olarak, yarış durumlarını önlemek için teker teker yürütün.
-* Çağrılan veya sinyal dayanıklı varlıkları otomatik olarak oluşturulur.
-* İşlemleri yürütülmüyor olduğunda dayanıklı sessizce bellekten varlıklardır.
+* Dayanıklı varlıklar bir *VARLıK kimliği*aracılığıyla adreslidir.
+* Yarış durumlarını engellemek için, sürekli varlık işlemleri tek seferde bir kez yürütülür.
+* Dayanıklı varlıklar, çağrıldığında veya sinyalde olduğunda otomatik olarak oluşturulur.
+* İşlemler yürütümemekte, kalıcı varlıkların belleği sessizce kaldırılır.
 
-Bazı önemli farklar vardır ancak olan çıkarabileceğini:
+Ancak, dikkat edilmesi gereken bazı önemli farklılıklar vardır:
 
-* Dayanıklı varlıkları öncelik *dayanıklılık* üzerinden *gecikme*ve bu nedenle katı gecikme süresi gereksinimlerine sahip uygulamalar için uygun olmayabilir.
-* Varlıklar arasında gönderilen iletiler, güvenilir ve sipariş teslim edilir.
-* Dayanıklı varlıklar dayanıklı düzenlemeleri ile birlikte kullanılabilir ve bu makalenin sonraki bölümlerinde anlatılan dağıtılmış kilitleri görebilir.
-* İstek/yanıt desenleri varlıklarda düzenlemeleri için sınırlıdır. Varlık için varlık iletişim için yalnızca tek yönlü iletileri (diğer adıyla "sinyal"), olduğu gibi özgün aktör modeli izin verilir. Bu davranış, dağıtılmış kilitlenmeleri engeller.
+* Dayanıklı varlıklar *dayanıklılığı* *gecikme süresine*göre önceliklendirmez ve bu nedenle, katı gecikme süresi gereksinimleri olan uygulamalar için uygun olmayabilir.
+* Varlıklar arasında gönderilen iletiler güvenilir bir şekilde ve sırayla dağıtılır.
+* Dayanıklı varlıklar, dayanıklı düzenlemeler ile birlikte kullanılabilir ve bu makalede daha sonra açıklanan dağıtılmış kilitler olarak işlev görebilir.
+* Varlıklarda istek/yanıt desenleri, düzenleme ile sınırlıdır. Varlıkla varlığa iletişim için, özgün aktör modelinde olduğu gibi yalnızca tek yönlü mesajlara ("sinyal" olarak da bilinir) izin verilir. Bu davranış, dağıtılmış kilitlenmeleri engeller.
 
-### <a name="durable-entity-net-apis"></a>Dayanıklı Entity .NET API'leri
+### <a name="durable-entity-net-apis"></a>Dayanıklı varlık .NET API 'Leri
 
-Çeşitli API'ler varlık desteği içerir. Biri için yoktur yeni bir API varlık işlevleri tanımlamak için yukarıda gösterildiği gibi bir işlem bir varlık üzerinde çağrıldığında ne olması gerektiğini belirtin. Ayrıca, istemciler ve düzenlemeleri için mevcut API'lere varlıklarıyla etkileşimi için yeni işlevler ile güncelleştirildi.
+Varlık desteği birçok API içerir. Bir varlık için, bir varlıkta bir işlem çağrıldığında ne olacağını belirten, yukarıda gösterildiği gibi varlık işlevlerini tanımlamaya yönelik yeni bir API vardır. Ayrıca, istemcileri ve düzenlemeleri için mevcut API 'Ler, varlıklarla etkileşim için yeni işlevlerle güncelleştirilmiştir.
 
-#### <a name="implementing-entity-operations"></a>Varlık işlemleri uygulama
+#### <a name="implementing-entity-operations"></a>Varlık işlemlerini uygulama
 
-Bir işlem bir varlığın yürütülmesi bağlam nesnesi üzerinde bu üyeleri çağırabilirsiniz (`IDurableEntityContext` . NET'te):
+Bir varlık üzerindeki bir işlemin yürütülmesi, bu üyeleri bağlam nesnesi üzerinde çağırabilir (`IDurableEntityContext` .net 'te):
 
-* **OperationName**: işlem adını alır.
-* **GetInput\<TInput >** : işlem için giriş alır.
+* **OperationName**: işlemin adını alır.
+* **Getınput\<TInput >** : işlemin girdisini alır.
 * **GetState\<TState >** : varlığın geçerli durumunu alır.
-* **SetState**: Varlık durumunu güncelleştirir.
-* **SignalEntity**: bir varlık için tek yönlü bir ileti gönderir.
-* **Kendi kendine**: Varlık Kimliğini alır.
-* **İade**: istemci veya işlemi çağıran düzenleme için bir değer döndürür.
-* **IsNewlyConstructed**: döndürür `true` varlık önce işlemi olmasaydı.
-* **DestructOnExit**: işlemi bittikten sonra varlık siler.
+* **SetState**: varlığın durumunu güncelleştirir.
+* **Tiflentity**: bir varlığa tek yönlü bir ileti gönderir.
+* **Self**: varlığın kimliğini alır.
+* **Dönüş**: istemciye veya düzenlemeye işlemi çağıran bir değer döndürür.
+* **Inewlyinşa**: varlık `true` işlemden önce yoksa, döndürür.
+* **Yeniden dönüşlü**bir işlem: işlemi tamamladıktan sonra varlığı siler.
 
-İşlemleri düzenlemeleri daha az sınırlı şunlardır:
+İşlemler, düzenleyiclerden daha az kısıtlanıyor:
 
-* İşlem, dış g/ç (yalnızca zaman uyumsuz olanları kullanılması önerilir) zaman uyumlu veya zaman uyumsuz API'leri kullanarak, çağırabilirsiniz.
-* İşlemleri belirleyici olabilir. Örneğin, çağırmak güvenli `DateTime.UtcNow`, `Guid.NewGuid()` veya `new Random()`.
+* İşlemler, zaman uyumlu veya zaman uyumsuz API 'Ler kullanarak dış g/ç 'yi çağırabilir (yalnızca zaman uyumsuz olanları kullanmanızı öneririz).
+* İşlemler belirleyici olmayan bir işlem olabilir. Örneğin, `DateTime.UtcNow` `Guid.NewGuid()` veya çağırmakgüvenlidir.`new Random()`
 
-#### <a name="accessing-entities-from-clients"></a>Varlıkları istemcilerden erişme
+#### <a name="accessing-entities-from-clients"></a>İstemcilerden varlıklara erişme
 
-Dayanıklı varlıklar ile normal İşlevler'den çağrılacak `orchestrationClient` bağlama (`IDurableOrchestrationClient` .NET içinde). Aşağıdaki yöntemleri destekler:
+Dayanıklı varlıklar `orchestrationClient` bağlama aracılığıyla sıradan işlevlerden çağrılabilir (`IDurableOrchestrationClient` .net 'te). Aşağıdaki yöntemler desteklenir:
 
-* **ReadEntityStateAsync\<T >** : bir varlık durumunu okur.
-* **SignalEntityAsync**: bir varlık için tek yönlü bir ileti gönderir ve sıraya alınan olmasını bekler.
-* **SignalEntityAsync\<T >** : aynı `SignalEntityAsync` ancak bir oluşturulan proxy nesnesi türü kullanan `T`.
+* **Readentitystateasync\<T >** : bir varlığın durumunu okur.
+* **Tiflentityasync**: bir varlığa tek yönlü bir ileti gönderir ve kuyruğa alınıp alınmasını bekler.
+* **Tiflentityasync\<T >** : ile `SignalEntityAsync` aynıdır, ancak türünde `T`oluşturulan bir proxy nesnesi kullanır.
 
-Önceki `SignalEntityAsync` çağrı gerektirir. varlık işlem adını belirterek bir `string` ve işlem yükünü bir `object`. Aşağıdaki örnek kod, bu düzen bir örneğidir:
+Önceki `SignalEntityAsync` çağrı bir `string` olarak varlık işleminin adını ve işlemin `object`yükünü bir olarak belirtmeyi gerektirir. Aşağıdaki örnek kod bu düzenin bir örneğidir:
 
 ```csharp
 EntityId id = // ...
@@ -211,7 +211,7 @@ object amount = 5;
 context.SignalEntityAsync(id, "Add", amount);
 ```
 
-Tür kullanımı uyumlu erişim için bir proxy nesnesi oluşturmak mümkündür. Varlık türü, tür kullanımı uyumlu proxy oluşturmak için bir arabirim uygulamalıdır. Örneğin, varsayalım `Counter` varlık daha önce bahsedilen uygulanan bir `ICounter` arabirimi gibi tanımlanır:
+Tür kullanımı uyumlu erişim için bir proxy nesnesi oluşturmak da mümkündür. Tür açısından güvenli bir ara sunucu oluşturmak için varlık türünün bir arabirim uygulaması gerekir. Örneğin, daha önce bahsedilen `Counter` varlığın aşağıdaki gibi tanımlanmış bir `ICounter` arabirim uyguladığını varsayalım:
 
 ```csharp
 public interface ICounter
@@ -227,7 +227,7 @@ public class Counter : ICounter
 }
 ```
 
-İstemci kodu daha sonra kullanabileceğiniz `SignalEntityAsync<T>` belirtin `ICounter` tür parametresi tür kullanımı uyumlu proxy oluşturmak için arabirim. Bu tür kullanımı uyumlu proxy'leri kullanımı aşağıdaki kod örneğinde gösterilmiştir:
+İstemci kodu daha sonra kullanabilir `SignalEntityAsync<T>` ve bir tür `ICounter` güvenli proxy oluşturmak için tür parametresi olarak arabirimi belirtebilir. Tür açısından güvenli proxy 'lerin bu kullanımı, aşağıdaki kod örneğinde gösterilmiştir:
 
 ```csharp
 [FunctionName("UserDeleteAvailable")]
@@ -241,22 +241,22 @@ public static async Task AddValueClient(
 }
 ```
 
-Önceki örnekte, `proxy` parametresi, dinamik olarak üretilen bir örneğini `ICounter`, hangi dahili olarak çeviren çağrısı `Add` (türsüz) eşdeğer çağrısı `SignalEntityAsync`.
+Önceki örnekte, `proxy` parametresi, `Add` çağrısını iç olarak eşdeğer (türsüz) `ICounter`çağrıya `SignalEntityAsync`çeviren, dinamik olarak üretilmiş bir örneğidir.
 
 > [!NOTE]
-> Dikkat etmeniz önemlidir `ReadEntityStateAsync` ve `SignalEntityAsync` yöntemlerinin `IDurableOrchestrationClient` performans tutarlılığa öncelik verin. `ReadEntityStateAsync` eski bir değer döndürebilir ve `SignalEntityAsync` işlemi bitmeden önce döndürebilir.
+> Tutarlılık açısından performansı `ReadEntityStateAsync` `IDurableOrchestrationClient` önceliklendirmek için ve `SignalEntityAsync` yöntemlerinin dikkate alınacağını göz önünde bulundurulmalıdır. `ReadEntityStateAsync`Eski bir değer döndürebilir ve `SignalEntityAsync` işlem tamamlanmadan önce dönebilir.
 
-#### <a name="accessing-entities-from-orchestrations"></a>Düzenlemeleri erişen varlıkları
+#### <a name="accessing-entities-from-orchestrations"></a>Organize lerden varlıklara erişme
 
-Düzenlemeleri kullanarak varlıkları erişebilir `IDurableOrchestrationContext` nesne. Bunlar arasında tek yönlü iletişim seçebilirsiniz (Başlat ve unut) ve çift yönlü iletişimi (istek ve yanıt). İlgili yöntemler şunlardır:
+Nesneler, `IDurableOrchestrationContext` nesneleri kullanarak varlıklara erişebilir. Tek yönlü iletişim (ateş ve unutma) ve iki yönlü iletişim (istek ve yanıt) arasında seçim yapabilir. İlgili yöntemler şunlardır:
 
-* **SignalEntity**: bir varlık için tek yönlü bir ileti gönderir.
-* **CallEntityAsync**: bir varlık için bir ileti gönderir ve yanıt işleminin tamamlandığını belirten bir için bekler.
-* **CallEntityAsync\<T >** : bir varlık için bir ileti gönderir ve bir sonuç t türü içeren bir yanıt bekler
+* **Tiflentity**: bir varlığa tek yönlü bir ileti gönderir.
+* **Callentityasync**: bir varlığa bir ileti gönderir ve işlemin tamamlandığını belirten bir yanıt bekler.
+* **Callentityasync\<T >** : bir varlığa bir ileti gönderir ve T türünde bir sonuç içeren bir yanıt bekler.
 
-Çift yönlü iletişimi kullanırken, işlemin yürütülmesi sırasında oluşturulan özel durumlar da için geri çağırma düzenleme aktarılan ve işlenemezse. Buna karşılık, Başlat ve unut kullanırken, özel durumlar gözlenmiştir değil.
+İki yönlü iletişim kullanılırken, işlemin yürütülmesi sırasında oluşan tüm özel durumlar da çağıran düzenleme ve yeniden oluşturma işlemine geri iletilir. Buna karşılık, Fire-ve-unut kullanırken özel durumlar gözlemlenmez.
 
-Tür kullanımı uyumlu erişim için proxy tabanlı bir arabirimde düzenleme işlevler oluşturabilirsiniz. `CreateEntityProxy` Genişletme yöntemi bu amaç için kullanılabilir:
+Tür kullanımı uyumlu erişim için düzenleme işlevleri bir arabirime göre proxy 'ler oluşturabilir. `CreateEntityProxy` Uzantı yöntemi bu amaçla kullanılabilir:
 
 ```csharp
 public interface IAsyncCounter
@@ -266,7 +266,7 @@ public interface IAsyncCounter
     Task<int> GetAsync();
 }
 
-[FunctionName("CounterOrchestration)]
+[FunctionName("CounterOrchestration")]
 public static async Task Run(
     [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
@@ -278,20 +278,20 @@ public static async Task Run(
 }
 ```
 
-Önceki örnekte, "sayaç" varlık uygulayan mevcut varsayıldı `IAsyncCounter` arabirimi. Orchestration ardından kullanabilmek için `IAsyncCounter` zaman uyumlu bir varlıkla etkileşim kurmak için bir proxy tür oluşturma için tanım yazın.
+Önceki örnekte, `IAsyncCounter` arabirimi uygulayan bir "Counter" varlığının var olduğu varsayılır. Böylece düzenleme, varlık ile eşzamanlı olarak etkileşimde `IAsyncCounter` bulunmak için bir proxy türü oluşturmak üzere tür tanımını kullanabildi.
 
-### <a name="locking-entities-from-orchestrations"></a>Kilitleme varlıklardan düzenlemeleri
+### <a name="locking-entities-from-orchestrations"></a>Varlıkları düzenleyiclerden kilitleme
 
-Düzenlemeleri varlıkları kilitleyebilirsiniz. Bu özelliği kullanarak istenmeyen yarışa hazır önlemek için basit bir yol sunar *kritik bölümler*.
+Düzenlemeler, varlıkları kilitleyebilir. Bu özellik, *önemli bölümleri*kullanarak istenmeyen engelleri önlemenin basit bir yolunu sağlar.
 
-Bağlam nesnesini aşağıdaki yöntemleri sağlar:
+Bağlam nesnesi aşağıdaki yöntemleri sağlar:
 
-* **LockAsync**: bir veya daha fazla varlık kilitler alır.
-* **IsLocked**: false olursa kritik bölüm, şu anda, true döndürür Aksi takdirde.
+* **Lockasync**: bir veya daha fazla varlık üzerinde kilitler elde edin.
+* **Iskilitlendi**: Şu anda kritik bir bölümde true, değilse false döndürür.
 
-Kritik bölüm sona erer ve tüm kilitleri yayımlandığında, orchestration sona erdiğinde. . NET'te, `LockAsync` döndürür bir `IDisposable` ile birlikte kullanılabilecek atıldı, kritik bölüm biten bir `using` yan kritik bölüm söz dizimi bir gösterimini alır.
+Önemli bölüm sonlanır ve düzenleme sona erdiğinde tüm kilitler serbest bırakılır. .Net ' te `LockAsync` , kritik `IDisposable` bölümün sözdizimsel bir gösterimini almak için bir `using` yan tümcesiyle birlikte kullanılabilecek, atıldığında kritik bölümü sonlandıran bir döndürür.
 
-Örneğin, iki oyuncuların kullanılabilir olup olmadığını test etmek için gereken düzenleme göz önünde bulundurun ve bunları hem de oyun atayabilirsiniz. Bu görevi, kullanarak aşağıdaki gibi kritik bir bölüm uygulanabilir:
+Örneğin, iki oyuncunun kullanılabilir olup olmadığını test etmek için gereken bir düzenleme düşünün ve sonra bunları bir oyuna atayın. Bu görev, kritik bir bölüm kullanılarak aşağıdaki gibi uygulanabilir:
 
 ```csharp
 [FunctionName("Orchestrator")]
@@ -317,26 +317,26 @@ public static async Task RunOrchestrator(
 }
 ```
 
-Kritik bölüm içinde her iki player varlıklar, kritik bölüm içinde çağrılan olanlar dışındaki herhangi bir işlem yürütülürken yok anlamına gelir kilitlenir). Bu davranış, çakışan işlemleri yarışa hazır engeller, farklı bir atanan oynatıcıları gibi oyun ya da imzalama kapalı.
+Kritik bölümünde, oynatıcı varlıklarının her ikisi de kilitlidir ve bu, kritik bölümün içinden çağırıların dışında herhangi bir işlem yürütmeyeceği anlamına gelir. Bu davranış, farklı bir oyuna atanmakta olan oyuncular veya oturum kapatma gibi çakışan işlemlerle bu engelleri engeller.
 
-Biz birkaç kısıtlamaları dayatır ne kadar kritik bölümler üzerinde kullanılabilir. Bu kısıtlamalar, Kilitlenmeler ve yeniden giriş önlemek için hizmet.
+Kritik bölümlerin nasıl kullanılabileceği konusunda çeşitli kısıtlamalar sunuyoruz. Bu kısıtlamalar kilitlenmeleri ve yeniden giriş yapılmasını engeller.
 
-* Kritik bölümler iç içe olamaz.
-* Kritik bölümler suborchestrations oluşturulamıyor.
-* Kritik bölümler yalnızca kilitli varlıklar çağırabilirsiniz.
-* Kritik bölümler birden çok paralel çağrıları kullanarak aynı varlık çağrılamıyor.
-* Kritik bölümler yalnızca kilitli varlıklar sinyal verebilirsiniz.
+* Kritik bölümler iç içe geçirilemez.
+* Kritik bölümler, alt düzenlemeler oluşturamaz.
+* Kritik bölümler, yalnızca kilitlediği varlıkları çağırabilir.
+* Kritik bölümler birden çok paralel çağrı kullanarak aynı varlığı çağıramaz.
+* Kritik bölümler yalnızca kilitlendikleri varlıkları işaret edebilir.
 
 ## <a name="alternate-storage-providers"></a>Alternatif depolama sağlayıcıları
 
-Dayanıklı görev Framework dahil olmak üzere birden çok depolama sağlayıcıları bugün desteklemektedir. [Azure depolama](https://github.com/Azure/durabletask/tree/master/src/DurableTask.AzureStorage), [Azure Service Bus](https://github.com/Azure/durabletask/tree/master/src/DurableTask.ServiceBus)e [bellek içi öykünücü](https://github.com/Azure/durabletask/tree/master/src/DurableTask.Emulator)ve bir Deneysel [Redis](https://github.com/Azure/durabletask/tree/redis/src/DurableTask.Redis) sağlayıcısı. Ancak, şimdiye kadar Azure işlevleri için sürekli görev uzantısı yalnızca Azure depolama alanı Sağlayıcısı'desteklenir. Alternatif depolama sağlayıcıları için destek, dayanıklı işlevler 2.0 ile başlayarak, Redis sağlayıcı ile başlayan ekleniyor.
+Dayanıklı görev çerçevesi, [Azure depolama](https://github.com/Azure/durabletask/tree/master/src/DurableTask.AzureStorage), [Azure Service Bus](https://github.com/Azure/durabletask/tree/master/src/DurableTask.ServiceBus), [bellek Içi öykünücü](https://github.com/Azure/durabletask/tree/master/src/DurableTask.Emulator)ve deneysel [redin](https://github.com/Azure/durabletask/tree/redis/src/DurableTask.Redis) sağlayıcısı dahil olmak üzere bugün birden çok depolama sağlayıcısını destekler. Ancak, şu anda Azure Işlevleri için dayanıklı görev uzantısı yalnızca Azure Storage sağlayıcısını destekliyordu. Dayanıklı İşlevler 2,0 ' den başlayarak, redin sağlayıcısı ile başlayarak alternatif depolama sağlayıcıları için destek ekleniyor.
 
 > [!NOTE]
-> Dayanıklı işlevler 2.0, yalnızca .NET Standard 2.0 ile uyumlu sağlayıcılarını destekler. Yazma sırasında Azure Service Bus sağlayıcısı .NET Standard 2.0 desteklemiyor ve bu nedenle bir alternatif depolama sağlayıcısı olarak kullanılamaz.
+> Dayanıklı İşlevler 2,0 yalnızca .NET Standard 2,0 ile uyumlu sağlayıcıları destekler. Yazma sırasında, Azure Service Bus sağlayıcısı .NET Standard 2,0 desteklemez ve bu nedenle alternatif bir depolama sağlayıcısı olarak kullanılamaz.
 
-### <a name="emulator"></a>Öykünücü
+### <a name="emulator"></a>Benzeti
 
-[DurableTask.Emulator](https://www.nuget.org/packages/Microsoft.Azure.DurableTask.Emulator/) sağlayıcısıdır yerel bellek, yerel test senaryoları için uygun olan dayanıklı olmayan depolama sağlayıcısı. Aşağıdaki en düşük kullanılarak yapılandırılabilir **host.json** şema:
+[Durabletask. öykünücü](https://www.nuget.org/packages/Microsoft.Azure.DurableTask.Emulator/) sağlayıcısı yerel bir bellek, yerel test senaryoları için uygun, dayanıklı olmayan bir depolama sağlayıcıdır. Aşağıdaki en az **Host. JSON** şeması kullanılarak yapılandırılabilir:
 
 ```json
 {
@@ -352,9 +352,9 @@ Dayanıklı görev Framework dahil olmak üzere birden çok depolama sağlayıc�
 }
 ```
 
-### <a name="redis-experimental"></a>Redis (Deneysel)
+### <a name="redis-experimental"></a>Reddir (deneysel)
 
-[DurableTask.Redis](https://www.nuget.org/packages/Microsoft.Azure.DurableTask.Redis/) sağlayıcısı devam ederse, tüm düzenleme durumuna Redis küme yapılandırılır.
+[Durabletask. reddir](https://www.nuget.org/packages/Microsoft.Azure.DurableTask.Redis/) sağlayıcısı, tüm düzenleme durumlarını yapılandırılmış bir redsıs kümesine devam ettirir.
 
 ```json
 {
@@ -372,7 +372,7 @@ Dayanıklı görev Framework dahil olmak üzere birden çok depolama sağlayıc�
 }
 ```
 
-`connectionStringName` Bir uygulama ayarı veya ortam değişkeni adı başvurmalıdır. Bu uygulama ayarı veya ortam değişkeni biçiminde bir Redis bağlantı dizesi değeri içermelidir *sunucu: BağlantıNoktası*. Örneğin, `localhost:6379` için yerel bir Redis kümesine bağlanma.
+, `connectionStringName` Bir uygulama ayarı veya ortam değişkeni adına başvurmalıdır. Bu uygulama ayarı veya ortam değişkeni, *sunucu: bağlantı noktası*biçiminde bir redsıs bağlantı dizesi değeri içermelidir. Örneğin, `localhost:6379` yerel bir redto kümesine bağlanmak için.
 
 > [!NOTE]
-> Redis sağlayıcı şu anda Deneysel ve yalnızca tek bir düğümde çalışan işlev uygulamaları destekler. Bu Redis sağlayıcısı hiç olmadığı kadar genel olarak kullanılabilir hale getirilir ve gelecekteki bir sürümde kaldırılabilir garanti edilmez.
+> Redsıs sağlayıcısı şu anda deneysel ve yalnızca tek bir düğümde çalışan işlev uygulamalarını destekliyor. Redin sağlayıcısının genel kullanıma açık hale getirilme garantisi yoktur ve sonraki bir sürümde kaldırılabilir.

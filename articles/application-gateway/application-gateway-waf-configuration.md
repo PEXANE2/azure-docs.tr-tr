@@ -1,76 +1,79 @@
 ---
-title: Web uygulaması güvenlik duvarı istek boyutu sınırları ve Azure Application Gateway'de - Azure portalı hariç tutma listeleri
-description: Bu makale, web uygulaması güvenlik duvarı istek boyutu sınırları hakkında bilgi sağlar ve Azure portal ile Application Gateway yapılandırmasında dışlama listeler.
+title: Azure Application Gateway 'de Web uygulaması güvenlik duvarı istek boyutu sınırları ve dışlama listeleri Azure portal
+description: Bu makalede, Azure portal Application Gateway Web uygulaması güvenlik duvarı istek boyutu sınırları ve dışlama listeleri yapılandırması hakkında bilgi sağlanır.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.date: 5/15/2019
+ms.date: 7/17/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 272c6d2de23b1e89caef3f9bee20a96c5c196cde
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 9e9472fbcd01cf40204063174b159638369d7429
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275187"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326660"
 ---
-# <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Web uygulaması güvenlik duvarı istek boyutu sınırları ve hariç tutma listeleri
+# <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Web uygulaması güvenlik duvarı istek boyutu sınırları ve dışlama listeleri
 
-Azure Application Gateway web uygulaması Güvenlik Duvarı (WAF), web uygulamaları için koruma sağlar. Bu makalede WAF istek boyutu sınırları ve yapılandırma dışlama listeler.
+Azure Application Gateway Web uygulaması güvenlik duvarı (WAF), Web uygulamaları için koruma sağlar. Bu makalede WAF istek boyutu sınırları ve dışlama listeleri yapılandırması açıklanır.
 
 ## <a name="waf-request-size-limits"></a>WAF istek boyutu sınırları
 
 ![İstek boyutu sınırları](media/application-gateway-waf-configuration/waf-requestsizelimit.png)
 
-Web uygulaması güvenlik duvarı, istek boyutu sınırları içinde alt ve üst sınırlarını yapılandırmanıza olanak sağlar. Aşağıdaki iki boyutu sınırlarını yapılandırma kullanılabilir:
+Web uygulaması güvenlik duvarı, istek boyutu sınırlarını alt ve üst sınırlar içinde yapılandırmanıza olanak tanır. Aşağıdaki iki boyut sınırı yapılandırması kullanılabilir:
 
-- En fazla istek gövdesi boyutu alanı kilobayt ve denetimler genel istek boyutu sınırı dışında herhangi bir dosya yükler belirtilir. Bu alanın 128 KB'lık maksimum değerine 1 KB'lık minimumdan değişebilir. 128 KB istek gövdesi boyutu için varsayılan değerdir.
-- Dosya karşıya yükleme sınırı alanı MB olarak belirtilir ve izin verilen en büyük dosya yükleme boyutunu yönetir. Orta SKU en fazla 100 MB'ın olsa Bu alan 1 MB en düşük değerini ve en fazla 500 MB büyük SKU örnekleri için sahip olabilir. Dosya karşıya yükleme sınırı için varsayılan değer 100 MB'dir.
+- En büyük istek gövdesi boyutu alanı kilobayt cinsinden belirtilir ve dosya yükleme işlemleri hariç olmak üzere genel istek boyutu sınırını denetler. Bu alan, 1 KB en az 128-KB maksimum değer arasında değişebilir. İstek gövdesi boyutu için varsayılan değer 128 KB 'tır.
+- Dosya karşıya yükleme sınırı alanı MB olarak belirtilir ve izin verilen en büyük dosya yükleme boyutunu yönetir. Orta SKU en fazla 100 MB olduğunda, bu alanın en az 1 MB, büyük SKU örnekleri için en fazla 500 MB olması gerekebilir. Karşıya dosya yükleme sınırı için varsayılan değer 100 MB 'tır.
 
-Ayrıca, WAF istek gövdesi İnceleme açıp kapatmak için yapılandırılabilir bir düğme sunar. İstek gövdesi İnceleme varsayılan olarak etkinleştirilir. İstek gövdesi İnceleme kapalıysa, WAF HTTP ileti gövdesi içeriğini değerlendirmez. Böyle durumlarda, üst bilgiler, tanımlama bilgileri ve URI WAF kurallarını zorunlu tutmak WAF devam eder. İstek gövdesi İnceleme kapalıysa, en büyük istek gövdesi boyutu alan geçerli değildir ve ayarlanamaz. İletiler için istek gövdesi İnceleme kapatmak için WAF gönderilecek 128 KB'tan büyük sağlar, ancak ileti gövdesi güvenlik açıklarına karşı inceledi değil.
+WAF, istek gövdesi incelemesini açmak veya kapatmak için yapılandırılabilir bir düğme de sunmaktadır. Varsayılan olarak, istek gövdesi incelemesi etkindir. İstek gövdesi incelemesi kapalıysa, WAF, HTTP ileti gövdesinin içeriğini değerlendirmez. Bu gibi durumlarda WAF, üst bilgiler, tanımlama bilgileri ve URI üzerinde WAF kurallarını uygulamaya devam eder. İstek gövdesi incelemesi kapalıysa, en fazla istek gövdesi boyutu alanı uygulanamaz ve ayarlanamaz. İstek gövdesi incelemesini kapatmak, 128 KB 'den büyük mesajların WAF 'ye gönderilmesini sağlar, ancak ileti gövdesi güvenlik açıkları için incelenemiyor.
 
-## <a name="waf-exclusion-lists"></a>WAF hariç tutma listeleri
+## <a name="waf-exclusion-lists"></a>WAF dışlama listeleri
 
-![waf exclusion.png](media/application-gateway-waf-configuration/waf-exclusion.png)
+![WAF-Exclusion. png](media/application-gateway-waf-configuration/waf-exclusion.png)
 
-WAF hariç tutma listeleri, belirli bir WAF değerlendirme özniteliklerini atlamak izin verin. Yaygın olarak karşılaşılan örneklerden, Active Directory kimlik doğrulaması veya parola alanı için kullanılan belirteçleri eklenen ' dir. Bir hatalı pozitif sonuç WAF kurallarından tetikleyebilir özel karakterler içermesini gibi öznitelikleri fazladır. Bir öznitelik WAF dışlama listesine eklendikten sonra tüm yapılandırılmış ve etkin bir WAF kural tarafından kabul değil. Hariç tutma listeleri, genel kapsam içindedir.
+WAF dışlama listeleri, bir WAF değerlendirmesinden belirli istek özniteliklerini atlamanızı sağlar. Ortak bir örnek, kimlik doğrulama veya parola alanları için kullanılan Active Directory eklenen belirteçlerdir. Bu tür öznitelikler, WAF kurallarından yanlış bir pozitif değeri tetikleyebilecek özel karakterler içeriyor olabilir. WAF dışlama listesine bir öznitelik eklendikten sonra, yapılandırılmış ve etkin bir WAF kuralı tarafından değerlendirilmez. Dışlama listeleri, kapsamda geneldir.
 
-Hariç tutma listeleri aşağıdaki öznitelikler eklenebilir. Seçilen alan değerlerini WAF kurallara göre değerlendirilen değildir. Dışlama Kaldır incelemesini alanın değerini listeler.
+Aşağıdaki öznitelikler ada göre dışlama listelerine eklenebilir. Seçilen alanın değerleri WAF kurallarına göre değerlendirilmez, ancak adları yine de olur (Aşağıdaki örnek 1 ' i inceleyin, Kullanıcı Aracısı üstbilgisinin değeri WAF değerlendirmesinden hariç tutulur). Dışlama Listeleri alanın değerinin incelemesini kaldırır.
 
 * İstek üst bilgileri
 * İstek tanımlama bilgileri
-* İstek öznitelik adı (args) bir dışlama öğesi olarak eklenebilir:
+* İstek özniteliği adı (args) bir dışlama öğesi olarak eklenebilir, örneğin:
 
-   * Form alanının adı
-   * XML varlık
-   * JSON varlık
+   * Form alanı adı
+   * XML varlığı
+   * JSON varlığı
    * URL sorgu dizesi bağımsız değişkenleri
 
-Belirtin tam istek üst bilgisi, gövdesi, tanımlama bilgisi veya sorgu dizesi özniteliği eşleşme.  Veya kısmi eşleşmeler isteğe bağlı olarak belirtebilirsiniz. Dışlama hiçbir zaman değeri üzerinde bir üstbilgi alanı her zaman açıktır. Hariç tutma kuralları kapsamı geneldir ve tüm sayfaları ve tüm kurallar için.
+Tam bir istek üst bilgisi, gövde, tanımlama bilgisi veya sorgu dizesi özniteliği eşleşmesi belirtebilirsiniz.  Ya da isteğe bağlı olarak kısmi eşleşmeler belirtebilirsiniz. Dışlama kuralları kapsamda geneldir ve tüm sayfalar ve tüm kurallar için geçerlidir.
 
-Desteklenen eşleşme ölçütlerini işleçler şunlardır:
+Aşağıdakiler, desteklenen eşleşme ölçütü işleçleridir:
 
-- **Eşittir**:  Bu işleç, tam bir eşleşme için kullanılır. Adlı bir üst bilgi seçmek için örnek olarak **bearerToken**, eşittir işleci olarak seçiciyi kullanın **bearerToken**.
-- **İle başlayan**: Bu işleç, belirtilen Seçici değerle başlayan tüm alanları eşleşir.
-- **İle biten**:  Bu işleç, belirtilen seçici değeri ile biten tüm isteği alanları eşleşir.
-- **İçeren**: Bu işleç belirtilen seçici değeri içeren tüm isteği alanları eşleşir.
-- **Herhangi bir eşittir**: Bu işleç, tüm istek alanları eşleşir. * Seçici değeri olması.
+- **Eşittir**:  Bu işleç tam eşleşme için kullanılır. Örnek olarak, **yataertoken**adlı bir üst bilgi seçmek için, Selector ile WITH, yataya kümesi olarak ayarlanmış Equals işlecini kullanın.
+- **İle başlayan**: Bu işleç, belirtilen Seçici değeriyle başlayan tüm alanlarla eşleşir.
+- **İle biten**:  Bu işleç, belirtilen Seçici değeriyle biten tüm istek alanlarıyla eşleşir.
+- **İçeren**: Bu işleç, belirtilen Seçici değerini içeren tüm istek alanlarıyla eşleşir.
+- **Eşittir any**: Bu işleç tüm istek alanlarıyla eşleşir. * Seçici değeri olacaktır.
 
-Her durumda eşleştirme büyük küçük harfe duyarlı değildir ve normal ifade Seçici izin verilmiyor.
+Tüm durumlarda eşleşen büyük/küçük harfe duyarlı değildir ve normal ifadeye seçici olarak izin verilmez.
+
+> [!NOTE]
+> Daha fazla bilgi ve sorun giderme yardımı için bkz. [WAF sorun giderme](web-application-firewall-troubleshoot.md).
 
 ### <a name="examples"></a>Örnekler
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Aşağıdaki örnekler dışlamaları kullanımını göstermektedir.
+Aşağıdaki örneklerde, dışlamaları kullanımı gösterilmektedir.
 
 ### <a name="example-1"></a>Örnek 1
 
-Bu örnekte, user-agent üstbilgisi dışlamak istediğiniz. User-agent isteği üstbilgisi, uygulama türü, işletim sistemi, yazılım satıcısı veya istekte bulunan yazılım kullanıcı aracısı yazılım sürümünü belirlemek ağ protokolü eşleri izin veren özellik dizeyi içerir. Daha fazla bilgi için [User-Agent](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent).
+Bu örnekte, Kullanıcı Aracısı üst bilgisini dışlamak istiyorsunuz. Kullanıcı Aracısı istek üst bilgisi, ağ protokolü eşlerinin uygulama türü, işletim sistemi, yazılım satıcısı veya istekte bulunan yazılım Kullanıcı aracısının yazılım sürümünü belirlemesine izin veren bir özellik dizesi içerir. Daha fazla bilgi için bkz. [Kullanıcı Aracısı](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent).
 
-Herhangi bir sayıda bu üst bilgiyi değerlendirirken devre dışı bırakmak için neden olabilir. WAF görür ve kötü amaçlı olduğu varsayılır bir dize olabilir. Örneğin, Klasik SQL saldırı "x = x" bir dize. Bazı durumlarda, bu yasal trafik olabilir. Bu nedenle bu başlığı WAF değerlendirmesinden gelen hariç gerekebilir.
+Bu üst bilgiyi değerlendirmeyi devre dışı bırakmak için herhangi bir sayıda neden olabilir. WAF 'nin gördüğü bir dize olabilir ve kötü amaçlı olduğunu varsaymaktadır. Örneğin, bir dizedeki klasik SQL saldırısı "x = x". Bazı durumlarda bu yasal trafik olabilir. Bu nedenle, bu üstbilgiyi WAF değerlendirmesinden çıkarmanız gerekebilir.
 
-Aşağıdaki Azure PowerShell cmdlet'i, user-agent üstbilgisi değerlendirmesinden gelen dışlar:
+Aşağıdaki Azure PowerShell cmdlet 'i, Kullanıcı Aracısı üst bilgisini değerlendirmeden dışlar:
 
 ```azurepowershell
 $exclusion1 = New-AzApplicationGatewayFirewallExclusionConfig `
@@ -81,18 +84,18 @@ $exclusion1 = New-AzApplicationGatewayFirewallExclusionConfig `
 
 ### <a name="example-2"></a>Örnek 2
 
-Bu örnek değeri hariç *kullanıcı* istekte URL yoluyla geçirilen parametre. Örneğin, bir kullanıcı alanı, onu engellediğinde, WAF kötü amaçlı içerik görüntüleyen bir dize içermesi ortamınızdaki ortak varsayalım.  WAF alanındaki herhangi bir şey değerlendirmez. böylece, bu durumda kullanıcı parametresi hariç tutabilirsiniz.
+Bu örnek, istekte URL aracılığıyla geçirilen *Kullanıcı* parametresindeki değeri dışlar. Örneğin, Kullanıcı alanı için ortamınızda, WAF 'in kötü amaçlı içerik olarak görünümlerinin olduğu bir dize içermesi için ortak olduğunu varsayalım.  Bu durumda Kullanıcı parametresini dışarıda bırakabilirsiniz, böylece WAF alandaki herhangi bir şeyi değerlendirmez.
 
-Aşağıdaki Azure PowerShell cmdlet'i kullanıcı parametresi değerlendirmesinden gelen dışlar:
+Aşağıdaki Azure PowerShell cmdlet 'i, Kullanıcı parametresini değerlendirmeden dışlar:
 
 ```azurepowershell
 $exclusion2 = New-AzApplicationGatewayFirewallExclusionConfig `
    -MatchVariable "RequestArgNames" `
-   -SelectorMatchOperator "Equals" `
+   -SelectorMatchOperator "StartsWith" `
    -Selector "user"
 ```
-Dolayısıyla URL **http://www.contoso.com/?user=fdafdasfda** geçirilen WAF için dize değerlendirmek olmaz **fdafdasfda**.
+Bu nedenle, URL **http://www.contoso.com/?user%281%29=fdafdasfda** WAF 'ye geçirilirse **fdadfdasfda**dizesini değerlendirmez, ancak yine de **% 281% 29**parametre adı kullanıcı olarak değerlendirilir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-WAF ayarlarınızı yapılandırdıktan sonra WAF günlükleri görüntüleme hakkında bilgi edinebilirsiniz. Daha fazla bilgi için [Application Gateway tanılama](application-gateway-diagnostics.md#diagnostic-logging).
+WAF ayarlarınızı yapılandırdıktan sonra, WAF günlüklerinizi görüntülemeyi öğrenebilirsiniz. Daha fazla bilgi için bkz. [tanılama Application Gateway](application-gateway-diagnostics.md#diagnostic-logging).

@@ -1,6 +1,6 @@
 ---
-title: Güncelleştirme yönetimi çözümünü azure'da
-description: Bu makale, Azure güncelleştirme yönetimi çözümünü Windows ve Linux bilgisayarlarınızın güncelleştirmelerini yönetmek için nasıl kullanılacağını anlamanıza yardımcı olmak için hazırlanmıştır.
+title: Azure 'da Güncelleştirme Yönetimi çözümü
+description: Bu makale, Windows ve Linux bilgisayarlarınıza yönelik güncelleştirmeleri yönetmek için Azure Güncelleştirme Yönetimi çözümünü nasıl kullanacağınızı anlamanıza yardımcı olmaya yöneliktir.
 services: automation
 ms.service: automation
 ms.subservice: update-management
@@ -9,75 +9,75 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3bfec413430de588be6c4423702d41779a8426d0
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
-ms.translationtype: MT
+ms.openlocfilehash: 0c94e10a6f44a99c31e30c8f7df54e9441ce7a18
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477989"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311755"
 ---
-# <a name="update-management-solution-in-azure"></a>Güncelleştirme yönetimi çözümünü azure'da
+# <a name="update-management-solution-in-azure"></a>Azure 'da Güncelleştirme Yönetimi çözümü
 
-Azure'da, şirket içi ortamlarda veya diğer bulut sağlayıcıları, Windows ve Linux bilgisayarlar için işletim sistemi güncelleştirmelerini yönetmek için Azure Otomasyonu'nda güncelleştirme yönetimi çözümü kullanabilirsiniz. Tüm aracı bilgisayarlardaki kullanılabilir güncelleştirmelerin durumunu hızla değerlendirebilir ve sunucular için gerekli güncelleştirmeleri yükleme işlemini yönetebilirsiniz.
+Azure 'da, şirket içi ortamlarda veya diğer bulut sağlayıcılarında Windows ve Linux bilgisayarlarınıza yönelik işletim sistemi güncelleştirmelerini yönetmek için Azure Otomasyonu 'nda Güncelleştirme Yönetimi çözümünü kullanabilirsiniz. Tüm aracı bilgisayarlardaki kullanılabilir güncelleştirmelerin durumunu hızla değerlendirebilir ve sunucular için gerekli güncelleştirmeleri yükleme işlemini yönetebilirsiniz.
 
-Doğrudan Azure Otomasyonu hesabınızdan sanal makineler için güncelleştirme yönetimini etkinleştirebilirsiniz. Otomasyon hesabınızdan sanal makineler için güncelleştirme yönetimini etkinleştirme hakkında bilgi için bkz: [birden çok sanal makine için güncelleştirmeleri yönetme](manage-update-multi.md). Ayrıca, sanal makine sayfasından Azure portalında sanal makine için güncelleştirme yönetimini etkinleştirebilirsiniz. Bu senaryo için kullanılabilir [Linux](../virtual-machines/linux/tutorial-monitoring.md#enable-update-management) ve [Windows](../virtual-machines/windows/tutorial-monitoring.md#enable-update-management) sanal makineler.
+Sanal makineler için Güncelleştirme Yönetimi doğrudan Azure Otomasyonu hesabınızdan etkinleştirebilirsiniz. Otomasyon hesabınızdan sanal makineler için Güncelleştirme Yönetimi etkinleştirmeyi öğrenmek için bkz. [birden çok sanal makine için güncelleştirmeleri yönetme](manage-update-multi.md). Ayrıca, bir sanal makine için Güncelleştirme Yönetimi, Azure portal sanal makine sayfasından da etkinleştirebilirsiniz. Bu senaryo, [Linux](../virtual-machines/linux/tutorial-monitoring.md#enable-update-management) ve [Windows](../virtual-machines/windows/tutorial-monitoring.md#enable-update-management) sanal makineleri için kullanılabilir.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="solution-overview"></a>Çözüme genel bakış
 
-Güncelleştirme yönetimi tarafından yönetilen bilgisayarlar değerlendirme gerçekleştirmek ve güncelleştirme dağıtımları için aşağıdaki yapılandırmaları kullanın:
+Güncelleştirme Yönetimi tarafından yönetilen bilgisayarlar, değerlendirme ve güncelleştirme dağıtımları gerçekleştirmek için aşağıdaki konfigürasyonları kullanır:
 
-* Microsoft Monitoring Agent (MMA) Windows veya Linux için
+* Windows veya Linux için Microsoft Monitoring Agent (MMA)
 * Linux için PowerShell İstenen Durum Yapılandırması (DSC)
 * Otomasyon Karma Runbook Çalışanı
-* Microsoft Update veya Windows bilgisayarlar için Windows Server Update Services (WSUS)
+* Windows bilgisayarlar için Microsoft Update veya Windows Server Update Services (WSUS)
 
-Aşağıdaki diyagramda davranışı kavramsal bir görünümü gösterir ve veri akışının nasıl çözüm değerlendirir ve tüm güvenlik güncelleştirmelerini uygular bağlı Windows Server ve Linux bilgisayarları bir çalışma alanında:
+Aşağıdaki diyagramda, çözümün bir çalışma alanındaki tüm bağlı Windows Server ve Linux bilgisayarlarına nasıl değerlendirir ve güvenlik güncelleştirmeleri uyguladığı, davranışın ve veri akışının kavramsal görünümü gösterilmektedir:
 
-![Güncelleştirme yönetimi işlem akışı](./media/automation-update-management/update-mgmt-updateworkflow.png)
+![İşlem akışı Güncelleştirme Yönetimi](./media/automation-update-management/update-mgmt-updateworkflow.png)
 
-Güncelleştirme yönetimi, yerel makine aynı kiracıda birden çok abonelik içinde kullanılabilir.
+Güncelleştirme Yönetimi, makineleri aynı kiracıda birden çok aboneliğe yerel olarak eklemek için kullanılabilir.
 
-Bir paket sunulduktan sonra değerlendirme için Linux makineler için göstermek düzeltme eki 2-3 saat sürer. Windows makineleri için piyasaya sürüldükten sonra değerlendirmesi için gösterilecek yamasının 12-15 saat sürer.
+Paket yayımlandıktan sonra, düzeltme ekinin değerlendirme için Linux makinelere gösterilmesi 2-3 saat sürer. Windows makineleri için, düzeltme ekinin yayımlandıktan sonra değerlendirme için gösterilmesi 12-15 saat sürer.
 
-Bilgisayar güncelleştirme uyumluluğu taraması tamamlandıktan sonra aracısı bilgileri toplu Azure İzleyici günlüklerine iletir. Bir Windows bilgisayarda Uyumluluk taraması varsayılan olarak her 12 saatte bir çalıştırılır.
+Bir bilgisayar güncelleştirme uyumluluğu taramasını tamamladıktan sonra, aracı bilgileri toplu olarak Azure Izleyici günlüklerine iletir. Bir Windows bilgisayarda, uyumluluk taraması varsayılan olarak her 12 saatte bir çalıştırılır.
 
-Tarama zamanlamasına ek olarak, güncelleştirme yüklemesi öncesinde ve güncelleştirme yüklemesi sonrasında yeniden başlatılmadan MMA 15 dakika içinde güncelleştirme uyumluluğu için tarama başlatılır.
+Tarama zamanlamasının yanı sıra, güncelleştirme uyumluluğuna yönelik tarama, güncelleştirme yüklemesinden önce ve güncelleştirme yüklemesinden sonra, 15 dakika içinde başlatılır.
 
-Bir Linux bilgisayar için Uyumluluk taraması varsayılan olarak her saat başı gerçekleştirilir. MMA aracısını yeniden başlatılması durumunda 15 dakika içinde Uyumluluk taraması başlatılır.
+Bir Linux bilgisayar için, uyumluluk taraması varsayılan olarak saatte bir gerçekleştirilir. MMA Aracısı yeniden başlatılırsa, 15 dakika içinde bir uyumluluk taraması başlatılır.
 
-Raporları dayanarak bilgisayarınızın ne kaynağı üzerinde nasıl güncel şekilde yapılandırılmış çözüm ile eşitleme. Windows bilgisayar ne zaman WSUS en son Microsoft Update ile eşitlenen bağlı olarak, WSUS için bildirmek için yapılandırılmışsa, sonuçları hangi Microsoft Updates gösterir farklı olabilir. Bu davranış genel depo yerine yerel bir depoya rapora şekilde yapılandırılan Linux bilgisayarları aynıdır.
+Çözüm, bilgisayarın güncel olduğunu, hangi kaynağa eşitlemek üzere yapılandırılacağını bildirir. Windows bilgisayarı WSUS 'e rapor verecek şekilde yapılandırıldıysa, WSUS Microsoft Update ile en son ne zaman eşitlendiğine bağlı olarak sonuçlar Microsoft güncelleştirmelerinin gösterdiği gibi farklılık gösterebilir. Bu davranış, bir genel depoya değil yerel depoya raporlamak üzere yapılandırılmış Linux bilgisayarları için aynıdır.
 
 > [!NOTE]
-> Düzgün hizmete raporlamak üzere güncelleştirme yönetimi belirli URL'lerini ve bağlantı noktalarını etkinleştirilmesini gerektirir. Bu gereksinimler hakkında daha fazla bilgi için bkz. [ağ karma çalışanları için planlama](automation-hybrid-runbook-worker.md#network-planning).
+> Hizmete doğru bir şekilde raporlamak için, Güncelleştirme Yönetimi belirli URL 'Lerin ve bağlantı noktalarının etkinleştirilmesini gerektirir. Bu gereksinimler hakkında daha fazla bilgi edinmek için bkz. [karma çalışanlar Için ağ planlaması](automation-hybrid-runbook-worker.md#network-planning).
 
-Zamanlanmış bir dağıtım oluşturarak, yazılım güncelleştirmelerinin gerekli olduğu bilgisayarlara güncelleştirmeleri dağıtabilir ve yükleyebilirsiniz. Olarak sınıflandırılmış güncelleştirmeler *isteğe bağlı* Windows bilgisayarlar için dağıtım kapsamına dahil değildir. Yalnızca gerekli güncelleştirmeleri dağıtım kapsamına dahildir.
+Zamanlanmış bir dağıtım oluşturarak, yazılım güncelleştirmelerinin gerekli olduğu bilgisayarlara güncelleştirmeleri dağıtabilir ve yükleyebilirsiniz. *Isteğe bağlı* olarak sınıflandırılan güncelleştirmeler Windows bilgisayarları için dağıtım kapsamına dahil edilmez. Dağıtım kapsamında yalnızca gerekli güncelleştirmeler bulunur.
 
-Zamanlanmış dağıtım, bilgisayarları açıkça belirterek veya seçerek uygun güncelleştirmeleri hangi hedef bilgisayarların alma tanımlayan bir [bilgisayar grubu](../azure-monitor/platform/computer-groups.md) belirli bir bilgisayar kümesinin günlük aramaları temelinde veya [Azure sorgu](#azure-machines) Azure Vm'leri belirtilen ölçütlere göre dinamik olarak seçer. Bu grupları farklıdır [kapsam yapılandırması](../azure-monitor/insights/solution-targeting.md), yalnızca hangi makineleri çözüm sağlayan yönetim paketlerini almak belirlemek için kullanılır. 
+Zamanlanan dağıtım, açıkça bilgisayarları belirterek veya belirli bir bilgisayar kümesinin veya bir [Azure sorgusunun](#azure-machines) günlük aramalarını temel alan bir [bilgisayar grubu](../azure-monitor/platform/computer-groups.md) seçerek hangi hedef bilgisayarların ilgili güncelleştirmeleri alacağını tanımlar. Azure VM 'Leri belirtilen ölçütlere göre dinamik olarak seçer. Bu gruplar, yalnızca çözümü etkinleştiren yönetim paketlerini hangi makinelerin kullandığını belirlemek için kullanılan [kapsam yapılandırmasından](../azure-monitor/insights/solution-targeting.md)farklıdır. 
 
-Onayla ve güncelleştirmeleri yüklenebilir süreyi ayarlamak için bir zamanlama de belirtirsiniz. Bu süre, bakım penceresi adı verilir. Bakım penceresinin on dakikada bir yeniden başlatma gereklidir ve uygun bir yeniden başlatma seçeneğini seçtiyseniz yeniden başlatmaları için ayrılmıştır. Düzeltme eki uygulama, beklenenden daha uzun sürer ve bakım penceresinde on dakikadan az ise, yeniden başlatma gerçekleşmez.
+Ayrıca, güncelleştirmelerin yüklenebileceği süreyi onaylamak ve ayarlamak için bir zamanlama da belirtirsiniz. Bu süre, bakım penceresi olarak adlandırılır. Yeniden başlatma gerekirse ve uygun yeniden başlatma seçeneğini belirlediyseniz, bakım penceresinin on dakikası yeniden başlatmalar için ayrılmıştır. Düzeltme eki uygulama beklenenden uzun sürüyorsa ve bakım penceresinde on dakikadan az varsa, yeniden başlatma gerçekleşmeyecektir.
 
-Güncelleştirmeler Azure Automation’daki runbook'lar tarafından yüklenir. Bu runbook'ları görüntüleyemezsiniz ve runbook'lar herhangi bir yapılandırma gerekmez. Güncelleştirme dağıtımı oluşturulduğunda, güncelleştirme dağıtımına dahil edilen bilgisayarlar için belirtilen zamanda ana güncelleştirme runbook'unu başlatan bir zamanlama oluşturur. Ana runbook, gerekli güncelleştirmelerin yükleneceği her aracıda bir alt runbook başlatır.
+Güncelleştirmeler Azure Automation’daki runbook'lar tarafından yüklenir. Bu runbook 'ları görüntüleyemezsiniz ve Runbook 'lar herhangi bir yapılandırma gerektirmez. Güncelleştirme dağıtımı oluşturulduğunda, güncelleştirme dağıtımı, dahil edilen bilgisayarlar için belirtilen zamanda ana güncelleştirme runbook 'unu Başlatan bir zamanlama oluşturur. Ana runbook, gerekli güncelleştirmeleri yüklemek için her bir aracıda bir alt runbook başlatır.
 
-Tarih ve güncelleştirme dağıtımında belirtilen saatte, hedef bilgisayarlar dağıtımı paralel olarak yürütün. Yüklemeden önce güncelleştirmelerin hala gerekli olduğunu doğrulamak için bir tarama çalıştırılır. WSUS istemci bilgisayarları için WSUS'de güncelleştirmeleri onaylı olmayan güncelleştirme dağıtımının başarısız olur.
+Güncelleştirme dağıtımında belirtilen tarih ve saatte, hedef bilgisayarlar dağıtımı paralel olarak yürütür. Yüklemeden önce, güncelleştirmelerin hala gerekli olduğunu doğrulamak üzere bir tarama çalıştırılır. WSUS istemci bilgisayarları için güncelleştirmeler WSUS 'ta onaylanmamışsa güncelleştirme dağıtımı başarısız olur.
 
-Birden fazla Log Analytics çalışma alanları (çoklu yönlendirmeyi) ortamında güncelleştirme yönetimi için kayıtlı bir makine olması desteklenmiyor.
+Birden fazla Log Analytics çalışma alanında (çoklu barındırma) Güncelleştirme Yönetimi için kayıtlı bir makine olması desteklenmez.
 
 ## <a name="clients"></a>İstemciler
 
 ### <a name="supported-client-types"></a>Desteklenen istemci türleri
 
-Aşağıdaki tabloda, desteklenen işletim sistemlerinin bir listesi gösterilir:
+Aşağıdaki tabloda desteklenen işletim sistemlerinin bir listesi gösterilmektedir:
 
 |İşletim sistemi  |Notlar  |
 |---------|---------|
-|Windows Server 2008, Windows Server 2008 R2 RTM    | Destekler, yalnızca değerlendirme güncelleştirin.         |
-|Windows Server 2008 R2 SP1 ve üzeri (dahil olmak üzere Windows Server 2012 ve 2016)    |.NET framework 4.5.1 veya üzeri gereklidir. ([İndirme .NET Framework](/dotnet/framework/install/guide-for-developers))<br/> Windows PowerShell 4.0 veya üzeri gereklidir. ([WMF 4.0 indirme](https://www.microsoft.com/download/details.aspx?id=40855))<br/> Windows PowerShell 5.1, daha fazla güvenilirlik için önerilir.  ([İndirme WMF 5.1](https://www.microsoft.com/download/details.aspx?id=54616))        |
-|CentOS 6 (x86/x64) ve 7 (x64)      | Linux aracılarının bir güncelleştirme havuzuna erişimi olmalıdır. Sınıflandırma tabanlı düzeltme eki uygulama, CentOS, kullanıma hazır yoksa güvenlik verileri döndürmek için 'ı yum' gerektirir. CentOS üzerinde sınıflandırmaya düzeltme eki uygulama ile ilgili daha fazla bilgi için bkz: [güncelleştirme sınıflandırmaları Linux'ta](#linux-2)          |
+|Windows Server 2008, Windows Server 2008 R2 RTM    | Yalnızca güncelleştirme değerlendirmelerini destekler.         |
+|Windows Server 2008 R2 SP1 ve üzeri (Windows Server 2012 ve 2016 dahil)    |.NET Framework 4.5.1 veya üzeri gereklidir. ([.NET Framework indir](/dotnet/framework/install/guide-for-developers))<br/> Windows PowerShell 4,0 veya üzeri gereklidir. ([WMF 4,0 indirin](https://www.microsoft.com/download/details.aspx?id=40855))<br/> Windows PowerShell 5,1, daha fazla güvenilirlik için önerilir.  ([WMF 5,1 indirin](https://www.microsoft.com/download/details.aspx?id=54616))        |
+|CentOS 6 (x86/x64) ve 7 (x64)      | Linux aracılarının bir güncelleştirme havuzuna erişimi olmalıdır. Sınıflandırma tabanlı düzeltme eki uygulama, CentOS 'ın kutudan çıkan güvenlik verilerini döndürmesi için ' yıum ' gerektirir. CentOS üzerinde sınıflandırma tabanlı düzeltme eki uygulama hakkında daha fazla bilgi için bkz. [Linux 'ta sınıflandırmaları güncelleştirme](#linux-2)          |
 |Red Hat Enterprise 6 (x86/x64) ve 7 (x64)     | Linux aracılarının bir güncelleştirme havuzuna erişimi olmalıdır.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) ve 12 (x64)     | Linux aracılarının bir güncelleştirme havuzuna erişimi olmalıdır.        |
-|Ubuntu 14.04 LTS, 16.04 LTS ve 18.04 (x86/x64)      |Linux aracılarının bir güncelleştirme havuzuna erişimi olmalıdır.         |
+|Ubuntu 14,04 LTS, 16,04 LTS ve 18,04 (x86/x64)      |Linux aracılarının bir güncelleştirme havuzuna erişimi olmalıdır.         |
 
 ### <a name="unsupported-client-types"></a>Desteklenmeyen istemci türleri
 
@@ -92,58 +92,58 @@ Aşağıdaki tabloda, desteklenmeyen bir işletim sistemleri listelenmektedir:
 
 #### <a name="windows"></a>Windows
 
-Windows aracıları bir WSUS sunucusuyla iletişim kuracak şekilde yapılandırılması gerekir veya Microsoft Update'e erişimi olmalıdır. System Center Configuration Manager ile güncelleştirme yönetimi kullanabilirsiniz. Tümleştirme senaryoları hakkında daha fazla bilgi için bkz: [güncelleştirme yönetimi ile System Center Configuration Manager tümleştirme](oms-solution-updatemgmt-sccmintegration.md#configuration). [Windows Aracısı](../azure-monitor/platform/agent-windows.md) gereklidir. Onboarding bir Azure sanal makinesi kullanıyorsanız aracı otomatik olarak yüklenir.
+Windows aracılarının bir WSUS sunucusuyla iletişim kuracak şekilde yapılandırılması veya Microsoft Update erişimi olması gerekir. System Center Configuration Manager Güncelleştirme Yönetimi kullanabilirsiniz. Tümleştirme senaryoları hakkında daha fazla bilgi için bkz. [Güncelleştirme Yönetimi System Center Configuration Manager tümleştirme](oms-solution-updatemgmt-sccmintegration.md#configuration). [Windows Aracısı](../azure-monitor/platform/agent-windows.md) gereklidir. Bir Azure sanal makinesini oluşturuyorsanız, aracı otomatik olarak yüklenir.
 
 #### <a name="linux"></a>Linux
 
-Linux için makine bir güncelleştirme havuzuna erişimi olmalıdır. Güncelleştirme deposu, özel veya genel olabilir. Güncelleştirme yönetimi ile etkileşim kurmak için TLS 1.1 veya TLS 1.2 gerekir. Bir rapor birden fazla Log Analytics çalışma alanları için yapılandırılmış Linux için Log Analytics Aracısı, bu çözüm ile desteklenmez.
+Linux için, makinenin bir güncelleştirme deposuna erişimi olması gerekir. Güncelleştirme deposu özel veya genel olabilir. Güncelleştirme Yönetimi etkileşimde bulunmak için TLS 1,1 veya TLS 1,2 gereklidir. Linux için birden fazla Log Analytics çalışma alanına raporlamak üzere yapılandırılmış bir Log Analytics Aracısı bu çözümle desteklenmez.
 
-Linux için Log Analytics aracısını yükleme ve en son sürümü indirmek için hakkında daha fazla bilgi için bkz. [Linux için Log Analytics aracısını](https://github.com/microsoft/oms-agent-for-linux). Windows için Log Analytics aracısını yükleme hakkında daha fazla bilgi için bkz: [İzleme Aracısı Windows için Microsoft](../log-analytics/log-analytics-windows-agent.md).
+Linux için Log Analytics aracısını yükleme ve en son sürümü indirme hakkında daha fazla bilgi için bkz. [Linux için Log Analytics Aracısı](https://github.com/microsoft/oms-agent-for-linux). Windows için Log Analytics aracısının nasıl yükleneceği hakkında bilgi için bkz. [Windows için Microsoft Monitoring Agent](../log-analytics/log-analytics-windows-agent.md).
 
 ## <a name="permissions"></a>İzinler
 
-Oluşturma ve güncelleştirme dağıtımlarını yönetmek için belirli izinler gerekir. Bu izinleri hakkında bilgi edinmek için [rol tabanlı erişim - güncelleştirme yönetimi](automation-role-based-access-control.md#update-management).
+Güncelleştirme dağıtımları oluşturmak ve yönetmek için belirli izinlere sahip olmanız gerekir. Bu izinler hakkında bilgi edinmek için bkz. [rol tabanlı erişim-güncelleştirme yönetimi](automation-role-based-access-control.md#update-management).
 
 ## <a name="solution-components"></a>Çözüm bileşenleri
 
-Çözüm, aşağıdaki kaynaklardan oluşur. Kaynaklar, Otomasyon hesabınıza eklenir. Ya da doğrudan bağlı aracılar oldukları veya bir Operations Manager bağlantılı yönetim grubunda.
+Çözüm aşağıdaki kaynaklardan oluşur. Kaynaklar Otomasyon hesabınıza eklenir. Bunlar doğrudan bağlı aracılardan veya Operations Manager bağlı bir yönetim grubunda yer alırlar.
 
 ### <a name="hybrid-worker-groups"></a>Karma Çalışanı grupları
 
-Bu çözümü etkinleştirdikten sonra Log Analytics çalışma alanınıza doğrudan bağlı herhangi bir Windows bilgisayarda otomatik olarak bu çözümde yer alan runbook'ların desteklenmesi için bir karma Runbook çalışanı olarak yapılandırılır.
+Bu çözümü etkinleştirdikten sonra, Log Analytics çalışma alanınıza doğrudan bağlı olan tüm Windows bilgisayarları, bu çözüme dahil olan runbook 'ları destekleyecek bir karma runbook çalışanı olarak otomatik olarak yapılandırılır.
 
-Çözüm tarafından yönetilen her Windows bilgisayarı listelenen **karma çalışan grupları** bölmesi bir **sistem karma çalışan grubu** Otomasyon hesabı için. Çözümler adlandırma kuralını kullanır *Hostname fqdn_guıd*. Hesabınızdaki runbook'larla bu grupları hedefleyemezsiniz. Denerseniz başarısız. Bu gruplar yalnızca yönetim çözümünü desteklemeye yöneliktir.
+Çözüm tarafından yönetilen her Windows bilgisayarı, Otomasyon hesabı için bir **sistem karma çalışanı grubu** olarak **karma çalışan grupları** bölmesinde listelenir. Çözümler, *hostname FQDN_GUID*adlandırma kuralını kullanır. Bu grupları hesabınızdaki runbook 'lar ile hedefleyebilirsiniz. Çalışırsanız, bunlar başarısız olur. Bu gruplar yalnızca yönetim çözümünü desteklemek üzere tasarlanmıştır.
 
-Windows bilgisayarları, çözüm ve karma Runbook çalışanı grup üyeliği için aynı hesabı kullanırsanız, Otomasyon gruplarını desteklemek için Otomasyon hesabınızdaki bir karma Runbook çalışanı grubuna ekleyebilirsiniz. Bu işlev karma Runbook çalışanının 7.2.12024.0 sürümüne eklenmiştir.
+Hem çözüm hem de karma runbook çalışanı grup üyeliği için aynı hesabı kullanırsanız Otomasyon Runbook 'larını desteklemek için Otomasyon hesabınızdaki karma Runbook Worker grubuna Windows bilgisayarları ekleyebilirsiniz. Bu işlev, karma Runbook Worker 'ın 7.2.12024.0 sürümüne eklenmiştir.
 
 ### <a name="management-packs"></a>Yönetim paketleri
 
-System Center Operations Manager yönetim grubunuzun bir Log Analytics çalışma alanınıza bağlıysa, aşağıdaki yönetim paketlerini Operations Manager'da yüklenir. Çözüm ekledikten sonra bu yönetim paketleri de doğrudan bağlı Windows bilgisayarlarına yüklenir. Bu yönetim paketleri yönetme veya yapılandırma gerekmez.
+System Center Operations Manager yönetim grubunuz bir Log Analytics çalışma alanına bağlıysa, aşağıdaki yönetim paketleri Operations Manager yüklenir. Bu yönetim paketleri, çözümü ekledikten sonra doğrudan bağlı Windows bilgisayarlarına da yüklenir. Bu yönetim paketlerini yapılandırmanıza veya yönetmenize gerek yoktur.
 
 * Microsoft System Center Advisor Update Assessment Intelligence Pack (Microsoft.IntelligencePacks.UpdateAssessment)
 * Microsoft.IntelligencePack.UpdateAssessment.Configuration (Microsoft.IntelligencePack.UpdateAssessment.Configuration)
 * MP Dağıtımını güncelleştirme
 
 > [!NOTE]
-> Geçersiz kılmak için bir çalışma alanıyla ilişkilendirilmesi için aracılar yönetim grubu düzeyinde yapılandırılan bir Operations Manager 1807 yönetim grubu varsa, bunları gösterilecek geçerli geçici olan **IsAutoRegistrationEnabled** için **True** içinde **Microsoft.IntelligencePacks.AzureAutomation.HybridAgent.Init** kuralı.
+> Yönetim grubu düzeyinde bir çalışma alanı ile ilişkilendirilecek aracıların yapılandırıldığı bir Operations Manager 1807 yönetim grubunuz varsa, bu sorunun gösterilmesi için geçerli geçici çözüm,   **Microsoft. ıntelligencepacks. AzureAutomation. Hybridadgent. Init** kuralı.
 
-Çözüm yönetim paketlerini nasıl güncelleştirileceğini hakkında daha fazla bilgi için bkz. [Azure İzleyici için Operations Manager'ı bağlama günlüklerini](../azure-monitor/platform/om-agents.md).
+Çözüm Yönetimi paketlerinin nasıl güncelleştirildiği hakkında daha fazla bilgi için bkz. [Azure izleyici günlüklerine bağlanma Operations Manager](../azure-monitor/platform/om-agents.md).
 
 > [!NOTE]
-> Operations Manager Aracısı ile sistemler için güncelleştirme yönetimi tarafından tam olarak yönetilmeye Aracısı Microsoft Monitoring Agent'olarak güncelleştirilmesi gerekir. Aracı güncelleştirme hakkında bilgi edinmek için bkz: [bir Operations Manager Aracısı yükseltme](https://docs.microsoft.com/system-center/scom/deploy-upgrade-agents). Operations Manager'ı kullanarak ortamlar için gerekli olan 14 ya da daha yeni System Center Operations Manager 2012 R2 UR çalıştırıyorsanız.
+> Operations Manager aracısı olan sistemlerde, Güncelleştirme Yönetimi tarafından tam olarak yönetilebilmeleri için aracının Microsoft Monitoring Agent güncelleştirilmesi gerekir. Aracıyı güncelleştirme hakkında bilgi edinmek için bkz. [Operations Manager aracısını yükseltme](https://docs.microsoft.com/system-center/scom/deploy-upgrade-agents). Operations Manager kullanan ortamlar için, System Center Operations Manager 2012 R2 UR 14 veya sonraki bir sürümünü çalıştırıyor olmanız gerekir.
 
-## <a name="onboard"></a>Güncelleştirme yönetimini etkinleştirme
+## <a name="onboard"></a>Güncelleştirme Yönetimi etkinleştir
 
-Sistemlerine yama yapma başlamak için güncelleştirme yönetimi çözümünü etkinleştirmeniz gerekir. Güncelleştirme yönetimi için makine birçok yolu vardır. Aşağıdaki önerilen bağlıdır ve çözüm yollarını desteklenir:
+Düzeltme eki uygulama sistemlerine başlamak için Güncelleştirme Yönetimi çözümünü etkinleştirmeniz gerekir. Güncelleştirme Yönetimi makineleri eklemek için birçok yol vardır. Çözümü eklemek için önerilen ve desteklenen yollar şunlardır:
 
 * [Bir sanal makineden](automation-onboard-solutions-from-vm.md)
-* [Birden çok makine gözatmanızı](automation-onboard-solutions-from-browse.md)
+* [Birden çok makineye göz atmaya](automation-onboard-solutions-from-browse.md)
 * [Otomasyon hesabınızdan](automation-onboard-solutions-from-automation-account.md)
-* [Azure Otomasyonu runbook'u ile](automation-onboard-solutions.md)
+* [Bir Azure Otomasyonu runbook 'u ile](automation-onboard-solutions.md)
   
-### <a name="confirm-that-non-azure-machines-are-onboarded"></a>Azure olmayan makineler eklenmedi olduğundan emin olun
+### <a name="confirm-that-non-azure-machines-are-onboarded"></a>Azure olmayan makinelerin eklendi olduğunu onaylayın
 
-Doğrudan bağlı makineleri birkaç dakika sonra Azure İzleyici günlüklerine ile iletişim kurduğunu onaylamak için bir aşağıdaki günlük aramaları çalıştırabilirsiniz.
+Doğrudan bağlı makinelerin Azure Izleyici günlükleriyle iletişim kurduğunu doğrulamak için, birkaç dakika sonra aşağıdaki günlük aramalarından birini çalıştırabilirsiniz.
 
 #### <a name="linux"></a>Linux
 
@@ -159,22 +159,22 @@ Heartbeat
 | where OSType == "Windows" | summarize arg_max(TimeGenerated, *) by SourceComputerId | top 500000 by Computer asc | render table
 ```
 
-Bir Windows bilgisayarda, Azure İzleyici günlüklerine ile aracı bağlantısını doğrulamak için aşağıdaki bilgileri gözden geçirebilirsiniz:
+Bir Windows bilgisayarında, Azure Izleyici günlükleriyle aracı bağlantısını doğrulamak için aşağıdaki bilgileri gözden geçirebilirsiniz:
 
-1. Denetim Masası'nda açın **Microsoft Monitoring Agent**. Üzerinde **Azure Log Analytics** sekmesinde aracı şu iletiyi görüntüler: **Log Analytics'e Microsoft Monitoring Agent başarıyla bağlantı kurdu**.
-2. Windows olay günlüğünü açın. Git **uygulama ve hizmet günlükleri\operations Manager** ve olay kimliği 3000 ve kaynak Olay Kimliği 5002 arama **hizmet Bağlayıcısı**. Bu olaylar bilgisayarın Log Analytics çalışma alanına kaydolduğunu ve yapılandırmayı aldığını gösterir.
+1. Denetim Masası 'nda **Microsoft Monitoring Agent**açın. **Azure Log Analytics** sekmesinde, aracı aşağıdaki iletiyi görüntüler: **Microsoft Monitoring Agent Log Analytics başarıyla bağlandı**.
+2. Windows olay günlüğü 'Nü açın. **Uygulama ve hizmetler Logs\Operations Manager** ' a gidin ve kaynak **hizmeti bağlayıcısından**olay KIMLIĞI 3000 ve olay kimliği 5002 ' ni arayın. Bu olaylar, bilgisayarın Log Analytics çalışma alanına kaydoldığını ve yapılandırma aldığını gösterir.
 
-Aracı ile iletişim kuramıyorsa Azure İzleyici günlükleri ve aracı yapılandırılmış bir güvenlik duvarı veya Ara sunucu üzerinden internet ile iletişim kurmak için güvenlik duvarı onaylayın veya proxy sunucusunun düzgün yapılandırıldığından. Güvenlik Duvarı veya Ara sunucunun düzgün yapılandırıldığını doğrulama hakkında bilgi edinmek için [Windows aracısı için ağ yapılandırması](../azure-monitor/platform/agent-windows.md) veya [Linux aracısı için ağ yapılandırması](../log-analytics/log-analytics-agent-linux.md).
+Aracı Azure Izleyici günlükleriyle iletişim kuramıyorsa ve aracı bir güvenlik duvarı veya ara sunucu üzerinden internet ile iletişim kurmak üzere yapılandırılmışsa, güvenlik duvarının veya ara sunucunun düzgün yapılandırıldığını onaylayın. Güvenlik duvarının veya proxy sunucusunun düzgün bir şekilde yapılandırıldığını nasıl doğrulayacağınızı öğrenmek için bkz. [Windows Aracısı Için ağ yapılandırması](../azure-monitor/platform/agent-windows.md) veya [Linux Aracısı için ağ yapılandırması](../log-analytics/log-analytics-agent-linux.md).
 
 > [!NOTE]
-> Linux sistemleriniz bir ara sunucu ile iletişim kurmak için yapılandırılmış olan veya Log Analytics Gateway ve kullandığınız ekleme, bu çözüm, güncelleştirme *proxy.conf* izinlerini, omi kullanıcı grubuna vermek için okuma izni dosya çubuğunda kullanarak Aşağıdaki komutlar:
+> Linux sistemleriniz bir ara sunucu veya Log Analytics ağ geçidiyle iletişim kuracak şekilde yapılandırıldıysa ve bu çözümü eklediğinizde, aşağıdaki komutları kullanarak dosya üzerinde omıuser grubuna Okuma izni vermek için *proxy. conf* izinlerini güncelleştirin:
 >
 > `sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/proxy.conf`
 > `sudo chmod 644 /etc/opt/microsoft/omsagent/proxy.conf`
 
-Yeni eklenen Linux aracılarında durumunu göster **güncelleştirilmiş** bir değerlendirme yapıldıktan sonra. Bu işlem 6 saat kadar sürebilir.
+Yeni eklenen Linux aracıları, bir değerlendirme gerçekleştirildikten sonra **güncelleştirilmiş** durumunu gösterir. Bu işlem 6 saat kadar sürebilir.
 
-Bir Operations Manager yönetim grubu ile Azure İzleyici günlüklerine iletişim kurduğunu onaylamak için bkz: [Azure İzleyici günlüklerine doğrulamak Operations Manager entegrasyonunu](../azure-monitor/platform/om-agents.md#validate-operations-manager-integration-with-azure-monitor).
+Operations Manager yönetim grubunun Azure Izleyici günlükleriyle iletişim kurduğunu onaylamak için bkz. [Azure izleyici günlükleriyle Operations Manager tümleştirmeyi doğrulama](../azure-monitor/platform/om-agents.md#validate-operations-manager-integration-with-azure-monitor).
 
 ## <a name="data-collection"></a>Veri toplama
 
@@ -184,64 +184,64 @@ Aşağıdaki tabloda bu çözüm tarafından desteklenen bağlı kaynaklar açı
 
 | Bağlı kaynak | Desteklenen | Açıklama |
 | --- | --- | --- |
-| Windows aracıları |Evet |Çözüm, Windows aracılarından sistem güncelleştirme bilgilerini toplar ve ardından gerekli güncelleştirmelerin yüklemesini başlatır. |
-| Linux aracıları |Evet |Çözüm, Linux aracılarından sistem güncelleştirme bilgilerini toplar ve ardından desteklenen dağıtımlarda gerekli güncelleştirmelerin yüklemesini başlatır. |
-| Operations Manager yönetim grubu |Evet |Çözüm, bağlı bir yönetim grubundaki aracılardan sistem güncelleştirmeleri hakkında bilgi toplar.<br/>Azure İzleyici günlüklerine Operations Manager Aracısı'ndan doğrudan bir bağlantı gerekli değildir. Verileri yönetim grubundan Log Analytics çalışma alanına iletilir. |
+| Windows aracıları |Evet |Çözüm, Windows aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve gerekli güncelleştirmelerin yüklemesini başlatır. |
+| Linux aracıları |Evet |Çözüm, Linux aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve desteklenen dağıtımlarda gerekli güncelleştirmelerin yüklemesini başlatır. |
+| Operations Manager yönetim grubu |Evet |Çözüm, bağlı bir yönetim grubundaki aracılardan sistem güncelleştirmeleri hakkında bilgi toplar.<br/>Operations Manager aracısından Azure Izleyici günlüklerine doğrudan bağlantı gerekli değildir. Verileri yönetim grubundan Log Analytics çalışma alanına iletilir. |
 
 ### <a name="collection-frequency"></a>Toplama sıklığı
 
-Yönetilen her Windows bilgisayarı için günde iki kez tarama gerçekleştirilir. Her 15 dakikada bir Windows API'si çağrılarak son güncelleştirme zamanı durumu değişip değişmediğini belirlemek için sorgulanamıyor. Durum değiştiyse, bir Uyumluluk taraması başlatılır.
+Yönetilen her Windows bilgisayarı için günde iki kez tarama gerçekleştirilir. Her 15 dakikada bir Windows API 'si, durumun değişip değişmediğini belirlemekte son güncelleştirme zamanını sorgulamak için çağırılır. Durum değiştiyse, bir uyumluluk taraması başlatılır.
 
-Yönetilen her Linux bilgisayarı için saatte bir tarama gerçekleştirilir.
+Her yönetilen Linux bilgisayar için saatte bir tarama gerçekleştirilir.
 
-30 dakika ve Panoda yönetilen bilgisayarlardan gelen güncelleştirilmiş verilerin görüntülenmesi için 6 saat arasında sürebilir.
+Panonun yönetilen bilgisayarlardan güncelleştirilmiş verileri görüntülemesi 30 dakika ile 6 saat arasında sürebilir.
 
-Azure İzleyici günlüklerine veri kullanımı güncelleştirme Yönetimi'ni kullanarak bir makine için yaklaşık 25 MB / ay ortalamadır. Bu değer yalnızca yaklaşık ve ortamınıza bağlı değiştirilebilir. Ortamınızı sahip olduğunuz tam kullanımını görmek için izlemeniz önerilir.
+Güncelleştirme Yönetimi kullanan bir makineye yönelik ortalama Azure Izleyici günlük veri kullanımı yaklaşık olarak aylık 25 MB 'tır. Bu değer yalnızca bir yaklaşık değerdir ve ortamınıza bağlı olarak değişebilir. Sahip olduğunuz tam kullanımı görmek için ortamınızı izlemeniz önerilir.
 
-## <a name="viewing-update-assessments"></a>Güncelleştirme değerlendirmelerini görüntüleme
+## <a name="viewing-update-assessments"></a>Güncelleştirme değerlendirmelerini görüntüle
 
-Otomasyon hesabınızı seçin **güncelleştirme yönetimi** makinelerinizin durumunu görüntülemek için.
+Otomasyon hesabınızda, makinelerinizin durumunu görüntülemek için **güncelleştirme yönetimi** ' yi seçin.
 
-Bu görünüm, güncelleştirmeleri, güncelleştirme dağıtımları ve zamanlanan güncelleştirme dağıtımları eksik makineleriniz hakkında bilgi sağlar. İçinde **uyumluluk sütun**, makine değerlendirilen en son ne zaman görebilirsiniz. İçinde **güncelleştirme ARACISI hazırlığı** sütun varsa görebilirsiniz Güncelleştirme Aracısı sistem durumu. Bir sorun varsa, sorunu düzeltmek için hangi adımlar öğrenin sorun giderme için yardımcı olabilecek belgeleri gitmek için bağlantıyı seçin.
+Bu görünüm, makineleriniz, eksik güncelleştirmeler, güncelleştirme dağıtımları ve zamanlanmış güncelleştirme dağıtımları hakkında bilgi sağlar. **Uyumluluk sütununda**, makinenin en son değerlendirildiğini görebilirsiniz. **GÜNCELLEŞTIRME ARACıSı hazırlığı** sütununda, güncelleştirme aracısının sistem durumunu görebilirsiniz. Sorun varsa, sorunu gidermek için hangi adımların yapılacağını öğrenmenize yardımcı olabilecek sorun giderme belgelerine gitmek için bağlantıyı seçin.
 
-Makine, güncelleştirme veya dağıtım hakkında bilgi döndüren bir günlük araması çalıştırmak için öğeyi listeden seçin. **Günlük araması** seçilen öğe için bir sorgu ile bölmesini açar:
+Makine, güncelleştirme veya dağıtım hakkında bilgi döndüren bir günlük araması çalıştırmak için listeden öğeyi seçin. **Günlük araması** bölmesi, seçilen öğe için bir sorgu ile açılır:
 
-![Güncelleştirme yönetimi varsayılan görünümü](media/automation-update-management/update-management-view.png)
+![Güncelleştirme Yönetimi varsayılan görünüm](media/automation-update-management/update-management-view.png)
 
-## <a name="install-updates"></a>Güncelleştirmeleri yükleme
+## <a name="install-updates"></a>Güncelleştirmeleri yükler
 
-Çalışma alanınızdaki tüm Linux ve Windows bilgisayarlar için güncelleştirmeleri değerlendirdikten sonra oluşturarak gerekli güncelleştirmeleri yükleyebilirsiniz bir *güncelleştirme dağıtım*. Bir güncelleştirme dağıtımı oluşturmak için yazma erişimi Otomasyon hesabı ve Azure dağıtımda hedeflenen makineler yazma erişimi olmalıdır. Güncelleştirme dağıtımı bir veya daha fazla bilgisayar için gerekli güncelleştirmelerin zamanlanmış yüklemesidir. Tarih ve saat için dağıtım ve bilgisayar veya bilgisayar grubundaki bir dağıtım kapsamında içerecek şekilde belirt Bilgisayar grupları hakkında daha fazla bilgi için bkz: [bilgisayar grupları Azure İzleyici günlüklerine](../azure-monitor/platform/computer-groups.md).
+Çalışma alanınızdaki tüm Linux ve Windows bilgisayarları için güncelleştirmeler değerlendirildikten sonra, bir *güncelleştirme dağıtımı*oluşturarak gerekli güncelleştirmeleri yükleyebilirsiniz. Bir güncelleştirme dağıtımı oluşturmak için, Otomasyon hesabına yazma erişiminizin olması ve dağıtımda hedeflenen tüm Azure VM 'lerine yazma erişiminizin olması gerekir. Güncelleştirme dağıtımı, bir veya daha fazla bilgisayar için gerekli güncelleştirmelerin zamanlanmış bir yüklemesidir. Dağıtımın ve bir bilgisayarın veya bilgisayar grubunun bir dağıtım kapsamına dahil edilecek tarih ve saati belirtirsiniz. Bilgisayar grupları hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici günlüklerinde bilgisayar grupları](../azure-monitor/platform/computer-groups.md).
 
-Güncelleştirme dağıtımınıza bilgisayar gruplarını eklediğinizde, grup üyeliği bir zamanlama oluşturma sırasında yalnızca bir kez değerlendirilir. Sonraki değişiklikler bir grup için geçerli değildir. Bu kullanım almak için [dinamik gruplar](#using-dynamic-groups), bu grupları, dağıtım sırasında çözümlenir ve Azure sanal makinelerini veya Azure dışı VM'ler için kayıtlı bir aramayı bir sorgu tarafından tanımlanan.
+Güncelleştirme dağıtımınıza bilgisayar gruplarını eklediğinizde, zamanlama oluşturma sırasında grup üyeliği yalnızca bir kez değerlendirilir. Bir gruptaki sonraki değişiklikler yansıtılmaz. Bu sorunu çözmek için [dinamik grupları](#using-dynamic-groups)kullanın, bu gruplar dağıtım zamanında çözümlenir ve Azure VM 'leri için bir sorgu ya da Azure dışı VM 'ler için kaydedilmiş bir arama tarafından tanımlanır.
 
 > [!NOTE]
-> Varsayılan olarak Azure Market'ten dağıtılan Windows sanal makineleri, Windows Update hizmetinden otomatik güncelleştirmeleri almak için ayarlanır. Bu çözümü eklediğinizde veya Windows sanal makineleri çalışma alanınıza eklemek, bu davranış değişmez. Bu çözümü kullanarak güncelleştirmeleri etkin olarak yönetmiyorsanız, varsayılan davranış (güncelleştirmeleri otomatik olarak uygulama için) yöneliktir.
+> Azure Marketi 'nden dağıtılan Windows sanal makineleri varsayılan olarak Windows Update hizmetinden otomatik güncelleştirmeleri alacak şekilde ayarlanır. Bu çözümü eklediğinizde veya çalışma alanınıza Windows sanal makineleri eklediğinizde bu davranış değişmez. Bu çözümü kullanarak güncelleştirmeleri etkin bir şekilde yönetmezseniz varsayılan davranış (güncelleştirmeleri otomatik olarak uygulamak için) geçerlidir.
 
-Güncelleştirmelerin ubuntu'daki bakım penceresinin dışında uygulanmasının önlemek için Otomatik Güncelleştirmeler devre dışı bırakmak için Katılımsız Yükseltme paketini yeniden yapılandırın. Paketin yapılandırma hakkında daha fazla bilgi için bkz: [Ubuntu Server Kılavuzu'ndaki Otomatik Güncelleştirmeler konu başlığı](https://help.ubuntu.com/lts/serverguide/automatic-updates.html).
+Güncelleştirmelerin Ubuntu 'da bakım penceresi dışında uygulanmasını önlemek için, katılımsız yükseltme paketini otomatik güncelleştirmeleri devre dışı bırakacak şekilde yeniden yapılandırın. Paketin nasıl yapılandırılacağı hakkında daha fazla bilgi için [Ubuntu sunucu kılavuzunda otomatik güncelleştirmeler konusuna](https://help.ubuntu.com/lts/serverguide/automatic-updates.html)bakın.
 
-Azure Market'te kullanıma sunulan isteğe bağlı Red Hat Enterprise Linux (RHEL) görüntülerinden oluşturulan sanal makineler kayıtlı erişimi [Red Hat Update Infrastructure'a (RHUI)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md) Azure'da dağıtılır. Diğer tüm Linux dağıtımları, dağıtım'ın desteklenen yöntemleri izleyerek dağıtım'ın çevrimiçi dosya deposundan güncelleştirilmelidir.
+Azure Marketi 'nde bulunan isteğe bağlı Red Hat Enterprise Linux (RHEL) görüntülerinden oluşturulan sanal makineler, Azure 'da dağıtılan [Red Hat güncelleştirme altyapısına (rhuı)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md) erişmek için kaydedilir. Diğer tüm Linux dağıtımı, dağıtımın desteklenen yöntemlerini izleyerek dağıtımın çevrimiçi dosya deposundan güncelleştirilmeleri gerekir.
 
-Yeni bir güncelleştirme dağıtımı oluşturmak için Seç **güncelleştirme dağıtımı zamanla**. **Yeni güncelleştirme dağıtımı** sayfası açılır. Aşağıdaki tabloda açıklanan özellikler için değerleri girin ve ardından **Oluştur**:
+Yeni bir güncelleştirme dağıtımı oluşturmak için **güncelleştirme dağıtımı zamanla**' yı seçin. **Yeni güncelleştirme dağıtım** sayfası açılır. Aşağıdaki tabloda açıklanan özellikler için değerler girin ve ardından **Oluştur**' a tıklayın:
 
 | Özellik | Description |
 | --- | --- |
 | Adı |Güncelleştirme dağıtımını tanımlamak için benzersiz bir ad. |
 |İşletim sistemi| Linux veya Windows|
-| Grupları güncelleştirmek için |Azure makineler için abonelik, kaynak grupları, konumları ve etiketleri, dağıtımınızdaki dahil etmek için Azure vm'leri dinamik bir grup oluşturmak için bir birleşimini temel bir sorgu tanımlarsınız. </br></br>Azure olmayan makineler için mevcut bir Azure olmayan makine dağıtımına dahil edilecek bir grubu seçmek için arama kaydedilmiş seçin. </br></br>Daha fazla bilgi için bkz: [dinamik gruplar](automation-update-management.md#using-dynamic-groups)|
-| Güncelleştirilecek makineler |İçeri aktarılan grubu, kayıtlı bir aramayı seçin veya makine açılan listeden seçin ve tek bir makine seçin. **Makineler**'i seçerseniz makinenin hazır olma durumu **GÜNCELLEŞTİRME ARACISI HAZIRLIĞI** sütununda gösterilir.</br> Azure İzleyici günlüklerine bilgisayar grupları oluşturma farklı yöntemleri hakkında bilgi edinmek için bkz: [Azure İzleyici günlüklerine bilgisayar grupları](../azure-monitor/platform/computer-groups.md) |
-|Güncelleştirme sınıflandırmaları|Gereksinim duyduğunuz tüm güncelleştirme sınıflandırmalarını seçin|
-|Güncelleştirmeleri Ekle/Dışla|Bu açılır **dahil edin/dışlayın** sayfası. Dahil edilecek veya dışlanacak güncelleştirmeler ayrı sekmelerdedir. Ekleme nasıl ele alındığını daha fazla bilgi için bkz: [ekleme davranışı](automation-update-management.md#inclusion-behavior) |
-|Zamanlama ayarları|Her iki kez başlatın ve saati seçin veya yineleme için yineleme|
-| Ön betiklerini + sonrası betikleri|Önce ve sonra dağıtımınız betiklerin seçin|
-| Bakım penceresi |Güncelleştirmeler için dakika sayısı. Değeri 30 dakika ile en fazla 6 saat değerinden küçük olamaz |
-| Denetim yeniden başlatma| Yeniden başlatma işlemlerini nasıl işleneceğini belirler. Kullanılabilen seçenekler:</br>Gerekirse yeniden başlat (Varsayılan)</br>Her zaman yeniden başlat</br>Hiçbir zaman yeniden başlatma</br>Yalnızca yeniden başlatma - güncelleştirmeleri yüklemez|
+| Güncelleştirilecek gruplar |Azure makinelerinde, dağıtımınıza dahil etmek için dinamik bir Azure VM grubu oluşturmaya yönelik bir abonelik, kaynak grubu, konum ve etiket birleşimine göre bir sorgu tanımlayın. </br></br>Azure dışı makineler için, dağıtıma dahil edilecek bir Azure dışı makine grubu seçmek üzere mevcut kayıtlı bir aramayı seçin. </br></br>Daha fazla bilgi için bkz. [Dinamik Gruplar](automation-update-management.md#using-dynamic-groups)|
+| Güncelleştirilecek makineler |Açılan listeden kaydedilmiş bir arama, Içeri aktarılan grup veya Select Machine seçin ve tek tek makineler ' i seçin. **Makineler**'i seçerseniz makinenin hazır olma durumu **GÜNCELLEŞTİRME ARACISI HAZIRLIĞI** sütununda gösterilir.</br> Azure Izleyici günlüklerinde bilgisayar grupları oluşturmaya yönelik farklı yöntemler hakkında bilgi edinmek için bkz. [Azure izleyici günlüklerinde bilgisayar grupları](../azure-monitor/platform/computer-groups.md) |
+|Güncelleştirme sınıflandırmaları|İhtiyaç duyduğunuz tüm güncelleştirme sınıflandırmalarını seçin|
+|Güncelleştirmeleri dahil et/Dışla|Bu, **dahil etme/hariç tutma** sayfasını açar. Dahil edilecek veya dışlanacak güncelleştirmeler ayrı sekmelerdedir. İçerme hakkında daha fazla bilgi için bkz. [içerme davranışı](automation-update-management.md#inclusion-behavior) |
+|Zamanlama ayarları|Başlatılacak saati seçin ve yinelenme için bir kez veya yineleme seçin|
+| Ön betikler + betikleri sonrası|Dağıtımdan önce ve sonra çalıştırılacak betikleri seçin|
+| Bakım penceresi |Güncelleştirmeler için ayarlanan dakika sayısı. Değer 30 dakikadan kısa olamaz ve 6 saatten fazla olamaz |
+| Yeniden başlatma denetimi| Yeniden başlatmaları nasıl ele alınacağını belirler. Kullanılabilen seçenekler:</br>Gerekirse yeniden başlat (Varsayılan)</br>Her zaman yeniden başlat</br>Hiçbir zaman yeniden başlatma</br>Yalnızca yeniden başlatma - güncelleştirmeleri yüklemez|
 
-Güncelleştirme dağıtımları da bir program aracılığıyla oluşturulabilir. REST API ile bir güncelleştirme dağıtımı oluşturmak nasıl öğrenmek için bkz. [yazılım güncelleştirme yapılandırmaları - oluşturma](/rest/api/automation/softwareupdateconfigurations/create). Haftalık bir güncelleştirme dağıtımı oluşturmak için kullanılan bir örnek runbook yoktur. Bu runbook hakkında daha fazla bilgi için bkz: [bir kaynak grubundaki bir veya daha fazla sanal makineleri için haftalık bir güncelleştirme dağıtımı oluşturma](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1).
+Güncelleştirme dağıtımları da programlı bir şekilde oluşturulabilir. REST API güncelleştirme dağıtımı oluşturmayı öğrenmek için bkz. [yazılım güncelleştirme yapılandırması-oluştur](/rest/api/automation/softwareupdateconfigurations/create). Ayrıca, haftalık güncelleştirme dağıtımı oluşturmak için kullanılabilecek bir örnek runbook vardır. Bu runbook hakkında daha fazla bilgi edinmek için bkz. [bir kaynak grubundaki bir veya daha fazla VM için haftalık güncelleştirme dağıtımı oluşturma](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1).
 
-### <a name="multi-tenant"></a>Kiracılar arası güncelleştirme dağıtımları
+### <a name="multi-tenant"></a>Çapraz kiracı güncelleştirme dağıtımları
 
-Güncelleştirme yönetimi için düzeltme yapmanız raporlama başka bir Azure kiracısı makineleriniz varsa, zamanlanmış getirmek için aşağıdaki geçici çözümü kullanmanız gerekir. Kullanabilirsiniz [New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) anahtarıyla cmdlet'i `-ForUpdate` bir zamanlama oluşturmak ve kullanmak için [yeni AzureRmAutomationSoftwareUpdateConfiguration](/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration
-) cmdlet'i ve geçirin diğer kiracıdaki makineler `-NonAzureComputer` parametresi. Aşağıdaki örnek bunu nasıl bir örnek gösterir:
+Başka bir Azure kiracı raporlarında, düzeltme eki uygulamanız gerektiğini Güncelleştirme Yönetimi makineniz varsa, bunları zamanlanmak için aşağıdaki geçici çözümü kullanmanız gerekir. [Yeni-azurermautomationschedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) cmdlet 'ini bir zamanlama oluşturmak için anahtarıyla `-ForUpdate` kullanabilir [, New-azurermautomationsoftwareupdateconfiguration](/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration
+) cmdlet 'ini kullanabilir ve makineleri diğerine geçirebilirsiniz `-NonAzureComputer` parametreye kiracı. Aşağıdaki örnek bunun nasıl yapılacağı hakkında bir örnek göstermektedir:
 
 ```azurepowershell-interactive
 $nonAzurecomputers = @("server-01", "server-02")
@@ -255,57 +255,57 @@ New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -Automa
 
 ## <a name="view-missing-updates"></a>Eksik güncelleştirmeleri görüntüle
 
-Seçin **eksik güncelleştirmeler** makinelerinizden eksik olan güncelleştirmeler listesini görüntülemek için. Her güncelleştirme listelenir ve seçilebilir. Daha fazla bilgi için güncelleştirme, işletim sistemi ve bağlantı gerektiren makineler sayısı hakkında bilgiler gösterilir. **Günlük araması** güncelleştirmeleri hakkında daha fazla bilgi bölmesinde gösterilir.
+Makinelerinizde bulunmayan güncelleştirmelerin listesini görüntülemek için **eksik güncelleştirmeler** ' i seçin. Her güncelleştirme listelenir ve seçilebilir. Güncelleştirme, işletim sistemi ve daha fazla bilgi için bir bağlantı gerektiren makine sayısı hakkında bilgi gösterilir. **Günlük araması** bölmesinde güncelleştirmeler hakkında daha fazla ayrıntı görüntülenir.
 
-## <a name="view-update-deployments"></a>Güncelleştirme dağıtımları görüntüle
+## <a name="view-update-deployments"></a>Güncelleştirme dağıtımlarını görüntüle
 
-Seçin **güncelleştirme dağıtımları** var olan güncelleştirme dağıtımlarının listesini görüntülemek için sekmesinde. Tabloda açmak için güncelleştirme dağıtımlarını seçin **güncelleştirme dağıtımı çalıştırın** bölmesinde söz konusu güncelleştirme dağıtımı için. İş günlükleri, en fazla 30 gün için saklanır.
+Mevcut güncelleştirme dağıtımlarının listesini görüntülemek için **dağıtımları Güncelleştir** sekmesini seçin. Bu güncelleştirme dağıtımı için **güncelleştirme dağıtımı çalıştırma** bölmesini açmak için tablodaki güncelleştirme dağıtımlarından herhangi birini seçin. İş günlükleri en fazla 30 gün boyunca depolanır.
 
-![Güncelleştirme dağıtımı sonuçlarına genel bakış](./media/automation-update-management/update-deployment-run.png)
+![Güncelleştirme dağıtım sonuçlarına genel bakış](./media/automation-update-management/update-deployment-run.png)
 
-Güncelleştirme dağıtımı REST API'sinden görüntülemek için bkz [yazılım güncelleştirme yapılandırması çalıştırmaları](/rest/api/automation/softwareupdateconfigurationruns).
+REST API bir güncelleştirme dağıtımını görüntülemek için bkz. [yazılım güncelleştirme yapılandırması çalıştırmaları](/rest/api/automation/softwareupdateconfigurationruns).
 
 ## <a name="update-classifications"></a>Güncelleştirme sınıflandırmaları
 
-Aşağıdaki tablolarda her sınıflandırma için bir tanım güncelleştirme sınıflandırmalarıyla güncelleştirme Yönetimi ' nde listelenmiştir.
+Aşağıdaki tablolar, Güncelleştirme Yönetimi ' deki güncelleştirme sınıflandırmalarını her sınıflandırma için bir tanım ile listeler.
 
 ### <a name="windows"></a>Windows
 
 |Sınıflandırma  |Açıklama  |
 |---------|---------|
-|Kritik güncelleştirmeler     | Kritik, güvenlikle ilgili olmayan bir hatayı ele belirli bir sorun için bir güncelleştirme.        |
-|Güvenlik güncelleştirmeleri     | Ürüne özgü, güvenlikle ilgili bir soruna yönelik bir güncelleştirme.        |
-|Güncelleştirme paketleri     | Düzeltmeleri kolay dağıtım için bir arada paketlenmiş toplu bir dizi.        |
-|Özellik paketleri     | Bir ürünün piyasaya sürümü dışında dağıtılan yeni ürün özellikleri.        |
-|Hizmet paketleri     | Bir uygulamaya uygulanan düzeltmeleri toplu kümesi.        |
-|Tanım güncelleştirmeleri     | Virüs veya diğer tanım dosyalarına için güncelleştirme.        |
-|Araçlar     | Yardımcı programı veya bir veya daha fazla görevleri tamamlama özelliği.        |
-|Güncelleştirmeler     | Bir uygulama veya şu anda yüklü olan bir dosya için bir güncelleştirme.        |
+|Kritik güncelleştirmeler     | Kritik, güvenlikle ilgili olmayan bir hatayı ele alan belirli bir sorun için güncelleştirme.        |
+|Güvenlik güncelleştirmeleri     | Ürüne özgü, güvenlikle ilgili bir sorun için bir güncelleştirme.        |
+|Güncelleştirme paketleri     | Kolay dağıtım için bir arada paketlenmiş toplu bir düzeltme kümesi.        |
+|Özellik paketleri     | Ürün sürümü dışında dağıtılan yeni ürün özellikleri.        |
+|Hizmet paketleri     | Bir uygulamaya uygulanan toplu bir düzeltme kümesi.        |
+|Tanım güncelleştirmeleri     | Virüs veya diğer tanım dosyalarına yönelik bir güncelleştirme.        |
+|Araçlar     | Bir veya daha fazla görevi tamamlamaya yardımcı olan bir yardımcı program veya özellik.        |
+|Güncelleştirmeler     | Şu anda yüklü olan bir uygulama veya dosyaya yönelik bir güncelleştirme.        |
 
-### <a name="linux"></a>Linux
+### <a name="linux-2"></a>'Un
 
 |Sınıflandırma  |Açıklama  |
 |---------|---------|
 |Kritik güncelleştirmeler ve güvenlik güncelleştirmeleri     | Belirli bir sorun veya ürüne özgü, güvenlikle ilgili bir sorun için güncelleştirmeler.         |
-|Diğer güncelleştirmeler     | Doğası gereği kritik olmayan veya güvenlik güncelleştirmeleri olmayan tüm diğer güncelleştirmeleri.        |
+|Diğer güncelleştirmeler     | Doğası gereği önemli olmayan veya güvenlik güncelleştirmeleri olmayan diğer tüm güncelleştirmeler.        |
 
-Linux için güncelleştirme yönetimi kritik arasında ayrım yapabilme kolaylığı ve veri zenginleştirme nedeniyle değerlendirme verileri bulutta görüntüleme çalışırken bulutta güvenlik güncelleştirmeleri. Düzeltme eki uygulama için veri sınıflandırma makinede kullanılabilir güncelleştirme yönetimi kullanır. Diğer dağıtımları, CentOS yok Bu bilgilere kullanıma hazır. Aşağıdaki komutu için güvenlik verilerini döndürmek için bir yol yapılandırılmış CentOS makineleriniz varsa, güncelleştirme yönetimi üzerinde sınıflandırmaları Tabanlı Yama mümkün olacaktır.
+Linux için Güncelleştirme Yönetimi, bulutta veri zenginleştirmesi nedeniyle değerlendirme verilerini görüntülerken buluttaki kritik ve güvenlik güncelleştirmeleri arasında ayrım yapabilir. Düzeltme eki uygulama Güncelleştirme Yönetimi makinede bulunan sınıflandırma verilerine bağımlıdır. Diğer dağıtımlardan farklı olarak, CentOS bu bilgileri kutudan çıkar. Aşağıdaki komutun güvenlik verilerini döndürmek için bir şekilde yapılandırılmış CentOS makineleriniz varsa Güncelleştirme Yönetimi sınıflandırmalara göre düzeltme eki uygulanabilir.
 
 ```bash
 sudo yum -q --security check-update
 ```
 
-Şu anda yerel sınıflandırma veri kullanılabilirliğine CentOS etkinleştirmek için desteklenen yöntem yöntemi yok. Şu anda bu, kendi etkinleştirmiş olabilir müşteriler yalnızca en yüksek çaba destek sağlanır.
+Şu anda yerel sınıflandırmayı etkinleştirmek için yöntem desteklenmekte olan yöntem yok-CentOS üzerinde veri kullanılabilirliği. Şu anda, bu özelliği kendi kendilerine etkinleştirmiş olabilecek müşterilere yalnızca en iyi çaba desteği sağlanır.
 
 ## <a name="firstparty-predownload"></a>Gelişmiş ayarlar
 
-Güncelleştirme yönetimi, Windows Güncelleştirmeleri indirmek ve yüklemek için Windows Update'te kullanır. Sonuç olarak, Windows Update tarafından kullanılan ayarları birçoğu saygı gösteririz. Windows olmayan güncelleştirmeleri etkinleştirmek için Ayarlar'ı kullanıyorsanız, güncelleştirme yönetimi güncelleştirmeleri de yönetebilir. Güncelleştirme dağıtımı gerçekleşmeden önce güncelleştirme indiriliyor etkinleştirmek istiyorsanız, güncelleştirme dağıtımları hızlı gitmesi ve bakım penceresi aşan daha yüksektir.
+Güncelleştirme Yönetimi, Windows güncelleştirmelerini indirmek ve yüklemek için Windows Update bağımlıdır. Sonuç olarak, Windows Update tarafından kullanılan birçok ayarı sunuyoruz. Windows dışı güncelleştirmeleri etkinleştirmek için ayarları kullanıyorsanız, Güncelleştirme Yönetimi bu güncelleştirmeleri de yönetecektir. Güncelleştirme dağıtımı gerçekleşmeden önce güncelleştirme indirmeyi etkinleştirmek istiyorsanız, güncelleştirme dağıtımları daha hızlı gidip bakım penceresini aşmaya daha az olabilir.
 
-### <a name="pre-download-updates"></a>Öncesi güncelleştirmeleri indir
+### <a name="pre-download-updates"></a>İndirme öncesi güncelleştirmeler
 
-Grup İlkesi'nde otomatik olarak karşıdan yüklenen güncelleştirmeleri yapılandırmak için ayarlayabileceğiniz [Otomatik Güncelleştirmeleri Yapılandır ayarını](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates##configure-automatic-updates) için **3**. Bu, arka planda gerekli güncelleştirmeleri indirir, ancak bunları yüklemez. Bu güncelleştirme yönetimi zamanlamaları denetiminde tutar ancak güncelleştirme yönetimi bakım penceresinin dışında karşıdan yükleyeceğiniz güncelleştirmeleri izin verir. Bu engelleyebilir **bakım penceresi aşıldı** güncelleştirme yönetimi hataları.
+Grup ilkesi güncelleştirmeleri otomatik olarak karşıdan yüklemeyi yapılandırmak için [otomatik güncelleştirmeleri Yapılandır ayarını](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates##configure-automatic-updates) **3**olarak ayarlayabilirsiniz. Bu, arka planda gerekli olan güncelleştirmeleri indirir, ancak yüklemez. Bu, zamanlamaların denetiminde Güncelleştirme Yönetimi korur ancak güncelleştirmelerin Güncelleştirme Yönetimi bakım penceresi dışında indirilmesine izin verir. Bu, **bakım penceresinin** güncelleştirme yönetimi hatalarını aşılmasına engel olabilir.
 
-Ayrıca bu güncelleştirmeleri otomatik olarak indir istediğiniz sistemde aşağıdaki PowerShell PowerShell'le ayarlayabilirsiniz.
+Bunu PowerShell ile de ayarlayabilirsiniz, güncelleştirmeleri otomatik olarak indirmek istediğiniz bir sistemde aşağıdaki PowerShell 'i çalıştırın.
 
 ```powershell
 $WUSettings = (New-Object -com "Microsoft.Update.AutoUpdate").Settings
@@ -313,18 +313,18 @@ $WUSettings.NotificationLevel = 3
 $WUSettings.Save()
 ```
 
-### <a name="disable-automatic-installation"></a>Otomatik Yükleme devre dışı bırak
+### <a name="disable-automatic-installation"></a>Otomatik yüklemeyi devre dışı bırak
 
-Azure VM'ler, varsayılan olarak etkin olan güncelleştirmeleri otomatik olarak yüklenmesini sahiptir. Bu, güncelleştirme yönetimi tarafından yüklenmesini zamanlama önce yüklenecek güncelleştirmelerin neden olabilir. Ayarlayarak bu davranışı devre dışı bırakabilirsiniz `NoAutoUpdate` kayıt defteri anahtarına `1`. Aşağıdaki PowerShell kod parçacığı, bunu yapmanın bir yolu gösterir.
+Azure VM 'Leri varsayılan olarak etkinleştirilen güncelleştirmelerin otomatik olarak yüklenmesine sahiptir. Bu, güncelleştirmelerin Güncelleştirme Yönetimi tarafından yüklenmek üzere zamanlanmadan önce yüklenememesine neden olabilir. `NoAutoUpdate` Kayıt defteri anahtarını olarak `1`ayarlayarak bu davranışı devre dışı bırakabilirsiniz. Aşağıdaki PowerShell kod parçacığı bunu yapmanın bir yolunu gösterir.
 
 ```powershell
 $AutoUpdatePath = "HKLM:SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU"
 Set-ItemProperty -Path $AutoUpdatePath -Name NoAutoUpdate -Value 1
 ```
 
-### <a name="enable-updates-for-other-microsoft-products"></a>Diğer Microsoft ürünleri için güncelleştirmeleri etkinleştirecek
+### <a name="enable-updates-for-other-microsoft-products"></a>Diğer Microsoft ürünleri için güncelleştirmeleri etkinleştir
 
-Varsayılan olarak, Windows Update, güncelleştirmeleri yalnızca Windows için sağlar. Etkinleştirirseniz **sağla güncelleştirmeleri diğer Microsoft ürünleri için Windows güncelleştirebilirim olduğunda**, diğer ürünler için güncelleştirmelerin ile sağlanan güvenlik yamaları SQL Server veya diğer birinci taraf yazılımlar gibi. Bu seçenek, Grup İlkesi tarafından yapılandırılamaz. Aşağıdaki PowerShell, diğer birinci taraf düzeltme ekleri üzerinde etkinleştirmek istediğiniz sistemlerinde çalıştırın ve güncelleştirme yönetimi, bu ayar ne uygun olacaktır.
+Varsayılan olarak Windows Update yalnızca Windows için güncelleştirmeler sağlar. **Windows 'u güncelleştirdiğimde diğer Microsoft ürünleri için güncelleştirmeleri Izin ver**' i etkinleştirirseniz, SQL Server veya diğer birinci taraf yazılımlar için güvenlik düzeltme ekleri de dahil olmak üzere diğer ürünlerle ilgili güncelleştirmeler sunulur. Bu seçenek grup ilkesi tarafından yapılandırılamaz. Diğer birinci taraf düzeltme eklerini etkinleştirmek istediğiniz sistemlerde aşağıdaki PowerShell 'i çalıştırın ve Güncelleştirme Yönetimi Bu ayarı kabul eder.
 
 ```powershell
 $ServiceManager = (New-Object -com "Microsoft.Update.ServiceManager")
@@ -333,42 +333,42 @@ $ServiceID = "7971f918-a847-4430-9279-4a52d1efe18d"
 $ServiceManager.AddService2($ServiceId,7,"")
 ```
 
-## <a name="third-party"></a> Windows üzerinde üçüncü taraf düzeltme ekleri
+## <a name="third-party"></a>Windows 'da üçüncü taraf düzeltme ekleri
 
-Güncelleştirme yönetimi, desteklenen Windows sistemleri düzeltme eki uygulama yerel olarak yapılandırılan güncelleştirme deposunu kullanır. WSUS ya da Windows Update budur. Gibi araçları [System Center Updates Publisher](/sccm/sum/tools/updates-publisher
-) (Updates Publisher) WSUS özel güncelleştirmeleri yayımlamanıza olanak sağlar. Bu senaryo, üçüncü taraf yazılım güncelleştirme deposu olarak kullanan System Center Configuration Manager düzeltme eki makinelere güncelleştirme yönetimi sağlar. Updates Publisher yapılandırma konusunda bilgi için bkz: [yükleme Updates Publisher](/sccm/sum/tools/install-updates-publisher).
+Güncelleştirme Yönetimi, desteklenen Windows sistemlerine yama yapmak için yerel olarak yapılandırılmış güncelleştirme deposuna bağımlıdır. Bu, WSUS veya Windows Update. [SystemCenterUpdatesPublisher](/sccm/sum/tools/updates-publisher
+) (Updates Publisher) gibi araçlar, özel güncelleştirmeleri WSUS 'ta yayımlamanıza izin verir. Bu senaryo Güncelleştirme Yönetimi, üçüncü taraf yazılımlarla güncelleştirme deposu olarak System Center Configuration Manager kullanan makinelere yaması sağlar. Updates Publisher 'ı yapılandırma hakkında bilgi edinmek için bkz. [Updates Publisher 'ı yüklemek](/sccm/sum/tools/install-updates-publisher).
 
 ## <a name="ports"></a>Ağ planlama
 
-Aşağıdaki adresleri özellikle güncelleştirme yönetimi için gereklidir. Bu adresler için iletişim bağlantı noktası 443 üzerinden gerçekleşir.
+Aşağıdaki adresler Güncelleştirme Yönetimi için özel olarak gereklidir. 443 numaralı bağlantı noktası üzerinden bu adreslerle iletişim oluşur.
 
-|Azure kamu  |Azure Kamu  |
+|Azure genel  |Azure Kamu  |
 |---------|---------|
 |*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
 |*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
 |*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
-|*.azure-automation.net|*.azure-automation.us|
+|*.azure-automation.net|*. azure-automation.us|
 
-Karma Runbook çalışanı gereken bağlantı noktaları hakkında daha fazla bilgi için bkz: [karma çalışanı rolü bağlantı noktaları](automation-hybrid-runbook-worker.md#hybrid-worker-role).
+Karma Runbook Worker için gereken bağlantı noktaları hakkında daha fazla bilgi için bkz. [karma çalışan rolü bağlantı noktaları](automation-hybrid-runbook-worker.md#hybrid-worker-role).
 
-Özel durumlar tanımlarken listelenen adreslerini kullanmak için önerilir. IP adreslerinin indirebilirsiniz [Microsoft Azure veri merkezi IP aralıkları](https://www.microsoft.com/download/details.aspx?id=41653). Bu dosya haftalık olarak güncelleştirilir ve şu anda dağıtılmış aralıkları ve IP adreslerinde gelecekte yapılacak değişiklikleri yansıtır.
+Özel durumları tanımlarken listelenen adreslerin kullanılması önerilir. IP adresleri için [Microsoft Azure veri MERKEZI IP aralıklarını](https://www.microsoft.com/download/details.aspx?id=41653)indirebilirsiniz. Bu dosya haftalık olarak güncelleştirilir ve şu anda dağıtılmış aralıkları ve IP aralıklarında yapılan yaklaşan değişiklikleri yansıtır.
 
-## <a name="search-logs"></a>Günlüklerinde arama yapma
+## <a name="search-logs"></a>Günlüklerde ara
 
-Azure portalında sağlanan Ayrıntılar ek olarak, günlükler karşı aramalar yapabilirsiniz. Çözüm sayfasında seçtiğiniz **Log Analytics**. **Günlük araması** bölmesi açılır.
+Azure portal belirtilen ayrıntılara ek olarak günlüklere göre aramalar yapabilirsiniz. Çözüm sayfalarında **Log Analytics**' yi seçin. **Günlük araması** bölmesi açılır.
 
-Ayrıca sorguları özelleştirebilir veya farklı istemcilerin ve daha devam ederek kullanın öğrenebilirsiniz:  [Log Analytics arama API'si belgeleri](
-https://dev.loganalytics.io/).
+Ayrıca, ziyaret ederek sorguları özelleştirmeyi veya farklı istemcilerden ve daha fazlasını kullanmayı da öğrenebilirsiniz:  [API belgelerini](
+https://dev.loganalytics.io/)Log Analytics arama.
 
 ### <a name="sample-queries"></a>Örnek sorgular
 
-Aşağıdaki bölümlerde, bu çözüm tarafından toplanan güncelleştirme kayıtlarına için örnek günlük sorguları sağlar:
+Aşağıdaki bölümler, bu çözüm tarafından toplanan güncelleştirme kayıtları için örnek günlük sorguları sağlar:
 
-#### <a name="single-azure-vm-assessment-queries-windows"></a>Tek Azure sanal makine değerlendirmesini sorgular (Windows)
+#### <a name="single-azure-vm-assessment-queries-windows"></a>Tek Azure VM değerlendirme sorguları (Windows)
 
-VMUUID değeri sorguladığınız sanal makinenin VM GUID ile değiştirin. Azure İzleyici günlüklerine aşağıdaki sorguyu çalıştırarak kullanılması gereken VMUUID bulabilirsiniz: `Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
+VMUUID değerini, sorguladığınız sanal makinenin VM GUID 'SI ile değiştirin. Azure Izleyici günlüklerinde aşağıdaki sorguyu çalıştırarak kullanılması gereken VMUUID 'yi bulabilirsiniz:`Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
 
-##### <a name="missing-updates-summary"></a>Eksik güncelleştirmeler özeti
+##### <a name="missing-updates-summary"></a>Eksik güncelleştirmeler Özeti
 
 ```loganalytics
 Update
@@ -379,7 +379,7 @@ Update
 | summarize allUpdatesCount=count(), criticalUpdatesCount=countif(Classification has "Critical"), securityUpdatesCount=countif(Classification has "Security"), otherUpdatesCount=countif(Classification !has "Critical" and Classification !has "Security")
 ```
 
-##### <a name="missing-updates-list"></a>Eksik güncelleştirmelerin listesi
+##### <a name="missing-updates-list"></a>Eksik güncelleştirmeler listesi
 
 ```loganalytics
 Update
@@ -393,12 +393,12 @@ Update
 | project-away ClassificationWeight, InformationId, InformationUrl
 ```
 
-#### <a name="single-azure-vm-assessment-queries-linux"></a>Tek Azure VM değerlendirmesi sorgular (Linux)
+#### <a name="single-azure-vm-assessment-queries-linux"></a>Tek Azure VM değerlendirmesi sorguları (Linux)
 
-Bazı Linux dağıtımları için var olan bir [endianness](https://en.wikipedia.org/wiki/Endianness) Azure Resource Manager ve Azure İzleyici günlüklerine depolanan geldiği VMUUID değerle eşleşmiyor. Aşağıdaki sorgu ya da endianness bir eşleşme olup olmadığını denetler. VMUUID değerleri büyük endian ve endian GUID'sinin biçimi doğru sonuçları döndürmek için ile değiştirin. Azure İzleyici günlüklerine aşağıdaki sorguyu çalıştırarak kullanılması gereken VMUUID bulabilirsiniz: `Update | where Computer == "<machine name>"
+Bazı Linux 'lar için, Azure Resource Manager ve Azure Izleyici günlüklerinde depolanan VMUUID değeri ile bir [bitiçlik](https://en.wikipedia.org/wiki/Endianness) uyumsuzluğu vardır. Aşağıdaki sorgu, her iki durumda da bir eşleşme olup olmadığını denetler. Sonuçları doğru bir şekilde döndürmek için VMUUID değerlerini, GUID 'nin büyük endian ve little-endian biçimiyle değiştirin. Azure Izleyici günlüklerinde aşağıdaki sorguyu çalıştırarak kullanılması gereken VMUUID 'yi bulabilirsiniz:`Update | where Computer == "<machine name>"
 | summarize by Computer, VMUUID`
 
-##### <a name="missing-updates-summary"></a>Eksik güncelleştirmeler özeti
+##### <a name="missing-updates-summary"></a>Eksik güncelleştirmeler Özeti
 
 ```loganalytics
 Update
@@ -409,7 +409,7 @@ Update
 | summarize allUpdatesCount=count(), criticalUpdatesCount=countif(Classification has "Critical"), securityUpdatesCount=countif(Classification has "Security"), otherUpdatesCount=countif(Classification !has "Critical" and Classification !has "Security")
 ```
 
-##### <a name="missing-updates-list"></a>Eksik güncelleştirmelerin listesi
+##### <a name="missing-updates-list"></a>Eksik güncelleştirmeler listesi
 
 ```loganalytics
 Update
@@ -426,7 +426,7 @@ Update
 
 #### <a name="multi-vm-assessment-queries"></a>Çoklu VM değerlendirmesi sorguları
 
-##### <a name="computers-summary"></a>Bilgisayarların özeti
+##### <a name="computers-summary"></a>Bilgisayar Özeti
 
 ```loganalytics
 Heartbeat
@@ -468,7 +468,7 @@ on SourceComputerId
 
 ```
 
-##### <a name="missing-updates-summary"></a>Eksik güncelleştirmeler özeti
+##### <a name="missing-updates-summary"></a>Eksik güncelleştirmeler Özeti
 
 ```loganalytics
 Update
@@ -492,7 +492,7 @@ Update
 | summarize allUpdatesCount=count(), criticalUpdatesCount=countif(Classification has "Critical"), securityUpdatesCount=countif(Classification has "Security"), otherUpdatesCount=countif(Classification !has "Critical" and Classification !has "Security")
 ```
 
-##### <a name="computers-list"></a>Bilgisayarlar listesi
+##### <a name="computers-list"></a>Bilgisayar listesi
 
 ```loganalytics
 Heartbeat
@@ -539,7 +539,7 @@ on SourceComputerId
 | project-away ComplianceOrder
 ```
 
-##### <a name="missing-updates-list"></a>Eksik güncelleştirmelerin listesi
+##### <a name="missing-updates-list"></a>Eksik güncelleştirmeler listesi
 
 ```loganalytics
 Update
@@ -567,86 +567,86 @@ Update
 | project-away ClassificationWeight, InformationId, InformationUrl
 ```
 
-## <a name="using-dynamic-groups"></a>Dinamik gruplar kullanılarak
+## <a name="using-dynamic-groups"></a>Dinamik grupları kullanma
 
-Güncelleştirme yönetimi, Azure veya Azure olmayan Vm'leri dinamik bir grup güncelleştirme dağıtımları için hedef olanağı sağlar. Bu grupları, dağıtım sırasında makineler eklemek için dağıtımınızın düzenlemek zorunda kalmazsınız değerlendirilir.
+Güncelleştirme Yönetimi, güncelleştirme dağıtımları için Azure veya Azure olmayan VM 'Lerin dinamik bir grubunu hedefleyebilme olanağı sağlar. Bu gruplar dağıtım zamanında değerlendirilir, böylece, makineleri eklemek için dağıtımınızı düzenlemeniz gerekmez.
 
 > [!NOTE]
-> Güncelleştirme dağıtımı oluştururken uygun izinlere sahip olmalıdır. Daha fazla bilgi için bkz. [Güncelleştirmeleri Yükle](#install-updates).
+> Güncelleştirme dağıtımı oluştururken uygun izinlere sahip olmanız gerekir. Daha fazla bilgi için bkz. [güncelleştirmeleri yüklemek](#install-updates).
 
-### <a name="azure-machines"></a>Azure makineler
+### <a name="azure-machines"></a>Azure makineleri
 
-Bu grupları tanımlanan bir sorgu tarafından bir güncelleştirme dağıtımı başladığında, bu grubun üyelerinin değerlendirilir. Dinamik gruplar, Klasik Vm'leri ile çalışmaz. Sorgunuzu tanımlarken, aşağıdaki öğeler birlikte dinamik Grup doldurmak için kullanılabilir
+Bu gruplar bir sorgu tarafından tanımlanır, bir güncelleştirme dağıtımı başladığında, o grubun üyeleri değerlendirilir. Dinamik Gruplar klasik VM 'Ler ile çalışmaz. Sorgunuzu tanımlarken, dinamik grubu doldurmak için aşağıdaki öğeler birlikte kullanılabilir
 
-* Abonelik
+* Subscription
 * Kaynak grupları
 * Konumlar
 * Tags
 
 ![Grupları seçin](./media/automation-update-management/select-groups.png)
 
-Dinamik bir Grup sonuçlarını önizlemek için tıklayın **Önizleme** düğmesi. Bu grup üyeliğini başlatıldığında, bu örnekte, biz arama için etiket makinelerle önizlemesini **rol** eşittir **BackendServer**. Daha fazla makine eklenen bu etiket varsa, bu gruba göre tüm gelecekteki dağıtımlar için eklenir.
+Dinamik bir grubun sonuçlarını önizlemek için **Önizleme** düğmesine tıklayın. Bu önizlemede, bu sırada grup üyeliği gösterilmektedir. Bu örnekte, Tag **rolüne** sahip makineleri **BackEndServer**'a eşit olarak arıyor. Bu etiket daha fazla makineye eklendiyse, bu Etiketler bu gruba karşı gelecekteki tüm dağıtımlara eklenecektir.
 
 ![Önizleme grupları](./media/automation-update-management/preview-groups.png)
 
-### <a name="non-azure-machines"></a>Azure olmayan makineler
+### <a name="non-azure-machines"></a>Azure dışı makineler
 
-Bilgisayar grupları dinamik bir grup oluşturmak için kullanılan için Azure olmayan makineler, kayıtlı aramalar için de denir. Kayıtlı bir aramayı oluşturmayı öğrenmek için bkz: [bir bilgisayar grubu oluşturmayı](../azure-monitor/platform/computer-groups.md#creating-a-computer-group). Grubunuz oluşturulduğunda kayıtlı aramaları listesinden seçebilirsiniz. Tıklayın **Önizleme** bilgisayarların o anda kayıtlı arama önizlemesi için.
+Azure dışı makinelerde, bilgisayar grupları olarak da bilinen kayıtlı aramalar, dinamik grubu oluşturmak için kullanılır. Kayıtlı bir aramanın nasıl oluşturulduğunu öğrenmek için bkz. [bilgisayar grubu oluşturma](../azure-monitor/platform/computer-groups.md#creating-a-computer-group). Grubunuz oluşturulduktan sonra, kaydedilen aramalar listesinden bunu seçebilirsiniz. Kaydedilen aramada bilgisayarları o anda önizlemek için **Önizleme** ' ye tıklayın.
 
 ![Grupları seçin](./media/automation-update-management/select-groups-2.png)
 
 ## <a name="integrate-with-system-center-configuration-manager"></a>System Center Configuration Manager ile tümleştirme
 
-System Center Configuration Manager'da bilgisayarları, sunucuları ve mobil cihazları yönetmek için yatırım yapmış müşteriler aynı zamanda gücü ve yazılım güncelleştirmelerini yönetmenize yardımcı olmak için Configuration Manager'ın olgunluk yararlanmaktadır. Configuration Manager yazılım güncelleştirme yönetimi (SUM) döngüsünün bir parçasıdır.
+Bilgisayarları, sunucuları ve mobil cihazları yönetmek için System Center Configuration Manager yatırım yapmış müşteriler, yazılım güncelleştirmelerini yönetmeye yardımcı olmak için Configuration Manager kuvvetini ve vadede yararlanır. Configuration Manager, yazılım güncelleştirme yönetimi (SUM) döngüsünün bir parçasıdır.
 
-Yönetim çözümü System Center Configuration Manager ile tümleştirmeyi öğrenin için bkz: [güncelleştirme yönetimi ile System Center Configuration Manager tümleştirme](oms-solution-updatemgmt-sccmintegration.md).
+Yönetim çözümünü System Center Configuration Manager ile tümleştirmeyi öğrenmek için bkz. [System Center Configuration Manager güncelleştirme yönetimi Ile tümleştirme](oms-solution-updatemgmt-sccmintegration.md).
 
-## <a name="inclusion-behavior"></a>Ekleme davranışı
+## <a name="inclusion-behavior"></a>İçerme davranışı
 
-Güncelleştirme ekleme uygulamak için belirli güncelleştirmeleri belirtmenizi sağlar. Düzeltme ekleri veya dahil edilen paketler yüklenir. Düzeltme ekleri veya paketleri dahil edilir ve de sınıflandırması seçildiğinde dahil edilen öğeleri ve Sınıflandırmayı karşılayan öğeleri yüklenir.
+Dahil etme, uygulanacak belirli güncelleştirmeleri belirtmenize olanak tanır. Dahil edilen düzeltme ekleri veya paketleri yüklenir. Yamaları veya paketleri dahil edildiğinde ve sınıflandırma her ikisi de seçildiğinde, hem dahil edilen öğeler hem de sınıflandırmayı karşılayan öğeler yüklenir.
 
-Özel durumlar eklenen geçersiz kılma bilmek önemlidir. Örneği için bir çıkarma kuralı tanımlarsanız `*`, tüm hariç tutulan gibi hiçbir düzeltme ekleri veya paketler yüklü. Düzeltme ekleri makineden eksik olarak hala show dışlandı. Linux makineler için bir paket dahildir ancak dışarıda bırakıldı bağımlı paketi varsa paket yüklü değil.
+Dışlamaları geçersiz kılmanın dahil olduğunu bildirmek önemlidir. Örneğin, hariç tutma kuralı `*`tanımlarsanız, hepsi hariç tutulduklarında hiçbir düzeltme eki veya paket yüklenmez. Dışlanan düzeltme ekleri hala makinede eksik olarak gösterilir. Linux makineler için bir paket dahil, ancak dışlanan bir bağımlı paketi varsa, paket yüklenmez.
 
-## <a name="patch-linux-machines"></a>Düzeltme eki Linux makineleri
+## <a name="patch-linux-machines"></a>Linux makinelerini yama
 
-Aşağıdaki bölümler Linux düzeltme eki uygulama ile ilgili olası sorunları açıklar.
+Aşağıdaki bölümlerde, Linux düzeltme ekiyle ilgili olası sorunlar açıklanmaktadır.
 
-### <a name="unexpected-os-level-upgrades"></a>Beklenmeyen işletim sistemi düzeyinde yükseltir.
+### <a name="unexpected-os-level-upgrades"></a>Beklenmeyen işletim sistemi düzeyi yükseltmeleri
 
-Red Hat Enterprise Linux gibi bazı Linux çeşitleri üzerinde düzey işletim sistemi yükseltme paketleri ortaya çıkabilir. Bu işletim sistemi sürüm numarası nerede değişiklikleri güncelleştirme yönetimi çalışır neden olabilir. Güncelleştirme yönetimi, yönetici Linux bilgisayarı üzerinde yerel olarak kullanacağınız paketleri güncelleştirmek için aynı yöntemleri kullandığından bu davranış kasıtlıdır.
+Red Hat Enterprise Linux gibi bazı Linux değişkenlerde, işletim sistemi düzeyinde yükseltmeler paketler aracılığıyla gerçekleşebilir. Bu, işletim sistemi sürümü numarasının değiştiği Güncelleştirme Yönetimi çalışmasına yol açabilir. Güncelleştirme Yönetimi, bir yöneticinin Linux bilgisayarda yerel olarak kullanacağı paketleri güncelleştirmek için aynı yöntemleri kullandığından, bu davranış bilerek yapılır.
 
-Güncelleştirme yönetimi çalışmalarını aracılığıyla işletim sistemi sürümünü güncelleştirme önlemek için **dışlama** özelliği.
+Güncelleştirme Yönetimi çalıştırmaları aracılığıyla işletim sistemi sürümünün güncelleştirilmesini önlemek için **dışlama** özelliğini kullanın.
 
-Red Hat Enterprise Linux, redhat yayın server.x86_64 tutulacak paket adı.
+Red Hat Enterprise Linux, dışlanacak paket adı RedHat-Release-Server. x86_64 ' dır.
 
-![Linux için tutulacak paketlerin](./media/automation-update-management/linuxpatches.png)
+![Linux için dışlanacak paketler](./media/automation-update-management/linuxpatches.png)
 
-### <a name="critical--security-patches-arent-applied"></a>Kritik / güvenlik yamaları olmayan uygulanan
+### <a name="critical--security-patches-arent-applied"></a>Kritik/güvenlik düzeltme ekleri uygulanmadı
 
-Bir Linux makineye güncelleştirmeleri dağıtırken, güncelleştirme sınıflandırmaları seçebilirsiniz. Bu, belirtilen ölçütleri karşılayan bir makineye uygulanan güncelleştirmeleri filtreler. Güncelleştirme dağıtıldığında bu filtre makine üzerinde yerel olarak uygulanır.
+Güncelleştirmeleri bir Linux makinesine dağıtırken, güncelleştirme sınıflandırmalarını seçebilirsiniz. Bu, belirtilen ölçütlere uyan makineye uygulanan güncelleştirmelere filtre uygular. Bu filtre, güncelleştirme dağıtıldığında makinede yerel olarak uygulanır.
 
-Güncelleştirme yönetimi, güncelleştirme zenginleştirme, bulutta gerçekleştirdiğinden, bu bilgileri yerel makinede yok olsa bile bazı güncelleştirmeler güncelleştirme Yönetimi'nde güvenlik, etkili olarak işaretlenebilir. Sonuç olarak, bir Linux makineye kritik güncelleştirmeler uygularsanız, olabilir güvenlik etkisi olması olarak makine ve güncelleştirmeleri uygulanmaz işaretlenmez güncelleştirmeleri.
+Güncelleştirme Yönetimi bulutta güncelleştirme zenginleştirmesini gerçekleştirdiğinden, bazı güncelleştirmeler, yerel makinede bu bilgilere sahip olmasa bile güvenlik etkisi olan Güncelleştirme Yönetimi olarak işaretlenir. Sonuç olarak, bir Linux makinesine kritik güncelleştirmeler uygularsanız, bu makinede güvenlik etkisi olan olarak işaretlenmemiş güncelleştirmeler olabilir ve güncelleştirmeler uygulanmaz.
 
-Ancak, güncelleştirme yönetimi, ilgili güncelleştirme hakkında ek bilgi içerdiğinden olarak uyumlu söz konusu makine hala bildirebilir.
+Ancak, Güncelleştirme Yönetimi ilgili güncelleştirme hakkında ek bilgi içerdiğinden, bu makineyi hala uyumsuz olarak raporlayabilir.
 
-Güncelleştirme sınıflandırmasına göre güncelleştirmeler dağıtma CentOS üzerinde kullanıma hazır çalışmaz. Güncelleştirmeler için CentOS düzgün bir şekilde dağıtmak için güncelleştirmelerin uygulandığından emin olmak için tüm sınıflandırmaları seçin. SUSE için seçme *yalnızca* sınıflandırma bazı güvenlik neden olabileceğinden ' diğer ' güvenlik güncelleştirmeleri, ayrıca yüklenen güncelleştirmeler zypper (Paket Yöneticisi) için ilgili veya bağımlılıklarından ilk gereklidir. Bu davranış, zypper kısıtlamasıdır. Bazı durumlarda, güncelleştirme dağıtımının yeniden çalıştırmanız gerekebilir. Doğrulamak için update günlüğünü denetleyin.
+Güncelleştirmelerin güncelleştirme sınıflandırmasına göre dağıtımı, kutudan çıkan CentOS üzerinde çalışmaz. CentOS güncelleştirmelerini doğru bir şekilde dağıtmak için, güncelleştirmelerin uygulandığından emin olmak için tüm sınıflandırmaları seçin. SUSE için, sınıflandırma olarak *yalnızca* ' diğer güncelleştirmeler ' seçilmesi, zypper (Paket Yöneticisi) ile ilgili güvenlik güncelleştirmelerinin veya bağımlılıklarından önce gerekli olduğu durumlarda bazı güvenlik güncelleştirmelerinin de yüklenmesini sağlayabilir. Bu davranış, zypper kısıtlamasıdır. Bazı durumlarda, güncelleştirme dağıtımını yeniden çalıştırmanız gerekebilir. Doğrulamak için güncelleştirme günlüğünü kontrol edin.
 
-## <a name="remove-a-vm-from-update-management"></a>VM güncelleştirme yönetiminden kaldırmak
+## <a name="remove-a-vm-from-update-management"></a>Güncelleştirme Yönetimi bir VM 'yi kaldırma
 
-VM güncelleştirme yönetiminden kaldırmak için:
+Bir sanal makineyi Güncelleştirme Yönetimi kaldırmak için:
 
-* Log Analytics çalışma alanınızda kayıtlı arama kapsamı yapılandırması için VM kaldırma `MicrosoftDefaultScopeConfig-Updates`. Kayıtlı aramalar, altında bulunabilir **genel** çalışma alanınızdaki.
-* Kaldırma [Microsoft Monitoring agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) veya [Linux için Log Analytics aracısını](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
+* Log Analytics çalışma alanınızda, VM 'yi, kapsam yapılandırması `MicrosoftDefaultScopeConfig-Updates`için kaydedilen aramadan kaldırın. Kayıtlı aramalar, çalışma alanınızda **genel** altında bulunabilir.
+* Linux için [Microsoft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) 'ı veya [Log Analytics aracısını](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)kaldırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Windows sanal makineleriniz için güncelleştirmeleri yönetme konusunda bilgi almak için öğreticiye devam edin.
+Windows sanal makineleriniz için güncelleştirmelerin nasıl yönetileceğini öğrenmek için öğreticiye devam edin.
 
 > [!div class="nextstepaction"]
-> [Azure Windows Vm'leriniz için güncelleştirme ve yamaları yönetmenize](automation-tutorial-update-management.md)
+> [Azure Windows VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme](automation-tutorial-update-management.md)
 
-* Te günlük aramalarını kullanın [Azure İzleyici günlükleri](../log-analytics/log-analytics-log-searches.md) ayrıntılı güncelleştirme verilerini görüntülemek için.
-* [Uyarı oluşturma](automation-tutorial-update-management.md#configure-alerts) güncelleştirme dağıtım durumu için.
+* Ayrıntılı güncelleştirme verilerini görüntülemek için [Azure izleyici günlüklerinde](../log-analytics/log-analytics-log-searches.md) günlük aramalarını kullanın.
+* Güncelleştirme dağıtım durumu için [uyarı oluştur](automation-tutorial-update-management.md#configure-alerts) .
 
-* Güncelleştirme yönetimi REST API aracılığıyla etkileşim öğrenmek için bkz. [yazılım güncelleştirme yapılandırmaları](/rest/api/automation/softwareupdateconfigurations)
-* Güncelleştirme yönetimi sorunlarını giderme konusunda bilgi almak için bkz: [güncelleştirme yönetiminde sorun giderme](troubleshoot/update-management.md)
+* REST API üzerinden Güncelleştirme Yönetimi nasıl etkileşim kuracağınızı öğrenmek için bkz. [yazılım güncelleştirme yapılandırması](/rest/api/automation/softwareupdateconfigurations)
+* Güncelleştirme Yönetimi sorunlarını giderme hakkında bilgi edinmek için bkz. [sorun giderme güncelleştirme yönetimi](troubleshoot/update-management.md)

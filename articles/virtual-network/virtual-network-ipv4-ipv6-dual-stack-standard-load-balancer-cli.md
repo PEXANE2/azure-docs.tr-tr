@@ -1,5 +1,5 @@
 ---
-title: Azure sanal ağ 'da IPv6 ikili yığın uygulaması dağıtma-CLı
+title: Azure sanal ağı 'nda Standart Load Balancer IPv6 ikili yığın uygulaması dağıtma-CLı
 titlesuffix: Azure Virtual Network
 description: Bu makalede, Azure CLı kullanarak Azure sanal ağ 'da IPv6 ikili yığın uygulamasının nasıl dağıtılacağı gösterilmektedir.
 services: virtual-network
@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/08/2019
+ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: cc89e9284e6dbb735aef08100c99a5a7fdb87549
+ms.openlocfilehash: 7b231ded3fdae7553e101beff2ee77d82fe27e6e
 ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/16/2019
-ms.locfileid: "68248836"
+ms.locfileid: "68269630"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---cli-preview"></a>Azure sanal ağ 'da IPv6 ikili yığın uygulaması dağıtma-CLı (Önizleme)
+# <a name="deploy-an-ipv6-dual-stack-application-with-standard-load-balancer-in-azure-virtual-network---cli-preview"></a>Azure sanal ağı 'nda Standart Load Balancer IPv6 ikili yığın uygulaması dağıtma-CLı (Önizleme)
 
 Bu makalede, çift yığın alt ağına sahip bir çift yığın sanal ağı, Çift (IPv4 + IPv6) ön uç yapılandırmalarına sahip bir yük dengeleyici, çift IP yapılandırmasına sahip NIC 'Ler olan sanal makineler içeren bir çift yığın (IPv4 + IPv6) uygulamasının nasıl dağıtılacağı gösterilmektedir. Çift ağ güvenlik grubu kuralları ve ikili genel IP 'Ler.
 
@@ -70,8 +70,8 @@ az network public-ip create \
 --name dsPublicIP_v4  \
 --resource-group DsResourceGroup01  \
 --location eastus  \
---sku BASIC  \
---allocation-method dynamic  \
+--sku STANDARD  \
+--allocation-method static  \
 --version IPv4
 
 # Create an IPV6 IP address
@@ -79,8 +79,8 @@ az network public-ip create \
 --name dsPublicIP_v6  \
 --resource-group DsResourceGroup01  \
 --location eastus \
---sku BASIC  \
---allocation-method dynamic  \
+--sku STANDARD  \
+--allocation-method static  \
 --version IPv6
 
 ```
@@ -94,32 +94,32 @@ az network public-ip create \
 --name dsVM0_remote_access  \
 --resource-group DsResourceGroup01 \
 --location eastus  \
---sku BASIC  \
---allocation-method dynamic  \
+--sku Standard  \
+--allocation-method static  \
 --version IPv4
 
 az network public-ip create \
 --name dsVM1_remote_access  \
 --resource-group DsResourceGroup01  \
 --location eastus  \
---sku BASIC  \
---allocation-method dynamic  \
+--sku Standard  \
+--allocation-method static  \
 --version IPv4
 ```
 
-## <a name="create-basic-load-balancer"></a>Temel Yük Dengeleyici Oluşturma
+## <a name="create-standard-load-balancer"></a>Standart Load Balancer oluşturma
 
-Bu bölümde, yük dengeleyici için çift ön uç IP (IPv4 ve IPv6) ve arka uç adres havuzunu yapılandırır ve ardından temel bir Load Balancer oluşturursunuz.
+Bu bölümde, yük dengeleyici için çift ön uç IP (IPv4 ve IPv6) ve arka uç adres havuzunu yapılandırır ve ardından bir Standart Load Balancer oluşturursunuz.
 
 ### <a name="create-load-balancer"></a>Yük dengeleyici oluşturma
 
-**DsLbFrontEnd_v4**adlı bir ön uç havuzu içeren, [az Network lb Create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) adlı **dslb** ile temel Load Balancer oluşturun, bu, IPv4 Genel  IP adresiyle **ilişkili dsLbBackEndPool_v4 adlı bir arka uç havuzu içerir** önceki adımda oluşturduğunuz dsPublicIP_v4. 
+**DsLbFrontEnd_v4**adlı bir ön uç havuzu içeren, [az Network lb Create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) adlı **dslb** adlı bir standart Load Balancer oluşturun, bu, IPv4 Genel IP adresiyle  **ilişkili dsLbBackEndPool_v4 adlı bir arka uç havuzu içerir** önceki adımda oluşturduğunuz dsPublicIP_v4. 
 
 ```azurecli
 az network lb create \
 --name dsLB  \
 --resource-group DsResourceGroup01 \
---sku Basic \
+--sku Standard \
 --location eastus \
 --frontend-ip-name dsLbFrontEnd_v4  \
 --public-ip-address dsPublicIP_v4  \
@@ -198,7 +198,7 @@ az vm availability-set create \
 
 ### <a name="create-network-security-group"></a>Ağ güvenlik grubu oluşturma
 
-VNET 'iniz içindeki gelen ve giden iletişimi yönetecek kurallar için bir ağ güvenlik grubu oluşturun.
+VNet 'iniz içindeki gelen ve giden iletişimi yönetecek kurallar için bir ağ güvenlik grubu oluşturun.
 
 #### <a name="create-a-network-security-group"></a>Ağ güvenlik grubu oluşturma
 
@@ -387,4 +387,4 @@ Artık gerekli değilse, [az group delete](/cli/azure/group#az-group-delete) kom
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, bir temel Load Balancer bir çift ön uç IP yapılandırması (IPv4 ve IPv6) oluşturdunuz. Ayrıca, yük dengeleyicinin arka uç havuzuna eklenen çift IP yapılandırmalarına (ıPV4 + IPv6) sahip NIC 'Leri dahil eden iki sanal makine oluşturmuş olursunuz. Azure sanal ağlarında IPv6 desteği hakkında daha fazla bilgi edinmek için bkz. [Azure sanal ağ Için IPv6 nedir?](ipv6-overview.md)
+Bu makalede, çift ön uç IP yapılandırması (IPv4 ve IPv6) ile bir Standart Load Balancer oluşturdunuz. Ayrıca, yük dengeleyicinin arka uç havuzuna eklenen çift IP yapılandırmalarına (ıPV4 + IPv6) sahip NIC 'Leri dahil eden iki sanal makine oluşturmuş olursunuz. Azure sanal ağlarında IPv6 desteği hakkında daha fazla bilgi edinmek için bkz. [Azure sanal ağ Için IPv6 nedir?](ipv6-overview.md)

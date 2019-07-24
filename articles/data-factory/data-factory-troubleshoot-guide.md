@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory sorunlarını giderme | Microsoft Docs
-description: Azure Data Factory sorunlarını giderme. Ortak belge tüm dış, Denetim etkinlikleri.
+title: Sorun giderme Azure Data Factory | Microsoft Docs
+description: Azure Data Factory 'de dış denetim etkinliklerinin nasıl giderileceğini öğrenin.
 services: data-factory
 author: abnarain
 manager: craigg
@@ -9,156 +9,152 @@ ms.topic: troubleshooting
 ms.date: 6/26/2019
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: d220730bb2e93e32d00e56ed98f4962ad89eda5a
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: c76242c176ba4f4c9ffc0d6934f6b645743d77f4
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67626319"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234578"
 ---
-# <a name="troubleshooting-azure-data-factory"></a>Azure Data Factory sorunlarını giderme
-Bu makalede, genel sorun giderme soruları listelenmektedir.
+# <a name="troubleshoot-azure-data-factory"></a>Azure Data Factory sorunlarını giderme
 
-- [Azure Databricks (Not Defteri, jar dosyaları dışındaki, python)](#azure-databricks)
-- [Azure Data Lake Analytics (U-SQL)](#azure-data-lake-analytics-u-sql)
-- [Azure İşlevleri](#azure-functions)
-- [Özel (Azure yığını için)](#custom-azure-batch)
-- [HDInsight (Spark, Hive, MapReduce, Pig, Hadoop akış)](#hdinsight-spark-hive-mapreduce-pig-hadoop-streaming)
-- [Web etkinliği](#web-activity)
-
-
+Bu makalede Azure Data Factory içindeki dış denetim etkinlikleri için genel sorun giderme yöntemleri incelenmektedir.
 
 ## <a name="azure-databricks"></a>Azure Databricks
-| Hata Kodu | Hata İletisi                                          | Sorun açıklaması                             | Olası düzeltme / önerilen eylem                            |
+
+| Hata kodu | Hata iletisi                                          | Açıklama                             | Öneri                             |
 | -------------- | ----------------------------------------------------- | --------------------------------------------------------------| :----------------------------------------------------------- |
-| 3200           | 403 hatası                                                    | Databricks erişim belirtecinin süresi doldu.                         | Varsayılan olarak, Databricks erişim belirteci 90 gün boyunca geçerlidir.  Lütfen yeni bir belirteç oluşturun ve bağlı hizmeti güncelleştirin. |
-| 3201           | Gerekli alan eksik: settings.task.notebook_task.notebook_path | Bozuk yazma: Not defteri yolu doğru biçimde belirtilmemiş. | Lütfen Databricks etkinlik not defteri yolu belirtin. |
-| 3201           | Küme... mevcut değil                                 | Yazma hatası: Databricks kümesini yok veya silinmiş olabilir. | Databricks kümesini var olduğunu doğrulayın. |
-| 3201           | Geçersiz bir python dosyası URI:... Lütfen desteklenen URI düzenleri için Databricks kullanıcı kılavuzunu ziyaret edin. | Bozuk yazma                                                | Çalışma alanı adresleme düzeni için mutlak yollar veya DBFS depolanan dosyalar için "dbfs:/folder/subfolder/foo.py" belirtin. |
-| 3201           | {0}   LinkedService etki alanı ve accessToken gerekli özelliklere sahip olmalıdır | Bozuk yazma                                                | Lütfen doğrulama [bağlantılı hizmet tanımı](compute-linked-services.md#azure-databricks-linked-service). |
-| 3201           | {0}   LinkedService, mevcut küme kimliği ya da yeni küme oluşturma bilgilerini belirtmeniz gerekir | Bozuk yazma                                                | Lütfen doğrulama [bağlantılı hizmet tanımı](compute-linked-services.md#azure-databricks-linked-service). |
-| 3201           | Düğüm türü Standard_D16S_v3 desteklenmiyor. Düğüm türleri desteklenir:   Standard_DS3_v2 Standard_DS4_v2, Standard_DS5_v2, Standard_D8s_v3, Standard_D16s_v3, Standard_D32s_v3, Standard_D64s_v3, işler için standart_d3_v2, standart_d8_v3, standart_d16_v3, standart_d32_v3, standart_d64_v3, işler için standart_d12_v2, işler için standart_d13_v2, İşler için standart_d14_v2 işler için standart_d15_v2, Standard_DS12_v2, Standard_DS13_v2, Standard_DS14_v2, Standard_DS15_v2, Standard_E8s_v3, Standard_E16s_v3, Standard_E32s_v3, Standard_E64s_v3, Standard_L4s, Standard_L8s, Standard_L16s, Standard_L32s, Standard_F4s Standard_F8s, Standard_F16s, işler için standart_h16, Standard_F4s_v2, Standard_F8s_v2, Standard_F16s_v2, Standard_F32s_v2, Standard_F64s_v2, Standard_F72s_v2, işler için standart_nc12, işler için standart_nc24, Standard_NC6s_v3, Standard_NC12s_v3, Standard_ NC24s_v3, Standard_L8s_v2, Standard_L16s_v2, Standard_L32s_v2, Standard_L64s_v2, Standard_L80s_v2 | Bozuk yazma                                                | Hata iletisi bakın                                          |
-| 3201           | Geçersiz notebook_path:... Mutlak yollar yalnızca şu anda desteklenmiyor. Yolları başlamalıdır '/'. | Bozuk yazma                                                | Hata iletisi bakın                                          |
-| 3202           | Son 3600 hız sınırı aşan saniye içinde oluşturulan 1000 işler zaten vardı:   3600 saniye başına 1000 işi oluşturma. | Çok fazla Databricks bir saat içinde çalışır.                         | İş oluşturma hızı için bu Databricks çalışma alanı kullanan tüm işlem hatları denetleyin.  İşlem hatları başlatılan toplam çok fazla Databricks çalışır, bazı ardışık düzenleri, yeni bir çalışma alanına geçirin. |
-| 3202           | İstek nesnesi ayrıştırılamadı: Beklenen 'key' ve 'JSON harita alanı base_parameters için ayarlanacak değer' var ' anahtar: "..." ' Bunun yerine. | Yazma hatası: Parametresi için sağlanan değer         | İşlem hattı json inceleyin ve tüm dizüstü baseParameters parametrelerinde belirtilen bir boş olmayan değere sahip olun. |
-| 3202           | Kullanıcı: SimpleUserContext {UserID = '... ' adı =user@company.com, Orgıd =...} kümeye erişmek için yetkili değil | Erişim belirteci oluşturan kullanıcı bağlı hizmette belirtilen Databricks kümesine erişmek için izin verilmiyor. | Kullanıcı çalışma alanında gerekli izinlere sahip olduğundan emin olun.   |
-| 3203           | Küme kesildi, işlerine erişmek kullanılamaz durumda. Lütfen küme düzeltin veya daha sonra yeniden deneyin. | Küme sonlandırıldı.    Etkileşimli küme için bu bir yarış durumu olabilir. | Bunu önlemek için en iyi yolu, işlem kümeleri kullanmaktır.             |
-| 3204           | İş yürütme başarısız oldu. Herhangi bir sayıda etkinliğe özgü iletiyi küme beklenmeyen durumundan hata iletileri olabilir.  En yaygın hata iletisi olmaz. | Yok                                                          | Yok                                                          |
+| 3200           | Hata 403.                                                    | Databricks erişim belirtecinin süresi doldu.                         | Varsayılan olarak, Databricks erişim belirteci 90 gün için geçerlidir.  Yeni bir belirteç oluşturun ve bağlı hizmeti güncelleştirin. |
+| 3201           | Gerekli alan eksik: Settings. Task. notebook_task. notebook_path | Hatalı yazma: Not defteri yolu doğru belirtilmedi. | Databricks etkinliğinde Not defteri yolunu belirtin. |
+| 3201           | Küme... yok.                                 | Yazma hatası: Databricks kümesi yok veya silinmiş. | Databricks kümesinin var olduğunu doğrulayın. |
+| 3201           | Geçersiz Python dosya URI 'SI.... Desteklenen URI düzenleri için lütfen Databricks Kullanıcı kılavuzunu ziyaret edin. | Hatalı yazma.                                                | Çalışma alanı adresleme şemaları `dbfs:/folder/subfolder/foo.py` için mutlak yollar ya da databricks dosya sisteminde depolanan dosyalar için belirtin. |
+| 3201           | {0}LinkedService 'in, gerekli özellikler olarak etki alanı ve accessToken olması gerekir. | Hatalı yazma.                                                | [Bağlı hizmet tanımını](compute-linked-services.md#azure-databricks-linked-service)doğrulayın. |
+| 3201           | {0}LinkedService, oluşturma için mevcut küme KIMLIĞINI ya da yeni küme bilgilerini belirtmelidir. | Hatalı yazma.                                                | [Bağlı hizmet tanımını](compute-linked-services.md#azure-databricks-linked-service)doğrulayın. |
+| 3201           | Düğüm türü Standard_D16S_v3 desteklenmiyor. Desteklenen düğüm türleri:   Standard_DS3_v2, Standard_DS4_v2, Standard_DS5_v2, Standard_D8s_v3, Standard_D16s_v3, Standard_D32s_v3, Standard_D64s_v3, Standard_D3_v2, Standard_D8_v3, Standard_D16_v3, Standard_D32_v3, Standard_D64_v3, Standard_D12_v2, Standard_D13_v2, Standard_D14_v2, Standard_D15_v2, Standard_DS12_v2, Standard_DS13_v2, Standard_DS14_v2, Standard_DS15_v2, Standard_E8s_v3, Standard_E16s_v3, Standard_E32s_v3, Standard_E64s_v3, Standard_L4s, Standard_L8s, Standard_L16s, Standard_L32s, Standard_F4s, Standard_F8s, Standard_F16s, Standard_H16, Standard_F4s_v2, Standard_F8s_v2, Standard_F16s_v2, Standard_F32s_v2, Standard_F64s_v2, Standard_F72s_v2, Standard_NC12, Standard_NC24, Standard_NC6s_v3, Standard_NC12s_v3, Standard_ NC24s_v3, Standard_L8s_v2, Standard_L16s_v2, Standard_L32s_v2, Standard_L64s_v2, Standard_L80s_v2. | Hatalı yazma.                                                | Hata iletisine bakın.                                          |
+| 3201           | Geçersiz notebook_path:... Şu anda yalnızca mutlak yollar destekleniyor. Yolların '/' ile başlaması gerekir. | Hatalı yazma.                                                | Hata iletisine bakın.                                          |
+| 3202           | Son 3600 saniye içinde oluşturulmuş 1000 iş zaten var, hız sınırı aşılıyor:   3600 saniyede 1000 iş oluşturma işlemi. | Bir saat içinde çok fazla Databricks çalışıyor.                         | Bu Databricks çalışma alanını kullanan tüm işlem hatlarını iş oluşturma oranı için denetleyin.  İşlem hatları çok fazla Databricks çalıştırıyorsa, bazı işlem hatlarını yeni bir çalışma alanına geçirin. |
+| 3202           | İstek nesnesi ayrıştırılamadı: JSON eşleme alanı base_parameters için ' Key ' ve ' Value ' değerinin ayarlanması bekleniyordu, ' Key: "..." ' alındı yerine. | Yazma hatası: Parametresi için değer belirtilmedi.         | JSON işlem hattını inceleyin ve baseParameters not defterindeki tüm parametrelerin boş olmayan bir değer belirttiğinden emin olun. |
+| 3202           | Kullanıcı: `SimpleUserContext{userId=..., name=user@company.com, orgId=...}` kümeye erişim yetkisi yok. | Erişim belirtecini oluşturan kullanıcının bağlantılı hizmette belirtilen Databricks kümesine erişmesine izin verilmiyor. | Kullanıcının çalışma alanında gerekli izinlere sahip olduğundan emin olun.   |
+| 3203           | Küme sonlandırılmış durumda ve işleri almak için kullanılamaz. Lütfen kümeyi düzeltip daha sonra yeniden deneyin. | Küme sonlandırıldı.    Etkileşimli kümeler için bu bir yarış durumu olabilir. | Bu hatayı önlemenin en iyi yolu iş kümelerini kullanmaktır.             |
+| 3204           | İş yürütülemedi.  | Hata iletileri beklenmeyen küme durumu veya belirli bir etkinlik gibi çeşitli sorunları gösterir. Çoğu zaman hiç bir hata iletisi görüntülenmez.                                                          | Yok                                                          |
 
 
 
-## <a name="azure-data-lake-analytics-u-sql"></a>Azure Data Lake Analytics'i (U-SQL)
+## <a name="azure-data-lake-analytics"></a>Azure Data Lake Analytics
 
-| Hata kodu         | Hata İletisi                                                | Sorun açıklaması                                          | Olası düzeltme / önerilen eylem                             |
+Aşağıdaki tablo U-SQL için geçerlidir.
+
+| Hata kodu         | Hata iletisi                                                | Açıklama                                          | Öneri                            |
 | -------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 2709                 | Erişim belirteci yanlış kiracıdan.                    | Yanlış bir AAD kiracısı                                         | ADLA erişmek için kullanılan hizmet sorumlusu, başka bir AAD kiracısına ait. ADLA hesabı ile aynı kiracıda Lütfen yeni bir hizmet sorumlusu oluşturun. |
-| 2711,   2705,   2704 | Yasak. ACL doğrulaması başarısız oldu. Kaynak mevcut değil veya kullanıcının istenen işlemi gerçekleştirmek için yetkili değil<br/><br/>Kullanıcı datalake deposu için erişmesi mümkün değil  <br/><br/>Data lake analytics'e kullanıcı yetkili değil | Hizmet sorumlusu veya sağlanan sertifika depolama alanındaki bir dosyaya erişimi yok | Hizmet sorumlusu emin olun veya ADLA işleri için sağladıkları sertifika ADLA hesabı hem de varsayılan ADLS depolama erişimi için kök klasöründen vardır. |
-| 2711                 | 'Azure Data Lake Store' dosya veya klasör bulunamıyor       | Yanlış ya da bağlı hizmet kimlik bilgilerini erişiminiz yok USQL dosyasının yolu olan | Lütfen yolun ve bağlı hizmette sağlanan kimlik bilgilerini doğrulayın |
-| 2707                 | AzureDataLakeAnalytics hesabını çözümlenemiyor. Lütfen 'AccountName' ve 'DataLakeAnalyticsUri' denetleyin. | ADLA hesabı bağlı hizmette bir sorun var                  | Lütfen doğru hesap sağlandığını doğrulayın.             |
-| 2703                 | Hata Kimliği: E_CQO_SYSTEM_INTERNAL_ERROR veya herhangi bir hata ile başlar "hata kodu:" | Hata ADLA'dan geliyor                                    | ADLA ve betik vardır, örneğin iş anlamına gelir gibi görünen herhangi bir hata başarısız gönderildi. ADLA üzerinde araştırma yapılması gerekir. Portalını açın ve ADLA hesabına gidin, iş için ADF etkinlik kimliği (çalıştırma kimliği değil işlem hattı) Çalıştır'ı kullanarak bakın. İş var. hata hakkında daha fazla bilgi olacaktır ve sorun giderme için yardımcı olur. Çözüm açık değilse, lütfen ADLA Destek ekibine başvurun ve hesabınızın adını ve iş kimliğini içeren proje URL'sini sağlayın |
-| 2709                 | Biz, şu anda işiniz kabul edemez. Hesabınız için sıraya alınmış işlerin sayısı 200'dür. | ADLA üzerinde azaltma                                           | ADF tetikleyiciler ve etkinliklerde eşzamanlılık ayarları değiştirerek ADLA için gönderilen işlerin sayısını azaltın veya ADLA sınırları artırın |
-| 2709                 | 24 gerektirdiğinden bu işi reddedildi AU ve bu hesabı olan bir işi 5'ten fazla kullanmasını önler yönetici tarafından tanımlanan bir ilke AU. | ADLA üzerinde azaltma                                           | ADF tetikleyiciler ve etkinliklerde eşzamanlılık ayarları değiştirerek ADLA için gönderilen işlerin sayısını azaltın veya ADLA sınırları artırın |
+| 2709                 | Erişim belirteci yanlış kiracıya ait.                    | Yanlış Azure Active Directory (Azure AD) kiracısı.                                         | Azure Data Lake Analytics erişmek için kullanılan hizmet sorumlusu başka bir Azure AD kiracısına aittir. Data Lake Analytics hesabıyla aynı kiracıda yeni bir hizmet sorumlusu oluşturun. |
+| 2711, 2705, 2704 | Inı. ACL doğrulaması başarısız oldu. Kaynak yok ya da Kullanıcı istenen işlemi gerçekleştirme yetkisine sahip değil.<br/><br/>Kullanıcı Data Lake Store erişemiyor.  <br/><br/>Kullanıcının Data Lake Analytics kullanma yetkisi yok. | Hizmet sorumlusu veya sertifikasının depolama alanındaki dosyaya erişimi yok. | Data Lake Analytics işlerin Data Lake Analytics hesabına ve kök klasörden varsayılan Data Lake Storage örneğine erişimi olduğundan emin olun. |
+| 2711                 | ' Azure Data Lake Store ' dosyası veya klasörü bulunamıyor.       | U-SQL dosyasının yolu yanlış veya bağlı hizmet kimlik bilgilerinin erişimi yok. | Bağlı hizmette belirtilen yolu ve kimlik bilgilerini doğrulayın. |
+| 2707                 | AzureDataLakeAnalytics hesabı çözümlenemiyor. Lütfen ' AccountName ' ve ' Datalakeanaltici ' öğesini kontrol edin. | Bağlı hizmette Data Lake Analytics hesabı yanlış.                  | Doğru hesabın sağlandığını doğrulayın.             |
+| 2703                 | Hata Kimliği: E_CQO_SYSTEM_INTERNAL_ERROR (veya "hata kimliği:" ile başlayan herhangi bir hata). | Hata Data Lake Analytics.                                    | Örnek gibi bir hata, işin Data Lake Analytics gönderildiği ve betiği başarısız olduğu anlamına gelir. Data Lake Analytics araştırın. Portalda Data Lake Analytics hesabına gidin ve Data Factory etkinlik çalıştırma KIMLIĞINI (işlem hattı çalıştırma KIMLIĞI değil) kullanarak işi arayın. İş, hata hakkında daha fazla bilgi sağlar ve sorun gidermenize yardımcı olur. Çözüm açık değilse, Data Lake Analytics destek ekibine başvurun ve hesap adınızı ve iş KIMLIĞINI içeren iş URL 'sini sağlayın. |
+| 2709                 | Şu anda işinizi kabul edemedik. Hesabınız için sıraya alınan en fazla iş sayısı 200 ' dir. | Bu hata, Data Lake Analytics azaltma nedeniyle oluşur.                                           | Data Factory Tetikleyicileri ve etkinliklerdeki eşzamanlılık ayarlarını değiştirerek Data Lake Analytics gönderilen işlerin sayısını azaltın. Veya Data Lake Analytics limitlerini artırın. |
+| 2709                 | Bu iş, 24 Avustralya gerektirdiğinden reddedildi. Bu hesabın yönetici tanımlı ilkesi, bir işin 5 ' ten fazla au kullanmasını engelliyor. | Bu hata, Data Lake Analytics azaltma nedeniyle oluşur.                                           | Data Factory Tetikleyicileri ve etkinliklerdeki eşzamanlılık ayarlarını değiştirerek Data Lake Analytics gönderilen işlerin sayısını azaltın. Veya Data Lake Analytics limitlerini artırın. |
 
 
 
-## <a name="azure-functions"></a>Azure İşlevleri
+## <a name="azure-functions"></a>Azure functions (Azure işlevleri)
 
-| Hata kodu | Hata İletisi                           | Açıklama                                                  | Olası düzeltme / önerilen eylem                           |
+| Hata kodu | Hata iletisi                           | Açıklama                                                  | Öneri                           |
 | ------------ | --------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 3600         | Yanıt içeriği geçerli bir JObject değil | Başka bir deyişle, Azure işlevini yanıtta bir JSON yükü döndürmedi. ADF Azure işlev etkinliği, JSON yanıt içeriği yalnızca destekler. | Azure işlevi, geçerli bir JSON yükü ör döndürmek için güncelleştirme bir C# işlevi döndürebilirsiniz (ActionResult) yeni < OkObjectResult ("{`\"Id\":\"123\"`}"); |
-| 3600         | Geçersiz HttpMethod: '..'.               | Başka bir deyişle, etkinlik yükte belirtilen Http yöntemini Azure işlev etkinliği tarafından desteklenmiyor. | Desteklenen Http yöntemleri şunlardır:  <br/>PUT, POST, AL, DELETE, HEAD, İZLEME SEÇENEKLERİ |
+| 3600         | Yanıt içeriği geçerli bir JObject değil. | Çağrılan Azure işlevi yanıtta bir JSON yükü döndürmedi. Data Factory içindeki Azure işlevi etkinliği yalnızca JSON yanıt içeriğini destekler. | Azure işlevini, geçerli bir JSON yükü döndürecek şekilde güncelleştirin. Örneğin, C# bir işlev kimlik `(ActionResult)new<OkObjectResult("{` \"\":\"123'i`}");`döndürebilir.\" |
+| 3600         | Geçersiz HttpMethod: '... '.               | Etkinlik yükünde belirtilen HTTP yöntemi Azure işlevi etkinliği tarafından desteklenmiyor. | PUT, POST, GET, DELETE, OPTIONS, HEAD veya TRACE gibi desteklenen bir HTTP yöntemi kullanın. |
 
 
 
-## <a name="custom-azure-batch"></a>Özel (Azure yığını için)
-| Hata kodu | Hata İletisi                                                | Açıklama                                                  | Olası düzeltme / önerilen eylem                           |
+## <a name="custom"></a>Özel
+
+Aşağıdaki tablo Azure Batch için geçerlidir.
+
+| Hata kodu | Hata iletisi                                                | Açıklama                                                  | Öneri                          |
 | ------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 2500         | İsabet beklenmeyen bir özel durum ve yürütme başarısız oldu.             | Komut veya bir hata kodu döndürdü program başlatılamıyor. | Yürütülebilir dosya olup olmadığını kontrol edin. Program başlatıldı, stderr.txt depolama hesabına yüklediniz ve stdout.txt denetleyin. Hata ayıklama için kodunuzda copious günlükleri yaymak için iyi bir uygulamadır. |
-| 2501         | Kullanıcı batch hesabı erişilemiyor batch hesabı ayarları gözden geçirin. | Yanlış Batch erişim anahtarı veya havuz adı sağlandı.            | Havuz adı ve Batch erişim anahtarı bağlantılı hizmetteki doğrulamanız gerekir. |
-| 2502         | Erişim kullanıcı depolama hesabı, lütfen depolama hesabı ayarlarını denetleyin. | Sağlanan geçersiz depolama hesabı adı veya erişim anahtarı.       | Depolama hesabı adını ve erişim anahtarı bağlı hizmette doğrulamanız gerekir. |
-| 2504         | İşlem, bir geçersiz durum kodu 'BadRequest' döndürdü.     | FolderPath çok fazla dosya varsa özel etkinlik.  (Birden fazla 32.768 karakter resourceFiles toplam boyutu olamaz.) | Gereksiz dosyaları kaldırın veya bunları zip ve ayıklamak, örneğin bir unzip komutu ekleyin: powershell.exe - nologo - noprofile-komut "& {Add-Type - A 'System.IO.Compression.FileSystem';   [IO.Compression.ZipFile]::ExtractToDirectory ($zipFile, $folder); }" ;  $folder\yourProgram.exe |
-| 2505         | Hesap anahtarı kimlik bilgileri kullanılmadığı sürece, paylaşılan erişim imzası oluşturulamıyor. | Özel etkinlikler, yalnızca bir erişim anahtarı kullanan depolama hesaplarını destekler. | Açıklama bakın                                            |
-| 2507         | Klasör yolu yok veya boş:...            | Depolama hesabında belirtilen yolda bir dosya yok.       | FolderPath çalıştırmak istediğiniz yürütülebilir dosyaları içermelidir. |
-| 2508         | Kaynak klasörde yinelenen dosyalar demektir.               | FolderPath farklı alt klasörlerinde aynı ada sahip birden çok dosya vardır. | Özel etkinlikler, folderPath altında klasör yapısını düzleştirecek.  Klasör yapısı korunması gerekiyorsa, ZIP dosyaları ve bunları Azure Batch'te bir unzip komutuyla örneğin ayıklayın: powershell.exe - nologo - noprofile-komut "& {Add-Type - A 'System.IO.Compression.FileSystem';   [IO.Compression.ZipFile]::ExtractToDirectory ($zipFile, $folder); }" ;   $folder\yourProgram.exe |
-| 2509         | Batch URL'si... olduğundan geçersizse, bu URI biçiminde olmalıdır.         | Batch URL'leri https için benzer olmalıdır:\//mybatchaccount.eastus.batch.azure.com | Açıklama bakın                                            |
-| 2510         | İstek gönderilirken bir hata oluştu.               | Toplu iş URL'si geçersiz                                         | Batch URL'yi doğrulayın.                                            |
+| 2500         | Beklenmeyen bir özel durum okuması ve yürütme başarısız oldu.             | Komut başlatılamıyor veya program bir hata kodu döndürdü. | Yürütülebilir dosyanın var olduğundan emin olun. Program başlatılmışsa, *stdout. txt* ve *stderr. txt* ' nin depolama hesabına yüklendiğinden emin olun. Hata ayıklama için kodunuzda bir kopan günlüklerini yayma iyi bir uygulamadır. |
+| 2501         | Kullanıcı Batch hesabına erişilemiyor; Lütfen Batch hesabı ayarlarını kontrol edin. | Hatalı toplu erişim anahtarı veya havuz adı.            | Bağlı hizmette havuz adını ve Batch erişim anahtarını doğrulayın. |
+| 2502         | Kullanıcı depolama hesabına erişilemiyor; Lütfen depolama hesabı ayarlarını kontrol edin. | Hatalı depolama hesabı adı veya erişim anahtarı.       | Bağlı hizmette depolama hesabı adını ve erişim anahtarını doğrulayın. |
+| 2504         | İşlem geçersiz bir durum kodu döndürdü ' BadRequest '.     | Özel etkinliğin folderPath öğesinde çok fazla dosya yok. ResourceFiles 'ın toplam boyutu 32.768 karakterden fazla olamaz. | Gereksiz dosyaları kaldırın. Ya da bunları ayıklayın ve ayıklamak için bir unzip komutu ekleyin. Örneğin,`powershell.exe -nologo -noprofile   -command "& { Add-Type -A 'System.IO.Compression.FileSystem';   [IO.Compression.ZipFile]::ExtractToDirectory($zipFile, $folder); }" ;  $folder\yourProgram.exe` |
+| 2505         | Hesap anahtarı kimlik bilgileri kullanılmadığı takdirde paylaşılan erişim Imzası oluşturulamıyor. | Özel etkinlikler yalnızca bir erişim anahtarı kullanan depolama hesaplarını destekler. | Hata açıklamasına bakın.                                            |
+| 2507         | Klasör yolu yok veya boş:....            | Belirtilen yoldaki depolama hesabında dosya yok.       | Klasör yolu çalıştırmak istediğiniz yürütülebilir dosyaları içermelidir. |
+| 2508         | Kaynak klasörde yinelenen dosyalar var.               | Aynı ada sahip birden çok dosya folderPath 'in farklı alt klasörlerinde. | Özel Etkinlikler, folderPath altındaki klasör yapısını düzleştirebilir.  Klasör yapısını korumanız gerekiyorsa, dosyaları zip halinde ve bir unzip komutu kullanarak Azure Batch ayıklayın. Örneğin,`powershell.exe -nologo -noprofile   -command "& { Add-Type -A 'System.IO.Compression.FileSystem';   [IO.Compression.ZipFile]::ExtractToDirectory($zipFile, $folder); }" ;   $folder\yourProgram.exe` |
+| 2509         | Batch URL 'si... geçersiz; URI biçiminde olmalıdır.         | Batch URL 'Leri şuna benzer olmalıdır`https://mybatchaccount.eastus.batch.azure.com` | Hata açıklamasına bakın.                                            |
+| 2510         | İstek gönderilirken bir hata oluştu.               | Batch URL 'SI geçersiz.                                         | Batch URL 'sini doğrulayın.                                            |
 
-## <a name="hdinsight-spark-hive-mapreduce-pig-hadoop-streaming"></a>HDInsight (Spark, Hive, MapReduce, Pig, Hadoop akış)
+## <a name="hdinsight"></a>HDInsight
 
-| Hata kodu | Hata İletisi                                                | Açıklama                                                  | Olası düzeltme / önerilen eylem                           |
+Aşağıdaki tablo Spark, Hive, MapReduce, Pig ve Hadoop akışı için geçerlidir.
+
+| Hata kodu | Hata iletisi                                                | Açıklama                                                  | Öneri                           |
 | ------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 2300,   2310 | Hadoop işi gönderilemedi. Hata: Uzak ad çözümlenemedi. <br/><br/>Küme bulunamadı. | Belirtilen küme URI'si geçersiz.                              | Lütfen küme silinmez ve belirtilen URI doğru olduğundan emin olun. URI herhangi bir tarayıcıda açın ve Ambari UI görmeniz gerekir. Küme sanal ağ içinde ise, ardından, URI özel URI olmalıdır ve aynı sanal ağda bir parçası olan bir sanal makineden açmayı denemelisiniz. Daha fazla bilgi için [sanal ağda HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network#directly-connect-to-apache-hadoop-services). |
-| 2300         | Hadoop işi gönderilemedi. İş:..., küme:... /. Hata: Bir görev iptal edildi. | İş gönderme zaman aşımına uğradı.                         | Bu genel HDInsight bağlantısı sorunu veya ağ bağlantısı sorunu olabilir. İlk HDInsight Ambari UI, herhangi bir tarayıcı kullanılabilir ve kimlik bilgileriniz hala geçerli olduğundan emin olun. Kendinden konak IR kendinden konak IR kullanıyorsanız yüklendiği VM/makineden bunu emin olun ADF işten göndermeyi yeniden deneyin. Yine başarısız olursa ADF takım için desteğe başvurun. |
-| 2300         | Yetkisiz:   Ambari kullanıcı adı veya parola yanlış  <br/><br/>Yetkisiz:   Ambari kullanıcı yönetici kilitli   <br/><br/>403 - Yasak: Erişim reddedildi | HDInsight için sağlanan kimlik bilgileri yanlış veya süresi dolmuş | Lütfen bunları düzeltin ve bağlı hizmeti yeniden dağıtın. Kimlik bilgilerini HDInsight üzerinde ilk küme URI'si dilediğiniz tarayıcıda açma ve oturum açmaya çalışırken çalıştığından emin olun. İşe yaramazsa, Azure portalından sıfırlayabilirsiniz. |
-| 2300,   2310 | 502 - web sunucusu ağ geçidi veya proxy sunucusu olarak çalışırken geçersiz bir yanıt aldı.       <br/>Hatalı Ağ Geçidi | Hata HDInsight geliyor                               | Bu hata, HDInsight kümesinden kullanıma sunulacaktır. Başvuru [HDInsight sorun giderici](https://hdinsight.github.io/ambari/ambari-ui-502-error.html) sık karşılaşılan ile.    <br/>Spark kümeleri için ayrıca nedeniyle kaynaklanabilir [bu](https://hdinsight.github.io/spark/spark-thriftserver-errors.html). <br/><br/>[Ek bağlantısı](https://docs.microsoft.com/azure/application-gateway/application-gateway-troubleshooting-502) |
-| 2300         | Hadoop işi gönderilemedi. İş:..., küme:... Hata: {\"hata\":\"templeton da hizmet çok fazla gönderme iş isteklerle meşgul olduğundan proje istek Gönder hizmeti oluşturulamıyor. Lütfen işlemi yeniden denemeden önce bir süre bekleyin. Eş zamanlı istekleri yapılandırmak için yapılandırma templeton.parallellism.job.submit başvurun. \  <br/><br/>Hadoop işi gönderilemedi. İş: 161da5d4-6fa8-4ef4-a240-6b6428c5ae2f, küme: https: \/ /abc-analytics-prod-hdi-hd-trax-prod01.azurehdinsight.net/.   Hata: {\"hata\":\"java.io.IOException: org.apache.hadoop.yarn.exceptions.YarnException: YARN için application_1561147195099_3730 gönderilemedi: org.apache.hadoop.security.AccessControlException: Kuyruk root.joblauncher zaten 500 uygulamalar içeren, uygulama teslimini kabul edemez: application_1561147195099_3730\ | Aynı anda çok fazla işleri için HDInsight gönderilen | HDI için gönderilen eşzamanlı iş sayısını sınırlandırmayı göz önünde bulundurun. Aynı etkinlik tarafından gönderilen varsa lütfen ADF etkinlik eşzamanlılık için bakın. Tetikleyiciler, zaman içinde eşzamanlı bir işlem hattı çalıştırmaları yayılır şekilde değiştirin. Ayrıca hata anlaşılacağı gibi "templeton.parallellism.job.submit" ince ayar için HDInsight belgeleri için bakın. |
-| 2303,   2347 | Hadoop işi '5' çıkış kodu ile başarısız oldu. Bkz. 'wasbs://adfjobs@adftrialrun.blob.core.windows.net/StreamingJobs/da4afc6d-7836-444e-bbd5-635fce315997/18_06_2019_05_36_05_050/stderr' daha fazla ayrıntı için.  <br/><br/>Hive yürütme 'UserErrorHiveOdbcCommandExecutionFailure' hata koduyla başarısız oldu.   Bkz. 'wasbs://adfjobs@eclsupplychainblobd.blob.core.windows.net/HiveQueryJobs/16439742-edd5-4efe-adf6-9b8ff5770beb/18_06_2019_07_37_50_477/Status/hive.out' daha fazla ayrıntı için | HDInsight için işi gönderildi ve HDInsight üzerinde başarısız | İş için HDInsight başarıyla gönderildi. Bu, küme üzerinde başarısız oldu. Lütfen HDInsight Ambari UI, işin açın ve Günlükler var. açabilir veya hata iletisi noktaları olarak depolama biriminden dosyayı açın. Hatanın ayrıntıları bu dosyada olacaktır. |
-| 2328         | İstek işlenirken bir iç sunucu hatası oluştu. Lütfen isteği yeniden deneyin veya desteğe başvurun | İsteğe bağlı HDInsight üzerinde gerçekleşir.                              | HDInsight sağlama başarısız olduğunda bu hata, HDInsight hizmetinden kullanıma sunulacaktır. Lütfen HDInsight ekibine başvurun ve bunları üzerinde isteğe bağlı küme adı sağlayın. |
-| 2310         | java.lang.NullPointerException                               | Spark kümesi işe gönderilirken hata oluştu      | Bu özel durum HDInsight geliyor ve ise asıl soruna gizleme.   Lütfen HDInsight takım desteğine başvurun ve küme adı ve etkinlik zaman aralığı çalıştırma verin. |
-|              | Diğer tüm hatalar                                             |                                                              | Lütfen [HDInsight sorun giderici](../hdinsight/hdinsight-troubleshoot-guide.md) ve [HDInsight SSS](https://hdinsight.github.io/) |
+| 2300, 2310 | Hadoop işi gönderilemedi. Hata: Uzak ad çözümlenemedi. <br/><br/>Küme bulunamadı. | Belirtilen küme URI 'SI geçersiz.                              | Kümenin silinmediğinden ve belirtilen URI 'nin doğru olduğundan emin olun. URI 'yi bir tarayıcıda açtığınızda, ambarı Kullanıcı arabirimini görmeniz gerekir. Küme bir sanal ağda ise, URI özel URI olmalıdır. Açmak için, aynı sanal ağın parçası olan bir VM kullanın. Daha fazla bilgi için bkz. [Apache Hadoop hizmetlerine doğrudan bağlanma](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network#directly-connect-to-apache-hadoop-services). |
+| 2300         | Hadoop işi gönderilemedi. İş:..., küme:.../. Hata: Bir görev iptal edildi. | İş gönderimi zaman aşımına uğradı.                         | Sorun genel HDInsight bağlantısı ya da ağ bağlantısı olabilir. Önce HDInsight ambarı Kullanıcı arabiriminin herhangi bir tarayıcıdan kullanılabilir olduğunu doğrulayın. Kimlik bilgilerinizin hala geçerli olduğunu doğrulayın. Şirket içinde barındırılan tümleşik çalışma zamanı (IR) kullanıyorsanız bunu, şirket içinde barındırılan IR 'nin yüklü olduğu VM veya makineden gerçekleştirdiğinizden emin olun. Sonra Data Factory işi yeniden göndermeyi deneyin. Hala başarısız olduysa, destek için Data Factory ekibine başvurun. |
+| 2300         | Erişilmesini   Ambarı Kullanıcı adı veya parolası yanlış  <br/><br/>Erişilmesini   Kullanıcı Yöneticisi, ambarı 'nda kilitlidir.   <br/><br/>403-Yasak: Erişim reddedildi. | HDInsight kimlik bilgileri yanlış veya zaman aşımına uğradı. | Kimlik bilgilerini düzeltin ve bağlı hizmeti yeniden dağıtın. Önce, herhangi bir tarayıcıda küme URI 'sini açarak ve oturum açmaya çalışarak, kimlik bilgilerinin HDInsight üzerinde çalıştığından emin olun. Kimlik bilgileri çalışmazsa, bunları Azure portal sıfırlayabilirsiniz. |
+| 2300, 2310 | 502 - Web sunucusu bir ağ geçidi veya proxy sunucu olarak çalışırken geçersiz yanıt aldı.       <br/>Hatalı ağ geçidi. | Bu hata HDInsight 'tan.                               | Bu hata HDInsight kümesinden. Daha fazla bilgi için bkz. [ambarı Kullanıcı arabirimi 502 hatası](https://hdinsight.github.io/ambari/ambari-ui-502-error.html), [502 Spark thrift sunucusuna bağlanma](https://hdinsight.github.io/spark/spark-thriftserver-errors.html) [502, Spark Thrift sunucusuna bağlanma](https://hdinsight.github.io/spark/spark-thriftserver-errors.html)ve [Application Gateway hatalı ağ geçidi hatalarıyla ilgili sorunları giderme](https://docs.microsoft.com/azure/application-gateway/application-gateway-troubleshooting-502). |
+| 2300         | Hadoop işi gönderilemedi. İş:..., küme:... Hata: {\"Error\":\"çok fazla sayıda gönderme işi isteğiyle temptaton hizmeti meşgul olduğundan, iş gönderme isteğine bakım yapılamıyor. İşlemi yeniden denemeden önce lütfen bir süre bekleyin. Eşzamanlı istekleri yapılandırmak için lütfen config temptaton. parallelliı. job. ini dosyasına bakın.  <br/><br/>Hadoop işi gönderilemedi. İşinden 161dad5d4-6fa8-4ef4-A240-6b6428c5ae2f, küme: `https://abc-analytics-prod-hdi-hd-trax-prod01.azurehdinsight.net/`.   Hata: {\"Error\":\"Java. IO. IOException: org. Apache. Hadoop. yarn. Exceptions. yarnözel durum: Application_1561147195099_3730, YARN: org. Apache. Hadoop. Security. AccessControlException hizmetine gönderilemedi: Queue root. joblauncher zaten 500 uygulama içeriyor, uygulamanın gönderimi kabul edilemiyor: application_1561147195099_3730 \ | HDInsight 'a aynı anda çok fazla iş gönderiliyor. | HDInsight 'a gönderilen eşzamanlı iş sayısını sınırlamayı göz önünde bulundurun. İşlerin aynı etkinlik tarafından gönderiliyorsa Data Factory etkinlik eşzamanlılık bölümüne bakın. Yinelenen işlem hattı çalıştırmaları zaman içinde yayma için Tetikleyicileri değiştirin. Hatanın önereceği şekilde ayarlamak `templeton.parallellism.job.submit` için HDInsight belgelerine bakın. |
+| 2303, 2347 | Hadoop işi ' 5 ' çıkış koduyla başarısız oldu. Daha fazlawasbs://adfjobs@adftrialrun.blob.core.windows.net/StreamingJobs/da4afc6d-7836-444e-bbd5-635fce315997/18_06_2019_05_36_05_050/stderrayrıntı için bkz. ' '.  <br/><br/>Hive yürütmesi, ' UserErrorHiveOdbcCommandExecutionFailure ' hata koduyla başarısız oldu.   Daha fazlawasbs://adfjobs@eclsupplychainblobd.blob.core.windows.net/HiveQueryJobs/16439742-edd5-4efe-adf6-9b8ff5770beb/18_06_2019_07_37_50_477/Status/hive.outayrıntı için bkz. ' '. | İş HDInsight 'a gönderildi ve HDInsight üzerinde başarısız oldu. | İş HDInsight 'a başarıyla gönderildi. Kümede başarısız oldu. İş ve günlükleri HDInsight ambarı Kullanıcı arabiriminde açın ya da hata iletisi önerirken dosyayı depolamadan açın. Dosya hata ayrıntılarını gösterir. |
+| 2328         | İstek işlenirken iç sunucu hatası oluştu. Lütfen isteği yeniden deneyin veya desteğe başvurun. | Bu hata HDInsight 'ta istek üzerine oluşur.                              | HDInsight sağlama başarısız olduğunda HDInsight hizmetinden bu hata gelir. HDInsight ekibine başvurun ve isteğe bağlı küme adını sağlayın. |
+| 2310         | Java. lang. NullPointerException                               | Bu hata, iş bir Spark kümesine gönderildiğinde oluşur.      | Bu özel durum HDInsight 'tan gelir. Asıl sorunu gizler. Destek için HDInsight ekibine başvurun. Bunları küme adı ve etkinlik çalışma zamanı aralığı ile birlikte sağlayın. |
+|              | Diğer tüm hatalar                                             |                                                              | HDInsight ve HDInsight [kullanarak sorun giderme](../hdinsight/hdinsight-troubleshoot-guide.md) [hakkında SSS](https://hdinsight.github.io/)bölümüne bakın. |
 
 
 
 ## <a name="web-activity"></a>Web Etkinliği
 
-| Hata kodu | Hata İletisi                                                | Açıklama                                                  | Olası düzeltme / önerilen eylem                           |
+| Hata kodu | Hata iletisi                                                | Açıklama                                                  | Öneri                          |
 | ------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 2108         | Geçersiz HttpMethod: '..'.                                    | Başka bir deyişle, etkinlik yükte belirtilen Http yöntemini Web etkinliği tarafından desteklenmiyor. | Desteklenen Http yöntemleri şunlardır: <br/>PUT, POST, AL, SİL |
-| 2108         | Geçersiz Sunucu Hatası 500                                     | İç hata: uç nokta                               | URL (ile Fiddler/Postman) işlevselliği kontrol edin: [Bir HTTP oturumu oluşturmak için Fiddler'ı kullanma](#how-to-use-fiddler-to-create-an-http-session-of-the-monitored-web-application) |
-| 2108         | 401 Yetkisiz                                             | Geçerli bir kimlik doğrulama isteğini eksik                      | Geçerli kimlik doğrulama yöntemini belirtin (belirtecin süresi dolmuş olabilir).   <br/><br/>URL (ile Fiddler/Postman) işlevselliği kontrol edin: [Bir HTTP oturumu oluşturmak için Fiddler'ı kullanma](#how-to-use-fiddler-to-create-an-http-session-of-the-monitored-web-application) |
-| 2108         | 403 Yasak                                                | Gerekli izinler eksik                                 | Erişilen kaynak kullanıcı izinlerini denetleyin.   <br/><br/>URL (ile Fiddler/Postman) işlevselliği kontrol edin: [Bir HTTP oturumu oluşturmak için Fiddler'ı kullanma](#how-to-use-fiddler-to-create-an-http-session-of-the-monitored-web-application) |
-| 2108         | 400 Hatalı istek                                              | Geçersiz bir Http isteği                                         | URL'yi ve fiili istek gövdesi denetleyin.   <br/><br/>Fiddler/Postman isteği doğrulamak için kullanın: [Bir HTTP oturumu oluşturmak için Fiddler'ı kullanma](#how-to-use-fiddler-to-create-an-http-session-of-the-monitored-web-application) |
-| 2108         | 404 bulunamadı                                                | Kaynak bulunamadı                                       | Fiddler/Postman isteği doğrulamak için kullanın: [Bir HTTP oturumu oluşturmak için Fiddler'ı kullanma](#how-to-use-fiddler-to-create-an-http-session-of-the-monitored-web-application) |
-| 2108         | Hizmet kullanılamıyor                                          | Hizmet kullanılamıyor                                       | Fiddler/Postman isteği doğrulamak için kullanın: [Bir HTTP oturumu oluşturmak için Fiddler'ı kullanma](#how-to-use-fiddler-to-create-an-http-session-of-the-monitored-web-application) |
-| 2108         | Desteklenmeyen medya türü                                       | Web etkinliği gövde ile eşleşmeyen Content-Type           | Doğru içerik kullanım Fiddler/Postman isteği doğrulama yükü biçimiyle eşleşen türü belirtin: [Bir HTTP oturumu oluşturmak için Fiddler'ı kullanma](#how-to-use-fiddler-to-create-an-http-session-of-the-monitored-web-application) |
-| 2108         | Aradığınız kaynak kaldırılmış, adı değiştirilmiş veya geçici olarak kullanılamıyor. | Kaynak kullanılamıyor                                | Uç nokta kontrol etmek için Fiddler/Postman kullanın: [Bir HTTP oturumu oluşturmak için Fiddler'ı kullanma](#how-to-use-fiddler-to-create-an-http-session-of-the-monitored-web-application) |
-| 2108         | Geçersiz bir yöntem (HTTP fiili) kullanıldığından aradığınız sayfa görüntülenemiyor. | Web etkinliği yöntemi hatalı istekte belirtildi   | Uç nokta kontrol etmek için Fiddler/Postman kullanın: [Bir HTTP oturumu oluşturmak için Fiddler'ı kullanma](#how-to-use-fiddler-to-create-an-http-session-of-the-monitored-web-application) |
-| 2108         | invalid_payload                                              | Web etkinliği için gövdesi yanlış                       | Uç nokta kontrol etmek için Fiddler/Postman kullanın: [Bir HTTP oturumu oluşturmak için Fiddler'ı kullanma](#how-to-use-fiddler-to-create-an-http-session-of-the-monitored-web-application) |
+| 2108         | Geçersiz HttpMethod: '... '.                                    | Web etkinliği, etkinlik yükünde belirtilen HTTP metodunu desteklemiyor. | Desteklenen HTTP yöntemleri konur, POST, al ve SIL. |
+| 2108         | Geçersiz sunucu hatası 500.                                     | Uç noktada iç hata.                               | URL 'deki işlevselliği denetlemek için Fiddler veya Postman kullanın. |
+| 2108         | Yetkisiz 401.                                             | İstekte geçersiz kimlik doğrulaması yok.                      | Belirtecin geçerliliği bitmiş olabilir. Geçerli bir kimlik doğrulama yöntemi sağlayın. URL 'deki işlevselliği denetlemek için Fiddler veya Postman kullanın. |
+| 2108         | Yasak 403.                                                | Gerekli izinler eksik.                                 | Erişilen kaynaktaki Kullanıcı izinlerini denetleyin. URL 'deki işlevselliği denetlemek için Fiddler veya Postman kullanın.  |
+| 2108         | Hatalı Istek 400.                                              | Geçersiz HTTP isteği.                                         | İsteğin URL 'sini, fiilini ve gövdesini denetleyin. İsteği doğrulamak için Fiddler veya Postman kullanın.  |
+| 2108         | Bulunamadı 404.                                                | Kaynak bulunamadı.                                       | İsteği doğrulamak için Fiddler veya Postman kullanın.  |
+| 2108         | Hizmet kullanılamıyor.                                          | Hizmet kullanılamıyor.                                       | İsteği doğrulamak için Fiddler veya Postman kullanın.  |
+| 2108         | Desteklenmeyen medya türü.                                       | İçerik türü Web etkinliği gövdesi ile eşleşmiyor.           | Yük biçimiyle eşleşen içerik türünü belirtin. İsteği doğrulamak için Fiddler veya Postman kullanın. |
+| 2108         | Aradığınız kaynak kaldırılmış, adı değiştirilmiş ya da geçici olarak kullanılamıyor. | Kaynak kullanılamıyor.                                | Uç noktayı denetlemek için Fiddler veya Postman kullanın. |
+| 2108         | Geçersiz bir Yöntem (HTTP fiili) kullanıldığından aradığınız sayfa görüntülenemiyor. | İstekte yanlış bir Web etkinliği yöntemi belirtildi.   | Uç noktayı denetlemek için Fiddler veya Postman kullanın. |
+| 2108         | invalid_payload                                              | Web etkinliği gövdesi yanlış.                       | Uç noktayı denetlemek için Fiddler veya Postman kullanın. |
 
-#### <a name="how-to-use-fiddler-to-create-an-http-session-of-the-monitored-web-application"></a>İzlenen web uygulamasının bir HTTP oturumu oluşturmak için Fiddler'ı kullanma
+Fiddler 'i kullanarak izlenen Web uygulamasının HTTP oturumunu oluşturma:
 
-1. İndirme ve yükleme [Fiddler](https://www.telerik.com/download/fiddler)
+1. [Fiddler](https://www.telerik.com/download/fiddler)'i indirin, yükleyin ve açın.
 
-2. Web uygulamanızı HTTPS kullanıyorsa:
+1. Web uygulamanız https kullanıyorsa, **Araçlar** > **Fiddler seçenekler** > **https**' ye gidin. **Yakalama HTTPS bağlantıları** ve **https trafiğinin şifresini çöz**' ü seçin. 
+   
+   ![Fiddler seçenekleri](media/data-factory-troubleshoot-guide/fiddler-options.png)
 
-   1. Fiddler'ı açıp
+1. Uygulamanız SSL sertifikaları kullanıyorsa, Fiddler sertifikasını cihazınıza ekleyin. **Araçlar** > Fiddler > seçenekleri**https**eylemlerikök > **sertifikayı masaüstüne dışarı aktar ' a gidin.**  > 
 
-   2. Git **Araçlar > Fiddler seçenekleri** ve ekran aşağıdaki gibi seçin. 
+1. **Dosya** > **yakalama trafiğine**giderek yakalamayı kapatın. Ya da **F12**tuşuna basın.
 
-      ![fiddler seçenekleri](media/data-factory-troubleshoot-guide/fiddler-options.png)
+1. Tüm önbelleğe alınmış öğelerin kaldırılması ve yeniden indirilmesi gereken şekilde tarayıcınızın önbelleğini temizleyin.
 
-3. Uygulamanız için SSL sertifikalarını kullanıyorsa, cihazınıza Fiddler sertifika da eklemeniz gerekir.
+1. İstek oluştur: 
 
-4. Cihazınız için Fiddler sertifika eklemek için Git **Araçları** > **Fiddler seçenekleri** > **HTTPS**  >   **Eylemler** > **masaüstüne kök sertifikayı dışarı aktar** Fiddler sertifika elde edilir.
+   a. **Besteci** sekmesini seçin.
 
-5. Böylece yeni bir izleme başlatılabilmesi için tarayıcının önbelleğini temizlenebilir yakalamayı devre dışı bırakın.
+   b. HTTP yöntemini ve URL 'YI ayarlayın.
 
-6. 1. Git **dosya** > **trafik yakalama** veya basın **F12**.
-   2. Tüm önbelleğe alınmış öğeleri kaldırılır ve yeniden indirilen tarayıcınızın önbelleğini temizleyin.
+   c. Gerekiyorsa üstbilgiler ve istek gövdesi ekleyin.
 
-7. İsteği oluşturun: 
+   d. **Yürüt**’ü seçin.
 
-8. 1. Composer sekmesine tıklayın
-   2. Http yöntemi ve URL'yi ayarlayın
-   3. Üst bilgileri ekleyin ve gerekirse istek gövdesi
-   4. Çalıştır seçeneğini tıklatın
+9. Trafiği yeniden yakalamayı açın ve sayfada sorunlu işlemi doldurun.
 
-9. Trafik yeniden Yakalamayı Başlat ve sorunlu işlem sayfanızda tamamlayın.
+10. **Dosya** > **Tüm oturumlarını**Kaydet > 'e gidin.
 
-10. Tamamlandığında, Git **dosya** > **Kaydet** > **tüm oturumları**.
-
-Fiddler'ı hakkında daha fazla bilgi [burada](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/ConfigureFiddler)
+Daha fazla bilgi için bkz. [Fiddler ile çalışmaya](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/ConfigureFiddler)başlama.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sorununuz için çözüm bulma daha fazla yardım için deneyebileceğiniz bazı kaynaklar aşağıda verilmiştir.
+Daha fazla sorun giderme Yardım için şu kaynakları deneyin:
 
-*  [Bloglar](https://azure.microsoft.com/blog/tag/azure-data-factory/)
-*  [Özellik istekleri](https://feedback.azure.com/forums/270578-data-factory)
-*  [Videolar](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
-*  [MSDN Forumu](https://social.msdn.microsoft.com/Forums/home?sort=relevancedesc&brandIgnore=True&searchTerm=data+factory)
-*  [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-data-factory)
-*  [Twitter](https://twitter.com/hashtag/DataFactory)
+*  [Data Factory blogu](https://azure.microsoft.com/blog/tag/azure-data-factory/)
+*  [Data Factory Özellik istekleri](https://feedback.azure.com/forums/270578-data-factory)
+*  [Azure videoları](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
+*  [MSDN forumu](https://social.msdn.microsoft.com/Forums/home?sort=relevancedesc&brandIgnore=True&searchTerm=data+factory)
+*  [Data Factory için Stack Overflow Forumu](https://stackoverflow.com/questions/tagged/azure-data-factory)
+*  [Data Factory hakkında Twitter bilgileri](https://twitter.com/hashtag/DataFactory)
 
 
 

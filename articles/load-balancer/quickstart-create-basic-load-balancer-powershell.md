@@ -1,10 +1,10 @@
 ---
-title: 'Hızlı Başlangıç: Temel yük dengeleyici - Azure PowerShell oluşturma'
+title: 'Hızlı Başlangıç: Temel Load Balancer oluşturma-Azure PowerShell'
 titlesuffix: Azure Load Balancer
 description: Bu hızlı başlangıçta, PowerShell kullanarak bir Temel Yük Dengeleyicinin nasıl oluşturulacağı gösterilmektedir
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 Customer intent: I want to create a Basic Load balancer so that I can load balance internet traffic to VMs.
 ms.service: load-balancer
@@ -13,16 +13,16 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
-ms.author: kumud
+ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 5b77087557bc4ca1bea3cb4a36a50d787a5edf4d
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 58b36265a5e440dbf33a5d6fb85e791abbd006a8
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729838"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274236"
 ---
-# <a name="get-started"></a>Hızlı Başlangıç: Azure PowerShell kullanarak bir genel yük dengeleyici oluşturma
+# <a name="get-started"></a>Hızlı başlangıç Azure PowerShell kullanarak ortak yük dengeleyici oluşturma
 
 Bu hızlı başlangıçta, Azure PowerShell kullanarak Temel Yük Dengeleyici oluşturma işlemi gösterilmektedir. Yük dengeleyiciyi test etmek için, Windows sunucusu çalıştıran iki sanal makine (VM) dağıtın ve sanal makineler arasında bir web uygulamasının yük dengelemesini yapın.
 
@@ -34,7 +34,7 @@ PowerShell'i yerel olarak yükleyip kullanmayı tercih ederseniz bu makale, Azur
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Yük dengeleyicinizi oluşturmadan önce bir kaynak grubu oluşturmanız gerekir [yeni AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Aşağıdaki örnek *EastUS* konumunda *myResourceGroupLB* adlı bir kaynak grubu oluşturur:
+Yük dengeleyicinizi oluşturabilmeniz için, [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)ile bir kaynak grubu oluşturmanız gerekir. Aşağıdaki örnek *EastUS* konumunda *myResourceGroupLB* adlı bir kaynak grubu oluşturur:
 
 ```azurepowershell-interactive
 New-AzResourceGroup `
@@ -43,7 +43,7 @@ New-AzResourceGroup `
 ```
 
 ## <a name="create-a-public-ip-address"></a>Genel IP adresi oluşturma
-Uygulamanıza İnternet’ten erişmek için yük dengeleyicinin genel IP adresi gereklidir. Bir genel IP adresiyle oluşturma [yeni AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress). Aşağıdaki örnek, *myResourceGroupLB* kaynak grubunda *myPublicIP* adlı bir genel IP adresi oluşturur:
+Uygulamanıza İnternet’ten erişmek için yük dengeleyicinin genel IP adresi gereklidir. [New-Azpublicıpaddress](/powershell/module/az.network/new-azpublicipaddress)ile genel bir IP adresi oluşturun. Aşağıdaki örnek, *myResourceGroupLB* kaynak grubunda *myPublicIP* adlı bir genel IP adresi oluşturur:
 
 ```azurepowershell-interactive
 $publicIP = New-AzPublicIpAddress `
@@ -55,11 +55,11 @@ $publicIP = New-AzPublicIpAddress `
 
 ## <a name="create-basic-load-balancer"></a>Temel Yük Dengeleyici Oluşturma
 
-Bu bölümde, ön uç IP ve yük dengeleyici için arka uç adres havuzu yapılandırmanız ve ardından temel Azure Load Balancer oluşturun.
+Bu bölümde, yük dengeleyici için ön uç IP 'sini ve arka uç adres havuzunu yapılandırıp temel Load Balancer oluşturursunuz.
 
 ### <a name="create-front-end-ip"></a>Ön uç IP oluşturma
 
-Bir ön uç IP ile oluşturma [yeni AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig). Aşağıdaki örnek, *myFrontEnd* adlı bir ön uç IP yapılandırması oluşturur ve *myPublicIP* adresini ekler:
+[New-Azloadbalancerfrontendıpconfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig)ile bir ön uç IP 'si oluşturun. Aşağıdaki örnek, *myFrontEnd* adlı bir ön uç IP yapılandırması oluşturur ve *myPublicIP* adresini ekler:
 
 ```azurepowershell-interactive
 $frontendIP = New-AzLoadBalancerFrontendIpConfig `
@@ -67,9 +67,9 @@ $frontendIP = New-AzLoadBalancerFrontendIpConfig `
   -PublicIpAddress $publicIP
 ```
 
-### <a name="configure-back-end-address-pool"></a>Arka uç adres havuzu Yapılandır
+### <a name="configure-back-end-address-pool"></a>Arka uç adres havuzunu yapılandırma
 
-İle bir arka uç adres havuzu oluşturun [yeni AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig). Bu arka uç havuzu kalan adımlarda VM'ler iliştirin. Aşağıdaki örnekte adlı bir arka uç adres havuzu oluşturur *myBackEndPool*:
+[New-Azloadbalancerbackendadddresspoolconfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig)ile arka uç adres havuzu oluşturun. VM 'Ler, kalan adımlarda bu arka uç havuzuna ekler. Aşağıdaki örnek, *Mybackendpool*adlı bir arka uç adres havuzu oluşturur:
 
 ```azurepowershell-interactive
 $backendPool = New-AzLoadBalancerBackendAddressPoolConfig -Name "myBackEndPool"
@@ -80,7 +80,7 @@ Yük dengeleyicinin uygulamanızın durumunu izlemesine izin vermek için durum 
 
 Aşağıdaki örnek bir TCP araştırması oluşturur. Ayrıca daha ayrıntılı sistem durumu denetimleri için özel HTTP araştırmaları oluşturabilirsiniz. Özel bir HTTP yoklaması kullanırken *healthcheck.aspx* gibi bir durum denetimi sayfası oluşturmanız gerekir. Yük dengeleyicinin konağı rotasyonda tutması için yoklamanın **HTTP 200 OK** yanıtını döndürmesi gerekir.
 
-TCP durum araştırması oluşturmak için kullandığınız [Ekle AzLoadBalancerProbeConfig](/powershell/module/az.network/add-azloadbalancerprobeconfig). Aşağıdaki örnek her VM’yi *80* numaralı *HTTP* bağlantı noktasında izleyen *myHealthProbe* adında bir durum yoklaması oluşturur:
+Bir TCP sistem durumu araştırması oluşturmak için [Add-AzLoadBalancerProbeConfig](/powershell/module/az.network/add-azloadbalancerprobeconfig)komutunu kullanın. Aşağıdaki örnek her VM’yi *80* numaralı *HTTP* bağlantı noktasında izleyen *myHealthProbe* adında bir durum yoklaması oluşturur:
 
 ```azurepowershell-interactive
 $probe = New-AzLoadBalancerProbeConfig `
@@ -96,7 +96,7 @@ $probe = New-AzLoadBalancerProbeConfig `
 
 Trafiğin VM’lere dağıtımını tanımlamak için bir yük dengeleyici kuralı kullanılır. Gerekli kaynak ve hedef bağlantı noktalarının yanı sıra gelen trafik için ön uç IP yapılandırması ve trafiği almak için arka uç IP havuzu tanımlamanız gerekir. Yalnızca durumu iyi olan VM’lerin trafik almasını sağlamak için kullanılacak durum araştırmasını da tanımlamanız gerekir.
 
-İle bir yük dengeleyici kuralı oluşturma [Ekle AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig). Aşağıdaki örnek, *myLoadBalancerRule* adlı bir yük dengeleyici kuralı oluşturur ve *80* numaralı *TCP* bağlantı noktasında trafiği dengeler:
+[Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig)ile bir yük dengeleyici kuralı oluşturun. Aşağıdaki örnek, *myLoadBalancerRule* adlı bir yük dengeleyici kuralı oluşturur ve *80* numaralı *TCP* bağlantı noktasında trafiği dengeler:
 
 ```azurepowershell-interactive
 $lbrule = New-AzLoadBalancerRuleConfig `
@@ -111,7 +111,7 @@ $lbrule = New-AzLoadBalancerRuleConfig `
 
 ### <a name="create-the-nat-rules"></a>NAT kurallarını oluşturma
 
-NAT kuralları ile oluşturma [Ekle AzLoadBalancerRuleConfig](/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig). Aşağıdaki örnek, 4221 ve 4222 numaralı bağlantı noktaları ile arka uç sunucularına RDP bağlantıları kurulmasına izin veren *myLoadBalancerRDP1* ve *myLoadBalancerRDP2* adlı NAT kuralları oluşturur:
+[Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig)ile NAT kuralları oluşturun. Aşağıdaki örnek, 4221 ve 4222 numaralı bağlantı noktaları ile arka uç sunucularına RDP bağlantıları kurulmasına izin veren *myLoadBalancerRDP1* ve *myLoadBalancerRDP2* adlı NAT kuralları oluşturur:
 
 ```azurepowershell-interactive
 $natrule1 = New-AzLoadBalancerInboundNatRuleConfig `
@@ -131,7 +131,7 @@ $natrule2 = New-AzLoadBalancerInboundNatRuleConfig `
 
 ### <a name="create-load-balancer"></a>Yük dengeleyici oluşturma
 
-Basic Load Balancer ile oluşturma [AzLoadBalancer yeni](/powershell/module/az.network/new-azloadbalancer). Aşağıdaki örnek, önceki adımlarda oluşturduğunuz ön uç IP yapılandırmasını, arka uç havuzunu, sistem durumu araştırmasını, yük dengeleme kuralını ve NAT kurallarını kullanarak myLoadBalancer adlı genel bir Temel Yük Dengeleyici oluşturur:
+[New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer)ile temel Load Balancer oluşturun. Aşağıdaki örnek, önceki adımlarda oluşturduğunuz ön uç IP yapılandırmasını, arka uç havuzunu, sistem durumu araştırmasını, yük dengeleme kuralını ve NAT kurallarını kullanarak myLoadBalancer adlı genel bir Temel Yük Dengeleyici oluşturur:
 
 ```azurepowershell-interactive
 $lb = New-AzLoadBalancer `
@@ -151,7 +151,7 @@ Bazı VM’leri dağıtabilmeniz ve yük dengeleyicinizi test edebilmeniz için 
 
 ### <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
 
-İle sanal ağ oluşturma [yeni AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). Aşağıdaki örnek *mySubnet* alt ağına sahip *myVnet* adında bir sanal ağ oluşturur:
+[New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)ile bir sanal ağ oluşturun. Aşağıdaki örnek *mySubnet* alt ağına sahip *myVnet* adında bir sanal ağ oluşturur:
 
 ```azurepowershell-interactive
 # Create subnet config
@@ -174,7 +174,7 @@ Sanal ağınıza gelen bağlantıları tanımlamak için ağ güvenlik grubu olu
 
 #### <a name="create-a-network-security-group-rule-for-port-3389"></a>3389 numaralı bağlantı noktası için ağ güvenlik grubu kuralı oluşturma
 
-Bağlantı noktası 3389 ile RDP bağlantılarına izin verecek şekilde bir ağ güvenlik grubu kuralı oluşturma [yeni AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig).
+[New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig)ile 3389 bağlantı noktası üzerinden RDP bağlantılarına izin veren bir ağ güvenlik grubu kuralı oluşturun.
 
 ```azurepowershell-interactive
 $rule1 = New-AzNetworkSecurityRuleConfig `
@@ -192,7 +192,7 @@ $rule1 = New-AzNetworkSecurityRuleConfig `
 
 #### <a name="create-a-network-security-group-rule-for-port-80"></a>80 numaralı bağlantı noktası için ağ güvenlik grubu kuralı oluşturma
 
-Bağlantı noktası 80 üzerinden gelen bağlantılara izin vermek için bir ağ güvenlik grubu kuralı oluşturma [yeni AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig).
+[New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig)ile 80 numaralı bağlantı noktası üzerinden gelen bağlantılara izin veren bir ağ güvenlik grubu kuralı oluşturun.
 
 ```azurepowershell-interactive
 $rule2 = New-AzNetworkSecurityRuleConfig `
@@ -210,7 +210,7 @@ $rule2 = New-AzNetworkSecurityRuleConfig `
 
 #### <a name="create-a-network-security-group"></a>Ağ güvenlik grubu oluşturma
 
-Bir ağ güvenlik grubu oluşturun [yeni AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup).
+[New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup)ile bir ağ güvenlik grubu oluşturun.
 
 ```azurepowershell-interactive
 $nsg = New-AzNetworkSecurityGroup `
@@ -222,7 +222,7 @@ $nsg = New-AzNetworkSecurityGroup `
 
 ### <a name="create-nics"></a>NIC’leri oluşturma
 
-Sanal NIC ile oluşturulan oluşturma [yeni AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface). Aşağıdaki örnek iki sanal NIC oluşturur. (Sonraki adımlarda uygulamanız için oluşturduğunuz her bir VM için bir sanal NIC). İstediğiniz zaman ek sanal NIC’ler ve VM’ler oluşturabilir ve bunları yük dengeleyiciye ekleyebilirsiniz:
+[New-Aznetworkınterface](/powershell/module/az.network/new-aznetworkinterface)ile oluşturulan sanal NIC 'ler oluşturun. Aşağıdaki örnek iki sanal NIC oluşturur. (Sonraki adımlarda uygulamanız için oluşturduğunuz her bir VM için bir sanal NIC). İstediğiniz zaman ek sanal NIC’ler ve VM’ler oluşturabilir ve bunları yük dengeleyiciye ekleyebilirsiniz:
 
 ```azurepowershell-interactive
 # Create NIC for VM1
@@ -250,7 +250,7 @@ $nicVM2 = New-AzNetworkInterface `
 
 Uygulamanızın yüksek oranda kullanılabilir olmasını sağlamak için VM’lerinizi bir kullanılabilirlik kümesine yerleştirin.
 
-Bir kullanılabilirlik kümesi oluşturma [yeni AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset). Aşağıdaki örnek *myAvailabilitySet* adında bir kullanılabilirlik kümesi oluşturur:
+[New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset)ile bir kullanılabilirlik kümesi oluşturun. Aşağıdaki örnek *myAvailabilitySet* adında bir kullanılabilirlik kümesi oluşturur:
 
 ```azurepowershell-interactive
 $availabilitySet = New-AzAvailabilitySet `
@@ -268,7 +268,7 @@ VM’ler için [Get-Credential](https://msdn.microsoft.com/powershell/reference/
 $cred = Get-Credential
 ```
 
-İle Vm'leri oluşturabilirsiniz artık [New-AzVM](/powershell/module/az.compute/new-azvm). Aşağıdaki örnek, zaten mevcut değilse iki VM ve gerekli olan sanal ağ bileşenlerini oluşturur. Bu örnekte, NIC'ler (*VM1* ve *VM2*) önceki adımda oluşturduğunuz sanal makinelere otomatik olarak atanmasını *VM1* ve *VM2*aynı adlara sahip ve aynı sanal ağda atanır (*myVnet*) ve alt ağ (*mySubnet*). Ayrıca, NIC'ler için yük dengeleyicinin arka uç havuzu ilişkili olduğundan, sanal makineleri otomatik olarak arka uç havuzuna eklenir.
+Artık [New-AzVM](/powershell/module/az.compute/new-azvm)Ile VM 'leri oluşturabilirsiniz. Aşağıdaki örnekte, zaten mevcut değilse iki VM ve gerekli sanal ağ bileşenleri oluşturulur. Bu örnekte, önceki adımda oluşturulan NIC 'ler (*VM1* ve *VM2*), aynı adlara *sahip olduğundan ve* aynı sanal ağa  (*myvnet*) atandıklarından ve alt ağ (*Mysubnet*). Ayrıca, NIC 'Ler yük dengeleyicinin arka uç havuzuyla ilişkilendirildiğinden, sanal makineler otomatik olarak arka uç havuzuna eklenir.
 
 ```azurepowershell-interactive
 for ($i=1; $i -le 2; $i++)
@@ -323,7 +323,7 @@ Her iki arka uç VM’ye de aşağıdaki gibi bir özel web sayfası ile IIS yü
 6. `mstsc /v:PublicIpAddress:4222` komutunu çalıştırarak *myVM2* ile bir RDP bağlantısı oluşturun ve *VM2* için adım 4’ü yineleyin.
 
 ## <a name="test-load-balancer"></a>Yük dengeleyiciyi test etme
-İle yük dengeleyicinizin genel IP adresini [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress). Aşağıdaki örnek, daha önce oluşturulan *myPublicIP* için IP adresini alır:
+[Get-Azpublicıpaddress](/powershell/module/az.network/get-azpublicipaddress)ile yük dengeleyicinizin genel IP adresini alın. Aşağıdaki örnek, daha önce oluşturulan *myPublicIP* için IP adresini alır:
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress `
@@ -339,7 +339,7 @@ Yük dengeleyicinin trafiği, uygulamanızı çalıştıran her iki VM’ye de d
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli değilse [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) komutunu kaynak grubunu, VM'yi ve tüm ilgili kaynakları.
+Artık gerekli değilse, [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) komutunu kullanarak kaynak grubunu, VM 'yi ve tüm ilgili kaynakları kaldırabilirsiniz.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroupLB

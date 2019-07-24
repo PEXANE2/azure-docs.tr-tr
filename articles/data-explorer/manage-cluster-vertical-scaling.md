@@ -1,51 +1,54 @@
 ---
-title: Değişen talepleri karşılamak için bir Azure Veri Gezgini kümenin ölçeğini artırdığınızda
-description: Bu makalede, ölçeğini ve değişen isteğe bağlı bir Azure Veri Gezgini kümesinin ölçeğini adımlar açıklanmaktadır.
+title: Değişiklik talebini karşılamak için Azure Veri Gezgini küme dikey ölçeklendirmeyi (ölçeği büyütme) yönetme
+description: Bu makalede, değişen talebe göre bir Azure Veri Gezgini kümesini ölçeklendirmek ve ölçeklendirmek için adımlar açıklanmaktadır.
 author: radennis
 ms.author: radennis
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 06/30/2019
-ms.openlocfilehash: dc9ca8bb592e699d19835efeafb91e81408ae297
-ms.sourcegitcommit: 1e347ed89854dca2a6180106228bfafadc07c6e5
+ms.date: 07/14/2019
+ms.openlocfilehash: 80bbdf3a5d936719b06782cd78d56088b36cb21d
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67571536"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67985474"
 ---
-# <a name="manage-cluster-scale-up-to-accommodate-changing-demand"></a>Küme ölçeklendirme-yukarı değişen talepleri karşılamak için yönetme
+# <a name="manage-cluster-vertical-scaling-scale-up-in-azure-data-explorer-to-accommodate-changing-demand"></a>Değişiklik talebini karşılamak için Azure Veri Gezgini küme dikey ölçeklendirmeyi (ölçeği büyütme) yönetme
 
-Bir Azure Veri Gezgini küme ölçeklendirme için iki iş akışı vardır:
-1. [Yatay ölçeklendirme](manage-cluster-horizontal-scaling.md), olarak da bilinir ve ölçeklendirme.
-2. Dikey ölçeklendirme, olarak da adlandırılır yukarı ve aşağı ölçeklendirme.
+Bir kümeyi uygun şekilde boyutlandırmak, Azure Veri Gezgini performansı açısından önemlidir. Statik küme boyutu, ne kadar ideal bir deyişle, kullanımı veya kullanımı aşırı olabilir.
 
-Bu makalede, küme dikey ölçeklendirme yönetme gösterilmektedir.
+Bir kümedeki talep mutlak doğrulukla tahmin edilebileceği için daha iyi bir yaklaşım, değişen talebe sahip  KAPASITE ve CPU kaynaklarını ekleme ve kaldırma, bir kümeyi ölçeklendirmektir. 
 
-Bir küme uygun şekilde boyutlandırma Azure Veri Gezgini performansı için kritik öneme sahiptir. Ancak, isteğe bağlı olarak bir küme mutlak doğrulukla tahmin edilemez. Statik küme boyutu için Yardım'ı veya overutilization, hangi hiçbiri idealdir açabilir. Daha iyi bir yaklaşım *ölçek* kapasitesi ve isteğe bağlı olarak değişen CPU kaynakları ekleyerek veya kaldırarak bir küme. 
+Azure Veri Gezgini kümesinin ölçeklendirilmesi için iki iş akışı vardır:
 
-## <a name="steps-to-configure-vertical-scaling"></a>Dikey ölçeklendirme yapılandırma adımları
+* [Yatay ölçekleme](manage-cluster-horizontal-scaling.md), Ayrıca, ölçeklendirilmesi ve çıkışı da denir.
+* Dikey ölçekleme, ölçeği artırma ve azaltma olarak da bilinir.
 
-1. Kümenize gidin. Altında **ayarları**seçin **ölçeği**.
+Bu makalede dikey ölçeklendirme iş akışı açıklanmaktadır:
 
-    Kullanılabilen SKU'ları listesi gösterilir. Örneğin, aşağıdaki şekilde, yalnızca dört SKU'ları kullanılabilir.
+## <a name="configure-vertical-scaling"></a>Dikey ölçeklendirmeyi yapılandırma
+
+1. Azure portal Azure Veri Gezgini küme kaynağına gidin. **Ayarlar**altında **Ölçek yukarı**' yı seçin.
+
+1. **Ölçeği artırma** penceresinde kümeniz Için kullanılabilir SKU 'ların bir listesini görürsünüz. Örneğin, aşağıdaki şekilde yalnızca dört SKU vardır.
 
     ![Ölçeği artırma](media/manage-cluster-vertical-scaling/scale-up.png)
 
-    Geçerli SKU oldukları veya kümenin bulunduğu bölgede kullanılabilir değil çünkü bu SKU'ları devre dışı bırakıldı.
+    SKU 'Lar geçerli SKU olduklarından veya kümenin bulunduğu bölgede kullanılamadığından devre dışı bırakılır.
 
-1. SKU'nuz değiştirmek için seçin ve istediğiniz SKU'yu seçin **seçin** düğmesi.
+1. SKU 'nuzu değiştirmek için yeni bir SKU seçin ve **Seç**' e tıklayın.
 
 > [!NOTE]
-> Dikey ölçeklendirme işlemi birkaç dakika sürebilir ve bu sırada, kümenizin askıya alınacaktır. Ölçeği küme performansınızı zarar verebilir unutmayın.
+> * Dikey ölçeklendirme işlemi birkaç dakika sürebilir ve bu süre boyunca kümeniz askıya alınır. 
+> * Ölçeği azaltma, kümenizin performansına zarar verebilir.
+> * Fiyat, kümenin sanal makinelerinin ve Azure Veri Gezgini hizmet maliyetlerinin tahminidir. Diğer maliyetler dahil değildir. Tam fiyatlandırma bilgileri için tahmin ve Azure Veri Gezgini [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/data-explorer/) için bkz. Azure Veri Gezgini [Cost tahmin aracı](https://dataexplorer.azure.com/AzureDataExplorerCostEstimator.html) sayfası.
 
-Bir ölçek artırma veya azaltma işlemi, Azure Veri Gezgini kümeniz şimdi yaptık.
-
-Küme ölçeklendirme sorunlarla ilgili yardıma ihtiyacınız varsa [bir destek isteği açın](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) Azure portalında.
+Artık Azure Veri Gezgini kümeniz için dikey ölçeklendirmeyi yapılandırdınız. Yatay ölçeklendirme için başka bir kural ekleyin. Küme ölçeklendirme sorunlarıyla ilgili yardıma ihtiyacınız varsa Azure portal [bir destek isteği açın](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Küme yatay ölçeklendirmeyi yönetmeniz](manage-cluster-horizontal-scaling.md) çıkış örnek sayısı, belirttiğiniz ölçümlere dayalı dinamik olarak ölçeklendirmeniz mi.
+* Belirttiğiniz ölçümlere göre örnek sayısını dinamik olarak ölçeklendirmek için [küme yatay ölçeklendirmeyi yönetin](manage-cluster-horizontal-scaling.md) .
 
-* Bu makaleyi izleyerek kaynak kullanımınızı izleyin: [Azure Veri Gezgini performans, sistem durumu ve ölçümler ile kullanımı izlemenize](using-metrics.md).
+* Bu makaleyi izleyerek kaynak kullanımınızı izleyin: [Azure Veri Gezgini performansını, sistem durumunu ve kullanım ölçümlerini](using-metrics.md)izleyin.
 

@@ -1,6 +1,6 @@
 ---
-title: Temel ilke bloğu eski bir kimlik doğrulama (Önizleme) - Azure Active Directory
-description: Blok eski kimlik doğrulama protokolleri için koşullu erişim ilkesi
+title: Ana hat ilke bloğu eski kimlik doğrulaması (Önizleme)-Azure Active Directory
+description: Eski kimlik doğrulama protokollerini engellemek için koşullu erişim ilkesi
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,111 +11,111 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d21b54c3bea98a9a1499dc75890f75f28f2f9dc0
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: a313240685e539b613dee1c7ff8bd56bb24eb2ba
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67655720"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227316"
 ---
-# <a name="baseline-policy-block-legacy-authentication-preview"></a>Temel ilke: Blok eski kimlik doğrulama (Önizleme)
+# <a name="baseline-policy-block-legacy-authentication-preview"></a>Temel ilke: Eski kimlik doğrulamasını engelle (Önizleme)
 
-Kullanıcılarınıza bulut uygulamalarınız için kolay erişim sunmak için Azure Active Directory (Azure AD) kimlik doğrulama protokolleri eski bir kimlik doğrulama dahil olmak üzere çok çeşitli destekler. Eski bir kimlik doğrulama tarafından yapılan kimlik doğrulama isteği başvuran bir terimdir:
+Kullanıcılarınıza bulut uygulamalarınıza kolay erişim sağlamak için Azure Active Directory (Azure AD) eski kimlik doğrulaması dahil olmak üzere çok çeşitli kimlik doğrulama protokollerini destekler. Eski kimlik doğrulaması, tarafından yapılan bir kimlik doğrulama isteğine başvuran bir terimdir:
 
-* Modern kimlik doğrulaması (örneğin, Office 2010 istemci) kullanmayan eski Office istemcileri
-* IMAP/SMTP/POP3 gibi eski posta protokollerini kullanan tüm istemci
+* Modern kimlik doğrulaması kullanmayan eski Office istemcileri (örneğin, Office 2010 istemcisi)
+* IMAP/SMTP/POP3 gibi eski posta protokollerini kullanan istemciler
 
-Bugün, tüm riske atmadan oturum açma girişimlerinin çoğunluğu eski kimlik doğrulamasını gelir. Eski bir kimlik doğrulama, çok faktörlü kimlik doğrulaması (MFA) desteklemez. Dizin üzerinde etkin bir MFA ilkesi olsa bile, kötü bir aktör eski bir protokol kullanarak kimlik doğrulaması ve mfa'yı atla.
+Günümüzde, tüm güvenliği tehlikeye alınan oturum açma girişimlerinin çoğu eski kimlik doğrulamasından geliyor. Eski kimlik doğrulaması Multi-Factor Authentication 'ı (MFA) desteklemiyor. Dizininizde bir MFA ilkesi etkinleştirilmiş olsa bile, kötü bir aktör eski bir protokolü kullanarak kimlik doğrulaması yapabilir ve MFA 'yı atlayabilir.
 
-Eski protokolleri tarafından yapılan kötü amaçlı kimlik doğrulama istekleri hesabınızı korumak için en iyi yolu bu girişimler tamamen engellemektir. Geliştirilmiştir, ortamınızın güvenliğini sağlamak daha kolay hale getirmek için bu temel ilke bloğu eski kimlik doğrulaması için oluşturduk.
+Eski protokoller tarafından yapılan kötü amaçlı kimlik doğrulama isteklerinden hesabınızı korumanın en iyi yolu, bu denemeleri tamamen engellenemez. Ortamınızı güvenli hale getirmeye daha kolay bir şekilde, eski kimlik doğrulamasını engellemek için bu temel Ilkeyi oluşturduk.
 
-**Eski bir kimlik doğrulama bloğu** olduğu bir [temel ilke](concept-baseline-protection.md) eski protokolleri arasından yapılan tüm kimlik doğrulama isteklerini engeller. Modern kimlik doğrulaması, tüm kullanıcılar için başarıyla oturum açmak için kullanılmalıdır. Diğer temel ilkeleri ile birlikte kullanıldığında, eski kurallarından gelen istekleri engellenir ve tüm kullanıcılar için gerekli olduğunda MFA gerekli olacaktır. Bu ilke, Exchange ActiveSync engellemez.
+**Eski kimlik doğrulamasını engelle** , eski protokollerden yapılan tüm kimlik doğrulama isteklerini engelleyen bir [temel ilkedir](concept-baseline-protection.md) . Tüm kullanıcılar için başarıyla oturum açmak üzere modern kimlik doğrulaması kullanılmalıdır. Diğer ana hat ilkeleriyle birlikte kullanıldığında, eski protokollerden gelen tüm istekler engellenir ve her gerektiğinde tüm kullanıcıların MFA yapması gerekecektir. Bu ilke Exchange ActiveSync 'ı engellemez.
 
-## <a name="identify-legacy-authentication-use"></a>Eski bir kimlik doğrulama kullanımı belirler
+## <a name="identify-legacy-authentication-use"></a>Eski kimlik doğrulama kullanımını tanımla
 
-Eski bir kimlik doğrulama dizininizde engellemeden önce ilk kullanıcılarınızın eski bir kimlik doğrulama ve genel dizin etkilemesi kullanan uygulamalar olup olmadığını anlamak gerekir. Azure AD oturum açma günlükleri, eski bir kimlik doğrulama kullanıyorsanız anlamak için kullanılabilir.
+Dizininizde eski kimlik doğrulamasını engelleyebilmeniz için önce, kullanıcılarınızın eski kimlik doğrulaması kullanan uygulamalar olup olmadığını ve bunun genel dizininizi nasıl etkileyeceğini anlamanız gerekir. Azure AD oturum açma günlükleri, eski kimlik doğrulaması kullanıp kullandığınızı anlamak için kullanılabilir.
 
-1. Gidin **Azure portalında** > **Azure Active Directory** > **oturum açma**.
-1. Tıklayarak görüntülenmiyorsa istemci uygulaması sütunu eklemek **sütunları** > **istemci uygulaması**.
-1. Filtre ölçütü **istemci uygulaması** > **diğer istemcilerin** tıklatıp **Uygula**.
+1. **Azure Portal** > Azure Active Directoryoturum > **açma**işlemleri ' ne gidin.
+1. **Sütunlar** > **istemci uygulaması**' na tıklanarak gösterilmezse, istemci uygulaması sütununu ekleyin.
+1. **İstemci uygulaması** > **diğer istemcilerine** göre filtreleyin ve **Uygula**' ya tıklayın.
 
-Oturum show denemelerinin yalnızca filtreleme özelliğinde yapılan yeniliklerle eski kimlik doğrulama protokolleri tarafından. Tek tek oturum açma girişimleri üzerinde tıklayarak ek ayrıntılar gösterilir. **İstemci uygulaması** altında **temel bilgilerini** sekmesinde, eski bir kimlik doğrulama hangi protokolün kullanıldığı gösterecektir.
+Filtreleme yalnızca eski kimlik doğrulama protokolleri tarafından yapılan oturum açma girişimlerini gösterir. Her bir bireysel oturum açma girişimine tıkladığınızda ek ayrıntılar gösterilecektir. **Temel bilgi** sekmesindeki **istemci uygulaması** alanı, hangi eski kimlik doğrulama protokolünün kullanıldığını gösterir.
 
-Bu günlükler, hangi kullanıcıların eski kimlik doğrulaması hala bağlı ve hangi uygulamaların kimlik doğrulama isteği yapmak için eski protokolleri kullanan gösterir. Bu günlüklerde görünmez ve eski bir kimlik doğrulama kullanmayan için onaylanan kullanıcılar için bir koşullu erişim ilkesi uygulamak ya da etkinleştirmek **temel ilke: eski bir kimlik doğrulama bloğu** yalnızca bu kullanıcılar için.
+Bu Günlükler, hangi kullanıcıların eski kimlik doğrulamasına bağlı olduğunu ve hangi uygulamaların kimlik doğrulama isteklerini yapmak için eski protokolleri kullandığını gösterir. Bu günlüklerde görünmeyen ve eski kimlik doğrulaması kullanmayan kullanıcılar için, koşullu erişim ilkesi uygulayın veya temel ilkeyi etkinleştirin: yalnızca bu kullanıcılar için **eski kimlik doğrulamasını engelle** .
 
-## <a name="moving-away-from-legacy-authentication"></a>Eski bir kimlik doğrulama uzağa taşınması
+## <a name="moving-away-from-legacy-authentication"></a>Eski kimlik doğrulamasından uzaklaşmak
 
-Eski bir kimlik doğrulama dizininizde kullanan ve hangi uygulamaların bağımlı daha iyi bir fikir aldıktan sonra sonraki adıma modern kimlik doğrulaması kullanmak için kullanıcılarınızın yükseltirken lütfen bekleyin. Modern kimlik doğrulaması, daha güvenli kullanıcı kimlik doğrulaması ve yetkilendirme sağlayan kimlik yönetimi için kullanılan bir yöntemdir. MFA ilkesini yerinde dizininiz varsa, kullanıcı için gerektiğinde MFA istenir, modern kimlik doğrulaması sağlar. Eski bir kimlik doğrulama protokolleri için daha güvenli alternatiftir.
+Dizininizde eski kimlik doğrulaması kullanan kim ve bu uygulamaya bağımlı uygulamalar hakkında daha iyi bir fikir sahibi olduktan sonra, bir sonraki adım, kullanıcılarınızı modern kimlik doğrulaması kullanacak şekilde yükseltiyor. Modern kimlik doğrulaması, daha güvenli Kullanıcı kimlik doğrulaması ve yetkilendirmesi sunan bir kimlik yönetimi yöntemidir. Dizininizde bir MFA ilkeniz varsa, modern kimlik doğrulaması, kullanıcıdan gerektiğinde MFA için istemde bulunulmasını sağlar. Eski kimlik doğrulama protokollerine daha güvenli bir alternatiftir.
 
-Bu bölüm, modern kimlik doğrulaması için ortamınızı güncelleştirme hakkında adım adım bir genel bakış sağlar. Kuruluşunuzdaki ilke engelleme eski bir kimlik doğrulama etkinleştirmeden önce aşağıdaki adımları inceleyin.
+Bu bölüm, ortamınızı modern kimlik doğrulamaya güncelleştirme hakkında bir adım adım genel bakış sunar. Kuruluşunuzda eski bir kimlik doğrulama Engelleme ilkesini etkinleştirmeden önce aşağıdaki adımları okuyun.
 
-### <a name="step-1-enable-modern-authentication-in-your-directory"></a>1\. adım: Dizininizdeki modern kimlik doğrulamasını etkinleştirme
+### <a name="step-1-enable-modern-authentication-in-your-directory"></a>1\. adım: Dizininizde modern kimlik doğrulamayı etkinleştirme
 
-Modern kimlik doğrulaması etkinleştirmenin ilk adımı, modern kimlik doğrulaması dizininize desteklediğinden emin yapıyor. Modern kimlik doğrulaması, 1 Ağustos 2017 veya sonrasında oluşturulan dizinler için varsayılan olarak etkindir. Dizininizi bu tarihten önce oluşturulduysa aşağıdaki adımları uygulayarak dizininiz için modern kimlik doğrulaması el ile etkinleştirmeniz gerekir:
+Modern kimlik doğrulamayı etkinleştirmenin ilk adımı, dizininizin modern kimlik doğrulamasını desteklediğinden emin olmanızı sağlamak. Modern kimlik doğrulaması, 1 Ağustos 2017 ' de veya sonrasında oluşturulan dizinler için varsayılan olarak etkindir. Bu tarihten önce dizininiz oluşturulduysa, aşağıdaki adımları kullanarak dizininiz için modern kimlik doğrulamayı el ile etkinleştirmeniz gerekir:
 
-1. Dizin zaten modern kimlik doğrulaması çalıştırarak destekleyip desteklemediğini görmek için onay `Get-CsOAuthConfiguration` gelen [Skype Kurumsal çevrimiçi PowerShell Modülü](https://docs.microsoft.com/office365/enterprise/powershell/manage-skype-for-business-online-with-office-365-powershell).
-1. Komutunuz boş döndürürse `OAuthServers` özelliği ve Modern kimlik doğrulaması devre dışı bırakıldı. Modern kimlik doğrulaması kullanmak üzere ayarını güncelleştirme `Set-CsOAuthConfiguration`. Varsa, `OAuthServers` özelliği, bir giriş içerir, şimdi hazırsınız.
+1. `Get-CsOAuthConfiguration` Skype Kurumsal çevrimiçi çalışma [PowerShell modülünü](https://docs.microsoft.com/office365/enterprise/powershell/manage-skype-for-business-online-with-office-365-powershell)çalıştırarak dizininizin modern kimlik doğrulamasını zaten destekleyip desteklemediğini denetleyin.
+1. Komutunuz boş `OAuthServers` bir özellik döndürürse, modern kimlik doğrulaması devre dışı bırakılır. Kullanarak `Set-CsOAuthConfiguration`modern kimlik doğrulamayı etkinleştirmek için ayarı güncelleştirin. `OAuthServers` Özelliği bir giriş içeriyorsa, gittiğiniz kadar iyidir.
 
-Geçmeden önce bu adımı tamamlamak emin olun. Hangi protokolün tüm Office istemcileri tarafından kullanılacak dikte çünkü dizin yapılandırmalarınızı ilk değiştirilir önemlidir. Modern kimlik doğrulamasını destekleyen Office istemcileri kullanıyorsanız bile, eski protokolleri kullanarak dizininize modern kimlik doğrulaması devre dışı bırakılırsa varsayılacaktır.
+İleri ' ye geçmeden önce bu adımı tamamladığınızdan emin olun. Tüm Office istemcileri tarafından hangi protokolün kullanılacağını dikte ettiğinden, Dizin yapılandırmalarınızın ilk önce değiştirilmesi önemlidir. Modern kimlik doğrulamasını destekleyen Office istemcileri kullanıyor olsanız bile, dizininizde modern kimlik doğrulaması devre dışıysa eski protokolleri kullanmak varsayılan olur.
 
 ### <a name="step-2-office-applications"></a>2\. adım: Office uygulamaları
 
-Modern kimlik doğrulaması dizininizde etkinleştirdikten sonra Office istemcileri için modern kimlik doğrulamasını etkinleştirerek uygulamaları güncelleştirme başlatabilirsiniz. Modern kimlik doğrulaması, Office 2016 veya sonraki istemciler varsayılan olarak destekler. Hiçbir ek adımlar gereklidir.
+Dizininizde modern kimlik doğrulamasını etkinleştirdikten sonra, Office istemcileri için modern kimlik doğrulamayı etkinleştirerek uygulamaları güncelleştirmeye başlayabilirsiniz. Office 2016 veya üzeri istemciler, varsayılan olarak modern kimlik doğrulamasını destekler. Ek adım gerekmez.
 
-Office 2013 Windows istemcileri kullanıyorsanız veya daha eski Office 2016 veya sonraki bir sürüme yükseltmenizi öneriyoruz. Dizininizdeki modern kimlik doğrulamasının etkinleştirilmesi, önceki adımda tamamladıktan sonra bile, eski Office uygulamalarını eski kimlik doğrulama protokolleri kullanmaya devam eder. Office 2013 istemcilerindeki kullanıyorsanız ve hemen Office 2016 veya sonraki bir sürüme yükseltmek belirleyemiyoruz, aşağıdaki makaleye bağlantısındaki [etkinleştirme Modern kimlik doğrulaması için Office 2013 Windows cihazlarda](https://docs.microsoft.com/office365/admin/security-and-compliance/enable-modern-authentication). Eski kimlik doğrulaması kullanırken hesabınızın korunmasına yardımcı olmak için güçlü parolalar dizininize arasında kullanmanızı öneririz. Kullanıma [Azure AD parola koruması](../authentication/concept-password-ban-bad.md) dizininize zayıf parolalarda yasaklamak için.
+Office 2013 Windows istemcileri veya daha eski bir sürümü kullanıyorsanız, Office 2016 veya sonraki sürümlere yükseltmeniz önerilir. Dizininizde modern kimlik doğrulamasını etkinleştirmenin önceki adımını tamamladıktan sonra bile eski Office uygulamaları eski kimlik doğrulama protokollerini kullanmaya devam edecektir. Office 2013 istemcilerini kullanıyorsanız ve Office 2016 veya sonraki bir sürüme hemen yükseltirsiniz, [Windows cihazlarında office 2013 Için modern kimlik doğrulamayı etkinleştirmek](https://docs.microsoft.com/office365/admin/security-and-compliance/enable-modern-authentication)üzere aşağıdaki makaledeki adımları izleyin. Eski kimlik doğrulaması kullanılırken hesabınızın korunmasına yardımcı olmak için, dizininiz genelinde güçlü parolalar kullanmanızı öneririz. Dizininizde zayıf parolalar sağlamak için [Azure AD parola koruması](../authentication/concept-password-ban-bad.md) ' na göz atın.
 
-Office 2010, modern kimlik doğrulamasını desteklemez. Tüm kullanıcılar Office 2010 ile daha yeni bir Office sürümüne yükseltmeniz gerekir. Varsayılan olarak eski kimlik doğrulamasını engeller gibi Office 2016 veya sonraki sürümleri yükseltme yapmanızı öneririz.
+Office 2010, modern kimlik doğrulamasını desteklemez. Office 2010 ile herhangi bir kullanıcıyı Office 'in daha yeni bir sürümüne yükseltmeniz gerekir. Varsayılan olarak eski kimlik doğrulamasını engellediği için Office 2016 veya sonraki bir sürüme yükseltmeniz önerilir.
 
-MacOS kullanıyorsanız, Office Mac 2016 veya sonraki yükseltme öneririz. Yerel posta istemcisi kullanıyorsanız, MacOS sürümü 10.14 veya tüm cihazlar daha sonra gerekecektir.
+MacOS kullanıyorsanız Mac 2016 veya üzeri için Office 'e yükseltmeniz önerilir. Yerel posta istemcisi kullanıyorsanız, tüm cihazlarda MacOS sürüm 10,14 veya sonraki bir sürüme sahip olmanız gerekir.
 
 ### <a name="step-3-exchange-and-sharepoint"></a>3\. adım: Exchange ve SharePoint
 
-Modern kimlik doğrulaması kullanmak Windows tabanlı Outlook istemcileri için Exchange Online modern kimlik doğrulaması de etkin olması gerekir. Modern kimlik doğrulaması için devre dışı bırakılırsa Outlook Windows tabanlı istemciler modern kimlik doğrulaması (Outlook 2013 veya üzeri), temel kimlik doğrulaması için Exchange Online posta kutusu bağlanmak için kullanacağı destekleyen Exchange Online.
+Windows tabanlı Outlook istemcilerinin modern kimlik doğrulamasını kullanabilmesi için Exchange Online 'ın de modern kimlik doğrulaması etkinleştirilmiş olması gerekir. Exchange Online için modern kimlik doğrulaması devre dışıysa, modern kimlik doğrulamayı (Outlook 2013 veya üzeri) destekleyen Windows tabanlı Outlook istemcileri, Exchange Online posta kutularına bağlanmak için temel kimlik doğrulamasını kullanacaktır.
 
-SharePoint Online modern kimlik doğrulaması varsayılan olarak etkinleştirilir. 1 Ağustos 2017'den sonra oluşturulan dizinleri için modern kimlik doğrulaması Exchange Online'da varsayılan olarak etkindir. Ancak, önceden modern kimlik doğrulaması devre dışı veya bu tarihten önce oluşturulan bir dizin kullanıyorsanız, aşağıdaki makaleye adımları [Exchange Online'da modern kimlik doğrulamayı etkinleştirme](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online).
+SharePoint Online, modern kimlik doğrulama Varsayılanı için etkinleştirilmiştir. 1 Ağustos 2017 ' den sonra oluşturulan dizinler için, Exchange Online 'da modern kimlik doğrulaması varsayılan olarak etkindir. Ancak, daha önce modern kimlik doğrulamayı devre dışı bırakmış veya bu tarihten önce oluşturulmuş bir dizin kullanıyorsanız, [Exchange Online 'da modern kimlik doğrulamayı etkinleştirmek](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online)için aşağıdaki makaledeki adımları izleyin.
 
 ### <a name="step-4-skype-for-business"></a>4\. Adım: Skype Kurumsal
 
-Skype Kurumsal'a yaptığı eski bir kimlik doğrulama istekleri önlemek için modern kimlik doğrulaması için Skype Kurumsal çevrimiçi'ı etkinleştirmek gereklidir. 1 Ağustos 2017'den sonra oluşturulan dizinleri için Skype Kurumsal için modern kimlik doğrulaması varsayılan olarak etkindir.
+Skype Kurumsal tarafından yapılan eski kimlik doğrulama isteklerini engellemek için, Skype Kurumsal Çevrimiçi için modern kimlik doğrulamayı etkinleştirmeniz gerekir. 1 Ağustos 2017 ' den sonra oluşturulan dizinler için, Skype Kurumsal için modern kimlik doğrulaması varsayılan olarak etkindir.
 
-Modern kimlik doğrulaması varsayılan olarak destekleyen Microsoft Teams, geçiş öneririz. Ancak, şu anda geçiş bulamıyorsanız, modern kimlik doğrulaması kullanan böylece Skype kurumsal iş başlangıç modern kimlik doğrulaması için Skype Kurumsal çevrimiçi etkinleştirmeniz gerekir. Bu makaledeki adımları [Skype için Modern kimlik doğrulaması ile desteklenen iş topolojiler](https://docs.microsoft.com/skypeforbusiness/plan-your-deployment/modern-authentication/topologies-supported), Skype Kurumsal için Modern kimlik doğrulamasını etkinleştirin.
+Varsayılan olarak modern kimlik doğrulamasını destekleyen Microsoft ekiplerine geçiş yapmanız önerilir. Ancak, şu anda geçiş yapmak istemiyorsanız, Skype Kurumsal Çevrimiçi için modern kimlik doğrulamayı etkinleştirerek Skype Kurumsal istemcilerinin modern kimlik doğrulaması kullanmaya başlamasını sağlayabilirsiniz. Skype Kurumsal için modern kimlik doğrulamayı etkinleştirmek üzere [modern kimlik doğrulamasıyla desteklenen Skype](https://docs.microsoft.com/skypeforbusiness/plan-your-deployment/modern-authentication/topologies-supported)kurumsal topolojilerinin bu makalesindeki adımları izleyin.
 
-Modern kimlik doğrulaması için Skype Kurumsal çevrimiçi etkinleştirmeye ek olarak, Exchange Online için modern kimlik doğrulaması, Skype Kurumsal için modern kimlik doğrulama etkinleştirilirken etkinleştirmenizi öneririz. Bu işlem, modern kimlik doğrulaması Exchange Online ve Skype Kurumsal çevrimiçi durumunu eşitlemek yardımcı olur ve çoklu oturum açma istemlerini Skype kurumsal iş istemciler için engeller.
+Skype Kurumsal Çevrimiçi için modern kimlik doğrulamayı etkinleştirmenin yanı sıra, Skype Kurumsal için modern kimlik doğrulamasını etkinleştirirken Exchange Online için modern kimlik doğrulamayı etkinleştirmenizi öneririz. Bu işlem, Exchange Online ve Skype Kurumsal Çevrimiçi ortamda modern kimlik doğrulamasının durumunu eşitlemeye yardımcı olur ve Skype Kurumsal istemcileri için birden çok oturum açma istemini engeller.
 
 ### <a name="step-5-using-mobile-devices"></a>5\. Adım: Mobil cihazları kullanma
 
-Mobil Cihazınızda uygulamaları engelleme de eski kimlik doğrulaması gerekir. Outlook mobil için kullanmanızı öneririz. Outlook mobil için modern kimlik doğrulaması varsayılan olarak destekler ve diğer MFA temel koruma ilkeleri eşleşecektir.
+Mobil cihazınızdaki uygulamaların eski kimlik doğrulamasını da engellemesi gerekir. Mobil için Outlook 'U kullanmanızı öneririz. Mobil için Outlook, modern kimlik doğrulamayı varsayılan olarak destekler ve diğer MFA temel koruma ilkelerini karşılar.
 
-Yerel iOS posta istemcisi kullanabilmeniz için iOS 11.0 veya daha eski bir kimlik doğrulama engellemek için posta istemci güncelleştirildiğinden emin olmak için çalıştırıyor olması gerekir.
+Yerel iOS posta istemcisini kullanabilmeniz için, posta istemcisinin eski kimlik doğrulamasını engelleyecek şekilde güncelleştirildiğinden emin olmak için iOS sürüm 11,0 veya üzerini çalıştırıyor olmanız gerekir.
 
-### <a name="step-6-on-premises-clients"></a>6\. Adım: Şirket içi istemcileri
+### <a name="step-6-on-premises-clients"></a>6\. Adım: Şirket içi istemciler
 
-Şirket içi Exchange Server ve Skype Kurumsal şirket içi için kullanan bir karma müşteri varsa, her iki hizmet modern kimlik doğrulamasını etkinleştirmek için güncelleştirilmesi gerekir. Karma bir ortamda, modern kimlik doğrulaması kullanırken, kullanıcılar şirket içi kimlik doğrulaması yine de. Kendi kaynaklarını (dosyalar veya e-postalar) değişiklikleri erişimi yetkilendirme dönüştürüldüğünü.
+Şirket içi Exchange Server ve şirket içi Skype Kurumsal kullanan bir hibrit müşterisiyseniz, modern kimlik doğrulamayı etkinleştirmek için her iki hizmetin de güncelleştirilmeleri gerekir. Bir karma ortamda modern kimlik doğrulaması kullanırken, hala şirket içi kullanıcıların kimliğini doğrulama işlemini sürdürmektedir. Kaynaklara (dosya veya e-posta) erişimi yetkilendirmenin öyküsü.
 
-Lütfen şirket içi modern kimlik doğrulaması etkinleştirme başlamadan önce önkoşulları karşıladığınızdan emin olun.
-Şirket içinde modern kimlik doğrulamasını etkinleştirmek artık hazırsınız.
+Şirket içinde modern kimlik doğrulamayı etkinleştirmeye başlayabilmeniz için önce lütfen önkoşulların karşılandığından emin olun.
+Artık şirket içinde modern kimlik doğrulamayı etkinleştirmeye hazırsınız.
 
-Modern kimlik doğrulamasının etkinleştirilmesi için adımlar aşağıdaki makalelerde bulunabilir:
+Modern kimlik doğrulamasını etkinleştirme adımları aşağıdaki makalelerde bulunabilir:
 
-* [İçi Exchange Server üzerinde karma Modern kimlik doğrulaması kullanacak şekilde yapılandırma](https://docs.microsoft.com/office365/enterprise/configure-exchange-server-for-hybrid-modern-authentication)
-* [Modern kimlik doğrulaması (ADAL) işletme için Skype ile kullanma](https://docs.microsoft.com/skypeforbusiness/manage/authentication/use-adal)
+* [Şirket içi Exchange Server 'ı karma modern kimlik doğrulamasını kullanacak şekilde yapılandırma](https://docs.microsoft.com/office365/enterprise/configure-exchange-server-for-hybrid-modern-authentication)
+* [Skype Kurumsal ile modern kimlik doğrulaması (ADAL) kullanma](https://docs.microsoft.com/skypeforbusiness/manage/authentication/use-adal)
 
-## <a name="enable-the-baseline-policy"></a>Temel ilke etkinleştir
+## <a name="enable-the-baseline-policy"></a>Temel ilkeyi etkinleştirme
 
-İlke **temel ilke: Blok eski kimlik doğrulama (Önizleme)** önceden yapılandırılmış olarak gelir ve Azure portalında koşullu erişim dikey penceresine gittiğinizde en üstünde gösterilir.
+İlke **temel ilkesi: Eski kimlik doğrulamasını engelle (Önizleme** ) önceden yapılandırılmış olarak gelir ve Azure Portal ' deki koşullu erişim dikey penceresine gittiğinizde en üstte görünür. Bu ayar yalnızca başarılı bir oturum açma işleminden sonra devreye girer, bu sayede kullanıcılar eski kimlik doğrulamasını kullanmayı denemek için bu seçeneği kullanmaya devam eder.
 
 Bu ilkeyi etkinleştirmek ve kuruluşunuzu korumak için:
 
-1. Oturum **Azure portalında** genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak.
-1. Gözat **Azure Active Directory** > **koşullu erişim**.
-1. İlkeler listesinde seçin **temel ilke: Blok eski kimlik doğrulama (Önizleme)** .
-1. Ayarlama **ilkesini etkinleştir** için **ilkeyi hemen kullan**.
-1. Tıklayın **Kaydet**.
+1.  **** AzurePortal genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
+1. **Koşullu erişimi** **Azure Active Directory** > için gidin.
+1. İlke listesinde temel ilke ' yi seçin **: Eski kimlik doğrulamasını engelleyin (Önizleme**).
+1. İlkeyi **ilkeyi hemen kullanacak** **şekilde ayarlayın** .
+1.  **Kaydet**' e tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Daha fazla bilgi için bkz.
 
 * [Koşullu erişim temel koruma ilkeleri](concept-baseline-protection.md)
-* [Kimlik altyapınızın güvenliğini sağlamak için beş adım](../../security/azure-ad-secure-steps.md)
-* [Azure Active Directory'de koşullu erişim nedir?](overview.md)
+* [Kimlik altyapınızı güvenli hale getirmenin beş adımı](../../security/azure-ad-secure-steps.md)
+* [Azure Active Directory Koşullu erişim nedir?](overview.md)

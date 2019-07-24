@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 46044c061cca24714d1a951e28cf01ca29f14a7e
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: cd377e78abe328814795bb1f75465b090a13e456
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707217"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68228357"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>SLES azure'daki SUSE Linux Enterprise Server üzerinde Pacemaker ayarlama
 
@@ -84,7 +84,7 @@ Tüm aşağıdaki komutları çalıştırın **iSCSI hedef sanal makinelere**.
 
 Tüm aşağıdaki komutları çalıştırın **iSCSI hedef sanal makinelere** iSCSI disklerini, SAP sistemlerini tarafından kullanılan kümeler için oluşturulacak. Aşağıdaki örnekte, SBD cihazlar birden fazla küme için oluşturulur. Bir iSCSI hedef sunucusu birden fazla küme için nasıl kullanacağınız gösterilmektedir. SBD cihazlar, işletim sistemi diskinde yerleştirilir. Yeterli alana sahip olduğunuzdan emin olun.
 
-**`nfs`** NFS küme tanımlamak için kullanılan **ascsnw1** ASCS kümesini tanımlamak için kullanılan **NW1**, **dbnw1** veritabanı kümesini tanımlamak için kullanılan **NW1** , **nfs 0** ve **nfs 1** konak adları NFS küme düğümlerinin **nw1 xscs 0** ve **nw1 xscs 1**konak adları'nın **NW1** ASCS küme düğümlerini ve **nw1-db-0** ve **nw1-db-1** veritabanının ana bilgisayar adları olan küme düğümleri. Bunları, Küme düğümlerinizi ana bilgisayar adlarını ve SAP sisteminizin SID ile değiştirin.
+**`nfs`** , NFS kümesini tanımlamak için kullanılır. **ascsnw1** , **NW1**'ın ascs kümesini tanımlamak için kullanılır, **dbnw1** , NFS **-0** ve **NFS-1** , NFS küme düğümlerinin **ana bilgisayar adı, NW1-xscs-0** ve **NW1-xscs-1** , **NW1** ascs küme düğümlerinin ana bilgisayar adları ve **NW1-DB-0** ve **NW1-DB-1** , veritabanı kümesi düğümlerinin ana bilgisayar adı. Bunları, Küme düğümlerinizi ana bilgisayar adlarını ve SAP sisteminizin SID ile değiştirin.
 
 <pre><code># Create the root folder for all SBD devices
 sudo mkdir /sbd
@@ -302,7 +302,7 @@ Aşağıdaki öğeler ile önek **[A]** - tüm düğümler için geçerli **[1]*
    <b>SBD_WATCHDOG="yes"</b>
    </code></pre>
 
-   Oluşturma `softdog` yapılandırma dosyası
+   `softdog` Yapılandırma dosyasını oluşturma
 
    <pre><code>echo softdog | sudo tee /etc/modules-load.d/softdog.conf
    </code></pre>
@@ -321,7 +321,7 @@ Aşağıdaki öğeler ile önek **[A]** - tüm düğümler için geçerli **[1]*
    <pre><code>sudo zypper update
    </code></pre>
 
-1. **[A]**  İşletim sistemini Yapılandır
+1. **[A]** işletim sistemini yapılandırma
 
    Bazı durumlarda, Pacemaker birçok süreçleri oluşturuyor ve böylece izin verilen işlem sayısını tükettiğinde. Böyle bir durumda, küme düğümleri arasında bir sinyal başarısız ve kaynaklarınızı yük devretmesi için neden. En fazla izin verilen işlem aşağıdaki parametresini ayarlayarak artırma öneririz.
 
@@ -348,9 +348,9 @@ Aşağıdaki öğeler ile önek **[A]** - tüm düğümler için geçerli **[1]*
    vm.dirty_background_bytes = 314572800
    </code></pre>
 
-1. **[A]**  Bulut netconfig azure için yüksek kullanılabilirlik kümesi yapılandırma
+1. **[A]** Cloud-NETCONFIG-ha kümesi için Azure yapılandırma
 
-   Bulut ağ eklentisi sanal IP adresi (VIP atama Pacemaker denetim gerekir) kaldırmasını önlemek için aşağıda gösterildiği gibi ağ arabiriminin yapılandırma dosyasını değiştirin. Daha fazla bilgi için [SUSE KB 7023633](https://www.suse.com/support/kb/doc/?id=7023633). 
+   Bulut ağ eklentisinin sanal IP adresini kaldırmasını engellemek için ağ arabiriminin yapılandırma dosyasını aşağıda gösterildiği gibi değiştirin (pacemaker VIP atamasını denetlemektir). Daha fazla bilgi için bkz. [SUSE KB 7023633](https://www.suse.com/support/kb/doc/?id=7023633). 
 
    <pre><code># Edit the configuration file
    sudo vi /etc/sysconfig/network/ifcfg-eth0 
@@ -448,7 +448,7 @@ Aşağıdaki öğeler ile önek **[A]** - tüm düğümler için geçerli **[1]*
    <pre><code>sudo vi /etc/corosync/corosync.conf
    </code></pre>
 
-   Değerler var. ya da farklı değilse kalın aşağıdaki içeriği dosyaya ekleyin. Bakımı koruma bellek izin vermek için 30000 belirteç değiştirdiğinizden emin olun. Daha fazla bilgi için [Linux'a yönelik bu makaleyi][virtual-machines-linux-maintenance] or [Windows][virtual-machines-windows-maintenance]. Ayrıca parametre mcastaddr kaldırdığınızdan emin olun.
+   Değerler var. ya da farklı değilse kalın aşağıdaki içeriği dosyaya ekleyin. Bakımı koruma bellek izin vermek için 30000 belirteç değiştirdiğinizden emin olun. Daha fazla bilgi için or [Windows][virtual-machines-windows-maintenance] [Linux için bu makaleye][virtual-machines-linux-maintenance] bakın. Ayrıca parametre mcastaddr kaldırdığınızdan emin olun.
 
    <pre><code>[...]
      <b>token:          30000
@@ -495,17 +495,18 @@ Aşağıdaki öğeler ile önek **[A]** - tüm düğümler için geçerli **[1]*
 
 STONITH cihaz, Microsoft Azure karşı korunmasına yetki vermek için bir hizmet sorumlusu kullanır. Bir hizmet sorumlusu oluşturmak için aşağıdaki adımları izleyin.
 
-1. Git [https://portal.azure.com](https://portal.azure.com)
+1. Şuraya gidin: <https://portal.azure.com>
 1. Azure Active Directory dikey penceresini açın  
    Özellikler bölümüne gidin ve dizin kimliği yazma Bu **Kiracı kimliği**.
 1. Uygulama kayıtları tıklayın
-1. Ekle'ye tıklayın.
-1. Bir ad girin, "Web uygulaması/API'si" uygulama türünü seçin, bir oturum açma URL'sini girin (örneğin http\://localhost) ve Oluştur'a tıklayın
-1. Oturum açma URL'si kullanılmaz ve geçerli bir URL olabilir
-1. Yeni uygulamayı seçin ve ayarları sekmesini anahtarları
-1. Yeni bir anahtar için bir açıklama girin, "Her zaman geçerli olsun"'i seçin ve Kaydet'e tıklayın
+1. Yeni kayıt öğesine tıklayın
+1. Bir ad girin, "yalnızca bu kuruluş dizinindeki hesaplar" ı seçin 
+2. "Web" uygulama türünü seçin, bir oturum açma URL 'si girin (örneğin, http:\//localhost) ve Ekle ' ye tıklayın.  
+   Oturum açma URL'si kullanılmaz ve geçerli bir URL olabilir
+1. Sertifikalar ve gizlilikler ' ı seçin ve ardından yeni istemci parolası ' na tıklayın
+1. Yeni anahtar için bir açıklama girin, "süresiz Expires" öğesini seçin ve Ekle ' ye tıklayın.
 1. Değeri yazın. Olarak kullanılan **parola** için hizmet sorumlusu
-1. Uygulama Kimliği yazma Kullanıcı adı olarak kullanılır (**oturum açma kimliği** sonraki adımlarda), hizmet sorumlusu
+1. Genel Bakış ' ı seçin. Uygulama Kimliği yazma Kullanıcı adı olarak kullanılır (**oturum açma kimliği** sonraki adımlarda), hizmet sorumlusu
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]**  Sınır aracısı için özel bir rol oluşturun
 
@@ -533,11 +534,11 @@ Giriş dosyası için aşağıdaki içeriği kullanın. İhtiyacınız olan içe
 }
 ```
 
-### <a name="a-assign-the-custom-role-to-the-service-principal"></a>**[A]**  Hizmet sorumlusuna özel rolü atama
+### <a name="a-assign-the-custom-role-to-the-service-principal"></a>**[A]** hizmet sorumlusuna özel rol atama
 
 Özel rol "Linux sınır aracısı hizmet sorumlusuna son bölümde oluşturduğunuz rolü" atayın. Sahip rolü artık kullanmayın!
 
-1. Git [https://portal.azure.com](https://portal.azure.com)
+1. Git[https://portal.azure.com](https://portal.azure.com)
 1. Tüm kaynaklar dikey penceresini açın
 1. İlk küme düğümüne sanal makinesini seçin
 1. Erişim denetimi (IAM)'ye tıklayın.
@@ -576,16 +577,16 @@ sudo crm configure primitive <b>stonith-sbd</b> stonith:external/sbd \
    op monitor interval="15" timeout="15"
 </code></pre>
 
-## <a name="pacemaker-configuration-for-azure-scheduled-events"></a>Azure için pacemaker yapılandırma zamanlanmış olaylar
+## <a name="pacemaker-configuration-for-azure-scheduled-events"></a>Azure zamanlanan olaylar için paceoluşturucu yapılandırması
 
-Azure tekliflerini [zamanlanmış olaylar](https://docs.microsoft.com/azure/virtual-machines/linux/scheduled-events). Zamanlanmış olaylar, meta veri hizmeti sağlanır ve uygulamanın olayları VM kapatma, yeniden dağıtım VM, vb. için hazırlamak zaman tanıyın. Kaynak Aracısı **[azure etkinlikleri](https://github.com/ClusterLabs/resource-agents/pull/1161)** izleyiciler için zamanlanmış Azure etkinlikleri. Olayları algılanmazsa, tüm kaynaklar üzerinde etkilenen sanal Makineyi durdurun ve kümedeki başka bir düğüme taşımak aracı deneyecek. Bu ek Pacemaker kaynaklara ulaşmak için yapılandırılmalıdır. 
+Azure, [Zamanlanmış olaylar](https://docs.microsoft.com/azure/virtual-machines/linux/scheduled-events)sunar. Zamanlanan olaylar, meta veri hizmeti aracılığıyla sağlanır ve uygulamanın VM kapatması, VM yeniden dağıtımı vb. gibi olaylara hazırlanması için zaman sağlar. Resource Agent **[Azure](https://github.com/ClusterLabs/resource-agents/pull/1161)** olayları, zamanlanan Azure olayları için izler. Olaylar algılanırsa, aracı etkilenen VM 'deki tüm kaynakları durdurmayı dener ve bunları kümedeki başka bir düğüme taşır. Ek pacemaker kaynaklarının yapılandırılması gerektiğini elde etmek için. 
 
-1. **[A]**  Yükleme **azure etkinlikleri** aracı. 
+1. **[A]** **Azure-Events** aracısını yükler. 
 
 <pre><code>sudo zypper install resource-agents
 </code></pre>
 
-2. **[1]**  Pacemaker kaynakları yapılandırırsınız. 
+2. **[1]** pacemaker 'da kaynakları yapılandırın. 
 
 <pre><code>
 #Place the cluster in maintenance mode
@@ -600,17 +601,17 @@ sudo crm configure property maintenance-mode=false
 </code></pre>
 
    > [!NOTE]
-   > Küme içinde veya bakım modundan yerleştirdiğinizde Pacemaker kaynaklar azure etkinlikleri aracı için yapılandırdıktan sonra uyarı iletileri gibi alabilirsiniz:  
-     Uyarı: cib önyükleme seçenekleri: Bilinmeyen öznitelik ' hostName_  <strong>hostname</strong>'  
-     Uyarı: cib önyükleme seçenekleri: Bilinmeyen öznitelik 'azure-events_globalPullState'  
-     Uyarı: cib önyükleme seçenekleri: Bilinmeyen öznitelik ' hostName_ <strong>hostname</strong>'  
-   > Bu uyarı iletilerini yoksayılabilir.
+   > Azure-Events Aracısı için pacemaker kaynaklarını yapılandırdıktan sonra, kümeyi bakım moduna aldığınızda veya bu moddan çıkarak, şu şekilde uyarı iletileri alabilirsiniz:  
+     Uyarı: CIB-Bootstrap-Options: bilinmeyen öznitelik ' hostName_ <strong>hostname</strong>'  
+     Uyarı: CIB-Bootstrap-Options: bilinmeyen ' Azure-events_globalPullState ' özniteliği  
+     Uyarı: CIB-Bootstrap-Options: bilinmeyen öznitelik ' hostName_ <strong>hostname</strong>'  
+   > Bu uyarı iletileri yoksayılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure sanal makineleri planlama ve uygulama için SAP][planning-guide]
-* [SAP için Azure sanal makineler dağıtımı][deployment-guide]
-* [SAP için Azure sanal makineleri DBMS dağıtım][dbms-guide]
-* [SUSE Linux Enterprise Server üzerindeki Azure vm'lerinde NFS için yüksek kullanılabilirlik][sles-nfs-guide]
-* [SAP uygulamaları için SUSE Linux Enterprise Server üzerindeki Azure vm'lerinde SAP NetWeaver için yüksek kullanılabilirlik][sles-guide]
-* Yüksek kullanılabilirlik ve Azure Vm'leri üzerinde SAP hana olağanüstü durum kurtarma planı oluşturma hakkında bilgi almak için bkz: [SAP HANA, yüksek kullanılabilirlik Azure Virtual Machines'de (VM'ler)][sap-hana-ha]
+* [SAP için Azure sanal makineleri planlama ve uygulama][planning-guide]
+* [SAP için Azure sanal makineleri dağıtımı][deployment-guide]
+* [SAP için Azure sanal makineleri DBMS dağıtımı][dbms-guide]
+* [SUSE Linux Enterprise Server üzerinde Azure VM 'lerinde NFS için yüksek kullanılabilirlik][sles-nfs-guide]
+* [SAP uygulamaları için SUSE Linux Enterprise Server Azure VM 'lerinde SAP NetWeaver için yüksek kullanılabilirlik][sles-guide]
+* Azure VM 'lerinde SAP HANA olağanüstü durum kurtarma için yüksek kullanılabilirlik ve plan planı oluşturma hakkında bilgi edinmek için bkz. [Azure sanal makinelerinde (VM) SAP HANA yüksek kullanılabilirliği][sap-hana-ha]

@@ -12,12 +12,12 @@ ms.date: 02/08/2019
 ms.author: lizross
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f59cae87af5f29d900159639798f9cd031f3d765
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 7f695d9f0240f8c27ea0bedba7e532d37a177752
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67302380"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304753"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory dağıtım planları
 Azure Active Directory (AD) özelliklerini dağıtma konusunda ayrıntılı bir rehbere mi ihtiyacınız var? Aşağıdaki dağıtım planları yaygın Azure AD özelliklerinin başarıyla kullanıma alınması için gerekli olan iş değeri, planlama noktaları, tasarım ve operasyon yordamlarını anlatmaktadır. 
@@ -26,42 +26,42 @@ Belgelerin içinde e-posta şablonlarını, sistem mimarisi diyagramlarını, ya
 
 Belgeler hakkındaki geri bildirimlerinizi bekliyoruz. Belgeler hakkındaki fikirlerinizi paylaşmak için bu kısa [anketi](https://aka.ms/deploymentplanfeedback) yanıtlayın. 
 
-## <a name="include-the-right-stakeholders"></a>Doğru proje katılımcılarının
+## <a name="include-the-right-stakeholders"></a>Doğru paydaşları dahil et
 
-Yeni bir özellik için planlama, dağıtım başlayarak, kuruluşunuz genelinde önemli proje katılımcılarının önemlidir. Tanımlamak ve kişi veya aşağıdaki rollerin her birini gerçekleştirmek ve bunları kendi katılımını belirlemeye çalışmak kişiler belgeyi öneririz.  
+Dağıtım planlamasına yeni bir özellik için Başlarken, kuruluşunuzda önemli paydaşlar eklemek önemlidir. Aşağıdaki rollerin her birini karşılayan kişiyi veya kişileri tanımlamanızı ve belgeleyeceğini ve projede katılımlarını belirlemek için bunlarla çalışmayı öneririz.  
 
-Rolleri aşağıdakileri içerebilir. 
+Roller aşağıdaki gibi bulunabilir 
 
-|Rol |Açıklama |
+|Role |Açıklama |
 |-|-|
-|Son kullanıcı|Temsili bir yetenek uygulanacak kullanıcı grubu. Genellikle bir deneme programı değişiklikleri önizlemeleri sağlanır.
-|BT desteği Yöneticisi|Bu değişikliğin bir Yardım Masası açısından desteklenebilirliği üzerinde giriş sağlayabilen BT destek kuruluş temsilcisi.  
-|Kimlik Mimarı ya da Azure genel yönetici|Bu değişiklik, kuruluşunuzdaki çekirdek Kimlik Yönetimi altyapısı ile nasıl hizalanacağını tanımlama sorumlu Kimlik Yönetimi ekip temsilcisi.|
-|Uygulama iş sahibi |Erişimi yönetme içerebilecek etkilenen uygulamaları genel iş sahibi.  Ayrıca kullanıcı deneyimini ve bu değişiklik, bir son kullanıcının açısından kullanışlılığını giriş sağlayabilir.
-|Güvenlik sahibi|Bir temsilcisi, devre dışı plan oturum açabilir güvenlik ekibinin, kuruluşunuzun güvenlik gereksinimlerini karşılar.|
-|Uyumluluk Yöneticisi|Kuruluşunuzdaki Kurumsal uyumluluğu, sektör ve kamu gereksinimleri sağlamaktan sorumlu kişi.|
+|Son Kullanıcı|Özelliği uygulanacak olan temsili Kullanıcı grubu. Genellikle bir pilot programdaki değişikliklere önizleme gösterir.
+|BT Destek Yöneticisi|Bu değişikliğin bir yardım masası perspektifinden desteklenebilirliği hakkında giriş sağlayabilen kuruluş temsilcisini destekler.  
+|Kimlik mimarı veya Azure genel Yöneticisi|Bu değişikliğin kuruluşunuzdaki çekirdek kimlik yönetimi altyapısına nasıl hizalandığını tanımlamaya yönelik kimlik yönetimi ekibi temsilcisi.|
+|Uygulama Iş sahibi |Erişim yönetimi de içerebilen, etkilenen uygulamaların genel iş sahibidir.  Ayrıca, son kullanıcının perspektifinden bu değişikliğin kullanıcı deneyiminde ve yararlılığı üzerinde giriş sağlayabilir.
+|Güvenlik sahibi|Güvenlik ekibinden, planın kuruluşunuzun güvenlik gereksinimlerini karşıladığını kapatan bir temsilci.|
+|Uyumluluk Yöneticisi|Kuruluşunuzda kurumsal, sektör veya kamu gereksinimleriyle uyumluluk sağlamaktan sorumlu kişi.|
 
-**Katılımı düzeylerini şunlar olabilir:**
+**Katılma düzeyleri şunları içerebilir:**
 
-- **R**esponsible proje planı ve sonuç uygulamak için 
+- Proje planı ve sonucu uygulamak için **R**esponerişilebilir 
 
-- **A**onay proje planı ve sonucu 
+- Proje planının ve sonucunun pproval 'i 
 
-- **C**tkıda bulunan proje planı ve sonucu 
+- **C**ontributor-proje planı ve sonucu 
 
-- **Ben**nformed proje planı ve sonucu
+- Proje planı ve sonucu **oluşturdum**
  
-## <a name="deployment-plans"></a>Dağıtım planı
+## <a name="deployment-plans"></a>Dağıtım planları
 
 
 
 |Senaryo |Açıklama |
 |-|-|
 |[Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)|Azure Multi-Factor Authentication (MFA) Microsoft'un iki adımlı doğrulama çözümüdür. Yönetici onaylı kimlik doğrulama yöntemlerini kullanan Azure MFA, oturum açma sürecini karmaşık hale getirmeden verilerinize ve uygulamalarınıza erişimin güvenli hale getirilmesine yardımcı olur.|
-|[Koşullu erişim](https://aka.ms/deploymentplans/ca)|Koşullu erişimle erişebilecek koşullara göre bulut uygulamalarınız için otomatik erişim denetimi kararları uygulayabilirsiniz.|
-|[Self servis parola sıfırlama](https://aka.ms/SSPRDPDownload)|Self servis parola sıfırlama, kullanıcılarınızın istediği yerden ve istediği zaman yönetici müdahalesi olmadan parolalarını sıfırlamasına yardımcı olur.|
-|[Privileged Identity Management](https://aka.ms/deploymentplans/pim)|Azure AD Privileged Identity Management (PIM) Azure AD genelinde ayrıcalıklı yönetici rollerini yönetmenize yardımcı olan Azure kaynaklarını ve diğer Microsoft Çevrimiçi Hizmetler. PIM tam zamanında erişim isteği onay iş akışları ve tamamen tümleşik erişim incelemeleri belirleyebilmeniz, ortaya çıkarın ve ayrıcalıklı rollerin gerçek zamanlı kötü amaçlı etkinlikleri engellemek gibi çözümler sağlar.|
-|[Çoklu oturum açma](https://aka.ms/SSODPDownload)|Çoklu oturum açma, bir kez oturum açarak ve tek bir kullanıcı hesabı kullanarak işinizi yapmak için gerekli tüm uygulamalara ve kaynaklara erişmenize yardımcı olur. Oturum açtıktan sonra Microsoft Office'ten SalesForce ve Box uygulamalarına yeniden kimlik doğrulamasından (parola yazma gibi) geçmeden erişebilirsiniz.|
+|[Koşullu erişim](https://aka.ms/deploymentplans/ca)|Koşullu erişimle, koşullara göre bulut uygulamalarınıza kimlerin erişebileceği otomatik erişim denetimi kararları uygulayabilirsiniz.|
+|[Self servis parola sıfırlama](https://aka.ms/deploymentplans/sspr)|Self servis parola sıfırlama, kullanıcılarınızın istediği yerden ve istediği zaman yönetici müdahalesi olmadan parolalarını sıfırlamasına yardımcı olur.|
+|[Privileged Identity Management](https://aka.ms/deploymentplans/pim)|Azure AD Privileged Identity Management (PıM), Azure AD, Azure kaynakları ve diğer Microsoft Online Services genelinde ayrıcalıklı yönetim rollerini yönetmenize yardımcı olur. PıM, tam zamanında erişim, onay iş akışları isteme ve tam olarak tümleşik erişim incelemeleri gibi çözümler sağlayarak ayrıcalıklı rollerin kötü amaçlı etkinliklerini belirlemek, açmak ve gerçek zamanlı olarak engellemek için.|
+|[Çoklu oturum açma](https://aka.ms/deploymentplans/sso)|Çoklu oturum açma, bir kez oturum açarak ve tek bir kullanıcı hesabı kullanarak işinizi yapmak için gerekli tüm uygulamalara ve kaynaklara erişmenize yardımcı olur. Oturum açtıktan sonra Microsoft Office'ten SalesForce ve Box uygulamalarına yeniden kimlik doğrulamasından (parola yazma gibi) geçmeden erişebilirsiniz.|
 |[Sorunsuz çoklu oturum açma](https://aka.ms/SeamlessSSODPDownload)|Azure Active Directory Sorunsuz Çoklu Oturum Açma (Azure AD Sorunsuz SSO) özelliği, kurumsal ağınıza bağlı kuruluş cihazlarını kullanan kullanıcıların otomatik olarak oturum açmasını sağlar. Bu özelliği açtığınızda kullanıcılarınızın Azure AD oturumu açmak için parolalarını ve hatta kullanıcı adlarını yazmalarına gerek kalmaz. Bu özellik kullanıcılarınızın şirket içi ek bileşenlere ihtiyaç duymadan bulut tabanlı uygulamalarınıza kolayca erişmesini sağlar.|
 |[Erişim Paneli](https://aka.ms/AccessPanelDPDownload)|Kullanıcılarınızın bulmak ve tüm uygulamalara erişmek için basit bir hub'ı sunar. Yeni uygulamalar ve gruplar için erişim isteme imkanını gibi Self Servis özellikler ile daha üretken olmalarını sağlamak veya diğerleri adına bu kaynaklara erişimi yönetin.|
 |[Parola Karması Eşitleme için ADFS](https://aka.ms/deploymentplans/adfs2phs)|Parola Karması Eşitleme özelliği ile kullanıcı parolalarının karmaları şirket içi Active Directory ile Azure AD arasında eşitlenerek kullanıcıların şirket içi Active Directory ile etkileşim kurmadan kimlik doğrulamasından geçmesi sağlanır.|

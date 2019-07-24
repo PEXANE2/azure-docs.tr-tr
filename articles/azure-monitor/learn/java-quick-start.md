@@ -1,22 +1,22 @@
 ---
 title: Azure Application Insights ile Hızlı Başlangıç | Microsoft Docs
-description: Application Insights ile izleme için bir Java Web uygulaması hızlı bir şekilde ayarlamak için yönergeler sağlar
+description: Application Insights ile izlemek üzere bir Java Web uygulamasını hızlıca ayarlamaya yönelik yönergeler sağlar
 services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
 ms.reviewer: lagayhar
-ms.date: 04/18/2019
+ms.date: 07/15/2019
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: fc47b00bb266bb57ecffbb522667ca67ac7c8c97
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
-ms.translationtype: MT
+ms.openlocfilehash: ef3c7668f1fb462b2d6a91cc90746437e74df51d
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67656736"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67989898"
 ---
 # <a name="start-monitoring-your-java-web-application"></a>Java Web Uygulamanızı İzlemeye Başlama
 
@@ -36,7 +36,7 @@ Bir Java Dynamic Web Projeniz yoksa [Java web uygulaması oluşturma hızlı ba�
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
-Spring framework tercih ediyorsanız [Application Insights Kılavuzu kullanmak için bir Spring Boot Başlatıcı uygulamasını yapılandırma](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights)
+Yay çerçevesini tercih ediyorsanız, [Application Insights Kılavuzu kullanmak için bir yay Önyükleme Başlatıcısı uygulamasını yapılandırma](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights) ' yı deneyin
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
@@ -49,8 +49,6 @@ Application Insights, şirket içinde veya bulutta çalışmasından bağımsız
 1. **Kaynak oluştur** > **Geliştirici araçları** > **Application Insights** seçeneğini belirleyin.
 
    ![Application Insights Kaynağı ekleme](./media/java-quick-start/1createresourseappinsights.png)
-
-   ![Application Insights Kaynağı ekleme](./media/java-quick-start/2createjavaapp.png)
 
    Bir yapılandırma kutusu görünür. Giriş alanlarını doldurmak için aşağıdaki tabloyu kullanın.
 
@@ -84,14 +82,14 @@ Application Insights, şirket içinde veya bulutta çalışmasından bağımsız
 
    ![Eclipse Azure Yapılandırma Menüsü](./media/java-quick-start/0007-j.png)
 
-5. Application Insights eklentisi yapılandırdıktan sonra yapmanız [yayımlama/yeniden yayımlama](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-java#deploy-the-app) uygulamanızı yeniden önce onu telemetri göndermeye başlaması mümkün olacaktır.
+5. Application Insights eklentisi yapılandırıldıktan sonra, telemetri göndermeye başlayabilmeniz için uygulamanızı yeniden yayımlamanız [/yeniden yayımlamanız](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-java#deploy-the-app) gerekir.
 
 > [!NOTE]
 > Java için Application Insights SDK’sı canlı ölçümleri yakalama ve görselleştirme özelliğine sahiptir, ancak telemetri koleksiyonunuzu ilk kez etkinleştirdiğinizde verilerin portalda görünmeye başlaması birkaç dakika sürebilir. Bu uygulama düşük trafikli bir test uygulaması ise, çoğu ölçümün yalnızca etkin istek veya işlem olduğunda yakalandığını aklınızda bulundurun.
 
 ## <a name="start-monitoring-in-the-azure-portal"></a>Azure portalında izlemeyi başlatma
 
-1. Artık Application ınsights'ı yeniden açabilirsiniz **genel bakış** şu anda çalışan uygulamanızın hakkında ayrıntıları görüntülemek için Azure portalında sayfası.
+1. Artık çalışmakta olan uygulamanız hakkındaki ayrıntıları görüntülemek için Azure portal Application Insights **genel bakış** sayfasını yeniden açabilirsiniz.
 
    ![Application Insights’a Genel Bakış Menüsü](./media/java-quick-start/3overview.png)
 
@@ -99,7 +97,7 @@ Application Insights, şirket içinde veya bulutta çalışmasından bağımsız
 
    ![Uygulama Eşlemesi](./media/java-quick-start/4appmap.png)
 
-3.  Tıklayarak **uygulama analizi** simgesi ![Uygulama Haritası simgesi](./media/java-quick-start/006.png) **analytics'te görüntüle**.  Bu işlem, Application Insights tarafından toplanan tüm verileri analiz etmeye yönelik zengin bir sorgu dili sağlayan **Application Insights Analizi**’ni açar. Bu örnekte, istek sayısını grafik olarak işleyen bir sorgu oluşturulur. Diğer verileri çözümlemek için kendi sorgularınızı yazabilirsiniz.
+3.  **Analytics 'teki**uygulama **Analizi** simgesi ![uygulama Haritası simge](./media/java-quick-start/006.png) görünümü ' ne tıklayın.  Bu işlem, Application Insights tarafından toplanan tüm verileri analiz etmeye yönelik zengin bir sorgu dili sağlayan **Application Insights Analizi**’ni açar. Bu örnekte, istek sayısını grafik olarak işleyen bir sorgu oluşturulur. Diğer verileri çözümlemek için kendi sorgularınızı yazabilirsiniz.
 
    ![Belirli bir süre içindeki kullanıcı isteklerinin analiz grafiği](./media/java-quick-start/5analytics.png)
 
@@ -137,7 +135,7 @@ Java izleme hakkında daha fazla bilgi için [ek App Insights Java belgelerine](
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-İşiniz bittiğinde test, kaynak grubunu silebilirsiniz ve tüm ilgili kaynakları. İçin aşağıdaki adımları izleyin.
+Testi tamamladığınızda, kaynak grubunu ve tüm ilgili kaynakları silebilirsiniz. Bunu yapmak için aşağıdaki adımları izleyin.
 
 1. Azure portalında sol taraftaki menüden, **Kaynak grupları**’na tıklayın ve ardından **myResourceGroup**’a tıklayın.
 2. Kaynak grubu sayfanızda, **Sil**’e tıklayın, metin kutusuna **myResourceGroup** yazın ve ardından **Sil**’e tıklayın.
