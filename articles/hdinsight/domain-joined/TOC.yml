@@ -32,8 +32,14 @@
       href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
     - name: Ağ erişimi
       items:
-        - name: Azure VNet’te HDInsight
-          href: ../hdinsight-extend-hadoop-virtual-network.md
+        - name: HDInsight sanal ağ mimarisi
+          href: ../hdinsight-virtual-network-architecture.md
+        - name: HDInsight için sanal ağ planlama
+          href: ../hdinsight-plan-virtual-network-deployment.md
+        - name: HDInsight için sanal ağ oluşturma
+          href: ../hdinsight-create-virtual-network.md
+        - name: NSG ve UDR’ler için gereken IP adresleri
+          href: ../hdinsight-management-ip-addresses.md
         - name: HDInsight’a şirket içi ağınızla bağlanma
           href: ../connect-on-premises-network.md
         - name: Azure VNet’te Apache HBase kümesi oluşturma

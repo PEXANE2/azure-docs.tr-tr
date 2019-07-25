@@ -193,6 +193,18 @@
                   href: scenario-mobile-overview.md
                 - name: Uygulama kaydı
                   href: scenario-mobile-app-registration.md
+                - name: Kod yapılandırması
+                  href: scenario-mobile-app-configuration.md
+                - name: Mobil platformlara özgü yapılandırma
+                  items:
+                    - name: Xamarin Android
+                      href: msal-net-xamarin-android-considerations.md
+                    - name: Android üzerinde sistem tarayıcısı
+                      href: msal-net-system-browser-android-considerations.md
+                    - name: Xamarin iOS
+                      href: msal-net-xamarin-ios-considerations.md
+                    - name: Evrensel Windows Platformu
+                      href: msal-net-uwp-considerations.md
                 - name: Uygulama için belirteç alma
                   href: scenario-mobile-acquire-token.md
                 - name: Web API'sini çağırma
@@ -255,14 +267,6 @@
                   items:
                     - name: Web tarayıcıları
                       href: msal-net-web-browsers.md
-                    - name: Xamarin Android
-                      href: msal-net-xamarin-android-considerations.md
-                    - name: Android üzerinde sistem tarayıcısı
-                      href: msal-net-system-browser-android-considerations.md
-                    - name: Xamarin iOS
-                      href: msal-net-xamarin-ios-considerations.md
-                    - name: Evrensel Windows Platformu
-                      href: msal-net-uwp-considerations.md
                 - name: MSAL.js
                   items:
                     - name: IE kullanmaya ilişkin dikkat edilmesi gerekenler

@@ -100,6 +100,8 @@
               href: backup-mabs-unattended-install.md
         - name: İş yüklerini koruma
           items:
+            - name: Hyper-V sanal makinelerini yedekleme
+              href: back-up-hyper-v-virtual-machines-mabs.md
             - name: VMware sunucusu
               href: backup-azure-backup-server-vmware.md
             - name: Exchange

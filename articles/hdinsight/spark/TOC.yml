@@ -356,7 +356,7 @@
     - name: Kurumsal güvenlik
       items:
         - name: Genel Bakış
-          href: ../domain-joined/apache-domain-joined-introduction.md
+          href: ../domain-joined/hdinsight-security-overview.md
         - name: Kurumsal güvenliğe yönelik plan
           href: ../domain-joined/apache-domain-joined-architecture.md
         - name: HDInsight’ta kurumsal güvenliği yapılandırma
@@ -373,10 +373,14 @@
       items:
         - name: HDInsight sanal ağ mimarisi
           href: ../hdinsight-virtual-network-architecture.md
+        - name: HDInsight için sanal ağ planlama
+          href: ../hdinsight-plan-virtual-network-deployment.md
+        - name: HDInsight için sanal ağ oluşturma
+          href: ../hdinsight-create-virtual-network.md
+        - name: NSG ve UDR’ler için gereken IP adresleri
+          href: ../hdinsight-management-ip-addresses.md
         - name: Giden trafiği kısıtlamak için güvenlik duvarı kullanma
           href: ../hdinsight-restrict-outbound-traffic.md
-        - name: Azure VNet’te HDInsight
-          href: ../hdinsight-extend-hadoop-virtual-network.md
         - name: HDInsight’a şirket içi ağınızla bağlanma
           href: ../connect-on-premises-network.md
     - name: Azure İzleyici günlüklerini kullanarak izleme
