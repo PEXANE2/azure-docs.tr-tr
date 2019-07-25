@@ -126,7 +126,7 @@ Verileri Amazon Redshift'ten kopyalamak için kopyalama etkinliği kaynak türü
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | type | Kopyalama etkinliği kaynağı öğesinin type özelliği ayarlanmalıdır: **AmazonRedshiftSource** | Evet |
-| sorgu |Verileri okumak için özel sorgu kullanın. Örneğin: seçin * MyTable öğesinden. |Yok (veri kümesinde "TableName" değeri belirtilmişse) |
+| query |Verileri okumak için özel sorgu kullanın. Örneğin: seçin * MyTable öğesinden. |Yok (veri kümesinde "TableName" değeri belirtilmişse) |
 | redshiftUnloadSettings | Amazon Redshift kaldırma kullanırken özellik grubu. | Hayır |
 | s3LinkedServiceName | Bir Amazon S3 How-to-edilecek bir geçiş deposu olarak kullanılan "AmazonS3" türündeki bağlı hizmetin adı belirterek başvuruyor. | UNLOAD kullanıyorsanız Evet |
 | bucketName | Geçici verileri depolamak için S3 demetini gösterir. Sağlanmazsa, Data Factory hizmeti, otomatik olarak oluşturur.  | UNLOAD kullanıyorsanız Evet |
