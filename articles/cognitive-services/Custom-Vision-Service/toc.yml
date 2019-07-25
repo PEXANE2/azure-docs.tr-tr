@@ -6,6 +6,12 @@
       href: home.md
 - name: Hızlı Başlangıçlar
   items:
+    - name: Web portalını kullanma
+      items:
+        - name: Sınıflandırıcı oluşturma
+          href: getting-started-build-a-classifier.md
+        - name: Nesne algılayıcısı oluşturma
+          href: get-started-build-detector.md
     - name: .NET SDK’sini kullanma
       items:
         - name: Resimleri sınıflandırma
@@ -42,8 +48,6 @@
       href: logo-detector-mobile.md
 - name: Nasıl yapılır kılavuzları
   items:
-    - name: Sınıflandırıcı oluşturma
-      href: getting-started-build-a-classifier.md
     - name: Modelinizi test etme
       href: test-your-model.md
     - name: Sınıflandırıcınızı geliştirme

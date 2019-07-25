@@ -13,6 +13,10 @@
   items:
     - name: Tam Ekran Okuyucu’yu Başlatma (Node.js)
       href: tutorial.md
+- name: Nasıl Yapılır
+  items:
+    - name: Azure Active Directory kimlik doğrulaması
+      href: azure-active-directory-authentication.md
 - name: Başvuru
   items:
     - name: SDK Başvurusu

@@ -398,6 +398,8 @@
               items:
                 - name: Erişim denetimi
                   href: app/resources-roles-access-control.md
+                - name: IP adresi koleksiyonu
+                  href: app/ip-collection.md
                 - name: Örnekleme
                   displayname: 'adaptive sampling, fixed rate sample, fixed sampling, ingestion sampling'
                   href: app/sampling.md

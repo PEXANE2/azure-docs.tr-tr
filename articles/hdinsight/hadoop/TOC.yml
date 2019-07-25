@@ -397,7 +397,7 @@
     - name: Kurumsal güvenlik
       items:
         - name: Genel Bakış
-          href: ../domain-joined/apache-domain-joined-introduction.md
+          href: ../domain-joined/hdinsight-security-overview.md
           maintainContext: true
         - name: Kurumsal güvenliğe yönelik plan
           href: ../domain-joined/apache-domain-joined-architecture.md

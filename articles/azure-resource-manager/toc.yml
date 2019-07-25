@@ -63,18 +63,18 @@
       href: template-best-practices.md
     - name: Bulut tutarlılığına yönelik şablonlar
       href: templates-cloud-consistency.md
-    - name: Kaynak sağlayıcıları ve türleri
-      href: resource-manager-supported-services.md
-    - name: Dağıtım Yöneticisi
-      displayName: adm
-      href: deployment-manager-overview.md
-    - name: Dağıtım Yöneticisi sistem durumu denetimi
-      displayName: adm
-      href: deployment-manager-health-check.md
     - name: Dağıtım modları
       href: deployment-modes.md
     - name: Kaynak silme
       href: resource-group-delete.md
+    - name: Dağıtım Yöneticisi
+      items:
+        - name: Genel Bakış
+          displayName: 'adm, deployment manager'
+          href: deployment-manager-overview.md
+        - name: Sistem durumu denetimi
+          displayName: 'adm, deployment manager'
+          href: deployment-manager-health-check.md
     - name: Resource Manager ve klasik dağıtım
       href: resource-manager-deployment-model.md
     - name: Azure ortak güvenlik öznitelikleri
@@ -228,6 +228,8 @@
           href: resource-manager-sku-not-available-errors.md
         - name: Windows dağıtım sorunları
           href: ../virtual-machines/windows/troubleshoot-deploy-vm.md
+    - name: Kaynak sağlayıcıları ve türleri
+      href: resource-manager-supported-services.md
     - name: İstekleri azaltma
       href: resource-manager-request-limits.md
     - name: Zaman uyumsuz işlemleri izleme

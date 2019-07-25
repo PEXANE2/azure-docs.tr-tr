@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 4605fd0296af6ac3c0d37c52c93d8a4a0903232b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 38181a4ccd5b651bc3268cff1fa998aa9ac2e6d2
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165212"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444536"
 ---
 # <a name="azure-vmware-solution-by-cloudsimple"></a>CloudSimple tarafından sunulan Azure VMware Çözümü
 
@@ -23,3 +23,14 @@ CloudSimple tarafından sunulan Azure VMware Çözümüne hoş geldiniz. CloudSi
 - CloudSimple özel bulut çözümü hakkında daha fazla bilgi edinmek için [CloudSimple özel bulutuna genel bakış](cloudsimple-private-cloud.md)’ı seçin.
 - CloudSimple düğümleri hakkında daha fazla bilgi edinmek için [Düğümler](cloudsimple-node.md)’i seçin.
 - CloudSimple tarafından sunulan Azure VMware Çözümlerini kullanmaya başlamak için [Başlatma ve sağlama kapasitesi](quickstart-create-cloudsimple-service.md)’ni seçin.
+
+| Kavramların özeti     | Kaynak                    | Amaç                                                                       | Yönetim         |
+|--------------------------|-----------------------------|-------------------------------------------------------------------------------|--------------------|
+| **Hizmet Oluşturma**     | CloudSimple Hizmeti         | CloudSimple Hizmeti Edge Ağını Yapılandırma                                    | Azure portal       |
+|                          | CloudSimple Düğümü            | CloudSimple hizmetinde kullanılacak kapasiteyi sağlama                          | Azure portal       |
+| **Hizmet Tüketimi**  | Özel Bulut               | VMware ortamları oluşturma                                                    | CloudSimple portalı |
+|                          | VLAN/Alt Ağ                 | VMware tüketimi için düşük düzenleme ağları oluşturma                               | CloudSimple portalı |
+|                          | Güvenlik Duvarı Tablosu              | Düşük düzenleme ağlarında kuzey/güney ve doğu/batı güvenlik kurallarını yapılandırma | CloudSimple portalı |
+|                          | Genel IP adresi           | VMware iş yükleri için genel yönlü adresler alma                           | CloudSimple portalı |
+|                          | Azure Bağlantısı            | Azure'da şirket içi veya Sanal Ağlarla bağlantı kurma         | CloudSimple portalı |
+| **Birleşik Yönetim**   | CloudSimple Sanal Makinesi | Azure portalında VMware Sanal Makinelerini yönetme                                | Azure portal       |

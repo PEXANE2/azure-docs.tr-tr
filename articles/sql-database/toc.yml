@@ -19,7 +19,7 @@
       href: sql-database-managed-instance-quickstart-guide.md
     - name: Oluştur
       items:
-        - name: Tek veritabanı - portal
+        - name: Tek veritabanı
           href: sql-database-single-database-get-started.md
         - name: Tek veritabanı - şablon
           displayName: 'Azure Resource Manager template, ARM'
@@ -87,14 +87,22 @@
           href: sql-database-design-first-database.md
         - name: .NET kullanarak veritabanı tasarlama
           href: sql-database-design-first-database-csharp.md
-    - name: Tekil Veritabanı
+    - name: Tek Veritabanı
       items:
         - name: DMS kullanarak tek/havuza alınan veritabanına geçiş
           href: ../dms/tutorial-sql-server-to-azure-sql.md?toc=/azure/sql-database/toc.json
+        - name: Yük devretme grubuna ekleme
+          href: sql-database-single-database-failover-group-tutorial.md
         - name: Coğrafi olarak dağıtılmış bir veritabanı uygulama
           href: sql-database-implement-geo-distributed-database.md
+        - name: Etkin coğrafi çoğaltmayı yapılandırma
+          href: sql-database-active-geo-replication-portal.md
         - name: Azure SQL Data Sync’i ayarlama
           href: sql-database-get-started-sql-data-sync.md
+    - name: Elastik havuz
+      items:
+        - name: Yük devretme grubuna ekleme
+          href: sql-database-elastic-pool-failover-group-tutorial.md
     - name: Yönetilen Örnek
       items:
         - name: DMS kullanarak çevrimiçi geçiş
@@ -245,8 +253,6 @@
               href: sql-database-active-geo-replication.md
             - name: Otomatik yük devretme grupları
               href: sql-database-auto-failover-group.md
-            - name: Etkin coğrafi çoğaltmayı yapılandırma - Portal
-              href: sql-database-active-geo-replication-portal.md
             - name: Çoğaltmalar için güvenliği yapılandırma
               href: sql-database-geo-replication-security-config.md
         - name: Veritabanı kurtarma seçenekleri
@@ -516,6 +522,8 @@
           href: sql-database-managed-instance-connect-app.md
     - name: Verileri yükleme ve taşıma
       items:
+        - name: Kaynağı yeni bir bölgeye taşıma
+          href: sql-database-move-resources-across-regions.md
         - name: Azure’da bir veritabanını kopyalama
           href: sql-database-copy.md
         - name: BACPAC dosyasından veritabanını içeri aktarma

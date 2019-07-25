@@ -7,18 +7,19 @@ author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.author: nitinme
-ms.date: 06/20/2019
+ms.date: 07/22/2019
 ms.topic: hub-page
-ms.openlocfilehash: 1e78c31c19bdbc8ea223c504a53f1df73caa5d44
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: ad403b58a0f6aad37e9d8d547d269b9f45566559
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295397"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442831"
 ---
 <div id="main" class="v2">
 <h1>Azure Bilişsel Hizmetler Belgeleri</h1>
         <p style="font-size: 1.12rem;margin-bottom: 1rem;">Uygulamalarınıza, web sitelerinize ve botlarınıza, kullanıcılarınızın ihtiyaçlarını görmek, duymak, dile getirmek ve anlamak için doğal iletişim yöntemlerinden yararlanan akıllı algoritmalar oluşturmayı öğrenin. Öğreticiler, hızlı başlangıçlar, API başvuruları ve örnekler size bunu nasıl yapacağınızı gösterir.</p>
+        <p> Her hizmetin, tam olarak eğitilen bir modelden tamamen özelleştirilebilir bir modele kadar değişen kendi <a href="/azure/cognitive-services/language-support">dil desteği</a> ve <a href="/azure/cognitive-services/cognitive-services-and-machine-learning#service-requirements-for-the-data-model">veri modeli gereksinimleri</a> vardır. 
 
 
 <h2>Bilişsel Hizmetler API’leri</h2>
@@ -123,6 +124,25 @@ ms.locfileid: "67295397"
                             <div class="cardText">
                                 <h3>Bilişsel Hizmetler nedir?</h3>
                                 <p>Azure Bilişsel Hizmetler hakkında bilgi edinin ve akıllı uygulamalar derlemek için farklı API'leri kullanmayı öğrenin.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="/azure/cognitive-services/cognitive-services-and-machine-learning/">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="media/index/i_get-started.svg" alt="" />
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>Bilişsel Hizmetler ve makine öğrenmesi</h3>
+                                <p>Azure Bilişsel Hizmetler’in, makine öğrenmesine yönelik diğer Azure teklifleriyle birlikte nasıl çalıştığını öğrenin.</p>
                             </div>
                         </div>
                     </div>
