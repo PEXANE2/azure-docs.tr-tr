@@ -5,6 +5,8 @@
   items:
     - name: Bilişsel Hizmetler nedir?
       href: Welcome.md
+    - name: Bilişsel Hizmetler’e yönelik özel alt etki alanları
+      href: cognitive-services-custom-subdomains.md
     - name: Bilişsel Hizmetler ve Makine öğrenmesi
       href: cognitive-services-and-machine-learning.md
     - name: Dil desteği
