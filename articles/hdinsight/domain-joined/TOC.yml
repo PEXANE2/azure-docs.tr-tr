@@ -2,8 +2,8 @@
   href: /azure/hdinsight
 - name: Genel Bakış
   items:
-    - name: HDInsight'ta Kurumsal Güvenlik Paketi nedir?
-      href: apache-domain-joined-introduction.md
+    - name: HDInsight’ta kurumsal güvenlik nedir?
+      href: hdinsight-security-overview.md
 - name: Öğreticiler
   items:
     - name: Apache Ranger ile Apache HBase RBAC

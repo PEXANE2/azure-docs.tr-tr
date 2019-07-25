@@ -41,6 +41,9 @@
     - name: Kaynak değişikliklerini alma
       displayName: 'resource, change, history, snapshot, details'
       href: ./how-to/get-resource-changes.md
+- name: Sorun giderme
+  displayName: 'errors, violation'
+  href: ./troubleshoot/general.md
 - name: Başvuru
   items:
     - name: Azure CLI
