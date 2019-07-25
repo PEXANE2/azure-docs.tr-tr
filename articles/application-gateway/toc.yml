@@ -122,10 +122,12 @@
               href: application-gateway-end-to-end-ssl-powershell.md
         - name: Sertifikaları yönetme
           items:
-            - name: Güvenilenler listesine ekleme arka ucu için sertifikalar oluşturma
+            - name: Arka uca yönelik sertifikalar
               href: certificates-for-backend-authentication.md
             - name: Sertifikaları yenileme
               href: renew-certificates.md
+            - name: Otomatik olarak imzalanan sertifikalar oluşturma
+              href: self-signed-certificates.md
         - name: SSL ilkesi
           items:
             - name: SSL ilkesi yapılandırma

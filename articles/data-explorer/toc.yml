@@ -98,8 +98,6 @@
           href: sisense.md
     - name: Yönetme
       items:
-        - name: Veritabanı izinlerini yönetme
-          href: manage-database-permissions.md
         - name: Küme durumunu denetleme
           href: check-cluster-health.md
         - name: Küme VM SKU’su seçme
@@ -108,6 +106,10 @@
           href: manage-cluster-horizontal-scaling.md
         - name: Kümelerin dikey ölçeklemesini yönetme
           href: manage-cluster-vertical-scaling.md
+        - name: Küme güvenliğini yönetme
+          href: manage-cluster-security.md
+        - name: Veritabanı izinlerini yönetme
+          href: manage-database-permissions.md
         - name: Verileri silme
           href: delete-data.md
         - name: Yinelenen verilerle ilgilenme

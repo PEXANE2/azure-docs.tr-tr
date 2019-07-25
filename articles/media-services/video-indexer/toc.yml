@@ -21,6 +21,8 @@
       href: compare-video-indexer-with-media-services-presets.md
     - name: Birden çok kiracıyı yönetme
       href: manage-multiple-tenants.md
+    - name: Dil tanımlama modeli
+      href: language-identification-model.md
     - name: İçerik modellerini özelleştirme
       items:
         - name: Genel Bakış

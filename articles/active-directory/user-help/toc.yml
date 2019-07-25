@@ -74,6 +74,8 @@
           href: security-info-setup-text-msg.md
         - name: Telefon konuşmalarını ayarlama
           href: security-info-setup-phone-number.md
+        - name: Güvenlik anahtarı ayarlama
+          href: security-info-setup-security-key.md
         - name: E-postayı ayarlama
           href: security-info-setup-email.md
         - name: Güvenlik sorularını ayarlama
