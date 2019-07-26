@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: fe0af4ca7b6860fff19f4df3165a975c42b54a03
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: d4daa7ae9c7e58c1949dfbe4427a154c389100d4
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277770"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348382"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Azure Service Fabric için kapasite planlama ve ölçeklendirme
 
@@ -92,7 +92,7 @@ Yatay ölçeklendirmeyi [el ile](https://docs.microsoft.com/azure/service-fabric
 
 Belirli bir sanal makine ölçek kümesinin örnek sayısını artırarak bir Service Fabric kümesini ölçeklendirin. Kapasiteyi artırmak için, kullanarak ve istenen `AzureClient` ölçek kümesinin kimliğini kullanarak programlama yoluyla ölçeklendirebilirsiniz.
 
-```c#
+```csharp
 var scaleSet = AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId);
 var newCapacity = (int)Math.Min(MaximumNodeCount, scaleSet.Capacity + 1);
 scaleSet.Update().WithCapacity(newCapacity).Apply(); 
@@ -134,7 +134,7 @@ El ile ölçeklendirmek için, istenen [sanal makine ölçek kümesi](https://do
 
 Programlı olarak ölçeklendirmek için düğümü kapanmaya hazırlamanız gerekir. Kaldırılacak düğümü (en yüksek örnekli düğüm) bulun. Örneğin:
 
-```c#
+```csharp
 using (var client = new FabricClient())
 {
     var mostRecentLiveNode = (await client.QueryManager.GetNodeListAsync())
@@ -151,7 +151,7 @@ using (var client = new FabricClient())
 
 Önceki kodda kullandığınız aynı `FabricClient` örneği (`client` bu durumda) ve düğüm örneğini (`instanceIdString` Bu örnekte) kullanarak düğümü devre dışı bırakın ve kaldırın:
 
-```c#
+```csharp
 var scaleSet = AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId);
 
 // Remove the node from the Service Fabric cluster

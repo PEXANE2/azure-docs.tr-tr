@@ -1,82 +1,81 @@
 ---
-title: Azure Backup izleme uyarı ile ilgili SSS
-description: 'Hakkında sık sorulan sorulara yanıtlar: Azure Backup izleme Uyarısı'
-services: backup
+title: Azure Backup Izleme uyarısı SSS
+description: 'Hakkında sık sorulan soruların yanıtları: Azure Backup Izleme uyarısı'
 author: srinathvasireddy
 manager: sivan
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: srinathv
-ms.openlocfilehash: bb684f65539b4429862b2dce0e378d8f659d2975
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: dc68b68ffa0ae2ee4f1bdd8f2c7ac0d7ff5ebb8c
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705039"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68465850"
 ---
-# <a name="azure-backup-monitoring-alert---faq"></a>Azure Backup izleme uyarısı - SSS
-Bu makalede, Azure izleme uyarı hakkında sık sorulan sorular yanıtlanmaktadır.
+# <a name="azure-backup-monitoring-alert---faq"></a>Azure Backup Izleme uyarısı-SSS
+Bu makalede, Azure izleme uyarısıyla ilgili sık sorulan sorular yanıtlanmaktadır.
 
 ## <a name="configure-azure-backup-reports"></a>Azure Backup raporlarını yapılandırma
 
-### <a name="how-do-i-check-if-reporting-data-has-started-flowing-into-a-storage-account"></a>Raporlama verileri bir depolama hesabına akar başlatılmış olup olmadığını nasıl denetlerim?
-Yapılandırdığınız depolama hesabına gidin ve kapsayıcılar'ı seçin. Kapsayıcı öngörüleri günlükleri azurebackupreport için bir girdi varsa, veri raporlama akan başlatıldığını gösterir.
+### <a name="how-do-i-check-if-reporting-data-has-started-flowing-into-a-storage-account"></a>Nasıl yaparım? raporlama verilerinin bir depolama hesabında akışa başlayıp başlamadığına bakın.
+Yapılandırdığınız depolama hesabına gidin ve kapsayıcılar ' ı seçin. Kapsayıcıda Öngörüler-logs-azurebackupreport girişi varsa, raporlama verilerinin ' de akışa başlatıldığını belirtir.
 
-### <a name="what-is-the-frequency-of-data-push-to-a-storage-account-and-the-azure-backup-content-pack-in-power-bi"></a>Bir depolama hesabı ve Azure Backup içerik Paketi'ne Power bı'daki veri gönderme sıklığı nedir?
-  0\. gün kullanıcılar için bunu bir depolama hesabına veri göndermeye ilişkin yaklaşık 24 saat sürer. Bu ilk gönderme tamamlandıktan sonra verileri aşağıdaki şekilde gösterilen sıklıkta yenilenir.
+### <a name="what-is-the-frequency-of-data-push-to-a-storage-account-and-the-azure-backup-content-pack-in-power-bi"></a>Bir depolama hesabına veri gönderme sıklığı ve Power BI Azure Backup içerik paketi nedir?
+  Gün 0 kullanıcıları için, bir depolama hesabına veri göndermek yaklaşık 24 saat sürer. Bu ilk gönderme işlemi tamamlandıktan sonra, veriler aşağıdaki şekilde gösterilen sıklığa göre yenilenir.
 
-  * İlgili verileri **işleri**, **uyarılar**, **yedekleme öğeleri**, **kasaları**, **korumalı sunucuların**ve  **İlkeleri** gibi ve günlüğe bir müşterinin depolama hesabına gönderilir.
+  * **İşlerle**, **uyarılarla**, **yedekleme öğeleriyle**, kasaların,  **korumalı sunucularla**ve **ilkelerden** ilgili veriler, bir müşteri depolama hesabına ve ne zaman günlüğe kaydedilir.
 
-  * İlgili verileri **depolama** 24 saatte bir müşterinin depolama hesabına gönderilir.
+  * **Depolama** ile ilgili veriler her 24 saatte bir müşteri depolama hesabına gönderilir.
 
-       ![Azure Backup raporları veri gönderme sıklığı](./media/backup-azure-configure-reports/reports-data-refresh-cycle.png)
+       ![Azure Backup rapor verileri gönderim sıklığı](./media/backup-azure-configure-reports/reports-data-refresh-cycle.png)
 
-  * Power bı'da bir [zamanlanmış yenileme günde bir kez](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/#what-can-be-refreshed). Power BI'da İçerik Paketi için verileri el ile yenileme gerçekleştirebilirsiniz.
+  * Power BI [günde bir kez zamanlanmış yenileme](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/#what-can-be-refreshed)içerir. İçerik paketi için Power BI verileri el ile yenilemeyi gerçekleştirebilirsiniz.
 
-### <a name="how-long-can-i-retain-reports"></a>Raporlar ne kadar süreyle tutabilir miyim?
-Bir depolama hesabı yapılandırmak, depolama hesabında bir rapor verileri saklama süresini seçebilirsiniz. İzleme adımı 6 [raporlar için depolama hesabı yapılandırma](backup-azure-configure-reports.md#configure-storage-account-for-reports) bölümü. Ayrıca [raporları Excel'de Çözümle](https://powerbi.microsoft.com/documentation/powerbi-service-analyze-in-excel/) ve bunları ihtiyaçlarınıza göre daha uzun bir bekletme dönemi için kaydedin.
+### <a name="how-long-can-i-retain-reports"></a>Raporları ne kadar süreyle tutabilir?
+Bir depolama hesabı yapılandırdığınızda, depolama hesabındaki rapor verileri için bir saklama süresi seçebilirsiniz. [Raporlar için depolama hesabını yapılandırma](backup-azure-configure-reports.md#configure-storage-account-for-reports) bölümünde 6. adımı izleyin. Ayrıca, [raporları Excel 'de çözümleyebilir](https://powerbi.microsoft.com/documentation/powerbi-service-analyze-in-excel/) ve gereksinimlerinize göre daha uzun bir saklama süresi için kaydedebilirsiniz.
 
-### <a name="will-i-see-all-my-data-in-reports-after-i-configure-the-storage-account"></a>Raporlardaki tüm Verilerimin, depolama hesabı yapılandırabilirim sonra görür müyüm?
- Bir depolama hesabı yapılandırdıktan sonra oluşturulan tüm veriler depolama hesabına gönderilir ve raporlarında kullanılabilir. Raporlama için devam eden işleri gönderilmez. İşin tamamlanana veya başarısız olduktan sonra Bu raporlar için gönderilir.
+### <a name="will-i-see-all-my-data-in-reports-after-i-configure-the-storage-account"></a>Depolama hesabını yapılandırdıktan sonra raporlardaki tüm verilerimi görüyorum mi?
+ Bir depolama hesabını yapılandırdıktan sonra oluşturulan tüm veriler depolama hesabına gönderilir ve raporlarda kullanılabilir. Devam eden işler raporlama için itilmedi. İş bittikten veya başarısız olduktan sonra raporlara gönderilir.
 
-### <a name="if-i-already-configured-the-storage-account-to-view-reports-can-i-change-the-configuration-to-use-another-storage-account"></a>Depolama hesabı, raporları görüntülemek için yapılandırılmış, başka bir depolama hesabı kullanmak üzere yapılandırma değiştirebilirim?
-Evet, farklı bir depolama hesabına işaret edecek şekilde yapılandırmasını değiştirebilirsiniz. Azure Backup içerik Paketi'ne bağlanmak yeni yapılandırılan depolama hesabı kullanın. Ayrıca, farklı bir depolama hesabı yapılandırdıktan sonra yeni veriler bu depolama hesabına akar. (Yapılandırmayı değiştirmemeden önce) daha eski verilere hala eski depolama hesabında kalır.
+### <a name="if-i-already-configured-the-storage-account-to-view-reports-can-i-change-the-configuration-to-use-another-storage-account"></a>Raporları görüntülemek için depolama hesabını zaten yapılandırdım, yapılandırmayı başka bir depolama hesabı kullanacak şekilde değiştirebilir miyim?
+Evet, yapılandırmayı farklı bir depolama hesabına işaret etmek üzere değiştirebilirsiniz. Azure Backup içerik paketine bağlanırken yeni yapılandırılan depolama hesabını kullanın. Ayrıca, farklı bir depolama hesabı yapılandırıldıktan sonra, bu depolama hesabındaki yeni veriler akar. Eski veriler (yapılandırmayı değiştirmeden önce) hala eski depolama hesabında kalmaya devam eder.
 
-### <a name="can-i-view-reports-across-vaults-and-subscriptions"></a>Raporları kasaları ve Aboneliklerde görüntüleyebilir miyim?
-Evet, kasa arası raporları görüntülemek için çeşitli kasaları aynı depolama hesabı yapılandırabilirsiniz. Ayrıca, abonelikler arasında kasaları için aynı depolama hesabı yapılandırabilirsiniz. Power bı'da raporları görüntülemek için Azure Backup içerik Paketi'ne bağlanırken, bu depolama hesabı kullanabilirsiniz. Seçilen depolama hesabına kurtarma Hizmetleri kasasıyla aynı bölgede olması gerekir.
+### <a name="can-i-view-reports-across-vaults-and-subscriptions"></a>Raporları kasaların ve aboneliklerde görüntüleyebilir miyim?
+Evet, farklı kasaların genelinde aynı depolama hesabını yapılandırarak çapraz kasa raporlarını görüntüleyebilirsiniz. Ayrıca, abonelikler genelinde aynı depolama hesabını da yapılandırabilirsiniz. Daha sonra, raporları görüntülemek için Power BI Azure Backup içerik paketine bağlanırken bu depolama hesabını kullanabilirsiniz. Seçilen depolama hesabı, kurtarma hizmetleri kasasıyla aynı bölgede olmalıdır.
 
-### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Azure Yedekleme aracısı iş durumu Portalı'nda yansıtacak şekilde ne kadar sürüyor?
-Azure portalı, Azure Yedekleme aracısı iş durumunu yansıtacak şekilde 15 dakika kadar sürebilir.
+### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Azure Backup Aracısı iş durumunun portalda yansıtılması ne kadar sürer?
+Azure portal, Azure Backup Aracısı iş durumunun yansıtılması 15 dakika kadar sürebilir.
 
-### <a name="when-a-backup-job-fails-how-long-does-it-take-to-raise-an-alert"></a>Bir yedekleme işi başarısız olduğunda ne kadar uyarı sürer?
-Azure yedekleme hata 20 dakika içinde bir uyarı oluşturulur.
+### <a name="when-a-backup-job-fails-how-long-does-it-take-to-raise-an-alert"></a>Bir yedekleme işi başarısız olduğunda, bir uyarının ne kadar süreceğine?
+Azure Backup hatasının 20 dakika içinde bir uyarı oluşturulur.
 
-### <a name="is-there-a-case-where-an-email-wont-be-sent-if-notifications-are-configured"></a>Bildirimler yapılandırıldıysa bir e-posta burada gönderilmez bir servis talebi var mı?
-Evet. Aşağıdaki durumlarda bildirimleri gönderilmez.
+### <a name="is-there-a-case-where-an-email-wont-be-sent-if-notifications-are-configured"></a>Bildirimler yapılandırılırsa bir e-postanın gönderilmeyeceği bir durum var mı?
+Evet. Aşağıdaki durumlarda bildirimler gönderilmez.
 
-* Bildirimleri saatlik yapılandırıldıysa ve bir uyarı oluşturulur ve aynı saat içinde çözülen
-* Ne zaman bir işi iptal edildi
-* İlk yedekleme işi devam ettiğinden, ikinci bir yedekleme işi başarısız olursa
+* Bildirimler saatlik olarak yapılandırılırsa ve saat içinde bir uyarı oluşturulur ve çözülür
+* Bir iş iptal edildiğinde
+* İlk yedekleme işi devam ettiğinden ikinci bir yedekleme işi başarısız olursa
 
-## <a name="recovery-services-vault"></a>Kurtarma Hizmetleri kasası
+## <a name="recovery-services-vault"></a>Kurtarma Hizmetleri Kasası
 
-### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Azure Yedekleme aracısı iş durumu Portalı'nda yansıtacak şekilde ne kadar sürüyor?
-Azure portalı, Azure Yedekleme aracısı iş durumunu yansıtacak şekilde 15 dakika kadar sürebilir.
+### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Azure Backup Aracısı iş durumunun portalda yansıtılması ne kadar sürer?
+Azure portal, Azure Backup Aracısı iş durumunun yansıtılması 15 dakika kadar sürebilir.
 
-### <a name="when-a-backup-job-fails-how-long-does-it-take-to-raise-an-alert"></a>Bir yedekleme işi başarısız olduğunda ne kadar uyarı sürer?
-Azure yedekleme hata 20 dakika içinde bir uyarı oluşturulur.
+### <a name="when-a-backup-job-fails-how-long-does-it-take-to-raise-an-alert"></a>Bir yedekleme işi başarısız olduğunda, bir uyarının ne kadar süreceğine?
+Azure Backup hatasının 20 dakika içinde bir uyarı oluşturulur.
 
-### <a name="is-there-a-case-where-an-email-wont-be-sent-if-notifications-are-configured"></a>Bildirimler yapılandırıldıysa bir e-posta burada gönderilmez bir servis talebi var mı?
-Evet. Aşağıdaki durumlarda bildirimleri gönderilmez.
+### <a name="is-there-a-case-where-an-email-wont-be-sent-if-notifications-are-configured"></a>Bildirimler yapılandırılırsa bir e-postanın gönderilmeyeceği bir durum var mı?
+Evet. Aşağıdaki durumlarda bildirimler gönderilmez.
 
-* Bildirimleri saatlik yapılandırıldıysa ve bir uyarı oluşturulur ve aynı saat içinde çözülen
-* Ne zaman bir işi iptal edildi
-* İlk yedekleme işi devam ettiğinden, ikinci bir yedekleme işi başarısız olursa
+* Bildirimler saatlik olarak yapılandırılırsa ve saat içinde bir uyarı oluşturulur ve çözülür
+* Bir iş iptal edildiğinde
+* İlk yedekleme işi devam ettiğinden ikinci bir yedekleme işi başarısız olursa
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Diğer SSS'leri okuyun:
+Diğer SSS 'leri okuyun:
 
-- [Sık sorulan sorular](backup-azure-vm-backup-faq.md) Azure VM yedeklemeleri hakkında.
-- [Sık sorulan sorular](backup-azure-file-folder-backup-faq.md) Azure Backup Aracısı hakkında
+- Azure VM yedeklemeleri hakkında [sık sorulan sorular](backup-azure-vm-backup-faq.md) .
+- Azure Backup aracısıyla ilgili [sık sorulan sorular](backup-azure-file-folder-backup-faq.md)

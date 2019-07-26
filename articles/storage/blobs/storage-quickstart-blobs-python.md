@@ -9,16 +9,16 @@ ms.topic: quickstart
 ms.date: 12/14/2018
 ms.author: mhopkins
 ms.reviewer: seguler
-ms.openlocfilehash: 0ae47a7898e380a25618a8d6ae6a1e0251fe466c
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 5fe011d740b1c08ae3b9cf4e3ea67d2cdd4fee66
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514580"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360102"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-with-python"></a>Hızlı Başlangıç: Karşıya yükleme, indirme ve Python ile blobları Listele
+# <a name="quickstart-upload-download-and-list-blobs-with-python"></a>Hızlı Başlangıç: Python ile Blobları karşıya yükleme, indirme ve listeleme
 
-Bu hızlı başlangıçta karşıya yükleyin, indirin ve Azure Blob depolamadaki bir kapsayıcıda blok bloblarını listelemek için Python kullanma bakın. Basitçe herhangi bir metin veya ikili veriler de (örneğin, görüntüleri, belge, medya akışı, arşiv veri, vb.) miktarını tutabilir ve dosya paylaşımları, şemasız tablolar ve ileti kuyrukları Azure depolamada farklı nesneleri blobudur. (Daha fazla bilgi için [Azure Storage'a giriş](/azure/storage/common/storage-introduction).)
+Bu hızlı başlangıçta, Azure Blob depolama alanındaki bir kapsayıcıda blok bloblarını karşıya yüklemek, indirmek ve listelemek için Python 'u nasıl kullanacağınızı görürsünüz. Blob 'lar yalnızca herhangi bir miktarda metin veya ikili veri (görüntü, belge, akış medyası, arşiv verileri, vb.) tutabilecek nesnelerdir ve dosya paylaşımları, şemasız tabloları ve ileti kuyrukları için Azure depolama 'da ayrıdır. (Daha fazla bilgi için bkz. [Azure depolama 'Ya giriş](/azure/storage/common/storage-introduction).)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -27,7 +27,7 @@ Bu hızlı başlangıçta karşıya yükleyin, indirin ve Azure Blob depolamadak
 Aşağıdaki ek önkoşulların yüklü olduğundan emin olun:
 
 * [Python](https://www.python.org/downloads/)
-* [Python için Azure depolama SDK'si](https://github.com/Azure/azure-sdk-for-python)
+* [Python için Azure depolama SDK 'Sı](https://github.com/Azure/azure-sdk-for-python)
 
 ## <a name="download-the-sample-application"></a>Örnek uygulamayı indirin:
 Bu hızlı başlangıçtaki [örnek uygulama](https://github.com/Azure-Samples/storage-blobs-python-quickstart.git), temel bir Python uygulamasıdır.  
@@ -45,8 +45,9 @@ Bu komut *Azure-Samples/storage-blobs-python-quickstart* deposunu yerel git klas
 ## <a name="configure-your-storage-connection-string"></a>Depolama bağlantı dizelerinizi yapılandırma
 Uygulamada, `BlockBlobService` nesnesi oluşturmak için depolama hesabı adınızı ve hesap anahtarınızı sağlayın. IDE'nizdeki Çözüm Gezgini'nde *example.py* dosyasını açın. `accountname` ve `accountkey` değerlerini hesap adınız ve anahtarınız ile değiştirin. 
 
-```python 
-block_blob_service = BlockBlobService(account_name = 'accountname', account_key = 'accountkey') 
+```python
+block_blob_service = BlockBlobService(
+    account_name='accountname', account_key='accountkey')
 ```
 
 ## <a name="run-the-sample"></a>Örneği çalıştırma
@@ -94,16 +95,18 @@ Bulut Blobu kapsayıcınız olduktan sonra, ilgilendiğiniz bloba işaret eden *
 
 Bu bölümde nesne örneği ve yeni bir kapsayıcı oluşturacak ve ardından kapsayıcıdaki izinleri bloblar herkese açık olacak şekilde ayarlayacaksınız. Bu kapsayıcının adı **quickstartblobs**’dur. 
 
-```python 
+```python
 # Create the BlockBlockService that is used to call the Blob service for the storage account.
-block_blob_service = BlockBlobService(account_name = 'accountname', account_key = 'accountkey') 
- 
+block_blob_service = BlockBlobService(
+    account_name='accountname', account_key='accountkey')
+
 # Create a container called 'quickstartblobs'.
 container_name = 'quickstartblobs'
-block_blob_service.create_container(container_name) 
+block_blob_service.create_container(container_name)
 
 # Set the permission so the blobs are public.
-block_blob_service.set_container_acl(container_name, public_access=PublicAccess.Container)
+block_blob_service.set_container_acl(
+    container_name, public_access=PublicAccess.Container)
 ```
 ### <a name="upload-blobs-to-the-container"></a>Blobları kapsayıcıya yükleme
 
@@ -111,7 +114,7 @@ Blob depolama blok blobları, ekleme bloblarını ve sayfa bloblarını destekle
 
 Bir dosyayı bloba yüklemek için, yerel diskinizdeki dizin adıyla dosya adını birleştirerek dosyanın tam yolunu alın. Sonra, dosyayı belirtilen yola `create_blob_from_path` yöntemiyle yükleyebilirsiniz. 
 
-Örnek kod karşıya yükleme ve olarak karşıya yüklenecek dosya indirme için kullanılacak yerel bir dosya oluşturur, *full_path_to_file* blob adını *local_file_name*. Aşağıdaki örnek, dosyayı **quickstartblobs** adlı kapsayıcınıza yükler.
+Örnek kod, karşıya yükleme ve indirme için kullanılacak yerel bir dosya oluşturur, *full_path_to_file* olarak yüklenecek dosyayı ve BLOB adını *local_file_name*olarak depolar. Aşağıdaki örnek, dosyayı **quickstartblobs** adlı kapsayıcınıza yükler.
 
 ```python
 # Create a file in Documents to test the upload and download.
@@ -128,7 +131,8 @@ print("Temp file = " + full_path_to_file)
 print("\nUploading to Blob storage as blob" + local_file_name)
 
 # Upload the created file, use local_file_name for the blob name.
-block_blob_service.create_blob_from_path(container_name, local_file_name, full_path_to_file)
+block_blob_service.create_blob_from_path(
+    container_name, local_file_name, full_path_to_file)
 ```
 
 Blob depolamayla kullanabileceğiniz çeşitli karşıya yükleme yöntemleri vardır. Örneğin, bir bellek akışınız varsa `create_blob_from_path` yerine `create_blob_from_stream` yöntemini kullanabilirsiniz. 
@@ -149,14 +153,16 @@ for blob in generator:
 
 ### <a name="download-the-blobs"></a>Blobları indirme
 
-Yerel disk kullanarak blobları indirin `get_blob_to_path` yöntemi. Aşağıdaki kod, önceki bir bölüme yüklenen blobu indirir. Yerel diskte yer alan iki dosyayı da görebilmeniz için, blob adının sonuna *_DOWNLOADED* son eki getirilir. 
+`get_blob_to_path` Yöntemini kullanarak Blobları yerel diskinize indirin. Aşağıdaki kod, önceki bir bölüme yüklenen blobu indirir. Yerel diskte yer alan iki dosyayı da görebilmeniz için, blob adının sonuna *_DOWNLOADED* son eki getirilir. 
 
 ```python
 # Download the blob(s).
 # Add '_DOWNLOADED' as prefix to '.txt' so you can see both files in Documents.
-full_path_to_file2 = os.path.join(local_path, string.replace(local_file_name, '.txt', '_DOWNLOADED.txt'))
+full_path_to_file2 = os.path.join(local_path, string.replace(
+    local_file_name, '.txt', '_DOWNLOADED.txt'))
 print("\nDownloading blob to " + full_path_to_file2)
-block_blob_service.get_blob_to_path(container_name, local_file_name, full_path_to_file2)
+block_blob_service.get_blob_to_path(
+    container_name, local_file_name, full_path_to_file2)
 ```
 
 ### <a name="clean-up-resources"></a>Kaynakları temizleme

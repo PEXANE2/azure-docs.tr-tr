@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 manager: craigg
 ms.date: 07/18/2019
-ms.openlocfilehash: 028b3b2287e9d37a87ae2caf828c8855be331a1f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: f4dc00623694fa1fd218f43e7bbd19edef48dec4
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68327025"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348117"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Azure SQL veritabanı yönetilen örneği nedir?
 
@@ -61,7 +61,7 @@ Yönetilen örneklerin temel özellikleri aşağıdaki tabloda gösterilmiştir:
 | Yerleşik örnek ve veritabanı izleme ve ölçümler | Evet |
 | Otomatik yazılım düzeltme eki uygulama | Evet |
 | En son veritabanı altyapısı özellikleri | Evet |
-| Veritabanı başına veri dosyası (satır) sayısı | Birden çok |
+| Veritabanı başına veri dosyası (satır) sayısı | Birden Çok |
 | Veritabanı başına günlük dosyası (günlük) sayısı | 1\. |
 | VNet-Azure Resource Manager dağıtımı | Evet |
 | VNet-klasik dağıtım modeli | Hayır |
@@ -159,7 +159,7 @@ Aşağıdaki tabloda işlemler ve genel toplam süreler özetlenmektedir:
 |Güncelleştirme |Örnek depolama ölçeği artırma/azaltma (İş Açısından Kritik hizmet katmanı)|-Sanal küme yeniden boyutlandırma<br>-Always on kullanılabilirlik grubu dengeli dağıtımı|işlemin% 90 ' i, tüm veritabanlarının çekirdeğini sağlamak için 2,5 saat + saat (220 GB/saat)|
 |Güncelleştirme |Örnek işlem (Vçekirdekler) ölçeği artırma ve azaltma (Genel Amaçlı)|-Sanal küme yeniden boyutlandırma<br>-Veritabanı dosyaları iliştirme|2,5 saat içinde işlem bitiş% 90|
 |Güncelleştirme |Örnek işlem (Vçekirdekler) ölçeği artırma ve azaltma (İş Açısından Kritik)|-Sanal küme yeniden boyutlandırma<br>-Always on kullanılabilirlik grubu dengeli dağıtımı|işlemin% 90 ' i, tüm veritabanlarının çekirdeğini sağlamak için 2,5 saat + saat (220 GB/saat)|
-|Güncelleştirme |Örnek ölçeği 4 sanal çekirdeğe kadar (Genel Amaçlı)|-Sanal küme yeniden boyutlandırma (ilk kez yapıldıysa, sanal küme oluşturulması gerekebilir * *)<br>-Veritabanı dosyaları iliştirme|işlemin% 90 ' u 4 saat 5 dakika içinde sona geldi * *|
+|Güncelleştirme |Örnek ölçeği 4 sanal çekirdeğe kadar (Genel Amaçlı)|-Sanal küme yeniden boyutlandırma (ilk kez yapıldıysa, sanal küme oluşturulması gerekebilir * *)<br>-Veritabanı dosyaları iliştirme|işlemin% 90 ' u 4 saat 5 dakika içinde tamamlanır * *|
 |Güncelleştirme |Örnek ölçeği 4 sanal çekirdeğe kadar (Genel Amaçlı)|-Sanal küme yeniden boyutlandırma (ilk kez yapıldıysa, sanal küme oluşturulması gerekebilir * *)<br>-Always on kullanılabilirlik grubu dengeli dağıtımı|işlemlerin% 90 ' i, tüm 220 veritabanlarının çekirdeğini sağlamak için 5 saat + saat ile sona|
 |Güncelleştirme |Örnek hizmeti katmanı değişikliği (İş Açısından Kritik Genel Amaçlı ve tam tersi)|-Sanal küme yeniden boyutlandırma<br>-Always on kullanılabilirlik grubu dengeli dağıtımı|işlemin% 90 ' i, tüm veritabanlarının çekirdeğini sağlamak için 2,5 saat + saat (220 GB/saat)|
 |**Üzere**|Örnek silme|Tüm veritabanları için günlük kuyruğu yedeklemesi|% 90 işlem en fazla 1 dakika içinde tamamlanır.<br>Note: alt ağdaki son örnek silinirse, bu işlem 12 saat sonra sanal küme silmeyi zamanlar * * *|
@@ -198,7 +198,7 @@ Yönetilen bir örnek, Azure bulutundaki diğer kiracılardan ek güvenlik yalı
 
 Aşağıdaki diyagramda uygulamalarınız için çeşitli bağlantı seçenekleri özetlenmektedir:
 
-![Yüksek kullanılabilirlik](./media/sql-database-managed-instance/application-deployment-topologies.png)  
+![yüksek kullanılabilirlik](./media/sql-database-managed-instance/application-deployment-topologies.png)  
 
 Alt ağ düzeyinde VNet tümleştirmesi ve ağ ilkesi zorlaması hakkında daha fazla bilgi edinmek için bkz. [yönetilen örnekler Için VNET mimarisi](sql-database-managed-instance-connectivity-architecture.md) ve [Uygulamanızı yönetilen bir örneğe bağlama](sql-database-managed-instance-connect-app.md).
 
@@ -269,7 +269,7 @@ Yönetilen örnek dağıtım seçeneği SQL 2008 veritabanlarına geriye dönük
   
 Aşağıdaki diyagramda, yönetilen örnekteki Surface alanı uyumluluğu özetlenmektedir:  
 
-![Geçiş](./media/sql-database-managed-instance/migration.png)
+![geçiş](./media/sql-database-managed-instance/migration.png)
 
 ### <a name="key-differences-between-sql-server-on-premises-and-in-a-managed-instance"></a>Şirket içinde ve yönetilen bir örnekte SQL Server arasındaki temel farklılıklar
 
@@ -293,7 +293,7 @@ Yönetilen örnek dağıtım seçeneği, SQL veritabanı hizmeti bunları sizin 
 
 Aşağıdaki tabloda Transact SQL aracılığıyla erişilebilen, uygulamanızın yönetilen örnekle çalıştığını tespit etmek ve önemli özellikleri almak için kullanabileceğiniz çeşitli özellikler gösterilmektedir.
 
-|Özellik|Değer|Yorum|
+|Özellik|Value|Yorum|
 |---|---|---|
 |`@@VERSION`|Microsoft SQL Azure (RTM)-12.0.2000.8 2018-03-07 telif hakkı (C) 2018 Microsoft Corporation.|Bu değer SQL veritabanı ile aynıdır.|
 |`SERVERPROPERTY ('Edition')`|SQL Azure|Bu değer SQL veritabanı ile aynıdır.|

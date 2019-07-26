@@ -1,146 +1,146 @@
 ---
-title: Azure Data Factory'de veri akışını performans eşleme ve ayarlama Kılavuzu | Microsoft Docs
-description: Eşleme bir veri akışı kullandığınızda, Azure Data factory'deki veri akışlarının performansını etkileyen anahtar Etkenler hakkında bilgi edinin.
+title: Azure Data Factory veri akışı performansını ve ayarlama kılavuzunu eşleme | Microsoft Docs
+description: Veri akışlarını eşleme kullandığınızda Azure Data Factory veri akışlarının performansını etkileyen anahtar faktörleri hakkında bilgi edinin.
 author: kromerm
 ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 05/16/2019
-ms.openlocfilehash: 1ee266d7d9846a357dce613817affdb0cde5bfdc
-ms.sourcegitcommit: e6cb7ca206a125c05acfd431b5a64391a8dcc6b3
+ms.openlocfilehash: 090c229c5e97ede8eb7a397ce8f4d13d8735a346
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67569019"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68404614"
 ---
-# <a name="mapping-data-flows-performance-and-tuning-guide"></a>Eşleme veri akışları performansı ve ayarlama Kılavuzu
+# <a name="mapping-data-flows-performance-and-tuning-guide"></a>Veri akışlarını eşleme performansı ve ayarlama Kılavuzu
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Azure Data Factory eşleme veri akışları tasarlama, dağıtma ve uygun ölçekte veri dönüşümleri düzenlemek için bir tarayıcı kod gerektirmeyen arabirim sağlar.
+Azure Data Factory eşleme veri akışları, veri dönüştürmelerini ölçeklendirerek tasarlamak, dağıtmak ve düzenlemek için kod içermeyen bir tarayıcı arabirimi sağlar.
 
 > [!NOTE]
-> Genel ADF eşleme veri akışları ile ilgili bilgi sahibi değilseniz, bkz. [veri akışlarına genel bakış](concepts-data-flow-overview.md) bu makaleyi okuduktan önce.
+> ADF eşleme veri akışlarını genel olarak bilmiyorsanız, bu makaleyi okumadan önce [veri akışlarına genel bakış](concepts-data-flow-overview.md) bölümüne bakın.
 >
 
 > [!NOTE]
-> Tasarlama ve veri akışları ADF UI sınama veri akışlarınızı çalıştırabilmeniz için hata ayıklama anahtarı Isınma bir küme için beklemenize gerek kalmadan gerçek zamanlı etkinleştirmek emin olun.
+> ADF kullanıcı arabiriminden veri akışları tasarlarken ve test ederken, bir kümenin ısınma süresini beklemeden veri akışlarınızı gerçek zamanlı olarak yürütebilmeniz için hata ayıklama anahtarını etkinleştirdiğinizden emin olun.
 >
 
-![Düğme hata ayıklama](media/data-flow/debugb1.png "hata ayıklama")
+![Hata ayıklama düğmesi](media/data-flow/debugb1.png "Hata Ayıkla")
 
 ## <a name="monitor-data-flow-performance"></a>Veri akışı performansını izleme
 
-Tarayıcıda akış eşleme verilerinizi tasarlama olsa da, birim testi tek tek her dönüştürme altındaki ayarlar bölmesini her dönüştürme için veri Önizleme sekmesine tıklayarak gerçekleştirebilirsiniz. Atmanız gereken sonraki adım, veri akışı için uçtan uca işlem hattı tasarımcısında test sağlamaktır. Bir yürütme veri akışı etkinliği eklemek ve veri akışınız performansını test etmek için hata ayıklama düğmesini kullanın. İşlem hattı penceresinin alt bölmede saydamlaşabilir simge "Eylemler" altında görürsünüz:
+Eşleme veri akışlarınızı tarayıcıda tasarlarken, her dönüşüm için alt ayarlar bölmesindeki veri önizleme sekmesine tıklayarak her bir dönüştürmeyi her bir dönüşüme göre test edebilirsiniz. Bir sonraki adım işlem hattı tasarımcısında veri akışınızı uçtan uca test etmeniz gerekir. Bir veri akışı yürütme etkinliği ekleyin ve veri akışınızın performansını test etmek için Hata Ayıkla düğmesini kullanın. İşlem hattı penceresinin alt bölmesinde, "eylemler" altında bir eyecam simgesi görürsünüz:
 
-![Veri akışı izleme](media/data-flow/mon002.png "veri akışı izleme 2")
+![Veri akışı izleyicisi](media/data-flow/mon002.png "Veri akışı izleyicisi 2")
 
-Bu simgeye tıklayarak sonraki performans profili, veri akışı ve yürütme planı görüntüler. Veri akışınızı farklı boyutlu veri kaynaklarına karşı performansını tahmin etmek için bu bilgileri kullanabilirsiniz. Küme iş yürütme Kurulum süresi 1 dakika, genel performans hesaplamalarınızda varsayılır ve ' % s'varsayılan Azure Integration Runtime'ı kullanıyorsanız, küme döndürme süresi de 5 dakika eklemeniz gerekebilir unutmayın.
+Bu simgeye tıkladığınızda, veri akışınız için yürütme planı ve sonraki performans profili görüntülenir. Bu bilgileri, veri akışlarınızın performansını farklı boyutlardaki veri kaynaklarına karşı tahmin etmek için kullanabilirsiniz. Genel performans hesaplamalarınızda 1 dakikalık küme işi yürütme süresi olduğunu varsayabilir ve varsayılan Azure Integration Runtime kullanıyorsanız, 5 dakikalık küme döndürme süresi eklemeniz gerekebilir.
 
-![Veri akışı izleme](media/data-flow/mon003.png "veri akışı izleme 3")
+![Veri akışı izleme](media/data-flow/mon003.png "Veri akışı izleyicisi 3")
 
-## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse"></a>Azure SQL veritabanı ve Azure SQL veri ambarı için en iyi duruma getirme
+## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse"></a>Azure SQL veritabanı ve Azure SQL veri ambarı için iyileştirme
 
-![Kaynak bölümü](media/data-flow/sourcepart3.png "kaynak bölümü")
+![Kaynak bölüm](media/data-flow/sourcepart3.png "Kaynak bölüm")
 
-### <a name="partition-your-source-data"></a>Veri bölümleme
+### <a name="partition-your-source-data"></a>Kaynak verilerinizi bölümleme
 
-* "En"İyileştir gidin ve "Kaynak"'ı seçin. Belirli bir tablo sütunu ya da bir tür bir sorgu ayarlayın.
-* Ardından "sütun" i seçerseniz, bölüm sütunu seçin.
-* Ayrıca, Azure SQL DB için en fazla bağlantı sayısını ayarlayın. Veritabanınıza paralel bağlantıları sağlamak için daha yüksek bir ayar deneyebilirsiniz. Ancak, bazı durumlarda daha hızlı performans bağlantıları sınırlı sayıda ile sonuçlanabilir.
-* Kaynak veritabanı tabloları bölümlenmiş olması gerekmez.
-* Kaynak dönüşümünüzü, veritabanı tablosunun bölümleme düzeni ile eşleşen bir sorgu ayarlama kaynak veritabanı altyapısı'bölüm eleme kullanmasına izin verir.
-* Kaynak zaten bölümlenmiş değil, ADF yine de veri kaynağı dönüşümünde seçtiğiniz anahtarı temel alan Spark dönüşüm ortamında bölümleme kullanın.
+* "Iyileştirin" seçeneğine gidin ve "kaynak" seçeneğini belirleyin. Belirli bir tablo sütununu veya bir sorgudaki türü ayarlayın.
+* "Sütun" seçeneğini belirlediyseniz bölüm sütununu seçin.
+* Ayrıca, Azure SQL DB 'nize yönelik bağlantı sayısı üst sınırını ayarlayın. Veritabanınıza paralel bağlantı kazanmak için daha yüksek bir ayar deneyebilirsiniz. Ancak bazı durumlar, sınırlı sayıda bağlantıyla daha hızlı performans elde edebilir.
+* Kaynak veritabanı tablolarınızın bölümlenmiş olması gerekmez.
+* Kaynak dönüşümünüzün veritabanı tablonuzun bölümleme şeması ile eşleşen bir sorgu ayarlanması, kaynak veritabanı altyapısının Bölüm eleme özelliğinden yararlanmasını sağlar.
+* Kaynağınız zaten bölümlenmemişse, ADF, kaynak dönüşümünde seçtiğiniz anahtara bağlı olarak Spark dönüştürme ortamında veri bölümleme işlemi kullanır.
 
-### <a name="set-batch-size-and-query-on-source"></a>Toplu iş boyutu ve sorgu kaynağında ayarlayın
+### <a name="set-batch-size-and-query-on-source"></a>Kaynak üzerinde toplu iş boyutu ve sorgu ayarla
 
-![Kaynak](media/data-flow/source4.png "kaynak")
+![Kaynak](media/data-flow/source4.png "Kaynak")
 
-* Toplu iş boyutu ayarı-satır yerine bellekte kümelerinde veri depolamak için ADF yenilemelerini ister. İsteğe bağlı bir ayardır ve doğru boyutlandırılmadığında bırakılırsa kaynaklar yetersiz ve işlem düğümleri üzerinde çalışabilir.
-* Bir sorgu ayarlama, hatta veri akışı için daha hızlı ilk veri alım yapabilirsiniz işlenmek ulaştıkları önce kaynak satırları sağ filtrelemek izin verebilirsiniz.
-* Bir sorgu kullanırsanız, Azure SQL DB için yani READ UNCOMMITTED isteğe bağlı bir sorgu ipuçları ekleyebilirsiniz.
+* Toplu iş boyutunu ayarlama, ADF 'yi satır satır yerine bellekte kümeler halinde depolamasını ister. Bu, isteğe bağlı bir ayardır ve doğru şekilde boyutlandıralınmazlarsa, işlem düğümlerinde kaynakları tükenmeyebilirsiniz.
+* Bir sorgu ayarlamak, işleme için veri akışı için geldiklerinde bile satırları doğrudan filtrelemenize izin verebilir, bu da ilk veri alımını daha hızlı yapabilir.
+* Bir sorgu kullanıyorsanız, Azure SQL VERITABANı için isteğe bağlı sorgu ipuçları ekleyebilirsiniz, yani READ UNCOMMıTTED
 
-### <a name="set-isolation-level-on-source-transformation-settings-for-sql-datasets"></a>SQL veri kümeleri için kaynak dönüştürme ayarlarını yalıtım düzeyi ayarlama
+### <a name="set-isolation-level-on-source-transformation-settings-for-sql-datasets"></a>SQL veri kümeleri için kaynak dönüştürme ayarlarında yalıtım düzeyi ayarla
 
-* READ UNCOMMITTED kaynak dönüşümü daha hızlı sorgu sonuçlarını sağlar
+* Read UNCOMMITTED, kaynak dönüşümünde daha hızlı sorgu sonuçları sağlar
 
-![Yalıtım düzeyi](media/data-flow/isolationlevel.png "yalıtım düzeyi")
+![Yalıtım düzeyi](media/data-flow/isolationlevel.png "Yalıtım düzeyi")
 
-### <a name="set-sink-batch-size"></a>Havuz batch boyutunu ayarlama
+### <a name="set-sink-batch-size"></a>Havuz toplu iş boyutunu ayarla
 
-![Havuz](media/data-flow/sink4.png "havuz")
+![Havuz](media/data-flow/sink4.png "Havuz")
 
-* Satır veri akışlarınızı işlenmesini önlemek için Azure SQL DB için havuz ayarları "toplu iş boyutu" ayarlayın. Bu işlem, sağlanan boyutuna göre toplu işlem veritabanına ADF Yazar bildirir.
+* Veri akışlarınızın satır içi işlemesini önlemek için, Azure SQL VERITABANı için havuz ayarları ' nda "toplu Iş boyutu" nı ayarlayın. Bu, ADF 'nin, belirtilen boyuta göre yığınlardaki veritabanı yazmaları işlemesini söyler.
 
-### <a name="set-partitioning-options-on-your-sink"></a>Bölümleme havuzunuzu seçeneklerini ayarlayın
+### <a name="set-partitioning-options-on-your-sink"></a>Havuzunuzu bölümlendirme seçeneklerini ayarlama
 
-* Verilerinizi hedef Azure SQL DB tabloları bölümlenmiş yoksa bile İyileştir sekmesine gidin ve bölümleme ayarlayın.
-* Çok sık, daha hızlı bir şekilde veri tek bir düğüm/bölüm gelen tüm bağlantıları zorlamak yerine yükleme sonuçları Spark yürütme kümelerinde bölümleme hepsini kullanmak için ADF yalnızca bildiriyor.
+* Verileriniz hedef Azure SQL DB tablolarında bölümlenmemiş olsanız bile, optimizasyon sekmesine gidin ve bölümlendirme ayarlayın.
+* Çoğu kez, ADF 'nin Spark yürütme kümelerinde hepsini bir kez deneme için Bölümlendirmeyi kullanması, tek bir düğümden/bölümden tüm bağlantıları zorlamak yerine çok daha hızlı veri yüklemeye neden olur.
 
-### <a name="increase-size-of-your-compute-engine-in-azure-integration-runtime"></a>Azure Integration Runtime, bilgi işlem altyapısı boyutunu artırın
+### <a name="increase-size-of-your-compute-engine-in-azure-integration-runtime"></a>İşlem altyapılarınızın boyutunu Azure Integration Runtime artırın
 
-![Yeni IR](media/data-flow/ir-new.png "yeni IR")
+![Yenı IR](media/data-flow/ir-new.png "Yenı IR")
 
-* Düğümlerin sayısını artırmak ve sorgu ve Azure SQL DB'ye yazılmak üzere daha fazla işlemci gücü sağlamak, çekirdek sayısını artırın.
-* Daha fazla kaynak, işlem düğümlerine uygulamak için "İşlem için iyileştirilmiş" ve "Bellek için iyileştirilmiş" seçenekleri deneyin.
+* Düğüm sayısını arttırabileceğiniz çekirdek sayısını artırın ve Azure SQL DB 'nize sorgu ve yazma için daha fazla işlem gücü sağlar.
+* İşlem düğümlerinizde daha fazla kaynak uygulamak için "Işlem için Iyileştirilmiş" ve "bellek için Iyileştirilmiş" seçeneklerini deneyin.
 
-### <a name="unit-test-and-performance-test-with-debug"></a>Birim testi ve performans testi ile hata ayıklama
+### <a name="unit-test-and-performance-test-with-debug"></a>Hata ayıklama ile birim testi ve performans testi
 
-* Birim test veri akışı olarak ayarlandığında "Veri akışı Debug" düğmesini ON.
-* Veri Akışı Tasarımcısı içinde dönüştürme mantığınızı sonuçlarını görüntülemek için dönüşümler veri Önizleme sekmesini kullanın.
-* İşlem hattı tasarım üzerinde bir veri akışı etkinliği yerleştirerek işlem hattı Tasarımcısı'ndan veri akışları birim testi tuval ve test etmek için "Debug" düğmesini kullanın.
-* Hata ayıklama modunda test etmek için tam zamanında küme döndürme-up beklemek zorunda kalmadan Canlı warmed küme ortamında karşı çalışır.
+* Birim testi verileri akışlarında, "veri akışı hata ayıklama" düğmesini açık olarak ayarlayın.
+* Veri akışı Tasarımcısı ' nın içinde, dönüştürme mantığınızın sonuçlarını görüntülemek için dönüşümlerdeki veri önizleme sekmesini kullanın.
+* İşlem hattı tasarım tuvaline bir veri akışı etkinliği yerleştirerek ve test etmek için "hata ayıkla" düğmesini kullanarak, veri hattı tasarımcısından alınan birim testi.
+* Hata ayıklama modunda test etmek, tam zamanında küme dönmesi beklenmeden gerçek zamanlı bir küme ortamına karşı çalışır.
 
-### <a name="disable-indexes-on-write"></a>Dizin üzerinde yazma devre dışı bırak
-* Havuzunuzu yazıldığını, hedef tablolarda dizinler devre dışı bırakır, veri akışı etkinliği önce bir ADF işlem hattı depolanan yordam etkinliği kullanın.
-* Veri akışı, etkinlik bu dizinleri etkinleştirilmiş başka bir saklı yordam etkinliği ekleyin.
+### <a name="disable-indexes-on-write"></a>Yazma sırasında dizinleri devre dışı bırak
+* Veri akışı etkinlikinizden önce, Havuzınızdan üzerine yazılmakta olan hedef tablolarınızdaki dizinleri devre dışı bırakan bir ADF işlem hattı saklı yordam etkinliğini kullanın.
+* Veri akışı etkinliğinizi tamamladıktan sonra, bu dizinleri etkinleştirilen başka bir saklı proc etkinliği ekleyin.
 
-### <a name="increase-the-size-of-your-azure-sql-db"></a>Azure SQL DB boyutunu artırın
-* Yeniden boyutlandırma kaynağını zamanlayabilir ve Azure SQL DB, aktarım hızını artırmak ve DTU ulaştıktan sonra Azure azaltma en aza indirmek için işlem hattınızı sınırlar çalıştırmanız önce havuz.
-* Veritabanlarınızı geri normal, çalışma oranı, işlem hattı yürütme işlemi tamamlandıktan sonra yeniden boyutlandırabilirsiniz.
+### <a name="increase-the-size-of-your-azure-sql-db"></a>Azure SQL DB 'nizin boyutunu artırın
+* İşlem hattınızı artırmak ve DTU sınırlarına ulaştığınızda Azure azaltmayı en aza indirmek için, kaynağınızı yeniden boyutlandırmayı zamanlayın ve Azure SQL DB 'yi iş hattınızı çalıştırmadan önce Azure SQL DB 'yi yeniden boyutlandırın
+* İşlem hattı yürütme tamamlandıktan sonra veritabanlarınızı normal çalışma hızına geri boyutlandırabilirsiniz.
 
-## <a name="optimizing-for-azure-sql-data-warehouse"></a>Azure SQL veri ambarı için en iyi duruma getirme
+## <a name="optimizing-for-azure-sql-data-warehouse"></a>Azure SQL veri ambarı için iyileştirme
 
-### <a name="use-staging-to-load-data-in-bulk-via-polybase"></a>Polybase aracılığıyla toplu veri yükleme için hazırlık kullanın
+### <a name="use-staging-to-load-data-in-bulk-via-polybase"></a>Polybase aracılığıyla verileri toplu olarak yüklemek için hazırlama kullanma
 
-* Satır veri akışlarınızı işlenmesini önlemek için ADF DW'ye satır ekler önlemek için Polybase yararlanabilir, böylece havuz ayarları "Hazırlama" seçeneğini ayarlayın. Bu, Polybase verilerin toplu olarak yüklenmesi için kullanmak üzere ADF yenilemelerini ister.
-* Veri akış etkinliğinizi yürüttüğünüzde hazırlama ile bir işlem hattı açık olduğundan, hazırlama verilerinizi toplu yükleme için Blob Depolama konumu seçmek gerekir.
+* Veri akışlarınızın satır içi işlemesini önlemek için, alıcı sayısı ' nın "hazırlama" seçeneğini ayarlayarak, ADF 'nin satır sonu ekleme işlemini önlemek için havuz ayarlarındaki "hazırlama" seçeneğini ayarlayın. Bu, ADF 'nin PolyBase 'i kullanarak verilerin toplu olarak yüklenebilmesini sağlar.
+* Veri akışı etkinliğinizi bir işlem hattından yürüttüğünüzde, hazırlama açık durumdayken, toplu yükleme için hazırlama verilerinizin BLOB depolama konumunu seçmeniz gerekir.
 
-### <a name="increase-the-size-of-your-azure-sql-dw"></a>Azure SQL DW boyutunu artırın
+### <a name="increase-the-size-of-your-azure-sql-dw"></a>Azure SQL DW 'nizin boyutunu artırın
 
-* Yeniden boyutlandırma kaynağını zamanlayabilir ve verimliliği artırmak ve DWU limitlerini ulaştıktan sonra Azure azaltma en aza indirmek için işlem hattınızı çalıştırmadan önce Azure SQL DW havuz.
+* İşlem hattınızı artırmak ve DWU limitleriyle iletişime geçmek için işlem hattınızı çalıştırmadan önce Azure SQL DW 'yi yeniden boyutlandırmayı zamanlayın ve Azure SQL DW 'yi en aza indirin.
 
-* Veritabanlarınızı geri normal, çalışma oranı, işlem hattı yürütme işlemi tamamlandıktan sonra yeniden boyutlandırabilirsiniz.
+* İşlem hattı yürütme tamamlandıktan sonra veritabanlarınızı normal çalışma hızına geri boyutlandırabilirsiniz.
 
-## <a name="optimize-for-files"></a>Dosyalar için en iyi duruma getirme
+## <a name="optimize-for-files"></a>Dosyalar için iyileştirin
 
-* ADF kullanacağı kaç bölümler denetleyebilirsiniz. Her kaynak ve havuz dönüştürme, aynı zamanda tek tek her dönüştürme, bölümleme düzeni ayarlayabilirsiniz. Daha küçük dosyalar için "Tek bölüm" seçerek bazen daha iyi ve Spark'ın küçük dosyalarınızı bölüm isteyen daha hızlı bir şekilde çalışabilir bulabilirsiniz.
-* Kaynak verileriniz hakkında yeterli bilgiye sahip değilseniz, "Bölüm sayısını ayarlayın ve bölümleme hepsini bir kez" seçebilirsiniz.
-* Verilerinizi Keşfetmenin yanı sıra iyi karma anahtarların olabilir sütunlar vardır, karma seçeneği bölümleme kullanın.
+* ADF 'nin kaç bölüm kullanacağı üzerinde denetim yapabilirsiniz. Her kaynak & havuz dönüştürmesinin yanı sıra her bir dönüştürme için de bir bölümleme düzeni ayarlayabilirsiniz. Daha küçük dosyalar için, "tek bölüm" seçimini seçtiğinizde, küçük dosyalarınızın bölümlenmesi için Spark sorulmaya kıyasla daha iyi ve hızlı bir şekilde çalışabilir.
+* Kaynak verileriniz hakkında yeterli bilgiye sahip değilseniz, "hepsini bir kez deneme" ve bölüm sayısını ayarlama seçeneklerinden birini belirleyebilirsiniz.
+* Verilerinizi araştırdığınızda ve iyi bir karma anahtar olabilecek sütunlarınızın olduğunu görürseniz, karma bölümlendirme seçeneğini kullanın.
 
 ### <a name="file-naming-options"></a>Dosya adlandırma seçenekleri
 
-* ADF eşleme veri akışları'nda dönüştürülmüş verileri yazma varsayılan yapısı, bir Blob veya ADLS bağlı hizmeti bir veri kümesi yazmaktır. Bu veri kümesi için bir klasörü veya kapsayıcı, adlandırılmış bir dosya değil işaret edecek şekilde ayarlamanız gerekir.
-* Açık veri akışları kullanın ya da Spark bölümleme varsayılan Azure Databricks Spark çıkışınızı göre birden çok dosya üzerinden bölünür anlamına gelir, yürütme için veya bölümleme şeması, seçtiğiniz.
-* Çok yaygın bir işlemi ADF veri akışları'ndaki tüm çıkış bölümü dosyalarınızı birlikte bir tek çıkış dosyasında birleştirilen böylece "tek dosya çıktısı" seçmektir.
-* Ancak, bu işlem, çıkış tek bir küme düğümünde tek bir bölüme azaltır gerektirir.
-* Bu popüler seçeneğini seçerken bunu aklınızda bulundurun. Tek çıkış dosyası bölüme çok büyük kaynak dosyaları birleştiriyorsanız küme düğümünde kaynaklarını dışında çalıştırabilirsiniz.
-* İşlem düğümünde kaynaklarını tüketme önlemek için varsayılan veya açık bir bölümleme düzeni performans için en iyi duruma getirir, ADF içinde tutun ve sonra bir sonraki bölümü tüm birleştiren işlem hattının kopyalama etkinliği için yeni bir tek bir çıkış klasöründeki dosyaları ekleyin. dosya. Esas olarak, bu teknik, dosya birleştirme öğesinden dönüştürme eylemi ayırır ve "çıktıyı tek dosyaya" ayarı olarak aynı sonucu veren.
+* ADF eşleme veri akışlarında dönüştürülmüş verileri yazmanın varsayılan yapısı, blob veya ADLS bağlı hizmeti olan bir veri kümesine yazmak şeklindedir. Bu veri kümesini, adlandırılmış bir dosya değil, bir klasörü veya kapsayıcıyı işaret etmek üzere ayarlamalısınız.
+* Veri akışları yürütme için Azure Databricks Spark kullanır, bu da Çıktınıza varsayılan Spark bölümlendirme veya açıkça seçtiğiniz bölümleme şemasına göre birden çok dosya üzerinde bölüneceği anlamına gelir.
+* ADF veri akışlarında çok yaygın bir işlem, tüm çıkış bölümü dosyalarınızın tek bir çıktı dosyasında birlikte birleştirilmesi için "tek dosyaya çıktı" seçeneğini seçmaktır.
+* Ancak bu işlem, çıktının tek bir küme düğümünde tek bir bölüme azalttığını gerektirir.
+* Bu popüler seçeneği seçerken bunu aklınızda bulundurun. Birçok büyük kaynak dosyasını tek bir çıkış dosyası bölümünde birleştiriyorsanız, küme düğüm kaynakları ' nı çalıştırabilirsiniz.
+* İşlem düğümü kaynaklarını tüketmeyi önlemek için, varsayılan veya açık bölümlendirme şemasını ADF 'de tutabilir ve bu sayede performansı iyileştirir ve sonra, tüm bölüm dosyalarını çıkış klasöründen yeni bir tek birleştiren işlem hattında daha sonra bir kopyalama etkinliği ekleyebilirsiniz dosyasýný. Temelde, bu teknik, dönüştürme eylemini dosya birleştirmeden ayırır ve "çıktıyı tek dosyaya Dönüştür" ayarıyla aynı sonuca ulaşır.
 
-### <a name="looping-through-file-lists"></a>Dosya listeleri döngü
+### <a name="looping-through-file-lists"></a>Dosya listeleri aracılığıyla döngü
 
-Çoğu durumda, veri akışları ADF içinde birden çok dosya yinelemek akış veri kaynağı dönüşümü izin veren bir işlem hattından daha iyi yürütülür. Diğer bir deyişle, joker karakterler kullanmak için tercih edilir veya dosya listelerin veri kaynağınızdaki içinde her yinelemede çağrılırken bir yürütme veri akışı ardışık düzeninde ForEach kullanarak dosyaları büyük bir listesi üzerinden yinelemek için akış. Veri akışı işlem, veri akışı içinde gerçekleşmesi döngü sağlayarak daha hızlı yürütülür.
+Çoğu örnekte, ADF 'deki veri akışları, veri akışı kaynak dönüşümünün birden çok dosya üzerinde yineleme yapmasına izin veren bir işlem hattından daha iyi yürütülür. Diğer bir deyişle, veri akışında kaynak içinde yer alan joker karakter veya dosya listelerinin kullanılması tercih edilir. Bu, her yinelemede bir yürütme veri akışı çağırarak, işlem hattındaki bir dosya listesini, ardışık düzendeki ForEach ' i kullanarak yineleyebilirsiniz. Veri akışı işlemi, döngü veri akışı içinde oluşmasına izin vererek daha hızlı yürütülür.
 
-Blob depolama alanındaki bir klasörde işlemek istediğiniz Temmuz 2019 veri dosyaları listesini sahibim, örneğin, daha yüksek performanslı bir yürütme veri akışı etkinliği, ardışık düzen tarafından bir kez çağırmak ve bir joker karakter kaynağınızı şöyle kullanma olurdu :
+Örneğin, 2019 Temmuz 'dan BLOB depolama alanındaki bir klasörde işlemek istediğim veri dosyalarının bir listesi varsa, işlem hattınızdan bir kez veri akışı yürütme etkinliği çağrısı yapmak ve kaynağınızda bunun gibi bir joker karakter kullanmanız daha iyi bir işlemdir. :
 
 ```DateFiles/*_201907*.txt```
 
-Bu Blob Store sonra bir yürütme veri akışı etkinliği içinde bir ForEach kullanarak tüm eşleşen dosyalar arasında yinelenen bir işlem hattındaki arama daha iyi sonuç verecektir.
+Bu, içinde bir veri akışı yürütme etkinliği ile bir ForEach kullanarak tüm eşleşen dosyalarda yinelenen bir işlem hattındaki Blob deposunda bir aramanın daha iyi gerçekleştirilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Performansla ilgili diğer veri akışı makalelere bakın:
+Performansla ilgili diğer veri akışı makalelerine bakın:
 
-- [Veri akışı için sekmesinde en iyi duruma](concepts-data-flow-optimize-tab.md)
+- [Veri akışı Iyileştirme sekmesi](concepts-data-flow-optimize-tab.md)
 - [Veri akışı etkinliği](control-flow-execute-data-flow-activity.md)
 - [Veri akışı performansını izleme](concepts-data-flow-monitoring.md)

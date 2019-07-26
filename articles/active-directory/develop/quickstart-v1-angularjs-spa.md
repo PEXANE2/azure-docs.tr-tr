@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory ile oturum açmak ve oturum kapatmak için AngularJS tek sayfalı uygulaması oluşturma | Microsoft Docs
+title: Azure AD 'de oturum açmak ve oturumu kapatmak için AngularJS tek sayfalı uygulama oluşturun | Microsoft Docs
 description: Oturum açma işlemi için Azure AD ile tümleştirilen ve OAuth kullanarak Azure AD korumalı API'leri çağıran bir AngularJS tek sayfalı uygulaması oluşturmayı öğrenin.
 services: active-directory
 documentationcenter: ''
@@ -18,14 +18,14 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a1fdbcd04504181a20f5245b6f2378be5b9d405
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 20c62d379006382d4208e4b111202581bc75454f
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66001204"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68380761"
 ---
-# <a name="quickstart-build-an-angularjs-single-page-app-for-sign-in-and-sign-out-with-azure-active-directory"></a>Hızlı Başlangıç: Oturum açma ve Azure Active Directory ile oturum kapatma için AngularJS tek sayfalı uygulama oluşturma
+# <a name="quickstart-build-an-angularjs-single-page-app-for-sign-in-and-sign-out-with-azure-active-directory"></a>Hızlı Başlangıç: Oturum açmak için AngularJS tek sayfalı bir uygulama oluşturun ve Azure Active Directory oturum açın
 
 [!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
 
@@ -47,7 +47,7 @@ Eksiksiz, çalışan bir uygulama oluşturmak için şunları yapmalısınız:
 3. Tek sayfalı uygulamada sayfaların güvenliğini sağlamaya yardımcı olmak için ADAL'ı kullanma.
 
 > [!NOTE]
-> İş ve Okul hesaplarında yanı sıra kişisel hesapları için oturum açma etkinleştirmeniz gerekirse, kullanabileceğiniz  *[Microsoft kimlik platformu uç nokta](azure-ad-endpoint-comparison.md)*. Daha fazla bilgi için bkz. [JavaScript SPA Öğreticisine](tutorial-v2-javascript-spa.md) yanı [bu makalede](active-directory-v2-limitations.md) açıklayan *Microsoft kimlik platformu uç nokta*. 
+> İş ve okul hesaplarına ek olarak kişisel hesaplar için oturum açma işlemlerini etkinleştirmeniz gerekiyorsa, *[Microsoft Identity platform uç noktasını](azure-ad-endpoint-comparison.md)* kullanabilirsiniz. Daha fazla bilgi için [Bu JAVASCRIPT Spa öğreticisinin](tutorial-v2-javascript-spa.md) yanı sıra *Microsoft Identity platform uç noktasını*açıklayan [Bu makaleye](active-directory-v2-limitations.md) bakın. 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -56,25 +56,25 @@ Başlamak için şu önkoşulları tamamlayın:
 * [Uygulama çatısını indirin](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/skeleton.zip) veya [tamamlanmış örneği indirin](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/complete.zip).
 * Altında kullanıcıları oluşturabileceğiniz ve uygulamayı kaydedebileceğiniz bir Azure AD kiracınız olsun. Henüz bir kiracınız yoksa [nasıl kiracı alınabileceğini öğrenin](quickstart-create-new-tenant.md).
 
-## <a name="step-1-register-the-directorysearcher-application"></a>1. Adım: DirectorySearcher uygulamayı kaydetme
+## <a name="step-1-register-the-directorysearcher-application"></a>1\. adım: DirectorySearcher uygulamasını kaydetme
 
 Uygulamanızın kullanıcı kimliklerini doğrulamasını ve belirteçleri almasını sağlamak için, ilk olarak uygulamayı Azure AD kiracısına kaydetmeniz gerekir:
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Birden çok dizinde oturum açtıysanız, doğru dizini görüntülediğinizden emin olmalısınız. Bunu yapmak için, üst çubukta hesabınıza tıklayın. **Dizin** listesi altında, uygulamanızı kaydetmek istediğiniz Azure AD kiracısını seçin.
 1. Sol bölmede **Tüm hizmetler**'e tıklayın ve ardından **Azure Active Directory**'yi seçin.
-1. Tıklayın **uygulama kayıtları**ve ardından **yeni kayıt**.
-1. Zaman **bir uygulamayı kaydetme** sayfası görüntülenirse, uygulamanız için bir ad girin.
-1. Altında **desteklenen hesap türleri**seçin **herhangi bir kuruluş dizinini ve kişisel Microsoft hesapları hesaplarında**.
-1. Seçin **Web** platform altında **yeniden yönlendirme URI'si** bölümünde ve değerine `https://localhost:44326/` (istediğiniz Azure AD belirteçleri döndürecektir konum).
-1. Bittiğinde **Kaydet**’i seçin. Uygulamasında **genel bakış** sayfa, Not **uygulama (istemci) kimliği** değeri.
-1. Adal.js. Azure AD ile iletişim kurmak için OAuth örtük akışını kullanır. Örtük akış, uygulamanız için etkinleştirmeniz gerekir. Kayıtlı uygulama sol gezinti bölmesinde seçin **kimlik doğrulaması**.
-1. İçinde **Gelişmiş ayarlar**altında **örtük vermeyi**, her ikisini de etkinleştirmek **kimlik belirteçlerini** ve **erişim belirteçlerini** onay kutularını. Bu uygulama kullanıcılarının oturumunu ve bir API'yi çağırmak sonun kimliği ve erişim belirteçler gereklidir.
+1. **Uygulama kayıtları**' a ve ardından **Yeni kayıt**' ı seçin.
+1. **Bir uygulamayı kaydet** sayfası göründüğünde, uygulamanız için bir ad girin.
+1. **Desteklenen hesap türleri**altında, **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesaplar**' ı seçin.
+1. **Yeniden yönlendirme URI 'si** bölümünün altında **Web** platformu ' nu seçin ve değeri olarak `https://localhost:44326/` ayarlayın (Azure AD 'nin belirteçleri döndürecek konum).
+1. Bittiğinde **Kaydet**’i seçin. Uygulamaya **genel bakış** sayfasında, **uygulama (istemci) kimliği** değerini aklınızda edin.
+1. Adal.js. Azure AD ile iletişim kurmak için OAuth örtük akışını kullanır. Uygulamanız için örtük akışı etkinleştirmeniz gerekir. Kayıtlı uygulamanın sol taraftaki Gezinti bölmesinde **kimlik doğrulaması**' nı seçin.
+1. **Gelişmiş ayarlar**' da, **örtük izin**' ın altında, **kimlik belirteçlerini** ve **erişim belirteçleri** onay kutularını etkinleştirin. Bu uygulamanın kullanıcıları oturum açması ve bir API çağırması gerektiğinden, KIMLIK belirteçleri ve erişim belirteçleri gereklidir.
 1. **Kaydet**’i seçin.
-1. Uygulamanız için kiracı genelinde izinleri verin. Git **API izinleri**seçip **yönetici onayı vermek** düğmesini **onay verme**.
+1. Uygulamanız için kiracı genelinde izinleri verin. **API izinleri**' ne gidin ve **izin ver**' ın altındaki **yönetici izni ver** düğmesini seçin.
 1. Onaylamak için **Evet**’i seçin.
 
-## <a name="step-2-install-adal-and-configure-the-single-page-app"></a>2. Adım: ADAL'ı yükleyin ve tek sayfalı uygulamayı yapılandırma
+## <a name="step-2-install-adal-and-configure-the-single-page-app"></a>2\. adım: ADAL 'yi yükler ve tek sayfalı uygulamayı yapılandırın
 
 Artık Azure AD'de bir uygulamanız olduğuna göre, adal.js'yi yükleyebilir ve kimlikle ilgili kodunuzu yazabilirsiniz.
 
@@ -100,7 +100,7 @@ Tek sayfalı uygulamanın arka uç To Do List API'sinin tarayıcıdan belirteçl
    * `ida:Tenant`, Azure AD kiracınızın etki alanıdır (örneğin, contoso.onmicrosoft.com).
    * `ida:Audience`, portaldan kopyaladığınız uygulamanızın istemci kimliğidir.
 
-## <a name="step-3-use-adal-to-help-secure-pages-in-the-single-page-app"></a>3. adım: Tek sayfalı uygulama güvenli sayfalarında yardımcı olması için ADAL'ı kullanın
+## <a name="step-3-use-adal-to-help-secure-pages-in-the-single-page-app"></a>3\. adım: Tek sayfalı uygulamadaki sayfaların güvenliğini sağlamaya yardımcı olmak için ADAL kullanın
 
 Adal.js AngularJS yoluyla ve HTTP sağlayıcılarıyla tümleştirildiğinden, tek sayfalı uygulamanızda tek tek görünümleri güvenlik altına almaya yardımcı olabilirsiniz.
 

@@ -1,26 +1,26 @@
 ---
-title: Azure Işlevlerinde Azure Cosmos DB tetikleyicisi kullanırken sorunları tanılama ve giderme
-description: Azure Işlevleri ile Azure Cosmos DB tetikleyiciyi kullanırken yaygın sorunlar, geçici çözümler ve Tanılama adımları
+title: Cosmos DB için Azure Işlevleri tetikleyicisi 'ni kullanırken sorunları tanılayın ve sorun giderin
+description: Cosmos DB için Azure Işlevleri tetikleyicisi kullanılırken yaygın sorunlar, geçici çözümler ve Tanılama adımları
 author: ealsur
 ms.service: cosmos-db
-ms.date: 05/23/2019
+ms.date: 07/17/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 9c728a735e56e461e49dd3f594186c9c0192a3f0
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: b90986e449df7e81f97f9ef86ce3cf69621c76d6
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68250023"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335743"
 ---
-# <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-trigger-in-azure-functions"></a>Azure Işlevlerinde Azure Cosmos DB tetikleyicisi kullanırken sorunları tanılama ve giderme
+# <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Cosmos DB için Azure Işlevleri tetikleyicisi 'ni kullanırken sorunları tanılayın ve sorun giderin
 
-Bu makalede, Azure Işlevleri ile [Azure Cosmos DB tetikleyiciyi](change-feed-functions.md) kullandığınızda yaygın sorunlar, geçici çözümler ve Tanılama adımları ele alınmaktadır.
+Bu makalede, [Cosmos DB Için Azure işlevleri tetikleyicisi](change-feed-functions.md)kullandığınızda yaygın sorunlar, geçici çözümler ve Tanılama adımları ele alınmaktadır.
 
 ## <a name="dependencies"></a>Bağımlılıkları
 
-Azure Cosmos DB tetikleyicisi ve bağlamaları, temel Azure Işlevleri çalışma zamanı üzerinden uzantı paketlerine bağlıdır. Düzeltmeler ve karşılaşabileceğiniz olası sorunları gidermeye yönelik yeni özellikler dahil olabileceğinden, her zaman bu paketleri güncel tutun:
+Cosmos DB için Azure Işlevleri tetiklemesi ve bağlamaları, temel Azure Işlevleri çalışma zamanı üzerinden uzantı paketlerine bağlıdır. Düzeltmeler ve karşılaşabileceğiniz olası sorunları gidermeye yönelik yeni özellikler dahil olabileceğinden, her zaman bu paketleri güncel tutun:
 
 * Azure Işlevleri v2 için bkz. [Microsoft. Azure. WebJobs. Extensions. CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB).
 * Azure Işlevleri v1 için bkz. [Microsoft. Azure. WebJobs. Extensions. DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB).
@@ -29,7 +29,7 @@ Bu makale, açıkça belirtilmediği takdirde, her zaman çalışma zamanına he
 
 ## <a name="consume-the-azure-cosmos-db-sdk-independently"></a>Azure Cosmos DB SDK 'Yı bağımsız olarak kullanın
 
-Uzantı paketinin temel işlevselliği, Azure Cosmos DB tetikleyicisi ve bağlamaları için destek sağlamaktır. Ayrıca, tetikleyici ve bağlamaları kullanmadan Azure Cosmos DB programlı bir şekilde etkileşim kurmak istiyorsanız yararlı olacak [Azure Cosmos DB .NET SDK](sql-api-sdk-dotnet-core.md)' yı da içerir.
+Uzantı paketinin temel işlevselliği, Cosmos DB için Azure Işlevleri tetikleyicisi ve bağlamaları için destek sağlamaktır. Ayrıca, tetikleyici ve bağlamaları kullanmadan Azure Cosmos DB programlı bir şekilde etkileşim kurmak istiyorsanız yararlı olacak [Azure Cosmos DB .NET SDK](sql-api-sdk-dotnet-core.md)' yı da içerir.
 
 Azure Cosmos DB SDK 'yı kullanmak istiyorsanız, projenize başka bir NuGet paket başvurusu eklemediğinizden emin olun. Bunun yerine, **SDK başvurusunun Azure işlevleri ' uzantı paketi aracılığıyla çözümlenmesine izin verin**. Azure Cosmos DB SDK 'sını tetikleyiciden ve bağlamalardan ayrı kullanın
 
@@ -81,7 +81,7 @@ Hedefte bazı değişiklikler eksikse, bu, değişiklikler alındıktan sonra Az
 Bu senaryoda, eylemin en iyi yolu, kodunuzda ve değişiklikleri işleyen `try/catch blocks` döngülerin içine eklenmesi, belirli bir öğe alt kümesi için herhangi bir hatayı tespit etmek ve bunları buna göre işlemek için (daha fazla için başka bir depolamaya gönderebilirsiniz) analiz veya yeniden deneme). 
 
 > [!NOTE]
-> Azure Cosmos DB tetikleyicisi, kod yürütme sırasında işlenmeyen bir özel durum oluşursa, varsayılan olarak bir grup değişikliği yeniden denemeyecek. Bu, değişikliklerin hedefe ulaşamamasının nedeni, bunları İşleyemeyeceğiniz anlamına gelir.
+> Azure Işlevleri Cosmos DB için tetikleyerek, kod yürütmeyle ilgili işlenmeyen bir özel durum oluşursa, varsayılan olarak bir grup değişikliği yeniden denenmez. Bu, değişikliklerin hedefe ulaşamamasının nedeni, bunları İşleyemeyeceğiniz anlamına gelir.
 
 Tetikleyicinizin tümünde bazı değişikliklerin alınmadığını fark ederseniz, en yaygın senaryo, **çalışan başka bir Azure işlevi**olduğunu fark edersiniz. Bu, Azure 'da dağıtılan başka bir Azure Işlevi veya bir geliştirici makinesinde **tam olarak aynı yapılandırmaya** (aynı izlenen ve kira kapsayıcıları) sahip olan bir Azure işlevi olabilir ve bu Azure işlevi, yaptığınız değişikliklerin bir alt kümesini çalmaya çalışıyor Azure Işlevinizin işlemesini bekler.
 

@@ -12,12 +12,12 @@ ms.date: 06/18/2019
 ms.author: mimart
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efe9ac4580afc066c3addfd6e19004d0562284c4
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 1bdf275bbafa9c46cfc4577ac2843da0be74c7ef
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68425954"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68477278"
 ---
 # <a name="add-a-gallery-app-to-your-azure-ad-organization"></a>Azure AD kuruluşunuza Galeri uygulaması ekleme
 
@@ -102,7 +102,7 @@ Azure Active Directory (Azure AD), Kurumsal Çoklu oturum açma ile etkinleştir
 
 Artık uygulamayı Azure AD kuruluşunuza eklemişseniz, kullanmak istediğiniz [tek bir oturum açma yöntemi seçin](what-is-single-sign-on.md#choosing-a-single-sign-on-method) ve aşağıdaki ilgili makaleye başvurun:
 
-- [SAML tabanlı çoklu oturum açmayı yapılandırma](configure-single-sign-on-portal.md)
+- [SAML tabanlı çoklu oturum açmayı yapılandırma](configure-single-sign-on-non-gallery-applications.md)
 - [Parola çoklu oturum açmayı yapılandırma](configure-password-single-sign-on-non-gallery-applications.md)
 - [Bağlantılı oturum açmayı Yapılandır](configure-linked-sign-on.md)
 

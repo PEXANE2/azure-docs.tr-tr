@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 7/18/2019
 ms.author: raiye
-ms.openlocfilehash: edf120fa7997cf2d0381dcb7cd3ee0d4e16dd72b
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 2dac76ef0d0d71c11291e63fdb3a7ce307638b50
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321415"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405546"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure Konuk işletim sistemi sürümleri ve SDK uyumluluk matrisi
 Cloud Services için en son Azure Konuk işletim sistemi sürümleri hakkında güncel bilgiler sağlar. Bu bilgiler, Konuk işletim sistemi devre dışı bırakmadan önce yükseltme yolunuzu planlamanızı sağlar. Rollerinizi [Azure Konuk işletim sistemi güncelleştirme ayarlarında][Azure Guest OS Update Settings]açıklandığı şekilde *Otomatik* Konuk işletim sistemi güncelleştirmelerini kullanacak şekilde yapılandırırsanız, bu sayfayı okumanız çok önemli değildir.
@@ -76,7 +76,7 @@ Ekim Konuk işletim sistemi serbest bırakıldı.
 ###### <a name="october-12-2018"></a>**12 Ekim 2018**
 Eylül Konuk işletim sistemi serbest bırakıldı.
 
-## <a name="releases"></a>Yayınlar
+## <a name="releases"></a>Sürümler
 
 ## <a name="family-6-releases"></a>Aile 6 yayınları
 **Windows Server 2019**
@@ -110,7 +110,7 @@ Eylül Konuk işletim sistemi serbest bırakıldı.
 ## <a name="family-5-releases"></a>Aile 5 yayınları
 **Windows Server 2016**
 
-.NET Framework yüklendi: 3,5, 4.6.2, 4.7.2
+.NET Framework yüklendi: 3,5, 4,6
 
 > [!NOTE]
 > OS ailesi 5 için RDP parolasının en az 10 karakter olması gerekir.

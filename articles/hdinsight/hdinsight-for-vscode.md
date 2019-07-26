@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 31f6c34089c1825eca21283b01eae181c8112216
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: da5cdd36e70166d274d50fcb093c0889cf534172
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68312186"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489007"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Visual Studio Code için Spark & Hive araçlarını kullanma
 
@@ -83,9 +83,9 @@ Visual Studio Code kümenize komut dosyaları gönderebilmeniz için önce Azure
 
 ## <a name="link-a-cluster"></a>Bir kümeyi bağlama
 
-### <a name="link-azure-hdinsight"></a>Bağlantısının Azure HDInsight
+### <a name="link-azure-hdinsight"></a>Bağlantı: Azure HDInsight
 
-Bir etki alanı Kullanıcı adı (örneğin: user1@contoso.com) kullanarak bir [Apache ambarı](https://ambari.apache.org/) yönetilen Kullanıcı adı veya kurumsal güvenlik paketi güvenli Hadoop kümesi kullanarak normal bir kümeyi bağlayabilirsiniz.
+Bir etki alanı Kullanıcı adı (örneğin: `user1@contoso.com`) kullanarak bir [Apache ambarı](https://ambari.apache.org/) yönetilen Kullanıcı adı veya kurumsal güvenlik paketi güvenli Hadoop kümesi kullanarak normal bir kümeyi bağlayabilirsiniz.
 
 1. Menü çubuğundan **Görünüm** > **komut paleti...** ' a gidin ve Spark/Hive **girin: Bir kümeyi**bağlayın.
 
@@ -109,7 +109,7 @@ Bir etki alanı Kullanıcı adı (örneğin: user1@contoso.com) kullanarak bir [
    > Küme hem Azure abonelikte hem de bir kümeye bağlandığında, bağlantılı Kullanıcı adı ve parola kullanılır.  
 
 
-### <a name="link-generic-livy-endpoint"></a>Bağlantısının Genel Livy uç noktası
+### <a name="link-generic-livy-endpoint"></a>Bağlantı: Genel Livy uç noktası
 
 1. Menü çubuğundan **Görünüm** > **komut paleti...** ' a gidin ve Spark/Hive **girin: Bir kümeyi**bağlayın.
 
@@ -208,7 +208,7 @@ Aşağıdaki adımları izleyerek etkileşimli PySpark sorguları gönderebilirs
 
    ![pyspark etkileşimli Python etkileşimli penceresi](./media/hdinsight-for-vscode/pyspark-interactive-python-interactive-window.png) 
 
-7. **"%% Info"** yazın ve sonra iş bilgilerini görüntülemek için **SHIFT + enter** tuşlarına basın. Seçim
+7. **"%% Info"** yazın ve sonra iş bilgilerini görüntülemek için **SHIFT + enter** tuşlarına basın. (İsteğe bağlı)
 
    ![iş bilgilerini görüntüle](./media/hdinsight-for-vscode/pyspark-interactive-view-job-information.png)
 
@@ -309,7 +309,7 @@ Bir dosya gönderirseniz,. vscode klasörünün iş klasörüne otomatik olarak 
     | name | Bu oturumun adı | dize |
     | conf | Spark yapılandırma özellikleri | Anahtar = Val eşlemesi |
 
-    Yanıt gövdesi   
+    Yanıt Gövdesi   
     Oluşturulan Batch nesnesi.
 
     | name | description | türü | 

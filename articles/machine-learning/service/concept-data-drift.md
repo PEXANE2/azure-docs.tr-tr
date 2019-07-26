@@ -1,7 +1,7 @@
 ---
-title: Veri değişikliklerini izleme (Önizleme)
+title: Veri drizleme (Önizleme)
 titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning hizmeti için veri değişikliklerini nasıl izleyebilirsiniz öğrenin.
+description: Azure Machine Learning hizmetinin veri kayması için nasıl izleyebileceğinizi öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,55 +10,55 @@ ms.reviewer: jmartens
 author: cody-dkdc
 ms.author: copeters
 ms.date: 06/20/2019
-ms.openlocfilehash: a03e3124647869e7148f271810bb523986a851c6
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 13f73718fabd711e9c71a56ac4537b2ebef8a411
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442377"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68371092"
 ---
-# <a name="what-is-data-drift-monitoring-preview"></a>Veri nedir, izleme (Önizleme) kayma?
+# <a name="what-is-data-drift-monitoring-preview"></a>Veri kayması izleme (Önizleme) nedir?
 
-Veri değişikliklerini veri dağıtımındaki farklıdır. Machine learning bağlamında, eğitilen makine öğrenimi modellerini düşürülmüş tahmini Performans nedeniyle kayması karşılaşabilirsiniz. Eğitim verilerini ve Öngörüler yapmak için kullanılan verileri arasında değişikliklerini izleme, performans sorunlarını belirlemenize yardımcı olabilir.
+Veri dağıtımı, verilerin dağıtımında değişiklik olduğunu. Makine öğrenimi bağlamında eğitilen makine öğrenimi modelleri, Drın nedeniyle düşürülmüş tahmin performansına neden olabilir. Öngörülere yönelik eğitim verileri ve tahmin yapmak için kullanılan veriler arasındaki izleme, performans sorunlarını algılamaya yardımcı olabilir.
 
-Makine öğrenimi modelleri yalnızca onları eğitmek için kullanılan veri olarak uygundur. Modelleri, kendi performans izleme olmadan Üretim dağıtımı sonrasında saptanmayan ve verebilirliğinde üzerindeki etkileri neden olabilir. Veri değişikliklerini izleme ile algılayın ve için veri değişikliklerini uyarlayabilirsiniz. 
+Makine öğrenimi modelleri, yalnızca bunları eğmekte kullanılan veriler kadar iyidir. Modelinin performansını izlemeden izlemeye dağıtım, algılanmadan ve bu etkileri ortaya çıkmasına neden olabilir. Veri kayması izlemeyle, veri kayması 'nı algılayabilir ve bunlarla uyum sağlayabilirsiniz. 
 
-## <a name="when-to-monitor-for-data-drift"></a>İçin veri değişikliklerini izlemek ne zaman?
+## <a name="when-to-monitor-for-data-drift"></a>Veri kayması ne zaman izlenir?
 
-İnşa ediyoruz ölçümler şunları içerir:
+İzleyebilmemiz için ölçümler şunları içerir:
 
-+ Büyüklüğünü kayması (kayması katsayısı)
-+ Nedenini kayması (kayması katkı özelliği tarafından)
-+ Uzaklık ölçümleri (Wasserstein, enerji, vb.)
++ Drın büyüklüğü (DRFT katsayısı)
++ Değişikliklerini 'in nedeni (özelliğe göre Drın katkısı)
++ Uzaklık ölçümleri (Wasserstein, enerji vb.)
 
-Bu izleme ile uyarı veya Eylemler kayması algılanır ve veri bilimi insanı sorunun kök nedenini araştırmak ayarlanabilir. 
+Bu izleme söz konusu olduğunda, drfın algılandığında uyarı veya eylemler ayarlanabilir ve veri bilimcu sorunun asıl nedenini araştırabilir. 
 
-Dağıtılan modeliniz için girdi verilerini değişebilir düşünüyorsanız, veri değişikliklerini algılama kullanmayı düşünmeniz gerekir.
+Dağıtılan modelinize ait giriş verilerinin değişolabileceğini düşünüyorsanız, veri drmasını algılamayı kullanmayı göz önünde bulundurmanız gerekir.
 
-## <a name="how-data-drift-is-monitored-in-azure-machine-learning-service"></a>Azure Machine Learning hizmeti veri değişikliklerini nasıl izlenir
+## <a name="how-data-drift-is-monitored-in-azure-machine-learning-service"></a>Azure Machine Learning hizmetinde veri kayması nasıl izlenir
 
-Kullanarak **Azure Machine Learning hizmeti**, veri değişikliklerini, veri kümeleri veya dağıtımları ile izlenir. İçin veri değişikliklerini izlemek için bir temel veri kümesi - genellikle eğitim veri kümesi için bir model - belirtilir. İkinci bir veri kümesi - genellikle bir dağıtımdan - model giriş verileri toplanan temel veri kümesinde sınanır. Her iki veri kümelerinin olduğunu [profili](how-to-explore-prepare-data.md#explore-with-summary-statistics) ve giriş verileri için farklı izleme hizmeti. İki veri kümesi arasındaki farkları algılamak için makine öğrenme modeli eğitilir. Modelin performans değişikliklerini katsayısı, iki veri kümesi arasında kayması büyüklüğünü ölçer dönüştürülür. Kullanarak [model interpretability](machine-learning-interpretability-explainability.md) kayması katsayısı için katkıda bulunan özellikler hesaplanır. Veri kümesi profilinden her özellik hakkında istatistiksel bilgi izlenir. 
+**Azure Machine Learning hizmetini**kullanarak veri kümeleri, veri kümeleri veya dağıtımlar aracılığıyla izlenir. Bir taban çizgisi veri kümesi (genellikle bir model için eğitim veri kümesi) için veri kayması izlemek üzere belirtilir. İkinci bir veri kümesi-genellikle bir dağıtımdan toplanan model giriş verileri, taban çizgisi veri kümesine göre test edilir. Her iki veri kümesi de veri Drın izleme hizmetine [profil](how-to-explore-prepare-data.md#explore-with-summary-statistics) oluşturulur ve giriş yapılır. Bir makine öğrenimi modeli, iki veri kümesi arasındaki farkları tespit etmek için eğitilir. Modelin performansı, iki veri kümesi arasındaki drifit 'in boyutunu ölçen DRFT katna dönüştürülür. [Model yorumlenebilirliğini](machine-learning-interpretability-explainability.md) kullanarak, değişikliklerini katlarıyla katkı sağlayan özellikler hesaplanır. Veri kümesi profilinden her bir özellik hakkındaki istatistiksel bilgiler izlenir. 
 
-## <a name="data-drift-metric-output"></a>Veri değişikliklerini ölçüm çıkış
+## <a name="data-drift-metric-output"></a>Veri drındaki ölçüm çıkışı
 
-Kayması ölçümleri görüntülemek için birden çok yolu vardır:
+DRFT ölçümlerini görüntülemenin birden çok yolu vardır:
 
-* Jupyter pencere öğesi kullanın.
-* Kullanım `get_metrics()` herhangi işlevi `datadriftRun` nesne.
-* Modelinizde Azure portalında ölçümleri görüntüleyin
+* [Jupyıter pencere öğesini kullanın.](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) `RunDetails`
+* İşlevi herhangi bir `datadriftRun` nesne üzerinde kullanın. `get_metrics()`
+* Modelinizdeki Azure portal ölçümleri görüntüleyin
 
-Aşağıdaki ölçümler, veri değişikliklerini görevin çalışma her yinelemede kaydedilir:
+Aşağıdaki ölçümler, bir veri Drın görevi için her bir çalıştırma yinelemesinde kaydedilir:
 
 |Ölçüm|Açıklama|
 --|--|
-wasserstein_distance|Tek boyutlu sayısal dağıtım için tanımlanan istatistiksel uzaklığı.|
-energy_distance|Tek boyutlu sayısal dağıtım için tanımlanan istatistiksel uzaklığı.|
-datadrift_coefficient|Resmi olarak Matthews korelasyon katsayısı, 1 ile 1 arasında değişen bir gerçek sayı. Kayması bağlamında, 0 hiçbir kayması gösterir ve 1, en fazla kayması gösterir.|
-datadrift_contribution|Katkıda bulunan farklı özellikler önemini özelliği.|
+wasserstein_distance|Tek boyutlu sayısal dağıtım için tanımlanan istatistiksel uzaklık.|
+energy_distance|Tek boyutlu sayısal dağıtım için tanımlanan istatistiksel uzaklık.|
+datadrift_coefficient|Resmi olarak,-1 ile 1 arasında değişen gerçek sayı. Değişikliklerini bağlamında 0, değişikliklerini ve 1 ' in maksimum değişikliklerini olduğunu gösterir.|
+datadrift_contribution|Drift 'e katkıda bulunan özelliklerin özellik önemi.|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Örneklere bakın ve için veri değişikliklerini izleme hakkında bilgi edinin:
+Örneklere bakın ve veri kayması için nasıl izleneceğini öğrenin:
 
-+ [Azure Kubernetes Service (AKS) aracılığıyla dağıtılan modellerinde veri değişikliklerini izleme hakkında bilgi edinin](how-to-monitor-data-drift.md)
-+ Denemenin [Jupyter not defteri örnekleri](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/data-drift/)
++ [Azure Kubernetes hizmeti (AKS) ile dağıtılan modellerdeki verileri izlemeyi öğrenin](how-to-monitor-data-drift.md)
++ [Jupyter Notebook örnekleri](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/data-drift/) deneyin

@@ -6,14 +6,14 @@ metadata:
   title: Azure Active Directory Identity Governance belgeleri | Microsoft Docs
   description: 'Çalışanlar ve iş ortakları arasında kimlik yaşam döngüsü idaresi, erişim yaşam döngüsü idaresi ve güvenli yönetim hakkında bilgi edinin.'
   services: active-directory
-  author: rolyon
-  manager: mtillman
+  author: msaburnley
+  manager: daveba
   ms.service: active-directory
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 04/18/2019
-  ms.author: rolyon
+  ms.author: ajburnle
 abstract:
   description: 'Azure Active Directory (Azure AD) Identity Governance, kuruluşlara çalışanlar ve iş ortakları arasında kimlik yaşam döngüsünü ve erişim yaşam döngüsünü idare etmenin yanı sıra yönetimin güvenliğini sağlama becerisi kazandırır.'
   aside:

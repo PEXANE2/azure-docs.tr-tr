@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 07/15/2019
-ms.openlocfilehash: fa64177dfa5bfadad5db4116224b94ffac2fadc0
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.date: 07/19/2019
+ms.openlocfilehash: 1cc8828f5a936b130480c2c7516d00b8bee6760f
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68233042"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68357268"
 ---
 # <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Azure SQL veritabanı ayrılmış kapasitesi ile SQL veritabanı işlem kaynakları için ön ödeme
 
@@ -55,7 +55,7 @@ Aşağıdaki tablo gerekli alanları açıklar.
 |Subscription|SQL veritabanı ayrılmış kapasite ayırması için ödeme yapmak üzere kullanılan abonelik. Abonelik üzerindeki ödeme yöntemi, SQL veritabanı ayrılmış kapasite ayırması için ön maliyetler üzerinden ücretlendirilir. Abonelik türü bir kurumsal anlaşma olmalıdır (teklif numaraları: MS-AZR-0017P veya MS-AZR-0148P) veya kullandıkça öde fiyatlandırmasıyla tek bir anlaşma (teklif numaraları: MS-AZR-0003P veya MS-AZR-0023P). Kurumsal abonelik için ücretler kaydın maddi işlem bakiyesinden düşülür ve fazla kullanım olarak ücretlendirilir. Kullandıkça Öde fiyatlandırmasına sahip bireysel bir abonelik için ücretler, abonelik üzerindeki kredi kartına veya fatura ödeme yöntemine faturalandırılır.|
 |`Scope`       |VCore rezervasyonunun kapsamı bir aboneliği veya birden çok aboneliği (paylaşılan kapsamı) kapsayabilir. Şunları seçerseniz: <br/><br/>**, Sanal**çekirdek ayırma indirimi, faturalandırma bağlamınızın içindeki aboneliklerde çalışan SQL veritabanı örneklerine uygulanır. Kurumsal müşteriler için, paylaşılan kapsam kayıt içindedir ve kayıt dahilindeki tüm abonelikleri içerir. Kullandıkça Öde müşterileri için, paylaşılan kapsam, hesap yöneticisi tarafından oluşturulan tüm Kullandıkça Öde aboneliklerdir.<br/><br/>**Tek abonelik**, sanal çekirdek ayırma indirimi Bu abonelikteki SQL veritabanı örneklerine uygulanır. <br/><br/>**Tek kaynak grubu**, rezervasyon indirimi SEÇILI abonelikteki SQL veritabanı örneklerine ve bu abonelikte seçili kaynak grubuna uygulanır.|
 |Bölge      |SQL veritabanı ayrılmış kapasite rezervasyonu kapsamındaki Azure bölgesi.|
-|Dağıtım türü|Ayırmasını satın almak istediğiniz SQL kaynak türü.|
+|Dağıtım Türü|Ayırmasını satın almak istediğiniz SQL kaynak türü.|
 |Performans Katmanı|SQL veritabanı örnekleri için hizmet katmanı.
 |Terim        |Bir yıl veya üç yıl.|
 |Miktar    |SQL veritabanı ayrılmış kapasite ayırma içinde satın alınan işlem kaynakları miktarı. Bu miktar, seçili Azure bölgesindeki ve performans katmanındaki, ayrılan ve fatura iskontosunu alacak olan sanal çekirdekler sayısıdır. Örneğin, Doğu ABD bölgesinde 5. nesil 16 sanal çekirdeklerin toplam işlem kapasitesine sahip SQL veritabanı örneklerini çalıştırmayı planlıyorsanız veya planlarken, tüm örneklerin avantajını en üst düzeye çıkarmak için miktarı 16 olarak belirtirsiniz. |
@@ -66,9 +66,9 @@ Aşağıdaki tablo gerekli alanları açıklar.
 
 ## <a name="cancellations-and-exchanges"></a>İptaller ve alışverişlerde
 
-SQL veritabanı ayrılmış kapasite ayırmayı iptal etmeniz gerekirse,% 12 erken sonlandırma ücreti olabilir. Para iadeleri satın aldığınız fiyattan veya geçerli rezervasyon fiyatından düşük olana göre hesaplanır. Para iadesi yıllık 50.000 ABD doları ile sınırlıdır. Yapılacak para iadesi, %12 erken sonlandırma ücreti kesildikten sonra kalan kullanım süresine göre hesaplanır. İptal istemek için Azure portal rezervasyonuna gidin ve bir destek isteği oluşturmak için **para iadesi** ' ni seçin.
+SQL veritabanı ayrılmış kapasite ayırmayı iptal etmeniz gerekirse,% 12 erken sonlandırma ücreti olabilir. Para iadeleri satın aldığınız fiyattan veya geçerli rezervasyon fiyatından düşük olana göre hesaplanır. Para iadesi yıllık 50.000 ABD doları ile sınırlıdır. Yapılacak para iadesi, %12 erken sonlandırma ücreti kesildikten sonra kalan kullanım süresine göre hesaplanır. İptal etmek için Azure portal rezervasyonuna gidin ve **para iadesi**' ni seçin.
 
-SQL Veritabanı yedek kapasite rezervasyonunuzun bölgesini, dağıtım türünü, performans katmanını veya süresini değiştirmeniz gerekiyorsa aynı ya da daha yüksek maliyete sahip olan başka bir rezervasyonla değiştirebilirsiniz. Yeni ayırma işleminin başlangıç tarihi değiştirilen ayırma işleminin başlangıç tarihiyle aynı olmaz. 1 veya 3 yıllık süre, yeni ayırma işlemini oluşturduğunuz tarihten itibaren başlatılır. Bir Exchange istemek için Azure portal ayırma bölümüne gidin ve bir destek isteği oluşturmak için **Exchange** ' i seçin.
+SQL Veritabanı yedek kapasite rezervasyonunuzun bölgesini, dağıtım türünü, performans katmanını veya süresini değiştirmeniz gerekiyorsa aynı ya da daha yüksek maliyete sahip olan başka bir rezervasyonla değiştirebilirsiniz. Yeni ayırma işleminin başlangıç tarihi değiştirilen ayırma işleminin başlangıç tarihiyle aynı olmaz. 1 veya 3 yıllık süre, yeni ayırma işlemini oluşturduğunuz tarihten itibaren başlatılır. Exchange için Azure portal rezervasyon bölümüne gidin ve **Exchange**' i seçin.
 
 Rezervasyonları Exchange veya para iadesi hakkında daha fazla bilgi için bkz. [rezervasyon alışverişi ve para](../billing/billing-azure-reservations-self-service-exchange-and-refund.md)iadesi.
 

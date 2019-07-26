@@ -1,235 +1,158 @@
 ---
-title: Azure Active Directory kimlik koruması nedir (yenilenebilecek)? | Microsoft Docs
-description: Azure Active Directory kimlik koruması nedir (yenilenebilecek)?
+title: Azure Active Directory Kimlik Koruması (YENİLENDİ) nedir? | Microsoft Docs
+description: Azure Active Directory Kimlik Koruması (YENİLENDİ) nedir?
 services: active-directory
-keywords: Azure active directory kimlik koruması, bulut uygulaması bulma, yönetme, uygulamaları, güvenlik, risk, risk düzeyi, güvenlik açığı, güvenlik ilkesi
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.date: 10/03/2018
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f6c2f36e1061243851b37da47659aaf7a18e8d6
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: a5d82f665cc837e5dbd2d7efbf16c7ae94e1b2b7
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67673018"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68333906"
 ---
-# <a name="what-is-azure-active-directory-identity-protection-refreshed"></a>Azure Active Directory kimlik koruması nedir (yenilenebilecek)?
+# <a name="what-is-azure-active-directory-identity-protection-refreshed"></a>Azure Active Directory Kimlik Koruması (YENİLENDİ) nedir?
 
-Kimlik koruması deneyimi daha iyi, kuruluşunuzun kimliklerini korumanıza yenilendi. Bu yenilenmiş deneyim sağlar:
+Kuruluşunuzun kimliklerini daha iyi korumak için kimlik koruması deneyimi yenilendi. Bu yenilenen deneyim şunları sağlar:
 
-- You¬ kullanıcı riski ve oturum açma riski en uygun risk etrafında döner yeniden tasarlanan yönetici deneyimi
+- ¬-Kullanıcı riski ve oturum açma riski ile en çok alakalı riski taşıyan yeniden tasarlanan yönetici deneyimi
+- Filtreleme, sıralama ve akıllı indirmeler desteğiyle güçlü araştırmalar deneyimi
+- Tehlikede olabilecek kullanıcılara yönelik çabalarınızı önceliklendirmenize yardımcı olmak için geliştirilmiş Kullanıcı riski hesaplaması
+- Risk verilerine programlı erişim sağlamak için yeni API desteği
+- Kullanıcılarınızı hemen korumanıza olanak sağlayan basitleştirilmiş yönetici geri bildirim işlemi
+- Risk değerlendirmelerinin doğruluğunu artırmak için yeni denetimli makine öğrenimi
 
-- Güçlü araştırmalar filtreleme, sıralama ve akıllı yüklemeleri için destek deneyimini
+Güvenlik, Günümüzde kuruluşlar için önemli bir konudur. Saldırganlar bir kullanıcının kimliğini çalarak bir ortama erişim kazanıyorsa güvenlik ihlallerinin çoğu gerçekleşir. Yıllar boyunca saldırganlar, üçüncü taraf ihlallerinin kullanılmasıyla ve gelişmiş kimlik avı saldırıları kullanılarak giderek daha etkili hale gelmiştir. Saldırganlar hatta düşük ayrıcalıklı kullanıcı hesaplarına erişim elde etmekle, bu kullanıcıların, yan yana hareket aracılığıyla önemli şirket kaynaklarına erişmesini nispeten daha kolay hale gelir. 
 
-- Kullanıcı risk hesaplama tehlikeye olasılığı en yüksek olan kullanıcıları doğrultusunda çabalarına öncelik yardımcı olması için geliştirildi
+Bu tehditlere yanıt vermek için Azure AD Kimlik Koruması şunları yapabilirsiniz: 
 
-- Yeni API desteği risk verilerini için programlı erişim etkinleştirmek için
+- Güvenliği aşılmış kimliklerin karşı önlem almasını önleme 
+- Şüpheli etkinlik algılandığında riski otomatik olarak azaltma 
+- Olası güvenlik açıklarını gidermek için riskli kullanıcıları ve oturum açma işlemlerini araştırın  
+- Bir kullanıcının riski belirtilen bir eşiğe ulaştığında uyarı olun 
 
-- Hemen kullanıcılarınızın korunmasına olanak tanıyan Basitleştirilmiş Yönetim geri bildirim süreci
-
-- Yeni denetimli makine öğrenimi risk değerlendirmeleri doğruluğunu artırmak için
-
-
-
-Güvenlik, kuruluşlar için güvenliğin çok önemli bugün sağlıyor. Güvenlik ihlallerinin ele çoğunu, saldırganların bir kullanıcının kimliğini çalarak bir ortama erişimi elde etmek zaman yerleştirin. Yıllar içinde saldırganlar kullanarak gelişmiş kimlik avı saldırıları ve üçüncü taraf ihlallerini yararlanarak, giderek daha etkili hale gelmiştir. Saldırganlar düşük ayrıcalıklı kullanıcı hesaplarına bile erişim hemen sonra bunları yanal hareket önemli şirket kaynaklarına erişim kazanmak oldukça kolay bir işlemdir. 
-
-Bu tehditlere yanıt vermek için Azure AD kimlik koruması sağlar: 
-
-- Proaktif olarak güvenliği aşılmış kimlik kötüye gelen engelle 
-
-- Şüpheli etkinlik algılandığında otomatik olarak riski azaltın 
-
-- Riskli kullanıcılar ve oturum açma adresi olası güvenlik açıkları için inceleyin  
-
-- Bir kullanıcının risk belirtilen bir eşiğe ulaştığında uyarı 
-
- 
-
-Azure AD kimlik koruması, Azure Active Directory Premium, bir kullanıcının kimlik güvenliği aşıldığında otomatik olarak yanıt verecek şekilde ilkelerini yapılandırmanıza olanak sağlayan P2 özelliği veya birisi dışında olduğunda hesap sahibi kullanarak oturum çalışılıyor, kimlik. Azure AD tarafından sağlanan diğer koşullu erişim denetimleri ek olarak bu ilkeleri ya da otomatik olarak erişim ya da parola sıfırlama veya çok faktörlü kimlik doğrulaması zorlama gibi başlatma risk azaltma eylemleri engelleyebilirsiniz. Ayrıca, kimlik koruması, risk ve olası güvenlik ihlalleri, kuruluşunuzda daha derin bir anlayış kazanmak için izleme ve raporlama yetenekleri sağlar. 
+Azure AD Kimlik Koruması, bir kullanıcının kimliği tehlikeye atıldığında veya hesap sahibi dışında bir kişi tarafından oturum açmaya çalışırken otomatik olarak yanıt vermek üzere ilkeleri yapılandırmanızı sağlayan Azure Active Directory Premium P2 özelliğidir. IDENTITY. Bu ilkeler, Azure AD tarafından sunulan diğer koşullu erişim denetimlerine ek olarak, erişimi otomatik olarak engelleyebilir veya parola sıfırlama veya Multi-Factor Authentication zorlaması gibi risk azaltma eylemlerini başlatabilir. Ayrıca, kimlik koruması, kuruluşunuzda risk ve potansiyel tehditlerle ilgili daha ayrıntılı bilgi edinmek için izleme ve raporlama özellikleri sağlar. 
 
 >[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWsS6Q]
 
-
 ## <a name="risk-events"></a>Risk olayları
 
-Azure AD kimlik koruması, aşağıdaki risk olaylarını algılar: 
-
- 
+Azure AD Kimlik Koruması aşağıdaki risk olaylarını algılar: 
 
 | Risk olayı türü | Açıklama | Algılama türü |
-| ---             | ---         | ---            |
-| Alışılmadık seyahat | Kullanıcının son oturum açma işlemleri üzerinde temel alışılmadık bir konumdan oturum açın. | Çevrimdışı |
-| Anonim IP adresi | Anonim bir IP adresinden oturum açın (örneğin: Tor tarayıcısı, anonymizer VPN'ler). | Gerçek zamanlı |
-| Alışılmadık oturum açma özellikleri | Oturum özellikleri değil gördük son belirtilen kullanıcı için oturum açın. | Gerçek zamanlı |
-| Kötü amaçlı yazılım bağlı IP adresi | Bir bağlı kötü amaçlı IP adresinden oturum açın | Çevrimdışı |
-| Kimlik bilgilerinin sızdırılması | Bu risk olayı kullanıcının geçerli kimlik bilgilerinin sızdırılması gösterir. | Çevrimdışı |
+| --- | --- | --- |
+| Alışılmadık seyahat | Kullanıcının en son oturum açma işlemlerini temel alarak sıradan bir konumdan oturum açın. | Çevrimdışı |
+| Anonim IP adresi | Anonim IP adresinden oturum açın (örneğin: Tor tarayıcısı, anonimleştirici VPN 'Ler). | Gerçek zamanlı |
+| Bilinmeyen oturum açma özellikleri | Belirtilen kullanıcı için son gördüğdiğimiz özelliklerle oturum açın. | Gerçek zamanlı |
+| Kötü amaçlı yazılım bağlantısı içeren IP adresi | Kötü amaçlı yazılımdan bağlantılı IP adresinden oturum açın | Çevrimdışı |
+| Sızdırılan kimlik bilgileri | Bu risk olayı kullanıcının geçerli kimlik bilgilerinin sızdırıldığını gösterir | Çevrimdışı |
 
+## <a name="types-of-risk"></a>Risk türleri 
 
-
-
-
-## <a name="types-of-risk"></a>Risk türü 
-
-Kimlik koruması, risk iki türlerine dayanır:
+Kimlik koruması iki tür riske dayalıdır:
 
 - Oturum açma riski
-
 - Kullanıcı riski
 
 ### <a name="sign-in-risk"></a>Oturum açma riski
 
-Oturum açma riski bir belirli kimlik doğrulama isteği kimlik sahibinin yetkilendirdiği değil olasılık temsil eder.
+Bir oturum açma riski, belirli bir kimlik doğrulama isteğinin kimlik sahibi tarafından yetkilendirilmemiş olma olasılığını temsil eder.
 
-İki değerlendirmeleri, oturum açma riski vardır: 
+Oturum açma riskinin iki değerlendirmesi vardır: 
 
-- **Oturum açma riski (gerçek zamanlı)** -oturum açma riski (gerçek zamanlı) oturum açma işlemi sırasında tetikleyen tüm gerçek zamanlı algılama temel alır.  
-
-- **Oturum açma riski (toplama)** -oturum açma riski (toplam) bir oturum açma, toplam riskidir. Bir machine learning göz önünde bulundurur modeli tarafından hesaplanır:
-
-    - Gerçek zamanlı algılama (yukarıda açıklanmıştır)
-    
-    - (Oturum açma gerçekleştikten sonra harekete) çevrimdışı algılamalar 
-    
-    - Oturum açmanın diğer tüm özellikleri
-
+- **Oturum açma riski (gerçek zamanlı)** -oturum açma riski (gerçek zamanlı), oturum açma işlemi sırasında tetiklenecek tüm gerçek zamanlı algılamaları temel alır.  
+- **Oturum açma riski (toplama)** -oturum açma riski (toplama), oturum açma riskinin toplam riskidir. Şunları göz önünde bulundurur:
+   - Gerçek zamanlı algılamalar (yukarıda açıklanmıştır)
+   - Çevrimdışı algılamalar (oturum açma işleminden sonra harekete geçirilir) 
+   - Oturum açma özelliğinin diğer tüm özellikleri
 
 ### <a name="user-risk"></a>Kullanıcı riski
 
-Kullanıcı riski, belirli bir kimlik güvenliği ihlal olasılığını temsil eder. 
+Bir Kullanıcı riski, belirli bir kimliğin tehlikeye düşmesi olasılığını temsil eder. 
 
-Kullanıcı riski kullanıcıyla ilişkili tüm riskleri göz önünde bulundurularak hesaplanır:
+Kullanıcı riski, kullanıcıyla ilişkili tüm riskler göz önünde bulundurularak hesaplanır:
 
 - Tüm riskli oturum açma işlemleri
-- Bir oturum açma için bağlı olmayan tüm risk olayları
-- Geçerli kullanıcı riski
-- Tüm risk düzeltme veya işten çıkarma kullanıcı tarih kasa üzerinde gerçekleştirilen eylemler
+- Bir oturum açma ile bağlantılı olmayan tüm risk olayları
+- Geçerli Kullanıcı riski
+- Kullanıcı tarihi bitiş tarihine kadar tüm risk düzeltmeleri veya geri alma eylemleri
 
+## <a name="how-identity-protection-detects-risk"></a>Kimlik koruması riski nasıl algılar  
 
+Azure AD, oturum açma işlemleri sırasında gerçek zamanlı olarak algılanan her iki sinyali de ve kullanıcılarla oturum açma etkinlikleriyle ilgili gerçek zamanlı olmayan sinyalleri kullanarak, anomali ve şüpheli etkinlikleri algılamak için makine öğrenimini kullanır. Kimlik koruması, bu verileri kullanarak, bir kullanıcının kimliğini her doğruladığında gerçek zamanlı bir oturum açma riskini hesaplar ve her kullanıcı için genel bir Kullanıcı risk düzeyini belirler. Kimlik koruması, kimlik koruması Kullanıcı riskini ve oturum açma risk ilkelerini yapılandırarak bu risk algılamalarından otomatik olarak işlem yapmanıza olanak sağlar.  
 
-## <a name="how-identity-protection-detects-risk"></a>Kimlik koruması, risk nasıl algılar?  
-
-Azure AD, anormallikleri ve şüpheli etkinlikleri algılamak için makine öğrenimini kullanıyor, algılandı. her iki sinyalleri kullanarak gerçek zamanlı sırasında oturum açma işlemleri de gerçek olmayan süresi sinyalleri gibi kullanıcı ve oturum açma etkinlikleriyle ilgili. Bu verileri kullanarak, kimlik koruması, her kullanıcı için genel bir kullanıcı risk düzeyi belirleyen yanı sıra bir kullanıcının kimlik her zaman gerçek zamanlı bir oturum açma riski hesaplar. Kimlik koruması otomatik olarak bu risk algılamalar üzerinde yapılandırma kimlik koruması kullanıcı riski ve oturum açma riski ilkeleri tarafından harekete geçmenizi sağlar.  
-
- 
-
-Kimlik Koruması'nın risk nasıl algıladığı anlamak için iki önemli kavram vardır: kullanıcı riski ve oturum açma riski. Oturum açma riski bir belirli kimlik doğrulama isteği kimlik sahibinin yetkilendirdiği değil olasılık yansıtır. Oturum açma risk iki tür vardır: Gerçek zamanlı ve toplam. Belirtilen oturum açma denemesinin (örneğin, anonim IP adreslerinden oturum açma işlemleri) zaman gerçek zamanlı riskli oturum açma algılandı. Toplam oturum açma riski olduğu algılanan gerçek zamanlı oturum toplamını risklerini de kullanıcı ile ilişkili herhangi bir sonraki gerçek zamanlı risk olayları oturum açmalar (mümkün olmayan seyahat gibi). Kullanıcı riski kötü bir aktör belirli bir kimlik güvenliği ihlal genel olasılığını yansıtır. Kullanıcı riski içeren belirli bir kullanıcı için tüm risk etkinlikler dahil olmak üzere:
+Kimlik korumasının riski nasıl algıladığını anlamak için, iki önemli kavram vardır: Kullanıcı riski ve oturum açma riski. Oturum açma riski, belirli bir kimlik doğrulama isteğinin kimlik sahibi tarafından yetkilendirilmemiş olma olasılığını yansıtır. İki tür oturum açma riski vardır: gerçek zamanlı ve toplam. Belirtilen oturum açma girişimi (anonim IP adreslerinden oturum açma işlemleri gibi) sırasında gerçek zamanlı oturum açma riski tespit edilir. Toplam oturum açma riski, algılanan gerçek zamanlı oturum açma risklerinin yanı sıra kullanıcının oturum açma işlemleri ile ilişkili sonraki gerçek zamanlı olmayan risk olaylarını (imkansız seyahat gibi) toplamaktadır. Kullanıcı riski, hatalı aktörün belirli bir kimliğin güvenliğinin aşılmasına neden olan bir genel olasılığı yansıtır. Kullanıcı riski, belirli bir kullanıcı için aşağıdakiler de dahil olmak üzere tüm risk etkinliklerini içerir:
 
 - Gerçek zamanlı oturum açma riski
 - Sonraki oturum açma riski
-- Riskli kullanıcı algılamalar.   
+- Riskli Kullanıcı algılamaları.   
 
- 
-
- 
  ![Akış](./media/overview-v2/01.png)
- 
 
- 
-
-Kimlik koruması, risk algılama için temel akış ve yanıt herhangi belirli oturum açma için yukarıdaki grafikte özetlenir.  
-
- 
-
- 
-
- 
+Kimlik koruması risk algılaması ve belirli bir oturum açma için yanıt için temel akış, yukarıdaki grafikte özetlenir.  
 
 ## <a name="common-scenarios"></a>Genel senaryolar 
 
-Bir Contoso çalışanı örneğe göz atalım. 
+Bir contoso çalışanı örneğine bakalım. 
 
-1. Exchange Online'a Tor tarayıcıdan oturum açmak bir çalışan çalışır. Oturum açma zaman Azure AD, gerçek zamanlı risk olaylarını algılar. 
+1. Bir çalışan Exchange Online 'da Tor tarayıcısından oturum açmaya çalışır. Azure AD, oturum açma sırasında gerçek zamanlı risk olaylarını algılar. 
+2. Azure AD, çalışanın, bir ortam oturumu risk düzeyini tetikleyerek adsız bir IP adresinden oturum açmasını algılar. 
+3. Contoso BT Yöneticisi kimlik koruması oturum açma riski koşullu erişim ilkesini yapılandırdığından, çalışana bir MFA istemi tarafından istem yapılır. İlke, orta veya daha yüksek bir oturum açma riski için MFA gerektirir. 
+4. Çalışan MFA isteğini geçirir ve Exchange Online 'a erişir ve Kullanıcı risk düzeyi değiştirilmez. 
 
-2. Azure AD, çalışan bir anonim IP adresinden orta düzeyde riskli oturum açma düzeyini tetikleme oturum açmak için olduğunu algılar. 
+Arka planda ne oldu? Tor tarayıcısından oturum açma girişimi, anonim IP adresi için Azure AD 'de gerçek zamanlı bir oturum açma riski tetikledi. Azure AD isteği işlendiği için, çalışanın oturum açma risk düzeyi eşiği (orta) karşıladığı için kimlik koruması 'nda yapılandırılan oturum açma risk ilkesini uyguladık. Çalışan daha önce MFA 'ya kaydolduğundan bu yana MFA Challenge 'a yanıt verebiliyordu. Azure AD 'ye gelen MFA sınamasını, büyük olasılıkla meşru kimlik sahibi olan ve Kullanıcı risk düzeyi artmayan bir şekilde geçebilme yeteneğidir. 
 
-3. Contoso'nun BT Yöneticisi oturum açma kimlik Koruması riski koşullu erişim ilkesi yapılandırıldığı için çalışan bir MFA istemi tarafından sınandı. İlkeyi bir oturum açma riskini Orta büyüklükte ya da daha yüksek için mfa'yı gerektirir. 
+Ancak çalışana oturum açmaya çalışan bir ne olursa? 
 
-4. Çalışan MFA istemi geçirir ve Exchange Online erişir ve kendi kullanıcı risk düzeyi değiştirilmez. 
+1. Çalışanların kimlik bilgileriyle kötü niyetli bir aktör, IP adreslerini gizleyecek şekilde, Tor tarayıcısından Exchange Online hesabıyla oturum açmaya çalışır. 
+2. Azure AD, oturum açma girişiminin adsız bir IP adresinden olduğunu algılar ve gerçek zamanlı bir oturum açma riskini tetikler. 
+3. Contoso BT Yöneticisi, kimlik koruması oturum açma riskini, oturum açma riski orta ya da daha yüksek olduğunda MFA gerektirirken koşullu erişim ilkesini yapılandırdığından, kötü amaçlı aktör bir MFA istemi tarafından istenir. 
+4. Kötü amaçlı aktör MFA sınamasını başarısız olur ve çalışanın Exchange Online hesabına erişemez. 
+5. Başarısız MFA istemi, kaydedilecek bir risk olayını tetikledi ve gelecekteki oturum açma işlemleri için Kullanıcı riskini artırmalıdır. 
 
-Arka planda ne oldu? Tor tarayıcıdan oturum açma denemesi gerçek zamanlı bir oturum açma riski anonim IP adresi için Azure AD'de tetiklenir. Azure AD isteği işlendi olarak, kimlik koruması çalışanın oturum açma riski düzeyi (Orta) eşiğine çünkü yapılandırılmış oturum açma riski ilkesi uygulanır. Çalışan, daha önce MFA için kaydolduğunu olduğundan, yanıt ve MFA testini geçirin. MFA testini başarıyla geçirmek için kendi yeteneği, büyük olasılıkla meşru kimlik sahibi oldukları ve kendi kullanıcı risk düzeyi artmıyor Azure AD'ye sinyal. 
+Kötü amaçlı bir aktör Sarah hesabına erişmeye çalışmış olduğuna göre, çalışanın bir sonraki oturum açma denemesinde neler olacağını görelim. 
 
+1. Çalışan, Exchange Online 'da Outlook 'ta oturum açmaya çalışır. Azure AD, oturum açma sırasında gerçek zamanlı risk olaylarını ve önceki Kullanıcı riskini algılar. 
+2. Azure AD, herhangi bir gerçek zamanlı oturum açma riskini algılamaz, ancak önceki senaryolarda geçen riskli etkinlik nedeniyle yüksek Kullanıcı riskini algılar.  
+3. Contoso BT Yöneticisi kimlik koruması Kullanıcı risk ilkesini, yüksek riskli bir Kullanıcı oturum açtığında parola değişikliği gerektirecek şekilde yapılandırdığından, çalışana bir parola sıfırlama istemi tarafından istek verilir. 
+4. Çalışan SSPR ve MFA için kayıtlı olduğundan, parolalarını başarıyla sıfırlarlar. 
+5. Parolasını sıfırlayarak, çalışanın kimlik bilgileri artık güvenliği tehlikeye alınmaz ve kimlikleri güvenli bir duruma geri döner. 
+6. Çalışanın önceki risk olayları çözümlenir ve Kullanıcı risk düzeyi, kimlik bilgilerinin güvenliğinin azaltılmasına yanıt olarak otomatik olarak sıfırlanır. 
 
-Ancak bir oturum açmaya çalışan ne edilmedi? 
+## <a name="how-do-i-configure-identity-protection"></a>Nasıl yaparım? kimlik koruması yapılandırmak mı istiyorsunuz? 
 
-1. Kendi IP adresini gizlemek çalışıyor olduğundan, Exchange Online hesabında Tor tarayıcıdan oturum açmak kötü amaçlı bir aktör çalışanın kimlik bilgileriyle çalışır. 
+Kimlik koruması 'nı kullanmaya başlamak için önce bir Kullanıcı risk ilkesi ve oturum açma risk ilkesi yapılandırın. Bu ilkeler yapılandırıldıktan ve bir test grubuna uygulandıktan sonra, ortamınızda kimlik koruması 'nın nasıl yanıt vereceğini anlamak için risk olaylarının benzetimini yapabilirsiniz. Aşağıdaki hızlı başlangıç kılavuzlarında, ortamınızda belirtilen ilkelerin ve testin nasıl ayarlanacağı hakkında bir adım adım sağlanmıştır. 
 
-2. Azure AD oturum açma denemesi'nın anonim bir IP adresinden, gerçek zamanlı bir oturum açma riski tetikleme algılar. 
+Kimlik koruması, dağıtımınız etrafında yönetim etkinliklerini dengelemek için Azure AD 'de üç rolü destekler: 
 
-3. Kötü amaçlı aktör, Contoso'nun BT Yöneticisi oturum açma riski Orta büyüklükte ya da daha yüksek olduğunda MFA gerektirecek şekilde kimlik koruma oturum açma riski koşullu erişim ilkesinin yapılandırıldığı bir MFA istemi tarafından sınandı. 
-
-4. Kötü amaçlı aktör MFA testini başarısız olur ve Exchange Online hesabı çalışanın erişemez. 
-
-5. Başarısız MFA istemi gelecekteki oturum açma işlemleri için kendi kullanıcı riski yükseltme kaydedilmesi için risk olayı tetiklendi. 
-
-Kötü amaçlı bir aktör Sarah'ın hesabı erişmeyi denedi, çalışan oturum açmak için çalıştığında ne olacağını görelim. 
-
-1. Outlook'tan Exchange Online'da oturum açmak çalışan çalışır. Oturum açma zaman Azure AD, herhangi bir önceki kullanıcı risk yanı sıra gerçek zamanlı risk olaylarını algılar. 
-
-2. Azure AD, gerçek zamanlı bir oturum açma riski algılamıyor, ancak önceki senaryolarda yüksek kullanıcı riski nedeniyle son riskli etkinlik algılar.  
-
-3. Çalışan, çünkü bir parola sıfırlama istemi tarafından sınandı Contoso BT yöneticisinin kimlik koruması kullanıcı riski ilkesi yüksek riskli bir kullanıcıyla oturum açtığında parola değişikliği gerektirecek şekilde yapılandırılmış. 
-
-4. SSPR ve MFA için çalışan kayıtlı olduğundan, bunlar başarıyla sıfırlar parolalarını. 
-
-5. Tarafından parola sıfırlama, çalışanın kimlik bilgileri artık tehlikede olur ve güvenli bir duruma kimliklerini döndürür. 
-
-6. Çalışanın önceki risk olaylarını daha çözümlenir ve kendi kullanıcı risk düzeyi kimlik bilgilerinin tehlikeye atılması Azaltıcı yanıt olarak otomatik olarak sıfırlanır. 
-
-## <a name="how-do-i-configure-identity-protection"></a>Kimlik koruması nasıl yapılandırılır? 
-
-Kimlik koruması ile çalışmaya başlamak için öncelikle bir kullanıcı riski İlkesi ve bir oturum açma riski ilkesi yapılandırın. Bu ilkeleri yapılandırıldığında ve bir test grubuna uygulanan sonra kimlik koruması, ortamınızda nasıl yanıt vereceğini anlamak için risk olaylarının benzetimini yapabilirsiniz. Hızlı Başlangıç kılavuzları yukarıda sözü edilen ilkeleri ayarlayın ve ortamınızda test etmek nasıl bir kılavuz sağlar. 
-
- 
-
-Kimlik koruması, dağıtımınızı etrafında yönetimi etkinlikleri dengelemek için Azure AD'de 3 rollerini destekler: 
-
-| Role | Yapabilirsiniz | Bunu yapamazsınız |
+| Role | Yapılabilir | Yapılamıyor |
 | --- | --- | --- |
-| Genel yönetici | Kimlik koruması, yerleşik kimlik koruması tam erişim | |
-| Güvenlik yöneticisi | Kimlik koruması tam erişim | Yerleşik kimlik koruması, kullanıcı parolalarını sıfırlama |
-| Güvenlik okuyucusu | Kimlik koruması salt okunur erişim | Yerleşik kimlik koruması, kullanıcıları düzeltme, ilkelerini yapılandırma, parolaları sıfırlama| 
+| Genel yönetici | Kimlik koruması, yerleşik kimlik koruması ile tam erişim | |
+| Güvenlik yöneticisi | Kimlik korumasına tam erişim | Kimlik koruması ekleme, bir kullanıcı için parolaları sıfırlama |
+| Güvenlik okuyucusu | Kimlik korumasına salt okuma erişimi | Kimlik koruması ekleme, kullanıcıları düzeltme, ilkeleri yapılandırma, parolaları sıfırlama| 
 
-Daha fazla ayrıntı için [Azure Active Directory'de yönetici rolleri atama](../users-groups-roles/directory-assign-admin-roles.md)
-
+Daha fazla bilgi için bkz. [Azure Active Directory yönetici rolleri atama](../users-groups-roles/directory-assign-admin-roles.md)
  
 ## <a name="licensing"></a>Lisanslama
 
 >[!NOTE]
-> Kimlik koruması (yenilenmiş) genel Önizleme sırasında yalnızca Azure AD Premium P2 müşterileri riskli kullanıcılar raporu ve riskli oturum açma işlemleri raporu erişebilir.
+> Kimlik korumasının (yenilenmiş) genel önizlemesi sırasında, riskli kullanıcılar raporu ve riskli oturum açma bileşenleri raporuna yalnızca Azure AD Premium P2 müşterileri erişebilir.
 
-
-
-| Özellik | Azure AD Premium P2 | Azure AD Premium P1 | Azure AD Basic/ücretsiz |
+| Özellik | Azure AD Premium P2 | Azure AD Premium P1 | Azure AD Temel/ücretsiz |
 | --- | --- | --- | --- |
-| Kullanıcı riski İlkesi | Evet | Hayır | Hayır |
-| Oturum açma riski İlkesi | Evet | Hayır | Hayır |
-| Riskli kullanıcılar raporu | Tam erişim | Sınırlı bilgiler | Sınırlı bilgiler |
-| Riskli oturum açma işlemleri raporu | Tam erişim | Sınırlı bilgiler | Sınırlı bilgiler |
+| Kullanıcı riski ilkesi | Evet | Hayır | Hayır |
+| Oturum açma riski ilkesi | Evet | Hayır | Hayır |
+| Riskli kullanıcılar raporu | Tam erişim | Sınırlı bilgi | Sınırlı bilgi |
+| Riskli oturum açma işlemleri raporu | Tam erişim | Sınırlı bilgi | Sınırlı bilgi |
 | MFA kayıt ilkesi | Evet | Hayır | Hayır |
-
-
-
-
-
-
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 
-Kimlik koruması ile çalışmaya başlamak için bkz. [yapılandırma oturum açma riski İlkesi](quickstart-sign-in-risk-policy.md). 
-
-
-
-
-
-
+Kimlik koruması 'nı kullanmaya başlamak için bkz. [oturum açma risk Ilkesini yapılandırma](quickstart-sign-in-risk-policy.md). 

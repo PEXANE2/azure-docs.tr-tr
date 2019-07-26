@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory'de olay tabanlı Tetikleyicileri oluşturma | Microsoft Docs
-description: Azure Data factory'de bir işlem hattı, bir olaya yanıt olarak çalışan bir tetikleyici oluşturmayı öğrenin.
+title: Azure Data Factory 'de olay tabanlı Tetikleyiciler oluşturma | Microsoft Docs
+description: Bir olaya yanıt olarak bir işlem hattı çalıştıran Azure Data Factory tetikleyici oluşturmayı öğrenin.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -11,85 +11,97 @@ ms.date: 10/18/2018
 author: sharonlo101
 ms.author: shlo
 manager: craigg
-ms.openlocfilehash: 94c9c3f997143d72262c1ba3d8dbfea90d6f920c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bf4dc55d0ec17daf4c611563dd7aee3a06aa192b
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61347730"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68384719"
 ---
-# <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Bir olaya yanıt olarak bir işlem hattı çalıştırmalarını tetiği oluşturma
+# <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Bir olaya yanıt olarak bir işlem hattı çalıştıran bir tetikleyici oluşturma
 
-Bu makale, Data Factory işlem hatlarınızı içinde oluşturabileceğiniz olay tabanlı Tetikleyicileri açıklar.
+Bu makalede, Data Factory işlem hatlarında oluşturabileceğiniz olay tabanlı tetikleyiciler açıklanmaktadır.
 
-Olay denetimli mimari (EDA) üretim, algılama, tüketim ve olaylara tepki içeren ortak bir veri tümleştirme desendir. Veri tümleştirme senaryosunu genellikle Data Factory işlem hatları etkinliklere göre tetikleyin müşterilere gerektirir. Veri Fabrikası ile tümleştirilmiş Şimdi [Azure Event Grid](https://azure.microsoft.com/services/event-grid/), tetiklenen olanak sağlayan bir olay üzerinde işlem hatları.
+Olay odaklı mimari (EDA), olaylar için üretim, algılama, tüketim ve yeniden eyleme sahip ortak bir veri tümleştirme modelidir. Veri tümleştirme senaryoları genellikle Data Factory müşterilerin Azure Depolama hesabınızdaki bir dosyanın geliş veya silme gibi olaylara göre işlem hatlarını tetiklemesine gerek duyar. Data Factory artık, bir olayda işlem hatlarını tetiklemenizi sağlayan [Azure Event Grid](https://azure.microsoft.com/services/event-grid/)ile tümleşiktir.
 
-10 dakikalık bir giriş ve bu özelliği için şu videoyu izleyin:
+Bu özelliğin on dakikalık bir giriş ve gösterimi için aşağıdaki videoyu izleyin:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Event-based-data-integration-with-Azure-Data-Factory/player]
 
 
 > [!NOTE]
-> Bu makalede açıklanan tümleştirme bağımlı [Azure Event Grid](https://azure.microsoft.com/services/event-grid/). Event Grid kaynak sağlayıcısı ile aboneliğinize kayıtlı olduğundan emin olun. Daha fazla bilgi için bkz. [kaynak sağlayıcıları ve türleri](../azure-resource-manager/resource-manager-supported-services.md#azure-portal).
+> Bu makalede açıklanan tümleştirme [Azure Event Grid](https://azure.microsoft.com/services/event-grid/)bağımlıdır. Aboneliğinizin Event Grid kaynak sağlayıcısına kayıtlı olduğundan emin olun. Daha fazla bilgi için bkz. [kaynak sağlayıcıları ve türleri](../azure-resource-manager/resource-manager-supported-services.md#azure-portal).
 
 ## <a name="data-factory-ui"></a>Data Factory Kullanıcı Arabirimi (UI)
 
-### <a name="create-a-new-event-trigger"></a>Yeni bir olay tetikleyicisi oluşturma
+Bu bölümde, Azure Data Factory Kullanıcı arabiriminde nasıl bir olay tetikleyicisi oluşturacağınız gösterilmektedir.
 
-Tipik bir olay, bir dosya varış veya Azure depolama hesabınızdaki bir dosya silme işlemi ' dir. Bu olay, Data Factory işlem hattı ile yanıt veren bir tetikleyici oluşturabilirsiniz.
+1. **Yazma tuvaline** git
 
-> [!NOTE]
-> Bu tümleştirme yalnızca sürüm 2 depolama hesapları (genel amaçlı) destekler.
+2. Sol alt köşede **Tetikleyiciler** düğmesine tıklayın
 
-![Yeni bir olay tetikleyicisi oluşturma](media/how-to-create-event-trigger/event-based-trigger-image1.png)
+3. Tetikleyici oluşturma tarafı gezintisi ' ni açacak **+ Yeni** ' ye tıklayın
 
-### <a name="configure-the-event-trigger"></a>Olay tetikleyicisi yapılandırın
+4. Tetikleyici türü **olayını** seçin
 
-İle **Blob yolu ile başlayan** ve **Blob yolu ile sona erer** özellikleri, kapsayıcılar, klasörler ve olaylarını almak istediğiniz blob adları belirtebilirsiniz. Her ikisi için desenler çeşitli kullanabilirsiniz **Blob yolu ile başlayan** ve **Blob yolu ile sona erer** bu makalenin ilerleyen bölümlerinde verilen örneklerde gösterildiği gibi özellikleri. Bu özelliklerden en az biri gereklidir.
+![Yeni olay tetikleyicisi oluştur](media/how-to-create-event-trigger/event-based-trigger-image1.png)
 
-![Olay tetikleyicisi yapılandırın](media/how-to-create-event-trigger/event-based-trigger-image2.png)
+5. Azure aboneliği açılan listesinden veya depolama hesabı kaynak KIMLIĞINI kullanarak el ile depolama hesabınızı seçin. Olayların gerçekleşmesini istediğiniz kapsayıcıyı seçin. Kapsayıcı seçimi isteğe bağlıdır, ancak tüm kapsayıcıları seçtiğinizde çok sayıda olaya yol açabilir.
 
-### <a name="select-the-event-trigger-type"></a>Olay Tetikleyici türü seçin
+   > [!NOTE]
+   > Olay tetikleyicisi Şu anda yalnızca sürüm 2 depolama hesaplarını (genel amaçlı) desteklemektedir.
 
-Dosya depolama konumunuz ulaştığında ve karşılık gelen blob oluşturulduktan hemen sonra bu olayı tetikler ve, Data Factory işlem hattı çalıştırır. Bir blob oluşturma olayı, bir blob silme işlemi olay veya her iki olayları, Data Factory işlem hatlarınızı yanıt veren bir tetikleyici oluşturabilirsiniz.
+   > [!NOTE]
+   > Azure Event Grid sınırlaması nedeniyle, Azure Data Factory yalnızca depolama hesabı başına en fazla 500 olay tetikleyicisi destekler.
 
-![Olay türü tetikleyiciyi seçin](media/how-to-create-event-trigger/event-based-trigger-image3.png)
+6. **BLOB yolu ile başlar** ve **BLOB yolu, özellikler ile biter** ve olayları almak istediğiniz kapsayıcıları, klasörleri ve BLOB adlarını belirtmenize olanak tanır. Olay Tetikleyiciniz bu özelliklerden en az birinin tanımlanmasını gerektirir. Her iki **BLOB yolu ile başlar** ve **BLOB yolu** , bu makalenin ilerleyen kısımlarında gösterildiği gibi özellikleriyle biter.
 
-### <a name="map-trigger-properties-to-pipeline-parameters"></a>İşlem hattı parametrelerinin harita tetikleyici özellikleri
+    * **Blob yolu şununla başlar:** Blob yolu bir klasör yoluyla başlamalıdır. Geçerli değerler ve `2018/` `2018/april/shoes.csv`içerir. Kapsayıcı seçilmezse bu alan seçilemez.
+    * **Blob yolu şununla biter:** Blob yolu bir dosya adı veya uzantısıyla bitmelidir. Geçerli değerler ve `shoes.csv` `.csv`içerir. Kapsayıcı ve klasör adı isteğe bağlıdır, ancak belirtildiğinde, bir `/blobs/` segmentle ayrılmaları gerekir. Örneğin, ' Orders ' adlı bir kapsayıcının değeri `/orders/blobs/2018/april/shoes.csv`olabilir. Herhangi bir kapsayıcıdaki bir klasörü belirtmek için baştaki '/' karakterini atlayın. Örneğin, `april/shoes.csv` herhangi bir kapsayıcıda ' Nisan ' adlı klasörde adında `shoes.csv` bir olay tetikleyecektir. 
 
-Belirli bir blob için bir Olay Tetikleyici etkinleştirildiğinde, olay özelliklerini blob klasörü yolu ve dosya adını yakalar `@triggerBody().folderPath` ve `@triggerBody().fileName`. Bir işlem hattı, bu özelliklerin değerlerini kullanmak için işlem hattı parametrelerinin özelliklerini eşlemeniz gerekir. Parametreleri eşleme özellikleri sonra Tetikleyici tarafından yakalanan değerlerine erişebilirsiniz `@pipeline().parameters.parameterName` işlem hattı boyunca ifade.
+7. Tetikleyicinizin **BLOB tarafından oluşturulan** bir olaya, **BLOB Deleted** olayına veya her ikisine de yanıt verip vermeyeceğini seçin. Belirttiğiniz depolama konumunda, her olay tetikleyiciyle ilişkili Data Factory işlem hatlarını tetikler.
 
-![İşlem hattı parametrelerinin özellikleri eşleme](media/how-to-create-event-trigger/event-based-trigger-image4.png)
+    ![Olay tetikleyicisini yapılandırma](media/how-to-create-event-trigger/event-based-trigger-image2.png)
 
-Örneğin, önceki ekran görüntüsünde. Tetikleyici ne zaman sonu bir blob yolu ateşlenmesine yapılandırılmış `.csv` içinde depolama hesabı oluşturulur. Sonuç olarak, bir blob olduğunda `.csv` uzantısı her yerde depolama hesabında oluşturulan `folderPath` ve `fileName` özellikleri yeni blobunun konumunu yakalama. Örneğin, `@triggerBody().folderPath` gibi bir değere sahip `/containername/foldername/nestedfoldername` ve `@triggerBody().fileName` gibi bir değere sahip `filename.csv`. Bu değerleri örnek işlem hattı parametrelerine eşlenen `sourceFolder` ve `sourceFile`. İşlem hattı boyunca kullanabilirsiniz `@pipeline().parameters.sourceFolder` ve `@pipeline().parameters.sourceFile` sırasıyla.
+8. Tetikleyiciyi yapılandırdıktan sonra, **ileri ' ye tıklayın: Veri önizleme**. Bu ekranda, olay tetikleyicisi yapılandırmanızla eşleşen mevcut blob 'lar gösterilir. Belirli filtrelerinizin bulunduğundan emin olun. Çok geniş olan filtrelerin yapılandırılması, oluşturulan/silinen çok sayıda dosya ile eşleştirebilir ve maliyetinizi önemli ölçüde etkileyebilir. Filtre koşullarınız doğrulandıktan sonra **son**' a tıklayın.
+
+    ![Olay tetikleyicisi veri önizleme](media/how-to-create-event-trigger/event-based-trigger-image3.png)
+
+9. Bu tetikleyiciye bir işlem hattı eklemek için işlem hattı tuvaline gidin ve **tetikleyici Ekle** ' ye tıklayın ve **Yeni/Düzenle**' yi seçin. Yan gezinti göründüğünde **tetikleyici seç...** açılan listesine tıklayın ve oluşturduğunuz tetikleyiciyi seçin. İleri **' ye tıklayın: Yapılandırmanın doğru** olduğundan emin olmak için veri Önizlemesi **ve sonra veri** önizlemenin doğru olduğunu doğrulayın.
+
+10. İşlem hattınızda parametreler varsa, bunları tetikleyici parametre tarafı gezin ' i çalıştırır ' de belirtebilirsiniz. Olay tetikleyicisi, Blobun klasör yolunu ve dosya adını özelliklerine ve `@triggerBody().folderPath` `@triggerBody().fileName`özelliklerine yakalar. Bu özelliklerin değerlerini bir işlem hattında kullanmak için, özellikleri işlem hattı parametrelerine eşlemeniz gerekir. Özellikleri parametrelere eşleştirdikten sonra, tetikleyici tarafından yakalanan değerlere işlem hattı boyunca `@pipeline().parameters.parameterName` ifade aracılığıyla erişebilirsiniz. İşiniz bittiğinde **son** ' a tıklayın.
+
+    ![Özellikleri ardışık düzen parametrelerine eşleme](media/how-to-create-event-trigger/event-based-trigger-image4.png)
+
+Önceki örnekte tetikleyici, kapsayıcı örnek verilerinde. csv dosyasında bir blob yolu oluşturulduğunda,. csv ' de sonlanan bir blob yolu başlatıldığında tetiklenecek şekilde yapılandırılmıştır. **FolderPath** ve **filename** özellikleri yeni Blobun konumunu yakalar. Örneğin, MoviesDB. csv, yol örneğine eklendiğinde-Data/ `@triggerBody().folderPath` Event-Testing değerine sahiptir `sample-data/event-testing` `moviesDB.csv`ve `@triggerBody().fileName` değeri olur. Bu değerler, örnekte `sourceFolder` işlem hattı parametrelerine eşlenir ve `sourceFile` ardışık düzen boyunca `@pipeline().parameters.sourceFolder` ve `@pipeline().parameters.sourceFile` sırasıyla kullanılabilir.
 
 ## <a name="json-schema"></a>JSON şeması
 
-Aşağıdaki tabloda, olay tabanlı Tetikleyicileri için ilgili şema öğelerinin genel bir bakış sağlar:
+Aşağıdaki tabloda olay tabanlı tetikleyicilerle ilgili şema öğelerine genel bir bakış verilmiştir:
 
 | **JSON öğesi** | **Açıklama** | **Tür** | **İzin verilen değerler** | **Gerekli** |
 | ---------------- | --------------- | -------- | ------------------ | ------------ |
-| **Kapsam** | Depolama hesabı Azure Resource Manager kaynak kimliği. | String | Azure Resource Manager kimliği | Evet |
-| **Olayları** | Bu tetikleyici ateşlenmesine neden olayların türü. | Dizi    | Microsoft.Storage.BlobCreated, Microsoft.Storage.BlobDeleted | Evet, bu değerlerden herhangi bir birleşimi. |
-| **blobPathBeginsWith** | Blob yolu tetikleyiciyi harekete geçirmek sağlanan deseni ile başlamalıdır. Örneğin, `/records/blobs/december/` bloblar için yalnızca tetikleyici `december` klasörü altında `records` kapsayıcı. | String   | | Bu özelliklerden en az biri için bir değer sağlamanız gereken: `blobPathBeginsWith` veya `blobPathEndsWith`. |
-| **blobPathEndsWith** | Blob yolu tetikleyiciyi harekete geçirmek sağlanan deseni ile bitmelidir. Örneğin, `december/boxes.csv` adlı bloblar için yalnızca tetikleyici `boxes` içinde bir `december` klasör. | String   | | Bu özelliklerden en az biri için bir değer sağlamanız gereken: `blobPathBeginsWith` veya `blobPathEndsWith`. |
+| **kapsam** | Depolama hesabının Azure Resource Manager kaynak KIMLIĞI. | Dize | Azure Resource Manager KIMLIĞI | Evet |
+| **olayları** | Bu tetikleyicinin tetiklenmesine neden olan olayların türü. | Array    | Microsoft. Storage. BlobCreated, Microsoft. Storage. BlobDeleted | Evet, bu değerlerin herhangi bir birleşimi. |
+| **blobPathBeginsWith** | Blob yolu, tetikleyicinin tetiklenmesi için belirtilen Düzenle başlamalı. Örneğin, `/records/blobs/december/` yalnızca `records` kapsayıcının altındaki `december` klasörde bulunan bloblara yönelik tetikleyiciyi tetikler. | Dize   | | Şu özelliklerden en az biri için bir değer belirtmeniz gerekir: `blobPathBeginsWith` veya. `blobPathEndsWith` |
+| **blobPathEndsWith** | Blob yolu, tetikleyicinin tetiklenmesi için belirtilen Düzenle bitmelidir. Örneğin, `december/boxes.csv` yalnızca bir `december` klasörde adlı `boxes` Bloblar için tetikleyiciyi harekete geçirilir. | Dize   | | Şu özelliklerden en az biri için bir değer belirtmeniz gerekir: `blobPathBeginsWith` veya. `blobPathEndsWith` |
 
-## <a name="examples-of-event-based-triggers"></a>Olay tabanlı Tetikleyicileri örnekleri
+## <a name="examples-of-event-based-triggers"></a>Olay tabanlı tetikleyicilere örnekler
 
-Bu bölümde, olay tabanlı tetikleyici ayarlarını örnekleri sağlar.
+Bu bölümde olay tabanlı tetikleyici ayarlarının örnekleri verilmiştir.
 
 > [!IMPORTANT]
-> Dahil etmek zorunda `/blobs/` kapsayıcı ve klasöre, kapsayıcı ve dosya ya da kapsayıcı, klasör belirtin ve dosya olduğunda, aşağıdaki örneklerde gösterildiği gibi yol kesimi.
+> Her kapsayıcı ve klasör, `/blobs/` kapsayıcı ve dosya ya da kapsayıcı, klasör ve dosya belirttiğinizde, aşağıdaki örneklerde gösterildiği gibi yolun segmentini eklemeniz gerekir. **Blobpathbeginswith**için, Data Factory Kullanıcı arabirimi, JSON tetikleyicisi `/blobs/` içindeki klasör ve kapsayıcı adı arasına otomatik olarak eklenir.
 
 | Özellik | Örnek | Açıklama |
 |---|---|---|
-| **BLOB yolu ile başlar** | `/containername/` | Olayları için herhangi bir blob kapsayıcısında alır. |
-| **BLOB yolu ile başlar** | `/containername/blobs/foldername/` | Tüm bloblar için olaylarını alır `containername` kapsayıcı ve `foldername` klasör. |
-| **BLOB yolu ile başlar** | `/containername/blobs/foldername/subfoldername/` | Bir alt klasör de başvurabilirsiniz. |
-| **BLOB yolu ile başlar** | `/containername/blobs/foldername/file.txt` | Adlı bir blob için olaylarını alır `file.txt` içinde `foldername` klasörü altında `containername` kapsayıcı. |
-| **Biten BLOB yolu** | `file.txt` | Adlı bir blob için olaylarını alır `file.txt` herhangi bir yolda. |
-| **Biten BLOB yolu** | `/containername/blobs/file.txt` | Adlı bir blob için olaylarını alır `file.txt` kapsayıcısı altında `containername`. |
-| **Biten BLOB yolu** | `foldername/file.txt` | Adlı bir blob için olaylarını alır `file.txt` içinde `foldername` klasörü altında herhangi bir kapsayıcı. |
+| **Blob yolu şununla başlar** | `/containername/` | Kapsayıcıdaki tüm Bloblar için olayları alır. |
+| **Blob yolu şununla başlar** | `/containername/blobs/foldername/` | `containername` Kapsayıcı ve`foldername` klasördeki Bloblar için olayları alır. |
+| **Blob yolu şununla başlar** | `/containername/blobs/foldername/subfoldername/` | Ayrıca, bir alt klasöre de başvurabilirsiniz. |
+| **Blob yolu şununla başlar** | `/containername/blobs/foldername/file.txt` | Kapsayıcının altındaki `foldername` `file.txt` klasördeadlıbirblobiçinolaylarıalır`containername` . |
+| **Blob yolu şununla biter** | `file.txt` | Herhangi bir yolda adlı `file.txt` bir blob için olayları alır. |
+| **Blob yolu şununla biter** | `/containername/blobs/file.txt` | `file.txt` Kapsayıcı`containername`altında adlı bir blob için olayları alır. |
+| **Blob yolu şununla biter** | `foldername/file.txt` | Herhangi bir kapsayıcı altındaki `file.txt` `foldername` klasöründe adlı bir blob için olayları alır. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Tetikleyiciler hakkında ayrıntılı bilgi için bkz. [işlem hattı yürütme ve Tetikleyicileri](concepts-pipeline-execution-triggers.md#triggers).
+Tetikleyiciler hakkında ayrıntılı bilgi için bkz. işlem [hattı yürütme ve Tetikleyiciler](concepts-pipeline-execution-triggers.md#triggers).

@@ -1,6 +1,6 @@
 ---
-title: Azure IOT Hub cihazı sağlama hizmeti ile özel ayırma ilkelerini kullanma | Microsoft Docs
-description: Azure IOT Hub cihazı sağlama hizmeti ile özel ayırma ilkelerini kullanma
+title: Azure IoT Hub cihaz sağlama hizmeti ile özel ayırma ilkelerini kullanma | Microsoft Docs
+description: Azure IoT Hub cihaz sağlama hizmeti ile özel ayırma ilkelerini kullanma
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/10/2019
@@ -8,64 +8,64 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
-ms.openlocfilehash: 03d39ed01907a2ad61e089946673b96b8a2cc83e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1e672e7bd43dcd05d048d22205939749c1d96579
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65916882"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348070"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>Özel ayırma ilkelerini kullanma
 
 
-Bir özel ayırma ilkesi, cihazların bir IOT hub'ına nasıl atanacağını üzerinde daha fazla denetim sağlar. Bu özel kodda kullanılarak başarılır bir [Azure işlevi](../azure-functions/functions-overview.md) cihazların bir IOT hub'ına atamak için. Cihaz sağlama hizmeti, cihaz ve kayıt ilgili tüm bilgileri sağlayan Azure işlevi kodu çağırır. İşlev kodunuzu çalıştırılır ve cihaz sağlama için kullanılan IOT hub bilgilerini döndürür.
+Özel bir ayırma ilkesi, cihazların bir IoT Hub 'ına nasıl atanabileceği konusunda daha fazla denetim sağlar. Bu, bir [Azure işlevindeki](../azure-functions/functions-overview.md) cihazları bir IoT Hub 'ına atamak için özel kod kullanılarak gerçekleştirilir. Cihaz sağlama hizmeti, cihaz ve kayıt hakkında tüm ilgili bilgileri sağlayan Azure Işlev kodunuzu çağırır. İşlev kodunuz yürütülür ve cihazı sağlamak için kullanılan IoT Hub bilgilerini döndürür.
 
-Özel ayırma ilkelerini kullanarak cihaz sağlama hizmeti tarafından sağlanan ilkeleri, senaryonuzun gereksinimlerini karşılamıyor, kendi ayırma ilkeleri tanımlarsınız.
+Özel ayırma ilkelerini kullanarak, cihaz sağlama hizmeti tarafından sunulan ilkeler senaryonuzun gereksinimlerini karşılamadığında kendi ayırma ilkelerinizi tanımlarsınız.
 
-Örneğin, belki de, bir cihaz sağlama sırasında kullanarak sertifikayı incelemek istediğiniz ve bir sertifika özelliğine dayalı bir IOT hub cihaz atayın. Belki de cihazlarınız için bir veritabanında saklanan bilgilere sahip ve hangi IOT hub'a bir cihaz atanması gerektiğini belirlemek için veritabanını sorgulamak gerekir.
+Örneğin, bir cihazın sağlama sırasında kullandığı sertifikayı incelemek ve cihazı bir sertifika özelliğine dayalı bir IoT Hub 'ına atamak isteyebilirsiniz. Belki de cihazlarınıza yönelik bir veritabanında depolanan bilgiler olabilir ve bir cihazın hangi IoT Hub 'ına atanması gerektiğini öğrenmek için veritabanını sorgulamak gerekir.
 
 
-Bu makalede, C# dilinde yazılmış bir Azure işlevi kullanarak bir özel ayırma ilkesi gösterilmektedir. İki yeni IOT hub'ları oluşturulan temsil eden bir *Contoso Tebrikleri bölme* ve *Contoso ısı Pompalara bölme*. Sağlama isteyen cihazlar sağlamak için kabul edilmesi için bir kayıt kimliği şu son ekleri birine sahip olmalıdır:
+Bu makalede, içinde C#yazılmış bir Azure işlevi kullanan özel bir ayırma ilkesi gösterilmektedir. *Contoso Toalar bölümünü* ve *contoso ısı pumps bölümünü*temsil eden iki yeni IoT Hub 'ı oluşturulur. Sağlanması istenen cihazların sağlanması için kabul edilebilmesi için aşağıdaki son eklerle birine sahip bir kayıt KIMLIĞI olmalıdır:
 
-- **contoso - tstrsd 007**: Contoso Tebrikleri bölme
-- **contoso - hpsd 088**: Contoso ısı Pompalara bölme
+- **-contoso-tstrsd-007**: Contoso Toaya bölmesi
+- **-contoso-hpsd-088**: Contoso ısı pumps bölümü
 
-Cihazları bir kayıt kimliği. Bu gerekli eklerinde göre sağlanacak. Bu cihazlar dahil sağlama bir örnek kullanarak simulated [Azure IOT C SDK'sı](https://github.com/Azure/azure-iot-sdk-c). 
+Cihazlar kayıt KIMLIĞI üzerinde bu gerekli soneklerin birine göre sağlanacak. Bu cihazlar, [Azure IoT C SDK 'sına](https://github.com/Azure/azure-iot-sdk-c)dahil olan bir sağlama örneği kullanılarak benzetilecektir. 
 
-Bu makalede aşağıdaki adımları gerçekleştireceksiniz:
+Bu makalede aşağıdaki adımları gerçekleştirirsiniz:
 
-* İki Contoso bölme IOT hub'ları oluşturmak için Azure CLI'yi kullanma (**Contoso Tebrikleri bölme** ve **Contoso ısı Pompalara bölme**)
-* Bir Azure işlevi için özel ayırma ilkesini kullanarak yeni bir grup kaydı oluşturma
-* İki cihaz simülasyonu için cihaz anahtarları oluşturun.
-* İçin Azure IOT C SDK'sı geliştirme ortamını ayarlama
-* Örnek kod özel ayırma ilkesinin göre sağlanır görmek için cihazların benzetimini yapma
+* İki contoso bölüm IoT Hub 'ı oluşturmak için Azure CLı 'yi kullanma (**contoso Toalar bölümü** ve **contoso ısı pumps bölümü**)
+* Özel ayırma ilkesi için bir Azure Işlevi kullanarak yeni bir grup kaydı oluşturma
+* İki cihaz benzetimleri için cihaz anahtarları oluşturun.
+* Azure IoT C SDK 'Sı için geliştirme ortamını ayarlama
+* Özel ayırma ilkesinin örnek koduna göre sağlandığını görmek için cihazların benzetimini yapın
 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Tamamlanmasından [IOT Hub cihazı sağlama hizmetini Azure portalıyla ayarlama](./quick-setup-auto-provision.md) hızlı başlangıç.
-* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 veya üzeri ile [' ile masaüstü geliştirme C++'](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) iş yükünün etkinleştirilmiş.
+* [IoT Hub cihazı sağlama hizmetini Azure Portal](./quick-setup-auto-provision.md) hızlı başlangıç ile tamamlama.
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 veya üzeri ' de [' masaüstü geliştirme C++](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) iş yükü etkin.
 * [Git](https://git-scm.com/download/)'in en son sürümünün yüklemesi.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="create-two-divisional-iot-hubs"></a>İki bölümsel IOT hub oluşturma
+## <a name="create-two-divisional-iot-hubs"></a>İki divisiıot hub 'ı oluşturma
 
-Bu bölümde, Azure Cloud Shell'i temsil eden iki yeni IOT hub'ları oluşturmak için kullanacağı **Contoso Tebrikleri bölme** ve **Contoso ısı Pompalara bölme**.
+Bu bölümde, **contoso Toalar bölümünü** ve **contoso ısı pumps bölümünü**temsil eden iki yeni IoT hub 'ı oluşturmak için Azure Cloud Shell kullanacaksınız.
 
-1. Bir kaynak grubu oluşturmak için Azure Cloud Shell'i kullanmak [az grubu oluşturma](/cli/azure/group#az-group-create) komutu. Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. 
+1. [Az Group Create](/cli/azure/group#az-group-create) komutuyla bir kaynak grubu oluşturmak için Azure Cloud Shell kullanın. Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. 
 
-    Aşağıdaki örnekte adlı bir kaynak grubu oluşturur *contoso-us-resource-group* içinde *eastus* bölge. Bu makalede oluşturulan tüm kaynakları için bu grubu kullanmanızı öneririz. Tamamladıktan sonra bu yaklaşım daha kolay temizleme.
+    Aşağıdaki örnek, *eastus* bölgesinde *contoso-US-Resource-Group* adlı bir kaynak grubu oluşturur. Bu makalede oluşturulan tüm kaynaklar için bu grubu kullanmanız önerilir. Bu yaklaşım, işiniz bittiğinde temizleme işlemlerini kolaylaştırır.
 
     ```azurecli-interactive 
     az group create --name contoso-us-resource-group --location eastus
     ```
 
-2. Azure Cloud Shell'i oluşturulacağı **Contoso Tebrikleri bölme** IOT hub ile [az IOT hub'ı oluşturma](/cli/azure/iot/hub#az-iot-hub-create) komutu. IOT hub'ı eklenecek *contoso-us-resource-group*.
+2. [Az IoT Hub Create](/cli/azure/iot/hub#az-iot-hub-create) komutuyla **contoso Toave bölüm** IoT hub 'ını oluşturmak için Azure Cloud Shell kullanın. IoT Hub 'ı *contoso-US-Resource-Group*' a eklenecektir.
 
-    Aşağıdaki örnekte adlı bir IOT hub oluşturulur *contoso-Tebrikleri-hub-1098* içinde *eastus* konumu. Kendi benzersiz hub adınızı kullanmanız gerekir. Hub adı yerine kendi soneki oluşturan **1098**. Örnek kod için özel ayırma ilkesini gerektirir `-toasters-` hub adı.
+    Aşağıdaki örnek, *eastus* konumunda *contoso-TOA,-hub-1098* adlı bir IoT Hub 'ı oluşturur. Kendi benzersiz hub 'ınızın adını kullanmanız gerekir. Merkez adında **1098**yerine kendi son ekini oluşturun. Özel ayırma ilkesi için örnek kod hub adında olmalıdır `-toasters-` .
 
     ```azurecli-interactive 
     az iot hub create --name contoso-toasters-hub-1098 --resource-group contoso-us-resource-group --location eastus --sku S1
@@ -73,90 +73,90 @@ Bu bölümde, Azure Cloud Shell'i temsil eden iki yeni IOT hub'ları oluşturmak
     
     Bu komutun tamamlanması birkaç dakika sürebilir.
 
-3. Oluşturmak için Azure Cloud Shell'i kullanmak **Contoso ısı Pompalara bölme** IOT hub ile [az IOT hub oluşturma](/cli/azure/iot/hub#az-iot-hub-create) komutu. Bu IOT hub'ı da eklenir *contoso-us-resource-group*.
+3. [Az IoT Hub Create](/cli/azure/iot/hub#az-iot-hub-create) komutuyla **contoso ısı pumps bölüm** IoT hub 'ını oluşturmak için Azure Cloud Shell kullanın. Bu IoT Hub 'ı, *contoso-US-Resource-Group*' a da eklenecektir.
 
-    Aşağıdaki örnekte adlı bir IOT hub oluşturulur *contoso-heatpumps-hub-1098* içinde *eastus* konumu. Kendi benzersiz hub adınızı kullanmanız gerekir. Hub adı yerine kendi soneki oluşturan **1098**. Örnek kod için özel ayırma ilkesini gerektirir `-heatpumps-` hub adı.
+    Aşağıdaki örnek, *eastus* konumunda *contoso-heatpumps-hub-1098* adlı bir IoT Hub 'ı oluşturur. Kendi benzersiz hub 'ınızın adını kullanmanız gerekir. Merkez adında **1098**yerine kendi son ekini oluşturun. Özel ayırma ilkesi için örnek kod hub adında olmalıdır `-heatpumps-` .
 
     ```azurecli-interactive 
     az iot hub create --name contoso-heatpumps-hub-1098 --resource-group contoso-us-resource-group --location eastus --sku S1
     ```
     
-    Bu komut ayrıca tamamlanması birkaç dakika sürebilir.
+    Bu komutun tamamlanması birkaç dakika sürebilir.
 
 
 
 
 ## <a name="create-the-enrollment"></a>Kayıt oluşturma
 
-Bu bölümde, özel ayırma ilkesini kullanan yeni bir kayıt grubu oluşturur. Kolaylık olması için bu makalede kullanan [simetrik anahtar kanıtı](concepts-symmetric-key-attestation.md) kaydı. Daha güvenli bir çözüm için kullanmayı [X.509 sertifikası kanıtlama](concepts-security.md#x509-certificates) ile bir güven zinciri.
+Bu bölümde, özel ayırma ilkesini kullanan yeni bir kayıt grubu oluşturacaksınız. Kolaylık olması için, bu makale kayıt ile [simetrik anahtar kanıtlama](concepts-symmetric-key-attestation.md) kullanır. Daha güvenli bir çözüm için, bir güven zinciri ile [X. 509.440 sertifika kanıtlama](concepts-security.md#x509-certificates) kullanmayı göz önünde bulundurun.
 
-1. Oturum [Azure portalında](https://portal.azure.com), cihaz sağlama hizmeti örneğinizi açın.
+1. [Azure Portal](https://portal.azure.com)oturum açın ve cihaz sağlama hizmeti örneğinizi açın.
 
-2. Seçin **kayıtları Yönet** sekmesine ve ardından **kayıt grubu Ekle** sayfanın üstünde düğme. 
+2. Kayıtları **Yönet** sekmesini seçin ve ardından sayfanın en üstündeki **kayıt grubu Ekle** düğmesine tıklayın. 
 
-3. Üzerinde **kayıt grubu Ekle**, aşağıdaki bilgileri girin ve tıklayın **Kaydet** düğmesi.
+3. **Kayıt grubu Ekle**sayfasında, aşağıdaki bilgileri girin ve **Kaydet** düğmesine tıklayın.
 
-    **Grup adı**: Girin **contoso-özel-ayrılan-cihazları**.
+    **Grup adı**: **Contoso-özel-ayrılan cihazları**girin.
 
-    **Kanıtlama türü**: Seçin **simetrik anahtar**.
+    **Kanıtlama türü**: **Simetrik anahtar**seçin.
 
-    **Anahtarları otomatik olarak oluştur**: Bu onay kutusu zaten işaretlenmelidir.
+    **Anahtarları otomatik oluştur**: Bu onay kutusu zaten denetlenmelidir.
 
-    **Hub'lara cihazları atamak istediğiniz seçin**: Seçin **özel (Azure işlevi kullanın)** .
+    **Cihazları hub 'lara nasıl atamak Istediğinizi seçin**: Özel ' i **(Azure Işlevini kullanın)** seçin.
 
-    ![Simetrik anahtar kanıtı için özel ayırma kayıt grubu Ekle](./media/how-to-use-custom-allocation-policies/create-custom-allocation-enrollment.png)
-
-
-4. Üzerinde **kayıt grubu Ekle**, tıklayın **yeni bir IOT hub bağlantı** bölümsel, yeni IOT hub'larının her ikisini bağlamak için. 
-
-    Bu adımı her iki bölümsel, IOT hub'larınız için yürütmeniz gerekir.
-
-    **Abonelik**: Birden fazla aboneliğiniz varsa bölümsel IOT hub'ları oluşturduğunuz aboneliği seçin.
-
-    **IOT hub'ı**: Oluşturduğunuz bölümsel hub'ları birini seçin.
-
-    **Erişim İlkesi**: Seçin **iothubowner**.
-
-    ![Bölümsel IOT hub'ları sağlama hizmeti ile bağlama](./media/how-to-use-custom-allocation-policies/link-divisional-hubs.png)
+    ![Simetrik anahtar kanıtlama için özel ayırma kayıt grubu ekleme](./media/how-to-use-custom-allocation-policies/create-custom-allocation-enrollment.png)
 
 
-5. Üzerinde **kayıt grubu Ekle**, bölümsel hem IOT hub'ları bağlı sonra bunları kayıt grubu için IOT Hub grubu olarak aşağıda gösterildiği gibi seçmeniz gerekir:
+4. Yeni **bir IoT Hub** 'ınızı bağlamak Için **kayıt grubu Ekle**' ye tıklayın. 
 
-    ![Kayıt için bölümsel hub grubu oluşturma](./media/how-to-use-custom-allocation-policies/enrollment-divisional-hub-group.png)
+    Bu adımı, her iki sizin de IoT Hub 'larınız için yürütmeniz gerekir.
+
+    **Abonelik**: Birden çok aboneliğiniz varsa, daha fazla IoT Hub 'ını oluşturduğunuz aboneliği seçin.
+
+    **IoT Hub 'ı**: Oluşturduğunuz bir dizi hub 'dan birini seçin.
+
+    **Erişim ilkesi**: **İothubowner**öğesini seçin.
+
+    ![Kaynak IoT Hub 'larını sağlama hizmeti ile bağlama](./media/how-to-use-custom-allocation-policies/link-divisional-hubs.png)
 
 
-6. Üzerinde **kayıt grubu Ekle**, ekranı aşağı kaydırarak **Azure işlevi seçin** 'ye tıklayın **yeni bir işlev uygulaması oluşturma**.
+5. **Kayıt grubu Ekle**sayfasında, her Iki bir IoT Hub 'ı bağlantısı kurulduktan sonra, bunları aşağıda gösterildiği gibi kayıt grubu için IoT Hub grubu olarak seçmeniz gerekir:
 
-7. Üzerinde **işlev uygulaması** sayfası açılır;'a tıklayın ve yeni işlev için aşağıdaki ayarları girin oluşturma **Oluştur**:
+    ![Kayıt için DivisionaL hub grubunu oluşturma](./media/how-to-use-custom-allocation-policies/enrollment-divisional-hub-group.png)
 
-    **Uygulama adı**: Benzersiz işlev uygulamanızın adını girin. **işlev uygulaması 1098 contoso** örnek olarak gösterilir.
 
-    **Kaynak grubu**: Seçin **var olanı kullan** ve **contoso-us-resource-group** birlikte bu makalede oluşturulan tüm kaynakları korumak için.
+6. **Kayıt grubu Ekle**' de, **Azure işlevi seçin** bölümüne gidin ve **Yeni bir işlev uygulaması oluştur ' a**tıklayın.
 
-    **Application Insights**: Bu alıştırma için bu kapatabilirsiniz.
+7. Açılan **işlev uygulaması** Oluştur sayfasında, yeni işleviniz için aşağıdaki ayarları girin ve **Oluştur**' a tıklayın:
+
+    **Uygulama adı**: Benzersiz bir işlev uygulama adı girin. **contoso-Function-App-1098** örnek olarak gösterilir.
+
+    **Kaynak grubu**: Bu makalede oluşturulan tüm kaynakların birlikte kalmasını sağlamak için **var olan** ve **contoso-US-Resource-Group** kullanın ' ı seçin.
+
+    **Application Insights**: Bu alıştırma için, bunu kapatabilirsiniz.
 
     ![İşlev uygulaması oluşturma](./media/how-to-use-custom-allocation-policies/function-app-create.png)
 
 
-8. Yeniden, **kayıt grubu Ekle** sayfasında, yeni işlev uygulamanızı seçildiğinden emin olun. İşlevi uygulama listesini yenilemek için aboneliği yeniden seçmeniz gerekebilir.
+8. **Kayıt grubunuz Ekle** sayfanıza dönün, yeni işlev uygulamanızın seçildiğinden emin olun. İşlev uygulaması listesini yenilemek için aboneliği yeniden seçmeniz gerekebilir.
 
-    Yeni işlev uygulamanızı seçildikten sonra tıklayın **yeni bir işlev oluşturma**.
+    Yeni işlev uygulamanız seçildikten sonra **Yeni bir Işlev oluştur ' a**tıklayın.
 
     ![İşlev uygulaması oluşturma](./media/how-to-use-custom-allocation-policies/click-create-new-function.png)
 
-    Yeni işlev uygulamanızı açılır.
+    Yeni işlev uygulamanız açılacak.
 
-9. İşlev uygulamanızı yeni bir işlev oluşturmak için tıklayın
+9. İşlev uygulamanızda yeni bir işlev oluşturmak için tıklayın
 
     ![İşlev uygulaması oluşturma](./media/how-to-use-custom-allocation-policies/new-function.png)
 
-    Yeni işlev için yeni bir varsayılan ayarları kullanın. **Web kancası + API** kullanarak **CSharp** dili. Tıklayın **bu işlevi Oluştur**.
+    Yeni işlev için, **CSharp** dilini kullanarak yeni bir **Web kancası + API** oluşturmak için varsayılan ayarları kullanın. **Bu Işlevi oluştur ' a**tıklayın.
 
-    Bu adlı yeni bir C# işlevi oluşturur **HttpTriggerCSharp1**.
+    Bu, HttpTriggerCSharp1 adlı C# yeni bir işlev oluşturur.
 
-10. Yeni C# işlev kodunu tıklayın ve aşağıdaki kod ile değiştirin. **Kaydet**:    
+10. Yeni C# işlev için kodu aşağıdaki kodla değiştirin ve **Kaydet**' e tıklayın:    
 
-    ```C#
+    ```csharp
     #r "Newtonsoft.Json"
     using System.Net;
     using System.Text;
@@ -266,32 +266,32 @@ Bu bölümde, özel ayırma ilkesini kullanan yeni bir kayıt grubu oluşturur. 
     ```
 
 
-11. Geri dönüp, **kayıt grubu Ekle** sayfasında ve yeni işlev seçildiğinden emin olun. İşlev uygulaması, işlev listeyi yenilemek için yeniden seçmeniz gerekebilir.
+11. **Kayıt grubunuz Ekle** sayfanıza dönün ve yeni işlevin seçildiğinden emin olun. İşlevler listesini yenilemek için işlev uygulamasını yeniden seçmeniz gerekebilir.
 
-    Yeni işlevinizde seçildikten sonra tıklayın **Kaydet** kayıt grubunu kaydetmek için.
+    Yeni işleviniz seçildikten sonra kayıt grubunu kaydetmek için **Kaydet** ' e tıklayın.
 
-    ![Son olarak, kayıt grubunu kaydedin](./media/how-to-use-custom-allocation-policies/save-enrollment.png)
-
-
-12. Kaydı kaydetme sonra yeniden açın ve Not **birincil anahtar**. Oluşturulan anahtarları için ilk kayıt kaydetmeniz gerekir. Bu anahtar, sanal cihazlar için benzersiz bir cihaz anahtarları oluşturmak için kullanılır.
+    ![Son olarak kayıt grubunu kaydedin](./media/how-to-use-custom-allocation-policies/save-enrollment.png)
 
 
-## <a name="derive-unique-device-keys"></a>Benzersiz cihaz anahtarları türetin
+12. Kayıt kaydedildikten sonra yeniden açın ve **birincil anahtarı**bir yere getirin. Anahtarların oluşturulması için önce kaydı kaydetmelisiniz. Bu anahtar, daha sonra sanal cihazlar için benzersiz cihaz anahtarları oluşturmak üzere kullanılacaktır.
 
-Bu bölümde, iki benzersiz cihaz anahtarları oluşturacaksınız. Bir anahtar toaster sanal cihaz için kullanılır. Başka bir tuşa ısı pompa sanal cihaz için kullanılır.
 
-Cihaz anahtarı oluşturmak için kullanacağınız **birincil anahtar** hesaplamak için daha önce Not [HMAC SHA256](https://wikipedia.org/wiki/HMAC) her bir cihaz ve sonucu Base64 biçimine dönüştürmek için cihaz kayıt kimliği. Kayıt grupları ile türetilen cihaz anahtarları oluşturma hakkında daha fazla bilgi için Grup kayıtları bölümüne bakın. [simetrik anahtar kanıtı](concepts-symmetric-key-attestation.md).
+## <a name="derive-unique-device-keys"></a>Benzersiz cihaz anahtarları türet
 
-Örneğin bu makalede, aşağıdaki iki cihaz kayıt kimliklerini ve cihaz anahtarı hem de cihazlar için işlem. Her iki kayıt kimlikleri özel ayırma ilkesi için örnek kod ile çalışmak için geçerli bir son eke sahiptir:
+Bu bölümde, iki benzersiz cihaz anahtarı oluşturacaksınız. Bir anahtar, sanal bir Toaster cihazı için kullanılacaktır. Diğer anahtar, sanal bir ısı pompa cihazı için kullanılacaktır.
 
-- **contoso tstrsd 007 breakroom499**
+Cihaz anahtarı oluşturmak için, daha önce not ettiğiniz **birincil anahtarı** kullanarak her bir cihaz için CIHAZ kayıt kimliği için [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) ' ı hesaplamanız ve sonucu base64 biçimine dönüştürmeniz gerekir. Kayıt gruplarıyla türetilmiş cihaz anahtarları oluşturma hakkında daha fazla bilgi için, [simetrik anahtar kanıtlama](concepts-symmetric-key-attestation.md)'nın grup kayıtları bölümüne bakın.
+
+Bu makaledeki örnek için aşağıdaki iki cihaz kayıt kimliğini kullanın ve her iki cihaz için bir cihaz anahtarı hesaplayın. Kayıt kimliklerinin her ikisi de özel ayırma ilkesi için örnek kodla çalışmak üzere geçerli bir sonekine sahiptir:
+
+- **breakroom499-contoso-tstrsd-007**
 - **mainbuilding167-contoso-hpsd-088**
 
 #### <a name="linux-workstations"></a>Linux iş istasyonları
 
-Bir Linux iş istasyonu kullanıyorsanız, aşağıdaki örnekte gösterildiği gibi türetilen cihaz anahtarları oluşturmak için openssl kullanabilirsiniz.
+Bir Linux iş istasyonu kullanıyorsanız, aşağıdaki örnekte gösterildiği gibi, türetilmiş cihaz anahtarlarınızı oluşturmak için OpenSSL kullanabilirsiniz.
 
-1. Değiştirin **anahtarı** ile **birincil anahtar** daha önce not ettiğiniz.
+1. **Anahtarın** değerini, daha önce not ettiğiniz **birincil anahtarla** değiştirin.
 
     ```bash
     KEY=oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA==
@@ -314,9 +314,9 @@ Bir Linux iş istasyonu kullanıyorsanız, aşağıdaki örnekte gösterildiği 
 
 #### <a name="windows-based-workstations"></a>Windows tabanlı iş istasyonları
 
-Windows tabanlı bir iş istasyonu kullanıyorsanız, aşağıdaki örnekte gösterildiği gibi türetilen cihaz anahtarı oluşturmak için PowerShell kullanabilirsiniz.
+Windows tabanlı bir iş istasyonu kullanıyorsanız, aşağıdaki örnekte gösterildiği gibi, türetilmiş cihaz anahtarınızı oluşturmak için PowerShell kullanabilirsiniz.
 
-1. Değiştirin **anahtarı** ile **birincil anahtar** daha önce not ettiğiniz.
+1. **Anahtarın** değerini, daha önce not ettiğiniz **birincil anahtarla** değiştirin.
 
     ```powershell
     $KEY='oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA=='
@@ -340,18 +340,18 @@ Windows tabanlı bir iş istasyonu kullanıyorsanız, aşağıdaki örnekte gös
     ```
 
 
-Sanal cihazlar, simetrik anahtar kanıtı gerçekleştirmek için her bir kayıt kimliği ile türetilen cihaz anahtarlarını kullanır.
+Sanal cihazlar, simetrik anahtar kanıtlama gerçekleştirmek için her kayıt KIMLIĞIYLE türetilmiş cihaz anahtarlarını kullanır.
 
 
 
 
 ## <a name="prepare-an-azure-iot-c-sdk-development-environment"></a>Azure IoT C SDK'sı için geliştirme ortamını hazırlama
 
-Bu bölümde, [Azure IoT C SDK'sını](https://github.com/Azure/azure-iot-sdk-c) oluşturmak için kullanılan geliştirme ortamını hazırlayacaksınız. SDK'sı sanal cihaz için örnek kod içerir. Simülasyon cihazı, cihazın önyükleme dizisi sırasında sağlamayı dener.
+Bu bölümde, [Azure IoT C SDK'sını](https://github.com/Azure/azure-iot-sdk-c) oluşturmak için kullanılan geliştirme ortamını hazırlayacaksınız. SDK, sanal cihaz için örnek kodu içerir. Simülasyon cihazı, cihazın önyükleme dizisi sırasında sağlamayı dener.
 
-Bu bölüm, Windows tabanlı bir iş istasyonu doğru yönlendirilmiş yöneliktir. Kurulum sanal makinelerin bir Linux örneği için bkz [çoklu müşteri mimarisi için sağlama](how-to-provision-multitenant.md).
+Bu bölüm, Windows tabanlı bir iş istasyonuna yönelir. Bir Linux örneği için bkz. [çok kiracılı için sağlama](how-to-provision-multitenant.md)bölümünde VM 'lerin kurulumu.
 
-1. İndirme [CMake derleme sistemini](https://cmake.org/download/).
+1. [CMake derleme sistemini](https://cmake.org/download/)indirin.
 
     `CMake` yüklemesine başlamadan **önce** makinenizde Visual Studio önkoşullarının (Visual Studio ve "C++ ile masaüstü geliştirme" iş yükü) yüklenmiş olması önemlidir. Önkoşullar sağlandıktan ve indirme doğrulandıktan sonra, CMake derleme sistemini yükleyin.
 
@@ -398,17 +398,17 @@ Bu bölüm, Windows tabanlı bir iş istasyonu doğru yönlendirilmiş yönelikt
 
 
 
-## <a name="simulate-the-devices"></a>Cihazların benzetimini yapma
+## <a name="simulate-the-devices"></a>Cihazların benzetimini yapın
 
-Bu bölümde, adlı bir sağlama örnek güncelleştirecektir **prov\_geliştirme\_istemci\_örnek** Azure IOT C ayarladığınız daha önce SDK'sı bulunur. 
+Bu bölümde, daha önce ayarladığınız Azure IoT C SDK 'sında **bulunan\_prov\_dev\_Client Sample** adlı bir sağlama örneğini güncelleşolursunuz. 
 
-Bu örnek kod, cihaz sağlama hizmeti örneğinizi sağlama isteği gönderdiği cihaz önyükleme sırası benzetimini yapar. Önyükleme sırasını tanınır ve özel ayırma ilkesini kullanarak IOT hub'ına atanma toaster cihazın neden olur.
+Bu örnek kod, cihaz sağlama hizmeti örneğinize sağlama isteği gönderen bir cihaz önyükleme sırasının benzetimini yapar. Önyükleme sırası, Toaster cihazının özel ayırma ilkesi kullanılarak IoT Hub 'ına tanınmasına ve atanmasına neden olur.
 
 1. Azure Portal'da Cihaz Sağlama hizmetiniz için **Genel Bakış** sekmesini seçin ve **_Kimlik Kapsamı_** değerini not alın.
 
     ![Portal dikey penceresinden Cihaz Sağlama Hizmeti uç noktası bilgilerini ayıklama](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
-2. Visual Studio'da açın **azure_iot_sdks.sln** CMake çalıştırarak daha önce oluşturulan çözüm dosyası. Çözüm dosyası şu konumda olmalıdır:
+2. Visual Studio 'da, daha önce CMake çalıştırılarak oluşturulan **azure_iot_sdks. sln** çözüm dosyasını açın. Çözüm dosyası şu konumda olmalıdır:
 
     ```
     \azure-iot-sdk-c\cmake\azure_iot_sdks.sln
@@ -434,16 +434,16 @@ Bu örnek kod, cihaz sağlama hizmeti örneğinizi sağlama isteği gönderdiği
 6. **prov\_dev\_client\_sample** projesine sağ tıklayın ve **Başlangıç Projesi Olarak Ayarla**’yı seçin. 
 
 
-#### <a name="simulate-the-contoso-toaster-device"></a>Contoso toaster cihazının simülasyonunu gerçekleştirme
+#### <a name="simulate-the-contoso-toaster-device"></a>Contoso Toaster cihazının benzetimini yapma
 
-1. Toaster cihaz benzetimini yapmak için çağrı Bul `prov_dev_set_symmetric_key_info()` içinde **prov\_geliştirme\_istemci\_sample.c** hangi dışında bırakılır.
+1. Toaster cihazının benzetimini yapmak için, bir açıklama `prov_dev_set_symmetric_key_info()` eklenen **prov\_dev\_Client\_Sample. c** dosyasında öğesine yapılan çağrıyı bulun.
 
     ```c
     // Set the symmetric key if using they auth type
     //prov_dev_set_symmetric_key_info("<symm_registration_id>", "<symmetric_Key>");
     ```
 
-    İşlev çağrısının açıklamasını kaldırın ve (açılı ayraçlar dahil) yer tutucu değerlerini toaster kayıt kimliği ve daha önce oluşturulan türetilen cihaz anahtarı ile değiştirin. Anahtar değeri **JC8F96eayuQwwz + PkE7IzjH2lIAjCUnAa61tDigBnSs =** gösterilen aşağıda yalnızca örnek olarak verilmiştir.
+    İşlev çağrısının açıklamasını kaldırın ve yer tutucu değerlerini (açılı ayraçlar dahil), daha önce oluşturduğunuz Toaster kayıt KIMLIĞI ve türetilmiş cihaz anahtarıyla değiştirin. Aşağıda gösterilen anahtar değeri **JC8F96eayuQwwz + PkE7IzjH2lIAjCUnAa61tDigBnSs =** yalnızca örnek olarak verilmiştir.
 
     ```c
     // Set the symmetric key if using they auth type
@@ -454,7 +454,7 @@ Bu örnek kod, cihaz sağlama hizmeti örneğinizi sağlama isteği gönderdiği
 
 2. Çözümü çalıştırmak için Visual Studio menüsünde **Hata Ayıkla** > **Hata ayıklama olmadan başlat**'ı seçin. Projeyi yeniden derleme isteminde **Evet**'e tıklayarak, çalıştırmadan önce projeyi yeniden derleyin.
 
-    Aşağıdaki çıktı, Yedekleme başarıyla önyüklenmesini ve özel ayırma ilkesi tarafından Tebrikleri IOT hub'ına atanacak sağlama hizmeti örneğine bağlanan sanal toaster cihaz örneğidir:
+    Aşağıdaki çıktı, sanal olarak önyüklenmekte olan benzetimli Toaster cihazının bir örneğidir ve özel ayırma ilkesi tarafından TOAO IoT Hub 'ına atanacak sağlama hizmeti örneğine bağlantı sağlar:
 
     ```cmd
     Provisioning API Version: 1.2.9
@@ -471,9 +471,9 @@ Bu örnek kod, cihaz sağlama hizmeti örneğinizi sağlama isteği gönderdiği
     ```
 
 
-#### <a name="simulate-the-contoso-heat-pump-device"></a>Contoso ısı pompa cihazının simülasyonunu gerçekleştirme
+#### <a name="simulate-the-contoso-heat-pump-device"></a>Contoso ısı pompa cihazının benzetimini yapın
 
-1. Isı pompa cihaz benzetimini yapmak için çağrı güncelleştirme `prov_dev_set_symmetric_key_info()` içinde **prov\_geliştirme\_istemci\_sample.c** yeniden ısı pompa kayıt kimliği ve türetilen cihaz anahtarı ile daha önce oluşturulan . Anahtar değeri **6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg =** gösterilen aşağıda ayrıca yalnızca bir örnek olarak verilmiştir.
+1. Isı pompa cihazının benzetimini yapmak için `prov_dev_set_symmetric_key_info()` , **prov\_dev\_Client\_Sample. c** içindeki çağrısını daha önce oluşturduğunuz ısı pompa kayıt kimliği ve türetilmiş cihaz anahtarıyla yeniden güncelleştirin. Aşağıda gösterilen anahtar değer **6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg =** yalnızca örnek olarak verilmiştir.
 
     ```c
     // Set the symmetric key if using they auth type
@@ -484,7 +484,7 @@ Bu örnek kod, cihaz sağlama hizmeti örneğinizi sağlama isteği gönderdiği
 
 2. Çözümü çalıştırmak için Visual Studio menüsünde **Hata Ayıkla** > **Hata ayıklama olmadan başlat**'ı seçin. Projeyi yeniden derleme isteminde **Evet**'e tıklayarak, çalıştırmadan önce projeyi yeniden derleyin.
 
-    Aşağıdaki çıktı, Yedekleme başarıyla önyüklenmesini ve özel ayırma ilkesi tarafından Contoso ısı pompalara IOT hub'ına atanacak sağlama hizmeti örneğine bağlanan sanal ısı pompa cihaz örneğidir:
+    Aşağıdaki çıktı, sanal olarak önyüklenmekte olan ve özel ayırma ilkesi tarafından contoso ısı pompalara IoT Hub 'ına atanacak sağlama hizmeti örneğine bağlanan bir örnektir:
 
     ```cmd
     Provisioning API Version: 1.2.9
@@ -503,34 +503,34 @@ Bu örnek kod, cihaz sağlama hizmeti örneğinizi sağlama isteği gönderdiği
 
 ## <a name="troubleshooting-custom-allocation-policies"></a>Özel ayırma ilkeleri sorunlarını giderme
 
-Aşağıdaki tabloda, beklenen senaryoları ve karşılaşabileceğiniz sonuçları hata kodları gösterilir. Bu tablo, Azure işlevleri ile özel ayırma ilkesi hataları gidermeye yardımcı olmak için kullanın.
+Aşağıdaki tabloda, beklenen senaryolar ve karşılaşabileceğiniz sonuç hata kodları gösterilmektedir. Azure Işlevleriniz ile özel ayırma ilkesi hatalarında sorun gidermeye yardımcı olması için bu tabloyu kullanın.
 
 
-| Senaryo | Sağlama Hizmeti'nden kayıt sonucu | SDK'sı sonuçları sağlama |
+| Senaryo | Sağlama hizmetinden kayıt sonucu | SDK sonuçlarını sağlama |
 | -------- | --------------------------------------------- | ------------------------ |
-| Web kancası 200 Tamam 'geçerli bir IOT hub konak adına ayarlayın iotHubHostName' döndürür | Sonuç durumu: Atanan  | SDK'sı PROV_DEVICE_RESULT_OK yanı sıra hub bilgilerini döndürür. |
-| Web kancası 200 Tamam 'iotHubHostName' yanıtta sunmak, ancak bir boş dize veya null döndürür. | Sonuç durumu: Başarısız<br><br> Hata kodu: CustomAllocationIotHubNotSpecified (400208) | SDK'sı PROV_DEVICE_RESULT_HUB_NOT_SPECIFIED döndürür |
-| Web kancası 401 Yetkisiz döndürür | Sonuç durumu: Başarısız<br><br>Hata kodu: CustomAllocationUnauthorizedAccess (400209) | SDK returns PROV_DEVICE_RESULT_UNAUTHORIZED |
-| Cihaz devre dışı bırakmak için bireysel kayıt oluşturuldu | Sonuç durumu: Devre dışı | SDK'sı PROV_DEVICE_RESULT_DISABLED döndürür |
-| Web kancası hata kodu döndürür > 429 = | DPS düzenleme için birkaç kez yeniden deneyecek. Yeniden deneme ilkesi şu anda şöyledir:<br><br>&nbsp;&nbsp;-Yeniden deneme sayısı: 10<br>&nbsp;&nbsp;-Başlangıç aralığı: 1s<br>&nbsp;&nbsp;-Artış: 9s | SDK'sı hatasını görmezden Gel ve belirtilen süre içinde başka bir get durum iletisi gönderin |
-| Web kancası herhangi bir durum kodu döndürür. | Sonuç durumu: Başarısız<br><br>Hata kodu: CustomAllocationFailed (400207) | SDK'sı PROV_DEVICE_RESULT_DEV_AUTH_ERROR döndürür |
+| Web kancası, geçerli bir IoT Hub ana bilgisayar adına ayarlanmış ' iotHubHostName ' ile 200 OK döndürür | Sonuç durumu: Atanan  | SDK, hub bilgileriyle birlikte PROV_DEVICE_RESULT_OK döndürüyor |
+| Web kancası, yanıtta mevcut olan, ancak boş bir dize veya null olarak ayarlanan 200 OK değerini döndürüyor | Sonuç durumu: Başarısız<br><br> Hata kodu: Customallocationiothubnotbelirtildi (400208) | SDK PROV_DEVICE_RESULT_HUB_NOT_SPECIFIED döndürüyor |
+| Web kancası 401 öğesini döndürüyor | Sonuç durumu: Başarısız<br><br>Hata kodu: CustomAllocationUnauthorizedAccess (400209) | SDK PROV_DEVICE_RESULT_UNAUTHORIZED döndürüyor |
+| Cihazı devre dışı bırakmak için tek bir kayıt oluşturuldu | Sonuç durumu: Devre dışı | SDK PROV_DEVICE_RESULT_DISABLED döndürüyor |
+| Web kancası hata kodu döndürüyor > = 429 | DPS düzenleme birkaç kez yeniden deneyecek. Yeniden deneme ilkesi Şu anda:<br><br>&nbsp;&nbsp;-Yeniden deneme sayısı: 10<br>&nbsp;&nbsp;-İlk Aralık: öğeleri<br>&nbsp;&nbsp;Ilamadı 9 | SDK hatayı yoksayacaktır ve belirtilen zamanda başka bir get durum iletisi gönderir |
+| Web kancası diğer durum kodunu döndürür | Sonuç durumu: Başarısız<br><br>Hata kodu: CustomAllocationFailed (400207) | SDK PROV_DEVICE_RESULT_DEV_AUTH_ERROR döndürüyor |
 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu makalede oluşturulan kaynakları ile çalışmaya devam etmeyi planlıyorsanız, bunları bırakabilirsiniz. Kaynağı kullanmaya devam etmeyi planlamıyorsanız, gereksiz ücretlerden kaçınmak için bu makaleyi tarafından oluşturulan tüm kaynakları silmek için aşağıdaki adımları kullanın.
+Bu makalede oluşturulan kaynaklarla çalışmaya devam etmeyi planlıyorsanız, bunları bırakabilirsiniz. Kaynağı kullanmaya devam etmeyi planlamıyorsanız, gereksiz ücretlerden kaçınmak için bu makale tarafından oluşturulan tüm kaynakları silmek için aşağıdaki adımları kullanın.
 
-Oluşturduğunuz tüm kaynakları bu makaledeki adlı kaynak grubunda belirtildiği gibi buradaki adımları varsayar **contoso-us-resource-group**.
+Buradaki adımlarda, bu makaledeki tüm kaynakları **contoso-US-Resource-Group**adlı aynı kaynak grubunda belirtildiği şekilde oluşturduğunuz varsayılır.
 
 > [!IMPORTANT]
 > Silinen kaynak grupları geri alınamaz. Kaynak grubu ve içindeki tüm kaynaklar kalıcı olarak silinir. Yanlış kaynak grubunu veya kaynakları yanlışlıkla silmediğinizden emin olun. IoT Hub'ı tutmak istediğiniz kaynakların bulunduğu mevcut bir kaynak grubunda oluşturduysanız kaynak grubunu silmek yerine IoT Hub kaynağını silin.
 >
 
-Ada göre kaynak grubunu silmek için:
+Kaynak grubunu ada göre silmek için:
 
 1. [Azure portalında](https://portal.azure.com) oturum açın ve **Kaynak grupları**’na tıklayın.
 
-2. İçinde **ada göre Filtrele...**  metin kutusuna kaynak adını grubunda kaynaklarınızın içeren **contoso-us-resource-group**. 
+2. **Ada göre filtrele...** metin kutusuna kaynaklarınızı içeren kaynak grubunun adını yazın, **contoso-US-Resource-Group**. 
 
 3. Sonuç listesinde kaynak grubunuzun sağ tarafında **...** ve sonra **Kaynak grubunu sil**'e tıklayın.
 
@@ -538,8 +538,8 @@ Ada göre kaynak grubunu silmek için:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Reprovisioning daha fazla bilgi edinmek için [IOT Hub cihaz kavramları çıkış](concepts-device-reprovision.md) 
-- Daha fazla sağlama kaldırmayı bilgi edinmek için [nasıl daha önce otomatik olarak sağlanan cihazları sağlamasını kaldırmak](how-to-unprovision-devices.md) 
+- Daha fazla yeniden sağlama hakkında daha fazla bilgi için bkz. [cihaz yeniden sağlama kavramlarını IoT Hub](concepts-device-reprovision.md) 
+- Daha fazla sağlama sağlamayı öğrenmek için bkz. [daha önce otomatik olarak sağlanan cihazların sağlamasını kaldırma](how-to-unprovision-devices.md) 
 
 
 

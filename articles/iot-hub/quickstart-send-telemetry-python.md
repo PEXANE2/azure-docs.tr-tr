@@ -10,14 +10,14 @@ ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/28/2019
-ms.openlocfilehash: a8abd71609d3e063c92541485007a3bde44be954
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c92b019e15c6a9ee5b2d38e240ae4f9891621f72
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67051246"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360202"
 ---
-# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>Hızlı Başlangıç: Bir IOT hub'ına bir CİHAZDAN telemetri gönderme ve arka uç uygulaması ile (Python) okuyun
+# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>Hızlı Başlangıç: Bir cihazdan IoT Hub 'ına telemetri gönderme ve arka uç uygulamasıyla (Python) okuma
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
@@ -31,23 +31,23 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu hızlı başlangıçta çalıştırma örnek uygulaması, Python kullanarak yazılır. Şu anda Python için Microsoft Azure IOT SDK, her platform için Python yalnızca belirli sürümlerini destekler. Daha fazla bilgi için bkz. [Python SDK'sı Benioku](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues).
+Bu hızlı başlangıçta çalıştırdığınız örnek uygulama Python kullanılarak yazılmıştır. Şu anda Python için Microsoft Azure IoT SDK 'Ları, her platform için yalnızca belirli Python sürümlerini destekler. Daha fazla bilgi için bkz. [Python SDK Benioku dosyası](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues).
 
-Bu hızlı başlangıçta, Windows geliştirme makinesi kullandığınızı varsayar. Yalnızca Windows sistemleri için [Python 3.6.x](https://www.python.org/downloads/release/python-368/) desteklenir. Çalıştığınız sistemin mimarisine uygun Python yükleyicisini seçmeniz gerekir. Sisteminiz CPU mimarisi, 32 bit ve ardından indirme x86 yükleyici ise; 64 bit mimari için x86 64 yükleyiciyi indirin. Ayrıca, emin olun [Microsoft Visual C++ yeniden dağıtılabilir için Visual Studio 2019](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) Mimarinizi (x86 veya x64) için yüklenir.
+Bu hızlı başlangıç, bir Windows geliştirme makinesi kullandığınızı varsayar. Windows sistemleri için yalnızca [Python 3.6. x](https://www.python.org/downloads/release/python-368/) desteklenir. Çalıştığınız sistemin mimarisine uygun Python yükleyicisini seçmeniz gerekir. Sistem CPU mimariniz 32 bit ise, x86 yükleyicisi 'ni indirin; 64 bitlik mimari için x86-64 yükleyicisini indirin. Ayrıca, [Visual Studio 2019 Için Microsoft C++ Visual Redistributable](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) 'ın mimariniz (x86 veya x64) için yüklü olduğundan emin olun.
 
-Python için diğer platformlardan indirebileceğiniz [Python.org](https://www.python.org/downloads/).
+[Python.org](https://www.python.org/downloads/)adresinden diğer platformlar için Python indirebilirsiniz.
 
 Aşağıdaki komutlardan birini kullanarak geliştirme makinenizde geçerli Python sürümünü doğrulayabilirsiniz:
 
 ```python
-python --version
+python - -version
 ```
 
 ```python
-python3 --version
+python3 - -version
 ```
 
-Microsoft Azure IOT uzantısı için Azure CLI Cloud Shell Örneğinize eklemek için aşağıdaki komutu çalıştırın. IOT uzantısı, Azure CLI için IOT Hub, IOT Edge ve IOT cihaz sağlama hizmeti (DPS) belirli komutları ekler.
+Azure CLı için Microsoft Azure IoT uzantısını Cloud Shell örneğinize eklemek için aşağıdaki komutu çalıştırın. IOT uzantısı, Azure CLı 'ye IoT Hub, IoT Edge ve IoT cihaz sağlama hizmeti 'ne (DPS) özel komutlar ekler.
 
 ```azurecli-interactive
 az extension add --name azure-cli-iot-ext
@@ -63,19 +63,19 @@ az extension add --name azure-cli-iot-ext
 
 Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu hızlı başlangıçta Azure Cloud Shell kullanarak bir simülasyon cihazı kaydedeceksiniz.
 
-1. Cihaz kimliği oluşturmak için Azure Cloud Shell'de aşağıdaki komutu çalıştırın.
+1. Cihaz kimliğini oluşturmak için Azure Cloud Shell aşağıdaki komutu çalıştırın.
 
-    **YourIoTHubName**: Aşağıda bu yer tutucu IOT hub'ınız için seçtiğiniz adıyla değiştirin.
+    **Youriothubname**: Aşağıdaki yer tutucusunu, IoT Hub 'ınız için seçtiğiniz adla değiştirin.
 
-    **MyPythonDevice**: Bu, kayıtlı bir cihaz için verilen addır. Gösterilen MyPythonDevice değerini kullanın. Cihazınız için farklı bir ad seçerseniz bu makalenin geri kalan bölümünde aynı adı kullanmanız ve örnek uygulamaları çalıştırmadan önce bunlarda da cihaz adını güncelleştirmeniz gerekir.
+    **Mypythondevice**: Bu, kayıtlı cihaz için verilen addır. Gösterilen MyPythonDevice değerini kullanın. Cihazınız için farklı bir ad seçerseniz bu makalenin geri kalan bölümünde aynı adı kullanmanız ve örnek uygulamaları çalıştırmadan önce bunlarda da cihaz adını güncelleştirmeniz gerekir.
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyPythonDevice
     ```
 
-1. Azure Cloud Shell içinde almak için aşağıdaki komutları çalıştırın _cihaz bağlantı dizesini_ kaydettiğiniz cihazın:
+1. Kaydettiğiniz cihazın _Cihaz bağlantı dizesini_ almak için Azure Cloud Shell aşağıdaki komutları çalıştırın:
 
-    **YourIoTHubName**: Aşağıda bu yer tutucu IOT hub'ınız için seçtiğiniz adıyla değiştirin.
+    **Youriothubname**: Aşağıdaki yer tutucusunu, IoT Hub 'ınız için seçtiğiniz adla değiştirin.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyPythonDevice --output table
@@ -113,12 +113,12 @@ Simülasyon cihazı uygulaması, IoT hub’ınız üzerindeki cihaza özgü bir 
 
     ![Simülasyon cihazını çalıştırma](media/quickstart-send-telemetry-python/SimulatedDevice.png)
     
-### <a name="to-avoid-the-import-iothubclient-error"></a>İçeri aktarma iothub_client hatayı önlemek için
-Python için Azure IOT SDK'ın geçerli sürümü üzerindeki bir sarmalayıcıdır [C SDK'mız](https://github.com/azure/azure-iot-sdk-c). Kullanılarak oluşturulan [Boost](https://www.boost.org/) kitaplığı. Bu nedenle bazı önemli kısıtlamaları ile birlikte gelir. Daha fazla ayrıntı görmek [burada](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues)
+### <a name="to-avoid-the-import-iothubclient-error"></a>İçeri aktarma iothub_client hatasını önlemek için
+Python için Azure IoT SDK 'sının geçerli sürümü, [C SDK 'umuz](https://github.com/azure/azure-iot-sdk-c)üzerinde bir sarmalayıcıdır. Bu, [Boost](https://www.boost.org/) kitaplığı kullanılarak oluşturulur. Bu nedenle, bazı önemli sınırlamalara sahiptir. Daha fazla ayrıntı için [buraya](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues) bakın
 
-1. Doğru sürüme sahip olup olmadığını denetleyin [Python](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues). Yalnızca belirli sürümler, düzgün çalıştığını bu örneğe ilişkin dikkat edin. 
-2. Doğru sürüme sahip olup olmadığını denetleyin C++ çalışma zamanı [Microsoft Visual C++ yeniden dağıtılabilir için Visual Studio 2019](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads). (En son öneririz).
-3. Iothub istemci yüklü olduğunu doğrulayın: `pip install azure-iothub-device-client`.
+1. [Python](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues)'un doğru sürümüne sahip olup olmadığınızı denetleyin. Yalnızca belirli sürümlerin bu örnek için sorunsuz bir şekilde çalıştığına dikkat edin. 
+2. [Visual Studio 2019 Için Microsoft Visual C++ yeniden dağıtılabilir](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) C++ çalışma zamanının doğru sürümüne sahip olup olmadığınızı kontrol edin. (En son önerilir).
+3. Iothub istemcisini yüklediğinizden emin olun: `pip install azure-iothub-device-client`.
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Hub’ınızdan telemetri okuma
 
@@ -145,4 +145,4 @@ Bu hızlı başlangıçta, bir IoT hub’ını ayarladınız, bir cihazı kaydet
 Bir arka uç uygulamasından simülasyon cihazınızı denetlemeyi öğrenmek için sonraki hızlı başlangıçla devam edin.
 
 > [!div class="nextstepaction"]
-> [Hızlı Başlangıç: Bir IOT hub'ına bağlı cihazı denetleme](quickstart-control-device-python.md)
+> [Hızlı Başlangıç: IoT Hub 'ına bağlı bir cihazı denetleme](quickstart-control-device-python.md)

@@ -1,5 +1,5 @@
 ---
-title: Ayrı ağlarda ve Azure AD uygulama proxy'sinde bağlayıcı grupları kullanarak konumlara uygulamaları yayımlama | Microsoft Docs
+title: Azure AD Uygulaması Proxy bağlayıcı gruplarıyla ayrı ağlarda uygulama yayımlama | Microsoft Docs
 description: Azure AD uygulama proxy'sinde bağlayıcı gruplarını oluşturma ve yönetme konusunu kapsar.
 services: active-directory
 author: msmimart
@@ -14,12 +14,12 @@ ms.date: 11/08/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 574ce6def407f302439f6c53356fe69259240b2e
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: dae4eea3e08818d43482c995595cc9fbc3f91910
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67702491"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381491"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Ayrı ağlarda ve konumları bağlayıcı grupları kullanarak uygulama yayımlama
 
@@ -44,7 +44,7 @@ Bağlayıcılarınızı grubuna emin olmak sahip [yüklü birden fazla bağlayı
 1. Seçin **Azure Active Directory** > **kurumsal uygulamalar** > **uygulama proxy'si**.
 1. Seçin **yeni bağlayıcı grubu**. Yeni bağlayıcı grubu dikey penceresi görüntülenir.
 
-   ![Yeni bir bağlayıcı grubu seçmek için ekran gösterir](./media/application-proxy-connector-groups/new-group.png)
+   ![Yeni bir bağlayıcı grubu seçmek için ekranı gösterir](./media/application-proxy-connector-groups/new-group.png)
 
 1. Yeni bağlayıcı grubunuz bir ad verin ve ardından bu gruba hangi bağlayıcılar ait seçmek için açılan menüyü kullanın.
 1. **Kaydet**’i seçin.
@@ -77,11 +77,11 @@ Bulut erişimi için Iaas üzerinde yüklü uygulamalar için bağlayıcı grupl
 
 Sanal ağ için kendi Iaas bağlı bazı sanal makineleri olan bir kuruluş barındırılan bir örnek olarak alın. Bu uygulamaları kullanmak çalışanların izin vermek için bu özel ağların siteden siteye VPN kullanarak şirket ağına bağlanır. Bu, şirket içinde olan çalışanlar için iyi bir deneyim sağlar. Ancak, aşağıdaki diyagramda görüldüğü gibi erişimi yönlendirmek için şirket içinde ek altyapı gerektirdiğinden, uzak çalışanlar için ideal olmayabilir:
 
-![Azure AD Iaas ağ çizildiği diyagram](./media/application-proxy-connector-groups/application-proxy-iaas-network.png)
+![Azure AD IaaS ağını gösteren diyagram](./media/application-proxy-connector-groups/application-proxy-iaas-network.png)
   
 Azure AD uygulama ara sunucusu Bağlayıcısı gruplarıyla şirket ağınızda ek bağımlılık oluşturmadan tüm uygulamalara erişimi güvenli hale getirmek ortak bir hizmet etkinleştirebilirsiniz:
 
-![Azure AD Iaas birden fazla bulut satıcılarına](./media/application-proxy-connector-groups/application-proxy-multiple-cloud-vendors.png)
+![Azure AD IaaS birden çok bulut satıcısı](./media/application-proxy-connector-groups/application-proxy-multiple-cloud-vendors.png)
 
 ### <a name="multi-forest--different-connector-groups-for-each-forest"></a>Çok ormanlı – her orman için farklı bir bağlayıcı grupları
 
@@ -108,7 +108,7 @@ Aşağıdaki bağlayıcı grupları uygulayabileceğiniz, örnek olarak verilebi
 
 Bağlayıcı grupları kullanmazsanız, yapılandırmanızı şöyle görünebilir:
 
-![Örneğin Azure AD Bağlayıcısı grup yok](./media/application-proxy-connector-groups/application-proxy-sample-config-1.png)
+![Örnek Azure AD bağlayıcı grubu yok](./media/application-proxy-connector-groups/application-proxy-sample-config-1.png)
 
 Bu yapılandırma, küçük dağıtımları ve testler için yeterlidir. İyi kuruluşunuzun bir düz ağ topolojisi varsa da çalışır.
 
@@ -116,7 +116,7 @@ Bu yapılandırma, küçük dağıtımları ve testler için yeterlidir. İyi ku
 
 Bu yapılandırma, varsayılan bir Iaas sanal ağ gibi yalıtılmış bir ağda çalışan belirli bir uygulama olduğu bir halidir şöyledir:
 
-![Azure AD örneğinde yok bağlayıcı grupları ve yalıtılmış ağ](./media/application-proxy-connector-groups/application-proxy-sample-config-2.png)
+![Örnek Azure AD hiçbir bağlayıcı grubu ve yalıtılmış ağ](./media/application-proxy-connector-groups/application-proxy-sample-config-2.png)
 
 ### <a name="recommended-configuration--several-specific-groups-and-a-default-group-for-idle"></a>Birkaç belirli grupları ve varsayılan grup için önerilen yapılandırması – boş
 
@@ -124,7 +124,7 @@ Büyük ve karmaşık kuruluşlar için önerilen yapılandırma, tüm uygulamal
 
 Aşağıdaki örnekte, iki veri merkezleri, A ve B ile hizmet her site iki bağlayıcı şirket sahiptir. Her sitenin üzerinde çalışan farklı uygulamaları vardır.
 
-![Örnek 2 veri merkezleri ve 2 bağlayıcılar ile şirketin](./media/application-proxy-connector-groups/application-proxy-sample-config-3.png)
+![2 veri merkezi ve 2 bağlayıcısıyla şirket örneği](./media/application-proxy-connector-groups/application-proxy-sample-config-3.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

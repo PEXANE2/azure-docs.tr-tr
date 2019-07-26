@@ -1,6 +1,6 @@
 ---
-title: Azure faturalama Kurumsal API'leri | Microsoft Docs
-description: Raporlama sağlayan kurumsal Azure müşterileri, tüketim verilerini programlı olarak çekmek API'leri hakkında bilgi edinin.
+title: Azure Faturalandırma kurumsal API 'Leri | Microsoft Docs
+description: Kurumsal Azure müşterilerinin tüketim verilerini programlı bir şekilde çekmesini sağlayan raporlama API 'Leri hakkında bilgi edinin.
 services: ''
 documentationcenter: ''
 author: mumami
@@ -14,53 +14,53 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
-ms.author: erikre
-ms.openlocfilehash: 5722e05e5a5e3a57b4d12b70b14f8674364f824b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: banders
+ms.openlocfilehash: f706ad86493981d5b38248ec209a7c8b936f6817
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244827"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68443221"
 ---
-# <a name="overview-of-reporting-apis-for-enterprise-customers"></a>Kurumsal müşteriler için raporlama API'lerini genel bakış
-Raporlama API'lerini program aracılığıyla tercih edilen veri analizi Araçları Kullanım ve faturalandırma veri çekmek Kurumsal Azure müşterilerine etkinleştirin. Kurumsal müşteriler işaretli bir [Kurumsal Anlaşma (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) anlaşma parasal taahhütler olun ve Azure kaynakları için özel fiyatlandırma için erişim kazanmak için Azure ile.
+# <a name="overview-of-reporting-apis-for-enterprise-customers"></a>Kurumsal müşterilere yönelik Raporlama API 'Lerine genel bakış
+Raporlama API 'Leri, kurumsal Azure müşterilerinin tüketim ve faturalandırma verilerini tercih edilen veri analizi araçlarına programlı bir şekilde çekmesini sağlar. Kurumsal müşteriler Azure ile bir [Kurumsal Anlaşma (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) imzalayan parasal taahhütler elde edebilir ve Azure kaynakları için özel fiyatlandırmaya erişim sağlar.
 
-## <a name="enabling-data-access-to-the-api"></a>API veri erişimini etkinleştirme
-* **Oluşturma veya API anahtarını alma** -Enterprise Portal'da oturum açın ve raporlara gidin > kullanımı indir > API anahtarını almak veya oluşturmak için API erişim anahtarı.
-* **API anahtarları geçirme** -API anahtarı kimlik doğrulaması ve yetkilendirme her çağrı için geçirilmesi gerekiyor. Şu özellik için HTTP üstbilgileri olması gerekiyor
+## <a name="enabling-data-access-to-the-api"></a>API 'ye veri erişimini etkinleştirme
+* API anahtarını **oluşturun veya alın** -Enterprise Portal 'da oturum açın ve API anahtarı oluşturmak veya almak Için API erişim anahtarı > > Raporlar ' a gidin.
+* **API 'de anahtarları geçirme** -API anahtarı, kimlik doğrulama ve yetkilendirme için her çağrı için geçirilmelidir. Aşağıdaki özelliğin HTTP üstbilgileri olması gerekir
 
 |İstek üst bilgisi anahtarı | Değer|
 |-|-|
-|Yetkilendirme| Değeri şu biçimde belirtin: **taşıyıcı {apı_key}** <br/> Örnek: taşıyıcı eyr....09| 
+|Authorization| Değeri şu biçimde belirtin: **taşıyıcı {API_KEY}** <br/> Örnek: taşıyıcı eyr....09| 
 
-## <a name="consumption-apis"></a>Tüketim API'leri
-Swagger uç noktası kullanılabilir [burada](https://consumption.azure.com/swagger/ui/index) kolay iç denetim API'si ve istemci SDK'ları kullanarak oluşturma yeteneği etkinleştirmelisiniz API'leri açıklanan yönelik [AutoRest](https://github.com/Azure/AutoRest) veya [Swagger CodeGen](https://swagger.io/swagger-codegen/). 1 Mayıs 2014'ten itibaren veriler, bu API aracılığıyla kullanılabilir. 
+## <a name="consumption-apis"></a>Tüketim API 'Leri
+Aşağıda açıklanan API 'lerin, API 'nin Easy iç denetim 'i etkinleştirmesi ve [oto Rest](https://github.com/Azure/AutoRest) veya [Swagger CodeGen](https://swagger.io/swagger-codegen/)kullanarak istemci SDK 'ları oluşturma olanağı sağlaması gereken API ['ler için bir](https://consumption.azure.com/swagger/ui/index) Swagger uç noktası kullanılabilir. 1 Mayıs 2014 ' den başlayan veriler bu API aracılığıyla kullanılabilir. 
 
-* **Bakiye ve Özet** - [bakiyenizi ve Özet API](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) aylık bakiyelerini, yeni satın alma işlemleri, Azure Market hizmeti ücreti, ayarlamalar ve fazla kullanım ücretleri bilgilerin özetini sunar.
+* **Bakiye ve Özet** - [Bakiye ve Özet API 'si](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) , bakiyeler, yeni satın alma işlemleri, Azure Marketi hizmeti ücretleri, ayarlamalar ve fazla kullanım ücretleri hakkında aylık bir özet sunar.
 
-* **Kullanım ayrıntılarını** - [kullanım ayrıntısı API'si](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail) Tüketilen Miktar ve bir kayıt tahmini ücretleri günlük bir dökümünü sağlar. Sonuç, ayrıca örnekler, Ölçümler ve bölümleri hakkında bilgi içerir. API, fatura dönemi veya belirtilen başlangıç ve bitiş tarihi sorgulanabilir. 
+* **Kullanım ayrıntıları** - [kullanım ayrıntısı API 'Si](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail) , bir kayıt tarafından tüketilen miktarların ve tahmini giderlerin günlük bir dökümünü sağlar. Sonuç Ayrıca örnekler, ölçümler ve departmanlar hakkındaki bilgileri de içerir. API, fatura dönemi veya belirtilen başlangıç ve bitiş tarihi ile sorgulanabilir. 
 
-* **Market Store ücret** - [Market Store ücret API](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge) (bir kez ücretleri dahil değildir) başlangıç ve bitiş tarihleri ve belirtilen fatura dönemi için günlük kullanım tabanlı Market ücretleri dökümünü döndürür.
+* **Market Mağazası ücreti** - [Market mağaza ücreti API 'Si](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge) , belirtilen fatura dönemi veya başlangıç ve bitiş tarihleri için güne göre kullanım tabanlı Market ücretleri dökümünü döndürür (bir zaman ücreti dahil değildir).
 
-* **Fiyat listesi** - [fiyat listesi API'si](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) verilen kayıt ve faturalama dönemi için geçerli hızı için her bir ölçüm sağlar.
+* **Fiyat listesi** - [Fiyat listesi API 'Si](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) , belirtilen kayıt ve fatura dönemi için her bir ölçüm için uygun ücreti sağlar.
 
-* **Ayrılmış örnek ayrıntıları** - [ayrılmış örnek kullanımını API](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) kullanımı, ayrılmış örnek satın döndürür. [Ayrılmış örnek API ücretleri](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) yapılan faturalandırma işlemlerini gösterir. 
+* **Ayrılmış örnek ayrıntıları** -ayrılmış örnek [kullanım API 'Si](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) , ayrılmış örnek satın alma işlemlerinin kullanımını döndürür. [Ayrılmış örnek ücretleri API 'si](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) , yapılan faturalandırma işlemlerini gösterir. 
 
-## <a name="data-freshness"></a>Veri güncelliği
-Yukarıdaki API yanıtında Etag'ler döndürülür. Etag bir değişiklik verilerin yenilenmiş gösterir.  Sonraki çağrılarında aynı parametreleri kullanarak aynı API anahtarı "If-None-Match" http isteği üstbilgisi ile yakalanan Etag geçirin. Verileri başka yenilenmemiş ve hiçbir veri döndürülmez yanıt durum kodu "NotModified" olacaktır. API etag herhangi bir değişiklik olduğunda gereken süre için tam veri kümesi döndürür.
+## <a name="data-freshness"></a>Veri Güncelliği
+ETags, yukarıdaki tüm API 'nin yanıtında döndürülür. ETag içindeki bir değişiklik, verilerin yenilendiğini gösterir.  Aynı parametreleri kullanarak aynı API 'ye yapılan sonraki çağrılar için, yakalanan ETag öğesini http isteği üstbilgisinde "If-None-Match" anahtarıyla geçirin. "NotModified" yanıt durum kodu, verilerin daha fazla yenilenmediği ve verilerin döndürülmediği durumlarda "NotModified" olacaktır. Bir ETag değişikliği olduğunda, API gerekli dönem için tam veri kümesini döndürür.
 
-## <a name="helper-apis"></a>Yardımcı API'leri
- **Liste faturalama dönemleri** - [faturalandırma dönemlerini API'si](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) ters kronolojik sırada belirtilen kayıt tüketim verilerini elde faturalandırma listesini döndürür. Her dönem veri - BalanceSummary, UsageDetails, Market ücretlerini ve fiyat dört kümeleri API yolunu işaret eden bir özellik içerir.
+## <a name="helper-apis"></a>Yardımcı API 'Ler
+ **Faturalama dönemlerini listeleme** - [Fatura dönemleri API 'Si](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) , belirtilen kayıt için tüketim verilerine ters kronolojik düzende sahip olan faturalandırma dönemlerinin bir listesini döndürür. Her dönem, dört veri kümesi için API yolunu işaret eden bir özellik içerir-BalanceSummary, UsageDetails, Market ücretleri ve fiyat listesi.
 
 
 ## <a name="api-response-codes"></a>API yanıt kodları   
 |Yanıt durum kodu|`Message`|Açıklama|
 |-|-|-|
 |200| Tamam|Hata yok|
-|401| Yetkilendirilmemiş| API anahtarı bulunamadı, geçersiz, vb. süresi doldu.|
-|404| Kullanılamaz| Rapor bitiş noktası bulunamadı|
+|401| Yetkilendirilmemiş| API anahtarı bulunamadı, geçersiz, zaman aşımına uğradı.|
+|404| Kullanılamaz| Rapor uç noktası bulunamadı|
 |400| Bozuk İstek| Geçersiz params – tarih aralıkları EA numaralarını vb.|
-|500| Sunucu hatası| İstek işlenirken beklenmeyen hata oluştu| 
+|500| Sunucu Hatası| İstek işlenirken beklenmeyen hata oluştu| 
 
 
 

@@ -17,21 +17,18 @@ ms.date: 07/12/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27fa3d7be5238527f86e9dfde3be70ae09259d69
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: 2d9d5fdb9091d51c67fd5d778bac189c08647741
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302745"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359757"
 ---
 # <a name="azure-ad-powershell-cmdlets-for-reporting"></a>Raporlama için Azure AD PowerShell cmdlet’leri
 
-Azure Active Directory (Azure AD) raporlarında, ortamınızın nasıl çalıştığını öğrenmek için gereken bilgileri alabilirsiniz. Raporlama için Azure AD PowerShell cmdlet 'lerini kullanarak rapor verilerini elde edebilirsiniz.
+Azure Active Directory (Azure AD) raporlarında, yönlerinizde (denetim günlükleri) ve kimlik doğrulama verilerinde (oturum açma günlükleri) tüm yazma işlemlerinde bulunan etkinliklerle ilgili ayrıntılı bilgi edinebilirsiniz. Bilgiler MS Graph API kullanılarak kullanılabilir olsa da, artık raporlama için Azure AD PowerShell cmdlet 'lerini kullanarak aynı verileri alabilirsiniz.
 
-Bu makale, cmdlet 'e genel bakış sunar.
-
-
-
+Bu makale, denetim günlükleri ve oturum açma günlükleri için kullanılacak PowerShell cmdlet 'lerine genel bir bakış sunar.
 
 ## <a name="audit-logs"></a>Denetim günlükleri
 
@@ -63,7 +60,7 @@ Aşağıdaki görüntüde bu komut için bir örnek gösterilmektedir.
 
 | Senaryo                      | PowerShell komutu |
 | :--                           | :--                |
-| Kullanıcı görünen adı             | Get-Azureadauditsignınlogs-"userDisplayName EQ ' Timoingperkins '" filtresini filtrele |
+| Kullanıcı Görünen Adı             | Get-Azureadauditsignınlogs-"userDisplayName EQ ' Timoingperkins '" filtresini filtrele |
 | Tarih saat oluştur              | Get-Azureadauditsignınlogs-Filter "createdDateTime gt 2019-04-18T17:30:00.0 Z" (4/18 tarihinde 5:30 ile bu yana her şey) |
 | Durum                        | Get-Azureadauditsignınlogs-filtre "Status/errorCode EQ 50105" |
 | Uygulama görünen adı      | Get-Azureadauditsignınlogs-Filter "appDisplayName EQ ' StoreFrontStudio [wsbessenabled] '" |

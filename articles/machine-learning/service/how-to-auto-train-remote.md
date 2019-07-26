@@ -11,12 +11,12 @@ ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 7/12/2019
-ms.openlocfilehash: 00e4e9d5a1fc63dd73fe5a4dba7e1f1416cd08bc
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 852190f7b66c0d2c527d1784c72f963e11620064
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868883"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68371096"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Bulutta otomatik machine learning ile modellerini eğitin
 
@@ -46,17 +46,19 @@ Zaten mevcut değilse, amlcompute hedefini çalışma alanınızda`ws`() oluştu
 from azureml.core.compute import AmlCompute
 from azureml.core.compute import ComputeTarget
 
-amlcompute_cluster_name = "automlcl" #Name your cluster
-provisioning_config = AmlCompute.provisioning_configuration(vm_size = "STANDARD_D2_V2",
+amlcompute_cluster_name = "automlcl"  # Name your cluster
+provisioning_config = AmlCompute.provisioning_configuration(vm_size="STANDARD_D2_V2",
                                                             # for GPU, use "STANDARD_NC6"
-                                                            #vm_priority = 'lowpriority', # optional
-                                                            max_nodes = 6)
+                                                            # vm_priority = 'lowpriority', # optional
+                                                            max_nodes=6)
 
-compute_target = ComputeTarget.create(ws, amlcompute_cluster_name, provisioning_config)
+compute_target = ComputeTarget.create(
+    ws, amlcompute_cluster_name, provisioning_config)
 
 # Can poll for a minimum number of nodes and for a specific timeout.
 # If no min_node_count is provided, it will use the scale settings for the cluster.
-compute_target.wait_for_completion(show_output = True, min_node_count = None, timeout_in_minutes = 20)
+compute_target.wait_for_completion(
+    show_output=True, min_node_count=None, timeout_in_minutes=20)
 ```
 
 Artık `compute_target` uzak işlem hedefi olarak nesnesi.
@@ -109,7 +111,8 @@ run_config.target = compute_target
 run_config.environment.docker.enabled = True
 run_config.environment.docker.base_image = azureml.core.runconfig.DEFAULT_CPU_IMAGE
 
-dependencies = CondaDependencies.create(pip_packages=["scikit-learn", "scipy", "numpy"])
+dependencies = CondaDependencies.create(
+    pip_packages=["scikit-learn", "scipy", "numpy"])
 run_config.environment.python.conda_dependencies = dependencies
 ```
 
@@ -142,7 +145,7 @@ automl_config = AutoMLConfig(task='classification',
                              run_configuration=run_config,
                              data_script=project_folder + "/get_data.py",
                              **automl_settings,
-                            )
+                             )
 ```
 
 ### <a name="enable-model-explanations"></a>Model açıklamalarını etkinleştir
@@ -153,13 +156,13 @@ automl_config = AutoMLConfig(task='classification',
 automl_config = AutoMLConfig(task='classification',
                              debug_log='automl_errors.log',
                              path=project_folder,
-                             compute_target = compute_target,
+                             compute_target=compute_target,
                              run_configuration=run_config,
                              data_script=project_folder + "/get_data.py",
                              **automl_settings,
                              model_explainability=True,
-                             X_valid = X_test
-                            )
+                             X_valid=X_test
+                             )
 ```
 
 ## <a name="submit-training-experiment"></a>Eğitim denemesini gönderin
@@ -208,24 +211,33 @@ Aşağıdaki örneğe benzer bir çıktı görürsünüz:
 
 ## <a name="explore-results"></a>Sonuçları keşfedin
 
-Aynı Jupyter pencere öğesi bir olarak kullanabileceğiniz [öğreticisini](tutorial-auto-train-models.md#explore-the-results) bir grafik ve tablo sonuçları görmek için.
+Bir grafik ve sonuç tablosu görmek için [eğitim öğreticisinde](tutorial-auto-train-models.md#explore-the-results) gösterildiği gibi aynı [jupi pencere öğesini](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) kullanabilirsiniz.
 
 ```python
 from azureml.widgets import RunDetails
 RunDetails(remote_run).show()
 ```
+
 Burada pencere öğesinin statik bir görüntüsü yer alır.  Not Defteri çalıştırma özellikleri görmek ve günlükleri çalıştırılan için çıkış tablodaki herhangi bir satırdaki tıklayabilirsiniz.   Grafiğin üstünde açılan, her yineleme için her ölçüm grafiğini görüntülemek için de kullanabilirsiniz.
 
 ![pencere öğesi tablosu](./media/how-to-auto-train-remote/table.png)
 ![pencere öğesi çizimi](./media/how-to-auto-train-remote/plot.png)
 
-Pencere öğesi görebilir ve çalıştırma ayrıntıları tek keşfetmek için kullanabileceğiniz bir URL görüntülenir.
+Pencere öğesi görebilir ve çalıştırma ayrıntıları tek keşfetmek için kullanabileceğiniz bir URL görüntülenir.  
+
+Jupyter not defterinde değilseniz, bu URL 'YI çalıştırmanın içinden görüntüleyebilirsiniz:
+
+```
+remote_run.get_portal_url()
+```
+
+Çalışma alanınızda aynı bilgiler bulunur.  Bu sonuçlar hakkında daha fazla bilgi edinmek için bkz. [otomatik makine öğrenimi sonuçlarını anlama](how-to-understand-automated-ml.md).
 
 ### <a name="view-logs"></a>Günlükleri görüntüleme
 
 Günlükleri altında DSVM bulmak `/tmp/azureml_run/{iterationid}/azureml-logs`.
 
-## <a name="best-model-explanation"></a>En iyi modeli açıklaması
+## <a name="explain"></a>En iyi model açıklaması
 
 Model açıklaması verileri alınırken arka ucunda çalışan ne, konusunda saydamlık artırmak için modelleri hakkında ayrıntılı bilgi sağlar. Bu örnekte yalnızca en iyi uygun model için model açıklamaları çalıştırın. İşlem hattındaki tüm modeller için çalıştırırsanız, önemli çalışma zamanında neden olur. Model açıklaması bilgileri içerir:
 

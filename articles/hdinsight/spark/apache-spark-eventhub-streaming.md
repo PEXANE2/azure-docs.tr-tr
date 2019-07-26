@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/24/2019
-ms.openlocfilehash: e121568ce4841e884dddc7c5adff89830a883e93
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.openlocfilehash: fef551c254eb4fa212333a55bde3d642645a16b6
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377459"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489800"
 ---
 # <a name="tutorial-process-tweets-using-azure-event-hubs-and-apache-spark-in-hdinsight"></a>Öğretici: HDInsight 'ta Azure Event Hubs ve Apache Spark kullanarak işçleri işleme
 
@@ -44,11 +44,11 @@ Tweet’lerin akışını almak için Twitter’da bir uygulama oluşturursunuz.
 
 1. Aşağıdaki değerleri sağlayın:
 
-    |Özellik |Değer |
+    |Özellik |Value |
     |---|---|
     |Ad|Uygulama adını belirtin. Bu öğretici için kullanılan değer **HDISparkStreamApp0423**. Bu ad benzersiz bir ad olmalıdır.|
     |Açıklama|Uygulamanın kısa bir açıklamasını sağlayın. Bu öğretici için kullanılan değer **basit bir HDInsight Spark akış uygulamasıdır**.|
-    |Web sitesi|Uygulamanın Web sitesini belirtin. Geçerli bir Web sitesi olması gerekmez.  Bu öğretici için kullanılan değer **http:\//www.contoso.com**.|
+    |Web sitesi|Uygulamanın Web sitesini belirtin. Geçerli bir Web sitesi olması gerekmez.  Bu öğretici `http://www.contoso.com`için kullanılan değer.|
     |Geri çağırma URL'si|Boş bırakabilirsiniz.|
 
 1. **Evet, Twitter geliştirici sözleşmesini okudum ve kabul**ediyorum ' u seçin ve ardından **Twitter uygulamanızı oluştur**' u seçin.
@@ -80,7 +80,7 @@ Bu olay hub 'ını kullanarak, doldurulabilir bir mağaza yapabilirsiniz.
 
 5. Yeni Event Hubs ad alanı için aşağıdaki değerleri girin:
 
-    |Özellik |Değer |
+    |Özellik |Value |
     |---|---|
     |Ad|Olay Hub 'ı için bir ad girin.  Bu öğretici için kullanılan değer **myeventhubns20180403**.|
     |Fiyatlandırma katmanı|**Standart**' ı seçin.|

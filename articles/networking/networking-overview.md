@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/17/2019
 ms.author: kumud
-ms.openlocfilehash: 759b61e5fb444643bf83e1cca47b6f7152a96590
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 9fb7fc9b4f0e5af0847876ff41b6a307f8a09749
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305644"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348021"
 ---
 # <a name="azure-networking"></a>Azure ağı
 
@@ -36,7 +36,7 @@ Bu bölümde Azure kaynakları, şirket içi ağdan Azure kaynaklarına bağlant
 |[Sanal ağ](#vnet)|Azure kaynaklarının birbirleriyle, internet ve şirket içi ağlarla güvenli bir şekilde iletişim kurmasına olanak sağlar.| <p>[Ağ trafiğini filtreleme](../virtual-network/tutorial-filter-network-traffic.md)</p> <p>[Ağ trafiğini yönlendirme](../virtual-network/tutorial-create-route-table-portal.md)</p> <p>[Kaynaklar için ağ erişimini kısıtlama](../virtual-network/tutorial-restrict-network-access-to-resources.md)</p> <p>[Sanal ağları bağlama](../virtual-network/tutorial-connect-virtual-networks-portal.md)</p>|
 |[ExpressRoute](#expressroute)|Şirket içi ağlarınızı bir bağlantı sağlayıcısı tarafından kolaylaştırarak özel bir bağlantı üzerinden Microsoft bulutuna genişletir.|<p>[ExpressRoute bağlantı hattı oluşturma ve değiştirme](../expressroute/expressroute-howto-circuit-portal-resource-manager.md)</p> <p>[Bir ExpressRoute bağlantı hattı için eşlemeyi oluşturma ve değiştirme](../expressroute/expressroute-howto-routing-portal-resource-manager.md)</p> <p>[ExpressRoute bağlantı hattına bir Sanal Ağ bağlama](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)</p> <p>[ExpressRoute devreleri için yol filtrelerini yapılandırma ve yönetme](../expressroute/how-to-routefilter-portal.md)</p>|
 |[VPN Gateway](#vpngateway)|Ortak Internet üzerinden bir Azure sanal ağı ile şirket içi bir konum arasında şifrelenmiş trafik gönderir.|<p>[Siteden siteye bağlantılar](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)</p> <p>[VNet-VNet bağlantıları](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)</p> <p>[Noktadan siteye bağlantılar](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)</p>|
-|[Sanal WAN](#virtualwan)|Azure ile ve arasındaki dal bağlantısını iyileştirir ve otomatikleştirir. Azure bölgeleri, Dallarınızı bağlamak için seçebileceğiniz hub olarak görev yapar.|<p>[Siteden siteye bağlantılar](../virtual-wan/virtual-wan-site-to-site-portal.md), [ExpressRoute bağlantıları](../virtual-wan/virtual-wan-expressroute-portal.md)</p> <p>[Noktadan siteye bağlantılar](../virtual-wan/virtual-wan-point-to-site-portal.md)</p> |
+|[Sanal WAN](#virtualwan)|Azure ile ve arasındaki dal bağlantısını iyileştirir ve otomatikleştirir. Azure bölgeleri, Dallarınızı bağlamak için seçebileceğiniz hub olarak görev yapar.|<p>[Siteden siteye bağlantılar](../virtual-wan/virtual-wan-site-to-site-portal.md), [ExpressRoute bağlantıları](../virtual-wan/virtual-wan-expressroute-portal.md)</p>|
 |[Azure DNS](#dns)|Microsoft Azure altyapısını kullanarak ad çözümlemesi sağlayan DNS etki alanlarını barındırır.|<p>[Azure DNS’te etki alanınızı barındırma](../dns/dns-delegate-domain-azure-dns.md)</p><p>[Bir Web uygulaması için DNS kayıtları oluşturma](../dns/dns-web-sites-custom-domain.md)</p> <p>[Traffic Manager için bir diğer ad kaydı oluşturma](../dns/tutorial-alias-tm.md)</p> <p>[Genel IP adresi için bir diğer ad kaydı oluşturma](../dns/tutorial-alias-pip.md)</p> <p>[Bölge kaynak kaydı için bir diğer ad kaydı oluşturma](../dns/tutorial-alias-rr.md)</p>|
 |[Azure savunma (Önizleme)](#bastion)|Doğrudan Azure portalda SSL üzerinden sanal makinelere güvenli ve sorunsuz bir şekilde RDP/SSH bağlantısı yapılandırın. Azure savunma aracılığıyla bağlandığınızda, sanal makinelerinizde ortak bir IP adresi gerekmez|<p>[Azure savunma Konağı oluşturma](../bastion/bastion-create-host-portal.md)</p><p>[Linux VM 'ye SSH kullanarak bağlanma](../bastion/bastion-connect-vm-ssh.md)</p><p>[Windows VM 'ye RDP kullanarak bağlanma](/bastion/bastion-connect-vm-rdp.md)</p>|
 ||||
@@ -101,6 +101,8 @@ Bu bölümde, ağ kaynaklarınızın (DDoS koruması, Web uygulaması güvenlik 
 Azure Web uygulaması güvenlik duvarı (WAF), Web uygulamalarınız için SQL ekleme ve siteler arası betik oluşturma gibi sık kullanılan Web açıklarından ve güvenlik açıklarına karşı koruma sağlar. Azure WAF, yönetilen kurallar aracılığıyla OWASP ilk 10 güvenlik açığına karşı kullanıma hazır koruma sağlar. Ayrıca müşteriler, kaynak IP aralığına dayalı ek koruma sağlamak için müşteri tarafından yönetilen kurallar ve üstbilgiler, tanımlama bilgileri, form veri alanları veya sorgu dizesi parametreleri gibi özel kurallar da yapılandırabilir.
 
 Müşteriler, ortak ve özel adres alanındaki varlıklara bölgesel koruma sağlayan [Application Gateway Azure WAF](../application-gateway/waf-overview.md) 'yi dağıtmayı seçebilirler. Müşteriler Ayrıca, ağ ucunda genel uç noktalara koruma sağlayan [ön kapılı Azure WAF](../frontdoor/waf-overview.md) 'i dağıtmayı tercih edebilir.
+
+![Web Uygulaması Güvenlik Duvarı](./media/networking-overview/waf-overview.png)
 
 
 ### <a name="firewall"></a>Azure Güvenlik Duvarı

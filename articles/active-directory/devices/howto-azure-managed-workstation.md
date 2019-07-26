@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 90687d0229d3ad74c287bb4aff4885dc26932e40
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
-ms.translationtype: HT
+ms.openlocfilehash: be9e6374d92fbb7bb1c4b5a2a9e154119c5baf87
+ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227265"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68377497"
 ---
 # <a name="deploy-a-secure-azure-managed-workstation"></a>Güvenli, Azure tarafından yönetilen bir iş istasyonu dağıtma
 
@@ -28,7 +28,7 @@ Artık [güvenli iş istasyonlarını anladığınıza](concept-azure-managed-wo
 > [!NOTE]
 > Gereksinimlerinizin gerektirdiği her türlü profili uygulayın. Intune 'a atayarak başka bir profile geçebilirsiniz.
 
-| Profil | Düşük | Gelişmiş | Yüksek | Özelleştirilmiş | Korunmalıdır | Yalıtılmış |
+| Profil | Düşük | Gelişmiş | Yüksek | Özelleştirilmiş | Güvenli | Yalıtılmış |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Azure AD 'de Kullanıcı | Evet | Evet | Evet | Evet | Evet | Evet |
 | Intune tarafından yönetilen | Evet | Evet | Evet | Evet | Evet | Evet |
@@ -229,14 +229,14 @@ Daha fazla bilgi için bkz. [Windows Defender Gelişmiş tehdit koruması](https
 
 Çözümün sağlamlaştırılmasını başarıyla tamamlaması için uygun betiği indirip yürütün. İstediğiniz **profil düzeyiniz**için indirme bağlantılarını bulun:
 
-| Profil | İndirme konumu | Kısaltın |
+| Profil | İndirme konumu | Dosya adı |
 | --- | --- | --- |
 | Düşük güvenlik | Yok |  Yok |
 | Geliştirilmiş Güvenlik | https://aka.ms/securedworkstationgit | Enhanced-Workstation-Windows10-(1809). ps1 |
 | Yüksek güvenlik  | https://aka.ms/securedworkstationgit | HighSecurityWorkstation-Windows10-(1809). ps1 |
 | Özelleştirilmiş | https://github.com/pelarsen/IntunePowerShellAutomation | DeviceConfiguration_NCSC-Windows10 (1803) SecurityBaseline. ps1 |
 | Özelleştirilmiş uyumluluk * | https://aka.ms/securedworkstationgit | DeviceCompliance_NCSC-Windows10(1803).ps1 |
-| Korunmalıdır | https://aka.ms/securedworkstationgit | Secure-Workstation-Windows10-(1809)-SecurityBaseline. ps1 |
+| Güvenli | https://aka.ms/securedworkstationgit | Secure-Workstation-Windows10-(1809)-SecurityBaseline. ps1 |
 
 \*Özelleştirilmiş uyumluluk, NCSC Windows10 SecurityBaseline içinde sunulan özelleştirilmiş yapılandırmayı zorlayan bir betiktir.
 
@@ -245,7 +245,7 @@ Betik başarıyla yürütüldükten sonra, Intune 'da profiller ve ilkeler için
 * Betikler tarafından oluşturulan Intune cihaz yapılandırma profillerini burada bulabilirsiniz: **Azure Portal** **Microsoft Intune cihaz**yapılandırmaprofilleri > . >  > 
 * Betikler tarafından oluşturulan Intune cihaz uyumluluk ilkelerini burada bulabilirsiniz: **Azure Portal** **Microsoft Intune cihaz**uyumlulukilkeleri > . >  > 
 
-Betikler tarafından yapılan değişiklikleri gözden geçirmek için profilleri dışarı aktarabilirsiniz. Bu şekilde, SECCON belgelerinde özetlendiği gibi gerekebilecek ek sağlamlaştırma belirleyebilirsiniz.
+Betikler tarafından yapılan değişiklikleri gözden geçirmek için profilleri dışarı aktarabilirsiniz. Bu şekilde, [Seccon belgelerinde](https://docs.microsoft.com/windows/security/threat-protection/windows-security-configuration-framework/windows-security-configuration-framework)özetlendiği gibi gerekebilecek ek sağlamlaştırma belirleyebilirsiniz.
 
 Geçerli tüm Intune profillerini dışarı aktarmak `DeviceConfiguration_Export.ps1` için [deviceconfiguration giuhub deposundan](https://github.com/microsoftgraph/powershell-intune-samples/tree/master/DeviceConfiguration) Intune veri dışa aktarma betiğini çalıştırın.
 

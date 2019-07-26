@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: mlearned
-ms.openlocfilehash: 554eba87efc56e2dadb3fb2d0cb78cd8b7ea7237
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: 7aff0fe47d1586b63157d5df7882fc338637f714
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302720"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381968"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmeti (AKS) hakkında sık sorulan sorular
 
@@ -140,6 +140,50 @@ Bu `az aks update-credentials` komut, bir aks kümesini Azure kiracılar arasın
 ## <a name="can-i-movemigrate-my-cluster-between-subscriptions"></a>Abonelikler arasında kümemi taşıyabilir/geçirebilir miyim?
 
 Abonelikler arasında küme hareketi şu anda desteklenmiyor.
+
+## <a name="can-i-move-my-aks-clusters-from-the-current-azure-subscription-to-another"></a>AKS kümelerimi geçerli Azure aboneliğinden diğerine taşıyabilir miyim? 
+
+AKS kümenizi ve bunun ilişkili kaynaklarını Azure abonelikleri arasında taşıma desteklenmez.
+
+## <a name="why-is-my-cluster-delete-taking-so-long"></a>Kümemin neden bu kadar uzun sürüyor? 
+
+Çoğu küme Kullanıcı isteğiyle silinir; Bazı durumlarda, özellikle de müşteriler kendi kaynak grubunu getiriyor ya da faaliyetsiz görevler silme işlemleri ek zaman alabilir veya başarısız olabilir. Silme işlemiyle ilgili bir sorununuz varsa, RG üzerinde kilit olmadığından emin olun, RG 'nin dışındaki tüm kaynakların RG, vb. ile ilişkisi olduğunu kontrol edin.
+
+## <a name="if-i-have-pod--deployments-in-state-nodelost-or-unknown-can-i-still-upgrade-my-cluster"></a>' Nodekaybedildi ' veya ' bilinmiyor ' durumunda Pod/dağıtımlar varsa, kümemi yükseltebilirim?
+
+, Ancak AKS bunun için önerilmez. Yükseltme, kümenin durumu bilindiğinde ve sağlıklı olduğunda gerçekleştirilmesi ideal olmalıdır.
+
+## <a name="if-i-have-a-cluster-with-one-or-more-nodes-in-an-unhealthy-state-or-shut-down-can-i-perform-an-upgrade"></a>Sağlıksız bir durumda bir veya daha fazla düğümü olan bir kümeniz varsa veya bilgisayarı kapatırsanız, bir yükseltme gerçekleştirebilir miyim?
+
+Hayır, yükseltmeden önce lütfen başarısız durumundaki düğümleri silin/kaldırın veya kümeden kaldırın.
+
+## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>Bir küme silme çalıştırdım, ancak hataya bakın`[Errno 11001] getaddrinfo failed` 
+
+En yaygın olarak, bunun nedeni bir veya daha fazla ağ güvenlik grubu (NSG) hala kullanımda ve kümeyle ilişkili olan kullanıcılardır.  Lütfen bunları kaldırın ve silmeyi yeniden deneyin.
+
+## <a name="i-ran-an-upgrade-but-now-my-pods-are-in-crash-loops-and-readiness-probes-fail"></a>Bir yükseltme çalıştırdım, ancak şu anda My Pod çökme döngülerinde ve hazırlık araştırmaları başarısız oldu mu?
+
+Lütfen hizmet sorumlunun süresi dolmadığından emin olun.  Lütfen bkz: [Aks hizmet sorumlusu](https://docs.microsoft.com/azure/aks/kubernetes-service-principal) ve [aks güncelleştirme kimlik bilgileri](https://docs.microsoft.com/azure/aks/update-credentials).
+
+## <a name="my-cluster-was-working-but-suddenly-can-not-provision-loadbalancers-mount-pvcs-etc"></a>Kümem çalışıyor, ancak aniden LoadBalancers, Mount, bağlama vb. sağlayamıyor. 
+
+Lütfen hizmet sorumlunun süresi dolmadığından emin olun.  Lütfen bkz: [Aks hizmet sorumlusu](https://docs.microsoft.com/azure/aks/kubernetes-service-principal) ve [aks güncelleştirme kimlik bilgileri](https://docs.microsoft.com/azure/aks/update-credentials).
+
+## <a name="can-i-use-the-virtual-machine-scale-set-apis-to-scale-manually"></a>Sanal makine ölçek kümesi API 'Lerini el ile ölçeklendirmek için kullanabilir miyim?
+
+Hayır, sanal makine ölçek kümesi API 'Lerini kullanarak ölçeklendirme işlemleri desteklenmez. AKS API 'Lerini (`az aks scale`) kullanın.
+
+## <a name="can-i-use-virtual-machine-scale-sets-to-manually-scale-to-0-nodes"></a>Sanal makine ölçek kümelerini, 0 düğüme el ile ölçeklendirmek için kullanabilir miyim?
+
+Hayır, sanal makine ölçek kümesi API 'Lerini kullanarak ölçeklendirme işlemleri desteklenmez.
+
+## <a name="can-i-stop-or-de-allocate-all-my-vms"></a>Tüm VM 'lerimi durdurabilir veya serbest bırakabilirsiniz miyim?
+
+AKS, bu tür bir yapılandırmaya ve kurtarmaya yönelik esnekliği mekanizmalarına sahip olsa da önerilen bir yapılandırma değildir.
+
+## <a name="can-i-use-custom-vm-extensions"></a>Özel VM uzantılarını kullanabilir miyim?
+
+Hiçbir AKS yönetilen bir hizmettir ve IaaS kaynaklarını düzenleme desteklenmez. Özel bileşenleri yüklemek için, vb. Lütfen Kubernetes API 'Leri ve mekanizmalarından yararlanın. Örneğin, gerekli bileşenleri yüklemek için DaemonSets 'ten yararlanın.
 
 <!-- LINKS - internal -->
 

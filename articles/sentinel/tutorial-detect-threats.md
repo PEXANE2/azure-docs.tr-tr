@@ -1,6 +1,6 @@
 ---
-title: Gözcü Azure önizlemesiyle uyarıları araştırma | Microsoft Docs
-description: Azure Gözcü uyarıları araştırma hakkında bilgi edinmek için bu öğreticiyi kullanın.
+title: Azure Sentinel önizleme ile uyarıları araştırın | Microsoft Docs
+description: Azure Sentinel ile uyarıları araştırmaya yönelik bilgi edinmek için bu öğreticiyi kullanın.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -13,48 +13,48 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/20/2019
+ms.date: 07/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: e20f6fc0dc8dbe02b09490f62ce84af12aa31b87
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: ad9c752898733286701db2d0f0b1fc40029b7521
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621227"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68370687"
 ---
-# <a name="tutorial-detect-threats-with-azure-sentinel-preview"></a>Öğretici: Azure Önizleme Gözcü ile tehditleri algılayın
+# <a name="tutorial-detect-threats-with-azure-sentinel-preview"></a>Öğretici: Azure Sentinel önizleme ile tehditleri algılama
 
 > [!IMPORTANT]
-> Azure Sentinel şu anda genel Önizleme aşamasındadır.
+> Azure Sentinel Şu anda genel önizlemededir.
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Çalıştırdıktan sonra [veri kaynaklarınıza bağlı](quickstart-onboard.md) şüpheli bir şey olduğunda size bildirilmesini istiyorsanız Azure Gözcü için. Bunu sağlamak için oluşturduğunuz Azure Gözcü atayabileceğiniz çalışmaları üreten uyarı kuralları ve kullanım anomalileri ve ortamınızdaki tehditlere derin bir şekilde araştırmak için Gelişmiş sağlar. 
+[Veri kaynaklarınızı](quickstart-onboard.md) Azure Sentinel 'e bağladıktan sonra, şüpheli bir sorun olduğunda bildirim almak istersiniz. Bunu yapmanızı sağlamak için Azure Sentinel, ortamınızdaki aykırları ve tehditleri derinlemesine araştırmak için atayabileceğiniz ve kullanabileceğiniz durumlar oluşturan gelişmiş uyarı kuralları oluşturmanıza olanak sağlar. 
 
-Bu öğretici Azure Gözcü ile tehditleri algılamanıza yardımcı olur.
+Bu öğretici, Azure Sentinel ile tehditleri algılamanıza yardımcı olur.
 > [!div class="checklist"]
 > * Algılama kuralları oluşturma
-> * Tehditlere yanıt verme
+> * Tehdit yanıtlarını otomatikleştirin
 
 ## <a name="create-detection-rules"></a>Algılama kuralları oluşturma
 
-Çalışmalarını araştırmak için öncelikle algılama kuralları oluşturmanız gerekir. 
+Durumları araştırmak için, önce algılama kuralları oluşturmanız gerekir. 
 
 > [!NOTE]
-> Aracılığıyla Azure Gözcü içinde oluşturulan uyarılar kullanılabilir [Microsoft Graph güvenlik](https://aka.ms/securitygraphdocs). Başvurmak [Microsoft Graph güvenlik uyarıları belgeleri](https://aka.ms/graphsecurityreferencebetadocs) daha ayrıntılı bilgi ve tümleştirme iş ortakları için.
+> Azure Sentinel 'de oluşturulan uyarılar [Microsoft Graph güvenliği](https://aka.ms/securitygraphdocs)aracılığıyla kullanılabilir. Daha fazla ayrıntı ve Tümleştirme iş ortakları için [Microsoft Graph güvenlik uyarıları belgelerine](https://aka.ms/graphsecurityreferencebetadocs) bakın.
 
-Algılama kuralları bunlar ortaya, araştırılması düzeltilebilir ve sağlama türleri tehditleri ve ortamınızda hemen hakkında bilmek istediğiniz şüpheli olabilecek anormallikleri dayanır. 
+Algılama kuralları, ortamınızda, araştırılması ve düzeltildiklerinden emin olmak istediğiniz, ortamınızda şüpheli olabilecek tehditler ve bozukluklar türlerini temel alır. 
 
-1. Azure portalında Azure Gözcü altında seçin **Analytics**.
+1. Azure Sentinel altında Azure portal **analiz**' yı seçin.
 
    ![Analiz](./media/tutorial-detect-threats/alert-rules.png)
 
-2. Üst menü çubuğunda, **+ Ekle**.  
+2. Üstteki menü çubuğunda **+ Ekle**' ye tıklayın.  
 
-   ![Uyarı kuralı oluşturma](./media/tutorial-detect-threats/create-alert-rule.png)
+   ![Uyarı kuralı oluştur](./media/tutorial-detect-threats/create-alert-rule.png)
 
-3. Altında **uyarı kuralı oluştur**, açıklayıcı bir ad verin ve ayarlayın **önem derecesi** gerektiği şekilde. 
+3. **Uyarı kuralı oluştur**altında açıklayıcı bir ad girin ve **önem derecesini** gerektiği gibi ayarlayın. 
 
-4. Log Analytics'te sorgu oluşturun ve içine yapıştırın **kümesi uyarı kuralı** alan. Aşağıda, anormal bir kaynak sayısı, Azure etkinlik oluşturulduğunda uyarı bir örnek sorgu verilmiştir.
+4. Log Analytics sorguyu oluşturun ve **Uyarı kuralı ayarla** alanına yapıştırın. İşte Azure etkinliğinde anormal sayıda kaynak oluşturulduğunda sizi uyaran örnek bir sorgu.
 
         AzureActivity
         | where OperationName == "Create or Update Virtual Machine" or OperationName == "Create Deployment"
@@ -62,42 +62,52 @@ Algılama kuralları bunlar ortaya, araştırılması düzeltilebilir ve sağlam
         | make-series dcount(ResourceId)  default=0 on EventSubmissionTimestamp in range(ago(7d), now(), 1d) by Caller
 
    > [!NOTE]
-   > Sorgu uzunluğu 1 için 10000 karakter arasında olmalıdır ve içeremez "arama *" ve "UNION *".
+   > Sorgu uzunluğu 1 ila 10000 karakter arasında olmalıdır ve "Search *" ve "Union *" karakterlerini içeremez.
 
 
-5. İçinde **varlık eşlemesi** bölümünde, altındaki alanları kullanın **varlık türü** Azure Gözcü tarafından tanınan bir varlığın alanları sorgunuzu sütunları eşlemek için. Her alan için Log Analytics'te ilgili varlık alanına oluşturulan sorgu ilgili sütunda eşleyin. İlgili sütun adı altında seçin **özelliği**. Her varlığın birden çok alan, örneğin SID, GUID, vb. içerir. Alanlar, yalnızca üst düzey varlığı göre varlık eşleyebilirsiniz.
+5. **Varlık eşleme** bölümünde, Sorgunuzdaki sütunları Azure Sentinel tarafından tanınan varlık alanlarıyla eşlemek için **varlık türü** altındaki alanları kullanın. Her alan için Log Analytics oluşturduğunuz sorgudaki ilgili sütunu uygun varlık alanına eşleyin. **Özellik**altında ilgili sütun adını seçin. Her varlık birden çok alan içerir, örneğin SID, GUID, vb. Varlığı yalnızca üst düzey varlık değil, alanlardan herhangi birine göre eşleyebilirsiniz.
 
-6. Altında uyarı tetikleme koşullarını tanımlayın **uyarı tetikleme**. Bu, uyarıyı tetikleyen koşulları tanımlar. 
+6. **Uyarı tetikleyicisi**altında uyarı tetikleyicisi koşullarını tanımlayın. Bu, uyarıyı tetikleyen koşulları tanımlar. 
 
-7. Ayarlama **sıklığı** için ne sıklıkla sorgu - olarak günde bir kez seyrek veya sık olarak 5 dakikada bir olarak çalıştırılır. 
+7. Sorgunun her 5 dakikada bir ve bir günde yaklaşık olarak ne sıklıkta çalıştırılacağını belirleme **sıklığını** ayarlayın. 
 
-8. Ayarlama **süresi** zaman penceresi için sorguyu çalıştırır - üzerinde veri miktarını denetlemek için örneğin, saatte 60 dakika arasında veri çalıştırabilirsiniz.
+8. Sorgunun ne kadar veri üzerinde çalıştığı için zaman penceresini denetlemek üzere **dönemi** ayarlayın. örneğin, 60 dakikalık veriler arasında her saat çalışabilir.
 
-9. Ayrıca **gizleme**. Gizleme yinelenen uyarılar için aynı olayı tetiklenmekte gelen durdurmak istediğinizde kullanışlıdır. Bu şekilde, belirli bir dönemde tetiklenmekte gelen uyarılar durdurabilirsiniz. Bu, aynı olay için yinelenen uyarıları önlemek ve bir süre için ardışık uyarıları bastırmak izin yardımcı olabilir. Örneğin, varsa **zamanlama uyarı** **sıklığı** 60 dakika olarak ayarlanmıştır ve **zamanlama süresi uyarı** iki saat olarak ayarlanır ve sorgu sonuçları tanımlanan aşılan Eşik, tetikleyen bir uyarı iki kez olduğunda, öncelikle son 60 dakika boyunca algılandığında ve yeniden örnekleniyor veri 2 saatlik ilk 60 dakika içinde olduğunda. Bir uyarının, gizleme süre içinde uyarı süresini ayarlama olması gerektiğini öneririz. Böylece en son bir saat boyunca gerçekleşen olayları için uyarıları yalnızca tetiklenen Bizim örneğimizde, 60 dakika gizleme ayarlamak isteyebilirsiniz.
+9. **Gizleme**de ayarlayabilirsiniz. Aynı olay için yinelenen uyarıların tetiklenmesini durdurmak istediğinizde gizleme yararlı olur. Bu şekilde, belirli bir süre içinde uyarıların tetiklenmesi durdurabilirsiniz. Bu, aynı olay için yinelenen uyarıların oluşmasını önlemenize ve bir süre boyunca birbirini izleyen uyarıların görüntülenmesini sağlamanıza yardımcı olabilir. Örneğin, **Uyarı zamanlama** **sıklığı** 60 dakikaya ayarlanmışsa ve **Uyarı zamanlama süresi** iki saate ayarlanırsa ve sorgu sonuçları tanımlanan eşiği geçtiğinde, ilk algılandığında bir kez uyarı tetikleyecektir. Son 60 dakika boyunca ve örneklendiği 2 saatlik verinin ilk 60 dakikadır. Bir uyarı tetikleniyorsa, gizleme uyarı döneminde ayarlanan süre için olmalıdır. Bizim örneğimizde, uyarıların yalnızca en son saatte gerçekleşen olaylar için tetiklenmesi için 60 dakika boyunca gizleme ayarlamak isteyebilirsiniz.
 
-8. Sonra Query'ye yapıştırın **kümesi uyarı kuralı** alan, uyarının bir simülasyon hemen görebilirsiniz **mantıksal uyarı benzetimi** böylece anlamak ne kadar veriler elde edebilirsiniz belirli bir zaman aralığında oluşturduğunuz uyarı oluşturulur. Bu ne için ayarladığınız üzerinde bağlıdır **sıklığı** ve **eşiği**. Ortalama olarak, uyarıyı çok sık tetiklenip olduğunu görürseniz, ortalama temel olacak şekilde daha yüksek sonuç sayısı ayarlamak istersiniz.
+8. Sorgunuzu **uyarı kuralına ayarla** alanına yapıştırdıktan sonra, uyarı için belirli bir zaman aralığı boyunca ne kadar veri oluşturulacağını anlayabilmeniz Için, **mantıksal uyarı simülasyonuna** göre uyarının benzetimini hemen görebilirsiniz. oluşturdunuz. Bu, **Sıklık** ve **eşik**için ayarlandığınıza bağlıdır. Bu durumda, uyarılarınızın çok sık tetikleneceğini görürseniz, sonuç sayısını ortalama taban çizgisinin üstünde olacak şekilde ayarlamak isteyeceksiniz.
 
-9. Tıklayın **Oluştur** , uyarı kuralı başlatılamadı. Uyarı oluşturulduktan sonra bir durumda uyarıyı içeren oluşturulur. İçinde satır olarak tanımlanmış olan algılama kuralları görebilirsiniz **güvenlik analizleri** sekmesi. Her bir kural - eşleşmelerini tetiklenen uyarıların sayısını da görebilirsiniz. Bu listeden etkinleştirebilir, devre dışı bırakın veya her kuralını Sil. Siz de sağ tıklayarak düzenlemek, devre dışı bırakmak, kopyalama, eşleşmeleri göstermek veya bir kuralı silmek her bir uyarı için satırın sonundaki üç nokta (...) seçin. **Analytics** sayfasıdır tüm etkin uyarı kuralları, bir galeri şablonları dahil olmak üzere etkinleştirmeniz ve uyarı kuralları şablonlarına dayalı oluşturun.
+9. Uyarı kuralınızı başlatmak için **Oluştur** ' a tıklayın. Uyarı oluşturulduktan sonra, uyarıyı içeren bir durum oluşturulur. Tanımlı algılama kurallarını, **Güvenlik analizi** sekmesinde satır olarak görebilirsiniz. Ayrıca, her bir kuralla ilgili eşleşme sayısını görebilirsiniz. uyarılar tetiklenir. Bu listeden her kuralı etkinleştirebilir, devre dışı bırakabilir veya silebilirsiniz. Ayrıca, her bir uyarının satır sonundaki üç nokta (...) simgesini sağ seçerek seçebilirsiniz, devre dışı bırakabilir, kopyalayabilir, eşleşmeleri gösterebilir veya bir kuralı silebilirsiniz. **Analiz** sayfası, etkinleştirdiğiniz şablonlar ve şablonlar temelinde oluşturduğunuz uyarı kuralları da dahil olmak üzere tüm etkin uyarı kurallarınızın bir galerisidir.
 
-1. Uyarı kuralları sonuçlarını görülebilir **çalışmaları** sayfası olduğu önceliklendirme, [çalışmalarını araştırmak](tutorial-investigate-cases.md), ve bu tehditleri ortadan kaldıracak.
+1. Uyarı kurallarının sonuçları, **durumlar** sayfasında görülebilir; burada, çalışmaları önceliklendirebilirsiniz, [araştırabilir](tutorial-investigate-cases.md)ve tehditleri düzeltebilirsiniz.
 
 
 
-## <a name="respond-to-threats"></a>Tehditlere yanıt verme
+## <a name="automate-threat-responses"></a>Tehdit yanıtlarını otomatikleştirin
 
-Azure Sentinel playbook'ları kullanarak tehditlerine yanıt verme için iki birincil seçenek sunar. Playbook bir uyarı tetiklenir ya da bir uyarıya yanıt olarak bir playbook el ile çalıştırabilirsiniz otomatik olarak çalışacak şekilde ayarlayabilirsiniz.
+SıEM/SOC ekipleri, düzenli olarak güvenlik uyarılarını açığa kaldırmamalıdır. Oluşturulan uyarıların hacmi çok büyük olduğundan, kullanılabilir güvenlik yöneticileri bu kadar çok önemlidir. Bu, birçok uyarının araştırılamama durumlarında çok sık sonuçlar elde ederek, kuruluşun fark edilmemiş saldırılara karşı savunmasız bırakılır. 
 
-- Playbook playbook yapılandırdığınızda, bir uyarı tetiklendiğinde otomatik olarak çalışacak şekilde ayarlayın. 
+Çoğu, bu uyarıların çoğu, belirli ve tanımlı düzeltme eylemleri tarafından giderilebildiğiniz yinelenen desenlerle uyumlu değildir. Azure Sentinel, zaten PlayBook 'lar için düzeltmeyi tanımlamanızı sağlar. Ayrıca, belirli güvenlik uyarılarına yönelik olarak tanımlanan yanıtı tamamen otomatikleştirmenizi sağlamak için PlayBook tanımınızın bir parçası olarak gerçek zamanlı Otomasyonu ayarlamak da mümkündür. Gerçek zamanlı Otomasyon kullanarak, yanıt ekipleri yinelenen uyarı türlerine yönelik rutin yanıtları tamamen otomatikleştirerek iş yükünü önemli ölçüde azaltabilir. böylece, benzersiz uyarılarda daha fazla odaklanmanızı, desenleri analiz etmeyi, tehdit arayanı ve daha fazlasını yapabilirsiniz.
 
-- El ile gelen bir playbook uyarı içine tıklayarak çalıştırın **playbook'ları görüntüleme** ve sonra çalıştırılacak bir playbook seçerek.
+Yanıtları otomatikleştirmek için:
 
+1. Yanıtı otomatik hale getirmek istediğiniz uyarıyı seçin.
+1. Azure Sentinel çalışma alanı gezinti menüsünde **analiz**' ı seçin.
+1. Otomatikleştirmek istediğiniz uyarıyı seçin. 
+1. **Uyarı kuralını Düzenle** sayfasında, **gerçek zamanlı Otomasyon**altında, bu uyarı kuralı eşleştiğinde çalıştırmak istediğiniz **tetiklenen PlayBook** ' u seçin.
+1. **Kaydet**’i seçin.
+
+   ![gerçek zamanlı Otomasyon](./media/tutorial-detect-threats/rt-configuration.png)
+
+
+Ayrıca, uyarı içinden PlayBook çalıştırarak, PlayBook 'ları **görüntüle** ' ye tıklayıp çalıştırmak için bir PlayBook ' u seçerek bir uyarıyı el ile düzeltebilirsiniz. Yeni bir PlayBook oluşturmayı veya var olan bir görüntünün nasıl düzenlendiğini öğrenmek için bkz. [Azure Sentinel 'de PlayBook 'ları ile çalışma](tutorial-respond-threats-playbook.md).
 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu öğreticide, Azure Gözcü kullanarak tehditleri algılama başlama öğrendiniz. 
+Bu öğreticide, Azure Sentinel kullanarak tehditleri algılamaya nasıl başlacağınız hakkında daha fazla öğrenirsiniz. 
 
-Yanıtlarınız tehditlere otomatikleştirme hakkında bilgi edinmek için [otomatik playbook'ları kullanarak tehditleri nasıl](tutorial-respond-threats-playbook.md).
+Tehditleri yanıtlarınızı otomatik hale getirmeyi öğrenmek için [Otomatikleştirilmiş PlayBook 'ları kullanarak tehditlere nasıl yanıt verileceğini](tutorial-respond-threats-playbook.md)öğrenin.
 > [!div class="nextstepaction"]
-> [Tehditleri](tutorial-respond-threats-playbook.md) tehditleri verdiğiniz yanıtları otomatik hale getirmek için.
+> Tehditlere yönelik yanıtlarınızı otomatik hale getirmek için [tehditleri yanıtlayın](tutorial-respond-threats-playbook.md) .
 

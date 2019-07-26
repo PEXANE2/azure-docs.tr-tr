@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: allensu
-ms.openlocfilehash: dd4b9f88e61396003a209b1b8edabb8c1564c761
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 305f24fc274ad48f5c60762223b7bf4e970fe083
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68320081"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68333746"
 ---
 # <a name="traffic-manager-routing-methods"></a>Traffic Manager yönlendirme yöntemleri
 
@@ -148,6 +148,14 @@ Traffic Manager, DNS sorgusunun kaynak IP adresini okur ve hangi coğrafi bölge
 ## <a name = "multivalue"></a>Çoklu değer trafik-yönlendirme yöntemi
 Çoklu **değer** trafik-yönlendirme yöntemi, tek bir DNS sorgu yanıtında birden çok sağlıklı uç nokta almanızı sağlar. Bu, arayanın yanıt vermeyen bir uç noktanın olaydaki diğer uç noktalarla istemci tarafı yeniden denemeleri yapmasına olanak sağlar. Bu model, bir hizmetin kullanılabilirliğini artırabilir ve sağlıklı bir uç nokta elde etmek için yeni bir DNS sorgusuyla ilişkili gecikme süresini azaltabilir. Çoklu değer yönlendirme yöntemi yalnızca ' External ' türündeki tüm uç noktalar ve IPv4 veya IPv6 adresleri olarak belirtilmişse kullanılabilir. Bu profil için bir sorgu alındığında, sağlıklı tüm uç noktalar döndürülür ve yapılandırılabilir en yüksek dönüş sayısına tabidir.
 
+### <a name="faqs"></a>SSS
+
+* [Çok değerli yönlendirmenin yararlı olduğu bazı kullanım durumları nelerdir?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-some-use-cases-where-multivalue-routing-is-useful)
+
+* [Çok değerli yönlendirme kullanıldığında kaç uç nokta döndürülüyor?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-endpoints-are-returned-when-multivalue-routing-is-used)
+
+* [Çoklu küme yönlendirmesi kullanıldığında aynı uç nokta kümesini alacak mıyım?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#will-i-get-the-same-set-of-endpoints-when-multivalue-routing-is-used)
+
 ## <a name = "subnet"></a>Alt ağ trafiği-yönlendirme yöntemi
 **Alt ağ** trafiği-yönlendirme yöntemi, bir dizi Son Kullanıcı IP adresi aralığını bir profildeki belirli uç noktalara eşlemenizi sağlar. Bundan sonra, Traffic Manager Bu profil için bir DNS sorgusu alırsa, bu isteğin kaynak IP adresini inceleyerek (çoğu durumda bu, çağıran tarafından kullanılan DNS Çözümleyicisinin giden IP adresi olacaktır), hangi uç noktanın eşlendiğini ve t döndürecek olduğunu tespit eder sorgu yanıtında hat uç noktası. 
 
@@ -155,6 +163,19 @@ Bir uç noktaya eşlenecek IP adresi CıDR aralıkları (ör. 1.2.3.0/24) veya b
 Adres aralığı olmayan bir uç nokta tanımlarsanız, bu işlem geri dönüş olarak çalışır ve kalan alt ağlardan trafik alır. Geri dönüş uç noktası yoksa, Traffic Manager tanımsız aralıklar için bir NODATA yanıtı gönderir. Bu nedenle, bir geri dönüş uç noktası tanımlamanız veya diğer tüm olası IP aralıklarının uç noktalarınız genelinde belirtildiğinden emin olmanız önemle tavsiye edilir.
 
 Alt ağ yönlendirme, belirli bir IP alanından bağlanan kullanıcılar için farklı bir deneyim sunmak üzere kullanılabilir. Örneğin, alt ağ yönlendirmeyi kullanarak bir müşteri, kurumsal ofislerinden gelen tüm isteklerin, uygulamasının yalnızca dahili bir sürümünü test ettikleri farklı bir uç noktaya yönlendirilmesini sağlayabilir. Başka bir senaryo, belirli bir ISS 'den bağlanan kullanıcılara farklı bir deneyim sağlamak istiyorsanız (örneğin, belirli bir ISS 'den kullanıcıları engelle).
+
+### <a name="faqs"></a>SSS
+
+* [Alt ağ yönlendirmesinin yararlı olduğu bazı kullanım durumları nelerdir?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-some-use-cases-where-subnet-routing-is-useful)
+
+* [Traffic Manager son kullanıcının IP adresini nasıl bilir?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-know-the-ip-address-of-the-end-user)
+
+* [Alt ağ yönlendirmeyi kullanırken IP adreslerini nasıl belirtirim?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-specify-ip-addresses-when-using-subnet-routing)
+
+* [Alt ağ yönlendirmesi kullanırken bir geri dönüş uç noktası nasıl belirtebilir?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-specify-a-fallback-endpoint-when-using-subnet-routing)
+
+* [Bir alt ağ yönlendirme türü profilinde bir uç nokta devre dışıysa ne olur?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-happens-if-an-endpoint-is-disabled-in-a-subnet-routing-type-profile)
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

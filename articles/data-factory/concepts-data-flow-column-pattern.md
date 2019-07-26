@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: d24988dfd5cbaf20e92c5afbbc39dc0c78e3ef6a
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: 076c3318a68a50e6bd1b4f9f2a4a4b9a034533c6
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314848"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68346579"
 ---
 # <a name="azure-data-factory-mapping-data-flows-column-patterns"></a>Azure Data Factory eşleme veri akışları sütun desenleri
 
@@ -39,4 +39,4 @@ Sütunları temel alan desenler oluşturmak için, sütun adı, tür, akış vey
 ![sütun konumu](media/data-flow/position.png "Sütun konumu")
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Veri dönüştürmeleri için ADF eşleme veri akışı [ifade dili](http://aka.ms/dataflowexpressions) hakkında daha fazla bilgi edinin
+Veri dönüştürmeleri için ADF eşleme veri akışı [ifade dili](https://aka.ms/dataflowexpressions) hakkında daha fazla bilgi edinin

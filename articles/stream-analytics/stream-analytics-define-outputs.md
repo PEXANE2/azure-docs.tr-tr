@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: 854fd5ca2bb6c27b7f8815bf85e19c6cf147e475
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: a0da13e82811d500dee50c2231500245c7e011a6
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278049"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68383436"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Azure Stream Analytics çıkışları anlama
 
@@ -70,7 +70,7 @@ Aşağıdaki tabloda, bir SQL veritabanı çıkışı oluşturmak için özellik
 
 ## <a name="blob-storage-and-azure-data-lake-gen2"></a>BLOB depolama ve Azure Data Lake Gen2
 
-Azure Data Lake Gen2 çıkış, genel önizleme özelliği olarak sunulur.
+Azure Data Lake Gen2 çıkış, dünya çapındaki sınırlı bölgelerde bir önizleme özelliği olarak sunulur. [İstek](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u)formumuza ek ayrıntılar sağlayarak önizlemeye erişim isteyebilirsiniz.
 
 Azure Blob depolama, büyük miktarlarda yapılandırılmamış verileri bulutta depolamak için uygun maliyetli ve ölçeklenebilir bir çözüm sunar. BLOB depolama ve kullanım kullanımıyla ilgili bir giriş için bkz. [Azure Portal blob 'Ları yükleme, indirme ve listeleme](../storage/blobs/storage-quickstart-blobs-portal.md).
 
@@ -137,7 +137,7 @@ Aşağıdaki tablo Power BI çıktlarınızı yapılandırmak için özellik adl
 | Grup çalışma alanı |Diğer Power BI kullanıcılarla veri paylaşmayı etkinleştirmek için Power BI hesabınızda grupları seçebilir veya bir gruba yazmak istemiyorsanız **çalışma alanım** ' ı seçebilirsiniz. Mevcut bir grubu güncelleştiriliyor, Power BI kimlik doğrulaması yenileme gerektirir. |
 | Veri kümesi adı |Power BI çıkışının kullanmasını istediğiniz bir veri kümesi adı belirtin. |
 | Tablo adı |Power BI çıkış veri kümesi altında bir tablo adı sağlayın. Şu anda, Stream Analytics işlerden alınan Power BI çıktısı bir veri kümesinde yalnızca bir tablo içerebilir. |
-| Bağlantıyı yetkilendir | Çıkış ayarlarınızı yapılandırmak için Power BI yetkilendirme yapmanız gerekir. Bu çıkış Power BI panonuza erişim izni verdiğinizde, Kullanıcı hesabı parolasını değiştirerek, iş çıktısını silerek veya Stream Analytics işini silerek erişimi iptal edebilirsiniz. | 
+| Bağlantı yetkilendirme | Çıkış ayarlarınızı yapılandırmak için Power BI yetkilendirme yapmanız gerekir. Bu çıkış Power BI panonuza erişim izni verdiğinizde, Kullanıcı hesabı parolasını değiştirerek, iş çıktısını silerek veya Stream Analytics işini silerek erişimi iptal edebilirsiniz. | 
 
 Power BI çıktısını ve panoyu yapılandırmaya yönelik bir anlatım için, [Azure Stream Analytics ve Power BI](stream-analytics-power-bi-dashboard.md) öğreticisine bakın.
 
@@ -176,7 +176,7 @@ Int64 | Int64 | Dize | Dize | çift
 Dize | String | String | String | Dize 
 Tarih saat | Dize | Dize |  Tarih saat | Dize
 
-## <a name="table-storage"></a>Table Storage
+## <a name="table-storage"></a>Tablo depolama alanı
 
 [Azure Tablo depolama](../storage/common/storage-introduction.md) , yüksek oranda kullanılabilir ve yüksek düzeyde ölçeklenebilir depolama sunarak, bir uygulamanın kullanıcı talebini karşılayacak şekilde otomatik olarak ölçeklenebilmesini sağlar. Tablo depolama, Microsoft 'un NoSQL anahtar/öznitelik deposudur ve bu, şema üzerinde daha az kısıtlama sunan yapılandırılmış veriler için kullanabileceğiniz bir veritabanıdır. Azure tablo depolama, Kalıcılık ve verimli alma verilerini depolamak için kullanılabilir.
 

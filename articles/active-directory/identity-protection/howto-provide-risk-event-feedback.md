@@ -1,63 +1,63 @@
 ---
-title: Azure AD kimlik koruması - Azure Active Directory risk olayları hakkında geri bildirim sağlayın
-description: Neden ve nasıl kimlik koruması risk olayları hakkında geri bildirim sağlamanız gerekir.
+title: Azure AD Kimlik Koruması-Azure Active Directory risk olayları hakkında geri bildirim sağlayın
+description: Kimlik koruması risk olayları hakkında nasıl ve neden geri bildirim sağlamanız gerekir.
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 05/13/2019
+ms.date: 07/19/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66d53590e89afb1a903b22ff60e32871a1502ada
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6bd0984a78860192f507323491952e895c8de8bf
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65827913"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68370208"
 ---
-# <a name="how-to-give-risk-feedback-in-azure-ad-identity-protection"></a>Nasıl Yapılır: Azure AD kimlik koruması risk görüş bildirin
+# <a name="how-to-give-risk-feedback-in-azure-ad-identity-protection"></a>Nasıl Yapılır: Azure AD Kimlik Koruması riske geri bildirimde bulunun
 
-Azure AD kimlik koruması, risk değerlendirmesini temel görüşlerinizi sağlar. Aşağıdaki belge, Azure AD kimlik Koruması'nın risk değerlendirmesine ve biz bunu nasıl birleştirme hakkında geri bildirim sağlamak istediğiniz senaryolar listelenmiştir.
+Azure AD Kimlik Koruması risk değerlendirmesi hakkında geri bildirimde bulunmak için izin verir. Aşağıdaki belge, Azure AD Kimlik Koruması risk değerlendirmesi ve nasıl dahil ettiğimiz hakkında geri bildirim vermek istediğiniz senaryoları listeler.
 
-## <a name="what-is-a-detection"></a>Bir algılama nedir?
+## <a name="what-is-a-detection"></a>Algılama nedir?
 
-Kimlik koruması algılama kimlik risk açısından kuşkulu etkinliğin göstergesidir. Bu kuşkulu etkinliklerin risk olayları çağrılır. Kimlik tabanlı bu algılamaların amacı, buluşsal yöntemler üzerinde temel alabilir, machine learning veya iş ortağı ürünleri gelebilir. Bu algılamaların amacı, oturum açma riski ve kullanıcı riski belirlemek için kullanılır,
+Kimlik Koruması Algılama, bir kimlik riski perspektifinden şüpheli etkinliğin göstergesidir. Bu şüpheli etkinliklere risk olayları denir. Bu kimlik tabanlı algılamalar buluşsal yöntemler, makine öğrenimi veya iş ortağı ürünlerinden gelebilir. Bu algılamalar, oturum açma riskini ve Kullanıcı riskini belirlemede kullanılır,
 
-* Kullanıcı riski kimliğin gizliliğinin olasılık temsil eder.
-* Oturum açma riski bir oturum açma biri riske olasılık temsil eder (örneğin, oturum açma kimlik sahibi tarafından yetkili değil).
+* Kullanıcı riski, bir kimliğin güvenliğinin aşıldığına ilişkin olasılığı temsil eder.
+* Oturum açma riski, bir oturum açma olasılığının güvenliğinin aşıldığını temsil eder (örneğin, oturum açma kimlik sahibi tarafından yetkilendirilmemiş).
 
-## <a name="why-should-i-give-risk-feedback-to-azure-ads-risk-assessments"></a>Neden miyim risk Azure AD'nin risk değerlendirmeleri için görüşlerinizi? 
+## <a name="why-should-i-give-risk-feedback-to-azure-ads-risk-assessments"></a>Azure AD 'nin risk değerlendirmelerine neden risk geri bildirimi vermem gerekir? 
 
-Neden Azure AD risk geri bildirimde birkaç nedeni vardır:
+Azure AD risk geri bildirimi sağlamanız gereken birkaç neden vardır:
 
-1. **Azure AD'nin kullanıcı veya oturum açma risk değerlendirmesine yanlış bulunan**. Örneğin, 'Riskli oturum açma işlemleri' raporda bir oturum açma zararsız ve hatalı pozitif sonuçları, oturum açma üzerindeki tüm algılamalar düzeltildi.
-1. **Azure AD'nin kullanıcı doğrulanmış veya oturum açma risk değerlendirmesi doğru**. Örneğin, 'Riskli oturum açma işlemleri' raporda bir oturum açma gerçekten kötü amaçlı ve Azure AD, oturum açma üzerindeki tüm algılamalar gerçek pozitif sonuç olduğunu bilmek istiyorsunuz.
-1. **Bu kullanıcı Azure AD kimlik koruması dışında riskine düzeltilen** ve kullanıcının risk düzeyi güncelleştirilmesini istiyorsanız.
+- **Azure AD 'nin Kullanıcı veya oturum açma risk değerlendirmesi yanlış**. Örneğin, ' riskli oturum açma ' raporunda gösterilen bir oturum açma işlemi zararsız ve bu oturum açma üzerindeki tüm algılamalar hatalı pozitif sonuç.
+- **Azure AD 'nin Kullanıcı veya oturum açma risk değerlendirmesi doğru olduğunu doğruladı**. Örneğin, ' riskli oturum açma ' raporunda gösterilen bir oturum, gerçekten kötü amaçlı ve Azure AD 'nin oturum açma ile ilgili tüm algılamaları doğru pozitif sonuçlar olduğunu bilmesini istiyorsunuz.
+- **Bu Kullanıcı üzerindeki riski Azure AD kimlik koruması dışında düzeltildi** ve kullanıcının risk düzeyinin güncelleştirilmesini istiyorsunuz.
 
-## <a name="how-does-azure-ad-use-my-risk-feedback"></a>Azure AD risk bildirimimi nasıl kullanır?
+## <a name="how-does-azure-ad-use-my-risk-feedback"></a>Azure AD risk geri bildirimimi nasıl kullanır?
 
-Azure AD, temel alınan kullanıcı ve/veya oturum açma riskini güncelleştirmek için geri bildirim kullanır. Bu geri bildirim son kullanıcı güvenliğini sağlamaya yardımcı olur. Örneğin, bir oturum açma tehlikeye doğruladıktan sonra hemen Azure AD kullanıcı riski ve oturum açma ait toplam riski (değil gerçek zamanlı risk) yüksek artırır. Bu kullanıcı parolalarını güvenli bir şekilde sıfırlamak için yüksek riskli kullanıcıları zorlamak için kullanıcı risk ilkesinde yer alıyorsa kullanıcı otomatik olarak kendisini kullanıcılar oturum açtığında geçersiz kılar.
+Azure AD, temel alınan Kullanıcı ve/veya oturum açma riskini ve bu olayların doğruluğunu güncelleştirmek için geri bildirimlerinizi kullanır. Bu geri bildirim, son kullanıcının güvenliğinin sağlanmasına yardımcı olur. Örneğin, bir oturum açma işlemi tehlikeye atıldıktan sonra Azure AD, kullanıcının riskini ve oturum açma riskini (gerçek zamanlı risk değil) yüksek olarak arttırır. Bu Kullanıcı, yüksek riskli kullanıcıların parolalarını güvenli bir şekilde sıfırlamasına zorlamak için Kullanıcı risk ilkenize dahil ediliyorsa, Kullanıcı bir sonraki oturum açtıklarında kendiliğinden otomatik olarak düzeltecektir.
 
-## <a name="how-should-i-give-risk-feedback-and-what-happens-under-the-hood"></a>Nasıl miyim vermek risk geri bildirim ve bileşenler ne olur?
+## <a name="how-should-i-give-risk-feedback-and-what-happens-under-the-hood"></a>Risk geri bildirimi ve bu sırada ne olur?
 
-Senaryolar ve Azure AD'ye risk görüş mekanizmaları aşağıda verilmiştir.
+Azure AD 'ye risk geri bildirimi sağlamak için senaryolar ve mekanizmalar aşağıda verilmiştir.
 
-| Senaryo | Geri bildirim sağlamak nasıl? | Başlık altında ne olacak? | Notlar |
+| Senaryo | Geri bildirimde bulunun | Devlet kapsamında ne olur? | Notlar |
 | --- | --- | --- | --- |
-| **Tehlikeye oturum (hatalı pozitif sonuç)** <br> 'Riskli oturum açma işlemleri' rapor gösterir bir risk altında bulunan oturum açma [Risk durumu risk =] oturum açma değil aşılmış ancak bu. | Oturum açma seçin ve 'Onayla oturum açma için güvenli ' tıklayın. | Azure AD oturum açma ait toplam riski yok taşınır [Risk durumu onaylı güvenli; = Risk düzeyini (toplama) =-] ve etkisini kullanıcı riskine geri alacaksınız. | 'Güvenli oturum açma Onayla' seçeneği şu anda yalnızca 'Riskli oturum açma işlemleri' raporda olarak kullanılabilir. |
-| **Tehlikeye oturum (gerçek pozitif sonuç)** <br> 'Riskli oturum açma işlemleri' rapor gösterir bir risk altında bulunan oturum açma [Risk durumu risk =] düşük riskli [Risk düzeyini (toplama) düşük =] ve bu oturum açma gerçekten aşılmış. | Oturum açma seçin ve 'Onayla tehlikeye oturum üzerinde' tıklayın. | Azure AD oturum açma ın birleşik risk ve kullanıcı riski yüksek olarak taşınır [Risk durumu tehlikeye; onaylı = Risk düzeyi yüksek =]. | 'Onayla tehlikeye oturum' seçeneği şu anda yalnızca 'Riskli oturum açma işlemleri' raporda olarak kullanılabilir. |
-| **Kullanıcı gizliliği (gerçek pozitif sonuç)** <br> 'Riskli kullanıcılar' rapor gösterir risk altında bulunan bir kullanıcı [Risk durumu risk =] düşük riskli [Risk düzeyini Düşük =] ve kullanıcının gerçekten aşılmış. | Kullanıcıyı seçin ve 'Onayla kullanıcı gizliliği' tıklayın. | Azure AD kullanıcı riski yüksek olarak hareket ettirecektir [Risk durumu tehlikeye; onaylı = Risk düzeyi yüksek =] ve 'Yönetici onayladı kullanıcı gizliliği' yeni bir algılama ekler. | 'Onayla kullanıcı gizliliği' seçeneği şu anda yalnızca 'Riskli kullanıcılar' raporda olarak kullanılabilir. <br> Algılama 'Yönetici onayladı kullanıcı gizliliği' 'bir oturum açma için bağlı olmayan Risk olayları' sekmesinde 'Riskli kullanıcılar' raporunda gösterilir. |
-| **Kullanıcı Azure AD kimlik koruması dışında (gerçek pozitif sonuç + Remediated) düzeltilen** <br> Risk altında bulunan bir kullanıcı 'Riskli kullanıcılar' rapor gösterir ve daha sonra kullanıcının Azure AD kimlik koruması dışında düzeltilen. | 1. Kullanıcı seçin ve 'Onayla kullanıcı gizliliği' yı tıklatın. (Bu işlem Azure AD'ye kullanıcı gerçekten aşılmış onaylar.) <br> 2. Kullanıcının 'Risk düzeyi' bekleyin yüksek'e gidin. (Bu süre tanıdığından risk altyapısına yukarıdaki geri bildirim almak için Azure AD gerekli zaman.) <br> 3. Kullanıcıyı seçin ve 'kullanıcı riski Kapat' tıklayın. (Bu işlem Azure AD'ye kullanıcı artık tehlikeye girmemesini onaylar.) |  Azure AD taşır kullanıcı riski yok [Risk durumu çıkarıldı; = Risk düzeyi =-] ve tüm mevcut oturum açma etkin riski sahip işlemleri riskine kapatır. | 'Kullanıcı riski Kapat' ı tıklatarak, kullanıcı ve oturum açma geçen tüm risk sona erecektir. Bu eylem geri alınamaz. |
-| **Kullanıcı gizliliğinin tehlikeye (hatalı pozitif sonuç)** <br> Dalgalanmasını kullanıcı, 'Riskli kullanıcılar' rapor gösterir ancak kullanıcı gizliliğinin tehlikeye. | Kullanıcıyı seçin ve 'kullanıcı riski Kapat' tıklayın. (Bu işlem Azure AD'ye kullanıcı gizliliğinin tehlikeye girmemesini onaylar.) | Azure AD taşır kullanıcı riski yok [Risk durumu çıkarıldı; = Risk düzeyi =-]. | 'Kullanıcı riski Kapat' ı tıklatarak, kullanıcı ve oturum açma geçen tüm risk sona erecektir. Bu eylem geri alınamaz. |
-| Kullanıcı riski kapatmak istediğiniz, ancak güvenliği aşılmış / güvenli kullanıcı olup emin değilim. | Kullanıcıyı seçin ve 'kullanıcı riski Kapat' tıklayın. (Bu işlem Azure AD'ye kullanıcı artık tehlikeye girmemesini onaylar.) | Azure AD taşır kullanıcı riski yok [Risk durumu çıkarıldı; = Risk düzeyi =-]. | 'Kullanıcı riski Kapat' ı tıklatarak, kullanıcı ve oturum açma geçen tüm risk sona erecektir. Bu eylem geri alınamaz. Kullanıcı, 'Üzerinde parolayı Sıfırla' tıklayarak düzeltmek veya kimlik bilgilerini güvenli bir şekilde sıfırlama/değiştirme kullanıcıya istek öneririz. |
+| **Oturum açma güvenliği aşılmış (yanlış pozitif)** <br> ' Riskli oturum açma ' raporu, risk altındaki oturum açma işlemlerini (risk durumu = riskli) gösterir ancak bu oturum açma işlemi tehlikeye atılmadı. | Oturum açma ' yı seçin ve ' oturumu güvenli Onayla ' seçeneğine tıklayın. | Azure AD, oturum açma 'nın toplu riskini None olarak taşıyacaktır [risk durumu = onaylanmış güvenli; Risk düzeyi (toplama) =-] ve Kullanıcı riski üzerindeki etkisini tersine çevirir. | Şu anda ' oturumu güvenli Onayla ' seçeneği yalnızca ' riskli oturum açma ' raporunda kullanılabilir. |
+| **Oturum açma güvenliği aşılmış (gerçek pozitif)** <br> ' Riskli oturum açma ' raporu, düşük riskli [risk düzeyi (toplama) = düşük] sahip olan ve oturum açma işlemi tehlikeye aşılmıştır. | Oturum açma ' yı seçin ve ' bir oturum açmayı onayla ' ya tıklayın. | Azure AD, oturum açma 'nın toplu riskini ve Kullanıcı riskini yüksek [risk durumu = Onaylandı olarak ele alacak şekilde taşıyacaktır. Risk düzeyi = yüksek]. | Şu anda ' yeniden oturum açmayı onayla ' seçeneği yalnızca ' riskli oturum açma ' raporunda kullanılabiliyor. |
+| **Kullanıcı güvenliği aşılmış (gerçek pozitif)** <br> ' Riskli kullanıcılar ' raporu, düşük riskli [risk düzeyi = düşük] olan ve bu kullanıcının güvenliği ihlal edilmiş bir risk (risk durumu = riskli) gösterir. | Kullanıcıyı seçin ve ' kullanıcıyı güvenliği aşılmış ' seçeneğine tıklayın. | Azure AD, Kullanıcı riskini yüksek [riskli durum = Onaylandı olarak ele alacak şekilde taşıyacaktır. Risk düzeyi = yüksek] ve yeni bir algılama ' yönetici tarafından onaylanan Kullanıcı güvenliği aşılmış ' ekler. | Şu anda ' Kullanıcı güvenliği aşılmış ' seçeneği yalnızca ' riskli kullanıcılar ' raporunda kullanılabilir. <br> ' Riskli kullanıcılar ' raporundaki ' bir oturum açma ile bağlantılı olmayan risk olayları ' ' nda algılama, ' yönetici tarafından onaylanan Kullanıcı güvenliği aşılmış ' olarak gösteriliyor. |
+| **Kullanıcı Azure AD Kimlik Koruması dışında düzeltildi (doğru pozitif + düzeltilen)** <br> ' Riskli kullanıcılar ' raporu, risk altındaki kullanıcıyı gösterir ve daha sonra kullanıcıyı Azure AD Kimlik Koruması dışında düzeltildi. | 1. Kullanıcıyı seçin ve ' kullanıcıyı güvenliği aşılmış ' seçeneğine tıklayın. (Bu işlem, kullanıcının gerçekten tehlikeye girdiği Azure AD 'ye onaylar.) <br> 2. Kullanıcının ' risk düzeyi ' ' nin yüksek ' e gitmesini bekleyin. (Bu kez, Azure AD 'ye, risk motoruna yukarıdaki geri bildirimin uygulanması için gereken süre verilir.) <br> 3. Kullanıcıyı seçin ve ' Kullanıcı riskini Kapat ' seçeneğine tıklayın. (Bu işlem, Azure AD 'ye kullanıcının artık güvenliği aşılmış olduğunu onaylar.) |  Azure AD, Kullanıcı riskini yok 'a taşır [risk durumu = kapatıldı; Risk düzeyi =-] ve etkin risk sahibi olan tüm mevcut oturum açma işlemlerinin riskini kapatır. | ' Kullanıcı riskini Kapat ' tıklandığında, Kullanıcı ve oturum açma işlemlerinin tüm riskleri kapatılır. Bu eylem geri alınamaz. |
+| **Kullanıcı tehlikeye düşmedi (yanlış pozitif)** <br> ' Riskli kullanıcılar ' raporu risk altında Kullanıcı tarafından gösteriliyor, ancak kullanıcının güvenliği aşılmış değil. | Kullanıcıyı seçin ve ' Kullanıcı riskini Kapat ' seçeneğine tıklayın. (Bu işlem, Azure AD 'ye kullanıcının güvenliğinin aşılmadığı doğrular.) | Azure AD, Kullanıcı riskini yok 'a taşır [risk durumu = kapatıldı; Risk düzeyi =-]. | ' Kullanıcı riskini Kapat ' tıklandığında, Kullanıcı ve oturum açma işlemlerinin tüm riskleri kapatılır. Bu eylem geri alınamaz. |
+| Kullanıcı riskini kapatmak istiyorum, ancak kullanıcının tehlikeye düşmesi/güvende olup olmadığından emin değilim. | Kullanıcıyı seçin ve ' Kullanıcı riskini Kapat ' seçeneğine tıklayın. (Bu işlem, Azure AD 'ye kullanıcının artık güvenliği aşılmış olduğunu onaylar.) | Azure AD, Kullanıcı riskini yok 'a taşır [risk durumu = kapatıldı; Risk düzeyi =-]. | ' Kullanıcı riskini Kapat ' tıklandığında, Kullanıcı ve oturum açma işlemlerinin tüm riskleri kapatılır. Bu eylem geri alınamaz. ' Parolayı Sıfırla ' ya tıklayarak kullanıcıyı düzeltmeniz veya Kullanıcı kimlik bilgilerini güvenli bir şekilde sıfırlamasını/değiştirmesini istemeniz önerilir. |
 
-Kimlik koruması, kullanıcı risk olayları hakkında geri bildirim çevrimdışı işlenir ve güncelleştirilmesi biraz zaman alabilir. Durum sütununun işlenmesi risk geri bildirim işleme geçerli durumunu sağlar.
+Kimlik koruması 'ndaki Kullanıcı risk olayları hakkında geri bildirim çevrimdışı olarak işlenir ve güncelleştirme biraz zaman alabilir. Risk işleme durumu sütunu, geri bildirim işlemenin geçerli durumunu sağlar.
 
-![Risk işleme durumu için riskli kullanıcı raporu](./media/howto-provide-risk-event-feedback/risky-users-provide-feedback.png)
+![Riskli Kullanıcı raporu için risk işleme durumu](./media/howto-provide-risk-event-feedback/risky-users-provide-feedback.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Active Directory kimlik koruması, risk olayları başvurusu](risk-events-reference.md)
+[Azure Active Directory Kimlik Koruması risk olayları başvurusu](risk-events-reference.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure IOT hub'ı modül kimlik ve modül ikizi ile (Python) kullanmaya başlayın | Microsoft Docs
-description: Modül kimliği oluşturma ve Python için IOT SDK'ları kullanarak modül ikizi güncelleştirme hakkında bilgi edinin.
+title: Azure IoT Hub modül kimliği ve modülü ikizi (Python) ile çalışmaya başlama | Microsoft Docs
+description: Python için IoT SDK 'larını kullanarak modül kimliği oluşturma ve modül ikizi güncelleştirme hakkında bilgi edinin.
 author: chrissie926
 ms.service: iot-hub
 services: iot-hub
@@ -8,44 +8,50 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
-ms.openlocfilehash: f887fbd4f82e59c02d6a5b69d0d5b43b426a39bc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 428f13c1c70171404da4cbb6f731d95056813914
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61441222"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68402325"
 ---
-# <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-python-back-end-and-python-device"></a>Python arka ucu ile Python cihaz IOT hub'ı modül kimlik ve modül ikizi ile çalışmaya başlama
+# <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-python-back-end-and-python-device"></a>Python arka ucu ve Python cihazı kullanarak IoT Hub modül kimliği ve modül ikizi ile çalışmaya başlama
 
 > [!NOTE]
 > [Modül kimlikleri ve modül ikizleri](iot-hub-devguide-module-twins.md), Azure IoT Hub cihaz kimliğine ve cihaz ikizine benzer, ancak daha hassas ayrıntı düzeyi sağlar. Azure IoT Hub cihaz kimliği ve cihaz ikizi, arka uç uygulamasının bir cihaz yapılandırmasına imkan tanıyıp cihazın koşullarına yönelik görünürlük sağlarken, modül kimliği ve modül ikizi de bir cihazın tek tek bileşenleri için bu özellikleri sağlar. İşletim sistemi tabanlı cihazlar veya üretici yazılımı cihazları gibi, birden fazla bileşen içeren ve bu özelliklere sahip cihazlarda her bir bileşen için yalıtılmış yapılandırma ve koşullara olanak sağlar.
 >
 
-Bu öğreticinin sonunda iki Python uygulamaları vardır:
+Bu öğreticinin sonunda iki Python uygulamanız vardır:
 
 * Cihaz ve modül istemcilerinizi bağlamak için bir cihaz kimliği, bir modül kimliği ve ilişkili güvenlik anahtarı oluşturan **CreateIdentities**.
 
 * Güncelleştirilmiş modül ikizi tarafından raporlanan özelliklerini IoT Hub’ınıza gönderen **UpdateModuleTwinReportedProperties**.
 
 > [!NOTE]
-> Cihazlar ve çözüm arka ucunuz çalıştırılacak hem uygulamalar oluşturmak için kullanabileceğiniz Azure IOT SDK'ları hakkında daha fazla bilgi için bkz. [Azure IOT SDK'ları](iot-hub-devguide-sdks.md).
+> Cihazlarda çalıştırılacak uygulamaları ve çözüm arka ucu oluşturmak için kullanabileceğiniz Azure IoT SDK 'Ları hakkında daha fazla bilgi için bkz. [Azure IoT SDK 'ları](iot-hub-devguide-sdks.md).
 >
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
-* Etkin bir Azure hesabı. (Hesabınız yoksa, oluşturabileceğiniz bir [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) yalnızca birkaç dakika içinde.)
+* Etkin bir Azure hesabı. (Hesabınız yoksa yalnızca birkaç dakika içinde [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturabilirsiniz.)
 
-* IOT hub'ı.
+* En son [Python SDK 'sını](https://github.com/Azure/azure-iot-sdk-python)yükler.
 
-* Son yükleme [Python SDK'sı](https://github.com/Azure/azure-iot-sdk-python).
+## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
-IoT hub'ınızı oluşturdunuz ve bu öğreticinin geri kalanını tamamlamak için gereken ana bilgisayar adı ve IoT Hub bağlantı dizesine sahipsiniz.
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="create-a-device-identity-and-a-module-identity-in-iot-hub"></a>Bir cihaz kimliği ve bir modül kimliği, IOT hub'ı oluşturma
+## <a name="get-the-iot-hub-connection-string"></a>IoT Hub bağlantı dizesini al
 
-Bu bölümde, IOT hub'ınızdaki kimlik kayıt defterinde bir cihaz kimliği ve bir modül kimliği oluşturan bir Python uygulaması oluşturun. Kimlik kayıt defterinde girişi olmayan bir cihaz veya modül, IoT hub'ına bağlanamaz. Daha fazla bilgi için "Kimlik kayıt defteri" bölümüne bakın. [IOT Hub Geliştirici kılavuzunun](iot-hub-devguide-identity-registry.md). Bu konsol uygulamasını çalıştırdığınızda, hem cihaz hem de modül için benzersiz bir kimlik ve anahtar oluşturur. Cihazınız ve modülünüz, IoT Hub’ına cihazdan buluta iletileri gönderdiğinde kendisini tanımlamak için bu değerleri kullanır. Kimlikler büyük/küçük harfe duyarlıdır.
+[!INCLUDE [iot-hub-howto-module-twin-shared-access-policy-text](../../includes/iot-hub-howto-module-twin-shared-access-policy-text.md)]
 
-Python dosyanıza aşağıdaki kodu ekleyin:
+[!INCLUDE [iot-hub-include-find-registryrw-connection-string](../../includes/iot-hub-include-find-registryrw-connection-string.md)]
+
+## <a name="create-a-device-identity-and-a-module-identity-in-iot-hub"></a>IoT Hub bir cihaz kimliği ve modül kimliği oluşturma
+
+Bu bölümde, IoT Hub 'ınızdaki kimlik kayıt defterinde bir cihaz kimliği ve bir modül kimliği oluşturan bir Python uygulaması oluşturacaksınız. Kimlik kayıt defterinde girişi olmayan bir cihaz veya modül, IoT hub'ına bağlanamaz. Daha fazla bilgi için, [IoT Hub geliştirici kılavuzunun](iot-hub-devguide-identity-registry.md)"kimlik kayıt defteri" bölümüne bakın. Bu konsol uygulamasını çalıştırdığınızda, hem cihaz hem de modül için benzersiz bir kimlik ve anahtar oluşturur. Cihazınız ve modülünüz, IoT Hub’ına cihazdan buluta iletileri gönderdiğinde kendisini tanımlamak için bu değerleri kullanır. Kimlikler büyük/küçük harfe duyarlıdır.
+
+Aşağıdaki kodu Python dosyanıza ekleyin:
 
 ```python
 import sys
@@ -64,34 +70,38 @@ try:
     primary_key = ""
     secondary_key = ""
     auth_method = IoTHubRegistryManagerAuthMethod.SHARED_PRIVATE_KEY
-    new_device = iothub_registry_manager.create_device(DEVICE_ID, primary_key, secondary_key, auth_method)
-    print("new_device <" + DEVICE_ID + "> has primary key = " + new_device.primaryKey)
+    new_device = iothub_registry_manager.create_device(
+        DEVICE_ID, primary_key, secondary_key, auth_method)
+    print("new_device <" + DEVICE_ID +
+          "> has primary key = " + new_device.primaryKey)
 
     # CreateModule
-    new_module = iothub_registry_manager.create_module(DEVICE_ID, primary_key, secondary_key, MODULE_ID, auth_method)
-    print("device/new_module <" + DEVICE_ID + "/" + MODULE_ID + "> has primary key = " + new_module.primaryKey)
+    new_module = iothub_registry_manager.create_module(
+        DEVICE_ID, primary_key, secondary_key, MODULE_ID, auth_method)
+    print("device/new_module <" + DEVICE_ID + "/" + MODULE_ID +
+          "> has primary key = " + new_module.primaryKey)
 
 except IoTHubError as iothub_error:
-    print ( "Unexpected error {0}".format(iothub_error) )
+    print("Unexpected error {0}".format(iothub_error))
 except KeyboardInterrupt:
-    print ( "IoTHubRegistryManager sample stopped" )
+    print("IoTHubRegistryManager sample stopped")
 ```
 
-Bu uygulama Kimliğine sahip bir cihaz kimliği oluşturan **myFirstDevice** ve Kimliğe sahip bir modül kimliği **myFirstModule** cihaz altında **myFirstDevice**. (Bu modül kimliği, kimlik kayıt defterinde zaten varsa, kod yalnızca mevcut modül bilgilerini alır.) Bu durumda uygulama, bu kimliğin birincil anahtarını görüntüler. IoT hub'ınıza bağlanmak için sanal modül uygulamasında bu anahtarı kullanırsınız.
+Bu uygulama, Myfirstdevice KIMLIĞI ile  bir cihaz kimliği ve myfirstdevice adlı cihaz altında **myfirstmodule** kimliğiyle bir modül kimliği **oluşturur.** (Bu modül kimliği, kimlik kayıt defterinde zaten varsa, kod yalnızca mevcut modül bilgilerini alır.) Bu durumda uygulama, bu kimliğin birincil anahtarını görüntüler. IoT hub'ınıza bağlanmak için sanal modül uygulamasında bu anahtarı kullanırsınız.
 
 > [!NOTE]
-> IoT Hub kimlik kayıt defteri yalnızca IoT hub'ına güvenli erişim sağlamak amacıyla cihaz ve modül kimliklerini depolar. Kimlik kayıt defteri, cihaz kimliklerini ve anahtarlarını güvenlik kimlik bilgileri olarak kullanmak için depolar. Kimlik kayıt defterinin her cihaz için depoladığı etkin/devre dışı bayrağını kullanarak, ilgili cihaza erişimi devre dışı bırakabilirsiniz. Uygulamanızın cihaza özgü diğer meta verileri depolaması gerekiyorsa uygulamaya özgü bir depo kullanması gerekir. Modül kimlikleri için etkin/devre dışı bayrağı yoktur. Daha fazla bilgi için [IOT Hub Geliştirici kılavuzunun](iot-hub-devguide-identity-registry.md).
+> IoT Hub kimlik kayıt defteri yalnızca IoT hub'ına güvenli erişim sağlamak amacıyla cihaz ve modül kimliklerini depolar. Kimlik kayıt defteri, cihaz kimliklerini ve anahtarlarını güvenlik kimlik bilgileri olarak kullanmak için depolar. Kimlik kayıt defterinin her cihaz için depoladığı etkin/devre dışı bayrağını kullanarak, ilgili cihaza erişimi devre dışı bırakabilirsiniz. Uygulamanızın cihaza özgü diğer meta verileri depolaması gerekiyorsa uygulamaya özgü bir depo kullanması gerekir. Modül kimlikleri için etkin/devre dışı bayrağı yoktur. Daha fazla bilgi için bkz. [IoT Hub Geliştirici Kılavuzu](iot-hub-devguide-identity-registry.md).
 >
 
-## <a name="update-the-module-twin-using-python-device-sdk"></a>Python cihaz SDK'sını kullanarak modül ikizi güncelleştir
+## <a name="update-the-module-twin-using-python-device-sdk"></a>Python cihaz SDK 'sını kullanarak modül ikizi güncelleştirme
 
-Bu bölümde, oluşturduğunuz bir Python uygulamasını sanal Cihazınızda modül ikizi güncelleştirmeleri bildirilen özellikler.
+Bu bölümde, sanal cihazınızda modül ikizi bildirilen özelliklerini güncelleştiren bir Python uygulaması oluşturacaksınız.
 
-1. **Modülü bağlantı dizenizi alma** --oturum açmanız durumunda şimdi [Azure portalında](https://portal.azure.com/). IoT Hub’ınıza gidin ve IoT Cihazları’na tıklayın. Bul myFirstDevice, açık myFirstModule göreceksiniz başarıyla oluşturuldu. Modül bağlantı dizesini kopyalayın. Sonraki adımda gerekecektir.
+1. **Modül Bağlantı dizenizi alın** -- [Azure Portal](https://portal.azure.com/)oturum açarsanız şimdi. IoT Hub’ınıza gidin ve IoT Cihazları’na tıklayın. MyFirstDevice ' ı bulun, açın ve myFirstModule başarıyla oluşturulduğunu görürsünüz. Modül bağlantı dizesini kopyalayın. Sonraki adımda gerekecektir.
 
    ![Azure portalı modül ayrıntısı](./media/iot-hub-python-python-module-twin-getstarted/module-detail.png)
 
-2. **UpdateModuleTwinReportedProperties uygulaması oluşturma**
+2. **Updatemodületwinreportedproperties uygulaması oluşturma**
 
    Aşağıdaki `using` deyimlerini **Program.cs** dosyasının üst kısmına ekleyin:
 
@@ -127,9 +137,9 @@ Bu bölümde, oluşturduğunuz bir Python uygulamasını sanal Cihazınızda mod
 
 Bu kod örneği, AMQP protokolüyle raporlanan özellikleri güncelleştirme ve modül ikizini alma işlemini nasıl yapacağınızı gösterir.
 
-## <a name="get-updates-on-the-device-side"></a>Güncelleştirmeleri cihaz tarafında Al
+## <a name="get-updates-on-the-device-side"></a>Cihaz tarafında güncelleştirmeleri al
 
-İkiz güncelleştirmesi almak için kod bloğu ekleyebileceğiniz ek olarak Yukarıdaki kod, Cihazınızda ileti.
+Yukarıdaki koda ek olarak, cihazınızda ikizi Update iletisini almak için aşağıdaki kod bloğunu ekleyebilirsiniz.
 
 ```python
 import random
@@ -141,32 +151,34 @@ from iothub_client import IoTHubModuleClient, IoTHubClientError, IoTHubTransport
 PROTOCOL = IoTHubTransportProvider.AMQP
 CONNECTION_STRING = ""
 
+
 def module_twin_callback(update_state, payload, user_context):
-    print ("")
-    print ("Twin callback called with:")
-    print ("updateStatus: %s" % update_state )
-    print ("context: %s" % user_context )
-    print ("payload: %s" % payload )
+    print("")
+    print("Twin callback called with:")
+    print("updateStatus: %s" % update_state)
+    print("context: %s" % user_context)
+    print("payload: %s" % payload)
+
 
 try:
     module_client = IoTHubModuleClient(CONNECTION_STRING, PROTOCOL)
     module_client.set_module_twin_callback(module_twin_callback, 1234)
 
-    print ("Waiting for incoming twin messages.  Hit Control-C to exit.")
+    print("Waiting for incoming twin messages.  Hit Control-C to exit.")
     while True:
 
         time.sleep(1000000)
 
 except IoTHubError as iothub_error:
-    print ( "Unexpected error {0}".format(iothub_error) )
+    print("Unexpected error {0}".format(iothub_error))
 except KeyboardInterrupt:
-    print ( "module client sample stopped" )
+    print("module client sample stopped")
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 IoT Hub’ı kullanmaya başlamak ve diğer IoT senaryolarını keşfetmek için bkz:
 
-* [Cihaz yönetimi ile çalışmaya başlama](iot-hub-node-node-device-management-get-started.md)
+* [Cihaz yönetimini kullanmaya başlama](iot-hub-node-node-device-management-get-started.md)
 
-* [IOT Edge'i kullanmaya başlama](../iot-edge/tutorial-simulate-device-linux.md)
+* [IoT Edge kullanmaya başlama](../iot-edge/tutorial-simulate-device-linux.md)

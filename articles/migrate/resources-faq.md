@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: snehaa
-ms.openlocfilehash: e5b4777adfcbb5babbf5db792a10d025c79b1a8b
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: 0708502087ae6880d9559cf17f0ba9982b2ba040
+ms.sourcegitcommit: 57a7d4f67635212f5bf0c56e58fd87c8ec366f2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302362"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68372478"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure geçişi-sık sorulan sorular (SSS)
 
@@ -20,20 +20,8 @@ Bu makalede, Azure geçişi hakkında sık sorulan sorular yer almaktadır. Bu m
 ## <a name="general"></a>Genel
 
 ### <a name="which-azure-geographies-are-supported-by-azure-migrate"></a>Azure geçişi tarafından hangi Azure coğrafi ve desteklenen?
-Azure geçişi Şu anda bir Azure geçişi projesinin oluşturulabilmesi için bir dizi coğrafi konumu desteklemektedir. Bu coğrafi makinelere yalnızca projeler oluşturabilirsiniz, ancak yine de diğer hedef konumlar için makinelerinizi değerlendirebilir ya da geçirebilirsiniz. Proje Coğrafya yalnızca keşfedilen meta verileri depolamak için kullanılır.
 
-
-**Coğrafya** | **Meta veri depolama konumu**
---- | ---
-Azure Kamu | ABD Devleti Virginia
-Asya | Güneydoğu Asya veya Doğu Asya
-Avrupa | Güney Avrupa veya Batı Avrupa
-Birleşik Krallık | UK Güney veya UK Batı
-Amerika Birleşik Devletleri | Orta ABD veya Batı ABD 2
-
-
-> [!NOTE]
-> Azure Kamu desteği şu anda yalnızca Azure geçişi 'nin [eski sürümünde](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions) sunulmaktadır.
+VMware için listeyi [burada](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#azure-migrate-projects) ve [Hyper-V için burada](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#azure-migrate-projects)bulabilirsiniz.
 
 ### <a name="how-is-azure-migrate-different-from-azure-site-recovery"></a>Azure Azure Site Recovery 'den farklı bir şekilde geçiş?
 
@@ -51,7 +39,7 @@ Azure geçişi 'nin Azure ile iletişim kurması için gereken URL 'Ler ve bağl
 
 ### <a name="can-i-harden-the-appliance-vm-i-set-up-with-the-template"></a>Şablonla ayarladığım gereç sanal makinesini kullanabilir miyim?
 
-Azure geçişi gereci için gereken iletişim ve güvenlik duvarı kuralları, olduğu sürece şablona eklenebilir (örneğin, virüsten koruma için).   
+Azure geçişi gereci için gereken iletişim ve güvenlik duvarı kuralları olduğu sürece şablona ek bileşenler (örneğin, virüsten koruma) eklenebilir.   
 
 ### <a name="what-data-is-collected-by-azure-migrate-appliance"></a>Azure geçişi gereci hangi verileri toplamıştır?
 
@@ -195,7 +183,7 @@ Hayır, bağımlılıkları bir saate kadar görselleştirebilirsiniz. Geçmişt
 ### <a name="is-dependency-visualization-supported-for-groups-with-more-than-10-vms"></a>10 ' dan fazla VM 'ye sahip gruplar için bağımlılık görselleştirmesi destekleniyor mu?
 10 adede kadar VM içeren [gruplar için bağımlılıkları görselleştirebilirsiniz](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) . 10 ' dan fazla VM içeren bir grubunuz varsa, grubu daha küçük gruplara bölmeniz ve sonra bağımlılıkları görselleştirmeniz önerilir.
 
-## <a name="azure-migrate-server-migration"></a>Azure Geçişi: Server Geçişi
+## <a name="azure-migrate-server-migration"></a>Azure Geçişi: Sunucu Geçişi
 
 ### <a name="how-is-azure-migrate-server-migration-different-from-azure-site-recovery"></a>Azure geçişi: Sunucu geçişi Azure Site Recovery 'den farklı mi?
 

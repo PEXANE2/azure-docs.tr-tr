@@ -5,17 +5,17 @@ services: storage
 author: jeffpatt24
 ms.service: storage
 ms.topic: article
-ms.date: 07/16/2019
+ms.date: 07/24/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 2cf0093d08c37c0941e86f9fc82b864aea14ebfe
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: b4df5f58fc91d30c734800e531e4bd7c129d58b2
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68327096"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489586"
 ---
-# <a name="troubleshoot-azure-file-sync"></a>Azure Dosya Eşitleme ile ilgili sorunları giderme
+# <a name="troubleshoot-azure-file-sync"></a>Azure Dosya Eşitleme'de sorun giderin
 Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server 'ı Azure dosya paylaşımınızın hızlı önbelleğine dönüştürür. SMB, NFS ve FTPS dahil olmak üzere verilerinize yerel olarak erişmek için Windows Server 'da bulunan herhangi bir protokolü kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.
 
 Bu makale, Azure Dosya Eşitleme dağıtımınızda karşılaşabileceğiniz sorunları gidermenize ve çözmenize yardımcı olmak için tasarlanmıştır. Ayrıca, sorunla daha derin bir şekilde araştırılması durumunda sistemden önemli günlüklerin nasıl toplanacağını da anlatılmaktadır. Sorunuzun yanıtını görmüyorsanız, aşağıdaki kanallarla (yürüyen sırada) bizimle iletişim kurmanız gerekir:
@@ -42,13 +42,22 @@ Bir Active Directory etki alanı denetleyicisine, PDC rolü sahibinin bir Window
 
 Bu sorunu gidermek için, PDC rolünü Windows Server 2012 R2 veya daha yeni bir sürümünü çalıştıran başka bir etki alanı denetleyicisine aktarın ve ardından eşitleme 'yi çalıştırın.
 
-<a id="server-registration-missing"></a>**Sunucu, Azure portal kayıtlı sunucular altında listelenmiyor**  
-Bir sunucu, bir depolama eşitleme hizmeti için **kayıtlı sunucular** altında listelenmiyorsa:
-1. Kaydetmek istediğiniz sunucuda oturum açın.
-2. Dosya Gezgini 'ni açın ve ardından depolama eşitleme Aracısı yükleme dizinine gidin (varsayılan konum C:\Program Files\Azure\StorageSyncAgent ' dir.) 
+<a id="server-registration-prerequisites"></a>**Sunucu kaydı aşağıdaki iletiyi görüntüler: "Önkoşulların" eksik olması "**
+
+Bu ileti, PowerShell 5,1 ' de az veya Azurerd PowerShell modülü yüklü değilse görüntülenir. 
+
+> [!Note]  
+> ServerRegistration. exe PowerShell 6. x desteklemez. Sunucuyu kaydetmek için PowerShell 6. x üzerinde Register-AzStorageSyncServer cmdlet 'ini kullanabilirsiniz.
+
+PowerShell 5,1 ' ye az veya Azurerd modülünü yüklemek için aşağıdaki adımları uygulayın:
+
+1. Yükseltilmiş bir komut isteminden **PowerShell** yazın ve ENTER tuşuna basın.
+2. Belgeleri izleyerek en son az veya Azurerd modülünü yükler:
+    - [Az Module (.NET 4.7.2 gerektirir)](https://go.microsoft.com/fwlink/?linkid=2062890)
+    - [Azurerd modülü]( https://go.microsoft.com/fwlink/?linkid=856959)
 3. ServerRegistration. exe ' yi çalıştırın ve sunucuyu bir depolama Eşitleme hizmetine kaydetmek için Sihirbazı doldurun.
 
-<a id="server-already-registered"></a>**Sunucu kaydı Azure Dosya Eşitleme Aracı yüklemesi sırasında aşağıdaki iletiyi görüntüler: "Bu sunucu zaten kayıtlı"** 
+<a id="server-already-registered"></a>**Sunucu kaydı aşağıdaki iletiyi görüntüler: "Bu sunucu zaten kayıtlı"** 
 
 !["Sunucu zaten kayıtlı" hata iletisiyle sunucu kayıt iletişim kutusunun ekran görüntüsü](media/storage-sync-files-troubleshoot/server-registration-1.png)
 
@@ -66,6 +75,12 @@ Reset-StorageSyncServer
 
 <a id="web-site-not-trusted"></a>**Bir sunucuyu kaydettiğimde, çok sayıda "Web sitesi güvenilir değil" yanıtı görüyorum. Neden?**  
 Bu sorun, sunucu kaydı sırasında **geliştirilmiş Internet Explorer güvenlik** ilkesi etkinleştirildiğinde oluşur. **Gelişmiş Internet Explorer güvenlik** ilkesini doğru şekilde devre dışı bırakma hakkında daha fazla bilgi için bkz. [Windows Server 'ı Azure dosya eşitleme Ile kullanmak üzere hazırlama](storage-sync-files-deployment-guide.md#prepare-windows-server-to-use-with-azure-file-sync) ve [Azure dosya eşitleme dağıtma](storage-sync-files-deployment-guide.md).
+
+<a id="server-registration-missing"></a>**Sunucu, Azure portal kayıtlı sunucular altında listelenmiyor**  
+Bir sunucu, bir depolama eşitleme hizmeti için **kayıtlı sunucular** altında listelenmiyorsa:
+1. Kaydetmek istediğiniz sunucuda oturum açın.
+2. Dosya Gezgini 'ni açın ve ardından depolama eşitleme Aracısı yükleme dizinine gidin (varsayılan konum C:\Program Files\Azure\StorageSyncAgent ' dir.) 
+3. ServerRegistration. exe ' yi çalıştırın ve sunucuyu bir depolama Eşitleme hizmetine kaydetmek için Sihirbazı doldurun.
 
 ## <a name="sync-group-management"></a>Eşitleme grubu yönetimi
 <a id="cloud-endpoint-using-share"></a>**Bulut uç noktası oluşturma işlemi şu hata ile başarısız oluyor: "Belirtilen Azure dosya paylaşımı farklı bir bulut uç noktası tarafından kullanılıyor"**  
@@ -153,7 +168,7 @@ Sunucu uç noktası eşitleme etkinliğini aşağıdaki nedenlerle günlüğe i�
 > [!Note]  
 > Kayıtlı sunucular dikey penceresindeki sunucu durumu "çevrimdışı" ise "sunucu uç noktasında belgelenen adımları gerçekleştirmek için [" etkinlik yok "veya" beklemede "sistem durumu ve kayıtlı sunucular dikey penceresinde sunucu durumu" çevrimdışı görünüyor "](#server-endpoint-noactivity) bölümünde verilmiştir .
 
-## <a name="sync"></a>Sync
+## <a name="sync"></a>Eşitle
 <a id="afs-change-detection"></a>**SMB veya Portal üzerinden doğrudan Azure dosya paylaşımım içinde bir dosya oluşturdum, dosyanın eşitleme grubundaki sunucularla eşitlenmesi ne kadar sürer?**  
 [!INCLUDE [storage-sync-files-change-detection](../../../includes/storage-sync-files-change-detection.md)]
 
@@ -251,9 +266,10 @@ Bu hataları görmek için, açık tanıtıcılar, desteklenmeyen karakterler ve
 | 0x80c8031d | -2134375651 | ECS_E_CONCURRENCY_CHECK_FAILED | Bir dosya değişti, ancak değişiklik eşitleme tarafından henüz algılanmadı. Eşitleme, bu değişiklik algılandıktan sonra kurtarılacak. | Eylem gerekmiyor. |
 | 0x80c8603e | -2134351810 | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED | Azure dosya paylaşımının sınırına ulaşıldığından dosya eşitlenemiyor. | Bu sorunu çözmek için sorun giderme kılavuzundaki [Azure dosya paylaşma depolama sınırı bölümüne ulaştınız](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134351810) . |
 | 0x80c8027C | -2134375812 | ECS_E_ACCESS_DENIED_EFS | Dosya desteklenmeyen bir çözümle (NTFS EFS gibi) şifrelenir. | Dosyanın şifresini çözün ve desteklenen bir şifreleme çözümünü kullanın. Destek çözümlerinin bir listesi için, planlama kılavuzundaki [şifreleme çözümleri](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#encryption-solutions) bölümüne bakın. |
-| 0x80070005 | -2147024891 | E_ACCESSDENIED | Bu hata, aşağıdaki nedenlerden dolayı oluşabilir: Dosyada silme beklemede durumu bulunuyor veya dosya DFS-R salt okuma çoğaltma klasöründe bulunuyor. | Dosya silme bekleme durumundaysa, tüm açık dosya tutamaçları kapatıldıktan sonra dosya silinir. Dosya, bir DFS-R salt okuma çoğaltma klasöründe bulunuyorsa, Azure dosya eşitleme, DFS-R salt okuma çoğaltma klasörlerindeki sunucu uç noktalarını desteklemez. Daha fazla bilgi için bkz. [Planlama Kılavuzu](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#distributed-file-system-dfs) . |
+| 0x80c80283 | -2160591491 | ECS_E_ACCESS_DENIED_DFSRRO | Dosya, DFS-R salt okunurdur çoğaltma klasöründe bulunur. | Dosya, DFS-R salt okunurdur çoğaltma klasöründe bulunur. Azure dosya eşitleme, DFS-R salt okuma çoğaltma klasörlerindeki sunucu uç noktalarını desteklemez. Daha fazla bilgi için bkz. [Planlama Kılavuzu](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#distributed-file-system-dfs) . |
+| 0x80070005 | -2147024891 | E_ACCESSDENIED | Dosyada silme beklemede durumu yok | Dosya, tüm açık dosya tutamaçları kapatıldıktan sonra silinir. |
 | 0x80070020 | -2147024864 | ERROR_SHARING_VIOLATION | Dosya kullanımda olduğundan eşitlenemiyor. Dosya artık kullanımda olmadığında eşitlenecek. | Eylem gerekmiyor. |
-| 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Eşitleme sırasında bir dosya değiştirildi, bu nedenle yeniden eşitlenmesi gerekiyor. | Eylem gerekmiyor. |
+| 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Eşitleme sırasında bir dosya değiştirildiğinden yeniden eşitlenmesi gerekiyor. | Eylem gerekmiyor. |
 
 
 #### <a name="handling-unsupported-characters"></a>Desteklenmeyen karakterleri işleme
@@ -312,7 +328,7 @@ Herhangi bir eylem gerekmez; sunucu yeniden denenecek. Bu hata birkaç saatten u
 | **Hata dizesi** | ECS_E_SYNC_BLOCKED_ON_CHANGE_DETECTION_POST_RESTORE |
 | **Düzeltme gerekli** | Hayır |
 
-İşlem yapmanız gerekmez. Bir dosya veya dosya paylaşma (bulut uç noktası) Azure Backup kullanılarak geri yüklendiğinde, Azure dosya paylaşımında değişiklik algılama tamamlanana kadar eşitleme engellenir. Değişiklik algılama işlemi, geri yükleme tamamlandıktan ve süre dosya paylaşımındaki dosya sayısına dayandıktan hemen sonra çalışır.
+Eylem gerekmiyor. Bir dosya veya dosya paylaşma (bulut uç noktası) Azure Backup kullanılarak geri yüklendiğinde, Azure dosya paylaşımında değişiklik algılama tamamlanana kadar eşitleme engellenir. Değişiklik algılama işlemi, geri yükleme tamamlandıktan ve süre dosya paylaşımındaki dosya sayısına dayandıktan hemen sonra çalışır.
 
 <a id="-2134364065"></a>**Eşitleme, bulut uç noktasında belirtilen Azure dosya paylaşımıyla erişemiyor.**  
 
@@ -326,7 +342,7 @@ Herhangi bir eylem gerekmez; sunucu yeniden denenecek. Bu hata birkaç saatten u
 Bu hata, Azure Dosya Eşitleme Aracısı Azure dosya paylaşımında erişemediği için oluşur. Bu, Azure dosya paylaşımının veya onu barındıran depolama hesabının artık var olmaması olabilir. Aşağıdaki adımlarda çalışarak bu hatayı giderebilirsiniz:
 
 1. [Depolama hesabının mevcut olduğundan emin olun.](#troubleshoot-storage-account)
-2. [Depolama hesabının herhangi bir ağ kuralı içermediğinden emin olmak için denetleyin.](#troubleshoot-network-rules)
+2. [Depolama hesabındaki güvenlik duvarının ve sanal ağ ayarlarının düzgün yapılandırıldığını doğrulama (etkinse)](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)
 3. [Azure dosya paylaşımının mevcut olduğundan emin olun.](#troubleshoot-azure-file-share)
 4. [Azure Dosya Eşitleme depolama hesabına erişiminin olduğundan emin olun.](#troubleshoot-rbac)
 
@@ -345,7 +361,7 @@ Bu hata, Azure Dosya Eşitleme Aracısı Azure dosya paylaşımında erişemedi�
     Test-NetConnection -ComputerName <storage-account-name>.file.core.windows.net -Port 443
     ```
 2. [Depolama hesabının mevcut olduğundan emin olun.](#troubleshoot-storage-account)
-3. [Depolama hesabının herhangi bir ağ kuralı içermediğinden emin olmak için denetleyin.](#troubleshoot-network-rules)
+3. [Depolama hesabındaki güvenlik duvarının ve sanal ağ ayarlarının düzgün yapılandırıldığını doğrulama (etkinse)](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)
 
 <a id="-1906441138"></a>**Eşitleme veritabanıyla ilgili bir sorun nedeniyle eşitleme başarısız oldu.**  
 
@@ -431,12 +447,7 @@ Bu hata, Azure aboneliği askıya alındığında oluşur. Azure aboneliği geri
 | **Hata dizesi** | ECS_E_MGMT_STORAGEACLSNOTSUPPORTED |
 | **Düzeltme gerekli** | Evet |
 
-Bu hata, depolama hesabı güvenlik duvarı nedeniyle veya depolama hesabı bir sanal ağa ait olduğu için Azure dosya paylaşımında erişilebilir olmadığında oluşur. Azure Dosya Eşitleme, bu özellik için henüz desteğe sahip değil. Sorun gidermek için:
-
-1. [Depolama hesabının mevcut olduğundan emin olun.](#troubleshoot-storage-account)
-2. [Depolama hesabının herhangi bir ağ kuralı içermediğinden emin olmak için denetleyin.](#troubleshoot-network-rules)
-
-Bu sorunu gidermeye yönelik bu kuralları kaldırın. 
+Bu hata, depolama hesabı güvenlik duvarı nedeniyle veya depolama hesabı bir sanal ağa ait olduğu için Azure dosya paylaşımında erişilebilir olmadığında oluşur. Depolama hesabındaki güvenlik duvarının ve sanal ağ ayarlarının doğru şekilde yapılandırıldığını doğrulayın. Daha fazla bilgi için bkz. [güvenlik duvarı ve sanal ağ ayarlarını yapılandırma](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings). 
 
 <a id="-2134375911"></a>**Eşitleme veritabanıyla ilgili bir sorun nedeniyle eşitleme başarısız oldu.**  
 
@@ -477,7 +488,7 @@ Kuruluşunuz bir SSL Sonlandırıcı proxy kullanıyorsa veya kötü amaçlı bi
     Restart-Service -Name FileSyncSvc -Force
     ```
 
-Bu kayıt defteri değerini ayarlayarak Azure Dosya Eşitleme Aracısı, sunucu ile bulut hizmeti arasında veri aktarırken yerel olarak güvenilen tüm SSL sertifikalarını kabul eder.
+Bu kayıt defteri değeri ayarlandığında Azure Dosya Eşitleme aracısı, verileri sunucu ile bulut hizmeti arasında aktarırken yerel olarak güvenilen herhangi bir SSL sertifikasını kabul eder.
 
 <a id="-2147012894"></a>**Hizmetle bir bağlantı kurulamadı.**  
 
@@ -579,7 +590,7 @@ Dosya başına eşitleme hatalarının çok fazla olması durumunda, eşitleme o
 | **Hata dizesi** | ECS_E_SYNC_INVALID_PATH |
 | **Düzeltme gerekli** | Evet |
 
-Yolun var olduğundan, yerel bir NTFS biriminde olduğundan ve bir yeniden ayrıştırma noktası ya da var olan sunucu uç noktası olmadığından emin olun.
+Yolun var olduğundan, yerel bir NTFS biriminde bulunduğundan ve bir yeniden ayrıştırma noktası veya mevcut bir sunucu uç noktası olmadığından emin olun.
 
 <a id="-2134375817"></a>**Filtre sürücüsü sürümü Aracı sürümüyle uyumlu olmadığından eşitleme başarısız oldu**  
 
@@ -613,6 +624,33 @@ Azure Dosya Eşitleme hizmeti kullanılamadığından bu hata oluşur. Bu hata A
 | **Düzeltme gerekli** | Hayır |
 
 Bu hata, eşitleme veritabanıyla ilgili bir iç sorun nedeniyle oluşur. Eşitleme yeniden denendiğimde Azure Dosya Eşitleme bu hata otomatik olarak çözümlenir. Bu hata uzabir süre devam ederse, bir destek isteği oluşturun ve bu sorunu çözmenize yardımcı olması için sizinle iletişim kuracağız.
+
+<a id="-2134364024"></a>**Azure Active Directory kiracısındaki değişiklik nedeniyle eşitleme başarısız oldu**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80c83088 |
+| **HRESULT (ondalık)** | -2134364024 | 
+| **Hata dizesi** | ECS_E_INVALID_AAD_TENANT |
+| **Düzeltme gerekli** | Evet |
+
+Bu hata, aboneliğin farklı bir Azure Active Directory kiracısına taşınmasını desteklemediği Azure Dosya Eşitleme oluşur.
+ 
+Sorunu çözmek için aşağıdaki seçeneklerden birini gerçekleştirin:
+
+- 1\. seçenek (önerilir): Aboneliği özgün Azure Active Directory kiracıya geri taşıyın
+- Seçenek 2: Geçerli eşitleme grubunu silip yeniden oluşturun. Bulut katmanlaması sunucu uç noktasında etkinleştirildiyse, eşitleme grubunu silin ve ardından, eşitleme gruplarını yeniden oluşturmadan önce, yalnız bırakılmış katmanlı dosyaları kaldırmak için [bulut katmanlaması bölümünde]( https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) belgelenen adımları gerçekleştirin. 
+
+<a id="-2134364010"></a>**Güvenlik Duvarı ve sanal ağ özel durumu yapılandırılmadığı için eşitleme başarısız oldu**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80c83096 |
+| **HRESULT (ondalık)** | -2134364010 | 
+| **Hata dizesi** | ECS_E_MGMT_STORAGEACLSBYPASSNOTSET |
+| **Düzeltme gerekli** | Evet |
+
+Bu hata, güvenlik duvarı ve sanal ağ ayarları depolama hesabında etkinleştirilmişse ve "Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine Izin ver" özel durumu işaretli değilse oluşur. Bu sorunu çözmek için dağıtım kılavuzu 'ndaki [güvenlik duvarı ve sanal ağ ayarlarını yapılandırma](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings) bölümünde belgelenen adımları izleyin.
 
 ### <a name="common-troubleshooting-steps"></a>Ortak sorun giderme adımları
 <a id="troubleshoot-storage-account"></a>**Depolama hesabının mevcut olduğundan emin olun.**  
@@ -694,22 +732,6 @@ $storageAccount = Get-AzStorageAccount | Where-Object {
 
 if ($storageAccount -eq $null) {
     throw [System.Exception]::new("The storage account referenced in the cloud endpoint does not exist.")
-}
-```
----
-
-<a id="troubleshoot-network-rules"></a>**Depolama hesabının herhangi bir ağ kuralı içermediğinden emin olmak için denetleyin.**  
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
-1. Depolama hesabında bir kez, depolama hesabının sol tarafındaki **güvenlik duvarları ve sanal ağlar** ' ı seçin.
-2. Depolama hesabı içinde **tüm ağlardan erişime Izin ver** radyo düğmesi seçilmelidir.
-    ![Depolama hesabı güvenlik duvarı ve ağ kurallarını devre dışı gösteren bir ekran görüntüsü.](media/storage-sync-files-troubleshoot/file-share-inaccessible-2.png)
-
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
-```powershell
-if ($storageAccount.NetworkRuleSet.DefaultAction -ne 
-    [Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleDefaultActionEnum]::Allow) {
-    throw [System.Exception]::new("The storage account referenced contains network " + `
-        "rules which are not currently supported by Azure File Sync.")
 }
 ```
 ---

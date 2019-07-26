@@ -1,5 +1,5 @@
 ---
-title: Uygulama Ara sunucusu için kısıtlı Kerberos temsilcisi yapılandırmalarıyla ilgili sorunları giderme | Microsoft Docs
+title: Uygulama proxy 'Si için Kerberos kısıtlanmış temsil yapılandırmaları sorunlarını giderme | Microsoft Docs
 description: Uygulama proxy'si için Kerberos kısıtlanmış temsil yapılandırmalarıyla ilgili sorunları giderme
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 04/23/2019
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c758b473dcdf36456bcc3569c18849488ad14983
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 3ca50cfb8697fdbb8c71054c5a6b4d5e23792eb5
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67702648"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381529"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Uygulama Ara sunucusu için kısıtlı Kerberos temsilcisi yapılandırmalarıyla ilgili sorunları giderme
 
@@ -46,7 +46,7 @@ Bu nedenle, tüm önkoşulların sağlandığından emin olmak en iyi [KCD SSO's
 
 - Genel olmayan bir özel etki alanı denetleyicisi (DC) bir güvenli kanal iletişim kutusunu açmak bir etki alanı üye sunucusu değil. Ardından sunucu başka bir iletişim kutusuna taşıyın ve bu da herhangi bir zamanda. Bu nedenle bağlayıcı konakları iletişimi yalnızca belirli yerel site DC'leri ile sınırlı değildir.
 - Bir yerel ağ çevre dışında olabilecek DC'leri bağlayıcı konağa doğrudan başvuruların etki alanları arası senaryoları dayanır. Bu durumlarda, bu da ilgili diğer etki alanları temsil eden DC'ler için ileriye doğru trafiği göndermek aynı derecede önemlidir. Aksi durumda, temsilci başarısız olur.
-- Mümkünse, tüm etkin IP'ler ya da kimlik cihazlar arasında bağlayıcı konakları ve DC'leri yerleştirme kaçının. Bu cihazlar, bazen çok zorlayıcı ve çekirdek RPC trafiğine engel.
+- Mümkünse, tüm etkin IP'ler ya da kimlik cihazlar arasında bağlayıcı konakları ve DC'leri yerleştirme kaçının. Bu cihazlar bazen ana RPC trafiğiyle çok daha zorlayıcı ve kesintiye uğratıyor.
 
 Temsilci seçme içinde basit senaryolar test edin. Size daha fazla değişken tanıtır, daha fazla ile azaltması gerekebilir. Zaman kazanmak için tek bir bağlayıcıyı test sınırlayın. Sorun çözüldükten sonra ek bağlayıcıları ekleyin.
 
@@ -60,7 +60,7 @@ Hangi KCD ile ilgili bir sorun gösterir. KCD SSO başarısız olan birkaç yayg
 
 ![Örnek: Yetkilendirme eksik izinler nedeniyle başarısız oldu](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic2.png)
 
-Bu görüntülerin her ikisi de aynı belirti göster: SSO hatası. Uygulama kullanıcı erişimi reddedilir.
+Bu görüntülerin her ikisi de aynı belirtiyi göstermektedir: SSO hatası. Uygulama kullanıcı erişimi reddedilir.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
@@ -129,7 +129,7 @@ Bağlayıcı tarafından sunulan Kerberos biletini tüketici. Bu aşamada, bağl
 
      *Microsoft AAD Application Proxy Connector, Kerberos kimlik doğrulaması denemeleri ile bir HTTP 401 hata için arka uç sunucu yanıt verir çünkü kullanıcının kimliğini doğrulayamıyor.*
 
-      ![Yasak hatası alır HTTTP 401 gösterir](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic8.png)
+      ![HTTTP 401 yasak hatasını gösterir](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic8.png)
 
    - IIS uygulama denetleyin. Azure AD'de aynı hesabı kullanmak için yapılandırılan uygulama havuzu ve SPN yapılandırılmış olduğundan emin olun. IIS'de aşağıdaki çizimde gösterildiği gibi gidin:
 
@@ -137,7 +137,7 @@ Bağlayıcı tarafından sunulan Kerberos biletini tüketici. Bu aşamada, bağl
 
       Kimlik bulduktan sonra bu hesap söz konusu SPN ile yapılandırıldığından emin olun. `setspn –q http/spn.wacketywack.com` bunun bir örneğidir. Komut isteminde aşağıdaki metni girin:
 
-      ![SetSPN komut penceresinde gösterir](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic10.png)
+      ![SetSPN komut penceresini gösterir](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic10.png)
 
    - Uygulamanın ayarları portalda karşı tanımlanmış SPN denetleyin. Azure AD hesabı hedefe karşı yapılandırılmış aynı SPN uygulamanın uygulama havuzu tarafından kullanıldığından emin olun.
 
@@ -165,8 +165,8 @@ Yine de ilerleme yapamıyorsanız, Microsoft desteği size yardımcı olabilir. 
 
 ## <a name="other-scenarios"></a>Diğer senaryolar
 
-- Azure uygulama proxy'si, uygulamaya kendi isteği göndermeden önce bir Kerberos anahtarı ister. Bazı üçüncü taraf uygulamalar bu kimlik doğrulama yöntemi beğenmediniz. Bu uygulamalar, daha geleneksel anlaşmaları gerçekleşmesi için bekler. İlk istek uygulama bir 401 destekleyen kimlik doğrulama türleri ile yanıt veren, anonimdir.
-- Çoklu atlamalı kimlik doğrulaması genellikle senaryolarda burada bir uygulama, bir arka plan ve ön uç ile katmanlı nerede hem de SQL Server Reporting Services gibi kimlik doğrulaması gerektiren kullanılır. Çoklu atlamalı senaryo yapılandırmak için destek makalesine bakın. [Kerberos Kısıtlı temsilci olabilir gerektiren protokol geçişi çoklu atlamalı senaryolarda](https://support.microsoft.com/help/2005838/kerberos-constrained-delegation-may-require-protocol-transition-in-mul).
+- Azure uygulama proxy'si, uygulamaya kendi isteği göndermeden önce bir Kerberos anahtarı ister. Bazı üçüncü taraf uygulamalar bu kimlik doğrulama yöntemini beğenmez. Bu uygulamalar, daha geleneksel anlaşmaları gerçekleşmesi için bekler. İlk istek uygulama bir 401 destekleyen kimlik doğrulama türleri ile yanıt veren, anonimdir.
+- Çoklu atlamalı kimlik doğrulaması genellikle senaryolarda burada bir uygulama, bir arka plan ve ön uç ile katmanlı nerede hem de SQL Server Reporting Services gibi kimlik doğrulaması gerektiren kullanılır. Çoklu atlama senaryosunu yapılandırmak için, bkz. [Kerberos kısıtlanmış temsili Destek makalesi çoklu atlama senaryolarında protokol geçişi gerektirebilir](https://support.microsoft.com/help/2005838/kerberos-constrained-delegation-may-require-protocol-transition-in-mul).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
