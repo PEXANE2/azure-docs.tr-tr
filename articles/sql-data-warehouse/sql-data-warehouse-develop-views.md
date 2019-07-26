@@ -1,8 +1,8 @@
 ---
-title: T-SQL görünümlerini kullanarak Azure SQL veri ambarı'nda | Microsoft Docs
-description: Çözümleri geliştirme için Azure SQL veri ambarı'nda T-SQL görünümleri kullanma hakkında ipuçları.
+title: Azure SQL veri ambarı 'nda T-SQL görünümlerini kullanma | Microsoft Docs
+description: Azure SQL veri ambarı 'nda çözüm geliştirmeye yönelik T-SQL görünümlerini kullanma ipuçları.
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,34 +10,34 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: e8d516cfd764f947bd2fe7fc25f6394c313c0d9a
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 8a770e66120e69271744942899186ece39b2a3c3
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595492"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479514"
 ---
-# <a name="views-in-azure-sql-data-warehouse"></a>Azure SQL veri ambarı'nda görünümleri
-Çözümleri geliştirme için Azure SQL veri ambarı'nda T-SQL görünümleri kullanma hakkında ipuçları. 
+# <a name="views-in-azure-sql-data-warehouse"></a>Azure SQL veri ambarı 'nda görünümler
+Azure SQL veri ambarı 'nda çözüm geliştirmeye yönelik T-SQL görünümlerini kullanma ipuçları. 
 
-## <a name="why-use-views"></a>Görünümleri neden kullanmalısınız?
-Görünümler, bir birkaç farklı yolla çözümünüzün kalitesini artırmak için kullanılabilir.  Bu makalede göz önünde bulundurulması gereken sınırlamalar yanı sıra, görünümleri ile çözümünüzü zenginleştirmek birkaç örnekleri vurgulanır.
+## <a name="why-use-views"></a>Görünümler neden kullanılmalıdır?
+Görünümler, çözümünüzün kalitesini artırmak için çeşitli şekillerde kullanılabilir.  Bu makalede, çözümünüzü görünümlerle nasıl zenginleştirmenin yanı sıra göz önünde bulundurulması gereken sınırlamalar gösterilmektedir.
 
 
 > [!IMPORTANT]
-> Yeni gerçekleştirilmiş görünüm sözdizimine bakın [CREATE GERÇEKLEŞTİRİLMİŞ görünüm AS SELECT](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest).  Daha fazla bilgi için [sürüm notları](/azure/sql-data-warehouse/release-notes-10-0-10106-0).
+> [GERÇEKLEŞTIRILMIŞ Görünüm Oluştur ' da Select olarak](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest)yeni gerçekleştirilmiş görünüm sözdizimine bakın.  Daha fazla bilgi için [sürüm notlarına](/azure/sql-data-warehouse/release-notes-10-0-10106-0)bakın.
 >
 
 
 > [!NOTE]
-> Söz dizimi görünümü oluşturmak için bu makalede ele alınmamıştır. Daha fazla bilgi için [CREATE VIEW](/sql/t-sql/statements/create-view-transact-sql) belgeleri.
+> OLUŞTURMA görünümü sözdizimi Bu makalede ele alınmıyor. Daha fazla bilgi için bkz. [create VIEW](/sql/t-sql/statements/create-view-transact-sql) documentation.
 > 
 
-## <a name="architectural-abstraction"></a>Mimari Özet
+## <a name="architectural-abstraction"></a>Mimari soyutlama
 
-Yaygın bir uygulama modeli tabloları CREATE TABLE AS SELECT (veri yükleme yaparken düzeni yeniden adlandırma, bir nesne tarafından izlenen CTAS) kullanarak yeniden oluşturmaktır.
+Ortak bir uygulama deseninin ardından CREATE TABLE SELECT (CTAS) kullanarak tabloları yeniden oluşturmak ve ardından verileri yüklerken bir nesne yeniden adlandırma deseninin oluşturulması.
 
-Aşağıdaki örnek bir tarih boyutu için yeni bir tarih kayıtları ekler. Nasıl DimDate_New, yeni bir tablo ilk oluşturulur ve özgün tablonun sürümünü değiştirmek için yeniden adlandırılmış unutmayın.
+Aşağıdaki örnek bir tarih boyutuna yeni tarih kayıtları ekler. Yeni bir tablo olan DimDate_New, ilk olarak nasıl oluşturulduğunu ve tablonun orijinal sürümünün yerini alacak şekilde yeniden adlandırdığını aklınızda edin.
 
 ```sql
 CREATE TABLE dbo.DimDate_New
@@ -57,19 +57,19 @@ RENAME OBJECT DimDate_New TO DimDate;
 
 ```
 
-Ancak, bu yaklaşım görünen ve "tablo yok" hata iletileri yanı sıra bir kullanıcının görünümü kaybolmasını tabloları neden olabilir. Görünümler, temel nesneler olarak yeniden adlandırıldı artırabileceksiniz kullanıcıları içeren bir tutarlı sunu katmanı sağlamak için kullanılabilir. Görünüm verilerine erişim sağlayarak, kullanıcıların temel tablolara görünürlük gerekmez. Bu katman veri modeline veri tasarımcıları ambarı sağlayarak geliştirebilirsiniz tutarlı bir kullanıcı deneyimi sağlar. İşaretleyebilmesine temel tabloları geliştirilebilen tasarımcıları CTAS veri yükleme işlemi sırasında performansı en üst düzeye çıkarmak için kullanabileceğiniz anlamına gelir.   
+Bununla birlikte, bu yaklaşım, tabloların bir kullanıcının görünümünden görünmesine ve görünmesine neden olabilir ve "tablo yok" hata iletileri de görünür. Görünümler, kullanıcılara, temel alınan nesnelerin yeniden adlandırıldığını tutarlı bir sunum katmanı sağlamak için kullanılabilir. Görünümler aracılığıyla verilere erişim sağlayarak, kullanıcılar temeldeki tablolara yönelik görünürlüğe gerek kalmaz. Bu katman, veri ambarı tasarımcılarının veri modelini gelişebilmesini sağlarken tutarlı bir kullanıcı deneyimi sağlar. Temel tabloları geliştirmekte olan tasarımcılar, tasarımcı 'nın veri yükleme işlemi sırasında performansı en üst düzeye çıkarmak için CTAS 'yi kullanabileceği anlamına gelir.   
 
-## <a name="performance-optimization"></a>Performansı iyileştirme
-Görünümler, performans için iyileştirilmiş tablolar arasındaki birleştirmelere zorlamak için de yararlanılabilir. Örneğin, bir görünüm yedekli dağıtım anahtarı katılma ölçütü veri taşıma en aza indirmek için bir parçası olarak dahil edebilirsiniz. Bir görünümünün başka bir avantajı, belirli bir sorgu veya birleşme ipucu zorlamak için olabilir. Bu şekilde görünümlerini kullanarak birleştirmeler gereken kullanıcılar için hatırlaması, birleşimler için doğru yapı önlemenin en iyi bir şekilde her zaman gerçekleştirilir garanti eder.
+## <a name="performance-optimization"></a>Performans iyileştirmesi
+Görünümler, tablolar arasında performans için iyileştirilmiş birleştirmeleri zorlamak için de kullanılabilir. Örneğin, bir görünüm, veri hareketini en aza indirmek için katılım ölçütlerinin bir parçası olarak yedekli bir dağıtım anahtarı içerebilir. Bir görünümün başka bir avantajı, belirli bir sorguyu veya katılma ipucunu zorlamak olabilir. Bu şekilde görünümlerin kullanılması, birleşimlerin her zaman en iyi şekilde gerçekleştirilmesini sağlar ve kullanıcıların birleştirmeler için doğru yapıyı hatırlamaları gereksinimini ortadan önler.
 
 ## <a name="limitations"></a>Sınırlamalar
-SQL veri ambarı'nda görünümleri yalnızca meta veri olarak depolanır. Sonuç olarak, aşağıdaki seçenekleri kullanılamaz:
+SQL veri ambarı 'ndaki görünümler yalnızca meta veri olarak depolanır. Sonuç olarak, aşağıdaki seçenekler kullanılamaz:
 
-* Şema bağlama seçeneği yoktur
-* Temel tabloyu görünüm üzerinden güncelleştirilemiyor
-* Geçici tablolar görünümlerini oluşturulamıyor
-* İçin genişletme desteği yoktur / NOEXPAND İpucu
-* SQL veri ambarı'nda dizini oluşturulmuş görünüm yok
+* Şema bağlama seçeneği yok
+* Temel tablolar görünüm aracılığıyla güncelleştirilemez
+* Görünümler geçici tablolar üzerinde oluşturulamaz
+* GENIŞLETME/NOEXPAND ipuçları desteği yok
+* SQL Data Warehouse 'da dizinli görünüm yok
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Geliştirme ile ilgili daha fazla ipucu için bkz. [SQL Data Warehouse geliştirmeye genel bakış](sql-data-warehouse-overview-develop.md).

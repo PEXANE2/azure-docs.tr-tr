@@ -1,7 +1,7 @@
 ---
-title: AKS dağıtımlarda, (Önizleme) veri değişikliklerini Algıla
+title: AKS dağıtımlarında veri kayması 'nı (Önizleme) Algıla
 titleSuffix: Azure Machine Learning service
-description: Azure Kubernetes hizmeti veri değişikliklerini zamanlı şekilde modeller Azure Machine Learning hizmetinde dağıtılan algılayın.
+description: Azure Machine Learning hizmetinde Azure Kubernetes hizmeti tarafından dağıtılan modellerdeki verileri algılayın.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,58 +10,58 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 07/08/2019
-ms.openlocfilehash: 3b8152bde8b7e44dde1b0b9c82216333778f83da
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 9852ec450b6da3814a3bd2bfc6aae7d19acaf584
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67806016"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68370396"
 ---
-# <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) için dağıtılan modellerinde veri değişikliklerini (Önizleme) algılama
+# <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' e dağıtılan modellerdeki veri kayması 'nı (Önizleme) Algıla
 
-Bu makalede, dağıtılmış bir modelinin veri çıkarımı ve eğitim veri kümesi arasında veri değişikliklerini izlemek nasıl öğrenin. Machine learning bağlamında, eğitilen makine öğrenimi modellerini düşürülmüş tahmini Performans nedeniyle kayması karşılaşabilirsiniz. Azure Machine Learning hizmeti ile veri değişikliklerini izleyebilirsiniz ve kaymaları algılandığında hizmet bir e-posta uyarısı size gönderebilir.
+Bu makalede, dağıtılan bir modelin eğitim veri kümesi ve çıkarım verileri arasında veri kayması izlemeyi öğreneceksiniz. Makine öğrenimi bağlamında eğitilen makine öğrenimi modelleri, Drın nedeniyle düşürülmüş tahmin performansına neden olabilir. Azure Machine Learning hizmeti sayesinde, veri drınızı izleyebilir ve hizmet, Drın algılandığında size bir e-posta uyarısı gönderebilir.
 
-## <a name="what-is-data-drift"></a>Veri değişikliklerini nedir?
+## <a name="what-is-data-drift"></a>Veri kayması nedir?
 
-Veri değişikliklerini bir Modeli'ne üretimde sunulan veriler modeli eğitmek için kullanılan verileri farklı olduğunda gerçekleşir. Başlıca nedenlerdendir burada doğruluğu zamanla, düşüyor biridir kayması modeli performans sorunlarını algılamaya yardımcı olur böylece izleme verileri. 
+Üretimde bir modele sunulan veriler, modeli eğitmek için kullanılan verilerden farklı olduğunda veri kayması oluşur. Model doğruluğunun zamana göre düşürmesinin en önemli nedenlerinden biridir, böylece izleme verileri, model performans sorunlarını algılamaya yardımcı olur. 
 
-## <a name="what-can-i-monitor"></a>Ne izleyebilirim?
+## <a name="what-can-i-monitor"></a>Neleri izleyebilirim?
 
-Azure Machine Learning hizmeti ile AKS'de dağıtılmış bir modelinin girişleri izleyebilir ve bu veri modeli için eğitim kümesine karşılaştırın. Düzenli aralıklarla çıkarımı verilerdir [anlık görüntü ve profili](how-to-explore-prepare-data.md), ardından da temel veri kümesinde veri değişikliklerini çözümleme üretmek için hesaplanan: 
+Azure Machine Learning hizmeti sayesinde, AKS üzerinde dağıtılan bir modele ait girişleri izleyebilir ve bu verileri modelin eğitim veri kümesiyle karşılaştırabilirsiniz. Düzenli aralıklarla, çıkarım verileri [anlık görüntü ve profillendirilir ve](how-to-explore-prepare-data.md)ardından temel veri kümesine göre hesaplanır. 
 
-+ Kayması katsayısı adlı, veri değişikliklerini büyüklüğünü ölçer.
-+ Ölçüler, hangi özelliklerin veri değişikliklerini neden bildiren özelliğiyle katkı verileri kayma.
-+ Ölçüler ölçümleri uzaklığı. Şu anda Wasserstein ve enerji uzaklık hesaplanır.
-+ Dağıtımları özelliklerinin ölçer. Şu anda çekirdek yoğunluğu tahmini ve çubuk.
-+ Veri uyarılarını kayma e-posta ile gönderin.
++ , DRFT katsayısı olarak adlandırılan veri kayması miktarını ölçer.
++ Veri DRIP katkısını özelliklerine göre ölçer ve hangi özelliklerin veri üzerinde olduğunu bilgilendirin.
++ Mesafe ölçümlerini ölçer. Şu anda Wasserstein ve enerji mesafesi hesaplanır.
++ Özelliklerin dağıtımlarını ölçer. Şu anda Çekirdek yoğunluğu tahmini ve histogramları.
++ Uyarıları e-posta ile veri kayması ile gönderin.
 
 > [!Note]
-> Bu hizmeti (Önizleme) olduğu ve yapılandırma seçenekleri sınırlıdır. Lütfen bkz. bizim [API belgeleri](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/?view=azure-ml-py) ve [sürüm notları](azure-machine-learning-release-notes.md) ayrıntıları ve güncelleştirmeleri. 
+> Bu hizmet (Önizleme) ve yapılandırma seçeneklerinde sınırlıdır. Ayrıntılar ve güncelleştirmeler için lütfen [API belgelerimize](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/?view=azure-ml-py) ve [Sürüm notlarımıza](azure-machine-learning-release-notes.md) bakın. 
 
-### <a name="how-data-drift-is-monitored-in-azure-machine-learning-service"></a>Azure Machine Learning hizmeti veri değişikliklerini nasıl izlenir
+### <a name="how-data-drift-is-monitored-in-azure-machine-learning-service"></a>Azure Machine Learning hizmetinde veri kayması nasıl izlenir
 
-Azure Machine Learning hizmetini kullanarak, veri değişikliklerini veri kümeleri veya dağıtımları ile izlenir. İçin veri değişikliklerini izlemek için bir temel veri kümesi - genellikle eğitim veri kümesi için bir model - belirtilir. İkinci bir veri kümesi - genellikle bir dağıtımdan - model giriş verileri toplanan temel veri kümesinde sınanır. Her iki veri kümelerinin olduğunu [profili](how-to-explore-prepare-data.md#explore-with-summary-statistics) ve giriş verileri için farklı izleme hizmeti. İki veri kümesi arasındaki farkları algılamak için makine öğrenme modeli eğitilir. Modelin performans değişikliklerini katsayısı, iki veri kümesi arasında kayması büyüklüğünü ölçer dönüştürülür. Kullanarak [model interpretability](machine-learning-interpretability-explainability.md), kayması katsayısı için katkıda bulunan özellikler hesaplanır. Veri kümesi profilinden her özellik hakkında istatistiksel bilgi izlenir. 
+Azure Machine Learning hizmetini kullanarak veri kümeleri, veri kümeleri veya dağıtımlar aracılığıyla izlenir. Bir taban çizgisi veri kümesi (genellikle bir model için eğitim veri kümesi) için veri kayması izlemek üzere belirtilir. İkinci bir veri kümesi-genellikle bir dağıtımdan toplanan model giriş verileri, taban çizgisi veri kümesine göre test edilir. Her iki veri kümesi de veri Drın izleme hizmetine [profil](how-to-explore-prepare-data.md#explore-with-summary-statistics) oluşturulur ve giriş yapılır. Bir makine öğrenimi modeli, iki veri kümesi arasındaki farkları tespit etmek için eğitilir. Modelin performansı, iki veri kümesi arasındaki drifit 'in boyutunu ölçen DRFT katna dönüştürülür. [Model yorumlenebilirliğini](machine-learning-interpretability-explainability.md)kullanarak, değişikliklerini katlarına katkıda bulunan özellikler hesaplanır. Veri kümesi profilinden her bir özellik hakkındaki istatistiksel bilgiler izlenir. 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Azure aboneliği. Yoksa, başlamadan önce ücretsiz bir hesap oluşturun. Deneyin [Azure Machine Learning hizmetinin ücretsiz veya Ücretli sürümüne](https://aka.ms/AMLFree) bugün.
+- Azure aboneliği. Bir tane yoksa, başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning Service 'in ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
-- Bir Azure Machine Learning hizmeti çalışma alanında ve yüklü Python için Azure Machine Learning SDK'sı. Bölümündeki yönergeleri kullanın [bir Azure Machine Learning hizmeti çalışma alanı oluşturma](setup-create-workspace.md#sdk) aşağıdakileri yapmak için:
+- Bir Azure Machine Learning hizmeti çalışma alanında ve yüklü Python için Azure Machine Learning SDK'sı. [Azure Machine Learning hizmet çalışma alanı oluşturma](setup-create-workspace.md#sdk) bölümündeki yönergeleri kullanarak şunları yapın:
 
     - Miniconda ortamı oluşturma
-    - Azure Machine için Python SDK'sı Learning yükleme
+    - Python için Azure Machine Learning SDK 'sını yükler
     - Çalışma alanı oluşturma
-    - Bir çalışma alanı yapılandırma dosyası (aml_config/config.json) yazın.
+    - Bir çalışma alanı yapılandırma dosyası (aml_config/config. JSON) yazın.
 
-- Veri değişikliklerini SDK'sı aşağıdaki komutu kullanarak yükleyin:
+- Aşağıdaki komutu kullanarak verileri DRFT SDK 'yi yükler:
 
     ```shell
     pip install azureml-contrib-datadrift
     ```
 
-- Oluşturma bir [veri kümesi](how-to-create-register-datasets.md) modelinizin eğitim verileri.
+- Modelinizin eğitim verilerinden bir [veri kümesi](how-to-create-register-datasets.md) oluşturun.
 
-- Eğitim veri kümesi belirtmek, [kaydetme](concept-model-management-and-deployment.md) modeli. Aşağıdaki örneği kullanarak göstermektedir `datasets` parametresi eğitim veri kümesi belirtmek için:
+- Modeli [kaydederken](concept-model-management-and-deployment.md) eğitim veri kümesini belirtin. Aşağıdaki örnek, eğitim veri kümesini `datasets` belirtmek için parametresini kullanmayı göstermektedir:
 
     ```python
     model = Model.register(model_path=model_file,
@@ -72,12 +72,12 @@ Azure Machine Learning hizmetini kullanarak, veri değişikliklerini veri kümel
     print(model_name, image_name, service_name, model)
     ```
 
-- [Model verisi toplamayı etkinleştir](how-to-enable-data-collection.md) modelin AKS dağıtımdan verileri toplamak ve verilerini onaylamayı toplanır `modeldata` blob kapsayıcısı.
+- Modelin aks dağıtımından veri toplamak için [model veri toplamayı etkinleştirin](how-to-enable-data-collection.md) ve verilerin `modeldata` blob kapsayıcısında toplanmakta olduğunu onaylayın.
 
-## <a name="configure-data-drift"></a>Veri değişikliklerini yapılandırın
-Denemeniz için veri değişikliklerini yapılandırmak için bağımlılıklar aşağıdaki Python örnekte görüldüğü gibi içeri aktarın. 
+## <a name="configure-data-drift"></a>Veri drbir yapılandırma
+Denemeniz için veri kayması yapılandırmak üzere aşağıdaki Python örneğinde görüldüğü gibi bağımlılıkları içeri aktarın. 
 
-Bu örnek yapılandırma gösterir [ `DataDriftDetector` ](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector.datadriftdetector?view=azure-ml-py) nesnesi:
+Bu örnek, [`DataDriftDetector`](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector.datadriftdetector?view=azure-ml-py) nesnesinin yapılandırılmasını gösterir:
 
 ```python
 # Import Azure ML packages
@@ -93,9 +93,9 @@ datadrift = DataDriftDetector.create(ws, model.name, model.version, services, fr
 print('Details of Datadrift Object:\n{}'.format(datadrift))
 ```
 
-## <a name="submit-a-datadriftdetector-run"></a>DataDriftDetector çalıştırma gönderin
+## <a name="submit-a-datadriftdetector-run"></a>Datadriftalgılayıcısı çalıştırması gönder
 
-İle `DataDriftDetector` nesne, yapılandırılmış gönderebildiği bir [çalıştırma veri değişikliklerini](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector%28class%29?view=azure-ml-py#run-target-date--services--compute-target-name-none--create-compute-target-false--feature-list-none--drift-threshold-none-) modeli için belirli bir tarihte. Çalıştırma işleminin bir parçası olarak ayarlayarak DataDriftDetector uyarıları etkinleştirin `drift_threshold` parametresi. Varsa [datadrift_coefficient](#metrics) üzerinde belirli `drift_threshold`, e-posta gönderilir.
+Yapılandırılmış nesne ile, model için belirli bir tarihte bir [veri DRI çalıştırması](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector%28class%29?view=azure-ml-py#run-target-date--services--compute-target-name-none--create-compute-target-false--feature-list-none--drift-threshold-none-) gönderebilirsiniz. `DataDriftDetector` Çalıştırmanın bir parçası olarak, `drift_threshold` parametresini ayarlayarak datadrftalgılayıcısı uyarılarını etkinleştirin. [Datadrift_coefficient](#metrics) verilen `drift_threshold`varsa, bir e-posta gönderilir.
 
 ```python
 # adhoc run today
@@ -113,27 +113,27 @@ dd_run = Run(experiment=exp, run_id=run)
 RunDetails(dd_run).show()
 ```
 
-## <a name="visualize-drift-metrics"></a>Kayması ölçümleri görselleştirin
+## <a name="visualize-drift-metrics"></a>Değişikliklerini ölçümlerini görselleştirin
 
 <a name="metrics"></a>
 
-Çalıştırın, DataDriftDetector gönderdikten sonra veri değişikliklerini görev çalıştırma her yinelemede kaydedilen kayması ölçümlerini görebilirsiniz:
+Datadriftdetektinizi gönderdikten sonra, bir veri DRI görevi için her bir çalıştırma yinelemesinde kaydedilen DRFT ölçümlerini görebilirsiniz:
 
 
 |Ölçüm|Açıklama|
 --|--|
-wasserstein_distance|Tek boyutlu sayısal dağıtım için tanımlanan istatistiksel uzaklığı.|
-energy_distance|Tek boyutlu sayısal dağıtım için tanımlanan istatistiksel uzaklığı.|
-datadrift_coefficient|Benzer şekilde Matthew'ın korelasyon katsayısı olarak hesaplanan, ancak bu çıkış gerçek 0 ile 1 arasında bir sayı. Kayması bağlamında, 0 hiçbir kayması gösterir ve 1, en fazla kayması gösterir.|
-datadrift_contribution|Katkıda bulunan farklı özellikler önemini özelliği.|
+wasserstein_distance|Tek boyutlu sayısal dağıtım için tanımlanan istatistiksel uzaklık.|
+energy_distance|Tek boyutlu sayısal dağıtım için tanımlanan istatistiksel uzaklık.|
+datadrift_coefficient|Benzer şekilde, Matthew 'ın bağıntı katsayısı olarak hesaplanır, ancak bu çıktı, 0 ile 1 arasında bir gerçek sayıdır. Değişikliklerini bağlamında 0, değişikliklerini ve 1 ' in maksimum değişikliklerini olduğunu gösterir.|
+datadrift_contribution|Drift 'e katkıda bulunan özelliklerin özellik önemi.|
 
-Kayması ölçümleri görüntülemek için birden çok yolu vardır:
+DRFT ölçümlerini görüntülemenin birden çok yolu vardır:
 
-* Jupyter pencere öğesi kullanın.
-* Kullanım [ `get_metrics()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#get-metrics-name-none--recursive-false--run-type-none--populate-false-) herhangi işlevi `datadrift` nesne çalıştırın.
-* Modelinizde Azure portalında ölçümleri görüntüleyin
+* [Jupyıter pencere öğesini kullanın.](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) `RunDetails`
+* İşlevi herhangi bir `datadrift` çalıştırma nesnesi üzerinde kullanın. [`get_metrics()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#get-metrics-name-none--recursive-false--run-type-none--populate-false-)
+* Modelinizdeki Azure portal ölçümleri görüntüleyin.
 
-Aşağıdaki Python örnek ilgili verileri kayması ölçümleri çizim gösterilmektedir. Döndürülen ölçümler, özel görselleştirmeler oluşturmak için kullanabilirsiniz:
+Aşağıdaki Python örneği, ilgili veri kayması ölçümlerinin nasıl çizeceğinizi gösterir. Döndürülen ölçümleri özel görselleştirmeler oluşturmak için kullanabilirsiniz:
 
 ```python
 # start and end are datetime objects 
@@ -144,40 +144,40 @@ drift_metrics = datadrift.get_output(start_time=start, end_time=end)
 drift_figures = datadrift.show(with_details=True)
 ```
 
-![Azure Machine Learning tarafından algılanan veri değişikliklerini bakın](media/how-to-monitor-data-drift/drift_show.png)
+![Bkz. Azure Machine Learning tarafından algılanan veri kayması](media/how-to-monitor-data-drift/drift_show.png)
 
 
-## <a name="schedule-data-drift-scans"></a>Zamanlama veri değişikliklerini taramalar 
+## <a name="schedule-data-drift-scans"></a>Veri drmaları zamanlama 
 
-Veri değişikliklerini algılama etkinleştirdiğinizde belirtilen, zamanlanmış sıklığında bir DataDriftDetector çalıştırılır. Datadrift_coefficient ulaşırsa verilen `drift_threshold`, zamanlanmış her çalıştırmasıyla bir e-posta gönderilir. 
+Veri drime algılamasını etkinleştirdiğinizde, belirtilen ve zamanlanan sıklıkta bir Datadriftalgılayıcısı çalıştırılır. Datadrift_coefficient verilen `drift_threshold`değere ulaşırsa, zamanlanan her çalıştırma ile bir e-posta gönderilir. 
 
 ```python
 datadrift.enable_schedule()
 datadrift.disable_schedule()
 ```
 
-Veri değişikliklerini algılayıcısı yapılandırmasını model Ayrıntıları sayfasında Azure Portalı'nda görülebilir.
+Veri drörü algılayıcısının yapılandırması, Azure portal model ayrıntıları sayfasında görülebilir.
 
-![Azure portalında veri değişikliklerini yapılandırma](media/how-to-monitor-data-drift/drift_config.png)
+![Azure portal veri DRFT yapılandırması](media/how-to-monitor-data-drift/drift_config.png)
 
-## <a name="view-results-in-azure-ml-workspace-ui"></a>Azure ML çalışma alanı arabiriminde sonuçlarını görüntüle
+## <a name="view-results-in-azure-ml-workspace-ui"></a>Azure ML Çalışma Alanı Kullanıcı arabirimindeki sonuçları görüntüleme
 
-Azure ML çalışma alanı Arabiriminde sonuçlarını görüntülemek için model sayfasına gidin. Modelin Ayrıntılar sekmesinde, veri değişikliklerini yapılandırması gösterilir. 'Veri değişikliklerini (Önizleme)' sekmesi, veri değişikliklerini ölçümlerin görselleştirildiği artık kullanılabilir. 
+Azure ML Çalışma Alanı Kullanıcı arabirimindeki sonuçları görüntülemek için model sayfasına gidin. Modelin Ayrıntılar sekmesinde, veri DRI yapılandırması gösterilir. ' Veri kayması (Önizleme) ' sekmesi artık veri Drın ölçümlerinin görselleştirilmesi için kullanılabilir. 
 
-![Azure portalında veri kayması](media/how-to-monitor-data-drift/drift_ui.png)
+![Azure portal veri kayması](media/how-to-monitor-data-drift/drift_ui.png)
 
-## <a name="receiving-drift-alerts"></a>Alıcı kayması uyarıları
+## <a name="receiving-drift-alerts"></a>DRFT uyarıları alma
 
-Uyarı verme eşiği ve bir e-posta adresi sağlayarak kayması katsayısı ayarlayarak bir [Azure İzleyici](https://docs.microsoft.com/azure/azure-monitor/overview) e-posta uyarısı değişikliklerini katsayısı eşiğin üstünde kaldığında otomatik olarak gönderilir. 
+Değişikliklerini katsayısını uyarma eşiğini ayarlayıp bir e-posta adresi sağladıktan sonra, DRX katsayısı eşiğin üstünde olduğunda bir [Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/overview) e-posta uyarısı otomatik olarak gönderilir. 
 
-Tüm veri değişikliklerini ölçümleri depolanır, özel uyarıları ve eylemleri ayarlamak sırayla [Application Insights](how-to-enable-app-insights.md) yanı sıra Azure Machine Learning hizmeti çalışma oluşturulduğu kaynak. Bağlantıyı e-posta uyarısı için Application Insights sorgu izleyebilirsiniz.
+Özel uyarıları ve eylemleri ayarlamanıza olanak sağlamak için tüm veri DRIP ölçümleri, Azure Machine Learning hizmeti çalışma alanıyla birlikte oluşturulan [Application Insights](how-to-enable-app-insights.md) kaynağında depolanır. E-posta uyarısında Application Insights sorgusuna bağlantıyı izleyebilirsiniz.
 
-![Veri değişikliklerini e-posta uyarısı](media/how-to-monitor-data-drift/drift_email.png)
+![Veri Dre-posta uyarısı](media/how-to-monitor-data-drift/drift_email.png)
 
-## <a name="retrain-your-model-after-drift"></a>Kayması sonra modelinizi yeniden eğitme
+## <a name="retrain-your-model-after-drift"></a>Modelinizi drsonra yeniden eğitme
 
-Veri değişikliklerini dağıtılan model performansını olumsuz etkiler, bu modeli yeniden eğitme zamanı geldi. Aşağıdaki [ `diff()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#diff-rhs-dataset--compute-target-none--columns-none-
-) yöntemi eski ve yeni bir eğitim veri kümesi arasındaki değişiklikler ilk bir fikir verir. 
+Veri kayması dağıtılan modelinizin performansını olumsuz yönde etkilediğinde, modelin yeniden eğitilmesi zaman alabilir. Aşağıdaki [ Yöntem,eski](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#diff-rhs-dataset--compute-target-none--columns-none-
+) ve yeni eğitim veri kümeleri arasında nelerin değiştiğini bir kez daha sunar. `diff()` 
 
 ```python
 from azureml.core import Dataset
@@ -185,16 +185,16 @@ from azureml.core import Dataset
 old_training_dataset.diff(new_training_dataset)
 ```
 
-Önceki kodun çıktısı alarak, modelinizi yeniden eğitme isteyebilirsiniz. Bunu yapmak için aşağıdaki adımlarla devam edin.
+Önceki kodun çıktısına göre modelinize yeniden eğitebilmeniz gerekebilir. Bunu yapmak için, aşağıdaki adımlarla devam edin.
 
-* Toplanan verileri araştırmak ve yeni modeli eğitmek için verileri hazırlama.
-* Bu, eğitin ve test verileri bölün.
-* Modelin yeni verileri kullanarak yeniden eğitin.
-* Yeni oluşturulan model performansını değerlendirin.
-* Üretim modelinden daha iyi performans ise yeni model dağıtma.
+* Toplanan verileri araştırın ve yeni modeli eğmek için verileri hazırlayın.
+* Eğitim ve test verilerine ayırın.
+* Yeni verileri kullanarak modeli yeniden eğitme.
+* Yeni oluşturulan modelin performansını değerlendirin.
+* Performans, üretim modelinden daha iyi ise yeni model dağıtın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Veri değişikliklerini kullanarak bir tam örnek için bkz: [Azure ML veri kayma not defteri](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/data-drift/azure-ml-datadrift.ipynb). Bu Jupyter not defteri kullanmayı gösterir. bir [Azure açık veri kümesi](https://docs.microsoft.com/azure/open-datasets/overview-what-are-open-datasets) hava durumunu tahmin etmek için bir modeli eğitmek için AKS'ye dağıtma ve izleme için veri değişikliklerini. 
+* Veri drkullanımı hakkında tam bir örnek için bkz. [Azure ML Data değişikliklerini Not defteri](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/data-drift/azure-ml-datadrift.ipynb). Bu Jupyter Notebook, bir [Azure açık veri kümesini](https://docs.microsoft.com/azure/open-datasets/overview-what-are-open-datasets) kullanarak, hava durumunu tahmin etmek, aks 'e dağıtmak ve veri drını izlemek için bir modeli eğitmeniz gerektiğini gösterir. 
 
-* Veri değişikliklerini doğru genel kullanılabilirlik hareket ettikçe, soru, yorum veya öneriniz büyük ölçüde bildiriminizden. Aşağıdaki ürün geri bildirim düğmesini kullanın! 
+* Veri, genel kullanıma yönelik olarak hareket ederken sorularınızı, yorumlarınızı veya önerilerinizi önemli ölçüde beğeneceğiz. Aşağıdaki ürün geri bildirim düğmesini kullanın! 

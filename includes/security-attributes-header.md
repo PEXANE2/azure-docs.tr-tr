@@ -2,24 +2,15 @@
 author: msmbaldwin
 ms.service: security
 ms.topic: include
-ms.date: 04/17/2019
+ms.date: 07/23/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 762393e501475001d2af6defc563b3e489788309
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 4aea8c1d1d7112ac1f9ff9042ff01d173ed986c5
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67795639"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68440867"
 ---
-Bir güvenlik kalite veya bir Azure hizmeti özelliği özniteliğidir. Bu hizmetin özelliği önlemenize, algılamanıza ve bu güvenlik açıklarına yanıt katkıda bulunur.
+Güvenlik özniteliği bir Azure hizmeti 'nin kalitesi veya özelliğidir. Hizmetin güvenlik açıklarını önleme, algılama ve yanıtlama yeteneğine katkıda bulunur.
 
-Güvenlik öznitelikleri olarak kategorilere ayrılır:
-* Preventative
-* Ağ kesimleme
-* Algılama
-* Kimlik ve erişim yönetimi için destek
-* Denetim izi
-* Erişim denetimleri (kullanılıyorsa)
-* Yapılandırma Yönetimi (kullanılıyorsa)
-
-Her bir kategoride yer "Evet" veya bir öznitelik kullanılıp kullanılmayacağını belirtmek için "Hayır" göstereceğiz. Bazı hizmetler için geçerli olmayan bir öznitelik için "Yok" göstereceğiz. Biz de not veya bir bağlantı özniteliği hakkında daha fazla bilgi sağlayabilir.
+Her kategoride, bir özniteliğin kullanılıp kullanılmadığını göstermek için "Evet" veya "Hayır" görüntülenir. Bazı hizmetlerde, geçerli olmayan bir öznitelik için "N/A" göstereceğiz. Ayrıca, bir öznitelik hakkında daha fazla bilgi için bir de veya bir bağlantı sağlayabiliriz.

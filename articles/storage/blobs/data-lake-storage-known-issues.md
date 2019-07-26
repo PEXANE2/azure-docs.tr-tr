@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: normesta
-ms.openlocfilehash: 4a8c69dc06b2de08016ae282413402061cdb89d1
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
-ms.translationtype: HT
+ms.openlocfilehash: fc2d7e4f611e1eee9c369ef26aa7bf66feb7c888
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314399"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385689"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake depolama Gen2 ile'ilgili bilinen sorunlar
 
@@ -54,20 +54,9 @@ Data Lake Storage üzerindeki çoklu protokol erişiminin genel önizlemesine ka
 
 Bu bölümde, aynı verilerde çalışacak blob API 'Leri ve Data Lake Storage 2. API 'Leri kullanımıyla ilgili sorunlar ve sınırlamalar açıklanmaktadır.
 
-Bu blob REST API 'Leri desteklenmez:
-
-* [Blobu Yerleştir (sayfa)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
-* [Yerleştirme sayfası](https://docs.microsoft.com/rest/api/storageservices/put-page)
-* [Sayfa aralıklarını al](https://docs.microsoft.com/rest/api/storageservices/get-page-ranges)
-* [Artımlı kopya blobu](https://docs.microsoft.com/rest/api/storageservices/incremental-copy-blob)
-* [URL 'den sayfa koy](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)
-* [Blobu Yerleştir (Ekle)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
-* [Ekleme bloğu](https://docs.microsoft.com/rest/api/storageservices/append-block)
-* [URL 'den ekleme bloğu](https://docs.microsoft.com/rest/api/storageservices/append-block-from-url)
-
 * Aynı dosyanın aynı örneğine yazmak için hem blob API 'Leri hem de Data Lake Storage API 'Leri kullanamazsınız.
 
-* Data Lake Storage 2. API 'Leri kullanarak bir dosyaya yazarsanız, bu dosyanın blokları [Get Block list](https://docs.microsoft.comrest/api/storageservices/get-block-list) blob API 'sine yapılan çağrılara görünmez.
+* Data Lake Storage 2. API 'Leri kullanarak bir dosyaya yazarsanız, bu dosyanın blokları [Get Block list](https://docs.microsoft.com/rest/api/storageservices/get-block-list) blob API 'sine yapılan çağrılara görünmez.
 
 * Data Lake Storage 2. API 'leri ya da blob API 'Lerini kullanarak bir dosyanın üzerine yazabilirsiniz. Bu dosya özelliklerini etkilemez.
 
@@ -78,6 +67,17 @@ Bu blob REST API 'Leri desteklenmez:
 * Bir dizini silmek için [blobu silme](https://docs.microsoft.com/rest/api/storageservices/delete-blob) API 'sini kullanırsanız, bu dizin yalnızca boşsa silinir.
 
   Bu, blob API 'SI silme dizinlerini yinelemeli olarak kullanamayacağı anlamına gelir.
+
+Bu blob REST API 'Leri desteklenmez:
+
+* [Blobu Yerleştir (sayfa)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
+* [Yerleştirme sayfası](https://docs.microsoft.com/rest/api/storageservices/put-page)
+* [Sayfa aralıklarını al](https://docs.microsoft.com/rest/api/storageservices/get-page-ranges)
+* [Artımlı kopya blobu](https://docs.microsoft.com/rest/api/storageservices/incremental-copy-blob)
+* [URL 'den sayfa koy](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)
+* [Blobu Yerleştir (Ekle)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
+* [Ekleme bloğu](https://docs.microsoft.com/rest/api/storageservices/append-block)
+* [URL 'den ekleme bloğu](https://docs.microsoft.com/rest/api/storageservices/append-block-from-url)
 
 ## <a name="issues-with-unmanaged-virtual-machine-vm-disks"></a>Yönetilmeyen sanal makine (VM) disklerinde sorunlar
 
@@ -94,12 +94,13 @@ Aşağıdaki tabloda henüz desteklenmeyen veya hiyerarşik ad alanı (Azure Dat
 | **AzCopy** | Sürüme özgü destek <br><br>AzCopy 'in yalnızca en son sürümünü kullanın ([AzCopy ile v10 arasındaki](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). AzCopy v 8.1 gibi önceki AzCopy sürümleri desteklenmez.|
 | **Azure Blob depolama yaşam döngüsü yönetim ilkeleri** | Yalnızca [Data Lake Storage önizlemede çoklu protokol erişimine](data-lake-storage-multi-protocol-access.md) kaydoldıysanız desteklenir. Seyrek erişimli ve arşiv erişim katmanları yalnızca önizleme tarafından desteklenir. Blob anlık görüntülerini silme henüz desteklenmiyor. |
 | **Azure Content Delivery Network (CDN)** | Henüz desteklenmiyor|
-| **Azure Arama** |Henüz desteklenmiyor|
+| **Azure Arama** |Yalnızca [Data Lake Storage önizlemede çoklu protokol erişimine](data-lake-storage-multi-protocol-access.md) kaydoldıysanız desteklenir.|
 | **Azure Depolama Gezgini** | Sürüme özgü destek <br><br>Yalnızca sürümü `1.6.0` veya üstünü kullanın. <br>Sürüm `1.6.0` [ücretsiz bir indirme](https://azure.microsoft.com/features/storage-explorer/)olarak sunulmaktadır.|
 | **Blob kapsayıcı ACL 'Leri** |Henüz desteklenmiyor|
 | **Blobsigortası** |Henüz desteklenmiyor|
 | **Özel etki alanları** |Henüz desteklenmiyor|
 | **Dosya sistemi Gezgini** | Sınırlı destek |
+| **Tanılama günlüğüne kaydetme** |Yalnızca [Data Lake Storage önizlemede çoklu protokol erişimine](data-lake-storage-multi-protocol-access.md) kaydoldıysanız desteklenir.|
 | **Sabit depolama** |Henüz desteklenmiyor <br><br>Sabit depolama, verileri bir solucan içinde depolamanıza olanak tanır [(bir kez yaz, çok oku)](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) durumu sağlar.|
 | **Nesne düzeyi katmanları** |Seyrek erişimli ve arşiv katmanları yalnızca [Data Lake Storage önizlemesinde çoklu protokol erişimine](data-lake-storage-multi-protocol-access.md) kaydoldıysanız desteklenir. <br><br> Diğer tüm erişim katmanları henüz desteklenmiyor.|
 | **PowerShell ve CLı desteği** | Sınırlı işlevsellik <br><br>Hesap oluşturma gibi yönetim işlemleri desteklenir. Dosya yükleme ve indirme gibi veri düzlemi işlemleri, [Data Lake Storage üzerindeki çoklu protokol erişiminin](data-lake-storage-multi-protocol-access.md)bir parçası olarak genel önizlemededir. Dizinlerle çalışma ve erişim denetim listelerini (ACL 'Ler) ayarlama henüz desteklenmiyor. |

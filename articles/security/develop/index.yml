@@ -28,12 +28,19 @@ sections:
             html: <p>Azure'da güvenli bir web uygulamasını dağıtma</p>
             image:
               src: /media/common/i_get-started.svg
-            title: başlarken
+            title: Başlarken
           - href: 'https://docs.microsoft.com/learn/modules/top-5-security-items-to-consider'
             html: <p>Web uygulamaları için en iyi beş güvenlik öğesi</p>
             image:
               src: /media/common/i_learn-about.svg
             title: Microsoft Learn ile becerilerinizi geliştirin
+  - title: Örnek uygulamaların güvenliğini sağlama
+    items:
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/security/develop/secure-web-app">Linux kapsayıcısında web uygulaması</a>
   - title: Kavramlar
     items:
       - type: list

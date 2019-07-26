@@ -1,273 +1,197 @@
 ---
-title: Riskli kullanıcılar ve oturum açma (yenilenmiş) Azure Active Directory kimlik koruması, araştırma | Microsoft Docs
-description: Riskli kullanıcılar ve oturum açma (yenilenmiş) Azure Active Directory kimlik koruması, araştırma hakkında bilgi edinin.
+title: Azure Active Directory kimlik koruması 'nda riskli kullanıcıları ve oturum açma işlemlerini araştırma (yenileme) | Microsoft Docs
+description: Azure Active Directory kimlik koruması 'nda riskli kullanıcıları ve oturum açma işlemlerini nasıl araştırılacağını öğrenin (yenileme).
 services: active-directory
-keywords: Azure active directory kimlik koruması, bulut uygulaması bulma, yönetme, uygulamaları, güvenlik, risk, risk düzeyi, güvenlik açığı, güvenlik ilkesi
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.author: joflore
-ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
 ms.subservice: identity-protection
+ms.topic: conceptual
 ms.date: 01/25/2019
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a90195a2d0899b0a157cc67badd2f9873164987
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c89658e962654f005eaee5ceff220d5fb343e86e
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108959"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68370313"
 ---
 # <a name="how-to-investigate-risky-users-and-sign-ins"></a>Nasıl Yapılır: Riskli kullanıcıları ve oturum açma işlemlerini araştırma 
 
-
-Riskli oturum açma işlemleri ve riskli kullanıcılar raporları kullanarak araştırın ve ortamınızda risk öngörü. Filtreleme ve kullanıcıların ve riskli oturum açma işlemleri sıralama olanağı, olası yetkisiz erişim kuruluşunuza daha iyi anlayabilirsiniz. 
-
+Riskli oturum açma işlemleri ve riskli kullanıcılar raporları kullanarak ortamınızda risk konusunda bilgi edinebilir ve bu riski inceleyebilirsiniz. Riskli oturum açma işlemlerini ve kullanıcıları filtreleme ve sıralayabilme olanağı sayesinde, kuruluşunuzdaki olası yetkisiz erişimi daha iyi anlayabilirsiniz. 
 
 ## <a name="risky-users-report"></a>Riskli kullanıcılar raporu
 
-Riskli kullanıcılar raporuyla sağlanan bilgiler sayesinde aşağıdakiler gibi soruların yanıtlarını bulabilirsiniz:
+Riskli kullanıcılar raporu tarafından verilen bilgiler ile, şu gibi soruların yanıtlarını bulabilirsiniz:
 
-- Hangi kullanıcıların yüksek riskli misiniz?
-- Bir risk durumu kullanıcınız düzeltilen?
+- Hangi kullanıcılar yüksek riskli?
+- Hangi kullanıcıların risk durumu düzeltildi?
 
-
-
-Bu rapor için ilk giriş noktanız, **Araştır** Güvenlik sayfasında bölümü.
+Bu rapora ilk giriş noktanız, güvenlik sayfasındaki **Araştır** bölümüdür.
 
 ![Riskli kullanıcılar raporu](./media/howto-investigate-risky-users-signins/01.png)
 
-
-Riskli kullanıcılar raporu aşağıdakileri gösteren bir varsayılan görünümü vardır:
+Riskli kullanıcılar raporu şunları gösteren bir varsayılan görünüme sahiptir:
 
 - Ad
-
 - Risk durumu
-
 - Risk düzeyi
-
 - Risk ayrıntısı
-
-- Son güncelleştirme risk
-
-- Tür
-
+- Riskin son güncelleştirilmesi
+- Type
 - Durum
- 
 
 ![Riskli kullanıcılar raporu](./media/howto-investigate-risky-users-signins/03.png)
-
 
 Araç çubuğunda **Sütunlar**’a tıklayarak liste görünümünü özelleştirebilirsiniz.
 
 ![Riskli kullanıcılar raporu](./media/howto-investigate-risky-users-signins/04.png)
 
-Sütunları iletişim kutusu ek alanları görüntüleyebilir ya da zaten görüntülenen alanları kaldırabilirsiniz olanak sağlar.
+Sütunlar iletişim kutusu, ek alanları görüntülemenizi veya zaten görüntülenen alanları kaldırmanızı sağlar.
 
 Liste görünümündeki bir öğeye tıklayarak bu öğe hakkında mevcut olan tüm ayrıntıları yatay bir görünümde alabilirsiniz.
 
 ![Riskli kullanıcılar raporu](./media/howto-investigate-risky-users-signins/05.png)
 
+Ayrıntılar görünümü şunları gösterir:
 
-Detaylarını gösterir:
-
-- Temel bilgileri
-
-- Yeni riskli oturum açma işlemleri
-
-- Bir oturum açma için bağlı olmayan risk olayları
-
+- Temel bilgiler
+- Son riskli oturum açmalar
+- Bir oturum açma adına bağlı olmayan riskli olaylar
 - Risk geçmişi
 
-
-
-Buna ek olarak, şunları yapabilirsiniz:
+Ayrıca şunları yapabilirsiniz:
 
 ![Riskli kullanıcılar raporu](./media/howto-investigate-risky-users-signins/08.png)
 
-- Bu kullanıcı için oturum açma işlemleri raporu görüntülemek için tüm oturum açma kısayol görüntüleyin.
+- Bu kullanıcının oturum açma raporunu görüntülemek için tüm oturum açma kısayollarını görüntüleyin.
+- Riskli olarak işaretlenen bu kullanıcıya ait tüm oturum açma işlemlerini görüntülemek için tüm riskli oturum açma işlemlerini görüntüleyin.
+- Kullanıcının kimliğinin tehlikede olduğunu düşünüyorsanız, kullanıcının parolasını sıfırlayın.
+- Bir kullanıcının etkin risk olaylarının hatalı pozitif sonuçlar olduğunu düşünüyorsanız Kullanıcı riskini kapatın. Daha fazla bilgi için [Azure AD kimlik koruması risk olayları hakkında geri bildirim sağlama](howto-provide-risk-event-feedback.md)makalesine bakın.
 
-- Tüm riskli oturum açma tüm oturum açma, riskli olarak işaretlenmiş işlemleri bu kullanıcı için görüntülenecek işlemleri görüntüleyin.
+### <a name="filter-risky-users"></a>Riskli kullanıcıları filtrele
 
-- Kullanıcının kimliğini tehlikede olduğunu düşünüyorsanız, bir kullanıcının parolasını sıfırlayın.
-
-- Bir kullanıcının etkin risk olayları hatalı pozitif sonuç olduğunu düşünüyorsanız, kullanıcı riski yok sayın. Daha fazla bilgi için [algılama doğruluğunu artırmak nasıl](howto-improve-detection-accuracy.md).
-
-
-
-### <a name="filter-risky-users"></a>Filtre riskli kullanıcılar
-
-Raporlanan verileri kendinize uygun bir seviyeye gelecek şekilde daraltmak için aşağıdaki varsayılan alanları kullanarak riskli kullanıcı verilerini filtreleyebilirsiniz:
+Bildirilen verileri sizin için uygun bir düzeye daraltmak için, riskli Kullanıcı verilerini aşağıdaki varsayılan alanları kullanarak filtreleyebilirsiniz:
 
 - Ad
-
-- Kullanıcı adı
-
+- Kullanıcı Adı
 - Risk durumu
-
 - Risk düzeyi
-
-- Tür
-
+- Type
 - Durum
 
 ![Riskli kullanıcılar raporu](./media/howto-investigate-risky-users-signins/06.png)
 
+**Ad** filtresi, önem verdiğiniz kullanıcının adını veya Kullanıcı asıl adını (UPN) belirtmenize olanak sağlar.
 
-
-**Adı** filtresi adını veya, önem verdiğiniz kullanıcının kullanıcı asıl adı (UPN) belirtmenize imkan tanır.
-
-
-**Risk durumu** filtre seçmenize imkan tanır:
+**Risk durumu** filtresi şunları seçmenizi sağlar:
 
 - Risk altında
 - Çözümlendi
 - Kapatıldı
 
-
-**Risk düzeyini** filtre seçmenize imkan tanır:
+**Risk düzeyi** filtresi şunları seçmenizi sağlar:
 
 - Yüksek
 - Orta
 - Düşük
 
+**Tür** filtresi şunları seçmenizi sağlar:
 
-**Türü** filtre seçmenize imkan tanır:
-
-- Konuk
+- Guest
 - Üyesi
 
-**Durumu** filtre seçmenize imkan tanır:
+**Durum** filtresi şunları seçmenizi sağlar:
 
-- Silme
+- Silinmiş
 - Etkin
 
+### <a name="download-risky-users-data"></a>Riskli Kullanıcı verilerini indirin
 
-### <a name="download-risky-users-data"></a>Riskli kullanıcılar verileri indirme
-
-Dışında Azure portal ile çalışmak istiyorsanız riskli kullanıcılar verilerini indirebilir. Yükle'yi tıklatarak bir CSV dosyası en son 2.500 kayıtlar oluşturur. 
+Azure portal dışında çalışmak istiyorsanız riskli kullanıcılar verilerini indirebilirsiniz. Indir 'e tıkladığınızda en son 2.500 kaydın CSV dosyası oluşturulur. 
 
 ![Riskli kullanıcılar raporu](./media/howto-investigate-risky-users-signins/07.png)
 
-
-Araç çubuğunda sütunların tıklayarak liste görünümünü özelleştirebilirsiniz.
+Araç çubuğundaki Sütunlar ' a tıklayarak liste görünümünü özelleştirebilirsiniz.
  
 Bu sayede ek alanları görüntüleyebilir ya da zaten görüntülenen alanları kaldırabilirsiniz.
  
-Genişletmek için ayrıntıları çekmece riskli kullanıcı hakkında daha fazla bilgi edinmek için tıklayın
-
- 
-
-
+Riskli bir kullanıcı hakkında daha fazla bilgi edinmek için Ayrıntılar çekmecesine tıklayarak genişletin
 
 ## <a name="risky-sign-ins-report"></a>Riskli oturum açma işlemleri raporu
 
-Riskli oturum açma işlemlerinin raporuyla sağlanan bilgiler sayesinde aşağıdakiler gibi soruların yanıtlarını bulabilirsiniz:
+Riskli oturum açma işlemleri raporu tarafından verilen bilgiler ile, şu gibi soruların yanıtlarını bulabilirsiniz:
 
-- Anonim IP adresi risk olayları kaç başarılı oturum açma işlemleri, var olan son bir hafta içinde vardı?
+- Son haftada adsız IP adresi risk olayları olan kaç başarılı oturum açma işlemi var?
+- Geçen ay hangi kullanıcıların güvenliği aşılmış?
+- Hangi kullanıcılar Office 365 portalında oturum açma risklerine sahip?
 
-- Hangi kullanıcıların Onaylanmadı geçen ay tehlikeye?
-
-- Hangi kullanıcıların Office 365 portalında riskli oturum açma işlemleri oldu?
-
-
-
-
-Bu rapor için ilk giriş noktanız, **Araştır** Güvenlik sayfasında bölümü.
+Bu rapora ilk giriş noktanız, güvenlik sayfasındaki **Araştır** bölümüdür.
 
 ![Riskli oturum açma işlemleri raporu](./media/howto-investigate-risky-users-signins/02.png)
 
-Riskli oturum açma işlemleri raporu aşağıdakileri gösteren bir varsayılan görünümü vardır:
+Riskli oturum açma işlemleri raporu şunları gösteren bir varsayılan görünüme sahiptir:
 
-- Tarih
-
+- Date
 - Kullanıcı
-
 - Uygulama
-
 - Oturum açma durumu
-
 - Risk durumu
-
-- Risk düzeyi (toplam)
-
+- Risk düzeyi (toplama)
 - Risk düzeyi (gerçek zamanlı)
-
 - Koşullu Erişim
-
 - MFA gerekli  
- 
 
 ![Riskli oturum açma işlemleri raporu](./media/howto-investigate-risky-users-signins/09.png)
-
 
 Araç çubuğunda **Sütunlar**’a tıklayarak liste görünümünü özelleştirebilirsiniz.
 
 ![Riskli kullanıcılar raporu](./media/howto-investigate-risky-users-signins/11.png)
 
-Sütunları iletişim kutusu ek alanları görüntüleyebilir ya da zaten görüntülenen alanları kaldırabilirsiniz olanak sağlar.
+Sütunlar iletişim kutusu, ek alanları görüntülemenizi veya zaten görüntülenen alanları kaldırmanızı sağlar.
 
 Liste görünümündeki bir öğeye tıklayarak bu öğe hakkında mevcut olan tüm ayrıntıları yatay bir görünümde alabilirsiniz.
 
 ![Riskli kullanıcılar raporu](./media/howto-investigate-risky-users-signins/12.png)
 
+Ayrıntılar görünümü şunları gösterir:
 
-Detaylarını gösterir:
-
-- Temel bilgileri
-
+- Temel bilgiler
 - Cihaz bilgileri
-
-- Risk bilgisi
-
+- Risk bilgileri
 - MFA bilgileri
-
 - Koşullu Erişim
 
-
-
-
-
-Buna ek olarak, şunları yapabilirsiniz:
+Ayrıca şunları yapabilirsiniz:
 
 ![Riskli kullanıcılar raporu](./media/howto-investigate-risky-users-signins/13.png)
 
-- Onayla tehlikede 
+- Güvenliğin tehlikeye girdiğini onaylayın 
+- Güvenli olduğunu onayla
 
-- Güvenli onaylayın
+Daha fazla bilgi için [Azure AD kimlik koruması risk olayları hakkında geri bildirim sağlama](howto-provide-risk-event-feedback.md)makalesine bakın.
 
-Daha fazla bilgi için [algılama doğruluğunu artırmak nasıl](howto-improve-detection-accuracy.md).
+### <a name="filter-risky-sign-ins"></a>Riskli oturum açma işlemlerini filtrele
 
-
-
-
-### <a name="filter-risky-sign-ins"></a>Filtre riskli oturum açma işlemleri
-
-Raporlanan verileri kendinize uygun bir seviyeye gelecek şekilde daraltmak için aşağıdaki varsayılan alanları kullanarak riskli kullanıcı verilerini filtreleyebilirsiniz:
+Bildirilen verileri sizin için uygun bir düzeye daraltmak için, riskli Kullanıcı verilerini aşağıdaki varsayılan alanları kullanarak filtreleyebilirsiniz:
 
 - Kullanıcı
 - Uygulama
 - Oturum açma durumu
 - Risk durumu
-- Risk düzeyi (toplam)
+- Risk düzeyi (toplama)
 - Risk düzeyi (gerçek zamanlı)
 - Koşullu Erişim
-- Tarih
+- Date
 - Risk düzeyi türü
 
 ![Riskli oturum açma işlemleri raporu](./media/howto-investigate-risky-users-signins/14.png)
 
+**Ad** filtresi, önem verdiğiniz kullanıcının adını veya Kullanıcı asıl adını (UPN) belirtmenize olanak sağlar.
 
-
-**Adı** filtresi adını veya, önem verdiğiniz kullanıcının kullanıcı asıl adı (UPN) belirtmenize imkan tanır.
-
-**Uygulama** filtre erişmeyi denedi kullanıcının bulut uygulaması belirtmenize imkan tanır.
+**Uygulama** filtresi, kullanıcının erişmeye çalıştığı bulut uygulamasını belirtmenizi sağlar.
 
 **Oturum açma durumu** filtresi aşağıdakilerden birini seçmenize imkan tanır:
 
@@ -275,36 +199,32 @@ Raporlanan verileri kendinize uygun bir seviyeye gelecek şekilde daraltmak içi
 - Başarılı
 - Hata
 
-
-**Risk durumu** filtre seçmenize imkan tanır:
+**Risk durumu** filtresi şunları seçmenizi sağlar:
 
 - Risk altında
-- Onaylanan tehlikede
-- Güvenli Onaylandı
+- Güvenliğin tehlikeye girdiği onaylandı
+- Güvenli işlem onaylandı
 - Kapatıldı
 - Çözümlendi
 
-
-**Risk düzeyini (toplama)** filtre seçmenize imkan tanır:
-
-- Yüksek
-- Orta
-- Düşük
-
-**Risk düzeyini (gerçek zamanlı)** filtre seçmenize imkan tanır:
+**Risk düzeyi (toplama)** filtresi şunları seçmenizi sağlar:
 
 - Yüksek
 - Orta
 - Düşük
 
+**Risk düzeyi (gerçek zamanlı)** filtresi şunları seçmenizi sağlar:
 
-**Koşullu erişim** filtre seçmenize imkan tanır:
+- Yüksek
+- Orta
+- Düşük
+
+**Koşullu erişim** filtresi şunları seçmenizi sağlar:
 
 - Tümü
 - Uygulanmadı
 - Başarılı
 - Hata
-
 
 **Tarih** filtresi, döndürülen veriler için bir zaman çerçevesi tanımlamanıza olanak sağlar.
 Olası değerler şunlardır:
@@ -314,18 +234,12 @@ Olası değerler şunlardır:
 - Son 24 saat
 - Özel zaman aralığı
 
+### <a name="download-risky-sign-ins-data"></a>Riskli oturum açma işlemleri verilerini indirin
 
-
-
-
-### <a name="download-risky-sign-ins-data"></a>Riskli oturum açma verilerini indir
-
-Dışında Azure portal ile çalışmak istiyorsanız riskli oturum açma verilerini indirebilir. Yükle'yi tıklatarak bir CSV dosyası en son 2.500 kayıtlar oluşturur. 
+Azure portal dışında çalışmak istiyorsanız riskli oturum açma verilerini indirebilirsiniz. Indir 'e tıkladığınızda en son 2.500 kaydın CSV dosyası oluşturulur. 
 
 ![Riskli kullanıcılar raporu](./media/howto-investigate-risky-users-signins/15.png)
 
-
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure AD kimlik koruması genel bakış için bkz: [Azure AD kimlik koruması genel bakış](overview-v2.md).
+Azure AD Kimlik Koruması genel bakış almak için bkz. [Azure AD kimlik koruması genel bakış](overview-v2.md).

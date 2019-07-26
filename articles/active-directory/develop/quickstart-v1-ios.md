@@ -1,5 +1,5 @@
 ---
-title: Oturum açma için Azure AD ile tümleştirilen ve OAuth 2.0 kullanarak korumalı API'leri çağıran bir iOS uygulaması oluşturma | Microsoft Docs
+title: OAuth 2,0 kullanarak oturum açmak için Azure AD ile tümleştirilmiş bir iOS uygulaması oluşturun | Microsoft Docs
 description: iOS uygulamanızdan kullanıcıların oturumunu açmayı ve Microsoft Graph API'sini çağırmayı öğrenin.
 services: active-directory
 documentationcenter: ios
@@ -18,14 +18,14 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: brandwe
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6274557ede35d7640eba37e5777cb0cb67d459a
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 8a82a7cad9b9176589824b6febb5cfdde89fce8a
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66497092"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68380881"
 ---
-# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-app"></a>Hızlı Başlangıç: Kullanıcılar oturum ve bir iOS uygulamasından Microsoft Graph API çağırma
+# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-app"></a>Hızlı Başlangıç: Kullanıcı oturum açma ve iOS uygulamasından Microsoft Graph API 'sini çağırma
 
 [!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
 
@@ -52,7 +52,7 @@ Başlamak için şu önkoşulları tamamlayın:
 > [!TIP]
 > Azure AD ile yalnızca birkaç dakika içinde çalışır duruma gelmek için [geliştirici portalını](https://identity.microsoft.com/Docs/iOS) deneyin. Geliştirici portalı, uygulamayı kaydetme ve Azure AD'yi kodunuzla tümleştirme işleminde size yol gösterir. Bitirdiğinizde, kiracınızda kullanıcıların kimliklerini doğrulayabilen basit bir uygulamanız ve belirteçleri kabul eden ve doğrulama gerçekleştiren bir arka ucunuz olacaktır.
 
-## <a name="step-1-determine-what-your-redirect-uri-is-for-ios"></a>1. adım: İOS için URI'dir, yönlendirme belirleme
+## <a name="step-1-determine-what-your-redirect-uri-is-for-ios"></a>1\. adım: Yeniden yönlendirme URI 'nizin iOS için ne olduğunu belirleme
 
 Bazı SSO senaryolarında uygulamalarınızı güvenle başlatmak için, belirli bir biçimde *yeniden yönlendirme URI*'si oluşturmanız gerekir. Yeniden yönlendirme URI'si, belirteçlerin bunları isteyen doğru uygulamaya döndürüldüğünden emin olmak için kullanılır.
 
@@ -69,22 +69,22 @@ Bu hızlı başlangıç kodu için bir örnek:
 
 ***msquickstart://com.microsoft.azureactivedirectory.samples.graph.QuickStart***
 
-## <a name="step-2-register-the-directorysearcher-application"></a>2. adım: DirectorySearcher uygulamayı kaydetme
+## <a name="step-2-register-the-directorysearcher-application"></a>2\. adım: DirectorySearcher uygulamasını kaydetme
 
 Uygulamanızı belirteçleri alacak şekilde ayarlamak için, uygulamayı Azure AD kiracınıza kaydetmeli ve uygulamaya Azure AD Graph API'sine erişim izni vermelisiniz.
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. Üst çubukta hesabınızı seçin. **Dizin** listesi altında, uygulamanızı kaydetmek istediğiniz Azure Active Directory kiracısını seçin.
 3. En soldaki gezinti bölmesinde **Tüm hizmetler**'i seçin ve ardından **Azure Active Directory**'yi seçin.
-4. Seçin **uygulama kayıtları**ve ardından **yeni kayıt**.
+4. **Uygulama kayıtları**öğesini seçin ve ardından **Yeni kayıt**' ı seçin.
 5. Yeni bir istemci uygulaması oluşturmak için istemleri izleyin.
     * **Ad**, uygulamanın adıdır ve uygulamanızı son kullanıcılara açıklar.
-    * **Yeniden Yönlendirme URI'si**, Azure AD'nin belirteç yanıtlarını döndürmek için kullandığı şema ve dize bileşimidir. Uygulamanıza özgü olan ve önceki yeniden yönlendirme URI'si bilgilerini temel alan bir değer girin. Ayrıca seçin **genel istemci (Mobil ve Masaüstü)** açılır listeden.
+    * **Yeniden Yönlendirme URI'si**, Azure AD'nin belirteç yanıtlarını döndürmek için kullandığı şema ve dize bileşimidir. Uygulamanıza özgü olan ve önceki yeniden yönlendirme URI'si bilgilerini temel alan bir değer girin. Ayrıca, açılan listeden **ortak istemci (mobil ve Masaüstü)** öğesini seçin.
 6. Kaydı tamamladıktan sonra, Azure AD uygulamanıza benzersiz bir uygulama kimliği atar. Bu değeri sonraki bölümlerde kullanacağınız için, uygulama sekmesinden kopyalayın.
-7. Gelen **API izinleri** sayfasında **bir izin eklemek**. İçinde **bir API seçin** seçin ***Microsoft Graph***.
-8. Altında **temsilci izinleri**, izni seçin **User.Read**, ardından isabet **Ekle** kaydetmek için. Bu izin, uygulamanızı Azure AD Graph API'sini kullanıcılar için sorgulayacak şekilde ayarlar.
+7. **API izinleri** sayfasında **izin Ekle**' yi seçin. **BIR API seçin** içinde ***Microsoft Graph***seçin.
+8. **Temsilci izinleri**altında **Kullanıcı. oku**seçeneğini belirleyin ve sonra kaydetmek için **Ekle** düğmesine basın. Bu izin, uygulamanızı Azure AD Graph API'sini kullanıcılar için sorgulayacak şekilde ayarlar.
 
-## <a name="step-3-install-and-configure-adal"></a>3. adım: Yükleme ve ADAL'ı yapılandırma
+## <a name="step-3-install-and-configure-adal"></a>3\. adım: ADAL 'yi yükleyip yapılandırma
 
 Artık Azure AD'de bir uygulamanız olduğuna göre, ADAL'ı yükleyebilir ve kimlikle ilgili kodunuzu yazabilirsiniz. ADAL'ın Azure AD ile iletişim kurabilmesi için, ona uygulama kaydınız hakkında bazı bilgiler sağlamanız gerekir.
 
@@ -117,7 +117,7 @@ Artık Azure AD'de bir uygulamanız olduğuna göre, ADAL'ı yükleyebilir ve ki
     * `clientId`, portaldan kopyaladığınız uygulamanızın istemci kimliğidir.
     * `redirectUri`, portalda kaydettiğiniz yeniden yönlendirme URL'sidir.
 
-## <a name="step-4-use-adal-to-get-tokens-from-azure-ad"></a>4. Adım: Azure AD belirteçlerini almak için ADAL'ı kullanın
+## <a name="step-4-use-adal-to-get-tokens-from-azure-ad"></a>4\. Adım: Azure AD 'den belirteçleri almak için ADAL kullanın
 
 ADAL'ın ardındaki temel ilke, uygulamanızın bir erişim belirtecine her ihtiyacı olduğunda basitçe bir completionBlock `+(void) getToken :` çağrısı yapması ve kalan işleri ADAL'ın üstlenmesidir.
 
@@ -242,7 +242,7 @@ ADAL'ın ardındaki temel ilke, uygulamanızın bir erişim belirtecine her ihti
 > [!NOTE]
 > `AuthenticationResult` nesnesi, uygulamanıza gerekebilecek bilgileri toplamak için kullanabileceğiniz bir `tokenCacheStoreItem` nesnesi içerir. QuickStart'ta, kimlik doğrulamasının zaten yapılıp yapılmadığını saptamak için `tokenCacheStoreItem` kullanılır.
 
-## <a name="step-5-build-and-run-the-application"></a>5. Adım: Uygulamayı derleme ve çalıştırma
+## <a name="step-5-build-and-run-the-application"></a>5\. Adım: Uygulamayı derleme ve çalıştırma
 
 Tebrikler! Artık kullanıcıların kimliklerini doğrulayabileceğiniz, OAuth 2.0 kullanarak Web API'lerini güvenle çağırabileceğiniz ve kullanıcı hakkında temel bilgiler alabileceğiniz çalışan bir iOS uygulamanız vardır.
 
