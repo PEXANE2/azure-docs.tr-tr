@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services Video Indexer'ın sürüm notları | Microsoft Docs
-description: İle en son gelişmeleri güncel kalmak için bu makalede, Azure Media Services Video Indexer'ın en son güncelleştirmeleri sağlar.
+title: Azure Media Services Video Indexer sürüm notları | Microsoft Docs
+description: En son gelişmelerden haberdar olmak için, bu makalede Azure Media Services Video Indexer en son güncelleştirmeleri sunulmaktadır.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -10,16 +10,16 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 06/25/2019
+ms.date: 07/22/2019
 ms.author: juliako
-ms.openlocfilehash: f1c5f43316292f17547b84d970a0f03a1a2c366f
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: fd67e867b5eac58838551ac29e1fca5e860b15ff
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67454028"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68414220"
 ---
-# <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer'ın sürüm notları
+# <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer sürüm notları
 
 İle en son gelişmeleri güncel kalmak için bu makalede, ile hakkında bilgi sağlar:
 
@@ -30,37 +30,37 @@ ms.locfileid: "67454028"
 
 ## <a name="june-2019"></a>Haziran 2019
 
-### <a name="video-indexer-deployed-to-japan-east"></a>Video Indexer Japonya Doğu'ya dağıtılır
+### <a name="video-indexer-deployed-to-japan-east"></a>Video Indexer Japonya Doğu dağıtıldı
 
-Artık, bir Video Indexer Ücretli hesap Japonya Doğu bölgesinde de oluşturabilirsiniz.
+Artık Japonya Doğu bölgesinde Video Indexer ücretli bir hesap oluşturabilirsiniz.
 
-### <a name="create-and-repair-account-api-preview"></a>Oluşturun ve hesabı API'si (Önizleme) onarın
+### <a name="create-and-repair-account-api-preview"></a>Hesap API 'SI oluşturma ve onarma (Önizleme)
 
-Eklenen olanak tanıyan yeni bir API [Azure medya hizmeti bağlantı uç noktası veya anahtar güncelleştirme](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Paid-Account-Azure-Media-Services?&groupBy=tag).
+[Azure Media Service bağlantı noktasını veya anahtarını güncelleştirmenizi](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Paid-Account-Azure-Media-Services?&groupBy=tag)sağlayan yenı bir API eklendi.
 
-### <a name="improve-error-handling-on-upload"></a>Hata işleme karşıya yükleme sırasında geliştirin 
+### <a name="improve-error-handling-on-upload"></a>Karşıya yükleme sırasında hata işlemeyi geliştirme 
 
-Açıklayıcı bir iletisi, temel alınan Azure Media Services hesabı'nın hatalı yapılandırılması durumunda döndürülür.
+Temel alınan Azure Media Services hesabının yanlış yapılandırılması durumunda açıklayıcı bir ileti döndürülür.
 
-### <a name="player-timeline-keyframes-preview"></a>Oynatıcı zaman çizelgesinde ana kareleri Önizleme 
+### <a name="player-timeline-keyframes-preview"></a>Oyuncu zaman çizelgesi ana kare önizlemesi 
 
-Bu gibi durumlarda, her zaman için resim önizlemesi artık oyuncunun zaman çizelgesinde görebilirsiniz.
+Artık Player 'ın zaman çizelgesinde her seferinde bir görüntü önizlemesi görebilirsiniz.
 
 ### <a name="editor-semi-select"></a>Düzenleyici yarı seçim
 
-Artık belirli Insight zaman çerçevesini düzenleyicide seçme sonucu olarak seçilen tüm ınsights önizlemesini görebilirsiniz.
+Artık düzenleyicide belirli bir öngörü zaman dilimini seçme sonucu olarak seçilen tüm öngörülerin önizlemesini görebilirsiniz.
 
 ## <a name="may-2019"></a>Mayıs 2019
 
-### <a name="update-custom-language-model-from-closed-caption-file"></a>Kapalı açıklamalı alt yazı dosyası özel dil modeli güncelleştirme
+### <a name="update-custom-language-model-from-closed-caption-file"></a>Özel dil modelini kapalı açıklamalı altyazı dosyasından Güncelleştir
 
-[Özel dil modeli oluşturma](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Language-Model?&groupBy=tag) ve [güncelleştirme özel dil modelleri](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Language-Model?&groupBy=tag) API'leri artık VTT, SRT, destek ve TTML dosya biçimleri dil modelleri için giriş olarak.
+[Özel dil modeli oluşturma](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Language-Model?&groupBy=tag) ve [özel dil modellerini güncelleştirme](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Language-Model?&groupBy=tag) API 'leri artık dil modellerı için girdi olarak VTT, SRT ve ttml dosya biçimlerini desteklemektedir.
 
-Çağrılırken [güncelleştirme Video transkripti API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Video-Transcript?&pattern=transcript), döküm otomatik olarak eklenir. Video ile ilişkili eğitim modeli de otomatik olarak güncelleştirilir. Dil Modellerinizi eğitmek ve özelleştirme konusunda daha fazla bilgi için bkz: [Video Indexer ile bir dil modelini özelleştirin](customize-language-model-overview.md).
+[Update video döküm API 'si](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Video-Transcript?&pattern=transcript)çağrılırken, döküm otomatik olarak eklenir. Videoyla ilişkili eğitim modeli de otomatik olarak güncelleştirilir. Dil modellerinizi özelleştirme ve eğitme hakkında daha fazla bilgi için bkz. [video Indexer bir dil modelini özelleştirme](customize-language-model-overview.md).
 
-### <a name="new-download-transcript-formats--txt-and-csv"></a>Yeni indirme döküm biçimleri – TXT ve CSV
+### <a name="new-download-transcript-formats--txt-and-csv"></a>Yeni karşıdan yükleme TRANSCRIPT biçimleri – TXT ve CSV
 
-Desteklenen zaten kapalı açıklamalı alt yazı biçimi ek olarak (SRT, VTT ve TTML), Video Indexer, TXT ve CSV biçimlerde transkript yükleniyor artık desteklemektedir.
+Zaten desteklenen (SRT, VTT ve TTML) kapalı açıklamalı alt yazı biçiminin yanı sıra, Video Indexer artık kodu TXT ve CSV biçimlerinde indirmeyi desteklemektedir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

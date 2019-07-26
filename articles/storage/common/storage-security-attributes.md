@@ -1,6 +1,6 @@
 ---
-title: Azure depolama için genel güvenlik öznitelikleri
-description: Azure depolama değerlendirmek için genel güvenlik öznitelikleri listesi
+title: Azure depolama için güvenlik öznitelikleri
+description: Azure Storage 'ı değerlendirmek için güvenlik özniteliklerinin denetim listesi
 services: storage
 documentationcenter: ''
 author: msmbaldwin
@@ -9,27 +9,27 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 922273e3805004f6af068ea748c16f5675810144
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 16ec2757955b53a8bfa73ba724100f7fa61d2867
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66001455"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444310"
 ---
 # <a name="security-attributes-for-azure-storage"></a>Azure depolama için güvenlik öznitelikleri
 
-Bu makale, Azure Depolama'ya yerleşik güvenlik özniteliklerini içermektedir. 
+Bu makale, Azure depolama 'da yerleşik olarak bulunan güvenlik özniteliklerini belgeler. 
 
 [!INCLUDE [Security Attributes Header](../../../includes/security-attributes-header.md)]
 
-## <a name="preventative"></a>Preventative
+## <a name="preventative"></a>Önleyici
 
 | Güvenlik özniteliği | Evet/Hayır | Notlar |
 |---|---|--|
-| Bekleme sırasında şifreleme:<ul><li>Sunucu tarafı şifrelemesi</li><li>Müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifrelemesi</li><li>Diğer şifreleme özellikleri (örneğin, istemci tarafı, her zaman şifreli, vb.)</ul>| Evet |  |
-| Aktarım sırasında şifreleme:<ul><li>Express route şifreleme</li><li>VNet şifreleme</li><li>VNet-VNet şifreleme</ul>| Evet | HTTPS/TLS mekanizmalarını destekler.  Hizmete aktarılmadan önce kullanıcılar ayrıca veri şifreleyebilirsiniz. |
-| Şifreleme anahtarı işleme (CMK, BYOK, vb.)| Evet | Bkz: [Azure anahtar Kasası'nda müşteri tarafından yönetilen anahtarlar kullanılarak depolama hizmeti şifrelemesi](storage-service-encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).|
-| Sütun düzeyinde şifrelemeyi (Azure Data Services)| Yok |  |
+| Bekleyen şifreleme (sunucu tarafı şifreleme, müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifreleme ve diğer şifreleme özellikleri)| Evet |  |
+| Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNet şifreleme ve VNet-VNet şifreleme gibi)| Evet | Standart HTTPS/TLS mekanizmalarını destekler.  Kullanıcılar, hizmete iletilmeden önce verileri de şifreleyebilir. |
+| Şifreleme anahtarı işleme (CMK, BYOK vb.)| Evet | Depolama Hizmeti Şifrelemesi bkz. [Azure Key Vault müşteri tarafından yönetilen anahtarları kullanma](storage-service-encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).|
+| Sütun düzeyinde şifreleme (Azure veri Hizmetleri)| Yok |  |
 | Şifrelenmiş API çağrıları| Evet |  |
 
 ## <a name="network-segmentation"></a>Ağ kesimleme
@@ -38,32 +38,32 @@ Bu makale, Azure Depolama'ya yerleşik güvenlik özniteliklerini içermektedir.
 |---|---|--|
 | Hizmet uç noktası desteği| Evet |  |
 | VNet ekleme desteği| Yok |  |
-| Ağ yalıtımı ve saldırısından desteği| Evet | |
-| Zorlamalı tünel oluşturma desteği| Yok |  |
+| Ağ yalıtımı ve güvenlik duvarı desteği| Evet | |
+| Zorlamalı tünel desteği| Yok |  |
 
 ## <a name="detection"></a>Algılama
 
 | Güvenlik özniteliği | Evet/Hayır | Notlar|
 |---|---|--|
-| Azure izleme desteği (Log analytics, Application ınsights, vb.)| Evet | Azure İzleyici ölçümleri artık, başlangıç Önizleme günlükleri |
+| Azure izleme desteği (Log Analytics, App Insights vb.)| Evet | Azure Izleyici ölçümleri Şu anda kullanılabilir, günlük önizlemesi başlatılıyor |
 
 ## <a name="identity-and-access-management"></a>Kimlik ve erişim yönetimi
 
 | Güvenlik özniteliği | Evet/Hayır | Notlar|
 |---|---|--|
-| Kimlik Doğrulaması| Evet | Azure Active Directory, paylaşılan anahtar, paylaşılan erişim belirteci. |
-| Yetkilendirme| Evet | RBAC, POSIX ACL ve SAS belirteçleri ile yetkilendirme desteği |
+| Authentication| Evet | Azure Active Directory, paylaşılan anahtar, paylaşılan erişim belirteci. |
+| Authorization| Evet | RBAC, POSIX ACL 'Leri ve SAS belirteçleri aracılığıyla yetkilendirme desteği |
 
 
 ## <a name="audit-trail"></a>Denetim izi
 
 | Güvenlik özniteliği | Evet/Hayır | Notlar|
 |---|---|--|
-| Denetim ve yönetim düzlemi günlüğe kaydetme ve Denetim | Evet | Azure Resource Manager etkinlik günlüğü |
-| Veri düzlemi günlük kaydı ve Denetim| Evet | Hizmet tanılama günlükleri ve Azure izleyici günlüğü başlangıç Önizleme  |
+| Denetim ve yönetim düzlemi günlüğü ve denetimi | Evet | Etkinlik günlüğünü Azure Resource Manager |
+| Veri düzlemi günlüğü ve denetimi| Evet | Hizmet tanılama günlükleri ve Azure Izleyici günlüğü başlangıç önizlemesi  |
 
 ## <a name="configuration-management"></a>Yapılandırma yönetimi
 
 | Güvenlik özniteliği | Evet/Hayır | Notlar|
 |---|---|--|
-| Yapılandırma yönetimi desteği (sürüm yapılandırması, vs.)| Evet | Azure Resource Manager API'leri aracılığıyla kaynak sağlayıcısı sürüm desteği |
+| Yapılandırma yönetimi desteği (yapılandırmanın sürümü oluşturma, vb.)| Evet | Azure Resource Manager API 'Leri aracılığıyla kaynak sağlayıcısı sürümlendirmeyi destekleme |

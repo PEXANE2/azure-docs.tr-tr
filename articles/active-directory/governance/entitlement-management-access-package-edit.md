@@ -1,10 +1,10 @@
 ---
-title: Düzenleme ve Azure AD hak yönetimi (Önizleme) - Azure Active Directory içinde var olan erişim paketini yönetme
-description: Düzenleme ve Azure Active Directory hak yönetimi (Önizleme) içinde var olan erişim paketini yönetme hakkında bilgi edinin.
+title: Azure AD Yetkilendirme Yönetimi 'nde (Önizleme) var olan bir erişim paketini düzenleyin ve yönetin Azure Active Directory
+description: Azure Active Directory yetkilendirme yönetimi 'nde (Önizleme) var olan bir erişim paketini düzenlemeyi ve yönetmeyi öğrenin.
 services: active-directory
 documentationCenter: ''
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.workload: identity
@@ -12,341 +12,341 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 05/16/2019
-ms.author: rolyon
+ms.date: 07/23/2019
+ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73c1717249abac30847f96073ee6daf7d98112d7
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: c07f9dbcc21840bec4b4487225dfb8108586865e
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190344"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489196"
 ---
-# <a name="edit-and-manage-an-existing-access-package-in-azure-ad-entitlement-management-preview"></a>Düzenleme ve Azure AD hak yönetimi (Önizleme) içinde var olan erişim paketini yönetme
+# <a name="edit-and-manage-an-existing-access-package-in-azure-ad-entitlement-management-preview"></a>Azure AD Yetkilendirme Yönetimi 'nde var olan bir erişim paketini düzenleyin ve yönetin (Önizleme)
 
 > [!IMPORTANT]
-> Azure Active Directory (Azure AD) Yetkilendirme Yönetimi, şu anda genel Önizleme aşamasındadır.
+> Azure Active Directory (Azure AD) yetkilendirme yönetimi şu anda genel önizleme aşamasındadır.
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
 > Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Bir erişim paket ömrü boyunca erişim paket erişimi otomatik olarak yönetir kaynaklarının ve ilkeleri tek seferlik Kurulumu yapmanıza olanak sağlar. Bir erişim Paket Yöneticisi olarak, yeni kaynaklarına kullanıcının erişimi sağlama veya önceki kaynaklardan erişimleri kaldırma hakkında endişelenmeden erişim paket kaynakları dilediğiniz zaman değiştirebilirsiniz. İlkeler, dilediğiniz zaman güncelleştirilebilir, ancak ilke değişiklikleri yeni erişim yalnızca etkiler.
+Erişim paketi, erişim paketinin ömrü boyunca erişimi otomatik olarak yöneten kaynak ve ilkelerin bir kerelik kurulumunu yapmanızı sağlar. Bir erişim paketi Yöneticisi olarak, bir erişim paketindeki kaynakları, kullanıcının yeni kaynaklara erişimini sağlama veya önceki kaynaklardan erişimleri kaldırma konusunda endişelenmeden dilediğiniz zaman değiştirebilirsiniz. İlkeler de her zaman güncelleştirilemeyebilir, ancak ilke değişiklikleri yalnızca yeni erişimleri etkiler.
 
-Bu makalede, düzenleme ve mevcut erişim paketlerini yönetme açıklar.
+Bu makalede, mevcut erişim paketlerinin nasıl düzenleneceği ve yönetileceği açıklanmaktadır.
 
-## <a name="add-resource-roles"></a>Kaynak rolleri Ekle
+## <a name="add-resource-roles"></a>Kaynak rolleri ekleme
 
-Kaynak rolü kaynakla ilişkili izinler koleksiyonudur. Kaynakları istemek kullanıcılar için kullanılabilir hale kaynak rolleri için erişim paketinizi ekleyerek yoludur. Grupları, uygulamaları ve SharePoint siteleri için kaynak rolleri ekleyebilirsiniz.
+Kaynak rolü, bir kaynakla ilişkili izinlerin koleksiyonudur. Kaynakları kullanıcıların istemesi için kullanılabilir hale getirmenin yolu, erişim paketinize kaynak rolleri eklemektir. Gruplar, uygulamalar ve SharePoint siteleri için kaynak rolleri ekleyebilirsiniz.
 
-**Önkoşul rolü:** Kullanıcı Yöneticisi, katalog sahibi veya erişim Paket Yöneticisi
+**Önkoşul rolü:** Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
 
-1. Azure portalında **Azure Active Directory** ve ardından **Kimlik Yönetimi**.
+1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
 
-1. Sol menüde **erişim paketleri** ve erişim paketini açın.
+1. Sol menüde, **erişim paketleri** ' ne tıklayın ve ardından erişim paketini açın.
 
-1. Sol menüde **kaynak rolleri**.
+1. Sol taraftaki menüden **kaynak rolleri**' ne tıklayın.
 
-1. Tıklayın **kaynak rolleri ekleme** paket sayfasına erişmek için kaynak Rol Ekle açın.
+1. **Kaynak rolleri ekle** ' ye tıklayarak pakete erişmek için kaynak rolleri Ekle sayfasını açın.
 
-    ![Paket erişim - kaynak rolleri Ekle](./media/entitlement-management-access-package-edit/resource-roles-add.png)
+    ![Erişim paketi-kaynak rolleri ekleme](./media/entitlement-management-access-package-edit/resource-roles-add.png)
 
-1. Bir grup, uygulama veya SharePoint sitesi eklemek isteyip istemediğinizi bağlı olarak, adımları aşağıdaki kaynak rolü bölümleri birini gerçekleştirin.
+1. Bir grup, uygulama veya SharePoint sitesi eklemek istediğinize bağlı olarak, aşağıdaki kaynak rolü bölümlerinden birindeki adımları gerçekleştirin.
 
-### <a name="add-a-group-resource-role"></a>Bir Grup Kaynak rolü Ekle
+### <a name="add-a-group-resource-role"></a>Grup kaynağı rolü ekleme
 
-Hak Yönetimi otomatik olarak erişim paket atandığında bir gruba kullanıcı ekleme olabilir. 
+Bir erişim paketi atandığında, yetkilendirme yönetiminin kullanıcıları otomatik olarak gruba eklemesini sağlayabilirsiniz. 
 
-- Bir gruba erişim paketi ve bir kullanıcı bir parçası olduğunda, o erişim paket için kullanıcıyı bu gruba eklenir, zaten mevcut değilse atanır.
-- Bir kullanıcının erişim paket atamasını süresi dolduğunda, şu anda aynı grubu içeren başka bir erişim paket atama yoksa bunlar grubundan kaldırılır.
+- Bir grup bir erişim paketinin parçası olduğunda ve bu erişim paketine bir Kullanıcı atandığında, Kullanıcı zaten mevcut değilse bu gruba eklenir.
+- Bir kullanıcının erişim paketi atamasının süresi dolarsa, o anda aynı grubu içeren başka bir erişim paketine bir atamaya sahip olmadıkları takdirde gruptan kaldırılır.
 
-Herhangi bir Azure AD güvenlik grubu veya Office 365 grubu seçebilirsiniz.  Yöneticiler, herhangi bir grubu için bir katalog ekleyebilir; grubun sahibi olmaları durumunda Kataloğu sahipleri kataloğa herhangi bir grubu ekleyebilirsiniz. Aşağıdaki Azure AD kısıtlamaları, bir grup seçerken göz önünde bulundurun:
+Herhangi bir Office 365 grubunu veya Azure AD güvenlik grubunu seçebilirsiniz.  Yöneticiler, kataloğa herhangi bir grup ekleyebilir; Katalog sahipleri, grubun sahibiyseniz, kataloğa herhangi bir grup ekleyebilir. Bir grup seçerken aşağıdaki Azure AD kısıtlamalarını aklınızda bulundurun:
 
-- Bir konuk dahil olmak üzere, bir kullanıcı grubuna üye olarak eklendiğinde, bu grubun diğer tüm üyeleri görebilir.
-- Azure AD, Windows Server Active Azure AD Connect kullanarak Directory'den eşitlenen bir grubun üyeliğini değiştiremezsiniz.  
-- Dinamik grup üyeliği ekleyerek veya dinamik grup üyeliği, hak yönetimi ile kullanım için uygun değildir. Bu nedenle, üye çıkarılması güncelleştirilemiyor.
+- Konuk dahil bir Kullanıcı bir gruba üye olarak eklendiğinde, bu grubun tüm diğer üyelerini görebilirler.
+- Azure AD, Azure AD Connect kullanılarak Windows Server Active Directory eşitlenen bir grubun üyeliğini değiştiremiyor.  
+- Dinamik grupların üyeliği üye ekleyerek veya kaldırarak güncelleştirilemez, bu nedenle dinamik grup üyelikleri yetkilendirme yönetimiyle kullanım için uygun değildir.
 
-1. Üzerinde **paket erişmek için kaynak rolleri ekleme** sayfasında **grupları** grupları bölmesini açmak için.
+1. **Pakete erişmek için kaynak rolleri ekle** sayfasında, **Gruplar ' a** tıklayarak Grup Seç bölmesini açın.
 
-1. Erişim paket içerisine dâhil etmek istediğiniz grupları seçin.
+1. Erişim paketine eklemek istediğiniz grupları seçin.
 
-    ![Paket erişim - kaynak rolleri - grupları Ekle](./media/entitlement-management-access-package-edit/group-select.png)
+    ![Erişim paketi-kaynak rolleri ekleme-Grup seçme](./media/entitlement-management-access-package-edit/group-select.png)
 
-1. **Seç**'e tıklayın.
+1. Tıklayın **seçin**.
 
-1. İçinde **rol** listesinden **sahibi** veya **üye**.
+1. **Rol** listesinde **Owner** veya **member**' ı seçin.
 
-    Genellikle, üye rolü de seçin. Sahip rolü seçerseniz, kullanıcıların diğer üyeleri veya sahipleri ekleme veya kaldırma sağlayacak.
+    Genellikle üye rolünü seçersiniz. Sahip rolünü seçerseniz, kullanıcıların başka Üyeler veya sahipler eklemesine veya kaldırmasına izin verir.
 
-    ![Paket erişim - Kaynak rolü için bir grup ekleme](./media/entitlement-management-access-package-edit/group-role.png)
+    ![Erişim paketi-bir grup için kaynak rolü ekleme](./media/entitlement-management-access-package-edit/group-role.png)
 
-1. **Ekle**'yi tıklatın.
+1.           **Ekle**'yi tıklatın.
 
-    Eklendiğinde mevcut atamaları erişim paketine sahip tüm kullanıcılar otomatik olarak bu grubun üyeleri olacak.
+    Erişim paketine mevcut atamaları olan tüm kullanıcılar, eklendiğinde otomatik olarak bu grubun üyesi olur.
 
-### <a name="add-an-application-resource-role"></a>Uygulama kaynak rolü Ekle
+### <a name="add-an-application-resource-role"></a>Uygulama kaynağı rolü ekleme
 
-Azure AD'ye otomatik olarak kullanıcıların SaaS uygulamaları hem de kullanıcı erişim paket atandığında Azure AD'ye Federasyon, kuruluşunuzun uygulamaları dahil olmak üzere bir Azure AD kuruluş uygulaması için erişim atama olabilir. Federasyon çoklu oturum açma aracılığıyla Azure AD ile tümleştirilen uygulamalar için Federasyon belirteçleri uygulamaya atanmış kullanıcılar için Azure AD vereceğiz.
+Bir kullanıcıya erişim paketi atandığında, Azure AD 'nin hem SaaS uygulamaları hem de kuruluşunuzun Azure AD 'ye federe uygulamalar dahil olmak üzere bir Azure AD kurumsal uygulamasına erişimini otomatik olarak atamasını sağlayabilirsiniz. Federasyon çoklu oturum açma aracılığıyla Azure AD ile tümleştirilen uygulamalar için Azure AD, uygulamaya atanan kullanıcılar için Federasyon belirteçleri verir.
 
-Uygulamalar birden çok rol sahip olabilir. Bu uygulamanın birden fazla rol varsa bir uygulamaya bir erişim paket eklerken, bu kullanıcılar için uygun rolü belirtmek gerekir.  Uygulamalar geliştiriyorsanız, uygulamalarınıza nasıl makalede bu rolleri hakkında daha fazla sağlanan okuyabilirsiniz [SAML belirtecinde verilen rol talep yapılandırma](../develop/active-directory-enterprise-app-role-management.md).
+Uygulamalar birden çok role sahip olabilir. Bir erişim paketine bir uygulama eklerken, bu uygulamanın birden fazla rolü varsa, bu kullanıcılar için uygun rolü belirtmeniz gerekir.  Uygulama geliştiriyorsanız, [SAML belirtecinde verilen rol talebinin nasıl yapılandırılacağı](../develop/active-directory-enterprise-app-role-management.md)hakkında makalesinde, bu rollerin uygulamalarınıza nasıl sağlandığını öğrenmek için daha fazla bilgi edinebilirsiniz.
 
-Bir uygulama rolü erişim paketinin bir parçası olduğunda:
+Uygulama rolü bir erişim paketinin parçası olduktan sonra:
 
-- Bir kullanıcı bu erişimi paket atandığında, kullanıcının bu uygulama rolüne eklenir, zaten mevcut değilse.
-- Bir kullanıcının erişim paket atamasını süresi dolduğunda, uygulama rolü içeren başka bir erişim paketi atamaya sahip olmadıkları sürece uygulamadan erişimleri kaldırılacak.
+- Bir Kullanıcı bu erişim paketine atandığında, zaten mevcut değilse Kullanıcı söz konusu uygulama rolüne eklenir.
+- Bir kullanıcının erişim paketi atamasının süresi dolarsa, bu uygulama rolünü içeren başka bir erişim paketine atanması gerekmedikçe erişimleri uygulamadan kaldırılır.
 
-Bir uygulama seçerken bazı noktalar şunlardır:
+Bir uygulama seçerken bazı konular aşağıda verilmiştir:
 
-- Uygulamaları, kendi rolleri için atanan gruplar da olabilir.  Daha sonra uygulama My erişim Portalı'nda erişim paketinin bir parçası olarak kullanıcıya görünür olmaz ancak bir erişim paketinde bir gruba uygulama rolü yerine eklemeyi seçebilirsiniz.
+- Uygulamalarda Ayrıca, rollerine de atanmış gruplar bulunabilir.  Bir erişim paketindeki uygulama rolü yerine bir grup eklemeyi seçebilirsiniz, ancak bundan sonra uygulama kullanıcıya erişim portalındaki erişim paketinin bir parçası olarak görünmez.
 
-1. Üzerinde **paket erişmek için kaynak rolleri ekleme** sayfasında **uygulamaları** uygulama bölmesini açın.
+1. **Pakete erişmek için kaynak rolleri ekle** sayfasında **uygulamalar** ' a tıklayarak uygulama Seç bölmesini açın.
 
-1. Erişim paket içerisine dâhil etmek istediğiniz uygulamaları seçin.
+1. Erişim paketine eklemek istediğiniz uygulamaları seçin.
 
-    ![Paket erişim - kaynak rolleri - uygulama ekleme](./media/entitlement-management-access-package-edit/application-select.png)
+    ![Erişim paketi-kaynak rolleri ekleme-uygulama seçme](./media/entitlement-management-access-package-edit/application-select.png)
 
-1. **Seç**'e tıklayın.
+1. Tıklayın **seçin**.
 
-1. İçinde **rol** listesinde, bir uygulama rolü seçin.
+1. **Rol** listesinde bir uygulama rolü seçin.
 
-    ![Paket erişim - bir uygulama için kaynak rolü ekleme](./media/entitlement-management-access-package-edit/application-role.png)
+    ![Erişim paketi-bir uygulama için kaynak rolü ekleme](./media/entitlement-management-access-package-edit/application-role.png)
 
-1. **Ekle**'yi tıklatın.
+1.           **Ekle**'yi tıklatın.
 
-    Eklendiğinde mevcut atamaları erişim paketine sahip tüm kullanıcılar otomatik olarak erişim için bu uygulamayı verilir.
+    Erişim paketine mevcut atamalara sahip tüm kullanıcılara, eklendiğinde bu uygulamaya otomatik olarak erişim verilir.
 
-### <a name="add-a-sharepoint-site-resource-role"></a>Bir SharePoint site Kaynak rolü Ekle
+### <a name="add-a-sharepoint-site-resource-role"></a>SharePoint site kaynağı rolü ekleme
 
-Erişim paket atandığında azure AD'ye otomatik olarak kullanıcılar erişim için bir SharePoint Online sitesi veya SharePoint Online site koleksiyonu atayabilirsiniz.
+Azure AD, kullanıcılara bir SharePoint Online sitesine veya SharePoint Online site koleksiyonuna erişim paketi atandığında otomatik olarak erişim atayabilir.
 
-1. Üzerinde **paket erişmek için kaynak rolleri ekleme** sayfasında **SharePoint siteleri** seçin SharePoint Online siteleri bölmesini açmak için.
+1. **Pakete erişmek için kaynak rolleri ekle** sayfasında **SharePoint siteleri** ' ne tıklayarak SharePoint Online siteleri Seç bölmesini açın.
 
-1. Erişim paket içerisine dâhil etmek istediğiniz SharePoint Online siteleri seçin.
+1. Erişim paketine eklemek istediğiniz SharePoint Online sitelerini seçin.
 
-    ![Paket erişim - kaynak rolleri - seçin SharePoint Online sitesine ekleme](./media/entitlement-management-access-package-edit/sharepoint-site-select.png)
+    ![Erişim paketi-kaynak rolleri ekleme-SharePoint Online siteleri seçin](./media/entitlement-management-access-package-edit/sharepoint-site-select.png)
 
-1. **Seç**'e tıklayın.
+1. Tıklayın **seçin**.
 
-1. İçinde **rol** listesinde, bir SharePoint Online site rolü seçin.
+1. **Rol** listesinde bir SharePoint Online site rolü seçin.
 
-    ![Paket erişim - bir SharePoint Online sitesi için kaynak rolü ekleme](./media/entitlement-management-access-package-edit/sharepoint-site-role.png)
+    ![Erişim paketi-SharePoint Online sitesi için kaynak rolü ekleme](./media/entitlement-management-access-package-edit/sharepoint-site-role.png)
 
-1. **Ekle**'yi tıklatın.
+1.           **Ekle**'yi tıklatın.
 
-    Eklendiğinde mevcut atamaları erişim paketine sahip tüm kullanıcılar otomatik olarak erişim için bu SharePoint Online sitesine verilir.
+    Erişim paketine mevcut atamalara sahip olan tüm kullanıcılara, eklendiğinde bu SharePoint Online sitesine otomatik olarak erişim verilir.
 
-## <a name="remove-resource-roles"></a>Kaynak rolleri kaldırın
+## <a name="remove-resource-roles"></a>Kaynak rollerini kaldırma
 
-**Önkoşul rolü:** Kullanıcı Yöneticisi, katalog sahibi veya erişim Paket Yöneticisi
+**Önkoşul rolü:** Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
 
-1. Azure portalında **Azure Active Directory** ve ardından **Kimlik Yönetimi**.
+1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
 
-1. Sol menüde **erişim paketleri** ve erişim paketini açın.
+1. Sol menüde, **erişim paketleri** ' ne tıklayın ve ardından erişim paketini açın.
 
-1. Sol menüde **kaynak rolleri**.
+1. Sol taraftaki menüden **kaynak rolleri**' ne tıklayın.
 
-1. Kaynak rolleri listesinde, kaldırmak istediğiniz kaynak rolü bulun.
+1. Kaynak rolleri listesinde, kaldırmak istediğiniz kaynak rolünü bulun.
 
-1. Üç nokta simgesine tıklayın ( **...** ) ve ardından **Kaynak rolü Kaldır**.
+1. Üç noktaya ( **...** ) ve ardından **kaynak rolünü kaldır**' a tıklayın.
 
-    Mevcut atamaları erişim paketine sahip tüm kullanıcılar otomatik olarak bu kaynak rolüne, kaldırıldığında iptal kendi erişebilir.
+    Erişim paketine mevcut atamaları olan tüm kullanıcılar, kaldırıldığında bu kaynak rolü için otomatik olarak erişimi iptal eder.
 
-## <a name="add-a-new-policy"></a>Yeni İlke Ekle
+## <a name="add-a-new-policy"></a>Yeni ilke ekle
 
-Kimin bir erişim paketini talep edebilir belirttiğiniz şekilde bir ilke oluşturmaktır. Farklı kullanıcı kümeleri için farklı onay ve sona erme ayarları atamaları verilecek izin vermek istiyorsanız, tek bir erişim paketi için birden çok ilke oluşturabilirsiniz. Tek bir ilke, iç ve dış kullanıcılar için aynı erişim paketini atamak için kullanılamaz. Ancak, aynı erişim pakette--iki ilke oluşturabilirsiniz. bir iç kullanıcılar ve dış kullanıcılar için. Bir kullanıcıya uygulanan birden çok ilke varsa, atanacak istediğiniz ilkeyi seçin, isteği zamanında istenir.
+Ne şekilde bir erişim paketi isteyebilen bir ilke oluşturmaktır. Farklı Kullanıcı kümelerine, farklı onay ve sona erme ayarlarına sahip atamalar verilmesini sağlamak istiyorsanız, tek bir erişim paketi için birden çok ilke oluşturabilirsiniz. Tek bir ilke, aynı erişim paketine iç ve dış kullanıcı atamak için kullanılamaz. Bununla birlikte, aynı erişim paketinde bir tane olmak üzere, biri iç kullanıcılar ve diğeri dış kullanıcılar için olmak üzere iki ilke oluşturabilirsiniz. Bir kullanıcı için uygulanan birden çok ilke varsa, kendilerine atanması gereken ilkeyi seçme istekleri sırasında istenir.
 
-Aşağıdaki diyagramda, mevcut bir erişim pakete yönelik bir ilke oluşturmak için üst düzey bir işlem gösterilir.
+Aşağıdaki diyagramda, var olan bir erişim paketine yönelik bir ilke oluşturmak için üst düzey işlem gösterilmektedir.
 
-![Bir ilke işlemi oluşturma](./media/entitlement-management-access-package-edit/policy-process.png)
+![İlke işlemi oluşturma](./media/entitlement-management-access-package-edit/policy-process.png)
 
-**Önkoşul rolü:** Kullanıcı Yöneticisi, katalog sahibi veya erişim Paket Yöneticisi
+**Önkoşul rolü:** Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
 
-1. Azure portalında **Azure Active Directory** ve ardından **Kimlik Yönetimi**.
+1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
 
-1. Sol menüde **erişim paketleri** ve erişim paketini açın.
+1. Sol menüde, **erişim paketleri** ' ne tıklayın ve ardından erişim paketini açın.
 
-1. Tıklayın **ilkeleri** ardından **ilke Ekle**.
+1. **İlkeler** ' e ve ardından **ilke Ekle**' ye tıklayın.
 
-1. Bir ad ve ilke için bir açıklama yazın.
+1. İlke için bir ad ve açıklama yazın.
 
-    ![İlke adı ve açıklaması ile oluşturma](./media/entitlement-management-access-package-edit/policy-name-description.png)
+    ![Ad ve açıklama ile ilke oluştur](./media/entitlement-management-access-package-edit/policy-name-description.png)
 
-1. Seçiminiz için temel **erişim isteğinde bulunabileceği kullanıcılar**, aşağıdaki ilke bölümlerden birine adımları gerçekleştirin.
+1. **Erişim Isteyebilen kullanıcılar**için seçiminize bağlı olarak, aşağıdaki ilke bölümlerinden birindeki adımları gerçekleştirin.
 
 [!INCLUDE [Entitlement management policy](../../../includes/active-directory-entitlement-management-policy.md)]
 
-## <a name="edit-an-existing-policy"></a>Var olan bir ilkeyi Düzenle
+## <a name="edit-an-existing-policy"></a>Var olan bir ilkeyi düzenleme
 
-Herhangi bir zamanda bir ilkeyi düzenleyebilirsiniz. Bir ilke için sona erme tarihi değiştirirseniz, zaten bekleyen bir onay ya da durum onaylanan istekler için sona erme tarihi değiştirmez.
+Bir ilkeyi dilediğiniz zaman düzenleyebilirsiniz. Bir ilkenin sona erme tarihini değiştirirseniz, zaten bekleyen bir onaylama veya onaylanan durumda olan isteklerin sona erme tarihi değişmez.
 
-**Önkoşul rolü:** Kullanıcı Yöneticisi, katalog sahibi veya erişim Paket Yöneticisi
+**Önkoşul rolü:** Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
 
-1. Azure portalında **Azure Active Directory** ve ardından **Kimlik Yönetimi**.
+1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
 
-1. Sol menüde **erişim paketleri** ve erişim paketini açın.
+1. Sol menüde, **erişim paketleri** ' ne tıklayın ve ardından erişim paketini açın.
 
-1. Tıklayın **ilkeleri** ve düzenlemek istediğiniz ilkenin'ye tıklayın.
+1. **İlkeler** ' e tıklayın ve ardından düzenlemek istediğiniz ilkeye tıklayın.
 
-    **İlke ayrıntıları** sayfanın alt kısmında bölmesi açılır.
+    **İlke ayrıntıları** bölmesi sayfanın altında açılır.
 
-    ![Paket erişim - ilke ayrıntıları bölmesi](./media/entitlement-management-access-package-edit/policy-details.png)
+    ![Erişim paketi-Ilke ayrıntıları bölmesi](./media/entitlement-management-access-package-edit/policy-details.png)
 
-1. Tıklayın **Düzenle** ilkeyi düzenlemek için.
+1. İlkeyi düzenlemek için **Düzenle** ' ye tıklayın.
 
-    ![Erişim package - Düzenleme İlkesi](./media/entitlement-management-access-package-edit/policy-edit.png)
+    ![Erişim paketi-ilkeyi Düzenle](./media/entitlement-management-access-package-edit/policy-edit.png)
 
-1. İşiniz bittiğinde tıklayın **güncelleştirme**.
+1. İşiniz bittiğinde **Güncelleştir**' e tıklayın.
 
 ## <a name="directly-assign-a-user"></a>Doğrudan kullanıcı atama
 
-Bazı durumlarda, böylece kullanıcıların erişim paket isteyen işlem yapması gerekmez belirli kullanıcılar için bir erişim paketi doğrudan atamak isteyebilirsiniz. Doğrudan kullanıcılara atamak için erişim paket yönetici doğrudan atamaları izin veren bir ilke olması gerekir.
+Bazı durumlarda, kullanıcıların erişim paketini isteme işlemini istememeleri için bir erişim paketine doğrudan belirli kullanıcıları atamak isteyebilirsiniz. Kullanıcıları doğrudan atamak için, erişim paketinin yönetici doğrudan atamalarına izin veren bir ilkesi olması gerekir.
 
-**Önkoşul rolü:** Kullanıcı Yöneticisi, katalog sahibi veya erişim Paket Yöneticisi
+**Önkoşul rolü:** Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
 
-1. Azure portalında **Azure Active Directory** ve ardından **Kimlik Yönetimi**.
+1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
 
-1. Sol menüde **erişim paketleri** ve erişim paketini açın.
+1. Sol menüde, **erişim paketleri** ' ne tıklayın ve ardından erişim paketini açın.
 
-1. Sol menüde **atamaları**.
+1. Sol taraftaki menüde **atamalar**' a tıklayın.
 
-1. Tıklayın **yeni atama** kullanıcı erişim pakete Ekle açın.
+1. Erişim paketine Kullanıcı Ekle ' yi açmak için **yeni atama** ' ya tıklayın.
 
-    ![Atamaları - ekleme kullanıcıya erişim paket](./media/entitlement-management-access-package-edit/assignments-add-user.png)
+    ![Atamalar-erişim paketine Kullanıcı ekleme](./media/entitlement-management-access-package-edit/assignments-add-user.png)
 
-1. Tıklayın **kullanıcı ekleme** erişim paketi atamak istediğiniz kullanıcıları seçin.
+1. Erişim paketini atamak istediğiniz kullanıcıları seçmek için **Kullanıcı Ekle** ' ye tıklayın.
 
-1. İçinde **seçin, ilke** listesinde, var olan bir ilke seçin [yok (doğrudan atama Yöneticisi yalnızca)](#policy-none-administrator-direct-assignments-only) ayarı.
+1. **Ilke Seç** listesinde, [none (yalnızca yönetici doğrudan atamaları)](#policy-none-administrator-direct-assignments-only) ayarı olan bir ilke seçin.
 
-    Bu erişim paket bu tür bir ilke yoksa tıklayabilirsiniz **yeni ilke Oluştur** eklemek için.
+    Bu erişim paketinde bu ilke türü yoksa, **Yeni Ilke oluştur** ' a tıklayarak bir tane ekleyebilirsiniz.
 
-1. Seçili kullanıcılar ataması başlangıç ve bitiş için tarih ve saat olarak ayarlayın. Bitiş tarihi sağlanmazsa, ilkenin sona erme ayarları kullanılacaktır.
+1. Seçili kullanıcıların atamasının başlamasını ve bitmesini istediğiniz tarih ve saati ayarlayın. Bir bitiş tarihi sağlanmazsa, ilkenin süre sonu ayarları kullanılacaktır.
 
-1. İsteğe bağlı olarak, doğrudan atama tutulması için bir gerekçe belirtin.
+1. İsteğe bağlı olarak kayıt tutmaya yönelik doğrudan atamanız için bir gerekçe sağlar.
 
-1. Tıklayın **Ekle** seçili kullanıcıların erişim pakete doğrudan atamak için.
+1. Seçili kullanıcıları doğrudan erişim paketine atamak için **Ekle** ' ye tıklayın.
 
-    Birkaç dakika sonra tıklayın **Yenile** atamalar listesinde kullanıcıları görmek için.
+    Birkaç dakika sonra, atamalar listesinde kullanıcıları görmek için **Yenile** ' ye tıklayın.
 
-## <a name="view-who-has-an-assignment"></a>Bir ataması görüntüle
+## <a name="view-who-has-an-assignment"></a>Kimin atamaya sahip olduğunu görüntüleme
 
-**Önkoşul rolü:** Kullanıcı Yöneticisi, katalog sahibi veya erişim Paket Yöneticisi
+**Önkoşul rolü:** Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
 
-1. Azure portalında **Azure Active Directory** ve ardından **Kimlik Yönetimi**.
+1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
 
-1. Sol menüde **erişim paketleri** ve erişim paketini açın.
+1. Sol menüde, **erişim paketleri** ' ne tıklayın ve ardından erişim paketini açın.
 
-1. Tıklayın **atamaları** etkin atamalar listesini görmek için.
+1. Etkin atamaların listesini görmek için **atamalar** ' a tıklayın.
 
-1. Belirli bir atama ek ayrıntıları görmek için tıklayın.
+1. Ek ayrıntıları görmek için belirli bir atamaya tıklayın.
 
-1. Tüm kaynak rolleri düzgün bir şekilde sağlanmış yoktu atamaları listesini görmek için filtre durum tıklayıp **dağıtma**.
+1. Tüm kaynak rollerinin düzgün şekilde sağlandığı atamaların listesini görmek için, filtre durumuna tıklayın ve **teslim etme**' yi seçin.
 
-    Kullanıcının karşılık gelen isteği bulma tarafından teslim hataları hakkında ek ayrıntılar görebilirsiniz **istekleri** sayfası.
+    **İstek** sayfasında, kullanıcının karşılık gelen isteğini bularak teslim hatalarıyla ilgili ek ayrıntıları görebilirsiniz.
 
-1. Süresi dolan atamaları görmek için filtre durum tıklayıp **süresi dolan**.
+1. Süre biten atamaları görmek için, filtre durumuna tıklayın ve süre **bitti**' yi seçin.
 
-1. Filtrelenmiş liste bir CSV dosyasını indirmek için tıklayın **indirme**.
+1. Filtrelenmiş listenin CSV dosyasını indirmek için **İndir**' e tıklayın.
 
 ## <a name="view-requests"></a>İstekleri görüntüle
 
-**Önkoşul rolü:** Kullanıcı Yöneticisi, katalog sahibi veya erişim Paket Yöneticisi
+**Önkoşul rolü:** Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
 
-1. Azure portalında **Azure Active Directory** ve ardından **Kimlik Yönetimi**.
+1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
 
-1. Sol menüde **erişim paketleri** ve erişim paketini açın.
+1. Sol menüde, **erişim paketleri** ' ne tıklayın ve ardından erişim paketini açın.
 
-1. Tıklayın **istekleri**.
+1. **İstekler**' e tıklayın.
 
-1. Ek ayrıntıları görmek için belirli bir istek'i tıklatın.
+1. Ek ayrıntıları görmek için belirli bir isteğe tıklayın.
 
-## <a name="view-a-requests-delivery-errors"></a>Bir isteğin teslim hataları görüntüleyin
+## <a name="view-a-requests-delivery-errors"></a>Bir isteğin teslim hatalarını görüntüleme
 
-**Önkoşul rolü:** Kullanıcı Yöneticisi, katalog sahibi veya erişim Paket Yöneticisi
+**Önkoşul rolü:** Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
 
-1. Azure portalında **Azure Active Directory** ve ardından **Kimlik Yönetimi**.
+1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
 
-1. Sol menüde **erişim paketleri** ve erişim paketini açın.
+1. Sol menüde, **erişim paketleri** ' ne tıklayın ve ardından erişim paketini açın.
 
-1. Tıklayın **istekleri**.
+1. **İstekler**' e tıklayın.
 
 1. Görüntülemek istediğiniz isteği seçin.
 
-    İstek, herhangi bir teslim hata varsa, isteği durum olacaktır **Undelivered** ve alt **kısmen teslim**.
+    İstekte herhangi bir teslim hatası varsa, istek durumu **teslim** edilmemiş olur ve alt durum **kısmen teslim**edilir.
 
-    İsteğin ayrıntı bölmesinde teslim hataları varsa, teslim hataların sayısını olacaktır.
+    Herhangi bir teslim hatası varsa, isteğin ayrıntı bölmesinde teslim hatalarının sayısı olacaktır.
 
-1. Sayı tüm isteğin teslim hataları görmek için tıklayın.
+1. Tüm isteğin teslim hatalarını görmek için sayıma tıklayın.
 
-## <a name="cancel-a-pending-request"></a>Bekleyen isteği iptal et
+## <a name="cancel-a-pending-request"></a>Bekleyen bir isteği iptal etme
 
-Yalnızca, henüz teslim edilmemiş bekleyen bir isteği iptal edebilirsiniz.
+Yalnızca henüz teslim edilmemiş bekleyen bir isteği iptal edebilirsiniz.
 
-**Önkoşul rolü:** Kullanıcı Yöneticisi, katalog sahibi veya erişim Paket Yöneticisi
+**Önkoşul rolü:** Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
 
-1. Azure portalında **Azure Active Directory** ve ardından **Kimlik Yönetimi**.
+1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
 
-1. Sol menüde **erişim paketleri** ve erişim paketini açın.
+1. Sol menüde, **erişim paketleri** ' ne tıklayın ve ardından erişim paketini açın.
 
-1. Tıklayın **istekleri**.
+1. **İstekler**' e tıklayın.
 
-1. İsteği iptal etmek istediğiniz tıklayın
+1. İptal etmek istediğiniz isteğe tıklayın
 
-1. İstek ayrıntıları bölmesinde **iptal isteği**.
+1. İstek ayrıntıları bölmesinde **Isteği Iptal et**' e tıklayın.
 
-## <a name="copy-my-access-portal-link"></a>My erişim portalı bağlantıyı Kopyala
+## <a name="copy-my-access-portal-link"></a>Erişim Portalı bağlantısını Kopyala
 
-Dizininizdeki çoğu kullanıcının, My erişim portalında oturum açın ve otomatik olarak talep edebilir erişim paketlerin bir listesi görmek. Ancak, henüz dizininizde olmayan dış iş ortağı kullanıcılar için erişim paket isteği için kullanabilecekleri bir bağlantı şirketlerde gerekecektir. Erişim paket dış kullanıcılar için etkindir ve dış kullanıcı dizini için bir ilke sahip olduğu sürece, dış kullanıcı erişim paket isteği için My erişim portalı bağlantısını kullanabilirsiniz.
+Dizininizdeki çoğu kullanıcı erişim portalı 'nda oturum açabilir ve istedikleri erişim paketleri listesini otomatik olarak görebilir. Ancak, henüz dizininizden olmayan dış iş ortağı kullanıcıları için, onlara bir erişim paketi istemek üzere kullanabilecekleri bir bağlantı göndermeniz gerekecektir. Erişim paketi dış kullanıcılar için etkinleştirildiğinden ve dış kullanıcının dizini için bir ilkeniz varsa, dış Kullanıcı erişim paketini istemek için erişim portalı bağlantısını kullanabilir.
 
-**Önkoşul rolü:** Kullanıcı Yöneticisi, katalog sahibi veya erişim Paket Yöneticisi
+**Önkoşul rolü:** Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
 
-1. Azure portalında **Azure Active Directory** ve ardından **Kimlik Yönetimi**.
+1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
 
-1. Sol menüde **erişim paketleri** ve erişim paketini açın.
+1. Sol menüde, **erişim paketleri** ' ne tıklayın ve ardından erişim paketini açın.
 
-1. Genel bakış sayfasında kopyalamak **My erişim portalı bağlantısı**.
+1. Genel Bakış sayfasında, **erişim portalı My bağlantısını**kopyalayın.
 
-    ![Erişim pakete genel bakış - My erişim portalı bağlantısı](./media/entitlement-management-shared/my-access-portal-link.png)
+    ![Erişim paketine genel bakış-erişim portalı bağlantısı](./media/entitlement-management-shared/my-access-portal-link.png)
 
-1. E-posta veya dış iş ortağınıza bağlantıyı gönderin. Bağlantıyı erişim paket isteği için kendi kullanıcılarla paylaşabilirler.
+1. Dış iş ortağınıza e-posta gönderin veya bağlantıyı gönderin. Erişim paketini istemek için bağlantısını kullanıcılarla paylaşabilir.
 
-## <a name="change-the-hidden-setting"></a>Gizli ayarını değiştirin
+## <a name="change-the-hidden-setting"></a>Gizli ayarı Değiştir
 
-Erişim paketler, varsayılan olarak bulunabilir. Bu erişim paket isteği bir kullanıcı bir ilke izin veriyorsa, bunlar otomatik olarak kendi My erişim Portalı'nda listelenen erişim paket göreceği anlamına gelir.
+Erişim paketleri varsayılan olarak bulunabilir. Bu, bir ilke bir kullanıcının erişim paketini istemesine izin veriyorsa, erişim paketini otomatik olarak erişim portalı 'nda listelenmiş olarak görebilecekleri anlamına gelir.
 
-**Önkoşul rolü:** Kullanıcı Yöneticisi, katalog sahibi veya erişim Paket Yöneticisi
+**Önkoşul rolü:** Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
 
-1. Azure portalında **Azure Active Directory** ve ardından **Kimlik Yönetimi**.
+1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
 
-1. Sol menüde **erişim paketleri** ve erişim paketini açın.
+1. Sol menüde, **erişim paketleri** ' ne tıklayın ve ardından erişim paketini açın.
 
-1. Genel bakış sayfasında tıklayın **Düzenle**.
+1. Genel Bakış sayfasında, **Düzenle**' ye tıklayın.
 
-1. Ayarlama **gizli** ayarı.
+1. **Gizli** ayarını ayarlayın.
 
-    Varsa kümesine **Hayır**, erişim paket kullanıcının My erişim Portalı'nda listelenmez.
+    **Hayır**olarak ayarlanırsa, erişim paketi kullanıcının erişim portalında listelenir.
 
-    Varsa kümesine **Evet**, erişim paket kullanıcının My erişim Portalı'nda listelenmez. Doğrudan sahip bir kullanıcı, erişim paket görüntüleyebilir tek yol budur **My erişim portalı bağlantısı** erişim paketi.
+    **Evet**olarak ayarlanırsa, erişim paketi kullanıcının erişim portalı 'nda listelenmez. Bir kullanıcının erişim paketine doğrudan **erişim portalı bağlantısı** varsa, erişim paketini görüntüleyebilecekleri tek yöntem.
 
 ## <a name="delete"></a>Sil
 
-Etkin kullanıcı ataması yok, erişim paket yalnızca silinebilir.
+Erişim paketi yalnızca etkin kullanıcı atamaları yoksa silinebilir.
 
-**Önkoşul rolü:** Kullanıcı Yöneticisi, katalog sahibi veya erişim Paket Yöneticisi
+**Önkoşul rolü:** Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
 
-1. Azure portalında **Azure Active Directory** ve ardından **Kimlik Yönetimi**.
+1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
 
-1. Sol menüde **erişim paketleri** ve erişim paketini açın.
+1. Sol menüde, **erişim paketleri** ' ne tıklayın ve ardından erişim paketini açın.
 
-1. Sol menüde **atamaları** ve tüm kullanıcıların erişimini kaldırabilirsiniz.
+1. Sol taraftaki menüde **atamalar** ' a tıklayın ve tüm kullanıcılar için erişimi kaldırın.
 
-1. Sol menüde **genel bakış** ve ardından **Sil**.
+1. Sol menüde **genel bakış** ' a ve ardından **Sil**' e tıklayın.
 
-1. Görünür silme iletisi tıklayın **Evet**.
+1. Görüntülenen silme iletisinde **Evet**' e tıklayın.
 
-## <a name="when-are-changes-applied"></a>Değişikliklerin ne zaman uygulanır
+## <a name="when-are-changes-applied"></a>Değişiklik ne zaman uygulandı
 
-Hak Yönetimi'nde, günde birkaç kez atama ve erişim paketlerinizi kaynaklarında toplu değişiklikler Azure AD'ye işler. Atama olun veya kaynak rolleri erişim paketinizin değiştirmek, bu değişikliği Azure AD'de yapılacak 24 saate kadar sürebilir için süreyi yanı sıra diğer Microsoft Online Services bu değişiklikleri yaymak için alır veya SaaS uygulamasına bağlı s. Değişikliğinizi birkaç nesneleri etkileyen, değişiklik büyük olasılıkla yalnızca sonra diğer Azure AD bileşenleri daha sonra değiştirmek ve SaaS uygulamaları güncelleştirmek algılar, Azure AD'de uygulamak için birkaç dakika sürer. Değişikliğinizi binlerce nesneyi etkiliyorsa, değişikliğin daha uzun sürer. Örneğin, bir erişim paketiniz 2 uygulamaları ve 100 kullanıcı atamaları varsa ve erişim paketi bir SharePoint site rolü eklemek karar verirseniz, bir gecikme olabilir kadar tüm kullanıcıları, SharePoint site rolünü bir parçasıdır. Azure AD denetim günlüğü, Azure AD sağlama günlüğü ve SharePoint site denetim günlüklerini ilerlemeyi izleyebilirsiniz.
+Yetkilendirme Yönetimi 'nde Azure AD, erişim paketinizdeki atama ve kaynaklara yönelik toplu değişiklikleri günde birkaç kez işleyecek. Bu nedenle, bir atama yaparsanız veya erişim paketinizin kaynak rollerini değiştirirseniz, bu değişikliğin Azure AD 'de yapılması ve bu değişiklikleri diğer Microsoft Online hizmetlerine veya bağlı SaaS uygulamasına yayılması için geçen süreyi 24 saate kadar sürebilir olmalıdır Yaptığınız değişiklik yalnızca birkaç nesneyi etkiliyorsa, değişikliğin Azure AD 'de uygulanması birkaç dakika sürer. Bu durumda, diğer Azure AD bileşenleri bu değişikliği algılayacak ve SaaS uygulamalarını güncelleştirmeyecektir. Değişiklik, binlerce nesneyi etkiliyorsa değişiklik daha uzun sürer. Örneğin, 2 uygulama ve 100 Kullanıcı Ataması olan bir erişim paketiniz varsa ve erişim paketine bir SharePoint site rolü eklemeye karar verirseniz, tüm kullanıcılar bu SharePoint sitesi rolünün parçası olana kadar bir gecikme olabilir. İlerlemeyi Azure AD denetim günlüğü, Azure AD sağlama günlüğü ve SharePoint site denetim günlükleri aracılığıyla izleyebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Katalog sahibi veya bir erişim Paket Yöneticisi ekleme](entitlement-management-delegate.md#add-a-catalog-owner-or-an-access-package-manager)
-- [İstek işlemini ve e-posta bildirimleri](entitlement-management-process.md)
+- [Katalog sahibi veya erişim paketi Yöneticisi ekleme](entitlement-management-delegate.md#add-a-catalog-owner-or-an-access-package-manager)
+- [İşlem ve e-posta bildirimleri iste](entitlement-management-process.md)

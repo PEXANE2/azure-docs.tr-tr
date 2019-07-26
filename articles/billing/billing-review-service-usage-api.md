@@ -1,6 +1,6 @@
 ---
-title: Azure hizmeti REST API'si ile kaynak kullanımını gözden geçirin | Microsoft Docs
-description: Azure hizmet kaynak kullanımı gözden geçirmek için Azure REST API'lerini kullanmayı öğrenin.
+title: REST API ile Azure hizmeti kaynak kullanımını inceleyin | Microsoft Docs
+description: Azure hizmeti kaynak kullanımını gözden geçirmek için Azure REST API 'Lerini nasıl kullanacağınızı öğrenin.
 services: billing
 documentationcenter: na
 author: lleonard-msft
@@ -12,26 +12,26 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/15/2018
-ms.author: erikre
-ms.openlocfilehash: d3db4166810da981ff0117536d8550a6b2203924
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: banders
+ms.openlocfilehash: 47e19fae26d6e3bc465799980c587d7bb7ed5e92
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60370994"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68443058"
 ---
-# <a name="review-azure-resource-usage-using-the-rest-api"></a>REST API kullanarak Azure kaynak kullanımını gözden geçirin
+# <a name="review-azure-resource-usage-using-the-rest-api"></a>REST API kullanarak Azure Kaynak kullanımını gözden geçirin
 
-Gözden geçirin ve tüketimini, Azure kaynaklarınızın yönetmenize, azure maliyet Yönetimi API'leri Yardım.
+Azure maliyet yönetimi API 'Leri, Azure kaynaklarınızın tüketimini gözden geçirmenize ve yönetmenize yardımcı olur.
 
-Bu makalede, saatlik kullanım bilgilerinizi ve filtreleri kullanarak raporu özelleştirebilir, veritabanları, sanal makinelerinin kullanım sorgulayabilmesi için nasıl kullanılacağını virgülle ayrılmış değer belge oluşturur ve etiketli günlük bir raporun nasıl oluşturulacağını öğrenin bir Azure kaynak grubundaki kaynaklar.
+Bu makalede, saatlik kullanım bilgilerinizi içeren bir virgülle ayrılmış değer belgesi oluşturacak günlük bir rapor oluşturmayı ve sonra sanal makinelerin, veritabanlarının ve etiketlerinizin kullanımını sorgulayabilmeniz için filtreleri nasıl kullanacağınızı öğreneceksiniz bir Azure Kaynak grubundaki kaynaklar.
 
 >[!NOTE]
-> Maliyet Yönetimi API'si şu anda özel Önizleme aşamasındadır.
+> Maliyet yönetimi API 'SI Şu anda özel önizlemededir.
 
-## <a name="create-a-basic-cost-management-report"></a>Temel Maliyet Yönetimi raporu oluşturma
+## <a name="create-a-basic-cost-management-report"></a>Temel maliyet yönetimi raporu oluşturma
 
-Kullanım `reports` maliyet raporlama nasıl oluşturulacağını ve raporları nereye yayımlanacak tanımlamak için maliyet Yönetimi API işlemi.
+Maliyet raporlama 'nın nasıl oluşturulduğunu ve raporların nerede yayımlanalınacağını tanımlamak için maliyet yönetimi API 'sindeki işlemikullanın.`reports`
 
 ```http
 https://management.azure.com/subscriptions/{subscriptionGuid}/providers/Microsoft.CostManagement/reports/{reportName}?api-version=2018-09-01-preview
@@ -39,16 +39,16 @@ Content-Type: application/json
 Authorization: Bearer
 ```
 
-`{subscriptionGuid}` Parametresi gereklidir ve API belirteci sağlanan kimlik bilgileri kullanılarak okunabilir bir abonelik kimliği içermelidir. , `{reportName}`
+`{subscriptionGuid}` Parametresi gereklidir ve API belirtecinde belirtilen kimlik bilgileri kullanılarak okunabilecek bir abonelik kimliği içermelidir. İçin`{reportName}`
 
-Aşağıdaki üst bilgiler gereklidir: 
+Aşağıdaki üstbilgiler gereklidir: 
 
-|İstek üstbilgisi|Açıklama|  
+|İstek üst bilgisi|Açıklama|  
 |--------------------|-----------------|  
-|*Content-Type:*| Gereklidir. Kümesine `application/json`. |  
-|*Authorization:*| Gereklidir. Geçerli bir kümesi `Bearer` belirteci. |
+|*Content-Type:*| Gerekli. Olarak `application/json`ayarlayın. |  
+|*Authorization:*| Gerekli. Geçerli `Bearer` bir belirteç olarak ayarlayın. |
 
-HTTP istek gövdesinde raporun parametrelerini yapılandırın. Aşağıdaki örnekte, her gün ne zaman etkin, bir Azure depolama blob kapsayıcısına yazılmış bir CSV dosyasıdır ve saatlik kaynak grubundaki tüm kaynaklar için maliyet bilgilerini içeren oluşturmak için rapor ayarlanır `westus`.
+HTTP istek gövdesinde raporun parametrelerini yapılandırın. Aşağıdaki örnekte rapor, etkin olduğunda her gün oluşturulacak şekilde ayarlanır, bir Azure Depolama Blobu kapsayıcısına yazılmış bir CSV dosyasıdır ve kaynak grubundaki `westus`tüm kaynaklar için saatlik maliyet bilgilerini içerir.
 
 ```json
 {
@@ -93,11 +93,11 @@ Sanal Makineye (VM) bağlı bir veya birden çok işletim sistemi diski içerdi�
 
 ## <a name="filtering-reports"></a>Raporları filtreleme
 
-`filter` Ve `dimensions` maliyetlerinden belirli kaynak türlerine yönelik bir rapor odaklanmanıza olanak tanır, oluştururken, istek gövdesi bölümü. Önceki istek gövdesi bir bölgedeki tüm kaynaklara göre nasıl filtreleme yapılacağını gösterir. 
+Bir rapor `dimensions` oluştururken istek gövdesinin vebölümü,belirlikaynaktürlerininmaliyetlerineodaklanabilmenizisağlar.`filter` Önceki istek gövdesinde, bir bölgedeki tüm kaynaklara göre nasıl filtreleneceği gösterilir. 
 
-### <a name="get-all-compute-usage"></a>Tüm işlem kullanımını Al
+### <a name="get-all-compute-usage"></a>Tüm işlem kullanımını al
 
-Kullanım `ResourceType` tüm bölgeler arasında Azure sanal makine maliyetlerini aboneliğinizdeki bildirmek için boyut.
+Tüm bölgelerde aboneliğinizdeki Azure sanal makine maliyetlerini raporlamak için boyutukullanın.`ResourceType`
 
 ```json
 "filter": {
@@ -112,9 +112,9 @@ Kullanım `ResourceType` tüm bölgeler arasında Azure sanal makine maliyetleri
 }
 ```
 
-### <a name="get-all-database-usage"></a>Tüm veritabanı kullanımını Al
+### <a name="get-all-database-usage"></a>Tüm veritabanı kullanımını al
 
-Kullanım `ResourceType` rapor Azure SQL veritabanı maliyetleri, aboneliğinizdeki tüm bölgeler arasında boyut.
+Tüm bölgelerde aboneliğinizdeki Azure SQL veritabanı maliyetlerini raporlamak için boyutukullanın.`ResourceType`
 
 ```json
 "filter": {
@@ -128,9 +128,9 @@ Kullanım `ResourceType` rapor Azure SQL veritabanı maliyetleri, aboneliğinizd
 }
 ```
 
-### <a name="report-on-specific-instances"></a>Belirli örnekleri raporu
+### <a name="report-on-specific-instances"></a>Belirli örnekler hakkında rapor
 
-`Resource` Boyut sayesinde rapor belirli kaynakların maliyetlerini.
+Boyut `Resource` , belirli kaynaklar için maliyetleri raporlamanızı sağlar.
 
 ```json
 "filter": {
@@ -146,7 +146,7 @@ Kullanım `ResourceType` rapor Azure SQL veritabanı maliyetleri, aboneliğinizd
 
 ### <a name="changing-timeframes"></a>Zaman çerçevelerini değiştirme
 
-Ayarlama `timeframe` tanımına `Custom` hafta dışında bir zaman çerçevesinde tarih ve tarih yerleşik seçenekleri aylık ayarlamak için.
+Tanımı, `timeframe` haftanın dışında `Custom` tarih ve ay yerleşik seçeneklerinin bulunduğu zaman dilimini ayarlamak için olarak ayarlayın.
 
 ```json
 "timeframe": "Custom",
@@ -157,4 +157,4 @@ Ayarlama `timeframe` tanımına `Custom` hafta dışında bir zaman çerçevesin
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Azure REST API'si ile çalışmaya başlama](https://docs.microsoft.com/rest/api/azure/)   
+- [Azure REST API kullanmaya başlama](https://docs.microsoft.com/rest/api/azure/)   

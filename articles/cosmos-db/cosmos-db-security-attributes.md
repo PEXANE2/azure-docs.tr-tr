@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB için güvenlik öznitelikleri
-description: Azure Cosmos DB değerlendirmek için güvenlik öznitelikleri listesi
+description: Azure Cosmos DB değerlendirmek için güvenlik özniteliklerinin denetim listesi
 services: cosmos-db
 documentationcenter: ''
 author: msmbaldwin
@@ -9,67 +9,67 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: mbaldwin
-ms.openlocfilehash: ffeb60f5476a540e3da46a82c240b0dda9aa6be2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 50711f8675e1b8aca6b9f90925ea921d22020ddd
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66480470"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442545"
 ---
 # <a name="security-attributes-for-azure-cosmos-db"></a>Azure Cosmos DB için güvenlik öznitelikleri
 
-Bu makalede, Azure Cosmos DB'ye yerleşik genel güvenlik öznitelikleri belgeler.
+Bu makale, Azure Cosmos DB yerleşik güvenlik özniteliklerini belgeler.
 
 [!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
 
-## <a name="preventative"></a>Preventative
+## <a name="preventative"></a>Önleyici
 
 | Güvenlik özniteliği | Evet/Hayır | Notlar |
 |---|---|--|
-| (Örneğin, sunucu tarafı şifreleme, müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifreleme ve diğer şifreleme özellikleri) bekleme sırasında şifreleme | Evet | Varsayılan olarak, tüm Cosmos DB veritabanları ve yedeklemeleri şifrelenir; bkz: [Azure Cosmos DB'de veri şifreleme](database-encryption-at-rest.md). Müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifrelemesi desteklenmiyor. |
-| (Örneğin, ExpressRoute şifreleme, şifreleme sanal ağ ve VNet-VNet şifreleme) aktarım sırasında şifreleme| Evet | Tüm Azure Cosmos DB verileri aktarım sırasında şifrelenir. |
-| Şifreleme anahtarı işleme (CMK, BYOK, vb.)| Hayır |  |
-| Sütun düzeyinde şifrelemeyi (Azure Veri Hizmetleri)| Evet | Yalnızca tablo API Premium'da. Bu özellik tüm API'leri destekler. Bkz: [Azure Cosmos DB'ye giriş: Tablo API'si](table-introduction.md). |
-| Şifrelenmiş API çağrıları| Evet | Azure Cosmos DB için tüm bağlantılar, HTTPS'yi destekleyecek. Azure Cosmos DB, TLS 1.2 bağlantıları da destekliyor, ancak bu henüz zorlanmaz. Müşterilerin kendi tarafında daha düşük düzey TLS kapatırsanız, Cosmos DB'ye bağlanmak için emin olabilirsiniz.  |
+| Bekleyen şifreleme (sunucu tarafı şifreleme, müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifreleme ve diğer şifreleme özellikleri) | Evet | Tüm Cosmos DB veritabanları ve yedeklemeler varsayılan olarak şifrelenir; [Azure Cosmos DB veri şifrelemeyi](database-encryption-at-rest.md)inceleyin. Müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifreleme desteklenmez. |
+| Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNet şifreleme ve VNet-VNet şifreleme gibi)| Evet | Tüm Azure Cosmos DB verileri aktarım sırasında şifrelenir. |
+| Şifreleme anahtarı işleme (CMK, BYOK vb.)| Hayır |  |
+| Sütun düzeyinde şifreleme (Azure veri Hizmetleri)| Evet | Yalnızca API Premium tablolarında. Tüm API 'Ler bu özelliği desteklemez. Bkz [. Azure Cosmos DB giriş: Tablo API'si](table-introduction.md). |
+| Şifrelenmiş API çağrıları| Evet | Azure Cosmos DB tüm bağlantıları HTTPS 'yi destekler. Azure Cosmos DB TLS 1,2 bağlantılarını da destekler, ancak bu henüz zorlanmaz. Müşteriler, son ucunda daha düşük düzey TLS 'yi devre dışı bırakır. Cosmos DB bağlandıklarından emin olabilirler.  |
 
 ## <a name="network-segmentation"></a>Ağ kesimleme
 
 | Güvenlik özniteliği | Evet/Hayır | Notlar |
 |---|---|--|
 | Hizmet uç noktası desteği| Evet |  |
-| vNET ekleme desteği| Evet | Sanal ağ hizmet uç noktası ile bir Azure Cosmos DB hesabı yalnızca bir sanal ağın (VNet) belirli bir alt ağdan erişime izin verecek şekilde yapılandırabilirsiniz. Ayrıca, güvenlik duvarı kuralları ile VNet erişim birleştirebilirsiniz.  Bkz: [erişim Azure Cosmos DB sanal ağlardan](vnet-service-endpoint.md). |
-| Ağ yalıtımı ve Firewalling desteği| Evet | Güvenlik Duvarı desteği sayesinde, yalnızca IP adresleri, IP adres aralığı onaylı bir kümesini erişime izin verecek ve/veya Bulut Hizmetleri için Azure Cosmos hesabınıza yapılandırabilirsiniz. Bkz: [yapılandırma IP Güvenlik Duvarı Azure Cosmos DB'de](how-to-configure-firewall.md).|
-| Zorlamalı tünel için destek | Evet | Sanal makinelerin bulunduğu sanal ağ üzerindeki istemci tarafındaki yapılandırılabilir.   |
+| VNet ekleme desteği| Evet | VNet hizmet uç noktası ile, bir Azure Cosmos DB hesabını yalnızca bir sanal ağın (VNet) belirli bir alt ağından erişime izin verecek şekilde yapılandırabilirsiniz. Ayrıca, VNet erişimini güvenlik duvarı kurallarıyla birleştirebilirsiniz.  Bkz. [sanal ağlardan erişim Azure Cosmos DB](VNet-service-endpoint.md). |
+| Ağ yalıtımı ve güvenlik duvarı desteği| Evet | Güvenlik Duvarı desteğiyle, Azure Cosmos hesabınızı yalnızca onaylanan bir IP adresi kümesinden, IP adresi aralığına ve/veya bulut hizmetlerinden erişime izin verecek şekilde yapılandırabilirsiniz. Bkz. [Azure Cosmos DB IP güvenlik duvarını yapılandırma](how-to-configure-firewall.md).|
+| Zorlamalı tünel desteği| Evet | , Sanal makinelerin bulunduğu VNet üzerinde istemci tarafında yapılandırılabilir.   |
 
 ## <a name="detection"></a>Algılama
 
 | Güvenlik özniteliği | Evet/Hayır | Notlar|
 |---|---|--|
-| Azure izleme desteği (Log analytics, Application ınsights, vb.)| Evet | Azure Cosmos DB için gönderilen tüm istekleri günlüğe kaydedilir. [Azure izleme](../azure-monitor/overview.md), Azure ölçümleri, Azure denetim günlükleri desteklenir.  Veri düzlemi istekleri, çalışma zamanı istatistikleri sorgu, sorgu metni ilgili bilgileri günlüğe kaydedebilirsiniz, MongoDB ister. Uyarıları da ayarlayabilirsiniz. |
+| Azure izleme desteği (Log Analytics, App Insights vb.)| Evet | Azure Cosmos DB gönderilen tüm istekler günlüğe kaydedilir. Azure [izleme](../azure-monitor/overview.md), Azure ölçümleri, Azure denetim günlüğü desteklenir.  Veri düzlemi isteklerine karşılık gelen bilgileri, sorgu çalışma zamanı istatistiklerini, sorgu metnini, MongoDB isteklerini günlüğe kaydedebilirsiniz. Ayrıca, uyarıları da ayarlayabilirsiniz. |
 
 ## <a name="identity-and-access-management"></a>Kimlik ve erişim yönetimi
 
 | Güvenlik özniteliği | Evet/Hayır | Notlar|
 |---|---|--|
-| Kimlik Doğrulaması| Evet | Veritabanı hesabı düzeyinde Evet; Veri düzlemi düzeyinde Cosmos DB, kaynak belirteçlerine ve anahtar erişimi kullanır. |
-| Yetkilendirme| Evet | Ana anahtarları (birincil ve ikincil) ile Azure Cosmos hesabı ve kaynak belirteçleri desteklenmiyor. Okuma/yazma alın veya yalnızca ana anahtarları ile verilere erişimi okuyun. Kaynak belirteçleri, belgeler ve kapsayıcıları gibi kaynakları sınırlı bir süre erişime izin verin. |
+| Authentication| Evet | Evet, veritabanı hesabı düzeyinde; veri düzlemi düzeyinde Cosmos DB, kaynak belirteçlerini ve anahtar erişimini kullanır. |
+| Authorization| Evet | Azure Cosmos hesabında ana anahtarlar (birincil ve ikincil) ve kaynak belirteçleri ile desteklenir. Ana anahtarlarla verilere okuma/yazma veya salt okuma erişimi alabilirsiniz. Kaynak belirteçleri, belgeler ve kapsayıcılar gibi kaynaklara sınırlı zamanlı erişime izin verir. |
 
 
 ## <a name="audit-trail"></a>Denetim izi
 
 | Güvenlik özniteliği | Evet/Hayır | Notlar|
 |---|---|--|
-| Günlüğe kaydetme ve denetim Denetim/yönetimini planlama| Evet | Azure etkinlik günlüğü için hesap düzeyinde işlemleri gibi güvenlik duvarları, sanal ağlar, erişim anahtarları ve IAM. |
-| Veri günlük kaydı ve denetim düzlemi | Evet | Kapsayıcı düzeyi işlemlerinde gibi oturum izleme, tanılama kapsayıcının sağlama aktarım hızı, ilkeleri ve belgeleri CRUD işlemleri dizin oluşturun. |
+| Denetim ve yönetim düzlemi günlüğü ve denetimi| Evet | Güvenlik duvarları, VNET 'ler, anahtar erişimi ve ıAM gibi hesap düzeyindeki işlemler için Azure etkinlik günlüğü. |
+| Veri düzlemi günlüğü ve denetimi | Evet | Kapsayıcı oluşturma, sağlama işleme, dizin oluşturma ilkeleri ve belgelerde CRUD işlemleri gibi kapsayıcı düzeyindeki işlemler için Tanılama izleme günlüğü. |
 
 ## <a name="configuration-management"></a>Yapılandırma yönetimi
 
 | Güvenlik özniteliği | Evet/Hayır | Notlar|
 |---|---|--|
-| Yapılandırma yönetimi desteği (sürüm yapılandırması, vs.)| Hayır  | | 
+| Yapılandırma yönetimi desteği (yapılandırmanın sürümü oluşturma, vb.)| Hayır  | | 
 
 ## <a name="additional-security-attributes-for-cosmos-db"></a>Cosmos DB için ek güvenlik öznitelikleri
 
 | Güvenlik özniteliği | Evet/Hayır | Notlar|
 |---|---|--|
-| Kaynak kaynak paylaşımı (CORS) | Evet | Bkz: [çıkış noktaları arası kaynak paylaşımı (CORS) yapılandırma](how-to-configure-cross-origin-resource-sharing.md). |
+| Çapraz kaynak kaynak paylaşımı (CORS) | Evet | Bkz. [çıkış noktaları arası kaynak paylaşımı 'nı (CORS) yapılandırma](how-to-configure-cross-origin-resource-sharing.md). |

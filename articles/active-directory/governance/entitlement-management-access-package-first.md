@@ -1,10 +1,10 @@
 ---
-title: Öğretici - Azure AD hak yönetimi (Önizleme) - Azure Active Directory içinde ilk erişim paketinizi oluşturmak
-description: Azure Active Directory hak yönetimi (Önizleme) ilk erişim paketinizi oluşturmak için adım adım öğretici.
+title: Öğretici-Azure AD Yetkilendirme Yönetimi 'nde (Önizleme) ilk erişim paketinizi oluşturun-Azure Active Directory
+description: Azure Active Directory yetkilendirme yönetimi 'nde (Önizleme) ilk erişim paketinizi oluşturma konusunda adım adım öğretici.
 services: active-directory
 documentationCenter: ''
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
@@ -12,316 +12,316 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.subservice: compliance
-ms.date: 04/27/2019
-ms.author: rolyon
+ms.date: 07/23/2019
+ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 354af736d5896214848205f41e429d9bf2c49863
-ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.openlocfilehash: 1688651466ba6748e1254c9d33bb24435602868b
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64873529"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489162"
 ---
-# <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management-preview"></a>Öğretici: İlk erişim paketinizi Azure AD hak yönetimi (Önizleme) oluşturma
+# <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management-preview"></a>Öğretici: Azure AD Yetkilendirme Yönetimi 'nde (Önizleme) ilk erişim paketinizi oluşturma
 
 > [!IMPORTANT]
-> Azure Active Directory (Azure AD) Yetkilendirme Yönetimi, şu anda genel Önizleme aşamasındadır.
+> Azure Active Directory (Azure AD) yetkilendirme yönetimi şu anda genel önizleme aşamasındadır.
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
 > Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Tüm kaynakları çalışanları gereksinimi, grupları, uygulamalar ve siteler gibi erişimi yönetme, kuruluşların önemli bir işlevdir. Çalışanların üretken ve artık gerekli olmadığında, kişilerin erişimlerini kaldırmanız için ihtiyaç duydukları erişim doğru düzeyini vermek istediğiniz.
+Gruplar, uygulamalar ve siteler gibi çalışanların ihtiyaç duyduğu tüm kaynaklara erişimi yönetmek, kuruluşlar için önemli bir işlevdir. Çalışanlara, üretken olmaları gereken doğru erişim düzeyini vermek ve artık gerekli olmadığında erişimleri kaldırmak istiyorsunuz.
 
-Bu öğreticide, bir BT yöneticisi olarak Woodgrove Bankası için çalışır. Bir paketi iç kullanıcıların Self Servis isteği için bir web projesi için kaynakları oluşturmak için olmak istediniz. İstekleri onay gerektirir ve kullanıcının erişim 30 gün sonra sona erer. Bu öğretici için yalnızca tek bir grup üyeliği web projesi kaynaklardır ancak grupları, uygulamaları veya SharePoint Online siteleri koleksiyonunu olabilir.
+Bu öğreticide, Woodgrove Bank for It Administrator olarak çalışırsınız. Bir Web projesi için, iç kullanıcıların Self Servis isteğine yönelik bir kaynak paketi oluşturmanız istendi. İstekler onay gerektirir ve kullanıcının erişimi 30 gün sonra dolar. Bu öğreticide, Web proje kaynakları yalnızca tek bir gruba üyedir, ancak gruplar, uygulamalar veya SharePoint Online siteleri koleksiyonu olabilir.
 
 ![Senaryoya genel bakış](./media/entitlement-management-access-package-first/elm-scenario-overview.png)
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Bir access paketi ile bir grubu bir kaynak olarak oluşturun.
-> * Approver belirleyin
-> * Bir iç kullanıcıyı erişim paket nasıl isteyebilir gösterme
-> * Erişim isteği Onayla
+> * Kaynak olarak grupla bir erişim paketi oluşturma
+> * Onaylayan belirleyin
+> * Dahili bir kullanıcının erişim paketini nasıl isteyebileceğini gösterir
+> * Erişim isteğini onaylama
 
-Bir Azure AD Premium P2 veya Enterprise Mobility + Security E5 lisansı, yoksa, ücretsiz bir oluşturma [Enterprise Mobility + Security E5 deneme sürümü](https://signup.microsoft.com/Signup?OfferId=87dd2714-d452-48a0-a809-d2f58c4f68b7&ali=1).
+Bir Azure AD Premium P2 veya Enterprise Mobility + Security E5 lisansınız yoksa ücretsiz bir [Enterprise Mobility + Security E5 denemesi](https://signup.microsoft.com/Signup?OfferId=87dd2714-d452-48a0-a809-d2f58c4f68b7&ali=1)oluşturun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Azure AD hak yönetimi (Önizleme) kullanmak için aşağıdaki lisanslardan birine sahip olmalıdır:
+Azure AD Yetkilendirme Yönetimi 'ni (Önizleme) kullanmak için aşağıdaki lisanslardan birine sahip olmanız gerekir:
 
 - Azure AD Premium P2
 - Enterprise Mobility + Security (EMS) E5 lisansı
 
-## <a name="step-1-set-up-users-and-group"></a>1. Adım: Kullanıcılar ve Grup ayarlayın
+## <a name="step-1-set-up-users-and-group"></a>1\. adım: Kullanıcıları ve grubu ayarlama
 
-Kaynak dizini paylaşmak için bir veya daha fazla kaynak var. Bu adımda, oluşturduğunuz adlı bir grubu **mühendislik grubu** hak yönetimi için hedef kaynak Woodgrove Bank dizine. Ayrıca iç bir istek sahibi ayarlarsınız.
+Kaynak dizininde paylaşılacak bir veya daha fazla kaynak bulunur. Bu adımda, yetkilendirme yönetimi için hedef kaynak olan Woodgrove Bank dizininde **mühendislik grubu** adlı bir grup oluşturacaksınız. Ayrıca, dahili bir istek sahibi ayarlarsınız.
 
 **Önkoşul rolü:** Genel yönetici veya Kullanıcı Yöneticisi
 
-![Kullanıcılar ve gruplar oluşturma](./media/entitlement-management-access-package-first/elm-users-groups.png)
+![Kullanıcı ve grup oluşturma](./media/entitlement-management-access-package-first/elm-users-groups.png)
 
-1. Oturum [Azure portalında](https://portal.azure.com) olarak genel yönetici veya Kullanıcı Yöneticisi.  
+1. [Azure Portal](https://portal.azure.com) genel yönetici veya Kullanıcı Yöneticisi olarak oturum açın.  
 
-1. Sol gezinti bölmesinde tıklayın **Azure Active Directory**.
+1. Sol gezinti bölmesinde **Azure Active Directory**' ye tıklayın.
 
-1. Oluşturun veya aşağıdaki iki kullanıcı yapılandırın. Bu adları veya farklı adlar kullanabilirsiniz. **Admin1** şu anda oturum açmaya olarak kullanıcı olabilir.
+1. Aşağıdaki iki kullanıcıyı oluşturun veya yapılandırın. Bu adları veya farklı adları kullanabilirsiniz. **Admin1** Şu anda oturum açmış olduğunuz Kullanıcı olabilir.
 
     | Ad | Dizin rolü | Açıklama |
     | --- | --- | --- |
-    | **admin1** | Genel yönetici<br/>-veya-<br/>Sınırlı yönetici (Kullanıcı Yöneticisi) | Yönetici ve onaylayan |
+    | **Admin1** | Genel yönetici<br/>-veya-<br/>Sınırlı yönetici (Kullanıcı Yöneticisi) | Yönetici ve onaylayan |
     | **Requestor1** | Kullanıcı | İç istek sahibi |
 
-    Bu öğretici için yönetici ve onaylayan aynı kişidir ancak onaylayanlar olacak şekilde bir veya daha fazla kişi genellikle belirleyin.
+    Bu öğreticide, yönetici ve onaylayan aynı kişidir, ancak genellikle bir veya daha fazla kişiyi onaylayan olacak şekilde belirlersiniz.
 
-1. Bir Azure AD güvenlik oluşturma adlı grubu **mühendislik grubu** üyelik türü olan **atanan**.
+1. **Atanmış**bir üyelik türüyle **mühendislik grubu** adlı bir Azure AD güvenlik grubu oluşturun.
 
-    Bu grup, hak yönetimi için hedef kaynak olacaktır. Grup üyeleri başlatmak için boş olmalıdır.
+    Bu grup, yetkilendirme yönetimi için hedef kaynak olacaktır. Grup, başlamak için üyelerin boş olması gerekir.
 
-## <a name="step-2-create-an-access-package"></a>2. Adım: Bir erişim paketi oluşturun
+## <a name="step-2-create-an-access-package"></a>2\. adım: Erişim paketi oluşturma
 
-Bir *erişim paket* kullanıcı gerekli bir projede çalışmak veya işlerini gerçekleştirmek için tüm kaynaklara paketidir. Erişim paketleri adlı kapsayıcılarda tanımlanmış *katalogları*. Bu adımda, oluşturduğunuz bir **Web projesi erişim paketi** içinde **genel** Kataloğu.
-
-**Önkoşul rolü:** Genel yönetici veya Kullanıcı Yöneticisi
-
-![Bir erişim paketi oluşturun](./media/entitlement-management-access-package-first/elm-access-package.png)
-
-1. Azure portalında sol gezinti bölmesinde tıklayın **Azure Active Directory**.
-
-1. Sol menüde **Kimlik Yönetimi**
-
-1. Sol menüde **erişim paketleri**.  Görürseniz **erişim reddedildi**, bir Azure AD Premium P2 lisansı bu dizinde mevcut olduğundan emin olun.
-
-1. Tıklayın **yeni erişim paket**.
-
-    ![Azure portalında hak yönetimi](./media/entitlement-management-access-package-first/access-packages-list.png)
-
-1. Üzerinde **Temelleri** sekmesinde, adı **Web projesi erişim paketi** ve açıklama **mühendislik web projesi için paket erişim**.
-
-1. Bırakın **Kataloğu** ayarlamak açılır listede **genel**.
-
-    ![Yeni erişim package - temel sekmesi](./media/entitlement-management-access-package-first/basics.png)
-
-1. Tıklayın **sonraki** açmak için **kaynak rolleri** sekmesi.
-
-    Bu sekmede, erişim paket içerisine dâhil etmek izinleri seçin.
-
-1. tıklayın **grupları**.
-
-1. Grupları bölmesinde bulun ve seçin **mühendislik grubu** daha önce oluşturduğunuz grup.
-
-    Varsayılan olarak, iç ve dış gruplar gördüğünüz **genel** Kataloğu. Dışında bir grubu seçtiğinizde **genel** Kataloğu'na da eklenecektir **genel** Kataloğu.
-
-    ![Yeni erişim package - kaynak rolleri sekmesi](./media/entitlement-management-access-package-first/resource-roles-select-groups.png)
-
-1. Tıklayın **seçin** grup listesine eklenecek.
-
-1. İçinde **rol** aşağı açılan listesinden **üye**.
-
-    ![Yeni erişim package - kaynak rolleri sekmesi](./media/entitlement-management-access-package-first/resource-roles.png)
-
-1. Tıklayın **sonraki** açmak için **ilke** sekmesi.
-
-1. Ayarlama **ilk ilkesi oluşturma** geç **sonra**.
-
-    Sonraki bölümde ilkesi oluşturur.
-
-    ![Yeni erişim package - ilke sekmesi](./media/entitlement-management-access-package-first/policy.png)
-
-1. Tıklayın **sonraki** açmak için **gözden geçir + Oluştur** sekmesi.
-
-    ![Yeni erişim package - gözden geçir + sekme oluşturma](./media/entitlement-management-access-package-first/review-create.png)
-
-1. Erişim paket ayarlarını gözden geçirin ve ardından **Oluştur**.
-
-    Katalog henüz etkinleştirilmediğinden erişim paket kullanıcılara görünür olmaz, bir ileti görebilirsiniz.
-
-    ![Yeni erişim package - görünür değil iletisi](./media/entitlement-management-access-package-first/not-visible.png)
-
-1. **Tamam** düğmesine tıklayın.
-
-    Birkaç dakika sonra erişim paket başarıyla oluşturulmuş bir bildirim görmeniz gerekir.
-
-## <a name="step-3-create-a-policy"></a>3. Adım: İlke oluştur
-
-A *ilke* kuralları veya erişim pakete guardrails tanımlar. Bu adımda, kaynak dizininde erişim paket isteği için belirli bir kullanıcıya izin veren bir ilke oluşturun. Ayrıca isteklerinin onaylanması gerekir ve kimin onaylayan olacağını belirtin.
-
-![Paket erişim ilkesi oluşturma](./media/entitlement-management-access-package-first/elm-access-package-policy.png)
+*Erişim paketi* , kullanıcının bir projede çalışması veya işini gerçekleştirmesi için gereken tüm kaynakların bir paketidir. Erişim paketleri, *kataloglar*olarak adlandırılan kapsayıcılar içinde tanımlanır. Bu adımda, **genel** katalogda bir **Web projesi erişim paketi** oluşturacaksınız.
 
 **Önkoşul rolü:** Genel yönetici veya Kullanıcı Yöneticisi
 
-1. İçinde **Web projesi erişim paketi**, sol menüde **ilkeleri**.
+![Erişim paketi oluşturma](./media/entitlement-management-access-package-first/elm-access-package.png)
 
-    ![Erişim paket ilkeleri listesi](./media/entitlement-management-access-package-first/policies-list.png)
+1. Azure portal, sol gezinti bölmesinde **Azure Active Directory**' e tıklayın.
 
-1. Tıklayın **ilke Ekle** Oluştur İlkesi'ni açmak için.
+1. Sol taraftaki menüden **kimlik** Yönetimi ' ne tıklayın.
 
-1. Adı **iç istek sahibine ilke** ve açıklama **web projesi kaynaklarına erişimi istemek için bu dizindeki kullanıcılara**.
+1. Sol menüde, **erişim paketleri**' ne tıklayın.  **Erişim reddedildi**görürseniz, bu dizinde bir Azure AD Premium P2 lisansının bulunduğundan emin olun.
 
-1. İçinde **erişim isteğinde bulunabileceği kullanıcılar** bölümünde **dizininizdeki kullanıcılar için**.
+1. **Yeni erişim paketi**' ne tıklayın.
 
-    ![İlke oluşturma](./media/entitlement-management-access-package-first/policy-create.png)
+    ![Azure portal Yetkilendirme Yönetimi](./media/entitlement-management-access-package-first/access-packages-list.png)
 
-1. Ekranı aşağı kaydırarak **kullanıcıları ve grupları seçin** 'ye tıklayın **kullanıcılar ve gruplar ekleme**.
+1. **Temel bilgiler** sekmesinde, **Mühendislik Web projesi için** **Web projesi erişim paketi** ve açıklama erişim paketi adını yazın.
 
-1. Belirli kullanıcılar ve grupları bölmesinde seçin **Requestor1** kullanıcı daha önce oluşturduğunuz ve ardından **seçin**.
+1. **Katalog** açılan listesinden **genel**' e ayarlı bırakın.
 
-1. İçinde **istek** bölümünde, **onayı iste** için **Evet**.
+    ![Yeni erişim paketi-temel bilgiler sekmesi](./media/entitlement-management-access-package-first/basics.png)
 
-1. İçinde **onaylayanları seçin** bölümünde **onaylayan Ekle**.
+1. **İleri** ' ye tıklayarak **kaynak rolleri** sekmesini açın.
 
-1. Select onaylayanlar bölmesinde seçin **Admin1** daha önce oluşturduğunuz ve ardından **seçin**.
+    Bu sekmede, erişim paketine dahil edilecek izinleri seçersiniz.
 
-    Bu öğretici için yönetici ve onaylayan aynı kişidir ancak onaylayan olarak başka bir kişiye atayabilirsiniz.
+1. **Gruplar**' a tıklayın.
 
-1. İçinde **sona erme** bölümünde, **erişim paket süresi** için **gün sayısı**.
+1. Grupları seçin bölmesinde, daha önce oluşturduğunuz **mühendislik grubu** grubunu bulun ve seçin.
 
-1. Ayarlama **erişim süresi dolduktan sonra** için **30** gün.
+    Varsayılan olarak, **genel** kataloğun içinde ve dışında gruplar görürsünüz. **Genel** kataloğun dışında bir grup seçtiğinizde, **genel** kataloğa eklenir.
 
-1. İçin **ilkesini etkinleştir**, tıklayın **Evet**.
+    ![Yeni erişim paketi-kaynak rolleri sekmesi](./media/entitlement-management-access-package-first/resource-roles-select-groups.png)
+
+1. Grubu listeye eklemek için **Seç** ' e tıklayın.
+
+1. **Rol** açılan listesinde **üye**' i seçin.
+
+    ![Yeni erişim paketi-kaynak rolleri sekmesi](./media/entitlement-management-access-package-first/resource-roles.png)
+
+1. **İleri** ' ye tıklayarak **ilke** sekmesini açın.
+
+1. **İlk Ilkeyi oluştur** ' a geç geçiş **yapın.**
+
+    İlkeyi bir sonraki bölümde oluşturacaksınız.
+
+    ![Yeni erişim paketi-Ilke sekmesi](./media/entitlement-management-access-package-first/policy.png)
+
+1. **İleri** ' ye tıklayarak **gözden geçir + oluştur** sekmesini açın.
+
+    ![Yeni erişim paketi-gözden geçir + Oluştur sekmesi](./media/entitlement-management-access-package-first/review-create.png)
+
+1. Erişim paketi ayarlarını gözden geçirin ve ardından **Oluştur**' a tıklayın.
+
+    Katalog henüz etkinleştirilmediği için erişim paketinin kullanıcılara görünür olmadığını belirten bir ileti görebilirsiniz.
+
+    ![Yeni erişim paketi-görünür olmayan ileti](./media/entitlement-management-access-package-first/not-visible.png)
+
+1.           **Tamam**'ı tıklatın.
+
+    Birkaç dakika sonra, erişim paketinin başarıyla oluşturulduğunu belirten bir bildirim görmeniz gerekir.
+
+## <a name="step-3-create-a-policy"></a>3\. adım: İlke oluşturma
+
+Bir *ilke* , erişim paketine erişmek için kuralları veya guardrayları tanımlar. Bu adımda, kaynak dizinindeki belirli bir kullanıcının erişim paketini istemesine izin veren bir ilke oluşturacaksınız. Ayrıca, isteklerin onaylanması gerektiğini ve onaylayan olacağını da belirtirsiniz.
+
+![Erişim paketi ilkesi oluşturma](./media/entitlement-management-access-package-first/elm-access-package-policy.png)
+
+**Önkoşul rolü:** Genel yönetici veya Kullanıcı Yöneticisi
+
+1. **Web projesi erişim paketinde**, sol menüsünde **ilkeler**' e tıklayın.
+
+    ![Paket ilkeleri listesine erişim](./media/entitlement-management-access-package-first/policies-list.png)
+
+1. İlke **Ekle** ' ye tıklayarak ilke oluştur ' u açın.
+
+1. **İç istek sahibi ilkesi** adı yazın ve açıklama **Bu dizindeki kullanıcıların Web projesi kaynaklarına erişim istemesine izin verir**.
+
+1. **Erişim isteyebilen kullanıcılar** bölümünde, **dizininizdeki kullanıcılar için**öğesine tıklayın.
+
+    ![İlke oluştur](./media/entitlement-management-access-package-first/policy-create.png)
+
+1. **Kullanıcıları ve grupları seçin** bölümüne aşağı kaydırın ve **Kullanıcı ve Grup Ekle**' ye tıklayın.
+
+1. Kullanıcıları ve grupları seç bölmesinde, daha önce oluşturduğunuz **Requestor1** kullanıcısını seçin ve ardından **Seç**' e tıklayın.
+
+1. **İstek** bölümünde, **onay gerektir** seçeneğini **Evet**olarak ayarlayın.
+
+1. **Onaylayanları Seç** bölümünde, **onaylayan Ekle**' ye tıklayın.
+
+1. Onaylayanları seç bölmesinde, daha önce oluşturduğunuz **admin1** seçin ve ardından **Seç**' e tıklayın.
+
+    Bu öğreticide, yönetici ve onaylayan aynı kişidir, ancak başka bir kişiyi onaylayan olarak belirleyebilirsiniz.
+
+1. **Süre sonu** bölümünde, **erişim paketi süre sonu** ' nu **gün sayısı**olarak ayarlayın.
+
+1. Erişimin süresi **30** gün **sonra dolacak** .
+
+1. **Etkinleştirme İlkesi**için **Evet**' e tıklayın.
 
     ![İlke ayarları oluşturma](./media/entitlement-management-access-package-first/policy-create-settings.png)
 
-1. Tıklayın **Oluştur** oluşturmak için **iç istek sahibine ilke**.
+1. **İç istek sahibi ilkesi**oluşturmak için **Oluştur** ' a tıklayın.
 
-1. Web projesi erişim paketi sol menüde **genel bakış**.
+1. Web projesi erişim paketinin sol menüsünde **Genel Bakış ' a**tıklayın.
 
-1. Kopyalama **My erişim portalı bağlantısı**.
+1. **Erişim portalı bağlantısını**Kopyala.
 
-    Bu bağlantı bir sonraki adımda kullanacaksınız.
+    Bu bağlantıyı bir sonraki adım için kullanacaksınız.
 
-    ![Erişim pakete genel bakış - My erişim portalı bağlantısı](./media/entitlement-management-shared/my-access-portal-link.png)
+    ![Erişim paketine genel bakış-erişim portalı bağlantısı](./media/entitlement-management-shared/my-access-portal-link.png)
 
-## <a name="step-4-request-access"></a>4. Adım: Erişim izni iste
+## <a name="step-4-request-access"></a>4\. Adım: Erişim izni iste
 
-Bu adımda gerçekleştirdiğiniz adımları **iç istek sahibi** ve erişim paketine erişim isteyin. İstek sahipleri isteklerinde My erişim portalı adlı bir sitede kullanarak gönderin. My erişim portalı erişim paketleri için istekler, bunlar zaten erişimi ve onların istek geçmişini görüntüleme erişimi paketleri Bkz istek sahipleri sağlar.
+Bu adımda, adımları **iç istek sahibi** olarak gerçekleştirirsiniz ve erişim paketine erişim isteği alırsınız. İstek sahipleri erişim portalı adlı bir site kullanarak isteklerini gönderir. Erişim portalı, Isteklerimin erişim paketleri isteklerini göndermesini sağlar, zaten erişimi olan erişim paketlerine bakın ve istek geçmişini görüntüler.
 
 **Önkoşul rolü:** İç istek sahibi
 
-1. Azure portalında oturum açın.
+1. Azure portal oturumunuzu kapatın.
 
-1. Yeni bir tarayıcı penceresinde önceki adımda kopyaladığınız My erişim portalı bağlantısına gidin.
+1. Yeni bir tarayıcı penceresinde, önceki adımda kopyaladığınız erişimim portalı bağlantısına gidin.
 
-1. My erişim portalında oturum açın **Requestor1**.
+1. Erişim portalından **Requestor1**olarak oturum açın.
 
-    Görmelisiniz **Web projesi erişim paketi**.
+    **Web projesi erişim paketini**görmeniz gerekir.
 
-1. Gerekli olursa **açıklama** sütuna, ayrıntıları erişim paketi hakkında görüntülemek için oka tıklayın.
+1. Gerekirse, **Açıklama** sütununda, erişim paketiyle ilgili ayrıntıları görüntülemek için oka tıklayın.
 
-    ![My erişim portalı - erişim paketleri](./media/entitlement-management-shared/my-access-access-packages.png)
+    ![Erişim Portalı-erişim paketlerim](./media/entitlement-management-shared/my-access-access-packages.png)
 
 1. Paketi seçmek için onay işaretine tıklayın.
 
-1. Tıklayın **erişim isteği** isteği erişim bölmesini açmak için.
+1. Istek erişimi bölmesini açmak için **erişim iste** ' ye tıklayın.
 
-1. İçinde **İş Gerekçesi** gerekçe yazın **web proje üzerinde çalışan**.
+1. **İş gerekçe** kutusuna **Web projesi üzerinde çalışan**gerekçe yazın.
 
-1. Ayarlama **belirli bir süre için istek** geç **Evet**.
+1. Belirli bir **Dönem Için Isteği** **Evet**olarak ayarlayın.
 
-1. Ayarlama **başlangıç tarihi** için bugün ve **bitiş tarihi** yarın için.
+1. **Başlangıç tarihini** bugün ve **bitiş tarihi** olarak yarın olarak ayarlayın.
 
-    ![My erişim portalı - erişim isteği](./media/entitlement-management-shared/my-access-request-access.png)
+    ![Erişim Portalı-erişim ISTEME](./media/entitlement-management-shared/my-access-request-access.png)
 
 1. **Gönder**'e tıklayın.
 
-1. Sol menüde **istek geçmişi** isteğiniz gönderildi doğrulayın.
+1. İsteğinizin gönderildiğini doğrulamak için sol taraftaki menüden **istek geçmişi** ' ne tıklayın.
 
-## <a name="step-5-approve-access-request"></a>5. Adım: Erişim isteği Onayla
+## <a name="step-5-approve-access-request"></a>5\. Adım: Erişim isteğini onayla
 
-Bu adımda, olarak oturum **onaylayan** kullanıcı ve iç istek sahibi erişim isteğini onaylayın. İstek sahipleri istek göndermek için kullanabilir onaylayanları aynı My erişim portalı kullanın. My erişim portalı kullanarak, onaylayanlar onayları görüntüleyin ve onaylayabilir veya istekleri reddetme.
+Bu adımda, **onaylayan** Kullanıcı olarak oturum açıp iç istek sahibine yönelik erişim isteğini onaylarsınız. Onaylayanlar istekleri göndermek için kullandığı için, istek erişim portallarımı kullanır. Onaylayanlar, erişim portalı 'nı kullanarak bekleyen onayları görüntüleyebilir ve istekleri onaylayabilir veya reddedebilir.
 
 **Önkoşul rolü:** Onaylayan
 
-1. My erişim portalında oturum açın.
+1. Erişim portalımın oturumunu kapatın.
 
-1. Oturum [My erişim portalı](https://myaccess.microsoft.com) olarak **Admin1**.
+1. [Erişim portalından](https://myaccess.microsoft.com) **admin1**olarak oturum açın.
 
-1. Sol menüde **onaylar**.
+1. Sol taraftaki menüden **onaylar**' a tıklayın.
 
-1. Üzerinde **bekleyen** sekmesinde, bulmak **Requestor1**.
+1. **Bekleyen** sekmesinde **Requestor1**bulun.
 
-    Requestor1 istekten görmüyorsanız, birkaç dakika bekleyin ve yeniden deneyin.
+    İsteği Requestor1 'tan görmüyorsanız, birkaç dakika bekleyip yeniden deneyin.
 
-1. Tıklayın **görünümü** erişim isteği bölmesini açmak için bağlantı.
+1. Erişim isteği bölmesini açmak için **Görünüm** bağlantısına tıklayın.
 
-1. Tıklayın **onaylama**.
+1. **Onayla**' ya tıklayın.
 
-1. İçinde **neden** nedenini yazın **erişim web projesi için onaylanmış**.
+1. **Neden** kutusuna **Web projesi için onaylanan erişim**nedenini yazın.
 
-    ![My erişim portalı - erişim isteği](./media/entitlement-management-shared/my-access-approve-request.png)
+    ![Erişim Portalı-erişim isteği](./media/entitlement-management-shared/my-access-approve-request.png)
 
-1. Tıklayın **Gönder** kararınız göndermek için.
+1. Kararınızı göndermek için **Gönder** ' e tıklayın.
 
-    Başarıyla onaylandığı bir ileti görürsünüz.
+    Başarıyla onaylanan bir ileti görmeniz gerekir.
 
-## <a name="step-6-validate-that-access-has-been-assigned"></a>6. Adım: Erişim atanmış olduğunu doğrulayın
+## <a name="step-6-validate-that-access-has-been-assigned"></a>6\. Adım: Erişimin atandığını doğrulama
 
-Erişim isteği, bu adımda, onaylanmış olduğunuza emin olun **iç istek sahibi** erişim atanan paket ve artık üyesi oldukları **mühendislik grubu** grubu.
+Erişim isteğini onayladığınıza göre, bu adımda, **iç istek sahibine** erişim paketi atandığını ve artık **mühendislik grubu** grubunun bir üyesi olduğunu onaylamış olursunuz.
 
 **Önkoşul rolü:** Genel yönetici veya Kullanıcı Yöneticisi
 
-1. My erişim portalında oturum açın.
+1. Erişim portalımın oturumunu kapatın.
 
-1. Oturum [Azure portalında](https://portal.azure.com) olarak **Admin1**.
+1. **Admin1**olarak [Azure Portal](https://portal.azure.com) oturum açın.
 
-1. Tıklayın **Azure Active Directory** ve ardından **Kimlik Yönetimi**.
+1. **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
 
-1. Sol menüde **erişim paketleri**.
+1. Sol menüde, **erişim paketleri**' ne tıklayın.
 
-1. Bulun ve tıklatın **Web projesi erişim paketi**.
+1. **Web projesi erişim paketini**bulun ve tıklatın.
 
-1. Sol menüde **istekleri**.
+1. Sol menüde **istekler**' e tıklayın.
 
-    Requestor1 ve durumu ile iç istek sahibine ilke görmelisiniz **teslim edildi**.
+    Requestor1 ve Iç istek sahibi ilkesini **teslim edildi**durumuyla görmeniz gerekir.
 
-1. İstek, istek ayrıntılarını görmek için tıklayın.
+1. İstek ayrıntılarını görmek için isteğe tıklayın.
 
-    ![Erişim package - İstek Ayrıntıları](./media/entitlement-management-access-package-first/request-details.png)
+    ![Erişim paketi-Istek ayrıntıları](./media/entitlement-management-access-package-first/request-details.png)
 
-1. Sol gezinti bölmesinde tıklayın **Azure Active Directory**.
+1. Sol gezinti bölmesinde **Azure Active Directory**' ye tıklayın.
 
-1. Tıklayın **grupları** açın **mühendislik grubu** grubu.
+1. **Gruplar** ' a tıklayın ve **mühendislik grubu** grubunu açın.
 
-1. Tıklayın **üyeleri**.
+1. **Üyeler**' e tıklayın.
 
-    Görmelisiniz **Requestor1** bir üyesi olarak listelenir.
+    Üye olarak listelenmiş **Requestor1** görmeniz gerekir.
 
     ![Mühendislik grubu üyeleri](./media/entitlement-management-access-package-first/group-members.png)
 
-## <a name="step-7-clean-up-resources"></a>7. Adım: Kaynakları temizleme
+## <a name="step-7-clean-up-resources"></a>7\. Adım: Kaynakları temizleme
 
-Bu adımda, yapılan değişiklikleri kaldırın ve Sil **Web projesi erişim paketi** erişim paket.
+Bu adımda, yaptığınız değişiklikleri kaldırır ve **Web projesi erişim paketi** erişim paketini silebilirsiniz.
 
 **Önkoşul rolü:**  Genel yönetici veya Kullanıcı Yöneticisi
 
-1. Azure portalında **Azure Active Directory** ve ardından **Kimlik Yönetimi**.
+1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
 
-1. Açık **Web projesi erişim paketi**.
+1. **Web projesi erişim paketini**açın.
 
-1. Tıklayın **atamaları**.
+1. **Atamalar**' a tıklayın.
 
-1. İçin **Requestor1**, üç noktaya tıklayın (**...** ) ve ardından **erişimi kaldırmak**.
+1. **Requestor1**için üç nokta ( **...** ) simgesini ve ardından **erişimi kaldır**' ı tıklatın.
 
-    Durum teslim edildi süresi doldu olarak değişir.
+    Durum, teslim edilen durumundan süre dolmayacak şekilde değişir.
 
-1. Tıklayın **ilkeleri**.
+1. **İlkeler**' e tıklayın.
 
-1. İçin **iç istek sahibine ilke**, üç noktaya tıklayın (**...** ) ve ardından **Sil**.
+1. **İç istek sahibi ilkesi**için üç noktaya ( **...** ) ve ardından **Sil**' e tıklayın.
 
-1. Tıklayın **kaynak rolleri**.
+1. **Kaynak rolleri**' ne tıklayın.
 
-1. İçin **mühendislik grubu**, üç noktaya tıklayın (**...** ) ve ardından **Kaynak rolü Kaldır**.
+1. **Mühendislik grubu**için üç nokta ( **...** ) simgesini ve ardından **kaynak rolünü kaldır**' ı tıklatın.
 
-1. Erişim paketlerin listesini açın.
+1. Erişim paketleri listesini açın.
 
-1. İçin **Web erişim projeler**, üç noktaya tıklayın (**...** ) ve ardından **Sil**.
+1. **Web projesi erişimi projesi**için üç nokta işaretine ( **...** ) ve ardından **Sil**' e tıklayın.
 
-1. Azure Active Directory'ye oluşturduğunuz gibi herhangi bir kullanıcı silme **Requestor1** ve **Admin1**.
+1. Azure Active Directory, **Requestor1** ve **admin1**gibi oluşturduğunuz tüm kullanıcıları silin.
 
-1. Silme **mühendislik grubu** grubu.
+1. **Mühendislik grubu** grubunu silin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Hak Yönetimi'nde yaygın senaryo adımları hakkında bilgi edinmek için sonraki makaleye ilerleyin.
+Yetkilendirme Yönetimi 'ndeki yaygın senaryo adımları hakkında bilgi edinmek için sonraki makaleye ilerleyin.
 > [!div class="nextstepaction"]
 > [Yaygın senaryolar](entitlement-management-scenarios.md)

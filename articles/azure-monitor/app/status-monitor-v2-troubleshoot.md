@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: c61d54fc49ddd0a8a9ac5063c1a2a3edea66a899
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
-ms.translationtype: HT
+ms.openlocfilehash: e34beba32eace370664893225dd85b6f4b79c886
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326223"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68424109"
 ---
 # <a name="troubleshooting-status-monitor-v2"></a>Durum İzleyicisi v2 sorunlarını giderme
 
@@ -78,11 +78,13 @@ Etkinleştir komutunu çalıştırdıktan sonra şu adımları uygulayın:
 
 ### <a name="iis-nested-applications"></a>IIS Iç Içe uygulamalar
 
-IIS 'de iç içe uygulamalar, sürüm 1,0 ' de [Bu sorunu](https://github.com/microsoft/ApplicationInsights-Home/issues/369)izliyoruz.
+IIS 'de iç içe geçmiş uygulamaları, sürüm 1,0 ' de işaretlemeiyoruz.
+Bu sorunu [burada](https://github.com/microsoft/ApplicationInsights-Home/issues/369)izliyoruz.
 
 ### <a name="advanced-sdk-configuration-isnt-available"></a>Gelişmiş SDK yapılandırması kullanılamıyor.
 
-SDK yapılandırması, sürüm 1,0 ' de son kullanıcıya gösterilmez. Bu sorunu [burada](https://github.com/microsoft/ApplicationInsights-Home/issues/375)izliyoruz.
+SDK yapılandırması, sürüm 1,0 ' deki son kullanıcıya gösterilmez.
+Bu sorunu [burada](https://github.com/microsoft/ApplicationInsights-Home/issues/375)izliyoruz.
 
     
     
@@ -116,7 +118,7 @@ Cmdlet          Start-ApplicationInsightsMonitoringTrace           0.4.0      Az
 ```
 
 #### <a name="determine-the-current-version-of-the-status-monitor-v2-module"></a>Durum İzleyicisi v2 modülünün güncel sürümünü belirleme
-Modülüyle ilgili aşağıdaki bilgileri göstermek için komutunuçalıştırın:`Get-ApplicationInsightsMonitoringStatus`
+Modülüyle ilgili aşağıdaki bilgileri göstermek için komutunuçalıştırın:`Get-ApplicationInsightsMonitoringStatus -PowerShellModule`
    - PowerShell modülü sürümü
    - Application Insights SDK sürümü
    - PowerShell modülünün dosya yolları
@@ -148,7 +150,7 @@ Bu cmdlet 'in nasıl kullanılacağına ilişkin ayrıntılı bir açıklama iç
 5. Şu **ek sağlayıcıları**ayarla:`61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,925fa42b-9ef6-5fa7-10b8-56449d7a2040,f7d60e07-e910-5aca-bdd2-9de45b46c560,7c739bb9-7861-412e-ba50-bf30d95eae36,61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,252e28f4-43f9-5771-197a-e8c7e750a984`
 
 
-#### <a name="collecting-logs"></a>Günlükleri toplama
+#### <a name="collecting-logs"></a>Günlükler toplanıyor
 
 1. Yönetici ayrıcalıklarına sahip bir komut konsolunda, IIS 'yi ve `iisreset /stop` tüm Web uygulamalarını devre dışı bırakmak için komutunu çalıştırın.
 2. PerfView içinde **toplamayı Başlat**' ı seçin.

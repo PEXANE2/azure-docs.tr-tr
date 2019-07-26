@@ -1,6 +1,6 @@
 ---
-title: Azure Event Hubs için genel güvenlik öznitelikleri
-description: Azure Event Hubs'ı değerlendirmek için genel güvenlik öznitelikleri listesi
+title: Azure Event Hubs için güvenlik öznitelikleri
+description: Azure Event Hubs değerlendirmek için güvenlik özniteliklerinin denetim listesi
 services: event-hubs
 ms.service: event-hubs
 documentationcenter: ''
@@ -9,27 +9,27 @@ manager: barbkess
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 50f19d50f211972c2042c69a1e3177ffb4a47624
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2262609de774eb2b1334215bf46968b5554ed691
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66247207"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442447"
 ---
-# <a name="common-security-attributes-for-azure-event-hubs"></a>Azure Event Hubs için genel güvenlik öznitelikleri
+# <a name="security-attributes-for-azure-event-hubs"></a>Azure Event Hubs için güvenlik öznitelikleri
 
-Bu makalede, Azure Event Hubs'a yerleşik genel güvenlik öznitelikleri belgeler.
+Bu makalede, Azure Event Hubs 'da yerleşik olarak bulunan güvenlik öznitelikleri Belgelenebilir.
 
 [!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
 
-## <a name="preventative"></a>Preventative
+## <a name="preventative"></a>Önleyici
 
 | Güvenlik özniteliği | Evet/Hayır | Notlar |
 |---|---|--|
-| Bekleme sırasında şifreleme:<ul><li>Sunucu tarafı şifrelemesi</li><li>Müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifrelemesi</li><li>Diğer şifreleme özellikleri (örneğin, istemci tarafı, her zaman şifreli, vb.)</ul>|  Evet | |
-| Aktarım sırasında şifreleme:<ul><li>Express route şifreleme</li><li>Vnet şifreleme</li><li>VNet-VNet şifreleme</ul>| Evet | |
-| Şifreleme anahtarı işleme (CMK, BYOK, vb.)| Hayır |  |
-| Sütun düzeyinde şifrelemeyi (Azure Data Services)| Yok | |
+| Bekleyen şifreleme (sunucu tarafı şifreleme, müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifreleme ve diğer şifreleme özellikleri)|  Evet | |
+| Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNet şifreleme ve VNet-VNet şifreleme gibi)| Evet | |
+| Şifreleme anahtarı işleme (CMK, BYOK vb.)| Hayır |  |
+| Sütun düzeyinde şifreleme (Azure veri Hizmetleri)| Yok | |
 | Şifrelenmiş API çağrıları| Evet |  |
 
 ## <a name="network-segmentation"></a>Ağ kesimleme
@@ -37,33 +37,33 @@ Bu makalede, Azure Event Hubs'a yerleşik genel güvenlik öznitelikleri belgele
 | Güvenlik özniteliği | Evet/Hayır | Notlar |
 |---|---|--|
 | Hizmet uç noktası desteği| Evet |  |
-| vNET ekleme desteği| Hayır | |
-| Ağ yalıtımı ve saldırısından desteği| Evet |  |
-| Zorlamalı tünel oluşturma desteği| Hayır |  |
+| VNet ekleme desteği| Hayır | |
+| Ağ yalıtımı ve güvenlik duvarı desteği| Evet |  |
+| Zorlamalı tünel desteği| Hayır |  |
 
 ## <a name="detection"></a>Algılama
 
 | Güvenlik özniteliği | Evet/Hayır | Notlar|
 |---|---|--|
-| Azure izleme desteği (Log analytics, Application ınsights, vb.)| Evet | |
+| Azure izleme desteği (Log Analytics, App Insights vb.)| Evet | |
 
 ## <a name="identity-and-access-management"></a>Kimlik ve erişim yönetimi
 
 | Güvenlik özniteliği | Evet/Hayır | Notlar|
 |---|---|--|
-| Kimlik Doğrulaması| Evet | |
-| Yetkilendirme|  Evet | |
+| Authentication| Evet | |
+| Authorization|  Evet | |
 
 
 ## <a name="audit-trail"></a>Denetim izi
 
 | Güvenlik özniteliği | Evet/Hayır | Notlar|
 |---|---|--|
-| Denetim ve yönetim düzlemi günlüğe kaydetme ve Denetim| Evet |  |
-| Veri düzlemi günlük kaydı ve Denetim| Evet |   |
+| Denetim ve yönetim düzlemi günlüğü ve denetimi| Evet |  |
+| Veri düzlemi günlüğü ve denetimi| Evet |   |
 
 ## <a name="configuration-management"></a>Yapılandırma yönetimi
 
 | Güvenlik özniteliği | Evet/Hayır | Notlar|
 |---|---|--|
-| Yapılandırma yönetimi desteği (sürüm yapılandırması, vs.)| Evet | |
+| Yapılandırma yönetimi desteği (yapılandırmanın sürümü oluşturma, vb.)| Evet | |

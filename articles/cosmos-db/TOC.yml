@@ -272,6 +272,8 @@
         - name: Rol tabanlı erişim denetimi
           displayName: rbac
           href: role-based-access-control.md
+        - href: cosmos-db-advanced-threat-protection.md
+          name: Gelişmiş tehdit koruması
         - name: Güvenlik öznitelikleri
           href: cosmos-db-security-attributes.md
     - name: Kurumsal kullanıma hazır olma

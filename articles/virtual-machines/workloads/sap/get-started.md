@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/15/2019
+ms.date: 07/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: df12d4f7b2a06b89df1bfd7d7d904943e341ccd2
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 8f4352a1f6a065d1e9be78f01bde95c8f00593a3
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234260"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479785"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>SAP iş yükü senaryolarını barındırmak ve çalıştırmak için Azure kullanın
 
@@ -34,8 +34,9 @@ SAP HANA için Azure 'un benzersizliği, Azure 'ı ayrı ayarlayan bir tekliftir
 
 Azure 'da SAP iş yükü senaryolarını barındırmak, kimlik tümleştirmesi ve çoklu oturum açma gereksinimleri de oluşturabilir. Bu durum, farklı SAP bileşenleri ve hizmet olarak yazılım (SaaS) veya hizmet olarak platform (PaaS) tekliflerini bağlamak için Azure Active Directory (Azure AD) kullandığınızda ortaya çıkabilir. Azure AD ve SAP varlıklarıyla ilgili tümleştirme ve çoklu oturum açma senaryolarından oluşan bir liste, "AAD SAP kimlik tümleştirmesi ve çoklu oturum açma" bölümünde açıklanmaktadır ve belgelenmiştir.
 
-## <a name="latest-changes"></a>Son değişiklikler
+## <a name="change-log"></a>Değişiklik günlüğü
 
+- [Bir Windows Yük devretme kümesindeki BIR SAP ASCS/SCS örneği](sap-high-availability-guide-wsfc-file-share.md) , Azure Site Recovery Hizmetleri tarafından doğrudan depolama alanı desteğini yansıtmak için Azure 'da bir dosya paylaşma kullanarak
 - [SAP uygulamalarıyla en iyi ağ gecikmesi Için Azure yakınlık yerleştirme gruplarının](sap-proximity-placement-scenarios.md) yayını
 - [Red Hat Enterprise Server 'Da IBM DB2 HADR](high-availability-guide-rhel-ibm-db2-luw.md) için yeni kılavuz sürümü
 - SAP [NetWeaver Için yüksek kullanılabilirlik sürümü SAP uygulamaları için Azure NetApp Files ile Red Hat Enterprise Linux](high-availability-guide-rhel-netapp-files.md)

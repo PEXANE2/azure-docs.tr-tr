@@ -1,7 +1,6 @@
 ---
-title: 'Azure yedekleme: REST API kullanarak bir kurtarma Hizmetleri kasası oluşturma'
-description: Yedeklemeyi yönetme ve geri yükleme işlemleri, Azure sanal makine REST API kullanarak yedekleme
-services: backup
+title: 'Azure Backup: REST API kullanarak kurtarma hizmetleri kasaları oluşturma'
+description: REST API kullanarak Azure VM yedeklemesi 'nin yedekleme ve geri yükleme işlemlerini yönetme
 author: pvrk
 manager: shivamg
 keywords: REST API; Azure VM yedeklemesi; Azure VM geri yükleme;
@@ -10,53 +9,53 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: pullabhk
 ms.assetid: e54750b4-4518-4262-8f23-ca2f0c7c0439
-ms.openlocfilehash: 4f18b10ee3f4148badc8e53a9660c9f5c998aef7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0373098dd344df79be79871227f20c8a995958fa
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60646716"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466932"
 ---
-# <a name="create-azure-recovery-services-vault-using-rest-api"></a>REST API kullanarak Azure kurtarma Hizmetleri kasası oluşturma
+# <a name="create-azure-recovery-services-vault-using-rest-api"></a>REST API kullanarak Azure kurtarma hizmetleri Kasası oluşturma
 
-REST API kullanarak bir Azure kurtarma Hizmetleri kasası oluşturmak için adımları özetlenen [kasası REST API oluşturma](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate) belgeleri. Bize bu belgenin "testVault" adlı "Batı ABD" bir kasa oluşturmak için bir başvuru olarak kullanın.
+REST API kullanarak bir Azure kurtarma hizmetleri Kasası oluşturma adımları [kasa oluşturma REST API](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate) belgelerinde özetlenmiştir. "Batı ABD" içinde "Testkasası" adlı bir kasa oluşturmak için bu belgeyi bir başvuru olarak kullanmamıza izin verin.
 
-Azure kurtarma Hizmetleri kasası oluşturma veya güncelleştirme için aşağıdakileri kullanın *PUT* işlemi.
+Bir Azure kurtarma hizmetleri Kasası oluşturmak veya güncelleştirmek için aşağıdaki *PUT* işlemini kullanın.
 
 ```http
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}?api-version=2016-06-01
 ```
 
-## <a name="create-a-request"></a>Bir isteği oluştur
+## <a name="create-a-request"></a>İstek oluştur
 
-Oluşturulacak *PUT* isteği `{subscription-id}` parametresi gereklidir. Birden fazla aboneliğiniz varsa, bkz. [birden çok abonelik ile çalışma](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). Tanımladığınız bir `{resourceGroupName}` ve `{vaultName}` kaynaklarınız için birlikte `api-version` parametresi. Bu makalede `api-version=2016-06-01`.
+*PUT* isteğini `{subscription-id}` oluşturmak için parametresi gereklidir. Birden çok aboneliğiniz varsa bkz. [birden çok abonelikle çalışma](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). Kaynaklarınızın yanı sıra `{resourceGroupName}` `{vaultName}` ,kaynaklarınıziçinbirvetanımlarsınız.`api-version` Bu makalede, `api-version=2016-06-01`kullanılır.
 
-Aşağıdaki üst bilgiler gereklidir:
+Aşağıdaki üstbilgiler gereklidir:
 
-| İstek üstbilgisi   | Açıklama |
+| İstek üst bilgisi   | Açıklama |
 |------------------|-----------------|
-| *Content-Type:*  | Gereklidir. Kümesine `application/json`. |
-| *Authorization:* | Gereklidir. Geçerli bir kümesi `Bearer` [erişim belirteci](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
+| *Content-Type:*  | Gerekli. Olarak `application/json`ayarlayın. |
+| *Authorization:* | Gerekli. Geçerli `Bearer` bir [erişim belirtecine](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients)ayarlayın. |
 
-İstek oluşturma hakkında daha fazla bilgi için bkz. [bir REST API istek/yanıt bileşenleri](/rest/api/azure/#components-of-a-rest-api-requestresponse).
+İsteğin nasıl oluşturulacağı hakkında daha fazla bilgi için, bkz. [bir REST API isteği/yanıtı bileşenleri](/rest/api/azure/#components-of-a-rest-api-requestresponse).
 
-## <a name="create-the-request-body"></a>İstek gövdesi oluşturma
+## <a name="create-the-request-body"></a>İstek gövdesini oluşturma
 
-Aşağıdaki ortak tanımları, istek gövdesi oluşturmak için kullanılır:
+Aşağıdaki ortak tanımlar bir istek gövdesi oluşturmak için kullanılır:
 
 |Ad  |Gerekli  |Tür  |Açıklama  |
 |---------|---------|---------|---------|
-|eTag     |         |   String      |  İsteğe bağlı bir eTag       |
-|location     |  true       |String         |   Kaynak konumu      |
-|properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  Kasa Özellikleri       |
-|SKU     |         |  [Sku](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#sku)       |    Her Azure kaynağı için benzersiz sistem tanımlayıcıyı belirtir     |
+|Özelliği     |         |   Dize      |  İsteğe bağlı eTag       |
+|location     |  true       |Dize         |   Kaynak konumu      |
+|properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  Kasanın özellikleri       |
+|sku     |         |  [Sku](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#sku)       |    Her Azure kaynağı için benzersiz sistem tanımlayıcısını tanımlar     |
 |tags     |         | Object        |     Kaynak etiketleri    |
 
-Kasa adı ve kaynak grubu adı PUT URI'SİNDE verildiğini unutmayın. İstek gövdesi konumunu tanımlar.
+Kasa adı ve kaynak grubu adının PUT URI 'sinde sağlandığını unutmayın. İstek gövdesi konumu tanımlar.
 
 ## <a name="example-request-body"></a>Örnek istek gövdesi
 
-Aşağıdaki örnek gövdesi bir kasada "Batı ABD" oluşturmak için kullanılır. Konumu belirtin. SKU, her zaman "Standart" olur.
+Aşağıdaki örnek gövde, "Batı ABD" içinde bir kasa oluşturmak için kullanılır. Konumu belirtin. SKU her zaman "standart" dır.
 
 ```json
 {
@@ -70,18 +69,18 @@ Aşağıdaki örnek gövdesi bir kasada "Batı ABD" oluşturmak için kullanıl�
 
 ## <a name="responses"></a>Responses
 
-Bir kurtarma Hizmetleri kasası oluşturma veya güncelleştirme işlemi iki başarılı yanıtlar vardır:
+Bir kurtarma hizmetleri Kasası oluşturma veya güncelleştirme işlemi için iki başarılı yanıt vardır:
 
 |Ad  |Tür  |Açıklama  |
 |---------|---------|---------|
 |200 TAMAM     |   [Kasa](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)      | Tamam        |
 |201 oluşturuldu     | [Kasa](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)        |   Oluşturuldu      |
 
-REST API yanıtları hakkında daha fazla bilgi için bkz: [yanıt iletisini işlemek](/rest/api/azure/#process-the-response-message).
+REST API yanıtları hakkında daha fazla bilgi için bkz. [Yanıt Iletisini işleme](/rest/api/azure/#process-the-response-message).
 
 ### <a name="example-response"></a>Örnek yanıt
 
-Sıkıştırılmış bir *201 oluşturuldu* gösterir önceki örnek istekten gelen yanıt gövdesi bir *kimliği* atanmış olan ve *provisioningState* olduğu *başarılı oldu* :
+Önceki örnek istek gövdesinden sıkıştırılmış *201 tarafından oluşturulan* bir yanıt, bir *kimlik* atandığını ve *provisioningstate* *başarılı*olduğunu gösterir:
 
 ```json
 {
@@ -100,9 +99,9 @@ Sıkıştırılmış bir *201 oluşturuldu* gösterir önceki örnek istekten ge
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Bu kasada Azure VM yedekleme için bir yedekleme ilkesi oluşturma](backup-azure-arm-userestapi-createorupdatepolicy.md).
+[Bu kasada bir Azure VM yedeklemesi için bir yedekleme Ilkesi oluşturun](backup-azure-arm-userestapi-createorupdatepolicy.md).
 
-Azure REST API'leri hakkında daha fazla bilgi için aşağıdaki belgelere bakın:
+Azure REST API 'Leri hakkında daha fazla bilgi için aşağıdaki belgelere bakın:
 
-- [Azure kurtarma Hizmetleri Sağlayıcısı REST API'si](/rest/api/recoveryservices/)
-- [Azure REST API'si ile çalışmaya başlama](/rest/api/azure/)
+- [Azure kurtarma hizmetleri sağlayıcısı REST API](/rest/api/recoveryservices/)
+- [Azure REST API kullanmaya başlama](/rest/api/azure/)

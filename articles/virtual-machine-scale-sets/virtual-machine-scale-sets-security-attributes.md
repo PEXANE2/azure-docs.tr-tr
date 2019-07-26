@@ -1,6 +1,6 @@
 ---
-title: Azure sanal makine ölçek kümeleri için ortak güvenlik öznitelikleri
-description: Azure sanal makine ölçek kümelerini değerlendirmek için ortak güvenlik özniteliklerinin denetim listesi
+title: Azure sanal makine ölçek kümeleri için güvenlik öznitelikleri
+description: Azure sanal makine ölçek kümelerini değerlendirmek için güvenlik özniteliklerinin denetim listesi
 services: virtual-machine-scale-sets
 ms.service: virtual-machine-scale-sets
 documentationcenter: ''
@@ -9,16 +9,16 @@ manager: barbkess
 ms.topic: conceptual
 ms.date: 06/05/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 42187ce1a3103ba037ba2e2c179c720e444ddc60
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 1e96d3d8ba909afdc4bb402f95c4f482f3ddf681
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68296327"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444265"
 ---
-# <a name="common-security-attributes-for-azure-virtual-machine-scale-sets"></a>Azure sanal makine ölçek kümeleri için ortak güvenlik öznitelikleri
+# <a name="security-attributes-for-azure-virtual-machine-scale-sets"></a>Azure sanal makine ölçek kümeleri için güvenlik öznitelikleri
 
-Bu makalede, Azure sanal makine ölçek kümelerine yerleştirilmiş ortak güvenlik öznitelikleri Belgelenebilir.
+Bu makale, Azure sanal makine ölçek kümelerine yerleşik güvenlik özniteliklerini belgeler.
 
 [!INCLUDE [Security attributes header](../../includes/security-attributes-header.md)]
 
