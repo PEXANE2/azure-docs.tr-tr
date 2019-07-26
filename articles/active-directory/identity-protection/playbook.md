@@ -1,178 +1,148 @@
 ---
-title: Azure Active Directory kimlik koruması Kılavuzu | Microsoft Docs
-description: Azure AD kimlik koruması, güvenliği aşılmış kimlik veya cihaz yararlanma ve güvenli bir kimlik veya daha önce olduğundan şüphelenilen veya tehlikeye bilinen bir cihaz yeteneği bir saldırganın sınırlamak nasıl olanak tanıdığını öğrenin.
+title: Azure Active Directory Kimlik Koruması PlayBook | Microsoft Docs
+description: Azure AD Kimlik Koruması, bir saldırganın güvenliği aşılmış bir kimlik veya cihazdan yararlanma ve daha önce şüphelenildiği ya da tehlikede olduğu bilinen bir cihazın güvenliğini sağlama becerisini nasıl sağlayabileceğinizi öğrenin.
 services: active-directory
-keywords: Azure active directory kimlik koruması, bulut bulma, yönetme, uygulamaları, güvenlik, risk, risk düzeyi, güvenlik açığı, güvenlik ilkesi
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: 60836abf-f0e9-459d-b344-8e06b8341d25
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24c3af12d35d07796db9255f0ac76dd1389bd013
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 273a6aca2050676650b955ec078b47b2ffcfe319
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108837"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68333936"
 ---
-# <a name="azure-active-directory-identity-protection-playbook"></a>Azure Active Directory kimlik koruması Kılavuzu
+# <a name="azure-active-directory-identity-protection-playbook"></a>Azure Active Directory Kimlik Koruması PlayBook
 
-Playbook'u size yardımcı olur:
+Bu PlayBook şunları yapmanıza yardımcı olur:
 
-* Kimlik koruması ortamında veri benzetimi risk olaylarının ve güvenlik açıklarının tarafından Doldur
-* Risk tabanlı koşullu erişim ilkeleri ayarlama ve bu ilkeler etkisini test edin
+* Risk olaylarının ve güvenlik açıklarının benzetimini yaparak kimlik koruması ortamındaki verileri doldurun
+* Risk tabanlı koşullu erişim ilkeleri ayarlayın ve bu ilkelerin etkisini test edin
 
+## <a name="simulating-risk-events"></a>Risk olaylarının benzetimini yapma
 
-## <a name="simulating-risk-events"></a>Risk olaylarının benzetimini
+Bu bölümde, aşağıdaki risk olayı türlerinin benzetimini yapma adımları sunulmaktadır:
 
-Bu bölüm aşağıdaki risk olayı türleri benzetimi için adımları sağlar.
-
-* (Bir kolayca) anonim IP adreslerinden oturum açma
-* (Orta) alışılmadık konumlardan oturum açma
-* (Güç) alışılmadık konumlara imkansız seyahat
+* Anonim IP adreslerinden oturum açma işlemleri (kolay)
+* Bilmediğiniz konumlardan oturum açma işlemleri (orta)
+* Atipik konumlara imkansız seyahat (zor)
 
 Diğer risk olayları güvenli bir şekilde benzetimi yapılamaz.
 
 ### <a name="sign-ins-from-anonymous-ip-addresses"></a>Anonim IP adreslerinden oturum açma işlemleri
 
-Bu risk olayı hakkında daha fazla bilgi için bkz: [anonim IP adreslerinden oturum açma](../reports-monitoring/concept-risk-events.md#sign-ins-from-anonymous-ip-addresses). 
+Bu risk olayı hakkında daha fazla bilgi için bkz. [anonım IP adreslerinden oturum açma](../reports-monitoring/concept-risk-events.md#sign-ins-from-anonymous-ip-addresses)işlemleri. 
 
-Aşağıdaki yordamı tamamlayarak kullanmanızı gerektirir:
+Aşağıdaki yordamı tamamlamak için şunları kullanmanız gerekir:
 
-- [Tor tarayıcı](https://www.torproject.org/projects/torbrowser.html.en) anonim IP adresleri benzetimini yapmak için. Kuruluşunuz kısıtladığında Tor tarayıcınızı kullanarak bir sanal makine kullanmanız gerekebilir.
-- Çok faktörlü kimlik doğrulaması için henüz kaydedilmemiş bir test hesabı.
+- Anonim IP adreslerinin benzetimini yapmak için [Tor tarayıcısı](https://www.torproject.org/projects/torbrowser.html.en) . Kuruluşunuz Tor tarayıcısı kullanılarak sınırlandırdıysanız bir sanal makine kullanmanız gerekebilir.
+- Henüz Multi-Factor Authentication için kaydedilmemiş bir test hesabı.
 
-**Bir oturum açma bir anonim IP benzetimini yapmak için aşağıdaki adımları gerçekleştirin.** :
+**Anonım IP 'den bir oturum açma benzetimi yapmak için aşağıdaki adımları uygulayın**:
 
-1. Kullanarak [Tor tarayıcı](https://www.torproject.org/projects/torbrowser.html.en), gitmek [ https://myapps.microsoft.com ](https://myapps.microsoft.com).   
-2. Görünmesini istediğiniz hesabı kimlik bilgilerini girin **anonim IP adreslerinden oturum açma** rapor.
+1. [Tor tarayıcısını](https://www.torproject.org/projects/torbrowser.html.en)kullanarak öğesine [https://myapps.microsoft.com](https://myapps.microsoft.com)gidin.   
+2. **Anonım IP adreslerinden oturum açma** işlemleri raporunda görünmesini istediğiniz hesabın kimlik bilgilerini girin.
 
-Oturum açma kimlik koruması panosunda 10-15 dakika içinde gösterilir. 
+Oturum açma, kimlik koruması panosunda 10-15 dakika içinde görüntülenir. 
 
 ### <a name="sign-ins-from-unfamiliar-locations"></a>Alışılmadık konumlardan oturum açma işlemleri
 
-Bu risk olayı hakkında daha fazla bilgi için bkz: [alışılmadık konumlardan oturum açma](../reports-monitoring/concept-risk-events.md#sign-in-from-unfamiliar-locations). 
+Bu risk olayı hakkında daha fazla bilgi için bkz. [Bilinmeyen konumlardan oturum açma](../reports-monitoring/concept-risk-events.md#sign-in-from-unfamiliar-locations)işlemleri. 
 
-Tanınmayan konumlardan benzetimini yapmak için bir konum ve cihaz test hesabınızı öğesinden önce oturum açmadı oturum açmasına gerek.
+Tanıdık konumların benzetimini yapmak için, test hesabınızın öncesinde oturum açmadığı bir konumdan ve cihazdan oturum açmanız gerekir.
 
-Aşağıdaki yordam, yeni oluşturulan kullanır:
+Aşağıdaki yordam yeni oluşturulan bir kullanır:
 
-- Yeni bir konuma benzetimini yapmak için VPN bağlantısı.
+- Yeni konumun benzetimini yapmak için VPN bağlantısı.
+- Sanal makine, yeni bir cihazın benzetimini yapar.
 
-- Yeni bir cihazın benzetimini yapmak için VM.
+Aşağıdaki yordamı tamamlamak için şunları içeren bir kullanıcı hesabı kullanmanız gerekir:
 
-Aşağıdaki yordamı tamamladıktan sonra olan bir kullanıcı hesabı kullanmanızı gerektirir:
+- En az 30 günlük bir oturum açma geçmişi.
+- Multi-Factor Authentication etkinleştirildi.
 
-- Oturum açma en az 30 günlük geçmiş.
-- Çok faktörlü kimlik doğrulaması etkin.
+**Bilmediğiniz bir konumdan bir oturum açma benzetimi yapmak için aşağıdaki adımları uygulayın**:
 
+1. Test hesabınızla oturum açarken MFA sınamasını geçirerek MFA sınamasını başarısız yapın.
+2. Yeni VPN 'nizi kullanarak şuraya gidin [https://myapps.microsoft.com](https://myapps.microsoft.com) ve test hesabınızın kimlik bilgilerini girin.
 
-**Bir oturum açma tanınmayan bir konumdan benzetimini yapmak için aşağıdaki adımları gerçekleştirin.** :
+Oturum açma, kimlik koruması panosunda 10-15 dakika içinde görüntülenir.
 
-1. Test hesabınızla oturum açtığınızda, MFA testini MFA testini geçmiyor başarısız.
-2. Yeni VPN kullanarak [ https://myapps.microsoft.com ](https://myapps.microsoft.com) test hesabınızın kimlik bilgilerini girin.
-   
+### <a name="impossible-travel-to-atypical-location"></a>Olağan konuma imkansız seyahat
 
-Oturum açma kimlik koruması panosunda 10-15 dakika içinde gösterilir.
+Bu risk olayı hakkında daha fazla bilgi için bkz. [normal konuma yönelik imkansız seyahat](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations). 
 
-### <a name="impossible-travel-to-atypical-location"></a>Alışılmadık konuma imkansız seyahat
+Algoritma, yabancı olmayan seyahat koşulunun benzetimini yapmak zordur çünkü algoritma, bilinen cihazlardan veya dizindeki diğer kullanıcılar tarafından kullanılan VPN 'lerden oturum açma işlemleri gibi hatalı pozitif sonuçlar almak için makine öğrenimini kullanır. Ayrıca, algoritma, risk olaylarını oluşturmaya başlamadan önce 14 gün ve Kullanıcı için 10 oturum açma geçmişi gerektirir. Karmaşık makine öğrenimi modelleri ve yukarıdaki kurallar nedeniyle, aşağıdaki adımların bir risk olayına neden olmayacağı bir şansınız vardır. Bu risk olayını yayımlamak için bu adımları birden çok Azure AD hesabı için çoğaltmak isteyebilirsiniz.
 
-Bu risk olayı hakkında daha fazla bilgi için bkz: [mümkün alışılmadık konuma seyahat](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations). 
+**Sıradan bir konuma imkansız bir seyahat benzetimi yapmak için aşağıdaki adımları uygulayın**:
 
-Mümkün olmayan seyahat koşul benzetimi, algoritma mümkün olmayan seyahat tanıdık cihazlardan veya dizinindeki diğer kullanıcılar tarafından kullanılan VPN'ler oturum açma işlemleri gibi yanlış pozitifleri kullanıma ortadan kaldırmak için machine learning kullandığından zordur. Ayrıca, risk olayları oluşturma başlamadan önce algoritması bir oturum açma geçmiş 14 gün ve kullanıcının 10 oturum açma bilgileri gerektirir. Karmaşık makine öğrenimi modellerini nedeniyle ve kurallarına yukarıda, aşağıdaki adımları bir risk olayına neden olmayan bir fırsat yoktur. Bu risk olayı yayımlamak birden çok Azure AD hesapları için bu adımları çoğaltma isteyebilirsiniz.
+1. Standart tarayıcınızı kullanarak öğesine [https://myapps.microsoft.com](https://myapps.microsoft.com)gidin.  
+2. İçin imkansız bir seyahat riski olayı oluşturmak istediğiniz hesabın kimlik bilgilerini girin.
+3. Kullanıcı aracınızı değiştirin. Internet Explorer 'daki Kullanıcı aracısını Geliştirici Araçları ' dan değiştirebilir veya Kullanıcı Aracısı değiştirici eklentisini kullanarak Firefox veya Chrome 'daki Kullanıcı aracınızı değiştirebilirsiniz.
+4. IP adresinizi değiştirin. Bir VPN, Tor eklentisi kullanarak IP adresinizi değiştirebilir veya farklı bir veri merkezinde Azure 'da yeni bir makine getirebilirsiniz.
+5. Önceki oturum açma işleminden daha önce ve birkaç dakika içinde aynı kimlik bilgilerini [kullanarakoturumaçın. https://myapps.microsoft.com](https://myapps.microsoft.com)
 
+Oturum açma, kimlik koruması panosunda 2-4 saat içinde görüntülenir.
 
-**Bir alışılmadık konuma imkansız seyahat benzetimini yapmak için aşağıdaki adımları gerçekleştirin.** :
+## <a name="simulating-vulnerabilities"></a>Güvenlik açıklarının benzetimini yapma
+Güvenlik açıkları, bir Azure AD ortamında kötü bir aktör tarafından yararlanılabilen zayıflardır. Şu anda 3 tür güvenlik açığı, Azure AD 'nin diğer özelliklerinden yararlanan Azure AD Kimlik Koruması ortaya çıkmış. Bu güvenlik açıkları, bu özellikler kurulduktan sonra kimlik koruması panosunda otomatik olarak görüntülenir.
 
-1. Standart tarayıcınızı kullanarak [ https://myapps.microsoft.com ](https://myapps.microsoft.com).  
-2. Bir imkansız seyahat risk olayı oluşturmak istediğiniz hesabın kimlik bilgilerini girin.
-3. Kullanıcı aracınız değiştirin. Geliştirici Araçları'ndan kullanıcı aracısı Internet Explorer'da değiştirmek ya da Firefox veya Chrome'da bir kullanıcı aracısı değiştirici eklentiyi kullanarak, kullanıcı aracısını değiştirmek.
-4. IP adresiniz değiştirin. IP adresiniz bir Tor eklentisi, bir VPN kullanarak veya farklı veri merkezindeki azure'da yeni bir makine dönen değiştirebilirsiniz.
-5. Oturum açma için [ https://myapps.microsoft.com ](https://myapps.microsoft.com) olarak önce ve sonra önceki oturum açma birkaç dakika içinde aynı kimlik bilgilerini kullanarak.
-
-Oturum açma kimlik koruması panosunda 2-4 saat içinde gösterilir.
-
-## <a name="simulating-vulnerabilities"></a>Güvenlik açıklarını benzetimi
-Bir Azure AD ortamında kötü bir aktör tarafından kötüye kullanılmadan zayıf güvenlik açıklarıdır. Şu anda Azure ad diğer özelliklerden yararlanın Azure AD kimlik koruması 3 tür güvenlik açıklarına takip edilir. Bu özellikleri ayarladıktan sonra bu güvenlik açıklarını otomatik olarak kimlik koruması panosunda görüntülenir.
-
-* Azure AD [çok faktörlü kimlik doğrulaması](../authentication/multi-factor-authentication.md)
+* Azure AD [Multi-Factor Authentication](../authentication/multi-factor-authentication.md)
 * Azure AD [Cloud Discovery](https://docs.microsoft.com/cloud-app-security/).
 * Azure AD [Privileged Identity Management](../privileged-identity-management/pim-configure.md). 
 
+## <a name="testing-security-policies"></a>Güvenlik ilkelerini test etme
 
-## <a name="testing-security-policies"></a>Güvenlik ilkeleri test etme
+Bu bölüm, Kullanıcı riskini ve oturum açma riski güvenlik ilkesini test etmek için gereken adımları sağlar.
 
-Bu bölümde kullanıcı riski ve oturum açma riski İlkesi test etmek için adımları sağlar.
-
-
-### <a name="user-risk-security-policy"></a>Kullanıcı riski İlkesi
+### <a name="user-risk-security-policy"></a>Kullanıcı riski güvenlik ilkesi
 
 Daha fazla bilgi için bkz. [Kullanıcı risk ilkesini yapılandırma](howto-user-risk-policy.md).
 
-![Kullanıcı riski](./media/playbook/02.png "Playbook")
+![Kullanıcı riski](./media/playbook/02.png "PlayBook")
 
+**Bir Kullanıcı risk güvenlik ilkesini test etmek için aşağıdaki adımları gerçekleştirin**:
 
-**Bir kullanıcı riski İlkesi test etmek için aşağıdaki adımları gerçekleştirin.** :
+1. [https://portal.azure.com](https://portal.azure.com) Kiracınız için genel yönetici kimlik bilgileriyle oturum açın.
+2. **Kimlik koruması**' na gidin. 
+3. **Azure AD kimlik koruması** sayfasında, **Kullanıcı risk ilkesi**' ne tıklayın.
+4. **Atamalar** bölümünde, istenen kullanıcılar (ve gruplar) ve Kullanıcı risk düzeyini seçin.
 
-1. Oturum açma için [ https://portal.azure.com ](https://portal.azure.com) kiracınız için genel yönetici kimlik bilgilerine sahip.
-2. Gidin **kimlik koruması**. 
-3. Üzerinde **Azure AD kimlik koruması** sayfasında **kullanıcı riski İlkesi**.
-4. İçinde **atamaları** bölümünde, istediğiniz kullanıcıları (ve grup) seçin ve kullanıcı risk düzeyi.
+    ![Kullanıcı riski](./media/playbook/03.png "PlayBook")
 
-    ![Kullanıcı riski](./media/playbook/03.png "Playbook")
+5. Denetimler bölümünde, istenen erişim denetimini (ör. parola değişikliği gerektir) seçin.
+5. **Ilkeyi zorunlu kıl**' ı **seçin.**
+6. Bir sınama hesabının kullanıcı riskini, örneğin, birkaç kez risk olaylarından birine benzetim yaparak yükseltin.
+7. Birkaç dakika bekleyin ve ardından Kullanıcı için Kullanıcı düzeyinin Orta olduğunu doğrulayın. Aksi takdirde, Kullanıcı için daha fazla risk olayı benzetimi yapın.
+8. **Ilkeyi zorla**' **yı seçin.**
+9. Artık yükseltilmiş risk düzeyine sahip bir kullanıcı kullanarak oturum açarak Kullanıcı risk tabanlı koşullu erişimi test edebilirsiniz.
 
-5. İstenen erişim denetimi denetimleri bölümüne seçin (örneğin parola değişikliği iste).
-5. Olarak **ilke zorlama**seçin **kapalı**.
-6. Bir test hesabının, kullanıcı riski, örneğin, bir risk olaylarının benzetimini birkaç kez Yükselt.
-7. Birkaç dakika bekleyin ve ardından, kullanıcı için kullanıcı düzeyi, Orta olduğunu doğrulayın. Aksi takdirde kullanıcı için daha fazla risk olaylarının benzetimini yapma.
-8. Olarak **ilke zorlama**seçin **üzerinde**.
-9. Kullanıcı artık test edebilirsiniz bir yükseltilmiş risk düzeyi ile kullanarak bir kullanıcı oturum açarak risk tabanlı koşullu erişim.
-    
-    
-
-### <a name="sign-in-risk-security-policy"></a>Oturum açma riski İlkesi
+### <a name="sign-in-risk-security-policy"></a>Oturum açma riski güvenlik ilkesi
 
 Daha fazla bilgi için bkz. [Oturum açma risk ilkesini yapılandırma](howto-sign-in-risk-policy.md).
 
-![Oturum açma riski](./media/playbook/01.png "Playbook")
+![Oturum açma riski](./media/playbook/01.png "PlayBook")
 
+**Bir oturum açma risk ilkesini test etmek için aşağıdaki adımları gerçekleştirin:**
 
-**Bir oturum açma riski İlkesi'nde test etmek için aşağıdaki adımları gerçekleştirin:**
+1. [https://portal.azure.com](https://portal.azure.com) Kiracınız için genel yönetici kimlik bilgileriyle oturum açın.
+2. **Azure AD kimlik koruması**gidin.
+3. Ana **Azure AD kimlik koruması** sayfasında **oturum açma risk ilkesi**' ne tıklayın. 
+4. **Atamalar** bölümünde, istenen kullanıcılar (ve gruplar) ve oturum açma risk düzeyini seçin.
 
-1. Oturum açma için [ https://portal.azure.com ](https://portal.azure.com) kiracınız için genel yönetici kimlik bilgilerine sahip.
+    ![Oturum açma riski](./media/playbook/04.png "PlayBook")
 
-2. Gidin **Azure AD kimlik koruması**.
-
-3. Ana **Azure AD kimlik koruması** sayfasında **oturum açma riski İlkesi**. 
-
-4. İçinde **atamaları** bölümünde istediğiniz kullanıcıları (ve grup) seçin ve oturum açma risk düzeyini.
-
-    ![Oturum açma riski](./media/playbook/04.png "Playbook")
-
-
-5. İçinde **denetimleri** bölümünde, istenen erişim denetimi seçin (örneğin, **çok faktörlü kimlik doğrulaması gerektiren**). 
-
-6. Olarak **ilke zorlama**seçin **üzerinde**.
-
+5. **Denetimler** bölümünde, istenen erişim denetimini seçin (örneğin, **çok faktörlü kimlik doğrulaması gerektir**). 
+6. **Ilkeyi zorla**' **yı seçin.**
 7. **Kaydet**’e tıklayın.
-
-8. Artık oturum açma Risk tabanlı koşullu erişim (örneğin, Tor tarayıcısı kullanılarak) kullanarak bir riskli oturum açarak test edebilirsiniz. 
-
- 
-
-
-
+8. Artık riskli bir oturum kullanarak oturum açma riski tabanlı koşullu erişimi test edebilirsiniz (örneğin, Tor tarayıcısını kullanarak). 
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Azure Active Directory kimlik koruması](../active-directory-identityprotection.md)
-
+- [Azure Active Directory Kimlik Koruması](../active-directory-identityprotection.md)

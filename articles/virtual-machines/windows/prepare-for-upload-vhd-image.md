@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: a0cd2952633293bfa1d29bf3a399c67bf092d288
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: ad30bd4f77c5f4314956e39f26a30b72d72a208a
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68318314"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68361164"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Azure 'a yüklemek için bir Windows VHD veya VHDX hazırlama
 
@@ -33,7 +33,7 @@ Azure VM 'Leri için destek ilkesi hakkında daha fazla bilgi için bkz. [Azure 
 > [!NOTE]
 > Bu makaledeki yönergeler için geçerlidir:
 >1. Windows Server 2008 R2 ve üzeri Windows Server işletim sistemlerinin 64 bitlik sürümü. Azure 'da 32 bitlik bir işletim sistemi çalıştırma hakkında bilgi için bkz. [Azure VM 'lerde 32 bit işletim sistemleri Için destek](https://support.microsoft.com/help/4021388/support-for-32-bit-operating-systems-in-azure-virtual-machines).
->2. Azure Site Recovery veya Azure geçişi gibi iş yükünü geçirmek için herhangi bir olağanüstü durum kurtarma aracı kullanacaksanız, bu işlemin yine de yapılması gerekir ve ardından görüntüyü geçişten önce hazırlamak için konuk işletim sistemi üzerinde çalışır.
+>2. Azure Site Recovery veya Azure geçişi gibi iş yükünü geçirmek için herhangi bir olağanüstü durum kurtarma aracı kullanılacaksa, bu işlemin tamamlanması ve ardından Konuk işletim sistemi, geçişten önce görüntüyü hazırlamak için gereklidir.
 
 ## <a name="convert-the-virtual-disk-to-a-fixed-size-and-to-vhd"></a>Sanal diski sabit boyuta ve VHD 'ye Dönüştür
 
@@ -214,7 +214,7 @@ Aşağıdaki ayarların uzaktan erişim için doğru yapılandırıldığından 
 
 9. VM bir etki alanının parçasıysa, eski ayarların geri döndürülmemiş olduğundan emin olmak için aşağıdaki ilkeleri denetleyin. 
     
-    | Hedef                                     | İlke                                                                                                                                                       | Value                                                                                    |
+    | Hedef                                     | İlke                                                                                                                                                       | Değer                                                                                    |
     |------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
     | RDP etkin                           | Bilgisayar Yapılandırması \ Windows ayarları \ Yönetimsel Şablonlar uzak masaüstü Hizmetleri\uzak Masaüstü oturumu ana bilgisayar \ bağlantılar         | Kullanıcıların Uzak Masaüstü kullanarak uzaktan bağlanmasına izin ver                                  |
     | NLA Grup İlkesi                         | Settings\Administrative Templates\uzak masaüstü Hizmetleri\uzak Masaüstü oturumu Host\Security                                                    | NLA kullanarak uzaktan erişim için Kullanıcı kimlik doğrulaması iste |
@@ -248,7 +248,7 @@ Aşağıdaki ayarların uzaktan erişim için doğru yapılandırıldığından 
    ``` 
 5. VM bir etki alanının parçasıysa, eski ayarların geri döndürülmemiş olduğundan emin olmak için aşağıdaki Azure AD ilkelerine bakın. 
 
-    | Hedef                                 | İlke                                                                                                                                                  | Değer                                   |
+    | Hedef                                 | İlke                                                                                                                                                  | Value                                   |
     |--------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|
     | Windows Güvenlik Duvarı profillerini etkinleştirme | Bilgisayar Yapılandırması \ Windows ayarları \ yönetim Templates\Network\Network Connection\Windows Firewall\Domain Profile\Windows güvenlik duvarı   | Tüm ağ bağlantılarını koru         |
     | RDP 'yi etkinleştirme                           | Bilgisayar Yapılandırması \ Windows ayarları \ yönetim Templates\Network\Network Connection\Windows Firewall\Domain Profile\Windows güvenlik duvarı   | Gelen uzak masaüstü özel durumlarına izin ver |
@@ -347,7 +347,7 @@ VM 'nin sağlıklı, güvenli ve RDP erişilebilir olduğundan emin olun:
 
    - Yedekleme Işleçleri
 
-   - Anlamasına
+   - Herkes
 
    - Kullanıcılar
 

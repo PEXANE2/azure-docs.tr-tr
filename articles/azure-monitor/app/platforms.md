@@ -10,28 +10,25 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 07/06/2019
+ms.date: 07/18/2019
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: db79f2b1d3857aac2f71d2e18a3949f068b746eb
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: dd2fb0c9ef157e3706ca3d902f7feebaf4c2f279
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67990068"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68478903"
 ---
-# <a name="languages---officially-supported-by-application-insights-team"></a>Diller-Application Insights ekibi tarafından resmi olarak desteklenir
+# <a name="supported-languages"></a>Desteklenen diller
 
 * [C#|VB (.NET)](../../azure-monitor/app/asp-net.md)
 * [Java](../../azure-monitor/app/java-get-started.md)
-* [JavaScript web sayfaları](../../azure-monitor/app/javascript.md)
+* [JavaScript](../../azure-monitor/app/javascript.md)
 * [Node.JS](../../azure-monitor/app/nodejs.md)
 
-## <a name="community-sdks"></a>Topluluk SDK 'Ları
+## <a name="supported-platforms-and-frameworks"></a>Desteklenen platformlar ve çerçeveler
 
-Çoğunlukla Microsoft tarafından yazılan çok sayıda topluluk Azure Application Insights SDK 'Sı vardır. Topluluk SDK 'Ları Microsoft tarafından resmi olarak korunmaz. Resmi olarak desteklenen listede olmayan herhangi bir SDK için destek sağlayamıyoruz. Bu SDK 'lar deneysel olarak değerlendirilir ve üretim kullanımı için önerilmez.
-
-## <a name="platforms-and-frameworks"></a>Platformlar ve altyapıları
 ### <a name="instrumentation-for-already-deployed-applications-codeless-agent-based"></a>Zaten dağıtılan uygulamalar için izleme (codeless, aracı tabanlı)
 * [Azure VM ve Azure sanal makine ölçek kümeleri](../../azure-monitor/app/azure-vm-vmss-apps.md)
 * [Azure uygulama hizmeti](../../azure-monitor/app/azure-web-apps.md)
@@ -59,3 +56,7 @@ ms.locfileid: "67990068"
 ## <a name="export-and-data-analysis"></a>Dışarı aktarma ve veri analizi
 * [Power BI](https://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx)
 * [Akış Analizi](../../azure-monitor/app/export-power-bi.md)
+
+## <a name="unsupported-community-sdks"></a>Desteklenmeyen topluluk SDK 'Ları
+
+Birçok topluluk Application Insights SDK 'Sı vardır. Topluluk SDK 'Ları Microsoft tarafından resmi olarak desteklenmez/korunmaz. Resmi olarak desteklenen listede olmayan herhangi bir SDK için destek sağlayamıyoruz. 

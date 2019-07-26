@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 14a4191612a5d42836ae4be3ff902ca47a6b06d4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3dd1dde067a2ec745d7d60a78a50ab34ea30d0dd
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60634360"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359810"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>Bir not defteri bulut verilerine erişim
 
@@ -42,7 +42,7 @@ import requests
 data_url = 'https://data.cityofnewyork.us/resource/gkne-dk5s.json'
 
 # General data request; include other API keys and credentials as needed in the data argument
-response = requests.get(data_url, data={"limit" : "20"})
+response = requests.get(data_url, data={"limit": "20"})
 
 if response.status_code == 200:
     dataframe_rest2 = pandas.DataFrame.from_records(response.json())
@@ -69,7 +69,7 @@ Azure depolama, ilişkisel olmayan depolama, sahip olduğunuz veriler ve nasıl 
 Azure Cosmos DB tamamen dizinli bir NoSQL deposu için JSON belgelerini sağlar). Aşağıdaki makaleler birkaç python'dan Cosmos DB ile çalışmak için farklı yollar sunar:
 
 - [Python ile uygulama oluşturma bir SQL API'si](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-python)
-- [MongoDB için Azure Cosmos DB'nin API'si ile bir Flask uygulaması derleme](https://docs.microsoft.com/azure/cosmos-db/create-mongodb-flask)
+- [MongoDB için Azure Cosmos DB API 'SI ile bir Flask uygulaması oluşturun](https://docs.microsoft.com/azure/cosmos-db/create-mongodb-flask)
 - [Python ve Gremlin API kullanarak bir grafik veritabanı oluşturma](https://docs.microsoft.com/azure/cosmos-db/create-graph-python)
 - [Python ve Azure Cosmos DB ile Cassandra uygulaması derleme](https://docs.microsoft.com/azure/cosmos-db/create-cassandra-python)
 - [API uygulaması, Python ve Azure Cosmos DB ile tablo oluşturma](https://docs.microsoft.com/azure/cosmos-db/create-table-python)
@@ -80,9 +80,9 @@ Cosmos DB ile çalışırken kullanabileceğiniz [azure cosmosdb tablo](https://
 
 Azure, bir dizi kullanabileceğiniz diğer veritabanı türleri sağlar. Aşağıdaki makaleleri veritabanlarınızdaki Python'dan erişmeye yönelik rehberlik sağlar:
 
-- [PostgreSQL için Azure veritabanı: Bağlanmak ve veri sorgulamak için Python kullanma](https://docs.microsoft.com/azure/postgresql/connect-python)
+- [PostgreSQL için Azure veritabanı: Verileri bağlamak ve sorgulamak için Python kullanma](https://docs.microsoft.com/azure/postgresql/connect-python)
 - [Hızlı Başlangıç: Python ile Azure Redis Cache kullanma](https://docs.microsoft.com/azure/redis-cache/cache-python-get-started)
-- [MySQL için Azure veritabanı: Bağlanmak ve veri sorgulamak için Python kullanma](https://docs.microsoft.com/azure/mysql/connect-python)
+- [MySQL için Azure veritabanı: Verileri bağlamak ve sorgulamak için Python kullanma](https://docs.microsoft.com/azure/mysql/connect-python)
 - [Azure Data Factory](https://azure.microsoft.com/services/data-factory/)
   - [Azure Data Factory Kopyalama Sihirbazı](https://azure.microsoft.com/updates/code-free-copy-wizard-for-azure-data-factory/)
 

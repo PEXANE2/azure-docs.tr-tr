@@ -1,6 +1,6 @@
 ---
-title: Azure IOT hub'ı (Node) ile işleri zamanlama | Microsoft Docs
-description: Birden fazla cihazda doğrudan yöntem çağırmak için bir Azure IOT hub'ı işini zamanlamak nasıl. Node.js için Azure IOT SDK'ları, sanal cihaz uygulamaları ve işi çalıştırmak için bir hizmet uygulaması'nı uygulamak için kullanın.
+title: İşleri Azure IoT Hub zamanlayın (node) | Microsoft Docs
+description: Birden çok cihazda doğrudan yöntem çağırmak için bir Azure IoT Hub işi zamanlama. İşi çalıştırmak üzere sanal cihaz uygulamalarını ve bir hizmet uygulamasını uygulamak için Node. js için Azure IoT SDK 'larını kullanın.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -9,80 +9,76 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 10/06/2017
-ms.openlocfilehash: af35a84c299544e43988547771ddce75fd71bd90
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a3a07f54d77577085951b2bccfa1213adef5b20d
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67065796"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68403924"
 ---
-# <a name="schedule-and-broadcast-jobs-node"></a>Zamanlama ve yayınlama işleri (Node)
+# <a name="schedule-and-broadcast-jobs-node"></a>İşleri zamanlama ve yayınlama (node)
 
 [!INCLUDE [iot-hub-selector-schedule-jobs](../../includes/iot-hub-selector-schedule-jobs.md)]
 
-Azure IOT Hub oluşturma ve zamanlama ve milyonlarca cihaza güncelleştirme işleri izlemek bir arka uç uygulaması sağlayan tam olarak yönetilen bir hizmettir.  İşleri için aşağıdaki eylemler kullanılabilir:
+Azure IoT Hub, bir arka uç uygulamasının milyonlarca cihazı zamanlamayı ve güncelleştirmeyi sağlayan işleri oluşturmasına ve izlemesine olanak tanıyan, tam olarak yönetilen bir hizmettir.  İşler aşağıdaki eylemler için kullanılabilir:
 
 * İstenen özellikleri güncelleştirme
-* Etiketleri güncelleştirin
-* Doğrudan metotları çağırma
+* Etiketleri Güncelleştir
+* Doğrudan metotları çağır
 
-Kavramsal olarak, bir işi bu eylemlerden biri, sarmalar ve bir cihaz ikizi sorgu tarafından tanımlanan bir dizi cihazda karşı yürütme ilerleme durumunu izler.  Örneğin, bir arka uç uygulaması, bir işi 10.000 cihaz, cihaz ikizi sorgu tarafından belirtilen ve gelecekteki zaman için programlanmış bir yeniden başlatma yöntemini çağırmak için kullanabilirsiniz. Bu cihazların her biri alın ve yeniden başlatma yöntemi uygulamak, uygulamanın sonra ilerleme durumunu izleyebilirsiniz.
+Kavramsal olarak, bir iş bu eylemlerden birini sarmalar ve yürütmenin ilerlemesini bir cihaz ikizi sorgusu tarafından tanımlanan bir cihaz kümesiyle izler.  Örneğin, bir arka uç uygulaması, bir cihaz ikizi sorgusu tarafından belirtilen ve gelecekteki bir zamanda zamanlanan 10.000 cihazlarda yeniden başlatma yöntemini çağırmak için bir iş kullanabilir. Bu uygulama daha sonra bu cihazların her biri tarafından yeniden başlatma yöntemini alıp yürütebileceği ilerlemeyi izleyebilir.
 
-Bu makaleler, bu özelliklerin her biri hakkında daha fazla bilgi edinin:
+Bu makalelerdeki her bir özellik hakkında daha fazla bilgi edinin:
 
-* Cihaz ikizi ve özellikleri: [Cihaz ikizlerini kullanmaya başlama](iot-hub-node-node-twin-getstarted.md) ve [Öğreticisi: Cihaz ikizi özelliklerini kullanma](tutorial-device-twins.md)
+* Cihaz ikizi ve özellikleri: [Cihaz](iot-hub-node-node-twin-getstarted.md) ikizlerini ve [öğreticisini kullanmaya başlayın: Cihaz ikizi özelliklerini kullanma](tutorial-device-twins.md)
 
-* Doğrudan yöntemler: [IOT Hub Geliştirici Kılavuzu - doğrudan yöntemler](iot-hub-devguide-direct-methods.md) ve [Öğreticisi: doğrudan yöntemler](quickstart-control-device-node.md)
+* Doğrudan Yöntemler: [IoT Hub Geliştirici Kılavuzu-doğrudan Yöntemler](iot-hub-devguide-direct-methods.md) ve [öğretici: doğrudan Yöntemler](quickstart-control-device-node.md)
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 Bu öğretici şunların nasıl yapıldığını gösterir:
 
-* Sahip sağlayan bir doğrudan yöntem Node.js sanal cihaz uygulaması oluşturma **lockDoor**, hangi çağrılabilir çözüm arka ucu tarafından.
+* Çözüm arka ucu tarafından çağrılabilen **Lockkapısı**sağlayan doğrudan yöntemine sahip bir Node. js sanal cihaz uygulaması oluşturun.
 
-* Çağıran bir Node.js konsol uygulaması oluşturacaksınız **lockDoor** yöntemi bir iş ve güncelleştirmeleri kullanarak bir cihaz iş istenen özellikleri kullanarak sanal cihaz uygulamasında doğrudan.
+* Bir iş kullanarak sanal cihaz uygulamasındaki **Lockkapısı** doğrudan yöntemini çağıran bir Node. js konsol uygulaması oluşturun ve bir cihaz işi kullanarak istenen özellikleri günceller.
 
-Bu öğreticinin sonunda iki Node.js uygulamaları vardır:
+Bu öğreticinin sonunda iki Node. js uygulamanız vardır:
 
-* **simDevice.js**, cihaz kimliğiyle IOT hub'ınıza bağlanır ve aldığı kaydeden bir **lockDoor** doğrudan yöntemi.
+* IoT Hub 'ınıza cihaz kimliğiyle bağlanan ve bir **Lockkapısı** doğrudan yöntemi alan **simdevice. js**.
 
-* **scheduleJobService.js**, sanal cihaz uygulamasında bir doğrudan yöntem çağrıları ve cihaz ikizinin güncelleştirmeleri kullanarak bir proje özelliklerini istenen.
+* sanal cihaz uygulamasında doğrudan bir yöntemi çağıran ve Device ikizi 'ın istenen özelliklerini bir iş kullanarak güncelleştiren **Schedulejobservice. js**.
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
-* Node.js sürümü 10.0.x veya üzeri [geliştirme ortamınızı hazırlama](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) Node.js Bu öğretici için Windows veya Linux'ta nasıl yükleneceğini açıklar.
+* Node. js sürüm 10.0. x veya sonraki sürümler [geliştirme ortamınızı hazırlama](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) Bu öğreticide Windows veya Linux 'ta Node. js ' nin nasıl yükleneceğini açıklar.
 
-* Etkin bir Azure hesabı. (Hesabınız yoksa, oluşturabileceğiniz bir [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) yalnızca birkaç dakika içinde.)
+* Etkin bir Azure hesabı. (Hesabınız yoksa yalnızca birkaç dakika içinde [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturabilirsiniz.)
 
 ## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-### <a name="retrieve-connection-string-for-iot-hub"></a>IOT hub için bağlantı dizesi alma
-
-[!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
-
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
 ## <a name="create-a-simulated-device-app"></a>Sanal cihaz uygulaması oluşturma
 
-Bu bölümde, bir sanal tetikler bulut tarafından çağrılan doğrudan bir yönteme yanıt veren bir Node.js konsol uygulaması oluşturma **lockDoor** yöntemi.
+Bu bölümde, bulut tarafından çağrılan doğrudan bir yönteme yanıt veren bir Node. js konsol uygulaması oluşturacaksınız ve bu da sanal bir **Lockkapısı** metodunu tetikler.
 
-1. Adlı yeni bir boş klasör oluşturun **simDevice**.  İçinde **simDevice** klasöründe komut isteminizde aşağıdaki komutu kullanarak bir package.json dosyası oluşturun.  Tüm varsayılanları kabul edin:
+1. **Simdevice**adlı yeni bir boş klasör oluşturun.  **Simdevice** klasöründe komut istemindeki aşağıdaki komutu kullanarak bir Package. JSON dosyası oluşturun.  Tüm varsayılanları kabul edin:
 
    ```
    npm init
    ```
 
-2. Komut isteminizde **simDevice** klasörü yüklemek için aşağıdaki komutu çalıştırın, **azure IOT cihaz** cihaz SDK paketini ve **azure-iot-device-mqtt** paket:
+2. **Simdevice** klasöründe komut istemindeki **Azure-IoT-Device** cihaz SDK paketini ve **Azure-IoT-Device-MQTT** paketini yüklemek için aşağıdaki komutu çalıştırın:
    
    ```
    npm install azure-iot-device azure-iot-device-mqtt --save
    ```
 
-3. Bir metin düzenleyicisi kullanarak yeni bir oluşturma **simDevice.js** dosyası **simDevice** klasör.
+3. Bir metin düzenleyicisi kullanarak, **simdevice** klasöründe yeni bir **simdevice. js** dosyası oluşturun.
 
-4. Aşağıdaki 'gerekli' başlangıcında deyimleri Ekle **simDevice.js** dosyası:
+4. **Simdevice. js** dosyasının başlangıcında aşağıdaki ' gerektir ' deyimlerini ekleyin:
    
     ```
     'use strict';
@@ -98,7 +94,7 @@ Bu bölümde, bir sanal tetikler bulut tarafından çağrılan doğrudan bir yö
     var client = Client.fromConnectionString(connectionString, Protocol);
     ```
 
-6. İşlemek için aşağıdaki işlevi ekleyin **lockDoor** yöntemi.
+6. **Lockkapısı** metodunu işlemek için aşağıdaki işlevi ekleyin.
    
     ```
     var onLockDoor = function(request, response) {
@@ -116,7 +112,7 @@ Bu bölümde, bir sanal tetikler bulut tarafından çağrılan doğrudan bir yö
     };
     ```
 
-7. İşleyicisini kaydetmek için aşağıdaki kodu ekleyin **lockDoor** yöntemi.
+7. **Kilit kapısı** yöntemi için işleyiciyi kaydetmek üzere aşağıdaki kodu ekleyin.
 
    ```
    client.open(function(err) {
@@ -129,31 +125,37 @@ Bu bölümde, bir sanal tetikler bulut tarafından çağrılan doğrudan bir yö
    });
    ```
 
-8. Kaydet ve Kapat **simDevice.js** dosya.
+8. **Simdevice. js** dosyasını kaydedin ve kapatın.
 
 > [!NOTE]
-> Sade ve basit bir anlatım gözetildiği için bu öğretici herhangi bir yeniden deneme ilkesi uygulamaz. Üretim kodunda yeniden deneme ilkelerini (örneğin, bir üstel geri alma), makalesinde önerildiği uygulamalıdır [geçici hata işleme](/azure/architecture/best-practices/transient-faults).
+> Sade ve basit bir anlatım gözetildiği için bu öğretici herhangi bir yeniden deneme ilkesi uygulamaz. Üretim kodunda, [geçici hata işleme](/azure/architecture/best-practices/transient-faults)makalesinde önerildiği gibi yeniden deneme ilkelerini (üstel geri alma gibi) uygulamanız gerekir.
 >
 
-## <a name="schedule-jobs-for-calling-a-direct-method-and-updating-a-device-twins-properties"></a>Bir doğrudan yöntem çağırma ve bir cihaz ikizinin özelliklerini güncelleştirmek için işleri zamanlama
+## <a name="get-the-iot-hub-connection-string"></a>IoT Hub bağlantı dizesini al
 
-Bu bölümde, bir uzak başlatan bir Node.js konsol uygulaması oluşturma **lockDoor** bir cihazda doğrudan yöntem kullanarak ve cihaz ikizinin özelliklerini güncelleştirir.
+[!INCLUDE [iot-hub-howto-schedule-jobs-shared-access-policy-text](../../includes/iot-hub-howto-schedule-jobs-shared-access-policy-text.md)]
 
-1. Adlı yeni bir boş klasör oluşturun **scheduleJobService**.  İçinde **scheduleJobService** klasöründe komut isteminizde aşağıdaki komutu kullanarak bir package.json dosyası oluşturun.  Tüm varsayılanları kabul edin:
+[!INCLUDE [iot-hub-include-find-registryrw-connection-string](../../includes/iot-hub-include-find-registryrw-connection-string.md)]
+
+## <a name="schedule-jobs-for-calling-a-direct-method-and-updating-a-device-twins-properties"></a>Bir doğrudan yöntem çağırmak ve bir cihaz ikizi özelliklerini güncelleştirmek için işleri zamanlama
+
+Bu bölümde, doğrudan bir yöntemi kullanarak bir cihazda uzak **Lockkapısı** Başlatan bir Node. js konsol uygulaması oluşturursunuz ve Device ikizi 'in özelliklerini güncelleştirebilirsiniz.
+
+1. **Schedulejobservice**adlı yeni bir boş klasör oluşturun.  Komut istemindeki aşağıdaki komutu kullanarak **Schedulejobservice** klasöründe bir Package. JSON dosyası oluşturun.  Tüm varsayılanları kabul edin:
 
     ```
     npm init
     ```
 
-2. Komut isteminizde **scheduleJobService** klasörü yüklemek için aşağıdaki komutu çalıştırın, **azure-iothub** cihaz SDK paketini ve **azure-iot-device-mqtt** Paket:
+2. Komut istemindeki **Schedulejobservice** klasöründe, **Azure-ıothub** cihaz SDK paketini ve **Azure-IoT-Device-MQTT** paketini yüklemek için aşağıdaki komutu çalıştırın:
    
     ```
     npm install azure-iothub uuid --save
     ```
 
-3. Bir metin düzenleyicisi kullanarak yeni bir oluşturma **scheduleJobService.js** dosyası **scheduleJobService** klasör.
+3. Bir metin düzenleyicisi kullanarak, **schedulejobservice** klasöründe yeni bir **schedulejobservice. js** dosyası oluşturun.
 
-4. Aşağıdaki 'gerekli' başlangıcında deyimleri Ekle **dmpatterns_gscheduleJobServiceetstarted_service.js** dosyası:
+4. **Dmpatterns_gscheduleJobServiceetstarted_service. js** dosyasının başlangıcında aşağıdaki ' gerektir ' deyimlerini ekleyin:
    
     ```
     'use strict';
@@ -172,7 +174,7 @@ Bu bölümde, bir uzak başlatan bir Node.js konsol uygulaması oluşturma **loc
     var jobClient = JobClient.fromConnectionString(connectionString);
     ```
 
-6. İş yürütme izlemek için kullanılan aşağıdaki işlevi ekleyin:
+6. İşin yürütülmesini izlemek için kullanılan aşağıdaki işlevi ekleyin:
    
     ```
     function monitorJob (jobId, callback) {
@@ -192,7 +194,7 @@ Bu bölümde, bir uzak başlatan bir Node.js konsol uygulaması oluşturma **loc
     }
     ```
 
-7. Cihaz yöntemi çağıran işini zamanlamak için aşağıdaki kodu ekleyin:
+7. Cihaz yöntemini çağıran işi zamanlamak için aşağıdaki kodu ekleyin:
    
     ```
     var methodParams = {
@@ -223,7 +225,7 @@ Bu bölümde, bir uzak başlatan bir Node.js konsol uygulaması oluşturma **loc
     });
     ```
 
-8. Cihaz ikizi güncelleştirilecek işini zamanlamak için aşağıdaki kodu ekleyin:
+8. İşi cihaz ikizi güncelleştirmek üzere zamanlamak için aşağıdaki kodu ekleyin:
    
     ```
     var twinPatch = {
@@ -259,30 +261,30 @@ Bu bölümde, bir uzak başlatan bir Node.js konsol uygulaması oluşturma **loc
     });
     ```
 
-9. Kaydet ve Kapat **scheduleJobService.js** dosya.
+9. **Schedulejobservice. js** dosyasını kaydedin ve kapatın.
 
 ## <a name="run-the-applications"></a>Uygulamaları çalıştırma
 
 Şimdi uygulamaları çalıştırmaya hazırsınız.
 
-1. Komut isteminde **simDevice** klasörü için yeniden başlatma doğrudan yöntem dinleme başlamak için aşağıdaki komutu çalıştırın.
+1. **Simdevice** klasöründeki komut isteminde, önyükleme doğrudan metodunu dinlemeye başlamak için aşağıdaki komutu çalıştırın.
    
     ```
     node simDevice.js
     ```
 
-2. Komut isteminde **scheduleJobService** klasörü, işlerinin kapısını kilitleme ve ikiz güncelleştirmesi tetiklemek için aşağıdaki komutu çalıştırın
+2. **Schedulejobservice** klasöründeki komut isteminde, kapıyı kilitlemek ve ikizi güncelleştirmek için işleri tetiklemek üzere aşağıdaki komutu çalıştırın.
    
     ```
     node scheduleJobService.js
     ```
 
-3. Doğrudan yöntem konsolunda cihaz yanıtı görürsünüz.
+3. Konsolda doğrudan yönteme cihaz yanıtı görürsünüz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, bir işi bir doğrudan yöntem bir cihaz ve cihaz ikizinin özelliklerini güncelleştirme için zamanlamak için kullanılır.
+Bu öğreticide, bir cihaza doğrudan yöntem zamanlamak ve Device ikizi 'in özelliklerinin güncelleştirilmesi için bir iş kullandınız.
 
-IOT Hub ve cihaz yönetim modellerini uzaktan gibi ile hava üretici yazılımı güncelleştirme başlamak için bkz: [Öğreticisi: Üretici yazılımlarını güncelleştirme nasıl](tutorial-firmware-update.md).
+AIR üretici yazılımı güncelleştirmesi üzerinden uzak gibi IoT Hub ve cihaz yönetim desenleriyle çalışmaya devam etmek için bkz [. Öğretici: Üretici yazılımı güncelleştirmesi](tutorial-firmware-update.md)nasıl yapılır?
 
-IOT Hub kullanmaya başlamaya devam etmek için bkz: [Azure IOT Edge'i kullanmaya başlama](../iot-edge/tutorial-simulate-device-linux.md).
+IoT Hub kullanmaya başlarken devam etmek için bkz. [Azure IoT Edge kullanmaya](../iot-edge/tutorial-simulate-device-linux.md)başlama.

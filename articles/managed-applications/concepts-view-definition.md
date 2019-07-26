@@ -1,5 +1,5 @@
 ---
-title: Azure yönetilen uygulamalar görünüm tanımında genel bakış | Microsoft Docs
+title: Azure yönetilen uygulamalarında görünüm tanımına genel bakış | Microsoft Docs
 description: Azure yönetilen uygulamalar için Görünüm tanımı oluşturma kavramını açıklar.
 services: managed-applications
 ms.service: managed-applications
@@ -7,31 +7,33 @@ ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 06/12/2019
-ms.openlocfilehash: 6735787f9b43f98ab611584f3c7191c9f927dbc2
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: ff96bddef1b34f5a8bf743ccaaccba2da01534dc
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478751"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335102"
 ---
-# <a name="view-definition-artifact-in-azure-managed-applications"></a>Azure yönetilen uygulamalar, görünüm tanımı yapıt
+# <a name="view-definition-artifact-in-azure-managed-applications"></a>Azure yönetilen uygulamalarında tanım yapıtı görüntüleme
 
-Görünüm tanımı, Azure yönetilen uygulamalar, isteğe bağlı bir yapıdır. Genel Bakış sayfasını özelleştirme ve ölçümler ve özel kaynakları gibi diğer görünümler sağlar.
+Görünüm tanımı, Azure yönetilen uygulamalarında isteğe bağlı bir yapıdır. Genel Bakış sayfasını özelleştirmeye ve ölçümler ve özel kaynaklar gibi daha fazla görünüm eklemenize olanak tanır.
 
-Bu makalede, görünüm tanımı yapıt genel bir bakış ve özelliklerini sağlar.
+Bu makale, görünüm tanımı yapıtı ve özelliklerine genel bir bakış sağlar.
 
 ## <a name="view-definition-artifact"></a>Tanım yapıtını görüntüleme
 
-Görünüm tanımı yapıt olarak adlandırılmalıdır **viewDefinition.json** ve aynı düzeyde yerleştirilmiş **createUiDefinition.json** ve **mainTemplate.json** .zip olarak Bu paketi bir yönetilen uygulama tanımı oluşturur. .Zip paketi oluşturmak ve yönetilen uygulama tanımı yayımlama hakkında bilgi edinmek için [Azure yönetilen uygulama tanımı yayımlama](publish-managed-app-definition-quickstart.md)
+Görünüm tanımı yapıtı, **ViewDefinition. JSON** olarak adlandırılmalıdır ve yönetilen uygulama tanımı oluşturan. zip paketinde **createuıdefinition. JSON** ve **maintemplate. JSON** ile aynı düzeye yerleştirilmelidir. . Zip paketini oluşturma ve yönetilen uygulama tanımını yayımlama hakkında bilgi edinmek için bkz. [Azure yönetilen uygulama tanımı yayımlama](publish-managed-app-definition-quickstart.md)
 
-## <a name="view-definition-schema"></a>Görünüm tanımı şema
+## <a name="view-definition-schema"></a>Tanım şemasını görüntüle
 
-**ViewDefinition.json** dosya sahip yalnızca bir üst düzey `views` görünümleri dizisidir özelliği. Her görünüm, ayrı bir menü öğesi olarak içindekiler tablosunda yönetilen uygulama kullanıcı arabiriminde gösterilir. Her görünüm sahip bir `kind` görünüm türünü ayarlar özelliği. Aşağıdaki değerlerden birine ayarlanmalıdır: [Genel Bakış](#overview), [ölçümleri](#metrics), [CustomResources](#custom-resources). Daha fazla bilgi için bkz: geçerli [viewDefinition.json için JSON şeması](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#).
+**ViewDefinition. JSON** dosyası bir görünüm dizisi olan yalnızca bir `views` top Level özelliğine sahiptir. Her görünüm, yönetilen uygulama kullanıcı arabiriminde, içindekiler tablosunda ayrı bir menü öğesi olarak gösterilir. Her görünüm, görünümün `kind` türünü ayarlayan bir özelliğe sahiptir. Bu değerin aşağıdaki değerlerden birine ayarlanması gerekir: [Genel bakış](#overview), [ölçümler](#metrics), [customresources](#custom-resources). Daha fazla bilgi için bkz. [viewDefinition. JSON için geçerli JSON şeması](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#).
 
-Görünüm tanımı için JSON örneği:
+Görünüm tanımı için örnek JSON:
 
 ```json
 {
+    "$schema": "https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#",
+    "contentVersion": "0.0.0.1",
     "views": [
         {
             "kind": "Overview",
@@ -84,7 +86,7 @@ Görünüm tanımı için JSON örneği:
                         "displayName": "Custom Context Action",
                         "path": "testCustomResource/testContextAction",
                         "icon": "Stop",
-                        "createUIDefinition": { },
+                        "createUIDefinition": { }
                     }
                 ],
                 "columns": [
@@ -103,7 +105,7 @@ Görünüm tanımı için JSON örneği:
 
 `"kind": "Overview"`
 
-Bu görünümde, sağladığınız **viewDefinition.json**, yönetilen uygulamanız varsayılan genel bakış sayfasında onu geçersiz kılar.
+Bu görünümü **ViewDefinition. JSON**içinde sağladığınızda, yönetilen uygulamanızdaki varsayılan genel bakış sayfasını geçersiz kılar.
 
 ```json
 {
@@ -123,15 +125,17 @@ Bu görünümde, sağladığınız **viewDefinition.json**, yönetilen uygulaman
 
 |Özellik|Gerekli|Açıklama|
 |---------|---------|---------|
-|üst bilgi|Hayır|Genel Bakış sayfasının başlığı.|
-|description|Hayır|Yönetilen uygulama tanımı.|
-|Komutları|Hayır|Bkz: genel bakış sayfasının ek düğmeler dizisi [komutları](#commands).|
+|üst bilgi|Hayır|Genel Bakış sayfasının üst bilgisi.|
+|description|Hayır|Yönetilen uygulamanızın açıklaması.|
+|komutlar|Hayır|Genel Bakış sayfasının ek araç çubuğu düğmelerinin dizisi, bkz. [Komutlar](#commands).|
+
+![Genel Bakış](./media/view-definition/overview.png)
 
 ## <a name="metrics"></a>Ölçümler
 
 `"kind": "Metrics"`
 
-Ölçümler görünümü, toplamak ve yönetilen uygulama kaynaklarınızdan gelen verileri birleştiren sağlar [Azure İzleyici ölçümleri](../azure-monitor/platform/data-platform-metrics.md).
+Ölçüm görünümü, [Azure Izleyici ölçümlerinde](../azure-monitor/platform/data-platform-metrics.md)yönetilen uygulama kaynaklarınızdan veri toplamanıza ve bunları toplamanızı sağlar.
 
 ```json
 {
@@ -160,35 +164,37 @@ Bu görünümde, sağladığınız **viewDefinition.json**, yönetilen uygulaman
 
 |Özellik|Gerekli|Açıklama|
 |---------|---------|---------|
-|displayName|Hayır|Görünüm görüntülenen başlığı.|
-|version|Hayır|Görünümü işlemek için kullanılan platform sürümü.|
-|Grafikler|Evet|Grafik ölçümlerini sayfanın dizisi.|
+|displayName|Hayır|Görünümün görüntülenmiş başlığı.|
+|version|Hayır|Görünümü işlemek için kullanılan platformun sürümü.|
+|grafik|Evet|Ölçümler sayfasının grafik dizisi.|
 
 ### <a name="chart"></a>Grafik
 
 |Özellik|Gerekli|Açıklama|
 |---------|---------|---------|
-|displayName|Evet|Grafikte görüntülenen başlığı.|
-|chartType|Hayır|Bu grafik için kullanılacak görselleştirmeyi. Varsayılan olarak, bir çizgi grafik kullanır. Grafik türleri desteklenir: `Bar, Line, Area, Scatter`.|
-|metrics|Evet|Bu grafiği çizmek için ölçümleri dizisi. Azure Portalı'nda desteklenen ölçümler hakkında daha fazla bilgi edinmek için [Azure İzleyici ile desteklenen ölçümler](../azure-monitor/platform/metrics-supported.md)|
+|displayName|Evet|Grafiğin görüntülenmekte olan başlığı.|
+|chartType|Hayır|Bu grafik için kullanılacak görselleştirme. Varsayılan olarak, bir çizgi grafik kullanır. Desteklenen grafik türleri: `Bar, Line, Area, Scatter`.|
+|ölçümler|Evet|Bu grafiğe çizilecek ölçüm dizisi. Azure portal desteklenen ölçümler hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici Ile desteklenen ölçümler](../azure-monitor/platform/metrics-supported.md)|
 
 ### <a name="metric"></a>Ölçüm
 
 |Özellik|Gerekli|Açıklama|
 |---------|---------|---------|
-|name|Evet|Ölçüm adı.|
-|aggregationType|Evet|Bu ölçüm için kullanılacak toplama türü. Toplama türleri desteklenir: `none, sum, min, max, avg, unique, percentile, count`|
-|ad alanı|Hayır|Doğru ölçümleri sağlayıcısı belirlenirken kullanılacak ek bilgiler.|
-|resourceTagFilter|Hayır|Kaynak etiketler dizisi (ile ayrılmış `or` word) için hangi ölçümler görüntülenir. Kaynak Türü Filtresi üzerine uygulanır.|
-|Kaynak türü|Evet|Ölçümleri görüntülenmekteydi kaynak türü.|
+|name|Evet|Ölçümün adı.|
+|Toplamatürü|Evet|Bu ölçüm için kullanılacak toplama türü. Desteklenen toplama türleri:`none, sum, min, max, avg, unique, percentile, count`|
+|ad alanı|Hayır|Doğru ölçüm sağlayıcısı belirlenirken kullanılacak ek bilgiler.|
+|resourceTagFilter|Hayır|Ölçümlerin gösterileceği kaynak etiketleri dizisi (Word ile `or` ayrılacaktır). Kaynak türü filtresinin üzerine uygulanır.|
+|resourceType|Evet|Ölçümlerin gösterileceği kaynak türü.|
+
+![Ölçümler](./media/view-definition/metrics.png)
 
 ## <a name="custom-resources"></a>Özel kaynaklar
 
 `"kind": "CustomResources"`
 
-Bu türün birden çok görünüm tanımlayabilirsiniz. Her görünüm temsil eden bir **benzersiz** özel kaynak türü özel sağlayıcısından tanımladığınız **mainTemplate.json**. Özel sağlayıcılar için bir giriş için bkz [Azure özel sağlayıcıları Önizlemesi'ne genel bakış](custom-providers-overview.md).
+Bu türde birden çok görünüm tanımlayabilirsiniz. Her görünüm, **Maintemplate. JSON**içinde tanımladığınız özel sağlayıcıdan **benzersiz** bir özel kaynak türünü temsil eder. Özel sağlayıcılara giriş için bkz. [Azure özel sağlayıcılar önizlemeye genel bakış](custom-providers-overview.md).
 
-Bu görünümde gerçekleştirebileceğiniz Al koy, Sil ve işlemleri için özel kaynak türünüzü yayınlayın. Gönderme işlemleri genel özel veya özel kaynak türden bir bağlamda özel eylemler olabilir.
+Bu görünümde, özel kaynak türü için al, koy, SIL ve POST işlemleri gerçekleştirebilirsiniz. POST işlemleri genel özel eylemler veya özel eylemler özel kaynak türü bağlamında olabilir.
 
 ```json
 {
@@ -221,16 +227,18 @@ Bu görünümde gerçekleştirebileceğiniz Al koy, Sil ve işlemleri için öze
 
 |Özellik|Gerekli|Açıklama|
 |---------|---------|---------|
-|displayName|Evet|Görünüm görüntülenen başlığı. Başlığı olmalıdır **benzersiz** her CustomResources görünümünde, **viewDefinition.json**.|
-|version|Hayır|Görünümü işlemek için kullanılan platform sürümü.|
-|Kaynak türü|Evet|Özel kaynak türü. Olmalıdır bir **benzersiz** özel sağlayıcınızın özel kaynak türü.|
-|createUIDefinition|Hayır|UI tanımı oluşturmak için şema özel kaynak komutu oluşturun. UI tanımları oluşturma, bir giriş için bkz. [createuidefinition dosyasını kullanmaya başlama](create-uidefinition-overview.md)|
-|Komutları|Hayır|Ek araç çubuğu düğmeleri CustomResources görünümün dizisi bkz [komutları](#commands).|
-|Sütunları|Hayır|Özel kaynak sütun dizisi. Tanımlı değilse `name` sütun varsayılan olarak gösterilir. Sütun olmalıdır `"key"` ve `"displayName"`. Anahtar için bir görünümde görüntülenecek özelliğin anahtarını belirtin. İç içe geçmiş, nokta, sınırlayıcı olarak örneğin kullanın `"key": "name"` veya `"key": "properties.property1"`. Görüntü adı için bir görünümde görüntülenecek özelliği görünen adını sağlayın. De sağlayabilirsiniz bir `"optional"` özelliği. Ne zaman true olarak sütun görünümü'nde varsayılan olarak gizlidir.|
+|displayName|Evet|Görünümün görüntülenmiş başlığı. Başlık, **ViewDefinition. JSON**'ınızdaki her customresources görünümü için **benzersiz** olmalıdır.|
+|version|Hayır|Görünümü işlemek için kullanılan platformun sürümü.|
+|resourceType|Evet|Özel kaynak türü. Özel sağlayıcılarınızın **benzersiz** bir özel kaynak türü olması gerekir.|
+|createUIDefinition|Hayır|Özel kaynak Oluştur komutu için UI tanımı şeması oluşturun. UI tanımları oluşturmaya giriş için bkz. [Createuıdefinition ile çalışmaya başlama](create-uidefinition-overview.md)|
+|komutlar|Hayır|CustomResources görünümündeki ek araç çubuğu düğmelerinin dizisi, bkz. [Komutlar](#commands).|
+|Sütunları|Hayır|Özel kaynağın sütun dizisi. Tanımlanmamışsa, `name` sütun varsayılan olarak gösterilir. Sütun `"key"` ve`"displayName"`içermelidir. Anahtar için, bir görünümde görüntülenecek özelliğin anahtarını sağlayın. İç içe ise, `"key": "name"` veya `"key": "properties.property1"`gibi nokta sınırlayıcı olarak kullanın. Görünen ad için, bir görünümde görüntülenecek özelliğin görünen adını sağlayın. Bir `"optional"` özellik de sağlayabilirsiniz. True olarak ayarlandığında, sütun varsayılan olarak bir görünümde gizlenir.|
+
+![CustomResources](./media/view-definition/customresources.png)
 
 ## <a name="commands"></a>Komutlar
 
-Bir dizi sayfasında görüntülenen ek araç çubuğu düğmeleri komuttur. Azure özel tanımlı sağlayıcınız POST eylemden her komutu temsil eder **mainTemplate.json**. Özel sağlayıcılar için bir giriş için bkz [Azure özel sağlayıcılara genel bakış](custom-providers-overview.md).
+Komutlar, sayfada görüntülenen ek araç çubuğu düğmelerinin bir dizisidir. Her komut, **Maintemplate. JSON**' da tanımlanan Azure özel SAĞLAYıCıNıZDAN bir post eylemini temsil eder. Özel sağlayıcılara giriş için bkz. [Azure özel sağlayıcılarına genel bakış](custom-providers-overview.md).
 
 ```json
 {
@@ -247,12 +255,17 @@ Bir dizi sayfasında görüntülenen ek araç çubuğu düğmeleri komuttur. Azu
 
 |Özellik|Gerekli|Açıklama|
 |---------|---------|---------|
-|displayName|Evet|Komut düğmesi görüntülenen adı.|
-|yol|Evet|Özel sağlayıcı eylem adı. Eylem tanımlanmalıdır **mainTemplate.json**.|
-|Simgesi|Hayır|Komut düğmesi simge. Desteklenen simge listesi tanımlanmış [JSON şeması](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#).|
-|createUIDefinition|Hayır|Komut için kullanıcı Arabirimi Tanım Şeması oluşturun. UI tanımları oluşturma, bir giriş için bkz. [createuidefinition dosyasını kullanmaya başlama](create-uidefinition-overview.md).|
+|displayName|Evet|Komut düğmesinin görünen adı.|
+|path|Evet|Özel sağlayıcı eylem adı. Eylemin **Maintemplate. JSON**içinde tanımlanması gerekir.|
+|Simgesi|Hayır|Komut düğmesinin simgesi. Desteklenen simgelerin listesi [JSON şemasında](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#)tanımlandı.|
+|createUIDefinition|Hayır|Komut için UI tanımı şeması oluştur. UI tanımları oluşturmaya giriş için bkz. [Createuıdefinition ile çalışmaya başlama](create-uidefinition-overview.md).|
+
+## <a name="looking-for-help"></a>Yardım aranıyor
+
+Azure yönetilen uygulamalar hakkında sorularınız varsa [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-managedapps)yapmayı deneyin. Benzer bir soru zaten istendi ve yanıtlamış olabilir, bu nedenle göndermeden önce kontrol edin. Hızlı bir yanıt `azure-managedapps` almak için etiketi ekleyin!
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Yönetilen uygulamalara giriş için [Azure Yönetilen Uygulamalara genel bakış](overview.md) konusunu inceleyin.
-- Özel sağlayıcılar için bir giriş için bkz [Azure özel sağlayıcılara genel bakış](custom-providers-overview.md).
+- Özel sağlayıcılara giriş için bkz. [Azure özel sağlayıcılarına genel bakış](custom-providers-overview.md).
+- Azure özel sağlayıcılarıyla Azure yönetilen uygulaması oluşturmak için bkz [. Öğretici: Özel sağlayıcı eylemleri ve kaynak türleriyle yönetilen uygulama oluşturma](tutorial-create-managed-app-with-custom-provider.md)

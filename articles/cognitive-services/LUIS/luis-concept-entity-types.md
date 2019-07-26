@@ -1,7 +1,7 @@
 ---
 title: Varlık türleri
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: 'Varlıkları utterance verileri ayıklayın. Varlık türleri veri öngörülebilir ayıklama verin. Varlık iki tür vardır: makine hakkında bilgi edindiniz ve makine öğrendiniz. Konuşma üzerinde çalıştığınız varlık türünü bilmeniz önemlidir.'
+description: "Varlıklar, utterance 'ten veri ayıklar. Varlık türleri, verilerin tahmin edilebilir bir şekilde ayıklanmasını sağlar. İki tür varlık vardır: makine tarafından öğrenilen ve makine tarafından öğrenilmemiş. Ne tür bir varlık ile birlikte çalıştığınızı bilmeniz önemlidir."
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,36 +9,36 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 06/12/2019
+ms.date: 07/24/2019
 ms.author: diberry
-ms.openlocfilehash: 628a96c4e912341226d67a7ed8f241194e7b7825
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a5a3ba8c25107317e7c47ee358f9a6ebe7d4556f
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080050"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479108"
 ---
-# <a name="entity-types-and-their-purposes-in-luis"></a>Varlık türleri ve bunların amacıyla LUIS
+# <a name="entity-types-and-their-purposes-in-luis"></a>LUSıS 'de varlık türleri ve amaçları
 
-Varlıkları utterance verileri ayıklayın. Varlık türleri veri öngörülebilir ayıklama verin. Varlık iki tür vardır: makine hakkında bilgi edindiniz ve makine öğrendiniz. Konuşma üzerinde çalıştığınız varlık türünü bilmeniz önemlidir. 
+Varlıklar, utterance 'ten veri ayıklar. Varlık türleri, verilerin tahmin edilebilir bir şekilde ayıklanmasını sağlar. İki tür varlık vardır: makine tarafından öğrenilen ve makine tarafından öğrenilmemiş. Ne tür bir varlık ile birlikte çalıştığınızı bilmeniz önemlidir. 
 
 ## <a name="entity-compared-to-intent"></a>Intent'e karşılaştırıldığında varlık
 
-Varlık, bir sözcük veya tümcecik ayıklanan istediğiniz utterance içinde temsil eder. Bir utterance birçok varlığın veya hiçbiri hiç içerebilir. Bir istemci uygulama, kullanıcıya sunmak için birkaç seçenek kılavuz olarak kullanın veya kendi görevi gerçekleştirmek için varlık gerekebilir. 
+Varlık, bir sözcük veya tümcecik ayıklanan istediğiniz utterance içinde temsil eder. Bir utterance birçok varlığın veya hiçbiri hiç içerebilir. Bir istemci uygulamasının görevini gerçekleştirmesi veya kullanıcıya sunmak için birkaç seçenek kılavuzu olarak kullanması gerekebilir. 
 
 Bir varlık:
 
-* (Yerlerde, öğeleri, kişiler, olayları veya kavramları) benzer nesnelerinin bir koleksiyonunu içeren bir sınıfı temsil eder. 
-* Intent'e ilgili bilgiler açıklanmaktadır
+* Benzer nesnelerin (Yerlerim, şeyler, kişiler, olaylar veya kavramlar) bir koleksiyonunu içeren bir sınıfı temsil eder. 
+* Amaç ile ilgili bilgileri açıklar
 
 
-Örneğin, bir haber arama uygulaması "konu", "kaynak", "anahtar" ve "yayımlama tarihi" Haberler için arama anahtar veri olan gibi varlıklar içerebilir. Seyahat kayıt uygulaması, "Konum", "tarih", "Havayolu" içinde "seyahat class" ve "biletleri" anahtar için uçuş kayıt ("Book uçuş" hedefi için ilgili) bilgilerdir.
+Örneğin, bir haber arama uygulaması "konu", "kaynak", "anahtar" ve "yayımlama tarihi" Haberler için arama anahtar veri olan gibi varlıklar içerebilir. Seyahat kayıt uygulamasında, "konum", "Tarih", "Airline", "seyahat sınıfı" ve "Bilet", uçuş kaydı için önemli bilgiler ("Book uçuş" hedefi ile ilgilidir).
 
 Buna karşılık olarak amaç tüm utterance tahminini temsil eder. 
 
-## <a name="entities-help-with-data-extraction-only"></a>Yalnızca veri ayıklama ile varlıkları Yardım
+## <a name="entities-help-with-data-extraction-only"></a>Varlıklar yalnızca veri ayıklama ile ilgili yardım
 
-Etiket veya varlık ayıklama, yalnızca BT amacıyla işareti varlıklar, hedefi tahmin ile Yardım değil.
+Varlıkları yalnızca varlık ayıklama amacına göre etiketleyebilir veya işaretlersiniz, amaç tahminiyle ilgili değildir.
 
 ## <a name="entities-represent-data"></a>Varlık verilerini temsil eder.
 
@@ -51,11 +51,11 @@ Utterance çekmek için istediğiniz verilerin varlıklardır. Bu, bir ad, tarih
 
 ## <a name="entities-are-optional-but-highly-recommended"></a>Varlıkları isteğe bağlıdır ancak uygulanması önemle önerilir.
 
-Varlıklar, amacı gerekli olsa da, isteğe bağlıdır. Uygulamanızdaki her bir kavram, ancak yalnızca istemci uygulaması eylemi gerçekleştirmek gerekli olanlar için varlıklarınızı gerekmez. 
+Varlıklar, amacı gerekli olsa da, isteğe bağlıdır. Uygulamanızdaki her kavram için varlık oluşturmanız gerekmez, ancak yalnızca istemci uygulamasının işlem yapması için gerekli olanlar için. 
 
 Botunuzun devam etmesi için gerekli ayrıntıları, konuşma yoksa, bunları eklemeniz gerekmez. Uygulamanız geliştikçe daha sonra ekleyebilirsiniz. 
 
-Bilgileri nasıl kullanacağınız emin değilseniz, birkaç ortak önceden oluşturulmuş varlıklar gibi ekleme [datetimeV2](luis-reference-prebuilt-datetimev2.md), [sıralı](luis-reference-prebuilt-ordinal.md), [e-posta](luis-reference-prebuilt-email.md), ve [telefon numarası ](luis-reference-prebuilt-phonenumber.md).
+Bilgileri nasıl kullanacağınız konusunda emin değilseniz, [datetimeV2](luis-reference-prebuilt-datetimev2.md), [Ordinal](luis-reference-prebuilt-ordinal.md), [e-posta](luis-reference-prebuilt-email.md)ve [telefon numarası](luis-reference-prebuilt-phonenumber.md)gibi yaygın olarak önceden oluşturulmuş birkaç varlık ekleyin.
 
 ## <a name="label-for-word-meaning"></a>Word anlamı etiketi
 
@@ -72,224 +72,148 @@ Tüm olay verileri bulmak için bir olay varlık istediyseniz, word etiket `fair
 
 ## <a name="entities-are-shared-across-intents"></a>Varlıkları amaçları arasında paylaşılır.
 
-Varlıkları amaçları arasında paylaşılır. Bunlar herhangi bir tek ıntent'e ait değil. Amaç ve varlıkları anlamsal olarak ilişkili olabilir ancak özel bir ilişki değil.
+Varlıkları amaçları arasında paylaşılır. Bunlar herhangi bir tek ıntent'e ait değil. Amaçlar ve varlıklar anlam ile ilişkilendirilebilir, ancak özel bir ilişki değildir.
 
-Utterance içinde "bana Paris bilet kitap", "İstanbul" konuma başvuran bir varlıktır. Kullanıcının utterance içinde belirtilen varlık tanıma tarafından LUIS istemci uygulamanızın, kullanıcının isteği gerçekleştirmek için belirli eylemleri seçin yardımcı olur.
+"İstanbul için bir bilet bileti" başlığı altında "Paris", konuma başvuran bir varlıktır. Kullanıcının utterliği içinde bahsedilen varlıkları öğrenerek lu, istemci uygulamanızın, kullanıcının isteğini yerine getirmek için gerçekleştirilecek belirli eylemleri seçmesini sağlar.
 
-## <a name="mark-entities-in-none-intent"></a>Varlıkların hiçbiri hedefi işaretle
+## <a name="mark-entities-in-none-intent"></a>Varlıkları hiçbiri amaç halinde işaretle
 
-Dahil olmak üzere tüm hedefleri **hiçbiri** hedefini, varlıklar, mümkün olduğunda işaretlenmiş. Bu varlıkların içinde konuşma nerede ve ne varlıkları sözcüklerdir hakkında daha fazla LUIS yardımcı olur. 
+**Hiçbiri** amacı dahil tüm amaçlar, mümkün olduğunda varlık olarak işaretlenmiş olmalıdır. Bu varlıkların içinde konuşma nerede ve ne varlıkları sözcüklerdir hakkında daha fazla LUIS yardımcı olur. 
 
 ## <a name="entity-status-for-predictions"></a>Tahminler elde etmek için varlık durumu
 
-LUIS portal, ne zaman ya da bir örnek utterance varlıkta olduğunu bildirir. işaretli varlıktan farklı veya başka bir varlıkla ve bu nedenle belirsiz çok yakın. Bu örnek utterance kırmızı alt çizgi ile gösterilir. 
+LUıS portalı, bir örnekteki varlık işaretli varlıktan farklı olduğunda ya da başka bir varlığa ne kadar yakın olduğunu ve bu nedenle belirsiz olduğunu bildirir. Bu, örnekte yer aldığı kırmızı alt çizgiyle belirtilir. 
 
-Daha fazla bilgi için [varlık durumu Öngörüler](luis-how-to-add-example-utterances.md#entity-status-predictions). 
+Daha fazla bilgi için bkz. [varlık durumu tahminleri](luis-how-to-add-example-utterances.md#entity-status-predictions). 
 
 ## <a name="types-of-entities"></a>Varlık türleri
 
-LUIS, çok sayıda varlık türlerini sunar. Verilerin nasıl ayıklanması gereken ve bu ayıklandıktan sonra nasıl da temsil edilebilir göre varlık seçin.
+LUSıS birçok varlık türü sunar. Verilerin ayıklanabilmesi ve ayıklandıktan sonra nasıl temsil edilebilmesi gerektiğine bağlı olarak varlığı seçin.
 
-Varlıklar, varlık utterance içinde nasıl görüneceğini hakkında almaya devam etmek LUIS sağlayan machine-learning ile ayıklanabileceği. Makine tam metin ya da bir normal ifade eşleştirme öğrenme olmadan, varlıkları ayıklanabilir. Varlıkları desenleri, karma bir uygulama ile ayıklanabileceği. 
+Varlık öğrenimi ile, bu varlık, varlığın utterde nasıl göründüğünü öğrenmeye devam etmesine olanak tanır. Varlıklar, tam metin veya normal bir ifadeyle eşleşen makine öğrenimi olmadan ayıklanabilir. Desenlerdeki varlıklar karışık bir uygulamayla ayıklanabilir. 
 
-Varlık ayıklandıktan sonra varlık verilerini bilgilerin tek bir birim olarak temsil edilen veya istemci uygulaması kullanabilirsiniz bilgilerinin bir birim oluşturmak için diğer varlıklarla birleştirilmiş.
+Varlık ayıklandıktan sonra, varlık verileri tek bir bilgi birimi olarak temsil edilebilir veya istemci uygulamanın kullanabileceği bir bilgi birimi oluşturmak için diğer varlıklarla birlikte birleştirilebilir.
 
-|Makine öğrendiniz|Can Mark|Öğretici|Örnek<br>Yanıt|varlık türü|Amaç|
+|Makine tarafından öğrenilen|Işaret edebilir|Öğretici|Örnek<br>Yanıt|Varlık türü|Amaç|
 |--|--|--|--|--|--|
-|✔|✔|[✔](luis-tutorial-composite-entity.md)|[✔](luis-concept-data-extraction.md#composite-entity-data)|[**Bileşik**](#composite-entity)|Varlık Türü bağımsız olarak varlıklar gruplandırmasıdır.|
-|||[✔](luis-quickstart-intent-and-list-entity.md)|[✔](luis-concept-data-extraction.md#list-entity-data)|[**Liste**](#list-entity)|Öğelerin listesini ve bunların eş anlamlılar ile tam metin ayıklandı eşleşir.|
-|Karma||[✔](luis-tutorial-pattern.md)|[✔](luis-concept-data-extraction.md#patternany-entity-data)|[**Pattern.Any**](#patternany-entity)|Varlığın son saptamak zor olduğu varlık.|
-|||[✔](luis-tutorial-prebuilt-intents-entities.md)|[✔](luis-concept-data-extraction.md#prebuilt-entity-data)|[**Önceden oluşturulmuş**](#prebuilt-entity)|Çeşitli türlerde verileri ayıklamak zaten eğitildi.|
-|||[✔](luis-quickstart-intents-regex-entity.md)|[✔](luis-concept-data-extraction.md#regular-expression-entity-data)|[**Normal ifade**](#regular-expression-entity)|Metin eşleştirilecek normal ifade kullanır.|
-|✔|✔|[✔](luis-quickstart-primary-and-secondary-data.md)|[✔](luis-concept-data-extraction.md#simple-entity-data)|[**Basit**](#simple-entity)|Tek bir kavram sözcük veya tümcecik olarak içerir.|
+|✔|✔|[✔](luis-tutorial-composite-entity.md)|[✔](luis-concept-data-extraction.md#composite-entity-data)|[**Bileşik**](#composite-entity)|Varlık türünden bağımsız olarak varlıkların gruplandırılması.|
+|||[✔](luis-quickstart-intent-and-list-entity.md)|[✔](luis-concept-data-extraction.md#list-entity-data)|[**Listele**](#list-entity)|Öğelerin listesi ve tam metin eşleşmesi ile ayıklanan eş anlamlılar.|
+|Karma||[✔](luis-tutorial-pattern.md)|[✔](luis-concept-data-extraction.md#patternany-entity-data)|[**Model. any**](#patternany-entity)|Varlık sonunun belirlenmesi zor olan varlık.|
+|||[✔](luis-tutorial-prebuilt-intents-entities.md)|[✔](luis-concept-data-extraction.md#prebuilt-entity-data)|[**Önceden oluşturulmuş**](#prebuilt-entity)|Çeşitli veri türlerini ayıklamak için zaten eğitildi.|
+|||[✔](luis-quickstart-intents-regex-entity.md)|[✔](luis-concept-data-extraction.md#regular-expression-entity-data)|[**Normal Ifade**](#regular-expression-entity)|Metinle eşleştirmek için normal ifade kullanır.|
+|✔|✔|[✔](luis-quickstart-primary-and-secondary-data.md)|[✔](luis-concept-data-extraction.md#simple-entity-data)|[**MPLE**](#simple-entity)|Sözcük veya tümcecik içinde tek bir kavram içerir.|
 
-Yalnızca makine öğrenilen varlıklar örnek konuşma işaretlenmesi gerekir. Varlıkları en iyi şekilde çalıştığı aracılığıyla test edildiğinde makine öğrenilen [uç nokta sorguları](luis-concept-test.md#endpoint-testing) ve [konuşma uç noktası gözden geçirme](luis-how-to-review-endoint-utt.md). 
+Yalnızca makine tarafından öğrenilen varlıkların örnek utslarında işaretlenmesi gerekir. Makine tarafından öğrenilen varlıklar, [uç nokta sorgularıyla](luis-concept-test.md#endpoint-testing) test edildiğinde ve [uç nokta](luis-how-to-review-endoint-utt.md)gelişlerini inceleyerek en iyi şekilde çalışır. 
 
-Pattern.Any varlıklar olarak işaretlenmesi gerekir [deseni](luis-how-to-model-intent-pattern.md) şablon örnekleri, amaç kullanıcı örnekleri. 
+Model. tüm varlıkların, amaç Kullanıcı örnekleri değil, [model](luis-how-to-model-intent-pattern.md) şablonu örneklerinde işaretlenmesi gerekir. 
 
-Karma varlıkları varlık algılama yöntemleri bir birleşimini kullanın.
+Karışık varlıklar, varlık algılama yöntemlerinin bir birleşimini kullanır.
 
-## <a name="machine-learned-entities-use-context"></a>Makine öğrenilen varlıklar bağlamı kullanma
+## <a name="machine-learned-entities-use-context"></a>Makine tarafından öğrenilen varlıklar bağlam kullanır
 
-Makine öğrenilen varlıklar utterance bağlamda öğrenin. Bu yerleştirme çeşitlemesi örnek konuşma içinde önemli hale getirir. 
+Makine tarafından öğrenilen varlıklar, utterde bağlamdaki içerikten öğrenilir. Bu, yerleştirme Çeşitlemelerinde önemli bir değer sağlar. 
 
-## <a name="non-machine-learned-entities-dont-use-context"></a>Bağlam olmayan makine öğrenilen varlıklar kullanma
+## <a name="non-machine-learned-entities-dont-use-context"></a>Makine tarafından öğrenilen varlıklar bağlam kullanmaz
 
-Şu makine-olmayan varlıklar utterance bağlam varlıkları eşleştirme yapılırken dikkate değil öğrendiniz: 
+Aşağıdaki makine olmayan öğrenilmiş varlıklar, varlıkları eşleştirirken hesaba terance bağlamı almaz: 
 
 * [Önceden oluşturulmuş varlıklar](#prebuilt-entity)
-* [Normal ifade varlıkları](#regular-expression-entity)
+* [Regex varlıkları](#regular-expression-entity)
 * [Varlıklar listesi](#list-entity) 
 
-Bu varlıkların etiketleme veya modeli eğitmek gerek yoktur. Varlıkları ekleyin veya varlığı yapılandırmak sonra çıkarılır. Bu varlıklar, burada bağlam dikkate alınan, eşleşme yok yapılmıştır overmatched, düşüş olur. 
+Bu varlıklar, etiketleme veya modeli eğitme gerektirmez. Varlığı ekledikten veya yapılandırdıktan sonra, varlıklar ayıklanır. Zorunluluğunu getirir, bu varlıkların aşırı eşleştirilebileceği, burada bağlamın hesapta alınması durumunda eşleşme yapılmamalıdır. 
 
-Bu liste varlıklarla yeni modeller üzerinde sık gerçekleşir. Derleme ve modelinizi bir liste varlığı ile test ancak modelinizi yayımlama uç noktasından sorgular alması, modelinizi, bağlam eksikliği nedeniyle overmatching farkında olun. 
+Bu durum, yeni modellerdeki liste varlıklarıyla sık sık gerçekleşir. Modelinizi bir liste varlığıyla oluşturup test edersiniz, ancak modelinizi yayımladığınızda ve uç noktadan sorgular aldığınızda, bağlam eksikliği nedeniyle modelinizin aşırı eşleşme olduğunu fark etmiş olursunuz. 
 
-Sözcük ve tümcecikleri eşleşen ve bağlam dikkate istiyorsanız iki seçeneğiniz vardır. İlk ifade listesini ile eşleştirilmiş bir varlığın kullanmaktır. İfade listesi eşleştirmek için kullanılmayacak ancak bunun yerine sinyal oldukça benzer sözcük (birbirinin yerine listesi) yardımcı olur. Bir ifade listesinin çeşitlemeleri yerine bir tam eşleşme olmalıdır, aşağıda açıklanan bir role sahip bir liste varlığı kullanın.
+Sözcükleri veya tümceleri eşleştirmek ve hesabı hesaba çekmek istiyorsanız iki seçeneğiniz vardır. Birincisi, bir tümcecik listesiyle eşleştirilmiş basit bir varlık kullanmaktır. Tümcecik listesi eşleştirme için kullanılmayacak ancak bunun yerine görece benzer sözcüklerin (değiştirilebilir liste) sinyaline yardımcı olacaktır. Tümcecik listesinin çeşitlemeleri yerine tam bir eşleşmelidir, aşağıda açıklandığı gibi bir rol içeren bir liste varlığı kullanın.
 
-### <a name="context-with-non-machine-learned-entities"></a>Makine öğrenilen varlıklar ile bağlam
+### <a name="context-with-non-machine-learned-entities"></a>Makine tarafından öğrenilen varlıklar ile bağlam
 
-Makine olmayan öğrenilen varlıklar için önemli için utterance bağlamında istiyorsanız kullanmalısınız [rolleri](luis-concept-roles.md).
+Makine tarafından öğrenilen varlıkların yerine, bu bağlamın bağlamını kullanmak istiyorsanız, [rolleri](luis-concept-roles.md)kullanmanız gerekir.
 
-Bir makine öğrenilen varlık gibi varsa [önceden oluşturulmuş varlıklarla](#prebuilt-entity), [regex](#regular-expression-entity) varlıklar veya [listesi](#list-entity) istediğiniz örnekten fazlasına ölçeklendirilemez eşleşen varlıkları göz önünde bulundurun iki rol ile tek bir varlık oluşturuluyor. Bir rol, aradığınız ne yakalar ve aradıklarınızı değil, bir rol yakalar. Her iki sürümü örnek konuşma etiketlenmiş gerekir.  
+[Önceden oluşturulmuş varlıklar](#prebuilt-entity), [Regex](#regular-expression-entity) varlıkları veya [liste](#list-entity) varlıkları gibi makine tarafından öğrenilen bir varlığınız varsa, istediğiniz örnekten daha fazla eşleşen bir varlık oluşturmayı düşünün. Bir rol aradığınız şeyi yakalar ve bir rol ne aradıklarınızı yakalayacaktır. Her iki sürümün de örnek söylenecek şekilde etiketlenmesi gerekir.  
 
 ## <a name="composite-entity"></a>Bileşik varlık
 
-Bileşik bir varlık önceden oluşturulmuş varlıklar gibi diğer varlıklar, basit, normal ifade ve liste varlıkları oluşur. Ayrı varlıklar, tam bir varlık oluşturur. 
-
-Bu varlık yarar ne zaman uygun veri:
-
-* Birbiriyle ilgilidir. 
-* Konuşma bağlamında birbiriyle ilişkilidir.
-* Varlık türleri çeşitli kullanın.
-* Gruplandırılmış ve bilgi bir birim olarak istemci uygulaması tarafından işlenen gerekir.
-* Makine öğrenimi gerektiren kullanıcı konuşma çeşitli vardır.
-
-![Bileşik varlık](./media/luis-concept-entities/composite-entity.png)
-
-[Öğretici](luis-tutorial-composite-entity.md)<br>
-[Varlık için örnek JSON yanıtı](luis-concept-data-extraction.md#composite-entity-data)<br>
+[Bileşik bir varlık](reference-entity-composite.md) , önceden oluşturulmuş varlıklar, basit, normal ifade ve liste varlıkları gibi diğer varlıklardan oluşur. Ayrı varlıklar, tam bir varlık oluşturur. 
 
 ## <a name="list-entity"></a>Liste varlığı
 
-Liste varlık ilgili sözcükleri kendi eş anlamlılar yanı sıra sabit, kapalı bir kümesini temsil eder. LUIS, liste varlıkları için ek değerler bulmaz. Kullanım **önerilir** yeni sözcükleri sunabileceği önerileri görmek için özellik geçerli listede bağlı. Birden fazla liste varlığı ile aynı değeri varsa, her varlık uç nokta sorguda döndürülür. 
-
-İyi bir varlıktır ne zaman uygun metin verileri:
-
-* Bilinen bir kümesidir.
-* Genellikle değişmez. Listenin genellikle değiştirebilir veya kendi kendine genişletmek için liste istediğiniz gerekiyorsa, artırılmış bir ifade listesi tek bir varlığın daha iyi bir seçimdir. 
-* Küme, bu varlık türü için maksimum LUIS [sınırlarını](luis-boundaries.md) aşmaz.
-* Konuşmadaki metin bir eşanlamlı sözcük veya kurallı ad ile tam olarak eşleşiyor. LUIS, tam metin eşleşme ötesinde listesi kullanmaz. Bir liste varlığı ile benzer öğe eşleştirmesi olmama durumunu, dallanma, gerçekleştirebilse ve diğer Çeşitlemeler çözümlenmiyor. Değişimleri yönetmek için kullanmayı bir [deseni](luis-concept-patterns.md#syntax-to-mark-optional-text-in-a-template-utterance) isteğe bağlı metin sözdizimine sahip.
-
-![Liste varlığı](./media/luis-concept-entities/list-entity.png)
-
-[Öğretici](luis-quickstart-intent-and-list-entity.md)<br>
-[Varlık için örnek JSON yanıtı](luis-concept-data-extraction.md#list-entity-data)
+[Liste varlıkları](reference-entity-list.md) , sabit ve kapalı bir ilgili sözcük kümesini eş anlamlılarıyla birlikte temsil eder. LUIS, liste varlıkları için ek değerler bulmaz. Kullanım **önerilir** yeni sözcükleri sunabileceği önerileri görmek için özellik geçerli listede bağlı. Birden fazla liste varlığı ile aynı değeri varsa, her varlık uç nokta sorguda döndürülür. 
 
 ## <a name="patternany-entity"></a>Pattern.Any varlık
 
-Pattern.Any yalnızca bir desenin şablon utterance varlık burada başlar ve biter işaretlemek için kullanılan bir değişken uzunluklu yer tutucudur.  
-
-İyi bir varlıktır ne zaman uygun:
-
-* Varlığın son utterance kalan metinle çakışabilir. 
-[Öğretici](luis-tutorial-pattern.md)<br>
-[Varlık için örnek JSON yanıtı](luis-concept-data-extraction.md#patternany-entity-data)
-
-**Örnek**  
-Belirtilen başlığa göre books ilişkin arayan bir istemci uygulaması, tam başlık pattern.any ayıklar. Bu kitap arama için pattern.any kullanarak bir şablonu utterance `Was {BookTitle} written by an American this year[?]`. 
-
-Aşağıdaki tabloda, her satır utterance iki sürümü vardır. Üst utterance nasıl LUIS utterance başlangıçta görürsünüz olduğundan, kitap başlığıyla belirsiz olduğu başlar ve de sona erer. Ayıklama için yerinde bir desen olduğunda LUIS kitap başlığı nasıl bilir alt utterance olur. 
-
-|İfade|
-|--|
-|ADAM kimin Zannettiği HIS eşim Hat ve diğer Klinik örnekleri için bu yılın bir Amerikan tarafından yazılmış?<br><br>Olan **Man kimin Zannettiği HIS eşim Hat ve diğer Klinik örnekleri için** bir Amerikan göre bu yılın yazılmış?|
-|Yarı uyku Frog Pajamas bir Amerikan tarafından yazılan bu yıl içinde neydi?<br><br>Olan **Frog Pajamas içinde yarım uyku** bir Amerikan göre bu yılın yazılmış?|
-|Limonlu pasta, belirli üzüntü şöyleydi: Bu yıl bir Amerikan tarafından yazılmış bir Romanım?<br><br>Olan **Limonlu pasta, belirli üzüntü: Bir Romanım** bir Amerikan göre bu yılın yazılmış?|
-|My Pocket içinde bir Wocket yok edildi! Bu yıl bir Amerikan tarafından yazılmış?<br><br>Olan **My Pocket içinde bir Wocket yoktur!** Bu yıl bir Amerikan tarafından yazılmış?|
-||
+[Desen. any](reference-entity-pattern-any.md) , varlığın nerede başladığını ve bittiğini işaretlemek için yalnızca bir desen şablonunda kullanılan değişken uzunluklu bir yer tutucudur.  
 
 ## <a name="prebuilt-entity"></a>Önceden oluşturulmuş varlık
 
-Önceden oluşturulmuş varlıklarla e-posta, URL ve telefon numarası gibi ortak kavramlar temsil eden yerleşik türleridir. Önceden oluşturulmuş varlık adları ayrılmıştır. [Tüm önceden oluşturulmuş varlıklar](luis-prebuilt-entities.md) uygulamaya eklenen uç nokta tahmin sorguyu utterance içinde bulunursa döndürülür. 
+Önceden oluşturulmuş varlıklar, e-posta, URL ve telefon numarası gibi yaygın kavramları temsil eden yerleşik türlerdir. Önceden oluşturulmuş varlık adları ayrılmıştır. Uygulamaya eklenen [tüm önceden oluşturulmuş varlıklar](luis-prebuilt-entities.md) , bir noktada bulunduklarında Endpoint tahmin sorgusuna döndürülür. 
 
-İyi bir varlıktır ne zaman uygun:
+Varlık, şu durumlarda iyi bir uyum:
 
-* Verileri önceden oluşturulmuş varlıklar için dil, kültür tarafından desteklenen yaygın bir kullanım örneği ile eşleşir. 
+* Veriler, dil külveriniz için önceden oluşturulmuş varlıklar tarafından desteklenen ortak kullanım durumuyla eşleşir. 
 
-Önceden oluşturulmuş varlıklarla eklenir ve herhangi bir zamanda kaldırıldı.
+Önceden oluşturulmuş varlıklar dilediğiniz zaman eklenebilir ve kaldırılabilir.
 
 ![Sayı önceden oluşturulmuş varlık](./media/luis-concept-entities/number-entity.png)
 
 [Öğretici](luis-tutorial-prebuilt-intents-entities.md)<br>
 [Varlık için örnek JSON yanıtı](luis-concept-data-extraction.md#prebuilt-entity-data)
 
-Bazı önceden oluşturulmuş bu varlıkların açık kaynaklı tanımlanan [tanıyıcıları metin](https://github.com/Microsoft/Recognizers-Text) proje. Belirli bir kültürün veya varlık şu anda desteklenmemektedir, projeye katkıda bulunur. 
+Bu önceden oluşturulmuş varlıkların bazıları açık kaynaklı [Tanıyıcılar-metin](https://github.com/Microsoft/Recognizers-Text) projesinde tanımlanmıştır. Belirli bir kültürün veya varlık şu anda desteklenmemektedir, projeye katkıda bulunur. 
 
-### <a name="troubleshooting-prebuilt-entities"></a>Önceden oluşturulmuş varlıklarla ilgili sorunları giderme
+### <a name="troubleshooting-prebuilt-entities"></a>Önceden oluşturulmuş varlıkların sorunlarını giderme
 
-Önceden oluşturulmuş bir varlık özel varlığınıza yerine etiketlenmiş olması durumunda LUIS Portalı'nda, bu sorunu gidermek nasıl birkaç seçeneğiniz vardır.
+Lub portalında, özel varlığınızın yerine önceden oluşturulmuş bir varlık etiketlenmişse, bunun nasıl düzeltileceğini gösteren birkaç seçeneğiniz vardır.
 
-Uygulamaya eklenen önceden oluşturulmuş varlıklarla olacak _her zaman_ döndürülmesi, bile utterance özel varlıklar için aynı metni ayıkla. 
+Uygulamaya eklenen önceden oluşturulmuş varlıklar, aynı metin için özel varlıkları ayıklamalıdır olsa bile _her zaman_ döndürülür. 
 
-#### <a name="change-tagged-entity-in-example-utterance"></a>Örnek utterance etiketli varlığı değiştirme
+#### <a name="change-tagged-entity-in-example-utterance"></a>Etiketli varlığı örnek utde değiştirme
 
-Önceden oluşturulmuş varlık özel bir varlık olarak aynı metni veya belirteçleri ise, metni seçin örneğin utterance ve etiketli utterance değiştirin. 
+Önceden oluşturulmuş varlık özel varlıkla aynı metin veya belirteçlere sahip olursa, örnekteki metinde bulunan metni seçin ve etiketli utteryi değiştirin. 
 
-Önceden oluşturulmuş varlık daha fazla metin veya özel varlığınıza daha belirteçleri ile etiketlenmiş olması durumunda, birkaç bu sorunu gidermek nasıl seçeneğiniz vardır:
+Önceden oluşturulmuş varlık özel varlıkınıza göre daha fazla metin veya belirtece etiketlediyseniz, bunun nasıl düzeltileceğini gösteren birkaç seçeneğiniz vardır:
 
-* [Örnek utterance Kaldır](#remove-example-utterance-to-fix-tagging) yöntemi
-* [Önceden oluşturulmuş varlık kaldırmak](#remove-prebuilt-entity-to-fix-tagging) yöntemi
+* [Örnek söylenişi yöntemini kaldır](#remove-example-utterance-to-fix-tagging)
+* [Önceden oluşturulmuş varlık yöntemini kaldır](#remove-prebuilt-entity-to-fix-tagging)
 
-#### <a name="remove-example-utterance-to-fix-tagging"></a>Etiketleme düzeltmek için örnek utterance Kaldır 
+#### <a name="remove-example-utterance-to-fix-tagging"></a>Etiketlemesini onarmak için örnek söylenişi 'yi kaldırın 
 
-İlk seçtiğiniz örnek utterance kaldırmaktır. 
+İlk seçiminiz, örnek utüterliği ortadan kaldırandır. 
 
-1. Örnek utterance silin.
+1. Örnek utterliği silin.
 1. Uygulamayı yeniden eğitme. 
-1. Word yeniden ekleyin veya tam bir örnek utterance olarak önceden oluşturulmuş bir varlık olarak işaretlenmiş varlık tümceciği. Bir sözcük veya tümcecik hala işaretlenmiş önceden oluşturulmuş varlık olacaktır. 
-1. Örnek utterance varlıkta seçin **hedefi** sayfasında, özel varlığınıza değiştirin ve yeniden eğitin. Bu tam metin işaretlenmesi metnin kullanan herhangi bir örnek konuşma önceden oluşturulmuş varlığı olarak bu LUIS engel olur. 
-1. Tüm özgün örnek utterance Intent'e ekleyin. Özel varlık, önceden oluşturulmuş bir varlık yerine işaretlenmesini devam etmelidir. Özel varlık işaretlenmemiş olması, konuşma metnin daha fazla örnek eklemeniz gerekir.
+1. Tam bir örnek olarak, önceden oluşturulmuş bir varlık olarak işaretlenen varlık olan sözcüğü veya tümceciği geri ekleyin. Sözcüğe veya ifadeye hala önceden oluşturulmuş varlık de işaretlenmiş olur. 
+1. **Amaç** sayfasında bulunan örnekteki varlık ' ı seçin ve özel varlığınızla değiştirin ve yeniden eğitme yapın. Bu, LUSıS 'in bu metni kullanan herhangi bir örnek için bu tam metni önceden oluşturulmuş varlık olarak işaretlemesini önlemelidir. 
+1. Özgün örnek tamamını amacına geri ekleyin. Özel varlık önceden oluşturulmuş varlık yerine işaretlenmeye devam etmelidir. Özel varlık işaretli değilse, söz konusu metne daha fazla örnek eklemeniz gerekir.
 
-#### <a name="remove-prebuilt-entity-to-fix-tagging"></a>Etiketleme düzeltmek için önceden oluşturulmuş varlık Kaldır
+#### <a name="remove-prebuilt-entity-to-fix-tagging"></a>Etiketlemeyi onarmak için önceden oluşturulmuş varlığı kaldırma
 
-1. Önceden oluşturulmuş varlık uygulamadan kaldırabilir. 
-1. Üzerinde **hedefi** sayfasında, özel varlıkta örnek utterance işaretleyin.
+1. Uygulamadan önceden oluşturulmuş varlığı kaldırın. 
+1. **Amaç** sayfasında, örnekte yer alan özel varlığı işaretleyin.
 1. Uygulamayı eğitin.
-1. Önceden oluşturulmuş varlık uygulamaya geri ekleyin ve uygulamayı eğitin. Bu düzeltme, önceden oluşturulmuş varlık bileşik bir varlık parçası olmayan varsayar.
+1. Önceden oluşturulmuş varlığı uygulamaya geri ekleyin ve uygulamayı eğitme. Bu düzeltilme, önceden oluşturulmuş varlığın bir bileşik varlığın parçası olmadığını varsayar.
 
 ## <a name="regular-expression-entity"></a>Normal ifade varlığı 
 
-Normal bir ifade ham utterance metin için en iyisidir. Küçük büyük harf duyarlı ve kültürel bir değişken yok sayar.  Normal ifadenin eşleştirilmesi, yazım denetimi değişiklikleri karakter düzeyinde belirteci düzeyinde değil sonra uygulanır. Normal ifade birçok oluşur. parantez kullanılarak gibi çok karmaşık ise, ifade modele eklemek erişememenizin. Bölümü ancak bazıları [.NET Regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions) kitaplığı. 
+[Normal ifade varlığı](reference-entity-regular-expression.md) , sağladığınız normal ifade düzenine göre bir varlığı ayıklar.
 
-İyi bir varlıktır ne zaman uygun:
+## <a name="simple-entity"></a>Basit varlık
 
-* Verileri tutarlı olan herhangi bir değişim ile tutarlı bir şekilde biçimlendirilir.
-* Normal ifade 2'den fazla iç içe geçme düzeyi gerek yoktur. 
-
-![Normal ifade varlığı](./media/luis-concept-entities/regex-entity.png)
-
-[Öğretici](luis-quickstart-intents-regex-entity.md)<br>
-[Varlık için örnek JSON yanıtı](luis-concept-data-extraction.md#regular-expression-entity-data)<br>
-
-Normal ifadeler eşleştirilecek beklediğinizden daha eşleşmiyor olabilir. Bu, sayısal word gibi eşleşen örneğidir `one` ve `two`. Sayının aşağıdaki regex örneğidir `one` başka sayı birlikte:
-
-```javascript
-(plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*
-``` 
-
-Bu normal ifade ifade ayrıca gibi bu numaraları ile biten sözcük eşleşen `phone`. Sorunları şöyle giderin, normal ifade eşleştiğinden emin olmak için hesap sözcük sınırları alır. Sözcük sınırlarından Bu örnek için kullanılacak normal ifade aşağıdaki normal ifade kullanılır:
-
-```javascript
-\b(plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*\b
-```
-
-## <a name="simple-entity"></a>Basit varlık 
-
-Bir varlığın tek bir kavram açıklayan ve makine öğrenilen bağlamdan öğrenilen genel bir varlıktır. Basit varlıklar genellikle şirket adı, ürün adlarını veya diğer kategori adları gibi adlar olduğu için ekleme bir [tümcecik listesi](luis-concept-feature.md) kullanılan adları sinyal artırmak üzere basit bir varlık kullanırken. 
-
-İyi bir varlıktır ne zaman uygun:
-
-* Verilerin tutarlı bir şekilde biçimlendirilmeyen ancak aynı şeyi göstermek. 
-
-![varlığın](./media/luis-concept-entities/simple-entity.png)
-
-[Öğretici](luis-quickstart-primary-and-secondary-data.md)<br/>
-[Varlık için örnek yanıt](luis-concept-data-extraction.md#simple-entity-data)<br/>
-
+A [varlığın](reference-entity-simple.md) bir makine öğrenilen değerdir. Bir sözcük veya tümcecik olabilir.
 ## <a name="entity-limits"></a>Varlık sınırları
 
 Gözden geçirme [sınırları](luis-boundaries.md#model-boundaries) anlamak için bir model ekleyebilirsiniz kaç her varlık türü.
 
 ## <a name="if-you-need-more-than-the-maximum-number-of-entities"></a>Varlıklar, en fazla sayısından daha ihtiyacınız varsa 
 
-Bileşik varlıkların varlık rolleri ile birlikte kullanmanız gerekebilir.
+Birleşik varlıkları varlık rolleriyle birlikte kullanmanız gerekebilir.
 
 Bileşik varlık, bir bütün parçalarını temsil eder. Örneğin, PlaneTicketOrder adlı bileşik bir varlık alt varlıklar Havayolu, hedef DepartureCity DepartureDate ve PlaneTicketClass olabilir.
 
-LUIS, makine öğrenilen değildir, ancak bir sabit listesi değerleri belirtmek LUIS uygulamanızı sağlayan listesi varlık türünü de sağlar. Bkz: [LUIS sınırları](luis-boundaries.md) sınırları varlık türleri gözden geçirmek için başvuru. 
+Luda, makine tarafından öğrenilen, ancak LUSıS uygulamanızın sabit bir değer listesi belirlemesine izin veren liste varlık türünü de sağlar. Bkz: [LUIS sınırları](luis-boundaries.md) sınırları varlık türleri gözden geçirmek için başvuru. 
 
-Bu varlıklar olarak kabul ve hala en fazla sınıra ihtiyacınız varsa desteğe başvurun. Bunu yapmak için sisteminizin hakkında ayrıntılı bilgi toplamak, Git [LUIS](luis-reference-regions.md#luis-website) Web sitesine gidin ve ardından **Destek**. Destek Hizmetleri Azure aboneliğinize dahildir, başvurun [Azure teknik desteğine](https://azure.microsoft.com/support/options/). 
+Bu varlıkları kabul ediyorsanız ve sınırdan daha fazlasına ihtiyaç duyuyorsanız, desteğe başvurun. Bunu yapmak için sisteminizin hakkında ayrıntılı bilgi toplamak, Git [LUIS](luis-reference-regions.md#luis-website) Web sitesine gidin ve ardından **Destek**. Destek Hizmetleri Azure aboneliğinize dahildir, başvurun [Azure teknik desteğine](https://azure.microsoft.com/support/options/). 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

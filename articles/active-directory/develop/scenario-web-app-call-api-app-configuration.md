@@ -15,12 +15,12 @@ ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15c12aebccf34957db8442034ebbcd6ac7c107e1
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 2ad995908ff20d123a77b511d127652aa17c4634
+ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68276722"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494522"
 ---
 # <a name="web-app-that-calls-web-apis---code-configuration"></a>Web API 'Lerini çağıran Web uygulaması-kod yapılandırması
 
@@ -29,6 +29,12 @@ Web uygulaması oturum açma [kullanıcıları senaryosunda](scenario-web-app-si
 - ASP.NET veya ASP.NET Core 'un bir yetkilendirme kodu istemesine izin vereceksiniz. Bu ASP.NET/ASP.NET çekirdeğini yaparak kullanıcının oturum açmasını ve izin vermesini sağlar,
 - Web uygulaması tarafından yetkilendirme kodunun alımına abone olacaksınız.
 - Kimlik doğrulama kodu alındığında, kodu ve sonuç erişim belirteçlerini ve belirteç önbelleğinde belirteç deposunu yenilemek için MSAL kitaplıklarını kullanacaksınız. Buradan, önbellek diğer belirteçleri sessizce almak için uygulamanın diğer bölümlerinde kullanılabilir.
+
+> [!NOTE]
+> Bu makaledeki kod parçacıkları, tam işlevli GitHub 'daki aşağıdaki örneklerden ayıklanır:
+>
+> - [ASP.NET Core Web uygulaması artımlı öğreticisi](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph)
+> - [ASP.NET Web uygulaması örneği](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect)
 
 ## <a name="libraries-supporting-web-app-scenarios"></a>Web uygulaması senaryolarını destekleyen kitaplıklar
 
@@ -42,7 +48,12 @@ Web Apps için yetkilendirme kodu akışını destekleyen kitaplıklar şunlard�
 
 ## <a name="aspnet-core-configuration"></a>ASP.NET Core yapılandırması
 
-ASP.NET Core, `Startup.cs` dosyada şeyler meydana gelir. `OnAuthorizationCodeReceived` Açık kimlik Connect olayına abone olmak ve bu olaydan msal çağrısı yapmak isteyeceksiniz. NET 'in, `AcquireTokenFromAuthorizationCode` belirteç önbelleğinde depolamanın etkisi, istenen kapsamlar için erişim belirteci ve zaman aşımı süresi sona ermeden veya aynı kullanıcı adına bir belirteç almak için kullanılacak yenileme belirtecinin bulunduğu Yöntem , ancak farklı bir kaynak için.
+ASP.NET Core, `Startup.cs` dosyada şeyler meydana gelir. `OnAuthorizationCodeReceived` Açık kimlik Connect olayına abone olmak ve bu olaydan msal çağrısı yapmak isteyeceksiniz. , Belirteç önbelleğinde `AcquireTokenFromAuthorizationCode` depolamanın etkisi, istenen `scopes`için erişim belirteci ve süresi dolma yakın olduğunda erişim belirtecini yenilemek veya aynı kullanıcı adına bir belirteç almak için kullanılacak yenileme belirteci olan net 'in yöntemi , ancak farklı bir kaynak için.
+
+```CSharp
+string[] scopes = new string[]{ "user.read" };
+string[] scopesRequestedByMsalNet = new string[]{ "openid", "profile", "offline_access" };
+```
 
 Aşağıdaki koddaki açıklamalar, dalgalı MSAL.NET ve ASP.NET Core karmaşık yönlerini anlamanıza yardımcı olur. [ASP.NET Core Web uygulaması artımlı öğreticisi, Bölüm 2 '](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph) de tam ayrıntılar sunulmaktadır
 
@@ -56,7 +67,7 @@ Aşağıdaki koddaki açıklamalar, dalgalı MSAL.NET ve ASP.NET Core karmaşık
    // their Microsoft personal accounts
    // (it's required by MSAL.NET and automatically provided by Azure AD when users
    // sign in with work or school accounts, but not with their Microsoft personal accounts)
-   options.Scope.Add(OidcConstants.ScopeOfflineAccess);
+   options.Scope.Add("offline_access");
    options.Scope.Add("user.read"); // for instance
 
    // Handling the auth redemption by MSAL.NET so that a token is available in the token cache
@@ -88,7 +99,12 @@ Aşağıdaki koddaki açıklamalar, dalgalı MSAL.NET ve ASP.NET Core karmaşık
    };
 ```
 
-ASP.NET Core, gizli istemci uygulaması oluşturmak HttpContext 'teki bilgileri kullanır. Bu HttpContext, Web uygulamasının URL 'sini ve oturum açmış kullanıcıyı (bir `ClaimsPrincipal`) bilir. Ayrıca, "azuread" bölümü olan ve `_applicationOptions` veri yapısına bağlantılı ASP.NET Core yapılandırmayı kullanır. Son olarak, uygulamanın belirteç önbelleklerini koruması gerekir.
+ASP.NET Core, gizli istemci uygulaması oluşturmak HttpContext 'teki bilgileri kullanır. Bu `HttpContext` , Web uygulaması URL 'si ve oturum açmış kullanıcı (bir `ClaimsPrincipal`) hakkında bilgi sahibi. 
+
+Ayrıca, "AzureAD" bölümüne sahip olan ve ' yi ile bağlantılı ASP.NET Core yapılandırmayı kullanır:
+
+- `_applicationOptions` [ConfidentialClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationoptions?view=azure-dotnet) türünün veri yapısı
+- `azureAdOptions` ASP.NETCore`Authentication.AzureAD.UI`' de tanımlanan [azureadoseçenekler](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/AzureADOptions.cs) türü örneği. Son olarak, uygulamanın belirteç önbelleklerini koruması gerekir.
 
 ```CSharp
 /// <summary>
@@ -102,7 +118,7 @@ private IConfidentialClientApplication BuildConfidentialClientApplication(HttpCo
  var request = httpContext.Request;
 
  // Find the URI of the application)
- string currentUri = UriHelper.BuildAbsolute(request.Scheme, request.Host, request.PathBase, azureAdOptions.CallbackPath ?? string.Empty);
+ string currentUri = UriHelper.BuildAbsolute(request.Scheme, request.Host, request.PathBase, _applicationOptions.CallbackPath ?? string.Empty);
 
  // Updates the authority from the instance (including national clouds) and the tenant
  string authority = $"{azureAdOptions.Instance}{azureAdOptions.TenantId}/";
@@ -116,19 +132,22 @@ private IConfidentialClientApplication BuildConfidentialClientApplication(HttpCo
  // Initialize token cache providers. In the case of Web applications, there must be one
  // token cache per user (here the key of the token cache is in the claimsPrincipal which
  // contains the identity of the signed-in user)
- if (this.UserTokenCacheProvider != null)
+ if (UserTokenCacheProvider != null)
  {
-  this.UserTokenCacheProvider.Initialize(app.UserTokenCache, httpContext, claimsPrincipal);
+  UserTokenCacheProvider.Initialize(app.UserTokenCache, httpContext, claimsPrincipal);
  }
- if (this.AppTokenCacheProvider != null)
+ if (AppTokenCacheProvider != null)
  {
-  this.AppTokenCacheProvider.Initialize(app.AppTokenCache, httpContext);
+  AppTokenCacheProvider.Initialize(app.AppTokenCache, httpContext);
  }
  return app;
 }
 ```
 
-`AcquireTokenByAuthorizationCode`ASP.NET tarafından istenen yetkilendirme kodunu gerçekten yapın ve MSAL.NET Kullanıcı belirteci önbelleğine eklenen belirteçleri alır. Buradan, ASP.NET Core denetleyicilerinde kullanılır.
+Belirteç önbelleği sağlayıcıları hakkında daha fazla bilgi için bkz. [Web uygulaması öğreticileri ASP.NET Core | Belirteç önbellekleri](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/455d32f09f4f6647b066ebee583f1a708376b12f/2-WebApp-graph-user/2-2-TokenCache)
+
+> [!NOTE]
+> `AcquireTokenByAuthorizationCode`ASP.NET tarafından istenen yetkilendirme kodunu gerçekten yapın ve MSAL.NET Kullanıcı belirteci önbelleğine eklenen belirteçleri alır. Buradan, ASP.NET Core denetleyicilerinde kullanılır.
 
 ## <a name="aspnet-configuration"></a>ASP.NET yapılandırması
 

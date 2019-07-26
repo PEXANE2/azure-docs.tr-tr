@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a938f85b2047ea5cceada98df6adba2c560c1a1
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: e1ea75499334f3f6eb2f5d3c15526067fcef4eb8
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278674"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442497"
 ---
 # <a name="confidential-client-assertions"></a>Gizli istemci onayları
 Gizli istemci uygulamalarının kimliğini kanıtlamak için Azure AD ile gizli bir parola değişimi yapın. Gizli dizi şu olabilir:
@@ -34,7 +34,7 @@ Bu gizli dizi doğrudan imzalı bir onaylama da olabilir.
 MSAL.NET, gizli istemci uygulamasına kimlik bilgileri veya onaylama sağlamak için dört yöntem içerir:
 - `.WithClientSecret()`
 - `.WithCertificate()`
-- `.WithSignedAssertion()`
+- `.WithClientAssertion()`
 - `.WithClientClaims()`
 
 ### <a name="signed-assertions"></a>İmzalı Onaylamalar
@@ -50,7 +50,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 Azure AD tarafından beklenen talepler şunlardır:
 
-Talep türü | Değer | Açıklama
+Talep türü | Value | Açıklama
 ---------- | ---------- | ----------
 AUD | https://login.microsoftonline.com/{tenantId}/v2.0 | "AUD" (hedef kitle) talebi, JWT 'nin hedeflenen alıcılarını tanımlar (burada Azure AD) bkz. [RFC 7519, Section 4.1.3]
 exp | Per Haz 27 2019 15:04:17 GMT + 0200 (Romanya yaz saati) | "Exp" (sona erme saati) talebi, JWT 'ın işlenmek üzere kabul edilmemelidir. Bkz. [RFC 7519, Section 4.1.4]

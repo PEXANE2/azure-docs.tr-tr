@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 398b2236caa77e4aef5b471079407a5edeeeee2d
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
-ms.translationtype: HT
+ms.openlocfilehash: cc0ba80f7aef53568e048b8285800982c818b004
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326943"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68334590"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure depolama güvenlik duvarlarını ve sanal ağları yapılandırma
 
@@ -23,8 +23,6 @@ Azure depolama, katmanlı güvenlik modeli sağlar. Bu model, desteklenen ağlar
 Bir depolama hesabı ağ kuralları geçerli olduğunda erişen bir uygulama istek üzerine uygun yetkilendirme gerektirir. Yetkilendirme, geçerli bir hesap erişim anahtarı veya SAS belirteci ile blob 'lar ve kuyruklar için Azure Active Directory (Azure AD) kimlik bilgileri ile desteklenir.
 
 > [!IMPORTANT]
-> Azure Dosya Eşitleme henüz güvenlik duvarlarını ve sanal ağları desteklemez. Depolama hesabınızda Azure Dosya Eşitleme kullanıyorsanız ve bu ayarı etkinleştirirseniz Azure Dosya Eşitleme eşitlenmez.
->
 > Bir Azure sanal ağı (VNet) içinde çalışan bir hizmet isteği gelen sürece depolama hesabınız için güvenlik duvarı kurallarını etkinleştirmek varsayılan olarak, veri gelen istekleri engeller. Engellenen istekleri, Azure portalından, günlük ve ölçüm hizmetlerden, diğer Azure hizmetlerinden gelen içerir ve benzeri.
 >
 > Gelen alt ağ hizmeti örneğinin vererek bir Vnet'te çalışan Azure hizmetlerine erişime izin verebilirsiniz. Etkinleştirme senaryoları ile sınırlı sayıda [özel durumları](#exceptions) aşağıdaki bölümde anlatılan mekanizması. Azure portalına erişmek için ayarladığınız güvenilen sınırları (IP veya VNet) içinde bir makinede olması gerekir.
