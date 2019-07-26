@@ -6,7 +6,7 @@ metadata:
   description: 'Content Moderator''ı kullanarak potansiyel olarak rahatsız edici, riskli veya istenmeyen öğeleri saptamak için metin, görüntü ve video içeriğinde denetim gerçekleştirmeyi öğrenin.'
   services: cognitive-services
   author: nitinme
-  manager: cgronlun
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: content-moderator
   ms.tgt_pltfrm: na
@@ -50,7 +50,7 @@ sections:
   - title: 5 Dakikalık Hızlı Başlangıçlar
     items:
       - type: paragraph
-        text: Bir ok bağlantısını seçerek Content Moderator ile çalışmaya başlamayı öğrenin <img src="images/index/link.jpg" height="15" width="15"></img>.
+        text: Bir ok bağlantısını seçerek Content Moderator ile çalışmaya başlamayı öğrenin <img src="images/index/link.jpg" height="15" width="15"></img>arasında yetersiz alanla karşılaştı.
       - type: table
         style: dataMatrix
         columns:

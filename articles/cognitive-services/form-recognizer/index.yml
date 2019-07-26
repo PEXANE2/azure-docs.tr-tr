@@ -6,7 +6,7 @@ metadata:
   description: Form belgelerinizden akıllıca anahtar değeri ayıklamak için Form Tanıma kullanmayı öğrenin.
   services: cognitive-services
   author: PatrickFarley
-  manager: cgronlun
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: forms-recognizer
   ms.tgt_pltfrm: na

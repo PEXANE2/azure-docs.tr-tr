@@ -6,7 +6,7 @@ metadata:
   description: Görüntü İşlemeyi kullanarak görüntüleri işleme ve bilgi döndürme hakkında bilgi edinin. Öğreticilerde API kullanan uygulamaların nasıl derleneceği gösterilmektedir.
   services: cognitive-services
   author: nitinme
-  manager: cgronlun
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: computer-vision
   ms.tgt_pltfrm: na

@@ -7,7 +7,7 @@ metadata:
   description: 'Konuşma Tanıma Hizmetleri geliştiricilere uygulamalarına güçlü konuşma özellikleri eklemek için kolay bir yol getirir. Örneğin sesli komut denetimi ve iletişim penceresi, doğal konuşma, konuşma transkripsiyonu, dikte ve konuşma çevirisi özellikleri ekleyebilirler.'
   services: cognitive-services
   author: nitinme
-  manager: cgronlun
+  manager: nitinme
   layout: LandingPage
   ms.service: cognitive-services
   ms.subservice: speech-service
@@ -60,7 +60,7 @@ sections:
   - title: 5 Dakikalık Hızlı Başlangıçlar
     items:
       - type: paragraph
-        text: 'Ok bağlantısı seçerek SDK’yı indirmeyi, yüklemeyi ve kullanmayı öğrenin <img src="media/index/link.jpg" height="15" width="15"></img>.<br/>Tüm ok bağlantıları varsayılan olarak <img src="media/index/link.jpg" height="15" width="15"></img> konuşmadan metne dönüştürme hızlı başlangıcına yönlendirir. Burada, metin okuma veya ses öncelikli sanal yardımcı gibi diğer hızlı başlangıçları (<a href="scenario-availability.md">kullanılabiliyorsa</a>) seçebilirsiniz.'
+        text: 'Ok bağlantısı seçerek SDK’yı indirmeyi, yüklemeyi ve kullanmayı öğrenin <img src="media/index/link.jpg" height="15" width="15"></img>arasında yetersiz alanla karşılaştı.<br/>Tüm ok bağlantıları varsayılan olarak <img src="media/index/link.jpg" height="15" width="15"></img> konuşmadan metne dönüştürme hızlı başlangıcına yönlendirir. Burada, metin okuma veya ses öncelikli sanal yardımcı gibi diğer hızlı başlangıçları (<a href="scenario-availability.md">kullanılabiliyorsa</a>) seçebilirsiniz.'
       - type: table
         style: dataMatrix
         columns:

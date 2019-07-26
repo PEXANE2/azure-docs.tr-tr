@@ -6,7 +6,7 @@ metadata:
   title: 'Language Understanding (LUIS) - Öğreticiler, Hızlı Başlangıçlar, API Başvurusu'
   description: Language Understanding hizmetini kullanarak bir kişinin kendi sözcükleriyle ifade ettiği isteği uygulamanızın anlamasını sağlama hakkında bilgi edinin.
   author: nitinme
-  manager: cgronlun
+  manager: nitinme
   ms.service: cognitive-services
   ms.tgt_pltfrm: na
   ms.devlang: na

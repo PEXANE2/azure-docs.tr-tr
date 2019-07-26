@@ -6,7 +6,7 @@ metadata:
   description: Yüz Tanıma API'sini kullanarak görüntülerdeki yüzleri algılayıp tanımlama ve yüz bilgileri döndürme hakkında bilgi edinin. Öğreticilerde API kullanan uygulamaların nasıl derleneceği gösterilmektedir.
   services: cognitive-services
   author: PatrickFarley
-  manager: cgronlun
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: face-api
   ms.tgt_pltfrm: na

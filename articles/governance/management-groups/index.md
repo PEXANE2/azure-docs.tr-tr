@@ -7,12 +7,12 @@ ms.service: governance
 ms.date: 04/22/2019
 ms.author: rithorn
 ms.topic: overview
-ms.openlocfilehash: 1958a829df2643bd218d4e8d7f6dd563b5b395e8
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 6ca8351e7294c5a9cdd9f594eb4524d04a27b5c1
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66237178"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516982"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Kaynaklarınızı Azure yönetim gruplarıyla düzenleme
 
@@ -98,7 +98,7 @@ Aşağıdaki grafikte rollerin listesi ve yönetim gruplarında desteklenen eyle
 |Okuyucu                      |        |        |        |        |               |               | X     |
 |MG Okuyucusu*                  |        |        |        |        |               |               | X     |
 |Kaynak İlkesine Katkıda Bulunan |        |        |        |        |               | X             |       |
-|Kullanıcı Erişimi Yöneticisi   |        |        |        |        | X             |               |       |
+|Kullanıcı Erişimi Yöneticisi   |        |        |        |        | X             | X             |       |
 
 *: MG Katılımcısı ve MG Okuyucusu, kullanıcıların bu eylemleri yalnızca yönetim grubu kapsamında gerçekleştirmesine izin verir.  
 **: Kök yönetim grubunda bir aboneliği veya yönetim grubunu içeri veya dışarı taşımak için Rol Atamaları gerekmez.  Hiyerarşi içindeki öğeleri taşımayla ilgili ayrıntılar için bkz. [Kaynaklarınızı yönetim gruplarıyla yönetme](manage.md).

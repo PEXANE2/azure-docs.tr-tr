@@ -6,7 +6,7 @@ metadata:
   description: 'Verileri zaman içinde izlemek ve makine öğrenmesi ile anomalileri algılamak için Anomali Algılayıcısı API''sini kullanın. Hacimden, sektörden veya senaryodan bağımsız olarak verilerinizle ilgili içgörüler elde edin.'
   services: cognitive-services
   author: aahill
-  manager: cgronlun
+  manager: nitinme
   layout: LandingPage
   ms.service: cognitive-services
   ms.tgt_pltfrm: na

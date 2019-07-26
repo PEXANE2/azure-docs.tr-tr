@@ -6,7 +6,7 @@ metadata:
   title: 'Kişiselleştirme - Öğreticiler, Hızlı Başlangıçlar, API Başvurusu'
   description: 'Uygulamanızın, kullanıcıların gerçek zamanlı davranışlarından öğrenerek onlara gösterilen en iyi deneyimin seçilmesini sağlamak için Kişiselleştirme hizmetini kullanmayı öğrenin.'
   author: nitinme
-  manager: cgronlun
+  manager: nitinme
   ms.service: cognitive-services
   ms.tgt_pltfrm: na
   ms.devlang: na
