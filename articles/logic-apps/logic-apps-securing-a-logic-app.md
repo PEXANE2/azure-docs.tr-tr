@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 06/28/2019
-ms.openlocfilehash: d69861beb5848679aa00c8b39f0caa84c7c5d847
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: f27dfd1f907d106ddb3b1b9dd7534d56380149c2
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67986751"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385504"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps 'da güvenli erişim ve veriler
 
@@ -193,9 +193,9 @@ Mantıksal uygulamanızın çalıştırma geçmişinde giriş ve çıkışlara e
 
   Bu seçenek, belirli bir IP adres aralığından gelen isteklere göre çalışma geçmişine erişimi güvenli hale getirmeye olanak sağlar.
 
-* Gizleme [kullanarak çalıştırma geçmişindeki girişleri ve çıkışları gizleyin](#obfuscate).
+* Gizleme [kullanarak çalıştırma geçmişinden verileri gizleyin](#obfuscate).
 
-  Bu seçenek, tetikleyici veya eyleme göre çalışma geçmişinde girişleri ve çıkışları gizlemenizi sağlar.
+  Birçok tetikleyici ve eylem içinde, girişlerini, çıkışları veya her ikisini de bir mantıksal uygulamanın çalıştırma geçmişinden gizleyebilirsiniz.
 
 <a name="restrict-ip"></a>
 
@@ -258,7 +258,11 @@ Mantıksal uygulama dağıtımlarını bir [Azure Resource Manager şablonu](../
 
 <a name="obfuscate"></a>
 
-### <a name="hide-inputs-and-outputs-in-run-history-by-using-obfuscation"></a>Gizleme kullanarak çalıştırma geçmişindeki girişleri ve çıkışları gizleme
+### <a name="hide-data-from-run-history-by-using-obfuscation"></a>Gizleme kullanarak çalıştırma geçmişinden verileri gizleme
+
+Birçok tetikleyici ve eylemin, girdileri, çıkışları veya her ikisini de mantıksal uygulamanın çalıştırma geçmişinden gizlemek için ayarları vardır. Bu verileri güvenli hale getirmek için bu ayarları kullandığınızda [göz önünde bulundurmanız gereken bazı noktalar](#obfuscation-considerations) aşağıda verilmiştir.
+
+#### <a name="secure-inputs-and-outputs-in-the-designer"></a>Tasarımcıda güvenli girişler ve çıktılar
 
 1. Mantıksal uygulamanız [Azure Portal](https://portal.azure.com)zaten açık değilse, mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
 
@@ -290,9 +294,38 @@ Mantıksal uygulama dağıtımlarını bir [Azure Resource Manager şablonu](../
 
       ![Çalışma geçmişinde gizli veriler](media/logic-apps-securing-a-logic-app/hidden-data-run-history.png)
 
+<a name="secure-data-code-view"></a>
+
+#### <a name="secure-inputs-and-outputs-in-code-view"></a>Kod görünümünde güvenli girişler ve çıktılar
+
+Temel tetikleyici veya eylem tanımında `runtimeConfiguration.secureData.properties` diziyi bu değerlerden birini ya da her ikisini birden ekleyin veya güncelleştirin:
+
+* `"inputs"`: Çalıştırma geçmişindeki girişlerin güvenliğini sağlar.
+* `"outputs"`: Çalıştırma geçmişindeki çıkışları güvenli bir şekilde korur.
+
+Bu verileri güvenli hale getirmek için bu ayarları kullandığınızda [göz önünde bulundurmanız gereken bazı noktalar](#obfuscation-considerations) aşağıda verilmiştir.
+
+```json
+"<trigger-or-action-name>": {
+   "type": "<trigger-or-action-type>",
+   "inputs": {
+      <trigger-or-action-inputs>
+   },
+   "runtimeConfiguration": {
+      "secureData": {
+         "properties": [
+            "inputs",
+            "outputs"
+         ]
+      }
+   },
+   <other-attributes>
+}
+```
+
 <a name="obfuscation-considerations"></a>
 
-#### <a name="considerations-when-securing-inputs-and-outputs"></a>Giriş ve çıkışları güvenli hale getirmenin konuları
+#### <a name="considerations-when-hiding-inputs-and-outputs"></a>Girişleri ve çıkışları gizleme konuları
 
 * Bir tetikleyici veya eylemde girişlerin veya çıkışların güvenliğini uyguladığınızda Logic Apps, güvenli verileri Azure Log Analytics 'a göndermez. Ayrıca, izleme için bu tetikleyiciye veya eyleme [izlenen Özellikler](logic-apps-monitor-your-logic-apps.md#azure-diagnostics-event-settings-and-details) ekleyemezsiniz.
 
@@ -564,3 +597,4 @@ Mantıksal uygulamanızın gönderme isteklerine erişmesi gereken uç noktalar�
 * [Dağıtım şablonları oluşturma](logic-apps-create-deploy-template.md)  
 * [Mantıksal uygulamalarınızı izleyin](logic-apps-monitor-your-logic-apps.md)  
 * [Mantıksal uygulama başarısızlıklarını ve sorunlarını tanılama](logic-apps-diagnosing-failures.md)  
+* [Mantıksal uygulama dağıtımını otomatikleştirme](logic-apps-azure-resource-manager-templates-overview.md)

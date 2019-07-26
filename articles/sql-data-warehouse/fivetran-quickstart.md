@@ -80,5 +80,5 @@ Fivetran için oturum açmak için SQL veri ambarı erişmek için kullandığı
 * Konak (sunucu adı).
 * Bağlantı noktası.
 * Veritabanı.
-* Kullanıcı (kullanıcı adı olmalıdır **fivetran\@_sunucu_adı_** burada *sunucu_adı* Azure URI ana bilgisayarınız bir parçasıdır: ***sunucu_adı*. Database.Windows.NET**).
+* Kullanıcı (kullanıcı adı olmalıdır **fivetran\@_sunucu_adı_** burada *sunucu_adı* Azure URI ana bilgisayarınız bir parçasıdır:  ***sunucu_adı*. Database.Windows.NET**).
 * Parola.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: allensu
-ms.openlocfilehash: 6623b3e679faaa73f18c0f6b376de101113bcbdb
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 833d0d0b17f7cc22b2ab37b4e225c1a8cce9c592
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274550"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385552"
 ---
 # <a name="outbound-connections-in-azure"></a>Azure 'da giden bağlantılar
 
@@ -40,27 +40,27 @@ Birden çok [giden senaryo](#scenarios)vardır. Bu senaryoları gerektiğinde bi
 
 Azure Load Balancer ve ilgili kaynaklar [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)kullanırken açıkça tanımlanır.  Azure Şu anda Azure Resource Manager kaynaklarına giden bağlantı sağlamak için üç farklı yöntem sunmaktadır. 
 
-| SKU | Senaryo | Yöntem | IP protokolleri | Açıklama |
+| SKU'lar | Senaryo | Yöntem | IP protokolleri | Açıklama |
 | --- | --- | --- | --- | --- |
-| Standart, temel | [1. Örnek düzeyi genel IP adresine sahip VM (Load Balancer ile veya olmayan)](#ilpip) | SNAT, bağlantı noktası aşağı olarak kullanılmıyor | TCP, UDP, ICMP, ESP | Azure, örneğin NIC 'in IP yapılandırmasına atanan genel IP 'yi kullanır. Örnekte, tüm kısa ömürlü bağlantı noktaları kullanılabilir. Standart Load Balancer kullanırken, giden bağlantıyı açıkça tanımlamak için [giden kurallarını](load-balancer-outbound-rules-overview.md) kullanmanız gerekir |
-| Standart, temel | [2. Bir VM ile ilişkili ortak Load Balancer (örnek üzerinde örnek düzeyi genel IP adresi yok)](#lb) | Load Balancer ön uçları kullanarak bağlantı noktası geçici olarak (PAT) SNAT | TCP, UDP |Azure, genel Load Balancer ön uçlarının genel IP adresini birden çok özel IP adresi ile paylaşır. Azure, ön uçların kısa ömürlü bağlantı noktalarını kullanır. |
-| hiçbiri veya temel | [3. Tek başına VM (Load Balancer yok, örnek düzeyi genel IP adresi yok)](#defaultsnat) | Bağlantı noktası geçici olarak SNAT (PAT) | TCP, UDP | Azure, SNAT için bir genel IP adresi otomatik olarak atar, bu genel IP adresini kullanılabilirlik kümesinin birden çok özel IP adresi ile paylaşır ve bu genel IP adresinin kısa ömürlü bağlantı noktalarını kullanır. Bu senaryo, önceki senaryolar için bir geri dönüş olur. Görünürlük ve denetime ihtiyacınız varsa bunu önermiyoruz. |
+| Standart, temel | [1. Ortak IP adresine sahip VM (Load Balancer ile veya olmayan)](#ilpip) | SNAT, bağlantı noktası aşağı olarak kullanılmıyor | TCP, UDP, ICMP, ESP | Azure, örneğin NIC 'in IP yapılandırmasına atanan genel IP 'yi kullanır. Örnekte, tüm kısa ömürlü bağlantı noktaları kullanılabilir. Standart Load Balancer kullanırken, giden bağlantıyı açıkça tanımlamak için [giden kurallarını](load-balancer-outbound-rules-overview.md) kullanmanız gerekir |
+| Standart, temel | [2. Bir VM ile ilişkili ortak Load Balancer (örnekte genel IP adresi yok)](#lb) | Load Balancer ön uçları kullanarak bağlantı noktası geçici olarak (PAT) SNAT | TCP, UDP |Azure, genel Load Balancer ön uçlarının genel IP adresini birden çok özel IP adresi ile paylaşır. Azure, ön uçların kısa ömürlü bağlantı noktalarını kullanır. |
+| hiçbiri veya temel | [3. Tek başına VM (Load Balancer yok, genel IP adresi yok)](#defaultsnat) | Bağlantı noktası geçici olarak SNAT (PAT) | TCP, UDP | Azure, SNAT için bir genel IP adresi otomatik olarak atar, bu genel IP adresini kullanılabilirlik kümesinin birden çok özel IP adresi ile paylaşır ve bu genel IP adresinin kısa ömürlü bağlantı noktalarını kullanır. Bu senaryo, önceki senaryolar için bir geri dönüş olur. Görünürlük ve denetime ihtiyacınız varsa bunu önermiyoruz. |
 
 Bir VM 'nin genel IP adresi alanında Azure dışındaki uç noktalarla iletişim kurmasını istemiyorsanız, erişimi gerektiği şekilde engellemek için ağ güvenlik grupları (NSG 'ler) kullanabilirsiniz. [Giden bağlantının önlenmesi](#preventoutbound) bölümünde NSG 'ler daha ayrıntılı şekilde anlatılmaktadır. Bir sanal ağın herhangi bir giden erişimi olmadan tasarlanması, uygulanması ve yönetilmesi ile ilgili yönergeler bu makalenin kapsamı dışındadır.
 
-### <a name="ilpip"></a>Senaryo 1: Örnek düzeyi genel IP adresine sahip VM
+### <a name="ilpip"></a>Senaryo 1: Ortak IP adresine sahip VM
 
-Bu senaryoda, VM 'ye atanan bir örnek düzeyi genel IP (ıLPıP) vardır. Giden bağlantılar söz konusu olduğunda, VM 'nin yük dengeli olup olmadığı önemi yoktur. Bu senaryo diğerlerine göre önceliklidir. ILPıP kullanıldığında, VM tüm giden akışlar için ıLPı kullanır.  
+Bu senaryoda, sanal makineye atanmış bir genel IP vardır. Giden bağlantılar söz konusu olduğunda, VM 'nin yük dengeli olup olmadığı önemi yoktur. Bu senaryo diğerlerine göre önceliklidir. Ortak bir IP adresi kullanıldığında, VM tüm giden akışlar için genel IP adresini kullanır.  
 
 Bir VM 'ye atanan genel IP, 1:1 ilişkidir (1: çok) ve durum bilgisiz 1:1 NAT olarak uygulanır.  Bağlantı noktası (PAT) kullanılmaz ve VM 'nin kullanılabilir tüm kısa ömürlü bağlantı noktaları kullanılabilir.
 
-Uygulamanız birçok giden akışı başlatırsa ve SNAT bağlantı noktası tükenmesi ile karşılaşırsanız, [SNAT kısıtlamalarını azaltmak için bir ılpıp](#assignilpip)atamasını düşünün. [SNAT tükenmesi yönetimini](#snatexhaust) tamamen inceleyin.
+Uygulamanız birçok giden akışı başlatırsa ve SNAT bağlantı noktası tükenmesi ile karşılaşırsanız, [SNAT kısıtlamalarını azaltmak Için genel BIR IP adresi](#assignilpip)atamayı göz önünde bulundurun. [SNAT tükenmesi yönetimini](#snatexhaust) tamamen inceleyin.
 
-### <a name="lb"></a>Senaryo 2: Örnek düzeyi genel IP adresi olmayan yük dengeli VM
+### <a name="lb"></a>Senaryo 2: Genel IP adresi olmayan yük dengeli VM
 
 Bu senaryoda, VM ortak Load Balancer arka uç havuzunun bir parçasıdır. SANAL makineye atanmış bir genel IP adresi yok. Load Balancer kaynak, arka uç havuzuyla genel IP ön ucu arasında bağlantı oluşturmak için bir yük dengeleyici kuralıyla yapılandırılmalıdır.
 
-Bu kural yapılandırmasını tamamlamayın, [örnek düzeyi genel IP olmayan tek başına sanal makine](#defaultsnat)senaryosunda bu davranış açıklanmaktadır. Durum araştırmasının başarılı olması için kuralın arka uç havuzunda çalışma dinleyicisi olması gerekmez.
+Bu kural yapılandırmasını tamamlamayın, davranış [genel IP olmadan tek BAŞıNA VM](#defaultsnat)için senaryoda açıklanacaktır. Durum araştırmasının başarılı olması için kuralın arka uç havuzunda çalışma dinleyicisi olması gerekmez.
 
 Yük dengeli VM bir giden akış oluşturduğunda, Azure giden akışın özel kaynak IP adresini genel Load Balancer ön ucu genel IP adresine çevirir. Azure, bu işlevi gerçekleştirmek için SNAT 'yi kullanır. Azure, genel bir IP adresinin arkasında birden çok özel IP adresini geçici olarak çözmek için [Pat](#pat) 'yi de kullanır. 
 
@@ -72,9 +72,9 @@ SNAT bağlantı noktaları, [SNAT ve Pat 'ı anlama](#snat) bölümünde açıkl
 
 Load Balancer temel ile giden bağlantıların sistem durumunu izlemek için, Load Balancer ve [Uyarı olay günlüklerinin](load-balancer-monitor-log.md#alert-event-log) [Azure IZLEYICI günlüklerini](load-balancer-monitor-log.md) kullanarak SNAT bağlantı noktası Tükenme iletilerini izleyebilirsiniz.
 
-### <a name="defaultsnat"></a>Senaryo 3: Örnek düzeyi genel IP adresi olmayan tek başına VM
+### <a name="defaultsnat"></a>Senaryo 3: Genel IP adresi olmayan tek başına VM
 
-Bu senaryoda, VM ortak bir Load Balancer havuzunun parçası değildir (bir iç Standart Load Balancer havuzunun parçası değildir) ve kendisine atanmış bir ıLPıP adresi yoktur. VM bir giden akış oluşturduğunda, Azure giden akışın özel kaynak IP adresini ortak kaynak IP adresine çevirir. Bu giden akış için kullanılan genel IP adresi yapılandırılamaz ve aboneliğin genel IP kaynak sınırına göre sayılmaz. Bu genel IP adresi size ait değil ve ayrılamaz. VM 'yi veya kullanılabilirlik kümesini veya sanal makine ölçek kümesini yeniden dağıtıyorsanız, bu genel IP adresi yayımlanır ve yeni bir genel IP adresi istenir. IP adreslerini beyaz listeye almak için bu senaryoyu kullanmayın. Bunun yerine, çıkış senaryosunu ve giden bağlantı için kullanılacak genel IP adresini açıkça bildirdiğiniz diğer iki senaryonun birini kullanın.
+Bu senaryoda, VM ortak bir Load Balancer havuzunun parçası değildir (bir iç Standart Load Balancer havuzunun parçası değildir) ve kendisine atanmış bir genel IP adresi yoktur. VM bir giden akış oluşturduğunda, Azure giden akışın özel kaynak IP adresini ortak kaynak IP adresine çevirir. Bu giden akış için kullanılan genel IP adresi yapılandırılamaz ve aboneliğin genel IP kaynak sınırına göre sayılmaz. Bu genel IP adresi size ait değil ve ayrılamaz. VM 'yi veya kullanılabilirlik kümesini veya sanal makine ölçek kümesini yeniden dağıtıyorsanız, bu genel IP adresi yayımlanır ve yeni bir genel IP adresi istenir. IP adreslerini beyaz listeye almak için bu senaryoyu kullanmayın. Bunun yerine, çıkış senaryosunu ve giden bağlantı için kullanılacak genel IP adresini açıkça bildirdiğiniz diğer iki senaryonun birini kullanın.
 
 >[!IMPORTANT] 
 >Bu senaryo __yalnızca__ bir iç temel Load Balancer eklendiğinde de geçerlidir. Bir VM 'ye dahili Standart Load Balancer eklendiğinde Senaryo 3 __kullanılamaz__ .  Dahili bir Standart Load Balancer kullanmaya ek olarak [Senaryo 1](#ilpip) veya [Senaryo 2](#lb) ' i açıkça oluşturmanız gerekir.
@@ -189,7 +189,7 @@ SNAT bağlantı noktaları ayırmaları, IP aktarım protokolüne özgüdür (TC
 Bu bölüm, SNAT tükenmesi azaltmaya ve Azure 'daki giden bağlantılarla meydana getirmenize yardımcı olmaya yöneliktir.
 
 ### <a name="snatexhaust"></a>SNAT (PAT) bağlantı noktası tükenmesi yönetimi
-[Pat](#pat) Için kullanılan [kısa ömürlü bağlantı noktaları](#preallocatedports) , örnek düzeyi genel IP adresı olmayan [tek başına VM](#defaultsnat) 'de, [örnek DÜZEYI genel IP adresi olmadan yük dengeli VM](#lb)'de açıklandığı gibi, tüketilmeyen bir kaynaktır.
+[Pat](#pat) Için kullanılan [kısa ömürlü bağlantı noktaları](#preallocatedports) , genel IP [adresi olmayan tek BAŞıNA VM](#defaultsnat) 'de ve [genel IP adresi olmayan yük dengeli VM](#lb)'de açıklandığı gibi, tüketilmeyen bir kaynaktır.
 
 Aynı hedef IP adresine ve bağlantı noktasına giden çok sayıda giden TCP veya UDP bağlantısı başlattığın ve başarısız olmuş bağlantıları gözlemlerseniz veya SNAT bağlantı noktalarını (önceden ayrılan [kısa ömürlü bağlantı noktaları](#preallocatedports) ) tahmin ettiğiniz destekle karşılaşdığınızı bilirsiniz [Pat](#pat)tarafından kullanılan), çeşitli genel risk azaltma seçenekleriniz vardır. Bu seçenekleri gözden geçirin ve senaryonuz için nelerin kullanılabilir ve en iyisi olduğuna karar verin. Bir veya daha fazla bu senaryonun yönetilmesine yardımcı olabilir.
 
@@ -210,8 +210,8 @@ Bağlantı havuzu, uygulamanızı geliştirmek için kullandığınız çerçeve
 
 Kısa ömürlü bağlantı noktalarında 4 dakikalık boşta kalma zaman aşımı (ayarlanamaz) vardır. Yeniden denemeler çok ısrarlı ise, tükenmenin kendi kendine temizleme olanağı yoktur. Bu nedenle, uygulamanızın yeniden deneme işlemleri, tasarımın kritik bir parçasıdır.
 
-#### <a name="assignilpip"></a>Her VM 'ye bir örnek düzeyi genel IP atayın
-ILZAR atama, senaryonuzu [BIR VM 'ye örnek düzeyi genel IP](#ilpip)'ye dönüştürür. Her VM için kullanılan genel IP 'nin tüm kısa ömürlü bağlantı noktaları, sanal makine için kullanılabilir. (Genel bir IP 'nin kısa ömürlü bağlantı noktaları, ilgili arka uç havuzuyla ilişkili tüm VM 'Ler ile paylaşıldığından senaryolar aksine.) Genel IP adreslerinin ek maliyeti ve çok sayıda ayrı IP adresini daha beyaz listeleyen olası etkileri gibi göz önünde bulundurmanız gereken bir denge vardır.
+#### <a name="assignilpip"></a>Her VM 'ye genel IP atama
+Genel IP adresi atamak, senaryonuzu [BIR VM 'ye genel IP](#ilpip)'ye dönüştürür. Her VM için kullanılan genel IP 'nin tüm kısa ömürlü bağlantı noktaları, sanal makine için kullanılabilir. (Genel bir IP 'nin kısa ömürlü bağlantı noktaları, ilgili arka uç havuzuyla ilişkili tüm VM 'Ler ile paylaşıldığından senaryolar aksine.) Genel IP adreslerinin ek maliyeti ve çok sayıda ayrı IP adresini daha beyaz listeleyen olası etkileri gibi göz önünde bulundurmanız gereken bir denge vardır.
 
 >[!NOTE] 
 >Bu seçenek Web çalışanı rolleri için kullanılamaz.

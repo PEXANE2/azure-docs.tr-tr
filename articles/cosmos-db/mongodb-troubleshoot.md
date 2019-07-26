@@ -26,7 +26,7 @@ Azure Cosmos DB'nin MongoDB API'si, Mongodb'nin kablo protokolünü (sorgu işle
 |---------------------|-------|--------------|-----------|
 | TooManyRequests     | 16500 | İstek birimleri tüketilen toplam sayısı, koleksiyon için sağlanan istek birimi hızdan daha ve kısıtlanan. | Azure portalından bir kapsayıcı veya bir dizi kapsayıcıları atanan aktarım hızını ölçeklendirmeyi düşünün veya işlemi yeniden deneyin. |
 | ExceededMemoryLimit | 16501 | Çok kiracılı bir hizmet, istemcinin bellek birimi işlemi geçti. | Destek ile iletişime geçin veya daha kısıtlayıcı bir sorgu ölçütü ile bir işlem kapsamını azaltın [Azure portalında](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Örnek: `db.getCollection('users').aggregate([{$match: {name: "Andy"}}, {$sort: {age: -1}}]))` |
-| MongoDB kablo sürüm sorunları | - | MongoDB sürücüleri eski sürümleri Azure Cosmos hesabın adını, bağlantı dizelerini algılayamaz. | Append *appName = @**accountName** @*  MongoDB bağlantı dizesi, Cosmos DB'nin API'sini sonunda burada ***accountName*** Cosmos DB hesabının adıdır . |
+| MongoDB kablo sürüm sorunları | - | MongoDB sürücüleri eski sürümleri Azure Cosmos hesabın adını, bağlantı dizelerini algılayamaz. | Append *appName = @**accountName**@* MongoDB bağlantı dizesi, Cosmos DB'nin API'sini sonunda burada ***accountName*** Cosmos DB hesabının adıdır . |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
