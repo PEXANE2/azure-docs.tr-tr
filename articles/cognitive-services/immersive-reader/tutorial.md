@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: ba00842200d8a896fa1ffaccad8826d1c3173462
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
-ms.translationtype: HT
+ms.openlocfilehash: 73f9ee597682cc995f3a2cc783abeee92bf11bd2
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/25/2019
-ms.locfileid: "68488816"
+ms.locfileid: "68501133"
 ---
 # <a name="tutorial-launch-the-immersive-reader-nodejs"></a>Öğretici: Tam Ekran Okuyucu’yu Başlatma (Node.js)
 
@@ -265,4 +265,4 @@ Varsayılan olarak, tam ekran okuyucu arabiriminin dili tarayıcının dil ayarl
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Modern Okuyucu SDK 'sını](https://github.com/Microsoft/immersive-reader-sdk) ve [tam ekran okuyucu SDK başvurusunu](./reference.md) keşfet
-* [GitHub](https://github.com/microsoft/immersive-reader-sdk/samples/advanced-csharp) 'daki kod örneklerini görüntüle
+* [GitHub](https://github.com/microsoft/immersive-reader-sdk/tree/master/samples/advanced-csharp) 'daki kod örneklerini görüntüle

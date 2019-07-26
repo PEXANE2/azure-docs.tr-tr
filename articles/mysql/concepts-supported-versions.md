@@ -1,46 +1,55 @@
 ---
-title: MySQL için Azure veritabanı'nda desteklenen sürümler
-description: MySQL için Azure veritabanı'nda desteklenen sürümlerini açıklar.
+title: MySQL için Azure veritabanı 'nda desteklenen sürümler
+description: MySQL için Azure veritabanı 'nda desteklenen sürümleri açıklar.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/13/2019
-ms.openlocfilehash: e7e81632b2be135fb74d375ab8a11f1b4b3ef39d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 7/25/2019
+ms.openlocfilehash: 3d4bab4558ebfd0f6031ef00a0b67bb0d5b61120
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60525927"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68501437"
 ---
-# <a name="supported-azure-database-for-mysql-server-versions"></a>MySQL server sürümleri için desteklenen Azure veritabanı
+# <a name="supported-azure-database-for-mysql-server-versions"></a>MySQL sunucu sürümleri için desteklenen Azure veritabanı
 
-MySQL için Azure veritabanı geliştirilen gelen [MySQL Community Edition](https://www.mysql.com/products/community/), Innodb altyapısı kullanarak.
+MySQL için Azure veritabanı, InnoDB altyapısı kullanılarak [MySQL Community Edition](https://www.mysql.com/products/community/)'dan geliştirilmiştir.
 
-MySQL X.Y.Z adlandırma şeması kullanır. X sürümle Y ikincil sürüm ve Z hata düzeltmesi sürümüdür. Düzen hakkında daha fazla bilgi için bkz: [MySQL belgeleri](https://dev.mysql.com/doc/refman/5.7/en/which-version.html).
-
-MySQL için Azure veritabanı şu anda aşağıdaki sürümlerini destekler:
-
-## <a name="mysql-version-56"></a>MySQL 5.6 sürümü
-
-Yayın hata düzeltmesi: 5.6.42
-
-Mysql'e başvuran [sürüm notları](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-42.html) geliştirmeleri ve MySQL 5.6.42 düzeltmeler hakkında daha fazla bilgi için.
-
-## <a name="mysql-version-57"></a>MySQL sürümü 5.7
-
-Yayın hata düzeltmesi: 5.7.24
-
-Mysql'e başvuran [sürüm notları](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-24.html) iyileştirmeler ve düzeltmeler hakkında bilgi için MySQL 5.7.24 içinde.
+MySQL, X. Y. Z adlandırma şemasını kullanır. X ana sürümdür, Y ise küçük sürümdür ve Z hata çözme sürümüdür. Düzen hakkında daha fazla bilgi için [MySQL belgelerine](https://dev.mysql.com/doc/refman/5.7/en/which-version.html)bakın.
 
 > [!NOTE]
-> Hizmeti, bir ağ geçidi sunucu örnekleri bağlantılarını yeniden yönlendirmek için kullanılır. Bağlantı kurulduktan sonra MySQL istemci değil, MySQL server örneğinde çalışan asıl sürümü ağ geçidi kümesindeki MySQL sürümünü gösterir. MySQL server örneğinin sürümü belirlemek için `SELECT VERSION();` MySQL isteminde komutu.
+> Hizmette, sunucu örneklerine bağlantıları yeniden yönlendirmek için bir ağ geçidi kullanılır. Bağlantı kurulduktan sonra MySQL istemcisi MySQL sunucusu Örneğinizde çalışan gerçek sürümü değil, ağ geçidinde belirlenen MySQL sürümünü görüntüler. MySQL sunucu örneğinizin sürümünü öğrenmek için MySQL komut isteminde `SELECT VERSION();` komutunu kullanın.
 
-## <a name="managing-updates-and-upgrades"></a>Yönetme güncelleştirmeler ve yükseltmeler
-Hata düzeltmesi sürüm güncelleştirmeleri için düzeltme eki uygulama, hizmet otomatik olarak yönetir. Örneğin, 5.7.20 için 5.7.21.  
+MySQL için Azure veritabanı şu anda aşağıdaki sürümleri desteklemektedir:
 
-Küçük ve büyük sürüm yükseltmeleri şu anda desteklenmiyor. Örneğin, MySQL 5.6 ' MySQL 5.7 için yükseltme desteklenmez. 5\.7 için 5.6 yükseltmek isterseniz, olması bir [döküm ve geri yükleme](./concepts-migrate-dump-restore.md) yeni altyapısı sürümü ile oluşturulmuş bir sunucu için.
+## <a name="mysql-version-56"></a>MySQL sürüm 5,6
+
+Hata çözme sürümü: 5.6.42
+
+MySQL 5.6.42 'teki geliştirmeler ve düzeltmeler hakkında daha fazla bilgi edinmek için MySQL [sürüm notlarına](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-42.html) bakın.
+
+## <a name="mysql-version-57"></a>MySQL sürüm 5,7
+
+Hata çözme sürümü: 5.7.24
+
+MySQL 5.7.24 'teki geliştirmeler ve düzeltmeler hakkında bilgi edinmek için MySQL [sürüm notlarına](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-24.html) bakın.
+
+## <a name="mysql-version-80"></a>MySQL sürüm 8,0
+
+> [!NOTE]
+> MySQL 8,0 şu anda önizleme aşamasındadır. Azure portal MySQL 8,0 ' i görmüyorsanız, dağıtım bölgenizde tamamlanmamış olabilir. 
+
+Hata çözme sürümü: 8.0.15
+
+MySQL 8.0.15 'teki geliştirmeler ve düzeltmeler hakkında bilgi edinmek için MySQL [sürüm notlarına](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-15.html) bakın.
+
+## <a name="managing-updates-and-upgrades"></a>Güncelleştirmeleri ve yükseltmeleri yönetme
+Hizmet, hata düzeltme sürümü güncelleştirmeleri için düzeltme eki uygulamayı otomatik olarak yönetir. Örneğin, 5.7.20 yükle to 5.7.21.  
+
+Şu anda, küçük ve büyük sürüm yükseltmeleri desteklenmez. Örneğin, MySQL 5,6 ' den MySQL 5,7 ' ye yükseltme desteklenmez. 5,6 ' den 5,7 ' ye yükseltmek istiyorsanız, bir dökümünü alın ve yeni altyapı sürümüyle oluşturulmuş bir sunucuya [geri yükleyin](./concepts-migrate-dump-restore.md) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kotalar ve sınırlamalar temel alarak belirli bir kaynak hakkında bilgi için **hizmet katmanı**, bkz: [hizmet katmanları](./concepts-pricing-tiers.md)
+**Hizmet katmanınıza**dayalı belirli kaynak kotaları ve sınırlamalar hakkında bilgi için bkz. [hizmet katmanları](./concepts-pricing-tiers.md)

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/17/2019
 ms.author: mlearned
-ms.openlocfilehash: 4ba9840d745995fdf7b8b14889a0c021917f0ec3
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 72f34d9711e1ba4658288bfdeb847632d32d0fcf
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278162"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68478336"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Önizleme-Azure Kubernetes Service (AKS) ' de bir küme için birden çok düğüm havuzu oluşturma ve yönetme
 
@@ -145,7 +145,9 @@ VirtualMachineScaleSets  1        110        nodepool1   1.13.5                 
 
 ## <a name="upgrade-a-node-pool"></a>Düğüm havuzunu yükseltme
 
-Aks kümeniz ilk adımda oluşturulduysa, bir `--kubernetes-version` *1.13.5* belirtildi. *Mynodepool* , Kubernetes *1.13.7*'e yükseltelim. Aşağıdaki örnekte gösterildiği gibi, düğüm havuzunu yükseltmek için [az aks düğüm havuzu yükseltme][az-aks-nodepool-upgrade] komutunu kullanın:
+Aks kümeniz ilk adımda oluşturulduysa, bir `--kubernetes-version` *1.13.5* belirtildi. Bu, Kubernetes sürümünü hem denetim düzlemi hem de ilk düğüm havuzu için ayarlar. Denetim düzlemi ve düğüm havuzunun Kubernetes sürümünü yükseltmek için farklı komutlar vardır. Komut, tek bir düğüm havuzunu yükseltmek için kullanıldığında, `az aks nodepool upgrade` denetim düzlemini yükseltmek için kullanılır. `az aks upgrade`
+
+*Mynodepool* , Kubernetes *1.13.7*'e yükseltelim. Aşağıdaki örnekte gösterildiği gibi, düğüm havuzunu yükseltmek için [az aks düğüm havuzu yükseltme][az-aks-nodepool-upgrade] komutunu kullanın:
 
 ```azurecli-interactive
 az aks nodepool upgrade \
@@ -155,6 +157,9 @@ az aks nodepool upgrade \
     --kubernetes-version 1.13.7 \
     --no-wait
 ```
+
+> [!Tip]
+> Denetim düzlemi 'ni *1.13.7*' e yükseltmek için öğesini `az aks upgrade -k 1.13.7`çalıştırın.
 
 [Az aks düğüm havuzu listesi][az-aks-nodepool-list] komutunu kullanarak düğüm havuzlarınızın durumunu yeniden listeleyin. Aşağıdaki örnek, *mynodepool* 'in *yükseltme* durumunda olduğunu *gösterir:*
 
@@ -170,6 +175,15 @@ VirtualMachineScaleSets  1        110        nodepool1   1.13.5                 
 Düğümlerin belirtilen sürüme yükseltilmesi birkaç dakika sürer.
 
 En iyi uygulama olarak, bir AKS kümesindeki tüm düğüm havuzlarını aynı Kubernetes sürümüne yükseltmeniz gerekir. Tek tek düğüm havuzlarını yükseltebilme özelliği, uygulama çalışma süresini korumak için sıralı yükseltme gerçekleştirmenize ve düğüm havuzları arasında dizin zamanlamauygulamanıza olanak tanır.
+
+> [!NOTE]
+> Kubernetes, standart [anlamsal sürüm](https://semver.org/) oluşturma düzenini kullanır. Sürüm numarası *x. y. z*olarak ifade edilir; burada *x* ana sürümdür, *y* ise ikincil sürümdür ve *z* , yama sürümüdür. Örneğin, sürüm *1.12.6*' de, 1 ana sürümdür, 12 ise ikincil sürümdür ve 6 Düzeltme Eki sürümüdür. Denetim düzleminin Kubernetes sürümü ve ilk düğüm havuzu küme oluşturma sırasında ayarlanır. Tüm ek düğüm havuzlarının, kümeye eklendiğinde Kubernetes sürümü ayarlanmış olmalıdır. Kubernetes sürümleri, düğüm havuzlarının yanı sıra düğüm havuzu ile denetim düzlemi arasında farklılık gösterebilir, ancak aşağıdaki kısıtlamalar geçerlidir:
+> 
+> * Düğüm havuzu sürümü, denetim düzlemi ile aynı ana sürüme sahip olmalıdır.
+> * Düğüm havuzu sürümü, denetim düzlemi sürümünden düşük bir alt sürüm olabilir.
+> * Düğüm havuzu sürümü, diğer iki kısıtlama izlendiği sürece herhangi bir yama sürümü olabilir.
+> 
+> Denetim düzleminin Kubernetes sürümünü yükseltmek için kullanın `az aks upgrade`. Kümenizin yalnızca bir düğüm havuzu varsa, `az aks upgrade` bu komut düğüm havuzunun Kubernetes sürümünü de yükseltir.
 
 ## <a name="scale-a-node-pool"></a>Düğüm havuzunu ölçeklendirme
 

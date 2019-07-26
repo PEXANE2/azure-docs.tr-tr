@@ -1,7 +1,6 @@
 ---
 title: Ne Azure Backup Sunucusu yedekleyebileceğiniz
 description: Bu makalede, Azure Backup Sunucusu koruduğu tüm iş yükleri, veri türleri ve yüklemelerin listelendiği bir destek matrisi sunulmaktadır.
-services: backup
 author: rayne-wiselman
 ms.service: backup
 keywords: ''
@@ -9,12 +8,12 @@ ms.date: 11/13/2018
 ms.topic: conceptual
 ms.author: raynew
 manager: carmonm
-ms.openlocfilehash: ad6d1b067e396b8f46578484d3c960372e51176c
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 2e8004b07542efed3ddc2b5a390cfb12fd48cc1b
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234769"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68465047"
 ---
 # <a name="azure-backup-server-protection-matrix"></a>Azure Backup Sunucusu koruma matrisi
 

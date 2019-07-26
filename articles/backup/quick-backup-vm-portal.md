@@ -1,7 +1,6 @@
 ---
 title: Azure Hızlı Başlangıcı - Azure portalla VM yedekleme
 description: Azure portalıyla sanal makinelerinizi nasıl yedekleyeceğinizi öğrenin
-services: backup
 author: saurabhsensharma
 manager: shivamg
 tags: azure-resource-manager, virtual-machine-backup
@@ -11,12 +10,12 @@ ms.topic: quickstart
 ms.date: 7/17/2018
 ms.author: saurse
 ms.custom: mvc
-ms.openlocfilehash: d167ed012e3f0e45988c88b64040208d87623518
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 926859ffbeaf429df60e8f478e15e41ca70e23a6
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60781349"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467189"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>Azure'daki bir sanal makineyi yedekleme
 Azure yedekleri Azure portalı üzerinden oluşturulabilir. Bu yöntem, Azure yedeklerini ve tüm ilgili kaynakları oluşturup yapılandırmaya yönelik tarayıcı tabanlı bir kullanıcı arabirimi sağlar. Düzenli aralıklarla yedekleme yaparak verilerinizi koruyabilirsiniz. Azure Backup, coğrafi olarak yedekli kurtarma kasalarında saklanabilecek kurtarma noktaları oluşturur. Bu makalede Azure portalıyla bir sanal makinenin nasıl yedekleneceği anlatılmaktadır. 
@@ -25,7 +24,7 @@ Bu hızlı başlangıç belgesi var olan bir Azure VM'de yedeklemeyi etkinleşti
 
 ## <a name="log-in-to-azure"></a>Azure'da oturum açma
 
-https://portal.azure.com adresinden Azure portalında oturum açın.
+[https://portal.azure.com](https://portal.azure.com ) adresinden Azure portalında oturum açın.
 
 ## <a name="select-a-vm-to-back-up"></a>Yedeklenecek sanal makineyi seçme
 Kurtarma Hizmetleri Kasasına basit bir zamanlanmış günlük yedekleme oluşturma. 
@@ -79,7 +78,7 @@ Sanal makine verilerini nasıl geri yükleyeceğinizi açıklayan bir Yedekleme 
 
 3. Açılan menüden **Yedekleme Verilerini Sil**'i seçin.
 
-4. **Yedekleme öğesinin adını yazın** iletişim kutusuna sanal makinenizin adını girin. Örneğin: *myVM*. Seçin **yedeklemeyi Durdur**.
+4. **Yedekleme öğesinin adını yazın** iletişim kutusuna sanal makinenizin adını girin. Örneğin: *myVM*. **Yedeklemeyi Durdur**' u seçin.
 
     Sanal makine yedekleme işlemi durdurulduktan ve kurtarma noktaları kaldırıldıktan sonra kaynak grubunu silebilirsiniz. Var olan bir sanal makineyi kullandıysanız kaynak grubunu ve sanal makineyi bırakmak isteyebilirsiniz.
 

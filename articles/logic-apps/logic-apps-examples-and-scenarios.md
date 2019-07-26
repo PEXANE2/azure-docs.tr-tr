@@ -10,16 +10,16 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: e06311bc-29eb-49df-9273-1f05bbb2395c
 ms.date: 01/31/2018
-ms.openlocfilehash: 6d9a2929d7b8b1687b602093d0e9de35508dbd8c
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 95eca4c7f3e8170f6559799fc4c706e95df70e9e
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273081"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385514"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Azure Logic Apps için genel senaryolar, örnekler, öğreticiler ve izlenecek yollar
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) , şirket içi SQL Server veya SAP 'den Microsoft bilişsel hizmetler 'e kadar çeşitli [kullanıma açık bağlayıcılar](../connectors/apis-list.md)sunarak farklı Hizmetleri düzenlemenize ve tümleştirmenize yardımcı olur. Logic Apps hizmeti "sunucusuz" olduğundan ölçek veya örnekler hakkında endişelenmeniz gerekmez. Yapmanız gereken tek şey, bir tetikleyiciyle iş akışını ve iş akışının gerçekleştirdiği eylemleri tanımlar. Temel alınan platform ölçek, kullanılabilirlik ve performansı işler. Logic Apps, özellikle birden fazla sistem genelinde birden çok eylemi koordine etmeniz gereken kullanım durumları ve senaryolar için yararlıdır.
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) , şirket içi SQL Server veya SAP 'den Azure bilişsel hizmetler 'e kadar çeşitli [kullanıma açık bağlayıcılar](../connectors/apis-list.md)sunarak farklı Hizmetleri düzenlemenize ve tümleştirmenize yardımcı olur. Logic Apps hizmeti "sunucusuz" olduğundan ölçek veya örnekler hakkında endişelenmeniz gerekmez. Yapmanız gereken tek şey, bir tetikleyiciyle iş akışını ve iş akışının gerçekleştirdiği eylemleri tanımlar. Temel alınan platform ölçek, kullanılabilirlik ve performansı işler. Logic Apps, özellikle birden fazla sistem genelinde birden çok eylemi koordine etmeniz gereken kullanım durumları ve senaryolar için yararlıdır.
 
 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) desteklediği birçok model ve özellik hakkında daha fazla bilgi edinmenize yardımcı olmak için, yaygın örnekler ve senaryolar aşağıda verilmiştir.
 
@@ -80,7 +80,7 @@ Visual Studio, Azure DevOps veya diğer kaynak denetimleri ve otomatikleştirilm
 
 * [Visual Studio ile mantıksal uygulamalar oluşturma ve dağıtma](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
 * [Mevcut Logic Apps için izleme, günlüğe kaydetme ve uyarıları açma](../logic-apps/logic-apps-monitor-your-logic-apps.md)
-* [Otomatik dağıtım şablonu oluşturma](../logic-apps/logic-apps-create-deploy-template.md)
+* [Mantıksal uygulama dağıtımını otomatikleştirme](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
 
 ## <a name="content-types-conversions-and-transformations-within-a-run"></a>Bir çalıştırma içindeki içerik türleri, dönüştürmeler ve dönüşümler
 
@@ -98,7 +98,7 @@ Logic Apps Ayrıca Azure Işlevleri, Azure API Management, Azure uygulama hizmet
 * [Logic Apps 'ten Azure Işlevleri çağırma](../logic-apps/logic-apps-azure-functions.md)
 * [Öğretici: Azure Işlevleri ile mantıksal uygulamaları tetikleme](../logic-apps/logic-apps-scenario-function-sb-trigger.md)
 * [Öğretici: Azure Event Grid ve Logic Apps ile sanal makine değişikliklerini izleme](../event-grid/monitor-virtual-machine-changes-event-grid-logic-app.md)
-* [Öğretici: Twitter Post yaklaşımını çözümlemek için Azure Logic Apps ve Microsoft bilişsel hizmetler ile tümleşen bir işlev oluşturun](../azure-functions/functions-twitter-email.md)
+* [Öğretici: Twitter Post yaklaşımını çözümlemek için Azure Logic Apps ve Azure bilişsel hizmetler ile tümleşen bir işlev oluşturun](../azure-functions/functions-twitter-email.md)
 * [Öğretici: IoT Hub 'ınızı ve posta kutunuzu bağlama Azure Logic Apps IoT uzaktan izleme ve bildirimler](../iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps.md)
 * [Blog: Mantıksal uygulamalardan SOAP uç noktalarını çağırma](https://blogs.msdn.microsoft.com/logicapps/2016/04/07/using-soap-services-with-logic-apps/)
 

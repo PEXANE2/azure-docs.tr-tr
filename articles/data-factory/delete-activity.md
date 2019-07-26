@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/25/2019
-ms.openlocfilehash: 606cab09debf760d1b101390b2a19a1a090bb4c3
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: e749138cd28f7bd8faf10ca1087a73f323533a25
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234556"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335656"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Azure Data Factory etkinliği silme
 
@@ -86,7 +86,7 @@ Silme etkinliğini kullanmaya yönelik bazı öneriler aşağıda verilmiştir:
 | maxConcurrentConnections | Klasör veya dosyaları silmek için aynı anda depolama deposuna bağlanacak bağlantı sayısı.   |  Hayır. Varsayılan, `1` değeridir. |
 | enablelogging | Silinmiş olan klasörü veya dosya adlarını kaydetmeniz gerekip gerekmediğini belirtir. Doğru ise, günlük dosyasını okuyarak silme etkinliğinin davranışlarını izleyebilmeniz için günlük dosyasını kaydetmek üzere bir depolama hesabı sağlamanız gerekir. | Hayır |
 | logStorageSettings | Yalnızca EnableLogging = true olduğunda geçerlidir.<br/><br/>Silme etkinliği tarafından silinmiş klasörü veya dosya adlarını içeren günlük dosyasını kaydetmek istediğiniz yerde belirtilebileceği bir depolama özellikleri grubu. | Hayır |
-| linkedServiceName | Yalnızca EnableLogging = true olduğunda geçerlidir.<br/><br/>Silme etkinliği tarafından silinmiş klasörü veya dosya adlarını içeren günlük dosyasını depolamak için [Azure depolama](connector-azure-blob-storage.md#linked-service-properties)'nın bağlı hizmeti, [Azure Data Lake Storage 1.](connector-azure-data-lake-store.md#linked-service-properties)veya [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md#linked-service-properties) . | Hayır |
+| linkedServiceName | Yalnızca EnableLogging = true olduğunda geçerlidir.<br/><br/>Silme etkinliği tarafından silinmiş klasörü veya dosya adlarını içeren günlük dosyasını depolamak için [Azure depolama](connector-azure-blob-storage.md#linked-service-properties)'nın bağlı hizmeti, [Azure Data Lake Storage 1.](connector-azure-data-lake-store.md#linked-service-properties)veya [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md#linked-service-properties) . Dosya silmek için silme etkinliği tarafından kullanılan Integration Runtime aynı türde bir yapılandırılmalıdır. | Hayır |
 | path | Yalnızca EnableLogging = true olduğunda geçerlidir.<br/><br/>Günlük dosyasını depolama hesabınıza kaydetme yolu. Bir yol sağlamazsanız, hizmet sizin için bir kapsayıcı oluşturur. | Hayır |
 
 ## <a name="monitoring"></a>İzleme
@@ -117,10 +117,10 @@ Silme etkinliğinin sonuçlarını görebileceğiniz ve izleyebileceğiniz iki y
 
 | Ad | Category | Durum | Hata |
 |:--- |:--- |:--- |:--- |
-| Test1/yyy. JSON | Dosya | Silme |  |
-| Test2/hello789. txt | Dosya | Silme |  |
-| Test2/test3/hello000. txt | Dosya | Silme |  |
-| test2/test3/zzz.json | Dosya | Silme |  |
+| Test1/yyy. JSON | Dosya | Silinmiş |  |
+| Test2/hello789. txt | Dosya | Silinmiş |  |
+| Test2/test3/hello000. txt | Dosya | Silinmiş |  |
+| test2/test3/zzz.json | Dosya | Silinmiş |  |
 
 ## <a name="examples-of-using-the-delete-activity"></a>Delete etkinliğini kullanma örnekleri
 
@@ -143,7 +143,7 @@ Artık, klasörü veya dosyaları veri kümesinden ve silme etkinliğinden farkl
 
 Bölümlenmiş klasör veya dosyaları düzenli aralıklarla temizlemek için bir işlem hattı oluşturabilirsiniz.  Örneğin, klasör yapısı şuna benzer: `/mycontainer/2018/12/14/*.csv`.  Her bir işlem hattı çalıştırmasında hangi klasör veya dosyaların silineceğini belirlemek için, zamanlama tetikleyicisinden ADF sistem değişkeninden yararlanabilirsiniz. 
 
-#### <a name="sample-pipeline"></a>Örnek işlem hattı
+#### <a name="sample-pipeline"></a>Örnek ardışık düzen
 
 ```json
 {
@@ -263,7 +263,7 @@ Bölümlenmiş klasör veya dosyaları düzenli aralıklarla temizlemek için bi
 
 Dosya özniteliği filtresinden yararlanarak eski veya süre dolma dosyalarını temizlemek için bir işlem hattı oluşturabilirsiniz: Veri kümesinde "LastModified".  
 
-#### <a name="sample-pipeline"></a>Örnek işlem hattı
+#### <a name="sample-pipeline"></a>Örnek ardışık düzen
 
 ```json
 {
@@ -328,7 +328,7 @@ Bir dosyayı kopyalamak için kopyalama etkinliği kullanarak bir dosyayı taş�
 > [!NOTE]
 > Tüm klasörü yalnızca bir klasör yolu içeren bir veri kümesi tanımlayarak ve sonra bir kopyalama etkinliği ve bir klasörü temsil eden aynı veri kümesine başvurmak için silme etkinliği kullanarak taşımak istiyorsanız, çok dikkatli olmanız gerekir. Bunun nedeni, kopyalama işlemi ve silme işlemi arasında klasöre ulaşan yeni dosyalar OLMADıĞıNDAN emin olmanızı sağlar.  Kopyalama etkinliğinizi kopyalama işini tamamlamış ancak silme etkinliği henüz tamamlanmadığında, klasörde klasöre ulaşan yeni dosyalar varsa, DELETE etkinliğinin destinati kopyalanmamış olan bu yeni gelen dosyayı silmesi mümkündür. henüz tüm klasörü silerek. 
 
-#### <a name="sample-pipeline"></a>Örnek işlem hattı
+#### <a name="sample-pipeline"></a>Örnek ardışık düzen
 
 ```json
 {

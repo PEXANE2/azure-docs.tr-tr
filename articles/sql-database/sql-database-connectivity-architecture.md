@@ -12,12 +12,12 @@ ms.author: rohitna
 ms.reviewer: carlrab, vanto
 manager: craigg
 ms.date: 07/02/2019
-ms.openlocfilehash: 951481a7dd7d7a9cfd8c88f2cd8bbcaaec4df685
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 9dfc22be45b68ba4ff59d88810435db35bafc8b6
+ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68320638"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494961"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Azure SQL bağlantı mimarisi
 
@@ -27,7 +27,7 @@ Bu makalede, Azure SQL veritabanı ve SQL veri ambarı bağlantı mimarisinin ya
 
 Aşağıdaki diyagramda Azure SQL veritabanı bağlantı mimarisine yönelik yüksek düzeyde bir genel bakış sunulmaktadır.
 
-![Mimariye genel bakış](./media/sql-database-connectivity-architecture/connectivity-overview.png)
+![mimariye genel bakış](./media/sql-database-connectivity-architecture/connectivity-overview.png)
 
 Aşağıdaki adımlarda, bir bağlantının Azure SQL veritabanına nasıl kurulduğu açıklanır:
 
@@ -47,13 +47,13 @@ Azure SQL veritabanı, SQL veritabanı sunucusunun bağlantı ilkesi ayarı içi
 
 Azure içinden bağlanıyorsanız bağlantılarınız, varsayılan `Redirect` olarak bir bağlantı ilkesine sahiptir. Bir ilke `Redirect` , TCP oturumu Azure SQL veritabanı 'na kurulduktan sonra, istemci oturumu doğru veritabanı kümesine, Azure SQL veritabanı ağ geçidindeki hedef sanal IP 'nin içi. Bundan sonra, Azure SQL veritabanı ağ geçidini atlayarak sonraki tüm paketler doğrudan kümeye akar. Aşağıdaki diyagramda bu trafik akışı gösterilmektedir.
 
-![Mimariye genel bakış](./media/sql-database-connectivity-architecture/connectivity-azure.png)
+![mimariye genel bakış](./media/sql-database-connectivity-architecture/connectivity-azure.png)
 
 ## <a name="connectivity-from-outside-of-azure"></a>Azure dışından bağlantı
 
 Azure dışından bağlanıyorsanız, bağlantılarınızın varsayılan `Proxy` olarak bir bağlantı ilkesi vardır. Bir ilke `Proxy` , TCP oturumunun Azure SQL veritabanı ağ geçidi aracılığıyla ve sonraki tüm paketlerin ağ geçidiyle akış üzerinden kurulduğu anlamına gelir. Aşağıdaki diyagramda bu trafik akışı gösterilmektedir.
 
-![Mimariye genel bakış](./media/sql-database-connectivity-architecture/connectivity-onprem.png)
+![mimariye genel bakış](./media/sql-database-connectivity-architecture/connectivity-onprem.png)
 
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>Azure SQL veritabanı ağ geçidi IP adresleri
 
@@ -72,12 +72,12 @@ Bundan sonra, her bölgeye daha fazla ağ geçidi ekleyeceğiz ve aşağıdaki t
 | Orta Kanada       | 40.85.224.249      |                 | |
 | Doğu Kanada          | 40.86.226.166      |                 | |
 | Orta ABD           | 13.67.215.62, 52.182.137.15 | 23.99.160.139 | 1 Eylül 2019 ' den sonra bağlantı yok |
-| Çin Doğu 1         | 139.219.130.35     |                 | |
+| Çin Doğu           | 139.219.130.35     |                 | |
 | Çin Doğu 2         | 40.73.82.1         |                 | |
-| Çin Kuzey 1        | 139.219.15.17      |                 | |
+| Çin Kuzey          | 139.219.15.17      |                 | |
 | Çin Kuzey 2        | 40.73.50.0         |                 | |
 | Doğu Asya            | 191.234.2.139, 52.175.33.150 |       | |
-| Doğu ABD 1            | 40.121.158.30, 40.79.153.12 | 191.238.6.43 | 1 Eylül 2019 ' den sonra bağlantı yok |
+| East US              | 40.121.158.30, 40.79.153.12 | 191.238.6.43 | 1 Eylül 2019 ' den sonra bağlantı yok |
 | Doğu ABD 2            | 40.79.84.180, 52.177.185.181, 52.167.104.0 | 191.239.224.107    | 1 Eylül 2019 ' den sonra bağlantı yok |
 | Fransa Orta       | 40.79.137.0, 40.79.129.1 |           | |
 | Almanya Orta      | 51.4.144.100       |                 | |
@@ -100,8 +100,8 @@ Bundan sonra, her bölgeye daha fazla ağ geçidi ekleyeceğiz ve aşağıdaki t
 | Birleşik Krallık Güney             | 51.140.184.11      |                 | |
 | Birleşik Krallık Batı              | 51.141.8.11        |                 | |
 | Batı Orta ABD      | 13.78.145.25       |                 | |
-| Batı Avrupa          | 191.237.232.75, 40.68.37.158 |       | |
-| Batı ABD 1            | 23.99.34.75, 104.42.238.205 |        | |
+| Batı Avrupa          | 40.68.37.158       | 191.237.232.75  | 1 Eylül 2019 ' den sonra bağlantı yok |
+| Batı ABD              | 104.42.238.205     | 23.99.34.75     | 1 Eylül 2019 ' den sonra bağlantı yok |
 | Batı ABD 2            | 13.66.226.202      |                 | |
 |                      |                    |                 | |
 

@@ -1,6 +1,6 @@
 ---
-title: App Service ortamı giden trafiği - Azure kilitleme
-description: Azure giden trafiğin güvenliğini sağlamak için güvenlik duvarı ile tümleştirmeyi açıklamaktadır
+title: Giden trafik App Service Ortamı kilitleme-Azure
+description: Giden trafiğin güvenliğini sağlamak için Azure Güvenlik Duvarı ile nasıl tümleştirileceğini açıklar
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -11,100 +11,100 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/11/2019
+ms.date: 07/25/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 6dae2d40650b9fdb8df2d3bdb74b2df78639dc11
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b57ac43b02e8630528e7ed3f77f51befa52ed45f
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67058054"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68498469"
 ---
-# <a name="locking-down-an-app-service-environment"></a>App Service ortamı kilitleme
+# <a name="locking-down-an-app-service-environment"></a>App Service Ortamı kilitleme
 
-App Service ortamı (ASE) birkaç şekilde çalışması için erişim gerektiren bir Dış bağımlılıklara sahiptir. ASE, müşterinin Azure sanal ağı (VNet) bulunur. Müşteriler, kendi vnet'ten tüm çıkış kilitlemek istediğiniz müşteriler için bir sorun olduğunu ASE bağımlılık trafiğine izin vermelidir.
+App Service Ortamı (Ao), düzgün bir şekilde çalışması için erişim gerektiren sayıda dış bağımlılıklara sahiptir. ASE, müşteri Azure sanal ağı 'nda (VNet) bulunur. Müşteriler, VNet 'ten tüm çıkışları kilitlemek isteyen müşteriler için bir sorun olan ASE bağımlılık trafiğine izin vermelidir.
 
-Bir ASE sahip gelen bağımlılıklar vardır. Gelen yönetim trafiğinin bir güvenlik duvarı cihazı üzerinden gönderilemez. Bu trafiğe ait kaynak adresleri bilinen ve yayınlanır [App Service ortamı yönetim adresleri](https://docs.microsoft.com/azure/app-service/environment/management-addresses) belge. Gelen trafiği güvenli hale getirmek için bu bilgileri ile ağ güvenlik grubu kuralları oluşturabilirsiniz.
+ATıCı 'nin sahip olduğu birçok gelen bağımlılıklar vardır. Gelen yönetim trafiği bir güvenlik duvarı cihazından gönderilemez. Bu trafiğin kaynak adresleri bilinmektedir ve [App Service ortamı yönetim adresleri](https://docs.microsoft.com/azure/app-service/environment/management-addresses) belgesinde yayımlanır. Gelen trafiğin güvenliğini sağlamak için bu bilgilerle ağ güvenlik grubu kuralları oluşturabilirsiniz.
 
-ASE giden bağımlılık neredeyse tamamen statik adresleri arkasına olmayan FQDN ile tanımlanır. Statik adresler olmaması anlamına gelir ağ güvenlik grupları (Nsg'ler) ASE giden trafiği kilitlemek için kullanılamaz. Adresleri sıklıkta biri olamaz geçerli çözünürlüğüne göre kurallarını ayarlama ve Nsg'ler oluşturma kullanan, değiştirin. 
+ASE giden bağımlılıkları, bunların arkasında statik adresler bulunmayan FQDN 'Ler ile neredeyse tamamen tanımlıdır. Statik adreslerin olmaması, ağ güvenlik gruplarının (NSG 'ler) bir ASE 'den giden trafiği kilitlemek için kullanılamayacağı anlamına gelir. Adresler, geçerli çözünürlüğe göre kuralları ayarlayamayacak ve bunları NSG 'ler oluşturmak için kullanabileceğiniz kadar sık değişir. 
 
-Etki alanı adlarını temel alarak giden trafiği denetleyen bir güvenlik duvarı cihazın kullanımda giden adresleri güvenliğini sağlamak için çözüm arasındadır. Azure güvenlik duvarı hedef FQDN'sini üzerinde giden HTTP ve HTTPS trafiğini kısıtlayabilirsiniz.  
+Giden adreslerin güvenliğini sağlamaya yönelik çözüm, etki alanı adlarına göre giden trafiği denetleyesağlayan bir güvenlik duvarı cihazının kullanılmasına yol açabilir. Azure Güvenlik Duvarı, giden HTTP ve HTTPS trafiğini hedefin FQDN 'sine göre kısıtlayabilir.  
 
-## <a name="system-architecture"></a>Sistem Mimarisi
+## <a name="system-architecture"></a>Sistem mimarisi
 
-Bir güvenlik duvarı cihazı üzerinden giden giden trafik ile ASE dağıtma, ASE alt yollara değiştirilmesi gerekir. Yollar bir IP düzeyinde çalışır. Yollarınızı belirlerken dikkatli emin değilseniz, başka bir adresten kaynak TCP yanıt trafiğini zorlayabilirsiniz. Asimetrik yönlendirme adı verilir ve TCP çalışmamasına neden olur.
+Bir güvenlik duvarı cihazından giden trafik ile bir AKEN dağıtmak, AKEN alt ağında yolların değiştirilmesini gerektirir. Rotalar bir IP düzeyinde çalışır. Rotalarınızı tanımlamaya özen yoksa, TCP yanıt trafiğini başka bir adresten kaynağa zorlayabilirsiniz. Bu, asimetrik yönlendirme olarak adlandırılır ve TCP 'yi bozacaktır.
 
-ASE gelen trafiği geri gelen trafik aynı şekilde yanıt verebilir böylece tanımlı yönlendirmeler olması gerekir. Bu gelen yönetim istekleri için geçerlidir ve gelen uygulama istekleri için geçerlidir.
+ATıCı 'e gelen trafiğin trafikle aynı şekilde yanıt vermesi için tanımlanan yollar olmalıdır. Bu, gelen yönetim istekleri için geçerlidir ve gelen uygulama istekleri için geçerlidir.
 
-Bir ASE gelen ve giden trafiği tarafından aşağıdaki kurallara uymanız gerekir
+Ao 'dan gelen ve giden trafik aşağıdaki kurallara göre uymalıdır
 
-* Azure SQL, depolama ve olay hub'ı trafiği bir güvenlik duvarı cihaz kullanımıyla desteklenmez. Bu trafik, doğrudan bu hizmetlere gönderilmelidir. Gerçekleşen yapmak için bu üç Hizmetleri için hizmet uç noktası yapılandırmak için yoludur. 
-* Rota tablosu kuralları gelen yönetim trafiğinin geri nereden geldiğini gönderen tanımlanmalıdır.
-* Rota tablosu kuralları geri nereden geldiğini gelen uygulama trafiğini gönderdiği tanımlanmalıdır. 
-* ASE bırakarak tüm trafiği, güvenlik duvarı cihazınıza bir rota tablosu kuralla gönderilebilir.
+* Azure SQL, depolama ve Olay Hub 'ına giden trafik, bir güvenlik duvarı cihazının kullanımıyla desteklenmez. Bu trafiğin doğrudan bu hizmetlere gönderilmesi gerekir. Bunu yapmanın yolu, bu üç hizmet için hizmet uç noktalarını yapılandırmaktır. 
+* Gelen yönetim trafiğini geldiği yerden geri gönderen yol tablosu kuralları tanımlanmalıdır.
+* Gelen uygulama trafiğini geldiği yerden geri gönderen yol tablosu kuralları tanımlanmalıdır. 
+* Ao 'dan çıkan diğer tüm trafik, bir yol tablosu kuralıyla güvenlik duvarı cihazınıza gönderilebilir.
 
-![ASE ile Azure güvenlik duvarı bağlantı akışı][5]
+![Azure Güvenlik Duvarı bağlantı akışı ile aşırı][5]
 
-## <a name="configuring-azure-firewall-with-your-ase"></a>Azure güvenlik duvarı ile ASE'nizi yapılandırma 
+## <a name="configuring-azure-firewall-with-your-ase"></a>Azure Güvenlik duvarını AŞIRLE yapılandırma 
 
-Azure güvenlik duvarı ile mevcut gidenler çıkış kilitlemek için adımlar şunlardır:
+Azure Güvenlik Duvarı ile mevcut Ao 'ınızdan çıkış kilitlemeyi kilitleme adımları şunlardır:
 
-1. ASE alt ağınız üzerindeki hizmet uç noktalarını SQL, depolama ve olay hub'ı etkinleştirin. Bunu yapmak için ağ portalına gidin > alt ağlar ve select Microsoft.EventHub, Microsoft.SQL ve hizmet uç noktaları açılır listeden Microsoft.Storage. Hizmet uç noktaları Azure SQL'e etkin olduğunda, uygulamalarınızı sahip herhangi bir Azure SQL bağımlılığın de hizmet uç noktaları ile yapılandırılması gerekir. 
+1. Hizmet uç noktalarını, AI alt ağınızda SQL, depolama ve Olay Hub 'ına etkinleştirin. Bunu yapmak için, ağ Portalı > alt ağları ' na gidin ve hizmet uç noktaları açılan menüsünde Microsoft. EventHub, Microsoft. SQL ve Microsoft. Storage ' ı seçin. Azure SQL için etkin hizmet uç noktaları varsa, uygulamalarınızın sahip olduğu tüm Azure SQL bağımlılıkları da hizmet uç noktaları ile yapılandırılmalıdır. 
 
-   ![Hizmet uç noktaları seçin][2]
+   ![hizmet uç noktalarını seçin][2]
   
-1. Vnet'e ASE'nizi bulunduğu AzureFirewallSubnet adlı bir alt ağ oluşturun. Bölümündeki yönergeleri izleyin [Azure güvenlik duvarınızın belgelerine](https://docs.microsoft.com/azure/firewall/) , Azure güvenlik duvarı oluşturun.
-1. Azure güvenlik duvarı arabiriminden > kuralları > uygulama kural koleksiyonu, select Ekle uygulama kuralı koleksiyonu. Öncelik, bir ad sağlayın ve izin ayarlanmalıdır. FQDN etiketler bölümünde, bir ad girin, kaynak adresleri kümesine * App Service ortamı FQDN etiketi ve Windows Update seçin. 
+1. ASE 'nizin bulunduğu VNet 'te AzureFirewallSubnet adlı bir alt ağ oluşturun. Azure Güvenlik duvarını oluşturmak için [Azure Güvenlik Duvarı belgelerindeki](https://docs.microsoft.com/azure/firewall/) yönergeleri izleyin.
+1. Azure Güvenlik Duvarı Kullanıcı arabirimi > kuralları > uygulama kuralı koleksiyonu ' ndan uygulama kuralı koleksiyonu Ekle ' yi seçin. Ad, öncelik ve Izin ver ayarla ' yı belirtin. FQDN etiketleri bölümünde bir ad belirtin, kaynak adreslerini * olarak ayarlayın ve App Service Ortamı FQDN etiketini ve Windows Update seçin. 
    
-   ![Uygulama Kuralı Ekle][1]
+   ![Uygulama kuralı ekle][1]
    
-1. Azure güvenlik duvarı arabiriminden > kuralları > Ağ kural koleksiyonu, Ekle ağ kuralı koleksiyonu seçin. Öncelikli bir ad sağlayın ve izin ayarlanmalıdır. Kuralları bölümünde bir ad belirtin, seçin **herhangi**ayarlayın * adreslere, kaynak ve hedef ve bağlantı noktası 123 için ayarlayın. Bu kural, sistem saati eşitleme NTP kullanarak gerçekleştirmek sağlar. Başka bir kural, sistem sorunları önceliklendirme yardımcı olmak için aynı şekilde 12000 numaralı bağlantı noktasına oluşturun.
+1. Azure Güvenlik Duvarı Kullanıcı arabirimi > kuralları > Ağ kuralı koleksiyonu ' ndan ağ kuralı koleksiyonu Ekle ' yi seçin. Bir ad, öncelik ve set Izin ver belirtin. Kurallar bölümünde bir ad belirtin, **birini**seçin, * öğesini kaynak ve hedef adresler olarak ayarlayın ve bağlantı noktalarını 123 olarak ayarlayın. Bu kural, sistemin NTP kullanarak saat eşitlemesi gerçekleştirmesini sağlar. Herhangi bir sistem sorununu değerlendirmenize yardımcı olmak için bağlantı noktası 12000 ile aynı şekilde başka bir kural oluşturun.
 
-   ![NTP ağ kuralı ekleyin][3]
+   ![NTP ağ kuralı ekle][3]
 
-1. Yönetim adresleri ile yönlendirme tablosu oluşturma [App Service ortamı yönetim adresleri]( https://docs.microsoft.com/azure/app-service/environment/management-addresses) bir sonraki atlama internet ile. Asimetrik yönlendirme sorunlarını önlemek için rota tablosu girdileri gerekir. Bir sonraki atlama internet IP adresi bağımlılıklarla aşağıda belirtilen IP adresi bağımlılıklar için yollar ekleyin. Bir sanal gereç yol yol tablonuz 0.0.0.0/0 sonraki atlama, Azure güvenlik duvarı özel IP adresi olması ile ekleyin. 
+1. Bir sonraki Internet duraklı [App Service ortamı yönetim adreslerinden]( https://docs.microsoft.com/azure/app-service/environment/management-addresses) yönetim adresleriyle bir yol tablosu oluşturun. Asimetrik yönlendirme sorunlarından kaçınmak için yol tablosu girdileri gereklidir. IP adresi bağımlılıklarında aşağıda belirtilen IP adresi bağımlılıkları için bir sonraki Internet duraklı yollar ekleyin. 0\.0.0.0/0 için yol tablonuza bir sonraki atlamada Azure Güvenlik Duvarı özel IP adresiniz olacak şekilde bir Sanal Gereç yolu ekleyin. 
 
-   ![Bir yol tablosu oluşturma][4]
+   ![Rota tablosu oluşturma][4]
    
-1. ASE alt ağınız için oluşturduğunuz yol tablosu atayın.
+1. Oluşturduğunuz yol tablosunu as alt ağına atayın.
 
-#### <a name="deploying-your-ase-behind-a-firewall"></a>ASE'nizi bir güvenlik duvarının arkasındaki dağıtma
+#### <a name="deploying-your-ase-behind-a-firewall"></a>ATıCı 'nizi bir güvenlik duvarının arkasında dağıtma
 
-ASE'nizi bir güvenlik duvarının arkasındaki dağıtmak için bir Azure güvenlik duvarı dışında mevcut ASE'nizi yapılandırma aynı ASE alt ağınız oluşturun ve ardından önceki adımları izleyerek gerekecektir adımlardır. Önceden var olan bir alt ağda ASE'nizi oluşturmak için Resource Manager şablonu belgesinde açıklandığı kullanmanız gerekir [Resource Manager şablonu ile ASE'nizi oluşturma](https://docs.microsoft.com/azure/app-service/environment/create-from-template).
+ATıCı 'nizi bir güvenlik duvarının arkasında dağıtma adımları, bir Azure güvenlik duvarıyla, AI alt ağını oluşturmanız ve ardından önceki adımları uygulamanız gerekir. Önceden var olan bir alt ağda ATıCı 'nizi oluşturmak için, [bir kaynak yöneticisi şablonuyla atıcı 'Nizi oluşturma](https://docs.microsoft.com/azure/app-service/environment/create-from-template)konusunda açıklandığı gibi bir kaynak yöneticisi şablonu kullanmanız gerekir.
 
 ## <a name="application-traffic"></a>Uygulama trafiği 
 
-Yukarıdaki adımları ASE'nizi sorunsuz çalışmasına izin verir. Yine de şeyler uygulama ihtiyaçlarınıza uyum sağlayacak şekilde yapılandırmanız gerekir. Azure güvenlik duvarı ile yapılandırılmış bir ase'deki uygulamalar için iki sorunu vardır.  
+Yukarıdaki adımlar, ASE 'nizin sorunsuz bir şekilde çalışmasına olanak sağlayacak. Yine de uygulama gereksinimlerinizi karşılayacak şeyler yapılandırmanız gerekir. Bir Ao 'da Azure Güvenlik Duvarı ile yapılandırılan uygulamalar için iki sorun vardır.  
 
-- Uygulama bağımlılıklarını, Azure güvenlik duvarı ya da rota tablosunu eklenmelidir. 
-- Asimetrik yönlendirme sorunlarını önlemek uygulama trafiği için rotalar oluşturulmalıdır
+- Uygulama bağımlılıklarının Azure Güvenlik Duvarı 'na veya yol tablosuna eklenmesi gerekir. 
+- Asimetrik yönlendirme sorunlarından kaçınmak için uygulama trafiği için yolların oluşturulması gerekir
 
-Uygulamalarınızı bağımlılıkları varsa, bunların Azure güvenlik duvarını eklenmesi gerekir. HTTP/HTTPS trafiğine izin vermek ve diğer her şey için kuralları ağ uygulama kuralları oluşturun. 
+Uygulamalarınızın bağımlılıkları varsa, bunların Azure güvenlik duvarınızdan eklenmesi gerekir. Diğer her şey için HTTP/HTTPS trafiğine ve ağ kurallarına izin vermek üzere uygulama kuralları oluşturun. 
 
-Uygulama isteği trafiğiniz kaynağından gelir adres aralığını biliyorsanız, yol tablosuna, ASE alt ağınız için atanmış ekleyebilirsiniz. Adres aralığı büyük ya da belirtilmemiş olması durumunda, yol tablosuna eklemek için bir adres sağlamak için Application Gateway gibi ağ Gereci kullanabilirsiniz. ILB ASE'nizi bir Application Gateway yapılandırma hakkında ayrıntılı bilgi edinmek için [ILB ASE'nizi bir Application Gateway ile tümleştirme](https://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway)
+Uygulamanız için gelen trafiğin geldiği adres aralığını biliyorsanız, bunu Ao alt ağına atanan yol tablosuna ekleyebilirsiniz. Adres aralığı büyükse veya belirtilmemişse, yol tablonuza eklemek için bir adres sağlamak üzere Application Gateway gibi bir ağ gerecini kullanabilirsiniz. ILB Ade Application Gateway yapılandırma hakkında ayrıntılı bilgi için, [ILB atıcı 'nizi bir Application Gateway tümleştirerek](https://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway) edinin
 
-Bu uygulama ağ geçidi kullanımı, sisteminizi yapılandırmak nasıl yalnızca bir örnektir. Bu yolu izlerseniz uygulama ağ geçidine gönderilen yanıt trafiğini doğrudan var. çıkacak şekilde ASE alt ağın yol tablosuna bir yol eklemek gerekir. 
+Bu Application Gateway kullanımı, sisteminizi yapılandırmaya yönelik yalnızca bir örnektir. Bu yolu izledikten sonra, Application Gateway gönderilen yanıt trafiğinin doğrudan gidebilmesi için ATıCı alt ağ yolu tablosuna bir yol eklemeniz gerekir. 
 
-## <a name="logging"></a>Günlüğe kaydetme 
+## <a name="logging"></a>Günlüğe Kaydetme 
 
-Azure güvenlik duvarı günlükleri Olay hub'ı, Azure Depolama'ya gönderebilir veya Azure İzleyici günlüğe kaydeder. Uygulamanızın desteklenen herhangi bir hedefe ile tümleştirmek için Azure güvenlik duvarı portala gidin > tanılama günlükleri ve istenen hedefiniz için günlükleri etkinleştirin. Azure İzleyici günlüklerine ile tümleştirirseniz, Azure Güvenlik Duvarı'na gönderilen tüm trafik için günlüğü görebilirsiniz. Reddediliyor trafiği görmek için Log Analytics çalışma alanı portalınızı açın > günlükleri gibi bir sorgu girin 
+Azure Güvenlik Duvarı, Azure depolama, Olay Hub 'ı veya Azure Izleyici günlüklerine Günlükler gönderebilir. Uygulamanızı desteklenen herhangi bir hedefle tümleştirmek için Azure Güvenlik Duvarı Portalı > tanılama günlükleri ' ne gidin ve istediğiniz hedefe yönelik günlükleri etkinleştirin. Azure Izleyici günlükleri ile tümleştirirseniz, Azure Güvenlik Duvarı 'na gönderilen tüm trafik için günlüğe kaydetmeyi görebilirsiniz. Reddedilen trafiği görmek için Log Analytics çalışma alanı portalınızı > günlüklerine açın ve şu şekilde bir sorgu girin: 
 
     AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
  
-Azure İzleyici günlüklerine ile Azure güvenlik duvarınızı tümleştirme önce tüm uygulama bağımlılıklarını, uyumlu olmadığında bir uygulama çalışma başlama çok yararlı olur. Azure İzleyici günlükleri hakkında daha fazla bilgi [Azure İzleyici'de günlük verileri](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)
+Azure Güvenlik duvarını Azure Izleyici günlükleriyle tümleştirmek, uygulama bağımlılıklarının tümünün farkında olmadığında ilk olarak bir uygulama çalışırken çok yararlı olur. Azure izleyici günlükleri hakkında daha fazla bilgi edinmek için Azure izleyici ['de günlük verilerini çözümleme](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)
  
 ## <a name="dependencies"></a>Bağımlılıkları
 
-Aşağıdaki bilgiler yalnızca olan Azure güvenlik duvarı dışında bir güvenlik duvarı gerecini yapılandırmak isteyip istemediğinizi gerekli. 
+Aşağıdaki bilgiler yalnızca Azure Güvenlik Duvarı dışında bir güvenlik duvarı gereci yapılandırmak istiyorsanız gereklidir. 
 
-- Hizmet uç noktası uyumlu Hizmetleri hizmet uç noktaları ile yapılandırılması gerekir.
-- IP adresi bağımlılıklarıdır HTTP/S olmayan trafik için (TCP ve UDP trafiği)
-- FQDN HTTP/HTTPS uç noktaları güvenlik duvarı Cihazınızı yerleştirilebilir.
-- Joker karakter HTTP/HTTPS uç noktaları ile ASE'nizi niteleyicileri sayısına göre değişebilir bağımlılıklardır. 
-- ASE'niz Linux uygulamaları dağıtıyorsanız Linux bağımlılıkları yalnızca bir sorun var. Linux uygulamaları ASE'nizi değil dağıtıyorsanız, ardından bu adresleri güvenlik duvarını eklenmesi gerekmez. 
+- Hizmet uç noktası özellikli Hizmetleri, hizmet uç noktaları ile yapılandırılmalıdır.
+- IP adresi bağımlılıkları HTTP/sn olmayan trafiğe yöneliktir (TCP ve UDP trafiği)
+- FQDN HTTP/HTTPS uç noktaları, güvenlik duvarı cihazınıza yerleştirilebilir.
+- Joker karakter HTTP/HTTPS uç noktaları, bir dizi niteleyicilere göre ASE 'niz ile değişebilen bağımlılıklardır. 
+- Linux bağımlılıkları yalnızca ASE 'nize Linux uygulamaları dağıtıyorsanız bir sorun teşkil etmez. Linux uygulamalarını Ao uygulamanıza dağıtmayın, bu adreslerin güvenlik duvarınızdan eklenmesine gerek yoktur. 
 
-#### <a name="service-endpoint-capable-dependencies"></a>Hizmet uç noktası özellikli bağımlılıkları 
+#### <a name="service-endpoint-capable-dependencies"></a>Hizmet uç noktası özellikli bağımlılıklar 
 
 | Uç Nokta |
 |----------|
@@ -116,18 +116,18 @@ Aşağıdaki bilgiler yalnızca olan Azure güvenlik duvarı dışında bir güv
 
 | Uç Nokta | Ayrıntılar |
 |----------| ----- |
-| \*:123 | NTP saat denetimi. Trafiği birden fazla uç nokta bağlantı noktası 123 iade edildiğinde |
-| \*:12000 | Bu bağlantı noktası, bazı sistem izleme için kullanılır. Bazı sorunlar için değerlendirme daha zor olacaktır ancak ASE'nizi çalışmaya devam edecek engellenirse |
-| 40.77.24.27:80 | İzleme ve uyarılar ASE sorunları için gerekli |
-| 40.77.24.27:443 | İzleme ve uyarılar ASE sorunları için gerekli |
-| 13.90.249.229:80 | İzleme ve uyarılar ASE sorunları için gerekli |
-| 13.90.249.229:443 | İzleme ve uyarılar ASE sorunları için gerekli |
-| 104.45.230.69:80 | İzleme ve uyarılar ASE sorunları için gerekli |
-| 104.45.230.69:443 | İzleme ve uyarılar ASE sorunları için gerekli |
-| 13.82.184.151:80 | İzleme ve uyarılar ASE sorunları için gerekli |
-| 13.82.184.151:443 | İzleme ve uyarılar ASE sorunları için gerekli |
+| \*: 123 | NTP saat denetimi. Trafik, 123 numaralı bağlantı noktasında birden çok uç noktaya denetlenir |
+| \*: 12000 | Bu bağlantı noktası, bazı sistem izleme için kullanılır. Engellenirse, bazı sorunlar önceliklendirme daha zor olacaktır, ancak ASE 'niz çalışmaya devam edecektir |
+| 40.77.24.27:80 | AI sorunlarını izlemek ve uyarmak için gereklidir |
+| 40.77.24.27:443 | AI sorunlarını izlemek ve uyarmak için gereklidir |
+| 13.90.249.229:80 | AI sorunlarını izlemek ve uyarmak için gereklidir |
+| 13.90.249.229:443 | AI sorunlarını izlemek ve uyarmak için gereklidir |
+| 104.45.230.69:80 | AI sorunlarını izlemek ve uyarmak için gereklidir |
+| 104.45.230.69:443 | AI sorunlarını izlemek ve uyarmak için gereklidir |
+| 13.82.184.151:80 | AI sorunlarını izlemek ve uyarmak için gereklidir |
+| 13.82.184.151:443 | AI sorunlarını izlemek ve uyarmak için gereklidir |
 
-Azure güvenlik duvarı ile otomatik olarak her şeyi aşağıdaki FQDN etiketlerle sahip olursunuz. 
+Azure Güvenlik Duvarı ile, aşağıdaki her şeyi, FQDN etiketleriyle yapılandırılmış şekilde otomatik olarak alırsınız. 
 
 #### <a name="fqdn-httphttps-dependencies"></a>FQDN HTTP/HTTPS bağımlılıkları 
 
@@ -135,8 +135,8 @@ Azure güvenlik duvarı ile otomatik olarak her şeyi aşağıdaki FQDN etiketle
 |----------|
 |graph.windows.net:443 |
 |login.live.com:443 |
-|Login.Windows.com:443 |
-|Login.Windows.NET:443 |
+|login.windows.com:443 |
+|login.windows.net:443 |
 |login.microsoftonline.com:443 |
 |client.wns.windows.com:443 |
 |definitionupdates.microsoft.com:443 |
@@ -150,66 +150,68 @@ Azure güvenlik duvarı ile otomatik olarak her şeyi aşağıdaki FQDN etiketle
 |mscrl.microsoft.com:443 |
 |mscrl.microsoft.com:80 |
 |crl.microsoft.com:443 |
-|CRL.microsoft.com:80 |
-|www.Thawte.com:443 |
+|crl.microsoft.com:80 |
+|www.thawte.com:443 |
 |crl3.digicert.com:80 |
-|OCSP.digicert.com:80 |
+|ocsp.digicert.com:80 |
 |csc3-2009-2.crl.verisign.com:80 |
-|CRL.VeriSign.com:80 |
+|crl.verisign.com:80 |
 |ocsp.verisign.com:80 |
 |cacerts.digicert.com:80 |
-|azperfcounters1.BLOB.Core.Windows .net: 443 |
-|azurewatsonanalysis prod.core.windows.net:443 |
-|Global.Metrics.nsatc.NET:80 |
-|Global.Metrics.nsatc.NET:443 |
-|az prod.metrics.nsatc.net:443 |
-|antares.Metrics.nsatc.NET:443 |
-|azglobal black.azglobal.metrics.nsatc.net:443 |
-|azglobal red.azglobal.metrics.nsatc.net:443 |
-|antares black.antares.metrics.nsatc.net:443 |
-|antares red.antares.metrics.nsatc.net:443 |
+|azperfcounters1.blob.core.windows.net:443 |
+|azurewatsonanalysis-prod.core.windows.net:443 |
+|global.metrics.nsatc.net:80 |
+|global.metrics.nsatc.net:443 |
+|az-prod.metrics.nsatc.net:443 |
+|antares.metrics.nsatc.net:443 |
+|azglobal-black.azglobal.metrics.nsatc.net:443 |
+|azglobal-red.azglobal.metrics.nsatc.net:443 |
+|antares-black.antares.metrics.nsatc.net:443 |
+|antares-red.antares.metrics.nsatc.net:443 |
 |maupdateaccount.blob.core.windows.net:443 |
 |clientconfig.passport.net:443 |
-|Packages.microsoft.com:443 |
+|packages.microsoft.com:443 |
 |schemas.microsoft.com:80 |
 |schemas.microsoft.com:443 |
-|Management.Core.Windows.NET:443 |
-|Management.Core.Windows.NET:80 |
+|management.core.windows.net:443 |
+|management.core.windows.net:80 |
 |management.azure.com:443 |
 |www.msftconnecttest.com:80 |
 |shavamanifestcdnprod1.azureedge.net:443 |
-|doğrulama v2.sls.microsoft.com:443 |
-|flighting.CP.WD.microsoft.com:443 |
-|DMD.metaservices.microsoft.com:80 |
-|Admin.Core.Windows.NET:443 |
-|azureprofileruploads.BLOB.Core.Windows.NET:443 |
-|azureprofileruploads2.BLOB.Core.Windows .net: 443 |
-|azureprofileruploads3.BLOB.Core.Windows .net: 443 |
-|azureprofileruploads4.BLOB.Core.Windows .net: 443 |
-|azureprofileruploads5.BLOB.Core.Windows .net: 443 |
+|validation-v2.sls.microsoft.com:443 |
+|flighting.cp.wd.microsoft.com:443 |
+|dmd.metaservices.microsoft.com:80 |
+|admin.core.windows.net:443 |
+|prod.warmpath.msftcloudes.com:443 |
+|prod.warmpath.msftcloudes.com:80 |
+|azureprofileruploads.blob.core.windows.net:443 |
+|azureprofileruploads2.blob.core.windows.net:443 |
+|azureprofileruploads3.blob.core.windows.net:443 |
+|azureprofileruploads4.blob.core.windows.net:443 |
+|azureprofileruploads5.blob.core.windows.net:443 |
 
 #### <a name="wildcard-httphttps-dependencies"></a>Joker karakter HTTP/HTTPS bağımlılıkları 
 
 | Uç Nokta |
 |----------|
-|gr-Prod-\*.cloudapp.net:443 |
-| \*.management.azure.com:443 |
+|gr-prod-\*. cloudapp.net:443 |
+| \*. management.azure.com:443 |
 | \*. update.microsoft.com:443 |
-| \*.windowsupdate.microsoft.com:443 |
+| \*. windowsupdate.microsoft.com:443 |
 
 #### <a name="linux-dependencies"></a>Linux bağımlılıkları 
 
 | Uç Nokta |
 |----------|
 |wawsinfraprodbay063.blob.core.windows.net:443 |
-|kayıt defteri 1.docker.io:443 |
+|registry-1.docker.io:443 |
 |auth.docker.io:443 |
 |production.cloudflare.docker.com:443 |
 |download.docker.com:443 |
 |us.archive.ubuntu.com:80 |
-|download.Mono project.com:80 |
-|Packages.treasuredata.com:80|
-|Security.ubuntu.com:80 |
+|download.mono-project.com:80 |
+|packages.treasuredata.com:80|
+|security.ubuntu.com:80 |
 
 <!--Image references-->
 [1]: ./media/firewall-integration/firewall-apprule.png

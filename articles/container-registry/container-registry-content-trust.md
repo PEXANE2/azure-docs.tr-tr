@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: quickstart
 ms.date: 05/06/2019
 ms.author: danlep
-ms.openlocfilehash: 9cd2965e64806dded0e5c688b70d07dfcd763f46
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: d2132f060076aefe6ae0eccb6d5300c78c96ece5
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68309755"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68356539"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Azure Container Registry'de içerik güveni
 
@@ -174,7 +174,7 @@ No valid trust data for unsigned
 ~/.docker/trust/private
 ```
 
-Kök ve depo anahtarlarınızı sıkıştırılmış arşiv dosyasında ve çevrimdışı bir konumda (USB depolama cihazı gibi) yedekleyin. Örneğin, Bash içinde:
+Kök ve depo anahtarlarınızı bir arşivde sıkıştırarak ve güvenli bir konumda depolayarak yedekleyin. Örneğin, Bash içinde:
 
 ```bash
 umask 077; tar -zcvf docker_private_keys_backup.tar.gz ~/.docker/trust/private; umask 022
@@ -195,7 +195,9 @@ Kayıt defterinizde içerik güvenini devre dışı bırakmak için Azure portal
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-İçerik güveni hakkında daha fazla bilgi için bkz. [Docker 'Da içerik güveni][docker-content-trust] . Bu makalede birkaç önemli noktaya değinilmiş olsa da içerik güveni kapsamlı bir konudur ve Docker belgelerinde daha ayrıntılı olarak ele alınmıştır.
+* İçerik güveni hakkında daha fazla bilgi için bkz. [Docker 'Da içerik güveni][docker-content-trust] . Bu makalede birkaç önemli noktaya değinilmiş olsa da içerik güveni kapsamlı bir konudur ve Docker belgelerinde daha ayrıntılı olarak ele alınmıştır.
+
+* Bir Docker görüntüsü oluştururken ve gönderdiğinizde içerik güveninin kullanılması hakkında bir örnek için [Azure Pipelines](/azure/devops/pipelines/build/content-trust) belgelerine bakın.
 
 <!-- IMAGES> -->
 [content-trust-01-portal]: ./media/container-registry-content-trust/content-trust-01-portal.png

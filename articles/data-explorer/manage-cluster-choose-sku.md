@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/14/2019
-ms.openlocfilehash: 0239111ca56dfe431a00eee83c79eedccc66c927
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
-ms.translationtype: HT
+ms.openlocfilehash: b0cf6eab86b0b932e44b6824305c23df01f35808
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226145"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68383825"
 ---
 # <a name="select-the-correct-vm-sku-for-your-azure-data-explorer-cluster"></a>Azure Veri Gezgini kümeniz için doğru VM SKU 'sunu seçin 
 
@@ -39,11 +39,11 @@ Azure Veri Gezgini iki tür küme sunar:
 
 Azure Veri Gezgini kümesi oluştururken, planlı iş yükü için *en iyi* VM SKU 'sunu seçin. Azure Veri Gezgini 'in arasından seçim yapabileceğiniz iki SKU ailesi vardır:
 
-* **D_V2**: **D** SKU, işlem için iyileştirilmiş ve iki şekilde sağlanır.
+* **D_V2**: D SKU, işlem için iyileştirilmiş ve iki şekilde sağlanır.
     * VM 'nin kendisi
     * Premium Depolama diskleriyle paketlenmiş VM
 
-* **LS**: **L** SKU, depolama için iyileştirildi. Benzer fiyatlandırıld SKU 'sundan daha büyük bir SSD boyutuna  sahiptir.
+* **LS**: L SKU, depolama için iyileştirildi. Benzer fiyatlandırıld SKU 'sundan daha büyük bir SSD boyutuna  sahiptir.
 
 Aşağıdaki tabloda, kullanılabilir SKU türleri arasındaki temel farklılıklar verilmiştir:
  
@@ -72,7 +72,7 @@ Aşağıdaki tabloda Azure Veri Gezgini kümesi VM 'Leri için teknik belirtimle
 |D12_v2| işlem için iyileştirilmiş | 150 GB   | 4 | 28 GB | 0 | 2 | 16
 |D13_v2| işlem için iyileştirilmiş | 307 GB   | 8 | 56 GB | 0 | 2 | 1000
 |D14_v2| işlem için iyileştirilmiş | 614 GB   | 16| 112 GB | 0 | 2 | 1000
-|DS13_v2 + 1TB PS| depolama için iyileştirilmiş | 1 TB | 8 | 56 GB | 1\. | 2 | 1000
+|DS13_v2 + 1TB PS| depolama için iyileştirilmiş | 1 TB | 8 | 56 GB | 1 | 2 | 1000
 |DS13_v2 + 2TB PS| depolama için iyileştirilmiş | 2 TB | 8 | 56 GB | 2 | 2 | 1000
 |DS14_v2 + 3TB PS| depolama için iyileştirilmiş | 3 TB | 16 | 112 GB | 2 | 2 | 1000
 |DS14_v2 + 4TB PS| depolama için iyileştirilmiş | 4 TB | 16 | 112 GB | 4 | 2 | 1000

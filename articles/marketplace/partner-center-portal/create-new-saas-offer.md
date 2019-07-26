@@ -7,12 +7,12 @@ ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: cea763416f36abd80b1d22b4414cc2454bc30c66
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
-ms.translationtype: HT
+ms.openlocfilehash: a4947349e64d5f9bf95a9213701dc62a0e018b8f
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868738"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68501314"
 ---
 # <a name="create-a-new-saas-offer"></a>Yeni bir SaaS teklifi oluşturun
 
@@ -114,12 +114,15 @@ Market listesi oluşturarak işletmenizi Microsoft ile yükseltin. Microsoft 'un
 - **Potansiyel müşterilerin bu liste teklifiyle nasıl etkileşime geçmesini istiyorsunuz?**
 
 ##### <a name="get-it-now-free"></a>Şimdi alın (ücretsiz)
-Uygulamanıza erişebilecekleri geçerli bir URL (http veya https ile başlayarak) sağlayarak müşterilerinizin teklifinizi ücretsiz olarak listeleyin.  Örneğin, `https://contoso.com/saas-app`
+Uygulamanıza erişebilecekleri geçerli bir URL ( *http* veya *https*ile başlayarak) sağlayarak müşterilerinizin teklifinizi ücretsiz olarak listeleyin.  Örneğin, `https://contoso.com/saas-app`
 
 ##### <a name="free-trial-listing"></a>Ücretsiz deneme (listeleme)
-Uygulamanıza erişebileceği geçerli bir URL (http veya https ile başlayarak) sunarak, müşterilerinizin teklifinizi, ücretsiz bir denemeye yönelik bir bağlantıya sahip olacak şekilde listeleyin.  Örneğin: `https://contoso.com/trial/saas-app`. Ücretsiz denemelerdeki teklif listesi, hizmetiniz tarafından oluşturulur, yönetilir ve yapılandırılır ve Microsoft tarafından yönetilen abonelikler içermez.
+[Azure Active Directory (Azure AD) kullanarak tek tıklamayla kimlik doğrulama](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide#using-azure-active-directory-to-enable-trials)aracılığıyla denemeyi alabileceğiniz, GEÇERLI bir URL ( *http* veya *https*ile başlayarak) sağlayarak, ücretsiz bir deneme bağlantısı olan müşterilere teklifinizi listeleyin.  Örneğin: `https://contoso.com/trial/saas-app` Ücretsiz denemelerdeki teklif listesi, hizmetiniz tarafından oluşturulur, yönetilir ve yapılandırılır ve Microsoft tarafından yönetilen abonelikler içermez.
 
-##### <a name="contact-me"></a>Benimle iletişim kurun
+> [!NOTE]
+> Deneme bağlantınız aracılığıyla uygulamanızın alacağı belirteçler yalnızca, uygulamanızda hesap oluşturmayı otomatikleştirmek için Azure AD aracılığıyla Kullanıcı bilgilerini almak üzere kullanılabilir. Bu belirteci kullanarak kimlik doğrulaması için Microsoft hesapları (MSA) desteklenmez.
+
+##### <a name="contact-me"></a>Benimle iletişime geçin
 Müşteri Ilişkileri yönetimi (CRM) sisteminizi bağlayarak müşteri iletişim bilgilerini toplayın. Müşterinin, bilgilerini paylaşması için izin istenir. Bu müşteri ayrıntıları, teklifinizin bulunduğu teklif adı, KIMLIĞI ve Market kaynağıyla birlikte, yapılandırdığınız CRM sistemine gönderilir. CRM 'nizi yapılandırma hakkında daha fazla bilgi için bkz. [Connect lider yönetimi](#connect-lead-management). 
 
 ## <a name="example-marketplace-offer-listing"></a>Örnek Market teklif listesi
@@ -170,7 +173,7 @@ Teklifinizi markette listeleyerek ve Müşteri Ilişkileri yönetimi (CRM) siste
 
 Sonraki bölüme geçmeden önce **kaydetmeyi** unutmayın!
 
-## <a name="properties"></a>properties
+## <a name="properties"></a>Özellikler
 **Özellikler** sekmesi, teklifinizi markette gruplandırmak için kullanılan kategorileri ve endüstrileri, teklifinizi destekleyen yasal sözleşmeleri ve uygulama sürümünüzü tanımlamanızı ister. 
 
 Bu alanları tamamladıktan sonra **Kaydet** ' i seçin. 
@@ -220,6 +223,92 @@ Bu alana en fazla 3.000 karakter metin girilebilir. Ek ipuçları için [harika 
 - **Arama anahtar sözcükleri**: Müşterilerin teklifinizi Market 'te bulmak için kullanabileceği en fazla üç arama anahtar sözcüğü girin.
 - Başlarken **yönergeleri** (gerekli): Uygulamanızı nasıl yapılandıracağınızı ve potansiyel müşteriler için kullanmaya nasıl başlayabileceğini açıklayın.  Bu hızlı başlangıç, daha ayrıntılı çevrimiçi belgelere bağlantılar içerebilir. Bu alana en fazla 3.000 karakter metin girilebilir. 
 
+#### <a name="description"></a>**Açıklama**
+
+Bu gerekli bir alandır. Açıklamaya eklenecek öğeler: 
+
+* Tanımınızın ilk birkaç cümlede teklifinizin değer teklifini açık bir şekilde açıklamalıdır.  
+* İlk birkaç tümcenin arama motoru sonuçlarında görüntülenebileceğini aklınızda bulundurun.  
+* Ürününüzü satmaya yönelik özelliklere ve işlevlere güvenmeyin. Bunun yerine, teslim ettiğiniz değere odaklanın.  
+* Sektöre özgü sözlük veya avantaj temelli bir ifade mümkün olduğunca yararlanın. 
+
+Değer önerinizdeki çekirdek bileşenleri aşağıdaki bilgileri içermelidir: 
+
+* Ürünün açıklaması. 
+* Üründen faydalanan Kullanıcı türü. 
+* Müşterinin ürün adresi olması veya bir sorun olması. 
+
+Teklif açıklamanızı daha ilgi çekici hale getirmek için, açıklamayı biçimlendirmek için HTML etiketlerini kullanabilirsiniz. 
+
+1. Paragraf oluşturmak istiyorsanız, metnin begine ekleyin `<p>` ve sonuna ekleyin. `</p>`
+
+    **Örnek**: 
+
+    `<p>`İlk paragrafım. `</p>` <br>
+    `<p>`Bu, ikinci paragrafım. `</p>` <br>
+
+    Yukarıdaki şöyle görünür:
+
+    <p> İlk paragrafım. </p>
+    <p> Bu, ikinci paragrafım. </p>
+
+1. **Madde işaretli bir öğe listesi**eklemek istiyorsanız, metninizi `<li>` aşağıdaki etiketlere yerleştirin. Ve`<ul>` `<li>` etiketlerininiçinde`</li>` daha fazla madde işaretli öğe (ve Etiketler arasındaki öğeler) kopyalayabilir ve yapıştırabilirsiniz. `</ul>` ' İ eklediğinizden emin `<ul></ul>`olun. 
+
+    **Örnek**:
+
+    ```
+    <ul> 
+        <li>add text here</li> 
+        <li> add text here </li> 
+        <li> add text here </li> 
+    </ul> 
+    ```
+
+    Yukarıdaki şöyle görünür:
+    <ul> 
+        <li>Buraya metin ekleyin</li> 
+        <li> Buraya metin ekleyin </li> 
+        <li> Buraya metin ekleyin </li> 
+    </ul> 
+
+1. **Kalın** içerikli içeriğe göre, `<b>` kalın yapmak istediğiniz metnin başlangıcına ekleyin ve kalın yapmak istediğiniz metnin sonuna `</b>` ekleyin. 
+
+    **Örnek**: `<b>`ÜCRETSIZ DENEME`</b>`
+    
+    Yukarıdaki, ÜCRETSIZ deneme kelimesinin storefront içinde teklifin açıklamasına göre kalın olmasına neden olur. 
+
+    **ÜCRETSIZ DENEME**
+
+1. İçeriğiniz arasına **satır sonları** eklemek için, yeni bir `<br>` satırda başlamasını istediğiniz içerikten önce ekleyin. Bir boşluk bırakmak ve içeriğin yeni bir satırda başlamasını sağlamak istiyorsanız, içerikten önce ekleyin `<br><br>` . 
+
+    **Örnek**:
+
+    Bu bir metin çizgisi. `<br>`Bu, yeni bir satırda başlatılacak bir metin çizgisi. `<br><br>`Bu, aşağıdaki iki satırı başlatacak bir satırdır. 
+
+    Yukarıdaki şöyle görünür:
+
+    Bu bir metin çizgisi. <br> Bu, yeni bir satırda başlatılacak bir metin çizgisi. <br><br> Bu, aşağıdaki iki satırı başlatacak bir satırdır. 
+
+1. **Metnin boyutunu artırmak**istiyorsanız, önce metnin ne kadar büyük olmasını istediğinizi seçin. Aşağıdaki örnekleri kullanın. Metnin boyutunu seçtikten sonra, metnin başlangıcına ve sonuna karşılık gelen `<H*></H*>` etiketleri ekleyin. 
+
+    **Örnek**:
+
+    `<h1>`Bu başlık 1 ' dir`</h1>` <br>
+    `<h2>`Bu başlık 2 ' dir`</h2>` <br>
+    `<h3>`Bu, başlık 3 ' ün`</h3>` <br>
+    `<h4>`Bu başlık 4 ' ün`</h4>` <br>
+    `<h5>`Bu başlık 5 ' tir`</h5>` <br>
+    `<h6>`Bu başlık 6 ' dır`</h6>` 
+
+    Yukarıdaki şöyle görünür:
+
+    <h1>Bu başlık 1 ' dir</h1> 
+    <h2>Bu başlık 2 ' dir</h2> 
+    <h3>Bu, başlık 3 ' ün</h3> 
+    <h4>Bu başlık 4 ' ün</h4> 
+    <h5>Bu başlık 5 ' tir</h5> 
+    <h6>Bu başlık 6 ' dır</h6> 
+
 #### <a name="links"></a>Bağlantılar
 
 - **Gizlilik ilkesi** (gerekli): Kuruluşunuzun gizlilik ilkesine bağlayın. Uygulamanızın gizlilik yasaları ve yönetmeliklerle uyumlu olmasını sağlamaktan ve geçerli bir gizlilik ilkesi sağlamaya yönelik siz sorumlusunuz.
@@ -259,7 +348,7 @@ Sonraki bölüme geçmeden önce **kaydetmeyi** unutmayın!
 
 - **Bir önizleme Izleyiciyi tanımlayın: İsteğe bağlı bir açıklamayla birlikte her satır için tek bir AAD/MSA hesap e-postası ekleyin.**
 
-Canlı yayımlamadan önce teklifinizi doğrulamaya yardımcı olmak üzere mevcut Microsoft hesabı (MSA) veya Azure Active Directory (AAD) hesapları için, el ile on (10) e-posta adresi veya bir CSV dosyası karşıya yüklüyorsanız yirmi (20) olarak ekleyin. Bu hesapları ekleyerek, Market 'te yayınlanmadan önce teklifiniz için önizlemeye erişim izni verilecek bir hedef kitle tanımlamanız gerekir. Teklifiniz zaten canlı ise, teklifiniz için herhangi bir değişikliği veya güncelleştirmeyi test etmek üzere bir önizleme hedef kitlesi de tanımlayabilirsiniz.
+Canlı yayımlamadan önce teklifinizi doğrulamaya yardımcı olmak üzere mevcut Microsoft hesabı (MSA) veya Azure Active Directory hesapları için el ile on (10) e-posta adresi veya bir CSV dosyası karşıya yüklüyorsanız yirmi (20). Bu hesapları ekleyerek, Market 'te yayınlanmadan önce teklifiniz için önizlemeye erişim izni verilecek bir hedef kitle tanımlamanız gerekir. Teklifiniz zaten canlı ise, teklifiniz için herhangi bir değişikliği veya güncelleştirmeyi test etmek üzere bir önizleme hedef kitlesi de tanımlayabilirsiniz.
 
 > [!NOTE]
 > Önizleme hedef kitlesi, özel bir hedef kitleye göre farklılık gösterir. Bir önizleme hedef kitlesi, Market 'te canlı olarak yayımlanmadan _önce_ teklifinizin erişimine izin verilir. Ayrıca, bir plan oluşturmayı ve yalnızca özel bir hedef kitle için kullanılabilir hale getirebilirsiniz. **Plan listeleme** sekmesinde, **Bu özel bir plan** onay kutusu ile özel bir hedef kitle tanımlayabilirsiniz. Daha sonra, Azure kiracı kimliklerini kullanarak 20.000 adede kadar müşterinin özel bir kitlesini tanımlayabilirsiniz.

@@ -1,23 +1,23 @@
 ---
-title: "Hızlı Başlangıç: Azure SQL veri ambarı - PowerShell'nda işlem ölçeğini genişletin | Microsoft Docs"
+title: "Hızlı Başlangıç: Azure SQL veri ambarı 'nda işlem ölçeğini genişletme-PowerShell | Microsoft Docs"
 description: PowerShell’den Azure SQL Veri Ambarı’nda işlemi ölçeklendirin. Daha iyi performans için işlem ölçeğini genişletin veya maliyet tasarrufu için işlem ölçeğini daraltın.
 services: sql-data-warehouse
-author: kevinvngo
+author: Antvgski
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: quickstart
-ms.subservice: manage
+ms.subservice: implement
 ms.date: 04/17/2018
-ms.author: kevin
+ms.author: Anthony.vanGemert
 ms.reviewer: igorstan
-ms.openlocfilehash: bd137b71cab4a345afce835effd2ecb0c03df312
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ddf33c927054512d1807d1c9e3429edaa5de25b9
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66167018"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479246"
 ---
-# <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-powershell"></a>Hızlı Başlangıç: PowerShell'de Azure SQL veri ambarı'nda işlemi ölçeklendirme
+# <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-powershell"></a>Hızlı Başlangıç: PowerShell 'de Azure SQL veri ambarı 'nda işlem ölçekleme
 
 PowerShell’den Azure SQL Veri Ambarı’nda işlemi ölçeklendirin. Daha iyi performans için [işlem ölçeğini genişletin](sql-data-warehouse-manage-compute-overview.md) veya maliyet tasarrufu için işlem ölçeğini daraltın.
 
@@ -31,19 +31,19 @@ Bu hızlı başlangıçta zaten ölçeklendirebileceğiniz bir SQL veri ambarın
 
 ## <a name="log-in-to-azure"></a>Azure'da oturum açma
 
-Kullanarak Azure aboneliği için oturum açın [Connect AzAccount](/powershell/module/az.accounts/connect-azaccount) izleyin ve komut ekrandaki yönergeleri izleyin.
+[Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) komutunu kullanarak Azure aboneliğinizde oturum açın ve ekrandaki yönergeleri izleyin.
 
 ```powershell
 Connect-AzAccount
 ```
 
-Kullanmakta olduğunuz aboneliği görmek için çalıştırma [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription).
+Hangi aboneliğin kullandığınızı görmek için [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription)komutunu çalıştırın.
 
 ```powershell
 Get-AzSubscription
 ```
 
-Varsayılandan farklı bir abonelik kullanmanız gerekiyorsa, çalıştırma [kümesi AzContext](/powershell/module/az.accounts/set-azcontext).
+Varsayılandan farklı bir abonelik kullanmanız gerekiyorsa, [set-AzContext](/powershell/module/az.accounts/set-azcontext)komutunu çalıştırın.
 
 ```powershell
 Set-AzContext -SubscriptionName "MySubscription"
@@ -68,15 +68,15 @@ Veri ambarınız için konum bilgilerini bulmak amacıyla aşağıdaki adımlar�
 
 SQL Veri Ambarı’nda, veri ambarı birimlerini ayarlayarak işlem kaynaklarını artırabilir veya azaltabilirsiniz. [Oluşturma ve Bağlanma - portal](create-data-warehouse-portal.md) bölümünde **mySampleDataWarehouse** oluşturuldu ve 400 DWU ile başlatıldı. Aşağıdaki adımlar, **mySampleDataWarehouse** için DWU’ları ayarlar.
 
-Veri ambarı birimlerini değiştirmek için kullanın [kümesi AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) PowerShell cmdlet'i. Aşağıdaki örnekte **mynewserver-20180430** sunucusundaki **myResourceGroup** Kaynak grubunda barındırılan **mySampleDataWarehouse** veritabanı için veri ambarı birimleri DW300 olarak ayarlanır.
+Veri ambarı birimlerini değiştirmek için [set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) PowerShell cmdlet 'ini kullanın. Aşağıdaki örnek, sunucu **MyNewServer-20180430**üzerindeki **myresourcegroup** kaynak grubunda barındırılan **mysampledatawarehouse** veritabanı için veri ambarı birimlerini DW300c olarak ayarlar.
 
 ```Powershell
-Set-AzSqlDatabase -ResourceGroupName "myResourceGroup" -DatabaseName "mySampleDataWarehouse" -ServerName "mynewserver-20171113" -RequestedServiceObjectiveName "DW300"
+Set-AzSqlDatabase -ResourceGroupName "myResourceGroup" -DatabaseName "mySampleDataWarehouse" -ServerName "mynewserver-20171113" -RequestedServiceObjectiveName "DW300c"
 ```
 
 ## <a name="check-data-warehouse-state"></a>Veri ambarı durumunu denetleme
 
-Veri ambarının geçerli durumunu görmek için [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) PowerShell cmdlet'i. Bu, **myResourceGroup** Kaynak Grubundaki ve **mynewserver-20180430.database.windows.net** sunucusundaki **mySampleDataWarehouse** veritabanının durumunu alır.
+Veri ambarının geçerli durumunu görmek için [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) PowerShell cmdlet 'ini kullanın. Bu, **myResourceGroup** Kaynak Grubundaki ve **mynewserver-20180430.database.windows.net** sunucusundaki **mySampleDataWarehouse** veritabanının durumunu alır.
 
 ```powershell
 $database = Get-AzSqlDatabase -ResourceGroupName myResourceGroup -ServerName mynewserver-20171113 -DatabaseName mySampleDataWarehouse
@@ -98,7 +98,7 @@ MaxSizeBytes                  : 263882790666240
 Status                        : Online
 CreationDate                  : 11/20/2017 9:18:12 PM
 CurrentServiceObjectiveId     : 284f1aff-fee7-4d3b-a211-5b8ebdd28fea
-CurrentServiceObjectiveName   : DW300
+CurrentServiceObjectiveName   : DW300c
 RequestedServiceObjectiveId   : 284f1aff-fee7-4d3b-a211-5b8ebdd28fea
 RequestedServiceObjectiveName :
 ElasticPoolName               :

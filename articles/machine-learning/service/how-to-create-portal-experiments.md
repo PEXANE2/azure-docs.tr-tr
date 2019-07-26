@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/2019
-ms.openlocfilehash: 5eb3e94ff65e8a8b74f357a4cb8a517fd3837c5a
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 1bfc415b2e4dbc66e2afeae73b78079fb027a60c
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871821"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68358834"
 ---
 # <a name="create-and-explore-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>Azure portal (Önizleme) içinde otomatik makine öğrenimi denemeleri oluşturma ve araştırma
 
@@ -106,7 +106,7 @@ Aşağıdaki formu doldurmak için deneme Oluştur düğmesini seçin.
     Çıkış kriterleri| Bu ölçütlerden herhangi biri karşılandığında, eğitim işi tam tamamlanmadan önce sonlanır. <br> *Eğitim iş süresi (dakika)* : Eğitim işinin ne kadar süreyle çalışmasına izin verme.  <br> *En fazla yineleme sayısı*: Eğitim işinde sınanacak maksimum işlem hattı sayısı (yineleme). İş, belirtilen sayıda yinelemeden daha fazla çalıştırmayacak. <br> *Ölçüm puan eşiği*:  Tüm işlem hatları için en düşük ölçüm puanı. Bu, ulaşmak istediğiniz tanımlı bir hedef ölçüsünün olması durumunda eğitim işinde gerekli olandan daha fazla zaman harcamamanızı sağlar.
     Ön| Otomatik makine öğrenimi tarafından gerçekleştirilen ön işleme özelliğini etkinleştirmek veya devre dışı bırakmak için seçin. Ön işleme, yapay özellikler oluşturmak için otomatik veri temizleme, hazırlama ve dönüştürme içerir. [Ön işleme hakkında daha fazla bilgi edinin](#preprocess).
     Doğrulama| Eğitim işinde kullanmak için çapraz doğrulama seçeneklerinden birini seçin. [Çapraz doğrulama hakkında daha fazla bilgi edinin](how-to-configure-auto-train.md).
-    Eşzamanlılık| Çok çekirdekli işlem kullanırken kullanmak istediğiniz çok çekirdekli limitleri seçin.
+    Eş Zamanlılık| Çok çekirdekli işlem kullanırken kullanmak istediğiniz çok çekirdekli limitleri seçin.
     Engellenen algoritma| Eğitim işinden dışlamak istediğiniz algoritmaları seçin.
 
    ![Gelişmiş ayarlar formu](media/how-to-create-portal-experiments/advanced-settings.png)
@@ -180,7 +180,7 @@ Eğitim işleri, her işlem hattının çalışmayı tamamlaması biraz zaman al
 
 ### <a name="view-training-run-details"></a>Eğitim çalışma ayrıntılarını görüntüle
 
-Performans ölçümleri ve dağıtım grafikleri gibi eğitim çalıştırma ayrıntılarını görmek için çıkış modellerinin herhangi birinin detayına gidin. [Grafikler hakkında daha fazla bilgi edinin](how-to-track-experiments.md#understanding-automated-ml-charts).
+Performans ölçümleri ve dağıtım grafikleri gibi eğitim çalıştırma ayrıntılarını görmek için çıkış modellerinin herhangi birinin detayına gidin. [Grafikler hakkında daha fazla bilgi edinin](how-to-understand-automated-ml.md).
 
 ![Yineleme ayrıntıları](media/how-to-create-portal-experiments/iteration-details.png)
 
@@ -213,7 +213,7 @@ Otomatikleştirilmiş ML, kodu yazmadan modeli dağıtmanıza yardımcı olur:
 
     Aşağıdaki biçimde çalışma KIMLIĞI, yineleme numarası dahil olmak üzere modeli açıklamasına göre tanımlayabilirsiniz: *< Run_ID > _ < Iteration_number > _Model*
 
-    ![Modelde Görüntü oluştur](media/how-to-create-portal-experiments/model-create-image.png)
+    ![Modeller: Görüntü oluştur](media/how-to-create-portal-experiments/model-create-image.png)
 
 1. Görüntü için bir ad girin. 
 1. Daha önce indirdiğiniz Puanlama dosyasını (scoring.py) karşıya yüklemek için "Puanlama dosyası" kutusunun yanındaki **Git düğmesini seçin** .
@@ -243,4 +243,5 @@ Otomatikleştirilmiş ML, kodu yazmadan modeli dağıtmanıza yardımcı olur:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Otomatik makine öğrenimi ve Azure Machine Learning hakkında daha fazla bilgi edinin](concept-automated-ml.md) .
+* [Otomatik makine öğrenimi sonuçlarını anlayın](how-to-understand-automated-ml.md).
 * [Bir Web hizmetini kullanmayı öğrenin](https://docs.microsoft.com/azure/machine-learning/service/how-to-consume-web-service).

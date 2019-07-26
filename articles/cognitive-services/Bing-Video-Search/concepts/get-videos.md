@@ -1,7 +1,7 @@
 ---
-title: Bing Video arama API'si arama istekleri gönderen
-titlesuffix: Azure Cognitive Services
-description: Bing Video arama API'si için arama sorguları gönderme hakkında bilgi edinin.
+title: Bing Video Arama API'si arama istekleri gönderiliyor
+titleSuffix: Azure Cognitive Services
+description: Bing Video Arama API'si arama sorguları gönderme hakkında bilgi edinin.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: bing-video-search
 ms.topic: overview
 ms.date: 06/24/2019
 ms.author: aahi
-ms.openlocfilehash: bf0f74fe76ec7a83e0ce23ca83141276a677a5df
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: f1d433dd7d919aa5d11f2f59b74a5e3f2dca0b59
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868081"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500294"
 ---
-# <a name="search-for-videos-with-the-bing-video-search-api"></a>Bing Video arama API'si ile video Ara
+# <a name="search-for-videos-with-the-bing-video-search-api"></a>Bing Video Arama API'si videoları arayın
 
-Bing Video arama API'si, Bing'ın bilişsel haber arama özellikleri uygulamalarınızla tümleştirin kolaylaştırır. API, öncelikli olarak bulur ve ilgili videoları Web'den döndürür, ancak akıllı ve odaklanmış Web'de video almak için birçok özellik sunar.
+Bing Video Arama API'si, Bing 'in bilişsel haber arama yeteneklerini uygulamalarınıza tümleştirmeyi kolaylaştırır. API birincil olarak Web 'den ilgili videoları bulur ve geri döndürürse, Web 'de akıllı ve odaklanmış video alımı için çeşitli özellikler sağlar.
 
 ## <a name="getting-videos"></a>Videoları alma
 
@@ -98,7 +98,7 @@ Yanıt, Bing'in sorguyla ilişkili olduğunu düşündüğü videoları bir list
 
 ## <a name="video-thumbnails"></a>Video küçük resimleri
 
-Video küçük resimleri kümesini Bing Video arama API'si tarafından döndürülen veya tüm görüntüleyebilirsiniz. Alt küme görüntülerseniz kullanıcıya kalan videoları görüntüleme seçeneği sunun. Bing API'SİNİN bir parçası olarak [kullanın ve gereksinimlerini görüntülemek](../UseAndDisplayRequirements.md), yanıtta sağlanan sırayla videoları görüntülemeniz gerekir. Küçük resmi yeniden boyutlandırma hakkında bilgi için bkz. [Küçük Resimleri Yeniden Boyutlandırma ve Kırpma](../../bing-web-search/resize-and-crop-thumbnails.md). 
+Bing Video Arama API'si tarafından döndürülen video küçük resimlerinin tümünü veya bir alt kümesini görüntüleyebilirsiniz. Alt küme görüntülerseniz kullanıcıya kalan videoları görüntüleme seçeneği sunun. Bing API [kullanımı ve görüntüleme gereksinimlerinin](../UseAndDisplayRequirements.md)bir parçası olarak, Videoları yanıtta belirtilen sırada görüntülerinizin olması gerekir. Küçük resmi yeniden boyutlandırma hakkında bilgi için bkz. [Küçük Resimleri Yeniden Boyutlandırma ve Kırpma](../../bing-web-search/resize-and-crop-thumbnails.md). 
 
 Kullanıcı küçük resmin üzerine geldiğinde videonun küçük resim bir sürümünü oynatmak için [motionThumbnailUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-motionthumbnailurl) kullanabilirsiniz. Hareket küçük resmini görüntülediğinizde öznitelik belirlediğinizden emin olun.
 
@@ -106,7 +106,7 @@ Kullanıcı küçük resmin üzerine geldiğinde videonun küçük resim bir sü
 ![Motion thumbnail of a video](../bing-web-search/media/cognitive-services-bing-web-api/bing-web-video-motion-thumbnail.PNG)
 -->
 
-Bir küçük resim tıklandığında, videoyu görüntülemek için üç seçenek vardır:
+Küçük resme tıklandığında, videoyu görüntülemek için üç seçenek vardır:
 
 - Videoyu konak web sitesinde (örneğin YouTube) görüntülemek için [hostPageUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-hostpageurl) kullanın
 - Videoyu Bing video tarayıcısında görüntülemek için [webSearchUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-websearchurl) kullanın
@@ -144,7 +144,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="expanding-the-query"></a>Sorguyu genişletme
 
-Bing özgün aramayı daraltmak için sorguyu genişletebiliyorsa [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) nesnesi `queryExpansions` alanını içerir. Örneğin, sorgu *temizleme boşluğu*, genişletilmiş sorgular olabilir: Cilt payını Temizleme **Araçları**, boşluğu Temizleme **baştan**, cilt payını Temizleme **makine**, ve **kolay** cilt payını temizleme.
+Bing özgün aramayı daraltmak için sorguyu genişletebiliyorsa [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) nesnesi `queryExpansions` alanını içerir. Örneğin, sorgu *Temizleme boşluğu*, genişletilmiş sorgular şu şekilde olabilir: Temizleme **araçlarının**cilt payı **, boşluğu Temizleme**, temizleme **makinesi**ve **kolay** cilt temizleme.
 
 Aşağıdaki örnekte *Boşluk Temizleme* için genişletilmiş sorgular gösterilmektedir.
 

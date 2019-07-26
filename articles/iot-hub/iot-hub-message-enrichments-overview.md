@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: b815ba80ac0860a4248b27e4013da4a8a9d12e18
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 8e24489ad2909879b035a08316e66788034e99bc
+ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321289"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68377204"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages-preview"></a>Cihazdan buluta IoT Hub iletileri için ileti zenginleştirmelerinin (Önizleme)
 
@@ -41,6 +41,8 @@ Değer aşağıdaki örneklerden herhangi biri olabilir:
 
    > [!NOTE]
    > Şu anda yalnızca $iothubname, $twin. Tags, $twin. Properties. Desired ve $twin. Properties. bildirilen ileti zenginleştirme için desteklenen değişkenler.
+
+İleti zenginleştirme, seçilen uç noktalara gönderilen iletilere uygulama özellikleri olarak eklenir.  
 
 ## <a name="applying-enrichments"></a>Zenginler uygulanıyor
 

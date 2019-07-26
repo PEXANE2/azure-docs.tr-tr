@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Power BI ile metin analizi Bilişsel hizmet tümleştirme'
+title: 'Öğretici: Metin Analizi bilişsel hizmet ile Power BI tümleştirin'
 titleSuffix: Azure Cognitive Services
 description: Power BI'da depolanan metindeki anahtar ifadeleri ayıklamak için Metin Analizi'ni nasıl kullanacağınızı öğrenin.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: tutorial
-ms.date: 02/13/2019
+ms.date: 07/24/2019
 ms.author: aahi
-ms.openlocfilehash: 705e637235eb81be29a2ea0d7d68ccd000ea0470
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: e56926b9a23e0dd649fb85347e521a6dda7863a3
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67626028"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479886"
 ---
-# <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Öğretici: Power BI ile metin analizi Bilişsel hizmet tümleştirme
+# <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Öğretici: Metin Analizi bilişsel hizmet ile Power BI tümleştirin
 
 Microsoft Power BI Desktop, verilerinize bağlanmanıza, verilerinizi dönüştürmenize ve görselleştirmenize olanak sağlayan ücretsiz bir uygulamadır. Microsoft Azure Bilişsel Hizmetler’in parçası olan Metin Analizi hizmeti, doğal dil işleme özelliği sağlar. Ham yapılandırılmamış veriler olduğunda, en önemli ifadeleri ayıklayabilir, yaklaşımı analiz edebilir ve markalar gibi iyi bilindik varlıkları belirleyebilir. Birlikte bu araçlar, müşterilerinizin ne hakkında konuştuğunu ve bu konuda nasıl hissettiğini hızlıca görmenize yardımcı olabilir.
 
@@ -94,7 +94,7 @@ Metin Analizi hizmetinin [Anahtar İfadeler API](https://westus.dev.cognitive.mi
 | | |
 | - | - |
 | `id`  | İstekte bu belge için yer alan benzersiz tanımlayıcı. Yanıtta da bu alan bulunur. Böylece, birden fazla belge işlemeniz halinde, ayıklanan anahtar ifadeleri bu ifadelerin kaynağı olan belge ile kolayca eşleyebilirsiniz. Bu öğreticide, istek başına yalnızca bir belge işlediğinizden, `id` değerini, her bir istek için aynı olacak şekilde doğrudan yazabilirsiniz.|
-| `text`  | İşlenecek metin. Bu alanın değeri, [önceki bölümde](#PreparingData) oluşturduğunuz ve konu satırını ve yorum metnini birlikte içeren `Merged` sütunundan gelir. Bu veriler yaklaşık 5.120 karakterden uzun anahtar tümcecikleri API'sini gerektirir.|
+| `text`  | İşlenecek metin. Bu alanın değeri, [önceki bölümde](#PreparingData) oluşturduğunuz ve konu satırını ve yorum metnini birlikte içeren `Merged` sütunundan gelir. Anahtar tümceleri API 'SI bu verilerin yaklaşık 5.120 karakterden uzun olmaması gerekir.|
 | `language` | Belgenin yazıldığı doğal dilin kodu. Örnek verilerdeki tüm iletiler İngilizce’dir, bu nedenle bu alan için `en` değerini doğrudan yazabilirsiniz.|
 
 ## <a name="create-a-custom-function"></a>Özel işlev oluşturma

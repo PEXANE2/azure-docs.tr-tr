@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus Mesajlaşması için genel güvenlik öznitelikleri
-description: Azure Service Bus Mesajlaşması değerlendirmek için genel güvenlik öznitelikleri listesi
+title: Azure Service Bus mesajlaşma için güvenlik öznitelikleri
+description: Azure Service Bus mesajlaşma değerlendirmesi için güvenlik özniteliklerinin denetim listesi
 services: service-bus-messaging
 ms.service: service-bus-messaging
 documentationcenter: ''
@@ -9,50 +9,50 @@ manager: barbkess
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d68ffe6561da6a23c288dfabd1d3eb6b34099bb3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0e1d6e041b47a261b549fb8b608cf09d0d6362dd
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66003105"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68443890"
 ---
-# <a name="security-attributes-for-azure-service-bus-messaging"></a>Azure Service Bus Mesajlaşması için güvenlik öznitelikleri
+# <a name="security-attributes-for-azure-service-bus-messaging"></a>Azure Service Bus mesajlaşma için güvenlik öznitelikleri
 
-Bu makale, Azure Service Bus Mesajlaşması ile yerleşik güvenlik özniteliklerini içermektedir.
+Bu makale, Azure Service Bus mesajlaşma 'da yerleşik olarak bulunan güvenlik özniteliklerini belgeler.
 
 [!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
 
-## <a name="preventative"></a>Preventative
+## <a name="preventative"></a>Önleyici
 
 | Güvenlik özniteliği | Evet/Hayır | Notlar |
 |---|---|--|
-| Bekleme sırasında şifreleme:<ul><li>Sunucu tarafı şifrelemesi</li><li>Müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifrelemesi</li><li>Diğer şifreleme özellikleri (örneğin, istemci tarafı, her zaman şifreli, vb.)</ul>|  Varsayılan olarak sunucu tarafı şifreleme bekleyen için Evet. | Müşteri tarafından yönetilen anahtarları ve BYOK henüz desteklenmiyor. İstemci tarafı şifreleme istemcinin sorumluluğudur |
-| Aktarım sırasında şifreleme:<ul><li>Express route şifreleme</li><li>VNet şifreleme</li><li>VNet-VNet şifreleme</ul>| Evet | Standart HTTPS/TLS düzeneğini destekler. |
-| Şifreleme anahtarı işleme (CMK, BYOK, vb.)| Hayır |   |
-| Sütun düzeyinde şifrelemeyi (Azure Data Services)| Yok | |
-| Şifrelenmiş API çağrıları| Evet | API çağrıları üzerinden yapılan [Azure Resource Manager](../azure-resource-manager/index.yml) ve HTTPS. |
+| Bekleyen şifreleme (sunucu tarafı şifreleme, müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifreleme ve diğer şifreleme özellikleri)|  Varsayılan olarak sunucu tarafı şifreleme için Evet. | Müşteri tarafından yönetilen anahtarlar ve BYOK henüz desteklenmiyor. İstemci tarafı şifrelemesi, istemcinin sorumluluğundadır |
+| Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNet şifreleme ve VNet-VNet şifreleme gibi)| Evet | Standart HTTPS/TLS mekanizmasını destekler. |
+| Şifreleme anahtarı işleme (CMK, BYOK vb.)| Hayır |   |
+| Sütun düzeyinde şifreleme (Azure veri Hizmetleri)| Yok | |
+| Şifrelenmiş API çağrıları| Evet | API çağrıları [Azure Resource Manager](../azure-resource-manager/index.yml) ve HTTPS aracılığıyla yapılır. |
 
 ## <a name="network-segmentation"></a>Ağ kesimleme
 
 | Güvenlik özniteliği | Evet/Hayır | Notlar |
 |---|---|--|
-| Hizmet uç noktası desteği| Evet (yalnızca Premium katman için) | Sanal ağ hizmet uç noktaları için desteklenen [Service Bus Premium katmanı](service-bus-premium-messaging.md) yalnızca. |
+| Hizmet uç noktası desteği| Evet (yalnızca Premium katman) | Sanal ağ hizmeti uç noktaları yalnızca [Service Bus Premium katmanı](service-bus-premium-messaging.md) için desteklenir. |
 | VNet ekleme desteği| Hayır | |
-| Ağ yalıtımı ve saldırısından desteği| Evet (yalnızca Premium katman için) |  |
-| Zorlamalı tünel oluşturma desteği| Hayır |  |
+| Ağ yalıtımı ve güvenlik duvarı desteği| Evet (yalnızca Premium katman) |  |
+| Zorlamalı tünel desteği| Hayır |  |
 
 ## <a name="detection"></a>Algılama
 
 | Güvenlik özniteliği | Evet/Hayır | Notlar|
 |---|---|--|
-| Azure izleme desteği (Log analytics, Application ınsights, vb.)| Evet | Aracılığıyla desteklenen [Azure İzleyici ve uyarı](service-bus-metrics-azure-monitor.md). |
+| Azure izleme desteği (Log Analytics, App Insights vb.)| Evet | [Azure izleyici ve uyarılar](service-bus-metrics-azure-monitor.md)aracılığıyla desteklenir. |
 
 ## <a name="identity-and-access-management"></a>Kimlik ve erişim yönetimi
 
 | Güvenlik özniteliği | Evet/Hayır | Notlar|
 |---|---|--|
-| Kimlik Doğrulaması| Evet | İle yönetilen [Azure Active Directory yönetilen hizmet kimliği](service-bus-managed-service-identity.md); bkz [Service Bus kimlik doğrulama ve yetkilendirme](service-bus-authentication-and-authorization.md).|
-| Yetkilendirme| Evet | Yetkilendirme aracılığıyla destekler [RBAC](service-bus-role-based-access-control.md) (Önizleme) ve SAS belirteci; bkz [Service Bus kimlik doğrulama ve yetkilendirme](service-bus-authentication-and-authorization.md). |
+| Authentication| Evet | [Azure Active Directory yönetilen hizmet kimliği](service-bus-managed-service-identity.md)ile yönetilir; bkz. [Service Bus kimlik doğrulaması ve yetkilendirme](service-bus-authentication-and-authorization.md).|
+| Authorization| Evet | [RBAC](service-bus-role-based-access-control.md) (Önizleme) ve SAS belirteci aracılığıyla yetkilendirmeyi destekler; bkz. [Service Bus kimlik doğrulaması ve yetkilendirme](service-bus-authentication-and-authorization.md). |
 
 
 
@@ -60,11 +60,11 @@ Bu makale, Azure Service Bus Mesajlaşması ile yerleşik güvenlik öznitelikle
 
 | Güvenlik özniteliği | Evet/Hayır | Notlar|
 |---|---|--|
-| Denetim ve yönetim düzlemi günlüğe kaydetme ve Denetim| Evet | İşlem günlükleri kullanılabilir; bkz: [Service Bus tanılama günlükleri](service-bus-diagnostic-logs.md).  |
-| Veri düzlemi günlük kaydı ve Denetim| Hayır |  |
+| Denetim ve yönetim düzlemi günlüğü ve denetimi| Evet | İşlem günlükleri kullanılabilir; bkz. [Service Bus tanılama günlükleri](service-bus-diagnostic-logs.md).  |
+| Veri düzlemi günlüğü ve denetimi| Hayır |  |
 
 ## <a name="configuration-management"></a>Yapılandırma yönetimi
 
 | Güvenlik özniteliği | Evet/Hayır | Notlar|
 |---|---|--|
-| Yapılandırma yönetimi desteği (sürüm yapılandırması, vs.)| Evet | Kaynak sağlayıcısı sürüm aracılığıyla oluşturmayı destekleyen [Azure Resource Manager API'si](/rest/api/resources/).|
+| Yapılandırma yönetimi desteği (yapılandırmanın sürümü oluşturma, vb.)| Evet | [Azure Resource Manager API](/rest/api/resources/)aracılığıyla kaynak sağlayıcısı sürümü oluşturmayı destekler.|

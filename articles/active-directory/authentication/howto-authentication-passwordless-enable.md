@@ -11,19 +11,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79f5eba18e34f65f7bc8a625babca92b86e06b4c
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: ad2f25aac7f74c74eb63fd4666c5184ae751ec1f
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67867297"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68499924"
 ---
 # <a name="enable-passwordless-sign-in-for-azure-ad-preview"></a>Azure AD için passwordless oturum açma özelliğini etkinleştirme (Önizleme)
 
 ## <a name="requirements"></a>Gereksinimler
 
 * Azure Multi-Factor Authentication
-* Birleşik kayıt önizlemesi
+* SSPR için etkinleştirilen kullanıcılar ile Birleşik kayıt önizlemesi
 * FIDO2 güvenlik anahtarı önizlemesi uyumlu FIDO2 güvenlik anahtarları gerektirir
 * WebAuthN, Windows 10 sürüm 1809 veya üzeri sürümlerde Microsoft Edge gerektirir
 * FIDO2 tabanlı Windows oturum açma, Azure AD 'ye katılmış Windows 10 sürüm 1809 veya üstünü gerektirir
@@ -51,15 +51,15 @@ Kimlik bilgisi sağlayıcısını etkinleştirmek üzere belirli cihaz grupları
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. **Microsoft Intune**cihazyapılandırma > **profilleri**profil**Oluştur**' a gidin. >  > 
 1. Yeni profili aşağıdaki ayarlarla yapılandırın
-   1. Ad: Windows oturum açma için güvenlik anahtarları
+   1. Adı: Windows oturum açma için güvenlik anahtarları
    1. Açıklama: Windows oturum açma sırasında FIDO güvenlik anahtarlarının kullanılmasını sağlar
    1. Platform: Windows 10 ve üzeri
    1. Platform türü: Özel
    1. Özel OMA-URI ayarları:
-      1. Ad: Windows oturum açma için FIDO güvenlik anahtarlarını aç
+      1. Adı: Windows oturum açma için FIDO güvenlik anahtarlarını aç
       1. OMA-URI:./Device/Vendor/MSFT/passportforwork/SecurityKey/usesecuritykeyforsignın
       1. Veri türü: Tamsayı
-      1. Deeri 1. 
+      1. Değer: 1. 
 1. Bu ilke belirli kullanıcılara, cihazlara veya gruplara atanabilir. [Microsoft Intune, Kullanıcı ve cihaz profilleri atama](https://docs.microsoft.com/intune/device-profile-assign)makalesinde daha fazla bilgi bulunabilir.
 
 ![Intune özel cihaz yapılandırma ilkesi oluşturma](./media/howto-authentication-passwordless-enable/intune-custom-profile.png)
@@ -171,7 +171,7 @@ Microsoft Authenticator uygulamasını kullanarak oturum açma hakkında daha fa
 
 Güvenlik anahtarlarının yönetici tarafından sağlanması ve devre dışı sağlanması genel önizlemede bulunmamaktadır.
 
-#### <a name="hybrid-azure-ad-join"></a>Hibrit Azure AD'ye katılım
+#### <a name="hybrid-azure-ad-join"></a>Hibrit Azure AD'ye katılma
 
 FIDO2 güvenlik anahtarları veya passwordless Microsoft Authenticator oturum açma gibi yönetilen kimlik bilgilerini kullanan WIA SSO 'ya bağlı kullanıcılar SSO avantajlarından faydalanmak için Windows 10 ' da karma birleşime gerek duyar. Ancak, güvenlik anahtarları yalnızca Azure Active Directory katılmış makineler için çalışır. Yalnızca saf Azure Active Directory katılmış makinelerde Windows kilit ekranı için FIDO2 güvenlik anahtarlarını denemenizi öneririz. Bu sınırlama Web için geçerlidir.
 

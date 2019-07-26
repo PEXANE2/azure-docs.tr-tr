@@ -1,5 +1,5 @@
 ---
-title: Erişim panelinde parola tabanlı çoklu oturum açma (SSO) kullan | Microsoft Docs
+title: Access panel 'de parola tabanlı çoklu oturum açma (SSO) | Microsoft Docs
 description: Parola çoklu oturum açma için yapılandırılmış Azure AD Galeri uygulamalarında oturum açma ile ilgili sorunları gidermeye yönelik yönergeler sunan sorun sorunlarını açıklar.
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c020f3ab3ea7ed96b72d0490b717225d44c4fac1
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 9ca192c28757df189e531aee0ba2d8da288ba7e6
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277738"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381229"
 ---
 # <a name="problems-signing-in-to-an-azure-ad-gallery-application-configured-for-password-single-sign-on"></a>Parola çoklu oturum açma için yapılandırılmış bir Azure AD Galeri uygulamasında oturum açma sorunları
 

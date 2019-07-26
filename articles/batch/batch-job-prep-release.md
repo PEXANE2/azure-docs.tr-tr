@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 75ff3bdf7a0900c32feb7090e0c24af748080a76
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: a85ced787529db7e6d607665d81632ab1c450dfe
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323482"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466968"
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Toplu işlem düğümlerinde iş hazırlama ve iş bırakma görevlerini çalıştırma
 
@@ -68,11 +68,13 @@ Bir işin görevlerinin yürütülmesinden önce Batch, görevi çalıştırmak 
 > 
 > 
 
-## <a name="job-release-task"></a>İş serbest bırakma görevi
+## <a name="job-release-task"></a>İş bırakma görevi
 Bir iş tamamlandı olarak işaretlendikten sonra, havuzda en az bir görevi yürüten her düğüm üzerinde iş bırakma görevi yürütülür. Bir işi sonlandırma isteği vererek tamamlandı olarak işaretlersiniz. Batch hizmeti daha sonra iş durumunu *sonlandırılıyor*, işle ilgili etkin veya çalışan görevleri sonlandırır ve iş serbest bırakma görevini çalıştırır. Sonra iş *tamamlandı* durumuna gider.
 
 > [!NOTE]
 > İş silme işi de iş bırakma görevini yürütür. Ancak, bir iş zaten sonlandırılırsa, iş daha sonra silinirse yayın görevi ikinci kez çalıştırılmaz.
+
+Iş sürümü görevleri, Batch hizmeti tarafından sonlandırılmadan önce en fazla 15 dakika boyunca çalıştırılabilir. Daha fazla bilgi için [REST API başvuru belgelerine](https://docs.microsoft.com/rest/api/batchservice/job/add#jobreleasetask)bakın.
 > 
 > 
 

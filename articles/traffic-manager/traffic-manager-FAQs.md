@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: allensu
-ms.openlocfilehash: c2bff5749ab833efcb252d3fafb5d38cfbc8691e
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 37f1a0d9c70afc0a3a86ac76b682ee7b2adb253d
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310271"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335802"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager sık sorulan sorular (SSS)
 
@@ -382,7 +382,7 @@ Bir profille bir sorgu alındığında Traffic Manager önce, belirtilen yönlen
 
 Çoklu değer dışında herhangi bir yönlendirme yöntemine sahip profiller için:
 
-|Gelen sorgu isteği|    Uç nokta türü|  Yanıt sağlanmış|
+|Gelen sorgu isteği|    Uç noktası türü|  Yanıt sağlanmış|
 |--|--|--|
 |KAYDEDILMEMIŞ |  A/AAAA/CNAME |  Hedef uç nokta| 
 |A |    A/CNAME | Hedef uç nokta|
@@ -395,7 +395,7 @@ Bir profille bir sorgu alındığında Traffic Manager önce, belirtilen yönlen
 
 Yönlendirme yöntemi olan profillerin çoklu değer olarak ayarlandığı profiller için:
 
-|Gelen sorgu isteği|    Uç nokta türü | Yanıt sağlanmış|
+|Gelen sorgu isteği|    Uç noktası türü | Yanıt sağlanmış|
 |--|--|--|
 |KAYDEDILMEMIŞ |  A ve AAAA karışımı | Hedef uç noktalar|
 |A |    A ve AAAA karışımı | Yalnızca A türünde hedef uç noktalar|
@@ -438,7 +438,7 @@ Traffic Manager izleme ayarları her profil düzeyinde yapılır. Yalnızca bir 
 Traffic Manager, HTTP (S) sistem durumu denetimlerinde, uç noktalarınız için başlattığı özel üst bilgileri belirtmenize olanak tanır. Özel bir üst bilgi belirtmek istiyorsanız, bunu profil düzeyinde yapabilirsiniz (tüm uç noktalara uygulanabilir) veya bunu uç nokta düzeyinde belirtebilirsiniz. Her iki düzeyde de bir üst bilgi tanımlanmışsa, uç nokta düzeyinde belirtilen bir tane, profil düzeyini geçersiz kılar.
 Bunun yaygın bir kullanım durumu, Traffic Manager isteklerinin çok kiracılı bir ortamda barındırılan bir uç noktaya doğru şekilde yönlendirilebilmesi için konak üstbilgilerini belirtmektir. Bunun başka bir kullanım durumu, bir uç noktanın HTTP (S) istek günlüklerinden Traffic Manager isteklerini belirlemektir
 
-## <a name="what-host-header-do-endpoint-health-checks-use"></a>Uç nokta sistem durumu denetimleri hangi konak üstbilgisini kullanır?
+### <a name="what-host-header-do-endpoint-health-checks-use"></a>Uç nokta sistem durumu denetimleri hangi konak üstbilgisini kullanır?
 
 Özel bir ana bilgisayar üst bilgisi ayarı sağlanmazsa, Traffic Manager tarafından kullanılan ana bilgisayar üstbilgisi, varsa, profilde yapılandırılan uç nokta hedefinin DNS adıdır.
 

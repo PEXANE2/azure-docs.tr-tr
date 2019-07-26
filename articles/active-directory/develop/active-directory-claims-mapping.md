@@ -1,5 +1,5 @@
 ---
-title: Azure AD kiracısındaki belirli bir uygulama için belirteçlerde yayılan talepleri özelleştirme (Genel Önizleme)
+title: Azure AD kiracısındaki bir uygulama için talepleri özelleştirme (Genel Önizleme)
 description: Bu sayfada Azure Active Directory talep eşleştirmesi açıklanmaktadır.
 services: active-directory
 author: rwike77
@@ -15,12 +15,12 @@ ms.date: 03/28/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e923cde3cfcffe594226f6b8b665053d1fc584f6
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 97de45ef94afa9da8a5e928a3d4a8911db052107
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68324984"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381060"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Nasıl yapılır: Bir Kiracıdaki belirli bir uygulama için belirteçlerde yayılan talepleri özelleştirme (Önizleme)
 
@@ -289,9 +289,9 @@ ID öğesi, kaynak üzerinde hangi özelliğin talep için değer sağladığın
 | Source | id | Açıklama |
 |-----|-----|-----|
 | Kullanıcı | Soyadı | Aile adı |
-| Kullanıcı | givenName | Verilen Ad |
+| Kullanıcı | givenName | Ad |
 | Kullanıcı | displayName | Görünen Ad |
-| Kullanıcı | uzantının | Uzantının |
+| Kullanıcı | uzantının | ObjectID |
 | Kullanıcı | posta | E-posta Adresi |
 | Kullanıcı | userPrincipalName | Kullanıcı asıl adı |
 | Kullanıcı | Bölüm|Bölüm|
@@ -302,9 +302,9 @@ ID öğesi, kaynak üzerinde hangi özelliğin talep için değer sağladığın
 | Kullanıcı | tadı| Kuruluş adı |
 | Kullanıcı | StreetAddress | Açık adres |
 | Kullanıcı | PostalCode | Posta kodu |
-| Kullanıcı | preferredlanguange | Tercih edilen dil |
+| Kullanıcı | preferredlanguange | Tercih Edilen Dil |
 | Kullanıcı | onpremisesuserprincipalname | Şirket içi UPN |
-| Kullanıcı | mailNickname | Posta takma adı |
+| Kullanıcı | mailNickname | Posta Takma Adı |
 | Kullanıcı | extensionattribute1 | Uzantı özniteliği 1 |
 | Kullanıcı | extensionattribute2 | Uzantı özniteliği 2 |
 | Kullanıcı | extensionattribute3 | Uzantı özniteliği 3 |
@@ -321,15 +321,15 @@ ID öğesi, kaynak üzerinde hangi özelliğin talep için değer sağladığın
 | Kullanıcı | extensionattribute14 | Uzantı özniteliği 14 |
 | Kullanıcı | extensionattribute15 | Uzantı özniteliği 15 |
 | Kullanıcı | diğer posta | Diğer posta |
-| Kullanıcı | Ülke | Country |
+| Kullanıcı | ülke | Country |
 | Kullanıcı | city | City |
 | Kullanıcı | state | Durum |
 | Kullanıcı | JobTitle | İş Unvanı |
-| Kullanıcı | EmployeeID | Çalışan KIMLIĞI |
+| Kullanıcı | EmployeeID | Çalışan Kimliği |
 | Kullanıcı | facsimileTelephoneNumber 'dir | Facsıle telefon numarası |
 | uygulama, kaynak, hedef kitle | displayName | Görünen Ad |
-| uygulama, kaynak, hedef kitle | objected | Uzantının |
-| uygulama, kaynak, hedef kitle | etiketler | Hizmet sorumlusu etiketi |
+| uygulama, kaynak, hedef kitle | objected | ObjectID |
+| uygulama, kaynak, hedef kitle | tags | Hizmet sorumlusu etiketi |
 | Şirket | tenantcountry | Kiracının ülkesi |
 
 **Dönüştürme kimliği:** Dönüşümtionıd öğesi yalnızca kaynak öğe "dönüşüm" olarak ayarlandıysa sağlanmalıdır.
@@ -391,7 +391,7 @@ Seçilen yönteme bağlı olarak bir dizi giriş ve çıkış beklenmektedir. Gi
 | Kullanıcı | posta|E-posta Adresi|
 | Kullanıcı | userPrincipalName|Kullanıcı asıl adı|
 | Kullanıcı | onpremisessamaccountname|Şirket Içi Sam hesap adı|
-| Kullanıcı | EmployeeID|Çalışan KIMLIĞI|
+| Kullanıcı | EmployeeID|Çalışan Kimliği|
 | Kullanıcı | extensionattribute1 | Uzantı özniteliği 1 |
 | Kullanıcı | extensionattribute2 | Uzantı özniteliği 2 |
 | Kullanıcı | extensionattribute3 | Uzantı özniteliği 3 |

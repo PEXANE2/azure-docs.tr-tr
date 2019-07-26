@@ -1,193 +1,192 @@
 ---
 title: Azure Backup için veri modeli
-description: Bu makalede, Azure Backup raporları için Power BI veri modeli ayrıntıları hakkında konuşuyor.
-services: backup
+description: Bu makalede, Azure Backup raporlarının Power BI veri modeli ayrıntıları ele bir şekilde konuşuyor.
 author: adigan
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
 ms.date: 06/26/2017
 ms.author: adigan
-ms.openlocfilehash: c6160570644da108ba713e8229b38f9587495c92
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 66245a25af000d999ded87c58e3ba225b373b101
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60337587"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68465590"
 ---
 # <a name="data-model-for-azure-backup-reports"></a>Azure Backup raporları için veri modeli
-Bu makalede, Azure Backup raporları oluşturmak için kullanılan Power BI veri modeli açıklanmaktadır. Bu veri modelini kullanarak mevcut raporları ilgili alanlara göre filtreleyebilirsiniz ve daha fazla tabloları ve alanları modeli kullanarak da önemlisi, kendi raporlarınızı oluşturun. 
+Bu makalede Azure Backup rapor oluşturmak için kullanılan Power BI veri modeli açıklanmaktadır. Bu veri modelini kullanarak, mevcut raporları ilgili alanlara göre filtreleyebilir ve daha da önemlisi, modeldeki tabloları ve alanları kullanarak kendi raporlarınızı oluşturabilirsiniz. 
 
-## <a name="creating-new-reports-in-power-bi"></a>Power BI'da yeni raporlar oluşturma
-Power BI sağlar özelleştirme özelliklerini kullanarak yapabileceğiniz [veri modeli kullanarak raporlar oluşturma](https://powerbi.microsoft.com/documentation/powerbi-service-create-a-new-report/).
+## <a name="creating-new-reports-in-power-bi"></a>Power BI yeni raporlar oluşturma
+Power BI [veri modelini kullanarak rapor oluşturabileceğiniz](https://powerbi.microsoft.com/documentation/powerbi-service-create-a-new-report/)özelleştirme özellikleri sağlar.
 
 ## <a name="using-azure-backup-data-model"></a>Azure Backup veri modelini kullanma
-Rapor oluşturabilir ve mevcut raporları özelleştirme ve veri modelinin bir parçası olarak sunulan aşağıdaki alanları kullanabilirsiniz.
+Rapor oluşturmak ve mevcut raporları özelleştirmek için veri modelinin bir parçası olarak sunulan aşağıdaki alanları kullanabilirsiniz.
 
 ### <a name="alert"></a>Uyarı
-Bu tabloda, çeşitli uyarı ilgili alanları üzerinde temel alan ve toplamalar sağlar.
+Bu tablo, uyarı ile ilgili çeşitli alanlarla ilgili temel alanları ve toplamaları sağlar.
 
 | Alan | Veri Türü | Açıklama |
 | --- | --- | --- |
-| #AlertsCreatedInPeriod |Tam sayı |Seçili zaman aralığında oluşturulan uyarıların sayısı |
-| %ActiveAlertsCreatedInPeriod |Yüzde |Seçilen bir zaman dönemi içindeki etkin uyarılar yüzdesi |
-| %CriticalAlertsCreatedInPeriod |Yüzde |Seçilen zaman aralığı içinde kritik uyarılar yüzdesi |
-| AlertOccurrenceDate |Tarih |Uyarının oluşturulduğu tarih |
-| AlertSeverity |Text |Örneğin, kritik uyarı önem derecesi |
-| AlertStatus |Text |Örneğin, etkin uyarı durumu |
-| AlertType |Text |Örneğin, yedekleme oluşturulan uyarı türü |
-| AlertUniqueId |Text |Oluşturulan uyarı benzersiz kimliği |
-| AsOnDateTime |Tarih/Saat |Seçili satır için son yenileme zamanı |
-| AvgResolutionTimeInMinsForAlertsCreatedInPeriod |Ondalık sayı |Seçilen zaman aralığı için uyarıyı çözümlemek için ortalama süre (dakika cinsinden) |
-| EntityState |Text |Örneğin, etkin, silinmiş bir uyarı nesnenin geçerli durumu |
+| #AlertsCreatedInPeriod |Tam sayı |Seçilen dönemde oluşturulan uyarı sayısı |
+| % Activealertscreatedınperiod |Yüzde |Seçilen dönemdeki etkin uyarıların yüzdesi |
+| % Criticalalertscreatedınperiod |Yüzde |Seçilen dönemdeki kritik uyarıların yüzdesi |
+| AlertOccurrenceDate |Date |Uyarının oluşturulduğu tarih |
+| AlertSeverity |Text |Örneğin kritik, uyarının önem derecesi |
+| AlertStatus |Text |Örneğin etkin olduğu uyarının durumu |
+| AlertType |Text |Oluşturulan uyarının türü, örneğin, yedekleme |
+| Alertuniqueıd |Text |Oluşturulan uyarının benzersiz kimliği |
+| AsOnDateTime |Date/Time |Seçili satır için en son yenileme zamanı |
+| Avgresolutiontimeınminsforalertscreatedınperiod |Ondalık sayı |Seçilen zaman aralığı için uyarıyı çözümlemek için geçen ortalama süre (dakika cinsinden) |
+| EntityState |Text |Uyarı nesnesinin geçerli durumu, örneğin, etkin, silindi |
 
 ### <a name="backup-item"></a>Yedekleme öğesi
-Bu tablo üzerinde çeşitli yedekleme öğesi ile ilgili alanları temel alan ve toplamalar sağlar.
+Bu tablo, çeşitli yedekleme öğesiyle ilgili alanlarla ilgili temel alanları ve toplamaları sağlar.
 
 | Alan | Veri Türü | Açıklama |
 | --- | --- | --- |
 | #BackupItems |Tam sayı |Yedekleme öğesi sayısı |
-| #UnprotectedBackupItems |Tam sayı |Koruma için durduruldu veya yedekleri ancak başlatılmadı yedeklemeler için yapılandırılan yedekleme öğesi sayısı|
-| AsOnDateTime |Tarih/Saat |Seçili satır için son yenileme zamanı |
-| BackupItemFriendlyName |Text |Yedekleme öğesi kolay adı |
-| BackupItemId |Text |Yedekleme öğesi kimliği |
-| BackupItemName |Text |Yedekleme öğesinin adı |
-| BackupItemType |Text |Yedekleme öğesi gibi VM Dosyaklasörü türü |
-| EntityState |Text |Örneğin, etkin, silinen yedekleme öğesi nesnenin geçerli durumu |
-| LastBackupDateTime |Tarih/Saat |Seçili yedekleme öğesi için son yedekleme zamanı |
-| LastBackupState |Text |Örneğin, başarılı, başarısız seçili yedekleme öğesi için son yedekleme durumu |
-| LastSuccessfulBackupDateTime |Tarih/Saat |Seçili yedekleme öğesi için son başarılı yedekleme saati |
-| ProtectionState |Text |Örneğin, korumalı, ProtectionStopped yedekleme öğesi geçerli koruma durumu |
+| #UnprotectedBackupItems |Tam sayı |Koruma için durdurulan veya yedeklemeler için yapılandırılan yedekleme öğelerinin sayısı ancak yedeklemeler başlatılmadı|
+| AsOnDateTime |Date/Time |Seçili satır için en son yenileme zamanı |
+| Backupıtemfriendlyname |Text |Yedekleme öğesinin kolay adı |
+| Backupıtemıd |Text |Yedekleme öğesi kimliği |
+| Backupıtemname |Text |Yedekleme öğesinin adı |
+| Backupıtemtype |Text |Yedekleme öğesinin türü örneğin, VM, dosya klasörü |
+| EntityState |Text |Yedekleme öğesi nesnesinin geçerli durumu Örneğin, etkin, silindi |
+| LastBackupDateTime |Date/Time |Seçili yedekleme öğesi için son yedekleme zamanı |
+| LastBackupState |Text |Seçili yedekleme öğesi için son yedeklemenin durumu, örneğin, başarılı, başarısız |
+| Lastbaşarılı Fulbackupdatetime |Date/Time |Seçili yedekleme öğesi için son başarılı yedeklemenin saati |
+| ProtectionState |Text |Yedekleme öğesinin geçerli koruma durumu Örneğin, korumalı, Protectiondurduruldu |
 
 ### <a name="calendar"></a>Takvim
-Bu tabloda takvimle ilgili alanlar hakkında ayrıntılar sağlar.
+Bu tablo, takvimle ilgili alanlarla ilgili ayrıntıları sağlar.
 
 | Alan | Veri Türü | Açıklama |
 | --- | --- | --- |
-| Tarih |Tarih |Verileri filtreleme için seçtiğiniz tarih |
+| Date |Date |Verilerin filtrelenmesi için seçilen tarih |
 | DateKey |Text |Her bir tarih öğesi için benzersiz anahtar |
-| DayDiff |Ondalık sayı |Günlük veri filtreleme için örneğin fark, 0 geçerli günün verileri gösterir, -1, bir önceki günün verileri gösterir, 0 ile -1, geçerli ve önceki gün için veri belirtin  |
-| Ay |Text |Aylık veri filtreleme için seçtiğiniz yılın, ayın ilk günü başlar ve 31 günü sona erer |
-| MonthDate | Tarih |Tarihi sona erdiğinde ay, ayın veri filtreleme için seçtiğiniz |
-| MonthDiff |Ondalık sayı |Örneğin ayın filtreleme veriler için fark, 0 geçerli aya ilişkin verileri gösterir, -1 önceki aya ait verileri gösterir, 0 ile -1 için geçerli ve önceki ayın verilerini belirtmek |
-| Hafta |Text |Veri filtreleme için seçtiğiniz hafta hafta Pazar günü başlar ve biter Cumartesi günleri |
-| WeekDate |Tarih |Tarih haftanın sona erdiğinde, hafta içinde veri filtreleme için seçtiğiniz |
-| WeekDiff |Ondalık sayı |Örneğin haftada filtreleme veriler için fark, 0 geçerli haftanın verilerini gösterir, -1 önceki haftanın verilerini gösterir, 0 ile -1 için geçerli ve önceki haftanın verilerini belirtmek |
-| Yıl |Text |Verileri filtreleme için seçtiğiniz takvim yılı |
-| YearDate |Tarih |Tarihi sona erdiğinde yıl, yılın veri filtreleme için seçtiğiniz |
+| DayDiff |Ondalık sayı |Verilerin filtrelenmesi için gün farkı Örneğin, 0 geçerli günün verilerini,-1 önceki bir günün verilerini gösterir, 0 ve-1 geçerli ve önceki günün verilerini gösterir  |
+| Ay |Text |Verilerin filtrelenmesi için seçilen yılın ayı, ayın ilk gününde başlaması ve 31. gün tarihinde sona erecek |
+| MonthDate | Date |Ayın bitiş tarihi, verilerin filtrelenmesi için seçildi |
+| MonthDiff |Ondalık sayı |Verilerin filtrelenmesi için aydaki fark Örneğin, 0 geçerli aya ait verileri gösterir,-1 önceki aya ait verileri gösterir, 0 ve-1 geçerli ve önceki aya ait verileri gösterir |
+| Hafta |Text |Verilerin filtrelenmesi için seçilen hafta, hafta Pazar günü başlar ve Cumartesi tarihinde sona erer |
+| WeekDate |Date |Haftalık bitiş tarihi, verilerin filtrelenmesi için seçildi |
+| WeekDiff |Ondalık sayı |Verilerin filtrelenmesi için haftanın farkı (örneğin, 0) geçerli haftanın verilerini gösterir,-1 önceki haftaki verileri gösterir, 0 ve-1 geçerli ve önceki hafta verilerini gösterir |
+| Yıl |Text |Verilerin filtrelenmesi için takvim yılı seçildi |
+| Yıltarihi |Date |Yılın bitiş tarihinden sonra, verileri filtrelemek için seçilen yıl |
 
 ### <a name="job"></a>İş
-Bu tablo, iş ile ilgili çeşitli alanlarını temel alan ve toplamalar sağlar.
+Bu tablo, işle ilgili çeşitli alanlar üzerinde temel alanları ve toplamaları sağlar.
 
 | Alan | Veri Türü | Açıklama |
 | --- | --- | --- |
-| #JobsCreatedInPeriod |Tam sayı |Seçili zaman aralığında oluşturulan iş sayısı |
-| % FailuresForJobsCreatedInPeriod |Yüzde |Yüzde seçili zaman aralığında iş hataları genel |
-| 80thPercentileDataTransferredInMBForBackupJobsCreatedInPeriod |Ondalık sayı |aktarılan veri 80. yüzdelik dilim değeri için MB cinsinden **yedekleme** seçili zaman aralığında oluşturulan işler |
-| AsOnDateTime |Tarih/Saat |Seçili satır için son yenileme zamanı |
-| AvgBackupDurationInMinsForJobsCreatedInPeriod |Ondalık sayı |Ortalama süresi için dakika cinsinden **tamamlanmış yedekleme** seçili zaman aralığında oluşturulan işler |
-| AvgRestoreDurationInMinsForJobsCreatedInPeriod |Ondalık sayı |Ortalama süresi için dakika cinsinden **geri yükleme tamamlandı** seçili zaman aralığında oluşturulan işler |
-| BackupStorageDestination |Text |Yedekleme depolama alanı gibi bulut Disk hedef  |
-| EntityState |Text |Örneğin, etkin, silinen iş nesnenin geçerli durumu |
-| JobFailureCode |Text |Hata kodu dizesi nedeniyle iş başarısız oldu |
-| JobOperation |Text |İşlem için iş yedekleme, geri yükleme, yapılandırma yedekleme gibi çalıştırılır |
-| JobStartDate |Tarih |Tarih çalışan iş başlatıldı |
-| JobStartTime |Zaman |Zaman çalıştıran iş başlatıldı |
-| JobStatus |Text |Örneğin, tamamlandı, başarısız bir tamamlanmış işinin durumu |
-| JobUniqueId |Text |İşi belirlemek için benzersiz kimliği |
+| #JobsCreatedInPeriod |Tam sayı |Seçilen dönemde oluşturulan iş sayısı |
+| % Failuıresforjobscreatedınperiod |Yüzde |Seçilen dönemdeki toplam iş hatalarının yüzdesi |
+| 80thPercentileDataTransferredInMBForBackupJobsCreatedInPeriod |Ondalık sayı |Seçilen dönemde oluşturulan **yedekleme** ışlerı için MB cinsinden aktarılan verilerin 500. yüzdebirlik değeri |
+| AsOnDateTime |Date/Time |Seçili satır için en son yenileme zamanı |
+| AvgBackupDurationInMinsForJobsCreatedInPeriod |Ondalık sayı |Seçilen dönemde oluşturulan **Tamamlanan yedekleme** işlerinin ortalama süresi (dakika) |
+| AvgRestoreDurationInMinsForJobsCreatedInPeriod |Ondalık sayı |Seçilen dönemde oluşturulan **Tamamlanan geri yükleme** işlerinin ortalama süresi (dakika) |
+| BackupStorageDestination |Text |Yedekleme depolamanın hedefi Örneğin, bulut, disk  |
+| EntityState |Text |İş nesnesinin geçerli durumu, örneğin, etkin, silindi |
+| JobFailureCode |Text |İş hatası oluştuğundan hata kodu dizesi |
+| JobOperation |Text |İşin çalıştırıldığı işlem Örneğin, yedekleme, geri yükleme, yedeklemeyi yapılandırma |
+| JobStartDate |Date |İşin çalışmaya başladığı tarih |
+| JobStartTime |Time |İşin çalışmaya başladığı zaman |
+| JobStatus |Text |Tamamlanan işin durumu Örneğin tamamlandı, başarısız |
+| Jobuniqueıd |Text |İşi tanımlamak için benzersiz kimlik |
 
 ### <a name="policy"></a>İlke
-Bu tablo, ilke ile ilgili çeşitli alanlarını temel alan ve toplamalar sağlar.
+Bu tablo, ilkeyle ilgili çeşitli alanlarla ilgili temel alanları ve toplamaları sağlar.
 
 | Alan | Veri Türü | Açıklama |
 | --- | --- | --- |
-| #Policies |Tam sayı |Sistemde mevcut yedekleme ilkelerini sayısı |
-| #PoliciesInUse |Tam sayı |Şu anda yedeklemeleri yapılandırmak için kullanılan ilkeleri sayısı |
-| AsOnDateTime |Tarih/Saat |Seçili satır için son yenileme zamanı |
-| BackupDaysOfTheWeek |Text |Ne zaman yedeklemeler zamanlandı haftanın günleri |
-| BackupFrequency |Text |Sıklık ile yedeklemeleri çalıştırma Örneğin, günlük, haftalık |
-| BackupTimes |Text |Yedeklemeler, zamanlanan tarih ve saat |
-| DailyRetentionDuration |Tam sayı |Toplam elde tutma süresi yapılandırılan yedekleme için gün |
-| DailyRetentionTimes |Text |Tarih ve saat günlük bekletme zaman yapılandırıldı |
-| EntityState |Text |Örneğin, etkin, silinen ilke nesnenin geçerli durumu |
-| MonthlyRetentionDaysOfTheMonth |Text |Aylık bekletme için seçili ayın tarihleri |
-| MonthlyRetentionDaysOfTheWeek |Text |Aylık bekletme için haftanın günü seçilmedi |
-| MonthlyRetentionDuration |Ondalık sayı |Toplam elde tutma süresi yapılandırılan yedeklemeler için bir ay içinde |
-| MonthlyRetentionFormat |Text |Aylık bekletme için yapılandırma günlük tabanlı, haftalık için hafta tabanlı gün için örneğin |
-| MonthlyRetentionTimes |Text |Tarih ve saat aylık bekletme zaman yapılandırılır |
-| MonthlyRetentionWeeksOfTheMonth |Text |Aylık bekletme olduğunda bir ayın hafta, örneğin, ilk, son VS yapılandırılmış. |
-| PolicyName |Text |Tanımlanan ilke adı |
-| PolicyUniqueId |Text |İlke tanımlamak için benzersiz kimlik |
-| RetentionType |Text |Örneğin, günlük, haftalık, aylık, yıllık bekletme ilkesi, yazın |
-| WeeklyRetentionDaysOfTheWeek |Text |Haftalık bekletme için haftanın günü seçilmedi |
-| WeeklyRetentionDuration |Ondalık sayı |Yapılandırılmış yedeklemeler için hafta cinsinden toplam haftalık tutma süresi |
-| WeeklyRetentionTimes |Text |Tarih ve saat haftalık bekletme zaman yapılandırılır |
-| YearlyRetentionDaysOfTheMonth |Text |Yıllık bekletme için seçili ayın tarihleri |
-| YearlyRetentionDaysOfTheWeek |Text |Yıllık bekletme için haftanın günü seçilmedi |
-| YearlyRetentionDuration |Ondalık sayı |Toplam elde tutma süresi yapılandırılan yedeklemeler için yıl içinde |
-| YearlyRetentionFormat |Text |Yıllık bekletme için yapılandırma günlük tabanlı, haftalık için hafta tabanlı gün için örneğin |
-| YearlyRetentionMonthsOfTheYear |Text |Yıl ay yıllık bekletme için seçili |
-| YearlyRetentionTimes |Text |Tarih ve saat, yıllık bekletme yapılandırılır |
-| YearlyRetentionWeeksOfTheMonth |Text |Yıllık bekletme olduğunda bir ayın hafta, örneğin, ilk, son VS yapılandırılmış. |
+| #Policies |Tam sayı |Sistemde var olan yedekleme ilkelerinin sayısı |
+| #PoliciesInUse |Tam sayı |Yedeklemeleri yapılandırmak için şu anda kullanılan ilke sayısı |
+| AsOnDateTime |Date/Time |Seçili satır için en son yenileme zamanı |
+| Backupdayısoftheweek |Text |Yedeklemelerin zamanlandığı haftanın günleri |
+| BackupFrequency |Text |Yedeklemelerin çalıştırıldığı sıklık (örneğin, günlük, haftalık) |
+| BackupTimes |Text |Yedeklemelerin zamanlandığı tarih ve saat |
+| DailyRetentionDuration |Tam sayı |Yapılandırılan yedeklemeler için gün cinsinden toplam saklama süresi |
+| DailyRetentionTimes |Text |Günlük bekletmenin yapılandırıldığı tarih ve saat |
+| EntityState |Text |İlke nesnesinin geçerli durumu, örneğin, etkin, silindi |
+| MonthlyRetentionDaysOfTheMonth |Text |Aylık saklama için seçilen ayın tarihleri |
+| MonthlyRetentionDaysOfTheWeek |Text |Aylık saklama için seçilen haftanın günleri |
+| MonthlyRetentionDuration |Ondalık sayı |Yapılandırılan yedeklemeler için aylık toplam bekletme süresi |
+| MonthlyRetentionFormat |Text |Aylık saklama için yapılandırma türü; günlük tabanlı, haftalık, haftalık tabanlı |
+| MonthlyRetentionTimes |Text |Aylık bekletmenin yapılandırıldığı tarih ve saat |
+| MonthlyRetentionWeeksOfTheMonth |Text |Aylık bekletme yapılandırıldığında Örneğin, Ilk, son vb. ayın haftası |
+| PolicyName |Text |Tanımlanan ilkenin adı |
+| Policyuniqueıd |Text |İlkeyi tanımlamak için benzersiz kimlik |
+| RetentionType |Text |Örneğin günlük, haftalık, aylık, yıllık bekletme ilkesi türü |
+| WeeklyRetentionDaysOfTheWeek |Text |Haftalık saklama için seçilen haftanın günleri |
+| WeeklyRetentionDuration |Ondalık sayı |Yapılandırılan yedeklemeler için hafta cinsinden toplam haftalık saklama süresi |
+| WeeklyRetentionTimes |Text |Haftalık bekletmenin yapılandırıldığı tarih ve saat |
+| YearlyRetentionDaysOfTheMonth |Text |Yıllık bekletme için seçilen ayın tarihleri |
+| YearlyRetentionDaysOfTheWeek |Text |Yıllık bekletme için seçilen haftanın günleri |
+| YearlyRetentionDuration |Ondalık sayı |Yapılandırılan yedeklemeler için yıl cinsinden toplam saklama süresi |
+| YearlyRetentionFormat |Text |Yıllık bekletme için yapılandırma türü; günlük tabanlı, haftalık, haftalık tabanlı |
+| YearlyRetentionMonthsOfTheYear |Text |Yıllık bekletme için seçilen yılın ayı |
+| YearlyRetentionTimes |Text |Yıllık bekletmenin yapılandırıldığı tarih ve saat |
+| YearlyRetentionWeeksOfTheMonth |Text |Yıllık bekletme yapılandırıldığında Örneğin, Ilk, son vb. ayın haftası |
 
 ### <a name="protected-server"></a>Korumalı sunucu
-Bu tablo üzerinde çeşitli korumalı sunucu ilgili alanları temel alan ve toplamalar sağlar.
+Bu tablo, korumalı sunucu ile ilgili çeşitli alanlar üzerinde temel alanları ve toplamaları sağlar.
 
 | Alan | Veri Türü | Açıklama |
 | --- | --- | --- |
 | #ProtectedServers |Tam sayı |Korumalı sunucu sayısı |
-| AsOnDateTime |Tarih/Saat |Seçili satır için son yenileme zamanı |
-| AzureBackupAgentOSType |Text |Azure yedekleme Aracısı'nın işletim sistemi türü |
-| AzureBackupAgentOSVersion |Text |Azure yedekleme Aracısı'nın işletim sistemi sürümü |
-| AzureBackupAgentUpdateDate |Text |Aracısı Yedekleme aracısı ne zaman güncelleştirildiği tarih |
+| AsOnDateTime |Date/Time |Seçili satır için en son yenileme zamanı |
+| AzureBackupAgentOSType |Text |Azure Backup aracısının işletim sistemi türü |
+| AzureBackupAgentOSVersion |Text |Azure Backup aracısının işletim sistemi sürümü |
+| AzureBackupAgentUpdateDate |Text |Aracı Yedekleme aracısının güncelleştirildiği tarih |
 | AzureBackupAgentVersion |Text |Aracı yedekleme sürümünün sürüm numarası |
-| BackupManagementType |Text |Yedekleme gibi IaaSVM Dosyaklasörü gerçekleştirmek için sağlayıcı türü |
-| EntityState |Text |Örneğin, etkin, silinen korumalı sunucu nesnenin geçerli durumu |
-| ProtectedServerFriendlyName |Text |Korumalı sunucu kolay adı |
-| ProtectedServerName |Text |Korumalı sunucu adı |
-| ProtectedServerType |Text |Örneğin, IaaSVMContainer korumalı sunucu türünü desteklenen |
-| ProtectedServerName |Text |Adı, hangi yedekleme öğesi için bir korumalı sunucunun ait olduğu |
-| RegisteredContainerId |Text |Yedekleme için kayıtlı kapsayıcı kimliği |
+| BackupManagementType |Text |Yedekleme gerçekleştirmek için sağlayıcı türü örneğin ıaasvm, FileFolder |
+| EntityState |Text |Korumalı sunucu nesnesinin geçerli durumu Örneğin, etkin, silindi |
+| ProtectedServerFriendlyName |Text |Korumalı sunucunun kolay adı |
+| ProtectedServerName |Text |Korumalı sunucunun adı |
+| ProtectedServerType |Text |Yedeklenen korumalı sunucu türü örneğin ıaasvmcontainer |
+| ProtectedServerName |Text |Yedekleme öğesinin ait olduğu korumalı sunucunun adı |
+| RegisteredContainerId |Text |Yedekleme için kaydedilen kapsayıcının kimliği |
 
 ### <a name="storage"></a>Depolama
-Bu tablo depolama ile ilgili çeşitli alanlarını temel alan ve toplamalar sağlar.
+Bu tablo, depolama ile ilgili çeşitli alanlar üzerinde temel alanları ve toplamaları sağlar.
 
 | Alan | Veri Türü | Açıklama |
 | --- | --- | --- |
-| #ProtectedInstances |Ondalık sayı |Seçilen sürede ön uç depolama faturalandırma, hesaplanmış dayalı olarak en son değeri hesaplamak için kullanılan korunan örnek sayısı |
-| AsOnDateTime |Tarih/Saat |Seçili satır için son yenileme zamanı |
-| CloudStorageInMB |Ondalık sayı |Hesaplanan yedeklemeler tarafından kullanılan yedekleme depolama bulut en son değeri seçili zaman dayanır. |
-| EntityState |Text |Örneğin, etkin, silinen nesnenin geçerli durumu |
-| LastUpdatedDate |Tarih |Seçili satır son güncelleştirildiği tarih |
+| #ProtectedInstances |Ondalık sayı |Seçili zamanda en son değere göre hesaplanan, faturalandırma aşamasında ön uç depolamayı hesaplamak için kullanılan korumalı örnek sayısı |
+| AsOnDateTime |Date/Time |Seçili satır için en son yenileme zamanı |
+| Cloudstorageınmb |Ondalık sayı |Seçilen zamanda en son değere göre hesaplanan yedeklemeler tarafından kullanılan bulut yedekleme depolaması |
+| EntityState |Text |Nesnenin geçerli durumu Örneğin, etkin, silindi |
+| LastUpdatedDate |Date |Seçili satırın son güncelleştirilme tarihi |
 
-### <a name="time"></a>Zaman
-Bu tabloda zamanla ilişkili alanları hakkındaki ayrıntılar verilmektedir.
+### <a name="time"></a>Time
+Bu tablo, zaman ile ilgili alanlarla ilgili ayrıntıları sağlar.
 
 | Alan | Veri Türü | Açıklama |
 | --- | --- | --- |
-| Saat |Zaman |Örneğin, 1:00:00 PM günün saati |
-| HourNumber |Ondalık sayı |Örneğin, 13,00 günün saat sayı |
-| Dakika |Ondalık sayı |Saatin dakikasını |
-| PeriodOfTheDay |Text |Örneğin, 12-3'te günlük dönem yuvasında zaman |
-| Zaman |Zaman |Örneğin, 12:00:01: 00 ve günün saati |
+| Saat |Time |Günün saati Örneğin, 1:00:00 PM |
+| HourNumber |Ondalık sayı |Günün saat numarası örneğin, 13,00 |
+| Dakika |Ondalık sayı |Saatin dakikası |
+| PeriodOfTheDay |Text |Günün zaman dilimi yuvası Örneğin, 12-3 |
+| Time |Time |Günün saati Örneğin, 12:00:01 |
 | TimeKey |Text |Saati temsil eden anahtar değer |
 
 ### <a name="vault"></a>Kasa
-Bu tablo, kasa ile ilgili çeşitli alanlarını temel alan ve toplamalar sağlar.
+Bu tablo, kasala ilgili çeşitli alanlarla ilgili temel alanları ve toplamaları sağlar.
 
 | Alan | Veri Türü | Açıklama |
 | --- | --- | --- |
-| #Vaults |Tam sayı |Kasaları sayısı |
-| AsOnDateTime |Tarih/Saat |Seçili satır için son yenileme zamanı |
+| #Vaults |Tam sayı |Kasaların sayısı |
+| AsOnDateTime |Date/Time |Seçili satır için en son yenileme zamanı |
 | AzureDataCenter |Text |Kasanın bulunduğu veri merkezi |
-| EntityState |Text |Örneğin, etkin, silinen kasa nesnenin geçerli durumu |
-| StorageReplicationType |Text |Örneğin, GeoRedundant kasa için depolama çoğaltma türü |
-| SubscriptionId |Text |Raporlar oluşturmak için seçili müşteri abonelik kimliği |
-| VaultName |Text |Kasa adı |
-| VaultTags |Text |Kasaya ilişkili etiketleri |
+| EntityState |Text |Kasa nesnesinin geçerli durumu, örneğin, etkin, silindi |
+| StorageReplicationType |Text |Kasa için depolama çoğaltma türü; coğrafi olarak yedekli |
+| SubscriptionId |Text |Rapor oluşturmak için seçilen müşterinin abonelik kimliği |
+| VaultName |Text |Kasasının adı |
+| VaultTags |Text |Kasayla ilişkili Etiketler |
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure Backup raporları oluşturmak için veri modeli gözden geçirin, sonra oluşturma ve Power BI'da raporları görüntüleme hakkında daha fazla ayrıntı için aşağıdaki makalelere bakın.
+Azure Backup raporları oluşturmak için veri modelini gözden geçirdikten sonra, Power BI rapor oluşturma ve görüntüleme hakkında daha fazla bilgi için aşağıdaki makalelere bakın.
 
-* [Power BI'da raporlar oluşturma](https://powerbi.microsoft.com/documentation/powerbi-service-create-a-new-report/)
-* [Power BI raporlarını filtreleme](https://powerbi.microsoft.com/documentation/powerbi-service-about-filters-and-highlighting-in-reports/)
+* [Power BI rapor oluşturma](https://powerbi.microsoft.com/documentation/powerbi-service-create-a-new-report/)
+* [Power BI raporları filtreleme](https://powerbi.microsoft.com/documentation/powerbi-service-about-filters-and-highlighting-in-reports/)

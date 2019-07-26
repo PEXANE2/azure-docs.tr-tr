@@ -1,5 +1,5 @@
 ---
-title: "Hızlı Başlangıç: Java için Bing Web araması SDK'sını kullanma"
+title: "Hızlı Başlangıç: Java için Bing Web Araması SDK 'sını kullanma"
 titleSuffix: Azure Cognitive Services
 description: Bing Web Araması SDK'sı, Bing Web Araması özelliklerini Java uygulamanızla tümleştirmeyi kolaylaştırır. Bu hızlı başlangıçta istek göndermeyi, JSON yanıtı almayı, sonuçları filtrelemeyi ve ayrıştırmayı öğreneceksiniz.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 07/25/2019
 ms.author: aahi
-ms.openlocfilehash: 7209df902f03a7055e142dcbbb7743b6832958b6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0d2c1ca439dbbbd79ddabd2ea7a4eb5298d1071a
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60344127"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500963"
 ---
-# <a name="quickstart-use-the-bing-web-search-sdk-for-java"></a>Hızlı Başlangıç: Java için Bing Web araması SDK'sını kullanma
+# <a name="quickstart-use-the-bing-web-search-sdk-for-java"></a>Hızlı Başlangıç: Java için Bing Web Araması SDK 'sını kullanma
 
 Bing Web Araması SDK'sı, Bing Web Araması özelliklerini Java uygulamanızla tümleştirmeyi kolaylaştırır. Bu hızlı başlangıçta istek göndermeyi, JSON yanıtı almayı, sonuçları filtrelemeyi ve ayrıştırmayı öğreneceksiniz.
 
@@ -35,9 +35,9 @@ Bu hızlı başlangıcı çalıştırmak için aşağıdakilere ihtiyacınız ol
 * [Apache Maven](https://maven.apache.org/download.cgi) veya favori derleme otomasyonu aracınız
 * Abonelik anahtarı
 
-## <a name="create-a-project-and-set-up-your-pom-file"></a>Bir proje oluşturup POM dosyanızın ayarlayın
+## <a name="create-a-project-and-set-up-your-pom-file"></a>Bir proje oluşturun ve pod dosyanızı ayarlayın
 
-Maven veya favori derleme otomasyonu aracınızı kullanarak yeni bir Java projesi oluşturun. Maven kullanıyorsanız varsayılarak aşağıdaki satırları ekleyin, [proje nesne modeli (POM)](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html) dosya. `mainClass` yerine uygulamanızı yazın.
+Maven veya favori derleme otomasyonu aracınızı kullanarak yeni bir Java projesi oluşturun. Maven kullandığınızı varsayarsak, [proje nesne modeli (pod)](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html) dosyanıza aşağıdaki satırları ekleyin. `mainClass` yerine uygulamanızı yazın.
 
 ```xml
 <build>
@@ -300,4 +300,4 @@ Bu projeyi tamamladıktan sonra abonelik anahtarınızı program kodundan kaldı
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [Azure Java SDK başvurusu](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/websearch)
+* [Azure Java SDK başvurusu](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingwebsearchapi?view=azure-java-stable)

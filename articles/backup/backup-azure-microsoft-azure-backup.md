@@ -1,19 +1,18 @@
 ---
 title: İş yüklerini Azure 'a yedeklemek için Azure Backup Sunucusu kullanma
 description: Azure portal iş yüklerini korumak veya yedeklemek için Azure Backup Sunucusu kullanın.
-services: backup
 author: kasinh
 manager: vvithal
 ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: kasinh
-ms.openlocfilehash: 12ec1ce4a774178be621d7d8626ead7f1b106189
-ms.sourcegitcommit: 20bb149fe74459e59b648361235324b0674fe55b
+ms.openlocfilehash: bf0e964c46088947fa50d1eadbcc12b78978251f
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68298522"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466386"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Sunucusu yükleyip yükseltin
 > [!div class="op_single_selector"]
@@ -278,10 +277,10 @@ Azure bağlantısının ve Azure aboneliğinin durumunu öğrendikten sonra, sun
 | --- | --- | --- | --- | --- | --- |
 | Bağlı |Etkin |İzin Verildi |İzin Verildi |İzin Verildi |İzin Verildi |
 | Bağlı |Süresi dolmuş |Durduruldu |Durduruldu |İzin Verildi |İzin Verildi |
-| Bağlı |Sağlaması kaldırıldı |Durduruldu |Durduruldu |Durdurulmuş ve Azure kurtarma noktaları silindi |Durduruldu |
+| Bağlı |Yetki Kaldırıldı |Durduruldu |Durduruldu |Durdurulmuş ve Azure kurtarma noktaları silindi |Durduruldu |
 | Kesilen bağlantı > 15 gün |Etkin |Durduruldu |Durduruldu |İzin Verildi |İzin Verildi |
 | Kesilen bağlantı > 15 gün |Süresi dolmuş |Durduruldu |Durduruldu |İzin Verildi |İzin Verildi |
-| Kesilen bağlantı > 15 gün |Sağlaması kaldırıldı |Durduruldu |Durduruldu |Durdurulmuş ve Azure kurtarma noktaları silindi |Durduruldu |
+| Kesilen bağlantı > 15 gün |Yetki Kaldırıldı |Durduruldu |Durduruldu |Durdurulmuş ve Azure kurtarma noktaları silindi |Durduruldu |
 
 ### <a name="recovering-from-loss-of-connectivity"></a>Bağlantı kaybından kurtarma
 Azure 'a erişimi engelleyen bir güvenlik duvarınız veya bir ara sunucu varsa, güvenlik duvarı/proxy profilinde aşağıdaki etki alanı adreslerine izin vermeniz gerekir:

@@ -1,62 +1,62 @@
 ---
-title: Azure veri paylaşımı Önizleme sorunlarını giderme
-description: Azure veri paylaşımı önizlemesi ile ilgili sorunları giderme hakkında bilgi edinin
+title: Azure veri paylaşımının önizlemesine sorun giderme
+description: Azure veri paylaşımının Önizlemeiyle ilgili sorunları nasıl giderebileceğinizi öğrenin
 services: data-share
 author: joannapea
 ms.service: data-share
-ms.topic: overview
+ms.topic: troubleshooting
 ms.date: 07/10/2019
 ms.author: joanpo
-ms.openlocfilehash: c02f72d6a327c4dcb94ac8844005613cfe316986
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 386a5e34dccafa61859cd13c3e0ad88cd3a7ffac
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67838393"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68421454"
 ---
-# <a name="troubleshoot-common-issues-in-azure-data-share-preview"></a>Azure veri paylaşımı önizlemesinde yaygın sorunlarını giderme
+# <a name="troubleshoot-common-issues-in-azure-data-share-preview"></a>Azure veri paylaşımında genel sorunları giderme Önizleme
 
-Bu makalede, Azure veri paylaşımı önizlemesi için sık karşılaşılan sorunları gidermek gösterilmektedir. 
+Bu makalede, Azure veri paylaşımının önizlemesi için sık karşılaşılan sorunların nasıl giderileceği gösterilmektedir. 
 
-## <a name="azure-data-share-invitations"></a>Azure veri paylaşımı davetleri 
+## <a name="azure-data-share-invitations"></a>Azure Data Share davetleri 
 
-Bazı durumlarda, yeni bir kullanıcı tıkladığında **daveti kabul** gönderilen e-posta davetini bunlar davetleri boş bir liste ile sunulacak. 
+Bazı durumlarda, yeni bir kullanıcı gönderilen e-posta **davetinde daveti kabul et** ' i tıklattığında, bu kişiler boş bir davetiye listesi ile sunulabilir. 
 
-![Davetiniz](media/no-invites.png)
+![Davetiye yok](media/no-invites.png)
 
-Yukarıdaki hata hizmeti ile bilinen bir sorundur ve şu anda ele alıyor. Geçici bir çözüm olarak izleyin aşağıdaki adımları. 
+Yukarıdaki hata, hizmette bilinen bir sorundur ve şu anda giderilmekte. Geçici bir çözüm olarak, aşağıdaki adımları izleyin. 
 
-1. Azure portalında gidin **abonelikler**
-1. Azure veri paylaşımı için kullanmakta olduğunuz aboneliği seçin
-1. Tıklayarak **kaynak sağlayıcıları**
-1. Microsoft.DataShare arayın
-1. Tıklayın **kaydetme**
+1. Azure portal **abonelikler** ' e gidin
+1. Azure veri paylaşımında kullandığınız aboneliği seçin
+1. **Kaynak sağlayıcıları** ' na tıklayın
+1. Microsoft. DataShare araması yapın
+1. **Kaydet** 'e tıklayın
 
-Sahip olmanız gerekir [Azure katkıda bulunan RBAC rolü](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) bu adımları tamamlamak için. 
+Bu adımları tamamlayabilmeniz için [Azure KATıLıMCıSı RBAC rolüne](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) sahip olmanız gerekir. 
 
-Hala davet paylaşan veri göremiyorsanız, veri sağlayıcınıza başvurun ve Azure oturum açma e-posta adresinize bir davet gönderilir olun ve *değil* e-posta diğer adınızı. 
+Hala bir veri paylaşma daveti göremiyorsanız, veri sağlayıcınızla iletişim kurun ve daveti e-posta diğer adınızla *değil* Azure oturum açma e-posta adresinize gönderdiklerinden emin olun. 
 
 > [!IMPORTANT]
-> Zaten bir Azure veri paylaşımı davetinizi kabul etti ve depolama yapılandırmadan önce Hizmeti'nden çıkıldı, ayrıntılı yönergeleri izleyin [bir veri kümesi eşlemeyi yapılandırma](how-to-configure-mapping.md) yapılandırmayı tamamlamak hakkında bilgi edinmek için nasıl yapılır Kılavuzu, alınan veri paylaşır ve veri almaya başlayın. 
+> Azure Data Share davetini zaten kabul etmiş ve depolamayı yapılandırmadan önce hizmetten çıkdıysanız, alınan veri paylaşımınızı yapılandırmayı nasıl tamamlayacağınızı öğrenmek için [bir veri kümesi eşleme](how-to-configure-mapping.md) ile nasıl yapılır Kılavuzu ' nda açıklanan yönergeleri izleyin ve veri almaya başlayın. 
 
-## <a name="error-when-creating-or-receiving-a-new-data-share"></a>Oluştururken ya da yeni bir veri paylaşımı alma hatası
+## <a name="error-when-creating-or-receiving-a-new-data-share"></a>Yeni veri paylaşımının oluşturulması veya alınması sırasında hata oluştu
 
-"Hata: İşlem, bir geçersiz durum kodu 'BadRequest' döndürdü"
+Hatayla İşlem geçersiz bir ' BadRequest ' durum kodu döndürdü
 
-"Hata: AuthorizationFailed"
+Hatayla AuthorizationFailed "
 
-"Hata: depolama hesabı için rol ataması"
+"Hata: depolama hesabına rol ataması"
 
-![Ayrıcalık hata](media/error-write-privilege.png)
+![Ayrıcalık hatası](media/error-write-privilege.png)
 
-Yeni bir veri paylaşımı oluştururken, yukarıdaki hatalardan birini alıyorsunuz veya depolama hesabı için izinler yetersiz olduğundan yeni bir veri paylaşımı alma, yüklemesiyse. Gerekli izni *Microsoft.Authorization/role atamaları/yazma*, depolama sahip rolü mevcut veya özel bir rol atanabilir. Depolama hesabı oluşturduğunuz bile bunu otomatik olarak, depolama hesabının sahibi yapmaz. Depolama hesabının sahibi kendiniz vermek için aşağıdaki adımları izleyin. Alternatif olarak, özel bir rol için kendiniz ekleyebilirsiniz bu izne sahip oluşturulabilir.  
+Yeni veri paylaşımı oluştururken veya alırken yukarıdaki hatalardan birini alırsanız, bunun nedeni depolama hesabı üzerinde yeterli izinlerin olmamasıdır. Gerekli izinler, depolama sahibi rolünde bulunan veya özel bir role atanabilecek *Microsoft. Authorization/role atamaları/yazma*' dır. Depolama hesabını siz oluşturmuş olsanız bile, bu sizi otomatik olarak depolama hesabının sahibi yapmaz. Kendinize depolama hesabı sahipliği vermek için şu adımları izleyin. Alternatif olarak, ' ye ' ye ekleyebileceğiniz Bu izinle özel bir rol oluşturulabilir.  
 
-1. Azure portalında depolama hesabına gidin
-1. Seçin **erişim denetimi (IAM)**
-1. Tıklayın **Ekle**
-1. Kendiniz sahibi olarak ekleyin.
+1. Azure portalında Depolama hesabına gidin
+1. **Erişim denetimi (IAM)** seçeneğini belirleyin
+1. **Ekle** 'ye tıklayın
+1. Sahibini sahip olarak içine ekleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Verileri paylaşmaya başlayın öğrenmek için devam [verilerinizi paylaşmak](share-your-data.md) öğretici.
+Verileri paylaşmaya nasıl başlayacağınızı öğrenmek için [verilerinizi paylaşma](share-your-data.md) öğreticiye geçin.
 

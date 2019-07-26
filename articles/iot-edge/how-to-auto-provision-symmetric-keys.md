@@ -1,5 +1,5 @@
 ---
-title: Simetrik anahtar kanıtlama kullanarak cihazları DPS ile otomatik sağlama-Azure IoT Edge | Microsoft Docs
+title: Simetrik anahtar kanıtlama kullanarak cihazları DPS ile oto Sağlama-Azure IoT Edge | Microsoft Docs
 description: Cihaz sağlama hizmeti ile Azure IoT Edge için otomatik cihaz sağlamayı test etmek için simetrik anahtar kanıtlama kullanın
 author: kgremban
 manager: philmea
@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: a91162271bf36e1d68e087a60723497e7fc261ec
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 3c21c0bdce6f6a5cd3c8f634bf400600b30a8ead
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275734"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68414600"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>Simetrik anahtar kanıtlama kullanarak bir IoT Edge cihazı oluşturma ve sağlama
 
-Azure IOT Edge cihazları otomatik-sağlanabilir kullanarak [cihaz sağlama hizmeti](../iot-dps/index.yml) edge etkin olmayan cihazlar'olduğu gibi. Otomatik sağlama işlemine bilmiyorsanız gözden [otomatik sağlama kavramlarını](../iot-dps/concepts-auto-provisioning.md) devam etmeden önce.
+Azure IOT Edge cihazları olabilir autoprovisioned kullanarak [cihaz sağlama hizmeti](../iot-dps/index.yml) edge etkin olmayan cihazlar'olduğu gibi. Autoprovisioning işlemine bilmiyorsanız gözden [autoprovisioning kavramları](../iot-dps/concepts-auto-provisioning.md) devam etmeden önce.
 
 Bu makalede, aşağıdaki adımlarla bir IoT Edge cihazında simetrik anahtar kanıtlama kullanarak bir cihaz sağlama hizmeti bireysel kaydı oluşturma işlemi gösterilmektedir:
 
@@ -165,8 +165,7 @@ Cihazınızı sağlarken aşağıdaki bilgilere sahip olmanız gerekir:
 
 Cihazınızın mimarisine yönelik yönergeleri izleyin. Otomatik değil el ile sağlama için IOT Edge çalışma zamanı yapılandırdığınızdan emin olun.
 
-* [Linux (x64) üzerinde Azure IoT Edge çalışma zamanını yükler](how-to-install-iot-edge-linux.md)
-* [Linux 'ta Azure IoT Edge çalışma zamanını (ARM32v7/armhf) yükler](how-to-install-iot-edge-linux-arm.md)
+[Linux üzerinde Azure IoT Edge çalışma zamanını yükler](how-to-install-iot-edge-linux.md)
 
 Simetrik anahtar sağlama yapılandırma dosyasındaki bölümü şöyle görünür:
 
@@ -188,7 +187,7 @@ provisioning:
 
 IoT Edge çalışma zamanını türetilmiş bir cihaz anahtarı oluşturduğunuz cihaza yüklemek için yönergeleri izleyin. Otomatik değil el ile sağlama için IOT Edge çalışma zamanı yapılandırdığınızdan emin olun.
 
-[IoT Edge yükleyip otomatik olarak sağla](how-to-install-iot-edge-windows.md#option-2-install-and-automatically-provision)
+[Windows üzerinde IoT Edge yükleyip otomatik olarak sağla](how-to-install-iot-edge-windows.md#option-2-install-and-automatically-provision)
 
 ## <a name="verify-successful-installation"></a>Yüklemenin başarılı olduğunu doğrulamak
 

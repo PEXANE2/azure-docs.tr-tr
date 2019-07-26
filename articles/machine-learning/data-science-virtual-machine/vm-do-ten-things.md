@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: gokuma
-ms.openlocfilehash: f30c241feced3031d9ed9791c27c6bb1e1e99efb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e1e59b9a34d075002e8129fe1588c95e207f8273
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60366269"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359017"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Windows veri bilimi sanal makinesi üzerinde yapabileceğiniz on işlem
 
@@ -106,7 +106,7 @@ Azure Machine learning'de modelinizi kullanıma hazır hale getirme, bir web hiz
 Kod SciKit-öğrenme kitaplığını kullanarak basit bir modeli oluşturan bir Python Jupyter Notebook geliştirilen bir parçacığı aşağıda verilmiştir.
 
 ```python
-#IRIS classification
+# IRIS classification
 from sklearn import datasets
 from sklearn import svm
 clf = svm.SVC()
@@ -120,10 +120,12 @@ Yöntem Modellerinizi python için Azure Machine Learning sarar modelinin tahmin
 ```python
 from azureml import services
 @services.publish(workspaceid, auth_token)
-@services.types(sep_l = float, sep_w = float, pet_l=float, pet_w=float)
-@services.returns(int) #0, or 1, or 2
+@services.types(sep_l=float, sep_w=float, pet_l=float, pet_w=float)
+@services.returns(int)  # 0, or 1, or 2
 def predictIris(sep_l, sep_w, pet_l, pet_w):
     inputArray = [sep_l, sep_w, pet_l, pet_w]
+
+
 return clf.predict(inputArray)
 ```
 
@@ -265,9 +267,9 @@ Kodu bir GitHub deposundan karşıdan yüklemek için kullandığınız ```git c
 
     git clone https://github.com/Azure/DataScienceVM.git
 
-Visual Studio'da aynı kopyalama işlemi yapabilirsiniz. Aşağıdaki ekran görüntüsünde, Visual Studio, Git ve GitHub araçlara erişmek gösterilmektedir.
+Visual Studio'da aynı kopyalama işlemi yapabilirsiniz. Aşağıdaki ekran görüntüsünde, Visual Studio 'da git ve GitHub araçlarına nasıl erişebileceğiniz gösterilmektedir.
 
-![Ekran görüntüsü, Visual Studio ile görüntülenen GitHub bağlantısı](./media/vm-do-ten-things/VSGit.PNG)
+![GitHub bağlantısı görüntülenirken Visual Studio ekran görüntüsü](./media/vm-do-ten-things/VSGit.PNG)
 
 GitHub deponuza kullanılabilen çeşitli kaynaklardan github.com üzerinde çalışmak için Git kullanma hakkında daha fazla bilgi bulabilirsiniz. [Kağıdı](https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf) yararlı bir başvurudur.
 
@@ -286,7 +288,7 @@ Azure blob, büyük ve küçük veriler için güvenilir, ekonomik bulut depolam
 
 ![Azure depolama Gezgini'nin depolama hesabına erişilirken ekran görüntüsü](./media/vm-do-ten-things/AzureStorageExplorer_v4.png)
 
-**Azure blob'a veri taşıma VM'den: AzCopy**
+**VM 'den Azure Blob 'a veri taşıma: AzCopy**
 
 Yerel dosyalarınızı ve blob depolama arasında veri taşımak için AzCopy komut satırı içinde kullanabilirsiniz veya PowerShell:
 
@@ -311,20 +313,20 @@ Bir Azure blobuna kopyalamak için AzCopy komutunu çalıştırdıktan sonra dos
 
 ![CSV dosyası karşıya yüklendi görüntüleme depolama hesabı ekran görüntüsü](./media/vm-do-ten-things/AzCopy_run_finshed_Storage_Explorer_v3.png)
 
-**Azure blob'a veri taşıma VM'den: Azure Depolama Gezgini**
+**VM 'den Azure Blob 'a veri taşıma: Azure Depolama Gezgini**
 
 Ayrıca Azure Depolama Gezgini'ni kullanarak, sanal yerel dosyadan verileri karşıya yükleyebilirsiniz:
 
 * Verileri bir kapsayıcıya yüklemek için hedef kapsayıcıyı seçin ve **karşıya** düğmesi.![ Azure depolama Gezgini'nde karşıya yükleme düğmesinin Ekran görüntüsü](./media/vm-do-ten-things/storage-accounts.png)
 * Tıklayarak **...**  sağındaki **dosyaları** kutusunda, dosya sisteminden karşıya yükleyin ve bir veya birden çok dosya seçin **karşıya** dosyalar karşıya yüklenirken başlamaya.![ Karşıya yükleme dosyaları iletişim kutusunun ekran görüntüsü](./media/vm-do-ten-things/upload-files-to-blob.png)
 
-**Azure Blob veri okuma: Machine Learning okuyucu Modülü**
+**Azure Blob 'dan veri okuma: Machine Learning okuyucu modülü**
 
 Azure Machine Learning Studio'da kullanabileceğiniz bir **verileri içeri aktarma modülü** , blobundan verileri okumak için.
 
 ![Machine Learning Studio'da içeri aktarma verileri modülünün ekran görüntüsü](./media/vm-do-ten-things/AML_ReaderBlob_Module_v3.png)
 
-**Azure Blob veri okuma: Python ODBC**
+**Azure Blob 'dan veri okuma: Python ODBC**
 
 Kullanabileceğiniz **BlobService** doğrudan Jupyter Not Defteri veya Python programında blobdan veri okumak için kitaplığı.
 
@@ -389,7 +391,7 @@ Azure Data Lake Store, büyük veri analizi iş yükleri ve uyumlu olan Hadoop d
 
 ![Visual Studio'da Data Lake Araçları'nın ekran görüntüsü](./media/vm-do-ten-things/Azure_Data_Lake_PlugIn_v2.PNG)
 
-**Data Lake için veri taşıma VM'den: Azure Data Lake Gezgini**
+**Verileri sanal makineden Data Lake taşıyın: Azure Data Lake Gezgini**
 
 Kullanabileceğiniz **Azure Data Lake Explorer** sanal makinenizde yerel dosyaları verileri Data Lake depolama alanına yüklemek için.
 
@@ -397,7 +399,7 @@ Kullanabileceğiniz **Azure Data Lake Explorer** sanal makinenizde yerel dosyala
 
 Ayrıca, veri taşıma ya da Azure Data Lake kullanarak hazır hale getirmek için veri işlem hattı oluşturabilirsiniz [Azure veri Factory(ADF)](https://azure.microsoft.com/services/data-factory/). Bu [makale](https://azure.microsoft.com/blog/creating-big-data-pipelines-using-azure-data-lake-and-azure-data-factory/) veri oluşturma adımlarında size kılavuzluk etmesi için işlem hatları.
 
-**Verileri Azure Blobundan Data Lake okuyun: U-SQL**
+**Data Lake için Azure Blobundan verileri okuyun: U-SQL**
 
 Verilerinizi Azure Blob Depolama alanında bulunuyorsa, U-SQL sorgusunu Azure depolama blobunda gelen verileri doğrudan okuyabilir. U-SQL sorgusu oluşturma önce Azure Data Lake için blob depolama hesabınıza bağlı olduğundan emin olun. Git **Azure portalında**, Azure Data Lake Analytics panonuzu bulun, tıklayın **veri kaynağı Ekle**, depolama türü seçin **Azure depolama** ve Azure depolama hesabınızdaki takın Adı ve anahtarı. Ardından depolama hesabında depolanan verilere başvurabilirsiniz.
 
@@ -453,7 +455,7 @@ Sorgunuzu sunucuya gönderildikten sonra işinizin durumunu gösteren diyagram g
 
 ![İş iletişim durumunun ekran görüntüsü](./media/vm-do-ten-things/USQL_Job_Status.PNG)
 
-**Veri Gölü'nde sorgu veri: U-SQL**
+**Data Lake sorgu verileri: U-SQL**
 
 Azure Data Lake alınan ve veri kümesi sonra kullanabileceğiniz [U-SQL dili](../../data-lake-analytics/data-lake-analytics-u-sql-get-started.md) sorgulayabilir ve verilerin keşfedin. U-SQL dili için T-SQL benzer, ancak kullanıcılar özelleştirilmiş modülleri, kullanıcı tanımlı işlevler ve vb. yazabilmesi amacıyla bazı C# özellikleri birleştirir. Önceki adımda komut dosyalarını kullanabilirsiniz.
 
@@ -495,7 +497,7 @@ Azure HDInsight, bulutta yönetilen bir Apache Hadoop, Spark, HBase ve Storm hiz
 * Ipython Not Defteri kullanarak verileri karşıya yükleyin. İlk gerekli paketleri içeri aktarın, kimlik bilgilerini takın, depolama hesabınızdaki bir db oluşturun ve ardından HDI kümelerine veri yükleme.
 
 ```python
-#Import required Packages
+# Import required Packages
 import pyodbc
 import time as time
 import json
@@ -510,12 +512,12 @@ from azure.storage.blob import BlobService
 warnings.filterwarnings("ignore", category=UserWarning, module='urllib2')
 
 
-#Create the connection to Hive using ODBC
-SERVER_NAME='xxx.azurehdinsight.net'
-DATABASE_NAME='nyctaxidb'
-USERID='xxx'
-PASSWORD='xxxx'
-DB_DRIVER='Microsoft Hive ODBC Driver'
+# Create the connection to Hive using ODBC
+SERVER_NAME = 'xxx.azurehdinsight.net'
+DATABASE_NAME = 'nyctaxidb'
+USERID = 'xxx'
+PASSWORD = 'xxxx'
+DB_DRIVER = 'Microsoft Hive ODBC Driver'
 driver = 'DRIVER={' + DB_DRIVER + '}'
 server = 'Host=' + SERVER_NAME + ';Port=443'
 database = 'Schema=' + DATABASE_NAME
@@ -523,12 +525,13 @@ hiveserv = 'HiveServerType=2'
 auth = 'AuthMech=6'
 uid = 'UID=' + USERID
 pwd = 'PWD=' + PASSWORD
-CONNECTION_STRING = ';'.join([driver,server,database,hiveserv,auth,uid,pwd])
+CONNECTION_STRING = ';'.join(
+    [driver, server, database, hiveserv, auth, uid, pwd])
 connection = pyodbc.connect(CONNECTION_STRING, autocommit=True)
-cursor=connection.cursor()
+cursor = connection.cursor()
 
 
-#Create Hive database and tables
+# Create Hive database and tables
 queryString = "create database if not exists nyctaxidb;"
 cursor.execute(queryString)
 
@@ -576,11 +579,13 @@ queryString = """
 cursor.execute(queryString)
 
 
-#Upload data from blob storage to HDI cluster
-for i in range(1,13):
-    queryString = "LOAD DATA INPATH 'wasb:///nyctaxitripraw2/trip_data_%d.csv' INTO TABLE nyctaxidb2.trip PARTITION (month=%d);"%(i,i)
+# Upload data from blob storage to HDI cluster
+for i in range(1, 13):
+    queryString = "LOAD DATA INPATH 'wasb:///nyctaxitripraw2/trip_data_%d.csv' INTO TABLE nyctaxidb2.trip PARTITION (month=%d);" % (
+        i, i)
     cursor.execute(queryString)
-    queryString = "LOAD DATA INPATH 'wasb:///nyctaxifareraw2/trip_fare_%d.csv' INTO TABLE nyctaxidb2.fare PARTITION (month=%d);"%(i,i)  
+    queryString = "LOAD DATA INPATH 'wasb:///nyctaxifareraw2/trip_fare_%d.csv' INTO TABLE nyctaxidb2.fare PARTITION (month=%d);" % (
+        i, i)
     cursor.execute(queryString)
 ```
 
@@ -592,7 +597,7 @@ for i in range(1,13):
 
 HDI kümesi veriler yüklendikten sonra verilerinizi Azure depolama Gezgini'nde kontrol edebilirsiniz. Ve HDI kümesi içinde oluşturulan bir veritabanı nyctaxidb sahipsiniz.
 
-**Veri keşfi: Python'da Hive sorguları**
+**Veri araştırması: Python 'da Hive sorguları**
 
 Veriler Hadoop kümesi olduğundan, pyodbc paket araştırma yapın ve özellik Mühendisliği için Hive'ı kullanarak Hadoop kümeleri ve sorgu veritabanına bağlanmak için kullanabilirsiniz. Önkoşul adımda oluşturduğumuz var olan tabloları görüntüleyebilirsiniz.
 
@@ -600,7 +605,7 @@ Veriler Hadoop kümesi olduğundan, pyodbc paket araştırma yapın ve özellik 
 queryString = """
     show tables in nyctaxidb2;
     """
-pd.read_sql(queryString,connection)
+pd.read_sql(queryString, connection)
 ```
 
 ![Var olan tabloları görüntüleme](./media/vm-do-ten-things/Python_View_Existing_Tables_Hive_v3.PNG)
@@ -633,7 +638,7 @@ queryString = """
     )tc
     GROUP BY tipped;
     """
-results = pd.read_sql(queryString,connection)
+results = pd.read_sql(queryString, connection)
 
 results.columns = ['tipped', 'trip_count']
 df = results.copy()
@@ -661,7 +666,7 @@ queryString = """
                         and dropoff_longitude between -90 and -30
                         and dropoff_latitude between 30 and 90;
             """
-results = pd.read_sql(queryString,connection)
+results = pd.read_sql(queryString, connection)
 results.head(5)
 ```
 
@@ -669,9 +674,9 @@ results.head(5)
 
 ```python
 results.columns = ['pickup_longitude', 'pickup_latitude', 'dropoff_longitude',
-                    'dropoff_latitude', 'trip_distance', 'trip_time_in_secs', 'direct_distance']
-df = results.loc[results['trip_distance']<=100] #remove outliers
-df = df.loc[df['direct_distance']<=100] #remove outliers
+                   'dropoff_latitude', 'trip_distance', 'trip_time_in_secs', 'direct_distance']
+df = results.loc[results['trip_distance'] <= 100]  # remove outliers
+df = df.loc[df['direct_distance'] <= 100]  # remove outliers
 plt.scatter(df['direct_distance'], df['trip_distance'])
 ```
 
@@ -717,7 +722,7 @@ stored as textfile;
 cursor.execute(queryString)
 ```
 
-Artık birleştirme içeriğini önceki iç tablosuna Ekle
+Şimdi, önceki iç tabloya birleştirmenin içeriğini ekleyin
 
 ```python
 queryString = """
@@ -812,7 +817,7 @@ queryString = """
     select * from nyctaxi_downsampled_dataset limit 10;
     """
 cursor.execute(queryString)
-pd.read_sql(queryString,connection)
+pd.read_sql(queryString, connection)
 ```
 
 ![Üst satırları tablodan veri](./media/vm-do-ten-things/DownSample_Data_For_Modeling_v2.PNG)

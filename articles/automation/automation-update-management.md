@@ -9,18 +9,21 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0c94e10a6f44a99c31e30c8f7df54e9441ce7a18
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
-ms.translationtype: HT
+ms.openlocfilehash: 4bd0b6f0652f49c16bd67bbca5a89d19e17a8b2c
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311755"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68498411"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 'da Güncelleştirme Yönetimi çözümü
 
 Azure 'da, şirket içi ortamlarda veya diğer bulut sağlayıcılarında Windows ve Linux bilgisayarlarınıza yönelik işletim sistemi güncelleştirmelerini yönetmek için Azure Otomasyonu 'nda Güncelleştirme Yönetimi çözümünü kullanabilirsiniz. Tüm aracı bilgisayarlardaki kullanılabilir güncelleştirmelerin durumunu hızla değerlendirebilir ve sunucular için gerekli güncelleştirmeleri yükleme işlemini yönetebilirsiniz.
 
 Sanal makineler için Güncelleştirme Yönetimi doğrudan Azure Otomasyonu hesabınızdan etkinleştirebilirsiniz. Otomasyon hesabınızdan sanal makineler için Güncelleştirme Yönetimi etkinleştirmeyi öğrenmek için bkz. [birden çok sanal makine için güncelleştirmeleri yönetme](manage-update-multi.md). Ayrıca, bir sanal makine için Güncelleştirme Yönetimi, Azure portal sanal makine sayfasından da etkinleştirebilirsiniz. Bu senaryo, [Linux](../virtual-machines/linux/tutorial-monitoring.md#enable-update-management) ve [Windows](../virtual-machines/windows/tutorial-monitoring.md#enable-update-management) sanal makineleri için kullanılabilir.
+
+> [!NOTE]
+> Güncelleştirme Yönetimi çözümü, Otomasyon hesabınıza bir Log Analytics çalışma alanı bağlamayı gerektirir. Desteklenen bölgelerin kesin listesi için bkz. [./How-to/Region-Mappings.MD]. Bölge eşlemeleri, Otomasyon hesabınızdan ayrı bir bölgedeki sanal makineleri yönetme özelliğini etkilemez.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -54,7 +57,7 @@ Bir Linux bilgisayar için, uyumluluk taraması varsayılan olarak saatte bir ge
 
 Zamanlanmış bir dağıtım oluşturarak, yazılım güncelleştirmelerinin gerekli olduğu bilgisayarlara güncelleştirmeleri dağıtabilir ve yükleyebilirsiniz. *Isteğe bağlı* olarak sınıflandırılan güncelleştirmeler Windows bilgisayarları için dağıtım kapsamına dahil edilmez. Dağıtım kapsamında yalnızca gerekli güncelleştirmeler bulunur.
 
-Zamanlanan dağıtım, açıkça bilgisayarları belirterek veya belirli bir bilgisayar kümesinin veya bir [Azure sorgusunun](#azure-machines) günlük aramalarını temel alan bir [bilgisayar grubu](../azure-monitor/platform/computer-groups.md) seçerek hangi hedef bilgisayarların ilgili güncelleştirmeleri alacağını tanımlar. Azure VM 'Leri belirtilen ölçütlere göre dinamik olarak seçer. Bu gruplar, yalnızca çözümü etkinleştiren yönetim paketlerini hangi makinelerin kullandığını belirlemek için kullanılan [kapsam yapılandırmasından](../azure-monitor/insights/solution-targeting.md)farklıdır. 
+Zamanlanan dağıtım, açıkça bilgisayarları belirterek veya belirli bir bilgisayar kümesinin veya bir [Azure sorgusunun](#azure-machines) günlük aramalarını temel alan bir [bilgisayar grubu](../azure-monitor/platform/computer-groups.md) seçerek hangi hedef bilgisayarların ilgili güncelleştirmeleri alacağını tanımlar. Azure VM 'Leri belirtilen ölçütlere göre dinamik olarak seçer. Bu gruplar, yalnızca çözümü etkinleştiren yönetim paketlerini hangi makinelerin kullandığını belirlemek için kullanılan [kapsam yapılandırmasından](../azure-monitor/insights/solution-targeting.md)farklıdır.
 
 Ayrıca, güncelleştirmelerin yüklenebileceği süreyi onaylamak ve ayarlamak için bir zamanlama da belirtirsiniz. Bu süre, bakım penceresi olarak adlandırılır. Yeniden başlatma gerekirse ve uygun yeniden başlatma seçeneğini belirlediyseniz, bakım penceresinin on dakikası yeniden başlatmalar için ayrılmıştır. Düzeltme eki uygulama beklenenden uzun sürüyorsa ve bakım penceresinde on dakikadan az varsa, yeniden başlatma gerçekleşmeyecektir.
 
@@ -73,11 +76,14 @@ Aşağıdaki tabloda desteklenen işletim sistemlerinin bir listesi gösterilmek
 |İşletim sistemi  |Notlar  |
 |---------|---------|
 |Windows Server 2008, Windows Server 2008 R2 RTM    | Yalnızca güncelleştirme değerlendirmelerini destekler.         |
-|Windows Server 2008 R2 SP1 ve üzeri (Windows Server 2012 ve 2016 dahil)    |.NET Framework 4.5.1 veya üzeri gereklidir. ([.NET Framework indir](/dotnet/framework/install/guide-for-developers))<br/> Windows PowerShell 4,0 veya üzeri gereklidir. ([WMF 4,0 indirin](https://www.microsoft.com/download/details.aspx?id=40855))<br/> Windows PowerShell 5,1, daha fazla güvenilirlik için önerilir.  ([WMF 5,1 indirin](https://www.microsoft.com/download/details.aspx?id=54616))        |
+|Windows Server 2008 R2 SP1 ve üzeri.  |.NET Framework 4.5.1 veya üzeri gereklidir. ([.NET Framework indir](/dotnet/framework/install/guide-for-developers))<br/> Windows PowerShell 4,0 veya üzeri gereklidir. ([WMF 4,0 indirin](https://www.microsoft.com/download/details.aspx?id=40855))<br/> Windows PowerShell 5,1, daha fazla güvenilirlik için önerilir.  ([WMF 5,1 indirin](https://www.microsoft.com/download/details.aspx?id=54616))        |
 |CentOS 6 (x86/x64) ve 7 (x64)      | Linux aracılarının bir güncelleştirme havuzuna erişimi olmalıdır. Sınıflandırma tabanlı düzeltme eki uygulama, CentOS 'ın kutudan çıkan güvenlik verilerini döndürmesi için ' yıum ' gerektirir. CentOS üzerinde sınıflandırma tabanlı düzeltme eki uygulama hakkında daha fazla bilgi için bkz. [Linux 'ta sınıflandırmaları güncelleştirme](#linux-2)          |
 |Red Hat Enterprise 6 (x86/x64) ve 7 (x64)     | Linux aracılarının bir güncelleştirme havuzuna erişimi olmalıdır.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) ve 12 (x64)     | Linux aracılarının bir güncelleştirme havuzuna erişimi olmalıdır.        |
 |Ubuntu 14,04 LTS, 16,04 LTS ve 18,04 (x86/x64)      |Linux aracılarının bir güncelleştirme havuzuna erişimi olmalıdır.         |
+
+> [!NOTE]
+> Azure sanal makine ölçek kümeleri, Güncelleştirme Yönetimi ile yönetilebilir. Güncelleştirme Yönetimi, temel görüntü değil örneklerin kendileri üzerinde işe yarar. Tüm sanal makine örneklerini tek seferde güncelleştirmeme gibi, güncelleştirmeleri artımlı bir şekilde zamanlamanız gerekir.
 
 ### <a name="unsupported-client-types"></a>Desteklenmeyen istemci türleri
 
@@ -140,7 +146,7 @@ Düzeltme eki uygulama sistemlerine başlamak için Güncelleştirme Yönetimi �
 * [Birden çok makineye göz atmaya](automation-onboard-solutions-from-browse.md)
 * [Otomasyon hesabınızdan](automation-onboard-solutions-from-automation-account.md)
 * [Bir Azure Otomasyonu runbook 'u ile](automation-onboard-solutions.md)
-  
+
 ### <a name="confirm-that-non-azure-machines-are-onboarded"></a>Azure olmayan makinelerin eklendi olduğunu onaylayın
 
 Doğrudan bağlı makinelerin Azure Izleyici günlükleriyle iletişim kurduğunu doğrulamak için, birkaç dakika sonra aşağıdaki günlük aramalarından birini çalıştırabilirsiniz.
@@ -208,7 +214,7 @@ Makine, güncelleştirme veya dağıtım hakkında bilgi döndüren bir günlük
 
 ![Güncelleştirme Yönetimi varsayılan görünüm](media/automation-update-management/update-management-view.png)
 
-## <a name="install-updates"></a>Güncelleştirmeleri yükler
+## <a name="install-updates"></a>Güncelleştirmeleri yükle
 
 Çalışma alanınızdaki tüm Linux ve Windows bilgisayarları için güncelleştirmeler değerlendirildikten sonra, bir *güncelleştirme dağıtımı*oluşturarak gerekli güncelleştirmeleri yükleyebilirsiniz. Bir güncelleştirme dağıtımı oluşturmak için, Otomasyon hesabına yazma erişiminizin olması ve dağıtımda hedeflenen tüm Azure VM 'lerine yazma erişiminizin olması gerekir. Güncelleştirme dağıtımı, bir veya daha fazla bilgisayar için gerekli güncelleştirmelerin zamanlanmış bir yüklemesidir. Dağıtımın ve bir bilgisayarın veya bilgisayar grubunun bir dağıtım kapsamına dahil edilecek tarih ve saati belirtirsiniz. Bilgisayar grupları hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici günlüklerinde bilgisayar grupları](../azure-monitor/platform/computer-groups.md).
 
@@ -353,7 +359,7 @@ Karma Runbook Worker için gereken bağlantı noktaları hakkında daha fazla bi
 
 Özel durumları tanımlarken listelenen adreslerin kullanılması önerilir. IP adresleri için [Microsoft Azure veri MERKEZI IP aralıklarını](https://www.microsoft.com/download/details.aspx?id=41653)indirebilirsiniz. Bu dosya haftalık olarak güncelleştirilir ve şu anda dağıtılmış aralıkları ve IP aralıklarında yapılan yaklaşan değişiklikleri yansıtır.
 
-## <a name="search-logs"></a>Günlüklerde ara
+## <a name="search-logs"></a>Günlük ara
 
 Azure portal belirtilen ayrıntılara ek olarak günlüklere göre aramalar yapabilirsiniz. Çözüm sayfalarında **Log Analytics**' yi seçin. **Günlük araması** bölmesi açılır.
 

@@ -11,22 +11,22 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0d9019a6b4a32066480a70f72562bc5a7a9a1e8b
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 3a316de54600d18f7ab839b8459bfe4eb0ff86e8
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797643"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479788"
 ---
-# <a name="configure-automated-ml-experiments-in-python"></a>Python'da otomatik ML denemeleri yapılandırın
+# <a name="configure-automated-ml-experiments-in-python"></a>Python 'da otomatik ML denemeleri yapılandırma
 
-Bu kılavuzda, otomatik, makine öğrenimi denemelerini ile çeşitli yapılandırma ayarlarını tanımlamayı öğrenin [Azure Machine Learning SDK'sı](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py). Otomatik machine learning bir algoritmaya ve hiperparametreleri sizin için seçer ve dağıtım için hazır bir model oluşturur. Otomatik makine öğrenimi denemelerini yapılandırmak için kullanabileceğiniz birkaç seçenek vardır.
+Bu kılavuzda, [Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)ile otomatik makine öğrenimi denemeleri 'in çeşitli yapılandırma ayarlarını nasıl tanımlayacağınızı öğrenin. Otomatik machine learning bir algoritmaya ve hiperparametreleri sizin için seçer ve dağıtım için hazır bir model oluşturur. Otomatik makine öğrenimi denemelerini yapılandırmak için kullanabileceğiniz birkaç seçenek vardır.
 
-Otomatik bir makine öğrenimi denemelerini örnekleri görüntülemek için bkz: [Öğreticisi: Otomatik machine learning ile bir sınıflandırma modeli eğitme](tutorial-auto-train-models.md) veya [eğitme modelleri bulutta otomatik machine learning ile](how-to-auto-train-remote.md).
+Otomatik makine öğrenimi denemeleri örneklerini görüntülemek için bkz [. Öğretici: Otomatik makine öğrenimi](tutorial-auto-train-models.md) ile bir sınıflandırma modeli eğitme veya [bulutta otomatik makine öğrenimi ile modeller eğitme](how-to-auto-train-remote.md).
 
 Otomatik machine learning'de kullanılabilen yapılandırma seçenekleri:
 
-* Deneme türünüzü seçin: Sınıflandırma, regresyon veya zaman serilerini tahmin etme
+* Deneme türünü seçin: Sınıflandırma, regresyon veya zaman serisi tahmin
 * Veri kaynağı, biçimleri ve verileri getirme
 * Hedef işlem seçin: yerel veya uzak
 * Otomatik machine learning deneme ayarları
@@ -34,7 +34,7 @@ Otomatik machine learning'de kullanılabilen yapılandırma seçenekleri:
 * Model ölçümleri keşfedin
 * Kaydolun ve model dağıtma
 
-Herhangi bir kod deneyimi tercih ediyorsanız, ayrıca [otomatik, makine öğrenimi denemeleri Azure portalında oluşturma](how-to-create-portal-experiments.md).
+Kod deneyimini tercih ediyorsanız, [Azure Portal otomatik makine öğrenimi denemeleri de oluşturabilirsiniz](how-to-create-portal-experiments.md).
 
 ## <a name="select-your-experiment-type"></a>Deneme türünüzü seçin
 
@@ -42,7 +42,7 @@ Denemenizi başlamadan önce çözümü machine learning sorun türünü belirle
 
 Otomatik machine learning, otomasyon ve ayarlama işlemi sırasında aşağıdaki algoritmalarını destekler. Bir kullanıcı olarak, algoritma belirtmek gerek yoktur. 
 
-Sınıflandırma | Regresyon | Zaman serilerini tahmin etme
+Sınıflandırma | Regresyon | Zaman serisi tahmin
 |-- |-- |--
 [Lojistik regresyon](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)| [Esnek Net](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)| [Esnek Net](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
 [Işık GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Işık GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Işık GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
@@ -53,13 +53,13 @@ Sınıflandırma | Regresyon | Zaman serilerini tahmin etme
 [C-Destek vektör sınıflandırma (SVC)](https://scikit-learn.org/stable/modules/svm.html#classification)|[Stokastik aşama (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)|[Stokastik aşama (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)
 [Rastgele orman](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[Rastgele orman](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[Rastgele orman](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
 [Son derece rastgele ağaçları](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[Son derece rastgele ağaçları](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[Son derece rastgele ağaçları](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
-[xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)|[xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)| [xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
-[DNN Sınıflandırıcısı](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier)|[DNN Regresörü](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor) | [DNN Regresörü](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)|
-[DNN doğrusal Sınıflandırıcısı](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearClassifier)|[Doğrusal Regresörü](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)|[Doğrusal Regresörü](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)
+[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)|[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)| [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
+[DNN sınıflandırıcı](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier)|[DNN gerileme](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor) | [DNN gerileme](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)|
+[DNN doğrusal sınıflandırıcı](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearClassifier)|[Doğrusal gerileme](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)|[Doğrusal gerileme](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)
 [Naive Bayes](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)|
 [Stokastik aşama (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)|
 
-Kullanım `task` parametresinde `AutoMLConfig` deneme türünüz belirtmek için oluşturucu.
+Deneme türünü belirtmek için `AutoMLConfig` oluşturucuda parametresinikullanın.`task`
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -97,62 +97,58 @@ Otomatik machine learning, yerel masaüstüne veya Azure Blob Depolama gibi bulu
 
 ## <a name="fetch-data-for-running-experiment-on-remote-compute"></a>Uzak işlem üzerinde denemeyi çalıştırmak için veri alma
 
-Denemenizi çalıştırmak için uzak bir işlem kullanıyorsanız, veri getirme, ayrı bir python betiği alınmalıdır `get_data()`. Bu betik, otomatik makine öğrenimi denemesi çalıştırıldığı uzak işlem üzerinde çalıştırılır. `get_data` her yineleme için kablo üzerinden verileri getirme gereksinimini ortadan kaldırır. Olmadan `get_data`, uzak işlem üzerinde çalıştırdığınızda, deneme başarısız olur.
+Uzaktan yürütmeler için, verileri uzak işlem üzerinden erişilebilir hale getirmeniz gerekir. Bu, verileri veri deposuna yükleyerek yapılabilir.
 
-İşte bir örnek `get_data`:
-
-```python
-%%writefile $project_folder/get_data.py
-import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import LabelEncoder
-def get_data(): # Burning man 2016 data
-    df = pd.read_csv("https://automldemods.blob.core.windows.net/datasets/PlayaEvents2016,_1.6MB,_3.4k-rows.cleaned.2.tsv", delimiter="\t", quotechar='"')
-    # get integer labels
-    le = LabelEncoder()
-    le.fit(df["Label"].values)
-    y = le.transform(df["Label"].values)
-    df = df.drop(["Label"], axis=1)
-    df_train, _, y_train, _ = train_test_split(df, y, test_size=0.1, random_state=42)
-    return { "X" : df, "y" : y }
-```
-
-İçinde `AutoMLConfig` nesne, belirttiğiniz `data_script` parametresi ve yolunu belirtin `get_data` aşağıdakine benzeyen bir komut dosyası:
+İşte şu şekilde bir örnek `datastore`:
 
 ```python
-automl_config = AutoMLConfig(****, data_script=project_folder + "/get_data.py", **** )
+    import pandas as pd
+    from sklearn import datasets
+    
+    data_train = datasets.load_digits()
+
+    pd.DataFrame(data_train.data[100:,:]).to_csv("data/X_train.csv", index=False)
+    pd.DataFrame(data_train.target[100:]).to_csv("data/y_train.csv", index=False)
+
+    ds = ws.get_default_datastore()
+    ds.upload(src_dir='./data', target_path='digitsdata', overwrite=True, show_progress=True)
 ```
 
-`get_data` betik döndürebilirsiniz:
+### <a name="define-deprep-references"></a>Deprep başvurularını tanımla
 
-Anahtar | Tür | İle birbirini dışlayan    | Açıklama
----|---|---|---
-X | Pandas Dataframe veya Numpy dizisi | data_train, etiket, sütunları |  Tüm özellikleri ile eğitme
-Y | Pandas Dataframe veya Numpy dizisi |   etiket   | Veri ile eğitmek için etiket. Sınıflandırma için tamsayı dizisi olmalıdır.
-X_valid | Pandas Dataframe veya Numpy dizisi   | data_train, etiket | _İsteğe bağlı_ özellik doğrulama kümesi form verileri. Belirtilmezse, X eğitimi arasında bölünmüş ve doğrulama
-y_valid |   Pandas Dataframe veya Numpy dizisi | data_train, etiket | _İsteğe bağlı_ ile doğrulamak için verileri etiket. Belirtilmezse, y eğitimi arasında bölünmüş ve doğrulama
-sample_weight | Pandas Dataframe veya Numpy dizisi |   data_train, etiket, sütunları| _İsteğe bağlı_ her örnek için bir ağırlık değeri. Veri noktaları için farklı ağırlıkları atamak istediğiniz zaman kullanın
-sample_weight_valid | Pandas Dataframe veya Numpy dizisi | data_train, etiket, sütunları |    _İsteğe bağlı_ her doğrulama örneği için bir ağırlık değeri. Belirtilmezse, sample_weight eğitimi arasında bölünmüş ve doğrulama
-data_train |    Pandas Dataframe |  X, y, X_valid, y_valid |    Tüm veriler (Özellikler + etiketi) ile eğitme
-etiket | dize  | X, y, X_valid, y_valid |  Hangi sütunun data_train etiketi temsil eder.
-Sütunları | dize dizisi  ||  _İsteğe bağlı_ özelliklerini beyaz liste sütun
-cv_splits_indices   | Tamsayı dizisi ||  _İsteğe bağlı_ dizinler için verileri çapraz doğrulama bölme listesi
+Aşağıdaki gibi otomatik makine öğrenimi `AutoMLConfig` nesnesine geçirilecek dprep başvurusu olarak X ve y tanımlayın:
+
+```python
+
+    X = dprep.auto_read_file(path=ds.path('digitsdata/X_train.csv'))
+    y = dprep.auto_read_file(path=ds.path('digitsdata/y_train.csv'))
+    
+    
+    automl_config = AutoMLConfig(task = 'classification',
+                                 debug_log = 'automl_errors.log',
+                                 path = project_folder,
+                                 run_configuration=conda_run_config,
+                                 X = X,
+                                 y = y,
+                                 **automl_settings
+                                )
+```
 
 ## <a name="train-and-validation-data"></a>Veri eğitme ve doğrulama
 
-Ayrı eğitme ve get_data() üzerinden veya doğrudan bir doğrulama belirtebilirsiniz `AutoMLConfig` yöntemi.
+Doğrudan `AutoMLConfig` yöntemde ayrı tren ve doğrulama kümesi belirtebilirsiniz.
 
 ### <a name="k-folds-cross-validation"></a>K hatları çapraz doğrulama
 
 Kullanım `n_cross_validations` ayarı doğrulamaları çapraz sayısını belirtin. Eğitim veri kümesi, içine rastgele bölünür `n_cross_validations` eşit boyutta hatları. Her çapraz doğrulama sırasında yuvarlak bir kat sayısı üzerinde kalan hatları eğitilmiş modelin doğrulama için kullanılır. Bu işlem yinelenir `n_cross_validations` her Katlama doğrulama kümesi olarak bir kez kullanılana kadar yuvarlar. Tüm ortalama puanları `n_cross_validations` yuvarlar bildirilir ve ilgili modeli tüm eğitim veri kümesi eğitilebileceği.
 
-### <a name="monte-carlo-cross-validation-repeated-random-sub-sampling"></a>Monte Carlo çapraz doğrulama (rastgele yinelenen alt örnekleme)
+### <a name="monte-carlo-cross-validation-repeated-random-sub-sampling"></a>Monte Carlo çapraz doğrulama (yinelenen rastgele alt örnekleme)
 
-Kullanma `validation_size` doğrulama ve kullanımı için kullanılması gereken eğitim veri kümesi yüzdesini belirtmek için `n_cross_validations` doğrulamaları çapraz sayısını belirtmek için. Her sırasında çapraz doğrulama round, bir alt boyutunun `validation_size` kalan veriler üzerine geliştirilen model doğrulama için rastgele seçilir. Son olarak, ortalama puanlar tamamında `n_cross_validations` yuvarlar bildirilir ve ilgili modeli tüm eğitim veri kümesi eğitilebileceği. Monte Carlo zaman serisi tahmini için desteklenmiyor.
+Kullanma `validation_size` doğrulama ve kullanımı için kullanılması gereken eğitim veri kümesi yüzdesini belirtmek için `n_cross_validations` doğrulamaları çapraz sayısını belirtmek için. Her sırasında çapraz doğrulama round, bir alt boyutunun `validation_size` kalan veriler üzerine geliştirilen model doğrulama için rastgele seçilir. Son olarak, ortalama puanlar tamamında `n_cross_validations` yuvarlar bildirilir ve ilgili modeli tüm eğitim veri kümesi eğitilebileceği. Monte Carlo, zaman serisi tahmin için desteklenmez.
 
 ### <a name="custom-validation-dataset"></a>Özel doğrulama veri kümesi
 
-Rastgele bölünmüş kabul edilebilir değilse, özel doğrulama veri kümesi, genellikle zaman serisi verilerini veya imbalanced verileri kullanın. Kendi doğrulama veri kümesi belirtebilirsiniz. Model doğrulama veri kümesi yerine rastgele veri kümesi belirtilen karşı değerlendirilir.
+Rastgele bölme kabul edilebilir değilse, genellikle zaman serisi verileri veya imledengeli veriler için özel doğrulama veri kümesi kullanın. Kendi doğrulama veri kümesi belirtebilirsiniz. Model doğrulama veri kümesi yerine rastgele veri kümesi belirtilen karşı değerlendirilir.
 
 ## <a name="compute-to-run-experiment"></a>Denemeyi çalıştırmak için işlem
 
@@ -160,17 +156,17 @@ Daha sonra modeli eğitimi burada belirleyin. Bir otomatik machine learning eği
 *   Yerel makinenizde yerel Masaüstü veya dizüstü – gibi genel olarak küçük veri kümesi olduğunda ve hala keşif aşamasında demektir.
 *   Buluttaki – uzak bir makine [Azure Machine Learning işlem yönetilen](concept-compute-target.md#amlcompute) kümelerinde Azure sanal makineler, makine öğrenimi modellerini eğitmenize olanağı sağlayan yönetilen bir hizmettir.
 
-Bkz: [GitHub site](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning) örneğin Not Defterleri ile yerel ve uzak hedef işlem.
+Yerel ve uzak işlem hedeflerine sahip Not defterleri için [GitHub sitesine](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning) bakın.
 
-*   Azure Databricks kümesiyle Azure aboneliğinizdeki. Burada - daha fazla ayrıntı bulabilirsiniz [otomatik ML için Kurulum Azure Databricks cluster](how-to-configure-environment.md#azure-databricks)
+*   Azure aboneliğinizdeki bir Azure Databricks kümesi. Burada daha fazla ayrıntı bulabilirsiniz- [OTOMATIK ml için Azure Databricks kümesi ayarlayın](how-to-configure-environment.md#azure-databricks)
 
-Bkz: [GitHub site](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-databricks/automl) örneğin Not Defterleri ile Azure Databricks.
+Azure Databricks örnek Not defterleri için [GitHub sitesine](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-databricks/automl) bakın.
 
 <a name='configure-experiment'></a>
 
 ## <a name="configure-your-experiment-settings"></a>Deneme ayarlarınızı yapılandırın
 
-Otomatik makine öğrenimi deneme yapılandırmak için kullanabileceğiniz birkaç seçenek vardır. Bu parametreleri örnekleme tarafından ayarlanan bir `AutoMLConfig` nesne. Bkz: [AutoMLConfig sınıfı](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py) parametrelerin tam bir listesi için.
+Otomatik makine öğrenimi deneme yapılandırmak için kullanabileceğiniz birkaç seçenek vardır. Bu parametreleri örnekleme tarafından ayarlanan bir `AutoMLConfig` nesne. Parametrelerin tam listesi için bkz. [oto Mlconfig sınıfı](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py) .
 
 Bazı örnekler:
 
@@ -201,12 +197,12 @@ Bazı örnekler:
         n_cross_validations=5)
     ```
 
-Üç farklı `task` parametre değerleri uygulamak için algoritmalar listesini belirleyin.  Kullanım `whitelist` veya `blacklist` ek yinelemeler dahil etmek veya hariç tutmak için kullanılabilir algoritmalar ile değiştirmek için parametreleri. Desteklenen modellerin listesi bulunabilir [SupportedAlgorithms sınıfı](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.constants.supportedalgorithms?view=azure-ml-py).
+Üç farklı `task` parametre değeri, uygulanacak algoritmaların listesini belirlenir.  Dahil etmek veya `blacklist` hariç tutmak için mevcut algoritmalarla Yinelemeleri değiştirmek için veyaparametrelerinikullanın.`whitelist` Desteklenen modellerin listesi [Supportedalgoritma sınıfında](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.constants.supportedalgorithms?view=azure-ml-py)bulunabilir.
 
 ### <a name="primary-metric"></a>Birincil Metrik
-Birincil metric; Yukarıdaki örneklerde gösterildiği gibi iyileştirme için modeli eğitimi sırasında kullanılacak ölçüm belirler. Birincil ölçüm seçebilirsiniz, seçtiğiniz görev türüne göre belirlenir. Ölçümlerin bir listesi aşağıda verilmiştir.
+Birincil ölçüm; Yukarıdaki örneklerde gösterildiği gibi, iyileştirme için model eğitimi sırasında kullanılacak ölçümü belirler. Seçebileceğiniz birincil ölçüm seçtiğiniz görev türüne göre belirlenir. Kullanılabilir ölçümlerin listesi aşağıda verilmiştir.
 
-|Sınıflandırma | Regresyon | Zaman serilerini tahmin etme
+|Sınıflandırma | Regresyon | Zaman serisi tahmin
 |-- |-- |--
 |accuracy| spearman_correlation | spearman_correlation
 |AUC_weighted | normalized_root_mean_squared_error | normalized_root_mean_squared_error
@@ -214,19 +210,19 @@ Birincil metric; Yukarıdaki örneklerde gösterildiği gibi iyileştirme için 
 |norm_macro_recall | normalized_mean_absolute_error | normalized_mean_absolute_error
 |precision_score_weighted |
 
-### <a name="data-preprocessing--featurization"></a>Veri ön işleme & özellik kazandırma sayesinde
+### <a name="data-preprocessing--featurization"></a>Veri ön işlemesi &
 
-Deneme her otomatik makine öğrenimi, verilerinizi olduğu [otomatik olarak ölçeği ve normalleştirilmiş](concept-automated-ml.md#preprocess) iyi gerçekleştirilip algoritmaları yardımcı olmak için.  Ancak, ek ön işleme/eksik değerleri imputation, kodlama ve dönüşüm gibi özellik kazandırma sayesinde, etkinleştirebilirsiniz. [Hangi özellik kazandırma sayesinde dahildir hakkında daha fazla bilgi](how-to-create-portal-experiments.md#preprocess).
+Her otomatik makine öğrenimi denemesinde, verileriniz [otomatik olarak ölçeklendirilir ve](concept-automated-ml.md#preprocess) algoritmaların iyi hale getirebileceği şekilde normalleştirilir.  Ancak, eksik değerler imputation, kodlama ve dönüşümler gibi ek ön işleme/korleştirme de etkinleştirebilirsiniz. [Nelerin dahil olduğu hakkında daha fazla bilgi edinin](how-to-create-portal-experiments.md#preprocess).
 
-Bu özellik kazandırma sayesinde etkinleştirmek üzere belirtin `"preprocess": True` için [ `AutoMLConfig` sınıfı](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py).
+Bu özelliği etkinleştirmek için `"preprocess": True` [ `AutoMLConfig` sınıfı](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)için belirtin.
 
-### <a name="time-series-forecasting"></a>Zaman serilerini tahmin etme
-Zaman serisi tahmin görev türü için ek parametreler tanımlamak için vardır.
-1. time_column_name - Bu, eğitim veri içeren tarih/saat serisinde sütunun adını tanımlayan gerekli bir parametredir.
-1. max_horizon - Bu eğitim verilerin dönemselliği üzerinde temel kullanıma tahmin etmek istediğiniz süreyi tanımlar. Örneğin günlük zaman grains ile eğitim verileriniz varsa, ne kadar out modelini eğitmek için istediğiniz gün tanımlayın.
-1. grain_column_names - Bu, tek tek zaman serisi verilerinde görülen eğitim verilerinizi içeren bir sütun adını tanımlar. Örneğin, mağaza tarafından belirli bir marka satışları tahmin etme özelliği, depolama ve marka sütunları dilimi sütunlar tanımlarsınız.
+### <a name="time-series-forecasting"></a>Zaman serisi tahmin
+Zaman serisi tahmin görev türü için, tanımlamanız gereken ek parametreleriniz vardır.
+1. time_column_name-bu, bir tarih/saat serisi içeren eğitim verilerinizde sütunun adını tanımlayan gerekli bir parametredir.
+1. max_horizon-bu, eğitim verilerinin dönemlik temelinde tahmin etmek istediğiniz süreyi tanımlar. Örneğin, günlük saat grasınlar ile eğitim verileriniz varsa, modelin ne kadar süreyle eğmesini istediğinizi tanımlarsınız.
+1. grain_column_names-bu, eğitim verilerinizde bireysel zaman serisi verileri içeren sütunların adını tanımlar. Örneğin, belirli bir markaların mağazasının satışlarını tahmin ediyorsanız, bir mağaza ve marka sütunları gren sütunları olarak tanımlarsınız.
 
-Bu örnek aşağıda kullanılan ayarları, Not Defteri örneği kullanılabilir [burada](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb).
+Aşağıda kullanılan bu ayarların örneğine bakın; Not defteri örneği [burada](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb)bulunabilir.
 
 ```python
 # Setting Store and Brand as grains for training.
@@ -259,7 +255,7 @@ automl_config = AutoMLConfig(task='forecasting',
 
 ## <a name="run-experiment"></a>Denemeyi çalıştırma
 
-Otomatik ML için oluşturmanız gerekecektir bir `Experiment` adlandırılmış bir nesne, nesne bir `Workspace` denemeleri çalıştırmak için kullanılır.
+Otomatik ml için, denemeleri çalıştırmak için kullanılan bir `Experiment` `Workspace` adlandırılmış nesne olan bir nesnesi oluşturmanız gerekir.
 
 ```python
 from azureml.core.experiment import Experiment
@@ -283,24 +279,24 @@ run = experiment.submit(automl_config, show_output=True)
 >Bağımlılıklar, önce yeni bir makineye yüklenir.  Bu çıkış gösterilmeden önce en fazla 10 dakika sürebilir.
 >Ayarı `show_output` için `True` konsolunda gösterilen çıkış sonuçlanıyor.
 
-### <a name="exit-criteria"></a>Sonlandırma kriteri
-Burada birkaç seçenek denemenizi tamamlanması tanımlayabilirsiniz.
-1. Hiçbir ölçüt herhangi tanımlamazsanız - denemeyi başka hiçbir ilerleme birincil ölçümünüzün yapılana kadar devam edecek parametreleri çıkın.
-1. Sayı - yinelemeleri çalıştırılacak deneme için yineleme sayısını tanımlayın. İsteğe bağlı yapabilecekleriniz her yineleme başına dakika zaman sınırı tanımlamak için iteration_timeout_minutes ekleyin.
-1. Saati - ne kadar süreyle dakikalar içinde bir deneme çalıştırma sırasında devam etmesi gerektiğini tanımlayabileceğiniz ayarlarınızdaki experiment_timeout_minutes kullanarak bir süre sonra çıkın.
-1. Bir puan - kullanarak, birincil bir ölçüme göre bir puan limite ulaşıldıktan sonra deneme tamamlamak için seçebileceğiniz experiment_exit_score limite ulaşıldıktan sonra çıkın.
+### <a name="exit-criteria"></a>Çıkış kriterleri
+Denemenizi tamamlamaya yönelik olarak tanımlayabileceğiniz birkaç seçenek vardır.
+1. Ölçüt yok-herhangi bir çıkış parametresi tanımlamadıysanız, birincil ölçümünde başka bir ilerleme yapılıncaya kadar deneme devam edecektir.
+1. Yineleme sayısı-çalıştırılacak denemenin yineleme sayısını tanımlarsınız. Her yinelemede dakika cinsinden bir zaman sınırı tanımlamak için isteğe bağlı iteration_timeout_minutes ekleyebilirsiniz.
+1. Süre dolduktan sonra çık-ayarlarınızda experiment_timeout_minutes kullanarak, denemede ne kadar süreyle denenmeye devam etmesi gerektiğini tanımlayabilirsiniz.
+1. Bir puana ulaşıldıktan sonra çık-experiment_exit_score kullanarak, birincil ölçmenize dayalı bir puana ulaşıldıktan sonra denemeyi tamamlamayı tercih edebilirsiniz.
 
 ### <a name="explore-model-metrics"></a>Model ölçümleri keşfedin
 
-Bir not defteri kullanıyorsanız, eğitim sonuçlarınızı bir pencere öğesi veya satır içi görüntüleyebilirsiniz. Bkz: [izlemek ve modellerin değerlendirmesi](how-to-track-experiments.md#view-run-details) daha fazla ayrıntı için.
+Bir not defteriniz varsa, eğitim sonuçlarınızı bir pencere öğesinde veya satır içi olarak görüntüleyebilirsiniz. Bkz: [izlemek ve modellerin değerlendirmesi](how-to-track-experiments.md#view-run-details) daha fazla ayrıntı için.
 
-## <a name="understand-automated-ml-models"></a>Otomatik ML modelleri anlama
+## <a name="understand-automated-ml-models"></a>Otomatik ML modellerini anlama
 
-Otomatik ML kullanılarak üretilen herhangi bir model, aşağıdaki adımları içerir:
-+ Özellik Mühendisliği otomatik (durumunda ön işleme = True)
-+ Ölçeklendirme normalleştirme ve hypermeter değerlerle algoritması
+Otomatikleştirilmiş ML kullanılarak oluşturulan herhangi bir model aşağıdaki adımları içerir:
++ Otomatik Özellik Mühendisliği (Eğer preprocess = true ise)
++ Hiper ölçüm değerleriyle ölçekleme/normalleştirme ve algoritma
 
-Biz bu bilgi otomatik ML fitted_model çıktısını alma saydam olun.
+Otomatikleştirilmiş ML 'den gelen fitted_model çıktısından bu bilgileri almak için saydam hale gelir.
 
 ```python
 automl_config = AutoMLConfig(…)
@@ -308,19 +304,19 @@ automl_run = experiment.submit(automl_config …)
 best_run, fitted_model = automl_run.get_output()
 ```
 
-### <a name="automated-feature-engineering"></a>Otomatik özellik Mühendisliği
+### <a name="automated-feature-engineering"></a>Otomatik Özellik Mühendisliği
 
-Ön işleme içeren listeye göz atın ve [özellik Mühendisliği otomatik](concept-automated-ml.md#preprocess) bu durumda olduğunda önişle = True.
+Ön işleme = true olduğunda gerçekleşen ön işleme ve [Otomatik Özellik Mühendisliği](concept-automated-ml.md#preprocess) listesine bakın.
 
-Bu örneği göz önünde bulundurun:
-+ 4 giriş özellikleri vardır: (Sayısal) B (sayısal), (sayısal) C, D (tarih/saat)
-+ Sayısal özellik C tamamı benzersiz değerler içeren bir kimlik sütunu olduğundan atıldı
-+ Sayısal özellik A ve B eksik değerleri olan ve bu nedenle göre ortalama imputed
-+ Tarih/Saat D özellikleri tespit 11 farklı mühendislik uygulanan özellikleri içine özelliğidir
+Şu örneği göz önünde bulundurun:
++ 4 giriş özelliği vardır: A (sayısal), B (sayısal), C (sayısal), D (TarihSaat)
++ Sayısal Özellik C, tüm benzersiz değerleri olan bir ID sütunu olduğundan bırakıldı
++ A ve B sayısal özelliklerinde eksik değerler var ve bu nedenle, ortalama olarak
++ Tarih saat özelliği D, 11 farklı mühendislik uygulanmış özelliklere sahiptir
 
-Bu 2 kullanmak daha iyi anlamak için ilk adımı, ekrana sığdırılmış model API'leri.  Bkz: [Bu örnek not defteri](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand).
+Daha fazlasını anlamak için, bu 2 API 'Leri, monte edilecek modelin ilk adımında kullanın.  [Bu örnek Not defteri](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand)' ne bakın.
 
-+ 1\. API: `get_engineered_feature_names()` mühendislik uygulanan özellik adlarının bir listesini döndürür.
++ API 1: `get_engineered_feature_names()` uygulanan özellik adlarının bir listesini döndürür.
 
   Kullanım:
   ```python
@@ -331,12 +327,12 @@ Bu 2 kullanmak daha iyi anlamak için ilk adımı, ekrana sığdırılmış mode
   Output: ['A', 'B', 'A_WASNULL', 'B_WASNULL', 'year', 'half', 'quarter', 'month', 'day', 'hour', 'am_pm', 'hour12', 'wday', 'qday', 'week']
   ```
 
-  Bu liste tüm mühendislik uygulanan özellik adlarını içerir.
+  Bu liste, uygulanan tüm özellik adlarını içerir.
 
   >[!Note]
-  >'Timeseriestransformer' görev için kullanacağınız 'regresyon' veya 'sınıflandırma' görevinin ' datatransformer' = 'tahmin', başka kullanın.
+  >Görev = ' tahmin ' için ' timeseriestransformer ' kullanın, aksi takdirde ' gerileme ' veya ' sınıflandırma ' görevi için ' datatransformer ' kullanın.
 
-+ 2\. API: `get_featurization_summary()` özellik kazandırma sayesinde Özet tüm giriş özellikleri döndürür.
++ API 2: `get_featurization_summary()` tüm giriş özellikleri için featurleştirme Özeti döndürür.
 
   Kullanım:
   ```python
@@ -344,7 +340,7 @@ Bu 2 kullanmak daha iyi anlamak için ilk adımı, ekrana sığdırılmış mode
   ```
 
   >[!Note]
-  >'Timeseriestransformer' görev için kullanacağınız 'regresyon' veya 'sınıflandırma' görevinin ' datatransformer' = 'tahmin', başka kullanın.
+  >Görev = ' tahmin ' için ' timeseriestransformer ' kullanın, aksi takdirde ' gerileme ' veya ' sınıflandırma ' görevi için ' datatransformer ' kullanın.
 
   Çıktı:
   ```
@@ -374,40 +370,44 @@ Bu 2 kullanmak daha iyi anlamak için ilk adımı, ekrana sığdırılmış mode
 
    |Output|Tanım|
    |----|--------|
-   |RawFeatureName|Sağlanan dataset adından giriş özelliği/sütun.|
-   |TypeDetected|Giriş özellik algılanan veri türü.|
-   |Bırakılan|Giriş özellik bırakılan veya kullanılan reddedildiğini gösterir.|
-   |EngineeringFeatureCount|Otomatik özellik Mühendisliği dönüşümler oluşturulan özellikler sayısı.|
-   |Dönüşümler|Mühendislik uygulanan özellikler oluşturmak için özellikleri girişi için uygulanan dönüşümler listesi.|
+   |RawFeatureName|Girilen veri kümesindeki giriş özelliği/sütun adı.|
+   |Typedetesiyonu|Giriş özelliğinin veri türü algılandı.|
+   |Bırakılmış|Giriş özelliğinin bırakılıp bırakılmadığını veya kullanıldığını gösterir.|
+   |EngineeringFeatureCount|Otomatikleştirilmiş Özellik Mühendisliği dönüştürmeleri aracılığıyla oluşturulan özellik sayısı.|
+   |Dönüşümler|Uygulanan özellikler oluşturmak için giriş özelliklerine uygulanan dönüşümlerin listesi.|
 
-### <a name="scalingnormalization-and-algorithm-with-hypermeter-values"></a>Ölçeklendirme normalleştirme ve hypermeter değerlerle algoritması:
+### <a name="scalingnormalization-and-algorithm-with-hypermeter-values"></a>Hiper ölçüm değerleriyle ölçekleme/normalleştirme ve algoritma:
 
-Bir işlem hattı ölçeklendirme normalleştirme ve algoritma/hiper parametre değerlerini anlamak için fitted_model.steps kullanın. [Ölçeklendirme normalleştirme hakkında daha fazla bilgi](concept-automated-ml.md#preprocess). Örnek çıktı aşağıdaki gibidir:
+Bir işlem hattının ölçekleme/normalleştirme ve algoritma/hiper parametre değerlerini anlamak için fitted_model. Steps kullanın. [Ölçeklendirme/normalleştirme hakkında daha fazla bilgi edinin](concept-automated-ml.md#preprocess). Örnek çıktı aşağıdaki gibidir:
 
 ```
 [('RobustScaler', RobustScaler(copy=True, quantile_range=[10, 90], with_centering=True, with_scaling=True)), ('LogisticRegression', LogisticRegression(C=0.18420699693267145, class_weight='balanced', dual=False, fit_intercept=True, intercept_scaling=1, max_iter=100, multi_class='multinomial', n_jobs=1, penalty='l2', random_state=None, solver='newton-cg', tol=0.0001, verbose=0, warm_start=False))
 ```
 
-Daha fazla bilgi edinmek için gösterilen bu yardımcı işlevini kullanın. [Bu örnek not defteri](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification/auto-ml-classification.ipynb).
+Daha fazla bilgi edinmek için [Bu örnek not defterinde](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification/auto-ml-classification.ipynb)gösterilen bu yardımcı işlevi kullanın.
 
 ```python
 from pprint import pprint
+
+
 def print_model(model, prefix=""):
     for step in model.steps:
         print(prefix + step[0])
         if hasattr(step[1], 'estimators') and hasattr(step[1], 'weights'):
-            pprint({'estimators': list(e[0] for e in step[1].estimators), 'weights': step[1].weights})
+            pprint({'estimators': list(
+                e[0] for e in step[1].estimators), 'weights': step[1].weights})
             print()
             for estimator in step[1].estimators:
-                print_model(estimator[1], estimator[0]+ ' - ')
+                print_model(estimator[1], estimator[0] + ' - ')
         else:
             pprint(step[1].get_params())
             print()
 
+
 print_model(fitted_model)
 ```
 
-Belirli bir algoritma (Bu durumda RobustScalar ile LogisticRegression) kullanarak bir işlem hattı için bir örnek çıktı verilmiştir.
+Aşağıda belirli bir algoritma (Bu örnekte RobustScalar ile LogisticRegression) kullanılarak bir işlem hattı için örnek çıktı verilmiştir.
 
 ```
 RobustScaler
@@ -435,7 +435,7 @@ LogisticRegression
 
 <a name="explain"></a>
 
-## <a name="explain-the-model-interpretability"></a>Model (interpretability) açıklayın
+## <a name="explain-the-model-interpretability"></a>Modeli açıklayın (yorumlenebilirlik)
 
 Otomatik machine learning özellik önem anlamanıza olanak sağlar.  Eğitim işlemi sırasında modeli için genel özellik önem alabilirsiniz.  Sınıflandırma senaryoları için sınıf düzeyi özelliği önem alabilirsiniz.  Doğrulama veri kümesi özelliği önem almak için (X_valid) sağlamanız gerekir.
 
@@ -492,18 +492,25 @@ Otomatik machine learning özellik önem anlamanıza olanak sağlar.  Eğitim i�
     print(per_class_summary)
     ```
 
-Azure portalında çalışma alanınızdaki özellik önem grafiği görselleştirebilirsiniz. Grafik da Jupyter pencere öğesi içinde bir not defteri kullanırken gösterilir. Bilgi edinmek için grafikler hakkında daha fazla başvurmak [örnek Azure Machine Learning hizmet not defterlerini makalesi.](samples-notebooks.md)
+Azure portalında çalışma alanınızdaki özellik önem grafiği görselleştirebilirsiniz. Çalıştır nesnesini kullanarak URL 'YI görüntüle:
+
+```
+automl_run.get_portal_url()
+```
+
+Azure portalında çalışma alanınızdaki özellik önem grafiği görselleştirebilirsiniz. Grafik Ayrıca bir not defterinde `RunDetails` [Jupyter pencere öğesi](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) kullanılırken gösterilir. Grafikler hakkında daha fazla bilgi edinmek için bkz. [otomatik makine öğrenimi sonuçlarını anlama](how-to-understand-automated-ml.md).
 
 ```Python
 from azureml.widgets import RunDetails
-RunDetails(local_run).show()
+RunDetails(automl_run).show()
 ```
+
 ![özellik önem grafiği](./media/how-to-configure-auto-train/feature-importance.png)
 
-Nasıl model açıklamalar ve özellik önem diğer alanlardaki otomatik makine öğrenimi dışında SDK'sının etkin hale getirilebilir daha fazla bilgi için bkz: [kavramı](machine-learning-interpretability-explainability.md) interpretability makale.
+Model açıklamalarını ve özellik önemini otomatik makine öğrenimi dışında SDK 'nın diğer alanlarında nasıl etkinleştirilecekleri hakkında daha fazla bilgi için, bkz. yorumda bulunan [kavram](machine-learning-interpretability-explainability.md) makalesi.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Daha fazla bilgi edinin [nasıl ve nerede model dağıtma](how-to-deploy-and-where.md).
 
-Daha fazla bilgi edinin [otomatik machine learning ile bir regresyon modeli eğitme](tutorial-auto-train-models.md) veya [uzak bir kaynağa machine learning kullanarak eğitme otomatik](how-to-auto-train-remote.md).
+[Otomatik makine öğrenimi ile regresyon modelini eğitme](tutorial-auto-train-models.md) veya [uzak bir kaynakta otomatik makine öğrenimi kullanarak nasıl eğitme](how-to-auto-train-remote.md)yapılacağı hakkında daha fazla bilgi edinin.

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/26/2019
+ms.date: 07/25/2019
 ms.author: diberry
-ms.openlocfilehash: efb2524b430935e6c74415efe850b69835825bc7
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 156b2cf7c8042699f70e4bc3ec0b8944ac59a364
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447683"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68501173"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>Veri kaynakları için soru-cevap Oluşturucu içeriği
 
@@ -25,22 +25,22 @@ Aşağıdaki tabloda, soru-cevap Oluşturucu tarafından desteklenen içeriği v
 
 |Kaynak Türü|İçerik Türü| Örnekler|
 |--|--|--|
-|URL'si|SSS<br> (Düz, bölümleri veya konuları giriş sayfası ile)<br>Destek sayfaları <br> (Sorun giderme makaleleri vb. tek sayfalı nasıl yapılır makaleleri,.)|[Düz SSS](https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs), <br>[SSS bağlantılarla](https://www.microsoft.com/software-download/faq),<br> [Konuları giriş sayfası ile ilgili SSS](https://www.microsoft.com/Licensing/servicecenter/Help/Faq.aspx)<br>[Destek makalesi](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/best-practices)|
-|PDF / DOC|Sık sorulan sorular<br> Ürün el ile<br> Broşür<br> Kağıt<br> El İlanı İlkesi<br> Destek Kılavuzu<br> Yapılandırılmış soru-cevap<br> VS.|[QnA.doc yapılandırılmış](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx),<br> [Örnek Ürün Manual.pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf),<br> [Örnek Yarı structured.doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx),<br> [Beyaz paper.pdf örneği](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/white-paper.pdf)|
-|Excel|Yapılandırılmış soru-cevap dosyası<br> (RTF dahil olmak üzere HTML desteği)|[Soru-cevap FAQ.xls örneği](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/QnA%20Maker%20Sample%20FAQ.xlsx)|
+|URL|SSS<br> (Düz, bölümler ile veya konu başlığı ile)<br>Destek sayfaları <br> (Tek sayfalı nasıl yapılır makaleleri, sorun giderme makaleleri vb.)|[Düz SSS](https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs), <br>[Bağlantılarla Ilgili SSS](https://www.microsoft.com/software-download/faq),<br> [Konularda SSS giriş sayfası](https://www.microsoft.com/Licensing/servicecenter/Help/Faq.aspx)<br>[Destek makalesi](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/best-practices)|
+|PDF / DOC|Sık<br> Ürün el kitabı,<br> Broşürler<br> T<br> El ilanı Ilkesi,<br> Destek Kılavuzu,<br> Yapılandırılmış QnA,<br> benzerlerini.|[Yapılandırılmış QnA. doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx),<br> [Örnek ürün el ile. PDF](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf),<br> [Örnek semi-structured. doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx),<br> [Örnek Teknik İnceleme. PDF](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/white-paper.pdf)|
+|Excel|Yapılandırılmış soru-cevap dosyası<br> (RTF, HTML desteği dahil)|[Soru-cevap FAQ.xls örneği](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/QnA%20Maker%20Sample%20FAQ.xlsx)|
 |TXT/TSV|Yapılandırılmış soru-cevap dosyası|[Örnek chit-chat.tsv](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Scenario_Responses_Friendly.tsv)|
 
 ## <a name="data-source-locations"></a>Veri kaynağı konumları
 
-Çoğu veri kaynağı konumlarınız genel URL veya kimlik doğrulaması gerektirmeyen dosyaları sağlamanız gerekir. 
+Çoğu veri kaynağı konumu, kimlik doğrulaması gerektirmeyen genel URL 'Leri veya dosyaları sağlamalıdır. 
 
-[SharePoint veri kaynağı konumları](../How-to/add-sharepoint-datasources.md) kimliği doğrulanmış dosyaları sağlamanıza izin verilir. SharePoint kaynakları, dosyalar, web sayfaları olmalıdır. 
+[SharePoint veri kaynağı konumlarına](../How-to/add-sharepoint-datasources.md) kimliği doğrulanmış dosyalar sağlama izni verilir. SharePoint kaynakları, Web sayfaları değil, dosyalar olmalıdır. 
 
-Kimliği doğrulanmış bir dosyaya veya URL'ye sahip alternatif bir seçenek varsa, dosyayı yerel bilgisayarınıza kimliği doğrulanmış siteden indirmek için yerel dosya eklersiniz bilgisayar için bilgi bankasına. 
+Kimliği doğrulanmış bir dosyanız veya URL 'niz varsa, dosyayı kimliği doğrulanmış siteden yerel bilgisayarınıza indirmek için alternatif bir seçenek, ardından dosyayı yerel bilgisayarınızdan Bilgi Bankası 'na eklemektir. 
 
 ## <a name="faq-urls"></a>SSS URL'leri
 
-Soru-cevap Oluşturucu SSS web sayfaları 3 farklı biçimlerde destekler: Düz SSS sayfaları, SSS sayfaları bağlantılarla birlikte, SSS sayfaları konuları giriş sayfası.
+Soru-Cevap Oluşturma, 3 farklı formda SSS Web sayfalarını destekleyebilir: Düz SSS sayfaları, bağlantılarla ilgili SSS sayfaları, konular giriş sayfası ile SSS sayfaları.
 
 ### <a name="plain-faq-pages"></a>Düz SSS sayfaları
 
@@ -69,14 +69,14 @@ Aşağıdaki konular giriş sayfası bağlantıları için farklı sayfalara SSS
  ![Bilgi Bankası için ayrıntılı bağlantı SSS sayfası örneği](../media/qnamaker-concepts-datasources/topics-faq.png) 
 
 
-### <a name="support-urls"></a>Destek URL'si
+### <a name="support-urls"></a>Destek URL 'Leri
 
-Soru-cevap Oluşturucu, belirli bir görevi gerçekleştirme, belirli bir sorunu tanılamak ve çözmek nasıl ve verilen bir işlem için en iyi uygulamalar nelerdir açıklayan web makaleleri gibi yarı yapılandırılmış Destek web sayfaları işleyebilir. Ayıklama açık bir yapı hiyerarşik başlıkları olan içeriği, en iyi şekilde çalışır.
+Soru-Cevap Oluşturma, belirli bir görevin nasıl gerçekleştirileceğini, belirli bir sorunun nasıl tanılanacağı ve çözümleneceğini ve belirli bir işlem için en iyi uygulamaların hangileri olduğunu betimleyen web makaleleri gibi yarı yapılandırılmış destek Web sayfalarını işleyebilir. Ayıklama, hiyerarşik başlıkları olan açık bir yapıya sahip içerikte en iyi şekilde kullanılır.
 
 > [!NOTE]
-> Destek makaleleri için ayıklama yeni bir özelliktir ve erken aşamalarında. Bu da yapılandırılmış ve karmaşık üstbilgi/altbilgi içermeyen basit sayfaları, en iyi şekilde çalışır.
+> Destek makaleleri için ayıklama yeni bir özelliktir ve erken aşamalarındayken. İyi yapılandırılmış olan ve karmaşık üstbilgiler/altbilgiler içermeyen basit sayfalar için en iyi şekilde kullanılır.
 
-![Soru-cevap Oluşturucu ayıklama açık bir yapı hiyerarşik başlıklarla Burada sunulan yarı yapılandırılmış web sayfalarından destekler](../media/qnamaker-concepts-datasources/support-web-pages-with-heirarchical-structure.png)
+![Soru-Cevap Oluşturma, açık bir yapının hiyerarşik başlıklarla sunulduğu yarı yapılandırılmış Web sayfalarından ayıklanmasını destekler](../media/qnamaker-concepts-datasources/support-web-pages-with-heirarchical-structure.png)
 
 
 ## <a name="pdf-doc-files"></a>PDF / DOC dosyaları
@@ -98,7 +98,7 @@ El ile bir dizin sayfası ve hiyerarşik içerik ilişkin bir örnek aşağıda 
 
 ### <a name="brochures-guidelines-papers-and-other-files"></a>Broşürler, kılavuzlar, incelemeler ve diğer dosyaları
 
-Açık bir yapı ve düzeni olması kaydıyla, QA çiftleri oluşturmak için ayrıca diğer türlerde belgeleri işlenebilir. Bunlar: Broşürler, yönergeleri, raporlar, teknik incelemeler, bilimsel incelemeler, ilkeleri, kitaplar, vb. Bir örnek görmek [burada](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Manage%20Azure%20Blob%20Storage.docx).
+Açık bir yapı ve düzeni olması kaydıyla, QA çiftleri oluşturmak için ayrıca diğer türlerde belgeleri işlenebilir. Bunlar: Broşürler, yönergeler, raporlar, teknik incelemeler, bilimsel incelemeler, ilkeler, kitaplar vb. Bir örnek görmek [burada](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Manage%20Azure%20Blob%20Storage.docx).
 
 Dizin olmadan, yarı yapılandırılmış bir belge örneği aşağıdadır:
 
@@ -126,7 +126,7 @@ Yapılandırılmış bir soru-cevap word belgesinin bir örnek aşağıda verilm
 
 Biçiminde Bankalarıyla yapılandırılmış *.txt*, *.tsv* veya *.xls* dosyalar da karşıya yüklenebilir oluşturmak veya bir Bilgi Bankası büyütmek için soru-cevap Oluşturucu.  Bu düz metin olabilir veya RTF veya HTML içeriği sahip olabilir. 
 
-| Soru  | Yanıt  | Meta veri (1 anahtarı: 1 değeri) |
+| Soru  | Yanıt  | Meta veriler (1 anahtar: 1 değeri) |
 |-----------|---------|-------------------------|
 | Question1 | Answer1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
 | Question2 | Answer2 |      `Key:Value`           |
@@ -139,9 +139,9 @@ Yapılandırılmış bir soru-cevap örneği aşağıdadır *.xls* dosyasıyla H
 
 ## <a name="structured-data-format-through-import"></a>İçeri aktarma ile yapılandırılmış veri biçimi
 
-Bilgi Bankası içeri aktarma, var olan bir Bilgi Bankası içeriğini değiştirir. İçeri aktarma, veri kaynağı bilgilerini içeren bir yapılandırılmış .tsv dosyası gerektirir. Bu bilgiler soru-cevap soru-cevap çiftlerini gruplandırabilir ve bunları belirli bir veri kaynağı için öznitelik oluşturucu yardımcı olur.
+Bilgi Bankası içeri aktarma, var olan bir Bilgi Bankası içeriğini değiştirir. İçeri aktarma, veri kaynağı bilgilerini içeren bir yapılandırılmış .tsv dosyası gerektirir. Bu bilgiler, soru-cevap çiftlerini ve onları belirli bir veri kaynağına göre gruplamak Soru-Cevap Oluşturma yardımcı olur.
 
-| Soru  | Yanıt  | source| Meta veri (1 anahtarı: 1 değeri) |          
+| Soru  | Yanıt  | Source| Meta veriler (1 anahtar: 1 değeri) |          
 |-----------|---------|----|---------------------|
 | Question1 | Answer1 | Url1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
 | Question2 | Answer2 | Düzenleme|    `Key:Value`       |
@@ -150,26 +150,46 @@ Bilgi Bankası içeri aktarma, var olan bir Bilgi Bankası içeriğini değişti
 
 Bilgi Bankası doldurmak için önceden var olan içerik yoksa, soru-cevap Oluşturucu bilgi temel Bankalarıyla bilgi bankanızı düzenleyerek ekleyebilirsiniz. Bilgi bankanızı güncelleştirmeyi öğrenebilirsiniz [burada](../How-To/edit-knowledge-base.md).
 
+<a href="#formatting-considerations"></a>
+
 ## <a name="formatting-considerations"></a>Biçimlendirme konuları
 
-URL veya içeri aktardıktan sonra Markdown dönüştürülür ve bu biçimde depolanır. Dönüştürme işlemini doğru şekilde dosyalarınızı ve URL'leri bağlantılar dönüştürme değil, sorular ve cevaplar üzerindeki düzenleyebilir **Düzenle** sayfası. 
+Bir dosya veya URL 'YI içeri aktardıktan sonra Soru-Cevap Oluşturma, içeriğinizi [markı biçiminde](https://en.wikipedia.org/wiki/Markdown)dönüştürür ve depolar. Dönüştürme işlemi, metinde `\n\n`gibi yeni satırlar ekler. Markaşağı biçimi hakkında bilgi, dönüştürülen içeriği anlamanıza ve Bilgi Bankası içeriğinizi yönetmenize yardımcı olur. 
 
-|Biçimi|Amaç|
-|--|--|
-|`\n\n`| Yeni satır|
-|`\n*`|Madde işaretinde sıralı bir listesi için|
+İçeriğinizi doğrudan bilgi tabanınız içinde ekler veya düzenlersiniz, zengin metin içeriği oluşturmak veya zaten yanıtdaki markaşağı biçim içeriğini değiştirmek için **markı biçimlendirme** kullanın. Soru-Cevap Oluşturma, içeriğinize zengin metin özellikleri getirmek için markaşağı biçiminin çoğunu destekler. Ancak, bir sohbet bot gibi istemci uygulaması aynı markı biçimleri kümesini desteklemiyor olabilir. İstemci uygulamanın yanıt görüntüsünü test etmek önemlidir. 
 
-## <a name="editing-your-knowledge-base-locally"></a>Bilgi Bankası yerel olarak düzenleme
+Aşağıda Soru-Cevap Oluşturma kullanabileceğiniz markın biçimlerinin listesi verilmiştir: 
 
-Bilgi Bankası oluşturulduktan sonra Bilgi Bankası metinde düzenlemeleri yapın önerilir [soru-cevap Oluşturucu portalı](https://qnamaker.ai), verme ve yerel dosyaları aracılığıyla yeniden içe aktarılması yerine. Ancak, bir Bilgi Bankası yerel olarak düzenlemeniz gerekir zamanlar olabilir. 
+|Amaç|Biçimi|Örnek markaşağı|İşleme<br>Sohbet bot 'ta gösterildiği gibi|
+|--|--|--|--|
+2 cümle arasında yeni bir satır.|`\n\n`|`How can I create a bot with \n\n QnA Maker?`|![iki cümle arasındaki yeni çizgiyi Biçimlendir](../media/qnamaker-concepts-datasources/format-newline.png)|
+|H1 ile H6 arasındaki üstbilgiler, bu sayının `#` hangi üstbilgiyi gösterir. 1 `#` , H1 'dir.|`\n# text \n## text \n### text \n####text \n#####text` |`## Creating a bot \n ...text.... \n### Important news\n ...text... \n### Related Information\n ....text...`<br><br>`\n# my h1 \n## my h2\n### my h3 \n#### my h4 \n##### my h5`|![markaşağı başlıkları ile biçimlendirme](../media/qnamaker-concepts-datasources/format-headers.png)<br>![markaşağı üstbilgileri ile Biçimlendir H1 ile H5](../media/qnamaker-concepts-datasources/format-h1-h5.png)|
+|İtalik |`*text*`|`How do I create a bot with *QnA Maker*?`|![italik ile biçimlendirme](../media/qnamaker-concepts-datasources/format-italics.png)|
+|Dize (koyu)|`**text**`|`How do I create a bot with **QnA Maker**?`|![kalın için güçlü işaret ile biçimlendirme](../media/qnamaker-concepts-datasources/format-strong.png)|
+|Bağlantı URL 'SI|`[text](https://www.my.com)`|`How do I create a bot with [QnA Maker](https://www.qnamaker.ai)?`|![URL için biçim (köprü)](../media/qnamaker-concepts-datasources/format-url.png)|
+|\* Ortak görüntü URL 'SI|`![text](https://www.my.com/image.png)`|`How can I create a bot with ![QnAMaker](https://review.docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/media/qnamaker-how-to-key-management/qnamaker-resource-list.png)`|![ortak görüntü URL 'SI için biçim ](../media/qnamaker-concepts-datasources/format-image-url.png)|
+|Üstü çizili|`~~text~~`|`some ~~questoins~~ questions need to be asked`|![üstü çizili biçim](../media/qnamaker-concepts-datasources/format-strikethrough.png)|
+|Kalın ve italik|`***text***`|`How can I create a ***QnA Maker*** bot?`|![kalın ve italik biçim](../media/qnamaker-concepts-datasources/format-bold-italics.png)|
+|Bağlantı için kalın URL|`[**text**](https://www.my.com)`|`How do I create a bot with [**QnA Maker**](https://www.qnamaker.ai)?`|![kalın URL için biçim](../media/qnamaker-concepts-datasources/format-bold-url.png)|
+|Bağlantı için italik URL|`[*text*](https://www.my.com)`|`How do I create a bot with [*QnA Maker*](https://www.qnamaker.ai)?`|![italik URL için biçim](../media/qnamaker-concepts-datasources/format-url-italics.png)|
+|Kaçış markın sembolleri|`\*text\*`|`How do I create a bot with \*QnA Maker\*?`|![italik URL için biçim](../media/qnamaker-concepts-datasources/format-escape-markdown-symbols.png)|
+|Sıralı liste|`\n 1. item1 \n 1. item2`|`This is an ordered list: \n 1. List item 1 \n 1. List item 2`<br>Yukarıdaki örnek, markaşağı içinde yerleşik olarak bulunan otomatik numaralandırmayı kullanır.<br>`This is an ordered list: \n 1. List item 1 \n 2. List item 2`<br>Yukarıdaki örnek, açık numaralandırma kullanır.|![sıralı liste için biçim](../media/qnamaker-concepts-datasources/format-ordered-list.png)|
+|Sırasız liste|`\n * item1 \n * item2`<br>veya<br>`\n - item1 \n - item2`|`This is an ordered list: \n * List item 1 \n * List item 2`|![Sırasız liste için biçim](../media/qnamaker-concepts-datasources/format-unordered-list.png)|
+|İç içe listeler|`\n * Parent1 \n\t * Child1 \n\t * Child2 \n * Parent2`<br><br>`\n * Parent1 \n\t 1. Child1 \n\t * Child2 \n 1. Parent2`<br><br>Sıralı ve sıralanmamış listeleri birlikte iç içe yerleştirebilirsiniz. Sekmesi `\t`, alt öğesinin girintileme düzeyini gösterir.|`This is an unordered list: \n * List item 1 \n\t * Child1 \n\t * Child2 \n * List item 2`<br><br>`This is an ordered nested list: \n 1. Parent1 \n\t 1. Child1 \n\t 1. Child2 \n 1. Parent2`|![iç içe sıralanmamış liste için biçim](../media/qnamaker-concepts-datasources/format-nested-unordered-list.png)<br>![iç içe geçmiş liste için biçim](../media/qnamaker-concepts-datasources/format-nested-ordered-list.png)|
 
-Bilgi Bankası'ndaki dışarı **ayarları** sayfasında, ardından Microsoft Excel ile Bilgi Bankası'nı düzenleyin. Uygulama, tam olarak TSV uyumlu olduğundan, dışarı aktarılan TSV dosyasını düzenlemek için başka bir uygulama kullanmayı seçerseniz, sözdizimi hataları neden olabilir. Microsoft Excel'in TSV dosyalar genellikle tüm biçimlendirme hataları açmadığınızdan. 
+\* Soru-Cevap Oluşturma görüntüyü hiçbir şekilde işlemez. Bu, görüntüyü işlemek için istemci uygulamanın rolüdür. 
 
-Düzenlemelerinizi tamamladıktan sonra TSV dosyasını yeniden içeri aktarın **ayarları** sayfası. Bu tamamen geçerli Bilgi Bankası içeri aktarılan Bankası ile değiştirir. 
+## <a name="editing-your-knowledge-base-locally"></a>Bilgi bankaınızı yerel olarak Düzenle
 
-## <a name="testing-your-markdown"></a>Markdown'ınız test etme
+Bilgi Bankası oluşturulduktan sonra, yerel dosyalar aracılığıyla dışarı aktarmak ve yeniden içeri aktarmak yerine [soru-cevap oluşturma portalındaki](https://qnamaker.ai)Bilgi Bankası metninde düzenleme yapmanız önerilir. Ancak, bir bilgi bankasını yerel olarak düzenlemeniz gerektiği zamanlar olabilir. 
 
-Kullanım **[CommonMark](https://commonmark.org/help/tutorial/index.html)** Markdown'ınız doğrulamak için öğretici. Öğreticiyi sahip bir **deneyin** hızlı kopyala/yapıştır doğrulama özelliği. 
+Bilgi Bankası 'nı **Ayarlar** sayfasından dışarı aktarın ve Bilgi Bankası 'Nı Microsoft Excel ile düzenleyin. İçe aktarılmış TSV Dosyanızı düzenlemek için başka bir uygulama kullanmayı seçerseniz, uygulama tam olarak uyumlu olmadığından sözdizimi hataları verebilir. Microsoft Excel 'in TSV dosyaları genellikle biçimlendirme hataları sunmaz. 
+
+Düzenlemelerinizi tamamladıktan sonra, **Ayarlar** sayfasından TSV dosyasını yeniden içeri aktarın. Bu işlem, geçerli bilgi bankasını içeri aktarılan Bilgi Bankası ile tamamen değiştirir. 
+
+## <a name="testing-your-markdown"></a>Marka testinizi test etme
+
+Markın 'ı doğrulamak için **[Commonmark](https://commonmark.org/help/tutorial/index.html)** öğreticisini kullanın. Öğreticide hızlı kopyalama/yapıştırma doğrulaması için bir **deneyin** özelliği bulunur. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

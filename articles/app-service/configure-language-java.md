@@ -1,7 +1,7 @@
 ---
-title: Windows yapılandırma Java uygulamaları - Azure uygulama hizmeti | Microsoft Docs
-description: Java uygulamalarını Azure App Service varsayılan Windows örneklerini çalıştırmak için yapılandırmayı öğrenin.
-keywords: Azure app service, web uygulaması, windows, oss, java
+title: Windows Java uygulamalarını Yapılandırma-Azure App Service | Microsoft Docs
+description: Java uygulamalarını, Azure App Service varsayılan Windows örneklerinde çalışacak şekilde nasıl yapılandıracağınızı öğrenin.
+keywords: Azure App Service, Web uygulaması, Windows, Oss, Java
 services: app-service
 author: jasonfreeberg
 manager: jeconnock
@@ -14,64 +14,64 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 25434360bcc0155411451dbac065e0b7fad9c3bf
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: c1ea306d8a6b5c1876ac6a9288820e1592dbfda6
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67617476"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68498521"
 ---
-# <a name="configure-a-windows-java-app-for-azure-app-service"></a>Bir Windows yapılandırma Azure App Service için Java uygulaması
+# <a name="configure-a-windows-java-app-for-azure-app-service"></a>Azure App Service için bir Windows Java uygulaması yapılandırma
 
-Azure App Service Java geliştiricilerinin kolayca oluşturmanızı, dağıtmanızı ve bunların Tomcat ölçeklendirme sağlar veya Windows tabanlı tam olarak yönetilen bir hizmet üzerinde web uygulamaları Java Standard Edition (SE) paketlenir. Komut satırından veya Intellij, Eclipse veya Visual Studio Code gibi düzenleyicilerde uygulamalarını Maven eklentileri ile dağıtın.
+Azure App Service, Java geliştiricilerinin tam olarak yönetilen bir Windows tabanlı hizmette Tomcat veya Java Standard Edition (SE) paketlenmiş Web uygulamalarını hızlıca oluşturmasına, dağıtmasına ve ölçeklendirmesine olanak tanır. Maven eklentilerine sahip uygulamaları, komut satırından veya IntelliJ, tutulma veya Visual Studio Code gibi düzenleyicilerde dağıtın.
 
-Bu kılavuzu temel kavramları ve App Service içinde Java geliştiricileri için yönergeler sağlar. Azure App Service daha önce kullanmadıysanız okumanız gereken [Java Hızlı Başlangıç](app-service-web-get-started-java.md) ilk. Java geliştirme belirli olmayan App Service'ı kullanma hakkında genel soruları [App Service Windows SSS](faq-configuration-and-management.md).
+Bu kılavuz, App Service ' de kullanarak Java geliştiricileri için temel kavramlar ve yönergeler sağlar. Azure App Service hiç kullanmadıysanız, önce [Java hızlı](app-service-web-get-started-java.md) başlangıcı ' nı okumanız gerekir. Java geliştirmeye özgü olmayan App Service kullanımı hakkında genel sorular, [App Service WINDOWS SSS](faq-configuration-and-management.md)' de yanıtlanmıştır.
 
 > [!NOTE]
-> Aradığınızı bulamadınız mı? Lütfen [Windows OSS SSS](faq-configuration-and-management.md) veya [Java Linux Yapılandırma Kılavuzu](containers/configure-language-java.md) dağıtma ve Java uygulamanızı güvenli hale getirme hakkında bilgi.
+> Aradığınızı bulamadınız mı? Java uygulamanızı dağıtma ve güvenliğini sağlama hakkında bilgi için lütfen [WINDOWS OSS SSS](faq-configuration-and-management.md) veya [Java Linux yapılandırma kılavuzu](containers/configure-language-java.md) ' na bakın.
 
 ## <a name="configuring-tomcat"></a>Tomcat yapılandırma
 
-Tomcat'in düzenlenecek `server.xml` veya diğer yapılandırma dosyalarını önce portalda, Tomcat ana sürüm not alın.
+Tomcat 'in `server.xml` veya diğer yapılandırma dosyalarını düzenlemek için önce portalda Tomcat ana sürümünüzü bir yere göz atın.
 
-1. Tomcat giriş dizini çalıştırarak sürümünüz için bulma `env` komutu. İle başlayan ortam değişkenini arayın `AZURE_TOMCAT`ve ana sürümünüzle eşleşen. Örneğin, `AZURE_TOMCAT85_HOME` Tomcat 8.5 için Tomcat dizine işaret eder.
-1. Sürümünüz için Tomcat giriş dizini belirledikten sonra yapılandırma dizinine kopyalayın `D:\home`. Örneğin, varsa `AZURE_TOMCAT85_HOME` değerine sahip `D:\Program Files (x86)\apache-tomcat-8.5.37`, kopyalanan yapılandırma dizinin tam yolu olmalıdır `D:\home\tomcat\conf`.
+1. `env` Komutunu çalıştırarak sürümünüz için Tomcat giriş dizinini bulun. İle `AZURE_TOMCAT`başlayan ve ana sürümünüzle eşleşen ortam değişkenini arayın. Örneğin, `AZURE_TOMCAT85_HOME` Tomcat 8,5 için Tomcat dizinine işaret eder.
+1. Sürümünüz için Tomcat giriş dizinini tanımladıktan sonra yapılandırma dizinini öğesine `D:\home`kopyalayın. Örneğin, `AZURE_TOMCAT85_HOME` bir `D:\Program Files (x86)\apache-tomcat-8.5.37`değeri olsaydı, kopyalanmış dizinin `D:\home\apache-tomcat-8.5.37`yeni yolu olur.
 
-Son olarak, App service'inizi yeniden başlatın. Dağıtımlarınızı gitmesi gereken `D:\home\site\wwwroot\webapps` önceki yalnızca gibi.
+Son olarak, App Service yeniden başlatın. Dağıtımlarınız daha önce olduğu `D:\home\site\wwwroot\webapps` gibi ' e gitmelidir.
 
-## <a name="java-runtime-statement-of-support"></a>Java Çalışma zamanı destek bildirimi
+## <a name="java-runtime-statement-of-support"></a>Java Runtime desteği
 
-### <a name="jdk-versions-and-maintenance"></a>JDK sürümleri ve Bakım
+### <a name="jdk-versions-and-maintenance"></a>JDK sürümleri ve bakım
 
-Azure'nın desteklenen Java Development Kit (JDK) olan [Zulu](https://www.azul.com/downloads/azure-only/zulu/) aracılığıyla sağlanan [Azul Systems](https://www.azul.com/).
+Azure 'un desteklenen Java Geliştirme Seti (JDK), [Azul sistemleri](https://www.azul.com/)aracılığıyla bir [Zulu](https://www.azul.com/downloads/azure-only/zulu/) dili olarak sunulmaktadır.
 
-Ana sürüm güncelleştirmeleri ile Windows için Azure App service'taki yeni çalışma zamanı seçenekleri sağlanır. Müşteriler, App Service dağıtımı yapılandırarak Java daha yeni sürümleri için güncelleştirme ve test etmeden sorumlu ve ihtiyaçlarını karşılayan önemli güncelleştirme sağlama.
+Ana sürüm güncelleştirmeleri, Windows için Azure App Service yeni çalışma zamanı seçenekleri aracılığıyla sağlanacaktır. Müşteriler, App Service dağıtımını yapılandırarak ve ana güncelleştirmenin ihtiyaçlarını karşıladığından sorumlu olduğundan, bu yeni Java sürümlerine güncelleştirir.
 
-Desteklenen JDK otomatik olarak üç aylık olarak Ocak, Nisan, Temmuz ve Ekim her yıl düzeltme eki.
+Desteklenen JDKs, her yıl Ocak, Nisan, Temmuz ve Ekim ayında otomatik olarak üç ayda bir düzeltme eki uygulanır.
 
 ### <a name="security-updates"></a>Güvenlik güncelleştirmeleri
 
-Azul sistemlerden kullanılabilir olduklarında hemen sonra yamaları ve düzeltmeler önemli güvenlik açıkları için kullanıma sunulacaktır. "Büyük" bir güvenlik açığı 9.0 temel puanı ile tanımlanan ya da üzerinde daha büyük [NIST ortak güvenlik açığı Puanlama sistemi, sürüm 2](https://nvd.nist.gov/cvss.cfm).
+Önemli güvenlik açıklarına yönelik düzeltme ekleri ve düzeltmeler Azul sistemlerinden kullanılabilir hale geldiğinde serbest bırakılır. "Ana" güvenlik açığı, [NIST ortak güvenlik açığı Puanlama sistemi, sürüm 2](https://nvd.nist.gov/cvss.cfm)üzerinde 9,0 veya üzeri bir taban puanı tarafından tanımlanır.
 
-### <a name="deprecation-and-retirement"></a>Kullanımdan kaldırma ve devre dışı bırakma
+### <a name="deprecation-and-retirement"></a>Kullanımdan kaldırma ve kullanımdan kaldırma
 
-Desteklenen Java Çalışma zamanı kullanımdan kaldırılacak, çalışma zamanı kullanımdan önce en az altı ay etkilenen çalışma zamanı kullanan Azure geliştiricileri, kullanımdan kaldırma bildirimi verilir.
+Desteklenen bir Java çalışma zamanı devre dışı bırakırsa, etkilenen çalışma zamanını kullanan Azure geliştiricileri, çalışma zamanı kullanımdan kalkmadan önce en az altı ayda bir kullanımdan kaldırma olarak verilmeyecektir.
 
 ### <a name="local-development"></a>Yerel geliştirme
 
-Geliştiriciler, üretim sürümü, Azul Zulu Enterprise JDK yerel geliştirme için indirebileceği [Azul'ın indirme sitesinde](https://www.azul.com/downloads/azure-only/zulu/).
+Geliştiriciler, Azul ['nin indirme sitesinden](https://www.azul.com/downloads/azure-only/zulu/)yerel geliştirme Için Azul Zulu kurumsal JDK üretim sürümünü indirebilir.
 
 ### <a name="development-support"></a>Geliştirme desteği
 
-Ürün desteği [Azure tarafından desteklenen Azul Zulu JDK](https://www.azul.com/downloads/azure-only/zulu/) Microsoft Azure için geliştirmeye olduğunda kullanılabilir veya [Azure Stack](https://azure.microsoft.com/overview/azure-stack/) ile bir [Azure destek planı koşullu](https://azure.microsoft.com/support/plans/).
+Azure [tarafından desteklenen Azul Zulu JDK](https://www.azul.com/downloads/azure-only/zulu/) için ürün desteği, Azure için geliştirme sırasında veya [nitelikli bir Azure destek planı](https://azure.microsoft.com/support/plans/)ile [Azure Stack](https://azure.microsoft.com/overview/azure-stack/) Microsoft aracılığıyla edinilebilir.
 
 ### <a name="runtime-support"></a>Çalışma zamanı desteği
 
-Geliştiriciler şunları yapabilir [bir sorun açın](/azure/azure-supportability/how-to-create-azure-support-request) oluşturulduysa Azure desteği aracılığıyla Azul Zulu JDK ile bir [tam destek planı](https://azure.microsoft.com/support/plans/).
+Geliştiriciler, [tam destek planına](https://azure.microsoft.com/support/plans/)sahip olmaları durumunda Azul Zulu JDKs ile ilgili [bir sorunu](/azure/azure-supportability/how-to-create-azure-support-request) , Azure desteği aracılığıyla açabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu konu, Windows üzerinde desteği Azure App Service için Java Çalışma zamanı deyiminin sağlar.
+Bu konuda, Windows üzerinde Azure App Service için desteklenen Java çalışma zamanı açıklaması sağlanmaktadır.
 
-- Bkz. Azure App Service ile web uygulamalarını barındırma hakkında daha fazla bilgi edinmek için [App Service'e genel bakış](overview.md).
-- Azure geliştirme Java hakkında bilgi için bkz. [Azure Java Geliştirici Merkezi için](https://docs.microsoft.com/java/azure/?view=azure-java-stable).
+- Web uygulamalarını barındırma hakkında daha fazla bilgi için Azure App Service [App Service genel bakış](overview.md)bölümüne bakın.
+- Azure 'da Java hakkında daha fazla bilgi için bkz. [Java Için Azure Geliştirme Merkezi](https://docs.microsoft.com/java/azure/?view=azure-java-stable).

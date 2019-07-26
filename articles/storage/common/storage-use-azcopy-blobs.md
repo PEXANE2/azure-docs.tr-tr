@@ -1,6 +1,6 @@
 ---
-title: AzCopy v10 kullanarak ya da Azure Blob depolamadan/depolamaya veri aktarımı | Microsoft Docs
-description: Bu makale, AzCopy koleksiyonunu içerir. örnek yardımcı olan komutlar kapsayıcıları oluşturma, dosyaları kopyalayın ve yerel dosya sistemleri ve kapsayıcılar arasında dizinleri eşitleyin.
+title: AzCopy ile v10 arasındaki kullanarak Azure Blob depolama alanına veya buradan veri aktarma | Microsoft Docs
+description: Bu makale, kapsayıcılar oluşturmanıza, dosyaları kopyalamaya ve yerel dosya sistemleri ile kapsayıcılar arasında dizin eşitlemenize yardımcı olan AzCopy örnek komutlarının bir koleksiyonunu içerir.
 services: storage
 author: normesta
 ms.service: storage
@@ -8,31 +8,31 @@ ms.topic: article
 ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 83e32a1e8f77604330a9f3aba0e011a0a0851e2f
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: d1bb0dc0e5c9cca0a9570e9074a294afdeb99455
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67625602"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68501373"
 ---
-# <a name="transfer-data-with-azcopy-and-blob-storage"></a>AzCopy ve Blob Depolama ile veri aktarma
+# <a name="transfer-data-with-azcopy-and-blob-storage"></a>AzCopy ve BLOB Storage ile veri aktarma
 
-AzCopy, verileri kopyalamak için ya da depolama hesapları arasında kullanabileceğiniz bir komut satırı yardımcı programıdır. Bu makale, Blob depolamayla çalışma örnek komutlar içerir.
+AzCopy, depolama hesaplarına veri kopyalamak için kullanabileceğiniz bir komut satırı yardımcı programıdır. Bu makale, blob depolamayla çalışan örnek komutlar içerir.
 
 ## <a name="get-started"></a>başlarken
 
-Bkz: [Azcopy'i kullanmaya başlama](storage-use-azcopy-v10.md) makale AzCopy indirip depolama hizmeti için yetkilendirme kimlik bilgilerini sağlayabilir yolları hakkında bilgi edinin.
+AzCopy ['i indirmek Için AzCopy ile çalışmaya başlama](storage-use-azcopy-v10.md) makalesini inceleyin ve depolama hizmetine yetkilendirme kimlik bilgilerini nasıl sağlayabileceğiniz yolları hakkında bilgi edinin.
 
 > [!NOTE]
-> Bu makaledeki örneklerde, kimlik bilgilerinizi kullanarak kimlik doğrulaması yaptınız olduğunu varsayın `AzCopy login` komutu. AzCopy, Azure AD hesabınızın sonra Blob depolama alanındaki verilere erişim yetkisi vermek için kullanır.
+> Bu makaledeki örneklerde, `AzCopy login` komutunu kullanarak kimliğinizi doğruladığınızı varsayalım. AzCopy daha sonra blob depolamadaki verilere erişim yetkisi vermek için Azure AD hesabınızı kullanır.
 >
-> Blob verilerine erişim yetkisi vermek için bir SAS belirteci yerine kullanacağınız, her AzCopy komutunu kaynak URL'ye belirtecini ekleyebilirsiniz.
+> Blob verilerine erişim yetkisi vermek için bir SAS belirteci kullanıyorsanız, bu belirteci her AzCopy komutunda kaynak URL 'sine ekleyebilirsiniz.
 >
 > Örneğin: `https://<storage-account-name>.blob.core.windows.net/<container-name>?<SAS-token>"`
 
 ## <a name="create-a-container"></a>Bir kapsayıcı oluşturma
 
-AzCopy kullanabilirsiniz `make` bir kapsayıcı oluşturmak için komutu. Bu bölümdeki örneklerde adlı bir kapsayıcı oluşturun `mycontainer`.
+Bir kapsayıcı oluşturmak için AzCopy `make` komutunu kullanabilirsiniz. Bu bölümdeki örneklerde adlı `mycontainer`bir kapsayıcı oluşturulur.
 
 |    |     |
 |--------|-----------|
@@ -42,19 +42,19 @@ AzCopy kullanabilirsiniz `make` bir kapsayıcı oluşturmak için komutu. Bu bö
 
 ## <a name="upload-files"></a>Dosyaları karşıya yükleme
 
-AzCopy kullanabilirsiniz `copy` dosyaları ve dizinleri yerel bilgisayarınızdan yüklemek için komutu.
+Yerel bilgisayarınızdan dosya ve Dizin yüklemek `copy` için AzCopy komutunu kullanabilirsiniz.
 
 Bu bölüm aşağıdaki örnekleri içerir:
 
 > [!div class="checklist"]
-> * Dosyayı karşıya yükleme
-> * Bir dizin karşıya yükleme
+> * Karşıya dosya yükle
+> * Bir dizini karşıya yükle
 > * Joker karakterler kullanarak karşıya dosya yükleme
 
 > [!NOTE]
-> AzCopy otomatik olarak hesaplar ve dosya md5 karma kod saklamak değil. Bunu yapmak için AzCopy istiyorsanız, ardından ekleme `--put-md5` bayrağı her kopyalama komutu. Blob yüklendiğinde, bu şekilde, AzCopy bir MD5 karma değeri veri indirilir ve MD5 karma değeri blob içinde depolanan doğrular hesaplar `Content-md5` özelliği hesaplanan karma eşleşir.
+> AzCopy, dosyanın MD5 karma kodunu otomatik olarak hesaplamaz ve depolamaz. AzCopy 'in bunu yapmak istiyorsanız, her bir kopyala komutuna `--put-md5` bayrak ekleyin. Bu şekilde, blob indirildiğinde AzCopy, indirilen veriler için bir MD5 karması hesaplar ve BLOB `Content-md5` özelliğinde depolanan MD5 karmasının hesaplanan karmayla eşleştiğini doğrular.
 
-### <a name="upload-a-file"></a>Dosyayı karşıya yükleme
+### <a name="upload-a-file"></a>Karşıya dosya yükle
 
 |    |     |
 |--------|-----------|
@@ -63,11 +63,11 @@ Bu bölüm aşağıdaki örnekleri içerir:
 | **Örnek** (hiyerarşik ad alanı) | `azcopy copy "C:\myDirectory\myTextFile.txt" "https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt"` |
 
 > [!NOTE]
-> AzCopy varsayılan olarak, blok bloblarınızdan veri yükler. Ekleme Blobları ve sayfa Blobları bayrağını kullanırken dosyaları karşıya yüklemek için `--blob-type=[BlockBlob|PageBlob|AppendBlob]`.
+> AzCopy varsayılan olarak blok bloblarına veri yükler. Dosyaları ekleme Blobları olarak yüklemek için veya sayfa Blobları bayrağını `--blob-type=[BlockBlob|PageBlob|AppendBlob]`kullanır.
 
-### <a name="upload-a-directory"></a>Bir dizin karşıya yükleme
+### <a name="upload-a-directory"></a>Bir dizini karşıya yükle
 
-Bu örnek, bir blob kapsayıcısına bir dizin (ve tüm dosyaları dizindeki) kopyalar. Bir dizin aynı adı taşıyan bir kapsayıcıdaki sonucudur.
+Bu örnekte bir dizin (ve bu dizindeki tüm dosyalar) bir blob kapsayıcısına kopyalanır. Sonuç, kapsayıcıda aynı ada sahip bir dizindir.
 
 |    |     |
 |--------|-----------|
@@ -75,18 +75,18 @@ Bu örnek, bir blob kapsayıcısına bir dizin (ve tüm dosyaları dizindeki) ko
 | **Örnek** | `azcopy copy "C:\myDirectory" "https://mystorageaccount.blob.core.windows.net/mycontainer" --recursive` |
 | **Örnek** (hiyerarşik ad alanı) | `azcopy copy "C:\myDirectory" "https://mystorageaccount.dfs.core.windows.net/mycontainer" --recursive` |
 
-Kapsayıcı içindeki bir dizine kopyalamak için yalnızca bu dizinin adını komut dizenizi belirtin.
+Kapsayıcı içindeki bir dizine kopyalamak için, komut dizinizdeki bu dizinin adını belirtmeniz yeterlidir.
 
 |    |     |
 |--------|-----------|
 | **Örnek** | `azcopy copy "C:\myDirectory" "https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory" --recursive` |
 | **Örnek** (hiyerarşik ad alanı) | `azcopy copy "C:\myDirectory" "https://mystorageaccount.dfs.core.windows.net/mycontainer/myBlobDirectory" --recursive` |
 
-Kapsayıcıda varolmayan bir dizinin adını belirtirseniz, AzCopy bu adla yeni bir dizin oluşturur.
+Kapsayıcıda varolmayan bir dizinin adını belirtirseniz AzCopy, bu adla yeni bir dizin oluşturur.
 
-### <a name="upload-the-contents-of-a-directory"></a>Bir dizinin içeriklerini karşıya yükleme
+### <a name="upload-the-contents-of-a-directory"></a>Bir dizinin içeriğini karşıya yükleme
 
-(*) Joker karakter sembolünü kullanarak içeren dizin kopyalama olmadan bir dizinin içeriklerini karşıya yükleyebilirsiniz.
+Joker karakter sembolünü (*) kullanarak, içeren dizinin kendisini kopyalamadan bir dizinin içeriğini karşıya yükleyebilirsiniz.
 
 |    |     |
 |--------|-----------|
@@ -95,23 +95,23 @@ Kapsayıcıda varolmayan bir dizinin adını belirtirseniz, AzCopy bu adla yeni 
 | **Örnek** (hiyerarşik ad alanı) | `azcopy copy "C:\myDirectory\*" "https://mystorageaccount.dfs.core.windows.net/mycontainer/myBlobDirectory"` |
 
 > [!NOTE]
-> Append `--recursive` tüm alt dizinlerde dosyaları karşıya yüklemek için bayrak.
+> Tüm alt dizinlerde dosyaları karşıya yüklemek için bayrağıekleyin.`--recursive`
 
 ## <a name="download-files"></a>Dosyaları indirme
 
-AzCopy kullanabilirsiniz `copy` kapsayıcıları, dizinleri ve blobları yerel bilgisayarınıza indirmek için komutu.
+Yerel bilgisayarınıza Bloblar, dizinler `copy` ve kapsayıcılar indirmek için AzCopy komutunu kullanabilirsiniz.
 
 Bu bölüm aşağıdaki örnekleri içerir:
 
 > [!div class="checklist"]
-> * Dosya indirme
-> * Bir dizine indirin
+> * Dosya indir
+> * Bir dizin indirin
 > * Joker karakterler kullanarak dosyaları indirme
 
 > [!NOTE]
-> Varsa `Content-md5` bir blobun özellik değerini içeren bir karma, AzCopy indirilen veriler için bir MD5 karma değeri hesaplar ve MD5 karma değeri blob içinde depolanan doğrular `Content-md5` özelliği hesaplanan karma eşleşir. Bu değerler eşleşmiyorsa, ekleyerek bu davranışı geçersiz kılma sürece indirme başarısız `--check-md5=NoCheck` veya `--check-md5=LogOnly` kopyalama komutu.
+> Bir Blobun `Content-md5`özellikdeğeri bir karma içeriyorsa, AzCopy indirilen veriler için bir MD5 karması hesaplar ve BLOB özelliğinde depolanan MD5 karmasının hesaplanan karmayla eşleştiğini doğrular. `Content-md5` Bu değerler eşleşmezse, Copy komutuna veya `--check-md5=NoCheck` `--check-md5=LogOnly` öğesini ekleyerek bu davranışı geçersiz kılmadığınız müddetçe indirme işlemi başarısız olur.
 
-### <a name="download-a-file"></a>Dosya indirme
+### <a name="download-a-file"></a>Dosya indir
 
 |    |     |
 |--------|-----------|
@@ -119,7 +119,7 @@ Bu bölüm aşağıdaki örnekleri içerir:
 | **Örnek** | `azcopy copy "https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt" "C:\myDirectory\myTextFile.txt"` |
 | **Örnek** (hiyerarşik ad alanı) | `azcopy copy "https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt" "C:\myDirectory\myTextFile.txt"` |
 
-### <a name="download-a-directory"></a>Bir dizine indirin
+### <a name="download-a-directory"></a>Bir dizin indirin
 
 |    |     |
 |--------|-----------|
@@ -127,14 +127,14 @@ Bu bölüm aşağıdaki örnekleri içerir:
 | **Örnek** | `azcopy copy "https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory "C:\myDirectory"  --recursive` |
 | **Örnek** (hiyerarşik ad alanı) | `azcopy copy "https://mystorageaccount.dfs.core.windows.net/mycontainer/myBlobDirectory "C:\myDirectory"  --recursive` |
 
-Bu örnek adlı bir dizinde sonuçlanır `C:\myDirectory\myBlobDirectory` indirilen dosyaların tümünü içerir.
+Bu örnek, indirilen tüm dosyaları içeren `C:\myDirectory\myBlobDirectory` adlı dizine neden olur.
 
 ### <a name="download-the-contents-of-a-directory"></a>Bir dizinin içeriğini indirin
 
-Bir dizinin içeriklerini içeren dizin kopyalamadan (*) joker karakter sembolünü kullanarak indirebilirsiniz.
+Joker karakter sembolünü (*) kullanarak, bir dizinin içeriğini içeren dizini kopyalamadan indirebilirsiniz.
 
 > [!NOTE]
-> Şu anda, bu senaryo, bir hiyerarşik ad alanı olmayan hesapları desteklenir.
+> Şu anda, bu senaryo yalnızca hiyerarşik bir ad alanına sahip olmayan hesaplar için desteklenir.
 
 |    |     |
 |--------|-----------|
@@ -142,82 +142,82 @@ Bir dizinin içeriklerini içeren dizin kopyalamadan (*) joker karakter sembolü
 | **Örnek** | `azcopy copy "https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory/*" "C:\myDirectory"` |
 
 > [!NOTE]
-> Append `--recursive` tüm alt dizinlerde dosyaları indirmek için bayrak.
+> Dosyaları tüm alt dizinlerde indirmek için bayrağıekleyin.`--recursive`
 
-## <a name="copy-blobs-between-storage-accounts"></a>Blobları depolama hesapları arasında kopyalama
+## <a name="copy-blobs-between-storage-accounts"></a>Depolama hesapları arasında blobları kopyalama
 
-Diğer depolama hesapları için BLOB'ları kopyalamak için AzCopy kullanabilirsiniz. Kopyalama işleminin zaman uyumlu olduğundan komutu geri döndüğünde, tüm dosyaları kopyalandığını gösterir.
+Diğer depolama hesaplarına Blobları kopyalamak için AzCopy kullanabilirsiniz. Kopyalama işlemi, komutun döndürdüğü zaman zaman uyumludur, yani tüm dosyalar kopyalanmış olduğunu gösterir.
 
 > [!NOTE]
-> Şu anda, bu senaryo, bir hiyerarşik ad alanı olmayan hesapları desteklenir. 
+> Şu anda, bu senaryo yalnızca hiyerarşik bir ad alanına sahip olmayan hesaplar için desteklenir. 
 
-AzCopy kullanan [URL'den blok yerleştirme](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) verileri doğrudan depolama sunucular arasında kopyalanır bu nedenle API. Bilgisayarınızın ağ bant genişliğini bu kopyalama işlemlerini kullanmayın.
+AzCopy, [sunucudan sunucuya](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) [API 'ler](https://docs.microsoft.com/en-us/rest/api/storageservices/put-page-from-url)kullanır, bu nedenle veriler doğrudan depolama sunucuları arasında kopyalanır. Bu kopyalama işlemleri bilgisayarınızın ağ bant genişliğini kullanmaz.
 
 Bu bölüm aşağıdaki örnekleri içerir:
 
 > [!div class="checklist"]
-> * Bir blobu başka bir depolama hesabına kopyalayın.
-> * Başka bir depolama hesabı için bir dizini kopyalama
-> * Bir kapsayıcı başka bir depolama hesabına kopyalayın.
-> * Tüm kapsayıcıları, dizinleri ve dosyaları başka bir depolama hesabına kopyalayın.
+> * Bir blobu başka bir depolama hesabına kopyalama
+> * Bir dizini başka bir depolama hesabına kopyalama
+> * Kapsayıcıları başka bir depolama hesabına kopyalama
+> * Tüm kapsayıcıları, dizinleri ve dosyaları başka bir depolama hesabına Kopyala
 
 > [!NOTE]
-> Geçerli sürümde, her kaynak URL'ye bir SAS belirteci gerekir. Azure Active Directory (AD) kullanarak Yetkilendirme kimlik bilgilerini sağlarsanız, SAS belirteci yalnızca hedef URL'den atlayabilirsiniz. 
+> Geçerli yayında, her kaynak URL 'ye bir SAS belirteci eklemeniz gerekir. Azure Active Directory (AD) kullanarak yetkilendirme kimlik bilgilerini sağlarsanız, SAS belirtecini yalnızca hedef URL 'den atlayabilirsiniz. 
 
-### <a name="copy-a-blob-to-another-storage-account"></a>Bir blobu başka bir depolama hesabına kopyalayın.
+### <a name="copy-a-blob-to-another-storage-account"></a>Bir blobu başka bir depolama hesabına kopyalama
 
 |    |     |
 |--------|-----------|
 | **Söz dizimi** | `azcopy cp "https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<blob-path>?<SAS-token>" "https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<blob-path>"` |
 | **Örnek** | `azcopy cp "https://mysourceaccount.blob.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D" "https://mydestinationaccount.blob.core.windows.net/mycontainer/myTextFile.txt"` |
 
-### <a name="copy-a-directory-to-another-storage-account"></a>Başka bir depolama hesabı için bir dizini kopyalama
+### <a name="copy-a-directory-to-another-storage-account"></a>Bir dizini başka bir depolama hesabına kopyalama
 
 |    |     |
 |--------|-----------|
 | **Söz dizimi** | `azcopy cp "https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<directory-path>?<SAS-token>" "https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<directory-path>" --recursive` |
 | **Örnek** | `azcopy cp "https://mysourceaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D" "https://mydestinationaccount.blob.core.windows.net/mycontainer/myBlobDirectory" --recursive` |
 
-### <a name="copy-a-containers-to-another-storage-account"></a>Bir kapsayıcı başka bir depolama hesabına kopyalayın.
+### <a name="copy-a-containers-to-another-storage-account"></a>Kapsayıcıları başka bir depolama hesabına kopyalama
 
 |    |     |
 |--------|-----------|
 | **Söz dizimi** | `azcopy cp "https://<source-storage-account-name>.blob.core.windows.net/<container-name>?<SAS-token>" "https://<destination-storage-account-name>.blob.core.windows.net/<container-name>" --recursive` |
 | **Örnek** | `azcopy cp "https://mysourceaccount.blob.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D" "https://mydestinationaccount.blob.core.windows.net/mycontainer" --recursive` |
 
-### <a name="copy-all-containers-directories-and-files-to-another-storage-account"></a>Tüm kapsayıcıları, dizinleri ve dosyaları başka bir depolama hesabına kopyalayın.
+### <a name="copy-all-containers-directories-and-files-to-another-storage-account"></a>Tüm kapsayıcıları, dizinleri ve dosyaları başka bir depolama hesabına Kopyala
 
 |    |     |
 |--------|-----------|
 | **Söz dizimi** | `azcopy cp "https://<source-storage-account-name>.blob.core.windows.net/?<SAS-token>" "https://<destination-storage-account-name>.blob.core.windows.net/" --recursive"` |
 | **Örnek** | `azcopy cp "https://mysourceaccount.blob.core.windows.net?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D" "https://mydestinationaccount.blob.core.windows.net" --recursive` |
 
-## <a name="synchronize-files"></a>Dosyaları eşitle
+## <a name="synchronize-files"></a>Dosyaları eşitler
 
-Bir yerel dosya sistemi içeriğini blob kapsayıcısı ile eşitleyebilirsiniz. Eşitleme tek yönlüdür. Diğer bir deyişle, bu iki uç nokta kaynak olduğu ve hangi bağlantılardan hedef seçin.
-
-> [!NOTE]
-> Şu anda, bu senaryo, bir hiyerarşik ad alanı olmayan hesapları desteklenir. Güncel AzCopy sürümünü diğer kaynaklar ve hedefler arasında eşitleme değil (örneğin: Dosya depolama veya Amazon Web Services (AWS) S3 demet).
-
-`sync` Karşılaştırır, dosya adları ve zaman damgaları son değiştirme komutu. Ayarlama `--delete-destination` isteğe bağlı bayrak değerini `true` veya `prompt` dosyaları artık kaynak dizininde mevcutsa hedef dizinde dosyaları silmek için.
-
-Ayarlarsanız `--delete-destination` bayrak `true` AzCopy bir istem sağlamadan dosyaları siler. AzCopy siler önce görünür bir dosya için bir istem istiyorsanız ayarlayın `--delete-destination` bayrak `prompt`.
+Bir yerel dosya sisteminin içeriğini bir blob kapsayıcısı ile eşzamanlı hale getirebilirsiniz. Eşitleme tek yönlü. Diğer bir deyişle, bu iki uç noktanın hangisinin kaynak olduğunu ve hedefin nerede olduğunu seçersiniz.
 
 > [!NOTE]
-> Yanlışlıkla silinmekten önlemek için etkinleştirdiğinizden emin olun [geçici silme](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) kullanmadan önce özellik `--delete-destination=prompt|true` bayrağı.
+> Şu anda, bu senaryo yalnızca hiyerarşik bir ad alanına sahip olmayan hesaplar için desteklenir. AzCopy 'in geçerli sürümü diğer kaynaklar ve hedefler arasında eşitlenmez (örneğin: Dosya depolama veya Amazon Web Services (AWS) S3 demetleri).
 
-### <a name="update-a-container-with-changes-to-a-local-file-system"></a>Bir yerel dosya sistemine yapılan değişikliklerle bir kapsayıcıyı güncelleştir
+Komut `sync` , dosya adlarını ve son değiştirilme zaman damgalarını karşılaştırır. Bu dosyalar artık kaynak dizinde yoksa, hedef `true` dizindeki `prompt` dosyaları silmek için veya değerine isteğebağlıbayrağınıayarlayın.`--delete-destination`
 
-Bu durumda, hedef kapsayıcısıdır ve kaynak yerel dosya sistemidir.
+AzCopy bayrağını, `--delete-destination` bir istem `true` sağlamadan dosyaları siler olarak ayarlarsanız. AzCopy bir dosyayı silmesinden önce bir istem görünmesini istiyorsanız, `--delete-destination` bayrağını olarak `prompt`ayarlayın.
+
+> [!NOTE]
+> Yanlışlıkla silinmeleri engellemek için, `--delete-destination=prompt|true` bayrağını kullanmadan önce [geçici silme](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) özelliğini etkinleştirdiğinizden emin olun.
+
+### <a name="update-a-container-with-changes-to-a-local-file-system"></a>Yerel dosya sistemindeki değişikliklerle bir kapsayıcıyı güncelleştirme
+
+Bu durumda, kapsayıcı hedef ve yerel dosya sistemi kaynağıdır.
 
 |    |     |
 |--------|-----------|
 | **Söz dizimi** | `azcopy sync "<local-directory-path>" "https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>" --recursive` |
 | **Örnek** | `azcopy sync "C:\myDirectory" "https://mystorageaccount.blob.core.windows.net/mycontainer" --recursive` |
 
-### <a name="update-a-local-file-system-with-changes-to-a-container"></a>Bir kapsayıcıya değişikliklerle bir yerel dosya sistemi güncelleştirme
+### <a name="update-a-local-file-system-with-changes-to-a-container"></a>Bir kapsayıcıda değişikliklerle yerel bir dosya sistemini güncelleştirme
 
-Bu durumda, hedef yerel dosya sistemidir ve kapsayıcı bir kaynaktır.
+Bu durumda, yerel dosya sistemi hedefdir ve kapsayıcı kaynağıdır.
 
 |    |     |
 |--------|-----------|
@@ -227,14 +227,14 @@ Bu durumda, hedef yerel dosya sistemidir ve kapsayıcı bir kaynaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla örnek, tüm bu makaleler bulun:
+Bu makalelerden herhangi birinde daha fazla örnek bulabilirsiniz:
 
-- [Azcopy'i kullanmaya başlama](storage-use-azcopy-v10.md)
+- [AzCopy ile çalışmaya başlama](storage-use-azcopy-v10.md)
 
-- [Öğretici: Bulut depolama azcopy komutunu kullanarak şirket içi verileri geçirme](storage-use-azcopy-migrate-on-premises-data.md)
+- [Öğretici: AzCopy kullanarak şirket içi verileri bulut depolamaya geçirme](storage-use-azcopy-migrate-on-premises-data.md)
 
 - [AzCopy ve dosya depolama ile veri aktarma](storage-use-azcopy-files.md)
 
 - [AzCopy ve Amazon S3 demetleri ile veri aktarma](storage-use-azcopy-s3.md)
 
-- [Yapılandırma, en iyi duruma getirmek ve AzCopy sorunlarını giderme](storage-use-azcopy-configure.md)
+- [AzCopy 'i yapılandırma, iyileştirme ve sorun giderme](storage-use-azcopy-configure.md)

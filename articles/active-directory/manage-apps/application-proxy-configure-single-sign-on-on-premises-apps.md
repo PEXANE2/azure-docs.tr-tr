@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory Uygulama Ara Sunucusu (Önizleme) ile şirket içi uygulamalar için SAML çoklu oturum açma | Microsoft Docs
+title: Azure AD Uygulaması Proxy 'Si ile şirket içi uygulamalar için SAML çoklu oturum açma | Microsoft Docs
 description: SAML kimlik doğrulamasıyla güvenliği sağlanan şirket içi uygulamalar için çoklu oturum açma sağlamayı öğrenin. Uygulama proxy 'Si ile şirket içi uygulamalara uzaktan erişim sağlama.
 services: active-directory
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9f4ab79a9fc9b8fec26cce98d9a878b6fa2a0c3
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: ff5152a2d65ea3921f0fef7f3a020bcea80d1769
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67853739"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68421258"
 ---
-# <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy-preview"></a>Uygulama proxy 'Si ile şirket içi uygulamalar için SAML çoklu oturum açma (Önizleme)
+# <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>Uygulama proxy 'Si ile şirket içi uygulamalar için SAML çoklu oturum açma
 
 SAML kimlik doğrulamasıyla güvenliği sağlanan şirket içi uygulamalara çoklu oturum açma (SSO) ve uygulama proxy 'Si aracılığıyla bu uygulamalara uzaktan erişim sağlama sağlayabilirsiniz. SAML çoklu oturum açma ile Azure Active Directory (Azure AD) kullanıcının Azure AD hesabını kullanarak uygulamanın kimliğini doğrular. Azure AD oturum açma bilgileri uygulamaya bir bağlantı protokolü üzerinden iletişim kurar. Ayrıca, SAML talepleriniz içinde tanımladığınız kurallara göre kullanıcıları belirli uygulama rollerine eşleyebilirsiniz. SAML SSO 'ya ek olarak uygulama proxy 'Si etkinleştirilerek, kullanıcılarınız uygulamaya dış erişime ve sorunsuz bir SSO deneyimine sahip olur.
 
@@ -49,7 +49,7 @@ Aşağıdaki protokol diyagramlarında, hem hizmet sağlayıcısı tarafından b
 
 5. Çoklu oturum açma yöntemi olarak **SAML** ' yi seçin.
 
-6. Önce SAML SSO 'yu kurumsal ağ üzerinde çalışırken çalışacak şekilde ayarlayın. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** başlığına gidin ve **düzenleme** simgesini (bir kurşun kalem) seçin. Uygulamanın SAML tabanlı kimlik doğrulamasını yapılandırmak için [temel SAML yapılandırması girme](configure-single-sign-on-non-gallery-applications.md#saml-based-single-sign-on) bölümündeki adımları izleyin.
+6. Önce SAML SSO 'yu kurumsal ağ üzerinde çalışırken çalışacak şekilde ayarlayın. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** başlığına gidin ve **düzenleme** simgesini (bir kurşun kalem) seçin. Uygulamanın SAML tabanlı kimlik doğrulamasını yapılandırmak için [temel SAML yapılandırması girme](configure-single-sign-on-non-gallery-applications.md#step-1-edit-the-basic-saml-configuration) bölümündeki adımları izleyin.
 
 7. Uygulamaya en az bir kullanıcı ekleyin ve test hesabının uygulamaya erişimi olduğundan emin olun. Şirket ağına bağlıyken, uygulamada çoklu oturum açma olup olmadığını görmek için test hesabını kullanın. 
 

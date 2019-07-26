@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: a2b6cdf9fbdb27372b089a29c1a3c5d0f1c629c9
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 32f5ff2ebc9d938b1936d7f2929af83d552a543d
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442117"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489856"
 ---
 # <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Öğretici: HDInsight kümesi için Apache Spark uygulamalar oluşturmak üzere Azure Toolkit for IntelliJ kullanma
 
@@ -171,7 +171,7 @@ Kullanıcı [Azure aboneliğinde oturum](#sign-in-to-your-azure-subscription)aç
 
 ### <a name="link-a-cluster"></a>Bir kümeyi bağlama
 
-Apache ambarı yönetilen Kullanıcı adını kullanarak bir HDInsight kümesini bağlayabilirsiniz. Benzer şekilde, etki alanına katılmış bir HDInsight kümesi için, etki alanı ve Kullanıcı adı user1@contoso.com(gibi) kullanarak bağlantı oluşturabilirsiniz. Ayrıca, Livy hizmet kümesini bağlayabilirsiniz.
+Apache ambarı yönetilen Kullanıcı adını kullanarak bir HDInsight kümesini bağlayabilirsiniz. Benzer şekilde, etki alanına katılmış bir HDInsight kümesi için, etki alanı ve Kullanıcı adı `user1@contoso.com`(gibi) kullanarak bağlantı oluşturabilirsiniz. Ayrıca, Livy hizmet kümesini bağlayabilirsiniz.
 
 1. Menü çubuğunda, **Görünüm** > **Aracı Windows** > **Azure Gezgini**' ne gidin.
 
@@ -227,7 +227,7 @@ Bir Scala uygulaması oluşturduktan sonra kümeye gönderebilirsiniz.
 
 3. **Yapılandırma düzenleme** penceresinde, aşağıdaki değerleri girip **Tamam**' ı seçin:
 
-    |Özellik |Value |
+    |Özellik |Değer |
     |----|----|
     |Spark kümeleri (yalnızca Linux)|Uygulamanızı çalıştırmak istediğiniz HDInsight Spark kümesini seçin.|
     |Göndermek için bir yapıt seçin|Varsayılan ayarı bırakın.|
@@ -312,7 +312,7 @@ WINUTILS ' i karşılatığınızdan emin olun. EXE önkoşulu.
 
 4. Aşağıdaki değerleri girip **Tamam**' ı seçin:
 
-    |Özellik |Value |
+    |Özellik |Değer |
     |----|----|
     |İş ana sınıfı|Varsayılan değer, seçili dosyadaki ana sınıftır. Üç noktayı ( **...** ) seçerek sınıfı değiştirebilirsiniz  ve başka bir sınıf seçebilirsiniz.|
     |Ortam değişkenleri|HADOOP_HOME değerinin doğru olduğundan emin olun.|

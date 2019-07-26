@@ -1,0 +1,392 @@
+---
+title: 'Öğretici: Bir yük devretme grubuna Azure SQL veritabanı tek veritabanı ekleme | Microsoft Docs'
+description: Azure portal, PowerShell veya Azure CLı kullanarak bir yük devretme grubuna Azure SQL veritabanı tek veritabanı ekleme.
+services: sql-database
+ms.service: sql-database
+ms.subservice: high-availability
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: MashaMSFT
+ms.author: mathoma
+ms.reviewer: sstein, carlrab
+manager: jroth
+ms.date: 06/19/2019
+ms.openlocfilehash: 6125fd087d40f9ac6ae24d9200fc0cd1e7843f82
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444987"
+---
+# <a name="tutorial-add-an-azure-sql-database-single-database-to-a-failover-group"></a>Öğretici: Bir yük devretme grubuna Azure SQL veritabanı tek veritabanı ekleme
+
+Azure SQL veritabanı tek veritabanı için bir yük devretme grubu yapılandırın ve Azure portal, PowerShell veya Azure CLı kullanarak yük devretme testi yapın.  Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+
+> [!div class="checklist"]
+> - Azure SQL veritabanı tek veritabanı oluşturun.
+> - İki mantıksal SQL Server arasında tek bir veritabanı için [Yük devretme grubu](sql-database-auto-failover-group.md) oluşturun.
+> - Yük devretme testi.
+
+## <a name="prerequisites"></a>Önkoşullar
+
+# <a name="azure-portaltabazure-portal"></a>[Azure portal](#tab/azure-portal)
+Bu öğreticiyi tamamlamak için şunlar sahip olduğunuzdan emin olun: 
+
+- Azure aboneliği. Henüz bir [hesabınız yoksa ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+
+
+# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+Öğreticiyi tamamlayabilmeniz için aşağıdaki öğelerin bulunduğundan emin olun:
+
+- Azure aboneliği. Henüz bir [hesabınız yoksa ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+- [Azure PowerShell](/powershell/azureps-cmdlets-docs)
+
+
+# <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
+Öğreticiyi tamamlayabilmeniz için aşağıdaki öğelerin bulunduğundan emin olun:
+
+- Azure aboneliği. Henüz bir [hesabınız yoksa ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)'nın en son sürümü. 
+
+---
+
+## <a name="1---create-a-single-database"></a>1-tek veritabanı oluşturma 
+
+[!INCLUDE [sql-database-create-single-database](includes/sql-database-create-single-database.md)]
+
+## <a name="2---create-the-failover-group"></a>2-yük devretme grubu oluşturma 
+Bu adımda, mevcut bir Azure SQL sunucusu ile başka bir bölgedeki yeni bir Azure SQL sunucusu arasında bir [Yük devretme grubu](sql-database-auto-failover-group.md) oluşturacaksınız. Ardından örnek veritabanını yük devretme grubuna ekleyin. 
+
+# <a name="azure-portaltabazure-portal"></a>[Azure portal](#tab/azure-portal)
+Yük devretme grubunuzu oluşturun ve Azure portal kullanarak tek veritabanınızı veritabanına ekleyin. 
+
+
+1. [Azure Portal](https://portal.azure.com)sol üst köşesindeki **tüm hizmetler** ' i seçin. 
+1. Arama `sql servers` kutusuna yazın. 
+1. Seçim SQL Server ' ın yanındaki yıldız simgesini seçerek SQL Server **'lar** ' ı seçin ve sol taraftaki Gezinti bölmenizi ekleyin. 
+    
+    ![SQL sunucularını bulma](media/sql-database-single-database-create-failover-group-tutorial/all-services-sql-servers.png)
+
+1. **SQL Server** ' ı seçin ve Bölüm 1 ' de oluşturduğunuz sunucuyu (örneğin `mysqlserver`,) seçin.
+1. **Ayarlar** bölmesinde **Yük devretme grupları** ' nı seçin ve sonra yeni bir yük devretme grubu oluşturmak için **Grup Ekle** ' yi seçin. 
+
+    ![Yeni Yük devretme grubu Ekle](media/sql-database-single-database-create-failover-group-tutorial/sqldb-add-new-failover-group.png)
+
+1. **Yük devretme grubu** sayfasında, aşağıdaki değerleri girin veya seçin ve ardından **Oluştur**' u seçin:
+    - **Yük devretme grubu adı**: Benzersiz bir yük devretme grubu adı (örneğin `failovergrouptutorial`,) yazın. 
+    - **İkincil sunucu**: *Gerekli ayarları yapılandırma* seçeneğini belirleyin ve ardından **Yeni bir sunucu oluşturmayı**seçin. Alternatif olarak, zaten var olan bir sunucuyu ikincil sunucu olarak seçebilirsiniz. Aşağıdaki değerleri girdikten sonra **Seç**' i seçin. 
+        - **Sunucu adı**: İkincil sunucu için, `mysqlsecondary`gibi benzersiz bir ad yazın. 
+        - **Sunucu Yöneticisi oturum açma**: Türüyle`azureuser`
+        - **Parola**: Parola gereksinimlerini karşılayan karmaşık bir parola yazın.
+        - **Konum**: Doğu ABD 2 gibi açılan kutudan bir konum seçin. Bu konum, birincil sunucunuz ile aynı konumda olamaz.
+
+    > [!NOTE]
+    > Sunucu oturum açma ve güvenlik duvarı ayarları, birincil sunucunuzun bilgileriyle eşleşmelidir. 
+    
+      ![Yük devretme grubu için ikincil sunucu oluşturma](media/sql-database-single-database-create-failover-group-tutorial/create-secondary-failover-server.png)
+
+   - **Grup Içindeki veritabanları**: İkincil bir sunucu seçildikten sonra bu seçeneğin kilidi açılabilir. **Eklenecek veritabanlarını seçmek** ve sonra Bölüm 1 ' de oluşturduğunuz veritabanını seçmek için bu seçeneği belirleyin. Veritabanını yük devretme grubuna eklemek, coğrafi çoğaltma işlemini otomatik olarak başlatır. 
+        
+    ![SQL DB 'yi yük devretme grubuna ekle](media/sql-database-single-database-create-failover-group-tutorial/add-sqldb-to-failover-group.png)
+        
+
+# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+Yük devretme grubunuzu oluşturun ve PowerShell kullanarak tek veritabanınızı buna ekleyin. 
+
+   > [!NOTE]
+   > Sunucu oturum açma ve güvenlik duvarı ayarları, birincil sunucunuzun bilgileriyle eşleşmelidir. 
+
+   ```powershell-interactive
+   # $subscriptionId = '<SubscriptionID>'
+   # $resourceGroupName = "myResourceGroup-$(Get-Random)"
+   # $location = "West US 2"
+   # $adminLogin = "azureuser"
+   # $password = "PWD27!"+(New-Guid).Guid
+   # $serverName = "mysqlserver-$(Get-Random)"
+   # $databaseName = "mySampleDatabase"
+   $drLocation = "East US 2"
+   $drServerName = "mysqlsecondary-$(Get-Random)"
+   $failoverGroupName = "failovergrouptutorial-$(Get-Random)"
+
+   # Show randomized variables
+   Write-host "DR Server name is" $drServerName 
+   Write-host "Failover group name is" $failoverGroupName
+   
+   # Create a secondary server in the failover region
+   Write-host "Creating a secondary logical server in the failover region..."
+   $drServer = New-AzSqlServer -ResourceGroupName $resourceGroupName `
+      -ServerName $drServerName `
+      -Location $drLocation `
+      -SqlAdministratorCredentials $(New-Object -TypeName System.Management.Automation.PSCredential `
+         -ArgumentList $adminlogin, $(ConvertTo-SecureString -String $password -AsPlainText -Force))
+   $drServer
+   
+   
+   # Create a failover group between the servers
+   $failovergroup = Write-host "Creating a failover group between the primary and secondary server..."
+   New-AzSqlDatabaseFailoverGroup `
+      –ResourceGroupName $resourceGroupName `
+      -ServerName $serverName `
+      -PartnerServerName $drServerName  `
+      –FailoverGroupName $failoverGroupName `
+      –FailoverPolicy Automatic `
+      -GracePeriodWithDataLossHours 2
+   $failovergroup
+   
+   # Add the database to the failover group
+   Write-host "Adding the database to the failover group..." 
+   Get-AzSqlDatabase `
+      -ResourceGroupName $resourceGroupName `
+      -ServerName $serverName `
+      -DatabaseName $databaseName | `
+   Add-AzSqlDatabaseToFailoverGroup `
+      -ResourceGroupName $resourceGroupName `
+      -ServerName $serverName `
+      -FailoverGroupName $failoverGroupName
+   Write-host "Successfully added the database to the failover group..." 
+   ```
+
+# <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
+Yük devretme grubunuzu oluşturun ve AZ CLı kullanarak tek veritabanınızı ona ekleyin. 
+
+   > [!NOTE]
+   > Sunucu oturum açma ve güvenlik duvarı ayarları, birincil sunucunuzun bilgileriyle eşleşmelidir. 
+
+   ```azurecli-interactive
+   #!/bin/bash
+   # Set variables
+   # subscriptionID=<SubscriptionID>
+   # resourceGroupName=myResourceGroup-$RANDOM
+   # location=SouthCentralUS
+   # adminLogin=azureuser
+   # password="PWD27!"+`openssl rand -base64 18`
+   # serverName=mysqlserver-$RANDOM
+   # databaseName=mySampleDatabase
+   drLocation=NorthEurope
+   drServerName=mysqlsecondary-$RANDOM
+   failoverGroupName=failovergrouptutorial-$RANDOM
+
+   # Create a secondary server in the failover region
+   echo "Creating a secondary logical server in the DR region..."
+   az sql server create \
+      --name $drServerName \
+      --resource-group $resourceGroupName \
+      --location $drLocation  \
+      --admin-user $adminLogin\
+      --admin-password $password
+   
+   # Create a failover group between the servers and add the database
+   echo "Creating a failover group between the two servers..."
+   az sql failover-group create \
+      --name $failoverGroupName  \
+      --partner-server $drServerName \
+      --resource-group $resourceGroupName \
+      --server $serverName \
+      --failover-policy Automatic
+   ```
+
+---
+
+## <a name="3---test-failover"></a>3-yük devretme testi 
+Bu adımda, yük devretme grubunuzu ikincil sunucuya devreder ve sonra Azure portal kullanarak yeniden başarısız olursunuz. 
+
+# <a name="azure-portaltabazure-portal"></a>[Azure portal](#tab/azure-portal)
+Azure portal kullanarak yük devretmeyi test edin. 
+
+1. [Azure Portal](https://portal.azure.com)içindeki **SQL** Server sunucunuza gidin. 
+1. **Ayarlar** bölmesinde **Yük devretme grupları** ' nı seçin ve ardından Bölüm 2 ' de oluşturduğunuz yük devretme grubunu seçin. 
+  
+   ![Portaldan yük devretme grubunu seçin](media/sql-database-single-database-create-failover-group-tutorial/select-failover-group.png)
+
+1. Hangi sunucunun birincil olduğunu ve hangi sunucunun ikincil olduğunu gözden geçirin. 
+1. Örnek tek veritabanınızı içeren yük devretme grubunuzun yükünü devretmek için görev bölmesinden **Yük devretmeyi** seçin. 
+1. TDS oturumlarının kesileceğini bildiren uyarıda **Evet** ' i seçin. 
+
+   ![SQL veritabanınızı içeren yük devretme grubunuzun yükünü devreder](media/sql-database-single-database-create-failover-group-tutorial/failover-sql-db.png)
+
+1. Hangi sunucunun artık birincil olduğunu ve hangi sunucunun ikincil olduğunu gözden geçirin. Yük devretme başarılı olursa iki sunucu, bulunan rolleri değiştirmiş olmalıdır. 
+1. Sunucuları ilk rollerine geri dönmek için **Yük devretmeyi** yeniden seçin. 
+
+# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+PowerShell kullanarak yük devretmeyi test etme. 
+
+
+İkincil çoğaltmanın rolünü kontrol edin: 
+
+   ```powershell-interactive
+   # Set variables
+   # $resourceGroupName = "myResourceGroup-$(Get-Random)"
+   # $serverName = "mysqlserver-$(Get-Random)"
+   # $failoverGroupName = "failovergrouptutorial-$(Get-Random)"
+   
+   # Check role of secondary replica
+   Write-host "Confirming the secondary replica is secondary...." 
+   (Get-AzSqlDatabaseFailoverGroup `
+      -FailoverGroupName $failoverGroupName `
+      -ResourceGroupName $resourceGroupName `
+      -ServerName $drServerName).ReplicationRole
+   ```
+
+
+İkincil sunucuya Yük devret: 
+
+   ```powershell-interactive
+   # Set variables
+   # $resourceGroupName = "myResourceGroup-$(Get-Random)"
+   # $serverName = "mysqlserver-$(Get-Random)"
+   # $failoverGroupName = "failovergrouptutorial-$(Get-Random)"
+   
+   # Failover to secondary server
+   Write-host "Failing over failover group to the secondary..." 
+   Switch-AzSqlDatabaseFailoverGroup `
+      -ResourceGroupName $resourceGroupName `
+      -ServerName $drServerName `
+      -FailoverGroupName $failoverGroupName
+   Write-host "Failed failover group to sucessfully to" $drServerName 
+   ```
+
+Yük devretme grubunu birincil sunucuya geri çevir:
+
+   ```powershell-interactive
+   # Set variables
+   # $resourceGroupName = "myResourceGroup-$(Get-Random)"
+   # $serverName = "mysqlserver-$(Get-Random)"
+   # $failoverGroupName = "failovergrouptutorial-$(Get-Random)"
+   
+   # Revert failover to primary server
+   Write-host "Failing over failover group to the primary...." 
+   Switch-AzSqlDatabaseFailoverGroup `
+      -ResourceGroupName $resourceGroupName `
+      -ServerName $serverName `
+      -FailoverGroupName $failoverGroupName
+   Write-host "Failed failover group to successfully to back to" $serverName
+   ```
+
+# <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
+AZ CLı kullanarak yük devretmeyi test edin. 
+
+
+Hangi sunucunun ikincil olduğunu doğrulayın:
+
+   
+   ```azurecli-interactive
+   # Set variables
+   # resourceGroupName=myResourceGroup-$RANDOM
+   # serverName=mysqlserver-$RANDOM
+   
+   # Verify which server is secondary
+   echo "Verifying which server is in the secondary role..."
+   az sql failover-group list \
+      --server $serverName \
+      --resource-group $resourceGroupName
+   ```
+
+İkincil sunucuya Yük devret: 
+
+   ```azurecli-interactive
+   # Set variables
+   # resourceGroupName=myResourceGroup-$RANDOM
+   # drServerName=mysqlsecondary-$RANDOM
+   # failoverGroupName=failovergrouptutorial-$RANDOM
+
+   
+   echo "Failing over group to the secondary server..."
+   az sql failover-group set-primary \
+      --name $failoverGroupName \
+      --resource-group $resourceGroupName \
+      --server $drServerName
+   echo "Successfully failed failover group over to" $drServerName
+   ```
+
+Yük devretme grubunu birincil sunucuya geri çevir:
+
+   ```azurecli-interactive
+   # Set variables
+   # resourceGroupName=myResourceGroup-$RANDOM
+   # serverName=mysqlserver-$RANDOM
+   # failoverGroupName=failovergrouptutorial-$RANDOM
+   
+   echo "Failing over group back to the primary server..."
+   az sql failover-group set-primary \
+      --name $failoverGroupName \
+      --resource-group $resourceGroupName \
+      --server $serverName
+   echo "Successfully failed failover group back to" $serverName
+   ```
+
+---
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme 
+Kaynak grubunu silerek kaynakları temizleyin. 
+
+# <a name="azure-portaltabazure-portal"></a>[Azure portal](#tab/azure-portal)
+Azure portal kullanarak kaynak grubunu silin. 
+
+
+1. [Azure Portal](https://portal.azure.com)kaynak grubunuza gidin.
+1. Gruptaki tüm kaynakların yanı sıra kaynak grubunun kendisini silmek için **kaynak grubunu sil** ' i seçin. 
+1. Kaynak grubunun adını `myResourceGroup`, metin kutusuna yazın ve ardından **Sil** ' i seçerek kaynak grubunu silin.  
+
+# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+PowerShell kullanarak kaynak grubunu silin. 
+
+
+   ```powershell-interactive
+   # Set variables
+   # $resourceGroupName = "myResourceGroup-$(Get-Random)"
+
+   # Remove the resource group
+   Write-host "Removing resource group..."
+   Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
+   Write-host "Resource group removed =" $resourceGroupName
+   ```
+
+# <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
+AZ CLı kullanarak kaynak grubunu silin. 
+
+
+   ```azurecli-interactive
+   # Set variables
+   # resourceGroupName=myResourceGroup-$RANDOM
+   
+   # Clean up resources by removing the resource group
+   echo "Cleaning up resources by removing the resource group..."
+   az group delete \
+     --name $resourceGroupName
+   echo "Successfully removed resource group" $resourceGroupName
+   ```
+
+---
+
+
+## <a name="full-scripts"></a>Tam betikler
+
+# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+
+[!code-powershell-interactive[main](../../powershell_scripts/sql-database/failover-groups/add-single-db-to-failover-group-az-ps.ps1 "Add single database to a failover group")]
+
+# <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
+
+[!code-azurecli-interactive[main](../../cli_scripts/sql-database/failover-groups/add-single-db-to-failover-group-az-cli.sh "Create SQL Database")]
+
+# <a name="azure-portaltabazure-portal"></a>[Azure portal](#tab/azure-portal)
+Azure portal için kullanılabilir komut yok.
+ 
+---
+
+Diğer Azure SQL veritabanı betiklerini buradan bulabilirsiniz: [Azure PowerShell](sql-database-powershell-samples.md) ve [Azure CLI](sql-database-cli-samples.md). 
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Bu öğreticide, bir yük devretme grubuna Azure SQL veritabanı tek veritabanı eklediniz ve yük devretme işlemi test edildi. Şunları öğrendiniz:
+
+> [!div class="checklist"]
+> - Azure SQL veritabanı tek veritabanı oluşturun. 
+> - İki mantıksal SQL Server arasında tek bir veritabanı için [Yük devretme grubu](sql-database-auto-failover-group.md) oluşturun.
+> - Yük devretme testi.
+
+Esnek havuzunuzu bir yük devretme grubuna ekleme hakkında sonraki öğreticiye ilerleyin. 
+
+> [!div class="nextstepaction"]
+> [Öğretici: Yük devretme grubuna Azure SQL veritabanı elastik havuzu ekleme](sql-database-elastic-pool-failover-group-tutorial.md)

@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 67da7d67a3165583a872c2b435c3cdca9763d4dd
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 22860e0798ec852b6d25da27e108befe8a3089a2
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68443812"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68488825"
 ---
 # <a name="immersive-reader-sdk-reference"></a>Modern Okuyucu SDK başvurusu
 
@@ -37,7 +37,7 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 | Ad | Tür | Açıklama |
 | ---- | ---- |------------ |
-| `token` | dize | Azure AD kimlik doğrulama belirteci. Bkz. [Azure AD kimlik doğrulaması öğreticisi](./azure-active-directory-authentication.md). |
+| `token` | dize | Azure AD kimlik doğrulama belirteci. Bkz. [Azure AD kimlik doğrulaması nasıl yapılır](./azure-active-directory-authentication.md). |
 | `subdomain` | dize | Azure 'daki tam ekran okuyucu kaynağınızın özel alt etki alanı. Bkz. [Azure AD kimlik doğrulaması nasıl yapılır](./azure-active-directory-authentication.md). |
 | `content` | [İçeriği](#content) | Tam ekran okuyucu 'da gösterilecek içeriği içeren nesne. |
 | `options` | [Seçenekler](#options) | Modern okuyucunun belirli davranışlarını yapılandırmaya yönelik seçenekler. İsteğe bağlı. |

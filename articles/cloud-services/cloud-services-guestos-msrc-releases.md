@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 7/12/2019
+ms.date: 7/18/2019
 ms.author: raiye
-ms.openlocfilehash: 848adffc4937b97759881c13c05e7c1c1c14312e
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
-ms.translationtype: HT
+ms.openlocfilehash: 9d84339bb51d3694323bfdd272216cccb11287c0
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67872011"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68333629"
 ---
 # <a name="azure-guest-os"></a>Azure Konuk işletim sistemi
 Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güvenlik Yanıt Merkezi (MSRC) güncelleştirmeleri gösterilmektedir. Belirli bir güncelleştirmenin kullanmakta olduğunuz Konuk işletim sistemi için geçerli olup olmadığını öğrenmek için bu makaleye arama yapın. Güncelleştirmeler her zaman üzerinde tanıtılan belirli bir [Aile][family-explain] için ileri doğru şekilde devam ederler.
@@ -41,7 +41,6 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 |  Rel 19-07   |  [4506964]  |  .NET 4.5.2 güvenliği   |  4,68  |  9 Temmuz 2019  |
 |  Rel 19-07   |  [4506977]  |  .NET 3,5 güvenliği   |  4,68  |  9 Temmuz 2019  |
 |  Rel 19-07   |  [4507457]  |  Windows güvenliği   |  4,68  |  9 Temmuz 2019  |
-|  Rel 19-07   |  [4506986]  |  .NET 4,8 güvenliği   |  5.33  |  9 Temmuz 2019  |
 |  Rel 19-07   |  [4507460]  |  Windows güvenliği   |  5.33  |  9 Temmuz 2019  |
 |  Rel 19-07   |  [4506998]  |  .NET 3,5 & 4.7.2 güvenliği   |  6.9  |  9 Temmuz 2019  |
 |  Rel 19-07   |  [4507469]  |  Windows güvenliği   |  6.9  |  9 Temmuz 2019  |
@@ -62,7 +61,6 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 [4506964]: https://support.microsoft.com/kb/4506964
 [4506977]: https://support.microsoft.com/kb/4506977
 [4507457]: https://support.microsoft.com/kb/4507457
-[4506986]: https://support.microsoft.com/kb/4506986
 [4507460]: https://support.microsoft.com/kb/4507460
 [4506998]: https://support.microsoft.com/kb/4506998
 [4507469]: https://support.microsoft.com/kb/4507469

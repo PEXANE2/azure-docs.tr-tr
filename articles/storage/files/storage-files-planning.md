@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: aba41d62df49a40d9fc3686684b39b71e1363453
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 6282ce426b08c4ad9c44bead0bd4ec3d259f65fe
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68296048"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68501427"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Dosyaları dağıtımı planlama
 
@@ -209,7 +209,7 @@ Standart dosya paylaşımları, 5 TiB 'ye kadar tüm bölgelerde kullanılabilir
 |Bölge  |Desteklenen artıklık  |Var olan depolama hesaplarını destekler  |
 |---------|---------|---------|
 |Güneydoğu Asya     |LRS|Hayır         |
-|Batı Avrupa     |LRS|Hayır         |
+|Batı Avrupa     |LRS, ZRS|Hayır         |
 |Batı ABD 2     |LRS, ZRS|Hayır         |
 
 Yeni bölgelerin ve özelliklerin önceliklendirmemize yardımcı olmak için lütfen bu [anketi](https://aka.ms/azurefilesatscalesurvey)doldurun.

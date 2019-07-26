@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/02/2019
+ms.date: 7/24/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 1cafd8a3c766e57aed67634d7da8498c9a6ee120
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: f33b69ac443a1bb8f6b7d6e1b19f2f077bf38f58
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295832"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68501475"
 ---
 # <a name="threat-detection-for-data-services-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde veri Hizmetleri için tehdit algılama
 
@@ -27,6 +27,7 @@ ms.locfileid: "68295832"
 
 * [Azure SQL veritabanı ve SQL veri ambarı](#data-sql)
 * [Azure Depolama](#azure-storage)
+* [Cosmos DB](#cosmos-db)
 
 ## Azure SQL veritabanı ve SQL veri ambarı<a name="data-sql"></a>
 
@@ -46,7 +47,7 @@ SQL tehdit algılama uyarıları hakkında daha fazla bilgi için bkz.[Azure SQL
 ## Azure depolama<a name="azure-storage"></a>
 
 >[!NOTE]
-> Azure depolama için Gelişmiş tehdit koruması Şu anda yalnızca BLOB depolama için kullanılabilir. 
+> Azure depolama için Gelişmiş tehdit koruması Şu anda yalnızca BLOB depolama için kullanılabilir.
 
 Azure Depolama için Gelişmiş Tehdit Koruması, depolama hesaplarına erişmeye veya güvenlik açıklarından yararlanmaya yönelik sıra dışı, zararlı olabilecek girişimleri algılayan güvenlik zekasına sahip ek bir güvenlik katmanı sağlar. Bu koruma katmanı, güvenlik uzmanı olmanıza ve güvenlik izleme sistemlerini yönetmenize gerek kalmadan tehditleri ele almanıza olanak sağlar.
 
@@ -70,3 +71,14 @@ Güvenlik Merkezi, tehditleri algılamak için blob depolamaya okuma, yazma ve s
 >Azure depolama için Gelişmiş tehdit koruması Şu anda Azure Kamu ve bağımsız bulut bölgelerinde kullanılamaz.
 
 Depolama uyarıları hakkında daha fazla bilgi için bkz. [Azure Storage Için Gelişmiş tehdit koruması](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection) makalesi ve koruma uyarıları bölümünü gözden geçirme.
+
+## Cosmos DB<a name="cosmos-db"></a>
+
+Aşağıdaki uyarılar Azure Cosmos DB hesaba erişmek veya bu hesaplara yararlanmak için olağan dışı ve potansiyel olarak zararlı denemelere göre oluşturulmuştur:
+
+|Uyarı|Açıklama|
+|---|---|
+|**Olağan dışı konumdan erişim**|Cosmos DB hesaba erişim modelinde bir değişiklik olduğunu gösterir. Birisi bu hesaba, en son etkinlikle karşılaştırıldığında, bilinmeyen bir IP adresinden erişti. Bir saldırgan bir Cosmos DB hesabına erişmiş veya yasal bir Kullanıcı yeni ve olağan dışı bir coğrafi konumdan Cosmos DB hesabına erişmiş durumda. Örneğin: yeni bir uygulama veya uzaktan geliştirici bakımı.|
+|**Olağan dışı veri sızdırma**|Cosmos DB hesabından veri ayıklama düzeninde bir değişiklik olduğunu gösterir. Bir kişi, son etkinlikle karşılaştırıldığında olağan dışı miktarda veri ayıklamıştır. Bir saldırgan Cosmos DB veritabanından büyük miktarda veri ayıklamıştır. Örneğin: veri ayıklanma/sızıntı, yetkisiz veri aktarımı. Ya da yasal bir Kullanıcı ya da uygulama bir kapsayıcıdan olağan dışı miktarda veri ayıklamıştır. Örneğin: bakım yedekleme etkinliği.|
+
+Daha fazla bilgi için bkz. [Azure Cosmos DB Için Gelişmiş tehdit koruması](../cosmos-db/cosmos-db-advanced-threat-protection.md).

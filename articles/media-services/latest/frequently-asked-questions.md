@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 06/21/2019
 ms.author: juliako
-ms.openlocfilehash: 766208c01f27d2024025b7a202bc3724b4fc9fff
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 28b9c8f343437c20e277d2f3ba53767afa45a5c2
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311846"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68501266"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Media Services v3 hakkında sık sorulan sorular
 
@@ -58,7 +58,7 @@ Media Services v3 Live Encoding, canlı akış sırasında video veya resim SLA 
 
 Kaynak videoyu değiştirmek için [canlı bir şirket içi kodlayıcı](recommended-on-premises-live-encoders.md) kullanabilirsiniz. Birçok uygulama, Telestream kablolu dönüştürme, değiştirici Studio (iOS 'ta), OBS Studio (ücretsiz uygulama) ve birçok daha fazlası dahil olmak üzere kaynakları değiştirme yeteneği sağlar.
 
-## <a name="content-protection"></a>İçerik koruma
+## <a name="content-protection"></a>Content protection
 
 ### <a name="should-i-use-an-aes-128-clear-key-encryption-or-a-drm-system"></a>AES-128 şifresiz anahtar şifrelemesi mi yoksa bir DRM sistemi mi kullanmalıyım?
 
@@ -110,28 +110,6 @@ Genellikle, müşterilere bir lisans sunucusu grubundaki DRM hizmet sağlayıcı
 
 * STS, kabul edilebilir ve lisans sunucusu grubu tarafından doğrulanan belirteçleri vermek gerekiyor. Örneğin, bir yetkilendirme iletisini içeren belirli bir JWT Axinom tarafından sağlanan Widevine lisans sunucuları gerektirir. Bu nedenle, böyle bir JWT'nin vermek için bir STS'ye olması gerekir. 
 * Artık, Media Services lisans teslimat hizmetinin yapılandırma gerekmez. Lisans edinme URL'leri (PlayReady, Widevine ve FairPlay) sağlamanız gereken ContentKeyPolicies yapılandırdığınızda.
-
-### <a name="what-if-i-want-to-use-a-custom-sts"></a>Özel STS kullanmak istersem?
-
-Bir müşteri Jwt'ler sağlamak için özel STS kullanmayı seçebilirsiniz. Nedenler şunlardır:
-
-* Müşteri tarafından kullanılan IDP STS desteklemiyor. Bu durumda, özel STS bir seçenek olabilir.
-* Müşteri faturalandırma sistemine müşterinin aboneyle STS tümleştirmek için daha esnek veya sıkı denetim gerekebilir. Örneğin, birden fazla temel, premium gibi OTT abone paketleri ve Spor MVPD operatörün sunabilir. İşleci, yalnızca belirli bir paket içeriğini kullanılabilir hale getirilir, böylece bir abonenin paket belirteciyle Taleplerde eşleştirilecek isteyebilirsiniz. Bu durumda, özel STS gereken esneklik ve denetim sağlar.
-
-Özel STS kullandığınızda, iki değişiklik yapılması gerekir:
-
-* Bir varlık için lisans teslimat hizmeti yapılandırırken, Azure AD'den geçerli anahtar yerine özel STS tarafından doğrulama için kullanılan güvenlik anahtarı belirtmeniz gerekir. (Daha fazla ayrıntı izleyin.) 
-* Güvenlik anahtarı geçerli X509 özel anahtarı yerine JTW belirteç oluşturulduğunda, belirtilen Azure ad'deki sertifika.
-
-Güvenlik anahtarları iki tür vardır:
-
-* Simetrik anahtar: Aynı anahtar, bir JWT oluşturmak ve doğrulamak için kullanılır.
-* Asimetrik anahtar: X509 sertifikasında ortak özel anahtar çifti, bir JWT şifrelemek/oluşturmak için özel anahtarla ve belirteci doğrulamak için ortak anahtarla birlikte kullanılır.
-
-> [!NOTE]
-> .NET Framework kullanırsanız / C# geliştirme platformu olarak X509 bir asimetrik güvenlik anahtarı için kullanılan sertifika bir anahtar uzunluğu en az 2048 olması gerekir. Bu sınıf .NET Framework System.IdentityModel.Tokens.X509AsymmetricSecurityKey gereksinimdir. Aksi takdirde, şu özel durum oluşturulur:
-> 
-> IDX10630: İmzalama için ' System. IdentityModel. Tokens. X509AsymmetricSecurityKey ', ' 2048 ' bitten küçük olamaz.
 
 ## <a name="media-services-v2-vs-v3"></a>Media Services V2 vs v3 
 

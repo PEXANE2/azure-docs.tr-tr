@@ -1,138 +1,105 @@
 ---
-title: Azure Active Directory kimlik koruması (yenilenmiş) içinde algılama doğruluğunu artırmak nasıl | Microsoft Docs
-description: Azure Active Directory kimlik koruması (yenilenmiş) içinde algılama doğruluğunu artırmak nasıl.
+title: Azure Active Directory Kimlik Koruması (YENİLENDİ) ' de algılama doğruluğunu geliştirme | Microsoft Docs
+description: Azure Active Directory Kimlik Koruması (YENİLENDİ) ' de algılama doğruluğunu geliştirme.
 services: active-directory
-keywords: Azure active directory kimlik koruması, bulut uygulaması bulma, yönetme, uygulamaları, güvenlik, risk, risk düzeyi, güvenlik açığı, güvenlik ilkesi
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7724d69a9294b420ca061d5ad26ad64826372203
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 32bb8de7970fc167a6a95e9d9c3c71e4e1dc0150
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60453307"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68333944"
 ---
-# <a name="how-to-improve-the-detection-accuracy"></a>Nasıl Yapılır: Algılama doğruluğunu artırmak 
+# <a name="how-to-improve-the-detection-accuracy"></a>Nasıl Yapılır: Algılama doğruluğunu geliştirme 
 
-Kimlik koruması, Azure AD'ye ortamınızdaki risk algılama hakkında geri bildirim sağlamak için mekanizmaları sağlar. Geri bildirim sağlamak için algılanan riskli kullanıcı veya oturum açma olayı durumunu doğrulayabilirsiniz. Microsoft kullanıcılar üzerinde geçerli risk algılamalar eylemi gerçekleştirin ve gelecekteki algılamalar doğruluğunu artırmak için bu geri bildirim. 
-
+Kimlik koruması, ortamınızdaki risk algılamaları hakkında Azure AD 'ye geri bildirim verme mekanizmaları sağlar. Geri bildirim sağlamak için, algılanan riskli Kullanıcı veya oturum açma olayının durumunu doğrulayabilirsiniz. Microsoft, bu geri bildirimde bulunmak için geçerli risk algılamalarını ve gelecekteki algılamaların doğruluğunu geliştirir. 
 
 ## <a name="what-is-detection"></a>Algılama nedir?
 
-Algılama, kullanıcı hesapları ile birlikte şüpheli etkinlikleri tanımlamak işlemidir. Azure AD algılayabilir şüpheli etkinlikler denir [risk olayı](../reports-monitoring/concept-risk-events.md). Algılama işlemini Uyarlamalı makine öğrenimi algoritmaları ve kullanıcılara yönelik risk olaylarını algılamak için buluşsal yöntemler temel alır.
+Algılama, şüpheli etkinlikleri kullanıcı hesaplarınızla birlikte tanımlama işlemidir. Azure AD 'nin algılayabildiği şüpheli etkinlikler [risk olayı](../reports-monitoring/concept-risk-events.md)olarak adlandırılır. Algılama işlemi, uyarlamalı makine öğrenimi algoritmalarını ve kullanıcılara yönelik risk olaylarını algılamak için buluşsal yöntemler ' i temel alır.
 
-Algılama sonuçları, kullanıcılar ve oturum açma risk altında olup olmadığını belirlemek için kullanılır. 
+Algılama sonuçları, kullanıcıların ve oturum açma işlemlerinin risk altında olup olmadığını saptamak için kullanılır. 
 
+## <a name="how-can-i-improve-the-detection-accuracy"></a>Algılama doğruluğunu nasıl geliştirebilirim?
 
-## <a name="how-can-i-improve-the-detection-accuracy"></a>Algılama doğruluğu nasıl geliştirebilirim?
+Algılama otomatik bir işlem olduğundan, Azure AD 'nin hatalı pozitif sonuçlar raporlamasında olması mümkündür. Algılama sonuçlarıyla ilgili olarak Azure AD 'ye geri bildirim sağlayarak algılama doğruluğunu geliştirebilirsiniz.
 
-Algılama, otomatik bir işlem olduğu için Azure AD hatalı pozitif sonuçları raporlar mümkündür. Azure AD'ye algılama sonuçlarıyla ilgili geri bildirim sağlayarak algılama doğruluğunu geliştirebilir.
+Algılama doğruluğunu geliştirmenin üç yolu vardır: güvenliği aşılmış oturum açma işlemini onaylayın, güvenli oturum açma işlemini onaylayın ve Kullanıcı riskini kapatın. Bunu aşağıdaki raporlardan yapabilirsiniz:
 
-Algılama doğruluğunu artırmak için üç yolu vardır: riskli oturum açma comfirm güvenli oturum açma onaylayın ve kullanıcı riski yok sayın. Aşağıdaki raporlardan bunu yapabilirsiniz:
+- **Riskli oturum açma işlemleri raporu-** Riskli oturum açma işlemleri raporunda, oturum açma işlemlerinin güvenli veya güvenliği aşılmış olduğunu doğrulayabilirsiniz
+- **Riskli kullanıcılar raporu-** Riskli kullanıcılar raporunda, Kullanıcı riskini ortadan kaldırabilirsiniz 
 
-- **Riskli oturum açma işlemleri raporu -** riskli oturum açma işlemleri raporu içinde oturum açma güvenli veya riskli olduğunu doğrulayabilirsiniz
+Geri bildiriminiz, algılama sonuçlarının doğruluğunu artırmak için Azure AD tarafından işlenir. Genellikle, bir Kullanıcı riski veya oturum açma riski araştırmasının parçası olarak geri bildirim sağlarsınız. Daha fazla bilgi için bkz. [riskli kullanıcıları ve oturum açma işlemlerini araştırma](howto-investigate-risky-users-signins.md).
 
-- **Riskli kullanıcılar raporu -** riskli kullanıcılar raporda kullanıcı riski Kapat 
+## <a name="confirm-compromised"></a>Güvenliğin tehlikeye girdiğini onaylayın
 
-Geri bildiriminiz algılama sonuçları doğruluğunu artırmak için Azure AD tarafından işlenir. Genellikle, bir kullanıcı risk veya oturum açma riski araştırma bir parçası olarak geri bildirim sağlayın. Daha fazla bilgi için [riskli kullanıcılar ve oturum açma araştırma](howto-investigate-risky-users-signins.md).
+Azure AD 'ye, oturum açma işleminin kimlik sahibi tarafından yetkilendirilmediğini bildiren bir oturum açma olayını onaylama. "Tehlikeyi Onayla" yı seçtiğinizde Azure AD,
 
+- Etkilenen kullanıcının Kullanıcı riskini yüksek olarak artırın.
+- Risk olaylarını algılayan makine öğrenimini iyileştirmek için yardım
+- Kuruluşunuzu daha fazla korumak için ek ölçüler gerçekleştirin
 
-## <a name="confirm-compromised"></a>Onayla tehlikede
+Güvenliği aşılmış bir oturum açma doğrulamak için:
 
-Tehlikeye gibi bir oturum açma olay onaylama için Azure AD oturum açma kimlik sahibinin yetkilendirdiği değildi, bildirir. "Tehlikeye onaylayın" seçtiğinizde Azure AD olacaktır.
+- **Riskli oturum açma işlemleri raporu** -Bu seçenek, bir veya daha fazla oturum açma olayı için güvenliği aşılmış bir oturum açmayı doğrulamanıza olanak sağlar.
 
-- Etkilenen kullanıcı yüksek kullanıcı riskini artırır.
+   ![Kullanıcı riskini kapat](./media/howto-improve-detection-accuracy/07.png)
 
-- Makine öğrenimi, risk olayları algılar iyileştirilmesine yardımcı
+- **Riskli oturum açma işlemleri raporunun Ayrıntılar görünümü** -Bu seçenek, riskli oturum açma işlemleri raporundaki seçili oturum açma etkinliği için güvenliği aşılmış bir hesabı doğrulamanıza olanak sağlar. 
+
+   ![Kullanıcı riskini kapat](./media/howto-improve-detection-accuracy/04.png)
  
-- Kuruluşunuzun daha iyi korumak için ek ölçüler gerçekleştirin
+## <a name="confirm-safe"></a>Güvenli olduğunu onayla
 
+Oturum açma olayını, Azure AD 'ye, oturum açma 'nın ilgili kimlik sahibi tarafından yetkilendirildiği  güvenli sinyaller olarak onaylama. "Güvenli Onayla" yı seçtiğinizde Azure AD şu şekilde olur:
 
-
-Bir riskli oturum açma doğrulamak için:
-
-- **Riskli oturum açma işlemleri raporu** -bu seçenek bir riskli oturum açma için bir veya daha fazla oturum açma olaylarını doğrulamanızı sağlar.
-
-    ![Kullanıcı riski Kapat](./media/howto-improve-detection-accuracy/07.png)
-
-- **Riskli oturum açma işlemleri raporu Ayrıntılar görünümünü** -bu seçenek, seçilen oturum açma olayı riskli oturum açma işlemleri raporu için güvenliği aşılmış bir hesabı onaylamak sağlar. 
-
-    ![Kullanıcı riski Kapat](./media/howto-improve-detection-accuracy/04.png)
-
-
+- Seçilen oturum açma işlemlerinin Kullanıcı risk katkısını döndürür
+- Temeldeki risk olaylarını kapatma
+- Risk olaylarını algılayan makine öğrenimini iyileştirmek için yardım
+- Kuruluşunuzu daha fazla korumak için ek ölçüler gerçekleştirin
  
-## <a name="confirm-safe"></a>Güvenli onaylayın
+Uygulamasında güvenli bir oturum açma olduğunu doğrulamak için:
 
+- **Riskli oturum açma işlemleri raporu** -Bu seçenek, bir veya daha fazla oturum açma olayı için güvenli bir oturum açmayı doğrulamanıza olanak sağlar.
 
-Azure AD'ye güvenli sinyalleri olarak oturum açma olay onaylama, oturum açma **olan** ilgili kimlik sahibinin yetkilendirdiği. "Güvenli onaylayın" seçtiğinizde Azure AD olacaktır:
+   ![Kullanıcı riskini kapat](./media/howto-improve-detection-accuracy/08.png)
 
-- Seçilen oturum açma kullanıcı risk katkısını geri döndür
+- **Riskli oturum açma işlemleri raporunun Ayrıntılar görünümü** -Bu seçenek, riskli oturum açma işlemleri raporunda, seçilen oturum açma etkinliği için güvenli bir oturum açmayı doğrulamanıza olanak sağlar. 
 
-- Temel risk olayları kapatın
+   ![Kullanıcı riskini kapat](./media/howto-improve-detection-accuracy/05.png)
 
-- Makine öğrenimi, risk olayları algılar iyileştirilmesine yardımcı
+## <a name="dismiss-user-risk"></a>Kullanıcı riskini kapat
 
-- Kuruluşunuzun daha iyi korumak için ek ölçüler gerçekleştirin
- 
+Bir risk kullanıcısına yönelik düzeltme eylemleri zaten gerçekleştirdiyse veya özellikle riskli olarak işaretlendiğine inanıyorsanız, bir kullanıcının riskini ortadan kaldırabilirsiniz. Bir kullanıcının riski yok, kullanıcıyı riskli olmayan bir duruma geri yükler. Seçilen Kullanıcı için geçmişteki tüm riskli oturum açma işlemleri ve risk olayları kapatılır.
 
-Bir güvenli oturum açma, doğrulamak için:
+Bildirilen Kullanıcı riskini şu şekilde yok sayabilirsiniz:
 
-- **Riskli oturum açma işlemleri raporu** -bu seçenek, bir güvenli oturum açmak için bir veya daha fazla oturum açma olaylarını onaylamak sağlar.
+- **Riskli kullanıcılar raporu** -Bu seçenek, seçilen bir veya daha fazla kullanıcının Kullanıcı riskini ortadan seçmenize olanak sağlar.
 
-    ![Kullanıcı riski Kapat](./media/howto-improve-detection-accuracy/08.png)
+   ![Kullanıcı riskini kapat](./media/howto-improve-detection-accuracy/02.png)
 
-- **Riskli oturum açma işlemleri raporu Ayrıntılar görünümünü** -bu seçenek, bir güvenli oturum açma için seçilen oturum açma olayı riskli oturum açma işlemleri raporu onaylamak sağlar. 
+- **Ayrıntılar görünümü** -Bu seçenek, Kullanıcı risk raporundaki seçili kullanıcı için Kullanıcı riskini ortadan seçmenize olanak sağlar. 
 
-    ![Kullanıcı riski Kapat](./media/howto-improve-detection-accuracy/05.png)
-
-
-
-
-## <a name="dismiss-user-risk"></a>Kullanıcı riski Kapat
-
-Düzeltme eylemleri bir risk kullanıcı için zaten gerçekleştirdik ya da bunlar yanlışlıkla riskli olarak işaretlenen düşünüyorsanız, bir kullanıcının risk sayabilirsiniz. Bir kullanıcının risk kapatılıyor kullanıcı riskli olmayan bir duruma geri yükler. Tüm riskli oturum açma işlemleri ve risk, seçilen kullanıcı için olaylar kapatıldı.
-
-
-İçinde bildirilen kullanıcı riski yok sayın:
-
-- **Riskli kullanıcılar raporu** - bu seçenek, bir son kullanıcı riski verilecek sağlar veya daha fazla seçilen kullanıcılar.
-
-    ![Kullanıcı riski Kapat](./media/howto-improve-detection-accuracy/02.png)
-
-- **Ayrıntılar görünümü** -kullanıcı risk rapor seçilen kullanıcı için kullanıcı risk kapatmak bu seçeneği sağlar. 
-
-    ![Kullanıcı riski Kapat](./media/howto-improve-detection-accuracy/01.png)
-
+   ![Kullanıcı riskini kapat](./media/howto-improve-detection-accuracy/01.png)
 
 **Bilmeniz gerekenler:**
 
-- Bu eylem geri alınamaz.
-
-- Bu, bu eylemin tamamlanması isteğinizi yeniden gönderdikten değil neden olan birkaç dakika sürebilir.
-
-- AD, kullanıcının kimlik bilgilerini yönetiliyorsa, yalnızca bu eylemi gerçekleştirebilir. 
-
-
+- Bu eylemi döndüremezsiniz.
+- Bu eylemin tamamlanması birkaç dakika sürebilir, bu nedenle isteğinizi yeniden gönderememelisiniz.
+- Bu eylemi yalnızca Kullanıcı kimlik bilgilerini AD yönettiğinde gerçekleştirebilirsiniz. 
 
 ## <a name="best-practices"></a>En iyi uygulamalar
 
-Bir kullanıcının risk kapatılıyor kullanıcı riski İlkesi tarafından engellendi ve kendi kendine parola sıfırlama ve/veya MFA etkin olmaması nedeniyle düzeltme olamaz engelini kaldırmak için bir yoludur. Bu durumda, tüm gelecek risk olayları kendi kendine düzeltme olanağınız olduğundan kullanıcı için parola sıfırlama ve MFA kaydeder emin olun ve en iyisidir.
-
+Kullanıcının riskini ortadan kaldırmak, Kullanıcı risk ilkesi tarafından engelleniyorsa ve parola sıfırlama ve/veya MFA 'nın etkin olmaması nedeniyle kendini düzeltemedi. Bu durumda, kullanıcının gelecekteki risk olaylarını kendiliğinden düzeltebilmeleri için parola sıfırlama ve MFA 'ya kaydolmasını sağlamak en iyisidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure AD kimlik koruması genel bakış için bkz: [Azure AD kimlik koruması genel bakış](overview-v2.md).
-
-
+Azure AD Kimlik Koruması genel bakış almak için bkz. [Azure AD kimlik koruması genel bakış](overview-v2.md).

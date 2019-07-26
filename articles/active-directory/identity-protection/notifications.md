@@ -1,88 +1,73 @@
 ---
-title: Azure Active Directory kimlik koruması bildirimleri | Microsoft Docs
-description: Nasıl araştırma etkinliklerinizi bildirimlerini desteklemek öğrenin.
+title: Azure Active Directory Kimlik Koruması bildirimleri | Microsoft Docs
+description: Bildirimlerin araştırma etkinliklerinizi nasıl desteklediğini öğrenin.
 services: active-directory
-keywords: Azure active directory kimlik koruması, bulut uygulaması bulma, yönetme, uygulamaları, güvenlik, risk, risk düzeyi, güvenlik açığı, güvenlik ilkesi
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-editor: ''
-ms.assetid: 65ca79b9-4da1-4d5b-bebd-eda776cc32c7
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/07/2017
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0065ec03695ee977133ae2ec43aafba7d5bfff78
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3dcc7d2d03b3c4a3f4c8c772f38aa3785080d986
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65784351"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335355"
 ---
-# <a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory kimlik koruması bildirimleri
+# <a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory Kimlik Koruması bildirimleri
 
-Azure AD kimlik koruması, iki tür kullanıcı riski ve risk olaylarını yönetmenize yardımcı olmak için otomatik bildirim e-posta gönderir:
+Azure AD Kimlik Koruması, Kullanıcı riskini ve risk olaylarını yönetmenize yardımcı olmak üzere iki tür otomatik bildirim e-postası gönderir:
 
-- Risk altındaki kullanıcılar e-posta algılandı
+- Risk altındaki kullanıcılar e-posta algıladı
 - Haftalık Özet e-postası
 
-Bu makalede her iki bildirim e-postaları bir bakış sağlar.
+Bu makalede her iki bildirim e-postası için bir genel bakış sunulmaktadır.
 
+## <a name="users-at-risk-detected-email"></a>Risk altındaki kullanıcılar e-posta algıladı
 
-## <a name="users-at-risk-detected-email"></a>Risk altındaki kullanıcılar e-posta algılandı
+Risk altında algılanan bir hesaba yanıt olarak Azure AD Kimlik Koruması, **risk altındaki kullanıcılar** konu olarak algılanan bir e-posta uyarısı oluşturur. E-posta, **[risk için Işaretlenmiş kullanıcılar](../reports-monitoring/concept-user-at-risk.md)** raporu için bir bağlantı içerir. En iyi uygulama olarak, risk altındaki kullanıcıları hemen araştırmanız gerekir.
 
-Algılanan bir hesap risk altında yanıt olarak, Azure AD kimlik koruması olan bir e-posta uyarı oluşturur. **algılanan risk altındaki kullanıcılar** nesnesi. E-posta bağlantısını içeren **[risk için işaretlenen kullanıcılar](../reports-monitoring/concept-user-at-risk.md)** rapor. En iyi uygulama, risk altındaki kullanıcılar hemen araştırmanız gerekir.
+Bu uyarının yapılandırması, uyarının oluşturulmasını istediğiniz Kullanıcı risk düzeyini belirtmenize olanak tanır. Bu e-posta, kullanıcının risk düzeyi belirtdiklerinize ulaştığında oluşturulacaktır; Bununla birlikte, risk bu Kullanıcı risk düzeyine geçtikten sonra bu kullanıcı için e-posta uyarılarını tespit eden yeni kullanıcıları almazsınız. Örneğin, ilkeyi orta Kullanıcı riski üzerine uyarı olarak ayarlarsanız ve Kullanıcı John, orta riske geçerse, kullanıcılardan John için algılanan risk için e-posta olduğunu görürsünüz. Ancak, John daha sonra yüksek riske geçerse veya ek risk olayları varsa, risk tespit eden ikinci bir Kullanıcı almazsınız.
 
-Bu uyarı için bir yapılandırma oluşturulacak uyarı istediğiniz hangi kullanıcı risk düzeyinde belirtmenizi sağlar. Kullanıcının risk düzeyi belirtmiş olduğunuz ulaştığında e-posta oluşturulur; Ancak, bunlar bu kullanıcı risk düzeyi için taşıma işlemi sonrasında yeni kullanıcıları bu kullanıcı için e-posta uyarıları algılanan risk almamayı. Örneğin, Orta kullanıcı riski ve John taşır için orta düzeyde riskli kullanıcı uyarmak için ilke ayarlarsanız, John için kullanıcıları algılanan risk e-posta alırsınız. Ancak, John sonra yüksek risk taşır veya ek risk olayları sahip ikinci bir risk algılandı uyarısı kullanıcıları almazsınız.
-
-![Risk altındaki kullanıcılar e-posta algılandı](./media/notifications/01.png)
-
+![Risk altındaki kullanıcılar e-posta algıladı](./media/notifications/01.png)
 
 ### <a name="configuration"></a>Yapılandırma
 
-Bir yönetici olarak ayarlayabilirsiniz:
+Yönetici olarak şunları yapabilirsiniz:
 
-- **Bu e-posta oluşturulmasını tetikler kullanıcı risk düzeyi** -varsayılan olarak, "Yüksek" risk risk düzeyi ayarlanır.
-- **Bu e-posta alıcılarını** -varsayılan olarak, tüm genel yöneticilere alıcılar içerir. Genel Yöneticiler, diğer genel Yöneticiler, güvenlik yöneticileri, güvenlik okuyucuları alıcı da ekleyebilirsiniz.  
+- **Bu e-postanın oluşturulmasını tetikleyen Kullanıcı risk düzeyi** -varsayılan olarak, risk düzeyi "yüksek" riskli olarak ayarlanır.
+- **Bu e-postanın alıcıları** varsayılan olarak tüm genel yöneticileri içerir. Genel Yöneticiler, diğer genel Yöneticiler, güvenlik yöneticileri, güvenlik okuyucularını da alıcı olarak ekleyebilir.  
 
+İlgili iletişim kutusunu açmak için **kimlik koruması** sayfasının **Ayarlar** bölümünde **Uyarılar** ' a tıklayın.
 
-İlgili iletişim kutusunu açmak için **uyarılar** içinde **ayarları** bölümünü **kimlik koruması** sayfası.
-
-![Risk altındaki kullanıcılar e-posta algılandı](./media/notifications/05.png)
-
+![Risk altındaki kullanıcılar e-posta algıladı](./media/notifications/05.png)
 
 ## <a name="weekly-digest-email"></a>Haftalık Özet e-postası
 
-Haftalık Özet e-postası, yeni risk olayları bir özetini içerir.  
-Aşağıdakileri içerir:
+Haftalık Özet e-postası yeni risk olaylarının bir özetini içerir.  
+Şunları içerir:
 
 - Risk altındaki kullanıcılar
+- Şüpheli etkinlikler
+- Algılanan güvenlik açıkları
+- Kimlik koruması 'nda ilgili raporların bağlantıları
 
-- Kuşkulu etkinlikler
-
-- Algılanan güvenlik açıklarını
-
-- Kimlik koruması ilgili raporlarda bağlantılar
-
-    ![Düzeltme](./media/notifications/400.png "düzeltme")
+    ![Düzeltme](./media/notifications/400.png "Düzeltme")
 
 ### <a name="configuration"></a>Yapılandırma
 
-Bir yönetici olarak bir Haftalık Özet e-posta gönderme devre dışı geçiş yapabilirsiniz.
+Yönetici olarak, haftalık bir Özet e-postası gönderilmesini kapatabilirsiniz.
 
-![Kullanıcı risk](./media/notifications/62.png "kullanıcı risk")
+![Kullanıcı riskleri](./media/notifications/62.png "Kullanıcı riskleri")
 
-İlgili iletişim kutusunu açmak için **Haftalık Özet** içinde **ayarları** bölümünü **kimlik koruması** sayfası.
+İlgili iletişim kutusunu açmak için **kimlik koruması** sayfasının **Ayarlar** bölümünde **Haftalık Özet** ' e tıklayın.
 
-![Risk altındaki kullanıcılar e-posta algılandı](./media/notifications/04.png)
-
+![Risk altındaki kullanıcılar e-posta algıladı](./media/notifications/04.png)
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Azure Active Directory kimlik koruması](../active-directory-identityprotection.md)
+- [Azure Active Directory Kimlik Koruması](../active-directory-identityprotection.md)

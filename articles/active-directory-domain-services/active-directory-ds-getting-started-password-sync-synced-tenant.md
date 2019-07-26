@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD etki alanı Hizmetleri: Parola eşitlemeyi etkinleştirme | Microsoft Docs'
+title: 'Azure AD Domain Services: Parola eşitlemeyi etkinleştirme | Microsoft Docs'
 description: Azure Active Directory Etki Alanı Hizmetleri ile çalışmaya başlama
 services: active-directory-ds
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: iainfou
-ms.openlocfilehash: e252774d99eecac3623fcbae4ce9fdc0e1591672
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 3ea4ebe652679ee9e4c0a165493fa86756ca7868
+ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67474099"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494563"
 ---
 # <a name="enable-password-synchronization-to-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services ile parola eşitlemeyi etkinleştirme
 Önceki görevlerde Azure Active Directory (Azure AD) kiracınız için Azure Active Directory Domain Services hizmetini etkinleştirdiniz. Sıradaki görev, NT LAN Manager (NTLM) ve Kerberos kimlik doğrulaması için gereken kimlik bilgisi karmalarının Azure AD Domain Services ile eşitlemesini etkinleştirmektir. Kimlik bilgisi eşitlemesini ayarladıktan sonra kullanıcılar, şirket kimlik bilgileri ile yönetilen etki alanında oturum açabilir.
@@ -41,7 +41,7 @@ ms.locfileid: "67474099"
 Eşitlenen bir Azure AD kiracısı, Azure AD Connect kullanarak kuruluşunuzun şirket içi dizini ile eşitlenecek şekilde ayarlanır. Azure AD Connect, varsayılan olarak NTLM ve Kerberos kimlik bilgisi karmalarını Azure AD ile eşitlemez. Azure AD Domain Services’ı kullanmak için, Azure AD Connect’i NTLM ve Kerberos kimlik doğrulamasında gereken kimlik bilgisi karmalarını eşitleyecek şekilde yapılandırmanız gerekir. Aşağıdaki adımlar, şirket içi dizininizden gerekli kimlik bilgisi karmalarının Azure AD kiracınız ile eşitlenmesini etkinleştirir.
 
 > [!NOTE]
-> **Kuruluşunuzda şirket içi dizininizden eşitlenmiş kullanıcı hesapları varsa, yönetilen etki alanını kullanmak için NTLM ve Kerberos karmalarının eşitlenmesini etkinleştirmeniz gerekir.** Eşitlenmiş kullanıcı hesabı, şirket içi dizininizde oluşturulmuş ve Azure AD Connect kullanarak Azure AD kiracınıza eşitlenmiş bir hesaptır.
+> **Kuruluşunuzda şirket içi dizininizden eşitlenmiş kullanıcı hesapları varsa, yönetilen etki alanını kullanmak için NTLM ve Kerberos karmalarının eşitlenmesini etkinleştirmeniz gerekir.** Eşitlenmiş kullanıcı hesabı, şirket içi dizininizde oluşturulmuş ve Azure AD Connect kullanarak Azure AD kiracınıza eşitlenmiş bir hesaptır.  Parola karması eşitleme, Kullanıcı/nesne eşitleme 'den farklı bir işlemdir. Tam parola eşitlemesini almak için Parola karması eşitlemesini devre dışı bırakıp etkinleştirmeniz gerekir. ardından, toplu parola karma güncelleştirmelerini uygulama olay günlüğünde görürsünüz.
 >
 >
 
@@ -50,7 +50,7 @@ Etki alanına katılan bir bilgisayara, Azure AD Connect'in önerilen en son sü
 
 **[Azure AD Connect'i indirme](https://www.microsoft.com/download/details.aspx?id=47594)**
 
-Önerilen sürüm: **1.1.614.0** - 5 Eylül 2017 tarihinde yayımlanmış.
+Önerilen sürüm: **1.1.614.0** -5 Eylül 2017 ' de yayımlandı.
 
 > [!WARNING]
 > Eski parola kimlik bilgilerinin (NTLM ve Kerberos kimlik doğrulaması için gereklidir), Azure AD kiracınız ile eşitlenebilmesini sağlamak için Azure AD Connect'in en yeni önerilen sürümünü yüklemeniz GEREKİR. Bu işlev, Azure AD Connect'in önceki sürümlerinde veya eski DirSync aracında kullanılamaz.
@@ -78,8 +78,11 @@ Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConn
 
 Dizininizin boyutuna bağlı olarak (kullanıcıların, grupların vb. sayısı), kimlik bilgisi karmalarının Azure AD ile eşitlenmesi zaman alır. Kimlik bilgisi karmalarının Azure AD'ye eşitlenmesinden kısa bir süre sonra, parolalar Azure AD Domain Services tarafından yönetilen etki alanında kullanılabilir olur.
 
+> [!NOTE]
+> **Parola karması eşitleme** , Kullanıcı/nesne eşitleme 'den farklı bir işlemdir. Tam parola eşitlemesini almak için Parola karması eşitlemesini devre dışı bırakıp etkinleştirmeniz gerekir. ardından, toplu parola karma güncelleştirmelerini uygulama olay günlüğünde görürsünüz.
+
 ## <a name="related-content"></a>İlgili İçerik
 * [Sadece bulutta yer alan Azure AD dizini için AAD Domain Services’a parola eşitlemeyi etkinleştirme](active-directory-ds-getting-started-password-sync.md)
-* [Bir Azure AD Domain Services etki alanını yönetin](manage-domain.md)
+* [Azure AD Domain Services etki alanını yönetme](manage-domain.md)
 * [Windows sanal makinesini Azure AD Domain Services tarafından yönetilen bir etki alanına katma](active-directory-ds-admin-guide-join-windows-vm.md)
 * [Red Hat Enterprise Linux sanal makinesini Azure AD Domain Services tarafından yönetilen bir etki alanına ekleme](active-directory-ds-admin-guide-join-rhel-linux-vm.md)

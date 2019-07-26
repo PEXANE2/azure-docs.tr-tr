@@ -1,6 +1,6 @@
 ---
-title: Kuruluşunuzun yönetme (Önizleme) Profilim portal - Azure Active Directory | Microsoft Docs
-description: Profilim Portalı'nın kuruluşların sayfasında hakkında üst düzey bir genel.
+title: Kuruluşlarımı profilim (Önizleme) portalından yönetme-Azure Active Directory | Microsoft Docs
+description: Profil portalının kuruluşlar sayfası hakkında üst düzey genel bakış.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,49 +12,52 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6053313c6971f1bcf66bc447b4f4f5fe5817666
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6a0ff4190a1712b91bf58fafd80a03fc2737e7a4
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60475553"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68383009"
 ---
-# <a name="manage-your-organizations-from-the-my-profile-preview-portal"></a>Kuruluşunuzun Profilim (Önizleme) portaldan yönetme
-Kuruluşlardan yönetebileceğiniz **kuruluşlar** sayfasının **Profilim** portalı.
+# <a name="manage-your-organizations-from-the-my-profile-preview-portal"></a>Kuruluşlarımı profilim (Önizleme) portalından yönetme
 
-Kuruluşların gösterilen iki tür vardır **kuruluşlar** sayfası:
+Kuruluşlarınızı **profil** portalının **kuruluşlar** sayfasından yönetebilirsiniz.
 
-- **Kuruluş giriş.** Giriş Kuruluşunuz iş veya Okul hesabınızın sahip kuruluştur. Giriş kuruluştan ayrılamazsınız.
+**Kuruluşlar** sayfasında gösterilen iki tür kuruluş vardır:
 
-- **Diğer kuruluşlar.** Diğer kuruluşlar, daha önce iş veya Okul hesabınızı kullanarak açtığınız herhangi bir grubu var. Herhangi bir zamanda bu kuruluşların bırakabilirsiniz.
+- **Ana kuruluş.** Ev kuruluşunuz, iş veya okul hesabınızın sahibi olan kuruluştur. Ana kuruluşunuzu bırakamazsınız.
+
+- **Diğer kuruluşlar.** Diğer kuruluşlar, daha önce iş veya okul hesabınızı kullanarak oturum açtığınız herhangi bir gruptur. Bu kuruluşlardan herhangi birini dilediğiniz zaman bırakabilirsiniz.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-myprofile.md)]
 
-## <a name="view-your-organizations"></a>Kuruluşunuzun görüntüleyin
-1. İş veya Okul hesabınızda oturum açın ve ardından Git kullanarak https://myprofile.microsoft.com/ sayfası.
+## <a name="view-your-organizations"></a>Kuruluşlarınızı görüntüleme
 
-2. Seçin **kuruluşlar** seçin ya da sol gezinti bölmesinde **kuruluşları yönetmeyi** bağlantı **kuruluşlar** blok.
+1. İş veya okul hesabınızda oturum açın ve ardından https://myprofile.microsoft.com/ sayfanıza gidin.
 
-    ![Vurgulanan kuruluşların bağlantıları gösteren profili sayfam](media/myprofile-portal/myprofile-portal-organizations.png)
+2. Sol gezinti bölmesinden **kuruluşlar** ' ı seçin veya **kuruluşlar bloğundan kuruluşları** **Yönet** bağlantısını seçin.
 
-3. Bilgilerini gözden geçirin, **ev kuruluş**. 
+    ![, Vurgulanan kuruluşların bağlantılarını gösteren profilimi görüntüleme sayfası](media/myprofile-portal/myprofile-portal-organizations.png)
 
-    ![Kuruluşların sayfası](media/myprofile-portal/myprofile-portal-organization-page.png)
+3. **Ana kuruluşunuzun**bilgilerini gözden geçirin. 
 
-3. Tümünü hesabınıza bağlı kuruluşların tanı sağlamaktan diğer ilişkili kuruluşunuzun, gözden geçirin.
+    ![Kuruluşlar sayfası](media/myprofile-portal/myprofile-portal-organization-page.png)
+
+4. Diğer ilişkili kurumlarınızı gözden geçirerek hesabınıza bağlı tüm kuruluşları tanıdığınızdan emin olun.
 
 ## <a name="leave-an-organization"></a>Kuruluştan ayrılma
-Giriş kuruluşunuz olmayan herhangi bir kuruluş bırakabilirsiniz.
+
+Ana kuruluşunuz olmayan herhangi bir kuruluştan ayrılırsanız.
 
 >[!Important]
->Bir kuruluş yanlışlıkla değiştirmeden bırakırsanız, geri almak için hiçbir yolu yoktur. Yeniden adlı kuruluşa eklemek zorunda kalırsınız.
+>Bir kuruluştan yanlışlıkla ayrılırsanız geri alma yöntemi yoktur. Organizasyonu tekrar eklemeniz gerekir.
 
-1. Oturum açmak için hesabınızdan **diğer kuruluşlar ile çalışıyorum** alan.
+1. Alanla **çalışmadığım diğer kuruluşlardan** hesabınızda oturum açın.
 
-2. Seçin **bırakın kuruluş**ve ardından **Evet** kuruluştan ayrılmak istediğinizi onaylamak için.
+2. **Kuruluştan ayrıl**' ı seçin ve ardından, kuruluştan ayrılmak istediğinizi onaylamak için **Evet** ' i seçin.
 
-    ![Kuruluşlar vurgulanan bırakın kuruluş bağlantı sayfası](media/myprofile-portal/myprofile-portal-organizations-leave.png)
+    ![Vurgulanan kuruluşu bırak bağlantısına sahip kuruluşlar sayfası](media/myprofile-portal/myprofile-portal-organizations-leave.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Kuruluşunuzun izledikten sonra yönetmek veya görüntülemek için seçebileceğiniz, [güvenlik bilgisi](user-help-security-info-overview.md), bağlı [cihazları](myprofile-portal-devices-page.md), ya da görünüm nasıl Kuruluşunuz [verilerinizi kullanır](myprofile-portal-privacy-page.md).
+- Kuruluşunuzu görüntüledikten sonra [güvenlik bilgilerinizi](user-help-security-info-overview.md), bağlı [cihazlarınızı](myprofile-portal-devices-page.md)görüntülemeyi veya yönetmeyi veya kuruluşunuzun [verilerinizi nasıl kullandığını](myprofile-portal-privacy-page.md)görüntülemeyi seçebilirsiniz.

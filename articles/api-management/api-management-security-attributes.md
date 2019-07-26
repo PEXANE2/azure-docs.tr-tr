@@ -1,6 +1,6 @@
 ---
-title: Azure API yönetimi için güvenlik öznitelikleri
-description: API Management'ı değerlendirmek için genel güvenlik öznitelikleri listesi
+title: Azure API Management için güvenlik öznitelikleri
+description: API Management değerlendirmek için güvenlik özniteliklerinin denetim listesi
 services: api-management
 author: msmbaldwin
 manager: barbkess
@@ -8,28 +8,28 @@ ms.service: api-management
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 3b5826d472b80179c5eb76e0e3a6b1c7ee282487
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2049e2349e3a25ebd4d3f4db19ec47bbaeb067de
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66001083"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442277"
 ---
-# <a name="security-attributes-for-api-management"></a>API yönetimi için güvenlik öznitelikleri
+# <a name="security-attributes-for-api-management"></a>API Management için güvenlik öznitelikleri
 
-Bu makale, API yönetime yerleşik güvenlik özniteliklerini içermektedir.
+Bu makale, API Management yerleşik güvenlik özniteliklerini belgeler.
 
 [!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
 
-## <a name="preventative"></a>Preventative
+## <a name="preventative"></a>Önleyici
 
 | Güvenlik özniteliği | Evet/Hayır | Notlar |
 |---|---|--|
-| Bekleme sırasında şifreleme:<ul><li>Sunucu tarafı şifrelemesi</li><li>Müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifrelemesi</li><li>Diğer şifreleme özellikleri (örneğin, istemci tarafı, her zaman şifreli, vb.)</ul>| Evet (yalnızca hizmet tarafı şifreleme) | Sertifikalar, anahtarları ve gizli adlı değerleri gibi hassas veriler ile şifrelenmiş hizmet tarafından yönetilen, hizmet örneği anahtarlarını başına. |
-| Aktarım sırasında şifreleme:<ul><li>Express route şifreleme</li><li>VNet şifreleme</li><li>VNet-VNet şifreleme</ul>| Evet | [Express route](../expressroute/index.yml) ve VNet şifreleme tarafından sağlanır [Azure ağı](../virtual-network/index.yml). |
-| Şifreleme anahtarı işleme (CMK, BYOK, vb.)| Hayır | Tüm şifreleme anahtarları Hizmet örneği içindir ve yönetilen bir hizmet. |
-| Sütun düzeyinde şifrelemeyi (Azure Data Services)| Yok | |
-| Şifrelenmiş API çağrıları| Evet | Yönetim düzlemi çağrılar aracılığıyla yapılan [Azure Resource Manager](../azure-resource-manager/index.yml) TLS üzerinden. Geçerli bir JSON web token (JWT) gereklidir.  Veri düzlemi çağrıları, TLS ve desteklenen kimlik doğrulama mekanizmaları (örneğin, istemci sertifikası veya JWT) ile güvenli hale getirilebilir.
+| Bekleyen şifreleme (sunucu tarafı şifreleme, müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifreleme ve diğer şifreleme özellikleri)| Evet (yalnızca hizmet tarafı şifreleme) | Sertifikalar, anahtarlar ve gizli-adlandırılmış değerler gibi hassas veriler hizmet tarafından yönetilen hizmet örneği anahtarları ile şifrelenir. |
+| Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNet şifreleme ve VNet-VNet şifreleme gibi)| Evet | [Express Route](../expressroute/index.yml) ve VNET şifrelemesi, [Azure ağı](../virtual-network/index.yml)tarafından sağlanır. |
+| Şifreleme anahtarı işleme (CMK, BYOK vb.)| Hayır | Tüm şifreleme anahtarları hizmet örneği başına alınır ve hizmet yönetilir. |
+| Sütun düzeyinde şifreleme (Azure veri Hizmetleri)| Yok | |
+| Şifrelenmiş API çağrıları| Evet | Yönetim düzlemi çağrıları TLS üzerinden [Azure Resource Manager](../azure-resource-manager/index.yml) üzerinden yapılır. Geçerli bir JSON Web belirteci (JWT) gerekiyor.  Veri düzlemi çağrıları TLS ve desteklenen kimlik doğrulama mekanizmalarından biri (örneğin, istemci sertifikası veya JWT) ile güvenli hale getirilmiş olabilir.
  |
 
 ## <a name="network-segmentation"></a>Ağ kesimleme
@@ -38,40 +38,40 @@ Bu makale, API yönetime yerleşik güvenlik özniteliklerini içermektedir.
 |---|---|--|
 | Hizmet uç noktası desteği| Hayır | |
 | VNet ekleme desteği| Evet | |
-| Ağ yalıtımı ve saldırısından desteği| Evet | Ağ güvenlik grupları (NSG) kullanarak ve Azure Application Gateway (veya diğer yazılım aracı) sırasıyla. |
-| Zorlamalı tünel oluşturma desteği| Evet | Azure ağı, zorlamalı tünel sağlar. |
+| Ağ yalıtımı ve güvenlik duvarı desteği| Evet | Sırasıyla ağ güvenlik grupları (NSG) ve Azure Application Gateway (veya diğer yazılım gereci) kullanma. |
+| Zorlamalı tünel desteği| Evet | Azure ağı Zorlamalı tünel sağlar. |
 
 ## <a name="detection"></a>Algılama
 
 | Güvenlik özniteliği | Evet/Hayır | Notlar|
 |---|---|--|
-| Azure izleme desteği (Log analytics, Application ınsights, vb.)| Evet | |
+| Azure izleme desteği (Log Analytics, App Insights vb.)| Evet | |
 
 ## <a name="identity-and-access-management"></a>Kimlik ve erişim yönetimi
 
 | Güvenlik özniteliği | Evet/Hayır | Notlar|
 |---|---|--|
-| Kimlik Doğrulaması| Evet | |
-| Yetkilendirme| Evet | |
+| Authentication| Evet | |
+| Authorization| Evet | |
 
 
 ## <a name="audit-trail"></a>Denetim izi
 
 | Güvenlik özniteliği | Evet/Hayır | Notlar|
 |---|---|--|
-| Denetim ve yönetim düzlemi günlüğe kaydetme ve Denetim| Evet | [Azure İzleyici etkinlik günlükleri](../azure-monitor/platform/activity-logs-overview.md) |
-| Veri düzlemi günlük kaydı ve Denetim| Evet | [Azure İzleyici tanılama günlükleri](../azure-monitor/platform/diagnostic-logs-overview.md) ve (isteğe bağlı olarak) [Azure Application Insights](../azure-monitor/app/app-insights-overview.md).  |
+| Denetim ve yönetim düzlemi günlüğü ve denetimi| Evet | [Azure Izleyici etkinlik günlükleri](../azure-monitor/platform/activity-logs-overview.md) |
+| Veri düzlemi günlüğü ve denetimi| Evet | [Azure izleyici tanılama günlükleri](../azure-monitor/platform/diagnostic-logs-overview.md) ve (isteğe bağlı olarak) [Azure Application Insights](../azure-monitor/app/app-insights-overview.md).  |
 
 ## <a name="configuration-management"></a>Yapılandırma yönetimi
 
 | Güvenlik özniteliği | Evet/Hayır | Notlar|
 |---|---|--|
-| Yapılandırma yönetimi desteği (sürüm yapılandırması, vs.)| Evet | Kullanarak [Azure API Management DevOps Kaynak Seti](https://aka.ms/apimdevops) |
+| Yapılandırma yönetimi desteği (yapılandırmanın sürümü oluşturma, vb.)| Evet | [Azure API Management DevOps kaynak setini](https://aka.ms/apimdevops) kullanma |
 
-## <a name="vulnerability-scans-false-positives"></a>Güvenlik Açığı taramaları hatalı pozitif sonuçları
+## <a name="vulnerability-scans-false-positives"></a>Güvenlik açığı yanlış pozitifleri tarar
 
-Bu bölümde, Azure API Management etkilemez yaygın güvenlik açıklarına belgeler.
+Bu bölüm, Azure API Management etkilemeyen yaygın güvenlik açıklarını belgelemektedir.
 
-| Güvenlik Açığı               | Açıklama                                                                                                                                                                                                                                                                                                               |
+| Güvenlik açığı               | Açıklama                                                                                                                                                                                                                                                                                                               |
 |-----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Ticketbleed (CVE-2016-9244) | Ticketbleed bazı F5 ürünlerde bulunan TLS SessionTicket uzantısı uygulamasında güvenlik açığı var. ("Kadar 31 bayt başlatılmamış belleği verileri taşmasını") sızıntı sağlar. Bu istemciden 32 bit uzunluğunda olmak için verileri ile geçen bir oturum kimliği doldurma TLS yığın kaynaklanır. |
+| Bilet taşma payı (CVE-2016-9244) | Bilet taşma payı, bazı F5 ürünlerinde bulunan TLS Sessionbilet uzantısının uygulanmasında güvenlik açığıdır. Başlatılmamış bellekten 31 baytlık verilerin sızıntısını ("bleden") sağlar. Bunun nedeni, istemciden geçirilen bir oturum kimliği olan bir oturum kimliğini doldurmasından kaynaklanır ve bu da BT 32 bit uzunluğunda hale gelir. |

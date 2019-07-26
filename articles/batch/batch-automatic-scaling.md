@@ -15,12 +15,12 @@ ms.workload: multiple
 ms.date: 06/20/2017
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 489a3935605432b485f7b0866668f6dbfaac686b
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 431212b2b0ac7bba209130e511e3510e3008a6c4
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323766"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500033"
 ---
 # <a name="create-an-automatic-scaling-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Batch havuzundaki işlem düğümlerini ölçeklendirmek için otomatik ölçeklendirme formülü oluşturma
 
@@ -40,7 +40,7 @@ Bu makalede değişkenler, işleçler, işlemler ve işlevler de dahil olmak üz
 >
 
 ## <a name="automatic-scaling-formulas"></a>Otomatik ölçeklendirme formülleri
-Bir otomatik ölçeklendirme formülü, bir veya daha fazla deyim içeren tanımladığınız bir dize değeridir. Otomatik ölçeklendirme formülü bir havuzun [Otomatik scaleformula][rest_autoscaleformula] element (Batch REST) or [CloudPool.AutoScaleFormula][net_cloudpool_autoscaleformula] özelliğine (Batch .net) atanır. Batch hizmeti, bir sonraki işleme aralığı için havuzdaki işlem düğümlerinin hedef sayısını belirlemede formül kullanır. Formül dizesi 8 KB 'ı aşamaz, noktalı virgülle ayrılmış en fazla 100 deyim içerebilir ve satır sonlarını ve açıklamalarını içerebilir.
+Bir otomatik ölçeklendirme formülü, bir veya daha fazla deyim içeren tanımladığınız bir dize değeridir. Otomatik ölçeklendirme formülü bir havuzun [Otomatik scaleformula][rest_autoscaleformula] öğesine (Batch REST) veya [Cloudpool. otomatik Scaleformula][net_cloudpool_autoscaleformula] özelliğine (Batch .net) atandı. Batch hizmeti, bir sonraki işleme aralığı için havuzdaki işlem düğümlerinin hedef sayısını belirlemede formül kullanır. Formül dizesi 8 KB 'ı aşamaz, noktalı virgülle ayrılmış en fazla 100 deyim içerebilir ve satır sonlarını ve açıklamalarını içerebilir.
 
 Otomatik ölçeklendirme formüllerini, toplu otomatik ölçeklendirme "dili" olarak düşünebilirsiniz. Formül deyimleri, hem hizmet tanımlı değişkenleri (Batch hizmeti tarafından tanımlanan değişkenler), hem de Kullanıcı tanımlı değişkenleri (tanımladığınız değişkenler) içerebilen serbest biçimli ifadelerdir. Yerleşik türler, işleçler ve işlevler kullanarak bu değerler üzerinde çeşitli işlemler gerçekleştirebilir. Örneğin, bir ifade aşağıdaki biçimde değişebilir:
 
@@ -132,7 +132,7 @@ Batch hizmetindeki ölçümleri temel alan ayarlamalar yapmak için, bu hizmet t
 >
 >
 
-## <a name="types"></a>Türü
+## <a name="types"></a>Türler
 Bu türler bir formülde desteklenir:
 
 * double
@@ -364,15 +364,19 @@ $totalDedicatedNodes =
 $TargetDedicatedNodes = min(400, $totalDedicatedNodes)
 ```
 
-## <a name="create-an-autoscale-enabled-pool-with-net"></a>.NET ile otomatik ölçeklendirme özellikli bir havuz oluşturma
+## <a name="create-an-autoscale-enabled-pool-with-batch-sdks"></a>Batch SDK 'Ları ile otomatik ölçeklendirme özellikli havuz oluşturma
+
+Havuz otomatik ölçeklendirme, Batch [SDK 'ları](batch-apis-tools.md#azure-accounts-for-batch-development), Batch [REST API](https://docs.microsoft.com/rest/api/batchservice/) [Batch POWERSHELL cmdlet 'leri](batch-powershell-cmdlets-get-started.md)ve [Batch CLI](batch-cli-get-started.md)kullanılarak yapılandırılabilir. Bu bölümde hem .NET hem de Python örnekleri görebilirsiniz.
+
+### <a name="net"></a>.NET
 
 .NET ' te otomatik ölçeklendirme özelliği etkinleştirilmiş bir havuz oluşturmak için aşağıdaki adımları izleyin:
 
 1. [Batchclient. PoolOperations. createpool](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.createpool)ile havuzu oluşturun.
-2. [Cloudpool. oto Scaleenabled](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleenabled) özelliğini olarak `true`ayarlayın.
-3. [Cloudpool. otomatik scaleformula](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleformula) özelliğini otomatik ölçeklendirme formülünüz ile ayarlayın.
-4. Seçim [Cloudpool. AutoScaleEvaluationInterval](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleevaluationinterval) özelliğini ayarlayın (varsayılan değer 15 dakikadır).
-5. Havuzu [Cloudpool. COMMIT](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commit) veya [commınsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commitasync)ile işleyin.
+1. [Cloudpool. oto Scaleenabled](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleenabled) özelliğini olarak `true`ayarlayın.
+1. [Cloudpool. otomatik scaleformula](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleformula) özelliğini otomatik ölçeklendirme formülünüz ile ayarlayın.
+1. Seçim [Cloudpool. AutoScaleEvaluationInterval](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleevaluationinterval) özelliğini ayarlayın (varsayılan değer 15 dakikadır).
+1. Havuzu [Cloudpool. COMMIT](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commit) veya [commınsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commitasync)ile işleyin.
 
 Aşağıdaki kod parçacığı, .NET 'te otomatik ölçeklendirme özellikli bir havuz oluşturur. Havuzun otomatik ölçeklendirme formülü, ayrılmış düğümlerin hedef sayısını Mondays üzerinde 5 ve haftanın her gününde 1 olarak ayarlar. [Otomatik ölçeklendirme aralığı](#automatic-scaling-interval) 30 dakikaya ayarlanır. Bu makalede ve bu makaledeki C# `myBatchClient` diğer kod parçacıklarında [batchclient][net_batchclient] sınıfının düzgün başlatılmış bir örneğidir.
 
@@ -392,10 +396,8 @@ await pool.CommitAsync();
 >
 >
 
-Batch .NET 'e ek olarak, otomatik ölçeklendirmeyi yapılandırmak için diğer [Batch SDK](batch-apis-tools.md#azure-accounts-for-batch-development)'larını, [toplu Rest](https://docs.microsoft.com/rest/api/batchservice/), [Batch POWERSHELL cmdlet 'lerini](batch-powershell-cmdlets-get-started.md)ve [Batch CLI](batch-cli-get-started.md) 'yi kullanabilirsiniz.
+#### <a name="automatic-scaling-interval"></a>Otomatik ölçeklendirme aralığı
 
-
-### <a name="automatic-scaling-interval"></a>Otomatik ölçeklendirme aralığı
 Varsayılan olarak, Batch hizmeti bir havuzun boyutunu 15 dakikada bir otomatik ölçeklendirme formülüne göre ayarlar. Bu Aralık, aşağıdaki havuz özellikleri kullanılarak yapılandırılabilir:
 
 * [Cloudpool. AutoScaleEvaluationInterval][net_cloudpool_autoscaleevalinterval] (Batch .net)
@@ -405,6 +407,50 @@ Minimum Aralık beş dakikadır ve en fazla 168 saat olur. Bu aralığın dış�
 
 > [!NOTE]
 > Otomatik ölçeklendirme Şu anda bir dakikadan kısa bir sürede değişikliklere yanıt vermeye yönelik değildir, ancak bunun yerine iş yükünü çalıştırırken havuzunuzun boyutunu kademeli olarak ayarlamayı amaçlanır.
+>
+>
+
+### <a name="python"></a>Python
+
+Benzer şekilde, Python SDK ile otomatik ölçeklendirme özellikli bir havuzu şu şekilde yapabilirsiniz:
+
+1. Bir havuz oluşturun ve yapılandırmasını belirtin.
+1. Havuzu hizmet istemcisine ekleyin.
+1. Yazdığınız bir formülle havuzda otomatik ölçeklendirmeyi etkinleştirin.
+
+```python
+# Create a pool; specify configuration
+new_pool = batch.models.PoolAddParameter(
+    id="autoscale-enabled-pool",
+    virtual_machine_configuration=batchmodels.VirtualMachineConfiguration(
+        image_reference=batchmodels.ImageReference(
+          publisher="Canonical",
+          offer="UbuntuServer",
+          sku="18.04-LTS",
+          version="latest"
+            ),
+        node_agent_sku_id="batch.node.ubuntu 18.04"),
+    vm_size="STANDARD_D1_v2",
+    target_dedicated_nodes=0,
+    target_low_priority_nodes=0
+)
+batch_service_client.pool.add(new_pool) # Add the pool to the service client
+
+formula = """$curTime = time();
+             $workHours = $curTime.hour >= 8 && $curTime.hour < 18; 
+             $isWeekday = $curTime.weekday >= 1 && $curTime.weekday <= 5; 
+             $isWorkingWeekdayHour = $workHours && $isWeekday; 
+             $TargetDedicated = $isWorkingWeekdayHour ? 20:10;""";
+
+# Enable autoscale; specify the formula
+response = batch_service_client.pool.enable_auto_scale(pool_id, auto_scale_formula=formula,
+                                            auto_scale_evaluation_interval=datetime.timedelta(minutes=10), 
+                                            pool_enable_auto_scale_options=None, 
+                                            custom_headers=None, raw=False)
+```
+
+> [!TIP]
+> Python SDK 'Yı kullanmaya yönelik daha fazla örnek, GitHub 'daki [Batch Python hızlı başlangıç deposunda](https://github.com/Azure-Samples/batch-python-quickstart) bulunabilir.
 >
 >
 

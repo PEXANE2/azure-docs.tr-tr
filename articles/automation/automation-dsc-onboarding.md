@@ -9,12 +9,12 @@ ms.author: robreed
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: ca53d85a09727b75f68da8d049ac3fcd6723a041
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: b003c0cc6480c5d03c3755e7c57785ab2026194b
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302261"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68498402"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Azure Otomasyonu durum yapılandırmasına göre yönetim için makine ekleme
 
@@ -58,7 +58,7 @@ Makinede PowerShell istenen durum uzantısı yüklü değilse ve güç durumu ç
 
 **Kayıt**bölümüne, kullanım durumu Için gereken [PowerShell DSC yerel Configuration Manager değerlerini](/powershell/dsc/managing-nodes/metaconfig) ve isteğe bağlı olarak VM 'ye atanacak bir düğüm yapılandırmasını girin.
 
-![Ekleme](./media/automation-dsc-onboarding/DSC_Onboarding_6.png)
+![ekleme](./media/automation-dsc-onboarding/DSC_Onboarding_6.png)
 
 ### <a name="azure-resource-manager-templates"></a>Azure Resource Manager şablonları
 
@@ -67,7 +67,7 @@ Bir sanal makine ölçek kümesini yönetiyorsanız, [Azure Otomasyonu tarafınd
 
 ### <a name="powershell"></a>PowerShell
 
-[Register-AzureRmAutomationDscNode](/powershell/module/azurerm.automation/register-azurermautomationdscnode) cmdlet 'ı, PowerShell aracılığıyla Azure Portal sanal makineleri eklemek için kullanılabilir.
+[Register-AzAutomationDscNode](/powershell/module/az.automation/register-azautomationdscnode) cmdlet 'ı, PowerShell aracılığıyla Azure Portal sanal makineleri eklemek için kullanılabilir.
 
 ### <a name="registering-virtual-machines-across-azure-subscriptions"></a>Azure abonelikleri arasında sanal makineleri kaydetme
 
@@ -269,11 +269,11 @@ Azure Otomasyonu durum yapılandırmasına herhangi bir makineyi genel olarak ek
 PowerShell DSC yerel Configuration Manager Varsayılanları kullanım durumumızdan eşleşiyorsa ve her ikisi de Azure Otomasyonu durum yapılandırmasına ve raporlamalarıyla ilgili makineler eklemek istiyorsanız, Azure Otomasyonu cmdlet 'leri basit bir oluşturma yöntemi sağlar gereken DSC metaıd yapılandırması:
 
 1. PowerShell konsolunu veya VSCode 'u yerel ortamınızdaki bir makinede yönetici olarak açın.
-2. Kullanarak Azure Resource Manager bağlanma`Connect-AzureRmAccount`
+2. Kullanarak Azure Resource Manager bağlanma`Connect-AzAccount`
 3. Düğüm eklemek istediğiniz Otomasyon hesabından eklemek istediğiniz makineler için PowerShell DSC metaconfigurations 'ı indirin:
 
    ```powershell
-   # Define the parameters for Get-AzureRmAutomationDscOnboardingMetaconfig using PowerShell Splatting
+   # Define the parameters for Get-AzAutomationDscOnboardingMetaconfig using PowerShell Splatting
    $Params = @{
        ResourceGroupName = 'ContosoResources'; # The name of the Resource Group that contains your Azure Automation Account
        AutomationAccountName = 'ContosoAutomation'; # The name of the Azure Automation Account where you want a node on-boarded to
@@ -282,7 +282,7 @@ PowerShell DSC yerel Configuration Manager Varsayılanları kullanım durumumız
    }
    # Use PowerShell splatting to pass parameters to the Azure Automation cmdlet being invoked
    # For more info about splatting, run: Get-Help -Name about_Splatting
-   Get-AzureRmAutomationDscOnboardingMetaconfig @Params
+   Get-AzAutomationDscOnboardingMetaconfig @Params
    ```
 
 1. Artık ***Dscmetaconfigs***adlı bir klasörünüz olmalıdır ve eklenecek makineler IÇIN PowerShell DSC metayapılandırmalarını (yönetici olarak) içeren bir klasöre sahipsiniz:
@@ -326,6 +326,6 @@ Yapılabilir, bu belgede açıklanan ekleme yöntemlerinden herhangi birini kull
 
 - Başlamak için bkz. [Azure Otomasyonu durum yapılandırması ile çalışmaya](automation-dsc-getting-started.md) başlama
 - Hedef düğümlere atayabilmeniz için DSC yapılandırmalarını derleme hakkında bilgi edinmek için bkz. [Azure Otomasyonu durum yapılandırmasında yapılandırmaları derleme](automation-dsc-compile.md)
-- PowerShell cmdlet başvurusu için bkz. [Azure Otomasyonu durum yapılandırması cmdlet 'leri](/powershell/module/azurerm.automation/#automation)
+- PowerShell cmdlet başvurusu için bkz. [Azure Otomasyonu durum yapılandırması cmdlet 'leri](/powershell/module/az.automation#automation)
 - Fiyatlandırma bilgileri için bkz. [Azure Otomasyonu durum yapılandırması fiyatlandırması](https://azure.microsoft.com/pricing/details/automation/)
 - Azure Otomasyonu durum yapılandırması 'nı sürekli bir dağıtım ardışık düzeninde kullanmaya ilişkin bir örnek görmek için bkz. [Azure Otomasyonu durum yapılandırması ve Chocolatey kullanarak sürekli dağıtım](automation-dsc-cd-chocolatey.md)

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11532fbae4565ec1fc3625abe60b98d2ccd26fec
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 01a9cc4ec4788422337b77b285ed8ee440f6acd4
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68319738"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68346894"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Azure AD parola korumasını dağıtma
 
@@ -135,11 +135,11 @@ Azure AD parola koruması için gereken iki yükleyici vardır. Bunlar [Microsof
         ```
 
         > [!NOTE]
-        > Azure Multi-Factor Authentication gerekliyse bu mod başarısız olur. Bu durumda, önceki iki kimlik doğrulama modundan birini kullanın veya aşağıdaki geçici çözümlerden birini kullanın. MFA gereksinimlerinin yalnızca test amacıyla atlanmasına önerilir.
+        > Hesabınız için Azure Multi-Factor Authentication gerekliyse bu mod başarısız olur. Bu durumda, önceki iki kimlik doğrulama modundan birini kullanın veya bunun yerine MFA gerektirmeyen farklı bir hesap kullanın.
         >
-        > Azure hesabınız özel olarak MFA gerektirecek şekilde yapılandırıldıysa, bunun yerine MFA gerektirmeyen farklı bir hesap kullanabilirsiniz.
+        > Ayrıca, Azure cihaz kaydı (Azure AD parola koruması 'nın altında kullanılan), MFA 'yı genel olarak gerektirecek şekilde yapılandırıldıysa, MFA 'nın gerekli olduğunu da görebilirsiniz. Bu sorunu geçici olarak kullanabilmek için, önceki iki kimlik doğrulama modundan biriyle MFA 'yı destekleyen farklı bir hesap kullanabilirsiniz ya da Azure cihaz kaydı MFA gereksinimini geçici olarak rahat hale gelebilir. Bunu yapmak için Azure Yönetim Portalı ' na gidin ve ardından Azure Active Directory, cihazlar ve cihaz ayarları ' na gidin, ardından "cihazlara katılması gereken çok faktörlü kimlik doğrulamasını gerektir" seçeneğini Hayır olarak ayarlayın. Kayıt tamamlandıktan sonra bu ayarı Evet olarak yeniden yapılandırdığınızdan emin olun.
         >
-        > Ayrıca, Azure cihaz kaydı (Azure AD parola koruması 'nın altında kullanılan), MFA 'yı genel olarak gerektirecek şekilde yapılandırıldıysa, MFA 'nın gerekli olduğunu da görebilirsiniz. Bu sorunu geçici olarak yapmak için, MFA gerektirmeyen farklı bir hesap kullanabilir veya Azure cihaz kaydı MFA gereksinimini geçici olarak rahat hale getirebilirsiniz. Bunu yapmak için Azure Yönetim Portalı ' na gidin ve ardından Azure Active Directory, cihazlar ve cihaz ayarları ' na gidin, ardından "cihazlara katılması gereken çok faktörlü kimlik doğrulamasını gerektir" seçeneğini Hayır olarak ayarlayın.  Kayıt tamamlandıktan sonra bu ayarı Evet olarak yeniden yapılandırdığınızdan emin olun.
+        > MFA gereksinimlerinin yalnızca test amacıyla atlanmasına önerilir.
 
        Şu anda, gelecekteki işlevler için ayrılmış olan *-forestcredential* parametresini belirtmeniz gerekmez.
 
@@ -179,11 +179,11 @@ Azure AD parola koruması için gereken iki yükleyici vardır. Bunlar [Microsof
         ```
 
         > [!NOTE]
-        > Azure Multi-Factor Authentication gerekliyse bu mod başarısız olur. Bu durumda, önceki iki kimlik doğrulama modundan birini kullanın veya aşağıdaki geçici çözümlerden birini kullanın. MFA gereksinimlerinin yalnızca test amacıyla atlanmasına önerilir.
+        > Hesabınız için Azure Multi-Factor Authentication gerekliyse bu mod başarısız olur. Bu durumda, önceki iki kimlik doğrulama modundan birini kullanın veya bunun yerine MFA gerektirmeyen farklı bir hesap kullanın.
         >
-        > Azure hesabınız özel olarak MFA gerektirecek şekilde yapılandırıldıysa, bunun yerine MFA gerektirmeyen farklı bir hesap kullanabilirsiniz.
+        > Ayrıca, Azure cihaz kaydı (Azure AD parola koruması 'nın altında kullanılan), MFA 'yı genel olarak gerektirecek şekilde yapılandırıldıysa, MFA 'nın gerekli olduğunu da görebilirsiniz. Bu sorunu geçici olarak kullanabilmek için, önceki iki kimlik doğrulama modundan biriyle MFA 'yı destekleyen farklı bir hesap kullanabilirsiniz ya da Azure cihaz kaydı MFA gereksinimini geçici olarak rahat hale gelebilir. Bunu yapmak için Azure Yönetim Portalı ' na gidin ve ardından Azure Active Directory, cihazlar ve cihaz ayarları ' na gidin, ardından "cihazlara katılması gereken çok faktörlü kimlik doğrulamasını gerektir" seçeneğini Hayır olarak ayarlayın. Kayıt tamamlandıktan sonra bu ayarı Evet olarak yeniden yapılandırdığınızdan emin olun.
         >
-        > Ayrıca, Azure cihaz kaydı (Azure AD parola koruması 'nın altında kullanılan), MFA 'yı genel olarak gerektirecek şekilde yapılandırıldıysa, MFA 'nın gerekli olduğunu da görebilirsiniz. Bu sorunu geçici olarak yapmak için, MFA gerektirmeyen farklı bir hesap kullanabilir veya Azure cihaz kaydı MFA gereksinimini geçici olarak rahat hale getirebilirsiniz. Bunu yapmak için Azure Yönetim Portalı ' na gidin ve ardından Azure Active Directory, cihazlar ve cihaz ayarları ' na gidin, ardından "cihazlara katılması gereken çok faktörlü kimlik doğrulamasını gerektir" seçeneğini Hayır olarak ayarlayın.  Kayıt tamamlandıktan sonra bu ayarı Evet olarak yeniden yapılandırdığınızdan emin olun.
+        > MFA gereksinimlerinin yalnızca test amacıyla atlanmasına önerilir.
 
        Bu örnekler yalnızca, oturum açmış olan kullanıcının kök etki alanı için bir Active Directory etki alanı yöneticisi olması durumunda başarılı olur. Bu durumda, *-forestcredential* parametresi aracılığıyla alternatif etki alanı kimlik bilgileri sağlayabilirsiniz.
 

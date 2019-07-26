@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 07/11/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: e6ac3ef296509c6613a2a30821392c91648cc104
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: ce4765a512b81d13f735a05ad4fba5408284a607
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868624"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68501418"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure Resource Manager kaynak sağlayıcısı işlemleri
 
@@ -31,7 +31,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftaad"></a>Microsoft.AAD
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. AAD/domainServices/Delete | Etki alanı hizmetini Sil |
 > | Action | Microsoft. AAD/domainServices/oucontainer/Delete | OU kapsayıcısını Sil |
@@ -50,7 +50,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftaadiam"></a>microsoft.aadiam
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. aadihar/diagnosticsettings/Delete | Bir tanılama ayarını silme |
 > | Action | Microsoft. aadihar/diagnosticsettings/Read | Tanılama ayarını okuma |
@@ -60,7 +60,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftaddons"></a>Microsoft. addons
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. addons/işlemler/okuma | Desteklenen RP işlemlerini alır. |
 > | Action | Microsoft. addons/Register/ACTION | Belirtilen aboneliği Microsoft. addons ile kaydedin |
@@ -72,7 +72,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftadhybridhealthservice"></a>Microsoft.ADHybridHealthService
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. ADHybridHealthService/addsservices/Action | Kiracı için yeni bir orman oluşturun. |
 > | Action | Microsoft. ADHybridHealthService/addsservices/addomainservicemembers/Read | Belirtilen hizmet adı için tüm sunucuları alır. |
@@ -146,7 +146,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftadvisor"></a>Microsoft.Advisor
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. danışman/yapılandırma/okuma | Yapılandırma al |
 > | Action | Microsoft. Advisor/Configurations/Write | Yapılandırma oluşturur/güncelleştirir |
@@ -168,7 +168,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftalertsmanagement"></a>Microsoft.AlertsManagement
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. AlertsManagement/actionRules/Delete | Belirli bir abonelikteki eylem kuralını silin. |
 > | Action | Microsoft. AlertsManagement/actionRules/Read | Giriş filtreleri için tüm eylem kurallarını alın. |
@@ -193,7 +193,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. AnalysisServices/Locations/Checknameavaılabılıty/Action | Verilen Analiz Sunucusu adının geçerli ve kullanımda olup olmadığını denetler. |
 > | Action | Microsoft. AnalysisServices/konumlar/operationresults/Read | Belirtilen işlem sonucu bilgilerini alır. |
@@ -212,7 +212,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. Apimanamı/Checknameavaılabılıty/Read | Sağlanan hizmet adının kullanılabilir olup olmadığını denetler |
 > | Action | Microsoft. Apimanayönetimi/işlemler/okuma | Microsoft. Apimana, kaynağı için kullanılabilen tüm API işlemlerini okuyun |
@@ -414,42 +414,42 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftauthorization"></a>Microsoft. Authorization
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. Authorization/classicAdministrators/Delete | Yöneticiyi abonelikten kaldırır. |
 > | Action | Microsoft. Authorization/classicAdministrators/operationdurumlarının/Read | Aboneliğin yönetici işlem durumlarını alır. |
-> | Action | Microsoft. Authorization/classicAdministrators/Read | Aboneliğin yöneticilerini okur. |
-> | Action | Microsoft. Authorization/classicAdministrators/Write | Bir aboneliğe yönetici ekleyin veya bir aboneliği değiştirin. |
+> | Action | Microsoft. Authorization/classicAdministrators/Read | Abonelik için yöneticileri okur. |
+> | Action | Microsoft. Authorization/classicAdministrators/Write | Bir aboneliğe yönetici ekleyin veya yöneticiyi değiştirin. |
 > | Action | Microsoft. Authorization/Denyasatamaları/silme | Belirtilen kapsamdaki reddetme atamasını silin. |
 > | Action | Microsoft. Authorization/Denyasatamaları/okuma | Reddetme atama hakkında bilgi alın. |
 > | Action | Microsoft. Authorization/Denyasatamaları/yazma | Belirtilen kapsamda bir reddetme ataması oluşturun. |
 > | Action | Microsoft. Authorization/yükseltir Teaccess/Action | Arayan kullanıcının kiracı kapsamındaki Kullanıcı erişimi yöneticisi erişimine izin verir |
 > | Action | Microsoft. Authorization/kilitleri/silme | Belirtilen kapsamdaki kilitleri silin. |
 > | Action | Microsoft. Authorization/kilitleri/okuma | Belirtilen kapsamdaki kilitleri alır. |
-> | Action | Microsoft. Authorization/kilitleri/yazma | Belirtilen kapsamdaki kilitleri ekleyin. |
+> | Action | Microsoft. Authorization/kilitleri/yazma | Belirtilen kapsama kilitler ekleyin. |
 > | Action | Microsoft. Authorization/işlemler/okuma | İşlem listesini alır |
-> | Action | Microsoft. Authorization/Permissions/Read | Arayanın verilen kapsamda sahip olduğu tüm izinleri listeler. |
-> | Action | Microsoft. Authorization/Poliyasatamaları/silme | Belirtilen kapsamda bir ilke atamasını silin. |
-> | Action | Microsoft. Authorization/Poliyasatamaları/okuma | İlke atama hakkında bilgi alın. |
+> | Action | Microsoft. Authorization/Permissions/Read | Belirli bir kapsamda çağrıyı gönderenin sahip olduğu tüm izinleri listeler. |
+> | Action | Microsoft. Authorization/Poliyasatamaları/silme | Belirtilen kapsamdaki bir ilke atamasını silin. |
+> | Action | Microsoft. Authorization/Poliyasatamaları/okuma | Bir ilke ataması hakkında bilgi alın. |
 > | Action | Microsoft. Authorization/Poliyasatamaları/yazma | Belirtilen kapsamda bir ilke ataması oluşturun. |
 > | Action | Microsoft. Authorization/policyDefinitions/Delete | İlke tanımını silin. |
 > | Action | Microsoft. Authorization/policyDefinitions/Read | Bir ilke tanımı hakkında bilgi alın. |
 > | Action | Microsoft. Authorization/policyDefinitions/Write | Özel bir ilke tanımı oluşturun. |
 > | Action | Microsoft. Authorization/policySetDefinitions/Delete | İlke kümesi tanımını silin. |
-> | Action | Microsoft. Authorization/policySetDefinitions/Read | İlke kümesi tanımı hakkında bilgi alın. |
+> | Action | Microsoft. Authorization/policySetDefinitions/Read | Bir ilke kümesi tanımı hakkında bilgi alın. |
 > | Action | Microsoft. Authorization/policySetDefinitions/Write | Özel bir ilke kümesi tanımı oluşturun. |
 > | Action | Microsoft. Authorization/providerOperations/Read | Rol tanımlarında kullanılabilen tüm kaynak sağlayıcıları için işlemleri alın. |
-> | Action | Microsoft. Authorization/Roleatamaları/silme | Belirtilen kapsamda bir rol atamasını silin. |
-> | Action | Microsoft. Authorization/Roleatamalar/okuma | Rol ataması hakkında bilgi alın. |
+> | Action | Microsoft. Authorization/Roleatamaları/silme | Belirtilen kapsamdaki bir rol atamasını silin. |
+> | Action | Microsoft. Authorization/Roleatamalar/okuma | Bir rol ataması hakkında bilgi alın. |
 > | Action | Microsoft.Authorization/roleAssignments/write | Belirtilen kapsamda bir rol ataması oluşturun. |
 > | Action | Microsoft. Authorization/roleDefinitions/Delete | Belirtilen özel rol tanımını silin. |
-> | Action | Microsoft. Authorization/roleDefinitions/Read | Rol tanımı hakkında bilgi alın. |
+> | Action | Microsoft. Authorization/roleDefinitions/Read | Bir rol tanımı hakkında bilgi alın. |
 > | Action | Microsoft. Authorization/roleDefinitions/Write | Belirtilen izinlerle ve atanabilir kapsamlarla özel bir rol tanımı oluşturun veya güncelleştirin. |
 
 ## <a name="microsoftautomation"></a>Microsoft. Automation
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. Automation/automationAccounts/Agentregistrationınformation/Read | Azure Automation DSC kayıt bilgilerini okuyun |
 > | Action | Microsoft. Automation/automationAccounts/Agentregistrationınformation/regenerateKey/Action | Azure Automation DSC anahtarlarını yeniden üretme isteği yazar |
@@ -566,19 +566,19 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftazureactivedirectory"></a>Microsoft.AzureActiveDirectory
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
-> | Action | Microsoft. AzureActiveDirectory/b2cDirectories/Delete | B2C Dizin kaynağını Sil |
-> | Action | Microsoft. AzureActiveDirectory/b2cDirectories/Read | B2C Dizin kaynağını görüntüle |
+> | Action | Microsoft. AzureActiveDirectory/b2cDirectories/Delete | B2C Dizini kaynağını sil |
+> | Action | Microsoft. AzureActiveDirectory/b2cDirectories/Read | B2C Dizini kaynağını görüntüle |
 > | Action | Microsoft. AzureActiveDirectory/b2cDirectories/Write | B2C dizin kaynağı oluştur veya güncelleştir |
 > | Action | Microsoft. AzureActiveDirectory/b2ctenants/Read | Kullanıcının üye olduğu tüm B2C kiracılarını listeler |
-> | Action | Microsoft. AzureActiveDirectory/işlemler/okuma | Microsoft. AzureActiveDirectory kaynak sağlayıcısı için kullanılabilen tüm API işlemlerini okuyun |
-> | Action | Microsoft. AzureActiveDirectory/Register/ACTION | Microsoft. AzureActiveDirectory kaynak sağlayıcısı için aboneliği kaydetme |
+> | Action | Microsoft. AzureActiveDirectory/işlemler/okuma | Microsoft.AzureActiveDirectory kaynak sağlayıcısı için tüm kullanılabilir API işlemlerini okuyun |
+> | Action | Microsoft. AzureActiveDirectory/Register/ACTION | Microsoft.AzureActiveDirectory kaynak sağlayıcısı için aboneliği kaydedin |
 
 ## <a name="microsoftazurestack"></a>Microsoft.AzureStack
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. AzureStack/Işlemler/okuma | Bir kaynak sağlayıcısı işleminin özelliklerini alır |
 > | Action | Microsoft. AzureStack/Register/Action | Aboneliği Microsoft. AzureStack kaynak sağlayıcısına kaydeder |
@@ -595,7 +595,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. Batch/batchAccounts/uygulamalar/Sil | Bir uygulamayı siler |
 > | Action | Microsoft. Batch/batchAccounts/uygulamalar/okuma | Uygulamaları listeler veya bir uygulamanın özelliklerini alır |
@@ -638,7 +638,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftbilling"></a>Microsoft.Billing
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. faturalandırma/billingAccounts/departmanlar/okuma | Bir faturalandırma hesabı kapsamındaki tüm departmanları listeleme |
 > | Action | Microsoft. faturalandırma/billingAccounts/KayıtSayısı/okuma | Bir faturalandırma hesabı kapsamında tüm kayıt hesaplarını listeleme |
@@ -651,20 +651,20 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
-> | Action | Microsoft. BingMaps/Mapapsıs/Delete | Silme Işlemi |
-> | Action | Microsoft. BingMaps/Mapapsıs/Listgizlilikler/Action | Gizli dizileri listeleyin |
-> | Action | Microsoft. BingMaps/Mapapsıs/listSingleSignOnToken/Action | Kaynak Için çoklu oturum açma yetkilendirme belirtecini oku |
-> | Action | Microsoft. BingMaps/Mapapsıs/okuma | Okuma Işlemi |
-> | Action | Microsoft. BingMaps/Mapapsıs/regenerateKey/Action | Anahtarı yeniden oluşturur |
-> | Action | Microsoft. BingMaps/Mapapsıs/Write | Yazma Işlemi |
+> | Action | Microsoft. BingMaps/Mapapsıs/Delete | İşlemi Siler |
+> | Action | Microsoft. BingMaps/Mapapsıs/Listgizlilikler/Action | Parolaları Listeler |
+> | Action | Microsoft. BingMaps/Mapapsıs/listSingleSignOnToken/Action | Kaynak İçin Çoklu Oturum Açma Yetkilendirme Belirtecini Okuyun |
+> | Action | Microsoft. BingMaps/Mapapsıs/okuma | İşlemi Okur |
+> | Action | Microsoft. BingMaps/Mapapsıs/regenerateKey/Action | Anahtarı Yeniden Oluşturur |
+> | Action | Microsoft. BingMaps/Mapapsıs/Write | İşlemi Yazar |
 > | Action | Microsoft. BingMaps/Işlemler/okuma | İşlemin açıklaması. |
 
 ## <a name="microsoftblockchain"></a>Microsoft. Blockzinciri
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. Blockzincirine/blockchainMembers/Delete | Varolan bir blok zinciri üyesini siler. |
 > | Action | Microsoft. Blockzincirine/blockchainMembers/listApiKeys/eylem | Varolan blok zinciri üye API anahtarlarını alır veya listeler. |
@@ -683,29 +683,29 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftblueprint"></a>Microsoft. Blueprint
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
-> | Action | Microsoft. Blueprint/Blueprintasbir/atama/Read | Tüm şema yapılarını okuyun |
-> | Action | Microsoft. Blueprint/Blueprintasbir/Delete | Tüm şema yapıtları silme |
-> | Action | Microsoft. Blueprint/Blueprintasbir/Read | Tüm şema yapılarını okuyun |
-> | Action | Microsoft. Blueprint/Blueprintasbir/whoisblueprınt/Action | Azure şemaları hizmet sorumlusu nesne kimliğini alın. |
-> | Action | Microsoft. Blueprint/Blueprintasbir/Write | Herhangi bir şema yapıtı oluşturun veya güncelleştirin |
-> | Action | Microsoft. Blueprint/planlar/yapıtlar/silme | Tüm şema yapıtları silme |
-> | Action | Microsoft. Blueprint/planlar/yapıtlar/okuma | Tüm şema yapılarını okuyun |
-> | Action | Microsoft. Blueprint/planlar/yapıtlar/yazma | Herhangi bir şema yapıtı oluşturun veya güncelleştirin |
-> | Action | Microsoft. BLUEPRINT/planlar/silme | Tüm şemaları silme |
-> | Action | Microsoft. Blueprint/planlar/okuma | Tüm şemaları okuyun |
-> | Action | Microsoft. Blueprint/planlar/sürümler/yapıtlar/okuma | Tüm şema yapılarını okuyun |
-> | Action | Microsoft. Blueprint/planlar/sürümler/Sil | Tüm şemaları silme |
-> | Action | Microsoft. Blueprint/planlar/sürümler/okuma | Tüm şemaları okuyun |
-> | Action | Microsoft. Blueprint/planlar/sürümler/Write | Tüm şemaları oluşturun veya güncelleştirin |
-> | Action | Microsoft. Blueprint/planlar/yazma | Tüm şemaları oluşturun veya güncelleştirin |
-> | Action | Microsoft. BLUEPRINT/Register/Action | Azure şemaları kaynak sağlayıcısını kaydeder |
+> | Action | Microsoft. Blueprint/Blueprintasbir/atama/Read | Herhangi bir şema yapıtını okuyun |
+> | Action | Microsoft. Blueprint/Blueprintasbir/Delete | Herhangi bir şema yapıtını silin |
+> | Action | Microsoft. Blueprint/Blueprintasbir/Read | Herhangi bir şema yapıtını okuyun |
+> | Action | Microsoft. Blueprint/Blueprintasbir/whoisblueprınt/Action | Azure Blueprints hizmet sorumlusu nesne kimliği edinin. |
+> | Action | Microsoft. Blueprint/Blueprintasbir/Write | Herhangi bir şema yapıtını oluşturun veya güncelleştirin |
+> | Action | Microsoft. Blueprint/planlar/yapıtlar/silme | Herhangi bir şema yapıtını silin |
+> | Action | Microsoft. Blueprint/planlar/yapıtlar/okuma | Herhangi bir şema yapıtını okuyun |
+> | Action | Microsoft. Blueprint/planlar/yapıtlar/yazma | Herhangi bir şema yapıtını oluşturun veya güncelleştirin |
+> | Action | Microsoft. BLUEPRINT/planlar/silme | Herhangi bir şemayı silin |
+> | Action | Microsoft. Blueprint/planlar/okuma | Herhangi bir şemayı okuyun |
+> | Action | Microsoft. Blueprint/planlar/sürümler/yapıtlar/okuma | Herhangi bir şema yapıtını okuyun |
+> | Action | Microsoft. Blueprint/planlar/sürümler/Sil | Herhangi bir şemayı silin |
+> | Action | Microsoft. Blueprint/planlar/sürümler/okuma | Herhangi bir şemayı okuyun |
+> | Action | Microsoft. Blueprint/planlar/sürümler/Write | Herhangi bir şemayı oluşturun veya güncelleştirin |
+> | Action | Microsoft. Blueprint/planlar/yazma | Herhangi bir şemayı oluşturun veya güncelleştirin |
+> | Action | Microsoft. BLUEPRINT/Register/Action | Azure Blueprints Kaynak Sağlayıcısı'nı kaydeder |
 
 ## <a name="microsoftbotservice"></a>Microsoft. BotService
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. BotService/botServices/kanallar/Delete | Bir bot hizmetini silme |
 > | Action | Microsoft. BotService/botServices/kanallar/Read | Bir bot hizmetini okuyun |
@@ -722,39 +722,39 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftcache"></a>Microsoft.Cache
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
-> | Action | Microsoft. Cache/checknameavaılabılıty/Action | Bir adın yeni bir Redis Cache kullanılmak üzere kullanılabilir olup olmadığını denetler |
-> | Action | Microsoft. Cache/Locations/operationresults/Read | ' Location ' üstbilgisinin istemciye daha önce döndürüldüğü uzun süren bir işlemin sonucunu alır |
-> | Action | Microsoft. Cache/işlemler/okuma | ' Microsoft. cache ' sağlayıcısının desteklediği işlemleri listeler. |
-> | Action | Microsoft. Cache/redsıs/Delete | Tüm Redis Cache Sil |
-> | Action | Microsoft. Cache/redsıs/Export/ACTION | Redsıs verilerini belirtilen biçimde ön ek depolama bloblarına aktar |
-> | Action | Microsoft. Cache/redsıs/firewallRules/Delete | Redis Cache IP güvenlik duvarı kurallarını silme |
-> | Action | Microsoft. Cache/redsıs/firewallRules/Read | Redis Cache IP güvenlik duvarı kurallarını al |
-> | Action | Microsoft. Cache/redsıs/firewallRules/Write | Redis Cache IP güvenlik duvarı kurallarını düzenleme |
-> | Action | Microsoft. Cache/redsıs/forceReboot/Action | Bir önbellek örneğini yeniden başlatmaya zorla, büyük olasılıkla veri kaybı olabilir. |
-> | Action | Microsoft. Cache/redsıs/Import/Action | Birden çok blobdan belirtilen biçimdeki verileri Redsıs 'e aktar |
-> | Action | Microsoft. Cache/redsıs/LinkedServers/Delete | Redis Cache bağlı sunucuyu silme |
-> | Action | Microsoft. Cache/redsıs/LinkedServers/okuma | Bir redsıs önbelleğiyle ilişkili bağlı sunucuları alın. |
-> | Action | Microsoft. Cache/redsıs/LinkedServers/Write | Redis Cache bağlı sunucu ekleme |
-> | Action | Microsoft. Cache/redsıs/listKeys/ACTION | Yönetim portalında Redis Cache erişim anahtarlarının değerini görüntüleme |
-> | Action | Microsoft. Cache/redsıs/listUpgradeNotifications/Read | Önbellek kiracısı için en son yükseltme bildirimlerini listeleyin. |
-> | Action | Microsoft. Cache/redsıs/metricDefinitions/okuma | Redis Cache için kullanılabilir ölçümleri alır |
-> | Action | Microsoft. Cache/Reda/Patchzamanlamalar/silme | Redis Cache Patch zamanlamasını silme |
-> | Action | Microsoft. Cache/redsıs/Patchzamanlamalar/okuma | Redis Cache düzeltme eki uygulama zamanlamasını alır |
-> | Action | Microsoft. Cache/redsıs/Patchzamanlamalar/yazma | Redis Cache düzeltme eki uygulama zamanlamasını değiştirme |
-> | Action | Microsoft. Cache/redsıs/Read | Yönetim portalında Redis Cache ayarlarını ve yapılandırmasını görüntüleme |
-> | Action | Microsoft. Cache/redsıs/regenerateKey/Action | Yönetim portalında Redis Cache erişim anahtarlarının değerini değiştirme |
+> | Action | Microsoft. Cache/checknameavaılabılıty/Action | Bir adın yeni bir Redis Cache için kullanılabilir olup olmadığını denetler |
+> | Action | Microsoft. Cache/Locations/operationresults/Read | 'Konum' üst bilgisi önceden istemciye döndürülen uzun süredir çalışan işlemin sonucunu alır |
+> | Action | Microsoft. Cache/işlemler/okuma | 'Microsoft.Cache' sağlayıcısının desteklediği işlemleri listeler. |
+> | Action | Microsoft. Cache/redsıs/Delete | Redis Cache'nin tamamını sil |
+> | Action | Microsoft. Cache/redsıs/Export/ACTION | Redis verilerini belirtilen biçimde ön ekli depolama blob'larına aktar |
+> | Action | Microsoft. Cache/redsıs/firewallRules/Delete | Bir Redis Cache'in IP güvenlik duvarı kurallarını siler |
+> | Action | Microsoft. Cache/redsıs/firewallRules/Read | Bir Redis Cache'in IP güvenlik duvarı kurallarını alır |
+> | Action | Microsoft. Cache/redsıs/firewallRules/Write | Bir Redis Cache'in IP güvenlik duvarı kurallarını düzenler |
+> | Action | Microsoft. Cache/redsıs/forceReboot/Action | Veri kaybı olasılığı olan bir önbellek örneği yeniden başlatmayı zorlayın. |
+> | Action | Microsoft. Cache/redsıs/Import/Action | Birden çok blob'dan belirli bir biçimdeki verileri Redis'e aktar |
+> | Action | Microsoft. Cache/redsıs/LinkedServers/Delete | Redis Cache'ten Bağlı Sunucuyu Sil |
+> | Action | Microsoft. Cache/redsıs/LinkedServers/okuma | Bir Redis Cache ile ilişkili Bağlı Sunucuları alın. |
+> | Action | Microsoft. Cache/redsıs/LinkedServers/Write | Redis Cache'e Bağlı Sunucu Ekle |
+> | Action | Microsoft. Cache/redsıs/listKeys/ACTION | Redis Cache erişim anahtarlarının değerini yönetim portalında görüntüleyin |
+> | Action | Microsoft. Cache/redsıs/listUpgradeNotifications/Read | Önbellek kiracısı için en son Yükseltme Bildirimlerini listeleyin. |
+> | Action | Microsoft. Cache/redsıs/metricDefinitions/okuma | Bir Redis Cache için kullanılabilir ölçümleri alır |
+> | Action | Microsoft. Cache/Reda/Patchzamanlamalar/silme | Bir Redis Cache'in düzeltme eki zamanlamasını siler |
+> | Action | Microsoft. Cache/redsıs/Patchzamanlamalar/okuma | Redis Cache'in düzeltme eki uygulama zamanlamasını alır |
+> | Action | Microsoft. Cache/redsıs/Patchzamanlamalar/yazma | Redis Cache'in düzeltme eki uygulama zamanlamasını değiştirir |
+> | Action | Microsoft. Cache/redsıs/Read | Redis Cache'nin ayarlarını ve yapılandırmasını yönetim portalında görüntüleyin |
+> | Action | Microsoft. Cache/redsıs/regenerateKey/Action | Redis Cache erişim anahtarlarının değerini yönetim portalında değiştirin |
 > | Action | Microsoft. Cache/redsıs/start/Action | Bir önbellek örneği başlatın. |
 > | Action | Microsoft. Cache/reddir/durdur/eylem | Bir önbellek örneğini durdurun. |
-> | Action | Microsoft. Cache/redsıs/Write | Yönetim portalında Redis Cache ayarlarını ve yapılandırmasını değiştirme |
-> | Action | Microsoft. Cache/Register/ACTION | ' Microsoft. cache ' kaynak sağlayıcısını bir abonelikle kaydeder |
-> | Action | Microsoft. Cache/Unregister/eylem | ' Microsoft. cache ' kaynak sağlayıcısının kaydını abonelikle siler |
+> | Action | Microsoft. Cache/redsıs/Write | Redis Cache'in ayarlarını ve yapılandırmasını yönetim portalında değiştirin |
+> | Action | Microsoft. Cache/Register/ACTION | 'Microsoft.Cache' kaynak sağlayıcısını bir aboneliğe kaydeder |
+> | Action | Microsoft. Cache/Unregister/eylem | 'Microsoft.Cache' kaynak sağlayıcısının kaydını bir abonelikten kaldırır |
 
 ## <a name="microsoftcapacity"></a>Microsoft. Capacity
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. Capacity/appliedreservations/Read | Tüm rezervasyonları oku |
 > | Action | Microsoft. Capacity/calculateexchange/Action | Exchange tutarını ve yeni satın alma fiyatını hesaplar ve ilke hatalarını döndürür. |
@@ -788,7 +788,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. CDN/Checknameavaılabılıty/Action |  |
 > | Action | Microsoft. CDN/CheckResourceUsage/eylem |  |
@@ -845,13 +845,13 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 > | Action | Microsoft. CDN/Profiles/GetSupportedOptimizationTypes/Action |  |
 > | Action | Microsoft. CDN/profiller/okuma |  |
 > | Action | Microsoft. CDN/profiller/yazma |  |
-> | Action | Microsoft. CDN/Register/ACTION | CDN kaynak sağlayıcısı için aboneliği kaydeder ve CDN profillerinin oluşturulmasına izin vermez. |
+> | Action | Microsoft. CDN/Register/ACTION | CDN kaynak sağlayıcısı için aboneliği kaydeder ve CDN profillerinin oluşturulmasını sağlar. |
 > | Action | Microsoft. CDN/Validatearaştırma/eylem |  |
 
 ## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. CertificateRegistration/certificateOrders/sertifikalar/Sil | Mevcut bir sertifikayı silme |
 > | Action | Microsoft. CertificateRegistration/certificateOrders/sertifikalar/okuma | Sertifika listesini al |
@@ -875,172 +875,172 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. ClassicCompute/Capabilities/Read | Özellikleri gösterir |
-> | Action | Microsoft. ClassicCompute/Checkdomainnameavaılabılıty/Action | Belirli bir etki alanı adının kullanılabilirliğini denetler. |
-> | Action | Microsoft. ClassicCompute/Checkdomainnameavaılabılıty/Read | Belirli bir etki alanı adının kullanılabilirliğini alır. |
+> | Action | Microsoft. ClassicCompute/Checkdomainnameavaılabılıty/Action | Bir etki alanı adının kullanılabilirliğini denetler. |
+> | Action | Microsoft. ClassicCompute/Checkdomainnameavaılabılıty/Read | Bir etki alanı adının kullanılabilirliğini alır. |
 > | Action | Microsoft. ClassicCompute/domainNames/etkin/Write | Etkin etki alanı adını ayarlar. |
 > | Action | Microsoft. ClassicCompute/domainNames/kullanılabilirliği \ kümeler/okundu | Kaynak için kullanılabilirlik kümesini görüntüleyin. |
-> | Action | Microsoft. ClassicCompute/domainNames/yetenekler/okuma | Etki alanı adı yeteneklerini gösterir |
+> | Action | Microsoft. ClassicCompute/domainNames/yetenekler/okuma | Etki alanı adı özelliklerini gösterir |
 > | Action | Microsoft. ClassicCompute/domainNames/Delete | Kaynaklar için etki alanı adlarını kaldırın. |
 > | Action | Microsoft. ClassicCompute/domainNames/deploymentyuvaları/okuma | Dağıtım yuvalarını gösterir. |
-> | Action | Microsoft. ClassicCompute/domainNames/deploymentyuvaları/roller/okuma | Etki alanı adının dağıtım yuvasında rol al |
-> | Action | Microsoft. ClassicCompute/domainNames/deploymentyuvaları/roller/roleınstances/Read | Etki alanı adının dağıtım yuvasındaki rolün rol örneğini al |
-> | Action | Microsoft. ClassicCompute/domainNames/deploymentyuvaları/durumu/okuma | Dağıtım yuvası durumunu alın. |
+> | Action | Microsoft. ClassicCompute/domainNames/deploymentyuvaları/roller/okuma | Etki alanı adının dağıtım yuvasındaki rolü al |
+> | Action | Microsoft. ClassicCompute/domainNames/deploymentyuvaları/roller/roleınstances/Read | Etki alanı adının dağıtım yuvasındaki rol için rol örneği al |
+> | Action | Microsoft. ClassicCompute/domainNames/deploymentyuvaları/durumu/okuma | Dağıtım yuvası durumu alır. |
 > | Action | Microsoft. ClassicCompute/domainNames/deploymentyuvaları/durum/yazma | Dağıtım yuvası durumunu ekleyin. |
 > | Action | Microsoft. ClassicCompute/domainNames/deploymentyuvaları/upgradedomain/Read | Etki alanı adındaki dağıtım yuvası için yükseltme etki alanını al |
-> | Action | Microsoft. ClassicCompute/domainNames/deploymentyuvaları/upgradedomain/Write | Etki alanı adında dağıtım yuvası için yükseltme etki alanını güncelleştir |
+> | Action | Microsoft. ClassicCompute/domainNames/deploymentyuvaları/upgradedomain/Write | Etki alanı adındaki dağıtım yuvası için yükseltme etki alanını güncelleştir |
 > | Action | Microsoft. ClassicCompute/domainNames/deploymentyuvaları/yazma | Dağıtımı oluşturur veya güncelleştirir. |
 > | Action | Microsoft. ClassicCompute/domainNames/Extensions/Sil | Etki alanı adı uzantılarını kaldırın. |
-> | Action | Microsoft. ClassicCompute/domainNames/Extensions/Operationdurumlarının/Read | Etki alanı adları uzantılarının işlem durumunu okur. |
+> | Action | Microsoft. ClassicCompute/domainNames/Extensions/Operationdurumlarının/Read | Etki alanı uzantıları için işlem durumunu okur. |
 > | Action | Microsoft. ClassicCompute/domainNames/Extensions/Read | Etki alanı adı uzantılarını döndürür. |
-> | Action | Microsoft. ClassicCompute/domainNames/Extensions/Write | Etki alanı adı uzantılarını ekleyin. |
-> | Action | Microsoft. ClassicCompute/domainNames/internalLoadBalancers/Delete | Yeni bir iç yük dengesini kaldırın. |
-> | Action | Microsoft. ClassicCompute/domainNames/internalLoadBalancers/Operationdurumlarının/Read | Etki alanı adları iç yük dengeleyiciler için işlem durumunu okur. |
-> | Action | Microsoft. ClassicCompute/domainNames/internalLoadBalancers/Read | İç yük dengeleyicileri alır. |
-> | Action | Microsoft. ClassicCompute/domainNames/internalLoadBalancers/Write | Yeni bir iç Yük Dengeleme oluşturur. |
+> | Action | Microsoft. ClassicCompute/domainNames/Extensions/Write | Etki alanı adı uzantıları ekleyin. |
+> | Action | Microsoft. ClassicCompute/domainNames/internalLoadBalancers/Delete | Yeni bir iç yük dengelemeyi kaldırın. |
+> | Action | Microsoft. ClassicCompute/domainNames/internalLoadBalancers/Operationdurumlarının/Read | Etki alanı adları iç load balancer'ları için işlem durumunu okur. |
+> | Action | Microsoft. ClassicCompute/domainNames/internalLoadBalancers/Read | İç load balancer'ları alır. |
+> | Action | Microsoft. ClassicCompute/domainNames/internalLoadBalancers/Write | Yeni bir iç yük dengeleme oluşturur. |
 > | Action | Microsoft. ClassicCompute/domainNames/loadBalancedEndpointSets/Operationdurumlarının/Read | Etki alanı adları yük dengeli uç nokta kümeleri için işlem durumunu okur. |
-> | Action | Microsoft. ClassicCompute/domainNames/loadBalancedEndpointSets/Read | Yük dengeli uç nokta kümelerini alın. |
+> | Action | Microsoft. ClassicCompute/domainNames/loadBalancedEndpointSets/Read | Yük dengeli uç nokta kümelerini alır. |
 > | Action | Microsoft. ClassicCompute/domainNames/loadBalancedEndpointSets/Write | Yük dengeli uç nokta kümesini ekleyin. |
 > | Action | Microsoft. ClassicCompute/domainNames/operationdurumlarının/Read | Etki alanı adının işlem durumunu alır. |
-> | Action | Microsoft. ClassicCompute/domainNames/Operationdurumlarının/Read | Etki alanı adları uzantılarının işlem durumunu okur. |
+> | Action | Microsoft. ClassicCompute/domainNames/Operationdurumlarının/Read | Etki alanı uzantıları için işlem durumunu okur. |
 > | Action | Microsoft. ClassicCompute/domainNames/Read | Kaynaklar için etki alanı adlarını döndürün. |
 > | Action | Microsoft. ClassicCompute/domainNames/serviceCertificates/Delete | Kullanılan hizmet sertifikalarını silin. |
 > | Action | Microsoft. ClassicCompute/domainNames/serviceCertificates/Operationdurumlarının/Read | Etki alanı adları hizmet sertifikaları için işlem durumunu okur. |
 > | Action | Microsoft. ClassicCompute/domainNames/serviceCertificates/Read | Kullanılan hizmet sertifikalarını döndürür. |
 > | Action | Microsoft. ClassicCompute/domainNames/serviceCertificates/Write | Kullanılan hizmet sertifikalarını ekleyin veya değiştirin. |
-> | Action | Microsoft. ClassicCompute/domainNames/yuvalar/abortMigration/Action | Dağıtım yuvasının geçişini durdurur. |
-> | Action | Microsoft. ClassicCompute/domainNames/yuvalar/commitMigration/Action | Bir dağıtım yuvasının geçişini kaydeder. |
-> | Action | Microsoft. ClassicCompute/domainNames/yuvalar/Delete | Verilen bir dağıtım yuvasını siler. |
+> | Action | Microsoft. ClassicCompute/domainNames/yuvalar/abortMigration/Action | Bir dağıtım yuvasının geçişini durdurur. |
+> | Action | Microsoft. ClassicCompute/domainNames/yuvalar/commitMigration/Action | Bir dağıtım yuvasının geçişini yürütür. |
+> | Action | Microsoft. ClassicCompute/domainNames/yuvalar/Delete | Bir dağıtım yuvasını siler. |
 > | Action | Microsoft. ClassicCompute/domainNames/yuvalar/Operationdurumlarının/Read | Etki alanı adı yuvaları için işlem durumunu okur. |
 > | Action | Microsoft. ClassicCompute/domainNames/yuvalar/prepareMigration/Action | Bir dağıtım yuvasının geçişini hazırlar. |
 > | Action | Microsoft. ClassicCompute/domainNames/yuvalar/okuma | Dağıtım yuvalarını gösterir. |
-> | Action | Microsoft. ClassicCompute/domainNames/yuvalar/roller/extensionReferences/Delete | Dağıtım yuvası rolü için uzantı başvurusunu kaldırın. |
-> | Action | Microsoft. ClassicCompute/domainNames/yuvalar/roller/extensionReferences/Operationdurumlarının/Read | Etki alanı adı yuvaları rol uzantısı başvuruları için işlem durumunu okur. |
-> | Action | Microsoft. ClassicCompute/domainNames/yuvalar/roller/extensionReferences/Read | Dağıtım yuvası rolü için uzantı başvurusunu döndürür. |
-> | Action | Microsoft. ClassicCompute/domainNames/yuvalar/roller/extensionReferences/Write | Dağıtım yuvası rolü için uzantı başvurusunu ekleyin veya değiştirin. |
-> | Action | Microsoft. ClassicCompute/domainNames/yuvalar/roller/MetricDefinitions/okuma | Etki alanı adı için rol ölçümü tanımını alın. |
-> | Action | Microsoft. ClassicCompute/domainNames/yuvalar/roller/ölçümler/okuma | Etki alanı adı için rol ölçümünü al. |
+> | Action | Microsoft. ClassicCompute/domainNames/yuvalar/roller/extensionReferences/Delete | Dağıtım yuvası rolüne ait uzantı başvurusunu kaldırın. |
+> | Action | Microsoft. ClassicCompute/domainNames/yuvalar/roller/extensionReferences/Operationdurumlarının/Read | Etki alanı adı yuvaları uzantı başvuruları için işlem durumunu okur. |
+> | Action | Microsoft. ClassicCompute/domainNames/yuvalar/roller/extensionReferences/Read | Dağıtım yuvası rolüne ait uzantı başvurusunu döndürür. |
+> | Action | Microsoft. ClassicCompute/domainNames/yuvalar/roller/extensionReferences/Write | Dağıtım yuvası rolüne ait uzantı başvurusunu ekleyin veya değiştirin. |
+> | Action | Microsoft. ClassicCompute/domainNames/yuvalar/roller/MetricDefinitions/okuma | Etki alanı adı için rol ölçümü tanımını alır. |
+> | Action | Microsoft. ClassicCompute/domainNames/yuvalar/roller/ölçümler/okuma | Etki alanı adı için rol ölçümünü alır. |
 > | Action | Microsoft. ClassicCompute/domainNames/yuvalar/roller/operationdurumlarının/Read | Etki alanı adları yuva rolü için işlem durumunu alır. |
 > | Action | Microsoft. ClassicCompute/domainNames/yuvalar/roller/sağlayıcılar/Microsoft. Insights/diagnosticSettings/Read | Tanılama ayarlarını alın. |
 > | Action | Microsoft. ClassicCompute/domainNames/yuvalar/roller/sağlayıcılar/Microsoft. Insights/diagnosticSettings/Write | Tanılama ayarlarını ekleyin veya değiştirin. |
 > | Action | Microsoft. ClassicCompute/domainNames/yuvalar/roller/sağlayıcılar/Microsoft. Insights/metricDefinitions/Read | Ölçüm tanımlarını alır. |
-> | Action | Microsoft. ClassicCompute/domainNames/yuvalar/roller/okuma | Dağıtım yuvasının rolünü alın. |
-> | Action | Microsoft. ClassicCompute/domainNames/yuvalar/roller/Roleınstances/downloadremotedesktopconnectionfile/Action | Etki alanı adı yuva rolündeki rol örneği için Uzak Masaüstü bağlantı dosyasını indirir. |
-> | Action | Microsoft. ClassicCompute/domainNames/yuvalar/roller/Roleınstances/Operationdurumlarının/Read | Etki alanı adları yuva rolündeki rol örneği için işlem durumunu alır. |
+> | Action | Microsoft. ClassicCompute/domainNames/yuvalar/roller/okuma | Dağıtım yuvası için rolü alın. |
+> | Action | Microsoft. ClassicCompute/domainNames/yuvalar/roller/Roleınstances/downloadremotedesktopconnectionfile/Action | Etki alanı adı yuvası rolü üzerindeki rol örneği için uzak masaüstü bağlantısı dosyasını indirir. |
+> | Action | Microsoft. ClassicCompute/domainNames/yuvalar/roller/Roleınstances/Operationdurumlarının/Read | Etki alanı adları yuva rolü üzerindeki rol örneği için işlem durumunu alır. |
 > | Action | Microsoft. ClassicCompute/domainNames/yuvalar/roller/Roleınstances/Read | Rol örneğini alın. |
-> | Action | Microsoft. ClassicCompute/domainNames/yuvalar/roller/Roleınstances/Rebuild/Action | Rol örneğini yeniden oluşturur. |
-> | Action | Microsoft. ClassicCompute/domainNames/yuvalar/roller/Roleınstances/ReImage/Action | Rol örneğini yeniden görüntüler. |
+> | Action | Microsoft. ClassicCompute/domainNames/yuvalar/roller/Roleınstances/Rebuild/Action | Rol örneğini yeniden derler. |
+> | Action | Microsoft. ClassicCompute/domainNames/yuvalar/roller/Roleınstances/ReImage/Action | Rol örneğinin yeniden görüntüsünü oluşturur. |
 > | Action | Microsoft. ClassicCompute/domainNames/yuvalar/roller/Roleınstances/restart/Action | Rol örneklerini yeniden başlatır. |
-> | Action | Microsoft. ClassicCompute/domainNames/yuvalar/roller/SKU/okuma | Dağıtım yuvası için rol SKU 'su alın. |
+> | Action | Microsoft. ClassicCompute/domainNames/yuvalar/roller/SKU/okuma | Dağıtım yuvası için rol SKU'sunu alır. |
 > | Action | Microsoft. ClassicCompute/domainNames/yuvalar/roller/Write | Dağıtım yuvası için rol ekleyin. |
 > | Action | Microsoft. ClassicCompute/domainNames/yuvalar/start/Action | Bir dağıtım yuvası başlatır. |
-> | Action | Microsoft. ClassicCompute/domainNames/yuvalar/eyalet/Başlat/yaz | Dağıtım yuvası durumunu Durduruldu olarak değiştirir. |
+> | Action | Microsoft. ClassicCompute/domainNames/yuvalar/eyalet/Başlat/yaz | Dağıtım yuvası durumunu durduruldu olarak değiştirir. |
 > | Action | Microsoft. ClassicCompute/domainNames/yuvalar/eyalet/durdur/yaz | Dağıtım yuvası durumunu başlatıldı olarak değiştirir. |
 > | Action | Microsoft. ClassicCompute/domainNames/yuvalar/durdur/eylem | Dağıtım yuvasını askıya alır. |
-> | Action | Microsoft. ClassicCompute/domainNames/yuvalar/upgradeDomain/Write | Etki alanını yükseltme. |
-> | Action | Microsoft. ClassicCompute/domainNames/yuvalar/validateMigration/Action | Dağıtım yuvasının geçişini doğrular. |
+> | Action | Microsoft. ClassicCompute/domainNames/yuvalar/upgradeDomain/Write | Etki alanını yükseltir. |
+> | Action | Microsoft. ClassicCompute/domainNames/yuvalar/validateMigration/Action | Bir dağıtım yuvasının geçişini doğrular. |
 > | Action | Microsoft. ClassicCompute/domainNames/yuvalar/Write | Dağıtımı oluşturur veya güncelleştirir. |
-> | Action | Microsoft. ClassicCompute/domainNames/Swap/Action | Hazırlama yuvasını üretim yuvasına değiştirir. |
+> | Action | Microsoft. ClassicCompute/domainNames/Swap/Action | Hazırlama yuvasını üretim yuvasıyla değiştirir. |
 > | Action | Microsoft. ClassicCompute/domainNames/Write | Kaynaklar için etki alanı adlarını ekleyin veya değiştirin. |
 > | Action | Microsoft. ClassicCompute/moveSubscriptionResources/Action | Tüm klasik kaynakları farklı bir aboneliğe taşıyın. |
-> | Action | Microsoft. ClassicCompute/operatingSystemFamilies/Read | Microsoft Azure ' de bulunan konuk işletim sistemi ailelerini listeler ve ayrıca her bir aile için kullanılabilir işletim sistemi sürümlerini listeler. |
-> | Action | Microsoft. ClassicCompute/operatingSystems/Read | Microsoft Azure ' de şu anda kullanılabilir olan konuk işletim sisteminin sürümlerini listeler. |
+> | Action | Microsoft. ClassicCompute/operatingSystemFamilies/Read | Microsoft Azure'da kullanılabilen konuk işletim sistemi ailelerini ve her aile için kullanılabilen işletim sistemi sürümlerini listeler. |
+> | Action | Microsoft. ClassicCompute/operatingSystems/Read | Microsoft Azure'da kullanılabilen geçerli konuk işletim sistemi sürümlerini listeler. |
 > | Action | Microsoft. ClassicCompute/işlemler/okuma | İşlem listesini alır. |
-> | Action | Microsoft. ClassicCompute/Operationkıdurumlar/okuma | Kaynak için işlem durumunu okur. |
-> | Action | Microsoft. ClassicCompute/kotalar/okundu | Aboneliğin kotasını alın. |
-> | Action | Microsoft. ClassicCompute/Register/Action | Klasik Işlem 'a kaydol |
-> | Action | Microsoft. ClassicCompute/resourceTypes/SKU/okuma | Desteklenen kaynak türleri için SKU listesini alır. |
-> | Action | Microsoft. ClassicCompute/Validatesubscriptionmoveavaılabılıty/Action | Klasik taşıma işlemi için aboneliğin kullanılabilirliğini doğrulayın. |
+> | Action | Microsoft. ClassicCompute/Operationkıdurumlar/okuma | Kaynağın işlem durumunu okur. |
+> | Action | Microsoft. ClassicCompute/kotalar/okundu | Abonelik için kotayı alın. |
+> | Action | Microsoft. ClassicCompute/Register/Action | Classic Compute'a Kaydol |
+> | Action | Microsoft. ClassicCompute/resourceTypes/SKU/okuma | Desteklenen kaynak türleri için Sku listesini alır. |
+> | Action | Microsoft. ClassicCompute/Validatesubscriptionmoveavaılabılıty/Action | Klasik taşıma işlemi için aboneliğin uygunluk durumunu doğrulayın. |
 > | Action | Microsoft. ClassicCompute/virtualMachines/Ilişkili Networksecuritygroups/Delete | Sanal makineyle ilişkilendirilmiş ağ güvenlik grubunu siler. |
-> | Action | Microsoft. ClassicCompute/virtualMachines/Ilişkili Networksecuritygroups/Operationdurumlarının/Read | Sanal makineler ile ilişkili ağ güvenlik grupları için işlem durumunu okur. |
-> | Action | Microsoft. ClassicCompute/virtualMachines/Ilişkili Networksecuritygroups/Read | Sanal makineyle ilişkili ağ güvenlik grubunu alır. |
+> | Action | Microsoft. ClassicCompute/virtualMachines/Ilişkili Networksecuritygroups/Operationdurumlarının/Read | Ağ güvenlik gruplarıyla ilişkili sanal makineler için işlem durumunu okur. |
+> | Action | Microsoft. ClassicCompute/virtualMachines/Ilişkili Networksecuritygroups/Read | Sanal makineyle ilişkilendirilmiş ağ güvenlik grubunu alır. |
 > | Action | Microsoft. ClassicCompute/virtualMachines/Ilişkili Networksecuritygroups/Write | Sanal makineyle ilişkilendirilmiş bir ağ güvenlik grubu ekler. |
 > | Action | Microsoft. ClassicCompute/virtualMachines/asyncOperations/Read | Olası zaman uyumsuz işlemleri alır |
-> | Action | Microsoft. ClassicCompute/virtualMachines/attachDisk/eylem | Bir sanal makineye bir veri diski ekler. |
-> | Action | Microsoft. ClassicCompute/virtualMachines/Capture/Action | Bir sanal makineyi yakala. |
+> | Action | Microsoft. ClassicCompute/virtualMachines/attachDisk/eylem | Sanal makineye bir veri diski ekler. |
+> | Action | Microsoft. ClassicCompute/virtualMachines/Capture/Action | Bir sanal makineyi yakalar. |
 > | Action | Microsoft. ClassicCompute/virtualMachines/Delete | Sanal makineleri kaldırır. |
 > | Action | Microsoft. ClassicCompute/virtualMachines/çıkarılabilir disk/eylem | Bir veri diskini sanal makineden ayırır. |
-> | Action | Microsoft. ClassicCompute/virtualMachines/diagnosticsettings/Read | Sanal makine tanılama ayarlarını al. |
+> | Action | Microsoft. ClassicCompute/virtualMachines/diagnosticsettings/Read | Sanal makine tanılama ayarlarını alır. |
 > | Action | Microsoft. ClassicCompute/virtualMachines/diskler/okuma | Veri disklerinin listesini alır |
 > | Action | Microsoft. ClassicCompute/virtualMachines/downloadRemoteDesktopConnectionFile/Action | Sanal makine için RDP dosyasını indirir. |
-> | Action | Microsoft. ClassicCompute/virtualMachines/Extensions/Operationdurumlarının/Read | Sanal makine uzantılarının işlem durumunu okur. |
+> | Action | Microsoft. ClassicCompute/virtualMachines/Extensions/Operationdurumlarının/Read | Sanal makine uzantıları için işlem durumunu okur. |
 > | Action | Microsoft. ClassicCompute/virtualMachines/uzantılar/okuma | Sanal makine uzantısını alır. |
-> | Action | Microsoft. ClassicCompute/virtualMachines/uzantılar/Write | Sanal makine uzantısını koyar. |
-> | Action | Microsoft. ClassicCompute/virtualMachines/MetricDefinitions/Read | Sanal makine ölçüm tanımını alın. |
+> | Action | Microsoft. ClassicCompute/virtualMachines/uzantılar/Write | Sanal makine uzantısını yerleştirir. |
+> | Action | Microsoft. ClassicCompute/virtualMachines/MetricDefinitions/Read | Sanal makine ölçüm tanımını alır. |
 > | Action | Microsoft. ClassicCompute/virtualMachines/ölçümler/okuma | Ölçümleri alır. |
-> | Action | Microsoft. ClassicCompute/virtualMachines/NetworkInterfaces/ile Ilişkili Networksecuritygroups/Delete | Ağ arabirimiyle ilişkili ağ güvenlik grubunu siler. |
-> | Action | Microsoft. ClassicCompute/virtualMachines/NetworkInterfaces/ile Ilişkili Networksecuritygroups/Operationdurumlarının/Read | Sanal makineler ile ilişkili ağ güvenlik grupları için işlem durumunu okur. |
-> | Action | Microsoft. ClassicCompute/virtualMachines/NetworkInterfaces/ile Ilişkili Networksecuritygroups/Read | Ağ arabirimiyle ilişkili ağ güvenlik grubunu alır. |
-> | Action | Microsoft. ClassicCompute/virtualMachines/NetworkInterfaces/ile Ilişkili Networksecuritygroups/Write | Ağ arabirimiyle ilişkili bir ağ güvenlik grubu ekler. |
+> | Action | Microsoft. ClassicCompute/virtualMachines/NetworkInterfaces/ile Ilişkili Networksecuritygroups/Delete | Ağ arabirimiyle ilişkilendirilmiş ağ güvenlik grubunu siler. |
+> | Action | Microsoft. ClassicCompute/virtualMachines/NetworkInterfaces/ile Ilişkili Networksecuritygroups/Operationdurumlarının/Read | Ağ güvenlik gruplarıyla ilişkili sanal makineler için işlem durumunu okur. |
+> | Action | Microsoft. ClassicCompute/virtualMachines/NetworkInterfaces/ile Ilişkili Networksecuritygroups/Read | Ağ arabirimiyle ilişkilendirilmiş ağ güvenlik grubunu alır. |
+> | Action | Microsoft. ClassicCompute/virtualMachines/NetworkInterfaces/ile Ilişkili Networksecuritygroups/Write | Ağ arabirimiyle ilişkilendirilmiş bir ağ güvenlik grubunu ekler. |
 > | Action | Microsoft. ClassicCompute/virtualMachines/Operationdurumlarının/Read | Sanal makineler için işlem durumunu okur. |
-> | Action | Microsoft. ClassicCompute/virtualMachines/performMaintenance/Action | Sanal makinede bakım gerçekleştirir. |
+> | Action | Microsoft. ClassicCompute/virtualMachines/performMaintenance/Action | Sanal makinede bakım işlemi gerçekleştirir. |
 > | Action | Microsoft. ClassicCompute/virtualMachines/Providers/Microsoft. Insights/diagnosticSettings/Read | Tanılama ayarlarını alın. |
 > | Action | Microsoft. ClassicCompute/virtualMachines/Providers/Microsoft. Insights/diagnosticSettings/Write | Tanılama ayarlarını ekleyin veya değiştirin. |
 > | Action | Microsoft. ClassicCompute/virtualMachines/Providers/Microsoft. Insights/metricDefinitions/Read | Ölçüm tanımlarını alır. |
 > | Action | Microsoft. ClassicCompute/virtualMachines/okuma | Sanal makinelerin listesini alır. |
 > | Action | Microsoft. ClassicCompute/virtualMachines/yeniden dağıtma/eylem | Sanal makineyi yeniden dağıtır. |
 > | Action | Microsoft. ClassicCompute/virtualMachines/restart/Action | Sanal makineleri yeniden başlatır. |
-> | Action | Microsoft. ClassicCompute/virtualMachines/kapatması/eylemi | Sanal makineyi kapatır. |
+> | Action | Microsoft. ClassicCompute/virtualMachines/kapatması/eylemi | Sanal makineyi kapatın. |
 > | Action | Microsoft. ClassicCompute/virtualMachines/Başlat/eylem | Sanal makineyi başlatın. |
-> | Action | Microsoft. ClassicCompute/virtualMachines/durdur/eylem | Sanal makineyi sonlandırır. |
-> | Action | Microsoft. ClassicCompute/virtualMachines/Write | Sanal makineler ekleyin veya değiştirin. |
+> | Action | Microsoft. ClassicCompute/virtualMachines/durdur/eylem | Sanal makineyi durdurur. |
+> | Action | Microsoft. ClassicCompute/virtualMachines/Write | Sanal makineleri ekleyin veya değiştirin. |
 
 ## <a name="microsoftclassicnetwork"></a>Microsoft.ClassicNetwork
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
-> | Action | Microsoft. ClassicNetwork/expressroutecrossconnections/operationdurumlarının/Read | Bir Express Route çapraz bağlantı işlem durumunu alın. |
-> | Action | Microsoft. ClassicNetwork/expressroutecrossconnections/peerler/Sil | Express Route çapraz bağlantı eşlemesini silin. |
+> | Action | Microsoft. ClassicNetwork/expressroutecrossconnections/operationdurumlarının/Read | Bir Express Route çapraz bağlantı işlem durumunu alır. |
+> | Action | Microsoft. ClassicNetwork/expressroutecrossconnections/peerler/Sil | Express Route çapraz bağlantı eşlemesini siler. |
 > | Action | Microsoft. ClassicNetwork/expressroutecrossconnections/peerler/operationdurumlarının/Read | Bir Express Route çapraz bağlantı eşleme işlem durumunu alır. |
-> | Action | Microsoft. ClassicNetwork/expressroutecrossconnections/peerler/okundu | Hızlı rota çapraz bağlantı eşlemesini alın. |
+> | Action | Microsoft. ClassicNetwork/expressroutecrossconnections/peerler/okundu | Express Route çapraz bağlantı eşlemesini alır. |
 > | Action | Microsoft. ClassicNetwork/expressroutecrossconnections/peerler/yaz | Express Route çapraz bağlantı eşlemesi ekleyin. |
-> | Action | Microsoft. ClassicNetwork/expressroutecrossconnections/Read | Express Route çapraz bağlantılarını alın. |
+> | Action | Microsoft. ClassicNetwork/expressroutecrossconnections/Read | Express Route çapraz bağlantılarını alır. |
 > | Action | Microsoft. ClassicNetwork/expressroutecrossconnections/Write | Express Route çapraz bağlantıları ekleyin. |
 > | Action | Microsoft. ClassicNetwork/gatewaySupportedDevices/Read | Desteklenen cihazların listesini alır. |
 > | Action | Microsoft. ClassicNetwork/networkSecurityGroups/Delete | Ağ güvenlik grubunu siler. |
 > | Action | Microsoft. ClassicNetwork/networkSecurityGroups/Operationdurumlarının/Read | Ağ güvenlik grubu için işlem durumunu okur. |
-> | Action | Microsoft. ClassicNetwork/networksecuritygroups/Providers/Microsoft. Insights/diagnosticSettings/Read | Ağ güvenlik grupları tanılama ayarlarını alır |
+> | Action | Microsoft. ClassicNetwork/networksecuritygroups/Providers/Microsoft. Insights/diagnosticSettings/Read | Ağ Güvenlik Grupları Tanılama Ayarlarını alır |
 > | Action | Microsoft. ClassicNetwork/networksecuritygroups/Providers/Microsoft. Insights/diagnosticSettings/Write | Ağ güvenlik grupları tanılama ayarlarını oluşturur veya güncelleştirir, bu işlem Öngörüler kaynak sağlayıcısı tarafından belirlenir. |
-> | Action | Microsoft. ClassicNetwork/networksecuritygroups/Providers/Microsoft. Insights/logDefinitions/Read | Ağ güvenlik grubu olaylarını alır |
+> | Action | Microsoft. ClassicNetwork/networksecuritygroups/Providers/Microsoft. Insights/logDefinitions/Read | Ağ güvenlik grubunun olaylarını alır |
 > | Action | Microsoft. ClassicNetwork/networkSecurityGroups/Read | Ağ güvenlik grubunu alır. |
 > | Action | Microsoft. ClassicNetwork/networkSecurityGroups/securityRules/Delete | Güvenlik kuralını siler. |
-> | Action | Microsoft. ClassicNetwork/networkSecurityGroups/securityRules/Operationdurumlarının/Read | Ağ güvenlik grubu güvenlik kuralları için işlem durumunu okur. |
+> | Action | Microsoft. ClassicNetwork/networkSecurityGroups/securityRules/Operationdurumlarının/Read | Aü güvenlik grubu için işlem durumunu okur. |
 > | Action | Microsoft. ClassicNetwork/networkSecurityGroups/securityRules/Read | Güvenlik kuralını alır. |
-> | Action | Microsoft. ClassicNetwork/networkSecurityGroups/securityRules/Write | Bir güvenlik kuralı ekler veya güncelleştirir. |
+> | Action | Microsoft. ClassicNetwork/networkSecurityGroups/securityRules/Write | Güvenlik kuralı alır veya güncelleştirir. |
 > | Action | Microsoft. ClassicNetwork/networkSecurityGroups/Write | Yeni bir ağ güvenlik grubu ekler. |
-> | Action | Microsoft. ClassicNetwork/Operations/Read | Klasik ağ işlemlerini alın. |
-> | Action | Microsoft. ClassicNetwork/Quotas/Read | Aboneliğin kotasını alın. |
-> | Action | Microsoft. ClassicNetwork/Register/Action | Klasik ağa Kaydet |
-> | Action | Microsoft. ClassicNetwork/Rezervedips/Delete | Ayrılmış bir IP 'yi silin. |
-> | Action | Microsoft. ClassicNetwork/Rezervedips/JOIN/Action | Ayrılmış bir IP 'ye katılır |
-> | Action | Microsoft.ClassicNetwork/reservedIps/link/action | Ayrılmış bir IP 'yi bağlama |
-> | Action | Microsoft. ClassicNetwork/Rezervedips/Operationdurumlarının/Read | Ayrılmış IP 'ler için işlem durumunu okur. |
-> | Action | Microsoft.ClassicNetwork/reservedIps/read | Ayrılmış IP 'Leri alır |
+> | Action | Microsoft. ClassicNetwork/Operations/Read | Klasik ağ işlemlerini alır. |
+> | Action | Microsoft. ClassicNetwork/Quotas/Read | Abonelik için kotayı alın. |
+> | Action | Microsoft. ClassicNetwork/Register/Action | Classic Network'e Kaydol |
+> | Action | Microsoft. ClassicNetwork/Rezervedips/Delete | Ayrılmış bir IP'yi silin. |
+> | Action | Microsoft. ClassicNetwork/Rezervedips/JOIN/Action | Ayrılmış bir IP'ye katılın |
+> | Action | Microsoft.ClassicNetwork/reservedIps/link/action | Ayrılmış bir IP'ye bağlantı oluşturun |
+> | Action | Microsoft. ClassicNetwork/Rezervedips/Operationdurumlarının/Read | Ayrılmış IP'ler için işlem durumunu okur |
+> | Action | Microsoft.ClassicNetwork/reservedIps/read | Ayrılmış IP'leri alır |
 > | Action | Microsoft. ClassicNetwork/Rezervedips/Write | Yeni bir ayrılmış IP ekleyin |
-> | Action | Microsoft. ClassicNetwork/virtualNetworks/abortMigration/Action | Bir sanal ağın geçişini durdurur |
+> | Action | Microsoft. ClassicNetwork/virtualNetworks/abortMigration/Action | Bir Sanal Ağın geçişini durdurur |
 > | Action | Microsoft. ClassicNetwork/virtualNetworks/Capabilities/Read | Özellikleri gösterir |
 > | Action | Microsoft. ClassicNetwork/virtualNetworks/Checkıpaddressavailability/eylem | Bir sanal ağdaki belirli bir IP adresinin kullanılabilirliğini denetler. |
-> | Action | Microsoft. ClassicNetwork/virtualNetworks/commitMigration/Action | Bir sanal ağın geçişini kaydeder |
+> | Action | Microsoft. ClassicNetwork/virtualNetworks/commitMigration/Action | Bir Sanal Ağın geçişini yürütür |
 > | Action | Microsoft. ClassicNetwork/virtualNetworks/Delete | Sanal ağı siler. |
-> | Action | Microsoft. ClassicNetwork/virtualNetworks/Gateway/Clientiptal edilmiş sertifikalar/Sil | Bir istemci sertifikasını iptal eder. |
+> | Action | Microsoft. ClassicNetwork/virtualNetworks/Gateway/Clientiptal edilmiş sertifikalar/Sil | Bir istemci sertifikası iptalini geri alır. |
 > | Action | Microsoft. ClassicNetwork/virtualNetworks/Gateway/Clientiptal edilmiş sertifikalar/okuma | İptal edilen istemci sertifikalarını okuyun. |
 > | Action | Microsoft. ClassicNetwork/virtualNetworks/Gateway/Clientiptal edilmiş sertifikalar/Write | Bir istemci sertifikasını iptal eder. |
-> | Action | Microsoft. ClassicNetwork/virtualNetworks/Gateway/Clienentrootcertificates/Delete | Sanal ağ geçidi istemci sertifikasını siler. |
-> | Action | Microsoft. ClassicNetwork/virtualNetworks/Gateway/Clienentrootcertificates/Download/Action | Sertifikayı parmak izine göre indirir. |
+> | Action | Microsoft. ClassicNetwork/virtualNetworks/Gateway/Clienentrootcertificates/Delete | Sanal ağın ağ geçidi istemci sertifikasını siler. |
+> | Action | Microsoft. ClassicNetwork/virtualNetworks/Gateway/Clienentrootcertificates/Download/Action | Parmak izine göre sertifika indirir. |
 > | Action | Microsoft. ClassicNetwork/virtualNetworks/Gateway/Clienentrootcertificates/listPackage/Action | Sanal ağ geçidi sertifika paketini listeler. |
 > | Action | Microsoft. ClassicNetwork/virtualNetworks/Gateway/Clienentrootcertificates/Read | İstemci kök sertifikalarını bulun. |
 > | Action | Microsoft. ClassicNetwork/virtualNetworks/Gateway/Clienentrootcertificates/Write | Yeni bir istemci kök sertifikasını karşıya yükler. |
-> | Action | Microsoft. ClassicNetwork/virtualNetworks/Gateway/Connections/Connect/Action | Bir siteyi site ağ geçidi bağlantısına bağlar. |
-> | Action | Microsoft. ClassicNetwork/virtualNetworks/Gateway/Connections/Disconnect/Action | Bir siteden siteye ağ geçidi bağlantısı bağlantısını keser. |
+> | Action | Microsoft. ClassicNetwork/virtualNetworks/Gateway/Connections/Connect/Action | Bir siteden siteye ağ geçidi bağlantısına bağlanır. |
+> | Action | Microsoft. ClassicNetwork/virtualNetworks/Gateway/Connections/Disconnect/Action | Bir siteden siteye ağ geçidi bağlantısını keser. |
 > | Action | Microsoft. ClassicNetwork/virtualNetworks/Gateway/Connections/Read | Bağlantıların listesini alır. |
-> | Action | Microsoft. ClassicNetwork/virtualNetworks/Gateway/Connections/test/Action | Bir siteyi site ağ geçidi bağlantısına sınar. |
+> | Action | Microsoft. ClassicNetwork/virtualNetworks/Gateway/Connections/test/Action | Bir siteden siteye ağ geçidi bağlantısını test eder. |
 > | Action | Microsoft. ClassicNetwork/virtualNetworks/Gateway/Delete | Sanal ağ geçidini siler. |
 > | Action | Microsoft. ClassicNetwork/virtualNetworks/Gateway/Downloaddeviceconfigurationscrıpt/Action | Cihaz yapılandırma betiğini indirir. |
-> | Action | Microsoft. ClassicNetwork/virtualNetworks/Gateway/Downloadagnostiği/Action | Ağ Geçidi tanılamayı indirir. |
-> | Action | Microsoft. ClassicNetwork/virtualNetworks/Gateway/Listdevresi ServiceKey/Action | Devre hizmet anahtarını alır. |
+> | Action | Microsoft. ClassicNetwork/virtualNetworks/Gateway/Downloadagnostiği/Action | Ağ geçidi tanılamasını indirir. |
+> | Action | Microsoft. ClassicNetwork/virtualNetworks/Gateway/Listdevresi ServiceKey/Action | Bağlantı hattı hizmet anahtarını alır. |
 > | Action | Microsoft. ClassicNetwork/virtualNetworks/Gateway/listPackage/Action | Sanal ağ geçidi paketini listeler. |
 > | Action | Microsoft. ClassicNetwork/virtualNetworks/Gateway/Operationdurumlarının/Read | Sanal ağ geçitleri için işlem durumunu okur. |
 > | Action | Microsoft. ClassicNetwork/virtualNetworks/Gateway/Packages/Read | Sanal ağ geçidi paketini alır. |
@@ -1048,68 +1048,68 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 > | Action | Microsoft. ClassicNetwork/virtualNetworks/Gateway/startDiagnostics/Action | Sanal ağ geçidi için tanılamayı başlatır. |
 > | Action | Microsoft. ClassicNetwork/virtualNetworks/Gateway/stopDiagnostics/Action | Sanal ağ geçidi için tanılamayı sonlandırır. |
 > | Action | Microsoft. ClassicNetwork/virtualNetworks/Gateway/Write | Bir sanal ağ geçidi ekler. |
-> | Action | Microsoft.ClassicNetwork/virtualNetworks/join/action | Sanal ağı birleştirir. |
-> | Action | Microsoft. ClassicNetwork/virtualNetworks/Operationdurumlarının/Read | Sanal ağların işlem durumunu okur. |
-> | Action | Microsoft. ClassicNetwork/virtualNetworks/peer/Action | Bir sanal ağı başka bir sanal ağla eşler. |
-> | Action | Microsoft. ClassicNetwork/virtualNetworks/prepareMigration/Action | Bir sanal ağın geçişini hazırlar |
+> | Action | Microsoft.ClassicNetwork/virtualNetworks/join/action | Sanal ağa katılır. |
+> | Action | Microsoft. ClassicNetwork/virtualNetworks/Operationdurumlarının/Read | Sanal ağlar için işlem durumunu okur. |
+> | Action | Microsoft. ClassicNetwork/virtualNetworks/peer/Action | Bir sanal ağı başka bir sanal ağ ile eşler. |
+> | Action | Microsoft. ClassicNetwork/virtualNetworks/prepareMigration/Action | Bir Sanal Ağın geçişini hazırlar |
 > | Action | Microsoft. ClassicNetwork/virtualNetworks/Read | Sanal ağı alın. |
 > | Action | Microsoft. ClassicNetwork/virtualNetworks/Remotevirtualnetworkpeeringproxy/Delete | Uzak sanal ağ eşleme ara sunucusunu siler. |
 > | Action | Microsoft. ClassicNetwork/virtualNetworks/Remotevirtualnetworkpeeringproxy/Read | Uzak sanal ağ eşleme ara sunucusunu alır. |
-> | Action | Microsoft. ClassicNetwork/virtualNetworks/Remotevirtualnetworkpeeringproxy/Write | Uzak sanal ağ eşleme proxy 'sini ekler veya güncelleştirir. |
-> | Action | Microsoft. ClassicNetwork/virtualNetworks/altağ/Ilişkili Networksecuritygroups/Delete | Alt ağla ilişkili ağ güvenlik grubunu siler. |
+> | Action | Microsoft. ClassicNetwork/virtualNetworks/Remotevirtualnetworkpeeringproxy/Write | Uzak sanal ağ eşleme ara sunucusunu ekler veya güncelleştirir. |
+> | Action | Microsoft. ClassicNetwork/virtualNetworks/altağ/Ilişkili Networksecuritygroups/Delete | Alt ağ ile ilişkilendirilmiş ağ güvenlik grubunu siler. |
 > | Action | Microsoft. ClassicNetwork/virtualNetworks/altağ/Ilişkili Networksecuritygroups/Operationdurumlar/Read | Sanal ağ alt ağı ile ilişkili ağ güvenlik grubu için işlem durumunu okur. |
-> | Action | Microsoft. ClassicNetwork/virtualNetworks/alt ağlar/Ilişkili olan Networksecuritygroups/Read | Alt ağla ilişkili ağ güvenlik grubunu alır. |
-> | Action | Microsoft. ClassicNetwork/virtualNetworks/altağ/Ilişkili Networksecuritygroups/Write | Alt ağla ilişkili bir ağ güvenlik grubu ekler. |
-> | Action | Microsoft. ClassicNetwork/virtualNetworks/validateMigration/Action | Bir sanal ağın geçişini doğrular |
-> | Action | Microsoft. ClassicNetwork/virtualNetworks/Virtualnetworkpeerler/okuma | Sanal Ağ eşlemesini alır. |
+> | Action | Microsoft. ClassicNetwork/virtualNetworks/alt ağlar/Ilişkili olan Networksecuritygroups/Read | Alt ağ ile ilişkilendirilmiş ağ güvenlik grubunu alır. |
+> | Action | Microsoft. ClassicNetwork/virtualNetworks/altağ/Ilişkili Networksecuritygroups/Write | Alt ağ ile ilişkilendirilmiş bir ağ güvenlik grubu ekler. |
+> | Action | Microsoft. ClassicNetwork/virtualNetworks/validateMigration/Action | Bir Sanal Ağın geçişini doğrular |
+> | Action | Microsoft. ClassicNetwork/virtualNetworks/Virtualnetworkpeerler/okuma | Sanal ağ eşlemesini alır. |
 > | Action | Microsoft. ClassicNetwork/virtualNetworks/Write | Yeni bir sanal ağ ekleyin. |
 
 ## <a name="microsoftclassicstorage"></a>Microsoft.ClassicStorage
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. ClassicStorage/Capabilities/Read | Özellikleri gösterir |
 > | Action | Microsoft. ClassicStorage/checkStorageAccountAvailability/eylem | Bir depolama hesabının kullanılabilirliğini denetler. |
-> | Action | Microsoft. ClassicStorage/checkStorageAccountAvailability/okuma | Bir depolama hesabının kullanılabilirliğini alın. |
+> | Action | Microsoft. ClassicStorage/checkStorageAccountAvailability/okuma | Bir depolama hesabının kullanılabilirliğini alır. |
 > | Action | Microsoft. ClassicStorage/diskleri/okuma | Depolama hesabı diskini döndürür. |
-> | Action | Microsoft. ClassicStorage/Images/operationdurumlarının/Read | Görüntü Işlemi durumunu alır. |
+> | Action | Microsoft. ClassicStorage/Images/operationdurumlarının/Read | Görüntü İşlem Durumunu alır. |
 > | Action | Microsoft. ClassicStorage/Images/Read | Görüntüyü döndürür. |
 > | Action | Microsoft. ClassicStorage/işlemler/okuma | Klasik depolama işlemlerini alır |
 > | Action | Microsoft. ClassicStorage/Osımages/Read | İşletim sistemi görüntüsünü döndürür. |
 > | Action | Microsoft. ClassicStorage/Osplatformımages/Read | İşletim sistemi platformu görüntüsünü alır. |
 > | Action | Microsoft. ClassicStorage/Publicımages/Read | Ortak sanal makine görüntüsünü alır. |
-> | Action | Microsoft. ClassicStorage/kotaları/Read | Aboneliğin kotasını alın. |
-> | Action | Microsoft. ClassicStorage/Register/Action | Klasik depolamaya kaydolun |
-> | Action | Microsoft. ClassicStorage/storageAccounts/abortMigration/Action | Bir depolama hesabının geçişini durdurur. |
-> | Action | Microsoft. ClassicStorage/storageAccounts/commitMigration/Action | Bir depolama hesabının geçişini kaydeder. |
+> | Action | Microsoft. ClassicStorage/kotaları/Read | Abonelik için kotayı alın. |
+> | Action | Microsoft. ClassicStorage/Register/Action | Klasik Depolamaya Kaydeder |
+> | Action | Microsoft. ClassicStorage/storageAccounts/abortMigration/Action | Depolama hesabını geçirme işlemini durdurur. |
+> | Action | Microsoft. ClassicStorage/storageAccounts/commitMigration/Action | Depolama hesabını geçirme işlemini yürütür. |
 > | Action | Microsoft. ClassicStorage/storageAccounts/Delete | Depolama hesabını silin. |
-> | Action | Microsoft. ClassicStorage/storageAccounts/Disks/Delete | Belirli bir depolama hesabı diskini siler. |
-> | Action | Microsoft. ClassicStorage/storageAccounts/Disks/Operationdurumlarının/Read | Kaynak için işlem durumunu okur. |
+> | Action | Microsoft. ClassicStorage/storageAccounts/Disks/Delete | Verilen depolama hesabı diskini siler. |
+> | Action | Microsoft. ClassicStorage/storageAccounts/Disks/Operationdurumlarının/Read | Kaynağın işlem durumunu okur. |
 > | Action | Microsoft.ClassicStorage/storageAccounts/disks/read | Depolama hesabı diskini döndürür. |
-> | Action | Microsoft. ClassicStorage/storageAccounts/disk/Write | Bir depolama hesabı diski ekler. |
+> | Action | Microsoft. ClassicStorage/storageAccounts/disk/Write | Depolama hesabı diski ekler. |
 > | Action | Microsoft. ClassicStorage/storageAccounts/Images/Delete | Verilen bir depolama hesabı görüntüsünü siler. Kullanım dışı. ' Microsoft. ClassicStorage/storageAccounts/Vmımages ' kullanın) |
-> | Action | Microsoft. ClassicStorage/storageAccounts/Images/operationdurumlarının/Read | Depolama hesabı görüntü işlemi durumunu döndürür. |
+> | Action | Microsoft. ClassicStorage/storageAccounts/Images/operationdurumlarının/Read | Depolama hesabı görüntüsünün işlem durumunu döndürür. |
 > | Action | Microsoft.ClassicStorage/storageAccounts/images/read | Depolama hesabı görüntüsünü döndürür. Kullanım dışı. ' Microsoft. ClassicStorage/storageAccounts/Vmımages ' kullanın) |
 > | Action | Microsoft.ClassicStorage/storageAccounts/listKeys/action | Depolama hesaplarının erişim anahtarlarını listeler. |
-> | Action | Microsoft. ClassicStorage/storageAccounts/Operationdurumlarının/Read | Kaynak için işlem durumunu okur. |
-> | Action | Microsoft. ClassicStorage/storageAccounts/Osımages/Delete | Belirli bir depolama hesabı işletim sistemi görüntüsünü siler. |
+> | Action | Microsoft. ClassicStorage/storageAccounts/Operationdurumlarının/Read | Kaynağın işlem durumunu okur. |
+> | Action | Microsoft. ClassicStorage/storageAccounts/Osımages/Delete | Belirtilen bir depolama hesabı işletim sistemi görüntüsünü siler. |
 > | Action | Microsoft. ClassicStorage/storageAccounts/Osımages/Read | Depolama hesabı işletim sistemi görüntüsünü döndürür. |
 > | Action | Microsoft. ClassicStorage/storageAccounts/Osımages/Write | Belirli bir depolama hesabı işletim sistemi görüntüsünü ekler. |
-> | Action | Microsoft. ClassicStorage/storageAccounts/prepareMigration/Action | Bir depolama hesabının geçişini hazırlar. |
+> | Action | Microsoft. ClassicStorage/storageAccounts/prepareMigration/Action | Depolama hesabını geçirme işlemini hazırlar. |
 > | Action | Microsoft. ClassicStorage/storageAccounts/Providers/Microsoft. Insights/diagnosticSettings/Read | Tanılama ayarlarını alın. |
 > | Action | Microsoft. ClassicStorage/storageAccounts/Providers/Microsoft. Insights/diagnosticSettings/Write | Tanılama ayarlarını ekleyin veya değiştirin. |
 > | Action | Microsoft. ClassicStorage/storageAccounts/Providers/Microsoft. Insights/metricDefinitions/Read | Ölçüm tanımlarını alır. |
-> | Action | Microsoft.ClassicStorage/storageAccounts/read | Verilen hesaba sahip depolama hesabını döndürün. |
-> | Action | Microsoft. ClassicStorage/storageAccounts/regenerateKey/Action | Depolama hesabı için mevcut erişim anahtarlarını yeniden oluşturur. |
+> | Action | Microsoft.ClassicStorage/storageAccounts/read | Belirli bir hesaba yönelik depolama hesabını döndürün. |
+> | Action | Microsoft. ClassicStorage/storageAccounts/regenerateKey/Action | Depolama hesabı için var olan erişim anahtarlarını yeniden oluşturur. |
 > | Action | Microsoft. ClassicStorage/storageAccounts/Services/diagnosticSettings/Read | Tanılama ayarlarını alın. |
 > | Action | Microsoft. ClassicStorage/storageAccounts/Services/diagnosticSettings/Write | Tanılama ayarlarını ekleyin veya değiştirin. |
 > | Action | Microsoft. ClassicStorage/storageAccounts/Services/metricDefinitions/Read | Ölçüm tanımlarını alır. |
 > | Action | Microsoft. ClassicStorage/storageAccounts/Services/ölçümler/okuma | Ölçümleri alır. |
 > | Action | Microsoft. ClassicStorage/storageAccounts/Services/Read | Kullanılabilir hizmetleri alın. |
-> | Action | Microsoft. ClassicStorage/storageAccounts/validateMigration/Action | Bir depolama hesabının geçişini doğrular. |
+> | Action | Microsoft. ClassicStorage/storageAccounts/validateMigration/Action | Depolama hesabını geçirme işlemini doğrular. |
 > | Action | Microsoft. ClassicStorage/storageAccounts/Vmımages/Delete | Belirli bir sanal makine görüntüsünü siler. |
-> | Action | Microsoft. ClassicStorage/storageAccounts/Vmımages/operationdurumlarının/Read | Belirli bir sanal makine görüntüsü işlem durumunu alır. |
+> | Action | Microsoft. ClassicStorage/storageAccounts/Vmımages/operationdurumlarının/Read | Belirtilen sanal makinenin görüntü işlem durumu alır. |
 > | Action | Microsoft. ClassicStorage/storageAccounts/Vmımages/Read | Sanal makine görüntüsünü döndürür. |
 > | Action | Microsoft. ClassicStorage/storageAccounts/Vmımages/Write | Belirli bir sanal makine görüntüsünü ekler. |
 > | Action | Microsoft. ClassicStorage/storageAccounts/Write | Yeni bir depolama hesabı ekler. |
@@ -1118,7 +1118,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | DataAction | Microsoft. Biliveservices/hesaplar/ComputerVision/çözümle/eylem | Bu işlem, görüntü içeriğine göre zengin bir görsel özellikler kümesini ayıklar.  |
 > | DataAction | Microsoft. Biliveservices/hesaplar/ComputerVision/areaofınterest/Action | Bu işlem görüntünün en önemli alanının etrafında bir sınırlayıcı kutu döndürür. |
@@ -1177,24 +1177,24 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 > | Action | Microsoft. Biliveservices/accounts/listKeys/Action | Anahtarları Listele |
 > | DataAction | Microsoft. Biliveservices/accounts/Lua/tahmin/eylem | Verilen sorgu için yayımlanmış uç nokta tahminini alır. |
 > | Action | Microsoft. Biliveservices/hesaplar/okuma | API hesaplarını okur. |
-> | Action | Microsoft. Biliveservices/accounts/regenerateKey/Action | Anahtarı yeniden oluştur |
-> | Action | Microsoft. Biliveservices/hesaplar/SKU 'lar/okuma | Mevcut bir kaynak için kullanılabilir SKU 'Ları okur. |
+> | Action | Microsoft. Biliveservices/accounts/regenerateKey/Action | Anahtarı Yeniden Oluştur |
+> | Action | Microsoft. Biliveservices/hesaplar/SKU 'lar/okuma | Mevcut kaynağa ait kullanılabilen SKU'ları okur. |
 > | DataAction | Microsoft. Biliveservices/accounts/TextAnalytics/Entities/Action | API, belirli bir belgedeki bilinen varlıkların ve genel adlandırılmış varlıkların (\"kişi\", \"konum\", \"kuruluş\" vb.) listesini döndürür. |
 > | DataAction | Microsoft. Biliveservices/accounts/TextAnalytics/keyphrases/Action | API, giriş metnindeki başlıca konuşma noktalarını gösteren bir dize listesi döndürür. |
 > | DataAction | Microsoft. Biliveservices/accounts/TextAnalytics/Languages/eylem | API, algılanan dile ek olarak 0 ile 1 arasında bir sayısal puan döndürür. Puanın 1’e yakın olması, tanımlanan dilin %100 olasılıkla doğru olduğunu gösterir. Toplamda 120 dil desteklenir. |
 > | DataAction | Microsoft. Biliveservices/hesaplar/TextAnalytics/yaklaşım/eylem | API, 0 ile 1 arasında bir sayısal puan döndürür.<br>1 ' e yakın puan pozitif yaklaşımı, 0 ' a yakın puan negatif yaklaşımı gösterir.<br>0,5 puanı, yaklaşım eksikliğinden (ör.<br>bir FACTOID Bildirisi). |
 > | Action | Microsoft. Biliveservices/hesaplar/kullanımlar/okuma | Mevcut bir kaynak için kota kullanımını alın. |
-> | Action | Microsoft. Biliveservices/hesaplar/yazma | API hesaplarını yazar. |
+> | Action | Microsoft. Biliveservices/hesaplar/yazma | API Hesaplarını yazar. |
 > | Action | Microsoft. Biliveservices/Checkdomainavaılabılıty/Action | Bir abonelik için kullanılabilir SKU 'Ları okur. |
 > | Action | Microsoft. Biliveservices/Locations/Checkskuavaılabılıty/Action | Bir abonelik için kullanılabilir SKU 'Ları okur. |
 > | Action | Microsoft. Biliveservices/Locations/Deletevirtualnetworkoralt ağları/eylemi | VirtualNetworks veya alt ağları silmenin Microsoft. Network 'e yönelik bildirim. |
-> | Action | Microsoft. Biliveservices/Işlemler/okuma | Tüm kullanılabilir işlemleri Listele |
-> | Action | Microsoft. Biliveservices/Register/Action | Bilişsel hizmetler için aboneliği kaydeder |
+> | Action | Microsoft. Biliveservices/Işlemler/okuma | Tüm kullanılabilir işlemleri listeleyin |
+> | Action | Microsoft. Biliveservices/Register/Action | Bilişsel Hizmetler için Abonelik kaydeder |
 
 ## <a name="microsoftcommerce"></a>Microsoft. Commerce
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. Commerce/RateCard/okuma | Verilen abonelik için teklif verileri, kaynak/ölçüm meta verileri ve ücretler döndürür. |
 > | Action | Microsoft. Commerce/Usagetoplamalar/okuma | Microsoft Azure bir aboneliğe göre tüketimini alır. Sonuç, belirli bir zaman aralığında kullanım verilerini, aboneliği ve kaynakla ilgili bilgileri toplar. |
@@ -1202,26 +1202,26 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. COMPUTE/kullanılabilirliği Bilitysets/Delete | Kullanılabilirlik kümesini siler |
 > | Action | Microsoft. COMPUTE/kullanılabilirliği Bilitysets/Read | Bir kullanılabilirlik kümesinin özelliklerini al |
-> | Action | Microsoft. COMPUTE/kullanılabilirliği Bilitysets/vmSizes/Read | Kullanılabilirlik kümesinde bir sanal makine oluşturmak veya güncelleştirmek için kullanılabilir boyutları listeleyin |
-> | Action | Microsoft. COMPUTE/kullanılabilirliği Bilitysets/Write | Yeni bir kullanılabilirlik kümesi oluşturur veya mevcut olanı güncelleştirir |
-> | Action | Microsoft. COMPUTE/Disks/beginGetAccess/Action | Blob erişimi için diskin SAS URI 'sini al |
+> | Action | Microsoft. COMPUTE/kullanılabilirliği Bilitysets/vmSizes/Read | Kullanılabilirlik kümesinde bir sanal makine oluşturmak veya güncelleştirmek için kullanılabilir boyutları listele |
+> | Action | Microsoft. COMPUTE/kullanılabilirliği Bilitysets/Write | Yeni bir kullanılabilirlik kümesi oluşturur veya mevcut kümeyi güncelleştirir |
+> | Action | Microsoft. COMPUTE/Disks/beginGetAccess/Action | Blob erişimi için Diskin SAS URI'sini alır |
 > | Action | Microsoft. COMPUTE/diskler/Sil | Diski siler |
-> | Action | Microsoft. COMPUTE/Disks/endGetAccess/Action | Diskin SAS URI 'sini iptal etme |
-> | Action | Microsoft. COMPUTE/Disks/Read | Bir diskin özelliklerini al |
-> | Action | Microsoft. COMPUTE/Disks/Write | Yeni bir disk oluşturur veya var olan bir diski güncelleştirir |
-> | Action | Microsoft. COMPUTE/galeriler/silme | Galeriyi siler |
-> | Action | Microsoft. COMPUTE/galeriler/resimler/silme | Galeri görüntüsünü siler |
-> | Action | Microsoft. COMPUTE/galeriler/resimler/okuma | Galeri resminin özelliklerini alır |
-> | Action | Microsoft. COMPUTE/galeriler/resimler/sürümler/Sil | Galeri görüntüsü sürümünü siler |
-> | Action | Microsoft. COMPUTE/galeriler/resimler/sürümler/okuma | Galeri görüntüsü sürümünün özelliklerini alır |
-> | Action | Microsoft. COMPUTE/galeriler/resimler/sürümler/yazma | Yeni bir galeri görüntüsü sürümü oluşturur veya mevcut olanı güncelleştirir |
-> | Action | Microsoft. COMPUTE/galeriler/resimler/yazma | Yeni bir galeri görüntüsü oluşturur veya mevcut olanı güncelleştirir |
-> | Action | Microsoft. COMPUTE/galeriler/okuma | Galerinin özelliklerini alır |
-> | Action | Microsoft. COMPUTE/galeriler/yazma | Yeni bir galeri oluşturur veya mevcut olanı güncelleştirir |
+> | Action | Microsoft. COMPUTE/Disks/endGetAccess/Action | Diskin SAS URI'sini iptal eder |
+> | Action | Microsoft. COMPUTE/Disks/Read | Diskin özelliklerini alır |
+> | Action | Microsoft. COMPUTE/Disks/Write | Yeni bir Disk oluşturur veya mevcut Diski güncelleştirir |
+> | Action | Microsoft. COMPUTE/galeriler/silme | Galeri'yi siler |
+> | Action | Microsoft. COMPUTE/galeriler/resimler/silme | Galeri Görüntüsünü siler |
+> | Action | Microsoft. COMPUTE/galeriler/resimler/okuma | Galeri görüntüsünün özelliklerini alır |
+> | Action | Microsoft. COMPUTE/galeriler/resimler/sürümler/Sil | Galeri Görüntüsü Sürümünü siler |
+> | Action | Microsoft. COMPUTE/galeriler/resimler/sürümler/okuma | Galeri Görüntüsü Sürümünün özelliklerini alır |
+> | Action | Microsoft. COMPUTE/galeriler/resimler/sürümler/yazma | Yeni bir Galeri Görüntüsü Sürümü oluşturur veya mevcut bir Sürümü güncelleştirir |
+> | Action | Microsoft. COMPUTE/galeriler/resimler/yazma | Yeni bir Galeri Görüntüsü oluşturur veya mevcut bir Görüntüyü güncelleştirir |
+> | Action | Microsoft. COMPUTE/galeriler/okuma | Galeri özelliklerini alır |
+> | Action | Microsoft. COMPUTE/galeriler/yazma | Yeni bir Galeri oluşturur veya mevcut bir Galeriyi güncelleştirir |
 > | Action | Microsoft. COMPUTE/hostGroups/Delete | Konak grubunu siler |
 > | Action | Microsoft. COMPUTE/hostGroups/Read | Bir konak grubunun özelliklerini al |
 > | Action | Microsoft. COMPUTE/hostGroups/Write | Yeni bir konak grubu oluşturur veya var olan bir konak grubunu güncelleştirir |
@@ -1229,117 +1229,117 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 > | Action | Microsoft. COMPUTE/konaklar/okuma | Bir konağın özelliklerini al |
 > | Action | Microsoft. COMPUTE/konaklar/yazma | Yeni bir konak oluşturur veya var olan bir konağı güncelleştirir |
 > | Action | Microsoft. COMPUTE/Images/Delete | Görüntüyü siler |
-> | Action | Microsoft. COMPUTE/Images/Read | Görüntünün özelliklerini al |
-> | Action | Microsoft. COMPUTE/Images/Write | Yeni bir görüntü oluşturur veya mevcut olanı güncelleştirir |
+> | Action | Microsoft. COMPUTE/Images/Read | Görüntü özelliklerini alır |
+> | Action | Microsoft. COMPUTE/Images/Write | Yeni bir Görüntü oluşturur veya mevcut bir Görüntüyü güncelleştirir |
 > | Action | Microsoft. COMPUTE/konumlar/capsOperations/Read | Zaman uyumsuz bir Caps işleminin durumunu alır |
 > | Action | Microsoft. COMPUTE/Locations/diskOperations/Read | Zaman uyumsuz disk işleminin durumunu alır |
-> | Action | Microsoft. COMPUTE/Locations/logAnalytics/getRequestRateByInterval/Action | Kısıtlama tanılamayı azaltmaya yardımcı olmak için zaman aralığına göre toplam istekleri göstermek üzere Günlükler oluşturun. |
-> | Action | Microsoft. COMPUTE/Locations/logAnalytics/Getkısıtledrequests/Action | ResourceName, OperationName veya uygulanan kısıtlama Ilkesi tarafından gruplanmış kısıtlanmış isteklerin toplamlarını göstermek için Günlükler oluşturun. |
-> | Action | Microsoft. COMPUTE/konumlar/işlemler/okuma | Zaman uyumsuz bir işlemin durumunu alır |
-> | Action | Microsoft. COMPUTE/Locations/yayımcılar/ArtifactTypes/teklifler/Read | Platform görüntüsü teklifinin özelliklerini al |
-> | Action | Microsoft. COMPUTE/Locations/yayımcılar/ArtifactTypes/teklifler/SKU/okuma | Platform görüntüsü SKU 'sunun özelliklerini al |
-> | Action | Microsoft. COMPUTE/Locations/yayımcılar/ArtifactTypes/teklifler/SKU 'lar/sürümler/okuma | Platform görüntüsü sürümünün özelliklerini al |
-> | Action | Microsoft. COMPUTE/Locations/yayımcılar/ArtifactTypes/türler/okuma | Vmexgeri türünün özelliklerini al |
-> | Action | Microsoft. COMPUTE/Locations/yayımcılar/ArtifactTypes/türler/sürümler/okuma | Vmexgeri sürümünün özelliklerini al |
-> | Action | Microsoft. COMPUTE/konumlar/yayımcılar/okuma | Yayımcının özelliklerini al |
-> | Action | Microsoft. COMPUTE/Locations/runCommands/Read | Konumdaki kullanılabilir çalıştırma komutlarını listeler |
-> | Action | Microsoft. COMPUTE/Locations/kullanımlar/Read | Bir konumdaki aboneliğin işlem kaynakları için hizmet sınırlarını ve geçerli kullanım miktarlarını alır |
+> | Action | Microsoft. COMPUTE/Locations/logAnalytics/getRequestRateByInterval/Action | Azaltma tanılamasına yardımcı olmak üzere zaman aralığına göre toplam istekleri göstermek için günlükler oluşturun. |
+> | Action | Microsoft. COMPUTE/Locations/logAnalytics/Getkısıtledrequests/Action | Azaltılmış isteklerin ResourceName, OperationName alanlarına veya uygulanan Azaltma İlkesine göre gruplanmış kümeleri göstermek için günlükler oluşturun. |
+> | Action | Microsoft. COMPUTE/konumlar/işlemler/okuma | Bir zaman uyumsuz işlemin durumunu alır |
+> | Action | Microsoft. COMPUTE/Locations/yayımcılar/ArtifactTypes/teklifler/Read | Platform Görüntüsü Teklifi'nin özelliklerini alma |
+> | Action | Microsoft. COMPUTE/Locations/yayımcılar/ArtifactTypes/teklifler/SKU/okuma | Platform Görüntüsü SKU'sunun özelliklerini alma |
+> | Action | Microsoft. COMPUTE/Locations/yayımcılar/ArtifactTypes/teklifler/SKU 'lar/sürümler/okuma | Platform Görüntüsü Sürümü özelliklerini alma |
+> | Action | Microsoft. COMPUTE/Locations/yayımcılar/ArtifactTypes/türler/okuma | VMExtension Türü özelliklerini alır |
+> | Action | Microsoft. COMPUTE/Locations/yayımcılar/ArtifactTypes/türler/sürümler/okuma | VMExtension Sürümü özelliklerini alır |
+> | Action | Microsoft. COMPUTE/konumlar/yayımcılar/okuma | Yayımcının özelliklerini alır |
+> | Action | Microsoft. COMPUTE/Locations/runCommands/Read | Konumda kullanılabilir çalıştırma komutlarını listeler |
+> | Action | Microsoft. COMPUTE/Locations/kullanımlar/Read | Aboneliğin bir konumdaki işlem kaynaklarında bulunan hizmet sınırlarını ve geçerli kullanım miktarlarını alır |
 > | Action | Microsoft. COMPUTE/konumlar/vmSizes/Read | Bir konumdaki kullanılabilir sanal makine boyutlarını listeler |
-> | Action | Microsoft. COMPUTE/işlemler/okuma | Microsoft. COMPUTE kaynak sağlayıcısında kullanılabilir işlemleri listeler |
-> | Action | Microsoft. COMPUTE/proximityPlacementGroups/Delete | Yakınlık yerleşimi grubunu siler |
-> | Action | Microsoft. COMPUTE/proximityPlacementGroups/Read | Bir yakınlık yerleşimi grubunun özelliklerini al |
-> | Action | Microsoft. COMPUTE/proximityPlacementGroups/Write | Yeni bir yakınlık yerleşimi grubu oluşturur veya mevcut olanı güncelleştirir |
-> | Action | Microsoft. COMPUTE/Register/ACTION | Aboneliği Microsoft. COMPUTE kaynak sağlayıcısına kaydeder |
-> | Action | Microsoft. COMPUTE/restorePointCollections/Delete | Geri yükleme noktası koleksiyonunu ve içerilen geri yükleme noktalarını siler |
-> | Action | Microsoft. COMPUTE/restorePointCollections/Read | Geri yükleme noktası koleksiyonunun özelliklerini al |
+> | Action | Microsoft. COMPUTE/işlemler/okuma | Microsoft.Compute kaynak sağlayıcısındaki kullanılabilir işlemleri listele |
+> | Action | Microsoft. COMPUTE/proximityPlacementGroups/Delete | Yakınlık Yerleştirme Grubunu siler |
+> | Action | Microsoft. COMPUTE/proximityPlacementGroups/Read | Bir Yakınlık Yerleştirme Grubunun Özelliklerini Alın |
+> | Action | Microsoft. COMPUTE/proximityPlacementGroups/Write | Yeni bir Yakınlık Yerleştirme Grubu oluşturur veya mevcut bir grubu güncelleştirir |
+> | Action | Microsoft. COMPUTE/Register/ACTION | Aboneliği Microsoft.Compute kaynak sağlayıcısına kaydeder |
+> | Action | Microsoft. COMPUTE/restorePointCollections/Delete | Geri yükleme noktası koleksiyonu ve bağımsız geri yükleme noktalarını siler |
+> | Action | Microsoft. COMPUTE/restorePointCollections/Read | Geri yükleme noktası koleksiyonunun özelliklerini alır |
 > | Action | Microsoft. COMPUTE/restorePointCollections/restorePoints/Delete | Geri yükleme noktasını siler |
-> | Action | Microsoft. COMPUTE/restorePointCollections/restorePoints/Read | Geri yükleme noktasının özelliklerini al |
-> | Action | Microsoft. COMPUTE/restorePointCollections/restorePoints/Retrievesasurin/Action | Blob SAS URI 'leriyle birlikte geri yükleme noktasının özelliklerini al |
+> | Action | Microsoft. COMPUTE/restorePointCollections/restorePoints/Read | Geri yükleme noktasının özelliklerini alır |
+> | Action | Microsoft. COMPUTE/restorePointCollections/restorePoints/Retrievesasurin/Action | Blob SAS URI'leriyle birlikte geri yükleme noktasının özelliklerini alır |
 > | Action | Microsoft. COMPUTE/restorePointCollections/restorePoints/Write | Yeni bir geri yükleme noktası oluşturur |
 > | Action | Microsoft. COMPUTE/restorePointCollections/Write | Yeni bir geri yükleme noktası koleksiyonu oluşturur veya mevcut olanı güncelleştirir |
-> | Action | Microsoft. COMPUTE/Sharedvmımages/Delete | Sharedvmımage 'ı siler |
-> | Action | Microsoft. COMPUTE/Sharedvmımages/Read | Sharedvmımage 'ın özelliklerini al |
-> | Action | Microsoft. COMPUTE/Sharedvmımages/sürümler/Delete | Sharedvmımageversion 'ı silme |
-> | Action | Microsoft. COMPUTE/Sharedvmımages/sürümler/okuma | Sharedvmımageversion özelliklerini al |
-> | Action | Microsoft. COMPUTE/Sharedvmımages/sürümler/Çoğalt/eylem | Sharedvmımageversion 'ı hedef bölgelere çoğaltma |
-> | Action | Microsoft. COMPUTE/Sharedvmımages/sürümler/Write | Yeni bir Sharedvmımageversion oluşturun veya var olan bir sürümü güncelleştirin |
-> | Action | Microsoft. COMPUTE/Sharedvmımages/Write | Yeni bir Sharedvmımage oluşturur veya mevcut olanı güncelleştirir |
-> | Action | Microsoft. COMPUTE/SKU/okuma | Aboneliğiniz için kullanılabilen Microsoft. COMPUTE SKU 'Larının listesini alır |
+> | Action | Microsoft. COMPUTE/Sharedvmımages/Delete | SharedVMImage'i siler |
+> | Action | Microsoft. COMPUTE/Sharedvmımages/Read | SharedVMImage özelliklerini al |
+> | Action | Microsoft. COMPUTE/Sharedvmımages/sürümler/Delete | SharedVMImageVersion Sil |
+> | Action | Microsoft. COMPUTE/Sharedvmımages/sürümler/okuma | SharedVMImageVersion özelliklerini alma |
+> | Action | Microsoft. COMPUTE/Sharedvmımages/sürümler/Çoğalt/eylem | SharedVMImageVersion'ı hedef bölgelere çoğaltma |
+> | Action | Microsoft. COMPUTE/Sharedvmımages/sürümler/Write | Yeni bir SharedVMImageVersion oluşturur veya mevcut bir SharedVMImageVersion'ı güncelleştirir |
+> | Action | Microsoft. COMPUTE/Sharedvmımages/Write | Yeni bir SharedVMImage oluşturur veya mevcut bir SharedVMImage'i güncelleştirir |
+> | Action | Microsoft. COMPUTE/SKU/okuma | Aboneliğiniz için bulunan Microsoft.Compute SKU listesini alır |
 > | Action | Microsoft. COMPUTE/Snapshot/beginGetAccess/Action | Blob erişimi için anlık görüntünün SAS URI 'sini alma |
-> | Action | Microsoft. COMPUTE/Snapshot/Delete | Anlık görüntüyü silme |
+> | Action | Microsoft. COMPUTE/Snapshot/Delete | Anlık Görüntüyü siler |
 > | Action | Microsoft. COMPUTE/Snapshot/endGetAccess/Action | Anlık görüntünün SAS URI 'sini iptal et |
-> | Action | Microsoft. COMPUTE/Snapshot/Read | Anlık görüntünün özelliklerini al |
-> | Action | Microsoft. COMPUTE/Snapshot/Write | Yeni bir anlık görüntü oluşturma veya var olanı güncelleştirme |
-> | Action | Microsoft. COMPUTE/kaydını kaldırma/eylem | Microsoft. COMPUTE kaynak sağlayıcısı ile aboneliğin kaydını siler |
+> | Action | Microsoft. COMPUTE/Snapshot/Read | Anlık Görüntünün özelliklerin alır |
+> | Action | Microsoft. COMPUTE/Snapshot/Write | Yeni bir Anlık Görüntü oluşturur veya mevcut Anlık Görüntüyü güncelleştirir |
+> | Action | Microsoft. COMPUTE/kaydını kaldırma/eylem | Microsoft.Compute kaynak sağlayıcısı Abonelik kaydını siler |
 > | Action | Microsoft. COMPUTE/virtualMachines/yakala/eylem | Sanal sabit diskleri kopyalayarak sanal makineyi yakalar ve benzer sanal makineler oluşturmak için kullanılabilecek bir şablon oluşturur |
 > | Action | Microsoft. COMPUTE/virtualMachines/convertToManagedDisks/Action | Sanal makinenin blob tabanlı disklerini yönetilen disklere dönüştürür |
-> | Action | Microsoft. COMPUTE/virtualMachines/serbest bırakma/eylem | Sanal makineyi güçlendirir ve işlem kaynaklarını serbest bırakır |
+> | Action | Microsoft. COMPUTE/virtualMachines/serbest bırakma/eylem | Sanal makineyi kapatır ve işlem kaynaklarını serbest bırakır |
 > | Action | Microsoft. COMPUTE/virtualMachines/Delete | Sanal makineyi siler |
 > | Action | Microsoft. COMPUTE/virtualMachines/Extensions/Sil | Sanal makine uzantısını siler |
-> | Action | Microsoft. COMPUTE/virtualMachines/Extensions/okuma | Bir sanal makine uzantısının özelliklerini al |
-> | Action | Microsoft. COMPUTE/virtualMachines/uzantılar/Write | Yeni bir sanal makine uzantısı oluşturur veya mevcut olanı güncelleştirir |
-> | Action | Microsoft. COMPUTE/virtualMachines/Genelleştir/eylem | Sanal makinenin durumunu Genelleştirilmiş olarak ayarlar ve sanal makineyi yakalamaya hazırlar |
-> | Action | Microsoft. COMPUTE/virtualMachines/InstanceView/Read | Sanal makinenin ve kaynaklarının ayrıntılı çalışma zamanı durumunu alır |
-> | DataAction | Microsoft.Compute/virtualMachines/login/action | Bir sanal makinede normal kullanıcı olarak oturum açın |
-> | DataAction | Microsoft.Compute/virtualMachines/loginAsAdmin/action | Windows yönetici veya Linux kök kullanıcı ayrıcalıklarına sahip bir sanal makinede oturum açma |
-> | Action | Microsoft. COMPUTE/virtualMachines/performMaintenance/Action | VM üzerinde bakım Işlemini gerçekleştirir. |
+> | Action | Microsoft. COMPUTE/virtualMachines/Extensions/okuma | Bir sanal makine uzantısının özelliklerini alır |
+> | Action | Microsoft. COMPUTE/virtualMachines/uzantılar/Write | Yeni bir sanal makine uzantısı oluşturur veya mevcut uzantıyı güncelleştirir |
+> | Action | Microsoft. COMPUTE/virtualMachines/Genelleştir/eylem | Sanal makine durumunu Genelleştirmiş olarak ayarlar ve sanal makineyi yakalama için hazırlar |
+> | Action | Microsoft. COMPUTE/virtualMachines/InstanceView/Read | Sanal makine ve kaynaklarının ayrıntılı çalışma zamanı durumunu alır |
+> | DataAction | Microsoft.Compute/virtualMachines/login/action | Bir sanal makinede normal bir kullanıcı olarak oturum açın |
+> | DataAction | Microsoft.Compute/virtualMachines/loginAsAdmin/action | Windows yöneticisi veya Linux kök kullanıcı ayrıcalıklarıyla bir sanal makinede oturum açın |
+> | Action | Microsoft. COMPUTE/virtualMachines/performMaintenance/Action | VM'de Bakım İşlemini gerçekleştirir. |
 > | Action | Microsoft. COMPUTE/virtualMachines/powerOff/ACTION | Sanal makineyi kapatır. Sanal makinenin faturalandırılmaya devam edip etmediğini unutmayın. |
-> | Action | Microsoft. COMPUTE/virtualMachines/okuma | Bir sanal makinenin özelliklerini al |
+> | Action | Microsoft. COMPUTE/virtualMachines/okuma | Bir sanal makinenin özelliklerini alır |
 > | Action | Microsoft. COMPUTE/virtualMachines/yeniden dağıtma/eylem | Sanal makineyi yeniden dağıtır |
-> | Action | Microsoft. COMPUTE/virtualMachines/ReImage/Action | Fark kayıt diski kullanan sanal makineyi yeniden görüntüler. |
+> | Action | Microsoft. COMPUTE/virtualMachines/ReImage/Action | Fark kayıt diski kullanarak sanal makine görüntüsünü yeniden oluşturur. |
 > | Action | Microsoft. COMPUTE/virtualMachines/yeniden Başlat/eylem | Sanal makineyi yeniden başlatır |
-> | Action | Microsoft. COMPUTE/virtualMachines/runCommand/Action | Sanal makinede önceden tanımlanmış bir betiği yürütür |
+> | Action | Microsoft. COMPUTE/virtualMachines/runCommand/Action | Sanal makinede önceden tanımlanmış bir betik yürütür |
 > | Action | Microsoft. COMPUTE/virtualMachines/Başlat/eylem | Sanal makineyi başlatır |
-> | Action | Microsoft.Compute/virtualMachines/vmSizes/read | Sanal makinenin güncelleştirileceği kullanılabilir boyutları listeler |
-> | Action | Microsoft. COMPUTE/virtualMachines/Write | Yeni bir sanal makine oluşturur veya var olan bir sanal makineyi güncelleştirir |
-> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/ayırmayı kaldırma/eylem | Sanal makine ölçek kümesinin örnekleri için işlem kaynaklarını güçlendirir ve serbest bırakır  |
-> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/Delete | Sanal makine ölçek kümesini siler |
-> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/Delete/Action | Sanal makine ölçek kümesinin örneklerini siler |
-> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/Extensions/Delete | Sanal makine ölçek kümesi uzantısını siler |
-> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/Extensions/Read | Bir sanal makine ölçek kümesi uzantısının özelliklerini alır |
-> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/Extensions/Write | Yeni bir sanal makine ölçek kümesi uzantısı oluşturur veya mevcut olanı güncelleştirir |
-> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/forceRecoveryServiceFabricPlatformUpdateDomainWalk/Action | Bir Service Fabric sanal makine ölçek kümesinin platform güncelleştirme etki alanlarına, takılı bekleyen bir güncelleştirmeyi tamamlayacak şekilde el ile kılavuzluk edin |
-> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/InstanceView/Read | Sanal makine ölçek kümesinin örnek görünümünü alır |
-> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/manualUpgrade/Action | Örnekleri, sanal makine ölçek kümesinin en son modeline el ile güncelleştirir |
-> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/NetworkInterfaces/Read | Bir sanal makine ölçek kümesinin tüm ağ arabirimlerinin özelliklerini al |
-> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/osRollingUpgrade/Action | Tüm sanal makine ölçek kümesi örneklerini kullanılabilir en son Platform görüntüsü işletim sistemi sürümüne taşımak için bir sıralı yükseltme başlatır. |
-> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/osUpgradeHistory/Read | Bir sanal makine ölçek kümesi için işletim sistemi yükseltmelerinden oluşan geçmişi alır |
-> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/performMaintenance/Action | Sanal makine ölçek kümesinin örneklerinde planlı bakım gerçekleştirir |
-> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/powerOff/ACTION | Sanal makine ölçek kümesi örneklerinin kuvvetlerini kapatır |
-> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/publicIPAddresses/Read | Bir sanal makine ölçek kümesinin tüm genel IP adreslerinin özelliklerini al |
-> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/Read | Bir sanal makine ölçek kümesinin özelliklerini al |
-> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/yeniden dağıtma/eylem | Sanal makine ölçek kümesinin örneklerini yeniden dağıtın |
-> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/ReImage/Action | Sanal makine ölçek kümesinin örneklerini yeniden görüntüler |
-> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/Reımageall/ACTION | Bir sanal makine ölçek kümesi örnekleri için tüm diskleri (işletim sistemi diski ve veri diskleri) yeniden görüntüler  |
-> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/restart/Action | Sanal makine ölçek kümesinin örneklerini yeniden başlatır |
-> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/Rollingyükseltmelerinde/iptal/eylem | Bir sanal makine ölçek kümesinin sıralı yükseltmesini iptal eder |
-> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/Rollingyükseltmelerinde/okunan | Bir sanal makine ölçek kümesi için son sıralı yükseltme durumunu al |
-> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/Scale/Action | Mevcut bir sanal makine ölçek kümesinin, belirtilen örnek sayısına göre ölçeklendirebildiğini/ölçeklendirdiğini doğrulayın |
-> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/SKU 'lar/okuma | Mevcut bir sanal makine ölçek kümesi için geçerli SKU 'Ları listeler |
-> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/start/Action | Sanal makine ölçek kümesinin örneklerini başlatır |
-> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines/serbest bırakma/eylem | VM Ölçek kümesindeki bir sanal makinenin işlem kaynaklarını güçlendirir ve serbest bırakır. |
-> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines/Delete | Bir VM Ölçek kümesindeki belirli bir sanal makineyi silin. |
-> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines/InstanceView/Read | Bir VM Ölçek kümesindeki bir sanal makinenin örnek görünümünü alır. |
+> | Action | Microsoft.Compute/virtualMachines/vmSizes/read | Sanal makineyi güncelleştirmek için kullanılabilir boyutları listeler |
+> | Action | Microsoft. COMPUTE/virtualMachines/Write | Yeni bir sanal makine oluşturur veya mevcut sanal makineyi güncelleştirir |
+> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/ayırmayı kaldırma/eylem | Sanal makineyi kapatır ve Sanal Makine Ölçek Kümesi örneklerinin işlem kaynaklarını serbest bırakır  |
+> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/Delete | Sanal Makine Ölçek Kümesini siler |
+> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/Delete/Action | Sanal Makine Ölçek Kümesinin örneklerini siler |
+> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/Extensions/Delete | Sanal Makine Ölçek Kümesi Uzantısını siler |
+> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/Extensions/Read | Sanal Makine Ölçek Kümesi Uzantısının özelliklerini alır |
+> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/Extensions/Write | Yeni bir Sanal Makine Ölçek Kümesi Uzantısı oluşturur veya mevcut olanı güncelleştirir |
+> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/forceRecoveryServiceFabricPlatformUpdateDomainWalk/Action | Takılmış bekleyen bir güncelleştirmeyi tamamlamak için Service Fabric Sanal Makine Ölçek Kümesinin platform güncelleştirme etki alanlarını el ile gezin |
+> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/InstanceView/Read | Sanal Makine Ölçek Kümesinin örnek görünümünü alır |
+> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/manualUpgrade/Action | Örnekleri, Sanal Makine Ölçek Kümesinin son modeline el ile güncelleştirir |
+> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/NetworkInterfaces/Read | Bir Sanal Makine Ölçek Kümesinin tüm ağ arabirimlerinin özelliklerini alma |
+> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/osRollingUpgrade/Action | Tüm Sanal Makine Ölçek Kümesi örneklerini bulunan en son Platform Görüntüsü İşletim Sistemi sürümüne taşımak için bir toplu yükseltme başlatır. |
+> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/osUpgradeHistory/Read | Bir Sanal Makine Ölçek Kümesi için işletim sistemi yükseltme geçmişini alır |
+> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/performMaintenance/Action | Sanal Makine Ölçek Kümesi'nin örneklerinde planlı bakım gerçekleştirir |
+> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/powerOff/ACTION | Sanal Makine Ölçek Kümesinin örneklerini kapatır |
+> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/publicIPAddresses/Read | Bir Sanal Makine Ölçek Kümesinin tüm genel IP adreslerinin özelliklerini alma |
+> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/Read | Bir Sanal Makine Ölçek Kümesinin özelliklerini alın |
+> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/yeniden dağıtma/eylem | Sanal Makine Ölçek Kümesi'nin örneklerini yeniden dağıtın |
+> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/ReImage/Action | Sanal Makine Ölçek Kümesi örneklerinin görüntülerini yeniden oluşturur |
+> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/Reımageall/ACTION | Bir Sanal Makine Ölçek Kümesi için tüm disklerin (İşletim Sistemi Diski ve Veri Diskleri) yeniden görüntüsünü oluşturur  |
+> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/restart/Action | Sanal Makine Ölçek Kümesinin örneklerini yeniden başlatır |
+> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/Rollingyükseltmelerinde/iptal/eylem | Sanal Makine Ölçek Kümesinin sıralı yükseltmesini iptal eder |
+> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/Rollingyükseltmelerinde/okunan | Bir Sanal Makine Ölçek Kümesi için son Sıralı Yükseltme durumunu alın |
+> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/Scale/Action | Mevcut bir Sanal Makine Ölçek Kümesinin belirtilen örnek sayısında Ölçeği Daraltma/Ölçeği Genişletme işlemlerini gerçekleştirebildiğini doğrulayın |
+> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/SKU 'lar/okuma | Mevcut bir Sanal Makine Ölçek Kümesi için geçerli SKU'ları listeler |
+> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/start/Action | Sanal Makine Ölçek Kümesinin örneklerini başlatır |
+> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines/serbest bırakma/eylem | VM Ölçek Kümesindeki bir Sanal Makineyi kapatır ve işlem kaynaklarını serbest bırakır. |
+> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines/Delete | VM Ölçek Kümesindeki belirli bir Sanal Makineyi silin. |
+> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines/InstanceView/Read | VM Ölçek Kümesindeki bir Sanal Makinenin örnek görünümünü alır. |
 > | Action | Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines/NetworkInterfaces/ipConfigurations/Publicıpaddresses/Read | Sanal makine ölçek kümesi kullanılarak oluşturulan genel IP adresinin özelliklerini al. Sanal makine ölçek kümesi, IP yapılandırması başına en çok bir genel IP (özel IP) oluşturabilir |
 > | Action | Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines/NetworkInterfaces/ipConfigurations/Read | Sanal makine ölçek kümesi kullanılarak oluşturulan bir ağ arabiriminin bir veya tüm IP yapılandırmalarının özelliklerini alın. IP yapılandırması özel IP 'Leri temsil eder |
-> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines/NetworkInterfaces/Read | Sanal makine ölçek kümesi kullanılarak oluşturulan bir sanal makinenin ağ arabirimlerinin bir veya tüm özelliklerini al |
-> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines/performMaintenance/Action | Sanal makine ölçek kümesindeki bir sanal makine örneğinde planlanmış bakım gerçekleştirir |
-> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines/powerOff/ACTION | Bir VM Ölçek kümesindeki bir sanal makine örneğini güçlendirir. |
-> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines/Read | VM Ölçek kümesindeki bir sanal makinenin özelliklerini alır |
-> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines/yeniden dağıtma/eylem | Sanal makine ölçek kümesindeki bir sanal makine örneğini yeniden dağıtır |
-> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines/ReImage/Action | Sanal makine ölçek kümesindeki bir sanal makine örneğini yeniden görüntüler. |
-> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines/Reımageall/ACTION | Sanal makine ölçek kümesindeki sanal makine örneği için tüm diskleri (işletim sistemi diski ve veri diskleri) yeniden görüntüler. |
-> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines/restart/Action | Bir VM Ölçek kümesindeki bir sanal makine örneğini yeniden başlatır. |
-> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines/runCommand/Action | Bir sanal makine ölçek kümesindeki bir sanal makine örneğinde önceden tanımlanmış bir betiği yürütür. |
-> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines/start/Action | VM Ölçek kümesindeki bir sanal makine örneğini başlatır. |
-> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines/Write | Bir VM Ölçek kümesindeki bir sanal makinenin özelliklerini güncelleştirir |
+> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines/NetworkInterfaces/Read | Sanal Makine Ölçek Kümesi kullanılarak oluşturulan bir sanal makinenin ağ arabirimlerinden birinin veya tümünün özelliklerini alma |
+> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines/performMaintenance/Action | Bir Sanal Makine Ölçek Kümesi'ndeki Sanal Makine örneğinde planlı bakım gerçekleştirir |
+> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines/powerOff/ACTION | VM Ölçek Kümesindeki bir Sanal Makine örneğini kapatır. |
+> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines/Read | VM Ölçek Kümesindeki bir Sanal Makinenin özelliklerini alır |
+> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines/yeniden dağıtma/eylem | Bir Sanal Makine Ölçek Kümesi'ndeki Sanal Makine örneğini yeniden dağıtır |
+> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines/ReImage/Action | Sanal Makine Ölçek Kümesindeki Sanal Makine örneğinin görüntüsünü yeniden oluşturur. |
+> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines/Reımageall/ACTION | Bir Sanal Makine Ölçek Kümesindeki Sanal Makine örneği için tüm disklerin (İşletim Sistemi Diski ve Veri Diskleri) yeniden görüntüsünü oluşturur. |
+> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines/restart/Action | VM Ölçek Kümesindeki bir Sanal Makine örneğini yeniden başlatır. |
+> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines/runCommand/Action | Bir Sanal Makine Ölçek Kümesindeki Sanal Makine örneğinde önceden tanımlı bir betiği yürütür. |
+> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines/start/Action | VM Ölçek Kümesindeki bir Sanal Makine örneğini başlatır. |
+> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines/Write | VM Ölçek Kümesindeki bir Sanal Makinenin özelliklerini güncelleştirir |
 > | Action | Microsoft. COMPUTE/virtualMachineScaleSets/vmSizes/Read | Sanal makine ölçek kümesinde bir sanal makine oluşturmak veya güncelleştirmek için kullanılabilir boyutları listeleyin |
-> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/Write | Yeni bir sanal makine ölçek kümesi oluşturur veya mevcut olanı güncelleştirir |
+> | Action | Microsoft. COMPUTE/virtualMachineScaleSets/Write | Yeni bir Sanal Makine Ölçek Kümesi oluşturur veya mevcut kümeyi güncelleştirir |
 
 ## <a name="microsoftconsumption"></a>Microsoft. tüketim
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. tüketim/bakiye/okuma | Bir yönetim grubu için bir faturalandırma dönemi için kullanım özetini listeleyin. |
 > | Action | Microsoft. tüketim/bütçe/silme | Bütçeleri bir aboneliğe veya bir yönetim grubuna göre silin. |
@@ -1369,29 +1369,29 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
-> | Action | Microsoft. Containerınstance/containerGroups/kapsayıcılar/exec/Action | Belirli bir kapsayıcıya çalıştırılabilir. |
-> | Action | Microsoft. Containerınstance/containerGroups/kapsayıcılar/Günlükler/okuma | Belirli bir kapsayıcı için günlükleri al. |
+> | Action | Microsoft. Containerınstance/containerGroups/kapsayıcılar/exec/Action | Belirli bir kapsayıcıda yürütün. |
+> | Action | Microsoft. Containerınstance/containerGroups/kapsayıcılar/Günlükler/okuma | Belirli bir kapsayıcı için günlükleri alın. |
 > | Action | Microsoft. Containerınstance/containerGroups/Delete | Belirli kapsayıcı grubunu silin. |
-> | Action | Microsoft. Containerınstance/containerGroups/Providers/Microsoft. Insights/diagnosticSettings/Read | Kapsayıcı grubu için tanılama ayarını alır. |
-> | Action | Microsoft. Containerınstance/containerGroups/Providers/Microsoft. Insights/diagnosticSettings/Write | Kapsayıcı grubu için tanılama ayarını oluşturur veya güncelleştirir. |
-> | Action | Microsoft. Containerınstance/containerGroups/Providers/Microsoft. Insights/metricDefinitions/Read | Kapsayıcı grubu için kullanılabilir ölçümleri alır. |
+> | Action | Microsoft. Containerınstance/containerGroups/Providers/Microsoft. Insights/diagnosticSettings/Read | Kapsayıcı grubun tanılama ayarını alır. |
+> | Action | Microsoft. Containerınstance/containerGroups/Providers/Microsoft. Insights/diagnosticSettings/Write | Kapsayıcı grubun tanılama ayarını oluşturur veya güncelleştirir. |
+> | Action | Microsoft. Containerınstance/containerGroups/Providers/Microsoft. Insights/metricDefinitions/Read | Kapsayıcı grup için mevcut ölçümleri alır. |
 > | Action | Microsoft. Containerınstance/containerGroups/Read | Tüm kapsayıcı gruplarını al. |
 > | Action | Microsoft. Containerınstance/containerGroups/restart/Action | Belirli bir kapsayıcı grubunu yeniden başlatır. |
 > | Action | Microsoft. Containerınstance/containerGroups/start/Action | Belirli bir kapsayıcı grubunu başlatır. |
 > | Action | Microsoft. Containerınstance/containerGroups/durdur/eylem | Belirli bir kapsayıcı grubunu sonlandırır. İşlem kaynakları serbest bırakılır ve faturalandırma durdurulur. |
 > | Action | Microsoft. Containerınstance/containerGroups/Write | Belirli bir kapsayıcı grubunu oluşturun veya güncelleştirin. |
-> | Action | Microsoft. Containerınstance/Locations/Önbellekedimages/Read | Bir bölgedeki aboneliğin önbelleğe alınmış görüntülerini alır. |
-> | Action | Microsoft. Containerınstance/Locations/Capabilities/Read | Bir bölgenin yeteneklerini alın. |
-> | Action | Microsoft. Containerınstance/Locations/Deletevirtualnetworkoralt ağları/eylem | , Sanal ağın veya alt ağın silinmekte olduğunu Microsoft. Containerınstance 'a bildirir. |
-> | Action | Microsoft. Containerınstance/Locations/kullanımlar/Read | Belirli bir bölgenin kullanımını alın. |
-> | Action | Microsoft. Containerınstance/Register/ACTION | Kapsayıcı örneği kaynak sağlayıcısı için aboneliği kaydeder ve kapsayıcı gruplarının oluşturulmasına izin vermez. |
+> | Action | Microsoft. Containerınstance/Locations/Önbellekedimages/Read | Bir bölgedeki aboneliğin önbelleğe alınan görüntülerini alır. |
+> | Action | Microsoft. Containerınstance/Locations/Capabilities/Read | Bir bölge için özellikleri alın. |
+> | Action | Microsoft. Containerınstance/Locations/Deletevirtualnetworkoralt ağları/eylem | Microsoft.ContainerInstance'a sanal ağın veya alt ağın silindiğini bildirir. |
+> | Action | Microsoft. Containerınstance/Locations/kullanımlar/Read | Belirli bir bölgenin kullanımlarını alın. |
+> | Action | Microsoft. Containerınstance/Register/ACTION | Kapsayıcı örneği kaynak sağlayıcısı için aboneliği kaydeder ve kapsayıcı grupların oluşturulmasını sağlar. |
 
 ## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. ContainerRegistry/Checknameavaılabılıty/Read | Kapsayıcı kayıt defteri adının kullanıma hazır olup olmadığını denetler. |
 > | Action | Microsoft. ContainerRegistry/Locations/Deletevirtualnetworkoralt ağları/eylem | Sanal ağ veya alt ağın silindiği Microsoft. ContainerRegistry öğesine bildirir |
@@ -1458,49 +1458,49 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftcontainerservice"></a>Microsoft.ContainerService
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. ContainerService/containerServices/Delete | Bir kapsayıcı hizmetini siler |
 > | Action | Microsoft. ContainerService/containerServices/Read | Kapsayıcı hizmeti al |
-> | Action | Microsoft. ContainerService/containerServices/Write | Yeni bir kapsayıcı hizmeti oluşturur veya mevcut olanı güncelleştirir |
+> | Action | Microsoft. ContainerService/containerServices/Write | Yeni bir kapsayıcı hizmeti oluşturur veya mevcut bir kapsayıcı hizmetini güncelleştirir |
 > | Action | Microsoft. ContainerService/konumlar/operationresults/Read | Zaman uyumsuz bir işlem sonucunun durumunu alır |
-> | Action | Microsoft. ContainerService/konumlar/işlemler/okuma | Zaman uyumsuz bir işlemin durumunu alır |
-> | Action | Microsoft. ContainerService/konumlar/orchestrators/okunan | Desteklenen düzenleyiciler listeler |
-> | Action | Microsoft. ContainerService/Managedkümeler/accessProfiles/listCredential/Action | Liste kimlik bilgisini kullanarak rol adına göre yönetilen küme erişim profili al |
+> | Action | Microsoft. ContainerService/konumlar/işlemler/okuma | Bir zaman uyumsuz işlemin durumunu alır |
+> | Action | Microsoft. ContainerService/konumlar/orchestrators/okunan | Desteklenen düzenleyicileri listeler |
+> | Action | Microsoft. ContainerService/Managedkümeler/accessProfiles/listCredential/Action | Kimlik bilgilerini listeleme kullanarak rol adına göre yönetilen küme erişim profili al |
 > | Action | Microsoft. ContainerService/Managedkümeler/accessProfiles/okuma | Rol adına göre yönetilen küme erişim profili al |
 > | Action | Microsoft. ContainerService/Managedkümeler/agentPools/Delete | Bir aracı havuzunu siler |
 > | Action | Microsoft. ContainerService/Managedkümeler/agentPools/okuma | Bir aracı havuzu alır |
 > | Action | Microsoft. ContainerService/Managedkümeler/agentPools/Write | Yeni bir aracı havuzu oluşturur veya mevcut olanı güncelleştirir |
 > | Action | Microsoft. ContainerService/Managedkümeler/Sil | Yönetilen bir kümeyi siler |
 > | Action | Microsoft. ContainerService/Managedkümeler/detektorları/okuma | Yönetilen küme algılayıcısı 'nı al |
-> | Action | Microsoft. ContainerService/Managedkümeler/listClusterAdminCredential/ACTION | Yönetilen kümenin clusterAdmin kimlik bilgisini listeleyin |
-> | Action | Microsoft. ContainerService/Managedkümeler/listClusterUserCredential/Action | Yönetilen kümenin clusterUser kimlik bilgisini listeleyin |
-> | Action | Microsoft. ContainerService/Managedkümeler/okuma | Yönetilen bir küme al |
+> | Action | Microsoft. ContainerService/Managedkümeler/listClusterAdminCredential/ACTION | Yönetilen bir kümenin clusterAdmin kimlik bilgilerini listele |
+> | Action | Microsoft. ContainerService/Managedkümeler/listClusterUserCredential/Action | Yönetilen bir kümenin clusterUser kimlik bilgilerini listele |
+> | Action | Microsoft. ContainerService/Managedkümeler/okuma | Yönetilen küme al |
 > | Action | Microsoft. ContainerService/Managedkümeler/resetAADProfile/Action | Yönetilen kümenin AAD profilini sıfırlayın |
 > | Action | Microsoft. ContainerService/Managedkümeler/resetServicePrincipalProfile/Action | Yönetilen kümenin hizmet sorumlusu profilini sıfırlayın |
 > | Action | Microsoft. ContainerService/Managedkümeler/upgradeprofiles/okuma | Kümenin yükseltme profilini alır |
-> | Action | Microsoft. ContainerService/Managedkümeler/Write | Yeni bir yönetilen küme oluşturur veya var olan bir kümeyi güncelleştirir |
+> | Action | Microsoft. ContainerService/Managedkümeler/Write | Yeni bir yönetilen küme oluşturur veya mevcut bir yönetilen kümeyi güncelleştirir |
 > | Action | Microsoft. ContainerService/openShiftClusters/Delete | Açık bir kaydırma kümesini silme |
 > | Action | Microsoft. ContainerService/openShiftClusters/Read | Açık bir Shift kümesi al |
 > | Action | Microsoft. ContainerService/openShiftClusters/Write | Yeni bir açık vardiya kümesi oluşturur veya mevcut olanı güncelleştirir |
 > | Action | Microsoft. ContainerService/openShiftManagedClusters/Delete | Açık bir vardiya yönetilen kümesini silme |
 > | Action | Microsoft. ContainerService/openShiftManagedClusters/Read | Açık bir vardiya yönetilen kümesi al |
 > | Action | Microsoft. ContainerService/openShiftManagedClusters/Write | Yeni bir açık vardiya yönetilen kümesi oluşturur veya mevcut olanı güncelleştirir |
-> | Action | Microsoft. ContainerService/işlemler/okuma | Microsoft. ContainerService kaynak sağlayıcısında kullanılabilir işlemleri listeler |
-> | Action | Microsoft. ContainerService/Register/Action | Aboneliği Microsoft. ContainerService kaynak sağlayıcısına kaydeder |
-> | Action | Microsoft. ContainerService/Unregister/eylem | Microsoft. ContainerService kaynak sağlayıcısı ile aboneliğin kaydını siler |
+> | Action | Microsoft. ContainerService/işlemler/okuma | Microsoft.ContainerService kaynak sağlayıcısında bulunan işlemleri listeler |
+> | Action | Microsoft. ContainerService/Register/Action | Aboneliği Microsoft.ContainerService kaynak sağlayıcısına kaydeder |
+> | Action | Microsoft. ContainerService/Unregister/eylem | Microsoft.ContainerService kaynak sağlayıcısından Abonelik kaydını siler |
 
 ## <a name="microsoftcontentmoderator"></a>Microsoft.ContentModerator
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
-> | Action | Microsoft. Contentmoderatör/uygulamalar/Sil | Silme Işlemi |
-> | Action | Microsoft. Contentmoderatör/uygulamalar/Listgizlilikler/Action | Gizli dizileri Listele |
+> | Action | Microsoft. Contentmoderatör/uygulamalar/Sil | İşlemi Siler |
+> | Action | Microsoft. Contentmoderatör/uygulamalar/Listgizlilikler/Action | Parolaları Listele |
 > | Action | Microsoft. Contentmoderatör/uygulamalar/listSingleSignOnToken/Action | Çoklu oturum açma belirteçlerini oku |
-> | Action | Microsoft. Contentmoderatör/uygulamalar/okuma | Okuma Işlemi |
-> | Action | Microsoft. Contentmoderatör/uygulamalar/yazma | Yazma Işlemi |
-> | Action | Microsoft. Contentmoderatör/uygulamalar/yazma | Yazma Işlemi |
+> | Action | Microsoft. Contentmoderatör/uygulamalar/okuma | İşlemi Okur |
+> | Action | Microsoft. Contentmoderatör/uygulamalar/yazma | İşlemi Yazar |
+> | Action | Microsoft. Contentmoderatör/uygulamalar/yazma | İşlemi Yazar |
 > | Action | Microsoft. Contentmoderatör/listCommunicationPreference/eylem | İletişim tercihini Listele |
 > | Action | Microsoft. Contentmoderatör/işlemler/okuma | okuma işlemleri |
 > | Action | Microsoft. Contentmoderatör/updateCommunicationPreference/eylem | İletişim tercihini Güncelleştir |
@@ -1508,7 +1508,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftcostmanagement"></a>Microsoft. CostManagement
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. CostManagement/Cloudbağlayıcılar/Delete | Belirtilen cloudConnector 'ı silin. |
 > | Action | Microsoft. CostManagement/Cloudkonnektörleri/okuma | Kimliği doğrulanmış kullanıcı için Cloudbağlayıcıları listeleyin. |
@@ -1533,7 +1533,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftcustomerinsights"></a>Microsoft.CustomerInsights
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. Customerınsights/hub/adobemetadata/Action | Herhangi bir Azure Customer Insights Adobe meta verisi oluşturun veya güncelleştirin |
 > | Action | Microsoft. Customerınsights/hub/adobemetadata/Read | Tüm Azure Customer Insights Adobe meta verilerini okuyun |
@@ -1638,25 +1638,25 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftdatabox"></a>Microsoft. DataBox
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
-> | Action | Microsoft. DataBox/Jobs/bookShipmentPickUp/ACTION | İade sevk irsaliyeleri için bir çekme defterine izin verir. |
+> | Action | Microsoft. DataBox/Jobs/bookShipmentPickUp/ACTION | İade sevk irsaliyesini toplamak üzere planlamaya izin verir. |
 > | Action | Microsoft. DataBox/Jobs/iptal/eylem | Devam eden bir siparişi iptal eder. |
 > | Action | Microsoft. DataBox/işler/Sil | Siparişleri silme |
 > | Action | Microsoft. DataBox/Jobs/listCredentials/Action | Siparişle ilgili şifrelenmemiş kimlik bilgilerini listeler. |
 > | Action | Microsoft. DataBox/Jobs/Read | Siparişleri listeleyin veya alın |
 > | Action | Microsoft. DataBox/işler/yazma | Siparişleri oluşturma veya güncelleştirme |
-> | Action | Microsoft. DataBox/Locations/Availablesku 'Lar/eylem | Bu yöntem, kullanılabilir SKU 'ların listesini döndürür. |
+> | Action | Microsoft. DataBox/Locations/Availablesku 'Lar/eylem | Bu yöntem, kullanılabilen SKU'ların listesini döndürür. |
 > | Action | Microsoft. DataBox/Locations/Availablesku 'Lar/okuma | Kullanılabilir SKU 'Ları listeleme veya edinme |
 > | Action | Microsoft. DataBox/Locations/operationResults/Read | Işlem sonuçlarını listeleme veya edinme |
-> | Action | Microsoft. DataBox/Locations/validateAddress/Action | Sevkiyat adresini doğrular ve varsa alternatif adresler sağlar. |
+> | Action | Microsoft. DataBox/Locations/validateAddress/Action | Teslimat adresini doğrular ve varsa alternatif adresler sağlar. |
 > | Action | Microsoft. DataBox/Locations/Validategirişlerinde/Action |  |
-> | Action | Microsoft. DataBox/Register/Action | Sağlayıcıyı kaydet Microsoft. databox |
+> | Action | Microsoft. DataBox/Register/Action | Sağlayıcı Microsoft.Databox'a Kaydol |
 
 ## <a name="microsoftdataboxedge"></a>Microsoft. DataBoxEdge
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. DataBoxEdge/dataBoxEdgeDevices/uyarılar/okuma | Uyarıları listeler veya alır |
 > | Action | Microsoft. DataBoxEdge/dataBoxEdgeDevices/uyarılar/okuma | Uyarıları listeler veya alır |
@@ -1667,8 +1667,8 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 > | Action | Microsoft. DataBoxEdge/dataBoxEdgeDevices/bandwidthSchedules/Write | Bant genişliği zamanlamalarını oluşturur veya güncelleştirir |
 > | Action | Microsoft. DataBoxEdge/dataBoxEdgeDevices/Delete | Data Box Edge cihazlarını siler |
 > | Action | Microsoft. DataBoxEdge/dataBoxEdgeDevices/downloadUpdates/Action | Güncelleştirmeleri cihaza indir |
-> | Action | Microsoft. DataBoxEdge/dataBoxEdgeDevices/Gebir Dedınformation/Action | Kaynak genişletilmiş bilgilerini alır |
-> | Action | Microsoft. DataBoxEdge/dataBoxEdgeDevices/ınstallupdates/Action | Güncelleştirmeleri cihaza yükler |
+> | Action | Microsoft. DataBoxEdge/dataBoxEdgeDevices/Gebir Dedınformation/Action | Genişletilmiş kaynak bilgilerini getirir |
+> | Action | Microsoft. DataBoxEdge/dataBoxEdgeDevices/ınstallupdates/Action | Güncelleştirmeleri cihaza yükle |
 > | Action | Microsoft. DataBoxEdge/dataBoxEdgeDevices/işler/okuma | İşleri listeler veya alır |
 > | Action | Microsoft. DataBoxEdge/dataBoxEdgeDevices/networkSettings/Read | Cihaz ağ ayarlarını listeler veya alır |
 > | Action | Microsoft. DataBoxEdge/dataBoxEdgeDevices/operationResults/Read | İşlem sonucunu listeler veya alır |
@@ -1688,12 +1688,12 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 > | Action | Microsoft. DataBoxEdge/dataBoxEdgeDevices/roller/Write | Rolleri oluşturur veya güncelleştirir |
 > | Action | Microsoft. DataBoxEdge/dataBoxEdgeDevices/scanForUpdates/Action | Güncelleştirmeleri Tara |
 > | Action | Microsoft. DataBoxEdge/dataBoxEdgeDevices/securitySettings/operationResults/Read | İşlem sonucunu listeler veya alır |
-> | Action | Microsoft. DataBoxEdge/dataBoxEdgeDevices/securitySettings/Update/Action | Güvenlik ayarlarını güncelleştirme |
+> | Action | Microsoft. DataBoxEdge/dataBoxEdgeDevices/securitySettings/Update/Action | Güvenlik ayarlarını güncelleştir |
 > | Action | Microsoft. DataBoxEdge/dataBoxEdgeDevices/paylaşımlar/silme | Paylaşımları siler |
 > | Action | Microsoft. DataBoxEdge/dataBoxEdgeDevices/paylaşımlar/operationResults/Read | İşlem sonucunu listeler veya alır |
 > | Action | Microsoft. DataBoxEdge/dataBoxEdgeDevices/paylaşımlar/okuma | Paylaşımları listeler veya alır |
 > | Action | Microsoft. DataBoxEdge/dataBoxEdgeDevices/paylaşımlar/okuma | Paylaşımları listeler veya alır |
-> | Action | Microsoft. DataBoxEdge/dataBoxEdgeDevices/paylaşımlar/Yenile/eylem | Bulutta bulunan verilerle paylaşma meta verilerini yenileyin |
+> | Action | Microsoft. DataBoxEdge/dataBoxEdgeDevices/paylaşımlar/Yenile/eylem | Paylaşım meta verilerini buluttan gelen verilerle yenileyin |
 > | Action | Microsoft. DataBoxEdge/dataBoxEdgeDevices/paylaşımlar/yazma | Paylaşımları oluşturur veya güncelleştirir |
 > | Action | Microsoft. DataBoxEdge/dataBoxEdgeDevices/storageAccountCredentials/Delete | Depolama hesabı kimlik bilgilerini siler |
 > | Action | Microsoft. DataBoxEdge/dataBoxEdgeDevices/storageAccountCredentials/operationResults/Read | İşlem sonucunu listeler veya alır |
@@ -1718,10 +1718,10 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftdatabricks"></a>Microsoft. Databricks
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
-> | Action | Microsoft. Databricks/Register/ACTION | Databricks 'e kaydolun. |
-> | Action | Microsoft. Databricks/Workspaces/Delete | Databricks çalışma alanını kaldırır. |
+> | Action | Microsoft. Databricks/Register/ACTION | Databricks için kaydolun. |
+> | Action | Microsoft. Databricks/Workspaces/Delete | Bir Databricks çalışma alanını kaldırır. |
 > | Action | Microsoft. Databricks/Workspaces/Providers/Microsoft. Insights/diagnosticSettings/Read | Databricks çalışma alanı için kullanılabilir tanılama ayarlarını ayarlar |
 > | Action | Microsoft. Databricks/Workspaces/Providers/Microsoft. Insights/diagnosticSettings/Write | Tanılama ayarlarını ekleyin veya değiştirin. |
 > | Action | Microsoft. Databricks/Workspaces/Providers/Microsoft. Insights/logDefinitions/Read | Databricks çalışma alanı için kullanılabilir günlük tanımlarını alır |
@@ -1731,7 +1731,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. DataCatalog/Catalogs/Delete | Veri Kataloğu kaynak sağlayıcısı için Katalog kaynağını silin. |
 > | Action | Microsoft. DataCatalog/Catalogs/Read | Veri Kataloğu kaynak sağlayıcısı için Katalog kaynağını okuyun. |
@@ -1747,7 +1747,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. DataFactory/checkazuredatafactorynameavailability/Read | Data Factory adının kullanılabilir olup olmadığını denetler. |
 > | Action | Microsoft. DataFactory/DataFactory/activitywindows/Read | Belirtilen parametrelerle Data Factory etkinlik pencerelerini okur. |
@@ -1856,7 +1856,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. DataLakeAnalytics/accounts/computePolicies/Delete | İşlem ilkesini silin. |
 > | Action | Microsoft. DataLakeAnalytics/accounts/computePolicies/Read | Bir işlem ilkesi hakkında bilgi alın. |
@@ -1891,7 +1891,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftdatalakestore"></a>Microsoft.DataLakeStore
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. DataLakeStore/hesaplar/Sil | Bir DataLakeStore hesabını silin. |
 > | Action | Microsoft. DataLakeStore/accounts/Enablekeykasası/eylem | DataLakeStore hesabı için Anahtar Kasası 'nı etkinleştirin. |
@@ -1921,47 +1921,47 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftdatamigration"></a>Microsoft. DataMigration
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
-> | Action | Microsoft. DataMigration/konumlar/operationResults/Read | 202 kabul edilen bir Yanıtla ilgili uzun süreli bir işlemin durumunu alın |
-> | Action | Microsoft. DataMigration/Locations/Operationdurumlarının/Read | 202 kabul edilen bir Yanıtla ilgili uzun süreli bir işlemin durumunu alın |
-> | Action | Microsoft. DataMigration/Register/Action | Aboneliği Azure veritabanı geçiş hizmeti sağlayıcısına kaydeder |
-> | Action | Microsoft. DataMigration/Services/addWorker/Action | Hizmetin kullanılabilir çalışanlarına bir DMS çalışanı ekler |
-> | Action | Microsoft. DataMigration/hizmetler/checkStatus/Action | Hizmetin dağıtılıp dağıtılmadığını ve çalışıp çalışmadığını denetleyin |
-> | Action | Microsoft. DataMigration/Services/configureWorker/Action | Bir DMS çalışanını hizmetin kullanılabilir çalışanları için yapılandırır |
+> | Action | Microsoft. DataMigration/konumlar/operationResults/Read | 202 Kabul Edildi yanıtı ile ilgili uzun süreli bir işlemin durumunu alın |
+> | Action | Microsoft. DataMigration/Locations/Operationdurumlarının/Read | 202 Kabul Edildi yanıtı ile ilgili uzun süreli bir işlemin durumunu alın |
+> | Action | Microsoft. DataMigration/Register/Action | Aboneliği Azure Veritabanı Geçiş Hizmet sağlayıcısına kaydeder |
+> | Action | Microsoft. DataMigration/Services/addWorker/Action | Hizmetin mevcut çalışanlarına DMS çalışanı ekler |
+> | Action | Microsoft. DataMigration/hizmetler/checkStatus/Action | Hizmetin dağıtılmış ve çalışır durumda olup olmadığını denetleyin |
+> | Action | Microsoft. DataMigration/Services/configureWorker/Action | Hizmetin mevcut çalışanlarına DMS çalışanı yapılandırır |
 > | Action | Microsoft. DataMigration/hizmetler/Sil | Bir kaynağı ve tüm alt öğelerini siler |
-> | Action | Microsoft. DataMigration/Services/Projects/accessArtifacts/Action | Proje yapıtları almak veya koymak için kullanılabilecek bir URL Oluştur |
+> | Action | Microsoft. DataMigration/Services/Projects/accessArtifacts/Action | GET veya PUT proje yapıtları için kullanılabilen bir URL oluşturun |
 > | Action | Microsoft. DataMigration/hizmetler/projeler/Sil | Bir kaynağı ve tüm alt öğelerini siler |
 > | Action | Microsoft. DataMigration/Services/Projects/Files/Delete | Bir kaynağı ve tüm alt öğelerini siler |
-> | Action | Microsoft. DataMigration/Services/Projects/Files/Read | Kaynaklarla ilgili bilgileri okuyun |
-> | Action | Microsoft. DataMigration/Services/Projects/Files/Read/action | Dosyanın içeriğini okumak için kullanılabilecek bir URL alın |
-> | Action | Microsoft. DataMigration/Services/Projects/Files/readWrite/Action | Dosyanın içeriğini okumak veya yazmak için kullanılabilecek bir URL alın |
-> | Action | Microsoft. DataMigration/Services/Projects/Files/Write | Kaynakları ve bunların özelliklerini oluşturun veya güncelleştirin |
-> | Action | Microsoft. DataMigration/hizmetler/projeler/okuma | Kaynaklarla ilgili bilgileri okuyun |
-> | Action | Microsoft. DataMigration/hizmetler/projeler/görevler/iptal/eylem | Şu anda çalışıyorsa, görevi iptal et |
+> | Action | Microsoft. DataMigration/Services/Projects/Files/Read | Kaynaklar hakkındaki bilgileri okuyun |
+> | Action | Microsoft. DataMigration/Services/Projects/Files/Read/action | Dosya içeriğini okumak için kullanılabilecek bir URL alın |
+> | Action | Microsoft. DataMigration/Services/Projects/Files/readWrite/Action | Dosya içeriğini okumak veya yazmak için kullanılabilecek bir URL alın |
+> | Action | Microsoft. DataMigration/Services/Projects/Files/Write | Kaynakları ve özelliklerini oluşturun ya da güncelleştirin |
+> | Action | Microsoft. DataMigration/hizmetler/projeler/okuma | Kaynaklar hakkındaki bilgileri okuyun |
+> | Action | Microsoft. DataMigration/hizmetler/projeler/görevler/iptal/eylem | O anda çalışıyorsa görevi iptal edin |
 > | Action | Microsoft. DataMigration/hizmetler/projeler/görevler/Sil | Bir kaynağı ve tüm alt öğelerini siler |
-> | Action | Microsoft. DataMigration/hizmetler/projeler/görevler/okuma | Kaynaklarla ilgili bilgileri okuyun |
-> | Action | Microsoft. DataMigration/hizmetler/projeler/görevler/yazma | Görevleri çalıştırma Azure veritabanı geçiş hizmeti görevleri |
-> | Action | Microsoft. DataMigration/hizmetler/projeler/yazma | Görevleri çalıştırma Azure veritabanı geçiş hizmeti görevleri |
-> | Action | Microsoft. DataMigration/Services/Read | Kaynaklarla ilgili bilgileri okuyun |
-> | Action | Microsoft. DataMigration/Services/removeWorker/Action | Bir DMS çalışanını hizmetin kullanılabilir çalışanlarına kaldırır |
-> | Action | Microsoft. DataMigration/Services/serviceTasks/Cancel/Action | Şu anda çalışıyorsa, görevi iptal et |
+> | Action | Microsoft. DataMigration/hizmetler/projeler/görevler/okuma | Kaynaklar hakkındaki bilgileri okuyun |
+> | Action | Microsoft. DataMigration/hizmetler/projeler/görevler/yazma | Azure Veritabanı Geçiş Hizmeti görevlerini çalıştır |
+> | Action | Microsoft. DataMigration/hizmetler/projeler/yazma | Azure Veritabanı Geçiş Hizmeti görevlerini çalıştır |
+> | Action | Microsoft. DataMigration/Services/Read | Kaynaklar hakkındaki bilgileri okuyun |
+> | Action | Microsoft. DataMigration/Services/removeWorker/Action | DMS çalışanını Hizmetin mevcut çalışanlarından kaldırır |
+> | Action | Microsoft. DataMigration/Services/serviceTasks/Cancel/Action | O anda çalışıyorsa görevi iptal edin |
 > | Action | Microsoft. DataMigration/Services/serviceTasks/Delete | Bir kaynağı ve tüm alt öğelerini siler |
-> | Action | Microsoft. DataMigration/Services/serviceTasks/Read | Kaynaklarla ilgili bilgileri okuyun |
-> | Action | Microsoft. DataMigration/Services/serviceTasks/Write | Görevleri çalıştırma Azure veritabanı geçiş hizmeti görevleri |
+> | Action | Microsoft. DataMigration/Services/serviceTasks/Read | Kaynaklar hakkındaki bilgileri okuyun |
+> | Action | Microsoft. DataMigration/Services/serviceTasks/Write | Azure Veritabanı Geçiş Hizmeti görevlerini çalıştır |
 > | Action | Microsoft. DataMigration/hizmetler/yuvalar/silme | Bir kaynağı ve tüm alt öğelerini siler |
-> | Action | Microsoft. DataMigration/hizmetler/yuvalar/okuma | Kaynaklarla ilgili bilgileri okuyun |
-> | Action | Microsoft. DataMigration/hizmetler/yuvalar/yazma | Kaynakları ve bunların özelliklerini oluşturun veya güncelleştirin |
-> | Action | Microsoft. DataMigration/hizmetler/Başlat/eylem | Bu hizmetin geçişleri yeniden işlemesini sağlamak için DMS hizmetini başlatın |
-> | Action | Microsoft. DataMigration/hizmetler/durdur/eylem | Kendi maliyetini en aza indirmek için DMS hizmetini durdurun |
+> | Action | Microsoft. DataMigration/hizmetler/yuvalar/okuma | Kaynaklar hakkındaki bilgileri okuyun |
+> | Action | Microsoft. DataMigration/hizmetler/yuvalar/yazma | Kaynakları ve özelliklerini oluşturun ya da güncelleştirin |
+> | Action | Microsoft. DataMigration/hizmetler/Başlat/eylem | Geçişleri yeniden işlemesine izin vermek için DMS hizmetini başlatın |
+> | Action | Microsoft. DataMigration/hizmetler/durdur/eylem | Maliyetlerini en aza indirmek için DMS hizmetini durdurun |
 > | Action | Microsoft. DataMigration/Services/updateAgentConfig/Action | DMS Aracısı yapılandırmasını belirtilen değerlerle güncelleştirir. |
-> | Action | Microsoft. DataMigration/hizmetler/Write | Kaynakları ve bunların özelliklerini oluşturun veya güncelleştirin |
-> | Action | Microsoft. DataMigration/SKU 'lar/okuma | DMS kaynakları tarafından desteklenen SKU 'ların bir listesini alın. |
+> | Action | Microsoft. DataMigration/hizmetler/Write | Kaynakları ve özelliklerini oluşturun ya da güncelleştirin |
+> | Action | Microsoft. DataMigration/SKU 'lar/okuma | DMS kaynakları tarafından desteklenen SKU'ların bir listesini alın. |
 
 ## <a name="microsoftdbformariadb"></a>Microsoft. Dbformarıdb
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. Dbformarıdb/Checknameavaılabılıty/Action | Belirli bir abonelik için verilen sunucu adının dünya genelinde sağlanması için kullanılabilir olup olmadığını doğrulayın. |
 > | Action | Microsoft. Dbformarıdb/konumlar/azureAsyncOperation/Read | MariaDB sunucusu Işlem sonuçlarını döndür |
@@ -2017,7 +2017,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. Dbformyısql/Checknameavaılabılıty/Action | Belirli bir abonelik için verilen sunucu adının dünya genelinde sağlanması için kullanılabilir olup olmadığını doğrulayın. |
 > | Action | Microsoft. Dbformyısql/konumlar/azureAsyncOperation/Read | MySQL sunucusu Işlem sonuçlarını döndür |
@@ -2073,7 +2073,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. DBforPostgreSQL/Checknameavaılabılıty/Action | Belirli bir abonelik için verilen sunucu adının dünya genelinde sağlanması için kullanılabilir olup olmadığını doğrulayın. |
 > | Action | Microsoft. DBforPostgreSQL/konumlar/azureAsyncOperation/Read | PostgreSQL sunucusu Işlem sonuçlarını döndür |
@@ -2148,7 +2148,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftdevices"></a>Microsoft. Devices
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. Devices/Checknameavaılabılıty/Action | Iothub adının kullanılabilir olup olmadığını denetle |
 > | Action | Microsoft. Devices/Checkprovisioningservicenameavaılabılıty/Action | Sağlama hizmeti adının kullanılabilir olup olmadığını denetleyin |
@@ -2211,7 +2211,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 > | Action | Microsoft. Devices/ıothubs/SKU/okuma | Geçerli ıothub SKU 'Larını al |
 > | Action | Microsoft. Devices/ıothubs/Write | Iothub kaynağı oluşturma veya güncelleştirme |
 > | Action | Microsoft. cihazlar/konumlar/operationresults/Read | Konum tabanlı Işlem sonucunu al |
-> | Action | Microsoft. Devices/operationresults/Read | Işlem sonucunu al |
+> | Action | Microsoft. Devices/operationresults/Read | İşlem Sonucunu Al |
 > | Action | Microsoft. Devices/işlemler/okuma | Tüm ResourceProvider Işlemlerini al |
 > | Action | Microsoft. Devices/provisioningServices/sertifikalar/Sil | Sertifikayı siler |
 > | Action | Microsoft. Devices/provisioningServices/Certificates/Generatedoğrulamaları Icationcode/Action | Doğrulama kodu oluştur |
@@ -2236,7 +2236,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftdevspaces"></a>Microsoft. DevSpaces
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. DevSpaces/denetleyiciler/silme | Azure Dev Spaces denetleyicisi ve veri düzlemi hizmetlerini silme |
 > | Action | Microsoft. DevSpaces/denetleyiciler/listConnectionDetails/Action | Azure Dev Spaces denetleyicisinin altyapısının bağlantı ayrıntılarını listeleyin |
@@ -2249,7 +2249,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. DevTestLab/labCenters/Delete | Laboratuvar merkezlerini silin. |
 > | Action | Microsoft. DevTestLab/labCenters/okuma | Laboratuvar merkezlerini okuyun. |
@@ -2347,7 +2347,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 > | Action | Microsoft. DevTestLab/Labs/virtualMachines/durdur/eylem | Bir sanal makineyi durdur |
 > | Action | Microsoft. DevTestLab/Labs/virtualMachines/TransferDisks/Action | Sanal makineye bağlı tüm veri disklerini geçerli kullanıcıya ait olacak şekilde aktarır. |
 > | Action | Microsoft. DevTestLab/Labs/virtualMachines/talep/işlem | Mevcut bir sanal makinenin sahipliğini serbest bırakma |
-> | Action | Microsoft. DevTestLab/Labs/virtualMachines/Write | Sanal makineler ekleyin veya değiştirin. |
+> | Action | Microsoft. DevTestLab/Labs/virtualMachines/Write | Sanal makineleri ekleyin veya değiştirin. |
 > | Action | Microsoft. DevTestLab/Labs/virtualNetworks/Delete | Sanal ağları silin. |
 > | Action | Microsoft. DevTestLab/Labs/virtualNetworks/Read | Sanal ağları okuyun. |
 > | Action | Microsoft. DevTestLab/Labs/virtualNetworks/Write | Sanal ağları ekleyin veya değiştirin. |
@@ -2366,7 +2366,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. DocumentDB/databaseAccountNames/Read | Ad kullanılabilirliğini denetler. |
 > | Action | Microsoft. DocumentDB/databaseAccounts/API/veritabanları/koleksiyonlar/Sil | Bir koleksiyonu silin. Yalnızca API türleri için geçerlidir: ' MongoDB '. |
@@ -2403,7 +2403,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 > | Action | Microsoft. DocumentDB/databaseAccounts/API/keyspaces/Settings/operationResults/Read | Zaman uyumsuz işlemin durumunu okuyun. Yalnızca API türleri için geçerlidir: ' Cassandra '. Yalnızca ayar türleri için geçerlidir: ' aktarım hızı '. |
 > | Action | Microsoft. DocumentDB/databaseAccounts/API/keyspaces/Settings/Read | Anahtar alanı verimini okuyun. Yalnızca API türleri için geçerlidir: ' Cassandra '. Yalnızca ayar türleri için geçerlidir: ' aktarım hızı '. |
 > | Action | Microsoft. DocumentDB/databaseAccounts/API/keyspaces/Settings/Write | Anahtar alanı aktarım hızını güncelleştirin. Yalnızca API türleri için geçerlidir: ' Cassandra '. Yalnızca ayar türleri için geçerlidir: ' aktarım hızı '. |
-> | Action | Microsoft. DocumentDB/databaseAccounts/API/keyspaces/Tables/Delete | Bir tabloyu silin. Yalnızca API türleri için geçerlidir: ' Cassandra '. |
+> | Action | Microsoft. DocumentDB/databaseAccounts/API/keyspaces/Tables/Delete | Bir tablo silin. Yalnızca API türleri için geçerlidir: ' Cassandra '. |
 > | Action | Microsoft. DocumentDB/databaseAccounts/API/keyspaces/Tables/operationResults/Read | Zaman uyumsuz işlemin durumunu okuyun. Yalnızca API türleri için geçerlidir: ' Cassandra '. |
 > | Action | Microsoft. DocumentDB/databaseAccounts/API/keyspaces/Tables/Read | Tablo okuyun veya tüm tabloları listeleyin. Yalnızca API türleri için geçerlidir: ' Cassandra '. |
 > | Action | Microsoft. DocumentDB/databaseAccounts/API/keyspaces/Tables/Settings/operationResults/Read | Zaman uyumsuz işlemin durumunu okuyun. Yalnızca API türleri için geçerlidir: ' Cassandra '. Yalnızca ayar türleri için geçerlidir: ' aktarım hızı '. |
@@ -2411,7 +2411,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 > | Action | Microsoft. DocumentDB/databaseAccounts/API 'ler/keyspaces/tablolar/ayarlar/yazma | Tablo verimini güncelleştirme. Yalnızca API türleri için geçerlidir: ' Cassandra '. Yalnızca ayar türleri için geçerlidir: ' aktarım hızı '. |
 > | Action | Microsoft. DocumentDB/databaseAccounts/API 'ler/keyspaces/tablolar/Write | Tablo oluşturun veya güncelleştirin. Yalnızca API türleri için geçerlidir: ' Cassandra '. |
 > | Action | Microsoft. DocumentDB/databaseAccounts/API/keyspaces/Write | Anahtar alanı oluşturun. Yalnızca API türleri için geçerlidir: ' Cassandra '. |
-> | Action | Microsoft. DocumentDB/databaseAccounts/API/Tables/Delete | Bir tabloyu silin. Yalnızca API türleri için geçerlidir: ' Table '. |
+> | Action | Microsoft. DocumentDB/databaseAccounts/API/Tables/Delete | Bir tablo silin. Yalnızca API türleri için geçerlidir: ' Table '. |
 > | Action | Microsoft. DocumentDB/databaseAccounts/API/Tables/operationResults/Read | Zaman uyumsuz işlemin durumunu okuyun. Yalnızca API türleri için geçerlidir: ' Table '. |
 > | Action | Microsoft. DocumentDB/databaseAccounts/API/Tables/Read | Tablo okuyun veya tüm tabloları listeleyin. Yalnızca API türleri için geçerlidir: ' Table '. |
 > | Action | Microsoft. DocumentDB/databaseAccounts/API/Tables/Settings/operationResults/Read | Zaman uyumsuz işlemin durumunu okuyun. Yalnızca API türleri için geçerlidir: ' Table '. Yalnızca ayar türleri için geçerlidir: ' aktarım hızı '. |
@@ -2470,7 +2470,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftdomainregistration"></a>Microsoft.DomainRegistration
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. DomainRegistration/Checkdomainavaılabılıty/Action | Bir etki alanının satın alma için kullanılabilir olup olmadığını denetleyin |
 > | Action | Microsoft. DomainRegistration/Domains/Delete | Var olan bir etki alanını silin. |
@@ -2495,7 +2495,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsofteventgrid"></a>Microsoft.EventGrid
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. EventGrid/Domains/Delete | Etki alanını silme |
 > | Action | Microsoft. EventGrid/Domains/listKeys/Action | Bir etki alanı için liste anahtarları |
@@ -2539,38 +2539,38 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. EventHub/Availableclusterregion/okuma | Azure bölgesi tarafından sağlanan önceden sağlanmış kümeleri listelemek için okuma işlemi. |
-> | Action | Microsoft. EventHub/Checknameavaılabılıty/Action | Belirtilen abonelikte ad alanının kullanılabilirliğini denetler. |
-> | Action | Microsoft. EventHub/checkNamespaceAvailability/Action | Belirtilen abonelikte ad alanının kullanılabilirliğini denetler. Bu API kullanım dışı, lütfen bunun yerine Checknameavaılabılıty kullanın. |
+> | Action | Microsoft. EventHub/Checknameavaılabılıty/Action | İlgili abonelikte ad alanının kullanılabilirliğini denetler. |
+> | Action | Microsoft. EventHub/checkNamespaceAvailability/Action | İlgili abonelikte ad alanının kullanılabilirliğini denetler. Bu API kullanım dışı, lütfen bunun yerine Checknameavaılabılıty kullanın. |
 > | Action | Microsoft. EventHub/kümeler/Sil | Var olan bir küme kaynağını siler. |
 > | Action | Microsoft. EventHub/kümeler/ad alanları/okuma | Bir küme içindeki ad alanları için ad alanı ARM kimliklerini listeleyin. |
 > | Action | Microsoft. EventHub/kümeler/operationresults/Read | Zaman uyumsuz küme işleminin durumunu alın. |
 > | Action | Microsoft. EventHub/kümeler/sağlayıcılar/Microsoft. Insights/metricDefinitions/okuma | Küme ölçümleri kaynak açıklamaları listesini al |
-> | Action | Microsoft. EventHub/kümeler/okuma | Küme kaynağı açıklamasını alır |
+> | Action | Microsoft. EventHub/kümeler/okuma | Küme Kaynağı Açıklamasını alır |
 > | Action | Microsoft. EventHub/kümeler/yazma | Var olan bir küme kaynağını oluşturur veya değiştirir. |
-> | Action | Microsoft. EventHub/konumlar/Deletevirtualnetworkoralt ağları/eylem | Belirtilen VNet için EventHub kaynak sağlayıcısında VNet kurallarını siler |
+> | Action | Microsoft. EventHub/konumlar/Deletevirtualnetworkoralt ağları/eylem | Belirtilen VNet için EventHub Kaynak Sağlayıcısı'ndaki VNet kurallarını siler |
 > | Action | Microsoft. EventHub/ad alanları/authorizationRules/eylem | Güncelleştirme ad alanı yetkilendirme kuralı. Bu API kullanım dışıdır. Lütfen bunun yerine ad alanı yetkilendirme kuralını güncelleştirmek için bir PUT çağrısı kullanın. Bu işlem API sürüm 2017-04-01 ' de desteklenmiyor. |
 > | Action | Microsoft. EventHub/ad alanları/authorizationRules/Sil | Ad alanı yetkilendirme kuralını silin. Varsayılan ad alanı yetkilendirme kuralı silinemez.  |
-> | Action | Microsoft. EventHub/namespaces/authorizationRules/ListKeys/Action | Ad alanına bağlantı dizesi al |
-> | Action | Microsoft. EventHub/ad alanları/authorizationRules/okuma | Ad alanı yetkilendirme kuralları açıklaması listesini alın. |
-> | Action | Microsoft. EventHub/namespaces/authorizationRules/regenerateKeys/ACTION | Kaynağa birincil veya Ikincil anahtarı yeniden oluştur |
+> | Action | Microsoft. EventHub/namespaces/authorizationRules/ListKeys/Action | Ad Alanı için Bağlantı Dizesini alın |
+> | Action | Microsoft. EventHub/ad alanları/authorizationRules/okuma | Ad Alanı Yetkilendirme Kuralları açıklamasının listesini alır. |
+> | Action | Microsoft. EventHub/namespaces/authorizationRules/regenerateKeys/ACTION | Kaynağın Birincil veya İkincil anahtarını yeniden oluşturun |
 > | Action | Microsoft. EventHub/ad alanları/authorizationRules/Write | Ad alanı düzeyinde yetkilendirme kuralları oluşturun ve özelliklerini güncelleştirin. Yetkilendirme kuralları erişim hakları, birincil ve Ikincil anahtarlar güncelleştirilebilen olabilir. |
-> | Action | Microsoft. EventHub/ad alanları/silme | Ad alanı kaynağını Sil |
-> | Action | Microsoft. EventHub/namespaces/Disyıldız Recoveryconfigs/authorizationRules/ListKeys/Action | Olağanüstü durum kurtarma birincil ad alanı için yetkilendirme kuralları anahtarlarını alır |
-> | Action | Microsoft. EventHub/namespaces/Disyıldız Recoveryconfigs/authorizationRules/Read | Olağanüstü durum kurtarma birincil ad alanının yetkilendirme kurallarını al |
-> | Action | Microsoft. EventHub/namespaces/Disyıldız Recoveryconfigs/Breakeşleştirmeyi/eylemi | Olağanüstü durum kurtarmayı devre dışı bırakır ve birincil olan değişiklikleri ikincil ad alanlarına çoğaltmayı durduruyor. |
-> | Action | Microsoft. EventHub/namespaces/disyıldız recoveryconfigs/Checknameavaılabılıty/Action | Belirtilen abonelik altında ad alanı diğer adının kullanılabilirliğini denetler. |
+> | Action | Microsoft. EventHub/ad alanları/silme | Ad Alanı Kaynağını silin |
+> | Action | Microsoft. EventHub/namespaces/Disyıldız Recoveryconfigs/authorizationRules/ListKeys/Action | Olağanüstü Durum Kurtarma birincil ad alanı için yetkilendirme kuralları anahtarlarını alır |
+> | Action | Microsoft. EventHub/namespaces/Disyıldız Recoveryconfigs/authorizationRules/Read | Olağanüstü Durum Kurtarma Birincil Ad Alanının Yetkilendirme Kurallarını Al |
+> | Action | Microsoft. EventHub/namespaces/Disyıldız Recoveryconfigs/Breakeşleştirmeyi/eylemi | Olağanüstü Durum Kurtarma'yı devre dışı bırakır ve birincil ad alanındaki değişiklikleri ikincil ad alanına çoğaltmayı durdurur. |
+> | Action | Microsoft. EventHub/namespaces/disyıldız recoveryconfigs/Checknameavaılabılıty/Action | İlgili abonelikte ad alanının diğer ad kullanılabilirliğini denetler. |
 > | Action | Microsoft. EventHub/namespaces/Disyıldız Recoveryconfigs/Delete | Ad alanıyla ilişkili olağanüstü durum kurtarma yapılandırmasını siler. Bu işlem yalnızca birincil ad alanı aracılığıyla çağrılabilir. |
-> | Action | Microsoft. EventHub/namespaces/Disyıldız Recoveryconfigs/yük devretme/eylem | COĞRAFI bir DR yük devretmesini çağırır ve ad alanı diğer adını ikincil ad alanına işaret edecek şekilde yeniden yapılandırır. |
-> | Action | Microsoft. EventHub/namespaces/Disyıldız Recoveryconfigs/Read | Ad alanıyla ilişkili olağanüstü durum kurtarma yapılandırmasını alır. |
-> | Action | Microsoft. EventHub/namespaces/Disyıldız Recoveryconfigs/Write | Ad alanıyla ilişkili olağanüstü durum kurtarma yapılandırmasını oluşturur veya güncelleştirir. |
+> | Action | Microsoft. EventHub/namespaces/Disyıldız Recoveryconfigs/yük devretme/eylem | Bir GEO DR yük devretmesini çağırır ve ad alanı diğer adını ikincil ad alanına işaret edecek şekilde yeniden yapılandırır. |
+> | Action | Microsoft. EventHub/namespaces/Disyıldız Recoveryconfigs/Read | Ad alanıyla ilişkili Olağanüstü Durum Kurtarma yapılandırmasını alır. |
+> | Action | Microsoft. EventHub/namespaces/Disyıldız Recoveryconfigs/Write | Ad alanıyla ilişkili Olağanüstü Durum Kurtarma yapılandırmasını oluşturur veya güncelleştirir. |
 > | Action | Microsoft. EventHub/namespaces/eventhubs/authorizationRules/Action | EventHub güncelleştirme işlemi. Bu işlem API sürüm 2017-04-01 ' de desteklenmiyor. Yetkilendirme kuralları. Lütfen yetkilendirme kuralını güncelleştirmek için bir PUT çağrısı kullanın. |
 > | Action | Microsoft. EventHub/namespaces/eventhubs/authorizationRules/Delete | EventHub yetkilendirme kurallarını silme işlemi |
 > | Action | Microsoft. EventHub/namespaces/eventhubs/authorizationRules/ListKeys/Action | EventHub bağlantı dizesini al |
 > | Action | Microsoft. EventHub/namespaces/eventhubs/authorizationRules/Read |  EventHub yetkilendirme kurallarının listesini alın |
-> | Action | Microsoft. EventHub/namespaces/eventhubs/authorizationRules/regenerateKeys/ACTION | Kaynağa birincil veya Ikincil anahtarı yeniden oluştur |
+> | Action | Microsoft. EventHub/namespaces/eventhubs/authorizationRules/regenerateKeys/ACTION | Kaynağın Birincil veya İkincil anahtarını yeniden oluşturun |
 > | Action | Microsoft. EventHub/namespaces/eventhubs/authorizationRules/Write | EventHub yetkilendirme kuralları oluşturun ve özelliklerini güncelleştirin. Yetkilendirme kuralları erişim hakları güncelleştirilebilen olabilir. |
 > | Action | Microsoft. EventHub/namespaces/eventHubs/consumergroups/Delete | ConsumerGroup kaynağını silme işlemi |
 > | Action | Microsoft. EventHub/namespaces/eventHubs/consumergroups/Read | ConsumerGroup kaynak açıklamalarının listesini al |
@@ -2578,52 +2578,52 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 > | Action | Microsoft. EventHub/namespaces/eventhubs/Delete | EventHub kaynağını silme işlemi |
 > | Action | Microsoft. EventHub/namespaces/eventhubs/Read | EventHub kaynak açıklamalarının listesini al |
 > | Action | Microsoft. EventHub/namespaces/eventhubs/Write | EventHub özelliklerini oluşturun veya güncelleştirin. |
-> | Action | Microsoft. EventHub/namespaces/ıpfilterrules/Delete | IP filtresi kaynağını Sil |
-> | Action | Microsoft. EventHub/namespaces/ıpfilterrules/Read | IP filtre kaynağı al |
-> | Action | Microsoft. EventHub/namespaces/ıpfilterrules/Write | IP filtre kaynağı oluştur |
+> | Action | Microsoft. EventHub/namespaces/ıpfilterrules/Delete | IP Filtresi Kaynağını Sil |
+> | Action | Microsoft. EventHub/namespaces/ıpfilterrules/Read | IP Filtresi Kaynağını Al |
+> | Action | Microsoft. EventHub/namespaces/ıpfilterrules/Write | IP Filtresi Kaynağı Oluştur |
 > | DataAction | Microsoft. EventHub/ad alanları/iletiler/alma/eylem | İleti alma |
 > | DataAction | Microsoft. EventHub/ad alanları/iletiler/gönderme/eylem | İleti gönderme |
 > | Action | Microsoft. EventHub/namespaces/messagingPlan/okuma | Bir ad alanı için mesajlaşma planını alır.<br>Bu API kullanım dışıdır.<br>MessagingPlan kaynağı aracılığıyla sunulan özellikler sonraki API sürümlerindeki (üst) ad alanı kaynağına taşınır.<br>Bu işlem API sürüm 2017-04-01 ' de desteklenmiyor. |
 > | Action | Microsoft. EventHub/namespaces/messagingPlan/yazma | Bir ad alanı için mesajlaşma planını güncelleştirir.<br>Bu API kullanım dışıdır.<br>MessagingPlan kaynağı aracılığıyla sunulan özellikler sonraki API sürümlerindeki (üst) ad alanı kaynağına taşınır.<br>Bu işlem API sürüm 2017-04-01 ' de desteklenmiyor. |
-> | Action | Microsoft. EventHub/namespaces/networkruleset/Delete | VNET kural kaynağını Sil |
+> | Action | Microsoft. EventHub/namespaces/networkruleset/Delete | Sanal Ağ Kuralı Kaynağını Sil |
 > | Action | Microsoft. EventHub/namespaces/networkruleset/Read | NetworkRuleSet kaynağını alır |
-> | Action | Microsoft. EventHub/namespaces/networkruleset/Write | VNET kural kaynağı oluşturma |
-> | Action | Microsoft. EventHub/namespaces/networkrulesets/Delete | VNET kural kaynağını Sil |
+> | Action | Microsoft. EventHub/namespaces/networkruleset/Write | Sanal Ağ Kuralı Kaynağı Oluştur |
+> | Action | Microsoft. EventHub/namespaces/networkrulesets/Delete | Sanal Ağ Kuralı Kaynağını Sil |
 > | Action | Microsoft. EventHub/namespaces/networkrulesets/Read | NetworkRuleSet kaynağını alır |
-> | Action | Microsoft. EventHub/namespaces/networkrulesets/Write | VNET kural kaynağı oluşturma |
+> | Action | Microsoft. EventHub/namespaces/networkrulesets/Write | Sanal Ağ Kuralı Kaynağı Oluştur |
 > | Action | Microsoft. EventHub/namespaces/operationresults/Read | Ad alanı işleminin durumunu al |
 > | Action | Microsoft. EventHub/namespaces/Providers/Microsoft. Insights/diagnosticSettings/Read | Ad alanı Tanılama ayarları kaynak açıklamalarının listesini al |
 > | Action | Microsoft. EventHub/namespaces/Providers/Microsoft. Insights/diagnosticSettings/Write | Ad alanı Tanılama ayarları kaynak açıklamalarının listesini al |
 > | Action | Microsoft. EventHub/namespaces/Providers/Microsoft. Insights/logDefinitions/Read | Ad alanı günlükleri kaynak açıklamalarının listesini al |
 > | Action | Microsoft. EventHub/namespaces/Providers/Microsoft. Insights/metricDefinitions/Read | Ad alanı ölçümleri kaynak açıklamalarının listesini al |
-> | Action | Microsoft. EventHub/ad alanları/okuma | Ad alanı kaynağı açıklaması listesini al |
-> | Action | Microsoft. EventHub/namespaces/removeAcsNamepsace/eylem | ACS ad alanını kaldır |
-> | Action | Microsoft. EventHub/namespaces/virtualNetworkRules/Delete | VNET kural kaynağını Sil |
-> | Action | Microsoft. EventHub/namespaces/virtualNetworkRules/Read | VNET kural kaynağını alır |
-> | Action | Microsoft. EventHub/namespaces/virtualNetworkRules/Write | VNET kural kaynağı oluşturma |
+> | Action | Microsoft. EventHub/ad alanları/okuma | Ad Alanı Kaynak Açıklamasının listesini alır |
+> | Action | Microsoft. EventHub/namespaces/removeAcsNamepsace/eylem | ACS ad alanını kaldırın |
+> | Action | Microsoft. EventHub/namespaces/virtualNetworkRules/Delete | Sanal Ağ Kuralı Kaynağını Sil |
+> | Action | Microsoft. EventHub/namespaces/virtualNetworkRules/Read | Sanal Ağ Kuralı Kaynağını alır |
+> | Action | Microsoft. EventHub/namespaces/virtualNetworkRules/Write | Sanal Ağ Kuralı Kaynağı Oluştur |
 > | Action | Microsoft. EventHub/ad alanları/yazma | Bir ad alanı kaynağı oluşturun ve özelliklerini güncelleştirin. Ad alanının etiketleri ve kapasitesi, güncelleştirilebilen özelliklerdir. |
-> | Action | Microsoft. EventHub/işlemler/okuma | Işlemleri al |
-> | Action | Microsoft. EventHub/Register/ACTION | EventHub kaynak sağlayıcısı için aboneliği kaydeder ve EventHub kaynaklarının oluşturulmasını sunar |
+> | Action | Microsoft. EventHub/işlemler/okuma | Alma İşlemleri |
+> | Action | Microsoft. EventHub/Register/ACTION | Aboneliği EventHub kaynak sağlayıcısı için kaydeder ve EventHub kaynaklarının oluşturulmasını sağlar |
 > | Action | Microsoft. EventHub/SKU/okuma | SKU kaynak açıklamaları listesini al |
 > | Action | Microsoft. EventHub/SKU/bölge/okuma | Skuregion kaynak açıklamalarının listesini al |
-> | Action | Microsoft. EventHub/kaydını kaldırma/eylem | EventHub kaynak sağlayıcısını kaydeder |
+> | Action | Microsoft. EventHub/kaydını kaldırma/eylem | EventHub Kaynak Sağlayıcısını kaydet |
 
 ## <a name="microsoftfeatures"></a>Microsoft. Features
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. Features/Features/Read | Bir aboneliğin özelliklerini alır. |
 > | Action | Microsoft. Features/işlemler/okuma | İşlem listesini alır. |
-> | Action | Microsoft. Özellikler/sağlayıcılar/Özellikler/okuma | Belirli bir kaynak sağlayıcısındaki bir aboneliğin özelliğini alır. |
-> | Action | Microsoft. Özellikler/sağlayıcılar/Özellikler/kaydet/eylem | Bir abonelik için özelliği belirli bir kaynak sağlayıcısına kaydeder. |
-> | Action | Microsoft. Özellikler/sağlayıcılar/Özellikler/kayıt kaldırma/eylem | Belirli bir kaynak sağlayıcısındaki bir aboneliğin özelliğinin kaydını siler. |
+> | Action | Microsoft. Özellikler/sağlayıcılar/Özellikler/okuma | Belirli bir kaynak sağlayıcısındaki bir abonelik özelliğini alır. |
+> | Action | Microsoft. Özellikler/sağlayıcılar/Özellikler/kaydet/eylem | Belirli bir kaynak sağlayıcısındaki bir abonelik özelliğini kaydeder. |
+> | Action | Microsoft. Özellikler/sağlayıcılar/Özellikler/kayıt kaldırma/eylem | Belirtilen bir kaynak sağlayıcısındaki bir abonelik özelliğinin kaydını siler. |
 > | Action | Microsoft. Features/Register/Action | Bir aboneliğin özelliğini kaydeder. |
 
 ## <a name="microsoftguestconfiguration"></a>Microsoft. GuestConfiguration
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. GuestConfiguration/Guestconfigurationatamaları/silme | Konuk yapılandırma atamasını silin. |
 > | Action | Microsoft. GuestConfiguration/Guestconfigurationatamaları/okuma | Konuk yapılandırma atamasını al. |
@@ -2634,7 +2634,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. HDInsight/kümeler/uygulamalar/Sil | HDInsight kümesi için uygulamayı silme |
 > | Action | Microsoft. HDInsight/kümeler/uygulamalar/okuma | HDInsight kümesi için uygulama al |
@@ -2653,12 +2653,12 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 > | Action | Microsoft. HDInsight/kümeler/updateGatewaySettings/Action | HDInsight kümesi için ağ geçidi ayarlarını güncelleştirme |
 > | Action | Microsoft. HDInsight/kümeler/yazma | HDInsight kümesi oluşturma veya güncelleştirme |
 > | Action | Microsoft. HDInsight/konumlar/yetenekler/okuma | Abonelik yeteneklerini al |
-> | Action | Microsoft. HDInsight/Locations/Checknameavaılabılıty/Read | Ad kullanılabilirliğini denetle |
+> | Action | Microsoft. HDInsight/Locations/Checknameavaılabılıty/Read | Ad Kullanılabilirliğini Denetle |
 
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. ımportexport/işler/Sil | Var olan bir işi siler. |
 > | Action | Microsoft. ımportexport/Jobs/listBitLockerKeys/Action | Belirtilen iş için BitLocker anahtarlarını alır. |
@@ -2670,284 +2670,284 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftinsights"></a>Microsoft.Insights
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
-> | Action | Microsoft. Insights/ActionGroups/Delete | Bir eylem grubunu silme |
+> | Action | Microsoft. Insights/ActionGroups/Delete | Bir eylem grubunu silin |
 > | Action | Microsoft. Insights/ActionGroups/Read | Bir eylem grubunu okuyun |
 > | Action | Microsoft. Insights/ActionGroups/Write | Bir eylem grubu oluşturun veya güncelleştirin |
-> | Action | Microsoft. Insights/ActivityLogAlerts/etkin/eylem | Etkinlik günlüğü uyarısı etkinleştirildi |
-> | Action | Microsoft. Insights/ActivityLogAlerts/Delete | Etkinlik günlüğü uyarısını silme |
-> | Action | Microsoft. Insights/ActivityLogAlerts/Read | Etkinlik günlüğü uyarısını okuma |
-> | Action | Microsoft. Insights/ActivityLogAlerts/Write | Etkinlik günlüğü uyarısı oluşturma veya güncelleştirme |
+> | Action | Microsoft. Insights/ActivityLogAlerts/etkin/eylem | Etkinlik Günlüğü Uyarısı etkinleştirildi |
+> | Action | Microsoft. Insights/ActivityLogAlerts/Delete | Bir etkinlik günlüğü uyarısını silin |
+> | Action | Microsoft. Insights/ActivityLogAlerts/Read | Bir etkinlik günlüğü uyarısını okuyun |
+> | Action | Microsoft. Insights/ActivityLogAlerts/Write | Bir etkinlik günlüğü uyarısı oluşturun veya güncelleştirin |
 > | Action | Microsoft. Insights/AlertRules/Activated/eylem | Klasik ölçüm uyarısı etkinleştirildi |
-> | Action | Microsoft. Insights/AlertRules/Delete | Klasik ölçüm uyarısını silme |
-> | Action | Microsoft. Insights/AlertRules/olaylar/okuma | Klasik ölçüm uyarısı olayını okuyun |
-> | Action | Microsoft. Insights/AlertRules/Read | Klasik ölçüm uyarısını okuyun |
+> | Action | Microsoft. Insights/AlertRules/Delete | Bir klasik ölçüm uyarısını silin |
+> | Action | Microsoft. Insights/AlertRules/olaylar/okuma | Bir klasik ölçüm uyarısı olayını okuyun |
+> | Action | Microsoft. Insights/AlertRules/Read | Bir klasik ölçüm uyarısını okuyun |
 > | Action | Microsoft. Insights/AlertRules/çözüldü/Action | Klasik ölçüm uyarısı çözümlendi |
-> | Action | Microsoft. Insights/AlertRules/kısıt/eylem | Klasik ölçüm uyarı kuralı kısıtlandı |
-> | Action | Microsoft. Insights/AlertRules/Write | Klasik ölçüm uyarısı oluşturma veya güncelleştirme |
-> | Action | Microsoft. Insights/oto Scalesettings/Delete | Otomatik ölçeklendirme ayarını silme |
-> | Action | Microsoft. Insights/oto Scalesettings/Providers/Microsoft. Insights/diagnosticSettings/Read | Kaynak tanılama ayarını oku |
-> | Action | Microsoft. Insights/oto Scalesettings/Providers/Microsoft. Insights/diagnosticSettings/Write | Kaynak tanılama ayarı oluştur veya güncelleştir |
+> | Action | Microsoft. Insights/AlertRules/kısıt/eylem | Klasik ölçüm uyarısı kuralı kısıtlandı |
+> | Action | Microsoft. Insights/AlertRules/Write | Bir klasik ölçüm uyarısı oluşturun veya güncelleştirin |
+> | Action | Microsoft. Insights/oto Scalesettings/Delete | Bir otomatik ölçeklendirme ayarını silin |
+> | Action | Microsoft. Insights/oto Scalesettings/Providers/Microsoft. Insights/diagnosticSettings/Read | Bir kaynak tanılama ayarını okuyun |
+> | Action | Microsoft. Insights/oto Scalesettings/Providers/Microsoft. Insights/diagnosticSettings/Write | Bir kaynak tanılama ayarı oluşturun veya güncelleştirin |
 > | Action | Microsoft. Insights/oto Scalesettings/Providers/Microsoft. Insights/logDefinitions/Read | Günlük tanımlarını oku |
 > | Action | Microsoft. Insights/oto Scalesettings/Providers/Microsoft. Insights/MetricDefinitions/Read | Ölçüm tanımlarını oku |
-> | Action | Microsoft. Insights/oto Scalesettings/Read | Otomatik ölçeklendirme ayarını oku |
-> | Action | Microsoft. Insights/oto Scalesettings/Scaleaşağı/Action | Otomatik ölçeklendirme ölçeği azaltma başlatıldı |
-> | Action | Microsoft. Insights/oto Scalesettings/ScaledownResult/Action | Otomatik ölçeklendirme ölçeği azaltma tamamlandı |
-> | Action | Microsoft. Insights/oto Scalesettings/Scaleup/Action | Otomatik ölçeklendirme ölçeği artırma başlatıldı |
-> | Action | Microsoft. Insights/oto Scalesettings/ScaleupResult/Action | Otomatik ölçeklendirme ölçeği tamamlandı |
-> | Action | Microsoft. Insights/oto Scalesettings/Write | Otomatik ölçeklendirme ayarı oluşturma veya güncelleştirme |
-> | Action | Microsoft. Öngörüler/taban çizgisi/okuma | Ölçüm temelini okuma (Önizleme) |
-> | Action | Microsoft. Insights/CalculateBaseline/Read | Ölçüm değerleri için taban çizgisini hesapla (Önizleme) |
-> | Action | Microsoft. Insights/bileşenler/analiz Ticsitems/Delete | Application Insights Analytics öğesini silme |
-> | Action | Microsoft. Insights/bileşenler/analiz Ticsitems/okuma | Application Insights Analytics öğesi okunuyor |
-> | Action | Microsoft. Insights/bileşenler/analiz Ticsitems/yazma | Application Insights Analytics öğesi yazma |
-> | Action | Microsoft. Insights/bileşenler/analiz Ticstables/Action | Application Insights Analytics tablo eylemi |
-> | Action | Microsoft. Insights/bileşenler/analiz Ticstables/Delete | Application Insights Analytics tablo şemasını silme |
-> | Action | Microsoft. Insights/bileşenler/analiz Ticstables/Read | Application Insights Analytics tablo şemasını okuma |
-> | Action | Microsoft. Insights/bileşenler/analiz Ticstables/Write | Application Insights Analytics tablo şeması yazma |
-> | Action | Microsoft. Insights/bileşenler/ek açıklamalar/Sil | Application Insights ek açıklaması silme |
-> | Action | Microsoft. Insights/bileşenler/ek açıklamalar/okuma | Application Insights ek açıklaması okunuyor |
-> | Action | Microsoft. Insights/bileşenler/ek açıklamalar/yazma | Application Insights ek açıklaması yazma |
-> | Action | Microsoft. Insights/bileşenler/API/okuma | Application Insights bileşen verileri API 'SI okunuyor |
-> | Action | Microsoft. Insights/bileşenler/ApiKeys/ACTION | Application Insights API anahtarı oluşturma |
-> | Action | Microsoft. Insights/bileşenler/ApiKeys/Delete | Application Insights API anahtarını silme |
-> | Action | Microsoft. Insights/bileşenler/ApiKeys/Read | Application Insights API anahtarı okunuyor |
-> | Action | Microsoft. Insights/bileşenler/BillingPlanForComponent/Read | Application Insights bileşeni için faturalandırma planı okunuyor |
-> | Action | Microsoft. Insights/bileşenler/CurrentBillingFeatures/Read | Application Insights bileşeni için geçerli faturalandırma özellikleri okunuyor |
-> | Action | Microsoft. Insights/bileşenler/CurrentBillingFeatures/Write | Application Insights bileşeni için geçerli faturalandırma özellikleri yazılıyor |
-> | Action | Microsoft. Insights/Components/Defaultworkıtemconfig/Read | Application Insights varsayılan bir ALM tümleştirme yapılandırması okunuyor |
+> | Action | Microsoft. Insights/oto Scalesettings/Read | Bir otomatik ölçeklendirme ayarını okuyun |
+> | Action | Microsoft. Insights/oto Scalesettings/Scaleaşağı/Action | Otomatik ölçeklendirme ölçeği azaltma işlemi başlatıldı |
+> | Action | Microsoft. Insights/oto Scalesettings/ScaledownResult/Action | Otomatik ölçeklendirme ölçeği azaltma işlemi tamamlandı |
+> | Action | Microsoft. Insights/oto Scalesettings/Scaleup/Action | Otomatik ölçeklendirme ölçeği artırma işlemi başlatıldı |
+> | Action | Microsoft. Insights/oto Scalesettings/ScaleupResult/Action | Otomatik ölçeklendirme ölçeği artırma işlemi tamamlandı |
+> | Action | Microsoft. Insights/oto Scalesettings/Write | Bir otomatik ölçeklendirme ayarı oluşturun veya güncelleştirin |
+> | Action | Microsoft. Öngörüler/taban çizgisi/okuma | Ölçüm temelini oku (önizleme) |
+> | Action | Microsoft. Insights/CalculateBaseline/Read | Ölçüm değerleri için temeli hesapla (önizleme) |
+> | Action | Microsoft. Insights/bileşenler/analiz Ticsitems/Delete | Bir Application Insights analitik öğesini silme |
+> | Action | Microsoft. Insights/bileşenler/analiz Ticsitems/okuma | Bir Application Insights analitik öğesini okuma |
+> | Action | Microsoft. Insights/bileşenler/analiz Ticsitems/yazma | Bir Application Insights analitik öğesinin yazma |
+> | Action | Microsoft. Insights/bileşenler/analiz Ticstables/Action | Application Insights analitik tablosu eylemi |
+> | Action | Microsoft. Insights/bileşenler/analiz Ticstables/Delete | Bir Application Insights analitik tablo şemasını silme |
+> | Action | Microsoft. Insights/bileşenler/analiz Ticstables/Read | Bir Application Insights analitik tablo şemasını okuma |
+> | Action | Microsoft. Insights/bileşenler/analiz Ticstables/Write | Bir Application Insights analitik tablo şemasını yazma |
+> | Action | Microsoft. Insights/bileşenler/ek açıklamalar/Sil | Bir Application Insights ek açıklamasını silme |
+> | Action | Microsoft. Insights/bileşenler/ek açıklamalar/okuma | Bir Application Insights ek açıklamasını okuma |
+> | Action | Microsoft. Insights/bileşenler/ek açıklamalar/yazma | Bir Application Insights ek açıklamasını yazma |
+> | Action | Microsoft. Insights/bileşenler/API/okuma | Application Insights bileşen verileri API'sini okuma |
+> | Action | Microsoft. Insights/bileşenler/ApiKeys/ACTION | Bir Application Insights API anahtarını oluşturma |
+> | Action | Microsoft. Insights/bileşenler/ApiKeys/Delete | Bir Application Insights API anahtarını silme |
+> | Action | Microsoft. Insights/bileşenler/ApiKeys/Read | Bir Application Insights API anahtarını okuma |
+> | Action | Microsoft. Insights/bileşenler/BillingPlanForComponent/Read | Application Insights bileşeni için bir faturalama planını okuma |
+> | Action | Microsoft. Insights/bileşenler/CurrentBillingFeatures/Read | Application Insights bileşeninin geçerli faturalama özelliklerini okuma |
+> | Action | Microsoft. Insights/bileşenler/CurrentBillingFeatures/Write | Application Insights bileşeninin geçerli faturalama özelliklerini yazma |
+> | Action | Microsoft. Insights/Components/Defaultworkıtemconfig/Read | Application Insights varsayılan ALM tümleştirmesinin yapılandırmasını okuma |
 > | Action | Microsoft. Insights/bileşenler/Sil | Bir Application Insights bileşen yapılandırmasını silme |
-> | Action | Microsoft. Insights/bileşenler/olaylar/okuma | OData sorgu biçimini kullanarak Application Insights günlükleri al |
-> | Action | Microsoft. Insights/bileşenler/ExportConfiguration/eylem | Ayarları dışarı aktarma eylemi Application Insights |
-> | Action | Microsoft. Insights/bileşenler/ExportConfiguration/Delete | Application Insights dışarı aktarma ayarları siliniyor |
-> | Action | Microsoft. Insights/bileşenler/ExportConfiguration/Read | Application Insights dışarı aktarma ayarları okunuyor |
-> | Action | Microsoft. Insights/bileşenler/ExportConfiguration/Write | Application Insights dışarı aktarma ayarları yazılıyor |
-> | Action | Microsoft. Insights/bileşenler/ExtendQueries/Read | Application Insights bileşeni genişletilmiş sorgu sonuçları okunuyor |
-> | Action | Microsoft. Insights/bileşenler/sık kullanılanlar/Sil | Application Insights sık kullanılanı silme |
-> | Action | Microsoft. Insights/bileşenler/sık kullanılanlar/okuma | Sık kullanılan Application Insights okuma |
-> | Action | Microsoft. Insights/bileşenler/sık kullanılanlar/yaz | Sık kullanılan Application Insights yazma |
-> | Action | Microsoft. Insights/bileşenler/FeatureCapabilities/okuma | Application Insights bileşen özelliği özelliklerini okuma |
+> | Action | Microsoft. Insights/bileşenler/olaylar/okuma | OData sorgu biçimini kullanarak Application Insights'tan günlük al |
+> | Action | Microsoft. Insights/bileşenler/ExportConfiguration/eylem | Application Insights dışa aktarım ayarları eylemi |
+> | Action | Microsoft. Insights/bileşenler/ExportConfiguration/Delete | Application Insights dışa aktarma ayarlarını silme |
+> | Action | Microsoft. Insights/bileşenler/ExportConfiguration/Read | Application Insights dışa aktarma ayarlarını okuma |
+> | Action | Microsoft. Insights/bileşenler/ExportConfiguration/Write | Application Insights dışa aktarma ayarlarını yazma |
+> | Action | Microsoft. Insights/bileşenler/ExtendQueries/Read | Application Insights bileşeninin genişletilmiş sorgu sonuçlarını okuma |
+> | Action | Microsoft. Insights/bileşenler/sık kullanılanlar/Sil | Application Insights sık kullanılanını silme |
+> | Action | Microsoft. Insights/bileşenler/sık kullanılanlar/okuma | Application Insights sık kullanılanını okuma |
+> | Action | Microsoft. Insights/bileşenler/sık kullanılanlar/yaz | Application Insights sık kullanılanını yazma |
+> | Action | Microsoft. Insights/bileşenler/FeatureCapabilities/okuma | Application Insights bileşeni özellik yeteneklerini okuma |
 > | Action | Microsoft. Insights/bileşenler/GetAvailableBillingFeatures/Read | Application Insights bileşeni kullanılabilir faturalama özelliklerini okuma |
-> | Action | Microsoft. Insights/bileşenler/GetToken/Read | Application Insights bileşen belirtecini okuma |
-> | Action | Microsoft. Insights/bileşenler/MetricDefinitions/okuma | Application Insights bileşeni ölçüm tanımlarını okuma |
+> | Action | Microsoft. Insights/bileşenler/GetToken/Read | Bir Application Insights bileşeni belirteci |
+> | Action | Microsoft. Insights/bileşenler/MetricDefinitions/okuma | Application Insights bileşen ölçüm tanımlarını okuma |
 > | Action | Microsoft. Insights/bileşenler/ölçümler/okuma | Application Insights bileşen ölçümlerini okuma |
-> | Action | Microsoft. Öngörüler/bileşenler/taşıma/eylem | Application Insights bileşenini başka bir kaynak grubuna veya aboneliğe taşıma |
-> | Action | Microsoft. Insights/bileşenler/MyAnalyticsItems/Delete | Application Insights kişisel analiz öğesini silme |
-> | Action | Microsoft. Insights/bileşenler/MyAnalyticsItems/Read | Application Insights kişisel analitik öğesini okuma |
-> | Action | Microsoft. Insights/bileşenler/MyAnalyticsItems/Write | Application Insights kişisel analiz öğesi yazma |
-> | Action | Microsoft. Insights/bileşenler/MyFavorites/Read | Application Insights kişisel sık kullanılanı okuma |
-> | Action | Microsoft. Insights/bileşenler/Işlemler/okuma | Application Insights uzun süren işlemlerin durumunu al |
-> | Action | Microsoft. Insights/bileşenler/Pricingplanlar/okuma | Application Insights bileşen fiyatlandırma planı okunuyor |
-> | Action | Microsoft. Insights/bileşenler/Pricingplanlar/yazma | Application Insights bileşen fiyatlandırma planı yazma |
-> | Action | Microsoft. Insights/bileşenler/ProactiveDetectionConfigs/Read | Proaktif algılama yapılandırmasını okuma Application Insights |
-> | Action | Microsoft. Insights/bileşenler/ProactiveDetectionConfigs/Write | Proaktif algılama yapılandırması yazma Application Insights |
+> | Action | Microsoft. Öngörüler/bileşenler/taşıma/eylem | Bir Application Insights Bileşenini başka bir kaynak grubu veya aboneliğe taşıyın |
+> | Action | Microsoft. Insights/bileşenler/MyAnalyticsItems/Delete | Bir Application Insights kişisel analitik öğesini silme |
+> | Action | Microsoft. Insights/bileşenler/MyAnalyticsItems/Read | Bir Application Insights kişisel analitik öğesini okuma |
+> | Action | Microsoft. Insights/bileşenler/MyAnalyticsItems/Write | Bir Application Insights kişisel analitik öğesini yazma |
+> | Action | Microsoft. Insights/bileşenler/MyFavorites/Read | Bir Application Insights kişisel sık kullanılanını okuma |
+> | Action | Microsoft. Insights/bileşenler/Işlemler/okuma | Application Insights'ta uzun süren işlemlerin durumunu al |
+> | Action | Microsoft. Insights/bileşenler/Pricingplanlar/okuma | Bir Application Insights bileşen fiyatlandırma planını okuma |
+> | Action | Microsoft. Insights/bileşenler/Pricingplanlar/yazma | Bir Application Insights bileşen fiyatlandırma planını yazma |
+> | Action | Microsoft. Insights/bileşenler/ProactiveDetectionConfigs/Read | Bir Application Insights proaktif algılama yapılandırmasını okuma |
+> | Action | Microsoft. Insights/bileşenler/ProactiveDetectionConfigs/Write | Bir Application Insights proaktif algılama yapılandırmasını yazma |
 > | Action | Microsoft. Insights/bileşenler/sağlayıcılar/Microsoft. Insights/MetricDefinitions/okuma | Ölçüm tanımlarını oku |
-> | Action | Microsoft. Insights/bileşenler/Temizleme/eylem | Application Insights verileri temizleme |
-> | Action | Microsoft. Insights/bileşenler/sorgu/okuma | Sorguları Application Insights günlüklere göre Çalıştır |
-> | Action | Microsoft. Insights/bileşenler/QuotaStatus/Read | Application Insights bileşen kota durumu okunuyor |
+> | Action | Microsoft. Insights/bileşenler/Temizleme/eylem | Application Insights verilerini temizleme |
+> | Action | Microsoft. Insights/bileşenler/sorgu/okuma | Application Insights günlüklerine karşı sorgu çalıştır |
+> | Action | Microsoft. Insights/bileşenler/QuotaStatus/Read | Application Insights bileşen kotasının durumunu okuma |
 > | Action | Microsoft. Insights/bileşenler/okuma | Bir Application Insights bileşen yapılandırmasını okuma |
-> | Action | Microsoft. Insights/bileşenler/SyntheticMonitorLocations/Read | Application Insights WebTest konumlarını okuma |
-> | Action | Microsoft. Insights/bileşenler/Web testleri/okuma | Bir WebTest yapılandırmasını okuma |
-> | Action | Microsoft. Insights/bileşenler/Workıtemconfigs/Delete | Application Insights ALM tümleştirme yapılandırmasını silme |
-> | Action | Microsoft. Insights/bileşenler/Workıtemconfigs/Read | Application Insights ALM tümleştirme yapılandırmasını okuma |
-> | Action | Microsoft. Insights/bileşenler/Workıtemconfigs/Write | Application Insights ALM tümleştirme yapılandırması yazma |
+> | Action | Microsoft. Insights/bileşenler/SyntheticMonitorLocations/Read | Application Insights web testi konumlarını okuma |
+> | Action | Microsoft. Insights/bileşenler/Web testleri/okuma | Bir web testi yapılandırmasını okuma |
+> | Action | Microsoft. Insights/bileşenler/Workıtemconfigs/Delete | Bir Application Insights ALM tümleştirmesinin yapılandırmasını silme |
+> | Action | Microsoft. Insights/bileşenler/Workıtemconfigs/Read | Application Insights ALM tümleştirme yapılandırması |
+> | Action | Microsoft. Insights/bileşenler/Workıtemconfigs/Write | Bir Application Insights ALM tümleştirmesinin yapılandırmasını yazma |
 > | Action | Microsoft. Insights/bileşenler/yazma | Bir Application Insights bileşen yapılandırmasına yazma |
-> | Action | Microsoft. Insights/DiagnosticSettings/Delete | Kaynak tanılama ayarını silme |
-> | Action | Microsoft. Insights/DiagnosticSettings/Read | Kaynak tanılama ayarını oku |
-> | Action | Microsoft. Insights/DiagnosticSettings/Write | Kaynak tanılama ayarı oluştur veya güncelleştir |
-> | Action | Microsoft. Insights/EventCategories/okuma | Kullanılabilir etkinlik günlüğü olay kategorilerini oku |
+> | Action | Microsoft. Insights/DiagnosticSettings/Delete | Bir kaynak tanılama ayarını silin |
+> | Action | Microsoft. Insights/DiagnosticSettings/Read | Bir kaynak tanılama ayarını okuyun |
+> | Action | Microsoft. Insights/DiagnosticSettings/Write | Bir kaynak tanılama ayarı oluşturun veya güncelleştirin |
+> | Action | Microsoft. Insights/EventCategories/okuma | Kullanılabilir Etkinlik Günlüğü olay kategorilerini okuyun |
 > | Action | Microsoft. Insights/eventTypes/digestevents/Read | Yönetim olayı türü özetini oku |
-> | Action | Microsoft. Insights/eventTypes/Values/Read | Etkinlik günlüğü olaylarını oku |
-> | Action | Microsoft. Insights/ExtendedDiagnosticSettings/Delete | Ağ akışı günlük tanılama ayarını silme |
-> | Action | Microsoft. Insights/ExtendedDiagnosticSettings/Read | Ağ akışı günlük tanılama ayarını oku |
-> | Action | Microsoft. Insights/ExtendedDiagnosticSettings/Write | Ağ akışı günlük tanılama ayarını oluşturma veya güncelleştirme |
-> | Action | Microsoft. Insights/ListMigrationDate/Action | Abonelik geçiş tarihini geri al |
-> | Action | Microsoft. Insights/ListMigrationDate/Read | Abonelik geçiş tarihini geri al |
+> | Action | Microsoft. Insights/eventTypes/Values/Read | Etkinlik Günlüğü etkinliklerini okuyun |
+> | Action | Microsoft. Insights/ExtendedDiagnosticSettings/Delete | Bir ağ akışı günlük tanılama ayarını silin |
+> | Action | Microsoft. Insights/ExtendedDiagnosticSettings/Read | Bir ağ akışı günlük tanılama ayarını okuyun |
+> | Action | Microsoft. Insights/ExtendedDiagnosticSettings/Write | Bir ağ akışı günlük tanılama ayarı oluşturun veya güncelleştirin |
+> | Action | Microsoft. Insights/ListMigrationDate/Action | Abonelik geçiş tarihini geri alın |
+> | Action | Microsoft. Insights/ListMigrationDate/Read | Abonelik geçiş tarihini geri alın |
 > | Action | Microsoft. Insights/LogDefinitions/okuma | Günlük tanımlarını oku |
-> | Action | Microsoft. Insights/günlüğe profiller/Sil | Etkinlik günlüğü günlük profilini silme |
-> | Action | Microsoft. Insights/günlüğe profiller/okuma | Etkinlik günlüğü günlük profilini okuyun |
-> | Action | Microsoft. Insights/günlüğe profiller/yazma | Etkinlik günlüğü günlük profili oluşturma veya güncelleştirme |
-> | Action | Microsoft. Insights/logs/Adassessmentönerisi/okuma | Adassessmentöneriyi tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/ADReplicationResult/Read | ADReplicationResult tablosundan verileri oku |
-> | Action | Microsoft. Insights/logs/Adsecurityassessmentönerisi/okuma | Adsecurityassessmentönerisi tablosundan verileri okuma |
-> | Action | Microsoft. Öngörüler/Günlükler/uyarı/okuma | Uyarı tablosundan verileri oku |
-> | Action | Microsoft. Öngörüler/Günlükler/AlertHistory/Read | AlertHistory tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/ApplicationInsights/Read | ApplicationInsights tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/AzureActivity/Read | AzureActivity tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/AzureMetrics/Read | AzureMetrics tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/BoundPort/Read | BoundPort tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/CommonSecurityLog/Read | CommonSecurityLog tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/ComputerGroup/Read | ComputerGroup tablosundan verileri okuma |
-> | Action | Microsoft. Öngörüler/Günlükler/ConfigurationChange/Read | ConfigurationChange tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/ConfigurationData/Read | ConfigurationData tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/Containerımageınventory/Read | Containerımageınventory tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/Containerınventory/Read | Containerınventory tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/ContainerLog/Read | ContainerLog tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/ContainerServiceLog/Read | ContainerServiceLog tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/Deviceappkilitleniyor/Read | DeviceAppCrash tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/Deviceapplayeniden Başlat/oku | Deviceapplayeniden Başlat tablosundan verileri okuma |
-> | Action | Microsoft. Öngörüler/Günlükler/DeviceCalendar/okuma | DeviceCalendar tablosundan verileri okuma |
-> | Action | Microsoft. Öngörüler/Günlükler/Devicectaanup/okuma | Devicectaanup tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/DeviceConnectSession/Read | DeviceConnectSession tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/DeviceEtw/okuma | DeviceEtw tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/DeviceHardwareHealth/Read | DeviceHardwareHealth tablosundan verileri okuma |
-> | Action | Microsoft. Öngörüler/Günlükler/DeviceHealth/okuma | DeviceHealth tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/Devicesinyal/okuma | Devicesinyal tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/DeviceSkypeHeartbeat/Read | DeviceSkypeHeartbeat tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/DeviceSkypeSignIn/Read | DeviceSkypeSignIn tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/Devicestaepstate/Read | Devicestaepstate tablosundan verileri okuma |
-> | Action | Microsoft. Öngörüler/Günlükler/Dnne hatası/okuma | Dılure tablosundan verileri oku |
-> | Action | Microsoft. Insights/logs/Dakppresorumluluğun/okunan | Dappreyükümlülük tablosundan verileri oku |
-> | Action | Microsoft. Insights/logs/Dhdrivergüvenilirlik/okuma | Dhdrivergüvenirlik tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/Dhlogonbaşarısızlıkları/okuma | Dhlogonarızaları tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/Dhlogonölçümler/okuma | Dhlogonölçümlerini tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/Dhoatık Kıdata/Read | Dhoatık verileri tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/Dhosgüvenilirliği/okuma | Dhosgüvenirlik tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/DHWipAppLearning/Read | DHWipAppLearning tablosundan verileri okuma |
-> | Action | Microsoft. Öngörüler/Günlükler/DnsEvents/okuma | DnsEvents tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/Dnsınventory/Read | DnsInventory tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/Etwewevent/Read | ETWEvent tablosundan verileri okuma |
-> | Action | Microsoft. Öngörüler/Günlükler/olay/okuma | Olay tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/ExchangeAssessmentRecommendation/Read | ExchangeAssessmentRecommendation tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/ExchangeOnlineAssessmentRecommendation/Read | ExchangeOnlineAssessmentRecommendation tablosundan verileri okuma |
-> | Action | Microsoft. Öngörüler/Günlükler/sinyal/okuma | Sinyal tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/IISAssessmentRecommendation/Read | IISAssessmentRecommendation tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/ınboundconnection/Read | Inboundconnection tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/Kubenodeınventory/Read | Kubenodeınventory tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/Kubepodinvenfer/Read | KubePodInventory tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/LinuxAuditLog/Read | LinuxAuditLog tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/MAApplication/Read | MAApplication tablosundan verileri okuma |
-> | Action | Microsoft. Öngörüler/Günlükler/MAApplicationHealth/Read | MAApplicationHealth tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/MAApplicationHealthAlternativeVersions/Read | MAApplicationHealthAlternativeVersions tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/Maapplicationhealthsorunlar/okuma | Maapplicationhealthsorunlar tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/Maapplicationınstance/Read | Maapplicationınstance tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/Maapplicationınstancereadsürekliliği/okuma | Maapplicationınstancereadılmi tablosundan verileri okuma |
-> | Action | Microsoft. Öngörüler/Günlükler/MAApplicationReadiness/Read | MAApplicationReadiness tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/MADeploymentPlan/okuma | MADeploymentPlan tablosundan verileri okuma |
-> | Action | Microsoft. Insights/Günlükler/MADevice/okuma | MADevice tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/MADevicePnPHealth/Read | MADevicePnPHealth tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/MADevicePnPHealthAlternativeVersions/Read | MADevicePnPHealthAlternativeVersions tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/Madevicepnphealthsorunlar/okuma | Madevicepnphealthsorunlar tablosundan verileri okuma |
-> | Action | Microsoft. Öngörüler/Günlükler/Madevicereadsürekliliği/okuma | Madevicereadtıo tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/Madriverınstancereadsürekliliği/okuma | Madriverınstancereadılmi tablosundan verileri oku |
-> | Action | Microsoft. Öngörüler/Günlükler/MADriverReadiness/Read | MADriverReadiness tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/Maofficeeklentisi/okuma | Maofficeeklenti tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/Maofficeaddınhealth/Read | Maofficeaddınhealth tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/Maofficeaddınhealthsorunlar/okuma | Maofficeaddınhealthsorunlar tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/Maofficeaddınınstance/Read | Maofficeaddınınstance tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/Maofficeaddınınstancereadsürekliliği/okuma | Maofficeaddınınstancereadılmi tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/Maofficeaddınreadiness/Read | Maofficeaddınreadiness tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/Maofficeuygulaması/okuma | Maofficeuygulama tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/MAOfficeAppHealth/Read | MAOfficeAppHealth tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/Maofficeappınstance/Read | Maofficeappınstance tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/MAOfficeAppReadiness/Read | MAOfficeAppReadiness tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/Maofficebuilınfo/Read | Maofficebuilınfo tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/MAOfficeCurrencyAssessment/Read | MAOfficeCurrencyAssessment tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/MAOfficeCurrencyAssessmentDailyCounts/Read | MAOfficeCurrencyAssessmentDailyCounts tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/MAOfficeDeploymentStatus/Read | MAOfficeDeploymentStatus tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/Maofficemakrosağlığı/okuma | Maofficemakrohealth tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/Maofficemakrohealthsorunlar/okuma | Maofficemacrohealthsorunlar tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/Maofficemakroıssueınstancereadsürekliliği/okuma | Maofficemacroıssueınstancectablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/Maofficemakroıssuereadsürekliliği/okuma | Maofficemacroıssuereadılmi tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/Maofficemakroözeti/okuma | MAOfficeMacroSummary tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/MAOfficeSuite/Read | MAOfficeSuite tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/Maofficesuiteınstance/Read | Maofficesuiteınstance tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/MAProposedPilotDevices/Read | MAProposedPilotDevices tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/Mawindowsbuilınfo/Read | Mawindowsbuilınfo tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/Mawindowscurrencki/Read | Mawindowscurrencyaskment tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/Mawindowscurrencyassessmentgünlükcounts/okuma | MAWindowsCurrencyAssessmentDailyCounts tablosundan verileri oku |
-> | Action | Microsoft. Insights/logs/MAWindowsDeploymentStatus/Read | MAWindowsDeploymentStatus tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/Mawindowssysreqınstancereadsürekliliği/okuma | Mawindowssysreqınstancereadtıı tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/NetworkMonitoring/Read | NetworkMonitoring tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/Officeetkinliği/okuma | OfficeActivity tablosundan verileri okuma |
-> | Action | Microsoft. Öngörüler/Günlükler/Işlem/okuma | Işlem tablosundan verileri oku |
-> | Action | Microsoft. Insights/logs/OutboundConnection/Read | OutboundConnection tablosundan verileri okuma |
-> | Action | Microsoft. Öngörüler/Günlükler/perf/okuma | Perf tablosundan verileri oku |
-> | Action | Microsoft. Öngörüler/Günlükler/ProtectionStatus/Read | ProtectionStatus tablosundan verileri okuma |
+> | Action | Microsoft. Insights/günlüğe profiller/Sil | Bir Etkinlik Günlüğü günlük profilini silin |
+> | Action | Microsoft. Insights/günlüğe profiller/okuma | Bir Etkinlik Günlüğü günlük profilini okuyun |
+> | Action | Microsoft. Insights/günlüğe profiller/yazma | Bir Etkinlik Günlüğü günlük profili oluşturun veya güncelleştirin |
+> | Action | Microsoft. Insights/logs/Adassessmentönerisi/okuma | ADAssessmentRecommendation tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/ADReplicationResult/Read | ADReplicationResult tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Adsecurityassessmentönerisi/okuma | ADSecurityAssessmentRecommendation tablosundan veri oku |
+> | Action | Microsoft. Öngörüler/Günlükler/uyarı/okuma | Alert tablosundan veri oku |
+> | Action | Microsoft. Öngörüler/Günlükler/AlertHistory/Read | AlertHistory tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/ApplicationInsights/Read | ApplicationInsights tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/AzureActivity/Read | AzureActivity tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/AzureMetrics/Read | AzureMetrics tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/BoundPort/Read | BoundPort tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/CommonSecurityLog/Read | CommonSecurityLog tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/ComputerGroup/Read | ComputerGroup tablosundan veri oku |
+> | Action | Microsoft. Öngörüler/Günlükler/ConfigurationChange/Read | ConfigurationChange tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/ConfigurationData/Read | ConfigurationData tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Containerımageınventory/Read | ContainerImageInventory tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Containerınventory/Read | ContainerInventory tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/ContainerLog/Read | ContainerLog tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/ContainerServiceLog/Read | ContainerServiceLog tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Deviceappkilitleniyor/Read | DeviceAppCrash tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Deviceapplayeniden Başlat/oku | DeviceAppLaunch tablosundan veri oku |
+> | Action | Microsoft. Öngörüler/Günlükler/DeviceCalendar/okuma | DeviceCalendar tablosundan veri oku |
+> | Action | Microsoft. Öngörüler/Günlükler/Devicectaanup/okuma | DeviceCleanup tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/DeviceConnectSession/Read | DeviceConnectSession tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/DeviceEtw/okuma | DeviceEtw tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/DeviceHardwareHealth/Read | DeviceHardwareHealth tablosundan veri oku |
+> | Action | Microsoft. Öngörüler/Günlükler/DeviceHealth/okuma | DeviceHealth tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Devicesinyal/okuma | DeviceHeartbeat tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/DeviceSkypeHeartbeat/Read | DeviceSkypeHeartbeat tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/DeviceSkypeSignIn/Read | DeviceSkypeSignIn tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Devicestaepstate/Read | DeviceSleepState tablosundan veri oku |
+> | Action | Microsoft. Öngörüler/Günlükler/Dnne hatası/okuma | DHAppFailure tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Dakppresorumluluğun/okunan | DHAppReliability tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Dhdrivergüvenilirlik/okuma | DHDriverReliability tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Dhlogonbaşarısızlıkları/okuma | DHLogonFailures tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Dhlogonölçümler/okuma | DHLogonMetrics tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Dhoatık Kıdata/Read | DHOSCrashData tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Dhosgüvenilirliği/okuma | DHOSReliability tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/DHWipAppLearning/Read | DHWipAppLearning tablosundan veri oku |
+> | Action | Microsoft. Öngörüler/Günlükler/DnsEvents/okuma | DnsEvents tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Dnsınventory/Read | DnsInventory tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Etwewevent/Read | ETWEvent tablosundan veri oku |
+> | Action | Microsoft. Öngörüler/Günlükler/olay/okuma | Event tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/ExchangeAssessmentRecommendation/Read | ExchangeAssessmentRecommendation tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/ExchangeOnlineAssessmentRecommendation/Read | ExchangeOnlineAssessmentRecommendation tablosundan veri oku |
+> | Action | Microsoft. Öngörüler/Günlükler/sinyal/okuma | Hearbeat tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/IISAssessmentRecommendation/Read | IISAssessmentRecommendation tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/ınboundconnection/Read | InboundConnection tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Kubenodeınventory/Read | KubeNodeInventory tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Kubepodinvenfer/Read | KubePodInventory tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/LinuxAuditLog/Read | LinuxAuditLog tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/MAApplication/Read | MAApplication tablosundan veri oku |
+> | Action | Microsoft. Öngörüler/Günlükler/MAApplicationHealth/Read | MAApplicationHealth tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/MAApplicationHealthAlternativeVersions/Read | MAApplicationHealthAlternativeVersions tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Maapplicationhealthsorunlar/okuma | MAApplicationHealthIssues tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Maapplicationınstance/Read | MAApplicationInstance tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Maapplicationınstancereadsürekliliği/okuma | MAApplicationInstanceReadiness tablosundan veri oku |
+> | Action | Microsoft. Öngörüler/Günlükler/MAApplicationReadiness/Read | MAApplicationReadiness tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/MADeploymentPlan/okuma | MADeploymentPlan tablosundan veri oku |
+> | Action | Microsoft. Insights/Günlükler/MADevice/okuma | MADevice tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/MADevicePnPHealth/Read | MADevicePnPHealth tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/MADevicePnPHealthAlternativeVersions/Read | MADevicePnPHealthAlternativeVersions tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Madevicepnphealthsorunlar/okuma | MADevicePnPHealthIssues tablosundan veri oku |
+> | Action | Microsoft. Öngörüler/Günlükler/Madevicereadsürekliliği/okuma | MADeviceReadiness tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Madriverınstancereadsürekliliği/okuma | MADriverInstanceReadiness tablosundan veri oku |
+> | Action | Microsoft. Öngörüler/Günlükler/MADriverReadiness/Read | MADriverReadiness tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Maofficeeklentisi/okuma | MAOfficeAddin tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Maofficeaddınhealth/Read | MAOfficeAddinHealth tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Maofficeaddınhealthsorunlar/okuma | MAOfficeAddinHealthIssues tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Maofficeaddınınstance/Read | MAOfficeAddinInstance tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Maofficeaddınınstancereadsürekliliği/okuma | MAOfficeAddinInstanceReadiness tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Maofficeaddınreadiness/Read | MAOfficeAddinReadiness tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Maofficeuygulaması/okuma | MAOfficeApp tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/MAOfficeAppHealth/Read | MAOfficeAppHealth tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Maofficeappınstance/Read | MAOfficeAppInstance tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/MAOfficeAppReadiness/Read | MAOfficeAppReadiness tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Maofficebuilınfo/Read | MAOfficeBuildInfo tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/MAOfficeCurrencyAssessment/Read | MAOfficeCurrencyAssessment tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/MAOfficeCurrencyAssessmentDailyCounts/Read | MAOfficeCurrencyAssessmentDailyCounts tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/MAOfficeDeploymentStatus/Read | MAOfficeDeploymentStatus tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Maofficemakrosağlığı/okuma | MAOfficeMacroHealth tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Maofficemakrohealthsorunlar/okuma | MAOfficeMacroHealthIssues tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Maofficemakroıssueınstancereadsürekliliği/okuma | MAOfficeMacroIssueInstanceReadiness tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Maofficemakroıssuereadsürekliliği/okuma | MAOfficeMacroIssueReadiness tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Maofficemakroözeti/okuma | MAOfficeMacroSummary tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/MAOfficeSuite/Read | MAOfficeSuite tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Maofficesuiteınstance/Read | MAOfficeSuiteInstance tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/MAProposedPilotDevices/Read | MAProposedPilotDevices tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Mawindowsbuilınfo/Read | MAWindowsBuildInfo tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Mawindowscurrencki/Read | MAWindowsCurrencyAssessment tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Mawindowscurrencyassessmentgünlükcounts/okuma | MAWindowsCurrencyAssessmentDailyCounts tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/MAWindowsDeploymentStatus/Read | MAWindowsDeploymentStatus tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Mawindowssysreqınstancereadsürekliliği/okuma | MAWindowsSysReqInstanceReadiness tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/NetworkMonitoring/Read | NetworkMonitoring tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Officeetkinliği/okuma | OfficeActivity tablosundan veri oku |
+> | Action | Microsoft. Öngörüler/Günlükler/Işlem/okuma | Operation tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/OutboundConnection/Read | OutboundConnection tablosundan veri oku |
+> | Action | Microsoft. Öngörüler/Günlükler/perf/okuma | Perf tablosundan veri oku |
+> | Action | Microsoft. Öngörüler/Günlükler/ProtectionStatus/Read | ProtectionStatus tablosundan veri oku |
 > | Action | Microsoft. Öngörüler/Günlükler/okuma | Tüm günlüklerinizin verilerini okuma |
-> | Action | Microsoft. Insights/logs/ReservedAzureCommonFields/Read | ReservedAzureCommonFields tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/ReservedCommonFields/Read | ReservedCommonFields tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/Sccmassessmentönerisi/okuma | Sccmassessmentöneriyi tablosundan verileri okuma |
-> | Action | Microsoft. Öngörüler/Günlükler/Scomassessmentönerisi/okuma | Scomassessmentöneriyi tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/SecurityAlert/Read | SecurityAlert tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/SecurityBaseline/okuma | SecurityBaseline tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/SecurityBaselineSummary/okuma | SecurityBaselineSummary tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/SecurityDetection/okuma | SecurityDetection tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/SecurityEvent/Read | SecurityEvent tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/ServiceFabricOperationalEvent/Read | ServiceFabricOperationalEvent tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/ServiceFabricReliableActorEvent/Read | ServiceFabricReliableActorEvent tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/ServiceFabricReliableServiceEvent/Read | ServiceFabricReliableServiceEvent tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/Sfbassessmentönerisi/okuma | Sfbassessmentöneriyi tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/SfBOnlineAssessmentRecommendation/Read | SfBOnlineAssessmentRecommendation tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/SharePointOnlineAssessmentRecommendation/Read | SharePointOnlineAssessmentRecommendation tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/Spassessmentönerisi/okuma | Spassessmentöneriyi tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/Sqlassessmentönerisi/okuma | Sqlassessmentöneriyi tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/SQLQueryPerformance/Read | SQLQueryPerformance tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/Syslog/Read | Syslog tablosundan veri okuma |
-> | Action | Microsoft. Insights/logs/SysmonEvent/Read | SysmonEvent tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/UAApp/Read | UAApp tablosundan verileri okuma |
-> | Action | Microsoft. Öngörüler/Günlükler/Uabilgisayar/okuma | UAComputer tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/UAComputerRank/Read | Uıacomputerrank tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/UADriver/okuma | Uıadriver tablosundan verileri oku |
-> | Action | Microsoft. Insights/logs/UADriverProblemCodes/Read | Uıadriverproblemcodes tablosundan verileri oku |
-> | Action | Microsoft. Insights/logs/UAFeedback/Read | UAFeedback tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/UAHardwareSecurity/Read | Uıahardwaresecurity tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/Uaıesitediscovery/Read | Uıaııesitediscovery tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/Uaofficeeklentisi/okuma | Uıaofficeaddın tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/UAProposedActionPlan/Read | UAProposedActionPlan tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/Uasysreqıssue/Read | Uıasysreqıssue tablosundaki verileri oku |
-> | Action | Microsoft. Insights/logs/Uayükseltilebilir Dedcomputer/Read | Uayükseltilebilir Dedcomputer tablosundan verileri okuma |
-> | Action | Microsoft. Öngörüler/Günlükler/güncelleştirme/okuma | Güncelleştirme tablosundan verileri oku |
-> | Action | Microsoft. Öngörüler/Günlükler/UpdateRunProgress/Read | UpdateRunProgress tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/UpdateSummary/Read | UpdateSummary tablosundan verileri oku |
-> | Action | Microsoft. Öngörüler/Günlükler/kullanım/okuma | Kullanım tablosundan verileri oku |
-> | Action | Microsoft. Insights/logs/W3CIISLog/Read | W3CIISLog tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/WaaSDeploymentStatus/Read | WaaSDeploymentStatus tablosundan verileri oku |
-> | Action | Microsoft. Insights/logs/Waasınsiderstatus/Read | Waasınsiderstatus tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/WaaSUpdateStatus/Read | WaaSUpdateStatus tablosundan verileri oku |
-> | Action | Microsoft. Insights/logs/WDAVStatus/Read | WDAVStatus tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/WDAVThreat/Read | WDAVThreat Table 'dan verileri okuma |
-> | Action | Microsoft. Insights/logs/Windowsclientassessmentönerisi/okuma | Windowsclientassessmentöneriyi tablosundan verileri okuma |
-> | Action | Microsoft. Öngörüler/Günlükler/WindowsFirewall/Read | WindowsFirewall tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/WindowsServerAssessmentRecommendation/Read | WindowsServerAssessmentRecommendation tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/kablolu veri/okuma | Kablolu veri tablosundan verileri okuma |
-> | Action | Microsoft. Insights/logs/Wudoaggreg, Status/Read | Wudoaggreg, Status tablosundan verileri okuma |
-> | Action | Microsoft. Öngörüler/Günlükler/WUDOStatus/okuma | WUDOStatus tablosundan verileri okuma |
-> | Action | Microsoft. Insights/MetricAlerts/Delete | Ölçüm uyarısını silme |
-> | Action | Microsoft. Insights/MetricAlerts/okuma | Ölçüm uyarısını okuyun |
+> | Action | Microsoft. Insights/logs/ReservedAzureCommonFields/Read | ReservedAzureCommonFields tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/ReservedCommonFields/Read | ReservedCommonFields tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Sccmassessmentönerisi/okuma | SCCMAssessmentRecommendation tablosundan veri oku |
+> | Action | Microsoft. Öngörüler/Günlükler/Scomassessmentönerisi/okuma | SCOMAssessmentRecommendation tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/SecurityAlert/Read | SecurityAlert tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/SecurityBaseline/okuma | SecurityBaseline tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/SecurityBaselineSummary/okuma | SecurityBaselineSummary tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/SecurityDetection/okuma | SecurityDetection tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/SecurityEvent/Read | SecurityEvent tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/ServiceFabricOperationalEvent/Read | ServiceFabricOperationalEvent tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/ServiceFabricReliableActorEvent/Read | ServiceFabricReliableActorEvent tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/ServiceFabricReliableServiceEvent/Read | ServiceFabricReliableServiceEvent tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Sfbassessmentönerisi/okuma | SfBAssessmentRecommendation tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/SfBOnlineAssessmentRecommendation/Read | SfBOnlineAssessmentRecommendation tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/SharePointOnlineAssessmentRecommendation/Read | SharePointOnlineAssessmentRecommendation tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Spassessmentönerisi/okuma | SPAssessmentRecommendation tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Sqlassessmentönerisi/okuma | SQLAssessmentRecommendation tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/SQLQueryPerformance/Read | SQLQueryPerformance tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Syslog/Read | Syslog tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/SysmonEvent/Read | SysmonEvent tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/UAApp/Read | UAApp tablosundan veri oku |
+> | Action | Microsoft. Öngörüler/Günlükler/Uabilgisayar/okuma | UAComputer tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/UAComputerRank/Read | UAComputerRank tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/UADriver/okuma | UADriver tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/UADriverProblemCodes/Read | UADriverProblemCodes tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/UAFeedback/Read | UAFeedback tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/UAHardwareSecurity/Read | UAHardwareSecurity tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Uaıesitediscovery/Read | UAIESiteDiscovery tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Uaofficeeklentisi/okuma | UAOfficeAddIn tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/UAProposedActionPlan/Read | UAProposedActionPlan tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Uasysreqıssue/Read | UASysReqIssue tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Uayükseltilebilir Dedcomputer/Read | UAUpgradedComputer tablosundan veri oku |
+> | Action | Microsoft. Öngörüler/Günlükler/güncelleştirme/okuma | Güncelleştirme tablosundan veri oku |
+> | Action | Microsoft. Öngörüler/Günlükler/UpdateRunProgress/Read | UpdateRunProgress tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/UpdateSummary/Read | UpdateSummary tablosundan veri oku |
+> | Action | Microsoft. Öngörüler/Günlükler/kullanım/okuma | Usage tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/W3CIISLog/Read | W3CIISLog tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/WaaSDeploymentStatus/Read | WaaSDeploymentStatus tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Waasınsiderstatus/Read | WaaSInsiderStatus tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/WaaSUpdateStatus/Read | WaaSUpdateStatus tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/WDAVStatus/Read | WDAVStatus tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/WDAVThreat/Read | WDAVThreat tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Windowsclientassessmentönerisi/okuma | WindowsClientAssessmentRecommendation tablosundan veri oku |
+> | Action | Microsoft. Öngörüler/Günlükler/WindowsFirewall/Read | WindowsFirewall tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/WindowsServerAssessmentRecommendation/Read | WindowsServerAssessmentRecommendation tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/kablolu veri/okuma | WireData tablosundan veri oku |
+> | Action | Microsoft. Insights/logs/Wudoaggreg, Status/Read | WUDOAggregatedStatus tablosundan veri oku |
+> | Action | Microsoft. Öngörüler/Günlükler/WUDOStatus/okuma | WUDOStatus tablosundan veri oku |
+> | Action | Microsoft. Insights/MetricAlerts/Delete | Bir ölçüm uyarısını silin |
+> | Action | Microsoft. Insights/MetricAlerts/okuma | Bir ölçüm uyarısını okuyun |
 > | Action | Microsoft. Insights/MetricAlerts/durum/okuma | Ölçüm uyarısı durumunu oku |
-> | Action | Microsoft. Insights/MetricAlerts/Write | Ölçüm uyarısı oluşturma veya güncelleştirme |
+> | Action | Microsoft. Insights/MetricAlerts/Write | Ölçüm uyarısı oluşturun veya güncelleyin |
 > | Action | Microsoft. Insights/Metrictemeller/okuma | Ölçüm temellerini oku |
 > | Action | Microsoft. Insights/MetricDefinitions/Microsoft. Insights/oku | Ölçüm tanımlarını oku |
 > | Action | Microsoft. Insights/MetricDefinitions/sağlayıcılar/Microsoft. Insights/Read | Ölçüm tanımlarını oku |
 > | Action | Microsoft. Insights/MetricDefinitions/okuma | Ölçüm tanımlarını oku |
 > | Action | Microsoft. Insights/Metricnamespaces/Read | Ölçüm ad alanlarını oku |
-> | Action | Microsoft. Insights/ölçümler/eylem | Ölçüm eylemi |
-> | Action | Microsoft. Insights/ölçümler/Microsoft. Öngörüler/okuma | Ölçümleri oku |
-> | Action | Microsoft. Insights/ölçümler/sağlayıcılar/ölçümler/okuma | Ölçümleri oku |
-> | Action | Microsoft. Insights/ölçümler/okuma | Ölçümleri oku |
+> | Action | Microsoft. Insights/ölçümler/eylem | Ölçüm Eylemi |
+> | Action | Microsoft. Insights/ölçümler/Microsoft. Öngörüler/okuma | Ölçümleri okuma |
+> | Action | Microsoft. Insights/ölçümler/sağlayıcılar/ölçümler/okuma | Ölçümleri okuma |
+> | Action | Microsoft. Insights/ölçümler/okuma | Ölçümleri okuma |
 > | DataAction | Microsoft. Insights/ölçümler/yazma | Ölçümleri yaz |
-> | Action | Microsoft. Insights/MigrateToNewpricingModel/Action | Aboneliği yeni fiyatlandırma modeline geçir |
-> | Action | Microsoft. Insights/Işlemler/okuma | Okuma İşlemleri |
+> | Action | Microsoft. Insights/MigrateToNewpricingModel/Action | Aboneliği yeni fiyatlandırma modeline geçirin |
+> | Action | Microsoft. Insights/Işlemler/okuma | Okuma işlemleri |
 > | Action | Microsoft.Insights/Register/Action | Microsoft Insights sağlayıcısını kaydedin |
-> | Action | Microsoft. Insights/RollbackToLegacyPricingModel/Action | Aboneliği eski fiyatlandırma modeline geri al |
-> | Action | Microsoft. Insights/ScheduledQueryRules/Delete | Zamanlanmış sorgu kuralını silme |
+> | Action | Microsoft. Insights/RollbackToLegacyPricingModel/Action | Aboneliği eski fiyatlandırma modeline geri alın |
+> | Action | Microsoft. Insights/ScheduledQueryRules/Delete | Zamanlanmış bir sorgu kuralı siliniyor |
 > | Action | Microsoft. Insights/ScheduledQueryRules/Read | Zamanlanmış bir sorgu kuralı okunuyor |
-> | Action | Microsoft. Insights/ScheduledQueryRules/Write | Zamanlanmış bir sorgu kuralı yazma |
+> | Action | Microsoft. Insights/ScheduledQueryRules/Write | Zamanlanmış bir sorgu kuralı yazılıyor |
 > | Action | Microsoft. Insights/kiracılar/Register/Action | Microsoft Insights sağlayıcısını başlatır |
 > | Action | Microsoft. Öngörüler/kaydını kaldırma/eylem | Microsoft Insights sağlayıcısını kaydedin |
-> | Action | Microsoft. Insights/Web testleri/silme | Bir WebTest yapılandırmasını silme |
-> | Action | Microsoft. Insights/webtests/GetToken/Read | Bir WebTest belirtecini okuma |
-> | Action | Microsoft. Insights/Web testleri/MetricDefinitions/okuma | Bir WebTest ölçüm tanımlarını okuma |
-> | Action | Microsoft. Insights/webtests/ölçümler/okuma | Bir WebTest ölçümlerini okuma |
-> | Action | Microsoft. Insights/Web testleri/okuma | Bir WebTest yapılandırmasını okuma |
-> | Action | Microsoft. Insights/Web testleri/yazma | Bir WebTest yapılandırmasına yazma |
+> | Action | Microsoft. Insights/Web testleri/silme | Bir web testi yapılandırmasını silme |
+> | Action | Microsoft. Insights/webtests/GetToken/Read | Bir web testi belirtecini okuma |
+> | Action | Microsoft. Insights/Web testleri/MetricDefinitions/okuma | Bir web testi ölçümünün tanımlarını okuma |
+> | Action | Microsoft. Insights/webtests/ölçümler/okuma | Bir web testinin ölçümlerini okuma |
+> | Action | Microsoft. Insights/Web testleri/okuma | Bir web testi yapılandırmasını okuma |
+> | Action | Microsoft. Insights/Web testleri/yazma | Bir web testi yapılandırmasına yazma |
 
 ## <a name="microsoftintune"></a>Microsoft. Intune
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. Intune/diagnosticsettings/Delete | Bir tanılama ayarını silme |
 > | Action | Microsoft. Intune/diagnosticsettings/Read | Tanılama ayarını okuma |
@@ -2957,7 +2957,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftiotcentral"></a>Microsoft. ıotcentral
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. ıotcentral/appTemplates/Action | Azure IoT Central tüm kullanılabilir uygulama şablonlarını alır |
 > | Action | Microsoft. ıotcentral/Checknameavaılabılıty/Action | IoT Central bir uygulama adının kullanılabilir olup olmadığını denetler |
@@ -2971,7 +2971,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftiotspaces"></a>Microsoft. ıotspaces
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. ıotspaces/Graf/Delete | Microsoft. ıotspaces Graph kaynağını siler |
 > | Action | Microsoft. ıotspaces/Graf/Read | Microsoft. ıotspaces grafik kaynakları alır |
@@ -2981,36 +2981,36 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
-> | Action | Microsoft. Keykasası/Checknameavaılabılıty/Read | Anahtar Kasası adının geçerli olduğunu ve kullanımda olup olmadığını denetler |
-> | Action | Microsoft. Keykasası/Silinleults/okuma | Geçici olarak silinen anahtar kasalarının özelliklerini görüntüleyin |
-> | Action | Microsoft. Keykasası/hsmPools/Delete | Bir HSM havuzunu silme |
-> | Action | Microsoft. Keykasası/hsmPools/Joinkasa/eylem | Bir HSM havuzuna Anahtar Kasası ekleme |
-> | Action | Microsoft. Keykasası/hsmPools/Read | Bir HSM havuzunun özelliklerini görüntüleme |
-> | Action | Microsoft. Keykasası/hsmPools/Write | Yeni bir HSM havuzu oluşturun var olan bir HSM havuzunun özelliklerini güncelleştir |
-> | Action | Microsoft. Keykasası/konumlar/Silinkaults/Temizleme/eylem | Geçici olarak silinen bir anahtar kasasını temizle |
-> | Action | Microsoft. Keykasası/konumlar/Silinkaults/okuma | Geçici olarak silinen bir anahtar kasasının özelliklerini görüntüleyin |
-> | Action | Microsoft. Keykasası/konumlar/Deletevirtualnetworkoralt ağları/eylem | Bir sanal ağ veya alt ağın silinmekte olduğunu Microsoft. Keykasasına bildirir |
-> | Action | Microsoft. Keykasası/konumlar/operationResults/Read | Uzun bir çalıştırma işleminin sonucunu denetleyin |
-> | Action | Microsoft. Keykasası/işlemler/okuma | Microsoft. Keykasası kaynak sağlayıcısında kullanılabilir işlemleri listeler |
+> | Action | Microsoft. Keykasası/Checknameavaılabılıty/Read | Bir anahtar kasası adının geçerli ve kullanımda olup olmadığını denetler |
+> | Action | Microsoft. Keykasası/Silinleults/okuma | Geçici silinen anahtar kasalarının özelliklerini görüntüleyin |
+> | Action | Microsoft. Keykasası/hsmPools/Delete | Bir HSM havuzunu silin |
+> | Action | Microsoft. Keykasası/hsmPools/Joinkasa/eylem | Bir HSM havuzuna anahtar kasası ekleyin |
+> | Action | Microsoft. Keykasası/hsmPools/Read | Bir HSM havuzunun özelliklerini görüntüleyin |
+> | Action | Microsoft. Keykasası/hsmPools/Write | Yeni bir HSM havuzu oluşturun veya mevcut bir HSM havuzunun özelliklerini güncelleştirin |
+> | Action | Microsoft. Keykasası/konumlar/Silinkaults/Temizleme/eylem | Geçici silinen bir anahtar kasasını temizleyin |
+> | Action | Microsoft. Keykasası/konumlar/Silinkaults/okuma | Geçici silinen bir anahtar kasasının özelliklerini görüntüleyin |
+> | Action | Microsoft. Keykasası/konumlar/Deletevirtualnetworkoralt ağları/eylem | Microsoft.KeyVault'a bir sanal ağın veya alt ağın silindiğini bildirir |
+> | Action | Microsoft. Keykasası/konumlar/operationResults/Read | Uzun süre çalışan bir işlemin sonucunu denetleyin |
+> | Action | Microsoft. Keykasası/işlemler/okuma | Microsoft.KeyVault kaynak sağlayıcısındaki kullanılabilir işlemleri listele |
 > | Action | Microsoft. Keykasası/Register/ACTION | Bir aboneliği kaydeder |
-> | Action | Microsoft. Keykasası/kaydını kaldırma/eylem | Aboneliğin kaydını siler |
-> | Action | Microsoft. Keykasası/Vaults/accessPolicies/Write | Mevcut bir erişim ilkesini birleştirerek veya değiştirerek veya bir kasaya yeni bir erişim ilkesi ekleyerek güncelleştirin. |
-> | Action | Microsoft. Keykasası/kasa/silme | Bir anahtar kasasını silme |
-> | Action | Microsoft. Keykasası/Vaults/dağıtım/eylem | Azure kaynaklarını dağıttığınızda bir anahtar kasasındaki gizli dizileri erişimine izin sağlar |
-> | Action | Microsoft. Keykasası/Vaults/eventGridFilters/Delete | Microsoft. Keykasasına Key Vault için bir EventGrid aboneliğinin silinmekte olduğunu bildirir |
-> | Action | Microsoft. Keykasası/Vaults/eventGridFilters/Read | Microsoft. Keykasasına Key Vault için bir EventGrid aboneliğinin görüntülendiğini bildirir |
-> | Action | Microsoft. Keykasası/Vaults/eventGridFilters/Write | Microsoft. Keykasasında Key Vault yeni bir EventGrid aboneliğinin oluşturulduğunu bildirir |
-> | Action | Microsoft. Keykasası/Kasaults/okuma | Anahtar kasasının özelliklerini görüntüleme |
+> | Action | Microsoft. Keykasası/kaydını kaldırma/eylem | Abonelik kaydını siler |
+> | Action | Microsoft. Keykasası/Vaults/accessPolicies/Write | Var olan bir erişim ilkesini, birleştirme veya değiştirme yoluyla güncelleştirin ya da kasaya yeni bir erişim ilkesi ekleyin. |
+> | Action | Microsoft. Keykasası/kasa/silme | Bir anahtar kasasını silin |
+> | Action | Microsoft. Keykasası/Vaults/dağıtım/eylem | Azure kaynakları dağıtılırken bir anahtar kasasındaki gizli dizilere erişim sağlar |
+> | Action | Microsoft. Keykasası/Vaults/eventGridFilters/Delete | Key Vault için EventGrid Aboneliği'nin silindiğini Microsoft.KeyVault'a bildirir |
+> | Action | Microsoft. Keykasası/Vaults/eventGridFilters/Read | Key Vault için EventGrid Aboneliği'nin görüntülendiğini Microsoft.KeyVault'a bildirir |
+> | Action | Microsoft. Keykasası/Vaults/eventGridFilters/Write | Key Vault için yeni bir EventGrid Aboneliği oluşturulduğunu Microsoft.KeyVault'a bildirir |
+> | Action | Microsoft. Keykasası/Kasaults/okuma | Anahtar kasasının özelliklerini görüntüleyin |
 > | Action | Microsoft. Keykasası/Kasaults/gizlilikler/Read | Gizli anahtar özelliklerini görüntüleyin, ancak değerini değil. |
 > | Action | Microsoft. Keykasası/kasa/gizli dizi/yazma | Yeni bir gizli dizi oluşturun veya var olan bir parolanın değerini güncelleştirin. |
-> | Action | Microsoft. Keykasası/Vaults/yazma | Yeni bir Anahtar Kasası oluşturun veya var olan bir anahtar kasasının özelliklerini güncelleştirin |
+> | Action | Microsoft. Keykasası/Vaults/yazma | Yeni bir anahtar kasası oluşturun veya var olan bir anahtar kasasının özelliklerini güncelleştirin |
 
 ## <a name="microsoftkusto"></a>Microsoft. kusto
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. kusto/kümeler/etkinleştir/eylem | Kümeyi başlatır. |
 > | Action | Microsoft. kusto/kümeler/AttachedDatabaseConfigurations/Delete | Eklenmiş bir veritabanı yapılandırma kaynağını siler. |
@@ -3049,7 +3049,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftlabservices"></a>Microsoft. LabServices
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. LabServices/labAccounts/CreateLab/eylem | Laboratuvar hesabında laboratuvar oluşturun. |
 > | Action | Microsoft. LabServices/labAccounts/Delete | Laboratuvar hesaplarını silin. |
@@ -3113,104 +3113,104 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. Logic/ıntegrationaccounts/sözleşmeleri/silme | Tümleştirme hesabındaki sözleşmeyi siler. |
-> | Action | Microsoft. Logic/ıntegrationaccounts/sözleşmeleri/listContentCallbackUrl/eylem | Tümleştirme hesabındaki anlaşma içeriği için geri çağırma URL 'sini alır. |
+> | Action | Microsoft. Logic/ıntegrationaccounts/sözleşmeleri/listContentCallbackUrl/eylem | Tümleştirme hesabındaki sözleşme içeriği için geri çağırma URL'sini alır. |
 > | Action | Microsoft. Logic/ıntegrationaccounts/sözleşmeleri/okuma | Tümleştirme hesabındaki sözleşmeyi okur. |
 > | Action | Microsoft. Logic/ıntegrationaccounts/sözleşmeleri/yazma | Tümleştirme hesabındaki sözleşmeyi oluşturur veya güncelleştirir. |
-> | Action | Microsoft. Logic/ıntegrationaccounts/derlemeler/Sil | Tümleştirme hesabındaki derlemeyi siler. |
-> | Action | Microsoft. Logic/ıntegrationaccounts/derlemeler/listContentCallbackUrl/eylem | Tümleştirme hesabındaki derleme içeriği için geri çağırma URL 'sini alır. |
-> | Action | Microsoft. Logic/ıntegrationaccounts/derlemeler/okuma | Tümleştirme hesabındaki derlemeyi okur. |
-> | Action | Microsoft. Logic/ıntegrationaccounts/derlemeler/Write | Tümleştirme hesabındaki derlemeyi oluşturur veya güncelleştirir. |
+> | Action | Microsoft. Logic/ıntegrationaccounts/derlemeler/Sil | Tümleştirme hesabındaki bütünleştirilmiş kodu siler. |
+> | Action | Microsoft. Logic/ıntegrationaccounts/derlemeler/listContentCallbackUrl/eylem | Tümleştirme hesabındaki bütünleştirilmiş kod içeriği için geri çağırma URL'sini alır. |
+> | Action | Microsoft. Logic/ıntegrationaccounts/derlemeler/okuma | Tümleştirme hesabındaki bütünleştirilmiş kodu okur. |
+> | Action | Microsoft. Logic/ıntegrationaccounts/derlemeler/Write | Tümleştirme hesabındaki bütünleştirilmiş kodu oluşturur veya güncelleştirir. |
 > | Action | Microsoft. Logic/ıntegrationaccounts/batchConfigurations/Delete | Tümleştirme hesabındaki toplu yapılandırmayı siler. |
-> | Action | Microsoft. Logic/ıntegrationaccounts/batchConfigurations/Read | Tümleştirme hesabındaki Batch yapılandırmasını okur. |
+> | Action | Microsoft. Logic/ıntegrationaccounts/batchConfigurations/Read | Tümleştirme hesabındaki toplu yapılandırmayı okur. |
 > | Action | Microsoft. Logic/ıntegrationaccounts/batchConfigurations/Write | Tümleştirme hesabındaki toplu yapılandırmayı oluşturur veya güncelleştirir. |
 > | Action | Microsoft. Logic/ıntegrationaccounts/Certificates/Delete | Tümleştirme hesabındaki sertifikayı siler. |
 > | Action | Microsoft. Logic/ıntegrationaccounts/Certificates/Read | Tümleştirme hesabındaki sertifikayı okur. |
 > | Action | Microsoft. Logic/ıntegrationaccounts/Certificates/Write | Tümleştirme hesabındaki sertifikayı oluşturur veya güncelleştirir. |
 > | Action | Microsoft. Logic/ıntegrationaccounts/Delete | Tümleştirme hesabını siler. |
-> | Action | Microsoft. Logic/ıntegrationaccounts/JOIN/Action | Tümleştirme hesabını birleştirir. |
-> | Action | Microsoft. Logic/ıntegrationaccounts/listCallbackUrl/eylem | Tümleştirme hesabı için geri çağırma URL 'sini alır. |
+> | Action | Microsoft. Logic/ıntegrationaccounts/JOIN/Action | Tümleştirme Hesabına katılır. |
+> | Action | Microsoft. Logic/ıntegrationaccounts/listCallbackUrl/eylem | Tümleştirme hesabı için geri çağırma URL'sini alır. |
 > | Action | Microsoft. Logic/ıntegrationaccounts/listKeyVaultKeys/Action | Anahtar kasasındaki anahtarları alır. |
 > | Action | Microsoft. Logic/ıntegrationaccounts/logTrackingEvents/eylem | Tümleştirme hesabındaki izleme olaylarını günlüğe kaydeder. |
 > | Action | Microsoft. Logic/ıntegrationaccounts/haritalar/Sil | Tümleştirme hesabındaki eşlemeyi siler. |
-> | Action | Microsoft. Logic/ıntegrationaccounts/Maps/listContentCallbackUrl/eylem | Tümleştirme hesabındaki eşleme içeriği için geri çağırma URL 'sini alır. |
+> | Action | Microsoft. Logic/ıntegrationaccounts/Maps/listContentCallbackUrl/eylem | Tümleştirme hesabındaki eşleme içeriği için geri çağırma URL'sini alır. |
 > | Action | Microsoft. Logic/ıntegrationaccounts/Maps/Read | Tümleştirme hesabındaki eşlemeyi okur. |
 > | Action | Microsoft. Logic/ıntegrationaccounts/Maps/Write | Tümleştirme hesabındaki eşlemeyi oluşturur veya güncelleştirir. |
-> | Action | Microsoft. Logic/ıntegrationaccounts/partner/Delete | Tümleştirme hesabındaki ortağı siler. |
-> | Action | Microsoft. Logic/ıntegrationaccounts/Partners/listContentCallbackUrl/eylem | Tümleştirme hesabındaki iş ortağı içeriği için geri çağırma URL 'sini alır. |
+> | Action | Microsoft. Logic/ıntegrationaccounts/partner/Delete | Tümleştirme hesabındaki iş ortağını siler. |
+> | Action | Microsoft. Logic/ıntegrationaccounts/Partners/listContentCallbackUrl/eylem | Tümleştirme hesabındaki iş ortağı içeriği için geri çağırma URL'sini alır. |
 > | Action | Microsoft. Logic/ıntegrationaccounts/partner/Read | Tümleştirme hesabındaki ortağı okur. |
 > | Action | Microsoft. Logic/ıntegrationaccounts/partner/Write | Tümleştirme hesabındaki iş ortağını oluşturur veya güncelleştirir. |
-> | Action | Microsoft. Logic/ıntegrationaccounts/Providers/Microsoft. Insights/logDefinitions/Read | Tümleştirme hesabı günlük tanımlarını okur. |
+> | Action | Microsoft. Logic/ıntegrationaccounts/Providers/Microsoft. Insights/logDefinitions/Read | Tümleştirme Hesabı günlük tanımlarını okur. |
 > | Action | Microsoft. Logic/ıntegrationaccounts/Read | Tümleştirme hesabını okur. |
-> | Action | Microsoft. Logic/ıntegrationaccounts/regenerateAccessKey/Action | Erişim anahtarı gizli dizilerini yeniden oluşturur. |
+> | Action | Microsoft. Logic/ıntegrationaccounts/regenerateAccessKey/Action | Erişim anahtarı parolalarını yeniden oluşturur. |
 > | Action | Microsoft. Logic/ıntegrationaccounts/şemalar/Delete | Tümleştirme hesabındaki şemayı siler. |
-> | Action | Microsoft. Logic/ıntegrationaccounts/schemas/listContentCallbackUrl/eylem | Tümleştirme hesabındaki şema içeriği için geri çağırma URL 'sini alır. |
+> | Action | Microsoft. Logic/ıntegrationaccounts/schemas/listContentCallbackUrl/eylem | Tümleştirme hesabındaki şema içeriği için geri çağırma URL'sini alır. |
 > | Action | Microsoft. Logic/ıntegrationaccounts/schemas/Read | Tümleştirme hesabındaki şemayı okur. |
 > | Action | Microsoft. Logic/ıntegrationaccounts/şemalar/Write | Tümleştirme hesabındaki şemayı oluşturur veya güncelleştirir. |
 > | Action | Microsoft. Logic/ıntegrationaccounts/Sessions/Delete | Tümleştirme hesabındaki oturumu siler. |
-> | Action | Microsoft. Logic/ıntegrationaccounts/Sessions/Read | Tümleştirme hesabındaki Batch yapılandırmasını okur. |
+> | Action | Microsoft. Logic/ıntegrationaccounts/Sessions/Read | Tümleştirme hesabındaki toplu yapılandırmayı okur. |
 > | Action | Microsoft. Logic/ıntegrationaccounts/Sessions/Write | Tümleştirme hesabındaki oturumu oluşturur veya güncelleştirir. |
-> | Action | Microsoft. Logic/ıntegrationaccounts/Write | Tümleştirme hesabı oluşturur veya güncelleştirir. |
+> | Action | Microsoft. Logic/ıntegrationaccounts/Write | Tümleştirme hesabını oluşturur veya güncelleştirir. |
 > | Action | Microsoft. Logic/ıntegrationserviceortamlarını/silme | Tümleştirme hizmeti ortamını siler. |
-> | Action | Microsoft. Logic/ıntegrationserviceortamları/JOIN/Action | Tümleştirme Hizmeti Ortamı birleştirir. |
+> | Action | Microsoft. Logic/ıntegrationserviceortamları/JOIN/Action | Tümleştirme Hizmeti Ortamına katılır. |
 > | Action | Microsoft. Logic/ıntegrationserviceortamlarını/Managedap/apiOperations/Read | Tümleştirme hizmeti ortamı yönetilen API işlemini okur. |
-> | Action | Microsoft. Logic/ıntegrationserviceortamlarını/Managedap/Read | Tümleştirme hizmeti ortamı yönetilen API 'sini okur. |
-> | Action | Microsoft. Logic/ıntegrationserviceortamlarını/Operationdurumlarının/Read | Tümleştirme hizmeti ortamı işlem durumlarını okur. |
+> | Action | Microsoft. Logic/ıntegrationserviceortamlarını/Managedap/Read | Tümleştirme hizmeti ortamı yönetilen API'sini okur. |
+> | Action | Microsoft. Logic/ıntegrationserviceortamlarını/Operationdurumlarının/Read | Tümleştirme hizmet ortamı işlem durumlarını okur. |
 > | Action | Microsoft. Logic/ıntegrationserviceortamları/sağlayıcılar/Microsoft. Insights/metricDefinitions/okuma | Tümleştirme hizmeti ortamı ölçüm tanımlarını okur. |
 > | Action | Microsoft. Logic/ıntegrationserviceortamları/okuma | Tümleştirme hizmeti ortamını okur. |
 > | Action | Microsoft. Logic/ıntegrationserviceortamlar/Write | Tümleştirme hizmeti ortamını oluşturur veya güncelleştirir. |
-> | Action | Microsoft. Logic/Locations/iş akışları/recommendOperationGroups/Action | İş akışı önerilir işlem grupları alır. |
+> | Action | Microsoft. Logic/Locations/iş akışları/recommendOperationGroups/Action | Önerilen iş akışı işlem gruplarını alır. |
 > | Action | Microsoft. Logic/Locations/iş akışları/Validate/Action | İş akışını doğrular. |
 > | Action | Microsoft. Logic/işlemler/okuma | İşlemi alır. |
-> | Action | Microsoft. Logic/Register/ACTION | Belirli bir abonelik için Microsoft. Logic Resource sağlayıcısını kaydeder. |
+> | Action | Microsoft. Logic/Register/ACTION | Belirli bir abonelik için Microsoft.Logic kaynak sağlayıcısını kaydeder. |
 > | Action | Microsoft. Logic/iş akışları/accessKeys/Delete | Erişim anahtarını siler. |
-> | Action | Microsoft. Logic/iş akışları/accessKeys/List/Action | Erişim anahtarı gizli dizilerini listeler. |
+> | Action | Microsoft. Logic/iş akışları/accessKeys/List/Action | Erişim anahtarı parolalarını listeler. |
 > | Action | Microsoft. Logic/iş akışları/accessKeys/Read | Erişim anahtarını okur. |
-> | Action | Microsoft. Logic/iş akışları/accessKeys/yeniden oluştur/eylem | Erişim anahtarı gizli dizilerini yeniden oluşturur. |
-> | Action | Microsoft. Logic/iş akışları/accessKeys/Write | Erişim anahtarını oluşturur veya güncelleştirir. |
+> | Action | Microsoft. Logic/iş akışları/accessKeys/yeniden oluştur/eylem | Erişim anahtarı parolalarını yeniden oluşturur. |
+> | Action | Microsoft. Logic/iş akışları/accessKeys/Write | Erişim anahtarı oluşturur veya güncelleştirir. |
 > | Action | Microsoft. Logic/iş akışları/silme | İş akışını siler. |
 > | Action | Microsoft. Logic/iş akışları/devre dışı bırakma/eylem | İş akışını devre dışı bırakır. |
-> | Action | Microsoft. Logic/iş akışları/etkinleştir/eylem | İş akışını izin vermez. |
-> | Action | Microsoft. Logic/iş akışları/listCallbackUrl/eylem | İş akışı için geri çağırma URL 'sini alır. |
-> | Action | Microsoft. Logic/iş akışları/listSwagger/eylem | İş akışı Swagger tanımlarını alır. |
-> | Action | Microsoft. Logic/iş akışları/taşıma/eylem | Iş akışını var olan abonelik kimliği, kaynak grubu ve/veya adından farklı bir abonelik kimliğine, kaynak grubuna ve/veya ada taşıdıkça. |
+> | Action | Microsoft. Logic/iş akışları/etkinleştir/eylem | İş akışını etkinleştirir. |
+> | Action | Microsoft. Logic/iş akışları/listCallbackUrl/eylem | İş akışı için geri çağrıma URL'sini alır. |
+> | Action | Microsoft. Logic/iş akışları/listSwagger/eylem | İş akışı swagger tanımlarını alır. |
+> | Action | Microsoft. Logic/iş akışları/taşıma/eylem | İş Akışını mevcut abonelik kimliği, kaynak grubu ve/veya adından farklı bir abonelik kimliğine, kaynak grubuna ve/veya ada taşır. |
 > | Action | Microsoft. Logic/iş akışları/sağlayıcılar/Microsoft. Insights/diagnosticSettings/Read | İş akışı tanılama ayarlarını okur. |
 > | Action | Microsoft. Logic/iş akışları/sağlayıcılar/Microsoft. Insights/diagnosticSettings/Write | İş akışı tanılama ayarını oluşturur veya güncelleştirir. |
-> | Action | Microsoft. Logic/iş akışları/sağlayıcılar/Microsoft. Insights/logDefinitions/okuma | İş akışı günlük tanımlarını okur. |
+> | Action | Microsoft. Logic/iş akışları/sağlayıcılar/Microsoft. Insights/logDefinitions/okuma | İş akışı günlüğü tanımlarını okur. |
 > | Action | Microsoft. Logic/iş akışları/sağlayıcılar/Microsoft. Insights/metricDefinitions/Read | İş akışı ölçüm tanımlarını okur. |
 > | Action | Microsoft. Logic/iş akışları/okuma | İş akışını okur. |
-> | Action | Microsoft. Logic/iş akışları/regenerateAccessKey/Action | Erişim anahtarı gizli dizilerini yeniden oluşturur. |
+> | Action | Microsoft. Logic/iş akışları/regenerateAccessKey/Action | Erişim anahtarı parolalarını yeniden oluşturur. |
 > | Action | Microsoft. Logic/iş akışları/çalıştırma/eylem | İş akışının çalıştırılmasını başlatır. |
 > | Action | Microsoft. Logic/iş akışları/çalıştırmalar/Actions/Listexpressionizlemeler/eylem | İş akışı çalıştırma eylemi ifade izlemelerini alır. |
 > | Action | Microsoft. Logic/iş akışları/çalıştırmalar/eylemler/okuma | İş akışı çalıştırma eylemini okur. |
 > | Action | Microsoft. Logic/iş akışları/çalıştırmalar/Actions/tekrarları/Listexpressionizlemeler/eylem | İş akışı çalıştırma eylemi yineleme ifadesi izlemelerini alır. |
-> | Action | Microsoft. Logic/iş akışları/çalıştırmalar/Actions/tekrarları/Read | İş akışı çalıştırma eylemi tekrarlamayı okur. |
+> | Action | Microsoft. Logic/iş akışları/çalıştırmalar/Actions/tekrarları/Read | İş akışı çalıştırma eylemi yinelemesini okur. |
 > | Action | Microsoft. Logic/iş akışları/çalıştırmalar/Actions/tekrarları/requestHistories/Read | İş akışı çalıştırma yineleme eylemi istek geçmişini okur. |
 > | Action | Microsoft. Logic/iş akışları/çalıştırmalar/Actions/requestHistories/Read | İş akışı çalıştırma eylemi istek geçmişini okur. |
-> | Action | Microsoft. Logic/iş akışları/çalıştırmalar/eylemler/scoperepetitions/Read | İş akışı çalıştırma eylemi kapsam tekrarlamayı okur. |
-> | Action | Microsoft. Logic/iş akışları/çalıştırmalar/iptal/eylem | Bir iş akışının çalıştırılmasını iptal eder. |
-> | Action | Microsoft. Logic/iş akışları/çalıştırmalar/Sil | Bir iş akışının çalıştırılmasını siler. |
+> | Action | Microsoft. Logic/iş akışları/çalıştırmalar/eylemler/scoperepetitions/Read | İş akışı çalıştırma eylemi yineleme kapsamını okur. |
+> | Action | Microsoft. Logic/iş akışları/çalıştırmalar/iptal/eylem | İş akışının çalıştırılmasını iptal eder. |
+> | Action | Microsoft. Logic/iş akışları/çalıştırmalar/Sil | Bir iş akışının çalıştırmasını siler. |
 > | Action | Microsoft. Logic/iş akışları/çalıştırmalar/işlemler/okuma | İş akışı çalıştırma işlemi durumunu okur. |
 > | Action | Microsoft. Logic/iş akışları/çalıştırmalar/Read | İş akışı çalıştırmasını okur. |
 > | Action | Microsoft. Logic/iş akışları/beklet/eylem | İş akışını askıya alır. |
 > | Action | Microsoft. Logic/iş akışları/Tetikleyiciler/geçmiş/okuma | Tetikleyici geçmişlerini okur. |
-> | Action | Microsoft. Logic/iş akışları/Tetikleyiciler/geçmiş/yeniden gönder/eylem | Resubmits iş akışı tetikleyicisi. |
-> | Action | Microsoft. Logic/iş akışları/Tetikleyiciler/listCallbackUrl/eylem | Tetikleyici için geri çağırma URL 'sini alır. |
+> | Action | Microsoft. Logic/iş akışları/Tetikleyiciler/geçmiş/yeniden gönder/eylem | İş akışı tetikleyicisini yeniden gönderir. |
+> | Action | Microsoft. Logic/iş akışları/Tetikleyiciler/listCallbackUrl/eylem | Tetikleyici için geri arama URL'sini alır. |
 > | Action | Microsoft. Logic/iş akışları/Tetikleyiciler/okuma | Tetikleyiciyi okur. |
 > | Action | Microsoft. Logic/iş akışları/Tetikleyiciler/sıfırlama/eylem | Tetikleyiciyi sıfırlar. |
 > | Action | Microsoft. Logic/iş akışları/Tetikleyiciler/çalıştırma/eylem | Tetikleyiciyi yürütür. |
 > | Action | Microsoft. Logic/iş akışları/Tetikleyiciler/setState/Action | Tetikleyici durumunu ayarlar. |
 > | Action | Microsoft.Logic/workflows/validate/action | İş akışını doğrular. |
 > | Action | Microsoft. Logic/iş akışları/sürümler/okuma | İş akışı sürümünü okur. |
-> | Action | Microsoft. Logic/iş akışları/sürümler/Tetikleyiciler/listCallbackUrl/eylem | Tetikleyici için geri çağırma URL 'sini alır. |
+> | Action | Microsoft. Logic/iş akışları/sürümler/Tetikleyiciler/listCallbackUrl/eylem | Tetikleyici için geri arama URL'sini alır. |
 > | Action | Microsoft. Logic/iş akışları/yazma | İş akışını oluşturur veya güncelleştirir. |
 
 ## <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. Machinöğrenim/Commitmentplanlar/commitmentAssociations/Move/Action | Tüm Machine Learning taahhüt planı Ilişkilendirmesini taşıyın |
 > | Action | Microsoft. Machinöğrenim/Commitmentplanlar/commitmentAssociations/okuma | Machine Learning taahhüt planı Ilişkilendirmesini okuyun |
@@ -3234,23 +3234,10 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 > | Action | Microsoft. Machinöğrenim/çalışma alanları/resyncstoragekeys/eylem | Machine Learning Çalışma Alanı için yapılandırılmış depolama hesabı anahtarlarını yeniden eşitleme |
 > | Action | Microsoft. Machinöğrenim/çalışma alanları/yazma | Machine Learning Çalışma Alanı oluşturun veya güncelleştirin |
 
-## <a name="microsoftmachinelearningcompute"></a>Microsoft.MachineLearningCompute
-
-> [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
-> | --- | --- | --- |
-> | Action | Microsoft. MachineLearningCompute/Operationalizationkümeler/checkUpdate/Action | İşlemleştirme kümesi için sistem hizmetleri için güncelleştirmelerin kullanılabilir olup olmadığını denetleyin |
-> | Action | Microsoft. MachineLearningCompute/Operationalizationkümeler/Sil | Herhangi bir barındırma hesabını silme |
-> | Action | Microsoft. MachineLearningCompute/Operationalizationkümeler/listKeys/Action | İşlemleştirme kümesiyle ilişkili anahtarları listeleyin |
-> | Action | Microsoft. MachineLearningCompute/Operationalizationkümeler/okuma | Herhangi bir barındırma hesabını okuyun |
-> | Action | Microsoft. MachineLearningCompute/Operationalizationkümeler/updateSystem/Action | Bir işlemleştirme kümesinde sistem hizmetlerini güncelleştirme |
-> | Action | Microsoft. MachineLearningCompute/Operationalizationkümeler/yazma | Herhangi bir barındırma hesabı oluşturun veya güncelleştirin |
-> | Action | Microsoft. MachineLearningCompute/Register/Action | Abonelik KIMLIĞINI kaynak sağlayıcısına kaydeder ve makine öğrenimi işlem kaynakları oluşturulmasını sağlar |
-
 ## <a name="microsoftmachinelearningservices"></a>Microsoft. MachineLearningServices
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. MachineLearningServices/konumlar/computeoperationsstatus/Read | Belirli bir işlem işleminin durumunu alır |
 > | Action | Microsoft. MachineLearningServices/konumlar/kullanımlar/okuma | Bir abonelikteki AML işlem kaynakları için kullanım raporu |
@@ -3271,7 +3258,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftmanagedidentity"></a>Microsoft. Managedıdentity
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. Managedıdentity/kimlikler/okuma | Mevcut bir sistem tarafından atanmış kimliği alır |
 > | Action | Microsoft. Managedıdentity/Register/Action | Yönetilen kimlik kaynak sağlayıcısı için aboneliği kaydeder |
@@ -3283,23 +3270,23 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftmanagedservices"></a>Microsoft. ManagedServices
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
-> | Action | Microsoft. ManagedServices/Pazar Placeryumuristrationdefinitions/okuma | Yönetilen hizmetler kayıt tanımlarının bir listesini alır. |
-> | Action | Microsoft. ManagedServices/Operationdurumlar/okuma | Kaynak için işlem durumunu okur. |
+> | Action | Microsoft. ManagedServices/Pazar Placeryumuristrationdefinitions/okuma | Yönetilen Hizmetler kayıt tanımlarının bir listesini alır. |
+> | Action | Microsoft. ManagedServices/Operationdurumlar/okuma | Kaynağın işlem durumunu okur. |
 > | Action | Microsoft. ManagedServices/Register/ACTION | Yönetilen hizmetlere kaydolun. |
-> | Action | Microsoft. ManagedServices/Registrationatamaları/silme | Yönetilen hizmetler kayıt atamasını kaldırır. |
-> | Action | Microsoft. ManagedServices/Registrationatamaları/okuma | Yönetilen hizmetler kayıt atamalarının bir listesini alır. |
-> | Action | Microsoft. ManagedServices/Registrationatamaları/yazma | Yönetilen hizmetler kayıt atamasını ekleyin veya değiştirin. |
-> | Action | Microsoft. ManagedServices/registrationDefinitions/Sil | Yönetilen hizmetler kayıt tanımını kaldırır. |
-> | Action | Microsoft. ManagedServices/registrationDefinitions/okuma | Yönetilen hizmetler kayıt tanımlarının bir listesini alır. |
-> | Action | Microsoft. ManagedServices/registrationDefinitions/yaz | Yönetilen hizmetler kayıt tanımı ekleyin veya değiştirin. |
+> | Action | Microsoft. ManagedServices/Registrationatamaları/silme | Yönetilen Hizmetler kayıt atamasını kaldırır. |
+> | Action | Microsoft. ManagedServices/Registrationatamaları/okuma | Yönetilen Hizmetler kayıt atamalarının bir listesini alır. |
+> | Action | Microsoft. ManagedServices/Registrationatamaları/yazma | Yönetilen Hizmetler kayıt ataması ekler veya değiştirir. |
+> | Action | Microsoft. ManagedServices/registrationDefinitions/Sil | Yönetilen Hizmetler kayıt tanımını kaldırır. |
+> | Action | Microsoft. ManagedServices/registrationDefinitions/okuma | Yönetilen Hizmetler kayıt tanımlarının bir listesini alır. |
+> | Action | Microsoft. ManagedServices/registrationDefinitions/yaz | Yönetilen Hizmetler kayıt tanımı ekler veya değiştirir. |
 > | Action | Microsoft. ManagedServices/kaydını kaldırma/eylem | Yönetilen hizmetlerden kayıt silme. |
 
 ## <a name="microsoftmanagement"></a>Microsoft. Management
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. Management/Checknameavaılabılıty/Action | Belirtilen yönetim grubu adının geçerli ve benzersiz olup olmadığını denetler. |
 > | Action | Microsoft. Management/getEntities/Action | Kimliği doğrulanmış kullanıcı için tüm varlıkları (Yönetim Grupları, abonelikler vb.) listeleyin. |
@@ -3313,7 +3300,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftmaps"></a>Microsoft. Maps
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | DataAction | Microsoft. Maps/hesaplar/veri/okuma | Haritalar hesabına veri okuma erişimi verir. |
 > | Action | Microsoft. Maps/hesaplar/Sil | Haritalar hesabını silin. |
@@ -3330,19 +3317,19 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftmarketplace"></a>Microsoft. Market
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
-> | Action | Microsoft. Market/offerTypes/yayımcılar/teklifler/planlar/anlaşmalar/okuma | Bir sözleşme döndürür. |
-> | Action | Microsoft. Market/offerTypes/yayımcılar/teklifler/planlar/anlaşmalar/yazma | İmzalı bir sözleşmeyi kabul eder. |
-> | Action | Microsoft. Market/offerTypes/yayımcılar/teklifler/planlar/configs/ımportımage/Action | Son kullanıcının ACR 'ye bir görüntü aktarır. |
-> | Action | Microsoft. Market/offerTypes/yayımcılar/teklifler/planlar/configs/Read | Bir yapılandırma döndürür. |
-> | Action | Microsoft. Market/offerTypes/yayımcılar/teklifler/planlar/configs/Write | Bir yapılandırmayı kaydeder. |
-> | Action | Microsoft. Market/Register/ACTION | Microsoft. Market kaynak sağlayıcısını abonelikte kaydeder. |
+> | Action | Microsoft. Market/offerTypes/yayımcılar/teklifler/planlar/anlaşmalar/okuma | Sözleşme döndürür. |
+> | Action | Microsoft. Market/offerTypes/yayımcılar/teklifler/planlar/anlaşmalar/yazma | İmzalanmış bir sözleşmeyi kabul eder. |
+> | Action | Microsoft. Market/offerTypes/yayımcılar/teklifler/planlar/configs/ımportımage/Action | Bir resmi son kullanıcının ACR'sine aktarır. |
+> | Action | Microsoft. Market/offerTypes/yayımcılar/teklifler/planlar/configs/Read | Yapılandırmayı döndürür. |
+> | Action | Microsoft. Market/offerTypes/yayımcılar/teklifler/planlar/configs/Write | Yapılandırmayı kaydeder. |
+> | Action | Microsoft. Market/Register/ACTION | Abonelikte Microsoft.Marketplace kaynak sağlayıcısını kaydeder. |
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft. MarketplaceApps
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. MarketplaceApps/ClassicDevServices/Delete | Klasik bir geliştirme hizmeti kaynağında SILME işlemi yapar. |
 > | Action | Microsoft. MarketplaceApps/ClassicDevServices/Listgizlilikler/Action | Klasik bir geliştirme hizmeti kaynak yönetimi anahtarları alır. |
@@ -3354,7 +3341,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftmarketplaceordering"></a>Microsoft. Marketplacesıralaması
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. Marketplacesıralaması/sözleşmeleri/teklifler/planlar/iptal/eylem | Belirli bir Market öğesi için bir sözleşmeyi iptal etme |
 > | Action | Microsoft. Marketplacesıralaması/sözleşmeleri/teklifler/planlar/okuma | Belirli bir Market öğesi için anlaşma döndürme |
@@ -3367,7 +3354,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftmedia"></a>Microsoft. Media
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. Media/checknameavaılabılıty/Action | Media Services hesap adının kullanılabilir olup olmadığını denetler |
 > | Action | Microsoft. Media/Locations/Checknameavaılabılıty/Action | Media Services hesap adının kullanılabilir olup olmadığını denetler |
@@ -3420,7 +3407,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 > | Action | Microsoft. Media/mediaservices/streamingPolicies/Write | Herhangi bir akış Ilkesi oluşturun veya güncelleştirin |
 > | Action | Microsoft. Media/mediaservices/syncStorageKeys/Action | Bağlı bir Azure depolama hesabı için depolama anahtarlarını eşitler |
 > | Action | Microsoft. Media/mediaservices/dönüşümler/silme | Herhangi bir dönüşümü Sil |
-> | Action | Microsoft. Media/mediaservices/dönüşümler/işler/cancelJob/Action | Işi iptal et |
+> | Action | Microsoft. Media/mediaservices/dönüşümler/işler/cancelJob/Action | İşi İptal Et |
 > | Action | Microsoft. Media/mediaservices/dönüşümler/işler/Sil | Herhangi bir Işi silme |
 > | Action | Microsoft. Media/mediaservices/dönüşümler/işler/okuma | Herhangi bir Işi okuyun |
 > | Action | Microsoft. Media/mediaservices/dönüşümler/işler/yazma | Herhangi bir Işi oluşturun veya güncelleştirin |
@@ -3434,66 +3421,66 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftmigrate"></a>Microsoft. Migrate
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
-> | Action | Microsoft. Migrate/assessmentprojects/assessmentOptions/Read | Verilen konumda kullanılabilen değerlendirme seçeneklerini alır |
+> | Action | Microsoft. Migrate/assessmentprojects/assessmentOptions/Read | Verilen konumda kullanılabilen iç değerlendirme seçeneklerini alır |
 > | Action | Microsoft. Migrate/assessmentprojects/değerlendirmeler/Read | Bir proje içindeki değerlendirmeleri listeler |
 > | Action | Microsoft. Migrate/assessmentprojects/Delete | Değerlendirme projesini siler |
-> | Action | Microsoft. Migrate/assessmentprojects/gruplar/değerlendirmeler/assessedmachines/Read | Değerlendirilen bir makinenin özelliklerini al |
-> | Action | Microsoft. Migrate/assessmentprojects/gruplar/değerlendirmeler/silme | Bir değerlendirmeyi siler |
-> | Action | Microsoft. Migrate/assessmentprojects/gruplar/değerlendirmeler/downloadurl/eylem | Bir değerlendirme raporunun URL 'sini indirir |
+> | Action | Microsoft. Migrate/assessmentprojects/gruplar/değerlendirmeler/assessedmachines/Read | Değerlendirilen bir makinenin özelliklerini alın |
+> | Action | Microsoft. Migrate/assessmentprojects/gruplar/değerlendirmeler/silme | Bir iç değerlendirmeyi siler |
+> | Action | Microsoft. Migrate/assessmentprojects/gruplar/değerlendirmeler/downloadurl/eylem | Bir değerlendirme raporunun URL'sini yükler |
 > | Action | Microsoft. Migrate/assessmentprojects/gruplar/değerlendirmeler/okuma | Bir değerlendirmenin özelliklerini alır |
-> | Action | Microsoft. Migrate/assessmentprojects/gruplar/değerlendirmeler/yazma | Yeni bir değerlendirme oluşturur veya var olan bir değerlendirmeyi güncelleştirir |
+> | Action | Microsoft. Migrate/assessmentprojects/gruplar/değerlendirmeler/yazma | Yeni bir iç değerlendirme oluşturur veya mevcut bir iç değerlendirmeyi güncelleştirir |
 > | Action | Microsoft. Migrate/assessmentprojects/gruplar/Sil | Bir grubu siler |
-> | Action | Microsoft. Migrate/assessmentprojects/gruplar/okuma | Bir grubun özelliklerini al |
+> | Action | Microsoft. Migrate/assessmentprojects/gruplar/okuma | Bir grubun özelliklerini alın |
 > | Action | Microsoft. Migrate/assessmentprojects/gruplar/updateMachines/eylem | Makine ekleyerek veya kaldırarak grup güncelleştirme |
-> | Action | Microsoft. Migrate/assessmentprojects/gruplar/yaz | Yeni bir grup oluşturur veya var olan bir grubu güncelleştirir |
+> | Action | Microsoft. Migrate/assessmentprojects/gruplar/yaz | Yeni bir grup oluşturur veya mevcut bir grubu güncelleştirir |
 > | Action | Microsoft. Migrate/assessmentprojects/hiper sanal toplayıcılar/Sil | HyperV toplayıcısını siler |
 > | Action | Microsoft. Migrate/assessmentprojects/hypervtoplayıcıları/Read | HyperV toplayıcısının özelliklerini alır |
 > | Action | Microsoft. Migrate/assessmentprojects/hypervtoplayıcıları/Write | Yeni bir HyperV toplayıcısı oluşturur veya var olan bir HyperV toplayıcıyı güncelleştirir |
-> | Action | Microsoft. Migrate/assessmentprojects/makineler/okuma | Makinenin özelliklerini alır |
+> | Action | Microsoft. Migrate/assessmentprojects/makineler/okuma | Bir makinenin özelliklerini alır |
 > | Action | Microsoft. Migrate/assessmentprojects/Read | Değerlendirme projesinin özelliklerini alır |
 > | Action | Microsoft. Migrate/assessmentprojects/vmwarecollectors/Delete | VMware toplayıcısını siler |
 > | Action | Microsoft. Migrate/assessmentprojects/vmwarecollectors/Read | VMware toplayıcısının özelliklerini alır |
 > | Action | Microsoft. Migrate/assessmentprojects/vmwarecollectors/Write | Yeni bir VMware toplayıcısı oluşturur veya var olan bir VMware toplayıcıyı güncelleştirir |
 > | Action | Microsoft. Migrate/assessmentprojects/Write | Yeni bir değerlendirme projesi oluşturur veya var olan bir değerlendirme projesini güncelleştirir |
-> | Action | Microsoft. Migrate/konumlar/assessmentOptions/Read | Verilen konumda kullanılabilen değerlendirme seçeneklerini alır |
+> | Action | Microsoft. Migrate/konumlar/assessmentOptions/Read | Verilen konumda kullanılabilen iç değerlendirme seçeneklerini alır |
 > | Action | Microsoft. Migrate/Locations/checknameavaılabılıty/Action | Verilen konumdaki belirtilen aboneliğin kaynak adının kullanılabilirliğini denetler |
 > | Action | Microsoft. Migrate/migrateprojects/Databaseınstances/Read | Bir veritabanı örneğinin özelliklerini alır |
 > | Action | Microsoft. Migrate/migrateprojects/veritabanları/okuma | Bir veritabanının özelliklerini alır |
 > | Action | Microsoft. Migrate/migrateprojects/Delete | Bir geçişi projeyi siler |
-> | Action | Microsoft. Migrate/migrateprojeler/makineler/okuma | Makinenin özelliklerini alır |
+> | Action | Microsoft. Migrate/migrateprojeler/makineler/okuma | Bir makinenin özelliklerini alır |
 > | Action | Microsoft. Migrate/migrateprojects/MigrateEvents/Delete | Geçiş olayını siler |
 > | Action | Microsoft. Migrate/migrateprojeler/MigrateEvents/okuma | Geçiş olaylarının özelliklerini alır. |
 > | Action | Microsoft. Migrate/migrateprojects/Read | Projeyi geçir özelliklerini alır |
 > | Action | Microsoft. Migrate/migrateprojects/registerTool/Action | Aracı bir geçiş projesine kaydeder |
 > | Action | Microsoft. Migrate/migrateprojects/Solutions/cleanupData/Action | Projeyi geçir çözüm verilerini temizle |
 > | Action | Microsoft. Migrate/migrateprojects/Solutions/Delete | Bir geçiş projesi çözümünü siler |
-> | Action | Microsoft. Migrate/migrateprojects/Solutions/GetConfig/Action | Proje çözümünü geçir yapılandırmasını alır |
+> | Action | Microsoft. Migrate/migrateprojects/Solutions/GetConfig/Action | Geçiş projesi çözümünün yapılandırmasını alır |
 > | Action | Microsoft. Migrate/migrateprojects/Solutions/Read | Proje çözümünü geçirme özelliklerini alır |
 > | Action | Microsoft. Migrate/migrateprojects/Solutions/Write | Yeni bir geçiş projesi çözümü oluşturur veya var olan bir geçiş projesi çözümünü güncelleştirir |
 > | Action | Microsoft. Migrate/migrateprojects/Write | Yeni bir geçiş projesi oluşturur veya var olan bir geçişi projeyi güncelleştirir |
-> | Action | Microsoft. Migrate/Işlemler/okuma | Microsoft. Migrate kaynak sağlayıcısı 'nda bulunan işlemleri listeler |
+> | Action | Microsoft. Migrate/Işlemler/okuma | Microsoft.Migrate kaynak sağlayıcısındaki kullanılabilir işlemleri listeler |
 > | Action | Microsoft. Migrate/projeler/değerlendirmeler/okuma | Bir proje içindeki değerlendirmeleri listeler |
 > | Action | Microsoft. Migrate/projeler/Sil | Projeyi siler |
-> | Action | Microsoft. Migrate/projeler/gruplar/değerlendirmeler/assessedmachines/Read | Değerlendirilen bir makinenin özelliklerini al |
-> | Action | Microsoft. Migrate/projeler/gruplar/değerlendirmeler/silme | Bir değerlendirmeyi siler |
-> | Action | Microsoft. Migrate/projeler/gruplar/değerlendirmeler/downloadurl/eylem | Bir değerlendirme raporunun URL 'sini indirir |
+> | Action | Microsoft. Migrate/projeler/gruplar/değerlendirmeler/assessedmachines/Read | Değerlendirilen bir makinenin özelliklerini alın |
+> | Action | Microsoft. Migrate/projeler/gruplar/değerlendirmeler/silme | Bir iç değerlendirmeyi siler |
+> | Action | Microsoft. Migrate/projeler/gruplar/değerlendirmeler/downloadurl/eylem | Bir değerlendirme raporunun URL'sini yükler |
 > | Action | Microsoft. Migrate/projeler/gruplar/değerlendirmeler/okuma | Bir değerlendirmenin özelliklerini alır |
-> | Action | Microsoft. Migrate/projeler/gruplar/değerlendirmeler/yazma | Yeni bir değerlendirme oluşturur veya var olan bir değerlendirmeyi güncelleştirir |
+> | Action | Microsoft. Migrate/projeler/gruplar/değerlendirmeler/yazma | Yeni bir iç değerlendirme oluşturur veya mevcut bir iç değerlendirmeyi güncelleştirir |
 > | Action | Microsoft. Migrate/projeler/gruplar/Sil | Bir grubu siler |
-> | Action | Microsoft. Migrate/projeler/gruplar/okuma | Bir grubun özelliklerini al |
-> | Action | Microsoft. Migrate/projeler/gruplar/yaz | Yeni bir grup oluşturur veya var olan bir grubu güncelleştirir |
+> | Action | Microsoft. Migrate/projeler/gruplar/okuma | Bir grubun özelliklerini alın |
+> | Action | Microsoft. Migrate/projeler/gruplar/yaz | Yeni bir grup oluşturur veya mevcut bir grubu güncelleştirir |
 > | Action | Microsoft. Migrate/projeler/anahtarlar/eylem | Proje için paylaşılan anahtarları alır |
-> | Action | Microsoft. Migrate/projeler/makineler/okuma | Makinenin özelliklerini alır |
-> | Action | Microsoft. Migrate/projeler/okuma | Projenin özelliklerini alır |
-> | Action | Microsoft. Migrate/projeler/yazma | Yeni bir proje oluşturur veya var olan bir projeyi güncelleştirir |
-> | Action | Microsoft. Migrate/Register/ACTION | Aboneliği Microsoft. Migrate kaynak sağlayıcısına kaydeder |
+> | Action | Microsoft. Migrate/projeler/makineler/okuma | Bir makinenin özelliklerini alır |
+> | Action | Microsoft. Migrate/projeler/okuma | Bir projenin özelliklerini alır |
+> | Action | Microsoft. Migrate/projeler/yazma | Yeni bir proje oluşturur veya mevcut bir projeyi güncelleştirir |
+> | Action | Microsoft. Migrate/Register/ACTION | Aboneliği Microsoft.Migrate kaynak sağlayıcısına kaydeder |
 
 ## <a name="microsoftmixedreality"></a>Microsoft. MixedReality
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. MixedReality/Register/ACTION | Karma Gerçeklik kaynak sağlayıcısı için bir abonelik kaydeder. |
 > | DataAction | Microsoft. MixedReality/SpatialAnchorsAccounts/Create/ACTION | Uzamsal bağlayıcı oluşturma |
@@ -3510,7 +3497,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftnetapp"></a>Microsoft. NetApp
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. NetApp/konumlar/operationresults/Read | Bir işlem sonucu kaynağını okur. |
 > | Action | Microsoft. NetApp/konumlar/okuma | Bir kullanılabilirlik denetimi kaynağını okur. |
@@ -3532,7 +3519,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. Network/Applicationgatewaykullanılabilirliği Blerequestheaders/Read | Application Gateway kullanılabilir Istek üst bilgilerini al |
 > | Action | Microsoft. Network/Applicationgatewaykullanılabilirliği Bleresponseheaders/okuma | Application Gateway kullanılabilir yanıt üst bilgisi al |
@@ -3962,40 +3949,40 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
-> | Action | Microsoft. Notificationhub 'Lar/CheckNamespaceAvailability/Action | Belirtilen bir ad alanı kaynak adının NotificationHub hizmeti içinde kullanılabilir olup olmadığını denetler. |
-> | Action | Microsoft. Notificationhub 'Lar/ad alanları/authorizationRules/eylem | Ad alanı yetkilendirme kuralları açıklaması listesini alın. |
+> | Action | Microsoft. Notificationhub 'Lar/CheckNamespaceAvailability/Action | Belirli bir Ad Alanı kaynak adının NotificationHub hizmetinde kullanılabilir olup olmadığını denetler. |
+> | Action | Microsoft. Notificationhub 'Lar/ad alanları/authorizationRules/eylem | Ad Alanı Yetkilendirme Kuralları açıklamasının listesini alır. |
 > | Action | Microsoft. Notificationhub 'Lar/ad alanları/authorizationRules/silme | Ad alanı yetkilendirme kuralını silin. Varsayılan ad alanı yetkilendirme kuralı silinemez.  |
-> | Action | Microsoft. Notificationhub 'Lar/ad alanları/authorizationRules/ListKeys/Action | Ad alanına bağlantı dizesi al |
-> | Action | Microsoft. Notificationhub 'Lar/ad alanları/authorizationRules/okuma | Ad alanı yetkilendirme kuralları açıklaması listesini alın. |
-> | Action | Microsoft. Notificationhub 'Lar/ad alanları/authorizationRules/regenerateKeys/ACTION | Ad alanı yetkilendirme kuralı birincil/Ikincil anahtarı yeniden oluştur, yeniden oluşturulması gereken anahtarı belirtin |
+> | Action | Microsoft. Notificationhub 'Lar/ad alanları/authorizationRules/ListKeys/Action | Ad Alanı için Bağlantı Dizesini alın |
+> | Action | Microsoft. Notificationhub 'Lar/ad alanları/authorizationRules/okuma | Ad Alanı Yetkilendirme Kuralları açıklamasının listesini alır. |
+> | Action | Microsoft. Notificationhub 'Lar/ad alanları/authorizationRules/regenerateKeys/ACTION | Ad Alanı Yetkilendirme Kuralı Birincil/İkincil Anahtarı Yeniden Oluşturma, Yeniden oluşturulması gereken Anahtarı belirtin |
 > | Action | Microsoft. Notificationhub 'Lar/ad alanları/authorizationRules/yazma | Ad alanı düzeyinde yetkilendirme kuralları oluşturun ve özelliklerini güncelleştirin. Yetkilendirme kuralları erişim hakları, birincil ve Ikincil anahtarlar güncelleştirilebilen olabilir. |
-> | Action | Microsoft. Notificationhub 'Lar/ad alanları/Checbcertificate sertifikası/eylem | Bir ad alanı içinde belirli bir NotificationHub adının kullanılabilir olup olmadığını denetler. |
-> | Action | Microsoft. Notificationhub 'Lar/ad alanları/silme | Ad alanı kaynağını Sil |
-> | Action | Microsoft. Notificationhub 'Lar/ad alanları/Notificationhub/authorizationRules/Action | Bildirim Hub 'ı yetkilendirme kurallarının listesini alın |
-> | Action | Microsoft. Notificationhub 'Lar/ad alanları/Notificationhub/authorizationRules/Delete | Bildirim Hub 'ı yetkilendirme kurallarını Sil |
-> | Action | Microsoft. Notificationhub 'Lar/ad alanları/Notificationhub/authorizationRules/ListKeys/Action | Bağlantı dizesini Bildirim Hub 'ına al |
-> | Action | Microsoft. Notificationhub 'Lar/ad alanları/Notificationhub/authorizationRules/Read | Bildirim Hub 'ı yetkilendirme kurallarının listesini alın |
-> | Action | Microsoft. Notificationhub 'Lar/ad alanları/Notificationhub/authorizationRules/regenerateKeys/ACTION | Bildirim Hub 'ı yetkilendirme kuralı birincil/Ikincil anahtarı yeniden oluşturma, yeniden oluşturulması gereken anahtarı belirtin |
+> | Action | Microsoft. Notificationhub 'Lar/ad alanları/Checbcertificate sertifikası/eylem | Belirli bir NotificationHub adının bir Ad Alanı içinde kullanılabilir olup olmadığını denetler. |
+> | Action | Microsoft. Notificationhub 'Lar/ad alanları/silme | Ad Alanı Kaynağını silin |
+> | Action | Microsoft. Notificationhub 'Lar/ad alanları/Notificationhub/authorizationRules/Action | Bildirim Hub'ı Yetkilendirme Kurallarının listesini alın |
+> | Action | Microsoft. Notificationhub 'Lar/ad alanları/Notificationhub/authorizationRules/Delete | Bildirim Hub'ı Yetkilendirme Kurallarını Sil |
+> | Action | Microsoft. Notificationhub 'Lar/ad alanları/Notificationhub/authorizationRules/ListKeys/Action | Bildirim Hub'ı Bağlantı Dizesini alın |
+> | Action | Microsoft. Notificationhub 'Lar/ad alanları/Notificationhub/authorizationRules/Read | Bildirim Hub'ı Yetkilendirme Kurallarının listesini alın |
+> | Action | Microsoft. Notificationhub 'Lar/ad alanları/Notificationhub/authorizationRules/regenerateKeys/ACTION | Bildirim Hub'ı Yetkilendirme Kuralı Birincil/İkincil Anahtarı Yeniden Oluşturma, Yeniden oluşturulması gereken Anahtarı belirtin |
 > | Action | Microsoft. Notificationhub 'Lar/ad alanları/Notificationhub/authorizationRules/Write | Bildirim Hub 'ı yetkilendirme kuralları oluşturun ve özelliklerini güncelleştirin. Yetkilendirme kuralları erişim hakları, birincil ve Ikincil anahtarlar güncelleştirilebilen olabilir. |
-> | Action | Microsoft. Notificationhub 'Lar/ad alanları/Notificationhub/debugSend/Action | Test anında iletme bildirimi gönderin. |
-> | Action | Microsoft. Notificationhub 'Lar/ad alanları/Notificationhub 'Lar/silme | Bildirim Hub 'ı kaynağını Sil |
+> | Action | Microsoft. Notificationhub 'Lar/ad alanları/Notificationhub/debugSend/Action | Test amaçlı bir anında iletme bildirimi gönderin. |
+> | Action | Microsoft. Notificationhub 'Lar/ad alanları/Notificationhub 'Lar/silme | Bildirim Hub'ı Kaynağını Sil |
 > | Action | Microsoft. Notificationhub 'Lar/ad alanları/Notificationhub 'Lar/metricDefinitions/okuma | Ad alanı ölçümleri kaynak açıklamalarının listesini al |
 > | Action | Microsoft. Notificationhub 'Lar/ad alanları/Notificationhub/pnsCredentials/Action | Tüm Notification Hub 'ı kimlik bilgilerini alın. Bu, WNS, MPNS, APNS, GCM ve Baidu kimlik bilgilerini içerir |
-> | Action | Microsoft. Notificationhub 'Lar/ad alanları/Notificationhub/okuma | Bildirim Hub 'ı kaynak açıklamalarının listesini al |
+> | Action | Microsoft. Notificationhub 'Lar/ad alanları/Notificationhub/okuma | Bildirim Hub'ı Kaynak Açıklamalarının listesini alın |
 > | Action | Microsoft. Notificationhub 'Lar/ad alanları/Notificationhub/yazma | Bir Bildirim Hub 'ı oluşturun ve özelliklerini güncelleştirin. Özellikleri genellikle PNS kimlik bilgilerini içerir. Yetkilendirme kuralları ve TTL |
-> | Action | Microsoft. Notificationhub 'Lar/ad alanları/okuma | Ad alanı kaynağı açıklaması listesini al |
+> | Action | Microsoft. Notificationhub 'Lar/ad alanları/okuma | Ad Alanı Kaynak Açıklamasının listesini alır |
 > | Action | Microsoft. Notificationhub 'Lar/ad alanları/yazma | Bir ad alanı kaynağı oluşturun ve özelliklerini güncelleştirin. Ad alanının etiketleri ve kapasitesi, güncelleştirilebilen özelliklerdir. |
-> | Action | Microsoft. Notificationhub 'Lar/operationResults/Read | Notification Hubs sağlayıcısı için işlem sonuçlarını döndürür |
-> | Action | Microsoft. Notificationhub 'Lar/işlemler/okuma | Notification Hubs sağlayıcısı için desteklenen işlemlerin listesini döndürür |
+> | Action | Microsoft. Notificationhub 'Lar/operationResults/Read | Bildirim Hub'ları sağlayıcı için işlem sonuçlarını döndürür |
+> | Action | Microsoft. Notificationhub 'Lar/işlemler/okuma | Bildirim Hub'ları sağlayıcı için desteklenen işlemlerin bir listesini döndürür |
 > | Action | Microsoft. Notificationhub/Register/ACTION | Notificationhub 'Lar kaynak sağlayıcısı için aboneliği kaydeder ve ad alanları ile Notificationhub 'ların oluşturulmasını sunar |
 > | Action | Microsoft. Notificationhub 'Lar/kaydını kaldırma/eylem | Notificationhub 'Lar kaynak sağlayıcısı için aboneliğin kaydını siler ve ad alanları ile Notificationhub 'ların oluşturulmasını etkinleştirilir |
 
 ## <a name="microsoftoffazure"></a>Microsoft. OffAzure
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. OffAzure/HyperVSites/kümeler/okuma | Hyper-V kümesinin özelliklerini alır |
 > | Action | Microsoft. OffAzure/HyperVSites/kümeler/Write | Hyper-V kümesi oluşturur veya güncelleştirir |
@@ -4031,7 +4018,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. Operationalınsights/linkTargets/okuma | Bir Azure aboneliği ile ilişkilendirilmemiş mevcut hesapları listeler. Bu Azure aboneliğini bir çalışma alanına bağlamak için, çalışma alanı oluştur işleminin müşteri kimliği özelliği içinde bu işlem tarafından döndürülen bir müşteri kimliği kullanın. |
 > | Action | Microsoft. operationalınsights/işlemler/okuma | Tüm kullanılabilir Operationalınsights REST API işlemlerini listeler. |
@@ -4073,35 +4060,35 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 > | Action | Microsoft. Operationalınsights/Workspaces/Query/AADDomainServicesPolicyChange/Read | AADDomainServicesPolicyChange tablosundan verileri okuma |
 > | Action | Microsoft. Operationalınsights/Workspaces/Query/AADDomainServicesPrivilegeUse/Read | AADDomainServicesPrivilegeUse tablosundan verileri okuma |
 > | Action | Microsoft. Operationalınsights/Workspaces/Query/AADDomainServicesSystemSecurity/Read | AADDomainServicesSystemSecurity tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Adassessmentönerisi/okuma | Adassessmentöneriyi tablosundan verileri okuma |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Adassessmentönerisi/okuma | ADAssessmentRecommendation tablosundan veri oku |
 > | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/ADFActivityRun/Read | ADFActivityRun tablosundan verileri oku |
 > | Action | Microsoft. Operationalınsights/Workspaces/Query/Adfardışık düzen eylemsizlik/Read | Adfardışık düzen eylemsizlik tablosundan verileri okuma |
 > | Action | Microsoft. Operationalınsights/Workspaces/Query/ADFTriggerRun/Read | ADFTriggerRun tablosundan verileri oku |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/ADReplicationResult/okundu | ADReplicationResult tablosundan verileri oku |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/Adsecurityassessmentönerisi/okuma | Adsecurityassessmentönerisi tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/uyarı/okuma | Uyarı tablosundan verileri oku |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/AlertHistory/Read | AlertHistory tablosundan verileri okuma |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/ADReplicationResult/okundu | ADReplicationResult tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/Adsecurityassessmentönerisi/okuma | ADSecurityAssessmentRecommendation tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/uyarı/okuma | Alert tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/AlertHistory/Read | AlertHistory tablosundan veri oku |
 > | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Appcenterhata/okuma | AppCenterError tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/ApplicationInsights/okuma | ApplicationInsights tablosundan verileri okuma |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/ApplicationInsights/okuma | ApplicationInsights tablosundan veri oku |
 > | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/AuditLogs/okuma | AuditLogs tablosundan verileri oku |
 > | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/AutoscaleEvaluationsLog/okuma | AutoscaleEvaluationsLog tablosundan verileri okuma |
 > | Action | Microsoft. Operationalınsights/Workspaces/Query/oto Scalescaleactionslog/Read | Oto Scalescaleactionslog tablosundan verileri oku |
 > | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Awscses Izi/okuma | Awscses Iziz tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/AzureActivity/okuma | AzureActivity tablosundan verileri okuma |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/AzureActivity/okuma | AzureActivity tablosundan veri oku |
 > | Action | Microsoft. Operationalınsights/Workspaces/sorgu/Azureassessmentönerisi/okuma | Azureassessmentöneriyi tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/AzureMetrics/okuma | AzureMetrics tablosundan verileri okuma |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/AzureMetrics/okuma | AzureMetrics tablosundan veri oku |
 > | Action | Microsoft. Operationalınsights/Workspaces/Query/BlockchainApplicationLog/Read | BlockchainApplicationLog tablosundan verileri okuma |
 > | Action | Microsoft. Operationalınsights/Workspaces/Query/BlockchainProxyLog/Read | BlockchainProxyLog tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/BoundPort/Read | BoundPort tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/CommonSecurityLog/Read | CommonSecurityLog tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/bilgisayar grubu/okuma | ComputerGroup tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/ConfigurationChange/Read | ConfigurationChange tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/ConfigurationData/Read | ConfigurationData tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/Containerımageınventory/Read | Containerımageınventory tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Containerınventory/Read | Containerınventory tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/ContainerLog/Read | ContainerLog tablosundan verileri okuma |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/BoundPort/Read | BoundPort tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/CommonSecurityLog/Read | CommonSecurityLog tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/bilgisayar grubu/okuma | ComputerGroup tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/ConfigurationChange/Read | ConfigurationChange tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/ConfigurationData/Read | ConfigurationData tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/Containerımageınventory/Read | ContainerImageInventory tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Containerınventory/Read | ContainerInventory tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/ContainerLog/Read | ContainerLog tablosundan veri oku |
 > | Action | Microsoft. Operationalınsights/Workspaces/Query/Containernodeınventory/Read | Containernodeınventory tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/ContainerServiceLog/okuma | ContainerServiceLog tablosundan verileri okuma |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/ContainerServiceLog/okuma | ContainerServiceLog tablosundan veri oku |
 > | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/DatabricksAccounts/okuma | DatabricksAccounts tablosundan verileri okuma |
 > | Action | Microsoft. Operationalınsights/Workspaces/Query/DatabricksClusters/okuma | DatabricksClusters tablosundan verileri okuma |
 > | Action | Microsoft. Operationalınsights/Workspaces/Query/DatabricksDBFS/Read | DatabricksDBFS tablosundan verileri okuma |
@@ -4112,167 +4099,167 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 > | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/DatabricksSSH/Read | DatabricksSSH tablosundan verileri okuma |
 > | Action | Microsoft. Operationalınsights/Workspaces/Query/DatabricksTables/Read | DatabricksTables tablosundan veri okuma |
 > | Action | Microsoft. Operationalınsights/Workspaces/Query/DatabricksWorkspace/Read | DatabricksWorkspace tablosundan veri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/DeviceAppCrash/okuma | DeviceAppCrash tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Deviceapplayeniden Başlat/oku | Deviceapplayeniden Başlat tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/DeviceCalendar/Read | DeviceCalendar tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Devicectaanup/okuma | Devicectaanup tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/DeviceConnectSession/Read | DeviceConnectSession tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/DeviceEtw/okuma | DeviceEtw tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/DeviceHardwareHealth/Read | DeviceHardwareHealth tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/DeviceHealth/Read | DeviceHealth tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Devicesinyal/okuma | Devicesinyal tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/DeviceSkypeHeartbeat/okuma | DeviceSkypeHeartbeat tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/DeviceSkypeSignIn/okuma | DeviceSkypeSignIn tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Devicesliepstate/Read | Devicestaepstate tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Dnne hatası/okuma | Dılure tablosundan verileri oku |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Dakppresorumluluğun/okunan | Dappreyükümlülük tablosundan verileri oku |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/Dhdrivergüvenirlik/okuma | Dhdrivergüvenirlik tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/Dhlogonhatalarıyla/okuma | Dhlogonarızaları tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/Dhlogonölçümlerini/Read | Dhlogonölçümlerini tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/Dhoatık Kıdata/Read | Dhoatık verileri tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Dhosgüvenilirliği/okuma | Dhosgüvenirlik tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/DHWipAppLearning/okuma | DHWipAppLearning tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/DnsEvents/okuma | DnsEvents tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Dnsınventory/okuma | DnsInventory tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/ETWEvent/okuma | ETWEvent tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/olay/okuma | Olay tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/ExchangeAssessmentRecommendation/okuma | ExchangeAssessmentRecommendation tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/ExchangeOnlineAssessmentRecommendation/okuma | ExchangeOnlineAssessmentRecommendation tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/sinyal/okuma | Sinyal tablosundan verileri okuma |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/DeviceAppCrash/okuma | DeviceAppCrash tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Deviceapplayeniden Başlat/oku | DeviceAppLaunch tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/DeviceCalendar/Read | DeviceCalendar tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Devicectaanup/okuma | DeviceCleanup tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/DeviceConnectSession/Read | DeviceConnectSession tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/DeviceEtw/okuma | DeviceEtw tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/DeviceHardwareHealth/Read | DeviceHardwareHealth tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/DeviceHealth/Read | DeviceHealth tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Devicesinyal/okuma | DeviceHeartbeat tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/DeviceSkypeHeartbeat/okuma | DeviceSkypeHeartbeat tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/DeviceSkypeSignIn/okuma | DeviceSkypeSignIn tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Devicesliepstate/Read | DeviceSleepState tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Dnne hatası/okuma | DHAppFailure tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Dakppresorumluluğun/okunan | DHAppReliability tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/Dhdrivergüvenirlik/okuma | DHDriverReliability tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/Dhlogonhatalarıyla/okuma | DHLogonFailures tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/Dhlogonölçümlerini/Read | DHLogonMetrics tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/Dhoatık Kıdata/Read | DHOSCrashData tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Dhosgüvenilirliği/okuma | DHOSReliability tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/DHWipAppLearning/okuma | DHWipAppLearning tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/DnsEvents/okuma | DnsEvents tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Dnsınventory/okuma | DnsInventory tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/ETWEvent/okuma | ETWEvent tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/olay/okuma | Event tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/ExchangeAssessmentRecommendation/okuma | ExchangeAssessmentRecommendation tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/ExchangeOnlineAssessmentRecommendation/okuma | ExchangeOnlineAssessmentRecommendation tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/sinyal/okuma | Hearbeat tablosundan veri oku |
 > | Action | Microsoft. Operationalınsights/Workspaces/Query/HuntingBookmark/Read | HuntingBookmark tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/IISAssessmentRecommendation/okuma | IISAssessmentRecommendation tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/ınboundconnection/Read | Inboundconnection tablosundan verileri okuma |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/IISAssessmentRecommendation/okuma | IISAssessmentRecommendation tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/ınboundconnection/Read | InboundConnection tablosundan veri oku |
 > | Action | Microsoft. Operationalınsights/Workspaces/Query/ınsightsölçümlerini/Read | Insightsölçümlerini tablosundan verileri okuma |
 > | Action | Microsoft. Operationalınsights/Workspaces/Query/ıntuneauditlogs/Read | Intuneauditlogs tablosundan verileri okuma |
 > | Action | Microsoft. Operationalınsights/Workspaces/Query/ıntuneoperationallogs/Read | Intuneoperationallogs tablosundan verileri okuma |
 > | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/KubeEvents/okuma | KubeEvents tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Kubenodeınventory/Read | Kubenodeınventory tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/KubePodInventory/okuma | KubePodInventory tablosundan verileri okuma |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Kubenodeınventory/Read | KubeNodeInventory tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/KubePodInventory/okuma | KubePodInventory tablosundan veri oku |
 > | Action | Microsoft. Operationalınsights/Workspaces/Query/KubeServices/Read | KubeServices tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/LinuxAuditLog/Read | LinuxAuditLog tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/sorgu/MAApplication/Read | MAApplication tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/MAApplicationHealth/Read | MAApplicationHealth tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/sorgu/MAApplicationHealthAlternativeVersions/Read | MAApplicationHealthAlternativeVersions tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Maapplicationhealthsorunlar/okuma | Maapplicationhealthsorunlar tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/Maapplicationınstance/Read | Maapplicationınstance tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/Maapplicationınstancereadsürekliliği/okuma | Maapplicationınstancereadılmi tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/MAApplicationReadiness/Read | MAApplicationReadiness tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/MADeploymentPlan/okuma | MADeploymentPlan tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/MADevice/okuma | MADevice tablosundan verileri okuma |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/LinuxAuditLog/Read | LinuxAuditLog tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/sorgu/MAApplication/Read | MAApplication tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/MAApplicationHealth/Read | MAApplicationHealth tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/sorgu/MAApplicationHealthAlternativeVersions/Read | MAApplicationHealthAlternativeVersions tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Maapplicationhealthsorunlar/okuma | MAApplicationHealthIssues tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/Maapplicationınstance/Read | MAApplicationInstance tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/Maapplicationınstancereadsürekliliği/okuma | MAApplicationInstanceReadiness tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/MAApplicationReadiness/Read | MAApplicationReadiness tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/MADeploymentPlan/okuma | MADeploymentPlan tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/MADevice/okuma | MADevice tablosundan veri oku |
 > | Action | Microsoft. Operationalınsights/Workspaces/Query/Madevicenotentopla/Read | Madevicenotentoplatable 'dan verileri okuma |
 > | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/MADeviceNRT/okuma | MADeviceNRT tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/sorgu/MADevicePnPHealth/Read | MADevicePnPHealth tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/MADevicePnPHealthAlternativeVersions/Read | MADevicePnPHealthAlternativeVersions tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/Madevicepnphealthsorunlar/okuma | Madevicepnphealthsorunlar tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Madevicereadsürekliliği/okuma | Madevicereadtıo tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/Madriverınstancereadsürekliliği/okuma | Madriverınstancereadılmi tablosundan verileri oku |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/MADriverReadiness/Read | MADriverReadiness tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/Maofficeaddın/Read | Maofficeeklenti tablosundan verileri okuma |
+> | Action | Microsoft. Operationalınsights/Workspaces/sorgu/MADevicePnPHealth/Read | MADevicePnPHealth tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/MADevicePnPHealthAlternativeVersions/Read | MADevicePnPHealthAlternativeVersions tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/Madevicepnphealthsorunlar/okuma | MADevicePnPHealthIssues tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Madevicereadsürekliliği/okuma | MADeviceReadiness tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/Madriverınstancereadsürekliliği/okuma | MADriverInstanceReadiness tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/MADriverReadiness/Read | MADriverReadiness tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/Maofficeaddın/Read | MAOfficeAddin tablosundan veri oku |
 > | Action | Microsoft. Operationalınsights/Workspaces/Query/Maofficeaddınentityhealth/Read | Maofficeaddınentityhealth tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/Maofficeaddınhealth/Read | Maofficeaddınhealth tablosundan verileri okuma |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/Maofficeaddınhealth/Read | MAOfficeAddinHealth tablosundan veri oku |
 > | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/MAOfficeAddinHealthEventNRT/okuma | MAOfficeAddinHealthEventNRT tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/Maofficeaddınhealthsorunlar/okuma | Maofficeaddınhealthsorunlar tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/Maofficeaddınınstance/Read | Maofficeaddınınstance tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/Maofficeaddınınstancereadsürekliliği/okuma | Maofficeaddınınstancereadılmi tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/Maofficeaddınreadiness/Read | Maofficeaddınreadiness tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/Maofficeuygulaması/okuma | Maofficeuygulama tablosundan verileri okuma |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/Maofficeaddınhealthsorunlar/okuma | MAOfficeAddinHealthIssues tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/Maofficeaddınınstance/Read | MAOfficeAddinInstance tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/Maofficeaddınınstancereadsürekliliği/okuma | MAOfficeAddinInstanceReadiness tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/Maofficeaddınreadiness/Read | MAOfficeAddinReadiness tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/Maofficeuygulaması/okuma | MAOfficeApp tablosundan veri oku |
 > | Action | Microsoft. Operationalınsights/Workspaces/Query/MAOfficeAppCrashesNRT/okuma | MAOfficeAppCrashesNRT tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/sorgu/MAOfficeAppHealth/Read | MAOfficeAppHealth tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/Maofficeappınstance/Read | Maofficeappınstance tablosundan verileri okuma |
+> | Action | Microsoft. Operationalınsights/Workspaces/sorgu/MAOfficeAppHealth/Read | MAOfficeAppHealth tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/Maofficeappınstance/Read | MAOfficeAppInstance tablosundan veri oku |
 > | Action | Microsoft. Operationalınsights/Workspaces/Query/Maofficeappınstancehealth/Read | Maofficeappınstancehealth tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/MAOfficeAppReadiness/Read | MAOfficeAppReadiness tablosundan verileri okuma |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/MAOfficeAppReadiness/Read | MAOfficeAppReadiness tablosundan veri oku |
 > | Action | Microsoft. Operationalınsights/Workspaces/Query/MAOfficeAppSessionsNRT/okuma | MAOfficeAppSessionsNRT tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/Maofficebuilınfo/Read | Maofficebuilınfo tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/MAOfficeCurrencyAssessment/okuma | MAOfficeCurrencyAssessment tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/MAOfficeCurrencyAssessmentDailyCounts/okuma | MAOfficeCurrencyAssessmentDailyCounts tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/sorgu/MAOfficeDeploymentStatus/Read | MAOfficeDeploymentStatus tablosundan verileri okuma |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/Maofficebuilınfo/Read | MAOfficeBuildInfo tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/MAOfficeCurrencyAssessment/okuma | MAOfficeCurrencyAssessment tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/MAOfficeCurrencyAssessmentDailyCounts/okuma | MAOfficeCurrencyAssessmentDailyCounts tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/sorgu/MAOfficeDeploymentStatus/Read | MAOfficeDeploymentStatus tablosundan veri oku |
 > | Action | Microsoft. Operationalınsights/Workspaces/Query/MAOfficeDeploymentStatusNRT/Read | MAOfficeDeploymentStatusNRT tablosundan verileri okuma |
 > | Action | Microsoft. Operationalınsights/Workspaces/Query/Maofficemakroerrornrt/okuma | MAOfficeMacroErrorNRT tablosundan verileri okuma |
 > | Action | Microsoft. Operationalınsights/Workspaces/Query/Maofficemakroglobalhealth/Read | Maofficemakroglobalhealth tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/Maofficemakrosağlığı/okuma | Maofficemakrohealth tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/Maofficemakrohealthsorunlar/okuma | Maofficemacrohealthsorunlar tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/Maofficemakroıssueınstancec/Read | Maofficemacroıssueınstancectablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/Maofficemakroıssuereadsürekliliği/okuma | Maofficemacroıssuereadılmi tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/Maofficemakroözeti/okuma | MAOfficeMacroSummary tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/MAOfficeSuite/okuma | MAOfficeSuite tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/Maofficesuiteınstance/Read | Maofficesuiteınstance tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/MAProposedPilotDevices/okuma | MAProposedPilotDevices tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/Mawindowsbuilınfo/Read | Mawindowsbuilınfo tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Mawindowscurrencment/Read | Mawindowscurrencyaskment tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/Mawindowscurrencyassessmentgünlükcounts/okuma | MAWindowsCurrencyAssessmentDailyCounts tablosundan verileri oku |
-> | Action | Microsoft. Operationalınsights/Workspaces/sorgu/MAWindowsDeploymentStatus/Read | MAWindowsDeploymentStatus tablosundan verileri okuma |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/Maofficemakrosağlığı/okuma | MAOfficeMacroHealth tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/Maofficemakrohealthsorunlar/okuma | MAOfficeMacroHealthIssues tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/Maofficemakroıssueınstancec/Read | MAOfficeMacroIssueInstanceReadiness tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/Maofficemakroıssuereadsürekliliği/okuma | MAOfficeMacroIssueReadiness tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/Maofficemakroözeti/okuma | MAOfficeMacroSummary tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/MAOfficeSuite/okuma | MAOfficeSuite tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/Maofficesuiteınstance/Read | MAOfficeSuiteInstance tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/MAProposedPilotDevices/okuma | MAProposedPilotDevices tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/Mawindowsbuilınfo/Read | MAWindowsBuildInfo tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Mawindowscurrencment/Read | MAWindowsCurrencyAssessment tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/Mawindowscurrencyassessmentgünlükcounts/okuma | MAWindowsCurrencyAssessmentDailyCounts tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/sorgu/MAWindowsDeploymentStatus/Read | MAWindowsDeploymentStatus tablosundan veri oku |
 > | Action | Microsoft. Operationalınsights/Workspaces/Query/MAWindowsDeploymentStatusNRT/okuma | MAWindowsDeploymentStatusNRT tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/Mawindowssysreqınstancereadsürekliliği/okuma | Mawindowssysreqınstancereadtıı tablosundan verileri okuma |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/Mawindowssysreqınstancereadsürekliliği/okuma | MAWindowsSysReqInstanceReadiness tablosundan veri oku |
 > | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/MicrosoftWebApplicationLog/Read | MicrosoftWebApplicationLog tablosundan verileri okuma |
 > | Action | Microsoft. Operationalınsights/Workspaces/Query/MicrosoftWebFunctionExecutionLogs/Read | MicrosoftWebFunctionExecutionLogs tablosundan verileri okuma |
 > | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/MicrosoftWebStdOutStdErrLog/okuma | MicrosoftWebStdOutStdErrLog tablosundan verileri okuma |
 > | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/MicrosoftWebW3CLog/okuma | MicrosoftWebW3CLog tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/NetworkMonitoring/Read | NetworkMonitoring tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/Officeetkinliği/okuma | OfficeActivity tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Işlem/okuma | Işlem tablosundan verileri oku |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/OutboundConnection/Read | OutboundConnection tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/perf/okuma | Perf tablosundan verileri oku |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/ProtectionStatus/Read | ProtectionStatus tablosundan verileri okuma |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/NetworkMonitoring/Read | NetworkMonitoring tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/Officeetkinliği/okuma | OfficeActivity tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Işlem/okuma | Operation tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/OutboundConnection/Read | OutboundConnection tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/perf/okuma | Perf tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/ProtectionStatus/Read | ProtectionStatus tablosundan veri oku |
 > | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/okuma | Çalışma alanındaki veriler üzerinde sorgu çalıştırma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/ReservedAzureCommonFields/okuma | ReservedAzureCommonFields tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/ReservedCommonFields/Read | ReservedCommonFields tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/Sccmassessmentönerisi/okuma | Sccmassessmentöneriyi tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Scomassessmentönerisi/okuma | Scomassessmentöneriyi tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/SecurityAlert/Read | SecurityAlert tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/SecurityBaseline/okuma | SecurityBaseline tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/SecurityBaselineSummary/Read | SecurityBaselineSummary tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/SecurityDetection/okuma | SecurityDetection tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/SecurityEvent/Read | SecurityEvent tablosundan verileri okuma |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/ReservedAzureCommonFields/okuma | ReservedAzureCommonFields tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/ReservedCommonFields/Read | ReservedCommonFields tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/Sccmassessmentönerisi/okuma | SCCMAssessmentRecommendation tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Scomassessmentönerisi/okuma | SCOMAssessmentRecommendation tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/SecurityAlert/Read | SecurityAlert tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/SecurityBaseline/okuma | SecurityBaseline tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/SecurityBaselineSummary/Read | SecurityBaselineSummary tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/SecurityDetection/okuma | SecurityDetection tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/SecurityEvent/Read | SecurityEvent tablosundan veri oku |
 > | Action | Microsoft. Operationalınsights/Workspaces/Query/Securityıotrawevent/Read | Securityıotrawevent tablosundan verileri okuma |
 > | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Securityönerisi/okuma | Securityöneriyi tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/ServiceFabricOperationalEvent/Read | ServiceFabricOperationalEvent tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/ServiceFabricReliableActorEvent/Read | ServiceFabricReliableActorEvent tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/ServiceFabricReliableServiceEvent/Read | ServiceFabricReliableServiceEvent tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Sfbassessmentönerisi/okuma | Sfbassessmentöneriyi tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/SfBOnlineAssessmentRecommendation/okuma | SfBOnlineAssessmentRecommendation tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/SharePointOnlineAssessmentRecommendation/okuma | SharePointOnlineAssessmentRecommendation tablosundan verileri okuma |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/ServiceFabricOperationalEvent/Read | ServiceFabricOperationalEvent tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/ServiceFabricReliableActorEvent/Read | ServiceFabricReliableActorEvent tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/ServiceFabricReliableServiceEvent/Read | ServiceFabricReliableServiceEvent tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Sfbassessmentönerisi/okuma | SfBAssessmentRecommendation tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/SfBOnlineAssessmentRecommendation/okuma | SfBOnlineAssessmentRecommendation tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/SharePointOnlineAssessmentRecommendation/okuma | SharePointOnlineAssessmentRecommendation tablosundan veri oku |
 > | Action | Microsoft. Operationalınsights/Workspaces/Query/Signınlogs/Read | Signınlogs tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Spassessmentönerisi/okuma | Spassessmentöneriyi tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/Sqlassessmentönerisi/okuma | Sqlassessmentöneriyi tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/SQLQueryPerformance/Read | SQLQueryPerformance tablosundan verileri okuma |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Spassessmentönerisi/okuma | SPAssessmentRecommendation tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/Sqlassessmentönerisi/okuma | SQLAssessmentRecommendation tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/SQLQueryPerformance/Read | SQLQueryPerformance tablosundan veri oku |
 > | Action | Microsoft. Operationalınsights/Workspaces/Query/Sqlthreatprotectionlogindenetimleri/okuma | Sqlthreatprotectionlogindenetimleri tablosundan verileri okuma |
 > | Action | Microsoft. Operationalınsights/Workspaces/Query/SQL,, ıyassessmentresult/Read | SQLbir bu sonuç tablosundan verileri oku |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Syslog/okuma | Syslog tablosundan veri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/SysmonEvent/Read | SysmonEvent tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/tablolar. Custom/Read | Herhangi bir özel günlükteki verileri okuma |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Syslog/okuma | Syslog tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/SysmonEvent/Read | SysmonEvent tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/tablolar. Custom/Read | Herhangi bir özel günlüğün verilerini okuma |
 > | Action | Microsoft. Operationalınsights/Workspaces/Query/Threatıntelligenceındicator/Read | Threatıntelligenceındicator tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Uıaapp/Read | UAApp tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Uıacomputer/Read | UAComputer tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/UAComputerRank/Read | Uıacomputerrank tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/UADriver/okuma | Uıadriver tablosundan verileri oku |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/Uıadriverproblemcodes/Read | Uıadriverproblemcodes tablosundan verileri oku |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/UAFeedback/Read | UAFeedback tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/Uıahardwaresecurity/Read | Uıahardwaresecurity tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/Uaıesitediscovery/Read | Uıaııesitediscovery tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/Uaofficeaddın/Read | Uıaofficeaddın tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/UAProposedActionPlan/okuma | UAProposedActionPlan tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/Uasysreqıssue/Read | Uıasysreqıssue tablosundaki verileri oku |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Uayükseltilebilir Dedcomputer/Read | Uayükseltilebilir Dedcomputer tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/güncelleştirme/okuma | Güncelleştirme tablosundan verileri oku |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/UpdateRunProgress/Read | UpdateRunProgress tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/UpdateSummary/Read | UpdateSummary tablosundan verileri oku |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/kullanım/okuma | Kullanım tablosundan verileri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Uıaapp/Read | UAApp tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Uıacomputer/Read | UAComputer tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/UAComputerRank/Read | UAComputerRank tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/UADriver/okuma | UADriver tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/Uıadriverproblemcodes/Read | UADriverProblemCodes tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/UAFeedback/Read | UAFeedback tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/Uıahardwaresecurity/Read | UAHardwareSecurity tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/Uaıesitediscovery/Read | UAIESiteDiscovery tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/Uaofficeaddın/Read | UAOfficeAddIn tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/UAProposedActionPlan/okuma | UAProposedActionPlan tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/Uasysreqıssue/Read | UASysReqIssue tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Uayükseltilebilir Dedcomputer/Read | UAUpgradedComputer tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/güncelleştirme/okuma | Güncelleştirme tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/UpdateRunProgress/Read | UpdateRunProgress tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/UpdateSummary/Read | UpdateSummary tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/kullanım/okuma | Usage tablosundan veri oku |
 > | Action | Microsoft. Operationalınsights/Workspaces/Query/VMBoundPort/Read | VMBoundPort tablosundan verileri okuma |
 > | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/VMConnection/Read | VMConnection tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/W3CIISLog/okuma | W3CIISLog tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/WaaSDeploymentStatus/Read | WaaSDeploymentStatus tablosundan verileri oku |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/Waasınsiderstatus/Read | Waasınsiderstatus tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/WaaSUpdateStatus/Read | WaaSUpdateStatus tablosundan verileri oku |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/WDAVStatus/Read | WDAVStatus tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/WDAVThreat/Read | WDAVThreat Table 'dan verileri okuma |
-> | Action | Microsoft. Operationalınsights/Workspaces/Query/Windowsclientassessmentönerisi/okuma | Windowsclientassessmentöneriyi tablosundan verileri okuma |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/W3CIISLog/okuma | W3CIISLog tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/WaaSDeploymentStatus/Read | WaaSDeploymentStatus tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/Waasınsiderstatus/Read | WaaSInsiderStatus tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/WaaSUpdateStatus/Read | WaaSUpdateStatus tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/WDAVStatus/Read | WDAVStatus tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/WDAVThreat/Read | WDAVThreat tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/Workspaces/Query/Windowsclientassessmentönerisi/okuma | WindowsClientAssessmentRecommendation tablosundan veri oku |
 > | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/WindowsEvent/okuma | WindowsEvent tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/WindowsFirewall/Read | WindowsFirewall tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/WindowsServerAssessmentRecommendation/okuma | WindowsServerAssessmentRecommendation tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/kablolu veri/okuma | Kablolu veri tablosundan verileri okuma |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/WindowsFirewall/Read | WindowsFirewall tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/WindowsServerAssessmentRecommendation/okuma | WindowsServerAssessmentRecommendation tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/kablolu veri/okuma | WireData tablosundan veri oku |
 > | Action | Microsoft. Operationalınsights/Workspaces/Query/WorkloadMonitoringPerf/Read | WorkloadMonitoringPerf tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Wudoaggregişlendiği durumu/okuma | Wudoaggreg, Status tablosundan verileri okuma |
-> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/WUDOStatus/okuma | WUDOStatus tablosundan verileri okuma |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/Wudoaggregişlendiği durumu/okuma | WUDOAggregatedStatus tablosundan veri oku |
+> | Action | Microsoft. Operationalınsights/çalışma alanları/sorgu/WUDOStatus/okuma | WUDOStatus tablosundan veri oku |
 > | Action | Microsoft. Operationalınsights/çalışma alanları/okuma | Mevcut bir çalışma alanını alır |
 > | Action | Microsoft. Operationalınsights/Workspaces/regeneratesharedkey/Action | Belirtilen çalışma alanı paylaşılan anahtarını yeniden oluşturur |
 > | Action | Microsoft. operationalınsights/çalışma alanları/kurallar/okuma | Tüm uyarı kurallarını al. |
@@ -4301,7 +4288,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. OperationsManagement/managementAssociations/Delete | Varolan yönetim Ilişkilendirmesini Sil |
 > | Action | Microsoft. OperationsManagement/managementAssociations/Read | Varolan yönetim Ilişkilendirmesini al |
@@ -4317,21 +4304,21 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftpolicyinsights"></a>Microsoft. Poliyelei
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. Poliyeleghts/asyncOperationResults/Read | Zaman uyumsuz işlem sonucunu alır. |
 > | Action | Microsoft. Poliyeleghts/işlemler/okuma | Microsoft. Policınsıghts ad alanı üzerinde desteklenen işlemleri alır |
-> | Action | Microsoft. Poliyeleghts/policyEvents/queryResults/Action | İlke olayları hakkında sorgu bilgileri. |
-> | Action | Microsoft. Poliyeleghts/policyEvents/queryResults/Read | İlke olayları hakkında sorgu bilgileri. |
-> | Action | Microsoft. Poliyeleghts/policyStates/queryResults/Action | İlke durumlarıyla ilgili bilgileri sorgulayın. |
-> | Action | Microsoft. Poliyeleghts/policyStates/queryResults/Read | İlke durumlarıyla ilgili bilgileri sorgulayın. |
-> | Action | Microsoft. Poliyeleghts/policyStates/özetleme/eylem | İlke en son durumlarıyla ilgili özet bilgileri sorgulayın. |
-> | Action | Microsoft. Poliyeleghts/policyStates/özetleme/okuma | İlke en son durumlarıyla ilgili özet bilgileri sorgulayın. |
-> | Action | Microsoft. Poliyeleghts/policyStates/triggerEvaluation/Action | Seçili kapsam için yeni bir uyumluluk değerlendirmesi tetikler. |
-> | Action | Microsoft. Poliyeleghts/policyTrackedResources/queryResults/Read | DeployIfNotExists ilkeleri için gereken kaynaklarla ilgili bilgileri sorgulayın. |
+> | Action | Microsoft. Poliyeleghts/policyEvents/queryResults/Action | İlke olayları hakkındaki bilgileri sorgulayın. |
+> | Action | Microsoft. Poliyeleghts/policyEvents/queryResults/Read | İlke olayları hakkındaki bilgileri sorgulayın. |
+> | Action | Microsoft. Poliyeleghts/policyStates/queryResults/Action | İlke durumları hakkındaki bilgileri sorgulayın. |
+> | Action | Microsoft. Poliyeleghts/policyStates/queryResults/Read | İlke durumları hakkındaki bilgileri sorgulayın. |
+> | Action | Microsoft. Poliyeleghts/policyStates/özetleme/eylem | İlke son durumları hakkındaki özet bilgilerini sorgulayın. |
+> | Action | Microsoft. Poliyeleghts/policyStates/özetleme/okuma | İlke son durumları hakkındaki özet bilgilerini sorgulayın. |
+> | Action | Microsoft. Poliyeleghts/policyStates/triggerEvaluation/Action | Seçilen kapsam için yeni bir uyumluluk değerlendirmesi tetikler. |
+> | Action | Microsoft. Poliyeleghts/policyTrackedResources/queryResults/Read | DeployIfNotExists ilkelerinin gerektirdiği kaynaklar hakkında bilgi sorgulayın. |
 > | Action | Microsoft. Poliyeleghts/Register/Action | Microsoft Policy Insights kaynak sağlayıcısını kaydeder ve üzerinde eylemler sunar. |
 > | Action | Microsoft. Poliyeleghts/düzeltme/iptal/eylem | Devam eden Microsoft Ilke düzeltmelerinin iptali. |
-> | Action | Microsoft. Poliyeleghts/düzeltme/silme | İlke düzeltmelerinin silme. |
+> | Action | Microsoft. Poliyeleghts/düzeltme/silme | İlke düzeltmelerini silin. |
 > | Action | Microsoft. Poliyeleghts/düzeltmelere/Listdağıtımlar/okuma | Bir ilke düzeltmesi için gereken dağıtımları listeler. |
 > | Action | Microsoft. Poliyeleghts/düzeltme/okuma | İlke düzeltmeleri alın. |
 > | Action | Microsoft. Poliyeleghts/düzeltme/yazma | Microsoft Policy düzeltmelerinin oluşturun veya güncelleştirin. |
@@ -4340,23 +4327,23 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftportal"></a>Microsoft. Portal
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. Portal/konsollar/silme | Cloud Shell örneğini kaldırır. |
 > | Action | Microsoft. Portal/konsollar/okuma | Cloud Shell örneğini okur. |
-> | Action | Microsoft. Portal/konsollar/yazma | Cloud Shell örneği oluşturun veya güncelleştirin. |
+> | Action | Microsoft. Portal/konsollar/yazma | Bir Cloud Shell örneği oluşturun veya güncelleştirin. |
 > | Action | Microsoft. Portal/panolar/silme | Panoyu abonelikten kaldırır. |
 > | Action | Microsoft. Portal/panolar/okuma | Abonelik için panoları okur. |
-> | Action | Microsoft. Portal/panolar/yazma | Bir aboneliğe Pano ekleme veya bu panoyu değiştirme. |
-> | Action | Microsoft. Portal/kaydet/eylem | Portala kaydolun |
-> | Action | Microsoft. Portal/UserSettings/Delete | Cloud Shell Kullanıcı ayarlarını kaldırır. |
-> | Action | Microsoft. Portal/UserSettings/Read | Cloud Shell Kullanıcı ayarlarını okur. |
-> | Action | Microsoft. Portal/UserSettings/Write | Cloud Shell Kullanıcı ayarı oluşturun veya güncelleştirin. |
+> | Action | Microsoft. Portal/panolar/yazma | Bir aboneliğe pano ekleyin veya panoyu değiştirin. |
+> | Action | Microsoft. Portal/kaydet/eylem | Portala Kaydet |
+> | Action | Microsoft. Portal/UserSettings/Delete | Cloud Shell kullanıcı ayarlarını kaldırır. |
+> | Action | Microsoft. Portal/UserSettings/Read | Cloud Shell kullanıcı ayarlarını okur. |
+> | Action | Microsoft. Portal/UserSettings/Write | Cloud Shell kullanıcı ayarı oluşturun veya güncelleştirin. |
 
 ## <a name="microsoftpowerbidedicated"></a>Microsoft.PowerBIDedicated
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. Powerbiadanmış/kapasiteler/silme | Adanmış Power BI kapasitesini siler. |
 > | Action | Microsoft. Powerbiadanmış/kapasiteler/okuma | Belirtilen Power BI adanmış kapasitenin bilgilerini alır. |
@@ -4374,7 +4361,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftrecoveryservices"></a>Microsoft. RecoveryServices
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft.RecoveryServices/locations/allocatedStamp/read | GetAllocatedStamp, hizmet tarafından kullanılan iç işlemdir. |
 > | Action | Microsoft.RecoveryServices/locations/allocateStamp/action | AllocateStamp, hizmet tarafından kullanılan iç işlemdir |
@@ -4477,7 +4464,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 > | Action | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/Replicationkorunabilir/applyRecoveryPoint/Action | Kurtarma noktası Uygula |
 > | Action | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/Replicationkorunabilir/Delete | Tüm korumalı öğeleri sil |
 > | Action | Microsoft. RecoveryServices/Vaults/Replicationdokuları/replicationProtectionContainers/Replicationkorunabilir/işlem | Yük devretme yürütmesi |
-> | Action | Microsoft. RecoveryServices/Vaults/Replicationdokuların/replicationProtectionContainers/Replicationkorunabilir/Plannedyük devretme/eylem | Planlı Yük devretme |
+> | Action | Microsoft. RecoveryServices/Vaults/Replicationdokuların/replicationProtectionContainers/Replicationkorunabilir/Plannedyük devretme/eylem | Planlanan Yük Devretme |
 > | Action | Microsoft. RecoveryServices/Vaults/Replicationdokuların/replicationProtectionContainers/Replicationkorunabilir/Read | Tüm korumalı öğeleri okuyun |
 > | Action | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/Replicationkorunabilir/recoveryPoints/Read | Tüm çoğaltma kurtarma noktalarını okuyun |
 > | Action | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/Replicationkorunabilir/kaldırma/eylem | Korumalı öğeyi kaldır |
@@ -4485,11 +4472,11 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 > | Action | Microsoft. RecoveryServices/Vaults/Replicationdokuların/replicationProtectionContainers/Replicationkorunabilir/\ çoğaltma/eylem | Çoğaltmayı Onar |
 > | Action | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/Replicationkorudıtems/reProtect/ACTION | Korumalı öğeyi yeniden koru |
 > | Action | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/Replicationkorunabilir/ResolveHealthErrors/Action |  |
-> | Action | Microsoft. RecoveryServices/Vaults/Replicationdokuları/replicationProtectionContainers/Replicationkorunabilir/geri bildirim/eylem | Geri bildirim gönder |
+> | Action | Microsoft. RecoveryServices/Vaults/Replicationdokuları/replicationProtectionContainers/Replicationkorunabilir/geri bildirim/eylem | Geri Bildirim Gönder |
 > | Action | Microsoft. RecoveryServices/Vaults/Replicationdokuları/replicationProtectionContainers/Replicationkorunabilir/targetComputeSizes/Read | Herhangi bir hedef Işlem boyutunu okuyun |
-> | Action | Microsoft. RecoveryServices/Vaults/Replicationdokuları/replicationProtectionContainers/Replicationkorunabilir/TEMS/testFailover/ACTION | Yük devretme testi |
+> | Action | Microsoft. RecoveryServices/Vaults/Replicationdokuları/replicationProtectionContainers/Replicationkorunabilir/TEMS/testFailover/ACTION | Test Yük Devretmesi |
 > | Action | Microsoft. RecoveryServices/Vaults/Replicationdokuları/replicationProtectionContainers/Replicationkorunabilir/test Failovercleanup/Action | Yük devretme sınamasını Temizleme |
-> | Action | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/Replicationkorunabilir/unplannedFailover/ACTION | Yük devretme |
+> | Action | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/Replicationkorunabilir/unplannedFailover/ACTION | Yük devret |
 > | Action | Microsoft. RecoveryServices/Vaults/Replicationdokuların/replicationProtectionContainers/Replicationkorunabilir/Updatebir Dıtems/Update, Ityservice/Action | Mobility hizmetini Güncelleştir |
 > | Action | Microsoft. RecoveryServices/Vaults/Replicationdokuların/replicationProtectionContainers/Replicationkorunabilir/Write | Korunan öğeleri oluşturma veya güncelleştirme |
 > | Action | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/replicationProtectionContainerMappings/Delete | Tüm koruma kapsayıcısı eşlemelerini silme |
@@ -4511,7 +4498,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 > | Action | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationvCenters/read | Tüm sanal merkezleri okuyun |
 > | Action | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationvCenters/Write | Tüm sanal merkezleri oluşturun veya güncelleştirin |
 > | Action | Microsoft. RecoveryServices/Vaults/Replicationyapılar/yazma | Tüm yapılar oluşturun veya güncelleştirin |
-> | Action | Microsoft. RecoveryServices/Vaults/replicationJobs/iptal/eylem | Işi iptal et |
+> | Action | Microsoft. RecoveryServices/Vaults/replicationJobs/iptal/eylem | İşi İptal Et |
 > | Action | Microsoft.RecoveryServices/vaults/replicationJobs/read | Tüm Işleri okuyun |
 > | Action | Microsoft. RecoveryServices/kasaults/replicationJobs/yeniden Başlat/eylem | İşi yeniden Başlat |
 > | Action | Microsoft. RecoveryServices/kasaults/replicationJobs/özgeçmişi/eylem | Işi sürdürür |
@@ -4551,30 +4538,30 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftrelay"></a>Microsoft. Relay
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
-> | Action | Microsoft. Relay/Checknameavaılabılıty/Action | Belirtilen abonelikte ad alanının kullanılabilirliğini denetler. |
-> | Action | Microsoft. Relay/checkNamespaceAvailability/Action | Belirtilen abonelikte ad alanının kullanılabilirliğini denetler. Bu API kullanım dışı, lütfen bunun yerine Checknameavaılabılıty kullanın. |
+> | Action | Microsoft. Relay/Checknameavaılabılıty/Action | İlgili abonelikte ad alanının kullanılabilirliğini denetler. |
+> | Action | Microsoft. Relay/checkNamespaceAvailability/Action | İlgili abonelikte ad alanının kullanılabilirliğini denetler. Bu API kullanım dışı, lütfen bunun yerine Checknameavaılabılıty kullanın. |
 > | Action | Microsoft. Relay/Namespace/authorizationRules/Action | Güncelleştirme ad alanı yetkilendirme kuralı. Bu API kullanım dışıdır. Lütfen bunun yerine ad alanı yetkilendirme kuralını güncelleştirmek için bir PUT çağrısı kullanın. Bu işlem API sürüm 2017-04-01 ' de desteklenmiyor. |
 > | Action | Microsoft. Relay/Namespace/authorizationRules/Delete | Ad alanı yetkilendirme kuralını silin. Varsayılan ad alanı yetkilendirme kuralı silinemez.  |
-> | Action | Microsoft. Relay/Namespace/authorizationRules/ListKeys/Action | Ad alanına bağlantı dizesi al |
-> | Action | Microsoft. Relay/Namespace/authorizationRules/Read | Ad alanı yetkilendirme kuralları açıklaması listesini alın. |
-> | Action | Microsoft. Relay/Namespace/authorizationRules/regenerateKeys/ACTION | Kaynağa birincil veya Ikincil anahtarı yeniden oluştur |
+> | Action | Microsoft. Relay/Namespace/authorizationRules/ListKeys/Action | Ad Alanı için Bağlantı Dizesini alın |
+> | Action | Microsoft. Relay/Namespace/authorizationRules/Read | Ad Alanı Yetkilendirme Kuralları açıklamasının listesini alır. |
+> | Action | Microsoft. Relay/Namespace/authorizationRules/regenerateKeys/ACTION | Kaynağın Birincil veya İkincil anahtarını yeniden oluşturun |
 > | Action | Microsoft. Relay/Namespace/authorizationRules/Write | Ad alanı düzeyinde yetkilendirme kuralları oluşturun ve özelliklerini güncelleştirin. Yetkilendirme kuralları erişim hakları, birincil ve Ikincil anahtarlar güncelleştirilebilen olabilir. |
-> | Action | Microsoft. Relay/Namespace/Delete | Ad alanı kaynağını Sil |
-> | Action | Microsoft. Relay/namespaces/Disyıldız Recoveryconfigs/authorizationRules/ListKeys/Action | Olağanüstü durum kurtarma birincil ad alanı için yetkilendirme kuralları anahtarlarını alır |
-> | Action | Microsoft. Relay/namespaces/Disyıldız Recoveryconfigs/authorizationRules/Read | Olağanüstü durum kurtarma birincil ad alanının yetkilendirme kurallarını al |
-> | Action | Microsoft. Relay/namespaces/Diskalrecoveryconfigs/Breakeşleştirmeyi/eylemi | Olağanüstü durum kurtarmayı devre dışı bırakır ve birincil olan değişiklikleri ikincil ad alanlarına çoğaltmayı durduruyor. |
-> | Action | Microsoft. Relay/namespaces/disyıldız recoveryconfigs/Checknameavaılabılıty/Action | Belirtilen abonelik altında ad alanı diğer adının kullanılabilirliğini denetler. |
+> | Action | Microsoft. Relay/Namespace/Delete | Ad Alanı Kaynağını silin |
+> | Action | Microsoft. Relay/namespaces/Disyıldız Recoveryconfigs/authorizationRules/ListKeys/Action | Olağanüstü Durum Kurtarma birincil ad alanı için yetkilendirme kuralları anahtarlarını alır |
+> | Action | Microsoft. Relay/namespaces/Disyıldız Recoveryconfigs/authorizationRules/Read | Olağanüstü Durum Kurtarma Birincil Ad Alanının Yetkilendirme Kurallarını Al |
+> | Action | Microsoft. Relay/namespaces/Diskalrecoveryconfigs/Breakeşleştirmeyi/eylemi | Olağanüstü Durum Kurtarma'yı devre dışı bırakır ve birincil ad alanındaki değişiklikleri ikincil ad alanına çoğaltmayı durdurur. |
+> | Action | Microsoft. Relay/namespaces/disyıldız recoveryconfigs/Checknameavaılabılıty/Action | İlgili abonelikte ad alanının diğer ad kullanılabilirliğini denetler. |
 > | Action | Microsoft. Relay/namespaces/Disyıldız Recoveryconfigs/Delete | Ad alanıyla ilişkili olağanüstü durum kurtarma yapılandırmasını siler. Bu işlem yalnızca birincil ad alanı aracılığıyla çağrılabilir. |
-> | Action | Microsoft. Relay/namespaces/Disyıldız Recoveryconfigs/yük devretme/eylem | COĞRAFI bir DR yük devretmesini çağırır ve ad alanı diğer adını ikincil ad alanına işaret edecek şekilde yeniden yapılandırır. |
-> | Action | Microsoft. Relay/namespaces/Disyıldız Recoveryconfigs/Read | Ad alanıyla ilişkili olağanüstü durum kurtarma yapılandırmasını alır. |
-> | Action | Microsoft. Relay/namespaces/Disyıldız Recoveryconfigs/Write | Ad alanıyla ilişkili olağanüstü durum kurtarma yapılandırmasını oluşturur veya güncelleştirir. |
+> | Action | Microsoft. Relay/namespaces/Disyıldız Recoveryconfigs/yük devretme/eylem | Bir GEO DR yük devretmesini çağırır ve ad alanı diğer adını ikincil ad alanına işaret edecek şekilde yeniden yapılandırır. |
+> | Action | Microsoft. Relay/namespaces/Disyıldız Recoveryconfigs/Read | Ad alanıyla ilişkili Olağanüstü Durum Kurtarma yapılandırmasını alır. |
+> | Action | Microsoft. Relay/namespaces/Disyıldız Recoveryconfigs/Write | Ad alanıyla ilişkili Olağanüstü Durum Kurtarma yapılandırmasını oluşturur veya güncelleştirir. |
 > | Action | Microsoft. Relay/Namespace/HybridConnections/authorizationRules/Action | HybridConnection 'ı güncelleştirme işlemi. Bu işlem API sürüm 2017-04-01 ' de desteklenmiyor. Yetkilendirme kuralları. Lütfen yetkilendirme kuralını güncelleştirmek için bir PUT çağrısı kullanın. |
 > | Action | Microsoft. Relay/Namespace/HybridConnections/authorizationRules/Delete | HybridConnection yetkilendirme kurallarını silme işlemi |
 > | Action | Microsoft. Relay/Namespace/HybridConnections/authorizationRules/ListKeys/Action | Bağlantı dizesini HybridConnection 'a al |
 > | Action | Microsoft. Relay/Namespace/HybridConnections/authorizationRules/Read |  HybridConnection yetkilendirme kurallarının listesini alın |
-> | Action | Microsoft. Relay/Namespace/HybridConnections/authorizationRules/regeneratekeys/Action | Kaynağa birincil veya Ikincil anahtarı yeniden oluştur |
+> | Action | Microsoft. Relay/Namespace/HybridConnections/authorizationRules/regeneratekeys/Action | Kaynağın Birincil veya İkincil anahtarını yeniden oluşturun |
 > | Action | Microsoft. Relay/Namespace/HybridConnections/authorizationRules/Write | HybridConnection yetkilendirme kuralları oluşturun ve özelliklerini güncelleştirin. Yetkilendirme kuralları erişim hakları güncelleştirilebilen olabilir. |
 > | Action | Microsoft. Relay/Namespace/HybridConnections/Delete | HybridConnection kaynağını silme işlemi |
 > | Action | Microsoft. Relay/Namespace/HybridConnections/Read | HybridConnection kaynak açıklamaları listesini al |
@@ -4583,49 +4570,49 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 > | Action | Microsoft. Relay/namespaces/messagingPlan/yazma | Bir ad alanı için mesajlaşma planını güncelleştirir.<br>Bu API kullanım dışıdır.<br>MessagingPlan kaynağı aracılığıyla sunulan özellikler sonraki API sürümlerindeki (üst) ad alanı kaynağına taşınır.<br>Bu işlem API sürüm 2017-04-01 ' de desteklenmiyor. |
 > | Action | Microsoft. Relay/Namespace/operationresults/Read | Ad alanı işleminin durumunu al |
 > | Action | Microsoft. Relay/namespaces/Providers/Microsoft. Insights/metricDefinitions/Read | Ad alanı ölçümleri kaynak açıklamalarının listesini al |
-> | Action | Microsoft. Relay/Namespace/Read | Ad alanı kaynağı açıklaması listesini al |
-> | Action | Microsoft. Relay/namespaces/removeAcsNamepsace/eylem | ACS ad alanını kaldır |
+> | Action | Microsoft. Relay/Namespace/Read | Ad Alanı Kaynak Açıklamasının listesini alır |
+> | Action | Microsoft. Relay/namespaces/removeAcsNamepsace/eylem | ACS ad alanını kaldırın |
 > | Action | Microsoft. Relay/namespaces/Wcfreyerleştir/authorizationRules/Action | WcfRelay 'i güncelleştirme işlemi. Bu işlem API sürüm 2017-04-01 ' de desteklenmiyor. Yetkilendirme kuralları. Lütfen yetkilendirme kuralını güncelleştirmek için bir PUT çağrısı kullanın. |
 > | Action | Microsoft. Relay/namespaces/Wcfreyerleştir/authorizationRules/Delete | WcfRelay yetkilendirme kurallarını silme işlemi |
 > | Action | Microsoft. Relay/namespaces/Wcfreyerleştir/authorizationRules/ListKeys/Action | Bağlantı dizesini WcfRelay 'e al |
 > | Action | Microsoft. Relay/namespaces/Wcfreyerleştir/authorizationRules/Read |  WcfRelay yetkilendirme kurallarının listesini alın |
-> | Action | Microsoft. Relay/namespaces/Wcfreyerleştir/authorizationRules/regeneratekeys/ACTION | Kaynağa birincil veya Ikincil anahtarı yeniden oluştur |
+> | Action | Microsoft. Relay/namespaces/Wcfreyerleştir/authorizationRules/regeneratekeys/ACTION | Kaynağın Birincil veya İkincil anahtarını yeniden oluşturun |
 > | Action | Microsoft. Relay/namespaces/Wcfrehera/authorizationRules/Write | WcfRelay yetkilendirme kuralları oluşturun ve özelliklerini güncelleştirin. Yetkilendirme kuralları erişim hakları güncelleştirilebilen olabilir. |
 > | Action | Microsoft. Relay/namespaces/Wcfreyerleştir/Delete | WcfRelay kaynağını silme işlemi |
 > | Action | Microsoft. Relay/namespaces/Wcfreyerleştir/Read | WcfRelay kaynak açıklamaları listesini al |
 > | Action | Microsoft. Relay/namespaces/Wcfreyerleştir/Write | WcfRelay özelliklerini oluşturun veya güncelleştirin. |
 > | Action | Microsoft. Relay/Namespace/Write | Bir ad alanı kaynağı oluşturun ve özelliklerini güncelleştirin. Ad alanının etiketleri ve kapasitesi, güncelleştirilebilen özelliklerdir. |
-> | Action | Microsoft. Relay/işlemler/okuma | Işlemleri al |
-> | Action | Microsoft. Relay/Register/ACTION | Geçiş kaynak sağlayıcısı için aboneliği kaydeder ve geçiş kaynaklarının oluşturulmasını sunar |
-> | Action | Microsoft. Relay/Unregister/eylem | Geçiş kaynak sağlayıcısı için aboneliği kaydeder ve geçiş kaynaklarının oluşturulmasını sunar |
+> | Action | Microsoft. Relay/işlemler/okuma | Alma İşlemleri |
+> | Action | Microsoft. Relay/Register/ACTION | Aboneliği geçiş kaynak sağlayıcısı için kaydeder ve Geçiş kaynaklarının oluşturulmasını sağlar |
+> | Action | Microsoft. Relay/Unregister/eylem | Aboneliği geçiş kaynak sağlayıcısı için kaydeder ve Geçiş kaynaklarının oluşturulmasını sağlar |
 
 ## <a name="microsoftresourcehealth"></a>Microsoft. ResourceHealth
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. ResourceHealth/kullanılabilirliği Bilitydurumlar/geçerli/okundu | Belirtilen kaynak için kullanılabilirlik durumunu alır |
-> | Action | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
-> | Action | Microsoft. ResourceHealth/olayları/okuma | Belirtilen abonelik için hizmet durumu olaylarını al |
-> | Action | Microsoft. Resourcehealth/healthevent/Action | Belirtilen kaynak için sistem durumunda değişiklik gösterir |
-> | Action | Microsoft. Resourcehealth/healthevent/Activated/Action | Belirtilen kaynak için sistem durumunda değişiklik gösterir |
-> | Action | Microsoft. Resourcehealth/healthevent/InProgress/Action | Belirtilen kaynak için sistem durumunda değişiklik gösterir |
-> | Action | Microsoft. Resourcehealth/healthevent/bekliyor/Action | Belirtilen kaynak için sistem durumunda değişiklik gösterir |
-> | Action | Microsoft. Resourcehealth/healthevent/çözüldü/Action | Belirtilen kaynak için sistem durumunda değişiklik gösterir |
-> | Action | Microsoft. Resourcehealth/healthevent/Updated/Action | Belirtilen kaynak için sistem durumunda değişiklik gösterir |
-> | Action | Microsoft. ResourceHealth/ımpactedresources/Read | Verilen abonelik için etkilenen kaynakları al |
+> | Action | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için kullanılabilirlik durumlarını alır |
+> | Action | Microsoft. ResourceHealth/olayları/okuma | Seçili abonelik için Hizmet Durumu Olayları'nı al |
+> | Action | Microsoft. Resourcehealth/healthevent/Action | Belirtilen kaynaktaki sistem durumu değişikliğini gösterir |
+> | Action | Microsoft. Resourcehealth/healthevent/Activated/Action | Belirtilen kaynaktaki sistem durumu değişikliğini gösterir |
+> | Action | Microsoft. Resourcehealth/healthevent/InProgress/Action | Belirtilen kaynaktaki sistem durumu değişikliğini gösterir |
+> | Action | Microsoft. Resourcehealth/healthevent/bekliyor/Action | Belirtilen kaynaktaki sistem durumu değişikliğini gösterir |
+> | Action | Microsoft. Resourcehealth/healthevent/çözüldü/Action | Belirtilen kaynaktaki sistem durumu değişikliğini gösterir |
+> | Action | Microsoft. Resourcehealth/healthevent/Updated/Action | Belirtilen kaynaktaki sistem durumu değişikliğini gösterir |
+> | Action | Microsoft. ResourceHealth/ımpactedresources/Read | Seçili abonelik için Etkilenen Kaynaklar'ı al |
 > | Action | Microsoft. ResourceHealth/Metadata/Read | Meta verileri alır |
-> | Action | Microsoft. ResourceHealth/Işlemler/okuma | Microsoft ResourceHealth için kullanılabilir işlemleri al |
+> | Action | Microsoft. ResourceHealth/Işlemler/okuma | Microsoft ResourceHealth için kullanılabilen işlemleri al |
 > | Action | Microsoft. ResourceHealth/Register/ACTION | Microsoft ResourceHealth için aboneliği kaydeder |
-> | Action | Microsoft. ResourceHealth/Unregister/ACTION | Microsoft ResourceHealth için aboneliğin kaydını siler |
+> | Action | Microsoft. ResourceHealth/Unregister/ACTION | Microsoft ResourceHealth aboneliğinin kaydını siler |
 
 ## <a name="microsoftresources"></a>Microsoft. resources
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
-> | Action | Microsoft. resources/Checkpolicyuyumluluk/eylem | Kaynak ilkelerine karşı belirli bir kaynağın uyumluluk durumunu kontrol edin. |
-> | Action | Microsoft. resources/checkResourceName/Action | Kaynak adını geçerlilik için denetleyin. |
+> | Action | Microsoft. resources/Checkpolicyuyumluluk/eylem | Belirli bir kaynağın uyumluluk durumunu kaynak ilkelerine karşı denetleyin. |
+> | Action | Microsoft. resources/checkResourceName/Action | Kaynak adının geçerliliğini denetle. |
 > | Action | Microsoft. resources/dağıtımlar/iptal/eylem | Bir dağıtımı iptal eder. |
 > | Action | Microsoft. resources/dağıtımlar/Sil | Bir dağıtımı siler. |
 > | Action | Microsoft. resources/dağıtımlar/işlemler/okuma | Dağıtım işlemlerini alır veya listeler. |
@@ -4635,12 +4622,12 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 > | Action | Microsoft. resources/dağıtımlar/yazma | Bir dağıtımı oluşturur veya güncelleştirir. |
 > | Action | Microsoft. resources/bağlantılar/Sil | Bir kaynak bağlantısını siler. |
 > | Action | Microsoft. resources/bağlantılar/okuma | Kaynak bağlantılarını alır veya listeler. |
-> | Action | Microsoft. resources/bağlantılar/yazma | Kaynak bağlantısı oluşturur veya güncelleştirir. |
-> | Action | Microsoft. resources/Market/satın alma/eylem | Market 'ten bir kaynak satın alır. |
-> | Action | Microsoft. resources/sağlayıcılar/okuma | Sağlayıcıların listesini alın. |
-> | Action | Microsoft. resources/kaynakları/okuma | Filtreleri temel alarak kaynak listesini alın. |
+> | Action | Microsoft. resources/bağlantılar/yazma | Bir kaynak bağlantısını oluşturur veya güncelleştirir. |
+> | Action | Microsoft. resources/Market/satın alma/eylem | Marketten bir kaynak satın alır. |
+> | Action | Microsoft. resources/sağlayıcılar/okuma | Sağlayıcıların listesini al. |
+> | Action | Microsoft. resources/kaynakları/okuma | Filtrelere göre kaynak listelerini al. |
 > | Action | Microsoft. resources/abonelikler/konumlar/okuma | Desteklenen konumların listesini alır. |
-> | Action | Microsoft. resources/abonelikler/operationresults/Read | Abonelik işlem sonuçlarını alın. |
+> | Action | Microsoft. resources/abonelikler/operationresults/Read | Abonelik işlem sonuçlarını alır. |
 > | Action | Microsoft. resources/abonelikler/sağlayıcılar/okuma | Kaynak sağlayıcılarını alır veya listeler. |
 > | Action | Microsoft. resources/abonelikler/okuma | Aboneliklerin listesini alır. |
 > | Action | Microsoft. resources/abonelikler/resourceGroups/Delete | Bir kaynak grubunu ve tüm kaynaklarını siler. |
@@ -4648,44 +4635,44 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 > | Action | Microsoft. resources/abonelikler/ResourceGroups/dağıtımlar/operationdurumlarının/Read | Dağıtım işlemi durumlarını alır veya listeler. |
 > | Action | Microsoft. resources/abonelikler/ResourceGroups/dağıtımlar/okuma | Dağıtımları alır veya listeler. |
 > | Action | Microsoft. resources/abonelikler/ResourceGroups/dağıtımlar/Write | Bir dağıtımı oluşturur veya güncelleştirir. |
-> | Action | Microsoft. resources/abonelikler/resourceGroups/Moveresonak/Action | Kaynakları bir kaynak grubundan diğerine taşıın. |
+> | Action | Microsoft. resources/abonelikler/resourceGroups/Moveresonak/Action | Kaynakları bir kaynak grubundan diğerine taşır. |
 > | Action | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Action | Microsoft. resources/abonelikler/ResourceGroups/kaynaklar/okuma | Kaynak grubunun kaynaklarını alır. |
-> | Action | Microsoft. resources/abonelikler/resourceGroups/Validatemoveresonak/Action | Kaynakları bir kaynak grubundan diğerine taşımayı doğrulayın. |
-> | Action | Microsoft. resources/abonelikler/resourceGroups/Write | Bir kaynak grubu oluşturur veya güncelleştirir. |
+> | Action | Microsoft. resources/abonelikler/ResourceGroups/kaynaklar/okuma | Kaynak grubun kaynaklarını alır. |
+> | Action | Microsoft. resources/abonelikler/resourceGroups/Validatemoveresonak/Action | Bir kaynak grubundan diğerine kaynak taşıma işlemini doğrular. |
+> | Action | Microsoft. resources/abonelikler/resourceGroups/Write | Kaynak grubunu oluşturur veya güncelleştirir. |
 > | Action | Microsoft. resources/abonelikler/kaynaklar/okuma | Bir aboneliğin kaynaklarını alır. |
 > | Action | Microsoft. resources/abonelikler/tagNames/Delete | Bir abonelik etiketini siler. |
 > | Action | Microsoft. resources/abonelikler/tagNames/Read | Abonelik etiketlerini alır veya listeler. |
-> | Action | Microsoft. resources/abonelikler/tagNames/tagValues/Delete | Abonelik etiketi değerini siler. |
+> | Action | Microsoft. resources/abonelikler/tagNames/tagValues/Delete | Bir abonelik etiketi değerini siler. |
 > | Action | Microsoft. resources/abonelikler/tagNames/tagValues/Read | Abonelik etiketi değerlerini alır veya listeler. |
-> | Action | Microsoft. resources/abonelikler/tagNames/tagValues/Write | Abonelik etiketi değeri ekler. |
-> | Action | Microsoft. resources/abonelikler/tagNames/Write | Abonelik etiketi ekler. |
+> | Action | Microsoft. resources/abonelikler/tagNames/tagValues/Write | Bir abonelik etiketi değeri ekler. |
+> | Action | Microsoft. resources/abonelikler/tagNames/Write | Bir abonelik etiketi ekler. |
 > | Action | Microsoft. resources/etiketleri/silme | Bir kaynaktaki tüm etiketleri kaldırır. |
 > | Action | Microsoft. resources/Tags/okuma | Bir kaynaktaki tüm etiketleri alır. |
 > | Action | Microsoft. resources/Tags/Write | Varolan etiketleri yeni bir etiket kümesiyle değiştirerek veya birleştirerek ya da varolan etiketleri kaldırarak bir kaynaktaki etiketleri güncelleştirir. |
-> | Action | Microsoft. resources/kiracılar/Read | Kiracılar listesini alır. |
+> | Action | Microsoft. resources/kiracılar/Read | Kiracı listesini alır. |
 
 ## <a name="microsoftscheduler"></a>Microsoft. Scheduler
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. Scheduler/jobcollections/Delete | İş koleksiyonunu siler. |
 > | Action | Microsoft. Scheduler/jobcollections/Disable/Action | İş koleksiyonunu devre dışı bırakır. |
-> | Action | Microsoft. Scheduler/jobcollections/Enable/Action | İş toplamayı etkinleştirilir. |
+> | Action | Microsoft. Scheduler/jobcollections/Enable/Action | İş koleksiyonunu etkinleştirir. |
 > | Action | Microsoft. Scheduler/jobcollections/Jobs/Delete | İşi siler. |
-> | Action | Microsoft. Scheduler/jobcollections/Jobs/generateLogicAppDefinition/Action | Bir Zamanlayıcı Işini temel alarak mantıksal uygulama tanımı oluşturur. |
+> | Action | Microsoft. Scheduler/jobcollections/Jobs/generateLogicAppDefinition/Action | Bir Scheduler İşini temel alarak Mantıksal Uygulama tanımı oluşturur. |
 > | Action | Microsoft. Scheduler/jobcollections/Jobs/jobgeçmiş/Read | İş geçmişini alır. |
 > | Action | Microsoft. Scheduler/jobcollections/Jobs/Read | İşi alır. |
 > | Action | Microsoft. Scheduler/jobcollections/Jobs/Run/Action | İşi çalıştırır. |
 > | Action | Microsoft. Scheduler/jobcollections/Jobs/Write | İş oluşturur veya güncelleştirir. |
-> | Action | Microsoft. Scheduler/jobcollections/Read | Iş toplamayı al |
+> | Action | Microsoft. Scheduler/jobcollections/Read | İş Koleksiyonu Al |
 > | Action | Microsoft. Scheduler/jobcollections/Write | İş koleksiyonu oluşturur veya güncelleştirir. |
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. Search/Checknameavaılabılıty/Action | Hizmet adının kullanılabilirliğini denetler. |
 > | Action | Microsoft. Search/işlemler/okuma | Microsoft. Search sağlayıcısı 'nın tüm kullanılabilir işlemlerini listeler. |
@@ -4704,7 +4691,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftsecurity"></a>Microsoft.Security
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. Security/adaptiveNetworkHardenings/enforce/Action | Verilen ağ güvenlik grupları üzerinde eşleşen güvenlik kuralları oluşturarak verilen trafik sağlamlaştırma kurallarını zorlar |
 > | Action | Microsoft. Security/adaptiveNetworkHardenings/Read | Azure korumalı bir kaynağın Uyarlamalı ağ sağlamlaştırma önerilerini alır |
@@ -4759,7 +4746,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftsecuritygraph"></a>Microsoft. SecurityGraph
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. SecurityGraph/diagnosticsettings/Delete | Bir tanılama ayarını silme |
 > | Action | Microsoft. SecurityGraph/diagnosticsettings/Read | Tanılama ayarını okuma |
@@ -4769,33 +4756,33 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
-> | Action | Microsoft. ServiceBus/Checknameavaılabılıty/Action | Belirtilen abonelikte ad alanının kullanılabilirliğini denetler. |
-> | Action | Microsoft. ServiceBus/checkNamespaceAvailability/Action | Belirtilen abonelikte ad alanının kullanılabilirliğini denetler. Bu API kullanım dışı, lütfen bunun yerine Checknameavaılabılıty kullanın. |
-> | Action | Microsoft. ServiceBus/Locations/Deletevirtualnetworkoralt ağları/eylem | Belirtilen VNet için ServiceBus kaynak sağlayıcısında VNet kurallarını siler |
+> | Action | Microsoft. ServiceBus/Checknameavaılabılıty/Action | İlgili abonelikte ad alanının kullanılabilirliğini denetler. |
+> | Action | Microsoft. ServiceBus/checkNamespaceAvailability/Action | İlgili abonelikte ad alanının kullanılabilirliğini denetler. Bu API kullanım dışı, lütfen bunun yerine Checknameavaılabılıty kullanın. |
+> | Action | Microsoft. ServiceBus/Locations/Deletevirtualnetworkoralt ağları/eylem | Belirtilen VNet için ServiceBus Kaynak Sağlayıcısı'ndaki VNet kurallarını siler |
 > | Action | Microsoft. ServiceBus/namespaces/authorizationRules/Action | Güncelleştirme ad alanı yetkilendirme kuralı. Bu API kullanım dışıdır. Lütfen bunun yerine ad alanı yetkilendirme kuralını güncelleştirmek için bir PUT çağrısı kullanın. Bu işlem API sürüm 2017-04-01 ' de desteklenmiyor. |
 > | Action | Microsoft. ServiceBus/Namespace/authorizationRules/Delete | Ad alanı yetkilendirme kuralını silin. Varsayılan ad alanı yetkilendirme kuralı silinemez.  |
-> | Action | Microsoft. ServiceBus/Namespace/authorizationRules/ListKeys/Action | Ad alanına bağlantı dizesi al |
-> | Action | Microsoft. ServiceBus/Namespace/authorizationRules/Read | Ad alanı yetkilendirme kuralları açıklaması listesini alın. |
-> | Action | Microsoft. ServiceBus/Namespace/authorizationRules/regenerateKeys/ACTION | Kaynağa birincil veya Ikincil anahtarı yeniden oluştur |
+> | Action | Microsoft. ServiceBus/Namespace/authorizationRules/ListKeys/Action | Ad Alanı için Bağlantı Dizesini alın |
+> | Action | Microsoft. ServiceBus/Namespace/authorizationRules/Read | Ad Alanı Yetkilendirme Kuralları açıklamasının listesini alır. |
+> | Action | Microsoft. ServiceBus/Namespace/authorizationRules/regenerateKeys/ACTION | Kaynağın Birincil veya İkincil anahtarını yeniden oluşturun |
 > | Action | Microsoft. ServiceBus/Namespace/authorizationRules/Write | Ad alanı düzeyinde yetkilendirme kuralları oluşturun ve özelliklerini güncelleştirin. Yetkilendirme kuralları erişim hakları, birincil ve Ikincil anahtarlar güncelleştirilebilen olabilir. |
-> | Action | Microsoft. ServiceBus/Namespace/Delete | Ad alanı kaynağını Sil |
-> | Action | Microsoft. ServiceBus/namespaces/Diskalrecoveryconfigs/authorizationRules/ListKeys/Action | Olağanüstü durum kurtarma birincil ad alanı için yetkilendirme kuralları anahtarlarını alır |
-> | Action | Microsoft. ServiceBus/namespaces/Diskalrecoveryconfigs/authorizationRules/Read | Olağanüstü durum kurtarma birincil ad alanının yetkilendirme kurallarını al |
-> | Action | Microsoft. ServiceBus/namespaces/Diskalrecoveryconfigs/Breakeşleştirmeyi/eylemini | Olağanüstü durum kurtarmayı devre dışı bırakır ve birincil olan değişiklikleri ikincil ad alanlarına çoğaltmayı durduruyor. |
-> | Action | Microsoft. ServiceBus/namespaces/diskalrecoveryconfigs/Checknameavaılabılıty/Action | Belirtilen abonelik altında ad alanı diğer adının kullanılabilirliğini denetler. |
+> | Action | Microsoft. ServiceBus/Namespace/Delete | Ad Alanı Kaynağını silin |
+> | Action | Microsoft. ServiceBus/namespaces/Diskalrecoveryconfigs/authorizationRules/ListKeys/Action | Olağanüstü Durum Kurtarma birincil ad alanı için yetkilendirme kuralları anahtarlarını alır |
+> | Action | Microsoft. ServiceBus/namespaces/Diskalrecoveryconfigs/authorizationRules/Read | Olağanüstü Durum Kurtarma Birincil Ad Alanının Yetkilendirme Kurallarını Al |
+> | Action | Microsoft. ServiceBus/namespaces/Diskalrecoveryconfigs/Breakeşleştirmeyi/eylemini | Olağanüstü Durum Kurtarma'yı devre dışı bırakır ve birincil ad alanındaki değişiklikleri ikincil ad alanına çoğaltmayı durdurur. |
+> | Action | Microsoft. ServiceBus/namespaces/diskalrecoveryconfigs/Checknameavaılabılıty/Action | İlgili abonelikte ad alanının diğer ad kullanılabilirliğini denetler. |
 > | Action | Microsoft. ServiceBus/namespaces/Diskalrecoveryconfigs/Delete | Ad alanıyla ilişkili olağanüstü durum kurtarma yapılandırmasını siler. Bu işlem yalnızca birincil ad alanı aracılığıyla çağrılabilir. |
-> | Action | Microsoft. ServiceBus/namespaces/Diskalrecoveryconfigs/yük devretme/eylem | COĞRAFI bir DR yük devretmesini çağırır ve ad alanı diğer adını ikincil ad alanına işaret edecek şekilde yeniden yapılandırır. |
-> | Action | Microsoft. ServiceBus/namespaces/Diskalrecoveryconfigs/Read | Ad alanıyla ilişkili olağanüstü durum kurtarma yapılandırmasını alır. |
-> | Action | Microsoft. ServiceBus/namespaces/Diskalrecoveryconfigs/Write | Ad alanıyla ilişkili olağanüstü durum kurtarma yapılandırmasını oluşturur veya güncelleştirir. |
-> | Action | Microsoft. ServiceBus/namespaces/Eventgridfilter/Delete | Ad alanıyla ilişkili Event Grid filtresini siler. |
-> | Action | Microsoft. ServiceBus/namespaces/Eventgridfilter/Read | Ad alanıyla ilişkili Event Grid filtresini alır. |
-> | Action | Microsoft. ServiceBus/namespaces/Eventgridfilter/Write | Ad alanıyla ilişkili Event Grid filtresini oluşturur veya güncelleştirir. |
+> | Action | Microsoft. ServiceBus/namespaces/Diskalrecoveryconfigs/yük devretme/eylem | Bir GEO DR yük devretmesini çağırır ve ad alanı diğer adını ikincil ad alanına işaret edecek şekilde yeniden yapılandırır. |
+> | Action | Microsoft. ServiceBus/namespaces/Diskalrecoveryconfigs/Read | Ad alanıyla ilişkili Olağanüstü Durum Kurtarma yapılandırmasını alır. |
+> | Action | Microsoft. ServiceBus/namespaces/Diskalrecoveryconfigs/Write | Ad alanıyla ilişkili Olağanüstü Durum Kurtarma yapılandırmasını oluşturur veya güncelleştirir. |
+> | Action | Microsoft. ServiceBus/namespaces/Eventgridfilter/Delete | Ad alanı ile ilişkili Olay Kılavuzu filtresini siler. |
+> | Action | Microsoft. ServiceBus/namespaces/Eventgridfilter/Read | Ad alanı ile ilişkili Olay Kılavuzu filtresini alır. |
+> | Action | Microsoft. ServiceBus/namespaces/Eventgridfilter/Write | Ad alanı ile ilişkili Olay Kılavuzu filtresini oluşturur veya güncelleştirir. |
 > | Action | Microsoft. ServiceBus/Namespace/eventhubs/Read | EventHub kaynak açıklamalarının listesini al |
-> | Action | Microsoft. ServiceBus/namespaces/ıpfilterrules/Delete | IP filtresi kaynağını Sil |
-> | Action | Microsoft. ServiceBus/namespaces/ıpfilterrules/Read | IP filtre kaynağı al |
-> | Action | Microsoft. ServiceBus/namespaces/ıpfilterrules/Write | IP filtre kaynağı oluştur |
+> | Action | Microsoft. ServiceBus/namespaces/ıpfilterrules/Delete | IP Filtresi Kaynağını Sil |
+> | Action | Microsoft. ServiceBus/namespaces/ıpfilterrules/Read | IP Filtresi Kaynağını Al |
+> | Action | Microsoft. ServiceBus/namespaces/ıpfilterrules/Write | IP Filtresi Kaynağı Oluştur |
 > | DataAction | Microsoft. ServiceBus/Namespace/messages/gözatmaya/Action | İleti Lara gözatmaya |
 > | DataAction | Microsoft. ServiceBus/ad alanları/iletiler/ertele/eylem | İletileri ertele |
 > | DataAction | Microsoft. ServiceBus/namespaces/iletiler/Receive/Action | İleti alma |
@@ -4804,18 +4791,18 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 > | DataAction | Microsoft. ServiceBus/ad alanları/iletiler/SetState/Action | Oturum durumunu ayarla |
 > | Action | Microsoft. ServiceBus/namespaces/messagingPlan/okuma | Bir ad alanı için mesajlaşma planını alır.<br>Bu API kullanım dışıdır.<br>MessagingPlan kaynağı aracılığıyla sunulan özellikler sonraki API sürümlerindeki (üst) ad alanı kaynağına taşınır.<br>Bu işlem API sürüm 2017-04-01 ' de desteklenmiyor. |
 > | Action | Microsoft. ServiceBus/namespaces/messagingPlan/yazma | Bir ad alanı için mesajlaşma planını güncelleştirir.<br>Bu API kullanım dışıdır.<br>MessagingPlan kaynağı aracılığıyla sunulan özellikler sonraki API sürümlerindeki (üst) ad alanı kaynağına taşınır.<br>Bu işlem API sürüm 2017-04-01 ' de desteklenmiyor. |
-> | Action | Microsoft. ServiceBus/namespaces/Migrate/Action | Ad alanı geçirme işlemi |
+> | Action | Microsoft. ServiceBus/namespaces/Migrate/Action | Ad alanı geçiş işlemi |
 > | Action | Microsoft. ServiceBus/namespaces/migrationConfigurations/Delete | Geçiş yapılandırmasını siler. |
-> | Action | Microsoft. ServiceBus/ad alanları/migrationConfigurations/okuma | Geçişin durumunu ve bekleyen çoğaltma işlemlerini gösteren geçiş yapılandırmasını alır |
-> | Action | Microsoft. ServiceBus/namespaces/migrationConfigurations/döndürülüyor/Action | Standart, Premium ad alanı geçişine geri döndürür |
-> | Action | Microsoft. ServiceBus/namespaces/migrationConfigurations/Upgrade/Action | Standart ad alanı ile ilişkili DNS 'yi, geçişi tamamlayan Premium ad alanına ve standart olan kaynakları Standart ve Premium ad alanına eşitlemeyi durduran şekilde atar |
+> | Action | Microsoft. ServiceBus/ad alanları/migrationConfigurations/okuma | Geçişin ve bekleyen çoğaltma işlemlerinin durumunu gösteren Geçiş yapılandırmasını alır |
+> | Action | Microsoft. ServiceBus/namespaces/migrationConfigurations/döndürülüyor/Action | Standart ad alanından premium ad alanına geçişi geri alır |
+> | Action | Microsoft. ServiceBus/namespaces/migrationConfigurations/Upgrade/Action | Geçişi tamamlayan ve kaynakların standart ad alanından premium ad alanına eşitlenmesini durduran standart ad alanıyla ilişkili DNS'i premium ad alanına atar |
 > | Action | Microsoft. ServiceBus/namespaces/migrationConfigurations/Write | Geçiş yapılandırması oluşturur veya güncelleştirir. Bu işlem, kaynakları standart olan Premium ad alanına eşitlemeye başlar |
-> | Action | Microsoft. ServiceBus/namespaces/networkruleset/Delete | VNET kural kaynağını Sil |
+> | Action | Microsoft. ServiceBus/namespaces/networkruleset/Delete | Sanal Ağ Kuralı Kaynağını Sil |
 > | Action | Microsoft. ServiceBus/namespaces/networkruleset/Read | NetworkRuleSet kaynağını alır |
-> | Action | Microsoft. ServiceBus/namespaces/networkruleset/Write | VNET kural kaynağı oluşturma |
-> | Action | Microsoft. ServiceBus/namespaces/networkrulesets/Delete | VNET kural kaynağını Sil |
+> | Action | Microsoft. ServiceBus/namespaces/networkruleset/Write | Sanal Ağ Kuralı Kaynağı Oluştur |
+> | Action | Microsoft. ServiceBus/namespaces/networkrulesets/Delete | Sanal Ağ Kuralı Kaynağını Sil |
 > | Action | Microsoft. ServiceBus/namespaces/networkrulesets/Read | NetworkRuleSet kaynağını alır |
-> | Action | Microsoft. ServiceBus/namespaces/networkrulesets/Write | VNET kural kaynağı oluşturma |
+> | Action | Microsoft. ServiceBus/namespaces/networkrulesets/Write | Sanal Ağ Kuralı Kaynağı Oluştur |
 > | Action | Microsoft. ServiceBus/Namespace/operationresults/Read | Ad alanı işleminin durumunu al |
 > | Action | Microsoft. ServiceBus/namespaces/Providers/Microsoft. Insights/diagnosticSettings/Read | Ad alanı Tanılama ayarları kaynak açıklamalarının listesini al |
 > | Action | Microsoft. ServiceBus/namespaces/Providers/Microsoft. Insights/diagnosticSettings/Write | Ad alanı Tanılama ayarları kaynak açıklamalarının listesini al |
@@ -4825,18 +4812,18 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 > | Action | Microsoft. ServiceBus/namespaces/kuyruklar/authorizationRules/Delete | Kuyruk yetkilendirme kurallarını silme işlemi |
 > | Action | Microsoft. ServiceBus/namespaces/kuyruklar/authorizationRules/ListKeys/Action | Sıraya yönelik bağlantı dizesini al |
 > | Action | Microsoft. ServiceBus/namespaces/kuyruklar/authorizationRules/Read |  Kuyruk yetkilendirme kurallarının listesini alın |
-> | Action | Microsoft. ServiceBus/namespaces/kuyruklar/authorizationRules/regenerateKeys/ACTION | Kaynağa birincil veya Ikincil anahtarı yeniden oluştur |
+> | Action | Microsoft. ServiceBus/namespaces/kuyruklar/authorizationRules/regenerateKeys/ACTION | Kaynağın Birincil veya İkincil anahtarını yeniden oluşturun |
 > | Action | Microsoft. ServiceBus/namespaces/kuyruklar/authorizationRules/Write | Sıra yetkilendirme kuralları oluşturun ve özelliklerini güncelleştirin. Yetkilendirme kuralları erişim hakları güncelleştirilebilen olabilir. |
 > | Action | Microsoft. ServiceBus/namespaces/kuyruklar/Sil | Kuyruk kaynağını silme işlemi |
 > | Action | Microsoft. ServiceBus/namespaces/kuyruklar/okuma | Kuyruk kaynağı açıklamalarının listesini al |
 > | Action | Microsoft. ServiceBus/namespaces/kuyruklar/Write | Sıra özelliklerini oluşturun veya güncelleştirin. |
-> | Action | Microsoft. ServiceBus/Namespace/Read | Ad alanı kaynağı açıklaması listesini al |
-> | Action | Microsoft. ServiceBus/namespaces/removeAcsNamepsace/eylem | ACS ad alanını kaldır |
+> | Action | Microsoft. ServiceBus/Namespace/Read | Ad Alanı Kaynak Açıklamasının listesini alır |
+> | Action | Microsoft. ServiceBus/namespaces/removeAcsNamepsace/eylem | ACS ad alanını kaldırın |
 > | Action | Microsoft. ServiceBus/namespaces/konular/authorizationRules/Action | Konuyu güncelleştirmek için işlem. Bu işlem API sürüm 2017-04-01 ' de desteklenmiyor. Yetkilendirme kuralları. Lütfen yetkilendirme kuralını güncelleştirmek için bir PUT çağrısı kullanın. |
 > | Action | Microsoft. ServiceBus/namespaces/konular/authorizationRules/Delete | Konu yetkilendirme kurallarını silme işlemi |
 > | Action | Microsoft. ServiceBus/namespaces/konular/authorizationRules/ListKeys/Action | Bağlantı dizesini konuya al |
 > | Action | Microsoft. ServiceBus/namespaces/konular/authorizationRules/Read |  Konu yetkilendirme kurallarının listesini alın |
-> | Action | Microsoft. ServiceBus/namespaces/konular/authorizationRules/regenerateKeys/ACTION | Kaynağa birincil veya Ikincil anahtarı yeniden oluştur |
+> | Action | Microsoft. ServiceBus/namespaces/konular/authorizationRules/regenerateKeys/ACTION | Kaynağın Birincil veya İkincil anahtarını yeniden oluşturun |
 > | Action | Microsoft. ServiceBus/namespaces/konular/authorizationRules/Write | Konu yetkilendirme kuralları oluşturun ve özelliklerini güncelleştirin. Yetkilendirme kuralları erişim hakları güncelleştirilebilen olabilir. |
 > | Action | Microsoft. ServiceBus/namespaces/konular/Sil | Konu kaynağını silme işlemi |
 > | Action | Microsoft. ServiceBus/namespaces/konular/okuma | Konu kaynağı açıklamalarının listesini al |
@@ -4847,52 +4834,52 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 > | Action | Microsoft. ServiceBus/namespaces/konular/abonelikler/kurallar/yazma | Kural özelliklerini oluşturun veya güncelleştirin. |
 > | Action | Microsoft. ServiceBus/namespaces/konular/abonelikler/yazma | TopicSubscription özelliklerini oluşturun veya güncelleştirin. |
 > | Action | Microsoft. ServiceBus/namespaces/konular/yaz | Konu özelliklerini oluşturun veya güncelleştirin. |
-> | Action | Microsoft. ServiceBus/Namespace/virtualNetworkRules/Delete | VNET kural kaynağını Sil |
-> | Action | Microsoft. ServiceBus/Namespace/virtualNetworkRules/Read | VNET kural kaynağını alır |
-> | Action | Microsoft. ServiceBus/Namespace/virtualNetworkRules/Write | VNET kural kaynağı oluşturma |
+> | Action | Microsoft. ServiceBus/Namespace/virtualNetworkRules/Delete | Sanal Ağ Kuralı Kaynağını Sil |
+> | Action | Microsoft. ServiceBus/Namespace/virtualNetworkRules/Read | Sanal Ağ Kuralı Kaynağını alır |
+> | Action | Microsoft. ServiceBus/Namespace/virtualNetworkRules/Write | Sanal Ağ Kuralı Kaynağı Oluştur |
 > | Action | Microsoft. ServiceBus/Namespace/Write | Bir ad alanı kaynağı oluşturun ve özelliklerini güncelleştirin. Ad alanının etiketleri ve kapasitesi, güncelleştirilebilen özelliklerdir. |
-> | Action | Microsoft. ServiceBus/işlemler/okuma | Işlemleri al |
-> | Action | Microsoft. ServiceBus/Register/ACTION | ServiceBus kaynak sağlayıcısı için aboneliği kaydeder ve ServiceBus kaynaklarının oluşturulmasını sunar |
+> | Action | Microsoft. ServiceBus/işlemler/okuma | Alma İşlemleri |
+> | Action | Microsoft. ServiceBus/Register/ACTION | Aboneliği ServiceBus kaynak sağlayıcısı için kaydeder ve ServiceBus kaynaklarının oluşturulmasını sağlar |
 > | Action | Microsoft. ServiceBus/SKU/okuma | SKU kaynak açıklamaları listesini al |
 > | Action | Microsoft. ServiceBus/SKU/bölge/okuma | Skuregion kaynak açıklamalarının listesini al |
-> | Action | Microsoft. ServiceBus/Unregister/ACTION | ServiceBus kaynak sağlayıcısı için aboneliği kaydeder ve ServiceBus kaynaklarının oluşturulmasını sunar |
+> | Action | Microsoft. ServiceBus/Unregister/ACTION | Aboneliği ServiceBus kaynak sağlayıcısı için kaydeder ve ServiceBus kaynaklarının oluşturulmasını sağlar |
 
 ## <a name="microsoftservicefabric"></a>Microsoft.ServiceFabric
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
-> | Action | Microsoft. ServiceFabric/kümeler/uygulamalar/Sil | Herhangi bir uygulamayı silme |
-> | Action | Microsoft. ServiceFabric/kümeler/uygulamalar/okuma | Herhangi bir uygulamayı okuyun |
-> | Action | Microsoft. ServiceFabric/kümeler/uygulamalar/hizmetler/Sil | Tüm Hizmetleri Sil |
-> | Action | Microsoft. ServiceFabric/kümeler/uygulamalar/hizmetler/bölümler/okuma | Herhangi bir bölümü okuyun |
-> | Action | Microsoft. ServiceFabric/kümeler/uygulamalar/hizmetler/bölümler/çoğaltmalar/okuma | Herhangi bir çoğaltmayı okuyun |
-> | Action | Microsoft. ServiceFabric/kümeler/uygulamalar/hizmetler/okuma | Tüm hizmetleri okuyun |
-> | Action | Microsoft. ServiceFabric/kümeler/uygulamalar/hizmetler/durumlar/okuma | Tüm hizmet durumlarını okuyun |
-> | Action | Microsoft. ServiceFabric/kümeler/uygulamalar/hizmetler/yazma | Herhangi bir hizmeti oluşturun veya güncelleştirin |
-> | Action | Microsoft. ServiceFabric/kümeler/uygulamalar/yazma | Herhangi bir uygulamayı oluşturun veya güncelleştirin |
-> | Action | Microsoft. ServiceFabric/kümeler/applicationTypes/Delete | Herhangi bir uygulama türünü sil |
-> | Action | Microsoft. ServiceFabric/kümeler/applicationTypes/Read | Herhangi bir uygulama türünü okuyun |
-> | Action | Microsoft. ServiceFabric/kümeler/applicationTypes/sürümler/Delete | Herhangi bir uygulama türü sürümünü Sil |
-> | Action | Microsoft. ServiceFabric/kümeler/applicationTypes/sürümler/Read | Herhangi bir uygulama türü sürümünü okuyun |
-> | Action | Microsoft. ServiceFabric/kümeler/applicationTypes/sürümler/Write | Herhangi bir uygulama türü sürümü oluşturun veya güncelleştirin |
-> | Action | Microsoft. ServiceFabric/kümeler/applicationTypes/Write | Herhangi bir uygulama türü oluşturun veya güncelleştirin |
-> | Action | Microsoft. ServiceFabric/kümeler/Sil | Herhangi bir kümeyi silme |
-> | Action | Microsoft. ServiceFabric/kümeler/düğümler/okuma | Herhangi bir düğümü okuyun |
-> | Action | Microsoft. ServiceFabric/kümeler/okuma | Herhangi bir kümeyi okuyun |
-> | Action | Microsoft. ServiceFabric/kümeler/durumlar/okuma | Tüm küme durumlarını okuyun |
-> | Action | Microsoft. ServiceFabric/kümeler/yazma | Herhangi bir kümeyi oluşturma veya güncelleştirme |
-> | Action | Microsoft. ServiceFabric/konumlar/Kümesürümleri/okuma | Tüm küme sürümlerini okuyun |
-> | Action | Microsoft. ServiceFabric/konumlar/ortamlar/Kümesürümleri/okuma | Belirli bir ortam için herhangi bir küme sürümünü okuyun |
-> | Action | Microsoft. ServiceFabric/konumlar/operationresults/Read | Işlem sonuçlarını okuma |
-> | Action | Microsoft. ServiceFabric/konumlar/işlemler/okuma | Konuma göre tüm Işlemleri oku |
-> | Action | Microsoft. ServiceFabric/işlemler/okuma | Tüm kullanılabilir Işlemleri okuyun |
-> | Action | Microsoft. ServiceFabric/Register/ACTION | Tüm eylemleri kaydetme |
+> | Action | Microsoft. ServiceFabric/kümeler/uygulamalar/Sil | Herhangi Bir Uygulamayı Silin |
+> | Action | Microsoft. ServiceFabric/kümeler/uygulamalar/okuma | Herhangi Bir Uygulamayı Okuyun |
+> | Action | Microsoft. ServiceFabric/kümeler/uygulamalar/hizmetler/Sil | Herhangi Bir Hizmeti Silin |
+> | Action | Microsoft. ServiceFabric/kümeler/uygulamalar/hizmetler/bölümler/okuma | Herhangi Bir Bölümü Okuyun |
+> | Action | Microsoft. ServiceFabric/kümeler/uygulamalar/hizmetler/bölümler/çoğaltmalar/okuma | Herhangi Bir Çoğaltmayı Okuyun |
+> | Action | Microsoft. ServiceFabric/kümeler/uygulamalar/hizmetler/okuma | Herhangi Bir Hizmeti Okuyun |
+> | Action | Microsoft. ServiceFabric/kümeler/uygulamalar/hizmetler/durumlar/okuma | Tüm Hizmet Durumlarını Oku |
+> | Action | Microsoft. ServiceFabric/kümeler/uygulamalar/hizmetler/yazma | Herhangi Bir Hizmet Oluşturun veya Güncelleştirin |
+> | Action | Microsoft. ServiceFabric/kümeler/uygulamalar/yazma | Herhangi Bir Uygulama Oluşturun veya Güncelleştirin |
+> | Action | Microsoft. ServiceFabric/kümeler/applicationTypes/Delete | Herhangi Bir Uygulama Türü Silin |
+> | Action | Microsoft. ServiceFabric/kümeler/applicationTypes/Read | Herhangi Bir Uygulama Türünü Okuyun |
+> | Action | Microsoft. ServiceFabric/kümeler/applicationTypes/sürümler/Delete | Herhangi Bir Uygulama Türü Sürümü Silin |
+> | Action | Microsoft. ServiceFabric/kümeler/applicationTypes/sürümler/Read | Herhangi Bir Uygulama Türü Sürümünü Okuyun |
+> | Action | Microsoft. ServiceFabric/kümeler/applicationTypes/sürümler/Write | Herhangi Bir Uygulama Türü Sürümü Oluşturun veya Güncelleştirin |
+> | Action | Microsoft. ServiceFabric/kümeler/applicationTypes/Write | Herhangi Bir Uygulama Türü Oluşturun veya Güncelleştirin |
+> | Action | Microsoft. ServiceFabric/kümeler/Sil | Herhangi Bir Kümeyi Silin |
+> | Action | Microsoft. ServiceFabric/kümeler/düğümler/okuma | Herhangi Bir Düğümü Okuyun |
+> | Action | Microsoft. ServiceFabric/kümeler/okuma | Herhangi Bir Kümeyi Okuyun |
+> | Action | Microsoft. ServiceFabric/kümeler/durumlar/okuma | Tüm Küme Durumlarını Oku |
+> | Action | Microsoft. ServiceFabric/kümeler/yazma | Herhangi Bir Kümeyi Oluşturun veya Güncelleştirin |
+> | Action | Microsoft. ServiceFabric/konumlar/Kümesürümleri/okuma | Herhangi bir Küme Sürümünü oku |
+> | Action | Microsoft. ServiceFabric/konumlar/ortamlar/Kümesürümleri/okuma | Belirli bir ortam için herhangi bir Küme Sürümünü okuyun |
+> | Action | Microsoft. ServiceFabric/konumlar/operationresults/Read | Herhangi Bir İşlem Sonucunu Okuyun |
+> | Action | Microsoft. ServiceFabric/konumlar/işlemler/okuma | Konuma göre herhangi bir İşlemi okuyun |
+> | Action | Microsoft. ServiceFabric/işlemler/okuma | Kullanılabilen Herhangi Bir İşlemi Okuyun |
+> | Action | Microsoft. ServiceFabric/Register/ACTION | Herhangi Bir Eylemi Kaydedin |
 
 ## <a name="microsoftsignalrservice"></a>Microsoft. SignalRService
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. SignalRService/Locations/checknameavaılabılıty/Action | Bir adın yeni bir SignalR hizmeti ile kullanım için kullanılabilir olup olmadığını denetler |
 > | Action | Microsoft. SignalRService/Locations/operationresults/SignalR/Read | Zaman uyumsuz bir işlemin durumunu sorgulama |
@@ -4915,29 +4902,29 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftsolutions"></a>Microsoft. Solutions
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
-> | Action | Microsoft. Solutions/applicationDefinitions/Applicationyapay/Read | Uygulama tanımının uygulama yapılarını listeler. |
-> | Action | Microsoft. Solutions/applicationDefinitions/Delete | Bir uygulama tanımını kaldırır. |
-> | Action | Microsoft. Solutions/applicationDefinitions/Read | Uygulama tanımlarının bir listesini alır. |
-> | Action | Microsoft. Solutions/applicationDefinitions/Write | Uygulama tanımı ekleme veya değiştirme. |
-> | Action | Microsoft. Solutions/Applications/applicationArtifacts/Read | Uygulama yapılarını listeler. |
-> | Action | Microsoft. Solutions/Applications/Delete | Bir uygulamayı kaldırır. |
-> | Action | Microsoft. Solutions/Applications/Read | Uygulamaların bir listesini alır. |
+> | Action | Microsoft. Solutions/applicationDefinitions/Applicationyapay/Read | Uygulama tanımının uygulama yapıtlarını listeler. |
+> | Action | Microsoft. Solutions/applicationDefinitions/Delete | Uygulama tanımı kaldırır. |
+> | Action | Microsoft. Solutions/applicationDefinitions/Read | Uygulama tanımları listesi alır. |
+> | Action | Microsoft. Solutions/applicationDefinitions/Write | Uygulama tanımı ekle veya değiştir. |
+> | Action | Microsoft. Solutions/Applications/applicationArtifacts/Read | Uygulama yapıtlarını listeler. |
+> | Action | Microsoft. Solutions/Applications/Delete | Uygulama kaldırır. |
+> | Action | Microsoft. Solutions/Applications/Read | Uygulama listesi alır. |
 > | Action | Microsoft. Solutions/Applications/refreshPermissions/Action | Uygulama izinlerini yeniler. |
 > | Action | Microsoft. Solutions/Applications/updateAccess/Action | Uygulama erişimini güncelleştirir. |
 > | Action | Microsoft. Solutions/Applications/Write | Uygulama oluşturur. |
-> | Action | Microsoft. Solutions/Jrequests/Delete | JRequest 'i kaldırma |
-> | Action | Microsoft. Solutions/Jrequests/Read | Jisteklerinin bir listesini alır |
-> | Action | Microsoft. Solutions/Jrequests/Write | Jbir Istek oluşturur |
-> | Action | Microsoft. Solutions/Locations/Operationdurumlarının/Read | Kaynak için işlem durumunu okur. |
-> | Action | Microsoft. Solutions/Register/ACTION | Çözümlere kaydolun. |
-> | Action | Microsoft. Solutions/Unregister/Action | Çözümlerdeki kaydını siler. |
+> | Action | Microsoft. Solutions/Jrequests/Delete | Bir JitRequest'i kaldır |
+> | Action | Microsoft. Solutions/Jrequests/Read | JitRequest listesi alır |
+> | Action | Microsoft. Solutions/Jrequests/Write | Bir JitRequest oluşturur |
+> | Action | Microsoft. Solutions/Locations/Operationdurumlarının/Read | Kaynağın işlem durumunu okur. |
+> | Action | Microsoft. Solutions/Register/ACTION | Çözümler için kaydolun. |
+> | Action | Microsoft. Solutions/Unregister/Action | Çözümlerden kaydı siler. |
 
 ## <a name="microsoftsql"></a>Microsoft.Sql
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. SQL/Checknameavaılabılıty/Action | Belirli bir abonelik için verilen sunucu adının dünya genelinde sağlanması için kullanılabilir olup olmadığını doğrulayın. |
 > | Action | Microsoft. SQL/ınstancehavuzlar/Delete | Bir örnek havuzunu siler |
@@ -5297,49 +5284,49 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
-> | Action | Microsoft. Storage/checknameavaılabılıty/Read | Hesap adının geçerli olduğunu ve kullanımda olup olmadığını denetler. |
-> | Action | Microsoft. Storage/Locations/checknameavaılabılıty/Read | Hesap adının geçerli olduğunu ve kullanımda olup olmadığını denetler. |
-> | Action | Microsoft. Storage/Locations/Deletevirtualnetworkoralt ağları/eylem | Microsoft. Storage 'a sanal ağ veya alt ağın silindiğini bildirir |
-> | Action | Microsoft. Storage/konumlar/kullanımlar/okuma | Belirtilen abonelikteki kaynaklar için sınırı ve geçerli kullanım sayısını döndürür |
-> | Action | Microsoft. Storage/işlemler/okuma | Zaman uyumsuz bir işlemin durumunu yoklar. |
-> | Action | Microsoft. Storage/Register/ACTION | Depolama kaynak sağlayıcısı için aboneliği kaydeder ve depolama hesaplarının oluşturulmasına izin vermez. |
-> | Action | Microsoft. Storage/SKU/okuma | Microsoft. Storage tarafından desteklenen SKU 'Ları listeler. |
-> | DataAction | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/ekleme/eylem | Blob içeriği ekleme sonucunu döndürür |
-> | DataAction | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/Sil | Bir blobu silmenin sonucunu döndürür |
-> | DataAction | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/deleteAutomaticSnapshot/Action | Otomatik anlık görüntü silmenin sonucunu döndürür |
-> | DataAction | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/filtre/eylem | Eşleşen Etiketler filtresi olan bir hesap altındaki Blobların listesini döndürür |
-> | DataAction | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/blob/okuma | Blob veya Blobların listesini döndürür |
-> | DataAction | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/blob/Etiketler/okuma | Blob etiketlerinin okunması sonucunu döndürür |
-> | DataAction | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/blob/Etiketler/yazma | Blob etiketlerinin yazılması sonucunu döndürür |
-> | DataAction | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/yazma | Blob yazma sonucunu döndürür |
-> | Action | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/clearLegalHold/Action | Blob kapsayıcısı yasal tutmayı temizle |
-> | Action | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Delete | Bir kapsayıcıyı silmenin sonucunu döndürür |
-> | Action | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Imdeğiştirici Bilitypolicies/Delete | Blob kapsayıcısı kullanılabilirlik ilkesini Sil |
-> | Action | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Imdeğiştirici Bilitypolicies/Genişlet/eylem | Blob kapsayıcısı dengeskaya bilirlik ilkesini Genişlet |
-> | Action | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Imdeğiştirici Bilitypolicies/Lock/Action | Blob kapsayıcısı dengeskaya bilirlik ilkesini kilitle |
-> | Action | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Imdeğiştirici Bilitypolicies/Read | Blob kapsayıcısı dengeskaya bilirlik ilkesini al |
-> | Action | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Imdeğiştirici Bilitypolicies/Write | Blob kapsayıcısı dengeskaya bilirlik ilkesini koy |
-> | Action | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/kira/eylem | Kira blob kapsayıcısının sonucunu döndürür |
+> | Action | Microsoft. Storage/checknameavaılabılıty/Read | Hesap adının geçerliliğini ve kullanımda olup olmadığını denetler. |
+> | Action | Microsoft. Storage/Locations/checknameavaılabılıty/Read | Hesap adının geçerliliğini ve kullanımda olup olmadığını denetler. |
+> | Action | Microsoft. Storage/Locations/Deletevirtualnetworkoralt ağları/eylem | Microsoft.Storage'a sanal ağın veya alt ağın silindiğini bildirir |
+> | Action | Microsoft. Storage/konumlar/kullanımlar/okuma | Belirtilen abonelikteki kaynakların sınır ve geçerli kullanım sayısını döndürür |
+> | Action | Microsoft. Storage/işlemler/okuma | Bir zaman uyumsuz işlemin durumunu yoklar. |
+> | Action | Microsoft. Storage/Register/ACTION | Depolama kaynak sağlayıcısı için aboneliği kaydeder ve depolama hesaplarının oluşturulmasını etkinleştirir. |
+> | Action | Microsoft. Storage/SKU/okuma | Microsoft.Storage tarafından desteklenen SKU'ları listeler. |
+> | DataAction | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/ekleme/eylem | Blob içeriği eklemenin sonucunu döndürür |
+> | DataAction | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/Sil | Bir blobun silinmesinin sonucunu döndürür |
+> | DataAction | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/deleteAutomaticSnapshot/Action | Otomatik anlık görüntüyü silme sonucunu döndürür |
+> | DataAction | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/filtre/eylem | Bir hesapta filtreyle eşleşen blobların listesini döndürür |
+> | DataAction | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/blob/okuma | Bir blobu veya blob listesini döndürür |
+> | DataAction | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/blob/Etiketler/okuma | Blob etiketleri okuma sonucunu döndürür |
+> | DataAction | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/blob/Etiketler/yazma | Blob etiketleri yazmanın sonucunu döndürür |
+> | DataAction | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/yazma | Bir blobu yazmanın sonucunu döndürür |
+> | Action | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/clearLegalHold/Action | Blob kapsayıcısı yasal tutmasını temizle |
+> | Action | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Delete | Bir kapsayıcının silinmesinin sonucunu döndürür |
+> | Action | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Imdeğiştirici Bilitypolicies/Delete | Blob kapsayıcısı değiştirilemezlik ilkesini sil |
+> | Action | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Imdeğiştirici Bilitypolicies/Genişlet/eylem | Blob kapsayıcısı değiştirilemezlik ilkesini genişlet |
+> | Action | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Imdeğiştirici Bilitypolicies/Lock/Action | Blob kapsayıcısı değitirilemezliğini kilitleme ilkesi |
+> | Action | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Imdeğiştirici Bilitypolicies/Read | Blob kapsayıcısı değiştirilemezlik ilkesini al |
+> | Action | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Imdeğiştirici Bilitypolicies/Write | Blob kapsayıcısı değitirilemezlik ilkesi koy |
+> | Action | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/kira/eylem | Blob kapsayıcısını kiralama sonucunu döndürür |
 > | Action | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/okuma | Bir kapsayıcı döndürür |
-> | Action | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/okuma | Kapsayıcıların listesini döndürür |
-> | Action | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/setLegalHold/Action | Blob kapsayıcısı yasal tutmayı ayarla |
-> | Action | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Write | Patch blob kapsayıcısının sonucunu döndürür |
+> | Action | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/okuma | Kapsayıcı listesini döndürür |
+> | Action | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/setLegalHold/Action | Blob kapsayıcısı yasal tutma ayarla |
+> | Action | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Write | Blob kapsayıcısına yama yapma sonucunu döndürür |
 > | Action | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Write | Put blob kapsayıcısının sonucunu döndürür |
-> | Action | Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey/Action | Blob hizmeti için bir Kullanıcı temsili anahtarı döndürür |
+> | Action | Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey/Action | Blob hizmeti için bir kullanıcı temsilcisi anahtarı döndürür |
 > | Action | Microsoft. Storage/storageAccounts/blobServices/okuma |  |
 > | Action | Microsoft. Storage/storageAccounts/blobServices/okuma | Blob hizmeti özelliklerini veya istatistiklerini döndürür |
-> | Action | Microsoft. Storage/storageAccounts/blobServices/Write | Put blob hizmeti özelliklerinin sonucunu döndürür |
-> | Action | Microsoft. Storage/storageAccounts/Delete | Var olan bir depolama hesabını siler. |
-> | Action | Microsoft. Storage/storageAccounts/yük devretme/eylem | Müşteri, kullanılabilirlik sorunları durumunda yük devretmeyi denetleyebilir |
+> | Action | Microsoft. Storage/storageAccounts/blobServices/Write | Blob hizmeti özelliklerini koymanın sonucunu döndürür |
+> | Action | Microsoft. Storage/storageAccounts/Delete | Mevcut bir depolama hesabını siler. |
+> | Action | Microsoft. Storage/storageAccounts/yük devretme/eylem | Müşteri bulunabilirlik sorunları olduğunda yük devretmeyi denetleyebilir |
 > | Action | Microsoft. Storage/storageAccounts/fileServices/Read | Dosya hizmeti özelliklerini al |
-> | Action | Microsoft. Storage/storageAccounts/listAccountSas/eylem | Belirtilen depolama hesabı için hesap SAS belirtecini döndürür. |
-> | Action | Microsoft. Storage/storageAccounts/ListKeys/Action | Belirtilen depolama hesabı için erişim anahtarlarını döndürür. |
-> | Action | Microsoft. Storage/storageAccounts/listServiceSas/eylem | Belirtilen depolama hesabı için hizmet SAS belirtecini döndürür. |
-> | Action | Microsoft. Storage/storageAccounts/managementPolicies/Delete | Depolama hesabı yönetim ilkelerini Sil |
-> | Action | Microsoft. Storage/storageAccounts/managementPolicies/okuma | Depolama yönetimi hesabı ilkelerini al |
-> | Action | Microsoft. Storage/storageAccounts/managementPolicies/Write | Depolama hesabı yönetim ilkelerini yerleştirme |
+> | Action | Microsoft. Storage/storageAccounts/listAccountSas/eylem | Belirtilen depolama hesabı için Hesap SAS belirtecini döndürür. |
+> | Action | Microsoft. Storage/storageAccounts/ListKeys/Action | Belirtilen depolama hesabının erişim anahtarlarını döndürür. |
+> | Action | Microsoft. Storage/storageAccounts/listServiceSas/eylem | Belirtilen depolama hesabı için Hizmet SAS belirtecini döndürür. |
+> | Action | Microsoft. Storage/storageAccounts/managementPolicies/Delete | Depolama hesabı yönetim ilkelerini sil |
+> | Action | Microsoft. Storage/storageAccounts/managementPolicies/okuma | Depolama yönetim hesabı ilkelerini alın |
+> | Action | Microsoft. Storage/storageAccounts/managementPolicies/Write | Depolama hesabı yönetim ilkelerini yürürlüğe koy |
 > | Action | Microsoft. Storage/storageAccounts/Privateendpointconnectionproxy/Delete | Özel uç nokta bağlantı proxy 'Lerini Sil |
 > | Action | Microsoft. Storage/storageAccounts/Privateendpointconnectionproxy/yazma | Özel uç nokta bağlantı proxy 'Leri koy |
 > | Action | Microsoft. Storage/storageAccounts/privateEndpointConnections/Delete | Özel uç nokta bağlantısını sil |
@@ -5347,33 +5334,33 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 > | Action | Microsoft. Storage/storageAccounts/privateEndpointConnections/Write | Özel uç nokta bağlantısı koy |
 > | Action | Microsoft. Storage/storageAccounts/PrivateEndpointConnectionsApproval/eylem | Özel uç nokta bağlantılarını Onayla |
 > | Action | Microsoft. Storage/storageAccounts/privateLinkResources/Read | StorageAccount grup kimliklerini al |
-> | Action | Microsoft. Storage/storageAccounts/queueServices/kuyruklar/Sil | Kuyruğu silmenin sonucunu döndürür |
-> | DataAction | Microsoft. Storage/storageAccounts/queueServices/kuyruklar/iletiler/ekleme/eylem | İleti eklemenin sonucunu döndürür |
-> | DataAction | Microsoft. Storage/storageAccounts/queueServices/kuyruklar/iletiler/Sil | İletiyi silmenin sonucunu döndürür |
-> | DataAction | Microsoft. Storage/storageAccounts/queueServices/kuyruklar/iletiler/işlem/eylem | İleti işlemenin sonucunu döndürür |
+> | Action | Microsoft. Storage/storageAccounts/queueServices/kuyruklar/Sil | Bir kuyruğu silmenin sonucunu döndürür |
+> | DataAction | Microsoft. Storage/storageAccounts/queueServices/kuyruklar/iletiler/ekleme/eylem | Bir ileti eklemenin sonucunu döndürür |
+> | DataAction | Microsoft. Storage/storageAccounts/queueServices/kuyruklar/iletiler/Sil | Bir iletiyi silmenin sonucunu döndürür |
+> | DataAction | Microsoft. Storage/storageAccounts/queueServices/kuyruklar/iletiler/işlem/eylem | Bir iletiyi işlemenin sonucunu döndürür |
 > | DataAction | Microsoft. Storage/storageAccounts/queueServices/kuyruklar/iletiler/okundu | Bir ileti döndürür |
-> | DataAction | Microsoft. Storage/storageAccounts/queueServices/kuyruklar/iletiler/yazma | İleti yazmanın sonucunu döndürür |
-> | Action | Microsoft. Storage/storageAccounts/queueServices/kuyrukları/okuma | Kuyruğu veya kuyruk listesini döndürür. |
-> | Action | Microsoft. Storage/storageAccounts/queueServices/kuyruklar/Write | Sıra yazmanın sonucunu döndürür |
-> | Action | Microsoft. Storage/storageAccounts/queueServices/Read | Kuyruk hizmeti özellikleri al |
-> | Action | Microsoft. Storage/storageAccounts/queueServices/Read | Sıra hizmeti özelliklerini veya istatistiklerini döndürür. |
-> | Action | Microsoft. Storage/storageAccounts/queueServices/Write | Sıra hizmeti özelliklerini ayarlamanın sonucunu döndürür |
+> | DataAction | Microsoft. Storage/storageAccounts/queueServices/kuyruklar/iletiler/yazma | Bir iletiyi yazmanın sonucunu döndürür |
+> | Action | Microsoft. Storage/storageAccounts/queueServices/kuyrukları/okuma | Bir kuyruğu veya kuyruk listesini döndürür. |
+> | Action | Microsoft. Storage/storageAccounts/queueServices/kuyruklar/Write | Bir kuyruğu yazmanın sonucunu döndürür |
+> | Action | Microsoft. Storage/storageAccounts/queueServices/Read | Kuyruk hizmeti özelliklerini al |
+> | Action | Microsoft. Storage/storageAccounts/queueServices/Read | Kuyruk hizmeti özelliklerini veya istatistiklerini döndürür. |
+> | Action | Microsoft. Storage/storageAccounts/queueServices/Write | Kuyruk hizmeti özelliklerini ayarlamanın sonucunu döndürür |
 > | Action | Microsoft. Storage/storageAccounts/Read | Depolama hesaplarının listesini döndürür veya belirtilen depolama hesabının özelliklerini alır. |
-> | Action | Microsoft. Storage/storageAccounts/RegenerateKey/ACTION | Belirtilen depolama hesabı için erişim anahtarlarını yeniden oluşturur. |
+> | Action | Microsoft. Storage/storageAccounts/RegenerateKey/ACTION | Belirtilen depolama hesabının erişim anahtarlarını yeniden oluşturur. |
 > | Action | Microsoft. Storage/storageAccounts/restoreBlobRanges/eylem | Blob aralıklarını belirtilen sürenin durumuna geri yükle |
-> | Action | Microsoft. Storage/storageAccounts/Iptal Keuserdelegationkeys/Action | Belirtilen depolama hesabı için tüm Kullanıcı temsili anahtarlarını iptal eder. |
+> | Action | Microsoft. Storage/storageAccounts/Iptal Keuserdelegationkeys/Action | Belirtilen depolama hesabı için tüm kullanıcı temsilcisi anahtarlarını iptal eder. |
 > | Action | Microsoft. Storage/storageAccounts/Services/diagnosticSettings/Write | Depolama hesabı tanılama ayarlarını oluşturun/güncelleştirin. |
 > | Action | Microsoft. Storage/storageAccounts/tableServices/Read | Tablo hizmeti özelliklerini al |
-> | Action | Microsoft. Storage/storageAccounts/Write | Belirtilen parametrelerle bir depolama hesabı oluşturur veya özellikleri ya da etiketleri güncelleştirir veya belirtilen depolama hesabı için özel etki alanı ekler. |
-> | Action | Microsoft. Storage/kullanımlar/okuma | Belirtilen abonelikteki kaynaklar için sınırı ve geçerli kullanım sayısını döndürür |
+> | Action | Microsoft. Storage/storageAccounts/Write | Belirtilen parametrelerle bir depolama hesabı oluşturur, özellikleri veya etiketleri güncelleştirir ya da belirtilen depolama hesabına özel etki alanı ekler. |
+> | Action | Microsoft. Storage/kullanımlar/okuma | Belirtilen abonelikteki kaynakların sınır ve geçerli kullanım sayısını döndürür |
 
 ## <a name="microsoftstoragesync"></a>Microsoft. storagessync
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. storagessync/Locations/Checknameavaılabılıty/Action | Depolama eşitleme hizmeti adının geçerli olduğunu ve kullanımda olup olmadığını denetler. |
-> | Action | Microsoft. storagessync/Locations/iş akışları/işlemler/okuma | Zaman uyumsuz bir işlemin durumunu alır |
+> | Action | Microsoft. storagessync/Locations/iş akışları/işlemler/okuma | Bir zaman uyumsuz işlemin durumunu alır |
 > | Action | Microsoft. storagessync/işlemler/okuma | Desteklenen Işlemlerin bir listesini alır |
 > | Action | Microsoft. storagessync/Register/ACTION | Depolama eşitleme sağlayıcısı için aboneliği kaydeder |
 > | Action | Microsoft. storagessync/storageSyncServices/Delete | Tüm depolama eşitleme hizmetlerini silme |
@@ -5401,8 +5388,8 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 > | Action | Microsoft. storagessync/storageSyncServices/syncGroups/Sunucuendpoints/yeniden hesaplama/eylem | Dosyaları bir sunucuya geri çekmek için bu eylemi çağırın |
 > | Action | Microsoft. storagessync/storageSyncServices/syncGroups/serverEndpoints/Write | Sunucu uç noktalarını oluşturma veya güncelleştirme |
 > | Action | Microsoft. storagessync/storageSyncServices/syncGroups/Write | Tüm eşitleme gruplarını oluşturun veya güncelleştirin |
-> | Action | Microsoft. storagessync/storageSyncServices/iş akışları/operationresults/Read | Zaman uyumsuz bir işlemin durumunu alır |
-> | Action | Microsoft. storagessync/storageSyncServices/iş akışları/işlemler/okuma | Zaman uyumsuz bir işlemin durumunu alır |
+> | Action | Microsoft. storagessync/storageSyncServices/iş akışları/operationresults/Read | Bir zaman uyumsuz işlemin durumunu alır |
+> | Action | Microsoft. storagessync/storageSyncServices/iş akışları/işlemler/okuma | Bir zaman uyumsuz işlemin durumunu alır |
 > | Action | Microsoft. storagessync/storageSyncServices/iş akışları/okuma | Iş akışlarını oku |
 > | Action | Microsoft. storagessync/storageSyncServices/Write | Depolama Eşitleme Hizmetleri oluşturun veya güncelleştirin |
 > | Action | Microsoft. storagessync/Unregister/Action | Depolama eşitleme sağlayıcısı için aboneliğin kaydını siler |
@@ -5410,7 +5397,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftstorsimple"></a>Microsoft.StorSimple
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. StorSimple/yöneticileri/accessControlRecords/Delete | Access Control kayıtlarını siler |
 > | Action | Microsoft. StorSimple/yöneticileri/accessControlRecords/operationResults/Read | Işlem sonuçlarını listeler veya alır |
@@ -5585,7 +5572,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. StreamAnalytics/konumlar/kotalar/okundu | Stream Analytics abonelik kotasını okuyun |
 > | Action | Microsoft. StreamAnalytics/işlemler/okuma | Stream Analytics Işlemleri oku |
@@ -5625,7 +5612,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftsubscription"></a>Microsoft. Subscription
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. Subscription/Cancel/ACTION | Aboneliği iptal eder |
 > | Action | Microsoft. Subscription/CreateSubscription/eylem | Bir Azure aboneliği oluşturun |
@@ -5637,16 +5624,16 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftsupport"></a>Microsoft. support
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
-> | Action | Microsoft.Support/register/action | Destek Kaynağı Sağlayıcısı'na kayıt yapar |
+> | Action | Microsoft.Support/register/action | Destek Kaynağı Sağlayıcısına Kayıt Yapar |
 > | Action | Microsoft.Support/supportTickets/read | Durum, önem derecesi, kişi ayrıntıları ve iletişimler gibi Destek Biletleri ayrıntılarını alır veya aboneliklerdeki Destek Biletleri listesini alır. |
 > | Action | Microsoft.Support/supportTickets/write | Destek Bileti oluşturur veya güncelleştirir. Teknik, Faturalama, Kotalar veya Abonelik Yönetimi konusunda bir Destek Bileti oluşturabilirsiniz. Var olan destek biletlerinin önem derecesini, iletişim bilgilerini ve iletişimlerini güncelleştirebilirsiniz. |
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. Timeseriesınsights/ortamlar/accesspolicies/Delete | Erişim ilkesini siler. |
 > | Action | Microsoft. Timeseriesınsights/ortamlar/accesspolicies/Read | Erişim ilkesinin özelliklerini alın. |
@@ -5666,7 +5653,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftvisualstudio"></a>Microsoft. VisualStudio
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. VisualStudio/Account/Delete | Hesabı Sil |
 > | Action | Microsoft. VisualStudio/Account/EXTENSION/Read | Hesabı/uzantıyı oku |
@@ -5685,7 +5672,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftweb"></a>microsoft.web
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. Web/apimanagementaccounts/apiacl/okuma | API yönetim hesapları Apiacl 'Lerini alın. |
 > | Action | Microsoft. Web/apimanagementaccounts/API/apiacl/Delete | API Management hesapları API 'Leri silme Apiacl 'leri. |
@@ -6090,7 +6077,7 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 ## <a name="microsoftworkloadmonitor"></a>Microsoft. WorkloadMonitor
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Eylem türü | İşlem | Açıklama |
+> | Eylem türü | Çalışma | Açıklama |
 > | --- | --- | --- |
 > | Action | Microsoft. WorkloadMonitor/Components/Read | Kaynak için bileşenleri alır |
 > | Action | Microsoft. WorkloadMonitor/componentsSummary/okuma | Bileşenlerin özetini alır |

@@ -1,64 +1,61 @@
 ---
-title: Kullanıcılar Azure Active Directory kimlik koruması ile engellemesini kaldırma | Microsoft Docs
-description: Bilgi nasıl bir Azure Active Directory kimlik koruması ilke tarafından engellenen kullanıcıların engelini kaldırma.
+title: Azure Active Directory Kimlik Koruması ile kullanıcıların engellemesini kaldırma | Microsoft Docs
+description: Azure Active Directory Kimlik Koruması ilkesi tarafından engellenen kullanıcıların engellemesini kaldırma hakkında bilgi edinin.
 services: active-directory
-keywords: Azure active directory kimlik koruması, kullanıcı engelini kaldır
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: a953d425-a3ef-41f8-a55d-0202c3f250a7
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d22fa7fd3964f99c426e8e21d34dcfdea6d1b36
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c28e30b8e44b6888cdb7416b9c7b563b955a68ce
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60294438"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335370"
 ---
 # <a name="how-to-unblock-users"></a>Nasıl Yapılır: Kullanıcıların engelini kaldırma
 
-Azure Active Directory kimlik koruması ile yapılandırılmış koşullara sağlanırsa, kullanıcıları engellemek için ilkeler yapılandırabilirsiniz. Engeli için genellikle, engellenen bir kullanıcı kişiler Yardım Masası. Bu makalede, engellenen bir kullanıcının engelini kaldırmak için gerçekleştirebileceğiniz adımlar açıklanmaktadır.
+Azure Active Directory Kimlik Koruması, yapılandırılan koşullar karşılandıysa kullanıcıları engelleyecek ilkeler yapılandırabilirsiniz. Genellikle, engellenen bir Kullanıcı yardım masasının engeli kaldırılmış hale gelir. Bu makalede, engellenen bir kullanıcının engellemesini kaldırmak için gerçekleştirebileceğiniz adımlar açıklanmaktadır.
 
-## <a name="determine-the-reason-for-blocking"></a>Engelleme nedeni belirleyin
-Bir kullanıcının engelini kaldırmak için ilk adım, sonraki adımlarda üzerinde çünkü kullanıcı engelledi ilke türünü belirlemeniz gerekir.
-Azure Active Directory kimlik koruması ile bir kullanıcı ya da bir oturum açma riski İlkesi veya bir kullanıcı risk İlkesi tarafından engellenebilir.
+## <a name="determine-the-reason-for-blocking"></a>Engelleme nedenini belirleme
 
-Bir kullanıcıdan kullanıcıya bir oturum açma girişimi sırasında sunulan iletişim başlığı engelledi ilke türünü alabilirsiniz:
+Bir kullanıcının engellemesini kaldırmaya yönelik ilk adım olarak, bir sonraki adımlarınız kendisine bağlı olduğundan kullanıcıyı engellediği ilke türünü belirlemeniz gerekir.
+Azure Active Directory Kimlik Koruması, bir Kullanıcı bir oturum açma risk ilkesi veya bir Kullanıcı risk ilkesi tarafından engelleniyor olabilir.
+
+Bir kullanıcıyı, oturum açma girişimi sırasında kullanıcıya sunulan iletişim kutusunda bulunan başlığından engellenen ilke türünü alabilirsiniz:
 
 | İlke | Kullanıcı iletişim kutusu |
 | --- | --- |
 | Oturum açma riski |![Engellenen oturum açma](./media/howto-unblock-user/02.png) |
-| Kullanıcı riski |![Engellenen hesap](./media/howto-unblock-user/104.png) |
+| Kullanıcı riski |![Engellenen Hesap](./media/howto-unblock-user/104.png) |
 
-Tarafından engellenen bir kullanıcı:
+Tarafından engellenen bir Kullanıcı:
 
-* Şüpheli oturum açma olarak da bilinen olan bir oturum açma riski İlkesi
-* Kullanıcı riski ilkesi olarak da bilinen bir risk hesabıdır
+* Bir oturum açma risk ilkesi, şüpheli oturum açma olarak da bilinir
+* Risk altında hesap olarak da bilinen bir Kullanıcı risk ilkesi
 
-## <a name="unblocking-suspicious-sign-ins"></a>Engellemeyi kaldırma şüpheli oturum açma işlemleri
-Bir şüpheli oturum açma engelini kaldırmak için aşağıdaki seçenekleriniz vardır:
+## <a name="unblocking-suspicious-sign-ins"></a>Şüpheli oturum açma işlemlerinin engellemesini kaldırma
 
-1. **Tanıdık konumu veya CİHAZDAN oturum** -engellenen şüpheli oturum açma işlemleri için yaygın bir nedeni olan oturum açma denemesi alışılmadık konumlardan veya cihazlar. Kullanıcılarınız tanıdık konumu veya CİHAZDAN oturum deneyerek bu engelleme nedeni geçerli olup olmadığını hızlı bir şekilde belirleyebilirsiniz.
-2. **İlkenin dışında bırakılacak** - düşünüyorsanız, oturum açma ilkesi yapılandırmasına belirli kullanıcılar için sorunlarına neden, kullanıcıların dışlayabilirsiniz. Daha fazla bilgi için [Azure Active Directory kimlik koruması](../active-directory-identityprotection.md).
-3. **Bu ilkeyi devre dışı** - düşünüyorsanız İlkesi yapılandırmanızı, kullanıcılarınızın sorunlarına neden, ilkeyi devre dışı bırakabilirsiniz. Daha fazla bilgi için [Azure Active Directory kimlik koruması](../active-directory-identityprotection.md).
+Şüpheli bir oturum açma engelini kaldırmak için aşağıdaki seçeneklere sahipsiniz:
 
-## <a name="unblocking-accounts-at-risk"></a>Engellemeyi kaldırma hesapları risk altında
-Hesabınız risk altında engelini kaldırmak için aşağıdaki seçenekleriniz vardır:
+1. **Tanıdık bir konumdan veya cihazdan oturum açma** -, engellenen şüpheli oturum açma işlemlerinin yaygın bir nedeni, bilmediğiniz konumlardan veya cihazlardan gelen oturum açma çabalarıdır. Kullanıcılarınız, bilinen bir konumdan veya cihazdan oturum açmaya çalışırken bunun engelleme nedeni olup olmadığını hızlı bir şekilde tespit edebilir.
+2. **Ilkeden hariç tut** -oturum açma ilkenizin geçerli yapılandırmasının belirli kullanıcılar için sorunlara neden olduğunu düşünüyorsanız kullanıcıları bu bilgisayardan dışlayabilirsiniz. Daha fazla bilgi için bkz. [Azure Active Directory kimlik koruması](../active-directory-identityprotection.md).
+3. **Ilkeyi devre dışı bırak** -ilke yapılandırmanızın tüm kullanıcılarınız için sorunlara neden olduğunu düşünüyorsanız, ilkeyi devre dışı bırakabilirsiniz. Daha fazla bilgi için bkz. [Azure Active Directory kimlik koruması](../active-directory-identityprotection.md).
 
-1. **Parolayı Sıfırla** -kullanıcının parolasını sıfırlayabilirsiniz. 
-2. **Tüm risk olayları kapatılamadı** - bir kullanıcı yapılandırılmış kullanıcı risk düzeyi için erişimi engelleme, ulaşıldı kullanıcı riski İlkesi engeller. Bir kullanıcı azaltabilir risk olaylarını elle kapatma tarafından risk düzeyi bildirilen kullanıcının. 
-3. **İlkenin dışında bırakılacak** - düşünüyorsanız, oturum açma ilkesi yapılandırmasına belirli kullanıcılar için sorunlarına neden, kullanıcıların dışlayabilirsiniz. Daha fazla bilgi için [Azure Active Directory kimlik koruması](../active-directory-identityprotection.md).
-4. **Bu ilkeyi devre dışı** - düşünüyorsanız İlkesi yapılandırmanızı, kullanıcılarınızın sorunlarına neden, ilkeyi devre dışı bırakabilirsiniz. Daha fazla bilgi için [Azure Active Directory kimlik koruması](../active-directory-identityprotection.md).
+## <a name="unblocking-accounts-at-risk"></a>Risk altındaki hesapların engellemesini kaldırma
+
+Bir hesabın riskini ortadan kaldırmak için aşağıdaki seçeneklere sahip olursunuz:
+
+1. **Parolayı sıfırlama** -kullanıcının parolasını sıfırlayabilirsiniz. 
+2. **Tüm risk olaylarını kapat** -Kullanıcı risk ilkesi, erişimi engellemek için yapılandırılmış Kullanıcı risk düzeyine ulaşıldığında kullanıcıyı engeller. Bildirilen risk olaylarını el ile kapatarak bir kullanıcının risk düzeyini azaltabilirsiniz. 
+3. **Ilkeden hariç tut** -oturum açma ilkenizin geçerli yapılandırmasının belirli kullanıcılar için sorunlara neden olduğunu düşünüyorsanız kullanıcıları bu bilgisayardan dışlayabilirsiniz. Daha fazla bilgi için bkz. [Azure Active Directory kimlik koruması](../active-directory-identityprotection.md).
+4. **Ilkeyi devre dışı bırak** -ilke yapılandırmanızın tüm kullanıcılarınız için sorunlara neden olduğunu düşünüyorsanız, ilkeyi devre dışı bırakabilirsiniz. Daha fazla bilgi için bkz. [Azure Active Directory kimlik koruması](../active-directory-identityprotection.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
  
-Azure AD kimlik koruması hakkında daha fazla bilgi edinmek istiyor musunuz? Kullanıma [Azure Active Directory kimlik koruması](../active-directory-identityprotection.md).
+Azure AD Kimlik Koruması hakkında daha fazla bilgi edinmek istiyor musunuz? [Azure Active Directory kimlik koruması](../active-directory-identityprotection.md)kullanıma alma.

@@ -4,15 +4,15 @@ description: Bu makalede, Azure Cosmos DB yüksek kullanılabilirlik sağladığ
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/28/2019
+ms.date: 07/23/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 38629ed2246f4eb67e4183354fe4feaaaee16805
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
-ms.translationtype: HT
+ms.openlocfilehash: 4dde41479c05151fa4e14c9fe4b534b9f7edf9b4
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305437"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467730"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Azure Cosmos DB ile yüksek kullanılabilirlik
 
@@ -34,8 +34,8 @@ Küresel olarak dağıtılmış bir veritabanı olarak, Cosmos DB aktarım hız�
 
 |İşlem türü  | Tek bölge |Çok bölgeli (tek bölge yazmaları)|Çok bölgeli (çok bölgeli yazma) |
 |---------|---------|---------|-------|
-|Yazma    | 99,99    |99,99   |99,999|
-|Okuma     | 99,99    |99,999  |99,999|
+|Yazar    | 99,99    |99,99   |99,999|
+|Okur     | 99,99    |99,999  |99,999|
 
 > [!NOTE]
 > Uygulamada, sınırlı Eskime durumu, oturum, tutarlı ön ek ve nihai tutarlılık modelleriyle ilgili gerçek yazma kullanılabilirliği, yayımlanan SLA 'Lara göre önemli ölçüde daha yüksektir. Tüm tutarlılık seviyelerinin gerçek okuma kullanılabilirliği, yayımlanan SLA 'ların önemli ölçüde daha yüksektir.
@@ -49,9 +49,9 @@ Bölgesel kesintiler oldukça yaygındır ve Azure Cosmos DB veritabanınızın 
 - Birden fazla yazma bölgesiyle yapılandırılan çok bölgeli hesaplar, yazma ve okuma işlemleri için yüksek oranda kullanılabilir olacaktır. Bölgesel yük devretme işlemleri anında yapılır ve uygulamadan herhangi bir değişiklik gerektirmez.
 
 - **Tek bir yazma bölgesi olan çok bölgeli hesaplar (yazma bölgesi kesintisi):** 
-  * Yazma bölgesi kesintisi sırasında, bu hesaplar okuma için yüksek oranda kullanılabilir olarak kalır. Bununla birlikte, yazma işlemleri için, etkilenen bölgenin başka bir bölgeye yük devretmesi için Cosmos hesabınızda **otomatik yük devretmeyi etkinleştirmeniz** gerekir. Yük devretme, belirlediğiniz bölge önceliği sırasına göre oluşur. 
-  * Etkilenen bölge yeniden çevrimiçi olduğunda, kesinti sırasında etkilenen yazma bölgesinde bulunan çoğaltılan veriler, [Çakışma akışı](how-to-manage-conflicts.md#read-from-conflict-feed)aracılığıyla kullanılabilir hale getirilir. Uygulamalar, çakışmalar akışını okuyabilir, uygulamaya özgü mantığa göre çakışmaları çözümleyebilir ve güncelleştirilmiş verileri uygun şekilde Cosmos kapsayıcısına geri yazabilir. 
-  * Daha önce etkilenen yazma bölgesi kurtarıldıktan sonra otomatik olarak bir okuma bölgesi olarak kullanılabilir hale gelir. Kurtarılan bölgeye yazma bölgesi olarak dönebilirsiniz. [Azure CLI veya Azure Portal](how-to-manage-database-account.md#manual-failover)kullanarak bölgeleri geçirebilirsiniz. El ile yük devretme sırasında veya sonrasında, **hiçbir veri veya kullanılabilirlik kaybı** yoktur. Uygulamanız yüksek oranda kullanılabilir olmaya devam eder. 
+  * Yazma bölgesi kesintisi sırasında, bu hesaplar okuma için yüksek oranda kullanılabilir olarak kalır. Yazma isteklerinin başarılı olması için Azure Cosmos hesabınızda **otomatik yük devretmeyi etkinleştir** seçeneğini etkinleştirmeniz gerekir. Bu seçeneğin etkinleştirilmesi, etkilenen bölgenin, belirlediğiniz bölge önceliği sırasına göre başka bir bölgeye yük devretmesini sağlar. 
+  * Daha önce etkilenen bölge yeniden çevrimiçi olduğunda, bölge başarısız olduğunda çoğaltılmamış olan tüm yazma verileri, [Çakışma akışı](how-to-manage-conflicts.md#read-from-conflict-feed)aracılığıyla kullanılabilir hale getirilir. Uygulamalar, çakışmalar akışını okuyabilir, uygulamaya özgü mantığa göre çakışmaları çözümleyebilir ve güncelleştirilmiş verileri uygun şekilde Azure Cosmos kapsayıcısına geri yazabilir. 
+  * Daha önce etkilenen yazma bölgesi kurtarıldıktan sonra otomatik olarak bir okuma bölgesi olarak kullanılabilir hale gelir. Kurtarılan bölgeye yazma bölgesi olarak dönebilirsiniz. [Azure CLI veya Azure Portal](how-to-manage-database-account.md#manual-failover)kullanarak bölgeleri geçirebilirsiniz. Bir **veri veya kullanılabilirlik kaybı** , yazma bölgesini değiştirmeden veya sonra, uygulamanız yüksek oranda kullanılabilir olmaya devam eder. 
 
 - **Tek bir yazma bölgesi olan çok bölgeli hesaplar (okuma bölgesi kesintisi):** 
   * Okuma bölgesi kesintisi sırasında, bu hesaplar okuma ve yazma işlemleri için yüksek oranda kullanılabilir olarak kalır. 

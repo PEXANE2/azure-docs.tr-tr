@@ -1,10 +1,10 @@
 ---
-title: Azure AD hak yönetimi (Önizleme) - Azure Active Directory sorunlarını giderme
-description: Bazı öğeleri hakkında bilgi edinin Azure Active Directory hak yönetimi (Önizleme) gidermenize yardımcı olması için denetleme yapmalıdır.
+title: Azure AD yetkilendirme yönetimi sorunlarını giderme (Önizleme)-Azure Active Directory
+description: Azure Active Directory yetkilendirme yönetimi (Önizleme) sorunlarını gidermenize yardımcı olması için denetlemeniz gereken bazı öğeler hakkında bilgi edinin.
 services: active-directory
 documentationCenter: ''
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
@@ -13,58 +13,58 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
 ms.date: 05/30/2019
-ms.author: rolyon
+ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2526ef10c3080dae1b32881a109a9436a0fd390
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 39ec27c75ff5ba9164b44b0524f90a4e28ab20f1
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66473830"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68488986"
 ---
-# <a name="troubleshoot-azure-ad-entitlement-management-preview"></a>Azure AD hak yönetimi (Önizleme) sorunlarını giderme
+# <a name="troubleshoot-azure-ad-entitlement-management-preview"></a>Azure AD yetkilendirme yönetimi sorunlarını giderme (Önizleme)
 
 > [!IMPORTANT]
-> Azure Active Directory (Azure AD) Yetkilendirme Yönetimi, şu anda genel Önizleme aşamasındadır.
+> Azure Active Directory (Azure AD) yetkilendirme yönetimi şu anda genel önizleme aşamasındadır.
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
 > Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Bu makalede, Azure Active Directory (Azure AD) yetkilendirme yönetim gidermenize yardımcı olması için denetleme yapmalıdır bazı öğeler açıklanmaktadır.
+Bu makalede, Azure Active Directory (Azure AD) yetkilendirme yönetimi sorunlarını gidermenize yardımcı olması için denetlemeniz gereken bazı öğeler açıklanmaktadır.
 
-## <a name="checklist-for-entitlement-management-administration"></a>Hak Yönetimi için Denetim listesi
+## <a name="checklist-for-entitlement-management-administration"></a>Yetkilendirme Yönetimi yönetimi için denetim listesi
 
-* Erişim reddedildi iletisi hak yönetimi yapılandırırken almak ve bir genel Yöneticiyseniz, dizininize sahip olduğundan emin olun bir [Azure AD Premium P2 (veya EMS E5) lisans](entitlement-management-overview.md#license-requirements).  
-* İletisi oluşturulurken veya görüntüleme erişimi paketleri reddedildi bir erişim elde edersiniz ve katalog oluşturan grubunun bir üyesi ise, ilk erişim paketinizi oluşturmadan önce bir katalog oluşturmanız gerekir.
+* Yetkilendirme yönetimini yapılandırırken bir erişim reddedildi iletisi alırsanız ve genel yöneticiyseniz, dizininizde [Azure AD Premium P2 (veya EMS E5) lisansına](entitlement-management-overview.md#license-requirements)sahip olduğundan emin olun.  
+* Erişim paketleri oluştururken veya görüntülerken erişim engellendi iletisi alırsanız ve bir katalog Oluşturucu grubunun üyesiyseniz, ilk erişim paketinizi oluşturmadan önce bir katalog oluşturmanız gerekir.
 
-## <a name="checklist-for-adding-a-resource"></a>Bir kaynak eklemek için Denetim listesi
+## <a name="checklist-for-adding-a-resource"></a>Kaynak ekleme denetim listesi
 
-* Bir uygulamayı bir erişim paketinde bir kaynak olacak şekilde atanabilecek en az bir kaynak rol olması gerekir. Rolleri, uygulama tarafından tanımlanır ve Azure AD'de yönetilir. Azure portalında da uygulamalar olarak seçilemez Hizmetleri için hizmet sorumluları gösterebilir unutmayın.  Özellikle, **Exchange Online** ve **SharePoint Online** Hizmetleri, bir erişim paketinde eklenemez, kaynak rolleri için dizinde sahip uygulamaları.  Bunun yerine, bu hizmetlere erişmesi gereken bir kullanıcı için uygun lisansın kurmak için Grup tabanlı lisanslama kullanın.
+* Bir uygulamanın bir erişim paketindeki kaynak olması için, atanabilecek en az bir kaynak rolü olmalıdır. Roller, uygulamanın kendisi tarafından tanımlanır ve Azure AD 'de yönetilir. Azure portal Ayrıca, uygulamalar olarak seçilebilme Hizmetleri için hizmet sorumlularını da gösterebileceğini unutmayın.  Özellikle, **Exchange Online** ve **SharePoint Online** , dizinde kaynak rollerine sahip olan uygulamalar değil, bir erişim paketine dahil edilemez.  Bunun yerine, bu hizmetlere erişmesi gereken bir kullanıcıya uygun bir lisans oluşturmak için grup tabanlı lisanslama kullanın.
 
-* Bir grup erişim paketinde bir kaynak olarak Azure AD'de değiştirilebilir olanağına olmalıdır.  Azure AD'de kendi sahibi veya üyesi öznitelikleri değiştirilemediğinden kaynaklanan bir şirket içi Active Directory'de grupları kaynaklar olarak atanamaz.  
+* Bir grubun bir erişim paketindeki kaynak olması için Azure AD 'de değiştirilebilir olması gerekir.  Şirket içi Active Directory kaynaklı gruplar, sahip veya üye öznitelikleri Azure AD 'de değiştirilemediğinden kaynak olarak atanamaz.  
 
-* SharePoint Online belge kitaplıklarını ve tek tek belgeler kaynaklar olarak eklenemez.  Bunun yerine, bir Azure AD güvenlik grubu oluşturma, bu grubu ve bir site rolü erişim paket içerisine dâhil ve belge kitaplığı veya belgeye erişimi denetlemek için SharePoint Online'da bu grubu kullanın.
+* SharePoint Online belge kitaplıkları ve bireysel belgeler, kaynak olarak eklenemez.  Bunun yerine, bir Azure AD güvenlik grubu oluşturun, bu grubu ve bir site rolünü erişim paketine ekleyin ve SharePoint Online 'da belge kitaplığına veya belgeye erişimi denetlemek için bu grubu kullanın.
 
-* Zaten bir erişim paketi ile yönetmek istediğiniz bir kaynağa atanmış kullanıcılar varsa, erişim paket uygun bir ilke ile kullanıcılara atanan emin olun. Örneğin, bir grup zaten kullanıcılar grubunda olan bir erişim paketi eklemek isteyebilirsiniz. Grubu gerektirir, bu kullanıcılara erişim etseydi, böylece gruba erişimleri kaybetmeyin bunlar erişim paketleri için uygun bir ilkesi olmalıdır. Bu kaynağı içeren erişim paket isteği için kullanıcıların isteyen veya erişim pakete doğrudan atayarak erişim paket atayabilirsiniz. Daha fazla bilgi için [düzenleme ve var olan erişim paketini yönetme](entitlement-management-access-package-edit.md).
+* Bir erişim paketiyle yönetmek istediğiniz bir kaynağa zaten atanmış kullanıcılar varsa, kullanıcıların erişim paketine uygun bir ilkeyle atandığından emin olun. Örneğin, grupta zaten kullanıcıları olan bir erişim paketine bir grup eklemek isteyebilirsiniz. Gruptaki bu kullanıcılar devam eden erişim gerektiriyorsa, gruba erişimleri kaybetmemesi için erişim paketleri için uygun bir ilkeye sahip olmaları gerekir. Erişim paketini, kullanıcıların söz konusu kaynağı içeren erişim paketini istemesini isteyerek veya doğrudan erişim paketine atayarak atayabilirsiniz. Daha fazla bilgi için bkz. [var olan bir erişim paketini düzenleme ve yönetme](entitlement-management-access-package-edit.md).
 
-## <a name="checklist-for-providing-external-users-access"></a>Dış kullanıcılara erişim sağlamak için Denetim listesi
+## <a name="checklist-for-providing-external-users-access"></a>Dış kullanıcılara erişim sağlama denetim listesi
 
-* Varsa bir B2B [izin verilenler listesi](../b2b/allow-deny-list.md), sonra kullanıcılar, dizinleri izin verilmez erişim istemek mümkün olmayacaktır.
+* Bir B2B [izin verilenler listesi](../b2b/allow-deny-list.md)varsa, dizinlere izin verilmeyen kullanıcılara erişim isteyemeyecektir.
 
-* Olduğundan emin olun hiçbir [koşullu erişim ilkeleri](../conditional-access/require-managed-devices.md) dış kullanıcıların erişim isteğinde veya erişim paketleri uygulamaları kullanabilmek için önlemek.
+* Dış kullanıcıların erişim isteğinde bulunmasını engelleyecek veya erişim paketlerindeki uygulamaları kullanabilmesi için [koşullu erişim ilkelerinin](../conditional-access/require-managed-devices.md) bulunmadığından emin olun.
 
-## <a name="checklist-for-request-issues"></a>İstek sorunlar için Denetim listesi
+## <a name="checklist-for-request-issues"></a>İstek sorunları için denetim listesi
 
-* Bir kullanıcı erişim paket erişim isteği istediğinde, bunlar kullandığınızdan emin olmak **My erişim portalı bağlantısı** erişim paketi için. Daha fazla bilgi için [kopyalama My erişim portalı bağlantı](entitlement-management-access-package-edit.md#copy-my-access-portal-link).
+* Bir Kullanıcı bir erişim paketine erişim istemek istediğinde, erişim paketi için erişim **portalı** ' nı kullandıklarından emin olun. Daha fazla bilgi için bkz. [erişim portalından kopyalama bağlantısı](entitlement-management-access-package-edit.md#copy-my-access-portal-link).
 
-* Bir kullanıcı My erişim Portalı'na erişim paket isteği için oturum açtığında, kuruluş hesabını kullanarak kimlik doğrulaması emin olun. Kuruluş hesabı ya da bir hesap kaynak dizini ya da erişim paket ilkeleri birinde bulunan bir dizin olabilir. Kullanıcı hesabının bir kuruluş hesabı değil ya da dizin ilkeye dahil değil, daha sonra kullanıcı erişim paket tarafından görülmez. Daha fazla bilgi için [erişim paketine erişim isteği](entitlement-management-request-access.md).
+* Bir Kullanıcı erişim paketi istemek için erişim portalı 'nda oturum açtığında, kurumsal hesaplarını kullanarak kimlik doğruladıklarından emin olun. Kuruluş hesabı, kaynak dizinindeki bir hesap ya da erişim paketinin ilkelerinden birine dahil olan bir dizin olabilir. Kullanıcının hesabı bir kurumsal hesap değilse veya ilkede ilke yoksa, Kullanıcı erişim paketini görmez... Daha fazla bilgi için bkz. [bir erişim paketine erişim isteme](entitlement-management-request-access.md).
 
-* Bir kullanıcı için kaynak dizini açmasını engellenirse, bunlar benim erişim Portalı'nda erişim istemek mümkün olmayacaktır. Kullanıcı erişim isteğinde bulunabileceği önce kullanıcının profilinden oturum açma engelleme kaldırmanız gerekir. Azure portalında oturum açma bloğu kaldırmak için tıklayın **Azure Active Directory**, tıklayın **kullanıcılar**kullanıcıya tıklayın ve ardından **profili**. Düzen **ayarları** bölümünde ve değiştirme **oturum açmayı engelle** için **Hayır**. Daha fazla bilgi için [Ekle veya Azure Active Directory'yi kullanarak kullanıcının profil bilgilerini güncelleştirme](../fundamentals/active-directory-users-profile-azure-portal.md).  Kullanıcı nedeniyle engellendi, de göz atabilirsiniz bir [kimlik koruması İlkesi](../identity-protection/howto-unblock-user.md).
+* Bir kullanıcının kaynak dizininde oturum açması engellenirse, bu kişiler erişim portalından erişim isteyemeyecektir. Kullanıcının erişim isteyebilmesi için, oturum açma bloğunu kullanıcının profilinden kaldırmanız gerekir. Oturum açma bloğunu kaldırmak için, Azure portal **Azure Active Directory**, **Kullanıcılar**' a, Kullanıcı ' ya ve ardından **profil**' e tıklayın. **Ayarlar** bölümünü düzenleyin ve blok olarak **oturum aç '** a **değiştirin.** Daha fazla bilgi için, bkz. [Azure Active Directory kullanarak kullanıcının profil bilgilerini ekleme veya güncelleştirme](../fundamentals/active-directory-users-profile-azure-portal.md).  Kullanıcının bir [kimlik koruma ilkesi](../identity-protection/howto-unblock-user.md)nedeniyle engellenip engellenmediğini da denetleyebilirsiniz.
 
-* Bir kullanıcı bir istek sahibi hem de bir onaylayan ise My erişim Portalı'nda istedikleri erişimi paketi üzerinde görürler değil **onaylar** sayfası. Bu davranış kasıtlıdır - bir kullanıcı kendi isteği onaylayamazsınız. Öğesini ilkesinde yapılandırılmış olan istekte erişim paket emin olun. Daha fazla bilgi için [mevcut ilkeyi düzenleyebilir](entitlement-management-access-package-edit.md#edit-an-existing-policy).
+* Erişim portalındaki bir kullanıcı hem istek sahibi hem de onaylayan ise, **onaylar** sayfasında erişim paketi isteklerini görmez. Bu davranış bilerek yapılır. bir Kullanıcı kendi isteklerini onaylayamaz. İstediği erişim paketinde, ilkede yapılandırılmış ek onaylayanlar bulunduğundan emin olun. Daha fazla bilgi için bkz. [var olan bir Ilkeyi düzenleme](entitlement-management-access-package-edit.md#edit-an-existing-policy).
 
-* Daha önce dizininizde açmadı, yeni bir dış kullanıcı, bir SharePoint Online sitesine de dahil olmak üzere bir erişim paket alırsa, paket erişim hesabını SharePoint Online'da sağlanana kadar tamamen teslim şekilde gösterir.
+* Daha önce dizininizde oturum açmamış yeni bir dış Kullanıcı, SharePoint Online sitesi dahil bir erişim paketi alırsa, hesap SharePoint Online 'da sağlanıncaya kadar erişim paketleri tam olarak teslim edilmemiş olarak görünür.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Kullanıcıların erişim Hak Yönetimi'nde nasıl alındı, raporları görüntüleme](entitlement-management-reports.md)
+- [Kullanıcıların yetkilendirme yönetimi 'nde nasıl erişimi olduğunu gösteren raporları görüntüleme](entitlement-management-reports.md)

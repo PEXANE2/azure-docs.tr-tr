@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 04/26/2018
-ms.openlocfilehash: 3b1872699b8b3ac72424f00cd74bb90b8b7be87f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ce71c64aff66ea94282a82c1f1b1ee564e74f192
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873171"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68403896"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-the-portal-and-net-device"></a>Portal ve .NET cihazını kullanarak IoT Hub modül kimliğini ve modül ikizini kullanmaya başlama
 
@@ -24,28 +24,24 @@ ms.locfileid: "65873171"
 
 Bu öğreticide şunları öğreneceksiniz:
 
-1. Portalda bir modül kimliği oluşturma
+1. Portalda bir modül kimliği oluşturma.
 
-2. Bir .NET cihaz SDK'sı güncelleştirme cihazınızdan modül ikizi kullanma
+2. .NET cihaz SDK 'sını kullanarak ikizi modülünü cihazınızdan güncelleştirin.
 
 > [!NOTE]
-> Cihazlar ve çözüm arka ucunuz çalıştırılacak hem uygulamalar oluşturmak için kullanabileceğiniz Azure IOT SDK'ları hakkında daha fazla bilgi için bkz. [Azure IOT SDK'ları](iot-hub-devguide-sdks.md).
+> Cihazlarda çalıştırılacak uygulamaları ve çözüm arka ucu oluşturmak için kullanabileceğiniz Azure IoT SDK 'Ları hakkında daha fazla bilgi için bkz. [Azure IoT SDK 'ları](iot-hub-devguide-sdks.md).
 >
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 * Visual Studio.
-* Etkin bir Azure hesabı. (Hesabınız yoksa, oluşturabileceğiniz bir [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) yalnızca birkaç dakika içinde.)
+* Etkin bir Azure hesabı. (Hesabınız yoksa yalnızca birkaç dakika içinde [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturabilirsiniz.)
 
 ## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-### <a name="retrieve-connection-string-for-iot-hub"></a>IOT hub için bağlantı dizesi alma
-
-[!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
-
-## <a name="register-a-new-device-in-the-iot-hub"></a>Yeni bir cihaz IOT hub'ı Kaydet
+## <a name="register-a-new-device-in-the-iot-hub"></a>IoT Hub 'a yeni bir cihaz kaydetme
 
 [!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
@@ -65,23 +61,23 @@ IoT Hub’ınızda modül kimliğini başarıyla oluşturdunuz. Simülasyon ciha
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio projesi oluşturma
 
-Visual Studio'da, kullanarak mevcut çözüme bir Visual C# Windows Klasik Masaüstü projesi ekleyin **konsol uygulaması (.NET Framework)** proje şablonu. .NET Framework sürümünün 4.6.1 veya sonraki bir sürüm olduğundan emin olun. Projeye **UpdateModuleTwinReportedProperties** adını verin.
+Visual Studio 'da, C# **konsol uygulaması (.NET Framework)** proje şablonunu kullanarak var olan çözüme bir Visual Windows Klasik Masaüstü projesi ekleyin. .NET Framework sürümünün 4.6.1 veya sonraki bir sürüm olduğundan emin olun. Projeye **UpdateModuleTwinReportedProperties** adını verin.
 
   ![Visual studio projesi oluşturma](./media/iot-hub-csharp-csharp-module-twin-getstarted/update-twins-csharp1.png)
 
-## <a name="install-the-latest-azure-iot-hub-net-device-sdk"></a>En son Azure IOT hub'ı .NET cihaz SDK'sını yükleme
+## <a name="install-the-latest-azure-iot-hub-net-device-sdk"></a>En son Azure IoT Hub .NET cihaz SDK 'sını yükler
 
-Modül kimliği ve modül ikizi genel Önizleme aşamasındadır. IOT hub'ı yayın öncesi cihaz SDK'ları yalnızca kullanılabilir. Visual Studio’da araçlar > Nuget paket yöneticisi > çözüm için Nuget paketlerini yönet seçeneğini açın. Microsoft.Azure.Devices.Client öğesini arayın. İşaretli olduğundan emin olun. yayın öncesi onay kutusunu içerir. En son sürümü seçin ve yükleyin. Şimdi tüm modül özelliklerine erişiminiz vardır.
+Modül kimliği ve modül ikizi genel önizlemede. Yalnızca yayın öncesi cihaz SDK 'Ları IoT Hub kullanılabilir. Visual Studio’da araçlar > Nuget paket yöneticisi > çözüm için Nuget paketlerini yönet seçeneğini açın. Microsoft.Azure.Devices.Client öğesini arayın. Yayın öncesi onay kutusunu kontrol ettiğinizden emin olun. En son sürümü seçin ve yüklemeyi yapın. Şimdi tüm modül özelliklerine erişiminiz vardır.
 
   ![Azure IoT Hub .NET hizmet SDK’sı V1.16.0-preview-005’i yükleme](./media/iot-hub-csharp-csharp-module-twin-getstarted/install-sdk.png)
 
-## <a name="get-your-module-connection-string"></a>Modülü bağlantı dizesini alma
+## <a name="get-your-module-connection-string"></a>Modülünüzün bağlantı dizesini alın
 
-Oturum açma [Azure portalında](https://portal.azure.com/). IoT Hub’ınıza gidin ve IoT Cihazları’na tıklayın. Bul myFirstDevice, açık myFirstModule göreceksiniz başarıyla oluşturuldu. Modül bağlantı dizesini kopyalayın. Sonraki adımda gerekecektir.
+[Azure portalda](https://portal.azure.com/) oturum açın. IoT Hub’ınıza gidin ve IoT Cihazları’na tıklayın. MyFirstDevice ' ı bulun, açın ve myFirstModule başarıyla oluşturulduğunu görürsünüz. Modül bağlantı dizesini kopyalayın. Sonraki adımda gerekecektir.
 
   ![Azure portalı modül ayrıntısı](./media/iot-hub-csharp-csharp-module-twin-getstarted/module-detail.png)
 
-## <a name="create-updatemoduletwinreportedproperties-console-app"></a>UpdateModuleTwinReportedProperties konsol uygulaması oluşturma
+## <a name="create-updatemoduletwinreportedproperties-console-app"></a>Updatemodületwinreportedproperties konsol uygulaması oluşturma
 
 Aşağıdaki `using` deyimlerini **Program.cs** dosyasının üst kısmına ekleyin:
 
@@ -159,12 +155,12 @@ Bu kod örneği, AMQP protokolüyle raporlanan özellikleri güncelleştirme ve 
 
 ## <a name="run-the-apps"></a>Uygulamaları çalıştırma
 
-Şimdi uygulamaları çalıştırmaya hazırsınız. Visual Studio'daki Çözüm Gezgini'nde çözümünüze sağ tıklayın ve ardından **Başlangıç projelerini ayarla**'ya tıklayın. **Birden fazla başlangıç projesi** seçin ve sonra konsol uygulaması için eylem olarak **Başlat**’ı seçin. ' İ tıklatın ve ardından her iki uygulama çalıştırma başlatmak için F5 tuşuna basın.
+Şimdi uygulamaları çalıştırmaya hazırsınız. Visual Studio'daki Çözüm Gezgini'nde çözümünüze sağ tıklayın ve ardından **Başlangıç projelerini ayarla**'ya tıklayın. **Birden fazla başlangıç projesi** seçin ve sonra konsol uygulaması için eylem olarak **Başlat**’ı seçin. Ardından, her iki uygulamayı da çalıştırmak için F5 tuşuna basın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 IoT Hub’ı kullanmaya başlamak ve diğer IoT senaryolarını keşfetmek için bkz:
 
-* [.NET yedekleme ve cihaz .NET kullanarak IOT hub'ı modül kimlik ve modül ikizi ile çalışmaya başlama](iot-hub-csharp-csharp-module-twin-getstarted.md)
+* [.NET Backup ve .NET cihazını kullanarak IoT Hub modül kimliği ve modül ikizi ile çalışmaya başlama](iot-hub-csharp-csharp-module-twin-getstarted.md)
 
-* [IOT Edge'i kullanmaya başlama](../iot-edge/tutorial-simulate-device-linux.md)
+* [IoT Edge kullanmaya başlama](../iot-edge/tutorial-simulate-device-linux.md)

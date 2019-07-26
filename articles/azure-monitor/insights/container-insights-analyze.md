@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/12/2019
+ms.date: 07/22/2019
 ms.author: magoedte
-ms.openlocfilehash: dc55e4999a09c45463ae75b05d610b290f5ff526
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: bbfc8cc61571de8b76ef1f7f0216501ef6d2cdee
+ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68248312"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68377479"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Kapsayıcılar için Azure İzleyici ile AKS kümesi performansını anlama 
 Kapsayıcılar için Azure İzleyici ile sistem durumu ve performans grafiklerini doğrudan bir AKS kümesi veya Azure aboneliğindeki tüm AKS kümeleri, iki perspektiften, Azure Kubernetes Service (AKS) kümesinin ve iş yükünü izlemek için kullanabilirsiniz İzleyici. Belirli bir AKS kümesi izlerken Azure Container Instances'a (ACI) görüntüleme olanağı da sağlar.
@@ -38,9 +38,11 @@ Bir Linux kümesiyle karşılaştırılan kapsayıcılar için Azure Izleyici il
 - Önizleme sürümü ile en fazla 30 Windows Server kapsayıcısı desteklenir. Bu sınırlama, Linux kapsayıcıları için geçerlidir.  
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
+
 [Azure Portal](https://portal.azure.com) oturum açın. 
 
-## <a name="multi-cluster-view-from-azure-monitor"></a>Azure İzleyicisi'nden çoklu küme görüntüle 
+## <a name="multi-cluster-view-from-azure-monitor"></a>Azure İzleyicisi'nden çoklu küme görüntüle
+
 Dağıtılan tüm AKS küme sistem durumunu görüntülemek için seçin **İzleyici** Azure portalının sol bölmesinden.  Altında **Insights** bölümünden **kapsayıcıları**.  
 
 ![Azure İzleyici çok küme Panosu örneği](./media/container-insights-analyze/azmon-containers-multiview.png)
@@ -89,6 +91,7 @@ Aşağıdaki tabloda, izlenen bir küme çoklu küme görünüm için sağlık d
 Aşağı inebilir kümeleri listesinden **küme** için küme adına tıklayarak sayfayı **düğümleri** düğümlerin toplamını tıklayarak performans sayfası **düğümleri** sütun söz konusu belirli küme veya detaya gitmesine **denetleyicileri** toplamını tıklayarak performans sayfası **kullanıcı pod'ların** veya **sistem pod'ların**sütun.   
 
 ## <a name="view-performance-directly-from-an-aks-cluster"></a>Bir AKS kümesi doğrudan performans görünümü
+
 Kapsayıcılar için Azure İzleyici erişim, doğrudan bir AKS kümesi ' kullanılabilir seçerek **Insights** sol bölmesinden. AKS kümenizi hakkında bilgi görüntüleme, dört Perspektifler düzenlenmiştir:
 
 - Küme
@@ -112,6 +115,7 @@ Sağ/sağ ok tuşlarını, grafikteki her bir veri noktasında geçiş yapmak i�
 Kapsayıcılar için Azure Izleyici Ayrıca, kendi çizim grafiklerinizi oluşturabileceğiniz, eğilimleri araştırabileceğiniz ve araştırıp panolara sabitlerken Azure Izleyici [ölçümleri Gezginini](../platform/metrics-getting-started.md)da destekler. Ölçüm Gezgini ' nden, [ölçüm tabanlı bir uyarı kuralının](../platform/alerts-metric.md)temeli olarak ölçümlerinizi görselleştirmek için ayarladığınız ölçütleri de kullanabilirsiniz.  
 
 ## <a name="view-container-metrics-in-metrics-explorer"></a>Ölçüm Gezgininde kapsayıcı ölçümlerini görüntüleme
+
 Ölçüm Gezgini ' nde, kapsayıcılar için Azure Izleyici 'den toplanmış düğüm ve pod kullanım ölçümlerini görüntüleyebilirsiniz. Aşağıdaki tabloda, kapsayıcı ölçümlerini görselleştirmek için ölçüm grafiklerini nasıl kullanacağınızı anlamanıza yardımcı olacak Ayrıntılar özetlenmektedir.
 
 |Ad Alanı | Ölçüm |
@@ -129,7 +133,7 @@ Kapsayıcılar için Azure Izleyici Ayrıca, kendi çizim grafiklerinizi oluştu
 
 Ölçüm [bölmesini](../platform/metrics-charts.md#apply-splitting-to-a-chart) , boyuta göre görüntülemek ve farklı segmentlerinin birbirleriyle nasıl karşılaştırılacağını görselleştirmek için uygulayabilirsiniz. Bir düğüm için grafiği *konak* boyutuna göre segmentleyebilir ve pod 'dan aşağıdaki boyutlara göre segmentleyebilirsiniz:
 
-* Kumandasını
+* Denetleyici
 * Kubernetes ad alanı
 * Düğüm
 * Aşama
@@ -273,20 +277,36 @@ Durum alanı simgeleri, aşağıdaki tabloda açıklandığı gibi çevrimiçi, 
 | ![Sonlandırılan durum simgesi](./media/container-insights-analyze/containers-terminated-icon.png) | Başarılı bir şekilde durdurulmuş veya yanıt vermemesine başarısız|  
 | ![Başarısız durum simgesi](./media/container-insights-analyze/containers-failed-icon.png) | Durumu başarısız |  
 
-## <a name="disk-capacity-workbook"></a>Disk kapasitesi çalışma kitabı
+## <a name="workbooks"></a>Çalışma Kitapları
+
 Çalışma kitapları metin, [günlük sorgularını](../log-query/query-language.md), [ölçümleri](../platform/data-platform-metrics.md)ve parametreleri zengin etkileşimli raporlara birleştirir. Çalışma kitapları aynı Azure kaynaklarına erişimi olan diğer takım üyeleri tarafından düzenlenebilir.
 
-Kapsayıcılar için Azure Izleyici, çalışmaya başlamanızı sağlamak için bir çalışma kitabı ve **disk kapasitesi**içerir.  Bu çalışma kitabı, aşağıdaki perspektiflere göre bir kapsayıcı içindeki düğüme sunulan her bir disk için etkileşimli disk kullanımı grafikleri sunar:
+Kapsayıcılar için Azure Izleyici, başlamanıza olanak sağlamak için dört çalışma kitabı içerir:
 
-- Tüm diskler için disk kullanımı yüzdesi
-- Tüm diskler için boş disk alanı
-- Her bir düğüm diski,% kullanılan alanı,% kullanılan alan eğilimi, boş disk alanı (GiB) ve boş disk alanı eğilimi (GiB) gösteren bir tablo. Tabloda bir satır seçildiğinde, aşağıda kullanılan alan ve boş disk alanı (GiB) aşağıda gösterilmektedir 
+- **Disk kapasitesi**: Aşağıdaki perspektiflere göre bir kapsayıcı içindeki düğüme sunulan her bir disk için etkileşimli disk kullanımı grafikleri sunar:
 
-Bu çalışma kitabına, **çalışma kitaplarını görüntüle** açılır listesinden **disk kapasitesi** ' ni seçerek erişirsiniz.  
+    - Tüm diskler için disk kullanımı yüzdesi
+    - Tüm diskler için boş disk alanı
+    - Her düğüm diski,% kullanılan alanı,% kullanılan alan eğilimi, boş disk alanı (GiB) ve boş disk alanı eğilimi (GiB) için bir kılavuz. Tabloda bir satır seçildiğinde, aşağıda kullanılan alan ve boş disk alanı (GiB) aşağıda gösterilmektedir 
+
+- **DISK GÇ**: Aşağıdaki perspektiflere göre bir kapsayıcı içindeki düğüme sunulan her bir disk için etkileşimli disk kullanımı grafikleri sunar:
+
+    - Disk g/ç okuma bayt/sn, bayt/sn yazma ve okuma ve yazma bayt/sn eğilimlerini 
+    - Disk g/ç performans sorunlarını ölçmenize ve belirlemesine yardımcı olacak ana performans göstergelerini gösteren sekiz performans grafiği.
+
+- **Kubelet**: Anahtar düğüm işletim istatistiklerini gösteren iki kılavuz içerir:
+
+    - Node Grid 'e göre genel bakış, her düğüm için yüzde ve eğilim bazında toplam işlem, toplam hata ve başarılı işlemleri özetler.
+    - İşlem türüne göre genel bakış toplam işlem, toplam hata ve yüzde ve eğilim bazında başarılı işlemler için her bir işlem için özetler.
+
+- **Ağ**: Her düğüm ağ bağdaştırıcısı için etkileşimli ağ kullanım grafikleri ve ağ bağdaştırıcılarınızın performansını ölçmenize yardımcı olmak için ana performans göstergelerini sunan bir kılavuz sunar.  
+
+**Çalışma kitaplarını görüntüle** açılır listesinden her birini seçerek bu çalışma kitaplarına erişirsiniz.  
 
 ![Çalışma kitaplarını görüntüle açılan listesi](./media/container-insights-analyze/view-workbooks-dropdown-list.png)
 
-
 ## <a name="next-steps"></a>Sonraki adımlar
+
 - DevOps veya işletimsel işlemlerinizi ve yordamlarınızı desteklemek üzere yüksek CPU ve bellek kullanımı için uyarı oluşturmayı öğrenmek üzere [kapsayıcılar Için Azure izleyici ile performans uyarılarını oluşturma](container-insights-alerts.md) ' yı gözden geçirin. 
+
 - Daha önceden tanımlanmış sorguları ve Uyarıları izlemek için değerlendirmek veya özelleştirmek üzere ön tanımlı sorguları ve örnekleri görmek için [günlük sorgusu örneklerini](container-insights-log-search.md#search-logs-to-analyze-data) görüntüleyin, kümelerinizi görselleştirmeyi veya çözümlemeyi inceleyin.

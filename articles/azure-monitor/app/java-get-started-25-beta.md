@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: lagayhar
-ms.openlocfilehash: 189b201f9cbdeb728e334f2ff5da3ebd32839e37
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: c56b979bf5a4f1e0868dd0542cb71c2da6a85df7
+ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68298314"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494479"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project-250-beta"></a>Java Web projesinde Application Insights ile çalışmaya başlama (2.5.0-BETA)
 
@@ -143,8 +143,6 @@ Ayrıca [kod içinde ayarlayabilirsiniz](../../azure-monitor/app/api-custom-even
         TelemetryConfiguration.getActive().setInstrumentationKey(instrumentationKey);
     }
 ```
-
-[Canlı ölçümler](https://docs.microsoft.com/azure/azure-monitor/app/live-stream) , koddan izleme anahtarını okumayı desteklemediğine lütfen unutmayın.
 
 ## <a name="4-add-agent"></a>4. Aracı Ekle
 
@@ -304,7 +302,7 @@ Kullanıma hazır ve düzgün yanıt verdiğini denetlemek için Application Ins
 
 [Kullanılabilirlik Web testlerini ayarlama hakkında daha fazla bilgi edinin.][availability]
 
-## <a name="questions-problems"></a>Sorularınız mı var? Sorunlarınız mı var?
+## <a name="questions-problems"></a>Sorular? Sorunlarınız mı var?
 [Java Sorun Giderme](java-troubleshoot.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
