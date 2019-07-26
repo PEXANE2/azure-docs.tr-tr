@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric için genel güvenlik öznitelikleri
-description: Azure Service Fabric değerlendirmek için genel güvenlik öznitelikleri listesi
+title: Azure Service Fabric için güvenlik öznitelikleri
+description: Azure Service Fabric değerlendirmek için güvenlik özniteliklerinin denetim listesi
 services: service-fabric
 documentationcenter: ''
 author: msmbaldwin
@@ -9,28 +9,28 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7c1718298c3f7c3fea28fa0b18569085f071696f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 23c7f8bdcf67d59ccdd5cd0b00bc0e0960ba1d8f
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66003068"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68443866"
 ---
 # <a name="security-attributes-for-azure-service-fabric"></a>Azure Service Fabric için güvenlik öznitelikleri
 
-Bu makale, Azure Service Fabric'te yerleşik güvenlik özniteliklerini içermektedir. 
+Bu makalede, Azure Service Fabric 'da yerleşik olarak bulunan güvenlik öznitelikleri Belgelenebilir. 
 
 [!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
 
-## <a name="preventative"></a>Preventative
+## <a name="preventative"></a>Önleyici
 
 | Güvenlik özniteliği | Evet/Hayır | Notlar |
 |---|---|--|
-| Bekleme sırasında şifreleme:<ul><li>Sunucu tarafı şifrelemesi</li><li>Müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifrelemesi</li><li>Diğer şifreleme özellikleri (örneğin, istemci tarafı, her zaman şifreli, vb.)</ul>| Evet | Müşteri, küme ve sanal makine ölçek kümesi yerleşik kümesi üstlenir. Sanal makine ölçek kümesinde Azure disk şifrelemesi etkin hale getirilebilir. |
-| Aktarım sırasında şifreleme:<ul><li>Express route şifreleme</li><li>VNet şifreleme</li><li>VNet-VNet şifreleme</ul>| Evet |  |
-| Şifreleme anahtarı işleme (CMK, BYOK, vb.)| Evet | Müşteri, küme ve sanal makine ölçek kümesi yerleşik kümesi üstlenir. Sanal makine ölçek kümesinde Azure disk şifrelemesi etkin hale getirilebilir. |
-| Sütun düzeyinde şifrelemeyi (Azure Data Services)| Yok |  |
-| Şifrelenmiş API çağrıları| Evet | Service Fabric API çağrıları, Azure Resource Manager üzerinden yapılır. Geçerli bir JSON web token (JWT) gereklidir. |
+| Bekleyen şifreleme (sunucu tarafı şifreleme, müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifreleme ve diğer şifreleme özellikleri)| Evet | Müşteri, kümeye ve kümenin oluşturulduğu sanal makine ölçek kümesine sahip. Azure disk şifrelemesi, sanal makine ölçek kümesi üzerinde etkinleştirilebilir. |
+| Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNet şifreleme ve VNet-VNet şifreleme gibi)| Evet |  |
+| Şifreleme anahtarı işleme (CMK, BYOK vb.)| Evet | Müşteri, kümeye ve kümenin oluşturulduğu sanal makine ölçek kümesine sahip. Azure disk şifrelemesi, sanal makine ölçek kümesi üzerinde etkinleştirilebilir. |
+| Sütun düzeyinde şifreleme (Azure veri Hizmetleri)| Yok |  |
+| Şifrelenmiş API çağrıları| Evet | Service Fabric API çağrıları Azure Resource Manager aracılığıyla yapılır. Geçerli bir JSON Web belirteci (JWT) gerekiyor. |
 
 ## <a name="network-segmentation"></a>Ağ kesimleme
 
@@ -38,32 +38,32 @@ Bu makale, Azure Service Fabric'te yerleşik güvenlik özniteliklerini içermek
 |---|---|--|
 | Hizmet uç noktası desteği| Evet |  |
 | VNet ekleme desteği| Evet |  |
-| Ağ yalıtımı ve saldırısından desteği| Evet | Ağ güvenlik grupları (NSG) kullanarak. |
-| Zorlamalı tünel oluşturma desteği| Evet | Azure ağı, zorlamalı tünel sağlar. |
+| Ağ yalıtımı ve güvenlik duvarı desteği| Evet | Ağ güvenlik grupları (NSG) kullanma. |
+| Zorlamalı tünel desteği| Evet | Azure ağı Zorlamalı tünel sağlar. |
 
 ## <a name="detection"></a>Algılama
 
 | Güvenlik özniteliği | Evet/Hayır | Notlar|
 |---|---|--|
-| Azure izleme desteği (Log analytics, Application ınsights, vb.)| Evet | Azure ve üçüncü taraf desteği izleme kullanıyor. |
+| Azure izleme desteği (Log Analytics, App Insights vb.)| Evet | Azure izleme desteğini ve üçüncü taraf desteğini kullanma. |
 
 ## <a name="identity-and-access-management"></a>Kimlik ve erişim yönetimi
 
 | Güvenlik özniteliği | Evet/Hayır | Notlar|
 |---|---|--|
-| Kimlik Doğrulaması| Evet | Azure Active Directory aracılığıyla kimlik doğrulaması şeklindedir. |
-| Yetkilendirme| Evet | Kimlik ve erişim yönetimi (IAM) aracılığıyla SFRP çağrıları için. Doğrudan küme uç noktasına çağrı iki rollerini destekler: Kullanıcı ve yönetici Müşteri API'leri için iki rol eşleyebilirsiniz. |
+| Authentication| Evet | Kimlik doğrulaması Azure Active Directory. |
+| Authorization| Evet | SFRP aracılığıyla çağrılar için kimlik ve erişim yönetimi (ıAM). Doğrudan küme uç noktasına yapılan çağrılar iki rolü destekler: Kullanıcı ve yönetici. Müşteri, API 'Leri her iki role de eşleyebilir. |
 
 
 ## <a name="audit-trail"></a>Denetim izi
 
 | Güvenlik özniteliği | Evet/Hayır | Notlar|
 |---|---|--|
-| Denetim ve yönetim düzlemi günlüğe kaydetme ve Denetim| Evet | Tüm denetim düzlemi işlemleri ile işlemleri denetleme ve onayları için çalıştırın. |
-| Veri düzlemi günlük kaydı ve Denetim| Yok | Müşteri kümesine sahip.  |
+| Denetim ve yönetim düzlemi günlüğü ve denetimi| Evet | Tüm denetim düzlemi işlemleri, denetim ve onaylar için işlemler aracılığıyla çalışır. |
+| Veri düzlemi günlüğü ve denetimi| Yok | Müşteri, kümeye sahip.  |
 
 ## <a name="configuration-management"></a>Yapılandırma yönetimi
 
 | Güvenlik özniteliği | Evet/Hayır | Notlar|
 |---|---|--|
-| Yapılandırma yönetimi desteği (sürüm yapılandırması, vs.)| Evet | |
+| Yapılandırma yönetimi desteği (yapılandırmanın sürümü oluşturma, vb.)| Evet | |

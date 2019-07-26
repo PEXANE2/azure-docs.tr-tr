@@ -1,127 +1,105 @@
 ---
-title: Azure Active Directory kimlik Koruması ' oturum açma riski ilkesini yapılandırma | Microsoft Docs
-description: Azure AD kimlik koruması oturum açma riski ilkesini yapılandırmayı öğrenin.
+title: Azure Active Directory Kimlik Koruması oturum açma risk ilkesini yapılandırma | Microsoft Docs
+description: Azure AD Kimlik Koruması oturum açma risk ilkesini nasıl yapılandıracağınızı öğrenin.
 services: active-directory
-keywords: Azure active directory kimlik koruması, bulut uygulaması bulma, yönetme, uygulamaları, güvenlik, risk, risk düzeyi, güvenlik açığı, güvenlik ilkesi
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe9e0a4d481ef7b802c50fdc347872e389fa8ef7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0645e01c8ad9c620b77abd9af6cf7fe7c26ab4ea
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60294666"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335416"
 ---
 # <a name="how-to-configure-the-sign-in-risk-policy"></a>Nasıl Yapılır: Oturum açma risk ilkesini yapılandırma
 
-Azure Active Directory algılar [risk olayı türleri](../reports-monitoring/concept-risk-events.md#risk-event-types) gerçek zamanlı ve çevrimdışı. Her risk olayı bir oturum açma için kullanıcı algılanan riskli oturum açma adı verilen mantıksal bir kavramken katkıda bulunur. Bir riskli oturum açma kullanıcı hesabının meşru sahibi tarafından gerçekleştirilmiş olabilecek olmayan bir oturum açma girişiminin göstergesidir.
+Azure Active Directory, [risk olay türlerini](../reports-monitoring/concept-risk-events.md#risk-event-types) gerçek zamanlı ve çevrimdışı olarak algılar. Bir kullanıcının oturum açması için algılanan her risk olayı, riskli oturum açma adlı bir mantıksal kavram 'e katkıda bulunur. Riskli oturum açma, bir kullanıcı hesabının meşru sahibi tarafından gerçekleştirilmiş olabilecek bir oturum açma girişimine yönelik bir göstergedir.
 
+## <a name="what-is-the-sign-in-risk-policy"></a>Oturum açma riski ilkesi nedir?
 
-## <a name="what-is-the-sign-in-risk-policy"></a>Oturum açma riski İlkesi nedir?
+Azure AD, kullanıcının her oturum açmasını analiz eder. Çözümlemenin amacı, oturum açma işlemiyle birlikte gelen şüpheli eylemleri algılamadır. Örneğin, anonim bir IP adresi kullanılarak yapılan oturum açma işlemi mi, yoksa bilmediğiniz bir konumdan başlatılan oturum açma mı? Azure AD 'de sistemin algılayabildiği şüpheli eylemler risk olayları olarak da bilinir. Azure AD, oturum açma sırasında algılanan risk olaylarına bağlı olarak bir değeri hesaplar. Bu değer, oturum açmanın meşru Kullanıcı tarafından gerçekleştirilmediğini (düşük, orta, yüksek) temsil eder. Olasılığa, **oturum açma risk düzeyi**denir.
 
-Azure AD, her oturum, bir kullanıcının analiz eder. Analiz amacı, oturum açma ile birlikte gelen kuşkulu eylemleri algılar sağlamaktır. Örneğin, gerçekleştirilen anonim bir IP adresi kullanarak oturum açın, veya başlatılan bilinmeyen bir konumdan oturum açma? Azure AD'de sistem algılayabilir şüpheli olarak da bilinen risk olayları eylemlerdir. Bir oturum açma sırasında Azure AD, bir değer hesaplar algılanan risk etkinliklere göre. Değer, oturum açmanın meşru bir kullanıcı tarafından gerçekleştirildiğini değil olasılığı (düşük, Orta, yüksek) temsil eder. Olasılık adlı **oturum açma risk düzeyini**.
-
-Oturum açma riski ilkesi için özel oturum açma risk düzeyini yapılandırabilirsiniz otomatik yanıt ' dir. Yanıt olarak, kaynaklarınıza erişimi engellemek ya da erişim elde etmek için çok faktörlü kimlik doğrulaması (MFA) testini geçerek gerektirir.
-
+Oturum açma risk ilkesi, belirli bir oturum açma risk düzeyi için yapılandırabileceğiniz otomatik bir yanıttır. Yanıtlarınızda kaynaklarınıza erişimi engelleyebilir veya erişim kazanmak için Multi-Factor Authentication (MFA) sınamasını geçirmeyi zorunlu kılabilirsiniz.
    
-## <a name="how-do-i-access-the-sign-in-risk-policy"></a>Oturum açma riski İlkesi nasıl erişim sağlanır?
+## <a name="how-do-i-access-the-sign-in-risk-policy"></a>Nasıl yaparım? oturum açma risk ilkesine erişin mi?
    
-Oturum açma riski İlkesi bulunduğu **yapılandırma** bölümünde [Azure AD kimlik koruması sayfa](https://portal.azure.com/#blade/Microsoft_AAD_ProtectionCenter/IdentitySecurityDashboardMenuBlade/SignInPolicy).
+Oturum açma risk ilkesi, [Azure AD kimlik koruması sayfasındaki](https://portal.azure.com/#blade/Microsoft_AAD_ProtectionCenter/IdentitySecurityDashboardMenuBlade/SignInPolicy) **Yapılandır** bölümünde bulunur.
    
-![Oturum açma riski İlkesi](./media/howto-sign-in-risk-policy/1014.png "oturum açma riski İlkesi")
-
+![Oturum açma risk ilkesi](./media/howto-sign-in-risk-policy/1014.png "Oturum açma risk ilkesi")
 
 ## <a name="policy-settings"></a>İlke ayarları
 
-Oturum açma riski İlkesi yapılandırdığınızda ayarlamanız gerekir:
+Oturum açma risk ilkesini yapılandırırken şunları ayarlamanız gerekir:
 
-- Kullanıcılar ve ilkenin uygulandığı gruplar:
+- İlkenin geçerli olduğu kullanıcılar ve gruplar:
 
     ![Kullanıcılar ve gruplar](./media/howto-sign-in-risk-policy/11.png)
 
-- İlke tetikler oturum açma riski düzeyi:
+- İlkeyi tetikleyen oturum açma risk düzeyi:
 
-    ![Oturum açma riski düzeyi](./media/howto-sign-in-risk-policy/12.png)
+    ![Oturum açma risk düzeyi](./media/howto-sign-in-risk-policy/12.png)
 
-- Oturum açma riski düzeyinizi sağlandığında uygulanmasını istediğiniz erişim türünü:  
+- Oturum açma riski düzeyi karşılandığında uygulanmasını istediğiniz erişimin türü:  
 
     ![Access](./media/howto-sign-in-risk-policy/13.png)
 
-- İlke durumu:
+- İlkenizin durumu:
 
-    ![İlke zorlama](./media/howto-sign-in-risk-policy/14.png)
+    ![İlkeyi zorla](./media/howto-sign-in-risk-policy/14.png)
 
-
-İlke yapılandırma iletişim kutusu yapılandırması etkisini tahmin etmek için bir seçenek sağlar.
+İlke yapılandırma iletişim kutusu, yeniden yapılandırmanın etkilerini tahmin etmek için size bir seçenek sağlar.
 
 ![Tahmini etki](./media/howto-sign-in-risk-policy/15.png)
 
 ## <a name="what-you-should-know"></a>Bilmeniz gerekenler
 
-MFA gerektirmek için bir oturum açma riski ilkesi yapılandırabilirsiniz:
+MFA gerektirecek bir oturum açma risk güvenlik ilkesi yapılandırabilirsiniz:
 
 ![MFA gerektirme](./media/howto-sign-in-risk-policy/16.png)
 
-Ancak, güvenlik nedeniyle, bu ayar yalnızca MFA için önceden kaydedilmiş olan kullanıcılar için çalışır. Kimlik koruması, kullanıcılar için mfa'yı henüz kaydolmadıysanız MFA gereksinimi kullanıcılarla engeller.
+Ancak, güvenlik nedenleriyle bu ayar yalnızca MFA için kaydedilmiş kullanıcılar için geçerlidir. Kimlik koruması, henüz MFA için kaydedilmediyse kullanıcılara MFA gereksinimini engeller.
 
-Riskli oturum açma işlemleri için mfa'yı gerekli istiyorsanız, şunları yapmalısınız:
+Riskli oturum açma işlemleri için MFA 'yı zorunlu kılmak istiyorsanız şunları yapmalısınız:
 
-1. Etkinleştirme [çok faktörlü kimlik doğrulaması kayıt ilkesi](howto-mfa-policy.md) etkilenen kullanıcılar için.
+1. Etkilenen kullanıcılar için [Multi-Factor Authentication kayıt ilkesini](howto-mfa-policy.md) etkinleştirin.
+2. Etkilenen kullanıcıların MFA kaydı gerçekleştirmek için riskli olmayan bir oturumda oturum açmasını gerektir.
 
-2. Etkilenen kullanıcıların bir MFA kayıt gerçekleştirmek için riskli olmayan bir oturum için oturum açmanız gerekir.
+Bu adımların tamamlanması, çok faktörlü kimlik doğrulamasının riskli oturum açma için gerekli olmasını sağlar.
 
-Bu adımları bir riskli oturum açma için multi-Factor authentication gerekiyor sağlar.
+Oturum açma risk ilkesi:
 
-Oturum açma riski İlkesi şöyledir:
+- Modern kimlik doğrulaması kullanan tüm tarayıcı trafiğine ve oturum açma işlemleri için geçerlidir.
+- ADFS gibi federe ıDP 'de WS-Trust uç noktasını devre dışı bırakarak eski güvenlik protokollerini kullanan uygulamalara uygulanmaz.
 
-- Tüm tarayıcı trafik ve modern kimlik doğrulaması kullanarak oturum açma işlemleri için uygulanır.
+İlgili Kullanıcı deneyimine genel bir bakış için bkz.:
 
-- WS-Trust uç noktada ADFS gibi Federasyon IDP devre dışı bırakarak eski güvenlik protokolleri kullanan uygulamalar için geçerli değil.
-
-
-İlgili kullanıcı deneyimini genel bakış için bkz:
-
-* [Riskli oturum açma kurtarma](flows.md#risky-sign-in-recovery)
-* [Riskli engellenen oturum açma](flows.md#risky-sign-in-blocked)  
-* [Azure AD kimlik koruması ile oturum açma deneyimleri](flows.md)  
+* [Riskli oturum açma kurtarması](flows.md#risky-sign-in-recovery)
+* [Riskli oturum açma engellendi](flows.md#risky-sign-in-blocked)  
+* [Azure AD Kimlik Koruması oturum açma deneyimleri](flows.md)  
 
 ## <a name="best-practices"></a>En iyi uygulamalar
 
-Seçim bir **yüksek** eşiği ilke tetiklenir ve kullanıcılara etkisini en aza indirir sayısını azaltır.  
+**Yüksek** bir eşik seçilmesi, bir ilkenin tetiklenme sayısını azaltır ve kullanıcılara etkiyi en aza indirir.  
 
-Ancak, dışlar **düşük** ve **orta** oturum açma bayrağı risk güvenliği aşılmış kimlik kötüye saldırganın engellemeyebilir ilkesi için.
+Ancak, ilkeden riskli olarak işaretlenmiş **düşük** ve **Orta düzeyde** oturum açma işlemlerini dışlayıp, bir saldırganın güvenliği aşılmış bir kimlikle yararlanmasını engellemeyebilir.
 
-İlke ayarlanırken
+İlke ayarlanırken,
 
-- Olmayan / çok faktörlü kimlik doğrulamasına sahip olmadığınız kullanıcılar hariç
+- Çok faktörlü kimlik doğrulamasına sahip olmayan ve olmayan kullanıcıları hariç tut
+- İlkenin etkinleştirilmesi pratik olmayan yerel ayarlarda (örneğin, yardım masasına erişim yok) kullanıcıları hariç tutun
+- Büyük olasılıkla çok sayıda hatalı pozitif sonuç üreten kullanıcıları hariç tut (geliştiriciler, Güvenlik analistleri)
+- İlk ilke toplaması sırasında **yüksek** bir eşik kullanın veya son kullanıcılar tarafından görülen zorlukları en aza indirmeli.
+- Kuruluşunuz daha fazla güvenlik gerektiriyorsa, **düşük** bir eşik kullanın. **Düşük** bir eşiğin seçilmesi, ek kullanıcı oturum açma güçlükleri sunarak daha fazla güvenlik sağlar.
 
-- Kullanıcılar yerel ilkesini etkinleştirme olduğu pratik dışında (örneğin Yardım Masası için hiçbir erişim)
-
-- Çok sayıda yanlış pozitifleri (geliştiriciler, güvenlik analisti) üreteceği kullanıcılar hariç
-
-- Kullanım bir **yüksek** eşiği ilk ilke sunum sırasında veya son kullanıcılar tarafından görülen sorunları en aza indirmeniz gerekir.
-
-- Kullanım bir **düşük** kuruluşunuz daha yüksek güvenlik gerektiriyorsa eşiği. Seçerek bir **düşük** eşiği ek kullanıcı oturum açma sorunları, ancak daha fazla güvenlik sunar.
-
-Önerilen çoğu kuruluş için bir kural yapılandırmak için varsayılandır bir **orta** kullanılabilirlik ve güvenlik arasında bir denge için eşiği.
-
-
-
-
-
+Çoğu kuruluş için önerilen varsayılan değer, **Orta** eşiğe yönelik bir kuralı, kullanılabilirlik ve güvenlik arasında bir denge altına alacak şekilde yapılandırmaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure AD kimlik koruması genel bakış için bkz: [Azure AD kimlik koruması genel bakış](overview.md).
+Azure AD Kimlik Koruması genel bakış almak için bkz. [Azure AD kimlik koruması genel bakış](overview.md).

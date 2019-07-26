@@ -1,24 +1,23 @@
 ---
 title: Bir Azure Data Lake depolama Gen2'ye depolama hesabı oluşturma | Microsoft Docs
-description: Azure portalı, Azure PowerShell veya Azure CLI'yı kullanarak Data Lake depolama Gen2'ye ile erişim yeni bir depolama hesabı oluşturmak hızlı bir şekilde öğrenin.
+description: Azure portal, Azure PowerShell veya Azure CLı kullanarak Data Lake Storage 2. erişimi olan yeni bir depolama hesabı oluşturmayı hızlı bir şekilde öğrenin.
 services: storage
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
-ms.topic: quickstart
-ms.date: 12/06/2018
+ms.topic: article
+ms.date: 07/19/2019
 ms.author: normesta
-ms.reviewer: jamesbak
-ms.openlocfilehash: 18132ac4c218c766efdc9a9afae2cc3508c4f732
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 297ab5971fdf60ce260808cb4864621ec1188b5e
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939416"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360773"
 ---
-# <a name="quickstart-create-an-azure-data-lake-storage-gen2-storage-account"></a>Hızlı Başlangıç: Bir Azure Data Lake depolama Gen2'ye depolama hesabı oluşturma
+# <a name="create-an-azure-data-lake-storage-gen2-storage-account"></a>Azure Data Lake Storage 2. depolama hesabı oluşturma
 
-Azure Data Lake depolama Gen2 [bir hiyerarşik ad alanı destekler](data-lake-storage-introduction.md) yerel dizin tabanlı sağlayan dosya sistemi Hadoop dağıtılmış dosya sistemi (HDFS) ile çalışacak şekilde tasarlanmış. HDFS'den Data Lake Storage Gen2 verilerine erişim [ABFS sürücüsü](data-lake-storage-abfs-driver.md) aracılığıyla sağlanabilir.
+Azure Data Lake Storage 2., Hadoop Dağıtılmış Dosya Sistemi (bir) ile çalışmak üzere uyarlanmış bir yerel dizin tabanlı dosya sistemi sağlayan [hiyerarşik bir ad alanını destekler](data-lake-storage-introduction.md) . HDFS'den Data Lake Storage Gen2 verilerine erişim [ABFS sürücüsü](data-lake-storage-abfs-driver.md) aracılığıyla sağlanabilir.
 
 Bu hızlı başlangıçta [Azure portal](https://portal.azure.com/), [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) veya [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) kullanarak hesap oluşturma adımları gösterilmektedir.
 
@@ -30,7 +29,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 |-----------|--------------|
 |Portal     | None         |
 |PowerShell | Bu hızlı başlangıç PowerShell modülü Az.Storage sürümünü gerektirir **0,7** veya üzeri. Geçerli sürümünüzü bulmak için çalıştırın `Get-Module -ListAvailable Az.Storage` komutu. Bu komutu çalıştırdıktan sonra sonuç görünüyorsa ya da dışında bir sürüm varsa **0,7** görünür sonra powershell Modülü'ı yükseltmeniz gerekir. Bkz: [, powershell modülü yükseltme](#upgrade-your-powershell-module) başlığına.
-|CLI        | Azure'da oturum açın ve Azure CLI komutları iki yoldan biriyle çalıştırın: <ul><li>CLI komutlarını Azure portalında Azure Cloud Shell içinden çalıştırabilirsiniz </li><li>CLI yükleyip CLI komutlarını yerel olarak çalıştırabilirsiniz</li></ul>|
+|CLI        | Azure 'da oturum açabilir ve Azure CLı komutlarını iki şekilde çalıştırabilirsiniz: <ul><li>CLI komutlarını Azure portalında Azure Cloud Shell içinden çalıştırabilirsiniz </li><li>CLI yükleyip CLI komutlarını yerel olarak çalıştırabilirsiniz</li></ul>|
 
 Komut satırında çalışırken Azure Cloud Shell'i çalıştırabilir veya CLI'yı yerel ortama yükleyebilirsiniz.
 
@@ -77,7 +76,7 @@ Azure portalında bir kaynak grubu oluşturmak için şu adımları izleyin:
 5. Kaynak grubu için konum seçin.
 6. **Oluştur** düğmesine tıklayın.  
 
-   ![Azure portalında kaynak grubu oluşturmayı gösteren ekran görüntüsü](./media/data-lake-storage-quickstart-create-account/create-resource-group.png)
+   ![Azure portal kaynak grubu oluşturmayı gösteren ekran görüntüsü](./media/data-lake-storage-quickstart-create-account/create-resource-group.png)
 
 ### <a name="create-a-general-purpose-v2-storage-account"></a>Genel amaçlı v2 depolama hesabı oluşturma
 
@@ -90,14 +89,14 @@ Azure portalında genel amaçlı v2 bir depolama hesabı oluşturmak için aşa�
 2. Seçin, **abonelik** ve **kaynak grubu** daha önce oluşturduğunuz.
 3. Depolama hesabınız için bir ad girin.
 4. **Konum**'u **Batı ABD 2** olarak belirleyin
-5. Şu alanları varsayılan değerlerinde bırakın: **Performans**, **hesap türü**, **çoğaltma**, **erişim katmanı**.
+5. Bu alanları varsayılan değerlerine ayarlı bırakın: **Performans**, **Hesap türü**, **çoğaltma**, **erişim katmanı**.
 6. Depolama hesabını oluşturmak istediğiniz aboneliği seçin.
-7. Seçin **sonraki: Gelişmiş >**
+7. İleri **' yi seçin: Gelişmiş >**
 8. Altında değerleri bırakın **güvenlik** ve **sanal ağlar** alanlarını varsayılan değerlerine ayarlayın.
-9. İçinde **Data Lake depolama Gen2** bölümünde kümesi **hiyerarşik ad alanı** için **etkin**.
+9. **Data Lake Storage 2.** bölümünde **hiyerarşik ad alanını** **etkin**olarak ayarlayın.
 10. Tıklayın **gözden geçir + Oluştur** depolama hesabı oluşturmak için.
 
-    ![Azure portalında depolama hesabı oluşturmayı gösteren ekran görüntüsü](./media/data-lake-storage-quickstart-create-account/azure-data-lake-storage-account-create-advanced.png)
+    ![Azure portal depolama hesabı oluşturmayı gösteren ekran görüntüsü](./media/data-lake-storage-quickstart-create-account/azure-data-lake-storage-account-create-advanced.png)
 
 Depolama hesabınız portaldan oluşturulmuş olur.
 
@@ -106,14 +105,14 @@ Depolama hesabınız portaldan oluşturulmuş olur.
 Azure portalını kullanarak kaynak grubunu kaldırmak için:
 
 1. Azure portalında sol taraftaki menüyü genişleterek hizmet menüsünü açın ve **Kaynak Grupları**'nı seçerek kaynak gruplarınızın listesini görüntüleyin.
-2. Silinecek kaynak grubunu bulun ve listenin sağ tarafındaki **Daha fazla** düğmesine (**...**) sağ tıklayın.
+2. Silinecek kaynak grubunu bulun ve listenin sağ tarafındaki **Daha fazla** düğmesine ( **...** ) sağ tıklayın.
 3. **Kaynak grubunu sil**'i seçip onaylayın.
 
 ## <a name="create-an-account-using-powershell"></a>PowerShell kullanarak hesap oluşturma
 
 İlk olarak, en son sürümünü yükleyin [PowerShellGet](https://docs.microsoft.com/powershell/gallery/installing-psget) modülü.
 
-Ardından, yükseltme, powershell modülü, Azure aboneliğinizde oturum açın bir kaynak grubu oluşturun ve bir depolama hesabı oluşturun.
+Ardından, PowerShell modülünüzü yükseltin, Azure aboneliğinizde oturum açın, bir kaynak grubu oluşturun ve ardından bir depolama hesabı oluşturun.
 
 ### <a name="upgrade-your-powershell-module"></a>PowerShell modülünüzü yükseltme
 
@@ -139,7 +138,7 @@ Login-AzAccount
 
 ### <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-PowerShell ile yeni bir kaynak grubu oluşturmak için kullanın [yeni AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) komutu: 
+PowerShell ile yeni bir kaynak grubu oluşturmak için [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) komutunu kullanın: 
 
 > [!NOTE]
 > Hiyerarşik ad alanı şu anda tüm genel bölgelerde kullanılabilir.
@@ -154,7 +153,7 @@ New-AzResourceGroup -Name $resourceGroup -Location $location
 
 ### <a name="create-a-general-purpose-v2-storage-account"></a>Genel amaçlı v2 depolama hesabı oluşturma
 
-Genel amaçlı v2 depolama hesabı, yerel olarak yedekli depolama (LRS) Powershell'den oluşturmak için kullanın [yeni AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) komutu:
+Yerel olarak yedekli depolama (LRS) ile PowerShell 'den genel amaçlı v2 depolama hesabı oluşturmak için [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) komutunu kullanın:
 
 ```powershell
 $location = "westus2"
@@ -169,7 +168,7 @@ New-AzStorageAccount -ResourceGroupName $resourceGroup `
 
 ### <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Kaynak grubunu ve yeni depolama hesabı dahil olmak üzere ilişkili kaynakları kaldırmak için kullanın [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) komutu: 
+Kaynak grubunu ve yeni depolama hesabı dahil olmak üzere ilişkili kaynaklarını kaldırmak için [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) komutunu kullanın: 
 
 ```powershell
 Remove-AzResourceGroup -Name $resourceGroup
@@ -177,9 +176,9 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 ## <a name="create-an-account-using-azure-cli"></a>Azure CLI'yı kullanarak hesap oluşturma
 
-Azure Cloud Shell'i başlatmak için oturum açın [Azure portalında](https://portal.azure.com).
+Azure Cloud Shell başlamak için [Azure Portal](https://portal.azure.com)oturum açın.
 
-İçin CLI yerel yüklemesinde oturum açmak oturum açma komutunu çalıştırın:
+CLı 'nın yerel yüklemesinde oturum açmak isterseniz, oturum açma komutunu çalıştırın:
 
 ```cli
 az login

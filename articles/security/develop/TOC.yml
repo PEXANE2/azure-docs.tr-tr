@@ -1,5 +1,10 @@
 - name: Geliştirme Belgelerinin Güvenliğini Sağlama
   href: index.yml
+- name: Örnek uygulamalar
+  expanded: true
+  items:
+    - name: Linux kapsayıcısında web uygulaması
+      href: secure-web-app.md
 - name: Kavramlar
   expanded: true
   items:

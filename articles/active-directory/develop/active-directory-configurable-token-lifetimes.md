@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.custom: aaddev, annaba
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9776126687832485bf329061dfeedce928918d9
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 901cf3e25ed63421f7e07d7773b6381fc54ea8a2
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321133"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489122"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Azure Active Directory 'de yapılandırılabilir belirteç yaşam süreleri (Önizleme)
 
@@ -40,6 +40,7 @@ Bir ilkeyi kuruluşunuz için varsayılan ilke olarak belirleyebilirsiniz. İlke
 > Yapılandırılabilir belirteç ömür ilkesi, SharePoint Online için desteklenmiyor.  Bu ilkeyi PowerShell aracılığıyla oluşturma olanağına sahip olsanız da, SharePoint Online Bu ilkeyi kabul etmez. Boş oturum zaman aşımlarını yapılandırma hakkında daha fazla bilgi edinmek için [SharePoint Online bloguna](https://techcommunity.microsoft.com/t5/SharePoint-Blog/Introducing-Idle-Session-Timeout-in-SharePoint-and-OneDrive/ba-p/119208) bakın.
 >* SharePoint Online erişim belirtecinin varsayılan yaşam süresi 1 saattir. 
 >* SharePoint Online yenileme belirtecinin varsayılan en fazla etkin olmayan süresi 90 gündür.
+
 
 ## <a name="token-types"></a>Belirteç türleri
 
@@ -80,7 +81,7 @@ Belirteç ömür ilkesi, belirteç ömrü kurallarını içeren bir ilke nesnesi
 ### <a name="configurable-token-lifetime-properties"></a>Yapılandırılabilir belirteç ömrü özellikleri
 | Özellik | İlke Özellik dizesi | Ekranlarını | Varsayılan | Minimum | Maksimum |
 | --- | --- | --- | --- | --- | --- |
-| Erişim belirteci ömrü |AccessTokenLifetime |Erişim belirteçleri, KIMLIK belirteçleri, SAML2 belirteçleri |1 saat |10 dakika |1 gün |
+| Erişim belirteci ömrü |AccessTokenLifetime<sup>4</sup> |Erişim belirteçleri, KIMLIK belirteçleri, SAML2 belirteçleri |1 saat |10 dakika |1 gün |
 | Yenileme belirteci en fazla etkin olmayan süre |Maxınactivetime |Belirteçleri Yenile |90 gün |10 dakika |90 gün |
 | Tek faktörlü yenileme belirtecinin en fazla yaşı |Maxagesinglefaktör |Belirteçleri Yenile (tüm kullanıcılar için) |İptal edilene kadar |10 dakika |Until-iptal edildi<sup>1</sup> |
 | Multi-Factor Refresh belirtecinin en fazla yaşı |MaxAgeMultiFactor |Belirteçleri Yenile (tüm kullanıcılar için) |İptal edilene kadar |10 dakika |Until-iptal edildi<sup>1</sup> |
@@ -88,6 +89,7 @@ Belirteç ömür ilkesi, belirteç ömrü kurallarını içeren bir ilke nesnesi
 | Multi-Factor Session belirtecinin en fazla yaşı |MaxAgeSessionMultiFactor<sup>3</sup> |Oturum belirteçleri (kalıcı ve kalıcı olmayan) |İptal edilene kadar |10 dakika |Until-iptal edildi<sup>1</sup> |
 
 * <sup>1</sup>365 gün, bu öznitelikler için ayarlanoluşturulabilecek maksimum açık uzunluktadır.
+* <sup>4</sup> Microsoft ekipleri web istemcisinin çalışması için, Microsoft ekipleri için AccessTokenLifetime 'ın 15 dakikadan fazla olması önerilir.
 
 ### <a name="exceptions"></a>Özel durumlar
 | Özellik | Ekranlarını | Varsayılan |

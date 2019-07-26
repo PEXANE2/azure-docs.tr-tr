@@ -1,19 +1,18 @@
 ---
 title: Azure VM yedeklemesi için Azure Backup destek matrisi
 description: Azure Backup hizmeti ile Azure VM 'lerini yedeklerken destek ayarlarının ve sınırlamaların özetini sağlar.
-services: backup
 author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: raynew
-ms.openlocfilehash: 3823bca0601f825323a44773f8c70be371ec8781
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 3b979b6bcf2078e83564a8f008d392fd8e0a7c78
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311657"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68464899"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM yedeklemesi için destek matrisi
 [Azure Backup hizmetini](backup-overview.md) şirket içi makineleri ve iş yüklerini ve Azure sanal makinelerini (VM) yedeklemek için kullanabilirsiniz. Bu makalede, Azure Backup ile Azure VM 'Leri yedeklerken destek ayarları ve sınırlamaları özetlenmektedir.
@@ -43,7 +42,7 @@ Azure VM 'yi yedekleme sunucusuna yedekleme  | Dosya/klasör/birim yedekleme; si
 Windows Azure VM oluştururken yedeklemeyi etkinleştirme | İçin desteklenir: <br/><br/> -Windows Server 2019 (Datacenter/Datacenter Core/Standard) <br/><br/> -Windows Server 2016 (Datacenter/Datacenter Core/Standard) <br/><br/> -Windows Server 2012 R2 (Datacenter/Standard) <br/><br/> -Windows Server 2008 R2 (RTM ve SP1 standart)
 Linux VM oluştururken yedeklemeyi etkinleştirme | İçin desteklenir:<br/><br/> -Ubuntu sunucusu: 18,04, 17,10, 17,04, 16,04 (LTS), 14,04 (LTS)<br/><br/> -Red Hat: RHEL 6,7, 6,8, 6,9, 7,2, 7,3, 7,4<br/><br/> -SUSE Linux Enterprise Server: 11 SP4, 12 SP2, 12 SP3, 15 <br/><br/> Debian 8, 9<br/><br/> CentOS 6,9, 7,3<br/><br/> -Oracle Linux: 6,7, 6,8, 6,9, 7,2, 7,3
 Kapalı/çevrimdışı VM olan bir VM 'yi yedekleme | Destekleniyor.<br/><br/> Anlık görüntü yalnızca çökme ile tutarlı, uygulamayla tutarlı değildir.
-Yönetilen disklere geçtikten sonra diskleri yedekleme | Destekleniyor.<br/><br/> Yedekleme çalışmaya devam edecektir. İşlem yapmanız gerekmez.
+Yönetilen disklere geçtikten sonra diskleri yedekleme | Destekleniyor.<br/><br/> Yedekleme çalışmaya devam edecektir. Eylem gerekmiyor.
 Kaynak grubu kilidini etkinleştirdikten sonra yönetilen diskleri yedekleme | Desteklenmiyor.<br/><br/> Azure Backup eski geri yükleme noktalarını silemiyor ve en fazla geri yükleme noktası sınırına ulaşıldığında yedeklemeler başarısız olur.
 VM için yedekleme ilkesini değiştirme | Destekleniyor.<br/><br/> VM, yeni ilkedeki zamanlama ve bekletme ayarları kullanılarak yedeklenir. Bekletme ayarları genişletilmişse, var olan kurtarma noktaları işaretlenir ve saklanır. Azaldıysanız, var olan kurtarma noktaları sonraki temizleme işinde ayıklanır ve sonunda silinir.
 Bir yedekleme işini iptal et | Anlık görüntü işlemi sırasında desteklenir.<br/><br/> Anlık görüntü kasaya aktarıldığında desteklenmez.
@@ -144,8 +143,7 @@ Farklı sanal ağdaki VM 'yi geri yükleme |   Destekleniyor.<br/><br/> Sanal a�
 **İşlem** | **Destek**
 --- | ---
 VM boyutu |   En az 2 CPU çekirdeği ve 1 GB RAM içeren herhangi bir Azure VM boyutu.<br/><br/> [Daha fazla bilgi edinin.](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)
-[Kullanılabilirlik kümelerinde](https://docs.microsoft.com/azure/virtual-machines/windows/regions-and-availability#availability-sets) VM 'leri yedekleme | Destekleniyor.<br/><br/> Hızlı bir şekilde VM oluşturma seçeneğini kullanarak kullanılabilir bir küme içindeki bir VM 'yi geri alamazsınız. Bunun yerine, VM 'yi geri yükledikten sonra diski geri yükler ve bir VM dağıtmak ya da bir diski geri yüklemek için kullanın ve var olan bir diski değiştirmek için kullanın.
-[Kullanılabilirlik bölgelerinde](https://docs.microsoft.com/azure/availability-zones/az-overview) VM 'leri yedekleme |  Desteklenmiyor.
+[Kullanılabilirlik kümelerinde](https://docs.microsoft.com/azure/virtual-machine-scale-sets/availability#availability-sets) VM 'leri yedekleme | Destekleniyor.<br/><br/> Hızlı bir şekilde VM oluşturma seçeneğini kullanarak kullanılabilir bir küme içindeki bir VM 'yi geri alamazsınız. Bunun yerine, VM 'yi geri yükledikten sonra diski geri yükler ve bir VM dağıtmak ya da bir diski geri yüklemek için kullanın ve var olan bir diski değiştirmek için kullanın.
 [Karma kullanım avantajı (hub)](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) Ile dağıtılan VM 'leri yedekleme | Destekleniyor.
 [Ölçek kümesine](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview) dağıtılan VM 'leri yedekleme |  Desteklenmiyor.
 [Azure Marketi](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?filters=virtual-machine-images) 'Nden dağıtılan VM 'leri yedekleme<br/><br/> (Microsoft, üçüncü taraf tarafından yayımlandı) |  Destekleniyor.<br/><br/> VM desteklenen bir işletim sistemi çalıştırıyor olmalıdır.<br/><br/> SANAL makinede dosyaları kurtarırken, yalnızca uyumlu bir işletim sistemine (önceki veya sonraki bir işletim sistemini değil) geri yükleyebilirsiniz. VM 'Ler olarak desteklenen Azure Market VM 'lerini geri yüklemeyin, çünkü bu gereksinimler yalnızca disk olarak satın alınabilir.
@@ -216,7 +214,7 @@ Veri güvenliği:
 **Makin** | **Yoldaki** | **Bekleyen**
 --- | --- | ---
 DPM/MABS olmayan şirket içi Windows makineleri | ![Evet][green] | ![Evet][green]
-Azure VM’leri | ![Evet][green] | ![Evet][green]
+Azure VM'leri | ![Evet][green] | ![Evet][green]
 DPM ile şirket içi/Azure VM 'Leri | ![Evet][green] | ![Evet][green]
 MABS ile şirket içi/Azure VM 'Leri | ![Evet][green] | ![Evet][green]
 
@@ -232,7 +230,7 @@ Yedekleme, aşağıdaki tabloda özetlenen yedekleme trafiğinin sıkıştırmas
 **Makin** | **MABS/DPM 'ye Sıkıştır (TCP)** | **Kasaya Sıkıştır (HTTPS)**
 --- | --- | ---
 DPM/MABS olmayan şirket içi Windows makineleri | NA | ![Evet][green]
-Azure VM’leri | NA | NA
+Azure VM'leri | NA | NA
 DPM ile şirket içi/Azure VM 'Leri | ![Evet][green] | ![Evet][green]
 MABS ile şirket içi/Azure VM 'Leri | ![Evet][green] | ![Evet][green]
 

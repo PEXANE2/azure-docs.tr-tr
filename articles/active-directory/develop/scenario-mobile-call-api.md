@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1408c06570babfd93c46fdfc7a3c6754000bcbc
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 76f0cddfa889376d3795726e74d82e53417b31f1
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68320845"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68413564"
 ---
 # <a name="mobile-app-that-calls-web-apis---call-a-web-api"></a>Web API 'Lerini çağıran mobil uygulama-bir Web API 'SI çağırma
 
@@ -114,17 +114,7 @@ Erişim belirtecine sahip olduktan sonra, bir Web API 'SI çağırmak kolaydır.
 
 ### <a name="xamarin"></a>Xamarin
 
-```CSharp
-httpClient = new HttpClient();
-
-// Put access token in HTTP request.
-httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.AccessToken);
-
-// Call Graph.
-HttpResponseMessage response = await _httpClient.GetAsync(apiUri);
-...
-}
-```
+[!INCLUDE [Call web API in .NET](../../../includes/active-directory-develop-scenarios-call-apis-dotnet.md)]
 
 ## <a name="making-several-api-requests"></a>Birkaç API isteği oluşturma
 
@@ -132,6 +122,40 @@ Aynı API 'yi birkaç kez çağırmanız gerekiyorsa veya birden çok API çağ�
 
 - **Artımlı izin**: Microsoft Identity platform, uygulamanın başlangıç aşamasında değil, izin gerektiğinde kullanıcıların onayını almasına izin verir. Uygulamanız bir API 'yi çağırmaya her seferinde yalnızca kullanması gereken kapsamları istemesi gerekir.
 - **Koşullu erişim**: Bazı senaryolarda, birkaç API isteği yaptığınızda ek koşullu erişim gereksinimleri alabilirsiniz. Bu durum, ilk isteğin uygulanmış koşullu erişim ilkesi yoksa ve uygulamanız koşullu erişim gerektiren yeni bir API 'ye sessizce erişmeye çalışırsa meydana gelebilir. Bu senaryoyu işlemek için sessiz isteklerden gelen hataları yakalamalı ve etkileşimli bir istek oluşturmak için hazırlandığınızdan emin olun.  Daha fazla bilgi için bkz. [koşullu erişim Için rehberlik](conditional-access-dev-guide.md).
+
+## <a name="calling-several-apis-in-xamarin-or-uwp---incremental-consent-and-conditional-access"></a>Xamarin veya UWP 'de birkaç API çağırma-artımlı onay ve koşullu erişim
+
+Aynı kullanıcı için birden çok API çağrısı yapmanız gerekiyorsa, bir kullanıcı için bir belirteç aldıktan sonra, daha sonra bir belirteç almak üzere çağırarak `AcquireTokenSilent` kullanıcıdan kimlik bilgilerini tekrar tekrar sormaktan kaçınabilirsiniz.
+
+```CSharp
+var result = await app.AcquireTokenXX("scopeApi1")
+                      .ExecuteAsync();
+
+result = await app.AcquireTokenSilent("scopeApi2")
+                  .ExecuteAsync();
+```
+
+Etkileşimin gerekli olduğu durumlar şunlardır:
+
+- Kullanıcı ilk API 'yi kabul etmiş, ancak artık daha fazla kapsam için onay gerektirir (artımlı onay)
+- İlk API çok faktörlü kimlik doğrulaması gerektirmez, ancak bir sonraki tane.
+
+```CSharp
+var result = await app.AcquireTokenXX("scopeApi1")
+                      .ExecuteAsync();
+
+try
+{
+ result = await app.AcquireTokenSilent("scopeApi2")
+                  .ExecuteAsync();
+}
+catch(MsalUiRequiredException ex)
+{
+ result = await app.AcquireTokenInteractive("scopeApi2")
+                  .WithClaims(ex.Claims)
+                  .ExecuteAsync();
+}
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

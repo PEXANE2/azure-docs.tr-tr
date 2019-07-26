@@ -321,6 +321,18 @@
     - name: Önceden derlenmiş etki alanı başvurusu
       href: luis-reference-prebuilt-domains.md
       displayName: 'Calendar, Communication,Email,HomeAutomation,Note,Places, RestaurantReservation,ToDo,Utilities,Weather,Web'
+    - name: Özel varlık başvurusu
+      items:
+        - name: Bileşik varlık
+          href: reference-entity-composite.md
+        - name: Liste varlığı
+          href: reference-entity-list.md
+        - name: Pattern.any varlığı
+          href: reference-entity-pattern-any.md
+        - name: Normal ifade varlığı
+          href: reference-entity-regular-expression.md
+        - name: Basit varlık
+          href: reference-entity-simple.md
     - name: Azure CLI
       href: 'https://go.microsoft.com/fwlink/?linkid=2092156'
     - name: Azure RM PowerShell

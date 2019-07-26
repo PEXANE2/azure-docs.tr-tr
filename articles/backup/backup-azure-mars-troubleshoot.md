@@ -1,19 +1,18 @@
 ---
 title: Azure Backup aracısında sorun giderme
 description: Azure Backup aracısının yüklenmesi ve kaydettirilmesinde sorun giderme
-services: backup
 author: saurabhsensharma
 manager: sivan
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: saurse
-ms.openlocfilehash: a791773a3e9cc0b75c626b622070b29c9779c453
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 6dc56e4eccbad0de986551e055e877d3d051b145
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249536"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68465976"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı sorunlarını giderme
 
@@ -43,7 +42,7 @@ Microsoft Azure kurtarma hizmetleri (MARS) Aracısı ile ilgili sorun gidermeye 
 
 **Hata iletisi**: Sağlanan kasa kimlik bilgileri geçersiz. Dosya bozuk veya kurtarma hizmeti ile ilişkili en son kimlik bilgilerine sahip değil. (Kimlik: 34513)
 
-| Nedeni | Önerilen Eylemler |
+| Nedeni | Önerilen eylemler |
 | ---     | ---    |
 | **Kasa kimlik bilgileri geçerli değil** <br/> <br/> Kasa kimlik bilgileri dosyaları bozulmuş olabilir veya zaman aşımına uğradı. (Örneğin, kayıt zamanından önce 48 saatten daha fazla indirilmiş olabilir.)| Azure portal kurtarma hizmetleri kasasından yeni kimlik bilgilerini indirin. ( [Mars aracısını indirme](https://docs.microsoft.com/azure/backup/backup-configure-vault#download-the-mars-agent) bölümünde 6. adıma bakın.) Ardından aşağıdaki adımları uygulayın: <ul><li> MARS 'ı zaten yüklediyseniz ve daha önce kaydolduysanız, yeni kimlik bilgileriyle kaydı gerçekleştirmek için Microsoft Azure Backup Aracısı MMC konsolunu açın ve **Eylemler** bölmesinde **sunucuyu kaydet** ' i seçin. <br/> <li> Yeni yükleme başarısız olursa yeni kimlik bilgileriyle yeniden yüklemeyi deneyin.</ul> **Not**: Birden çok kasa kimlik bilgileri dosyası indirildiyse, sonraki 48 saat boyunca yalnızca en son dosya geçerlidir. Yeni bir kasa kimlik bilgileri dosyası indirmenizi öneririz.
 | **Proxy sunucusu/güvenlik duvarı kaydı engelliyor** <br/>veya <br/>**İnternet bağlantısı yok** <br/><br/> Makinenizin veya proxy sunucunuzun sınırlı internet bağlantısı varsa ve gerekli URL 'Ler için erişim sağlanmıyorsanız, kayıt başarısız olur.| Aşağıdaki adımları gerçekleştirin:<br/> <ul><li> Sistemin internet bağlantısı olduğundan emin olmak için BT ekibinizle birlikte çalışın.<li> Proxy sunucunuz yoksa, aracıyı kaydettiğinizde ara sunucu seçeneğinin seçili olmadığından emin olun. [Proxy ayarlarınızı denetleyin](#verifying-proxy-settings-for-windows).<li> Bir güvenlik duvarı/proxy sunucunuz varsa, bu URL 'Lerin ve IP adreslerinin erişime sahip olduğundan emin olmak için ağ ekibinizle birlikte çalışın:<br/> <br> **Adresleri**<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>**IP adresleri**<br>  20.190.128.0/18 <br>  40.126.0.0/18 <br/></ul></ul>Yukarıdaki sorun giderme adımlarını tamamladıktan sonra kaydetmeyi yeniden deneyin.
@@ -68,32 +67,32 @@ Microsoft Azure kurtarma hizmetleri (MARS) Aracısı ile ilgili sorun gidermeye 
 
 ## <a name="unable-to-download-vault-credential-file"></a>Kasa kimlik bilgileri dosyası karşıdan yüklenemiyor
 
-| Hata   | Önerilen Eylemler |
+| Hata   | Önerilen eylemler |
 | ---     | ---    |
 |Kasa kimlik bilgileri dosyası indirilemedi. (Kimlik: 403) | <ul><li> Farklı bir tarayıcı kullanarak kasa kimlik bilgilerini indirmeyi deneyin veya şu adımları uygulayın: <ul><li> Internet Explorer 'ı başlatın. F12 ' i seçin. </li><li> **Ağ** sekmesine gidin ve önbelleği ve tanımlama bilgilerini temizleyin. </li> <li> Sayfayı yenileyin.<br></li></ul> <li> Aboneliğin devre dışı bırakılıp bırakılmadığını kontrol edin.<br></li> <li> Bir güvenlik duvarı kuralının indirmeyi engelleyip engellemediğini denetleyin. <br></li> <li> Kasadaki limiti tüketmemiş olduğunuzdan emin olun (kasa başına 50 makine).<br></li>  <li> Kullanıcının kasa kimlik bilgilerini indirmek ve kasaya bir sunucu kaydetmek için gereken Azure Backup izinlere sahip olduğundan emin olun. Bkz. [Azure Backup kurtarma noktalarını yönetmek Için rol tabanlı Access Control kullanma](backup-rbac-rs-vault.md).</li></ul> |
 
 ## <a name="the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup"></a>Microsoft Azure Kurtarma Hizmeti Aracısı, Microsoft Azure Backup'a bağlanamadı
 
-| Hata  | Olası neden | Önerilen Eylemler |
+| Hata  | Olası neden | Önerilen eylemler |
 | ---     | ---     | ---    |
 | <br /><ul><li>Microsoft Azure kurtarma hizmeti Aracısı Microsoft Azure Backup bağlantı kuramadı. (Kimlik: 100050) ağ ayarlarınızı denetleyin ve internet 'e bağlanabildiğinizden emin olun.<li>(407) proxy kimlik doğrulaması gerekiyor. |Ara sunucu bağlantıyı engelliyor. |  <ul><li>Internet Explorer 'da **Araçlar** > **Internet seçenekleri** > **güvenlik** > **İnternet**'e gidin. **Özel düzey** ' i seçin ve **dosya indirme** bölümüne gidin. Seçin **etkinleştirme**.<p>Ayrıca, Internet Explorer 'daki güvenilen sitelerinize [URL 'ler ve IP adresleri](backup-configure-vault.md#verify-internet-access) eklemeniz gerekebilir.<li>Ayarları bir proxy sunucu kullanacak şekilde değiştirin. Ardından proxy sunucusu ayrıntılarını sağlayın.<li> Makinenizin internet erişimi sınırlı ise, makinedeki veya proxy 'deki güvenlik duvarı ayarlarının bu [URL 'lere ve IP adreslerine](backup-configure-vault.md#verify-internet-access)izin verildiğinden emin olun. <li>Sunucuda yüklü bir virüsten koruma yazılımınız varsa, bu dosyaları virüsten koruma taramasından çıkarın: <ul><li>CBEngine. exe (DPMRA. exe yerine).<li>CSC. exe (.NET Framework ile ilgili). Sunucuda yüklü her .NET Framework sürümü için bir CSC. exe vardır. Etkilenen sunucuda .NET Framework tüm sürümleri için CSC. exe dosyalarını hariç tutun. <li>Karalama klasörü veya önbellek konumu. <br>Karalama klasörü veya önbellek yolu için varsayılan konum C:\Program Files\Microsoft Azure Recovery Services.<li>C:\Program Files\Microsoft Azure kurtarma hizmetleri \ bin klasöründe bin klasörü.
 
 
 ## <a name="failed-to-set-the-encryption-key-for-secure-backups"></a>Güvenli yedeklemeler için şifreleme anahtarı ayarlama başarısız oldu
 
-| Hata | Olası nedenler | Önerilen Eylemler |
+| Hata | Olası nedenler | Önerilen eylemler |
 | ---     | ---     | ---    |
 | <br />Güvenli yedeklemeler için şifreleme anahtarı ayarlanamadı. Etkinleştirme tamamen başarılı olmadı, ancak şifreleme parolası aşağıdaki dosyaya kaydedildi. |<li>Sunucu zaten başka bir kasaya kayıtlı.<li>Yapılandırma sırasında parola bozulmuş.| Sunucunun kasasından kaydını kaldırın ve yeni bir parola ile yeniden kaydedin.
 
 ## <a name="the-activation-did-not-complete-successfully"></a>Etkinleştirme başarıyla tamamlanmadı
 
-| Hata  | Olası nedenler | Önerilen Eylemler |
+| Hata  | Olası nedenler | Önerilen eylemler |
 |---------|---------|---------|
 |<br />Etkinleştirme başarıyla tamamlanmadı. Geçerli işlem, [0x1FC07] iç hizmet hatası nedeniyle başarısız oldu. İşlemi bir süre sonra yeniden deneyin. Sorun devam ederse lütfen Microsoft desteğine başvurun.     | <li> Karalama klasörü, yeterli alana sahip olmayan bir birimde bulunur. <li> Karalama klasörü yanlış bir şekilde taşındı. <li> OnlineBackup. KEK dosyası eksik.         | <li>MARS aracısının [en son sürümüne](https://aka.ms/azurebackup_agent) yükseltin.<li>Karalama klasörünü veya önbellek konumunu, yedekleme verilerinin toplam boyutunun% 5 ' i ile% 10 ' a kadar boş alana sahip bir birime taşıyın. Önbellek konumunu doğru bir şekilde taşımak için, [dosya ve klasörleri yedekleme hakkında sık sorulan soruların](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder)adımlarına bakın.<li> OnlineBackup. KEK dosyasının mevcut olduğundan emin olun. <br>*Karalama klasörü veya önbellek yolu için varsayılan konum C:\Program Files\Microsoft Azure Kurtarma Hizmetleri hizmeti \ çalışma klasörüdür*.        |
 
 ## <a name="encryption-passphrase-not-correctly-configured"></a>Şifreleme parolası doğru yapılandırılmadı
 
-| Hata  | Olası nedenler | Önerilen Eylemler |
+| Hata  | Olası nedenler | Önerilen eylemler |
 |---------|---------|---------|
 | <br />Hata 34506. Bu bilgisayarda depolanan şifreleme parolası düzgün yapılandırılmamış.    | <li> Karalama klasörü, yeterli alana sahip olmayan bir birimde bulunur. <li> Karalama klasörü yanlış bir şekilde taşındı. <li> OnlineBackup. KEK dosyası eksik.        | <li>MARS aracısının [en son sürümüne](https://aka.ms/azurebackup_agent) yükseltin.<li>Karalama klasörünü veya önbellek konumunu, yedekleme verilerinin toplam boyutunun% 5 ' i ile% 10 ' a kadar boş alana sahip bir birime taşıyın. Önbellek konumunu doğru bir şekilde taşımak için, [dosya ve klasörleri yedekleme hakkında sık sorulan soruların](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder)adımlarına bakın.<li> OnlineBackup. KEK dosyasının mevcut olduğundan emin olun. <br>*Karalama klasörü veya önbellek yolu için varsayılan konum C:\Program Files\Microsoft Azure Kurtarma Hizmetleri hizmeti \ çalışma klasörüdür*.         |
 
@@ -194,7 +193,7 @@ Sunucusunda virüsten koruma yazılımı yüklüyse, bu dosya ve klasörler içi
 - CBengine. exe
 - CSC. exe
 
-## <a name="common-issues"></a>Genel sorunlar
+## <a name="common-issues"></a>Sık karşılaşılan sorunlar
 Bu bölümde, MARS Aracısı kullanılırken karşılaştığınız yaygın hatalar ele alınmaktadır.
 
 ### <a name="salchecksumstoreinitializationfailed"></a>Salchecksumstoreınitializationfailed

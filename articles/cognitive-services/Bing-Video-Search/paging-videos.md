@@ -1,7 +1,7 @@
 ---
-title: Nasıl yapılır videoları kullanılabilir - Bing Video arama sayfasından
-titlesuffix: Azure Cognitive Services
-description: Tüm videoların Bing Video arama API'si tarafından döndürülen sayfasında öğrenin.
+title: Kullanılabilir videolar aracılığıyla sayfa oluşturma-Bing Video Arama
+titleSuffix: Azure Cognitive Services
+description: Bing Video Arama API'si tarafından döndürülen tüm videoların nasıl ekleneceğini öğrenin.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -10,23 +10,23 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: 12549bb53a21dd657f51a4a02460ddc82c47bef8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c3570d8772734595c6707ca8103006867a8eb47a
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66386397"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500714"
 ---
-# <a name="paging-through-video-search-results"></a>Video arama sonuçlarını sayfalandırma
+# <a name="paging-through-video-search-results"></a>Video arama sonuçlarıyla sayfalama
 
-Bing Video arama API'si, bir alt kümesini sorgunuz için bulunan tüm arama sonuçlarını döndürür. Bu sonuçları API'sine yapılan sonraki çağrılar aracılığıyla disk belleği tarafından alın ve bunları uygulamanızda görüntüler.
+Bing Video Arama API'si, sorgunuz için bulduğu tüm arama sonuçlarının bir alt kümesini döndürür. API 'ye yapılan sonraki çağrılarla bu sonuçlar aracılığıyla disk belleğine alarak, bunları uygulamanızda alabilir ve gösterebilirsiniz.
 
 > [!NOTE]
-> Disk belleği yalnızca videoları arama (arama/video /) ve video öngörüleri (/ video/ayrıntıları) veya (/ video/popüler) popüler videolar için geçerlidir.
+> Sayfalama yalnızca videolar araması (/videos/Search) için geçerlidir ve video öngörüleri (/videos/Details) veya popüler Videolar (/videos/trbitiriliyor) için geçerli değildir.
 
-## <a name="total-estimated-matches"></a>Tahmini Toplam eşleşmeleri
+## <a name="total-estimated-matches"></a>Toplam tahmini eşleşme
 
-Tahmini bulundu arama sonucu sayısını almak için kullanın [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos-totalestimatedmatches) JSON yanıtındaki alan.   
+Bulunan arama sonuçlarının tahmini sayısını almak için JSON yanıtında [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos-totalestimatedmatches) alanını kullanın.   
   
 ```json  
 {
@@ -37,19 +37,19 @@ Tahmini bulundu arama sonucu sayısını almak için kullanın [totalEstimatedMa
 }  
 ```  
   
-## <a name="paging-through-videos"></a>Disk belleği videoları
+## <a name="paging-through-videos"></a>Videolar aracılığıyla sayfalama
 
-Mevcut videoları sayfası için kullanın [sayısı](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#count) ve [uzaklığı](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#offset) isteğiniz gönderilirken sorgu parametreleri.  
+Kullanılabilir videolar aracılığıyla sayfa eklemek için isteğinizi gönderirken [say](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#count) ve [sapmayı](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#offset) sorgulama parametrelerini kullanın.  
   
 
 |Parametre  |Açıklama  |
 |---------|---------|
-|`count`     | Yanıtta döndürülecek sonuç sayısını belirtir. Yanıtta isteyebilir sonuçları sayısının 100'dür. Varsayılan değer 10'dur. Teslim gerçek sayı istenenden daha az olabilir.        |
-|`offset`     | Atlanacak sonuç sayısını belirtir. `offset` Sıfır tabanlıdır ve olması gereken küçüktür (`totalEstimatedMatches` - `count`).          |
+|`count`     | Yanıtta döndürülecek sonuçların sayısını belirtir. Yanıtta talep alabileceğiniz en fazla sonuç sayısı 100 ' dir. Varsayılan değer 10 ' dur. Teslim edilen gerçek numara istenenden daha az olabilir.        |
+|`offset`     | Atlanacak sonuç sayısını belirtir. Sıfır tabanlıdır ve (`totalEstimatedMatches` - )değerindenküçükolmalıdır.`count` `offset`          |
 
-Örneğin, sayfa başına 20 makaleleri görüntülemek istiyorsanız, ayarlarsınız `count` 20 ve `offset` ilk sayfasını almak için 0. Her bir sonraki sayfa için gerçekleştirilemediği `offset` 20 (örneğin, 20, 40) tarafından.  
+Örneğin, sayfa başına 20 makale göstermek istiyorsanız sonuçların ilk sayfasını almak için 20 ve `count` `offset` 0 olarak ayarlanır. Sonraki her sayfa için 20 (örneğin, `offset` 20, 40) artırabilirsiniz.  
   
-Aşağıdaki örnekte, 20 videolar, 40 uzaklıkta başlayan ister.  
+Aşağıdaki örnek, 40 uzaklığında başlayarak 20 video ister.  
   
 ```cURL  
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/search?q=sailing+dinghies&count=20&offset=40&mkt=en-us HTTP/1.1  
@@ -57,7 +57,7 @@ Ocp-Apim-Subscription-Key: 123456789ABCDE
 Host: api.cognitive.microsoft.com  
 ```  
 
-İçin varsayılan değeri kullanırsanız [sayısı](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#count), yalnızca belirtmenize gerek `offset` sorgu parametresi, aşağıdaki örnekte olduğu gibi.  
+[Count](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#count)için varsayılan değeri kullanırsanız, aşağıdaki örnekte olduğu gibi yalnızca `offset` sorgu parametresini belirtmeniz gerekir.  
   
 ```cURL  
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/search?q=sailing+dinghies&offset=40&mkt=en-us HTTP/1.1  
@@ -65,16 +65,16 @@ Ocp-Apim-Subscription-Key: 123456789ABCDE
 Host: api.cognitive.microsoft.com  
 ```  
 
-Aynı anda 35 videoları sayfası, ayarlarsınız `offset` sorgu parametresi 0 olarak ilk isteğinizi ve ardından Artır `offset` 35 sonraki her istek tarafından. Ancak, bazı sonuçları sonraki yanıt önceki yanıtından video yinelenen sonuçlar içerebilir. Örneğin, bir yanıt ilk iki videoları önceki yanıtın son iki videolardan aynı olabilir.
+Tek seferde 35 videolarla karşılaşırsanız, `offset` sorgu parametresini ilk talebinizdeki 0 olarak ayarlayın ve ardından sonraki her istekte 35 ile artırabilirsiniz. `offset` Ancak, bir sonraki yanıtın bazı sonuçları, önceki yanıttan yinelenen video sonuçları içerebilir. Örneğin, bir yanıttaki ilk iki video, önceki yanıtın son iki videosunda aynı olabilir.
 
-Yinelenen sonuçları ortadan kaldırmak için kullanın [nextOffset](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos-nextoffset) alanını `Videos` nesne.
+Yinelenen sonuçları ortadan kaldırmak için, `Videos` nesnesinin [nextoffset](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos-nextoffset) alanını kullanın.
 
-Örneğin, bir kerede 30 video sayfasında istiyorsanız, ayarlayabileceğiniz `count` 30 ve `offset` ilk isteğinizdeki 0. Sonraki isteğiniz ayarlarsınız `offset` sorgu parametresi için `nextOffset` değeri.
+Örneğin, bir kerede 30 video sayfa eklemek istiyorsanız, ilk isteğiniz için 30 ve `count` `offset` 0 olarak ayarlayabilirsiniz. Bir sonraki istekte, `offset` sorgu parametresini `nextOffset` değere ayarlarsınız.
 
 > [!NOTE]
-> `TotalEstimatedAnswers` Alandır ne tahmini toplam arama sonuçları almak için geçerli sorgu sayısı.  Ayarladığınızda `count` ve `offset` parametreleri `TotalEstimatedAnswers` numarası değişebilir. 
+> Bu `TotalEstimatedAnswers` alan, geçerli sorgu için alabileceğiniz arama sonuçlarının toplam sayısının tahminidir.  Ve `count` `TotalEstimatedAnswers` parametrelerini ayarladığınızda, numara değişebilir. `offset` 
   
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Video Öngörüler elde edin](video-insights.md)
+> [Video öngörüleri edinin](video-insights.md)

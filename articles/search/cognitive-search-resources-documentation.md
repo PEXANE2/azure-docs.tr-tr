@@ -1,6 +1,6 @@
 ---
-title: Bilişsel arama belgeleri kaynaklar - Azure Search
-description: Makaleler, öğreticiler, örnekler ve blog ek açıklamalı bir listesini ilgili bilişsel arama iş yükleri, Azure Search'te gönderir.
+title: Bilişsel arama belgesi kaynakları-Azure Search
+description: Azure Search ' deki bilişsel arama iş yükleri ile ilgili makalelerin, öğreticilerin, örneklerin ve blog gönderilerinin açıklamalı bir listesi.
 services: search
 manager: cgronlun
 author: HeidiSteen
@@ -10,53 +10,61 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 41637fae5592ac292da22303071d51b43116c78b
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 3a23828d98b14c094aa751d3fb2e53575c5e6479
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671902"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68347818"
 ---
 # <a name="documentation-resources-for-cognitive-search-workloads"></a>Bilişsel arama iş yükleri için belge kaynakları
 
-Bilişsel arama, artık genel kullanımda metin olmayan kaynakları ve Azure Search'te tam metin aranabilir içeriğe dönüştürmek protokole metin görünmeyen bilgileri bulur, Azure arama dizini oluşturma, bir yeni zenginleştirme katmanıdır.
+Bilişsel arama, artık genel olarak kullanılabilir Azure Search dizin oluşturma içindeki yeni bir zenginleştirme katmanıdır ve metin olmayan kaynaklardaki bilgileri ve ayırt edilmemiş metinleri bulur ve bunu Azure Search tam metin aranabilir içeriğe dönüştürür.
 
-Bilişsel arama için kapsamlı belgeler makaleleridir.
+Aşağıdaki makaleler bilişsel arama için tüm belgeleriniz.
 
 ## <a name="getting-started"></a>Başlarken
 + [Bilişsel arama nedir?](cognitive-search-concept-intro.md)
-+ [Hızlı Başlangıç: Portalında bilişsel aramayı deneme](cognitive-search-quickstart-blob.md)
-+ [Öğretici: Bilişsel arama API'leri öğrenin](cognitive-search-tutorial-blob.md)
++ [Hızlı Başlangıç: Portalda bilişsel aramayı deneyin](cognitive-search-quickstart-blob.md)
++ [Öğretici: Bilişsel arama API 'Lerini öğrenin](cognitive-search-tutorial-blob.md)
 + [Örnek: Bilişsel arama için özel bir yetenek oluşturma](cognitive-search-create-custom-skill-example.md)
 
-## <a name="how-to-guidance"></a>Nasıl yapılır kılavuzları
-+ [Bir beceri kümesi tanımlama](cognitive-search-defining-skillset.md)
-+ [Bir beceri kümesi açıklamalarda başvuru yapma](cognitive-search-concept-annotations-syntax.md)
-+ [Nasıl bir dizin alanlarını eşleme](cognitive-search-output-field-mapping.md)
-+ [Görüntülerdeki bilgileri işleme ve ayıklama nasıl](cognitive-search-concept-image-scenarios.md)
-+ [Nasıl bir Azure Search dizini yeniden oluşturma](search-howto-reindex.md)
-+ [Özel becerileri arabirimi tanımlama](cognitive-search-custom-skill-interface.md)
+## <a name="how-to-guidance"></a>Nasıl yapılır Kılavuzu
++ [Beceri tanımlama](cognitive-search-defining-skillset.md)
++ [Bir beceri içinde ek açıklamaların nasıl başvurulacağını](cognitive-search-concept-annotations-syntax.md)
++ [Alanları bir dizinle eşleme](cognitive-search-output-field-mapping.md)
++ [Görüntülerden bilgileri işleme ve ayıklama](cognitive-search-concept-image-scenarios.md)
++ [Azure Search dizinini yeniden oluşturma](search-howto-reindex.md)
++ [Özel yetenekler arabirimi tanımlama](cognitive-search-custom-skill-interface.md)
 + [Sorun giderme ipuçları](cognitive-search-concept-troubleshooting.md)
 
 ## <a name="reference"></a>Başvuru
 
-+ [Önceden tanımlanmış beceriler](cognitive-search-predefined-skills.md)
-  + [Microsoft.Skills.Text.KeyPhraseSkill](cognitive-search-skill-keyphrases.md)
-  + [Microsoft.Skills.Text.LanguageDetectionSkill](cognitive-search-skill-language-detection.md)
-  + [Microsoft.Skills.Text.NamedEntityRecognitionSkill](cognitive-search-skill-named-entity-recognition.md)
-  + [Microsoft.Skills.Text.MergeSkill](cognitive-search-skill-textmerger.md)
-  + [Microsoft.Skills.Text.SplitSkill](cognitive-search-skill-textsplit.md)
-  + [Microsoft.Skills.Text.SentimentSkill](cognitive-search-skill-sentiment.md)
-  + [Microsoft.Skills.Vision.ImageAnalysisSkill](cognitive-search-skill-image-analysis.md)
-  + [Microsoft.Skills.Vision.OcrSkill](cognitive-search-skill-ocr.md)
-  + [Microsoft.Skills.Util.ShaperSkill](cognitive-search-skill-shaper.md)
++ [Önceden tanımlanmış yetenekler](cognitive-search-predefined-skills.md)
+  + [Microsoft. yetenekler. Text. KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md)
+  + [Microsoft. yetenekler. Text. LanguageDetectionSkill](cognitive-search-skill-language-detection.md)
+  + [Microsoft. yetenekler. Text. Entityrecognitionbeceri](cognitive-search-skill-entity-recognition.md)
+  + [Microsoft. yetenekler. Text. Mergeskıll](cognitive-search-skill-textmerger.md)
+  + [Microsoft. yetenekler. Text. Splitbeceri](cognitive-search-skill-textsplit.md)
+  + [Microsoft. yetenekler. Text. Sentimentbecerisi](cognitive-search-skill-sentiment.md)
+  + [Microsoft. yetenekler. Text. Translationbeceri (Önizleme)](cognitive-search-skill-text-translation.md)
+  + [Microsoft. yetenekler. Vision. ımageanalysisbeceri](cognitive-search-skill-image-analysis.md)
+  + [Microsoft. yetenekler. Vision. Ocrbeceri](cognitive-search-skill-ocr.md)
+  + [Microsoft. yetenekler. util. Conditionalbeceri](cognitive-search-skill-conditional.md)
+  + [Microsoft. yetenekler. util. Shaperbeceri](cognitive-search-skill-shaper.md)
+
++ Özel beceriler
+  + [Microsoft. yetenekler. Custom. WebApiSkill](cognitive-search-custom-skill-web-api.md)
+
++ [Kullanım dışı yetenekler](cognitive-search-skill-deprecated.md)
+  + [Microsoft. yetenekler. Text. Namedentityrecognitionbeceri](cognitive-search-skill-named-entity-recognition.md)
 
 + [REST API](https://docs.microsoft.com/rest/api/searchservice/)
-  + [Beceri kümesi oluşturma (api sürümü 2019-05-06 =)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
-  + [Create Indexer (api-version=2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
+  + [Beceri oluşturma (api-Version = 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
+  + [Dizin Oluşturucu oluştur (api-Version = 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
 + [Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/)
-+ [Azure Search'te dizin oluşturucular](search-indexer-overview.md)
++ [Azure Search Dizin oluşturucular](search-indexer-overview.md)
 + [Azure Search nedir?](search-what-is-azure-search.md)

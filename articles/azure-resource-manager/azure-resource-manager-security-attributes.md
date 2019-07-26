@@ -1,6 +1,6 @@
 ---
-title: Ortak güvenlik öznitelikleri için Azure Resource Manager
-description: Azure Resource Manager'ı değerlendirmek için genel güvenlik öznitelikleri listesi
+title: Azure Resource Manager için güvenlik öznitelikleri
+description: Azure Resource Manager değerlendirmek için güvenlik özniteliklerinin denetim listesi
 services: azure-resource-manager
 author: msmbaldwin
 manager: barbkess
@@ -8,27 +8,27 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: mbaldwin
-ms.openlocfilehash: a771d4c2ae22b7bf149c13c80fe5286ef52a4545
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e3bfb79c54ff57adfa947f2dd0100f6c05c7af9f
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002268"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444143"
 ---
 # <a name="security-attributes-for-azure-resource-manager"></a>Azure Resource Manager için güvenlik öznitelikleri
 
-Bu makale, Azure Resource Manager'a yerleşik güvenlik özniteliklerini içermektedir.
+Bu makale, Azure Resource Manager yerleşik güvenlik özniteliklerini belgeler.
 
 [!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
 
-## <a name="preventative"></a>Preventative
+## <a name="preventative"></a>Önleyici
 
 | Güvenlik özniteliği | Evet/Hayır | Notlar |
 |---|---|--|
-| Bekleme sırasında şifreleme:<ul><li>Sunucu tarafı şifrelemesi</li><li>Müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifrelemesi</li><li>Diğer şifreleme özellikleri (örneğin, istemci tarafı, her zaman şifreli, vb.)</ul>| Evet |  |
-| Aktarım sırasında şifreleme:<ul><li>Express route şifreleme</li><li>VNet şifreleme</li><li>VNet-VNet şifreleme</ul>| Evet | HTTPS/TLS. |
-| Şifreleme anahtarı işleme (CMK, BYOK, vb.)| Yok | Azure Resource Manager denetim verilerinin hiçbir müşteri içeriği depolar. |
-| Sütun düzeyinde şifrelemeyi (Azure Data Services)| Evet | |
+| Bekleyen şifreleme (sunucu tarafı şifreleme, müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifreleme ve diğer şifreleme özellikleri)| Evet |  |
+| Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNet şifreleme ve VNet-VNet şifreleme gibi)| Evet | HTTPS/TLS. |
+| Şifreleme anahtarı işleme (CMK, BYOK vb.)| Yok | Azure Resource Manager hiçbir müşteri içeriği depolar, yalnızca denetim verileri. |
+| Sütun düzeyinde şifreleme (Azure veri Hizmetleri)| Evet | |
 | Şifrelenmiş API çağrıları| Evet | |
 
 ## <a name="network-segmentation"></a>Ağ kesimleme
@@ -37,32 +37,32 @@ Bu makale, Azure Resource Manager'a yerleşik güvenlik özniteliklerini içerme
 |---|---|--|
 | Hizmet uç noktası desteği| Hayır | |
 | VNet ekleme desteği| Evet | |
-| Ağ yalıtımı ve saldırısından desteği| Hayır |  |
-| Zorlamalı tünel oluşturma desteği| Hayır |  |
+| Ağ yalıtımı ve güvenlik duvarı desteği| Hayır |  |
+| Zorlamalı tünel desteği| Hayır |  |
 
 ## <a name="detection"></a>Algılama
 
 | Güvenlik özniteliği | Evet/Hayır | Notlar|
 |---|---|--|
-| Azure izleme desteği (Log analytics, Application ınsights, vb.)| Hayır | |
+| Azure izleme desteği (Log Analytics, App Insights vb.)| Hayır | |
 
 ## <a name="identity-and-access-management"></a>Kimlik ve erişim yönetimi
 
 | Güvenlik özniteliği | Evet/Hayır | Notlar|
 |---|---|--|
-| Kimlik Doğrulaması| Evet | [Azure Active Directory](/azure/active-directory) göre.|
-| Yetkilendirme| Evet | |
+| Authentication| Evet | [Azure Active Directory](/azure/active-directory) tabanlı.|
+| Authorization| Evet | |
 
 
 ## <a name="audit-trail"></a>Denetim izi
 
 | Güvenlik özniteliği | Evet/Hayır | Notlar|
 |---|---|--|
-| Denetim ve yönetim düzlemi günlüğe kaydetme ve Denetim| Evet | Tüm yazma işlemlerini (PUT, POST, DELETE), kaynaklarınız üzerinde gerçekleştirilen sunmaya etkinlik günlükleri; bkz: [kaynaklara uygulanan eylemleri denetlemek için etkinlik günlüklerini görüntüleme](resource-group-audit.md). |
-| Veri düzlemi günlük kaydı ve Denetim| Yok | |
+| Denetim ve yönetim düzlemi günlüğü ve denetimi| Evet | Etkinlik günlükleri, kaynaklarınız üzerinde gerçekleştirilen tüm yazma işlemlerini (PUT, POST, SILME) kullanıma sunar; bkz. [kaynaklardaki eylemleri denetlemek için etkinlik günlüklerini görüntüleme](resource-group-audit.md). |
+| Veri düzlemi günlüğü ve denetimi| Yok | |
 
 ## <a name="configuration-management"></a>Yapılandırma yönetimi
 
 | Güvenlik özniteliği | Evet/Hayır | Notlar|
 |---|---|--|
-| Yapılandırma yönetimi desteği (sürüm yapılandırması, vs.)| Evet |  |
+| Yapılandırma yönetimi desteği (yapılandırmanın sürümü oluşturma, vb.)| Evet |  |

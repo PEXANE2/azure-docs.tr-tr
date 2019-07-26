@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: dd535f96c60a3f9259a108f3e8aff643eed1870d
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: e2b1e02a622dfe4ae488e372e44c8440f20d7034
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414719"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68501164"
 ---
 # <a name="speech-synthesis-markup-language-ssml"></a>Konuşma Sentezi Biçimlendirme Dili (SSML)
 
@@ -285,7 +285,7 @@ Bürünsel öznitelik değerleri geniş bir aralığa göre değişebildiğinden
 
 | Öznitelik | Açıklama | Gerekli / isteğe bağlı |
 |-----------|-------------|---------------------|
-| perde | Metnin taban çizgisi aralığını gösterir. Bu aralığı şöyle ifade edebilirsiniz:<ul><li>Sayı olarak ifade edilen ve ardından "Hz" (Hertz) gelen mutlak bir değer. Örneğin, 600Hz.</li><li>"+" Veya "-" işaretinden sonra gelen ve ardından "Hz" veya "St" gelen bir sayı olarak ifade edilen, sıklığı değiştirecek bir miktar belirten göreli bir değer. Örneğin: + 80Hz veya-2ST. "St", değişim biriminin standart Diatonic ölçeğinde bir ton (yarım bir adım) yarısı olan semitone olduğunu gösterir.</li><li>Sabit değer:<ul><li>x-düşük</li><li>düşük</li><li>orta</li><li>Geniş</li><li>x-yüksek</li><li>default</li></ul></li></ul>. | İsteğe Bağlı |
+| perde | Metnin taban çizgisi aralığını gösterir. Bu aralığı şöyle ifade edebilirsiniz:<ul><li>Sayı olarak ifade edilen ve ardından "Hz" (Hertz) gelen mutlak bir değer. Örneğin, 600Hz.</li><li>"+" Veya "-" işaretinden sonra gelen ve ardından "Hz" veya "St" gelen bir sayı olarak ifade edilen, sıklığı değiştirecek bir miktar belirten göreli bir değer. Örneğin: + 80Hz veya-2ST. "St", değişim biriminin standart Diatonic ölçeğinde bir ton (yarım bir adım) yarısı olan semitone olduğunu gösterir.</li><li>Sabit değer:<ul><li>x-düşük</li><li>düşük</li><li>orta</li><li>geniş</li><li>x-yüksek</li><li>default</li></ul></li></ul>. | İsteğe Bağlı |
 | kapalı | Sinir sesleriniz için kontur desteklenmez. Dağılım, konuşma çıkışında belirtilen zaman konumlarında bir hedef dizisi olarak konuşma içeriği için değişen değişiklik değişikliklerini temsil eder. Her hedef, parametre çiftleri kümesi tarafından tanımlanır. Örneğin: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>Her bir parametre kümesindeki ilk değer, metnin süresinin yüzdesi olarak sıklık değişikliğinin konumunu belirtir. İkinci değer, bir göreli değer veya sıklık için bir numaralandırma değeri kullanarak, sıklığı yükseltmek veya azaltmak için miktarı belirtir (bkz `pitch`.). | İsteğe Bağlı |
 | aralığı  | Metin için sıklık aralığını temsil eden bir değer. ' I betimleyen `range` `pitch`mutlak değerleri, göreli değerleri veya numaralandırma değerlerini kullanarak ifade edebilirsiniz. | İsteğe Bağlı |
 | derecelendir  | Metnin konuşma oranını gösterir. Şöyle ifade `rate` edebilirsiniz:<ul><li>Varsayılan değer çarpanı olarak davranan sayı olarak ifade edilen göreli bir değer. Örneğin, *1* değeri, fiyata hiçbir değişikliğe neden olmaz. *5* değeri, oranın bir haline neden olur. *3* değeri, ücretle sonuçlanmasına neden olur.</li><li>Sabit değer:<ul><li>x-yavaş</li><li>dığını</li><li>orta</li><li>hızlı</li><li>x-Fast</li><li>default</li></ul></li></ul> | İsteğe Bağlı |
@@ -351,6 +351,78 @@ Sıklık değişiklikleri, standart seslere veya tümce düzeyinde uygulanabilir
         <prosody contour="(80%,+20%) (90%,+30%)" >
             Good morning.
         </prosody>
+    </voice>
+</speak>
+```
+
+## <a name="add-recorded-audio"></a>Kayıtlı ses ekleme
+
+`audio`, bir SSML belgesine MP3 sesi eklemenize olanak sağlayan isteğe bağlı bir öğedir. Ses öğesinin gövdesi, ses dosyasının kullanılamadığı veya yürütülemeyebilir olmadığı durumlarda konuşulan düz metin veya SSML biçimlendirmesi içerebilir. `audio` Ayrıca, öğesi metin ve şu öğeleri içerebilir: `phoneme` `p` `audio`, `break`, `s`,,, `prosody`, `say-as`ve. `sub`
+
+SSML belgesine dahil edilen tüm seslerin bu gereksinimleri karşılaması gerekir:
+
+* MP3, Internet erişimli bir HTTPS uç noktasında barındırılmalıdır. HTTPS gereklidir ve MP3 dosyasını barındıran etki alanı geçerli ve güvenilen bir SSL sertifikası sunmalıdır.
+* MP3 geçerli bir MP3 dosyası (MPEG v2) olmalıdır.
+* Bit hızının 48 kbps olması gerekir.
+* Örnek hız 16000 Hz olmalıdır.
+* Tek bir yanıttaki tüm metin ve ses dosyaları için Birleşik Toplam süre 90 (90) saniyeyi aşamaz.
+* MP3, müşteriye özgü veya diğer gizli bilgileri içermemelidir.
+
+**Söz dizimi**
+
+```xml
+<audio src="string"/></audio>
+```
+
+**Öznitelikler**
+
+| Öznitelik | Açıklama | Gerekli / isteğe bağlı |
+|-----------|-------------|---------------------|
+| YN | Ses dosyasının konumunu/URL 'sini belirtir. | SSML belgenizde ses öğesi kullanılıyorsa gereklidir. |
+
+**Örnek**
+
+```xml
+<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <p>
+        <audio src="https://contoso.com/opinionprompt.wav"/>
+        Thanks for offering your opinion. Please begin speaking after the beep.
+        <audio src="https://contoso.com/beep.wav">
+        Could not play the beep, please voice your opinion now. </audio>
+    </p>
+</speak>
+```
+
+## <a name="add-background-audio"></a>Arka plan sesi Ekle
+
+`mstts:backgroundaudio` Öğesi SSML belgelerinize arka plan sesi eklemenize (veya metinden konuşmaya sahip bir ses dosyası karıştırabilmeniz) olanak tanır. İle `mstts:backgroundaudio` , metin okuma başlangıcında durarak bir ses dosyasını arka planda döngüye alabilir ve metin okuma sonunda soluklaştırın.
+
+Belirtilen arka plan sesi metinden konuşmaya veya soluklaştırmadan kısaysa, döngü gerçekleştirilir. Metinden konuşmaya daha uzunsa, bu, silinme bittiğinde durur.
+
+SSML belgesi başına yalnızca bir arka plan ses dosyasına izin verilir. Ancak, SSML belgenize Ek ses `audio` eklemek için `voice` öğesi içindeki etiketleri birbirine bağlayabilirsiniz.
+
+**Söz dizimi**
+
+```XML
+<mstts:backgroundaudio src="string" volume="string" fadein="string" fadeout="string"/>
+```
+
+**Öznitelikler**
+
+| Öznitelik | Açıklama | Gerekli / isteğe bağlı |
+|-----------|-------------|---------------------|
+| YN | Arka plan ses dosyasının konumunu/URL 'sini belirtir. | SSML belgenizde arka plan sesi kullanılıyorsa gereklidir. |
+| birim | Arka plan ses dosyasının hacmini belirtir. **Kabul edilen değerler** `0` : `100` dahil. Varsayılan değer `1` şeklindedir. | İsteğe Bağlı |
+| FADEIN | Arka plan sesinin silinme süresini belirtir. **Kabul edilen değerler** `0` : `10000` dahil.  | İsteğe Bağlı |
+| fadeout | Arka plan sesinin silinme süresini belirtir. **Kabul edilen değerler** `0` : `10000` dahil.  | İsteğe Bağlı |
+
+**Örnek**
+
+```xml
+<speak version="1.0" xml:lang="en-US" xmlns:mstts="http://www.w3.org/2001/mstts">
+    <mstts:backgroundaudio src="https://contoso.com/sample.wav" volume="0.7" fadein="3000" fadeout="4000"/>
+    <voice name="Microsoft Server Speech Text to Speech Voice (en-US, Jessa24kRUS)">
+        The text provided in this document will be spoken over the background audio.
     </voice>
 </speak>
 ```

@@ -1,92 +1,95 @@
 ---
-title: Azure veri paylaşımı önizlemesi nedir
-description: Azure veri paylaşımı Önizlemesi'ne genel bakış
+title: Azure veri paylaşımının önizlemesi nedir?
+description: Azure veri paylaşımının önizlemesine genel bakış
 author: joannapea
 ms.service: data-share
 ms.topic: overview
 ms.date: 07/10/2019
 ms.author: joanpo
-ms.openlocfilehash: 7d4e51ec9564bfb123cf73d9fe89d040f42fe650
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 11f32b1f1349ef0f9826f95832648e6949cc2f8c
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807552"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68421393"
 ---
 # <a name="what-is-azure-data-share-preview"></a>Azure Veri Paylaşımı Önizleme nedir?
 
-Günümüzün dünyasında, müşterileri ve iş ortakları ile basit ve güvenli bir şekilde paylaşmak için birçok kuruluş gereken anahtar stratejik varlıklar olarak verileri görüntülenir. Müşteriler bu Bugün, FTP aracılığıyla e-posta, dizileri API'leri dahil yapmak birçok yolu vardır. Kuruluşlar, kimin, tüm verilerini sahip oldukları paylaştığınız izleme kolayca kaybedebilir. Ayakta kendi API altyapı kurmak veya FTP aracılığıyla veri paylaşımı genellikle sağlamak ve yönetmek pahalı olur. Büyük ölçekte paylaşımı bu yöntemleri kullanmayla ilişkili yönetim yükünü yoktur. 
+Bugünün dünyasında, veriler birçok kuruluşun müşterileri ve iş ortaklarıyla tek ve güvenli bir şekilde paylaşması gereken önemli bir stratejik varlık olarak görüntülenir. Bu şekilde, müşterilerin bu şekilde, FTP, e-posta, API 'Ler ve birkaç kez ad vermek üzere çok çeşitli yolları vardır. Kuruluşlar, verilerini paylaştıkları kişileri kolayca kaybedebilir. Verileri FTP aracılığıyla veya kendi API altyapısını kullanarak paylaşmak, sağlama ve yönetme konusunda genellikle pahalıdır. Büyük ölçekte bu paylaşım yöntemlerini kullanmayla ilişkili yönetim ek yükü vardır. 
 
-Birçok kuruluşun paylaşılan sahip verileri sorumlu olması gerekir. Sorumluluk yanı sıra pek çok kuruluş denetlemek, yönetmek ve tüm basit bir şekilde paylaşımı verilerini izlemek ister misiniz? Burada bir üstel yükselmeye devam etmek için veri bekleniyordu, bugün dünyasında, kuruluşların büyük veri paylaşımı için basit bir yol gerekir. Müşteriler, zamanında içgörülere sahip olun mümkün olmasını sağlamak için en güncel verileri isteğe bağlı.
+Birçok kuruluşun paylaşıldıkları veriler için sorumlu olması gerekir. Birçok kuruluş, sorumluluğuna ek olarak, tüm veri paylaımlarını basit bir şekilde denetleyebilmek, yönetebilmek ve izlemek istiyor. Bugünün dünyasında, verilerin üstel bir hızda büyümeye devam etmesi beklendiğinde, kuruluşların büyük verileri paylaşmanın basit bir yolu olması gerekir. Müşteriler zamanında Öngörüler elde edebilmeleri için en güncel verileri talep ettebilirler.
 
-Azure veri paylaşma Önizleme basit ve güvenli bir şekilde veri müşteriler ve iş ortakları ile paylaşmak, kuruluşların sağlar. Yalnızca birkaç tıklama ile yeni bir veri paylaşımı hesabı sağlayın, veri kümeleri ekleme ve müşteriler ve iş ortakları, veri paylaşımı için davet edin. Veri sağlayıcıları her zaman paylaşılan sahip veri denetimi sizdedir. Azure veri paylaşımını yönetmek ve ne zaman ve kim tarafından hangi verilerin paylaşıldı izlemek basit hale getirir. 
+Azure veri paylaşma önizlemesi, kuruluşların birden çok müşteriyle ve iş ortaklarıyla basit ve güvenli bir şekilde veri paylaşmasını sağlar. Yalnızca birkaç tıklamayla yeni bir veri paylaşma hesabı temin edebilir, veri kümeleri ekleyebilir ve müşterilerinizi ve iş ortaklarınızı veri paylaşımınıza davet edebilirsiniz. Veri sağlayıcıları her zaman paylaşıldıkları verilerin denetimidir. Azure veri paylaşımında, ne zaman ve kim tarafından paylaşılan verilerin yönetilmesi ve izlenmesi kolay hale gelir. 
 
-Bir veri sağlayıcısı, veri paylaşımı için kullanım koşullarını belirterek, verilerin nasıl işlendiğini denetim takip edebilirsiniz. Veri tüketicisi verileri almak için önce bu koşulları kabul etmeniz gerekir. Veri sağlayıcıları, veri tüketicilerinin güncelleştirmeleri aldıkları sıklığını belirleyebilirsiniz. Yeni güncelleştirmeler erişimi veri sağlayıcısı tarafından herhangi bir zamanda iptal edilebilir. 
+Veri sağlayıcısı, veri paylaşımıyla ilgili kullanım koşulları belirtilerek verilerinin nasıl ele alındığını kontrol ediyor olabilir. Veri tüketicisinin verileri alabilmesi için bu koşulları kabul etmesi gerekir. Veri sağlayıcıları, veri tüketicilerinin güncelleştirme alma sıklığını belirtebilir. Yeni güncelleştirmelere erişim, veri sağlayıcısı tarafından herhangi bir zamanda iptal edilebilir. 
 
-Azure veri paylaşımına verileri analiz ve yapay ZEKA senaryoları zenginleştirmek için üçüncü tarafların birleştirmek kolay hale getirerek içgörüler geliştirmek yardımcı olur. Kolayca hazırlamak, işlemek ve Azure veri paylaşımı kullanılarak paylaşılan verileri çözümlemek için güç ot Azure analiz araçlarını kullanın. 
+Azure veri paylaşımında, üçüncü tarafların verileri zenginleştirerek analiz ve AI senaryolarına kadar zengin bir şekilde birleştirerek Öngörüler geliştirmeye yardımcı olur. Azure veri paylaşım kullanarak paylaşılan verileri hazırlamak, işlemek ve analiz etmek için Power ot Azure Analytics araçlarını kolayca kullanın. 
 
-## <a name="scenarios-for-azure-data-share"></a>Azure veri paylaşımı için senaryolar
+Veri sağlayıcısı ve veri tüketicisi, verileri paylaşmak ve almak için bir Azure aboneliğine sahip olmalıdır. Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-Azure veri paylaşımı farklı endüstriler bir süre içinde kullanılabilir. Örneğin, bir perakende satış veri son noktası ile bunların tedarikçileri paylaşmak isteyebilirsiniz. Azure veri paylaşımı kullanarak bir satıcıya, tüm bunların tedarikçileri için satış veri noktası içeren bir veri paylaşımı ayarlama ve satış günlük veya saatlik olarak paylaşın. 
+## <a name="scenarios-for-azure-data-share"></a>Azure veri paylaşımıyla ilgili senaryolar
 
-Azure veri paylaşımı, belirli bir sektör için bir veri marketi kurmak için de kullanılabilir. Örneğin, bir kamu veya düzenli olarak üçüncü taraflarla nüfus artışı hakkında anonim verileri paylaşan bir araştırma kuruluşu. 
+Azure veri paylaşma çeşitli farklı sektörlerde kullanılabilir. Örneğin, bir perakende satış verilerinin son noktalarını tedarikçilerle paylaşmak isteyebilir. Bir satıcı, Azure veri paylaşımının kullanıldığı tüm tedarikçilerle ilgili satış verileri noktası içeren bir veri paylaşımının yanı sıra bir saatlik ya da günlük olarak satış paylaşabilir. 
 
-Azure veri paylaşımı için başka bir kullanım örneği veri consortium oluşturabilirsiniz. Örneğin, bir dizi farklı araştırma kuruluşları, tek bir güvenilen gövde ile veri paylaşabilir. Veriler analiz, toplu veya Azure analiz araçlarını kullanarak işlenir ve ardından ile ilgili tarafların paylaşılan. 
+Azure veri paylaşma, belirli bir sektör için veri marketi oluşturmak için de kullanılabilir. Örneğin, üçüncü taraflarla popülasyon büyümesi hakkında anonim verileri düzenli olarak paylaşan bir devlet veya araştırma kurumu. 
+
+Azure veri paylaşımında başka bir kullanım örneği de veri Konsorsiyumu oluşturur. Örneğin, bir dizi farklı araştırma kurumları, verileri tek bir güvenilen gövdele paylaşabilir. Veriler, Azure Analytics araçları kullanılarak çözümlenir, toplanır veya işlenir ve ardından ilgilenen taraflarla paylaşılır. 
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
-Azure veri paylaşımı, verilerin veri sağlayıcısının Azure aboneliğinden taşır ve veri tüketici'nin Azure aboneliğinde gölünüzdeki bir anlık görüntü tabanlı paylaşım yaklaşımı kullanılmaktadır. Bir veri sağlayıcısı olarak veri paylaşımı sağlama ve veri paylaşımına alıcılara davet edin. Veri tüketicileri, e-posta yoluyla veri paylaşımı için bir davet alırsınız. Veri tüketicisi daveti kabul ettikten sonra tam bir anlık görüntü tetikleyebilirsiniz paylaşılan verilerin bunları paylaştığınız. Bu verileri veri tüketicileri depolama dikkate alınır. Veri tüketicileri, böylece her zaman en son sürümünü veri olduğu kendileriyle Paylaşılan verilere normal, artımlı güncelleştirmeleri alabilirsiniz. 
+Azure veri paylaşımı, verilerin veri sağlayıcının Azure aboneliğinden ve veri tüketicisinin Azure aboneliğindeki yere taşındığı bir anlık görüntü tabanlı paylaşım yaklaşımı kullanır. Veri sağlayıcısı olarak, bir veri paylaşma sağlar ve alıcıları veri paylaşımında davet edersiniz. Veri tüketicileri, e-posta aracılığıyla veri paylaşımınıza bir davet alır. Bir veri tüketicisi daveti kabul ettiğinde, paylaştığınız verilerin tam anlık görüntüsünü tetikleyebilirler. Bu veriler veri tüketicileri depolama hesabına alınır. Veri tüketicileri, her zaman verilerin en son sürümüne sahip olmaları için kendileriyle paylaşılan veriler için düzenli, artımlı güncelleştirmeler alabilir. 
 
-Veri sağlayıcıları verilerine sunabilir kendileriyle paylaşılan bir anlık görüntü zamanlamalarını veri tüketicileri artımlı güncelleştirmeleri. Anlık görüntü zamanlamaları bir saatlik veya günlük olarak sunulmaktadır. Veri tüketicisi kabul eder ve kendi veri paylaşımını yapılandırır, bir anlık görüntü zamanlama için abone olabilirsiniz. Bu, burada paylaşılan veriler düzenli olarak güncelleştirilir ve en güncel verileri veri tüketici gereken senaryolarda yararlıdır. 
+Veri sağlayıcıları, veri tüketicilerini bir anlık görüntü zamanlaması aracılığıyla bunlarla paylaşılan verilere yönelik Artımlı güncelleştirmeleri sunabilir. Anlık görüntü zamanlamaları saatlik veya günlük olarak sunulur. Bir veri tüketicisi veri payını kabul ettiğinde ve yapılandırdığında, bir anlık görüntü çizelgesine abone olabilirler. Bu, paylaşılan verilerin düzenli aralıklarla güncelleştirildiği senaryolarda faydalıdır ve veri tüketicisi en güncel verilere ihtiyaç duyuyor. 
 
-![veri akışı paylaşma](media/data-share-flow.png)
+![veri paylaşma akışı](media/data-share-flow.png)
 
-Veri paylaşımına veri tüketici kabul ettiğinde, bunlar PKI'nizin bir depolama hesabına veri alma olanağına sahip olursunuz. Örneğin, veri sağlayıcısı, verileri Azure Blob depolamayı kullanarak paylaşırsa, bu verileri Azure Data Lake Store veri tüketici alabilir. 
+Bir veri tüketicisi bir veri paylaşımının kabul ettiğinde, verileri seçtikleri bir depolama hesabında alabilecektir. Örneğin, veri sağlayıcısı verileri Azure Blob depolama kullanarak paylaşıyorsa veri tüketicisi bu verileri Azure Data Lake Store alabilir. 
 
 ## <a name="key-capabilities"></a>Temel işlevler
 
-Azure veri paylaşımına veri sağlayıcıların aşağıdakileri yapmasını sağlar:
+Azure veri paylaşma, veri sağlayıcılarının şunları yapmasını sağlar:
 
-* Müşteriler ve iş ortakları, kuruluşunuzun dışındaki Azure Data Lake Store ve Azure depolama veri paylaşın
+* Azure depolama ve Azure Data Lake Store verileri, kuruluşunuzun dışındaki müşteriler ve iş ortaklarıyla paylaşma
 
-* Kimin verilerinizle paylaştığı izler
+* Verilerinizi paylaştığınız kişileri takip edin
 
-* Veri tüketicilerinin verilerinize güncelleştirmeleri ne sıklıkla alıyorsanız
+* Veri Tüketicileriniz verilerinize güncelleştirme alma sıklığı
 
-* Müşterilerinizin en son sürümünü verilerinizi gerektiği şekilde çekme izin vermek veya bunları otomatik olarak artımlı değişiklikler için tanımladığınız bir aralıkta almaya izin ver
+* Müşterilerinizin verilerinizin en son sürümünü gerektiği gibi çekmesini veya sizin tarafınızdan tanımlanan bir aralıkta verilerinize otomatik olarak artımlı değişiklikler almasına izin vermeyi sağlar
 
-Azure veri paylaşımı, veri tüketicilerinin sağlar: 
+Azure veri paylaşma, veri tüketicilerinin şunları yapmasını sağlar: 
 
-* Paylaşılan veri türünü açıklamasını görüntüleyin
+* Paylaşılmakta olan veri türünün açıklamasını görüntüle
 
-* Veriler için kullanım koşullarını görüntüle
+* Verilerin kullanım koşullarını görüntüleme
 
-* Kabul edin veya bir Azure veri paylaşımı davet Reddet
+* Azure Veri Paylaşma davetini kabul etme veya reddetme
 
-* Bir kuruluş, sizinle paylaştığı bir veri paylaşımı tam veya artımlı anlık görüntüsünü tetikleyin
+* Bir kuruluşun sizinle paylaştığı bir veri paylaşımının tam veya artımlı anlık görüntüsünü tetikleyin
 
-* Artımlı anlık görüntü kopyalama aracılığıyla veriler en son kopyasını almak için bir veri paylaşımı için abone olun
+* Artımlı anlık görüntü kopyası aracılığıyla verilerin en son kopyasını almak için bir veri paylaşımında abone olun
 
-* Bir Azure Blob Depolama veya Azure Data Lake Gen2 hesaba paylaşılan veri kabul edin
+* Sizinle paylaşılan verileri bir Azure Blob depolama alanına veya Azure Data Lake Gen2 hesabına kabul etme
 
-Yukarıda listelenen tüm anahtar özellikleri, Azure veya REST API'leri aracılığıyla desteklenir. Azure REST API'leri aracılığıyla veri paylaşımını kullanma hakkında daha fazla ayrıntı için başvuru belgelerimize bakın. 
+Yukarıda listelenen tüm temel yetenekler Azure veya REST API 'Leri aracılığıyla desteklenir. REST API 'Leri aracılığıyla Azure veri paylaşımının kullanımı hakkında daha fazla bilgi için başvuru belgelerimize göz atın. 
 
 ## <a name="security"></a>Güvenlik
 
-Azure veri paylaşımı, bekleyen ve Aktarımdaki verileri korumak için Azure'un sunduğu temel güvenlik yararlanır. Veriler bekleme durumundayken şifrelenir temel alınan depolama mekanizması tarafından desteklenen durumlarda. Veriler de Aktarım sırasında şifrelenir. Bir veri paylaşımı hakkında meta veriler de beklerken ve aktarım sırasında şifrelenir. 
+Azure veri paylaşımında, Azure 'un bekleyen ve aktarım sırasında verileri korumak için sunduğu temel güvenlik yararlanır. Veriler, temeldeki depolama mekanizması tarafından desteklenerek Rest 'de şifrelenir. Veriler de aktarım sırasında şifrelenir. Veri paylaşımıyla ilgili meta veriler de REST ve aktarım sırasında şifrelenir. 
 
-Erişim denetimleri yetkisi olan kişiler erişilebilir emin olmak için Azure veri paylaşımı kaynak düzeyinde ayarlanabilir. 
+Erişim denetimleri, yetkilendirilmiş olanlar tarafından erişilebildiğinden emin olmak için Azure veri paylaşımında kaynak düzeyinde ayarlanabilir. 
 
-Azure veri paylaşımı, Azure Active Directory'de otomatik kimlik yönetimi için (daha önce Msı'ler da bilinir) Azure kaynakları için yönetilen kimlikleri kullanır. Azure kaynakları için yönetilen kimlikleri, veri paylaşımı için kullanılmakta olan depolama hesaplarına erişim için kullanılabilir. Hiçbir exchange arasında bir veri sağlayıcısı ve bir veri tüketici kimlik bilgilerinin yoktur. Daha fazla bilgi için [sayfası Azure kaynakları için yönetilen kimlikleri](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities). 
+Azure veri paylaşımında, Azure Active Directory ' de otomatik kimlik yönetimi için Azure kaynakları (önceki adı Mssıs) için Yönetilen kimlikler kullanılır. Azure kaynakları için Yönetilen kimlikler, veri paylaşımı için kullanılmakta olan depolama hesaplarına erişim için yararlanılabilir. Veri sağlayıcısı ve veri tüketicisi arasında kimlik bilgileri değişimi yoktur. Daha fazla bilgi için [Azure kaynakları Için Yönetilen kimlikler sayfasına](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)bakın. 
+
 
 ## <a name="supported-regions"></a>Desteklenen bölgeler
 
-Azure veri paylaşımı kullanılabilir hale getirdiğiniz Azure bölgeleri listesi için bkz [bölgelere göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/) sayfası ve Azure veri paylaşımı arayın. 
+Azure veri paylaşımının kullanılabilmesini sağlayan Azure bölgelerinin bir listesi için lütfen [bölgeye göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/) sayfasına bakın ve Azure veri paylaşımında arama yapın. 
 
-Azure veri paylaşımı, tüm verileri depolamaz. Veriler, paylaşılan temel alınan depolama hesaplarında depolanır. Örneğin, bir veri üreticisinin Batı ABD'de bulunan bir Azure Data Lake Store hesabındaki verileri içermiyorsa, verilerin depolandığı olmasıdır. Batı Avrupa'da bulunan bir Azure depolama hesabı ile verileri paylaşıyor, veriler Batı Avrupa'da bulunan Azure depolama hesabına doğrudan aktarılır. 
+Azure veri paylaşımında herhangi bir veri depolamaz. Veriler paylaşılmakta olan temeldeki depolama hesaplarında depolanır. Örneğin, bir veri üreticisi verilerini Batı ABD bulunan Azure Data Lake Store bir hesapta (verilerin depolandığı yer) depolar. Batı Avrupa ' de bulunan bir Azure depolama hesabıyla veri paylaşıyorsanız, veriler doğrudan Batı Avrupa bulunan Azure depolama hesabına aktarılır. 
 
-Azure veri paylaşımı service hizmetini kullanarak kendi Bölgenizde kullanılabilir olması yok. Örneğin, burada Azure veri paylaşımı henüz kullanılabilir olmayan bir bölgede yer alan bir Azure depolama hesabında depolanan verileriniz varsa, yine de verilerinizi paylaşmak için hizmetinden yararlanabilirsiniz. 
+Azure veri paylaşımının hizmeti 'nin hizmetten yararlanmak için bölgenizde kullanılabilir olması gerekmez. Örneğin, Azure veri paylaşımının henüz kullanılamadığı bir bölgede bulunan bir Azure depolama hesabında depolanan verileriniz varsa, verilerinizi paylaşmak için hizmetten yararlanmaya devam edebilirsiniz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Verileri paylaşmaya başlayın öğrenmek için devam [verilerinizi paylaşmak](share-your-data.md) öğretici.
+Verileri paylaşmaya nasıl başlayacağınızı öğrenmek için [verilerinizi paylaşma](share-your-data.md) öğreticiye geçin.

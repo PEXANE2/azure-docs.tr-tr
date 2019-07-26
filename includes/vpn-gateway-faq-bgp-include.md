@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/12/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 7c1f3fc7861f5e1b895423d502218b9b07302c1c
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 23386139364a72b0275936cdc458c8cd2a5771c9
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67659929"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68386995"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>BGP tüm Azure VPN Gateway SKU'larında destekleniyor mu?
 Hayır, BGP Azure **VpnGw1**, **VpnGw2**, **VpnGw3**, **Standard** ve **HighPerformance** VPN ağ geçitlerinde desteklenir. **Temel** SKU DESTEKLENMEZ.
@@ -30,8 +30,8 @@ Hayır, Azure VPN Gateway’ler şu anda 16 bit ASN’leri destekler.
 ### <a name="are-there-asns-reserved-by-azure"></a>Azure tarafından ayrılan bir ASN var mı?
 Evet, aşağıdaki ASN’ler iç ve dış eşlemeler için Azure tarafından ayrılmıştır:
 
-* Ortak Asn'ler: 8074, 8075, 12076
-* Özel Asn'ler: 65515, 65517, 65518, 65519, 65520
+* Genel ASNs 'ler: 8074, 8075, 12076
+* Özel ASNs: 65515, 65517, 65518, 65519, 65520
 
 Bu ASN’leri Azure VPN ağ geçitlerine bağlanırken şirket içi VPN cihazlarınız için belirtemezsiniz.
 
@@ -50,8 +50,8 @@ Azure VPN Gateway şirket içi BGP cihazlarınıza şu rotaları tanıtacaktır:
 * Azure VPN Gateway’e bağlı her Yerel Ağ Geçidi için adres önekleri
 * Azure VPN Gateway’e bağlı diğer BGP eşdeğer oturumlarından öğrenilen rotalar; **varsayılan rota ve herhangi bir VNet önekiyle çakışan rotalar dışında**.
 
-### <a name="how-many-prefixes-can-i-advertise-to-azure-vpn-gateway"></a>Azure VPN gateway'e kaç önekleri miyim tanıtabilir miyim?
-En fazla 4000 önekleri destekliyoruz. Ön ek sayısı bu sınırı aşarsa BGP oturumu düşürülür.
+### <a name="how-many-prefixes-can-i-advertise-to-azure-vpn-gateway"></a>Azure VPN Gateway 'e kaç önek tanıtırım?
+En fazla 4000 ön eki destekliyoruz. Ön ek sayısı bu sınırı aşarsa BGP oturumu düşürülür.
 
 ### <a name="can-i-advertise-default-route-00000-to-azure-vpn-gateways"></a>Varsayılan yolu (0.0.0.0/0) Azure VPN ağ geçitlerine tanıtabilir miyim?
 Evet.
@@ -71,7 +71,7 @@ Evet, BGP’yi hem şirket içi bağlantılar için, hem de VNet - VNet bağlant
 Evet, aynı Azure VPN Gateway için BGP ve BGP olmayan bağlantıları karıştırabilirsiniz.
 
 ### <a name="does-azure-vpn-gateway-support-bgp-transit-routing"></a>Azure VPN Gateway BGP transit rotasını destekliyor mu?
-Evet, BGP transit rotası desteklense de, özel durum olarak Azure VPN Gateway’lerinin varsayılan rotaları diğer BGP eşdeğerlerine **TANITMAMALARI** geçerlidir. Transit rotayı birden fazla Azure VPN Gateway’de etkinleştirmek için tüm ara VNet - VNet bağlantılarında BGP’yi etkinleştirmelisiniz. Daha fazla bilgi için [hakkında BGP](../articles/vpn-gateway/vpn-gateway-bgp-overview.md).
+Evet, BGP transit rotası desteklense de, özel durum olarak Azure VPN Gateway’lerinin varsayılan rotaları diğer BGP eşdeğerlerine **TANITMAMALARI** geçerlidir. Transit rotayı birden fazla Azure VPN Gateway’de etkinleştirmek için tüm ara VNet - VNet bağlantılarında BGP’yi etkinleştirmelisiniz. Daha fazla bilgi için bkz. [BGP hakkında](../articles/vpn-gateway/vpn-gateway-bgp-overview.md).
 
 ### <a name="can-i-have-more-than-one-tunnel-between-azure-vpn-gateway-and-my-on-premises-network"></a>Azure VPN Gateway ve şirket içi ağım arasında birden fazla tünelim olabilir mi?
 Evet, bir Azure VPN Gateway ve şirket içi ağınız arasında birden fazla S2S tüneli kurabilirsiniz. Bu tünellerin tümünün Azure VPN Gateway’lerinize yönelik tünellerin toplam sayısına karşılık hesaplanacağını ve iki tünelde de BGP özelliğini etkinleştirmeniz gerektiğini lütfen unutmayın.
@@ -85,10 +85,10 @@ Evet, ancak sanal ağ geçitlerinden en az birinin etkin-etkin yapılandırmada 
 Evet. 
 
 ### <a name="what-address-does-azure-vpn-gateway-use-for-bgp-peer-ip"></a>Azure VPN Gateway BGP Eşdeğer IP’si için hangi adresi kullanıyor?
-Azure VPN ağ geçidi etkin bekleme VPN ağ geçitleri için ayrılan GatewaySubnet aralığından ya da iki IP adresi etkin-etkin VPN ağ geçitleri için tek bir IP adresi ayırır. PowerShell (Get-AzVirtualNetworkGateway, "bgpPeeringAddress" özelliği için bir görünüm) kullanarak ya da Azure portalında (altında ağ geçidi yapılandırma sayfasındaki "BGP ASN'sini Yapılandır" özelliği) ayrılan gerçek BGP IP adresi alabilirsiniz.
+Azure VPN ağ geçidi, etkin-etkin VPN ağ geçitleri için GatewaySubnet aralığından tek bir IP adresi ayırır veya etkin-etkin VPN ağ geçitleri için iki IP adresi ayırır. PowerShell (Get-AzVirtualNetworkGateway) kullanarak ayrılan gerçek BGP IP adreslerini alabilir, "bgpPeeringAddress" özelliğini arayabilir) veya Azure portal (ağ geçidi yapılandırma sayfasında "BGP ASN 'yi Yapılandır" özelliğinin altında).
 
 ### <a name="what-are-the-requirements-for-the-bgp-peer-ip-addresses-on-my-vpn-device"></a>VPN cihazımdaki BGP Eşdeğer IP adreslerinin gereksinimleri nelerdir?
-Şirket içi BGP eşdeğer adresinizin, VPN cihazınızın genel IP adresiyle aynı olmaması **GEREKİR**. BGP Eşdeğer IP’si için VPN cihazında farklı bir IP adresi kullanın. Bu, cihaz üzerindeki geri döngü arabirimine atanmış bir adres olabilir, ancak bir APIPA (169.254.x.x) adresi olamayacağını da hatırlatmak isteriz. Bu adresi, konumu temsil eden ilgili Yerel Ağ Geçidi’nde belirtin.
+Şirket içi BGP **eş adresiniz,** VPN CIHAZıNıZıN genel IP adresi veya VPN Gateway VNET adres alanı ile aynı olmamalıdır. BGP Eşdeğer IP’si için VPN cihazında farklı bir IP adresi kullanın. Bu, cihaz üzerindeki geri döngü arabirimine atanmış bir adres olabilir, ancak bir APIPA (169.254.x.x) adresi olamayacağını da hatırlatmak isteriz. Bu adresi, konumu temsil eden ilgili Yerel Ağ Geçidi’nde belirtin.
 
 ### <a name="what-should-i-specify-as-my-address-prefixes-for-the-local-network-gateway-when-i-use-bgp"></a>BGP kullandığımda Yerel Ağ Geçidi için adres önekim olarak ne belirtmeliyim?
 Azure Yerel Ağ Geçidi, şirket içi ağ için başlangıç adresi öneklerini belirtir. BGP ile, BGP Eşdeğer IP adresinizin konak önekini (/32 önek) bu şirket içi ağın adres alanı olarak ayırmalısınız. BGP Eşdeğer IP’niz 10.52.255.254 olursa, bu şirket içi ağda temsil edilen Yerel Ağ Geçidine ait "10.52.255.254/32" olarak belirtmelisiniz. Azure VPN Gateway’in S2S VPN tüneli aracılığıyla BGP oturumunu başlatmasını sağlamak içindir.

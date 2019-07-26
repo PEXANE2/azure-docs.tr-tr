@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus geçişi için ortak güvenlik öznitelikleri
-description: Azure Service Bus geçişi değerlendirmek için genel güvenlik öznitelikleri listesi
+title: Azure Service Bus geçişi için güvenlik öznitelikleri
+description: Azure Service Bus geçişini değerlendirmek için güvenlik özniteliklerinin denetim listesi
 services: service-bus-relay
 ms.service: service-bus-relay
 documentationcenter: ''
@@ -9,60 +9,60 @@ manager: barbkess
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d8ce3c995e8e0f20ed6d694f481cc5fc9fde4fa7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2047f64914d4a286e6de38b7b2c8524d98eba562
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66000160"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68443877"
 ---
 # <a name="security-attributes-for-azure-service-bus-relay"></a>Azure Service Bus geçişi için güvenlik öznitelikleri
 
-Bu makale, Azure Service Bus geçişi içinde yerleşik güvenlik özniteliklerini içermektedir.
+Bu makale Azure Service Bus geçişine yerleşik olarak bulunan güvenlik özniteliklerini belgeler.
 
 [!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
 
-## <a name="preventative"></a>Preventative
+## <a name="preventative"></a>Önleyici
 
 | Güvenlik özniteliği | Evet/Hayır | Notlar |
 |---|---|--|
-| Bekleme sırasında şifreleme:<ul><li>Sunucu tarafı şifrelemesi</li><li>Müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifrelemesi</li><li>Diğer şifreleme özellikleri (örneğin, istemci tarafı, her zaman şifreli, vb.)</ul>|  Yok | Geçiş, bir web yuvası ve veri devam etmez. |
-| Aktarım sırasında şifreleme:<ul><li>Express route şifreleme</li><li>VNet şifreleme</li><li>VNet-VNet şifreleme</ul>| Evet | Hizmet, TLS gerektirir. |
-| Şifreleme anahtarı işleme (CMK, BYOK, vb.)| Hayır | Yalnızca Microsoft TLS sertifikaları kullanır.  |
-| Sütun düzeyinde şifrelemeyi (Azure Data Services)| Yok | |
-| Şifrelenmiş API çağrıları| Evet | HTTPS. |
+| Bekleyen şifreleme (sunucu tarafı şifreleme, müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifreleme ve diğer şifreleme özellikleri)|  Yok | Geçiş bir Web soketi ve verileri kalıcı yapmaz. |
+| Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNet şifreleme ve VNet-VNet şifreleme gibi)| Evet | Hizmet için TLS gerekiyor. |
+| Şifreleme anahtarı işleme (CMK, BYOK vb.)| Hayır | Yalnızca Microsoft TLS sertifikalarını kullanır.  |
+| Sütun düzeyinde şifreleme (Azure veri Hizmetleri)| Yok | |
+| Şifrelenmiş API çağrıları| Evet | 'DİR. |
 
 ## <a name="network-segmentation"></a>Ağ kesimleme
 
 | Güvenlik özniteliği | Evet/Hayır | Notlar |
 |---|---|--|
 | Hizmet uç noktası desteği| Hayır |  |
-| Ağ yalıtımı ve saldırısından desteği| Hayır |  |
-| Zorlamalı tünel oluşturma desteği| Yok | Geçiş TLS tünelidir  |
+| Ağ yalıtımı ve güvenlik duvarı desteği| Hayır |  |
+| Zorlamalı tünel desteği| Yok | Geçiş, TLS tünelidir  |
 
 ## <a name="detection"></a>Algılama
 
 | Güvenlik özniteliği | Evet/Hayır | Notlar|
 |---|---|--|
-| Azure izleme desteği (Log analytics, Application ınsights, vb.)| Evet | |
+| Azure izleme desteği (Log Analytics, App Insights vb.)| Evet | |
 
 ## <a name="identity-and-access-management"></a>Kimlik ve erişim yönetimi
 
 | Güvenlik özniteliği | Evet/Hayır | Notlar|
 |---|---|--|
-| Kimlik Doğrulaması| Evet | Via SAS. |
-| Yetkilendirme|  Evet | Via SAS. |
+| Authentication| Evet | SAS aracılığıyla. |
+| Authorization|  Evet | SAS aracılığıyla. |
 
 
 ## <a name="audit-trail"></a>Denetim izi
 
 | Güvenlik özniteliği | Evet/Hayır | Notlar|
 |---|---|--|
-| Denetim ve yönetim düzlemi günlüğe kaydetme ve Denetim| Evet | Aracılığıyla [Azure Resource Manager](../azure-resource-manager/index.yml). |
-| Veri düzlemi günlük kaydı ve Denetim| Evet | Bağlantı başarı / hata ve hataları ve günlüğe kaydedilir.  |
+| Denetim ve yönetim düzlemi günlüğü ve denetimi| Evet | [Azure Resource Manager](../azure-resource-manager/index.yml)üzerinden. |
+| Veri düzlemi günlüğü ve denetimi| Evet | Bağlantı başarısı/hatası ve hataları ve günlüğe kaydedildi.  |
 
 ## <a name="configuration-management"></a>Yapılandırma yönetimi
 
 | Güvenlik özniteliği | Evet/Hayır | Notlar|
 |---|---|--|
-| Yapılandırma yönetimi desteği (sürüm yapılandırması, vs.)| Evet | Aracılığıyla [Azure Resource Manager](../azure-resource-manager/index.yml).|
+| Yapılandırma yönetimi desteği (yapılandırmanın sürümü oluşturma, vb.)| Evet | [Azure Resource Manager](../azure-resource-manager/index.yml)üzerinden.|

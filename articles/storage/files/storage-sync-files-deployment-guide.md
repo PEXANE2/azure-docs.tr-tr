@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9c05f3cf9a4c6fc916f1c9578de7aee6d0190ee5
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
-ms.translationtype: HT
+ms.openlocfilehash: 6a41830dcb7f681713db7a7802ab430581dc844f
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68327136"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68371158"
 ---
 # <a name="deploy-azure-file-sync"></a>Azure Dosya Eşitleme’yi dağıtma
 Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server 'ı Azure dosya paylaşımınızın hızlı önbelleğine dönüştürür. SMB, NFS ve FTPS dahil olmak üzere verilerinize yerel olarak erişmek için Windows Server 'da bulunan herhangi bir protokolü kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.
@@ -357,18 +357,19 @@ if ($cloudTieringDesired) {
 
 ---
 
-## <a name="configure-firewall-and-vnet-settings"></a>Güvenlik Duvarı ve sanal ağ ayarlarını yapılandırma
+## <a name="configure-firewall-and-virtual-network-settings"></a>Güvenlik duvarını ve sanal ağ ayarlarını yapılandırma
 
 ### <a name="portal"></a>Portal
 Azure dosya eşitlemesini güvenlik duvarı ve sanal ağ ayarlarıyla çalışacak şekilde yapılandırmak istiyorsanız aşağıdakileri yapın:
 
 1. Azure portal, güvenli hale getirmek istediğiniz depolama hesabına gidin.
-1. Lefthand menüsündeki **güvenlik duvarları ve sanal ağlar** düğmesini seçin.
+1. Sol menüdeki **güvenlik duvarları ve sanal ağlar** düğmesini seçin.
 1. **Erişime Izin ver**altında **Seçili ağlar** ' ı seçin.
 1. Sunucularınızın IP veya sanal ağınızın uygun bölümde listelendiğinden emin olun.
 1. **Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine Izin ver** ' in işaretli olduğundan emin olun.
 1. Ayarlarınızı kaydetmek için **Kaydet** ' i seçin.
 
+![Güvenlik Duvarı ve sanal ağ ayarlarını Azure dosya eşitleme ile çalışacak şekilde yapılandırma](media/storage-sync-files-deployment-guide/firewall-and-vnet.png)
 
 ## <a name="onboarding-with-azure-file-sync"></a>Azure Dosya Eşitleme ile ekleme
 Tam dosya uygunluk ve erişim denetimi listesi (ACL) korunarak, ilk için Azure Dosya Eşitleme sıfır kapalı kalma süresiyle birlikte eklemek için önerilen adımlar şunlardır:

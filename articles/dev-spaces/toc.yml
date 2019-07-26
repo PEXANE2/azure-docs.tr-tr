@@ -63,6 +63,8 @@
           href: how-vs-code-works-with-dev-spaces.md
     - name: Nasıl yapılır
       items:
+        - name: Azure Dev Spaces’i yükleme
+          href: how-to/install-dev-spaces.md
         - name: Azure Cloud Shell kullanarak Kubernetes kümesi oluşturma
           href: how-to/create-cluster-cloud-shell.md
         - name: Azure Dev Spaces'i paylaşma
@@ -81,5 +83,7 @@
           href: ../jenkins/tutorial-jenkins-dev-spaces.md
         - name: Azure Dev Spaces için iş sürekliliği ve olağanüstü durum kurtarma
           href: how-to/dev-spaces-business-continuity.md
+        - name: Windows kapsayıcıları ile etkileşim kurma
+          href: how-to/run-dev-spaces-windows-containers.md
     - name: Sorun giderme
       href: troubleshooting.md

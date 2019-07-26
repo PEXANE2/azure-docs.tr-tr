@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: b23f9532aa1ca6f7bae914ff8cb9d7566a0fec86
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: dc7c86ff1df48f9ce96769098f7aab76d33c8822
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67841473"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68481594"
 ---
 Event Hubs her bir tüketicinin ileti akışında yalnızca belirli bir alt küme ya da bölümü okuduğu bölünmüş bir tüketici modeli aracılığıyla ileti akışı sağlar. Bu model, olay işleme için yatay ölçek sağlar ve kuyruklar ile konularda kullanılamayan diğer akış odaklı özellikleri sunar.
 
@@ -27,12 +27,14 @@ Olay hub'ları, tüm bölümler, olay hub'ı uygulayan bir yapılandırılmış 
 
 Bölüm sayısı, oluşturma sırasında belirtilir ve 2 ile 32 arasında olmalıdır. Bölüm sayısı değiştirilemez; bu nedenle, bölüm sayısını ayarlarken uzun vadeli ölçeği dikkate almanız gerekir. Bölümler, tüketen uygulamalarda gerekli aşağı akış paralelliğiyle ilişkili bir veri düzenleme mekanizmasıdır. Bir olay hub'ındaki bölüm sayısı, sahip olmayı beklediğiniz eşzamanlı okuyucu sayısıyla doğrudan ilgilidir. Event Hubs ekibine başvurarak bölüm sayısını 32’nin üzerine çıkarabilirsiniz.
 
-Bölümler tanımlanabilir ve doğrudan gönderilebilir olsa da doğrudan bir bölüme göndermek önerilmez. Bunun yerine, sunulan daha yüksek düzeyli yapıları kullanabilirsiniz [olay yayımcıları](../articles/event-hubs/event-hubs-features.md#event-publishers) bölümü. 
+Oluşturma sırasında 32 olan mümkün olan en yüksek değer olarak ayarlamak isteyebilirsiniz. Göndericilerin, geri kalan 31 bölümden oluşan 32 ' dan yalnızca tek bir bölüme gönderilmesi için yapılandırmadığınız müddetçe, birden fazla bölüme sahip olmanın sırayı korumadan birden çok bölüme gönderilmesine neden olacağını unutmayın. Önceki durumda, tüm 32 bölümlerdeki olayları okumanız gerekir. İkinci durumda, olay Işlemcisi ana bilgisayarında yapmanız gerekek yapılandırmadan farklı bir ek maliyet yoktur.
+
+Bölümler tanımlanabilir ve doğrudan gönderilebilir olsa da doğrudan bir bölüme göndermek önerilmez. Bunun yerine, [olay yayımcıları](../articles/event-hubs/event-hubs-features.md#event-publishers) bölümünde tanıtılan daha yüksek düzey yapıları kullanabilirsiniz. 
 
 Bölümler, olayı, kullanıcı tanımlı bir özellik paketini ve bölümdeki uzaklığı ve akış dizisindeki sayısı gibi meta verileri gövdesi içerir olay verileri dizisi ile doldurulur.
 
-En iyi ölçeği elde etmek için 1:1 işleme birimleri ve bölümlerini dengelemeniz önerilir. Bir garanti edilen giriş ve çıkış en fazla bir işleme biriminden oluşan tek bir bölüm vardır. Bir bölüme daha yüksek performans sağlamak olabilir, ancak performans garanti edilmez. Bir olay hub'ındaki bölüm sayısı en az üretilen iş birimlerinin sayısı için önerilir nedeni budur.
+En iyi ölçeğe ulaşmak için 1:1 üretilen iş birimi ve bölüm dengelemenize önerilir. Tek bir bölümde, bir üretilen iş birimi için garantili giriş ve çıkış vardır. Bir bölüm üzerinde daha yüksek aktarım hızı elde edebiliyor olsa da, performans garanti edilmez. Bu nedenle, bir olay hub 'ındaki bölüm sayısının üretilen iş birimi sayısına eşit veya daha büyük olması önemle önerilir.
 
-Toplam aktarım hızı gerektiren üzerinde planlama göz önünde bulundurulduğunda, ihtiyaç duyduğunuz üretilen iş birimlerinin sayısı ve en düşük bölüm sayısı, ancak kaç bölümler gerekir biliyor musunuz? Gelecekteki bir üretilen iş hacmi gereksinimlerinizi yanı sıra ulaşmak istediğiniz aşağı akış paralelliğiyle üzerinde göre bölüm seçin. Sahip olduğunuz bir olay hub'ı bölüm sayısı için ücret alınmaz.
+İhtiyaç duyduğunuz toplam üretilen iş miktarı verildiğinde, ihtiyacınız olan üretilen iş birimi sayısını ve minimum bölüm sayısını, kaç bölüm olması gerektiğini öğrenirsiniz. Elde etmek istediğiniz aşağı akış paralelliğini ve gelecekteki verimlilik ihtiyaçlarınızı temel alarak bölüm sayısı ' nı seçin. Bir olay hub 'ında bulunan bölüm sayısı için ücret alınmaz.
 
 Bölümleri ve kullanılabilirlikleri ile güvenilirlikleri arasındaki dengeleme hakkında daha fazla bilgi için, bkz: [Event Hubs programlama kılavuzu](../articles/event-hubs/event-hubs-programming-guide.md#partition-key) ve [Event Hubs’ta kullanılabilirlik ve tutarlılık](../articles/event-hubs/event-hubs-availability-and-consistency.md) makalesi.

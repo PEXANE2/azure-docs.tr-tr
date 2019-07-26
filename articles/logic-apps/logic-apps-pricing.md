@@ -9,12 +9,12 @@ ms.author: klam
 ms.reviewer: estfan, LADocs
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.openlocfilehash: 40a783f702db580618d49fa34a1dae67e3e067da
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: e1285f6bc3bd081eae03cf1e5a124a86cac7a2ae
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68327060"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335980"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Azure Logic Apps için fiyatlandırma modeli
 
@@ -49,17 +49,17 @@ Bir [ *tümleştirme hizmeti ortamı* (ISE)](../logic-apps/connect-virtual-netwo
 
 * İstediğiniz kadar bağlantı olan [Kurumsal bağlayıcılar](../connectors/apis-list.md#enterprise-connectors)
 
-* [Ise SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)'nuzu temel alan ek maliyet olmadan [tümleştirme hesabı](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) kullanımı:
+* [Ise SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)'nuzu temel alarak, ek ücret ödemeden [tümleştirme hesabı](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) kullanımı:
 
   * **PREMIUM SKU**: Tek bir [Standart katman](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) tümleştirme hesabı
 
   * **Geliştirici SKU 'su**: Tek bir [ücretsiz katman](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) tümleştirme hesabı
 
-  Her ıSE SKU 'SU 5 Toplam tümleştirme hesabıyla sınırlıdır. Ek bir ücret için, ıSE SKU 'nuzu temel alan daha fazla tümleştirme hesabınız vardır:
+  Her ıSE SKU 'SU 5 Toplam tümleştirme hesabıyla sınırlıdır. Ek bir maliyet için, ıSE SKU 'nuzu temel alan daha fazla tümleştirme hesabına sahip olabilirsiniz:
 
-  * **PREMIUM SKU**: Dört adede kadar standart hesap, ücretsiz veya temel hesap yok
+  * **PREMIUM SKU**: En fazla dört standart hesap. Ücretsiz veya temel hesap yok.
 
-  * **Geliştirici SKU 'su**: 4 ' e kadar standart hesap veya toplam 5 Standart hesap, temel hesap yok
+  * **Geliştirici SKU 'su**: 4 ' e kadar standart hesap veya toplam 5 Standart hesap. Temel hesap yok.
 
 Tümleştirme hesabı limitleri hakkında daha fazla bilgi için bkz. [Logic Apps sınırları ve yapılandırması](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits). Bu konunun ilerleyen kısımlarında [tümleştirme hesabı katmanları ve fiyatlandırma modelleri](#integration-accounts) hakkında daha fazla bilgi edinebilirsiniz. 
 

@@ -87,11 +87,11 @@
               href: billing-reservation-discount-app-service-isolated-stamp.md
             - name: Azure yazılım planları
               href: billing-understand-suse-reservation-charges.md
-        - name: Yazılım maliyetleri dahil değil
+        - name: Windows ve SQL maliyetleri dahil değil
           href: billing-reserved-instance-windows-software-costs.md
-        - name: Bireysel abonelikler için kullanım
+        - name: Bireysel aboneliklere yönelik kullanım verileri
           href: billing-understand-reserved-instance-usage.md
-        - name: Kurumsal için kullanım
+        - name: Kurumsal müşterilere yönelik kullanım verileri
           href: billing-understand-reserved-instance-usage-ea.md
         - name: Rezervasyon değişiklikleri ve para iadeleri
           href: billing-azure-reservations-self-service-exchange-and-refund.md

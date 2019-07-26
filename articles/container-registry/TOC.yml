@@ -101,6 +101,8 @@
           href: container-registry-tasks-scheduled.md
         - name: Çok adımlı görevler
           href: container-registry-tasks-multi-step.md
+        - name: Buildpacks ile görüntü oluşturma (önizleme)
+          href: container-registry-tasks-pack-build.md
         - name: Yönetilen kimlik ile kullanma
           href: container-registry-tasks-authentication-managed-identity.md
     - name: Kayıt defterleri ve diğer Azure hizmetleri

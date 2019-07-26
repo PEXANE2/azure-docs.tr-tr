@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: a0da8b932d2efe88391991286ede2858440e4465
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 1cc2849ffe55fff737993140a1d0f18182820eff
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68232636"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68498579"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service 'te (AKS) Azure CNı ağını yapılandırma
 
@@ -106,7 +106,7 @@ Bir hizmet adres aralığını kümeniz ile aynı sanal ağ içinde belirtmek Te
 
 **Kubernetes DNS HIZMETI IP adresi**:  Kümenin DNS hizmeti için IP adresi. Bu adres, *Kubernetes hizmeti adres aralığı*içinde olmalıdır. Adres aralığınızı. 1 gibi ilk IP adresini kullanmayın. Alt ağ aralığınızı ilk adres *Kubernetes. default. svc. Cluster. Local* adresi için kullanılır.
 
-**Docker köprü adresi**: Docker köprüsüne atanacak IP adresi ve ağ maskesi. Docker Köprüsü, AKS düğümlerinin temeldeki yönetim platformuyla iletişim kurmasını sağlar. Bu IP adresi, kümenizin sanal ağ IP adresi aralığı içinde olmamalı ve ağınızda kullanılmakta olan diğer adres aralıklarıyla çakışmamalıdır.
+**Docker köprü adresi**: Docker köprü ağ adresi, tüm Docker yüklemelerinde bulunan varsayılan *docker0* Köprüsü ağ adresini temsil eder. *Docker0* Bridge, aks kümeleri veya Pod tarafından kullanılmadığından, aks kümesi içindeki *Docker derlemesi* gibi senaryoları desteklemeye devam etmek için bu adresi ayarlamanız gerekir. Docker köprü ağ adresi için bir CıDR seçmeniz gerekir, aksi takdirde Docker diğer Cıdrs ile çakışabilecek bir alt ağ seçer. Kümenin hizmet CıDR ve pod CıDR dahil olmak üzere ağlarınızdaki CIO 'nun geri kalanı ile çakışmayan bir adres alanı seçmelisiniz.
 
 ## <a name="configure-networking---cli"></a>Ağ iletişimini yapılandırma-CLı
 
@@ -186,7 +186,7 @@ Aşağıdaki makalelerde AKS 'de ağ oluşturma hakkında daha fazla bilgi edini
 
 [Azure Kubernetes hizmet altyapısı (AKS motoru)][aks-engine] , Azure 'Da Kubernetes kümelerini dağıtmak için kullanabileceğiniz Azure Resource Manager şablonlar üreten bir açık kaynaklı projem projesidir.
 
-Aks altyapısıyla oluşturulan Kubernetes kümeleri hem [Kubernetes kullanan][kubenet] and [Azure CNI][cni-networking] eklentilerini destekler. Bu nedenle, her iki ağ senaryosu da AKS altyapısı tarafından desteklenir.
+Aks motoru ile oluşturulan Kubernetes kümeleri hem [Kubernetes kullanan][kubenet] hem de [Azure CNI][cni-networking] eklentilerini destekler. Bu nedenle, her iki ağ senaryosu da AKS altyapısı tarafından desteklenir.
 
 <!-- IMAGES -->
 [advanced-networking-diagram-01]: ./media/networking-overview/advanced-networking-diagram-01.png

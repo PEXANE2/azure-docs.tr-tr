@@ -1,6 +1,6 @@
 ---
-title: Azure IOT hub'ı (Python) ile bulut-cihaz iletilerini | Microsoft Docs
-description: Python için Azure IOT SDK'larını kullanarak bir Azure IOT hub'ından bir cihaza bulut-cihaz iletilerini göndermek nasıl. Bir sanal cihaz uygulamasının bulut-cihaz iletilerini ve bulut-cihaz iletilerini göndermek için bir arka uç uygulaması değiştirme değiştirin.
+title: Azure IoT Hub ile buluttan cihaza iletiler (Python) | Microsoft Docs
+description: Python için Azure IoT SDK 'larını kullanarak Azure IoT Hub 'ından bir cihaza buluttan cihaza ileti gönderme. Bir sanal cihaz uygulamasını buluttan cihaza iletiler alacak şekilde değiştirirsiniz ve bir arka uç uygulamasını, buluttan cihaza iletileri gönderecek şekilde değiştirirsiniz.
 author: kgremban
 manager: philmea
 ms.service: iot-hub
@@ -9,62 +9,62 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: kgremban
-ms.openlocfilehash: 00f639ec57f3d29dff1993bbc664477b8648ce9a
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: da5481af1086c14ce0961d0ac6b8ef55cfc73707
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612557"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68403888"
 ---
-# <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>IOT hub'ı (Python) ile bulut buluttan cihaza iletileri gönderme
+# <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>IoT Hub (Python) ile buluttan cihaza iletileri gönderme
 
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
 ## <a name="introduction"></a>Giriş
 
-Azure IOT hub'ı yardımcı olan tam olarak yönetilen bir hizmet, milyonlarca cihaz arasında güvenilir ve güvenli çift yönlü iletişimi etkinleştirmek ve bir çözüm arka ucu ' dir. [Telemetri gönderir bir CİHAZDAN bir IOT hub'ına](quickstart-send-telemetry-python.md) hızlı başlangıç, IOT hub oluşturma, bir cihaz kimliği da sağlamak ve CİHAZDAN buluta iletiler gönderen bir sanal cihaz uygulamasının kodu nasıl gösterir.
+Azure IoT Hub, milyonlarca cihaz ile bir çözüm arka ucu arasında güvenilir ve güvenli çift yönlü iletişimin sağlanmasına yardımcı olan, tam olarak yönetilen bir hizmettir. [Bir cihazdan IoT Hub 'ına yönelik Telemetriyi, bir](quickstart-send-telemetry-python.md) IoT Hub 'ı oluşturmayı, bu kodda bir cihaz kimliği sağlamayı ve cihazdan buluta iletiler gönderen bir sanal cihaz uygulamasını nasıl kodlayacağınızı gösterir.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Bu öğreticide yapılar [telemetri gönderir bir CİHAZDAN bir IOT hub'ına](quickstart-send-telemetry-python.md). Bunun nasıl yapılacağı anlatılmaktadır için:
+Bu öğretici, [bir cihazdan IoT Hub 'ına telemetri gönderme hakkında bir](quickstart-send-telemetry-python.md)yapı oluşturur. Şunu gösterir:
 
-* Çözüm arka ucunuz, tek bir cihaz IOT hub'ı aracılığıyla bulut-cihaz iletilerini gönderin.
+* Çözüm arka ucundan, IoT Hub aracılığıyla buluttan cihaza iletileri tek bir cihaza gönderin.
 
-* Bir cihazda bulut-cihaz iletilerini alır.
+* Bir cihazda buluttan cihaza iletiler alın.
 
-* Teslim alındı bildirimi, çözüm arka ucu istek (*geri bildirim*) için bir cihaz IOT Hub'ından gönderilen iletileri.
+* Çözüm arka uçta, IoT Hub bir cihaza gönderilen iletiler için teslim bildirimi (*geri bildirim*) isteyin.
 
-Bulut-cihaz iletileri hakkında daha fazla bilgi bulabilirsiniz [IOT Hub Geliştirici kılavuzunun](iot-hub-devguide-messaging.md).
+[IoT Hub geliştirici kılavuzunda](iot-hub-devguide-messaging.md)buluttan cihaza iletiler hakkında daha fazla bilgi edinebilirsiniz.
 
-Bu öğreticinin sonunda iki Python konsol uygulaması çalıştırın:
+Bu öğreticinin sonunda, iki Python konsol uygulaması çalıştırırsınız:
 
-* **SimulatedDevice.py**, oluşturulan uygulamayı değiştirilmiş bir sürümünü [telemetri gönderir bir CİHAZDAN bir IOT hub'ına](quickstart-send-telemetry-python.md), IOT hub'ınıza bağlanır ve bulut-cihaz iletilerini alır.
+* **SimulatedDevice.py**, bir cihazdan Telemetriyi, IoT Hub 'ınıza bağlanan ve buluttan cihaza iletileri alan bir [IoT Hub 'ına bir cihaz aracılığıyla göndererek](quickstart-send-telemetry-python.md)oluşturulan bir uygulama sürümüdür.
 
-* **SendCloudToDeviceMessage.py**, IOT hub'ı aracılığıyla sanal cihaz uygulaması için bir bulut buluttan cihaza ileti gönderir ve sonra onun teslim alındı bildirimi alır.
+* **SendCloudToDeviceMessage.py**, sanal cihaz uygulamasına IoT Hub aracılığıyla buluttan cihaza ileti gönderir ve ardından teslim onayını alır.
 
 > [!NOTE]
-> IOT Hub SDK desteği birçok cihaz platformlarını ve Azure IOT cihaz SDK'ları aracılığıyla diller (C, Java ve Javascript dahil) sahiptir. Bu öğreticinin koda ve genellikle Azure IOT hub'a Cihazınızı bağlamak hakkında adım adım yönergeler için bkz. [Azure IOT Geliştirici Merkezi](https://www.azure.com/develop/iot).
+> IoT Hub, Azure IoT cihaz SDK 'Ları aracılığıyla birçok cihaz platformu ve dili (C, Java ve JavaScript dahil) için SDK desteğine sahiptir. Cihazınızı Bu öğreticinin koduna bağlama ve genellikle Azure IoT Hub 'e yönelik adım adım yönergeler için bkz. [Azure IoT Geliştirici Merkezi](https://www.azure.com/develop/iot).
 >
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
-* [Python 2.x veya 3.x](https://www.python.org/downloads/). Kurulumunuzun gereksinimine uygun olarak 32 bit veya 64 bit yüklemeyi kullanmaya dikkat edin. Yükleme sırasında istendiğinde, platforma özgü ortam değişkeninize Python’u eklediğinizden emin olun. Python 2.x kullanıyorsanız, [Python paket yönetim sistemi *pip*'yi yüklemeniz veya yükseltmeniz](https://pip.pypa.io/en/stable/installing/) gerekebilir.
+* [Python 2. x veya 3. x](https://www.python.org/downloads/). Kurulumunuzun gereksinimine uygun olarak 32 bit veya 64 bit yüklemeyi kullanmaya dikkat edin. Yükleme sırasında istendiğinde, platforma özgü ortam değişkeninize Python’u eklediğinizden emin olun. Python 2.x kullanıyorsanız, [Python paket yönetim sistemi *pip*'yi yüklemeniz veya yükseltmeniz](https://pip.pypa.io/en/stable/installing/) gerekebilir.
 
 * Windows işletim sistemi kullanıyorsanız, Python’dan yerel DLL’lerin kullanımına olanak tanımak için [Visual C++ yeniden dağıtılabilir paketi](https://www.microsoft.com/download/confirmation.aspx?id=48145).
 
-* Etkin bir Azure hesabı. (Hesabınız yoksa, oluşturabileceğiniz bir [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) yalnızca birkaç dakika içinde.)
+* Etkin bir Azure hesabı. (Hesabınız yoksa yalnızca birkaç dakika içinde [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturabilirsiniz.)
 
 > [!NOTE]
-> `azure-iothub-service-client` ve `azure-iothub-device-client` için *PIP* paketleri şu anda yalnızca Windows İşletim Sistemi için mevcuttur. Linux/Mac OS için lütfen Linux ve MacOS ile ilgili bölümlere bakın [Python için geliştirme ortamınızı hazırlama](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) gönderin.
+> `azure-iothub-service-client` ve `azure-iothub-device-client` için *PIP* paketleri şu anda yalnızca Windows İşletim Sistemi için mevcuttur. Linux/Mac OS için lütfen [geliştirme ortamınızı Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) gönderisini hazırlama bölümündeki linux ve Mac OS özgü bölümlere bakın.
 >
 
 ## <a name="receive-messages-in-the-simulated-device-app"></a>Sanal cihaz uygulamasında ileti alma
 
-Bu bölümde, bir cihazın benzetimini gerçekleştirme ve IOT hub'ından bulut-cihaz iletilerini almak için bir Python konsol uygulaması oluşturun.
+Bu bölümde, IoT Hub 'ından cihazın benzetimini yapmak ve buluttan cihaza iletileri almak için bir Python konsol uygulaması oluşturacaksınız.
 
-1. Bir metin düzenleyicisi kullanarak oluşturduğunuz bir **SimulatedDevice.py** dosya.
+1. Bir metin düzenleyicisi kullanarak bir **SimulatedDevice.py** dosyası oluşturun.
 
-2. Aşağıdaki `import` deyimlerini ve değişkenlerini başlangıcında **SimulatedDevice.py** dosyası:
+2. **SimulatedDevice.py** dosyasının başlangıcında `import` aşağıdaki deyimleri ve değişkenleri ekleyin:
 
    ```python
     import time
@@ -79,7 +79,7 @@ Bu bölümde, bir cihazın benzetimini gerçekleştirme ve IOT hub'ından bulut-
     RECEIVE_CALLBACKS = 0
     ```
 
-3. Aşağıdaki kodu ekleyin **SimulatedDevice.py** dosya. "{DeviceConnectionString}" yer tutucu değerini, oluşturduğunuz cihaz için cihaz bağlantı dizesiyle değiştirin [telemetri gönderir bir CİHAZDAN bir IOT hub'ına](quickstart-send-telemetry-python.md) hızlı başlangıç:
+3. Aşağıdaki kodu **SimulatedDevice.py** dosyasına ekleyin. "{DeviceConnectionString}" yer tutucu değerini, [bir cihazdan IoT Hub 'ına bir cihazdan Telemetriyi gönder](quickstart-send-telemetry-python.md) hızlı başlangıç bölümünde oluşturduğunuz cihazın cihaz bağlantı dizesiyle değiştirin:
 
     ```python
     # choose AMQP or AMQP_WS as transport protocol
@@ -123,7 +123,7 @@ Bu bölümde, bir cihazın benzetimini gerçekleştirme ve IOT hub'ından bulut-
                 print ( iothub_client_error )
     ```
 
-5. İstemci başlatmak için aşağıdaki kodu ekleyin ve bulut-cihaz ileti almak için:
+5. İstemcisini başlatmak için aşağıdaki kodu ekleyin ve buluttan cihaza iletisini almaya bekleyin:
 
     ```python
     def iothub_client_init():
@@ -167,15 +167,21 @@ Bu bölümde, bir cihazın benzetimini gerçekleştirme ve IOT hub'ından bulut-
         iothub_client_sample_run()
     ```
 
-7. Kaydet ve Kapat **SimulatedDevice.py** dosya.
+7. **SimulatedDevice.py** dosyasını kaydedin ve kapatın.
 
-## <a name="send-a-cloud-to-device-message"></a>Bulut buluttan cihaza ileti gönderme
+## <a name="get-the-iot-hub-connection-string"></a>IoT Hub bağlantı dizesini al
 
-Bu bölümde, sanal cihaz uygulaması için bulut-cihaz iletilerini gönderen bir Python konsol uygulaması oluşturun. Cihazın kimliği, eklediğiniz ihtiyacınız [telemetri gönderir bir CİHAZDAN bir IOT hub'ına](quickstart-send-telemetry-python.md) hızlı başlangıç. IOT Hub bağlantı dizesine, bulabileceğiniz hub'ınız için etmeniz [Azure portalında](https://portal.azure.com).
+Bu makalede, [bir cihazdan IoT Hub 'ına telemetri gönderme](quickstart-send-telemetry-python.md)bölümünde oluşturduğunuz IoT Hub 'ı aracılığıyla buluttan cihaza iletileri göndermek için bir arka uç hizmeti oluşturursunuz. Buluttan cihaza iletiler göndermek için hizmetinize **hizmet bağlantısı** izni verilmesi gerekir. Varsayılan olarak, her IoT Hub, bu izni veren **hizmet** adlı paylaşılan bir erişim ilkesiyle oluşturulur.
 
-1. Bir metin düzenleyicisi kullanarak oluşturduğunuz bir **SendCloudToDeviceMessage.py** dosya.
+[!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
-2. Aşağıdaki `import` deyimlerini ve değişkenlerini başlangıcında **SendCloudToDeviceMessage.py** dosyası:
+## <a name="send-a-cloud-to-device-message"></a>Buluttan cihaza ileti gönderme
+
+Bu bölümde, sanal cihaz uygulamasına buluttan cihaza iletiler gönderen bir Python konsol uygulaması oluşturacaksınız. [Bir cihazdan IoT Hub 'ına bir cihazdan Telemetriyi gönder](quickstart-send-telemetry-python.md) hızlı başlangıç bölümünde eklediğiniz CIHAZıN cihaz kimliği gereklidir. [IoT Hub bağlantı dizesini al](#get-the-iot-hub-connection-string)bölümünde daha önce kopyaladığınız IoT Hub bağlantı dizesine da ihtiyacınız vardır.
+
+1. Bir metin düzenleyicisi kullanarak bir **SendCloudToDeviceMessage.py** dosyası oluşturun.
+
+2. **SendCloudToDeviceMessage.py** dosyasının başlangıcında `import` aşağıdaki deyimleri ve değişkenleri ekleyin:
 
     ```python
     import random
@@ -190,14 +196,14 @@ Bu bölümde, sanal cihaz uygulaması için bulut-cihaz iletilerini gönderen bi
     MSG_TXT = "{\"service client sent a message\": %.2f}"
     ```
 
-3. Aşağıdaki kodu ekleyin **SendCloudToDeviceMessage.py** dosya. "{IoTHubConnectionString}" yer tutucu değerini hub için oluşturduğunuz, IOT Hub bağlantı dizesiyle değiştirin [telemetri gönderir bir CİHAZDAN bir IOT hub'ına](quickstart-send-telemetry-python.md) hızlı başlangıç. Eklediğiniz cihazın cihaz kimliği "{DeviceID}" yer tutucusunu değiştirin [telemetri gönderir bir CİHAZDAN bir IOT hub'ına](quickstart-send-telemetry-python.md) hızlı başlangıç:
+3. Aşağıdaki kodu **SendCloudToDeviceMessage.py** dosyasına ekleyin. "{IoT Hub bağlantı dizesi}" ve "{Device ID}" yer tutucu değerlerini daha önce not ettiğiniz IoT Hub bağlantı dizesi ve cihaz KIMLIĞI ile değiştirin:
 
     ```python
     CONNECTION_STRING = "{IoTHubConnectionString}"
     DEVICE_ID = "{deviceId}"
     ```
 
-4. Geri bildirim iletileri konsola yazdırmak için aşağıdaki işlevi ekleyin:
+4. Konsola geri bildirim iletilerini yazdırmak için aşağıdaki işlevi ekleyin:
 
     ```python
     def open_complete_callback(context):
@@ -209,7 +215,7 @@ Bu bölümde, sanal cihaz uygulaması için bulut-cihaz iletilerini gönderen bi
         print ( 'messagingResult : {0}'.format(messaging_result) )
     ```
 
-5. Cihazınız için bir ileti gönderin ve cihaz bulut-cihaz iletiyi onayladıktan, geri bildirim iletisini işlemek için aşağıdaki kodu ekleyin:
+5. Cihazınıza bir ileti göndermek ve cihaz buluttan cihaza iletisini geldiğinde geri bildirim iletisini işlemek için aşağıdaki kodu ekleyin:
 
     ```python
     def iothub_messaging_sample_run():
@@ -261,48 +267,48 @@ Bu bölümde, sanal cihaz uygulaması için bulut-cihaz iletilerini gönderen bi
         iothub_messaging_sample_run()
     ```
 
-7. Kaydet ve Kapat **SendCloudToDeviceMessage.py** dosya.
+7. **SendCloudToDeviceMessage.py** dosyasını kaydedin ve kapatın.
 
 ## <a name="run-the-applications"></a>Uygulamaları çalıştırma
 
 Şimdi uygulamaları çalıştırmaya hazırsınız.
 
-1. Bir komut istemi açın ve yükleme **Python için Azure IOT Hub cihazı SDK**.
+1. Bir komut istemi açın ve **Python Için Azure IoT Hub cihaz SDK 'sını**yükledikten sonra.
 
     ```shell
     pip install azure-iothub-device-client
     ```
 
-2. Komut isteminde, bulut-cihaz iletileri dinlemek için aşağıdaki komutu çalıştırın:
+2. Komut isteminde, buluttan cihaza iletileri dinlemek için aşağıdaki komutu çalıştırın:
 
     ```shell
     python SimulatedDevice.py
     ```
 
-    ![Sanal cihaz uygulaması çalıştırma](./media/iot-hub-python-python-c2d/simulated-device.png)
+    ![Sanal cihaz uygulamasını çalıştırma](./media/iot-hub-python-python-c2d/simulated-device.png)
 
-3. Yeni bir komut istemi açın ve yükleme **Python için Azure IOT Hub hizmeti SDK**.
+3. Yeni bir komut istemi açın ve **Python Için Azure IoT Hub Service SDK 'sını**yükledikten sonra.
 
     ```shell
     pip install azure-iothub-service-client
     ```
 
-4. Komut isteminde, bulut buluttan cihaza ileti göndermek ve ileti hakkındaki geri bildirimleri beklemek için aşağıdaki komutu çalıştırın:
+4. Bir komut isteminde, buluttan cihaza ileti göndermek ve ileti geri bildirimi için beklemek üzere aşağıdaki komutu çalıştırın:
 
     ```shell
     python SendCloudToDeviceMessage.py
     ```
 
-    ![Bulut-cihaz komut göndermek için uygulamayı çalıştırın](./media/iot-hub-python-python-c2d/send-command.png)
+    ![Buluttan cihaza komutunu göndermek için uygulamayı çalıştırın](./media/iot-hub-python-python-c2d/send-command.png)
 
-5. Cihaz tarafından alınan ileti unutmayın.
+5. Cihaz tarafından alınan iletiyi aklınızda edin.
 
     ![İleti alındı](./media/iot-hub-python-python-c2d/message-received.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, bulut-cihaz iletilerini gönderip öğrendiniz.
+Bu öğreticide, buluttan cihaza iletileri gönderme ve alma hakkında daha fazla öğrendiniz.
 
-IOT hub'ı kullanan tam uçtan uca çözümler örneklerini görmek için bkz: [Azure IOT Uzaktan izleme çözüm Hızlandırıcısını](https://azure.microsoft.com/documentation/suites/iot-suite/).
+IoT Hub kullanan uçtan uca çözümlerin tam örneklerini görmek için bkz. [Azure IoT uzaktan izleme Çözüm Hızlandırıcısı](https://azure.microsoft.com/documentation/suites/iot-suite/).
 
-IOT Hub ile çözümleri geliştirme hakkında daha fazla bilgi için bkz. [IOT Hub Geliştirici kılavuzunun](iot-hub-devguide.md).
+IoT Hub çözümleri geliştirme hakkında daha fazla bilgi edinmek için [IoT Hub Geliştirici Kılavuzu](iot-hub-devguide.md)' na bakın.

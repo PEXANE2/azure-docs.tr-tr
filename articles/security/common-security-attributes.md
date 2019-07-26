@@ -1,6 +1,6 @@
 ---
 title: Azure hizmetleri için güvenlik öznitelikleri
-description: Azure Service Fabric değerlendirmek için ortak güvenlik özniteliklerinin denetim listesi
+description: Azure hizmetlerini değerlendirmek için güvenlik özniteliklerinin denetim listesi
 services: security
 documentationcenter: ''
 author: msmbaldwin
@@ -9,18 +9,27 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d45e28175412b574432adb59cf700568c9a7fb39
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 0010273d41769c57144fdde63e47c528f313a228
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304263"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68443358"
 ---
 # <a name="security-attributes-for-azure-services"></a>Azure hizmetleri için güvenlik öznitelikleri
 
-Bu makale, seçili Azure hizmetleri için ortak güvenlik özniteliklerini toplar. 
+Bu makale, seçili Azure hizmetleri için güvenlik özniteliklerini toplar. Güvenlik özniteliği bir Azure hizmeti 'nin kalitesi veya özelliğidir. Hizmetin güvenlik açıklarını önleme, algılama ve yanıtlama yeteneğine katkıda bulunur.
 
-[!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
+Güvenlik öznitelikleri şöyle kategorize edilir:
+* Önleyici
+* Ağ kesimleme
+* Algılama
+* Kimlik ve erişim yönetimi desteği
+* Denetim izi
+* Erişim denetimleri (kullanılıyorsa)
+* Yapılandırma yönetimi (kullanılıyorsa)
+
+Her kategoride, bir özniteliğin kullanılıp kullanılmadığını göstermek için "Evet" veya "Hayır" görüntülenir. Bazı hizmetlerde, geçerli olmayan bir öznitelik için "N/A" göstereceğiz. Ayrıca, bir öznitelik hakkında daha fazla bilgi için bir de veya bir bağlantı sağlayabiliriz.
 
 ## <a name="api-managementapi-managementapi-management-security-attributesmd"></a>[API Management](../api-management/api-management-security-attributes.md)
 
@@ -75,7 +84,7 @@ Bu makale, seçili Azure hizmetleri için ortak güvenlik özniteliklerini topla
 
 Bu bölüm, Azure API Management etkilemeyen yaygın güvenlik açıklarını belgelemektedir.
 
-| Güvenlik Açığı               | Açıklama                                                                                                                                                                                                                                                                                                               |
+| Güvenlik açığı               | Açıklama                                                                                                                                                                                                                                                                                                               |
 |-----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Bilet taşma payı (CVE-2016-9244) | Bilet taşma payı, bazı F5 ürünlerinde bulunan TLS Sessionbilet uzantısının uygulanmasında güvenlik açığıdır. Başlatılmamış bellekten 31 baytlık verilerin sızıntısını ("bleden") sağlar. Bunun nedeni, istemciden geçirilen bir oturum kimliği olan bir oturum kimliğini doldurmasından kaynaklanır ve bu da BT 32 bit uzunluğunda hale gelir. |
 
@@ -234,8 +243,8 @@ Bu bölüm, Azure API Management etkilemeyen yaygın güvenlik açıklarını be
 | Güvenlik özniteliği | Evet/Hayır | Notlar |
 |---|---|--|
 | Bekleyen şifreleme (sunucu tarafı şifreleme, müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifreleme ve diğer şifreleme özellikleri) | Evet | Tüm Cosmos DB veritabanları ve yedeklemeler varsayılan olarak şifrelenir; [Azure Cosmos DB veri şifrelemeyi](../cosmos-db/database-encryption-at-rest.md)inceleyin. Müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifreleme desteklenmez. |
-| Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNET şifreleme ve VNet-VNet şifreleme gibi)| Evet | Tüm Azure Cosmos DB verileri aktarım sırasında şifrelenir. |
-| Şifreleme anahtarı Işleme (CMK, BYOK vb.)| Hayır |  |
+| Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNet şifreleme ve VNet-VNet şifreleme gibi)| Evet | Tüm Azure Cosmos DB verileri aktarım sırasında şifrelenir. |
+| Şifreleme anahtarı işleme (CMK, BYOK vb.)| Hayır |  |
 | Sütun düzeyinde şifreleme (Azure veri Hizmetleri)| Evet | Yalnızca API Premium tablolarında. Tüm API 'Ler bu özelliği desteklemez. Bkz [. Azure Cosmos DB giriş: Tablo API'si](../cosmos-db/table-introduction.md). |
 | Şifrelenmiş API çağrıları| Evet | Azure Cosmos DB tüm bağlantıları HTTPS 'yi destekler. Azure Cosmos DB TLS 1,2 bağlantılarını da destekler, ancak bu henüz zorlanmaz. Müşteriler, son ucunda daha düşük düzey TLS 'yi devre dışı bırakır. Cosmos DB bağlandıklarından emin olabilirler.  |
 
@@ -244,9 +253,9 @@ Bu bölüm, Azure API Management etkilemeyen yaygın güvenlik açıklarını be
 | Güvenlik özniteliği | Evet/Hayır | Notlar |
 |---|---|--|
 | Hizmet uç noktası desteği| Evet |  |
-| vNET ekleme desteği| Evet | VNet hizmet uç noktası ile, bir Azure Cosmos DB hesabını yalnızca bir sanal ağın (VNet) belirli bir alt ağından erişime izin verecek şekilde yapılandırabilirsiniz. Ayrıca, VNet erişimini güvenlik duvarı kurallarıyla birleştirebilirsiniz.  Bkz. [sanal ağlardan erişim Azure Cosmos DB](../cosmos-db/vnet-service-endpoint.md). |
+| VNet ekleme desteği| Evet | VNet hizmet uç noktası ile, bir Azure Cosmos DB hesabını yalnızca bir sanal ağın (VNet) belirli bir alt ağından erişime izin verecek şekilde yapılandırabilirsiniz. Ayrıca, VNet erişimini güvenlik duvarı kurallarıyla birleştirebilirsiniz.  Bkz. [sanal ağlardan erişim Azure Cosmos DB](../cosmos-db/VNet-service-endpoint.md). |
 | Ağ yalıtımı ve güvenlik duvarı desteği| Evet | Güvenlik Duvarı desteğiyle, Azure Cosmos hesabınızı yalnızca onaylanan bir IP adresi kümesinden, IP adresi aralığına ve/veya bulut hizmetlerinden erişime izin verecek şekilde yapılandırabilirsiniz. Bkz. [Azure Cosmos DB IP güvenlik duvarını yapılandırma](../cosmos-db/how-to-configure-firewall.md).|
-| Zorlamalı tünel oluşturma desteği | Evet | , Sanal makinelerin bulunduğu VNET üzerinde istemci tarafında yapılandırılabilir.   |
+| Zorlamalı tünel desteği| Evet | , Sanal makinelerin bulunduğu VNet üzerinde istemci tarafında yapılandırılabilir.   |
 
 ### <a name="detection"></a>Algılama
 
@@ -265,7 +274,7 @@ Bu bölüm, Azure API Management etkilemeyen yaygın güvenlik açıklarını be
 
 | Güvenlik özniteliği | Evet/Hayır | Notlar|
 |---|---|--|
-| Denetim/yönetim planı günlüğü ve denetimi| Evet | Güvenlik duvarları, VNET 'ler, anahtar erişimi ve ıAM gibi hesap düzeyindeki işlemler için Azure etkinlik günlüğü. |
+| Denetim ve yönetim düzlemi günlüğü ve denetimi| Evet | Güvenlik duvarları, VNET 'ler, anahtar erişimi ve ıAM gibi hesap düzeyindeki işlemler için Azure etkinlik günlüğü. |
 | Veri düzlemi günlüğü ve denetimi | Evet | Kapsayıcı oluşturma, sağlama işleme, dizin oluşturma ilkeleri ve belgelerde CRUD işlemleri gibi kapsayıcı düzeyindeki işlemler için Tanılama izleme günlüğü. |
 
 ### <a name="configuration-management"></a>Yapılandırma yönetimi
@@ -298,7 +307,7 @@ Bu bölüm, Azure API Management etkilemeyen yaygın güvenlik açıklarını be
 | Güvenlik özniteliği | Evet/Hayır | Notlar |
 |---|---|--|
 | Hizmet uç noktası desteği| Evet |  |
-| vNET ekleme desteği| Hayır | |
+| VNet ekleme desteği| Hayır | |
 | Ağ yalıtımı ve güvenlik duvarı desteği| Evet |  |
 | Zorlamalı tünel desteği| Hayır |  |
 
@@ -347,7 +356,7 @@ Bu bölüm, Azure API Management etkilemeyen yaygın güvenlik açıklarını be
 | Güvenlik özniteliği | Evet/Hayır | Notlar |
 |---|---|--|
 | Hizmet uç noktası desteği| Yok |  |
-| vNET ekleme desteği| Yok | |
+| VNet ekleme desteği| Yok | |
 | Ağ yalıtımı ve güvenlik duvarı desteği| Evet | Her müşteri kendi yönlendirme etki alanında bulunur ve kendi VNet 'ine tünel |
 | Zorlamalı tünel desteği| Yok | Sınır Ağ Geçidi Protokolü (BGP) üzerinden. |
 
@@ -649,7 +658,7 @@ SQL veritabanı hem [tek veritabanı](../sql-database/sql-database-single-index.
 | Güvenlik özniteliği | Evet/Hayır | Notlar|
 |---|---|--|
 | Authentication| Evet | Azure Active Directory (Azure AD) |
-| Authorization| Evet | None |
+| Authorization| Evet | Yok. |
 
 ### <a name="audit-trail"></a>Denetim izi
 

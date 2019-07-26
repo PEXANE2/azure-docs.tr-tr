@@ -1,5 +1,5 @@
 ---
-title: İlke tanım yapısı ayrıntıları
+title: İlke tanımı yapısının ayrıntıları
 description: Kaynak ilke tanımı hangi etkili olması için zaman ilkelerin hiçbiri uygulanmaz ve açıklayarak, kuruluşunuzdaki kaynaklar için kuralları oluşturmak için Azure İlkesi tarafından nasıl kullanıldığını açıklar.
 author: DCtheGeek
 ms.author: dacoulte
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 03c7be9112ed22bb43e259fa72581d382a276163
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 77bf284734428e9257b46d85296796e4051ace26
+ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67718188"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494832"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure İlkesi tanım yapısı
 
@@ -66,15 +66,15 @@ Bir ilke tanımı oluşturmak için JSON kullanın. İlke tanımı yönelik öğ
 }
 ```
 
-Tüm Azure ilkesi örnekleri altındadır [Azure ilkesi örnekleri](../samples/index.md).
+Tüm Azure Ilke örnekleri [Azure ilke](../samples/index.md)örneklerimizle.
 
 [!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="mode"></a>Mod
 
-**Modu** olduğu bir Azure Resource Manager özelliği veya bir kaynak sağlayıcısı özelliği ilkenin hedeflediği bağlı olarak yapılandırılmamış.
+İlke bir Azure Resource Manager özelliğini veya bir kaynak sağlayıcısı özelliğini hedeflediğinden, **mod** yapılandırılır.
 
-### <a name="resource-manager-modes"></a>Resource Manager modları
+### <a name="resource-manager-modes"></a>Kaynak Yöneticisi modları
 
 **Modu** hangi kaynak türlerinin bir ilke değerlendirileceğini belirler. İlişkin desteklenen modları şunlardır:
 
@@ -83,14 +83,14 @@ Tüm Azure ilkesi örnekleri altındadır [Azure ilkesi örnekleri](../samples/i
 
 Ayarlamanızı öneririz **modu** için `all` çoğu durumda. Portalı kullanarak oluşturulan tüm ilke tanımlarını `all` modu. PowerShell veya Azure CLI kullanıyorsanız, belirtebilmeniz için **modu** parametresi el ile. İlke tanımı içermiyorsa bir **modu** değeri, varsayılan olarak için `all` Azure PowerShell ve çok `null` Azure clı'daki. A `null` modu kullanarak aynı olup `indexed` geriye dönük uyumluluğunu desteklemek için.
 
-`indexed` etiketleri veya konumları zorunlu ilkeleri oluştururken kullanılmalıdır. Gerekli olmasa da, etiketler ve konumları olarak uyumluluk sonuçları uyumlu olmayan gösteren gelen desteklemeyen kaynakları engeller. Özel durum **kaynak grupları**. Konum veya bir kaynak grubu etiketleri takım politikaları ayarlamalıdır **modu** için `all` ve özellikle hedef `Microsoft.Resources/subscriptions/resourceGroups` türü. Bir örnek için bkz. [kaynak grubu etiketleri zorunlu](../samples/enforce-tag-rg.md). Etiketleri destekleyen kaynaklar listesi için bkz. [etiket Azure kaynakları için destek](../../../azure-resource-manager/tag-support.md).
+`indexed` etiketleri veya konumları zorunlu ilkeleri oluştururken kullanılmalıdır. Gerekli olmasa da, etiketleri ve konumları desteklemeyen kaynakların, uyumluluk sonuçlarında uyumlu değil olarak gösterilmesini engeller. Özel durum **kaynak grupları**. Konum veya bir kaynak grubu etiketleri takım politikaları ayarlamalıdır **modu** için `all` ve özellikle hedef `Microsoft.Resources/subscriptions/resourceGroups` türü. Bir örnek için bkz. [kaynak grubu etiketleri zorunlu](../samples/enforce-tag-rg.md). Etiketleri destekleyen kaynakların listesi için bkz. [Azure kaynakları Için etiket desteği](../../../azure-resource-manager/tag-support.md).
 
 ### <a name="resource-provider-modes"></a>Kaynak sağlayıcısı modları
 
-Şu anda desteklenen tek kaynak sağlayıcısı moddur `Microsoft.ContainerService.Data` üzerinde giriş denetleyicisine kuralları yönetmek için [Azure Kubernetes hizmeti](../../../aks/intro-kubernetes.md).
+Şu anda `Microsoft.ContainerService.Data` desteklenen tek kaynak sağlayıcısı modu, [Azure Kubernetes hizmetinde](../../../aks/intro-kubernetes.md)giriş denetleyicisi kurallarının yönetilmesi içindir.
 
 > [!NOTE]
-> [Kubernetes için Azure İlkesi](rego-for-aks.md) genel Önizleme aşamasındadır ve yalnızca yerleşik ilke tanımları destekler.
+> [Kubernetes Için Azure Ilkesi](rego-for-aks.md) genel önizlemede ve yalnızca yerleşik ilke tanımlarını destekler.
 
 ## <a name="parameters"></a>Parametreler
 
@@ -98,24 +98,24 @@ Parametreleri, ilke tanımlarının sayısını azaltarak ilke yönetiminizi bas
 Parametreler, ilkeleri oluştururken aynı şekilde çalışır. İlke tanımında parametreler ekleyerek, farklı değerler kullanarak farklı senaryolar için bu ilkeyi yeniden kullanabilirsiniz.
 
 > [!NOTE]
-> Parametreler, var olan ve atanmış tanımına eklenebilir. Yeni bir parametre içermelidir **defaultValue** özelliği. Bu, ilke veya girişim mevcut atamaları dolaylı olarak geçersiz yapılmasını önler.
+> Parametreler, var olan ve atanmış bir tanıma eklenebilir. Yeni parametre **DefaultValue** özelliğini içermelidir. Bu, ilke veya girişim mevcut atamaları dolaylı olarak geçersiz yapılmasını önler.
 
 ### <a name="parameter-properties"></a>Parametre özellikleri
 
-Bir parametre ilke tanımında kullanılan aşağıdaki özelliklere sahiptir:
+Bir parametre, ilke tanımında kullanılan aşağıdaki özelliklere sahiptir:
 
-- **Ad**: Parametrenin adı. Tarafından kullanılan `parameters` ilke kuralı içinde dağıtım işlevi. Daha fazla bilgi için [bir parametre değeri kullanarak](#using-a-parameter-value).
-- `type`: Parametre olup olmadığını belirleyen bir **dize**, **dizi**, **nesne**, **Boole**, **tamsayı**, **float**, veya **datetime**.
-- `metadata`: Öncelikli olarak kullanıcı dostu bilgileri görüntülemek için Azure portal tarafından kullanılan alt tanımlar:
-  - `description`: Hangi parametre açıklaması için kullanılır. Örnekler, kabul edilebilir değerler sağlamak için kullanılabilir.
-  - `displayName`: Parametre için Portalı'nda gösterilen kolay adı.
-  - `strongType`: (İsteğe bağlı) Portal üzerinden ilke tanımlarının atamasını yaparken kullanılır. Bağlam kullanan listesini sağlar. Daha fazla bilgi için [strongType](#strongtype).
-  - `assignPermissions`: (İsteğe bağlı) Yap _true_ Azure portalında rol ataması sırasında ilke ataması oluşturmak için. Atama kapsamı dışında izin atamak istediğiniz durumlarda bu özellik yararlıdır. Bir rol ataması rol tanımında, ilke (veya rol tanımı girişim ilkelerinde tümünde başına) yoktur. Parametre değeri, geçerli bir kaynak veya kapsamında olması gerekir.
-- `defaultValue`: (İsteğe bağlı) Hiçbir değer sağlanmışsa atamadaki parametresinin değerini ayarlar.
-  Atanan var olan bir ilke tanımı güncelleştirilirken gereklidir.
-- `allowedValues`: (İsteğe bağlı) Atama sırasında parametre kabul eden bir değer dizisi sağlar.
+- **ad**: Parametresinin adı. İlke kuralı içindeki `parameters` dağıtım işlevi tarafından kullanılır. Daha fazla bilgi için bkz. [parametre değeri kullanma](#using-a-parameter-value).
+- `type`: Parametrenin **dize**, **dizi**, **nesne**, **Boole**, **tamsayı**, **float**veya **TarihSaat**olduğunu belirler.
+- `metadata`: Kullanıcı dostu bilgileri göstermek için öncelikle Azure portal tarafından kullanılan alt özellikleri tanımlar:
+  - `description`: Parametresinin hangi amaçla kullanıldığına ilişkin açıklama. , Kabul edilebilir değer örnekleri sağlamak için kullanılabilir.
+  - `displayName`: Parametre için portalda gösterilen kolay ad.
+  - `strongType`: Seçim Portal üzerinden ilke tanımı atanırken kullanılır. Bağlama duyarlı bir liste sağlar. Daha fazla bilgi için bkz. [Strongtype](#strongtype).
+  - `assignPermissions`: Seçim İlke ataması sırasında rol atamaları oluşturmak Azure portal için _true_ olarak ayarlayın. Bu özellik, izinleri atama kapsamının dışına atamak istemeniz durumunda faydalıdır. İlkede rol tanımı başına bir rol ataması vardır (veya girişim içindeki tüm ilkelerin her biri için rol tanımı). Parametre değeri geçerli bir kaynak veya kapsam olmalıdır.
+- `defaultValue`: Seçim Değer verilmezse, bir atamadaki parametresinin değerini ayarlar.
+  Atanan mevcut bir ilke tanımı güncelleştirilirken gereklidir.
+- `allowedValues`: Seçim Atama sırasında parametrenin kabul ettiği bir değer dizisi sağlar.
 
-Örneğin, kaynakların dağıtıldığı konumları sınırlamak için bir ilke tanımı tanımlayabilirsiniz. Bu ilke tanımı için bir parametre olabilir **allowedLocations**. Bu parametre her ilke tanımı atama tarafından kabul edilen değerler sınırlamak için kullanılacak. Kullanımını **strongType** Portalı aracılığıyla atanabilecek tamamlarken Gelişmiş bir deneyim sağlar:
+Örnek olarak, kaynakların dağıtılabileceği konumları sınırlandırmak için bir ilke tanımı tanımlayabilirsiniz. Bu ilke tanımı için bir parametre **Allowedlocations**olabilir. Bu parametre, kabul edilen değerleri sınırlamak için her ilke tanımının ataması tarafından kullanılır. **Strongtype** kullanımı, Portal üzerinden atama tamamlanırken gelişmiş bir deneyim sağlar:
 
 ```json
 "parameters": {
@@ -136,7 +136,7 @@ Bir parametre ilke tanımında kullanılan aşağıdaki özelliklere sahiptir:
 }
 ```
 
-### <a name="using-a-parameter-value"></a>Bir parametre değeri kullanma
+### <a name="using-a-parameter-value"></a>Parametre değeri kullanma
 
 Aşağıdaki parametrelerle ilke kuralında başvuru `parameters` dağıtım değer işlev sözdizimi:
 
@@ -147,11 +147,11 @@ Aşağıdaki parametrelerle ilke kuralında başvuru `parameters` dağıtım de�
 }
 ```
 
-Bu örnek başvuran **allowedLocations** içinde devremenin parametre [parametre özellikleri](#parameter-properties).
+Bu örnek, [parametre özelliklerinde](#parameter-properties)gösterilen **allowedlocations** parametresine başvurur.
 
 ### <a name="strongtype"></a>strongType
 
-İçinde `metadata` kullanabileceğiniz özelliği **strongType** çoklu seçim listesini Azure portalındaki seçenekleri sağlamak için. İzin verilen değerler için **strongType** şu anda içerir:
+Özelliği içinde, Azure Portal içinde çoklu seçim listesi sağlamak için **strongtype kullanabilirsiniz.** `metadata` İzin verilen değerler için **strongType** şu anda içerir:
 
 - `location`
 - `resourceTypes`
@@ -176,7 +176,7 @@ Tanım konumu c: ise
 
 ## <a name="display-name-and-description"></a>Görünen ad ve açıklama
 
-Kullandığınız **displayName** ve **açıklama** ilke tanımını ve kullanıldığında için bağlam sağlar. **displayName** en fazla uzunluğu _128_ karakter ve **açıklama** uzunluğu en fazla _512_ karakter.
+Kullandığınız **displayName** ve **açıklama** ilke tanımını ve kullanıldığında için bağlam sağlar. **DisplayName** , en fazla _128_ karakter uzunluğunda ve en fazla _512_ karakter uzunluğunda bir **Açıklama** içeriyor.
 
 ## <a name="policy-rule"></a>İlke kuralı
 
@@ -225,7 +225,7 @@ Mantıksal işleçler iç içe yerleştirebilirsiniz. Aşağıdaki örnekte gös
 
 ### <a name="conditions"></a>Koşullar
 
-Bir koşulu değerlendirir olup olmadığını bir **alan** veya **değer** erişimci belirli ölçütleri karşılayan. Desteklenen koşullar şunlardır:
+Bir koşul, bir **alanın** veya **değer** erişimcisinin belirli ölçütlere uyup uymadığını değerlendirir. Desteklenen koşullar şunlardır:
 
 - `"equals": "value"`
 - `"notEquals": "value"`
@@ -250,8 +250,8 @@ Bir koşulu değerlendirir olup olmadığını bir **alan** veya **değer** eri�
 Kullanırken **gibi** ve **notLike** koşullar, sağladığınız bir joker karakter `*` değerindeki değişikliği belirtir.
 Birden fazla joker karakter değeri olmamalıdır `*`.
 
-Kullanırken **eşleşen** ve **notMatch** koşulları sağlayan `#` bir rakam, eşleştirilecek `?` bir harfi için `.` herhangi bir karakter ve aynı diğer herhangi bir karakterle eşleştirmek için Bu gerçek bir karakter.
-**eşleşen** ve **notMatch** büyük küçük harfe duyarlıdır. Büyük küçük harf duyarsız alternatifleri kullanılabilir **matchInsensitively** ve **notMatchInsensitively**. Örnekler için bkz [birkaç adı desenlerinin izin](../samples/allow-multiple-name-patterns.md).
+**Match** ve **notmatch** `#` koşullarını kullanırken, bir harf `?` için, bir harf `.` için, herhangi bir karakterle eşleşecek şekilde ve diğer karakteri bu gerçek karakterle eşleşecek şekilde eşleştirin.
+**Match** ve **notmatch** büyük/küçük harfe duyarlıdır. Büyük/küçük harf duyarsız alternatifler **matchInsensitively** ve **notMatchInsensitively**' de mevcuttur. Örnekler için bkz [birkaç adı desenlerinin izin](../samples/allow-multiple-name-patterns.md).
 
 ### <a name="fields"></a>Alanlar
 
@@ -265,28 +265,28 @@ Aşağıdaki alanları desteklenir:
 - `kind`
 - `type`
 - `location`
-  - Kullanım **genel** konum bağımsız olan kaynaklar için. Bir örnek için bkz. [örnekleri - izin verilen Konumlar](../samples/allowed-locations.md).
+  - Konum belirsiz olan kaynaklar için **küresel** kullanın. Örnek için bkz. [örneklere Izin verilen konumlar](../samples/allowed-locations.md).
 - `identity.type`
-  - Türünü döndüren [yönetilen kimliği](../../../active-directory/managed-identities-azure-resources/overview.md) kaynakta etkinleştirilmemiş.
+  - Kaynak üzerinde etkin [yönetilen kimliğin](../../../active-directory/managed-identities-azure-resources/overview.md) türünü döndürür.
 - `tags`
 - `tags['<tagName>']`
-  - Bu ayracı sözdizimi, kısa çizgi, nokta veya boşluk gibi noktalama sahip etiket adları destekler.
+  - Bu köşeli ayraç sözdizimi, noktalama işareti, nokta veya boşluk gibi noktalama işaretlerinin bulunduğu etiket adlarını destekler.
   - Burada **\<tagName\>** doğrulamak için bir koşul için etiket adıdır.
-  - Örnekler: `tags['Acct.CostCenter']` burada **Acct.CostCenter** etiketin adı.
+  - Örnekler: `tags['Acct.CostCenter']` **ACCT. costcenter** etiketin adıdır.
 - `tags['''<tagName>''']`
-  - Bu köşeli ayraç söz dizimi ile çift kesme kaçış tarafından kesme sahip etiket adları destekler.
-  - Burada **'\<tagName\>'** doğrulamak için bir koşul için etiket adıdır.
-  - Örnek: `tags['''My.Apostrophe.Tag''']` burada **'\<tagName\>'** etiketin adı.
+  - Bu köşeli ayraç sözdizimi, çift tırnak işaretiyle kaçış ile kesme işareti olan etiket adlarını destekler.
+  - Burada **'\<TagName\>'** , koşulun doğrulanması için etiketin adıdır.
+  - Örnek: `tags['''My.Apostrophe.Tag''']` burada **'\<TagName\>'** etiketin adıdır.
 - özellik diğer adları - bir listesi için bkz [diğer adlar](#aliases).
 
 > [!NOTE]
-> `tags.<tagName>`, `tags[tagName]`, ve `tags[tag.with.dots]` etiketlerini alana bildirme hala kabul edilebilir yöntemlerdir. Ancak, tercih edilen ifade yukarıda listelenen olanlardır.
+> `tags.<tagName>`, `tags[tagName]` ve`tags[tag.with.dots]` , bir Etiketler alanı bildirmek için kabul edilebilir yollar. Ancak, tercih edilen ifadeler yukarıda listelenmiş olanlardır.
 
 #### <a name="use-tags-with-parameters"></a>Parametrelerle etiketleri kullanma
 
-Bir parametre değeri, bir etiket alanı geçirilebilir. Bir etiket alanı için bir parametre geçirerek, ilke ataması sırasında ilke tanımı'nın esnekliği artırır.
+Bir parametre değeri, bir etiket alanına geçirilebilir. Bir parametreyi bir etiket alanına geçirmek, ilke ataması sırasında ilke tanımının esnekliğini artırır.
 
-Aşağıdaki örnekte, `concat` değerini adlı etiket için etiket alanı arama oluşturmak için kullanılan **tagName** parametresi. Bu etiketi yoksa, **ekleme** etkisi denetlenen kaynakları üst kaynak grubunda ayarlamak için aynı adlı etiketi değerini kullanarak etiket eklemek için kullanılan `resourcegroup()` arama işlevi.
+Aşağıdaki örnekte, `concat` **TagName** parametresinin değeri adlı etiket için bir etiket alanı araması oluşturmak üzere kullanılır. Bu etiket yoksa, `resourcegroup()` arama işlevini kullanarak, denetlenen kaynaklar üst kaynak grubunda ayarlanan aynı adlandırılmış etiketin değerini kullanarak etiketi eklemek için **ekleme** efekti kullanılır.
 
 ```json
 {
@@ -306,15 +306,15 @@ Aşağıdaki örnekte, `concat` değerini adlı etiket için etiket alanı arama
 
 ### <a name="value"></a>Value
 
-Koşullar de biçimlendirilmiş kullanarak **değer**. **değer** koşullar karşı denetler [parametreleri](#parameters), [şablon işlevleri desteklenen](#policy-functions), ya da değişmez.
-**değer** desteklenen herhangi biri ile eşleştirilmiş [koşul](#conditions).
+Koşullar, **değer**kullanılarak da oluşturulabilir. **değer** [parametrelere](#parameters), [desteklenen şablon işlevlerine](#policy-functions)veya değişmez değerlere karşı koşulları denetler.
+**değer** , desteklenen herhangi bir [koşulla](#conditions)eşleştirildi.
 
 > [!WARNING]
-> Sonucu bir _şablon işlevi_ bir hata ilkesi değerlendirmesi başarısız olur. Başarısız bir değerlendirme bir örtük olarak **Reddet**. Daha fazla bilgi için [şablon hatalarını önleme](#avoiding-template-failures).
+> Bir _şablon işlevinin_ sonucu bir hata ise, ilke değerlendirmesi başarısız olur. Başarısız bir değerlendirme örtük bir **reddetme**. Daha fazla bilgi için bkz. [şablon arızalarını önleme](#avoiding-template-failures).
 
 #### <a name="value-examples"></a>Değer örnekleri
 
-Bu ilke kuralı örnekte **değer** sonucunu karşılaştırmak için `resourceGroup()` işlevi ve döndürülen **adı** özelliğini bir **gibi** koşulu`*netrg`. Kural olmayan herhangi bir kaynağa engellediği `Microsoft.Network/*` **türü** adı biten içinde herhangi bir kaynak grubunda `*netrg`.
+Bu ilke kuralı örneği,  `resourceGroup()` işlevin sonucunu ve döndürülen **ad** özelliğini **benzer** bir koşula göre `*netrg`karşılaştırmak için değeri kullanır. Kural, adı içinde `Microsoft.Network/*` `*netrg`sonlanan herhangi bir kaynak grubundaki **türden** olmayan tüm kaynakları reddeder.
 
 ```json
 {
@@ -335,7 +335,7 @@ Bu ilke kuralı örnekte **değer** sonucunu karşılaştırmak için `resourceG
 }
 ```
 
-Bu ilke kuralı örnekte **değer** birden çok sonuç, iç içe geçmiş denetlemek için işlevleri **eşittir** `true`. Kural, en az üç etiket yok herhangi bir kaynağa reddeder.
+Bu ilke kuralı örneği, birden çok iç içe işlevlerin sonucunun **eşit** `true`olup olmadığını denetlemek için **değerini** kullanır. Kural, en az üç etiketi olmayan tüm kaynakları reddeder.
 
 ```json
 {
@@ -352,9 +352,9 @@ Bu ilke kuralı örnekte **değer** birden çok sonuç, iç içe geçmiş denetl
 }
 ```
 
-#### <a name="avoiding-template-failures"></a>Şablon hatalarını önleme
+#### <a name="avoiding-template-failures"></a>Şablon hatalarından kaçınma
 
-Kullanımını _şablon işlevleri_ içinde **değer** için birçok karmaşık iç içe geçmiş işlevler sağlar. Sonucu bir _şablon işlevi_ bir hata ilkesi değerlendirmesi başarısız olur. Başarısız bir değerlendirme bir örtük olarak **Reddet**. Örneği bir **değer** belirli senaryolarda başarısız olur:
+**Değer** 'teki _şablon işlevlerinin_ kullanımı, birçok karmaşık iç içe işleve izin verir. Bir _şablon işlevinin_ sonucu bir hata ise, ilke değerlendirmesi başarısız olur. Başarısız bir değerlendirme örtük bir **reddetme**. Belirli senaryolarda başarısız olan **değere** bir örnek:
 
 ```json
 {
@@ -370,9 +370,9 @@ Kullanımını _şablon işlevleri_ içinde **değer** için birçok karmaşık 
 }
 ```
 
-Örnek ilke kuralı kullanımlar yukarıda [substring()](../../../azure-resource-manager/resource-group-template-functions-string.md#substring) ilk üç karakterine Karşılaştırılacak **adı** için **abc**. Varsa **adı** üç karakterden daha kısa `substring()` işlevi hatayla sonuçlanır. İlke olacak bu hataya neden olur bir **Reddet** efekt.
+Yukarıdaki örnek ilke kuralı, **adın** ilk üç karakterini **ABC**olarak karşılaştırmak için [substring ()](../../../azure-resource-manager/resource-group-template-functions-string.md#substring) kullanır. **Ad** üç karakterden kısaysa, `substring()` işlev bir hatayla sonuçlanır. Bu hata, ilkenin **reddetme** efekti olmasına neden olur.
 
-Bunun yerine, [if()](../../../azure-resource-manager/resource-group-template-functions-logical.md#if) işlevi olmadığını denetlemek için ilk üç karakterine **adı** eşit **abc** izin olmadan bir **adı** kısa hataya neden olan üç karakter:
+Bunun yerine, adın ilk üç karakterinin bir hataya neden olmak üzere üç **karakterden kısa olmasına** izin vermeden **eşittir ABC** **değerine eşit** olup olmadığını denetlemek için [IF ()](../../../azure-resource-manager/resource-group-template-functions-logical.md#if) işlevini kullanın:
 
 ```json
 {
@@ -388,11 +388,11 @@ Bunun yerine, [if()](../../../azure-resource-manager/resource-group-template-fun
 }
 ```
 
-Düzeltilmiş ilke kuralı ile `if()` denetler **adı** alınmaya çalışılırken önce bir `substring()` Üçten az karakter içeren bir değeri. Varsa **adı** "abc ile başlamıyor" değeri yerine döndürdü ve karşılaştırıldığında çok kısa **abc**. İle başlamaz kısa bir ada sahip bir kaynak **abc** hala ilke kuralı başarısız olur, ancak artık değerlendirmesi sırasında bir hataya neden olur.
+Düzeltilen ilke kuralıyla, `if()` üç karakterden kısa bir değerde bir  `substring()` değer almaya çalışmadan önce adın uzunluğunu denetler. **Ad** çok kısaysa, bunun yerine "ABC ile başlamıyor" değeri döndürülür ve **ABC**ile karşılaştırılır. **ABC** ile başlamayan kısa bir ada sahip bir kaynak, hala ilke kuralına neden oluyor, ancak değerlendirme sırasında hataya neden olmaz.
 
 ### <a name="effect"></a>Etki
 
-Azure İlkesi etkisi aşağıdaki türlerini destekler:
+Azure Ilkesi aşağıdaki efekt türlerini destekler:
 
 - **Reddetme**: istek başarısız olur ve etkinlik günlüğüne bir olay oluşturur
 - **Denetim**: etkinlik günlüğünde uyarı olayı oluşturur, ancak istek başarısız değil
@@ -400,7 +400,7 @@ Azure İlkesi etkisi aşağıdaki türlerini destekler:
 - **AuditIfNotExists**: bir kaynak mevcut değilse denetim sağlar
 - **Deployıfnotexists**: zaten mevcut değilse bir kaynak dağıtır.
 - **Devre dışı bırakılmış**: uyumluluk İlkesi kuralı için kaynakları değerlendirmez
-- **EnforceRegoPolicy**: Açık İlke Aracısı kullandılar denetleyicisi Azure Kubernetes hizmeti (Önizleme) yapılandırır.
+- **Enforceregopolicy**: Azure Kubernetes hizmetinde açık ilke aracısı sayede denetleyicisini yapılandırır (Önizleme)
 
 İçin **ekleme**, aşağıdaki ayrıntıları sağlamanız gerekir:
 
@@ -428,29 +428,29 @@ Değer bir dize veya bir JSON biçimi nesnesi olabilir.
 }
 ```
 
-Değerlendirme, özellikler ve örnekler de sırasını her etkisi hakkında tüm ayrıntılar için bkz. [anlama Azure İlkesi etkileri](effects.md).
+Her etkileriyle ilgili tüm ayrıntılar, değerlendirme, özellik ve örnek sıralaması için bkz. [Azure Ilke efektlerini anlama](effects.md).
 
 ### <a name="policy-functions"></a>İlke işlevleri
 
-Tüm [Resource Manager şablonu işlevleri](../../../azure-resource-manager/resource-group-template-functions.md) aşağıdaki işlevleri ve kullanıcı tanımlı işlevler dışında bir ilke kuralı içinde kullanmak kullanılabilir:
+Tüm [Kaynak Yöneticisi şablonu işlevleri](../../../azure-resource-manager/resource-group-template-functions.md) , aşağıdaki işlevler ve Kullanıcı tanımlı işlevler dışında bir ilke kuralı içinde kullanılabilir:
 
-- copyındex)
-- deployment()
-- Liste *
-- newGuid()
-- pickZones()
-- providers()
-- Reference()
-- resourceId()
-- variables()
+- Copyındex ()
+- Dağıtım ()
+- Listele
+- newGuid ()
+- pickZones ()
+- sağlayıcılar ()
+- başvuru ()
+- RESOURCEID ()
+- değişkenler ()
 
-Aşağıdaki işlevleri, ilke kuralında kullanabilirsiniz, ancak bir Azure Resource Manager şablonu kullanımda farklı kullanılabilir:
+Aşağıdaki işlevler bir ilke kuralında kullanılabilir, ancak Azure Resource Manager şablonunda kullanımı farklıdır:
 
-- addDays (dateTime, numberOfDaysToAdd)
-  - **dateTime**: [gerekli] dize - dize Evrensel ISO 8601 tarih saat biçiminde ' yyyy-aa-ddTHH:mm:ss.fffffffZ'
-  - **numberOfDaysToAdd**: [gerekli] tamsayı - eklenecek gün sayısı
-- utcNow() - aksine, bir Resource Manager şablonu, bu defaultValue dışında kullanılabilir.
-  - Geçerli tarih ve saat Evrensel ISO 8601 tarih saat biçiminde şekilde ayarlanan bir dize döndürür ' yyyy-aa-ddTHH:mm:ss.fffffffZ'
+- addDays (TarihSaat, numberOfDaysToAdd)
+  - **DateTime**: [Required] Universal ISO 8601 DateTime biçiminde dize dizesi ' yyyy-mm-ddTHH: mm: ss. fffffffZ '
+  - **Numberofdaystoadd**: [gerekli] tamsayı-eklenecek gün sayısı
+- utcNow ()-Kaynak Yöneticisi şablondan farklı olarak bu, defaultValue dışında kullanılabilir.
+  - Universal ISO 8601 DateTime biçimindeki ' yyyy-aa-ddTHH: mm: ss. fffffffZ ' içinde geçerli tarih ve saate ayarlanmış bir dize döndürür
 
 Ayrıca, `field` işlevi ilke kuralları için kullanılabilir. `field` ile kullanılır **AuditIfNotExists** ve **Deployıfnotexists** değerlendirilmekte kaynak başvurusu alanlarında. Bu kullanım örneği görülebilir [Deployıfnotexists örnek](effects.md#deployifnotexists-example).
 
@@ -486,8 +486,8 @@ Diğer adlar listesini her zaman artmaktadır. Hangi diğer adlar şu anda Azure
   # Use Get-AzPolicyAlias to list available providers
   Get-AzPolicyAlias -ListAvailable
 
-  # Use Get-AzPolicyAlias to list aliases for a Namespace (such as Azure Automation -- Microsoft.Automation)
-  Get-AzPolicyAlias -NamespaceMatch 'automation'
+  # Use Get-AzPolicyAlias to list aliases for a Namespace (such as Azure Compute -- Microsoft.Compute)
+  (Get-AzPolicyAlias -NamespaceMatch 'compute').Aliases
   ```
 
 - Azure CLI
@@ -498,8 +498,8 @@ Diğer adlar listesini her zaman artmaktadır. Hangi diğer adlar şu anda Azure
   # List namespaces
   az provider list --query [*].namespace
 
-  # Get Azure Policy aliases for a specific Namespace (such as Azure Automation -- Microsoft.Automation)
-  az provider show --namespace Microsoft.Automation --expand "resourceTypes/aliases" --query "resourceTypes[].aliases[].name"
+  # Get Azure Policy aliases for a specific Namespace (such as Azure Compute -- Microsoft.Compute)
+  az provider show --namespace Microsoft.Compute --expand "resourceTypes/aliases" --query "resourceTypes[].aliases[].name"
   ```
 
 - REST API / ARMClient
@@ -515,9 +515,9 @@ Birkaç kullanılabilir diğer adlarına sahip bir 'normal' bir ad ve başka gö
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`
 
-'Normal' diğer adı alanı, tek bir değer temsil eder. Bu alan tüm değerler kümesini tam olarak tanımlandığı gibi artık ve az olmalıdır tam eşleşme karşılaştırma senaryoları için kullanılır.
+' Normal ' diğer ad, alanı tek bir değer olarak temsil eder. Bu alan, tüm değer kümesinin tam olarak tanımlanmış olması, daha fazla olmaması ve daha az olmaması durumunda tam eşleşme karşılaştırma senaryolarına yöneliktir.
 
-**[\*]** Diğer adı dizideki her öğenin değerini ve her öğenin belirli özelliklerini karşı Karşılaştırılacak mümkün kılar. Bu yaklaşım, öğe özelliklerini karşılaştırma mümkün kılar 'Hiçbiri ' ise 'varsa' veya ' tüm'ın ' senaryoları. Kullanarak **ipRules [\*]** , örnek, doğrulamak her _eylem_ olduğu _Reddet_, ancak kaç kuralları var veya hangi IP hakkındaendişelenmenizegerekyok_değer_ olduğu. Bu örnek kural eşleşme için denetler **ipRules [\*] .value** için **10.0.4.1** ve uygular **effectType** yalnızca en az bir eşleşme bulamazsa:
+**[\*]** Diğer adı dizideki her öğenin değerine ve her bir öğenin belirli özelliklerine göre karşılaştırma mümkün kılar. Bu yaklaşım, ' if None ', ' varsa ', ' veya ' varsa ' senaryolarından oluşan öğe özelliklerini karşılaştırmayı mümkün kılar. **Iprules\*[]** kullanarak, her _eylemin_ _reddetme_, ancak kaç kural var olduğunu veya IP _değerinin_ ne olduğunu kaygılandığını doğrulayan bir örnektir. Bu örnek kural, **ıprules [\*]. Value** ile **10.0.4.1** arasında herhangi bir eşleşme olup olmadığını denetler **ve yalnızca en** az bir eşleşme bulmazsa, bu değeri uygular:
 
 ```json
 "policyRule": {
@@ -539,7 +539,7 @@ Birkaç kullanılabilir diğer adlarına sahip bir 'normal' bir ad ve başka gö
 }
 ```
 
-Daha fazla bilgi için [değerlendirme [\*] diğer adı](../how-to/author-policies-for-arrays.md#evaluating-the--alias).
+Daha fazla bilgi için bkz. [[\*] diğer adını değerlendirme](../how-to/author-policies-for-arrays.md#evaluating-the--alias).
 
 ## <a name="initiatives"></a>Girişimler
 
@@ -621,9 +621,9 @@ Aşağıdaki örnek iki etiketi işlemeye yönelik bir girişim oluşturma işle
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Gözden geçirme örneklere [Azure ilkesi örnekleri](../samples/index.md).
+- [Azure ilke örneklerindeki](../samples/index.md)örnekleri gözden geçirin.
 - [İlkenin etkilerini anlama](effects.md) konusunu gözden geçirin.
-- Anlamak için nasıl [programlı olarak ilkeler oluşturma](../how-to/programmatically-create.md).
-- Bilgi edinmek için nasıl [uyumluluk verilerini alma](../how-to/getting-compliance-data.md).
-- Bilgi edinmek için nasıl [uyumlu olmayan kaynakları düzeltme](../how-to/remediate-resources.md).
-- Bir yönetim grubu olan gözden geçirme [kaynaklarınızı Azure yönetim gruplarıyla düzenleme](../../management-groups/overview.md).
+- [Program aracılığıyla ilkelerin nasıl oluşturulduğunu](../how-to/programmatically-create.md)anlayın.
+- [Uyumluluk verilerini nasıl alabileceğinizi](../how-to/getting-compliance-data.md)öğrenin.
+- [Uyumlu olmayan kaynakları](../how-to/remediate-resources.md)nasıl düzelteceğinizi öğrenin.
+- [Kaynakları Azure Yönetim gruplarıyla düzenleme](../../management-groups/overview.md)ile yönetim grubunun ne olduğunu inceleyin.

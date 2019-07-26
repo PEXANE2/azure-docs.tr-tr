@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/08/2019
+ms.date: 07/04/2019
 ms.author: ryanwi
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e1b0ea2f808c982a587392edbe57eb75c532ee2
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 0198e5f5df3d25ef825248ff78db95326dc755c2
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68324717"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68477051"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>Nasıl yapılır: Azure Active Directory uygulama galerisinde uygulamanızı listeleme
 
@@ -49,6 +49,8 @@ Bu makalede, Azure AD uygulama galerisinde bir uygulamayı listeleme, çoklu otu
 - Parola SSO 'SU için, lütfen uygulamanızın form kimlik doğrulamasını desteklediğinden emin olun, böylelikle çoklu oturum açma işinin beklendiği gibi çalışmasını sağlayabilirsiniz.
 
 - Otomatik Kullanıcı sağlama istekleri için, uygulamanın SAML 2.0/WS-beslenir kullanılarak etkinleştirilmiş çoklu oturum açma özelliği ile galeride listelenmesi gerekir. Zaten listede yoksa, portalda SSO ve Kullanıcı hazırlama işlemlerini bir araya getirebilirsiniz.
+
+- En az 2 Kullanıcı kayıtlı olan sınama için kalıcı bir hesap gerekir.
 
 >[!NOTE]
 >Çok sayıda SCıM bağlayıcı isteği ile çalışıyoruz, bu nedenle portalda yeni istekleri almayı durdurduk. Lütfen daha fazla bildirimde bulununcaya kadar isteklerinizi tutun. Bu gecikme için özgürlerimizi ve bu, neden olmuş olabilir.
@@ -123,7 +125,7 @@ Aşağıda, müşteri tarafından istenen uygulamaların akışı verilmiştir.
 
 ![Müşteri tarafından istenen uygulamalar akışını gösterir](./media/howto-app-gallery-listing/customer-request.png)
 
-## <a name="timelines"></a>Animasyon
+## <a name="timelines"></a>Zaman çizelgeleri
 
 Galerideki bir SAML 2,0 veya WS-Besme uygulamasını listeleme işleminin zaman çizelgesi, 7-10 iş gündür.
 

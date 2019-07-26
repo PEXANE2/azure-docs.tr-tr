@@ -13,12 +13,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 06/25/2019
-ms.openlocfilehash: 26b31781ae0056999eb222981b2eea3eb4595041
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 361613c52c00b7a7e468eccbb52bf113b6adb434
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68228056"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444502"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Azure SQL Veritabanı'nda iş sürekliliğine genel bakış
 
@@ -58,7 +58,23 @@ Bir veritabanını geçmişteki bir zaman noktasına geri yüklemek için otomat
 
 Zaman içinde nokta geri yükleme (ıNR) için desteklenen en fazla yedekleme saklama süresi, uygulamanız için yeterli değilse, veritabanları için uzun süreli bir saklama (LTR) ilkesi yapılandırarak bunu genişletebilirsiniz. Daha fazla bilgi için bkz. [uzun süreli yedek saklama](sql-database-long-term-retention.md).
 
-## <a name="recover-a-database-to-another-azure-region"></a>Bir veritabanını başka bir Azure bölgesine kurtarma
+## <a name="compare-geo-replication-with-failover-groups"></a>Yük devretme gruplarıyla Coğrafi çoğaltmayı karşılaştırın
+
+[Otomatik yük devretme grupları](sql-database-auto-failover-group.md#auto-failover-group-terminology-and-capabilities) , [coğrafi çoğaltmanın](sql-database-active-geo-replication.md) dağıtımını ve kullanımını basitleştirir ve aşağıdaki tabloda açıklandığı gibi ek özellikleri ekler:
+
+|                                              | Coğrafi çoğaltma | Yük devretme grupları  |
+|:---------------------------------------------| :-------------- | :----------------|
+| Otomatik yük devretme                           |     Hayır          |      Evet         |
+| Birden çok veritabanını aynı anda devret  |     Hayır          |      Evet         |
+| Yük devretmeden sonra bağlantı dizesini Güncelleştir      |     Evet         |      Hayır          |
+| Yönetilen örnek destekleniyor                   |     Hayır          |      Evet         |
+| Birincil ile aynı bölgede olabilir             |     Evet         |      Hayır          |
+| Birden çok çoğaltma                            |     Evet         |      Hayır          |
+| Okuma ölçeğini destekler                          |     Evet         |      Evet         |
+| &nbsp; | &nbsp; | &nbsp; |
+
+
+## <a name="recover-a-database-to-the-existing-server"></a>Bir veritabanını mevcut sunucuya kurtar
 
 Çok sık olmasa da Azure veri merkezlerinde kesintiler yaşanabilir. Kesinti yaşandığında yalnızca birkaç dakika sürebilecek veya saatler alacak bir hizmet kesintisi söz konusu olabilir.
 
@@ -72,8 +88,8 @@ Farklı kurtarma yöntemleri farklı RPO ve RTO düzeyleri sunar. Belirli bir ku
 
 | Kurtarma yöntemi | RTO | RPO |
 | --- | --- | --- | 
-| Coğrafi olarak çoğaltılan yedeklerden coğrafi geri yükleme | 12 h | 1 h |
-| Otomatik yük devretme grupları | 1 h | 5 s |
+| Coğrafi olarak çoğaltılan yedeklerden coğrafi geri yükleme | 12 h | 1 s |
+| Otomatik yük devretme grupları | 1 s | 5 s |
 | El ile veritabanı yük devretmesi | 30 s | 5 s |
 
 > [!NOTE]

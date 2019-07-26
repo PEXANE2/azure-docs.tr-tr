@@ -1,5 +1,5 @@
 ---
-title: Örtük akış kullanarak tek sayfalı oturum açma-Azure Active Directory B2C | Microsoft Docs
+title: Örtük akış Azure Active Directory B2C kullanarak tek sayfalı oturum açma
 description: Azure Active Directory B2C ile OAuth 2,0 örtük akışını kullanarak tek sayfalı oturum açmayı nasıl ekleyeceğinizi öğrenin.
 services: active-directory-b2c
 author: mmacy
@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 07/19/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ade9740d6c5e9edcda4a01c72b94c6f84686447d
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 1196f3b186abcd914c409db06b52654f82f4158b
+ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68248786"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68377327"
 ---
 # <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'de OAuth 2,0 örtük akışını kullanarak tek sayfalı oturum açma
 
@@ -25,7 +25,7 @@ Birçok modern uygulamanın, birincil olarak JavaScript 'te yazılmış tek sayf
 - Birçok yetkilendirme sunucusu ve kimlik sağlayıcısı, çıkış noktaları arası kaynak paylaşımı (CORS) isteklerini desteklemez.
 - Tam sayfa tarayıcı yeniden yönlendirmeleri, uygulamanın dışında yeniden yönlendirilir ve Kullanıcı deneyimine sahip olabilir.
 
-Bu uygulamaları desteklemek için Azure Active Directory B2C (Azure AD B2C) OAuth 2,0 örtük akışını kullanır. OAuth 2,0 yetkilendirmesi dolaylı verme akışı, [oauth 2,0 belirtiminin 4,2 bölümünde](https://tools.ietf.org/html/rfc6749)açıklanmaktadır. Örtük akışta, uygulama herhangi bir sunucudan sunucuya Exchange olmadan belirteçleri doğrudan Azure Active Directory (Azure AD) yetkilendirme uç noktasından alır. Tüm kimlik doğrulama mantığı ve oturum işleme, ek sayfa yeniden yönlendirmeleri olmadan tamamen JavaScript istemcisinde yapılır.
+Bu uygulamaları desteklemek için Azure Active Directory B2C (Azure AD B2C) OAuth 2,0 örtük akışını kullanır. OAuth 2,0 yetkilendirmesi dolaylı verme akışı, [oauth 2,0 belirtiminin 4,2 bölümünde](https://tools.ietf.org/html/rfc6749)açıklanmaktadır. Örtük akışta, uygulama herhangi bir sunucudan sunucuya Exchange olmadan belirteçleri doğrudan Azure Active Directory (Azure AD) yetkilendirme uç noktasından alır. Tüm kimlik doğrulama mantığı ve oturum işleme, tam olarak JavaScript istemcisinde veya bir sayfa yeniden yönlendirme ya da bir açılır kutu ile yapılır.
 
 Azure AD B2C, standart OAuth 2,0 örtük akışını basit kimlik doğrulamasından ve yetkilendirmeye genişletir. Azure AD B2C, [ilke parametresini](active-directory-b2c-reference-policies.md)tanıtır. İlke parametresiyle, uygulamanıza kaydolma, oturum açma ve profil yönetimi Kullanıcı akışları gibi ilkeler eklemek için OAuth 2,0 kullanabilirsiniz. Bu makaledeki örnek HTTP isteklerinde, örnek olarak **fabrikamb2c.onmicrosoft.com** kullanılır. Bir tane varsa `fabrikamb2c` ve bir Kullanıcı akışı oluşturduysanız, kiracınızın adıyla değiştirebilirsiniz.
 
@@ -89,7 +89,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | state | Hayır | İstekte, belirteç yanıtında döndürülen bir değer. Kullanmak istediğiniz herhangi bir içerik dizesi olabilir. Genellikle, siteler arası istek sahteciliği saldırıları engellemek için rastgele oluşturulan, benzersiz bir değer kullanılır. Durum Ayrıca, kullanıcının uygulamadaki durumuyla ilgili bilgileri, açık oldukları sayfa gibi kimlik doğrulama isteği yapılmadan önce kodlamak için de kullanılır. |
 | nonce | Evet | İstek olarak ortaya çıkan KIMLIK belirtecine dahil edilen isteğe (uygulama tarafından oluşturulan) dahil bir değer. Daha sonra uygulama, belirteç yeniden yürütme saldırılarını azaltmak için bu değeri doğrulayabilirler. Genellikle değer, isteğin kaynağını belirlemek için kullanılabilecek rastgele, benzersiz bir dizedir. |
 | p | Evet | Yürütülecek ilke. Bu, Azure AD B2C kiracınızda oluşturulan bir ilkenin (Kullanıcı akışı) adıdır. İlke adı değeri **B2C\_1\_** ile başlamalıdır. |
-| İsteme | Hayır | Gerekli Kullanıcı etkileşimi türü. Şu anda geçerli olan tek değer `login`. Bu parametre, kullanıcıyı bu istek üzerine kimlik bilgilerini girmeye zorlar. Çoklu oturum açma etkili olmaz. |
+| isteme | Hayır | Gerekli Kullanıcı etkileşimi türü. Şu anda geçerli olan tek değer `login`. Bu parametre, kullanıcıyı bu istek üzerine kimlik bilgilerini girmeye zorlar. Çoklu oturum açma etkili olmaz. |
 
 Bu noktada, kullanıcıdan ilkenin iş akışını tamamlaması istenir. Kullanıcının Kullanıcı adı ve parolasını girmesi, bir sosyal kimlik ile oturum açması, dizin için kayıt veya başka birçok adım olması gerekebilir. Kullanıcı eylemleri, Kullanıcı akışının nasıl tanımlandığına bağlıdır.
 
@@ -129,7 +129,7 @@ error=access_denied
 
 | Parametre | Açıklama |
 | --------- | ----------- |
-| error | Oluşan hata türlerini sınıflandırmak için kullanılan kod. |
+| hata | Oluşan hata türlerini sınıflandırmak için kullanılan kod. |
 | error_description | Kimlik doğrulama hatasının temel nedenini belirlemenize yardımcı olabilecek belirli bir hata iletisi. |
 | state | İsteğe bir `state` parametre dahil ise, yanıtta aynı değer görünmelidir. Uygulamanın, istek ve yanıt `state` değerlerinin özdeş olduğunu doğrulaması gerekir.|
 
@@ -176,7 +176,6 @@ Kullanıcıyı tek sayfalı uygulamanıza imzaladığınıza göre, Azure AD tar
 Tipik bir Web uygulaması akışında `/token` uç noktaya bir istek yaparsınız. Ancak, uç nokta CORS isteklerini desteklemez, bu nedenle bir yenileme belirteci almak için AJAX çağrılarının yapılması bir seçenek değildir. Bunun yerine, diğer Web API 'Lerine yönelik yeni belirteçler almak için, bir gizli HTML iframe öğesinde örtük akışı kullanabilirsiniz. Aşağıda, okunabilirliği için satır sonları içeren bir örnek verilmiştir:
 
 ```
-
 https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
 client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &response_type=token
@@ -186,8 +185,6 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &state=arbitrary_data_you_can_receive_in_the_response
 &nonce=12345
 &prompt=none
-&domain_hint=organizations
-&login_hint=myuser@mycompany.com
 &p=b2c_1_sign_in
 ```
 
@@ -200,9 +197,9 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | response_mode |Önerilen |Elde edilen belirteci uygulamanıza geri göndermek için kullanılan yöntemi belirtir.  `query` ,`form_post`Veya olabilir`fragment`. |
 | state |Önerilen |Belirteç yanıtında döndürülen isteğe eklenen bir değer.  Kullanmak istediğiniz herhangi bir içerik dizesi olabilir.  Genellikle, siteler arası istek sahteciliği saldırıları engellemek için rastgele oluşturulan, benzersiz bir değer kullanılır.  Durum Ayrıca, kimlik doğrulama isteği gerçekleştirilmeden önce kullanıcının uygulamasındaki durumu hakkında bilgi kodlamak için de kullanılır. Örneğin, kullanıcının sayfası veya görünümü. |
 | nonce |Gerekli |Talep olarak elde edilen KIMLIK belirtecine dahil edilen, uygulama tarafından oluşturulan, isteğe dahil edilen bir değer.  Daha sonra uygulama, belirteç yeniden yürütme saldırılarını azaltmak için bu değeri doğrulayabilirler. Genellikle değer, isteğin kaynağını tanımlayan rastgele, benzersiz bir dizedir. |
-| İsteme |Gerekli |Gizli bir IFRAME 'de belirteçleri yenilemek ve almak için, iframe `prompt=none` 'nin oturum açma sayfasında takılı olmadığından emin olmak için kullanın ve hemen döndürür. |
-| login_hint |Gerekli |Gizli bir iframe içindeki belirteçleri yenilemek ve almak için, kullanıcının belirli bir zamanda sahip olabileceği birden çok oturumu ayırt etmek için bu ipucuna kullanıcının Kullanıcı adını ekleyin. `preferred_username` Talebi kullanarak daha önceki bir oturum açma işleminden Kullanıcı adını ayıklayabilirsiniz. |
-| domain_hint |Gerekli |`consumers` veya `organizations` olabilir.  Gizli bir IFRAME içindeki belirteçleri yenilemek ve almak için, istekteki `domain_hint` değeri ekleyin.  Hangi değerin kullanılacağını öğrenmek için önceki bir oturum açma kimlik belirtecinden talebiayıklayın.`tid`  Talep değeri ise `9188040d-6c67-4c5b-b112-36a304b66dad`, kullanın `domain_hint=consumers`. `tid`  Aksi takdirde, `domain_hint=organizations`kullanın. |
+| isteme |Gerekli |Gizli bir IFRAME 'de belirteçleri yenilemek ve almak için, iframe `prompt=none` 'nin oturum açma sayfasında takılı olmadığından emin olmak için kullanın ve hemen döndürür. |
+| login_hint |Gerekli |Gizli bir iframe içindeki belirteçleri yenilemek ve almak için, kullanıcının belirli bir zamanda sahip olabileceği birden çok oturumu ayırt etmek için bu ipucuna kullanıcının Kullanıcı adını ekleyin. `preferred_username` Talebi kullanarak daha önceki bir oturum açma işleminden Kullanıcı adını ayıklayabilirsiniz `profile` ( `preferred_username` talebi almak için kapsam gereklidir). |
+| domain_hint |Gerekli |`consumers` veya `organizations` olabilir.  Gizli bir IFRAME içindeki belirteçleri yenilemek ve almak için, istekteki `domain_hint` değeri ekleyin.  Hangi değerin kullanılacağını öğrenmek için daha önceki bir oturum açma kimlik belirtecinden `profile` `tid` talebi ayıklayın (talebi almak için kapsam gereklidir). `tid` Talep değeri ise `9188040d-6c67-4c5b-b112-36a304b66dad`, kullanın `domain_hint=consumers`. `tid`  Aksi takdirde, `domain_hint=organizations`kullanın. |
 
 `prompt=none` Parametresi ayarlanarak bu istek hemen başarılı veya başarısız olur ve uygulamanıza geri döner.  Belirtilen yeniden yönlendirme URI 'sindeki, `response_mode` parametresinde belirtilen yöntemi kullanarak uygulamanıza başarılı bir yanıt gönderilir.
 
@@ -237,7 +234,7 @@ error=user_authentication_required
 
 | Parametre | Açıklama |
 | --- | --- |
-| error |Oluşan hata türlerini sınıflandırmak için kullanılabilen bir hata kodu dizesi. Ayrıca, hatalara yanıt vermek için dizesini de kullanabilirsiniz. |
+| hata |Oluşan hata türlerini sınıflandırmak için kullanılabilen bir hata kodu dizesi. Ayrıca, hatalara yanıt vermek için dizesini de kullanabilirsiniz. |
 | error_description |Kimlik doğrulama hatasının temel nedenini belirlemenize yardımcı olabilecek belirli bir hata iletisi. |
 
 İframe isteğinde bu hatayı alırsanız, Kullanıcı yeni bir belirteci almak için etkileşimli olarak yeniden oturum açması gerekir.
@@ -262,6 +259,17 @@ p=b2c_1_sign_in
 | post_logout_redirect_uri |Önerilen |Başarılı oturum kapatıldıktan sonra kullanıcının yeniden yönlendirilmesi gereken URL. Dahil değilse, kullanıcıya genel bir ileti görüntüler Azure AD B2C. |
 
 > [!NOTE]
-> Kullanıcıyı ' a yönlendirmek, `end_session_endpoint` Azure AD B2C ile kullanıcının çoklu oturum açma durumunu temizler. Ancak, kullanıcının Kullanıcı sosyal kimlik sağlayıcısı oturumundan oturum açmasını engellemez. Kullanıcı bir sonraki oturum açma işlemi sırasında aynı kimlik sağlayıcısını seçerse, Kullanıcı kimlik bilgilerini girmeden kimlik doğrulaması yapılır. Bir Kullanıcı Azure AD B2C uygulamanızın oturumunu kapatmak isterse, örneğin Facebook hesabının oturumunu tamamen kapatmak istedikleri anlamına gelmez. Ancak, yerel hesaplar için kullanıcının oturumu doğru şekilde sona erer.
+> Kullanıcıyı ' a yönlendirmek, `end_session_endpoint` Azure AD B2C ile kullanıcının çoklu oturum açma durumunu temizler. Ancak, kullanıcının Kullanıcı sosyal kimlik sağlayıcısı oturumundan oturum açmasını engellemez. Kullanıcı sonraki oturum açma sırasında aynı kimlik sağlayıcısını seçerse, kullanıcının kimlik bilgilerini girmeden yeniden kimlik doğrulaması yapılır. Bir Kullanıcı Azure AD B2C uygulamanızın oturumunu kapatmak isterse, örneğin Facebook hesabının oturumunu tamamen kapatmak istedikleri anlamına gelmez. Ancak, yerel hesaplar için kullanıcının oturumu doğru şekilde sona erer.
 >
 
+## <a name="next-steps"></a>Sonraki adımlar
+
+### <a name="code-sample-hellojs-with-azure-ad-b2c"></a>Kod örneği: Azure AD B2C ile Hello. js
+
+[Azure AD B2C ile Hello. js üzerinde oluşturulan tek sayfalı uygulama][github-hello-js-example] GitHub
+
+GitHub 'daki Bu örnek, [Hello. js][github-hello-js] üzerinde oluşturulmuş basit bir web uygulamasında Azure AD B2C başlamanıza ve açılır stil kimlik doğrulamasını kullanmaya başlamanıza yardımcı olmaya yöneliktir.
+
+<!-- Links - EXTERNAL -->
+[github-hello-js-example]: https://github.com/azure-ad-b2c/apps/tree/master/spa/javascript-hellojs-singlepageapp-popup
+[github-hello-js]: https://github.com/MrSwitch/hello.js

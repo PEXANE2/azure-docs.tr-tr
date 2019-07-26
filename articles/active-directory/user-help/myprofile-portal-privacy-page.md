@@ -1,6 +1,6 @@
 ---
-title: Gizlilikle ilgili bilgi (Önizleme) Profilim Portal - Azure Active Directory görüntüleme | Microsoft Docs
-description: Profilim Portalı'nın gizlilik sayfasında hakkında üst düzey bir özeti.
+title: Profilimin (Önizleme) portalından gizlilikle ilgili bilgileri görüntüleme-Azure Active Directory | Microsoft Docs
+description: Profil portalının gizlilik sayfasıyla ilgili üst düzey genel bakış.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,31 +12,33 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dbfcab7900a1552a46341ec71b8b0ea4b41b0bce
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 31847f3cc47ddf1ed784263a543e94ebca454222
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60474730"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382975"
 ---
-# <a name="view-your-privacy-related-info-from-the-my-profile-preview-portal"></a>(Önizleme) Profilim portalından gizlilikle ilgili bilgilerinizi görüntüleyin
-Kuruluşunuz verilerinizi nasıl kullandığını görebilirsiniz **gizlilik** sayfasının **Profilim** portalı.
+# <a name="view-your-privacy-related-info-from-the-my-profile-preview-portal"></a>Profilimin (Önizleme) portalından gizlilikle ilgili bilgilerinizi görüntüleme
+
+Kuruluşunuzun verilerinizi nasıl kullandığını, **profil** portalının **Gizlilik** sayfasından görüntüleyebilirsiniz.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-myprofile.md)]
 
 ## <a name="view-your-privacy-related-info"></a>Gizlilikle ilgili bilgilerinizi görüntüleme
-1. İş veya Okul hesabınızda oturum açın ve ardından Git kullanarak https://myprofile.microsoft.com/ sayfası.
 
-2. Seçin **gizlilik** seçin ya da sol gezinti bölmesinde **gözden gizlilik** bağlantı **gizlilik** blok.
+1. İş veya okul hesabınızda oturum açın ve ardından https://myprofile.microsoft.com/ sayfanıza gidin.
 
-    ![Vurgulanan gizlilik bağlantılarını gösteren profili sayfam](media/myprofile-portal/myprofile-portal-privacy.png)
+2. Sol gezinti bölmesinden **Gizlilik** ' i seçin veya **Gizlilik bloğundan gizliliği** **gözden geçir** bağlantısını seçin.
 
-3. Bilgileri gözden dahil olmak üzere:
+    ![Vurgulanan gizlilik bağlantılarını gösteren profilim sayfası](media/myprofile-portal/myprofile-portal-privacy.png)
 
-    - **Hizmetler.** Online services iş veya Okul hesabınızı kullanarak bağlı olduğunuz bir listesi.
+3. Aşağıdakiler dahil olmak üzere bilgileri gözden geçirin:
 
-    - **Kullanım koşullarını**. Kuruluşunuzun kullanım koşulları.
+    - **Servislere.** İş veya okul hesabınızı kullanarak bağlı olduğunuz çevrimiçi hizmetler listesi.
+
+    - **Kullanım koşulları**. Kuruluşunuzun kullanım koşulları.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Kuruluşunuz verilerinizi nasıl kullandığını izledikten sonra yönetmek veya görüntülemek için seçebileceğiniz, [güvenlik bilgisi](user-help-security-info-overview.md), bağlı [cihazları](myprofile-portal-devices-page.md), veya [kuruluşlar](myprofile-portal-organizations-page.md).
+- Kuruluşunuzun verilerinizi nasıl kullandığını görüntüledikten sonra, [güvenlik bilgilerinizi](user-help-security-info-overview.md), bağlı [cihazlarınızı](myprofile-portal-devices-page.md)veya [kuruluşları](myprofile-portal-organizations-page.md)görüntülemeyi veya yönetmeyi seçebilirsiniz.

@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20b8780ae0c24ca2b037211f7cb977f0cacee0f9
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
-ms.translationtype: HT
+ms.openlocfilehash: 3ca7e7f282d63160cd1f729fba00f6d7d7704270
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325367"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68334124"
 ---
 # <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-single-page-application"></a>Hızlı Başlangıç: Kullanıcıların oturum açması ve JavaScript tek sayfalı uygulamasından erişim belirteci alma
 
@@ -50,7 +50,7 @@ Bu hızlı başlangıçta aşağıdaki kurulum gereklidir:
 >
 > ### <a name="option-2-manual-register-and-manually-configure-your-application-and-code-sample"></a>Seçenek 2 (El Ile): Uygulamanızı ve kod örneğinizi kaydetme ve el ile yapılandırma
 >
-> #### <a name="step-1-register-your-application"></a>1\. adım: Uygulamanızı kaydetme
+> #### <a name="step-1-register-your-application"></a>1\. adım: Uygulamanızı kaydedin
 >
 > 1. Bir iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak [Azure Portal](https://portal.azure.com) oturum açın.
 >
@@ -275,3 +275,8 @@ Belgeler, SSS, sorunlar ve daha fazlası için MSAL depoya göz atın, bkz:
 
 > [!div class="nextstepaction"]
 > [MSAL. js GitHub deposu](https://github.com/AzureAD/microsoft-authentication-library-for-js)
+
+Microsoft Identity platformunu geliştirmemize yardımcı olun. Kısa bir iki sorulık anketi tamamlayarak düşüncelerinizi bize söyleyin.
+
+> [!div class="nextstepaction"]
+> [Microsoft Identity platform Anketi](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

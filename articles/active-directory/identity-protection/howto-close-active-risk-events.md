@@ -1,110 +1,89 @@
 ---
-title: Azure Active Directory kimlik koruması etkin risk olayları kapatma | Microsoft Docs
-description: Seçenekler hakkında bilgi edinin Kapat etkin risk olayları sahip.
+title: Azure Active Directory Kimlik Koruması 'de etkin risk olaylarını kapatma | Microsoft Docs
+description: Etkin risk olaylarınızın kapalı olduğu seçenekler hakkında bilgi edinin.
 services: active-directory
-keywords: Azure active directory kimlik koruması, bulut uygulaması bulma, yönetme, uygulamaları, güvenlik, risk, risk düzeyi, güvenlik açığı, güvenlik ilkesi
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55c56674b04c4359fba741d10176fc91e3a991eb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f5e24c12b72852ee7009533c8dc24d231fe636f2
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67109021"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68333990"
 ---
 # <a name="how-to-close-active-risk-events"></a>Nasıl Yapılır: Etkin risk olaylarını kapatma
 
-İle [risk olayları](../reports-monitoring/concept-risk-events.md), Azure Active Directory, riskli olabilecek kullanıcı hesaplarının göstergeleri algılar. Bir yönetici olarak etkilenen kullanıcılar artık risk altında olacak şekilde kapatıldığında tüm risk olayları almak istiyorsanız.
+[Risk olaylarıyla](../reports-monitoring/concept-risk-events.md)Azure Active Directory, riskli olabilecek Kullanıcı hesaplarının göstergelerini algılar. Yönetici olarak, etkilenen kullanıcıların artık risk altında olmaması için tüm risk olaylarını kapalı olarak almak istersiniz.
 
-Bu makalede, etkin risk olayı kapatmak için sahip ek seçeneklerine genel bakış sağlar.
+Bu makale, etkin risk olaylarını kapatmak için sahip olduğunuz ek seçeneklere genel bir bakış sağlar.
 
-## <a name="options-to-close-risk-events"></a>Risk olayı kapatmak için seçenekleri 
+## <a name="options-to-close-risk-events"></a>Risk olaylarını kapatma seçenekleri 
 
-Risk olayı durumu bozulmuş **etkin** veya **kapalı**. Tüm etkin risk olaylarını kullanıcı risk düzeyi adı verilen bir değer hesaplamaya katkıda bulunur. Kullanıcı risk düzeyinde (düşük, Orta, yüksek) bir hesap tehlikede olasılık göstergesidir. 
+Risk olayının durumu **etkin** ya da **kapalı**olur. Tüm etkin risk olayları, Kullanıcı risk düzeyi adlı bir değer hesaplamasına katkıda bulunur. Kullanıcı risk düzeyi bir hesap güvenliğinin tehlikeye girdiği olasılığa karşı bir göstergedir (düşük, orta, yüksek). 
 
-Etkin risk olayı kapatmak için aşağıdaki seçenekleriniz vardır:
+Etkin risk olaylarını kapatmak için aşağıdaki seçeneklere sahipsiniz:
 
-- Parola sıfırlama kullanıcı riski İlkesi ile iste
-
+- Kullanıcı riski ilkesiyle parola sıfırlama gerektir
 - El ile parola sıfırlama
- 
-- Tüm risk olayları kapatılamadı 
+- Tüm risk olaylarını kapat 
+- Bireysel risk olaylarını el ile kapatın
 
-- Tek tek risk olaylarını elle kapatın
+## <a name="require-password-reset-with-a-user-risk-policy"></a>Kullanıcı riski ilkesiyle parola sıfırlama gerektir
 
-
-
-## <a name="require-password-reset-with-a-user-risk-policy"></a>Parola sıfırlama kullanıcı riski İlkesi ile iste
-
-Yapılandırarak [koşullu erişim ilkesi kullanıcı riski](howto-user-risk-policy.md), belirtilen kullanıcı risk düzeyi otomatik olarak algılanması durumunda bir parola değişikliği gerektirebilir. 
+[Kullanıcı riski koşullu erişim ilkesini](howto-user-risk-policy.md)yapılandırarak, belirtilen Kullanıcı risk düzeyi otomatik olarak algılanırsa parola değişikliği yapmanız gerekebilir. 
 
 ![Parola sıfırla](./media/howto-close-active-risk-events/13.png)
 
-Bir parola sıfırlama ilgili kullanıcının tüm etkin risk olayları kapatır ve kimlik güvenli bir duruma geri getirir. Kullanıcı riski İlkesi kullanarak, çünkü bu yöntem otomatik active risk olayı kapatmak için tercih edilen yöntemdir. Etkilenen kullanıcı ve Yardım Masası veya bir yönetici arasında gerekli bir etkileşim yoktur.
+Parola sıfırlama ilgili kullanıcının tüm etkin risk olaylarını kapatır ve kimliği güvenli bir duruma geri getirir. Bu yöntem otomatikleştirildiğinde, etkin risk olaylarını kapatmak için tercih edilen yöntem bir Kullanıcı risk ilkesini kullanmaktır. Etkilenen Kullanıcı ve yardım masası ya da yönetici arasında herhangi bir etkileşime gerek yoktur.
 
-Ancak, bir kullanıcı riski İlkesi kullanarak her zaman geçerli değildir. Bu, örneğin, için geçerlidir:
+Ancak, bir Kullanıcı risk İlkesi kullanmak her zaman uygulanabilir değildir. Bu, örneğin, şunları yapmak için geçerlidir:
 
-- Bu kullanıcı için multi-Factor authentication (MFA) kayıtlı değil.
-- Silinmiş active risk olayları sahip kullanıcılar.
-- Bildirilen risk olayı yasal kullanıcı tarafından gerçekleştirilen olduğunu gösteren bir araştırma.
-
+- Multi-Factor Authentication (MFA) için kaydedilmemiş kullanıcılar.
+- Silinen etkin risk olayları olan kullanıcılar.
+- Yasal Kullanıcı tarafından bildirilen bir risk olayının gerçekleştirildiğini ortaya çıkaran bir araştırma.
 
 ## <a name="manual-password-reset"></a>El ile parola sıfırlama
 
-Kullanıcı riski İlkesi kullanarak bir parola sıfırlama gerektiren bir seçenek değilse, el ile parola sıfırlama ile kapalı bir kullanıcı için tüm risk olayları alabilirsiniz.
+Bir Kullanıcı risk ilkesi kullanarak parola sıfırlamayı gerektirmek bir seçenek değilse, bir kullanıcı için tüm risk olaylarını el ile parola sıfırlama ile kapatabilirsiniz.
 
 ![Parola sıfırla](./media/howto-close-active-risk-events/04.png)
 
-
-İlgili iletişim kutusu, bir parola sıfırlama için iki farklı yöntem sunar:
+İlgili iletişim kutusu, parolayı sıfırlamak için iki farklı yöntem sağlar:
 
 ![Parola sıfırla](./media/howto-close-active-risk-events/05.png)
 
+**Geçici parola oluşturma** -geçici bir parola oluşturarak, bir kimliği hemen güvenli bir duruma getirebilirsiniz. Bu yöntem, geçici parolanın ne olduğunu bilmeleri gerektiğinden etkilenen kullanıcılarla etkileşim kurmayı gerektirir. Örneğin, yeni geçici parolayı Kullanıcı veya kullanıcının Yöneticisi için alternatif bir e-posta adresine gönderebilirsiniz. Parola geçici olduğundan, kullanıcıdan bir sonraki oturum açma işlemi sırasında parolayı değiştirmesi istenir.
 
-**Geçici bir parola oluştur** -geçici bir parola oluşturarak, hemen bir kimlik geri güvenli bir duruma getirebilirsiniz. Bu yöntem, geçici parolayı ne olduğunu bilmeniz gerekir çünkü etkilenen kullanıcılarla etkileşim gerektirir. Örneğin, yeni bir geçici parola kullanıcı için bir alternatif e-posta adresi veya Kullanıcı Yöneticisi göndermek olabilir. Geçici bir parola olduğundan, kullanıcının sonraki oturum açma sırasında parola değiştirme istenir.
+**Kullanıcının parolayı sıfırlamasını gerektir** -kullanıcıların parola sıfırlamasını sağlamak, yardım masası veya yönetici ile iletişim kurmadan kendinden kurtarmaya olanak sağlar. Kullanıcı risk ilkesi söz konusu olduğunda bu yöntem yalnızca MFA için kayıtlı olan kullanıcılar için geçerlidir. MFA için henüz kaydedilmemiş kullanıcılar için bu seçenek kullanılamaz.
 
+## <a name="dismiss-all-risk-events"></a>Tüm risk olaylarını kapat
 
-**Kullanıcının parola sıfırlama** -kullanıcıların parolalarını sıfırlamasına gerek sağlayan Self-Service recovery Yardım Masası veya bir yönetici ile iletişim kurmadan. Gibi bir kullanıcı riski İlkesi söz konusu olduğunda, bu yöntem yalnızca MFA için kaydolduğunu kullanıcılara uygulanır. MFA için henüz kaydedilmemiş kullanıcılar için bu seçenek kullanılamaz.
-
-
-## <a name="dismiss-all-risk-events"></a>Tüm risk olayları kapatılamadı
-
-Bir parola, sıfırlama sizin için bir seçenek değil, tüm risk olayları kapatılamadı. 
+Parola sıfırlama sizin için bir seçenek değilse, tüm risk olaylarını da kapatabilirsiniz. 
 
 ![Parola sıfırla](./media/howto-close-active-risk-events/03.png)
 
-Tıkladığınızda **tüm olayları kapatılamadı**, tüm olayları kapatılır ve etkilenen kullanıcı artık risk altındadır. Bu yöntem mevcut parolayı bir etkiye sahip olmadığından, ancak bunu ilgili kimlik geri güvenli bir duruma getirmek değil. Bu yöntem için tercih edilen kullanım örneği, etkin risk olayları ile silinen bir kullanıcıdır. 
+**Tüm olayları kapat**' a tıkladığınızda, tüm olaylar kapatılır ve etkilenen Kullanıcı artık risk altında olmaz. Ancak, bu yöntemin var olan parola üzerinde bir etkisi olmadığından, ilgili kimliği güvenli bir duruma getirmez. Bu yöntem için tercih edilen kullanım örneği, etkin risk olayları olan silinmiş bir kullanıcı. 
 
+## <a name="close-individual-risk-events-manually"></a>Bireysel risk olaylarını el ile kapatın
 
-## <a name="close-individual-risk-events-manually"></a>Tek tek risk olaylarını elle kapatın
-
-Tek tek risk olayları el ile kapatabilirsiniz. Risk olaylarını elle kapatma kullanıcı risk düzeyi düşürebilirsiniz. Genellikle, risk olayları, el ile ilgili bir araştırma yanıt kapatılır. Örneğin, konuşma, bir kullanıcı bir etkin risk olayı artık gerekli olmadığını ortaya çıkarır. 
+Bireysel risk olaylarını el ile kapatabilirsiniz. Risk olaylarını el ile kapatarak, Kullanıcı risk düzeyini düşürebilirsiniz. Genellikle, risk olayları ilgili bir araştırmaya yanıt olarak el ile kapatılır. Örneğin, bir kullanıcıya konuştuğu zaman etkin bir risk olayının artık gerekli olmadığı ortaya çıkarır. 
  
-Risk olaylarını elle kapatma zaman, risk olayı durumunu değiştirmek için aşağıdaki eylemlerden herhangi birini tercih edebilirsiniz:
+Risk olaylarını el ile kapatırken, risk olayının durumunu değiştirmek için aşağıdaki eylemlerden herhangi birini yapabilirsiniz:
 
 ![Eylemler](./media/howto-close-active-risk-events/06.png)
 
-- **Çözmek** - bir risk olayını araştırdıktan sonra uygun düzeltme eylemi dışında kimlik koruması sürdü ve risk olayı kapatıldı, değerlendirilmesi gerektiğini düşünüyorsanız olayı Çözüldü olarak işaretleyin. Olayları risk olayın durumu kapalı olarak ayarlanır ve risk olayının artık kullanıcı riski katkıda bulunan çözüldü.
-
-- **Hatalı pozitif olarak işaretleme** -bazı durumlarda, bir risk olayını araştırmak ve olabilirsiniz, yanlış riskli işaretlenmiş olduğunu keşfedin. Risk olayı hatalı pozitif sonuç olarak işaretleyerek böyle oluşum sayısını azaltmaya yardımcı olabilir. Bu, makine öğrenimi algoritmaları sınıflandırma benzer olayların gelecekte artırmak için yardımcı olur. Yanlış pozitif sonuç veren olayların durumunu kapalı olduğunu ve kullanıcı riski artık katkıda bulunur.
-
-- **Yoksay** - herhangi bir düzeltme eylemi olmamıştır, ancak etkin listesinden kaldırılması için risk olayı istiyorsanız, bir risk olayını yoksay işaretleyebilirsiniz ve olay durumu kapatılır. Kullanıcı riski yok sayılan olayları katkıda bulunmuyor. Bu seçenek yalnızca olağan dışı durumlarda kullanılmalıdır.
-
-- **Yeniden** -(çözümleme, hatalı pozitif ya da yoksay seçerek) el ile kapatılmış Risk olayları yeniden etkinleştirilmediğinden, olay durumu etkin olarak ayarlama. Yeniden etkinleştirilen risk olayları için kullanıcı risk düzeyi hesaplama katkıda bulunur. (Güvenli parola sıfırlama gibi) düzeltme aracılığıyla kapatılan risk olayları yeniden etkinleştirilemez.
-  
+- **Çözümle** -bir risk olayını araştırdıktan sonra kimlik koruması dışında uygun bir düzeltme eylemi gerçekleştiyse ve risk olayının kapalı kabul edilmesi gerektiğini düşünüyorsanız, olayı çözümlenmiş olarak işaretleyin. Çözümlenen olaylar risk olayının durumunu kapalı olarak ayarlar ve risk olayı artık Kullanıcı riskine katkıda bulunmaz.
+- **Yanlış-pozitif olarak işaretle** -bazı durumlarda bir risk olayını araştırabilir ve yanlış bir riskli olarak işaretlenip işaretlenmediğini keşfedebilirsiniz. Risk olayını yanlış pozitif olarak işaretleyerek bu tür oluşumların sayısını azaltmaya yardımcı olabilirsiniz. Bu, daha sonra benzer olayların sınıflandırmasını geliştirmek için makine öğrenimi algoritmalarına yardımcı olur. False-pozitif olayların durumu kapanacaktır ve artık Kullanıcı riskine katkıda bulunmaz.
+- **Yoksay** -herhangi bir düzeltme eylemi gerçekleştirme, ancak risk olayının etkin listeden kaldırılmasını istiyorsanız, bir risk olayı yok saymayı işaretleyebilirsiniz ve olay durumu kapatılacak. Yoksayılan olaylar Kullanıcı riskine katkıda bulunmuyor. Bu seçenek yalnızca Olağandışı koşullarda kullanılmalıdır.
+- **Yeniden etkinleştirme** -el ile kapatılan risk olayları (çöz, yanlış pozitif veya Yoksay seçilerek) yeniden etkinleştirilebilir ve olay durumu tekrar etkin olarak ayarlanabilir. Yeniden etkinleştirilen risk olayları, Kullanıcı risk düzeyi hesaplamasına katkıda bulunur. Düzeltme aracılığıyla kapatılan risk olayları (güvenli parola sıfırlama gibi) yeniden etkinleştirilemez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure AD kimlik koruması genel bakış için bkz: [Azure AD kimlik koruması genel bakış](overview.md).
+Azure AD Kimlik Koruması genel bakış almak için bkz. [Azure AD kimlik koruması genel bakış](overview.md).

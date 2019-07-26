@@ -1,6 +1,6 @@
 ---
-title: Azure haritalar Hizmetleri modülü - kullanın | Microsoft Docs
-description: Azure haritalar Hizmetleri modülü kullanmayı öğrenin.
+title: Hizmet modülünü kullanma-Azure Maps | Microsoft Docs
+description: Azure haritalar Hizmetleri modülünü nasıl kullanacağınızı öğrenin.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 03/25/2019
@@ -8,38 +8,38 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.openlocfilehash: b56191bc93a91f944bb313b4ab9ad602da17dcf0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e7baacd3bb64ad234e478d4c1f75e793c46ec321
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66357646"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68476763"
 ---
-# <a name="use-the-azure-maps-services-module"></a>Azure haritalar Hizmetleri modülü kullanın
+# <a name="use-the-azure-maps-services-module"></a>Azure haritalar Hizmetleri modülünü kullanma
 
-Azure haritalar Web SDK'sı sağlar bir *services Modülü*. JavaScript veya TypeScript kullanarak web veya Node.js uygulamalarını Azure haritalar REST hizmetleri sağlayan bir yardımcı kitaplık modülüdür.
+Azure Haritalar Web SDK 'Sı bir *hizmet modülü*sağlar. Bu modül, JavaScript veya TypeScript kullanarak Web veya Node. js uygulamalarında Azure Maps REST hizmetlerini kullanmayı kolaylaştıran yardımcı bir kitaplıktır.
 
-## <a name="use-the-services-module-in-a-webpage"></a>Bir Web sayfasında services modülü kullanın
+## <a name="use-the-services-module-in-a-webpage"></a>Bir Web sayfasında hizmetler modülünü kullanma
 
 1. Yeni bir HTML dosyası oluşturun.
-1. Azure haritalar Hizmetleri modülü Bunu iki yoldan biriyle yükleyebilirsiniz:
-    - Azure haritalar Hizmetleri modülü genel olarak barındırılan Azure Content Delivery Network sürümünü kullanın. Bir komut dosyası referansı eklemek `<head>` öğesi:
+1. Azure haritalar Hizmetleri modülünü yükleyin. Bunu iki şekilde yükleyebilirsiniz:
+    - Azure haritalar Hizmetleri modülünün küresel olarak barındırılan, Azure Content Delivery Network sürümünü kullanın. Dosyanın `<head>` öğesine bir betik başvurusu ekleyin:
 
         ```html
-        <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js"></script>
+        <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
         ```
 
-    - Alternatif olarak, Azure haritalar Web SDK kaynak kodu kullanarak yerel olarak yükleme [azure haritalar rest](https://www.npmjs.com/package/azure-maps-rest) npm paketini ve uygulamanızla ana bilgisayar. Bu paket ayrıca TypeScript tanımları içerir. Bu komutu kullanın:
+    - Alternatif olarak, Azure Maps web SDK kaynak kodunu [Azure-Maps-Rest](https://www.npmjs.com/package/azure-maps-rest) NPM paketini kullanarak yerel olarak yükleyin ve ardından uygulamanızla birlikte barındırın. Bu paket TypeScript tanımlarını da içerir. Şu komutu kullanın:
     
-        > **npm yükleme azure-haritalar-rest**
+        > **NPM Install Azure-Maps-Rest**
     
-        Ardından, bir komut dosyası başvuru ekleyin `<head>` öğesi:
+        Ardından, dosyanın `<head>` öğesine bir betik başvurusu ekleyin:
 
          ```html
         <script src="node_modules/azure-maps-rest/dist/js/atlas-service.min.js"></script>
          ```
 
-1. Bir kimlik doğrulaması işlem hattı oluşturursunuz. Hizmet URL'si istemci uç noktası başlatabilirsiniz önce işlem hattı oluşturmanız gerekir. Bir Azure haritalar arama hizmeti istemcinin kimliğini doğrulamak için kendi Azure haritalar hesabı anahtarı veya Azure Active Directory (Azure AD) kimlik bilgilerini kullanın. Bu örnekte, arama hizmeti URL'si istemcisi oluşturulur. 
+1. Kimlik doğrulama işlem hattı oluşturun. Hizmet URL 'SI istemci uç noktasını başlatmak için işlem hattını oluşturmanız gerekir. Azure haritalar arama hizmeti istemcisinin kimliğini doğrulamak için kendi Azure haritalar hesap anahtarınızı veya Azure Active Directory (Azure AD) kimlik bilgilerinizi kullanın. Bu örnekte, arama hizmeti URL 'SI istemcisi oluşturulacaktır. 
 
     Kimlik doğrulaması için bir abonelik anahtarı kullanıyorsanız:
 
@@ -59,7 +59,7 @@ Azure haritalar Web SDK'sı sağlar bir *services Modülü*. JavaScript veya Typ
     var searchURL = new atlas.service.SearchURL(pipeline);
     ```
 
-    Azure AD kimlik doğrulaması için kullanıyorsanız:
+    Kimlik doğrulaması için Azure AD kullanıyorsanız:
 
     ```javascript
     // Enter your Azure AD client ID.
@@ -122,9 +122,9 @@ Azure haritalar Web SDK'sı sağlar bir *services Modülü*. JavaScript veya Typ
     }
     ```
 
-    Daha fazla bilgi için [Azure Haritalar ile kimlik doğrulaması](azure-maps-authentication.md).
+    Daha fazla bilgi için bkz. [Azure Maps Ile kimlik doğrulama](azure-maps-authentication.md).
 
-1. Aşağıdaki kod, geocode adresin yeni oluşturulan Azure Search Hizmeti URL'sini istemciye kullanır: "1 Microsoft Way, Redmond, WA". Kod `searchAddress` işlev ve sonuçları sayfasının gövdesinde tablo olarak görüntüler.
+1. Aşağıdaki kod, bir adresi coğrafi koda eklemek için yeni oluşturulan Azure Search hizmeti URL istemcisini kullanır: "1 Microsoft Way, Redmond, WA". Kod `searchAddress` işlevini kullanır ve sonuçları sayfanın gövdesinde bir tablo olarak görüntüler.
 
     ```javascript
     // Search for "1 microsoft way, redmond, wa".
@@ -154,26 +154,26 @@ Azure haritalar Web SDK'sı sağlar bir *services Modülü*. JavaScript veya Typ
     });
     ```
 
-    Tam kod örneğini çalıştırmak, şu şekildedir:
+    Aşağıda, çalışan kod örneğinin tamamı verilmiştir:
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Hizmetleri Modülünü Kullanma" src="//codepen.io/azuremaps/embed/zbXGMR/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Kalem bkz <a href='https://codepen.io/azuremaps/pen/zbXGMR/'>Services modülü kullanarak</a> Azure haritalar tarafından (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) üzerinde <a href='https://codepen.io'>CodePen</a>.
+<iframe height="500" style="width: 100%;" scrolling="no" title="Hizmetler modülünü kullanma" src="//codepen.io/azuremaps/embed/zbXGMR/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<a href='https://codepen.io'>Codepen</a>'da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından <a href='https://codepen.io/azuremaps/pen/zbXGMR/'>Hizmetler modülünü kullanarak</a> kaleme bakın.
 </iframe>
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede kullanılan yöntemleri ve sınıfları hakkında daha fazla bilgi edinin:
+Bu makalede kullanılan sınıflar ve yöntemler hakkında daha fazla bilgi edinin:
 
 > [!div class="nextstepaction"]
-> [MapsURL](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.mapsurl?view=azure-maps-typescript-latest)
+> [MapsURL 'Si](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.mapsurl?view=azure-maps-typescript-latest)
 
 > [!div class="nextstepaction"]
 > [SearchURL](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchurl?view=azure-maps-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [RouteURL](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl?view=azure-maps-typescript-latest)
+> [RouteURL 'Si](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl?view=azure-maps-typescript-latest)
 
 > [!div class="nextstepaction"]
 > [SubscriptionKeyCredential](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.subscriptionkeycredential?view=azure-maps-typescript-latest)
@@ -181,13 +181,13 @@ Bu makalede kullanılan yöntemleri ve sınıfları hakkında daha fazla bilgi e
 > [!div class="nextstepaction"]
 > [TokenCredential](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.tokencredential?view=azure-maps-typescript-latest)
 
-Hizmetleri modülü kullanmak daha fazla kod örneği için şu makalelere bakın:
+Hizmetler modülünü kullanan daha fazla kod örneği için şu makalelere bakın:
 
 > [!div class="nextstepaction"]
-> [Harita üzerinde arama sonuçlarını göster](./map-search-location.md)
+> [Haritada arama sonuçlarını göster](./map-search-location.md)
 
 > [!div class="nextstepaction"]
-> [Bir Koordinattan bilgi alma](./map-get-information-from-coordinate.md)
+> [Bir koordinatdan bilgi al](./map-get-information-from-coordinate.md)
 
 > [!div class="nextstepaction"]
-> [Yönergeleri A'dan B'ye yönleri gösterme](./map-route.md)
+> [A 'dan B 'ye yönlendirmeler göster](./map-route.md)
