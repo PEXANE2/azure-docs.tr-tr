@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 7410240b0d8e6a63d39c90ead2875f315d995de0
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
-ms.translationtype: MT
+ms.openlocfilehash: ba00842200d8a896fa1ffaccad8826d1c3173462
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68443786"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68488816"
 ---
 # <a name="tutorial-launch-the-immersive-reader-nodejs"></a>Öğretici: Tam Ekran Okuyucu’yu Başlatma (Node.js)
 
@@ -122,7 +122,7 @@ router.get('/subdomain', function (req, res) {
 });
 ```
 
-TH **,** yetkisiz kullanıcıların, tam ekran okuyucusu hizmetinize ve faturalandırmaya yönelik belirteçleri kullanmasını engellemek için bazı kimlik doğrulama (örneğin, [OAuth](https://oauth.net/2/)) sonrasında güvenli hale gelmelidir. Bu iş, Bu öğreticinin kapsamı dışındadır.
+**Getimmersivereadertoken** API uç noktası, yetkisiz kullanıcıların, bir dizi kimlik doğrulaması (örneğin, [OAuth](https://oauth.net/2/)) arkasında güvenli hale gelmelidir Bu iş, Bu öğreticinin kapsamı dışındadır.
 
 ## <a name="launch-the-immersive-reader-with-sample-content"></a>Örnek içerikle modern okuyucu başlatma
 

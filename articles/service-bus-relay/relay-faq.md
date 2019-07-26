@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2018
 ms.author: spelluru
-ms.openlocfilehash: f9f182a459f9a38c96bdf923998d1cdfee8fc3ac
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 207f73bbf9a92d26be1791fc11ce81fe68252705
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277973"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68422965"
 ---
 # <a name="azure-relay-faqs"></a>Azure Relay SSS
 
@@ -36,7 +36,7 @@ Bu makalede [Azure Relay](https://azure.microsoft.com/services/service-bus/)hakk
 [Ad alanı](relay-create-namespace-portal.md) , uygulamanızdaki geçiş kaynaklarını ele almak için kullanabileceğiniz bir kapsam kapsayıcıdır. Geçiş kullanmak için bir ad alanı oluşturmanız gerekir. Bu, kullanmaya başlarken ilk adımlardan biridir.
 
 ### <a name="what-happened-to-service-bus-relay-service"></a>Service Bus Relay Service 'e ne oldu?
-Daha önce adlandırılmış Service Bus geçiş hizmeti artık [WCF geçişi](relay-wcf-dotnet-get-started.md)olarak adlandırılır. Bu hizmeti her zamanki gibi kullanmaya devam edebilirsiniz. Karma Bağlantılar özelliği, Azure BizTalk Services tarafından oluşturulan bir hizmetin güncelleştirilmiş sürümüdür. WCF Geçişi ve Karma Bağlantılar her ikisi de desteklenmeye devam eder.
+Daha önce adlandırılmış Service Bus geçiş hizmeti artık [WCF geçişi](service-bus-relay-tutorial.md)olarak adlandırılır. Bu hizmeti her zamanki gibi kullanmaya devam edebilirsiniz. Karma Bağlantılar özelliği, Azure BizTalk Services tarafından oluşturulan bir hizmetin güncelleştirilmiş sürümüdür. WCF Geçişi ve Karma Bağlantılar her ikisi de desteklenmeye devam eder.
 
 ## <a name="pricing"></a>Fiyatlandırma
 Bu bölümde, geçiş Fiyatlandırma yapısı hakkında sık sorulan bazı sorular yanıtlanmaktadır. Ayrıca, genel Azure fiyatlandırma bilgileri için [Azure Destek SSS](https://azure.microsoft.com/support/faq/) ' ye bakabilirsiniz. Geçiş fiyatlandırması hakkında ayrıntılı bilgi için bkz. [Service Bus fiyatlandırma ayrıntıları][Pricing overview].

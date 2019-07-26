@@ -1,94 +1,79 @@
 ---
-title: Sık sorulan sorular ve (Azure Active Directory'de yenilenmiş) kimlik koruması ile ilgili bilinen sorunlar | Microsoft Docs
-description: Sık sorulan sorular ve (Azure Active Directory'de yenilenmiş) kimlik koruması ile ilgili bilinen sorunlar.
+title: Azure Active Directory 'de kimlik koruması (YENİLENDİ) ile ilgili SSS ve bilinen sorunlar | Microsoft Docs
+description: Azure Active Directory 'de kimlik koruması (yenileme) ile ilgili SSS ve bilinen sorunlar.
 services: active-directory
-keywords: Azure active directory kimlik koruması, bulut uygulaması bulma, yönetme, uygulamaları, güvenlik, risk, risk düzeyi, güvenlik açığı, güvenlik ilkesi
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 01/24/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 392b7a08d9422658c5620f60e9c1caca074bc85e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5d5aa50aec98b3944aed92b9da49182f0608f34c
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60452696"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68333896"
 ---
-# <a name="faqs-and-known-issues-with-identity-protection-refreshed-in-azure-active-directory"></a>Sık sorulan sorular ve (Azure Active Directory'de yenilenmiş) kimlik koruması ile ilgili bilinen sorunlar
+# <a name="faqs-and-known-issues-with-identity-protection-refreshed-in-azure-active-directory"></a>Azure Active Directory 'da kimlik koruması (yenileme) ile ilgili SSS ve bilinen sorunlar
 
+## <a name="dismiss-user-risk-known-issues"></a>Kullanıcı riski bilinen sorunlarını kapat
 
-## <a name="dismiss-user-risk-known-issues"></a>Kullanıcı riski bilinen sorunlar Kapat
+Klasik kimlik koruması ' nda **Kullanıcı riskini** kapatma kullanıcının kimlik koruması (YENİLENDİ) üzerindeki risk GEÇMIŞINI **Azure AD**'ye ayarlar.
 
-**Kullanıcı riski yok sayın** kimlik koruması ayarlar aktör kullanıcının risk geçmişinde kimlik koruması için (yenilenmiş) klasikteki **Azure AD'ye**.
+Kimlik koruması 'nda **Kullanıcı riskini** kapatma (yenilenmiş) kullanıcının kimlik koruması  **\<'ndaki risk geçmişinde, kullanıcının dikey penceresine\>işaret eden bir köprüyle yönetici adına sahip olan**aktöri ayarlar.
 
+Kullanıcı riski geri ayırma akışında gecikme sürelerine neden olan geçerli bir bilinen sorun var. "Kullanıcı risk ilkeniz" varsa, bu ilke "Kullanıcı riskini kapat" seçeneğine tıklanarak kapatılan kullanıcılara uygulamayı durdurur. Ancak, UX ile kapatılan kullanıcıların "risk durumunu" yenilemesinin bilinen gecikmeleri vardır. Geçici bir çözüm olarak, en son kullanıcıyı "risk durumu" görmek için tarayıcı düzeyindeki sayfayı yenileyin.
 
-**Kullanıcı riski yok sayın** (yenilenmiş) kimlik koruması aktör kullanıcının risk geçmişinde kimlik koruması (yenilenmiş) için ayarlar **\<yöneticinin adı için kullanıcının dikey penceresini gösteren köprü ile\>** .
+## <a name="risky-users-report-known-issues"></a>Riskli kullanıcılar bilinen sorunları raporlar
 
-Kullanıcı risk işten çıkarma akışında gecikme sürelerine neden geçerli bilinen bir sorun yoktur. "Kullanıcı riski İlkesi" varsa, bu ilke "Kullanıcı riskine Kapat" ı dakikalar içinde kapatılmış kullanıcılara uygulama durdurur. Ancak, gecikmeleri "Risk" kapatılmış kullanıcıların durumunu yenileme UX ile bilinen vardır. Geçici çözüm olarak, tarayıcı düzeyinde en son kullanıcı "Risk durumu" görmek için sayfayı yenileyin.
+**Kullanıcı** adı alanındaki sorgular büyük/küçük harfe duyarlıdır, ancak **ad** alanındaki sorgular büyük/küçük harfe duyarlıdır.
 
+**Tarihleri göster** değiştirme, **RISK Son güncelleme** sütununu gizler. Sütunu yeniden eklemek için riskli kullanıcılar dikey penceresinin en üstündeki **sütunlar** ' a tıklayın.
 
-## <a name="risky-users-report-known-issues"></a>Bilinen sorunlar riskli kullanıcılar raporu
-
-Üzerinde sorgular **kullanıcıadı** alan sorgular üzerinde çalışırken duyarlı **adı** alan durumu belirsiz.
-
-Geçiş **Göster olarak tarihleri** gizler **son RISK güncelleştirme** sütun. Sütun tıklayarak rolleriniz için **sütunları** riskli kullanıcılar dikey penceresinin üstünde.
-
-**Tüm olayları kapatılamadı** kimlik koruması, risk olayları için durumu ayarlar klasikteki **kapatıldı (Çözüldü)** .
-
+Klasik kimlik korumasında **tüm olayları kapat** risk olaylarının durumunu **Kapalı (çözüldü)** olarak ayarlar.
 
 ## <a name="risky-sign-ins-report-known-issues"></a>Riskli oturum açma işlemleri raporu bilinen sorunlar
 
-**Çözmek** üzerinde bir risk olayını durumu ayarlar **kullanıcılar, risk tabanlı ilke tarafından yönetilen MFA geçirilen**.
-
+Bir risk olayında **Çözümle** , durumu **risk tabanlı Ilke tarafından yönetilen MFA 'ya geçen kullanıcılara**ayarlar.
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
-### <a name="why-cant-i-set-my-own-risk-levels-for-each-risk-event"></a>Her risk olayı için kendi risk düzeyleri neden olarak ayarlanamıyor?
+### <a name="why-cant-i-set-my-own-risk-levels-for-each-risk-event"></a>Neden her risk olayı için kendi risk düzeyimi ayarlayamıyorum?
 
-Kimlik koruması, risk düzeyleri duyarlılık algılama üzerinde bağlı ve bizim denetimli makine öğrenimi tarafından desteklenen. Deneyimi kullanıcıların sunulan özelleştirmek için yönetici Ekle/kullanıcı riski ve oturum açma riski ilkeleri belirli kullanıcıları/grupları Dışla.
+Kimlik koruması 'ndaki risk düzeyleri algılama hassasiyetini temel alır ve denetimli makine öğrenimi tarafından desteklenir. Kullanıcıların hangi deneyimle sunulduğunu özelleştirmek için, Yönetici Kullanıcı risk ve oturum açma risk Ilkelerinden belirli kullanıcıları/grupları dahil edebilir/hariç tutabilir.
 
+### <a name="why-does-the-location-of-a-sign-in-not-match-where-the-user-truly-signed-in-from"></a>Bir oturum açma konumu, kullanıcının gerçekten gerçekten oturum açmasından nasıl eşleşmez?
 
-### <a name="why-does-the-location-of-a-sign-in-not-match-where-the-user-truly-signed-in-from"></a>Neden bir oturum açma konumu burada kullanıcının gerçek anlamda gelen oturum açtığı eşleşmiyor?
+IP coğrafi coğrafi eşleme, sektör genelinde bir zorluk dır. Oturum açma raporunda listelenen konumun gerçek konumla eşleşmediğinden, lütfen desteğe ulaşın. 
 
-IP coğrafi konum eşleme sektör genelinde bir zorluktur. Oturum açma işlemleri raporu listelenen konumu asıl konum eşleşmiyor düşünüyorsanız, lütfen desteklemek için ulaşın. 
+### <a name="how-do-the-feedback-mechanisms-in-identity-protection-work"></a>Kimlik koruması 'ndaki geri bildirim mekanizmaları nasıl çalışır?
 
+**Tehlikeden emin olun** (bir oturum açma sırasında) – oturum açma kimliğinin kimlik sahibi tarafından gerçekleştirilmediğini ve bir güvenliğinin aşılmasına neden olduğunu Azure AD Kimlik Koruması bildirir.
 
-### <a name="how-do-the-feedback-mechanisms-in-identity-protection-work"></a>Kimlik Koruması'nda geri bildirim mekanizmaları nasıl çalışır?
+- Bu geri bildirimin alınması sırasında, oturum açma ve Kullanıcı risk durumunu, **güvenliği aşılmış** ve risk düzeyini **yüksek**olarak geçeceğiz.
 
-**Onayla tehlikeye** (bir oturum açma) – oturum açma değildi bildirir, Azure AD kimlik koruması kimlik sahibi tarafından gerçekleştirilen ve güvenliğinin gösterir.
-
-- Bu geri bildirim aldıktan sonra biz oturum açma ve kullanıcı risk duruma taşımasını **tehlikeye onaylı** ve risk düzeyine **yüksek**.
-
-- Ayrıca, biz makinemizi sistemler için risk değerlendirmesi gelecekteki yenilikleri öğrenmek için bilgileri sağlayın.
+- Ayrıca, risk değerlendirmesinde gelecekteki geliştirmeler için Machine Learning sistemlerimize bilgi sağlıyoruz.
 
     > [!NOTE]
-    > Kullanıcı zaten düzeltildiyse tıklamayın **gizliliği onayla** oturum açma ve kullanıcı risk durumu taşıdığı **tehlikeye onaylı** ve risk düzeyine **yüksek**.
+    > Kullanıcı zaten düzeltildiyse, oturum açma ve Kullanıcı risk durumunu onaylanabilecek ve risk düzeyi **yüksek**olarak taşıdığı için **güvenliği aşılmış** '  i tıklamayın.
 
-**Güvenli onaylayın** (bir oturum açma) – Azure AD kimlik koruması oturum açma kimlik sahibi tarafından gerçekleştirildi ve güvenliğinin göstermez olduğunu bildirir.
+**Güvenli onaylama** (bir oturum açma sırasında) – oturum açma kimliğinin kimlik sahibi tarafından gerçekleştirildiğini Azure AD Kimlik Koruması ve bir uzlaşmaya işaret olmadığını bildirir.
 
-- Bu geri bildirim aldıktan sonra biz oturum açma (kullanıcı değil) taşıma durumuna risk **onaylı güvenli** ve risk düzeyine **-** .
+- Bu geri bildirimin alınması sırasında, oturum açma (Kullanıcı değil) risk durumunu **onaylı güvenli** ve risk düzeyine **-** taşıyacağız.
 
-- Ayrıca, biz makinemizi sistemler için risk değerlendirmesi gelecekteki yenilikleri öğrenmek için bilgileri sağlayın.
+- Ayrıca, risk değerlendirmesinde gelecekteki geliştirmeler için Machine Learning sistemlerimize bilgi sağlıyoruz.
 
     > [!NOTE]
-    > Kullanıcı gizliliğinin tehlikeye düşünüyorsanız kullanmak **kullanıcı riski yok sayın** kullanmak yerine kullanıcı düzeyinde **onaylı güvenli** oturum düzeyi. A **kullanıcı riski yok sayın** kullanıcı riski ve riskli oturum açma işlemleri ve risk olaylarını geçmişteki tüm kullanıcı düzeyi kapatır.
+    > Kullanıcının güvenliğinin aşılmadığını düşünüyorsanız, oturum açma düzeyinde **onaylanmış güvenli** kullanmak yerine Kullanıcı düzeyinde Kullanıcı **riskini kapat** seçeneğini kullanın. Kullanıcı düzeyinde **Kullanıcı** riskini kapatma, Kullanıcı riskini ve tüm geçmiş riskli oturum açma işlemlerini ve risk olaylarını kapatır.
 
+### <a name="why-am-i-seeing-a-user-with-a-low-or-above-risk-score-even-if-no-risky-sign-ins-or-risk-events-are-shown-in-identity-protection"></a>Kimlik koruması 'nda hiçbir riskli oturum açma veya risk olayı gösterilmese bile, bir kullanıcıyı düşük (veya üzeri) risk puanı ile birlikte görmem gerekir mi?
 
+Kullanıcı riskini doğası gereği, kullanım süreleri dolana kadar, kimlik koruması 'nda son riskli oturum açma veya risk olayları olmasa bile Kullanıcı düşük veya daha yüksek bir Kullanıcı riski oluşturabilir. Bu durum, bir kullanıcının riskli oturum açma ve risk olaylarının ayrıntılarını depolayabileceği zaman dilimini aşacak şekilde gerçekleştiyse meydana gelebilir. Kötü aktörlerin, saldırılarına devam etmeden önce güvenliği aşılmış bir kimliğin arkasındaki 140 gün içinde müşterilerin ortamında kalması bilindiği için Kullanıcı riskini sona ermedik. Müşteriler kullanıcının risk zaman çizelgesini inceleyerek, bir kullanıcının neden risk altında olduğunu anlayabilir:`Azure Portal > Azure Active Directory > Risky users’ report > Click on an at-risk user > Details’ drawer > Risk history tab`
 
-### <a name="why-am-i-seeing-a-user-with-a-low-or-above-risk-score-even-if-no-risky-sign-ins-or-risk-events-are-shown-in-identity-protection"></a>Riskli oturum açma işlemleri ya da risk olayları kimlik koruması gösterilen bile düşük ile (veya üzeri) kullanıcı risk puanı neden görüyorum?
+### <a name="why-does-a-sign-in-have-a-sign-in-risk-aggregate-score-of-high-when-the-detections-associated-with-it-are-of-low-or-medium-risk"></a>Neden bir oturum açma, bununla ilişkili algılamalar düşük veya orta riskli olduğunda bir "oturum açma riski (toplama)" puanı elde ediyor mu?
 
-Belirtilen kullanıcının risk doğası gereği toplanır ve dolmaz, bir kullanıcının, düşük kullanıcı riski olabilir veya olsa bile son riskli oturum açma işlemleri veya yoktur gösterilen kimlik koruması risk olayları. Bir kullanıcı yalnızca kötü amaçlı etkinlik ayrıntılarını riskli oturum açma işlemleri ve risk olaylarını depolarız zaman çerçevesini dışında gerçekleşen varsa bu durum gerçekleşebilir. Kötü aktörleri müşterilerin ortamında 140, saldırı ramping önce günden daha uzun bir tehlikeye atılmış kimlik arkasında kalın bilinmektedir çünkü biz kullanıcı riski dolmaz. Müşteriler, neden giderek bir kullanıcının risk altında olduğunu anlamak için kullanıcının risk zaman çizelgesini gözden geçirebilirsiniz: `Azure Portal > Azure Active Directory > Risky users’ report > Click on an at-risk user > Details’ drawer > Risk history tab`
-
-### <a name="why-does-a-sign-in-have-a-sign-in-risk-aggregate-score-of-high-when-the-detections-associated-with-it-are-of-low-or-medium-risk"></a>İlişkili algılamalar düşük veya Orta riskini olduğunda neden bir oturum açma yüksek bir "oturum açma riski (toplama)" puan var mı?
-
-Oturum açma veya birden çok algılama, oturum açma için harekete olgu diğer özellikleri yüksek birleşik risk puanı temel alabilir. Ve yüksek riskli oturum açma ile ilişkili algılamalar olsa bile, buna karşılık, bir oturum açma bir oturum açma riskini (toplama) Orta olabilir. 
+Yüksek toplu risk puanı, oturum açma işleminin diğer özelliklerine veya bu oturum açma için birden fazla algılamanın tetiklenmesi durumunda olabilir. Üstelik, oturum açma ile ilişkili algılamalar yüksek riskli olsa da, oturum açma, ortamın bir oturum açma riski (toplama) olabilir. 

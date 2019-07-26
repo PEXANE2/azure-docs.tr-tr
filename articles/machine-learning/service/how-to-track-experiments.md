@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 269568c172ff6c65c9877f9ad22067a11125b339
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: edc0da77fc1c2813c2485fca18d50952e3060db8
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67847592"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68370480"
 ---
 # <a name="log-metrics-during-training-runs-in-azure-machine-learning"></a>Azure Machine Learning eğitim sırasında günlük ölçümleri
 
@@ -225,8 +225,8 @@ Bu örnek, yukarıda temel sklearn Ridge modeli genişletir. Alfa değerleri öl
 
 ## <a name="view-run-details"></a>Çalıştırma Ayrıntıları görünümü
 
-### <a name="monitor-run-with-jupyter-notebook-widgets"></a>İzleyici pencere öğelerinde Jupyter not defteri çalıştırma
-Kullanırken **ScriptRunConfig** göndermek için gereken yöntemini çalıştırır, Jupyter not defteri olan bir pencere öğesi ile çalışma ilerlemesini izleyebilirsiniz. Çalıştırma gönderimi gibi pencere öğesi de zaman uyumsuzdur ve iş tamamlanana kadar her 10-15 saniyede bir canlı güncelleştirmeler sağlar.
+### <a name="monitor-run-with-jupyter-notebook-widget"></a>Jupyter Not defteri pencere öğesiyle çalışma izleme
+Çalıştırmaları göndermek için **ScriptRunConfig** yöntemini kullandığınızda, bir [Jupyıter pencere öğesi](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)ile çalıştırmanın ilerlemesini izleyebilirsiniz. Çalıştırma gönderimi gibi pencere öğesi de zaman uyumsuzdur ve iş tamamlanana kadar her 10-15 saniyede bir canlı güncelleştirmeler sağlar.
 
 1. Jupyter pencere öğesi, çalışma tamamlanması beklenirken görüntüleyin.
 
@@ -236,6 +236,12 @@ Kullanırken **ScriptRunConfig** göndermek için gereken yöntemini çalıştı
    ```
 
    ![Ekran görüntüsü, Jupyter not defteri pencere öğesi](./media/how-to-track-experiments/run-details-widget.png)
+
+Ayrıca, çalışma alanınızda aynı görüntüleme bağlantısını da alabilirsiniz.
+
+```python
+print(run.get_portal_url())
+```
 
 2. **[Çalıştırmalarını otomatik makine öğrenme]**  Grafikleri önceki bir çalıştırma işleminden erişmek için. Uygun `<<experiment_name>>` deneme adıyla değiştirin:
 
@@ -257,7 +263,8 @@ Daha fazla işlem hattını bir işlem hattı tıklama ayrıntılarını görün
 ### <a name="get-log-results-upon-completion"></a>Tamamlandıktan sonra günlük sonuçlarını alma
 
 Beklerken diğer görevleri çalıştırabileceği şekilde onlara eğitim ve izleme modeli arka planda gerçekleştirilir. Ayrıca daha fazla kod çalıştırmadan önce eğitim modeli tamamlanana kadar bekleyebilirsiniz. Kullanırken **ScriptRunConfig**, kullanabileceğiniz ```run.wait_for_completion(show_output = True)``` modeli eğitimi ne zaman tamamlandığını göstermek için. ```show_output``` Bayrağı ayrıntılı çıkış sağlar. 
-  
+
+
 ### <a name="query-run-metrics"></a>Sorgu ölçümleri Çalıştır
 
 Eğitilen modeli kullanarak bir ölçümleri görüntüleyebilir ```run.get_metrics()```. Artık tüm en iyi modeli belirlemek için yukarıdaki örnekte, günlüğe kaydedilen ölçümleri de alabilirsiniz.
@@ -287,140 +294,6 @@ Bir çalıştırma sırasında günlük kaydı ölçümleri farklı kayıt türl
 |Bir satır ile 2 sayısal sütunlara tekrar tekrar oturum|`run.log_row(name='Cosine Wave', angle=angle, cos=np.cos(angle))   sines['angle'].append(angle)      sines['sine'].append(np.sin(angle))`|İki değişken çizgi grafik|
 |2 sayısal sütunlara sahip günlüğü tablosu|`run.log_table(name='Sine Wave', value=sines)`|İki değişken çizgi grafik|
 
-<a name="auto"></a>
-## <a name="understanding-automated-ml-charts"></a>ML grafikleri anlama otomatik
-
-Bir otomatik bir not defteri ML işi gönderdikten sonra bu çalıştırma geçmişini, machine learning hizmeti çalışma alanını içinde bulunabilir. 
-
-Aşağıdakiler hakkında daha fazla bilgi edinin:
-+ [Grafikler ve sınıflandırma modelleri için Eğriler](#classification)
-+ [Grafikler ve graflar için regresyon modelleri](#regression)
-+ [Modeli açıklayan özelliği](#model-explain-ability-and-feature-importance)
-
-
-### <a name="view-the-run-charts"></a>Çalıştırma grafikleri görüntüleme
-
-1. Çalışma alanınıza gidin. 
-
-1. Seçin **denemeleri** çalışma alanınızın en soldaki panelde.
-
-   ![Deneme menüsünün ekran görüntüsü](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment-menu.png)
-
-1. İlginizi çeken bir denemeyi seçin.
-
-   ![Deneme listesi](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment-list.png)
-
-1. Tabloda, çalıştırma numarası seçin.
-
-   ![Denemeyi çalıştırma](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment-run.png)
-
-1. Tabloda, yineleme numarasını daha fazlasını keşfetmek istediğiniz modeli seçin.
-
-   ![Deneme modeli](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment-model.png)
-
-
-
-### <a name="classification"></a>Sınıflandırma
-
-Otomatik makine öğrenimi özellikleri, Azure Machine Learning kullanarak oluşturduğunuz her sınıflandırma modeli için aşağıdaki grafikleri görebilirsiniz: 
-+ [Karışıklık Matrisi](#confusion-matrix)
-+ [Duyarlık geri çekme grafiği](#precision-recall-chart)
-+ [Alıcı bir işlem özelliklerini (ya da ROC)](#roc)
-+ [Eğri Yükselt](#lift-curve)
-+ [Kazançlar eğri](#gains-curve)
-+ [Ayar çizimi](#calibration-plot)
-
-#### <a name="confusion-matrix"></a>Karışıklık Matrisi
-
-Karışıklık matrisi performansını bir sınıflandırma modeli tanımlamak için kullanılır. Her bir satır gerçek sınıf örneklerini görüntüler ve her sütun, tahmin edilen sınıf örneklerini temsil eder. Karışıklık matrisi doğru sınıflandırılmış etiketleri ve belirli bir model için yanlış sınıflandırılmış etiketleri gösterir.
-
-Sınıflandırma sorunlar için Azure Machine Learning, bir karışıklık matrisi otomatik olarak oluşturulan her model için sağlar. Her bir karışıklık matrisi için otomatik ML doğru sınıflandırılmış etiketleri kırmızı, yeşil ve yanlış sınıflandırılmış etiket olarak gösterir. Dairenin boyutu bu depo içindeki örnek sayısını temsil eder. Ayrıca, tahmin edilen her etiket ve her true etiket sıklığı sayısı bitişik çubuk grafiklerdeki sağlanır. 
-
-Örnek 1: Doğruluk ![doğruluğu düşük olan bir sınıflandırma modeline sahip bir sınıflandırma modeli](./media/how-to-track-experiments/azure-machine-learning-auto-ml-confusion-matrix1.png)
-
-Örnek 2: Yüksek doğruluk içeren bir sınıflandırma modeli (ideal) ![yüksek doğruluk içeren bir sınıflandırma modeli](./media/how-to-track-experiments/azure-machine-learning-auto-ml-confusion-matrix2.png)
-
-
-#### <a name="precision-recall-chart"></a>Duyarlık geri çekme grafiği
-
-Bu grafiği, duyarlık geri çekme eğrileri kesinlik ve belirli iş sorununuz için geri çağırma arasında kabul edilebilir bir ilişki hangi modelle belirlemek her model için karşılaştırabilirsiniz. Bu grafik, makro ortalama duyarlık geri çekme, mikro ortalama duyarlık geri çekme ve duyarlık-tüm sınıflar için bir model ile ilişkili geri çağırma gösterir.
-
-Terim duyarlık sınıflandırıcı tüm örnekleri doğru şekilde etiketlemek için bu özelliği temsil eder. Geri çağırma belirli bir etiketi tüm örneklerini bulmak bir sınıflandırıcı özelliği temsil eder. Duyarlık geri çekme eğriyi iki Bu kavramlar arasındaki ilişkiyi gösterir. İdeal olarak, model % 100 kesinlik ve % 100 doğruluğu sahip olması gerekir.
-
-Örnek 1: Düşük duyarlığa sahip bir sınıflandırma modeli, düşük ![hassasiyet ve düşük geri çağırma ile bir sınıflandırma modelini çağırır](./media/how-to-track-experiments/azure-machine-learning-auto-ml-precision-recall1.png)
-
-Örnek 2: Bir sınıflandırma modeli, yaklaşık% 100 duyarlık ve ~ 100% hatırlayın (ideal) ![bir sınıflandırma modeli yüksek duyarlıklı ve geri çağırma](./media/how-to-track-experiments/azure-machine-learning-auto-ml-precision-recall2.png)
-
-#### <a name="roc"></a>ROC
-
-Özelliği (veya ROC) çalışan ve belirli bir modelde yanlış sınıflandırılmış etiketlerini doğru sınıflandırılmış etiketlerin bir çizim alıcıdır. Eğitim modeller olarak yüksek sapması veri kümeleri üzerinde yanlış pozitif etiketleri gösterme ROC eğrisi daha bilgilendirici olabilir.
-
-Örnek 1: Düşük doğru etiketlere ve yüksek yanlış etiketlere sahip, düşük doğru ![etiketlere ve yüksek yanlış etiketlere sahip bir sınıflandırma modeli](./media/how-to-track-experiments/azure-machine-learning-auto-ml-roc-1.png)
-
-Örnek 2: Yüksek doğru etiketlere sahip bir sınıflandırma modeli ve düşük yanlış ![Etiketler, yüksek doğru Etiketler ve düşük yanlış etiketlere sahip bir sınıflandırma modeline sahiptir](./media/how-to-track-experiments/azure-machine-learning-auto-ml-roc-2.png)
-
-#### <a name="lift-curve"></a>Eğri Yükselt
-
-Otomatik olarak bu belirli modelin değeri kazanç görüntülemek için taban çizgisine Azure Machine Learning ile geliştirilmiş modelinin lift karşılaştırabilirsiniz.
-
-Lift grafikleri bir sınıflandırma modeli performansını değerlendirmek için kullanılır. Bu, ne kadar daha iyi, bir model karşılaştırıldığında bir model ile yapmak, bekleyebileceğiniz gösterir. 
-
-Örnek 1: Model rastgele bir seçim modelinden daha ![kötü bir şekilde çalışır](./media/how-to-track-experiments/azure-machine-learning-auto-ml-lift-curve1.png)
-
-Örnek 2: Model rastgele bir seçim modelinden ![daha iyi performans gerçekleştiren bir sınıflandırma modeli](./media/how-to-track-experiments/azure-machine-learning-auto-ml-lift-curve2.png)
-
-#### <a name="gains-curve"></a>Kazançlar eğri
-
-Kazançlar grafiği her veri bölümü tarafından bir sınıflandırma modeli performansını değerlendirir. Bu, veri kümesinin ne kadar iyi gerçekleştirmesini bekleyebilirsiniz karşı bir rastgele seçim modeli karşılaştırması, her yüzdebirlik dilime gösterir.
-
-İstenen bir erişim modelden karşılık gelen bir yüzdesini kullanarak sınıflandırma kesme seçmenize yardımcı olmak için toplam kazancı grafik kullanın. Bu bilgiler eşlik eden lift grafik sonuçları bakarak başka bir yol sağlar.
-
-Örnek 1: Minimum düzeyde kazanç içeren bir sınıflandırma ![modeline minimum sahip bir sınıflandırma modeli](./media/how-to-track-experiments/azure-machine-learning-auto-ml-gains-curve1.png)
-
-Örnek 2: Önemli miktarda kazanç içeren bir sınıflandırma ![modeli elde etmek için önemli olan bir sınıflandırma modeli](./media/how-to-track-experiments/azure-machine-learning-auto-ml-gains-curve2.png)
-
-#### <a name="calibration-plot"></a>Ayar çizimi
-
-Tüm sınıflandırma sorunları ayarlama satır micro-ortalama, makro ortalama ve her sınıfta belirli bir Tahmine dayalı model için gözden geçirebilirsiniz. 
-
-Bir ayar çizim, Tahmine dayalı bir modelin güvenle görüntülemek için kullanılır. Bunu "olasılık" temsil ettiği bazı etiket altında belirli bir örneğine ait olasılığını tahmin edilen olasılığını ve gerçek olasılığını arasındaki ilişkiyi gösteren göre yapar. Y ile de ayarlanmış bir model hizalar = x, Öngörüler makul başarılara olduğu satır. Fazla kişiye modeli ile y hizalar = 0 satırı, burada tahmin olasılık mevcuttur ancak gerçek hiç olasılık yoktur.
-
-Örnek 1: Daha iyi kalibre edilmiş bir model ![ daha iyi kalibre edilmiş bir model](./media/how-to-track-experiments/azure-machine-learning-auto-ml-calib-curve1.png)
-
-Örnek 2: Daha emin olan bir model, daha duyarlı birmodel![](./media/how-to-track-experiments/azure-machine-learning-auto-ml-calib-curve2.png)
-
-### <a name="regression"></a>Regresyon
-Her bir regresyon modeli için otomatik makine öğrenimi özellikleri, Azure Machine Learning kullanarak yapı, aşağıdaki grafikleri görebilirsiniz: 
-+ [Tahmin edilen vs. TRUE](#pvt)
-+ [Kalanlar Histogramı](#histo)
-
-<a name="pvt"></a>
-
-#### <a name="predicted-vs-true"></a>Tahmin edilen vs. True
-
-Tahmin edilen vs. TRUE, tahmin edilen bir değer ile ilişkilendirilmesini true değeri için regresyon problemi arasındaki ilişkiyi gösterir. Bu grafiğin y yakın olarak model performansını ölçmek için kullanılan = x satır tahmin edilen değerler, Tahmine dayalı bir model doğruluğunu daha iyi.
-
-Sonrasında her çalıştırma, tahmin edilen bir karşılaştırması için her bir regresyon modeli true grafı görebilirsiniz. Veri gizliliği korumak için değerleri birlikte binned ve her bir depo boyutu, grafik alanı alt kısmında bulunan bir çubuk grafik olarak gösterilir. Tahmine dayalı model hatası kenar boşlukları, model olması gerektiği ideal değerle gösteren açık gölge alanı ile karşılaştırabilirsiniz.
-
-Örnek 1: Tahmine dayalı ![bir regresyon modeli tahminlerde düşük doğruluk içeren bir regresyon modeli](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression1.png)
-
-Örnek 2: Tahmine dayalı bir regresyon modeli, tahminlerde yüksek doğruluk ![içeren bir regresyon modeli](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression2.png)
-
-<a name="histo"></a>
-
-#### <a name="histogram-of-residuals"></a>Kalanlar Histogramı
-
-Bir fazlalığı gözlemlenen y – tahmin edilen y temsil eder. Bir hata ile düşük sapması göstermek için 0 ortalanmış bir bell eğri olarak Kalanlar histogram şeklinde. 
-
-Örnek 1: Hatalarında sapma içeren bir gerileme modeli ![, hatalarında sapma ile regresyon modeli](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression3.png)
-
-Örnek 2: Hatanın daha eşit bir şekilde dağıtımına karşı daha da fazla hata dağıtımı olan gerileme modeli ![](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression4.png)
-
-### <a name="model-explain-ability-and-feature-importance"></a>Model açıklayan özelliği ve özellik önem derecesi
-
-Özellik önem nasıl değerli bir model oluşturma, her bir özellik olduğunu gösteren bir puan verir. Genel olarak Tahmine dayalı bir model sınıfı başına model özellik önem puanını gözden geçirebilirsiniz. Özellik nasıl önemini her sınıf karşı ve genel karşılaştırır görebilirsiniz.
-
-![Özellik açıklama özelliği](./media/how-to-track-experiments/azure-machine-learning-auto-ml-feature-explain1.png)
 
 ## <a name="example-notebooks"></a>Örnek Not Defterleri
 Aşağıdaki not defterleri, bu makaledeki kavramları göstermektedir:

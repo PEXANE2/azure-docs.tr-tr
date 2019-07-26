@@ -12,12 +12,12 @@ ms.date: 07/17/2019
 ms.author: mimart
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3b23aa7db29390ef50a72f73fb153fef5301b92
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: ddbb233bb9d0970169f040e3040b44a0b75aa1f8
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304825"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68477169"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Azure Active Directory'de uygulamalar için çoklu oturum açma
 
@@ -71,9 +71,9 @@ SAML tabanlı çoklu oturum açma şu protokolden herhangi birini kullanan uygul
 - SAML 2.0
 - WS-Federation
 
-SAML tabanlı çoklu oturum açma için bir SaaS uygulaması yapılandırmak üzere bkz. [SAML tabanlı çoklu oturum açmayı yapılandırma](configure-single-sign-on-portal.md). Ayrıca, hizmet olarak yazılım (SaaS) uygulamalarında, SAML tabanlı çoklu oturum açma yapılandırmasında size adım adım kılavuzluk eden [uygulamaya özgü bir öğretici](../saas-apps/tutorial-list.md) vardır.
+SAML tabanlı çoklu oturum açma için bir SaaS uygulaması yapılandırmak üzere bkz. [SAML tabanlı çoklu oturum açmayı yapılandırma](configure-single-sign-on-non-gallery-applications.md). Ayrıca, hizmet olarak yazılım (SaaS) uygulamalarında, SAML tabanlı çoklu oturum açma yapılandırmasında size adım adım kılavuzluk eden [uygulamaya özgü bir öğretici](../saas-apps/tutorial-list.md) vardır.
 
-Bir uygulamayı WS-Federation için yapılandırmak üzere, SAML tabanlı çoklu oturum açma için uygulamayı yapılandırmak üzere aynı kılavuzu izleyin, bkz. [SAML tabanlı çoklu oturum açmayı yapılandırma](configure-single-sign-on-portal.md). Uygulamayı Azure AD kullanacak şekilde yapılandırma adımında, WS-Federation uç noktası `https://login.microsoftonline.com/<tenant-ID>/wsfed`için Azure AD oturum açma URL 'sini değiştirmeniz gerekir.
+Bir uygulamayı WS-Federation için yapılandırmak üzere, SAML tabanlı çoklu oturum açma için uygulamayı yapılandırmak üzere aynı kılavuzu izleyin, bkz. [SAML tabanlı çoklu oturum açmayı yapılandırma](configure-single-sign-on-non-gallery-applications.md). Uygulamayı Azure AD kullanacak şekilde yapılandırma adımında, WS-Federation uç noktası `https://login.microsoftonline.com/<tenant-ID>/wsfed`için Azure AD oturum açma URL 'sini değiştirmeniz gerekir.
 
 SAML tabanlı çoklu oturum açma için şirket içi bir uygulamayı yapılandırmak için, bkz. [uygulama proxy 'si ile şirket içi uygulamalar Için SAML çoklu oturum açma](application-proxy-configure-single-sign-on-on-premises-apps.md).
 
@@ -100,7 +100,7 @@ Parola tabanlı çoklu oturum açma bir HTML tabanlı oturum açma sayfası olan
 - Chrome Windows 7 ve daha sonra ve MacOS x veya sonrası
 - Firefox 26,0 veya daha sonra Windows XP SP2 veya üzeri ve Mac OS X 10.6 üzerinde veya üzeri
 
-Bir bulut uygulama parola tabanlı çoklu oturum açma için yapılandırmak üzere bkz [parola çoklu oturum açma için uygulamayı yapılandırma](application-sign-in-problem-password-sso-gallery.md#configure-the-app-for-password-sso).
+Parola tabanlı çoklu oturum açma için bir bulut uygulaması yapılandırmak üzere, bkz. [parola çoklu oturum açmayı yapılandırma](configure-password-single-sign-on-non-gallery-applications.md).
 
 Bir şirket içi uygulama için uygulama proxy'si aracılığıyla çoklu oturum açmayı yapılandırmak için bkz [vaulting uygulama proxy'si ile çoklu oturum açma için parola](application-proxy-configure-single-sign-on-password-vaulting.md)
 
@@ -127,8 +127,7 @@ Ne zaman son kullanıcı kimlik bilgilerini yönetir:
 - Yöneticiler uygulama için yeni kimlik bilgilerini ayarlamak hala mümkün.
 
 ## <a name="linked-sign-on"></a>Bağlantılı oturum açma
-
-Bağlantılı oturum açma için çoklu oturum açmayı başka bir hizmet olarak zaten yapılandırılmış bir uygulama için çoklu oturum açma sağlamak için Azure AD'deki sağlar. Bağlı uygulama Office 365 portalında veya Azure AD MyApps portalında son kullanıcılara görünür. Örneğin, bir kullanıcı çoklu oturum açma Active Directory Federasyon Hizmetleri 2.0 (AD FS), Office 365 portalından için yapılandırılmış bir uygulama başlatabilirsiniz. Ek raporlama da Office 365 portalında veya Azure AD MyApps portalından başlatılan bağlantılı uygulamalar için kullanılabilir.
+Bağlantılı oturum açma için çoklu oturum açmayı başka bir hizmet olarak zaten yapılandırılmış bir uygulama için çoklu oturum açma sağlamak için Azure AD'deki sağlar. Bağlı uygulama Office 365 portalında veya Azure AD MyApps portalında son kullanıcılara görünür. Örneğin, bir kullanıcı çoklu oturum açma Active Directory Federasyon Hizmetleri 2.0 (AD FS), Office 365 portalından için yapılandırılmış bir uygulama başlatabilirsiniz. Ek raporlama da Office 365 portalında veya Azure AD MyApps portalından başlatılan bağlantılı uygulamalar için kullanılabilir. Bir uygulamayı bağlantılı oturum açma için yapılandırmak üzere bkz. [bağlı oturum açmayı yapılandırma](configure-linked-sign-on.md).
 
 ### <a name="linked-sign-on-for-application-migration"></a>Uygulama geçişi için bağlantılı oturum açma
 
@@ -189,8 +188,9 @@ Bu senaryo Azure AD ve PingAccess arasındaki bir iş ortaklığı aracılığı
 Daha fazla bilgi için bkz. [Azure Active Directory sürümleri](../fundamentals/active-directory-whatis.md).
 
 ## <a name="related-articles"></a>İlgili makaleler
-
-- [SaaS uygulamaları Azure Active Directory ile tümleştirme hakkında öğreticiler](../saas-apps/tutorial-list.md)
-- [Çoklu oturum açmayı yapılandırma Öğreticisi](configure-single-sign-on-portal.md)
-- [Uygulamalara erişimi yönetme giriş](what-is-access-management.md)
-- İndirme bağlantısı: [Çoklu oturum açma dağıtım planı](https://aka.ms/SSODeploymentPlan)
+* [SaaS uygulamaları Azure Active Directory ile tümleştirme hakkında öğreticiler](../saas-apps/tutorial-list.md)
+* [SAML tabanlı çoklu oturum açmayı yapılandırma](configure-single-sign-on-non-gallery-applications.md)
+* [Parola tabanlı çoklu oturum açmayı yapılandırma](configure-password-single-sign-on-non-gallery-applications.md)
+* [Bağlı oturum açmayı yapılandırma](configure-linked-sign-on.md)
+* [Uygulamalara erişimi yönetme giriş](what-is-access-management.md)
+* İndirme bağlantısı: [Çoklu oturum açma dağıtım planı](https://aka.ms/SSODeploymentPlan).

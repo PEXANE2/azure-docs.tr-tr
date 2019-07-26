@@ -1,7 +1,7 @@
 ---
-title: Dağıtılmış web hizmetini tüketmeye istemcisi oluşturma
+title: Dağıtılan Web hizmetini tüketmek için istemci oluşturma
 titleSuffix: Azure Machine Learning service
-description: Bir modeli Azure Machine Learning modeli ile dağıttığınızda, oluşturulan bir web hizmetinin nasıl kullanılacağı hakkında bilgi edinin. Web hizmeti REST API sunar. İstemciler bu API için tercih ettiğiniz programlama dilini kullanarak oluşturun.
+description: Bir model Azure Machine Learning modeliyle dağıtıldığında oluşturulan bir Web hizmetini nasıl kullanacağınızı öğrenin. Web hizmeti bir REST API gösterir. Tercih ettiğiniz programlama dilini kullanarak bu API için istemcileri oluşturun.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,31 +11,31 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 376be43a57783f537df81f0e97f005e2c46a710e
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 070dd07aa6705e97a532bdc5f53a08a9abe0f83d
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797628"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68361018"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Bir web hizmeti olarak bir Azure Machine Learning modeli kullanma
 
-Bir Azure Machine Learning modeli bir web hizmeti olarak dağıtma, bir REST API oluşturur. Bu API için veri göndermek ve modeli tarafından döndürülen tahmin alırsınız. Bu belgede, web hizmeti istemcileri kullanarak oluşturmayı öğrenin C#, Go, Java ve Python.
+Bir Azure Machine Learning modeli bir web hizmeti olarak dağıtma, bir REST API oluşturur. Bu API için veri göndermek ve modeli tarafından döndürülen tahmin alırsınız. Bu belgede, Web hizmeti için, Go, Java ve Python kullanarak C#istemci oluşturma hakkında bilgi edinin.
 
-Görüntüyü Azure Container Instances, Azure Kubernetes hizmeti veya alanda programlanabilir kapı dizileri (FPGA) dağıtırken bir web hizmeti oluşturun. Kayıtlı bir model ve puanlama dosyaları yansımaları oluşturun. Kullanarak bir web hizmetine erişmek için kullanılan URI'yi almak [Azure Machine Learning SDK'sı](https://aka.ms/aml-sdk). Kimlik doğrulamasını etkinleştirdiyseniz, kimlik doğrulama anahtarlarını almak için SDK'yı da kullanabilirsiniz.
+Azure Container Instances, Azure Kubernetes hizmeti veya alan-programlanabilir kapı dizileri (FPGA) için bir görüntü dağıtırken bir Web hizmeti oluşturursunuz. Kayıtlı modeller ve Puanlama dosyalarından görüntüler oluşturursunuz. [Azure MACHINE LEARNING SDK](https://aka.ms/aml-sdk)kullanarak bir Web hizmetine erişmek IÇIN kullanılan URI 'yi alırsınız. Kimlik doğrulamasını etkinleştirdiyseniz, kimlik doğrulama anahtarlarını almak için SDK'yı da kullanabilirsiniz.
 
-Bir machine learning web hizmeti kullanan bir istemci oluşturmak için genel iş akışı şöyledir:
+Machine Learning Web hizmeti kullanan bir istemci oluşturmak için genel iş akışı:
 
-1. Bağlantı bilgilerini almak için SDK'yi kullanın.
-1. Model tarafından kullanılan istek verilerin türünü belirler.
+1. Bağlantı bilgilerini almak için SDK 'Yı kullanın.
+1. Model tarafından kullanılan istek verilerinin türünü belirleme.
 1. Web hizmetini çağıran bir uygulama oluşturun.
 
 ## <a name="connection-information"></a>Bağlantı bilgileri
 
 > [!NOTE]
-> Web hizmeti bilgileri almak için Azure Machine Learning SDK'sını kullanın. Bir Python SDK'sı budur. Herhangi bir dilde bir istemci hizmeti oluşturmak için kullanabilirsiniz.
+> Web hizmeti bilgilerini almak için Azure Machine Learning SDK 'sını kullanın. Bir Python SDK'sı budur. Hizmet için bir istemci oluşturmak üzere herhangi bir dili kullanabilirsiniz.
 
-[Azureml.core.Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) sınıfı, bir istemci oluşturmak ihtiyacınız olan bilgileri sağlar. Aşağıdaki `Webservice` özellikleri bir istemci uygulaması oluşturmak için kullanışlıdır:
+[Azureml. Core. WebService](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) sınıfı, istemci oluşturmak için gereken bilgileri sağlar. Aşağıdaki `Webservice` Özellikler bir istemci uygulaması oluşturmak için yararlıdır:
 
 * `auth_enabled` -Kimlik doğrulama etkinse `True`; Aksi takdirde `False`.
 * `scoring_uri` -REST API adresi.
@@ -53,14 +53,14 @@ Dağıtılan web hizmetleri için bu bilgileri almak için üç yol vardır:
     print(service.scoring_uri)
     ```
 
-* Kullanabileceğiniz `Webservice.list` bir listesini almak için çalışma alanınızdaki modelleri için web hizmetleri dağıtıldı. Döndürülen bilgileri listesini daraltmak için filtre ekleyebilirsiniz. Hakkında daha fazla bilgi filtrelenebilen için bkz: [Webservice.list](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py) başvuru belgeleri.
+* Kullanabileceğiniz `Webservice.list` bir listesini almak için çalışma alanınızdaki modelleri için web hizmetleri dağıtıldı. Döndürülen bilgileri listesini daraltmak için filtre ekleyebilirsiniz. Ne filtrelenebilir hakkında daha fazla bilgi için, bkz. [WebService. List](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py) başvuru belgeleri.
 
     ```python
     services = Webservice.list(ws)
     print(services[0].scoring_uri)
     ```
 
-* Dağıtılan hizmetin adını biliyorsanız, yeni bir örneğini oluşturabilirsiniz `Webservice`ve parametrelere çalışma ve hizmet adını girin. Yeni nesne dağıtılan hizmeti hakkında bilgi içerir.
+* Dağıtılan hizmetin adını biliyorsanız, ' nin `Webservice`yeni bir örneğini oluşturabilir ve çalışma alanını ve hizmet adını parametreler olarak sağlayabilirsiniz. Yeni nesne dağıtılan hizmeti hakkında bilgi içerir.
 
     ```python
     service = Webservice(workspace=ws, name='myservice')
@@ -69,12 +69,12 @@ Dağıtılan web hizmetleri için bu bilgileri almak için üç yol vardır:
 
 ### <a name="authentication-key"></a>Kimlik doğrulama anahtarı
 
-Kimlik doğrulaması için bir dağıtım'ı etkinleştirdiğinizde otomatik olarak kimlik doğrulaması anahtarları oluşturun.
+Bir dağıtım için kimlik doğrulamasını etkinleştirdiğinizde, otomatik olarak kimlik doğrulama anahtarları oluşturursunuz.
 
-* Azure Kubernetes Service'e dağıtırken, kimlik doğrulaması varsayılan olarak etkindir.
-* Azure Container Instances'a dağıtırken kimlik doğrulaması varsayılan olarak devre dışıdır.
+* Azure Kubernetes hizmetine dağıtım yaparken, varsayılan olarak kimlik doğrulaması etkinleştirilir.
+* Azure Container Instances dağıtım yaparken, varsayılan olarak kimlik doğrulaması devre dışıdır.
 
-Kimlik doğrulaması denetlemek için kullanın `auth_enabled` oluştururken veya bir dağıtım güncelleştirme parametresi.
+Kimlik doğrulamasını denetlemek için, bir `auth_enabled` dağıtım oluştururken veya güncelleştirirken parametresini kullanın.
 
 Kimlik doğrulamasını etkinleştirdiyseniz, kullanabileceğiniz `get_keys` yönteminin bir birincil ve ikincil kimlik doğrulama anahtarı almak için:
 
@@ -102,7 +102,7 @@ REST API isteği aşağıdaki yapıya sahip bir JSON belge gövdesinin bekliyor:
 > [!IMPORTANT]
 > Verilerin yapısı, hangi Puanlama betiği ve hizmet expect modelinde ile eşleşmesi gerekiyor. Puanlama betiği modele iletmeden önce verileri değiştirebilir.
 
-Örneğin, modelde [Not Defteri içinde Train](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) örnek 10 sayıdan oluşan bir diziyi bekliyor. Bu örnek için Puanlama betiğine istekten Numpy dizisi oluşturur ve modele geçirir. Aşağıdaki örnek, bu hizmet bekliyor veri gösterir:
+Örneğin, modelde [Not Defteri içinde Train](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) örnek 10 sayıdan oluşan bir diziyi bekliyor. Bu örneğe ilişkin Puanlama betiği, istekten bir sayısal tuş bir y dizisi oluşturur ve modele geçirir. Aşağıdaki örnek, bu hizmet bekliyor veri gösterir:
 
 ```json
 {
@@ -128,14 +128,16 @@ Web hizmeti, birden çok bir istekteki veri kümelerini kabul edebilir. Yanıt b
 
 ### <a name="binary-data"></a>İkili veriler
 
-Bir görüntü gibi ikili veri modelinizi kabul ediyorsa değiştirmelisiniz `score.py` dağıtımınız için ham HTTP isteklerini kabul etmek için kullanılan dosya. İşte bir örnek bir `score.py` ikili verileri kabul eden:
+Bir görüntü gibi ikili veri modelinizi kabul ediyorsa değiştirmelisiniz `score.py` dağıtımınız için ham HTTP isteklerini kabul etmek için kullanılan dosya. İkili verileri kabul eden bir `score.py` örneği aşağıda verilmiştir:
 
-```python 
-from azureml.contrib.services.aml_request  import AMLRequest, rawhttp
+```python
+from azureml.contrib.services.aml_request import AMLRequest, rawhttp
 from azureml.contrib.services.aml_response import AMLResponse
+
 
 def init():
     print("This is init()")
+
 
 @rawhttp
 def run(request):
@@ -147,9 +149,9 @@ def run(request):
         return AMLResponse(respBody, 200)
     elif request.method == 'POST':
         reqBody = request.get_data(False)
-        # For a real world solution, you would load the data from reqBody 
+        # For a real world solution, you would load the data from reqBody
         # and send to the model. Then return the response.
-        
+
         # For demonstration purposes, this example just returns the posted data as the response.
         return AMLResponse(reqBody, 200)
     else:
@@ -157,9 +159,9 @@ def run(request):
 ```
 
 > [!IMPORTANT]
-> `azureml.contrib` Ad değişiklikleri sık olarak hizmeti geliştirmek için çalışıyoruz. Bu nedenle, bu ad alanındaki herhangi bir şey önizleme olarak kabul ve tamamen Microsoft tarafından desteklenmiyor.
+> Hizmeti geliştirmekle çalışırken ad alanı sıklıkla değişir. `azureml.contrib` Bu nedenle, bu ad alanındaki her şey Microsoft tarafından tam olarak desteklenmez ve önizleme olarak değerlendirilmelidir.
 >
-> Bu, yerel geliştirme ortamınıza test etmeniz, bileşenleri yükleyebilirsiniz `contrib` aşağıdaki komutu kullanarak ad alanı:
+> Bunu yerel geliştirme ortamınızda test etmeniz gerekirse, aşağıdaki komutu kullanarak bu bileşenleri `contrib` ad alanına yükleyebilirsiniz:
 > 
 > ```shell
 > pip install azureml-contrib-services
@@ -440,45 +442,44 @@ scoring_uri = '<your web service URI>'
 key = '<your key>'
 
 # Two sets of data to score, so we get two results back
-data = {"data": 
+data = {"data":
+        [
             [
-                [
-                    0.0199132141783263, 
-                    0.0506801187398187, 
-                    0.104808689473925, 
-                    0.0700725447072635, 
-                    -0.0359677812752396, 
-                    -0.0266789028311707, 
-                    -0.0249926566315915, 
-                    -0.00259226199818282, 
-                    0.00371173823343597, 
-                    0.0403433716478807
-                ],
-                [
-                    -0.0127796318808497, 
-                    -0.044641636506989, 
-                    0.0606183944448076, 
-                    0.0528581912385822, 
-                    0.0479653430750293, 
-                    0.0293746718291555, 
-                    -0.0176293810234174, 
-                    0.0343088588777263, 
-                    0.0702112981933102, 
-                    0.00720651632920303]
-            ]
+                0.0199132141783263,
+                0.0506801187398187,
+                0.104808689473925,
+                0.0700725447072635,
+                -0.0359677812752396,
+                -0.0266789028311707,
+                -0.0249926566315915,
+                -0.00259226199818282,
+                0.00371173823343597,
+                0.0403433716478807
+            ],
+            [
+                -0.0127796318808497,
+                -0.044641636506989,
+                0.0606183944448076,
+                0.0528581912385822,
+                0.0479653430750293,
+                0.0293746718291555,
+                -0.0176293810234174,
+                0.0343088588777263,
+                0.0702112981933102,
+                0.00720651632920303]
+        ]
         }
 # Convert to JSON string
 input_data = json.dumps(data)
 
 # Set the content type
-headers = { 'Content-Type':'application/json' }
+headers = {'Content-Type': 'application/json'}
 # If authentication is enabled, set the authorization header
-headers['Authorization']=f'Bearer {key}'
+headers['Authorization'] = f'Bearer {key}'
 
 # Make the request and display the response
-resp = requests.post(scoring_uri, input_data, headers = headers)
+resp = requests.post(scoring_uri, input_data, headers=headers)
 print(resp.text)
-
 ```
 
 Döndürülen sonuçlar için aşağıdaki JSON belgesini benzerdir:
@@ -487,10 +488,10 @@ Döndürülen sonuçlar için aşağıdaki JSON belgesini benzerdir:
 [217.67978776218715, 224.78937091757172]
 ```
 
-## <a name="consume-the-service-from-power-bi"></a>Power BI hizmetini kullanma
+## <a name="consume-the-service-from-power-bi"></a>Hizmeti Power BI tüketme
 
-Power BI, verilerinizi Power BI'da Öngörüler ile zenginleştirmek için Azure Machine Learning web Hizmetleri kullanımını destekler. 
+Power BI, Power BI verileri tahmine dayalı olarak zenginleştirmek için Azure Machine Learning Web hizmetlerinin kullanımını destekler. 
 
-Power bı'da tüketim için desteklenen bir web hizmeti oluşturmak için şemayı, Power BI tarafından gereken biçimde desteklemesi gerekir. [Power BI tarafından desteklenen bir şema oluşturmayı](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where#example-script-with-dictionary-input-support-consumption-from-power-bi).
+Power BI, tüketim için desteklenen bir Web hizmeti oluşturmak için, şemanın Power BI gereken biçimi desteklemesi gerekir. [Power BI tarafından desteklenen bir şema oluşturmayı öğrenin](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where#example-script-with-dictionary-input-support-consumption-from-power-bi).
 
-Web hizmeti dağıtıldıktan sonra Power BI veri akışı tüketilebilir. [Power bı'dan bir Azure Machine Learning web hizmetini kullanma hakkında bilgi edinin](https://docs.microsoft.com/power-bi/service-machine-learning-integration).
+Web hizmeti dağıtıldıktan sonra, Power BI veri akışlarından tüketilebilir. [Power BI bir Azure Machine Learning Web hizmeti kullanmayı öğrenin](https://docs.microsoft.com/power-bi/service-machine-learning-integration).

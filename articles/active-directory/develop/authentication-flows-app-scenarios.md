@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/15/2019
+ms.date: 07/25/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d50019e8de1daf3d69342dcaf9eeecfba493a83
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: c3d9f96f0b61129a0f881c8fe8676bd5df7376ad
+ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302403"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494573"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>Kimlik doğrulama akışları ve uygulama senaryoları
 
@@ -80,6 +80,14 @@ Güvenlik belirteçleri, bir dizi uygulama türünden elde edilebilir. Uygulamal
 
 Microsoft Identity platform uç noktası çeşitli uygulama mimarilerinde kimlik doğrulamasını destekler: tek sayfalı uygulamalar, Web uygulamaları, Web API 'Leri, mobil ve yerel uygulamalar, Daemon 'ları ve sunucu tarafı uygulamalar.  Uygulamalar, kullanıcıların oturumunu açmak ve korunan API 'Leri çağırmak için belirteçleri almak üzere çeşitli kimlik doğrulama akışlarını kullanır.
 
+### <a name="single-page-application"></a>Tek sayfalı uygulama
+
+Birçok modern web uygulaması, JavaScript veya angular, Vue. js ve tepki verme. js gibi bir SPA çerçevesi kullanılarak yazılmış istemci tarafı tek sayfalı uygulamalar olarak oluşturulmuştur. Bu uygulamalar bir Web tarayıcısında çalışır ve geleneksel sunucu tarafı Web uygulamalarından farklı kimlik doğrulama özelliklerine sahiptir. Microsoft Identity platformu, tek sayfalı uygulamaların kullanıcılara oturum açmasını ve arka uç hizmetlerine veya Web API 'Lerine erişim belirteçleri almasını sağlar.
+
+![Tek sayfalı uygulama](media/scenarios/spa-app.svg)
+
+Daha fazla bilgi için [tek sayfalı uygulamaları](scenario-spa-overview.md)okuyun.
+
 ### <a name="web-application-signing-in-a-user"></a>Web uygulaması oturum açma-bir Kullanıcı
 
 ![Kullanıcılarda Web uygulaması işaretleri](media/scenarios/scenario-webapp-signs-in-users.svg)
@@ -90,67 +98,72 @@ Microsoft Identity platform uç noktası çeşitli uygulama mimarilerinde kimlik
 
 - Node. js ' de geliştirirseniz, Passport. js ' yi kullanacaksınız.
 
-Ayrıntılar için [kullanıcıları oturum açan Web uygulamasına](scenario-web-app-sign-user-overview.md) bakın
+Daha fazla bilgi için [kullanıcıları oturum açan Web uygulamasını](scenario-web-app-sign-user-overview.md)okuyun.
 
 ### <a name="web-application-signing-in-a-user-and-calling-a-web-api-on-behalf-of-the-user"></a>Web uygulaması oturumu açma ve Kullanıcı adına bir Web API 'SI çağırma
 
 ![Web uygulaması, Web API 'Lerini çağırır](media/scenarios/web-app.svg)
 
-Web uygulamasında, **Web API** 'sini Kullanıcı adına ÇAĞıRMAK için msal `ConfidentialClientApplication`kullanacaksınız. Alınan belirteci belirteç önbelleğinde depolayarak yetkilendirme kodu akışını kullanacaksınız. Daha sonra denetleyici gerektiğinde belirteçleri sessizce önbellekten elde eder. MSAL, gerekirse belirteci yeniler.
+Web uygulamasından Kullanıcı adına **Web API 'sini çağırmak** için msal `ConfidentialClientApplication`kullanın. Alınan belirteci belirteç önbelleğinde depolayarak yetkilendirme kodu akışını kullanacaksınız. Daha sonra denetleyici gerektiğinde belirteçleri sessizce önbellekten elde eder. MSAL, gerekirse belirteci yeniler.
 
-Ayrıntılar için bkz. [Web uygulaması çağrıları Web API 'leri](scenario-web-app-call-api-overview.md)
+Daha fazla bilgi için Web [uygulaması çağrıları Web API 'lerini](scenario-web-app-call-api-overview.md)okuyun.
 
 ### <a name="desktop-application-calling-a-web-api-on-behalf-of-the-signed-in-user"></a>Oturum açmış kullanıcı adına bir Web API 'SI çağıran masaüstü uygulaması
 
-Kullanıcıları oturum açan bir masaüstü uygulamasından bir Web API 'SI çağırmak için MSAL 'in Publicclientapplication'un etkileşimli belirteç alma yöntemlerini kullanacaksınız. Bu etkileşimli Yöntemler oturum açma kullanıcı arabirimi deneyimini denetlemenizi sağlar. Bu etkileşimi etkinleştirmek için MSAL bir Web tarayıcısından yararlanır
+Kullanıcılar tarafından oturum açan bir masaüstü uygulamasından bir Web API 'SI çağırmak için, MSAL 'in Publicclientapplication'un etkileşimli belirteç alma yöntemlerini kullanın. Bu etkileşimli Yöntemler oturum açma kullanıcı arabirimi deneyimini denetlemenizi sağlar. Bu etkileşimi etkinleştirmek için MSAL bir Web tarayıcısından yararlanır.
 
 ![Masaüstü](media/scenarios/desktop-app.svg)
 
-Bir Windows etki alanına veya AAD 'ye katılmış bilgisayarlarda çalışan Windows barındırılan uygulamalar için başka bir olasılık vardır. [Tümleşik Windows kimlik doğrulaması](https://aka.ms/msal-net-iwa) kullanarak sessizce bir belirteç alabilir
+Bir Windows etki alanına veya AAD 'ye katılmış bilgisayarlarda çalışan Windows barındırılan uygulamalar için başka bir olasılık vardır. Bu uygulamalar, [Tümleşik Windows kimlik doğrulaması](https://aka.ms/msal-net-iwa)kullanarak sessizce bir belirteç alabilir.
 
 Tarayıcı olmadan bir cihazda çalışan uygulamalar, bir kullanıcı adına bir API 'yi çağırabilecektir. Kimlik doğrulamak için, kullanıcının bir Web tarayıcısına sahip olan başka bir cihazda oturum açması gerekecektir. Bu senaryoyu etkinleştirmek için [cihaz kod akışını](https://aka.ms/msal-net-device-code-flow) kullanmanız gerekir
 
 ![Cihaz kod akışı](media/scenarios/device-code-flow-app.svg)
 
-Son olarak, ancak önerilmese de, genel istemci uygulamalarında [Kullanıcı adı/parola](https://aka.ms/msal-net-up) ' yı kullanabilirsiniz. Bu akış, bazı senaryolarda (DevOps gibi) hala gereklidir, ancak bunu kullanmanın uygulamanıza kısıtlamalar getirdiğinden emin olun. Örneğin, bu akışı kullanan uygulamalar, çok faktörlü kimlik doğrulaması (koşullu erişim) gerçekleştirmesi gereken kullanıcı için oturum açamaz. Uygulamanızın çoklu oturum açma özelliğinden faydalanabilir. Bu, modern kimlik doğrulaması ilkelerine de karşı geçerlidir ve yalnızca eski nedenlerle sağlanır.
+Son olarak, bu önerilmese de, genel istemci uygulamalarında [Kullanıcı adı/parola](https://aka.ms/msal-net-up) kullanabilirsiniz. Bu akış, bazı senaryolarda (DevOps gibi) hala gereklidir, ancak bunu kullanmanın uygulamanıza kısıtlamalar getirdiğinden emin olun. Örneğin, bu akışı kullanan uygulamalar Multi-Factor Authentication (koşullu erişim) gerçekleştirmesi gereken bir kullanıcıya oturum açamaz. Uygulamanızın çoklu oturum açma özelliğinden faydalanabilir. Kullanıcı adı/parola ile kimlik doğrulaması, modern kimlik doğrulamasının ilkelerine karşı gider ve yalnızca eski nedenlerle sağlanır.
 
 Masaüstü uygulamalarında, belirteç önbelleğinin kalıcı olmasını istiyorsanız [belirteç önbelleği serileştirmesini özelleştirmeniz](https://aka.ms/msal-net-token-cache-serialization)gerekir. [Çift belirteç önbelleği serileştirmesini](https://aka.ms/msal-net-dual-cache-serialization)uygulayarak önceki nesil kimlik doğrulama kitaplıkları (ADAL.NET 3. x ve 4. x) ile uyumlu belirteç önbelleklerini geri ve ileri sarabilirsiniz.
 
-Ayrıntılar için bkz. [Web API 'lerini çağıran masaüstü uygulaması](scenario-desktop-overview.md)
+Daha fazla bilgi için, [Web API 'lerini çağıran masaüstü uygulamasını](scenario-desktop-overview.md)okuyun.
 
 ### <a name="mobile-application-calling-a-web-api-on-behalf-of-the-user-whos-signed-in-interactively"></a>Etkileşimli olarak oturum açan kullanıcı adına bir Web API 'SI çağıran mobil uygulama
 
+Masaüstü uygulamalarına benzer şekilde, bir mobil uygulama, Web API 'sini çağırmak için bir belirteç almak üzere MSAL 'in Publicclientapplication'un etkileşimli belirteç alma yöntemlerini kullanır.
+
 ![Mobil](media/scenarios/mobile-app.svg)
 
-Masaüstü uygulamaları için, bir Web API 'SI çağırmak için bir belirteç almak üzere bir mobil uygulama, MSAL 'in PublicClientApplication's Interactive Token Alım yöntemlerini kullanır. İOS ve Android 'de, varsayılan olarak MSAL, sistem Web tarayıcısını kullanır. Ancak onu katıştırılmış Web görünümünü kullanacak şekilde yönlendirebilirsiniz. Mobil platforma bağlı olarak şu şekilde bir farklılık vardır: (UWP, iOS, Android).
+MSAL iOS ve MSAL Android, varsayılan olarak sistem Web tarayıcısını kullanır. Ancak, bunu katıştırılmış Web görünümünü kullanmak için de yönlendirebilirsiniz. Mobil platforma bağlı olarak şu şekilde bir farklılık vardır: (UWP, iOS, Android).
+
 Cihaz KIMLIĞIYLE ilgili koşullu erişimi veya Kaydolmakta olan bir cihazı içeren bazı senaryolar bir cihaza bir [Aracı](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/leveraging-brokers-on-Android-and-iOS) yüklenmesini gerektirir. Aracılar örnekleri, Microsoft şirket portalı (Android 'de), Microsoft Authenticator (Android ve iOS). MSAL artık aracılar ile etkileşim kurabiliyor.
 
 > [!NOTE]
 > Mobil uygulamanız (MSAL. iOS, MSAL kullanarak. Android veya MSAL.NET/Xamarin), uygulama koruma ilkelerinin uygulanmasını sağlayabilir (örneğin, kullanıcının bazı korumalı metinleri kopyalamasını önler). Bu, [Intune tarafından yönetilir](https://docs.microsoft.com/intune/app-sdk) ve Intune tarafından yönetilen bir uygulama olarak tanınır. [Intune SDK 'Sı](https://docs.microsoft.com/intune/app-sdk-get-started) msal kitaplıklarından ayrıdır ve kendı kendine AAD ile iletişim kuran.
 
-Ayrıntılar için bkz. [Web API 'lerini çağıran mobil uygulama](scenario-mobile-overview.md)
+Daha fazla bilgi için, [Web API 'lerini çağıran mobil uygulamayı](scenario-mobile-overview.md)okuyun.
 
 ### <a name="protected-web-api"></a>Korumalı Web API 'SI
 
 Uygulamanızın daha fazla Web API 'SI gibi Web hizmetlerini güvenli hale getirmek için Microsoft Identity platform uç noktasını kullanabilirsiniz. Korumalı bir Web API 'SI, verilerini güvenli hale getirmek ve gelen isteklerin kimliğini doğrulamak için bir erişim belirteciyle çağırılır. Bir Web API 'SI çağıran, bir HTTP isteğinin yetkilendirme üstbilgisine bir erişim belirteci ekler. ASP.NET veya Web API 'SI ASP.NET Core korumak istiyorsanız, erişim belirtecini doğrulamanız gerekir. Bunun için ASP.NET JWT ara yazılımını kullanacaksınız. Bu işlem, MSAL.NET değil, [.NET kitaplığı Için IdentityModel uzantıları](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) tarafından yapılır.
 
-Ayrıntılar için bkz. [korumalı Web API 'si](scenario-protected-web-api-overview.md)
+Daha fazla bilgi için, [korumalı Web API 'sini](scenario-protected-web-api-overview.md)okuyun.
 
 ### <a name="web-api-calling-another-downstream-web-api-on-behalf-of-the-user-for-whom-it-was-called"></a>Web API 'SI, çağrıldığı Kullanıcı adına başka bir aşağı akış Web API 'SI çağırma
 
 Ayrıca, ASP.NET veya ASP.NET Core Protected Web API 'nizin Kullanıcı adına başka bir Web API 'sini çağırmasını istiyorsanız, uygulamanın, ConfidentialClientApplication 's metodunu kullanarak aşağı akış Web API 'SI için bir belirteç edinmesi gerekir. [ Kullanıcı](https://aka.ms/msal-net-on-behalf-of). Bu, hizmet çağrıları için de hizmet olarak adlandırılır.
 Diğer Web API 'sini çağıran Web API 'Lerinin Ayrıca özel bir önbellek serileştirmesi sağlaması gerekir
 
-  ![Web API](media/scenarios/web-api.svg)
+  ![Web API'si](media/scenarios/web-api.svg)
 
-Ayrıntılar için [Web API 'lerini çağıran Web API 'sine](scenario-web-api-call-api-overview.md) bakın
+Daha fazla bilgi için [Web API 'lerini çağıran Web API 'sini](scenario-web-api-call-api-overview.md)okuyun.
 
 ### <a name="desktopservice-or-web-daemon-application-calling-web-api-without-a-user-in-its-own-name"></a>Web API 'sini Kullanıcı olmadan çağıran masaüstü/hizmet veya Web Daemon uygulaması (kendi adında)
 
-Uzun süre çalışan işlemlere sahip olan veya Kullanıcı etkileşimi olmadan çalışan uygulamalarda, güvenli Web API 'Lerine erişmek için bir yol gerekir. Bu uygulamalar, kullanıcının temsilci kimliği yerine uygulamanın kimliğini kullanarak kimlik doğrulaması yapabilir ve belirteçleri alabilir. Bir istemci gizli dizisi veya sertifikası kullanarak kimliklerini kanıtlarlar.
+Uzun süre çalışan işlemlere sahip olan veya Kullanıcı etkileşimi olmadan çalışan uygulamalarda güvenli Web API 'Lerine erişmek için bir yol gerekir. Bu uygulamalar, kullanıcının temsilci kimliği yerine uygulamanın kimliğini kullanarak kimlik doğrulaması yapabilir ve belirteçleri alabilir. Bir istemci gizli dizisi veya sertifikası kullanarak kimliklerini kanıtlarlar.
 Bu tür uygulamalar (daemon uygulaması), MSAL 'in ConfidentialClientApplication's [istemci kimlik bilgileri](https://aka.ms/msal-net-client-credentials) alma yöntemlerini kullanarak en üstteki uygulama için bir belirteç alıyor. Bu, uygulamanın daha önce bu çağrıyla paylaştığı bir gizli dizi (uygulama parolası veya sertifika veya istemci onaylama) ile Azure AD 'ye kaydolduğunu varsayalım.
 
 ![Daemon uygulaması](media/scenarios/daemon-app.svg)
+
+Daha fazla bilgi için, [Web API 'lerini çağıran Daemon uygulamasını](scenario-daemon-overview.md)okuyun.
 
 ## <a name="scenarios-and-supported-authentication-flows"></a>Senaryolar ve desteklenen kimlik doğrulama akışları
 
@@ -183,6 +196,8 @@ Her platformda her uygulama türü kullanılamaz. Uygulamalarınızı oluşturma
 | [Web API 'Lerini çağıran mobil uygulama](scenario-mobile-overview.md) <br/> [![Web API 'Lerini çağıran mobil uygulama](media/scenarios/mobile-app.svg)](scenario-mobile-overview.md) | ![UWP](media/sample-v2-code/logo_windows.png) MSAL.NET ![Xamarin](media/sample-v2-code/logo_xamarin.png) MSAL.NET | | | ![iOS/amaç C veya Swift](media/sample-v2-code/logo_iOS.png) MSAL. iOS | ![Android](media/sample-v2-code/logo_Android.png) MSAL. Android
 | [Daemon uygulaması](scenario-daemon-overview.md) <br/> [![Daemon uygulaması](media/scenarios/daemon-app.svg)](scenario-daemon-overview.md) | ![.NET](media/sample-v2-code/logo_NET.png) MSAL.NET ![.NET Core](media/sample-v2-code/logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) MSAL Python| ![.NET Core](media/sample-v2-code/logo_NETcore.png) MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) MSAL Python| ![.NET Core](media/sample-v2-code/logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) MSAL Python
 | [Web API 'Lerini çağıran Web API 'SI](scenario-web-api-call-api-overview.md) <br/> [![Web API 'Lerini çağıran Web API 'SI](media/scenarios/web-api.svg)](scenario-web-api-call-api-overview.md) | ![.NET](media/sample-v2-code/logo_NET.png) <br/> ASP.NET + MSAL.NET ![.NET Core](media/sample-v2-code/logo_NETcore.png) <br/> ASP.NET Core + MSAL.NET| ![.NET Core](media/sample-v2-code/logo_NETcore.png) <br/> ASP.NET Core + MSAL.NET| ![.NET Core](media/sample-v2-code/logo_NETcore.png)<br/> ASP.NET Core + MSAL.NET
+
+Ayrıca bkz. [OS/Language Ile Microsoft tarafından desteklenen kitaplıklar](reference-v2-libraries.md#microsoft-supported-libraries-by-os--language)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Kimlik doğrulama temelleri](authentication-scenarios.md) ve [erişim belirteçleri](access-tokens.md)hakkında daha fazla bilgi edinin.
