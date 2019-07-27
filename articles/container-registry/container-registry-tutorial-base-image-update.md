@@ -10,10 +10,10 @@ ms.date: 06/12/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 496aa065b3b10eac546dbe41f5a2650acc112d29
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68310513"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>Öğretici: Azure Container Registry 'de temel görüntü güncelleştirildiği zaman kapsayıcı görüntüsü derlemelerini otomatikleştirin 
@@ -62,7 +62,7 @@ GIT_PAT=<personal-access-token> # The PAT you generated in the second tutorial
 
 ## <a name="base-images"></a>Temel görüntüler
 
-Çoğu kapsayıcı görüntüsünü tanımlayan Dockerfile'lar, temel alınan ve çoğunlukla *temel görüntü* olarak adlandırılan bir üst görüntü belirtir. Temel görüntüler genellikle kapsayıcının katmanlarının uygulandığı [alp Linux][base-alpine] or [Windows Nano Server][base-windows]olan işletim sistemini içerir. Ayrıca, [Node. js][temel düğümü] veya [.NET Core][base-dotnet]gibi uygulama çerçeveleri de içerebilir.
+Çoğu kapsayıcı görüntüsünü tanımlayan Dockerfile'lar, temel alınan ve çoğunlukla *temel görüntü* olarak adlandırılan bir üst görüntü belirtir. Temel görüntüler genellikle, kapsayıcı katmanlarının geri kalanının uygulandığı [alp Linux][base-alpine] veya [Windows nano sunucu][base-windows]gibi işletim sistemini içerir. Ayrıca, [Node. js][base-node] veya [.NET Core][base-dotnet]gibi uygulama çerçeveleri de içerebilir.
 
 ### <a name="base-image-updates"></a>Temel görüntü güncelleştirmeleri
 

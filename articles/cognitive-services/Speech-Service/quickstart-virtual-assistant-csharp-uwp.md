@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı Başlangıç: (Önizleme), özel sesli öncelikli sanal asistan C# (UWP) - konuşma Hizmetleri'
+title: 'Hızlı Başlangıç: Özel ses-ilk Sanal Yardımcısı (Önizleme), C# (UWP)-konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Bu makalede, oluşturduğunuz bir C# Bilişsel hizmetler konuşma Yazılım Geliştirme Seti (SDK) kullanarak evrensel Windows Platformu (UWP) uygulama. İstemci uygulamanızı doğrudan satır konuşma kanal kullanacak şekilde yapılandırılmış daha önce oluşturulmuş bir Bot Framework botu için bağlarsınız. Uygulama, konuşma SDK'sı NuGet paketi ve Microsoft Visual Studio 2017 ile oluşturulmuştur.
+description: Bu makalede bilişsel hizmetler konuşma C# yazılım geliştirme seti 'NI (SDK) kullanarak bir evrensel WINDOWS platformu (UWP) uygulaması oluşturacaksınız. İstemci uygulamanızı, doğrudan hat konuşma kanalını kullanacak şekilde yapılandırılmış daha önce oluşturulmuş bir bot Framework bot 'a bağlanırsınız. Uygulama, konuşma SDK'sı NuGet paketi ve Microsoft Visual Studio 2017 ile oluşturulmuştur.
 services: cognitive-services
 author: trrwilson
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: travisw
-ms.openlocfilehash: 22c18b573e7107163f858c79956ca6f5380f6834
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: d61040e740c06fc336e3764a0d972640443a6de5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604969"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68553387"
 ---
-# <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-uwp"></a>Hızlı Başlangıç: Ses öncelikli sanal asistan UWP konuşma SDK ile oluşturma
+# <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-uwp"></a>Hızlı Başlangıç: Konuşma SDK 'Sı, UWP ile ilk olarak bir ses Sanal Yardımcısı oluşturun
 
-Hızlı Başlangıçlar ücret karşılığında ayrıca [konuşma metin](quickstart-csharp-uwp.md), [metin okuma](quickstart-text-to-speech-csharp-uwp.md) ve [konuşma çevirisi](quickstart-translate-speech-uwp.md).
+Hızlı başlangıç, [konuşmadan metne](quickstart-csharp-uwp.md), [metinden konuşmaya](quickstart-text-to-speech-csharp-uwp.md) ve [konuşma çevirisi](quickstart-translate-speech-uwp.md)için de kullanılabilir.
 
-Bu makalede, geliştireceksiniz bir C# kullanarak evrensel Windows Platformu (UWP) uygulama [Speech SDK'sı](speech-sdk.md). Programın istemci uygulamadan alınan bir ses öncelikli sanal asistan deneyimi etkinleştirmek için daha önce yazılmış ve yapılandırılmış bir bot bağlanır. Uygulama [Konuşma SDK'sı NuGet Paketi](https://aka.ms/csspeech/nuget) ve Microsoft Visual Studio 2017 (herhangi bir sürüm) ile geliştirilmiştir.
+Bu makalede, [konuşma SDK 'sını](speech-sdk.md)kullanarak bir C# Evrensel Windows platformu (UWP) uygulaması geliştirirsiniz. Program, daha önce yazılmış ve yapılandırılmış bir bot 'a bağlanarak istemci uygulamasından bir ses ilk Sanal Yardımcısı deneyimi sağlar. Uygulama [Konuşma SDK'sı NuGet Paketi](https://aka.ms/csspeech/nuget) ve Microsoft Visual Studio 2017 (herhangi bir sürüm) ile geliştirilmiştir.
 
 > [!NOTE]
 > Evrensel Windows Platformu; PC, Xbox, Surface Hub ve diğer cihazlar dahil olmak üzere Windows 10 destekleyen tüm cihazlarda çalışan uygulamalar geliştirmenize olanak tanır.
@@ -31,15 +31,15 @@ Bu makalede, geliştireceksiniz bir C# kullanarak evrensel Windows Platformu (UW
 Bu hızlı başlangıç şunları gerektirir:
 
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
-* Konuşma Hizmetleri için bir Azure aboneliği anahtarı. [Ücretsiz edinin](get-started.md) ya da üzerinde oluşturma [Azure portalında](https://portal.azure.com).
-* Yapılandırılmış önceden oluşturulmuş bir bot [doğrudan satır konuşma kanal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+* Konuşma Hizmetleri için bir Azure abonelik anahtarı. [Ücretsiz olarak bir tane alın](get-started.md) veya [Azure Portal](https://portal.azure.com)oluşturun.
+* [Doğrudan hat konuşma kanalı](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) ile yapılandırılmış daha önce oluşturulmuş bir bot
 
     > [!NOTE]
-    > Doğrudan satır okuma (Önizleme) şu anda konuşma Hizmetleri bölgelerin alt kümesinde kullanılabilir. Lütfen [ses öncelikli sanal Yardımcıları için desteklenen bölgelerin listesini](regions.md#voice-first-virtual-assistants) ve kaynaklarınız bu bölgelerden birinde dağıtıldığı emin olun.
+    > Doğrudan hat konuşma (Önizleme), konuşma Hizmetleri bölgelerinin bir alt kümesinde Şu anda kullanılabilir. Lütfen [sesli ilk sanal Yardımcılar için desteklenen bölgeler listesine](regions.md#voice-first-virtual-assistants) başvurun ve kaynaklarınızın bu bölgelerden birinde dağıtıldığından emin olun.
 
 ## <a name="optional-get-started-fast"></a>İsteğe bağlı: Hızla kullanmaya başlayın
 
-Bu hızlı başlangıçta, adım adım konuşma özellikli botunuzun bağlanmak için basit bir istemci uygulaması yapılacağını anlatmaktadır. Doğrudan içine dalmak tercih ederseniz, bu hızlı başlangıçta kullanılan tam, derleme için hazır kaynak kodu kullanılabilir [konuşma SDK örnekleri](https://aka.ms/csspeech/samples) altında `quickstart` klasör.
+Bu hızlı başlangıçta, bir basit istemci uygulamasının konuşma özellikli bot 'a nasıl bağlanacağını betimleyen adım adım açıklanır. Hemen ' yi kullanmayı tercih ediyorsanız, bu hızlı başlangıçta kullanılan tam, kullanıma hazır kaynak kodu, `quickstart` klasörü altındaki [konuşma SDK örneklerinde](https://aka.ms/csspeech/samples) bulunur.
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio projesi oluşturma
 
@@ -47,7 +47,7 @@ Bu hızlı başlangıçta, adım adım konuşma özellikli botunuzun bağlanmak 
 
 ## <a name="add-sample-code"></a>Örnek kodu ekleme
 
-1. Uygulamanın kullanıcı arabirimini XAML kullanılarak tanımlanır. `MainPage.xaml` dosyasını Çözüm Gezgini'nde açın. Tasarımcının XAML görünümünde tüm içeriğiyle aşağıda.
+1. Uygulamanın kullanıcı arabirimini XAML kullanılarak tanımlanır. `MainPage.xaml` dosyasını Çözüm Gezgini'nde açın. Tasarımcının XAML görünümünde, tüm içeriği aşağıdaki ile değiştirin.
 
     ```xml
     <Page
@@ -80,14 +80,14 @@ Bu hızlı başlangıçta, adım adım konuşma özellikli botunuzun bağlanmak 
     </Page>
     ```
 
-1. Arka plan kod kaynak dosyasını açın `MainPage.xaml.cs`. Altında gruplandırılmış bulabilirsiniz `MainPage.xaml`. İçeriğini aşağıdaki kodla değiştirin. Neleri kapsar Bu örnek aşağıda verilmiştir:
+1. Arka plan kod kaynak dosyasını `MainPage.xaml.cs`açın. Bu başlığı altında `MainPage.xaml`gruplanmış olarak bulabilirsiniz. İçeriği aşağıdaki kodla değiştirin. İşte bu örnek şunları içerir:
 
-    * Konuşma ve Speech.Dialog ad alanları için using deyimleri
-    * Mikrofon erişimi, bir düğme işleyicisi için kablolu emin olmak için basit bir uygulama
-    * İletileri ve hataları uygulamada sunmak için temel UI Yardımcıları
-    * Daha sonra doldurulacak başlatma kod yolu için bir giriş noktası
-    * (Akış desteği olmadan) geri metin okuma yürütmek için bir yardımcı
-    * Daha sonra doldurulacak dinlemeye başla için boş düğme işleyicisi
+    * Konuşma ve konuşma için deyimlerini kullanma. Iletişim alanları
+    * Bir düğme işleyicisine kablolu, mikrofon erişimi sağlamak için basit bir uygulama
+    * Uygulamada ileti ve hata sunmak için temel kullanıcı arabirimi yardımcıları
+    * Daha sonra doldurulacak başlatma kodu yolu için bir giriş noktası
+    * Metin okuma (akış desteği olmadan) çalmak için bir yardımcı
+    * Daha sonra doldurulacak dinlemeye başlamak için boş bir düğme işleyicisi
 
     ```csharp
     using Microsoft.CognitiveServices.Speech;
@@ -239,13 +239,13 @@ Bu hızlı başlangıçta, adım adım konuşma özellikli botunuzun bağlanmak 
     }
     ```
 
-1. Ardından, oluşturacağınız `DialogServiceConnector` abonelik bilgilerinizle. Yöntem gövdesi için aşağıdakileri ekleyin `InitializeDialogServiceConnector`, dizeleri değiştirme `YourChannelSecret`, `YourSpeechSubscriptionKey`, ve `YourServiceRegion` konuşma abonelik botunuza ilişkin kendi değerlerinizle ve [bölge](regions.md).
+1. Ardından, `DialogServiceConnector` abonelik bilgilerinizi kullanarak öğesini oluşturacaksınız. Aşağıdaki ' `InitializeDialogServiceConnector`ın yöntem gövdesine ekleyin, `YourSpeechSubscriptionKey`ve dizelerini `YourChannelSecret`, ve `YourServiceRegion` , konuşma aboneliğiniz ve [bölgeniz](regions.md)için kendi değerlerinizle değiştirin.
 
     > [!NOTE]
-    > Doğrudan satır okuma (Önizleme) şu anda konuşma Hizmetleri bölgelerin alt kümesinde kullanılabilir. Lütfen [ses öncelikli sanal Yardımcıları için desteklenen bölgelerin listesini](regions.md#voice-first-virtual-assistants) ve kaynaklarınız bu bölgelerden birinde dağıtıldığı emin olun.
+    > Doğrudan hat konuşma (Önizleme), konuşma Hizmetleri bölgelerinin bir alt kümesinde Şu anda kullanılabilir. Lütfen [sesli ilk sanal Yardımcılar için desteklenen bölgeler listesine](regions.md#voice-first-virtual-assistants) başvurun ve kaynaklarınızın bu bölgelerden birinde dağıtıldığından emin olun.
 
     > [!NOTE]
-    > Botunuzun yapılandırma ve kanal gizli dizi alma hakkında daha fazla bilgi için Bot Framework belgelerine bakın [doğrudan satır konuşma kanal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech).
+    > Botunuzu yapılandırma ve Kanal gizliliğini alma hakkında daha fazla bilgi için, [doğrudan hat konuşma kanalının](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)bot Framework belgelerine bakın.
 
     ```csharp
     // create a DialogServiceConfig by providing a bot secret key and Cognitive Services subscription key
@@ -259,7 +259,7 @@ Bu hızlı başlangıçta, adım adım konuşma özellikli botunuzun bağlanmak 
     connector = new DialogServiceConnector(botConfig);
     ```
 
-1. `DialogServiceConnector` bot etkinlikleriyle, konuşma tanıma sonuçları ve diğer bilgileri iletişim kurmak için çeşitli olayları kullanır. Aşağıdaki yöntem gövdesini sonuna ekleme, bu olayları için işleyiciler eklemek `InitializeDialogServiceConnector`.
+1. `DialogServiceConnector`, bot etkinliklerini, konuşma tanıma sonuçlarını ve diğer bilgileri iletmek için çeşitli olaylara bağımlıdır. Bu olaylara yönelik işleyiciler ekleyerek, öğesinin `InitializeDialogServiceConnector`Yöntem gövdesinin sonuna şunu ekleyin.
 
     ```csharp
     // ActivityReceived is the main way your bot will communicate with the client and uses bot framework activities
@@ -303,7 +303,7 @@ Bu hızlı başlangıçta, adım adım konuşma özellikli botunuzun bağlanmak 
     };
     ```
 
-1. Oluşturulan yapılandırmasını ve kayıtlı olay işleyicilerinin `DialogServiceConnector` artık yalnızca dinleme gerekiyor. Gövdesi için aşağıdakileri ekleyin `ListenButton_ButtonClicked` yönteminde `MainPage` sınıfı.
+1. Yapılandırma kurulu ve olay işleyicileriyle `DialogServiceConnector` birlikte, şimdi yalnızca dinlemesi gerekir. `ListenButton_ButtonClicked` Sınıfında yönteminin`MainPage` gövdesine şunu ekleyin.
 
     ```csharp
     private async void ListenButton_ButtonClicked(object sender, RoutedEventArgs e)
@@ -336,31 +336,31 @@ Bu hızlı başlangıçta, adım adım konuşma özellikli botunuzun bağlanmak 
 
 ## <a name="build-and-run-the-app"></a>Uygulamayı derleme ve çalıştırma
 
-1. Uygulamayı derleyin. Menü çubuğunda, Visual Studio'dan seçin **derleme** > **Çözümü Derle**. Kodun artık hatasız derlenmesi gerekir.
+1. Uygulamayı derleyin. Visual Studio menü çubuğundan derleme**Build Solution**' ı **seçin.**  >  Kodun artık hatasız derlenmesi gerekir.
 
     ![Visual Studio uygulamasının, Çözümü Derle seçeneği vurgulanmış olarak ekran görüntüsü](media/sdk/qs-csharp-uwp-08-build.png "Başarılı derleme")
 
-1. Uygulamayı başlatın. Menü çubuğunda, Visual Studio'dan seçin **hata ayıklama** > **hata ayıklamayı Başlat**, veya basın **F5**.
+1. Uygulamayı başlatın. Visual Studio menü çubuğunda **Hata Ayıkla** > **Başlat hata**Ayıkla ' yı seçin veya **F5**tuşuna basın.
 
     ![Visual Studio uygulamasının, Hata Ayıklamayı Başlat seçeneği vurgulanmış olarak ekran görüntüsü](media/sdk/qs-csharp-uwp-09-start-debugging.png "Uygulamayı hata ayıklamada başlatma")
 
-1. Bir pencere açılır. Uygulamanızda seçin **etkinleştirme mikrofon**ve açılır izin isteği kabul etmiş olursunuz.
+1. Bir pencere açılır. Uygulamanızda **mikrofonu etkinleştir**' i seçin ve açılan izin isteğini kabul edin.
 
     ![İzin isteğinin ekran görüntüsü](media/sdk/qs-csharp-uwp-10-access-prompt.png "Uygulamayı hata ayıklamada başlat")
 
-1. Seçin **konuşmak için botunuzun**ve bir İngilizce deyim ya da cümle cihazınızın mikrofona. Konuşma doğrudan satır konuşma kanalına iletilmesini ve penceresinde görüntülenen metne transcribed.
+1. **Botunuz Için konuşun**' ı seçin ve cihazınızın mikrofonuna bir İngilizce tümcecik veya cümle konuşun. Konuşma, doğrudan hat konuşma kanalına iletilir ve pencerede görüntülenen metne kaydedilir.
 
-    ![Ekran görüntüsü başarılı bot kapatma](media/voice-first-virtual-assistants/quickstart-cs-uwp-bot-successful-turn.png "başarılı bot Aç")
+    ![Başarılı bot 'un bir ekran görüntüsü](media/voice-first-virtual-assistants/quickstart-cs-uwp-bot-successful-turn.png "Başarılı bir bot açma")
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Temel robot oluşturup](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
+> [Temel bot oluşturma ve dağıtma](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Ses öncelikli sanal Yardımcıları](voice-first-virtual-assistants.md)
-- [Bir konuşma Hizmetleri abonelik anahtarı ücretsiz olarak edinin](get-started.md)
-- [Özel Uyandırma sözcükler](speech-devices-sdk-create-kws.md)
-- [Botunuz için doğrudan satır konuşma bağlanma](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
-- [Keşfedin C# github'da örnekleri](https://aka.ms/csspeech/samples)
+- [İlk ses sanal yardımcıları hakkında](voice-first-virtual-assistants.md)
+- [Ücretsiz bir konuşma Hizmetleri abonelik anahtarı alın](get-started.md)
+- [Özel uyandırma kelimeleri](speech-devices-sdk-create-kws.md)
+- [Doğrudan hat konuşmayı bot 'a bağlama](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+- [GitHub C# 'daki örnekleri keşfet](https://aka.ms/csspeech/samples)

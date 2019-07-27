@@ -1,6 +1,6 @@
 ---
-title: Kapsayıcıları yükleme ve çalıştırma
-titlesuffix: Face - Azure Cognitive Services
+title: Kapsayıcılar-yüz tanıma API 'sini yükleyip çalıştırın
+titleSuffix: Azure Cognitive Services
 description: Bu adım adım öğreticide, yüz için kapsayıcıları indirin, yükleyin ve çalıştırın.
 services: cognitive-services
 author: IEvangelist
@@ -11,12 +11,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: f4abf17c774fb75a0314c8890f5f4383058e37fd
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 93a6d0a42d6d7f07dd8947ce9f8ae99a39d44475
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321372"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564142"
 ---
 # <a name="install-and-run-face-containers"></a>Yüz kapsayıcıları yükleyip çalıştırma
 
@@ -82,7 +82,7 @@ Kapsayıcı [ana bilgisayar](#the-host-computer)üzerinde olduktan sonra, kapsay
 
 Üç kapsayıcının herhangi birini çalıştırmak için [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) komutunu kullanın. Komut aşağıdaki parametreleri kullanır.
 
-| Yer tutucu | Değer |
+| Yer tutucu | Value |
 |-------------|-------|
 |{API_KEY} | Bu anahtar, kapsayıcıyı başlatmak için kullanılır ve Azure `Cognitive Services` **anahtarları** sayfasında kullanılabilir. |
 |{ENDPOINT_URI} | Faturalandırma uç noktası URI değeri, Azure `Cognitive Services` **genel bakış** sayfasında bulunur. `https://westus.api.cognitive.microsoft.com/face/v1.0` bunun bir örneğidir.|

@@ -1,6 +1,6 @@
 ---
-title: Para birimi önceden oluşturulmuş varlık
-titleSuffix: Azure
+title: Para birimi önceden oluşturulmuş varlık-LUSıS
+titleSuffix: Azure Cognitive Services
 description: Bu makalede, para birimi içeren önceden oluşturulmuş varlık bilgilerini Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
@@ -11,22 +11,22 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 7e882a66ae5a090e1fd3a0850ff35281dc4e692d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 369e8f94a4733a7c9e21fee98c72aa447802e943
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65072017"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563496"
 ---
-# <a name="currency-prebuilt-entity-for-a-luis-app"></a>Para birimi önceden oluşturulmuş bir varlık için bir LUIS uygulaması
-Önceden oluşturulmuş bir para birimi varlık birçok denominations ve LUIS uygulama kültürü ne olursa olsun ülkeler/bölgeler, para birimi algılar. Bu varlık zaten eğitildi çünkü uygulama hedefleri için para birimi içeren örnek Konuşma ekleme gerekmez. Para birimi varlık içerisinde desteklendiği [çok kültür](luis-reference-prebuilt-entities.md). 
+# <a name="currency-prebuilt-entity-for-a-luis-app"></a>Bir LUSıS uygulaması için para birimi önceden oluşturulmuş varlık
+Önceden oluşturulmuş para birimi varlığı, LUSıS uygulama kültürüne bakılmaksızın birçok paydaya ve ülkede/bölgede para birimini algılar. Bu varlık zaten eğitildi çünkü uygulama hedefleri için para birimi içeren örnek Konuşma ekleme gerekmez. Para birimi varlık içerisinde desteklendiği [çok kültür](luis-reference-prebuilt-entities.md). 
 
 ## <a name="types-of-currency"></a>Para birimi türü
-Para birimi yönetilen engelle [tanıyıcıları metin](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L26) GitHub deposu
+Para birimi [Tanıyıcılar-metin](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L26) GitHub deposundan yönetilir
 
 ## <a name="resolution-for-currency-entity"></a>Para birimi varlık için çözümleme
 
-### <a name="api-version-2x"></a>API sürüm 2.x
+### <a name="api-version-2x"></a>API sürüm 2. x
 
 Aşağıdaki örnek, çözünürlüğünü gösterir **builtin.currency** varlık.
 
@@ -64,9 +64,9 @@ Aşağıdaki örnek, çözünürlüğünü gösterir **builtin.currency** varlı
 
 
 
-### <a name="preview-api-version-3x"></a>Önizleme API sürümü 3.x
+### <a name="preview-api-version-3x"></a>Preview API sürüm 3. x
 
-Aşağıdaki JSON ile olan `verbose` parametresini `false`:
+Aşağıdaki JSON `verbose` parametresi olarak `false`ayarlanmıştır:
 
 ```json
 {
@@ -91,7 +91,7 @@ Aşağıdaki JSON ile olan `verbose` parametresini `false`:
 }
 ```
 
-Aşağıdaki JSON ile olan `verbose` parametresini `true`:
+Aşağıdaki JSON `verbose` parametresi olarak `true`ayarlanmıştır:
 
 ```json
 {

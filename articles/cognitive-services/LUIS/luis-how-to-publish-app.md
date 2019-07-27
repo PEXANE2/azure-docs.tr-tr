@@ -1,5 +1,5 @@
 ---
-title: Uygulama yayımlama
+title: App-LUSıS Yayımla
 titleSuffix: Azure Cognitive Services
 description: Oluşturma ve etkin LUIS uygulamanızı test etme bitirdikten sonra istemci uygulamanız için kullanılabilir uç noktaya yayımlayarak kolaylaştırır.
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: diberry
-ms.openlocfilehash: 22bed877d853c7023f8efe6bfb3dd21b4aa4c8df
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fdbdb2cd13d131019c4230aa369af31240d25f0d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60194469"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563652"
 ---
-# <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Bir hazırlık veya üretim uç noktası için etkin, eğitilen uygulamanızı yayımlayın
+# <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Etkin, eğitilen uygulamanızı bir hazırlama veya üretim uç noktasına yayımlayın
 
 Oluşturma ve etkin LUIS uygulamanızı test etme bitirdikten sonra istemci uygulamanız için kullanılabilir uç noktaya yayımlayarak kolaylaştırır. 
 
@@ -38,7 +38,7 @@ Uygulama LUIS Portalı'nda eklenen LUIS kaynaklarla ilişkili tüm bölgeler iç
 
 Uygulamanız başarıyla yayımlandığında bir yeşil bir başarı bildirim tarayıcı üst kısmında görüntülenir. Yeşil bildirim çubuğu, uç noktalarına bağlantıyı da içerir. 
 
-![Bağlantı uç noktası ile yayımlama açılır penceresi](./media/luis-how-to-publish-app/publish-success.png)
+![Uç nokta bağlantısı ile açılır pencere yayımlanıyor](./media/luis-how-to-publish-app/publish-success.png)
 
 Uç nokta URL'sini gerekiyorsa, bağlantıyı seçin. Uç nokta URL'leri seçerek de sahip olabilirsiniz **Yönet** üst menüden seçip **anahtarları ve uç noktaları** soldaki menüde. 
 
@@ -56,7 +56,7 @@ Yaklaşım Analizi ile tümleştirmek LUIS sağlayan [metin analizi](https://azu
 
 Metin analizi anahtarı belirtmeniz gerekmez ve Azure hesabınızda bu hizmet için fatura ücret alınmaz. Bu ayarı işaretleyin, sonra kalıcıdır. 
 
-Yaklaşım verilerdir pozitif gösteren 0 ile 1 arasındaki bir puan (1 yakın) veya (0 yakın) negatif yaklaşım veri. Yaklaşım etiketinin `positive`, `neutral`, ve `negative` desteklenen kültürdür. Şu anda yalnızca İngilizce yaklaşım etiketlerini destekler. 
+Yaklaşım verilerdir pozitif gösteren 0 ile 1 arasındaki bir puan (1 yakın) veya (0 yakın) negatif yaklaşım veri. , `positive` `neutral`Ve 'ninyaklaşımetiketidesteklenenkültürbaşına.`negative` Şu anda yalnızca Ingilizce yaklaşım etiketlerini destekler. 
 
 Yaklaşım Analizi ile JSON uç yanıtı hakkında daha fazla bilgi için bkz. [yaklaşım analizi](luis-concept-data-extraction.md#sentiment-analysis)
 

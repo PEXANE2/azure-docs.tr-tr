@@ -1,6 +1,6 @@
 ---
-title: Değiştirmek için uygulama, Python eğitin
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Değişiklik, eğitme uygulaması, Python-LUSıS
+titleSuffix: Azure Cognitive Services
 description: Bu Python hızlı başlangıcında, bir Ev Otomasyonu uygulamasına örnek konuşmalar ekleyip uygulamayı eğitin.
 services: cognitive-services
 author: diberry
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: diberry
-ms.openlocfilehash: 517f9f89d7733aaa066c3fb2b487be0a67994d4e
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: 96f4d251b0ccc76ef33c86f6661cc9b94098a967
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357108"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560536"
 ---
-# <a name="quickstart-change-model-using-python"></a>Hızlı Başlangıç: Python kullanarak modeli Değiştir
+# <a name="quickstart-change-model-using-python"></a>Hızlı Başlangıç: Python kullanarak modeli değiştirme
 
 [!INCLUDE [Quickstart introduction for change model](../../../includes/cognitive-services-luis-qs-change-model-intro-para.md)]
 

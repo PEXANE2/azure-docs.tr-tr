@@ -1,7 +1,7 @@
 ---
-title: Ses giriş cihazlarını Speech SDK'sı - konuşma Hizmetleri ile seçme
+title: Konuşma SDK 'Sı konuşma hizmeti ile ses giriş cihazı seçme
 titleSuffix: Azure Cognitive Services
-description: Ses giriş cihazları Speech SDK'sı seçme hakkında bilgi edinin.
+description: Konuşma SDK 'sında ses girişi cihazlarını seçme hakkında bilgi edinin.
 services: cognitive-services
 author: chlandsi
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 16b8f81a09efc60f1214a2dc6ac60da9155e7794
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 8324f9fccbe46cf6fc0ce297aac29b0d8025b078
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605109"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562725"
 ---
-# <a name="select-an-audio-input-device-with-the-speech-sdk"></a>Konuşma SDK'sı ile bir ses giriş cihazını seçin
+# <a name="select-an-audio-input-device-with-the-speech-sdk"></a>Konuşma SDK 'Sı ile bir ses giriş cihazı seçme
 
-Speech SDK'sı sürümünü 1.3.0 ses girişi seçmek için bir API sunar.
-Bu makalede, bir sisteme bağlı ses cihazları kimliklerini almak açıklar.
-Bunlar ardından Speech SDK'sı üzerinden ses cihazı yapılandırarak kullanılabilir `AudioConfig` nesnesi:
+Konuşma SDK 'sının sürüm 1.3.0, ses girişini seçmek için bir API sunar.
+Bu makalede, bir sisteme bağlı olan ses cihazlarının kimliklerinin nasıl alınacağı açıklanır.
+Bunlar, ses cihazını `AudioConfig` nesne aracılığıyla yapılandırarak konuşma SDK 'sında kullanılabilir:
 
 ```C++
 audioConfig = AudioConfig.FromMicrophoneInput("<device id>");
@@ -47,12 +47,12 @@ audioConfig = AudioConfiguration.fromMicrophoneInput("<device id>");
 audioConfig = AudioConfiguration.fromMicrophoneInput("<device id>");
 ```
 >[!Note]
-> Mikrofon kullanım çalıştıran node.js'de JavaScript için kullanılabilir değildir.
+> Node. js ' de çalışan JavaScript için mikrofon kullanımı kullanılamaz
 
-## <a name="audio-device-ids-on-windows-for-desktop-applications"></a>Ses cihazı kimliklerine göre Windows Masaüstü uygulamaları için
+## <a name="audio-device-ids-on-windows-for-desktop-applications"></a>Masaüstü uygulamaları için Windows 'ta ses cihazı kimlikleri
 
-Ses cihazı [uç noktası kimliği dizesi](/windows/desktop/CoreAudio/endpoint-id-strings) alınabilir [ `IMMDevice` ](/windows/desktop/api/mmdeviceapi/nn-mmdeviceapi-immdevice) Windows Masaüstü uygulamaları için nesne.
-Aşağıdaki kod örneği, C++'ta müzik aygıtları listeleme için nasıl kullanılacağını gösterir:
+Ses cihazı [uç nokta kimliği dizeleri](/windows/desktop/CoreAudio/endpoint-id-strings) Windows 'un [`IMMDevice`](/windows/desktop/api/mmdeviceapi/nn-mmdeviceapi-immdevice) masaüstü uygulamaları için nesnesinden alınabilir.
+Aşağıdaki kod örneği, içindeki C++ses aygıtlarını numaralandırmak için nasıl kullanılacağını göstermektedir:
 
 ```cpp
 #include <cstdio>
@@ -147,7 +147,7 @@ Exit:
 }
 ```
 
-İçinde C#, [NAudio](https://github.com/naudio/NAudio) kitaplığı CoreAudio API'sine erişim ve cihazlar gibi numaralandırmak için kullanılabilir:
+' C#De, [naudio](https://github.com/naudio/NAudio) kitaplığı COREAUDIO API 'sine erişmek ve cihazları aşağıdaki gibi listelemek için kullanılabilir:
 
 ```cs
 using System;
@@ -171,12 +171,12 @@ namespace ConsoleApp
 }
 ```
 
-Bir örnek cihaz kimliği `{0.0.1.00000000}.{5f23ab69-6181-4f4a-81a4-45414013aac8}`.
+Örnek bir cihaz KIMLIĞI `{0.0.1.00000000}.{5f23ab69-6181-4f4a-81a4-45414013aac8}`.
 
-## <a name="audio-device-ids-on-uwp"></a>Ses cihazı kimliklerine göre UWP
+## <a name="audio-device-ids-on-uwp"></a>UWP 'de ses cihazı kimlikleri
 
-Evrensel Windows Platformu (UWP üzerinde), ses giriş cihazları kullanarak elde edilebilir `Id()` karşılık gelen özellik [ `DeviceInformation` ](/uwp/api/windows.devices.enumeration.deviceinformation) nesne.
-Aşağıdaki kod örnekleri, C++'da bunun nasıl yapılacağını göster ve C#:
+Evrensel Windows platformu (UWP) üzerinde, ses giriş cihazları karşılık gelen `Id()` [`DeviceInformation`](/uwp/api/windows.devices.enumeration.deviceinformation) nesnenin özelliği kullanılarak elde edilebilir.
+Aşağıdaki kod örnekleri, ve C++ C#' de bunun nasıl yapılacağını göstermektedir:
 
 ```cpp
 #include <winrt/Windows.Foundation.h>
@@ -221,19 +221,19 @@ namespace helloworld {
 }
 ```
 
-Bir örnek cihaz kimliği `\\\\?\\SWD#MMDEVAPI#{0.0.1.00000000}.{5f23ab69-6181-4f4a-81a4-45414013aac8}#{2eef81be-33fa-4800-9670-1cd474972c3f}`.
+Örnek bir cihaz KIMLIĞI `\\\\?\\SWD#MMDEVAPI#{0.0.1.00000000}.{5f23ab69-6181-4f4a-81a4-45414013aac8}#{2eef81be-33fa-4800-9670-1cd474972c3f}`.
 
-## <a name="audio-device-ids-on-linux"></a>Ses cihazı Linux'ta kimlikleri
+## <a name="audio-device-ids-on-linux"></a>Linux 'ta ses cihazı kimlikleri
 
-Cihaz kimlikleri standart ALSA cihaz kimlikleri kullanarak seçilir.
-Komut çıktısında sisteme bağlı girişleri kimliklerini içerdiği `arecord -L`.
-Alternatif olarak, bunlar kullanılarak edinilebilir [ALSA C Kitaplığı](https://www.alsa-project.org/alsa-doc/alsa-lib/).
-Örnek kimlikleri `hw:1,0` ve `hw:CARD=CC,DEV=0`.
+Cihaz kimlikleri standart ALSA cihaz kimlikleri kullanılarak seçilir.
+Sisteme bağlı girişlerin kimlikleri, komutun `arecord -L`çıktısında bulunur.
+Alternatif olarak, [alsa C Kitaplığı](https://www.alsa-project.org/alsa-doc/alsa-lib/)kullanılarak elde edilebilir.
+Örnek kimlikler ve `hw:1,0` ' `hw:CARD=CC,DEV=0`dir.
 
-## <a name="audio-device-ids-on-macos"></a>MacOS cihaz kimliklerini ses
+## <a name="audio-device-ids-on-macos"></a>MacOS 'ta ses cihazı kimlikleri
 
-Objective-C içinde uygulanan aşağıdaki işlev adları ve bağlı bir Mac bilgisayar için ses cihazları kimlikleri listesini oluşturur.
-`deviceUID` Dize Speech SDK'sı macOS için bir cihazı tanımlamak için kullanılır.
+Amaç-C ' d e uygulanan aşağıdaki işlev, bir Mac 'e bağlı olan ses cihazlarının adlarının ve kimliklerinin bir listesini oluşturur.
+`deviceUID` Dize, MacOS için konuşma SDK 'sında bir cihazı tanımlamak için kullanılır.
 
 ```objc
 #import <Foundation/Foundation.h>
@@ -357,12 +357,12 @@ CFArrayRef CreateInputDeviceArray()
 }
 ```
 
-Örneğin, kullanıcı kimliği için yerleşik mikrofon olan `BuiltInMicrophoneDevice`.
+Örneğin, yerleşik mikrofonun `BuiltInMicrophoneDevice`UID 'si.
 
-## <a name="audio-device-ids-on-ios"></a>İOS cihaz kimliklerini ses
+## <a name="audio-device-ids-on-ios"></a>İOS üzerinde ses cihazı kimlikleri
 
-Ses cihazı seçimiyle Speech SDK'sı iOS üzerinde desteklenmiyor.
-Ancak, uygulama SDK'sını kullanarak üzerinden ses yönlendirmeyi etkileyebilirsiniz [ `AVAudioSession` ](https://developer.apple.com/documentation/avfoundation/avaudiosession?language=objc) Framework.
+Konuşma SDK 'Sı ile ses cihazı seçimi, iOS üzerinde desteklenmez.
+Ancak, SDK 'yı kullanan uygulamalar [`AVAudioSession`](https://developer.apple.com/documentation/avfoundation/avaudiosession?language=objc) Framework aracılığıyla ses yönlendirmeyi etkileyebilir.
 Örneğin, yönerge
 
 ```objc
@@ -370,16 +370,16 @@ Ancak, uygulama SDK'sını kullanarak üzerinden ses yönlendirmeyi etkileyebili
     withOptions:AVAudioSessionCategoryOptionAllowBluetooth error:NULL];
 ```
 
-Konuşma özellikli bir uygulama için bir Bluetooth kulaklık kullanımını etkinleştirir.
+konuşma özellikli bir uygulama için Bluetooth kulaklık kullanımını etkinleştirme.
 
-## <a name="audio-device-ids-in-javascript"></a>Ses cihazı JavaScript kimlikleri
+## <a name="audio-device-ids-in-javascript"></a>JavaScript 'te ses cihazı kimlikleri
 
-JavaScript içinde [MediaDevices.enumerateDevices()](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/enumerateDevices) yöntemi, ortam aygıtları listeleme ve geçirmek için bir cihaz kimliği bulmak için kullanılabilir `fromMicrophone(...)`.
+JavaScript 'te, Media cihazlarını numaralandırmak ve geçirilecek `fromMicrophone(...)`bir cihaz kimliği bulmak için [mediadevices. enumeratedevices ()](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/enumerateDevices) yöntemi kullanılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Github'da örneklerimizi keşfedin](https://aka.ms/csspeech/samples)
+> [GitHub 'da örneklerimizi keşfet](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

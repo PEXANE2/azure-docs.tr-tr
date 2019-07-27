@@ -1,6 +1,6 @@
 ---
-title: Veri değişikliği
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Veri değişikliği-LUSıS
+titleSuffix: Azure Cognitive Services
 description: Language Understanding (LUIS) Öngörüler önce verileri nasıl değiştirilebilir öğrenin
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 0648dd9bc93097d3c2433943f983b5e9d22f0279
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 67b56f09663aca35ed0843f50e2420b531c82833
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66473496"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560817"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>Öncesinde veya sırasında tahmin utterance verileri değiştirme
 LUIS, öncesinde veya sırasında tahmin utterance işlemek için yöntemler sağlar. Bunlar, yazım ve saat dilimi prebuild datetimeV2 sorumlarını çözme içerir. 

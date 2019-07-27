@@ -1,6 +1,6 @@
 ---
-title: Önceden oluşturulmuş sıcaklık varlık
-titleSuffix: Azure
+title: Sıcaklık önceden oluşturulmuş varlık-LUSıS
+titleSuffix: Azure Cognitive Services
 description: Bu makalede sıcaklık içeren önceden oluşturulmuş varlık bilgilerini Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
@@ -11,22 +11,22 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 8d5e10a7a4fe7fb12bc4140690fcabffa16b32be
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9ecf977e1a477eb4b9178a6259fbe26ef18a9ec2
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65072103"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560151"
 ---
-# <a name="temperature-prebuilt-entity-for-a-luis-app"></a>Sıcaklık LUIS uygulaması için önceden oluşturulmuş varlık
+# <a name="temperature-prebuilt-entity-for-a-luis-app"></a>Bir LUSıS uygulaması için sıcaklık önceden oluşturulmuş varlık
 Sıcaklık sıcaklık türleri çeşitli ayıklar. Bu varlık zaten eğitildi çünkü uygulama sıcaklık içeren örnek Konuşma ekleme gerekmez. Sıcaklık varlık içerisinde desteklendiği [çok kültür](luis-reference-prebuilt-entities.md). 
 
 ## <a name="types-of-temperature"></a>Sıcaklık türleri
-Sıcaklık yönetilen engelle [tanıyıcıları metin](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L819) GitHub deposu
+Sıcaklık, [Tanıyıcılar-metin](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L819) GitHub deposundan yönetiliyor
 
 ## <a name="resolution-for-prebuilt-temperature-entity"></a>Önceden oluşturulmuş sıcaklık varlık için çözümleme
 
-### <a name="api-version-2x"></a>API sürüm 2.x
+### <a name="api-version-2x"></a>API sürüm 2. x
 
 Aşağıdaki örnek, çözünürlüğünü gösterir **builtin.temperature** varlık.
 
@@ -58,9 +58,9 @@ Aşağıdaki örnek, çözünürlüğünü gösterir **builtin.temperature** var
 }
 ```
 
-### <a name="preview-api-version-3x"></a>Önizleme API sürümü 3.x
+### <a name="preview-api-version-3x"></a>Preview API sürüm 3. x
 
-Aşağıdaki JSON ile olan `verbose` parametresini `false`:
+Aşağıdaki JSON `verbose` parametresi olarak `false`ayarlanmıştır:
 
 ```json
 {
@@ -85,7 +85,7 @@ Aşağıdaki JSON ile olan `verbose` parametresini `false`:
 }
 ```
 
-Aşağıdaki JSON ile olan `verbose` parametresini `true`:
+Aşağıdaki JSON `verbose` parametresi olarak `true`ayarlanmıştır:
 
 ```json
 {

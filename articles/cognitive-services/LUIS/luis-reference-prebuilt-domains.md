@@ -1,6 +1,6 @@
 ---
-title: Önceden derlenmiş etki alanı başvurusu
-titleSuffix: Azure
+title: Önceden oluşturulmuş etki alanı başvurusu-LUSıS
+titleSuffix: Azure Cognitive Services
 description: Önceden oluşturulmuş koleksiyonları hedefleri ve varlıkların gelen Language Understanding Intelligent Services (LUIS) önceden oluşturulmuş etki alanları için başvuru.
 services: cognitive-services
 author: diberry
@@ -11,21 +11,21 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: b615185472ede25fd6ceef9cc3e7325375e16ac7
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: ce043e23a0384a74fd5d2c9dd514045578ef836d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846673"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563453"
 ---
-# <a name="prebuilt-domain-reference-for-your-luis-app"></a>LUIS uygulamanızı için önceden oluşturulmuş etki alanı başvurusu
+# <a name="prebuilt-domain-reference-for-your-luis-app"></a>LUSıS uygulamanız için önceden oluşturulmuş etki alanı başvurusu
 Bu başvuru, hakkında bilgi sağlar. [önceden oluşturulmuş etki alanları](luis-how-to-use-prebuilt-domains.md), önceden oluşturulmuş koleksiyon hedefleri ve LUIS sunan varlıkların olduğu.
 
 [Özel etki alanları](luis-how-to-start-new-app.md), aksine, hiçbir hedefleri ve modelleri başlayın. Herhangi bir önceden oluşturulmuş etki alanı hedefleri ve varlıklar için özel bir model ekleyebilirsiniz.
 
-# <a name="supported-domains-across-cultures"></a>Desteklenen kültürler alanlarında
+# <a name="supported-domains-across-cultures"></a>Kültürler genelinde desteklenen etki alanları
 
-Yalnızca desteklenen kültürü İngilizce. 
+Desteklenen tek kültür İngilizce 'dir. 
 
 <!--
 
@@ -52,16 +52,16 @@ The table below summarizes the currently supported domains. Support for English 
 
 <br><br>
 
-|varlık türü|description|
+|Varlık türü|description|
 |--|--|
-|Takvim|Takvim olduğundan, hiçbir şey, kişisel toplantılar ve randevuları hakkında _değil_ genel olaylar (örneğin, dünya Kupası zamanlamalar, Seattle olay takvimleri) veya genel takvimleri (hangi gününde bugün olduğu gibi hangi fall başlıyor, işçilik gün olduğunda).|
-|İletişim|Çağrısı, istekleri metinleri ya da anlık ileti bulun ve kişiler ekleyip (genellikle Giden) çeşitli diğer iletişimle ilgili istekleri gönderin. İlgili kişi adı yalnızca sorgularını iletişimi etki alanına ait değil.|
-|Email|E-posta iletişimi etki alanının alt etki alanı var. Esas olarak, e-posta üzerinden ileti göndermek ve almak için istekleri içerir.|
-|HomeAutomation|Hedefleri ve Akıllı Giriş cihazları denetlemek için ilgili varlıkları HomeAutomation etki alanı sağlar. Çoğunlukla ışıkları ve yapının klimaları ilgili denetim komutu destekler ancak bazı diğer elektrikli aletler için genelleştirme yeteneklerini sahiptir.|
-|Notlar|Amaç ve varlıkları not oluşturma ve kullanıcılar için öğelere yazmak için Not etki alanı sağlar.|
-|Yerler|İşletmeler, kurumlar, Restoran, ortak alanları ve adresleri basamak içerir. Etki alanı bulma ve ortak bir yerde işletim saat ve uzaklık konumu gibi bilgiler hakkında soran bir yerde destekler.|
-|RestaurantReservation|Restoran ayırma etki alanı hedefleri restoranlar için ayırmaları işlemek için destekler.|
-|ToDo|ToDo etki alanı kullanıcılar ekleme, işaretleyin ve kendi Yapılacaklar öğelerini silmek için görev listesi türleri sağlar.|
-|Altyapı Hizmetleri|Yardımcı programları etki alanıdır genel bir etki alanı tüm LUIS arasında ortak hedefleri ve konuşma fark senaryolarda içeren önceden oluşturulmuş modelleri.|
-|Hava durumu|Hava durumu ve önerileri yer ve zaman ile denetimi veya hava koşulları tarafından denetlenmesi hava durumu etki alanı odaklanır.|
-|Web|Web etki alanı, bir Web sitesi için arama için amaç ve varlıkları sağlar.|
+|Takvim|Takvim, kişisel toplantılar ve randevular hakkında (Dünya  fincanı zamanlamaları, Seattle olay takvimleri gibi) veya genel takvimler (Bugün günün ne olduğu, işçilik günü ne kadar sürer).|
+|İletişim|Çağrı yapma, metin veya anlık ileti gönderme, kişileri bulma ve ekleme ve diğer iletişimle ilgili istekleri (genellikle giden) bulma istekleri. Kişi adı yalnızca sorgular Iletişim etki alanına ait değildir.|
+|Email|E-posta, Iletişim etki alanının bir alt etki alanıdır. Genellikle e-posta yoluyla ileti gönderme ve alma isteklerini içerir.|
+|HomeAutomation|HomeAutomation etki alanı, akıllı giriş cihazlarını denetleme ile ilgili amaçlar ve varlıklar sağlar. Genellikle ışıklar ve hava koşullayıcı ile ilgili denetim komutunu destekler, ancak diğer elektrik gereçlerine yönelik bazı Genelleştirme becerileri vardır.|
+|Notlar|Not etki alanı, notları oluşturmak ve kullanıcılar için öğeleri yazmak üzere amaçlar ve varlıklar sağlar.|
+|Yerler|Yerler arasında işletmeler, kurumlar, restoranlar, kamu alanları ve adresler bulunur. Etki alanı, konum bulma ve konum, çalışma saati ve mesafe gibi genel bir yerin bilgilerini ister.|
+|RestaurantReservation|Restoran ayırma etki alanı, restoranlar için rezervasyonları işleme amaçlarını destekler.|
+|ToDo|ToDo etki alanı, kullanıcıların Todo öğelerini eklemesi, işaretlemesi ve silmesi için görev listesi türleri sağlar.|
+|Altyapı Hizmetleri|Yardımcı programlar etki alanı, tüm lu, önceden oluşturulmuş modellerdeki, fark senaryolarında ortak amaçlar ve söyler içeren genel bir etki alanıdır.|
+|Hava durumu|Hava durumu etki alanı, hava durumu koşullarına ve BT danışmanlarını, hava durumu koşullarına göre konum ve saat ya da denetim saatine|
+|Web|Web etki alanı, bir Web sitesi aramak için amaç ve varlıklar sağlar.|

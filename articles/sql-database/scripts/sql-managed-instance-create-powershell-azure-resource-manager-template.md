@@ -1,6 +1,6 @@
 ---
-title: PowerShell örneği - Azure SQL veritabanı'nda yönetilen örnek oluşturma | Microsoft Docs
-description: Azure PowerShell örnek betiği Azure SQL veritabanı yönetilen örnek oluşturma
+title: PowerShell örneği-Azure SQL veritabanı 'nda yönetilen bir örnek oluşturma | Microsoft Docs
+description: Azure SQL veritabanı 'nda yönetilen bir örnek oluşturmak için örnek betik Azure PowerShell
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -10,38 +10,37 @@ ms.topic: sample
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
-manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: e8f59faea80237be2ac0b056db4fb8b95d4ab217
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 5a60e8efad41c94deeedd545e6e0c1c96ff04e25
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875365"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569736"
 ---
-# <a name="use-powershell-with-azure-resource-manager-template-to-create-a-managed-instance-in-azure-sql-database"></a>Azure SQL veritabanı'nda bir yönetilen örnek oluşturmak için Azure Resource Manager şablonu ile PowerShell kullanma
+# <a name="use-powershell-with-azure-resource-manager-template-to-create-a-managed-instance-in-azure-sql-database"></a>Azure SQL veritabanı 'nda yönetilen bir örnek oluşturmak için Azure Resource Manager şablonuyla PowerShell kullanma
 
-Azure SQL veritabanı yönetilen örneği, Azure PowerShell kitaplığını ve Azure Resource Manager şablonları kullanılarak oluşturulabilir.
+Azure SQL veritabanı yönetilen örneği, Azure PowerShell kitaplığı ve Azure Resource Manager şablonları kullanılarak oluşturulabilir.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-PowerShell'i yerel olarak yükleyip kullanmayı tercih ederseniz Bu öğretici AZ PowerShell 1.4.0 gerektirir veya üzeri. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
+PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici AZ PowerShell 1.4.0 veya üstünü gerektirir. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
 
-Azure PowerShell komutları, önceden tanımlanmış Azure Resource Manager şablonu kullanarak dağıtım başlayabilirsiniz. Şablonda aşağıdaki özellikler belirtilebilir:
+Azure PowerShell komutlar, önceden tanımlanmış Azure Resource Manager şablonu kullanarak dağıtımı başlatabilir. Şablonda aşağıdaki özellikler belirtilebilir:
 
 - Örnek adı
-- SQL yönetici kullanıcı adı ve parola.
-- (Çekirdek sayısını ve en yüksek depolama boyutu) örnek boyutu.
-- VNet ve alt ağ örneği nereye yerleştirileceğini.
-- Sunucu düzeyinde harmanlama örneği (Önizleme).
+- SQL Yönetici Kullanıcı adı ve parolası.
+- Örneğin boyutu (çekirdek sayısı ve en fazla depolama boyutu).
+- Örneğin yerleştirileceği VNet ve alt ağ.
+- Örneğin sunucu düzeyi harmanlaması (Önizleme).
 
-Örnek adı, SQL yönetici kullanıcı adı, VNet/alt ağ ve harmanlama daha sonra değiştirilemez. Diğer örnek özellikleri değiştirilebilir.
+Örnek adı, SQL Yöneticisi Kullanıcı adı, VNet/subnet ve harmanlama daha sonra değiştirilemez. Diğer örnek özellikleri değiştirilebilir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu örnek, sahibi olduğunuzu varsayar [geçerli ağ ortamını oluşturan](../sql-database-managed-instance-create-vnet-subnet.md) veya [mevcut bir VNet değiştiren](../sql-database-managed-instance-configure-vnet-subnet.md) yönetilen Örneğiniz için. Örnek cmdlet'ler kullanır [yeni AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment) ve [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork) bu nedenle, aşağıdaki PowerShell modüllerine yüklendiğinden emin olun:
+Bu örnek, [geçerli bir ağ ortamı oluşturduğunuzu](../sql-database-managed-instance-create-vnet-subnet.md) veya yönetilen örneğiniz Için [mevcut VNET](../sql-database-managed-instance-configure-vnet-subnet.md) 'i değiştirdiğinizi varsayar. Örnek, [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment) ve [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork) cmdlet 'lerini kullanır, bu nedenle aşağıdaki PowerShell modüllerini yüklediğinizden emin olun:
 
 ```powershell
 Install-Module Az.Network
@@ -50,7 +49,7 @@ Install-Module Az.Resources
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager şablonu
 
-Aşağıdaki içeriğe örneği oluşturmak için kullanılacak şablonu temsil eder bir dosyada yerleştirilmelidir:
+Aşağıdaki içerik örneği oluşturmak için kullanılacak bir şablonu temsil eden bir dosyaya yerleştirilmelidir:
 
 ```json
 {
@@ -101,9 +100,9 @@ Aşağıdaki içeriğe örneği oluşturmak için kullanılacak şablonu temsil 
 }
 ```
 
-Düzgün bir şekilde yapılandırılmış alt ağ ile Azure sanal ağı zaten varsayılır. Düzgün bir şekilde yapılandırılmış bir alt ağ yoksa ayrı kullanarak ağ ortamını hazırlama [Azure yönetilen kaynak şablonu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment) , bağımsız olarak yürütülen veya bu şablona dahil.
+Varsayım, doğru yapılandırılmış alt ağa sahip Azure VNet 'in zaten varolduğu bir değer. Doğru yapılandırılmış bir alt ağınız yoksa, bağımsız olarak yürütülebilecek veya bu şablona dahil edilen ayrı [Azure Kaynak yönetilen şablonunu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment) kullanarak ağ ortamını hazırlayın.
 
-Bu dosyanın içeriği .json dosyası olarak kaydedin, aşağıdaki PowerShell Betiği dosya yoluna koyun ve betiğinde nesnelerin adlarını değiştirin:
+Bu dosyanın içeriğini. JSON dosyası olarak kaydedin, dosya yolunu aşağıdaki PowerShell betiğine yerleştirin ve betikteki nesnelerin adlarını değiştirin:
 
 ```powershell
 $subscriptionId = "ed827499-xxxx-xxxx-xxxx-xxxxxxxxxx"

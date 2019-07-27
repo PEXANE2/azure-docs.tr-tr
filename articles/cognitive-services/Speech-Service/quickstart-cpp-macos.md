@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı Başlangıç: C++ (macOS) - konuşma Hizmetleri konuşma tanıma'
+title: 'Hızlı Başlangıç: Konuşmayı tanıma, C++ (MacOS)-konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Speech SDK'sı kullanarak macOS üzerinde c++ Konuşma tanımayı öğrenmesine
+description: Konuşma SDK 'sını kullanarak macOS C++ 'ta konuşmayı tanımayı öğrenin
 services: cognitive-services
 author: wolfma61
 manager: nitinme
@@ -10,22 +10,22 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: de170955ced45040541565800fc9853edea322f5
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: d7d35c251848af5cfd5852080d01831085401227
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603073"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68554122"
 ---
-# <a name="quickstart-recognize-speech-in-c-on-macos-by-using-the-speech-sdk"></a>Hızlı Başlangıç: Speech SDK'sı kullanarak macOS üzerinde c++ konuşma tanıma
+# <a name="quickstart-recognize-speech-in-c-on-macos-by-using-the-speech-sdk"></a>Hızlı Başlangıç: Konuşma SDK 'sını C++ kullanarak MacOS 'ta konuşmayı tanıma
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-Bu makalede, macOS 10.13 ve üzeri bir C++ konsol uygulaması oluşturun. Bilişsel Hizmetler'i kullanma [Speech SDK'sı](speech-sdk.md) , Mac mikrofondan metni gerçek zamanlı konuşma tanıma özelliği. Uygulamanın oluşturulduğu [Speech SDK'sı macOS için](https://aka.ms/csspeech/macosbinary) ve Mac'ın varsayılan C++ derleyicisi (örneğin, `g++`).
+Bu makalede, macOS 10,13 ve C++ üzeri için bir konsol uygulaması oluşturacaksınız. Mac 'in mikrofonunuzdan gerçek zamanlı olarak konuşmayı metne eklemek için bilişsel Hizmetler [konuşma SDK 'sını](speech-sdk.md) kullanın. Uygulama, [macOS Için konuşma SDK 'sı](https://aka.ms/csspeech/macosbinary) ve Mac 'in varsayılan C++ derleyicisi ile oluşturulmuştur (örneğin, `g++`).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu hızlı başlangıcı tamamlamak için bir konuşma Hizmetleri abonelik anahtarı ihtiyacınız vardır. Anahtarı ücretsiz alabilirsiniz. Bkz: [konuşma Hizmetleri ücretsiz olarak deneyin](get-started.md) Ayrıntılar için.
+Bu hızlı başlangıcı tamamlayabilmeniz için bir konuşma Hizmetleri abonelik anahtarına ihtiyacınız vardır. Anahtarı ücretsiz alabilirsiniz. Ayrıntılar için bkz. [konuşma hizmetlerini ücretsiz deneyin](get-started.md) .
 
 ## <a name="install-speech-sdk"></a>Konuşma SDK'sını yükleme
 
@@ -33,7 +33,7 @@ Bu hızlı başlangıcı tamamlamak için bir konuşma Hizmetleri abonelik anaht
 
 Bilişsel Hizmetler Konuşma SDK'sının geçerli sürümü: `1.6.0`.
 
-Sıkıştırılmış çerçeve paketinden olarak Speech SDK'sı macOS için indirilebilir https://aka.ms/csspeech/macosbinary.
+MacOS için konuşma SDK 'Sı, öğesinden https://aka.ms/csspeech/macosbinary sıkıştırılmış bir çerçeve paketi olarak indirilebilir.
 
 SDK'yı aşağıda gösterildiği gibi indirin ve yükleyin:
 
@@ -49,7 +49,7 @@ SDK'yı aşağıda gösterildiği gibi indirin ve yükleyin:
    mkdir -p "$SPEECHSDK_ROOT"
    ```
 
-1. İndirin ve ayıklayın `.zip` Speech SDK'sı çerçevesi içeren arşiv:
+1. Konuşma SDK çerçevesini içeren `.zip` Arşivi indirin ve ayıklayın:
 
    ```sh
    wget -O SpeechSDK-macOS.zip https://aka.ms/csspeech/macosbinary
@@ -62,7 +62,7 @@ SDK'yı aşağıda gösterildiği gibi indirin ve yükleyin:
    ls -l "$SPEECHSDK_ROOT"
    ```
 
-   Dizin listeleme lisans dosyaları ve üçüncü taraf bildirimi içermelidir yanı sıra bir `MicrosoftCognitiveServicesSpeech.framework` dizin.
+   Dizin listesi, üçüncü taraf bildirim ve lisans dosyalarının yanı sıra bir `MicrosoftCognitiveServicesSpeech.framework` dizin içermelidir.
 
 ## <a name="add-sample-code"></a>Örnek kodu ekleme
 
@@ -70,7 +70,7 @@ SDK'yı aşağıda gösterildiği gibi indirin ve yükleyin:
 
    [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/cpp-macos/helloworld.cpp#code)]
 
-1. Bu yeni dosya, dize değiştirin `YourSubscriptionKey` konuşma Hizmetleri abonelik anahtarınız ile.
+1. Bu yeni dosyada, dizeyi `YourSubscriptionKey` konuşma Hizmetleri abonelik anahtarınızla değiştirin.
 
 1. `YourServiceRegion` dizesini aboneliğinizle ilişkili [bölge](regions.md) ile (örneğin ücretsiz deneme aboneliğinde `westus`) değiştirin.
 
@@ -79,7 +79,7 @@ SDK'yı aşağıda gösterildiği gibi indirin ve yükleyin:
 > [!NOTE]
 > Aşağıdaki komutları _tek bir komut satırı_ olarak girdiğinizden emin olun. Bunu yapmanın en kolay yolu, komutu her komutun yanındaki **Kopyala** düğmesini kullanarak kopyalayıp kabuk isteminize yapıştırmaktır.
 
-* Uygulamayı oluşturmak için aşağıdaki komutu çalıştırın.
+* Uygulamayı derlemek için aşağıdaki komutu çalıştırın.
 
   ```sh
   g++ helloworld.cpp -o helloworld --std=c++14 -F${SPEECHSDK_ROOT} -framework MicrosoftCognitiveServicesSpeech
@@ -99,7 +99,7 @@ SDK'yı aşağıda gösterildiği gibi indirin ve yükleyin:
    ./helloworld
    ```
 
-1. Konsol penceresinde bir istem görünerek bir şey söylemenizi ister. İngilizce bir deyim ya da cümle söyleyin. Konuşma konuşma hizmetlere iletilen ve transcribed aynı pencerede görünen metin.
+1. Konsol penceresinde bir istem görünerek bir şey söylemenizi ister. İngilizce bir deyim ya da cümle söyleyin. Konuşma, konuşma hizmetlerine iletilir ve aynı pencerede görüntülenen metne gönderilir.
 
    ```text
    Say something...
@@ -109,7 +109,7 @@ SDK'yı aşağıda gösterildiği gibi indirin ve yükleyin:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [GitHub üzerinde C++ örneklerini keşfedin](https://aka.ms/csspeech/samples)
+> [GitHub C++ 'daki örnekleri keşfet](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

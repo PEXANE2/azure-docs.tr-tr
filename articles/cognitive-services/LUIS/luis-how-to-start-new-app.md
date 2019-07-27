@@ -1,6 +1,6 @@
 ---
-title: Yeni bir uygulama oluşturma
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Yeni bir uygulama oluşturun-LUSıS
+titleSuffix: Azure Cognitive Services
 description: Oluşturun ve Language Understanding (LUIS) sayfasındaki yönetin.
 services: cognitive-services
 author: diberry
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: b8b0cebf4ba47f875caacfcfbf89b84551b41333
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 7f9809fde088a03d4b20b5c739253f446c7a84b6
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341851"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563614"
 ---
-# <a name="create-a-new-luis-app-in-the-luis-portal"></a>LUIS portalda yeni bir LUIS uygulaması oluşturma
+# <a name="create-a-new-luis-app-in-the-luis-portal"></a>LUSıS portalında yeni bir LUO uygulaması oluşturma
 Çeşitli şekillerde LUIS uygulaması oluşturmak için vardır. Bir LUIS uygulaması oluşturabileceğiniz [LUIS](https://www.luis.ai) portal ya da yazma LUIS aracılığıyla [API'leri](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f).
 
 ## <a name="using-the-luis-portal"></a>LUIS portalı kullanma
@@ -56,36 +56,36 @@ ms.locfileid: "67341851"
     > [!NOTE]
     > Uygulama oluşturduktan sonra kültür değiştirilemez. 
 
-## <a name="import-an-app-from-file"></a>Uygulama, dosyadan içeri aktar
+## <a name="import-an-app-from-file"></a>Bir uygulamayı dosyadan içeri aktar
 
-1. Üzerinde **uygulamalarım** sayfasında **alma yeni uygulama**.
-1. Açılan iletişim kutusunda, geçerli uygulama JSON dosyasını seçin ve ardından **Bitti**.
+1. **Uygulamalarım** sayfasında **Yeni uygulama al**' ı seçin.
+1. Açılan iletişim kutusunda geçerli bir uygulama JSON dosyası seçin ve **bitti**' yi seçin.
 
-### <a name="import-errors"></a>İçeri Aktarma hataları
+### <a name="import-errors"></a>İçeri aktarma hataları
 
 Olası hatalar şunlardır: 
 
-* Bu ada sahip bir uygulama zaten var. Bunu düzeltmek için uygulamayı yeniden içeri aktarın ve ayarlama **isteğe bağlı adı** yeni bir ad. 
+* Bu ada sahip bir uygulama zaten var. Bunu onarmak için, uygulamayı yeniden içeri aktarın ve **Isteğe bağlı adı** yeni bir adla ayarlayın. 
 
 ## <a name="export-app-for-backup"></a>Yedekleme için uygulamayı dışarı aktarma
 
-1. Üzerinde **uygulamalarım** sayfasında **dışarı**.
-1. Seçin **JSON olarak verin**. Tarayıcınız etkin sürümünü yükler.
-1. Bu dosya, model arşivlemek için yedekleme sisteminize ekleyin.
+1. **Uygulamalarım** sayfasında, **dışarı aktar**' ı seçin.
+1. **JSON olarak dışarı aktar**' ı seçin. Tarayıcınız uygulamanın etkin sürümünü indirir.
+1. Modeli arşivlemek için bu dosyayı yedekleme sisteminize ekleyin.
 
 ## <a name="export-app-for-containers"></a>Kapsayıcılar için uygulamayı dışarı aktarma
 
-1. Üzerinde **uygulamalarım** sayfasında **dışarı**.
-1. Seçin **dışarı aktarma kapsayıcısı olarak** dışarı aktarmak istediğiniz hangi yayımlanan yuvası (üretim veya aşama)'yi seçin.
-1. Bu dosya ile kullanın, [LUIS kapsayıcı](luis-container-howto.md). 
+1. **Uygulamalarım** sayfasında, **dışarı aktar**' ı seçin.
+1. **Kapsayıcı olarak dışarı aktar** ' ı seçin ve ardından dışarı aktarmak istediğiniz yayımlanmış yuvayı (üretim veya aşama) seçin.
+1. Bu dosyayı [lusıs](luis-container-howto.md)kapsayıcınızda kullanın. 
 
-    Eğitilen bir verme ancak henüz LUIS kapsayıcı ile kullanmak için yayımlanan model içinde ilgileniyorsanız, Git **sürümleri** sayfasında ve buradan dışarı aktarın. 
+    Yalnızca bir eğitilen modeli HALSıS kapsayıcısı ile kullanılmak üzere dışarı aktarmaya ilgileniyorsanız, **sürümler** sayfasına gidin ve oradan dışarı aktarın. 
 
-## <a name="delete-app"></a>Uygulamayı Sil
+## <a name="delete-app"></a>Uygulamayı silme
 
-1. Üzerinde **uygulamalarım** sayfasında, uygulama satırının sonundaki üç noktaya (...) seçin.
-1. Seçin **Sil** menüsünde.
-1. Seçin **Tamam** onay penceresinde.
+1. **Uygulamalarım** sayfasında, uygulama satırının sonundaki üç noktayı (...) seçin.
+1. Menüden **Sil** ' i seçin.
+1. Onay penceresinde **Tamam ' ı** seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

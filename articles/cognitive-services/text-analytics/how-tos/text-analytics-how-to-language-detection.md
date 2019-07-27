@@ -1,6 +1,7 @@
 ---
-title: Metin analizi REST API ile dil algılama | Microsoft Docs
-description: Azure Bilişsel Hizmetler'in sunduğu metin analizi REST API'sini kullanarak, dili algılayın.
+title: Metin Analizi REST API dili algılayın
+titleSuffix: Azure Cognitive Services
+description: Azure bilişsel hizmetler 'deki Metin Analizi REST API kullanarak dili algılayın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -9,31 +10,31 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 02/26/2019
 ms.author: aahi
-ms.openlocfilehash: e1adeb34cf999f471bb183e4d7de9c65427252bb
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 98f7ef3e6ce6ce8569e6cf1fba1c939e470d4be7
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67986520"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68552470"
 ---
-# <a name="example-detect-language-with-text-analytics"></a>Örnek: Metin analiziyle dili algılayın
+# <a name="example-detect-language-with-text-analytics"></a>Örnek: Metin Analizi Dili algıla
 
-[Dil algılama](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) Özelliği Azure metin analizi REST API'si, her belge için metin girişi değerlendirir ve Dil tanımlayıcıları ile analiz gücünü gösteren bir puan döndürür.
+Azure Metin Analizi REST API [dil algılama](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) özelliği, her belge için metin girişini değerlendirir ve analizin gücünü gösteren bir puanla birlikte Dil tanımlayıcıları döndürür.
 
-Bu özellik, dilin bilinmediği rastgele metni toplayan içerik depoları için kullanışlıdır. Giriş belgesinde hangi dilin kullanıldığını belirlemek için bu analizin sonuçlarını ayrıştırabilirsiniz. Yanıt, ayrıca modelin güvenle yansıtan bir puan döndürür. Puan 0 ile 1 arasında değerdir.
+Bu özellik, dilin bilinmediği rastgele metni toplayan içerik depoları için kullanışlıdır. Giriş belgesinde hangi dilin kullanıldığını belirlemek için bu analizin sonuçlarını ayrıştırabilirsiniz. Yanıt Ayrıca modelin güvenini yansıtan bir puan döndürür. Puan değeri 0 ile 1 arasındadır.
 
-Dil algılama özelliği, çok çeşitli diller, çeşitleri, diyalektler ve bazı bölgesel veya kültürel dil algılayabilir. Bu özellik için dillerin tam listesini yayımlanan değil.
+Dil Algılama özelliği, çeşitli diller, çeşitler, diapacts ve bazı bölgesel veya kültürel dillerini algılayabilir. Bu özellik için dillerin tam listesi yayımlanmamıştır.
 
-Daha az sık kullanılan bir dille ifade içeriğiniz varsa, bir kod döndürür görmek için dil algılama özelliğini deneyebilirsiniz. Yanıt algılanamayan diller için `unknown`.
+Daha az sıklıkta kullanılan bir dilde ifade ettiğiniz bir içeriğiniz varsa, bir kodu döndürüp döndürdüğünü görmek için Dil Algılama özelliğini deneyebilirsiniz. Algılanamayan dillerin yanıtı `unknown`.
 
 > [!TIP]
-> Metin analizi de Linux tabanlı bir Docker kapsayıcı görüntüsü dil için algılama sağlar, böylece [yükleyin ve metin analizi kapsayıcı çalıştırın](text-analytics-how-to-install-containers.md) verilerinizi yakın.
+> Metin Analizi Ayrıca, dil algılama için Linux tabanlı bir Docker kapsayıcı görüntüsü sağlar, bu sayede Metin Analizi kapsayıcısını verilerinize yakın şekilde [yükleyip çalıştırabilirsiniz](text-analytics-how-to-install-containers.md) .
 
 ## <a name="preparation"></a>Hazırlık
 
-JSON belgelerini şu biçimde olmalıdır: KODU ve metin.
+Bu biçimde JSON belgelerinize sahip olmanız gerekir: KIMLIK ve metin.
 
-Belge boyutunu, belgeyi başına altında 5.120 karakter olmalıdır. En fazla 1.000 sahip olduğunuz koleksiyon başına öğe sayısı (Kimlikler). Koleksiyon, istek gövdesinde gönderilir. Aşağıdaki örnek, dil algılama için gönderdiğiniz içeriğin örneğidir:
+Belge boyutunun belge başına 5.120 karakter altında olması gerekir. Koleksiyon başına en fazla 1.000 öğe (kimlik) kullanabilirsiniz. Koleksiyon, istek gövdesinde gönderilir. Aşağıdaki örnek, dil algılama için gönderebilmeniz gerekebilecek içeriğe bir örnektir:
 
    ```
     {
@@ -62,33 +63,33 @@ Belge boyutunu, belgeyi başına altında 5.120 karakter olmalıdır. En fazla 1
     }
 ```
 
-## <a name="step-1-structure-the-request"></a>1\. adım: Yapı isteği
+## <a name="step-1-structure-the-request"></a>1\. adım: İsteği yapısı
 
-İstek tanımı hakkında daha fazla bilgi için bkz. [metin analizi API'sini çağırmak](text-analytics-how-to-call-api.md). Kolaylık olması için aşağıdaki noktalar yeniden belirtilmektedir:
+İstek tanımı hakkında daha fazla bilgi için bkz. [Metin Analizi API'si çağırma](text-analytics-how-to-call-api.md). Kolaylık olması için aşağıdaki noktalar yeniden belirtilmektedir:
 
-+ Bir POST isteği oluşturun. Bu istek için API belgeleri gözden geçirmek için bkz: [dil algılama API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7).
++ POST isteği oluşturun. Bu isteğin API belgelerini gözden geçirmek için [DIL ALGıLAMA API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)'sine bakın.
 
-+ Dil algılama için HTTP uç noktasını ayarlayın. Azure veya bir örneklenmiş bir metin analizi kaynağı kullanma [metin analizi kapsayıcı](text-analytics-how-to-install-containers.md). Dahil etmelisiniz `/languages` kaynak: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/languages`.
++ Dil algılama için HTTP uç noktasını ayarlayın. Azure 'da bir Metin Analizi kaynağı veya örneği oluşturulmuş bir [metin analizi kapsayıcısı](text-analytics-how-to-install-containers.md)kullanın. `/languages` Kaynağı içermesi gerekir: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/languages`.
 
-+ Metin Analizi işlemlerine yönelik erişim anahtarını dahil etmek için bir istek üst bilgisi ayarlayın. Daha fazla bilgi için [bulma uç noktaları ve erişim anahtarları](text-analytics-how-to-access-key.md).
++ Metin Analizi işlemlerine yönelik erişim anahtarını dahil etmek için bir istek üst bilgisi ayarlayın. Daha fazla bilgi için bkz. [uç noktaları ve erişim anahtarlarını bulma](text-analytics-how-to-access-key.md).
 
 + İstek gövdesinde, bu analiz için hazırladığınız JSON belgeleri koleksiyonunu sağlayın.
 
 > [!Tip]
 > İsteği yapılandırmak ve hizmete GÖNDERMEK için [Postman](text-analytics-how-to-call-api.md) kullanın veya [belgelerdeki](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) **API testi konsolu**’nu açın.
 
-## <a name="step-2-post-the-request"></a>2\. adım: POST isteği
+## <a name="step-2-post-the-request"></a>2\. adım: İsteği gönder
 
-İstek alındığında analiz gerçekleştirilir. Dakika başına gönderin ve ikinci olarak, bkz: istek sayısı ve boyutu hakkında bilgi için [veri sınırları](../overview.md#data-limits) genel bakış bölümünde.
+İstek alındığında analiz gerçekleştirilir. Dakika ve saniye başına gönderebilmeniz için istek boyutu ve sayısı hakkında bilgi için genel bakış konusunun [veri sınırları](../overview.md#data-limits) bölümüne bakın.
 
 Hizmetin durum bilgisi olmadığını unutmayın. Hesabınızda bir veri depolanmaz. Sonuçlar hemen yanıtta döndürülür.
 
 
 ## <a name="step-3-view-the-results"></a>3\. adım: Sonuçları görüntüleme
 
-Tüm POST isteklerinden kimlikleri JSON biçimli bir yanıt döndürür ve özellikleri algılandı.
+Tüm POST istekleri, kimliklerle ve algılanan özelliklerle JSON biçimli bir yanıt döndürür.
 
-Hemen çıktı döndürülür. JSON kabul eden bir uygulama sonuçları akış veya çıkış yerel sistemin bir dosyaya kaydedin. Ardından, çıkış sıralayın, arayın ve verileri işlemek için kullanabileceğiniz bir uygulamayı içeri aktarın.
+Hemen çıktı döndürülür. Sonuçları JSON kabul eden bir uygulamaya veya çıktıyı yerel sistemdeki bir dosyaya kaydedebilirsiniz. Sonra çıktıyı, verileri sıralamak, aramak ve işlemek için kullanabileceğiniz bir uygulamaya içeri aktarın.
 
 Örnek istek için sonuçlar, aşağıdaki JSON gibi görünmelidir. Birden çok öğe içeren bir belge olduğuna dikkat edin. Çıktı İngilizce dilindedir. Dil tanımlayıcıları bir kolay ad ve [ISO 639-1](https://www.iso.org/standard/22109.html) biçiminde dil kodu içerir.
 
@@ -154,7 +155,7 @@ Hemen çıktı döndürülür. JSON kabul eden bir uygulama sonuçları akış v
 
 ### <a name="ambiguous-content"></a>Belirsiz içerik
 
-Çözümleyici giriş varsa ayrıştırılamıyor, döndürür `(Unknown)`. Yalnızca Arapça sayılar içeren bir metin bloğu gönderirseniz bir örnektir.
+Çözümleyici girişi ayrıştıramaz, döndürür `(Unknown)`. Yalnızca Arapça rakamları içeren bir metin bloğu gönderirseniz örnek bir örnektir.
 
 ```
     {
@@ -167,9 +168,9 @@ Hemen çıktı döndürülür. JSON kabul eden bir uygulama sonuçları akış v
         }
       ]
 ```
-### <a name="mixed-language-content"></a>Karma dil içeriği
+### <a name="mixed-language-content"></a>Karışık dil içeriği
 
-Aynı belgede karma dil içeriği, içeriğin büyük gösteriminde, ancak daha düşük bir pozitif derecelendirme dilini döndürür. Derecelendirmesi, değerlendirmeyi Marjinal gücünü yansıtır. Aşağıdaki örnekte giriş, İngilizce, İspanyolca ve Fransızca dillerinin birleşimidir. Çözümleyici, hakim dili belirlemek için her bir kesimdeki karakterleri sayar.
+Aynı belge içindeki karışık dil içeriği, içerikte en büyük gösterimle ve daha düşük pozitif bir derecelendirmeden dili döndürür. Derecelendirme, değerlendirmenin marjinal kuvvetini yansıtır. Aşağıdaki örnekte giriş, İngilizce, İspanyolca ve Fransızca dillerinin birleşimidir. Çözümleyici, hakim dili belirlemek için her bir kesimdeki karakterleri sayar.
 
 **Girdi**
 
@@ -186,7 +187,7 @@ Aynı belgede karma dil içeriği, içeriğin büyük gösteriminde, ancak daha 
 
 **Çıktı**
 
-Sonuçta elde edilen çıktı daha zayıf bir güven düzeyini gösteren hakim dili, küçüktür 1.0 puanı oluşur.
+Elde edilen çıktı, daha zayıf bir güvenilirlik düzeyini belirten 1,0 ' den az bir puan içeren, önceden baskın dilden oluşur.
 
 ```
 {
@@ -208,12 +209,12 @@ Sonuçta elde edilen çıktı daha zayıf bir güven düzeyini gösteren hakim d
 
 ## <a name="summary"></a>Özet
 
-Bu makalede, kavramlar ve iş akışı dil algılama için Azure Bilişsel hizmetler metin analizi kullanarak öğrendiniz. Aşağıdaki noktaları açıklandığı ve gösterildiği:
+Bu makalede, Azure bilişsel hizmetler 'de Metin Analizi kullanarak dil algılama kavramlarını ve iş akışını öğrendiniz. Aşağıdaki noktaları açıklanmaktadır ve gösterilmiştir:
 
-+ [Dil algılama](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) çok çeşitli diller, çeşitleri, diyalektler ve bölgesel veya kültürel bazı diller için kullanılabilir.
-+ İstek gövdesindeki JSON belgelerini bir kimliği ve metin ekleyin.
-+ POST isteğiyse bir `/languages` kişiselleştirilmiş kullanarak uç nokta [erişim anahtarı ve uç nokta](text-analytics-how-to-access-key.md) aboneliğiniz için geçerli.
-+ Yanıt çıktısı Dil tanımlayıcıları için her bir belge kimliğinin oluşur. Çıkış JSON kabul eden herhangi bir uygulama için aktarılabilir. Örnek uygulamaları, Excel ve Power BI, dizileri içerir.
++ [Dil algılama](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) , çok çeşitli diller, çeşitler, diapacts ve bazı bölgesel veya kültürel dilleri için kullanılabilir.
++ İstek gövdesindeki JSON belgeleri bir KIMLIK ve metin içerir.
++ POST isteği, kişiselleştirilmiş bir `/languages` [erişim anahtarı ve](text-analytics-how-to-access-key.md) aboneliğiniz için geçerli olan bir uç nokta kullanarak bir uç noktaya gönderilir.
++ Yanıt çıktısı her belge KIMLIĞI için dil tanımlayıcılarından oluşur. Çıktı, JSON kabul eden herhangi bir uygulamaya akışla eklenebilir. Örnek uygulamalar, birkaç kez ad vermek için Excel ve Power BI içerir.
 
 ## <a name="see-also"></a>Ayrıca bkz. 
 

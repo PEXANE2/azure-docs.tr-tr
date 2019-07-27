@@ -1,7 +1,7 @@
 ---
-title: Konuşma çevirisi ile Azure konuşma Hizmetleri
-titlesuffix: Azure Cognitive Services
-description: Konuşma Hizmetleri, uygulamaları, araçları ve cihazlar için uçtan uca, gerçek zamanlı, çok dilli konuşma çevirisi eklemenize olanak sağlar. Aynı API hem konuşma okuma ve konuşma metin çevirisi için kullanılabilir.
+title: Konuşma hizmeti ile konuşma çevirisi
+titleSuffix: Azure Cognitive Services
+description: Konuşma hizmeti, uygulamalarınıza, araçlara ve cihazlarınıza uçtan uca, gerçek zamanlı, çok dilli bir konuşma çevirisi eklemenizi sağlar. Aynı API hem konuşma okuma ve konuşma metin çevirisi için kullanılabilir.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,34 +10,34 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 428dba9e8ff5ec072d5172fee357fd5319d04ad8
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: cfcefd0b18831163324519b61dbea305f90f44bc
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657737"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68552642"
 ---
 # <a name="what-is-speech-translation"></a>Konuşma çevirisi nedir?
 
-Konuşma çevirisi Azure konuşma Hizmetleri, gerçek zamanlı, çok dilli konuşma okuma ve konuşma metin çevirisi ses akışları sağlar. Konuşma SDK ile uygulamalarınızı, araçları ve cihazlarınızı kaynak döküm ve çeviri çıkışları sağlanan ses erişiminiz. Geçici transkripsiyonu ve çeviri sonuçları konuşma algılanır ve Sentezlenen konuşmaya finaller sonuçları dönüştürülebilir olarak döndürülür.
+Azure konuşma hizmetlerinden konuşma çevirisi, ses akışlarının gerçek zamanlı, çok dilli konuşmadan konuşmaya ve konuşmadan metne çevirisini sağlar. Konuşma SDK 'Sı ile uygulamalarınızın, araçların ve cihazlarınızın, sunulan ses için kaynak dökümlerini ve çeviri çıkışlarını erişimi vardır. Okuma tespit edildiğinde ve değişim sonuçları sentezleştirilmiş konuşmaya dönüştürülebileceğinden, geçici döküm ve çeviri sonuçları döndürülür.
 
-Microsoft'un çeviri altyapısı tarafından iki farklı yaklaşım desteklenir: istatistiksel makine çevirisi (SMT) ve sinirsel makine çevirisi (NMT). SMT verilen birkaç sözcük bağlamında en iyi olası çevirileri tahmin etmek için Gelişmiş istatistiksel çözümlemesini kullanır. NMT ile sinir ağları daha doğru doğal görünen çevirileri kelimeleri için tam cümlelerden bağlamında kullanarak sağlamak için kullanılır.
+Microsoft 'un çeviri altyapısı iki farklı yaklaşımdan desteklenir: istatistiksel makine çevirisi (SMT) ve sinir makine çevirisi (NMT). SMT, birkaç sözcük bağlamında mümkün olan en iyi çevirileri tahmin etmek için gelişmiş istatistiksel analizler kullanır. NMT ile, sözcükleri çevirmek için Tümcelerin tam bağlamını kullanarak daha doğru, doğal bir şekilde daha doğru, doğal bir çeviri sağlamak için sinir Networks kullanılır.
 
-Bugün, Microsoft çeviri için en popüler diller NMT kullanır. Tüm [konuşma konuşma çevirisi için kullanılabilen dilleri](language-support.md#speech-translation) NMT tarafından desteklenir. Konuşma metin çeviri dili çifti bağlı olarak SMT veya NMT kullanabilir. Hedef Dil NMT tarafından desteklenen tüm çeviri NMT destekli olur. Hedef Dil NMT tarafından desteklenmiyor, çeviri NMT ve SMT İngilizce olarak bir "Özet" arasında iki dilleri kullanarak, bir karma değildir.
+Günümüzde Microsoft, en popüler dillere çeviri için NMT kullanır. Tüm [konuşma konuşma çevirisi için kullanılabilen dilleri](language-support.md#speech-translation) NMT tarafından desteklenir. Konuşma metin çeviri dili çifti bağlı olarak SMT veya NMT kullanabilir. Hedef dil NMT tarafından desteklenirken, tam çeviri NMT destekli olur. Hedef dil NMT tarafından desteklenmediğinde, çeviri, iki dil arasında "pivot" olarak Ingilizce kullanan NMT ve SMT 'in bir karması olur.
 
-## <a name="core-features"></a>Temel özellikleri
+## <a name="core-features"></a>Temel Özellikler
 
-REST API'leri ve Speech SDK'sı kullanılabilen özellikleri şunlardır:
+Konuşma SDK 'Sı ve REST API 'Leri aracılığıyla kullanılabilen özellikler şunlardır:
 
 | Kullanım örneği | SDK | REST |
 |----------|-----|------|
-| Tanıma sonuçları konuşma metin çevirisi. | Evet | Hayır |
-| Konuşma konuşma çevirisi. | Evet | Hayır |
-| Geçici algılama ve çeviri sonuçları. | Evet | Hayır |
+| Tanıma sonuçlarıyla konuşmaya metin çevirisi. | Evet | Hayır |
+| Konuşmadan konuşmaya çevirisi. | Evet | Hayır |
+| Ara tanıma ve çeviri sonuçları. | Evet | Hayır |
 
-## <a name="get-started-with-speech-translation"></a>Konuşma çevirisi ile çalışmaya başlama
+## <a name="get-started-with-speech-translation"></a>Konuşma çevirisi 'ni kullanmaya başlama
 
-Hızlı başlangıçlar, kodu 10 dakikadan kısa bir süre içinde çalıştırmak için tasarlanmış sunuyoruz. Bu tablo, konuşma çevirisi hızlı başlangıçlar dile göre düzenlenmiş bir listesini içerir.
+Kodu, 10 dakikadan kısa bir süre içinde çalıştırmak için tasarlanan hızlı başlangıç sunuyoruz. Bu tablo, dile göre düzenlenen konuşma çevirisi hızlı başlangıçlarını bir listesini içerir.
 
 | Hızlı Başlangıç | Platform | API başvurusu |
 |------------|----------|---------------|
@@ -49,25 +49,25 @@ Hızlı başlangıçlar, kodu 10 dakikadan kısa bir süre içinde çalıştırm
 
 ## <a name="sample-code"></a>Örnek kod
 
-Speech SDK'sı için örnek kod, Github'da kullanılabilir. Bu örnekler bir dosya veya akıştan, sürekli ve tek tanıma/çevirisi, ses okuma ve özel modelleriyle çalışma gibi yaygın senaryoları kapsar.
+Konuşma SDK 'Sı için örnek kod GitHub ' da kullanılabilir. Bu örnekler, bir dosya veya akıştan ses okuma, sürekli ve tek kararlı tanıma/çeviri gibi yaygın senaryoları kapsar ve özel modellerle çalışır.
 
-* [Konuşmayı metne ve çeviri örnekleri (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
+* [Konuşmadan metne ve çeviri örnekleri (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
 
-## <a name="migration-guides"></a>Geçiş kılavuzları
+## <a name="migration-guides"></a>Geçiş Kılavuzu
 
-Uygulamalar, Araçlar ya da ürünler kullanıyorsanız [Translator konuşma tanıma API'si](https://docs.microsoft.com/azure/cognitive-services/translator-speech/overview), konuşma Hizmetleri'ne geçirmenize yardımcı olacak Kılavuzlar oluşturduk.
+Uygulamalarınız, araçlar veya ürünleriniz [Translator konuşma çevirisi API'si](https://docs.microsoft.com/azure/cognitive-services/translator-speech/overview)kullanıyorsa, konuşma hizmetlerine geçiş yapmanıza yardımcı olacak kılavuzlar oluşturduk.
 
-* [Translator konuşma API'sini konuşma Services'a geçme](how-to-migrate-from-translator-speech-api.md)
+* [Translator Konuşma Çevirisi API'si konuşma hizmetlerine geçirme](how-to-migrate-from-translator-speech-api.md)
 
 ## <a name="reference-docs"></a>Başvuru belgeleri
 
 * [Konuşma SDK'sı](speech-sdk-reference.md)
-* [Konuşma cihaz SDK'sı](speech-devices-sdk.md)
-* [REST API: Konuşma metin](rest-speech-to-text.md)
+* [Konuşma cihazları SDK 'Sı](speech-devices-sdk.md)
+* [REST API: Konuşmayı metne dönüştürme](rest-speech-to-text.md)
 * [REST API: Metin okuma](rest-text-to-speech.md)
-* [REST API: Batch tanıma ve özelleştirme](https://westus.cris.ai/swagger/ui/index)
+* [REST API: Toplu iş dökümü ve özelleştirme](https://westus.cris.ai/swagger/ui/index)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Bir konuşma Hizmetleri abonelik anahtarı ücretsiz olarak edinin](get-started.md)
-* [Konuşma SDK'sı Al](speech-sdk.md)
+* [Ücretsiz bir konuşma Hizmetleri abonelik anahtarı alın](get-started.md)
+* [Konuşma SDK 'sını alın](speech-sdk.md)

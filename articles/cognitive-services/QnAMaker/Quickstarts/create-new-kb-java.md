@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı Başlangıç: Bilgi Bankası - REST, Java - soru-cevap Oluşturucu Oluşturma'
-titlesuffix: Azure Cognitive Services
+title: 'Hızlı Başlangıç: Bilgi Bankası oluşturma-REST, Java-Soru-Cevap Oluşturma'
+titleSuffix: Azure Cognitive Services
 description: Bu Java REST tabanlı hızlı başlangıçta Bilişsel Hizmetler API hesabınızdaki Azure Panonuzda görünecek olan örnek bir Soru-Cevap Oluşturma bilgi bankasını programlamayla oluşturma adımları gösterilir.
 services: cognitive-services
 author: diberry
@@ -10,14 +10,14 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 298f7e90bb6848d7b0af032bdaff8724a69c227f
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 767866fd6768237c4d3a0d7ea422521254414fb3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249667"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559872"
 ---
-# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>Hızlı Başlangıç: Java kullanarak soru-cevap Oluşturucu Bilgi Bankası oluşturma
+# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>Hızlı Başlangıç: Java kullanarak Soru-Cevap Oluşturma Bilgi Bankası oluşturma
 
 Bu hızlı başlangıçta program aracılığıyla örnek bir Soru-Cevap Oluşturma bilgi bankası (KB) oluşturma adımları gösterilmektedir. Soru-Cevap Oluşturma, [veri kaynaklarından](../Concepts/data-sources-supported.md) ve SSS gibi yarı yapılandırılmış içerikten soru ve cevapları otomatik olarak ayıklar. JSON ile tanımlanan bilgi bankası modeli API isteğinin gövdesinde gönderilir.
 
@@ -100,7 +100,7 @@ Başarılı veya başarısız bir sonuç alana kadar çağrıyı tekrarlayın:
 ```
 
 ## <a name="add-a-main-method"></a>Main yöntemi ekleme
-Main yöntemi KB'yi oluşturur, sonra da durum için yoklama yapar. POST yanıt üstbilgi alanında döndürülen kimliği işlemi **konumu**, GET isteği bir yolun bir parçası olarak kullanılır. `while` Döngü değil tamamlanırsa durumu yeniden dener.
+Main yöntemi KB'yi oluşturur, sonra da durum için yoklama yapar. İşlem KIMLIĞI, yanıt gönder üst bilgisi alan **konumunda**döndürülür, ardından Get isteğindeki yolun bir parçası olarak kullanılır. Tamamlandıysa, `while` döngü durumu yeniden dener.
 
 [!code-java[Add main method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=152-191 "Add main method")]
 

@@ -1,7 +1,7 @@
 ---
-title: Desen rolleri
+title: Model rolleri-LUSıS
 titleSuffix: Azure Cognitive Services
-description: Desenler iyi biçimlendirilmiş şablon Konuşma ' veri ayıklayın. Konuşma şablonu basit bir varlığın yanı sıra kaynak konum ve hedef konum gibi ilgili verileri ayıklamak için roller kullanır.
+description: Desenler, iyi biçimlendirilmiş şablon dıklarından verileri ayıklar. Konuşma şablonu basit bir varlığın yanı sıra kaynak konum ve hedef konum gibi ilgili verileri ayıklamak için roller kullanır.
 ms.custom: seodec18
 services: cognitive-services
 author: diberry
@@ -11,22 +11,22 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: c0e3ac1d53cda2afb2184b92b0fd0afd662101bb
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 7586a81eac95a2e4a08b045b3a2826132d9919f7
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277512"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560033"
 ---
-# <a name="tutorial-extract-contextually-related-patterns-using-roles"></a>Öğretici: Rolleri kullanarak ilgili bağlamsal desenlerini ayıklayın
+# <a name="tutorial-extract-contextually-related-patterns-using-roles"></a>Öğretici: Rolleri kullanarak bağlamsal olarak ile ilgili desenleri Ayıkla
 
-Bu öğreticide iyi biçimlendirilmiş konuşma şablonundan veri ayıklamak için desen kullanacaksınız. Şablon utterance kullanan bir [varlığın](luis-concept-entity-types.md#simple-entity) ve [rolleri](luis-concept-roles.md) konumu kaynak ve hedef konumu gibi ilgili verileri ayıklamak için.  Desen kullandığınızda amaç için daha az sayıda örnek konuşmaya ihtiyacınız vardır.
+Bu öğreticide iyi biçimlendirilmiş konuşma şablonundan veri ayıklamak için desen kullanacaksınız. Şablon, kaynak konumu ve hedef konum gibi ilgili verileri ayıklamak için [basit bir varlık](luis-concept-entity-types.md#simple-entity) ve [Roller](luis-concept-roles.md) kullanır.  Desen kullandığınızda amaç için daha az sayıda örnek konuşmaya ihtiyacınız vardır.
 
 
 **Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:**
 
 > [!div class="checklist"]
-> * Örnek uygulamayı içeri aktarma
+> * Örnek uygulamayı içeri aktar
 > * Yeni varlıklar oluşturma
 > * Yeni amaç oluşturma
 > * Eğitim
@@ -38,16 +38,16 @@ Bu öğreticide iyi biçimlendirilmiş konuşma şablonundan veri ayıklamak iç
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="using-roles-in-patterns"></a>Rolleri modelleri kullanma
+## <a name="using-roles-in-patterns"></a>Düzenleri desenlerde kullanma
 
-Rolleri amacı bir utterance bağlamsal olarak ilişkili varlıkları ayıklamaktır. `Move new employee Robert Williams from Sacramento and San Francisco` konuşmasının içindeki kaynak şehir ve hedef şehir değerleri birbirleriyle ilişkilidir ve her konumun belirtilmesi için yaygın bir dil kullanılmaktadır. 
+Rollerin amacı, bağlamsal olarak ilişkili varlıkları bir utterance içinde ayıklamaktan oluşur. `Move new employee Robert Williams from Sacramento and San Francisco` konuşmasının içindeki kaynak şehir ve hedef şehir değerleri birbirleriyle ilişkilidir ve her konumun belirtilmesi için yaygın bir dil kullanılmaktadır. 
 
 
 Yeni çalışanın adı Billy Patterson henüz **Employee** liste varlığının bir bölümü değildir. Yeni çalışan adı şirket kimlik bilgilerini oluşturmak üzere dışarıdaki bir sisteme gönderilmesi için ilk olarak ayıklanır. Şirket kimlik bilgileri oluşturulduktan sonra çalışan kimlik bilgileri **Employee** liste varlığına eklenir.
 
 Yeni çalışanın ve ailesinin bulundukları şehirden hayali bir şirketin bulunduğu başka bir şehre taşınmaları gerekmektedir. Yeni bir çalışan herhangi bir şehirde bulunabileceği için konumların bulunması gerekir. Yalnızca listedeki şehirlerin ayıklanmasına neden olacağından liste varlığı gibi sabit bir liste işe yaramayacaktır.
 
-Kaynak ve hedef şehirlerle ilişkilendirilmiş rol adlarının tüm varlıklarda benzersiz olması gerekir. Rollerin benzersiz olduğundan emin olmanın kolay yollarından biri, adlandırma stratejisi ile içeren varlığa bağlamaktır. **NewEmployeeRelocation** varlıktır iki rol ile basit bir varlık: **NewEmployeeReloOrigin** ve **NewEmployeeReloDestination**. Relo, "relocation" (konum değiştirme) teriminin kısaltmasıdır.
+Kaynak ve hedef şehirlerle ilişkilendirilmiş rol adlarının tüm varlıklarda benzersiz olması gerekir. Rollerin benzersiz olduğundan emin olmanın kolay yollarından biri, adlandırma stratejisi ile içeren varlığa bağlamaktır. **NewEmployeeRelocation** varlığı, iki rolü olan basit bir varlıktır: **NewEmployeeReloOrigin** ve **NewEmployeeReloDestination**. Relo, "relocation" (konum değiştirme) teriminin kısaltmasıdır.
 
 `Move new employee Robert Williams from Sacramento and San Francisco` örnek konuşmasında yalnızca makine öğrenimi varlıkları bulunduğundan varlıkların tespit edilmesi için amaca yeterli sayıda örnek konuşmanın sağlanması önemlidir.  
 
@@ -55,7 +55,7 @@ Kaynak ve hedef şehirlerle ilişkilendirilmiş rol adlarının tüm varlıklard
 
 Ad veya şehir olması nedeniyle basit varlık algılama konusunda zorluk yaşıyorsanız benzer değerlerin bulunduğu bir tümcecik listesi eklemeyi deneyebilirsiniz. Bu liste LUIS'e kelime veya tümcecik türü hakkında ek bilgi vererek şehir adının algılanmasına yardımcı olur. Tümcecik listeleri yalnızca desenin eşleşmesi için gerekli varlık algılama konusunda desene yardımcı olur. 
 
-## <a name="import-example-app"></a>Örnek uygulamayı içeri aktarma
+## <a name="import-example-app"></a>Örnek uygulamayı içeri aktar
 Son öğreticide oluşturulan **HumanResources** adlı uygulamayla devam edin. 
 
 Aşağıdaki adımları kullanın:

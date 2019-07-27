@@ -1,6 +1,6 @@
 ---
-title: Toplu işe testi
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Batch testi-LUSıS
+titleSuffix: Azure Cognitive Services
 description: Toplu test uygulama geliştirebilirsiniz ve kendi dil anlama geliştirmek için sürekli olarak çalışmak için kullanın.
 services: cognitive-services
 author: diberry
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 03/29/2019
 ms.author: diberry
-ms.openlocfilehash: acb561970b6a8576d1219fc15758e21a3032c9e5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a9a6e7ae48a51ab10e6ba2e5d3996e61938c6f3a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60813314"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560839"
 ---
-# <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>Batch ile 1000 konuşma LUIS portalında test etme
+# <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>LUSıS portalındaki 1000 ile Batch testleri
 
 Toplu test doğrular, [etkin](luis-concept-version.md#active-version) tahmin doğruluğunun ölçmek için eğitilen modeli. Toplu test geçerli eğitilen modelinizde grafikteki her bir hedefi ve varlık doğruluğunu görüntülemenize yardımcı olur. Uygulamanız için doğru amacını tanımlamak sık sık başarısız olursa bir amaç için daha fazla örnek Konuşma ekleme gibi doğruluğunu, artırmak için uygun eylemde toplu test sonuçlarını gözden geçirin.
 
@@ -48,7 +48,7 @@ Toplu dosya verilerine karşılık gelen hiçbir varlık olsa modelinde tüm öz
 
 Toplu iş dosyası konuşma oluşur. Her utterance yanı sıra herhangi bir beklenen hedefi tahmin olmalıdır [makine öğrenilen varlıklar](luis-concept-entity-types.md#types-of-entities) algılanamayacak kadar bekler. 
 
-## <a name="batch-syntax-template-for-intents-with-entities"></a>Varlıklarla hedefleri için toplu iş söz dizimini şablonu
+## <a name="batch-syntax-template-for-intents-with-entities"></a>Varlıklar içeren amaçlar için Batch sözdizimi şablonu
 
 Toplu iş dosyasında başlatmak için aşağıdaki şablonu kullanın:
 
@@ -78,9 +78,9 @@ Toplu iş dosyasını kullanan **startPos** ve **endPos** özellikleri başlang�
 
 [!INCLUDE [Entity roles in batch testing - currently not supported](../../../includes/cognitive-services-luis-roles-not-supported-in-batch-testing.md)]
 
-## <a name="batch-syntax-template-for-intents-without-entities"></a>Varlıkları olmadan hedefleri için toplu iş söz dizimini şablonu
+## <a name="batch-syntax-template-for-intents-without-entities"></a>Varlıklar olmadan amaçlar için Batch sözdizimi şablonu
 
-Toplu işlem dosyanız varlıkları olmadan başlatmak için aşağıdaki şablonu kullanın:
+Toplu iş dosyanızı varlıklar olmadan başlatmak için aşağıdaki şablonu kullanın:
 
 ```JSON
 [
@@ -92,7 +92,7 @@ Toplu işlem dosyanız varlıkları olmadan başlatmak için aşağıdaki şablo
 ]
 ```
 
-Varlıkları test etmek istemiyorsanız dahil `entities` özellik ve değer olarak boş bir dizi kümesi `[]`.
+Varlıkları test etmek istemiyorsanız, `entities` özelliği ekleyin ve değeri boş bir `[]`dizi olarak ayarlayın.
 
 
 ## <a name="common-errors-importing-a-batch"></a>Sık karşılaşılan toplu içeri aktarma

@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı Başlangıç: LUIS portal ile uygulama dağıtma'
-titleSuffix: Language Understanding - Azure Cognitive Services
-description: Uygulamayı bir sohbet Robotu gibi bir istemci uygulaması utterance Öngörüler dönmek hazır olduktan sonra LUIS uygulamanızı tahmin uç noktasına dağıtmayı öğrenin. Bu hızlı başlangıçta nasıl tahmin uç nokta kaynağı oluşturma, kaynak uygulamaya atama, uygulama eğitim ve uygulama yayımlama bir uygulamayı dağıtmak size kılavuzluk eder.
+title: 'Hızlı Başlangıç: LUI portalı ile uygulama dağıtma'
+titleSuffix: Azure Cognitive Services
+description: Uygulama, sohbet bot gibi bir istemci uygulamasına söylenişi öngörülerini döndürmeye başladıktan sonra, lusıs uygulamanızı tahmin uç noktasına dağıtmayı öğrenin. Bu hızlı başlangıç, bir tahmin uç noktası kaynağı oluşturarak, uygulamayı uygulamaya atamaya, uygulamayı eğitmek ve uygulamayı yayımlatabarak bir uygulamayı nasıl dağıtacağınızı gösterir.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,88 +10,88 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: db2b543fa8e5429cc8d50d7789b03239173f563d
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 5c310c1943eaf23423be873c6172e27c621fe109
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154521"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564067"
 ---
-# <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Hızlı Başlangıç: LUIS Portalı'nda bir uygulama dağıtma
+# <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Hızlı Başlangıç: LUI portalında uygulama dağıtma
 
-LUIS uygulamanızı utterance Öngörüler, bir istemci uygulaması (örneğin, bir sohbet Robotu) geri dönmek hazır olduğunda uygulamayı tahmin uç noktaya dağıtmanız gerekebilir.
+Lusıs uygulamanız, bir istemci uygulamasına söylenişi tahminleri (örneğin, bir sohbet bot) döndürmeye hazırsanız uygulamayı tahmin uç noktasına dağıtmanız gerekir.
 
-Bu hızlı başlangıçta, bir uygulamayı nasıl dağıtacağınızı öğrenin. Tahmin uç nokta kaynak oluşturma, kaynak uygulamaya atamak, uygulamayı eğitme ve uygulamayı yayımlayın.
+Bu hızlı başlangıçta, bir uygulamayı dağıtmayı öğreneceksiniz. Bir tahmin uç noktası kaynağı oluşturur, uygulamayı uygulamaya atayabilir, uygulamayı eğitme ve uygulamayı yayımlayabilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Alma bir [Azure aboneliği](https://azure.microsoft.com/free).
-* Tamamlamak [önceki portalı hızlı başlangıcı](get-started-portal-build-app.md) veya [indirin ve uygulamayı içeri aktarma](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/in-portal/build-portal-app.json).
+* Bir [Azure aboneliği](https://azure.microsoft.com/free)alın.
+* [Önceki Portal Hızlı](get-started-portal-build-app.md) başlangıcını tamamlayıp [uygulamayı indirip içeri aktarın](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/in-portal/build-portal-app.json).
 
 ## <a name="create-the-endpoint-resource"></a>Uç nokta kaynağı oluşturma
 
-Azure portalında'de tahmin uç nokta kaynağı oluşturun. Bu kaynak, yalnızca uç nokta tahmin sorguları için kullanılmalıdır. Bu kaynak, uygulama geliştirme değişiklikler için kullanmayın.
+Tahmin uç noktası kaynağını Azure portal oluşturursunuz. Bu kaynak yalnızca Endpoint tahmin sorguları için kullanılmalıdır. Uygulamada değişiklik yazmak için bu kaynağı kullanmayın.
 
 1. [Azure Portal](https://ms.portal.azure.com/) oturum açın.
 
-1. Yeşili **+** sol panelde oturum açın. Arama `Cognitive Services` Market'te ve bu seçeneği belirleyin.
+1. Sol üst panelde **+** yeşil işaretini seçin. `Cognitive Services` Market 'te arama yapın ve seçin.
 
-1. Abonelik, aşağıdaki ayarlarla yapılandırın:
+1. Aboneliği aşağıdaki ayarlarla yapılandırın:
 
    |Ayar|Değer|Amaç|
    |--|--|--|
-   |Ad|`my-cognitive-service-resource`|Azure kaynak adı. Kaynak LUIS Portalı'nda uygulama atadığınızda, bu adı gerekir.|
-   |Abonelik|Aboneliğiniz|Hesabınızla ilişkili abonelikleri birini seçin.|
-   |Location|**Batı ABD**|Bu kaynak için bir Azure bölgesi.|
-   |Fiyatlandırma katmanı|**S0**|Fiyatlandırma katmanına bu kaynak için varsayılan.|
-   |Kaynak grubu|`my-cognitive-service-resource-group`|Tüm bilişsel hizmet kaynaklarınız için yeni bir kaynak grubu oluşturun. Kaynaklar ile işiniz bittiğinde, aboneliğinizi temizlemek için kaynak grubunu silebilirsiniz. |
+   |Ad|`my-cognitive-service-resource`|Azure kaynağının adı. Bu adı, kaynağı LUE portalında uygulamaya atarken kullanmanız gerekir.|
+   |Subscription|Aboneliğiniz|Hesabınızla ilişkili aboneliklerden birini seçin.|
+   |Location|**Batı ABD**|Bu kaynak için Azure bölgesi.|
+   |Fiyatlandırma katmanı|**S0**|Bu kaynak için varsayılan fiyatlandırma katmanı.|
+   |Resource group|`my-cognitive-service-resource-group`|Tüm bilişsel hizmet kaynaklarınız için yeni bir kaynak grubu oluşturun. Kaynaklarla işiniz bittiğinde, aboneliğinizi temizlemek için kaynak grubunu silebilirsiniz. |
    | | | |
 
-   ![Azure API seçim](./media/get-started-portal-deploy-app/create-cognitive-services-resource.png)
+   ![Azure API seçimi](./media/get-started-portal-deploy-app/create-cognitive-services-resource.png)
 
-1. Seçin **Oluştur** Azure kaynağını oluşturmak için.
+1. Azure kaynağını oluşturmak için **Oluştur** ' u seçin.
 
-   Sonraki bölümde, bu yeni kaynak LUIS portalında LUIS uygulaması bağlanma hakkında bilgi edinin.
+   Sonraki bölümde, bu yeni kaynağı LUU portalındaki bir Luo uygulamasına bağlamayı öğreneceksiniz.
 
-## <a name="assign-the-resource-key-to-the-luis-app-in-the-luis-portal"></a>Kaynak anahtarı LUIS Portalı'nda LUIS uygulama atama
+## <a name="assign-the-resource-key-to-the-luis-app-in-the-luis-portal"></a>LUE portalında LUO uygulamasına kaynak anahtarı atama
 
-LUIS için yeni bir kaynak oluşturmak her durumda, LUIS uygulaması için kaynak atamanız gerekir. Atandıktan sonra yeni bir kaynak oluşturmadığınız sürece bu adımı tekrar yapmanız gerekmez. Uygulamanızı bölgeleri genişletin veya daha yüksek bir sayı tahmin sorguları desteklemek için yeni bir kaynak oluşturabilir.
+LUHER yeni kaynak oluşturduğunuzda, kaynağı LUO uygulamasına atamanız gerekir. Atandıktan sonra, yeni bir kaynak oluşturmadığınız takdirde bu adımı tekrar yapmanız gerekmez. Uygulamanızın bölgelerini genişletmek veya daha yüksek sayıda tahmin sorgusu desteklemek için yeni bir kaynak oluşturabilirsiniz.
 
-1. Oturum [LUIS portalı](https://www.luis.ai) ve **myEnglishApp** uygulamalar listesinden uygulama.
+1. [Luo portalında](https://www.luis.ai) oturum açın ve uygulamalar listesinden **Myenglishapp** uygulamasını seçin.
 
-1. Seçin **Yönet** seçin ve sağ üst menüsünde **anahtarları ve uç noktaları**.
+1. Sağ üst menüdeki **Yönet** ' i seçin ve ardından **anahtarlar ve uç noktalar**' ı seçin.
 
-1. LUIS eklemek için seçin **Kaynak Ata +**.
+1. LUO eklemek için **kaynak ata +** ' yı seçin.
 
    [![Uygulamanıza bir kaynak atayın](./media/get-started-portal-deploy-app/assign-resource-button.png)](./media/get-started-portal-deploy-app/assign-resource-button.png#lightbox)
 
-1. Kiracı, abonelik ve kaynak adınızı seçin. Seçin **atama kaynak**.
+1. Kiracınızı, aboneliğinizi ve kaynak adınızı seçin. Seçin **atama kaynak**.
 
    ![Uygulamanıza bir kaynak atayın](./media/get-started-portal-deploy-app/assign-resource.png)
 
-1. Tabloya yeni satır bulun ve uç nokta URL'sini kopyalayın. Doğru sağlamak üzere oluşturulmuş olan bir `HTTP GET` LUIS API'si uç noktasına bir tahmin için istek.
+1. Tabloya yeni satır bulun ve uç nokta URL'sini kopyalayın. Bir tahmine yönelik olarak lusıs API `HTTP GET` uç noktasına bir istek oluşturmak için doğru bir şekilde oluşturulur.
 
 ## <a name="train-and-publish-the-app"></a>Uygulamayı eğitme ve yayımlama
 
-Uygulamayı test etmek hazır olduğunuzda eğitin. Sorgu tahmin uç nokta çalışma zamanını şuradan istemci uygulamaları için kullanılabilir olması için şu anda eğitilen sürümünü istediğiniz zaman, uygulamayı yayımlayın.
+Uygulamayı test etmeye hazırsanız eğitme. Geçerli eğitilen sürümün sorgu tahmin uç noktası çalışma zamanından istemci uygulamaları için kullanılabilir olmasını istediğinizde uygulamayı yayımlayın.
 
-1. Uygulama deneyimsiz ise seçin **eğitme** sağ üst köşedeki menüden.
+1. Uygulamanın eğitilmesi durumunda sağ üstteki menüden **eğit** ' i seçin.
 
-1. Seçin **Yayımla** üstteki menüden. Varsayılan ortam ayarlarını kabul edin ve seçin **Yayımla**.
+1. Üstteki menüden **Yayımla** ' yı seçin. Varsayılan ortam ayarlarını kabul edin ve **Yayımla**' yı seçin.
 
-1. Yeşil bir başarı bildirim çubuğu tarayıcı penceresinin en üstünde göründüğünde seçin **uç noktalar listesine bakın**.
+1. Tarayıcı penceresinin üst kısmında yeşil başarı bildirimi çubuğu göründüğünde, **uç nokta listesine başvurun**' i seçin.
 
-   ![Tarayıcıda başarıyla yayımlandı uygulama bildirim çubuğu](./media/get-started-portal-deploy-app/successfully-published-notification.png)
+   ![Uygulama bildirim çubuğu tarayıcıda başarıyla yayımlandı](./media/get-started-portal-deploy-app/successfully-published-notification.png)
 
-1. Üzerinde **anahtarları ve uç nokta ayarları** sayfasında, alt kısmında atanan kaynaklara ve karşılık gelen uç nokta URL'lerinin listesini bulun.
+1. **Anahtarlar ve uç nokta ayarları** sayfasında, atanan kaynakların listesini ve alt kısımdaki karşılık gelen uç nokta URL 'lerini bulun.
 
-1. Yeni kaynak adınız ile ilişkili uç nokta URL'sini seçin. Bu eylem yapmak için doğru şekilde oluşturulmuş bir URL ile bir web tarayıcısı açılır bir `GET` istek tahmin uç çalışma zamanı.
+1. Yeni kaynak adınızla ilişkili uç nokta URL 'sini seçin. Bu eylem, tahmin uç noktası çalışma zamanına `GET` istek yapmak için doğru şekilde oluşturulmuş bir URL ile bir Web tarayıcısı açar.
 
-1. `q=` URL'nin sonunda kısaltması olduğundan **sorgu** ve burada kullanıcının utterance GET isteğine eklenir. Sonra `q=`, önceki hızlı başlangıcın sonunda kullanılan aynı kullanıcı utterance girin:
+1. URL 'nin sonundaki sorgu için kısa ve kullanıcının utterine GET isteğine eklendiği yerdir.  `q=` `q=`Sonrasında, önceki hızlı başlangıç noktasında kullanılan aynı kullanıcı adını girin:
 
     ```Is there a form named hrf-234098```
 
-    Tarayıcı, istemci uygulamanın alacağı aynı JSON yanıtı gösterilir:
+    Tarayıcı, istemci uygulamanızın alacağı JSON ile aynı yanıtı gösterir:
 
     ```JSON
     {
@@ -121,17 +121,17 @@ Uygulamayı test etmek hazır olduğunuzda eğitin. Sorgu tahmin uç nokta çal�
     }
     ```
 
-    Bu yanıt, önceki öğreticide varsayılan test bölmesini daha fazla bilgi sağlar. Bu düzeyde test bölmesindeki bilgileri görmek için uygulamayı yayımlamanız gerekir. Uygulamayı yayımladıktan sonra seçin **Karşılaştır yayımlanan** test bölmesinde. Kullanım **Göster JSON görünümü** yayınlanan test bölmesinde aynı JSON önceki adıma bakın. Bu şekilde, uç nokta için yayımlanmış bir uygulamayla, üzerinde çalıştığınız geçerli uygulama karşılaştırabilirsiniz.
+    Bu yanıt, önceki öğreticideki varsayılan test bölmesine göre daha fazla bilgi sağlar. Test bölmesinde aynı bilgi düzeyini görmek için uygulamayı yayımlamanız gerekir. Uygulama yayımlandıktan sonra test bölmesinde **Yayımlanla Karşılaştır** ' ı seçin. Önceki adımla aynı JSON 'ı görmek için yayımlanan test bölmesinde **JSON görünümünü göster** ' i kullanın. Bu şekilde, üzerinde çalışmakta olduğunuz geçerli uygulamayı uç noktada yayınlanan bir uygulamayla karşılaştırabilirsiniz.
 
-    [![Şu anda yayımlanan uygulama sürümü düzenleme karşılaştırın](./media/get-started-portal-deploy-app/compare-test-pane.png)](./media/get-started-portal-deploy-app/compare-test-pane.png#lightbox)
+    [![Şu anda düzenleyen uygulamanın yayımlanmış sürümüne göre karşılaştır](./media/get-started-portal-deploy-app/compare-test-pane.png)](./media/get-started-portal-deploy-app/compare-test-pane.png#lightbox)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu hızlı başlangıcı tamamladığınızda, seçin **uygulamalarım** üst gezinti menüsünde. Listeden uygulamanın onay kutusunu seçin ve ardından **Sil** listesinin üst bağlam araç çubuğundan.
+Bu hızlı başlangıç ile işiniz bittiğinde, üst gezinti menüsünden **uygulamalarım** ' ı seçin. Listeden uygulamanın onay kutusunu seçin ve sonra listenin üzerindeki bağlam araç çubuğundan **Sil** ' i seçin.
 
-[![Uygulamalar listemde uygulamayı Sil](./media/get-started-portal-build-app/delete-app.png)](./media/get-started-portal-build-app/delete-app.png#lightbox)
+[![Uygulamayı uygulamalarım listesinden sil](./media/get-started-portal-build-app/delete-app.png)](./media/get-started-portal-build-app/delete-app.png#lightbox)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Ortak hedefleri ve varlıkları tanımlama](luis-tutorial-prebuilt-intents-entities.md)
+> [Ortak amaçları ve varlıkları tanımla](luis-tutorial-prebuilt-intents-entities.md)

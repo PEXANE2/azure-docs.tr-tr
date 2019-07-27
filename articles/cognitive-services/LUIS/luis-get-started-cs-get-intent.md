@@ -1,6 +1,6 @@
 ---
-title: Hedefi Al,C#
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Amaç al, C# -Luo
+titleSuffix: Azure Cognitive Services
 description: Bu C# hızlı başlangıç, bir kullanıcının engellemekse damıtarak konuşma bağlamında kullanılabilen metinden belirlemek için kullanılabilir bir genel LUIS uygulaması kullanın.
 services: cognitive-services
 author: diberry
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 73dba63c464ee31dd24fe0fdf97e948a5b6004fc
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 92f74174d35a58e54ae0078f146f86dbfc7aa709
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68276264"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563846"
 ---
-# <a name="quickstart-get-intent-using-c"></a>Hızlı Başlangıç: Hedefi kullanılarak AlC#
+# <a name="quickstart-get-intent-using-c"></a>Hızlı Başlangıç: Kullanarak amacı alC#
 
 [!INCLUDE [Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 
@@ -47,11 +47,11 @@ ms.locfileid: "68276264"
 
 1. Visual Studio’da yeni bir konsol uygulaması oluşturun. 
 
-    ![Visual Studio'da yeni bir konsol uygulaması oluşturma](media/luis-get-started-cs-get-intent/visual-studio-console-app.png)
+    ![Visual Studio 'da yeni bir konsol uygulaması oluşturma](media/luis-get-started-cs-get-intent/visual-studio-console-app.png)
 
 2. Visual Studio projesinde Çözüm Gezgini'nde **Başvuru ekle**'yi ve ardından Derlemeler sekmesinden **System.Web**'i seçin.
 
-    ![Başvuru Ekle seçin ve ardından System.Web derlemeleri sekmesinden seçin](media/luis-get-started-cs-get-intent/add-system-dot-web-to-project.png)
+    ![Başvuru Ekle ' yi seçin ve ardından derlemeler sekmesinden System. Web ' i seçin](media/luis-get-started-cs-get-intent/add-system-dot-web-to-project.png)
 
 3. Program.cs içeriğini şu kodla değiştirin:
     

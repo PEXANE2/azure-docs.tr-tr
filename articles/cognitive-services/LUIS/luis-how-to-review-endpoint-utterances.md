@@ -1,7 +1,7 @@
 ---
-title: Kullanıcı konuşma gözden geçirin
-titleSuffix: Language Understanding - Azure Cognitive Services
-description: Etkin öğrenme, uç nokta sorguları yakalar ve emin olan kullanıcının uç nokta konuşma seçer. Bu konuşma hedefini seçin ve bu okuma dünya konuşma için varlıklar işaretlemek için gözden geçirin. Bu değişiklikleri, örnek konuşma kabul, sonra eğitin ve yayımlayın. LUIS ardından konuşma daha doğru bir şekilde tanımlar.
+title: Kullanıcı utslerini gözden geçirme-LUSıS
+titleSuffix: Azure Cognitive Services
+description: Etkin öğrenme, uç nokta sorgularını yakalar ve kullanıcının gereken uç nokta utlerini seçer. Bu yazılanları inceleyerek, bu okuma dünyasının amacını seçin ve varlıkları işaretleyin. Bu değişiklikleri örnek söyleyenlerinde kabul edin ve yayımlayın. LUO daha sonra, bir daha doğru şekilde daha doğru şekilde tanımlanır.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,25 +11,25 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: diberry
-ms.openlocfilehash: 8fac360682ef11c438cdec333fac21d6f8cfc117
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c2f49d4bf573cc2dc2e1a3b8fc13413a738df8ba
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60195169"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560452"
 ---
-# <a name="how-to-review-endpoint-utterances-in-luis-portal-for-active-learning"></a>Etkin öğrenme LUIS Portalı'nda konuşma uç noktası İnceleme
+# <a name="how-to-review-endpoint-utterances-in-luis-portal-for-active-learning"></a>Etkin öğrenme için LUA portalındaki uç nokta utslerini gözden geçirme
 
-[Etkin öğrenme](luis-concept-review-endpoint-utterances.md) uç nokta sorguları yakalar ve emin olan kullanıcının uç nokta konuşma seçer. Bu konuşma hedefini seçin ve bu okuma dünya konuşma için varlıklar işaretlemek için gözden geçirin. Bu değişiklikleri, örnek konuşma kabul, sonra eğitin ve yayımlayın. LUIS ardından konuşma daha doğru bir şekilde tanımlar.
+[Etkin öğrenme](luis-concept-review-endpoint-utterances.md) , uç nokta sorgularını yakalar ve kullanıcının gereken uç nokta utlerini seçer. Bu yazılanları inceleyerek, bu okuma dünyasının amacını seçin ve varlıkları işaretleyin. Bu değişiklikleri örnek söyleyenlerinde kabul edin ve yayımlayın. LUO daha sonra, bir daha doğru şekilde daha doğru şekilde tanımlanır.
 
 
-## <a name="enable-active-learning"></a>Etkin öğrenme etkinleştir
+## <a name="enable-active-learning"></a>Etkin öğrenmeyi etkinleştir
 
-Etkin öğrenme etkinleştirmek için kullanıcı sorgularına oturum açın. Bu ayarı gerçekleştirilir [uç nokta sorgu](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance) ile `log=true` querystring parametresi ve değeri.
+Etkin öğrenmeyi etkinleştirmek için Kullanıcı sorgularını günlüğe kaydedin. Bu, [bitiş noktası sorgusunun](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance) `log=true` QueryString parametresi ve değeri ile ayarlanarak gerçekleştirilir.
 
-## <a name="disable-active-learning"></a>Etkin öğrenme devre dışı bırak
+## <a name="disable-active-learning"></a>Etkin öğrenmeyi devre dışı bırak
 
-Etkin öğrenme devre dışı bırakmak için kullanıcı sorgularına oturum yok. Bu ayarı gerçekleştirilir [uç nokta sorgu](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance) ile `log=false` querystring parametresi ve değeri.
+Etkin öğrenmeyi devre dışı bırakmak için Kullanıcı sorgularını günlüğe eklemeyin. Bu, [bitiş noktası sorgusunun](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance) `log=false` QueryString parametresi ve değeri ile ayarlanarak gerçekleştirilir.
 
 ## <a name="filter-utterances"></a>Konuşma Filtrele
 

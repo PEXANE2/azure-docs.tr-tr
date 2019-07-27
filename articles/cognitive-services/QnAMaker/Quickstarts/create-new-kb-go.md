@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı Başlangıç: Bilgi Bankası - REST, Git - soru-cevap Oluşturucu Oluşturma'
-titlesuffix: Azure Cognitive Services
+title: 'Hızlı Başlangıç: Bilgi Bankası oluşturma-REST, go-Soru-Cevap Oluşturma'
+titleSuffix: Azure Cognitive Services
 description: Bu Go REST tabanlı hızlı başlangıçta Bilişsel Hizmetler API hesabınızdaki Azure Panonuzda görünecek olan örnek bir Soru-Cevap Oluşturma bilgi bankasını programlamayla oluşturma adımları gösterilmektedir.
 services: cognitive-services
 author: diberry
@@ -10,14 +10,14 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: b4a399901b8bba1c97a5571d3db4ef1cbe713a6c
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: a6ee10c998af564630ae1aefd01ec2f4e360abf8
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68254206"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563055"
 ---
-# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-go"></a>Hızlı Başlangıç: Soru-cevap Oluşturucu Go kullanarak Bilgi Bankası oluşturma
+# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-go"></a>Hızlı Başlangıç: Go kullanarak Soru-Cevap Oluşturma bilgi tabanı oluşturma
 
 Bu hızlı başlangıçta program aracılığıyla örnek bir Soru-Cevap Oluşturma bilgi bankası (KB) oluşturma adımları gösterilmektedir. Soru-Cevap Oluşturma, [veri kaynaklarından](../Concepts/data-sources-supported.md) ve SSS gibi yarı yapılandırılmış içerikten soru ve cevapları otomatik olarak ayıklar. JSON ile tanımlanan bilgi bankası modeli API isteğinin gövdesinde gönderilir. 
 

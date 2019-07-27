@@ -1,6 +1,6 @@
 ---
 title: C# ile özel terim listesi kullanarak metin denetimi gerçekleştirme - Content Moderator
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: C# için Content Moderator SDK'sını kullanarak özel terim listeleriyle metin denetleme.
 services: cognitive-services
 author: sanjeev3
@@ -10,14 +10,14 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 07/03/2019
 ms.author: sajagtap
-ms.openlocfilehash: 0ab11d8ef9fd481d2b3ea7029664a1ec2778cf4b
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 144137109f97a8c2049430ed1e05117ea6c95d7f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604095"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564412"
 ---
-# <a name="check-text-against-a-custom-term-list-in-c"></a>Metin bir özel terim listesine karşı denetleyinC#
+# <a name="check-text-against-a-custom-term-list-in-c"></a>İçindeki özel bir terim listesine karşı metin denetleC#
 
 Azure Content Moderator'daki varsayılan genel terim listesi, içerik moderasyonu ihtiyaçlarının büyük bölümü için yeterlidir. Bununla birlikte, kuruluşunuza özgü terimleri elemek gerekebilir. Örneğin, daha fazla incelemek üzere rakiplerin adlarını etiketlemek isteyebilirsiniz. 
 
@@ -373,7 +373,7 @@ static void DeleteTermList (ContentModeratorClient client, string list_id)
 }
 ```
 
-## <a name="compose-the-main-method"></a>Main yöntemi oluşturma
+## <a name="compose-the-main-method"></a>Main metodunu oluşturma
 
 **TermLists** ad alanının **Program** sınıfına **Main** yöntemi tanımını ekleyin. Son olarak, **Program** sınıfını ve **TermLists** ad alanını kapatın.
 
@@ -415,7 +415,7 @@ static void Main(string[] args)
 
 ## <a name="run-the-application-to-see-the-output"></a>Çıkışı görmek uygulamayı çalıştırma
 
-Konsol çıktısı aşağıdakine benzer olacaktır:
+Konsol çıktılarınız aşağıdakine benzer şekilde görünür:
 
 ```console
 Creating term list.

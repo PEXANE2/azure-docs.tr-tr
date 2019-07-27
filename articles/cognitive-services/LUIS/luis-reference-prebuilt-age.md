@@ -1,6 +1,6 @@
 ---
-title: Önceden oluşturulmuş varlık geçerlilik süresi
-titleSuffix: Azure
+title: Yaş önceden oluşturulmuş varlık-LUSıS
+titleSuffix: Azure Cognitive Services
 description: Bu makalede yaş içeren önceden oluşturulmuş varlık bilgilerini Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
@@ -11,22 +11,22 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: b8239688000f0ce32ca2c2be054b1443bbb698b5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 77290790342c1159eca049108e1c9fadd5d4bbf3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65069129"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560299"
 ---
-# <a name="age-prebuilt-entity-for-a-luis-app"></a>Bir LUIS uygulaması için önceden oluşturulmuş varlık geçerlilik süresi
+# <a name="age-prebuilt-entity-for-a-luis-app"></a>Bir LUSıS uygulaması için yaş önceden oluşturulmuş varlık
 Önceden oluşturulmuş yaş varlık, hem sayısal ve gün, hafta, ay ve yıl açısından yaş değeri yakalar. Bu varlık zaten eğitildi çünkü uygulama hedefleri için yaş içeren örnek Konuşma ekleme gerekmez. Yaş varlık içerisinde desteklendiği [çok kültür](luis-reference-prebuilt-entities.md). 
 
 ## <a name="types-of-age"></a>Yaş türleri
-Yaş yönetilen [tanıyıcıları metin](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L3) GitHub deposu
+Yaş [metni](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L3) GitHub deposundan yaş yönetiliyor
 
 ## <a name="resolution-for-prebuilt-age-entity"></a>Önceden oluşturulmuş yaş varlık için çözümleme
 
-### <a name="api-version-2x"></a>API sürüm 2.x
+### <a name="api-version-2x"></a>API sürüm 2. x
 
 Aşağıdaki örnek, çözünürlüğünü gösterir **builtin.age** varlık.
 
@@ -52,9 +52,9 @@ Aşağıdaki örnek, çözünürlüğünü gösterir **builtin.age** varlık.
 }
 ```
 
-### <a name="preview-api-version-3x"></a>Önizleme API sürümü 3.x
+### <a name="preview-api-version-3x"></a>Preview API sürüm 3. x
 
-Aşağıdaki JSON ile olan `verbose` parametresini `false`:
+Aşağıdaki JSON `verbose` parametresi olarak `false`ayarlanmıştır:
 
 ```json
 {
@@ -79,7 +79,7 @@ Aşağıdaki JSON ile olan `verbose` parametresini `false`:
 }
 ```
 
-Aşağıdaki JSON ile olan `verbose` parametresini `true`:
+Aşağıdaki JSON `verbose` parametresi olarak `true`ayarlanmıştır:
 
 ```json
 {

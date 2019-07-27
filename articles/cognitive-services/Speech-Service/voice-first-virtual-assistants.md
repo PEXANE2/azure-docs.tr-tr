@@ -1,7 +1,7 @@
 ---
-title: Özel ses öncelikli sanal Yardımcıları (Önizleme) - konuşma Hizmetleri
+title: Özel ses-ilk sanal yardımcılar (Önizleme)-konuşma hizmeti
 titleSuffix: Azure Cognitive Services
-description: Özellikler, özellikleri ve kısıtlamaları doğrudan satır konuşma kanal Bot Framework ve Bilişsel hizmetler konuşma Yazılım Geliştirme Seti (SDK) kullanarak, özel sesli öncelikli sanal Yardımcıları için genel bakış.
+description: Bot Framework ve bilişsel hizmetler konuşma yazılım geliştirme seti (SDK) üzerindeki doğrudan hat konuşma kanalını kullanan özel ses-ilk sanal yardımcılarının özelliklerine, özelliklerine ve kısıtlamalarına genel bakış.
 services: cognitive-services
 author: trrwilson
 manager: nitinme
@@ -10,47 +10,47 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: travisw
-ms.openlocfilehash: c9b85895e701ff74e025d6f7895bc32513bc29a1
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 8a12c9e5d569092440552958554681c0b1d79590
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67806897"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68552550"
 ---
-# <a name="about-custom-voice-first-virtual-assistants-preview"></a>Özel ses öncelikli sanal Yardımcıları önizleme hakkında
+# <a name="about-custom-voice-first-virtual-assistants-preview"></a>Özel ses-ilk sanal yardımcılar önizlemesi hakkında
 
-Azure konuşma Hizmetleri kullanarak özel sanal Yardımcıları, geliştiricilere uygulamalarını ve deneyimler için doğal olarak, İnsan benzeri damıtarak konuşma bağlamında kullanılabilen arabirimlerini oluşturma olanağı sunun. Bot Framework'ün doğrudan satır konuşma kanal, ses, sesli etkileşim düşük gecikme süresi ve yüksek güvenilirlikle kullanıma sağlayan uyumlu bir bot için Eşgüdümlü, düzenlenmiş giriş noktası sunarak bu özelliklerini geliştirir. Bu botlar, doğal dil etkileşimi için Microsoft'un Language Understanding (LUIS) kullanabilirsiniz. Doğrudan satır konuşma tanıma, konuşma Yazılım Geliştirme Seti (SDK) kullanarak cihazları tarafından erişilir.
+Azure konuşma Hizmetleri 'ni kullanan özel sanal yardımcılar, geliştiricilerin uygulamaları ve deneyimleri için doğal ve insan benzeri konuşma arabirimleri oluşturmalarına olanak sağlar. Bot çerçevesinin doğrudan hat konuşma kanalı, daha düşük gecikme süresi ve yüksek güvenilirliğe sahip ses girişi, ses çıkış etkileşimini sağlayan uyumlu bir bot 'a Eşgüdümlü, düzenlenmiş bir giriş noktası sağlayarak bu özellikleri geliştirir. Bu botlar, doğal dil etkileşimi için Microsoft 'un Language Understanding (LUO) kullanabilir. Doğrudan hat konuşmaya, konuşma yazılım geliştirme seti (SDK) kullanılarak cihazlar tarafından erişilir.
 
-   ![Doğrudan hat konuşma düzenleme hizmeti flow kavramsal diyagramı](media/voice-first-virtual-assistants/overview.png "konuşma kanal akış")
-
-
-Doğrudan satır konuşma ve özel ses öncelikli sanal Yardımcıları için ilişkili işlevselliği olan için ideal bir ek [sanal Yardımcısı çözüm ve kurumsal şablon](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview). Doğrudan satır konuşma uyumlu herhangi bir bot ile çalışabilir ancak bu kaynakları damıtarak konuşma bağlamında kullanılabilen yüksek kaliteli deneyimler yanı sıra ortak destekleyici becerileri ve hızlı başlangıç için modelleri için yeniden kullanılabilir bir temel sağlar.
+   ![Doğrudan hat konuşma düzenleme hizmeti akışının kavramsal diyagramı](media/voice-first-virtual-assistants/overview.png "Konuşma kanalı akışı")
 
 
-## <a name="core-features"></a>Temel özellikleri
+Özel ses-ilk sanal Yardımcılar için doğrudan hat konuşmayı ve ilişkili işlevselliği, [sanal yardımcı çözümü ve kurumsal şablonuna](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview)yönelik ideal bir ektir. Doğrudan hat konuşması uyumlu bir bot ile çalışabilse de, bu kaynaklar yüksek kaliteli konuşma deneyimleri için yeniden kullanılabilir bir temel ve hızla çalışmaya başlamak için ortak destekleyici beceriler ve modeller sağlar.
+
+
+## <a name="core-features"></a>Temel Özellikler
 
 | Category | Özellikler |
 |----------|----------|
-|[Özel Uyandırma sözcük](speech-devices-sdk-create-kws.md) | "Hey Contoso" gibi özel bir anahtar sözcüğü kullanılarak botlar konuşmaları şununla açabileceğinizi bilirsiniz Bu görev, bir özel Uyandırma sözcük ile yapılandırılabilir konuşma SDK'da özel Uyandırma word altyapısıyla gerçekleştirilir [burada oluşturabilen](speech-devices-sdk-create-kws.md). Doğrudan satır konuşma kanal başına cihaz karşı Uyandırma word etkinleştirme doğruluğunu artırır Hizmet tarafı Uyandırma word doğrulama içerir.
-|[Konuşmayı metne dönüştürme](speech-to-text.md) | Gerçek zamanlı ses tanıma tanınan metin kullanarak doğrudan satır konuşma kanal içerir [konuşma metin](speech-to-text.md) Azure konuşma Services'dan. Transcribed gibi bu metin botunuzun hem de istemci uygulamanız için kullanılabilir.
-|[Metin okuma](text-to-speech.md) | Botunuzun metinsel yanıtlarından oluşturulan kullanarak [metin okuma](text-to-speech.md) Azure konuşma Services'dan. Bu sentezi sonra istemci uygulamanıza bir ses akışı olarak kullanıma sunulacaktır. Microsoft, markanızı daha fazla bilgi edinmek için bir ses veren kendi özel, yüksek kaliteli sinir TTS ses oluşturma imkanı sunar [bizimle](mailto:mstts@microsoft.com).
-|[Doğrudan hat konuşma](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) | Bot Framework içinde bir kanal doğrudan satır konuşma istemci uygulamanızın, uyumlu bir bot ve Azure konuşma Hizmetleri yeteneklerini arasında düzgün ve sorunsuz bir bağlantı sağlar. Botunuzun doğrudan satır konuşma kanal kullanmak için yapılandırma hakkında daha fazla bilgi için bkz. [, Bot Framework belgeleri sayfasında](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech).
+|[Özel uyandırma sözcüğü](speech-devices-sdk-create-kws.md) | Kullanıcıların "Hey contoso" gibi özel bir anahtar sözcüğü kullanarak botlarla konuşmaları başlatmaya olanak sağlayabilirsiniz. Bu görev, [burada oluşturabileceğiniz](speech-devices-sdk-create-kws.md)özel bir uyanma sözcüğüyle yapılandırılabilen konuşma SDK 'sında özel bir uyandırma sözcük altyapısı ile gerçekleştirilir. Doğrudan hat konuşma kanalı, uyandırma sözcüğünün yalnızca cihazdan ve tek başına uyandığı doğruluğu artıran hizmet tarafı uyandırma sözcük doğrulamasını içerir.
+|[Konuşmayı metne dönüştürme](speech-to-text.md) | Doğrudan hat konuşma kanalı, Azure konuşma hizmetlerinden [konuşmaya metin](speech-to-text.md) kullanarak, tanınan metne ses olarak gerçek zamanlı bir şekilde dönüştürme işlemi içerir. Bu metin, hem bot 'niz hem de istemci uygulamanız tarafından kullanıma hazır hale gelir.
+|[Metinden konuşmaya](text-to-speech.md) | Botunuzun metinsel yanıtları, Azure konuşma hizmetlerinden gelen [metinden konuşmaya](text-to-speech.md) kullanılarak birleştirilmiştir. Bu birleştirme daha sonra istemci uygulamanız için bir ses akışı olarak kullanılabilir hale getirilir. Microsoft, bize daha fazla [iletişim](mailto:mstts@microsoft.com)sağlamak için markanızla bir ses sağlayan kendi özel, yüksek kalıtelı sinir TTS sesinizi oluşturma olanağı sunar.
+|[Doğrudan konuşma hattı](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) | Bot Framework içindeki bir kanal olarak, doğrudan hat konuşma, istemci uygulamanız, uyumlu bir bot ve Azure konuşma hizmetlerinin özellikleri arasında sorunsuz ve sorunsuz bir bağlantı imkanı sunar. Botunuzu doğrudan hat konuşma kanalını kullanacak şekilde yapılandırma hakkında daha fazla bilgi için, [bot Framework belgelerindeki sayfasına](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)bakın.
 
 ## <a name="sample-code"></a>Örnek kod
 
-Ses öncelikli sanal asistan oluşturmak için örnek kod, Github'da kullanılabilir. Bu örnekler, çeşitli popüler programlama dillerinde botunuzun bağlanmak için istemci uygulaması kapsar.
+Bir ses-ilk Sanal Yardımcısı oluşturmak için örnek kod GitHub ' da kullanılabilir. Bu örnekler, çok sayıda popüler programlama dilinde bot 'a bağlanmak için istemci uygulamasını kapsar.
 
-* [Ses öncelikli sanal asistan örnekleri (SDK)](https://aka.ms/csspeech/samples)
-* [Hızlı Başlangıç: ilk ses sanal Yardımcıları (C#)](quickstart-virtual-assistant-csharp-uwp.md)
-* [Hızlı Başlangıç: ses öncelikli sanal Yardımcıları (Java)](quickstart-virtual-assistant-java-jre.md)
-* [Satır konuşma tanıma istemcisi doğrudan (C#, WPF)](https://github.com/Azure-Samples/Cognitive-Services-Direct-Line-Speech-Client)
+* [Ses-ilk Sanal Yardımcısı örnekleri (SDK)](https://aka.ms/csspeech/samples)
+* [Hızlı başlangıç: ses-ilk sanal yardımcılarC#()](quickstart-virtual-assistant-csharp-uwp.md)
+* [Hızlı başlangıç: ses-ilk sanal yardımcılar (Java)](quickstart-virtual-assistant-java-jre.md)
+* [Doğrudan hat konuşma Istemcisi (C#, WPF)](https://github.com/Azure-Samples/Cognitive-Services-Direct-Line-Speech-Client)
 
 ## <a name="customization"></a>Özelleştirme
 
-Azure konuşma Hizmetleri kullanılarak oluşturulan sanal Yardımcıları ses ilk tam çeşitlilikte özelleştirme seçenekleri için kullanılabilir kullanabilir [konuşma metin](speech-to-text.md), [metin okuma](text-to-speech.md), ve [özel anahtar sözcüğü Seçimi](speech-devices-sdk-create-kws.md).
+Azure konuşma Hizmetleri kullanılarak oluşturulan sesli ilk sanal yardımcılar, [konuşmadan metne](speech-to-text.md), [metinden konuşmaya](text-to-speech.md)ve [özel anahtar sözcük seçimi](speech-devices-sdk-create-kws.md)için kullanılabilen tüm özelleştirme seçeneklerini kullanabilir.
 
 > [!NOTE]
-> Özelleştirme seçenekleri farklı dil/bölge tarafından (bkz [desteklenen diller](supported-languages.md)).
+> Özelleştirme seçenekleri dile/yerel ayara göre değişir (bkz. [desteklenen diller](supported-languages.md)).
 
 ## <a name="reference-docs"></a>Başvuru belgeleri
 
@@ -59,7 +59,7 @@ Azure konuşma Hizmetleri kullanılarak oluşturulan sanal Yardımcıları ses i
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Bir konuşma Hizmetleri abonelik anahtarı ücretsiz olarak edinin](get-started.md)
-* [Konuşma SDK'sı Al](speech-sdk.md)
+* [Ücretsiz bir konuşma Hizmetleri abonelik anahtarı alın](get-started.md)
+* [Konuşma SDK 'sını alın](speech-sdk.md)
 * [Temel bot oluşturma ve dağıtma](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
-* [Sanal Yardımcısı çözüm ve kurumsal şablon alma](https://github.com/Microsoft/AI)
+* [Sanal yardımcı çözümü ve kurumsal şablonu al](https://github.com/Microsoft/AI)

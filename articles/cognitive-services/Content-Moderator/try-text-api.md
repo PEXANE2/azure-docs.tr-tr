@@ -1,7 +1,7 @@
 ---
-title: Metin denetimi API'si - Content Moderator'ı kullanarak metin
-titlesuffix: Azure Cognitive Services
-description: Metin denetimi, çevrimiçi konsolda metin denetimi API'si kullanarak test edin.
+title: Metin denetleme API-Content Moderator kullanarak orta metin
+titleSuffix: Azure Cognitive Services
+description: Çevrimiçi konsolundaki metin denetleme API 'sini kullanarak test-sürücü metin denetimi.
 services: cognitive-services
 author: sanjeev3
 ms.author: sajagtap
@@ -10,60 +10,60 @@ ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/29/2019
-ms.openlocfilehash: a3eb134d655f2a25acb45e0d249aa421667d1520
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 49047c21f86530aac6ed3e0138a643fd08c35af8
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621382"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561190"
 ---
-# <a name="moderate-text-from-the-api-console"></a>API Konsolu Orta metni
+# <a name="moderate-text-from-the-api-console"></a>API konsolundan orta metin
 
-Kullanım [metin denetimi API'si](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f) metin içeriğinizi küfür tarama ve özel ve paylaşılan listeleriyle karşılaştırmak için Azure Content Moderator içinde.
+Metin içeriğini küfür için taramak ve özel ve paylaşılan listelerle karşılaştırmak için Azure Content Moderator 'de [metin denetleme API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f) 'sini kullanın.
 
 ## <a name="get-your-api-key"></a>API anahtarınızı alın
 
-Çevrimiçi konsolunda API'yi test sürüşü önce abonelik anahtarınızı gerekir. Bu dosya çubuğunda bulunur **ayarları** sekmesinde **Ocp-Apim-Subscription-Key** kutusu. Daha fazla bilgi için bkz. [Genel Bakış](overview.md).
+Çevrimiçi konsolda API 'YI test etmeden önce, abonelik anahtarınız olmalıdır. Bu, **Ayarlar** sekmesinde, **OCP-apim-Subscription-Key** kutusunda bulunur. Daha fazla bilgi için bkz. [Genel Bakış](overview.md).
 
-## <a name="navigate-to-the-api-reference"></a>API başvuruya Git
+## <a name="navigate-to-the-api-reference"></a>API başvurusuna git
 
-Git [metin denetimi API'si başvurusu](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f). 
+[Metin denetleme API başvurusuna](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f)gidin. 
 
-  **Metin - ekran** sayfası açılır.
+  **Metin ekranı** sayfası açılır.
 
-## <a name="open-the-api-console"></a>API Konsolu
+## <a name="open-the-api-console"></a>API konsolunu açın
 
-İçin **açık API sınama Konsolu**, en yakın konumunuzu açıklayan bölgeyi seçin. 
+**Open API test konsolu**için, konumunuzu en iyi şekilde açıklayan bölgeyi seçin. 
 
-  ![Metin - ekran sayfası kayıt seçimi](images/test-drive-region.png)
+  ![Metin-ekran sayfa bölgesi seçimi](images/test-drive-region.png)
 
-  **Metin - ekran** API konsolu açılır.
+  **Metin ekranı** API konsolu açılır.
 
 ## <a name="select-the-inputs"></a>Girişleri seçin
 
 ### <a name="parameters"></a>Parametreler
 
-Metin ekranınızın kullanmak istediğiniz sorgu parametreleri seçin. Bu örnekte, varsayılan değeri kullanın **dil**. İşlem yürütme işleminin bir parçası otomatik olarak olasılığı dil algılar olduğundan aynı zamanda boş bırakılabilir.
+Metin ekranınızda kullanmak istediğiniz sorgu parametrelerini seçin. Bu örnek için **dil**için varsayılan değeri kullanın. Ayrıca işlem, yürütmenin bir parçası olarak olası dili otomatik olarak algılayacağından boş bırakabilirsiniz.
 
 > [!NOTE]
-> İçin **dil** parametresi, Ata `eng` veya makine destekli görmek için boş bırakın **sınıflandırma** yanıt (Önizleme özelliği). **Bu özellik yalnızca İngilizce destekler**.
+> **Dil** parametresi için, `eng` makine yardımlı **Sınıflandırma** yanıtını (Önizleme özelliği) görmek üzere boş bırakın veya boş bırakın. **Bu özellik yalnızca İngilizce 'yi destekler**.
 >
-> İçin **küfür koşulları** algılama, kullanımı [ISO 639-3 kodu](http://www-01.sil.org/iso639-3/codes.asp) bu konuda listelenen desteklenen dillerin makale veya boş bırakın.
+> **Küfür terimleri** algılama için, bu makalede listelenen desteklenen dillerin [ISO 639-3 kodunu](http://www-01.sil.org/iso639-3/codes.asp) kullanın veya boş bırakın.
 
-İçin **düzeltme**, **PII**, ve **(Önizleme) sınıflandırmak**seçin **true**. Bırakın **ListId** boş.
+**Otomatik Düzelt**, **PII**ve **sınıflandır (Önizleme)** için **doğru**öğesini seçin. **ListId** alanını boş bırakın.
 
-  ![Metin - ekran konsol sorgu parametreleri](images/text-api-console-inputs.PNG)
+  ![Metin-ekran konsolu sorgu parametreleri](images/text-api-console-inputs.PNG)
 
 ### <a name="content-type"></a>İçerik türü
 
-İçin **Content-Type**, ekran istediğiniz içerik türü seçin. Bu örnekte, varsayılan kullanmak **metin/düz** içerik türü. İçinde **Ocp-Apim-Subscription-Key** kutusuna, abonelik anahtarınızı girin.
+**Içerik türü**için, ekranın istediğiniz içerik türünü seçin. Bu örnek için varsayılan **metin/düz** içerik türünü kullanın. **OCP-apim-Subscription-Key** kutusuna abonelik anahtarınızı girin.
 
-### <a name="sample-text-to-scan"></a>Örnek metin taramak için
+### <a name="sample-text-to-scan"></a>Taranacak örnek metin
 
-İçinde **istek gövdesi** kutusunda, metin girin. Aşağıdaki örnek, kasıtlı bir yazım yanlışı metni gösterir.
+**İstek gövdesi** kutusuna bir metin girin. Aşağıdaki örnek, metinde isteyerek bir yazım hatası gösterir.
 
 > [!NOTE]
-> Aşağıdaki örnek metni geçersiz sosyal güvenlik numarası kasıtlıdır. Amacı, iletmek örnek giriş ve çıkış biçimi sağlamaktır.
+> Aşağıdaki örnek metinde geçersiz sosyal güvenlik numarası bilerek yapılır. Amaç, örnek giriş ve çıkış biçimini iletsağlamaktır.
 
 ```
 Is this a grabage or crap email abcdef@abcd.com, phone: 6657789887, IP: 255.255.255.255, 1 Microsoft Way, Redmond, WA 98052.
@@ -71,12 +71,12 @@ These are all UK phone numbers, the last two being Microsoft UK support numbers:
 Also, 999-99-9999 looks like a social security number (SSN).
 ```
 
-## <a name="analyze-the-response"></a>Yanıt analiz edin
+## <a name="analyze-the-response"></a>Yanıtı çözümle
 
-Şu yanıtı çeşitli içgörüler API'den gösterir. Bu, olası küfürleri, kişisel verileri, sınıflandırma (Önizleme) ve otomatik olarak düzeltti sürümünü içerir.
+Aşağıdaki yanıt, API 'deki çeşitli öngörüleri gösterir. Olası bir küfür, kişisel veriler, sınıflandırma (Önizleme) ve otomatik düzeltilmiş sürüm içerir.
 
 > [!NOTE]
-> Makine destekli 'Sınıflandırma' özellik Önizleme aşamasındadır ve yalnızca İngilizce dilini desteklemektedir.
+> Makine destekli ' sınıflandırma ' özelliği önizlemededir ve yalnızca Ingilizce 'yi destekler.
 
 ```json
 {"OriginalText":"Is this a grabage or crap email abcdef@abcd.com, phone: 6657789887, IP: 255.255.255.255, 1 Microsoft Way, Redmond, WA 98052.\r\nThese are all UK phone numbers, the last two being Microsoft UK support numbers: +44 870 608 4000 or 0344 800 2400 or 0800 820 3300.\r\nAlso, 544-56-7788 looks like a social security number (SSN).",
@@ -172,8 +172,8 @@ Also, 999-99-9999 looks like a social security number (SSN).
 }
 ```
 
-JSON yanıtı tüm bölümlerinde ayrıntılı bir açıklaması için başvurmak [metin denetimi](text-moderation-api.md) kavramsal Kılavuzu.
+JSON yanıtındaki tüm bölümlerin ayrıntılı bir açıklaması için, [metin denetleme](text-moderation-api.md) kavramsal kılavuzuna bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kodunuzda REST API kullanma veya ile başlayan [metin denetimi .NET hızlı](text-moderation-quickstart-dotnet.md) uygulamanızla tümleştirmek için.
+Kodunuzda REST API kullanın veya uygulamanızla tümleştirmek üzere [metin denetleme .net hızlı](text-moderation-quickstart-dotnet.md) başlangıcı ile başlayın.

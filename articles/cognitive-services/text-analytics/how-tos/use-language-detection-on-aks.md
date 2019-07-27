@@ -1,6 +1,6 @@
 ---
-title: Kubernetes hizmetini Çalıştır
-titleSuffix: Text Analytics - Azure Cognitive Services
+title: Kubernetes hizmetini çalıştırma-Metin Analizi
+titleSuffix: Azure Cognitive Services
 description: Dil algılama kapsayıcısını, çalışan bir örnekle, Azure Kubernetes hizmetine dağıtın ve bir Web tarayıcısında test edin.
 services: cognitive-services
 author: IEvangelist
@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
 ms.author: dapine
-ms.openlocfilehash: ba6fde66b6173bdbff8e9acc08b16f47c5bf7ea4
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.openlocfilehash: 7b6621273b04d019791f604ca0db26a73c289f2b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377104"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562611"
 ---
 # <a name="deploy-the-language-detection-container-to-azure-kubernetes-service"></a>Dil algılama kapsayıcısını Azure Kubernetes hizmetine dağıtma
 

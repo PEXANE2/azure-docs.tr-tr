@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı Başlangıç: Konuşma tanıma, çeviri C# (.NET Framework Windows) - konuşma Hizmetleri'
+title: 'Hızlı Başlangıç: Konuşmayı çevir, C# (.NET Framework Windows)-konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, komut satırına metin çıktısı kullanıcı konuşma yakalamak ve başka bir dile çevirmek için basit bir .NET Framework uygulaması oluşturacaksınız. Bu kılavuz, Windows kullanıcıları için tasarlanmıştır.
+description: Bu hızlı başlangıçta, Kullanıcı konuşmayı yakalamak, başka bir dile çevirmek ve metni komut satırına çıkarmak için basit bir .NET Framework uygulaması oluşturacaksınız. Bu kılavuz Windows kullanıcıları için tasarlanmıştır.
 services: cognitive-services
 author: wolfma61
 manager: nitinme
@@ -10,27 +10,27 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: b81aac4779570f39fcbacda867fe27d902322bc5
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: e62756ab428135ca3d5d9107f37e61813097d21f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602816"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68553463"
 ---
-# <a name="quickstart-translate-speech-with-the-speech-sdk-for-net-framework"></a>Hızlı Başlangıç: .NET Framework için konuşma Speech SDK'sı ile Çevir
+# <a name="quickstart-translate-speech-with-the-speech-sdk-for-net-framework"></a>Hızlı Başlangıç: .NET Framework için konuşma SDK 'Sı ile konuşmayı çevirin
 
-Hızlı Başlangıçlar ücret karşılığında ayrıca [konuşma metin](quickstart-csharp-dotnet-windows.md) ve [metin okuma](quickstart-text-to-speech-dotnet-windows.md).
+Hızlı başlangıç, [konuşmadan metne](quickstart-csharp-dotnet-windows.md) ve [metinden konuşmaya](quickstart-text-to-speech-dotnet-windows.md)yönelik olarak da kullanılabilir.
 
-Bu hızlı başlangıçta, bilgisayarınızın mikrofondan gelen kullanıcı konuşma yakalar, konuşma çevirir ve gerçek zamanlı olarak komut satırında çevrilmiş metne dönüştürür basit bir .NET Framework uygulaması oluşturacaksınız. Bu uygulama, 64 bit Windows üzerinde çalışacak şekilde tasarlanmıştır ve ile oluşturulmuş [konuşma SDK'sı NuGet paketi](https://aka.ms/csspeech/nuget) ve Microsoft Visual Studio 2017.
+Bu hızlı başlangıçta, bilgisayarınızın mikrofonunuzdan Kullanıcı konuşmayı yakalayan, konuşmayı çeviren ve çevrilmiş metni gerçek zamanlı olarak komut satırına seçtiğiniz basit bir .NET Framework uygulaması oluşturacaksınız. Bu uygulama, 64 bit Windows üzerinde çalışmak üzere tasarlanmıştır ve [konuşma SDK 'Sı NuGet paketi](https://aka.ms/csspeech/nuget) ve Microsoft Visual Studio 2017 ile oluşturulmuştur.
 
-Konuşma çevirisi için kullanılabilen dilleri tam bir listesi için bkz. [dil desteği](language-support.md).
+Konuşma çevirisi için kullanılabilen dillerin tüm listesi için bkz. [dil desteği](language-support.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıç şunları gerektirir:
 
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
-* Konuşma hizmeti için bir Azure aboneliği anahtarı. [Ücretsiz edinin](get-started.md).
+* Konuşma hizmeti için bir Azure abonelik anahtarı. [Ücretsiz bir tane alın](get-started.md).
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio projesi oluşturma
 
@@ -58,16 +58,16 @@ Bu hızlı başlangıç şunları gerektirir:
 
     ![Visual Studio uygulamasının, Hata Ayıklamayı Başlat seçeneği vurgulanmış olarak ekran görüntüsü](media/sdk/qs-csharp-dotnetcore-windows-06-start-debugging.png "Uygulamayı hata ayıklamada başlatma")
 
-1. Bir şey söylemenizi isteyen bir konsol penceresi görünür. İngilizce bir deyim ya da cümle söyleyin. Konuşma konuşma tanıma Hizmeti'ne aktarılan çevrilmiş ve transcribed aynı pencerede görünen metin.
+1. Bir şey söylemenizi isteyen bir konsol penceresi görünür. İngilizce bir deyim ya da cümle söyleyin. Konuşma, konuşma hizmetine iletilir, çevrilmiş ve aynı pencerede görüntülenen metne dönüştürülür.
 
-    ![Başarılı çeviri sonra konsol çıktısı ekran görüntüsü](media/sdk/qs-translate-csharp-dotnetcore-windows-output.png "başarılı çeviri sonra konsol çıktısı")
+    ![Başarılı çeviri sonrasında konsol çıktısının ekran görüntüsü](media/sdk/qs-translate-csharp-dotnetcore-windows-output.png "Başarılı çeviri sonrasında konsol çıkışı")
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Konuşma bir ses dosyasını okuma ve Sentezlenen konuşma olarak çevrilmiş metin çıktısı gibi ek örnekler Github'da kullanılabilir.
+Ses dosyasından konuşmayı okuma ve metin ile çevrilmiş bir metnin sentezleştirilmiş konuşma olarak nasıl okunacağını gösteren ek örnekler, GitHub ' da kullanılabilir.
 
 > [!div class="nextstepaction"]
-> [Keşfedin C# github'da örnekleri](https://aka.ms/csspeech/samples)
+> [GitHub C# 'daki örnekleri keşfet](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

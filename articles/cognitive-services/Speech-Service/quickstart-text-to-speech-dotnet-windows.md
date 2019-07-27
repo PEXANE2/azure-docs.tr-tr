@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı Başlangıç: Okuma, .NET Framework (Windows) - konuşma Hizmetleri sentezlemek'
+title: 'Hızlı Başlangıç: Konuşmayı sentezleştirme, .NET Framework (Windows)-konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Windows ve Speech SDK'sı için .NET framework kullanarak bir metin okuma konsol uygulaması oluşturmak için bu kılavuzu kullanın. Tamamlandığında, sentezlemek konuşma metin ve konuşma tanıma, konuşmacı gerçek zamanlı üzerinde dinleyin.
+description: Windows için .NET Framework ve konuşma SDK 'Sı kullanarak bir metin okuma konsol uygulaması oluşturmak için bu kılavuzu kullanın. İşiniz bittiğinde konuşmayı metinden sentezleştirme ve konuşmacının gerçek zamanlı olarak dinlenmesini sağlayabilirsiniz.
 services: cognitive-services
 author: yinhew
 manager: nitinme
@@ -10,29 +10,29 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: yinhew
-ms.openlocfilehash: 352d3f5f34bd46d8ee1ba2ed45dcc28af2b430ef
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 3c925e0160a4c57f7e43c3463fc1db7098a6e606
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605021"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68553608"
 ---
-# <a name="quickstart-synthesize-speech-with-the-speech-sdk-for-net-framework-windows"></a>Hızlı Başlangıç: Konuşma Speech SDK'sı ile sentezlemek için .NET Framework (Windows)
+# <a name="quickstart-synthesize-speech-with-the-speech-sdk-for-net-framework-windows"></a>Hızlı Başlangıç: .NET Framework için konuşma SDK 'Sı ile konuşmayı sentezleştirme (Windows)
 
-Hızlı Başlangıçlar ücret karşılığında ayrıca [konuşma tanıma](quickstart-csharp-dotnet-windows.md) ve [konuşma çevirisi](quickstart-translate-speech-dotnetframework-windows.md).
+Hızlı başlangıç, [konuşma tanıma](quickstart-csharp-dotnet-windows.md) ve [konuşma çevirisi](quickstart-translate-speech-dotnetframework-windows.md)için de kullanılabilir.
 
-Windows ve Speech SDK'sı için .NET framework kullanarak bir metin okuma konsol uygulaması oluşturmak için bu kılavuzu kullanın. Tamamlandığında, sentezlemek konuşma metin ve konuşma tanıma, konuşmacı gerçek zamanlı üzerinde dinleyin.
+Windows için .NET Framework ve konuşma SDK 'Sı kullanarak bir metin okuma konsol uygulaması oluşturmak için bu kılavuzu kullanın. İşiniz bittiğinde konuşmayı metinden sentezleştirme ve konuşmacının gerçek zamanlı olarak dinlenmesini sağlayabilirsiniz.
 
-Bir hızlı örnek için: (olmadan kendiniz aşağıda gösterildiği gibi Visual Studio projesi oluşturma)
+Hızlı bir gösterim için (aşağıda gösterildiği gibi, Visual Studio projesini kendiniz oluşturmadan):
 
-En son bilgileri edinin [Bilişsel hizmetler konuşma SDK örnekleri](https://github.com/Azure-Samples/cognitive-services-speech-sdk) github'dan.
+GitHub 'dan en yeni bilişsel [Hizmetler konuşma SDK örnekleri](https://github.com/Azure-Samples/cognitive-services-speech-sdk) alın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 Bu projeyi tamamlamak için şunlar gerekir:
 
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
-* Konuşma hizmeti için bir abonelik anahtarı. [Ücretsiz edinin](get-started.md).
+* Konuşma hizmeti için bir abonelik anahtarı. [Ücretsiz bir tane alın](get-started.md).
 * Konuşmacı (veya kulaklık) kullanılabilir.
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio projesi oluşturma
@@ -45,7 +45,7 @@ Bu projeyi tamamlamak için şunlar gerekir:
 
     [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/text-to-speech/csharp-dotnet-windows/helloworld/Program.cs#code)]
 
-1. Bulun ve dize değiştirin `YourSubscriptionKey` konuşma Hizmetleri abonelik anahtarınız ile.
+1. Dizeyi `YourSubscriptionKey` bulun ve konuşma Hizmetleri abonelik anahtarınızla değiştirin.
 
 1. `YourServiceRegion` dizesini bulun ve aboneliğinizle ilişkili [bölge](regions.md) ile değiştirin. Örneğin, ücretsiz denemeyi kullanıyorsanız bölge `westus` olur.
 
@@ -61,16 +61,16 @@ Bu projeyi tamamlamak için şunlar gerekir:
 
     ![Visual Studio uygulamasının, Hata Ayıklamayı Başlat seçeneği vurgulanmış olarak ekran görüntüsü](media/sdk/qs-csharp-dotnet-windows-09-start-debugging.png "Uygulamayı hata ayıklamada başlatma")
 
-1. Bir metin yazın isteyip istemediğinizi soran bir konsol penceresi görünür. Birkaç sözcük veya bir cümle yazın. Yazdığınız metni konuşma hizmetlere iletilen ve konuşma tanıma, hoparlöründen için oluşturulan.
+1. Bir konsol penceresi görünür ve sizden bir metin yazmanız istenir. Birkaç kelime veya tümce yazın. Yazdığınız metin konuşma hizmetlerine iletilir ve konuşmacının oynadığı konuşmayı sentezleştirilmiştir.
 
     ![Başarılı tanımadan sonra konsol çıktısının ekran görüntüsü](media/sdk/qs-tts-csharp-dotnet-windows-console-output.png "Başarılı tanımadan sonra konsol çıktısı")
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Keşfedin C# github'da örnekleri](https://aka.ms/csspeech/samples)
+> [GitHub C# 'daki örnekleri keşfet](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Ses tiplerini özelleştirme](how-to-customize-voice-font.md)
-- [Kayıt ses örnekleri](record-custom-voice-samples.md)
+- [Ses yazı tiplerini özelleştirme](how-to-customize-voice-font.md)
+- [Ses örneklerini Kaydet](record-custom-voice-samples.md)

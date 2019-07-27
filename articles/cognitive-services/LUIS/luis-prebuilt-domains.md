@@ -1,5 +1,5 @@
 ---
-title: Dil Understa için önceden oluşturulmuş etki alanları
+title: Language Understanding için önceden oluşturulmuş etki alanları
 titleSuffix: Azure Cognitive Services
 description: LUIS, bir dizi ortak, konuşma kullanıcı senaryoları hızlı bir şekilde eklemek için önceden oluşturulmuş etki alanları içerir.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: diberry
-ms.openlocfilehash: e1b99396c4739dc6f1b7a4da0164553d4c25ef3c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 05769bb284a89f16af79a03cdc471b339c7af855
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60198940"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563553"
 ---
 # <a name="add-prebuilt-domains-for-common-usage-scenarios"></a>Genel kullanım senaryoları için önceden oluşturulmuş etki alanlarını ekleyin 
 

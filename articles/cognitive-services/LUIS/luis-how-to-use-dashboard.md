@@ -1,5 +1,5 @@
 ---
-title: Pano-Language Understanding
+title: Pano-Language Understanding-LUO
 titleSuffix: Azure Cognitive Services
 description: Görselleştirilen bir raporlama aracı olan analiz panosu ile amaçları düzeltir.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/22/2019
 ms.author: diberry
-ms.openlocfilehash: f068aa7ca6b396ebba05b9d9462d9e95faf7fbaa
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 42dfe4af56149e4305d076b0427f15038a01fadc
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68296414"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563633"
 ---
 # <a name="how-to-use-the-dashboard-to-improve-your-app"></a>Uygulamanızı geliştirmek için panoyu kullanma
 
@@ -33,7 +33,7 @@ Panoda giderilen üç sorun şunlardır:
 |Sorun|Grafik rengi|Açıklama|
 |--|--|--|
 |Veri dengesizliği|-|Bu durum, örnek sayısı önemli ölçüde farklılık gösterdiği zaman oluşur. Tüm Amaçlar, her türlü örnek _utde aynı_ sayıda örneğe sahip olmalıdır; hiçbiri hariç. Bu, uygulamadaki toplam kullanım miktarının% 10 ' dan% 15 ' e sahip olmalıdır.<br><br> Veriler imlenebilir ancak amaç doğruluğu belirli bir eşiğin üzerinde ise, bu dengesizliği bir sorun olarak bildirilmemiştir.<br><br>**Bu sorunla başlayın-diğer sorunların temel nedeni olabilir.**|
-|Belirsiz tahmin|Orange|Bu durum, en üstteki amaç ve sonraki amaç puanlarının, bir sonraki eğitimin üzerinde tulabilecekleri, [negatif örnekleme](luis-how-to-train.md#train-with-all-data) veya daha fazla örnek ekleme amacına bağlı olarak yakın olduğu durumlarda meydana gelir. |
+|Belirsiz tahmin|Turuncu|Bu durum, en üstteki amaç ve sonraki amaç puanlarının, bir sonraki eğitimin üzerinde tulabilecekleri, [negatif örnekleme](luis-how-to-train.md#train-with-all-data) veya daha fazla örnek ekleme amacına bağlı olarak yakın olduğu durumlarda meydana gelir. |
 |Yanlış tahminler|Kırmızı|Bu durum, etiketlenmiş amaç (içinde olduğu amaç) için bir örnek bir tahmin olmadığında oluşur.|
 
 Doğru tahminler mavi renkle gösterilir.

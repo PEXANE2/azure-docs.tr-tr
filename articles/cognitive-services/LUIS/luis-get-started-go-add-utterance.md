@@ -1,7 +1,7 @@
 ---
-title: Değişiklik, train uygulama, Git
+title: Değişiklik, uygulama eğitme, go-LUSıS
+titleSuffix: Azure Cognitive Services
 description: Bu Go dili hızlı başlangıcında, bir Ev Otomasyonu uygulamasına örnek konuşmalar ekleyip uygulamayı eğitin.
-titleSuffix: Language Understanding - Microsoft Cognitive Services
 author: diberry
 manager: nitinme
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: diberry
-ms.openlocfilehash: 973323cd14d9472d9845f0709fc6d2924efc56f5
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: 690ea26cb5c6effda71ec1d8236c6dabd02f02ee
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357144"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560550"
 ---
-# <a name="quickstart-change-model-using-go"></a>Hızlı Başlangıç: Go kullanarak modeli Değiştir
+# <a name="quickstart-change-model-using-go"></a>Hızlı Başlangıç: Go kullanarak modeli değiştirme
 
 [!INCLUDE [Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-change-model-intro-para.md)]
 

@@ -1,6 +1,6 @@
 ---
-title: Görüntü işlemleri - Java
-titlesuffix: Azure Cognitive Services
+title: Görüntü işlemleri gerçekleştirme-Java
+titleSuffix: Azure Cognitive Services
 description: Azure Bilişsel Hizmetler’de Görüntü İşleme API’sini kullanan temel bir Java Swing uygulamasını keşfedin. OCR gerçekleştirin, küçük resimler oluşturun ve bir görüntüdeki görsel özelliklerle çalışın.
 services: cognitive-services
 author: KellyDF
@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.author: kefre
 ms.custom: seodec18
 ms.date: 04/30/2019
-ms.openlocfilehash: a22308e0c7ff924205f715692d011a4572b2bdb8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 16f75095c7e4461c84a1fea28cc620c49b6c5bca
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65232639"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565686"
 ---
-# <a name="use-computer-vision-features-with-the-rest-api-and-java"></a>Görüntü işleme özelliklerini REST API ve Java ile kullanma
+# <a name="use-computer-vision-features-with-the-rest-api-and-java"></a>REST API ve Java ile Görüntü İşleme özelliklerini kullanma
 
 Bu öğreticide, Azure Bilişsel Hizmetler Görüntü İşleme REST API’sinin özellikleri gösterilmektedir.
 
@@ -34,7 +34,7 @@ Bu öğreticide, Görüntü İşleme’nin nasıl kullanılacağı ele alınacak
 > * Bir görüntüdeki yazdırılan metni okuma
 > * Bir görüntüdeki el yazısı metni okuma
 
-Java Swing form uygulaması zaten yazıldığını ancak hiçbir işlevselliğe sahiptir. Bu öğreticide, uygulamanın işlevselliğini tamamlamak için Görüntü İşleme API'sine özgü kodu ekleyeceksiniz.
+Java esnek form uygulaması zaten yazılmış ancak işlevleri yok. Bu öğreticide, uygulamanın işlevselliğini tamamlamak için Görüntü İşleme API'sine özgü kodu ekleyeceksiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -44,11 +44,11 @@ Bu öğretici, NetBeans IDE kullanılarak geliştirilmiştir. Özellikle, [burad
 
 ### <a name="subscribe-to-computer-vision-api-and-get-a-subscription-key"></a>Görüntü İşleme API’sine abone olma ve abonelik anahtarı alma
 
-Örnek oluşturmadan önce görüntü işleme API'si için Azure Bilişsel Hizmetler'in bir parçası olan abone olması gerekir. Abonelik ve anahtar yönetimi ayrıntıları için bkz. [Abonelikler](https://azure.microsoft.com/try/cognitive-services/). Bu öğreticide hem birincil hem de ikincil anahtarlar kullanılabilir.
+Örneği oluşturmadan önce, Azure bilişsel hizmetler 'in bir parçası olan Görüntü İşleme API'si abone olmanız gerekir. Abonelik ve anahtar yönetimi ayrıntıları için bkz. [Abonelikler](https://azure.microsoft.com/try/cognitive-services/). Bu öğreticide hem birincil hem de ikincil anahtarlar kullanılabilir.
 
-## <a name="acquire-incomplete-tutorial-project"></a>Tam öğretici projesinin Al
+## <a name="acquire-incomplete-tutorial-project"></a>Tamamlanmamış öğretici projesi al
 
-### <a name="download-the-project"></a>Projenizi indirin
+### <a name="download-the-project"></a>Projeyi indirin
 
 1. [Bilişsel Hizmetler Java Görüntü İşleme Öğreticisi](https://github.com/Azure-Samples/cognitive-services-java-computer-vision-tutorial) deposuna gidin.
 1. **Kopyala veya indir** düğmesine tıklayın.
@@ -78,7 +78,7 @@ NetBeans, .zip dosyasından projeyi içeri aktardığından, .zip dosyasının i
 
 1. Öğretici uygulamasından çıkın.
 
-## <a name="add-tutorial-code-to-the-project"></a>Eğitmen kodu projeye ekleyin.
+## <a name="add-tutorial-code-to-the-project"></a>Projeye öğretici kodu ekleyin
 
 Java Swing uygulaması altı sekme ile ayarlanır. Her sekme, Görüntü İşleme’nin farklı bir işlevini (analiz etme, OCR vb.) gösterir. Altı öğretici bölümünün birbirine bağımlılıkları yoktur, bu nedenle tek bir bölümü, altı bölümün tümünü veya bir alt kümesini ekleyebilirsiniz. Bölümleri herhangi bir sırayla da ekleyebilirsiniz.
 
@@ -88,7 +88,7 @@ Görüntü İşleme’nin Analiz özelliği, bir görüntüyü 2.000’den fazla
 
 Öğretici uygulamasının Analiz özelliğini tamamlamak için aşağıdaki adımları gerçekleştirin:
 
-#### <a name="add-the-event-handler-code-for-the-analyze-button"></a>Çözümle düğmesi için olay işleyicisini ekleyin
+#### <a name="add-the-event-handler-code-for-the-analyze-button"></a>Çözümle düğmesine yönelik olay işleyici kodunu ekleyin
 
 **analyzeImageButtonActionPerformed** olay işleyicisi yöntemi, formu temizler, URL’de belirtilen görüntüyü görüntüler, ardından görüntüyü analiz etmek için **AnalyzeImage** yöntemini çağırır. **AnalyzeImage** döndürüldüğünde yöntem, biçimlendirilmiş JSON yanıtını **Yanıt** metin alanında görüntüler, **JSONObject** öğesinden birinci açıklamalı alt yazıyı ayıklar ve açıklamalı alt yazıyı ve açıklamalı alt yazının doğruluğuna yönelik güvenilirlik düzeyini görüntüler.
 
@@ -202,7 +202,7 @@ Aşağıdaki kodu kopyalayıp **analyzeImageButtonActionPerformed** yöntemine y
     }
  ```
 
-#### <a name="run-the-analyze-function"></a>Analiz işlevi çalıştırın
+#### <a name="run-the-analyze-function"></a>Analyze işlevini çalıştırma
 
 Uygulamayı çalıştırmak için **F6** tuşuna basın. Abonelik anahtarınızı **Abonelik Anahtarı** alanına girin ve **Abonelik Bölgesi**’nde doğru bölgeyi kullandığınızı doğrulayın. Analiz edilecek görüntünün URL’sini girin, ardından **Görüntüyü Analiz Et** düğmesine tıklayarak bir görüntüyü analiz edip sonucu görün.
 
@@ -326,7 +326,7 @@ Aşağıdaki kodu kopyalayıp **landmarkImageButtonActionPerformed** yöntemine 
     }
 ```
 
-#### <a name="run-the-landmark-function"></a>Yer işareti işlevi çalıştırın
+#### <a name="run-the-landmark-function"></a>Yer işareti işlevini çalıştırma
 
 Uygulamayı çalıştırmak için **F6** tuşuna basın. Abonelik anahtarınızı **Abonelik Anahtarı** alanına girin ve **Abonelik Bölgesi**’nde doğru bölgeyi kullandığınızı doğrulayın. **Yer İşareti** sekmesine tıklayın, bir yer işareti görüntüsünün URL’sini girin, ardından **Görüntüyü Analiz Et** düğmesine tıklayarak bir görüntüyü analiz edip sonucu görün.
 
@@ -336,7 +336,7 @@ Görüntü İşleme’nin Ünlüler özelliği bir görüntüyü ünlü kişiler
 
 Öğretici uygulamasının Ünlüler özelliğini tamamlamak için aşağıdaki adımları gerçekleştirin:
 
-#### <a name="add-the-event-handler-code-for-the-celebrities-button"></a>Ünlüleri düğmesi için olay işleyicisini ekleyin
+#### <a name="add-the-event-handler-code-for-the-celebrities-button"></a>Ünlüler düğmesi için olay işleyici kodunu ekleyin
 
 **celebritiesImageButtonActionPerformed** olay işleyicisi yöntemi, formu temizler, URL’de belirtilen görüntüyü görüntüler, ardından görüntüyü analiz etmek için **CelebritiesImage** yöntemini çağırır. **CelebritiesImage** döndürüldüğünde yöntem, **Yanıt** metin alanında biçimlendirilmiş JSON yanıtını görüntüler, daha sonra **JSONObject** öğesinden ilk ünlü adını ayıklar ve adı ünlünün doğru şekilde belirlendiği güvenilirlik düzeyiyle birlikte pencerede görüntüler.
 
@@ -450,7 +450,7 @@ Aşağıdaki kodu kopyalayıp **celebritiesImageButtonActionPerformed** yöntemi
     }
 ```
 
-#### <a name="run-the-celebrities-function"></a>Çalıştırma ünlüleri işlevi
+#### <a name="run-the-celebrities-function"></a>Ünlüler işlevini çalıştırma
 
 Uygulamayı çalıştırmak için **F6** tuşuna basın. Abonelik anahtarınızı **Abonelik Anahtarı** alanına girin ve **Abonelik Bölgesi**’nde doğru bölgeyi kullandığınızı doğrulayın. **Ünlüler** sekmesine tıklayın, bir ünlü görüntüsünün URL’sini girin, ardından **Görüntüyü Analiz Et** düğmesine tıklayarak bir görüntüyü analiz edip sonucu görün.
 
@@ -460,7 +460,7 @@ Görüntü İşleme’nin Küçük Resim özelliği, bir görüntüden küçük 
 
 Öğretici uygulamasının Küçük Resim özelliğini tamamlamak için aşağıdaki adımları gerçekleştirin:
 
-#### <a name="add-the-event-handler-code-for-the-thumbnail-button"></a>Küçük Resim düğmesi için olay işleyicisini ekleyin
+#### <a name="add-the-event-handler-code-for-the-thumbnail-button"></a>Küçük resim düğmesi için olay işleyici kodunu ekleyin
 
 **thumbnailImageButtonActionPerformed** olay işleyicisi yöntemi, formu temizler, URL’de belirtilen görüntüyü görüntüler, ardından küçük resmi oluşturmak için **getThumbnailImage** yöntemini çağırır. **getThumbnailImage** döndürüldüğünde yöntem, oluşturulan küçük resmi görüntüler.
 
@@ -573,7 +573,7 @@ Aşağıdaki **getThumbnailImage** yöntemini kopyalayıp **thumbnailImageButton
     }
 ```
 
-#### <a name="run-the-thumbnail-function"></a>Küçük resim işlevi çalıştırın
+#### <a name="run-the-thumbnail-function"></a>Küçük resim işlevini çalıştırma
 
 Uygulamayı çalıştırmak için **F6** tuşuna basın. Abonelik anahtarınızı **Abonelik Anahtarı** alanına girin ve **Abonelik Bölgesi**’nde doğru bölgeyi kullandığınızı doğrulayın. **Küçük Resim** sekmesine tıklayın, bir görüntünün URL’sini girin, ardından **Küçük Resim Oluştur** düğmesine tıklayarak bir görüntüyü analiz edip sonucu görün.
 
@@ -583,7 +583,7 @@ Görüntü İşleme’nin Optik Karakter Tanıma (OCR) özelliği, yazdırılan 
 
 Öğretici uygulamasının OCR özelliğini tamamlamak için aşağıdaki adımları gerçekleştirin:
 
-#### <a name="add-the-event-handler-code-for-the-ocr-button"></a>OCR düğmesi için olay işleyicisini ekleyin
+#### <a name="add-the-event-handler-code-for-the-ocr-button"></a>OCR düğmesi için olay işleyici kodunu ekleme
 
 **ocrImageButtonActionPerformed** olay işleyicisi yöntemi, formu temizler, URL’de belirtilen görüntüyü görüntüler, ardından görüntüyü analiz etmek için **OcrImage** yöntemini çağırır. **OcrImage** döndürüldüğünde yöntem, algılanan metni **Yanıt** metin alanında biçimlendirilmiş JSON olarak görüntüler.
 
@@ -684,7 +684,7 @@ Aşağıdaki **OcrImage** yöntemini kopyalayıp **ocrImageButtonActionPerformed
     }
 ```
 
-#### <a name="run-the-ocr-function"></a>OCR işlevi çalıştırın
+#### <a name="run-the-ocr-function"></a>OCR işlevini çalıştırma
 
 Uygulamayı çalıştırmak için **F6** tuşuna basın. Abonelik anahtarınızı **Abonelik Anahtarı** alanına girin ve **Abonelik Bölgesi**’nde doğru bölgeyi kullandığınızı doğrulayın. **OCR** sekmesine tıklayın, yazdırılan metin görüntüsünün URL’sini girin, ardından **Görüntüyü Oku** düğmesine tıklayarak bir görüntüyü analiz edip sonucu görün.
 
@@ -694,7 +694,7 @@ Görüntü İşleme’nin El Yazısı Tanıma özelliği, el yazısı metnin gö
 
 Öğretici uygulamasının El Yazısı Tanıma özelliğini tamamlamak için aşağıdaki adımları gerçekleştirin:
 
-#### <a name="add-the-event-handler-code-for-the-handwriting-button"></a>El yazısı düğmesi için olay işleyicisini ekleyin
+#### <a name="add-the-event-handler-code-for-the-handwriting-button"></a>El yazısı düğmesine yönelik olay işleyici kodunu ekleyin
 
 **handwritingImageButtonActionPerformed** olay işleyicisi yöntemi, formu temizler, URL’de belirtilen görüntüyü görüntüler, ardından görüntüyü analiz etmek için **HandwritingImage** yöntemini çağırır. **HandwritingImage** döndürüldüğünde yöntem, algılanan metni **Yanıt** metin alanında biçimlendirilmiş JSON olarak görüntüler.
 
@@ -842,12 +842,12 @@ Aşağıdaki **HandwritingImage** yöntemini kopyalayıp **handwritingImageButto
     }
 ```
 
-#### <a name="run-the-handwriting-function"></a>El yazısı işlevi çalıştırın
+#### <a name="run-the-handwriting-function"></a>El yazısı işlevini çalıştırma
 
 Uygulamayı çalıştırmak için **F6** tuşuna basın. Abonelik anahtarınızı **Abonelik Anahtarı** alanına girin ve **Abonelik Bölgesi**’nde doğru bölgeyi kullandığınızı doğrulayın. **El Yazısı Metni Oku** sekmesine tıklayın, el yazısı metin görüntüsünün URL’sini girin, ardından **Görüntüyü Oku** düğmesine tıklayarak bir görüntüyü analiz edip sonucu görün.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu kılavuzda, görüntü işleme REST API'si ile Java kullanılabilir görüntü analizi özelliklerin çoğunu sınamak için kullanılır. Ardından, ilgili API'ler hakkında daha fazla bilgi edinmek için başvuru belgelerine bakın.
+Bu kılavuzda, kullanılabilir görüntü analizi özelliklerinin çoğunu test etmek için Java ile Görüntü İşleme REST API kullandınız. Ardından, dahil edilen API 'Ler hakkında daha fazla bilgi edinmek için başvuru belgelerine bakın.
 
-- [Görüntü işleme REST API'si](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)
+- [Görüntü İşleme REST API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)

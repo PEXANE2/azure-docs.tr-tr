@@ -9,10 +9,10 @@ ms.date: 04/06/2018
 ms.author: mimig
 ms.custom: include file
 ms.openlocfilehash: 5d779694ac107931b610f9d91a24dd715669aecd
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67188121"
 ---
 Azure Tablosu depolaması veya Azure Cosmos DB kullanarak tablolarla çalışabilirsiniz. Hizmetler arasındaki farklar hakkında daha fazla bilgi edinmek için [Tablo teklifleri](../articles/cosmos-db/table-introduction.md#table-offerings)'ni okuyun. Kullanacağınız hizmet için bir hesap oluşturmanız gerekir. 

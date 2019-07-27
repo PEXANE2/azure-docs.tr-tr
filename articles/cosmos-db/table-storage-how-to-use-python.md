@@ -10,10 +10,10 @@ author: wmengmsft
 ms.author: wmeng
 ms.reviewer: sngun
 ms.openlocfilehash: 0f0acc721fd8888953d80976234b431943985ebf
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68356271"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-python"></a>Python kullanarak Azure Tablo depolamayı ve Azure Cosmos DB Tablo API’sini kullanmaya başlama
@@ -56,7 +56,7 @@ Bir Depolama hesabı oluşturduktan sonraki adımınız [Python için Microsoft 
 
 ## <a name="import-the-tableservice-and-entity-classes"></a>TableService ve Entity sınıflarını içeri aktarma
 
-Python 'da Azure Tablo hizmetindeki varlıklarla çalışmak için [tableservice][py_TableService] and [Entity][py_Entity] sınıflarını kullanırsınız. Bunların ikisini de içeri aktarmak için şu kodu Python dosyanızın başına ekleyin:
+Python 'da Azure Tablo hizmetindeki varlıklarla çalışmak için, [Tableservice][py_TableService] ve [varlık][py_Entity] sınıflarını kullanırsınız. Bunların ikisini de içeri aktarmak için şu kodu Python dosyanızın başına ekleyin:
 
 ```python
 from azure.cosmosdb.table.tableservice import TableService
@@ -89,7 +89,7 @@ table_service.create_table('tasktable')
 
 ## <a name="add-an-entity-to-a-table"></a>Tabloya bir varlık ekleme
 
-Bir varlık eklemek için öncelikle varlığınızı temsil eden bir nesne oluşturun, sonra nesneyi [tableservice. insert_entity yöntemine][py_TableService]. The entity object can be a dictionary or an object of type [Entity][py_Entity]geçirin ve varlığınızın özellik adlarını ve değerlerini tanımlar. Her varlık, tanımladığınız diğer özelliklere ek olarak zorunlu [PartitionKey ve RowKey](#partitionkey-and-rowkey) özelliklerini de içermelidir.
+Bir varlık eklemek için öncelikle varlığınızı temsil eden bir nesne oluşturun ve sonra nesneyi [Tableservice. insert_entity yöntemine][py_TableService]geçirin. Varlık nesnesi bir sözlük veya [varlık][py_Entity]türünde bir nesne olabilir ve varlığınızın özellik adlarını ve değerlerini tanımlar. Her varlık, tanımladığınız diğer özelliklere ek olarak zorunlu [PartitionKey ve RowKey](#partitionkey-and-rowkey) özelliklerini de içermelidir.
 
 Bu örnek, bir varlığı temsil eden bir sözlük nesnesi oluşturur, sonra bunu tabloya eklemek için [insert_entity][py_insert_entity] yöntemine geçirir:
 
@@ -99,7 +99,7 @@ task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001',
 table_service.insert_entity('tasktable', task)
 ```
 
-Bu örnek, tabloya eklemek için bir [varlık][py_Entity] object, then passes it to the [insert_entity][py_insert_entity] yöntemi oluşturur:
+Bu örnek bir [varlık][py_Entity] nesnesi oluşturur ve bunu tabloya eklemek için [insert_entity][py_insert_entity] yöntemine geçirir:
 
 ```python
 task = Entity()

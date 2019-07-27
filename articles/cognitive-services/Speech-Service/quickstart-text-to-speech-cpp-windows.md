@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı Başlangıç: Okuma, C++ (Windows) - konuşma Hizmetleri sentezlemek'
+title: 'Hızlı Başlangıç: Sentezleştirme konuşma C++ , (Windows)-konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Windows Masaüstü c++ konuşma Speech SDK'sı kullanarak sentezlemek öğrenin
+description: Konuşma SDK 'sını kullanarak Windows Masaüstü 'nde C++ konuşmayı nasıl sentezleyeceğinizi öğrenin
 services: cognitive-services
 author: yinhew
 manager: nitinme
@@ -10,26 +10,26 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: yinhew
-ms.openlocfilehash: dfad425d6da2e3dabec138ef4f108957ebea7ee9
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 6936d8f93221402fca9b250d09a842ce753e0e12
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602909"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559312"
 ---
-# <a name="quickstart-synthesize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>Hızlı Başlangıç: Konuşma SDK'sını kullanarak Windows üzerinde c++ konuşma sentezlemek
+# <a name="quickstart-synthesize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>Hızlı Başlangıç: Konuşma SDK 'sını kullanarak C++ Windows 'da konuşmayı sentezleştirme
 
-Hızlı Başlangıçlar ücret karşılığında ayrıca [konuşma tanıma](quickstart-cpp-windows.md) ve [konuşma çevirisi](quickstart-translate-speech-cpp-windows.md).
+Hızlı başlangıç, [konuşma tanıma](quickstart-cpp-windows.md) ve [konuşma çevirisi](quickstart-translate-speech-cpp-windows.md)için de kullanılabilir.
 
-Bu makalede Windows için bir C++ konsol uygulaması oluşturacaksınız. Bilişsel Hizmetler'i kullanma [Speech SDK'sı](speech-sdk.md) sentezlemek konuşma gerçek zamanlı metin ve konuşma bilgisayarınızın hoparlöründen yürütmek için. Uygulama [Konuşma SDK'sı NuGet paketi](https://aka.ms/csspeech/nuget) ve Microsoft Visual Studio 2017 (herhangi bir sürüm) ile geliştirilmiştir.
+Bu makalede Windows için bir C++ konsol uygulaması oluşturacaksınız. Bilişsel Hizmetler [konuşma SDK 'sını](speech-sdk.md) kullanarak konuşmayı gerçek zamanlı olarak sentezleştirme ve konuşmayı bilgisayarınızın hoparlörünüz üzerinde oynatacak şekilde kullanıyorsunuz. Uygulama [Konuşma SDK'sı NuGet paketi](https://aka.ms/csspeech/nuget) ve Microsoft Visual Studio 2017 (herhangi bir sürüm) ile geliştirilmiştir.
 
-Bu makalede açıklanan özellik kullanılabilir [Speech SDK'sı 1.5.0](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/1.5.0).
+Bu makalede açıklanan özellik, [konuşma SDK 1.5.0](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/1.5.0)' den edinilebilir.
 
-Diller/ses konuşma sentezi için kullanılabilen tam bir listesi için bkz. [dil desteği](language-support.md#text-to-speech).
+Konuşma birleştirme için kullanılabilen dillerin/seslerin tüm listesi için bkz. [dil desteği](language-support.md#text-to-speech).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu hızlı başlangıcı tamamlamak için bir konuşma Hizmetleri abonelik anahtarı ihtiyacınız vardır. Anahtarı ücretsiz alabilirsiniz. Bkz: [konuşma Hizmetleri ücretsiz olarak deneyin](get-started.md) Ayrıntılar için.
+Bu hızlı başlangıcı tamamlayabilmeniz için bir konuşma Hizmetleri abonelik anahtarına ihtiyacınız vardır. Anahtarı ücretsiz alabilirsiniz. Ayrıntılar için bkz. [konuşma hizmetlerini ücretsiz deneyin](get-started.md) .
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio projesi oluşturma
 
@@ -57,18 +57,18 @@ Bu hızlı başlangıcı tamamlamak için bir konuşma Hizmetleri abonelik anaht
 
    ![Visual Studio uygulamasının, Hata Ayıklamayı Başlat seçeneğinin vurgulandığı ekran görüntüsü](media/sdk/qs-cpp-windows-07-start-debugging.png)
 
-1. Bir metin yazın isteyip istemediğinizi soran bir konsol penceresi görünür. Birkaç sözcük veya bir cümle yazın. Yazdığınız metni konuşma hizmetlere iletilen ve konuşma tanıma, hoparlöründen için oluşturulan.
+1. Bir konsol penceresi görünür ve bir metin yazmanızı ister. Birkaç kelime veya tümce yazın. Yazdığınız metin konuşma hizmetlerine iletilir ve konuşmacının oynadığı konuşmayı sentezleştirilmiştir.
 
-   ![Başarılı sentezi sonra konsol çıktısı ekran görüntüsü](media/sdk/qs-tts-cpp-windows-console-output.png)
+   ![Başarılı birleştirme sonrasında konsol çıktısının ekran görüntüsü](media/sdk/qs-tts-cpp-windows-console-output.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Konuşma bir ses dosyasına kaydetme gibi ek örnekler, Github'da kullanılabilir.
+Konuşmayı bir ses dosyasına kaydetme gibi ek örnekler, GitHub 'da bulunabilir.
 
 > [!div class="nextstepaction"]
-> [GitHub üzerinde C++ örneklerini keşfedin](https://aka.ms/csspeech/samples)
+> [GitHub C++ 'daki örnekleri keşfet](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Ses tiplerini özelleştirme](how-to-customize-voice-font.md)
-- [Kayıt ses örnekleri](record-custom-voice-samples.md)
+- [Ses yazı tiplerini özelleştirme](how-to-customize-voice-font.md)
+- [Ses örneklerini Kaydet](record-custom-voice-samples.md)

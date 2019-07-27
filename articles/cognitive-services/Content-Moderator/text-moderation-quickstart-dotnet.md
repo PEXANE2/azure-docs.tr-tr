@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı Başlangıç: İçerik, metin analizi C# -Content Moderator'
-titlesuffix: Azure Cognitive Services
-description: .NET için içerik Moderator SDK'sını kullanarak çeşitli uygunsuz malzemeler için metin içeriği analiz etme
+title: 'Hızlı Başlangıç: Content Moderator metin içeriğini C# analiz etme'
+titleSuffix: Azure Cognitive Services
+description: .NET için Content Moderator SDK kullanarak çeşitli sakıncalı malzemeler için metin içeriğini çözümleme
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: sajagtap
-ms.openlocfilehash: f848ea0d1c86b9c12d26c59b8f0e92d1e5d70094
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 45ac641948531aa27334762704eba3333aebba4d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604054"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564330"
 ---
-# <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>Hızlı Başlangıç: Metin içeriği için içeriklere analiz edinC#
+# <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>Hızlı Başlangıç: ' Deki sakıncalı malzeme için metin içeriğini analiz edinC#
 
-Bu makalede, [.NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) için Content Moderator SDK'sını kullanmaya başlamanıza yardımcı olacak bilgi ve kod örnekleri sağlanır. Terim tabanlı filtreleme ve potansiyel olarak içeriklere yönetme, bir yandan içerik metin sınıflandırma yürütmek öğreneceksiniz.
+Bu makalede, [.NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) için Content Moderator SDK'sını kullanmaya başlamanıza yardımcı olacak bilgi ve kod örnekleri sağlanır. Potansiyel olarak sakıncalı olan malzemelere yönelik olarak, metin içeriğinin terim tabanlı filtrelemesini ve sınıflandırmasını nasıl çalıştıracağınızı öğreneceksiniz.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun. 
 
@@ -57,11 +57,11 @@ Aboneliğinize bir Content Moderator istemci sağlayıcısı oluşturmak için a
 
 ### <a name="set-up-input-and-output-targets"></a>Giriş ve çıkış hedeflerini ayarlama
 
-Aşağıdaki statik alanları _Program.cs_ dosyasındaki **Program** sınıfına ekleyin. Bu alanlar, giriş metni içerik için dosyaları belirtin ve JSON içeriği çıktı.
+Aşağıdaki statik alanları _Program.cs_ dosyasındaki **Program** sınıfına ekleyin. Bu alanlar, giriş metni içeriği ve çıkış JSON içeriği için dosyaları belirtir.
 
 [!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/text-moderation-quickstart-dotnet.cs?range=15-19)]
 
-Oluşturmak ihtiyacınız olacak *TextFile.txt* giriş dosyası ve (yolları olduğundan yürütme dizinine göreli) yolu güncelleştirin. _TextFile.txt_ dosyasını açın ve yönetilecek metni ekleyin. Bu hızlı başlangıçta aşağıdaki örnek metin kullanılır:
+*Textfile. txt* giriş dosyasını oluşturmanız ve yolunu güncelleştirmeniz gerekir (yollar yürütme dizinine göre değişir). _TextFile.txt_ dosyasını açın ve yönetilecek metni ekleyin. Bu hızlı başlangıçta aşağıdaki örnek metin kullanılır:
 
 ```
 Is this a grabage or crap email abcdef@abcd.com, phone: 6657789887, IP: 255.255.255.255, 1 Microsoft Way, Redmond, WA 98052.
@@ -74,7 +74,7 @@ These are all UK phone numbers, the last two being Microsoft UK support numbers:
 Aşağıdaki kodu **Main** yöntemine ekleyin. Temel işlem, **ScreenText** yöntemidir. Yöntemin parametreleri hangi moderasyon işlemlerinin yapılacağını belirtir. Bu örnekte, yöntem şu işlemler için yapılandırılır:
 - Metindeki olası küfürleri algılama.
 - Metni normalleştirme ve yazım hatalarını otomatik olarak düzeltme.
-- ABD ve Birleşik Krallık proje telefon numaraları, e-posta adreslerini ve ABD posta adresleri gibi kişisel verileri algılayın.
+- ABD ve UK telefon numaraları, e-posta adresleri ve ABD posta adresleri gibi kişisel verileri tespit edin.
 - Makine öğrenme tabanlı modelleri kullanarak metni üç kategoride sınıflandırma.
 
 Bu işlemlerin ne yaptığı hakkında daha fazla bilgi edinmek istiyorsanız, [Sonraki adımlar](#next-steps) bölümündeki bağlantıyı izleyin.

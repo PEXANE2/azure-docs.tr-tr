@@ -1,6 +1,6 @@
 ---
-title: PowerShell örneği coğrafi geri yükleme yedekleme - Azure SQL veritabanı | Microsoft Docs
-description: Azure SQL yönetilen örnek veritabanı, coğrafi olarak yedekli bir yedeklemeden geri yüklemek için azure PowerShell örnek betiği.
+title: PowerShell örneği geri yükleme coğrafi-yedekleme-Azure SQL veritabanı | Microsoft Docs
+description: Azure SQL yönetilen örnek veritabanını coğrafi olarak yedekli bir yedekten geri yüklemek için örnek betik Azure PowerShell.
 services: sql-database
 ms.service: sql-database
 ms.subservice: backup-restore
@@ -10,24 +10,23 @@ ms.topic: sample
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
-manager: craigg
 ms.date: 07/03/2019
-ms.openlocfilehash: 7459c4a6d5c949889a19e506420b779d3c5f2ebf
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: b6ad93d3b711726edd6891e5f6da2c8eef99d531
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67712016"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569705"
 ---
-# <a name="use-powershell-to-restore-a-managed-instance-database-to-another-geo-region"></a>Yönetilen örnek veritabanını başka bir coğrafi bölgesine geri yükleme için PowerShell kullanma
+# <a name="use-powershell-to-restore-a-managed-instance-database-to-another-geo-region"></a>Yönetilen örnek veritabanını başka bir coğrafi bölgeye geri yüklemek için PowerShell 'i kullanma
 
-Bu PowerShell Betiği örneği, bir uzak coğrafi-bölgeden (coğrafi geri yükleme) bir Azure SQL yönetilen örnek veritabanını geri yükler.  
+Bu PowerShell betiği örneği, bir Azure SQL yönetilen örnek veritabanını uzak bir coğrafi bölgede (coğrafi geri yükleme) geri yükler.  
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-PowerShell'i yerel olarak yükleyip kullanmayı tercih ederseniz Bu öğretici AZ PowerShell 1.4.0 gerektirir veya üzeri. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
+PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici AZ PowerShell 1.4.0 veya üstünü gerektirir. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
 
 ## <a name="sample-script"></a>Örnek betik
 
@@ -75,8 +74,8 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 | Komut | Notlar |
 |---|---|
 | [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/New-AzResourceGroup) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
-| [Get-AzSqlInstanceDatabaseGeoBackup](/powershell/module/az.sql/Get-AzSqlInstanceDatabaseGeoBackup) | Yönetilen örnek veritabanının coğrafi olarak yedekli bir yedeklemesini oluşturur. |
-| [Geri yükleme-AzSqlInstanceDatabase](/powershell/module/az.sql/Restore-AzSqlInstanceDatabase) | Bir coğrafi yedeğinden yönetilen örneğinde bir veritabanı oluşturur. |
+| [Get-Azsqlınstancedatabasegeobackup](/powershell/module/az.sql/Get-AzSqlInstanceDatabaseGeoBackup) | Yönetilen örnek veritabanının coğrafi olarak yedekli bir yedeklemesini oluşturur. |
+| [Restore-Azsqlınstancedatabase](/powershell/module/az.sql/Restore-AzSqlInstanceDatabase) | Coğrafi yedeklemeden yönetilen bir örnek üzerinde bir veritabanı oluşturur. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 
 ## <a name="next-steps"></a>Sonraki adımlar

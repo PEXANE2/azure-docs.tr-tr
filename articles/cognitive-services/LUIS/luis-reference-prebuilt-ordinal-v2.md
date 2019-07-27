@@ -1,7 +1,7 @@
 ---
-title: Sıralı V2 önceden oluşturulmuş varlık
-titleSuffix: Language Understanding - Azure Cognitive Services
-description: Bu makalede sıralı V2 içeren önceden oluşturulmuş varlık bilgilerini Language Understanding (LUIS).
+title: Sıralı v2 önceden oluşturulmuş varlık-LUSıS
+titleSuffix: Azure Cognitive Services
+description: Bu makale, Language Understanding (LUSıS) içinde sıralı v2 önceden oluşturulmuş varlık bilgilerini içerir.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,21 +11,21 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: diberry
-ms.openlocfilehash: 862b962f5642e01d7ed8250f49d51a6132447083
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 972f75fd1c977e79a2fa70c44bb3069e2c69a2c5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67486145"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563406"
 ---
-# <a name="ordinal-v2-prebuilt-entity-for-a-luis-app"></a>Sıralı V2 LUIS uygulaması için önceden oluşturulmuş varlık
-Sıralı V2 numarası genişletir [sıra](luis-reference-prebuilt-ordinal.md) göreli başvurular gibi sağlamak `next`, `last`, ve `previous`. Bu sıra önceden oluşturulmuş varlığını kullanarak ayıklanan değil.
+# <a name="ordinal-v2-prebuilt-entity-for-a-luis-app"></a>Bir LUSıS uygulaması için sıralı v2 önceden oluşturulmuş varlık
+Ordinal v2 numarası `next`, `last`, ve `previous`gibi göreli başvurular sağlamak için [sıra](luis-reference-prebuilt-ordinal.md) sayısını genişletir. Bunlar, sıralı önceden oluşturulmuş varlık kullanılarak ayıklanmaz.
 
-## <a name="resolution-for-prebuilt-ordinal-v2-entity"></a>Önceden oluşturulmuş sıralı V2 varlık için çözümleme
+## <a name="resolution-for-prebuilt-ordinal-v2-entity"></a>Önceden oluşturulmuş Ordinal v2 varlığı için çözüm
 
-### <a name="api-version-2x"></a>API sürüm 2.x
+### <a name="api-version-2x"></a>API sürüm 2. x
 
-Aşağıdaki örnek, çözünürlüğünü gösterir **builtin.ordinalV2** varlık.
+Aşağıdaki örnek, **yerleşik. ordinalV2** varlığının çözünürlüğünü gösterir.
 
 ```json
 {
@@ -55,9 +55,9 @@ Aşağıdaki örnek, çözünürlüğünü gösterir **builtin.ordinalV2** varl�
 }
 ```
 
-### <a name="preview-api-version-3x"></a>Önizleme API sürümü 3.x
+### <a name="preview-api-version-3x"></a>Preview API sürüm 3. x
 
-Aşağıdaki JSON ile olan `verbose` parametresini `false`:
+Aşağıdaki JSON `verbose` parametresi olarak `false`ayarlanmıştır:
 
 ```json
 {
@@ -82,7 +82,7 @@ Aşağıdaki JSON ile olan `verbose` parametresini `false`:
 }
 ```
 
-Aşağıdaki JSON ile olan `verbose` parametresini `true`:
+Aşağıdaki JSON `verbose` parametresi olarak `true`ayarlanmıştır:
 
 ```json
 {
@@ -124,4 +124,4 @@ Aşağıdaki JSON ile olan `verbose` parametresini `true`:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Hakkında bilgi edinin [yüzdesi](luis-reference-prebuilt-percentage.md), [telefon numarası](luis-reference-prebuilt-phonenumber.md), ve [sıcaklık](luis-reference-prebuilt-temperature.md) varlıklar. 
+[Yüzde](luis-reference-prebuilt-percentage.md), [telefon numarası](luis-reference-prebuilt-phonenumber.md)ve [sıcaklık](luis-reference-prebuilt-temperature.md) varlıkları hakkında bilgi edinin. 

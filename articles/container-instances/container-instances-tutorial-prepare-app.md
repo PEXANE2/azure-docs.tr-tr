@@ -10,10 +10,10 @@ ms.date: 03/21/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 719237f63d387cf56ab7947f8f168e0aa4351376
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68325578"
 ---
 # <a name="tutorial-create-a-container-image-for-deployment-to-azure-container-instances"></a>Öğretici: Azure Container Instances dağıtım için bir kapsayıcı görüntüsü oluşturun
@@ -49,7 +49,7 @@ Ayrıca [, ZIP arşivini][aci-helloworld-zip] GitHub 'dan doğrudan indirebilirs
 
 ## <a name="build-the-container-image"></a>Kapsayıcı görüntüsünü oluşturma
 
-Örnek uygulamada bulunan Dockerfile, kapsayıcının nasıl derlendiğini gösterir. Kapsayıcılarla birlikte kullanılmak üzere uygun olan küçük bir dağıtım olan [resmi bir Node. js görüntüsünden][docker-hub-nodeimage] based on [Alpine Linux][alpine-linux]başlar. Ardından uygulama dosyalarını kapsayıcıya kopyalar, Node Package Manager’ı kullanarak bağımlılıkları yükler ve son olarak uygulamayı başlatır.
+Örnek uygulamada bulunan Dockerfile, kapsayıcının nasıl derlendiğini gösterir. Kapsayıcılarla kullanım için uygun olan küçük bir dağıtım olan [alp Linux][alpine-linux]tabanlı [resmi bir Node. js görüntüsünden][docker-hub-nodeimage] başlar. Ardından uygulama dosyalarını kapsayıcıya kopyalar, Node Package Manager’ı kullanarak bağımlılıkları yükler ve son olarak uygulamayı başlatır.
 
 ```Dockerfile
 FROM node:8.9.3-alpine

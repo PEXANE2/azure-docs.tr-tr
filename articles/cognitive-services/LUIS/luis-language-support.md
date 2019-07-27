@@ -1,5 +1,5 @@
 ---
-title: Dil desteği
+title: Dil desteği-LUSıS
 titleSuffix: Azure Cognitive Services
 description: LUIS, çeşitli hizmetinde özellikleri vardır. Aynı dil eşliğine tüm özellikleridir. İlgilendiğiniz özellikleri hedeflediğiniz dil kültürünü desteklendiğinden emin olun. Bir LUIS uygulaması kültüre özgü olan ve ayarlandıktan sonra değiştirilemez.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: diberry
-ms.openlocfilehash: 8f067bc005c4de9ddc87ed598b1717f8fbb29a6a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 26127f9f6ed718e33a77b986f2edb0d2dc81b2c1
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65072371"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563554"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS dil ve bölge desteği
 
@@ -30,7 +30,7 @@ LUIS, çeşitli hizmetinde özellikleri vardır. Aynı dil eşliğine tüm özel
 
 LUIS, konuşma şu dillerde anlar:
 
-| Dil |Yerel Ayar  |  Önceden oluşturulmuş etki alanı | Önceden oluşturulmuş varlık | İfade listesi önerileri | **[Metin analizi](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(Duygu ve<br>Anahtar sözcükleri)|
+| Dil |Yerel Ayar  |  Önceden oluşturulmuş etki alanı | Önceden oluşturulmuş varlık | Tümcecik listesi önerileri | **[Metin analizi](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(Duygu ve<br>Anahtar sözcükleri)|
 |--|--|:--:|:--:|:--:|:--:|
 | Amerikan İngilizcesi |`en-US` | ✔ | ✔  |✔|✔|
 | *[Çince](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
@@ -53,7 +53,7 @@ Dil desteği değişir için [önceden oluşturulmuş varlıklarla](luis-referen
 
  - İçinde `zh-cn` kültür LUIS, Basitleştirilmiş Çince karakter yerine geleneksel karakter kümesi kümesini bekliyor.
  - Amacı, varlıkları, özellikler ve normal ifadeler adlarını Çince veya Latin karakter olabilir.
- - Bkz: [önceden oluşturulmuş etki alanları başvuru](luis-reference-prebuilt-domains.md) üzerinde önceden oluşturulmuş etki alanları desteklenmektedir bilgi `zh-cn` kültür.
+ - `zh-cn` Kültür içinde önceden oluşturulmuş etki alanlarının desteklendiği bilgiler için [önceden oluşturulmuş etki alanları başvurusuna](luis-reference-prebuilt-domains.md) bakın.
 <!--- When writing regular expressions in Chinese, do not insert whitespace between Chinese characters.-->
 
 ### <a name="japanese-support-notes"></a>\* Japonca desteği notları
@@ -95,16 +95,16 @@ Makine öğrenimi için LUIS bir utterance keser [belirteçleri](luis-glossary.m
 |İspanyolca (es-ES)|✔||||
 |İspanyolca (es-MX)|✔||||
 
-### <a name="custom-tokenizer-versions"></a>Özel belirteç Oluşturucu sürümleri
+### <a name="custom-tokenizer-versions"></a>Özel Simgeleştirici sürümleri
 
-Aşağıdaki kültürler özel simgeleştirici sürümleri vardır:
+Aşağıdaki kültürler özel belirteç Oluşturucu sürümlerine sahiptir:
 
 |Kültür|Version|Amaç|
 |--|--|--|
-|Almanca<br>`de-de`|1.0.0|Sözcüklerin tek bileşenleri bileşik sözcüklere bölmek için çalışan bir makine öğrenme tabanlı simgeleştirici kullanarak bunları bölerek tokenizes.<br>Bir kullanıcı girerse `Ich fahre einen krankenwagen` bir utterance açık olduğundan `Ich fahre einen kranken wagen`. İşaretleme için izin verme `kranken` ve `wagen` farklı varlıklar olarak birbirinden bağımsız olarak.|
-|Almanca<br>`de-de`|1.0.2|Sözcükleri alanlarının bölerek tokenizes.<br> bir kullanıcı girerse `Ich fahre einen krankenwagen` isteğe bağlı olarak bir utterance tek bir belirteç kalır. Bu nedenle `krankenwagen` tek bir varlık olarak işaretlenir. |
+|Almanca<br>`de-de`|1.0.0|Bileşik sözcüklerin tek bileşenlerine bölünmeye çalışan makine öğrenimi tabanlı bir belirteç Oluşturucu kullanarak onları bölerek sözcükleri simgeleştirir.<br>Bir Kullanıcı bir utterance olarak girerse `Ich fahre einen krankenwagen` , `Ich fahre einen kranken wagen`özelliği olarak ayarlanır. Farklı varlıklar olarak `kranken` ve `wagen` bağımsız olarak işaretlemeye izin verme.|
+|Almanca<br>`de-de`|1.0.2|Sözcükleri boşluklarla ayırarak simgeleştirir.<br> bir Kullanıcı bir utterance olarak girerse `Ich fahre einen krankenwagen` , tek bir belirteç kalır. Bu `krankenwagen` nedenle tek bir varlık olarak işaretlenir. |
 
-### <a name="migrating-between-tokenizer-versions"></a>Simgeleştirici sürümler arasında geçiş yapma
+### <a name="migrating-between-tokenizer-versions"></a>Belirteç Oluşturucu sürümler arasında geçiş yapma
 <!--
 Your first choice is to change the tokenizer version in the app file, then import the version. This action changes how the utterances are tokenized but allows you to keep the same app ID. 
 
@@ -207,6 +207,6 @@ Tokenizer JSON for version 1.0.1. Notice the property value for  `tokenizerVersi
 ```
 -->
 
-Simgeleştirme uygulama düzeyinde gerçekleşir. Sürüm düzeyi simgeleştirme için desteği yoktur. 
+Belirteç seçme, uygulama düzeyinde gerçekleşir. Sürüm düzeyi simgeleştirme desteği yoktur. 
 
-[Yeni bir uygulama olarak dosyayı içeri](luis-how-to-start-new-app.md#import-an-app-from-file), bir sürüm yerine. Bu eylem, yeni uygulama farklı uygulama Kimliğine sahip, ancak dosyasında belirtilen belirteç Oluşturucu sürümü kullandığı anlamına gelir. 
+[Dosyayı sürüm yerine yeni bir uygulama olarak Içeri aktarın](luis-how-to-start-new-app.md#import-an-app-from-file). Bu eylem, yeni uygulamanın farklı bir uygulama KIMLIĞINE sahip olduğu ancak dosyada belirtilen Simgeleştirici sürümünü kullandığı anlamına gelir. 

@@ -1,5 +1,6 @@
 ---
-title: Language Understanding (LUIS) - Azure Bilişsel Hizmetler | Microsoft Docs
+title: Language Understanding (LUIS) nedir?
+titleSuffix: Azure Cognitive Services
 description: Language Understanding (LUIS), genel anlamı tahmin etmek ve ilgili, ayrıntılı bilgileri çekme amacıyla kullanıcının konuşmasına, doğal dil metnine özel makine öğrenimi zekası uygulayan bulut tabanlı API hizmetidir.
 services: cognitive-services
 author: diberry
@@ -9,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: overview
 ms.date: 06/11/2019
 ms.author: diberry
-ms.openlocfilehash: 569b33d299f52f0da50d8a8992420754aa85b533
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 41c5e2f01678996406c586eb20043516beaf2184
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67062158"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563190"
 ---
 # <a name="what-is-language-understanding-luis"></a>Language Understanding (LUIS) nedir?
 
@@ -28,7 +29,7 @@ LUIS için istemci uygulaması, bir görevi tamamlamak için kullanıcıyla doğ
 
 <a name="Accessing-LUIS"></a>
 
-LUIS uygulaması yayımlandıktan sonra istemci uygulaması konuşmaları (metni) LUIS doğal dil işleme uç noktası [API'sine][endpoint-apis] gönderir ve sonuçları JSON yanıtı olarak alır. Sık kullanılan LUIS istemci uygulamalarından biri, sohbet botudur.
+Lua uygulaması yayımlandıktan sonra, bir istemci uygulama, LUSıS doğal dil işleme uç nokta [API][endpoint-apis] 'sine bir işlem (metin) gönderir ve sonuçları JSON yanıtları olarak alır. Sık kullanılan LUIS istemci uygulamalarından biri, sohbet botudur.
 
 
 ![Doğal dil işleme (NLP) ile kullanıcı metnini tahmin etmek için Sohbet botuyla birlikte çalışan LUIS hizmetinin kavramsal görüntüsü](./media/luis-overview/luis-overview-process-2.png "Doğal dil işleme (NLP) ile kullanıcı metnini tahmin etmek için Sohbet botuyla birlikte çalışan LUIS hizmetinin kavramsal görüntüsü")
@@ -101,24 +102,24 @@ LUIS, istemci uygulaması ve dil modeli düzeyinde tam geliştirme yaşam döng�
 LUIS, HTTP isteği gönderen tüm ürün, hizmet veya çerçevelerle REST API olarak kullanılabilir. Aşağıdaki liste, LUIS ile birlikte en çok kullanılan Microsoft ürünlerini ve hizmetlerini göstermektedir.
 
 En çok kullanılan LUIS istemci uygulamaları şunlardır:
-* [Web uygulaması botu](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0), kullanıcıyla metin girişi aracılığıyla konuşmak için hızlıca LUIS destekli bir sohbet botu oluşturur. Kullanan [Bot Framework] [ bot-framework] sürüm [4.x](https://github.com/Microsoft/botbuilder-dotnet) eksiksiz bir bot bir deneyim.
+* [Web uygulaması botu](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0), kullanıcıyla metin girişi aracılığıyla konuşmak için hızlıca LUIS destekli bir sohbet botu oluşturur. Tüm bot deneyimi için [bot Framework][bot-framework] sürüm [4. x](https://github.com/Microsoft/botbuilder-dotnet) 'i kullanır.
 
 LUIS'i hızlı ve kolay bir şekilde botla birlikte kullanmanızı sağlayacak uygulamalar:
-* [LUIS CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS) NPM paketi, yazma ve içeri aktarma olarak veya bir tek başına komut satırı aracı ile tahmini sağlar. 
+* [LUSıS CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS) NPM paketi, tek başına bir komut satırı aracı olarak veya içeri aktarma olarak ile yazma ve tahmin sağlar. 
 * [LUISGen](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUISGen) LUISGen, dışarı aktarılan bir LUIS modelinden ayrıntılı C# ve typescript kaynak kodu yazmak için kullanılan bir araçtır.
 * [Gönderme](https://aka.ms/dispatch-tool), çeşitli LUIS ve Soru-Cevap Oluşturma uygulamalarının gönderme modelini kullanan bir üst uygulamadan kullanılmasını sağlar.
 * [LUDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown) LUDown, botunuz için dil modellerini yönetmenize yardımcı olan bir komut satırı aracıdır.
 
 LUIS ile kullanılan diğer Bilişsel Hizmetler:
-* [Soru-Cevap Oluşturma][qnamaker], farklı metin türlerinin birleştirilerek soru ve yanıt bilgi bankası oluşturulmasını sağlar.
+* [Soru-cevap oluşturma][qnamaker] , bir soru ve yanıt bilgi bankasındaki çeşitli metin türlerinin birleştirilmesine izin verir.
 * [Bing Yazım Denetimi API'si](../bing-spell-check/proof-text.md), tahmin işlemi öncesinde metinlerin düzeltilmesini sağlar. 
 * [Konuşma hizmeti](../Speech-Service/overview.md), sözlü dil isteklerini metne dönüştürür. 
 * [Konuşma öğrenici](https://docs.microsoft.com/azure/cognitive-services/labs/conversation-learner/overview), LUIS ile daha hızlı bir şekilde sohbet botları oluşturmanızı sağlar.
 * [Kişilik sohbeti projesi](https://docs.microsoft.com/azure/cognitive-services/project-personality-chat/overview), bot ile kısa sohbetler yapmanızı sağlar.
 
-LUIS kullanan örnekleri:
-* [Konuşma özellikli yapay ZEKA](https://github.com/Microsoft/AI) GitHub deposu.
-* [Language Understanding'i](https://github.com/Azure-Samples/cognitive-services-language-understanding) Azure örnekleri
+LUŞU kullanan örnekler:
+* [Konuşma AI](https://github.com/Microsoft/AI) GitHub deposu.
+* [Language Understanding](https://github.com/Azure-Samples/cognitive-services-language-understanding) Azure örnekleri
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

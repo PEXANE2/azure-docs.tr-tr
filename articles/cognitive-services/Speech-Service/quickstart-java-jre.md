@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı Başlangıç: Java (Windows, Linux) - konuşma Hizmetleri konuşma tanıma'
+title: 'Hızlı Başlangıç: Konuşmayı tanıma, Java (Windows, Linux)-konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, yakalar ve bilgisayarınızın mikrofondan gelen kullanıcı konuşma dönüştürür basit bir Java uygulaması oluşturulacağını öğreneceksiniz.
+description: Bu hızlı başlangıçta, bilgisayarınızın mikrofonunuzdan Kullanıcı konuşmayı yakalayan ve kaydeden basit bir Java uygulaması oluşturmayı öğreneceksiniz.
 services: cognitive-services
 author: fmegen
 manager: nitinme
@@ -10,21 +10,21 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: fmegen
-ms.openlocfilehash: dce0a1b2adf20b2301402f37307e7ee1284c9aee
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 498e41b08133113be9789ef49291b8e2bb0f3705
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605160"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68554114"
 ---
-# <a name="quickstart-recognize-speech-with-the-speech-sdk-for-java"></a>Hızlı Başlangıç: Java Speech SDK'sı ile Konuşma tanıma
+# <a name="quickstart-recognize-speech-with-the-speech-sdk-for-java"></a>Hızlı Başlangıç: Java için konuşma SDK 'Sı ile konuşmayı tanıma
 
-Hızlı Başlangıçlar ücret karşılığında ayrıca [konuşma için konuşma çevirisi](quickstart-translate-speech-java-jre.md) ve [ses öncelikli sanal asistan](quickstart-virtual-assistant-java-jre.md).
+Hızlı başlangıç, [konuşma çevirisi](quickstart-translate-speech-java-jre.md) ve [ses ilk Sanal Yardımcısı](quickstart-virtual-assistant-java-jre.md)için de kullanılabilir.
 
-İsterseniz, farklı programlama dili ve/veya ortamı seçin:<br/>
+İsterseniz, farklı bir programlama dili ve/veya ortamı seçin:<br/>
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-Bu makalede, [Konuşma SDK'sı](speech-sdk.md) kullanarak bir Java konsol uygulaması oluşturacaksınız. Bilgisayarınızın mikrofonundan gerçek zamanda konuşmayı metne dönüştüreceksiniz. Konuşma SDK Maven paketini ve 64-bit Windows üzerinde Eclipse Java IDE (v4.8) ile oluşturulan uygulama 64-bit Linux (Ubuntu 16.04 18.04 Ubuntu, Debian 9), veya macOS 10.13 veya üzeri. 64 bit Java 8 çalışma zamanı ortamında (JRE) çalışır.
+Bu makalede, [Konuşma SDK'sı](speech-sdk.md) kullanarak bir Java konsol uygulaması oluşturacaksınız. Bilgisayarınızın mikrofonundan gerçek zamanda konuşmayı metne dönüştüreceksiniz. Uygulama, konuşma SDK Maven paketiyle oluşturulmuştur ve 64-bit Windows, 64-bit Linux (Ubuntu 16,04, Ubuntu 18,04, de, 9) veya macOS 10,13 veya sonraki sürümlerde tutulma Java IDE (v 4.8) ile oluşturulmuştur. 64 bit Java 8 çalışma zamanı ortamında (JRE) çalışır.
 
 > [!NOTE]
 > Konuşma Cihazları SDK’sı ve Roobo cihazı için bkz. [Konuşma Cihazları SDK’sı](speech-devices-sdk.md).
@@ -33,29 +33,29 @@ Bu makalede, [Konuşma SDK'sı](speech-sdk.md) kullanarak bir Java konsol uygula
 
 Bu hızlı başlangıç şunları gerektirir:
 
-* İşletim Sistemi: 64 bit Windows, 64-bit Linux (Ubuntu 16.04, 18.04 Ubuntu, Debian 9) veya macOS 10.13 veya üzeri
-* [Eclipse Java IDE](https://www.eclipse.org/downloads/)
+* İşletim Sistemi: 64-bit Windows, 64-bit Linux (Ubuntu 16,04, Ubuntu 18,04, detem 9) veya macOS 10,13 veya üzeri
+* [Tutulma Java IDE](https://www.eclipse.org/downloads/)
 * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) veya [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
-* Konuşma hizmeti için bir Azure aboneliği anahtarı. [Ücretsiz edinin](get-started.md).
+* Konuşma hizmeti için bir Azure abonelik anahtarı. [Ücretsiz bir tane alın](get-started.md).
 
-Linux çalıştırıyorsanız, Eclipse başlatmadan önce bu bağımlılıkların yüklü olduğundan emin olun.
+Linux çalıştırıyorsanız, tutulma 'yi başlatmadan önce bu bağımlılıkların yüklü olduğundan emin olun.
 
-* Ubuntu üzerinde:
+* Ubuntu 'da:
 
   ```sh
   sudo apt-get update
   sudo apt-get install libssl1.0.0 libasound2
   ```
 
-* Debian 9:
+* On yıl 9 ' da:
 
   ```sh
   sudo apt-get update
   sudo apt-get install libssl1.0.2 libasound2
   ```
 
-Windows (64-bit) çalıştırıyorsanız, Microsoft Visual yüklediğinizden emin olun C++ platformunuz için yeniden dağıtılabilir.
-* [Microsoft Visual indirme C++ Visual Studio 2019 için yeniden dağıtılabilir](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
+Windows (64-bit) çalıştırıyorsanız, platformunuz için Microsoft Visual C++ yeniden dağıtılabilir 'i yüklediğinizden emin olun.
+* [Visual Studio 2019 C++ Için Microsoft Visual yeniden dağıtılabilir 'i indirin](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
 
 ## <a name="create-and-configure-project"></a>Proje oluşturma ve yapılandırma
 
@@ -88,13 +88,13 @@ Mikrofonunuzdan yapılan sonraki 15 saniyelik konuşma girişi tanınır ve kons
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Konuşma bir ses dosyasından okuma gibi ek örnekler Github'da kullanılabilir.
+Ses dosyasından konuşmayı okuma gibi ek örnekler GitHub ' da bulunabilir.
 
 > [!div class="nextstepaction"]
-> [GitHub üzerinde Java örnekleri keşfedin](https://aka.ms/csspeech/samples)
+> [GitHub 'da Java örneklerini keşfet](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Hızlı Başlangıç: Java (Windows, Linux) konuşma Çevir](quickstart-translate-speech-java-jre.md)
+- [Hızlı Başlangıç: Konuşmayı çevirme, Java (Windows, Linux)](quickstart-translate-speech-java-jre.md)
 - [Akustik modelleri özelleştirme](how-to-customize-acoustic-models.md)
 - [Dil modellerini özelleştirme](how-to-customize-language-model.md)

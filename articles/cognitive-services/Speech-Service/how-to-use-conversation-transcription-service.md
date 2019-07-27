@@ -1,7 +1,7 @@
 ---
-title: Konuşmaların çok katılımcılı sohbet Speech SDK'sı - konuşma Hizmetleri
+title: Konuşma SDK 'Sı konuşma hizmeti ile çok katılımcının konuşmalar
 titleSuffix: Azure Cognitive Services
-description: Konuşma Transkripsiyonu Speech SDK'sı ile kullanmayı öğrenin. Kullanılabilir C++, C#ve Java.
+description: Konuşma ile konuşmayı, konuşma SDK 'sını kullanarak nasıl kullanacağınızı öğrenin. , C#Ve C++Java için kullanılabilir.
 services: cognitive-services
 author: jhakulin
 manager: nitinme
@@ -10,40 +10,40 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: jhakulin
-ms.openlocfilehash: 215209a5b8e3ed46b25fbfa492c305785a9a0070
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 8c4ecc017d058900297f2220173e064700e7051b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606474"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559458"
 ---
-# <a name="transcribe-multi-participant-conversations-with-the-speech-sdk"></a>Çok katılımcılı sohbet Speech SDK'sı özelliği
+# <a name="transcribe-multi-participant-conversations-with-the-speech-sdk"></a>Konuşma SDK 'Sı ile çok katılımcı konuşmaları
 
-Konuşma SDK'ın **ConversationTranscriber** API toplantıları/konuşmalar eklemek, kaldırmak ve konuşma Hizmetleri kullanarak ses akışı olarak katılımcıları tanımlama yeteneği özelliği sağlar `PullStream` veya `PushStream`.
+Konuşma SDK 'sının konuşma **API 'si** , veya `PullStream` `PushStream`kullanarak konuşma Hizmetleri için ses akışı yaparak katılımcıları ekleme, kaldırma ve tanımanıza olanak sağlayan toplantılar/konuşmalar sağlar.
 
 ## <a name="limitations"></a>Sınırlamalar
 
-* Konuşma uyarlayıcı için desteklenen C++, C#ve Windows, Linux ve Android üzerinde Java.
-* ROOBO DevKit yararlanılabilir döngüsel çok mikrofon dizisi Konuşmacı tanıma için verimli bir şekilde sağlayan olarak konuşma döküm oluşturma için desteklenen donanımlar ortamıdır. [Daha fazla bilgi için bkz: konuşma cihazları SDK](speech-devices-sdk.md).
-* Konuşma SDK desteği için konuşma tanıma ses çekme kullanın ve 16-bit 16 kHz PCM ses sekiz kanallar modu akışları göndermek için sınırlıdır.
-* Konuşma Transkripsiyonu şu anda aşağıdaki bölgelerde "en-US" ve "zh-CN" dillerde: centralus ve ping'in ekran.
+* Konuşma dökümü Windows, Linux ve Android C++'de C#,, ve Java için desteklenir.
+* ROOBO DevKit, konuşmacı kimliği için verimli bir şekilde kullanılabilecek dairesel çok mikrofonli bir dizi sağlayan konuşma dökümlerini oluşturmaya yönelik desteklenen donanım ortamıdır. [Daha fazla bilgi için bkz. konuşma CIHAZLARı SDK](speech-devices-sdk.md).
+* Konuşma dökümü için konuşma SDK 'Sı desteği, 16 bit 16 kHz PCM ses içeren sekiz kanallı ses çekme ve gönderme modu akışlarının kullanımıyla sınırlandırılmıştır.
+* Şu bölgelerde "en-US" ve "zh-CN" dillerinde konuşma dökümü şu anda kullanılabilir: merkezileştirme ve eastasıu.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* [Konuşmayı metne Speech SDK'sı ile kullanmayı öğrenin.](quickstart-csharp-dotnet-windows.md)
+* [Konuşma SDK 'Sı ile konuşmayı metne nasıl kullanacağınızı öğrenin.](quickstart-csharp-dotnet-windows.md)
 * [Konuşma deneme aboneliğinizi alın.](https://azure.microsoft.com/try/cognitive-services/)
-* Konuşma SDK'sı sürüm 1.5.1 veya üstü gereklidir.
+* Konuşma SDK sürümü 1.5.1 veya üzeri gereklidir.
 
-## <a name="create-voice-signatures-for-participants"></a>Katılımcıların ses imzalar oluşturma
+## <a name="create-voice-signatures-for-participants"></a>Katılımcılar için ses imzaları oluşturma
 
-İlk adım, konuşma katılımcılarını ses imzaları oluşturmaktır. Ses imzalarını oluşturmak, etkili Konuşmacı tanıma için gereklidir.
+İlk adım, konuşma katılımcıları için ses imzaları oluşturmaktır. Verimli konuşmacı tanımlaması için ses imzaları oluşturma gerekir.
 
-### <a name="requirements-for-input-wave-file"></a>Giriş ses dosyası için gereksinimler
+### <a name="requirements-for-input-wave-file"></a>Giriş dalga dosyası gereksinimleri
 
-* Ses imzalarını oluşturmak için giriş ses wave dosyasını 16-bit örnekleri, 16 kHz örnekleme hızı ve tek bir kanal (tekli) biçiminde olmalıdır.
-* Önerilen ses her örnek için iki dakika 30 saniye arasında uzunluğudur.
+* Ses imzaları oluşturmak için giriş sesi dalga dosyası 16 bit örneklerde, 16 kHz örnek hızında ve tek kanallı (mono) biçimde olmalıdır.
+* Her ses örneği için önerilen uzunluk 30 saniye ile iki dakika arasındadır.
 
-Ses imza oluşturmak için iki farklı şekilde aşağıdaki örnekte [REST API kullanarak](https://aka.ms/cts/signaturegenservice) gelen C#:
+Aşağıdaki örnek, [REST API kullanarak](https://aka.ms/cts/signaturegenservice) sesli imza oluşturmanın iki farklı yolunu göstermektedir C#:
 
 ```csharp
 class Program
@@ -85,11 +85,11 @@ class Program
 }
 ```
 
-## <a name="transcribing-conversations"></a>Fotoğrafını çekme konuşmaları
+## <a name="transcribing-conversations"></a>Bing konuşmaları
 
-Birden fazla katılımcıları ile görüşmeler konuşmaların için oluşturma `ConversationTranscriber` ile ilişkili nesne `AudioConfig` konuşma oturumu ve akış ses kullanmak için oluşturulan nesne `PullAudioInputStream` veya `PushAudioInputStream`.
+Birden çok katılımcı ile konuşmalar yapmak için `ConversationTranscriber` , veya `PushAudioInputStream`kullanarak `PullAudioInputStream` konuşma oturumu için oluşturulan `AudioConfig` nesneyle ilişkili nesne ve akış sesi oluşturun.
 
-Adlı bir ConversationTranscriber sınıf olduğunu varsayalım `MyConversationTranscriber`. Kodunuz şöyle görünebilir:
+Adında `MyConversationTranscriber`bir konuşma tiontranber sınıfınız olduğunu varsayalım. Kodunuz şöyle görünebilir:
 
 ```csharp
 using Microsoft.CognitiveServices.Speech;
@@ -191,4 +191,4 @@ public class MyConversationTranscriber
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Github'da örneklerimizi keşfedin](https://aka.ms/csspeech/samples)
+> [GitHub 'da örneklerimizi keşfet](https://aka.ms/csspeech/samples)

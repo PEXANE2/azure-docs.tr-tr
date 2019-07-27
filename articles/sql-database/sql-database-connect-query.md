@@ -10,16 +10,15 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: f1eac83f2b5460bf56ddff1bf15d9180adb49a48
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 63ed2c5c334aef8f6281ee34ec4ed6e47ca8521a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66382273"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569107"
 ---
-# <a name="quickstarts-azure-sql-database-connect-and-query"></a>Hızlı Başlangıçlar: Azure SQL veritabanı bağlanma ve sorgulama
+# <a name="quickstarts-azure-sql-database-connect-and-query"></a>Hızlı Başlangıçlar: Azure SQL Veritabanı bağlanma ve sorgulama
 
 Aşağıdaki tabloda, Azure SQL veritabanına nasıl bağlanılacağını ve Azure SQL veritabanının nasıl sorgulanacağını gösteren Azure örneklerinin bağlantıları yer almaktadır. Ayrıca Taşıma Düzeyi Güvenliği için bazı öneriler sunar.
 
@@ -39,7 +38,7 @@ Aşağıdaki tabloda, Azure SQL veritabanına nasıl bağlanılacağını ve Azu
 |[PHP](sql-database-connect-query-php.md)|Bu hızlı başlangıçta, PHP kullanarak Azure SQL veritabanına bağlanan ve Transact-SQL deyimleriyle veri sorgulayan bir program oluşturma işleminin nasıl yapılacağı açıklanır.|
 |[Python](sql-database-connect-query-python.md)|Bu hızlı başlangıçta Python kullanarak bir Azure SQL veritabanına bağlanma ve Transact-SQL deyimleriyle veri sorgulama işlemleri gösterilir. |
 |[Ruby](sql-database-connect-query-ruby.md)|Bu hızlı başlangıçta, Ruby kullanarak Azure SQL veritabanına bağlanan ve Transact-SQL deyimleriyle veri sorgulayan bir program oluşturma işleminin nasıl yapılacağı açıklanır.|
-|[R](sql-database-connect-query-r.md)|Bu hızlı başlangıçta R Azure SQL veritabanı Machine Learning Hizmetleri ile bir Azure SQL veritabanına bağlanan ve Transact-SQL deyimleriyle veri kullanmak için bir program oluşturma işleminin nasıl yapılacağı açıklanır.|
+|[R](sql-database-connect-query-r.md)|Bu hızlı başlangıçta, Azure SQL veritabanı 'na bağlanmak ve Transact-SQL deyimleriyle veri sorgulamak üzere bir program oluşturmak için Azure SQL Machine Learning Services veritabanı ile R 'nin nasıl kullanılacağı gösterilmektedir.|
 |||
 
 ## <a name="tls-considerations-for-sql-database-connectivity"></a>SQL Veritabanı bağlanabilirliği için TLS konuları
@@ -56,46 +55,46 @@ Microsoft olmayan sürücüler varsayılan olarak TLS’yi kullanmayabilir. Bu, 
 
 ## <a name="libraries"></a>Kitaplıklar
 
-Azure SQL veritabanı'na bağlanmak için çeşitli kitaplıkları ve çerçeveleri kullanabilirsiniz. Kullanıma sunduğumuz [alma Eğitmenleri](https://aka.ms/sqldev) C#, Java, Node.js, PHP ve Python gibi programlama ile hızlı bir şekilde kullanmaya başlamak için. MacOS üzerinde SQL Server Linux veya Windows veya Docker kullanarak ardından bir uygulama oluşturun.
+Azure SQL veritabanı 'na bağlanmak için çeşitli kitaplıkları ve çerçeveleri kullanabilirsiniz. Java, Node. js, PHP ve Python gibi programlama dillerini C#hızlıca kullanmaya başlamak için [Başlarken öğreticilerimize](https://aka.ms/sqldev) göz atın. Ardından, macOS üzerinde Linux üzerinde SQL Server veya Windows ya da Docker kullanarak bir uygulama oluşturun.
 
-Aşağıdaki tabloda bağlantı kitaplıkları listeler veya *sürücüleri* istemci uygulamalarını değişik bağlanmak ve şirket içinde çalışan SQL Server kullanmak için dilleri içinde veya bulutta kullanabilirsiniz. Linux, Windows veya Docker kullanın ve Azure SQL veritabanı ve Azure SQL veri ambarı bağlanmak için bunları kullanın. 
+Aşağıdaki tabloda, istemci uygulamalarının şirket içinde veya bulutta çalışan SQL Server bağlanmak ve kullanmak için çeşitli dillerden kullanabileceği bağlantı kitaplıkları veya *sürücüler* listelenmiştir. Bunları Linux, Windows veya Docker üzerinde kullanabilir ve Azure SQL veritabanı ve Azure SQL veri ambarı 'na bağlanmak için kullanabilirsiniz. 
 
 | Dil | Platform | Ek kaynaklar | İndirme | başlarken |
 | :-- | :-- | :-- | :-- | :-- |
 | C# | Windows, Linux, macOS | [SQL Server için Microsoft ADO.NET](https://docs.microsoft.com/sql/connect/ado-net/microsoft-ado-net-for-sql-server) | [İndir](https://www.microsoft.com/net/download/) | [Kullanmaya başlama](https://www.microsoft.com/sql-server/developer-get-started/csharp/ubuntu)
 | Java | Windows, Linux, macOS | [SQL Server için Microsoft JDBC sürücüsü](https://msdn.microsoft.com/library/mt484311.aspx) | [İndir](https://go.microsoft.com/fwlink/?linkid=852460) |  [Kullanmaya başlama](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu)
 | PHP | Windows, Linux, macOS| [SQL Server için PHP SQL sürücüsü](https://docs.microsoft.com/sql/connect/php/microsoft-php-driver-for-sql-server) | [İndir](https://docs.microsoft.com/sql/connect/php/download-drivers-php-sql-server) | [Kullanmaya başlama](https://www.microsoft.com/sql-server/developer-get-started/php/ubuntu/)
-| Node.js | Windows, Linux, macOS | [SQL Server için node.js sürücüsü](https://msdn.microsoft.com/library/mt652093.aspx) | [Yükleme](https://msdn.microsoft.com/library/mt652094.aspx) |  [Kullanmaya başlama](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu)
-| Python | Windows, Linux, macOS | [SQL Python sürücüsü](https://msdn.microsoft.com/library/mt652092.aspx) | Seçenekler'i yükleyin: <br/> \* [pymssql](https://msdn.microsoft.com/library/mt694094.aspx) <br/> \* [pyodbc](https://msdn.microsoft.com/library/mt763257.aspx) |  [Kullanmaya başlama](https://www.microsoft.com/sql-server/developer-get-started/python/ubuntu)
+| Node.js | Windows, Linux, macOS | [SQL Server için Node. js sürücüsü](https://msdn.microsoft.com/library/mt652093.aspx) | [Yükleme](https://msdn.microsoft.com/library/mt652094.aspx) |  [Kullanmaya başlama](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu)
+| Python | Windows, Linux, macOS | [Python SQL sürücüsü](https://msdn.microsoft.com/library/mt652092.aspx) | Seçenekleri yüklensin: <br/> \*[pymssql](https://msdn.microsoft.com/library/mt694094.aspx) <br/> \*[pyodbc](https://msdn.microsoft.com/library/mt763257.aspx) |  [Kullanmaya başlama](https://www.microsoft.com/sql-server/developer-get-started/python/ubuntu)
 | Ruby | Windows, Linux, macOS | [SQL Server için Ruby sürücüsü](https://msdn.microsoft.com/library/mt691981.aspx) | [Yükleme](https://msdn.microsoft.com/library/mt711041.aspx) | [Kullanmaya başlama](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu)
 | C++ | Windows, Linux, macOS | [SQL Server için Microsoft ODBC sürücüsü](https://msdn.microsoft.com/library/mt654048(v=sql.1).aspx) | [İndir](https://msdn.microsoft.com/library/mt654048(v=sql.1).aspx) |  
 
-Aşağıdaki tabloda, bulutta nesne ilişkisel eşleme (ORM) çerçeveleri ve istemci uygulamaları veya şirket içinde çalışan SQL Server ile kullanabileceğiniz web çerçeveleri örneklerini listeler. Linux, Windows veya Docker çerçeveleri kullanın ve SQL veritabanı ve SQL veri ambarına bağlanmak için bunları kullanın. 
+Aşağıdaki tabloda, istemci uygulamalarının şirket içinde veya bulutta çalışan SQL Server ile kullanabileceği nesne ilişkisel eşleme (ORM) çerçeveleri ve Web çerçeveleri örnekleri listelenmektedir. Linux, Windows veya Docker 'daki çerçeveleri kullanabilir ve bunları SQL veritabanı ve SQL veri ambarı 'na bağlanmak için kullanabilirsiniz. 
 
-| Dil | Platform | ORM(s) |
+| Dil | Platform | ORM (s) |
 | :-- | :-- | :-- |
 | C# | Windows, Linux, macOS | [Entity Framework](https://docs.microsoft.com/ef)<br>[Entity Framework Core](https://docs.microsoft.com/ef/core/index) |
-| Java | Windows, Linux, macOS |[ORM hazırda bekleme](https://hibernate.org/orm)|
-| PHP | Windows, Linux, macOS | [Laravel (Eloquent)](https://laravel.com/docs/eloquent)<br>[Doctrine](https://www.doctrine-project.org/projects/orm.html) |
-| Node.js | Windows, Linux, macOS | [ORM sequelize](https://docs.sequelizejs.com) |
+| Java | Windows, Linux, macOS |[Bu ORM hazırda beklet](https://hibernate.org/orm)|
+| PHP | Windows, Linux, macOS | [Laralevel (eloquent)](https://laravel.com/docs/eloquent)<br>[Doctrine](https://www.doctrine-project.org/projects/orm.html) |
+| Node.js | Windows, Linux, macOS | [Sequelize ORM](https://docs.sequelizejs.com) |
 | Python | Windows, Linux, macOS |[Django](https://www.djangoproject.com/) |
-| Ruby | Windows, Linux, macOS | [Ruby on Rails](https://rubyonrails.org/) |
+| Ruby | Windows, Linux, macOS | [Ruby on rayları](https://rubyonrails.org/) |
 ||||
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Bağlanabilirlik mimarisi bilgileri için bkz. [Azure SQL Veritabanı Bağlanabilirlik Mimarisi](sql-database-connectivity-architecture.md)
-- Bulma [SQL Server sürücüleri](https://msdn.microsoft.com/library/mt654049.aspx) istemci uygulamalarından bağlanmak için kullanılabilir
-- SQL veritabanı'na bağlanma:
+- İstemci uygulamalarından bağlanmak için kullanılan [SQL Server sürücülerini](https://msdn.microsoft.com/library/mt654049.aspx) bulma
+- SQL veritabanı 'na Bağlan:
   - [.NET (C#) kullanarak SQL Veritabanı’na bağlanma](sql-database-connect-query-dotnet.md) 
   - [PHP kullanarak SQL Veritabanı’na bağlanma](sql-database-connect-query-php.md) 
   - [Node.js kullanarak SQL Veritabanı’na bağlanma](sql-database-connect-query-nodejs.md) 
   - [Java kullanarak SQL Veritabanı’na bağlanma](sql-database-connect-query-java.md) 
   - [Python kullanarak SQL Veritabanı’na bağlanma](sql-database-connect-query-python.md)
   - [Ruby kullanarak SQL Veritabanı’na bağlanma](sql-database-connect-query-ruby.md)
-- Yeniden deneme mantığı kod örnekleri:
-  - [Dayanıklı ADO.NET ile SQL bağlantısı kurma][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
-  - [Dayanıklı PHP ile SQL bağlantısı kurma][step-4-connect-resiliently-to-sql-with-php-p42h]
+- Yeniden deneme mantığı kodu örnekleri:
+  - [Dayanıklı bağlantısı 'i ADO.NET ile SQL 'e bağlama][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
+  - [PHP ile dayanıklı bağlantısı 'i SQL 'e bağlama][step-4-connect-resiliently-to-sql-with-php-p42h]
 
 <!-- Link references. -->
 

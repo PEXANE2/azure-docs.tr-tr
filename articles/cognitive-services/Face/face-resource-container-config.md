@@ -1,6 +1,6 @@
 ---
-title: Kapsayıcıları yapılandırma
-titlesuffix: Face - Azure Cognitive Services
+title: Kapsayıcıları yapılandırma-yüz tanıma API 'SI
+titleSuffix: Azure Cognitive Services
 description: Kapsayıcılar için yapılandırma ayarları.
 services: cognitive-services
 author: IEvangelist
@@ -11,12 +11,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: dapine
-ms.openlocfilehash: c5044428b6f9c7c8fd343c93b06c1774eba8e17f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 6dd047b0ba7f9a123ffcc014cff5604466946d07
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68320497"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564110"
 ---
 # <a name="configure-face-docker-containers"></a>Yüz Docker kapsayıcılarını yapılandırma
 
@@ -124,7 +124,7 @@ Konak bağlama konumu söz dizimi konak işletim sistemine göre değişir. Ayr�
 
 |İsteğe Bağlı| Ad | Veri türü | Açıklama |
 |-------|------|-----------|-------------|
-|İzin verilmiyor| `Input` | Dize | Yüz kapsayıcıları bunu kullanmaz.|
+|İzin verilmedi| `Input` | Dize | Yüz kapsayıcıları bunu kullanmaz.|
 |İsteğe Bağlı| `Output` | Dize | Çıkış bağlama hedefi. Varsayılan değer `/output` şeklindedir. Bu günlükler konumdur. Bu, kapsayıcı günlüklerini içerir. <br><br>Örnek:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Örnek docker komutlarını çalıştırın 

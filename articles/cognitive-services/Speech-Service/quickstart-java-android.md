@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı Başlangıç: Java (Android) - konuşma Hizmetleri konuşma tanıma'
+title: 'Hızlı Başlangıç: Konuşmayı tanıma, Java (Android)-konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Speech SDK'sı kullanarak Android üzerinde Java Konuşma tanımayı öğrenmesine
+description: Konuşma SDK 'sını kullanarak Android 'te Java 'da konuşmayı tanımayı öğrenin
 services: cognitive-services
 author: fmegen
 manager: nitinme
@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: 22970eb58dc244405e522d46fcaa380151076062
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: c9b63685ae73fb4e056c72a640d6c4049e98b8b8
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603108"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559500"
 ---
-# <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>Hızlı Başlangıç: Speech SDK'sı kullanarak Android'de Java konuşma tanıma
+# <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>Hızlı Başlangıç: Konuşma SDK 'sını kullanarak Android 'de Java 'da konuşmayı tanıma
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-Bu makalede, Konuşmayı metne dönüştürme özelliği Android Bilişsel hizmetler konuşma SDK'sı kullanmaya yönelik bir Java uygulaması geliştirme öğreneceksiniz.
-Uygulama, konuşma SDK Maven paketini, sürüm 1.6.0 ve Android Studio 3.3 temel alır.
+Bu makalede, konuşmayı metne eklemek için bilişsel hizmetler konuşma SDK 'sını kullanarak Android için bir Java uygulaması geliştirmeyi öğreneceksiniz.
+Uygulama, konuşma SDK Maven paketini, sürüm 1.6.0 ve Android Studio 3,3 ' i temel alır.
 Konuşma SDK’sı şu anda 32/64 bit ARM işlemcilerine sahip Android cihazlarıyla ve Intel x86/x64 uyumlu işlemcilerle uyumludur.
 
 > [!NOTE]
@@ -30,7 +30,7 @@ Konuşma SDK’sı şu anda 32/64 bit ARM işlemcilerine sahip Android cihazlar�
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu hızlı başlangıcı tamamlamak için bir konuşma Hizmetleri abonelik anahtarı ihtiyacınız vardır. Anahtarı ücretsiz alabilirsiniz. Bkz: [konuşma Hizmetleri ücretsiz olarak deneyin](get-started.md) Ayrıntılar için.
+Bu hızlı başlangıcı tamamlayabilmeniz için bir konuşma Hizmetleri abonelik anahtarına ihtiyacınız vardır. Anahtarı ücretsiz alabilirsiniz. Ayrıntılar için bkz. [konuşma hizmetlerini ücretsiz deneyin](get-started.md) .
 
 ## <a name="create-and-configure-a-project"></a>Projeyi oluşturma ve yapılandırma
 
@@ -38,7 +38,7 @@ Bu hızlı başlangıcı tamamlamak için bir konuşma Hizmetleri abonelik anaht
 
 ## <a name="create-user-interface"></a>Kullanıcı arabirimi oluşturma
 
-Uygulama için temel bir kullanıcı arabirimi oluşturacağız. Ana etkinliğiniz `activity_main.xml` için düzende değişiklik yapın. Başlangıçta, bir başlık çubuğu, uygulamanızın adı ve "Hello World!" metni içeren bir TextView düzeni içerir.
+Uygulama için temel bir kullanıcı arabirimi oluşturacağız. Ana etkinliğiniz `activity_main.xml` için düzende değişiklik yapın. Başlangıçta, düzen uygulamanızın adıyla bir başlık çubuğu ve "Merhaba Dünya!" metnini içeren bir TextView içerir.
 
 * TextView öğesine tıklayın. Sağ üst köşedeki ID özniteliğini `hello` olarak değiştirin.
 
@@ -50,7 +50,7 @@ Uygulama için temel bir kullanıcı arabirimi oluşturacağız. Ana etkinliğin
 
   ![Sihirli değnek simgesinin ekran görüntüsü](media/sdk/qs-java-android-10-infer-layout-constraints.png)
 
-Metin ve grafik temsilini kullanıcı Arabirimi artık şöyle görünmelidir:
+UI 'nizin metin ve grafik gösterimi şu şekilde görünmelidir:
 
 ![](media/sdk/qs-java-android-11-gui.png)
 
@@ -82,14 +82,14 @@ Metin ve grafik temsilini kullanıcı Arabirimi artık şöyle görünmelidir:
 
    ![Dağıtım Hedefi Seç penceresinin ekran görüntüsü](media/sdk/qs-java-android-12-deploy.png)
 
-Konuşma tanıma bölümünü başlatmak için uygulamada düğmeye basın. İngilizce konuşma sonraki 15 saniye Konuşma hizmetlerine gönderilen ve transcribed. Sonuç, Android uygulamasında ve Android Studio'daki logcat penceresinde gösterilir.
+Konuşma tanıma bölümünü başlatmak için uygulamada düğmeye basın. Ingilizce konuşmayı izleyen 15 saniyelik konuşma, konuşma hizmetlerine gönderilir ve yeniden yapılır. Sonuç, Android uygulamasında ve Android Studio'daki logcat penceresinde gösterilir.
 
 ![Android uygulamasının ekran görüntüsü](media/sdk/qs-java-android-13-gui-on-device.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [GitHub üzerinde Java örnekleri keşfedin](https://aka.ms/csspeech/samples)
+> [GitHub 'da Java örneklerini keşfet](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

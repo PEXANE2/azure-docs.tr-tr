@@ -1,7 +1,7 @@
 ---
-title: "Hızlı Başlangıç: C#SDK'sı sorgu tahmin uç noktası"
+title: 'Hızlı Başlangıç: C#SDK sorgu tahmini uç noktası-LUSıS'
 titleSuffix: Azure Cognitive Services
-description: Kullanım C# SDK'sını bir kullanıcı utterance LUIS için gönderin ve bir tahmin alırsınız.
+description: Bir kullanıcıyı C# Luo 'ya göndermek ve tahmin almak için SDK 'yı kullanın.
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
@@ -10,18 +10,18 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: af20d555a83e8d229ed5d83d3b1d3f242de1e4a8
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: c0b534848232d60929722e2036f69f4b6e670a4a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275798"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563150"
 ---
-# <a name="quickstart-query-prediction-endpoint-with-c-net-sdk"></a>Hızlı Başlangıç: Sorgu tahmin noktayla C# .NET SDK'sı
+# <a name="quickstart-query-prediction-endpoint-with-c-net-sdk"></a>Hızlı Başlangıç: .NET SDK ile C# sorgu tahmin uç noktası
 
-.NET SDK'yı, bulunan [NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/), Language Understanding (LUIS) kullanıcı utterance gönderin ve kullanıcının engellemekse bir tahminini almak için. 
+Language Understanding (LUSıS) kullanıcısına bir Kullanıcı alıp göndermek ve kullanıcının amaç tahminini almak için [NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)üzerinde bulunan .NET SDK 'sını kullanın. 
 
-Bu hızlı başlangıçta bir kullanıcı utterance gibi gönderir `turn on the bedroom light`, ortak bir dil anlama uygulamaya tahmin sonra alır ve üst Puanlama amacıyla görüntüler `HomeAutomation.TurnOn` ve varlık `HomeAutomation.Room` utterance içinde bulunamadı. 
+Bu hızlı başlangıç, gibi bir Kullanıcı `turn on the bedroom light`, genel bir Language Understanding uygulamasına, daha sonra tahmini alır ve en iyi Puanlama amacını `HomeAutomation.TurnOn` ve varlık içinde bulunan varlığı `HomeAutomation.Room` görüntüler. 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -30,18 +30,18 @@ Bu hızlı başlangıçta bir kullanıcı utterance gibi gönderir `turn on the 
 * Genel uygulama kimliği: df67dcdb-c37d-46af-88e1-8b97951ca1c2
 
 > [!Note]
-> Eksiksiz bir çözüm kullanılabilir [bilişsel hizmetler-dil-anlama](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/sdk-quickstarts/c%23/UsePredictionRuntime) GitHub deposu.
+> Tam çözüm, bilişsel [Hizmetler-dil tarafından anlaşılmayan](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/sdk-quickstarts/c%23/UsePredictionRuntime) GitHub deposundan bulunabilir.
 
-Daha fazla belgelerini mi arıyorsunuz?
+Daha fazla belge mi arıyorsunuz?
 
  * [SDK başvuru belgeleri](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet)
 
 
-## <a name="get-cognitive-services-or-language-understanding-key"></a>Bilişsel hizmetler veya Language Understanding anahtarını alma
+## <a name="get-cognitive-services-or-language-understanding-key"></a>Bilişsel hizmetler veya Language Understanding anahtarı al
 
-Genel ev otomasyonu için kullanılabilmesi için uç nokta tahminler elde etmek için geçerli bir anahtar gerekir. Birçok bilişsel hizmetler için geçerli olan (aşağıdaki Azure CLI ile oluşturulan), ya da bir Bilişsel hizmetler anahtar kullanabilirsiniz veya `Language Understanding` anahtarı. 
+Ana otomasyon için ortak uygulamayı kullanmak üzere uç nokta tahminleri için geçerli bir anahtara ihtiyacınız vardır. Birçok bilişsel hizmet veya bir `Language Understanding` anahtar için geçerli olan bilişsel hizmetler anahtarını (Azure CLI ile oluşturulan) kullanabilirsiniz. 
 
-Aşağıdaki [bir Bilişsel hizmet anahtarı oluşturmak için Azure CLI komutunu](https://docs.microsoft.com/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-create):
+Bilişsel [hizmet anahtarı oluşturmak için aşağıdaki Azure CLI komutunu](https://docs.microsoft.com/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-create)kullanın:
 
 ```azurecli-interactive
 az cognitiveservices account create \
@@ -53,20 +53,20 @@ az cognitiveservices account create \
     --yes
 ```
 
-## <a name="create-net-core-project"></a>.NET Core projesi oluşturma
+## <a name="create-net-core-project"></a>.NET Core projesi oluştur
 
-Visual Studio Community 2017'de .NET Core konsol projesi oluşturun.
+Visual Studio Community 2017 ' de bir .NET Core konsol projesi oluşturun.
 
-1. Visual Studio Community 2017'yi açın.
-1. Yeni bir proje oluşturma **Visual C#**  bölümünde, seçin **konsol uygulaması (.NET Core)** .
-1. Proje adını girin `QueryPrediction`, kalan varsayılan değerleri değiştirmeyin ve seçin **Tamam**.
-    Bu adlı birincil kod dosyası ile basit bir proje oluşturur **Program.cs**.
+1. Visual Studio Community 2017 ' i açın.
+1. Yeni bir proje oluşturun, **görsel C#**  bölümünde **konsol uygulaması (.NET Core)** öğesini seçin.
+1. Proje adını `QueryPrediction`girin, kalan varsayılan değerleri bırakın ve **Tamam**' ı seçin.
+    Bu, **program.cs**adlı birincil kod dosyası ile basit bir proje oluşturur.
 
-## <a name="add-sdk-with-nuget"></a>SDK'sı NuGet ile ekleme
+## <a name="add-sdk-with-nuget"></a>NuGet ile SDK ekleme
 
-1. İçinde **Çözüm Gezgini**, adlı ağaç görünümü'nde projeyi seçin **QueryPrediction**, sonra sağ tıklayın. Menüden **NuGet paketlerini Yönet...** .
-1. Seçin **Gözat** enter `Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime`. Paket bilgileri görüntülediğinde, seçin **yükleme** projeye paketi yükleyin. 
-1. Aşağıdaki _kullanarak_ üst tarafına deyimlerini **Program.cs**. Varolan kaldırmayın _kullanarak_ bildirimi `System`. 
+1. **Çözüm Gezgini**, **Queryprediction**adlı ağaç görünümünde projeyi seçin ve sağ tıklayın. Menüden **NuGet Paketlerini Yönet...** seçeneğini belirleyin.
+1. **Görüntüle** ' yi seçin `Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime`ve ENTER tuşuna tıklayın. Paket bilgileri görüntülendiğinde, paketi projeye yüklemek için **yükler** ' i seçin. 
+1. Aşağıdaki _using_ deyimlerini **program.cs**üst kısmına ekleyin. Var olan _using_ ifadesini `System`kaldırmayın. 
 
 ```csharp
 using System.Threading;
@@ -75,20 +75,20 @@ using Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime;
 using Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime.Models;
 ```
 
-## <a name="create-a-new-method-for-the-prediction"></a>Tahmin için yeni bir yöntem oluşturma
+## <a name="create-a-new-method-for-the-prediction"></a>Tahmin için yeni bir yöntem oluşturun
 
-Yeni bir yöntem oluşturma `GetPrediction` sorgu tahmin uç noktaya sorgu göndermek için. Yöntemi oluşturun ve gerekli tüm nesneleri yapılandırın ardından iade bir `Task` ile [ `LuisResult` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime.models.luisresult?view=azure-dotnet) tahmin sonuçlarını. 
+Sorguyu sorgu tahmin uç noktasına `GetPrediction` göndermek için yeni bir yöntem oluşturun. Yöntemi tüm gerekli nesneleri oluşturur ve yapılandırır ve ardından `Task` [`LuisResult`](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime.models.luisresult?view=azure-dotnet) tahmin sonuçlarıyla bir döndürür. 
 
 ```csharp
 static async  Task<LuisResult> GetPrediction() {
 }
 ```
 
-## <a name="create-credentials-object"></a>Kimlik bilgileri nesnesi oluşturma
+## <a name="create-credentials-object"></a>Kimlik bilgileri nesnesi oluştur
 
-Aşağıdaki kodu ekleyin `GetPrediction` istemci kimlik bilgileri, Bilişsel hizmet anahtarı ile oluşturmak için yöntemi.
+Bilişsel hizmet anahtarınızla `GetPrediction` istemci kimlik bilgilerini oluşturmak için yöntemine aşağıdaki kodu ekleyin.
 
-Değiştirin `<REPLACE-WITH-YOUR-KEY>` Bilişsel hizmet anahtarının bölgeyle. Anahtar yer [Azure portalında](https://portal.azure.com) bu kaynak için anahtarlar sayfasında.
+Bilişsel hizmet anahtarınızın bölgesiyle değiştirin `<REPLACE-WITH-YOUR-KEY>` . Anahtar, bu kaynak için anahtarlar sayfasında [Azure Portal](https://portal.azure.com) .
 
 ```csharp
 // Use Language Understanding or Cognitive Services key
@@ -99,9 +99,9 @@ var credentials = new ApiKeyServiceClientCredentials(endpointPredictionkey);
 
 ## <a name="create-language-understanding-client"></a>Language Understanding istemcisi oluşturma
 
-İçinde `GetPrediction` yöntemi, önceki koddan sonra ekleyin oluşturma yeni kimlik bilgilerini kullanmak için aşağıdaki kodu bir [ `LUISRuntimeClient` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime.luisruntimeclient.-ctor?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Language_LUIS_Runtime_LUISRuntimeClient__ctor_Microsoft_Rest_ServiceClientCredentials_System_Net_Http_DelegatingHandler___) istemci nesnesi. 
+Yönteminde, yukarıdaki koddan sonra, yeni kimlik bilgilerini kullanmak için bir [`LUISRuntimeClient`](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime.luisruntimeclient.-ctor?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Language_LUIS_Runtime_LUISRuntimeClient__ctor_Microsoft_Rest_ServiceClientCredentials_System_Net_Http_DelegatingHandler___) istemci nesnesi oluşturmak üzere aşağıdaki kodu ekleyin. `GetPrediction` 
 
-Değiştirin `<REPLACE-WITH-YOUR-KEY-REGION>` , anahtarın bölgeyle gibi `westus`. İçindeki anahtar bölgedir [Azure portalında](https://portal.azure.com) bu kaynak için genel bakış sayfasında.
+Anahtar `<REPLACE-WITH-YOUR-KEY-REGION>` bölgesiyle değiştirin, `westus`örneğin. Bu kaynak için genel bakış sayfasında anahtar bölgesi [Azure Portal](https://portal.azure.com) .
 
 ```csharp
 // Create Luis client and set endpoint
@@ -112,7 +112,7 @@ luisClient.Endpoint = "https://<REPLACE-WITH-YOUR-KEY-REGION>.api.cognitive.micr
 
 ## <a name="set-query-parameters"></a>Sorgu parametrelerini ayarla
 
-İçinde `GetPrediction` yöntemi, önceki koddan sonra sorgu parametrelerini ayarlamak için aşağıdaki kodu ekleyin.
+`GetPrediction` Yönteminde, yukarıdaki koddan sonra sorgu parametrelerini ayarlamak için aşağıdaki kodu ekleyin.
 
 ```csharp
 // public Language Understanding Home Automation app
@@ -132,7 +132,7 @@ var log = false;
 
 ## <a name="query-prediction-endpoint"></a>Sorgu tahmin uç noktası
 
-İçinde `GetPrediction` yöntemi, önceki koddan sonra sorgu parametrelerini ayarlamak için aşağıdaki kodu ekleyin:
+`GetPrediction` Yönteminde, yukarıdaki koddan sonra sorgu parametrelerini ayarlamak için aşağıdaki kodu ekleyin:
 
 ```csharp
 // Create prediction client
@@ -144,7 +144,7 @@ return await prediction.ResolveAsync(appId, query, timezoneOffset, verbose, stag
 
 ## <a name="display-prediction-results"></a>Tahmin sonuçlarını görüntüleme
 
-Değişiklik **ana** yeni çağrılacak yöntem `GetPrediction` yöntemi ve dönüş tahmin sonuçları:
+Yeni`GetPrediction` yöntemi çağırmak ve tahmin sonuçlarını döndürmek için **Main** yöntemini değiştirin:
 
 ```csharp
 static void Main(string[] args)
@@ -171,7 +171,7 @@ static void Main(string[] args)
 
 ## <a name="run-the-project"></a>Projeyi çalıştırma
 
-Studio'da projeyi oluşturun ve projeyi görmek sorgunun çıkışı çalıştırın:
+Projeyi Studio 'da derleyin ve sorgu çıktısını görmek için projeyi çalıştırın:
 
 ```console
 Query:'turn on the bedroom light'
@@ -181,7 +181,7 @@ HomeAutomation.Room:'bedroom' begins at position 12 and ends at position 18
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi edinin [.NET SDK'sı](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/) ve [.NET başvuru belgeleri](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet). 
+[.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/) ve [.net başvuru belgeleri](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet)hakkında daha fazla bilgi edinin. 
 
 > [!div class="nextstepaction"] 
-> [Öğretici: Kullanıcı amaçları belirlemek için LUIS uygulaması oluşturma](luis-quickstart-intents-only.md) 
+> [Öğretici: Kullanıcı amaçları 'nı öğrenmek için LUSıS uygulaması oluşturun](luis-quickstart-intents-only.md) 

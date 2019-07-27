@@ -1,6 +1,6 @@
 ---
-title: Önceden oluşturulmuş sıralı varlık
-titleSuffix: Azure
+title: Sıralı önceden oluşturulmuş varlık-LUSıS
+titleSuffix: Azure Cognitive Services
 description: Bu makale, Language Understanding (LUIS) önceden oluşturulmuş sıralı varlık bilgileri içerir.
 services: cognitive-services
 author: diberry
@@ -11,22 +11,22 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: diberry
-ms.openlocfilehash: 16529c8334ae9f2eed5715abb22dcbcdbebec7c4
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 8070f614e84dd4c328d7451103c0850826704e60
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485121"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560205"
 ---
-# <a name="ordinal-prebuilt-entity-for-a-luis-app"></a>Bir LUIS uygulaması için önceden oluşturulmuş sıralı varlık
+# <a name="ordinal-prebuilt-entity-for-a-luis-app"></a>Bir LUSıS uygulaması için sıralı önceden oluşturulmuş varlık
 Sıra numarası olduğu bir nesne kümesi içinde sayısal bir gösterimi: `first`, `second`, `third`. Bu varlık zaten eğitildi çünkü uygulama hedefleri için sıralı içeren örnek Konuşma ekleme gerekmez. Sıralı varlık içerisinde desteklendiği [çok kültür](luis-reference-prebuilt-entities.md). 
 
 ## <a name="types-of-ordinal"></a>Sıra türü
-Sıra yönetilen [tanıyıcıları metin](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml#L45) GitHub deposu
+Sıra, [Tanıyıcılar-metin](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml#L45) GitHub deposundan yönetilir
 
 ## <a name="resolution-for-prebuilt-ordinal-entity"></a>Önceden oluşturulmuş sıralı varlık için çözümleme
 
-### <a name="api-version-2x"></a>API sürüm 2.x
+### <a name="api-version-2x"></a>API sürüm 2. x
 
 Aşağıdaki örnek, çözünürlüğünü gösterir **builtin.ordinal** varlık.
 
@@ -61,9 +61,9 @@ Aşağıdaki örnek, çözünürlüğünü gösterir **builtin.ordinal** varlık
 }
 ```
 
-### <a name="preview-api-version-3x"></a>Önizleme API sürümü 3.x
+### <a name="preview-api-version-3x"></a>Preview API sürüm 3. x
 
-Aşağıdaki JSON ile olan `verbose` parametresini `false`:
+Aşağıdaki JSON `verbose` parametresi olarak `false`ayarlanmıştır:
 
 ```json
 {
@@ -88,7 +88,7 @@ Aşağıdaki JSON ile olan `verbose` parametresini `false`:
 }
 ```
 
-Aşağıdaki JSON ile olan `verbose` parametresini `true`:
+Aşağıdaki JSON `verbose` parametresi olarak `true`ayarlanmıştır:
 
 ```json
 {
@@ -130,4 +130,4 @@ Aşağıdaki JSON ile olan `verbose` parametresini `true`:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Hakkında bilgi edinin [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md), [telefon numarası](luis-reference-prebuilt-phonenumber.md), ve [sıcaklık](luis-reference-prebuilt-temperature.md) varlıklar. 
+[OrdinalV2](luis-reference-prebuilt-ordinal-v2.md), [telefon numarası](luis-reference-prebuilt-phonenumber.md)ve [sıcaklık](luis-reference-prebuilt-temperature.md) varlıkları hakkında bilgi edinin. 

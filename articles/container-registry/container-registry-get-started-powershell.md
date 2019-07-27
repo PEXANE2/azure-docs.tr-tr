@@ -10,10 +10,10 @@ ms.date: 01/22/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
 ms.openlocfilehash: f99b4ee6dd11a109d1c563c84debc2157cb03337
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68309488"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>Hızlı Başlangıç: Azure PowerShell kullanarak özel kapsayıcı kayıt defteri oluşturma
@@ -26,7 +26,7 @@ Azure Container Registry, Docker kapsayıcı görüntülerini oluşturmak, depol
 
 Bu hızlı başlangıç Azure PowerShell modülünü gerektiriyor. Yüklü sürümünüzü belirlemek için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure PowerShell Modülü yükleme](/powershell/azure/install-az-ps).
 
-Ayrıca sisteminizde yerel olarak Docker yüklü olması gerekir. Docker, [MacOS][docker-mac], [Windows][docker-windows]ve [Linux][Docker-Linux] sistemleri için paketler sağlar.
+Ayrıca sisteminizde yerel olarak Docker yüklü olması gerekir. Docker, [MacOS][docker-mac], [Windows][docker-windows]ve [Linux][docker-linux] sistemleri için paketler sağlar.
 
 Azure Cloud Shell gerekli tüm Docker bileşenlerini (`dockerd` daemon) içermediğinden, bu hızlı başlangıçta Cloud Shell’i kullanamazsınız.
 
@@ -46,7 +46,7 @@ Azure ile kimlik doğrulaması yaptıktan sonra [New-AzResourceGroup][New-AzReso
 New-AzResourceGroup -Name myResourceGroup -Location EastUS
 ```
 
-## <a name="create-container-registry"></a>Kapsayıcı kayıt defteri oluşturma
+## <a name="create-container-registry"></a>Kapsayıcı kayıt defteri oluşturuluyor
 
 Ardından, yeni [-AzContainerRegistry][New-AzContainerRegistry] komutuyla yeni kaynak grubunuzda bir kapsayıcı kayıt defteri oluşturun.
 

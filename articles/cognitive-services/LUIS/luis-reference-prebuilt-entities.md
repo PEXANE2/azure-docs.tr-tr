@@ -1,5 +1,5 @@
 ---
-title: Tüm önceden oluşturulmuş varlıklar
+title: Önceden oluşturulmuş tüm varlıklar-LUSıS
 titleSuffix: Azure Cognitive Services
 description: Bu makale, Language Understanding (LUIS), dahil edilen önceden oluşturulmuş varlıklar listesi içerir.
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: diberry
-ms.openlocfilehash: 082ebaef9a2497899cf91c24435dea6e626f0041
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 9ce6d33f6f8be844877067163630e5a7909183f6
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485148"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563442"
 ---
-# <a name="entities-per-culture-in-your-luis-model"></a>Varlıkları aracılığıyla LUIS modelinize kültürün başına
+# <a name="entities-per-culture-in-your-luis-model"></a>LUSıS modelinizde kültür başına varlık
 
 Language Understanding (LUIS), önceden oluşturulmuş varlıklar sağlar. Uygulamanızda önceden oluşturulmuş bir varlık eklendiğinde LUIS uç nokta yanıtta ilgili varlık öngörü içerir. Tüm örnek konuşma de sahip bir varlık olarak etiketlenmiştir. Önceden oluşturulmuş varlıkların **olamaz** değiştirilemiyor. Önceden oluşturulmuş varlıklarla aksi belirtilmediği sürece tüm LUIS uygulaması yerel (kültür) kullanılabilir. Aşağıdaki tabloda her bir kültür için desteklenen önceden oluşturulmuş varlıklar gösterilmektedir.
 
@@ -34,7 +34,7 @@ Language Understanding (LUIS), önceden oluşturulmuş varlıklar sağlar. Uygul
 |Korece|[ko-KR](#korean-entity-support)||
 |Portekizce|[pt-BR (Brezilya)](#portuguese-brazil-entity-support)||
 |İspanyolca|[es-ES (İspanya)](#spanish-spain-entity-support), [es-MX (Meksika)](#spanish-mexico-entity-support)||
-|Türkçe|[Türkçe](#turkish-entity-support)|Türkçe'de desteklenen hiçbir önceden oluşturulmuş varlıklar|
+|Türkçe|[Türkçe](#turkish-entity-support)|Türkçe 'da önceden oluşturulmuş varlık desteklenmez|
 
 ## <a name="chinese-entity-support"></a>Çince varlık desteği
 
@@ -66,7 +66,7 @@ Aşağıdaki varlıkların desteklenir:
 ------|:------:|
 [Yaş](luis-reference-prebuilt-age.md):<br>yıl<br>ay<br>hafta<br>gün   |    ✔   |
 [Currency (para)](luis-reference-prebuilt-currency.md):<br>dolar<br>kesirli birimi (örn: kuruş)  |    ✔   |
-[tarih/saat](luis-reference-prebuilt-deprecated.md)   |    -   | 
+[Hem](luis-reference-prebuilt-deprecated.md)   |    -   | 
 [Boyut](luis-reference-prebuilt-dimension.md):<br>birim<br>Alan<br>ağırlığı<br>bilgi (örn: bit/bayt)<br>uzunluk (örn: ölçüm)<br>Hız (örn: mil saat başına)  |    ✔   | 
 [E-posta](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
@@ -176,7 +176,7 @@ Aşağıdaki varlıkların desteklenir:
 ------|:------:|
 [Yaş](luis-reference-prebuilt-age.md):<br>yıl<br>ay<br>hafta<br>gün   |    ✔   |
 [Currency (para)](luis-reference-prebuilt-currency.md):<br>dolar<br>kesirli birimi (örn: kuruş)  |    ✔   |
-[tarih/saat](luis-reference-prebuilt-deprecated.md)   |    -   | 
+[Hem](luis-reference-prebuilt-deprecated.md)   |    -   | 
 [Boyut](luis-reference-prebuilt-dimension.md):<br>birim<br>Alan<br>ağırlığı<br>bilgi (örn: bit/bayt)<br>uzunluk (örn: ölçüm)<br>Hız (örn: mil saat başına)  |    ✔   | 
 [E-posta](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
@@ -198,7 +198,7 @@ Aşağıdaki varlıkların desteklenir:
 ------|:------:|
 [Yaş](luis-reference-prebuilt-age.md):<br>yıl<br>ay<br>hafta<br>gün   |    ✔   |
 [Currency (para)](luis-reference-prebuilt-currency.md):<br>dolar<br>kesirli birimi (örn: kuruş)  |    ✔   |
-[tarih/saat](luis-reference-prebuilt-deprecated.md)   |    -   | 
+[Hem](luis-reference-prebuilt-deprecated.md)   |    -   | 
 [Boyut](luis-reference-prebuilt-dimension.md):<br>birim<br>Alan<br>ağırlığı<br>bilgi (örn: bit/bayt)<br>uzunluk (örn: ölçüm)<br>Hız (örn: mil saat başına)  |    ✔   | 
 [E-posta](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
@@ -220,7 +220,7 @@ Aşağıdaki varlıkların desteklenir:
 ------|:------:|
 [Yaş](luis-reference-prebuilt-age.md):<br>yıl<br>ay<br>hafta<br>gün   |    -   |
 [Currency (para)](luis-reference-prebuilt-currency.md):<br>dolar<br>kesirli birimi (örn: kuruş)  |    -   |
-[tarih/saat](luis-reference-prebuilt-deprecated.md)   |    -   | 
+[Hem](luis-reference-prebuilt-deprecated.md)   |    -   | 
 [Boyut](luis-reference-prebuilt-dimension.md):<br>birim<br>Alan<br>ağırlığı<br>bilgi (örn: bit/bayt)<br>uzunluk (örn: ölçüm)<br>Hız (örn: mil saat başına)  |    -   | 
 [E-posta](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
@@ -306,7 +306,7 @@ Anahtar cümlesi, Portekizce (Brezilya) - tüm subcultures içinde kullanılabil
 
 ## <a name="turkish-entity-support"></a>Türkçe varlık desteği
 
-**Türkçe'de desteklenen hiçbir önceden oluşturulmuş varlıklarla vardır.** 
+**Türkçe sürümünde desteklenen önceden oluşturulmuş varlık yok.** 
 
 <!--
 

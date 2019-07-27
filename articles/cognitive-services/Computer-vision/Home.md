@@ -1,6 +1,6 @@
 ---
 title: Görüntü İşleme API’si nedir? -Görüntü İşleme
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Görüntü İşleme hizmeti geliştiricilerin görüntü işlemeye ve bilgi döndürmeye yönelik gelişmiş algoritmalara erişmesini sağlar.
 services: cognitive-services
 author: PatrickFarley
@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 523c839ad274b8234a79a89ec45be9a9a4551bf5
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 4f823b62237e8018f092d7a94fb479f7fbdd38da
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68312040"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565769"
 ---
 # <a name="what-is-computer-vision"></a>Görüntü İşleme nedir?
 

@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı Başlangıç: uygulama oluşturma'
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 'Hızlı başlangıç: uygulama oluşturma-LUSıS'
+titleSuffix: Azure Cognitive Services
 description: Işıkları ve cihazları açıp kapatmak için önceden oluşturulmuş `HomeAutomation` etki alanını kullanan bir LUIS uygulaması oluşturun. Önceden oluşturulmuş olan bu etki alanı amaçlara, varlıklara ve örnek konuşmalara sahiptir. İşlemi tamamladığınızda bulut üzerinde çalışan bir LUIS uç noktasına sahip olacaksınız.
 services: cognitive-services
 author: diberry
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 6d3b4d23ae1ad04142b0dec01a1abccbd2f81942
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: e53f8d6e08b345d417ce54deacd658275cb1cd00
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150234"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563927"
 ---
-# <a name="quickstart-use-prebuilt-home-automation-app"></a>Hızlı Başlangıç: Önceden oluşturulmuş giriş Otomasyon uygulamasını kullanma
+# <a name="quickstart-use-prebuilt-home-automation-app"></a>Hızlı Başlangıç: Önceden oluşturulmuş giriş Otomasyonu uygulamasını kullanma
 
 Bu hızlı başlangıçta ışıkları ve cihazları açıp kapatmak için önceden oluşturulmuş `HomeAutomation` etki alanını kullanan bir LUIS uygulaması oluşturacaksınız. Önceden oluşturulmuş olan bu etki alanı amaçlara, varlıklara ve örnek konuşmalara sahiptir. İşlemi tamamladığınızda bulut üzerinde çalışan bir LUIS uç noktasına sahip olacaksınız.
 
@@ -58,7 +58,7 @@ Etki alanı başarıyla eklendiğinde önceden oluşturulmuş etki alanı kutusu
 
 HomeAutomation etki alanının amaçlarını incelemek için sol taraftaki gezinti bölmesinden **Amaçlar**'ı seçin. Her amaçta örnek konuşmalar bulunur.
 
-![Ekran görüntüsü, HomeAutomation hedefleri listesinde](media/luis-quickstart-new-app/home-automation-intents.png "ekran görüntüsü, HomeAutomation hedefleri listesinde")]
+![HomeAutomation amaçları listesinin ekran görüntüsü](media/luis-quickstart-new-app/home-automation-intents.png "HomeAutomation hedefleri listesinin ekran görüntüsü")]
 
 > [!NOTE]
 > **Hiçbiri**, tüm LUIS uygulamaları tarafından sağlanan bir amaçtır. Uygulamanızın sağladığı işlevleri karşılamayan konuşmaların işlenmesi için bunu seçersiniz. 

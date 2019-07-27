@@ -1,5 +1,5 @@
 ---
-title: Toplu test
+title: Batch test-LUSıS
 titleSuffix: Azure Cognitive Services
 description: Bu öğreticide, batch test utterance tahmin sorunları uygulamanızı bulun ve bunları düzeltmek için nasıl kullanılacağı gösterilmektedir.
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/29/2019
 ms.author: diberry
-ms.openlocfilehash: af04ca19961abcfc7ee218824a4a1a804f7ad79c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d6b3f864ded8b6f5ac0a1d839768801788d7d765
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65146150"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560120"
 ---
-# <a name="tutorial-batch-test-data-sets"></a>Öğretici: Toplu test veri kümesi
+# <a name="tutorial-batch-test-data-sets"></a>Öğretici: Batch test veri kümeleri
 
 Bu öğreticide, batch test utterance tahmin sorunları uygulamanızı bulun ve bunları düzeltmek için nasıl kullanılacağı gösterilmektedir.  
 
@@ -28,7 +28,7 @@ Toplu test etmek için gereksinimler:
 
 * En fazla test başına 1000 konuşma. 
 * Yinelenen değer yok. 
-* İzin verilen varlık türleri: Basit ve bileşik yalnızca Eve öğrenilen varlıklar. Toplu test yalnızca öğrenilen Eve amaç ve varlıkları için yararlı olur.
+* İzin verilen varlık türleri: yalnızca, basit ve kompozit 'ın öğrenildiği varlıkları. Toplu test yalnızca öğrenilen Eve amaç ve varlıkları için yararlı olur.
 
 Bu öğreticinin dışında bir uygulama kullanırken, yapmak *değil* zaten bir amaç için eklenen örnek konuşma kullanın. 
 
@@ -36,7 +36,7 @@ Bu öğreticinin dışında bir uygulama kullanırken, yapmak *değil* zaten bir
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Örnek uygulamayı içeri aktarma
+> * Örnek uygulamayı içeri aktar
 > * Toplu test dosyası oluşturma 
 > * Toplu test çalıştırma
 > * Test sonuçlarını gözden geçirme
@@ -45,7 +45,7 @@ Bu öğreticinin dışında bir uygulama kullanırken, yapmak *değil* zaten bir
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="import-example-app"></a>Örnek uygulamayı içeri aktarma
+## <a name="import-example-app"></a>Örnek uygulamayı içeri aktar
 
 Son öğreticide oluşturulan **HumanResources** adlı uygulamayla devam edin. 
 
@@ -95,7 +95,7 @@ Aşağıdaki adımları kullanın:
 
 ## <a name="review-batch-results"></a>Toplu iş sonuçlarını gözden geçirin
 
-Batch grafik dört quadrants sonuçlarını görüntüler. Grafiğin sağına bir filtredir. Varsayılan olarak, listedeki ilk amaca filtre ayarlanır. Filtre, tüm hedefleri ve yalnızca basit ve bileşik varlıklar içeriyor. Seçtiğinizde, bir [grafik bölümünü](luis-concept-batch-test.md#batch-test-results) veya bir nokta grafik içinde ilişkili utterance(s) grafiğin altına görüntüleyebilirsiniz. 
+Batch grafik dört quadrants sonuçlarını görüntüler. Grafiğin sağına bir filtredir. Varsayılan olarak, listedeki ilk amaca filtre ayarlanır. Filtre tüm hedefleri ve yalnızca basit ve bileşik varlıkları içerir. Seçtiğinizde, bir [grafik bölümünü](luis-concept-batch-test.md#batch-test-results) veya bir nokta grafik içinde ilişkili utterance(s) grafiğin altına görüntüleyebilirsiniz. 
 
 Grafik üzerine gelindiğinde, fare tekerleğini büyütebilir veya grafikte görüntülenecek azaltın. Bu, sıkı bir şekilde birlikte kümelenmiş grafik üzerinde çok sayıda noktası olduğunda yararlıdır. 
 
@@ -169,7 +169,7 @@ Toplu test konuşma doğru şekilde tahmin doğrulamak için batch testi yeniden
 
 ## <a name="create-batch-file-with-entities"></a>Toplu iş dosyası ile varlıkları oluşturun 
 
-Toplu test varlıklarda doğrulamak için varlıkları batch JSON dosyasında etiketlenmesi gerekir. Yalnızca makine öğrenilen varlıklar kullanılır: Basit ve Bileşik varlık. Makine öğrenilen varlıklar her zaman normal ifadeler üzerinden bulundukları veya açık metinle eşleşen eklemeyin.
+Toplu test varlıklarda doğrulamak için varlıkları batch JSON dosyasında etiketlenmesi gerekir. Yalnızca makine tarafından öğrenilen varlıklar kullanılır: basit ve bileşik varlıklar. Makine öğrenilen varlıklar her zaman normal ifadeler üzerinden bulundukları veya açık metinle eşleşen eklemeyin.
 
 Varlıklar için toplam word çeşitlemesi ([belirteci](luis-glossary.md#token)) sayısı, tahmin kalite etkileyebilir. Varlık uzunluklarının çeşitli amaca etiketli Konuşma ile sağlanan eğitim verilerini içerdiğinden emin olun. 
 
@@ -205,11 +205,11 @@ Değerini bir **iş** test konuşma içinde sağlanan varlıktır genellikle dah
 
 ## <a name="review-entity-batch-results"></a>Varlık toplu sonuçları gözden geçirin
 
-Grafik doğru şekilde tahmin edilen tüm hedefleri ile açılır. Hatalı varlık Öngörüler bulmak için sağ taraftaki filtre aşağı kaydırın. 
+Grafik doğru şekilde tahmin edilen tüm hedefleri ile açılır. Hata içeren varlık tahminlerini bulmak için sağ taraftaki filtrenin altına gidin. 
 
 1. Seçin **iş** filtredeki varlık.
 
-    ![Filtredeki hata varlık Öngörüler](./media/luis-tutorial-batch-testing/hr-entities-filter-errors.png)
+    ![Filtredeki hata varlığı tahminleri](./media/luis-tutorial-batch-testing/hr-entities-filter-errors.png)
 
     Varlık Öngörüler görüntülemek için grafik değişir. 
 

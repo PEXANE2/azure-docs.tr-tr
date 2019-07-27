@@ -1,7 +1,7 @@
 ---
-title: Hesapları ve anahtarları yönetme
-titleSuffix: Language Understanding - Azure Cognitive Services
-description: İki anahtar bilgi HLUIShesabı için kullanıcı hesabı ve geliştirme anahtar parçalarıdır. Oturum açma bilgileriniz account.microsoft.com yönetilir. Yazma anahtarınızı LUIS portal ayarları sayfasından yönetilir.
+title: Hesabı ve anahtarları yönetme-LUSıS
+titleSuffix: Azure Cognitive Services
+description: İki anahtar bilgi HLUIShesabı için kullanıcı hesabı ve geliştirme anahtar parçalarıdır. Oturum açma bilgileriniz account.microsoft.com adresinde yönetilir. Yazma anahtarınız, LUSıS portalı ayarları sayfasından yönetilir.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,20 +11,20 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: diberry
-ms.openlocfilehash: d5a1d7ee3b8b16631f7b919f3aece0848d662e62
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9164c94886488ac7dcadeb7894453daad5d8b322
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65523512"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560481"
 ---
 # <a name="manage-account-and-authoring-key"></a>Hesabı ve anahtarı yazma yönetme
 
-İki anahtar bilgi HLUIShesabı için kullanıcı hesabı ve geliştirme anahtar parçalarıdır. Oturum açma bilgilerini, yönetilen [account.microsoft.com](https://account.microsoft.com). Yazma anahtarınızı yönetilen engelle [LUIS](luis-reference-regions.md) portalı **ayarları** sayfası.
+İki anahtar bilgi HLUIShesabı için kullanıcı hesabı ve geliştirme anahtar parçalarıdır. Oturum açma bilgilerini, yönetilen [account.microsoft.com](https://account.microsoft.com). Yazma anahtarınız, [lusıs](luis-reference-regions.md) portalı **ayarları** sayfasından yönetilir.
 
 ## <a name="authoring-key"></a>Anahtar yazma
 
-Bu tek ve bölgeye özgü yazma üzerinde anahtar **ayarları** sayfasında, tüm uygulamalarınızdan yazmanızı sağlar [LUIS](luis-reference-regions.md) yanı portal [yazma API'leri](https://go.microsoft.com/fwlink/?linkid=2092087). Kolaylık, geliştirme anahtar yapmak için izin verilen bir [sınırlı](luis-boundaries.md) uç nokta sayısı, her ay sorgular.
+Bu tek bölgeye özgü yazma anahtarı, **Ayarlar** sayfasında, [LUIS](luis-reference-regions.md) portalından tüm uygulamalarınızı ve [yazma API 'lerini](https://go.microsoft.com/fwlink/?linkid=2092087)de yazmanıza izin verir. Kolaylık, geliştirme anahtar yapmak için izin verilen bir [sınırlı](luis-boundaries.md) uç nokta sayısı, her ay sorgular.
 
 [![LUIS Ayarları sayfası](./media/luis-how-to-account-settings/account-settings.png)](./media/luis-how-to-account-settings/account-settings.png#lightbox)
 
@@ -36,7 +36,7 @@ Yazma anahtar özeldir [yazma bölgesi](luis-reference-regions.md#publishing-reg
 
 ## <a name="reset-authoring-key"></a>Yazma anahtarını Sıfırla
 
-Yazma anahtarınız açığa çıktıysa, anahtar sıfırlayın. Anahtar, tüm uygulamalarınızda sıfırlamasına [LUIS](luis-reference-regions.md) portalı. Uygulamalarınızı geliştirme API'leri aracılığıyla Yazar değerini değiştirmek gerekirse `Ocp-Apim-Subscription-Key` yeni anahtarı.
+Yazma anahtarınız açığa çıktıysa, anahtar sıfırlayın. Anahtar, [LUA](luis-reference-regions.md) portalındaki tüm uygulamalarınızda sıfırlanır. Uygulamalarınızı geliştirme API'leri aracılığıyla Yazar değerini değiştirmek gerekirse `Ocp-Apim-Subscription-Key` yeni anahtarı.
 
 ## <a name="delete-account"></a>Hesabı sil
 

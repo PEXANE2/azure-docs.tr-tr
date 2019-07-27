@@ -1,7 +1,7 @@
 ---
-title: Stream codec Speech SDK'sı - konuşma Hizmetleri ile ilgili ses sıkıştırılmış
+title: Konuşma SDK-konuşma hizmeti ile sıkıştırılmış ses codec bileşeni
 titleSuffix: Azure Cognitive Services
-description: Sıkıştırılmış Speech SDK'sı ile Azure konuşma Hizmetleri ses akışı yapmayı öğrenin. C++ için kullanılabilir C#ve Java Linux için.
+description: Konuşma SDK 'Sı ile Azure konuşma Hizmetleri 'ne sıkıştırılmış ses akışını nasıl sağlayacağınızı öğrenin. Linux için C++, C#ve Java için kullanılabilir.
 services: cognitive-services
 author: amitkumarshukla
 manager: nitinme
@@ -10,39 +10,39 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: amishu
-ms.openlocfilehash: d23190dc8f7980cb8a94ba295f45ae67fc7d4678
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: b29b42dea9522526d49c1bda017a522855946def
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605085"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559553"
 ---
-# <a name="using-codec-compressed-audio-input-with-the-speech-sdk"></a>Codec bileşenini kullanarak sıkıştırılmış Speech SDK'sı ile ses girişi
+# <a name="using-codec-compressed-audio-input-with-the-speech-sdk"></a>Konuşma SDK 'Sı ile codec ile sıkıştırılmış ses girişi kullanma
 
-Konuşma SDK'ın **sıkıştırılmış ses giriş Stream** API PullStream veya PushStream kullanarak konuşma hizmeti için sıkıştırılmış bir ses akışı için bir yol sağlar.
+Konuşma SDK 'sının **sıkıştırılmış ses giriş akışı** API 'si, sıkıştırılmış ses ' i, pullstream veya PushStream kullanarak konuşma hizmetine akışa almanın bir yolunu sağlar.
 
 > [!IMPORTANT]
-> Sıkıştırılmış bir ses akışı yalnızca desteklenen için C++, C#ve Java Linux'ta (Ubuntu 16.04, 18.04 Ubuntu, Debian 9).
-> Konuşma SDK'sı sürüm 1.4.0 veya üzeri bir sürüm gereklidir.
+> Sıkıştırılmış ses, Linux üzerinde yalnızca, C++ C#ve Java (Ubuntu 16,04, Ubuntu 18,04, de, 9) için desteklenir.
+> Konuşma SDK sürümü 1.4.0 veya üzeri gereklidir.
 
-WAV/PCM için ana hat konuşma belgelerine bakın.  WAV/PCM dışında aşağıdaki sıkıştırılmış codec giriş biçimleri desteklenir:
+WAV/PCM için ana hat konuşma belgelerine bakın.  WAV/PCM dışında, aşağıdaki codec sıkıştırılmış giriş biçimleri desteklenir:
 
 - MP3
 - OPUS/OGG
 
-## <a name="prerequisites-to-using-codec-compressed-audio-input"></a>Codec kullanmanın önkoşulları sıkıştırılmış ses girişi
+## <a name="prerequisites-to-using-codec-compressed-audio-input"></a>Codec ile sıkıştırılmış ses girişini kullanma önkoşulları
 
-Sıkıştırılmış ses girişi için Linux Speech SDK'sı ile kullanmak için bu ek bağımlılıklar'ı yükleyin:
+Linux için konuşma SDK 'Sı ile sıkıştırılmış ses girişi kullanmak için bu ek bağımlılıkları yükler:
 
 ```sh
 sudo apt install libgstreamer1.0-0 gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly
 ```
 
-## <a name="example-code-using-codec-compressed-audio-input"></a>Örnek kod codec bileşenini kullanarak sıkıştırılmış ses girişi
+## <a name="example-code-using-codec-compressed-audio-input"></a>Codec ile sıkıştırılmış ses girişini kullanan örnek kod
 
-Bir konuşma Hizmetleri ses biçimde sıkıştırılmış akış için oluşturma `PullAudioInputStream` veya `PushAudioInputStream`. Ardından, oluşturun bir `AudioConfig` akış sıkıştırma biçimi, akış sınıfın bir örneğinden belirtme.
+Konuşma hizmetlerine sıkıştırılmış bir ses biçiminde akış yapmak için, veya `PullAudioInputStream` `PushAudioInputStream`oluşturun. Daha sonra akış sınıfınızın `AudioConfig` bir örneğinden oluşturun ve akışın sıkıştırma biçimini belirtin.
 
-Adlı bir giriş akışı sınıf olduğunu varsayalım `myPushStream` ve geçerli/OGG kullanma. Kodunuz şöyle görünebilir:
+Adlandırılmış `myPushStream` bir giriş akışı sınıfınız olduğunu ve Opus/OGG kullandığınızı varsayalım. Kodunuz şöyle görünebilir:
 
 ```csharp
 using Microsoft.CognitiveServices.Speech;

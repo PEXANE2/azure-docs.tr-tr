@@ -1,5 +1,5 @@
 ---
-title: "Azure portalı: Sorgu Düzenleyicisi'ni kullanarak Azure SQL veritabanı sorgulama | Microsoft Docs"
+title: "Azure portal: Sorgu düzenleyicisini kullanarak Azure SQL veritabanı 'nı sorgulama | Microsoft Docs"
 description: SQL Sorgu Düzenleyicisi'ni kullanarak Azure portalında SQL Veritabanına bağlanmayı öğrenin. Ardından, verileri sorgulamak ve düzenlemek için Transact-SQL (T-SQL) deyimleri çalıştırın.
 keywords: sql veritabanına bağlanma,azure portalı, portal, sorgu düzenleyicisi
 services: sql-database
@@ -11,35 +11,34 @@ ms.topic: quickstart
 author: Ninarn
 ms.author: ninarn
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 06/28/2019
-ms.openlocfilehash: 52041ba3c057e871b60f283f293dd79a18f3b21e
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 3702c88d0a5cdc7aa1f854f71e3aee8a42d9c22c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508765"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569177"
 ---
-# <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>Hızlı Başlangıç: Bağlanmak ve veri sorgulamak için Azure portalında SQL sorgu Düzenleyicisi'ni kullanın
+# <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>Hızlı Başlangıç: Verilere bağlanmak ve verileri sorgulamak için Azure portal SQL sorgu düzenleyicisini kullanın
 
-SQL sorgu Düzenleyicisi, Azure SQL veritabanı veya Azure SQL veri ambarı üzerinde SQL sorguları yürütmek için kolay bir yol sağlayarak, Azure portal tarayıcı bir araçtır. Bu hızlı başlangıçta, bir SQL veritabanına bağlanan ve ardından sorgulama, ekleme, güncelleştirme için Transact-SQL deyimleri çalıştırın ve verileri silmek için sorgu Düzenleyicisi'ni kullanacaksınız.
+SQL sorgu Düzenleyicisi, Azure SQL veritabanı veya Azure SQL veri ambarı üzerinde SQL sorguları yürütmek için kolay bir yol sağlayarak, Azure portal tarayıcı bir araçtır. Bu hızlı başlangıçta, sorgu düzenleyicisini kullanarak bir SQL veritabanına bağlanın ve ardından Transact-SQL deyimlerini çalıştırarak verileri sorgulama, ekleme, güncelleştirme ve silme.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
-- Bir Azure SQL veritabanı. Şu hızlı başlangıçlardan biriyle oluşturmak ve ardından bir veritabanını Azure SQL veritabanı'nda yapılandırmak için kullanabilirsiniz:
+- Bir Azure SQL veritabanı. Azure SQL veritabanı 'nda bir veritabanı oluşturmak ve yapılandırmak için bu hızlı başlangıçlardan birini kullanabilirsiniz:
 
   || Tek veritabanı |
   |:--- |:--- |
   | Create| [Portal](sql-database-single-database-get-started.md) |
   || [CLI](scripts/sql-database-create-and-configure-database-cli.md) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) |
-  | Yapılandırma | [sunucu düzeyinde IP güvenlik duvarı kuralı](sql-database-server-level-firewall-rule.md)|
+  | Yapılandırma | [Sunucu düzeyi IP güvenlik duvarı kuralı](sql-database-server-level-firewall-rule.md)|
   |||
 
 > [!NOTE]
-> Sorgu Düzenleyicisi, bağlantı noktası 443 ve 1443 iletişim kurmak için kullanır.  Bu bağlantı noktalarında giden HTTPS trafiğini etkin olun. Giden IP adresiniz veritabanlarınıza ve veri ambarlarınıza erişmesini server'ın izin verilen güvenlik duvarı kuralları eklemeniz gerekir.
+> Sorgu Düzenleyicisi, iletişim kurmak için 443 ve 1443 bağlantı noktalarını kullanır.  Lütfen bu bağlantı noktalarında giden HTTPS trafiğini etkinleştirmiş olduğunuzdan emin olun. Ayrıca, veritabanlarına ve veri ambarlarınıza erişmek için giden IP adresinizi sunucunun izin verilen güvenlik duvarı kurallarına eklemeniz gerekir.
 
 ## <a name="sign-in-the-azure-portal"></a>Azure portalında oturum açın
 
@@ -70,7 +69,7 @@ Bir Active Directory (AD) yöneticisinin yapılandırılması, Azure portalı ve
 
 1. Seçin **tüm kaynakları** sol taraftaki menüden ve ardından SQL server'ınızı seçin.
 
-2. SQL server'ın gelen **ayarları** menüsünde **Active Directory Yöneticisi**.
+2. SQL Server 'ın **Ayarlar** menüsünden **yönetici Active Directory**' yi seçin.
 
 3. AD Yönetim sayfası araç çubuğundan seçin **yönetici Ayarla** ve kullanıcı veya grup, AD Yöneticisi olarak seçin
 
@@ -78,7 +77,7 @@ Bir Active Directory (AD) yöneticisinin yapılandırılması, Azure portalı ve
 
 4. AD Yönetim sayfası araç çubuğundan seçin **Kaydet**.
 
-5. Gidin **mySampleDatabase** veritabanı ve sol taraftaki menüden **sorgu Düzenleyicisi (Önizleme)** . **Oturum açma** sayfası görüntülenir. Bir AD, daha sonra sağ tarafta altında yöneticisiyseniz **Active Directory çoklu oturum açma**, açtığınızdan bildiren bir ileti görüntülenir.
+5. Gidin **mySampleDatabase** veritabanı ve sol taraftaki menüden **sorgu Düzenleyicisi (Önizleme)** . **Oturum açma** sayfası görüntülenir. Bir AD yöneticisiyseniz, sağ taraftaki **Active Directory çoklu oturum açma**altında oturum açmış olduğunuzu bildiren bir ileti görüntülenir.
 
 6. **Tamam**’ı seçin.
 
@@ -100,7 +99,7 @@ Bir Active Directory (AD) yöneticisinin yapılandırılması, Azure portalı ve
 
 ## <a name="insert-data"></a>Veri ekleme
 
-Aşağıdaki komutu çalıştırın [Ekle](https://msdn.microsoft.com/library/ms174335.aspx) yeni bir ürün eklemek için Transact-SQL deyimini `SalesLT.Product` tablo.
+`SalesLT.Product` Tabloya yeni bir ürün eklemek için aşağıdaki [Insert](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL ifadesini çalıştırın.
 
 1. Önceki sorguyu Bununla değiştirin.
 
@@ -125,12 +124,12 @@ Aşağıdaki komutu çalıştırın [Ekle](https://msdn.microsoft.com/library/ms
    ```
 
 
-2. Seçin **çalıştırma** yeni bir satır eklemek için `Product` tablo. **İletileri** bölmesini görüntüler **sorgu başarılı oldu: Etkilenen Satırlar: 1**.
+2. `Product` Tabloya yeni bir satır eklemek için **Çalıştır** ' ı seçin. **İletiler** bölmesi sorgu başarılı **iletisini görüntülüyor: Etkilenen satırlar: 1**.
 
 
 ## <a name="update-data"></a>Verileri güncelleştirme
 
-Aşağıdaki komutu çalıştırın [güncelleştirme](https://msdn.microsoft.com/library/ms177523.aspx) yeni ürün değiştirmek için Transact-SQL deyimi.
+Yeni ürününüzü değiştirmek için aşağıdaki [Update](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL ifadesini çalıştırın.
 
 1. Önceki sorguyu Bununla değiştirin.
 
@@ -140,11 +139,11 @@ Aşağıdaki komutu çalıştırın [güncelleştirme](https://msdn.microsoft.co
    WHERE Name = 'myNewProduct';
    ```
 
-2. Seçin **çalıştırma** belirtilen satırı güncelleştirmek için `Product` tablo. **İletileri** bölmesini görüntüler **sorgu başarılı oldu: Etkilenen Satırlar: 1**.
+2. `Product` Tablodaki belirtilen satırı güncelleştirmek için **Çalıştır** ' ı seçin. **İletiler** bölmesi sorgu başarılı **iletisini görüntülüyor: Etkilenen satırlar: 1**.
 
 ## <a name="delete-data"></a>Verileri silme
 
-Aşağıdaki komutu çalıştırın [Sil](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL deyimini kullanarak yeni ürünü kaldırmak için.
+Yeni ürününüzü kaldırmak için aşağıdaki [Delete](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL ifadesini çalıştırın.
 
 1. Önceki sorguyu Bununla değiştirin:
 
@@ -153,18 +152,18 @@ Aşağıdaki komutu çalıştırın [Sil](https://msdn.microsoft.com/library/ms1
    WHERE Name = 'myNewProduct';
    ```
 
-2. Seçin **çalıştırma** belirtilen satırı silmek için `Product` tablo. **İletileri** bölmesini görüntüler **sorgu başarılı oldu: Etkilenen Satırlar: 1**.
+2. `Product` Tablodaki belirtilen satırı silmek için **Çalıştır** ' ı seçin. **İletiler** bölmesi sorgu başarılı **iletisini görüntülüyor: Etkilenen satırlar: 1**.
 
 
 ## <a name="query-editor-considerations"></a>Sorgu Düzenleyicisi konuları
 
 Sorgu Düzenleyicisi ile çalışırken bilmeniz gereken birkaç nokta vardır.
 
-* Sorgu Düzenleyicisi, bağlantı noktası 443 ve 1443 iletişim kurmak için kullanır.  Bu bağlantı noktalarında giden HTTPS trafiğini etkin olun. Giden IP adresiniz veritabanlarınıza ve veri ambarlarınıza erişmesini server'ın izin verilen güvenlik duvarı kuralları eklemeniz gerekir.
+* Sorgu Düzenleyicisi, iletişim kurmak için 443 ve 1443 bağlantı noktalarını kullanır.  Lütfen bu bağlantı noktalarında giden HTTPS trafiğini etkinleştirmiş olduğunuzdan emin olun. Ayrıca, veritabanlarına ve veri ambarlarınıza erişmek için giden IP adresinizi sunucunun izin verilen güvenlik duvarı kurallarına eklemeniz gerekir.
 
 * F5 tuşuna basarak sorgu Düzenleyicisi sayfası yenilenir ve üzerinde çalışılmakta olan herhangi bir sorgu kaybolur.
 
-* Sorgu Düzenleyicisi, bağlanmayı desteklemez `master` veritabanı.
+* Sorgu Düzenleyicisi, `master` veritabanına bağlanmayı desteklemiyor.
 
 * Sorgu yürütme için 5 dakikalık zaman aşımı yoktur.
 

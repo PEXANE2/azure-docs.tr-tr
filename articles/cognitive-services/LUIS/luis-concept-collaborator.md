@@ -1,6 +1,6 @@
 ---
-title: İş Birliği
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: İşbirliği-LUSıS
+titleSuffix: Azure Cognitive Services
 description: LUIS uygulamaları tek bir sahip ve tek bir uygulama yazmak birden çok kişinin sağlayan isteğe bağlı çalışanlar gerektirir.
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: diberry
-ms.openlocfilehash: 294905ccfd0ce8db6da8737277b0ce978ba837ea
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e53ba9f24e40837a823e6012340358113d490f46
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66473521"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560788"
 ---
 # <a name="collaborating-with-other-authors"></a>Diğer yazarların ile işbirliği yapma
 
@@ -31,7 +31,7 @@ Bkz: [Azure Active Directory Kiracı Kullanıcı](luis-how-to-collaborate.md#azu
 
 ## <a name="luis-app-owner"></a>LUIS uygulama sahibi
 
-Bir uygulamayı oluşturan hesabı sahibi ve her uygulamanın tek bir sahip vardır. Uygulama sahibi listelenen **[ayarları](luis-how-to-collaborate.md)** sayfası. Uç nokta kota aylık sınırı %75 ulaştığında sahibi e-posta alır. 
+Bir uygulamayı oluşturan hesap, sahip ve her uygulamanın tek bir sahibi vardır. Sahip, uygulama **[ayarları](luis-how-to-collaborate.md)** sayfasında listelenir. Uç nokta kotası aylık sınırın% 75 ' una ulaştığında sahip e-postayı alır. 
 
 ## <a name="authorization-roles"></a>Yetkilendirme rolleri
 LUIS, sahipleri ve bir özel durum ortak çalışanlarla için farklı roller desteklemiyor. Sahibi uygulama silebilirsiniz tek hesaptır.
@@ -52,7 +52,7 @@ Birden fazla uygulama ortak çalışanlarla paylaşmak istiyorsanız, her uygula
 ## <a name="manage-multiple-versions-inside-the-same-app"></a>Aynı uygulama içinde birden çok sürümlerini yönetme
 Başlayın [kopyalama](luis-how-to-manage-versions.md#clone-a-version), her yazar için bir temel sürüm. 
 
-Her geliştirici kendi uygulama sürümüne değişiklik yapar. Her geliştirici modeliyle memnun olduğunda, yeni sürümleri JSON dosyasına dışarı aktarın.  
+Her yazar uygulamanın kendi sürümünde değişiklik yapar. Her geliştirici modeliyle memnun olduğunda, yeni sürümleri JSON dosyasına dışarı aktarın.  
 
 Değişiklikler için karşılaştırılabilir JSON biçimli dosyaları dışarı aktarılan uygulamalardır. Yeni sürümü tek bir JSON dosyası oluşturmak için dosyaları birleştirin. Değişiklik **VersionID** yeni birleştirilmiş sürüm belirtmek için JSON özelliği. Bu sürüm, özgün uygulamaya aktarma. 
 
@@ -65,7 +65,7 @@ Değişiklikler için temel dışarı aktarma ile karşılaştırılabilir JSON 
 
 ## <a name="collaborator-roles-vs-entity-roles"></a>Ortak çalışan rolleri vs varlık rolleri
 
-[Varlık rolleri](luis-concept-roles.md) LUIS uygulaması veri modeli için geçerlidir. Ortak çalışan rolleri yazma erişimi düzeyleri için geçerlidir. 
+[Varlık rolleri](luis-concept-roles.md) , lusıs uygulamasının veri modeli için geçerlidir. Ortak çalışan rolleri, yazma erişimi düzeyleri için geçerlidir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

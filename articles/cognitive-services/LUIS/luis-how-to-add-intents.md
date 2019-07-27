@@ -1,6 +1,6 @@
 ---
-title: Hedef ekleme
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Amaç Ekle-LUSıS
+titleSuffix: Azure Cognitive Services
 description: Intents sorularınız ya da aynı amaçları olan komutları gruplarını tanımlamak için LUIS uygulamanızı ekleyin.
 services: cognitive-services
 author: diberry
@@ -11,14 +11,14 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: 0c42ab44ba317888b982ba7c72f78be4ca73d93c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 639079a43e75741d78496939f90324b076b164d5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65148161"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563701"
 ---
-# <a name="add-intents-to-determine-user-intention-of-utterances"></a>Konuşma kullanıcı amacınıza belirlemek için hedef ekleme
+# <a name="add-intents-to-determine-user-intention-of-utterances"></a>Kullanıcı amaçlarını belirleme amacını ekleyin
 
 Ekleme [hedefleri](luis-concept-intent.md) LUIS uygulamanızı sorularınız ya da bağdaştırıcılar aynı amaca sahip komutları gruplarını tanımlamak için. 
 
@@ -44,29 +44,29 @@ Hedefleri, üst gezinti çubuğundan 's yönetilir **derleme** bölümünden, ar
 
 <a name="#intent-prediction-discrepancy-errors"></a>
 
-## <a name="intent-prediction-errors"></a>Hedefi tahmin hataları 
+## <a name="intent-prediction-errors"></a>Amaç tahmin hataları 
 
-Bir örnek utterance bir amacı, hedefi tahmin hata yer şu anda örnek utterance amaç ve eğitim sırasında belirlenen tahmin hedefi arasında olabilir. 
+Bir amaca göre örnek, bu örnekte yer aldığı amaç ve eğitim sırasında belirlenen tahmini amaç arasında bir amaç tahmin hatası olabilir. 
 
-Utterance tahmin hataları bulmak ve bunları düzeltmek için kullanın **filtre** seçeneğin **değerlendirme** yanlış ve Unclear seçenekleri Sunucusu'yla birlikte **görünümü** seçeneği**Ayrıntılı görünümü**. 
+Söylenişi tahmin hatalarını bulmak ve bunları onarmak için, **filtre** seçeneğinin **değerlendirme** seçeneklerini yanlış ve **ayrıntılı görünümün** **Görünüm** seçeneğiyle birlikte belirsiz şekilde kullanın. 
 
-![Utterance tahmin hataları bulmak ve bunları düzeltmek için filtre seçeneğini kullanın.](./media/luis-how-to-add-intents/find-intent-prediction-errors.png)
+![Söylenişi tahmin hatalarını bulmak ve bunları onarmak için filtre seçeneğini kullanın.](./media/luis-how-to-add-intents/find-intent-prediction-errors.png)
 
-Filtreler ve görünüm uygulanır ve örnek konuşma hatalarla olduğunda, örnek utterance liste konuşma ve sorunları gösterir.
+Filtreler ve görünüm uygulandığında ve hatalar ile ilgili örnek bir sorun oluşursa, örnek bir liste, söz konusu konuları ve sorunları gösterir.
 
-![! [Filtreler ve görünüm uygulanır ve örnek konuşma hatalarla olduğunda, örnek utterance liste konuşma ve sorunları gösterir.] (. / media/luis-how-to-add-intents/find-errors-in-utterances.png)](./media/luis-how-to-add-intents/find-errors-in-utterances.png#lightbox)
+![! [Filtreler ve görünüm uygulandığında ve hatalar ile ilgili örnekler varsa, örnek utterler listesi, bu noktalar ve sorunları gösterir.] (./Media/Luis-How-to-add-BITS/Find-Errors-ın-utterances.exe)](./media/luis-how-to-add-intents/find-errors-in-utterances.png#lightbox)
 
-Her satır için bu iki puanları farkı olan en yakın müsabık'ın puanı örnek utterance geçerli eğitim 's tahmin puanı gösterir. 
+Her satır, bu iki puandaki fark olan en yakın Rival 'in puanı olan utterance için geçerli eğitimin tahmin Puanını gösterir. 
 
-### <a name="fixing-intents"></a>Intents düzeltme
+### <a name="fixing-intents"></a>Amaçlar düzeltiliyor
 
-Hedefi tahmin hataların nasıl düzeltileceğini öğrenmek için kullanın [Özet Panosu](luis-how-to-use-dashboard.md). Özet panosu için etkin sürüme ait son eğitim analizini sağlar ve modelinizi düzeltmek için en çok istenen önerilerden sunar.  
+Amaç tahmin hatalarını nasıl düzelteceğinizi öğrenmek için [Özet panosunu](luis-how-to-use-dashboard.md)kullanın. Özet Panosu, etkin sürümün son eğitimi için analiz sağlar ve modelinizi gidermeye yönelik en önemli önerileri sunar.  
 
 ## <a name="add-a-custom-entity"></a>Özel bir varlık ekleme
 
 Bir amaç için bir utterance eklendikten sonra bir özel varlık oluşturma utterance metni seçebilirsiniz. Özel bir varlık ayıklama, doğru amaç birlikte etiket metni bir yoludur. 
 
-Bkz: [varlık eklemek için utterance](luis-how-to-add-example-utterances.md) daha fazla bilgi için.
+Daha fazla bilgi için bkz. [naterance 'e varlık ekleme](luis-how-to-add-example-utterances.md) .
 
 ## <a name="entity-prediction-discrepancy-errors"></a>Varlık tahmin tutarsızlık hataları 
 
@@ -82,7 +82,7 @@ Bilgi için [önceden oluşturulmuş varlık](luis-how-to-add-entities.md#add-a-
 
 ## <a name="using-the-contextual-toolbar"></a>Bağlamsal araç çubuğunu kullanma
 
-Bir veya daha fazla örnek konuşma sol tarafındaki bir utterance kutuyu işaretleyerek listesinde seçili olduğunda utterance listenin üstündeki araç aşağıdaki eylemleri gerçekleştirmenizi sağlar:
+Listede bir veya daha fazla örnek utde seçildiğinde, söylenişi 'in solundaki kutuyu işaretleyerek, söylenişi listesinin üzerindeki araç çubuğu aşağıdaki eylemleri gerçekleştirmenize olanak tanır:
 
 * Yeniden atama hedefi: farklı eylemlerinize utterance(s) Taşı
 * Utterance(s) Sil
@@ -97,7 +97,7 @@ Aşağıdaki eylemleri utterance sağındaki üç nokta menüsünden bir bireyse
 
 * Düzen: utterance metnini değiştirme
 * Sil: utterance amacından kaldırın. Utterance hala istiyorsanız taşımak için daha iyi bir yöntem olan **hiçbiri** hedefi. 
-* Bir desen Ekle: Bir desen, bir ortak utterance alıp değiştirilebilir metin ve böylece daha fazla konuşma amacı, gereksinimini azaltarak Ignorable metin işaretlemek sağlar. 
+* Bir model ekleyin: Bir desen, yaygın bir şekilde bir işlem yapmanıza ve değiştirilebilir metin ve yoksayılabilir metinlere işaret etmenize olanak tanır ve bu sayede, amaç açısından daha fazla yer gereksinimini azaltır. 
 
 **Hedefi etiketli** sütun utterance amacı değiştirmenize olanak sağlar.
 

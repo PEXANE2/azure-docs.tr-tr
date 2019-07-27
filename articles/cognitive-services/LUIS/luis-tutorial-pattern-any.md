@@ -1,5 +1,5 @@
 ---
-title: Pattern.Any varlık
+title: Model. any varlık-LUSıS
 titleSuffix: Azure Cognitive Services
 description: Konuşmaların iyi biçimlendirilmiş olduğu ve verilerin sonunun konuşmadaki diğer sözcüklerle karıştırılma ihtimalinin yüksek olduğu konuşmalardan veri ayıklamak için pattern.any varlığını kullanın.
 services: cognitive-services
@@ -11,21 +11,21 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 06/12/2019
 ms.author: diberry
-ms.openlocfilehash: 6007f88af4d1049a87851b3808c66693173a648a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 165163d0a889e0bd5f1faef8d7f6a17d28c2b4f7
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67069241"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563280"
 ---
-# <a name="tutorial-extract-free-form-data-with-patternany-entity"></a>Öğretici: Serbest biçimli Pattern.any varlık verileriyle ayıklayın
+# <a name="tutorial-extract-free-form-data-with-patternany-entity"></a>Öğretici: Modelle serbest biçimli verileri ayıklayın. herhangi bir varlık
 
 Bu öğreticide konuşmaların iyi biçimlendirilmiş olduğu ve verilerin sonunun konuşmadaki diğer sözcüklerle karıştırılma ihtimalinin yüksek olduğu konuşmalardan veri ayıklamak için pattern.any varlığını kullanacaksınız. 
 
 **Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:**
 
 > [!div class="checklist"]
-> * Örnek uygulamayı içeri aktarma
+> * Örnek uygulamayı içeri aktar
 > * Var olan varlığa örnek konuşma ekleme
 > * Pattern.any varlığını oluşturma
 > * Desen oluşturma
@@ -34,7 +34,7 @@ Bu öğreticide konuşmaların iyi biçimlendirilmiş olduğu ve verilerin sonun
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="using-patternany-entity"></a>Pattern.Any varlık kullanma
+## <a name="using-patternany-entity"></a>Model kullanma. herhangi bir varlık
 
 pattern.any varlığı, ifade nedeniyle varlığın sonunun konuşmanın geri kalanından ayrılmasının zor olduğu durumlarda serbest biçimli verileri bulmanızı sağlar. 
 
@@ -64,11 +64,11 @@ Sözcüklerin uzunluklarının değişmesi, LUIS'in varlığın sonunu belirleme
 |Who authored {FormName}[?] ({FormName} kim yazdı[?])|
 |{FormName} is published in French[?] ({FormName} Fransızca mı yayımlandı[?])|
 
-## <a name="import-example-app"></a>Örnek uygulamayı içeri aktarma
+## <a name="import-example-app"></a>Örnek uygulamayı içeri aktar
 
 1. [Uygulama JSON dosyasını](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-pattern-roles-HumanResources.json) indirip kaydedin.
 
-1. İçinde [LUIS portalı](https://www.luis.ai), **uygulamalarım** sayfasında, yeni bir uygulamaya JSON dosyasını içeri aktarın.
+1. Luu [portalında](https://www.luis.ai), **UYGULAMALARıM** sayfasında, JSON 'u yeni bir uygulamaya aktarın.
 
 1. **Yönet** bölümünde **Sürümler** sekmesinde sürümü kopyalayın ve `patt-any` olarak adlandırın. Kopyalama, özgün sürümünüzü etkilemeden farklı LUIS özelliklerini deneyebileceğiniz ideal bir yol sunar. Sürüm adı, URL rotasının bir parçası olarak kullanıldığından ad bir URL'de geçerli olmayan herhangi bir karakter içeremez.
 
@@ -96,7 +96,7 @@ Pattern.any varlığı farklı uzunluklardaki varlıkları ayıklar. Desen varl�
 
 1. **Create new entity** (Yeni varlık oluştur) öğesini seçin, `FormName` adını girin ve tür olarak **Pattern.any** seçin. **Done** (Bitti) öğesini seçin. 
 
-    Bir Pattern.any yalnızca bir düzende geçerli olduğundan varlık içinde bir amaç'ın örnek konuşma etiketi olamaz. 
+    Bir desen için bir amaç örnek utinliği içindeki varlığı etiketleyemiyorum. any yalnızca bir desen içinde geçerlidir. 
 
     Ayıklanan verilere number veya datetimeV2 biçiminde diğer varlıkların da dahil edilmesini istiyorsanız Pattern.any ile number ve datetimeV2 varlıklarını da içeren bir birleşik varlık oluşturmanız gerekir.
 
@@ -134,7 +134,7 @@ Pattern.any varlığı farklı uzunluklardaki varlıkları ayıklar. Desen varl�
 
 1. Üst gezinti çubuğundan **Test** düğmesini seçerek test panelini kapatın.
 
-## <a name="using-an-explicit-list"></a>Açık bir listesi kullanma
+## <a name="using-an-explicit-list"></a>Açık liste kullanma
 
 Pattern.any içerdiğinde deseninizin varlıkları yanlış ayıkladığını fark ederseniz bu sorunu gidermek için [açık liste](luis-concept-patterns.md#explicit-lists) kullanın.
 

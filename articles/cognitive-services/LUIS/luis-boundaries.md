@@ -1,6 +1,6 @@
 ---
-title: Sınırlar
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Limit-LUSıS
+titleSuffix: Azure Cognitive Services
 description: Bu makale, Azure Bilişsel hizmetler Language Understanding (LUIS) bilinen sınırları içerir. LUIS, birden fazla sınır alanlara sahip değildir. Model sınır amacı, varlıkları ve LUIS özellikleri denetler. Kota sınırları, anahtar türüne göre. Klavye birleşimi LUIS Web sitesini denetler.
 services: cognitive-services
 author: diberry
@@ -11,39 +11,39 @@ ms.topic: article
 ms.date: 04/18/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 357ed4c42cc2758766b9ccd45a3fafa541338d11
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5dd49035414c7e717c3d60ab9bc185f42dcac408
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65154565"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560853"
 ---
-# <a name="boundaries-for-your-luis-model-and-keys"></a>LUIS modeline ve anahtarlar için sınırlar
+# <a name="boundaries-for-your-luis-model-and-keys"></a>LUSıS modeliniz ve anahtarlarınız için sınırlar
 LUIS, birden fazla sınır alanlara sahip değildir. İlk [modeli sınır](#model-boundaries), amacı, varlıkları ve LUIS özellikleri denetler. İkinci alanı [kota sınırları](#key-limits) anahtar türüne göre. Üçüncü bir sınırları alanıdır [klavye birleşimi](#keyboard-controls) LUIS Web sitesi denetleme. Dördüncü alan [dünya bölge eşleme](luis-reference-regions.md) LUIS ile Web sitesi geliştirme LUIS arasındaki [uç nokta](luis-glossary.md#endpoint) API'leri. 
 
 
 ## <a name="model-boundaries"></a>Model sınırları
 
-Uygulamanızı LUIS modeline sınırları ve sınır aşarsa kullanmayı bir [LUIS gönderme](luis-concept-enterprise.md#dispatch-tool-and-model) uygulama ya da kullanarak bir [LUIS kapsayıcı](luis-container-howto.md). 
+Uygulamanız Luo model sınırlarını ve sınırlarını aşarsa, bir [lusıs dağıtım](luis-concept-enterprise.md#dispatch-tool-and-model) uygulaması veya bir [lusıs kapsayıcısı](luis-container-howto.md)kullanmayı düşünün. 
 
 |Alan|Sınır|
 |--|:--|
 | [Uygulama adı][luis-get-started-create-app] | \* Max varsayılan karakter |
-| [Toplu test etme][batch-testing]| 10 veri kümeleri, veri kümesi başına 1000 konuşma|
+| [Toplu işlem testi][batch-testing]| 10 veri kümeleri, veri kümesi başına 1000 konuşma|
 | Açık listesi | uygulama başına 50|
 | Dış varlıklar | sınırsız |
-| [Hedefleri][intents]|uygulama başına 500: 499 özel amaçlar ve gerekli _hiçbiri_ hedefi.<br>[Gönderim tabanlı](https://aka.ms/dispatch-tool) uygulama karşılık gelen 500 gönderme kaynaklarına sahiptir.|
-| [Varlıklar listesi](./luis-concept-entity-types.md) | Üst öğe: 50, alt: 20.000 öğeleri. Kurallı ad * varsayılan karakter maks. Eş anlamlı değerleri herhangi bir uzunluk sınırlaması vardır. |
-| [Makine öğrenilen varlıklar + rolleri](./luis-concept-entity-types.md):<br> Bileşik<br>Basit,<br>Varlık rolü|Bir sınır 100 üst varlık veya 330 varlıkları hangisi kullanıcı isabet önce sınırlandırın. Bir rol, bu sınır için bir varlık olarak sayılır. 2 rolü olan basit bir varlık içeren bir birleşik bir örnek verilmiştir: Bileşik + 1 basit 1 + 2 rolü = 4 330 varlık.|
-| [Önizleme - dinamik listesi varlıklar](https://aka.ms/luis-api-v3-doc#dynamic-lists-passed-in-at-prediction-time)|2 listesi yaklaşık 1 k tahmin son nokta isteğinin sorgu başına|
+| [Hedefleri][intents]|Uygulama başına 500: 499 özel amaçlar ve gerekli _hiçbiri_ amacı.<br>[Dağıtım tabanlı](https://aka.ms/dispatch-tool) uygulama karşılık gelen 500 dağıtım kaynaklarına sahiptir.|
+| [Varlıklar listesi](./luis-concept-entity-types.md) | Üst 50, alt öğe: 20.000 öğe. Kurallı ad * varsayılan karakter maks. Eş anlamlı değerleri herhangi bir uzunluk sınırlaması vardır. |
+| [Makine tarafından öğrenilen varlıklar + roller](./luis-concept-entity-types.md):<br> bileşik<br>MPLE<br>varlık rolü|İlk olarak Kullanıcı isabetlerinin sınırlarını sınırlayan 100 üst varlık veya 330 varlıklarının bir sınırı. Rol, bu sınırın amacı için bir varlık olarak sayılır. Bir örnek, bir basit varlık olan ve 2 rol içeren bir Composite örneğidir: 1 bileşik + 1 basit + 2 rol = 4 varlık 330.|
+| [Önizleme-dinamik liste varlıkları](https://aka.ms/luis-api-v3-doc#dynamic-lists-passed-in-at-prediction-time)|sorgu tahmin uç noktası isteği başına 2 adet ~ 1k liste|
 | [Desenleri](luis-concept-patterns.md)|uygulama başına 500 desenleri.<br>Deseni en fazla uzunluğu 400 karakter olabilir.<br>Deseni başına 3 Pattern.any varlıklar<br>En fazla 2 iç içe geçmiş isteğe bağlı metni deseninde|
 | [Pattern.Any](./luis-concept-entity-types.md)|uygulama başına 100 deseni başına 3 pattern.any varlıklar |
-| [İfade listesi][phrase-list]|10 tümcecik listeler, liste başına 5.000 öğeleri|
+| [Tümcecik listesi][phrase-list]|10 tümcecik listeler, liste başına 5.000 öğeleri|
 | [Önceden oluşturulmuş varlıklar](./luis-prebuilt-entities.md) | bir sınır yoktur|
 | [Normal ifade varlıkları](./luis-concept-entity-types.md)|20 varlıklar<br>Maksimum 500 karakter. Normal ifade varlık deseni|
 | [Roller](luis-concept-roles.md)|uygulama başına 300 roller. Varlık başına 10 rolü|
-| [Utterance][utterances] | 500 karakter|
-| [Konuşma][utterances] | 15\.000 uygulama başına - konuşma amacı başına sayısına bir sınır yoktur|
+| [Söylenişi][utterances] | 500 karakter|
+| [En konuşma][utterances] | Uygulama başına 15.000-amaç başına düşen sayıda sınır yoktur|
 | [Sürümleri](luis-concept-version.md)| bir sınır yoktur |
 | [Sürüm adı][luis-how-to-manage-versions] | alfasayısal ve süre sınırlı 10 karakter (.) |
 
@@ -51,18 +51,18 @@ Uygulamanızı LUIS modeline sınırları ve sınır aşarsa kullanmayı bir [LU
 
 <a name="intent-and-entity-naming"></a>
 
-## <a name="object-naming"></a>Adlandırma nesnesi
+## <a name="object-naming"></a>Nesne adlandırma
 
-Aşağıdaki adları şu karakterleri kullanmayın.
+Aşağıdaki adlarla aşağıdaki karakterleri kullanmayın.
 
-|Object|Karakterleri hariç tut|
+|Object|Dışlama karakterleri|
 |--|--|
 |Amaç, varlık ve rol adları|`:`<br>`$`|
 |Sürüm adı|`\`<br> `/`<br> `:`<br> `?`<br> `&`<br> `=`<br> `*`<br> `+`<br> `(`<br> `)`<br> `%`<br> `@`<br> `$`<br> `~`<br> `!`<br> `#`|
 
 ## <a name="key-usage"></a>Anahtar kullanımı
 
-Dil anlama, ayrı anahtarları, yazma için bir tür ve tahmin uç noktası'nı sorgulamak için bir türü vardır. Anahtar türleri arasındaki farklar hakkında daha fazla bilgi için bkz. [LUIS yazma ve sorgu tahmin uç nokta anahtarlarını](luis-concept-keys.md).
+Dil anlaşılması ayrı anahtarlar, yazma için bir tür ve tahmin uç noktasını sorgulamak için bir tür içerir. Anahtar türleri arasındaki farklar hakkında daha fazla bilgi edinmek için bkz. [lusıs 'de yazma ve sorgu tahmin uç noktası anahtarları](luis-concept-keys.md).
 
 ## <a name="key-limits"></a>Anahtar sınırları
 
@@ -71,10 +71,10 @@ Yazma anahtar yazma ve uç noktası için farklı sınırlara sahiptir. LUIS hiz
 
 |Anahtar|Yazma|Uç Nokta|Amaç|
 |--|--|--|--|
-|Yazma dil anlama/başlangıç|1 milyon/ay, 5/saniye|1 bin/ay, 5/saniye|LUIS uygulamanızı yazma|
-|Language Understanding'i [abonelik] [ pricing] - F0 - ücretsiz katmanı |geçersiz|10 bin/ay, 5/saniye|LUIS uç noktanızı sorgulama|
-|Language Understanding'i [abonelik] [ pricing] - S0 - temel katman|geçersiz|50/saniye|LUIS uç noktanızı sorgulama|
-|Bilişsel hizmet [abonelik] [ pricing] - S0 - standart katman|geçersiz|50/saniye|LUIS uç noktanızı sorgulama|
+|Language Understanding yazma/Başlatıcı|1 milyon/ay, 5/saniye|1 bin/ay, 5/saniye|LUIS uygulamanızı yazma|
+|Language Understanding [abonelik][pricing] -F0-ücretsiz katmanı |geçersiz|10 bin/ay, 5/saniye|LUIS uç noktanızı sorgulama|
+|Language Understanding [abonelik][pricing] -S0-temel katman|geçersiz|50/saniye|LUIS uç noktanızı sorgulama|
+|Bilişsel hizmet [aboneliği][pricing] -S0-standart katmanı|geçersiz|50/saniye|LUIS uç noktanızı sorgulama|
 |[Yaklaşım analizi tümleştirme](luis-how-to-publish-app.md#enable-sentiment-analysis)|geçersiz|Ücretsiz|Anahtar ifade veri ayıklama gibi yaklaşım bilgileri ekleme |
 |Konuşma tümleştirme|geçersiz|5\.50 ABD Doları/1 bin uç nokta istekleri|Konuşulan utterance dönüştürmek için metin utterance ve LUIS sonuçlar döndürebilir.|
 
@@ -86,7 +86,7 @@ Yazma anahtar yazma ve uç noktası için farklı sınırlara sahiptir. LUIS hiz
 
 ## <a name="website-sign-in-time-period"></a>Web sitesi oturum zaman aralığı
 
-Oturum açma erişiminizi içindir **60 dakika**. Bu süre sonra bu hatayı alırsınız. Yeniden oturum açmanız gerekir.
+Oturum açma erişiminizi içindir **60 dakika**. Bu süre sonra bu hatayı alırsınız. Yeniden oturum açmanız gerekiyor.
 
 [luis-get-started-create-app]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app
 [batch-testing]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-test#batch-testing

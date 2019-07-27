@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı Başlangıç: Okuma, C++ (Linux) - konuşma Hizmetleri sentezlemek'
+title: 'Hızlı Başlangıç: Sentezleştirme konuşma C++ , (Linux)-konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Linux üzerinde c++ konuşma Speech SDK'sı kullanarak sentezlemek öğrenin
+description: Konuşma SDK 'sını kullanarak Linux 'ta C++ konuşmayı nasıl sentezleyeceğinizi öğrenin
 services: cognitive-services
 author: yinhew
 manager: nitinme
@@ -10,22 +10,22 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: yinhew
-ms.openlocfilehash: fbc5f21bb97eabb234e2b3905796ae01877ed89f
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: dbc9c2adc2663d3ba0ec3f9ea17b758ca2723441
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604930"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68553709"
 ---
-# <a name="quickstart-synthesize-speech-in-c-on-linux-by-using-the-speech-sdk"></a>Hızlı Başlangıç: Linux üzerinde c++ konuşma Speech SDK'sı kullanarak sentezlemek
+# <a name="quickstart-synthesize-speech-in-c-on-linux-by-using-the-speech-sdk"></a>Hızlı Başlangıç: Konuşma SDK 'sını kullanarak C++ Linux 'ta konuşmayı sentezleştirme
 
-Hızlı Başlangıçlar ücret karşılığında ayrıca [konuşma tanıma](quickstart-cpp-linux.md).
+Hızlı başlangıç, [konuşma tanıma](quickstart-cpp-linux.md)için de kullanılabilir.
 
-Bu makalede, oluşturduğunuz bir C++ konsol uygulaması için Linux (Ubuntu 16.04, 18.04 Ubuntu, Debian 9). Bilişsel Hizmetler'i kullanma [Speech SDK'sı](speech-sdk.md) sentezlemek konuşma gerçek zamanlı metin ve konuşma bilgisayarınızın hoparlöründen yürütmek için. Uygulama [Linux için Konuşma SDK'sı](https://aka.ms/csspeech/linuxbinary) ve Linux dağıtımınızın C++ derleyicisi (örneğin `g++`) ile oluşturulur.
+Bu makalede, Linux (Ubuntu 16,04, Ubuntu 18,04, de, 9) için bir C++ konsol uygulaması oluşturacaksınız. Bilişsel Hizmetler [konuşma SDK 'sını](speech-sdk.md) kullanarak konuşmayı gerçek zamanlı olarak sentezleştirme ve konuşmayı bilgisayarınızın hoparlörünüz üzerinde oynatacak şekilde kullanıyorsunuz. Uygulama [Linux için Konuşma SDK'sı](https://aka.ms/csspeech/linuxbinary) ve Linux dağıtımınızın C++ derleyicisi (örneğin `g++`) ile oluşturulur.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu hızlı başlangıcı tamamlamak için bir konuşma Hizmetleri abonelik anahtarı ihtiyacınız vardır. Anahtarı ücretsiz alabilirsiniz. Bkz: [konuşma Hizmetleri ücretsiz olarak deneyin](get-started.md) Ayrıntılar için.
+Bu hızlı başlangıcı tamamlayabilmeniz için bir konuşma Hizmetleri abonelik anahtarına ihtiyacınız vardır. Anahtarı ücretsiz alabilirsiniz. Ayrıntılar için bkz. [konuşma hizmetlerini ücretsiz deneyin](get-started.md) .
 
 ## <a name="install-speech-sdk"></a>Konuşma SDK'sını yükleme
 
@@ -33,20 +33,20 @@ Bu hızlı başlangıcı tamamlamak için bir konuşma Hizmetleri abonelik anaht
 
 Bilişsel Hizmetler Konuşma SDK'sının geçerli sürümü: `1.6.0`.
 
-Linux için Konuşma SDK'sı, gerek 64 bit gerekse 32 bit uygulamalar derlemek için kullanılabilir. Gerekli kitaplıklar ve üst bilgi dosyaları, tar dosyasından olarak indirilebilir https://aka.ms/csspeech/linuxbinary.
+Linux için Konuşma SDK'sı, gerek 64 bit gerekse 32 bit uygulamalar derlemek için kullanılabilir. Gerekli kitaplıklar ve üst bilgi dosyaları, öğesinden https://aka.ms/csspeech/linuxbinary bir bataklık dosyası olarak indirilebilir.
 
 SDK'yı aşağıda gösterildiği gibi indirin ve yükleyin:
 
 1. SDK'nın bağımlılık dosyalarının yüklü olduğundan emin olun.
 
-   * Ubuntu üzerinde:
+   * Ubuntu 'da:
 
      ```sh
      sudo apt-get update
      sudo apt-get install build-essential libssl1.0.0 libasound2 wget
      ```
 
-   * Debian 9:
+   * On yıl 9 ' da:
 
      ```sh
      sudo apt-get update
@@ -88,7 +88,7 @@ SDK'yı aşağıda gösterildiği gibi indirin ve yükleyin:
 
    [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/text-to-speech/cpp-linux/helloworld.cpp#code)]
 
-1. Bu yeni dosya, dize değiştirin `YourSubscriptionKey` konuşma Hizmetleri abonelik anahtarınız ile.
+1. Bu yeni dosyada, dizeyi `YourSubscriptionKey` konuşma Hizmetleri abonelik anahtarınızla değiştirin.
 
 1. `YourServiceRegion` dizesini aboneliğinizle ilişkili [bölge](regions.md) ile (örneğin ücretsiz deneme aboneliğinde `westus`) değiştirin.
 
@@ -131,7 +131,7 @@ SDK'yı aşağıda gösterildiği gibi indirin ve yükleyin:
    ./helloworld
    ```
 
-1. Konsol penceresinde, bir komut istemi, bir metin yazın isteyen görüntülenir. Birkaç sözcük veya bir cümle yazın. Yazdığınız metni konuşma hizmetlere iletilen ve konuşma tanıma, hoparlöründen için oluşturulan.
+1. Konsol penceresinde bir istem belirir ve bir metin yazmanızı ister. Birkaç kelime veya tümce yazın. Yazdığınız metin konuşma hizmetlerine iletilir ve konuşmacının oynadığı konuşmayı sentezleştirilmiştir.
 
    ```text
    Type some text that you want to speak...
@@ -143,9 +143,9 @@ SDK'yı aşağıda gösterildiği gibi indirin ve yükleyin:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [GitHub üzerinde C++ örneklerini keşfedin](https://aka.ms/csspeech/samples)
+> [GitHub C++ 'daki örnekleri keşfet](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Ses tiplerini özelleştirme](how-to-customize-voice-font.md)
-- [Kayıt ses örnekleri](record-custom-voice-samples.md)
+- [Ses yazı tiplerini özelleştirme](how-to-customize-voice-font.md)
+- [Ses örneklerini Kaydet](record-custom-voice-samples.md)

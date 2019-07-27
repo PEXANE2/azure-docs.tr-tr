@@ -2,23 +2,23 @@
 title: Temel bir grup oluşturma ve üye - Azure Active Directory'ye ekleme | Microsoft Docs
 description: Azure Active Directory'yi kullanarak temel bir grup oluşturma hakkında yönergeler.
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: quickstart
 ms.date: 03/01/2019
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d47c742e4f6d2ba8a96e9897f43231e509e8aa63
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 011f49596550ef4d515e0261419ab81c990e23cd
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476077"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561940"
 ---
 # <a name="create-a-basic-group-and-add-members-using-azure-active-directory"></a>Temel bir grup oluşturma ve Azure Active Directory'yi kullanarak üye ekleme
 Azure Active Directory (Azure AD) portalını kullanarak temel bir grup oluşturabilirsiniz. Bu makalenin amaçları doğrultusunda, kaynak sahibi (yönetici) tarafından tek bir kaynağa temel bir grup eklenir ve bu grup, o kaynağa erişmesi gereken belirli üyeleri (çalışanlar) içerir. Dinamik üyelikler ve kural oluşturma da dahil olmak üzere daha karmaşık senaryolar için bkz. [Azure Active Directory kullanıcı yönetimi belgeleri](../users-groups-roles/index.yml).
@@ -31,7 +31,7 @@ Temel bir grup oluşturabilir ve aynı anda üyelerinizi ekleyebilirsiniz.
 
 2. **Azure Active Directory**’yi, **Gruplar**’ı ve ardından **Yeni grup**’u seçin.
 
-    ![Gruplarla gösteren Azure AD sayfası](media/active-directory-groups-create-azure-portal/group-full-screen.png)
+    ![Grupları gösteren Azure AD sayfası](media/active-directory-groups-create-azure-portal/group-full-screen.png)
 
 3. **Grup** sayfasında gerekli bilgileri doldurun.
 
@@ -43,7 +43,7 @@ Temel bir grup oluşturabilir ve aynı anda üyelerinizi ekleyebilirsiniz.
         
        - **Office 365**. Üyelerin paylaşılan posta kutusuna, takvime, takvime, dosyalara, SharePoint sitesine vb.’ye erişmesini sağlayarak işbirliği fırsatları sunar. Bu seçenek, kuruluşunuzun dışındaki kişilerin de gruba erişmesini sağlar. Office 365 Grupları hakkında daha fazla bilgi için bkz. [Office 365 Grupları hakkında bilgi edinin](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2).
 
-   - **Grup adı (gerekli).** Grup için unutmayacağınız ve mantıklı olan bir ad ekler. Bir denetimi adı zaten başka bir grubu için kullanılıp kullanılmadığını belirlemek için gerçekleştirilir. Ad zaten kullanılıyorsa, yinelenen adlandırma, önlemek için grubunuzun adını değiştirmek için istenir.
+   - **Grup adı (gerekli).** Grup için unutmayacağınız ve mantıklı olan bir ad ekler. Adın zaten başka bir grup için kullanıldığını tespit etmek üzere bir denetim gerçekleştirilecek. Ad zaten kullanımda ise, yinelenen adlandırmayı önlemek için grubunuzun adını değiştirmeniz istenir.
 
    - **Grup açıklaması.** Grubunuza isteğe bağlı bir açıklama ekler.
 
@@ -51,12 +51,12 @@ Temel bir grup oluşturabilir ve aynı anda üyelerinizi ekleyebilirsiniz.
 
      - **Atanan.** Bu grubun üyesi olacak ve benzersiz izinlere sahip olacak şekilde belirli kullanıcıları eklemenize olanak sağlar. Bu makalenin amaçları doğrultusunda, bu seçeneği kullanıyoruz.
 
-     - **Dinamik kullanıcı.** Dinamik Üyelik kuralları otomatik olarak ekleyin ve üye kaldırma kullanmanıza olanak sağlar. Bir üyenin öznitelikleri değişirse sistem, üyenin kural gereksinimlerini karşıladığını mı (eklendiğini) yoksa artık kural gereksinimlerini karşılamadığını mı (kaldırıldığını) görmek amacıyla dizin için dinamik grup kurallarınıza bakar.
+     - **Dinamik kullanıcı.** , Üyeleri otomatik olarak eklemek ve kaldırmak için dinamik üyelik kuralları kullanmanıza olanak sağlar. Bir üyenin öznitelikleri değişirse sistem, üyenin kural gereksinimlerini karşıladığını mı (eklendiğini) yoksa artık kural gereksinimlerini karşılamadığını mı (kaldırıldığını) görmek amacıyla dizin için dinamik grup kurallarınıza bakar.
 
      - **Dinamik cihaz.** Otomatik olarak cihazlar eklemek ve kaldırmak için dinamik grup kuralları kullanmanıza olanak sağlar. Bir cihazın öznitelikleri değişirse sistem, cihazın kural gereksinimlerini karşıladığını mı (eklendiğini) yoksa artık kural gereksinimlerini karşılamadığını mı (kaldırıldığını) görmek amacıyla dizin için dinamik grup kurallarınıza bakar.
 
        >[!Important]
-       >Ya cihazlar ya da kullanıcılar için bir dinamik grup oluşturabilirsiniz, her ikisi için oluşturamazsınız. Ayrıca cihaz sahiplerinin özniteliklerine göre de bir cihaz grubu oluşturamazsınız. Cihaz üyeliği kuralları yalnızca cihaz ilişkilendirmesine başvurabilir. Kullanıcılar ve cihazlar için dinamik bir grup oluşturma hakkında daha fazla bilgi için bkz. [dinamik bir grup oluşturun ve durumunu denetlemek](../users-groups-roles/groups-create-rule.md).
+       >Ya cihazlar ya da kullanıcılar için bir dinamik grup oluşturabilirsiniz, her ikisi için oluşturamazsınız. Ayrıca cihaz sahiplerinin özniteliklerine göre de bir cihaz grubu oluşturamazsınız. Cihaz üyeliği kuralları yalnızca cihaz ilişkilendirmesine başvurabilir. Kullanıcılar ve cihazlar için dinamik bir grup oluşturma hakkında daha fazla bilgi için bkz. [dinamik grup oluşturma ve durumu denetleme](../users-groups-roles/groups-create-rule.md).
 
 4. **Oluştur**’u seçin.
 
@@ -72,9 +72,9 @@ Temel bir grup oluşturabilir ve aynı anda üyelerinizi ekleyebilirsiniz.
 
     ![Üye sayısı vurgulanmış şekilde Gruba Genel Bakış sayfası](media/active-directory-groups-create-azure-portal/group-overview-blade-number-highlight.png)
 
-## <a name="turn-on-or-off-welcome-email"></a>Hoş Geldiniz e-posta açma veya kapatma
+## <a name="turn-on-or-off-welcome-email"></a>Hoş geldiniz e-postasını aç veya kapat
 
-Dinamik veya statik üyelik olmadığını ile herhangi bir yeni Office 365 grubu oluşturulduğunda, Hoş Geldiniz bildirim gruba eklenen tüm kullanıcılar için gönderilir. Bir kullanıcı veya cihaz herhangi bir özniteliği değiştiğinde, kuruluştaki tüm dinamik Grup kurallarını olası üyelik değişiklikleri için işlenir. Eklenen kullanıcılar da ardından Hoş Geldiniz bildirimleri alır. Bu davranış, kapatabilirsiniz [Exchange PowerShell](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/Set-UnifiedGroup?view=exchange-ps). 
+Herhangi bir yeni Office 365 Grubu oluşturulduğunda, dinamik veya statik üyeliğe bakılmaksızın, gruba eklenen tüm kullanıcılara bir hoş geldiniz bildirimi gönderilir. Bir kullanıcının veya cihazın herhangi bir özniteliği değiştiğinde, kuruluştaki tüm dinamik grup kuralları olası üyelik değişiklikleri için işlenir. Ayrıca eklenen kullanıcılar da hoş geldiniz bildirimini alır. Bu davranışı [Exchange PowerShell](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/Set-UnifiedGroup?view=exchange-ps)'de devre dışı bırakabilirsiniz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Şimdi bir grup ve en az bir kullanıcı eklediğinize göre artık aşağıdakileri yapabilirsiniz:

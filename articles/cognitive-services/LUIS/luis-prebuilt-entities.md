@@ -1,5 +1,5 @@
 ---
-title: Önceden oluşturulmuş varlıklar
+title: Language Understanding için önceden oluşturulmuş varlıklar
 titleSuffix: Azure Cognitive Services
 description: LUIS, tarihler, saatler, sayılar, Ölçümler ve para birimi gibi bilgileri genel türleri tanıma için önceden oluşturulmuş varlıklar kümesi içerir. Önceden oluşturulmuş varlık destek LUIS uygulamanızı kültüre göre değişir.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: diberry
-ms.openlocfilehash: 0cfc4ff58cfeb65f80f9ac5ce2dd532defde5ef8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: db0fb8962030b536b6ea73f4141da551434cd528
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60596100"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560346"
 ---
 # <a name="prebuilt-entities-to-recognize-common-data-types"></a>Ortak veri türleri tanımak için önceden oluşturulmuş varlıklar
 
@@ -60,7 +60,7 @@ Test uç noktasında yeni hedefi için bir değer olarak eklenen **q** parametre
 
  Bu tür bir belirteç, burada bir bölümü, önceden oluşturulmuş bir varlık ile zaten işaretlenmiş, işaretlemek için önceden oluşturulmuş varlık LUIS uygulamadan kaldırabilir. Uygulamayı eğitme gerek yoktur. Ardından kendi özel varlık belirteciyle işaretleyin. Ardından önceden oluşturulmuş varlık LUIS uygulamaya geri ekleyin.
 
- Başka bir örnek için sınıf tercihleri listesi olarak utterance göz önünde bulundurun: `I want first year spanish, second year calculus, and fourth year english lit.` LUIS uygulaması eklendi, Prebuild sıra varsa `first`, `second`, ve `fourth` sıra sayıları ile işaretlenir. Sıralı ve sınıf yakalamak istiyorsanız, bileşik bir varlık oluşturun ve önceden oluşturulmuş sıralı ve sınıf adı için özel varlık etrafına sarın.
+ Başka bir örnek için, bir sınıf tercihleri listesi olarak dikkat edin: `I want first year spanish, second year calculus, and fourth year english lit.`LUIS uygulamasının ön derleme sırası eklenirse `first` `second`,,,,,, ve `fourth` önceden sıra sayısınlarla işaretlenir. Sıralı ve sınıf yakalamak istiyorsanız, bileşik bir varlık oluşturun ve önceden oluşturulmuş sıralı ve sınıf adı için özel varlık etrafına sarın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 > [!div class="nextstepaction"]

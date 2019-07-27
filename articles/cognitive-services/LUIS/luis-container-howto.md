@@ -1,6 +1,6 @@
 ---
-title: Docker kapsayıcıları
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Docker Kapsayıcıları-LUSıS
+titleSuffix: Azure Cognitive Services
 description: LUSıS kapsayıcısı, eğitilen veya yayınlanan uygulamanızı bir Docker kapsayıcısına yükler ve kapsayıcının API uç noktalarından sorgu tahminlerine erişim sağlar.
 services: cognitive-services
 author: IEvangelist
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: dapine
-ms.openlocfilehash: ae2f24c83cb0de054cc97bf0be8ada35a568ad82
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 2b87f9bcbaa0fd9d8a23d774e0765e1eb5b56633
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360554"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563894"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>LUSıS Docker kapsayıcılarını yükleyip çalıştırın
  
@@ -108,8 +108,8 @@ Giriş bağlama dizini, uygulamanın **Üretim**, **hazırlama**ve **eğitimli**
 
 |Paket türü|Sorgu uç noktası API 'SI|Sorgu kullanılabilirliği|Paket dosya adı biçimi|
 |--|--|--|--|
-|Lmiş|Al, postala|Yalnızca kapsayıcı|`{APPLICATION_ID}_v{APPLICATION_VERSION}.gz`|
-|Staging|Al, postala|Azure ve kapsayıcı|`{APPLICATION_ID}_STAGING.gz`|
+|Eğitildi|Al, postala|Yalnızca kapsayıcı|`{APPLICATION_ID}_v{APPLICATION_VERSION}.gz`|
+|Hazırlanıyor|Al, postala|Azure ve kapsayıcı|`{APPLICATION_ID}_STAGING.gz`|
 |Üretim|Al, postala|Azure ve kapsayıcı|`{APPLICATION_ID}_PRODUCTION.gz`|
 
 > [!IMPORTANT]
@@ -187,7 +187,7 @@ Host: {AZURE_REGION}.api.cognitive.microsoft.com
 Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 ```
 
-| Yer tutucu | Değer |
+| Yer tutucu | Value |
 |-------------|-------|
 |{APPLICATION_ID} | Eğitilen LUO uygulamasının uygulama KIMLIĞI. |
 |{APPLICATION_VERSION} | Eğitilen LUO uygulamasının uygulama sürümü. |
@@ -200,7 +200,7 @@ Eğitilen paketi indirmek için lütfen [buradaki API belgelerine][download-trai
 
 Kapsayıcıyı çalıştırmak için [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) komutunu kullanın. Komut aşağıdaki parametreleri kullanır:
 
-| Yer tutucu | Value |
+| Yer tutucu | Değer |
 |-------------|-------|
 |{API_KEY} | Bu anahtar, kapsayıcıyı başlatmak için kullanılır. Başlangıç anahtarını kullanmayın. |
 |{ENDPOINT_URI} | Uç nokta değeri Azure Portal `Cognitive Services` Genel Bakış sayfasında kullanılabilir. |
@@ -250,17 +250,17 @@ Kapsayıcı, REST tabanlı sorgu tahmin uç noktası API 'Leri sağlar. Yayımla
 
 Kapsayıcı API 'leri için `https://localhost:5000`Konağı kullanın. 
 
-|Paket türü|Yöntem|Yol|Sorgu parametreleri|
+|Paket türü|Yöntem|Rota|Sorgu parametreleri|
 |--|--|--|--|
 |Yayımlanmış|[Al](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78), [Postala](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)|/Luis/v2.0/Apps/{AppID}?|q = {q}<br>& hazırlama<br>[& Timezonekayması]<br>[& verbose]<br>[& günlüğü]<br>|
-|Lmiş|Al, postala|/Luis/v2.0/Apps/{AppID}/Versions/{VersionId}?|q = {q}<br>[& Timezonekayması]<br>[& verbose]<br>[& günlüğü]|
+|Eğitildi|Al, postala|/Luis/v2.0/Apps/{AppID}/Versions/{VersionId}?|q = {q}<br>[& Timezonekayması]<br>[& verbose]<br>[& günlüğü]|
 
 Sorgu parametreleri, sorgu yanıtında nasıl ve neyin döndürüleceğini yapılandırır:
 
 |Sorgu parametresi|Type|Amaç|
 |--|--|--|
 |`q`|dize|Kullanıcının utterliği.|
-|`timezoneOffset`|number|Timezonekayması, önceden oluşturulmuş varlık datetimeV2 tarafından kullanılan [saat dilimini değiştirmenize](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) izin verir.|
+|`timezoneOffset`|numarası|Timezonekayması, önceden oluşturulmuş varlık datetimeV2 tarafından kullanılan [saat dilimini değiştirmenize](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) izin verir.|
 |`verbose`|boolean|Doğru olarak ayarlandığında tüm hedefleri ve puanlarını döndürür. Varsayılan değer, yalnızca en üst amacı döndüren false ' dır.|
 |`staging`|boolean|True olarak ayarlanırsa, hazırlama ortamı sonuçlarından sorgu döndürür. |
 |`log`|boolean|Daha sonra [etkin öğrenme](luis-how-to-review-endpoint-utterances.md)için kullanılabilen sorguları günlüğe kaydeder. Varsayılan değer true 'dur.|

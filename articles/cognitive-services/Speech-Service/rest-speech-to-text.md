@@ -1,7 +1,7 @@
 ---
-title: Konuşmayı metne API Başvurusu (REST) - konuşma Hizmetleri
+title: Konuşmadan metne API başvurusu (REST)-konuşma hizmeti
 titleSuffix: Azure Cognitive Services
-description: Konuşma metin REST API'sini kullanmayı öğrenin. Bu makalede, sorgu seçenekleri, yetkilendirme seçenekleri hakkında bilgi edineceksiniz yapısı bir istek ve yanıt.
+description: Konuşmayı metne REST API nasıl kullanacağınızı öğrenin. Bu makalede, sorgu seçenekleri, yetkilendirme seçenekleri hakkında bilgi edineceksiniz yapısı bir istek ve yanıt.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 9d967fa4d5ba54e4470dadc5e797067454e1769a
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 6324c00d9b85a13ef6e69185e3b380b20f761f3b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606351"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68552971"
 ---
 # <a name="speech-to-text-rest-api"></a>Konuşmayı metne REST API
 
-Alternatif olarak [Speech SDK'sı](speech-sdk.md), konuşma Hizmetleri konuşma metni bir REST API kullanarak dönüştürme izin verir. Her erişilebilen bir uç noktaya bir bölge ile ilişkilidir. Uygulamanızı kullanmayı planladığınız uç nokta için bir abonelik anahtarı gerektirir.
+Konuşma [SDK 'sına](speech-sdk.md)alternatif olarak, konuşma hizmetleri bir REST API kullanarak konuşmayı metne dönüştürmenize olanak tanır. Her erişilebilen bir uç noktaya bir bölge ile ilişkilidir. Uygulamanızı kullanmayı planladığınız uç nokta için bir abonelik anahtarı gerektirir.
 
-Konuşmayı metne REST API kullanarak önce anlayın:
-* REST API istekleri yalnızca kaydedilen ses 10 saniyelik içerebilir.
+Konuşmayı metne REST API kullanmadan önce, şunu anlayın:
+* REST API kullanan isteklerde yalnızca 10 saniye kaydedilmiş ses bulunabilir.
 * Konuşmayı metne REST API, yalnızca son sonuçları döndürür. Kısmi sonuçlar sağlanmaz.
 
 Uzun ses uygulamanız için bir gereksinim gönderdiği kullanmayı [Speech SDK'sı](speech-sdk.md) veya [toplu transkripsiyonu](batch-transcription.md).
@@ -55,8 +55,8 @@ Bu tablo, Konuşmayı metne istekler için gerekli ve isteğe bağlı üst bilgi
 | `Authorization` | Bir yetkilendirme belirteci word tarafından öncesinde `Bearer`. Daha fazla bilgi için bkz. [Kimlik doğrulaması](#authentication). | Ya da bu üst bilgi veya `Ocp-Apim-Subscription-Key` gereklidir. |
 | `Content-type` | Sağlanan ses verisi codec ve biçim açıklar. Kabul edilen değerler `audio/wav; codecs=audio/pcm; samplerate=16000` ve `audio/ogg; codecs=opus`. | Gerekli |
 | `Transfer-Encoding` | Öbekli ses, tek bir dosya yerine gönderilen veri olduğunu belirtir. Yalnızca ses verileri varsa bu üstbilgiyi kullanır. | İsteğe bağlı |
-| `Expect` | Öbekli aktarım kullanıyorsanız, gönderme `Expect: 100-continue`. Konuşma Hizmetleri, ilk isteği onayla ve ek veri bekler.| Öbekli ses veri gönderen gereklidir. |
-| `Accept` | Sağlanırsa, olmalıdır `application/json`. Konuşma Hizmetleri sonuçları JSON biçiminde sağlayın. Bir uyumsuz varsayılan değer her zaman için iyi bir uygulama, bu nedenle, bir belirtmezseniz dahil bazı Web isteği çerçeveleri sağlar `Accept`. | İsteğe bağlı, ancak önerilir. |
+| `Expect` | Öbekli aktarım kullanıyorsanız, gönderme `Expect: 100-continue`. Konuşma Hizmetleri, ilk isteği kabul edin ve ek verileri bekler.| Öbekli ses veri gönderen gereklidir. |
+| `Accept` | Sağlanırsa, olmalıdır `application/json`. Konuşma Hizmetleri, sonuçları JSON ile sağlar. Bir uyumsuz varsayılan değer her zaman için iyi bir uygulama, bu nedenle, bir belirtmezseniz dahil bazı Web isteği çerçeveleri sağlar `Accept`. | İsteğe bağlı, ancak önerilir. |
 
 ## <a name="audio-formats"></a>Ses biçimleri
 
@@ -68,7 +68,7 @@ Ses HTTP gövdesi gönderilen `POST` isteği. Bu tabloda biçimlerden birinde ol
 | OGG | GEÇERLİ | 16-bit | 16 kHz, mono |
 
 >[!NOTE]
->Yukarıdaki biçimleri, REST API ve konuşma Hizmetleri WebSocket üzerinden desteklenir. [Speech SDK'sı](speech-sdk.md) WAV PCM codec ile biçim şu anda yalnızca destekler.
+>Yukarıdaki biçimler, konuşma hizmetlerindeki REST API ve WebSocket aracılığıyla desteklenir. [Speech SDK'sı](speech-sdk.md) WAV PCM codec ile biçim şu anda yalnızca destekler.
 
 ## <a name="sample-request"></a>Örnek istek
 
@@ -98,7 +98,7 @@ Her yanıt için HTTP durum kodu, başarı veya sık karşılaşılan hataları 
 
 ## <a name="chunked-transfer"></a>Öbekli aktarım
 
-Öbekli aktarım (`Transfer-Encoding: chunked`) tanıma gecikme süresi, aktarım sırasında ses dosyası işlemesi konuşma Hizmetleri izin verdiğinden azaltmaya yardımcı olabilir. REST API, kısmi veya Ara sonuçlar sağlamaz. Bu seçenek, yalnızca yanıt verme hızını artırmak için tasarlanmıştır.
+Öbekli aktarım`Transfer-Encoding: chunked`(), konuşma hizmetlerinin iletilirken ses dosyasını işlemeye başlamasını sağladığından, tanınma gecikmesini azaltmaya yardımcı olabilir. REST API, kısmi veya Ara sonuçlar sağlamaz. Bu seçenek, yalnızca yanıt verme hızını artırmak için tasarlanmıştır.
 
 Bu kod örneği, nasıl öbekler halinde ses gönderileceğini gösterir. Yalnızca ilk öbekte ses dosyanın üst bilgisi içermelidir. `request` HTTPWebRequest nesneyi uygun REST uç noktasına bağlanır. `audioFile` ses dosyası diskte yoludur.
 
@@ -163,7 +163,7 @@ Sonuçları JSON olarak sağlanır. `simple` Biçimi bu üst düzey alanlar içe
 > [!NOTE]
 > Ses yalnızca küfür oluşuyorsa ve `profanity` sorgu parametresi ayarlandığında `remove`, hizmeti bir konuşma sonuç döndürmez.
 
-`detailed` Biçimi aynı verileri içeren `simple` , bunların ile biçimde `NBest`, aynı tanıma sonucun alternatif yorum listesi. Bu sonuçları büyük olasılıkla az olasılıkla doğru sıralanır. İlk giriş ana tanıma işleminin sonucu aynıdır.  Kullanırken `detailed` biçimi `DisplayText` olarak sağlanan `Display` her sonucu için `NBest` listesi.
+Biçim, ile birlikte aynı tanıma sonucunun alternatif `simple` yorumlarının bir listesi `NBest`olan biçimiyle aynı verileri içerir. `detailed` Bu sonuçlar en büyük olasılıkla en az büyük olasılıkla derecelendirilir. İlk giriş, ana tanıma sonucuyla aynıdır.  Kullanırken `detailed` biçimi `DisplayText` olarak sağlanan `Display` her sonucu için `NBest` listesi.
 
 Her bir nesnenin `NBest` liste aşağıdakileri içerir:
 

@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı Başlangıç: Konuşma sentezlemek C# (UWP) - konuşma Hizmetleri'
+title: 'Hızlı Başlangıç: Sentezleştirme konuşma C# , (UWP)-konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Bu makalede, oluşturduğunuz bir C# Bilişsel hizmetler konuşma SDK'sı kullanarak evrensel Windows Platformu (UWP) uygulama. Cihazınızın Konuşmacı gerçek zamanlı olarak metinden konuşmaya sentezlemek. Uygulama, konuşma SDK'sı NuGet paketi ve Microsoft Visual Studio 2017 ile oluşturulmuştur.
+description: Bu makalede, oluşturduğunuz bir C# Bilişsel hizmetler konuşma SDK'sı kullanarak evrensel Windows Platformu (UWP) uygulama. Konuşmayı gerçek zamanlı olarak cihazınızın hoparlörünü sentezleştir. Uygulama, konuşma SDK'sı NuGet paketi ve Microsoft Visual Studio 2017 ile oluşturulmuştur.
 services: cognitive-services
 author: yinhew
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 6/24/2019
 ms.author: yinhew
-ms.openlocfilehash: c11fbff883d2699bdd0a107fc462524d92ee410d
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: 3d5bc1e9cc27fd3c40c15ba55f577779c65e6851
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67467449"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559337"
 ---
-# <a name="quickstart-synthesize-speech-in-a-uwp-app-by-using-the-speech-sdk"></a>Hızlı Başlangıç: Bir UWP uygulamasında konuşma Speech SDK'sı kullanarak sentezlemek
+# <a name="quickstart-synthesize-speech-in-a-uwp-app-by-using-the-speech-sdk"></a>Hızlı Başlangıç: Konuşma SDK 'sını kullanarak UWP uygulamasında konuşmayı sentezleştirme
 
-Hızlı Başlangıçlar ücret karşılığında ayrıca [konuşma tanıma](quickstart-csharp-uwp.md), [konuşma çevirisi](quickstart-translate-speech-uwp.md) ve [ses öncelikli sanal asistan](quickstart-virtual-assistant-csharp-uwp.md).
+Hızlı başlangıç, konuşma [tanıma](quickstart-csharp-uwp.md), [konuşma çevirisi](quickstart-translate-speech-uwp.md) ve [ses-ilk Sanal Yardımcısı](quickstart-virtual-assistant-csharp-uwp.md)için de kullanılabilir.
 
-Bu makalede, geliştirdiğiniz bir C# Evrensel Windows Platformu (UWP; Windows sürüm 1709 daha sonra) uygulama Bilişsel hizmetler kullanarak [Speech SDK'sı](speech-sdk.md). Program, cihazınızın Konuşmacı gerçek zamanlı olarak metinden konuşmaya oluşturur. Uygulama [Konuşma SDK'sı NuGet Paketi](https://aka.ms/csspeech/nuget) ve Microsoft Visual Studio 2017 (herhangi bir sürüm) ile geliştirilmiştir.
+Bu makalede bir C# Evrensel Windows platformu geliştirirsiniz (UWP; Bilişsel Hizmetler [konuşma SDK 'sını](speech-sdk.md)kullanarak Windows sürüm 1709 sonrası) uygulaması. Program, konuşmayı gerçek zamanlı olarak cihazınızın hoparlörünize sentezle birleştirmeyecektir. Uygulama [Konuşma SDK'sı NuGet Paketi](https://aka.ms/csspeech/nuget) ve Microsoft Visual Studio 2017 (herhangi bir sürüm) ile geliştirilmiştir.
 
 > [!NOTE]
 > Evrensel Windows Platformu; PC, Xbox, Surface Hub ve diğer cihazlar dahil olmak üzere Windows 10 destekleyen tüm cihazlarda çalışan uygulamalar geliştirmenize olanak tanır.
@@ -31,7 +31,7 @@ Bu makalede, geliştirdiğiniz bir C# Evrensel Windows Platformu (UWP; Windows s
 Bu hızlı başlangıç şunları gerektirir:
 
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
-* Konuşma hizmeti için bir Azure aboneliği anahtarı. [Ücretsiz edinin](get-started.md).
+* Konuşma hizmeti için bir Azure abonelik anahtarı. [Ücretsiz bir tane alın](get-started.md).
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio projesi oluşturma
 
@@ -63,16 +63,16 @@ Bu hızlı başlangıç şunları gerektirir:
 
     ![Visual Studio uygulamasının, Hata Ayıklamayı Başlat seçeneği vurgulanmış olarak ekran görüntüsü](media/sdk/qs-csharp-uwp-09-start-debugging.png "Uygulamayı hata ayıklamada başlatma")
 
-1. Aşağıdaki metin kutusuna metin girin ve tıklayın **konuşma**. Metni konuşma hizmetlere iletilen ve konuşma tanıma, hoparlöründen için oluşturulan.
+1. Metin kutusuna bir metin girin ve **konuş**' a tıklayın. Metniniz konuşma hizmetlerine iletilir ve konuşmacının oynadığı konuşmayı sentezleştirilmiştir.
 
-    ![Konuşma sentezi kullanıcı arabiriminin ekran görüntüsü](media/sdk/qs-tts-csharp-uwp-ui-result.png)
+    ![Konuşma birleştirme Kullanıcı arabiriminin ekran görüntüsü](media/sdk/qs-tts-csharp-uwp-ui-result.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Keşfedin C# github'da örnekleri](https://aka.ms/csspeech/samples)
+> [GitHub C# 'daki örnekleri keşfet](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Ses tiplerini özelleştirme](how-to-customize-voice-font.md)
-- [Kayıt ses örnekleri](record-custom-voice-samples.md)
+- [Ses yazı tiplerini özelleştirme](how-to-customize-voice-font.md)
+- [Ses örneklerini Kaydet](record-custom-voice-samples.md)

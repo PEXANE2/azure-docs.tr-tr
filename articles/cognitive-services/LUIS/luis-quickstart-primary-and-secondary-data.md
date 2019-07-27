@@ -1,7 +1,7 @@
 ---
-title: Varlığın, ifade listesi
+title: Basit varlık, tümcecik listesi-LUSıS
 titleSuffix: Azure Cognitive Services
-description: Bu öğreticide, basit varlığı kullanan bir utterance verilerin çalışan iş adı makine öğrendiniz ayıklayın. Ayıklama doğruluğunu artırmak için, basit varlığa özgü terimlerin tümcecik listesini ekleyin.
+description: Bu öğreticide, basit varlığı kullanarak bir noktadan itibaren iş işi adının makineye öğrenilen verilerini ayıklayın. Ayıklama doğruluğunu artırmak için, basit varlığa özgü terimlerin tümcecik listesini ekleyin.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: a03a1224451411617f38c8cecafbef008aa08916
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 786c5725046885a0321696e95703c53081e96979
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68276194"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560340"
 ---
-# <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>Öğretici: Varlığın ve deyim listesi ile adlarını Ayıkla
+# <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>Öğretici: Basit varlık ve tümcecik listesi ile adları Ayıkla
 
 Bu öğreticide, **Basit** varlığını kullanarak bir ifadeden iş adının makine öğrenmesi verilerini ayıklayın. Ayıklama doğruluğunu artırmak için, basit varlığa özgü terimlerin tümcecik listesini ekleyin.
 
@@ -28,9 +28,9 @@ Basit varlık, sözcükler veya tümceciklerde bulunan tek bir veri kavramını 
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Örnek uygulamayı içeri aktarma
-> * Basit bir varlık ekleme 
-> * Sinyal sözcükleri artırmak üzere ifade listesi ekleme
+> * Örnek uygulamayı içeri aktar
+> * Basit varlık Ekle 
+> * Sinyal sözcüklerini artırmak için tümcecik listesi ekleme
 > * Eğitim 
 > * Yayımlama 
 > * Uç noktadan amaçları ve varlıkları alma
@@ -48,7 +48,7 @@ Aşağıdaki durumlarda bu veri tipi için basit varlık idealdir:
 * Veri, normal ifade gibi düzün biçimlendirilmediğinde.
 * Veri, önceden derlenmiş telefon numarası veya veri varlığı gibi genel olmadığında.
 * Veri, liste varlığı gibi bilinen sözcükler listesiyle tam olarak eşleşmediğinde.
-* Diğer veri öğelerini bileşik bir varlık veya bağlamsal rolleri gibi veri içermiyor.
+* Veriler, bileşik varlık veya bağlamsal roller gibi diğer veri öğelerini içermez.
 
 Bir sohbet botundan alınmış olan aşağıdaki ifadelere göz atın:
 
@@ -77,15 +77,15 @@ Bu LUIS uygulamasında birden fazla amaçta iş adları bulunmaktadır. LUIS, bu
 
 Varlıklar, örnek ifadelerde işaretlendikten sonra, basit varlığın sinyalini güçlendirmek için tümcecik listesi eklenmesi önemlidir. Tümcecik listesi, tam eşleşme olarak **kullanılmaz** ve beklediğiniz her olası değer olması gerekmez. 
 
-## <a name="import-example-app"></a>Örnek uygulamayı içeri aktarma
+## <a name="import-example-app"></a>Örnek uygulamayı içeri aktar
 
-1.  İndirip kaydedin [uygulama JSON dosyasını](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/build-app/intentonly.json) Intents Öğreticisi.
+1.  [Uygulama json dosyasını](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/build-app/intentonly.json) amaçlar öğreticiden indirip kaydedin.
 
 2. JSON'ı yeni bir uygulamaya içeri aktarın.
 
 3. **Yönet** bölümünde **Sürümler** sekmesinde sürümü kopyalayın ve `simple` olarak adlandırın. Kopyalama, özgün sürümünüzü etkilemeden farklı LUIS özelliklerini deneyebileceğiniz ideal bir yol sunar. Sürüm adı, URL rotasının bir parçası olarak kullanıldığından ad bir URL'de geçerli olmayan herhangi bir karakter içeremez.
 
-## <a name="mark-entities-in-example-utterances-of-an-intent"></a>Örnek konuşma bir hedefinin varlıklarda işaretle
+## <a name="mark-entities-in-example-utterances-of-an-intent"></a>Varlıkları örnek bir amaç halinde işaretleyin
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
@@ -99,14 +99,14 @@ Varlıklar, örnek ifadelerde işaretlendikten sonra, basit varlığın sinyalin
 
     ![İş adı ve basit türü görünen basit varlık oluşturma açılır iletişim kutusu](media/luis-quickstart-primary-and-secondary-data/hr-create-simple-entity-popup.png)
 
-1. İşle ilgili kelimelerinizle kalan konuşma işaretlemek **iş** bir sözcük veya tümcecik seçip seçerek varlık **iş** açılır menüden. 
+1. Kalan söylerde, **iş varlığıyla işle** ilgili kelimeleri, sözcüğü veya tümceciği seçip açılır menüden **iş** öğesini seçerek işaretleyin. 
 
     [![Vurgulanan iş Varlık etiketleme LUIS ekran](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png "vurgulanan iş Varlık etiketleme LUIS ekran görüntüsü")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
 
 
-## <a name="add-more-example-utterances-and-mark-entity"></a>Daha fazla örnek Konuşma ekleme ve varlık işaretleyin
+## <a name="add-more-example-utterances-and-mark-entity"></a>Daha fazla örnek ekleme ve işaret varlığı ekleme
 
-Basit varlıklar, tahmin, bir yüksek güvenilirliğe sahip olmak için birçok örneği gerekir. 
+Basit varlıkların, yüksek tahmine sahip olması için çok sayıda örnek gerekir. 
  
 1. Daha fazla konuşma ekleyin ve iş sözcüklerini veya tümceciklerini **Job** (İş) varlığı olarak etiketleyin. 
 
@@ -129,25 +129,25 @@ Basit varlıklar, tahmin, bir yüksek güvenilirliğe sahip olmak için birçok 
     |My curriculum vitae for professor of biology is enclosed. (Biyoloji öğretmenliği için özgeçmişimi ekte bulabilirsiniz.)|professor of biology (biyoloji öğretmenliği)|
     |I would like to apply for the position in photography. (Fotoğrafçılık alanındaki pozisyon için başvuruda bulunmak istiyorum.)|photography (fotoğrafçılık)|
 
-## <a name="mark-job-entity-in-other-intents"></a>Diğer ıntents iş varlığında işaretle
+## <a name="mark-job-entity-in-other-intents"></a>İş varlığını diğer amaçlar halinde işaretle
 
 1. Sol menüden **Intents** (Amaçlar) öğesini seçin.
 
 1. Amaç listesinden **GetJobInformation** girişini seçin. 
 
-1. Örnek konuşma işlerinde etiket
+1. Örnek söyleylerdeki işleri etiketleme
 
-    Bir hedefi başka bir amaç'den daha fazla örnek konuşma varsa, en yüksek tahmin edilen This is olma olasılığı daha anlaşılabilmelidir. 
+    Başka bir amaca göre bir amaca göre daha fazla örnek elde edildiğinde, bu amaç en yüksek tahmin edilen Intext olma olasılığını daha yüksektir. 
 
-## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Uygulama hedefi değişiklikleri test edilebilir şekilde eğitme 
+## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Uygulamaya yapılan değişikliklerin test edilebilir olması için uygulamayı eğitme 
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>Eğitilen modelin uç noktasından sorgulanabilir, bu nedenle, uygulamayı yayımlama
+## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>Eğitilen modelin uç noktadan sorgulanabilir olması için uygulamayı yayımlayın
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Uç noktasından amacı ve varlık öngörü Al 
+## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Uç noktadan amacı ve varlık tahminini alın 
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
@@ -221,9 +221,9 @@ Aşağıdaki JSON kodunda LUIS doğru amaç olan `ApplyForJob` yanıt vermektedi
 
 Ad herhangi bir şey olabileceğinden LUIS, sinyali güçlendirecek bir tümcecik listesi olması halinde varlıkları daha doğru bir şekilde tahmin edebilir.
 
-## <a name="to-boost-signal-of-the-job-related-words-add-a-phrase-list-of-job-related-words"></a>Boost sinyale işle ilgili sözcük, tümcecik listesini bir kelimelerin işle ilgili Ekle
+## <a name="to-boost-signal-of-the-job-related-words-add-a-phrase-list-of-job-related-words"></a>İşle ilgili sözcüklerin sinyalini artırmak için işle ilgili sözcüklerin bir tümcecik listesini ekleyin
 
-Açık [işleri tümcecik list.csv](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/job-phrase-list.csv) Azure örnekleri GitHub deposundan. 1\. 000'den iş sözcük ve tümcecikleri listesidir. Listede size anlamlı gelen iş sözcüklerini bulun. İstediğiniz sözcükler ve tümcecikler listede değilse ekleyin.
+Azure-Samples GitHub deposundan [Jobs-phrase-List. csv](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/job-phrase-list.csv) ' i açın. Listede 1.000 iş kelimeleri ve tümceleri bulunur. Listede size anlamlı gelen iş sözcüklerini bulun. İstediğiniz sözcükler ve tümcecikler listede değilse ekleyin.
 
 1. LUIS uygulamasının **Build** (Derleme) bölümünde **Improve app performance** (Uygulama performansını geliştir) kısmındaki **Phrase lists** (Tümcecik listeleri) girişini seçin.
 
@@ -233,15 +233,15 @@ Açık [işleri tümcecik list.csv](https://github.com/Azure-Samples/cognitive-s
 
     [![Ekran görüntüsü yeni ifade listesi iletişim kutusu açılır oluşturma](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "Oluştur ekran görüntüsü yeni ifade listesi iletişim kutusu açılır")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
 
-    Daha fazla sözcük tümcecik listeye eklenen istiyorsanız belirleyin **Recommand** daha sonra yeni gözden **ilişkili değerler** ilgilendiren ekleyin. 
+    Tümcecik listesine daha fazla sözcük eklemek istiyorsanız, **yeniden komut** ' yi seçin ve ardından yeni **ilgili değerleri** gözden geçirin ve ilgili olanları ekleyin. 
 
-    Tutmaya dikkat **birbirinin yerine bu değerleri** iade, çünkü bu değerleri tüm işler için eş anlamlı sözcükler olarak değerlendirilmelidir. Değiştirilebilir ve noninterchangeable hakkında daha fazla bilgi [listesi kavramları ifade](luis-concept-feature.md#how-to-use-phrase-lists).
+    Bu değerlerin tümü işler için eş anlamlı olarak değerlendirildiğinden, **Bu değerlerin değiştirilebilir** olduğundan emin olun. Değiştirilebilir ve değiştirilemez [ifade listesi kavramları](luis-concept-feature.md#how-to-use-phrase-lists)hakkında daha fazla bilgi edinin.
 
-1. Seçin **Bitti** tümcecik listesini etkinleştirmek için.
+1. Tümcecik listesini etkinleştirmek için **bitti** ' yi seçin.
 
     [![Ekran görüntüsü oluşturma yeni ifade listesi iletişim kutusu açılır sözcük, tümcecik değerler listesinde](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "Oluştur ekran görüntüsü yeni ifade listesi iletişim kutusu açılır sözcük, tümcecik değerler listesinde")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
 
-1. Eğitme ve yeniden ifade listesini kullanmak için uygulamayı yayımlayın.
+1. Tümcecik listesini kullanmak için uygulamayı eğitin ve yayımlayın.
 
 1. Uç noktayı aynı konuşmayla yeniden sorgulayın: `This is the lead welder paperwork.`
 
@@ -286,12 +286,12 @@ Açık [işleri tümcecik list.csv](https://github.com/Azure-Samples/cognitive-s
 
 ## <a name="related-information"></a>İlgili bilgiler
 
-* [Varlıkları öğretici olmadan hedefleri](luis-quickstart-intents-only.md)
-* [Varlığın](luis-concept-entity-types.md) kavramsal bilgiler
-* [İfade listesi](luis-concept-feature.md) kavramsal bilgiler
+* [Varlıkları olmayan amaçlar öğreticisi](luis-quickstart-intents-only.md)
+* [Basit varlık](luis-concept-entity-types.md) kavramsal bilgileri
+* [İfade listesi](luis-concept-feature.md) kavramsal bilgileri
 * [Eğitme](luis-how-to-train.md)
 * [Yayımlama nasıl yapılır?](luis-how-to-publish-app.md)
-* [LUIS portalında test etme](luis-interactive-test.md)
+* [LUSıS portalında test etme](luis-interactive-test.md)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

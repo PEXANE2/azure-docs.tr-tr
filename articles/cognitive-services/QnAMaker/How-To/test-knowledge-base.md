@@ -1,6 +1,6 @@
 ---
 title: Bilgi Bankası - soru-cevap Oluşturucu test etme
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Soru-cevap Oluşturucu bankanızı test etme, verilen yanıtları doğruluğunu artırmak için bir süreçtir önemli bir parçasıdır. Bilgi Bankası düzenlemeler yapmak da sağlayan gelişmiş sohbet arabiriminden test edebilirsiniz.
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 05/08/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 4d9c00c4ea7fd0494d00551dc37b186e1a357037
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 6a512098d5dfda47b7755e24b286aabf83aa7e69
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67439715"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563074"
 ---
 # <a name="test-your-knowledge-base-interactively-in-qna-maker"></a>Bilgi bankanızı etkileşimli soru-cevap Oluşturucu test edin
 
@@ -24,28 +24,28 @@ Soru-cevap Oluşturucu bankanızı test etme, verilen yanıtları doğruluğunu 
 
 ## <a name="test-answer-matching"></a>Test yanıt eşleştirme
 
-1. Adını seçerek bilgi bankanızı erişim **My bilgi bankalarından** sayfası.
-1. Test slayt genişletme paneline erişmek için seçin **Test** uygulamanızın üst panelinde.
+1. Bilgi **tabanlarım** sayfasında adını seçerek bilgi tabanınızı erişin.
+1. Test slayt paneli paneline erişmek için uygulamanızın üst panelinde **Test** ' i seçin.
 1. Metin kutusuna bir sorgu girin ve Enter tuşuna basın.
 1. Bilgi Bankası'nden en iyi eşleşen yanıtlama yanıt döndürülür.
 
 ## <a name="clear-test-panel"></a>Açık test paneli
 
-Tüm girilen test sorgular ve sonuçları test konsolundan temizlemek için seçin **baştan** Test panelinin sol üst köşesinde.
+Tüm girilen test sorgularını ve sonuçlarını test konsolundan temizlemek için, test bölmesinin sol üst köşesinden **başla** ' yı seçin.
 
 ## <a name="close-test-panel"></a>Kapat test paneli
 
-Test paneli kapatmak için seçin **Test** düğmesini tekrar. Bilgi Bankası içerikleri, Test panel açıkken düzenleyemezsiniz.
+Test panelini kapatmak için, **Test** düğmesini yeniden seçin. Bilgi Bankası içerikleri, Test panel açıkken düzenleyemezsiniz.
 
 ## <a name="inspect-score"></a>Puan inceleyin
 
-İnceleyin panelinde test sonucunun ayrıntılarını inceleyin.
+Inceleme panelinde test sonucunun ayrıntılarını inceleyebilirsiniz.
 
-1.  Test slayt çıkış panelini Aç seçin **inceleyin** bu yanıtı hakkında daha fazla bilgi.
+1.  Test slayt paneli açık olduğunda, bu yanıt hakkında daha fazla ayrıntı için **İnceleme** ' yi seçin.
 
     ![Yanıtları](../media/qnamaker-how-to-test-kb/inspect.png)
 
-2.  İnceleme paneli görüntülenir. Panelin amacını ve bunun yanı sıra tanımlanan herhangi bir varlık Puanlama üst içerir. Paneli, seçilen utterance sonucunu gösterir.
+2.  Inceleme paneli görüntülenir. Panelin amacını ve bunun yanı sıra tanımlanan herhangi bir varlık Puanlama üst içerir. Paneli, seçilen utterance sonucunu gösterir.
 
 ## <a name="correct-the-top-scoring-answer"></a>Yanıt Puanlama üst düzeltin
 
@@ -63,18 +63,18 @@ Belirli bir yanıt soru diğer formlara ekleyebilirsiniz. Diğer tıklayın ve m
 
 Yanıt Bilgi Bankası (KB iyi eşleşme bulundu) mevcut değil veya eşleştirilmiş olan mevcut yanıtlar yanlış olan, yeni bir yanıt ekleyebilirsiniz. 
 
-Yanıtlar listenin altındaki metin kutusuna yeni bir yanıt girmeye kullanın ve eklemek için enter tuşuna basın. 
+Yanıtlar listesinin en altında, yeni bir yanıt girmek için metin kutusunu kullanın ve eklemek için ENTER tuşuna basın. 
 
 Seçin **kaydedin ve eğitme** bu yanıt kalıcı hale getirmek için. Yeni bir soru-cevap çifti şimdi Bilgi Bankası'na eklendi. 
 
 > [!NOTE]
 > Tuşuna bastığınızda tüm düzenlemeleri bilgi bankanızı yalnızca kaydedileceği **kaydedin ve eğitme** düğmesi.
 
-## <a name="test-the-published-knowledge-base"></a>Yayımlanan Bilgi Bankası test
+## <a name="test-the-published-knowledge-base"></a>Yayınlanan Bilgi Bankası 'nı test etme
 
-Test Bölmesi'nde Bilgi Bankası yayımlanan sürümünü test edebilirsiniz. KB yayımladıktan sonra seçin **yayımlanan KB** kutusu ve yayımlanan KB sonuçları elde etmek için bir sorgu gönderin.
+Bilgi Bankası 'nın yayımlanmış sürümünü test bölmesinde test edebilirsiniz. KB 'yi yayımladıktan sonra yayımlanmış **KB kutusunu seçin** ve yayımlanan KB 'den sonuçları almak için bir sorgu gönderin.
 
-![Yayımlanan bir KB karşı test etme](../media/qnamaker-how-to-test-kb/test-against-published-kb.png)
+![Yayımlanan bir KB 'ye karşı test](../media/qnamaker-how-to-test-kb/test-against-published-kb.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

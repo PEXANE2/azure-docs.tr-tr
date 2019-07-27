@@ -2,23 +2,23 @@
 title: Azure Active Directory premium sürümleri için - kaydolun | Microsoft Docs
 description: Azure Active Directory Premium sürümleri için kaydolma hakkında yönergeler.
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: quickstart
 ms.date: 09/07/2017
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed01b2b122724ba1428fb685bb3f1f52b7099a7b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 016fbc8808c11f861dd4388ea5fb062c840187ea
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60249643"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561978"
 ---
 # <a name="sign-up-for-azure-active-directory-premium-editions"></a>Azure Active Directory Premium sürümleri için kaydolun
 Satın alma ve Azure Active Directory (Azure AD) Premium sürümleri, Azure aboneliğinizle ilişkilendirin. Yeni bir Azure aboneliği oluşturmanız gerekiyorsa, lisans planınızı ve Azure AD hizmeti erişimini etkinleştirmeniz gerekir.
@@ -40,7 +40,7 @@ Active Directory Premium 1 veya Premium 2’ye kaydolmadan önce, mevcut aboneli
 Azure veya Office 365 abonesi olarak, Azure Active Directory Premium edition’ları çevrimiçi satın alabilirsiniz. Ayrıntılı adımlar için bkz. [Azure Active Directory Premium'u satın alma - Mevcut Müşteriler](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-Existing-Customer) veya [Azure Active Directory Premium'u satın alma - Yeni Müşteriler](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-New-Customers).
 
 ## <a name="sign-up-using-your-enterprise-mobility--security-licensing-plan"></a>Enterprise Mobility + Security lisans planınızı kullanarak kaydolma
-Enterprise Mobility + Security, Azure AD Premium, Azure Information Protection ve Microsoft Intune oluşan bir paketi olur. Zaten bir EMS lisansınız varsa, şu lisans seçeneklerinden birini kullanarak Azure AD’yi kullanmaya başlayabilirsiniz:
+Enterprise Mobility + Security, Azure AD Premium, Azure Information Protection ve Microsoft Intune oluşan bir pakettir. Zaten bir EMS lisansınız varsa, şu lisans seçeneklerinden birini kullanarak Azure AD’yi kullanmaya başlayabilirsiniz:
 
 EMS hakkında daha fazla bilgi için bkz. [Enterprise Mobility + Security web sitesi](https://www.microsoft.com/cloud-platform/enterprise-mobility-security).
 
@@ -65,17 +65,17 @@ Yeni bir Azure AD lisans planı kullanarak kaydolduysanız, satın alımdan sonr
 ### <a name="to-activate-your-license-plan"></a>Lisans planınızı etkinleştirmek için
 - Kaydolduktan sonra Microsoft’tan aldığınız onay e-postasını açın ve sonra **Oturum Aç** veya **Kaydol** seçeneğine tıklayın.
    
-    ![Onay e-posta ile oturum açma ve kaydolma bağlantıları](media/active-directory-get-started-premium/MOLSEmail.png)
+    ![Oturum açma ve kaydolma bağlantılarında onay e-postası](media/active-directory-get-started-premium/MOLSEmail.png)
 
-    - **Oturum açın.** Mevcut bir kiracınız varsa bu bağlantıyı seçin ve sonra mevcut yönetici hesabınızı kullanarak oturum açın. Lisansların nerede etkinleştirilmesi, Kiracı genel yönetici olmanız gerekir.
+    - **Oturum açın.** Mevcut bir kiracınız varsa bu bağlantıyı seçin ve sonra mevcut yönetici hesabınızı kullanarak oturum açın. Lisansların etkinleştirildiği kiracıda genel yönetici olmanız gerekir.
 
     - **Kaydolun.** **Hesap Profili Oluştur** sayfasını açmak ve lisanslama planınız için yeni bir Azure AD kiracısı oluşturmak istiyorsanız bu bağlantıyı seçin.
 
-        ![Örnek bilgilerle hesabı profil sayfası oluşturun](media/active-directory-get-started-premium/MOLSAccountProfile.png)
+        ![Örnek bilgilerle hesap profili oluştur sayfası](media/active-directory-get-started-premium/MOLSAccountProfile.png)
 
 İşiniz bittiğinde, kiracınız için lisans planını etkileştirdiğiniz için teşekkür eden bir onay kutusu görürsünüz.
 
-![Onay kutusu teşekkür ederiz](media/active-directory-get-started-premium/MOLSThankYou.png)
+![Teşekkürler onay kutusu](media/active-directory-get-started-premium/MOLSThankYou.png)
 
 ## <a name="activate-your-azure-ad-access"></a>Azure AD erişiminizi etkinleştirme
 Mevcut bir aboneliğe yeni Azure AD Premium lisansları ekliyorsanız Azure AD erişiminiz zaten etkinleştirilmiş olmalıdır. Aksi halde **Hoş Geldiniz e-postasını** aldıktan sonra Azure AD erişiminizi etkinleştirmeniz gerekir.  
@@ -89,11 +89,11 @@ Satın aldığınız lisanslar dizininizde sağlandıktan sonra bir **Hoş geldi
 
 1. **Hoş geldiniz e-postasını** açın ve **Oturum Aç**’a tıklayın.
    
-    ![Vurgulanan oturum bağlantısını içeren e-posta Hoş Geldiniz](media/active-directory-get-started-premium/AADEmail.png)
+    ![Vurgulanan oturum açma bağlantısı ile hoş geldiniz e-postası](media/active-directory-get-started-premium/AADEmail.png)
 
 2. Başarıyla oturum açtıktan sonra bir mobil cihaz kullanarak iki aşamalı doğrulama yapacaksınız.
    
-    ![İki aşamalı doğrulama sayfası mobil doğrulama](media/active-directory-get-started-premium/SignUppage.png)
+    ![Mobil doğrulama ile iki adımlı doğrulama sayfası](media/active-directory-get-started-premium/SignUppage.png)
 
 Etkinleştirme işlemi genellikle yalnızca birkaç dakika sürer ve daha sonra Azure AD kiracınızı kullanabilirsiniz. 
 

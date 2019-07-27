@@ -1,7 +1,7 @@
 ---
-title: Azure Container Instances'ı çalıştırma
+title: Azure Container Instances-konuşma hizmetini Çalıştır
 titleSuffix: Azure Cognitive Services
-description: Azure Container Instance için konuşma tanıma hizmeti dağıtma ve bir web tarayıcısında test.
+description: Konuşma hizmeti kapsayıcısını bir Azure Container Instance 'a dağıtın ve bir Web tarayıcısında test edin.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,22 +10,22 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 7/5/2019
 ms.author: dapine
-ms.openlocfilehash: 062765be22135b12abb29ff6f7ce8a772c67adae
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 41589a12f16f330188e2971e3069eb715d1a7163
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67711521"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559719"
 ---
-# <a name="deploy-the-speech-service-container-to-azure-container-instances"></a>Konuşma hizmeti kapsayıcıyı Azure Container Instances'a dağıtacaksınız.
+# <a name="deploy-the-speech-service-container-to-azure-container-instances"></a>Konuşma hizmeti kapsayıcısını Azure Container Instances dağıtma
 
-Bilişsel hizmetler dağıtmayı öğrenirsiniz [konuşma hizmeti](speech-container-howto.md) Azure kapsayıcısına [Container Instances](https://docs.microsoft.com/azure/container-instances/). Bu yordamı, bir Azure konuşma hizmeti kaynağı oluşturulmasını gösterir. Ardından ilişkili kapsayıcı görüntüsünü çekme tartışın. Son olarak, orchestration bir tarayıcıdan iki çalışma olanağı vurgulayın. Kapsayıcıları kullanarak, bunun yerine, uygulama geliştirme odaklanarak altyapı Yönetimi işlerini hayatınızdan çıkarın, geliştiricilerin dikkat kaydırabilirsiniz.
+Bilişsel Hizmetler [konuşma hizmeti](speech-container-howto.md) kapsayıcısını Azure [Container Instances](https://docs.microsoft.com/azure/container-instances/)dağıtma hakkında bilgi edinin. Bu yordamda, bir Azure konuşma hizmeti kaynağının oluşturulması gösterilmektedir. Ardından, ilişkili kapsayıcı görüntüsünü çekme hakkında tartışın. Son olarak, bir tarayıcıdan ikisini de düzenleme özelliğini vurgulayacağız. Kapsayıcıları kullanmak, geliştiricilerin bu dikkatini, uygulama geliştirmeye odaklanmadan, altyapının bir şekilde yönetilmesini sağlar.
 
 [!INCLUDE [Prerequisites](../containers/includes/container-preview-prerequisites.md)]
 
-## <a name="request-access-to-the-container-registry"></a>Kapsayıcı kayıt defterine erişim isteği
+## <a name="request-access-to-the-container-registry"></a>Kapsayıcı kayıt defterine erişim isteme
 
-Önce tamamlamanız ve gönderme gerekir [Bilişsel hizmetler konuşma kapsayıcıları istek formunu](https://aka.ms/speechcontainerspreview/) kapsayıcıya erişim istemek için. 
+Kapsayıcıya erişim istemek için önce bilişsel [Hizmetler konuşma kapsayıcıları istek formunu](https://aka.ms/speechcontainerspreview/) doldurmanız ve göndermeniz gerekir. 
 
 [!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
 

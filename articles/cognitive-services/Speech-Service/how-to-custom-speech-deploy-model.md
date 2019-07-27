@@ -1,7 +1,7 @@
 ---
-title: Özel konuşma - konuşma Hizmetleri için model dağıtma
-titlesuffix: Azure Cognitive Services
-description: Bu belgede, özel konuşma tanıma portalı kullanarak bir uç nokta oluşturup dağıtmayı öğreneceksiniz.
+title: Özel Konuşma Tanıma konuşma hizmeti için model dağıtma
+titleSuffix: Azure Cognitive Services
+description: Bu belgede, Özel Konuşma Tanıma portalını kullanarak bir uç nokta oluşturmayı ve dağıtmayı öğreneceksiniz.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,44 +10,44 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: f2b69bf3e5d536e7e813ef4a7c36b2937141fd43
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 15e2ce437a746d15622dc4e093a63c87448f100d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606619"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559669"
 ---
 # <a name="deploy-a-custom-model"></a>Özel bir modeli dağıtma
 
-Karşıya ve veri inceledi, doğruluk hesaplanan ve özel bir modeli eğitilir sonra uygulamalar, Araçlar ve ürünlerle kullanmak için özel bir uç noktasını dağıtabilirsiniz. Bu belgede, özel konuşma tanıma portalı kullanarak bir uç nokta oluşturup dağıtmayı öğreneceksiniz.
+Verileri karşıya yükledikten ve inceledikten, doğruluğu değerlendirdikten ve özel bir model eğitilene kadar, uygulamalarınız, araçlarınızla ve ürünlerinizle kullanmak üzere özel bir uç nokta dağıtabilirsiniz. Bu belgede, Özel Konuşma Tanıma portalını kullanarak bir uç nokta oluşturmayı ve dağıtmayı öğreneceksiniz.
 
 ## <a name="create-a-custom-endpoint"></a>Özel uç nokta oluşturma
 
-Yeni özel uç nokta oluşturmak için Seç **dağıtım** sayfanın üstündeki özel konuşma menüsünde. Bu kez ise, tabloda listelenen uç nokta olduğunu fark edeceksiniz. Bir uç nokta oluşturduktan sonra dağıtılan her uç nokta izlemek için bu sayfayı kullanacaksınız.
+Yeni bir özel uç nokta oluşturmak için sayfanın üst kısmındaki Özel Konuşma Tanıma menüsünden **dağıtım** ' ı seçin. İlk kez çalıştırıldıysanız tabloda listelenen bitiş noktaları olmadığını fark edeceksiniz. Bir uç nokta oluşturduktan sonra, bu sayfayı dağıtılan her bitiş noktasını izlemek için kullanacaksınız.
 
-Ardından, **uç noktası ekleme** girin bir **adı** ve **açıklama** özel uç noktanız için. Ardından bu uç nokta ile ilişkilendirmek istediğiniz özel bir model seçin. Bu sayfadan günlük kaydını etkinleştirebilirsiniz. Günlüğe kaydetme, uç nokta trafiği izlemenize olanak sağlar. Devre dışı bırakılırsa traffic kaydedilmez.
+Sonra, **uç nokta Ekle** ' yi seçin ve özel uç noktanız Için bir **ad** ve **Açıklama** girin. Ardından, bu uç nokta ile ilişkilendirmek istediğiniz özel modeli seçin. Bu sayfadan günlüğe kaydetmeyi de etkinleştirebilirsiniz. Günlüğe kaydetme, uç nokta trafiğini izlemenizi sağlar. Devre dışı bırakılırsa trafik depolanmaz.
 
-![Bir model dağıtma](./media/custom-speech/custom-speech-deploy-model.png)
+![Model dağıtma](./media/custom-speech/custom-speech-deploy-model.png)
 
 > [!NOTE]
-> Kullanım ve fiyatlandırma ayrıntıları koşullarını kabul etmek unutmayın.
+> Kullanım koşullarını ve fiyatlandırma ayrıntılarını kabul etmek zorunda kalmazsınız.
 
-Ardından, **Oluştur**. Bu eylem, döndürür **dağıtım** sayfası. Tablo artık özel uç noktanıza karşılık gelen bir giriş içerir. Uç noktasının durumu geçerli durumunu gösterir. Bu özel Modellerinizi kullanarak yeni bir uç noktayı örneklemek için en fazla 30 dakika sürebilir. Dağıtım durumu değiştiğinde **tam**, uç noktayı kullanıma hazırdır.
+Sonra **Oluştur**' u seçin. Bu eylem sizi **dağıtım** sayfasına döndürür. Tablo artık özel uç noktanıza karşılık gelen bir giriş içerir. Uç noktanın durumu geçerli durumunu gösterir. Özel modellerinizi kullanarak yeni bir uç noktanın örneklendirilecek 30 dakikaya kadar zaman alabilir. Dağıtımın durumu **tamamlandığında**, uç nokta kullanıma kullanılır.
 
-Uç noktanız dağıtıldıktan sonra uç nokta adına bir bağlantı olarak görünür. Uç nokta, uç nokta URL'si ve örnek kod gibi uç noktanıza özel bilgileri görüntülemek için bağlantıya tıklayın.
+Uç noktanız dağıtıldıktan sonra, uç nokta adı bir bağlantı olarak görünür. Uç nokta anahtarı, uç nokta URL 'SI ve örnek kod gibi uç noktanıza özgü bilgileri göstermek için bağlantıya tıklayın.
 
 ## <a name="view-logging-data"></a>Günlük verilerini görüntüleme
 
-Günlük verilerini şu altında indirilebilir **uç noktası > Ayrıntılar**.
+Günlüğe kaydetme verileri, **uç nokta > ayrıntıları**altında indirilebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Özel uç noktanız ile [Speech SDK'sı](speech-sdk.md)
+* [Konuşma SDK 'sı](speech-sdk.md) ile özel uç noktanızı kullanın
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Hazırlama ve test, verileri](how-to-custom-speech-test-data.md)
-* [Verilerinizi denetleyin](how-to-custom-speech-inspect-data.md)
+* [Verilerinizi hazırlayın ve test edin](how-to-custom-speech-test-data.md)
+* [Verilerinizi inceleyin](how-to-custom-speech-inspect-data.md)
 * [Verilerinizi değerlendirin](how-to-custom-speech-evaluate-data.md)
-* [Modelinizi eğitin](how-to-custom-speech-train-model.md)
-* [Modelinizi dağıtma](how-to-custom-speech-deploy-model.md)
+* [Modelinize eğitme](how-to-custom-speech-train-model.md)
+* [Modelinizi dağıtın](how-to-custom-speech-deploy-model.md)

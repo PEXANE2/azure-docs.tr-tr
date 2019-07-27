@@ -1,6 +1,6 @@
 ---
-title: Normal ifade varlık türü
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Normal ifade varlık türü-LUSıS
+titleSuffix: Azure Cognitive Services
 description: Normal ifade, ham söylenişi metin için en iyisidir. Küçük büyük harf duyarlı ve kültürel bir değişken yok sayar.  Normal ifadenin eşleştirilmesi, yazım denetimi değişiklikleri karakter düzeyinde belirteci düzeyinde değil sonra uygulanır.
 services: cognitive-services
 author: diberry
@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 07/24/2019
 ms.author: diberry
-ms.openlocfilehash: dfffea26ccd8dfcecea2c6a2e07234f3ab27f72b
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 82cce359f2161800c53ccce7cdb0342bba759d43
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68480236"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559942"
 ---
 # <a name="regular-expression-entity"></a>Normal ifade varlığı 
 

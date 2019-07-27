@@ -1,7 +1,7 @@
 ---
-title: Varlık ekleme
-titleSuffix: Language Understanding - Azure Cognitive Services
-description: Language Understanding (LUIS) uygulamalarında kullanıcı konuşma anahtar verileri ayıklamak için varlıklar oluşturun.
+title: Varlık Ekle-LUSıS
+titleSuffix: Azure Cognitive Services
+description: Language Understanding (LUSıS) uygulamalarındaki Kullanıcı dıklarından anahtar verileri ayıklamak için varlıklar oluşturun.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,24 +11,24 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 241e89ac7fa78184e7c55f9e8065e1534cea9143
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fdf60a454aeb19b83ce455a771b8399c90af3bce
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65148722"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563752"
 ---
 # <a name="create-entities-without-utterances"></a>Konuşma olmadan varlık oluşturma
 
-Varlık, bir sözcük veya tümcecik ayıklanan istediğiniz utterance içinde temsil eder. Bir varlık (basamak, noktalar, kişiler, olayları veya kavramları) benzer nesnelerinin bir koleksiyonunu içeren bir sınıfı temsil eder. Bazen uygulamanızın görevini gerçekleştirmek gerekli olan ve bilgi ıntent'e ilgili varlıkları anlatmaktadır. (Önce veya sonra) bir utterance bir hedefi veya sonraya gelen eklediğinizde varlık oluşturabileceğiniz bir amaç için bir utterance ekleme.
+Varlık, bir sözcük veya tümcecik ayıklanan istediğiniz utterance içinde temsil eder. Bir varlık, benzer nesneler (yer, şeyler, kişiler, olaylar veya kavramlar) koleksiyonu dahil bir sınıfı temsil eder. Bazen uygulamanızın görevini gerçekleştirmek gerekli olan ve bilgi ıntent'e ilgili varlıkları anlatmaktadır. Bir amaca veya bir amaca göre (önce veya sonra) bir amaca göre ekleme yaptığınızda varlıklar oluşturabilirsiniz.
 
 Ekleme, düzenleme veya LUIS uygulamanızda varlıklarını silme **varlıkları listesi** üzerinde **varlıkları** sayfası. LUIS, iki ana tür varlıklar sunar: [önceden oluşturulmuş varlıklarla](luis-reference-prebuilt-entities.md)ve kendi [özel varlıklar](luis-concept-entity-types.md#types-of-entities).
 
-Makine öğrenilen bir varlık oluşturulduktan sonra bu durumda tüm hedefleri tüm örnek utterance varlıkta işaretlemek gerekir.
+Makine tarafından öğrenilen bir varlık oluşturulduktan sonra, söz konusu varlığı içindeki tüm amaçların her örneğinde işaretlemeniz gerekir.
 
 <a name="add-prebuilt-entity"></a>
 
-## <a name="add-a-prebuilt-entity-to-your-app"></a>Önceden oluşturulmuş bir varlık ekleme
+## <a name="add-a-prebuilt-entity-to-your-app"></a>Uygulamanıza önceden oluşturulmuş bir varlık ekleyin
 
 Bir uygulamaya eklenen ortak önceden oluşturulmuş varlıklar *numarası* ve *datetimeV2*. 
 
@@ -42,7 +42,7 @@ Bir uygulamaya eklenen ortak önceden oluşturulmuş varlıklar *numarası* ve *
 
 <a name="add-simple-entities"></a>
 
-## <a name="add-simple-entities-for-single-concepts"></a>Tek kavramlar için basit bir varlık ekleme
+## <a name="add-simple-entities-for-single-concepts"></a>Tek kavramlar için basit varlıklar ekleyin
 
 Bir varlığın tek bir kavramı açıklanmaktadır. Şirket bölüm adlarını gibi ayıklar bir varlık oluşturmak için aşağıdaki yordamı kullanın. *İnsan Kaynakları* veya *Operations*.   
 
@@ -64,11 +64,11 @@ Bir normal ifade varlık sağladığınız bir normal ifadeye göre utterance ve
 
 1. Açılan iletişim kutusuna `Human resources form name` içinde **varlık adı** kutusunda **normal ifade** gelen **varlık türü** listesinde, normal ifade girin`hrf-[0-9]{6}`ve ardından **Bitti**. 
 
-    Bu normal ifade sabit karakterleriyle eşleşen `hrf-`, daha sonra 6 basamaklı bir formu temsil etmek için bir insan kaynakları form sayı.
+    Bu normal ifade, bir insan `hrf-`kaynakları formu için bir form numarasını göstermek üzere sabit karakterlerle ve 6 basamakla eşleşir.
 
 <a name="add-composite-entities"></a>
 
-## <a name="add-composite-entities-to-group-into-a-parent-child-relationship"></a>Bir üst-alt ilişkisi gruplandırmak için bileşik bir varlık ekleme
+## <a name="add-composite-entities-to-group-into-a-parent-child-relationship"></a>Gruba bir üst-alt ilişkisine bileşik varlıklar ekleme
 
 Bileşik bir varlık oluşturarak farklı türlerde varlıklar arasında ilişkiler tanımlayabilirsiniz. Aşağıdaki örnekte, varlık, normal bir ifade ve önceden oluşturulmuş bir varlık adını içerir.  
 
@@ -92,7 +92,7 @@ Utterance içinde `Send hrf-123456 to John Smith`, metin `hrf-123456` bir insan 
 
 <a name="add-pattern-any-entities"></a>
 
-## <a name="add-patternany-entities-to-capture-free-form-entities"></a>Serbest biçimli varlıkları yakalamak için Pattern.any varlık ekleme
+## <a name="add-patternany-entities-to-capture-free-form-entities"></a>Ücretsiz form varlıklarını yakalamak için herhangi bir varlık ekleyin.
 
 [Pattern.Any](luis-concept-entity-types.md) varlıklardır yalnızca geçerli [desenleri](luis-how-to-model-intent-pattern.md), amacı değildir. Bu varlık türü, değişken uzunluğu ve sözcük seçimi varlıklarının sonuna Bul LUIS yardımcı olur. Bu varlık içindeki bir desenle kullanıldığından LUIS son varlık utterance şablonda olduğu bilir.
 
@@ -110,11 +110,11 @@ Utterance içinde `Where is Request relocation from employee new to the company 
 
 <a name="add-a-role-to-pattern-based-entity"></a>
 
-## <a name="add-a-role-to-distinguish-different-contexts"></a>Farklı bağlamlardaki ayırt etmek için bir rol eklemek
+## <a name="add-a-role-to-distinguish-different-contexts"></a>Farklı bağlamları ayırt etmek için rol ekleme
 
-Bağlama göre adlandırılmış alt rolüdür. Önceden oluşturulmuş ve makine öğrenilen varlıklar dahil olmak üzere tüm varlıkları kullanılabilir. 
+Rol, bağlamı temel alan adlandırılmış bir alt türdür. Önceden oluşturulmuş ve makine tarafından öğrenilen varlıklar dahil tüm varlıklarda kullanılabilir. 
 
-Bir rol için söz dizimi **`{Entityname:Rolename}`** nerede varlık adının ardından bir iki nokta üst üste sonra rol adı. Örneğin, `Move {personName} from {LocationUsingRoles:Origin} to {LocationUsingRoles:Destination}`.
+Rol için sözdizimi, varlık adının **`{Entityname:Rolename}`** ardından iki nokta üst üste, ardından rol adından sonra yer aldığı yerdir. Örneğin: `Move {personName} from {LocationUsingRoles:Origin} to {LocationUsingRoles:Destination}`.
 
 1. Gelen **derleme** bölümünden **varlıkları** sol bölmesinde.
 
@@ -128,7 +128,7 @@ Bir rol için söz dizimi **`{Entityname:Rolename}`** nerede varlık adının ar
 
 <a name="add-list-entities"></a>
 
-## <a name="add-list-entities-for-exact-matches"></a>Tam eşleşme için liste varlık ekleme
+## <a name="add-list-entities-for-exact-matches"></a>Tam eşleşmeler için liste varlıkları ekleme
 
 Liste varlık ilgili sözcükler sabit, kapalı bir kümesini temsil eder. 
 
@@ -144,7 +144,7 @@ Liste varlık ilgili sözcükler sabit, kapalı bir kümesini temsil eder.
 
 1. Daha fazla normalleştirilmiş öğeleri listesini istiyorsanız seçin **önerilir** seçenekleri görmek için [anlam sözlük](luis-glossary.md#semantic-dictionary).
 
-    ![Seçenekleri görmek için önerilen özellik seçimi ekran görüntüsü](./media/add-entities/hr-list-2.png)
+    ![Seçenekleri görmek için önerilen özelliği seçme ekran görüntüsü](./media/add-entities/hr-list-2.png)
 
 
 1. Normalleştirilmiş bir değer olarak ekleyin veya seçmek için önerilen listesinden bir öğe seçin **tüm eklemek** tüm öğeleri eklenecek. 
@@ -173,13 +173,13 @@ Liste varlık ilgili sözcükler sabit, kapalı bir kümesini temsil eder.
 
 <a name="change-entity-type"></a>
 
-## <a name="do-not-change-entity-type"></a>Varlık türü değiştirmeyin.
+## <a name="do-not-change-entity-type"></a>Varlık türünü değiştirme
 
 LUIS, ekleme veya kaldırma, varlık oluşturmak için gerekenler bilmediği varlık türünü değiştirmek izin vermez. Türü değiştirmek için biraz daha farklı bir adla doğru türde yeni bir varlık oluşturmak iyidir. Varlık oluşturulduktan sonra eski etiketli varlık adı her utterance içinde kaldırıp yeni varlık adı ekleyin. Tüm sesleri relabeled sonra eski varlığı silin. 
 
 <a name="create-a-pattern-from-an-utterance"></a>
 
-## <a name="create-a-pattern-from-an-example-utterance"></a>Bir örnek utterance bir düzen oluşturma
+## <a name="create-a-pattern-from-an-example-utterance"></a>Örnekle bir desen oluşturun
 
 Bkz: [hedefi veya varlık sayfasında mevcut utterance Ekle deseni](luis-how-to-model-intent-pattern.md#add-pattern-from-existing-utterance-on-intent-or-entity-page).
 

@@ -1,6 +1,6 @@
 ---
-title: Tümcecik listeleri
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Tümcecik listeleri-LUSıS
+titleSuffix: Azure Cognitive Services
 description: Bu kategori ve desenleri algılama veya hedefleri ve varlıkların tahmin iyileştirebilir uygulama özelliklerini eklemek için Language Understanding (LUIS) kullanın
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/16/2019
 ms.author: diberry
-ms.openlocfilehash: 0723c3730ca0ae6325d828fbb5f41698cb807dd3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 75764fd0a3f862157d9377d7dc886334ef1231db
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60195934"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563714"
 ---
 # <a name="use-phrase-lists-to-boost-signal-of-word-list"></a>Kullanım deyimi word listesinin boost sinyale listeler
 
@@ -28,7 +28,7 @@ Bir ifade listesi uygulama etki alanının sözlüğü LUIS için ikinci bir sin
 
 ## <a name="add-phrase-list"></a>İfade listesi ekleme
 
-LUIS, uygulama başına en fazla 10 tümcecik listeler sağlar. 
+LUO, uygulama başına en fazla 10 ifade listesine izin verir. 
 
 1. Adını tıklayarak uygulamanızı açın **uygulamalarım** sayfasında ve ardından **derleme**, ardından **tümcecik listeleri** uygulamanızın sol panelde. 
 
@@ -40,11 +40,11 @@ LUIS, uygulama başına en fazla 10 tümcecik listeler sağlar.
 
 4. LUIS, tümcecik listenize eklemek için ilgili değerleri önerebilirsiniz. Tıklayın **önerilir** bir grup için added value(s) anlamsal olarak ilişkili önerilen değerleri almak için. Önerilen değerlerden herhangi birini tıklatın veya tıklatın **Ekle** bunları eklemek için tüm.
 
-    ![Önerilen değerler listesini tümcecik - Tümünü Ekle](./media/luis-add-features/related-values.png)
+    ![Tümcecik listesi önerilen değerler-tümünü ekle](./media/luis-add-features/related-values.png)
 
 5. Tıklayın **birbirinin yerine bu değerleri** birbirlerinin yerine kullanılabilir seçenekleri eklendi ifade listesi değerler.
 
-    ![Önerilen değerler listesini tümcecik - birbirinin yerine kutusunu seçin](./media/luis-add-features/interchangeable.png)
+    ![Tümcecik listesi önerilen değerler-değiştirilebilir kutu seç](./media/luis-add-features/interchangeable.png)
 
 6. **Kaydet**’e tıklayın. "Şehir" tümceciği listeye eklenen **tümcecik listeleri** sayfası.
 

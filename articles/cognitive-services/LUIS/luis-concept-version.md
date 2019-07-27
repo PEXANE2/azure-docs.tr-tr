@@ -1,7 +1,7 @@
 ---
-title: Sürüm oluşturma
-titleSuffix: Language Understanding - Azure Cognitive Services
-description: Geleneksel programlama sürümlerinde sürümlerinde LUIS, benzer. Her sürüm, uygulamanın zaman içinde bir anlık görüntüdür. Uygulamada bir değişiklik yapmadan önce yeni bir sürümünü oluşturun. Unpeel denemek için tam uygulamasına ve uygulamanın amacını ve konuşma önceki bir duruma geri dönmek kolaydır.
+title: Sürüm oluşturma-LUSıS
+titleSuffix: Azure Cognitive Services
+description: LUSıS 'deki sürümler geleneksel programlama sürümlerindeki sürümlere benzerdir. Her sürüm, uygulamanın zaman içindeki bir anlık görüntüdür. Uygulamada değişiklik yapmadan önce yeni bir sürüm oluşturun. Tam uygulamaya dönmek daha kolay hale gelir ve ardından önceki bir duruma ve uygulamanın amacını ve araslarını kullanmayı deneyin.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,59 +11,59 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: diberry
-ms.openlocfilehash: 9da79e5b744f8ba70c0e265f0d1f0126b37eba49
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 75e82cf8a9da7b75f372f35270b16b10ec6e3da6
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60509688"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563861"
 ---
-# <a name="understand-how-and-when-to-use-a-luis-version"></a>Nasıl ve ne zaman anlamak LUIS sürümünü kullanmak için
+# <a name="understand-how-and-when-to-use-a-luis-version"></a>Bir LUSıS sürümünün nasıl ve ne zaman kullanılacağını anlayın
 
-Geleneksel programlama sürümlerinde sürümlerinde LUIS, benzer. Her sürüm, uygulamanın zaman içinde bir anlık görüntüdür. Uygulamada bir değişiklik yapmadan önce yeni bir sürümünü oluşturun. Tam sürüme geri dönün ve ardından hedefleri ve önceki bir duruma konuşma kaldırmaya kolaydır.
+LUSıS 'deki sürümler geleneksel programlama sürümlerindeki sürümlere benzerdir. Her sürüm, uygulamanın zaman içindeki bir anlık görüntüdür. Uygulamada değişiklik yapmadan önce yeni bir sürüm oluşturun. Tam sürüme dönmek daha kolay hale gelir ve daha sonra amaçları ve kullanımları önceki bir duruma kaldırmaya çalışır.
 
-İle aynı uygulamanın farklı modelleri oluşturma [sürümleri](luis-how-to-manage-versions.md). 
+[Sürümleriyle](luis-how-to-manage-versions.md)aynı uygulamanın farklı modellerini oluşturun. 
 
-## <a name="version-id"></a>Sürüm kimliği
-Sürüm kimliği basamak karakterlerinden oluşur veya '.' ve 10 karakterden uzun olamaz.
+## <a name="version-id"></a>Sürüm KIMLIĞI
+Sürüm KIMLIĞI, karakterler, rakamlar veya '. ' karakterlerinden oluşur ve 10 karakterden uzun olamaz.
 
-## <a name="initial-version"></a>İlk sürümü
-Başlangıç sürümü (0,1) Varsayılan active sürümüdür. 
+## <a name="initial-version"></a>İlk sürüm
+İlk sürüm (0,1) varsayılan etkin sürümdür. 
 
-## <a name="active-version"></a>Etkin sürümü
-İçin [bir sürümünü ayarlama](luis-how-to-manage-versions.md#set-active-version) etkin, şu anda düzenlenebilir ve test oluşturucusunu [LUIS](luis-reference-regions.md) Web sitesi. Bir sürüm kendi verilerine erişim, test etmek ve yayımlamak için güncelleştirmeleri de yapmak için etkin olarak ayarlayın.
+## <a name="active-version"></a>Etkin sürüm
+Etkin olarak [bir sürüm ayarlamak](luis-how-to-manage-versions.md#set-active-version) için, bu, şu anda [lusıs](luis-reference-regions.md) Web sitesinde düzenlenmekte ve test edilmiştir. Bir sürümü, verilerine erişmek, güncelleştirmeleri yapmak ve test etmek ve yayımlamak için etkin olarak ayarlayın.
 
-Şu anda etkin sürümünün adı uygulama adından sonra üst, sol bölmede görüntülenir. 
+Şu anda etkin olan sürümün adı, uygulama adından sonra sol bölmede görüntülenir. 
 
-[![Etkin sürümünü Değiştir](./media/luis-concept-version/version-in-nav-bar-inline.png)](./media/luis-concept-version/version-in-nav-bar-expanded.png#lightbox)
+[![Etkin sürümü Değiştir](./media/luis-concept-version/version-in-nav-bar-inline.png)](./media/luis-concept-version/version-in-nav-bar-expanded.png#lightbox)
 
-## <a name="versions-and-publishing-slots"></a>Sürümleri ve yayımlama yuvaları
-Sizin için ya da bir aşama ve ürün yuvaları yayımlayın. Her yuva, farklı bir sürüm veya aynı sürüme sahip olabilir. Bu, robotlar veya diğer LUIS uygulamalar için kullanılabilir uç noktası aracılığıyla model sürümleri arasındaki değişiklikleri doğrulamak için kullanışlıdır. 
+## <a name="versions-and-publishing-slots"></a>Sürümler ve yayımlama Yuvaları
+Aşamada ve ürün yuvalarına yayımlayabilirsiniz. Her yuva farklı bir sürüme veya aynı sürüme sahip olabilir. Bu, botlar veya başka bir LUARA uygulama çağıran uygulamalar tarafından kullanılabilen uç nokta aracılığıyla model sürümleri arasındaki değişiklikleri doğrulamak için kullanışlıdır. 
 
 ## <a name="clone-a-version"></a>Sürümü Kopyala
-Mevcut bir sürümünün bir kopyasını oluşturun ve yeni bir sürüm olarak kaydetmek için bir sürüm kopyalayın. Mevcut sürümde aynı içerik yeni sürüm için başlangıç noktası olarak kullanmak için bir sürüm kopyalayın. Bir sürüm kopyalama sonra yeni sürümü haline gelir **etkin** sürümü. 
+Var olan bir sürümün kopyasını oluşturmak ve yeni bir sürüm olarak kaydetmek için bir sürümü klonlayın. Yeni sürüm için bir başlangıç noktası olarak, var olan sürümle aynı içeriği kullanmak için bir sürümü kopyalayın. Bir sürümü klonladıktan sonra, yeni sürüm **etkin** sürüm olur. 
 
-## <a name="import-and-export-a-version"></a>İçeri ve dışarı aktarma sürümü
-Uygulama düzeyinde bir sürümü içeri aktarabilirsiniz. Bu sürüm, etkin sürümü haline gelir ve sürüm kimliği uygulama dosyasını "VersionID" özelliğinde kullanılan. Ayrıca, mevcut uygulamalarla sürüm düzeyinde içeri aktarabilirsiniz. Yeni sürümü etkin sürümü haline gelir. 
+## <a name="import-and-export-a-version"></a>Bir sürümü içeri ve dışarı aktarma
+Uygulama düzeyinde bir sürümü içeri aktarabilirsiniz. Bu sürüm etkin sürüm olur ve uygulama dosyasının "VersionId" özelliğindeki sürüm KIMLIĞINI kullanır. Ayrıca, sürüm düzeyinde mevcut bir uygulamaya de aktarabilirsiniz. Yeni sürüm etkin sürüm olur. 
 
-Uygulama düzeyinde bir sürüm dışa aktarabilirsiniz veya bir sürüm sürüm düzeyinde dışarı aktarabilirsiniz. Tek fark, uygulama düzeyinde verilen sürüm sırada sürüm düzeyinde şu anda etkin olan açıklamadır, herhangi bir sürümü üzerinde dışarı aktarmak için seçebileceğiniz **[ayarları](luis-how-to-manage-versions.md)** sayfası. 
+Uygulama düzeyinde bir sürümü dışarı aktarabilir veya sürüm düzeyinde bir sürümü dışarı aktarabilirsiniz. Tek fark, uygulama düzeyinde dışarı aktarılmış sürümün sürüm düzeyinde şu anda etkin olan sürümüdür, **[Ayarlar](luis-how-to-manage-versions.md)** sayfasında dışarı aktarılacak herhangi bir sürümü seçebilirsiniz. 
 
-İçeri aktarıldıktan sonra uygulamayı retrained için dışarı aktarılan dosyayı makine öğrenilen bilgileri içermiyor. Dışarı aktarılan dosyayı ortak çalışanlar içermiyor--sürümü yeni bir uygulamaya içeri aktarıldıktan sonra bu geri eklemeniz gerekir.
+Aktarılan dosya, uygulama alındıktan sonra geri alındığından, makine tarafından öğrenilen bilgiler içermez. Aktarılan dosya, ortak çalışan içermiyor. sürüm yeni uygulamaya aktarıldığında bu yeniden eklemeniz gerekir.
 
-## <a name="export-each-version-as-app-backup"></a>Her sürüm uygulama yedek olarak dışarı aktarma
-LUIS uygulamanızı yedekleme için her bir sürümü üzerinde dışarı aktarma **[ayarları](luis-how-to-manage-versions.md)** sayfası.
+## <a name="export-each-version-as-app-backup"></a>Her sürümü uygulama yedeklemesi olarak dışarı aktar
+LUSıS uygulamanızı yedeklemek için, **[Ayarlar](luis-how-to-manage-versions.md)** sayfasındaki her sürümü dışarı aktarın.
 
-## <a name="delete-a-version"></a>Bir sürüm Sil
-Ayarları sayfasında sürümler listeden etkin sürümü hariç tüm sürümler silebilirsiniz. 
+## <a name="delete-a-version"></a>Bir sürümü Sil
+Ayarlar sayfasındaki sürümler listesinden etkin sürüm dışındaki tüm sürümleri silebilirsiniz. 
 
-## <a name="version-availability-at-the-endpoint"></a>Uç nokta kullanılabilirliğine sürümü
-Eğitilen sürümleri uygulamanızı otomatik olarak kullanılabilir olmayan [uç nokta](luis-glossary.md#endpoint). Yapmanız gerekenler [yayımlama](luis-how-to-publish-app.md) veya bir sürüm, uygulama uç noktada kullanılabilir olması için sırayla yeniden yayımlayın. Yayımlayabilir **hazırlama** ve **üretim**, uç noktada kullanılabilir uygulama en fazla iki sürümü vermiş. Daha fazla kullanılabilir bir uç noktada uygulama sürümlerini gerekiyorsa, sürüm dışarı aktarma ve yeni bir uygulamaya yeniden içeri aktarın gerekir. Yeni uygulama, bir farklı uygulama kimliği vardır.
+## <a name="version-availability-at-the-endpoint"></a>Uç noktada sürüm kullanılabilirliği
+Eğitilen sürümler, uygulama [uç](luis-glossary.md#endpoint)noktanıza otomatik olarak kullanılamaz. Uygulamanın uç noktanıza kullanılabilmesi için bir sürümü [yayımlamanız](luis-how-to-publish-app.md) veya yeniden yayımlamanız gerekir. **Hazırlama** ve **üretime**yayınlayabilirsiniz ve bu sayede, en fazla uygulamanın uç noktada kullanılabilir olan iki sürümü sağlayabilirsiniz. Bir uç noktada uygulamanın daha fazla sürümü varsa, sürümü dışarı aktarıp yeni bir uygulamaya yeniden içeri aktarmanız gerekir. Yeni uygulamanın farklı bir uygulama KIMLIĞI vardır.
 
-## <a name="collaborators"></a>Ortak Çalışanlar
-Sahibi ve tüm [ortak çalışanlar](luis-how-to-collaborate.md) uygulamanın tüm sürümler için tam erişime sahiptir.
+## <a name="collaborators"></a>Ortak çalışanlar
+Sahip ve tüm [ortak çalışanlar](luis-how-to-collaborate.md) , uygulamanın tüm sürümlerine tam erişime sahiptir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Eklemeyi öğrenmek [sürüm](luis-how-to-manage-versions.md) uygulama ayarları sayfasında. 
+Bkz. uygulama ayarları sayfasında [sürüm oluşturma](luis-how-to-manage-versions.md) ekleme. 
 
-Tasarlamayı öğrenin [hedefleri](luis-concept-intent.md) modeline.
+Modele [amaçları](luis-concept-intent.md) nasıl tasarlayacağınızı öğrenin.

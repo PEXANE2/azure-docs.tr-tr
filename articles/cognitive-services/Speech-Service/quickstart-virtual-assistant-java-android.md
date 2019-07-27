@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı Başlangıç: Özel ses öncelikli sanal asistan (Önizleme), Java (Android) - konuşma Hizmetleri'
+title: 'Hızlı Başlangıç: Özel ses-ilk Sanal Yardımcısı (Önizleme), Java (Android)-konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Android Speech SDK'sı kullanarak Java'da bir ses öncelikli sanal asistan uygulaması oluşturmayı öğrenin
+description: Konuşma SDK 'sını kullanarak Android 'de Java 'da bir ses-ilk Sanal Yardımcısı uygulaması oluşturmayı öğrenin
 services: cognitive-services
 author: trrwilson
 manager: nitinme
@@ -10,32 +10,32 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: travisw
-ms.openlocfilehash: c62402faa1995e1e992c8251ed87160a8f33d3a7
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 1c203bb39a90fdb1c77c3a2c844318a748df7c63
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602738"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559204"
 ---
-# <a name="quickstart-create-a-voice-first-virtual-assistant-in-java-on-android-by-using-the-speech-sdk"></a>Hızlı Başlangıç: Speech SDK'sı kullanarak bir ses öncelikli sanal asistan Android üzerinde Java oluşturun
+# <a name="quickstart-create-a-voice-first-virtual-assistant-in-java-on-android-by-using-the-speech-sdk"></a>Hızlı Başlangıç: Konuşma SDK 'sını kullanarak Android 'de Java 'da ilk olarak bir ses Sanal Yardımcısı oluşturma
 
-Bir hızlı başlangıç için de kullanılabilir olan [konuşma metin](quickstart-java-android.md).
+[Konuşmayı metne](quickstart-java-android.md)dönüştürme için de bir hızlı başlangıç vardır.
 
-Bu makalede, Android kullanarak Java ile bir ses öncelikli sanal asistan oluşturacaksınız [Speech SDK'sı](speech-sdk.md). Bu uygulama, önceden yazılmış ve yapılandırılmış bir bot bağlanacağı [doğrudan satır konuşma kanal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech). Ardından bir ses isteği göndermek için robot ve bir ses etkin yanıt etkinliği sunar.
+Bu makalede, [konuşma SDK 'sını](speech-sdk.md)kullanarak Android için Java ile bir sesli ilk sanal yardımcı oluşturacaksınız. Bu uygulama, zaten yazdığınız ve [doğrudan hat konuşma kanalı](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)ile yapılandırdığınız bir bot 'a bağlanır. Ardından, bot 'a bir sesli istek gönderir ve ses özellikli bir yanıt etkinliği sunar.
 
-Bu uygulama, konuşma SDK Maven paketini ve Android Studio 3.3 ile oluşturulmuştur. Konuşma SDK’sı şu anda 32/64 bit ARM işlemcilerine sahip Android cihazlarıyla ve Intel x86/x64 uyumlu işlemcilerle uyumludur.
+Bu uygulama, konuşma SDK Maven paketiyle oluşturulmuştur ve 3,3 Android Studio. Konuşma SDK’sı şu anda 32/64 bit ARM işlemcilerine sahip Android cihazlarıyla ve Intel x86/x64 uyumlu işlemcilerle uyumludur.
 
 > [!NOTE]
 > Konuşma Cihazları SDK’sı ve Roobo cihazı için bkz. [Konuşma Cihazları SDK’sı](speech-devices-sdk.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Konuşma Hizmetleri için bir Azure aboneliği anahtarı. [Ücretsiz edinin](get-started.md) ya da üzerinde oluşturma [Azure portalında](https://portal.azure.com).
-* Yapılandırılmış önceden oluşturulmuş bir bot [doğrudan satır konuşma kanal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
-* [Android Studio](https://developer.android.com/studio/) v3.3 veya üzeri
+* Konuşma Hizmetleri için bir Azure abonelik anahtarı. [Ücretsiz olarak bir tane alın](get-started.md) veya [Azure Portal](https://portal.azure.com)oluşturun.
+* [Doğrudan hat konuşma kanalı](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) ile yapılandırılmış daha önce oluşturulmuş bir bot
+* [Android Studio](https://developer.android.com/studio/) v 3.3 veya üzeri
 
     > [!NOTE]
-    > Doğrudan satır okuma (Önizleme) şu anda konuşma Hizmetleri bölgelerin alt kümesinde kullanılabilir. Lütfen [ses öncelikli sanal Yardımcıları için desteklenen bölgelerin listesini](regions.md#Voice-first virtual assistants) ve kaynaklarınız bu bölgelerden birinde dağıtıldığı emin olun.
+    > Doğrudan hat konuşma (Önizleme), konuşma Hizmetleri bölgelerinin bir alt kümesinde Şu anda kullanılabilir. Lütfen [sesli ilk sanal Yardımcılar için desteklenen bölgeler listesine](regions.md#Voice-first virtual assistants) başvurun ve kaynaklarınızın bu bölgelerden birinde dağıtıldığından emin olun.
 
 ## <a name="create-and-configure-a-project"></a>Projeyi oluşturma ve yapılandırma
 
@@ -43,9 +43,9 @@ Bu uygulama, konuşma SDK Maven paketini ve Android Studio 3.3 ile oluşturulmu�
 
 ## <a name="create-user-interface"></a>Kullanıcı arabirimi oluşturma
 
-Bu bölümde, uygulama için bir temel kullanıcı arabirimi (UI) oluşturacağız. Ana etkinlik açarak başlayalım: `activity_main.xml`. Temel Şablon uygulamanın adını, bir başlık çubuğuyla içerir ve bir `TextView` "Hello world!" iletisi.
+Bu bölümde, uygulama için temel bir kullanıcı arabirimi (UI) oluşturacağız. Ana etkinliği açıp başlatalım: `activity_main.xml`. Temel şablon, uygulamanın adına sahip bir başlık çubuğu ve `TextView` "Hello World!" iletisiyle birlikte bulunur.
 
-Ardından, içeriği değiştirin `activity_main.xml` aşağıdaki kod ile:
+Sonra, öğesinin `activity_main.xml` içeriğini aşağıdaki kodla değiştirin:
 
    ```xml
    <?xml version="1.0" encoding="utf-8"?>
@@ -94,19 +94,19 @@ Ardından, içeriği değiştirin `activity_main.xml` aşağıdaki kod ile:
    </LinearLayout>
    ```
 
-Bu XML botunuzun ile etkileşim kurmak için basit bir kullanıcı Arabirimi tanımlar.
+Bu XML, bot 'unuzla etkileşim kurmak için basit bir kullanıcı arabirimi tanımlar.
 
-* `button` Öğesi etkileşim başlatır ve çağıran `onBotButtonClicked` tıklandığında yöntemi.
-* `recoText` Öğesi botunuz için konuşma olarak konuşma metin sonuçları görüntüler.
-* `activityText` Öğesi en son botunuzun Bot Framework etkinliği için JSON yükü görüntülenir.
+* Öğesi bir etkileşim başlatır ve tıklandığında `onBotButtonClicked` yöntemi çağırır. `button`
+* `recoText` Öğesi, bot 'unuzla konuşurken konuşmadan metne sonuçları görüntüler.
+* `activityText` Öğesi, bot 'ınızdan en son bot Framework etkinliğinin JSON yükünü görüntüler.
 
-Metin ve grafik temsilini kullanıcı Arabirimi artık şöyle görünmelidir:
+UI 'nizin metin ve grafik gösterimi şu şekilde görünmelidir:
 
 ![](media/sdk/qs-java-android-assistant-designer-ui.png)
 
 ## <a name="add-sample-code"></a>Örnek kodu ekleme
 
-1. Açık `MainActivity.java`ve içeriğini aşağıdaki kodla değiştirin:
+1. Öğesini `MainActivity.java`açın ve içeriğini şu kodla değiştirin:
 
    ```java
     package samples.speech.cognitiveservices.microsoft.com;
@@ -250,19 +250,19 @@ Metin ve grafik temsilini kullanıcı Arabirimi artık şöyle görünmelidir:
     }
    ```
 
-   * `onCreate` Yöntem, mikrofon ve internet izinleri isteyen kod içerir.
+   * Yöntemi `onCreate` , mikrofon ve internet izinleri isteyen kodu içerir.
 
-   * `onBotButtonClicked` yöntemi daha önce de belirtildiği gibi düğme tıklama işleyicisidir. Bir düğme basma tek etkileşim ("Aç") ile botunuza tetikler.
+   * `onBotButtonClicked` yöntemi daha önce de belirtildiği gibi düğme tıklama işleyicisidir. Düğme, bot ile tek bir etkileşimi ("Aç") tetikler.
 
-   * `registerEventListeners` Yöntemi tarafından kullanılan olayları gösterir `DialogServiceConnector` ve temel işlemenin gelen etkinlikleri.
+   * Yöntemi, gelen etkinliklerin `DialogServiceConnector` ve temel işlenmesi tarafından kullanılan olayları gösterir. `registerEventListeners`
 
-1. Aynı dosyada, yapılandırma dizeleri kaynaklarınızı eşleşecek şekilde değiştirin:
+1. Aynı dosyada, yapılandırma dizelerini kaynaklarla eşleşecek şekilde değiştirin:
 
-    * Değiştirin `YourChannelSecret` botunuza ilişkin doğrudan satır konuşma kanal gizli dizi ile.
+    * Bot `YourChannelSecret` 'unuzun doğrudan çizgi konuşma kanalı gizli anahtarı ile değiştirin.
 
     * `YourSpeechSubscriptionKey` değerini abonelik anahtarınızla değiştirin.
 
-    * Değiştirin `YourServiceRegion` ile [bölge](regions.md) doğrudan satır Konuşma ile desteklenen yalnızca bir alt bölgelerin konuşma Hizmetleri aboneliğinizle ilişkili. Daha fazla bilgi için [bölgeleri](regions.md#voice-first-virtual-assistants).
+    * Aboneliğiniz `YourServiceRegion` ile ilişkili [bölge](regions.md) ile değiştirin yalnızca bir konuşma Hizmetleri bölgesi alt kümesi şu anda doğrudan hat konuşmayla desteklenmektedir. Daha fazla bilgi için bkz. [bölgeler](regions.md#voice-first-virtual-assistants).
 
 ## <a name="build-and-run-the-app"></a>Uygulamayı derleme ve çalıştırma
 
@@ -276,18 +276,18 @@ Metin ve grafik temsilini kullanıcı Arabirimi artık şöyle görünmelidir:
 
    ![Dağıtım Hedefi Seç penceresinin ekran görüntüsü](media/sdk/qs-java-android-12-deploy.png)
 
-Uygulama ve onun etkinlik başlattıktan sonra botunuzun için konuşma başlatmak için düğmeye tıklayın. Transcribed metin olarak konuşan ve en son etkinlik sahip olduğunuz, robot alınan, alındığında görünür görünür. Botunuzun konuşulan yanıtlar sağlamak için yapılandırılmışsa, Konuşmayı metne dönüştürme otomatik olarak yürütülür.
+Uygulama ve etkinliği başlatıldıktan sonra, bot 'unuza konuşmaya başlamak için düğmeye tıklayın. Metin, konuştuğunuz olarak görünür ve bot 'tan aldığınız son etkinlik alındığında görüntülenir. Bot, konuşulan yanıtları sunacak şekilde yapılandırıldıysa, konuşmayı metne dönüştürme işlemi otomatik olarak oynatılır.
 
 ![Android uygulamasının ekran görüntüsü](media/sdk/qs-java-android-assistant-completed-turn.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Temel robot oluşturup](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
+> [Temel bot oluşturma ve dağıtma](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 
 ## <a name="see-also"></a>Ayrıca bkz.
-- [Ses öncelikli sanal Yardımcıları](voice-first-virtual-assistants.md)
-- [Bir konuşma Hizmetleri abonelik anahtarı ücretsiz olarak edinin](get-started.md)
-- [Özel Uyandırma sözcükler](speech-devices-sdk-create-kws.md)
-- [Botunuz için doğrudan satır konuşma bağlanma](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
-- [GitHub üzerinde Java örnekleri keşfedin](https://aka.ms/csspeech/samples)
+- [İlk ses sanal yardımcıları hakkında](voice-first-virtual-assistants.md)
+- [Ücretsiz bir konuşma Hizmetleri abonelik anahtarı alın](get-started.md)
+- [Özel uyandırma kelimeleri](speech-devices-sdk-create-kws.md)
+- [Doğrudan hat konuşmayı bot 'a bağlama](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+- [GitHub 'da Java örneklerini keşfet](https://aka.ms/csspeech/samples)

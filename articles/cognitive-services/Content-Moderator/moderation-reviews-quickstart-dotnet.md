@@ -1,6 +1,6 @@
 ---
-title: .NET - Content Moderator'ı kullanarak incelemeleri oluşturma
-titlesuffix: Azure Cognitive Services
+title: .NET-Content Moderator kullanarak incelemeler oluşturma
+titleSuffix: Azure Cognitive Services
 description: .NET için Azure Content Moderator SDK'sını kullanarak incelemeler oluşturma.
 services: cognitive-services
 author: sanjeev3
@@ -10,23 +10,23 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: sajagtap
-ms.openlocfilehash: 153d42bf4ce4322536d6837be3058d1f9bfb49a2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9938c79c2ba1b2f80c8f147fafe6ce79e247df43
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60607189"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564461"
 ---
-# <a name="create-human-reviews-net"></a>İncelemelere (.NET) oluşturma
+# <a name="create-human-reviews-net"></a>İnsan incelemeleri oluşturma (.NET)
 
-Gözden geçirmeler depolayın ve değerlendirmek İnsan Moderatörler içeriğini görüntüler. Bir kullanıcı bir gözden geçirme tamamlandığında, sonuçları bir belirtilen geri çağırma uç noktasına gönderilir. Bu kılavuz bilgiler sağlar ve yardımcı olması için kod örnekleri, kullanmaya başlama [Content Moderator SDK'sı .NET için](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) için:
+, İnsan moderatör 'nin değerlendirilmesine yönelik depolamayı ve görüntüleme içeriğini gözden geçirir. Bir Kullanıcı bir gözden geçirmeyi tamamladığında, sonuçlar belirtilen geri çağırma uç noktasına gönderilir. Bu kılavuzda, [.NET için Content moderator SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) 'yı kullanmaya başlamanıza yardımcı olacak bilgiler ve kod örnekleri sunulmaktadır:
 
 - İnsan moderatörler için bir inceleme kümesi oluşturma
 - İnsan moderatörler için mevcut incelemelerin durumunu alma
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Oturum açma veya hesap üzerinde Content Moderator oluşturmak [gözden geçirme aracı](https://contentmoderator.cognitive.microsoft.com/) site.
+- Content Moderator [İnceleme aracı](https://contentmoderator.cognitive.microsoft.com/) sitesinde oturum açın veya hesap oluşturun.
 
 ## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>API anahtarınızın inceleme oluşturma amacıyla inceleme API'sini çağırabildiğinden emin olun
 
@@ -159,7 +159,7 @@ Aşağıdaki sınıfı **Program** sınıfına ekleyin. İnceleme kimliğini ö�
 >
 > Ücretsiz katman anahtarı bir RPS'lik hız sınırına sahiptir.
 
-#### <a name="add-the-following-constants-to-the-program-class-in-programcs"></a>Aşağıdaki sabitleri ekleyin **Program** program.CS'de Webhostbuilder'a sınıfı
+#### <a name="add-the-following-constants-to-the-program-class-in-programcs"></a>Program.cs içindeki **Program** sınıfına aşağıdaki sabitleri ekleyin
 
 ```csharp
 /// <summary>
@@ -181,7 +181,7 @@ Aşağıdaki sınıfı **Program** sınıfına ekleyin. İnceleme kimliğini ö�
     private const string OutputFile = "OutputLog.txt";
 ```
 
-#### <a name="add-the-following-constants-and-static-fields-to-the-program-class-in-programcs"></a>Aşağıdaki sabitler ve statik alanları ekleme **Program** program.CS'de Webhostbuilder'a sınıfı
+#### <a name="add-the-following-constants-and-static-fields-to-the-program-class-in-programcs"></a>Program.cs içindeki **Program** sınıfına aşağıdaki sabitleri ve statik alanları ekleyin
 
 Bu değerleri aboneliğinize ve takımınıza özel bilgiler içerecek şekilde güncelleştirin.
 
@@ -238,7 +238,7 @@ private const string MetadataKey = "sc";
 private const string MetadataValue = "true";
 ```
 
-#### <a name="add-the-following-static-fields-to-the-program-class-in-programcs"></a>Aşağıdaki statik alanları ekleme **Program** program.CS'de Webhostbuilder'a sınıfı
+#### <a name="add-the-following-static-fields-to-the-program-class-in-programcs"></a>Program.cs içindeki **Program** sınıfına aşağıdaki statik alanları ekleyin
 
 Uygulama durumunu izlemek için bu alanları kullanın.
 
@@ -382,7 +382,7 @@ private static void CreateReviews(ContentModeratorClient client)
 
 Aşağıdaki kodu **Main** yöntemine ekleyin.
 
-Bu kod, listeyi tanımlayıp yönetmek ve listeyi kullanarak görüntüleri taramak için gerçekleştirdiğiniz işlemlerin birçoğunun benzetimini yapar. Günlüğe kaydetme özelliklerini içerik mModerator hizmet SDK çağrıları tarafından oluşturulan yanıt nesnelerinin görmenize olanak sağlar.
+Bu kod, listeyi tanımlayıp yönetmek ve listeyi kullanarak görüntüleri taramak için gerçekleştirdiğiniz işlemlerin birçoğunun benzetimini yapar. Günlüğe kaydetme özellikleri, Içerik Mmoderatör hizmetine SDK çağrıları tarafından oluşturulan yanıt nesnelerini görmenizi sağlar.
 
 ```csharp
 using (TextWriter outputWriter = new StreamWriter(OutputFile, false))
@@ -536,4 +536,4 @@ Creating reviews for the following images:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Alma [Content Moderator .NET SDK'sı](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) ve indirme [Visual Studio çözümü](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) bu ve diğer Content Moderator hızlı başlangıçlar, .NET için ve tümleştirmenizi üzerinde çalışmaya başlayın.
+[.NET SDK Content moderator](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) alın ve bu ve diğer Content moderator hızlı başlangıç Için [Visual Studio çözümünü](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) indirin ve tümleştirmenizi kullanmaya başlayın.

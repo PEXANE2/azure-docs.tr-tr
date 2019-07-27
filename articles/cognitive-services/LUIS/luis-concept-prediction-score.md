@@ -1,7 +1,7 @@
 ---
-title: Tahmin puanları
-titleSuffix: Language Understanding - Azure Cognitive Services
-description: LUIS API'si hizmette olduğunu tahmin sonuçlarını için güvenilirlik derecesi tahmin puanı gösterir bir kullanıcı utterance üzerinde temel.
+title: Tahmin puanları-LUO
+titleSuffix: Azure Cognitive Services
+description: Tahmin puanı, LUSıS API hizmeti 'nin, Kullanıcı utanına bağlı olarak tahmin sonuçları için sahip olduğunu gösterir.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,16 +11,16 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: diberry
-ms.openlocfilehash: 383ce4c4248f7e21f745f503c74a29cb613983e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ccbdb60687bd81de57ff675634f9d124f10784e1
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60813998"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563950"
 ---
-# <a name="prediction-scores-indicate-prediction-accuracy-for-intent-and-entities"></a>Tahmin doğruluğunu amaç ve varlıkları için tahmin puanlar
+# <a name="prediction-scores-indicate-prediction-accuracy-for-intent-and-entities"></a>Tahmin puanları, amaç ve varlıklar için tahmin doğruluğunu belirtir
 
-LUIS sahip tahmin sonuçlarını için güvenilirlik derecesi tahmin puanı gösteren bir kullanıcı utterance üzerinde temel.
+Bir tahmin puanı, bir Kullanıcı aramasına bağlı olarak, güven LUARA 'un tahmin sonuçlarına yönelik derecesini belirtir.
 
 Tahmin puanı, sıfır (0) ve bir (1) ' dir. Bir yüksek oranda başarılara LUIS puan 0.99 örneğidir. Düşük güvenilirlik puanı 0,01 örneğidir. 
 
@@ -37,7 +37,7 @@ LUIS, bir utterance içinde bir düşük güvenilirlik puanı sonuçlandığınd
 
 ## <a name="top-scoring-intent"></a>Üst Puanlama hedefi
 
-Bir üst Puanlama amacı her utterance tahmin döndürür. Bu tahmin, tahmin puanları bir sayısal karşılaştırma olur. Üst 2 puanları, bunlar arasında çok küçük bir fark olabilir. LUIS, en çok puan döndüren dışında bu yakınlık göstermiyor.  
+Bir üst Puanlama amacı her utterance tahmin döndürür. Bu tahmin, tahmin puanlarının sayısal bir karşılaştırmasına sahiptir. İlk 2 puan aralarında çok küçük bir fark olabilir. LUO, en üst puanı döndürmekten başka bir yakınlık göstermez.  
 
 ## <a name="return-prediction-score-for-all-intents"></a>Tüm amaçlar için tahmin puanı döndürür
 
@@ -47,17 +47,17 @@ Bir test veya uç nokta sonuç, tüm hedefleri içerebilir. Bu yapılandırma ü
 
 Tüm hedefleri puanını gözden geçirme, yalnızca doğru amaç tanımlanır ancak sonraki amaç'ın puanı tanımlanan tutarlı bir şekilde konuşma için önemli ölçüde daha düşük olduğunu doğrulamak için iyi bir yoludur.
 
-LUIS, birden çok ıntents Kapat tahmin puanları, bir utterance içeriğine göre varsa amaçları arasında geçiş yapabilirsiniz. Bu durumu düzeltmek için her amaca daha geniş kitlelere bağlamsal farklar çeşitli konuşma eklemeye devam edin veya bir sohbet Robotu gibi bir istemci uygulamanın sahip, 2 üst ıntents nasıl ele alınacağını hakkında programlı seçimler.
+LUIS, birden çok ıntents Kapat tahmin puanları, bir utterance içeriğine göre varsa amaçları arasında geçiş yapabilirsiniz. Bu durumu onarmak için, her bir amaca göre her bir amaca uygun olarak daha fazla bağlamsal farklılıklar eklemeye devam edin veya bir sohbet bot gibi istemci uygulamasına, 2 üst amaçların nasıl işleneceği hakkında programlama seçenekleri elde edebilirsiniz.
 
-Çok-yakından puanlanır 2 amacı nedeniyle belirleyici eğitim ters. En çok puan ikinci üst ve ilk üst puanı ikinci en çok puan haline gelir. Bu durumu önlemek için her üst iki amacı, utterance sözcük seçimi ve 2 ıntents ayırır bağlamı için örnek konuşma ekleyin. İki amacı hakkında örnek konuşma aynı sayıda olmalıdır. Bir eğitim, nedeniyle tersine çevirme önlemek ayırma için udur puanları % 15 fark.
+Çok yakın puanlanmış 2 amaç, belirleyici olmayan eğitim nedeniyle ters çıkabilir. En çok puan ikinci üst ve ilk üst puanı ikinci en çok puan haline gelir. Bu durumu engellemek için, 2 amaçlarını kapsayan sözcük seçimi ve bağlamı ile bu söylik için en üst iki amaç için her birine örnek ekleyin. İki amacı hakkında örnek konuşma aynı sayıda olmalıdır. Bir eğitim, nedeniyle tersine çevirme önlemek ayırma için udur puanları % 15 fark.
 
-Tarafından belirleyici eğitim kapatabilirsiniz [tüm verilerle eğitim](luis-how-to-train.md#train-with-all-data).
+Belirleyici olmayan eğitimi [tüm verilerle birlikte eğitime](luis-how-to-train.md#train-with-all-data)dönüştürebilirsiniz.
 
-## <a name="differences-with-predictions-between-different-training-sessions"></a>Öngörüler farklı eğitim oturumları arasındaki farklılıklar
+## <a name="differences-with-predictions-between-different-training-sessions"></a>Farklı eğitim oturumları arasındaki tahminlerle ilgili farklılıklar
 
-Belirleyici eğitim (rastgele bir öğe) olduğundan farklı bir uygulamada aynı modeli eğitmek ve puanlar aynı değildir, bu farktır. İkincisi, birden fazla hedefi için bir utterance herhangi bir çakışma üst hedefi aynı utterance için eğitim göre değiştirebilirsiniz anlamına gelir.
+Aynı modeli farklı bir uygulamada eğitedığınızda ve puanlar aynı değilse, bu fark, belirleyici olmayan bir eğitim (rastgele bir öğe) olmasından kaynaklanır. İkincisi, birden fazla hedefi için bir utterance herhangi bir çakışma üst hedefi aynı utterance için eğitim göre değiştirebilirsiniz anlamına gelir.
 
-Bir güven göstermek için belirli bir LUIS puanı, sohbet Robotu gerektiriyorsa, üstteki iki amacı puanı birbirinden kullanmanız gerekir. Bu durum, eğitim çeşitleri için esneklik sağlar.
+Sohbet botunuz, bir amaç için güvenilirliği belirtmek üzere belirli bir LUO puanı gerektiriyorsa, en üstteki iki amaç arasındaki puan farkını kullanmanız gerekir. Bu durum, eğitiminde Çeşitlemeler için esneklik sağlar.
 
 ## <a name="e-exponent-notation"></a>E (üstel) gösterimde
 
@@ -69,7 +69,7 @@ Tahmin puanları, üstel gösterim kullanabilir *görünen* 0-1 yukarıda gibi a
 
 ## <a name="punctuation"></a>Noktalama işaretleri
 
-Noktalama, LUIS, ayrı bir belirteçtir. Bir süre sonunda içermeyen bir utterance ve sonunda nokta içeren bir utterance iki ayrı konuşma olan ve iki farklı Öngörüler elde edebilirsiniz. Model emin noktalama işareti ya da işleme içinde [örnek konuşma](luis-concept-utterance.md) (sahip ve noktalama işaretleri olmaması) veya [desenleri](luis-concept-patterns.md) noktalama özel söz dizimi ile yok saymak daha kolay olduğu: `I am applying for the {Job} position[.]`
+Noktalama, LUIS, ayrı bir belirteçtir. Uçta nokta içermeyen bir nokta ile sonunda bir nokta içeren bir söylenişi iki ayrı tanüler ve iki farklı tahmin elde edebilir. Model emin noktalama işareti ya da işleme içinde [örnek konuşma](luis-concept-utterance.md) (sahip ve noktalama işaretleri olmaması) veya [desenleri](luis-concept-patterns.md) noktalama özel söz dizimi ile yok saymak daha kolay olduğu: `I am applying for the {Job} position[.]`
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

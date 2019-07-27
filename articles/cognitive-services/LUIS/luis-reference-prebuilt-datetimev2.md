@@ -1,6 +1,6 @@
 ---
-title: DatetimeV2 önceden oluşturulmuş varlıklar
-titleSuffix: Azure
+title: DatetimeV2 önceden oluşturulmuş varlıklar-LUSıS
+titleSuffix: Azure Cognitive Services
 description: Bu makalede datetimeV2 sahip önceden oluşturulmuş varlık bilgilerini Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
@@ -11,19 +11,19 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: e7577dcf4859b1192121fe0406d0efb63a9f5990
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1a19ab6e02249bad689f1a05c5761150b7a817df
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65148648"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560288"
 ---
-# <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>DatetimeV2 LUIS uygulaması için önceden oluşturulmuş varlık
+# <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>LUSıS uygulaması için DatetimeV2 önceden oluşturulmuş varlık
 
 **DatetimeV2** önceden oluşturulmuş varlık tarih ve saat değerlerini ayıklar. Bu değerler kullanılacağı istemci programları için standartlaştırılmış bir biçimde çözümleyin. Bir tarih veya saat tam olmayan bir utterance sahip olduğunda LUIS içerir _hem geçmiş hem de gelecekte değerlerini_ uç nokta yanıt. Bu varlık zaten eğitildi çünkü uygulama hedefleri için datetimeV2 içeren örnek Konuşma ekleme gerekmez. 
 
 ## <a name="types-of-datetimev2"></a>DatetimeV2 türleri
-DatetimeV2 yönetilen [tanıyıcıları metin](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-DateTime.yaml) GitHub deposu
+DatetimeV2, [Tanıyıcılar-metin](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-DateTime.yaml) GitHub deposundan yönetiliyor
 
 ## <a name="example-json"></a>Örnek JSON 
 Aşağıdaki örnek JSON yanıtı sahip bir `datetimeV2` bir alt varlık `datetime`. Diğer datetimeV2 varlık türlerini örnekleri için bkz: [datetimeV2 öbeklerinin](#subtypes-of-datetimev2)</a>.
@@ -82,7 +82,7 @@ Her öğeyi `values` dizisi, aşağıdaki alanları olabilir:
 |Özellik adı|Özellik açıklaması|
 |--|--|
 |Timex|saat, tarih veya tarih aralığını izleyen TIMEX biçiminde ifade [ISO 8601 standardına](https://en.wikipedia.org/wiki/ISO_8601) ve TIMEX3 özniteliklerini TimeML dilini kullanarak ek açıklaması için. Bu ek açıklama açıklanan [TIMEX yönergeleri](http://www.timeml.org/tempeval2/tempeval2-trial/guidelines/timex3guidelines-072009.pdf).|
-|türü|Aşağıdaki öğeler herhangi birini alt tür: `datetime`, `date`, `time`, `daterange`, `timerange`, `datetimerange`, `duration`, `set`.|
+|türü|Aşağıdaki öğelerden biri olabilecek alt tür: `datetime`, `date`, `daterange` `timerange` `time`,,, `datetimerange`, `duration`,. `set`|
 |value|**İsteğe bağlı.** Bir datetime nesnesini (tarih) (TarihSaat) ss: dd: ss (saat) yyyy:MM:dd biçimi yyyy:MM:dd içinde. Varsa `type` olduğu `duration`, değeri (süre) saniye sayısıdır. <br/> Yalnızca `type` olduğu `datetime` veya `date`, `time`, veya ' süresi.|
 
 ## <a name="valid-date-values"></a>Geçerli bir tarih değerleri
@@ -206,15 +206,15 @@ Aşağıdaki örnek, LUIS nasıl kullandığını gösterir. **datetimeV2** bir 
   ]
 ```
 
-## <a name="preview-api-version-3x"></a>Önizleme API sürümü 3.x
+## <a name="preview-api-version-3x"></a>Preview API sürüm 3. x
 
-DatetimeV2 JSON yanıtı API v3 sürümüne değişti. 
+DatetimeV2 JSON yanıtı API v3 'de değiştirildi. 
 
-API V2 değişiklikler:
-* `datetimeV2.timex.type` özelliği üst düzeyde döndürdüğünden bundan böyle döndürülen `datetimev2.type`. 
-* `datetimeV2.timex` Özelliği adlandırıldı `datetimeV2.value`.
+API v2 'deki değişiklikler:
+* `datetimeV2.timex.type`özellik üst düzeyde `datetimev2.type`döndürüldüğünden artık döndürülmüyor. 
+* `datetimeV2.timex` Özelliği olarak`datetimeV2.value`yeniden adlandırıldı.
 
-Utterance için `8am on may 2nd 2017`, DatetimeV2 V3 sürümüdür:
+Utterance `8am on may 2nd 2017`için, DatetimeV2 'nin v3 sürümü:
 
 ```JSON
 {
@@ -244,7 +244,7 @@ Utterance için `8am on may 2nd 2017`, DatetimeV2 V3 sürümüdür:
 }
 ```
 
-Aşağıdaki JSON ile olan `verbose` parametresini `false`:
+Aşağıdaki JSON `verbose` parametresi olarak `false`ayarlanmıştır:
 
 ```json
 {

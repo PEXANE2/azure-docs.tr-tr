@@ -1,6 +1,6 @@
 ---
-title: Tahmin desenleri Yardım
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Desenler yardım tahmini-LUSıS
+titleSuffix: Azure Cognitive Services
 description: Bir desen çok daha fazla konuşma sağlamadan bir amaç için daha yüksek doğruluk derecesi elde etmek sağlar.
 services: cognitive-services
 author: diberry
@@ -11,18 +11,18 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 2a160ab7447304dc6eb14f76a723df4e8a4d9f46
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: acbcaa7e5588c0fecf2c20751e69442e1373cbb5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60813583"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563994"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Desenlerini tahmin doğruluğunu artırmak
 Desenler, çeşitli konuşma çok benzer olduğunda doğruluğunu artırmak için tasarlanmıştır.  Bir desen çok daha fazla konuşma sağlamadan bir amaç için daha yüksek doğruluk derecesi elde etmek sağlar. 
 
 ## <a name="patterns-solve-low-intent-confidence"></a>Düşük hedefi güvenle desenleri çözün
-Kuruluş şeması ile ilgili olarak çalışan bir rapor bir insan kaynakları uygulamasında göz önünde bulundurun. Bir çalışanın adı ve ilişki LUIS çalışanlar ilgili döndürür. Tom, çalışanın sahip bir yönetici adı Alice ve adlı Astları ekibi göz önünde bulundurun: Michael Rebecca ve Carl.
+Kuruluş şeması ile ilgili olarak çalışan bir rapor bir insan kaynakları uygulamasında göz önünde bulundurun. Bir çalışanın adı ve ilişki LUIS çalışanlar ilgili döndürür. Bir çalışan, bir yönetici adı çiğdem ve adında bir AST ekibi olan bir çalışanı göz önünde bulundurun: Michael, Rebecca ve Carl.
 
 ![Kuruluş Şeması görüntüsü](./media/luis-concept-patterns/org-chart.png)
 
@@ -31,23 +31,23 @@ Kuruluş şeması ile ilgili olarak çalışan bir rapor bir insan kaynakları u
 |Tom'ın alt kimdir?|GetOrgChart|.30|
 |Tom alt kimdir?|GetOrgChart|.30|
 
-LUIS, bir uygulamanın farklı uzunluktaki cümle, farklı sözcük sırasını ve hatta farklı sözcük (eş anlamlılar "alt", "manage", "rapor") ile 10 ile 20 konuşma arasında varsa, düşük güvenilirlik puanı döndürebilir. LUIS sözcük sırasını önemini anlamanıza yardımcı olması için bir desen oluşturun. 
+LUIS, bir uygulamanın farklı uzunluktaki cümle, farklı sözcük sırasını ve hatta farklı sözcük (eş anlamlılar "alt", "manage", "rapor") ile 10 ile 20 konuşma arasında varsa, düşük güvenilirlik puanı döndürebilir. LUSıS 'in sözcük sırasının önemini anlamalarına yardımcı olmak için bir düzen oluşturun. 
 
 Desen aşağıdaki durumlarda çözer: 
 
-* Intent puanı düşük
-* Doğru amaç en çok puan değil, ancak üst puanına çok yakın. 
+* Amaç puanı düşük
+* Doğru amaç, en üst puan değildir ancak en üst puana çok yakın değildir. 
 
 ## <a name="patterns-are-not-a-guarantee-of-intent"></a>Desenler hedefi garantisi değildir.
 Desenlerini tahmin teknolojilerinin bir karışımını kullanın. Bir desende bir amaç için bir şablon utterance ayarı hedefi tahmin garantisi değil ancak güçlü bir sinyaldir. 
 
 <a name="patterns-do-not-improve-entity-detection"/></a>
 
-## <a name="patterns-do-not-improve-machine-learned-entity-detection"></a>Desenler makine öğrenilen varlık algılama geliştirmek değil
+## <a name="patterns-do-not-improve-machine-learned-entity-detection"></a>Desenler makine tarafından öğrenilen varlık algılamayı iyileştirmez
 
-Bir desen, öncelikli olarak tahmin hedefleri ve rol için tasarlanmıştır. Pattern.any varlık, serbest biçimli varlıkları ayıklamak için kullanılır. Desenler varlıkları kullanırken, bir desen bir makine öğrenilen varlık algılamak yardımcı olmaz.  
+Bir model öncelikle amaç ve rollerin tahminine yardımcı olmak için tasarlanmıştır. Model. herhangi bir varlık, serbest biçimli varlıkları ayıklamak için kullanılır. Desenler varlıkları kullanırken, bir desen makine tarafından öğrenilen bir varlığı algılamaya yardımcı olmaz.  
 
-Tek bir düzen birden çok konuşma daralttığınızda geliştirilmiş varlık tahmin görmek beklemiyoruz. Ateşlenmesine basit varlıklar için Konuşma ekleme veya başka desen değil ateşlenir listesi varlıkları kullanın gerekir.
+Birden çok kuralı tek bir düzende daraltarak, geliştirilmiş varlık tahminini görmeyi beklememeniz gerekmez. Basit varlıkların tetiklenmesi için, bu tür varlıkları eklemeniz veya liste varlıklarını kullanmanız gerekir, ancak sizin düzeniniz tetikleymeyecektir.
 
 ## <a name="patterns-use-entity-roles"></a>Varlık rolleri desenleri kullanın
 İki veya daha fazla varlık desenindeki bağlamsal ilişkiliyse, varlık desenleri kullanın [rolleri](luis-concept-roles.md) varlıklarla ilgili bağlamsal bilgi ayıklamak için.  
@@ -61,50 +61,50 @@ Bir düzeni desen içinde varlıkları ilk algılama ve ardından bir kelimeleri
 ## <a name="pattern-syntax"></a>Desen sözdizimi
 Desen, bir şablon için bir utterance sözdizimidir. Şablon, sözcük ve sözcükler yanı sıra eşleştirmek istediğiniz varlıkları ve yok saymak için istediğiniz noktalama içermelidir. Bu **değil** normal bir ifade. 
 
-Varlıkları desenleri süslü ayraç tarafından çevrilmiş `{}`. Desenler, varlıkları ve varlıklar rolleriyle içerebilir. [Pattern.Any](luis-concept-entity-types.md#patternany-entity) yalnızca desenlerinde kullanılan bir varlık. 
+Varlıkları desenleri süslü ayraç tarafından çevrilmiş `{}`. Desenler, varlıkları ve varlıklar rolleriyle içerebilir. [Desen. any](luis-concept-entity-types.md#patternany-entity) yalnızca desenlerinde kullanılan bir varlıktır. 
 
-Desen sözdizimi, aşağıdaki söz dizimini destekler:
+Model sözdizimi aşağıdaki sözdizimini destekler:
 
 |İşlev|Sözdizimi|İç içe geçme düzeyi|Örnek|
 |--|--|--|--|
-|varlık| {} -süslü ayraç|2|{Entity-adı} form nerede?|
-|İsteğe bağlı|[] - köşeli ayraç<BR><BR>Bir sınırı isteğe bağlıdır ve gruplandırma herhangi bir birleşimini iç içe geçme düzeyi 3 |2|Soru işareti olan isteğe bağlı [?]|
-|Gruplandırma|() - parantez|2|olduğunu (bir \| b).|
-|or| \| -dikey çubuk (kanal)<br><br>Dikey çubuk (veya) bir grubu 2'in bir sınır yoktur |-|Form olduğu ({form-adı-kısa} &#x7c; {form-adı-uzun} &#x7c; {form-number})| 
-|Başlangıç ve/veya utterance sonu|^-şapka|-|^ utterance başlayın<br>utterance yapılır ^<br>^ {number} varlıkla tüm utterance katı değişmez değer eşleşme ^|
+|varlık| {}-süslü ayraçlar|2|{Entity-Name} formu nerede?|
+|isteğe bağlı|[]-köşeli parantezler<BR><BR>Herhangi bir isteğe bağlı ve gruplandırma birleşiminin iç içe geçme düzeylerinde 3 sınırı vardır |2|Soru işareti isteğe bağlıdır [?]|
+|gruplama|()-parantez|2|-( \| b)|
+|veya| \|-dikey çubuk (kanal)<br><br>Bir gruptaki dikey çubuklar (veya) üzerinde 2 sınırı vardır |-|WHERE formu ({form-adı-Short} &#x7c; {form-adı-Long} &#x7c; {form-numarası})| 
+|söylenişi başlangıcı ve/veya bitişi|^-şapka işareti|-|^ söylenişi 'a başla<br>söylenişi tamamlandı ^<br>{Number} varlık ^ ile tüm söylenişi ile tam sabit değer eşleşmesi ^|
 
-## <a name="nesting-syntax-in-patterns"></a>İç içe geçme söz dizimi desenleri
+## <a name="nesting-syntax-in-patterns"></a>Desenlerdeki iç içe sözdizimi
 
-**İsteğe bağlı** sözdizimiyle köşeli parantez içinde iç içe iki düzey olabilir. Örneğin: `[[this]is] a new form`. Bu örnek için aşağıdaki konuşma sağlar: 
+Köşeli parantezler ile **isteğe bağlı** sözdizimi, iç içe iki düzey olabilir. Örneğin: `[[this]is] a new form` Bu örnek aşağıdaki söyleylerini sağlar: 
 
-|İç içe geçmiş isteğe bağlı utterance örneği|Açıklama|
+|İç içe isteğe bağlı söylenişi örneği|Açıklama|
 |--|--|
-|Bu, yeni bir form|desenindeki tüm sözcüklerle eşleşir|
-|Yeni form|Dış isteğe bağlı word ve isteğe bağlı olmayan sözcükler deseni ile eşleşir|
-|Yeni bir form|yalnızca gerekli eşleşen sözcükler|
+|Bu yeni bir formdur|Düzendeki tüm kelimeleri eşleştirir|
+|Yeni bir form|desenli dış isteğe bağlı sözcük ve isteğe bağlı olmayan sözcüklerden eşleşir|
+|Yeni bir form|yalnızca gerekli kelimeleri eşleştirir|
 
-**Gruplandırma** sözdizimiyle parantezler, iç içe iki düzey olabilir. Örneğin: `(({Entity1.RoleName1} | {Entity1.RoleName2} ) | {Entity2} )`. Bu özellik, eşleştirilecek üç varlıkları sağlar. 
+**Gruplama** sözdizimi, parantez ile iç içe iki düzey olabilir. Örneğin: `(({Entity1.RoleName1} | {Entity1.RoleName2} ) | {Entity2} )` Bu özellik üç varlığın eşleştirilmesini sağlar. 
 
-Entity1 roller (Seattle) kaynak ve hedef (Cairo) gibi bir konumdur ve liste varlığı (RedWest-C) bilinen yapı adı varlık 2 ise, aşağıdaki konuşma bu desene eşleme:
+Entity1, Origin (Seattle) ve hedef (Cairo) gibi rollere sahip bir konum ise ve varlık 2 bir liste varlığındaki bilinen bir bina adı (Redbatı-C) ise, aşağıdaki utterlikler bu düzene eşlenir:
 
-|İç içe gruplama utterance örneği|Açıklama|
+|İç içe gruplandırma söylenişi örneği|Açıklama|
 |--|--|
-|RedWest-C|Dış gruplandırma varlık eşleşir|
-|Seattle|bir iç gruplandırma varlıkların eşleşir|
-|Kahire|bir iç gruplandırma varlıkların eşleşir|
+|Redbatı-C|Dış gruplandırma varlığıyla eşleşir|
+|Seattle|iç gruplandırma varlıklarından biriyle eşleşir|
+|Kahire|iç gruplandırma varlıklarından biriyle eşleşir|
 
-## <a name="nesting-limits-for-groups-with-optional-syntax"></a>İsteğe bağlı söz dizimi olan gruplar için iç içe geçme sınırı
+## <a name="nesting-limits-for-groups-with-optional-syntax"></a>İsteğe bağlı sözdizimi olan gruplar için iç içe sınırları
 
-Bir birleşimi **gruplandırma** ile **isteğe bağlı** sözdizimi 3 iç içe geçme düzeyi sınırı vardır.
+**İsteğe bağlı** sözdizimine sahip **gruplama** birleşimi 3 iç içe geçme düzeyi sınırına sahiptir.
 
 |İzin Verildi|Örnek|
 |--|--|
 |Evet|([(test1 &#x7c; test2)] &#x7c; test3)|
 |Hayır|([([test1] &#x7c; test2)] &#x7c; test3)|
 
-## <a name="nesting-limits-for-groups-with-or-ing-syntax"></a>İç içe grupları veya-ing söz dizimi ile sınırları
+## <a name="nesting-limits-for-groups-with-or-ing-syntax"></a>Ya da tabanlı sözdizimi olan gruplar için iç içe sınırları
 
-Bir birleşimi **gruplandırma** ile **veya-ing** söz dizimi 2 dikey çubuklar sınırı vardır.
+**OR-ing** sözdizimine sahip **gruplama** birleşimi 2 dikey çubuk sınırına sahiptir.
 
 |İzin Verildi|Örnek|
 |--|--|
@@ -140,14 +140,14 @@ Eklemek için bir **Pattern.any** deseni şablon varlığa saran ve küme ayraç
 |Ne kadardır **isteyin** maliyet ve hangi biçimde, kullanılabilir?|
 |Ne kadardır **gece zamanlı Mandal, merak olay** maliyet ve hangi biçimde, kullanılabilir?| 
 
-LUIS sona ereceği kitap başlığı, bildiğinden sözcükler kitap başlığın Pattern.any varlığı temel alan LUIS için kafa karıştırıcı değildir.
+Book 'ın, kitap başlığının, bu modele bağlı olarak, kitap başlığının nerede bittiğini öğrendiği için, kitap başlığının kelimeleri LUO 'ya kafa karıştırıcı değildir.
 
 ## <a name="explicit-lists"></a>Açık listeler
 
-oluşturma bir [açık listesi](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8) özel durumuna izin yazma API aracılığıyla zaman:
+Şunu yaparken özel duruma izin vermek için yazma API 'SI aracılığıyla [açık bir liste](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8) oluşturun:
 
-* Desen içeren bir [Pattern.any](luis-concept-entity-types.md#patternany-entity)
-* Ve deseni söz dizimi utterance üzerinde temel bir yanlış varlık ayıklama olasılığı sağlar. 
+* Düzeniniz bir model içeriyor [. any](luis-concept-entity-types.md#patternany-entity)
+* Bu desen söz dizimi, utterance temelinde yanlış bir varlık ayıklama olasılığının kullanılmasına izin verir. 
 
 Örneğin, hem isteğe bağlı söz dizimi içeren bir düzeni olduğunu varsayalım `[]`ve varlık sözdizimi `{}`, birleştirilmiş bir şekilde hatalı verileri ayıklamak için.
 
@@ -160,7 +160,7 @@ Aşağıdaki konuşma içinde **konu** ve **kişi** varlık doğru ve hatalı bi
 |Chris köpekler hakkında e-posta|Konu köpekler =<br>kişi Chris =|✔|
 |ADAM La Mancha gelen e-posta|Konu man =<br>kişi La Mancha =|X|
 
-Yukarıdaki tabloda, konu olmalıdır `the man from La Mancha` (bir kitap başlığı) ancak konu isteğe bağlı sözcüğünü içerdiğinden `from`, başlığı yanlış tahmin edildiğinde. 
+Yukarıdaki tabloda, konu `the man from La Mancha` (kitap başlığı) olmalıdır, ancak konu isteğe bağlı kelimeyi `from`içerdiğinden, başlık yanlış tahmin edilir. 
 
 Bu özel durumun desen için düzeltmek için ekleme `the man from la mancha` {subject} varlık kullanan bir açık listesi eşleşme olarak [açık bir listesi için API geliştirme](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8).
 
@@ -169,13 +169,13 @@ Bu özel durumun desen için düzeltmek için ekleme `the man from la mancha` {s
 
 |İsteğe bağlı metin deseni|Anlamı|
 |--|--|
-|`[find] email about {subject} [from {person}]`|`find` ve `from {person}` isteğe bağlıdır|
-|' Me [?] yardımcı olabilir|Noktalama işareti isteğe bağlıdır.|
+|`[find] email about {subject} [from {person}]`|`find`ve `from {person}` isteğe bağlıdır|
+|' Bana [?] yardımcı olabilir|Noktalama işareti isteğe bağlıdır|
 
-Noktalama işaretleri (`?`, `!`, `.`) yoksayılıp yoksayılmaması gerektiğini ve desenleri köşeli parantez sözdizimini kullanarak bunların yoksayılması gerekir. 
+Noktalama işaretleri (`?`, `!`, `.`) göz ardı edilmelidir ve desenlerdeki köşeli ayraç söz dizimini kullanarak bunları yok saymanız gerekir. 
 
-## <a name="pattern-only-apps"></a>Yalnızca desenini uygulama
-Her hedefi için bir düzen var olduğu sürece hiçbir örnek konuşma olan hedefleri ile bir uygulama oluşturabilirsiniz. Bu örnek konuşma gerektirdiğinden deseni-yalnızca uygulama için makine öğrenilen varlıklar deseni içermelidir. 
+## <a name="pattern-only-apps"></a>Yalnızca örüntü uygulamalar
+Her bir amaç için bir desen olduğu sürece, örnekleri olmayan amaçlar içeren bir uygulama oluşturabilirsiniz. Tek bir uygulama için, bu, örnek bir varlık gerektirdiğinden, bu model makine tarafından öğrenilen varlıklar içermemelidir. 
 
 ## <a name="best-practices"></a>En iyi uygulamalar
 Bilgi [en iyi uygulamalar](luis-concept-best-practices.md).

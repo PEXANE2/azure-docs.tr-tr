@@ -5,13 +5,13 @@ manager: carmonm
 ms.date: 04/17/2019
 ms.topic: include
 ms.openlocfilehash: bba762fca7154067e528ebbbb0ea94c8ba7965f3
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67171092"
 ---
 > [!NOTE]
-> Bu makalede, yeni Azure PowerShell Az modülü kullanmak için güncelleştirildi. Hata düzeltmeleri en az kadar uygulanmaya devam edilecektir AzureRM modülünü kullanmaya devam edebilirsiniz aralık 2020.
-> Yeni Az modül ve AzureRM uyumluluğu hakkında daha fazla bilgi için bkz: [Karşınızda yeni Azure PowerShell Az modül](/powershell/azure/new-azureps-module-az). Az Modül yükleme yönergeleri için bkz. [Azure PowerShell yükleme](/powershell/azure/install-az-ps).
+> Bu makale yeni Azure PowerShell az modülünü kullanacak şekilde güncelleştirilmiştir. AzureRM modülünü kullanmaya devam edebilirsiniz, bu da en az Aralık 2020 ' e kadar hata düzeltmeleri almaya devam edecektir.
+> Yeni az Module ve Azurerd uyumluluğu hakkında daha fazla bilgi edinmek için, bkz. [new Azure PowerShell konusuna giriş az Module](/powershell/azure/new-azureps-module-az). Az Module yükleme yönergeleri için bkz. [yükleme Azure PowerShell](/powershell/azure/install-az-ps).
 

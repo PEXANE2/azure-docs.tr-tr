@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 76771a7dfcc323cca6ea52366195c895ee510701
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 6c58528aba29cbbc81694112815534a8fc525b8a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165589"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565375"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Hızlı Başlangıç: Azure PowerShell kullanarak ilk Kaynak Grafiği sorgunuzu çalıştırma
 
@@ -27,7 +27,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 ## <a name="add-the-resource-graph-module"></a>Kaynak Grafiği modülü ekleme
 
-Azure PowerShell’in Azure Kaynak Grafiği’ni sorgulamasını etkinleştirmek için modül eklenmelidir. Bu modül, yerel olarak yüklenmiş PowerShell ile birlikte kullanılabilir [Azure Cloud Shell](https://shell.azure.com), veya [Azure PowerShell Docker görüntüsü](https://hub.docker.com/r/azuresdk/azure-powershell/).
+Azure PowerShell’in Azure Kaynak Grafiği’ni sorgulamasını etkinleştirmek için modül eklenmelidir. Bu modül, [Azure Cloud Shell](https://shell.azure.com)ile veya [Azure PowerShell Docker görüntüsüyle](https://hub.docker.com/r/azuresdk/azure-powershell/)yerel olarak yüklü PowerShell ile kullanılabilir.
 
 ### <a name="base-requirements"></a>Temel gereksinimler
 
@@ -37,18 +37,18 @@ Azure Kaynak Grafiği modülü aşağıdaki yazılımı gerektirir:
 
 - PowerShellGet 2.0.1 veya üzeri. Henüz yüklenmiş ve güncellenmiş değilse, [bu yönergeleri](/powershell/gallery/installing-psget) izleyin.
 
-### <a name="install-the-module"></a>Modülünü yükleme
+### <a name="install-the-module"></a>Modülü yükler
 
-PowerShell için kaynak grafiği modül **Az.ResourceGraph**.
+PowerShell için kaynak Graph modülü **az. ResourceGraph**' dir.
 
-1. Gelen bir **Yönetim** PowerShell isteminde aşağıdaki komutu çalıştırın:
+1. Bir **Yönetim** PowerShell isteminde aşağıdaki komutu çalıştırın:
 
    ```azurepowershell-interactive
    # Install the Resource Graph module from PowerShell Gallery
    Install-Module -Name Az.ResourceGraph
    ```
 
-1. Modül içeri aktarıldı ve (0.7.1) doğru sürüm olduğundan doğrulama:
+1. Modülün içeri aktarıldığını ve doğru sürüm (0.7.3) olduğunu doğrulayın:
 
    ```azurepowershell-interactive
    # Get a list of commands for the imported Az.ResourceGraph module
@@ -91,7 +91,7 @@ Azure PowerShell modülünün seçtiğiniz ortamınıza eklenmesiyle birlikte ş
 Son sorgu birkaç kere çalıştırıldığında, ortamınızda hiçbir şeyin değişmediği varsayılarak döndürülen sonuçlar tutarlı ve beklendiği gibi olur, yani **Ad** özelliğine göre düzenlenir ama yine de en iyi beş sonuçla sınırlıdır.
 
 > [!NOTE]
-> Sorgu sonuçları bir abonelikten döndürmezse erişimi olduğunu unutmayın, zaten sahip `Search-AzGraph` varsayılan bağlamı aboneliklerinde cmdlet'i varsayılan olarak. Abonelik listesini görmek için varsayılan bağlamı bir parçası olan kimlikleri bu çalıştırma `(Get-AzContext).Account.ExtendedProperties.Subscriptions` erişim iznine sahip olduğunuz tüm abonelikler arasında arama yapmak istiyorsanız, için PSDefaultParameterValues ayarlayabilirsiniz `Search-AzGraph` cmdlet'ini çalıştırarak `$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID }`
+> Sorgu, zaten erişiminiz olan bir abonelikteki sonuçları döndürmezse, cmdlet 'in varsayılan bağlamdaki abonelikler için varsayılan değerleri `Search-AzGraph` olduğunu unutmayın. Varsayılan bağlamın bir parçası olan abonelik kimliklerinin listesini görmek için, erişiminiz olan tüm aboneliklerde `(Get-AzContext).Account.ExtendedProperties.Subscriptions` arama yapmak istiyorsanız, bir tane çalıştırarak cmdlet için `Search-AzGraph` psdefaultparametervalues 'ı çalıştırabilirsiniz.`$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}`
    
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

@@ -1,6 +1,7 @@
 ---
-title: Metin analizi REST API kullanarak anahtar ifade ayıklama | Microsoft Docs
-description: Azure Bilişsel Hizmetler'in sunduğu metin analizi REST API kullanarak anahtar tümcecikleri ayıklayın yapma.
+title: Metin Analizi REST API kullanarak anahtar tümceciği ayıklama
+titleSuffix: Azure Cognitive Services
+description: Azure bilişsel hizmetler 'den Metin Analizi REST API kullanarak anahtar tümceleri ayıklama.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -9,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 06/05/2019
 ms.author: raymondl
-ms.openlocfilehash: c803c85a0900a09b18909e2c81d52915a12cff1a
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 58bfb889662a58aa02286c41a2e242e6a0e9a75c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304067"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562636"
 ---
 # <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>Örnek: Metin Analizi’ni kullanarak anahtar ifadeleri ayıklama
 
@@ -22,18 +23,18 @@ ms.locfileid: "67304067"
 
 Bir belge koleksiyonundaki ana noktaları hızlı şekilde belirlemeniz gerekiyorsa bu özellik kullanışlıdır. Örneğin, "The food was delicious and there were wonderful staff" (Yemek lezizdi ve müthiş personel hizmeti vardı) giriş metni olduğunda hizmet, "food" (yemek) ve "wonderful staff" (müthiş personel) ana konuşma noktalarını döndürür.
 
-Bkz: [desteklenen diller](../text-analytics-supported-languages.md) makale daha fazla bilgi için. 
+Daha fazla bilgi için [desteklenen diller](../text-analytics-supported-languages.md) makalesine bakın. 
 
 > [!TIP]
-> Metin analizi de sağlar Linux tabanlı bir Docker kapsayıcı görüntüsü anahtar ifade ayıklama için böylece [yükleyin ve metin analizi kapsayıcı çalıştırın](text-analytics-how-to-install-containers.md) verilerinizi yakın.
+> Metin Analizi Ayrıca, anahtar tümceciği ayıklama için Linux tabanlı bir Docker kapsayıcı görüntüsü sağlar, böylece Metin Analizi kapsayıcısını verilerinize yakın şekilde [yükleyip çalıştırabilirsiniz](text-analytics-how-to-install-containers.md) .
 
 ## <a name="preparation"></a>Hazırlık
 
-Metin üzerinde çalışmak için daha büyük miktarda verdiğinizde anahtar ifade ayıklama en iyi şekilde çalışır. Bu ters, yaklaşımı analiz gerçekleştiren daha iyi daha küçük miktarlarda metin. Her iki işlemden de en iyi sonuçları elde etmek için girişleri uygun şekilde yeniden yapılandırın.
+Anahtar tümceciği ayıklama, üzerinde çalışmak için büyük miktarda metin verdiğinizde en iyi şekilde çalışır. Bu, daha küçük miktarlarda metin üzerinde daha iyi sonuç veren yaklaşım analizinden daha tersidir. Her iki işlemden de en iyi sonuçları elde etmek için girişleri uygun şekilde yeniden yapılandırın.
 
 JSON belgeleri kimlik, metin, dil biçiminde olmalıdır.
 
-Belge boyutuna, belge başına altında 5.120 karakter uzunluğunda olmalıdır ve en fazla 1.000 olabilir koleksiyon başına öğe sayısı (Kimlikler). Koleksiyon, istek gövdesinde gönderilir. Aşağıdaki örnek, anahtar ifade ayıklaması için gönderebileceğiniz içeriğin bir gösterimidir.
+Belge boyutu belge başına 5.120 karakter altında olmalıdır ve koleksiyon başına en fazla 1.000 öğe (kimlik) olabilir. Koleksiyon, istek gövdesinde gönderilir. Aşağıdaki örnek, anahtar ifade ayıklaması için gönderebileceğiniz içeriğin bir gösterimidir.
 
 ```json
     {
@@ -67,13 +68,13 @@ Belge boyutuna, belge başına altında 5.120 karakter uzunluğunda olmalıdır 
     }
 ```    
     
-## <a name="step-1-structure-the-request"></a>1\. adım: Yapı isteği
+## <a name="step-1-structure-the-request"></a>1\. adım: İsteği yapısı
 
 İstek tanımıyla ilgili ayrıntılara [Metin Analizi API’sini çağırma](text-analytics-how-to-call-api.md) bölümünden erişilebilir. Kolaylık olması için aşağıdaki noktalar yeniden belirtilmektedir:
 
-+ Bir **POST** isteği oluşturun. Bu istek için API belgelerini gözden geçirin: [Anahtar ifadeleri API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6)
++ Bir **POST** isteği oluşturun. Bu istek için API belgelerini gözden geçirin: [Anahtar tümceleri API 'SI](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6)
 
-+ Anahtar ifade ayıklama, Azure veya bir örneklenmiş bir metin analizi kaynak kullanarak HTTP uç noktasına ayarlayın [metin analizi kapsayıcı](text-analytics-how-to-install-containers.md). `/keyPhrases` kaynağını içermelidir: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases`
++ Azure 'da bir Metin Analizi kaynağı veya bir örneklenmiş [metin analizi kapsayıcısı](text-analytics-how-to-install-containers.md)kullanarak anahtar tümceciği ayıklama için HTTP uç noktasını ayarlayın. `/keyPhrases` kaynağını içermelidir: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases`
 
 + Metin Analizi işlemlerine yönelik erişim anahtarını dahil etmek için bir istek üst bilgisi ayarlayın. Daha fazla bilgi için bkz. [Uç noktaları ve erişim anahtarlarını bulma](text-analytics-how-to-access-key.md).
 
@@ -82,9 +83,9 @@ Belge boyutuna, belge başına altında 5.120 karakter uzunluğunda olmalıdır 
 > [!Tip]
 > İsteği yapılandırmak ve hizmete GÖNDERMEK için [Postman](text-analytics-how-to-call-api.md) kullanın veya [belgelerdeki](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6) **API testi konsolu**’nu açın.
 
-## <a name="step-2-post-the-request"></a>2\. adım: POST isteği
+## <a name="step-2-post-the-request"></a>2\. adım: İsteği gönder
 
-İstek alındığında analiz gerçekleştirilir. Bkz: [veri sınırları](../overview.md#data-limits) dakika başına gönderin ve ikinci istek sayısı ve boyutu hakkında bilgi için genel bakış bölümünde.
+İstek alındığında analiz gerçekleştirilir. Dakika ve saniye başına gönderebilmeniz için isteklerin boyutu ve sayısı hakkında genel bakış konusundaki [veri sınırları](../overview.md#data-limits) bölümüne bakın.
 
 Hizmetin durum bilgisi olmadığını unutmayın. Hesabınızda bir veri depolanmaz. Sonuçlar hemen yanıtta döndürülür.
 
@@ -94,7 +95,7 @@ Tüm POST istekleri, kimlikler ve algılanan özelliklerle JSON tarafından biç
 
 Hemen çıktı döndürülür. Sonuçları, JSON kabul eden bir uygulamada akışa alabilir veya çıktıyı yerel sistemde bir dosyaya kaydedebilir, sonra da verileri sıralamanıza, aramanıza ve işlemenize olanak sağlayan bir uygulamaya içeri aktarabilirsiniz.
 
-Anahtar ifade ayıklama için çıktının bir örneği aşağıda gösterilmiştir:
+Anahtar tümceciği ayıklama çıkışının bir örneği burada gösterilmektedir:
 
 ```json
     "documents": [

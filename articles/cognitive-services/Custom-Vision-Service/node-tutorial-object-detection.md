@@ -1,7 +1,7 @@
 ---
-title: "Hızlı Başlangıç: Bir nesne algılama proje Node.js için özel görüntü işleme SDK'sı ile oluşturma"
-titlesuffix: Azure Cognitive Services
-description: Bir proje oluşturun, etiketler ekleyin, görüntüleri karşıya yüklemek, projenizi eğitmek ve Node.js SDK'sını kullanarak nesneleri algılamak.
+title: "Hızlı Başlangıç: Node. js için Özel Görüntü İşleme SDK 'Sı ile bir nesne algılama projesi oluşturma"
+titleSuffix: Azure Cognitive Services
+description: Node. js SDK 'sını kullanarak bir proje oluşturun, Etiketler ekleyin, görüntü yükleyin, projenize eğitme yapın ve nesneleri algılayın.
 services: cognitive-services
 author: areddish
 manager: daauld
@@ -10,32 +10,32 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 07/15/2019
 ms.author: areddish
-ms.openlocfilehash: 45fce7a8b02f8613b666ed08d4755b0deb46cbca
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 306f812ab10c0ef247fdc1201e7df2a23b949a54
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68276458"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564167"
 ---
-# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-nodejs-sdk"></a>Hızlı Başlangıç: Özel görüntü işleme Node.js SDK'sı ile bir nesne algılama projesi oluşturma
+# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-nodejs-sdk"></a>Hızlı Başlangıç: Özel Görüntü İşleme Node. js SDK 'Sı ile bir nesne algılama projesi oluşturma
 
-Bu makalede, bilgi ve yardımcı olması için örnek kod, bir nesne algılama modeli oluşturmak için Node.js ile Custom Vision SDK'sı ile çalışmaya başlamak sağlar. Oluşturulduktan sonra etiketli bölge ekleme, görüntüleri karşıya yüklemek, proje eğitmek, projenin yayımlanan tahmin uç nokta URL'si almak ve program aracılığıyla resim test etmek için uç noktayı kullanın. Bu örnek, kendi Node.js uygulaması oluşturmak için şablon olarak kullanın.
+Bu makalede, bir nesne algılama modeli oluşturmak için Node. js ile Özel Görüntü İşleme SDK 'Yı kullanmaya başlamanıza yardımcı olacak bilgiler ve örnek kodlar sağlanmaktadır. Oluşturulduktan sonra etiketli bölgeler ekleyebilir, görüntüleri yükleyebilir, projeyi eğitebilir, projenin yayımlanmış tahmin uç noktası URL 'sini alabilir ve bir görüntüyü programlı bir şekilde test etmek için uç noktayı kullanabilirsiniz. Bu örneği kendi Node. js uygulamanızı oluşturmak için bir şablon olarak kullanın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- [Node.js 8](https://www.nodejs.org/en/download/) veya sonraki bir sürümü yüklü.
-- [npm](https://www.npmjs.com/) yüklü.
+- [Node. js 8](https://www.nodejs.org/en/download/) veya üzeri yüklü.
+- [NPM](https://www.npmjs.com/) yüklendi.
 
 ## <a name="install-the-custom-vision-sdk"></a>Özel Görüntü İşleme SDK’sını yükleme
 
-Node.js için Custom Vision service SDK'larını yüklemek için aşağıdaki komutları çalıştırın:
+Node. js için Özel Görüntü İşleme Hizmeti SDK 'larını yüklemek için aşağıdaki komutları çalıştırın:
 
 ```shell
 npm install @azure/cognitiveservices-customvision-training
 npm install @azure/cognitiveservices-customvision-prediction
 ```
 
-Görüntülerle indirebileceğiniz [Node.js Örnekleri](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples).
+Resimleri [Node. js örnekleriyle](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)indirebilirsiniz.
 
 [!INCLUDE [get-keys](includes/get-keys.md)]
 
@@ -43,7 +43,7 @@ Görüntülerle indirebileceğiniz [Node.js Örnekleri](https://github.com/Azure
 
 ## <a name="add-the-code"></a>Kod ekleme
 
-Adlı yeni bir dosya oluşturun *sample.js* tercih edilen proje dizininizde.
+Tercih ettiğiniz proje dizininde *Sample. js* adlı yeni bir dosya oluşturun.
 
 ### <a name="create-the-custom-vision-service-project"></a>Özel Görüntü İşleme hizmeti projesi oluşturma
 
@@ -76,7 +76,7 @@ const trainer = new TrainingApi.TrainingAPIClient(trainingKey, endPoint);
 
 ### <a name="create-tags-in-the-project"></a>Projede etiketler oluşturma
 
-Projenize sınıflandırma etiketleri oluşturmak için sonuna aşağıdaki kodu ekleyin *sample.js*:
+Projenize sınıflandırma etiketleri oluşturmak için, *Sample. js*' nin sonuna aşağıdaki kodu ekleyin:
 
 ```javascript
     const forkTag = await trainer.createTag(sampleProject.id, "Fork");
@@ -184,9 +184,9 @@ scissorsFiles.forEach(file => {
 await Promise.all(fileUploadPromises);
 ```
 
-### <a name="train-the-project-and-publish"></a>Proje eğitin ve yayımlayın
+### <a name="train-the-project-and-publish"></a>Projeyi eğitme ve yayımlama
 
-Bu kod, ilk yineleme projede oluşturur ve ardından bu yineleme tahmin uç noktaya yayımlar. Yayımlanmış bir yineleme için verilen ad, tahmin istekleri göndermek için kullanılabilir. Yineleme yayımlanmadan tahmin uç noktasında kullanılabilir değil.
+Bu kod, projedeki ilk yinelemeyi oluşturur ve ardından bu yinelemeyi tahmin uç noktasına yayınlar. Yayımlanan yinelemeye verilen ad, tahmin istekleri göndermek için kullanılabilir. Bir yineleme, yayımlanana kadar tahmin uç noktasında kullanılamaz.
 
 ```javascript
 console.log("Training...");
@@ -205,7 +205,7 @@ console.log("Training status: " + trainingIteration.status);
 await trainer.publishIteration(sampleProject.id, trainingIteration.id, publishIterationName, predictionResourceId);
 ```
 
-### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Edinin ve öngörü uç noktasında yayımlanan yineleme kullanın
+### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Tahmin uç noktasında yayımlanmış yinelemeyi edinme ve kullanma
 
 Tahmin uç noktasına bir görüntü göndermek ve tahmini almak için dosyanın sonuna aşağıdaki kodu ekleyin:
 
@@ -225,7 +225,7 @@ Tahmin uç noktasına bir görüntü göndermek ve tahmini almak için dosyanın
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-Çalıştırma *sample.js*.
+*Sample. js*' i çalıştırın.
 
 ```shell
 node sample.js

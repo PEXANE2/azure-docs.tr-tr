@@ -1,6 +1,6 @@
 ---
-title: "Öğretici: Python – Custom Vision Service'e TensorFlow modeli Çalıştır"
-titlesuffix: Azure Cognitive Services
+title: "Öğretici: Python 'da TensorFlow modelini çalıştırma-Özel Görüntü İşleme Hizmeti"
+titleSuffix: Azure Cognitive Services
 description: Python’da TensorFlow modeli çalıştırın.
 services: cognitive-services
 author: areddish
@@ -10,19 +10,19 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: areddish
-ms.openlocfilehash: ba8cf3392ac2bd3d371e5e1910c6671feba9dedf
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: c6e7cf770e5f1639e676d232564809121a8c4e4b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606875"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561091"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>Öğretici: Python’da TensorFlow modelini çalıştırma
 
 Özel Görüntü İşleme Hizmeti'ndeki [TensorFlow modelinizi dışarı aktardıktan](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model) sonra bu hızlı başlangıcı izleyerek bu modeli görüntü sınıflandırma amacıyla yerel ortamda kullanabilirsiniz.
 
 > [!NOTE]
-> Bu öğretici, görüntü sınıflandırma projelerden dışarı modelleri için geçerlidir.
+> Bu öğretici yalnızca görüntü sınıflandırması projelerinden aktarılmış modeller için geçerlidir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -88,7 +88,7 @@ image = update_orientation(image)
 image = convert_to_opencv(image)
 ```
 
-### <a name="handle-images-with-a-dimension-1600"></a>Bir boyut ile görüntü işleme > 1600
+### <a name="handle-images-with-a-dimension-1600"></a>Bir boyutla > 1600 görüntüleri işleme
 
 ```Python
 # If the image has either w or h greater than 1600 we resize it down respecting
@@ -172,7 +172,7 @@ def update_orientation(image):
 
 ## <a name="predict-an-image"></a>Görüntü tahmininde bulunma
 
-Görüntünün bir tensor hazırlanmış sonra bunu bir tahmin modeli aracılığıyla gönderebiliriz:
+Görüntü bir Tensor olarak hazırlandıktan sonra, bunu bir tahmine yönelik model aracılığıyla gönderebiliriz:
 
 ```Python
 
@@ -210,7 +210,7 @@ Tensor görüntü model aracılığıyla çalıştırıldığında etiketlerle e
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ardından, modelinizi mobil uygulamasına sarmalamayı öğrenin:
+Ardından, modelinizi bir mobil uygulamaya nasıl kaydıracağınızı öğrenin:
 * [Dışarı aktarılan Tensorflow modelinizi bir Android uygulamasında kullanma](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample)
 * [Dışarı aktarılan CoreML modelinizi bir Swift iOS uygulamasında kullanma](https://go.microsoft.com/fwlink/?linkid=857726)
 * [Dışarı aktarılan CoreML modelinizi Xamarin ile bir iOS uygulamasında kullanma](https://github.com/xamarin/ios-samples/tree/master/ios11/CoreMLAzureModel)

@@ -1,7 +1,7 @@
 ---
-title: Hedefler
-titleSuffix: Language Understanding - Azure Cognitive Services
-description: Tek bir hedefi temsil eden bir görev veya eylemi kullanıcı gerçekleştirmek istiyor. Bir amaç veya hedef kullanıcının utterance ifade edilen olduğundan. Kullanıcıların uygulamanızda almak istediğiniz eylemlerine karşılık gelen bir ıntents kümesi tanımlar.
+title: Amaçlar-LUSıS
+titleSuffix: Azure Cognitive Services
+description: Tek bir amaç, kullanıcının gerçekleştirmek istediği bir görevi veya eylemi temsil eder. Bir amaç veya hedef kullanıcının utterance ifade edilen olduğundan. Kullanıcıların uygulamanızda almak istediğiniz eylemlerine karşılık gelen bir ıntents kümesi tanımlar.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: e635a11cb99d11befc40703d9f5d2abec8559632
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2b574e0a545091263fce7949f997a3ba2dc8e5a8
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60813463"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563962"
 ---
-# <a name="concepts-about-intents-in-your-luis-app"></a>LUIS uygulamanızda hedefleri hakkında kavramları
+# <a name="concepts-about-intents-in-your-luis-app"></a>LUSıS uygulamanızdaki amaçlar hakkındaki kavramlar
 
 Kullanıcı eylem gerçekleştirmek istediği ya da bir amacı bir görevi gösterir. Bir amaç veya hedef bir kullanıcının ifade olduğundan [utterance](luis-concept-utterance.md).
 
@@ -31,7 +31,7 @@ Uygulama amaçları seyahat   |   Örnek konuşmalar   |
  CheckWeather | "Gibi de Boston hava nedir?" <br/> "Bu hafta için hava durumu tahminini Göster" |
  None         | "Bana bir tanımlama bilgisi tarif Al"<br>"Lakers win?" |
 
-Tüm uygulamalar önceden tanımlanmış bir hedefle gelir "[hiçbiri](#none-intent-is-fallback-for-app)", geri dönüş hedefi olduğu. 
+Tüm uygulamalar, geri dönüş amacı olan önceden tanımlanmış "[none](#none-intent-is-fallback-for-app)" hedefi ile gelir. 
 
 ## <a name="prebuilt-domains-provide-intents"></a>Önceden oluşturulmuş etki alanları hedefleri belirtin
 Tanımladığınız ıntents ek olarak, önceden oluşturulmuş hedefleri önceden oluşturulmuş etki alanlarından birini kullanabilirsiniz. Daha fazla bilgi için [LUIS uygulamalarında önceden oluşturulmuş etki alanlarını](luis-how-to-use-prebuilt-domains.md) ıntents uygulamanızda kullanmak için önceden oluşturulmuş bir etki alanından özelleştirme hakkında bilgi edinmek için.
@@ -59,10 +59,10 @@ Benzer şekilde niyetli [konuşma](luis-concept-utterance.md) için tek bir hede
 
 ## <a name="none-intent"></a>Amaç yok
 
-**Hiçbiri** hedefi, her uygulama için önemlidir ve sıfır konuşma olmamalıdır.
+**Hiçbiri** amacı her uygulama için önemli değildir ve sıfır utlanmaslar içermemelidir.
 
 ### <a name="none-intent-is-fallback-for-app"></a>Hedefi hiçbir uygulama için geri dönüş
-**Hiçbiri** amacı olan bir genel ya da geri dönüş hedefi. LUIS uygulama etki alanında (konu alanı), önemli değildir. Konuşma öğretmek için kullanılır. **Hiçbiri** amacı, uygulamadaki toplam konuşma yüzde 20'si ile 10 arasındaki olmalıdır. Hiçbiri boş bırakmayın. 
+**Hiçbiri** amacı olan bir genel ya da geri dönüş hedefi. LUIS uygulama etki alanında (konu alanı), önemli değildir. Konuşma öğretmek için kullanılır. **Hiçbiri** amacı, uygulamadaki toplam konuşma yüzde 20'si ile 10 arasındaki olmalıdır. Hiçbirini boş bırakmayın. 
 
 ### <a name="none-intent-helps-conversation-direction"></a>Hedefi yok konuşma yönü de yardımcı olur.
 Bir utterance hiçbiri tahmin edildiğinde, hedefi ve döndürülen bu tahmin ile Sohbet botu için robot daha fazla soru veya sohbet botu geçerli seçeneklerdir kullanıcıya yönlendirmek için bir menü sağlayın. 
@@ -81,11 +81,11 @@ Ne tür bir konuşma bırakılır kullanmışsanız hedefi? Belirli bir şey ile
 ## <a name="negative-intentions"></a>Negatif amaçları 
 Negatif ve pozitif amaçları gibi belirlemek istiyorsanız "miyim **istediğiniz** bir araba" ve "ı **yoksa** bir araba istediğiniz", iki hedefleri (bir pozitif ve negatif bir) oluşturma ve için uygun Konuşma ekleme Her. Tek bir hedefi oluşturma ve iki farklı pozitif ve negatif koşulları bir varlık olarak işaretleyin.  
 
-## <a name="intents-and-patterns"></a>Hedefleri ve desenleri
+## <a name="intents-and-patterns"></a>Amaçlar ve desenler
 
-Kısmen veya tamamen normal bir ifade olarak tanımlanan örnek konuşma varsa kullanmayı [normal ifade varlık](luis-concept-entity-types.md#regular-expression-entity) ile eşleştirilmiş bir [deseni](luis-concept-patterns.md). 
+Bir normal ifade olarak kısmen veya bütün olarak tanımlanabilen örnek utsunuz varsa, bir [desen](luis-concept-patterns.md)ile eşleştirilmiş [normal ifade varlığını](luis-concept-entity-types.md#regular-expression-entity) kullanmayı düşünün. 
 
-Böylece desenle eşleşen bir normal ifade varlık kullanarak verileri ayıklama garanti eder. Desen eşleştirme, tam bir hedefi döndürülen garanti eder. 
+Bir normal ifade varlığı kullanmak, düzenin eşleşmesi için veri ayıklamasını garanti eder. Bu eşleştirme, tam bir amacı garanti eder. 
 
 ## <a name="intent-balance"></a>Intent bakiyesi
 Uygulama etki alanı hedefleri konuşma dengesi her hedefi arasında olmalıdır. 10 Konuşma ile bir hedefi ve 500 Konuşma ile başka bir amacı yoktur. Bu dengeli değil. Bu durum varsa, birçok hedefleri halinde yeniden, görmek için 500 konuşma amacıyla gözden geçirin. bir [deseni](luis-concept-patterns.md). 

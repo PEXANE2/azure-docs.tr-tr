@@ -1,6 +1,6 @@
 ---
-title: Kuruluş kavramları
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Kurumsal kavramlar-LUSıS
+titleSuffix: Azure Cognitive Services
 description: Büyük LUIS uygulama ve LUIS ve soru-cevap Oluşturucu birlikte dahil olmak üzere birden fazla uygulama için tasarım kavramları anlayın.
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: e5d7e2bfe1ee4e3ca248f40701aa65e757fc4d74
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0d51778473dc033bce3c58b1572f1e514a8b6327
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60812869"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560772"
 ---
 # <a name="enterprise-strategies-for-a-luis-app"></a>Bir LUIS uygulaması için Kurumsal stratejileri
 Bu tasarım stratejiler Kurumsal uygulamanız için gözden geçirin.
@@ -42,13 +42,13 @@ Uygulamanızı çok çeşitli kullanıcı konuşma tahmin etmek için geliyorsa,
 Düzenli bir zamanlama [konuşma uç noktası incelenmesi](luis-how-to-review-endpoint-utterances.md) iki haftada gibi etkin olarak öğrenmeye için daha sonra yeniden eğitme ve yeniden yayımlayın. 
 
 ## <a name="when-you-need-to-have-more-than-500-intents"></a>500'den fazla hedefleri gerektiğinde
-Örneğin, 500'den fazla amacı olan bir office Yardımcısı, geliştirmekte olduğunuz varsayalım. 200 amacı, Toplantı zamanlama için ilişkiliyse, ilgili anımsatıcılar 200 olan, iş arkadaşlarınızın hakkında bilgi alma 200 olduğundan ve e-posta göndermek için 200 olan, grubunun hedefleri böylece her grubu tek bir uygulama olarak, ardından her hedefi içeren üst düzey bir uygulama oluşturabilirsiniz. Kullanım [dağıtım aracı ve mimari](#dispatch-tool-and-model) en üst düzey uygulama oluşturmak için. Ardından botunuzun Göster olarak basamaklı çağrısı kullanmak üzere değiştirmek [gönderme Öğreticisi][dispatcher-application-tutorial]. 
+Örneğin, 500'den fazla amacı olan bir office Yardımcısı, geliştirmekte olduğunuz varsayalım. 200 amacı, Toplantı zamanlama için ilişkiliyse, ilgili anımsatıcılar 200 olan, iş arkadaşlarınızın hakkında bilgi alma 200 olduğundan ve e-posta göndermek için 200 olan, grubunun hedefleri böylece her grubu tek bir uygulama olarak, ardından her hedefi içeren üst düzey bir uygulama oluşturabilirsiniz. Kullanım [dağıtım aracı ve mimari](#dispatch-tool-and-model) en üst düzey uygulama oluşturmak için. Ardından, [dağıtım öğreticide][dispatcher-application-tutorial]göster olarak basamaklı çağrıyı kullanmak için bot uygulamanızı değiştirin. 
 
 ## <a name="when-you-need-to-combine-several-luis-and-qna-maker-apps"></a>Çeşitli LUIS ve soru-cevap Oluşturucu uygulamaları birleştirmek gerektiğinde
-Bot, kullanım için yanıtlamaları gereken birkaç LUIS ve soru-cevap Oluşturucu uygulamalar varsa [gönderme aracı](#dispatch-tool-and-model) en üst düzey uygulama oluşturmak için. Ardından botunuzun Göster olarak basamaklı çağrısı kullanmak üzere değiştirmek [gönderme Öğreticisi][dispatcher-application-tutorial]. 
+Bot, kullanım için yanıtlamaları gereken birkaç LUIS ve soru-cevap Oluşturucu uygulamalar varsa [gönderme aracı](#dispatch-tool-and-model) en üst düzey uygulama oluşturmak için. Ardından, [dağıtım öğreticide][dispatcher-application-tutorial]göster olarak basamaklı çağrıyı kullanmak için bot uygulamanızı değiştirin. 
 
 ## <a name="dispatch-tool-and-model"></a>Dağıtım aracı ve modeli
-Kullanım [gönderme] [ dispatch-tool] bulunan komut satırı aracı [Botbuilder'da Araçları](https://github.com/Microsoft/botbuilder-tools) üst LUIS uygulaması birden çok LUIS ve/veya soru-cevap Oluşturucu uygulamaları birleştirilecek. Bu yaklaşım, tüm konular ve farklı alt konu etki alanlarını ayrı uygulamalar da dahil olmak üzere bir üst etki alanınız olanak tanır. 
+Birden çok LUO ve/veya Soru-Cevap Oluşturma uygulamalarını bir üst LUO uygulamasında birleştirmek için [Botbuilder-Tools](https://github.com/Microsoft/botbuilder-tools) ' da bulunan [dağıtım][dispatch-tool] komut satırı aracını kullanın. Bu yaklaşım, tüm konular ve farklı alt konu etki alanlarını ayrı uygulamalar da dahil olmak üzere bir üst etki alanınız olanak tanır. 
 
 ![Kavramsal gönderme mimarisi görüntüsü](./media/luis-concept-enterprise/dispatch-architecture.png)
 
@@ -56,7 +56,7 @@ Kullanım [gönderme] [ dispatch-tool] bulunan komut satırı aracı [Botbuilder
 
 Sohbet botu utterance alır, ardından üst LUIS uygulaması tahmin için gönderir. Üst uygulama üst tahmin edilen amacından LUIS uygulaması sonraki denir hangi alt belirler. Sohbet botu utterance daha belirli bir tahmin için alt uygulamaya gönderir.
 
-Bu çağrı hiyerarşisini Bot Builder v4 duruma nasıl getirileceğini anlamanız [dağıtıcı uygulaması Öğreticisi][dispatcher-application-tutorial].  
+Bot Builder v4 [dağıtıcısı-Application-öğreticisi][dispatcher-application-tutorial]' nden bu çağrı hiyerarşisinin nasıl yapıldığını anlayın.  
 
 ### <a name="intent-limits-in-dispatch-model"></a>Gönderme modeli hedefi sınırları
 Gönderme uygulama en fazla 500 gönderme kaynağı, 500 hedefleri için eşdeğer yok. 
