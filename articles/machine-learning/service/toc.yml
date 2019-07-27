@@ -227,8 +227,12 @@
     - name: Modelleri dağıtma ve sunma
       items:
         - name: Dağıtım nereye ve nasıl yapılır?
-          displayName: publish azure kubernetes azure container instances
+          displayName: publish web service
           href: how-to-deploy-and-where.md
+        - name: Azure Container Instances
+          href: how-to-deploy-azure-container-instance.md
+        - name: Azure Kubernetes Service
+          href: how-to-deploy-azure-kubernetes-service.md
         - name: GPU çıkarımı
           href: how-to-deploy-inferencing-gpus.md
         - name: FPGA çıkarımı
