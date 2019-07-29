@@ -165,7 +165,7 @@ az network public-ip show \
   --output tsv
 ```
 
-Genel IP adresini kopyalayıp tarayıcınızın adres çubuğuna yapıştırın. Bu örnekte URL: **https://52.170.203.149**.
+Genel IP adresini kopyalayıp tarayıcınızın adres çubuğuna yapıştırın. Bu örnekte URL: **https://52.170.203.149** .
 
 ![Güvenli uyarı](./media/tutorial-ssl-cli/application-gateway-secure.png)
 

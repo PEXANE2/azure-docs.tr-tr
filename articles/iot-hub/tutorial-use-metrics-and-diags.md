@@ -163,7 +163,7 @@ Daha sonra tanılama günlüklerine bakın, Bağlan bakın ve cihaz için günl�
 
 1. IOT hub'ının ayarlar bölmesinde, tıklayarak **ölçümleri** seçeneğini **izleme** bölümü.
 
-2. Ekranın üst kısmında tıklayın **son 24 saat (otomatik)**. Görünen açılır menüden seçin **son 4 saat** için **zaman aralığı**, ayarlayıp **zaman ayrıntı düzeyi** için **1 dakika**, yerel saat. Tıklayın **Uygula** bu ayarları kaydedin. 
+2. Ekranın üst kısmında tıklayın **son 24 saat (otomatik)** . Görünen açılır menüden seçin **son 4 saat** için **zaman aralığı**, ayarlayıp **zaman ayrıntı düzeyi** için **1 dakika**, yerel saat. Tıklayın **Uygula** bu ayarları kaydedin. 
 
    ![Saat ayarlarını ölçümleri gösteren ekran görüntüsü.](./media/tutorial-use-metrics-and-diags/06-metrics-set-time-range.png)
 
@@ -238,7 +238,7 @@ IOT hub'ı değil geçirildiğini [Azure İzleyicisi'nde ölçümler](/azure/azu
 
 5. Başka bir uyarı için artık ayarlama *kullanılan iletilerin toplam sayısını*. Bu ölçüm, kullanılan ileti sayısı kotayı IOT hub'ının--yaklaşırken bir uyarı göndermek istiyorsanız hub bildirmek için yakında iletileri reddetme başlayacak yararlıdır.
 
-   Üzerinde **Klasik uyarıları görüntüleyip** ekranında **ölçüm uyarısı Ekle (Klasik)**, bu alanları ardından doldurun **Kuralı Ekle** bölmesi.
+   Üzerinde **Klasik uyarıları görüntüleyip** ekranında **ölçüm uyarısı Ekle (Klasik)** , bu alanları ardından doldurun **Kuralı Ekle** bölmesi.
 
    **Ad**: Uyarı, kural için bir ad sağlayın *sayı--iletileri-genişliğinde*.
 
