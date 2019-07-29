@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 07/23/2019
 ms.author: kirankk
-ms.openlocfilehash: 36d172daed487372401691c7046215fb6c4a63ee
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 37b6a9947d3cabe1f566f842e321229efe9d03b6
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384934"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598524"
 ---
 # <a name="build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>Azure Cosmos DB SQL API hesabındaki verileri yönetmek için bir .NET konsol uygulaması oluşturun
 
@@ -261,7 +261,7 @@ Tebrikler! Başarılı bir şekilde bir Azure Cosmos DB veritabanı oluşturdunu
 >
 >
 
-Bir kapsayıcı, **Cosmosdatabase** sınıfında [**Createcontainerifnotexistsasync**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosdatabase) veya [**createcontainsilinebilir Sync**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosdatabase) işlevi kullanılarak oluşturulabilir. Bir kapsayıcı, JavaScript 'te, örneğin saklı yordamlar, Kullanıcı tanımlı işlevler ve tetikleyiciler gibi öğeler (SQL API 'SI ise JSON belgeleri) ve ilişkili sunucu tarafı uygulama mantığını içerir.
+Bir kapsayıcı, **Cosmosdatabase** sınıfında [**Createcontainerifnotexistsasync**](/dotnet/api/microsoft.azure.cosmos.database.createcontainerifnotexistsasync?view=azure-dotnet#Microsoft_Azure_Cosmos_Database_CreateContainerIfNotExistsAsync_Microsoft_Azure_Cosmos_ContainerProperties_System_Nullable_System_Int32__Microsoft_Azure_Cosmos_RequestOptions_System_Threading_CancellationToken_) veya [**createcontainsilinebilir Sync**](/dotnet/api/microsoft.azure.cosmos.database.createcontainerasync?view=azure-dotnet#Microsoft_Azure_Cosmos_Database_CreateContainerAsync_Microsoft_Azure_Cosmos_ContainerProperties_System_Nullable_System_Int32__Microsoft_Azure_Cosmos_RequestOptions_System_Threading_CancellationToken_) işlevi kullanılarak oluşturulabilir. Bir kapsayıcı, JavaScript 'te, örneğin saklı yordamlar, Kullanıcı tanımlı işlevler ve tetikleyiciler gibi öğeler (SQL API 'SI ise JSON belgeleri) ve ilişkili sunucu tarafı uygulama mantığını içerir.
 
 1. Createcontainksync  yöntemini kopyalayın ve **createdatabaseasync** yönteminizin altına yapıştırın. **Createcontainsilinebilir Sync** , zaten mevcut değilse, özelliği tarafından ``FamilyContainer`` ``LastName`` bölümlenmiş ``containerId`` alandan belirtilen kimliğe sahip yeni bir kapsayıcı oluşturur.
 
@@ -286,7 +286,7 @@ Bir kapsayıcı, **Cosmosdatabase** sınıfında [**Createcontainerifnotexistsas
 Tebrikler! Başarılı bir şekilde bir Azure Cosmos DB kapsayıcısı oluşturdunuz.  
 
 ## <a id="CreateDoc"></a>Adım 6: Kapsayıcıya öğe ekleme
-Bir öğe **Cosmoscontainer** sınıfının [**Createıtemmasync**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmoscontainer) işlevi kullanılarak oluşturulabilir. SQL API'sini kullanarak öğeler, kullanıcı tanımlı (rastgele) JSON içeriği olan belgeler olarak görüntülenir. Artık Azure Cosmos DB kapsayıcınıza bir öğe ekleyebilirsiniz.
+Bir öğe **Cosmoscontainer** sınıfının [**Createıtemmasync**](/dotnet/api/microsoft.azure.cosmos.container.createitemasync?view=azure-dotnet#Microsoft_Azure_Cosmos_Container_CreateItemAsync__1___0_System_Nullable_Microsoft_Azure_Cosmos_PartitionKey__Microsoft_Azure_Cosmos_ItemRequestOptions_System_Threading_CancellationToken_) işlevi kullanılarak oluşturulabilir. SQL API'sini kullanarak öğeler, kullanıcı tanımlı (rastgele) JSON içeriği olan belgeler olarak görüntülenir. Artık Azure Cosmos DB kapsayıcınıza bir öğe ekleyebilirsiniz.
 
 İlk olarak, bu örnekte Azure Cosmos DB içinde depolanan nesneleri temsil edecek bir **Aile** sınıfı oluşturalım. **Family**'nin içinde kullanılan **Parent**, **Child**, **Pet**, **Address** alt sınıflarını da oluşturacağız. Note öğesinde JSON içinde **ID** olarak seri hale getirilmiş bir **ID** özelliği olmalıdır.
 

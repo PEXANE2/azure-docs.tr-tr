@@ -1,9 +1,9 @@
 ---
-title: Azure PowerShell betik örneği - bir kümeye uygulama dağıtma | Microsoft Docs
-description: Azure PowerShell betik örneği - bir Service Fabric kümesine uygulama dağıtın.
+title: Azure PowerShell betik örneği-uygulamayı bir kümeye dağıtma | Microsoft Docs
+description: Azure PowerShell betik örneği-bir uygulamayı Service Fabric kümesine dağıtın.
 services: service-fabric
 documentationcenter: ''
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 tags: azure-service-management
@@ -13,18 +13,18 @@ ms.workload: multiple
 ms.devlang: na
 ms.topic: sample
 ms.date: 01/18/2018
-ms.author: aljo
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 6de7a721a5042a20537d3f09ea9b8de1cc0e7169
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 53c4d3c18072f2644c472e5b78f144faba4dce50
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60622042"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68597723"
 ---
 # <a name="deploy-an-application-to-a-service-fabric-cluster"></a>Service Fabric kümesine uygulama dağıtma
 
-Bu örnek betik bir uygulama paketini kümenin görüntü deposuna kopyalar, uygulama türünü kümeye kaydeder, gereksiz uygulama paketi kaldırır ve uygulama türünden bir uygulama örneği oluşturur.  Daha sonra varsayılan hizmetlerin hedef uygulama türü uygulama bildiriminde tanımlanmış, bu hizmetleri şu anda oluşturulur. Parametreleri gereken şekilde özelleştirin. 
+Bu örnek betik bir uygulama paketini bir küme görüntü deposuna kopyalar, uygulama türünü kümeye kaydeder, gereksiz uygulama paketini kaldırır ve uygulama türünden bir uygulama örneği oluşturur.  Hedef uygulama türünün uygulama bildiriminde herhangi bir varsayılan hizmet tanımlanmışsa, bu hizmetler şu anda oluşturulur. Parametreleri gereken şekilde özelleştirin. 
 
 Gerekirse, [Service Fabric SDK’sı](../service-fabric-get-started.md) ile Service Fabric PowerShell modülünü yükleyin. 
 
@@ -34,7 +34,7 @@ Gerekirse, [Service Fabric SDK’sı](../service-fabric-get-started.md) ile Serv
 
 ## <a name="clean-up-deployment"></a>Dağıtımı temizleme 
 
-Betik örneği gerçekleştirildikten sonra betik [bir uygulamayı kaldırmak](service-fabric-powershell-remove-application.md) uygulama örneğini kaldırın, uygulama türünün kaydını silmek ve uygulama paketi görüntü deposundan silmek için kullanılabilir.
+Betik örneği çalıştırıldıktan sonra, uygulamayı [Kaldır](service-fabric-powershell-remove-application.md) içindeki betik uygulama örneğini kaldırmak, uygulama türünün kaydını silmek ve uygulama paketini görüntü deposundan silmek için kullanılabilir.
 
 ## <a name="script-explanation"></a>Betik açıklaması
 
@@ -43,10 +43,10 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 | Komut | Notlar |
 |---|---|
 |[Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps)| Service Fabric kümesine bir bağlantı oluşturur. |
-|[Kopyalama ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) | Kopya, bir uygulama paketini kümenin görüntü depolayın.  |
-|[Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps)| Bir uygulama türü ve sürümü küme üzerinde kaydeder. |
-|[Yeni ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps)| Kayıtlı uygulama türünden bir uygulama oluşturur. |
-| [Remove-ServiceFabricApplicationPackage](/powershell/module/servicefabric/remove-servicefabricapplicationpackage?view=azureservicefabricps) | Bir Service Fabric uygulama paketi görüntü deposundan kaldırır.|
+|[Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) | Bir uygulama paketini küme görüntü deposuna kopyalar.  |
+|[Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps)| Kümeye bir uygulama türü ve sürümü kaydeder. |
+|[New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps)| Kayıtlı uygulama türünden bir uygulama oluşturur. |
+| [Remove-ServiceFabricApplicationPackage](/powershell/module/servicefabric/remove-servicefabricapplicationpackage?view=azureservicefabricps) | Service Fabric uygulama paketini görüntü deposundan kaldırır.|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

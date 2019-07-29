@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 07/25/2019
 ms.author: pafarley
-ms.openlocfilehash: e910f2733a5485d50ad387a1e82ce27e0ba8fdea
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b07201556f08bde4ef8c7a7904c6619a126d7765
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562671"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68594548"
 ---
 # <a name="what-is-form-recognizer"></a>Form Tanıma nedir?
 
@@ -28,7 +28,7 @@ Denetimsiz öğrenme, el ile veri etiketleme veya yoğun kodlama ve bakım olmad
 
 ## <a name="prebuilt-receipt-model"></a>Önceden oluşturulmuş makbuz modeli
 
-Form tanıyıcı Ayrıca satış alındıları okumak için bir model içerir. Bu model, işlemin saati ve tarihi, ticari bilgiler, vergiler ve toplam miktar gibi önemli bilgileri ayıklar. Ayrıca, önceden oluşturulmuş alındılar modeli, bir Makbuzdaki tüm metni tanımak ve döndürmek için eğitilmiş olur.
+Form tanıyıcı Ayrıca satış alındıları okumak için bir model içerir. Bu model, işlemin saati ve tarihi, ticari bilgiler, vergiler ve toplam miktar gibi önemli bilgileri ayıklar. Ayrıca, önceden oluşturulmuş makbuz modeli, bir Makbuzdaki tüm metni tanımak ve döndürmek için eğitilmiş olur.
 
 ## <a name="what-it-includes"></a>Neleri içerir
 

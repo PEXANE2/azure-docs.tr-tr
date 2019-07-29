@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 03/25/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 71f621821e608ff660044208657696f47125330f
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: e962d76bc82edabf750af52c50ec45ed9ed76e17
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729532"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596844"
 ---
 # <a name="enable-web-application-firewall-using-azure-powershell"></a>Azure PowerShell kullanarak web uygulaması güvenlik duvarını etkinleştirme
 
@@ -48,11 +48,11 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-PowerShell'i yerel olarak yükleyip kullanmayı tercih ederseniz Bu öğretici Azure PowerShell modülü sürüm 1.0.0 gerektirir veya üzeri. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Login-AzAccount` komutunu da çalıştırmanız gerekir.
+PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici, Azure PowerShell modülü sürüm 1.0.0 veya üstünü gerektirir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Login-AzAccount` komutunu da çalıştırmanız gerekir.
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Kullanarak bir Azure kaynak grubu oluşturmanız [yeni AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup).  
+Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)kullanarak bir Azure Kaynak grubu oluşturun.  
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroupAG -Location eastus
@@ -60,7 +60,7 @@ New-AzResourceGroup -Name myResourceGroupAG -Location eastus
 
 ## <a name="create-network-resources"></a>Ağ kaynakları oluşturma 
 
-Adlı alt ağ yapılandırmalarını oluşturun *myBackendSubnet* ve *myAGSubnet* kullanarak [yeni AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig). Adlı sanal ağ oluşturma *myVNet* kullanarak [yeni AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) alt ağ yapılandırmalarını ile. Ve son olarak, adlı ortak IP adresi oluşturma *myAGPublicIPAddress* kullanarak [yeni AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress). Bu kaynaklar, uygulama ağ geçidi ve ilişkili kaynakları ile ağ bağlantısı sağlamak için kullanılır.
+[New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig)kullanarak *mybackendsubnet* ve *myagsubnet* adlı alt ağ yapılandırmalarını oluşturun. Alt ağ yapılandırmalarına sahip [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) kullanarak *myvnet* adlı sanal ağı oluşturun. Son olarak, [New-azpublicıpaddress](/powershell/module/az.network/new-azpublicipaddress)kullanarak *Myagpublicıpaddress* adlı genel IP adresini oluşturun. Bu kaynaklar, uygulama ağ geçidi ve ilişkili kaynakları ile ağ bağlantısı sağlamak için kullanılır.
 
 ```azurepowershell-interactive
 $backendSubnetConfig = New-AzVirtualNetworkSubnetConfig `
@@ -95,14 +95,14 @@ Bu bölümde, uygulama ağ geçidini destekleyen kaynakları ve son olarak uygul
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>IP yapılandırmaları ve ön uç bağlantı noktası oluşturma
 
-İlişkilendirme *myAGSubnet* uygulama ağ geçidi kullanarak daha önce oluşturduğunuz [yeni AzApplicationGatewayIPConfiguration](/powershell/module/az.network/new-azapplicationgatewayipconfiguration). Ata *myAGPublicIPAddress* kullanarak uygulama ağ geçidi [yeni AzApplicationGatewayFrontendIPConfig](/powershell/module/az.network/new-azapplicationgatewayfrontendipconfig).
+[Yeni-Azapplicationgatewayıp](/powershell/module/az.network/new-azapplicationgatewayipconfiguration)'leri kullanarak daha önce oluşturduğunuz *Myagsubnet* 'i uygulama ağ geçidine ilişkilendirin. [New-Azapplicationgatewayfrontendıpconfig](/powershell/module/az.network/new-azapplicationgatewayfrontendipconfig)kullanarak Application Gateway 'e *Myagpublicıpaddress* atayın.
 
 ```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork `
   -ResourceGroupName myResourceGroupAG `
   -Name myVNet
 
-$subnet=$vnet.Subnets[0]
+$subnet=$vnet.Subnets[1]
 
 $gipconfig = New-AzApplicationGatewayIPConfiguration `
   -Name myAGIPConfig `
@@ -119,7 +119,7 @@ $frontendport = New-AzApplicationGatewayFrontendPort `
 
 ### <a name="create-the-backend-pool-and-settings"></a>Arka uç havuzu ve ayarları oluşturma
 
-Adlı arka uç havuzu oluşturun *appGatewayBackendPool* kullanarak uygulama ağ geçidi için [yeni AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool). Kullanarak arka uç adres havuzları için ayarları yapılandırın [yeni AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting).
+[New-Azapplicationgatewaybackendirddresspool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool)kullanarak Application Gateway Için *Appgatewaybackendpool* adlı arka uç havuzunu oluşturun. [New-AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting)kullanarak arka uç adres havuzlarının ayarlarını yapılandırın.
 
 ```azurepowershell-interactive
 $defaultPool = New-AzApplicationGatewayBackendAddressPool `
@@ -137,7 +137,7 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 
 Uygulama ağ geçidinin trafiği arka uç havuzlarına uygun şekilde yönlendirmesi için bir dinleyici gereklidir. Bu örnekte, kök URL’deki trafiği dinleyen temel bir dinleyici oluşturacaksınız. 
 
-Adlı bir dinleyici oluşturun *mydefaultListener* kullanarak [yeni AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) daha önce oluşturduğunuz ön uç bağlantı noktasını ve ön uç yapılandırması. Dinleyicinin gelen trafik için kullanacağı arka uç havuzunu bilmesi için bir kural gerekir. Adlı bir temel kuralı oluşturun *bağlanma1* kullanarak [yeni AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule).
+[New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) ' i önceden oluşturduğunuz ön uç yapılandırması ve ön uç bağlantı noktasıyla kullanarak *mydefaultlistener* adlı bir dinleyici oluşturun. Dinleyicinin gelen trafik için kullanacağı arka uç havuzunu bilmesi için bir kural gerekir. [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule)kullanarak *rule1* adlı temel bir kural oluşturun.
 
 ```azurepowershell-interactive
 $defaultlistener = New-AzApplicationGatewayHttpListener `
@@ -156,7 +156,7 @@ $frontendRule = New-AzApplicationGatewayRequestRoutingRule `
 
 ### <a name="create-the-application-gateway-with-the-waf"></a>WAF ile uygulama ağ geçidi oluşturma
 
-Gerekli destekleyici kaynakları oluşturduğunuz, uygulama ağ geçidi kullanmak için parametreleri belirtin [yeni AzApplicationGatewaySku](/powershell/module/az.network/new-azapplicationgatewaysku). WAF yapılandırmasını kullanarak belirttiğiniz [yeni AzApplicationGatewayWebApplicationFirewallConfiguration](/powershell/module/az.network/new-azapplicationgatewaywebapplicationfirewallconfiguration). Ve ardından adlı uygulama ağ geçidi oluşturma *myAppGateway* kullanarak [yeni AzApplicationGateway](/powershell/module/az.network/new-azapplicationgateway).
+Artık gerekli destekleyici kaynakları oluşturduğunuza göre, [New-AzApplicationGatewaySku](/powershell/module/az.network/new-azapplicationgatewaysku)kullanarak uygulama ağ geçidi için parametreleri belirtin. [New-AzApplicationGatewayWebApplicationFirewallConfiguration](/powershell/module/az.network/new-azapplicationgatewaywebapplicationfirewallconfiguration)kullanarak WAF yapılandırmasını belirtin. Ardından [New-AzApplicationGateway](/powershell/module/az.network/new-azapplicationgateway)kullanarak *myappgateway* adlı uygulama ağ geçidini oluşturun.
 
 ```azurepowershell-interactive
 $sku = New-AzApplicationGatewaySku `
@@ -258,11 +258,11 @@ Update-AzVmss `
 
 ## <a name="create-a-storage-account-and-configure-diagnostics"></a>Bir depolama hesabı oluşturma ve tanılamaları yapılandırma
 
-Bu öğreticide uygulama ağ geçidi, algılama ve önleme amacıyla verileri depolamak için bir depolama hesabı kullanır. Veri kaydetmek için Azure İzleyici günlüklerine veya olay hub'ı kullanabilirsiniz.
+Bu öğreticide uygulama ağ geçidi, algılama ve önleme amacıyla verileri depolamak için bir depolama hesabı kullanır. Ayrıca Azure Izleyici günlüklerini veya Olay Hub 'ını kullanarak verileri kaydedebilirsiniz.
 
 ### <a name="create-the-storage-account"></a>Depolama hesabı oluşturma
 
-Adlı bir depolama hesabı oluşturma *myagstore1* kullanarak [yeni AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount).
+[New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount)kullanarak *myagstore1* adlı bir depolama hesabı oluşturun.
 
 ```azurepowershell-interactive
 $storageAccount = New-AzStorageAccount `
@@ -274,7 +274,7 @@ $storageAccount = New-AzStorageAccount `
 
 ### <a name="configure-diagnostics"></a>Tanılama yapılandırma
 
-Tanılama verileri kaydetmek üzere ApplicationGatewayAccessLog, ApplicationGatewayPerformanceLog, yapılandırma ve ApplicationGatewayFirewallLog günlüklerini kullanarak [kümesi AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting).
+[Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting)kullanarak ApplicationGatewayAccessLog, ApplicationGatewayPerformanceLog ve ApplicationGatewayFirewallLog günlüklerine veri kaydetmek için tanılamayı yapılandırın.
 
 ```azurepowershell-interactive
 $appgw = Get-AzApplicationGateway `
@@ -296,7 +296,7 @@ Set-AzDiagnosticSetting `
 
 ## <a name="test-the-application-gateway"></a>Uygulama ağ geçidini test etme
 
-Kullanabileceğiniz [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) uygulama ağ geçidinin genel IP adresini almak için. Genel IP adresini kopyalayıp tarayıcınızın adres çubuğuna yapıştırın.
+Uygulama ağ geçidinin genel IP adresini almak için [Get-Azpublicıpaddress](/powershell/module/az.network/get-azpublicipaddress) komutunu kullanabilirsiniz. Genel IP adresini kopyalayıp tarayıcınızın adres çubuğuna yapıştırın.
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
@@ -306,7 +306,7 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli olmadığında kaynak grubunu, uygulama ağ geçidi ve tüm ilgili kaynakları kullanarak kaldırma [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup).
+Artık gerekli değilse, [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)komutunu kullanarak kaynak grubunu, uygulama ağ geçidini ve ilgili tüm kaynakları kaldırın.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroupAG

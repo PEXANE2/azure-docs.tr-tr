@@ -3,16 +3,16 @@ title: Azure Dosyalarını yedekleme hakkında SSS
 description: Bu makalede, Azure dosya paylaşımlarınızın nasıl korunacağına ilişkin ayrıntılar sağlanır.
 author: dcurwin
 ms.author: dacurwin
-ms.date: 01/31/2019
+ms.date: 07/29/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: e3f94badb3af2e3f26a857f27f0b68a78338db92
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 35a41abb156326612c2d60829980f73457cde881
+ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466303"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68601758"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Azure Dosyalarını yedekleme ile ilgili sorular
 Bu makale, Azure Dosyalarını yedekleme hakkındaki yaygın sorulara yanıtlar sunar. Bazı yanıtlarda, kapsamlı bilgiler içeren makalelerin bağlantıları vardır. Ayrıca Azure Backup hizmeti ile ilgili sorularınızı [tartışma forumunda](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup) paylaşabilirsiniz.
@@ -33,7 +33,7 @@ Evet. Eşitleme Gruplarına bağlanan Azure Dosya Paylaşımlarının koruması 
 ### <a name="when-trying-to-back-up-file-shares-i-clicked-on-a-storage-account-for-discovering-the-file-shares-in-it-however-i-did-not-protect-them-how-do-i-protect-these-file-shares-with-any-other-vault"></a>Dosya paylaşımlarını yedeklemeye çalışırken, dosya paylaşımlarını keşfetmek için bir Depolama Hesabına tıkladım. Ancak koruyamadım. Bu dosya paylaşımlarını başka bir Kasa ile nasıl koruyabilirim?
 Yedeklemeye çalışırken, dosya paylaşımlarını keşfetmek için bir Depolama Hesabı seçildiğinde Depolama Hesabı, bu işlemin yapıldığı Kasaya kaydolur. Dosya paylaşımları farklı bir Kasa ile korumayı seçerseniz, bu Kasadan seçilen Depolama Hesabının [Kaydını Sil](troubleshoot-azure-files.md#configuring-backup)’in.
 
-### <a name="can-i-change-the-vault-to-which-i-backup-my-file-shares"></a>Dosya paylaşımlarımı yedeklediğim Kasayı değiştirebilir miyim?
+### <a name="can-i-change-the-vault-to-which-i-back-up-my-file-shares"></a>Dosya Paylaşımlarımı yedeklemediğim kasayı değiştirebilir miyim?
 Evet. Ancak bağlanan Kasadan [Korumayı Durdurmanız](backup-azure-files.md#stop-protecting-an-azure-file-share), bu Depolama Hesabının [Kaydını Sil](troubleshoot-azure-files.md#configuring-backup)’meniz ve farklı bir Kasadan bunu korumanız gerekir.
 
 ### <a name="in-which-geos-can-i-back-up-azure-file-shares-br"></a>Azure Dosya paylaşımlarını hangi bölgelerde yedekleyebilirim? <br/>
@@ -76,6 +76,9 @@ Yukarıda belirtilmeyen bir bölgede kullanmanız gerekiyorsa [AskAzureBackupTea
 Hayır. Depolama Hesabındaki tüm dosya paylaşımları, aynı Kasa tarafından korunabilir.
 
 ## <a name="backup"></a>Yedekle
+
+### <a name="how-many-scheduled-backups-can-i-configure-per-file-share"></a>Dosya paylaşma başına kaç zamanlanmış yedekleme yapılandırabilirim?
+Azure Backup Şu anda Azure dosya paylaşımlarının zamanlanan bir kez günlük yedeklemesini yapılandırmayı destekliyor. 
 
 ### <a name="how-many-on-demand-backups-can-i-take-per-file-share-br"></a>Dosya paylaşımı başına kaç tane İsteğe Bağlı yedekleme alabilirim? <br/>
 Zamanın herhangi bir noktasında dosya paylaşımı için en fazla 200 Anlık Görüntüye sahip olabilirsiniz. Sınır, ilkenizde tanımlandığı şekilde, Azure Backup tarafından alınan anlık görüntüleri içerir. Sınıra ulaştıktan sonra yedekleriniz başarısız olmaya başlarsa, daha sonraki yedeklemelerin başarılı olması için İsteğe Bağlı geri yükleme noktalarını silin.

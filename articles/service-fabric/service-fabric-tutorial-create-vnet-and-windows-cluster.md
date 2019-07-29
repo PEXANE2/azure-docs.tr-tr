@@ -3,7 +3,7 @@ title: Azure 'da Windows çalıştıran bir Service Fabric kümesi oluşturma | 
 description: Bu öğreticide, PowerShell kullanarak bir Azure sanal ağı ve ağ güvenlik grubuna Windows Service Fabric kümesi dağıtmayı öğreneceksiniz.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/22/2019
-ms.author: aljo
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 3e98b159443cec868040298d76e87a8de6b507ae
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 12e886c107249c338dc27aefcd2e1a32eba13d3e
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385087"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598885"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Öğretici: Windows çalıştıran bir Service Fabric kümesini Azure sanal ağına dağıtma
 

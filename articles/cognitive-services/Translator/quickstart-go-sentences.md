@@ -1,30 +1,30 @@
 ---
-title: "Hızlı Başlangıç: Alma cümlesi işlediklerinde, Git - Translator metin çevirisi API'si"
+title: "Hızlı Başlangıç: Tümce uzunluklarını al, Translator Metin Çevirisi API'si go"
 titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıçta, Go ile Translator Metin Çevirisi API’sini kullanarak metindeki cümlelerin uzunluklarını bulacaksınız.
 services: cognitive-services
 author: swmachan
-manager: erhopf
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: 574f70f8f091e0f0df65f7d52df5ca73ac00b2c0
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: a71e0859d7d677865cbacbf24de8b0e17861a192
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704546"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595168"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-go"></a>Hızlı Başlangıç: Translator metin çevirisi API'si, Go kullanarak cümle belirlemek için kullanın
+# <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-go"></a>Hızlı Başlangıç: Go kullanarak tümce uzunluğunu belirleme Translator Metin Çevirisi API'si kullanma
 
-Bu hızlı başlangıçta, Git ve Translator Text REST API kullanarak cümle uzunluğu (karakter cinsinden) kullanılacağını öğreneceksiniz.
+Bu hızlı başlangıçta, Go ve Translator Metin Çevirisi REST API kullanarak tümce uzunluklarının (karakter cinsinden) nasıl belirleneceğini öğreneceksiniz.
 
 Bu hızlı başlangıç, Translator Metin Çevirisi kaynağına sahip bir [Azure Bilişsel Hizmetler hesabı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) gerektirir. Bir hesabınız yoksa, abonelik anahtarı almak için [ücretsiz deneme sürümünü](https://azure.microsoft.com/try/cognitive-services/) kullanabilirsiniz.
 
 >[!TIP]
-> Tek seferde tüm kodu görmek istiyorsanız, bu örnek için kaynak kodunu şurada bulunur [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Go).
+> Tüm kodu aynı anda görmek isterseniz, bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Go)' da kullanılabilir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -35,7 +35,7 @@ Bu hızlı başlangıç şunları gerektirir:
 
 ## <a name="create-a-project-and-import-required-modules"></a>Bir proje oluşturun ve gerekli modülleri içeri aktarın
 
-Sık kullandığınız IDE veya düzenleyiciyi kullanarak yeni bir Git projesi oluşturun. Ardından bu kod parçacığını projenizde `sentence-length.go` adlı bir dosyaya kopyalayın.
+En sevdiğiniz IDE veya düzenleyiciyi kullanarak yeni bir go projesi oluşturun. Ardından bu kod parçacığını projenizde `sentence-length.go` adlı bir dosyaya kopyalayın.
 
 ```go
 package main
@@ -78,9 +78,9 @@ func main() {
 }
 ```
 
-## <a name="create-a-function-to-determine-sentence-length"></a>Tümce uzunluğu belirlemek için bir işlev oluşturma
+## <a name="create-a-function-to-determine-sentence-length"></a>Tümce uzunluğunu belirlemede bir işlev oluşturma
 
-Tümce uzunluğu belirlemek için bir işlev oluşturalım. Bu işlev, tek bir bağımsız değişken, Translator metin çevirisi abonelik anahtarınızı olacaktır.
+Tümce uzunluğunu belirlemede bir işlev oluşturalım. Bu işlev, Translator Metin Çevirisi abonelik anahtarınızı tek bir bağımsız değişken alır.
 
 ```go
 func breakSentence(subscriptionKey string) {
@@ -91,9 +91,9 @@ func breakSentence(subscriptionKey string) {
 }
 ```
 
-Ardından, şimdi URL'sini oluşturun. URL kullanılarak oluşturulan `Parse()` ve `Query()` yöntemleri. Parametreler ile eklenen fark edeceksiniz `Add()` yöntemi.
+Sonra URL 'YI oluşturalım. URL, `Parse()` ve `Query()` yöntemleri kullanılarak oluşturulmuştur. Parametrelerinin `Add()` yöntemiyle eklendiğini fark edeceksiniz.
 
-Bu kodu kopyalayın `breakSentence` işlevi.
+Bu kodu `breakSentence` işleve kopyalayın.
 
 ```go
 // Build the request URL. See: https://golang.org/pkg/net/url/#example_URL_Parse
@@ -104,11 +104,11 @@ u.RawQuery = q.Encode()
 ```
 
 >[!NOTE]
-> Uç noktaları, yollar ve istek parametreleri hakkında daha fazla bilgi için bkz: [Translator Text API 3.0: BreakSentence](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence).
+> Uç noktalar, rotalar ve istek parametreleri hakkında daha fazla bilgi için bkz [. Translator metin çevirisi API'si 3,0: Breakcümlesi](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence).
 
-## <a name="create-a-struct-for-your-request-body"></a>Bir yapı, istek gövdesi için oluşturma
+## <a name="create-a-struct-for-your-request-body"></a>İstek gövde'niz için bir struct oluşturun
 
-Ardından, istek gövdesi için anonim bir yapı oluşturmak ve JSON olarak kodlama `json.Marshal()`. Bu kodu ekleyin `breakSentence` işlevi.
+Sonra, istek gövdesi için anonim bir yapı oluşturun ve bunu ile `json.Marshal()`JSON olarak kodlayın. Bu kodu `breakSentence` işleve ekleyin.
 
 ```go
 // Create an anonymous struct for your request body and encode it to JSON
@@ -122,7 +122,7 @@ b, _ := json.Marshal(body)
 
 ## <a name="build-the-request"></a>Derleme isteği
 
-İstek gövdesi JSON olarak kodlanmış, derleme, bir POST isteği ve Translator Text API çağrısı.
+İstek gövdesini JSON olarak kodladığınıza göre, POST isteğinizi oluşturabilir ve Translator Metin Çevirisi API'si çağırabilirsiniz.
 
 ```go
 // Build the HTTP POST request
@@ -141,11 +141,11 @@ if err != nil {
 }
 ```
 
-Bilişsel hizmetler çok hizmet aboneliği kullanıyorsanız de içermelidir `Ocp-Apim-Subscription-Region` , istek parametreleri. [Birden çok hizmet aboneliği ile kimlik doğrulaması hakkında daha fazla bilgi](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Bilişsel hizmetler çoklu hizmet aboneliği kullanıyorsanız, istek parametrelerinize de dahil `Ocp-Apim-Subscription-Region` etmeniz gerekir. [Multi-Service aboneliğiyle kimlik doğrulama hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
-## <a name="handle-and-print-the-response"></a>İşlemek ve yanıt yazdırma
+## <a name="handle-and-print-the-response"></a>Yanıtı işleme ve yazdırma
 
-Bu kodu ekleyin `breakSentence` işlevi JSON yanıt kodunu çözme ve sonra biçimlendirmek ve sonucu yazdırır.
+JSON yanıtının kodunu çözmek için `breakSentence` bu kodu işleve ekleyin ve ardından sonucu biçimlendirin ve yazdırın.
 
 ```go
 // Decode the JSON response
@@ -188,14 +188,14 @@ Kodunuzu bizimkiyle karşılaştırmak isterseniz, tam örnek kodu [GitHub](http
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Translator metin çevirisi API'si ile yapabileceğiniz her şeyi anlamak için API Başvurusu göz atın.
+Translator Metin Çevirisi API'si ile yapabileceğiniz her şeyi anlamak için API başvurusuna göz atın.
 
 > [!div class="nextstepaction"]
 > [API başvurusu](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-Translator metin çevirisi API'si için kullanmayı öğrenin:
+Translator Metin Çevirisi API'si nasıl kullanacağınızı öğrenin:
 
 * [Metin çevirme](quickstart-go-translate.md)
 * [Metni başka dilde yazma](quickstart-go-transliterate.md)

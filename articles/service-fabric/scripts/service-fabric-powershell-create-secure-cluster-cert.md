@@ -3,7 +3,7 @@ title: Azure PowerShell Betik örneği - Service Fabric kümesi oluşturma | Mic
 description: Azure PowerShell Betik Örneği - Service Fabric kümesi oluşturun.
 services: service-fabric
 documentationcenter: ''
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 tags: azure-service-management
@@ -13,14 +13,14 @@ ms.workload: multiple
 ms.devlang: na
 ms.topic: sample
 ms.date: 01/19/2018
-ms.author: aljo
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 4693117e28f23e4dc94e4edbe96e949080ad2cce
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0e1ce5d276699b35da95405f3260f922554f99c6
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66161969"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68597875"
 ---
 # <a name="create-a-service-fabric-cluster"></a>Service Fabric kümesi oluşturma
 
@@ -49,7 +49,7 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 
 | Komut | Notlar |
 |---|---|
-| [Yeni AzServiceFabricCluster](/powershell/module/az.servicefabric/New-azServiceFabricCluster) | Yeni bir Service Fabric kümesi oluşturur. |
+| [New-AzServiceFabricCluster](/powershell/module/az.servicefabric/New-azServiceFabricCluster) | Yeni bir Service Fabric kümesi oluşturur. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
