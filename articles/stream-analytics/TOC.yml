@@ -148,6 +148,8 @@
               href: stream-analytics-scale-jobs.md
         - name: ML işlevleriyle ölçeklendirme
           href: stream-analytics-scale-with-machine-learning-functions.md
+        - name: Yeniden bölümleme ile ölçeklendirme
+          href: repartition.md
     - name: Otomatikleştirme
       items:
         - name: .NET SDK’sını kullanma

@@ -155,6 +155,8 @@
           href: logic-apps-enterprise-integration-b2b-business-continuity.md
     - name: Yalıtılmış ortamlarla sanal ağlara bağlanma
       href: connect-virtual-network-vnet-isolated-environment.md
+    - name: Tümleştirme hizmeti ortamlarına yapıtlar ekleme
+      href: add-artifacts-integration-service-environment-ise.md
     - name: Şirket içi verilere erişim
       items:
         - name: Veri ağ geçidi yükleme
@@ -295,6 +297,8 @@
           href: manage-logic-apps-with-visual-studio.md
         - name: Tümleştirme hesaplarını yönetme
           href: logic-apps-enterprise-integration-accounts.md
+        - name: Tümleştirme hizmeti ortamlarını yönetme
+          href: ise-manage-integration-service-environment.md
         - name: En son şemaya geçiş
           href: ../connectors/connectors-schema-migration.md
     - name: Test etme
