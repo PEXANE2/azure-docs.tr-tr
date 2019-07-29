@@ -172,7 +172,7 @@ Veri ve Azure Data Lake Store Gen1 parquet veya sınırlandırılmış metin bi�
 
 | Özellik   | Açıklama                                                  | Gerekli |
 | ---------- | ------------------------------------------------------------ | -------- |
-| türü       | Type özelliği altında `location` kümesinde ayarlanmalıdır **AzureDataLakeStoreLocation**. | Evet      |
+| type       | Type özelliği altında `location` kümesinde ayarlanmalıdır **AzureDataLakeStoreLocation**. | Evet      |
 | folderPath | Bir klasörün yolu. Joker karakter filtresi klasörlere kullanmak istiyorsanız, bu ayar atlayın ve etkinliği kaynak ayarları belirtin. | Hayır       |
 | fileName   | Verilen folderPath altında dosya adı. Joker karakter filtresi dosyalarını kullanmak istiyorsanız, bu ayar atlayın ve etkinliği kaynak ayarları belirtin. | Hayır       |
 
