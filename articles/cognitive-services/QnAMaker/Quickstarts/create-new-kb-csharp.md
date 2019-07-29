@@ -1,6 +1,6 @@
 ---
-title: Bilgi Bankası - REST oluşturunC#
-titlesuffix: QnA Maker- Azure Cognitive Services
+title: 'Hızlı Başlangıç: Bilgi Bankası oluşturma-REST, C# soru-cevap oluşturma'
+titleSuffix: Azure Cognitive Services
 description: Bu C# REST tabanlı hızlı başlangıçta Bilişsel Hizmetler API hesabınızdaki Azure Panonuzda görünecek olan örnek bir Soru-Cevap Oluşturma bilgi bankasını programlamayla oluşturma adımları gösterilir.
 services: cognitive-services
 author: diberry
@@ -11,14 +11,14 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 130f14f1a377c6ee580b207a62fd47d9dd818dcb
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 8947baba9212fecab8c67eaf679380a2517ed63d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249702"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559901"
 ---
-# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-c"></a>Hızlı Başlangıç: Soru-cevap Oluşturucu kullanarak Bilgi Bankası oluşturmaC#
+# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-c"></a>Hızlı Başlangıç: Kullanarak Soru-Cevap Oluşturma bilgi tabanı oluşturmaC#
 
 Bu hızlı başlangıçta program aracılığıyla örnek bir Soru-Cevap Oluşturma bilgi bankası (KB) oluşturma ve yayımlama adımlarında yol gösterilir. Soru-Cevap Oluşturma, [veri kaynaklarından](../Concepts/data-sources-supported.md) ve SSS gibi yarı yapılandırılmış içerikten soru ve cevapları otomatik olarak ayıklar. JSON ile tanımlanan bilgi bankası modeli API isteğinin gövdesinde gönderilir. 
 
@@ -33,7 +33,7 @@ Bu hızlı başlangıç şu Soru-Cevap Oluşturma API'lerini çağırır:
 * [Soru-Cevap Oluşturma hizmetine](../How-To/set-up-qnamaker-service-azure.md) sahip olmanız gerekir. Anahtarınızı almak için, panonuzda **Kaynak Yönetimi** altında **Anahtarlar** öğesini seçin. 
 
 > [!NOTE] 
-> Eksiksiz bir çözüm dosyaları kullanılabilir [ **Azure-Samples/bilişsel-services-qnamaker-csharp** GitHub deposu](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp).
+> Tam çözüm dosyası (ler) [ **Azure-Samples/bilişsel hizmetler-qnamaker-CSharp** GitHub deposundan](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp)kullanılabilir.
 
 ## <a name="create-a-knowledge-base-project"></a>Bilgi bankası projesi oluşturma
 

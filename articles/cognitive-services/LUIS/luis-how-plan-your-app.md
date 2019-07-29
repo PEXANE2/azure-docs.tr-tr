@@ -1,6 +1,6 @@
 ---
-title: Uygulamanızı planlama
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Uygulamanızı planlayın-LUSıS
+titleSuffix: Azure Cognitive Services
 description: İlgili uygulamayı amaç ve varlıkları anahat ve uygulama planlarınızı Language Understanding Intelligent Services (LUIS içinde) oluşturun.
 services: cognitive-services
 author: diberry
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: 9d54cff81f39f41b60800e9b33f3b4da1a735d85
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 121423682bbd9bbb32f2ab1d02e48d3237ee830d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60196244"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563772"
 ---
-# <a name="plan-your-luis-app-with-subject-domain-intents-and-entities"></a>Konu etki alanı, amaçlarını ve varlıkları LUIS uygulamanızı planlama
+# <a name="plan-your-luis-app-with-subject-domain-intents-and-entities"></a>LUSıS uygulamanızı konu etki alanı, amaçlar ve varlıklar ile planlayın
 
 Uygulamanızı planlama önemlidir. Olası hedefleri ve uygulamanız için uygun olan varlıklar dahil olmak üzere, etki alanı tanımlayın.  
 
