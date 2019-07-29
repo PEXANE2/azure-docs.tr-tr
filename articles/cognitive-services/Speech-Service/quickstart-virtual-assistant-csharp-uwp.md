@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: travisw
-ms.openlocfilehash: d61040e740c06fc336e3764a0d972640443a6de5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6d88bcc6d9d2c2e46ef3a3cb841c9268a544e37c
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68553387"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609696"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-uwp"></a>Hızlı Başlangıç: Konuşma SDK 'Sı, UWP ile ilk olarak bir ses Sanal Yardımcısı oluşturun
 
 Hızlı başlangıç, [konuşmadan metne](quickstart-csharp-uwp.md), [metinden konuşmaya](quickstart-text-to-speech-csharp-uwp.md) ve [konuşma çevirisi](quickstart-translate-speech-uwp.md)için de kullanılabilir.
 
-Bu makalede, [konuşma SDK 'sını](speech-sdk.md)kullanarak bir C# Evrensel Windows platformu (UWP) uygulaması geliştirirsiniz. Program, daha önce yazılmış ve yapılandırılmış bir bot 'a bağlanarak istemci uygulamasından bir ses ilk Sanal Yardımcısı deneyimi sağlar. Uygulama [Konuşma SDK'sı NuGet Paketi](https://aka.ms/csspeech/nuget) ve Microsoft Visual Studio 2017 (herhangi bir sürüm) ile geliştirilmiştir.
+Bu makalede, [konuşma SDK 'sını](speech-sdk.md)kullanarak bir C# Evrensel Windows platformu (UWP) uygulaması geliştirirsiniz. Program, daha önce yazılmış ve yapılandırılmış bir bot 'a bağlanarak istemci uygulamasından bir ses ilk Sanal Yardımcısı deneyimi sağlar. Uygulama, [konuşma SDK 'Sı NuGet paketi](https://aka.ms/csspeech/nuget) ve Microsoft Visual Studio 2017 veya üzeri (herhangi bir sürüm) ile oluşturulmuştur.
 
 > [!NOTE]
 > Evrensel Windows Platformu; PC, Xbox, Surface Hub ve diğer cihazlar dahil olmak üzere Windows 10 destekleyen tüm cihazlarda çalışan uygulamalar geliştirmenize olanak tanır.
@@ -30,7 +30,7 @@ Bu makalede, [konuşma SDK 'sını](speech-sdk.md)kullanarak bir C# Evrensel Win
 
 Bu hızlı başlangıç şunları gerektirir:
 
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
+* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) veya üzeri
 * Konuşma Hizmetleri için bir Azure abonelik anahtarı. [Ücretsiz olarak bir tane alın](get-started.md) veya [Azure Portal](https://portal.azure.com)oluşturun.
 * [Doğrudan hat konuşma kanalı](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) ile yapılandırılmış daha önce oluşturulmuş bir bot
 

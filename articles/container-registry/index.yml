@@ -5,14 +5,12 @@ metadata:
   title: Azure Container Registry Belgeleri - Öğreticiler | Microsoft Docs
   description: 'Azure Container Registry, her tür kapsayıcı dağıtımı için görüntüler oluşturarak bunları depolamanıza ve yönetmenize imkan sağlar. Bu hızlı başlangıç kılavuzlarından, öğreticilerden ve örneklerden yararlanarak Azure Container Registry’yi kullanmayı öğrenin.'
   services: container-registry
-  author: czeumault
-  manager: carolz
+  author: georgewallace
+  manager: gwallace
   ms.service: container-registry
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 07/26/2017
-  ms.author: carolz
+  ms.author: gwallace
 abstract:
   description: 'Azure Container Registry, her tür kapsayıcı dağıtımı için görüntüler oluşturarak bunları depolamanıza ve yönetmenize imkan sağlar. Bu hızlı başlangıç kılavuzlarından, öğreticilerden ve örneklerden yararlanarak Azure Container Registry’yi kullanmayı öğrenin.'
 sections:

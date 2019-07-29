@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 6/24/2019
 ms.author: yinhew
-ms.openlocfilehash: 3d5bc1e9cc27fd3c40c15ba55f577779c65e6851
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5e1f8aea1b00cbba7fec6c7ca416a965458ab526
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559337"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68607747"
 ---
 # <a name="quickstart-synthesize-speech-in-a-uwp-app-by-using-the-speech-sdk"></a>Hızlı Başlangıç: Konuşma SDK 'sını kullanarak UWP uygulamasında konuşmayı sentezleştirme
 
 Hızlı başlangıç, konuşma [tanıma](quickstart-csharp-uwp.md), [konuşma çevirisi](quickstart-translate-speech-uwp.md) ve [ses-ilk Sanal Yardımcısı](quickstart-virtual-assistant-csharp-uwp.md)için de kullanılabilir.
 
-Bu makalede bir C# Evrensel Windows platformu geliştirirsiniz (UWP; Bilişsel Hizmetler [konuşma SDK 'sını](speech-sdk.md)kullanarak Windows sürüm 1709 sonrası) uygulaması. Program, konuşmayı gerçek zamanlı olarak cihazınızın hoparlörünize sentezle birleştirmeyecektir. Uygulama [Konuşma SDK'sı NuGet Paketi](https://aka.ms/csspeech/nuget) ve Microsoft Visual Studio 2017 (herhangi bir sürüm) ile geliştirilmiştir.
+Bu makalede bir C# Evrensel Windows platformu geliştirirsiniz (UWP; Bilişsel Hizmetler [konuşma SDK 'sını](speech-sdk.md)kullanarak Windows sürüm 1709 sonrası) uygulaması. Program, konuşmayı gerçek zamanlı olarak cihazınızın hoparlörünize sentezle birleştirmeyecektir. Uygulama, [konuşma SDK 'Sı NuGet paketi](https://aka.ms/csspeech/nuget) ve Microsoft Visual Studio 2017 veya üzeri (herhangi bir sürüm) ile oluşturulmuştur.
 
 > [!NOTE]
 > Evrensel Windows Platformu; PC, Xbox, Surface Hub ve diğer cihazlar dahil olmak üzere Windows 10 destekleyen tüm cihazlarda çalışan uygulamalar geliştirmenize olanak tanır.
@@ -30,7 +30,7 @@ Bu makalede bir C# Evrensel Windows platformu geliştirirsiniz (UWP; Bilişsel H
 
 Bu hızlı başlangıç şunları gerektirir:
 
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
+* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) veya üzeri
 * Konuşma hizmeti için bir Azure abonelik anahtarı. [Ücretsiz bir tane alın](get-started.md).
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio projesi oluşturma

@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 05fd9f06bec2a68455d42bfd460f0a5a419a255e
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 25160c50cd4844fdb5b3a3454213b2067ef91d01
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708049"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608031"
 ---
-# <a name="tutorial-monitor-and-update-a-windows-virtual-machine-in-azure"></a>Öğretici: İzleme ve azure'da Windows sanal makinesi güncelleştirme
+# <a name="tutorial-monitor-and-update-a-windows-virtual-machine-in-azure"></a>Öğretici: Azure 'da bir Windows sanal makinesini izleme ve güncelleştirme
 
 Azure izlemesi Azure VM'lerinden önyükleme ve performans verilerini toplamak, bu verileri Azure depolama içinde depolamak ve portal, Azure PowerShell modülü ve Azure CLI aracılığıyla erişilebilir duruma getirmek için aracıları kullanır. Güncelleştirme yönetimi, Azure Windows sanal makineleriniz için güncelleştirme ve yamaları yönetmenize olanak sağlar.
 
@@ -31,7 +31,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * VM’de önyükleme tanılamalarını etkinleştirme
-> * Önyükleme tanılamasını görüntüleme
+> * Önyükleme tanılamasını görüntüle
 > * VM konak ölçümlerini görüntüleme
 > * Tanılama uzantısını yükleme
 > * VM ölçümlerini görüntüleme
@@ -54,7 +54,7 @@ Bu öğreticide Azure izlemesi ve güncelleştirme yönetimini yapılandırmak i
 $cred = Get-Credential
 ```
 
-Artık VM oluşturma [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). Aşağıdaki örnekte *EastUS* konumunda *myVM* adlı bir VM oluşturulur. Henüz yoksa, *myResourceGroupMonitorMonitor* kaynak grubu ve destekleyici ağ kaynakları oluşturulur:
+Şimdi [New-azvm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)ile VM 'yi oluşturun. Aşağıdaki örnekte *EastUS* konumunda *myVM* adlı bir VM oluşturulur. Henüz yoksa, *myResourceGroupMonitorMonitor* kaynak grubu ve destekleyici ağ kaynakları oluşturulur:
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -66,9 +66,9 @@ New-AzVm `
 
 Kaynakların ve sanal makinenin oluşturulması birkaç dakika sürer.
 
-## <a name="view-boot-diagnostics"></a>Önyükleme tanılamasını görüntüleme
+## <a name="view-boot-diagnostics"></a>Önyükleme tanılamasını görüntüle
 
-Windows sanal makinelerinin önyüklemesi yapıldığında, önyükleme tanılama aracısı sorun giderme amacıyla kullanılabilecek bir ekran çıktısı yakalar. Bu özellik varsayılan olarak etkindir. Yakalanan ekran görüntüleri de varsayılan olarak oluşturulan bir Azure depolama hesabında depolanır.
+Windows sanal makinelerinin önyüklemesi yapıldığında, önyükleme tanılama aracısı sorun giderme amacıyla kullanılabilecek bir ekran çıktısı yakalar. Bu özellik varsayılan olarak etkindir. Yakalanan ekran görüntüleri, varsayılan olarak da oluşturulan bir Azure depolama hesabında depolanır.
 
 Önyükleme tanılama verilerini [Get-AzureRmVMBootDiagnosticsData](https://docs.microsoft.com/powershell/module/az.compute/get-azvmbootdiagnosticsdata) komutuyla alırsınız. Aşağıdaki örnekte, önyükleme tanılamaları *c:\* sürücüsünün kök dizinine indirilir.
 
@@ -142,7 +142,7 @@ Azure Otomasyonu, güncelleştirme yapılması gereken VM'lerde güncelleştirme
 Doğrulama işlemi ayrıca VM'nin Microsoft Monitoring Agent (MMA) ve Otomasyon karma runbook çalışanı ile sağlanıp sağlanmadığını da kontrol eder.
 Bu aracı, VM ile iletişim kurmak ve güncelleştirme durumu hakkında bilgi almak için kullanılır.
 
-Log Analytics çalışma alanını ve Otomasyon hesabı seçin ve tıklayın **etkinleştirme** çözümü etkinleştirmek için. Çözümün etkinleştirilmesi 15 dakika sürer.
+Log Analytics çalışma alanını ve otomasyon hesabını seçin ve çözümü etkinleştirmek için **Etkinleştir** ' e tıklayın. Çözümün etkinleştirilmesi 15 dakika sürer.
 
 Ekleme sırasında aşağıdaki önkoşullardan birinin karşılanmadığı tespit edilirse ilgili önkoşul otomatik olarak eklenir:
 
@@ -150,11 +150,11 @@ Ekleme sırasında aşağıdaki önkoşullardan birinin karşılanmadığı tesp
 * [Otomasyon](../../automation/automation-offering-get-started.md)
 * VM üzerinde etkin bir [Karma runbook çalışanı](../../automation/automation-hybrid-runbook-worker.md)
 
-**Güncelleştirme Yönetimi** ekranı açılır. Konumu, Log Analytics çalışma alanını ve Otomasyon hesabı'e tıklayın yapılandırma **etkinleştirme**. Bu alanların gri renkte olması, VM için etkinleştirilmiş başka bir otomasyon çözümü olduğunu gösterir ve bu durumda aynı çalışma alanı ile Otomasyon hesabının kullanılması gerekir.
+**Güncelleştirme Yönetimi** ekranı açılır. Kullanılacak konumu, Log Analytics çalışma alanını ve otomasyon hesabını yapılandırın ve **Etkinleştir**' e tıklayın. Bu alanların gri renkte olması, VM için etkinleştirilmiş başka bir otomasyon çözümü olduğunu gösterir ve bu durumda aynı çalışma alanı ile Otomasyon hesabının kullanılması gerekir.
 
 ![Güncelleştirme yönetimi çözümünü etkinleştirme](./media/tutorial-monitoring/manageupdates-update-enable.png)
 
-Çözümün etkinleştirilmesi 15 dakika sürebilir. Bu süre boyunca tarayıcı penceresini kapatmamanız gerekir. Çözüm etkinleştirildikten sonra VM'deki güncelleştirmeleri eksik hakkında bilgi Azure İzleyici günlüklerine akar. Verilerin çözümlemeye hazır hale gelmesi 30 dakika ile 6 saat arasında sürebilir.
+Çözümün etkinleştirilmesi 15 dakika sürebilir. Bu süre boyunca tarayıcı penceresini kapatmamanız gerekir. Çözüm etkinleştirildikten sonra VM 'deki eksik güncelleştirmeler hakkında bilgiler Azure Izleyici günlüklerine akar. Verilerin çözümlemeye hazır hale gelmesi 30 dakika ile 6 saat arasında sürebilir.
 
 ### <a name="view-update-assessment"></a>Güncelleştirme değerlendirmesini görüntüleme
 
@@ -168,22 +168,22 @@ Güncelleştirmeleri yüklemek için yayın zamanlamanızı ve hizmet pencereniz
 
 **Güncelleştirme yönetimi** ekranının üst kısmındaki **Güncelleştirme dağıtımı zamanla**’ya tıklayarak VM için yeni bir Güncelleştirme Dağıtımı zamanlayabilirsiniz. **Yeni güncelleştirme dağıtım** ekranında aşağıdaki bilgileri belirtin:
 
-Yeni bir güncelleştirme dağıtımı oluşturmak için Seç **güncelleştirme dağıtımı zamanla**. **Yeni güncelleştirme dağıtım** sayfası açılır. Aşağıdaki tabloda açıklanan özellikler için değerleri girin ve ardından **Oluştur**:
+Yeni bir güncelleştirme dağıtımı oluşturmak için **güncelleştirme dağıtımı zamanla**' yı seçin. **Yeni güncelleştirme dağıtım** sayfası açılır. Aşağıdaki tabloda açıklanan özellikler için değerler girin ve ardından **Oluştur**' a tıklayın:
 
 | Özellik | Description |
 | --- | --- |
 | Adı |Güncelleştirme dağıtımını tanımlamak için benzersiz bir ad. |
 |İşletim sistemi| Linux veya Windows|
-| Grupları güncelleştirmek için |Azure makineler için abonelik, kaynak grupları, konumları ve etiketleri, dağıtımınızdaki dahil etmek için Azure vm'leri dinamik bir grup oluşturmak için bir birleşimini temel bir sorgu tanımlarsınız. </br></br>Azure olmayan makineler için mevcut bir Azure olmayan makine dağıtımına dahil edilecek bir grubu seçmek için arama kaydedilmiş seçin. </br></br>Daha fazla bilgi için bkz: [dinamik gruplar](../../automation/automation-update-management.md#using-dynamic-groups)|
-| Güncelleştirilecek makineler |İçeri aktarılan grubu, kayıtlı bir aramayı seçin veya makine açılan listeden seçin ve tek bir makine seçin. **Makineler**'i seçerseniz makinenin hazır olma durumu **GÜNCELLEŞTİRME ARACISI HAZIRLIĞI** sütununda gösterilir.</br> Azure İzleyici günlüklerine bilgisayar grupları oluşturma farklı yöntemleri hakkında bilgi edinmek için bkz: [Azure İzleyici günlüklerine bilgisayar grupları](../../azure-monitor/platform/computer-groups.md) |
-|Güncelleştirme sınıflandırmaları|Gereksinim duyduğunuz tüm güncelleştirme sınıflandırmalarını seçin|
-|Güncelleştirmeleri Ekle/Dışla|Bu açılır **dahil edin/dışlayın** sayfası. Dahil edilecek veya dışlanacak güncelleştirmeler ayrı sekmelerdedir. Ekleme nasıl ele alındığını daha fazla bilgi için bkz: [ekleme davranışı](../../automation/automation-update-management.md#inclusion-behavior) |
-|Zamanlama ayarları|Her iki kez başlatın ve saati seçin veya yineleme için yineleme|
-| Ön betiklerini + sonrası betikleri|Önce ve sonra dağıtımınız betiklerin seçin|
-| Bakım penceresi |Güncelleştirmeler için dakika sayısı. Değeri 30 dakika ile en fazla 6 saat değerinden küçük olamaz |
-| Denetim yeniden başlatma| Yeniden başlatma işlemlerini nasıl işleneceğini belirler. Kullanılabilen seçenekler:</br>Gerekirse yeniden başlat (Varsayılan)</br>Her zaman yeniden başlat</br>Hiçbir zaman yeniden başlatma</br>Yalnızca yeniden başlatma - güncelleştirmeleri yüklemez|
+| Güncelleştirilecek gruplar |Azure makinelerinde, dağıtımınıza dahil etmek için dinamik bir Azure VM grubu oluşturmaya yönelik bir abonelik, kaynak grubu, konum ve etiket birleşimine göre bir sorgu tanımlayın. </br></br>Azure dışı makineler için, dağıtıma dahil edilecek bir Azure dışı makine grubu seçmek üzere mevcut kayıtlı bir aramayı seçin. </br></br>Daha fazla bilgi için bkz. [Dinamik Gruplar](../../automation/automation-update-management.md#using-dynamic-groups)|
+| Güncelleştirilecek makineler |Açılan listeden kaydedilmiş bir arama, Içeri aktarılan grup veya Select Machine seçin ve tek tek makineler ' i seçin. **Makineler**'i seçerseniz makinenin hazır olma durumu **GÜNCELLEŞTİRME ARACISI HAZIRLIĞI** sütununda gösterilir.</br> Azure Izleyici günlüklerinde bilgisayar grupları oluşturmaya yönelik farklı yöntemler hakkında bilgi edinmek için bkz. [Azure izleyici günlüklerinde bilgisayar grupları](../../azure-monitor/platform/computer-groups.md) |
+|Güncelleştirme sınıflandırmaları|İhtiyaç duyduğunuz tüm güncelleştirme sınıflandırmalarını seçin|
+|Güncelleştirmeleri dahil et/Dışla|Bu, **dahil etme/hariç tutma** sayfasını açar. Dahil edilecek veya dışlanacak güncelleştirmeler ayrı sekmelerdedir. İçerme hakkında daha fazla bilgi için bkz. [içerme davranışı](../../automation/automation-update-management.md#inclusion-behavior) |
+|Zamanlama ayarları|Başlatılacak saati seçin ve yinelenme için bir kez veya yineleme seçin|
+| Ön betikler + betikleri sonrası|Dağıtımdan önce ve sonra çalıştırılacak betikleri seçin|
+| Bakım penceresi |Güncelleştirmeler için ayarlanan dakika sayısı. Değer 30 dakikadan kısa olamaz ve 6 saatten fazla olamaz |
+| Yeniden başlatma denetimi| Yeniden başlatmaları nasıl ele alınacağını belirler. Kullanılabilen seçenekler:</br>Gerekirse yeniden başlat (Varsayılan)</br>Her zaman yeniden başlat</br>Hiçbir zaman yeniden başlatma</br>Yalnızca yeniden başlatma - güncelleştirmeleri yüklemez|
 
-Güncelleştirme dağıtımları da bir program aracılığıyla oluşturulabilir. REST API ile bir güncelleştirme dağıtımı oluşturmak nasıl öğrenmek için bkz. [yazılım güncelleştirme yapılandırmaları - oluşturma](/rest/api/automation/softwareupdateconfigurations/create). Haftalık bir güncelleştirme dağıtımı oluşturmak için kullanılan bir örnek runbook yoktur. Bu runbook hakkında daha fazla bilgi için bkz: [bir kaynak grubundaki bir veya daha fazla sanal makineleri için haftalık bir güncelleştirme dağıtımı oluşturma](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1).
+Güncelleştirme dağıtımları da programlı bir şekilde oluşturulabilir. REST API güncelleştirme dağıtımı oluşturmayı öğrenmek için bkz. [yazılım güncelleştirme yapılandırması-oluştur](/rest/api/automation/softwareupdateconfigurations/create). Ayrıca, haftalık güncelleştirme dağıtımı oluşturmak için kullanılabilecek bir örnek runbook vardır. Bu runbook hakkında daha fazla bilgi edinmek için bkz. [bir kaynak grubundaki bir veya daha fazla VM için haftalık güncelleştirme dağıtımı oluşturma](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1).
 
 Zamanlamayı yapılandırmayı tamamladıktan sonra **Oluştur** düğmesine tıklayın ve durum panosuna dönün.
 **Zamanlanan** tablosunda oluşturduğunuz dağıtım zamanlaması görüntülenir.
@@ -222,13 +222,13 @@ Sanal makineniz için Değişiklik ve Sayım yönetimini etkinleştirme:
 2. Listeden bir VM seçin.
 3. Sanal makine ekranında, **İşlemler** bölümünde **Sayım** veya **Değişiklik izleme**'ye tıklayın. **Değişiklik İzleme ve Sayımı Etkinleştir** ekranı açılır.
 
-Konumu, Log Analytics çalışma alanını ve Otomasyon hesabı'e tıklayın yapılandırma **etkinleştirme**. Bu alanların gri renkte olması, VM için etkinleştirilmiş başka bir otomasyon çözümü olduğunu gösterir ve bu durumda aynı çalışma alanı ile Otomasyon hesabının kullanılması gerekir. Çözümler menüde ayrı yerlerde olsa da aynıdır. Biri etkinleştirildiğinde, sanal makinenizde her ikisi de etkinleştirilir.
+Kullanılacak konumu, Log Analytics çalışma alanını ve otomasyon hesabını yapılandırın ve **Etkinleştir**' e tıklayın. Bu alanların gri renkte olması, VM için etkinleştirilmiş başka bir otomasyon çözümü olduğunu gösterir ve bu durumda aynı çalışma alanı ile Otomasyon hesabının kullanılması gerekir. Çözümler menüde ayrı yerlerde olsa da aynıdır. Biri etkinleştirildiğinde, sanal makinenizde her ikisi de etkinleştirilir.
 
 ![Değişiklik ve Sayım izlemeyi etkinleştirme](./media/tutorial-monitoring/manage-inventory-enable.png)
 
 Çözüm etkinleştirildikten sonra, veriler görüntülenmeden önce sanal makinede sayımın toplanması biraz zaman alabilir.
 
-### <a name="track-changes"></a>Değişiklikleri izleme
+### <a name="track-changes"></a>Değişiklikleri izle
 
 Sanal makinenizde **İŞLEMLER** bölümünden **Değişiklik İzleme**'yi seçin. **Ayarları Düzenle**’ye tıklayın, **Değişiklik İzleme** sayfası görüntülenir. İzlemek istediğiniz ayar türünü seçin ve **+ Ekle**’ye tıklayarak ayarları yapılandırın. Windows için kullanılabilir seçenekler şunlardır:
 
@@ -259,7 +259,7 @@ Grafik, zaman içinde gerçekleştirilen değişiklikleri gösterir. Etkinlik G�
 
 [Azure Otomasyonu](../../automation/automation-intro.md) tarafından sağlanan Güncelleştirme Yönetimi ve Değişiklik ve Sayım gibi çözümleri kullanarak sanal makinenizin daha gelişmiş izlemesini gerçekleştirebilirsiniz.
 
-Log Analytics çalışma alanına eriştiğinizde, **AYARLAR** bölümünden **Gelişmiş ayarlar**’ı seçerek çalışma alanı anahtarını ve çalışma alanı tanıtıcısını bulabilirsiniz. Kullanım [kümesi AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) Microsoft Monitoring agent uzantısını VM'ye eklemek için komutu. Aşağıdaki örnekte yer alan değerleri, Log Analytics çalışma alanı anahtarınızı ve çalışma alanı kimliğinizi yansıtacak şekilde güncelleştirin.
+Log Analytics çalışma alanına eriştiğinizde, **AYARLAR** bölümünden **Gelişmiş ayarlar**’ı seçerek çalışma alanı anahtarını ve çalışma alanı tanıtıcısını bulabilirsiniz. VM 'ye Microsoft Monitoring Agent uzantısını eklemek için [set-Azvmexgerkomutunu](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) kullanın. Aşağıdaki örnekte yer alan değerleri, Log Analytics çalışma alanı anahtarınızı ve çalışma alanı kimliğinizi yansıtacak şekilde güncelleştirin.
 
 ```powershell
 $workspaceId = "<Replace with your workspace Id>"
@@ -288,7 +288,7 @@ Bu öğreticide, Azure Güvenlik Merkezi'yle sanal makineleri yapılandırdını
 > * Sanal ağ oluşturma
 > * Kaynak grubu ve sanal makine oluşturma
 > * VM’de önyükleme tanılamalarını etkinleştirme
-> * Önyükleme tanılamasını görüntüleme
+> * Önyükleme tanılamasını görüntüle
 > * Konak ölçümlerini görüntüleme
 > * Tanılama uzantısını yükleme
 > * VM ölçümlerini görüntüleme
@@ -300,4 +300,4 @@ Bu öğreticide, Azure Güvenlik Merkezi'yle sanal makineleri yapılandırdını
 Azure güvenlik merkezi hakkında daha fazla bilgi edinmek için sonraki öğreticiye geçin.
 
 > [!div class="nextstepaction"]
-> [VM güvenliğini yönetme](./tutorial-azure-security.md)
+> [VM güvenliğini yönetme](../../security/fundamentals/overview.md)

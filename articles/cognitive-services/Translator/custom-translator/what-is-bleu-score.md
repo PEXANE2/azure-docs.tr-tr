@@ -1,36 +1,36 @@
 ---
 title: BLEU puanı nedir? -Özel Translator
 titleSuffix: Azure Cognitive Services
-description: BLEU bir otomatik çeviri ve bir veya daha fazla insan tarafından oluşturulan başvuru çevirileri aynı kaynak cümlenin arasındaki farkların ölçüsüdür. BLEU algoritması, otomatik çeviri Ardışık tümceleri başvuru çeviriyi bulur ve ağırlıklı bir biçimde eşleşme sayısını sayar Ardışık tümceleri ile karşılaştırır.
+description: BLEU, bir otomatik çeviri ve aynı kaynak cümlenin bir veya daha fazla insan tarafından oluşturulan başvuru çevirisi arasındaki farkların ölçümüdür. BLEU algoritması, otomatik çevirinin ardışık tümceciklerini başvuru çevirisi içinde bulduğu ardışık tümceciklerle karşılaştırır ve eşleşmelerin sayısını ağırlıklı bir biçimde sayar.
 author: swmachan
-manager: christw
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: swmachan
-ms.openlocfilehash: a77fd1a84c1ffc18a1e0c74000c72db5cdbb00e1
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 1993819ad227d7e9aa5ef899045e00447a6740b8
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447374"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595407"
 ---
 # <a name="what-is-a-bleu-score"></a>BLEU puanı nedir?
 
-[BLEU (iki dilli değerlendirme Understudy)](https://en.wikipedia.org/wiki/BLEU) bir otomatik çeviri ve bir veya daha fazla insan tarafından oluşturulan başvuru çevirileri aynı kaynak cümlenin arasındaki farkların ölçüsüdür.
+[Bleu (iki noktalı değerlendirme çalışması)](https://en.wikipedia.org/wiki/BLEU) , bir otomatik çeviri ve aynı kaynak cümlenin bir veya daha fazla insan tarafından oluşturulan başvuru çevirisi arasındaki farkların ölçümüdür.
 
-## <a name="scoring-process"></a>Puanlama sürecinde
+## <a name="scoring-process"></a>Puanlama işlemi
 
-BLEU algoritması, otomatik çeviri Ardışık tümceleri başvuru çeviriyi bulur ve ağırlıklı bir biçimde eşleşme sayısını sayar Ardışık tümceleri ile karşılaştırır. Bu eşleşen konum bağımsız olan. Daha yüksek bir eşleşme ölçüde daha ileri düzeyde bir başvuru çeviri ve daha yüksek puanı ile benzerlik gösterir. Anlaşılabilirliği ve dilbilgisi doğruluk dikkate alınır değil.
+BLEU algoritması, otomatik çevirinin ardışık tümceciklerini başvuru çevirisi içinde bulduğu ardışık tümceciklerle karşılaştırır ve eşleşmelerin sayısını ağırlıklı bir biçimde sayar. Bu eşleşmeler konumdan bağımsızdır. Daha yüksek bir eşleşme derecesi, başvuru çevirisi ve daha yüksek puan ile daha yüksek bir benzerlik derecesini gösterir. Intelligibility ve dilbilgisi doğruluğu dikkate alınmaz.
 
-## <a name="how-bleu-works"></a>BLEU nasıl çalışır?
+## <a name="how-bleu-works"></a>BLEU nasıl çalışıyor?
 
-BLEU'ın gücü, her bir cümle için tam İnsan yükümlülükten insanlara çalışılıyor yerine bir cümle yükümlülükten hataları bir test topluluğunuza ortalaması da insan yükümlülükten ile ilişkilendiren ' dir.
+BLEU 'nın kuvveti, her tümce için uygun insan kararından bağımsız olarak her tümce için bir test etcesini değerlendirerek bir test Corp, her tümce için bir değerlendirme hatası duymuştur.
 
-Daha kapsamlı bir tartışmadır BLEU puan [burada](https://youtu.be/-UqDljMymMg).
+BLEU puanlarını daha kapsamlı bir tartışmada [bulabilirsiniz](https://youtu.be/-UqDljMymMg).
 
-BLEU sonuçları kesinlikle bağlı olduğu etki alanı, eğitim ve veriler ayarlama test verilerle tutarlılığını kapsamını ve ne kadar veri eğitmek kullanılabilir olan. Modellerinizi dar bir etki alanında eğitilen ve eğitim verilerinizi test verilerinizle tutarlı, yüksek bir BLEU puan bekleyebilirsiniz.
+BLEU sonuçları, etki alanınızda yer alan, eğitim ve ayarlama verileriyle test verilerinin tutarlılığı ve eğitene kadar veri harcandığına bağlıdır. Modelleriniz dar bir etki alanı üzerinde eğitildi ve eğitim verileriniz test verileriyle tutarlıdır, yüksek bir BLEU puanı bekleyebilir.
 
 >[!NOTE]
->BLEU puanları arasında bir karşılaştırma justifiable için BLEU sonuç aynı Test kümesini, aynı dil çifti ve aynı MT altyapısı ile karşılaştırılır. Farklı test kümesinden bir BLEU puan farklı olmasına bağlıdır.
+>BLEU skorları arasında bir karşılaştırma yalnızca BLEU sonuçları aynı test kümesiyle, aynı dil çiftinden ve aynı MT altyapısından karşılaştırıldığı zaman yeniden oluşturulabilir. Farklı bir test kümesinden bir BLEU puanı farklı olacak şekilde bağlanır.

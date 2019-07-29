@@ -1,6 +1,6 @@
 ---
-title: IOT hub'ı önizlemesi hizmetinde IOT için Azure Güvenlik Merkezi'ni etkinleştirin | Microsoft Docs
-description: IOT Hub'ınızın IOT hizmeti için Azure Güvenlik Merkezi'ni etkinleştirmeyi öğrenin.
+title: IoT Hub 'da IoT hizmeti için Azure Güvenlik Merkezi 'Ni etkinleştirin | Microsoft Docs
+description: IoT Hub IoT hizmeti için Azure Güvenlik Merkezi 'ni nasıl etkinleştirebileceğinizi öğrenin.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -15,54 +15,63 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/16/2019
 ms.author: mlottner
-ms.openlocfilehash: f81fb7aeed1b704ebdd82c1f5b83c33a4b05e9ca
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: a794ccea13323f38b20906458e216f85652bfc3e
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67617997"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596955"
 ---
-# <a name="quickstart-enable-service-in-iot-hub"></a>Hızlı Başlangıç: IOT hub hizmetini etkinleştirme
+# <a name="quickstart-onboard-azure-security-center-for-iot-service-in-iot-hub"></a>Hızlı Başlangıç: IoT Hub 'de IoT hizmeti için Azure Güvenlik Merkezi 'Ni ekleme
 
-> [!IMPORTANT]
-> IOT için Azure Güvenlik Merkezi şu anda genel Önizleme aşamasındadır.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Bu makalede, IOT Hub'ınızın IOT Önizleme hizmeti için Azure Güvenlik Merkezi (ASC) etkinleştirmek bir açıklama sağlar.  
+Bu makalede, mevcut IoT Hub IoT hizmeti için Azure Güvenlik Merkezi 'nin nasıl etkinleştirileceği hakkında bir açıklama sunulmaktadır. Şu anda bir IoT Hub yoksa, kullanmaya başlamak için [Azure Portal kullanarak IoT Hub oluşturma](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal) makalesine bakın. 
 
 > [!NOTE]
-> Şu anda IOT için Azure Güvenlik Merkezi, yalnızca standart katman IOT hub'larını destekler.
-> IOT için Azure Güvenlik Merkezi tek bir hub çözümüdür. Birden çok hub'a ihtiyacınız varsa birden çok çözümü gereklidir. 
+> IoT için Azure Güvenlik Merkezi şu anda yalnızca Standart katman IoT Hub 'Larını desteklemektedir.
+> IoT için Azure Güvenlik Merkezi, tek bir hub çözümüdür. Birden çok hub gerekliyse, IoT çözümleri için birden çok Azure Güvenlik Merkezi gereklidir. 
 
-## <a name="prerequisites-for-enabling-the-service"></a>Hizmetini etkinleştirmek için Önkoşullar
+## <a name="prerequisites-for-enabling-the-service"></a>Hizmeti etkinleştirme önkoşulları
 
 - Log Analytics çalışma alanı
-  - İki tür bilgi varsayılan olarak, IOT için Log Analytics çalışma alanınızda ASC tarafından varsayılan olarak depolanır; **güvenlik uyarıları** ve **önerileri**. 
-  - Bir ek bilgi türü depolama alanı eklemek seçebileceğiniz **ham olaylar**. Bu depolama Not **ham olaylar** Log Analytics'e ek depolama maliyetlerini taşır. 
-- IOT hub'ı (standart katman)
-- Tümüne uyan [hizmet önkoşulları](service-prerequisites.md) 
-- Desteklenen hizmet bölgeleri
-  - Orta ABD
-  - Kuzey Avrupa
-  - Güneydoğu Asya
+  - İki tür bilgi, IoT için Azure Güvenlik Merkezi tarafından Log Analytics çalışma alanınızda varsayılan olarak saklanır; **güvenlik uyarıları** ve **önerileri**. 
+  - Ek bilgi türü, **Ham olaylar**için depolama alanını eklemeyi seçebilirsiniz. **Ham olayların** Log Analytics daha fazla depolama maliyeti taşıdığına göz önünde unutmayın. 
+- IoT Hub (Standart katman)
+- Tüm [hizmet önkoşullarını](service-prerequisites.md) karşılayın 
 
-## <a name="enable-asc-for-iot-on-your-iot-hub"></a>IOT Hub'ınızın IOT için ASC etkinleştir 
+|Desteklenen Azure hizmet bölgeleri | ||
+|---|---|---|
+| Orta ABD |East US |Doğu ABD 2 |
+| Batı Orta ABD |Batı ABD |Batı ABD 2 |
+| Güney Orta ABD|Orta Kuzey ABD | Orta Kanada|
+| Doğu Kanada| Kuzey Avrupa|Güney Brezilya|
+| Fransa Orta| Birleşik Krallık Batı|Birleşik Krallık Güney|
+|Batı Avrupa|Kuzey Avrupa| Japonya Batı|
+|Japonya Doğu | Avustralya Güneydoğu|Avustralya Doğu|
+|Doğu Asya| Güneydoğu Asya| Kore Orta|
+|Kore Güney| Orta Hindistan| Güney Hindistan|
+|
 
-IOT Hub'ınıza güvenliği etkinleştirmek için aşağıdakileri yapın: 
+## <a name="enable-azure-security-center-for-iot-on-your-iot-hub"></a>IoT Hub IoT için Azure Güvenlik Merkezi 'ni etkinleştirin 
 
-1. Açık, **IOT hub'ı** Azure portalında. 
-2. Altında **güvenlik** menüsünde tıklatın **genel bakış**, ardından **başlangıç Önizleme**. 
-3. Seçin **etkinleştirme IOT güvenlik**. 
-4. Log Analytics çalışma alanı bilgilerinizi sağlayın. 
-   - Depolama kullanmayı **ham olaylar** bırakarak tarafından depolama varsayılan bilgi türlerini yanı sıra **ham olay** geçiş **üzerinde**. 
-   - Etkinleştirme kullanmayı **ikizi koleksiyon** bırakarak tarafından **ikizi koleksiyon** geçiş **üzerinde**. 
-5. **Kaydet**’e tıklayın. 
+IoT Hub güvenliği etkinleştirmek için aşağıdakileri yapın: 
 
-Tebrikler! IOT hub'ınızdaki IOT ASC etkinleştirme tamamladınız. 
+1. **IoT Hub** Azure Portal açın. 
+1. **Güvenlik** menüsünde, **IoT çözümünüzün güvenliğini sağlama** ' ya tıklayın.
+1. Seçileni Varsayılan olarak **Etkinleştir** ' i bırakın. 
+1. Log Analytics çalışma alanınızı seçin.
+1. Log Analytics çalışma alanınızın ayrıntılarını sağlayın. 
+   - **İkizi koleksiyonunu** etkin bırakarak **ikizi toplamayı** etkinleştirmek için **seçin.**
+   - **Ham olayları** , Log Analytics depolanan **Ham cihaz güvenlik olaylarını** seçerek depolama varsayılan bilgi türlerine ek olarak depolamayı tercih edin. **Ham olay** geçişi **Açık**bırakın. 
+    
+1. **Kaydet**’e tıklayın. 
+
+Tebrikler! IoT Hub IoT için Azure Güvenlik Merkezi 'Ni etkinleştirmeyi tamamladınız. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Çözümünüzü yapılandırma hakkında bilgi edinmek için sonraki makaleye ilerleyin...
+Çözümünüzü yapılandırmak için sonraki makaleye ilerleyin...
 
 > [!div class="nextstepaction"]
 > [Çözümünüzü yapılandırın](quickstart-configure-your-solution.md)
+
+

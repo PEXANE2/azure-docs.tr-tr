@@ -1,7 +1,7 @@
 ---
-title: Bilişsel hizmetler ve makine öğrenimi
-titlesuffix: Azure Cognitive Services
-description: Azure bilişsel hizmetlerin makine öğrenimi için diğer Azure teklifleriyle birlikte oturduğunu öğrenin.
+title: Bilişsel hizmetler ve Machine Learning
+titleSuffix: Azure Cognitive Services
+description: Azure Bilişsel Hizmetler’in, makine öğrenmesine yönelik diğer Azure teklifleriyle birlikte nasıl çalıştığını öğrenin.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: diberry
-ms.openlocfilehash: 15faacccfa1e0f7dd759f719c02e106918d735bb
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: bae772e9fcc9f275fcf593cfd5bf9d0506a89f7c
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414696"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68594679"
 ---
-# <a name="cognitive-services-and-machine-learning"></a>Bilişsel hizmetler ve makine öğrenimi
+# <a name="cognitive-services-and-machine-learning"></a>Bilişsel Hizmetler ve makine öğrenmesi
 
 Bilişsel hizmetler, nesnelerin veya yüzlerinin tanınması için metin analizi veya görüntüleri analiz etme gibi genel sorunları çözümlemek için makine öğrenimi özellikleri sağlar. Bu hizmetleri kullanmak için özel makine öğrenimine veya veri bilimi bilgisine ihtiyacınız yoktur. 
 

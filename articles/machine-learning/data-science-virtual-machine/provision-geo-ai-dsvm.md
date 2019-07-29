@@ -4,7 +4,7 @@ description: Coğrafi AI veri bilimi sanal makinesi yapılandırma ve oluşturma
 keywords: derin öğrenme yapay ZEKA, veri bilimi araçları, veri bilimi sanal makinesi, Jeo-uzamsal analiz
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
@@ -13,15 +13,15 @@ ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 03/05/2018
-ms.author: gokuma
-ms.openlocfilehash: dde9b71c3615a592f8c08e040c5e9ba7bc756bd6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: vijetaj
+ms.openlocfilehash: 4772bf8341196485a91b3df30801b9714a4a64a8
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60578577"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68591880"
 ---
 # <a name="provision-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>Azure'da bir coğrafi yapay zeka sanal makinesi sağlama 
 
@@ -57,16 +57,16 @@ Coğrafi AI veri bilimi sanal makinesi örneğini oluşturmak için bir yordam �
 
       4. **Abonelik**: Birden fazla aboneliğiniz varsa, bir makine oluşturulması ve fatura olduğu seçin.
 
-      5. **Kaynak grubu**: Yeni bir tane oluşturabilir veya bir **boş** aboneliğinizdeki mevcut bir Azure kaynak grubu.
+      5. **Kaynak grubu**: Yeni bir tane oluşturabilir veya aboneliğinizde **boş** bir mevcut Azure Kaynak grubu kullanabilirsiniz.
 
-      6. **Konum**: En uygun veri merkezi seçin. Genellikle, verilerinizden en iyi olduğundan veya en hızlı ağ erişimi için fiziksel konumunuza en yakın veri merkezi bulunur. GPU üzerinde derin öğrenme yapmanız gerekiyorsa, NC serisi GPU sanal makine örneklerine sahip Azure'da konumlardan birini seçmeniz gerekir. Şu anda, GPU Vm'lerine sahip konumları şunlardır: **Doğu ABD, Kuzey Orta ABD, Güney Orta ABD, Batı ABD 2, Kuzey Avrupa, Batı Avrupa**. En son liste için [bölge sayfasına göre Azure ürünleri](https://azure.microsoft.com/regions/services/) ve Ara **NC serisi** altında **işlem**. 
+      6. **Konum**: En uygun veri merkezini seçin. Genellikle, verilerinizden en iyi olduğundan veya en hızlı ağ erişimi için fiziksel konumunuza en yakın veri merkezi bulunur. GPU üzerinde derin öğrenme yapmanız gerekiyorsa, NC serisi GPU sanal makine örneklerine sahip Azure'da konumlardan birini seçmeniz gerekir. Şu anda GPU VM 'Leri olan Konumlar şunlardır: **Doğu ABD, Orta Kuzey ABD, Orta Güney ABD, Batı ABD 2, Kuzey Avrupa, Batı Avrupa**. En son liste için [bölge sayfasına göre Azure ürünleri](https://azure.microsoft.com/regions/services/) ve Ara **NC serisi** altında **işlem**. 
 
 
-   - **Ayarları**: Derin öğrenme coğrafi DSVM üzerinde GPU üzerinde çalıştırmayı planlıyorsanız NC serisi GPU sanal makine boyutu seçin. Aksi takdirde, örnek tabanlı CPU birini seçebilirsiniz.  Sanal Makineniz için bir depolama hesabı oluşturun. 
+   - **Ayarları**: Coğrafi bir DSVM 'niz üzerinde GPU üzerinde derin öğrenme çalıştırmayı planlıyorsanız, NC serisi GPU sanal makine boyutundan birini seçin. Aksi takdirde, örnek tabanlı CPU birini seçebilirsiniz.  Sanal Makineniz için bir depolama hesabı oluşturun. 
    
    - **Özet**: Girdiğiniz tüm bilgilerin doğru olduğunu doğrulayın.
 
-   - **Satın alma**: Tıklayın **satın** sağlamaya başlamak için. Hizmet koşulları için bir bağlantı sağlanır. VM, seçtiğiniz sunucu boyutu için işlem ötesinde herhangi bir ek ücreti yok **boyutu** adım. 
+   - **Satın alma**: Sağlamayı başlatmak için **satın al** ' a tıklayın. Hizmet koşulları için bir bağlantı sağlanır. VM, seçtiğiniz sunucu boyutu için işlem ötesinde herhangi bir ek ücreti yok **boyutu** adım. 
  
 >[!NOTE]
 > Sağlama yaklaşık 20-30 dakika sürer. Sağlama durumunu Azure portalında görüntülenir.
@@ -87,7 +87,7 @@ Aksi takdirde, yeni Arcgıs hesabı ve lisans için kaydolun veya alma bir [ücr
 
 ![Arcgıs ücretsiz deneme](./media/provision-geo-ai-dsvm/ArcGIS-Free-Trial.png)
 
-Herhangi bir ücretli veya ücretsiz deneme Arcgıs hesabı için kaydolduktan sonra Arcgıs Pro hesabınız için yönergeleri izleyerek yetkilendirebilirsiniz [Arcgıs Pro ile çalışmaya başlama](https://www.esri.com/library/brochures/getting-started-with-arcgis-pro.pdf). 
+Ücretli veya ücretsiz bir deneme yanılma hesabına kaydolduktan sonra, argıs [Pro 'Yu kullanmaya](https://www.esri.com/library/brochures/getting-started-with-arcgis-pro.pdf)başlama yönergelerini izleyerek hesabınız için argıs Pro 'yu yetkilendirebilirsiniz. 
 
 Arcgıs Pro masaüstüne Arcgıs hesabınızla oturum açtıktan sonra yüklü olan ve VM Jeo-uzamsal analiz ve makine öğrenimi projeleri için yapılandırılan veri bilimi araçlarını kullanmaya başlamak hazırsınız.
 

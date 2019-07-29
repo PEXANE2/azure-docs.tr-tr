@@ -157,4 +157,4 @@ Aşağıdaki nedenlerden dolayı raporlarında müşteri göremiyorum
 
 **İş ortağı kimliği bağlantısı Azure Stack ile çalışır mı?**
 
-Evet, Azure Stack için iş ortağı kimliğinizi bağlayabilirsiniz.
+Evet, Azure Stack için iş ortağı Kimliğinizin bağlayabilirsiniz.

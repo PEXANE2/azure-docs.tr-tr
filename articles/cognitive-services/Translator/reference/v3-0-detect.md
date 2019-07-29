@@ -1,7 +1,7 @@
 ---
-title: Translator metin çevirisi API'si algılama yöntemi
-titlesuffix: Azure Cognitive Services
-description: Translator metin API'si algılama yöntemini kullanın.
+title: Translator Metin Çevirisi API'si algılama yöntemi
+titleSuffix: Azure Cognitive Services
+description: Translator Metin Çevirisi API'si Algıla yöntemini kullanın.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: 6e90626759b3c78d98c8c0f6e32d37c1440385cd
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.openlocfilehash: ed4a57a791c88ae7df0337a0c1cc74dde14a13d8
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67357732"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595096"
 ---
-# <a name="translator-text-api-30-detect"></a>Translator metin çevirisi API'si 3.0: Detect
+# <a name="translator-text-api-30-detect"></a>Translator Metin Çevirisi API'si 3,0: Detect
 
-Bir metin parçası dilini tanımlar.
+Bir metin parçasının dilini tanımlar.
 
 ## <a name="request-url"></a>İstek URL'si
 
-Gönderme bir `POST` isteği:
+Şu kişiye `POST` bir istek gönder:
 
 ```HTTP
 https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
@@ -31,43 +31,43 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
 
 ## <a name="request-parameters"></a>İstek parametreleri
 
-Sorgu dizesinde geçirilen istek Parametreler şunlardır:
+Sorgu dizesine geçirilen istek parametreleri şunlardır:
 
 <table width="100%">
   <th width="20%">Sorgu parametresi</th>
   <th>Açıklama</th>
   <tr>
     <td>API sürümü</td>
-    <td>*Gerekli parametre*.<br/>İstemci tarafından istenen API sürümü. Değer olmalıdır `3.0`.</td>
+    <td>*Gerekli parametre*.<br/>İstemci tarafından istenen API 'nin sürümü. Değer olmalıdır `3.0`.</td>
   </tr>
 </table> 
 
-İstek üst bilgileri ekleyin:
+İstek üstbilgileri şunları içerir:
 
 <table width="100%">
   <th width="20%">Üst bilgiler</th>
   <th>Açıklama</th>
   <tr>
-    <td>Kimlik doğrulaması üstbilgi</td>
-    <td><em>Gerekli istek üst bilgisi</em>.<br/>Bkz: <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">kimlik doğrulaması için kullanılabilir seçenekler</a>.</td>
+    <td>Kimlik doğrulama üst bilgisi</td>
+    <td><em>Gerekli istek üst bilgisi</em>.<br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">Kimlik doğrulaması için kullanılabilen seçeneklere</a>bakın.</td>
   </tr>
   <tr>
-    <td>İçerik türü</td>
-    <td>*Gerekli istek üst bilgisi*.<br/>Akıştaki içerik türünü belirtir. Olası değerler şunlardır: `application/json`.</td>
+    <td>Content-Type</td>
+    <td>*Gerekli istek üst bilgisi*.<br/>Yükün içerik türünü belirtir. Olası değerler şunlardır: `application/json`.</td>
   </tr>
   <tr>
     <td>İçerik uzunluğu</td>
-    <td>*Gerekli istek üst bilgisi*.<br/>İstek gövdesi uzunluğu.</td>
+    <td>*Gerekli istek üst bilgisi*.<br/>İstek gövdesinin uzunluğu.</td>
   </tr>
   <tr>
-    <td>X-ClientTraceId</td>
-    <td>*İsteğe bağlı*.<br/>İstek benzersiz olarak tanımlanabilmesi için bir istemci tarafından oluşturulan GUID. İzleme kimliği adlı bir sorgu parametresi kullanarak sorgu dizesinde eklerseniz bu başlığı atlayabilirsiniz Not `ClientTraceId`.</td>
+    <td>X-Clienttraceıd</td>
+    <td>*İsteğe bağlı*.<br/>İsteği benzersiz şekilde tanımlamak için istemci tarafından oluşturulan bir GUID. Adlı `ClientTraceId`sorgu PARAMETRESINI kullanarak izleme kimliğini sorgu dizesine eklerseniz bu üstbilgiyi atlayabilirsiniz.</td>
   </tr>
 </table> 
 
 ## <a name="request-body"></a>İstek gövdesi
 
-İstek gövdesinde bir JSON dizisidir. Her dizi öğesi bir dize özelliği adlı bir JSON nesnesidir `Text`. Dil algılama değerine uygulanır `Text` özelliği. Örnek istek gövdesi aşağıdaki gibi görünür:
+İsteğin gövdesi bir JSON dizisidir. Her dizi öğesi, adlı `Text`bir String ÖZELLIĞI olan bir JSON nesnesidir. Dil algılama `Text` özelliği değeri için geçerlidir. Örnek bir istek gövdesi şöyle görünür:
 
 ```json
 [
@@ -77,25 +77,25 @@ Sorgu dizesinde geçirilen istek Parametreler şunlardır:
 
 Aşağıdaki sınırlamalar geçerlidir:
 
-* Dizi en fazla 100 öğeleri olabilir.
-* Bir dizi öğesinin metin değeri boşluk da dahil olmak üzere 10.000 karakterden uzun olamaz.
-* İstekte bulunan tüm metin alanları dahil olmak üzere 50. 000'karakterden uzun olamaz.
+* Dizi en fazla 100 öğe içerebilir.
+* Bir dizi öğesinin metin değeri boşluk dahil 10.000 karakteri aşamaz.
+* İstekte bulunan metnin tamamı boşluk dahil 50.000 karakteri aşamaz.
 
 ## <a name="response-body"></a>Yanıt gövdesi
 
-Başarılı bir yanıt için Giriş dizisinin her bir dizede tek bir sonuç ile bir JSON dizisidir. Sonuç nesnesi, aşağıdaki özellikleri içerir:
+Başarılı bir yanıt, Giriş dizisindeki her bir dize için bir sonuç içeren bir JSON dizisidir. Bir sonuç nesnesi aşağıdaki özellikleri içerir:
 
-  * `language`: Algılanan dil kodu.
+  * `language`: Algılanan dilin kodu.
 
-  * `score`: Sonuçta güvenle gösteren bir float değeri. Sıfır ile bir puan arasındadır ve düşük puanı düşük güven gösterir.
+  * `score`: Sonucun güvenilirliğe işaret eden bir float değeri. Puan sıfır ile bir ve düşük puan arasında düşük bir güvenilirlik olduğunu gösterir.
 
-  * `isTranslationSupported`: Algılanan dilin metin çevirisi için desteklenen dilleri ise true olan bir Boole değeri.
+  * `isTranslationSupported`: Algılanan dilin metin çevirisi için desteklenen dillerden biri olması durumunda doğru olan bir Boole değeri.
 
-  * `isTransliterationSupported`: Algılanan dilin alfabeye için desteklenen dilleri ise true olan bir Boole değeri.
+  * `isTransliterationSupported`: Algılanan dilin, alfabede desteklenen dillerden biri olması durumunda doğru olan bir Boole değeri.
   
-  * `alternatives`: Diğer olası diller dizisi. Dizinin her öğesinin yukarıda listelenen aynı özelliklere sahip başka bir nesnedir: `language`, `score`, `isTranslationSupported` ve `isTransliterationSupported`.
+  * `alternatives`: Diğer olası dillerin dizisi. Dizideki her öğe, yukarıda listelenen özelliklerle aynı özelliklere sahip başka bir `language`nesnedir: `isTranslationSupported` , `score`ve `isTransliterationSupported`.
 
-JSON yanıtı örneği verilmiştir:
+Örnek bir JSON yanıtı:
 
 ```json
 [
@@ -122,23 +122,23 @@ JSON yanıtı örneği verilmiştir:
 ]
 ```
 
-## <a name="response-headers"></a>Yanıt Üstbilgileri
+## <a name="response-headers"></a>Yanıt üst bilgileri
 
 <table width="100%">
   <th width="20%">Üst bilgiler</th>
   <th>Açıklama</th>
   <tr>
     <td>X-RequestId</td>
-    <td>İstek tanımlamak için hizmeti tarafından oluşturulan değeri. Sorun giderme amacıyla kullanılır.</td>
+    <td>İsteği tanımlamak için hizmet tarafından oluşturulan değer. Sorun giderme amacıyla kullanılır.</td>
   </tr>
 </table> 
 
 ## <a name="response-status-codes"></a>Yanıt durum kodları
 
-Bir isteği döndüren olası HTTP durum kodları şunlardır: 
+Bir isteğin döndürdüğü olası HTTP durum kodları aşağıda verilmiştir. 
 
 <table width="100%">
-  <th width="20%">Durum kodu</th>
+  <th width="20%">Durum Kodu</th>
   <th>Açıklama</th>
   <tr>
     <td>200</td>
@@ -146,37 +146,37 @@ Bir isteği döndüren olası HTTP durum kodları şunlardır:
   </tr>
   <tr>
     <td>400</td>
-    <td>Sorgu parametrelerden biri eksik veya geçerli değil. İstek parametreleri yeniden denemeden önce düzeltin.</td>
+    <td>Sorgu parametrelerinden biri eksik veya geçersiz. Yeniden denemeden önce istek parametrelerini düzeltin.</td>
   </tr>
   <tr>
     <td>401</td>
-    <td>İsteğin kimliği doğrulanamadı. Kimlik bilgilerinin belirtilen ve geçerli olup olmadığını denetleyin.</td>
+    <td>İsteğin kimliği doğrulanamadı. Kimlik bilgilerinin belirtildiğinden ve geçerli olduğundan emin olun.</td>
   </tr>
   <tr>
     <td>403</td>
-    <td>İstek yetkili değil. Ayrıntıları hata iletisine bakın. Bu, genellikle bir deneme aboneliği ile sağlanan tüm ücretsiz çevirileri kullanılmış olan olduğunu gösterir.</td>
+    <td>İstek yetkili değil. Ayrıntılar hata iletisini denetleyin. Bu genellikle bir deneme aboneliği ile birlikte sunulan tüm ücretsiz çevirilerin kullanıldığını gösterir.</td>
   </tr>
   <tr>
     <td>429</td>
-    <td>İstemci istek sınırları aştığı için sunucu isteği reddetti.</td>
+    <td>İstemci istek sınırlarını aştığından, sunucu isteği reddetti.</td>
   </tr>
   <tr>
     <td>500</td>
-    <td>Beklenmeyen bir hata oluştu. Sorun devam ederse, raporu ile: tarih ve saat hatanın yanıt üst bilgisinden istek tanımlayıcısı `X-RequestId`ve istemci tanımlayıcısı istek üst bilgisinden `X-ClientTraceId`.</td>
+    <td>Beklenmeyen bir hata oluştu. Hata devam ederse, bununla raporla: hatanın tarih ve saati, yanıt başlığından `X-RequestId`istek tanımlayıcısı ve istek üst `X-ClientTraceId`bilgisinden istemci tanımlayıcısı.</td>
   </tr>
   <tr>
     <td>503</td>
-    <td>Sunucu geçici olarak kullanılamıyor. İsteği yeniden deneyin. Sorun devam ederse, raporu ile: tarih ve saat hatanın yanıt üst bilgisinden istek tanımlayıcısı `X-RequestId`ve istemci tanımlayıcısı istek üst bilgisinden `X-ClientTraceId`.</td>
+    <td>Sunucu geçici olarak kullanılamıyor. İsteği yeniden deneyin. Hata devam ederse, bununla raporla: hatanın tarih ve saati, yanıt başlığından `X-RequestId`istek tanımlayıcısı ve istek üst `X-ClientTraceId`bilgisinden istemci tanımlayıcısı.</td>
   </tr>
 </table> 
 
-Bir hata oluşursa, isteği ayrıca JSON hata yanıtı döndürür. 3 haneli HTTP durum kodu için 3 basamaklı bir sayı daha da ardından 6 basamaklı bir sayı birleştirme kategorilere ayırma hatası hata kodudur. Genel hata kodları bulunabilir [v3 Translator Text API başvuru sayfası](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors). 
+Bir hata oluşursa, istek bir JSON hata yanıtı da döndürür. Hata kodu 3 basamaklı HTTP durum kodunu birleştiren 6 basamaklı bir sayıdır ve ardından hatayı daha fazla kategorilere ayırarak 3 basamaklı bir sayıdır. Ortak hata kodları, [v3 Translator metin çevirisi API'si başvuru sayfasında](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)bulunabilir. 
 
 ## <a name="examples"></a>Örnekler
 
-Aşağıdaki örnekte, metin çevirisi için desteklenen dilleri alınacak gösterilmektedir.
+Aşağıdaki örnek, metin çevirisi için desteklenen dillerin nasıl alınacağını gösterir.
 
-# <a name="curltabcurl"></a>[Curl](#tab/curl)
+# <a name="curltabcurl"></a>[kıvr](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/detect?api-version=3.0" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'What language is this text written in?'}]"

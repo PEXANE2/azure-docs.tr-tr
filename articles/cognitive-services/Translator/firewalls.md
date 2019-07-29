@@ -1,7 +1,7 @@
 ---
-title: Güvenlik duvarının arkasındaki - Translator metin çevirisi API'si Çevir
-titlesuffix: Azure Cognitive Services
-description: Translator metin çevirisi API'si ile IP Güvenlik Duvarı arkasına çevir.
+title: Güvenlik duvarları arkasında çeviri-Translator Metin Çevirisi API'si
+titleSuffix: Azure Cognitive Services
+description: IP güvenlik duvarları arkasında Translator Metin Çevirisi API'si çeviri yapın.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,25 +10,25 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: d0ebce2dd41b170a18057ca76dd3ae4cf3ce0be2
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 567e869ab9ccb2f29cd0e88ba2e44d7d1b4a296c
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67435974"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595281"
 ---
-# <a name="how-to-translate-behind-ip-firewalls-with-the-translator-text-api"></a>Translator metin çevirisi API'si ile IP Güvenlik Duvarı arkasına çevirmek nasıl
+# <a name="how-to-translate-behind-ip-firewalls-with-the-translator-text-api"></a>Translator Metin Çevirisi API'si ile IP güvenlik duvarlarını arka planda çevirme
 
-Translator metin çevirisi API'si, etki alanı adı veya IP filtreleme kullanarak güvenlik duvarının arkasındaki çevirebilir. Etki alanı adı filtreleme için tercih edilen bir yöntemdir. Biz **önermediğiniz** çalıştıran Microsoft Translator arkasından bir IP Güvenlik Duvarı filtre. Kurulum, gelecek bulunmadan ayırmak olasıdır.
+Translator Metin Çevirisi API'si, etki alanı adı veya IP filtrelemesi kullanarak güvenlik duvarlarının arkasında çeviri yapabilir. Etki alanı adı filtrelemesi tercih edilen yöntemdir. Microsoft Translator 'ı IP filtrelenmiş bir güvenlik duvarının arkasında çalıştırmayı **önermiyoruz** . Kurulumun daha sonra bildirimde bulunmadan kesintiye uğramasından kaynaklanıyor olabilir.
 
-## <a name="translator-ip-addresses"></a>Translator IP adresleri
-Api.cognitive.microsofttranslator.com - 20 Kasım 2018'den itibaren Microsoft Translator Text API için IP adresleri:
+## <a name="translator-ip-addresses"></a>Çevirmen IP adresleri
+Api.cognitive.microsofttranslator.com-Microsoft Translator Metin Çevirisi API'si için IP adresleri, 20 Kasım 2018 itibariyle:
 
 * **Asya Pasifik:** 40.90.139.163, 104.44.89.44
-* **Avrupa:** 40.90.138.4, 40.90.141.99
-* **Kuzey Amerika için:** 40.90.139.36, 40.90.139.2
+* **'Ya** 40.90.138.4, 40.90.141.99
+* **Kuzey Amerika:** 40.90.139.36, 40.90.139.2
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 > [!div class="nextstepaction"]
-> [Translator API çağrınızı içinde IP Güvenlik Duvarı arkasına Çevir](reference/v3-0-translate.md)
+> [Translator API çağrısındaki IP güvenlik duvarları arkasında çeviri yapma](reference/v3-0-translate.md)

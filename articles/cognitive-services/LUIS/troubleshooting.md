@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 06/18/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: bccdcce52b9e62048d7eb307a4783abda0f9d17c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5122a5a88f5a0d67799930999236f2993bc43f8f
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563165"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609750"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding sık sorulan sorular (SSS)
 
@@ -123,7 +123,7 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 ``` 
 
 ### <a name="my-luis-app-was-working-yesterday-but-today-im-getting-403-errors-i-didnt-change-the-app-how-do-i-fix-it"></a>LUIS uygulamamı dün çalıştığı ancak bugün 403 hataları alıyorum. Ben uygulama değişmedi. Bunu nasıl düzeltirim?
-Aşağıdaki [yönergeleri](#how-do-i-create-and-assign-a-luis-endpoint-key) LUIS uç noktası anahtarı oluşturun ve uygulamaya atamak için bir sonraki SSS. HTTP isteği için uç nokta için değiştirmeniz gerekir sonra [yeni uç nokta anahtarını kullanmak](luis-concept-keys.md#use-endpoint-key-in-query).
+Bir LUSıS uç noktası anahtarı oluşturmak ve uygulamaya atamak için bu [yönergeleri](#how-do-i-create-and-assign-a-luis-endpoint-key) izleyin. Ardından, [Yeni uç nokta anahtarını kullanmak](luis-concept-keys.md#use-endpoint-key-in-query)için ISTEMCI uygulamasının http isteğini uç noktaya değiştirmeniz gerekir. Farklı bir bölgede yeni bir kaynak oluşturduysanız, HTTP istemci isteği bölgesini de değiştirin.
 
 ### <a name="how-do-i-secure-my-luis-endpoint"></a>LUIS Noktam güvenliğini nasıl sağlayabilirim?
 Bkz: [uç nokta güvenliği](luis-concept-security.md#securing-the-endpoint).

@@ -1,6 +1,6 @@
 ---
 title: Azure CLı kullanarak bilişsel hizmetler kaynağı oluşturma
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Azure komut satırı arabirimini kullanarak bir kaynağı oluşturup abone yaparak Azure bilişsel hizmetler 'i kullanmaya başlayın.
 services: cognitive-services
 author: aahill
@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: aahi
-ms.openlocfilehash: 05b679fd969dc766d697070979416312c3bad622
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: c0a89a61f50d245389c9cdbd8a0aa9ba09eec004
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68334274"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68594613"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Azure komut satırı arabirimi 'ni (CLı) kullanarak bilişsel hizmetler kaynağı oluşturma
 
@@ -111,7 +111,7 @@ Yeni bir kaynak oluştururken, kullanmak istediğiniz hizmetin "tür" i ve isted
 |--------------------|---------------------|
 | Form anlama | `FormUnderstanding` |
 | LUIS               | `LUIS`              |
-| Soru-Cevap Oluşturucu          | `QnAMaker`          |
+| Soru-Cevap Oluşturma          | `QnAMaker`          |
 | Metin Analizi     | `TextAnalytics`     |
 | Metin Çevirisi   | `TextTranslation`   |
 

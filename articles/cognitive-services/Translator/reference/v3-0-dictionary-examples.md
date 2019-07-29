@@ -1,7 +1,7 @@
 ---
-title: Translator metin API'si sözlük örnekleri yöntemi
-titlesuffix: Azure Cognitive Services
-description: Translator metin API'si sözlük örnekleri yöntemi kullanın.
+title: Translator Metin Çevirisi API'si sözlük örnekleri yöntemi
+titleSuffix: Azure Cognitive Services
+description: Translator Metin Çevirisi API'si sözlük örnekleri metodunu kullanın.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: swmachan
-ms.openlocfilehash: e4665157803409b884c3333d9a3514403e5630bd
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 15d23016df9b0c85b9d252b4c4a9ea48d3608f75
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67435114"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595060"
 ---
-# <a name="translator-text-api-30-dictionary-examples"></a>Translator metin çevirisi API'si 3.0: Sözlük Örnekleri
+# <a name="translator-text-api-30-dictionary-examples"></a>Translator Metin Çevirisi API'si 3,0: Sözlük Örnekleri
 
-Sözlük terimlerini bağlam içinde nasıl kullanılacağını gösteren örnekler sağlar. Bu işlem dağıtımınızla birlikte kullanılan [sözlük arama](./v3-0-dictionary-lookup.md).
+Sözlükteki terimlerin bağlamda nasıl kullanıldığını gösteren örnekler sağlar. Bu işlem [Sözlük aramayla](./v3-0-dictionary-lookup.md)birlikte kullanılır.
 
 ## <a name="request-url"></a>İstek URL'si
 
-Gönderme bir `POST` isteği:
+Şu kişiye `POST` bir istek gönder:
 
 ```HTTP
 https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.0
@@ -31,57 +31,57 @@ https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.
 
 ## <a name="request-parameters"></a>İstek parametreleri
 
-Sorgu dizesinde geçirilen istek Parametreler şunlardır:
+Sorgu dizesine geçirilen istek parametreleri şunlardır:
 
 <table width="100%">
   <th width="20%">Sorgu parametresi</th>
   <th>Açıklama</th>
   <tr>
     <td>API sürümü</td>
-    <td>*Gerekli parametre*.<br/>İstemci tarafından istenen API sürümü. Değer olmalıdır `3.0`.</td>
+    <td>*Gerekli parametre*.<br/>İstemci tarafından istenen API 'nin sürümü. Değer olmalıdır `3.0`.</td>
   </tr>
   <tr>
     <td>from</td>
-    <td>*Gerekli parametre*.<br/>Giriş metninin dilini belirtir. Kaynak dili olmalıdır [desteklenen diller](./v3-0-languages.md) dahil `dictionary` kapsam.</td>
+    <td>*Gerekli parametre*.<br/>Giriş metninin dilini belirtir. Kaynak dili, `dictionary` kapsamda bulunan [desteklenen dillerden](./v3-0-languages.md) biri olmalıdır.</td>
   </tr>
   <tr>
-    <td>-</td>
-    <td>*Gerekli parametre*.<br/>Çıkış metnini dilini belirtir. Hedef Dil olmalıdır [desteklenen diller](./v3-0-languages.md) dahil `dictionary` kapsam.</td>
+    <td>to</td>
+    <td>*Gerekli parametre*.<br/>Çıkış metninin dilini belirtir. Hedef dil, `dictionary` kapsamda bulunan [desteklenen dillerden](./v3-0-languages.md) biri olmalıdır.</td>
   </tr>
 </table>
 
-İstek üst bilgileri ekleyin:
+İstek üstbilgileri şunları içerir:
 
 <table width="100%">
   <th width="20%">Üst bilgiler</th>
   <th>Açıklama</th>
   <tr>
-    <td>Kimlik doğrulaması üstbilgi</td>
-    <td><em>Gerekli istek üst bilgisi</em>.<br/>Bkz: <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">kimlik doğrulaması için kullanılabilir seçenekler</a>.</td>
+    <td>Kimlik doğrulama üst bilgisi</td>
+    <td><em>Gerekli istek üst bilgisi</em>.<br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">Kimlik doğrulaması için kullanılabilen seçeneklere</a>bakın.</td>
   </tr>
   <tr>
-    <td>İçerik türü</td>
-    <td>*Gerekli istek üst bilgisi*.<br/>Akıştaki içerik türünü belirtir. Olası değerler şunlardır: `application/json`.</td>
+    <td>Content-Type</td>
+    <td>*Gerekli istek üst bilgisi*.<br/>Yükün içerik türünü belirtir. Olası değerler şunlardır: `application/json`.</td>
   </tr>
   <tr>
     <td>İçerik uzunluğu</td>
-    <td>*Gerekli istek üst bilgisi*.<br/>İstek gövdesi uzunluğu.</td>
+    <td>*Gerekli istek üst bilgisi*.<br/>İstek gövdesinin uzunluğu.</td>
   </tr>
   <tr>
-    <td>X-ClientTraceId</td>
-    <td>*İsteğe bağlı*.<br/>İstek benzersiz olarak tanımlanabilmesi için bir istemci tarafından oluşturulan GUID. İzleme kimliği adlı bir sorgu parametresi kullanarak sorgu dizesinde eklerseniz bu başlığı atlayabilirsiniz `ClientTraceId`.</td>
+    <td>X-Clienttraceıd</td>
+    <td>*İsteğe bağlı*.<br/>İsteği benzersiz şekilde tanımlamak için istemci tarafından oluşturulan bir GUID. Adlı `ClientTraceId`sorgu PARAMETRESINI kullanarak izleme kimliğini sorgu dizesine eklerseniz, bu üstbilgiyi atlayabilirsiniz.</td>
   </tr>
 </table> 
 
 ## <a name="request-body"></a>İstek gövdesi
 
-İstek gövdesinde bir JSON dizisidir. Her dizi öğesi, aşağıdaki özelliklere sahip bir JSON nesnesidir:
+İsteğin gövdesi bir JSON dizisidir. Her dizi öğesi, aşağıdaki özelliklere sahip bir JSON nesnesidir:
 
-  * `Text`: Terim araması belirten bir dize. Bu değeri olmalıdır bir `normalizedText` önceki geri çevirileri alanını [sözlük arama](./v3-0-dictionary-lookup.md) isteği. Değerini olabilir `normalizedSource` alan.
+  * `Text`: Arama terimini belirten bir dize. Bu, önceki bir [Sözlük Arama](./v3-0-dictionary-lookup.md) isteğinin `normalizedText` arka çevirilerine ait bir alanın değeri olmalıdır. Ayrıca, `normalizedSource` alanın değeri de olabilir.
 
-  * `Translation`: Daha önce döndürülen çevrilmiş metin belirten bir dize [sözlük arama](./v3-0-dictionary-lookup.md) işlemi. Bu değeri olmalıdır `normalizedTarget` alanındaki `translations` listesi [sözlük arama](./v3-0-dictionary-lookup.md) yanıt. Hizmet örnekleri için belirli kaynak-hedef sözcük çiftini döndürür.
+  * `Translation`: Daha önce [Sözlük Arama](./v3-0-dictionary-lookup.md) işlemi tarafından döndürülen çevrilmiş metni belirten bir dize. Bu, `normalizedTarget` [Sözlük Arama](./v3-0-dictionary-lookup.md) yanıtı `translations` listesindeki alanın değeri olmalıdır. Hizmet, belirli kaynak hedefi sözcük çiftinin örneklerini döndürür.
 
-Bir örnek verilmiştir:
+Örnek:
 
 ```json
 [
@@ -91,39 +91,39 @@ Bir örnek verilmiştir:
 
 Aşağıdaki sınırlamalar geçerlidir:
 
-* Dizi en fazla 10 öğe olabilir.
-* Bir dizi öğesinin metin değeri boşluklar dahil 100 karakterden uzun olamaz.
+* Dizi en fazla 10 öğe içerebilir.
+* Bir dizi öğesinin metin değeri boşluk dahil 100 karakteri aşamaz.
 
 ## <a name="response-body"></a>Yanıt gövdesi
 
-Başarılı bir yanıt için Giriş dizisinin her bir dizede tek bir sonuç ile bir JSON dizisidir. Sonuç nesnesi, aşağıdaki özellikleri içerir:
+Başarılı bir yanıt, Giriş dizisindeki her bir dize için bir sonuç içeren bir JSON dizisidir. Bir sonuç nesnesi aşağıdaki özellikleri içerir:
 
-  * `normalizedSource`: Kaynak terim normalleştirilmiş şeklinde veren bir dize. Genellikle, bu değeri olarak aynı olmalıdır `Text` isteğin gövdesindeki eşleşen liste dizinindeki alan.
+  * `normalizedSource`: Kaynak terimin normalleştirilmiş biçimini sağlayan bir dize. Genellikle, bu, isteğin gövdesinde eşleşen liste dizininde bulunan `Text` alanın değeriyle aynı olmalıdır.
     
-  * `normalizedTarget`: Normalleştirilmiş formun hedef döneminin veren bir dize. Genellikle, bu değeri olarak aynı olmalıdır `Translation` isteğin gövdesindeki eşleşen liste dizinindeki alan.
+  * `normalizedTarget`: Hedef terimin normalleştirilmiş biçimini sağlayan bir dize. Genellikle, bu, isteğin gövdesinde eşleşen liste dizininde bulunan `Translation` alanın değeriyle aynı olmalıdır.
   
-  * `examples`: Örnekler (kaynak terim için hedef terim) listesini çifti. Listedeki her öğe, aşağıdaki özelliklere sahip bir nesnedir:
+  * `examples`: (Kaynak terim, hedef terim) çifti için örneklerin listesi. Listenin her öğesi, aşağıdaki özelliklere sahip bir nesnedir:
 
-    * `sourcePrefix`: Dize birleştirme _önce_ değerini `sourceTerm` tam bir örnek oluşturmak için. Olmalıydı zaten var olduğundan, bir boşluk karakteri eklemeyin. Bu değer, boş bir dize olabilir.
+    * `sourcePrefix`: Tüm örnek oluşturmak `sourceTerm` için değerinden _önce_ birleştirilecek dize. Bir boşluk karakteri eklemeyin, çünkü zaten olması gerekir. Bu değer boş bir dize olabilir.
 
-    * `sourceTerm`: Gerçek terimi dizesi eşit aranabilir. Dize ile eklenen `sourcePrefix` ve `sourceSuffix` tam bir örnek oluşturmak için. Değeri, kullanıcı arabiriminde, örneğin kalın işaretlenebilir şekilde ayrılır.
+    * `sourceTerm`: Aranan gerçek terime eşit bir dize. Dize, ve ' nin `sourcePrefix` tamamını `sourceSuffix` oluşturmak için ve birlikte eklenir. Değeri, bir kullanıcı arabiriminde işaretlenebilir, örneğin, bu değer kalın hale gelir.
 
-    * `sourceSuffix`: Dize birleştirme _sonra_ değerini `sourceTerm` tam bir örnek oluşturmak için. Olmalıydı zaten var olduğundan, bir boşluk karakteri eklemeyin. Bu değer, boş bir dize olabilir.
+    * `sourceSuffix`: Tüm örnek oluşturmak `sourceTerm` için değerinden _sonra_ birleştirilecek dize. Bir boşluk karakteri eklemeyin, çünkü zaten olması gerekir. Bu değer boş bir dize olabilir.
 
-    * `targetPrefix`: Benzer bir dize `sourcePrefix` ancak hedef.
+    * `targetPrefix`: Hedefe benzer `sourcePrefix` ancak hedef için bir dize.
 
-    * `targetTerm`: Benzer bir dize `sourceTerm` ancak hedef.
+    * `targetTerm`: Hedefe benzer `sourceTerm` ancak hedef için bir dize.
 
-    * `targetSuffix`: Benzer bir dize `sourceSuffix` ancak hedef.
+    * `targetSuffix`: Hedefe benzer `sourceSuffix` ancak hedef için bir dize.
 
     > [!NOTE]
-    > Sözlükte örnek varsa, yanıt 200 (Tamam). ancak `examples` listesi boş bir listedir.
+    > Sözlükte örnek yoksa, yanıt 200 ' dir (Tamam), ancak `examples` liste boş bir liste olur.
 
 ## <a name="examples"></a>Örnekler
 
-Bu örnekte, İngilizce dönemi oluşan çifti için örnekleri aramak gösterilmektedir `fly` ve İspanyolca çevirisini `volar`.
+Bu örnek, İngilizce `fly` ve onun İspanyolca çevirilerinden `volar`oluşan çift için örneklerin nasıl arama yapılacağını gösterir.
 
-# <a name="curltabcurl"></a>[Curl](#tab/curl)
+# <a name="curltabcurl"></a>[kıvr](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.0&from=en&to=es" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly', 'Translation':'volar'}]"
@@ -131,7 +131,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/examples?
 
 ---
 
-(Daha anlaşılır olması için kısaltılmıştır) yanıt gövdesi aşağıdaki gibidir:
+Yanıt gövdesi (açıklık için kısaltılmış):
 
 ```
 [

@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 099d167e14d58f2239b4e86cb01bf0ab3621daa7
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 379087ca94eee6ce3d45bfd97b4771c5f08d6333
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68553562"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68607708"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-c"></a>Hızlı Başlangıç: Konuşma SDK 'Sı ile konuşmayı çevirC++
 
 Hızlı başlangıç, [konuşma tanıma](quickstart-cpp-windows.md) ve [metinden konuşmaya](quickstart-text-to-speech-cpp-windows.md)için de kullanılabilir.
 
-Bu hızlı başlangıçta, bilgisayarınızın mikrofonunuzdan Kullanıcı konuşmayı C++ yakalayan, konuşmayı çeviren ve çevrilmiş metni gerçek zamanlı olarak komut satırına bes bir basit uygulama oluşturacaksınız. Bu uygulama, 64 bit Windows üzerinde çalışmak üzere tasarlanmıştır ve [konuşma SDK 'Sı NuGet paketi](https://aka.ms/csspeech/nuget) ve Microsoft Visual Studio 2017 ile oluşturulmuştur.
+Bu hızlı başlangıçta, bilgisayarınızın mikrofonunuzdan Kullanıcı konuşmayı C++ yakalayan, konuşmayı çeviren ve çevrilmiş metni gerçek zamanlı olarak komut satırına bes bir basit uygulama oluşturacaksınız. Bu uygulama, 64 bit Windows üzerinde çalışmak üzere tasarlanmıştır ve [konuşma SDK 'Sı NuGet paketi](https://aka.ms/csspeech/nuget) ve Microsoft Visual Studio 2017 veya üzeri sürümleriyle oluşturulmuştur.
 
 Konuşma çevirisi için kullanılabilen dillerin tüm listesi için bkz. [dil desteği](language-support.md).
 
@@ -29,7 +29,7 @@ Konuşma çevirisi için kullanılabilen dillerin tüm listesi için bkz. [dil d
 
 Bu hızlı başlangıç şunları gerektirir:
 
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
+* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) veya üzeri
 * Konuşma hizmeti için bir Azure abonelik anahtarı. [Ücretsiz bir tane alın](get-started.md).
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio projesi oluşturma

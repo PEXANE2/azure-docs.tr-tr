@@ -1,23 +1,21 @@
 ---
-title: Öğretici - URL yolu tabanlı yönlendirme ile - Azure CLI bir uygulama ağ geçidi oluşturma
-description: Bu öğreticide, Azure CLI kullanarak URL yolu tabanlı yeniden yönlendirilen trafik ile application gateway oluşturmayı öğrenin.
+title: Öğretici-URL yolu tabanlı yeniden yönlendirme ile uygulama ağ geçidi oluşturma-Azure CLı
+description: Bu öğreticide, Azure CLı kullanarak URL yol tabanlı yeniden yönlendirilen trafik ile uygulama ağ geçidi oluşturmayı öğreneceksiniz.
 services: application-gateway
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
 ms.topic: tutorial
-ms.workload: infrastructure-services
-ms.date: 7/14/2018
+ms.date: 7/30/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: e0b7995a8234ddb5927c4ef3e1ddd31fab9a00b3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8453c236f83c4501587789e96545599f1e976eea
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60233079"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608061"
 ---
-# <a name="tutorial-create-an-application-gateway-with-url-path-based-redirection-using-the-azure-cli"></a>Öğretici: Azure CLI kullanarak URL yolu tabanlı yeniden yönlendirme ile bir uygulama ağ geçidi oluşturma
+# <a name="tutorial-create-an-application-gateway-with-url-path-based-redirection-using-the-azure-cli"></a>Öğretici: Azure CLı kullanarak URL yol tabanlı yeniden yönlendirme ile uygulama ağ geçidi oluşturma
 
 Azure CLI'yi kullanarak, bir [uygulama ağ geçidi](application-gateway-introduction.md) oluştururken [URL yolu tabanlı yönlendirme kuralları](application-gateway-url-route-overview.md) yapılandırabilirsiniz. Bu öğreticide, [sanal makine ölçek kümeleri](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) kullanarak arka uç havuzları oluşturacaksınız. Daha sonra, web trafiğinin uygun arka uç havuzuna yeniden yönlendirildiğinden emin olmak için URL yönlendirme kuralları oluşturacaksınız.
 
@@ -39,7 +37,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLI'yi yerel olarak yükleyip kullanmayı seçerseniz bu hızlı başlangıç için Azure CLI 2.0.4 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme](/cli/azure/install-azure-cli).
+CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLI 2.0.4 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -72,12 +70,14 @@ az network vnet subnet create \
 
 az network public-ip create \
   --resource-group myResourceGroupAG \
-  --name myAGPublicIPAddress
+  --name myAGPublicIPAddress \
+  --allocation-method Static \
+  --sku Standard
 ```
 
 ## <a name="create-an-application-gateway"></a>Uygulama ağ geçidi oluşturma
 
-myAppGateway adlı uygulama ağ geçidini oluşturmak için [az network application-gateway create](/cli/azure/network/application-gateway) komutunu kullanın. Azure CLI kullanarak bir uygulama ağ geçidi oluşturduğunuzda, kapasite, sku ve HTTP ayarları gibi yapılandırma bilgilerini belirtirsiniz. Uygulama ağ geçidine atanan *myAGSubnet* ve *Mypublicıpaddress* daha önce oluşturduğunuz.
+myAppGateway adlı uygulama ağ geçidini oluşturmak için [az network application-gateway create](/cli/azure/network/application-gateway) komutunu kullanın. Azure CLI kullanarak bir uygulama ağ geçidi oluşturduğunuzda, kapasite, sku ve HTTP ayarları gibi yapılandırma bilgilerini belirtirsiniz. Application Gateway, daha önce oluşturduğunuz *Myagsubnet* ve *Mypublicıpaddress* öğesine atanır.
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -87,7 +87,7 @@ az network application-gateway create \
   --vnet-name myVNet \
   --subnet myAGsubnet \
   --capacity 2 \
-  --sku Standard_Medium \
+  --sku Standard_v2 \
   --http-settings-cookie-based-affinity Disabled \
   --frontend-port 80 \
   --http-settings-port 80 \
@@ -157,7 +157,7 @@ az network application-gateway http-listener create \
 
 ### <a name="add-the-default-url-path-map"></a>Varsayılan URL yolu eşlemesi ekleme
 
-URL yol eşlemeleri belirli URL'lerin belirli arka uç havuzlarına yönlendirilmesini sağlar. [az network application-gateway url-path-map create](/cli/azure/network/application-gateway/url-path-map) ve [az network application-gateway url-path-map rule create](/cli/azure/network/application-gateway/url-path-map/rule) kullanarak *imagePathRule* ve *videoPathRule* adlı URL yol eşlemelerini oluşturabilirsiniz.
+URL yolu eşlemeleri belirli URL 'Lerin belirli arka uç havuzlarına yönlendirildiğinden emin olmanızı sağlar. [az network application-gateway url-path-map create](/cli/azure/network/application-gateway/url-path-map) ve [az network application-gateway url-path-map rule create](/cli/azure/network/application-gateway/url-path-map/rule) kullanarak *imagePathRule* ve *videoPathRule* adlı URL yol eşlemelerini oluşturabilirsiniz.
 
 ```azurecli-interactive
 az network application-gateway url-path-map create \
@@ -283,7 +283,7 @@ done
 
 ## <a name="test-the-application-gateway"></a>Uygulama ağ geçidini test etme
 
-Uygulama ağ geçidinin genel IP adresini almak için [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) komutunu kullanın. Genel IP adresini kopyalayıp tarayıcınızın adres çubuğuna yapıştırın. Gibi `http://40.121.222.19`, `http://40.121.222.19:8080/images/test.htm`, `http://40.121.222.19:8080/video/test.htm`, veya `http://40.121.222.19:8081/images/test.htm`.
+Uygulama ağ geçidinin genel IP adresini almak için [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) komutunu kullanın. Genel IP adresini kopyalayıp tarayıcınızın adres çubuğuna yapıştırın. Örneğin,,, veya`http://40.121.222.19:8081/images/test.htm`. `http://40.121.222.19` `http://40.121.222.19:8080/images/test.htm` `http://40.121.222.19:8080/video/test.htm`
 
 ```azurepowershell-interactive
 az network public-ip show \
@@ -295,22 +295,22 @@ az network public-ip show \
 
 ![Temel URL’yi uygulama ağ geçidinde test etme](./media/tutorial-url-redirect-cli/application-gateway-nginx.png)
 
-URL’yi http://&lt;ip-address&gt;:8080/images/test.html olarak değiştirin. Burada &lt;ip-address&gt; değeri olarak kendi IP adresinizi kullanın. Aşağıdaki örneğe benzer bir sonuç olacaktır:
+URL 'yi IP adresi için&lt; &lt;IP&gt;adresinizi http://&gt;IP adresi: 8080/images/test.html olarak değiştirin ve aşağıdaki örneğe benzer bir şey görmeniz gerekir:
 
 ![Görüntü URL’sini uygulama ağ geçidinde test etme](./media/tutorial-url-redirect-cli/application-gateway-nginx-images.png)
 
-URL’yi http://&lt;ip-adresi&gt;:8080/video/test.html olarak değiştirin. Burada &lt;ip-adresi&gt; değeri olarak kendi IP adresinizi kullanın. Aşağıdaki örneğe benzer bir sonuç olacaktır:
+URL 'yi IP adresi için&lt; &lt;IP&gt;adresinizi http://&gt;IP adresi: 8080/video/test.html olarak değiştirin ve aşağıdaki örneğe benzer bir şey görmeniz gerekir:
 
 ![Video URL’sini uygulama ağ geçidinde test etme](./media/tutorial-url-redirect-cli/application-gateway-nginx-video.png)
 
-Şimdi URL’yi http://&lt;ip-address&gt;:8081/images/test.htm olarak değiştirin. &lt;ip-address&gt; yerine IP adresinizi yazdığınızda trafiğin http://&lt;ip-address&gt;:8080/images adresindeki görüntü arka uç havuzuna yeniden yönlendirildiğini göreceksiniz.
+Şimdi, URL&lt;'yi IP&gt;adresi için &lt;IP adresini değiştirerek&gt;http://IP adresi: 8081/images/test.htm olarak değiştirin ve http://&lt;adresindekigörüntülerarkauçhavuzunayenidenyönlendirilentrafiğigörmenizgerekirIP adresi&gt;: 8080/görüntüler.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Artık gerekli olmadığında kaynak grubunu, uygulama ağ geçidini ve tüm ilgili kaynakları silin.
 
 ```azurecli-interactive
-az group delete --name myResourceGroupAG --location eastus
+az group delete --name myResourceGroupAG
 ```
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: fa2601ea80a0d875724126f8e6cb2bd65cf5ec3a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 81e652e6456b049c2f4fca938d02d1b0724f2ffd
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559230"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609674"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-net-core"></a>Hızlı Başlangıç: .NET Core için konuşma SDK 'Sı ile konuşmayı çevirin
 
 Hızlı başlangıç, [konuşmadan metne](quickstart-csharp-dotnet-windows.md) ve [metinden konuşmaya](quickstart-text-to-speech-dotnetcore.md)yönelik olarak da kullanılabilir.
 
-Bu hızlı başlangıçta, bilgisayarınızın mikrofonunuzdan Kullanıcı konuşmayı yakalayan, konuşmayı çeviren ve çevrilmiş metni gerçek zamanlı olarak komut satırına seçtiğiniz basit bir .NET Core uygulaması oluşturacaksınız. Bu uygulama, 64 bit Windows üzerinde çalışmak üzere tasarlanmıştır ve [konuşma SDK 'Sı NuGet paketi](https://aka.ms/csspeech/nuget) ve Microsoft Visual Studio 2017 ile oluşturulmuştur.
+Bu hızlı başlangıçta, bilgisayarınızın mikrofonunuzdan Kullanıcı konuşmayı yakalayan, konuşmayı çeviren ve çevrilmiş metni gerçek zamanlı olarak komut satırına seçtiğiniz basit bir .NET Core uygulaması oluşturacaksınız. Bu uygulama, 64 bit Windows üzerinde çalışmak üzere tasarlanmıştır ve [konuşma SDK 'Sı NuGet paketi](https://aka.ms/csspeech/nuget) ve Microsoft Visual Studio 2017 veya üzeri sürümleriyle oluşturulmuştur.
 
 Konuşma çevirisi için kullanılabilen dillerin tüm listesi için bkz. [dil desteği](language-support.md).
 
@@ -30,7 +30,7 @@ Konuşma çevirisi için kullanılabilen dillerin tüm listesi için bkz. [dil d
 Bu hızlı başlangıç şunları gerektirir:
 
 * [.NET Core SDK](https://dotnet.microsoft.com/download)
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
+* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) veya üzeri
 * Konuşma hizmeti için bir Azure abonelik anahtarı. [Ücretsiz bir tane alın](get-started.md).
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio projesi oluşturma

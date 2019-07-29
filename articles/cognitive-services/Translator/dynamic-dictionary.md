@@ -1,7 +1,7 @@
 ---
-title: Dinamik sözlük - Translator metin çevirisi API'si
-titlesuffix: Azure Cognitive Services
-description: Translator metin çevirisi API'si, dinamik sözlük özelliği nasıl kullanılır.
+title: Dinamik sözlük-Translator Metin Çevirisi API'si
+titleSuffix: Azure Cognitive Services
+description: Translator Metin Çevirisi API'si dinamik sözlük özelliğini kullanma.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,32 +10,32 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: a815434cb8797acf6b92a8fe4a4f1ff69508975d
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: f586702350b38c6d546767f64a8e2f6115b59817
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839212"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595295"
 ---
 # <a name="how-to-use-a-dynamic-dictionary"></a>Dinamik sözlük kullanma
 
-Bir sözcük veya tümcecik uygulamak istediğiniz çeviri zaten biliyorsanız, istek içinde biçimlendirmesi olarak sağlayabilirsiniz. Dinamik sözlük yalnızca uygun ve ürün adları gibi bileşik isimleri için güvenlidir.
+Bir sözcüğe veya ifadeye uygulamak istediğiniz çeviriyi zaten biliyorsanız istek içinde biçimlendirme olarak sağlayabilirsiniz. Dinamik sözlük, yalnızca uygun adlar ve ürün adları gibi bileşik adlarla güvende olur.
 
-**Sözdizimi:**
+**Sözdizimi**
 
-<mstrans:dictionary translation=”translation of phrase”>phrase</mstrans:dictionary>
+< mstrans: Sözlük çevirisi = "deyimin çevirisi" > tümcecik </mstrans: sözlük >
 
-**Gereksinimler:**
+**Gereklilik**
 
-* `From` Ve `To` dilleri farklı olmalıdır. 
-* Eklemelisiniz `From` auto-detect özelliğini kullanmak yerine, API çeviri isteği parametresi. 
+* `From` Ve`To` dilleri farklı olmalıdır. 
+* Otomatik Algıla özelliğini kullanmak `From` yerine API çeviri isteğinize parametresini eklemeniz gerekir. 
 
-**Örnek: tr-de:**
+**Örnek: en-de:**
 
-Kaynak girişi: Word < mstrans:dictionary çeviri =\"wordomatic\"> sözcük veya tümcecik < / mstrans:dictionary > bir sözlük girişi.
+Kaynak girişi: < Mstrans: Sözlük çevirisi =\"wordomatik\"> sözcük veya tümcecik </mstrans: sözlük > sözlük girişi.
 
-Hedefi çıktısı: DAS Wort "wordomatic" ist EIN Wörterbucheintrag.
+Hedef çıktı: "Wordomatik" ist Ein Wörterbucheintrag.
 
-Bu özellik ile ve HTML modu olmadan aynı şekilde çalışır.
+Bu özellik HTML modu olmadan ve ile aynı şekilde çalışmaktadır.
 
-Özelliği kullanılmamalıdır. Çeviri özelleştirme uygun ve çok daha iyi özel Translator kullanarak yoludur. Özel Translator bağlamını ve istatistiksel olasılıklar tam olarak kullanmayı sağlar. Varsa veya iş ya da ifade bağlamda gösteren eğitim verilerini oluşturabilirsiniz, çok daha iyi sonuçlar alırsınız. Özel Translator hakkında daha fazla bilgi bulabilirsiniz [ https://aka.ms/CustomTranslator ](https://aka.ms/CustomTranslator).
+Özelliğin gelişigüzel kullanılması gerekir. Çeviriyi özelleştirmenin uygun ve en iyi yolu özel çeviriciyi kullanmaktır. Özel çevirici, bağlam ve istatistiksel olasılıkların tam kullanımını sağlar. Çalışma veya tümceciğe bağlam içinde görüntülenen eğitim verileri varsa veya bu verilere sahipseniz, daha iyi sonuçlar elde edersiniz. İçinde özel çevirici [https://aka.ms/CustomTranslator](https://aka.ms/CustomTranslator)hakkında daha fazla bilgi edinebilirsiniz.

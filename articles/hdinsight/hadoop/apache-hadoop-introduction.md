@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: overview
 ms.date: 06/11/2019
-ms.openlocfilehash: 5e36a4691c485472b1e0b43b9d8c551790bc68e9
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 0c1aaa86726465dee5e12416d999c70245ea0844
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442124"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598083"
 ---
 # <a name="what-is-apache-hadoop-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Hadoop nedir?
 
@@ -86,7 +86,7 @@ HDInsight belirli küme türlerinin yanı sıra bileşen, yardımcı program ve 
 
 |Küme Türü | Açıklama |
 |---|---|
-|[Apache Hadoop](https://wiki.apache.org/hadoop)|İşlem verilerini paralel olarak işlemek ve analiz etmek için, ", YARN kaynak yönetimini ve basit bir MapReduce programlama modelini kullanan bir çerçeve.|
+|[Apache Hadoop](https://hadoop.apache.org/)|İşlem verilerini paralel olarak işlemek ve analiz etmek için, ", YARN kaynak yönetimini ve basit bir MapReduce programlama modelini kullanan bir çerçeve.|
 |[Apache Spark](https://spark.apache.org/)|Büyük veri analizi uygulamalarının performansını artırmak üzere bellek içi işlemeyi destekleyen açık kaynaklı bir paralel işleme çerçevesidir. Bkz. [HDInsight’ta Apache Spark nedir?](../spark/apache-spark-overview.md)|
 |[Apache HBase](https://hbase.apache.org/)|Büyük miktarlarda yapılandırılmamış ve yarı yapılandırılmış veriler için rastgele erişim ve güçlü tutarlılık sağlayan Hadoop üzerinde oluşturulmuş bir NoSQL veritabanı (potansiyel olarak milyarlarca satır çarpı milyonlarca sütun). Bkz. [HDInsight'ta HBase nedir?](../hbase/apache-hbase-overview.md)|
 |[ML Hizmetleri](https://docs.microsoft.com/machine-learning-server/rebranding-microsoft-r-server)|Paralel ve dağıtılmış R süreçlerini barındırmak ve yönetmek için bir sunucu. Veri uzmanlarının, istatistikçilerin ve R programcılarının HDInsight üzerindeki ölçeklenebilir ve dağıtılmış analitik yöntemlerine istedikleri an erişmesini sağlar. Bkz. [HDInsight'ta ML Services'a genel bakış](../r-server/r-server-overview.md).|
