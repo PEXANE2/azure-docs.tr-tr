@@ -555,6 +555,20 @@
       items:
         - name: Databricks ile verileri çözümleme
           href: ../blobs/data-lake-storage-quickstart-create-databricks-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Blobları kod olmadan yönetme
+          items:
+            - name: PowerShell
+              href: storage-quickstart-blobs-powershell.md
+            - name: CLI
+              href: storage-quickstart-blobs-cli.md
+        - name: Bloblarla geliştirme
+          items:
+            - name: .NET
+              href: storage-quickstart-blobs-dotnet.md
+            - name: Java
+              href: storage-quickstart-blobs-java-v10.md
+            - name: Python
+              href: storage-quickstart-blobs-python.md
     - name: Öğreticiler
       items:
         - name: 'Azure Databricks kullanarak verileri ayıklama, dönüştürme ve yükleme'
@@ -667,6 +681,12 @@
               href: ../blobs/data-lake-storage-performance-tuning-mapreduce.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: HDInsight üzerinde Storm'u iyileştirme
               href: ../blobs/data-lake-storage-performance-tuning-storm.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Dosyaları yönetme (bloblar)
+          items:
+            - name: PowerShell
+              href: /powershell/module/azure.storage
+            - name: Azure CLI
+              href: ../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Geçiş verileri
           items:
             - name: Data Lake Storage 1. Nesil’den yükseltme
@@ -675,8 +695,37 @@
               href: ../blobs/data-lake-storage-migrate-on-premises-HDFS-cluster.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Başvuru
       items:
+        - name: PowerShell
+          href: /powershell/module/azure.storage
+        - name: Azure CLI
+          href: /cli/azure/storage
+        - name: .NET
+          items:
+            - name: 'Bloblar, Kuyruklar, Tablolar ve Dosyalar'
+              href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/client'
+            - name: Veri taşıma
+              href: /dotnet/api/microsoft.azure.storage.datamovement
+            - name: Resource Manager
+              href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/management'
+        - name: Java
+          items:
+            - name: 'Bloblar, Kuyruklar, Tablolar ve Dosyalar (v7)'
+              href: 'https://docs.microsoft.com/java/api/overview/azure/storage/client?view=azure-java-stable'
+            - name: Blob SDK (v10)
+              href: 'https://docs.microsoft.com/java/api/overview/azure/storage/client?view=azure-java-preview'
         - name: REST
-          href: 'https://docs.microsoft.com/rest/api/storageservices/data-lake-storage-gen2'
+          items:
+            - name: 'Bloblar, Kuyruklar, Tablolar ve Dosyalar'
+              href: /rest/api/storageservices
+            - name: Data Lake Storage Gen2
+              href: 'https://docs.microsoft.com/rest/api/storageservices/data-lake-storage-gen2'
+            - name: Kaynak sağlayıcısı
+              href: /rest/api/storagerp
+            - name: İçeri/Dışarı Aktarma
+              href: /rest/api/storageimportexport
+        - name: Resource Manager şablonu
+          displayName: ARM
+          href: /azure/templates/microsoft.storage/allversions
     - name: Kaynaklar
       items:
         - name: Bilinen sorunlar

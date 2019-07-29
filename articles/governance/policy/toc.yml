@@ -274,6 +274,9 @@
     - name: Dizi özellikleri için yazar ilkeleri
       displayName: 'array property, alias, aliases, in, notIn, type, defaultValue'
       href: ./how-to/author-policies-for-arrays.md
+    - name: Konuk Yapılandırma ilkesi oluşturma
+      displayName: 'powershell, dsc, chef, linux, windows'
+      href: ./how-to/guest-configuration-create.md
     - name: Uyumluluk verilerini alma
       displayName: 'evaluation, scan, summarize, query, events, log analytics'
       href: ./how-to/get-compliance-data.md

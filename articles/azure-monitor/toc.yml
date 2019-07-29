@@ -308,7 +308,13 @@
               displayname: 'live, quickpulse, quick pulse, live metrics'
               href: app/live-stream.md
             - name: Ölçümler
-              href: app/metrics-explorer.md
+              items:
+                - name: Günlük tabanlı ve önceden toplanmış ölçümler
+                  href: app/pre-aggregated-metrics-log-metrics.md
+                - name: Günlük tabanlı ölçüm tanımları
+                  href: platform/app-insights-metrics.md
+                - name: Klasik ölçüm gezgini
+                  href: app/metrics-explorer.md
             - name: Arama
               href: app/diagnostic-search.md
             - name: Profil Oluşturucu
@@ -425,8 +431,6 @@
                   href: app/asp-net-dependencies.md
                 - name: ApplicationInsights.config
                   href: app/configuration-with-applicationinsights-config.md
-                - name: Günlük tabanlı ve önceden toplanmış ölçümler
-                  href: app/pre-aggregated-metrics-log-metrics.md
                 - name: İşlem tanılamaları
                   href: app/transaction-diagnostics.md
                 - name: Özel veri kaynaklarını ilişkilendirme
@@ -659,15 +663,13 @@
                 - name: Günlüklerde toplama
                   href: platform/diagnostic-logs-stream-log-store.md
                 - name: Azure Depolama'dan toplama
-                  href: platform/collect-azure-metrics-logs.md
+                  href: platform/azure-storage-iis-table.md
                 - name: Depolamaya arşivleme
                   href: platform/archive-diagnostic-logs.md
                 - name: Event Hubs’a veri akışı sağlama
                   href: platform/diagnostic-logs-stream-event-hubs.md
                 - name: Resource Manager şablonlarıyla etkinleştirme
                   href: platform/diagnostic-logs-stream-template.md
-                - name: Hizmet günlükleri ve ölçümleri
-                  href: platform/azure-storage-iis-table.md
             - name: Event Hubs’a veri akışı sağlama
               href: platform/stream-monitoring-data-event-hubs.md
             - name: Key Vault Analytics
@@ -736,8 +738,8 @@
               href: platform/metrics-getting-started.md
             - name: Ölçüm Gezgini’nin gelişmiş özellikleri
               href: platform/metrics-charts.md
-            - name: Günlük tabanlı ölçümler
-              href: platform/app-insights-metrics.md
+            - name: Ölçüm grafiği örnekleri
+              href: platform/metric-chart-samples.md
             - name: Ölçüm grafikleri için sorun çözümü
               href: platform/metrics-troubleshoot.md
         - name: Günlükler

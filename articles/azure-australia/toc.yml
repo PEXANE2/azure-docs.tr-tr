@@ -1,0 +1,54 @@
+- name: Azure Avustralya belgeleri
+  href: index.yml
+- name: Genel Bakış
+  items:
+    - name: Azure Avustralya nedir?
+      href: australia-overview.md
+- name: Kavramlar
+  items:
+    - name: Azure Avustralya'da güvenlik
+      items:
+        - name: Veri Güvenliği
+          href: secure-your-data.md
+        - name: Azure VPN Gateway yapılandırması
+          href: vpn-gateway.md
+        - name: Azure Key Vault
+          href: azure-key-vault.md
+        - name: Kimlik federasyonu
+          href: identity-federation.md
+        - name: RBAC ve PIM
+          href: role-privileged.md
+        - name: Essential 8 için Site Kurtarma ve Yedekleme
+          href: recovery-backup.md
+        - name: Azure sistem izlemesi
+          href: system-monitor.md
+        - name: Azure İlkesi ve Azure Blueprints
+          href: azure-policy.md
+    - name: Azure Avustralya'da ağ geçitleri
+      items:
+        - name: 'Ağ geçidi günlüğü, denetimi ve görünürlüğü'
+          href: gateway-log-audit-visibility.md
+        - name: Ağ geçidi güvenli uzaktan yönetimi
+          href: gateway-secure-remote-administration.md
+        - name: Ağ geçidi veri giriş denetimi
+          href: gateway-ingress-traffic.md
+        - name: Ağ geçidi veri çıkış denetimi
+          href: gateway-egress-traffic.md
+- name: Kaynaklar
+  items:
+    - name: Azure Avustralya güvenliği açıklanıyor
+      href: security-explained.md
+    - name: Azure Avustralya ek kaynakları
+      href: reference-library.md
+    - name: Avustralya Siber Güvenlik Merkezi (ACSC) web sitesi
+      href: 'https://cyber.gov.au/'
+    - name: Avustralya Sertifikalı Bulut Hizmetleri Listesi (CCSL)
+      href: 'https://acsc.gov.au/infosec/irap/certified_clouds.htm'
+    - name: Microsoft Hizmet Güveni Portalı'ndaki Avustralya sayfası
+      href: 'https://aka.ms/au-irap'
+    - name: IaaS ve PaaS web uygulamaları için Avustralya KORUMALI Şemaları
+      href: 'https://aka.ms/au-protected'
+    - name: Fiyatlandırma
+      href: 'https://azure.microsoft.com/pricing/'
+    - name: Fiyatlandırma hesaplayıcı
+      href: 'https://azure.microsoft.com/pricing/calculator/'
