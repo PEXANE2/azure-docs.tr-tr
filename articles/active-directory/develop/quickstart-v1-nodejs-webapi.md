@@ -108,7 +108,7 @@ Tek tek yapılandırma ayarlarıyla ilgili daha fazla bilgi için, [passport-azu
 
 [Passport-azure-ad](https://github.com/AzureAD/passport-azure-ad#5-usage) modül iki kimlik doğrulama stratejileri özellikleri: [OIDC](https://github.com/AzureAD/passport-azure-ad#51-oidcstrategy) ve [taşıyıcı](https://github.com/AzureAD/passport-azure-ad#52-bearerstrategy) stratejiler. Bu makalede uygulanan sunucu, API uç noktasının güvenliğini sağlamak için Taşıyıcı stratejisini kullanır.
 
-### <a name="step-1-import-dependencies"></a>1. Adım: İçeri aktarma bağımlılıkları
+### <a name="step-1-import-dependencies"></a>1\. Adım: İçeri aktarma bağımlılıkları
 
 `app.js` adlı yeni bir dosya oluşturun ve aşağıdaki metni yapıştırın:
 
@@ -132,7 +132,7 @@ Kodun bu bölümünde:
 - Kullanıcı belirteçleri güvenli uç noktalara geçirilirken bu belirteçleri depolamak üzere `authenticatedUserTokens` için bir dizi oluşturulur.
 - `serverPort`, işlem ortamının bağlantı noktasından veya yapılandırma dosyasından tanımlanır.
 
-### <a name="step-2-instantiate-an-authentication-strategy"></a>2. Adım: Kimlik doğrulama stratejisi örneği
+### <a name="step-2-instantiate-an-authentication-strategy"></a>2\. Adım: Kimlik doğrulama stratejisi örneği
 
 Uç noktayı güvenlik altına alırken, geçerli isteklerin kimliği doğrulanmış bir kullanıcıdan kaynaklanıp kaynaklanmadığını saptamaktan sorumlu olacak bir strateji sağlamalısınız. Burada, `authenticatonStrategy` değişkeni `passport-azure-ad` `BearerStrategy` sınıfının bir örneğidir. `require` deyiminin arkasında aşağıdaki kodu ekleyin.
 
@@ -161,7 +161,7 @@ Stratejinin yeni örneği oluşturulduktan sonra, bunu `use` yöntemi üzerinden
 passport.use(authenticationStrategy);
 ```
 
-### <a name="step-3-server-configuration"></a>3. adım: Sunucu yapılandırması
+### <a name="step-3-server-configuration"></a>3\. adım: Sunucu yapılandırması
 
 Kimlik doğrulama stratejisi tanımlandıktan sonra, artık bazı temel ayarlarla Restify sunucusunu ayarlayabilir ve güvenlik için Passport kullanılmasını sağlayabilirsiniz.
 
@@ -173,7 +173,7 @@ server.use(passport.session());
 ```
 Bu sunucu, kimlik doğrulama üst bilgilerini ayrıştırmak ve ardından Passport kullanılacak şekilde ayarlamak için başlatılır ve yapılandırılır.
 
-### <a name="step-4-define-routes"></a>4. Adım: Yolları tanımlayın
+### <a name="step-4-define-routes"></a>4\. Adım: Yolları tanımlayın
 
 Şimdi yolları tanımlayabilir ve Azure AD ile hangisinin güvenlik altına alınacağına karar verebilirsiniz. Bu projede iki yol vardır; kök düzeyi açıktır ve `/api` yolu kimlik doğrulaması gerektirecek şekilde ayarlanmıştır.
 

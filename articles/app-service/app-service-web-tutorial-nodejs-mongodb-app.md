@@ -272,7 +272,7 @@ Varsayılan olarak, MEAN.js projesi _config/env/local-production.js_ öğesini G
 
 Uygulama ayarlarını belirlemek için Cloud Shell'de [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) komutunu kullanın. 
 
-Aşağıdaki örnek yapılandırır bir `MONGODB_URI` Azure uygulamanızda uygulama ayarı. *\<app_name>*, *\<cosmosdb_name>* ve *\<primary_master_key>* yer tutucularını değiştirin.
+Aşağıdaki örnek yapılandırır bir `MONGODB_URI` Azure uygulamanızda uygulama ayarı. *\<app_name>* , *\<cosmosdb_name>* ve *\<primary_master_key>* yer tutucularını değiştirin.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings MONGODB_URI="mongodb://<cosmosdb_name>:<primary_master_key>@<cosmosdb_name>.documents.azure.com:10250/mean?ssl=true"

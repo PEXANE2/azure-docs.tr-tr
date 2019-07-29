@@ -33,11 +33,11 @@ Bu öğretici, Azure CLI 2.0.4 veya sonraki bir sürümü gerektirir. Sürümü 
 ## <a name="create-and-configure-jenkins-instance"></a>Jenkins örneği oluşturma ve Jenkins örneğini yapılandırma
 Jenkins ana sunucunuz yoksa, gerekli [Azure Kimlik Bilgileri](https://plugins.jenkins.io/azure-credentials) eklentisini varsayılan olarak içeren [Çözüm Şablonu](install-jenkins-solution-template.md) ile başlayın. 
 
-Azure Kimlik Bilgileri eklentisi, Microsoft Azure hizmet sorumlusu kimlik bilgilerini Jenkins'de depolamanıza olanak sağlar. 1.2 sürümünde, Jenkins İşlem Hattının Azure kimlik bilgilerini alabilmesine yönelik desteği ekledik. 
+Azure Kimlik Bilgileri eklentisi, Microsoft Azure hizmet sorumlusu kimlik bilgilerini Jenkins'de depolamanıza olanak sağlar. 1\.2 sürümünde, Jenkins İşlem Hattının Azure kimlik bilgilerini alabilmesine yönelik desteği ekledik. 
 
-1.2 veya sonraki bir sürüme sahip olduğunuzdan emin olun:
+1\.2 veya sonraki bir sürüme sahip olduğunuzdan emin olun:
 * Jenkins panosunda **Manage Jenkins -> Plugin Manager**'ı (Jenkins'i Yönet -> Eklenti Yöneticisi) seçin ve **Azure Credential**'ı (Azure Kimlik Bilgileri) arayın. 
-* 1.2'den önceki bir sürüm kullanılıyorsa eklentiyi güncelleştirin.
+* 1\.2'den önceki bir sürüm kullanılıyorsa eklentiyi güncelleştirin.
 
 Java JDK ve Maven, Jenkins ana sunucusunda da gereklidir. Yüklemek için SSH kullanarak Jenkins ana sunucusunda oturum açın ve aşağıdaki komutları çalıştırın:
 ```bash

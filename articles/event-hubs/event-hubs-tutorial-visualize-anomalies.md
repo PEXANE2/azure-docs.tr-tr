@@ -54,7 +54,7 @@ Aşağıdaki bölümlerde bu gerekli adımların nasıl uygulanacağı açıklan
 3. Bir olay hub'ı oluşturun.
 
 > [!NOTE]
-> Her betikte öğreticinin ilerleyen bölümlerinde ihtiyacınız olacak değişkenler bulunur. Bunlar kaynak grubu adı ($resourceGroup), olay hub'ı ad alanı (**$eventHubNamespace**) ve olay hub'ı adıdır (**$eventHubName**). Bunlar makalenin ilerleyen bölümlerinde dolar işareti ($) ön ekiyle belirtildiğinden betikte ayarlanmış olduğunu anlayabilirsiniz.
+> Her betikte öğreticinin ilerleyen bölümlerinde ihtiyacınız olacak değişkenler bulunur. Bunlar kaynak grubu adı ($resourceGroup), olay hub'ı ad alanı ( **$eventHubNamespace**) ve olay hub'ı adıdır ( **$eventHubName**). Bunlar makalenin ilerleyen bölümlerinde dolar işareti ($) ön ekiyle belirtildiğinden betikte ayarlanmış olduğunu anlayabilirsiniz.
 
 <!-- some day they will approve the tab control; 
   When that happens, put CLI and PSH in tabs. -->

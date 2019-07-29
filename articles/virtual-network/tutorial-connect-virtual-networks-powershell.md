@@ -74,7 +74,7 @@ Sanal ağ için alt ağ yapılandırmasını yazma [kümesi AzVirtualNetwork](/p
 $virtualNetwork1 | Set-AzVirtualNetwork
 ```
 
-10\.1.0.0/16 adres ön eki ve bir alt ağ ile sanal ağ oluşturun:
+10.1.0.0/16 adres ön eki ve bir alt ağ ile sanal ağ oluşturun:
 
 ```azurepowershell-interactive
 # Create the virtual network.
