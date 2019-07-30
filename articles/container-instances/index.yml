@@ -5,14 +5,12 @@ metadata:
   title: Azure Container Instances Belgeleri - Öğreticileri | Microsoft Docs
   description: 'Azure Container Instances, herhangi bir sanal makine sağlamak ve daha yüksek düzeyde bir hizmeti benimsemek zorunda kalmadan Azure içinde kapsayıcı çalıştırmanızın en hızlı ve en kolay yoludur.'
   services: container-instances
-  author: czeumault
-  manager: carolz
+  author: georgewallace
+  manager: gwallace
   ms.service: container-instances
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 07/26/2017
-  ms.author: carolz
+  ms.author: gwallace
 abstract:
   description: 'Azure Container Instances, herhangi bir sanal makine sağlamak ve daha yüksek düzeyde bir hizmeti benimsemek zorunda kalmadan Azure içinde kapsayıcı çalıştırmanızın en hızlı ve en kolay yoludur. Hızlı başlangıç kılavuzlarımız, öğreticilerimiz ve örneklerimizle kapsayıcı örneklerini oluşturmayı ve yönetmeyi öğrenin.<p>Eksiksiz bir kapsayıcı düzenleme çözümüne ihtiyaç duyuyorsanız bkz. <a href="/azure/aks/">Azure Kubernetes Hizmeti (AKS) belgeleri</a>.</p>'
 sections:

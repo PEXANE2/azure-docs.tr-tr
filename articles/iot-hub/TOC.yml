@@ -5,6 +5,7 @@
     - name: Azure IoT Hub nedir?
       href: about-iot-hub.md
 - name: Hızlı Başlangıçlar
+  expanded: true
   items:
     - name: Telemetri gönderme
       items:

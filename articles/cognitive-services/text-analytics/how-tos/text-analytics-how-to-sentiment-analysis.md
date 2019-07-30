@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 02/26/2019
 ms.author: aahi
-ms.openlocfilehash: 383fdc1eb415b5aa6ae0cfc6eb5dae228ddc5ce2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ccf6756ddfd583b0bc0d23c7f6afecf1f47708f5
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562635"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619642"
 ---
 # <a name="example-detect-sentiment-with-text-analytics"></a>Örnek: Metin Analizi ile yaklaşımı Algıla
 
@@ -42,7 +42,7 @@ Bu biçimde JSON belgelerinize sahip olmanız gerekir: KIMLIK, metin ve dil.
 
 Belge boyutunun belge başına 5.120 karakter altında olması gerekir. Koleksiyon başına en fazla 1.000 öğe (kimlik) kullanabilirsiniz. Koleksiyon, istek gövdesinde gönderilir. Aşağıdaki örnek, yaklaşım analizi için gönderebilecek içeriklere bir örnektir:
 
-```
+```json
     {
         "documents": [
             {
@@ -64,7 +64,7 @@ Belge boyutunun belge başına 5.120 karakter altında olması gerekir. Koleksiy
                 "language": "en",
                 "id": "4",
                 "text": "It was foggy so we missed the spectacular views, but the trail was ok. Worth checking out if you are in the area."
-            },                
+            },
             {
                 "language": "en",
                 "id": "5",
@@ -105,41 +105,41 @@ Hemen çıktı döndürülür. Sonuçları JSON kabul eden bir uygulamaya veya �
 Aşağıdaki örnekte, bu makaledeki belge koleksiyonu yanıtı gösterilmektedir:
 
 ```json
-{
-    "documents": [
-        {
-            "score": 0.9999237060546875,
-            "id": "1"
-        },
-        {
-            "score": 0.0000540316104888916,
-            "id": "2"
-        },
-        {
-            "score": 0.99990355968475342,
-            "id": "3"
-        },
-        {
-            "score": 0.980544924736023,
-            "id": "4"
-        },
-        {
-            "score": 0.99996328353881836,
-            "id": "5"
-        }
-    ],
-    "errors": []
-}
+    {
+        "documents": [
+            {
+                "score": 0.9999237060546875,
+                "id": "1"
+            },
+            {
+                "score": 0.0000540316104888916,
+                "id": "2"
+            },
+            {
+                "score": 0.99990355968475342,
+                "id": "3"
+            },
+            {
+                "score": 0.980544924736023,
+                "id": "4"
+            },
+            {
+                "score": 0.99996328353881836,
+                "id": "5"
+            }
+        ],
+        "errors": []
+    }
 ```
 
 ## <a name="sentiment-analysis-v3-public-preview"></a>Yaklaşım Analizi v3 genel önizleme
 
-[Yaklaşım Analizi sonraki sürümü](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-preview/operations/56f30ceeeda5650db055a3c9) artık genel önizlemeye sunuldu. API 'nin metin kategorisi ve Puanlama açısından doğruluk ve ayrıntı açısından önemli geliştirmeler sağlar. 
+[Yaklaşım Analizi sonraki sürümü](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-preview/operations/56f30ceeeda5650db055a3c9) artık genel önizlemeye sunuldu. API 'nin metin kategorisi ve Puanlama açısından doğruluk ve ayrıntı açısından önemli geliştirmeler sağlar.
 
 > [!NOTE]
 > * Yaklaşım Analizi v3 istek biçimi ve [veri sınırları](../overview.md#data-limits) , önceki sürümle aynıdır.
-> * Şu anda v3 Yaklaşım Analizi: 
->    * Şu anda yalnızca Ingilizce dilini desteklemektedir.  
+> * Şu anda v3 Yaklaşım Analizi:
+>    * Şu anda yalnızca Ingilizce dilini desteklemektedir.
 >    * Şu bölgelerde kullanılabilir: `Central US`, `Central Canada`ve `East Asia`.
 
 |Özellik |Açıklama  |
@@ -165,20 +165,20 @@ Yaklaşım Analizi v3, bir tümce ve belge düzeyinde puanlar ve Etiketler dönd
 Aşağıdaki JSON Yaklaşım Analizi yeni sürümüne yapılan bir isteğin örneğidir. İstek biçimlendirmesi, önceki sürümle aynıdır:
 
 ```json
-{
-  "documents": [
     {
-      "language": "en",
-      "id": "1",
-      "text": "Hello world. This is some input text that I love."
-    },
-    {
-      "language": "en",
-      "id": "2",
-      "text": "It's incredibly sunny outside! I'm so happy."
+        "documents": [
+        {
+            "language": "en",
+            "id": "1",
+            "text": "Hello world. This is some input text that I love."
+        },
+        {
+            "language": "en",
+            "id": "2",
+            "text": "It's incredibly sunny outside! I'm so happy."
+        }
+        ],
     }
-  ]
-}
 ```
 
 ### <a name="sentiment-analysis-v3-example-response"></a>Yaklaşım Analizi v3 örnek yanıtı
@@ -186,73 +186,73 @@ Aşağıdaki JSON Yaklaşım Analizi yeni sürümüne yapılan bir isteğin örn
 İstek biçimi önceki sürümle aynı olsa da, yanıt biçimi değişmiştir. Aşağıdaki JSON, API 'nin yeni sürümünden bir örnek yanıt örneğidir:
 
 ```json
-{
-    "documents": [
-        {
-            "id": "1",
-            "sentiment": "positive",
-            "documentScores": {
-                "positive": 0.98570585250854492,
-                "neutral": 0.0001625834556762,
-                "negative": 0.0141316400840878
-            },
-            "sentences": [
-                {
-                    "sentiment": "neutral",
-                    "sentenceScores": {
-                        "positive": 0.0785155147314072,
-                        "neutral": 0.89702343940734863,
-                        "negative": 0.0244610067456961
-                    },
-                    "offset": 0,
-                    "length": 12
+    {
+        "documents": [
+            {
+                "id": "1",
+                "sentiment": "positive",
+                "documentScores": {
+                    "positive": 0.98570585250854492,
+                    "neutral": 0.0001625834556762,
+                    "negative": 0.0141316400840878
                 },
-                {
-                    "sentiment": "positive",
-                    "sentenceScores": {
-                        "positive": 0.98570585250854492,
-                        "neutral": 0.0001625834556762,
-                        "negative": 0.0141316400840878
+                "sentences": [
+                    {
+                        "sentiment": "neutral",
+                        "sentenceScores": {
+                            "positive": 0.0785155147314072,
+                            "neutral": 0.89702343940734863,
+                            "negative": 0.0244610067456961
+                        },
+                        "offset": 0,
+                        "length": 12
                     },
-                    "offset": 13,
-                    "length": 36
-                }
-            ]
-        },
-        {
-            "id": "2",
-            "sentiment": "positive",
-            "documentScores": {
-                "positive": 0.89198976755142212,
-                "neutral": 0.103382371366024,
-                "negative": 0.0046278294175863
+                    {
+                        "sentiment": "positive",
+                        "sentenceScores": {
+                            "positive": 0.98570585250854492,
+                            "neutral": 0.0001625834556762,
+                            "negative": 0.0141316400840878
+                        },
+                        "offset": 13,
+                        "length": 36
+                    }
+                ]
             },
-            "sentences": [
-                {
-                    "sentiment": "positive",
-                    "sentenceScores": {
-                        "positive": 0.78401315212249756,
-                        "neutral": 0.2067587077617645,
-                        "negative": 0.0092281140387058
-                    },
-                    "offset": 0,
-                    "length": 30
+            {
+                "id": "2",
+                "sentiment": "positive",
+                "documentScores": {
+                    "positive": 0.89198976755142212,
+                    "neutral": 0.103382371366024,
+                    "negative": 0.0046278294175863
                 },
-                {
-                    "sentiment": "positive",
-                    "sentenceScores": {
-                        "positive": 0.99996638298034668,
-                        "neutral": 0.0000060341349126,
-                        "negative": 0.0000275444017461
+                "sentences": [
+                    {
+                        "sentiment": "positive",
+                        "sentenceScores": {
+                            "positive": 0.78401315212249756,
+                            "neutral": 0.2067587077617645,
+                            "negative": 0.0092281140387058
+                        },
+                        "offset": 0,
+                        "length": 30
                     },
-                    "offset": 31,
-                    "length": 13
-                }
-            ]
-        }
-    ],
-    "errors": []
-}
+                    {
+                        "sentiment": "positive",
+                        "sentenceScores": {
+                            "positive": 0.99996638298034668,
+                            "neutral": 0.0000060341349126,
+                            "negative": 0.0000275444017461
+                        },
+                        "offset": 31,
+                        "length": 13
+                    }
+                ]
+            }
+        ],
+        "errors": []
+    }
 ```
 
 ### <a name="example-c-code"></a>Örnek C# kod
@@ -268,11 +268,10 @@ Bu makalede, Azure bilişsel hizmetler 'de Metin Analizi kullanarak yaklaşım a
 + POST isteği, kişiselleştirilmiş bir `/sentiment` [erişim anahtarı ve](text-analytics-how-to-access-key.md) aboneliğiniz için geçerli olan bir uç nokta kullanarak bir uç noktaya gönderilir.
 + Her belge KIMLIĞI için bir yaklaşım puanından oluşan yanıt çıkışı, JSON kabul eden herhangi bir uygulamaya akışla eklenebilir. Örnek uygulamalar, birkaç kez ad vermek için Excel ve Power BI içerir.
 
-## <a name="see-also"></a>Ayrıca bkz. 
+## <a name="see-also"></a>Ayrıca bkz.
 
- [Metin Analizine genel bakış](../overview.md)  
- [Sık sorulan sorular (SSS)](../text-analytics-resource-faq.md)</br>
- [Metin Analizi ürün sayfası](//go.microsoft.com/fwlink/?LinkID=759712) 
+ [Metin analizi genel bakış](../overview.md) [Sık sorulan sorular (SSS)](../text-analytics-resource-faq.md)</br>
+ [Metin Analizi ürün sayfası](//go.microsoft.com/fwlink/?LinkID=759712)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

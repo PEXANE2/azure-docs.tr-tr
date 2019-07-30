@@ -8,14 +8,14 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.author: lbosq
-ms.openlocfilehash: 24d5c11eb32350b2c11584ca5fc75ed4b619b6cf
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 7f42f693f485a6d3e49c8b29529fb72062b2157b
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65978742"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619873"
 ---
-# <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>Hızlı Başlangıç: Azure Cosmos DB Gremlin API hesabı kullanarak bir .NET Framework veya Core uygulaması derleme
+# <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>Hızlı Başlangıç: Azure Cosmos DB Gremlin API hesabını kullanarak .NET Framework veya çekirdek uygulama oluşturma
 
 > [!div class="op_single_selector"]
 > * [Gremlin konsolu](create-graph-gremlin-console.md)
@@ -32,7 +32,7 @@ Bu hızlı başlangıçta Azure portalı kullanarak bir Azure Cosmos DB [Gremlin
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Visual Studio yüklü 2019 yoksa, indirip kullanabilirsiniz **ücretsiz** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Visual Studio kurulumu sırasında **Azure dağıtımını** etkinleştirdiğinizden emin olun.
+Zaten Visual Studio 2019 yüklü değilse, **ücretsiz** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)' ı indirip kullanabilirsiniz. Visual Studio kurulumu sırasında **Azure dağıtımını** etkinleştirdiğinizden emin olun.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -132,7 +132,7 @@ Aşağıdaki kod parçacıklarının tamamı, Program.cs dosyasından alınır.
 * Yeni bir `GremlinClient` nesnesi oluşturun (Satır 56):
 
     ```csharp
-    var gremlinClient = new GremlinClient(gremlinServer);
+    var gremlinClient = new GremlinClient(gremlinServer, new GraphSON2Reader(), new GraphSON2Writer(), GremlinClient.GraphSON2MimeType);
     ```
 
 * Zaman uyumsuz bir görev içinde `GremlinClient` nesnesini kullanarak her bir Gremlin sorgusunu yürütün (Satır 63). Bu yukarıda tanımlanan sözlükten Gremlin sorgularını okur (Satır 26):
@@ -158,7 +158,7 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
 
 1. [Azure portalda](https://portal.azure.com/) graf veritabanı hesabınıza gidin. **Genel Bakış** sekmesinde iki uç nokta görebilirsiniz: 
  
-   **.NET SDK URI'si** -Microsoft.Azure.Graphs kitaplığını kullanarak graf hesabına bağlandığında bu değeri kullanılır. 
+   **.NET SDK URI** -bu değer, Graph hesabına Microsoft. Azure. Graf kitaplığı kullanarak bağlandığınızda kullanılır. 
 
    **Gremlin Uç Noktası** - Bu değer, Gremlin.Net kitaplığını kullanarak graf hesabına bağlandığınızda kullanılır.
 

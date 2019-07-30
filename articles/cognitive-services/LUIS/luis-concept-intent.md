@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 2b574e0a545091263fce7949f997a3ba2dc8e5a8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: bb7fa9d930f4c1ab3c241048804060e17fe5a8e4
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563962"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619926"
 ---
 # <a name="concepts-about-intents-in-your-luis-app"></a>LUSıS uygulamanızdaki amaçlar hakkındaki kavramlar
 
@@ -42,12 +42,15 @@ Tek bir hedefi için bir utterance atarsınız. LUIS uç noktasında bir utteran
 ## <a name="intent-compared-to-entity"></a>Varlığa karşılaştırıldığında hedefi
 Amaç, sohbet botu için kullanıcının gerçekleştirmesi gereken ve tüm utterance üzerinde temel eylemini temsil eder. Varlık sözcük ve tümcecikleri utterance içinde yer alan temsil eder. Bir utterance hedefi Puanlama yalnızca bir üste sahip olabilir ancak birçok varlık sahip olabilir. 
 
-<a name="how-do-intents-relate-to-entities"></a> Bir hedefi oluşturma, kullanıcının _engellemekse_ checkweather() işlevi çağrısı gibi istemci uygulamanızda bir eylem tetikler. Ardından eylemi yürütmek için gerekli parametreleri göstermek için bir varlık oluşturun. 
+<a name="how-do-intents-relate-to-entities"></a>
+
+Kullanıcının _amacı_ , checkhava durumu () işlevine yapılan bir çağrı gibi istemci uygulamanızda bir eylem tetikleyeceğinden bir amaç oluşturun. Ardından eylemi yürütmek için gerekli parametreleri göstermek için bir varlık oluşturun. 
 
 |Örnek hedefi   | Varlık | Örnek konuşma varlık   | 
 |------------------|------------------------------|------------------------------|
 | CheckWeather | {"type": "Konum", "varlık": "seattle"}<br>{"type": "builtin.datetimeV2.date","entity": "yarın", "Çözüm": "2018-05-23"} | Hava durumu, beğendiğiniz Özellikler `Seattle` `tomorrow`? |
 | CheckWeather | {"type": "date_range", "varlık": "Bu hafta sonu"} | Tahmini Göster `this weekend` | 
+||||
 
 ## <a name="custom-intents"></a>Özel bir ıntents
 

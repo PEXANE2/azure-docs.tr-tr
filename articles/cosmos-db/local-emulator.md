@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 07/26/2019
-ms.openlocfilehash: 626f71c3938b944cb705dfea4a964c6c33c42164
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3e07b448e73bf64a3c1ec257948b3d61415480f0
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565443"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619826"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Yerel geliştirme ve test için Azure Cosmos öykünücüsünü kullanma
 
@@ -97,7 +97,7 @@ Account key: C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZ
 > Azure Cosmos öykünücüsü tarafından desteklenen ana anahtarın yalnızca öykünücü ile kullanılması amaçlanmıştır. Üretim Azure Cosmos DB hesabınızı ve anahtarınızı Azure Cosmos öykünücüsü ile kullanamazsınız.
 
 > [!NOTE]
-> Emulator 'u/Key seçeneğiyle başlattıysanız, yerine `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`oluşturulan anahtarı kullanın. /Key seçeneği hakkında daha fazla bilgi için bkz [. komut satırı araç başvurusu.](#command-line-syntax)
+> Emulator 'u/Key seçeneğiyle başlattıysanız, yerine `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`oluşturulan anahtarı kullanın. /Key seçeneği hakkında daha fazla bilgi için bkz [. komut satırı araç başvurusu.](#command-line)
 
 Azure Cosmos DB itibariyle Azure Cosmos öykünücüsü yalnızca SSL aracılığıyla güvenli iletişimi destekler.
 

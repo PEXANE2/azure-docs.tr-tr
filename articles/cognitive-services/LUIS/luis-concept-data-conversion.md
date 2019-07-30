@@ -9,19 +9,25 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/16/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: bdce1a49ce6c6531ce344de5aa157717fe72c609
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: aeb9094db83b14af988f70485788934a7854200c
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560803"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619795"
 ---
 # <a name="convert-data-format-of-utterances"></a>Konuşma veri biçimini Dönüştür
-LUIS, Bilişsel hizmetler konuşma hizmeti konuşma metin konuşma tahmin önce konuşulan konuşma dönüştürmek için kullanır. 
+LUO, tahmine göre bir kullanıcı için aşağıdaki dönüştürmeleri sağlar "
 
-## <a name="speech-to-intent-conversion-concepts"></a>Konuşma niyetini dönüştürme kavramları
+* Bilişsel [Hizmetler konuşma](../Speech-Service/overview.md) hizmetini kullanarak konuşmayı metne dönüştürme. 
+
+## <a name="speech-to-text"></a>Konuşmayı metne dönüştürme
+
+Konuşmadan metne, LUSıS ile tümleştirme olarak sunulmaktadır. 
+
+### <a name="intent-conversion-concepts"></a>Amaç dönüştürme kavramları
 LUIS metinde konuşma dönüştürülmesi konuşulan konuşma bir uç noktasına göndermesi ve LUIS tahmini yanıt almanızı sağlar. Bir tümleştirme işlemidir [konuşma](https://docs.microsoft.com/azure/cognitive-services/Speech) LUIS ile hizmet. Bir [öğreticide](../speech-service/how-to-recognize-intents-from-speech-csharp.md)konuşma amacı hakkında daha fazla bilgi edinin.
 
 ### <a name="key-requirements"></a>Önemli gereksinimler

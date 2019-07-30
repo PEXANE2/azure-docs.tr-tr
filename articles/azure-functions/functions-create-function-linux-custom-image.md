@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: a8a216a7d2ce048ed5131997df762942998aaa88
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 66effb095edf7927a38fca53b2ff317e9bad468e
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444100"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619617"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>Linux üzerinde özel görüntü kullanarak bir işlev oluşturma
 
@@ -190,7 +190,7 @@ Artık bu görüntüyü, Azure’da yeni bir işlev uygulaması için dağıtım
 
 ## <a name="create-a-premium-plan"></a>Premium planı oluşturma
 
-[Adanmış (App Service) planlarında](functions-scale.md#app-service-plan) ve [Premium planlarda](functions-scale.md#premium-plan)desteklenen özel işlevler kapsayıcıları için Linux barındırma. Bu öğretici, gerektiğinde ölçeklenebilen bir Premium plan kullanır. Barındırma hakkında daha fazla bilgi edinmek için, bkz. [Azure İşlevleri barındırma planları karşılaştırması](functions-scale.md).
+[Adanmış (App Service) planlarında](functions-scale.md#app-service-plan) ve [Premium planlarda](functions-premium-plan.md#features)desteklenen özel işlevler kapsayıcıları için Linux barındırma. Bu öğretici, gerektiğinde ölçeklenebilen bir Premium plan kullanır. Barındırma hakkında daha fazla bilgi edinmek için, bkz. [Azure İşlevleri barındırma planları karşılaştırması](functions-scale.md).
 
 Aşağıdaki örnek, **elastik Premium 1** fiyatlandırma `myPremiumPlan` katmanında (`--sku EP1`), Batı ABD bölgesinde (`-location WestUS`) ve bir Linux kapsayıcısında`--is-linux`() adlı Premium bir plan oluşturur.
 

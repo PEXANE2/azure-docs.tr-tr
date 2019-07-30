@@ -1,6 +1,6 @@
 ---
 title: 'Öğretici: Azure Databricks kullanarak akış verileri üzerinde yaklaşım analizi'
-description: Akış neredeyse gerçek zamanlı verileri üzerinde yaklaşım analizi çalıştırmak için Event Hubs ve Bilişsel hizmetler API'si ile Azure Databricks kullanmayı öğrenin.
+description: Akış verilerinde neredeyse gerçek zamanlı olarak yaklaşım analizini çalıştırmak için Event Hubs ve bilişsel hizmetler API 'SI ile Azure Databricks kullanmayı öğrenin.
 services: azure-databricks
 author: lenadroid
 ms.author: alehall
@@ -8,17 +8,17 @@ ms.reviewer: mamccrea
 ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 04/29/2019
-ms.openlocfilehash: b1b3572b9c485fb8d05c57649a304ff0f76fb1f6
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.date: 07/29/2019
+ms.openlocfilehash: 9718a6e394c7628cdf7bb62b2dafea2f3d59a3ca
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65990878"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619508"
 ---
 # <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>Öğretici: Azure Databricks kullanarak akış verileri üzerinde yaklaşım analizi
 
-Bu öğreticide, Azure Databricks kullanarak neredeyse gerçek zamanlı veri akışı ile ilgili yaklaşım analizi çalıştırmak öğrenin. Azure Event Hubs’ı kullanarak veri alımı sistemini ayarlarsınız. Spark Event Hubs bağlayıcısını kullanarak Event Hubs’tan Azure Databricks’e iletileri kullanırsınız. Son olarak, akışa alınan verilerle ilgili yaklaşım analizi çalıştırmak için Microsoft Bilişsel Hizmet API’lerini kullanırsınız.
+Bu öğreticide, Azure Databricks kullanarak neredeyse gerçek zamanlı veri akışı ile ilgili yaklaşım analizi çalıştırmak öğrenin. Azure Event Hubs’ı kullanarak veri alımı sistemini ayarlarsınız. Spark Event Hubs bağlayıcısını kullanarak Event Hubs’tan Azure Databricks’e iletileri kullanırsınız. Son olarak, akış verileri üzerinde yaklaşım analizini çalıştırmak için bilişsel hizmet API 'Lerini kullanırsınız.
 
 Bu öğreticinin sonunda, Twitter’daki "Azure" terimini içeren tweet’leri alır ve bu tweet’ler ile ilgili yaklaşım analizi çalıştırmış olursunuz.
 
@@ -34,16 +34,16 @@ Bu öğretici aşağıdaki görevleri kapsar:
 > * Akış verilerine erişmek için bir Twitter uygulaması oluşturma
 > * Azure Databricks’te not defterleri oluşturma
 > * Event Hubs ve Twitter API’si için kitaplıklar ekleme
-> * Microsoft Bilişsel Hizmetler hesabı oluşturma ve erişim anahtarını alma
+> * Bilişsel Hizmetler hesabı oluşturma ve erişim anahtarını alma
 > * Event Hubs’a tweet’ler gönderme
 > * Event Hubs’tan tweet’leri okuma
 > * Tweet’lerle ilgili yaklaşım analizi çalıştırma
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=sparkeventhubs-docs-alehall).
 
 > [!Note]
-> Kullanarak bu öğreticiyi gerçekleştirilmesi **Azure ücretsiz deneme aboneliği**.
-> Azure Databricks kümesini oluşturmak için ücretsiz hesap oluşturmak istiyorsanız kümeyi oluşturmadan önce profilinize gidin ve aboneliğini **kullandıkça öde** modeline geçirin. Daha fazla bilgi için bkz. [Ücretsiz Azure hesabı](https://azure.microsoft.com/free/).
+> Bu öğretici **Azure Ücretsiz deneme aboneliği**kullanılarak gerçekleştirilemez.
+> Azure Databricks kümesini oluşturmak için ücretsiz hesap oluşturmak istiyorsanız kümeyi oluşturmadan önce profilinize gidin ve aboneliğini **kullandıkça öde** modeline geçirin. Daha fazla bilgi için bkz. [Ücretsiz Azure hesabı](https://azure.microsoft.com/free/?WT.mc_id=sparkeventhubs-docs-alehall).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -57,7 +57,7 @@ Bu öğreticiye başlamadan önce aşağıdaki gereksinimlerin karşılandığı
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/) oturum açın.
+[Azure Portal](https://portal.azure.com/?WT.mc_id=sparkeventhubs-docs-alehall) oturum açın.
 
 ## <a name="create-an-azure-databricks-workspace"></a>Azure Databricks çalışma alanı oluşturma
 
@@ -78,8 +78,8 @@ Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı
     |**Çalışma alanı adı**     | Databricks çalışma alanınız için bir ad sağlayın        |
     |**Abonelik**     | Açılan listeden Azure aboneliğinizi seçin.        |
     |**Kaynak grubu**     | Yeni bir kaynak grubu oluşturmayı veya mevcut bir kaynak grubunu kullanmayı seçin. Kaynak grubu, bir Azure çözümü için ilgili kaynakları bir arada tutan kapsayıcıdır. Daha fazla bilgi için bkz. [Azure Kaynak Grubuna genel bakış](../azure-resource-manager/resource-group-overview.md). |
-    |**Konum**     | **Doğu ABD 2**’yi seçin. Kullanılabilir diğer bölgeler için bkz. [Bölgeye göre kullanılabilir Azure hizmetleri](https://azure.microsoft.com/regions/services/).        |
-    |**Fiyatlandırma Katmanı**     |  **Standart** veya **Premium** arasında seçim yapın. Bu katmanlar hakkında daha fazla bilgi için bkz. [Databricks fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/databricks/).       |
+    |**Konum**     | **Doğu ABD 2**’yi seçin. Kullanılabilir diğer bölgeler için bkz. [Bölgeye göre kullanılabilir Azure hizmetleri](https://azure.microsoft.com/regions/services/?WT.mc_id=sparkeventhubs-docs-alehall).        |
+    |**Fiyatlandırma Katmanı**     |  **Standart** veya **Premium** arasında seçim yapın. Bu katmanlar hakkında daha fazla bilgi için bkz. [Databricks fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/databricks/?WT.mc_id=sparkeventhubs-docs-alehall).       |
 
     **Panoya sabitle**’yi ve sonra **Oluştur**’u seçin.
 
@@ -102,24 +102,28 @@ Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı
     Aşağıdakiler dışında diğer tüm varsayılan değerleri kabul edin:
 
    * Küme için bir ad girin.
-   * Bu makale için **4.0 (beta)** çalışma zamanıyla bir küme oluşturun.
+   * Bu makalede, **5,2** çalışma zamanına sahip bir küme oluşturun.
    * **\_\_ dakika işlem yapılmadığında sonlandır** onay kutusunu seçtiğinizden emin olun. Küme kullanılmazsa kümenin sonlandırılması için biz süre (dakika cinsinden) belirtin.
+
+   Teknik ölçüt ve [Bütçe](https://azure.microsoft.com/pricing/details/databricks/?WT.mc_id=sparkeventhubs-docs-alehall)için uygun olan küme çalışanını ve sürücü düğümü boyutunu seçin.
 
      **Küme oluştur**’u seçin. Küme çalışmaya başladıktan sonra kümeye not defterleri ekleyebilir ve Spark işleri çalıştırabilirsiniz.
 
 ## <a name="create-a-twitter-application"></a>Twitter uygulaması oluşturma
 
-Tweet’lerin akışını almak için Twitter’da bir uygulama oluşturmanız gerekir. Adımları izleyerek bir Twitter uygulaması oluşturun ve bu öğreticiyi tamamlamak için ihtiyaç duyduğunuz değerleri kaydedin.
+Tweet’lerin akışını almak için Twitter’da bir uygulama oluşturursunuz. Yönergeleri izleyerek bir Twitter uygulaması oluşturun ve bu öğreticiyi tamamlamak için ihtiyaç duyduğunuz değerleri kaydedin.
 
-1. Bir web tarayıcısından [Twitter Uygulama Yönetimi](https://apps.twitter.com/)’ne gidip **Yeni Uygulama Oluştur**’u seçin.
+1. Bir Web tarayıcısından, [geliştiriciler Için Twitter](https://developer.twitter.com/en/apps)' a gidin ve **uygulama oluştur**' u seçin. Twitter geliştirici hesabı için uygulamanız gerektiğini söyleyen bir ileti görebilirsiniz. Bu işlemi ücretsiz yapın ve uygulamanız onaylandıktan sonra bir onay e-postası görmeniz gerekir. Bir geliştirici hesabının onaylanması birkaç gün sürebilir.
 
-    ![Twitter uygulaması oluşturma](./media/databricks-sentiment-analysis-cognitive-services/databricks-create-twitter-app.png "Twitter uygulaması oluşturma")
+    ![Twitter geliştirici hesabı onayı](./media/databricks-sentiment-analysis-cognitive-services/databricks-twitter-dev-confirmation.png "Twitter geliştirici hesabı onayı")
 
 2. **Uygulama oluşturun** sayfasında yeni uygulamaya ilişkin ayrıntıları sağlayın ve **Kendi Twitter uygulamanızı oluşturun**’u seçin.
 
     ![Twitter uygulaması ayrıntıları](./media/databricks-sentiment-analysis-cognitive-services/databricks-provide-twitter-app-details.png "Twitter uygulaması ayrıntıları")
 
-3. Uygulama sayfasında **Anahtarlar ve Erişim Belirteçleri** sekmesini seçin ve **Tüketici Anahtarı** ve **Tüketici Parolası** değerlerini kopyalayın. Ayrıca **Erişim belirtecimi oluştur**’u seçip erişim belirteçleri oluşturun. **Erişim Belirteci** ve**Erişim Belirteci Parolası** değerlerini kopyalayın.
+    ![Twitter uygulaması ayrıntıları](./media/databricks-sentiment-analysis-cognitive-services/databricks-provide-twitter-app-details-create.png "Twitter uygulaması ayrıntıları")
+
+3. Uygulama sayfasında **anahtarlar ve belirteçler** sekmesini seçin ve **Tüketici API anahtarı** ve **Tüketici API 'si gizli anahtarı**için değerleri kopyalayın. Ayrıca, erişim belirteçlerini oluşturmak için erişim belirteci altında **Oluştur** **ve erişim belirteci gizli anahtarı** ' nı seçin. **Erişim Belirteci** ve**Erişim Belirteci Parolası** değerlerini kopyalayın.
 
     ![Twitter uygulaması ayrıntıları](./media/databricks-sentiment-analysis-cognitive-services/twitter-app-key-secret.png "Twitter uygulaması ayrıntıları")
 
@@ -127,36 +131,36 @@ Twitter uygulaması için aldığınız değerleri kaydedin. Öğreticinin sonra
 
 ## <a name="attach-libraries-to-spark-cluster"></a>Spark kümesine kitaplıklar ekleme
 
-Bu öğreticide, Event Hubs’a tweet’ler göndermek için Twitter API’lerini kullanırsınız. Azure Event Hubs’a verileri okuyup yazmak için de [Apache Spark Event Hubs bağlayıcısını](https://github.com/Azure/azure-event-hubs-spark) kullanırsınız. Kümenizin parçası olarak bu API’leri kullanmak için, Azure Databricks’e bunları kitaplıklar olarak ekler ve sonra Spark kümenizle ilişkilendirirsiniz. Aşağıdaki yönergeler, çalışma alanınızda **Paylaşılan** klasörüne kitaplığın nasıl ekleneceğini göstermektedir.
+Bu öğreticide, Event Hubs’a tweet’ler göndermek için Twitter API’lerini kullanırsınız. Azure Event Hubs’a verileri okuyup yazmak için de [Apache Spark Event Hubs bağlayıcısını](https://github.com/Azure/azure-event-hubs-spark?WT.mc_id=sparkeventhubs-docs-alehall) kullanırsınız. Kümenizin bir parçası olarak bu API 'Leri kullanmak için bunları Azure Databricks kitaplık olarak ekleyin ve Spark kümeniz ile ilişkilendirin. Aşağıdaki yönergeler bir kitaplığın nasıl ekleneceğini göstermektedir.
 
-1. Azure Databricks çalışma alanında **Çalışma Alanı**’nı seçin ve sonra **Paylaşılan**’a sağ tıklayın. Bağlam menüsünden **Oluştur** > **Kitaplık** seçeneklerini belirleyin.
+1. Azure Databricks çalışma alanında **kümeler**' ı seçin ve var olan Spark kümenizi seçin. Küme menüsünde **Kitaplıklar** ' ı seçin ve **Yeni**' ye tıklayın.
 
-   ![Kitaplık ekle iletişim kutusu](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-option.png "Kitaplık ekle iletişim kutusu")
+   ![Kitaplık Ekle iletişim kutusu](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-locate-cluster.png "Kitaplık ekleme kümeyi bulma")
 
-2. Yeni Kitaplık sayfasında **Kaynak** için **Maven Koordinatı**’nı seçin. **Koordinat** için, eklemek istediğiniz paketin koordinatını girin. Bu öğreticide kullanılan kitaplıklar için Maven koordinatları aşağıdaki gibidir:
+   ![Kitaplık Ekle iletişim kutusu](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-install-new.png "Kitaplık ekleme yeni yüklemesi")
 
-   * Spark Event Hubs bağlayıcısı - `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.5`
-   * Twitter API’si - `org.twitter4j:twitter4j-core:4.0.6`
+2. Yeni Kitaplık sayfasında, **kaynak** **Seç '** i seçin. **Koordinat**için, eklemek istediğiniz paket Için **arama paketleri** ' ne tıklayın. Bu öğreticide kullanılan kitaplıklar için Maven koordinatları aşağıdaki gibidir:
 
-     ![Maven koordinatları sağlama](./media/databricks-sentiment-analysis-cognitive-services/databricks-eventhub-specify-maven-coordinate.png "Maven koordinatları sağlama")
+   * Spark Event Hubs bağlayıcısı - `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.10`
+   * Twitter API’si - `org.twitter4j:twitter4j-core:4.0.7`
 
-3. **Kitaplık Oluştur**’u seçin.
+     ![Maven koordinatları sağlama](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-search.png "Maven koordinatları sağlama")
 
-4. Kitaplığı eklediğiniz klasörü seçin ve sonra kitaplık adını seçin.
+     ![Maven koordinatları sağlama](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-search-dialogue.png "Maven koordinatları ara")
 
-    ![Eklenecek kitaplığı seçme](./media/databricks-sentiment-analysis-cognitive-services/select-library.png "Eklenecek kitaplığı seçme")
+3. **Yükle**’yi seçin.
 
-5. Kitaplık sayfasında, kitaplığı kullanmak istediğiniz kümeyi seçin. Kitaplık başarıyla kümeyle ilişkilendirildikten sonra durum hemen **Eklenmiş** durumuna geçer.
+4. Küme menüsünde, her iki kitaplıkların de yüklendiğinden ve doğru şekilde eklendiğinden emin olun.
 
-    ![Kümeye kitaplık ekleme](./media/databricks-sentiment-analysis-cognitive-services/databricks-library-attached.png "Kümeye kitaplık ekleme")
+    ![Kitaplıkları denetle](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-check.png "Kitaplıkları denetle")
 
-6. Twitter paketi için şu adımları yineleyin, `twitter4j-core:4.0.6`.
+6. Twitter paketi için şu adımları yineleyin, `twitter4j-core:4.0.7`.
 
 ## <a name="get-a-cognitive-services-access-key"></a>Bilişsel Hizmetler erişim anahtarını alma
 
-Bu öğreticide kullandığınız [Azure Bilişsel hizmetler metin analizi API](../cognitive-services/text-analytics/overview.md) neredeyse gerçek zamanlı tweet akışı ile ilgili yaklaşım analizi çalıştırmak için. API'leri kullanmadan önce Azure'da bir Azure Bilişsel Hizmetler hesabı oluşturma ve metin analizi API'lerini kullanmak için bir erişim anahtarı almanız gerekir.
+Bu öğreticide, Azure bilişsel [hizmetler metin analizi API 'lerini](../cognitive-services/text-analytics/overview.md) kullanarak, neredeyse gerçek zamanlı olarak kavaklerin bulunduğu bir akışta yaklaşım analizini çalıştırın. API 'Leri kullanmadan önce Azure 'da bir Azure bilişsel Hizmetler hesabı oluşturmanız ve Metin Analizi API 'Lerini kullanmak için bir erişim anahtarı almanız gerekir.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/?WT.mc_id=sparkeventhubs-docs-alehall) oturum açın.
 
 2. **+ Kaynak oluştur**’u seçin.
 
@@ -171,7 +175,7 @@ Bu öğreticide kullandığınız [Azure Bilişsel hizmetler metin analizi API](
    - Bilişsel Hizmetler hesabı için bir ad girin.
    - Hesabın oluşturulacağı Azure aboneliğini seçin.
    - Bir Azure konumu seçin.
-   - Hizmet için bir fiyatlandırma katmanı seçin. Bilişsel Hizmetler fiyatlandırması hakkında daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/cognitive-services/).
+   - Hizmet için bir fiyatlandırma katmanı seçin. Bilişsel Hizmetler fiyatlandırması hakkında daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/cognitive-services/?WT.mc_id=sparkeventhubs-docs-alehall).
    - Yeni bir kaynak grubu oluşturun veya mevcut bir isteyip istemediğinizi belirtin.
 
      **Oluştur**’u seçin.
@@ -209,81 +213,108 @@ Bu bölümde, Databricks çalışma alanında aşağıdaki adlarla iki not defte
 
 ## <a name="send-tweets-to-event-hubs"></a>Event Hubs’a tweet’ler gönderme
 
-İçinde **SendTweetsToEventHub** not defterine aşağıdaki kodu yapıştırın ve yer tutucuyu, daha önce oluşturduğunuz Twitter uygulamasının ve Event Hubs ad alanı için değerlerle değiştirin. Bu not defteri, gerçek zamanlı olarak "Azure" anahtar sözcüğünü içeren tweet’leri Event Hubs’ta akışa alır.
+**Sendtweetstoeventhub** not defterine aşağıdaki kodu yapıştırın ve yer tutucuları, daha önce oluşturduğunuz Event Hubs ad alanı ve Twitter uygulamanızın değerleriyle değiştirin. Bu not defteri, gerçek zamanlı olarak "Azure" anahtar sözcüğünü içeren tweet’leri Event Hubs’ta akışa alır.
+
+> [!NOTE]
+> Twitter API 'SI belirli istek kısıtlamalarına ve [kotalara](https://developer.twitter.com/en/docs/basics/rate-limiting.html)sahiptir. Twitter API 'sinde standart fiyat sınırlandırmasını tatmin ediyorsanız, bu örnekte Twitter API 'sini kullanmadan metin içeriği oluşturabilirsiniz. Bunu yapmak için, değişken **veri kaynağını** yerine `test` `twitter` olarak ayarlayın ve **TestSource** listesini tercih edilen test girişi ile doldurun.
 
 ```scala
-import java.util._
-import scala.collection.JavaConverters._
-import com.microsoft.azure.eventhubs._
-import java.util.concurrent._
+    import scala.collection.JavaConverters._
+    import com.microsoft.azure.eventhubs._
+    import java.util.concurrent._
+    import scala.collection.immutable._
+    import scala.concurrent.Future
+    import scala.concurrent.ExecutionContext.Implicits.global
 
-val namespaceName = "<EVENT HUBS NAMESPACE>"
-val eventHubName = "<EVENT HUB NAME>"
-val sasKeyName = "<POLICY NAME>"
-val sasKey = "<POLICY KEY>"
-val connStr = new ConnectionStringBuilder()
-            .setNamespaceName(namespaceName)
-            .setEventHubName(eventHubName)
-            .setSasKeyName(sasKeyName)
-            .setSasKey(sasKey)
+    val namespaceName = "<EVENT HUBS NAMESPACE>"
+    val eventHubName = "<EVENT HUB NAME>"
+    val sasKeyName = "<POLICY NAME>"
+    val sasKey = "<POLICY KEY>"
+    val connStr = new ConnectionStringBuilder()
+                .setNamespaceName(namespaceName)
+                .setEventHubName(eventHubName)
+                .setSasKeyName(sasKeyName)
+                .setSasKey(sasKey)
 
-val pool = Executors.newScheduledThreadPool(1)
-val eventHubClient = EventHubClient.create(connStr.toString(), pool)
+    val pool = Executors.newScheduledThreadPool(1)
+    val eventHubClient = EventHubClient.create(connStr.toString(), pool)
 
-def sendEvent(message: String) = {
-  val messageData = EventData.create(message.getBytes("UTF-8"))
-  eventHubClient.get().send(messageData)
-  System.out.println("Sent event: " + message + "\n")
-}
+    def sleep(time: Long): Unit = Thread.sleep(time)
 
-import twitter4j._
-import twitter4j.TwitterFactory
-import twitter4j.Twitter
-import twitter4j.conf.ConfigurationBuilder
-
-// Twitter configuration!
-// Replace values below with yours
-
-val twitterConsumerKey = "<CONSUMER KEY>"
-val twitterConsumerSecret = "<CONSUMER SECRET>"
-val twitterOauthAccessToken = "<ACCESS TOKEN>"
-val twitterOauthTokenSecret = "<TOKEN SECRET>"
-
-val cb = new ConfigurationBuilder()
-  cb.setDebugEnabled(true)
-  .setOAuthConsumerKey(twitterConsumerKey)
-  .setOAuthConsumerSecret(twitterConsumerSecret)
-  .setOAuthAccessToken(twitterOauthAccessToken)
-  .setOAuthAccessTokenSecret(twitterOauthTokenSecret)
-
-val twitterFactory = new TwitterFactory(cb.build())
-val twitter = twitterFactory.getInstance()
-
-// Getting tweets with keyword "Azure" and sending them to the Event Hub in realtime!
-
-val query = new Query(" #Azure ")
-query.setCount(100)
-query.lang("en")
-var finished = false
-while (!finished) {
-  val result = twitter.search(query)
-  val statuses = result.getTweets()
-  var lowestStatusId = Long.MaxValue
-  for (status <- statuses.asScala) {
-    if(!status.isRetweet()){
-      sendEvent(status.getText())
+    def sendEvent(message: String, delay: Long) = {
+      sleep(delay)
+      val messageData = EventData.create(message.getBytes("UTF-8"))
+      eventHubClient.get().send(messageData)
+      System.out.println("Sent event: " + message + "\n")
     }
-    lowestStatusId = Math.min(status.getId(), lowestStatusId)
-    Thread.sleep(2000)
-  }
-  query.setMaxId(lowestStatusId - 1)
-}
 
-// Closing connection to the Event Hub
- eventHubClient.get().close()
+    // Add your own values to the list
+    val testSource = List("Azure is the greatest!", "Azure isn't working :(", "Azure is okay.")
+
+    // Specify 'test' if you prefer to not use Twitter API and loop through a list of values you define in `testSource`
+    // Otherwise specify 'twitter'
+    val dataSource = "test"
+
+    if (dataSource == "twitter") {
+
+      import twitter4j._
+      import twitter4j.TwitterFactory
+      import twitter4j.Twitter
+      import twitter4j.conf.ConfigurationBuilder
+
+      // Twitter configuration!
+      // Replace values below with you
+
+      val twitterConsumerKey = "<CONSUMER API KEY>"
+      val twitterConsumerSecret = "<CONSUMER API SECRET>"
+      val twitterOauthAccessToken = "<ACCESS TOKEN>"
+      val twitterOauthTokenSecret = "<TOKEN SECRET>"
+
+      val cb = new ConfigurationBuilder()
+        cb.setDebugEnabled(true)
+        .setOAuthConsumerKey(twitterConsumerKey)
+        .setOAuthConsumerSecret(twitterConsumerSecret)
+        .setOAuthAccessToken(twitterOauthAccessToken)
+        .setOAuthAccessTokenSecret(twitterOauthTokenSecret)
+
+      val twitterFactory = new TwitterFactory(cb.build())
+      val twitter = twitterFactory.getInstance()
+
+      // Getting tweets with keyword "Azure" and sending them to the Event Hub in realtime!
+      val query = new Query(" #Azure ")
+      query.setCount(100)
+      query.lang("en")
+      var finished = false
+      while (!finished) {
+        val result = twitter.search(query)
+        val statuses = result.getTweets()
+        var lowestStatusId = Long.MaxValue
+        for (status <- statuses.asScala) {
+          if(!status.isRetweet()){
+            sendEvent(status.getText(), 5000)
+          }
+          lowestStatusId = Math.min(status.getId(), lowestStatusId)
+        }
+        query.setMaxId(lowestStatusId - 1)
+      }
+
+    } else if (dataSource == "test") {
+      // Loop through the list of test input data
+      while (true) {
+        testSource.foreach {
+          sendEvent(_,5000)
+        }
+      }
+
+    } else {
+      System.out.println("Unsupported Data Source. Set 'dataSource' to \"twitter\" or \"test\"")
+    }
+
+    // Closing connection to the Event Hub
+    eventHubClient.get().close()
 ```
 
-Not defterlerini çalıştırmak için **SHIFT + ENTER** tuşlarına basın. Aşağıdaki kod parçacığında gösterildiği gibi bir çıktı görürsünüz. Çıktıdaki her olay, Event Hubs’a giren bir tweet’tir.
+Not defterlerini çalıştırmak için **SHIFT + ENTER** tuşlarına basın. Aşağıdaki kod parçacığına benzer bir çıktı görürsünüz. Çıktıdaki her olay, Event Hubs’a alınan ve “Azure” terimini içeren bir tweet’tir.
 
     Sent event: @Microsoft and @Esri launch Geospatial AI on Azure https://t.co/VmLUCiPm6q via @geoworldmedia #geoai #azure #gis #ArtificialIntelligence
 
@@ -305,33 +336,36 @@ Not defterlerini çalıştırmak için **SHIFT + ENTER** tuşlarına basın. Aş
 **AnalyzeTweetsFromEventHub** not defterine aşağıdaki kodu yapıştırın ve yer tutucuyu, daha önce oluşturduğunuz Azure Event Hubs değerleriyle değiştirin. Bu not defteri, **SendTweetsToEventHub** not defterini kullanarak önceden Event Hubs’ta akışa alınan tweet’leri okur.
 
 ```scala
-import org.apache.spark.eventhubs._
 
-// Build connection string with the above information
-val namespaceName = "<EVENT HUBS NAMESPACE>"
-val eventHubName = "<EVENT HUB NAME>"
-val sasKeyName = "<POLICY NAME>"
-val sasKey = "<POLICY KEY>"
-val connectionString = ConnectionStringBuilder()
-            .setNamespaceName(namespaceName)
-            .setEventHubName(eventHubName)
-            .setSasKeyName(sasKeyName)
-            .setSasKey(sasKey)
+    import org.apache.spark.eventhubs._
+    import com.microsoft.azure.eventhubs._
 
-val customEventhubParameters =
-  EventHubsConf(connectionString.toString())
-  .setMaxEventsPerTrigger(5)
+    // Build connection string with the above information
+    val namespaceName = "<EVENT HUBS NAMESPACE>"
+    val eventHubName = "<EVENT HUB NAME>"
+    val sasKeyName = "<POLICY NAME>"
+    val sasKey = "<POLICY KEY>"
+    val connStr = new com.microsoft.azure.eventhubs.ConnectionStringBuilder()
+                .setNamespaceName(namespaceName)
+                .setEventHubName(eventHubName)
+                .setSasKeyName(sasKeyName)
+                .setSasKey(sasKey)
 
-val incomingStream = spark.readStream.format("eventhubs").options(customEventhubParameters.toMap).load()
+    val customEventhubParameters =
+      EventHubsConf(connStr.toString())
+      .setMaxEventsPerTrigger(5)
 
-incomingStream.printSchema
+    val incomingStream = spark.readStream.format("eventhubs").options(customEventhubParameters.toMap).load()
 
-// Sending the incoming stream into the console.
-// Data comes in batches!
-incomingStream.writeStream.outputMode("append").format("console").option("truncate", false).start().awaitTermination()
+    incomingStream.printSchema
+
+    // Sending the incoming stream into the console.
+    // Data comes in batches!
+    incomingStream.writeStream.outputMode("append").format("console").option("truncate", false).start().awaitTermination()
 ```
 
 Aşağıdaki çıkışı alırsınız:
+
 
     root
      |-- body: binary (nullable = true)
@@ -360,22 +394,22 @@ Aşağıdaki çıkışı alırsınız:
 Çıkış ikili modda olduğundan, bunu dizeye dönüştürmek için aşağıdaki kod parçacığını kullanın.
 
 ```scala
-import org.apache.spark.sql.types._
-import org.apache.spark.sql.functions._
+    import org.apache.spark.sql.types._
+    import org.apache.spark.sql.functions._
 
-// Event Hub message format is JSON and contains "body" field
-// Body is binary, so we cast it to string to see the actual content of the message
-val messages =
-  incomingStream
-  .withColumn("Offset", $"offset".cast(LongType))
-  .withColumn("Time (readable)", $"enqueuedTime".cast(TimestampType))
-  .withColumn("Timestamp", $"enqueuedTime".cast(LongType))
-  .withColumn("Body", $"body".cast(StringType))
-  .select("Offset", "Time (readable)", "Timestamp", "Body")
+    // Event Hub message format is JSON and contains "body" field
+    // Body is binary, so we cast it to string to see the actual content of the message
+    val messages =
+      incomingStream
+      .withColumn("Offset", $"offset".cast(LongType))
+      .withColumn("Time (readable)", $"enqueuedTime".cast(TimestampType))
+      .withColumn("Timestamp", $"enqueuedTime".cast(LongType))
+      .withColumn("Body", $"body".cast(StringType))
+      .select("Offset", "Time (readable)", "Timestamp", "Body")
 
-messages.printSchema
+    messages.printSchema
 
-messages.writeStream.outputMode("append").format("console").option("truncate", false).start().awaitTermination()
+    messages.writeStream.outputMode("append").format("console").option("truncate", false).start().awaitTermination()
 ```
 
 Çıkış şimdi aşağıdaki kod parçacığına benzer:
@@ -405,7 +439,7 @@ messages.writeStream.outputMode("append").format("console").option("truncate", f
     ...
     ...
 
-Artık, neredeyse gerçek zamanlı olarak Apache Spark için Event Hubs bağlayıcısını kullanarak Azure Databricks'e Azure Event Hubs verilerini yaptınız. Spark için Event Hubs bağlayıcısını kullanma hakkında daha fazla bilgi için [bağlayıcı belgesi](https://github.com/Azure/azure-event-hubs-spark/tree/master/docs)ne başvurun.
+Artık, neredeyse gerçek zamanlı olarak Apache Spark için Event Hubs bağlayıcısını kullanarak Azure Databricks'e Azure Event Hubs verilerini yaptınız. Spark için Event Hubs bağlayıcısını kullanma hakkında daha fazla bilgi için [bağlayıcı belgesi](https://github.com/Azure/azure-event-hubs-spark/tree/master/docs?WT.mc_id=sparkeventhubs-docs-alehall)ne başvurun.
 
 ## <a name="run-sentiment-analysis-on-tweets"></a>Tweet’lerle ilgili yaklaşım analizi çalıştırma
 
@@ -429,7 +463,7 @@ case class RequestToTextApi(documents: Array[RequestToTextApiDocument]) extends 
 case class RequestToTextApiDocument(id: String, text: String, var language: String = "") extends Serializable
 ```
 
-Yeni bir kod hücresi ekleyin ve aşağıda sağlanan kod parçacığını yapıştırın. Bu kod parçacığı, dil algılama ve yaklaşım analizi çalıştırmak için Metin Analizi API’sini çağırma işlevlerini içeren bir nesneyi tanımlar. Yer tutucuları (`<PROVIDE ACCESS KEY HERE>` ve `<PROVIDE REGION HERE>`), Bilişsel Hizmetler hesabınız için aldığınız değerlerle değiştirdiğinizden emin olun.
+Yeni bir kod hücresi ekleyin ve aşağıda sağlanan kod parçacığını yapıştırın. Bu kod parçacığı, dil algılama ve yaklaşım analizi çalıştırmak için Metin Analizi API’sini çağırma işlevlerini içeren bir nesneyi tanımlar. Yer tutucusunu `<PROVIDE ACCESS KEY HERE>` bilişsel hizmetler hesabınız için aldığınız değerle değiştirdiğinizden emin olun.
 
 ```scala
 import javax.net.ssl.HttpsURLConnection
@@ -443,9 +477,9 @@ object SentimentDetector extends Serializable {
 
     // Cognitive Services API connection settings
     val accessKey = "<PROVIDE ACCESS KEY HERE>"
-    val host = "https://<PROVIDE REGION HERE>.api.cognitive.microsoft.com"
-    val languagesPath = "/text/analytics/v2.0/languages"
-    val sentimentPath = "/text/analytics/v2.0/sentiment"
+    val host = "https://cognitive-docs.cognitiveservices.azure.com/"
+    val languagesPath = "/text/analytics/v2.1/languages"
+    val sentimentPath = "/text/analytics/v2.1/sentiment"
     val languagesUrl = new URL(host+languagesPath)
     val sentimenUrl = new URL(host+sentimentPath)
     val g = new Gson
@@ -606,4 +640,4 @@ Bu öğreticide, verileri Azure Event Hubs’ta akışa almak ve sonra gerçek z
 Azure Databricks kullanarak makine öğrenmesi görevleri gerçekleştirme hakkında bilgi edinmek için sonraki öğreticiye ilerleyin.
 
 > [!div class="nextstepaction"]
->[Azure Databricks kullanılarak makine öğrenmesi](https://docs.azuredatabricks.net/spark/latest/mllib/decision-trees.html)
+>[Azure Databricks kullanarak Machine Learning](https://docs.azuredatabricks.net/spark/latest/mllib/decision-trees.html)

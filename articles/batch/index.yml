@@ -5,14 +5,12 @@ metadata:
   title: 'Batch Belgeleri - Öğreticiler, API Başvurusu | Microsoft Docs'
   description: 'Büyük ölçekli paralel ve yüksek performanslı bilgi işlem (HPC) uygulamalarını bulutta verimli bir şekilde çalıştırmak için Batch’i kullanın. Altyapıyı el ile yapılandırmanıza veya yönetmenize gerek kalmadan uygulamalarınızın paralel veya yüksek ölçekli olarak yürütülmesine yönelik Azure işlem kaynaklarını tanımlayın. İşlem yoğunluklu görevleri zamanlayın ve gereksinimlerinize göre işlem kaynaklarını dinamik olarak ekleyin veya kaldırın. Hızlı başlangıç kılavuzlarımız, öğreticilerimiz ve örneklerimizle, Azure Batch’i kullanmayı öğrenin.'
   services: batch
-  author: czeumault
-  manager: carolz
+  author: georgewallace
+  manager: gwallace
   ms.service: batch
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 11/30/2017
-  ms.author: carolz
+  ms.author: gwallace
 abstract:
   description: 'Büyük ölçekli paralel ve yüksek performanslı bilgi işlem (HPC) uygulamalarını bulutta verimli bir şekilde çalıştırmak için Batch’i kullanın. Altyapıyı el ile yapılandırmanıza veya yönetmenize gerek kalmadan uygulamalarınızın paralel veya yüksek ölçekli olarak yürütülmesine yönelik Azure işlem kaynaklarını tanımlayın. İşlem yoğunluklu görevleri zamanlayın ve gereksinimlerinize göre işlem kaynaklarını dinamik olarak ekleyin veya kaldırın. Hızlı başlangıç kılavuzlarımız, öğreticilerimiz ve örneklerimizle, Azure Batch’i kullanmayı öğrenin.'
 sections:

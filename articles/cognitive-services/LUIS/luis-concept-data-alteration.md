@@ -9,20 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/23/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 67b56f09663aca35ed0843f50e2420b531c82833
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 198ce98808c8a62a839d154c365518c9e8263056
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560817"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619901"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>Öncesinde veya sırasında tahmin utterance verileri değiştirme
-LUIS, öncesinde veya sırasında tahmin utterance işlemek için yöntemler sağlar. Bunlar, yazım ve saat dilimi prebuild datetimeV2 sorumlarını çözme içerir. 
+LUIS, öncesinde veya sırasında tahmin utterance işlemek için yöntemler sağlar. Bunlar, [yazımı düzeltmeyi](luis-tutorial-bing-spellcheck.md)ve önceden oluşturulmuş [datetimeV2](luis-reference-prebuilt-datetimev2.md)için saat dilimi sorunlarını düzeltmeyi içerir. 
 
 ## <a name="correct-spelling-errors-in-utterance"></a>Utterance yazarken yazım hataları
-LUIS kullanan [Bing yazım denetimi API'si V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) utterance yazım hatalarını düzeltmek için. LUIS, hizmetle ilişkili anahtar gerekir. Anahtar oluşturun, sonra anahtarın bir sorgu dizesi parametresi olarak ekleyin [uç nokta](https://go.microsoft.com/fwlink/?linkid=2092356). 
+LUIS kullanan [Bing yazım denetimi API'si V7](../Bing-Spell-Check/overview.md) utterance yazım hatalarını düzeltmek için. LUIS, hizmetle ilişkili anahtar gerekir. Anahtar oluşturun, sonra anahtarın bir sorgu dizesi parametresi olarak ekleyin [uç nokta](https://go.microsoft.com/fwlink/?linkid=2092356). 
 
 Yazım hatalarını da düzeltebilirsiniz **Test** tarafından panelinde [anahtarı girme](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel). Anahtar, bir Test paneli tarayıcı oturumu değişken olarak tutulur. Anahtar Test panele düzeltildi yazım istediğiniz her bir tarayıcı oturumunda ekleyin. 
 
@@ -49,11 +49,11 @@ Zaman [Bing yazım denetimi API'si V7](https://azure.microsoft.com/services/cogn
 }
 ```
  
-### <a name="whitelist-words"></a>Beyaz liste sözcükler
-Bing yazım denetimi API'si LUIS içinde kullanılan Yazım sırasında yok sayılacak sözcüklerin listesini beyaz desteklemiyor değişiklikleri kontrol edin. Beyaz liste sözcükleri veya kısaltmalar gerekiyorsa utterance utterance LUIS için hedefi tahmin için göndermeden önce istemci uygulamasındaki bir beyaz liste ile işleyin.
+### <a name="list-of-allowed-words"></a>İzin verilen sözcüklerin listesi
+LUSıS 'de kullanılan Bing yazım denetimi API 'SI, yazım denetimi değişiklikleri sırasında yoksayılacak sözcüklerin listesini (beyaz liste olarak da bilinir) desteklemez. Sözcüklerin veya kısaltmalardan oluşan bir listeye izin vermeniz gerekiyorsa, duyun amaç tahmini için, duyun, duyun, duyun bir tahmin için gönderilmesi için istemci uygulamadaki söyliği işleyin.
 
 ## <a name="change-time-zone-of-prebuilt-datetimev2-entity"></a>Önceden oluşturulmuş datetimeV2 varlık saat dilimini değiştirme
-Bir LUIS uygulaması önceden oluşturulmuş datetimeV2 varlık kullandığında, bir datetime değeri tahmin yanıtta döndürülebilir. Saat dilimi isteğin döndürmek için doğru datetime belirlemek için kullanılır. İstek bir bot veya alma için LUIS önce başka bir merkezi uygulamasından geliyorsa LUIS kullanır saat dilimi düzeltin. 
+Bir LUSıS uygulaması önceden oluşturulmuş [datetimeV2](luis-reference-prebuilt-datetimev2.md) varlığını kullandığında, tahmin yanıtında bir tarih saat değeri döndürülebilir. Saat dilimi isteğin döndürmek için doğru datetime belirlemek için kullanılır. İstek bir bot veya alma için LUIS önce başka bir merkezi uygulamasından geliyorsa LUIS kullanır saat dilimi düzeltin. 
 
 ### <a name="endpoint-querystring-parameter"></a>Uç nokta querystring parametresi
 Kullanıcının saat dilimine ekleyerek saat dilimi düzeltilene [uç nokta](https://go.microsoft.com/fwlink/?linkid=2092356) kullanarak `timezoneOffset` param. Değerini `timezoneOffset` saati değiştirmek için dakikalar içinde pozitif veya negatif sayı olmalıdır.  

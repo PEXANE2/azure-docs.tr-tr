@@ -6,14 +6,12 @@ metadata:
   title: 'Azure Linux Sanal Makine Belgeleri - Öğreticiler, API Başvurusu'
   meta.description: Learn how to create a virtual machine using the Linux distribution of your choice. Documentation shows different ways to create VM templates.
   services: virtual-machines\linux
-  author: czeumault
-  manager: carolz
+  author: georgewallace
+  manager: gwallace
   ms.service: virtual-machines-linux
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 01/23/2017
-  ms.author: carolz
+  ms.author: gwallace
 abstract:
   description: 'Azure Linux Sanal Makineleri, Red Hat, Ubuntu veya Linux dağıtımından istediğinizi kullanarak isteğe bağlı, büyük ölçekli, güvenli, sanallaştırılmış bir altyapı sağlar. Hızlı başlangıç kılavuzlarımız, öğreticilerimiz ve örneklerimizden yararlanarak Linux VM’leri oluşturma, yapılandırma, yönetme, güncelleştirme ve ölçeklendirme hakkında bilgi edinin.'
   aside:

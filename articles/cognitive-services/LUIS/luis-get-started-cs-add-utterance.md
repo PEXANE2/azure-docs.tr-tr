@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 58ec78f0c20d6a2d5d86a60c69cc934c8f3076c8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 55251a553921e947e7c6522677e51e4eb1d3fa5b
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560638"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619960"
 ---
 # <a name="quickstart-change-model-using-c"></a>Hızlı Başlangıç: Modeli kullanarak DeğiştirC#
 
@@ -115,7 +115,7 @@ Komut satırı bağımsız değişkenlerini yönetmek için ana kodu ekleyin. **
 
 ### <a name="copy-utterancesjson-to-output-directory"></a>utterances.json dosyasını çıkış dizinine kopyalayın
 
-Çözüm Gezgini, Çözüm Gezgini proje adına sağ `utterances.json` tıklayıp ardından **Ekle**' yi ve ardından **Varolan öğe**' yi seçerek öğesini ekleyin. `utterances.json` Dosyayı seçin. Bu, dosyayı projeye ekler. Ardından, çıkış yönüne eklenmesi gerekir. Öğesine sağ tıklayın `utterances.json` ve **Özellikler**' i seçin. Özellikler penceresinde `Content` öğesinin **Derleme Eylemi** ve `Copy Always` öğesinin **Çıkış Dizinine Kopyala** seçeneğini işaretleyin.  
+Çözüm Gezgini, Çözüm Gezgini proje adına sağ `utterances.json` tıklayıp ardından **Ekle**' yi ve ardından **Varolan öğe**' yi seçerek öğesini ekleyin. `utterances.json` Dosyayı seçin. Bu, dosyayı projeye ekler. Ardından, çıkış dizinine eklenmesi gerekir. Öğesine sağ tıklayın `utterances.json` ve **Özellikler**' i seçin. Özellikler penceresinde `Content` öğesinin **Derleme Eylemi** ve `Copy Always` öğesinin **Çıkış Dizinine Kopyala** seçeneğini işaretleyin.  
 
 ![JSON dosyasını içerik olarak işaretleme](./media/luis-quickstart-cs-add-utterance/content-properties.png)
 

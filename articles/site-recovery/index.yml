@@ -5,13 +5,12 @@ metadata:
   title: 'Azure Site Recovery Belgeleri - Öğreticiler, API Başvurusu | Microsoft Docs'
   meta.description: Learn how to set up cloud disaster recovery and business continuity for physical servers and virtual machines by deploying and managing replication.
   services: site-recovery
-  author: czeumault
-  manager: carolz
+  author: carmonmills
+  manager: carmonm
   ms.service: site-recovery
-  ms.tgt_pltfrm: na
   ms.topic: landing-page
   ms.date: 11/27/2018
-  ms.author: carolz
+  ms.author: carmonm
 abstract:
   description: 'Azure Site Recovery, Azure VM’leri, şirket içi VM’ler ve fiziksel sunucular için olağanüstü durum kurtarma hizmetini düzenler ve yönetir. Hızlı başlangıç yönergelerimiz ve öğreticilerimizden yararlanarak çoğaltma, yük devretme ve ilk duruma döndürme işlemlerini nasıl yapacağınızı öğrenin.'
 sections:
