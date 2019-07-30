@@ -245,7 +245,7 @@ Olay aboneliği, belirli bir uç noktaya gönderilmesini istediğiniz, sağlayı
     | **Abone uç noktası** | otomatik oluşturulmuş | Sizin için oluşturulan uç nokta URL'sini kullanın. | 
 4. Geçiş **filtre** sekmesini tıklatın ve aşağıdaki eylemleri gerçekleştirin:     
     1. Seçin **filtreleme etkinleştir konu** seçeneği.
-    2. İçin **konu ile başlayan**, şu değeri girin: **/blobServices/varsayılan/kapsayıcılar/resimler/blobları/**.
+    2. İçin **konu ile başlayan**, şu değeri girin: **/blobServices/varsayılan/kapsayıcılar/resimler/blobları/** .
 
         ![Olay aboneliği için filtre belirtin.](./media/resize-images-on-storage-blob-upload-event/event-subscription-filter.png) 
 2. Seçin **Oluştur** olay aboneliği eklemek için. Bu tetikleyen bir olay aboneliği oluşturur `Thumbnail` işlev bir blob eklendiğinde `images` kapsayıcı. İşlev görüntüleri yeniden boyutlandırır ve eklenmeye `thumbnails` kapsayıcı.
