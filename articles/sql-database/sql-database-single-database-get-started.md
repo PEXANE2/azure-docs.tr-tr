@@ -10,19 +10,19 @@ ms.topic: quickstart
 author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein
-ms.date: 04/23/2019
-ms.openlocfilehash: 39ea967de1ad06fdf942a8e3a21dbea9f9f8f61f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 07/29/2019
+ms.openlocfilehash: f9c2ed77075affdfdf464dbf8a468629fc2e610d
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566583"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640050"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal-powershell-and-azure-cli"></a>Hızlı Başlangıç: Azure portal, PowerShell ve Azure CLı kullanarak Azure SQL veritabanı 'nda tek bir veritabanı oluşturma
 
 Tek bir [veritabanı](sql-database-single-database.md) oluşturmak, Azure SQL veritabanı 'nda veritabanı oluşturmak için en hızlı ve en basit dağıtım seçeneğidir. Bu hızlı başlangıçta, Azure portal kullanarak tek bir veritabanını nasıl oluşturacağınız ve sorgulayan gösterilmektedir.
 
-Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun. 
 
 Bu hızlı başlangıçtaki tüm adımlar için [Azure Portal](https://portal.azure.com/)oturum açın.
 
@@ -36,7 +36,7 @@ Sağlanan ya da sunucusuz (Önizleme) işlem katmanında tek bir veritabanı olu
 Tek bir veritabanı oluşturduğunuzda, bunu yönetmek için bir [SQL veritabanı sunucusu](sql-database-servers.md) tanımlar ve belirli bir bölgedeki [Azure Kaynak grubuna](../azure-resource-manager/resource-group-overview.md) yerleştirebilirsiniz.
 
 > [!NOTE]
-> Bu hızlı başlangıç, [sanal çekirdek tabanlı satın alma modelini](sql-database-service-tiers-vcore.md) ve [sunucusuz](sql-database-serverless.md) işlem katmanını kullanır, ancak [DTU tabanlı satın alma modeli](sql-database-service-tiers-DTU.md) de kullanılabilir.
+> Bu hızlı başlangıç, [sanal çekirdek tabanlı satın alma modelini](sql-database-service-tiers-vcore.md)kullanır, ancak [DTU tabanlı satın alma modeli](sql-database-service-tiers-DTU.md) de kullanılabilir.
 
 AdventureWorksLT örnek verilerini içeren tek bir veritabanı oluşturmak için:
 

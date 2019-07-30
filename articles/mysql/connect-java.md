@@ -1,21 +1,21 @@
 ---
-title: Java kullanarak MySQL için Azure Veritabanı'na bağlanma
-description: Bu hızlı başlangıçta, MySQL için Azure veritabanı'ndan verileri bağlama ve sorgulama için kullanabileceğiniz bir Java kodu örneği sağlanmıştır.
+title: MySQL için Azure veritabanı 'na bağlanmak üzere Java 'Yı kullanma
+description: Bu hızlı başlangıçta, MySQL veritabanı için Azure veritabanı 'na bağlanmak ve buradan veri sorgulamak için kullanabileceğiniz bir Java kod örneği sağlanmıştır.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.custom: mvc, devcenter
+ms.custom: mvc, devcenter, seo-java-july2019
 ms.topic: quickstart
 ms.devlang: java
 ms.date: 02/28/2018
-ms.openlocfilehash: 7ad24a691153161ff2283030a4a597544205de6d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 96f793031f39e051d3cbe21bfd192a4d914239a8
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61091876"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640731"
 ---
-# <a name="azure-database-for-mysql-use-java-to-connect-and-query-data"></a>MySQL için Azure Veritabanı: Bağlanmak ve veri sorgulamak için Java kullanma
+# <a name="azure-database-for-mysql-use-java-to-connect-and-query-data"></a>MySQL için Azure Veritabanı: Verilere bağlanmak ve verileri sorgulamak için Java 'Yı kullanma
 Bu hızlı başlangıçta, Java uygulaması ve JDBC sürücüsü [MySQL Connector/J](https://dev.mysql.com/downloads/connector/j/) kullanarak MySQL için Azure Veritabanı'na nasıl bağlanacağınız gösterilmiştir. Hızlı başlangıçta, veritabanında verileri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerinin nasıl kullanılacağı da gösterilmiştir. Bu makalede, Java kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve MySQL için Azure Veritabanı ile çalışmaya yeni başladığınız varsayılır.
 
 [MySQL Connector örnek sayfasında](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-examples.html) birçok farklı örnek ve örnek kodlar da mevcuttur.

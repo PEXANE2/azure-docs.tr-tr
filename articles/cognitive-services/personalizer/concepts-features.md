@@ -3,19 +3,19 @@ title: 'Özellikler: Eylem ve bağlam kişiselleştirici'
 titleSuffix: Azure Cognitive Services
 description: Kişiselleştirici, daha iyi derecelendirme önerileri sağlamak için özellikleri, Eylemler ve bağlam hakkındaki bilgileri kullanır. Özellikler çok genel veya bir öğeye özgü olabilir.
 services: cognitive-services
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.author: edjez
-ms.openlocfilehash: 2dab7447e6051d4559f7f3985579cac9376ac7be
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.author: diberry
+ms.openlocfilehash: 1960856ce2f15945d1b1bfa093f349771d481ffc
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423279"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663835"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Özellikler, Eylemler ve bağlamla ilgili bilgiler
 
@@ -25,8 +25,8 @@ Kişiselleştirici, en iyi **eylemi**seçmek için **geçerli bağlamla** ilgili
 
 Örneğin, şu **özelliklere** sahip olabilirsiniz:
 
-* Gibi  bir `UserID`Kullanıcı. 
-* Bir  video `Documentary`, `Movie`bir veya bir `TV Series`veya bir perakende öğesinin mağaza 'da kullanılabilir olup olmadığı gibi içerikler.
+* Gibi bir `UserID`Kullanıcı. 
+* Bir video `Documentary`, `Movie`bir veya bir `TV Series`veya bir perakende öğesinin mağaza 'da kullanılabilir olup olmadığı gibi içerikler.
 * Haftanın günün saati gibi _geçerli_ süre.
 
 Kişiselleştirici, Eylemler ve bağlam için göndereceğiniz özellikleri etkilemez, sınırlamaz veya düzelmez:
@@ -153,7 +153,7 @@ Her eylem:
 * KIMLIĞI vardır.
 * Özelliklerin bir listesini içerir.
 * Özellikler listesi büyük (yüzlerce) olabilir, ancak bir yandan elde etmeyen özellikleri kaldırmak için özellik verimliliğini değerlendirmeyi öneririz. 
-* Eylemlerdeki özellikler,  kişiselleştirici tarafından kullanılan bağlamdaki özelliklerle bağıntılı olabilir veya olmayabilir.
+* Eylemlerdeki özellikler, kişiselleştirici tarafından kullanılan bağlamdaki özelliklerle bağıntılı olabilir veya olmayabilir.
 * Eylemler için özellikler bazı eylemlerde bulunabilir ve başkaları tarafından kullanılamaz. 
 * Belirli bir eylem KIMLIĞI için özellikler bir gün kullanılabilir, ancak daha sonra kullanılamaz hale gelir. 
 

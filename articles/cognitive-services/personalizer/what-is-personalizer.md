@@ -1,68 +1,68 @@
 ---
 title: Kişiselleştirme nedir?
 titleSuffix: Azure Cognitive Services
-description: Personalizer, gerçek zamanlı davranışından öğrenme kullanıcılarınıza göstermek için en iyi deneyimi seçmenize olanak tanıyan bulut tabanlı bir API hizmetidir.
+description: Kişiselleştirici, gerçek zamanlı davranışlarından öğrenerek kullanıcılarınıza gösterilecek en iyi deneyimi seçmenize olanak tanıyan bulut tabanlı bir API hizmetidir.
 services: cognitive-services
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/07/2019
-ms.author: edjez
-ms.openlocfilehash: 286a19207236392367b924bea7e26e90fd0db8d5
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.author: diberry
+ms.openlocfilehash: 99750971e11171c0b315cac38089c216d42c7ba6
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68253455"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663659"
 ---
 # <a name="what-is-personalizer"></a>Kişiselleştirme nedir?
 
 Azure Kişiselleştirme, kullanıcıların gerçek zamanlı davranışlarından öğrenerek onlara gösterilebilecek en iyi deneyimi seçmenizi sağlayan bulut tabanlı bir API’dir.
 
-* Kullanıcılar ve içeriği hakkında bilgi sağlar ve kullanıcılarınızın göstermek için en iyi eylemi alır. 
-* Temizleme ve veri Personalizer kullanmadan önce etiketi gerek yoktur.
-* Sizin için uygun olduğunda Personalizer için geri bildirim sağlayın. 
-* Gerçek zamanlı analiz görüntüleyin. 
-* Personalizer, var olan deneyimleri doğrulamak için daha büyük bir veri bilimi çaba bir parçası olarak kullanın.
+* Kullanıcılarınız ve içeriğiniz hakkında bilgi sağlayın ve kullanıcılarınızı göstermek için en iyi eylemi alın. 
+* Kişiselleştirici kullanılmadan önce verilerin temizlenmesi ve etiketlenmesi gerekmez.
+* Sizin için uygun olduğunda Kişiselleştiriciye geri bildirim sağlayın. 
+* Gerçek zamanlı analizi görüntüleyin. 
+* Mevcut denemeleri doğrulamak için daha büyük veri bilimi çabalarının bir parçası olarak kişiselleştirici kullanın.
 
-## <a name="how-does-personalizer-work"></a>Personalizer nasıl çalışır?
+## <a name="how-does-personalizer-work"></a>Kişiselleştirici nasıl çalışır?
 
-Personalizer hangi eylemin bir bağlamda en yüksek boyut için keşfetmek için makine öğrenimi modelleri kullanır. İstemci uygulamanızı bunlarla ilgili bilgilerle eylemlerinin listesini sağlar. ve kullanıcı, cihaz, vb. hakkında bilgi içerebilecek bağlam hakkında bilgiler. Personalizer gerçekleştirilecek eylemi belirler. Seçilen eylem istemci uygulamanızın kullandığı sonra Personalizer biçiminde bir ödül puanı geri bildirim sağlar. Geri bildirim alındıktan sonra Personalizer kendi modeli gelecekteki sıralamalara sahip için kullanılan otomatik olarak güncelleştirir.
+Kişiselleştirici, bir bağlamda en yüksek düzeyde sıralama eylemini saptamak için makine öğrenimi modellerini kullanır. İstemci uygulamanız, olası eylemlerin bir listesini, bunlarla ilgili bilgilerle birlikte sağlar; ve Kullanıcı, cihaz vb. hakkında bilgi içerebilen bağlam hakkındaki bilgileri içerir. Kişiselleştirici gerçekleştirilecek eylemi belirler. İstemci uygulamanız seçilen eylemi kullandığında, bir ödül puanı biçiminde Kişiselleştiriciye geri bildirim sağlar. Geri bildirim alındıktan sonra, kişiselleştirici, gelecekteki derecelendirmeler için kullanılan kendi modelini otomatik olarak güncelleştirir.
 
-## <a name="how-do-i-use-the-personalizer"></a>Personalizer nasıl kullanabilirim?
+## <a name="how-do-i-use-the-personalizer"></a>Kişiselleştirici kullanmak Nasıl yaparım? mı?
 
-![Bir kullanıcıya göstermek için video seçmek için Personalizer kullanma](media/what-is-personalizer/personalizer-example-highlevel.png)
+![Bir kullanıcıya hangi videonun gösterileceğini seçmek için kişiselleştirici kullanma](media/what-is-personalizer/personalizer-example-highlevel.png)
 
-1. Bir deneyiminizi kişiselleştirmek için uygulamanızı seçin.
-1. Oluşturma ve kişiselleştirme Hizmeti'nin bir örneğini Azure portalında yapılandırın. Her bir Personalizer döngü örneğidir.
-1. Personalizer bilgilerle çağırmak için SDK'sını kullanma (_özellikleri_) kullanıcılarınız ve içerik hakkında (_eylemleri_). Veri Personalizer kullanmadan önce etiketlenmiş temizleyen, girmeniz gerekmez. 
-1. İstemci uygulamasında kullanıcı Personalizer tarafından seçilen eylem gösterir.
-1. SDK, kullanıcının Personalizer'ın eylem seçtiyseniz belirten Personalizer için geri bildirim sağlamak için kullanın. Bu bir _puanı ödüllendirin_genellikle -1 ile 1 arasında.
-1. Analytics sistem nasıl çalıştığını ve kişiselleştirme verilerinizi nasıl yardımcı olduğunu değerlendirmek için Azure Portal'da görüntüleyin.
+1. Uygulamanızda kişiselleştirmek için bir deneyim seçin.
+1. Azure portal kişiselleştirme hizmeti örneğini oluşturun ve yapılandırın. Her örnek bir kişiselleştirici döngüdür.
+1. Kullanıcılarınız hakkında bilgiler (_Özellikler_) ve içerik (_Eylemler_) ile KIŞISELLEŞTIRICI çağırmak için SDK 'yı kullanın. Kişiselleştirici kullanılmadan önce temiz, etiketli veriler sağlamanız gerekmez. 
+1. İstemci uygulamasında, kullanıcıya kişiselleştirici tarafından seçilen eylemi gösterin.
+1. Kullanıcının kişiselleştirici eylemi seçtiği belirlenen Kişiselleştiriciye geri bildirim sağlamak için SDK 'Yı kullanın. Bu, genellikle-1 ile 1 arasında bir _ödül puandır_.
+1. Sistemin nasıl çalıştığını ve verilerinizin kişiselleştirmeye nasıl yardımcı olduğunu değerlendirmek için Azure portal analizlerini görüntüleyin.
 
-## <a name="where-can-i-use-personalizer"></a>Burada Personalizer kullanabilir miyim?
+## <a name="where-can-i-use-personalizer"></a>Kişiselleştiriciye nereden kullanabilirim?
 
-Örneğin, istemci uygulamanız için Personalizer ekleyebilirsiniz:
+Örneğin, istemci uygulamanız aşağıdakileri öğesine kişiselleştirici ekleyebilir:
 
-* Hangi makale haber Web sitesinde vurgulanır kişiselleştirin.    
-* Bir Web sitesinde ad yerleştirme iyileştirin.
-* Bir kişiselleştirilmiş "önerilen öğesi" bir alışveriş Web sitesinde görüntüler.
-* Belirli bir fotoğraf uygulanacak filtreler gibi kullanıcı arabirimi öğeleri önerin.
-* Kullanıcının amacını açıklamak veya bir eylem önermek için bir sohbet Robotu kişinin yanıt'ı seçin.
-* Bir kullanıcı bir iş işlemi bir sonraki adım olarak neler önerileri öncelik verin.
+* Bir haber web sitesinde vurgulanan makaleyi kişiselleştirin.    
+* Web sitesinde ad yerleşimini iyileştirin.
+* Bir alışveriş web sitesinde kişiselleştirilmiş bir "önerilen öğe" görüntüleyin.
+* Belirli bir fotoğrafta uygulanacak filtreler gibi kullanıcı arabirimi öğelerini önerin.
+* Kullanıcı amacını açıklamak veya bir eylem önermek için bir sohbet bot 'un yanıtını seçin.
+* Bir kullanıcının iş sürecinde bir sonraki adım olarak ne yapması gerektiğine ilişkin önerilere öncelik verin.
 
 ## <a name="personalization-for-developers"></a>Geliştiriciler için kişiselleştirme
 
-İki API personalizer hizmet vardır:
+Kişiselleştirici hizmeti iki API 'ye sahiptir:
 
-* Bilgileri Gönder (_özellikleri_) kullanıcılarınız ve içerik hakkında (_eylemleri_) kişiselleştirmek için. Personalizer üst eylem ile yanıt verir.
-* Ne kadar iyi sıralama genellikle 0 ile 1 arasında bir sayı olarak çalışan hakkında Personalizer için geri bildirim gönder (önceki bölümde söylediğiniz -1 ve 1). 
+* Kullanıcılarınız ve kişiselleştirilmesi için içerik (_Eylemler_) hakkındaki bilgileri (_özellikleri_) gönderin. Kişiselleştirici, en üstteki eylemle yanıt verir.
+* Sıralamanın genellikle 0 ile 1 arasında bir sayı olarak ne kadar iyi çalıştığı hakkında kişiselleştirmeden geri bildirim gönderin (önceki bölüm, 1 ve 1 ' i ifade etti). 
 
-![Kişiselleştirme için olayların temel sırası](media/what-is-personalizer/personalization-intro.png)
+![Kişiselleştirmeye yönelik temel olay sırası](media/what-is-personalizer/personalization-intro.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Hızlı Başlangıç: Bir geri bildirim döngüsü içinde oluşturmaC#](csharp-quickstart-commandline-feedback-loop.md)
-* [Etkileşimli tanıtım kullanın](https://personalizationdemo.azurewebsites.net/)
+* [Hızlı Başlangıç: İçinde geri bildirim döngüsü oluşturunC#](csharp-quickstart-commandline-feedback-loop.md)
+* [Etkileşimli tanıtımı kullanma](https://personalizationdemo.azurewebsites.net/)

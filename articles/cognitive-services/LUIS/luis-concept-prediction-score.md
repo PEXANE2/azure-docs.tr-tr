@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/11/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: ccbdb60687bd81de57ff675634f9d124f10784e1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 34ec5588a510574f4ea9f01bd23c6f6487e288da
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563950"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638362"
 ---
 # <a name="prediction-scores-indicate-prediction-accuracy-for-intent-and-entities"></a>Tahmin puanları, amaç ve varlıklar için tahmin doğruluğunu belirtir
 
@@ -69,7 +69,7 @@ Tahmin puanları, üstel gösterim kullanabilir *görünen* 0-1 yukarıda gibi a
 
 ## <a name="punctuation"></a>Noktalama işaretleri
 
-Noktalama, LUIS, ayrı bir belirteçtir. Uçta nokta içermeyen bir nokta ile sonunda bir nokta içeren bir söylenişi iki ayrı tanüler ve iki farklı tahmin elde edebilir. Model emin noktalama işareti ya da işleme içinde [örnek konuşma](luis-concept-utterance.md) (sahip ve noktalama işaretleri olmaması) veya [desenleri](luis-concept-patterns.md) noktalama özel söz dizimi ile yok saymak daha kolay olduğu: `I am applying for the {Job} position[.]`
+Noktalama işaretlerini kullanma veya yoksayma hakkında [daha fazla bilgi edinin](luis-concept-utterance.md#punctuation-marks) . 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

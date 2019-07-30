@@ -1,154 +1,158 @@
 ---
-title: 'Öğretici: Azure zaman serisi öngörüleri JavaScript istemci kitaplığını keşfedin | Microsoft Docs'
+title: 'Öğretici: JavaScript istemci kitaplığı Azure Time Series Insights araştırma | Microsoft Docs'
 description: Azure Time Series Insights JavaScript istemci kitaplığını ve ilgili programlama modelini öğrenin.
 author: ashannon7
 manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 05/06/2019
+ms.date: 07/29/2019
 ms.author: dpalled
 ms.custom: seodec18
-ms.openlocfilehash: c6cfd2069851138d738b1533eaab74d9d7aedda6
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 1ae37636a2caf108221be2240a9517a547945096
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243982"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638839"
 ---
 # <a name="tutorial-explore-the-azure-time-series-insights-javascript-client-library"></a>Öğretici: Azure Time Series Insights JavaScript istemci kitaplığını keşfetme
 
-Azure Time Series Insights JavaScript D3 tabanlı istemci kitaplığı, web geliştiricilerin sorgu yardımcı olmak ve Time Series Insights içinde depolanan verileri görselleştirmek için geliştirilmiştir. Bu öğreticide, zaman serisi görüşleri istemci kitaplığı ve programlama modeli barındırılan örnek uygulaması kullanarak size yol gösterir.
+JavaScript D3 tabanlı Azure Time Series Insights istemci kitaplığı, Web geliştiricilerinin Time Series Insights depolanan verileri sorgulamasını ve görselleştirmesine yardımcı olmak için geliştirilmiştir. Bu öğretici, barındırılan bir örnek uygulama kullanarak Time Series Insights istemci kitaplığı ve programlama modeli boyunca size rehberlik eder.
 
-Öğretici kitaplığı ile çalışma konusunda, işleme ve verileri görselleştirmek için grafik denetimleri kullanmayı ve zaman serisi öngörüleri verilerini nasıl ayrıntılı olarak açıklanmaktadır. Ayrıca farklı türde grafikler veri görselleştirme ile deneme öğreneceksiniz. Öğreticinin sonunda, zaman serisi görüşleri özellikleri kendi web uygulamanıza dahil etmek için istemci kitaplığını kullanmak mümkün olacaktır.
+Öğretici, kitaplıkla nasıl çalışılacağı, Time Series Insights verilere nasıl erişebileceğiniz ve verileri işlemek ve görselleştirmek için grafik denetimlerinin nasıl kullanılacağı hakkında bilgi sağlar. Ayrıca, verileri görselleştirmek için farklı türdeki grafiklerle nasıl denemeler yapacağınızı öğreneceksiniz. Öğreticinin sonunda, istemci kitaplığını kullanarak Time Series Insights özelliklerini kendi web uygulamanıza ekleyebilirsiniz.
 
-Özellikle, hakkında bilgi edineceksiniz:
+Özellikle şunları öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Time Series Insights örnek uygulaması
-> * Zaman serisi öngörüleri JavaScript istemci kitaplığı
-> * Örnek uygulama kitaplığı zaman serisi öngörüleri verilerini görselleştirmek için kullanma
+> * Time Series Insights örnek uygulama
+> * JavaScript istemci kitaplığı Time Series Insights
+> * Örnek uygulama Time Series Insights verileri görselleştirmek için kitaplığı nasıl kullanır
 
 > [!NOTE]
-> * Ücretsiz bir öğreticide, barındırılan [Time Series Insights web tanıtım](https://insights.timeseries.azure.com/clientsample).
-> * Time Series Insights örnek uygulama kaynak dosyaları sağlanan [GitHub örnek deposundan](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial).
-> * Okuma [Time Series Insights istemci başvuru belgeleri](https://github.com/microsoft/tsiclient/blob/master/docs/API.md).
+> * Öğretici, ücretsiz, barındırılan [Time Series Insights Web tanıtımı](https://insights.timeseries.azure.com/clientsample)kullanır.
+> * Time Series Insights örnek uygulama kaynak dosyaları [GitHub örnek deposunda](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial)verilmiştir.
+> * [Time Series Insights istemci başvurusu belgelerini](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)okuyun.
+
+## <a name="prerequisites"></a>Önkoşullar
+
+* Henüz yoksa ücretsiz bir [Azure aboneliğine](https://azure.microsoft.com/free/) kaydolun.
+
+* Bu öğretici, tarayıcınızın **Geliştirici Araçları** özelliğini kullanır. Modern Web tarayıcıları ([Microsoft Edge](/microsoft-edge/devtools-guide), [Chrome](https://developers.google.com/web/tools/chrome-devtools/), [Firefox](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools), [Safari](https://developer.apple.com/safari/tools/)ve diğerleri), genellikle klavyenizde F12 kısayol tuşu aracılığıyla **Web denetçisi görünümüne** erişim sağlar. Görünüme erişmenin başka bir yolu da bir Web sayfasına sağ tıklayıp ardından **öğeyi İncele**' yi seçeceksiniz.
 
 ## <a name="video"></a>Video
 
-Bu videoda, size açık kaynak zaman serisi Insights JavaScript SDK'sı sunar:
+Bu videoda, açık kaynaklı Time Series Insights JavaScript SDK 'sını sunuyoruz:
 <br /><br />
 
 > [!VIDEO https://www.youtube.com/embed/X8sSm7Pl9aA]
 
-## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticide, tarayıcınızın **Geliştirici Araçları** özelliği. Modern web tarayıcıları ([Microsoft Edge](/microsoft-edge/devtools-guide), [Chrome](https://developers.google.com/web/tools/chrome-devtools/), [Firefox](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools), [Safari](https://developer.apple.com/safari/tools/)ve diğerleri) genellikle erişmeyi**Web denetçisi görünümü** F12 kısayol tuşu klavyenizde aracılığıyla. Bir Web sayfasında sağ tıklayın ve ardından görünümü başka bir yolu budur **İnceleme öğesi**.
 
 ## <a name="time-series-insights-sample-application"></a>Time Series Insights örnek uygulaması
 
-Bu öğretici boyunca ücretsiz, barındırılan bir zaman serisi görüşleri örnek uygulaması arkasındaki uygulama kaynak kodu keşfetmenize ve zaman serisi öngörüleri JavaScript istemci kitaplığı keşfetmek için kullanırız. Örnek uygulamayı kullanarak JavaScript dilinde zaman serisi görüşleri ile etkileşimde bulunmak ve grafikler ve graflar aracılığıyla verileri görselleştirmek nasıl öğreneceksiniz.
+Bu öğreticide, uygulamanın arkasındaki kaynak kodu araştırmak ve Time Series Insights JavaScript istemci kitaplığını araştırmak için, ücretsiz ve barındırılan Time Series Insights örnek bir uygulama kullanırız. Örnek uygulamayı kullanarak JavaScript 'te Time Series Insights etkileşim kurmayı ve grafikleri ve grafikleri kullanarak verileri görselleştirmeyi öğreneceksiniz.
 
-1. Git [Time Series Insights örnek uygulama](https://insights.timeseries.azure.com/clientsample). Aşağıdaki oturum açma istemi görünür:
+1. [Time Series Insights örnek uygulamasına](https://insights.timeseries.azure.com/clientsample)gidin. Aşağıdaki oturum açma istemi görüntülenir:
 
-   [![Oturum açma, zaman serisi görüşleri istemci örnek istemi](media/tutorial-explore-js-client-lib/tcs-sign-in.png)](media/tutorial-explore-js-client-lib/tcs-sign-in.png#lightbox)
+   [![Time Series Insights istemci örnek oturum açma istemi](media/tutorial-explore-js-client-lib/tcs-sign-in.png)](media/tutorial-explore-js-client-lib/tcs-sign-in.png#lightbox)
 
-1. Seçin **oturum** veya kimlik bilgilerinizi girin. Bir kurumsal kuruluş hesabı (Azure Active Directory) ya da bir kişisel hesap (Microsoft hesabı) kullanın.
+1. Kimlik bilgilerinizi girmek veya seçmek için **oturum aç '** ı seçin. Kurumsal kuruluş hesabı (Azure Active Directory) veya kişisel hesap (Microsoft hesabı) kullanın.
 
-   [![Zaman serisi görüşleri istemci örnek kimlik bilgileri iste](media/tutorial-explore-js-client-lib/tcs-sign-in-enter-account.png)](media/tutorial-explore-js-client-lib/tcs-sign-in-enter-account.png#lightbox)
+   [![Time Series Insights istemci örnek kimlik bilgileri istemi](media/tutorial-explore-js-client-lib/tcs-sign-in-enter-account.png)](media/tutorial-explore-js-client-lib/tcs-sign-in-enter-account.png#lightbox)
 
-1. Oturum açtıktan sonra zaman serisi görüşleri doldurulmuş grafikleri görüntüleyen bir sayfa gösterilmektedir. Kullanıcı hesabınız ve **Oturumu kapat** seçeneği, sağ üst köşede görünür:
+1. Oturum açtıktan sonra, Time Series Insights verilerle doldurulmuş grafikleri görüntüleyen bir sayfa gösterilir. Kullanıcı hesabınız ve **Oturumu kapat** seçeneği, sağ üst köşede görünür:
 
-   [![Zaman serisi görüşleri istemci örnek ana sayfadan sonra oturum açma](media/tutorial-explore-js-client-lib/tcs-main-after-signin.png)](media/tutorial-explore-js-client-lib/tcs-main-after-signin.png#lightbox)
+   [![Oturum açtıktan sonra istemci örnek ana sayfası Time Series Insights](media/tutorial-explore-js-client-lib/tcs-main-after-signin.png)](media/tutorial-explore-js-client-lib/tcs-main-after-signin.png#lightbox)
 
 ### <a name="page-source-and-structure"></a>Sayfa kaynağı ve yapısı
 
-İlk olarak, şimdi görüntüleyin [HTML ve JavaScript kaynak kodu](https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/index.html) işlenmiş sayfasının:
+İlk olarak, işlenmiş Web sayfasının [HTML ve JavaScript kaynak kodunu](https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/index.html) görüntüleyelim:
 
 1. Tarayıcınızda **Geliştirici Araçları**’nı açın. Geçerli sayfayı oluşturan HTML öğelerini inceleyin (HTML veya DOM ağacı olarak da bilinir).
 
-1. Genişletin `<head>` ve `<body>` öğeleri ve aşağıdaki bölümleri inceleyin:
+1. `<head>` Ve`<body>` öğelerini genişletin ve aşağıdaki bölümleri inceleyin:
 
-   * Altında `<head>` öğe, sayfa meta verileri ve çalıştırmak uygulamayı etkinleştirme bağımlılıkları bulabilirsiniz:
-     * A `<script>` Azure Active Directory kimlik doğrulama kitaplığı (ADAL) dosyasına başvurmak için kullanılan öğe *adal.min.js*. ADAL, API’lere erişim için OAuth 2.0 kimlik doğrulaması (oturum açma) ve belirteç alımı sağlayan bir JavaScript kitaplığıdır.
-     * Birden çok `<link>` stil sayfaları için öğeleri (diğer adıyla *CSS*) gibi *sampleStyles.css* ve *tsiclient.css*. Stil sayfaları, renkleri, yazı tipleri ve boşluk gibi görsel sayfanın stil ayrıntıları denetleyin.
-     * A `<script>` zaman serisi öngörüleri JavaScript istemci kitaplığı başvurmak için kullanılan öğe *tsiclient.js*. Sayfa kitaplığı Time Series Insights hizmeti API'leri çağırmak için ve grafik denetimleri sayfasında işlemek için kullanır.
+   * `<head>` Öğesi altında, uygulamanın çalışmasını sağlayan sayfa meta verilerini ve bağımlılıklarını bulacaksınız:
+     * Azure Active Directory `<script>` kimlik doğrulama kitaplığı (ADAL) dosyası *adal. min. js*' ye başvurmak için kullanılan bir öğe. ADAL, API’lere erişim için OAuth 2.0 kimlik doğrulaması (oturum açma) ve belirteç alımı sağlayan bir JavaScript kitaplığıdır.
+     * `<link>` *Samplestyles. css* ve *tsiclient. css*gibi stil sayfaları ( *CSS*olarak da bilinir) için birden çok öğe. Stil sayfaları, renkler, yazı tipleri ve boşluklar gibi görsel sayfa stil ayrıntılarını denetler.
+     * Time Series Insights `<script>` JavaScript istemci kitaplığı *tsiclient. js*' ye başvurmak için kullanılan bir öğe. Sayfa, Time Series Insights hizmeti API 'Lerini çağırmak ve sayfadaki grafik denetimlerini işlemek için kitaplığı kullanır.
 
      >[!NOTE]
-     > * ADAL JavaScript kitaplığı kaynak kodunu kullanılabilir [azure-activedirectory-kitaplığı-için-js depo](https://github.com/AzureAD/azure-activedirectory-library-for-js).
-     > * Zaman serisi öngörüleri JavaScript istemci kitaplığı kaynak kodunu kullanılabilir [tsiclient depo](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial).
+     > * ADAL JavaScript kitaplığı kaynak kodu, [Azure-ActiveDirectory-Library-for-js deposunda](https://github.com/AzureAD/azure-activedirectory-library-for-js)bulunur.
+     > * Time Series Insights JavaScript istemci kitaplığının kaynak kodu [tsiclient deposunda](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial)bulunabilir.
 
-   * Altında `<body>` öğesini bulabileceğiniz `<div>` sayfası ve diğer öğelerin düzeni tanımlamaya yardımcı olacak öğeleri `<script>` öğesi:
-     * İlk `<div>` öğesi belirtir **oturum** iletişim kutusu (`id="loginModal"`).
+   * Öğesi altında, sayfada öğelerin yerleşimini ve başka bir `<script>` öğesini tanımlamaya yardımcı olan öğeleri bulabilirsiniz `<div>`. `<body>`
+     * İlk `<div>` öğe, **oturum açma** iletişim kutusunu (`id="loginModal"`) belirtir.
      * İkinci `<div>` öğesi şunlar için üst öğe işlevi görür:
        * Sayfanın üst kısmında (`class="header"`) doğru durum iletileri ve oturum açma bilgileri için kullanılan üst bilgi `<div>` öğesi.
-       * A `<div>` öğesi grafikleri de dahil olmak üzere sayfa gövdesi öğelerini, geri kalanında (`class="chartsWrapper"`).
-       * A `<script>` sayfa denetlemek için kullanılan JavaScript içeren bölümü.
+       * Grafik `<div>` (`class="chartsWrapper"`) dahil olmak üzere sayfa gövdesi öğelerinin geri kalanı için bir öğe.
+       * Sayfayı `<script>` denetlemek için kullanılan JavaScript 'i içeren bir bölüm.
 
-   [![Geliştirici Araçları ile zaman serisi öngörüleri istemci örneği](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-head-body.png)](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-head-body.png#lightbox)
+   [![Geliştirici Araçları ile Istemci örneğini Time Series Insights](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-head-body.png)](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-head-body.png#lightbox)
 
-1. Genişletin `<div class="chartsWrapper">` öğesi ve daha fazla alt bulabileceğiniz `<div>` öğeleri. Bu öğeler her bir grafik denetimi örneğini konumlandırmak için kullanılır. Birden çok çiftlerini vardır `<div>` öğeleri, her grafik örneği:
+1. Öğesini genişletin `<div class="chartsWrapper">` , daha fazla alt `<div>` öğe bulacaksınız. Bu öğeler her bir grafik denetimi örneğini konumlandırmak için kullanılır. Her bir grafik örneği için `<div>` bir tane olmak üzere birkaç öğe çifti vardır:
 
    * İlk (`class="rowOfCardsTitle"`) öğe, grafiğin neyi gösterdiğini özetleyen açıklayıcı bir başlık içerir. Örneğin, `Static Line Charts With Full-Size Legends.`
-   * İkinci (`class="rowOfCards"`) ek alt içeren bir üst öğedir `<div>` satır içindeki gerçek grafik denetimleri konumlandırma öğeleri.
+   * Second (`class="rowOfCards"`) öğesi, bir satır içindeki gerçek grafik denetimlerini konumlandırın ek alt `<div>` öğelerini içeren bir üst öğedir.
 
    [![Gövde div öğeleri](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-body-divs.png)](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-body-divs.png#lightbox)
 
-1. Genişletin `<script type="text/javascript">` doğrudan aşağıdaki öğesi `<div class="chartsWrapper">` öğesi. Sayfa düzeyi JavaScript bölümünün başında, tüm sayfa mantığı (Time Series Insights hizmeti grafik denetimleri ve daha fazla işleme API'lerini çağırma kimlik doğrulaması) işlemek için kullanılır:
+1. Öğenindoğrudan`<div class="chartsWrapper">` altındaki öğesini genişletin. `<script type="text/javascript">` Sayfa düzeyi JavaScript bölümünün başı, tüm sayfa mantığını (kimlik doğrulaması, Time Series Insights hizmeti API 'Leri çağırma, grafik denetimlerini işleme ve daha fazlasını) işlemek için kullanılır:
 
-   [![Betik gövdesi](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-body-script.png)](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-body-script.png#lightbox)
+   [![Gövde betiği](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-body-script.png)](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-body-script.png#lightbox)
 
-## <a name="time-series-insights-javascript-client-library-concepts"></a>Zaman serisi öngörüleri JavaScript istemci kitaplığı kavramları
+## <a name="time-series-insights-javascript-client-library-concepts"></a>JavaScript istemci kitaplığı kavramlarını Time Series Insights
 
-Time Series Insights istemci kitaplığı (*tsclient.js*) iki önemli JavaScript işlevleri için soyutlama sağlar:
+Time Series Insights istemci kitaplığı (*tsclient. js*), Iki önemli JavaScript işlevi için soyutlamalar sağlar:
 
-* **Zaman serisi öngörüleri sorgu API'leri çağırmak için sarmalayıcı yöntemleri**: Zaman serisi öngörüleri için veri toplama ifadesi kullanarak sorgulamak için kullanabileceğiniz REST API'ler. Yöntemleri kitaplığı TsiClient.Server ad alanı altında düzenlenir.
+* **Time Series Insights sorgu API 'lerini çağırmak Için sarmalayıcı yöntemleri**: Toplama ifadelerini kullanarak Time Series Insights verilerini sorgulamak için kullanabileceğiniz REST API 'Leri. Yöntemler, kitaplığın TsiClient. Server ad alanı altında düzenlenir.
 
-* **Oluşturma ve doldurma denetimleri grafik türleri çeşitli yöntemleri**: Time Series Insights'ı oluşturmak için kullanabileceğiniz yöntemler bir Web sayfasındaki veri toplama. Yöntemleri kitaplığı TsiClient.UX ad alanı altında düzenlenir.
+* **Çeşitli grafik denetimleri türlerini oluşturma ve doldurma yöntemleri**: Bir Web sayfasında Time Series Insights toplam verileri işlemek için kullanabileceğiniz yöntemler. Yöntemler, kitaplığın TsiClient. UX ad alanı altında düzenlenir.
 
-Bu basitleştirme geliştiriciler ile zaman serisi öngörüleri verilerini desteklenen UI grafiği ve grafik bileşenleri daha kolayca oluşturabilir.
+Bu basitleştiriciler sayesinde, geliştiriciler Time Series Insights verilerle desteklenen UI grafını ve grafik bileşenlerini daha kolay bir şekilde oluşturabilir.
 
-### <a name="authentication"></a>Kimlik Doğrulaması
+### <a name="authentication"></a>Authentication
 
-[Time Series Insights örnek uygulama](https://insights.timeseries.azure.com/clientsample) ADAL OAuth 2.0 kullanıcı kimlik doğrulaması desteği olan bir tek sayfalı uygulama:
+[Time Series Insights örnek uygulama](https://insights.timeseries.azure.com/clientsample) , ADAL OAuth 2,0 Kullanıcı kimlik doğrulama desteği olan tek sayfalı bir uygulamadır:
 
-1. Kimlik doğrulaması için ADAL'ı kullandığınızda, istemci uygulamasının Azure Active Directory (Azure AD) kayıtlı olması gerekir. Aslında, tek sayfalı uygulamayı kullanmak için kayıtlı [OAuth 2.0 örtülü izin akışı](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-implicit-grant-flow).
-1. Uygulama çalışma zamanında kayıt özelliklerden bazılarını belirtmeniz gerekir. İstemci GUID'sini özellikleri içerir (`clientId`) ve yeniden yönlendirme URI'si (`postLogoutRedirectUri`).
-1. Daha sonra uygulama isteklerini bir *erişim belirteci* Azure AD'den. Sınırlı bir özel hizmet veya API tanımlayıcısına izin kümesi için erişim belirtecini veren (https:\//api.timeseries.azure.com). Belirteç izinleri, oturum açmış kullanıcı adına verilir. Hizmet veya API için uygulamanın Azure AD'ye kaydında bulunan başka bir özellik tanımlayıcısıdır.
-1. ADAL erişim belirteci uygulamasına döndükten sonra olarak geçirilir bir *taşıyıcı belirteç* Time Series Insights hizmet API'lerini ne zaman eriştiği.
+1. Kimlik doğrulaması için ADAL kullandığınızda, istemci uygulamanın Azure Active Directory (Azure AD) kayıtlı olması gerekir. Aslında, tek sayfalı uygulama, [OAuth 2,0 örtük izin akışını](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-implicit-grant-flow)kullanmak üzere kaydedilir.
+1. Uygulamanın çalışma zamanında bazı kayıt özelliklerini belirtmesi gerekir. Özellikler, istemci GUID (`clientId`) ve yeniden yönlendirme URI 'si (`postLogoutRedirectUri`) içerir.
+1. Daha sonra, uygulama Azure AD 'den bir *erişim belirteci* ister. Erişim belirteci, belirli bir hizmet veya API tanımlayıcısı (https:\//api.timeseries.Azure.com) için sınırlı bir izin kümesi için verilir. Belirteç izinleri, oturum açmış kullanıcı adına verilir. Hizmet veya API için tanımlayıcı, uygulamanın Azure AD kaydında yer alan başka bir özelliktir.
+1. ADAL, uygulamaya erişim belirtecini döndürtikten sonra, Time Series Insights hizmeti API 'Lerine eriştiğinde bir *taşıyıcı belirteci* olarak geçirilir.
 
    [!code-javascript[head-sample](~/samples-javascript/pages/tutorial/index.html?range=147-204&highlight=3-7,34-37)]
 
 > [!TIP]
-> Microsoft tarafından desteklenen Azure AD kimlik doğrulama kitaplıkları hakkında daha fazla bilgi için bkz: [Azure Active Directory Authentication Library başvuru belgeleri](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries#microsoft-supported-client-libraries).
+> Microsoft tarafından desteklenen Azure AD kimlik doğrulama kitaplıkları hakkında daha fazla bilgi edinmek için [Azure Active Directory kimlik doğrulaması kitaplığı başvuru belgelerine](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries#microsoft-supported-client-libraries)bakın.
 
 ### <a name="control-identification"></a>Denetim tanımlama
 
-Sağlanan örnekte `<div>` öğeleri üst düzenlenir `<body>` sayfasında işleyen grafik denetimleri için duyarlı Düzen sağlamak için öğesi.
+Belirtilen örnekte `<div>` öğeler üst `<body>` öğede düzenlenir ve sayfada işlenen grafik denetimleri için daha erişilebilir bir düzen sağlar.
 
-Her `<div>` öğesi yerleştirme ve görsel öznitelikleri grafik denetimi özelliklerini belirtir. HTML öğesi `id` özellikleri sunmak gibi verileri işlemek ve güncelleştirme için belirli denetimlerine bağlamanıza imkan benzersiz tanımlayıcıları görselleştirilir.
+Her `<div>` öğe, grafik denetimlerinin yerleştirme ve görsel özniteliklerinin özelliklerini belirler. HTML öğesi `id` özellikleri, görselleştirilen verileri işlemek ve güncelleştirmek üzere belirli denetimlere bağlamak için benzersiz tanımlayıcılar sunar.
 
 ### <a name="aggregate-expressions"></a>Toplama ifadeleri
 
-Time Series Insights istemci kitaplığı API'lerini Toplama ifadesi kullanın:
+Time Series Insights istemci kitaplığı API 'Leri toplam ifadeler kullanır:
 
-* Bir toplama ifadesindeki bir veya daha fazla oluşturabilme olanağı sağlayan *arama terimlerini*.
+* Toplama ifadesi bir veya daha fazla *arama terimi*oluşturma yeteneği sağlar.
 
-* İstemci API'leri, başka bir demo uygulamasına benzer bir işlevsellik sağlamak için tasarlanmıştır ( [Time Series Insights gezgininin](https://insights.timeseries.azure.com/demo)), aralık, arama kullanır `where` doğrulamaları, ölçüler ve `splitBy` değerleri.
+* İstemci API 'leri, arama yayma, `where` koşullar, ölçüler ve `splitBy` değerler kullanan başka bir demo uygulamasına ( [Time Series Insights Gezgini](https://insights.timeseries.azure.com/demo)) benzer işlevler sağlamak üzere tasarlanmıştır.
 
-* Çoğu istemci kitaplığı API'lerini Time Series Insights veri sorgusu oluşturmak için hizmetin kullandığı toplama ifadesi dizisini alır.
+* Çoğu istemci kitaplığı API 'Leri, hizmetin bir Time Series Insights veri sorgusu oluşturmak için kullandığı bir dizi toplama ifadesi alır.
 
 ### <a name="call-pattern"></a>Çağrı deseni
 
-Grafik denetimleri oluşturma ve doldurma genel bir desen izler. Örnek uygulamada genel düzen inceleyebileceğiniz ve istemci kitaplığı kullandığınızda yardımcı olabilir:
+Grafik denetimlerini doldurma ve işleme genel bir model izler. Örnek uygulamanın tamamında genel bir model gözlemleyebilirsiniz ve istemci kitaplığını kullandığınızda size yardımcı olabilir:
 
-1. Bildirme bir `array` bir veya daha fazla zaman serisi görüşleri Toplama ifadesi tutmak için:
+1. Bir veya `array` daha fazla Time Series Insights toplama ifadesi tutmak için bir bildirir:
 
    ```javascript
    var aes =  [];
    ```
 
-1. Derleme *1* için *n* toplama ifade nesneleri. Ardından, bunları Toplama ifadesi diziye ekleyin:
+1. Derleme *1* - *n* toplam ifade nesneleri. Ardından, bunları toplam ifade dizisine ekleyin:
 
    ```javascript
    var ae = new tsiClient.ux.aggregateExpression(predicateObject, measureObject, measureTypes, searchSpan, splitByObject, color, alias, contextMenuActions);
@@ -160,15 +164,15 @@ Grafik denetimleri oluşturma ve doldurma genel bir desen izler. Örnek uygulama
    | Parametre | Açıklama | Örnek |
    | --------- | ----------- | ------- |
    | `predicateObject` | Veri filtreleme ifadesi |`{predicateString: "Factory = 'Factory3'"}` |
-   | `measureObject`   | Kullanılan ölçü özellik adı | `{property: 'Temperature', type: "Double"}` |
-   | `measureTypes`    | Toplamalar Ölçü özelliğinin istediğiniz | `['avg', 'min']` |
-   | `searchSpan`      | Toplama süresi ve aralık boyutu | `{from: startDate, to: endDate, bucketSize: '2m'}` |
-   | `splitByObject`   | Bölme ölçütü dize özelliği (isteğe bağlı: null olabilir) | `{property: 'Station', type: 'String'}` |
+   | `measureObject`   | Kullanılan ölçünün Özellik adı | `{property: 'Temperature', type: "Double"}` |
+   | `measureTypes`    | İstediğiniz ölçü özelliğinin toplamaları | `['avg', 'min']` |
+   | `searchSpan`      | Toplam ifadesinin süre ve Aralık boyutu | `{from: startDate, to: endDate, bucketSize: '2m'}` |
+   | `splitByObject`   | Ayırmak istediğiniz dize özelliği (isteğe bağlı: null olabilir) | `{property: 'Station', type: 'String'}` |
    | `color`         | İşlemek istediğiniz nesnelerin rengi | `'pink'` |
-   | `alias`           | Toplama ifadesi için bir kolay ad | `'Factory3Temperature'` |
-   | `contextMenuActions` | (İsteğe bağlı) bir görselleştirmede zaman serisi nesnelere bağlı eylemler dizisi | Daha fazla bilgi için [açılan bağlam menüleri](#pop-up-context-menus). |
+   | `alias`           | Toplama ifadesi için kolay bir ad | `'Factory3Temperature'` |
+   | `contextMenuActions` | Görselleştirmedeki zaman serisi nesnelerine bağlanacak bir eylem dizisi (isteğe bağlı) | Daha fazla bilgi için bkz. [açılır bağlam menüleri](#pop-up-context-menus). |
 
-1. Time Series Insights sorgu toplu veriler istemek için TsiClient.Server API'lerini kullanarak çağırın:
+1. Toplam verileri istemek için TsiClient. Server API 'Lerini kullanarak bir Time Series Insights sorgusu çağırın:
 
    ```javascript
    tsiClient.server.getAggregates(token, envFQDN, aeTsxArray);
@@ -178,50 +182,50 @@ Grafik denetimleri oluşturma ve doldurma genel bir desen izler. Örnek uygulama
 
    | Parametre | Açıklama | Örnek |
    | --------- | ----------- | ------- |
-   | `token`     | Zaman serisi öngörüleri API için erişim belirteci |  `authContext.getTsiToken()`<br />Daha fazla bilgi için bkz. [Kimlik doğrulaması](#authentication). |
-   | `envFQDN`   | Zaman serisi görüşleri ortamı için tam etki alanı adı (FQDN) | Azure portalından. Örneğin: `10000000-0000-0000-0000-100000000108.env.timeseries.azure.com`. |
-   | `aeTsxArray` | Bir dizi Time Series Insights sorgu ifadeleri | Kullanım `aes` daha önce açıklandığı gibi değişken: `aes.map(function(ae){return ae.toTsx()}`. |
+   | `token`     | Time Series Insights API 'SI için erişim belirteci |  `authContext.getTsiToken()`<br />Daha fazla bilgi için bkz. [Kimlik doğrulaması](#authentication). |
+   | `envFQDN`   | Time Series Insights ortamı için tam etki alanı adı (FQDN) | Azure portal. Örneğin: `10000000-0000-0000-0000-100000000108.env.timeseries.azure.com` |
+   | `aeTsxArray` | Time Series Insights sorgu ifadeleri dizisi | Daha önce açıklandığı gibi `aes.map(function(ae){return ae.toTsx()}` değişkenikullanın:.`aes` |
 
-1. Time Series Insights sorgudan JSON'a görselleştirme için döndürülen sıkıştırılmış sonucu dönüştürün:
+1. Görselleştirme için Time Series Insights sorgusundan döndürülen sıkıştırılmış sonucu JSON 'ye dönüştürün:
 
    ```javascript
    var transformedResult = tsiClient.ux.transformAggregatesForVisualization(result, aes);
    ```
 
-1. Grafik denetimi TsiClient.UX API'lerini kullanarak oluşturun. Birine bağlamanız `<div>` sayfadaki öğeleri:
+1. TsiClient. UX API 'Lerini kullanarak bir grafik denetimi oluşturun. Sayfadaki `<div>` öğelerden birine bağlayın:
 
    ```javascript
    var barChart = new tsiClient.ux.BarChart(document.getElementById('chart3'));
    ```
 
-1. Grafik denetimi dönüştürülen JSON veri nesneleri ile doldurur ve sayfasındaki denetimi oluşturmak:
+1. Grafik denetimini dönüştürülmüş JSON veri nesneleriyle doldurun ve denetimi sayfada işle:
 
    ```javascript
    barChart.render(transformedResult, {grid: true, legend: 'compact', theme: 'light'}, aes);
    ```
 
-## <a name="render-controls"></a>Denetimleri oluşturma
+## <a name="render-controls"></a>İşleme denetimleri
 
-Time Series Insights istemci kitaplığı, sekiz benzersiz, kullanıma hazır analiz denetimlerini sağlar:
+Time Series Insights istemci kitaplığı, sekiz benzersiz, kullanıma hazır analiz denetimi sağlar:
 
-* **Çizgi grafik**
-* **Pasta grafiği**
-* **Çubuk grafik**
-* **Isı Haritası**
-* **Hiyerarşi denetimleri**
-* **erişilebilir bir kılavuz**
+* **çizgi grafik**
+* **pasta grafik**
+* **çubuk grafik**
+* **ısı haritasını**
+* **hiyerarşi denetimleri**
+* **erişilebilir kılavuz**
 * **ayrık olay zaman çizelgeleri**
-* **Durum Geçişi zaman çizelgeleri**
+* **durum geçişi zaman çizelgeleri**
 
-### <a name="line-chart-bar-chart-and-pie-chart-examples"></a>Çizgi grafiği çubuk grafik ve pasta grafiği örnekleri
+### <a name="line-chart-bar-chart-and-pie-chart-examples"></a>Çizgi grafik, çubuk grafik ve pasta grafik örnekleri
 
-Bazı standart grafik denetimleri oluşturmak için kullanılan tanıtım koduna bakar. Programlama modeli ve bu denetimleri oluşturmak için desen unutmayın. Özellikle, HTML altında inceleyin `// Example 3/4/5` HTML denetimleri işleyen açıklama `id` değerleri `chart3`, `chart4`, ve `chart5`.
+Standart grafik denetimlerinden bazılarını işlemek için kullanılan tanıtım koduna bakın. Bu denetimleri oluşturmak için programlama modelini ve düzenlerini aklınızda yapın. `// Example 3/4/5` Özellikle, HTML `id` değerleri `chart3`, ve`chart5`ile denetimleri işleyen yorum altında HTML 'yi inceleyin. `chart4`
 
-Geri çağırma 3 adımda [sayfasında kaynak ve yapı bölüm](#page-source-and-structure) grafik denetimleri sayfasında satırları düzenlenir. Her grafik denetiminin, açıklayıcı bir başlık satırı vardır. Bu örnekte, üç grafikleri altında doldurulur `Multiple Chart Types From the Same Data` başlık `<div>` ve bu öğe için üç bağlı `<div>` başlığı olan öğeler:
+Grafik denetimlerinin sayfadaki satırlarda düzenlendiği [sayfa kaynağı ve yapısı bölümünün](#page-source-and-structure) 3. adımından geri çekin. Her grafik denetiminin açıklayıcı bir başlık satırı vardır. Bu örnekte, üç grafik `Multiple Chart Types From the Same Data` başlık `<div>` öğesinin altında doldurulur ve başlığın altında olan üç `<div>` öğeye bağlanır:
 
 [!code-html[code-sample1-line-bar-pie](~/samples-javascript/pages/tutorial/index.html?range=59-73&highlight=1,5,9,13)]
 
-JavaScript kodu aşağıdaki bölümde daha önce açıklanan desenleri kullanır: zaman serisi görüşleri toplama ifadeleri oluşturmak, Time Series Insights verileri sorgulamak için bunları kullanın ve ardından üç grafik işleme. Üç grafik türleri tsiClient.ux ad alanından kullanılır: `LineChart`, `BarChart`, ve `PieChart`. Grafik türleri oluşturun ve ilgili grafikler işlemek için kullanılır. Tüm üç grafiklerini aynı Toplama ifadesi verileri kullanabilir `transformedResult`:
+JavaScript kodunun aşağıdaki bölümü, daha önce özetlenen desenleri kullanır: derleme Time Series Insights toplama ifadeleri oluşturun, Time Series Insights verileri sorgulamak için bunları kullanın ve ardından üç grafiği işleme. Tsiclient. ux ad alanından üç grafik türü kullanılır: `LineChart`, `BarChart`ve `PieChart`. Grafik türleri ilgili grafikleri oluşturmak ve işlemek için kullanılır. Üç grafik de aynı toplama ifadesi verilerini `transformedResult`kullanabilir:
 
 [!code-javascript[code-sample2-line-bar-pie](~/samples-javascript/pages/tutorial/index.html?range=241-262&highlight=13-14,16-17,19-20)]
 
@@ -231,103 +235,110 @@ JavaScript kodu aşağıdaki bölümde daha önce açıklanan desenleri kullanı
 
 ## <a name="advanced-features"></a>Gelişmiş özellikler
 
-Time Series Insights istemci kitaplığı, veri görselleştirmeleri yaratıcı bir şekilde uygulamak için kullanabileceğiniz çeşitli ek özellikler vardır.
+Time Series Insights istemci kitaplığı, veri görselleştirmeleri yürütmek için kullanabileceğiniz çeşitli ek özelliklere sahiptir.
 
 ### <a name="states-and-events"></a>Durumlar ve olaylar
 
-Durumu geçişleri ve ayrık olayları için grafik ekleme olanağı bir Gelişmiş işlevdir. Bu özellik, vurgulama olaylar, uyarılar ve durum anahtarları (/ anahtarlar, örneğin kapalı) oluşturma için kullanışlıdır.
+Gelişmiş bir işlevsellik, grafiklere durum geçişleri ve ayrık olaylar ekleme olanağıdır. Bu özellik olayları vurgulama, uyarma ve durum anahtarları oluşturma (örneğin, açık/kapalı anahtarlar) için kullanışlıdır.
 
-Konum çevreleyen kod `// Example 10` açıklaması. Kod bir satır denetimi altındaki başlığı işler `Line Charts with Multiple Series Types` ve kendisine bağlar `<div>` HTML öğesiyle `id` değer `chart10`.
+`// Example 10` Yorumu çevreleyen koda bakın. Kod, başlık `Line Charts with Multiple Series Types` altında bir çizgi denetimi işler ve `id` HTML değeri `chart10`olan `<div>` öğesine bağlar.
 
-Aşağıdaki adımları işlemi açıklanmaktadır:
+Aşağıdaki adımlarda işlem açıklanır:
 
-1. Adlı bir yapı `events4` izlemek için durum değişikliği öğeleri tutmak için tanımlanır. Yapı şunları içerir:
+1. Adlı `events4` bir yapı, izlemek üzere durum değişikliği öğelerini tutmak için tanımlanır. Yapı şunları içerir:
 
    * `Component States` adlı bir dize anahtarı.
    * Durumları temsil eden bir değer nesneleri dizisi. Her nesne şunları içerir:
      * JavaScript ISO zaman damgası içeren bir dize anahtarı.
      * Durumun özelliklerini içeren bir dizi: bir renk ve bir açıklama.
 
-1. `events5` Yapısı için tanımlanmış `Incidents`, olay öğeleri izlemek için bir dizi tutar. Dizi yapısı, `events4` için belirtilen yapıyla aynı şekildedir.
+1. Yapısı, izlemek üzere bir `Incidents`olay öğeleri dizisini tutan için tanımlanır. `events5` Dizi yapısı, `events4` için belirtilen yapıyla aynı şekildedir.
 
-1. Çizgi grafiği oluşturulur ve parametrelerini geçirir grafik seçenekleri ile iki yapılardaki: `events:` ve `states:`. Diğer seçenek parametrelerini belirtmek için Not bir `tooltip:`, `theme:`, veya `grid:`.
+1. Çizgi grafik işlenir ve grafik seçenekleri parametreleriyle iki yapıya geçirilir: `events:` ve. `states:` , `tooltip:` `theme:`Veya belirtmekiçindiğerseçenekparametrelerinegözönündekoyun.`grid:`
 
 [!code-javascript[code-sample-states-events](~/samples-javascript/pages/tutorial/index.html?range=337-389&highlight=5,26,51)]
 
-Olayları göstermek için kullanılan elmas işaretçileri/pop-kaydolma windows ve renkli çubuk/pop-kaydolma windows zaman ölçeği boyunca durum değişikliklerini gösterir:
+Zaman ölçeği durum değişikliğini göstermek için olayları ve renkli çubukları/açılır pencereleri göstermek için kullanılan elmas işaretçileri/açılır pencereler:
 
-[![Birden fazla seri türleri ile çizgi grafikler](media/tutorial-explore-js-client-lib/tcs-line-charts-with-multiple-series-types.png)](media/tutorial-explore-js-client-lib/tcs-line-charts-with-multiple-series-types.png#lightbox)
+[![Birden çok seri türüne sahip çizgi grafikler](media/tutorial-explore-js-client-lib/tcs-line-charts-with-multiple-series-types.png)](media/tutorial-explore-js-client-lib/tcs-line-charts-with-multiple-series-types.png#lightbox)
 
 ### <a name="pop-up-context-menus"></a>Açılır menüler
 
-Başka bir Gelişmiş özel bağlam menüleri (sağ tıklama açılır menüler) oluşturma olanağı işlevdir. Özel açılır menüler, uygulamanızın kapsamı dahilinde sıradaki eylemleri ve mantıksal adımları etkinleştirmek için yararlıdır.
+Diğer gelişmiş işlevler, özel bağlam menüleri oluşturma (açılır menüler ' e sağ tıklama) özelliğidir. Özel açılır menüler, uygulamanızın kapsamı dahilinde sıradaki eylemleri ve mantıksal adımları etkinleştirmek için yararlıdır.
 
-Kodda gezinmeye bakın `// Example 13/14/15` açıklaması. Bu kod, başlangıçta bir çizgi grafik başlığı altında işler `Line Chart with Context Menu to Create Pie/Bar Chart`. Grafik bağlı `<div>` HTML öğesiyle `id` değer `chart13`.
+`// Example 13/14/15` Açıklamanın etrafındaki koda bakın. Bu kod başlangıçta başlık `Line Chart with Context Menu to Create Pie/Bar Chart`altında bir çizgi grafik oluşturur. Grafik, HTML `<div>` `id` değeri `chart13`olan öğesine bağlanır.
 
-Bağlam menülerini kullanarak, çizgi grafik dinamik olarak `chart14` ve `chart15` kimlikleriyle `<div>` öğelerine bağlı bir pasta ve çubuk grafik oluşturma olanağı sağlar. Çubuk grafik ve pasta grafik aynı zamanda bağlam menüleri kendi özelliklerini etkinleştirmek için kullanın: çubuk grafik olarak pasta grafiğin verileri kopyalamak ve tarayıcı konsol penceresine çubuk grafiği verileri sırasıyla yazdırma olanağı.
+Bağlam menülerini kullanarak, çizgi grafik dinamik olarak `chart14` ve `chart15` kimlikleriyle `<div>` öğelerine bağlı bir pasta ve çubuk grafik oluşturma olanağı sağlar. Hem pasta grafiği hem de çubuk grafik Ayrıca kendi özelliklerini etkinleştirmek için bağlam menülerini kullanır: pasta grafiğinden çubuk grafiğe veri kopyalama ve çubuk grafik verilerini sırasıyla tarayıcı konsolu penceresine yazdırma özelliği.
 
-Aşağıdaki adımları işlemi açıklanmaktadır:
+Aşağıdaki adımlarda işlem açıklanır:
 
-1. Özel Eylemler dizisi tanımlanır. Her eylem bir veya daha fazla öğe ile bir dizi içerir. Her öğe tek bir bağlam menüsü öğesini tanımlar:
+1. Bir dizi özel eylem tanımlanmıştır. Her eylem bir veya daha fazla öğe ile bir dizi içerir. Her öğe tek bir bağlam menüsü öğesini tanımlar:
 
-   * `barChartActions`: Bu eylem, tek bir öğeyi tanımlamak için bir öğe içeriyorsa pasta grafiği için bağlam menüsünü tanımlar:
-     * `name`: Menü öğesi için kullanılan metin: "Konsol parametreleri yazdırın."
-     * `action`: Menü öğesi ile ilişkili eylem. Eylem her zaman anonim bir işlevdir ve grafiği oluşturmak için kullanılan toplama ifadesi temelinde üç bağımsız değişken alır. Bu örnekte, bağımsız değişkenler tarayıcı konsol penceresine yazılır:
-       * `ae`: Toplama ifadesi dizi.
-       * `splitBy`: `splitBy` Değeri.
+   * `barChartActions`: Bu eylem, tek bir öğeyi tanımlamak için bir öğe içeren pasta grafiğinin bağlam menüsünü tanımlar:
+     * `name`: Menü öğesi için kullanılan metin: "Parametreleri konsola yazdır."
+     * `action`: Menü öğesiyle ilişkili eylem. Eylem her zaman anonim bir işlevdir ve grafiği oluşturmak için kullanılan toplama ifadesi temelinde üç bağımsız değişken alır. Bu örnekte, bağımsız değişkenler tarayıcı konsol penceresine yazılır:
+       * `ae`: Toplam ifade dizisi.
+       * `splitBy`: `splitBy` Değer.
        * `timestamp`: Zaman damgası.
 
-   * `pieChartActions`: Bu eylem, tek bir öğeyi tanımlamak için bir öğe içeriyorsa çubuk grafik için bağlam menüsünü tanımlar. Şema ve şekli aynı olup `barChartActions` öğe daha önce açıklanan ancak `action` işlevi, önemli ölçüde farklıdır: başlatır ve çubuk grafik oluşturur. `ae` Bağımsız değişkeni, menü öğesi açıldığında, çalışma zamanında geçirilen Toplama ifadesi dizi belirtmek için kullanılır. İşlev, `barChartActions` bağlam menüsüyle birlikte `ae.contextMenu` özelliğini de ayarlar.
-   * `contextMenuActions`: Bu eylem, üç menü öğeleri tanımlamak için üç öğeleri içeren çizgi grafik için bağlam menüsünü tanımlar. Her öğe için şema ve şekli ile aynıdır, daha önce açıklanan öğeleri. Aynı `barChartActions` öğesi gibi, ilk öğe tarayıcı konsol penceresine üç işlev bağımsız değişkenini yazar. Benzer şekilde `pieChartActions` öğesi, ikinci iki öğeyi örneklemek ve sırasıyla pasta grafik ve çubuk grafik oluşturma. İkinci iki öğe sırasıyla `pieChartActions` ve `barChartActions` bağlam menüleriyle `ae.contextMenu` özelliklerini de ayarlar.
+   * `pieChartActions`: Bu eylem, tek bir öğeyi tanımlamak için bir öğe içeren çubuk grafiğinin bağlam menüsünü tanımlar. Şekil ve şema, daha önce açıklanan `barChartActions` öğeyle aynıdır, `action` ancak işlev önemli ölçüde farklıdır: çubuk grafiği oluşturur ve oluşturur. `ae` Bağımsız değişkeni, çalışma zamanında geçirilen toplam ifade dizisini menü öğesi açıldığında belirtmek için kullanılır. İşlev, `barChartActions` bağlam menüsüyle birlikte `ae.contextMenu` özelliğini de ayarlar.
+   * `contextMenuActions`: Bu eylem, üç menü öğesini tanımlamak için üç öğe içeren çizgi grafiğinin bağlam menüsünü tanımlar. Her bir öğenin şekli ve şeması, daha önce açıklanan öğelerle aynıdır. Aynı `barChartActions` öğesi gibi, ilk öğe tarayıcı konsol penceresine üç işlev bağımsız değişkenini yazar. `pieChartActions` Öğesine benzer şekilde ikinci iki öğe, sırasıyla pasta grafiği ve çubuk grafiği oluşturur ve işler. İkinci iki öğe sırasıyla `pieChartActions` ve `barChartActions` bağlam menüleriyle `ae.contextMenu` özelliklerini de ayarlar.
 
-1. İki Toplama ifadesi üzerine itilir `aes` Toplama ifadesi dizi. Belirlediği `contextMenuActions` her öğe için bir dizi. Bu ifadeler, çizgi grafik denetimiyle kullanılır.
+1. `aes` Toplam ifade dizisine iki toplama ifadesi itilir. Her öğe için `contextMenuActions` diziyi belirtirler. Bu ifadeler, çizgi grafik denetimiyle kullanılır.
 
-1. Çizgi grafik ilk işlenen, çubuk grafik ve pasta grafik çalışma zamanında işlenebilir.
+1. Yalnızca çizgi grafik başlangıçta işlendiğinde, hem pasta grafiğin hem de çubuk grafiğin çalışma zamanında işlenebileceği.
 
 [!code-javascript[code-sample-context-menus](~/samples-javascript/pages/tutorial/index.html?range=461-540&highlight=7,16,29,61-64,78)]
 
-Aşağıdaki ekran görüntüsünde, ilgili açılan bağlam menüleri grafiklerle gösterir. Çubuk grafik ve pasta grafiği çizgi grafik bağlam menüsü seçeneklerini kullanarak dinamik olarak oluşturulmuştur.
+Aşağıdaki ekran görüntüsünde, ilgili açılan pencere bağlam menülerinin bulunduğu grafikler gösterilmektedir. Pasta grafik ve çubuk grafik, çizgi grafik bağlam menüsü seçenekleri kullanılarak dinamik olarak oluşturulmuştur.
 
-[![Pasta grafik ve çubuk grafik oluşturma için bağlam menüsü ile çizgi grafik](media/tutorial-explore-js-client-lib/tcs-line-chart-with-context-menu-to-create-pie-bar-chart.png)](media/tutorial-explore-js-client-lib/tcs-line-chart-with-context-menu-to-create-pie-bar-chart.png#lightbox)
+[![Pasta grafik ve çubuk grafik oluşturmak için bağlam menüsü olan çizgi grafik](media/tutorial-explore-js-client-lib/tcs-line-chart-with-context-menu-to-create-pie-bar-chart.png)](media/tutorial-explore-js-client-lib/tcs-line-chart-with-context-menu-to-create-pie-bar-chart.png#lightbox)
 
 ### <a name="brushes"></a>Fırçalar
 
-Fırçalar, yakınlaştırma ve keşfetme gibi eylemleri tanımlamak için bir zaman aralığı kapsamını belirlemek için kullanabilirsiniz.
+Yakınlaştırma ve araştırma gibi eylemleri tanımlamak üzere bir zaman aralığı kapsamını belirlemek için fırçaları kullanabilirsiniz.
 
-Fırçalar göstermek için kullanılan kod gösterilen `Line Chart with Context Menu to Create Pie/Bar Chart` açılan bağlam menüleri tanımlayan örnek.
+Fırçaları göstermek için kullanılan kod, açılan bağlam menülerini açıklayan `Line Chart with Context Menu to Create Pie/Bar Chart` örnekte gösterilmiştir.
 
-* Fırça eylemleri, fırça için bir dizi özel eylem tanımlaması bakımından bağlam menüsüne benzer. Her eylem bir veya daha fazla öğelere sahip bir dizi içeriyor. Her öğe tek bir bağlam menüsü öğesini tanımlar:
-   * `name`: Menü öğesi için kullanılan metin: "Konsol parametreleri yazdırın."
-   * `action`: Her zaman iki bağımsız değişken alan anonim bir işlevdir menü öğesi ile ilişkili eylem. Bu örnekte, bağımsız değişkenler tarayıcı konsol penceresine yazılır:
-     * `fromTime`: `from` Fırça seçimin zaman damgası.
-     * `toTime`: `to` Fırça seçimin zaman damgası.
+* Fırça eylemleri, fırça için bir dizi özel eylem tanımlaması bakımından bağlam menüsüne benzer. Her eylem bir veya daha fazla öğesi olan bir dizi içerir. Her öğe tek bir bağlam menüsü öğesini tanımlar:
+   * `name`: Menü öğesi için kullanılan metin: "Parametreleri konsola yazdır."
+   * `action`: Her zaman iki bağımsız değişken alan bir anonim işlev olan menü öğesiyle ilişkili eylem. Bu örnekte, bağımsız değişkenler tarayıcı konsol penceresine yazılır:
+     * `fromTime`: Fırça `from` seçiminin zaman damgası.
+     * `toTime`: Fırça `to` seçiminin zaman damgası.
 
-* Fırça eylemleri başka bir grafik seçeneği özelliği olarak eklenir. `brushContextMenuActions: brushActions` Özelliği geçirildiğinde `linechart.Render` çağırın.
+* Fırça eylemleri başka bir grafik seçeneği özelliği olarak eklenir. `brushContextMenuActions: brushActions` Özelliği `linechart.Render` çağrıya geçirilir.
 
 [!code-javascript[code-sample-brushes](~/samples-javascript/pages/tutorial/index.html?range=526-540&highlight=1,13)]
 
-[![Pasta grafik ve çubuk grafik Fırçalar kullanarak oluşturmak için bağlam menüsü ile çizgi grafik](media/tutorial-explore-js-client-lib/tcs-line-chart-with-context-menu-to-create-pie-bar-chart-brushes.png)](media/tutorial-explore-js-client-lib/tcs-line-chart-with-context-menu-to-create-pie-bar-chart-brushes.png#lightbox)
+[![Fırçalar kullanarak pasta grafik ve çubuk grafik oluşturmak için bağlam menüsü olan çizgi grafik](media/tutorial-explore-js-client-lib/tcs-line-chart-with-context-menu-to-create-pie-bar-chart-brushes.png)](media/tutorial-explore-js-client-lib/tcs-line-chart-with-context-menu-to-create-pie-bar-chart-brushes.png#lightbox)
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Öğreticiyi tamamladığınıza göre, oluşturduğunuz kaynakları temizleyin:
+
+1. [Azure Portal](https://portal.azure.com)sol menüden **tüm kaynaklar**' ı seçin, Azure Time Series Insights kaynak grubunuzu bulun.
+1. Her kaynağı ayrı ayrı **Sil** veya Kaldır ' a tıklayarak kaynak grubunun tamamını (ve içinde yer alan tüm kaynakları) silin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 
 > [!div class="checklist"]
-> * Oturum açın ve Time Series Insights örnek uygulamayı ve onun kaynağı keşfedin
-> * Zaman serisi öngörüleri JavaScript istemci Kitaplığı'ndaki API'lerini kullanma
-> * Oluşturma ve grafik denetimleri ile zaman serisi öngörüleri verilerini doldurmak için JavaScript kullanın
+> * Oturum açın ve Time Series Insights örnek uygulamayı ve kaynağını araştırın
+> * Time Series Insights JavaScript istemci kitaplığındaki API 'Leri kullanma
+> * Grafik denetimlerini Time Series Insights verilerle oluşturmak ve doldurmak için JavaScript kullanma
 
-Time Series Insights örnek uygulama bir tanıtım veri kümesini kullanır. Time Series Insights ortamınızı ve veri kümesi nasıl oluşturabileceğinize dair bilgi için şu makaleyi okuyun:
-
-> [!div class="nextstepaction"]
-> [Öğretici: Azure zaman serisi görüşleri ortamı oluşturma](tutorial-create-populate-tsi-environment.md)
-
-Ya da zaman serisi görüşleri örnek uygulama kaynak dosyaları görüntüleyin:
+Time Series Insights örnek uygulama bir demo veri kümesi kullanır. Kendi Time Series Insights ortamınızı ve veri kümenizi nasıl oluşturabileceğiniz hakkında bilgi edinmek için aşağıdaki makaleyi okuyun:
 
 > [!div class="nextstepaction"]
-> [Zaman serisi görüşleri örnek uygulama deposunu](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial)
+> [Öğretici: Azure Time Series Insights ortamı oluşturma](tutorial-create-populate-tsi-environment.md)
 
-Time Series Insights istemci API başvuru belgeleri okuyun:
+Veya örnek uygulama kaynak dosyalarını Time Series Insights görüntüleyin:
 
 > [!div class="nextstepaction"]
-> [Zaman serisi öngörüleri API başvuru belgeleri](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)
+> [Örnek uygulama deposunu Time Series Insights](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial)
+
+İstemci API 'SI başvuru belgelerini Time Series Insights okuyun:
+
+> [!div class="nextstepaction"]
+> [Time Series Insights API başvuru belgeleri](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)

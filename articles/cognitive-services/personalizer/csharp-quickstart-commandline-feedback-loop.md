@@ -1,74 +1,74 @@
 ---
-title: 'Hızlı Başlangıç: Bir geri bildirim döngüsü - Personalizer oluşturma'
+title: 'Hızlı Başlangıç: Geri bildirim döngüsü oluşturma-kişiselleştirici'
 titleSuffix: Azure Cognitive Services
-description: Bu içerik kişiselleştirme C# Personalizer Service hızlı başlangıç.
+description: Bu C# hızlı başlangıçta Içeriği kişiselleştirici hizmetiyle kişiselleştirin.
 services: cognitive-services
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 06/11/2019
-ms.author: edjez
-ms.openlocfilehash: 0b856b8d134cc160b8bb759fce0408204cf0ba61
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.author: diberry
+ms.openlocfilehash: 54aa23071fef09058a1702218d6b7fc920363518
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722445"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68662807"
 ---
-# <a name="quickstart-personalize-content-using-c"></a>Hızlı Başlangıç: İçerik kullanarak kişiselleştirmeC# 
+# <a name="quickstart-personalize-content-using-c"></a>Hızlı Başlangıç: Kullanarak içeriği kişiselleştirmeC# 
 
-Bu kişiselleştirilmiş içerik görüntüleme C# Personalizer Service hızlı başlangıç.
+Bu C# hızlı başlangıçta kişiselleştirilmiş Içeriği kişiselleştirici hizmeti ile görüntüleyin.
 
-Bu örnek için Personalizer istemci kitaplığının nasıl kullanılacağını gösterir C# aşağıdaki eylemleri gerçekleştirmek için: 
+Bu örnek, için C# kişiselleştirici istemci kitaplığının aşağıdaki işlemleri gerçekleştirmek üzere nasıl kullanılacağını gösterir: 
 
- * Kişiselleştirme için eylemlerin bir listesini Sırala.
- * Belirtilen olay için kullanıcı seçimine dayalı olarak eylem sıralanmış üst ayırmak için ödül bildirin.
+ * Kişiselleştirmeye yönelik eylemlerin listesini sıralama.
+ * Rapor, belirtilen olay için Kullanıcı seçimine dayalı olarak en üst dereceli eyleme ayırmayı yeniden sağlar.
 
-Personalizer ile çalışmaya başlama, aşağıdaki adımları içerir:
+Kişiselleştiriciye Başlarken aşağıdaki adımları içerir:
 
-1. SDK'ya başvurma 
+1. SDK 'ya başvurma 
 1. Kullanıcılarınıza göstermek istediğiniz eylemleri derecelendirmek için kod yazma,
-1. Döngü eğitmek için ödül göndermek için kod yazma.
+1. Döngüyü eğitme için kod yazma.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Gereksinim duyduğunuz bir [Personalizer hizmet](how-to-settings.md) abonelik anahtarını ve uç noktasını hizmet URL'sini alabilirsiniz. 
+* Abonelik anahtarınızı ve uç nokta hizmeti URL 'nizi almak için bir [kişiselleştirici hizmeti](how-to-settings.md) gereklidir. 
 * [Visual Studio 2015 veya 2017](https://visualstudio.microsoft.com/downloads/).
-* [Microsoft.Azure.CognitiveServices.Personalizer](https://go.microsoft.com/fwlink/?linkid=2092272) SDK'sı NuGet paketi. Yükleme yönergeleri aşağıda verilmiştir.
+* [Microsoft. Azure. Biliveservices. kişiselleştirici](https://go.microsoft.com/fwlink/?linkid=2092272) SDK NuGet paketi. Yükleme yönergeleri aşağıda verilmiştir.
 
 ## <a name="change-the-model-update-frequency"></a>Model güncelleştirme sıklığını değiştirme
 
-Azure portalında Personalizer kaynakta değişiklik **modeli güncelleştirme sıklığını** 10 saniyedir. Bu hizmet hızlı bir şekilde, üst eylem her yineleme için nasıl değiştiğini görmek sağlayarak eğitme.
+Azure portal kişiselleştirici kaynağında, **model güncelleştirme sıklığını** 10 saniye olarak değiştirin. Bu, hizmeti hızlı bir şekilde eğitecektir ve her yineleme için en iyi eylem değişikliğini görmenizi sağlar.
 
-Personalizer döngü ilk örneği olduğunda hiçbir model olmuştur beri gelen eğitmek için herhangi bir ödül API çağrısı. Derece çağrıları eşit olasılıklar her öğe için döndürür. Uygulamanızı yine de her zaman RewardActionId çıktısını kullanarak içerik rank.
+Bir kişiselleştirici döngüsü ilk kez oluşturulduğunda, üzerinden eğitelenecek bir API çağrısı olmadığından model yoktur. Sıralama çağrıları her öğe için eşit olasılıklara dönüşe sahip olur. Uygulamanız hala Rewarterctionıd çıkışını kullanarak içeriği her zaman derecelendirmelidir.
 
-![Model güncelleştirme sıklığını değiştirme](./media/settings/configure-model-update-frequency-settings.png)
+![Model güncelleştirme sıklığını Değiştir](./media/settings/configure-model-update-frequency-settings.png)
 
-## <a name="creating-a-new-console-app-and-referencing-the-personalizer-sdk"></a>Yeni bir konsol uygulaması oluşturma ve Personalizer SDK'ya başvurma 
+## <a name="creating-a-new-console-app-and-referencing-the-personalizer-sdk"></a>Yeni bir konsol uygulaması oluşturma ve kişiselleştirici SDK 'ya başvurma 
 
 <!--
 Get the latest code as a Visual Studio solution from [GitHub] (add link).
 -->
 
 1. Visual Studio'da yeni bir Visual C# Konsol Uygulaması oluşturun.
-1. Personalizer istemci kitaplığı NuGet paketini yükleyin. Menüsünde **Araçları**seçin **Nuget Paket Yöneticisi**, ardından **çözüm için NuGet paketlerini Yönet**.
-1. Denetleme **ön sürümü dahil et**.
-1. Seçin **Gözat** sekmesinde ve **arama** kutusuna `Microsoft.Azure.CognitiveServices.Personalizer`.
-1. Seçin **Microsoft.Azure.CognitiveServices.Personalizer** zaman görüntüler.
-1. Projenizin adına yanındaki onay kutusunu seçip **yükleme**.
+1. Kişiselleştirici istemci kitaplığı NuGet paketini yükler. Menüsünde **Araçlar**' ı seçin, **NuGet Paket Yöneticisi**' ni seçin ve ardından **çözüm için NuGet paketlerini yönetin**.
+1. **Ön sürümü dahil**et 'i işaretleyin.
+1. Araştır sekmesini **seçin** ve **arama** kutusuna yazın `Microsoft.Azure.CognitiveServices.Personalizer`.
+1. Görüntülediğinde **Microsoft. Azure. Biliveservices. kişiselleştirici** ' ı seçin.
+1. Proje adınızın yanındaki onay kutusunu işaretleyin ve ardından **Install**' ı seçin.
 
-## <a name="add-the-code-and-put-in-your-personalizer-and-azure-keys"></a>Kod ekleyip Personalizer ve Azure anahtarlarınızı yerleştirin
+## <a name="add-the-code-and-put-in-your-personalizer-and-azure-keys"></a>Kodu ekleyin ve kişiselleştirici ve Azure Anahtarlarınıza yerleştirin
 
 1. Program.cs içeriğini şu kodla değiştirin. 
-1. Değiştirin `serviceKey` geçerli Personalizer abonelik anahtarınız ile değeri.
-1. Değiştirin `serviceEndpoint` , hizmet uç noktası ile. `https://westus2.api.cognitive.microsoft.com/` bunun bir örneğidir.
+1. Değeri `serviceKey` geçerli kişiselleştirici abonelik anahtarınızla değiştirin.
+1. Hizmet `serviceEndpoint` uç noktanızla değiştirin. `https://westus2.api.cognitive.microsoft.com/` bunun bir örneğidir.
 1. Programı çalıştırın.
 
 ## <a name="add-code-to-rank-the-actions-you-want-to-show-to-your-users"></a>Kullanıcılarınıza göstermek istediğiniz eylemleri derecelendirmek için kod ekleyin
 
-Aşağıdaki C# kodudur kullanıcı bilgileri, _features ve içeriğinizi hakkında bilgi iletmek için yapılandırılabilip _eylemleri_, SDK'sını kullanarak Personalizer için. Eylem, kullanıcıya göstermek için sıralanmış üst personalizer döndürür.  
+Aşağıdaki C# kod, SDK 'Yı kullanarak kişiselleştiriciye Kullanıcı bilgilerini, _özellikleri ve İçerikleriniz hakkındaki bilgileri geçirmek için kapsamlıbir listedir. Kişiselleştirici, Kullanıcı göstermek için en üstteki dereceli eylemi döndürür.  
 
 ```csharp
 using Microsoft.Azure.CognitiveServices.Personalizer;
@@ -256,15 +256,15 @@ namespace PersonalizerExample
 
 ## <a name="run-the-program"></a>Programı çalıştırma
 
-Programı derleyin ve çalıştırın. Hızlı Başlangıç programı birkaç soru özellikleri bilinen kullanıcı tercihleri toplamak için ardından üst eylem sağlar ister.
+Programı derleyin ve çalıştırın. Hızlı başlangıç programı, özellikler olarak bilinen Kullanıcı tercihlerini toplamak için birkaç soru sorar ve sonra en iyi eylemi sağlar.
 
-![Hızlı Başlangıç programı birkaç soru özellikleri bilinen kullanıcı tercihleri toplamak için ardından üst eylem sağlar ister.](media/csharp-quickstart-commandline-feedback-loop/quickstart-program-feedback-loop-example.png)
+![Hızlı başlangıç programı, özellikler olarak bilinen Kullanıcı tercihlerini toplamak için birkaç soru sorar ve sonra en iyi eylemi sağlar.](media/csharp-quickstart-commandline-feedback-loop/quickstart-program-feedback-loop-example.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 Hızlı başlangıçla işiniz bittiğinde, bu hızlı başlangıçta oluşturulan tüm dosyaları kaldırın. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Personalizer nasıl çalışır?](how-personalizer-works.md)
+[Kişiselleştirici nasıl kullanılır?](how-personalizer-works.md)
 
 

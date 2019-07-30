@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 1aed6f9a0ceec18ca800e5030ec09bbb8d98cb76
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e85f9a90af778a7e68bf761d8d2159e808cf122d
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560719"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639217"
 ---
 # <a name="phrase-list-features-in-your-luis-app"></a>LUSıS uygulamanızdaki ifade listesi özellikleri
 
@@ -35,7 +35,7 @@ Tümcecik listeleri belirli bir amaca veya varlığa bağlı değildir, ancak t�
 
 ## <a name="how-to-use-phrase-lists"></a>İfade listeleri kullanma
 
-Uygulamanızda uygulama için önemli sözcükler veya tümcecikler olduğunda bir tümcecik listesi oluşturun, örneğin:
+Uygulamanızda uygulama için önemli sözcükler veya tümcecikler olduğunda [bir tümcecik listesi oluşturun](luis-how-to-add-features.md) , örneğin:
 
 * sektör koşulları
 * Argo
@@ -79,7 +79,7 @@ Tümcecik listesi zaman içinde büyüdükçe, bazı terimlerin birçok formu (e
 
 <a name="phrase-lists-help-identify-simple-exchangeable-entities"></a>
 
-## <a name="phrase-lists-help-identify-simple-interchangeable-entities"></a>Tümcecik listeler Yardım basit birbirinin yerine varlıkları tanımlama
+## <a name="phrase-lists-help-identify-simple-interchangeable-entities"></a>Tümcecik listeleri basit bir değiştirilebilir varlıkların belirlenmesine yardımcı olur
 Birbirinin yerine ifade listeleri LUIS uygulamanızın performansını ayarlamak için iyi bir yoludur. Uygulamanızın doğru amaç konuşma tahmin etme veya varlık tanıma sorun varsa, konuşma olağan dışı bir sözcük veya anlamları belirsiz olabilir sözcükler içeren hakkında düşünün. Bu sözcükler tümcecik listesinde içermek için iyi adaylar değildir.
 
 ## <a name="phrase-lists-help-identify-intents-by-better-understanding-context"></a>Tümcecik listeler Yardım hedefleri daha iyi anlama bağlamdan tanımlayın
@@ -88,7 +88,7 @@ Bir ifade listesi LUIS sıkı eşleştirme işlemi yapmak veya her zaman deyim l
 Bir ifade listesine eklenmesi, daha fazla örnek konuşma eklemeye yönelik bir amacı bir alternatiftir. 
 
 ## <a name="when-to-use-phrase-lists-versus-list-entities"></a>Ne zaman tümceciğini kullanın varlıklar listesi listeler
-Bir ifade listesi hem liste varlıklar arasında tüm hedefleri konuşma etkileyebilir, ancak her bunu farklı bir şekilde yapar. Hedefi tahmin puanı etkilemek için bir ifade listesini kullanın. Bir liste varlığı, bir tam metin eşleşmesi için varlık ayıklama etkilemek için kullanın. 
+Her iki ifade listesi ve [liste varlığı](reference-entity-list.md) , her türlü amaç genelinde bir şekilde etkilenirken, bu, her biri farklı bir şekilde olur. Hedefi tahmin puanı etkilemek için bir ifade listesini kullanın. Bir liste varlığı, bir tam metin eşleşmesi için varlık ayıklama etkilemek için kullanın. 
 
 ### <a name="use-a-phrase-list"></a>Bir ifade listesini kullanın
 Bir ifade listesiyle LUIS hala bağlam dikkate alın ve benzer öğeleri, ancak tam bir eşleşme yok, listedeki öğeleri tanımlamak için generalize. LUIS uygulamanızı generalize ve bir kategorideki yeni öğeleri tanımlamak için gerekiyorsa, bir ifade listesini kullanın. 

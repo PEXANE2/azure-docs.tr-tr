@@ -9,26 +9,26 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/29/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: a9a6e7ae48a51ab10e6ba2e5d3996e61938c6f3a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b962fc32cdcde0509cfa60d105022bb208633ae3
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560839"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639295"
 ---
 # <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>LUSıS portalındaki 1000 ile Batch testleri
 
-Toplu test doğrular, [etkin](luis-concept-version.md#active-version) tahmin doğruluğunun ölçmek için eğitilen modeli. Toplu test geçerli eğitilen modelinizde grafikteki her bir hedefi ve varlık doğruluğunu görüntülemenize yardımcı olur. Uygulamanız için doğru amacını tanımlamak sık sık başarısız olursa bir amaç için daha fazla örnek Konuşma ekleme gibi doğruluğunu, artırmak için uygun eylemde toplu test sonuçlarını gözden geçirin.
+Toplu test doğrular, [etkin](luis-concept-version.md#active-version) tahmin doğruluğunun ölçmek için eğitilen modeli. Batch testi, geçerli eğitilen modelinizdeki her bir amaç ve varlığın doğruluğunu görüntülemenize yardımcı olur ve sonuçları grafik ile görüntüler. Uygulamanız için doğru amacını tanımlamak sık sık başarısız olursa bir amaç için daha fazla örnek Konuşma ekleme gibi doğruluğunu, artırmak için uygun eylemde toplu test sonuçlarını gözden geçirin.
 
 ## <a name="group-data-for-batch-test"></a>Toplu test grubu verileri
 
-Toplu test etmek için kullanılan konuşma LUIS için yeni önemlidir. Bir veri kümesi konuşma varsa, konuşma üç kümelerine ayırmak: bir amaç için eklenen konuşma, yayımlanan uç noktasından alınan konuşma ve onu eğitildi sonra LUIS toplu test için kullanılan konuşma. 
+Toplu test etmek için kullanılan konuşma LUIS için yeni önemlidir. Bir dizi veri kümesi varsa, bu noktaları üç küme içine ayırın: bir amaca eklenen örnek, yayımlanan uç noktasından alınan utterler ve eğitilen işlem testi için kullanılan utterslar. 
 
-## <a name="a-dataset-of-utterances"></a>Konuşma bir veri kümesi
+## <a name="a-data-set-of-utterances"></a>Bir dizi veri kümesi
 
-Bir toplu iş dosyası olarak bilinen, konuşma, gönderme bir *veri kümesi*, batch test etmek için. Veri kümesi en fazla 1.000 etiketli içeren JSON biçimli bir dosya olan **yinelenmeyen** konuşma. 10 adede kadar veri kümeleri, bir uygulamada test edebilirsiniz. Daha fazla test etmek gerekiyorsa, bir veri kümesini silin ve ardından yeni bir tane ekleyin.
+Toplu işlem testi için *veri kümesi*olarak bilinen uttersünlerdeki toplu iş dosyasını gönder. Veri kümesi, **mükerrer olmayan** bir şekilde etiketlenmiş en fazla 1.000 içeren JSON biçimli bir dosyadır. Bir uygulamada en fazla 10 veri kümesi test edebilirsiniz. Daha fazla test etmeniz gerekiyorsa, bir veri kümesini silip yeni bir tane ekleyin.
 
 |**kuralları**|
 |--|
@@ -106,7 +106,7 @@ Sık karşılaşılan hatalar şunlardır:
 
 ## <a name="batch-test-state"></a>Toplu test durumu
 
-LUIS, her veri kümesinin son test durumunu izler. Bu, son çalıştırma boyutu (konuşma toplu iş sayısı), tarih ve son sonucu (başarılı bir şekilde tahmin edilen konuşma sayısı) içerir.
+LUO, her bir veri kümesinin son testinin durumunu izler. Bu, son çalıştırma boyutu (konuşma toplu iş sayısı), tarih ve son sonucu (başarılı bir şekilde tahmin edilen konuşma sayısı) içerir.
 
 <a name="sections-of-the-results-chart"></a>
 
@@ -114,7 +114,7 @@ LUIS, her veri kümesinin son test durumunu izler. Bu, son çalıştırma boyutu
 
 Toplu test sonucu bir hata matris bilinen bir dağılım grafiği olur. Toplu iş dosyası, geçerli modelin tahmin edilen amaç ve varlıkları konuşma 4 yönlü karşılaştırması grafiğidir. 
 
-Veri noktası üzerinde **yanlış pozitif** ve **False negatif** bölümleri araştırılmalıdır hataları gösterir. Tüm veri noktaları kullanıyorsanız **gerçek pozitif** ve **True negatif** bölümler sonra uygulamanızın doğruluğu, bu veri kümesinde mükemmeldir.
+Veri noktası üzerinde **yanlış pozitif** ve **False negatif** bölümleri araştırılmalıdır hataları gösterir. Tüm veri noktaları **doğru pozitif** ve **gerçek negatif** bölümlerdir, bu veri kümesinde uygulamanızın doğruluğu mükemmeldir.
 
 ![Grafik dört bölüm](./media/luis-concept-batch-test/chart-sections.png)
 

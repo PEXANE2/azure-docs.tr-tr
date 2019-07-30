@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 8821ce46c65ac8bca36f006ef77bcaf475b0573d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: fad0fada4d9dd888b0b2a37b59e4eac1e016aec4
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559642"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663590"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Özel Konuşma Tanıma için veri hazırlama
 
@@ -29,7 +29,7 @@ Bu tabloda, kabul edilen veri türleri, her veri türü ne zaman kullanılmalı 
 |-----------|-----------------|----------|-------------------|----------|
 | [Ses](#audio-data-for-testing) | Evet<br>Görsel inceleme için kullanılır | 5 + ses dosyası | Hayır | Yok |
 | [Ses + ınsan etiketli yazılı betikler](#audio--human-labeled-transcript-data-for-testingtraining) | Evet<br>Doğruluğu değerlendirmek için kullanılır | 0,5-5 saat ses | Evet | 1-1.000 saat ses |
-| [İlgili metin](##related-text-data-for-training) | Hayır | Yok | Evet | 1-200 MB ilgili metin |
+| [İlgili metin](#related-text-data-for-training) | Hayır | Yok | Evet | 1-200 MB ilgili metin |
 
 Dosyalar bir veri kümesine türlerine göre gruplanmalı ve zip dosyası olarak karşıya yüklenir. Her veri kümesi yalnızca tek bir veri türü içerebilir.
 
@@ -52,7 +52,7 @@ Ses verileri, Microsoft 'un temel konuşma konuşmadan metin modelinin veya öze
 
 Ses dosyalarınızın Özel Konuşma Tanıma ile kullanım için doğru biçimlendirildiğinden emin olmak için bu tabloyu kullanın:
 
-| Özellik | Değer |
+| Özellik | Value |
 |----------|-------|
 | Dosya biçimi | RIFF (WAV) |
 | Örnek hızı | 8\.000 Hz veya 16.000 Hz |

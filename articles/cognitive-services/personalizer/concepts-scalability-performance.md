@@ -1,37 +1,37 @@
 ---
-title: Ölçeklenebilirlik ve performans - Personalizer
+title: Ölçeklenebilirlik ve performans-kişiselleştirici
 titleSuffix: Azure Cognitive Services
-description: 'Yüksek performanslı ve trafiği yüksek Web siteleri ve uygulamalar ile Personalizer ölçeklenebilirlik ve performans için dikkate alınması gereken iki ana etmene vardır: gecikme süresi ve eğitim işleme.'
+description: 'Yüksek performanslı ve yüksek trafikli web siteleri ve uygulamalar, ölçeklenebilirlik ve performans için kişiselleştirmede göz önünde bulundurmanız gereken iki ana etkene sahiptir: gecikme süresi ve eğitim performansı.'
 services: cognitive-services
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/07/2019
-ms.author: edjez
-ms.openlocfilehash: 06c2e65c723e18acc515dd7effc61aae0564f411
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.author: diberry
+ms.openlocfilehash: d116f6bd389b1404ea723c965111cd05880e6c30
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722427"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68662810"
 ---
 # <a name="scalability-and-performance"></a>Ölçeklenebilirlik ve performans
 
-Yüksek performanslı ve trafiği yüksek Web siteleri ve uygulamalar ile Personalizer ölçeklenebilirlik ve performans için dikkate alınması gereken iki ana Etkenler vardır:
+Yüksek performanslı ve yüksek trafikli web siteleri ve uygulamalar, ölçeklenebilirlik ve performans için Kişiselleştiriciye göz önünde bulundurmanız gereken iki ana etkene sahiptir:
 
-* Düşük gecikme süresi derece API çağrısı yaparken tutma
-* Eğitim aktarım hızı ile olay girişi sürdürdüğünden emin olma
+* Derecelendirme API 'SI çağrıları yaparken düşük gecikme süresi tutma
+* Eğitim aktarım hızının olay girişi ile devam ettiğinizden emin olma
 
-Kişiselleştirme derecede çok hızlı bir şekilde ile REST API aracılığıyla iletişim ayrılmış çağrı süresi çoğunu döndürebilir. Azure otomatik ölçeklendirme isteklerine hızlı yanıt olanağı sağlar.
+Kişiselleştirme, REST API aracılığıyla iletişime ayrılan çağrı süresinin büyük bir bölümünü hızla bir derece döndürebilir. Azure, isteklere hızla yanıt verebilme özelliğini otomatik olarak sağlar.
 
-##  <a name="low-latency-scenarios"></a>Düşük gecikme süresi senaryoları
+##  <a name="low-latency-scenarios"></a>Düşük gecikmeli senaryolar
 
-Bazı uygulamalar, düşük gecikme süreleriyle derecede döndürülürken gerektirir. Bu gerekli değildir:
+Bazı uygulamalar bir derece döndürürken düşük gecikme süreleri gerektirir. Bu gereklidir:
 
-* Kullanıcı göstermeden önce belirgin bir süre beklemesini tutmak için içerik sıralanmış.
-* Aşırı trafik yaşayan bir sunucu yardımcı olacak nadir işlem saati ve ağ bağlantıları bağlamadan kaçının.
+* Kullanıcının, derecelendirilen içeriği görüntülemeden önce fark edilebilir bir süre beklememasını sağlamak.
+* Extreme trafiği yaşayan bir sunucuda, nadir işlem süresini ve ağ bağlantılarını kullanmaktan kaçının.
 
 <!--
 
@@ -47,21 +47,21 @@ If you require latencies under a millisecond, and have already tested using Pers
 
 -->
 
-## <a name="scalability-and-training-throughput"></a>Ölçeklenebilirlik ve eğitim aktarım hızı
+## <a name="scalability-and-training-throughput"></a>Ölçeklenebilirlik ve eğitim performansı
 
-Boyut sayısı ve ödül API'leri sonra Personalizer tarafından zaman uyumsuz olarak gönderilen iletileri retrained bir model güncelleştirerek personalizer works temel. Bu iletiler, uygulama için bir Azure Event Hubs'a kullanarak gönderilir.
+Kişiselleştirici, API 'Lerin derecelendirmeden ve geri alındıktan sonra zaman uyumsuz olarak gönderilen iletilere bağlı olarak yeniden paketlenmiş bir model güncelleştirerek işe yarar. Bu iletiler, uygulama için bir Azure EventHub kullanılarak gönderilir.
 
- Çoğu uygulama, en fazla birleştirme ve eğitim Personalizer verimini ulaşacak düşüktür. Bu üst sınıra ulaşana uygulamayı yavaşlatır değil, ancak olay hub'ı kuyrukları, temizlenmesi dahili olarak hızlı doldurulur kapsıyor.
+ Çoğu uygulama, kişiselleştirici için en fazla katılma ve eğitim aktarım hızına ulaşacaktır. Bu sınıra ulaşıldığında, uygulama yavaşlamadan, Olay Hub 'ı sıralarının, temizlenmeden daha hızlı doldurulmuş olduğunu fark eder.
 
-## <a name="how-to-estimate-your-throughput-requirements"></a>Aktarım hızı gereksinimlerinizi tahmin etme
+## <a name="how-to-estimate-your-throughput-requirements"></a>Verimlilik gereksinimlerinizi tahmin etme
 
-* Bağlamını ve eylem JSON belgelerini uzunluklarının ekleme sıralaması olay başına bayt sayısını tahmin edin.
-* 20 MB/sn bu tahmini ortalama bayt sayısı ile böler.
+* Bağlam ve eylem JSON belgelerinin uzunluklarını ekleyerek sıralama olayı başına ortalama bayt sayısını tahmin edin.
+* Bu tahmini ortalama bayt ile 20 MB/sn bölün.
 
-Örneğin, ortalama yükünüzü 500 özelliklere sahiptir ve her bir tahmini 20 karakter ise, her olay yaklaşık 10 kb olduğundan. Bu tahminler, u 20.000.000 / 10.000 2.000 olay/sn, yaklaşık 173 milyon olay/gün olduğu =. 
+Örneğin, ortalama yükünüzü 500 özelliği varsa ve her biri tahmini 20 karakter ise, her olay yaklaşık 10 KB olur. Bu tahminlerde 20.000.000/10.000 = 2.000 olay/sn, bu da 173.000.000 olaylar/gün ile ilgilidir. 
 
-Limitler ulaşıyor, aynı zamanda mimarisi öneriler için lütfen destek ekibimize başvurun.
+Bu sınırlara ulaşmanız durumunda, lütfen mimari önerisi için destek ekibimize başvurun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Oluşturma ve yapılandırma Personalizer](how-to-settings.md).
+[Kişiselleştirici oluşturma ve yapılandırma](how-to-settings.md).

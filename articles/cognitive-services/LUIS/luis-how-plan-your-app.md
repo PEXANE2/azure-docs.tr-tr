@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 121423682bbd9bbb32f2ab1d02e48d3237ee830d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: dc648b30dc1236080be06044f510557ae0ce9476
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563772"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638304"
 ---
 # <a name="plan-your-luis-app-with-subject-domain-intents-and-entities"></a>LUSıS uygulamanızı konu etki alanı, amaçlar ve varlıklar ile planlayın
 
-Uygulamanızı planlama önemlidir. Olası hedefleri ve uygulamanız için uygun olan varlıklar dahil olmak üzere, etki alanı tanımlayın.  
+Uygulamanızı planlamak için, konu alanı etki alanınızı belirlemeniz gerekir. Bu, uygulamanızla ilgili olası amaçları ve varlıkları içerir.  
 
 ## <a name="identify-your-domain"></a>Etki alanınızı tanımlayın
 
@@ -39,11 +39,13 @@ Düşünün [hedefleri](luis-concept-intent.md) uygulamanızın görev için ön
 
 ## <a name="create-example-utterances-for-each-intent"></a>Her bir amaç için örnek konuşma oluşturma
 
-Intents belirledikten sonra her amaç için 10 veya 15 örnek konuşma oluşturun. Başlangıç değil bu sayıdan daha az olması veya her amaç için birçok konuşma oluşturun. Her utterance önceki utterance farklı olmalıdır. Konuşma iyi çeşitli genel sözcük sayısı, sözcük seçimi, fiil şimdiki ve noktalama işaretleri içerir. 
+Hedefleri belirledikten sonra her bir amaç için 15 ila 30 örnek oluşturma oluşturun. Kullanmaya başlamak için bu sayıdan daha az sahip değildir veya her bir amaç için çok fazla sayıda utterme oluşturun. Her utterance önceki utterance farklı olmalıdır. Konuşma iyi çeşitli genel sözcük sayısı, sözcük seçimi, fiil şimdiki ve noktalama işaretleri içerir. 
+
+Daha fazla [bilgi için,](luis-concept-utterance.md) bu bilgileri gözden geçirin.
 
 ## <a name="identify-your-entities"></a>Varlıklarınızı tanımlayın
 
-Ayıklanan istediğiniz varlıkları örnek konuşma belirleyin. Bir kitap için hedef, tarih, havayolu, bilet kategorisi gibi bazı bilgiler gerekiyor ve seyahat sınıfı. Bu veri türleri için varlıklar oluşturun ve ardından işaretleyin [varlıkları](luis-concept-entity-types.md) örnek konuşma içinde bir işlemi gerçekleştirmek için önemli olduğundan. 
+Ayıklanan istediğiniz varlıkları örnek konuşma belirleyin. Bir uçuş sağlamak için hedef, tarih, Airline, Bilet kategorisi ve seyahat sınıfı gibi bilgilere ihtiyacınız vardır. Bu veri türleri için varlıklar oluşturun ve ardından, bir amacı elde etmek için önemli olduklarından, örnek türlerdeki [varlıkları](luis-concept-entity-types.md) işaretleyin. 
 
 Uygulamanızda kullanmak için hangi varlıkları belirlerken, farklı nesne türleri arasındaki ilişkileri yakalamak için varlıkların olduğunu aklınızda bulundurun. [LUIS varlıklarda](luis-concept-entity-types.md) farklı türleri hakkında daha fazla ayrıntı sağlar.
 

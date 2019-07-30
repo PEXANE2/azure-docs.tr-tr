@@ -9,18 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: c1a0afc909aa7ef16fa54b931e1601c2ce7304cc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 31d979b92bdf050f28ac5d7549218016dc5e473c
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560409"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68637934"
 ---
-# <a name="test-your-luis-app-in-the-luis-portal"></a>Lusıs uygulamanızı Lua portalında test etme
 <a name="train-your-app"></a>
-[Test](luis-concept-test.md) uygulama yinelemeli bir işlemdir. LUIS uygulamanızı eğitim sonra bu amaç ve varlıkları doğru tanınır olmadığını görmek için örnek Konuşma ile test edin. Değilseniz, güncelleştirmeleri LUIS uygulaması, eğitin ve test için yeniden yapın. 
+
+# <a name="test-your-luis-app-in-the-luis-portal"></a>Lusıs uygulamanızı Lua portalında test etme
+
+Bir uygulamayı [test etmek](luis-concept-test.md) , yinelemeli bir işlemdir. LUIS uygulamanızı eğitim sonra bu amaç ve varlıkları doğru tanınır olmadığını görmek için örnek Konuşma ile test edin. Değilseniz, güncelleştirmeleri LUIS uygulaması, eğitin ve test için yeniden yapın. 
 
 <!-- anchors for H2 name changes -->
 <a name="test-your-app"></a>
@@ -31,13 +33,13 @@ ms.locfileid: "68560409"
 
 1. Adını seçerek uygulamanıza erişmek **uygulamalarım** sayfası. 
 
-2. Erişim için **Test** slayt genişletme paneli, select **Test** uygulamanızın üst panelinde.
+1. Erişim için **Test** slayt genişletme paneli, select **Test** uygulamanızın üst panelinde.
 
     ![Sayfa eğitme ve Test uygulaması](./media/luis-how-to-interactive-test/test.png)
 
-3. Bir utterance metin kutusuna girin ve Enter tuşuna basın. İstediğiniz gibi konuşma kadar test yazabilirsiniz **Test**, ancak aynı anda yalnızca bir utterance.
+1. Bir utterance metin kutusuna girin ve Enter tuşuna basın. İstediğiniz gibi konuşma kadar test yazabilirsiniz **Test**, ancak aynı anda yalnızca bir utterance.
 
-4. Utterance, üst amacını ve score konuşma metin kutusunun altında listesine eklenir.
+1. Utterance, üst amacını ve score konuşma metin kutusunun altında listesine eklenir.
 
     ![Etkileşimli sınama yanlış amacını tanımlar](./media/luis-how-to-interactive-test/test-weather-1.png)
 
@@ -49,7 +51,7 @@ Bir test sonucunun ayrıntılarını incelemek **inceleyin** paneli.
 
     ![Test sonuçlarıyla ilgili daha fazla ayrıntı görmek için Inceleme düğmesini seçin](./media/luis-how-to-interactive-test/inspect.png)
 
-2. **İnceleme** paneli görüntülenir. Panelin amacını ve bunun yanı sıra tanımlanan herhangi bir varlık Puanlama üst içerir. Paneli, seçilen utterance sonucunu gösterir.
+1. **İnceleme** paneli görüntülenir. Panelin amacını ve bunun yanı sıra tanımlanan herhangi bir varlık Puanlama üst içerir. Paneli, seçilen utterance sonucunu gösterir.
 
     ![Panelin amacını ve bunun yanı sıra tanımlanan herhangi bir varlık Puanlama üst içerir. Paneli, seçilen utterance sonucunu gösterir.](./media/luis-how-to-interactive-test/inspect-panel.png)
 
@@ -57,7 +59,7 @@ Bir test sonucunun ayrıntılarını incelemek **inceleyin** paneli.
 
 1. Hedefi Puanlama üst yanlışsa, seçin **Düzenle** düğmesi.
 
-2.  Aşağı açılan listesinde, doğru utterance hedefini seçin.
+1.  Aşağı açılan listesinde, doğru utterance hedefini seçin.
 
     ![Doğru hedefini seçin](./media/luis-how-to-interactive-test/intent-select.png)
 
@@ -103,16 +105,14 @@ Dahil etmek için aşağıdaki yordamı kullanın. [Bing yazım denetimi v7](htt
 
 1. İçinde **Test** bölmesinde bir utterance girin. Utterance tahmin bittiğinde **[inceleyin](#inspect-score)** girdiğiniz utterance altında. 
 
-2. Zaman **inceleyin** panelini açar, seçim  **[ile yayımlanan karşılaştırma](#compare-with-published-version)** . 
+1. Zaman **inceleyin** panelini açar, seçim  **[ile yayımlanan karşılaştırma](#compare-with-published-version)** . 
 
-3. Zaman **yayımlanan** panelini açar, seçim  **[ek ayarlar](#additional-settings-in-test-panel)** .
+1. Zaman **yayımlanan** panelini açar, seçim  **[ek ayarlar](#additional-settings-in-test-panel)** .
 
-4. Açılan iletişim kutusuna girin, **Bing yazım denetimi** hizmet anahtarı. 
-    ![Bing yazım denetimi hizmet anahtarı girin](./media/luis-how-to-interactive-test/interactive-with-spell-check-service-key.png)
+1. Açılır iletişim kutusunda **Bing yazım denetimi etkinleştir** ' i işaretleyin ve anahtarı girip **bitti**' yi seçin. 
+    ![Bing yazım denetimi hizmet anahtarı girin](./media/luis-how-to-interactive-test/interactive-with-spell-check-service-key-text.png)
 
-5. Bir hatalı gibi yazım denetimi ile bir sorgu girin `book flite to seattle` seçin girin. Sözcük yanlış yazımını `flite` LUIS için gönderilen sorgu değiştirilir ve sonuçta elde edilen JSON olarak hem özgün sorguyu gösterir. `query`ve düzeltilmiş sorgu yazımı olarak `alteredQuery`.
-
-    ![JSON yazım denetimi düzeltildi](./media/luis-how-to-interactive-test/interactive-with-spell-check-results.png)
+1. Bir hatalı gibi yazım denetimi ile bir sorgu girin `book flite to seattle` seçin girin. Sözcük yanlış yazımını `flite` LUIS için gönderilen sorgu değiştirilir ve sonuçta elde edilen JSON olarak hem özgün sorguyu gösterir. `query`ve düzeltilmiş sorgu yazımı olarak `alteredQuery`.
 
 <a name="json-file-with-no-duplicates"></a>
 <a name="import-a-dataset-file-for-batch-testing"></a>

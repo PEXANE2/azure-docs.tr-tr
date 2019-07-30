@@ -8,13 +8,13 @@ ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
-ms.date: 02/08/2019
-ms.openlocfilehash: bbd009d127eecc4df357fc1073ba4055d13a8b2c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 07/29/2019
+ms.openlocfilehash: c6ad1cd7af02f281c53ece23a018f8b5ec0c7da9
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569017"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640945"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-using-ssms"></a>Öğretici: SSMS kullanarak Azure SQL veritabanı 'nda tek bir veritabanında ilişkisel veritabanı tasarlama
 
@@ -30,6 +30,8 @@ Azure SQL veritabanı, Microsoft Bulut (Azure) içindeki ilişkisel bir hizmet o
 
 \* Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
+> [!TIP]
+> Aşağıdaki Microsoft Learn modülü, basit bir veritabanının oluşturulması dahil olmak üzere [Azure SQL veritabanını sorgulayan bir ASP.NET uygulamasının nasıl geliştirileceği ve yapılandırılacağı](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)hakkında bilgi edinmenize yardımcı olur.
 > [!NOTE]
 > Bu öğreticinin amacı doğrultusunda tek bir veritabanı kullanıyoruz. Ayrıca, bir elastik havuzda veya yönetilen bir örnekteki örnek veritabanında havuza alınmış bir veritabanı da kullanabilirsiniz. Yönetilen bir örneğe bağlantı için bkz. bu yönetilen örnek hızlı başlangıçlara bakın: [Hızlı Başlangıç: Azure SQL veritabanı yönetilen örneğine](sql-database-managed-instance-configure-vm.md) bağlanmak için Azure VM 'yi yapılandırma ve [hızlı başlangıç: Şirket](sql-database-managed-instance-configure-p2s.md)Içinden Azure SQL veritabanı yönetilen örneği ile noktadan siteye bağlantı yapılandırın.
 

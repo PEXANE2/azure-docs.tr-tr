@@ -8,14 +8,14 @@ ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
-ms.date: 02/08/2019
+ms.date: 07/29/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: ce9ba7c197bb604b9d71e2bf501ca67d32865f38
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9850285482db4f5981c183b51152ba1a3ac4975c
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566869"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640133"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>Öğretici: Tek veya havuza alınmış bir veritabanının güvenliğini sağlama
 
@@ -38,6 +38,9 @@ Azure SQL veritabanı, aşağıdakileri yaparak, tek veya havuza alınmış bir 
 > Yönetilen bir örnekteki Azure SQL veritabanı, [Azure SQL veritabanı yönetilen örneği](sql-database-managed-instance-index.yml) ve [bağlantı mimarisi](sql-database-managed-instance-connectivity-architecture.md)bölümünde açıklandığı gibi ağ güvenlik kuralları ve özel uç noktalar kullanılarak güvenli hale getirilir.
 
 Daha fazla bilgi edinmek için bkz. [Azure SQL veritabanı güvenliğine genel bakış](/azure/sql-database/sql-database-security-index) ve [yetenekler](sql-database-security-overview.md) makaleleri.
+
+> [!TIP]
+> Aşağıdaki Microsoft Learn modülü, [Azure SQL veritabanınızın güvenliğini sağlama](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/)hakkında bilgi edinmenize yardımcı olur.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

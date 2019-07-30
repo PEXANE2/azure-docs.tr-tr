@@ -8,22 +8,22 @@ ms.topic: include
 ms.date: 04/24/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 48bb91b3b2e9a31de63e515edb857bc2a170ea79
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: fbb537c9584c948af37694b3bfc77a7c345e084d
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67188156"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639146"
 ---
 ## <a name="deploy-the-function-app-project-to-azure"></a>İşlev uygulaması projesini Azure'a dağıtma
 
-Azure işlev uygulaması oluşturulduktan sonra kullanabileceğiniz [ `func azure functionapp publish` ](../articles/azure-functions/functions-run-local.md#project-file-deployment) proje kodunuzu Azure'a dağıtmak için temel araçları komutu. Aşağıdaki komutta `<APP_NAME>` uygulamanızı önceki adımdan adı.
+İşlev uygulaması Azure 'da oluşturulduktan sonra, proje kodunuzu Azure 'a dağıtmak için [`func azure functionapp publish`](../articles/azure-functions/functions-run-local.md#project-file-deployment) çekirdek Araçlar komutunu kullanabilirsiniz. Aşağıdaki komutta, yerine önceki adımdaki `<APP_NAME>` uygulamanızın adıyla değiştirin.
 
 ```bash
 func azure functionapp publish <APP_NAME>
 ```
 
-Okunabilirliği artırmak için kesilmiştir aşağıdakine benzer bir çıktı görürsünüz.
+Aşağıdakine benzer bir çıktı görürsünüz ve bu, okunabilirlik için kesildi:
 
 ```output
 Getting site publishing info...
@@ -39,4 +39,4 @@ Functions in myfunctionapp:
         Invoke url: https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow548FBDLS1....
 ```
 
-Artık Azure'da işlevinizi test etmek için kullanabilirsiniz, HttpTrigger için çağırma URL'si değerini kopyalayın. URL içeren bir `code` dize değeri işlevi anahtarınızı sorgudur. Bu anahtar, başkalarının Azure'da HTTP tetikleyici bitiş çağrısı zorlaştırır.
+Yalnızca Azure 'da işlevinizi `HttpTrigger`test etmek için kullanabileceğiniz değerinikopyalayın.`Invoke url` URL, işlev anahtarınız `code` olan bir sorgu dizesi değeri içeriyor. Bu anahtar başkalarının Azure 'da HTTP tetikleyici uç noktanızı aramasını zorlaştırır.

@@ -212,7 +212,7 @@ Azure Data Lake Store Gen1 ORC, Avro, JSON veya ikili biçimi ve veri kopyalamak
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Dataset öğesinin type özelliği ayarlanmalıdır **AzureDataLakeStoreFile**. |Evet |
+| type | Dataset öğesinin type özelliği ayarlanmalıdır **AzureDataLakeStoreFile**. |Evet |
 | folderPath | Data Lake Store içinde bir klasörün yolu. Belirtilmezse, kök dizinine işaret eder. <br/><br/>Joker karakter filtresi desteklenir. Joker karakterlere izin verilir `*` (sıfır veya daha fazla karakter ile eşleşir) ve `?` (eşleşen sıfır ya da tek bir karakter). Kullanım `^` joker karakter veya içinde bu kaçış karakteri, gerçek bir klasör adı varsa, kaçış için. <br/><br/>Örneğin: rootfolder/alt /. Daha fazla örneklere bakın [klasör ve dosya filtreleme örnekler](#folder-and-file-filter-examples). |Hayır |
 | fileName | Belirtilen "folderPath" altında dosya adı veya joker karakter Filtresi. Bu özellik için bir değer belirtmezseniz, klasördeki tüm dosyaları için veri kümesini işaret eder. <br/><br/>Filtre, izin verilen joker karakterler olan `*` (sıfır veya daha fazla karakter ile eşleşir) ve `?` (eşleşen sıfır ya da tek bir karakter).<br/>-Örnek 1: `"fileName": "*.csv"`<br/>-Örnek 2: `"fileName": "???20180427.txt"`<br/>Kullanım `^` joker karakter veya içinde bu kaçış karakteri, gerçek dosya adı varsa, kaçış için.<br/><br/>Dosya adı değil belirtildiği zaman için bir çıktı veri kümesi ve **preserveHierarchy** belirtilmediyse etkinliği havuz kopyalama etkinliği, dosya adı şu deseni ile otomatik olarak oluşturur: "*Veri. [etkinlik] kimliği GUID çalıştırın. [GUID, FlattenHierarchy]. [biçim] yapılandırılmışsa. [yapılandırdıysanız sıkıştırma]* "Örneğin,"Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz". Tablo adı yerine bir sorgu kullanarak bir tablo kaynaktan kopyalarsanız, adı desendir " *[tablo adı]. [ Biçim]. [yapılandırdıysanız sıkıştırma]* "Örneğin,"MyTable.csv". |Hayır |
 | modifiedDatetimeStart | Son değiştirme özniteliğini göre dosyaları filtreleme. Dosya, son değiştirilme zamanı zaman aralığı içinde ise seçili `modifiedDatetimeStart` ve `modifiedDatetimeEnd`. Zaman biçimi UTC saat diliminde uygulanan "2018-12-01T05:00:00Z". <br/><br/> Veri taşıma genel performansını filtre dosyaları büyük miktarlarda dosya istediğinizde, bu ayarı etkinleştirerek etkilenir. <br/><br/> Özellikler, yani hiçbir dosya öznitelik filtresi, veri kümesine uygulanır ve NULL olabilir. Zaman `modifiedDatetimeStart` bir datetime değerine sahip ancak `modifiedDatetimeEnd` null, daha büyük olan son değiştirilen özniteliği dosyaları geldiğini veya tarih saat değeri eşit seçilir. Zaman `modifiedDatetimeEnd` bir datetime değerine sahip ancak `modifiedDatetimeStart` NULL ise, son değiştirilen özniteliği, tarih saat değerinden daha küçük dosyaların seçili anlamına gelir.| Hayır |
@@ -327,7 +327,7 @@ Azure Data Lake Store Gen1 ORC, Avro, JSON veya ikili biçimi verileri kopyalama
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | `type` Kopyalama etkinliği kaynağı özelliği ayarlanmalıdır **kümesinin kullanılması gerekir**. |Evet |
+| type | `type` Kopyalama etkinliği kaynağı özelliği ayarlanmalıdır **kümesinin kullanılması gerekir**. |Evet |
 | recursive | Belirtilen klasörün alt klasörleri ya da yalnızca veri yinelemeli olarak okunur olup olmadığını belirtir. Zaman `recursive` true olarak ve havuz boş bir klasörü bir dosya tabanlı depolama veya alt değil ya da kopyalanır havuz oluşturulur. İzin verilen değerler **true** (varsayılan) ve **false**. | Hayır |
 | maxConcurrentConnections | Eşzamanlı olarak veri deposuna bağlanmak için bağlantı sayısı. Yalnızca veri deposuna eş zamanlı bağlantı sınırlandırmak istediğinizde bu seçeneği belirtin. | Hayır |
 
@@ -422,7 +422,7 @@ Azure Data Lake Store Gen1 ORC, Avro, JSON veya ikili biçimi veri kopyalamak i�
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | `type` Kopyalama etkinliği havuz özelliği ayarlanmalıdır **AzureDataLakeStoreSink**. |Evet |
+| type | `type` Kopyalama etkinliği havuz özelliği ayarlanmalıdır **AzureDataLakeStoreSink**. |Evet |
 | copyBehavior | Kaynak dosyaları bir dosya tabanlı veri deposundan olduğunda kopyalama davranışını tanımlar.<br/><br/>İzin verilen değerler şunlardır:<br/><b>-(Varsayılan) PreserveHierarchy</b>: Hedef klasördeki ise dosya hiyerarşisini korur. Kaynak dosyanın kaynak klasöre göreli yol hedef dosya hedef klasöre göreli yol aynıdır.<br/><b>-FlattenHierarchy</b>: Tüm dosyaları kaynak klasörden hedef klasörü içinde ilk düzeyi var. Hedef dosyalar otomatik olarak oluşturulan adlarına sahip. <br/><b>-MergeFiles</b>: Tüm dosyaları kaynak klasörden bir dosya birleştirir. Dosya adı belirtilirse, birleştirilmiş dosya adı belirtilen adıdır. Aksi takdirde, dosya otomatik olarak oluşturulan addır. | Hayır |
 | maxConcurrentConnections | Eşzamanlı olarak veri deposuna bağlanmak için bağlantı sayısı. Yalnızca veri deposuna eş zamanlı bağlantı sınırlandırmak istediğinizde bu seçeneği belirtin. | Hayır |
 

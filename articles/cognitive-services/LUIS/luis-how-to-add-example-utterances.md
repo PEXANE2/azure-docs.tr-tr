@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 04/01/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: f02f50eef971e774236f534c0d664dfcf090dcae
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 04f0944173df59989745ee9167984b493f202b14
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563725"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638224"
 ---
 # <a name="add-an-entity-to-example-utterances"></a>Bir varlık için örnek Konuşma ekleme 
 
@@ -67,7 +67,7 @@ Bir şirketin bölüm listesi için değerleri normalleştirilmiş: `Accounting`
 
 ## <a name="add-a-composite-entity"></a>Bileşik varlık ekleme
 
-Bileşik varlıklar, bir üst varlık  oluşturmak Için mevcut varlıklardan oluşturulur. 
+Bileşik varlıklar, bir üst varlık oluşturmak Için mevcut varlıklardan oluşturulur. 
 
 Söylenişi `Does John Smith work in Seattle?`'in, Birleşik bir söylenişi, çalışan adının `John Smith`varlık bilgilerini ve bileşik varlıktaki konumu `Seattle` döndürebilirler. Alt varlıkların uygulamada zaten mevcut olması ve Bileşik varlık oluşturulmadan önce örnekte işaretlenmiş olması gerekir.
 
@@ -159,4 +159,4 @@ Eklemek, düzenlemek ve kaldırmak, konuşma sonra [eğitme](luis-how-to-train.m
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Amaçlarınızı etiketleyerek etiketleyerek artık  [bileşik bir varlık](luis-how-to-add-entities.md)oluşturabilirsiniz.
+Amaçlarınızı etiketleyerek etiketleyerek artık [bileşik bir varlık](luis-how-to-add-entities.md)oluşturabilirsiniz.

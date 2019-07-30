@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 04/18/2019
+ms.date: 07/29/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 5dd49035414c7e717c3d60ab9bc185f42dcac408
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6d4991a0a05bbdd7143987bfa227cc40732cda35
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560853"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639240"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>LUSıS modeliniz ve anahtarlarınız için sınırlar
 LUIS, birden fazla sınır alanlara sahip değildir. İlk [modeli sınır](#model-boundaries), amacı, varlıkları ve LUIS özellikleri denetler. İkinci alanı [kota sınırları](#key-limits) anahtar türüne göre. Üçüncü bir sınırları alanıdır [klavye birleşimi](#keyboard-controls) LUIS Web sitesi denetleme. Dördüncü alan [dünya bölge eşleme](luis-reference-regions.md) LUIS ile Web sitesi geliştirme LUIS arasındaki [uç nokta](luis-glossary.md#endpoint) API'leri. 
@@ -76,7 +76,7 @@ Yazma anahtar yazma ve uç noktası için farklı sınırlara sahiptir. LUIS hiz
 |Language Understanding [abonelik][pricing] -S0-temel katman|geçersiz|50/saniye|LUIS uç noktanızı sorgulama|
 |Bilişsel hizmet [aboneliği][pricing] -S0-standart katmanı|geçersiz|50/saniye|LUIS uç noktanızı sorgulama|
 |[Yaklaşım analizi tümleştirme](luis-how-to-publish-app.md#enable-sentiment-analysis)|geçersiz|Ücretsiz|Anahtar ifade veri ayıklama gibi yaklaşım bilgileri ekleme |
-|Konuşma tümleştirme|geçersiz|5\.50 ABD Doları/1 bin uç nokta istekleri|Konuşulan utterance dönüştürmek için metin utterance ve LUIS sonuçlar döndürebilir.|
+|[Konuşma tümleştirmesi](../speech-service/how-to-recognize-intents-from-speech-csharp.md)|geçersiz|5\.50 ABD Doları/1 bin uç nokta istekleri|Konuşulan utterance dönüştürmek için metin utterance ve LUIS sonuçlar döndürebilir.|
 
 ## <a name="keyboard-controls"></a>Klavye denetimleri
 
@@ -84,7 +84,7 @@ Yazma anahtar yazma ve uç noktası için farklı sınırlara sahiptir. LUIS hiz
 |--|--|
 |Denetim + E|belirteçler ve konuşma listesindeki varlıklar arasında geçiş yapar|
 
-## <a name="website-sign-in-time-period"></a>Web sitesi oturum zaman aralığı
+## <a name="website-sign-in-time-period"></a>Web sitesi oturum açma zamanı dönemi
 
 Oturum açma erişiminizi içindir **60 dakika**. Bu süre sonra bu hatayı alırsınız. Yeniden oturum açmanız gerekiyor.
 

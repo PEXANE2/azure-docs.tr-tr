@@ -9,17 +9,17 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 02/26/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 5cbdf94ef1899c4963f6ebe0149024baed4916a7
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7a2802bd4daa1a009c610688120c9a56583b054f
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564036"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639282"
 ---
 # <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>Bilişsel hizmetler dil anlama uygulamayla oluşturmaya yönelik en iyi uygulamalar
-LUIS uygulamanızı oluşturmak için yazma işleminin hızlandırılmasının uygulamayı kullanın. 
+LUSıS uygulamanızı derlemek için uygulama yazma işlemini kullanın: 
 
 * Dil modeli oluşturun
 * Birkaç eğitim örnek konuşma (10-15 hedefi başına) ekleme
@@ -27,7 +27,7 @@ LUIS uygulamanızı oluşturmak için yazma işleminin hızlandırılmasının u
 * Uç noktasından test 
 * Özellik ekleme
 
-Uygulamanız olduğunda [yayımlanan](luis-how-to-publish-app.md), Özellik Ekle geliştirme döngüsünü kullanın, yayımlama ve test uç noktasından. Sonraki geliştirme döngüsünü daha fazla örnek konuşma ekleyerek başlamaz. Modelinizi gerçek kullanıcı konuşma öğrenin LUIS izin vermez. 
+Uygulamanız [yayımlandıktan](luis-how-to-publish-app.md)sonra, uç noktadan özellik eklemek, yayımlamak ve test etmek için yazma döngüsünü kullanın. Sonraki geliştirme döngüsünü daha fazla örnek konuşma ekleyerek başlamaz. Modelinizi gerçek kullanıcı konuşma öğrenin LUIS izin vermez. 
 
 Geçerli örnek hem uç nokta konuşma döndürüyor kadar başarılara, yüksek tahmin puanları LUIS öğrenme işini etkili olması için sırada konuşma genişletmeyin. [Etkin öğrenme](luis-concept-review-endpoint-utterances.md), [desenler](luis-concept-patterns.md)ve [tümcecik listelerini](luis-concept-feature.md)kullanarak puanları geliştirir. 
 
@@ -78,7 +78,7 @@ Daha fazla bilgi için:
 
 ## <a name="do-add-phrase-lists-and-patterns-in-later-iterations"></a>İfade listeleri ve desenler sonraki yinelemelerde ekleme
 
-Uygulamanız sınanmadan önce bu uygulamaların uygulanmamaları en iyi uygulamadır. Bu özellikler daha fazla değerden daha büyük bir şekilde ağırlıklı olduğundan ve güvenilirliği eğeceğinden, ifade listeleri ve desenler eklemeden önce uygulamanın nasıl davranacağını anlamalısınız. 
+Uygulamanız sınanmadan önce bu uygulamaların uygulanmamaları en iyi uygulamadır. Bu özellikler daha fazla değerden daha büyük bir şekilde ağırlıklı olduğundan ve güvenilirliği eğeceğinden, [ifade listeleri](luis-concept-feature.md) ve [desenler](luis-concept-patterns.md) eklemeden önce uygulamanın nasıl davranacağını anlamalısınız. 
 
 Uygulamanızın bu olmadan nasıl davranacağını anladıktan sonra, bu özelliklerin her birini uygulamanıza uygulanan şekilde ekleyin. Her [yineleme](luis-concept-app-iteration.md) ile bu özellikleri eklemeniz veya özellikleri her bir sürümle değiştirmeniz gerekmez. 
 

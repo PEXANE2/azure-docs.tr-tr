@@ -5,14 +5,14 @@ ms.subservice: single-database
 ms.topic: include
 ms.date: 06/19/2019
 ms.author: mathoma
-ms.openlocfilehash: ae2dd7d88f07d75115eabd6a0069a981936f1b47
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: dd511375c6b007222185f25610aecbd9931a742b
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444446"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640068"
 ---
-Bu adımda, kaynak grubunuzu ve tek bir Azure SQL veritabanı veritabanını oluşturacaksınız. 
+Bu adımda, kaynak grubunuzu ve tek bir Azure SQL veritabanı veritabanını oluşturacaksınız.
 
 > [!IMPORTANT]
 > Bu makaledeki adımları gerçekleştirdiğiniz bilgisayarın genel IP adresini kullanmak için güvenlik duvarı kuralları ayarladığınızdan emin olun. 
@@ -20,7 +20,8 @@ Bu adımda, kaynak grubunuzu ve tek bir Azure SQL veritabanı veritabanını olu
 > Bilgi için bkz. [veritabanı düzeyinde güvenlik duvarı kuralı oluşturma](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) veya bilgisayarınızın sunucu düzeyinde güvenlik duvarı kuralı IÇIN kullanılan IP adresini belirleme bkz. [sunucu düzeyinde güvenlik duvarı oluşturma](../sql-database-server-level-firewall-rule.md).  
 
 # <a name="azure-portaltabazure-portal"></a>[Azure portal](#tab/azure-portal)
-Azure portal kullanarak kaynak grubunuzu ve tek veritabanınızı oluşturun. 
+
+Azure portal kullanarak kaynak grubunuzu ve tek veritabanınızı oluşturun.
 
 1. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** öğesini seçin.
 2. **Veritabanları** ' nı seçin ve SQL veritabanı ' **nı seçerek** **SQL veritabanı oluştur** sayfasını açın.
@@ -47,7 +48,7 @@ Azure portal kullanarak kaynak grubunuzu ve tek veritabanınızı oluşturun.
 
       > [!IMPORTANT]
       > Bu ve diğer hızlı başlangıçlara yönelik sunucu ve veritabanlarında oturum açabilmek için Sunucu Yöneticisi oturum açma bilgilerini ve parolayı kaydetmeyi unutmayın. Oturum açma veya parolayı unutursanız **SQL Server** sayfasında oturum açma adını alabilir veya parolayı sıfırlayabilirsiniz. **SQL Server** sayfasını açmak için veritabanı oluşturulduktan sonra veritabanına **genel bakış** sayfasında sunucu adını seçin.
-        
+
    - **SQL elastik havuzu kullanmak istiyor**: **Hayır** seçeneğini belirleyin.
    - **İşlem + depolama**: **Veritabanını yapılandır**' ı seçin. 
 
@@ -62,7 +63,7 @@ Azure portal kullanarak kaynak grubunuzu ve tek veritabanınızı oluşturun.
    - **Uygula**’yı seçin.
 
 5. **Ek ayarlar** sekmesini seçin. 
-6. **Veri kaynağı** bölümünde **var olan verileri kullan**altında öğesini seçin `Sample`. 
+6. **Veri kaynağı** bölümünde **var olan verileri kullan**altında öğesini seçin `Sample`.
 
    ![Ek SQL VERITABANı ayarları](../media/sql-database-get-started-portal/create-sql-database-additional-settings.png)
 
@@ -78,7 +79,7 @@ Azure portal kullanarak kaynak grubunuzu ve tek veritabanınızı oluşturun.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-PowerShell kullanarak kaynak grubunuzu ve tek bir veritabanınızı oluşturun. 
+PowerShell kullanarak kaynak grubunuzu ve tek bir veritabanınızı oluşturun.
 
    ```powershell-interactive
    # Set variables for your server and database
@@ -89,8 +90,7 @@ PowerShell kullanarak kaynak grubunuzu ve tek bir veritabanınızı oluşturun.
    $password = "PWD27!"+(New-Guid).Guid
    $serverName = "mysqlserver-$(Get-Random)"
    $databaseName = "mySampleDatabase"
-   
-   
+
    # The ip address range that you want to allow to access your server 
    # (leaving at 0.0.0.0 will prevent outside-of-azure connections to your DB)
    $startIp = "0.0.0.0"
@@ -100,18 +100,18 @@ PowerShell kullanarak kaynak grubunuzu ve tek bir veritabanınızı oluşturun.
    Write-host "Resource group name is" $resourceGroupName 
    Write-host "Password is" $password  
    Write-host "Server name is" $serverName 
-   
+
    # Connect to Azure
    Connect-AzAccount
 
    # Set subscription ID
    Set-AzContext -SubscriptionId $subscriptionId 
-   
+
    # Create a resource group
    Write-host "Creating resource group..."
    $resourceGroup = New-AzResourceGroup -Name $resourceGroupName -Location $location -Tag @{Owner="SQLDB-Samples"}
    $resourceGroup
-   
+
    # Create a server with a system wide unique server name
    Write-host "Creating primary logical server..."
    $server = New-AzSqlServer -ResourceGroupName $resourceGroupName `
@@ -120,14 +120,14 @@ PowerShell kullanarak kaynak grubunuzu ve tek bir veritabanınızı oluşturun.
       -SqlAdministratorCredentials $(New-Object -TypeName System.Management.Automation.PSCredential `
       -ArgumentList $adminLogin, $(ConvertTo-SecureString -String $password -AsPlainText -Force))
    $server
-   
+
    # Create a server firewall rule that allows access from the specified IP range
    Write-host "Configuring firewall for primary logical server..."
    $serverFirewallRule = New-AzSqlServerFirewallRule -ResourceGroupName $resourceGroupName `
       -ServerName $serverName `
       -FirewallRuleName "AllowedIPs" -StartIpAddress $startIp -EndIpAddress $endIp
    $serverFirewallRule
-   
+
    # Create General Purpose Gen4 database with 1 vCore
    Write-host "Creating a gen5 2 vCore database..."
    $database = New-AzSqlDatabase  -ResourceGroupName $resourceGroupName `
@@ -142,8 +142,8 @@ PowerShell kullanarak kaynak grubunuzu ve tek bir veritabanınızı oluşturun.
    ```
 
 # <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
-AZ CLı kullanarak kaynak grubunuzu ve tek veritabanınızı oluşturun. 
 
+AZ CLı kullanarak kaynak grubunuzu ve tek veritabanınızı oluşturun.
 
    ```azurecli-interactive
    #!/bin/bash
@@ -158,7 +158,7 @@ AZ CLı kullanarak kaynak grubunuzu ve tek veritabanınızı oluşturun.
    drLocation=NorthEurope
    drServerName=mysqlsecondary-$RANDOM
    failoverGroupName=failovergrouptutorial-$RANDOM
-   
+
    # The ip address range that you want to allow to access your DB. 
    # Leaving at 0.0.0.0 will prevent outside-of-azure connections to your DB
    startip=0.0.0.0
@@ -169,14 +169,14 @@ AZ CLı kullanarak kaynak grubunuzu ve tek veritabanınızı oluşturun.
 
    # Set the subscription context for the Azure account
    az account set -s $subscriptionID
-   
+
    # Create a resource group
    echo "Creating resource group..."
    az group create \
       --name $resourceGroupName \
       --location $location \
       --tags Owner[=SQLDB-Samples]
-   
+
    # Create a logical server in the resource group
    echo "Creating primary logical server..."
    az sql server create \
@@ -185,7 +185,7 @@ AZ CLı kullanarak kaynak grubunuzu ve tek veritabanınızı oluşturun.
       --location $location  \
       --admin-user $adminLogin \
       --admin-password $password
-   
+
    # Configure a firewall rule for the server
    echo "Configuring firewall..."
    az sql server firewall-rule create \
@@ -194,7 +194,7 @@ AZ CLı kullanarak kaynak grubunuzu ve tek veritabanınızı oluşturun.
       -n AllowYourIp \
       --start-ip-address $startip \
       --end-ip-address $endip
-   
+
    # Create a gen5 1vCore database in the server 
    echo "Creating a gen5 2 vCore database..."
    az sql db create \

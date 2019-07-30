@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 9c437450ead6f05a36725588215ac03b83790373
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b4bd61ea74055a04718d8a9d8d5ccd42671af2ac
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563939"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638342"
 ---
 # <a name="entity-roles-for-contextual-subtypes"></a>Bağlamsal alt türler için varlık rolleri
 
@@ -55,7 +55,7 @@ Schedule the meeting from 8 to 9
 
 ## <a name="are-multiple-entities-in-an-utterance-the-same-thing-as-roles"></a>Birden çok varlık, rollerle aynı şeyi gerçekleştirsin mi? 
 
-Birden çok varlık bir utterlik içinde bulunabilir ve roller kullanılmadan ayıklanabilir. Cümle bağlamı varlık sürümü ile gösteriyorsa, bir rol kullanılmalıdır. 
+Birden çok varlık bir utterlik içinde bulunabilir ve roller kullanılmadan ayıklanabilir. Tümce bağlamı, varlığın hangi sürümünün bir değere sahip olduğunu gösteriyorsa, bir rolün kullanılması gerekir. 
 
 ### <a name="dont-use-roles-for-duplicates-without-meaning"></a>Bir anlamı olmayan yinelemeler için roller kullanmayın
 

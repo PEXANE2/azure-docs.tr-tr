@@ -1,7 +1,7 @@
 ---
-title: "Hızlı Başlangıç: Konuşma cihaz SDK'sı Linux - konuşma Hizmetleri çalıştırın"
+title: "Hızlı Başlangıç: Linux konuşma hizmetinde konuşma cihazları SDK 'sını çalıştırma"
 titleSuffix: Azure Cognitive Services
-description: Önkoşullar ve yönergeler için bir Linux konuşma cihaz SDK'sı ile çalışmaya başlama.
+description: Bir Linux konuşma cihazları SDK 'Sı ile çalışmaya başlama önkoşulları ve yönergeleri.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,92 +10,92 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/10/2019
 ms.author: erhopf
-ms.openlocfilehash: d755f3388466369ee1edc3d9ff1e353173babc10
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 3ee39f4cf0c78850b0128fc5e497f2b2aee57bbc
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67723394"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559098"
 ---
-# <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-linux"></a>Hızlı Başlangıç: Konuşma cihaz SDK'sı örnek uygulamayı Linux üzerinde çalıştırın
+# <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-linux"></a>Hızlı Başlangıç: Linux 'ta konuşma cihazları SDK örnek uygulamasını çalıştırma
 
-Bu hızlı başlangıçta, Linux için konuşma cihaz SDK'sı konuşma özellikli bir ürün oluşturun veya olarak kullanmak için nasıl kullanılacağını öğreneceksiniz. bir [konuşma Transkripsiyonu](conversation-transcription-service.md) cihaz. Şu anda yalnızca [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) desteklenir.
+Bu hızlı başlangıçta, konuşma özellikli bir ürün oluşturmak veya bir konuşma [dökümü](conversation-transcription-service.md) cihazı olarak kullanmak için Linux Için konuşma cihazları SDK 'sını nasıl kullanacağınızı öğreneceksiniz. Şu anda yalnızca [Azure Kinect dk](https://azure.microsoft.com/services/kinect-dk/) destekleniyor.
 
-Uygulama, konuşma SDK paketini ve 64-bit Linux'ta (Ubuntu 16.04, 18.04 Ubuntu, Debian 9) Eclipse Java IDE (v4) ile oluşturulmuştur. 64 bit Java 8 çalışma zamanı ortamında (JRE) çalışır.
+Uygulama, konuşma SDK paketiyle oluşturulmuştur ve 64 bitlik Linux (Ubuntu 16,04, Ubuntu 18,04, detem 9) üzerinde Java IDE tutulma (v4). 64 bit Java 8 çalışma zamanı ortamında (JRE) çalışır.
 
-Bu kılavuzda gerektiren bir [Azure Bilişsel Hizmetler](get-started.md) konuşma Hizmetleri kaynak hesabı. Bir hesabınız yoksa, abonelik anahtarı almak için [ücretsiz deneme sürümünü](https://azure.microsoft.com/try/cognitive-services/) kullanabilirsiniz.
+Bu kılavuzda, bir konuşma Hizmetleri kaynağına sahip bir Azure bilişsel [Hizmetler](get-started.md) hesabı gerekir. Bir hesabınız yoksa, abonelik anahtarı almak için [ücretsiz deneme sürümünü](https://azure.microsoft.com/try/cognitive-services/) kullanabilirsiniz.
 
-Kaynak kodu [örnek uygulama](https://aka.ms/sdsdk-download-JRE) konuşma cihaz SDK'sı ile eklenmiştir. Ayrıca [github'da](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
+[Örnek uygulamanın](https://aka.ms/sdsdk-download-JRE) kaynak kodu, konuşma cihazları SDK 'sına dahildir. Ayrıca [github'da](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıç şunları gerektirir:
 
-* İşletim Sistemi: 64-bit Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9)
+* İşletim Sistemi: 64-bit Linux (Ubuntu 16,04, Ubuntu 18,04, detem 9)
 * [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)
-* [Eclipse Java IDE](https://www.eclipse.org/downloads/)
-* [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) veya [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html) yalnızca.
-* Konuşma hizmeti için bir Azure aboneliği anahtarı. [Ücretsiz edinin](get-started.md).
-* En son sürümünü indirin [konuşma cihaz SDK'sı](https://aka.ms/sdsdk-download-JRE) Java ve çalışma dizininizin .zip ayıklayın.
+* [Tutulma Java IDE](https://www.eclipse.org/downloads/)
+* Yalnızca [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) veya [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html) .
+* Konuşma hizmeti için bir Azure abonelik anahtarı. [Ücretsiz bir tane alın](get-started.md).
+* Java için [konuşma cihazları SDK 'sının](https://aka.ms/sdsdk-download-JRE) en son sürümünü indirin ve. zip dosyasını çalışma dizininize ayıklayın.
    > [!NOTE]
-   > JRE örnek Release.zip dosya JRE örnek uygulamayı içerir ve bu hızlı başlangıçta uygulama için /home/wcaltest/JRE-Sample-Release ayıklanır varsayar.
+   > JRE-Sample-Release. zip dosyası JRE örnek uygulamasını içerir ve bu hızlı başlangıçta uygulamanın/home/wcaltest/JRE-Sample-Release 'e ayıklanacağı varsayılmaktadır
 
-Eclipse başlatmadan önce bu bağımlılıkların yüklü olduğundan emin olun.
+Çakışan Küreler başlatılmadan önce bu bağımlılıkların yüklendiğinden emin olun.
 
-* Ubuntu üzerinde:
+* Ubuntu 'da:
 
   ```sh
   sudo apt-get update
   sudo apt-get install libssl1.0.0 libasound2
   ```
 
-* Debian 9:
+* On yıl 9 ' da:
 
   ```sh
   sudo apt-get update
   sudo apt-get install libssl1.0.2 libasound2
   ```
 
-Konuşma Transkripsiyonu şu anda yalnızca "en-US" ve "zh-CN", "centralus" ve "ping'in ekran" bölgelerinde kullanılabilir. Bir konuşma anahtarı konuşma Transkripsiyonu kullanmak için bu bölgelerden birinde olmalıdır.
+Konuşma dökümü şu anda yalnızca "en-US" ve "zh-CN" için kullanılabilir ve "merkezileştirme" ve "eastaya" bölgelerinde mevcuttur. Konuşma dökümünü kullanmak için bu bölgelerden birinde bir konuşma anahtarınız olmalıdır.
 
-Intents kullanmayı planlıyorsanız ihtiyacınız olacak bir [Language Understanding hizmeti (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) abonelik. LUIS ve niyeti tanıma hakkında daha fazla bilgi için bkz: [amaçlarıyla LUIS, konuşma tanıma C# ](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp). A [LUIS modeline örnek](https://aka.ms/sdsdk-luis) bu uygulama için kullanılabilir.
+Hedefleri kullanmayı planlıyorsanız, bir [Language Understanding hizmeti (LUA)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) aboneliğine ihtiyacınız olacaktır. Lua ve amaç tanıma hakkında daha fazla bilgi edinmek için bkz. [lusıs C#Ile konuşma amaçlarını tanıma ](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp). Bu uygulama için [Örnek BIR lusıs modeli](https://aka.ms/sdsdk-luis) vardır.
 
-## <a name="create-and-configure-the-project"></a>Projesi oluşturun ve yapılandırın
+## <a name="create-and-configure-the-project"></a>Projeyi oluşturma ve yapılandırma
 
 1. Eclipse’i başlatın.
 
-1. İçinde **Eclipse IDE Başlatıcısı**, **çalışma** yeni bir çalışma alanı dizin adını girin. Ardından **Başlat**’ı seçin.
+1. **Çakışan Küreler IDE başlatıcısı**' nda, **çalışma alanı** alanına yeni bir çalışma alanı dizininin adını girin. Ardından **Başlat**’ı seçin.
 
    ![Eclipse Başlatıcısı ekran görüntüsü](media/speech-devices-sdk/eclipse-launcher-linux.png)
 
 1. Çok geçmeden Eclipse IDE ana penceresi görüntülenir. Varsa, Hoş Geldiniz ekranını kapatın.
 
-1. Eclipse menü çubuğundan seçerek yeni bir proje oluşturun **dosya** > **yeni** > **Java projesi**. Yoksa seçin **proje** ardından **Java projesi**.
+1. Çakışan Küreler menü çubuğunda **Dosya** > **Yeni** > **Java projesi**' ni seçerek yeni bir proje oluşturun. Kullanılabilir değilse **Proje** ' yi ve ardından **Java projesi**' ni seçin.
 
-1. **Yeni bir Java projesi** Sihirbazı'nı başlatır. **Gözat** örnek proje konumu. **Son**’u seçin.
+1. **Yeni Java proje** Sihirbazı başlatılır. Örnek projenin konumuna gözatın. **Son**’u seçin.
 
    ![Yeni Java Projesi sihirbazının ekran görüntüsü](media/speech-devices-sdk/eclipse-new-java-project-linux.png)
 
-1. İçinde **paket Gezgini**, projenize sağ tıklayın. Bağlam menüsünden **Yapılandır** > **Maven Projesine Dönüştür**’ü seçin. **Son**’u seçin.
+1. **Paket Gezgini**' nde projenize sağ tıklayın. Bağlam menüsünden **Yapılandır** > **Maven Projesine Dönüştür**’ü seçin. **Son**’u seçin.
 
    ![Paket gezgininin ekran görüntüsü](media/speech-devices-sdk/eclipse-convert-to-maven.png)
 
-1. İçinde **paket Gezgini**, projenize sağ tıklayın. Seçin **özellikleri**, ardından **Çalıştır/hata ayıklama ayarları** > **yeni...** > **Java uygulaması**. 
+1. **Paket Gezgini**' nde projenize sağ tıklayın. **Özellikler**' i seçin ve ardından ayarları > yeni **Çalıştır/hata ayıkla** **..** . > **Java uygulaması**. 
 
-1. **Yapılandırmasını Düzenle** penceresi görüntülenir. İçinde **adı** alana **ana**ve **arama** için **ana sınıfı** bulmak ve seçmek için  **com.microsoft.cognitiveservices.speech.samples.FunctionsList**.
+1. **Yapılandırma düzenleme** penceresi görüntülenir. **Ad** alanına **Main**girin ve **com. Microsoft. biliveservices. Speech. Samples. functionslist**öğesini bulmak ve seçmek için **ana sınıf** için **aramayı** kullanın.
 
    ![Düzenleme başlatma yapılandırması ekran görüntüsü](media/speech-devices-sdk/eclipse-edit-launch-configuration-linux.png)
 
-1. Yine **yapılandırmasını Düzenle** penceresi seçin **ortam** sayfası ve **yeni**. **Yeni ortam değişkeni** penceresi görüntülenir. İçinde **adı** alana **LD_LIBRARY_PATH** ve **değer** alanı girin, örneğin *.so dosyaları içeren klasör   **/home/wcaltest / JRE örnek sürüm**
+1. Ayrıca **yapılandırma düzenleme** penceresinde ortam sayfasını ve **Yeni**' **yi** seçin. **Yeni ortam değişkeni** penceresi görüntülenir. **Ad** alanına **LD_LIBRARY_PATH** girin ve **değer** alanına *. so dosyalarını içeren klasörü girin, örneğin **/Home/wcaltest/JRE-Sample-Release**
 
-1. Kopyalama `kws.table` ve `participants.properties` proje klasörüne **hedef/sınıfları**
+1. Proje klasörü **hedefini/sınıfları** Kopyala `kws.table` `participants.properties`
 
 
 ## <a name="configure-the-sample-application"></a>Örnek uygulamayı yapılandırma
 
-1. Konuşma abonelik anahtarınız için kaynak kodu ekleyin. Amaç tanıma denemek istiyorsanız, ayrıca ekleyin, [Language Understanding hizmeti](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) abonelik anahtarı ve uygulama kimliği
+1. Konuşma abonelik anahtarınızı kaynak koda ekleyin. Amaç tanıma denemek istiyorsanız, ayrıca ekleyin, [Language Understanding hizmeti](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) abonelik anahtarı ve uygulama kimliği
 
-   Konuşma ve LUIS, bilgilerinizi girmeyeceğini `FunctionsList.java`:
+   Konuşma ve lusıs için, bilgileriniz `FunctionsList.java`şu şekilde olur:
 
    ```java
     // Subscription
@@ -106,55 +106,55 @@ Intents kullanmayı planlıyorsanız ihtiyacınız olacak bir [Language Understa
     private static String LuisAppId = "<enter your LUIS AppId>";
    ```
 
-    Konuşma transkripsiyonu kullanıyorsanız, konuşma anahtarı ve bölge bilgilerinizi de gereklidir `Cts.java`:
+    Konuşma dökümünü kullanıyorsanız, konuşma anahtarınız ve bölge bilgilerinizin de şu şekilde `Cts.java`olması gerekir:
 
    ```java
     private static final String CTSKey = "<Conversation Transcription Service Key>";
     private static final String CTSRegion="<Conversation Transcription Service Region>";// Region may be "centralus" or "eastasia"
     ```
 
-1. Varsayılan Uyandırma sözcüğünü (anahtar) "Bilgisayar" dir. Sağlanan diğer birini de deneyebilirsiniz "Machine" veya "Yardımcısı" gibi sözcükleri Uyandırma. Bu alternatif Uyandırma sözcükler için kaynak dosyaları konuşma cihazları SDK'da anahtar sözcüğü klasörü arasındadır. Örneğin, `/home/wcaltest/JRE-Sample-Release/keyword/Computer` Uyandırma için "Bilgisayar" word kullanılan dosyaları içerir.
+1. Varsayılan Uyandırma sözcüğünü (anahtar) "Bilgisayar" dir. Sağlanan diğer birini de deneyebilirsiniz "Machine" veya "Yardımcısı" gibi sözcükleri Uyandırma. Bu alternatif Uyandırma sözcükler için kaynak dosyaları konuşma cihazları SDK'da anahtar sözcüğü klasörü arasındadır. Örneğin, `/home/wcaltest/JRE-Sample-Release/keyword/Computer` "bilgisayar" uyandırma sözcüğü için kullanılan dosyaları içerir.
 
    > [!TIP]
    > Ayrıca [özel Uyandırma word oluşturmak](speech-devices-sdk-create-kws.md).
 
-    Yeni bir Uyanma sözcük kullanmak için aşağıdaki iki satırları güncelleştirme `FunctionsList.java`ve Uyandırma word paketini uygulamanıza kopyalayın. Örneğin, Uyandırma word paketinden Uyandırma word 'Machine' kullanmak için `kws-machine.zip`:
+    Yeni bir uyandırma sözcüğü kullanmak için ' de `FunctionsList.java`aşağıdaki iki satırı güncelleştirin ve uyandırma Word paketini uygulamanıza kopyalayın. Örneğin, uyanma Word paketinden `kws-machine.zip`' Machine ' uyandırma sözcüğünü kullanmak için:
 
-   * Word Uyandırma paketi proje klasörüne kopyalamak **hedef/sınıfları**.
+   * Uyandırma sözcüğü paketini proje klasörü **hedefi/sınıfları**içine kopyalayın.
 
-   * Güncelleştirme `FunctionsList.java` anahtar sözcüğü ve paket adı:
+   * `FunctionsList.java` Anahtar sözcüğüyle ve paket adıyla güncelleştirin:
 
      ```java
      private static final String Keyword = "Machine";
      private static final String KeywordModel = "kws-machine.zip" // set your own keyword package name.
      ```
 
-## <a name="run-the-sample-application-from-eclipse"></a>Eclipse'ten örnek uygulamayı çalıştırma
+## <a name="run-the-sample-application-from-eclipse"></a>Örnek uygulamayı tutulma 'dan çalıştırma
 
-1. Eclipse menü çubuğundan **çalıştırma** > **çalıştırın** 
+1. Çakışan Küreler menü çubuğundan**Çalıştır** ' ı **çalıştırın** >  
 
 1. Konuşma cihaz SDK'sı örnek bir uygulama başlar ve şu seçeneklerini gösterir:
 
    ![Örnek konuşma cihaz SDK'sı örnek uygulama ve seçenekleri](media/speech-devices-sdk/java-sample-app-linux.png)
 
-1. Yeni deneyin **konuşma Transkripsiyonu** Tanıtımı. İle fotoğrafını Başlat **oturumu** > **Başlat**. Varsayılan olarak bir konuk herkese açıktır. Katılımcının ses imzalara sahip olduğunu, ancak bunlar içine yerleştirilebilir `participants.properties` proje klasöründeki **hedef/sınıfları**. Ses imzayı üretmek için bakmak [konuşmaları (SDK) konuşmaların](how-to-use-conversation-transcription-service.md).
+1. Yeni **konuşma dökümü** tanıtımı ' nı deneyin. **Oturum** > **başlatma**ile bir başlangıç yapın. Varsayılan olarak, herkes bir konudır. Ancak, katılımcının ses imzaları varsa proje klasörü `participants.properties` **hedefi/sınıfları**içine yerleştirilebilir. Ses imzasını oluşturmak için, [konuşmalar (SDK)](how-to-use-conversation-transcription-service.md)konusuna bakın.
 
-   ![Tanıtım konuşma Transkripsiyonu uygulaması](media/speech-devices-sdk/cts-sample-app-linux.png)
+   ![Demo konuşma dökümü uygulaması](media/speech-devices-sdk/cts-sample-app-linux.png)
 
-## <a name="create-and-run-standalone-the-application"></a>Oluşturma ve tek başına uygulamayı çalıştırma
+## <a name="create-and-run-standalone-the-application"></a>Uygulamayı tek başına oluşturma ve çalıştırma
 
-1. İçinde **paket Gezgini**, projenize sağ tıklayın. Seçin **dışarı**. 
-1. **Dışarı** penceresi görüntülenir. Genişletin **Java** seçip **çalıştırılabilir JAR dosyasını** seçip **sonraki**.
+1. **Paket Gezgini**' nde projenize sağ tıklayın. Seçin **dışarı**. 
+1. **Dışarı aktarma** penceresi görüntülenir. **Java** ' yı genişletin ve **Runiçin jar dosyasını** seçin ve ardından **İleri**' yi seçin.
 
    ![Dışarı aktarma penceresinin ekran görüntüsü](media/speech-devices-sdk/eclipse-export-linux.png) 
 
-1. **Çalıştırılabilir JAR dosyasını dışarı** penceresi görüntülenir. Seçin bir **dışa aktarma hedefi** uygulama ve ardından **son**.
+1. **ÇALıŞTıRıLABILIR jar dosya dışarı aktarma** penceresi görüntülenir. Uygulama için bir **dışarı aktarma hedefi** seçin ve ardından **son**' u seçin.
  
-   ![Çalıştırılabilir JAR dosyasını dışarı aktarma ekran görüntüsü](media/speech-devices-sdk/eclipse-export-jar-linux.png)
+   ![Runfor JAR dosya dışarı aktarma ekran görüntüsü](media/speech-devices-sdk/eclipse-export-jar-linux.png)
 
-1. Lütfen yerleştirme `kws.table` ve `participants.properties` uygulama tarafından desteklenmediklerinden gerektiğinde, yukarıda seçilen hedef klasörde.
+1. Bu dosyalar `kws.table` uygulamanın `participants.properties` gerektirdiği için lütfen yukarıda seçilen hedef klasöre yerleştirin.
 
-1. LD_LIBRARY_LIB *.so dosyalarını içeren klasörü ayarlayın
+1. LD_LIBRARY_LIB, *. so dosyalarını içeren klasöre ayarlayın
 
      ```bash
      export LD_LIBRARY_PATH=/home/wcaltest/JRE-Sample-Release

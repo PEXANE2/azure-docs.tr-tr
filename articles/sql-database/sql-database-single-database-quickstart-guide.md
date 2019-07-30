@@ -10,13 +10,13 @@ ms.topic: quickstart
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
-ms.date: 02/04/2019
-ms.openlocfilehash: b4341cb7d1734cb25aae890cc282c67ef38d67bf
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 07/29/2019
+ms.openlocfilehash: 45b0b2bc7a2ef5c3cb6ca801668f7b5be7c8ac73
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566486"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639984"
 ---
 # <a name="getting-started-with-single-databases-in-azure-sql-database"></a>Azure SQL veritabanı 'nda tek veritabanlarıyla çalışmaya başlama
 
@@ -42,6 +42,14 @@ Veritabanınızı oluşturmak, yapılandırmak ve ölçeklendirmek için PowerSh
 ## <a name="migrating-to-a-single-database-with-minimal-downtime"></a>En az kapalı kalma süresiyle tek bir veritabanına geçiş
 
 Bu hızlı başlangıç, bir dosya kullanarak veritabanınızı hızlı bir `.bacpac` şekilde oluşturmanıza veya Azure 'da aktarmanıza olanak tanır. Ancak, `.bacpac` ve `.dacpac` dosyaları Azure SQL veritabanı içindeki farklı SQL Server ve dağıtım seçenekleri arasında hızlı bir şekilde taşımak veya DevOps işlem hattınızda sürekli tümleştirme uygulamak için tasarlanmıştır. Ancak, bu yöntem, üretim veritabanlarınızı en az kapalı kalma süresiyle geçiş için tasarlanmamıştır, çünkü yeni veri ekleme işlemini durdurmanız, kaynak veritabanının bir `.bacpac` dosyanın tamamlanmasını beklemeniz ve sonra içeri aktarılmasını beklemeniz gerekir Tamamlanacak Azure SQL veritabanı. Bu bekleyen tüm bu durum, özellikle büyük veritabanları için uygulamanızın kapalı kalma süresine neden olur. Üretim veritabanınızı taşımak için geçişin en az kapalı kalma süresini garanti eden geçiş için daha iyi bir yol gerekir. Bunun için, [veri geçiş hizmeti 'ni (DMS)](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-azure-sql?toc=/azure/sql-database/toc.json) kullanarak veritabanınızı en düşük kapalı kalma süresiyle geçirin. DMS, kaynak veritabanınızda yapılan değişiklikleri geri yüklenen tek veritabanına artırarak bunu gerçekleştirir. Bu şekilde, uygulamanızı kaynaktan hedef veritabanına en az kapalı kalma süresi ile hızlıca geçirebilirsiniz.
+
+## <a name="hands-on-learning-modules"></a>Uygulamalı öğrenme modülleri
+
+Aşağıdaki Microsoft Learn modülleri, Azure SQL veritabanı hakkında ücretsiz bilgi edinmenize yardımcı olur.
+
+- [Uygulama verilerini depolamak için bir Azure SQL veritabanı sağlama](https://docs.microsoft.com/learn/modules/provision-azure-sql-db/)
+- [Azure SQL veritabanı 'nı sorgulayan bir ASP.NET uygulaması geliştirin ve yapılandırın](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)
+- [Azure SQL veritabanınızın güvenliğini sağlama](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

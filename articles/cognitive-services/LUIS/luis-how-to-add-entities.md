@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 04/01/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: fdf60a454aeb19b83ce455a771b8399c90af3bce
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1b42ab9155f5b9719ef6477934722021e3fbac99
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563752"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638244"
 ---
 # <a name="create-entities-without-utterances"></a>Konuşma olmadan varlık oluşturma
 
@@ -114,13 +114,13 @@ Utterance içinde `Where is Request relocation from employee new to the company 
 
 Rol, bağlamı temel alan adlandırılmış bir alt türdür. Önceden oluşturulmuş ve makine tarafından öğrenilen varlıklar dahil tüm varlıklarda kullanılabilir. 
 
-Rol için sözdizimi, varlık adının **`{Entityname:Rolename}`** ardından iki nokta üst üste, ardından rol adından sonra yer aldığı yerdir. Örneğin: `Move {personName} from {LocationUsingRoles:Origin} to {LocationUsingRoles:Destination}`.
+Rol için sözdizimi, varlık adının **`{Entityname:Rolename}`** ardından iki nokta üst üste, ardından rol adından sonra yer aldığı yerdir. Örneğin: `Move {personName} from {Location:Origin} to {Location:Destination}`.
 
 1. Gelen **derleme** bölümünden **varlıkları** sol bölmesinde.
 
-1. **Create new entity** (Yeni varlık oluştur) öğesini seçin. Adını `LocationUsingRoles`. Tür seçin **basit** seçip **Bitti**. 
+1. **Create new entity** (Yeni varlık oluştur) öğesini seçin. Adını `Location`. Tür seçin **basit** seçip **Bitti**. 
 
-1. Seçin **varlıkları** sol panelden yeni varlık seçip **LocationUsingRoles** önceki adımda oluşturduğunuz.
+1. Sol paneldeki **varlıklar** ' ı seçin ve ardından önceki adımda oluşturulan yeni varlık **konumunu** seçin.
 
 1. İçinde **rol adı** metin kutusuna rol adını girin `Origin` girin. İkinci bir rol adını ekleyin `Destination`. 
 

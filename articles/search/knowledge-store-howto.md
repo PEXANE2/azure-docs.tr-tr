@@ -1,6 +1,6 @@
 ---
-title: Almak için Azure Search (Önizleme) araştırma - bilgi ile çalışmaya nasıl
-description: Azure Search işlem hatlarında Azure depolama hesabınızdaki bir Bilgi Bankası deposuna dizin yapay ZEKA tarafından oluşturulan zenginleştirilmiş belgeleri gönderme adımlarını öğrenin. Buradan, görüntülemek, şekillendirmeyi ve Azure Search'te ve diğer uygulamalarda zenginleştirilmiş belgeleri kullanma.
+title: Bilgi deposu (Önizleme) ile çalışmaya başlama-Azure Search
+description: Azure Depolama hesabınızdaki bir bilgi deposuna Azure Search AI dizin oluşturma işlem hatları tarafından oluşturulan zenginleştirilmiş belgeleri gönderme adımlarını öğrenin. Buradan, Azure Search ve diğer uygulamalarda zenginleştirilmiş belgeleri görüntüleyebilir, yeniden şekillendirebilirsiniz ve kullanabilirsiniz.
 manager: cgronlun
 author: HeidiSteen
 services: search
@@ -8,116 +8,116 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 06/29/2019
 ms.author: heidist
-ms.openlocfilehash: e50dfcdc5ac2fbe2435066546a340874e1b8f682
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: 5794a24931b613bf1bdddd983799367bb02cf44d
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67551063"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68641017"
 ---
-# <a name="how-to-get-started-with-knowledge-mining-in-azure-search"></a>Nasıl bilgi araştırma Azure Search ile çalışmaya başlama
+# <a name="how-to-get-started-with-knowledge-store-in-azure-search"></a>Azure Search 'de bilgi deposu ile çalışmaya başlama
 
 > [!Note]
-> Bilgi Bankası preview ve üretim kullanımı için değil amaçlayan deposudur. [2019-05-06-Önizleme REST API sürümü](search-api-preview.md) bu özelliği sağlar. .NET SDK'sı desteği şu anda yoktur.
+> Bilgi deposu önizleme aşamasındadır ve üretim kullanımı için tasarlanmamıştır. [REST API sürüm 2019-05-06-önizleme](search-api-preview.md) bu özelliği sağlar. Şu anda .NET SDK desteği yok.
 >
-[Bilgi deposunu](knowledge-store-concept-intro.md) AI zenginleştirilmiş belgeleri Azure depolama hesabınıza diğer uygulamalarda aşağı akış bilgi araştırma için dizin oluşturma sırasında oluşturulan kaydeder. Kaydedilen zenginleştirmelerinin, anlamak ve bir Azure Search dizini oluşturma ardışık düzeni geliştirmek için de kullanabilirsiniz. 
+[Bilgi deposu](knowledge-store-concept-intro.md) , diğer uygulamalardaki aşağı akış veri madenciliği için Azure depolama hesabınıza dizin oluşturma SıRASıNDA oluşturulan AI zenginleştirilmiş belgelerini kaydeder. Ayrıca, Azure Search dizin oluşturma işlem hattını anlamak ve iyileştirmek için kaydedilmiş zenginler de kullanabilirsiniz. 
 
-Bir Bilgi Bankası deposu tarafından tanımlanan bir *beceri kümesi* ve tarafından oluşturulan bir *dizin oluşturucu*. Bir Bilgi Bankası deposunun fiziksel ifade aracılığıyla belirtilen *projeksiyonlar* depolama veri yapılarını belirler. Bu izlenecek yolda bitiş zamanına göre bu nesnelerin tümü, oluşturulmuş olur ve tüm birbirine nasıl uyduğunu anlarsınız. 
+Bilgi deposu bir *beceri* tarafından tanımlanır ve bir *Dizin Oluşturucu*tarafından oluşturulur. Bilgi deposunun fiziksel ifadesi, depolamada veri yapılarını tespit eden *projeksiyonlar* aracılığıyla belirtilir. Bu yönergeyi bitirdiğinizde, tüm bu nesneleri oluşturmuş olacaksınız ve bunların tümünün bir araya nasıl uyduğunu anlarsınız. 
 
-Bu alıştırmada, örnek verileri, hizmetleri ve temel iş akışı oluşturma ve beceri kümesi tanımı indirimlere ilk bilgi deponuza kullanarak öğrenmek için Araçlar ile başlayın.
+Bu alıştırmada, ilk bilgi deponuzu oluşturmaya ve kullanmaya yönelik temel iş akışını öğrenmek için örnek verileri, hizmetleri ve araçları kullanmaya başlayın ve beceri tanımını kullanın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bilgi Bankası, Azure Blob Depolama ve Azure tablo depolama fiziksel depolama ve Azure Search ve nesne oluşturma ve güncelleştirmeler için Bilişsel hizmetler sağlayan birden çok hizmete merkezine deposudur. Konusunda [temel mimari](knowledge-store-concept-intro.md) Bu izlenecek yol için bir önkoşuldur.
+Bilgi deposu, Azure Blob depolama ve Azure Tablo depolama ile birden fazla hizmetin merkezinde ve nesne oluşturma ve güncelleştirmeler için Azure Search ve bilişsel hizmetler sunar. [Temel mimariyle](knowledge-store-concept-intro.md) benzerlik, Bu izlenecek yol için bir önkoşuldur.
 
-Bu hızlı başlangıçta, aşağıdaki hizmetler ve Araçlar kullanılır. 
+Bu hızlı başlangıçta aşağıdaki hizmetler ve araçlar kullanılır. 
 
-+ [Postman Masaüstü uygulamasını edinin](https://www.getpostman.com/), Azure Search için HTTP istekleri göndermek için kullanılır.
++ Azure Search HTTP istekleri göndermek için kullanılan [Postman masaüstü uygulamasını alın](https://www.getpostman.com/).
 
-+ [Bir Azure depolama hesabı oluşturma](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) örnek veri ve bilgi depolamak için depolama. Bilgi Bankası deponuz, Azure depolama alanında bulunur.
++ Örnek verileri ve bilgi deposunu depolamak için [bir Azure depolama hesabı oluşturun](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) . Bilgi depolduğunuz Azure Storage 'da mevcut olacaktır.
 
-+ [Bilişsel hizmetler kaynağı oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) iskeleti sağlayan geniş erişim için yapay ZEKA zenginleştirmelerinin içinde kullanılan becerileri tam aralığının S0 Kullandıkça Öde katmanında. Bilişsel hizmetler ve Azure Search hizmetiniz aynı bölgede olması gerekir.
++ En geniş bir yelpazede, AI zenginleştirmelerinde kullanılan yeteneklerin tamamına çok sayıda erişim sağlamak için S0 Kullandıkça Öde katmanında bilişsel [Hizmetler kaynağı oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) . Bilişsel hizmetler ve Azure Search hizmetinizin aynı bölgede olması gerekir.
 
-+ [Azure Search hizmeti oluşturma](search-create-service-portal.md) veya [mevcut bir hizmet bulma](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) geçerli aboneliğinizdeki. Bu öğretici için ücretsiz bir hizmet kullanabilirsiniz. 
++ Geçerli aboneliğinizde [bir Azure Search hizmeti oluşturun](search-create-service-portal.md) veya [var olan bir hizmeti bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) . Bu öğretici için ücretsiz bir hizmet kullanabilirsiniz. 
 
-Örnek JSON belgeleri ve bir Postman koleksiyonu dosya de gereklidir. Bulma ve Tamamlayıcı dosyaları yükleme yönergeleri sağlanır [örnek verileri hazırlama](#prepare-sample-data) bölümü.
+Örnek JSON belgeleri ve Postman koleksiyon dosyası da gereklidir. Tamamlayıcı dosyaları bulma ve yükleme yönergeleri [örnek verileri hazırlama](#prepare-sample-data) bölümünde verilmiştir.
 
-## <a name="get-a-key-and-url"></a>Bir anahtarı ve URL alma
+## <a name="get-a-key-and-url"></a>Anahtar ve URL al
 
 REST çağrıları için her istekte hizmet URL'sinin ve bir erişim anahtarının iletilmesi gerekir. İkisini de içeren bir arama hizmeti oluşturulur. Bu nedenle aboneliğinize Azure Search hizmetini eklediyseniz gerekli bilgileri almak için aşağıdaki adımları izleyin:
 
-1. [Azure portalında oturum açın](https://portal.azure.com/)ve arama hizmetinizdeki **genel bakış** sayfa olduğunda URL'yi alın. Örnek uç nokta `https://mydemo.search.windows.net` şeklinde görünebilir.
+1. [Azure Portal oturum açın](https://portal.azure.com/)ve arama hizmetine **genel bakış** sayfasında URL 'yi alın. Örnek uç nokta `https://mydemo.search.windows.net` şeklinde görünebilir.
 
-1. İçinde **ayarları** > **anahtarları**, hizmette tam haklarına yönelik bir yönetici anahtarını alın. Bir gece yarısında gerektiği durumlarda iş sürekliliği için sağlanan iki birbirinin yerine yönetici anahtarı mevcuttur. Ekleme, değiştirme ve silme nesneler için istekleri birincil veya ikincil anahtar kullanabilirsiniz.
+1. **Ayarlar** > **anahtarlar**' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
 
-    ![Bir HTTP uç noktası ve erişim anahtarını alma](media/search-get-started-postman/get-url-key.png "bir HTTP uç noktası ve erişim anahtarını alma")
+    ![Http uç noktası ve erişim anahtarı al](media/search-get-started-postman/get-url-key.png "Http uç noktası ve erişim anahtarı al")
 
-Tüm istekleri hizmete gönderilen her istekte bir API anahtarı gerektirir. Aşağıdaki bölümlerde her HTTP isteği, hizmet adını ve API anahtarını sağlarız.
+Tüm istekler hizmetinize gönderilen her istekte bir API anahtarı gerektirir. Aşağıdaki bölümlerde, her HTTP isteğinde hizmet adı ve API anahtarı sağlarsınız.
 
 <a name="prepare-sample-data"></a>
 
 ## <a name="prepare-sample-data"></a>Örnek verileri hazırlama
 
-Bilgi Bankası depolama iyileştirmesini Ardışık düzenin çıkış içerir. İşlem hattı üzerinden ilerledikçe, sonuçta "kullanılabilir" haline gelir "kullanılamıyor" veri girişleri oluşur. Kullanılamayan veri örnekleri, metin veya görüntü özelliklerini çözümlenmesi gereken görüntü dosyaları veya varlıklar, anahtar ifadeleri ve yaklaşım çözümlenebilecek yoğun metin dosyaları içerebilir. 
+Bilgi deposu bir zenginleştirme işlem hattının çıktısını içerir. Girişler, sonunda işlem hattında ilerledikçe "kullanılamaz" verilerden oluşur. Kullanılamaz verilere örnek olarak, metin veya görüntü özellikleri için çözümlenmesi gereken resim dosyaları ya da varlıklar, anahtar ifadeler veya yaklaşım için çözümlenebilen yoğun metin dosyaları bulunabilir. 
 
-Bu alıştırmada kaynaklandığı yoğun metin dosyaları (çalışması yasaları bilgileri) kullanan [Caselaw erişim proje](https://case.law/bulk/download/) genel toplu veri sayfasını indirin. 10-belge örnek için GitHub bu alıştırma için dosyamızı. 
+Bu alıştırma, [Caselaw Access Project](https://case.law/bulk/download/) genel toplu veri indirme sayfasından kaynaklanan yoğun metin dosyalarını (büyük/küçük harf yasaları bilgileri) kullanır. Bu alıştırma için GitHub 'a 10 belgeli bir örnek yüklediniz. 
 
-Bu görevde, işlem hattı için girdi olarak kullanmak bu belgeleri için bir Azure Blob kapsayıcısı oluşturacaksınız. 
+Bu görevde, bu belgeler için işlem hattına giriş olarak kullanılacak bir Azure Blob kapsayıcısı oluşturacaksınız. 
 
-1. İndirin ve ayıklayın [Azure arama örnek verileri](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/caselaw) almak için depo [Caselaw veri kümesi](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/caselaw). 
+1. [Caselaw veri kümesini](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/caselaw)almak Için [Azure Search örnek veri](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/caselaw) deposunu indirip ayıklayın. 
 
-1. [Azure portalında oturum açın](https://portal.azure.com), Azure depolama hesabınıza gidin, tıklayın **Blobları**ve ardından **+ kapsayıcı**.
+1. [Azure Portal oturum açın](https://portal.azure.com), Azure depolama hesabınıza gidin, Bloblar ' a tıklayınve ardından **+ Container**' a tıklayın.
 
-1. [Bir Blob kapsayıcısı oluşturursunuz](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) örnek verileri içerecek şekilde: 
+1. Örnek veri içeren [bir blob kapsayıcısı oluşturun](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) : 
 
-   1. Kapsayıcı adı `caselaw-test`. 
+   1. Kapsayıcıyı `caselaw-test`adlandırın. 
    
-   1. Genel erişim düzeyi geçerli değerleri birine ayarlayın.
+   1. Ortak erişim düzeyini geçerli değerlerinden herhangi birine ayarlayın.
 
-1. Kapsayıcıyı oluşturduktan sonra dosyayı açın ve seçin **karşıya** komut çubuğunda.
+1. Kapsayıcı oluşturulduktan sonra açın ve komut çubuğunda **karşıya yükle** ' yi seçin.
 
-   ![Komut çubuğunda karşıya](media/search-semi-structured-data/upload-command-bar.png "komut çubuğunda karşıya yükleme")
+   ![Komut çubuğuna yükle](media/search-semi-structured-data/upload-command-bar.png "Komut çubuğuna yükle")
 
-1. Klasör içeren dizine gidin **caselaw sample.json** örnek dosyası. Dosyayı seçin ve ardından **karşıya**.
+1. **Caselaw-Sample. JSON** örnek dosyasını içeren klasöre gidin. Dosyayı seçin ve ardından **karşıya yükle**' ye tıklayın.
 
-1. Azure depolama alanında olmasına karşın, bağlantı dizesi ve kapsayıcı adını alın.  Bu dizelerin her ikisine birden ihtiyacınız [veri kaynağı oluştur](#create-data-source):
+1. Azure depolarken bağlantı dizesini ve kapsayıcı adını alın.  [Veri kaynağı oluştur](#create-data-source)bölümünde Bu dizelerin her ikisine de ihtiyacınız olacak:
 
-   1. Genel bakış sayfasında tıklatın **erişim anahtarlarını** ve kopyalama bir *bağlantı dizesi*. İle başlar `DefaultEndpointsProtocol=https;` ve ile sonucuna `EndpointSuffix=core.windows.net`. Hesap adı ve anahtarı arasında var. 
+   1. Genel Bakış sayfasında, **erişim anahtarları** ' na tıklayın ve *bağlantı dizesini*kopyalayın. İle `DefaultEndpointsProtocol=https;` başlar ve ile `EndpointSuffix=core.windows.net`sonlanır. Hesap adınız ve anahtarınız arasında bulunur. 
 
-   1. Kapsayıcı adı olması gereken `caselaw-test` veya ad size atanmış.
+   1. Kapsayıcı adı `caselaw-test` ya da atadığınız ad olmalıdır.
 
 
 
 ## <a name="set-up-postman"></a>Postman’i ayarlama
 
-Postman, istekleri ve JSON belgeleri Azure Search'e göndermek için kullanacağınız istemci uygulamasıdır. Birkaç istekleri bu makaledeki bilgileri kullanarak formüle edilebilir. Ancak, iki (bir beceri kümesi oluşturma, bir dizin oluşturma) en büyük isteklerin bir makaledeki katıştırmak için çok büyük ayrıntılı JSON içerir. 
+Postman, Azure Search istek ve JSON belgelerini göndermek için kullanacağınız istemci uygulamasıdır. İsteklerin birkaçı yalnızca bu makaledeki bilgiler kullanılarak formüle eklenebilir. Ancak, en büyük isteklerin ikisi (Dizin oluşturma, Beceri oluşturma), bir makaleye eklemek için çok büyük olan ayrıntılı JSON ' u içerir. 
 
-Tüm istekleri ve JSON belgeleri tam olarak kullanılabilir hale getirmek için bir Postman koleksiyonu dosya oluşturduk. İndirme ve sonra bu dosyayı içeri istemcisi ayarlama ilk göreviniz var.
+Tüm JSON belgelerini ve isteklerini tam olarak kullanılabilir hale getirmek için bir Postman koleksiyon dosyası oluşturduk. Bu dosyayı indirmek ve sonra içeri aktarmak, istemcisini ayarlarken ilk göreviniz olur.
 
-1. İndirip sıkıştırmasını [Azure arama Postman örnekleri](https://github.com/Azure-Samples/azure-search-postman-samples) depo.
+1. [Azure Search Postman örnekleri](https://github.com/Azure-Samples/azure-search-postman-samples) deposunu indirip sıkıştırmasını açın.
 
-1. Postman'i başlatın ve Caselaw Postman koleksiyonunu içeri aktarın:
+1. Postman 'ı başlatın ve Caselaw Postman koleksiyonunu içeri aktarın:
 
-   1. Tıklayın **alma** > **dosyaları içeri aktarma** > **seçin dosyaları**. 
+   1. İçeri aktarma > **dosyalarını**İçeriAktar'atıklayındosyaları > **seçin**. 
 
-   1. \Azure-search-postman-samples-master\azure-search-postman-samples-master\Caselaw klasöre gidin.
+   1. \Azure-search-postman-samples-master\azure-search-postman-samples-master\Caselaw klasörüne gidin.
 
-   1. Select **Caselaw.postman_collection_v2.json**. Dört görmelisiniz **POST** istekleri koleksiyondaki.
+   1. **Caselaw. postman_collection_v2. JSON**öğesini seçin. Koleksiyonda dört **Post** isteği görmeniz gerekir.
 
-   ![Caselaw tanıtım için postman koleksiyonu](media/knowledge-store-howto/postman-collection.png "Caselaw tanıtım için Postman koleksiyonu")
+   ![Caselaw tanıtımı Için Postman koleksiyonu](media/knowledge-store-howto/postman-collection.png "Caselaw tanıtımı Için Postman koleksiyonu")
    
 
 ## <a name="create-an-index"></a>Dizin oluşturma
     
-İlk istek kullanan [oluşturma dizini API](https://docs.microsoft.com/rest/api/searchservice/create-data-source), Azure Search dizini oluşturma, tüm aranabilir verileri depolar. Bir dizin, tüm alanlar, parametreler ve öznitelikleri belirtir.
+İlk istek, tüm aranabilir verileri depolayan bir Azure Search Dizin [oluşturmak Için CREATE INDEX API](https://docs.microsoft.com/rest/api/searchservice/create-data-source)'sini kullanır. Dizin, tüm alanları, parametreleri ve öznitelikleri belirtir.
 
-Bilgi Bankası araştırma için dizin gerekmeyen gerekmez, ancak bir dizin oluşturucu, bir dizin sağlanmadığı sürece çalışmaz. 
+Bilgi madenciliği için bir dizine ihtiyacınız yoktur, ancak dizin sağlanmadığı takdirde bir Dizin Oluşturucu çalıştırılmaz. 
 
-1. URL'deki `https://YOUR-AZURE-SEARCH-SERVICE-NAME.search.windows.net/indexes?api-version=2019-05-06-Preview`, değiştirin `YOUR-AZURE-SEARCH-SERVICE-NAME` arama hizmetinizin adıyla. 
+1. URL `https://YOUR-AZURE-SEARCH-SERVICE-NAME.search.windows.net/indexes?api-version=2019-05-06-Preview`'de, öğesini arama `YOUR-AZURE-SEARCH-SERVICE-NAME` hizmetinizin adıyla değiştirin. 
 
-1. Üst bölümünde değiştirin `<YOUR AZURE SEARCH ADMIN API-KEY>` bir yönetici API anahtarı için Azure Search ile.
+1. Üst bilgi bölümünde, Azure Search için `<YOUR AZURE SEARCH ADMIN API-KEY>` bir yönetici API anahtarı ile değiştirin.
 
-1. Gövde bölümü içinde bir dizin şemasını JSON belgesidir. Görünürlük için daraltılmış, bir dizinin dış Kabuk aşağıdaki öğelerden oluşur. Alanlar koleksiyonu caselaw veri kümesi alanlara karşılık gelir.
+1. Gövde bölümünde JSON belgesi bir dizin şemadır. Görünürlük için daraltılmış, bir dizinin dış kabuğu aşağıdaki öğelerden oluşur. Alanlar koleksiyonu, Caselaw veri kümesindeki alanlara karşılık gelir.
 
    ```json
    {
@@ -135,9 +135,9 @@ Bilgi Bankası araştırma için dizin gerekmeyen gerekmez, ancak bir dizin olu�
    }
    ```
 
-1. Genişletin `fields` koleksiyonu. Basit alanlar, oluşan dizin tanımını getirerek içerdiği [karmaşık alanları](search-howto-complex-data-types.md) iç içe geçmiş substructures ve Koleksiyonlar ile.
+1. `fields` Koleksiyonu genişletin. Basit alanlardan, iç içe geçmiş alt yapılarla [karmaşık alanlardan](search-howto-complex-data-types.md) ve koleksiyonlardan oluşan Dizin tanımının toplu öğesini içerir.
 
-   Alan tanımı gözden geçirmek için birkaç dakikanızı `casebody` satırlar 302-384 karmaşık alanı. Hiyerarşik gösterimleri gerektiğinde karmaşık bir alan diğer karmaşık alanlar içerebilir dikkat edin. Hiyerarşik yapıları, bu nedenle iç içe veri yapısı Bilgi Bankası deposunda oluşturma, bir beceri kümesi burada ve ayrıca bir projeksiyon olarak gösterildiği gibi bir dizinde modellenebilir.
+   302-384. satırlardaki `casebody` karmaşık alanın alan tanımını gözden geçirmek için bir dakikanızı ayırın. Karmaşık bir alanın hiyerarşik temsiller gerektiğinde diğer karmaşık alanları içerebileceğini unutmayın. Hiyerarşik yapılar, burada gösterildiği gibi bir dizinde modellenebilir ve ayrıca bir beceri projeksiyon olarak bilgi deposunda iç içe geçmiş veri yapısı oluşturabilir.
 
    ```json
    {
@@ -227,19 +227,19 @@ Bilgi Bankası araştırma için dizin gerekmeyen gerekmez, ancak bir dizin olu�
     . . .
    ```
 
-1. Tıklayın **Gönder** ve isteği yürütmek için.  Alması gereken bir **durumu: 201 oluşturuldu** olarak bir yanıt iletisi.
+1. İsteği yürütmek için **Gönder** ' e tıklayın.  Bir **durum almanız gerekir: 201 yanıt** olarak ileti oluşturdu.
 
 <a name="create-data-source"></a>
 
 ## <a name="create-a-data-source"></a>Bir veri kaynağı oluşturun
 
-İkinci isteği kullanır [veri kaynağı API oluşturma](https://docs.microsoft.com/rest/api/searchservice/create-data-source) Azure Blob depolama alanına bağlanmak için. 
+İkinci istek Azure Blob depolamaya bağlanmak için [veri kaynağı oluşturma API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) 'sini kullanır. 
 
-1. URL'deki `https://YOUR-AZURE-SEARCH-SERVICE-NAME.search.windows.net/datasources?api-version=2019-05-06-Preview`, değiştirin `YOUR-AZURE-SEARCH-SERVICE-NAME` arama hizmetinizin adıyla. 
+1. URL `https://YOUR-AZURE-SEARCH-SERVICE-NAME.search.windows.net/datasources?api-version=2019-05-06-Preview`'de, öğesini arama `YOUR-AZURE-SEARCH-SERVICE-NAME` hizmetinizin adıyla değiştirin. 
 
-1. Üst bölümünde değiştirin `<YOUR AZURE SEARCH ADMIN API-KEY>` bir yönetici API anahtarı için Azure Search ile.
+1. Üst bilgi bölümünde, Azure Search için `<YOUR AZURE SEARCH ADMIN API-KEY>` bir yönetici API anahtarı ile değiştirin.
 
-1. Gövde bölümüne JSON belgesi depolama hesabı bağlantı dizesi ve blob kapsayıcı adını içerir. Bağlantı dizesini Azure portalında depolama hesabınızın içinde bulunabilir **erişim anahtarlarını**. 
+1. Gövde bölümünde JSON belgesi, depolama hesabınızın bağlantı dizesini ve BLOB kapsayıcısı adını içerir. Bağlantı dizesi, depolama hesabınızın **erişim anahtarlarının**içindeki Azure Portal bulunabilir. 
 
     ```json
     {
@@ -259,21 +259,21 @@ Bilgi Bankası araştırma için dizin gerekmeyen gerekmez, ancak bir dizin olu�
     }
     ```
 
-1. Tıklayın **Gönder** ve isteği yürütmek için.  Alması gereken bir **durumu: 201 oluşturuldu** olarak bir yanıt iletisi.
+1. İsteği yürütmek için **Gönder** ' e tıklayın.  Bir **durum almanız gerekir: 201 yanıt** olarak ileti oluşturdu.
 
 
 
 <a name="create-skillset"></a>
 
-## <a name="create-a-skillset-and-knowledge-store"></a>Yetenek ve Bilgi Bankası deposu oluşturma
+## <a name="create-a-skillset-and-knowledge-store"></a>Beceri ve bilgi deposu oluşturma
 
-Üçüncü isteği kullanan [beceri kümesi API oluşturma](https://docs.microsoft.com/rest/api/searchservice/create-skillset), hangi bilişsel beceriler becerileri birlikte ve en önemlisi, bu kılavuz için - zincir şeklinde nasıl çağrılacağını belirtir bir Azure Search nesne oluşturma nasıl bilgi deposunu belirtmek.
+Üçüncü istek, [oluşturma BECERI API](https://docs.microsoft.com/rest/api/searchservice/create-skillset)'sini kullanarak, hangi bilişsel yeteneklerin çağrılacağını, yeteneklerin nasıl birlikte zincirleyeceğinizi ve bu izlenecek yol için en önemlisi (bilgi deposu belirtme) için bir Azure Search nesnesi oluşturur.
 
-1. URL'deki `https://YOUR-AZURE-SEARCH-SERVICE-NAME.search.windows.net/skillsets?api-version=2019-05-06-Preview`, değiştirin `YOUR-AZURE-SEARCH-SERVICE-NAME` arama hizmetinizin adıyla. 
+1. URL `https://YOUR-AZURE-SEARCH-SERVICE-NAME.search.windows.net/skillsets?api-version=2019-05-06-Preview`'de, öğesini arama `YOUR-AZURE-SEARCH-SERVICE-NAME` hizmetinizin adıyla değiştirin. 
 
-1. Üst bölümünde değiştirin `<YOUR AZURE SEARCH ADMIN API-KEY>` bir yönetici API anahtarı için Azure Search ile.
+1. Üst bilgi bölümünde, Azure Search için `<YOUR AZURE SEARCH ADMIN API-KEY>` bir yönetici API anahtarı ile değiştirin.
 
-1. Gövde bölümüne bir beceri kümesi tanımı JSON belgesidir. Görünürlük için daraltılmış, dış bir beceri kümesi kabuğunu aşağıdaki öğelerden oluşur. `skills` Koleksiyonu bellek içi zenginleştirmelerinin tanımlar ancak `knowledgeStore` çıkış nasıl depolandığını belirtir. `cognitiveServices` Bağlantınızı AI zenginleştirme altyapıları tanımıdır.
+1. Gövde bölümünde JSON belgesi bir beceri tanımıdır. Görünürlük için daraltılmış, bir beceri öğesinin dıştaki kabuğu aşağıdaki öğelerden oluşur. Koleksiyon, bellek içi zenginleştirme tanımlar, `knowledgeStore` ancak tanım çıktının nasıl depolandığını belirtir. `skills` `cognitiveServices` Tanım, AI zenginleştirme altyapılarıyla bağlantınız olur.
 
    ```json
    {
@@ -285,11 +285,11 @@ Bilgi Bankası araştırma için dizin gerekmeyen gerekmez, ancak bir dizin olu�
    }
    ```
 
-1. Genişletin `cognitiveServices` ve `knowledgeStore` böylelikle, bağlantı bilgilerini sağlayabilirsiniz. Örnekte, bu dizeler istek gövdesi sonuna doğru beceri kümesi tanımının sonra yer alır. 
+1. Bağlantı `cognitiveServices` bilgilerini `knowledgeStore` sağlayabilmeniz için ve ' ı genişletin. Örnekte, bu dizeler beceri tanımından sonra, istek gövdesinin sonuna doğru bulunur. 
 
-   İçin `cognitiveServices`, S0 katmanında Azure Search ile aynı bölgede bulunan bir kaynak sağlayın. Azure portalında aynı sayfasından cognitiveServices adını ve anahtarını alın. 
+   İçin `cognitiveServices`, Azure Search ile aynı bölgede bulunan S0 katmanında bir kaynak sağlayın. Biliveservices adını ve anahtarını Azure portal aynı sayfadan alabilirsiniz. 
    
-   İçin `knowledgeStore`, caselaw Blob kapsayıcısı için kullanılan aynı bağlantı dizesini kullanabilirsiniz.
+   İçin `knowledgeStore`, Caselaw blob kapsayıcısı için kullanılan bağlantı dizesini kullanabilirsiniz.
 
     ```json
     "cognitiveServices": {
@@ -301,9 +301,9 @@ Bilgi Bankası araştırma için dizin gerekmeyen gerekmez, ancak bir dizin olu�
         "storageConnectionString": "YOUR-STORAGE-ACCOUNT-CONNECTION-STRING",
     ```
 
-1. Becerileri koleksiyonu özellikle Shaper becerileri satırlarında 85 ve 179, sırasıyla genişletin. Bilgi Bankası araştırma için istediğiniz veri yapılarını çeviren Shaper beceri önemlidir. Beceri yürütmesi sırasında bu yapıları yalnızca bellek içi, ancak sonraki adıma taşırken, daha fazla araştırma için bir Bilgi Bankası mağazası bu Çıktıyı nasıl kaydedilebilir görürsünüz.
+1. Yetenekler koleksiyonunu, sırasıyla 85 ve 179 satırlarına göre belirli bir beceri olarak genişletin. Bilgi madenciliği için istediğiniz veri yapılarını bir şekilde ayrıştırır olduğundan, Beceri başına mil önemlidir. Beceri yürütme sırasında, bu yapılar yalnızca bellek içinde bulunur, ancak bir sonraki adıma geçtiğinizde, bu çıkışın daha fazla araştırma için bir bilgi deposuna nasıl kaydedileyebileceğinizi görürsünüz.
 
-   Aşağıdaki kod parçacığı 217 satırından ' dir. 
+   Aşağıdaki kod parçacığı 217 satırından yapılır. 
 
     ```json
     "name": "Opinions",
@@ -337,11 +337,11 @@ Bilgi Bankası araştırma için dizin gerekmeyen gerekmez, ancak bir dizin olu�
    . . .
    ```
 
-1. Genişletin `projections` öğesinde `knowledgeStore`262 satırda başlayan. Projeksiyonlar bilgi deposu oluşturma belirtin. Projeksiyonlar tabloları nesneleri çiftleri, ancak şu anda yalnızca bir zaman içinde belirtilir. İlk projeksiyonda gördüğünüz gibi `tables` belirtildi ancak `objects` değil. İkinci, onu tersidir.
+1. 262 `projections` satırından başlayarak `knowledgeStore`öğesinde öğesini genişletin. Tahminler bilgi deposu birleşimini belirler. Projeksiyonlar tablolar-nesneler çiftlerinde, ancak şu anda yalnızca bir kez belirtilir. İlk projeksiyde görebileceğiniz gibi, `tables` belirtilir ancak `objects` değildir. İkincisi ise bunun tersidir.
 
-   Azure depolama tabloları, oluşturduğunuz her tablo için tablo depolamasında oluşturulur ve her nesne bir kapsayıcı, Blob Depolama alanında alır.
+   Azure depolama 'da tablolar, oluşturduğunuz her tablo için tablo depolamada oluşturulur ve her nesne blob depolamada bir kapsayıcı alır.
 
-   BLOB nesneler genellikle bir zenginleştirme, tam ifade içerir. Tablolar, genellikle belirli amaçlar için düzenleme birleşimler kısmi zenginleştirmelerinin içerir. Bu örnek durumları tablo ve düşünceleri son derece tablo gösterir gösterilmez varlıklar, avukatlar Jüri ve taraflar gibi diğer tablolar gerekmez
+   Blob nesneleri genellikle bir zenginleştirme 'nin tam ifadesini içerir. Tablolar genellikle belirli amaçlar için düzenlediğiniz birleşimlerde kısmi zenginler içerir. Bu örnekte, bir servis talebi tablosu ve bir Oplanons tablosu gösterilmektedir, ancak gösterilmez; varlıklar, attorneys, yargılar ve taraflar gibi diğer tablolar.
 
     ```json
     "projections": [
@@ -373,7 +373,7 @@ Bilgi Bankası araştırma için dizin gerekmeyen gerekmez, ancak bir dizin olu�
     ]
     ```
 
-1. Tıklayın **Gönder** ve isteği yürütmek için. Yanıt şu şekilde olmalıdır **201** ve yanıt ilk bölümünü gösteren aşağıdaki örneğe benzer.
+1. İsteği yürütmek için **Gönder** ' e tıklayın. Yanıt **201** olmalıdır ve yanıtın ilk kısmını gösteren aşağıdaki örneğe benzer şekilde görünmelidir.
 
     ```json
     {
@@ -404,15 +404,15 @@ Bilgi Bankası araştırma için dizin gerekmeyen gerekmez, ancak bir dizin olu�
         . . .
     ```
 
-## <a name="create-and-run-an-indexer"></a>Oluşturma ve bir dizin oluşturucuyu çalıştırma
+## <a name="create-and-run-an-indexer"></a>Dizin Oluşturucu oluşturma ve çalıştırma
 
-Dördüncü istek kullanan [dizin oluşturucu API oluşturma](https://docs.microsoft.com/rest/api/searchservice/create-indexer), bir Azure Search dizin oluşturucu oluşturma. Bir dizin oluşturucu dizinleme işlem hattına yürütme altyapısıdır. Tüm o ana kadar oluşturulmuş tanımlarını, bu adım ile hareket halinde yerleştirilir.
+Dördüncü istek, bir Azure Search Dizin Oluşturucu oluşturarak [Create ıNDEXER API](https://docs.microsoft.com/rest/api/searchservice/create-indexer)'sini kullanır. Dizin Oluşturucu, dizin oluşturma işlem hattının yürütme altyapısıdır. Şimdiye kadar oluşturduğunuz tüm tanımlar bu adımla hareket içine konur.
 
-1. URL'deki `https://YOUR-AZURE-SEARCH-SERVICE-NAME.search.windows.net/indexers?api-version=2019-05-06-Preview`, değiştirin `YOUR-AZURE-SEARCH-SERVICE-NAME` arama hizmetinizin adıyla. 
+1. URL `https://YOUR-AZURE-SEARCH-SERVICE-NAME.search.windows.net/indexers?api-version=2019-05-06-Preview`'de, öğesini arama `YOUR-AZURE-SEARCH-SERVICE-NAME` hizmetinizin adıyla değiştirin. 
 
-1. Üst bölümünde değiştirin `<YOUR AZURE SEARCH ADMIN API-KEY>` bir yönetici API anahtarı için Azure Search ile.
+1. Üst bilgi bölümünde, Azure Search için `<YOUR AZURE SEARCH ADMIN API-KEY>` bir yönetici API anahtarı ile değiştirin.
 
-1. Gövde bölümüne JSON belgesini dizin oluşturucu adını belirtir. Bir veri kaynağı ve dizin, dizin oluşturucu tarafından gereklidir. Bir beceri kümesi, bir dizin oluşturucu için isteğe bağlı, ancak AI zenginleştirme için gerekli değildir.
+1. Gövde bölümünde JSON belgesi, Dizin Oluşturucu adını belirtir. Dizin Oluşturucu için bir veri kaynağı ve dizin gereklidir. Bir beceri, bir Dizin Oluşturucu için isteğe bağlıdır, ancak AI zenginleştirme için gereklidir.
 
     ```json
     {
@@ -428,7 +428,7 @@ Dördüncü istek kullanan [dizin oluşturucu API oluşturma](https://docs.micro
         "outputFieldMappings": [ ]
     ```
 
-1. OutputFieldMappings genişletin. Bir veri kaynağındaki alanları ve dizin alanları arasında özel eşleme için kullanılan fieldMappings kullanılmasının outputFieldMappings zenginleştirilmiş alanlarını eşleme için kullanılan, oluşturulur ve çıkış dizini ya da projeksiyon alanlara işlem hattı tarafından doldurulur.
+1. OutputFieldMappings öğesini genişletin. Bir veri kaynağındaki alanlar ve dizindeki alanlar arasında özel eşleme için kullanılan fieldMappings 'nin aksine, outputFieldMappings, işlem hattı tarafından oluşturulan ve doldurulan ve bir dizin veya projeksiyonun çıktısını almak için kullanılır.
 
     ```json
     "outputFieldMappings": [
@@ -460,7 +460,7 @@ Dördüncü istek kullanan [dizin oluşturucu API oluşturma](https://docs.micro
     ]
     ```
 
-1. Tıklayın **Gönder** ve isteği yürütmek için. Yanıt şu şekilde olmalıdır **201** ve yanıt gövdesi (konuyu uzatmamak amacıyla kırpılmış) sağladığınız isteği yükü neredeyse aynı görünmelidir.
+1. İsteği yürütmek için **Gönder** ' e tıklayın. Yanıt **201** olmalıdır ve yanıt gövdesi, verdiğiniz istek yüküyle neredeyse özdeş olmalıdır (breçekimi için kırpılmış).
 
     ```json
     {
@@ -477,22 +477,22 @@ Dördüncü istek kullanan [dizin oluşturucu API oluşturma](https://docs.micro
     }
     ```
 
-## <a name="explore-knowledge-store"></a>Bilgi Bankası store'u keşfedin
+## <a name="explore-knowledge-store"></a>Bilgi deposunu keşfet
 
-İlk alındıktan hemen sonra keşfetmeye başlayabilirsiniz. Bu görev için kullanacağınız [ **Depolama Gezgini** ](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer) portalında.
+İlk belge alındıktan hemen sonra keşfetmeye başlayabilirsiniz. Bu görev için portalda [**Depolama Gezgini**](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer) kullanın.
 
-Bilgi deposunu Azure arama için tam olarak ayrılmış olduğunu bilmeniz önemlidir. Azure Search dizini ve veri temsilini ve içeriği, ancak buradan bölümü yolları içeren bilgi mağazası hem de. Dizin, tam metin araması, filtrelenen arama ve Azure arama'yı desteklenen tüm senaryolar için kullanın. Veya, içerikleri analiz etmek için diğer araçlar iliştirme yalnızca bilgi deponuz ile ileri taşıyın.
+Bilgi deposunun Azure Search tamamen ayrıldığına dikkat etmek önemlidir. Azure Search dizini ve bilgi deposu her ikisi de veri temsili ve içerikleri içerir, ancak bunların bir parçası. Tam metin araması, filtrelenmiş arama ve Azure Search desteklenen tüm senaryolar için dizini kullanın. Ya da yalnızca bilgi deponuzda ileri gidin ve içerikleri çözümlemek için diğer araçları ekleyerek.
 
 ## <a name="takeaways"></a>Paketler
 
-Artık Azure depolama alanında ilk bilgi deponuza oluşturduğunuz ve Depolama Gezgini zenginleştirmelerinin görüntülemek için kullanılır. Bu, depolanan zenginleştirmelerinin ile çalışmak için temel deneyimidir. 
+Azure Storage 'da ilk bilgi deponuzi oluşturdunuz ve Depolama Gezgini, zenginleştirme bilgilerini görüntülemek için kullandınız. Bu, depolanan enzenginler ile çalışmaya yönelik temel deneyimdir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Shaper beceri yeni şekillere birleştirilebilir ayrıntılı veri formları oluşturma ağır işleri yapar. Sonraki adım olarak, nasıl kullanıldıkları hakkındaki ayrıntılar için bu yetenek için başvuru sayfasına gözden geçirin.
+Her beceri, yeni şekillere birleştirilebilecek parçalı veri formları oluşturmaya yönelik ağır bir kaldırma yapar. Bir sonraki adım olarak, nasıl kullanıldığına ilişkin ayrıntılar için bu beceri için başvuru sayfasını gözden geçirin.
 
 > [!div class="nextstepaction"]
-> [Shaper beceri başvurusu](cognitive-search-skill-shaper.md)
+> [Beceri başına mil başvurusu](cognitive-search-skill-shaper.md)
 
 
 <!---
