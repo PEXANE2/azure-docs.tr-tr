@@ -10,6 +10,8 @@
       href: quickstart-create-traffic-manager-profile.md
     - name: Traffic Manager profili oluşturma - PowerShell
       href: quickstart-create-traffic-manager-profile-powershell.md
+    - name: Traffic Manager profili oluşturma - Azure CLI
+      href: quickstart-create-traffic-manager-profile-cli.md
 - name: Öğreticiler
   items:
     - name: Düşük gecikme süresi için trafiği yönlendirme

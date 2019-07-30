@@ -61,7 +61,7 @@
           href: container-instances-restart-policy.md
         - name: Ortam değişkenlerini belirleme (env)
           href: container-instances-environment-variables.md
-        - name: Kapsayıcı giriş noktasını geçersiz kılma
+        - name: Kapsayıcı başlangıç komutunu ayarlama (entrypoint)
           href: container-instances-start-command.md
         - name: Komut yürütme (exec)
           href: container-instances-exec.md

@@ -253,6 +253,9 @@
         - name: DSC yapılandırmaları derleme
           href: automation-dsc-compile.md
           displayName: 'state configuration, composite resources, configurationData'
+        - name: Uyumlu olmayan DSC sunucularını düzeltme
+          href: automation-dsc-remediate.md
+          displayName: 'state configuration, DSC, remediate'
         - name: Bileşik Kaynakları kullanarak DSC Yapılandırmaları oluşturma
           href: compose-configurationwithcompositeresources.md
         - name: Chocolatey kullanarak sürekli dağıtım

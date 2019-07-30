@@ -50,6 +50,18 @@
       href: ../hdinsight-version-release.md
     - name: Ambari ve Azure İzleyici günlükleriyle küme kullanılabilirliğini izleme
       href: ../hdinsight-cluster-availability.md
+    - name: Sorun giderme
+      items:
+        - name: OutOfMemoryError özel durumu
+          items:
+            - name: Yetersiz yığın belleği
+              href: ./apache-spark-troubleshoot-outofmemory-heap.md
+        - name: IllegalArgumentException özel durumu
+          href: ./apache-spark-troubleshoot-illegalargumentexception.md
+        - name: Apache Spark Akış uygulaması duraklıyor
+          href: ./apache-spark-troubleshoot-application-stops.md
+        - name: RpcTimeoutException özel durumu
+          href: ./apache-spark-troubleshoot-rpctimeoutexception.md
 - name: Nasıl yapılır
   items:
     - name: Küme depolama alanını kullanma

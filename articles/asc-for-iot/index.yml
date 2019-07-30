@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: IoT için Azure Güvenlik Merkezi Önizleme Belgeleri
+title: IoT için Azure Güvenlik Merkezi Belgeleri
 metadata:
-  title: 'IoT için Azure Güvenlik Merkezi Önizleme Belgeleri - Öğreticiler, Hızlı Başlangıçlar | Microsoft Docs'
-  meta.description: Azure Security Center for IoT unifies your security management and enables advanced threat protection across your IoT solution.
+  title: 'IoT için Azure Güvenlik Merkezi Belgeleri - Öğreticiler, Hızlı Başlangıçlar | Microsoft Docs'
+  meta.description: Azure Security Center for IoT unifies your device security management and enables advanced threat detection and security posture management across your IoT solution.
   services: asc-for-iot
   author: mlottner
   manager: rkarlin
@@ -11,25 +11,25 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 03/26/19
+  ms.date: 07/23/19
   ms.author: rkarlin
 abstract:
-  description: "IoT için Azure Güvenlik Merkezi (ASC) Önizleme sürümünü kullanarak, siber güvenliğe yönelik mevcut görüntüleme olanaklarınızı IoT çözümünüzün tamamını kapsayacak biçimde genişletin. Azure ile ilişkili tüm kaynaklarınızın güvenliğine panoramik bir bakış elde edin. Hızlı dağıtım seçenekleri ve IoT Hub modül ikizleriyle eksiksiz tümleştirme olanakları sayesinde geniş özelleştirme seçenekleri elde edersiniz ve mevcut cihaz yönetimi araçlarınızla kolayca tümleştirebilirsiniz.\_"
+  description: "IoT için Azure Güvenlik Merkezi’ni kullanarak, siber güvenliğe yönelik mevcut görüntüleme olanaklarınızı IoT çözümünüzün tamamını kapsayacak biçimde genişletin. Azure ile ilişkili tüm kaynaklarınızın güvenliğine panoramik bir bakış elde edin. Hızlı dağıtım seçenekleri ve IoT Hub modül ikizleriyle eksiksiz tümleştirme olanakları sayesinde geniş özelleştirme seçenekleri elde edersiniz ve mevcut cihaz yönetimi araçlarınızla kolayca tümleştirebilirsiniz.\_"
 sections:
   - title: 5 Dakikalık Hızlı Başlangıçlar
     items:
       - type: paragraph
-        text: 'IoT Hub’ınızı IoT için ASC ile birlikte kullanmayı, IoT için ASC aracılarını yüklemeyi, verilerinize ve olası tehditlere yönelik görünürlük elde etmeyi öğrenin.'
+        text: 'IoT Hub’ınızı IoT için Azure Güvenlik Merkezi ile birlikte kullanmayı, güvenlik aracılarını yüklemeyi ve olası tehditlere yönelik görünürlük elde etmeyi öğrenin.'
       - type: list
         style: icon48
         items:
           - image:
               src: media/index/deploy.svg
-            text: IoT için ASC’yi etkinleştirme
+            text: IoT için Azure Güvenlik Merkezi’ni etkinleştirme
             href: /azure/asc-for-iot/quickstart-onboard-iot-hub
           - image:
               src: media/index/get-started.svg
-            text: IoT için ASC’yi kullanmaya başlama
+            text: IoT için Azure Güvenlik’i kullanmaya başlama
             href: /azure/asc-for-iot/getting-started
   - title: Nasıl yapılır kılavuzları
     items:
@@ -38,7 +38,7 @@ sections:
       - type: list
         style: unordered
         items:
-          - html: <a href="/azure/asc-for-iot/how-to-investigate-device">IoT için ASC ile tehdit algılama</a>
+          - html: <a href="/azure/asc-for-iot/how-to-investigate-device">IoT için Azure Güvenlik Merkezi ile tehditleri algılama</a>
   - title: Microsoft Learn ile becerilerinizi geliştirin
     items:
       - type: list
@@ -50,8 +50,17 @@ sections:
             image:
               src: media/index/tutorial.svg
               href: 'https://docs.microsoft.com/learn/azure'
-      - type: paragraph
-        text: <a href="/learn/browse/?term=security">Daha fazla etkileşimli öğrenme içeriği...</a>
+  - title: IoT için Azure Güvenlik Merkezi Videoları
+    items:
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: IoT için Microsoft Azure Güvenlik Merkezi - Genel Bakış
+            href: 'https://youtu.be/pq5uSp9u_x0'
+            image:
+              src: 'https://docs.microsoft.com/media/common/i_video.svg'
+              href: 'https://youtu.be/pq5uSp9u_x0'
   - title: Başvuru
     items:
       - type: list

@@ -72,6 +72,8 @@
               href: connect-cisco.md
         - name: Tehdit zekasını bağlama
           href: connect-threat-intelligence.md
+        - name: Azure Stack VM’lerini bağlama
+          href: connect-azure-stack.md
     - name: Avlanma
       href: hunting.md
       items:

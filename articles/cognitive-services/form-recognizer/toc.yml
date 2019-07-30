@@ -7,22 +7,22 @@
 - name: Hızlı Başlangıçlar
   expaned: true
   items:
-    - name: Özel model eğitme ve verileri ayıklama
+    - name: REST API’sini kullanma
       items:
-        - name: REST API’sini kullanma
+        - name: Özel model eğitme ve verileri ayıklama
           items:
             - name: cURL
               href: quickstarts/curl-train-extract.md
             - name: Python
               href: quickstarts/python-train-extract.md
-    - name: Önceden oluşturulmuş girişler modelini kullanma
-      items:
-        - name: REST API’sini kullanma
+        - name: Önceden oluşturulmuş makbuz modelini kullanma
           items:
             - name: cURL
               href: quickstarts/curl-receipts.md
             - name: Python
               href: quickstarts/python-receipts.md
+    - name: .NET SDK’sini kullanma
+      href: quickstarts/dotnet-sdk.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Eğitim verileri kümesi oluşturma

@@ -249,6 +249,8 @@
               href: devtest-lab-integrate-ci-cd-vsts.md
             - name: Azure DevOps CI/CD ardışık düzeninizi ortamlarla tümleştirme
               href: integrate-environments-devops-pipeline.md
+            - name: Azure DevOps derleme ve yayın işlem hatlarında DevTest Labs’i kullanma
+              href: use-devtest-labs-build-release-pipelines.md
         - name: Kuruluşta DevTest Labs
           items:
             - name: Kurumsal ölçekte DevTest Labs

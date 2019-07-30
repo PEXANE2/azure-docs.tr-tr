@@ -738,6 +738,12 @@
           maintainContext: true
         - name: ODBC sürücüsü
           href: odbc-driver.md
+    - name: Verileri Cosmos DB’ye geçirme
+      items:
+        - name: Striim kullanarak SQL API’ye geçirme
+          href: cosmosdb-sql-api-migrate-data-striim.md
+        - name: Striim kullanarak Cassandra API’ye geçirme
+          href: cosmosdb-cassandra-api-migrate-data-striim.md
     - name: Toplu yürütücü kitaplığı
       items:
         - name: Toplu yürütücü kitaplığı hakkında

@@ -77,6 +77,8 @@
       items:
         - name: Sanal ağ ile erişimi sınırlandırma (önizleme)
           href: container-registry-vnet.md
+        - name: Güvenlik duvarının arkasından erişme
+          href: container-registry-firewall-access-rules.md
         - name: Kimlik Doğrulaması
           items:
             - name: Kimlik Doğrulamasına genel bakış
