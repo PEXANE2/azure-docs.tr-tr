@@ -22,6 +22,12 @@
     - name: Kapasite planlaması
       href: ../hdinsight-capacity-planning.md
       maintainContext: true
+    - name: Sorun giderme
+      items:
+        - name: OutOfMemoryError özel durumu
+          items:
+            - name: GC ek yük sınırı aşıldı
+              href: ./interactive-query-troubleshoot-outofmemory-overhead-exceeded.md
 - name: Nasıl yapılır
   items:
     - name: Hive iş yüklerini HDInsight 4.0 sürümüne geçirme

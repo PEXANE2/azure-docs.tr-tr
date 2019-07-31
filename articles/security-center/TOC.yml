@@ -75,8 +75,6 @@
       href: security-center-provide-security-contact-details.md
     - name: Fiyatlandırma katmanı
       href: security-center-pricing.md
-    - name: Güvenlik yapılandırmaları
-      href: security-center-customize-os-security-config.md
     - name: Kiracı çapında görünürlük
       href: security-center-management-groups.md
     - name: Güvenlik önerileri uygulama
@@ -183,6 +181,8 @@
           href: security-center-alerts-type.md
         - name: Azure kaynakları ve kullanıcıları için UEBA
           href: security-center-ueba-mcas.md
+        - name: Güvenlik yapılandırmalarını özelleştirme
+          href: security-center-customize-os-security-config.md
 - name: Başvuru
   items:
     - name: REST API'leri

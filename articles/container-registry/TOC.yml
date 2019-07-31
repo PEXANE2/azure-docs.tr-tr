@@ -105,8 +105,14 @@
           href: container-registry-tasks-multi-step.md
         - name: Buildpacks ile görüntü oluşturma (önizleme)
           href: container-registry-tasks-pack-build.md
-        - name: Yönetilen kimlik ile kullanma
-          href: container-registry-tasks-authentication-managed-identity.md
+        - name: Yönetilen kimliklerle güvenli kaynaklara erişme
+          items:
+            - name: Bir görevde yönetilen kimliği etkinleştirme
+              href: container-registry-tasks-authentication-managed-identity.md
+            - name: Bir görevdeki kayıt defterleri arasında kimlik doğrulaması
+              href: container-registry-tasks-cross-registry-authentication.md
+            - name: Anahtar kasası kullanarak dış kimlik doğrulaması
+              href: container-registry-tasks-authentication-key-vault.md
     - name: Kayıt defterleri ve diğer Azure hizmetleri
       items:
         - name: Azure Container Instances

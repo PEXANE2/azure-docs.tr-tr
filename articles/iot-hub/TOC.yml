@@ -91,6 +91,8 @@
       href: iot-hub-scaling.md
     - name: Yüksek kullanılabilirlik ve olağanüstü durum kurtarma
       href: iot-hub-ha-dr.md
+    - name: IoT hub’ı IP adresini anlama
+      href: iot-hub-understand-ip-address.md
     - name: Ek protokollerin desteklenmesi
       href: iot-hub-protocol-gateway.md
     - name: İleti ve olay yönlendirmeyi karşılaştırma

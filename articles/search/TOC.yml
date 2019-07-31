@@ -231,7 +231,9 @@
           href: cognitive-search-resources-documentation.md
     - name: Bilgi deposu (önizleme)
       items:
-        - name: Nasıl kullanmaya başlarım
+        - name: Power BI kullanarak bağlanma
+          href: knowledge-store-connect-powerbi.md
+        - name: REST ve Postman kullanarak oluşturma
           href: knowledge-store-howto.md
     - name: Verileri sorgulama
       items:

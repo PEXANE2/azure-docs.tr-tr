@@ -526,6 +526,8 @@
           href: create-shared-self-hosted-integration-runtime-powershell.md
     - name: Azure’da SSIS paketlerini çalıştırma
       items:
+        - name: Azure’da SSIS paketlerini SSDT’ten çalıştırma
+          href: how-to-invoke-ssis-package-ssdt.md
         - name: SSIS Paketlerini Yürütme etkinliği ile SSIS paketleri çalıştırma
           href: how-to-invoke-ssis-package-ssis-activity.md
         - name: Saklı Yordam etkinliği ile SSIS paketleri çalıştırma

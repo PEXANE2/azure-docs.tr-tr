@@ -33,6 +33,12 @@
   items:
     - name: Python SDK'sı
       items:
+        - name: İlk ML denemesini oluşturma
+          items:
+            - name: 1. Çalışma alanını ve geliştirme ortamını ayarlama
+              href: tutorial-1st-experiment-sdk-setup.md
+            - name: 2. İlk modelinizi eğitme
+              href: tutorial-1st-experiment-sdk-train.md
         - name: Görüntü sınıflandırması (MNIST verileri)
           items:
             - name: 1. Modeli eğitme
