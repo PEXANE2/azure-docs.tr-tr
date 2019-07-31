@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/06/2016
 ms.author: matd
 ms.openlocfilehash: 3ebf464fed1480e7452f246f04f3906faf0dd219
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "67875309"
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>Veead ile yedekleme hedefi olarak StorSimple
@@ -259,9 +259,9 @@ Yukarıdaki varsayımlar temelinde, aylık ve yıllık tam yedeklemeler için 26
 
 | Yedekleme türü tutma | Boyut (TiB) | GFS çarpanı\* | Toplam Kapasite (TiB)  |
 |---|---|---|---|
-| Haftalık tam | 1\. | 4  | 4 |
+| Haftalık tam | 1 | 4  | 4 |
 | Günlük artımlı | 0,5 | 20 (ayda eşit sayıda hafta döngüsü) | 12 (ek kota için 2) |
-| Aylık tam | 1 | 12 | 12 |
+| Aylık tam | 1\. | 12 | 12 |
 | Yıllık tam | 1\.  | 10 | 10 |
 | GFS gereksinimi |   | 38 |   |
 | Ek kota  | 4  |   | Toplam 42 GFS gereksinimi  |
@@ -318,9 +318,9 @@ Dört hafta, aylık ve yıllık için bir GFS döndürme zamanlaması örneği a
 
 | Sıklık/yedekleme türü | Tam | Artımlı (gün 1-5)  |   
 |---|---|---|
-| Haftalık (hafta 1-4) | Günü | Pazartesi-Cuma |
-| Aylık  | Günü  |   |
-| Yılın | Günü  |   |
+| Haftalık (hafta 1-4) | Cumartesi | Pazartesi-Cuma |
+| Aylık  | Cumartesi  |   |
+| Yıllık | Cumartesi  |   |
 
 
 ### <a name="assign-storsimple-volumes-to-a-veeam-backup-job"></a>Bir Veead yedekleme işine StorSimple birimleri atama
@@ -380,10 +380,10 @@ Aşağıdaki tabloda, yerel ve StorSimple disklerinde çalışacak yedeklemeleri
 
 | Yedekleme türü ve bekletme | Yapılandırılan depolama alanı | Boyut (TiB) | GFS çarpanı | Toplam kapasite\* (Tib) |
 |---|---|---|---|---|
-| Hafta 1 (tam ve artımlı) |Yerel disk (kısa vadeli)| 1 | 1\. | 1\. |
+| Hafta 1 (tam ve artımlı) |Yerel disk (kısa vadeli)| 1\. | 1\. | 1\. |
 | StorSimple hafta 2-4 |StorSimple diski (uzun vadeli) | 1\. | 4 | 4 |
 | Aylık tam |StorSimple diski (uzun vadeli) | 1\. | 12 | 12 |
-| Yıllık tam |StorSimple diski (uzun vadeli) | 1 | 1\. | 1 |
+| Yıllık tam |StorSimple diski (uzun vadeli) | 1 | 1\. | 1\. |
 |GFS birimleri boyut gereksinimi |  |  |  | 18*|
 
 \*Toplam kapasite, StorSimple disklerinin 17 TiB ve yerel RAID birimi 'nin 1 TiB 'leri içerir.
@@ -400,7 +400,7 @@ GFS haftalık, aylık ve yıllık zamanlama
 | Hafta 3 | StorSimple hafta 2-4 |   |   |   |   |   |
 | Hafta 4 | StorSimple hafta 2-4 |   |   |   |   |   |
 | Aylık | StorSimple aylık |   |   |   |   |   |
-| Yılın | StorSimple yıllık  |   |   |   |   |   |
+| Yıllık | StorSimple yıllık  |   |   |   |   |   |
 
 ### <a name="assign-storsimple-volumes-to-a-veeam-copy-job"></a>Bir Veead kopyalama işine StorSimple birimleri atama
 
@@ -507,7 +507,7 @@ Olağanüstü bir durum, çeşitli faktörlerden kaynaklanıyor olabilir. Aşağ
 | Hem yedekleme sunucusu hem de StorSimple kaybına neden olan site hatası | Yedekleme ve geri yükleme işlemleri kesintiye uğrar. | Önce StorSimple 'ı geri yükleyin ve ardından Veead 'yi geri yükleyin. | Önce StorSimple 'ı geri yükleyin ve ardından Veead 'yi geri yükleyin. Cihazın kurtarmasından sonra geri yükleme gerçekleştirmeniz gerekirse, tam veri çalışma kümeleri buluttan yeni cihaza alınır. Tüm işlemler bulut hızlardır. |
 
 
-## <a name="references"></a>Başvurular
+## <a name="references"></a>Referanslar
 
 Bu makale için aşağıdaki belgelere başvuruldu:
 

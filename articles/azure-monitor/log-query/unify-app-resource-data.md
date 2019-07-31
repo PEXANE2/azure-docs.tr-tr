@@ -129,7 +129,7 @@ Aşağıdaki tabloda, Log Analytics ve Application Insights şema farklılıklar
 | PageViewCount | itemCount |
 | PageViewDuration | duration | 
 | PageViewName | name | 
-| ParentOperationID | operation_id | 
+| ParentOperationID | operation_Id | 
 | RequestCount | itemCount | 
 | RequestDuration | duration | 
 | RequestID | id | 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.service: cost-management
 ms.custom: seodec18
 ms.openlocfilehash: 6a4f7f5671562679a245d97ad8491764657cbb34
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "66242457"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Azure sanal makineleri için genişletilmiş ölçümler ekleme
@@ -28,10 +28,10 @@ Cloudyn Azure vm'lerinizden Azure ölçüm veri kaynakları hakkında bilgi ayr�
 - Boyutlandırma kullanım göre maliyetlerinizi kontrol.
 - Maliyet etkin boyutlandırma Cloudyn iyileştirme önerileri alın.
 
-Örneğin, Azure sanal makinelerinizin bellek % ve % CPU izlemek isteyebilirsiniz. Azure VM ölçümleri karşılık _CPU yüzdesi_ ve _\Memory\% bayt kullanımda kaydedilen_.
+Örneğin, Azure sanal makinelerinizin bellek % ve % CPU izlemek isteyebilirsiniz. Azure VM ölçümleri, _Yüzde CPU_ ve _\bellek\% teslim edilen bayt kullanım_yüzdesine karşılık gelir.
 
 > [!NOTE]
-> Genişletilmiş ölçüm verileri toplama yalnızca Azure Konuk düzeyinde izlemeyi ile desteklenir. Cloudyn Azure İzleyici günlüklerine VM uzantısı ile uyumlu değil.
+> Genişletilmiş ölçüm verileri toplama yalnızca Azure Konuk düzeyinde izlemeyi ile desteklenir. Cloudyn, Azure Izleyici günlükleri VM uzantısıyla uyumlu değil.
 
 ## <a name="determine-whether-extended-metrics-are-enabled"></a>Genişletilmiş ölçümler etkinleştirilip etkinleştirilmediğini belirleme
 
@@ -44,7 +44,7 @@ Yukarıdaki örnekte, sınırlı sayıda standart ölçüm konaklarınız için 
 
 ## <a name="enable-extended-metrics-in-the-azure-portal"></a>Azure portalında genişletilmiş ölçümlerini etkinleştir
 
-Standart ölçümler, ana bilgisayar ölçümleridir. _CPU yüzdesi_ ölçüm, bir örnek verilmiştir. Genişletilmiş ölçümler de adlandırılırlar ve Konuk sanal makineler için temel ölçümleri de vardır. Genişletilmiş ölçümler örnekler _\Memory\% bayt kullanımda kaydedilen_ ve _\Memory\Available bayt_.
+Standart ölçümler, ana bilgisayar ölçümleridir. _CPU Ölçümü yüzdesi_ bir örnektir. Genişletilmiş ölçümler de adlandırılırlar ve Konuk sanal makineler için temel ölçümleri de vardır. Genişletilmiş ölçümlere örnek olarak, _kullanılmakta olan\% bellek kaydedilmiş bayt_ ve _\bellek\kullanılabilir bayt_verilebilir.
 
 Genişletilmiş ölçümlerini etkinleştirme oldukça basittir. Her VM için konuk düzeyinde izlemeyi etkinleştir. Konuk düzeyinde izlemeyi etkinleştirdiğinizde, Azure tanılama aracısını sanal makinede yüklü. Varsayılan olarak, genişletilmiş ölçümleri temel bir dizi eklenir. Aşağıdaki normal ve klasik VM'ler için aynı ve Windows ve Linux Vm'leri için aynı işlemidir.
 

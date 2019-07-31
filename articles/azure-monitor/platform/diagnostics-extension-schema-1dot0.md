@@ -1,6 +1,6 @@
 ---
-title: Azure tanılama 1.0 yapılandırma şeması
-description: YALNIZCA ilgili Azure SDK 2.4 kullanıyorsanız ve aşağıdaki Azure sanal makineler, sanal makine ölçek kümeleri, Service Fabric ve Cloud Services ile.
+title: Azure Tanılama 1,0 yapılandırma şeması
+description: YALNıZCA Azure sanal makineler, sanal makine ölçek kümeleri, Service Fabric veya Cloud Services ile Azure SDK 2,4 ve aşağıdaki durumlarda geçerlidir.
 services: azure-monitor
 author: rboucher
 ms.service: azure-monitor
@@ -10,28 +10,28 @@ ms.date: 05/15/2017
 ms.author: robb
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: ac2b79d670b803573a359dfc9f8738f972f2d9b5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "60237850"
 ---
-# <a name="azure-diagnostics-10-configuration-schema"></a>Azure tanılama 1.0 yapılandırma şeması
+# <a name="azure-diagnostics-10-configuration-schema"></a>Azure Tanılama 1,0 yapılandırma şeması
 > [!NOTE]
-> Azure Tanılama, Azure sanal makineler, sanal makine ölçek kümeleri, Service Fabric ve Cloud Services performans sayaçları ve diğer istatistikleri toplamak için kullanılan bileşendir.  Bu sayfada, yalnızca bu hizmetlerden biri kullanıyorsanız geçerlidir.
+> Azure Tanılama, Azure sanal makineler, sanal makine ölçek kümeleri, Service Fabric ve Cloud Services performans sayaçlarını ve diğer istatistikleri toplamak için kullanılan bileşendir.  Bu sayfa yalnızca bu hizmetlerden birini kullanıyorsanız ilgilidir.
 >
 
-Azure Tanılama, Application Insights ve Log Analytics içeren Azure İzleyici gibi diğer Microsoft tanılama ürünleriyle kullanılır.
+Azure Tanılama, Application Insights ve Log Analytics dahil olmak üzere Azure Izleyici gibi diğer Microsoft tanılama ürünleriyle birlikte kullanılır.
 
-Azure tanılama yapılandırma dosyası, tanılama İzleyicisi'ni başlatmak için kullanılan değerleri tanımlar. Bu dosya, Tanılama izleme başladığında tanılama yapılandırma ayarları başlatmak için kullanılır.  
+Azure Tanılama yapılandırma dosyası, tanılama Izleyicisini başlatmak için kullanılan değerleri tanımlar. Bu dosya, tanılama İzleyicisi başladığında tanılama yapılandırma ayarlarını başlatmak için kullanılır.  
 
- Azure tanılama yapılandırma şema dosyası varsayılan olarak yüklü `C:\Program Files\Microsoft SDKs\Azure\.NET SDK\<version>\schemas` dizin. Değiştirin `<version>` 'ın yüklü sürümü ile [Azure SDK'sı](https://www.windowsazure.com/develop/downloads/).  
+ Varsayılan olarak, Azure tanılama yapılandırma şema dosyası `C:\Program Files\Microsoft SDKs\Azure\.NET SDK\<version>\schemas` dizine yüklenir. `<version>` [Azure SDK](https://www.windowsazure.com/develop/downloads/)'nın yüklü sürümüyle değiştirin.  
 
 > [!NOTE]
->  Tanılama yapılandırma dosyası, genellikle başlangıç işlemde daha önce toplanacak tanılama verilerini gerektiren başlangıç görevleri ile kullanılır. Azure tanılama kullanma hakkında daha fazla bilgi için bkz. [kullanarak Azure Tanılama ile günlük verileri topla](assetId:///83a91c23-5ca2-4fc9-8df3-62036c37a3d7).  
+>  Tanılama yapılandırma dosyası genellikle, tanılama verilerinin başlangıç sürecinde daha önce toplanmasını gerektiren başlangıç görevleriyle birlikte kullanılır. Azure Tanılama kullanma hakkında daha fazla bilgi için bkz. [Azure Tanılama kullanarak günlük verilerini toplama](assetId:///83a91c23-5ca2-4fc9-8df3-62036c37a3d7).  
 
 ## <a name="example-of-the-diagnostics-configuration-file"></a>Tanılama yapılandırma dosyası örneği  
- Aşağıdaki örnek, bir normal tanılama yapılandırma dosyası gösterir:  
+ Aşağıdaki örnek tipik bir tanılama yapılandırma dosyası göstermektedir:  
 
 ```xml  
 <?xml version="1.0" encoding="utf-8"?>
@@ -85,189 +85,189 @@ Azure tanılama yapılandırma dosyası, tanılama İzleyicisi'ni başlatmak iç
 </DiagnosticMonitorConfiguration>  
 ```  
 
-## <a name="diagnosticsconfiguration-namespace"></a>DiagnosticsConfiguration Namespace  
- Tanılama yapılandırma dosyası için XML ad alanı verilmiştir:  
+## <a name="diagnosticsconfiguration-namespace"></a>DiagnosticsConfiguration ad alanı  
+ Tanılama yapılandırma dosyası için XML ad alanı:  
 
 ```  
 http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration  
 ```  
 
 ## <a name="schema-elements"></a>Şema öğeleri  
- Tanılama yapılandırma dosyası, aşağıdaki öğeleri içerir.
+ Tanılama yapılandırma dosyası aşağıdaki öğeleri içerir.
 
 
 ## <a name="diagnosticmonitorconfiguration-element"></a>DiagnosticMonitorConfiguration öğesi  
-En üst düzey öğesi tanılama yapılandırma dosyası.  
+Tanılama yapılandırma dosyasının en üst düzey öğesi.  
 
-Öznitelikleri:
+Öznitelikler:
 
-|Öznitelik  |Tür   |Gerekli| Varsayılan | Açıklama|  
+|Öznitelik  |Type   |Gerekli| Varsayılan | Açıklama|  
 |-----------|-------|--------|---------|------------|  
-|**configurationChangePollInterval**|Süresi|İsteğe bağlı | PT1M| Tanı İzleyicisi yoklama aralığını tanılama yapılandırma değişikliklerini belirtir.|  
-|**overallQuotaInMB**|unsignedInt|İsteğe bağlı| 4000 MB. Bir değer belirtirseniz, bu miktar aşmamalıdır |Tüm günlük arabellekleri için ayrılan dosya sistemi depolama miktarı.|  
+|**Configurationchangepollınterval**|duration|İsteğe Bağlı | PT1M| Tanılama izleyicisinin tanılama yapılandırması değişikliklerini yokladığı aralığı belirtir.|  
+|**overallQuotaInMB**|unsignedInt|İsteğe Bağlı| 4000 MB. Bir değer sağlarsanız, bu miktarı aşmaması gerekir |Tüm günlük arabellekleri için ayrılan toplam dosya sistemi depolama miktarı.|  
 
 ## <a name="diagnosticinfrastructurelogs-element"></a>DiagnosticInfrastructureLogs öğesi  
-Temel alınan Tanılama Altyapısı tarafından oluşturulan günlükler için arabellek yapılandırmasını tanımlar.
+Temel alınan tanılama altyapısı tarafından oluşturulan Günlükler için arabellek yapılandırmasını tanımlar.
 
 Üst öğe: DiagnosticMonitorConfiguration öğesi.  
 
-Öznitelikleri:
+Öznitelikler:
 
-|Öznitelik|Tür|Açıklama|  
+|Öznitelik|Type|Açıklama|  
 |---------|----|-----------------|  
-|**bufferQuotaInMB**|unsignedInt|İsteğe bağlı. Belirtilen veriler için kullanılabilen dosya sistemi depolama miktarını belirtir.<br /><br /> Varsayılan değer 0'dır.|  
-|**scheduledTransferLogLevelFilter**|string|İsteğe bağlı. Aktarılan günlük girişlerini için en düşük önem derecesini belirtir. Varsayılan değer **tanımlanmamış**. Diğer olası değerler **ayrıntılı**, **bilgi**, **uyarı**, **hata**, ve **kritik**.|  
-|**scheduledTransferPeriod**|Süresi|İsteğe bağlı. Zamanlanmış aktardığı veriler, en yakın dakikaya yuvarlanır arasındaki aralığı belirtir.<br /><br /> PT0S varsayılandır.|  
+|**bufferQuotaInMB**|unsignedInt|İsteğe bağlı. Belirtilen veriler için kullanılabilen en fazla dosya sistemi depolama miktarını belirtir.<br /><br /> Varsayılan değer 0 ' dır.|  
+|**scheduledTransferLogLevelFilter**|dize|İsteğe bağlı. Aktarılan günlük girişlerinin en düşük önem derecesini belirtir. Varsayılan değer **tanımsızdır**. Diğer olası değerler **ayrıntılı**, **bilgi**, **Uyarı**, **hata**ve **kritik öneme**sahiptir.|  
+|**scheduledTransferPeriod**|duration|İsteğe bağlı. Zamanlanan veri aktarımları arasındaki aralığı, en yakın dakikaya yuvarlayarak belirtir.<br /><br /> Varsayılan değer PT0S ' dir.|  
 
-## <a name="logs-element"></a>Günlükleri öğesi  
- Temel Azure günlükleri arabellek yapılandırmasını tanımlar.
+## <a name="logs-element"></a>Logs öğesi  
+ Temel Azure günlükleri için arabellek yapılandırmasını tanımlar.
 
  Üst öğe: DiagnosticMonitorConfiguration öğesi.  
 
-Öznitelikleri:  
+Öznitelikler:  
 
-|Öznitelik|Tür|Açıklama|  
+|Öznitelik|Type|Açıklama|  
 |---------------|----------|-----------------|  
-|**bufferQuotaInMB**|unsignedInt|İsteğe bağlı. Belirtilen veriler için kullanılabilen dosya sistemi depolama miktarını belirtir.<br /><br /> Varsayılan değer 0'dır.|  
-|**scheduledTransferLogLevelFilter**|string|İsteğe bağlı. Aktarılan günlük girişlerini için en düşük önem derecesini belirtir. Varsayılan değer **tanımlanmamış**. Diğer olası değerler **ayrıntılı**, **bilgi**, **uyarı**, **hata**, ve **kritik**.|  
-|**scheduledTransferPeriod**|Süresi|İsteğe bağlı. Zamanlanmış aktardığı veriler, en yakın dakikaya yuvarlanır arasındaki aralığı belirtir.<br /><br /> PT0S varsayılandır.|  
+|**bufferQuotaInMB**|unsignedInt|İsteğe bağlı. Belirtilen veriler için kullanılabilen en fazla dosya sistemi depolama miktarını belirtir.<br /><br /> Varsayılan değer 0 ' dır.|  
+|**scheduledTransferLogLevelFilter**|dize|İsteğe bağlı. Aktarılan günlük girişlerinin en düşük önem derecesini belirtir. Varsayılan değer **tanımsızdır**. Diğer olası değerler **ayrıntılı**, **bilgi**, **Uyarı**, **hata**ve **kritik öneme**sahiptir.|  
+|**scheduledTransferPeriod**|duration|İsteğe bağlı. Zamanlanan veri aktarımları arasındaki aralığı, en yakın dakikaya yuvarlayarak belirtir.<br /><br /> Varsayılan değer PT0S ' dir.|  
 
-## <a name="directories-element"></a>Dizinleri öğesi  
-Tanımlayabileceğiniz dosya tabanlı günlükler için arabellek yapılandırmasını tanımlar.
+## <a name="directories-element"></a>Dizinler öğesi  
+Tanımlayabilmeniz için dosya tabanlı Günlükler için arabellek yapılandırmasını tanımlar.
 
 Üst öğe: DiagnosticMonitorConfiguration öğesi.  
 
 
-Öznitelikleri:  
+Öznitelikler:  
 
-|Öznitelik|Tür|Açıklama|  
+|Öznitelik|Type|Açıklama|  
 |---------------|----------|-----------------|  
-|**bufferQuotaInMB**|unsignedInt|İsteğe bağlı. Belirtilen veriler için kullanılabilen dosya sistemi depolama miktarını belirtir.<br /><br /> Varsayılan değer 0'dır.|  
-|**scheduledTransferPeriod**|Süresi|İsteğe bağlı. Zamanlanmış aktardığı veriler, en yakın dakikaya yuvarlanır arasındaki aralığı belirtir.<br /><br /> PT0S varsayılandır.|  
+|**bufferQuotaInMB**|unsignedInt|İsteğe bağlı. Belirtilen veriler için kullanılabilen en fazla dosya sistemi depolama miktarını belirtir.<br /><br /> Varsayılan değer 0 ' dır.|  
+|**scheduledTransferPeriod**|duration|İsteğe bağlı. Zamanlanan veri aktarımları arasındaki aralığı, en yakın dakikaya yuvarlayarak belirtir.<br /><br /> Varsayılan değer PT0S ' dir.|  
 
-## <a name="crashdumps-element"></a>CrashDumps öğesi  
- Kilitlenme bilgi dökümleri directory tanımlar.
+## <a name="crashdumps-element"></a>Crashdökümler öğesi  
+ Kilitlenme dökümü dizinini tanımlar.
 
- Üst öğe: Dizinleri öğesi.  
+ Üst öğe: Dizinler öğesi.  
 
-Öznitelikleri:  
+Öznitelikler:  
 
-|Öznitelik|Tür|Açıklama|  
+|Öznitelik|Type|Açıklama|  
 |---------------|----------|-----------------|  
-|**Kapsayıcı**|string|Dizinin içeriklerini olduğu aktarılacak kapsayıcısının adı.|  
-|**directoryQuotaInMB**|unsignedInt|İsteğe bağlı. Dizinin en büyük boyutunu megabayt cinsinden belirtir.<br /><br /> Varsayılan değer 0'dır.|  
+|**kapsayıcı**|dize|Dizinin içeriklerinin aktarılacağı kapsayıcının adı.|  
+|**Directoryquocontainer MB**|unsignedInt|İsteğe bağlı. Dizinin en büyük boyutunu megabayt cinsinden belirtir.<br /><br /> Varsayılan değer 0 ' dır.|  
 
 ## <a name="failedrequestlogs-element"></a>FailedRequestLogs öğesi  
- Başarısız istek günlük dizini tanımlar.
+ Başarısız istek günlüğü dizinini tanımlar.
 
  Üst öğe dizinleri öğesi.  
 
-Öznitelikleri:  
+Öznitelikler:  
 
-|Öznitelik|Tür|Açıklama|  
+|Öznitelik|Type|Açıklama|  
 |---------------|----------|-----------------|  
-|**Kapsayıcı**|string|Dizinin içeriklerini olduğu aktarılacak kapsayıcısının adı.|  
-|**directoryQuotaInMB**|unsignedInt|İsteğe bağlı. Dizinin en büyük boyutunu megabayt cinsinden belirtir.<br /><br /> Varsayılan değer 0'dır.|  
+|**kapsayıcı**|dize|Dizinin içeriklerinin aktarılacağı kapsayıcının adı.|  
+|**Directoryquocontainer MB**|unsignedInt|İsteğe bağlı. Dizinin en büyük boyutunu megabayt cinsinden belirtir.<br /><br /> Varsayılan değer 0 ' dır.|  
 
-##  <a name="iislogs-element"></a>IISLogs öğesi  
- IIS Günlük dizini tanımlar.
+##  <a name="iislogs-element"></a>Iıslogs öğesi  
+ IIS günlük dizinini tanımlar.
 
  Üst öğe dizinleri öğesi.  
 
-Öznitelikleri:  
+Öznitelikler:  
 
-|Öznitelik|Tür|Açıklama|  
+|Öznitelik|Type|Açıklama|  
 |---------------|----------|-----------------|  
-|**Kapsayıcı**|string|Dizinin içeriklerini olduğu aktarılacak kapsayıcısının adı.|  
-|**directoryQuotaInMB**|unsignedInt|İsteğe bağlı. Dizinin en büyük boyutunu megabayt cinsinden belirtir.<br /><br /> Varsayılan değer 0'dır.|  
+|**kapsayıcı**|dize|Dizinin içeriklerinin aktarılacağı kapsayıcının adı.|  
+|**Directoryquocontainer MB**|unsignedInt|İsteğe bağlı. Dizinin en büyük boyutunu megabayt cinsinden belirtir.<br /><br /> Varsayılan değer 0 ' dır.|  
 
-## <a name="datasources-element"></a>Veri kaynakları öğesi  
- Sıfır veya daha fazla ek günlük dizinleri tanımlar.
+## <a name="datasources-element"></a>DataSources öğesi  
+ Sıfır veya daha fazla ek günlük dizinini tanımlar.
 
- Üst öğe: Dizinleri öğesi.
+ Üst öğe: Dizinler öğesi.
 
 ## <a name="directoryconfiguration-element"></a>DirectoryConfiguration öğesi  
- İzleme günlük dosyalarının dizin tanımlar.
+ İzlenecek günlük dosyalarının dizinini tanımlar.
 
- Üst öğe: Veri kaynağı öğesi.
+ Üst öğe: DataSources öğesi.
 
-Öznitelikleri:
+Öznitelikler:
 
-|Öznitelik|Tür|Açıklama|  
+|Öznitelik|Type|Açıklama|  
 |---------------|----------|-----------------|  
-|**Kapsayıcı**|string|Dizinin içeriklerini olduğu aktarılacak kapsayıcısının adı.|  
-|**directoryQuotaInMB**|unsignedInt|İsteğe bağlı. Dizinin en büyük boyutunu megabayt cinsinden belirtir.<br /><br /> Varsayılan değer 0'dır.|  
+|**kapsayıcı**|dize|Dizinin içeriklerinin aktarılacağı kapsayıcının adı.|  
+|**Directoryquocontainer MB**|unsignedInt|İsteğe bağlı. Dizinin en büyük boyutunu megabayt cinsinden belirtir.<br /><br /> Varsayılan değer 0 ' dır.|  
 
 ## <a name="absolute-element"></a>Mutlak öğe  
- İsteğe bağlı ortam genişletmeyle izlemek için dizinin mutlak bir yol tanımlar.
+ İsteğe bağlı ortam genişletmesiyle izlenecek dizinin mutlak yolunu tanımlar.
 
  Üst öğe: DirectoryConfiguration öğesi.  
 
-Öznitelikleri:  
+Öznitelikler:  
 
-|Öznitelik|Tür|Açıklama|  
+|Öznitelik|Type|Açıklama|  
 |---------------|----------|-----------------|  
-|**Yolu**|string|Gereklidir. İzlemek için dizinin mutlak yolu.|  
-|**expandEnvironment**|boole|Gereklidir. Varsa kümesine **true**, ortam değişkenleri yolun genişletilmiş.|  
+|**Yolu**|dize|Gerekli. İzlenecek dizinin mutlak yolu.|  
+|**expandEnvironment**|boolean|Gerekli. **True**olarak ayarlanırsa yoldaki ortam değişkenleri genişletilir.|  
 
 ## <a name="localresource-element"></a>LocalResource öğesi  
- Hizmet tanımında yerel bir kaynak göreli bir yol tanımlar.
+ Hizmet tanımında tanımlanan bir yerel kaynakla ilişkili bir yol tanımlar.
 
  Üst öğe: DirectoryConfiguration öğesi.  
 
-Öznitelikleri:  
+Öznitelikler:  
 
-|Öznitelik|Tür|Açıklama|  
+|Öznitelik|Type|Açıklama|  
 |---------------|----------|-----------------|  
-|**name**|string|Gereklidir. İzlenecek dizin içeren yerel kaynak adı.|  
-|**RelativePath**|string|Gereklidir. İzlemek için yerel kaynak göreli yol.|  
+|**name**|dize|Gerekli. İzlenecek dizini içeren yerel kaynağın adı.|  
+|**relativePath**|dize|Gerekli. İzlenecek yerel kaynakla ilgili yol.|  
 
 ## <a name="performancecounters-element"></a>PerformanceCounters öğesi  
- Toplanacak performans sayaç yolunu tanımlar.
+ Toplanacak performans sayacının yolunu tanımlar.
 
  Üst öğe: DiagnosticMonitorConfiguration öğesi.
 
 
- Öznitelikleri:  
+ Öznitelikler:  
 
-|Öznitelik|Tür|Açıklama|  
+|Öznitelik|Type|Açıklama|  
 |---------------|----------|-----------------|  
-|**bufferQuotaInMB**|unsignedInt|İsteğe bağlı. Belirtilen veriler için kullanılabilen dosya sistemi depolama miktarını belirtir.<br /><br /> Varsayılan değer 0'dır.|  
-|**scheduledTransferPeriod**|Süresi|İsteğe bağlı. Zamanlanmış aktardığı veriler, en yakın dakikaya yuvarlanır arasındaki aralığı belirtir.<br /><br /> PT0S varsayılandır.|  
+|**bufferQuotaInMB**|unsignedInt|İsteğe bağlı. Belirtilen veriler için kullanılabilen en fazla dosya sistemi depolama miktarını belirtir.<br /><br /> Varsayılan değer 0 ' dır.|  
+|**scheduledTransferPeriod**|duration|İsteğe bağlı. Zamanlanan veri aktarımları arasındaki aralığı, en yakın dakikaya yuvarlayarak belirtir.<br /><br /> Varsayılan değer PT0S ' dir.|  
 
 ## <a name="performancecounterconfiguration-element"></a>PerformanceCounterConfiguration öğesi  
  Toplanacak performans sayacını tanımlar.
 
  Üst öğe: PerformanceCounters öğesi.  
 
- Öznitelikleri:  
+ Öznitelikler:  
 
-|Öznitelik|Tür|Açıklama|  
+|Öznitelik|Type|Açıklama|  
 |---------------|----------|-----------------|  
-|**counterSpecifier**|string|Gereklidir. Toplanacak performans sayacı yolu.|  
-|**sampleRate**|Süresi|Gereklidir. Performans sayacının toplanacağını oranı.|  
+|**Onay Belirleyicisi**|dize|Gerekli. Toplanacak performans sayacının yolu.|  
+|**Örnekleray**|duration|Gerekli. Performans sayacının toplanması gereken oran.|  
 
 ## <a name="windowseventlog-element"></a>WindowsEventLog öğesi  
- İzlemek için olay günlüklerini tanımlar.
+ İzlenecek olay günlüklerini tanımlar.
 
  Üst öğe: DiagnosticMonitorConfiguration öğesi.
 
-  Öznitelikleri:
+  Öznitelikler:
 
-|Öznitelik|Tür|Açıklama|  
+|Öznitelik|Type|Açıklama|  
 |---------------|----------|-----------------|  
-|**bufferQuotaInMB**|unsignedInt|İsteğe bağlı. Belirtilen veriler için kullanılabilen dosya sistemi depolama miktarını belirtir.<br /><br /> Varsayılan değer 0'dır.|  
-|**scheduledTransferLogLevelFilter**|string|İsteğe bağlı. Aktarılan günlük girişlerini için en düşük önem derecesini belirtir. Varsayılan değer **tanımlanmamış**. Diğer olası değerler **ayrıntılı**, **bilgi**, **uyarı**, **hata**, ve **kritik**.|  
-|**scheduledTransferPeriod**|Süresi|İsteğe bağlı. Zamanlanmış aktardığı veriler, en yakın dakikaya yuvarlanır arasındaki aralığı belirtir.<br /><br /> PT0S varsayılandır.|  
+|**bufferQuotaInMB**|unsignedInt|İsteğe bağlı. Belirtilen veriler için kullanılabilen en fazla dosya sistemi depolama miktarını belirtir.<br /><br /> Varsayılan değer 0 ' dır.|  
+|**scheduledTransferLogLevelFilter**|dize|İsteğe bağlı. Aktarılan günlük girişlerinin en düşük önem derecesini belirtir. Varsayılan değer **tanımsızdır**. Diğer olası değerler **ayrıntılı**, **bilgi**, **Uyarı**, **hata**ve **kritik öneme**sahiptir.|  
+|**scheduledTransferPeriod**|duration|İsteğe bağlı. Zamanlanan veri aktarımları arasındaki aralığı, en yakın dakikaya yuvarlayarak belirtir.<br /><br /> Varsayılan değer PT0S ' dir.|  
 
-## <a name="datasource-element"></a>Veri kaynağı öğesi  
- İzlenecek olay günlüğünün tanımlar.
+## <a name="datasource-element"></a>DataSource öğesi  
+ İzlenecek olay günlüğünü tanımlar.
 
- Üst öğe: WindowsEventLog Element.  
+ Üst öğe: WindowsEventLog öğesi.  
 
- Öznitelikleri:
+ Öznitelikler:
 
-|Öznitelik|Tür|Açıklama|  
+|Öznitelik|Type|Açıklama|  
 |---------------|----------|-----------------|  
-|**name**|string|Gereklidir. Toplanacak günlük belirten bir XPath ifadesi.|  
+|**name**|dize|Gerekli. Toplanacak günlüğü belirten bir XPath ifadesi.|  
 
