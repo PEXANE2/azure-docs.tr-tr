@@ -52,7 +52,8 @@
     - name: Bing içgörü kullanımı
       href: bing-insights-usage.md
     - name: Görsel Arama API’si analizleri
-      href: bing-visual-search-stats.md
+      maintainContext: true
+      href: ../bing-web-search/bing-web-stats.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Belirteç kullanarak içgörüler edinme
