@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 07/22/2019
+ms.date: 07/30/2019
 ms.author: diberry
-ms.openlocfilehash: edaa36cf22e63d42eb347aea3da1816e2c93b45e
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: a61f196a509c3e84b518fffb4eb78f5f7430cb28
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479213"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667577"
 ---
 # <a name="preview-migrate-to-api-version-3x-for-luis-apps"></a>Önizleme: LUSıS uygulamaları için API sürüm 3. x 'e geçiş
 
@@ -150,7 +150,9 @@ V3 için en üstteki JSON özellikleri şunlardır:
 }
 ```
 
-Yazım denetimi düzeltmeleri içerir. `normalizedQuery` Bu, v2 API özelliğine `alteredQuery`karşılık gelir.  
+<!--
+The `alteredQuery` contains spelling corrections. This corresponds to the V2 API property `alteredQuery`.  
+-->
 
 `intents` Nesne sıralanmamış bir liste. ' Deki `intents` ilk alt öğenin `topIntent`öğesine karşılık geldiğini varsayın. Bunun yerine, puanı `topIntent` bulmak için değerini kullanın:
 

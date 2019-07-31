@@ -70,7 +70,8 @@
 - name: Kaynaklar
   items:
     - name: Bing Yazım Denetimi API’si analizleri
-      href: bing-spell-check-stats.md
+      maintainContext: true
+      href: ../bing-web-search/bing-web-stats.md
     - name: Dil ve bölge desteği
       href: language-support.md
     - name: Fiyatlandırma

@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/21/2019
-ms.openlocfilehash: 09d81e281b92b662572cefc220f2227651b69838
-ms.sourcegitcommit: 83a89c45253b0d432ce8dcd70084c18e9930b1fd
+ms.openlocfilehash: b0d227b71677db1d6b4ce8386b02cf957ca259f7
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371728"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68668418"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-visual-interface"></a>Öğretici: Görsel arabirim ile otomobil fiyatını tahmin edin
 
@@ -95,8 +95,6 @@ Machine Learning verilere bağlıdır. Luckily, bu arabirime dahil edilen birka�
 
 İstediğiniz zaman, veri akışındaki bu noktada verilerin nasıl göründüğünü görmek için bir veri kümesinin veya modülün çıkış bağlantı noktasına tıklayın. **Görselleştir** seçeneği devre dışıysa, önce denemeyi çalıştırmanız gerekir.
 
-Bir deneme, çalışma alanınıza bağlı bir işlem kaynağı olan işlem hedefi üzerinde çalışır. Bir işlem hedefi oluşturduktan sonra, gelecekteki çalıştırmalar için onu yeniden kullanabilirsiniz.
-
 [!INCLUDE [aml-ui-create-training-compute](../../../includes/aml-ui-create-training-compute.md)]
 
 İşlem hedefi kullanılabilir olduktan sonra, deneme çalışır. Çalıştırma tamamlandığında, her modülde yeşil bir onay işareti görünür.
@@ -112,7 +110,7 @@ Bir deneme, çalışma alanınıza bağlı bir işlem kaynağı olan işlem hede
 
     Bu veri kümesinde, her satır bir otomobil ve her bir otomobil ile ilişkili değişkenler sütun olarak görünür. Bu veri kümesinde 205 satır ve 26 sütun vardır.
 
-     Bir veri sütununa her tıkladığınızda, söz konusu sütunun **istatistik** bilgileri ve **görselleştirme** görüntüsü solda görünür. Örneğin, kapılara tıkladığınızda, iki  benzersiz değere ve iki eksik değere sahip olduğunu görürsünüz. Değerleri görmek için aşağı kaydırın: iki ve dört kapı.
+     Bir veri sütununa her tıkladığınızda, söz konusu sütunun **istatistik** bilgileri ve **görselleştirme** görüntüsü solda görünür. Örneğin, kapılara tıkladığınızda, iki benzersiz değere ve iki eksik değere sahip olduğunu görürsünüz. Değerleri görmek için aşağı kaydırın: iki ve dört kapı.
 
      ![Verilerin önizlemesini yapın](./media/ui-tutorial-automobile-price-train-score/preview-data.gif)
 
