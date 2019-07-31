@@ -34,7 +34,6 @@ sections:
       - items:
           - html: <a href="service/quickstart-run-cloud-notebook">Bulutta bir deneme çalıştırma</a> (yükleme gerekmez)
           - html: <a href="service/quickstart-run-local-notebook">Yerel not defteri sunucusu kullanarak bir deneme çalıştırma</a> (yerel SDK yüklemesi gerekir)
-          - html: <a href="service/ui-quickstart-run-experiment">Görsel arabirimde deneme çalıştırma</a> (kod gerekmez)
         style: unordered
         type: list
       - text: '<b>Öğretici: SDK ile MNIST verilerinin görüntü sınıflandırması:</b>'

@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services dinamik paketlemeye genel bakış | Microsoft Docs
-description: Makale, Azure Media Services dinamik paketleme genel bir bakış sağlar.
+description: Makale Azure Media Services ' de dinamik paketlemeye genel bakış sunar.
 author: Juliako
 manager: femila
 editor: ''
@@ -11,68 +11,78 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 06/03/2019
+ms.date: 07/29/2019
 ms.author: juliako
-ms.openlocfilehash: 4836ec4bb66bbf8ced921dd1095665d004f8a28b
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 5979e34e7c186a0484c8db2d432a3c57a5ed1d15
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67542586"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68679166"
 ---
 # <a name="dynamic-packaging"></a>Dinamik paketleme
 
-Microsoft Azure Media Services, birçok medya kaynak dosya biçimleri akış biçimlerinde, medya teslim etmek için kullanılabilir ve çeşitli istemci teknolojiler (örneğin, iOS ve XBOX gibi) için içerik koruma biçimlendirir. Bu istemciler farklı protokollere anlamak, kesintisiz akış, bir HTTP canlı akışı (HLS) biçimi ve Xbox gerektiren iOS örneğin gerektirir. Uyarlamalı bit hızlı (Çoklu bit hızı) bir dizi varsa MP4 (ISO temel medya 14496-12) dosyaları ve HLS, MPEG DASH veya kesintisiz akış anlamak istemcilerinin sunmak istediğiniz Uyarlamalı bit hızlı kesintisiz akış dosyaları kümesi, avantajlarından faydalanabilirsiniz  *dinamik paketleme*. Paketleme video çözümü belirsiz olduğundan, SD/HD/UHD - 4K desteklenir.
+Microsoft Azure Media Services birçok medya kaynak dosya biçimini, medya akış biçimlerini ve içerik koruma biçimlerini çeşitli istemci teknolojilerine (örneğin, iOS ve XBOX) dağıtmak için kullanılabilir. Bu istemciler farklı protokolleri anlamış, örneğin iOS için bir HTTP Canlı Akışı (HLS) biçimi gerekir ve Xbox Kesintisiz Akış gerektirir. HLS, MPEG DASH veya Kesintisiz Akış anlayan istemcilere sağlamak istediğiniz bir uyarlamalı bit hızı (çoklu bit hızı) MP4 (ISO tabanlı medya 14496-12) dosyası veya bir dizi Uyarlamalı bit hızı Kesintisiz Akış, dinamik özelliklerden yararlanabilirsiniz.  *Paketleme*. Paketleme, video çözünürlüğüne agtik, SD/HD/UHD-4K desteklenir.
 
-Medya Hizmetleri'nde bir [akış uç noktası](streaming-endpoint-concept.md) yaygın akış birini kullanarak doğrudan bir istemci oynatıcı uygulaması için canlı ve isteğe bağlı içerik teslim eden bir dinamik (tam zamanında) paketleme ve kaynak hizmetini temsil eder Medya protokolleri (HLS veya DASH). Dinamik paketleme, tüm standart gelen bir özelliktir **akış uç noktalarını** (standart veya Premium). 
+Media Services, bir [akış uç noktası](streaming-endpoint-concept.md) , canlı ve isteğe bağlı içeriğinizi doğrudan bir istemci oynatıcı uygulamasına, ortak akış medya protokollerinden birini (HLS veya) kullanarak doğrudan teslim edebilen bir dinamik (tam zamanında) paketleme ve kaynak hizmeti temsil eder. TIRE). Dinamik paketleme, tüm **akış uç noktalarında** standart olan bir özelliktir (Standart veya Premium). 
 
-Dinamik paketlemeden yararlanmak için ihtiyacınız bir **varlık** Uyarlamalı bit hızı MP4 dosyaları ve akış yapılandırma dosyalarını, Media Services dinamik paketleme tarafından gereken bir dizi. Dosyaları almak için kullanabileceğiniz yöntemlerden biri, ara (kaynak) dosyanızı Media Services ile kodlamaktır. Oluşturmak zorunda video kodlanmış varlıkta kayıttan yürütme için istemcilere kullanabilmek için bir **akış Bulucu** ve akış URL'lerini oluşturun. Ardından, akış istemci bildirimi (HLS, DASH veya kesintisiz) belirtilen biçime bağlı olarak, akışın seçtiğiniz protokolde alırsınız.
+Dinamik paketlemeden yararlanmak için, uyarlamalı bit hızı MP4 dosyaları ve akış yapılandırma dosyaları (. ISM,. ismc,. MPI vb.) kümesine [sahip bir](assets-concept.md) varlığınız olması gerekir. Dosyaları almak için kullanabileceğiniz yöntemlerden biri, ara (kaynak) dosyanızı Media Services ile kodlamaktır. Kodlanmış varlıktaki videoları kayıttan yürütme için kullanılabilir hale getirmek için bir [akış Bulucu](streaming-locators-concept.md) oluşturmanız ve akış URL 'leri oluşturmanız gerekir. Daha sonra akış istemci bildiriminde (HLS, DASH veya kesintisiz) belirtilen biçime göre akışı seçtiğiniz protokolde alırsınız.
 
 Bunu sonucunda, dosyaları yalnızca tek bir depolama biçiminde depolamanız ve buna göre ödeme yapmanız gerekir. Media Services hizmeti, istemciden gelen isteklere göre uygun yanıtı derler ve sunar. 
 
-Media Services'de, dinamik paketleme, Canlı veya isteğe bağlı Akış olup olmadığını kullanılır. 
+Media Services, dinamik paketleme, canlı veya isteğe bağlı olarak akış yapıp etmeksizin kullanılır. 
 
 > [!NOTE]
 > Şu anda, v3 kaynaklarını yönetmek için Azure portalını kullanamıyorsunuz. [REST API](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref) veya desteklenen [SDK'lardan](media-services-apis-overview.md#sdks) birini kullanın.
 
-## <a name="on-demand-streaming-workflow"></a>İsteğe bağlı Akış iş akışı
+## <a name="on-demand-streaming-workflow"></a>İsteğe bağlı akış iş akışı
 
-Media Services dinamik paketleme ile talep üzerine akış için ortak bir iş akışı şu şekildedir:
+Dinamik paketleme ile isteğe bağlı akış Media Services için ortak bir iş akışı aşağıda verilmiştir:
 
-1. Bir giriş veya kaynak dosyasını karşıya yükle (adlı bir *mezzanine* dosyası). Bir MP4 veya MOV MXF dosyası örneklerindendir. 
-1. Mezzanine dosyanızı Uyarlamalı bit hızı kümelerine H.264 MP4 kodlayın. 
-1. Hızı Uyarlamalı MP4 kümesine içeren varlığı yayımlayın. Bir akış Bulucu oluşturarak yayımladığınız.
-1. Farklı biçimlerde (HLS, MPEG-DASH ve kesintisiz akış) hedef URL'leri oluşturun. Akış uç noktasının doğru bildirimi ve istekleri farklı biçimleri için hizmet üstlenir.
+1. Bir giriş veya kaynak dosyasını ( *Mezzanine* dosyası olarak adlandırılır) karşıya yükleyin. Örnek olarak MP4, MOV veya MXF dosyası verilebilir. 
+1. Mezzanine dosyanızı H., ve bu Uyarlamalı bit hızı kümelerine kodlayın. 
+1. Uyarlamalı bit hızı MP4 kümesini içeren çıkış varlığını yayımlayın. Bir akış Bulucu oluşturarak yayımlayabilirsiniz.
+1. Farklı biçimleri (HLS, MPEG-DASH ve Kesintisiz Akış) hedefleyen derleme URL 'Leri. Akış uç noktası, farklı biçimlere yönelik doğru bildirime ve isteklere hizmet vermeye önem kazanır.
 
-Bu diyagramda, dinamik paketleme ile isteğe bağlı Akış iş akışı gösterilmektedir:
+Bu diyagramda, dinamik paketleme ile isteğe bağlı akış için iş akışı gösterilmektedir:
 
-![Dinamik paketleme ile isteğe bağlı akış için bir iş akışı diyagramı](./media/dynamic-packaging-overview/media-services-dynamic-packaging.png)
+![Dinamik paketleme ile isteğe bağlı akış için bir iş akışının diyagramı](./media/dynamic-packaging-overview/media-services-dynamic-packaging.png)
+
+### <a name="encoding-to-adaptive-bitrate-mp4s"></a>Uyarlamalı bit hızı MP4 'leri kodlaması
+
+Aşağıdaki makalelerde [Media Services bir videonun nasıl kodlanacağı](encoding-concept.md)örnekleri gösterilmektedir:
+
+* [Yerleşik ön ayarları kullanarak bir HTTPS URL 'sinden kodlama](job-input-from-http-how-to.md)
+* [Yerleşik ön ayarları kullanarak yerel bir dosyayı kodla](job-input-from-local-file-how-to.md)
+* [Belirli bir senaryoyu veya cihaz gereksinimlerinizi hedeflemek için özel bir önayar oluşturun](customize-encoder-presets-how-to.md)
+
+Media Encoder Standard [biçimleri ve codec bileşenleri](media-encoder-standard-formats.md)listesine bakın.
 
 ## <a name="live-streaming-workflow"></a>Canlı akış iş akışı
 
-Canlı etkinlik iki türden biri olabilir: doğrudan ya da Canlı kodlama. 
+Canlı bir olay iki türden biri olabilir: doğrudan geçiş veya canlı kodlama. 
 
-Dinamik paketleme ile canlı akış için ortak bir iş akışı şu şekildedir:
+Dinamik paketleme ile canlı akış için ortak bir iş akışı aşağıda verilmiştir:
 
-1. Oluşturma bir [Canlı etkinlik](live-events-outputs-concept.md).
-1. Alma URL'si almak ve akış katkı göndermek için URL'yi kullanmak için şirket içi Kodlayıcı yapılandırın.
-1. Önizleme URL'sini alın ve giriş kodlayıcıdan alındığını doğrulamak için kullanın.
+1. Canlı bir [olay](live-events-outputs-concept.md)oluşturun.
+1. Alma URL 'sini alın ve şirket içi kodlayıcınızı, katkı akışını göndermek için URL 'YI kullanacak şekilde yapılandırın.
+1. Kodlayıcıdan alınan girişin alındığını doğrulamak için önizleme URL 'sini alın ve kullanın.
 1. Yeni bir varlık oluşturun.
-1. Canlı bir çıktı oluşturmak ve oluşturduğunuz varlık adı kullanın.<br />Canlı çıkış akışı varlığa arşivler.
-1. Akış Bulucusu, akış yerleşik ilke türleriyle oluşturun.<br />İçeriğinizi şifrelemek istiyorsanız, gözden [içerik korumaya genel bakış](content-protection-overview.md).
-1. Kullanılacak URL'leri almak için akış Bulucusu yollarında listeleyin.
-1. Gelen akışı gerçekleştirmek istediğiniz akış uç noktası ana bilgisayar adını alın.
-1. Farklı biçimlerde (HLS, MPEG-DASH ve kesintisiz akış) hedef URL'leri oluşturun. Akış uç noktasının doğru bildirimi ve istekleri farklı biçimleri için hizmet üstlenir.
+1. Canlı bir çıktı oluşturun ve oluşturduğunuz varlık adını kullanın.<br />Canlı çıktı, akışı varlığa arşivler.
+1. Yerleşik akış ilkesi türleriyle bir akış Bulucu oluşturun.<br />İçeriğinizi şifrelemeyi düşünüyorsanız, [içerik korumasına genel bakış](content-protection-overview.md)' ı inceleyin.
+1. Kullanılacak URL 'Leri almak için akış bulucunun yollarını listeleyin.
+1. Akışa almak istediğiniz akış uç noktası için ana bilgisayar adını alın.
+1. Farklı biçimleri (HLS, MPEG-DASH ve Kesintisiz Akış) hedefleyen derleme URL 'Leri. Akış uç noktası, farklı biçimlere yönelik doğru bildirime ve isteklere hizmet vermeye önem kazanır.
 
-Bu diyagramda, dinamik paketleme ile canlı akış iş akışı gösterilmektedir:
+Bu diyagramda, dinamik paketleme ile canlı akış için iş akışı gösterilmektedir:
 
-![Dinamik paketleme ile doğrudan kodlaması için bir iş akışı diyagramı](./media/live-streaming/pass-through.svg)
+![Dinamik paketleme ile geçiş kodlaması için iş akışının diyagramı](./media/live-streaming/pass-through.svg)
 
-Media Services v3 sürümünde canlı akış hakkında daha fazla bilgi için bkz: [Canlı akışa genel bakış](live-streaming-overview.md).
+Media Services v3 sürümünde canlı akış hakkında daha fazla bilgi için bkz. [canlı akışa genel bakış](live-streaming-overview.md).
 
-## <a name="delivery-protocols"></a>Teslim protokollerine
+## <a name="delivery-protocols"></a>Teslim protokolleri
 
-İçin içeriğinizi Media Services dinamik paketleme, bu teslim protokollerine kullanabilirsiniz:
+Bu teslim protokollerini, içeriğiniz için Media Services dinamik paketde kullanabilirsiniz:
 
 |Protocol|Örnek|
 |---|---|
@@ -83,63 +93,54 @@ Media Services v3 sürümünde canlı akış hakkında daha fazla bilgi için bk
 |MPEG-DASH CMAF|`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` |
 |Kesintisiz Akış| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`|
 
-## <a name="encode-to-adaptive-bitrate-mp4s"></a>Uyarlamalı bit hızı MP4 için kodlama
+## <a name="delivery-codecs-support"></a>Teslim codec bileşenleri desteği 
 
-Aşağıdaki makaleler örnekler [Media Services ile bir video kodlama](encoding-concept.md):
+### <a name="video-codecs"></a>Video codec bileşenleri
 
-* [Bir HTTPS URL'si yerleşik hazır'ı kullanarak kodlama](job-input-from-http-how-to.md)
-* [Yerleşik hazır kullanarak yerel bir dosya kodlama](job-input-from-local-file-how-to.md)
-* [Özel bir senaryonuz ya da cihaz belirli gereksinimlerinizi hedeflemek için önceden derleme](customize-encoder-presets-how-to.md)
+Dinamik paketleme aşağıdaki video codec bileşenlerini destekler:
+* , [H.](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) , (MPEG-4 AVC veya avc1) veya [h. 265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC, hev1 veya hvc1) Ile kodlanmış video içeren MP4 dosyaları.
 
-Media Encoder Standard listesini görmek [biçimleri ve codec bileşenleri](media-encoder-standard-formats.md).
+### <a name="audio-codecs"></a>Ses codec bileşenleri
 
-## <a name="video-codecs"></a>Görüntü codec bileşenleri
+Dinamik paketleme aşağıda açıklanan aşağıdaki ses protokollerini destekler:
 
-Dinamik paketleme, aşağıdaki video çözümleyicilerini destekler:
-* İle kodlanmış bir video içeren MP4 dosyaları [H.264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC veya AVC1) veya [H.265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC, hev1, veya hvc1).
+* MP4 dosyaları
+* Birden çok ses parçası
 
-## <a name="audio-codecs"></a>Ses codec bileşenleri
+Dinamik paketleme, [Dolby Digital](https://en.wikipedia.org/wiki/Dolby_Digital) (AC3) ses (eski bir codec) içeren dosyaları desteklemez.
 
-Dinamik paketleme, aşağıdaki ses protokollerini destekler:
-* Mp4 dosyaları
-* Birden çok ses parçaları
+#### <a name="mp4-files"></a>MP4 dosyaları
 
-Dinamik paketleme, içeren dosyaları desteklemez [Dolby dijital](https://en.wikipedia.org/wiki/Dolby_Digital) (AC3) ses (eski codec olmadığı).
+Dinamik paketleme, aşağıdaki protokollerle kodlanmış ses içeren MP4 dosyalarını destekler: 
 
-### <a name="mp4-files"></a>Mp4 dosyaları
-
-Dinamik paketleme ile şu protokolden kodlanmış ses içeren MP4 dosyaları destekler: 
-
-* [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) (AAC-LC, HE AAC v1 veya v2 HE AAC)
-* [Dolby yanı sıra dijital](https://en.wikipedia.org/wiki/Dolby_Digital_Plus) (AC 3 ya da E-AC3 Gelişmiş)
+* [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) (AAC-LC, HE-AAC v1 veya HE-AAC v2)
+* [Dolby Digital Plus](https://en.wikipedia.org/wiki/Dolby_Digital_Plus) (Gelişmiş AC-3 veya E-AC3)
 * Dolby Atmos<br />
-   Dolby Atmos içerik akışı yaygın akış biçimi (CSF) ya da ortak medya uygulama biçim (CMAF) MPEG-DASH protokolüyle parçalanmış MP4 gibi standartlar ve aracılığıyla HTTP canlı akışı (HLS) CMAF ile desteklenir.
+   Ortak akış biçimi (CSF) veya ortak medya uygulaması biçimi (CMAF) ile MPEG-DASH protokolü, CMAF ile HTTP Canlı Akışı (HLS) aracılığıyla akış Dolby Atmos içeriği
 
 * [DTS](https://en.wikipedia.org/wiki/DTS_%28sound_system%29)<br />
-   DASH CSF, CMAF DASH, HLS M2TS ve HLS CMAF paketleme biçimlerini tarafından desteklenen DTS codec bileşenleri şunlardır:  
+   DASH-CSF, DASH-CMAF, HLS-M2TS ve HLS-CMAF paketleme biçimleri tarafından desteklenen DTS codec bileşenleri şunlardır:  
 
-    * DTS dijital Surround (dtsc)
-    * DTS HD yüksek çözünürlüklü ve DTS HD ana ses (dtsh)
-    * DTS Express (dtse)
-    * DTS HD Kayıpsız (çekirdek yok) (dtsl)
+    * DTS dijital surround (DTSC)
+    * DTS-HD yüksek çözünürlüklü ve DTS-HD ana ses (DTSH)
+    * DTS Express (DTO)
+    * DTS-HD kayıpsız (çekirdek yok) (dtsl)
 
-### <a name="multiple-audio-tracks"></a>Birden çok ses parçaları
+#### <a name="multiple-audio-tracks"></a>Birden çok ses parçası
 
-Dinamik paketleme, birden çok codec bileşenleri ve diller birden çok ses parçaları sahip varlıklar akış HLS çıkış (sürüm 4 veya sonrası) için çoklu ses parçaları destekler.
+Dinamik paketleme, birden çok codec ve dilde birden çok ses parçası olan akış varlıkları için HLS çıkışı (sürüm 4 veya üzeri) için çok sayıda ses parçasını destekler.
 
-## <a name="dynamic-encryption"></a>Dinamik şifreleme
-
-Kullanabileceğiniz *dinamik şifreleme* dinamik olarak Canlı veya isteğe bağlı içeriğinizi AES-128 veya üç ana dijital hak yönetimi (DRM) sistemlerinden herhangi birini şifrelemek için: Microsoft PlayReady, Google Widevine ve FairPlay Apple. Media Services, yetkili istemcilere AES anahtarları ve DRM lisanslarını teslim etmek üzere bir hizmet de sağlar. Daha fazla bilgi için [dinamik şifreleme](content-protection-overview.md).
-
-## <a name="manifest-examples"></a>Liste Örnekleri 
+## <a name="manifests"></a>Bildirimler 
  
-Media Services dinamik paketleme, HLS, MPEG-DASH ve kesintisiz akış için akış istemci bildirimlerini URL biçimi seçicide göre dinamik olarak oluşturulur. Daha fazla bilgi için [teslim protokollerine](#delivery-protocols). 
+Dinamik paketleme Media Services, HLS, MPEG-DASH ve Kesintisiz Akış için akış istemci bildirimleri, URL 'deki biçim seçicisine göre dinamik olarak oluşturulur. Daha fazla bilgi için bkz. [teslim protokolleri](#delivery-protocols). 
 
-Adı, başlangıç ve bitiş zamanı, bit hızı (kalitelerini), izleme diller, (sabit süresi kayan pencere) Sunu penceresini ve video codec bileşeni (FourCC) izlemek, parça türü (ses, video veya metin) gibi meta veri akış bir bildirim dosyası içerir. Ayrıca, mevcut olan sonraki yürütülebilir video parçasının ve bulundukları konumlar ilgili bilgi sağlayarak bir sonraki parça almak için player bildirir. Parçaları (veya parçaları) gerçek "" video içeriğinizi öbekleridir.
+Bildirim dosyası, izleme türü (ses, video veya metin), parça adı, başlangıç ve bitiş zamanı, bit hızı (kaliteleri), izleme dilleri, sunum penceresi (Sabit sürenin kayan penceresi) ve video codec (FourCC) gibi akış meta verilerini içerir. Ayrıca, Player 'ın bir sonraki parçayı almasına, kullanılabilir sonraki yürütülebilir video parçaları ve bunların konumlarını hakkında bilgi sağlayıp sağlamamasını söyler. Parçalar (veya segmentler), video içeriğinin gerçek "öbekleridir".
 
-### <a name="hls"></a>HLS
+### <a name="examples"></a>Örnekler
 
-HLS ana çalma listesi olarak da adlandırılan bir HLS bildirim dosyası örneği aşağıdadır: 
+#### <a name="hls"></a>HLS
+
+HLS ana çalma listesi olarak da bilinen bir HLS bildirim dosyası örneği aşağıda verilmiştir: 
 
 ```
 #EXTM3U
@@ -164,9 +165,9 @@ QualityLevels(3579827)/Manifest(video,format=m3u8-aapl)
 QualityLevels(128041)/Manifest(aac_eng_2_128041_2_1,format=m3u8-aapl)
 ```
 
-### <a name="mpeg-dash"></a>MPEG-DASH
+#### <a name="mpeg-dash"></a>MPEG-DASH
 
-Bir MPEG-DASH medya sunu açıklaması (MPD) olarak da adlandırılan bir MPEG-DASH bildirim dosyası örneği aşağıdadır:
+MPEG-DASH medya sunumu açıklaması (MPD) olarak da adlandırılan MPEG-DASH bildirim dosyası örneği aşağıda verilmiştir:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -197,9 +198,9 @@ Bir MPEG-DASH medya sunu açıklaması (MPD) olarak da adlandırılan bir MPEG-D
    </Period>
 </MPD>
 ```
-### <a name="smooth-streaming"></a>Kesintisiz Akış
+#### <a name="smooth-streaming"></a>Kesintisiz Akış
 
-Kesintisiz akış bir bildirim dosyasının bir örnek aşağıda verilmiştir:
+Aşağıda bir Kesintisiz Akış bildirim dosyası örneği verilmiştir:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -221,15 +222,43 @@ Kesintisiz akış bir bildirim dosyasının bir örnek aşağıda verilmiştir:
 </SmoothStreamingMedia>
 ```
 
-## <a name="dynamic-manifest"></a>Dinamik bildirimi
+### <a name="naming-of-tracks-in-the-manifest"></a>Bildirimde parçaların adlandırılması
 
-Parçalar, biçimleri, bit hızlarına dönüştürme ve oyuncular gönderilen sunu zaman pencereleri sayısını denetlemek için dinamik filtreleme ile Media Services dinamik Paketleyici kullanabilirsiniz. Daha fazla bilgi için [önceden filtreleme bildirimleri ile dinamik Paketleyici](filters-dynamic-manifest-overview.md).
+. ISM dosyasında bir ses izi adı belirtilmişse Media Services, belirli ses izi için textürel bilgilerini belirtmek `AdaptationSet` üzere bir `Label` öğesi ekler. Çıkış DASH bildirimine bir örnek:
+
+```xml
+<AdaptationSet codecs="mp4a.40.2" contentType="audio" lang="en" mimeType="audio/mp4" subsegmentAlignment="true" subsegmentStartsWithSAP="1">
+  <Label>audio_track_name</Label>
+  <Role schemeIdUri="urn:mpeg:dash:role:2011" value="main"/>
+  <Representation audioSamplingRate="48000" bandwidth="131152" id="German_Forest_Short_Poem_english-en-68s-2-lc-128000bps_seg">
+    <BaseURL>German_Forest_Short_Poem_english-en-68s-2-lc-128000bps_seg.mp4</BaseURL>
+  </Representation>
+</AdaptationSet>
+```
+
+Oynatıcı, `Label` Kullanıcı arabiriminde göstermek için öğesini kullanabilir.
+
+### <a name="signaling-audio-description-tracks"></a>Ses açıklaması izlerinin sinyali
+
+Bir müşteri, bildirimde ses açıklaması olarak bir ses izlemesine açıklama ekleyebilir. Bunu yapmak için,. ISM dosyasına "Erişilebilirlik" ve "rol" parametrelerini ekler. Bir ses kanalında "Description" değeri ve "alternatif" değerine sahip param "role" parametresi varsa Media Services ses açıklamasını tanır. Media Services. ISM dosyasında ses açıklamasını algılarsa, ses açıklaması bilgileri, `Accessibility="description"` `StreamIndex` öğe olarak istemci bildirimine ve `Role="alternate"` öznitelikleri öğesine geçirilir.
+
+"Erişilebilirlik" = "Description" ve "role" = "alternatif" birleşimi. ISM dosyasında ayarlandıysa, DASH bildirimi ve Düzgünleştir bildirimi değerleri "Erişilebilirlik" ve "rol" parametrelerinde ayarlandığı şekilde taşır. Bu iki değerin sağına ayarlanması ve bir ses parçasını ses açıklaması olarak işaretlemek için müşterinin sorumluluğundadır. DASH spec başına, "Erişilebilirlik" = "Description" ve "role" = "alternatif" birlikte bir ses izlemenin ses açıklaması olduğu anlamına gelir.
+
+HLS v7 ve üzeri (`format=m3u8-cmaf`) için, `CHARACTERISTICS="public.accessibility.describes-video"` çalma listesi yalnızca "Erişilebilirlik" = "Description" ve "role" = "alternatif" birleşimi. ISM dosyasında ayarlandığında. 
+
+## <a name="dynamic-manifest"></a>Dinamik bildirim
+
+Oyunculara gönderilen iz, biçim, bitme ve sunum süresi pencerelerinin sayısını denetlemek için dinamik filtrelemeyi Media Services dinamik Paketleyiciyi kullanarak kullanabilirsiniz. Daha fazla bilgi için bkz. [dinamik paketlemede ön filtreleme bildirimleri](filters-dynamic-manifest-overview.md).
+
+## <a name="dynamic-encryption"></a>Dinamik şifreleme
+
+*Dinamik şifrelemeyi* kullanarak, canlı veya isteğe bağlı içeriğinizi AES-128 veya üç ana dijital hak YÖNETIMI (DRM) sistemlerinden birini kullanarak dinamik olarak şifreleyebilirsiniz: Microsoft PlayReady, Google Widevine ve Apple FairPlay. Media Services Ayrıca, yetkili istemcilere yönelik AES anahtarları ve DRM lisansları sunmaya yönelik bir hizmet sağlar. Daha fazla bilgi için bkz. [dinamik şifreleme](content-protection-overview.md).
 
 ## <a name="more-information"></a>Daha fazla bilgi
 
-Kullanıma [Azure Media Services topluluğu](media-services-community.md) soru sorun, görüşlerinizi ve medya hizmetleri hakkında güncelleştirmeler almak farklı yollarını öğrenmek için.
+Soru sormak, geri bildirimde bulunmak ve Media Services hakkında güncelleştirmeler almak için [Azure Media Services Community](media-services-community.md) 'ye göz atın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bilgi edinmek için nasıl [karşıya yükleme, kodlama ve akışını videoları](stream-files-tutorial-with-api.md).
+[Videoları karşıya yükleme, kodlama ve akışa](stream-files-tutorial-with-api.md)alma hakkında bilgi edinin.
 

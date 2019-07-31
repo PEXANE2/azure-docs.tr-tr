@@ -1,7 +1,7 @@
 ---
-title: Derinlikli okuyucu API nedir?
+title: Tam ekran okuyucu API nedir?
 titleSuffix: Azure Cognitive Services
-description: Derinlikli okuyucu API'si hakkında bilgi edinin.
+description: Modern okuyucu API 'SI hakkında bilgi edinin.
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
@@ -10,55 +10,55 @@ ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 4500b6213c549ab9977fe8f2d849ffa8089d04b9
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: f84804fbad07357706e786fc449fce9e42a5ec4a
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67718442"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688342"
 ---
 # <a name="what-is-immersive-reader"></a>Tam Ekran Okuyucu nedir?
 
-[Sürükleyici okuyucu](https://www.onenote.com/learningtools) okuma kavramayı Gelişmekte olan okuyucular, language learners artırmak ve okuma zorluğu gibi farkları öğrenmek kişiler için kendini kanıtlamış teknikleri uygulayan aralığında tasarlanmış bir araçtır.
+[Modern okuyucu](https://www.onenote.com/learningtools) , gelişmekte olan okuyucular, dil öğrenimi ve öğrenimi gibi öğrenme farklılığı olan kişiler için okuma kavramasını geliştiren, benzer şekilde tasarlanmış bir araçtır.
 
 Tam Ekran Okuyucu SDK’sını kullanarak web uygulamanızda Tam Ekran Okuyucu’yu kullanabilirsiniz.
 
-## <a name="what-does-immersive-reader-do"></a>Derinlikli okuyucu ne yapar?
+## <a name="what-does-immersive-reader-do"></a>Modern okuyucu ne yapar?
 
-Derinlikli okuyucu okuma erişilebilirliği herkes için hale getirecek şekilde tasarlanmıştır.
+Derinlikli okuyucu herkes için daha fazla erişilebilir hale getirmek üzere tasarlanmıştır.
 
-* En az Okuma Görünümü'nde içerik gösterir
+* En küçük okuma görünümündeki içeriği gösterir
 
   ![Tam Ekran Okuyucu](./media/immersive-reader.png)
 
-* Yaygın olarak kullanılan bir kelimelerin resimleri görüntüler
+* Yaygın olarak kullanılan sözcüklerin resimlerini görüntüler
 
   ![Resim sözlüğü](./media/picture-dictionary.png)
 
-* Adlar, fiilleri sıfat ve zarflar vurgular
+* İsimler, fiiller, sıfatlar ve zarflara önemli noktalar
 
-  ![Konuşma bölümü](./media/parts-of-speech.png)
+  ![Konuşma bölümleri](./media/parts-of-speech.png)
 
-* İçeriğinizi, sesli okur
+* İçeriğinizi sizin için sesli okur
 
-  ![Sesli okuyun](./media/read-aloud.png)
+  ![Sesli oku](./media/read-aloud.png)
 
 * İçeriğinizi başka bir dile çevirir
 
   ![Çeviri](./media/translation.png)
 
-* Hece sözcüklere ayırır
+* Sözcükleri hecelere ayırır
 
-  ![Syllabification](./media/syllabification.png)
+  ![Heceye birleşme](./media/syllabification.png)
 
-## <a name="how-does-immersive-reader-work"></a>Derinlikli okuyucu nasıl çalışır?
+## <a name="how-does-immersive-reader-work"></a>Modern okuyucu nasıl çalışır?
 
-Bir tek başına web uygulaması sürükleyici okuyucusudur, mevcut web uygulamanızı üzerinde derinlikli okuyucu JavaScript SDK'sını kullanarak çağrıldığında, görüntülenen bir `iframe`. Derinlikli okuyucu başlatmak için API çağırdığınızda, sürükleyici okuyucusunda göstermek istediğiniz içeriği belirtin. SDK'mız oluşturulmasını ve stilini işleme `iframe` ve konuşma bölümü, metin okuma, çeviri ve benzeri içeriğini işler sürükleyici okuyucu arka uç hizmetiyle iletişim.
+Modern okuyucu, modern okuyucu JavaScript SDK 'Sı kullanılarak çağrıldığında, mevcut Web uygulamanızın en üstünde bir `iframe`ile görüntülenen tek başına bir Web uygulamasıdır. Modern okuyucuyu başlatmak için API 'YI çağırdığınızda, tam ekran okuyucusunda göstermek istediğiniz içeriği belirtin. SDK 'mız, okuma ve metin okuma, `iframe` çeviri vb. için içeriği işleyen, tam ekran okuyucu arka uç hizmeti ile iletişim oluşturma ve stillendirmeyi idare eder.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Tam Ekran Okuyucu’yu kullanmaya başlama:
 
-* İçine atlanamaz [hızlı başlangıç](./quickstart.md)
-* Keşfedin [sürükleyici okuyucu GitHub üzerinde SDK](https://github.com/Microsoft/immersive-reader-sdk)
-* Okuma [sürükleyici okuyucu SDK başvurusu](./reference.md)
+* [Hızlı](./quickstart.md) başlangıca atlayın
+* [GitHub 'Da modern Okuyucu SDK 'sını](https://github.com/microsoft/immersive-reader-sdk) keşfet
+* [Tam ekran okuyucu SDK başvurusunu](./reference.md) okuyun

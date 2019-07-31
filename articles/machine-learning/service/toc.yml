@@ -24,11 +24,6 @@
         - name: Yerel olarak deneme çalıştırma
           displayName: 'workspace, install, sdk'
           href: quickstart-run-local-notebook.md
-    - name: Görsel arabirim
-      items:
-        - name: Verileri hazırlama ve görselleştirme
-          displayName: experiment drag-and-drop
-          href: ui-quickstart-run-experiment.md
 - name: Öğreticiler
   items:
     - name: Python SDK'sı

@@ -3,17 +3,18 @@ title: Azure sanal makinelerini uygun ölçekte yedekleme
 description: Azure’da aynı anda birden çok sanal makineyi yedekleme
 keywords: sanal makine yedeklemesi; sanal makine yedeklemek; VM yedeklemesi; VM’yi yedekleme; Azure VM yedekleme; yedekleme ve olağanüstü durum kurtarma
 author: dcurwin
+manager: carmonm
 ms.author: dacurwin
 ms.date: 01/31/2019
 ms.topic: tutorial
 ms.service: backup
 ms.custom: mvc
-ms.openlocfilehash: 1d57ca7e5a182877565c1add295cb504381dd3e5
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: fa9f13bf4f4e06973f7b9125897366ad53d06857
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639514"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688444"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Birden çok sanal makineyi yedeklemek için Azure portalını kullanma
 

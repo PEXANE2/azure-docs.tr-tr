@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 04/20/2019
-ms.openlocfilehash: ce1e5f349f55074b53cf447126c411a7a1cd3394
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 4ec9cff652bf1badf526d490547ad78de31ac5da
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516921"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678008"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Azure Machine Learning Studio nedir?
 Microsoft Azure Machine Learning Studio, verilerinizde tahmine dayalı analiz çözümleri oluşturma, test etme ve dağıtma amacıyla kullanabileceğiniz bir işbirliğine dayalı sürükle ve bırak aracıdır. Machine Learning Studio, modelleri özel uygulamalar veya Excel gibi BI araçları tarafından kolayca kullanılabilen web hizmetleri olarak yayımlar.
@@ -44,7 +44,7 @@ Programlama gerekmez; tahmine dayalı analiz modelinizi oluşturmak için veri k
 MicrosoftAzureMachineLearningStudioözelliklerinegenel![bakış](./media/what-is-ml-studio/ml_studio_overview_v1.1.png)
 
 ## <a name="get-started-with-machine-learning-studio"></a>Machine Learning Studio ile çalışmaya başlama
-Machine Learning Studio,] ilk kez girdiğinizde (https://studio.azureml.net) **giriş** sayfasını görürsünüz. Buradan belgeleri, videoları, web seminerlerini görüntüleyebilir ve diğer değerli kaynakları bulabilirsiniz.
+[Machine Learning Studio](https://studio.azureml.net)ilk kez girdiğinizde, **giriş** sayfasını görürsünüz. Buradan belgeleri, Videoları ve web seminerlerini görüntüleyebilir ve diğer değerli kaynakları bulabilirsiniz.
 
 Sol üst menüye tıkladığınızda ![Menü](./media/what-is-ml-studio/menu.png) birkaç seçenek göreceksiniz.
 ### <a name="azure-machine-learning-studio"></a>Azure Machine Learning Studio
@@ -123,7 +123,7 @@ Hızlı bir karşılaştırma aşağıda verilmiştir.
 |Dağıtım işlem hedefleri| Özel Web hizmeti biçimi özelleştirilebilir değil | Azure Kubernetes hizmeti & Kurumsal güvenlik seçenekleri. <br/>(SDK 'da desteklenen[diğer hesaplar](../service/how-to-deploy-and-where.md) ) |
 |Otomatik model eğitimi ve hyperparameter ayarlaması | Hayır | Henüz görsel arabirimde değil. <br/> (SDK 'da desteklenir ve Azure portal.) | 
 
-Hızlı başlangıç ile [görsel arabirimi (Önizleme) deneyin: Kodu yazmadan verileri hazırlayın ve görselleştirin](../service/ui-quickstart-run-experiment.md)
+Visual Interface 'i (Önizleme) öğreticiyle [deneyin: Görsel arabirim ile otomobil fiyatını tahmin edin](../service/ui-tutorial-automobile-price-train-score.md)
 
 > [!NOTE]
 > Studio 'da oluşturulan modeller Azure Machine Learning hizmeti tarafından dağıtılamaz veya yönetilemez. Ancak, Service Visual arabiriminde oluşturulan ve dağıtılan modeller Azure Machine Learning hizmet çalışma alanı aracılığıyla yönetilebilir.

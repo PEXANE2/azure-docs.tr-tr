@@ -36,7 +36,6 @@ sections:
         items:
           - html: <a href="quickstart-run-cloud-notebook">Bulutta bir deneme çalıştırma</a> (yükleme gerekmez).
           - html: <a href="quickstart-run-local-notebook">Yerel not defteri sunucusu kullanarak bir deneme çalıştırma</a> (yerel SDK yüklemesi gerekir).
-          - html: Görsel arabirimde <a href="ui-quickstart-run-experiment">kod yazmadan verileri hazırlayın ve görselleştirin</a>.
   - title: Adım Adım Öğreticiler
     items:
       - type: paragraph
