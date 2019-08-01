@@ -11,12 +11,13 @@ ms.topic: overview
 ms.date: 05/07/2018
 ms.author: nolachar
 comment: As a bot developer, I want my bot to be able to handle small talk in a consistent tone so that my bot appears more complete and conversational.
-ms.openlocfilehash: c7f7a8c65717acd5a19e92b7e0437dc4b8628909
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ROBOTS: NOINDEX
+ms.openlocfilehash: d6b632d6d4c0762ffd20aaf57a329095e853915c
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "62103643"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704258"
 ---
 # <a name="what-is-project-personality-chat"></a>Proje Kişilik Sohbeti nedir?
 
@@ -28,7 +29,7 @@ Proje Personality Chat ayrı, seçilmiş bir kişilikle birlikte havadan sudan k
 
 Proje Personality Chat laboratuvarları sayfasını ziyaret edebilir ve sağlanan tanıtımla sohbet edebilirsiniz. Hizmet kullanıma sunulduğunda da erken erişim istediğinde bulunabilirsiniz.
 Bugün Microsoft Bot Framework SDK'sı aracılığıyla, özelleştirilebilir salt editör kitaplığını botlarınızla tümleştirebilirsiniz. <br>
-[Örnekler: Kişilik sohbet bot içinde tümleştirin](https://github.com/Microsoft/BotBuilder-PersonalityChat/) <br>
+[Lerinizi Bir bot 'ta Personality Chat tümleştirme](https://github.com/Microsoft/BotBuilder-PersonalityChat/) <br>
 [Personality Chat kitaplığını deneme](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp)
 
 ## <a name="generating-responses-using-neural-networks"></a>Sinir ağlarını kullanarak yanıt oluşturma

@@ -3,15 +3,15 @@ title: Apache Spark ile Azure Cosmos DB yerleşik işletimsel analizine giriş
 description: İşletimsel analiz ve AI çalıştırmak için Azure Cosmos DB Apache Spark için yerleşik desteğini nasıl kullanabileceğinizi öğrenin
 ms.service: cosmos-db
 ms.topic: overview
-ms.date: 05/23/2019
+ms.date: 08/01/2019
 author: rimman
 ms.author: rimman
-ms.openlocfilehash: 245df0632765c4000bdf5da3e428187d2b068866
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 3fd7990043543b92eb3daf8ec699ec58db3387ec
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68402016"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717582"
 ---
 # <a name="built-in-operational-analytics-in-azure-cosmos-db-with-apache-spark-preview"></a>Apache Spark ile Azure Cosmos DB yerleşik işlemsel analiz (Önizleme) 
 

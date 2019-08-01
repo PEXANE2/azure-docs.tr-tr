@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: c001b10f14167b4c0947c2ef0ae3f27cc4f55657
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e9d17b0bdeb89fc03c0f089b84a89a5203c39566
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68553540"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717419"
 ---
 # <a name="quickstart-recognize-speech-in-swift-on-ios-using-the-speech-sdk"></a>Hızlı Başlangıç: Konuşma SDK 'sını kullanarak iOS 'ta Swift 'ta konuşmayı tanıma
 
@@ -61,7 +61,8 @@ Takip eden iletişim kutularında, aşağıdaki seçimleri yapın:
 
 ## <a name="add-the-sample-code"></a>Örnek kod ekleme
 
-1. HelloWorld projesinin içindeki `helloworld` dizine yeni bir üst bilgi `MicrosoftCognitiveServicesSpeech-Bridging-Header.h` dosyası yerleştirin ve aşağıdaki kodu buna yapıştırın:[!code-swift[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift-ios/helloworld/helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h#code)]
+1. HelloWorld projesinin içindeki `helloworld` dizine yeni bir üst bilgi `MicrosoftCognitiveServicesSpeech-Bridging-Header.h` dosyası yerleştirin ve aşağıdaki kodu buna yapıştırın:  
+   [!code-swift[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift-ios/helloworld/helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h#code)]
 1. Hedef `helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h` *-C köprüleme üst* bilgi alanı ![üst bilgisi özelliklerindeki HelloWorld hedefine ait Swift proje ayarlarına köprü üstbilgisine göreli yolu ekleyin](media/sdk/qs-swift-ios-bridging-header.png)
 1. Aşağıdaki şekilde otomatik oluşturulan `AppDelegate.swift` dosyasının içeriğini değiştirin:  
    [!code-swift[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift-ios/helloworld/helloworld/AppDelegate.swift#code)]
