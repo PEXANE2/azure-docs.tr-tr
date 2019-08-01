@@ -1,5 +1,5 @@
 ---
-title: "Hızlı Başlangıç: Proje URL'si Önizleme, Node.js"
+title: "Hızlı Başlangıç: Proje URL 'SI önizlemesi, Node. js"
 titlesuffix: Azure Cognitive Services
 description: Azure'da Microsoft Bilişsel Hizmetler kapsamındaki URL Önizleme özelliğini kullanmaya başlayın.
 services: cognitive-services
@@ -10,20 +10,20 @@ ms.subservice: url-preview
 ms.topic: quickstart
 ms.date: 03/16/2018
 ms.author: rosh
-ms.openlocfilehash: 5c373505cd381108366206c21ff09f25516d7969
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 92124a53c871be7a83d7b276e31f000d7c674358
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60712417"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698005"
 ---
-# <a name="quickstart-url-preview-with-nodejs"></a>Hızlı Başlangıç: Node.js ile URL önizlemesi 
+# <a name="quickstart-url-preview-with-nodejs"></a>Hızlı Başlangıç: Node. js ile URL önizlemesi 
 
 Aşağıdaki Node örneği SwiftKey Web sitesi için bir URL Önizlemesi oluşturur: https://swiftkey.com/en.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-[Bilişsel Hizmetler Laboratuvarları](https://aka.ms/answersearchsubscription) ücretsiz denemesi için erişim anahtarı alın
+[Bilişsel Hizmetler Laboratuvarları](https://labs.cognitive.microsoft.com/en-us/project-answer-search) ücretsiz denemesi için erişim anahtarı alın
 
 ## <a name="code-scenario"></a>Kod senaryosu 
 

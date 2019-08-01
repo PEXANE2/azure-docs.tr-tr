@@ -1,38 +1,38 @@
 ---
-title: Azure üzerinde Terraform giriş.
-description: Azure'da Terraform ile bir Azure Cosmos DB ile Azure Container Instances'a dağıtımını yaparak başlayın.
+title: Azure 'da Terrayform 'a giriş.
+description: Azure 'da bir Azure Cosmos DB ve Azure Container Instances dağıtarak Terrayform ile çalışmaya başlayın.
 services: terraform
 author: neilpeterson
 ms.service: azure
 ms.topic: quickstart
 ms.date: 02/04/2019
 ms.author: nepeters
-ms.openlocfilehash: 3905296fca4285ce5b75cfb210d125f667428bfe
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 57ab3fbc584932cb7d08bda76530bbe95ce61a6f
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64724393"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699078"
 ---
-# <a name="create-a-terraform-configuration-for-azure"></a>Terraform yapılandırma oluşturmak için Azure
+# <a name="create-a-terraform-configuration-for-azure"></a>Azure için Teraform yapılandırması oluşturma
 
-Bu örnekte, Terraform yapılandırması oluşturma ve Azure'a bu yapılandırmayı dağıtma deneyimini elde edin. Tamamlandığında, bir Azure Cosmos DB örneğine, bir Azure Container Instance ve bu iki kaynak üzerinde çalışan bir uygulama dağıtacaksınız. Bu belge, Azure bulut Terraform araçları önceden yüklenmiş olan Kabuğu'nda, tüm iş tamamlandı olduğunu varsayar. Kendi sisteminizdeki örnek üzerinde çalışmak istiyorsanız, Terraform bulunan yönergeleri kullanarak yüklenebilir [burada](../virtual-machines/linux/terraform-install-configure.md).
+Bu örnekte, bir Teraform yapılandırması oluşturma ve bu yapılandırmayı Azure 'a dağıtma konusunda deneyim elde edersiniz. Tamamlandığında, bir Azure Cosmos DB örneği, bir Azure Container Instance ve bu iki kaynak arasında çalışacak bir uygulama dağıtmış olursunuz. Bu belge, önkoşul olarak önceden yüklenmiş olan Azure Cloud Shell tüm çalışmanın tamamlandığını varsayar. Kendi sisteminizdeki örnek aracılığıyla çalışmak isterseniz, [burada](../virtual-machines/linux/terraform-install-configure.md)bulunan yönergeleri kullanarak Terırform yükleyebilirsiniz.
 
-## <a name="create-first-configuration"></a>İlk yapılandırması oluştur
+## <a name="create-first-configuration"></a>İlk yapılandırma oluştur
 
-Bu bölümde, bir Azure Cosmos DB örneğine yapılandırması oluşturur.
+Bu bölümde, bir Azure Cosmos DB örneği için yapılandırma oluşturacaksınız.
 
-Seçin **şimdi deneyin** Azure cloud Shell'i açmak için. Açık sonra girin `code .` cloud shell Kod Düzenleyicisi'ni açmak için.
+Azure Cloud Shell 'i açmak için **Şimdi deneyin** ' i seçin. Açıldığında, Cloud Shell kod `code .` düzenleyicisini açmak için yazın.
 
 ```azurecli-interactive
 code .
 ```
 
-Kopyalayıp Terraform aşağıdaki yapılandırmayı yapıştırın.
+Aşağıdaki Terpform yapılandırmasında kopyalayıp yapıştırın.
 
-Bu yapılandırma, bir Azure kaynak grubu, rastgele bir tamsayı ve bir Azure Cosmos DB örneğine modeller. Rasgele tamsayı, Cosmos DB örnek adını kullanılır. Cosmos DB çeşitli ayarlar da yapılandırılır. Cosmos DB Terraform yapılandırmalar tam bir listesi için bkz. [Cosmos DB Terraform başvurusu](https://www.terraform.io/docs/providers/azurerm/r/cosmosdb_account.html).
+Bu yapılandırma, bir Azure kaynak grubunu, rastgele bir tamsayıyı ve bir Azure Cosmos DB örneğini modeller. Rastgele tamsayı Cosmos DB örnek adında kullanılır. Çeşitli Cosmos DB ayarları da yapılandırılır. Cosmos DB Teraform yapılandırmalarının tüm listesi için bkz. [Cosmos DB terrayform başvurusu](https://www.terraform.io/docs/providers/azurerm/r/cosmosdb_account.html).
 
-Dosyayı Farklı Kaydet `main.tf` işiniz bittiğinde. Bu işlem yapılabilir Kod Düzenleyicisi'ni sağ üst kısmında üç nokta simgesini kullanarak.
+Dosyayı `main.tf` tamamlandığında kaydedin. Bu işlem, kod düzenleyicisinin sağ üst kısmındaki üç nokta kullanılarak yapılabilir.
 
 ```azurecli-interactive
 resource "azurerm_resource_group" "vote-resource-group" {
@@ -65,38 +65,38 @@ resource "azurerm_cosmosdb_account" "vote-cosmos-db" {
 }
 ```
 
-[Terraform init](https://www.terraform.io/docs/commands/init.html) komut çalışma dizini başlatır. Çalıştırma `terraform init` Yeni yapılandırmanın dağıtımına hazırlanmak için terminal cloud shell'de.
+[Terrayform init](https://www.terraform.io/docs/commands/init.html) komutu çalışma dizinini başlatır. Yeni `terraform init` yapılandırmanın dağıtımına hazırlanmak için Cloud Shell terminalinde çalıştırın.
 
 ```azurecli-interactive
 terraform init
 ```
 
-[Terraform planı](https://www.terraform.io/docs/commands/plan.html) komutu yapılandırmasını düzgün biçimlendirildiğini doğrulamak ve hangi kaynakların oluşturulacak, güncelleştirilmiş, yok veya görselleştirmek için kullanılabilir. Sonuçları bir dosyada depolanır ve daha sonra yapılandırmayı uygulamak için kullanılır.
+[Terrayform plan](https://www.terraform.io/docs/commands/plan.html) komutu, yapılandırmanın düzgün şekilde biçimlendirildiğini doğrulamak ve hangi kaynakların oluşturulacağını, güncelleştirileceğini veya yok edildiğini görselleştirmek için kullanılabilir. Sonuçlar bir dosyada depolanabilir ve daha sonra yapılandırmayı uygulamak için kullanılabilir.
 
-Çalıştırma `terraform plan` yeni Terraform yapılandırmayı test etmek için.
+Yeni `terraform plan` teraform yapılandırmasını test etmek için ' i çalıştırın.
 
 ```azurecli-interactive
 terraform plan --out plan.out
 ```
 
-Yapılandırma kullanarak uygulama [terraform uygulamak](https://www.terraform.io/docs/commands/apply.html) ve planı dosyasının adını belirtin. Bu komut, Azure aboneliğinizdeki kaynakları dağıtır.
+[Terrayform uygulamasını](https://www.terraform.io/docs/commands/apply.html) kullanarak yapılandırmayı uygulayın ve plan dosyasının adını belirtin. Bu komut, Azure aboneliğinizdeki kaynakları dağıtır.
 
 ```azurecli-interactive
 terraform apply plan.out
 ```
 
-Bunu yaptıktan sonra kaynak grubu oluşturuldu ve kaynak grubunda bir Azure Cosmos DB örneğine yerleştirilen görebilirsiniz.
+İşiniz bittiğinde, kaynak grubunun oluşturulduğunu ve kaynak grubuna yerleştirilmiş bir Azure Cosmos DB örneği olduğunu görebilirsiniz.
 
 ## <a name="update-configuration"></a>Güncelleştirme yapılandırması
 
-Bir Azure Container Instance içerecek şekilde yapılandırmasını güncelleştirin. Kapsayıcı okur ve verileri Cosmos DB'ye yazan bir uygulama çalıştırır.
+Yapılandırmayı bir Azure Container Instance içerecek şekilde güncelleştirin. Kapsayıcı Cosmos DB verileri okuyan ve yazan bir uygulamayı çalıştırır.
 
-Alt kısmına aşağıdaki yapılandırmayı kopyalama `main.tf` dosya. İşiniz bittiğinde dosyayı kaydedin.
+Aşağıdaki yapılandırmayı `main.tf` dosyanın en altına kopyalayın. Bitince dosyayı kaydedin.
 
-İki ortam değişkenleri ayarlanır, `COSMOS_DB_ENDPOINT` ve `COSMOS_DB_MASTERKEY`. Bu değişkenleri konuma ve veritabanına erişmek için anahtar. Bu değişkenler için değerler son adımda oluşturduğunuz veritabanı örneğinden elde edilir. Bu işlem, ilişkilendirme bilinir. Terraform ilişkilendirme hakkında daha fazla bilgi için bkz: [ilişkilendirme söz dizimi](https://www.terraform.io/docs/configuration/interpolation.html).
+İki ortam değişkeni ayarlanır `COSMOS_DB_ENDPOINT` ve. `COSMOS_DB_MASTERKEY` Bu değişkenler veritabanına erişmek için konum ve anahtarı tutar. Bu değişkenlerin değerleri, son adımda oluşturulan veritabanı örneğinden alınır. Bu işlem ilişkilendirme olarak bilinir. Terrayform ilişkilendirme hakkında daha fazla bilgi için bkz. [enterpolasyon sözdizimi](https://www.terraform.io/docs/configuration/interpolation.html).
 
 
-Yapılandırma da tam etki alanı adını (FQDN) kapsayıcı örneğini döndüren bir çıktı bloğu içerir.
+Yapılandırma ayrıca kapsayıcı örneğinin tam etki alanı adını (FQDN) döndüren bir çıkış bloğu da içerir.
 
 ```azurecli-interactive
 resource "azurerm_container_group" "vote-aci" {
@@ -117,7 +117,7 @@ resource "azurerm_container_group" "vote-aci" {
       protocol = "TCP"
     }
 
-    secure_environment_variables {
+    secure_environment_variables = {
       "COSMOS_DB_ENDPOINT"  = "${azurerm_cosmosdb_account.vote-cosmos-db.endpoint}"
       "COSMOS_DB_MASTERKEY" = "${azurerm_cosmosdb_account.vote-cosmos-db.primary_master_key}"
       "TITLE"               = "Azure Voting App"
@@ -132,29 +132,29 @@ output "dns" {
 }
 ```
 
-Çalıştırma `terraform plan` güncelleştirilmiş plan oluşturma ve değişiklik yapılmasına görselleştirin. Bir Azure Container Instance kaynak yapılandırmaya eklenmiş olduğunu görmeniz gerekir.
+Güncelleştirilmiş `terraform plan` planı oluşturmak ve yapılacak değişiklikleri görselleştirmek için ' i çalıştırın. Yapılandırmaya bir Azure Container Instance kaynağının eklendiğini görmeniz gerekir.
 
 ```azurecli-interactive
 terraform plan --out plan.out
 ```
 
-Son olarak, çalıştırma `terraform apply` yapılandırmayı uygulamak için.
+Son olarak, `terraform apply` yapılandırmayı uygulamak için ' i çalıştırın.
 
 ```azurecli-interactive
 terraform apply plan.out
 ```
 
-Tamamlandığında, kapsayıcı örneğinin FQDN not alın.
+İşlem tamamlandıktan sonra kapsayıcı örneği FQDN 'sine göz atın.
 
 ## <a name="test-application"></a>Uygulamayı test etme
 
-Kapsayıcı örneği FQDN'sini gidin. Her şeyin doğru şekilde yapılandırıldıysa, aşağıdaki uygulama görmeniz gerekir.
+Kapsayıcı örneğinin FQDN 'sine gidin. Her şey doğru şekilde yapılandırıldıysa, aşağıdaki uygulamayı görmeniz gerekir.
 
-![Azure vote uygulaması](media/terraform-quickstart/azure-vote.jpg)
+![Azure oy uygulaması](media/terraform-quickstart/azure-vote.jpg)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-İşiniz bittiğinde, Azure kaynaklarını ve kaynak grubu kullanılarak kaldırılabilir [terraform yok](https://www.terraform.io/docs/commands/destroy.html) komutu.
+İşiniz bittiğinde, Azure kaynakları ve kaynak grubu [terkform Destroy](https://www.terraform.io/docs/commands/destroy.html) komutu kullanılarak kaldırılabilir.
 
 ```azurecli-interactive
 terraform destroy -auto-approve
@@ -162,7 +162,7 @@ terraform destroy -auto-approve
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu örnekte, oluşturulabilir, dağıtılan ve bir Terraform yapılandırması yok. Azure'da Terraform kullanarak daha fazla bilgi için Azure Terraform sağlayıcısı belgelerine bakın.
+Bu örnekte, bir Terrayform yapılandırması oluşturdunuz, dağıtıldı ve yok edilir. Azure 'da Terrampaform kullanma hakkında daha fazla bilgi için bkz. Azure Teraform sağlayıcı belgeleri.
 
 > [!div class="nextstepaction"]
-> [Azure Terraform sağlayıcısı](https://www.terraform.io/docs/providers/azurerm/)
+> [Azure Terrayform sağlayıcısı](https://www.terraform.io/docs/providers/azurerm/)

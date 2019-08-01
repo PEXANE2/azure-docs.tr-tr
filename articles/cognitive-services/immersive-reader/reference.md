@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 22860e0798ec852b6d25da27e108befe8a3089a2
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 1a616bce8c161825853b1966769d9505595d95de
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68488825"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688325"
 ---
 # <a name="immersive-reader-sdk-reference"></a>Modern Okuyucu SDK başvurusu
 
@@ -136,5 +136,5 @@ Tam ekran okuyucu ile en iyi deneyim için aşağıdaki tarayıcıların en son 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [GitHub 'Da modern Okuyucu SDK 'sını](https://github.com/Microsoft/immersive-reader-sdk) keşfet
+* [GitHub 'Da modern Okuyucu SDK 'sını](https://github.com/microsoft/immersive-reader-sdk) keşfet
 * [Hızlı Başlangıç: Tam ekran okuyucu (C#) başlatan bir Web uygulaması oluşturma](./quickstart.md)

@@ -10,14 +10,14 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: c090d7c5de4261891fdb3833c7ffec920f8de5b0
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: b5b7d43fc5a53bcf46874a48914bcda565a41c3e
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668707"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697058"
 ---
-# <a name="whats-new-in-the-text-analytics-api"></a>Metin Analizi API'si yenilikler nelerdir?
+# <a name="whats-new-in-the-text-analytics-api"></a>Metin Analizi API’sindeki yenilikler
 
 Metin Analizi API'si, sürekli olarak güncelleştirilir. Son geliştirmelerin güncel kalması için, bu makalede yeni yayınlar ve özellikler hakkında bilgi verilmektedir.
 
@@ -40,5 +40,5 @@ Ingilizce 'yi destekler ve üç bölgede kullanılabilir: Orta Kanada, Doğu Asy
 * [Örnek kullanıcı senaryoları](text-analytics-user-scenarios.md)
 * [Yaklaşım Analizi](how-tos/text-analytics-how-to-sentiment-analysis.md)
 * [Dil algılama](how-tos/text-analytics-how-to-language-detection.md)
-* [Varlık bağlama](how-tos/text-analytics-how-to-entity-linking.md)
+* [Varlık tanıma](how-tos/text-analytics-how-to-entity-linking.md)
 * [Anahtar tümceciği ayıklama](how-tos/text-analytics-how-to-keyword-extraction.md)

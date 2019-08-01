@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Proje yanıt arama, Java'
+title: 'Hızlı Başlangıç: Proje yanıtı araması, Java'
 titlesuffix: Azure Cognitive Services
 description: Java'da Yanıt Arama Projesi'ni kullanmaya başlayın.
 services: cognitive-services
@@ -10,21 +10,21 @@ ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: fc0f8519644c5b9f722ab67f2e9d600a0be7960b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 26a9fc60c90f536e4ef9f03e96545e493a60f206
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60708337"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698089"
 ---
-# <a name="quickstart-project-answer-search-query-in-java"></a>Hızlı Başlangıç: Java'da proje yanıt arama sorgusu
+# <a name="quickstart-project-answer-search-query-in-java"></a>Hızlı Başlangıç: Java 'da proje yanıtı arama sorgusu
 Bu makalede, Azure'da Microsoft Bilişsel Hizmetleri'nin parçası olan Bing Yanıt Arama API'sini göstermek için Java kullanılmaktadır. API HTTP istekleri gönderebilecek ve JSON ayrıştırabilecek her programlama diliyle uyumlu bir REST Web hizmetidir.
  
 Örnek kodda Java için minimum harici bağımlılık kullanılmıştır.  Kodu Mono kullanarak Linux veya Mac OS X üzerinde de çalıştırabilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-[Bilişsel Hizmetler Laboratuvarları](https://aka.ms/answersearchsubscription) ücretsiz denemesi için erişim anahtarı alın
+[Bilişsel Hizmetler Laboratuvarları](https://labs.cognitive.microsoft.com/en-us/project-answer-search) ücretsiz denemesi için erişim anahtarı alın
 
 ## <a name="request"></a>İstek 
 
