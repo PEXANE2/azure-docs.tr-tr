@@ -1,5 +1,5 @@
 ---
-title: "Hızlı Başlangıç: Metin analizi API'sini çağırmak için node.js kullanma"
+title: "Hızlı Başlangıç: Metin Analizi API'si çağırmak için Node. js kullanma"
 titleSuffix: Azure Cognitive Services
 description: Metin Analizi API'sini kısa sürede kullanmaya başlamanıza yardımcı olacak bilgi ve kod örnekleri alın.
 services: cognitive-services
@@ -8,55 +8,55 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 06/11/2019
+ms.date: 07/30/2019
 ms.author: shthowse
-ms.openlocfilehash: 7e43d53c0916cf7fdc684c9e044e632015662c3b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9b8a713d58d5753e04de050e0bc961b5e8388123
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67081522"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697475"
 ---
-# <a name="quickstart-using-nodejs-to-call-the-text-analytics-cognitive-service"></a>Hızlı Başlangıç: Metin analizi Bilişsel hizmetini çağırmak için node.js kullanma
+# <a name="quickstart-using-nodejs-to-call-the-text-analytics-cognitive-service"></a>Hızlı Başlangıç: Metin Analizi bilişsel hizmeti 'ni çağırmak için Node. js kullanma
 <a name="HOLTop"></a>
 
-Bu hızlı başlangıçta, Node.js için metin analizi SDK'sı ile dil incelemeye başlamak için kullanın. Sırada [metin analizi](//go.microsoft.com/fwlink/?LinkID=759711) çoğu programlama dilleri ile uyumlu REST API, SDK hizmeti uygulamalarınızla tümleştirmek için kolay bir yol sağlar. Bu örnek için kaynak kodu bulunabilir [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/textAnalytics.js).
+Node. js için Metin Analizi SDK ile dili çözümlemeye başlamak için bu hızlı başlangıcı kullanın. [Metin Analizi](//go.microsoft.com/fwlink/?LinkID=759711) REST API çoğu programlama dili ile uyumlu olsa da SDK, hizmeti uygulamalarınızla tümleştirmenin kolay bir yolunu sunar. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/textAnalytics.js)' da bulunabilir.
 
 API'lerle ilgili teknik bilgiler için [API tanımları](//go.microsoft.com/fwlink/?LinkID=759346) sayfasını inceleyin.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 * [Node.js](https://nodejs.org/)
-* Metin analizi [SDK'sı için Node.js](https://www.npmjs.com/package/azure-cognitiveservices-textanalytics) SDK'sı ile yükleyebilirsiniz:
+* [Node. js için metin analizi SDK](https://www.npmjs.com/package/azure-cognitiveservices-textanalytics) 'Sı Ile SDK 'yı yükleyebilirsiniz:
 
     `npm install azure-cognitiveservices-textanalytics`
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
-Ayrıca kayıt sırasında oluşturulan [uç nokta ve erişim anahtarı](../How-tos/text-analytics-how-to-access-key.md) değerlerine de sahip olmanız gerekir.
+Ayrıca kayıt sırasında oluşturulan [uç nokta ve erişim anahtarı](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) değerlerine de sahip olmanız gerekir.
 
-## <a name="create-a-nodejs-application-and-install-the-sdk"></a>Node.js uygulaması oluşturma ve SDK'sını yükleyin
+## <a name="create-a-nodejs-application-and-install-the-sdk"></a>Node. js uygulaması oluşturma ve SDK 'Yı yüklemeyi
 
-Node.js yükledikten sonra bir düğüm projesi oluşturun. Uygulamanız için yeni bir dizin oluşturun ve alt dizinine gidin.
+Node. js ' yi yükledikten sonra bir düğüm projesi oluşturun. Uygulamanız için yeni bir dizin oluşturun ve dizinine gidin.
 
 ```mkdir myapp && cd myapp```
 
-Çalıştırma ```npm init``` node uygulaması ile bir package.json dosyası oluşturmak için. Yükleme `ms-rest-azure` ve `azure-cognitiveservices-textanalytics` NPM paketleri:
+Bir ```npm init``` Package. JSON dosyası ile bir düğüm uygulaması oluşturmak için ' i çalıştırın. `ms-rest-azure` Ve`azure-cognitiveservices-textanalytics` NPM paketlerini yüklerken:
 
 ```npm install azure-cognitiveservices-textanalytics ms-rest-azure```
 
-Uygulamanızın package.json dosyası bağımlılıkları ile güncelleştirilecektir.
+Uygulamanızın Package. JSON dosyası bağımlılıklarla güncelleştirilecektir.
 
-## <a name="authenticate-your-credentials"></a>Kimlik bilgileriniz kimlik doğrulaması
+## <a name="authenticate-your-credentials"></a>Kimlik bilgilerinizi doğrulama
 
-Yeni bir dosya oluşturun `index.js` projesinde kök ve yüklü kitaplıkları içeri aktarma
+Proje kökünde yeni bir `index.js` dosya oluşturun ve yüklü kitaplıkları içeri aktarın
 
 ```javascript
 const CognitiveServicesCredentials = require("ms-rest-azure").CognitiveServicesCredentials;
 const TextAnalyticsAPIClient = require("azure-cognitiveservices-textanalytics");
 ```
 
-Metin analizi abonelik anahtarınız için bir değişken oluşturun.
+Metin Analizi abonelik anahtarınız için bir değişken oluşturun.
 
 ```javascript
 let credentials = new CognitiveServicesCredentials(
@@ -65,12 +65,12 @@ let credentials = new CognitiveServicesCredentials(
 ```
 
 > [!Tip]
-> Üretim sistemlerine gizli dizileri güvenli dağıtımı için kullanmanızı öneririz [Azure anahtar kasası](https://docs.microsoft.com/azure/key-vault/quick-create-net).
+> Üretim sistemlerinde parolaların güvenli dağıtımı için [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-net)kullanmanızı öneririz.
 >
 
-## <a name="create-a-text-analytics-client"></a>Metin analizi istemcisi oluşturma
+## <a name="create-a-text-analytics-client"></a>Metin Analizi istemcisi oluşturma
 
-Yeni bir `TextAnalyticsClient` nesnesi ile `credentials` bir parametre olarak. Metin analizi aboneliğiniz için doğru Azure bölgesi kullanın.
+Parametresi olarak içeren `TextAnalyticsClient` `credentials` yeni bir nesne oluşturun. Metin Analizi aboneliğiniz için doğru Azure bölgesini kullanın.
 
 ```javascript
 //Replace 'westus' with the correct region for your Text Analytics subscription
@@ -82,7 +82,7 @@ let client = new TextAnalyticsAPIClient(
 
 ## <a name="sentiment-analysis"></a>Yaklaşım analizi
 
-Nesneleri, çözümlemek istediğiniz belgeleri içeren bir liste oluşturur. API yükü bir listesinden oluşur `documents`, aşağıdakileri içeren bir `id`, `language`, ve `text` özniteliği. `text` Öznitelik depolarının Analiz edilecek metnin `language` belge dilidir ve `id` herhangi bir değer olabilir. 
+Analiz etmek istediğiniz belgeleri içeren bir nesne listesi oluşturun. API 'nin `documents`yükü,, ve `id` `text` özniteliğini içeren `language`bir listesinden oluşur. Özniteliği çözümlenecek metni depolar, `language` belgenin dilidir ve `id` herhangi bir değer olabilir. `text` 
 
 ```javascript
 const inputDocuments = {documents:[
@@ -93,7 +93,7 @@ const inputDocuments = {documents:[
 ]}
 ```
 
-Çağrı `client.sentiment` ve sonucu alın. Ardından sonuçlarını yinelemek ve her bir belgenin kimliği ve yaklaşım puanını yazdırın. Bir puan yakın 1 pozitif yaklaşımı çağrılırken bir puan yakın 0 bir negatif yaklaşımı gösterir.
+Sonucunu `client.sentiment` çağırın ve elde edin. Ardından sonuçları yineleyin ve her belge KIMLIĞINI ve yaklaşım Puanını yazdırın. 0 ' a yakın bir puan negatif bir yaklaşım gösterir, 1 ' e yaklaşarak pozitif bir yaklaşım gösterilir.
 
 ```javascript
 const operation = client.sentiment({multiLanguageBatchInput: inputDocuments})
@@ -106,9 +106,9 @@ operation
 });
 ```
 
-Kodunuzu çalıştırmak `node index.js` konsol pencerenizde.
+Kodunuzu `node index.js` konsol pencerenizde çalıştırın.
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Output
 
 ```console
 [ { id: '1', score: 0.8723785877227783 },
@@ -119,7 +119,7 @@ Kodunuzu çalıştırmak `node index.js` konsol pencerenizde.
 
 ## <a name="language-detection"></a>Dil algılama
 
-Belgelerinizi içeren nesnelerin bir listesini oluşturun. API yükü bir listesinden oluşur `documents`, aşağıdakileri içeren bir `id` ve `text` özniteliği. `text` Öznitelik depolarının Analiz edilecek metin ve `id` herhangi bir değer olabilir.
+Belgelerinizi içeren nesnelerin bir listesini oluşturun. API 'nin yükü, `documents` `id` ve `text` özniteliğini içeren bir listesinden oluşur. Özniteliği çözümlenecek metni depolar `id` ve herhangi bir değer olabilir. `text`
 
 ```javascript
 // The documents to be submitted for language detection. The ID can be any value.
@@ -132,7 +132,7 @@ const inputDocuments = {
     };
 ```
 
-Çağrı `client.detectLanguage()` ve sonucu alın. Ardından sonuçlarını yinelemek ve her bir belgenin kimliği ve ilk döndürülen dil yazdırın.
+Sonucunu `client.detectLanguage()` çağırın ve elde edin. Sonra sonuçlar arasında yineleme yapın ve her belgenin KIMLIĞINI ve ilk döndürülen dili yazdırın.
 
 ```javascript
 const operation = client.detectLanguage({
@@ -152,9 +152,9 @@ operation
     });
 ```
 
-Kodunuzu çalıştırmak `node index.js` konsol pencerenizde.
+Kodunuzu `node index.js` konsol pencerenizde çalıştırın.
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Output
 
 ```console
 ===== LANGUAGE EXTRACTION ======
@@ -165,7 +165,7 @@ ID: 3 Language Chinese_Simplified
 
 ## <a name="entity-recognition"></a>Varlık tanıma
 
-Belgelerinizi içeren nesnelerin bir liste oluşturur. API yükü bir listesinden oluşur `documents`, aşağıdakileri içeren bir `id`, `language`, ve `text` özniteliği. `text` Öznitelik depolarının Analiz edilecek metnin `language` belge dilidir ve `id` herhangi bir değer olabilir.
+Belgelerinizi içeren bir nesne listesi oluşturun. API 'nin `documents`yükü,, ve `id` `text` özniteliğini içeren `language`bir listesinden oluşur. Özniteliği çözümlenecek metni depolar, `language` belgenin dilidir ve `id` herhangi bir değer olabilir. `text`
 
 ```javascript
 
@@ -177,7 +177,7 @@ Belgelerinizi içeren nesnelerin bir liste oluşturur. API yükü bir listesinde
 }
 ```
 
-Çağrı `client.entities()` ve sonucu alın. Ardından sonuçlarını yinelemek ve her bir belgenin kimliği yazdırma Her varlık algılanan için wikipedia adını, türünü ve alt türleri yazdırma (varsa var) orijinal metni konumlarda yanı sıra.
+Sonucunu `client.entities()` çağırın ve elde edin. Sonra sonuçlar arasında yineleme yapın ve her belge KIMLIĞINI yazdırın. Algılanan her varlık için, bu dosyanın visede adını, tür ve alt türlerini (varsa) ve özgün metindeki konumları yazdırın.
 
 ```javascript
 const operation = client.entities({
@@ -200,9 +200,9 @@ operation
     });
 ```
 
-Kodunuzu çalıştırmak `node index.js` konsol pencerenizde.
+Kodunuzu `node index.js` konsol pencerenizde çalıştırın.
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Output
 
 ```console
 Document ID: 1
@@ -233,7 +233,7 @@ Document ID: 2
 
 ## <a name="key-phrase-extraction"></a>Anahtar tümcecik ayıklama
 
-Belgelerinizi içeren nesnelerin bir liste oluşturur. API yükü bir listesinden oluşur `documents`, aşağıdakileri içeren bir `id`, `language`, ve `text` özniteliği. `text` Öznitelik depolarının Analiz edilecek metnin `language` belge dilidir ve `id` herhangi bir değer olabilir.
+Belgelerinizi içeren bir nesne listesi oluşturun. API 'nin `documents`yükü,, ve `id` `text` özniteliğini içeren `language`bir listesinden oluşur. Özniteliği çözümlenecek metni depolar, `language` belgenin dilidir ve `id` herhangi bir değer olabilir. `text`
 
 ```javascript
     let inputLanguage = {
@@ -246,7 +246,7 @@ Belgelerinizi içeren nesnelerin bir liste oluşturur. API yükü bir listesinde
     };
 ```
 
-Çağrı `client.keyPhrases()` ve sonucu alın. Ardından sonuçlarını yinelemek ve her bir belgenin kimliği ve algılanan tüm anahtar ifadeleri yazdırın.
+Sonucunu `client.keyPhrases()` çağırın ve elde edin. Ardından sonuçları yineleyin ve her belgenin KIMLIĞINI ve algılanan anahtar tümceciklerini yazdırın.
 
 ```javascript
     let operation = client.keyPhrases({
@@ -261,9 +261,9 @@ Belgelerinizi içeren nesnelerin bir liste oluşturur. API yükü bir listesinde
     });
 ```
 
-Kodunuzu çalıştırmak `node index.js` konsol pencerenizde.
+Kodunuzu `node index.js` konsol pencerenizde çalıştırın.
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Output
 
 ```console
 [ 
@@ -281,4 +281,4 @@ Kodunuzu çalıştırmak `node index.js` konsol pencerenizde.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
- [Metin Analizi'ne genel bakış](../overview.md) [sık sorulan sorular (SSS)](../text-analytics-resource-faq.md)
+ [Metin analizi genel bakış](../overview.md) [Sık sorulan sorular (SSS)](../text-analytics-resource-faq.md)

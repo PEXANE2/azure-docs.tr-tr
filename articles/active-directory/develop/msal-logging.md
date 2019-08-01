@@ -1,6 +1,6 @@
 ---
-title: MSAL uygulamalarda oturum | Azure
-description: Microsoft Authentication Library (MSAL) uygulamalarında günlüğe kaydetme hakkında bilgi edinin.
+title: MSAL uygulamalarında oturum açma | Mavisi
+description: Microsoft kimlik doğrulama kitaplığı (MSAL) uygulamalarında günlüğe kaydetme hakkında bilgi edinin.
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
@@ -17,35 +17,35 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58f18995d46ca61ae68a7b226bbfc9a286e73a0b
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 4288ff4aba216a214d10c56ba448fc03e13b81f2
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544105"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68693940"
 ---
-# <a name="logging"></a>Günlüğe kaydetme
-Yardımcı olabilecek günlük iletilerini oluşturmak için Microsoft kimlik doğrulama kitaplığı (MSAL) uygulama sorunlarını tanılamak ve ayrıntıları sağlayın. Bir uygulamayı birkaç kod satırıyla günlüğe kaydetmeyi yapılandırmak ve kişisel ve kurumsal verileri bırakmadığınıza kaydedilir ve ayrıntı düzeyini özel denetime sahip. Bir MSAL günlüğü geri aramasını ayarlamasını ve kullanıcıların kimlik doğrulama sorunları içerdiğinde günlükleri göndermek bir yol sunmak önerilir.
+# <a name="logging"></a>Günlüğe Kaydetme
+Sorunları tanılamanıza ve ayrıntı sağlamanıza yardımcı olabilecek günlük iletileri oluşturmak için Microsoft kimlik doğrulama kitaplığı (MSAL) uygulamaları. Bir uygulama, birkaç satırlık kodla günlüğe kaydetmeyi yapılandırabilir ve ayrıntı düzeyi üzerinde özel denetime sahip olabilir ve kişisel ve kurumsal verilerin günlüğe kaydedilip kaydedilmeyeceğini belirtir. Bir MSAL günlüğe kaydetme geri çağırması ayarlamanız ve kullanıcıların kimlik doğrulama sorunlarıyla karşılaştıklarında günlükleri göndermesi için bir yol sağlamanız önerilir.
 
 ## <a name="logging-levels"></a>Günlüğe kaydetme düzeyleri
 
-MSAL'ın Günlükçü için birkaç ayrıntı düzeyleri yakalama olmasını sağlar:
+MSAL 'nin günlükçüsü, birkaç ayrıntı düzeyinin yakalamaya izin verir:
 
-- Hata: Bir sorun oluştu ve bir hata oluştu gösterir. Hata ayıklama ve sorunları tanımlamak için kullanın.
-- Uyarı: Soru ve uygulama olayları hakkında daha fazla bilgi gerekiyor. Var. olmak zorunda olmayan bir hata veya başarısız olan ancak için tanılama ve sunulan sorunlara yönelik.
-- Bilgi: MSAL, hata ayıklama için mutlaka hedeflenen bilgilendirme amaçlı yönelik olayları günlüğe kaydeder.
-- ayrıntılı: Varsayılan. MSAL, büyük miktarda bilgiyi oturum ve hangi kitaplığı davranışı tam ayrıntıları verin.
+- Hata: Bir şeyin yanlış geçmiş olduğunu ve bir hatanın oluşturulduğunu gösterir. Hata ayıklama ve sorunları tanımlama için kullanın.
+- Uyarı: Soru ve uygulama için daha fazla bilgi gerekiyor. Bir hata veya hata olması gerekmez, ancak tanılama ve işaret eden sorun sorunları için tasarlanmıştır.
+- Bilgisine MSAL, bilgilendirici amaçlar için tasarlanan olayları günlüğe kaydetmek için gerekli değildir.
+- Seçeneini Varsayılan. MSAL, büyük miktarda bilgiyi günlüğe kaydeder ve hangi kitaplık davranışının tüm ayrıntılarını verir.
 
-## <a name="personal-and-organizational-data"></a>Kişisel ve kurumsal veriler
-Varsayılan olarak, son derece hassas kişisel veya kurumsal veri MSAL Günlükçü yakalamaz. Kitaplık Bunu yapmak karar verirseniz, kişisel ve kurumsal veri günlüğü etkinleştirme seçeneği sunar.
+## <a name="personal-and-organizational-data"></a>Kişisel ve Kurumsal veriler
+Varsayılan olarak, MSAL günlükçüsü, son derece hassas kişisel veya kurumsal verileri yakalamaz. Kitaplığı, bunu yapmayı seçerseniz kişisel ve kurumsal verileri günlüğe kaydetmeyi etkinleştirme seçeneğini sağlar.
 
-## <a name="logging-in-msalnet"></a>MSAL.NET günlüğüne
-MSAL, 3.x günlük uygulama oluşturma kullanarak uygulama başına ayarlanır `.WithLogging` Oluşturucu değiştiricisi. Bu yöntem, isteğe bağlı parametreler isteyen:
+## <a name="logging-in-msalnet"></a>MSAL.NET içinde oturum açma
+MSAL 3. x içinde, günlük kaydı `.WithLogging` Oluşturucu değiştiricisini kullanarak uygulama oluşturma sırasında uygulama başına ayarlanır. Bu yöntem isteğe bağlı parametreleri alır:
 
-- *Düzey* hangi günlüğe kaydetme düzeyini istediğiniz karar vermenize olanak sağlar. Bu ayar hataları için yalnızca hataları alırsınız
-- *PiiLoggingEnabled* kişisel ve kurumsal veriler varsa oturum açmanızı sağlayan true olarak ayarlanmış. Böylece, uygulamanızın kişisel verileri günlüğe kaydetmez varsayılan olarak bu false olarak ayarlanır.
-- *LogCallback* günlüğe yapan bir temsilciye ayarlanır. Varsa *PiiLoggingEnabled* true, bu yöntemin alacağını ileti iki kez: kez *containsPii* parametresi yanlış ve bu iletiyi kişisel veriler ve ileikincidefaolmadaneşittir*containsPii* parametresi true olarak eşittir ve ileti kişisel verileri içerebilir. (İleti kişisel verileri içermediğinde) bazı durumlarda aynı ileti olacaktır.
-- *DefaultLoggingEnabled* platformu için varsayılan günlük kaydını etkinleştirir. Varsayılan olarak false şeklindedir. Bunu true olarak ayarlarsanız Masaüstü/UWP uygulamalarında NSLog iOS ve android'de logcat olay izlemeyi kullanır.
+- *Düzey* , hangi günlük kayıt düzeyini istediğinize karar vermenize olanak sağlar. Hatalara ayarlandığında yalnızca hatalar alınır
+- *Ilookupggingenabled* , true olarak ayarlandıysa kişisel ve kurumsal verileri günlüğe almanıza olanak sağlar. Bu, varsayılan olarak false değerine ayarlanır, böylece uygulamanız kişisel verileri günlüğe eklemez.
+- *LogCallback* , günlüğü yapan bir temsilciye ayarlanır. *Pııvlıggingenabled* değeri true ise, bu yöntem iletileri iki kez alır: *containspii* parametresine sahip bir kez false ve kişisel veriler olmadan Ileti ve *containspıı* parametresi ile ikinci bir kez true değerine eşit ve ileti kişisel veri içeriyor olabilir. Bazı durumlarda (ileti kişisel veriler içermiyorsa), ileti aynı olur.
+- *Defaultloggingenabled* , platform için varsayılan günlüğü etkinleştir. Varsayılan olarak false 'tur. Bunu true olarak ayarlarsanız, masaüstü/UWP uygulamalarında olay Izlemeyi kullanır, iOS üzerinde NSLog ve Android üzerinde Logcat.
 
 ```csharp
 class Program
@@ -69,22 +69,22 @@ class Program
                       .Build();
 
     AuthenticationResult result = application.AcquireTokenInteractive(scopes)
-                                             .ExecuteAsnc();
+                                             .ExecuteAsync().Result;
   }
  }
  ```
 
- ## <a name="logging-in-msaljs"></a>MSAL.js günlüğüne
+ ## <a name="logging-in-msaljs"></a>MSAL. js ' de günlüğe kaydetme
 
- Yapılandırma, oluşturma sırasında bir Günlükçü nesnesi geçirerek MSAL.js günlüğü etkinleştirebilirsiniz bir `UserAgentApplication` örneği. Bu Günlükçü nesne, aşağıdaki özelliklere sahiptir:
+ `UserAgentApplication` Örnek oluşturmak için yapılandırma sırasında bir günlükçü nesnesi geçirerek msal. js ' de günlük kaydını etkinleştirebilirsiniz. Bu günlükçü nesnesi aşağıdaki özelliklere sahiptir:
 
-- *localCallback*: kullanma ve günlükleri özel bir şekilde yayımlamak için geliştirici tarafından sağlanan bir geri çağırma örneği. Nasıl günlükleri yeniden yönlendirmek istediğinize bağlı olarak localCallback metodu uygulayın.
+- *Localcallback*: geliştirici tarafından günlükleri özel bir biçimde tüketmek ve yayımlamak için kullanılabilecek bir geri çağırma örneği. Günlükleri yeniden yönlendirmek istediğiniz yönteme bağlı olarak localCallback yöntemini uygulayın.
 
-- *düzey* (isteğe bağlı): yapılandırılabilir günlük düzeyi. Desteklenen günlük düzeyleri şunlardır: Hata, uyarı, ayrıntılı bilgi. Bilgi varsayılan değerdir.
+- *düzey* (isteğe bağlı): yapılandırılabilir günlük düzeyi. Desteklenen günlük düzeyleri şunlardır: Hata, uyarı, bilgi, ayrıntılı. Varsayılan değer Info ' dır.
 
-- *piiLoggingEnabled* (isteğe bağlı): kişisel ve kurumsal veriler varsa oturum açmanızı sağlayan true olarak ayarlanmış. Böylece, uygulamanızın kişisel verileri günlüğe kaydetmez varsayılan olarak bu false olarak ayarlanır. Kişisel veri günlüklerini varsayılan çıktılar konsol, Logcat veya NSLog gibi hiçbir zaman yazılır. Varsayılan false olarak ayarlanır.
+- *ılookupggingenabled* (isteğe bağlı): true olarak ayarlandıysa kişisel ve kurumsal verileri günlüğe almanıza olanak sağlar. Bu, varsayılan olarak false olarak ayarlanır, böylece uygulamanız kişisel verileri günlüğe eklemez. Kişisel veri günlükleri hiçbir şekilde konsol, Logcat veya NSLog gibi varsayılan çıkışlara yazılmaz. Varsayılan değer false olarak ayarlanmıştır.
 
-- *Correlationıd* (isteğe bağlı): hata ayıklama amacıyla bir yanıt istekle eşlemek için kullanılan benzersiz bir tanımlayıcı. Varsayılan olarak RFC4122 sürüm 4 GUID (128 bit).
+- *CorrelationId* (isteğe bağlı): isteği hata ayıklama amacıyla Yanıtla eşlemek için kullanılan benzersiz bir tanımlayıcı. Varsayılan olarak RFC4122 sürüm 4 GUID (128 bit) olur.
 
 ```javascript
 

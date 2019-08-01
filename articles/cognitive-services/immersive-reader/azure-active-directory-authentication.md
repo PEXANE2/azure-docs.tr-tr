@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: 8af56d0d7c0f320e607421f12effdb9b37d5f78d
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: de6a29e1c4c102aa7d4038185c1635544ba9dfe2
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444620"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688785"
 ---
 # <a name="use-azure-active-directory-azure-ad-authentication-with-the-immersive-reader-service"></a>Tam ekran okuyucu hizmeti ile Azure Active Directory (Azure AD) kimlik doğrulamasını kullanma
 
@@ -29,7 +29,7 @@ Aşağıdaki bölümlerde, özel bir alt etki alanı ile yeni bir derinlikli oku
    Select-AzSubscription -SubscriptionName <YOUR_SUBSCRIPTION>
    ```
 
-2. Ardından, özel bir alt etki alanı ile bir [tam ekran okuyucu kaynağı oluşturun](https://docs.microsoft.com/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccount?view=azps-1.8.0) . 
+2. Ardından, özel bir alt etki alanı ile bir [tam ekran okuyucu kaynağı oluşturun](https://docs.microsoft.com/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccount?view=azps-1.8.0) .
 
    >[!NOTE]
    > LaunchAsync işleviyle okuyucu başlatılırken, alt etki alanı adı, modern Okuyucu SDK 'sında kullanılır.
@@ -37,7 +37,7 @@ Aşağıdaki bölümlerde, özel bir alt etki alanı ile yeni bir derinlikli oku
    -SkuName, F0 (ücretsiz katman) veya S0 (Standart katman, genel önizleme sırasında da ücretsiz) olabilir. S0 katmanının daha yüksek bir çağrı hızı sınırı vardır ve çağrı sayısı üzerinde aylık kota yoktur.
 
    -Konum şunlardan herhangi biri olabilir: `eastus`, `australiaeast` `centralindia` `westus`,,, `japaneast`, `northeurope`,`westeurope`
-   
+
    -CustomSubdomainName 'in genel olarak benzersiz olması gerekir ve aşağıdakiler gibi özel karakterler içermemelidir: ".", "!", ",".
 
 
@@ -63,7 +63,7 @@ Aşağıdaki bölümlerde, özel bir alt etki alanı ile yeni bir derinlikli oku
 
    // Display the Resource info
    $resource
-   ```   
+   ```
 
 ## <a name="assign-a-role-to-a-service-principal"></a>Hizmet sorumlusuna rol atama
 
@@ -83,7 +83,7 @@ Artık kaynakla ilişkili özel bir alt etki alanı olduğuna göre, bir hizmet 
    $aadApp
    ```
 
-   Burada, yeni oluşturulan Azure AD uygulama nesnesini bir sonraki adımda kullanmak üzere bir **$aadApp** değişkenine yakalıyoruz.   
+   Burada, yeni oluşturulan Azure AD uygulama nesnesini bir sonraki adımda kullanmak üzere bir **$aadApp** değişkenine yakalıyoruz.
 
 2. Sonra, Azure AD uygulaması için [bir hizmet sorumlusu oluşturmanız](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal?view=azps-1.8.0) gerekir.
 
@@ -128,11 +128,11 @@ Bu örnekte, parolanız bir Azure AD belirteci almak için hizmet sorumlusunun k
    ```
 
    >[!NOTE]
-   > Modern Okuyucu SDK 'Sı, belirtecin AccessToken özelliğini kullanır, örn. $token. AccessToken. Ayrıntılar için SDK [başvurusu](reference.md) ve kod [örneklerine](https://github.com/microsoft/immersive-reader-sdk/tree/master/samples) bakın.
+   > Modern Okuyucu SDK 'Sı, belirtecin AccessToken özelliğini kullanır, örn. $token. AccessToken. Ayrıntılar için SDK [başvurusu](reference.md) ve kod [örneklerine](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples) bakın.
 
 Alternatif olarak, hizmet sorumlusu bir sertifikayla kimlik doğrulaması yapabilir. Hizmet sorumlusuna ek olarak, başka bir Azure AD uygulaması aracılığıyla temsilci atanmış izinler sunarak da Kullanıcı sorumluları desteklenir. Bu durumda, parolalar veya sertifikalar yerine, belirteçleri alırken kullanıcılardan iki öğeli kimlik doğrulaması istenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Modern Okuyucu SDK 'Sı ile neler yapabileceğinizi görmek için [öğreticiyi](./tutorial.md) görüntüleyin
-* [Modern Okuyucu SDK 'sını](https://github.com/Microsoft/immersive-reader-sdk) ve [tam ekran okuyucu SDK başvurusunu](./reference.md) keşfet
+* [Modern Okuyucu SDK 'sını](https://github.com/microsoft/immersive-reader-sdk) ve [tam ekran okuyucu SDK başvurusunu](./reference.md) keşfet

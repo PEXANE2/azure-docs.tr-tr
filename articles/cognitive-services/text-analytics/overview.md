@@ -10,14 +10,14 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: f84d980dd01d1e9f3ffcc00d73f712211524cb42
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: ee4551f6a31436ef2322fcea3a0c479b45036993
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667654"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697629"
 ---
-# <a name="what-is-text-analytics-api"></a>Metin Analizi API'si nedir?
+# <a name="what-is-the-text-analytics-api"></a>Metin Analizi API'si nedir?
 
 Metin Analizi API'si, ham metin üzerinde gelişmiş doğal dil işleme sağlayan bulut tabanlı bir hizmettir ve dört ana işlev içerir: yaklaşım analizi, anahtar ifade ayıklama, dil algılama ve varlık tanıma.
 
@@ -25,19 +25,19 @@ API, geliştirme projeleriniz için bulutta makine öğrenimi ve AI algoritmalar
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Understanding-Text-using-Cognitive-Services/player]
 
-Metin analizi farklı şeyler anlamına gelebilir, ancak bilişsel hizmetler 'de Metin Analizi API'si, aşağıda açıklandığı gibi dört tür analiz sağlar.
+Metin analizi farklı şeyler anlamına gelebilir, ancak bilişsel hizmetler 'de Metin Analizi API'si, aşağıda açıklandığı gibi dört tür analiz sağlar. Bu özellikleri [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/)veya [.net](quickstarts/csharp.md), [Python](quickstarts/python-sdk.md), [Node. js](quickstarts/nodejs-sdk.md), [Go](quickstarts/go-sdk.md)veya [Ruby](quickstarts/ruby-sdk.md)için bir istemci kitaplığı ile kullanabilirsiniz.
 
 ## <a name="sentiment-analysis"></a>Duygu Analizi
-Olumlu veya olumsuz yaklaşım hakkında ipuçları için ham metni analiz ederek hangi müşterilerin markanızı veya konuyu düşündüğünü öğrenmek için yaklaşım [analizini](how-tos/text-analytics-how-to-sentiment-analysis.md) kullanın. API, her belge için 0 ile 1 arasında bir yaklaşım puanı döndürür ve 1 en pozitif değerdir.<br /> Analiz modelleri, Microsoft tarafından sağlanan geniş kapsamlı gövde metinleri ve doğal dil teknolojileri kullanılarak önceden eğitilmiştir. API, [seçili dillerde](text-analytics-supported-languages.md) sağladığınız ham metni analiz edip puanlayabilir ve sonuçları doğrudan çağrıyı yapan uygulamaya döndürebilir. [Rest](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c9) API 'sini veya [.net](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#create-the-visual-studio-solution-and-install-the-sdk) SDK 'sını kullanabilirsiniz.
+Olumlu veya olumsuz yaklaşım hakkında ipuçları için ham metni analiz ederek hangi müşterilerin markanızı veya konuyu düşündüğünü öğrenmek için yaklaşım [analizini](how-tos/text-analytics-how-to-sentiment-analysis.md) kullanın. API, her belge için 0 ile 1 arasında bir yaklaşım puanı döndürür ve 1 en pozitif değerdir.<br /> Analiz modelleri, Microsoft tarafından sağlanan geniş kapsamlı gövde metinleri ve doğal dil teknolojileri kullanılarak önceden eğitilmiştir. API, [seçili dillerde](text-analytics-supported-languages.md) sağladığınız ham metni analiz edip puanlayabilir ve sonuçları doğrudan çağrıyı yapan uygulamaya döndürebilir.
 
 ## <a name="key-phrase-extraction"></a>Anahtar İfade Ayıklama
-Ana noktaları hızlı bir şekilde tanımlamak için [anahtar tümceleri](how-tos/text-analytics-how-to-keyword-extraction.md) otomatik olarak ayıklayın. Örneğin, "The food was delicious and there were wonderful staff" (Yemekler lezzetliydi ve personel harikaydı) giriş metni olduğunda API, "food" (yemek) ve "wonderful staff" (personel harikaydı) ana konuşma noktalarını döndürür. [Rest](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6) API 'yi burada veya [.net](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#create-the-visual-studio-solution-and-install-the-sdk) SDK 'sını kullanabilirsiniz.
+Ana noktaları hızlı bir şekilde tanımlamak için [anahtar tümceleri](how-tos/text-analytics-how-to-keyword-extraction.md) otomatik olarak ayıklayın. Örneğin, "The food was delicious and there were wonderful staff" (Yemekler lezzetliydi ve personel harikaydı) giriş metni olduğunda API, "food" (yemek) ve "wonderful staff" (personel harikaydı) ana konuşma noktalarını döndürür.
 
 ## <a name="language-detection"></a>Dil Algılama
-[Giriş metninin hangi dilde yazıldığını algılayabilir](how-tos/text-analytics-how-to-language-detection.md) ve çok çeşitli diller, çeşitler, diapacts ve bazı bölgesel/kültürel dillerinde istek üzerine gönderilen her belge için tek bir dil kodu rapor edebilirsiniz. Dil kodu, puanın ağırlığını belirten bir puanla eşleştirilir. [Rest](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c7) API 'sini veya [.net](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#create-the-visual-studio-solution-and-install-the-sdk) SDK 'sını kullanabilirsiniz.
+[Giriş metninin hangi dilde yazıldığını algılayabilir](how-tos/text-analytics-how-to-language-detection.md) ve çok çeşitli diller, çeşitler, diapacts ve bazı bölgesel/kültürel dillerinde istek üzerine gönderilen her belge için tek bir dil kodu rapor edebilirsiniz. Dil kodu, puanın ağırlığını belirten bir puanla eşleştirilir.
 
 ## <a name="named-entity-recognition"></a>Adlandırılmış Varlık Tanıma
-Metninizdeki varlıkları kişiler, konumlar, kuruluşlar, tarih/saat, miktarlar, yüzdeler, para birimleri ve daha fazlası olarak [belirleyip kategorilere ayırın](how-tos/text-analytics-how-to-entity-linking.md) . İyi bilinen varlıklar da tanınarak web üzerindeki ek bilgilere bağlantı verilir. [Rest](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634) API 'sini kullanabilirsiniz.
+Metninizdeki varlıkları kişiler, konumlar, kuruluşlar, tarih/saat, miktarlar, yüzdeler, para birimleri ve daha fazlası olarak [belirleyip kategorilere ayırın](how-tos/text-analytics-how-to-entity-linking.md) . İyi bilinen varlıklar da tanınarak web üzerindeki ek bilgilere bağlantı verilir.
 
 ## <a name="use-containers"></a>Kapsayıcıları kullanma
 
@@ -47,7 +47,7 @@ Verilerinize daha yakın standartlaştırılmış Docker Kapsayıcıları yükle
 
 İş akışı basittir. Analiz edilecek verileri gönderir ve çıktıları kodunuzda işlersiniz. Çözümleyiciler olduğu gibi kullanılır, ek yapılandırma veya özelleştirme gerçekleştirilmez.
 
-1. [Erişim anahtarı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) için [kaydolun](how-tos/text-analytics-how-to-access-key.md). Anahtar her istekte geçirilmelidir.
+1. Metin Analizi için [bir Azure kaynağı oluşturun](../cognitive-services-apis-create-account.md) . Daha sonra, isteklerinizin kimlik doğrulaması için sizin için oluşturulan [anahtarı alın](../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) .
 
 2. JSON biçiminde verilerinizi yapılandırılmamış ham metin olarak içeren [bir istek düzenleyin](how-tos/text-analytics-how-to-call-api.md#json-schema).
 
@@ -75,7 +75,7 @@ Programlamada çok fazla deneyim olmasa bile, işlemlerinizde Metin Analizi API'
 
 ## <a name="supported-languages"></a>Desteklenen diller
 
-Bu bölüm, daha kolay bulunmasını sağlama amacıyla başka bir makaleye taşınmıştır. Bu içeriği [Metin Analizi API'sinde desteklenen diller](text-analytics-supported-languages.md) sayfasında bulabilirsiniz.
+Bu bölüm, daha kolay bulunmasını sağlama amacıyla başka bir makaleye taşınmıştır. Bu içerik için [Metin Analizi API'si desteklenen diller](text-analytics-supported-languages.md) bölümüne bakın.
 
 <a name="data-limits"></a>
 
@@ -83,7 +83,7 @@ Bu bölüm, daha kolay bulunmasını sağlama amacıyla başka bir makaleye taş
 
 Tüm Metin Analizi API'si uç noktaları ham metin verisi kabul eder. Geçerli sınır, her belge için 5.120 karakterdir; daha büyük belgeleri analiz etmeniz gerekiyorsa, bunları daha küçük parçalara ayırın. Sınırı yine de yükseltmeye ihtiyacınız varsa gereksinimleriniz üzerinde konuşmak için [bize ulaşın](https://azure.microsoft.com/overview/sales-number/).
 
-| Sınır | Değer |
+| Sınır | Value |
 |------------------------|---------------|
 | Tek belge için maksimum boyut | tarafından [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements)ölçülen 5.120 karakter. |
 | İsteğin tamamının maksimum boyutu | 1 MB |
@@ -116,4 +116,4 @@ Metin Analizi API'si, metin gösterimi ve karakter sayısı hesaplamaları için
 
 + Azure Databricks kullanarak bu yaklaşım [Analizi öğreticisini](https://docs.microsoft.com/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services) biraz daha ayrıntılı olarak inceleyin.
 
-+ [Dış & topluluk içeriği sayfamızda](text-analytics-resource-external-community.md)diğer araç ve teknolojilerle Metin Analizi API'si nasıl kullanılacağına ilişkin blog gönderileri ve daha fazla video listemize göz atın.
++ [Dış & topluluk içeriği sayfamızda](text-analytics-resource-external-community.md)diğer araç ve teknolojilerle Metin Analizi API'si nasıl kullanılacağına ilişkin blog gönderileri ve daha fazla video listesini inceleyin.

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: tutorial
-ms.date: 07/24/2019
+ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: e56926b9a23e0dd649fb85347e521a6dda7863a3
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: dba65e68e7c2204a4d4d7f80a603de607bba7609
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479886"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697338"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Öğretici: Metin Analizi bilişsel hizmet ile Power BI tümleştirin
 
@@ -36,7 +36,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 - Microsoft Power BI Desktop. [Ücretsiz olarak indirin](https://powerbi.microsoft.com/get-started/).
 - Bir Microsoft Azure hesabı. [Ücretsiz bir deneme başlatın](https://azure.microsoft.com/free/) veya [oturum açın](https://portal.azure.com/).
 - Metin Analizi API’si ile Bilişsel Hizmetler API’si hesabı. Yoksa, [kaydolup](../../cognitive-services-apis-create-account.md) 5000 işlem/ay ücretsiz katmanını kullanabilirsiniz (bu öğreticiyi tamamlamak için [fiyatlandırma ayrıntılarına](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) bakın).
-- Kayıt sırasında sizin için oluşturulan [Metin Analizi erişim anahtarı](../how-tos/text-analytics-how-to-access-key.md).
+- Kayıt sırasında sizin için oluşturulan [Metin Analizi erişim anahtarı](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource).
 - Müşteri yorumları. [Örnek verilerimizi](https://aka.ms/cogsvc/ta) veya kendi verilerinizi kullanabilirsiniz. Bu öğreticide, örnek verilerimizi kullandığınız varsayılır.
 
 ## <a name="load-customer-data"></a>Müşteri verilerini yükleme

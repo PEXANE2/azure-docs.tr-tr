@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Proje yanıt aramaC#'
+title: 'Hızlı Başlangıç: Proje yanıtı araması,C#'
 titlesuffix: Azure Cognitive Services
 description: C# ile Yanıt Arama Projesini kullanmaya başlamak için kullanabileceğiniz kod örneği.
 services: cognitive-services
@@ -10,22 +10,22 @@ ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: dce13636cce299098c988ccea3a059f0f0e12acd
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: fe6758cb6b8d120862cbbe593574360c1bc7b17b
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823271"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698116"
 ---
-# <a name="quickstart-project-answer-search-query-in-c"></a>Hızlı Başlangıç: C# proje yanıt arama sorgusu
+# <a name="quickstart-project-answer-search-query-in-c"></a>Hızlı Başlangıç: İçindeki proje yanıtı arama sorgusuC#
 
 Aşağıdaki C# örneği kalkülüsün üçüncü yasası hakkında bilgi almak için bir sorgu oluşturup gönderir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-İhtiyacınız olacak [Visual Studio 2017 veya üstü](https://www.visualstudio.com/downloads/) Windows üzerinde bu kodu çalıştırmak için. (Ücretsiz Community Edition’ı kullanabilirsiniz.)
+Bu kodu Windows üzerinde çalıştırmak için [Visual Studio 2017 veya sonraki bir sürüme](https://www.visualstudio.com/downloads/) ihtiyacınız olacaktır. (Ücretsiz Community Edition’ı kullanabilirsiniz.)
 
-[Bilişsel Hizmetler Laboratuvarları](https://aka.ms/answersearchsubscription) ücretsiz denemesi için erişim anahtarı alın
+[Bilişsel Hizmetler Laboratuvarları](https://labs.cognitive.microsoft.com/en-us/project-answer-search) ücretsiz denemesi için erişim anahtarı alın
 
 ## <a name="code-scenario"></a>Kod senaryosu
 

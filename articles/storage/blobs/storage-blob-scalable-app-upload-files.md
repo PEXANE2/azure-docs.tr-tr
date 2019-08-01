@@ -1,21 +1,18 @@
 ---
 title: Büyük miktarda rastgele verileri paralel şekilde Azure Depolama’ya yükleme | Microsoft Docs
 description: Büyük miktarda rastgele verileri paralel şekilde Azure Depolama hesabına yüklemek için Azure SDK’nın nasıl kullanılacağını öğrenin
-services: storage
 author: roygara
 ms.service: storage
-ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
-ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 83a888a28c1d1e51a1fe59649dfb956cd0f72203
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e5c1a78bf2f482e99d8ff13590a8bb81f9601991
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071417"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698964"
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>Büyük miktarda rastgele verileri paralel şekilde Azure Depolama’ya yükleme
 
@@ -31,11 +28,11 @@ Serinin ikinci bölümünde şunları öğrenirsiniz:
 
 Azure blob depolama, verilerinizi depolamak için ölçeklenebilir bir hizmet sağlar. Uygulamanızın mümkün olduğunca yüksek performanslı olmasını sağlamak için, blob depolamanın nasıl çalıştığının anlaşılması önerilir. Azure bloblarının sınırlarının bilinmesi önemlidir. Bu sınırlar hakkında daha fazla bilgi edinmek için bkz. [blob depolama ölçeklenebilirlik hedefleri](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-blob-storage-scale-targets).
 
-[Bölüm adlandırma](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#subheading47) başka bir olası önemli bloblar kullanılarak yüksek performanslı bir uygulama tasarlarken faktördür. Büyüktür veya eşittir dört MiB blok boyutları için [yüksek performanslı blok blobları](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) kullanılır ve bölüm adlandırma performans değil etkileyecek. Blok Dörtten az MiB boyutları için bir aralık tabanlı bölümleme düzeni ölçek ve Yük Dengelemesi yapmak için Azure depolama kullanır. Bu yapılandırma, benzer adlandırma kurallarına veya ön eklere sahip dosyaların aynı bölüme gideceği anlamına gelir. Bu mantık, dosyaların yüklendiği kapsayıcının adını içerir. Bu öğreticide, rastgele oluşturulan içerik ve adlar için GUID’e sahip olan dosyaları kullanırsınız. Bunlar daha sonra rastgele adlarla beş farklı kapsayıcıya yüklenir.
+Blob kullanan yüksek performanslı bir uygulama tasarlarken [bölüm adlandırma](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#subheading47) , potansiyel olarak önemli bir faktördür. Dört MIB 'den büyük veya buna eşit blok boyutları için [yüksek aktarım hızı blok Blobları](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) kullanılır ve bölüm adlandırma performansı etkilemez. Dört MiB 'den küçük bir blok boyutu için Azure depolama, ölçek ve yük dengelemek için Aralık tabanlı bölümleme şeması kullanır. Bu yapılandırma, benzer adlandırma kurallarına veya ön eklere sahip dosyaların aynı bölüme gideceği anlamına gelir. Bu mantık, dosyaların yüklendiği kapsayıcının adını içerir. Bu öğreticide, rastgele oluşturulan içerik ve adlar için GUID’e sahip olan dosyaları kullanırsınız. Bunlar daha sonra rastgele adlarla beş farklı kapsayıcıya yüklenir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticiyi tamamlamak için önceki şu depolama öğreticisini tamamlamış olmanız gerekir: [Bir sanal makine ve depolama hesabı için ölçeklenebilir bir uygulama oluşturma][previous-tutorial].
+Bu öğreticiyi tamamlayabilmeniz için önceki depolama öğreticisini tamamlamış olmanız gerekir: [Ölçeklenebilir bir uygulama için sanal makine ve depolama hesabı oluşturun][previous-tutorial].
 
 ## <a name="remote-into-your-virtual-machine"></a>Sanal makinenize uzaktan bağlanma
 
@@ -57,7 +54,7 @@ Tamamlandığında, başka bir **Komut İstemi** açın, `D:\git\storage-dotnet-
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-`D:\git\storage-dotnet-perf-scale-app` sayfasına gidin.
+          `D:\git\storage-dotnet-perf-scale-app` sayfasına gidin.
 
 Uygulamayı çalıştırmak için `dotnet run` yazın. `dotnet` ilk çalıştırıldığında, geri yükleme hızını artırmak ve çevrimdışı erişimi etkinleştirmek için yerel paket önbelleğinizi doldurur. Bu komutun tamamlanması bir dakika süre ve yalnızca bir kez gerçekleşir.
 
@@ -71,7 +68,7 @@ Uygulama, beş adet rastgele adlandırılmış kapsayıcı oluşturur ve hazırl
 
 |Özellik|Değer|Açıklama|
 |---|---|---|
-|[ParallelOperationThreadCount](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.paralleloperationthreadcount)| 8| Ayar, karşıya yükleme sırasında blobu bloklar halinde böler. En yüksek performans için bu değer, çekirdek sayısı sekiz katı olmalıdır. |
+|[ParallelOperationThreadCount](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.paralleloperationthreadcount)| 8| Ayar, karşıya yükleme sırasında blobu bloklar halinde böler. En yüksek performans için bu değer, çekirdek sayısının sekiz katı olmalıdır. |
 |[DisableContentMD5Validation](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.disablecontentmd5validation)| true| Bu özellik, karşıya yüklenen içeriğin MD5 karmasının denetimini devre dışı bırakır. MD5 doğrulaması devre dışı bırakıldığında daha hızlı bir aktarım üretilir. Ancak aktarılan dosyaların geçerliliği veya bütünlüğü onaylanmaz.   |
 |[StoreBlobContentMD5](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.storeblobcontentmd5)| false| Bu özellik, bir MD5 karmasının hesaplanıp dosyayla birlikte depolanıp depolanmayacağını belirler.   |
 | [RetryPolicy](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.retrypolicy)| En fazla 10 yeniden deneme ile 2 saniyelik geri alma |İsteklerin yeniden deneme ilkesini belirler. Bağlantı hataları yeniden denenir. Bu örnekte 2 saniyelik geri alma ve en fazla 10 yeniden deneme sayısı ile bir [ExponentialRetry](/dotnet/api/microsoft.azure.batch.common.exponentialretry) ilkesi yapılandırılmaktadır. Uygulamanız, [blob depolama ölçeklenebilirlik hedeflerine](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-blob-storage-scale-targets) yaklaştığında bu ayar önemlidir.  |

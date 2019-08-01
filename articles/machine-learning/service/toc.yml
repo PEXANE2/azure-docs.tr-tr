@@ -91,6 +91,9 @@
       href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
 - name: Kavramlar
   items:
+    - name: Derin öğrenme
+      displayName: 'deep learning vs machine learning, deep learning, vs, versus'
+      href: concept-deep-learning-vs-machine-learning.md
     - name: Çalışma alanı
       displayName: concept definitions architecture
       href: concept-workspace.md
@@ -115,8 +118,6 @@
       href: concept-accelerate-with-fpgas.md
     - name: ONNX ve ONNX Çalışma Zamanı
       href: concept-onnx.md
-    - name: Veri değişikliklerini izleme
-      href: concept-data-drift.md
     - name: Güvenlik
       items:
         - name: Kurumsal güvenliğe genel bakış

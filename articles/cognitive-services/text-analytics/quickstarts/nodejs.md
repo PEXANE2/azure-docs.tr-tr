@@ -1,7 +1,7 @@
 ---
-title: "Hızlı Başlangıç: Metin analizi API'sini çağırmak için node.js kullanma"
+title: "Hızlı Başlangıç: Metin Analizi API'si çağırmak için Node. js kullanma"
 titleSuffix: Azure Cognitive Services
-description: Hızlı bir şekilde yardımcı olması için alma bilgileri ve kod örnekleri, Azure Bilişsel hizmetler metin analizi API'sini kullanarak başlayın.
+description: Azure bilişsel hizmetler 'de Metin Analizi API'si kullanmaya hızlı bir şekilde başlamanıza yardımcı olması için bilgi ve kod örnekleri alın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,17 +10,17 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 04/16/2019
 ms.author: aahi
-ms.openlocfilehash: 4c77477e31e7513cb806dda968a68fc1ac5030ed
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: eadac393a7224876e3cb494dd39116bd3b5b0eb7
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64694969"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697377"
 ---
-# <a name="quickstart-using-nodejs-to-call-the-text-analytics-cognitive-service"></a>Hızlı Başlangıç: Metin analizi Bilişsel hizmetini çağırmak için node.js kullanma  
+# <a name="quickstart-using-nodejs-to-call-the-text-analytics-cognitive-service"></a>Hızlı Başlangıç: Metin Analizi bilişsel hizmeti 'ni çağırmak için Node. js kullanma  
 <a name="HOLTop"></a>
 
-Bu makalede gösterilmektedir için [dili algılayın](#Detect), [düşüncelerini çözümleme](#SentimentAnalysis), [anahtar tümcecikleri ayıklayın](#KeyPhraseExtraction), ve [bağlı varlıkları tanımlama](#Entities) kullanma  [metin analizi API'lerini](//go.microsoft.com/fwlink/?LinkID=759711) Node.JS ile.
+Bu makalede, Node. js ile [metin analizi API 'lerini](//go.microsoft.com/fwlink/?LinkID=759711) kullanarak [dilin nasıl algılanacağı](#Detect), yaklaşım [analiziyle](#SentimentAnalysis), [anahtar tümceciklerini ayıklamayla](#KeyPhraseExtraction)ve [bağlantılı varlıkların](#Entities) nasıl kullanılacağı gösterilir.
 
 API'lerle ilgili teknik bilgiler için [API tanımları](//go.microsoft.com/fwlink/?LinkID=759346) sayfasını inceleyin.
 
@@ -28,19 +28,17 @@ API'lerle ilgili teknik bilgiler için [API tanımları](//go.microsoft.com/fwli
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
-Ayrıca kayıt sırasında oluşturulan [uç nokta ve erişim anahtarı](../How-tos/text-analytics-how-to-access-key.md) değerlerine de sahip olmanız gerekir.
-
 <a name="Detect"></a>
 
-## <a name="detect-language"></a>Dili algılama
+## <a name="detect-language"></a>Dili algıla
 
 Dil Algılama API'si, [Dili Algıla metodunu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) kullanarak bir metin belgesinin dilini algılar.
 
-1. En sevdiğiniz IDE veya bir klasöre masaüstünüzde yeni bir Node.JS projesi oluşturun.
-2. Aşağıda verilen yeni bir kod ekleme `.js` dosya.
-3. Değiştirin `accessKey` Azure metin analizi kaynağınızdaki bir abonelik anahtarı değeri.
+1. En sevdiğiniz IDE 'de veya masaüstünüzdeki bir klasörde yeni bir Node. JS projesi oluşturun.
+2. Aşağıda belirtilen kodu yeni `.js` bir dosyaya ekleyin.
+3. `accessKey` Değeri Azure 'daki metin analizi kaynağınızın bir abonelik anahtarıyla değiştirin.
 4. `uri` içindeki konumu (şu anda `westus`) kaydolduğunuz bölge olacak şekilde değiştirin.
-5. Örneğin, IDE veya komut satırı programı çalıştırın `npm start` veya `node detect.js`.
+5. Programı IDE veya komut satırınızdan çalıştırın, örneğin `npm start` veya. `node detect.js`
 
 ```javascript
 'use strict';
@@ -156,13 +154,13 @@ Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde d�
 
 ## <a name="analyze-sentiment"></a>Yaklaşımı analiz etme
 
-Yaklaşım Analizi API'si, [Yaklaşım metodunu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) kullanarak bir metin kaydı kümesinin yaklaşımını algılar. Yaklaşım analizi, müşterilerin markanız veya konunun pozitif veya negatif yaklaşım hakkında ipuçları için ham metni çözümleyerek düşündüklerini bulmak için kullanılabilir. Aşağıdaki örnek puanları iki belge, bir İngilizce ve İspanyolca başka sağlar.
+Yaklaşım Analizi API'si, [Yaklaşım metodunu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) kullanarak bir metin kaydı kümesinin yaklaşımını algılar. Yaklaşım analizi, olumlu veya olumsuz yaklaşım hakkında ipuçları için ham metni çözümleyerek hangi müşterilerin markanızı veya konuyu düşündüğünü öğrenmek için kullanılabilir. Aşağıdaki örnek, biri Ingilizce ve diğeri Ispanyolca olmak üzere iki belge için puanlar sağlar.
 
-1. En sevdiğiniz IDE veya bir klasöre masaüstünüzde yeni bir Node.JS projesi oluşturun.
-2. Aşağıda verilen yeni bir kod ekleme `.js` dosya.
-3. Değiştirin `accessKey` Azure metin analizi kaynağınızdaki bir abonelik anahtarı değeri.
+1. En sevdiğiniz IDE 'de veya masaüstünüzdeki bir klasörde yeni bir Node. JS projesi oluşturun.
+2. Aşağıda belirtilen kodu yeni `.js` bir dosyaya ekleyin.
+3. `accessKey` Değeri Azure 'daki metin analizi kaynağınızın bir abonelik anahtarıyla değiştirin.
 4. `uri` içindeki konumu (şu anda `westus`) kaydolduğunuz bölge olacak şekilde değiştirin.
-5. Örneğin, IDE veya komut satırı programı çalıştırın `npm start` veya `node sentiment.js`.
+5. Programı IDE veya komut satırınızdan çalıştırın, örneğin `npm start` veya. `node sentiment.js`
 
 ```javascript
 'use strict';
@@ -229,7 +227,7 @@ get_sentiments (documents);
 
 **Yaklaşım analizi yanıtı**
 
-Sonuç 0.0 yakın puanlanır, 1.0 yakın ve negatif puanlanır ise pozitif ölçülür.
+Sonuç, 0,0 ' e daha yakınsa 1,0 ve negatif bir değer alıyorsa pozitif olarak ölçülür.
 Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde döndürülür:
 
 ```json
@@ -250,15 +248,15 @@ Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde d�
 
 <a name="KeyPhraseExtraction"></a>
 
-## <a name="extract-key-phrases"></a>Anahtar ifadeleri ayıklama
+## <a name="extract-key-phrases"></a>Başlıca sözcük gruplarını ayıkla
 
-Anahtar İfade Ayıklama API'si [Anahtar İfadeler metodunu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6) kullanarak bir metin belgesindeki anahtar ifadeleri ayıklar. Anahtar ifade ayıklama, bir belge ya da metin ana noktaları hızlıca belirlemek için kullanılır. Aşağıdaki örnekte hem İngilizce hem de İspanyolca belgelerin anahtarı ifadeleri ayıklanır.
+Anahtar İfade Ayıklama API'si [Anahtar İfadeler metodunu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6) kullanarak bir metin belgesindeki anahtar ifadeleri ayıklar. Anahtar tümceciği ayıklama bir belgenin veya metnin ana noktalarını hızlı bir şekilde belirlemek için kullanılır. Aşağıdaki örnekte hem İngilizce hem de İspanyolca belgelerin anahtarı ifadeleri ayıklanır.
 
-1. En sevdiğiniz IDE veya bir klasöre masaüstünüzde yeni bir Node.JS projesi oluşturun.
-2. Aşağıda verilen yeni bir kod ekleme `.js` dosya.
-3. Değiştirin `accessKey` Azure metin analizi kaynağınızdaki bir abonelik anahtarı değeri.
+1. En sevdiğiniz IDE 'de veya masaüstünüzdeki bir klasörde yeni bir Node. JS projesi oluşturun.
+2. Aşağıda belirtilen kodu yeni `.js` bir dosyaya ekleyin.
+3. `accessKey` Değeri Azure 'daki metin analizi kaynağınızın bir abonelik anahtarıyla değiştirin.
 4. `uri` içindeki konumu (şu anda `westus`) kaydolduğunuz bölge olacak şekilde değiştirin.
-5. Örneğin, IDE veya komut satırı programı çalıştırın `npm start` veya `node key-phrases.js`.
+5. Programı IDE veya komut satırınızdan çalıştırın, örneğin `npm start` veya. `node key-phrases.js`
 
 ```javascript
 'use strict';
@@ -368,13 +366,13 @@ Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde d�
 
 ## <a name="identify-linked-entities"></a>Bağlantılı varlıkları tanımlama
 
-Varlıklar API'si, [Varlıklar metodunu](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634) kullanarak bir metin belgesindeki iyi bilinen varlıkları tanımlar. [Varlıkları](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) metinden "ABD" gibi sözcükleri ayıklama sonra bu sözcükler türü ve/veya Wikipedia bağlantısını verin. "ABD" için türdür `location`Wikipedia bağlantısını bilgileriyse `https://en.wikipedia.org/wiki/United_States`.  Aşağıdaki örnekte İngilizce belgelerin varlıkları tanımlanır.
+Varlıklar API'si, [Varlıklar metodunu](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634) kullanarak bir metin belgesindeki iyi bilinen varlıkları tanımlar. [Varlıklar](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) , "Birleşik Devletler" gibi metinden sözcükleri ayıklar, ardından bu kelimelerin türünü ve/veya Vimi bağlantısını verir. "Birleşik Devletler" `location`türü, `https://en.wikipedia.org/wiki/United_States`vikipe bağlantısı olduğunda.  Aşağıdaki örnekte İngilizce belgelerin varlıkları tanımlanır.
 
-1. En sevdiğiniz IDE veya bir klasöre masaüstünüzde yeni bir Node.JS projesi oluşturun.
-2. Aşağıda verilen yeni bir kod ekleme `.js` dosya.
-3. Değiştirin `accessKey` Azure metin analizi kaynağınızdaki bir abonelik anahtarı değeri.
+1. En sevdiğiniz IDE 'de veya masaüstünüzdeki bir klasörde yeni bir Node. JS projesi oluşturun.
+2. Aşağıda belirtilen kodu yeni `.js` bir dosyaya ekleyin.
+3. `accessKey` Değeri Azure 'daki metin analizi kaynağınızın bir abonelik anahtarıyla değiştirin.
 4. `uri` içindeki konumu (şu anda `westus`) kaydolduğunuz bölge olacak şekilde değiştirin.
-5. Örneğin, IDE veya komut satırı programı çalıştırın `npm start` veya `node entities.js`.
+5. Programı IDE veya komut satırınızdan çalıştırın, örneğin `npm start` veya. `node entities.js`
 
 ```javascript
 'use strict';

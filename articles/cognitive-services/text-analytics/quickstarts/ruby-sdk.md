@@ -1,7 +1,7 @@
 ---
-title: "Hızlı Başlangıç: Metin analizi Bilişsel Ruby SDK'sını kullanarak hizmet çağrısı"
+title: "Hızlı Başlangıç: Ruby SDK 'sını kullanarak Metin Analizi bilişsel hizmetini çağırma"
 titleSuffix: Azure Cognitive Services
-description: Hızlı bir şekilde yardımcı olması için alma bilgileri ve kod örnekleri, Azure Bilişsel hizmetler metin analizi API'sini kullanarak başlayın.
+description: Azure bilişsel hizmetler 'de Metin Analizi API'si kullanmaya hızlı bir şekilde başlamanıza yardımcı olması için bilgi ve kod örnekleri alın.
 services: cognitive-services
 author: raymondl
 manager: nitinme
@@ -10,50 +10,48 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 05/08/2019
 ms.author: tasharm
-ms.openlocfilehash: 688887826fa803b616ca737bc8558aa17ed80e37
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 3f18b77fe436328e79df351b9c5edcf6dc289ad7
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66297767"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697262"
 ---
-# <a name="quickstart-call-the-text-analytics-service-using-the-ruby-sdk"></a>Hızlı Başlangıç: Ruby SDK'sını kullanarak metin analizi hizmeti çağırma
+# <a name="quickstart-call-the-text-analytics-service-using-the-ruby-sdk"></a>Hızlı Başlangıç: Ruby SDK kullanarak Metin Analizi hizmetini çağırma
 
 <a name="HOLTop"></a>
 
 
-Bu hızlı başlangıçta, Ruby için metin analizi SDK'sı ile dil incelemeye başlamak için kullanın. Sırada [metin analizi](//go.microsoft.com/fwlink/?LinkID=759711) çoğu programlama dilleri ile uyumlu REST API, SDK hizmeti uygulamalarınızla tümleştirmek için kolay bir yol sağlar. Bu örnek için kaynak kodu bulunabilir [GitHub](https://github.com/Azure-Samples/cognitive-services-ruby-sdk-samples/blob/master/samples/text_analytics.rb).
+Ruby için Metin Analizi SDK ile dili çözümlemeye başlamak için bu hızlı başlangıcı kullanın. [Metin Analizi](//go.microsoft.com/fwlink/?LinkID=759711) REST API çoğu programlama dili ile uyumlu olsa da SDK, hizmeti uygulamalarınızla tümleştirmenin kolay bir yolunu sunar. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-ruby-sdk-samples/blob/master/samples/text_analytics.rb)' da bulunabilir.
 
 API'lerle ilgili teknik bilgiler için [API tanımları](//go.microsoft.com/fwlink/?LinkID=759346) sayfasını inceleyin.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 * [Ruby 2.5.5 veya üzeri](https://www.ruby-lang.org/)
-* Metin analizi [Ruby SDK](https://rubygems.org/gems/azure_cognitiveservices_textanalytics)
+* [Ruby Için metin analizi SDK 'sı](https://rubygems.org/gems/azure_cognitiveservices_textanalytics)
  
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
-Ayrıca kayıt sırasında oluşturulan [uç nokta ve erişim anahtarı](../How-tos/text-analytics-how-to-access-key.md) değerlerine de sahip olmanız gerekir. 
-
 <a name="RubyProject"></a>
 
-## <a name="create-a-ruby-project-and-install-the-sdk"></a>Ruby proje oluşturma ve SDK'sını yükleyin
+## <a name="create-a-ruby-project-and-install-the-sdk"></a>Ruby projesi oluşturma ve SDK 'Yı yüklemeye
 
-1. Yeni bir ruby projesi oluşturun ve adlı yeni bir dosya ekleyin `Gemfile`.
-2. Metin analizi SDK ekleyerek projeye eklemek için kod aşağıda `Gemfile`.
+1. Yeni bir Ruby projesi oluşturun ve adlı `Gemfile`yeni bir dosya ekleyin.
+2. Aşağıdaki kodu öğesine `Gemfile`ekleyerek metin analizi SDK 'yı projeye ekleyin.
 
     ```ruby
     source 'https://rubygems.org'
     gem 'azure_cognitiveservices_textanalytics', '~>0.17.3'
     ```
 
-## <a name="create-a-text-analytics-client"></a>Bir metin analytics istemcisi oluşturma
+## <a name="create-a-text-analytics-client"></a>Metin analizi istemcisi oluşturma
 
-1. Adlı yeni bir dosya oluşturun `TextAnalyticsExamples.rb` tercih ettiğiniz düzenleyiciyi veya IDE. Metin analizi SDK'sını alın.
+1. En sevdiğiniz düzenleyicide veya IDE `TextAnalyticsExamples.rb` 'de adlı yeni bir dosya oluşturun. Metin Analizi SDK 'sını içeri aktarın.
 
-2. Bir kimlik bilgileri nesnesi, metin analizi istemci tarafından kullanılır. İle oluşturma `CognitiveServicesCredentials.new()` ve abonelik anahtarınızı geçirme.
+2. Metin Analizi istemcisi tarafından bir kimlik bilgileri nesnesi kullanılacaktır. Abonelik anahtarınızı kullanarak `CognitiveServicesCredentials.new()` ve geçirerek oluşturun.
 
-3. İstemci, doğru metin analizi uç noktanız ile oluşturun.
+3. İstemcisini doğru Metin Analizi uç noktanızla oluşturun.
 
     ```ruby
     require 'azure_cognitiveservices_textanalytics'
@@ -76,11 +74,11 @@ Ayrıca kayıt sırasında oluşturulan [uç nokta ve erişim anahtarı](../How-
 
 ## <a name="sentiment-analysis"></a>Yaklaşım analizi
 
-Metin analizi SDK'sı veya API'si kullanarak, bir metin kayıt kümesi üzerinde yaklaşım analizi gerçekleştirebilirsiniz. Aşağıdaki örnek, çeşitli belgelerin duyarlılığı puanlarını görüntüler.
+Metin Analizi SDK veya API kullanarak, bir metin kaydı kümesi üzerinde yaklaşım analizi yapabilirsiniz. Aşağıdaki örnek, birçok belge için yaklaşım puanlarını görüntüler.
 
-1. Adlı yeni bir işlev oluşturma `SentimentAnalysisExample()` yukarıda bir parametre olarak oluşturulan metin analizi istemci alır.
+1. Yukarıda oluşturulan metin analizi istemcisini `SentimentAnalysisExample()` bir parametre olarak alan adlı yeni bir işlev oluşturun.
 
-2. Bir dizi `MultiLanguageInput` Analiz edilecek nesneleri. Bir dil ve her nesne için metin ekleyin. Kimliği, herhangi bir değer olabilir.
+2. Çözümlenecek `MultiLanguageInput` nesne kümesini tanımlayın. Her nesne için bir dil ve metin ekleyin. KIMLIK herhangi bir değer olabilir.
 
     ```ruby
     def SentimentAnalysisExample(client)
@@ -106,9 +104,9 @@ Metin analizi SDK'sı veya API'si kullanarak, bir metin kayıt kümesi üzerinde
       input_4.text = "L'hotel veneziano era meraviglioso. È un bellissimo pezzo di architettura."
     ```
 
-3. Aynı işlevin içinde belgeleri bir liste olarak birleştirir. Ekleyin `documents` alanını bir `MultiLanguageBatchInput` nesne. 
+3. Aynı işlev içinde, belgeleri bir listede birleştirin. Bunu `documents` bir`MultiLanguageBatchInput` nesnenin alanına ekleyin. 
 
-4. İstemcinin çağrı `sentiment()` işleviyle `MultiLanguageBatchInput` belgeleri göndermek için bir parametre olarak nesne. Hiçbir sonuç döndürmezse, adımları yazdırın.
+4. Belgeyi göndermek için bir `sentiment()` parametre olarak istemci `MultiLanguageBatchInput` işlevini nesnesiyle çağırın. Herhangi bir sonuç döndürülürse, bunları yazdırın.
     ```ruby
       input_documents =  MultiLanguageBatchInput.new
       input_documents.documents = [input_1, input_2, input_3, input_4]
@@ -126,13 +124,13 @@ Metin analizi SDK'sı veya API'si kullanarak, bir metin kayıt kümesi üzerinde
     end
     ```
 
-5. Çağrı `SentimentAnalysisExample()` işlevi.
+5. `SentimentAnalysisExample()` İşlevi çağırın.
 
     ```ruby
     SentimentAnalysisExample(textAnalyticsClient)
     ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Output
 
 ```console
 ===== SENTIMENT ANALYSIS =====
@@ -146,11 +144,11 @@ Document ID: 4 , Sentiment Score: 1.00
 
 ## <a name="language-detection"></a>Dil algılama
 
-Metin analizi hizmeti, çok sayıda dil ve yerel ayarlar arasında bir metin belgesi dili algılayabilir. Aşağıdaki örnek, birkaç belge yazılmış dili görüntüler.
+Metin Analizi hizmeti, çok sayıda dilde ve yerel ayar üzerinde bir metin belgesinin dilini algılayabilir. Aşağıdaki örnek, birkaç belgenin yazıldığı dili görüntüler.
 
-1. Adlı yeni bir işlev oluşturma `DetectLanguageExample()` yukarıda bir parametre olarak oluşturulan metin analizi istemci alır. 
+1. Yukarıda oluşturulan metin analizi istemcisini `DetectLanguageExample()` bir parametre olarak alan adlı yeni bir işlev oluşturun. 
 
-2. Bir dizi `LanguageInput` Analiz edilecek nesneleri. Bir dil ve her nesne için metin ekleyin. Kimliği, herhangi bir değer olabilir.
+2. Çözümlenecek `LanguageInput` nesne kümesini tanımlayın. Her nesne için bir dil ve metin ekleyin. KIMLIK herhangi bir değer olabilir.
 
     ```ruby
     def DetectLanguageExample(client)
@@ -168,9 +166,9 @@ Metin analizi hizmeti, çok sayıda dil ve yerel ayarlar arasında bir metin bel
        language_input_3.text = '这是一个用中文写的文件'
     ```
 
-3. Aynı işlevin içinde belgeleri bir liste olarak birleştirir. Ekleyin `documents` alanını bir `LanguageBatchInput` nesne. 
+3. Aynı işlev içinde, belgeleri bir listede birleştirin. Bunu `documents` bir`LanguageBatchInput` nesnenin alanına ekleyin. 
 
-4. İstemcinin çağrı `detect_language()` işleviyle `LanguageBatchInput` belgeleri göndermek için bir parametre olarak nesne. Hiçbir sonuç döndürmezse, adımları yazdırın.
+4. Belgeyi göndermek için bir `detect_language()` parametre olarak istemci `LanguageBatchInput` işlevini nesnesiyle çağırın. Herhangi bir sonuç döndürülürse, bunları yazdırın.
     ```ruby
        input_documents = LanguageBatchInput.new
        input_documents.documents = [language_input_1, language_input_2, language_input_3]
@@ -191,13 +189,13 @@ Metin analizi hizmeti, çok sayıda dil ve yerel ayarlar arasında bir metin bel
      end
     ```
 
-5. İşlev çağrısı `DetectLanguageExample`
+5. İşlevi çağırın`DetectLanguageExample`
 
     ```ruby
     DetectLanguageExample(textAnalyticsClient)
     ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Output
 
 ```console
 ===== LANGUAGE EXTRACTION ======
@@ -210,11 +208,11 @@ Document ID: 3 , Language: Chinese_Simplified
 
 ## <a name="entity-recognition"></a>Varlık tanıma
 
-Metin analizi hizmeti, ayırmak ve farklı varlıklarda (kişiler, yerler ve öğeleri) metin belgeleri ayıklayın. Aşağıdaki örnek, birkaç örnek belgelerde bulunan varlıkları görüntüler.
+Metin Analizi hizmeti, metin belgelerinde farklı varlıkları (kişiler, konumlar ve şeyler) ayırt edebilir ve ayıklayabilir. Aşağıdaki örnek, birkaç örnek belgede bulunan varlıkları görüntüler.
 
-1. Adlı yeni bir işlev oluşturma `Recognize_Entities()` yukarıda bir parametre olarak oluşturulan metin analizi istemci alır.
+1. Yukarıda oluşturulan metin analizi istemcisini `Recognize_Entities()` bir parametre olarak alan adlı yeni bir işlev oluşturun.
 
-2. Bir dizi `MultiLanguageInput` Analiz edilecek nesneleri. Bir dil ve her nesne için metin ekleyin. Kimliği, herhangi bir değer olabilir.
+2. Çözümlenecek `MultiLanguageInput` nesne kümesini tanımlayın. Her nesne için bir dil ve metin ekleyin. KIMLIK herhangi bir değer olabilir.
 
     ```ruby
       def RecognizeEntitiesExample(client)
@@ -230,9 +228,9 @@ Metin analizi hizmeti, ayırmak ve farklı varlıklarda (kişiler, yerler ve ö�
         input_2.text = 'La sede principal de Microsoft se encuentra en la ciudad de Redmond, a 21 kilómetros de Seattle.'
     ```
 
-3. Aynı işlevin içinde belgeleri bir liste olarak birleştirir. Ekleyin `documents` alanını bir `MultiLanguageBatchInput` nesne. 
+3. Aynı işlev içinde, belgeleri bir listede birleştirin. Bunu `documents` bir`MultiLanguageBatchInput` nesnenin alanına ekleyin. 
 
-4. İstemcinin çağrı `entities()` işleviyle `MultiLanguageBatchInput` belgeleri göndermek için bir parametre olarak nesne. Hiçbir sonuç döndürmezse, adımları yazdırın.
+4. Belgeyi göndermek için bir `entities()` parametre olarak istemci `MultiLanguageBatchInput` işlevini nesnesiyle çağırın. Herhangi bir sonuç döndürülürse, bunları yazdırın.
 
     ```ruby
         input_documents =  MultiLanguageBatchInput.new
@@ -260,12 +258,12 @@ Metin analizi hizmeti, ayırmak ve farklı varlıklarda (kişiler, yerler ve ö�
       end
     ```
 
-5. İşlev çağrısı `RecognizeEntitiesExample`
+5. İşlevi çağırın`RecognizeEntitiesExample`
     ```ruby
     RecognizeEntitiesExample(textAnalyticsClient)
     ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Output
 
 ```console
 ===== ENTITY RECOGNITION =====
@@ -309,11 +307,11 @@ Document ID: 2
 
 ## <a name="key-phrase-extraction"></a>Anahtar tümcecik ayıklama
 
-Metin analizi hizmeti, anahtar tümcecikleri cümle içinde ayıklayabilir. Aşağıdaki örnek, birden çok dilde birkaç örnek belge bulunan varlıkları görüntüler.
+Metin Analizi hizmeti, cümlelerde anahtar tümceleri ayıklayabilir. Aşağıdaki örnek, birden çok dildeki birçok örnek belgede bulunan varlıkları görüntüler.
 
-1. Adlı yeni bir işlev oluşturma `KeyPhraseExtractionExample()` yukarıda bir parametre olarak oluşturulan metin analizi istemci alır.
+1. Yukarıda oluşturulan metin analizi istemcisini `KeyPhraseExtractionExample()` bir parametre olarak alan adlı yeni bir işlev oluşturun.
 
-2. Bir dizi `MultiLanguageInput` Analiz edilecek nesneleri. Bir dil ve her nesne için metin ekleyin. Kimliği, herhangi bir değer olabilir.
+2. Çözümlenecek `MultiLanguageInput` nesne kümesini tanımlayın. Her nesne için bir dil ve metin ekleyin. KIMLIK herhangi bir değer olabilir.
 
     ```ruby
     def KeyPhraseExtractionExample(client)
@@ -339,9 +337,9 @@ Metin analizi hizmeti, anahtar tümcecikleri cümle içinde ayıklayabilir. Aşa
       input_4.text = 'A mi me encanta el fútbol!'
       ```
 
-3. Aynı işlevin içinde belgeleri bir liste olarak birleştirir. Ekleyin `documents` alanını bir `MultiLanguageBatchInput` nesne. 
+3. Aynı işlev içinde, belgeleri bir listede birleştirin. Bunu `documents` bir`MultiLanguageBatchInput` nesnenin alanına ekleyin. 
 
-4. İstemcinin çağrı `key_phrases()` işleviyle `MultiLanguageBatchInput` belgeleri göndermek için bir parametre olarak nesne. Hiçbir sonuç döndürmezse, adımları yazdırın.
+4. Belgeyi göndermek için bir `key_phrases()` parametre olarak istemci `MultiLanguageBatchInput` işlevini nesnesiyle çağırın. Herhangi bir sonuç döndürülürse, bunları yazdırın.
 
     ```ruby
       input_documents =  MultiLanguageBatchInput.new
@@ -365,13 +363,13 @@ Metin analizi hizmeti, anahtar tümcecikleri cümle içinde ayıklayabilir. Aşa
     end
     ```
 
-5. İşlev çağrısı `KeyPhraseExtractionExample`
+5. İşlevi çağırın`KeyPhraseExtractionExample`
 
     ```ruby
     KeyPhraseExtractionExample(textAnalyticsClient)
     ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Output
 
 ```console
 Document ID: 1

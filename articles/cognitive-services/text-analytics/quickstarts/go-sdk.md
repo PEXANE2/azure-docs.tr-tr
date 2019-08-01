@@ -1,38 +1,36 @@
 ---
-title: "Hızlı Başlangıç: Go SDK'sı kullanarak metin analizi hizmeti çağırma"
+title: "Hızlı Başlangıç: Go SDK 'sını kullanarak Metin Analizi hizmetini çağırma"
 titleSuffix: Azure Cognitive Services
-description: Microsoft Bilişsel hizmetler metin analizi API'sini kullanarak hızlı bir şekilde yardımcı olmak için bilgi ve kod örnekleri get başlayın.
+description: Microsoft bilişsel hizmetler 'deki Metin Analizi API'si kullanmaya hızlı bir şekilde başlamanıza yardımcı olması için bilgi ve kod örnekleri alın.
 services: cognitive-services
 author: laramume
 manager: assafi
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 05/23/2019
+ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: 44def29292bc882fdaa08ff76667742756f178b8
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: d3644022e1877369368953b9f147c64aaae2d459
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66299614"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697638"
 ---
-# <a name="quickstart-call-the-text-analytics-service-using-the-go-sdk"></a>Hızlı Başlangıç: Go SDK'sı kullanarak metin analizi hizmeti çağırma 
+# <a name="quickstart-call-the-text-analytics-service-using-the-go-sdk"></a>Hızlı Başlangıç: Go SDK 'sını kullanarak Metin Analizi hizmetini çağırma 
 <a name="HOLTop"></a>
 
-Bu Hızlı Başlangıç, Go için metin analizi SDK'sı ile dil incelemeye başlamak için kullanın. Bu makalede, dili algılayın, yaklaşımı analiz edin, anahtar tümcecikleri ayıklayın ve bağlı varlıkları tanımlama işlemini göstermektedir. SDK, REST API ile çoğu programlama dilinden uyumlu olsa da, hizmet uygulamalarınızla tümleştirmek için kolay bir yol sağlar. Bu örnek için kaynak kodu bulunabilir [GitHub](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/cognitiveservices).
+Go için Metin Analizi SDK ile dili çözümlemeye başlamak için bu hızlı başlangıcı kullanın. Bu makalede, dili algılama, yaklaşımı çözümleme, anahtar tümceleri ayıklama ve bağlantılı varlıkları belirleme işlemlerinin nasıl yapılacağı gösterilir. REST API çoğu programlama dili ile uyumlu olsa da SDK, hizmeti uygulamalarınızla tümleştirmenin kolay bir yolunu sunar. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/cognitiveservices)' da bulunabilir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Metin analizi [için Go SDK'sı](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics)
+* [Go için metin analizi SDK 'sı](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics)
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
-Ayrıca kayıt sırasında oluşturulan [uç nokta ve erişim anahtarı](../How-tos/text-analytics-how-to-access-key.md) değerlerine de sahip olmanız gerekir.
+## <a name="set-up-a-new-project"></a>Yeni bir proje ayarlama
 
-## <a name="set-up-a-new-project"></a>Yeni bir projesi kurun
-
-Yeni bir Git proje, sık kullandığınız kod düzenleyicimizi veya IDE'mizi oluşturun. Ardından Git dosyasına aşağıdaki içeri aktarma deyimini ekleyin.
+En sevdiğiniz kod düzenleyicide veya IDE 'de yeni bir go projesi oluşturun. Ardından Go dosyasına aşağıdaki import ifadesini ekleyin.
 
 ```golang
 import (
@@ -44,7 +42,7 @@ import (
 )
 ```
 
-Çoğu parametreleri ve özellikleri için bu hızlı başlangıçta, dize ve Boole işaretçileri beklediğiniz gibi projenize aşağıdaki işlevleri ekleyin.
+Bu hızlı başlangıç için parametrelerin ve özelliklerin çoğu dize ve bool işaretçilerini beklediği sürece projenize aşağıdaki işlevleri ekleyin.
 
 ```golang
 // returns a pointer to the string value passed in.
@@ -58,16 +56,16 @@ func BoolPointer(v bool) *bool {
 }
 ```
 
-## <a name="create-text-analytics-client-and-authenticate-credentials"></a>Metin analizi istemci oluşturmanız ve kimlik
+## <a name="create-text-analytics-client-and-authenticate-credentials"></a>Metin Analizi Istemcisi oluşturma ve kimlik bilgilerini kimlik doğrulama
 
-Projenizin ana işlevinde yeni bir oluşturma `TextAnalytics` nesne. Metin analizi aboneliğiniz için doğru Azure bölgesi kullanın. Örneğin: `https://eastus.api.cognitive.microsoft.com`. Bir deneme sürümü anahtarı kullanıyorsanız, güncelleştirme konumu gerekmez.
+Projenizin ana işlevinde yeni `TextAnalytics` bir nesne oluşturun. Metin Analizi aboneliğiniz için doğru Azure bölgesini kullanın. Örneğin: `https://eastus.api.cognitive.microsoft.com` Deneme anahtarı kullanıyorsanız, konumu güncelleştirmeniz gerekmez.
 
 ```golang
 //Replace 'eastus' with the correct region for your Text Analytics subscription
 textAnalyticsClient := textanalytics.New("https://eastus.api.cognitive.microsoft.com")
 ```
 
-Anahtarınız için bir değişken oluşturun ve işlevine geçirebileceğimiz `autorest.NewCognitiveServicesAuthorizer` , ardından geçirilir istemcinin `authorizer` özelliği.
+Anahtarınız için bir değişken oluşturun ve daha sonra `autorest.NewCognitiveServicesAuthorizer` `authorizer` istemcinin özelliğine geçirilecek olan işleve geçirin.
 
 ```golang
 subscriptionKey := "<<subscriptionKey>>"
@@ -76,7 +74,7 @@ textAnalyticsClient.Authorizer = autorest.NewCognitiveServicesAuthorizer(subscri
 
 ## <a name="sentiment-analysis"></a>Yaklaşım analizi
 
-Adlı yeni bir işlev oluşturma `SentimentAnalysis()` daha önce oluşturduğunuz istemci alır. Bir liste oluşturur `MultiLanguageInput` çözümlemek istediğiniz belgeleri içeren nesne. Her nesne içerecek bir `id`, `Language` ve `text` özniteliği. `text` Öznitelik depolarının Analiz edilecek metnin `language` belge dilidir ve `id` herhangi bir değer olabilir. 
+Daha önce oluşturulmuş istemciyi alan `SentimentAnalysis()` adlı yeni bir işlev oluşturun. Analiz etmek istediğiniz belgeleri `MultiLanguageInput` içeren bir nesne listesi oluşturun. Her nesne bir `id` `Language` ve `text` özniteliği içerir. Özniteliği çözümlenecek metni depolar, `language` belgenin dilidir ve `id` herhangi bir değer olabilir. `text` 
 
 ```golang
 func SentimentAnalysis(textAnalyticsclient textanalytics.BaseClient) {
@@ -109,7 +107,7 @@ func SentimentAnalysis(textAnalyticsclient textanalytics.BaseClient) {
 }
 ```
 
-Aynı işlev çağrısında `textAnalyticsclient.Sentiment()` ve sonucu alın. Ardından sonuçlarını yinelemek ve her bir belgenin kimliği ve yaklaşım puanını yazdırın. Bir puan yakın 1 pozitif yaklaşımı çağrılırken bir puan yakın 0 bir negatif yaklaşımı gösterir.
+Aynı işlevde, sonucunu çağırın `textAnalyticsclient.Sentiment()` ve elde edin. Ardından sonuçları yineleyin ve her belge KIMLIĞINI ve yaklaşım Puanını yazdırın. 0 ' a yakın bir puan negatif bir yaklaşım gösterir, 1 ' e yaklaşarak pozitif bir yaklaşım gösterilir.
 
 ```golang
 result, _ := textAnalyticsclient.Sentiment(ctx, BoolPointer(false), &batchInput)
@@ -130,9 +128,9 @@ for _,error := range *batchResult.Errors {
 }
 ```
 
-Projenizin ana işlev çağrısında `SentimentAnalysis()`.
+Projenizin ana işlevinde, çağırın `SentimentAnalysis()`.
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Output
 
 ```console
 Document ID: 1 , Sentiment Score: 0.87
@@ -143,7 +141,7 @@ Document ID: 4 , Sentiment Score: 1.00
 
 ## <a name="language-detection"></a>Dil algılama
 
-Adlı yeni bir işlev oluşturma `LanguageDetection()` daha önce oluşturduğunuz istemci alır. Bir liste oluşturur `LanguageInput` çözümlemek istediğiniz belgeleri içeren nesne. Her nesne içerecek bir `id` ve `text` özniteliği. `text` Öznitelik depolarının Analiz edilecek metin ve `id` herhangi bir değer olabilir. 
+Daha önce oluşturulmuş istemciyi alan `LanguageDetection()` adlı yeni bir işlev oluşturun. Analiz etmek istediğiniz belgeleri `LanguageInput` içeren bir nesne listesi oluşturun. Her nesne bir `id` `text` ve özniteliği içerir. Özniteliği çözümlenecek metni depolar `id` ve herhangi bir değer olabilir. `text` 
 
 ```golang
 func LanguageDetection(textAnalyticsclient textanalytics.BaseClient) {
@@ -168,7 +166,7 @@ func LanguageDetection(textAnalyticsclient textanalytics.BaseClient) {
 }
 ```
 
-Aynı işlev çağrısında `textAnalyticsclient.DetectLanguage()` ve sonucu alın. Ardından sonuçlarını yinelemek ve her bir belgenin kimliği ve algılanan dilin yazdırın.
+Aynı işlevde, sonucunu çağırın `textAnalyticsclient.DetectLanguage()` ve elde edin. Sonra sonuçlar arasında yineleme yapın ve her belge KIMLIĞINI ve algılanan dili yazdırın.
 
 ```golang
 result, _ := textAnalyticsclient.DetectLanguage(ctx, BoolPointer(false), &batchInput)
@@ -190,9 +188,9 @@ for _,error := range *result.Errors {
 }
 ```
 
-Projenizin ana işlev çağrısında `LanguageDetection()`.
+Projenizin ana işlevinde, çağırın `LanguageDetection()`.
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Output
 
 ```console
 Document ID: 0 Detected Languages with Score: English 1.000000,
@@ -202,7 +200,7 @@ Document ID: 2 Detected Languages with Score: Chinese_Simplified 1.000000,
 
 ## <a name="entity-recognition"></a>Varlık tanıma
 
-Adlı yeni bir işlev oluşturma `ExtractEntities()` daha önce oluşturduğunuz istemci alır. Bir liste oluşturur `MultiLanguageInput` çözümlemek istediğiniz belgeleri içeren nesne. Her nesne içerecek bir `id`, `language`ve `text` özniteliği. `text` Öznitelik depolarının Analiz edilecek metnin `language` belge dilidir ve `id` herhangi bir değer olabilir. 
+Daha önce oluşturulmuş istemciyi alan `ExtractEntities()` adlı yeni bir işlev oluşturun. Analiz etmek istediğiniz belgeleri `MultiLanguageInput` içeren bir nesne listesi oluşturun. Her nesne bir `id`, `language`ve bir `text` özniteliği içerecektir. Özniteliği çözümlenecek metni depolar, `language` belgenin dilidir ve `id` herhangi bir değer olabilir. `text` 
 
 ```golang
 func ExtractKeyPhrases(textAnalyticsclient textanalytics.BaseClient) {
@@ -225,7 +223,7 @@ func ExtractKeyPhrases(textAnalyticsclient textanalytics.BaseClient) {
 }
 ```
 
-Aynı işlevde `call textAnalyticsclient.Entities()` ve sonucu alın. Ardından sonuçlarını ve her bir belgeyi kullanıcının kimliği ve ayıklanan yazdırma aracılığıyla varlıkları puan gezin.
+Aynı işlevde ve sonucu elde `call textAnalyticsclient.Entities()` edin. Sonra sonuçlar arasında yineleme yapın, her belge KIMLIĞINI ve ayıklanan varlık Puanını yazdırın.
 
 ```golang
     result, _ := textAnalyticsclient.Entities(ctx, BoolPointer(false), &batchInput)
@@ -254,9 +252,9 @@ Aynı işlevde `call textAnalyticsclient.Entities()` ve sonucu alın. Ardından 
     }
 ```
 
-Projenizin ana işlev çağrısında `ExtractEntities()`.
+Projenizin ana işlevinde, çağırın `ExtractEntities()`.
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Output
 
 ```console
 Document ID: 0
@@ -292,7 +290,7 @@ Document ID: 1
 
 ## <a name="key-phrase-extraction"></a>Anahtar tümcecik ayıklama
 
-Adlı yeni bir işlev oluşturma `ExtractKeyPhrases()` daha önce oluşturduğunuz istemci alır. Bir liste oluşturur `MultiLanguageInput` çözümlemek istediğiniz belgeleri içeren nesne. Her nesne içerecek bir `id`, `language`ve `text` özniteliği. `text` Öznitelik depolarının Analiz edilecek metnin `language` belge dilidir ve `id` herhangi bir değer olabilir.
+Daha önce oluşturulmuş istemciyi alan `ExtractKeyPhrases()` adlı yeni bir işlev oluşturun. Analiz etmek istediğiniz belgeleri `MultiLanguageInput` içeren bir nesne listesi oluşturun. Her nesne bir `id`, `language`ve bir `text` özniteliği içerecektir. Özniteliği çözümlenecek metni depolar, `language` belgenin dilidir ve `id` herhangi bir değer olabilir. `text`
 
 ```golang
 func ExtractKeyPhrases(textAnalyticsclient textanalytics.BaseClient) {
@@ -325,7 +323,7 @@ func ExtractKeyPhrases(textAnalyticsclient textanalytics.BaseClient) {
 }
 ```
 
-Aynı işlevde textAnalyticsclient.KeyPhrases() çağırabilir ve sonucu alın. Ardından sonuçlarını yinelemek ve her bir belgenin kimliği ve ayıklanan anahtar ifadeleri yazdırın.
+Aynı işlevde, textAnalyticsclient. KeyPhrases () öğesini çağırın ve sonucu alın. Sonra sonuçlar arasında yineleme yapın ve her belge KIMLIĞINI ve ayıklanan anahtar tümceleri yazdırın.
 
 ```golang
     result, _ := textAnalyticsclient.KeyPhrases(ctx, BoolPointer(false), &batchInput)
@@ -347,9 +345,9 @@ Aynı işlevde textAnalyticsclient.KeyPhrases() çağırabilir ve sonucu alın. 
     }
 ```
 
-Projenizin ana işlev çağrısında `ExtractKeyPhrases()`.
+Projenizin ana işlevinde, çağırın `ExtractKeyPhrases()`.
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Output
 
 ```console
 Document ID: 0
@@ -380,4 +378,4 @@ Document ID: 3
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
- [Metin Analizi'ne genel bakış](../overview.md) [sık sorulan sorular (SSS)](../text-analytics-resource-faq.md)
+ [Metin analizi genel bakış](../overview.md) [Sık sorulan sorular (SSS)](../text-analytics-resource-faq.md)

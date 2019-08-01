@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Proje yanıt arama, düğüm'
+title: 'Hızlı Başlangıç: Proje yanıtı araması, düğüm'
 description: Node ile Yanıt Arama Projesini kullanmaya başlayın.
 services: cognitive-services
 author: mikedodaro
@@ -9,20 +9,20 @@ ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: c44be9779cf2b856ac2f5e9e017fd9d1040a018b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 21dda323cf465f56fb3f43160dd04c27a81d5590
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60861778"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698086"
 ---
-# <a name="quickstart-project-answer-search-with-node"></a>Hızlı Başlangıç: Proje düğümü ile yanıt arama
+# <a name="quickstart-project-answer-search-with-node"></a>Hızlı Başlangıç: Düğüm ile proje yanıtı araması
 
 Aşağıdaki Node örneği Yosemite Ulusal Parkı hakkındaki bilgileri almak için bir sorgu oluşturur.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-[Bilişsel Hizmetler Laboratuvarları](https://aka.ms/answersearchsubscription) ücretsiz denemesi için erişim anahtarı alın
+[Bilişsel Hizmetler Laboratuvarları](https://labs.cognitive.microsoft.com/en-us/project-answer-search) ücretsiz denemesi için erişim anahtarı alın
 
 Bu örnekte Node v8.9.4 kullanılmıştır
 

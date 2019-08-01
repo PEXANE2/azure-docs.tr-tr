@@ -1,21 +1,20 @@
 ---
 title: Azure portal ile Azure dosya paylaşımlarını yönetme hızlı başlangıcı
 description: Azure portaldan Azure Dosyaları'nı yönetmeyi öğrenmek için bu hızlı başlangıcı kullanın.
-services: storage
 author: roygara
 ms.service: storage
 ms.topic: quickstart
 ms.date: 10/18/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 69e7dba06fce14c2411a82dfade344ba1b14a6d3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 7d7618d2542b1c1d83ed7328c8a32d80f2d0e66a
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64698741"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699522"
 ---
-# <a name="quickstart-create-and-manage-azure-file-shares-with-the-azure-portal"></a>Hızlı Başlangıç: Oluşturma ve Azure portalıyla Azure dosya paylaşımlarını yönetme 
+# <a name="quickstart-create-and-manage-azure-file-shares-with-the-azure-portal"></a>Hızlı Başlangıç: Azure dosya paylaşımlarını Azure portal oluşturma ve yönetme 
 [Azure Dosyaları](storage-files-introduction.md), Microsoft’un kullanımı kolay bulut dosya sistemidir. Azure dosya paylaşımları, Windows, Linux ve macOS platformlarına bağlanabilir. Bu kılavuzda, [Azure portalını](https://portal.azure.com/) kullanarak Azure dosya paylaşımlarıyla çalışmanın temel bilgileri gösterilmektedir.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
@@ -45,7 +44,7 @@ Bir dosya paylaşımını SMB ile bağlayabilmeniz için işletim sisteminize g�
 - [macOS](storage-how-to-use-files-mac.md)
 
 ### <a name="using-an-azure-file-share-from-the-azure-portal"></a>Azure portalda Azure dosya paylaşımını kullanma
-Azure portalı üzerinde gelen tüm istekler Dosya REST API ile yapılır; böylelikle SMB erişimi olmadan istemcilerdeki dosyaları ve dizinleri oluşturabilir, değiştirebilir ve silebilirsiniz. Doğrudan dosya REST protokolü ile olası çalışma doğrudan olduğu (yani REST HTTP handcrafting kendiniz çağrıları), ancak en yaygın yolu (ötesinde, Azure portalını kullanarak) dosya REST protokolü kullanmak için kullanmaktır [Azure PowerShell Modülü](storage-how-to-use-files-powershell.md), [Azure CLI](storage-how-to-use-files-cli.md), veya dosya REST protokolü, tercih ettiğiniz betik programlama dilinde geçici güzel bir sarmalayıcı tümü sağlamak bir Azure depolama SDK. 
+Azure portalı üzerinde gelen tüm istekler Dosya REST API ile yapılır; böylelikle SMB erişimi olmadan istemcilerdeki dosyaları ve dizinleri oluşturabilir, değiştirebilir ve silebilirsiniz. Doğrudan Dosya REST protokolü ile (diğer bir deyişle, REST HTTP çağrılarını kendiniz, el ile) çalışır, ancak dosya REST protokolünü kullanmak için en yaygın yol (Azure portal kullanmanın ötesinde) [Azure PowerShell modülünü](storage-how-to-use-files-powershell.md)kullanmak IÇIN [Azure CLI ](storage-how-to-use-files-cli.md)ya da tümü, seçtiğiniz komut dosyası/programlama dilinde Dosya REST Protokolü etrafında iyi bir sarmalayıcı sağlayan bir Azure depolama SDK 'sı. 
 
 Kullanabilmeyi umdukları mevcut uygulama ve araçlarını kullanmalarına izin vereceği için Azure Dosyaları kullanıcılarının çoğunluğunun Azure dosya paylaşımları ile SMP protokolü üzerinden çalışmasını bekliyoruz, ancak SMB yerine Dosya REST API'si kullanmanın aşağıdaki gibi bazı avantajları bulunmaktadır:
 
@@ -64,7 +63,7 @@ Azure dosya paylaşımınızın kökünde *myDirectory* adlı yeni bir dizin olu
 2. Sayfanın en üstündeki menüden **+ Dizin ekle**’yi seçin. **Yeni dizin** sayfası aşağı doğru açılır.
 3. *myDirectory* yazın ve **Tamam**’a tıklayın.
 
-#### <a name="upload-a-file"></a>Dosyayı karşıya yükleme 
+#### <a name="upload-a-file"></a>Karşıya dosya yükle 
 Bir dosyayı karşıya yüklemeyi göstermek için önce karşıya yüklenecek bir dosya oluşturmanız veya seçmeniz gerekir. Uygun gördüğünüz herhangi bir yolla bunu yapabilirsiniz. Karşıya yüklemek istediğiniz dosyayı seçtikten sonra:
 
 1. **myDirectory** dizinine tıklayın. **myDirectory** paneli açılır.
@@ -76,7 +75,7 @@ Bir dosyayı karşıya yüklemeyi göstermek için önce karşıya yüklenecek b
 5. **Dosyaları karşıya yükleme** sayfasında, dosya adını doğrulayın ve **Karşıya Yükle**’ye tıklayın.
 6. Tamamlandığında, dosyanın **myDirectory** sayfasındaki listede gösterilmesi gerekir.
 
-#### <a name="download-a-file"></a>Dosya indirme
+#### <a name="download-a-file"></a>Dosya indir
 Dosyaya sağ tıklayarak, karşıya yüklediğiniz dosyanın bir kopyasını indirebilirsiniz. İndir düğmesine tıklandıktan sonra olacak işlemler, kullandığınız işletim sistemine ve tarayıcıya bağlıdır.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme

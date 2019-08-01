@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: diberry
-ms.openlocfilehash: bae772e9fcc9f275fcf593cfd5bf9d0506a89f7c
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: d7049c729140591717782b191f970f4295140cb8
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68594679"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697935"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Bilişsel Hizmetler ve makine öğrenmesi
 
@@ -105,11 +105,11 @@ Aşağıdaki veriler her hizmeti, izin verdiği veya gerektirdiği veri türüne
 |[Soru-Cevap Oluşturma](./QnAMaker/Overview/overview.md)||x||
 |[Konuşmacı tanıyıcı](./speaker-recognition/home.md)||x||
 |[Konuşma metni okuma (TTS)](speech-service/text-to-speech.md)|x|x||
-|[Konuşmayı metne dönüştürme (STT)](/speech-service/speech-to-text.md)|x|x||
+|[Konuşmayı metne dönüştürme (STT)](speech-service/speech-to-text.md)|x|x||
 |[Konuşma Çevirisi](speech-service/speech-translation.md)|x|||
 |[Metin Analizi](./text-analytics/overview.md)|x|||
 |[Translator Metin Çevirisi](./translator/translator-info-overview.md)|x|||
-|[Translator Metin Çevirisi-özel çevirici]()||x||
+|[Translator Metin Çevirisi-özel çevirici](./translator/custom-translator/overview.md)||x||
 
 \* Kişiselleştirici, ilkenizi ve verilerinizi değerlendirmek için yalnızca hizmet tarafından toplanan eğitim verilerine (gerçek zamanlı olarak çalışırken) ihtiyaç duyuyor. Kişiselleştirici, ön veya Batch eğitimi için büyük geçmiş veri kümelerine gerek duyuyor. 
 

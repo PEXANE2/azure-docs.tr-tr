@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: aahi
-ms.openlocfilehash: 4a74133a4a34f07db3813d3b9f9a47794c05ec49
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: af01c0c2586ce7df1902a0bcc502c6fd06a5215d
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68594653"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697902"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>Azure portal kullanarak bilişsel hizmetler kaynağı oluşturma
 
@@ -65,6 +65,13 @@ Bilişsel hizmetler kaynağı oluşturmadan önce, kaynağı içermesi için bir
 Kaynağınızı oluşturduktan sonra, bu kaynağı sabitledikten sonra Azure panosundan erişebilirsiniz. Aksi takdirde, **kaynak gruplarında**bulabilirsiniz. Kaynağı seçtikten sonra, **kaynak yönetimi**altında **anahtarlar** ' ı seçerek anahtarları alabilirsiniz.
 
 [!INCLUDE [cognitive-services-environment-variables](../../includes/cognitive-services-environment-variables.md)]
+
+## <a name="pricing-tiers-and-billing"></a>Fiyatlandırma katmanları ve faturalandırma
+
+Fiyatlandırma katmanları (ve faturalandırılan miktar), kimlik doğrulama bilgilerinizi kullanarak göndereceğiniz işlem sayısına bağlıdır. Her fiyatlandırma katmanı şunları belirtir:
+* saniye başına izin verilen en fazla işlem sayısı (TPS).
+* fiyatlandırma katmanında etkinleştirilen hizmet özellikleri.
+* Önceden tanımlanmış işlem miktarının maliyeti. Bu tutarın üzerine gitmek, hizmetinize ilişkin [fiyatlandırma ayrıntılarında](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) belirtilen ek bir ücretden oluşmasına neden olur.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

@@ -1,5 +1,5 @@
 ---
-title: "Hızlı Başlangıç: Proje URL'si Önizleme, Python"
+title: "Hızlı Başlangıç: Proje URL 'SI önizlemesi, Python"
 titlesuffix: Azure Cognitive Services
 description: Python ile URL Önizleme Projesini kullanmaya hızlıca başlamak için örnek betik.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: url-preview
 ms.topic: quickstart
 ms.date: 03/29/2018
 ms.author: rosh
-ms.openlocfilehash: afb64b799e826abc3e6aad661a97211b43304dc6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 19a226fb580f3d4215b7c3f04f17c3f92505987e
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60462733"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697970"
 ---
 # <a name="quickstart-url-preview-with-python"></a>Hızlı Başlangıç: Python ile URL önizlemesi
 
@@ -23,7 +23,7 @@ Aşağıdaki Python örneği SwiftKey Web sitesi için bir URL Önizlemesi oluş
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-[Bilişsel Hizmetler Laboratuvarları](https://aka.ms/answersearchsubscription) ücretsiz denemesi için erişim anahtarı alın
+[Bilişsel Hizmetler Laboratuvarları](https://labs.cognitive.microsoft.com/en-us/project-answer-search) ücretsiz denemesi için erişim anahtarı alın
 
 Bu örnekte Python 3.6 kullanılmıştır.
 
