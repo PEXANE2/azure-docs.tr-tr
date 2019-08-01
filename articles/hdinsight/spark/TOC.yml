@@ -58,6 +58,8 @@
               href: ./apache-spark-troubleshoot-outofmemory-heap.md
             - name: Java yığın alanı
               href: ./apache-spark-troubleshoot-outofmemory-heap-space.md
+            - name: Livy Server başlatılamıyor
+              href: ./apache-spark-troubleshoot-outofmemory-native-thread.md
         - name: Yavaş Apache Spark işleri - depolama kapsayıcısı
           href: ./apache-spark-troubleshoot-job-slowness-container.md
         - name: IllegalArgumentException özel durumu
@@ -68,6 +70,8 @@
           href: ./apache-spark-troubleshoot-rpctimeoutexception.md
         - name: Çıkış Noktaları Arası API’sini engelleme
           href: ./apache-spark-troubleshoot-blocking-cross-origin.md
+        - name: Kryo serileştirme işlemi başarısız oldu
+          href: ./apache-spark-troubleshoot-sparkexception-kryo-serialization-failed.md
 - name: Nasıl yapılır
   items:
     - name: Küme depolama alanını kullanma

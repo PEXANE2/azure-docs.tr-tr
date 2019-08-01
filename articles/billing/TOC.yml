@@ -71,6 +71,8 @@
               href: billing-prepay-app-service-isolated-stamp.md
             - name: Azure yazılım planları
               href: ../virtual-machines/linux/prepay-suse-software-charges.md?toc=/azure/billing/TOC.json
+            - name: Rezervasyonları yenileme
+              href: billing-reservation-renew.md
         - name: İndirim nasıl uygulanır?
           items:
             - name: Ayrılmış VM Örnekleri

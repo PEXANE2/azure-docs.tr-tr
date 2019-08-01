@@ -175,7 +175,7 @@
           href: sql-database-service-tier-hyperscale-faq.md
     - name: Tek veritabanları
       items:
-        - name: Tek veritabanına genel bakış
+        - name: Tek veritabanı belgeleri
           href: sql-database-single-index.yml
         - name: Tek veritabanı özellikleri
           href: sql-database-single-database.md
@@ -215,7 +215,7 @@
           href: sql-database-elastic-pool-manage.md
     - name: Yönetilen örnekler
       items:
-        - name: Yönetilen örneklere genel bakış
+        - name: Yönetilen örnek belgeleri
           href: sql-database-managed-instance-index.yml
         - name: Yönetilen örnek özellikleri
           href: sql-database-managed-instance.md
@@ -235,7 +235,7 @@
           href: sql-database-managed-instance-public-endpoint-securely.md
     - name: Hizmet olarak Platform
       items:
-        - name: Hizmet olarak platforma genel bakış
+        - name: Hizmet olarak platform belgeleri
           href: sql-database-paas.yml
         - name: İş sürekliliği
           href: sql-database-business-continuity.md
@@ -324,7 +324,7 @@
           href: sql-database-feature-restrictions.md
     - name: Ölçeklenebilirlik
       items:
-        - name: Ölçeklenebilirliğe genel bakış
+        - name: Ölçeklenebilirlik belgeleri
           href: sql-database-scalability-index.yml
         - name: Ölçeği Artırma/Azaltma
           href: sql-database-scale-resources.md
@@ -354,7 +354,7 @@
           href: sql-database-elastic-transactions-overview.md
     - name: İzleme ve ayarlama
       items:
-        - name: İzleme ve ayarlamaya genel bakış
+        - name: İzleme ve ayarlama belgeleri
           href: sql-database-monitoring-tuning-index.yml
         - name: İzleme ve performans ayarlama
           href: sql-database-monitor-tune-overview.md
@@ -378,7 +378,7 @@
               href: sql-database-advisor.md
     - name: Veritabanlarının özellikleri
       items:
-        - name: Genel Bakış
+        - name: SQL Veritabanı özellik belgeleri
           href: sql-database-features-index.yml
         - name: SQL özellik karşılaştırması
           href: sql-database-features.md
