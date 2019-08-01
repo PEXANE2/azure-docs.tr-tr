@@ -344,7 +344,7 @@
           href: cognitive-search-skill-textsplit.md
         - name: Yaklaşım
           href: cognitive-search-skill-sentiment.md
-        - name: Metin Çevirisi (Önizleme)
+        - name: Metin Çevirisi
           href: cognitive-search-skill-text-translation.md
         - name: Görüntü Analizi
           href: cognitive-search-skill-image-analysis.md

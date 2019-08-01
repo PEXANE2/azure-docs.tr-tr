@@ -28,6 +28,8 @@
           items:
             - name: GC ek yük sınırı aşıldı
               href: ./interactive-query-troubleshoot-outofmemory-overhead-exceeded.md
+        - name: Apache Hive LLAP sorgu performansı
+          href: ./interactive-query-troubleshoot-query-performance.md
 - name: Nasıl yapılır
   items:
     - name: Hive iş yüklerini HDInsight 4.0 sürümüne geçirme

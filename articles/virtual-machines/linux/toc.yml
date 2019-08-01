@@ -105,10 +105,14 @@
           href: sizes-previous-gen.md
         - name: Azure işlem birimleri (ACU)
           href: acu.md
+        - name: vCPU kotaları
+          href: quotas.md
         - name: Kıyaslama puanları
           href: compute-benchmark-scores.md
     - name: Doğrulanan dağıtımlar
       href: endorsed-distros.md
+    - name: Ayrılmış konaklar
+      href: dedicated-hosts.md
     - name: Bakım ve güncelleştirmeler
       href: maintenance-and-updates.md
     - name: Disk depolama
@@ -139,12 +143,8 @@
       href: monitor.md
     - name: Yedekleme ve kurtarma
       href: backup-recovery.md
-    - name: Dağıtma konuları
-      items:
-        - name: Altyapı yönergeleri
-          href: infrastructure-example.md
-        - name: vCPU kotaları
-          href: quotas.md
+    - name: Altyapı yönergeleri
+      href: infrastructure-example.md
     - name: Güvenlik öznitelikleri
       href: virtual-machines-linux-security-attributes.md
 - name: Nasıl yapılır kılavuzları
@@ -160,6 +160,12 @@
           href: create-vm-rest-api.md
         - name: Bir VM’yi kopyalama
           href: copy-vm.md
+        - name: Ayrılmış konakları kullanma
+          items:
+            - name: CLI
+              href: dedicated-hosts-cli.md
+            - name: Portal
+              href: dedicated-hosts-portal.md
     - name: VM’leri koruma
       items:
         - name: Tam zamanında erişim

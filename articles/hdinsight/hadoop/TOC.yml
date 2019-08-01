@@ -54,6 +54,14 @@
     - name: Yönetilen kimlikleri anlama
       href: ../hdinsight-managed-identities.md
       maintainContext: true
+    - name: Sorun giderme
+      items:
+        - name: HDInsight kümesine düğümler eklenemiyor
+          href: ./hdinsight-troubleshoot-unable-add-nodes.md
+        - name: InvalidNetworkSecurityGroupSecurityRules - küme oluşturulamıyor
+          href: ./hdinsight-troubleshoot-invalidnetworksecuritygroupsecurityrules-cluster-creation-fails.md
+        - name: Hizmet sorumlusu sertifikasını dönüştürme
+          href: ./hdinsight-troubleshoot-converting-service-principal-certificate.md
 - name: Nasıl yapılır
   items:
     - name: Apache Hadoop korumalı alanını kullanma

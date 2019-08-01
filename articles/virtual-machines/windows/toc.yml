@@ -108,6 +108,8 @@
           href: compute-benchmark-scores.md
         - name: vCPU kotaları
           href: quotas.md
+    - name: Ayrılmış konaklar
+      href: dedicated-hosts.md
     - name: Bakım ve güncelleştirmeler
       href: maintenance-and-updates.md
     - name: Disk depolama
@@ -146,6 +148,12 @@
   items:
     - name: VM oluşturma
       items:
+        - name: Ayrılmış konakları kullanma
+          items:
+            - name: PowerShell
+              href: dedicated-hosts-powershell.md
+            - name: Portal
+              href: dedicated-hosts-portal.md
         - name: 'C# kullanma'
           href: csharp.md
         - name: Özelleştirilmiş disk kullanma
