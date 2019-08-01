@@ -10,12 +10,13 @@ ms.subservice: speaker-recognition
 ms.topic: overview
 ms.date: 10/01/2018
 ms.author: nitinme
-ms.openlocfilehash: 15fc320a5b76a50def634d937a02fa639dce3739
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ROBOTS: NOINDEX
+ms.openlocfilehash: 9cdfd5d09451968487bafbcad643e179ffe82aa7
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67845880"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707173"
 ---
 # <a name="speaker-recognition-api"></a>Konuşmacı Tanıma API’si
 
@@ -38,9 +39,9 @@ Kayıt sırasında konuşmacının belirli bir tümceciği söylerken sesi kayde
 
 Doğrulama aşamasında bir giriş sesi ve tümcecik, kaydın ses imzası ve tümceciği ile karşılaştırılarak aynı kişiden olup olmadığı ve doğru tümceciğin söylenip söylenmediğini doğrulanır.
 
-Konuşmacı doğrulama hakkında daha fazla ayrıntı için lütfen API için başvuru [Konuşmacı - doğrulama](https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/563309b7778daf06340c9652).
+Konuşmacı doğrulama hakkında daha fazla ayrıntı için lütfen API [Konuşmacı doğrulaması](https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/563309b7778daf06340c9652)' na bakın.
 
-## <a name="speaker-identification"></a>Konuşmacı Belirleme
+## <a name="speaker-identification"></a>Konuşmacı Tanıma
 
 Konuşmacı Belirleme API’leri, bir grup olası konuşmacı grubu varken ses dosyasında konuşan kişiyi otomatik olarak belirleyebilir. Giriş sesi, sağlanan konuşmacı grubu ile eşlenir ve bir eşleşme bulunması durumunda, konuşmacının kimliği döndürülür.
 
@@ -56,4 +57,4 @@ Konuşmacı belirleme için kayıt metinden bağımsızdır; başka bir deyişle
 
 Tanıma sırasında, olası konuşmacı grubu ile birlikte, bilinmeyen konuşmacının sesi de sağlanır. Sesin kime ait olduğunu belirlemek için giriş sesi, tüm konuşmacılarla karşılaştırılır ve bir eşleşme bulunursa konuşmacının kimliği döndürülür.
 
-Konuşmacı tanıma hakkında daha fazla ayrıntı için lütfen API için başvuru [Konuşmacı - kimlik](https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/5645c068e597ed22ec38f42e).
+Konuşmacı tanımlama hakkında daha fazla ayrıntı için lütfen API [Konuşmacı kimliği](https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/5645c068e597ed22ec38f42e)' ne bakın.

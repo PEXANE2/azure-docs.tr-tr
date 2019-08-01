@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/29/2019
+ms.date: 07/31/2019
 ms.topic: quickstart
 ms.service: azure-blockchain
 ms.reviewer: jackyhsu
 manager: femila
-ms.openlocfilehash: 9154bc749f7db337de67f501d5e5049dfd466156
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 6768c1e26435ace60b26adb46c9955d080029828
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698480"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705168"
 ---
 # <a name="quickstart-use-truffle-to-connect-to-an-azure-blockchain-service-network"></a>Hızlı Başlangıç: Azure blok zinciri hizmeti ağına bağlanmak için Truffle kullanın
 
@@ -28,8 +28,6 @@ Truffle, bir Azure blok zinciri hizmeti düğümüne bağlanmak için kullanabil
 * [Azure blok zinciri üyesi oluşturma](create-member.md)
 * [Truffle](https://github.com/trufflesuite/truffle)'yi yükler. Truffle, [Node. js](https://nodejs.org), [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)gibi çeşitli araçların yüklenmesini gerektirir.
 * [Python 2.7.15](https://www.python.org/downloads/release/python-2715/)'i yükler. Web3 için Python gereklidir.
-* [Visual Studio Code](https://code.visualstudio.com/download)'i yükler.
-* [Visual Studio Code Solidity uzantısını](https://marketplace.visualstudio.com/items?itemName=JuanBlanco.solidity)yükler.
 
 ## <a name="create-truffle-project"></a>Truffle projesi oluştur
 
@@ -62,16 +60,17 @@ Truffle projesini yapılandırmak için Azure portal işlem düğümü bilgileri
 
 ### <a name="transaction-node-endpoint-addresses"></a>İşlem düğümü uç noktası adresleri
 
-1. Azure portal, her bir işlem düğümüne gidin ve **bağlantı dizelerini > işlem düğümleri**' ni seçin.
-1. Uç nokta URL 'sini, her işlem düğümü için **https (erişim anahtarı 1)** konumundan kopyalayın ve kaydedin. Öğreticide daha sonra akıllı sözleşme yapılandırma dosyası için uç nokta adreslerine ihtiyacınız vardır.
+1. Azure portal, varsayılan işlem düğümüne gidin ve **bağlantı dizelerini > işlem düğümleri**' ni seçin.
+1. Uç nokta URL 'sini https 'den kopyalayın ve kaydedin **(erişim anahtarı 1)** . Öğreticide daha sonra akıllı sözleşme yapılandırma dosyası için uç nokta adreslerine ihtiyacınız vardır.
 
-    ![İşlem uç noktası adresi](./media/send-transaction/endpoint.png)
+    ![İşlem uç noktası adresi](./media/connect-truffle/endpoint.png)
 
 ### <a name="edit-configuration-file"></a>Yapılandırma dosyasını Düzenle
 
-1. Visual Studio Code başlatın ve **dosya > klasörü aç** menüsünü kullanarak Truffle proje dizin klasörünü açın.
-1. Truffle yapılandırma dosyasını `truffle-config.js`açın.
-1. Dosyanın içeriğini aşağıdaki yapılandırma bilgileriyle değiştirin. Uç nokta adresini içeren bir değişken ekleyin. Açılı ayracını önceki bölümlerden topladığınız değerlerle değiştirin.
+Ardından, Truffle yapılandırma dosyasını işlem düğümü uç noktasıyla güncelleştirmeniz gerekir.
+
+1. **Trufftademo** proje klasöründe, bir düzenleyicide Truffle yapılandırma dosyasını `truffle-config.js` açın.
+1. Dosyanın içeriğini aşağıdaki yapılandırma bilgileriyle değiştirin. Uç nokta adresini içeren bir değişken ekleyin. Açılı ayracını önceki bölümden topladığınız değerlerle değiştirin.
 
     ``` javascript
     var defaultnode = "<default transaction node connection string>";   
@@ -93,7 +92,7 @@ Truffle projesini yapılandırmak için Azure portal işlem düğümü bilgileri
 
 İşlem düğümüne bağlanmak için *Web3* kullanın.
 
-1. Varsayılan işlem düğümüne bağlanmak için Truffle konsolunu kullanın.
+1. Varsayılan işlem düğümüne bağlanmak için Truffle konsolunu kullanın. Komut isteminde veya kabukta aşağıdaki komutu çalıştırın:
 
     ``` bash
     truffle console --network defaultnode
@@ -115,7 +114,7 @@ Truffle projesini yapılandırmak için Azure portal işlem düğümü bilgileri
     truffle(defaultnode)> web3.eth.getBlockNumber();
     18567
     ```
-1. Truffle geliştirme konsolundan çıkın.
+1. Truffle konsolundan çıkın.
 
     ```bash
     .exit
@@ -125,7 +124,7 @@ Truffle projesini yapılandırmak için Azure portal işlem düğümü bilgileri
 
 Bu hızlı başlangıçta, Azure blok zinciri hizmeti varsayılan işlem düğümünüz ile bağlantı kurmak için bir truffle projesi oluşturdunuz.
 
-Consortium blok zinciri ağınıza bir işlem göndermek için Truffle 'yi kullanmak üzere bir sonraki öğreticiyi deneyin.
+Bir Konsorsiyumu blok zinciri ağı üzerindeki bir işlem aracılığıyla akıllı sözleşme işlevini yürütmek için Ethereum ve truffle için Azure blok zinciri geliştirme setini kullanmak üzere bir sonraki öğreticiyi deneyin.
 
 > [!div class="nextstepaction"]
-> [İşlem gönder](send-transaction.md)
+> [Azure blok zinciri hizmeti 'nde akıllı sözleşmeleri kullanma](send-transaction.md)
