@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: f6aed5d2ac1c4672d8d8868fe127ead053512e42
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: 974ece9cd035ae29ada38f34b7933d86f682194f
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314831"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68696227"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Eşleme veri akışı için kaynak dönüşümü 
 
@@ -28,8 +28,12 @@ Her veri akışı için en az bir kaynak dönüştürmesi gerekir. Veri dönüş
 
 Veri akışı kaynak dönüşümünüzü tam olarak bir Data Factory veri kümesiyle ilişkilendirin. Veri kümesi, yazmak veya okumak istediğiniz verilerin şeklini ve konumunu tanımlar. Aynı anda birden fazla dosyayla çalışmak için, kaynağınızdaki joker karakter ve dosya listelerini kullanabilirsiniz.
 
-## <a name="data-flow-staging-areas"></a>Veri akışı hazırlama alanı
+Bir **joker karakter deseninin** KULLANıLMASı, ADF 'nin eşleşen her klasör ve dosyada tek bir kaynak dönüşümünde döngüye girmesine neden olur. Bu, tek bir akış içinde birden çok dosyayı işlemek için çok etkili bir yoldur. İşlenmekte olan dosya adını izlemek için, kaynak seçeneklerindeki "dosya adını depolayacak sütun" alanı için bir alan adı ayarlayın.
 
+> [!NOTE]
+> Daha fazla joker karakter eklemek için, mevcut joker karakter deseniniz yanında + işareti ile birden çok joker karakterle eşleşen desenler ayarlayın.
+
+## <a name="data-flow-staging-areas"></a>Veri akışı hazırlama alanı
 Veri akışı, Azure 'daki tüm *hazırlama* veri kümeleri ile birlikte kullanılabilir. Verilerinizi dönüştürürken bu veri kümelerini hazırlama için kullanın. 
 
 Data Factory neredeyse 80 yerel bağlayıcıya erişimi vardır. Veri akışınız içindeki diğer kaynaklardan verileri dahil etmek için, kopyalama etkinliği aracını kullanarak veri akışı veri kümesi hazırlama alanlarından birinde bu verileri hazırlayın.
@@ -101,13 +105,23 @@ Joker karakter örnekleri:
 
 Veri kümesinde kapsayıcı belirtilmelidir. Bu nedenle, joker karakter yolunuzda Ayrıca, kök klasörden klasör yolunuzdan de yer verilmelidir.
 
+* **Bölüm kök yolu**: Dosya kaynağınızda ```key=value``` (ör. yıl = 2019) bölümlendirilmiş klasörler varsa, ADF 'nin Bu bölüm klasörü ağacının üst düzeyini veri akışı veri akışınızdaki bir sütun adına atamasını isteyebilirsiniz.
+
+İlk olarak, bölümlenmiş klasörler ve okumak istediğiniz yaprak dosyaları olan tüm yolları içerecek şekilde bir joker karakter ayarlayın.
+
+![Bölüm kaynak dosyası ayarları](media/data-flow/partfile2.png "Bölüm dosyası ayarı")
+
+Şimdi, ADF 'nin klasör yapısının en üst düzeyini ne olduğunu söylemek için bölüm kök yolu ayarını kullanın. Artık verilerinizin içeriğini görüntülediğinizde, ADF 'nin klasör düzeylerinizde bulunan çözümlenmiş bölümleri eklemesini görürsünüz.
+
+![Bölüm kök yolu](media/data-flow/partfile1.png "Bölüm kök yolu önizlemesi")
+
 * **Dosya listesi**: Bu bir dosya kümesidir. İşlemek için göreli yol dosyalarının bir listesini içeren bir metin dosyası oluşturun. Bu metin dosyasına işaret edin.
 * **Depolanacak sütun dosya adı**: Kaynak dosyanın adını verilerinizin bir sütununda depolayın. Dosya adı dizesini depolamak için buraya yeni bir ad girin.
 * **Tamamlandıktan sonra**: Veri akışı çalıştıktan sonra kaynak dosyayla ilgili hiçbir şey yapma seçeneğini belirleyin, kaynak dosyayı silin veya kaynak dosyayı taşıyın. Taşımanın yolları görelidir.
 
 Kaynak dosyalarını başka bir konuma işleme sonrası taşımak için, önce dosya işlemi için "taşı" yı seçin. Sonra, "Kimden" dizinini ayarlayın. Yolunuz için herhangi bir joker karakter kullanmıyorsanız, "Kimden" ayarı kaynak klasörünüzün bulunduğu klasör olacaktır.
 
-Bir joker karakter kaynak yolunuz varsa, örn:
+Joker karakter içeren bir kaynak yolunuz varsa söz dizinizin aşağıdaki gibi görünmesi gerekir:
 
 ```/data/sales/20??/**/*.csv```
 
@@ -119,7 +133,7 @@ Ve "to" as
 
 ```/backup/priorSales```
 
-Bu durumda, kaynak olan/Data/Sales altındaki tüm alt dizinler/Backup/priorsales'e göre taşınır.
+Bu durumda,/Data/Sales altında kaynağı bulunan tüm dosyalar/Backup/priorsales' a taşınır.
 
 ### <a name="sql-datasets"></a>SQL veri kümeleri
 
@@ -151,9 +165,8 @@ Sütun veri türlerini sonraki türetilmiş sütun dönüşümünde değiştireb
 
 ![Varsayılan veri biçimleri Için ayarlar](media/data-flow/source2.png "Varsayılan biçimler")
 
-### <a name="add-dynamic-content"></a>Dinamik içerik Ekle
-
-Ayar panelinde alanların içine tıkladığınızda, "dinamik içerik Ekle" için bir köprü görürsünüz. Buraya tıkladığınızda, Ifade oluşturucuyu başlatın. Bu, ayarlar için değerleri ifadeler, statik değişmez değerler veya parametreler kullanarak dinamik olarak ayarlayabileceğiniz yerdir.
+### <a name="add-dynamic-content"></a>Dinamik içerik ekle
+Ayar panelinde alanların içine tıkladığınızda, "dinamik içerik Ekle" için bir köprü görürsünüz. Ifade oluşturucuyu başlatmayı seçtiğinizde, değerleri ifadeler, statik değişmez değerler veya parametreler kullanarak dinamik olarak ayarlarsınız.
 
 ![Parametreler](media/data-flow/params6.png "Parametreler")
 

@@ -10,16 +10,15 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, srbozovi, bonova
-manager: craigg
 ms.date: 02/18/2019
-ms.openlocfilehash: 59088ad53e923f1303c0e800df9c25f70e63812f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ddcac56671e145728f02d31bf23c657ea172e4c0
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60701930"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567664"
 ---
-# <a name="quickstart-configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>Hızlı Başlangıç: Azure VM, Azure SQL veritabanı yönetilen örneğine bağlanmak için yapılandırın
+# <a name="quickstart-configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>Hızlı Başlangıç: Azure SQL veritabanı yönetilen örneğine bağlanmak için Azure VM 'yi yapılandırma
 
 Bu hızlı SQL Server Management Studio (SSMS) kullanarak bir Azure SQL veritabanı yönetilen örneğine bağlanmak için bir Azure sanal makinesi yapılandırma gösterilmektedir. Noktadan siteye bağlantısı kullanarak bir şirket içi istemci bilgisayarından bağlanmak gösteren bir hızlı başlangıç için bkz: [noktadan siteye bağlantı yapılandırma](sql-database-managed-instance-configure-p2s.md)
 
@@ -84,7 +83,7 @@ Tüm gerekli araçları ile bir istemci sanal makine oluşturmak için en kolay 
    |**Parola**|Geçerli bir parola|Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.<br>Bu parolayı kullanmak istediğiniz zaman [VM'ye bağlanmak](#connect-to-virtual-machine).|
    | **Sanal makine boyutu** | Herhangi bir geçerli boyut | Bu şablon varsayılan **Standard_B2s** Bu Hızlı Başlangıç için yeterlidir. |
    | **Konum**|[resourceGroup () .location].| Bu değeri değiştirmeyin. |
-   | **Sanal ağ adı**|Yönetilen örneğin oluşturulacağı sanal ağı.|
+   | **Sanal ağ adı**|Yönetilen örneği oluşturduğunuz sanal ağ.|
    | **Alt ağ adı**|Önceki yordamda oluşturduğunuz alt ağ adı| Yönetilen örnek oluşturduğunuz alt ağ seçmeyin.|
    | **yapıtları konumu** | [dağıtım.properties.templateLink.uri ()] | Bu değeri değiştirmeyin. |
    | **yapıtları konumu Sas belirteci** | Boş bırakın | Bu değeri değiştirmeyin. |
@@ -98,7 +97,7 @@ Tüm gerekli araçları ile bir istemci sanal makine oluşturmak için en kolay 
 5. Seçin **bildirimleri** dağıtım durumu görüntülenecek simge.
 
 > [!IMPORTANT]
-> SQL Server Management Studio'yu yüklemek oluşturma sonrası betikler için zaman vermek için sanal makine oluşturulduktan sonra yaklaşık 15 dakika kadar devam etmeyin.
+> Oluşturma sonrası betiklerin SQL Server Management Studio yüklemesi için zaman kazandırmak üzere sanal makine oluşturulduktan yaklaşık 15 dakika sonrasına devam etmez.
 
 ## <a name="connect-to-virtual-machine"></a>Sanal makineye bağlanma
 

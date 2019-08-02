@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: glenga
-ms.openlocfilehash: 15fd8593f950e0f553d1b7ca34ee785692043cad
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: cfdc28486cf254c4dd808824ab167489818376ab
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304351"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619603"
 ---
 # <a name="monitor-azure-functions"></a>Azure İşlevlerini İzleme
 
@@ -77,7 +77,7 @@ Işlevlerin erken sürümleri, artık önerilmeyen yerleşik izleme kullanır. B
 
 Her iki sayfanın da verileri alan Application Insights Analytics sorgusuna **Application Insights bir Çalıştır** bağlantısı olduğunu görebilirsiniz.
 
-![Application Insights içinde Çalıştır](media/functions-monitoring/run-in-ai.png)
+![Application Insights'ta çalıştır](media/functions-monitoring/run-in-ai.png)
 
 Aşağıdaki sorgu görüntülenir. Çağrı listesinin son 30 güne sınırlı olduğunu görebilirsiniz. Listede en fazla 20 satır (`where timestamp > ago(30d) | take 20`) gösterilir. Çağırma ayrıntıları listesi, son 30 gün için sınır yoktur.
 
@@ -152,9 +152,9 @@ Application Insights, özel yapılandırma olmadan kullanabilirsiniz. Varsayıla
 
 Azure Işlevleri günlükçüsü, her günlük için bir *Kategori* içerir. Kategori, çalışma zamanı kodunun veya işlev kodunuzun günlüğü yazanın hangi kısmının olduğunu gösterir. 
 
-Işlevler çalışma zamanı, "Host" ile başlayan bir kategoriye sahip Günlükler oluşturur. "İşlev başlatıldı," "işlev yürütüldü," ve "işlev tamamlandı" günlükleri "Host. yürütücü" kategorisini barındırır. 
+Işlevler çalışma zamanı, "Host" ile başlayan bir kategoriye sahip Günlükler oluşturur. `function started`Sürüm 1. x `function executed`içinde,, ve `function completed` günlükleri kategorisi `Host.Executor`vardır. 2\. x sürümünden itibaren bu günlüklerde kategori `Function.<YOUR_FUNCTION_NAME>`vardır.
 
-İşlev kodunuzda Günlükler yazarsanız, bu kategori "function" olur.
+İşlev kodunuzda Günlükler yazarsanız, kategori işlevler çalışma zamanının sürüm 1. `Function` x ' de bulunur. Sürüm 2. x içinde kategori `Function.<YOUR_FUNCTION_NAME>.User`.
 
 ### <a name="log-levels"></a>Günlük düzeyleri
 
@@ -168,7 +168,7 @@ Azure Işlevleri günlükçüsü, her günlük için bir *günlük düzeyi* de i
 |Uyarı     | 3 |
 |Hata       | 4 |
 |Kritik    | 5 |
-|None        | 6 |
+|Yok.        | 6 |
 
 Günlük düzeyi `None` sonraki bölümde açıklanmaktadır. 
 
@@ -278,7 +278,7 @@ Tüm bu Günlükler `Information` düzeyinde yazılır. `Warning` Veya üzerine 
 
 ### <a name="other-categories"></a>Diğer Kategoriler
 
-Önceden listelenmiş olanlar dışındaki kategoriler için tüm Günlükler, Application Insights İziz tablosunda mevcuttur  .
+Önceden listelenmiş olanlar dışındaki kategoriler için tüm Günlükler, Application Insights İziz tablosunda mevcuttur .
 
 ![izleme sorgusu](media/functions-monitoring/analytics-traces.png)
 
@@ -599,13 +599,13 @@ module.exports = function (context, req) {
 
 Bağımlılıkları göstermek için özel kod yazabilirsiniz. Örnekler için [ C# özel telemetri bölümünde](#log-custom-telemetry-in-c-functions)örnek koda bakın. Örnek kod, aşağıdaki görüntüde olduğu gibi Application Insights bir *uygulama Haritası* ile sonuçlanır:
 
-![Uygulama eşlemesi](./media/functions-monitoring/app-map.png)
+![Uygulama haritası](./media/functions-monitoring/app-map.png)
 
 ## <a name="report-issues"></a>Sorunları raporla
 
 Işlevlerde Application Insights tümleştirmeyle ilgili bir sorun bildirmek veya bir öneri veya istek yapmak için [GitHub 'da bir sorun oluşturun](https://github.com/Azure/Azure-Functions/issues/new).
 
-## <a name="streaming-logs"></a>Akış günlükleri
+## <a name="streaming-logs"></a>Akış Günlükleri
 
 Bir uygulama geliştirirken genellikle günlük bilgileri neredeyse gerçek zamanlı olarak görmeniz yararlı olur. İşlevleriniz tarafından oluşturulan günlük dosyalarının akışını, Azure portal veya yerel bilgisayarınızdaki bir komut satırı oturumunda görüntüleyebilirsiniz.
 

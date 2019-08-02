@@ -4,7 +4,7 @@ description: Bir takım için paylaşılan bir kaynak havuzları veri bilimi VM 
 keywords: derin öğrenme yapay ZEKA, veri bilimi araçları, veri bilimi sanal makinesi, Jeo-uzamsal analiz, team data science Process'i
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2018
-ms.author: gokuma
-ms.openlocfilehash: 5cce7f691204a0fd116627fadde1076a4505fcb2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: vijetaj
+ms.openlocfilehash: 44983de87ce2e774356bf506e3a868da922a3ba3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60502291"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68558051"
 ---
 # <a name="create-a-shared-pool-of-data-science-virtual-machines"></a>Veri bilimi sanal makineleri paylaşılan havuz oluşturma
 
 Bu makalede, paylaşılan bir havuz, veri bilimi sanal makineleri kullanır (Dsvm'leri) bir takım için nasıl oluşturabileceğiniz açıklanır. Paylaşılan bir havuz kullanmanın avantajlarını daha iyi kaynak kullanımı, paylaşma ve işbirliği dönüştüğünde, yönetim ve DSVM kaynaklarının daha etkin yönetim var. 
 
-Dsvm'leri havuzu oluşturmak için birçok yöntem ve teknolojileri kullanabilirsiniz. Bu makalede, etkileşimli VM'ler için havuzlarında odaklanır. Azure Machine Learning işlem bir alternatif yönetilen bilgi işlem altyapısıdır. Bkz: [işlem hedefleri kümesi](../service/how-to-set-up-training-targets.md#amlcompute) daha fazla bilgi için.
+Dsvm'leri havuzu oluşturmak için birçok yöntem ve teknolojileri kullanabilirsiniz. Bu makale etkileşimli VM 'Ler için havuzlara odaklanır. Alternatif bir yönetilen işlem altyapısı Azure Machine Learning Işlem olur. Daha fazla bilgi için bkz. [işlem hedeflerini ayarlama](../service/how-to-set-up-training-targets.md#amlcompute) .
 
 ## <a name="interactive-vm-pool"></a>Etkileşimli VM havuzu
 

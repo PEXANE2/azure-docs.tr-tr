@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/24/2019
 ms.author: banders
-ms.openlocfilehash: 66b54c027cde6341b23aef2c10b43fa21bf357da
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 1afd78a0525be523f677cf0146c8a120155130ea
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383456"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68554686"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Azure kullanımı ve ücretler dosyanızdaki koşulları anlayın
 
@@ -28,7 +28,7 @@ Hesap türü | Azure kullanımı | Market kullanımı | Satın | İadelerini
 --- | --- | --- | --- | ---
 Kurumsal Anlaşma (EA) | Evet | Evet | Evet | Hayır
 Microsoft Müşteri Sözleşmesi (MCA) | Evet | Evet | Evet | Evet
-Kullandıkça Öde (PAYG) | Evet | Hayır | Hayır | Hayır
+Kullandıkça Öde (PAYG) | Evet | Evet | Hayır | Hayır
 
 Market siparişleri hakkında daha fazla bilgi edinmek için (dış hizmetler olarak da bilinir) bkz. [Azure dış hizmet ücretlerinizi anlayın](billing-understand-your-azure-marketplace-charges.md).
 
@@ -65,8 +65,6 @@ Efekt fiyatı | Tümü | Dönem için karıştırılan birim fiyatı. Karıştı
 ExchangeRateDate | EXCEP | Döviz oranının kurulduğu tarih.
 ExchangeRatePricingToBilling | EXCEP | Fiyatlandırma para birimindeki maliyeti faturalandırma para birimine dönüştürmek için kullanılan döviz kuru.
 Sıklık | Tümü | Bir ücretin yinelenmesi beklenip yinelenmeyeceğini gösterir. Ücretler bir kez (**Onetime**), aylık veya yıllık olarak yinelenir (**yinelenen**) veya kullanımı (**usagebased**) temel alabilir.
-Includedquantity | PAYG | Geçerli fatura döneminize ücretsiz olarak dahil edilen ölçüm miktarı.
-Örnek kimliği | PAGY | Bkz. ResourceID.
 InvoiceId | PAYG, MCA | Fatura PDF 'sinde listelenen benzersiz belge KIMLIĞI.
 Invoicesection | EXCEP | Bkz. ınvoicesectionname.
 Invoicesectionıd | EA, MCA | EA Departmanı veya MCA Invoice bölümü için benzersiz tanımlayıcı.
@@ -105,6 +103,7 @@ ServicePeriodStartDate | EXCEP | Tüketilen veya satın alınan hizmet için tan
 SubscriptionId | Tümü | Azure aboneliği için benzersiz tanımlayıcı.
 Abonelik adı | Tümü | Azure aboneliğinin adı.
 Tags | Tümü | Kaynağa atanan Etiketler. Kaynak grubu etiketlerini içermez. , İç geri ödeme için maliyetleri gruplamak veya dağıtmak için kullanılabilir. Daha fazla bilgi için bkz. [Azure kaynaklarınızı etiketlerle düzenleme](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/).
+Terim | Tümü | Teklifin geçerliliği için terimi görüntüler. Örneğin: Ayrılmış örnekler söz konusu olduğunda, dönem olarak 12 ay görüntüler. Tek seferlik satın alma veya yinelenen satın alma işlemleri için dönem 1 aydır (SaaS, Market desteği). Bu, Azure tüketimi için geçerli değildir.
 Ölçü birimi | Tümü | Hizmetin faturalandırılması için ölçü birimi. Örneğin, işlem hizmetleri saat başına faturalandırılır.
 Fiyatı | EA, PAYG | Ücret için birim başına fiyat.
 

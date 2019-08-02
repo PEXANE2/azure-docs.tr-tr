@@ -1,22 +1,20 @@
 ---
-title: Azure depolama v10 SDK için JavaScript kullanarak silme blobları yükleme, indirme, liste ve
+title: JavaScript için Azure Storage ile v10 arasındaki SDK 'sını kullanarak Blobları karşıya yükleme, indirme, listeleme ve silme
 description: Azure Depolama ile Node.js'de blob ve kapsayıcı oluşturma, yükleme ve silme
-services: storage
 author: mhopkins-msft
+ms.author: mhopkins
+ms.date: 11/14/2018
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.date: 11/14/2018
-ms.author: mhopkins
-ms.reviewer: seguler
-ms.openlocfilehash: e2deda6bc9a5d13a631e9917f3020cfa68ee1e10
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: cada5c3dd74832140fd76cbdd637554b5f829c33
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67536160"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68721999"
 ---
-# <a name="quickstart-upload-download-list-and-delete-blobs-using-azure-storage-v10-sdk-for-javascript"></a>Hızlı Başlangıç: Azure depolama v10 SDK için JavaScript kullanarak silme blobları yükleme, indirme, liste ve
+# <a name="quickstart-upload-download-list-and-delete-blobs-using-azure-storage-v10-sdk-for-javascript"></a>Hızlı Başlangıç: JavaScript için Azure Storage ile v10 arasındaki SDK 'sını kullanarak Blobları karşıya yükleme, indirme, listeleme ve silme
 
 Bu hızlı başlangıçta blob yükleme, indirme, listeleme ve silme ile kapsayıcıları yönetme amacıyla Node.js'de [JavaScript için Azure Storage v10 SDK'sını](https://github.com/Azure/azure-sdk-for-js) kullanmayı öğreneceksiniz.
 

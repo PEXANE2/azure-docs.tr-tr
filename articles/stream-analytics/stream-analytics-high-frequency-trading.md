@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 33a7b27d065fc0383e4693053f7bfb6d56e2d33b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae82c0e72287ee4c89cb3fb2294bf4bd79aec8c3
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61480094"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598634"
 ---
 # <a name="high-frequency-trading-simulation-with-stream-analytics"></a>Stream Analytics ile yüksek frekanslı alım-satım simülasyonu
 Azure Stream Analytics’te SQL dili ve JavaScript kullanıcı tanımlı işlevleri (UDF) ile kullanıcı tanımlı toplamların (UDAs) birleşimi, kullanıcıların gelişmiş analiz gerçekleştirmesine olanak tanır. Gelişmiş analizler, çevrimiçi makine öğrenimi eğitim ve puanlamasının yanı sıra durum bilgisi olan işlem simülasyonunu içerebilir. Bu makalede, yüksek frekanslı bir alım-satım senaryosunda sürekli çalıştıran ve puanlama yapan bir Azure Stream Analytics işinde nasıl doğrusal regresyon gerçekleştirileceği açıklanır.
@@ -65,7 +65,7 @@ Oluşturulan bazı örnek olaylar aşağıda verilmiştir:
 >Olayın zaman damgası **lastUpdated** şeklindedir (dönem zamanı cinsinden).
 
 ### <a name="predictive-model-for-high-frequency-trading"></a>Yüksek frekanslı alım-satım için tahmine dayalı model
-Gösterim amacıyla, bu çalışmada Darryl Shen tarafından [makalesinde](http://eprints.maths.ox.ac.uk/1895/1/Darryl%20Shen%20%28for%20archive%29.pdf) anlatılan bir doğrusal model kullandık.
+Gösterim amacıyla, bu çalışmada Darryl Shen tarafından [makalesinde](https://docplayer.net/23038840-Order-imbalance-based-strategy-in-high-frequency-trading.html) anlatılan bir doğrusal model kullandık.
 
 Hacim sipariş dengesizliği (VOI) geçerli teklif/satış fiyatı ve hacim ile son fiyat dalgalanmasından gelen teklif/satış fiyatı ve hacmin bir fonksiyonudur. Makale, VOI ile gelecekteki fiyat hareketi arasındaki bağıntıyı tanımlar. Geçmiş 5 VOI değeri ile son 10 fiyat dalgalanmasındaki fiyat değişikliği arasında doğrusal bir model oluşturur. Model, doğrusal regresyonla önceki günün verileri kullanılarak çalıştırılır. 
 

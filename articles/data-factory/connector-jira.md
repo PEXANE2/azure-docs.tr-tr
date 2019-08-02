@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: cbb18212f70343d8b9933bd2c787ce6aae8b145d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 61cdcb98fc5c0947a25954161676c55ebf902688
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61401006"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720738"
 ---
 # <a name="copy-data-from-jira-using-azure-data-factory-preview"></a>Jıra Azure Data Factory (Önizleme) kullanarak verileri kopyalama
 
@@ -44,7 +44,7 @@ Jıra bağlı hizmeti için aşağıdaki özellikleri destekler:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Type özelliği ayarlanmalıdır: **Jıra** | Evet |
+| türü | Type özelliği şu şekilde ayarlanmalıdır: **JIRA** | Evet |
 | host | Jıra hizmeti IP adresi veya ana bilgisayar adı. (örneğin, jira.example.com)  | Evet |
 | port | Jıra sunucusunun istemci bağlantıları için dinlemek üzere kullandığı TCP bağlantı noktası. Varsayılan 443 HTTPS veya 8080 HTTP bağlanılıyorsa bağlanılıyorsa değerdir.  | Hayır |
 | username | Jıra hizmete erişmek için kullandığınız kullanıcı adı.  | Evet |
@@ -81,7 +81,7 @@ Jıra verileri kopyalamak için dataset öğesinin type özelliği ayarlamak **J
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Dataset öğesinin type özelliği ayarlanmalıdır: **JiraObject** | Evet |
+| türü | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **Jırak nesnesi** | Evet |
 | tableName | Tablonun adı. | Hayır (etkinlik kaynağı "sorgu" belirtilmişse) |
 
 **Örnek**
@@ -91,11 +91,12 @@ Jıra verileri kopyalamak için dataset öğesinin type özelliği ayarlamak **J
     "name": "JiraDataset",
     "properties": {
         "type": "JiraObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Jira linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -110,7 +111,7 @@ Jıra verileri kopyalamak için kopyalama etkinliği için kaynak türünü ayar
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağı öğesinin type özelliği ayarlanmalıdır: **JiraSource** | Evet |
+| türü | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **Jırak kaynağı** | Evet |
 | query | Verileri okumak için özel bir SQL sorgusu kullanın. Örneğin: `"SELECT * FROM MyTable"`. | Yok (veri kümesinde "TableName" değeri belirtilmişse) |
 
 **Örnek:**

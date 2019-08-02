@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: SQL Java API, SDK ve kaynakları'
+title: "Azure Cosmos DB: SQL Java API 'SI, SDK & kaynakları"
 description: Tüm SQL Java API ve yayın tarihleri, sona erme tarihlerini ve her bir Azure Cosmos DB SQL Java SDK'sı sürümü arasında yapılan değişiklikler dahil olmak üzere SDK'sı hakkında bilgi edinin.
 author: SnehaGunda
 ms.service: cosmos-db
@@ -8,14 +8,14 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 03/13/2019
 ms.author: sngun
-ms.openlocfilehash: 7af43d24b03a4c548925bdca4189fd0524c701a4
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: bf89d419bcd97c276df35701bc4fd808f599094a
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341631"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68637696"
 ---
-# <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK'sı SQL API'si için: Sürüm Notları ve kaynakları
+# <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API için Java SDK Azure Cosmos DB: Sürüm notları ve kaynakları
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET değişiklik akışı](sql-api-sdk-dotnet-changefeed.md)
@@ -27,8 +27,8 @@ ms.locfileid: "67341631"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST Kaynak Sağlayıcısı](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [Bulkexecutor'a - .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [Bulkexecutor'a - Java](sql-api-sdk-bulk-executor-java.md)
+> * [Toplu yürütücü-.NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Toplu yürütücü-Java](sql-api-sdk-bulk-executor-java.md)
 
 SQL API Java SDK'sı, zaman uyumlu işlemler destekler. Zaman uyumsuz desteği kullanan [SQL API Async Java SDK'sı](sql-api-sdk-async-java.md). 
 
@@ -44,22 +44,22 @@ SQL API Java SDK'sı, zaman uyumlu işlemler destekler. Zaman uyumsuz desteği k
 ## <a name="release-notes"></a>Sürüm notları
 
 ### <a name="a-name213213"></a><a name="2.1.3"/>2.1.3
-* PartitionKey karma V2 için hata düzeltildi.
+* Karma v2 için PartitionKey içindeki hata düzeltildi.
 
 ### <a name="a-name212212"></a><a name="2.1.2"/>2.1.2'yi
 * Bileşik dizinler için destek eklendi.
-* Daha önce yenilemeye zorlamak için genel bir uç nokta Yöneticisi'nde hata düzeltildi.
-* Upsert eder ön koşullar doğrudan modunda olan hata düzeltildi.
+* Yenilemeyi zorlamak için genel uç nokta yöneticisinde hata düzeltildi.
+* Doğrudan modda ön koşullara sahip olan uptts için hata düzeltildi.
 
 ### <a name="a-name211211"></a><a name="2.1.1"/>2.1.1
-* Ağ geçidi adresi önbelleğinde hata düzeltildi.
+* Ağ Geçidi adres önbelleğinde hata düzeltildi.
 
 ### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
 * Çok bölgeli yazma desteği için doğrudan modu eklendi.
 * Bir proxy sunucudan ServiceUnavailable özel durumlar olarak durum IOExceptions işlemek için destek eklendi.
 * Uç nokta bulma yeniden deneme ilkesi bir hata düzeltildi.
 * Null işaretçi BaseDatabaseAccountConfigurationProvider içinde özel durumlar değil emin olmak için bir hata düzeltildi.
-* Null değerlere QueryIterator döndürmeyen emin olmak için bir hata düzeltildi.
+* Sorgu yineleyicisinin null değeri döndürmediğinden emin olmak için hata düzeltildi.
 * Büyük PartitionKey izin emin olmak için bir hata düzeltildi
 
 ### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
@@ -127,7 +127,7 @@ SQL API Java SDK'sı, zaman uyumlu işlemler destekler. Zaman uyumsuz desteği k
 * Değişiklik akışı desteği eklendi.
 * RequestOptions.setPopulateQuotaInfo aracılığıyla kota bilgilerin toplanması için destek eklendi.
 * Saklı yordam betik günlüğü RequestOptions.setScriptLoggingEnabled desteği eklendi.
-* Burada sorgu DirectHttps modunda kısıtlama hatası ile karşılaşıldığında yanıt vermemeye başlayabilir, bir hata düzeltildi.
+* DirectHttps modundaki sorgunun, kısıtlama hatalarıyla karşılaşıldığında yanıt vermemesine neden olan bir hata düzeltildi.
 * Oturum tutarlılığı modunda bir hata düzeltildi.
 * İstek hızı yüksek olduğunda, NullReferenceException HttpContext içinde neden olabilir bir hata düzeltildi.
 * DirectHttps modunun performansı İyileştirildi.
@@ -142,7 +142,7 @@ SQL API Java SDK'sı, zaman uyumlu işlemler destekler. Zaman uyumsuz desteği k
 
 ### <a name="a-name193193"></a><a name="1.9.3"/>1.9.3
 * Doğrudan bağlantı modunda bağlantı sızıntılarını önlemek için bağlantı yönetiminde bir hata düzeltildi.
-* TOP sorgusu içinde burada boş başvuru özel durumu atabilir düzeltildi.
+* ÜSTTEKI sorguda bir hata düzeltildi ve bu, NullReference özel durumu oluşturmayabilir.
 * İç önbellekler için ağ çağrısı sayısını azaltarak performansı İyileştirildi.
 * ActivityID ve daha iyi sorun giderme DocumentClientException istek URI'SİNDE eklenen durum kodu.
 
@@ -198,7 +198,7 @@ SQL API Java SDK'sı, zaman uyumlu işlemler destekler. Zaman uyumsuz desteği k
 
 ### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
 * Jeo-uzamsal dizin destekler
-* Tüm kaynaklar için kimlik özelliği doğrular. Kaynaklar için kimlikleri içeremez?, /, #, \, karakterler veya boşluk ile bitmelidir.
+* Tüm kaynaklar için ID özelliğini doğrular. Kaynaklar için kimlikleri içeremez?, /, #, \, karakterler veya boşluk ile bitmelidir.
 * Yeni üst bilgi "dizin dönüştürme ilerleme durumu" için ResourceResponse ekler.
 
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
@@ -215,7 +215,7 @@ Geçerli SDK'sı yalnızca eklenen yeni özellikler ve işlevsellik ve en iyi du
 Cosmos DB devre dışı bırakılan bir SDK'sını kullanarak yapılan tüm istekleri hizmet tarafından reddedilir.
 
 > [!WARNING]
-> Tüm sürümler **1.x** Java için SQL SDK'sının üzerinde kullanımdan kaldırılacak **30 Mayıs 2020**.
+> Java için SQL SDK 'sının tüm **1. x** sürümleri **30 Mayıs 2020**tarihinde kullanımdan kaldırılacaktır.
 > 
 >
 
@@ -228,9 +228,9 @@ Cosmos DB devre dışı bırakılan bir SDK'sını kullanarak yapılan tüm iste
 
 | Sürüm | Yayınlanma Tarihi | Sona erme tarihi |
 | --- | --- | --- |
-| [2.1.3](#2.1.3) |13 Mart 2018 |--- |
-| [2.1.2'yi](#2.1.2) |09 Mar 2018 |--- |
-| [2.1.1](#2.1.1) |13 Aralık 2018 |--- |
+| [2.1.3](#2.1.3) |13 Mar, 2018 |--- |
+| [2.1.2'yi](#2.1.2) |09 Mar, 2018 |--- |
+| [2.1.1](#2.1.1) |13. ara, 2018 |--- |
 | [2.1.0](#2.1.0) |20 Kasım 2018 |--- |
 | [2.0.0](#2.0.0) |21 Eylül 2018 |--- |
 | [1.16.4](#1.16.4) |10 Eylül 2018 |30 Mayıs 2020 |

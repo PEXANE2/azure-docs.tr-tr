@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/24/2019
+ms.date: 07/29/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8f4352a1f6a065d1e9be78f01bde95c8f00593a3
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 60474148d1eac6ca9d85fbc1d103ad612787aeae
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479785"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68607876"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>SAP iş yükü senaryolarını barındırmak ve çalıştırmak için Azure kullanın
 
@@ -43,7 +43,7 @@ Azure 'da SAP iş yükü senaryolarını barındırmak, kimlik tümleştirmesi v
 - ExpressRoute hızlı yolu ve [SAP HANA (büyük örnekler) ağ mimarisi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture) ve ılgılı belgelerde Hana büyük örnekleri için Global Reach giriş
 - [Azure Portal aracılığıyla Azure Hana büyük örnekler denetimini](hana-li-portal.md) serbest bırakma
 - [SAP NetWeaver Için Azure VM 'Lerde yüksek kullanılabilirlik sürümü SUSE Linux Enterprise Server, SAP uygulamaları için Azure NetApp Files](high-availability-guide-suse-netapp-files.md)
-
+- [Azure NetAppFiles (ANF) BETA SAP HANA IÇIN SAP NetWeaver yoks yüklemesi](lama-installation.md) sürümü
 
 
 

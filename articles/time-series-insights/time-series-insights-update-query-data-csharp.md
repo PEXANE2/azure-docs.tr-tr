@@ -1,6 +1,6 @@
 ---
-title: Bir Azure zaman serisi öngörüleri Önizleme ortamı kullanarak veri sorgulama C# kod | Microsoft Docs
-description: Bu makalede C# (C-sharp) .NET dilinde yazılan özel bir uygulama kodlama yaparak bir Azure zaman serisi görüşleri ortamından veri sorgulama işlemini açıklamaktadır.
+title: Kodu kullanarak C# Azure Time Series Insights önizleme ortamından veri sorgulama | Microsoft Docs
+description: Bu makalede, C# (C-Sharp) .net dilinde yazılmış özel bir uygulamayı kodlayarak bir Azure Time Series Insights ortamından veri sorgulama açıklanmaktadır.
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
@@ -12,36 +12,36 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: fc5f35aedd52e206433afb0f556bc1cde8296232
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8fdfd39527ccd298b78ef2c4c895d1f667d8d33b
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66237470"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677608"
 ---
-# <a name="query-data-from-the-azure-time-series-insights-preview-environment-using-c"></a>Azure zaman serisi öngörüleri Önizleme ortamı kullanarak verileri SorgulamaC#
+# <a name="query-data-from-the-azure-time-series-insights-preview-environment-using-c"></a>Kullanarak Azure Time Series Insights önizleme ortamından veri sorgulamaC#
 
-Bu C# örnek, Azure zaman serisi öngörüleri önizlemesi ortamından veri sorgulama işlemini göstermektedir.
+Bu C# örnek, Azure Time Series Insights önizleme ortamından verilerin nasıl sorgulanacağını gösterir.
 
 Örnek, Sorgu API’si kullanımının birkaç temel örneğini gösterir:
 
-1. Hazırlık adımı olarak, Azure Active Directory API'si aracılığıyla erişim belirteci alın. Bu belirteci geçirmek `Authorization` her sorgu API'si isteği üstbilgisi. Etkileşimli olmayan uygulamalar ayarlamak için bkz: [kimlik doğrulama ve yetkilendirme](time-series-insights-authentication-and-authorization.md). Ayrıca, örnek başına tanımlı sabitler doğru ayarlandığından emin olun.
-1. Kullanıcı erişimi olan ortamların listesi elde edilir. Ortamların biri ilgilenilen ortam seçilir ve daha fazla veri bu ortam için sorgulanır.
+1. Bir hazırlık adımı olarak, Azure Active Directory API 'SI aracılığıyla erişim belirtecini alın. Bu belirteci `Authorization` her sorgu API isteğinin üstbilgisine geçirin. Etkileşimli olmayan uygulamalar ayarlamak için bkz. [kimlik doğrulama ve yetkilendirme](time-series-insights-authentication-and-authorization.md). Ayrıca, örneğin başlangıcında tanımlanan tüm sabitlerin doğru ayarlandığından emin olun.
+1. Kullanıcının erişimi olan ortamların listesi alınır. Ortamların biri, ilgilendiğiniz ortam olarak alınır ve bu ortam için daha fazla veri sorgulanır.
 1. HTTPS isteğinin bir örneği olarak, ilgilenilen ortam için kullanılabilirlik verileri istenir.
 1. Web yuvası isteğinin bir örneği olarak, ilgilenilen ortam için toplam olay verileri istenir. Veriler kullanılabilir oldukları tüm zaman aralığı için istenir.
 
 > [!NOTE]
-> Bu kod örneği de bulunabilir [ https://github.com/Azure-Samples/Azure-Time-Series-Insights ](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-preview-sample).
+> Bu örnek kod, adresinde [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-preview-sample)de mevcuttur.
 
-## <a name="c-example"></a>C# örneği
+## <a name="c-example"></a>C#örneğinde
 
 [!code-csharp[csharpquery-example](~/samples-tsi/csharp-tsi-preview-sample/DataPlaneClientSampleApp/Program.cs)]
 
 > [!NOTE]
-> Yukarıdaki kod örneğinde, varsayılan ortam değerleri değiştirmeden çalıştırabilirsiniz.
+> Yukarıdaki kod örneği, varsayılan ortam değerlerini değiştirmeksizin çalıştırılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Sorgulama hakkında daha fazla bilgi edinmek için [sorgu API'si başvurusu](/rest/api/time-series-insights/preview-query).
+- Sorgulama hakkında daha fazla bilgi edinmek için [sorgu API 'si başvurusunu](https://docs.microsoft.com/rest/api/time-series-insights/preview-query)okuyun.
 
-- Nasıl olduğunu okuyun için [bir JavaScript tek sayfa uygulamasını bağlama](tutorial-create-tsi-sample-spa.md) Time Series Insights için.
+- [JavaScript tek sayfalı uygulamasını Time Series Insights bağlama](tutorial-create-tsi-sample-spa.md) hakkında bilgi edinin.

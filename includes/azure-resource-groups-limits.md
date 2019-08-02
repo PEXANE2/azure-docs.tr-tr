@@ -2,18 +2,18 @@
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 07/12/2019
+ms.date: 07/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: 5e251402a89f84a0aa67eee676c1794207dd24fb
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: f027f5b295d75c105e81360a10718239e5b08e4d
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67869887"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698290"
 ---
 | Resource | Varsayılan limit | Üst sınır |
 | --- | --- | --- |
-| Kaynak [grubu](../articles/azure-resource-manager/resource-group-overview.md#resource-groups)başına kaynaklar, kaynak türü başına |800 |Kaynak türüne göre değişir |
+| Kaynak [grubu](../articles/azure-resource-manager/resource-group-overview.md#resource-groups)başına kaynaklar, kaynak türü başına |800 |Bazı kaynak türleri 800 sınırını aşabilir. [Kaynak grubu başına 800 örnek için sınırlı kaynaklara](../articles/azure-resource-manager/resources-without-rg-limit.md)bakın. |
 | Dağıtım geçmişinde kaynak grubu başına dağıtımlar |800<sup>1</sup> |800 |
 | Dağıtım başına kaynaklar |800 |800 |
 | Benzersiz kapsam başına yönetim kilitleri |20 |20 |
@@ -25,7 +25,7 @@ ms.locfileid: "67869887"
 
 #### <a name="template-limits"></a>Şablon sınırları
 
-| Değer | Varsayılan limit | Üst sınır |
+| Value | Varsayılan limit | Üst sınır |
 | --- | --- | --- |
 | Parametreler |256 |256 |
 | Değişkenler |256 |256 |

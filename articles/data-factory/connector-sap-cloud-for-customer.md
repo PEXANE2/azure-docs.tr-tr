@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory kullanarak müşteri için/SAP buluta veri kopyalama | Microsoft Docs
-description: Desteklenen kaynak veri depolarından arasında desteklenen havuz veri depolarına müşteri için SAP Cloud (veya) için SAP Cloud müşteri için Data Factory kullanarak verileri kopyalama öğrenin.
+title: Azure Data Factory kullanarak müşteri için SAP buluttan verileri Kopyala | Microsoft Docs
+description: Müşteri için SAP buluttan verileri desteklenen kaynak veri depolarından (veya), Data Factory kullanarak müşteri için SAP bulutuna kopyalamayı öğrenin.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -10,45 +10,45 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/17/2018
+ms.date: 08/01/2018
 ms.author: jingwang
-ms.openlocfilehash: e4625b934f9e1cf98254f3dee59f9c26e8e16fb5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 30025499ae3073a04863d711423bd9556e7fc6c4
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60578717"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726030"
 ---
-# <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>SAP Cloud (C4C) müşteri için Azure Data Factory kullanarak verileri kopyalama
+# <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Azure Data Factory kullanarak müşteri için SAP bulutlarından (C4C) veri kopyalama
 
-Bu makalede, kopyalama etkinliği Azure Data Factory'de veri / için SAP Cloud (C4C) müşteri için kopyalamak için nasıl kullanılacağını özetlenmektedir. Yapılar [kopyalama etkinliği'ne genel bakış](copy-activity-overview.md) kopyalama etkinliği genel bir bakış sunan makalesi.
+Bu makalede, müşteri için SAP buluttan (C4C) verileri kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. Yapılar [kopyalama etkinliği'ne genel bakış](copy-activity-overview.md) kopyalama etkinliği genel bir bakış sunan makalesi.
 
 ## <a name="supported-capabilities"></a>Desteklenen özellikler
 
-Veri SAP Buluttan müşteri için tüm desteklenen havuz veri deposuna kopyalamak ya da veri herhangi bir desteklenen kaynak veri deposundan müşteri için SAP Cloud kopyalayın. Kaynakları/havuz kopyalama etkinliği tarafından desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablo.
+Müşteri için SAP buluttan verileri desteklenen herhangi bir havuz veri deposuna kopyalayabilir veya desteklenen herhangi bir kaynak veri deposundan verileri, müşteri için SAP bulutuna kopyalayabilirsiniz. Kaynakları/havuz kopyalama etkinliği tarafından desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablo.
 
-Özellikle, bu bağlayıcı, satış, hizmet için SAP Cloud ve sosyal Engagement çözümleri için SAP Cloud SAP bulut dahil olmak üzere müşteri için SAP Cloud / için veri kopyalamak Azure Data Factory sağlar.
+Özellikle, bu bağlayıcı Sales için SAP bulutu, hizmet için SAP bulutu ve sosyal katılım çözümleri için SAP bulutu dahil olmak üzere, müşteri için SAP buluttan veri kopyalamasını Azure Data Factory sağlar.
 
 ## <a name="getting-started"></a>Başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Aşağıdaki bölümler, Data Factory varlıklarını belirli müşteri Bağlayıcısı için SAP Cloud tanımlamak için kullanılan özellikleri hakkında ayrıntılı bilgi sağlar.
+Aşağıdaki bölümlerde, müşteri Bağlayıcısı için SAP bulutuna özgü Data Factory varlıkları tanımlamak için kullanılan özellikler hakkında ayrıntılı bilgi sağlanmaktadır.
 
 ## <a name="linked-service-properties"></a>Bağlı hizmeti özellikleri
 
-Aşağıdaki özellikler için SAP Cloud bağlı müşteri hizmetleri için desteklenir:
+Müşteri bağlantılı hizmeti için SAP bulutu için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Type özelliği ayarlanmalıdır: **SapCloudForCustomer**. | Evet |
-| url | SAP C4C OData hizmeti URL'si. | Evet |
-| username | İçin SAP C4C bağlanmak için kullanıcı adı belirtin. | Evet |
-| password | Kullanıcı adı için belirtilen kullanıcı hesabı için parola belirtin. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Evet |
+| türü | Type özelliği şu şekilde ayarlanmalıdır: **Sapcloudforcustomer**. | Evet |
+| url | SAP C4C OData hizmetinin URL 'SI. | Evet |
+| username | SAP C4C bağlanmak için Kullanıcı adını belirtin. | Evet |
+| password | Kullanıcı adı için belirttiğiniz kullanıcı hesabının parolasını belirtin. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Evet |
 | connectVia | [Integration Runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. Belirtilmezse, varsayılan Azure Integration Runtime kullanır. | Kaynak, havuz için Evet Hayır |
 
 >[!IMPORTANT]
->Müşteri için SAP buluta verileri açıkça kopyalamak için [Azure IR oluşturma](create-azure-integration-runtime.md#create-azure-ir) aşağıdaki örnekteki gibi bağlantılı hizmetteki ilişkilendirme yanı sıra müşteri için SAP bulut yakın bir konum:
+>Müşteri için SAP bulutuna veri kopyalamak için, müşteri için SAP bulutunuzun yakınında bir konum ile açık [bir Azure IR oluşturun](create-azure-integration-runtime.md#create-azure-ir) ve bağlı hizmette aşağıdaki örnekte ilişkilendirin:
 
 **Örnek:**
 
@@ -75,14 +75,14 @@ Aşağıdaki özellikler için SAP Cloud bağlı müşteri hizmetleri için dest
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
-Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi için bkz: [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölümde, müşteri veri kümesi için SAP bulut tarafından desteklenen özelliklerin bir listesini sağlar.
+Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi için bkz: [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölüm, müşteri veri kümesi için SAP bulutu tarafından desteklenen özelliklerin bir listesini sağlar.
 
-Müşteri için SAP Buluttan veri kopyalamak için dataset öğesinin type özelliği ayarlamak **SapCloudForCustomerResource**. Aşağıdaki özellikler desteklenir:
+Müşteri için SAP bulutundaki verileri kopyalamak için veri kümesinin Type özelliğini **Sapcloudforcustomerresource**olarak ayarlayın. Aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Dataset öğesinin type özelliği ayarlanmalıdır: **SapCloudForCustomerResource** |Evet |
-| path | SAP C4C OData varlık yolu belirtin. |Evet |
+| türü | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **SapCloudForCustomerResource** |Evet |
+| path | SAP C4C OData varlığının yolunu belirtin. |Evet |
 
 **Örnek:**
 
@@ -94,6 +94,7 @@ Müşteri için SAP Buluttan veri kopyalamak için dataset öğesinin type özel
         "typeProperties": {
             "path": "<path e.g. LeadCollection>"
         },
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<SAP C4C linked service>",
             "type": "LinkedServiceReference"
@@ -104,18 +105,18 @@ Müşteri için SAP Buluttan veri kopyalamak için dataset öğesinin type özel
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 
-Bölümleri ve etkinlikleri tanımlamak için mevcut özelliklerin tam listesi için bkz: [işlem hatları](concepts-pipelines-activities.md) makalesi. Bu bölümde, müşteri kaynağı için SAP bulut tarafından desteklenen özelliklerin bir listesini sağlar.
+Bölümleri ve etkinlikleri tanımlamak için mevcut özelliklerin tam listesi için bkz: [işlem hatları](concepts-pipelines-activities.md) makalesi. Bu bölüm, müşteri kaynağı için SAP bulutu tarafından desteklenen özelliklerin bir listesini sağlar.
 
-### <a name="sap-c4c-as-source"></a>SAP C4C kaynağı olarak
+### <a name="sap-c4c-as-source"></a>Kaynak olarak SAP C4C
 
-Müşteri için SAP Buluttan veri kopyalamak için kopyalama etkinliği için kaynak türünü ayarlayın. **SapCloudForCustomerSource**. Kopyalama etkinliği aşağıdaki özellikler desteklenir **kaynak** bölümü:
+Müşteri için SAP buluttan veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **SapCloudForCustomerSource**olarak ayarlayın. Kopyalama etkinliği aşağıdaki özellikler desteklenir **kaynak** bölümü:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Type özelliği ayarlanmalıdır: **SapCloudForCustomerSource**  | Evet |
-| query | Verileri okumak için özel OData sorgusu belirtin. | Hayır |
+| türü | Type özelliği şu şekilde ayarlanmalıdır: **SapCloudForCustomerSource**  | Evet |
+| query | Verileri okumak için özel OData sorgusunu belirtin. | Hayır |
 
-Belirli bir gün için verileri almak için örnek sorgu: `"query": "$filter=CreatedOn ge datetimeoffset'2017-07-31T10:02:06.4202620Z' and CreatedOn le datetimeoffset'2017-08-01T10:02:06.4202620Z'"`
+Belirli bir güne ait verileri almak için örnek sorgu:`"query": "$filter=CreatedOn ge datetimeoffset'2017-07-31T10:02:06.4202620Z' and CreatedOn le datetimeoffset'2017-08-01T10:02:06.4202620Z'"`
 
 **Örnek:**
 
@@ -149,15 +150,15 @@ Belirli bir gün için verileri almak için örnek sorgu: `"query": "$filter=Cre
 ]
 ```
 
-### <a name="sap-c4c-as-sink"></a>SAP C4C havuz olarak
+### <a name="sap-c4c-as-sink"></a>Havuz olarak SAP C4C
 
-Müşteri için SAP Cloud veri kopyalamak için kopyalama etkinliğine de Havuz türü ayarlayın. **SapCloudForCustomerSink**. Kopyalama etkinliği aşağıdaki özellikler desteklenir **havuz** bölümü:
+Müşteri için SAP bulutuna veri kopyalamak için kopyalama etkinliğindeki havuz türünü **Sapcloudforcustomersink**olarak ayarlayın. Kopyalama etkinliği aşağıdaki özellikler desteklenir **havuz** bölümü:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Type özelliği ayarlanmalıdır: **SapCloudForCustomerSink**  | Evet |
-| writeBehavior | İşlemi yazma davranışını. "Ekle", "Güncelleştir" olabilir. | Hayır. Varsayılan "ekleme". |
-| writeBatchSize | Yazma işlemi toplu iş boyutu. Toplu iş boyutu, en iyi performansı elde etmek için farklı bir tablo veya sunucusu için farklı olabilir. | Hayır. Varsayılan olarak 10. |
+| türü | Type özelliği şu şekilde ayarlanmalıdır: **SapCloudForCustomerSink**  | Evet |
+| writeBehavior | İşlemin yazma davranışı. "INSERT", "Update" olabilir. | Hayır. Varsayılan "Ekle". |
+| writeBatchSize | Yazma işleminin toplu iş boyutu. En iyi performansı elde etmek için toplu iş boyutu, farklı tablo veya sunucu için farklı olabilir. | Hayır. Varsayılan 10. |
 
 **Örnek:**
 
@@ -198,26 +199,26 @@ Müşteri için SAP Cloud veri kopyalamak için kopyalama etkinliğine de Havuz 
 ]
 ```
 
-## <a name="data-type-mapping-for-sap-cloud-for-customer"></a>Müşteri için SAP bulut için veri türü eşlemesi
+## <a name="data-type-mapping-for-sap-cloud-for-customer"></a>Müşteri için SAP bulutu için veri türü eşlemesi
 
-Müşteri için SAP Buluttan veri kopyalama yapılırken, aşağıdaki eşlemeler SAP Buluttan müşteri veri türleri için Azure Data Factory geçici veri türleri için kullanılır. Bkz: [şema ve veri türü eşlemeleri](copy-activity-schema-and-type-mapping.md) eşlemelerini nasıl yapar? kopyalama etkinliği kaynak şema ve veri türü için havuz hakkında bilgi edinmek için.
+Müşteri için SAP bulutlarından veri kopyalarken aşağıdaki eşlemeler, istemci veri türleri için SAP bulutu 'ndan, geçici veri türlerini Azure Data Factory için kullanılır. Bkz: [şema ve veri türü eşlemeleri](copy-activity-schema-and-type-mapping.md) eşlemelerini nasıl yapar? kopyalama etkinliği kaynak şema ve veri türü için havuz hakkında bilgi edinmek için.
 
 | SAP C4C OData veri türü | Veri Fabrikası geçici veri türü |
 |:--- |:--- |
-| Edm.Binary | Byte[] |
+| EDM. Binary | Byte[] |
 | Edm.Boolean | Bool |
-| Edm.Byte | Byte[] |
-| Edm.DateTime | DateTime |
-| Edm.Decimal | Decimal |
+| EDM. Byte | Byte[] |
+| Edm.DateTime | Datetime |
+| EDM. Decimal | Decimal |
 | Edm.Double | Double |
-| Edm.Single | Single |
-| Edm.Guid | Guid |
-| Edm.Int16 | Int16 |
+| EDM. Single | Single |
+| EDM. Guid | Guid |
+| EDM. Int16 | Int16 |
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |
-| Edm.SByte | Int16 |
+| EDM. SByte | Int16 |
 | Edm.String | String |
-| Edm.Time | TimeSpan |
+| EDM. Time | TimeSpan |
 | Edm.DateTimeOffset | DateTimeOffset |
 
 

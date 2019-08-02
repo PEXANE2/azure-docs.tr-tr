@@ -16,10 +16,10 @@ ms.date: 04/26/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5967f2ac8c766005cee876b5b42109062abad6a1
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68323844"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Batch uygulama paketleriyle işlem düğümlerine uygulama dağıtma
@@ -31,7 +31,7 @@ Bu makalede, Azure portal uygulama paketlerini karşıya yüklemeyi ve yönetmey
 > [!NOTE]
 > Uygulama paketleri 5 Temmuz 2017’den sonra oluşturulmuş tüm Batch havuzlarında desteklenir. Bunların 10 Mart 2016 ve 5 Haziran 2017 arasında oluşturulmuş Batch havuzlarında desteklenebilmesi için, havuzun Bulut Hizmeti yapılandırması kullanılarak oluşturulmuş olması gerekir. 10 Mart 2016’dan önce oluşturulan Batch havuzları uygulama paketlerini desteklemez.
 >
-> Uygulama paketleri oluşturmak ve yönetmek için API 'ler [Batch yönetimi .net][api_net_mgmt] library. The APIs for installing application packages on a compute node are part of the [Batch .NET][api_net] kitaplığı 'nın bir parçasıdır. Benzer özellikler, diğer diller için kullanılabilir Batch API 'Lerinde bulunur. 
+> Uygulama paketleri oluşturmak ve yönetmek için API 'Ler [Batch yönetimi .net][api_net_mgmt] kitaplığı 'nın bir parçasıdır. Uygulama paketlerini bir işlem düğümüne yüklemek için API 'Ler [Batch .net][api_net] kitaplığı 'nın bir parçasıdır. Benzer özellikler, diğer diller için kullanılabilir Batch API 'Lerinde bulunur. 
 >
 > Burada açıklanan uygulama paketleri özelliği, hizmetin önceki sürümlerinde bulunan Batch Apps özelliğinin yerini alır.
 
@@ -201,7 +201,7 @@ Uygulama paketlerini Azure portal ile yönetmeyi öğrendiğinize göre, bunlar�
 ### <a name="install-pool-application-packages"></a>Havuz uygulama paketlerini yükler
 Bir havuzdaki tüm işlem düğümlerine bir uygulama paketi yüklemek için havuz için bir veya daha fazla uygulama paketi *başvurusu* belirtin. Bir havuz için belirttiğiniz uygulama paketleri, düğüm havuza katıldığında ve düğüm yeniden başlatıldığında veya yeniden görüntülendiğinde her bir işlem düğümüne yüklenir.
 
-Batch .NET sürümünde, yeni bir havuz oluştururken veya mevcut bir havuz için bir veya daha fazla [cloudpool][net_cloudpool] .[ApplicationPackageReferences][net_cloudpool_pkgref] belirtin. [Applicationpackagereference][net_pkgref] sınıfı, bir havuzun işlem DÜĞÜMLERINE yüklenecek bir uygulama kimliği ve sürümünü belirtir.
+Batch .NET sürümünde bir veya daha fazla [Cloudpool][net_cloudpool]belirtin. Yeni bir havuz oluşturduğunuzda veya mevcut bir havuz için [Applicationpackagereferferde][net_cloudpool_pkgref] . [Applicationpackagereference][net_pkgref] sınıfı, bir havuzun işlem düğümlerine yüklenecek BIR uygulama kimliği ve sürümünü belirtir.
 
 ```csharp
 // Create the unbound CloudPool
@@ -233,7 +233,7 @@ await myCloudPool.CommitAsync();
 ### <a name="install-task-application-packages"></a>Görev uygulama paketlerini yükler
 Bir havuza benzer şekilde, bir görev için uygulama paketi *başvurularını* belirtirsiniz. Bir görev bir düğümde çalışmak üzere zamanlandığında, bu paket, görevin komut satırı yürütülmeden hemen önce indirilir ve ayıklanır. Belirtilen bir paket ve sürüm düğümde zaten yüklüyse, paket indirilmez ve mevcut paket kullanılır.
 
-Bir görev uygulama paketini yüklemek için görevin [cloudtask][net_cloudtask] .[ApplicationPackageReferences][net_cloudtask_pkgref] özelliğini yapılandırın:
+Bir görev uygulama paketini yüklemek için görevin [Cloudtask][net_cloudtask]öğesini yapılandırın. [Applicationpackagereferenceözelliği][net_cloudtask_pkgref] :
 
 ```csharp
 CloudTask task =
@@ -309,7 +309,7 @@ Mevcut bir havuz zaten bir uygulama paketiyle yapılandırıldıysa, havuz için
 * Paket başvurularını güncelleştirdiğinizde zaten havuzda olan işlem düğümleri yeni uygulama paketini otomatik olarak yüklemez. Yeni paketi almak için bu işlem düğümlerinin yeniden başlatılması veya yeniden oluşturulması gerekir.
 * Yeni bir paket dağıtıldığında oluşturulan ortam değişkenleri yeni uygulama paketi başvurularını yansıtır.
 
-Bu örnekte, mevcut havuzda [Cloudpool][net_cloudpool].[ApplicationPackageReferences][net_cloudpool_pkgref]'un biri olarak yapılandırılmış *blender* uygulamasının 2,7 sürümü vardır. Havuzun düğümlerini 2.76 b sürümüyle güncelleştirmek için yeni sürümle yeni bir [Applicationpackagereference][net_pkgref] belirtin ve değişikliği işleyin.
+Bu örnekte, mevcut havuzda [Cloudpool][net_cloudpool]'un biri olarak yapılandırılmış *blender* uygulamasının 2,7 sürümü vardır. [Applicationpackagereferinin][net_cloudpool_pkgref]. Havuzun düğümlerini 2.76 b sürümüyle güncelleştirmek için yeni sürümle yeni bir [Applicationpackagereference][net_pkgref] belirtip değişikliği işleyin.
 
 ```csharp
 string newVersion = "2.76b";
@@ -326,7 +326,7 @@ await boundPool.CommitAsync();
 Yeni sürüm yapılandırıldıktan sonra Batch hizmeti, 2.76 b sürümünü havuza katılan *Yeni* bir düğüme yüklemiştir. 2\.76 b 'yi *zaten* havuzda olan düğümlere yüklemek için yeniden başlatın veya yeniden başlatın. Yeniden başlatılan düğümlerin dosyaları önceki paket dağıtımlarından korumadığını unutmayın.
 
 ## <a name="list-the-applications-in-a-batch-account"></a>Bir Batch hesabındaki uygulamaları listeleyin
-[Applicationoperations][net_appops] .[ListApplicationSummaries][net_appops_listappsummaries] yöntemini kullanarak uygulamaları ve bunların paketlerini bir Batch hesabında listeleyebilirsiniz.
+Uygulamaları ve bunların paketlerini, [Applicationoperations][net_appops]' i kullanarak bir Batch hesabında listeleyebilirsiniz. [Listapplicationözetler][net_appops_listappsummaries] yöntemi.
 
 ```csharp
 // List the applications and their application packages in the Batch account.
@@ -346,7 +346,7 @@ foreach (ApplicationSummary app in applications)
 Uygulama paketleriyle, müşterilerinizin işlerinin uygulamalarını seçmesini ve Batch özellikli hizmetlerinizle işleri işlerken kullanılacak tam sürümü belirtmesini sağlayabilirsiniz. Müşterilerinizin hizmetinize kendi uygulamalarını yükleme ve izleme özelliği de sağlayabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* REST API kullanılarak yüklenecek paketlerin nasıl belirtilceğine ilişkin[bilgiler için bir] [hesaba havuz ekleme]içindeki [Batch REST API][api_rest] also provides support to work with application packages. For example, see the [applicationPackageReferences][rest_add_pool_with_packages] öğesi. Toplu REST API kullanarak uygulama bilgilerini alma hakkında ayrıntılar için bkz. [uygulamalar][rest_applications] .
+* [Batch REST API][api_rest] Ayrıca uygulama paketleriyle çalışmak için destek sağlar. Örneğin, REST API kullanarak yüklenecek paketleri belirtme hakkında bilgi için bkz. [bir hesaba havuz ekleme][rest_add_pool] Içindeki [applicationpackagereferges][rest_add_pool_with_packages] öğesi. Toplu REST API kullanarak uygulama bilgilerini alma hakkında ayrıntılar için bkz. [uygulamalar][rest_applications] .
 * [Batch yönetimi .NET ile Azure Batch hesaplarını ve kotaları](batch-management-dotnet.md)programlı bir şekilde yönetmeyi öğrenin. [Batch yönetimi .net][api_net_mgmt] kitaplığı, Batch uygulamanız veya hizmetiniz için hesap oluşturma ve silme özelliklerini etkinleştirebilir.
 
 [api_net]: https://docs.microsoft.com/dotnet/api/overview/azure/batch/client?view=azure-dotnet

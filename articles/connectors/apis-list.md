@@ -9,16 +9,16 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: article
 ms.date: 05/08/2019
-ms.openlocfilehash: ab2413cfce8b87fbe1899a0b7c465c6e6c27a3f5
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 126c3fb348b1d53769a818ae4b21fcdbbef65615
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277637"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68517230"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Azure Logic Apps için bağlayıcılar
 
-Bağlayıcılar, diğer uygulamalar, hizmetler, sistemler, protokoller ve platformlar arasında olaylara, verilere ve eylemlere Azure Logic Apps hızlı erişim sağlar. Mantıksal uygulamalarınızdaki bağlayıcıları kullanarak, oluşturduğunuz ve zaten sahip olduğunuz verilerle görevleri gerçekleştirmek üzere bulut ve şirket içi uygulamalarınızın yeteneklerini genişletmelisiniz.
+Bağlayıcılar; Azure Logic Apps’ten diğer uygulamalar, hizmetler, sistemler, protokoller ve platformlar arasındaki olaylara, verilere ve eylemlere hızlı erişilmesini sağlar. Mantıksal uygulamalarınızdaki bağlayıcıları kullanarak, oluşturduğunuz ve zaten sahip olduğunuz verilerle görevler gerçekleştirmek için bulut ve şirket içi uygulamalarınızın yeteneklerini genişletebilirsiniz.
 
 Logic Apps [yüzlerce bağlayıcı](https://docs.microsoft.com/connectors)sunurken, bu makalede binlerce uygulama tarafından başarıyla kullanılan popüler ve daha yaygın kullanılan bağlayıcılar ve veri ve bilgi işleme için milyonlarca yürütme açıklanmaktadır. Bağlayıcıların tam listesini ve Tetikleyiciler, Eylemler ve sınırlar gibi her bağlayıcının başvuru bilgilerini bulmak için [Bağlayıcılar genel bakış](https://docs.microsoft.com/connectors)altındaki bağlayıcı başvuru sayfalarını gözden geçirin. Ayrıca [Tetikleyiciler ve eylemler](#triggers-actions), [Logic Apps fiyatlandırma modeli](../logic-apps/logic-apps-pricing.md)ve [Logic Apps fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/logic-apps/)hakkında daha fazla bilgi edinin. 
 
@@ -35,7 +35,7 @@ Bağlayıcılar, yerleşik Tetikleyiciler ve eylemler olarak ya da yönetilen ba
   > Bir [tümleştirme hizmeti ortamı (ıSE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) içindeki Logic Apps, bir Azure sanal ağındaki kaynaklara doğrudan erişebilir.
   > ISE kullandığınızda, **temel** etiketini görüntüleyen yerleşik Tetikleyiciler ve Eylemler, Logic Apps ile aynı Ise içinde çalışır. Logic Apps, yerleşik Tetikleyiciler ve ıSE 'de çalışan yerleşik Eylemler, tüketim tabanlı fiyatlandırma planından farklı bir fiyatlandırma planı kullanır.
   >
-  > Sesleri oluşturma hakkında daha fazla bilgi için bkz. [Azure Logic Apps Azure sanal ağlarına bağlanma](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#create-logic-apps-environment). 
+  > Sesleri oluşturma hakkında daha fazla bilgi için bkz. [Azure Logic Apps Azure sanal ağlarına bağlanma](../logic-apps/connect-virtual-network-vnet-isolated-environment.md). 
   > Fiyatlandırma hakkında daha fazla bilgi için bkz. [Logic Apps fiyatlandırma modeli](../logic-apps/logic-apps-pricing.md).
 
 <a name="managed-connectors"></a>
@@ -59,11 +59,11 @@ Bağlayıcılar, yerleşik Tetikleyiciler ve eylemler olarak ya da yönetilen ba
   |||
 
   > [!NOTE]
-  > Bir [tümleştirme hizmeti ortamı (ıSE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) içindeki Logic Apps, bir Azure sanal ağındaki kaynaklara doğrudan erişebilir. ISE 'yi kullandığınızda, Ise etiketini görüntüleyen standart ve kurumsal bağlayıcılar  , Logic Apps ile aynı çalışma alanında çalışır. ISE etiketini görüntülememe ve genel Logic Apps hizmetinde çalışan bağlayıcılar.
+  > Bir [tümleştirme hizmeti ortamı (ıSE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) içindeki Logic Apps, bir Azure sanal ağındaki kaynaklara doğrudan erişebilir. ISE 'yi kullandığınızda, Ise etiketini görüntüleyen standart ve kurumsal bağlayıcılar , Logic Apps ile aynı çalışma alanında çalışır. ISE etiketini görüntülememe ve genel Logic Apps hizmetinde çalışan bağlayıcılar.
   >
   > Bir Azure sanal ağına bağlı şirket içi sistemler için, mantıksal uygulamalarınızın **Ise** etıketı, http eylemi veya [özel bağlayıcı](#custom)içeren bir bağlayıcıyı kullanarak bu sistemlere doğrudan erişebilmesi için o ağa o ağa ekleyin. ISE 'de çalışan Logic Apps ve bağlayıcılar, tüketim tabanlı fiyatlandırma planından farklı bir fiyatlandırma planı kullanır. 
   >
-  > Sesleri oluşturma hakkında daha fazla bilgi için bkz. [Azure Logic Apps Azure sanal ağlarına bağlanma](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#create-logic-apps-environment).
+  > Sesleri oluşturma hakkında daha fazla bilgi için bkz. [Azure Logic Apps Azure sanal ağlarına bağlanma](../logic-apps/connect-virtual-network-vnet-isolated-environment.md).
   > Fiyatlandırma hakkında daha fazla bilgi için bkz. [Logic Apps fiyatlandırma modeli](../logic-apps/logic-apps-pricing.md).
 
   Bağlayıcıların tam listesi ve bir Openapı (eski adıyla Swagger) açıklaması tarafından tanımlanan eylemler ve tetikleyiciler gibi her bağlayıcının başvuru bilgileri ve herhangi bir sınırlama için, [Bağlayıcılar genel bakış](/connectors/)altındaki tam listeyi bulabilirsiniz. Fiyatlandırma bilgileri için bkz. [Logic Apps fiyatlandırma modeli](../logic-apps/logic-apps-pricing.md)ve [Logic Apps fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/logic-apps/). 
@@ -76,7 +76,7 @@ Logic Apps, zamanlama tabanlı iş akışları oluşturabilmek, mantıksal uygul
 
 |   |   |   |   | 
 |---|---|---|---| 
-| [![API simge][schedule-icon]<br/>**zamanlaması**][recurrence-doc] | -Mantıksal uygulamanızı, **yineleme** tetikleyicisiyle temel ve karmaşık tekrarlarla değişen belirli bir zamanlamaya göre çalıştırın. <p>- **Gecikme** eylemini kullanarak mantıksal uygulamanızı belirtilen süre için duraklatın. <p>-Mantıksal uygulamanızı, belirtilen tarih ve saate kadar ertele tamamlanana kadar  duraklatın. | [![API simgesi][http-icon]<br/>**http**][http-doc] | Http, http + Swagger ve HTTP + Web kancasının her iki tetikleyici ve eylemi ile HTTP üzerinden herhangi bir uç nokta ile iletişim kurun. | 
+| [![API simge][schedule-icon]<br/>**zamanlaması**][recurrence-doc] | -Mantıksal uygulamanızı, **yineleme** tetikleyicisiyle temel ve karmaşık tekrarlarla değişen belirli bir zamanlamaya göre çalıştırın. <p>- **Gecikme** eylemini kullanarak mantıksal uygulamanızı belirtilen süre için duraklatın. <p>-Mantıksal uygulamanızı, belirtilen tarih ve saate kadar ertele tamamlanana kadar duraklatın. | [![API simgesi][http-icon]<br/>**http**][http-doc] | Http, http + Swagger ve HTTP + Web kancasının her iki tetikleyici ve eylemi ile HTTP üzerinden herhangi bir uç nokta ile iletişim kurun. | 
 | [![API simgesi][http-request-icon]<br/>**isteği**][http-request-doc] | -Mantıksal uygulamanızı diğer uygulamalardan veya hizmetlerden çağrılabilir, Event Grid Kaynak olaylarında tetikleyin veya **istek** tetikleyicisiyle Azure Güvenlik Merkezi uyarılarına yönelik yanıtlara karşı tetikleyin. <p>- **Yanıt** eylemiyle bir uygulamaya veya hizmete yanıt gönderin. | [![API simgesi][batch-icon]<br/>**Batch**][batch-doc] | - **Batch iletileri** tetikleyicisiyle toplu olarak ileti işleme. <p>- **Batch 'e Ileti gönder** eylemine sahip mevcut toplu iş tetikleyicilerine sahip Logic Apps 'i çağırın. | 
 | [![API simgesi][azure-functions-icon]<br/>**Azure işlevleri**][azure-functions-doc] | Mantıksal uygulamalarınızdan özel kod parçacıkları (C# veya Node. js) çalıştıran Azure işlevlerini çağırın. | [![API simgesi][azure-api-management-icon]</br>**Azure API Management**][azure-api-management-doc] | Azure API Management ile yönettiğiniz ve yayımladığınız kendi API 'leriniz tarafından tanımlanan Tetikleyicileri ve eylemleri çağırın. | 
 | [![API simgesi][azure-app-services-icon]<br/>**Azure Uygulama Hizmetleri**][azure-app-services-doc] | Azure App Service barındırılan Azure API Apps veya Web Apps çağırın. Bu uygulamalar tarafından tanımlanan Tetikleyiciler ve Eylemler, Swagger dahil edildiğinde diğer birinci sınıf Tetikleyicileri ve eylemleri gibi görünür. | [![API simgesi][azure-logic-apps-icon]<br/>**Azure<br/>Logic Apps**][nested-logic-app-doc] | Istek tetikleyicisi ile başlayan diğer mantıksal uygulamaları çağırın. | 
@@ -112,9 +112,9 @@ Logic Apps, bu hizmet veya sistemlerle görevleri, işlemleri ve iş akışları
 
 |   |   |   |   | 
 |---|---|---|---| 
-| [![API simgesi][azure-service-bus-icon]<br/>**Azure Service Bus**][azure-service-bus-doc] | Logic Apps ' de en sık kullanılan bağlayıcı ile zaman uyumsuz iletileri, oturumları ve konu aboneliklerini yönetin. | [![API simgesi][sql-server-icon]<br/>**SQL Server**][sql-server-doc] | Kayıtları yönetmek, saklı yordamları çalıştırmak veya sorgular gerçekleştirmek için, şirket içi SQL Server veya buluttaki bir Azure SQL veritabanı 'na bağlanın. | 
+| [![API simgesi][azure-service-bus-icon]<br/>**Azure Service Bus**][azure-service-bus-doc] | Logic Apps’te en yaygın kullanılan bağlayıcı ile zaman uyumsuz iletileri, oturumları ve konu aboneliklerini yönetin. | [![API simgesi][sql-server-icon]<br/>**SQL Server**][sql-server-doc] | Kayıtları yönetmek, saklı yordamları çalıştırmak veya sorgular gerçekleştirmek için, şirket içi SQL Server veya buluttaki bir Azure SQL veritabanı 'na bağlanın. | 
 | [![API simgesi][office-365-outlook-icon]<br/>**Office 365<br/>Outlook**][office-365-outlook-doc] | E-postalar, görevler, takvim olayları ve toplantılar, kişiler, istekler ve daha fazlasını oluşturup yönetebilmeniz için Office 365 e-posta hesabınıza bağlanın. | [![API simgesi][azure-blob-storage-icon]<br/>**Azure Blob<br/>depolama**][azure-blob-storage-doc] | Blob içeriğini oluşturup yönetebilmeniz için depolama hesabınıza bağlanın. | 
-| [![API simgesi][sftp-icon]<br/>**SFTP**][sftp-doc] | Dosya ve klasörlerle çalışabilmeniz için internet 'ten erişebileceğiniz SFTP sunucularına bağlanın. | [![API simgesi][sharepoint-online-icon]<br/>**SharePoint<br/>online**][sharepoint-online-doc] | Dosyaları, ekleri, klasörleri ve daha fazlasını yönetebilmeniz için SharePoint Online 'a bağlanın. | 
+| [![API simgesi][sftp-icon]<br/>**SFTP**][sftp-doc] | Dosya ve klasörlerinizle çalışabilmeniz için İnternet’ten erişebileceğiniz SFTP sunucularına bağlanın. | [![API simgesi][sharepoint-online-icon]<br/>**SharePoint<br/>online**][sharepoint-online-doc] | Dosyaları, ekleri, klasörleri ve daha fazlasını yönetebilmeniz için SharePoint Online 'a bağlanın. | 
 | [![API simgesi][dynamics-365-icon]<br/>**Dynamics 365<br/>CRM Online**][dynamics-365-doc] | Kayıtlar, öğeler ve daha fazlasını oluşturup yönetebilmeniz için Dynamics 365 hesabınıza bağlanın. | [![API simgesi][ftp-icon]<br/>**FTP**][ftp-doc] | Dosya ve klasörlerle çalışabilmeniz için internet 'ten erişebileceğiniz FTP sunucularına bağlanın. | 
 | [![API simgesi][salesforce-icon]<br/>**Salesforce**][salesforce-doc] | Kayıtlar, işler, nesneler ve daha fazlası gibi öğeleri oluşturup yönetebilmeniz için Salesforce hesabınıza bağlanın. | [![API simgesi][twitter-icon]<br/>**Twitter**][twitter-doc] | Twitter, takicileri, zaman çizelgenizi ve daha fazlasını yönetebilmeniz için Twitter hesabınıza bağlanın. Tasarruf etlerinizi SQL, Excel veya SharePoint 'e kaydedin. | 
 | [![API simgesi][azure-event-hubs-icon]<br/>**Azure Event Hubs**][azure-event-hubs-doc] | Olayları bir olay hub 'ı aracılığıyla tüketin ve yayımlayın. Örneğin, Event Hubs ile mantıksal uygulamanızdan çıkış alın ve ardından bu çıktıyı gerçek zamanlı bir analiz sağlayıcısına gönderin. | [![API simgesi][azure-event-grid-icon]<br/>**Azure olay**</br>**Kılavuzu**][azure-event-grid-doc] | Örneğin, Azure kaynakları veya üçüncü taraf kaynakları değiştiğinde Event Grid tarafından yayımlanan olayları izleyin. | 
@@ -196,7 +196,7 @@ Bağlantılar, hizmet veya sistem izin verdiği sürece hedef hizmete veya siste
 >
 > Bir ıSE içinde oluşturulan özel bağlayıcılar şirket içi veri ağ geçidi ile çalışmaz. Ancak bu bağlayıcılar, ıSE 'yi barındıran bir Azure sanal ağına bağlı şirket içi veri kaynaklarına doğrudan erişebilir. Bu nedenle, bir ıSE içindeki Logic Apps, bu kaynaklarla iletişim kurarken veri ağ geçidine ihtiyaç duymamasından kaynaklanıyor olabilir.
 >
-> Sesleri oluşturma hakkında daha fazla bilgi için bkz. [Azure Logic Apps Azure sanal ağlarına bağlanma](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#create-logic-apps-environment).
+> Sesleri oluşturma hakkında daha fazla bilgi için bkz. [Azure Logic Apps Azure sanal ağlarına bağlanma](../logic-apps/connect-virtual-network-vnet-isolated-environment.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

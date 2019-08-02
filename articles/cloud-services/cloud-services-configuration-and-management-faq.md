@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 925461ba6c74fe0bcf286692c1a19bb4e7c02dfa
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 6217fe51a0231ee1bd34f9fbe8edef47ee073209
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68254415"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609712"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services yapılandırma ve yönetim sorunları: Sık sorulan sorular (SSS)
 
@@ -219,7 +219,7 @@ Cloud Services, Azure Resource Manager tabanlı bir hizmet olmadığı için rol
 
 Bkz. [Azure 'daki farklı rolleri anlayın](../role-based-access-control/rbac-and-directory-admin-roles.md).
 
-## <a name="remote-desktop"></a>Uzak Masaüstü
+## <a name="remote-desktop"></a>Uzak masaüstü
 
 ### <a name="can-microsoft-internal-engineers-remote-desktop-to-cloud-service-instances-without-permission"></a>Microsoft tarafından bulut hizmeti örneklerine izin verilmeden Microsoft iç mühendisleri uzak masaüstü olabilir mi?
 Microsoft, sahip veya kendi designee 'den, yazılı izin (e-posta veya başka yazılı iletişim) olmadan bulut hizmetinize iç mühendislere izin vermeyecek katı bir işlem izler.
@@ -297,7 +297,7 @@ Başlatma görevinde PowerShell betiği kullanarak kötü amaçlı yazılımdan 
 - [PowerShell başlangıç görevi oluşturma](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task)
 - [Set-AzureServiceAntimalwareExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/Set-AzureServiceAntimalwareExtension?view=azuresmps-4.0.0 )
 
-Kötü amaçlı yazılımdan koruma senaryoları ve portaldan nasıl etkinleştirileceği hakkında daha fazla bilgi için bkz. [kötü amaçlı yazılımdan koruma senaryoları](../security/azure-security-antimalware.md#antimalware-deployment-scenarios).
+Kötü amaçlı yazılımdan koruma senaryoları ve portaldan nasıl etkinleştirileceği hakkında daha fazla bilgi için bkz. [kötü amaçlı yazılımdan koruma senaryoları](../security/fundamentals/antimalware.md#antimalware-deployment-scenarios).
 
 ### <a name="how-to-enable-server-name-indication-sni-for-cloud-services"></a>Cloud Services için Sunucu Adı Belirtme (SNı) nasıl etkinleştirilir?
 

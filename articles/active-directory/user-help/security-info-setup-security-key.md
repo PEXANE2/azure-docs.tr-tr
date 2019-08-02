@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d2f06b054e433c0320019548c56539d102beaad
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 25ac894db42b2b5ee2612e2e3b2906bc2bffcc4c
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68386505"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717396"
 ---
 # <a name="set-up-security-info-to-use-a-security-key-preview"></a>Güvenlik anahtarı kullanmak için güvenlik bilgilerini ayarlama (Önizleme)
 
@@ -30,26 +30,26 @@ Güvenlik anahtarlarını, kuruluşunuzda bir passwordless oturum açma yöntemi
 
 ## <a name="what-is-a-security-key"></a>Güvenlik anahtarı nedir?
 
-Şu anda, [hızlı kimlik çevrimiçi (FIDO)](https://fidoalliance.org/fido2/) (FIDO2) parolasız kimlik doğrulama yöntemi kullanarak birkaç tasarımı ve güvenlik anahtarı sağlayıcısını destekliyoruz. Bu yöntem, kuruluşunuzun bulut tabanlı kaynaklarına ve desteklenen tarayıcılara erişim sağlamak için iş veya okul hesabınızda bir kez oturum açmanıza olanak tanır.
+Şu anda [hızlı kimlik çevrimiçi (FIDO)](https://fidoalliance.org/fido2/) (FIDO2) parolasız kimlik doğrulama protokollerini kullanarak birkaç tasarımı ve güvenlik anahtarı sağlayıcısını destekliyoruz. Bu anahtarlar, desteklenen bir cihaz ve Web tarayıcısından kuruluşunuzun bulut tabanlı kaynaklarına erişmek için iş veya okul hesabınızda oturum açmanıza olanak tanır.
 
 Yöneticiniz veya kuruluşunuz size iş veya okul hesabınız için ihtiyaç duydukları bir güvenlik anahtarı sağlar. Kullanabileceğiniz farklı güvenlik anahtarı türleri vardır, örneğin cihazınıza taktığınız USB anahtarı veya bir NFC okuyucusuna dokunmanız gereken bir NFC anahtarı vardır. Kuruluşunuzun belgelerinden, ne tür olduğunu da içeren güvenlik anahtarınız hakkında daha fazla bilgi edinebilirsiniz.
 
 > [!Note]
-> Bir FIDO2 güvenlik anahtarı kullandıysanız, Microsoft Authenticator uygulaması veya Windows Hello gibi kullanabileceğiniz diğer passwordless kimlik doğrulama yöntemleri vardır. Microsoft Authenticator uygulaması hakkında daha fazla bilgi için, bkz. [Microsoft Authenticator uygulama nedir?](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-overview). Windows Hello hakkında daha fazla bilgi için bkz. [Windows Hello 'ya genel bakış](https://www.microsoft.com/windows/windows-hello).
+> Bir FIDO2 güvenlik anahtarı kullandıysanız, Microsoft Authenticator uygulaması veya Windows Hello gibi kullanabileceğiniz diğer passwordless kimlik doğrulama yöntemleri vardır. Microsoft Authenticator uygulaması hakkında daha fazla bilgi için, bkz. [Microsoft Authenticator uygulama nedir?](user-help-auth-app-overview.md). Windows Hello hakkında daha fazla bilgi için bkz. [Windows Hello 'ya genel bakış](https://www.microsoft.com/windows/windows-hello).
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Güvenlik anahtarınızı kaydetmeye başlamadan önce aşağıdakileri göz önünde bulabilirsiniz:
+Güvenlik anahtarınızı kaydedebilmek için aşağıdaki koşulların doğru olması gerekir:
 
 - Yöneticiniz bu özelliği kuruluşunuzda kullanılmak üzere açmış.
 
-- En az Windows 10, sürüm 1903 çalıştıran bir cihazımız ve Microsoft Edge tarayıcısını kullanıyorsunuz.
+- Windows 10 Mayıs 2019 güncelleştirme ve desteklenen bir tarayıcı kullanarak bir cihazımız.
 
-- Yöneticinizden veya kuruluşunuzun fiziksel bir güvenlik anahtarını aldınız. Güvenlik anahtarınız hem FIDO2 hem de Microsoft uyumlu olmalıdır. Güvenlik anahtarınız ve uyumlu olup olmadığı hakkında sorularınız varsa kuruluşunuzun yardım masasına başvurun.
+- Yöneticiniz veya kuruluşunuz tarafından onaylanan bir fiziksel güvenlik anahtarınız vardır. Güvenlik anahtarınız hem FIDO2 hem de Microsoft uyumlu olmalıdır. Güvenlik anahtarınız ve uyumlu olup olmadığı hakkında sorularınız varsa kuruluşunuzun yardım masasına başvurun.
 
 ## <a name="register-your-security-key"></a>Güvenlik anahtarınızı kaydedin
 
-Anahtar kullanarak iş veya okul hesabınızda oturum açabilmeniz için, güvenlik anahtarınızı Windows ve benzersiz bir PIN ile çalışacak şekilde hazırlamanız gerekir.
+Anahtar kullanarak iş veya okul hesabınızda oturum açabilmeniz için güvenlik anahtarınızı oluşturmanız ve bu anahtara benzersiz bir PIN sağlamanız gerekir. Hesabınıza kayıtlı en fazla 10 anahtarınız olabilir. 
 
 1. https://myprofile.microsoft.com ' De **Profilim** sayfasına gidin ve henüz yapmadıysanız oturum açın.
 
@@ -96,7 +96,7 @@ Anahtar kullanarak iş veya okul hesabınızda oturum açabilmeniz için, güven
 
 ## <a name="delete-a-security-key-from-your-security-info"></a>Güvenlik bilgilerinizden bir güvenlik anahtarı silme
 
-Güvenlik anahtarınızı artık kullanmak istemiyorsanız, anahtarı güvenlik bilgilerinizden silebilirsiniz. Bu, güvenlik anahtarının iş veya okul hesabınızla kullanılmasını durdururken, güvenlik anahtarı verilerinizi ve kimlik bilgilerini depolamaya devam eder. Güvenlik anahtarından veri ve kimlik bilgisi bilgilerini silmek için, bu makaledeki [Microsoft uyumlu güvenlik anahtarını sıfırlama](#reset-your-security-key) bölümündeki yönergeleri izlemeniz gerekir.
+Artık bir güvenlik anahtarı kullanmak istemiyorsanız, güvenlik bilgilerinizden anahtarı silebilirsiniz. Bu, güvenlik anahtarının iş veya okul hesabınızla kullanılmasını durdururken, güvenlik anahtarı verilerinizi ve kimlik bilgilerini depolamaya devam eder. Güvenlik anahtarından veri ve kimlik bilgisi bilgilerini silmek için, bu makaledeki [Microsoft uyumlu güvenlik anahtarını sıfırlama](#reset-your-security-key) bölümündeki yönergeleri izlemeniz gerekir.
 
 1. Kaldırmak için güvenlik anahtarından **Sil** bağlantısını seçin.
 
@@ -105,7 +105,7 @@ Güvenlik anahtarınızı artık kullanmak istemiyorsanız, anahtarı güvenlik 
     Güvenlik anahtarınız silinir ve artık iş veya okul hesabınızda oturum açmak için kullanamazsınız.
 
 >[!Important]
->Bu güvenlik anahtarını yanlışlıkla sildiyseniz, bu makalenin [güvenlik anahtarınızı kaydetme](#register-your-security-key) bölümündeki yönergeleri kullanarak yeniden kaydetmeniz gerekir.
+>Bir güvenlik anahtarını yanlışlıkla silerseniz, bu makalenin [güvenlik anahtarınızı kaydetme](#register-your-security-key) bölümündeki yönergeleri kullanarak yeniden kaydedebilirsiniz.
 
 ## <a name="manage-your-security-key-settings-from-windows-settings"></a>Güvenlik anahtarı ayarlarınızı Windows ayarlarından yönetme
 
@@ -138,29 +138,19 @@ Güvenlik anahtarınız için yeni bir güvenlik anahtarı PIN kodu oluşturabil
 
 1. Windows ayarları uygulamasını açın, **hesaplar**' ı seçin, **oturum açma seçenekleri**' ni seçin, **güvenlik anahtarı**' nı seçin ve ardından **Yönet**' i seçin.
 
-2. Kimlik bilgilerinizi doğrulamak için, USB bağlantı noktasına güvenlik anahtarınızı ekleyin veya NFC okuyucunuz ' e dokunun. 5
+2. Kimlik bilgilerinizi doğrulamak için, USB bağlantı noktasına güvenlik anahtarınızı ekleyin veya NFC okuyucunuz ' e dokunun.
 3. **Güvenlik anahtarı sabitleme** alanından **Ekle** ' yi seçin, yeni güvenlik anahtarı PIN 'inizi yazıp onaylayın ve sonra **Tamam**' ı seçin.
 
-    Güvenlik anahtarı, iş veya okul hesabınızla kullanılmak üzere yeni güvenlik anahtarı PIN 'ı ile güncelleştirilir. PIN 'inizi yeniden değiştirmeye karar verirseniz **Değiştir** düğmesini seçebilirsiniz. 6
+     Güvenlik anahtarı, iş veya okul hesabınızla kullanılmak üzere yeni güvenlik anahtarı PIN 'ı ile güncelleştirilir. PIN 'inizi yeniden değiştirmeye karar verirseniz, **Değiştir** düğmesini seçebilirsiniz.
 4. **Yönet** ekranını kapatmak için **Kapat** ' ı seçin.
 
 ## <a name="additional-security-info-methods"></a>Ek güvenlik bilgileri yöntemleri
 
-Kuruluşunuzun, kimliğinizi doğrulamak için size ne olduğuna bağlı olarak kimliğinizi nasıl öğrendiğini öğrenmek için ek seçenekleriniz vardır. Seçeneklere şunlar dahildir:
-
-- **Authenticator uygulaması.** İki adımlı doğrulama veya parola sıfırlama için bir onay bildirimi ya da rastgele oluşturulmuş bir onay kodu almak üzere bir Authenticator uygulaması indirin ve kullanın. Microsoft Authenticator uygulamasını ayarlama ve kullanma hakkında adım adım yönergeler için bkz. [güvenlik bilgilerini bir Authenticator uygulaması kullanmak Için ayarlama](security-info-setup-auth-app.md).
-
-- **Mobil cihaz metni.** Mobil cihaz numaranızı girin ve iki adımlı doğrulama veya parola sıfırlama için kullanacağınız kodu bir metin alın. Bir SMS mesajı (SMS) ile kimliğinizi doğrulamaya yönelik adım adım yönergeler için bkz. [güvenlik bilgilerini ayarlama hakkında bilgi iletisi (SMS)](security-info-setup-text-msg.md).
-
-- **Mobil cihaz veya iş telefonu çağrısı.** Mobil cihaz numaranızı girin ve iki adımlı doğrulama veya parola sıfırlama için bir telefon araması alın. Telefon numarası ile kimliğinizi doğrulama hakkında adım adım yönergeler için bkz. [telefon aramalarını kullanmak için güvenlik bilgilerini ayarlama](security-info-setup-phone-number.md).
-
-- **E-posta adresi.** Parola sıfırlama için bir e-posta almak üzere iş veya okul e-posta adresinizi girin. Bu seçenek, iki adımlı doğrulama için kullanılamaz. E-postanızı ayarlama hakkında adım adım yönergeler için bkz. [e-posta kullanmak için güvenlik bilgilerini ayarlama](security-info-setup-email.md).
-
-- **Güvenlik soruları.** Yöneticiniz tarafından kuruluşunuz için oluşturulan bazı güvenlik sorularını yanıtlayın. Bu seçenek yalnızca parola sıfırlama için kullanılabilir ve iki adımlı doğrulama için kullanılamaz. Güvenlik sorularınızı ayarlama hakkında adım adım yönergeler için Güvenlik [sorularını kullanmak üzere güvenlik bilgilerini ayarlama](security-info-setup-questions.md) makalesine bakın.
+Bir güvenlik anahtarını kaydetmek için, en az bir ek güvenlik doğrulama yöntemine kaydolmalısınız. Daha fazla bilgi için [genel bakış bölümüne](security-info-add-update-methods-overview.md) bakın. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Passwordless kimlik doğrulama yöntemleri hakkında daha fazla bilgi için [Microsoft 'un Azure AD 'de FIDO2 güvenlik anahtarlarının genel önizlemesine başlayan, passwordless oturum açma](https://www.onmsft.com/news/microsofts-azure-ad-begins-public-preview-of-fido2-security-keys-enabling-passwordless-logins) blogunu etkinleştiren veya [Microsoft Authenticator uygulamasının](https://docs.microsoft.com/azure/active-directory/user-help8user-help-auth-app-overview) [ne olduğunu okuduğunuzu okuyun. Windows Hello genel bakış](https://www.microsoft.com/windows/windows-hello) makaleleri.
+- Passwordless kimlik doğrulama yöntemleri hakkında daha fazla bilgi için [Microsoft 'un Azure AD 'de FIDO2 güvenlik anahtarlarının genel önizlemesine başlayan, passwordless oturum açma](https://www.onmsft.com/news/microsofts-azure-ad-begins-public-preview-of-fido2-security-keys-enabling-passwordless-logins) blogunu etkinleştiren veya [Microsoft Authenticator uygulamasının](user-help-auth-app-overview.md) [ne olduğunu okuduğunuzu okuyun. Windows Hello genel bakış](https://www.microsoft.com/windows/windows-hello) makaleleri.
 
 - [Microsoft uyumlu güvenlik anahtarları](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/microsoft-compatible-security-key)hakkında daha ayrıntılı bilgi için.
 

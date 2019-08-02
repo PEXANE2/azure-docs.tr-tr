@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: AyoOlubeko
 ms.author: craigg
 ms.reviewer: sstein
-manager: craigg
 ms.date: 10/30/2018
-ms.openlocfilehash: e17f09c3fa031f5dc55fabaf638e67ab62f84f4c
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 0a6b45db3c8b4071b591ca2b5fc604b986598c0c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875816"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570352"
 ---
 # <a name="run-ad-hoc-analytics-queries-across-multiple-azure-sql-databases"></a>Birden çok Azure SQL veritabanı arasında geçici analiz sorguları çalıştırma
 
@@ -73,7 +72,7 @@ Bu düzene ulaşmak için, tüm kiracı tablolarında verilerin hangi kiracıya 
 
 Bu alıştırma, *adhocretaşıma* veritabanını dağıtır. Bu, tüm kiracı veritabanlarında sorgulamak için kullanılan şemayı içeren baş veritabanıdır. Veritabanı, örnek uygulamadaki tüm yönetim ile ilgili veritabanları için kullanılan sunucu olan var olan katalog sunucusuna dağıtılır.
 
-1. Aç... \\\\\\  PowerShell ISE 'de demo-AdhocReporting. ps1 ' de işletimsel analitik geçici raporlama ve aşağıdaki değerleri ayarlama modüllerini öğreniyor: \\
+1. Aç... \\\\\\ PowerShell ISE 'de demo-AdhocReporting. ps1 ' de işletimsel analitik geçici raporlama ve aşağıdaki değerleri ayarlama modüllerini öğreniyor: \\
    * **$DemoScenario** = 2, geçici **analiz veritabanını dağıtın**.
 
 2. Betiği çalıştırmak ve *adhocretaşıma* veritabanını oluşturmak için **F5** ' e basın.

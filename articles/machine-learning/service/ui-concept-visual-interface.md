@@ -1,7 +1,7 @@
 ---
 title: Görsel arabirim
 titleSuffix: Azure Machine Learning service
-description: Koşulları, kavramlar ve Azure Machine Learning hizmeti için (Önizleme) görsel arabirim oluşturan iş akışı hakkında bilgi edinin.
+description: Azure Machine Learning hizmeti için görsel arabirimi (Önizleme) oluşturan hüküm, kavramlar ve iş akışı hakkında bilgi edinin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,72 +9,71 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 05/15/2019
-ms.openlocfilehash: be07e0f3438ea93312d4eb440e7e63b8f98e11b8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1cb56386f52d1c7b1ec357b912c648c1961b4c1d
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077370"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677980"
 ---
 # <a name="what-is-the-visual-interface-for-azure-machine-learning-service"></a>Azure Machine Learning hizmeti için görsel arabirim nedir? 
 
-Azure Machine Learning hizmeti için görsel arabirim (Önizleme), veri hazırlama, eğitme, test, dağıtma, yönetme ve makine öğrenimi modelleri, kod yazmaya gerek kalmadan izleme sağlar.
+Azure Machine Learning hizmeti için görsel arabirim (Önizleme), kod yazmadan, verileri hazırlamanıza, test etmenize, dağıtmanıza, dağıtmanıza, yönetmenize ve izlemenize olanak sağlar.
 
-Programlama gerekmeden, görsel olarak bağlandığınız [veri kümeleri](#dataset) ve [modülleri](#module) modelinizi oluşturmak için.
+Programlama gerekmez, modelinizi oluşturmak için [veri kümelerini](#dataset) ve [modülleri](#module) görsel olarak bağlamanız gerekir.
 
-Görsel bir arabirim kullanır, Azure Machine Learning hizmeti [çalışma](concept-workspace.md) için:
+Görsel arabirim, Azure Machine Learning hizmeti [çalışma alanınızı](concept-workspace.md) şu amaçlarla kullanır:
 
-+ Yapıtları yazma [deneme](#experiment) çalışma alanı içinde çalışır.
-+ Erişim [veri kümeleri](#dataset).
-+ Kullanım [işlem kaynaklarını](#compute) çalışma denemeyi çalıştırın. 
-+ Kayıt [modelleri](concept-azure-machine-learning-architecture.md#models).
-+ [Dağıtma](#deployment) modeller web Hizmetleri işlem çalışma alanındaki kaynakları olarak.
++ [Deneme](#experiment) sürümü yapılarını çalışma alanına yazın.
++ [Veri kümelerine](#dataset)erişin.
++ Denemeyi çalıştırmak için çalışma alanındaki [işlem kaynaklarını](#compute) kullanın. 
++ [Modelleri](concept-azure-machine-learning-architecture.md#models)kaydedin.
++ Modelleri çalışma alanındaki işlem kaynaklarında Web Hizmetleri olarak [dağıtın](#deployment) .
 
-![Görsel arabirim genel bakış](media/ui-concept-visual-interface/overview.png)
+![Görsel arabirime genel bakış](media/ui-concept-visual-interface/overview.png)
 
 ## <a name="workflow"></a>İş akışı
 
-Görsel arabirim hızlıca oluşturun, test ve model üzerinde yinelemek için etkileşimli ve görsel bir tuval sunar. 
+Görsel arabirim, bir modeli hızlıca oluşturmak, test etmek ve yinelemek için size etkileşimli ve görsel bir tuval sağlar. 
 
-+ Sürükle ve bırak [modülleri](#module) tuvale.
-+ Modüller birbirine bağlayarak bir [deneme](#experiment).
-+ Machine Learning hizmeti çalışma alanının bilgi işlem kaynağını kullanarak denemeyi çalıştırın.
-+ Denemeyi düzenleyebilir ve yeniden çalıştırarak model tasarımınızı yinelemek.
-+ Hazır olduğunuzda, dönüştürmek, **eğitim denemesini** için bir **Tahmine dayalı denemeye**.
-+ [Dağıtma](#deployment) Tahmine dayalı denemeye bir Web hizmeti, modelinize başkaları tarafından erişilebilir.
++ [Modülleri](#module) tuval üzerine sürükleyip bırakın.
++ Bir [deneme](#experiment)oluşturmak için modülleri birbirine bağlayın.
++ Machine Learning hizmeti çalışma alanının işlem kaynağını kullanarak denemeyi çalıştırın.
++ Denemeyi düzenleyerek ve yeniden çalıştırarak model tasarımınızda yineleme yapın.
++ Hazırsanız, **eğitim denemenizi** bir tahmine **dayalı deneyiye**dönüştürün.
++ Tahmine dayalı denemeyi bir Web hizmeti olarak [dağıtın](#deployment) , böylece modelinize başkaları tarafından erişilebilirler.
 
 ## <a name="experiment"></a>Deneme
 
-Bir denemeyi sıfırdan oluşturabilir veya var olan bir örnek denemeyi şablon olarak kullanın.  Bir deney her çalıştırdığınızda yapıtları çalışma alanınızda depolanır.
+Sıfırdan bir deneme oluşturun veya var olan bir örnek deneyni şablon olarak kullanın.  Her deneme çalıştırdığınızda yapıtlar çalışma alanınızda depolanır.
 
-Bir deney, veri kümeleri ve bir modeli oluşturmak için birbirine bağlama analitik modüllere oluşur. Geçerli bir deneme özellikle şu özelliklere sahiptir:
+Bir deneme, bir model oluşturmak için birlikte bağlandığınız veri kümeleri ve analitik modüllerden oluşur. Geçerli bir deneme özellikle şu özelliklere sahiptir:
 
-* Veri kümeleri yalnızca modüllere bağlanabilir.
-* Modüller veri kümelerine veya diğer modüllere bağlanabilir.
-* Modüllerin tüm giriş bağlantı noktalarının veri akışına bir tür bağlantısı olması gerekir.
-* Gerekli tüm parametreleri her bir modül için ayarlamanız gerekir.
+* Veri kümeleri yalnızca modüllere bağlı olabilir.
+* Modüller, veri kümelerine ya da diğer modüllere bağlı olabilir.
+* Modüller için tüm giriş bağlantı noktalarında veri akışına bir bağlantı bulunmalıdır.
+* Her modül için gerekli tüm parametrelerin ayarlanması gerekir.
 
-Örneği basit bir deneme için bkz: [hızlı başlangıç: Hazırlama ve Azure Machine Learning'de kod yazmaya gerek kalmadan verileri görselleştirme](ui-quickstart-run-experiment.md).
 
-Tahmine dayalı analiz çözümünün daha kapsamlı bir kılavuzu için bkz. [Öğreticisi: Görsel arabirim ile otomobil fiyatını tahmin](ui-tutorial-automobile-price-train-score.md).
+Görsel arabirime nasıl başlacağınızı öğrenmek için bkz [. Öğretici: Görsel arabirim](ui-tutorial-automobile-price-train-score.md)ile otomobil fiyatını tahmin edin.
 
 ## <a name="dataset"></a>Veri kümesi
 
-Bir veri kümesi model oluşturma işleminde kullanılacak görsel arabirim için yüklenen verilerdir. Birçok örnek veri kümesi ile denemenizi dahil edilir ve ihtiyaç duyarsanız daha çok veri kümesi yükleyebilirsiniz.
+Veri kümesi, modelleme işleminde kullanılmak üzere görsel arabirime yüklenmiş olan bir veri kümesidir. ' İ denemek için bir dizi örnek veri kümesi bulunur ve ihtiyacınız olduğunda daha fazla veri kümesi yükleyebilirsiniz.
 
 ## <a name="module"></a>Modül
 
-Bir modül, verilerinizde gerçekleştirebileceğiniz bir algoritmadır. Görsel arabirim veri alım işlevlerinden eğitim, Puanlama ve doğrulama işlemleri için değişiklik gösteren birçok modüle sahiptir.
+Bir modül, verilerinizde gerçekleştirebileceğiniz bir algoritmadır. Görsel arabirimde, veri giriş işlevlerinden eğitim, Puanlama ve doğrulama işlemlerine kadar birçok modül bulunur.
 
-Bir modül, modülün iç algoritmalarını yapılandırmak için kullanabileceğiniz parametreler kümesine sahip olabilir. Tuvalde bir modül seçtiğinizde modülün parametreleri tuvalin sağındaki Özellikler bölmesinde görüntülenir. Modelinizi ayarlamak için, bu bölmedeki parametreleri değiştirebilirsiniz.
+Bir modül, modülün iç algoritmalarını yapılandırmak için kullanabileceğiniz parametreler kümesine sahip olabilir. Tuvalde bir modül seçtiğinizde, modülün parametreleri tuvalin sağındaki Özellikler bölmesinde görüntülenir. Modelinizi ayarlamak için, bu bölmedeki parametreleri değiştirebilirsiniz.
 
-![Modülü özellikleri](media/ui-concept-visual-interface/properties.png)
+![Modül özellikleri](media/ui-concept-visual-interface/properties.png)
 
-Bazı Yardım makine öğrenimi algoritma kitaplığı gezinmek için bkz: [algoritma ve modül başvurusu genel bakış](../algorithm-module-reference/module-reference.md)
+Kullanılabilir makine öğrenimi algoritmalarının kitaplığı ile ilgili bazı yardım için bkz. [algoritma & modül başvurusuna genel bakış](../algorithm-module-reference/module-reference.md)
 
-## <a name="compute"></a> İşlem kaynakları
+## <a name="compute"></a>İşlem kaynakları
 
-Denemeyi veya ana bilgisayar, dağıtılan Modellerinizi web Hizmetleri olarak çalıştırmak için çalışma alanınızı kaynaklardan işlem kullanın. Desteklenen işlem hedefleri şunlardır:
+Denemenizi çalıştırmak veya dağıtılan modellerinizi Web Hizmetleri olarak barındırmak için çalışma alanınızdan işlem kaynaklarını kullanın. Desteklenen işlem hedefleri şunlardır:
 
 
 | Hedef işlem | Eğitim | Dağıtım |
@@ -82,22 +81,22 @@ Denemeyi veya ana bilgisayar, dağıtılan Modellerinizi web Hizmetleri olarak �
 | Azure Machine Learning işlem | ✓ | |
 | Azure Kubernetes Service | | ✓ |
 
-Hedefleri, Machine Learning için bağlı işlem [çalışma](concept-workspace.md). Çalışma alanınızda işlem hedeflerinizi yönetmek [Azure portalında](https://portal.azure.com).
+İşlem hedefleri Machine Learning [çalışma alanınıza](concept-workspace.md)iliştirilir. İşlem hedeflerinizi [Azure Portal](https://portal.azure.com)çalışma alanınızda yönetirsiniz.
 
 ## <a name="deployment"></a>Dağıtım
 
-Tahmine dayalı analiz modeliniz hazır olduktan sonra bunu visual arabiriminden doğrudan bir web hizmeti olarak dağıtın.
+Tahmine dayalı analiz modeliniz hazırlandıktan sonra, bunu görsel arabirimden bir Web hizmeti olarak dağıtabilirsiniz.
 
-Web Hizmetleri, uygulama ve, Puanlama modeli arasında bir arabirim sağlar. Bir dış uygulama, gerçek zamanlı Puanlama modeli ile iletişim kurabilir. Bir web hizmeti çağrısı bir dış uygulamaya tahmin sonuçlarını döndürür. Bir web hizmetine çağrı yapmak için web hizmeti dağıtılırken oluşturulan bir API anahtarını geçirirsiniz. Web hizmeti bir web programlama projeleri için popüler bir mimari seçimi olan REST'i temel alır.
+Web Hizmetleri, bir uygulama ile Puanlama modeliniz arasında bir arabirim sağlar. Bir dış uygulama, Puanlama modeliyle gerçek zamanlı olarak iletişim kurabilir. Bir Web hizmetine yapılan çağrı, bir dış uygulamaya tahmin sonuçları döndürür. Bir web hizmetine çağrı yapmak için web hizmeti dağıtılırken oluşturulan bir API anahtarını geçirirsiniz. Web hizmeti, Web programlama projeleri için popüler bir mimari seçimi olan REST 'i temel alır.
 
-Modelinizi öğrenmek için bkz: [Öğreticisi: Görsel arabirim ile makine öğrenme modeli dağıtma](ui-tutorial-automobile-price-deploy.md).
+Modelinizi dağıtmayı öğrenmek için bkz [. Öğretici: Visual Interface](ui-tutorial-automobile-price-deploy.md)ile bir makine öğrenimi modeli dağıtın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Tahmine dayalı analiz temellerini öğrenin ve makine öğrenimi ile [hızlı başlangıç: Hazırlama ve Azure Machine Learning'de kod yazmaya gerek kalmadan verileri görselleştirme](ui-quickstart-run-experiment.md).
-* Örneklerden birini kullanın ve ihtiyaçlarınızı paketine değiştirin:
-    * [Örnek 1 - regresyon: Tahmin](ui-sample-regression-predict-automobile-price-basic.md)
-    * [2 - regresyon. örnek: Tahmin ve algoritmaları karşılaştırın](ui-sample-regression-predict-automobile-price-compare-algorithms.md)
-    * [3 - sınıflandırma. örnek: Kredi riskini tahmin](ui-sample-classification-predict-credit-risk-basic.md)
-    * [4 - sınıflandırma. örnek: (Maliyet hassas) kredi riskini tahmin](ui-sample-classification-predict-credit-risk-cost-sensitive.md)
-    * [5 - sınıflandırma. örnek: Değişim sıklığı, deneyde ve yukarı satış tahmin edin](ui-sample-classification-predict-churn.md)
+* Tahmine dayalı analiz ve makine öğrenimi [hakkında öğreticiyi öğrenin: Görsel arabirim ile otomobil fiyatını tahmin edin](ui-tutorial-automobile-price-train-score.md)
+* Örneklerden birini kullanın ve gereksinimlerinize göre değiştirin:
+    * [Örnek 1-gerileme: Tahmin fiyatı](ui-sample-regression-predict-automobile-price-basic.md)
+    * [Örnek 2-gerileme: Fiyat ve karşılaştırma algoritmalarını tahmin etme](ui-sample-regression-predict-automobile-price-compare-algorithms.md)
+    * [Örnek 3-sınıflandırma: Kredi riskini tahmin etme](ui-sample-classification-predict-credit-risk-basic.md)
+    * [Örnek 4-sınıflandırma: Kredi riskini tahmin etme (maliyet duyarlı)](ui-sample-classification-predict-credit-risk-cost-sensitive.md)
+    * [Örnek 5-sınıflandırma: Dalgalanma, uygulama ve BT satışı tahmin etme](ui-sample-classification-predict-churn.md)

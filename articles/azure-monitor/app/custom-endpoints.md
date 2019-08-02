@@ -9,14 +9,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 07/24/2019
+ms.date: 07/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: c086f94a161853cba3a9ed2b98f13ea17b90dd20
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 662594f3ef0e4d5598b52cb07006b513e7f3c35a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478810"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564975"
 ---
  # <a name="application-insights-overriding-default-endpoints"></a>Varsayılan uç noktaları geçersiz kılmak Application Insights
 
@@ -158,6 +158,14 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 | Azure Kamu | Telemetri kanalı |`https://dc.applicationinsights.us/v2/track` |
 | Azure Kamu | QuickPulse (canlı ölçümler) |`https://quickpulse.applicationinsights.us/QuickPulseService.svc` |
 | Azure Kamu | Profil sorgusu |`https://dc.applicationinsights.us/api/profiles/{0}/appId` |
+
+Şu anda [' api.applicationinsights.io ' aracılığıyla erişilen](https://dev.applicationinsights.io/
+) Application Insights REST API kullanıyorsanız, bölgeniz için yerel bir uç nokta kullanmanız gerekir:
+
+|Bölge |  Uç nokta adı | Value |
+|-----------------|:------------|:-------------|
+| Azure Çin | REST API | `api.applicationinsights.azure.cn` |
+| Azure Kamu | REST API | `api.applicationinsights.us`|
 
 > [!NOTE]
 > Azure Uygulama Hizmetleri için codeless Aracısı/uzantısı tabanlı izleme şu **anda** bu bölgelerde desteklenmiyor. Bu işlevsellik kullanılabilir hale geldiğinde, bu makale güncelleştirilir.

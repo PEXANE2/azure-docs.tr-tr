@@ -1,6 +1,6 @@
 ---
-title: Temel ilke Hizmet Yönetimi (Önizleme) - Azure Active Directory için MFA gerekir
-description: Azure Resource Manager için MFA gerektirmek için koşullu erişim ilkesi
+title: Temel ilke hizmet yönetimi için MFA gerektir (Önizleme)-Azure Active Directory
+description: Azure Resource Manager için MFA gerektirme koşullu erişim ilkesi
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,63 +11,63 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 203b752f9da67ebf60e373fe7ce0893b4fd7fcb5
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: aab2aa4415345747a0e87b90ef0a7ee770ef3465
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67560954"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608131"
 ---
-# <a name="baseline-policy-require-mfa-for-service-management-preview"></a>Temel ilke: MFA istemek için Hizmet Yönetimi (Önizleme)
+# <a name="baseline-policy-require-mfa-for-service-management-preview"></a>Temel ilke: Hizmet yönetimi için MFA gerektir (Önizleme)
 
-Kuruluşunuzdaki çeşitli Azure hizmetlerini kullanıyor olabilir. Bu hizmetler, Azure Resource Manager API'si yönetilebilir:
+Kuruluşunuzda çeşitli Azure Hizmetleri kullanıyor olabilirsiniz. Bu hizmetler Azure Resource Manager API aracılığıyla yönetilebilir:
 
 * Azure portal
 * Azure PowerShell
 * Azure CLI
 
-Hizmetlerinizi yönetmek üzere Azure Resource Manager kullanarak üst düzeyde ayrıcalıklı bir işlemdir. Azure Resource Manager, Kiracı genelindeki yapılandırmalar, hizmet ayarları ve abonelik faturalama gibi değiştirebilirsiniz. Tek faktörlü kimlik doğrulaması, kimlik avı ve parola ilaç gibi saldırıları çeşitli savunmasızdır. Bu nedenle, erişime izin vermeden önce çok faktörlü kimlik doğrulaması gerektirerek yapılandırmaları, güncelleştirme ve Azure Resource Manager'a erişmek isteyen kullanıcıların kimliğini doğrulamak önemlidir.
+Hizmetlerinizi yönetmek için Azure Resource Manager kullanmak, yüksek ayrıcalıklı bir işlemdir. Azure Resource Manager, hizmet ayarları ve abonelik faturalandırması gibi kiracı genelinde yapılandırmaların üzerinde değişiklik yapabilir. Tek faktörlü kimlik doğrulaması, kimlik avı ve parola spreyi gibi çeşitli saldırılara açıktır. Bu nedenle, erişime izin vermeden önce çok faktörlü kimlik doğrulaması gerektirerek Azure Resource Manager ve güncelleştirme yapılandırmalarına erişmek isteyen kullanıcıların kimliğini doğrulamak önemlidir.
 
-**Hizmet Yönetimi için mfa'yı gerekli** olduğu bir [temel ilke](concept-baseline-protection.md) Azure portalı, Azure PowerShell veya Azure CLI erişen herhangi bir kullanıcı için mfa'yı gerekebilir. Bu ilke, bunlar yöneticisiyseniz bağımsız olarak, Azure Resource Manager, erişen tüm kullanıcılar için geçerlidir.
+**Hizmet yönetimi IÇIN MFA gerektir** , Azure portal, Azure PowerShell veya Azure CLI 'ye erişen tüm KULLANıCıLAR için MFA gerektiren bir [temel ilkedir](concept-baseline-protection.md) . Bu ilke, yönetici olduklarından bağımsız olarak Azure Resource Manager erişen tüm kullanıcılara uygulanır.
 
-Bu ilke, bir kiracıda etkinleştirildikten sonra Azure yönetim kaynakları açan tüm kullanıcılar multi-Factor authentication ile sınanır. MFA için kullanıcı kayıtlı değilse, kullanıcı devam etmek için Microsoft Authenticator uygulamasını kullanarak kaydolmanız gerekir.
+Bu ilke bir kiracıda etkinleştirildikten sonra, Azure yönetim kaynakları 'nda oturum açan tüm kullanıcılara, çok faktörlü kimlik doğrulamasıyla karşılaşacaktır. Kullanıcı MFA için kayıtlı değilse, kullanıcının devam edebilmesi için Microsoft Authenticator uygulamasını kullanarak kaydetmesi gerekecektir.
 
-Etkileşimli oturum açma kullanarak gerçekleştirmek için [Azure Powershell](https://docs.microsoft.com/powershell/azure/authenticate-azureps), kullanın [Connect AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) cmdlet'i.
+[Azure PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps)'i kullanarak etkileşimli oturum açma gerçekleştirmek için [Connect-azaccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) cmdlet 'ini kullanın.
 
 ```PowerShell
 Connect-AzAccount
 ```
 
-Bu cmdlet çalıştırıldığında bir belirteç dizesi sunar. Oturum açmak için bu dizesini kopyalayın ve yapıştırın [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin)  bir tarayıcıda. Azure’a bağlanmak için PowerShell oturumunuzun kimliği doğrulanır.
+Bu cmdlet çalıştırıldığında bir belirteç dizesi sunar. Oturum açmak için, bu dizeyi kopyalayın ve tarayıcıya yapıştırın [https://microsoft.com/devicelogin.](https://microsoft.com/devicelogin)  Azure’a bağlanmak için PowerShell oturumunuzun kimliği doğrulanır.
 
-Etkileşimli oturum açma kullanarak gerçekleştirmek için [Azure CLI](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)çalıştırın [az login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) komutu.
+[Azure CLI](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)kullanarak etkileşimli oturum açma gerçekleştirmek için [az Login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) komutunu çalıştırın.
 
 ```azurecli
 az login
 ```
 
-CLI varsayılan tarayıcınızı açabiliyorsa, tarayıcıyı açar ve oturum açma sayfasını yükler. Aksi takdirde, tarayıcı sayfasını açın ve ayrıldıktan sonra bir yetkilendirme kodu girmek için komut satırında yönergeleri için ihtiyaç duyduğunuz [ https://aka.ms/devicelogin ](https://aka.ms/devicelogin) tarayıcınızda. Daha sonra tarayıcıda hesabı kimlik bilgilerinizle oturum açın.
+CLI varsayılan tarayıcınızı açabiliyorsa, tarayıcıyı açar ve oturum açma sayfasını yükler. Aksi takdirde, tarayıcınızda gezindikten [https://aka.ms/devicelogin](https://aka.ms/devicelogin) sonra bir yetkilendirme kodu girmek için bir tarayıcı sayfası açmanız ve komut satırındaki yönergeleri izlemeniz gerekir. Daha sonra, tarayıcıda hesap kimlik bilgilerinizle oturum açın.
 
 ## <a name="deployment-considerations"></a>Dağıtma konuları
 
-Çünkü **hizmet yönetimi için MFA gerektiren** İlkesi tüm Azure Resource Manager kullanıcıları için geçerlidir, çeşitli konuları sorunsuz bir dağıtım sağlamak için yapılması gerekir. Kullanıcılar ve uygulamalar ve modern kimlik doğrulamayı desteklemeyen, kuruluşunuz tarafından kullanılan istemcilerin yanı sıra MFA'yı gerçekleştirmemelisiniz veya Azure AD'de hizmet ilkeleri tanımlayan bu konuları içerir.
+**Hizmet yönetimi IÇIN MFA gerektir** ilkesi tüm Azure Resource Manager kullanıcılara uygulandığından, sorunsuz bir dağıtım sağlamak için çeşitli hususlar yapılmalıdır. Bu noktalara, Azure AD 'deki kullanıcıları ve hizmet ilkelerini, MFA 'yı gerektirmeyen veya bu uygulamaların yanı sıra, kuruluşunuz tarafından modern kimlik doğrulamayı desteklemeyen uygulamalar ve istemciler için tanımlama sayılabilir.
 
-## <a name="enable-the-baseline-policy"></a>Temel ilke etkinleştir
+## <a name="enable-the-baseline-policy"></a>Temel ilkeyi etkinleştirme
 
-İlke **temel ilke: Hizmet Yönetimi (Önizleme) için mfa'yı gerekli** önceden yapılandırılmış olarak gelir ve Azure portalında koşullu erişim dikey penceresine gittiğinizde en üstünde gösterilir.
+İlke **temel ilkesi: Hizmet yönetimi için MFA (Önizleme)** önceden yapılandırılmış olarak gelir ve Azure Portal 'de koşullu erişim dikey penceresine gittiğinizde en üstte görünür.
 
-Bu ilkeyi etkinleştirmek ve yöneticileriniz korumak için:
+Bu ilkeyi etkinleştirmek ve yöneticilerinizi korumak için:
 
-1. Oturum **Azure portalında** genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak.
-1. Gözat **Azure Active Directory** > **koşullu erişim**.
-1. İlkeler listesinde seçin **temel ilke: Hizmet Yönetimi (Önizleme) için mfa'yı gerekli**.
-1. Ayarlama **ilkesini etkinleştir** için **ilkeyi hemen kullan**.
-1. Tıklayın **Kaydet**.
+1.  **** AzurePortal genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
+1. **Koşullu erişimi** **Azure Active Directory** > için gidin.
+1. İlke listesinde temel ilke ' yi seçin **: Hizmet yönetimi için MFA gerektir (Önizleme)** .
+1. İlkeyi **ilkeyi hemen kullanacak** **şekilde ayarlayın** .
+1.  **Kaydet**' e tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Daha fazla bilgi için bkz.
 
 * [Koşullu erişim temel koruma ilkeleri](concept-baseline-protection.md)
-* [Kimlik altyapınızın güvenliğini sağlamak için beş adım](../../security/azure-ad-secure-steps.md)
-* [Azure Active Directory'de koşullu erişim nedir?](overview.md)
+* [Kimlik altyapınızı güvenli hale getirmenin beş adımı](../../security/fundamentals/steps-secure-identity.md)
+* [Azure Active Directory Koşullu erişim nedir?](overview.md)

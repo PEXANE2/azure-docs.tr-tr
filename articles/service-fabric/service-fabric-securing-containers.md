@@ -1,9 +1,9 @@
 ---
-title: Azure Service Fabric üzerinde çalışan bir kapsayıcıya alın sertifikaları içeri aktarma | Microsoft Docs
-description: Artık bir Service Fabric kapsayıcı hizmetinde sertifika dosyalarını içeri öğrenin.
+title: Sertifikaları Azure Service Fabric 'da çalışan bir kapsayıcıya aktarma | Microsoft Docs
+description: Sertifika dosyalarını Service Fabric bir kapsayıcı hizmetine aktarmak için hemen öğrenin.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 3a6ea5e2776ae5e016426ba0ddaf288f1476e932
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 80ac20fd2dc7bfe3fea6a58a6df94e3f7b99a700
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612779"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599228"
 ---
-# <a name="import-a-certificate-file-into-a-container-running-on-service-fabric"></a>Service Fabric üzerinde çalışan bir kapsayıcı içine bir sertifika dosyasını içe
+# <a name="import-a-certificate-file-into-a-container-running-on-service-fabric"></a>Service Fabric çalıştıran bir kapsayıcıya bir sertifika dosyasını içeri aktarma
 
-Bir sertifika belirterek, kapsayıcı Hizmetleri güvenli hale getirebilirsiniz. Service Fabric Hizmetleri (sürüm 5.7 veya daha yüksek) bir Windows veya Linux küme düğümlerinde yüklü bir sertifika erişmek için bir kapsayıcı içinde bir mekanizma sağlar. Kümenin tüm düğümlerinde altında LocalMachine sertifika deposunda sertifika yüklü olmalıdır. Sertifikanın özel anahtar karşılık gelen, mevcut, erişilebilir ve - Windows - dışarı aktarılabilir olmalıdır. Sertifika bilgileri altındaki uygulama bildirimini sağlanan `ContainerHostPolicies` etiketi aşağıdaki kod parçacığında gösterildiği gibi:
+Bir sertifika belirterek kapsayıcı hizmetlerinizi güvenli hale getirebilirsiniz. Service Fabric, bir kapsayıcı içindeki hizmetler için bir Windows veya Linux kümesindeki düğümlere yüklenmiş bir sertifikaya (sürüm 5,7 veya üzeri) erişmek için bir mekanizma sağlar. Sertifikanın, kümenin tüm düğümlerinde LocalMachine altındaki bir sertifika deposunda yüklü olması gerekir. Sertifikaya karşılık gelen özel anahtar kullanılabilir, erişilebilir ve Windows-dışarı aktarılabilir olmalıdır. Aşağıdaki kod parçacığında gösterildiği gibi, sertifika bilgileri `ContainerHostPolicies` etiket altındaki uygulama bildiriminde verilmiştir:
 
 ```xml
   <ContainerHostPolicies CodePackageRef="NodeContainerService.Code">
@@ -31,24 +31,24 @@ Bir sertifika belirterek, kapsayıcı Hizmetleri güvenli hale getirebilirsiniz.
     <CertificateRef Name="MyCert2" X509FindValue="[Thumbprint2]"/>
  ```
 
-Windows kümeleri uygulama başlatılırken bir PFX dosyasına rastgele oluşturulmuş bir parolayla korunan her başvurulan sertifikası ve karşılık gelen özel anahtarıyla çalışma zamanı verir. PFX ve parola dosyaları, sırasıyla aşağıdaki ortam değişkenlerini kullanarak kapsayıcı içinde erişilebilir: 
+Windows kümeleri için, uygulamayı başlatırken, çalışma zamanı her bir başvurulan sertifikayı ve karşılık gelen özel anahtarını, rastgele oluşturulmuş bir parolayla güvenliği sağlanmış bir PFX dosyasına dışarı aktarır. Sırasıyla PFX ve parola dosyalarına aşağıdaki ortam değişkenleri kullanılarak kapsayıcı içinde erişilebilir: 
 
 * Certificates_ServicePackageName_CodePackageName_CertName_PFX
 * Certificates_ServicePackageName_CodePackageName_CertName_Password
 
-Linux kümeleri için sertifikalar (PEM) üzerinden X509StoreName tarafından belirtilen kapsayıcıyı deposundan kopyalanır. Linux üzerinde karşılık gelen ortam değişkenleri şunlardır:
+Linux kümelerinde, Sertifikalar (pek), X509StoreName tarafından belirtilen mağazadan üzerine, kapsayıcıya kopyalanır. Linux üzerinde karşılık gelen ortam değişkenleri şunlardır:
 
 * Certificates_ServicePackageName_CodePackageName_CertName_PEM
 * Certificates_ServicePackageName_CodePackageName_CertName_PrivateKey
 
-Alternatif olarak, zaten sertifikaların gerekli biçiminde olması ve kapsayıcı içinde erişmek istediğiniz veri paketi, uygulama paketi içinde oluşturabilir ve aşağıdakileri belirtin uygulama bildiriminizi içinde:
+Alternatif olarak, gerekli formda sertifikalara zaten sahipseniz ve kapsayıcının içinde bu sertifikaya erişmek istiyorsanız, uygulama paketinizdeki bir veri paketi oluşturabilir ve uygulama bildiriminiz içinde aşağıdakileri belirtebilirsiniz:
 
 ```xml
 <ContainerHostPolicies CodePackageRef="NodeContainerService.Code">
   <CertificateRef Name="MyCert1" DataPackageRef="[DataPackageName]" DataPackageVersion="[Version]" RelativePath="[Relative Path to certificate inside DataPackage]" Password="[password]" IsPasswordEncrypted="[true/false]"/>
  ```
 
-Kapsayıcı hizmeti veya işlem kapsayıcıya sertifika dosyalarını içeri aktarma için sorumludur. Sertifikayı içeri aktarmak için kullanabileceğiniz `setupentrypoint.sh` komut dosyaları veya özel kod kapsayıcısı işlemiyle yürütün. Örnek kodda işte C# PFX dosyasını içeri aktarmak için:
+Kapsayıcı hizmeti veya işlemi, sertifika dosyalarının kapsayıcıya aktarılmasından sorumludur. Sertifikayı içeri aktarmak için betikleri kullanabilir `setupentrypoint.sh` veya kapsayıcı işlemi içinde özel kod yürütebilirsiniz. PFX dosyasını içeri aktarmak için C# içinde örnek kod aşağıda verilmiştir:
 
 ```csharp
 string certificateFilePath = Environment.GetEnvironmentVariable("Certificates_MyServicePackage_NodeContainerService.Code_MyCert1_PFX");
@@ -61,9 +61,9 @@ store.Open(OpenFlags.ReadWrite);
 store.Add(cert);
 store.Close();
 ```
-Bu PFX sertifika kimlik doğrulaması, uygulama veya hizmet veya diğer hizmetleri ile güvenli iletişim için kullanılabilir. Varsayılan olarak, yalnızca sisteme ACLed dosyalarıdır. ACL için hizmet gerektirdiği diğer hesapları için.
+Bu PFX sertifikası uygulamanın veya hizmetin kimliğini doğrulamak veya diğer hizmetlerle güvenli iletişim sağlamak için kullanılabilir. Varsayılan olarak, dosyalar yalnızca SISTEME erişim sağlar. Hizmet tarafından istenen diğer hesaplara ACL ekleyebilirsiniz.
 
-Sonraki adım olarak, bu makaleleri okuyun:
+Sonraki adım olarak, aşağıdaki makaleleri okuyun:
 
-* [Service fabric'e Windows Server 2016 üzerinde bir Windows kapsayıcısı dağıtma](service-fabric-get-started-containers.md)
-* [Linux üzerinde Service Fabric için bir Docker kapsayıcısı dağıtma](service-fabric-get-started-containers-linux.md)
+* [Windows Server 2016 ' de Windows kapsayıcısını Service Fabric dağıtma](service-fabric-get-started-containers.md)
+* [Linux üzerinde Service Fabric bir Docker kapsayıcısı dağıtma](service-fabric-get-started-containers-linux.md)

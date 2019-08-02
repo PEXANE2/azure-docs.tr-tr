@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9128a747dcd42ada2feefd72ad8bfebdf7bfb25a
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: c5d374f4ddac2e4d013bab1c5e88a87af1da2c1f
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68334052"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667130"
 ---
 # <a name="identity-protection-and-b2b-users"></a>Kimlik Koruması ve B2B kullanıcıları
 
@@ -47,7 +47,7 @@ Dizininizde riskli bir B2B kullanıcısı risk tabanlı ilkeniz tarafından enge
 
 ### <a name="how-do-i-prevent-b2b-collaboration-users-from-being-impacted-by-risk-based-policies"></a>B2B işbirliği kullanıcılarının risk tabanlı ilkelerden etkilenmemesini Nasıl yaparım?.
 
-Kuruluşunuzun risk tabanlı koşullu erişim ilkelerinin B2B kullanıcılarını dışlamak, B2B kullanıcılarının risk değerlendirmesine karşı etkilenmelerini veya engellenmesini engeller. Bu B2B kullanıcılarını dışlamak için, Azure AD 'de kuruluşunuzun tüm konuk kullanıcılarını içeren bir grup oluşturun. Daha sonra, bu grubu, yerleşik kimlik koruması Kullanıcı risk ve oturum açma risk ilkeleriniz için bir dışlama olarak ekleyin ve Kullanıcı tarafından bir koşul olarak oturum açma riski altında bulunan koşullu erişim ilkeleri de vardır.
+Kuruluşunuzun risk tabanlı koşullu erişim ilkelerinin B2B kullanıcılarını dışlamak, B2B kullanıcılarının risk değerlendirmesine karşı etkilenmelerini veya engellenmesini engeller. Bu B2B kullanıcılarını dışlamak için, Azure AD 'de kuruluşunuzun tüm konuk kullanıcılarını içeren bir grup oluşturun. Daha sonra, bu grubu yerleşik kimlik koruması Kullanıcı risk ve oturum açma risk ilkeleriniz için bir dışlama olarak ekleyin ve bir koşul olarak oturum açma riskini kullanan tüm koşullu erişim ilkelerini kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

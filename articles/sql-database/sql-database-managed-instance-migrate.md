@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
-manager: craigg
 ms.date: 11/07/2019
-ms.openlocfilehash: 0fa65454702c67d4b0baeedc7f412ccec402ea46
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: 19a7f749ffb1af4f712d23abcd52d91653ad4544
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302296"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567383"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Azure SQL veritabanı yönetilen örneğine örnek geçişi SQL Server
 
@@ -110,7 +109,7 @@ Yönetilen örnek, aşağıdaki veritabanı geçiş seçeneklerini destekler (Ş
 - Azure veritabanı geçiş hizmeti-neredeyse sıfır kapalı kalma süresi ile geçiş
 - Yerel `RESTORE DATABASE FROM URL` -SQL Server yerel yedeklemeleri kullanır ve bazı kapalı kalma süresi gerektirir.
 
-### <a name="azure-database-migration-service"></a>Azure Veritabanı Geçiş Hizmeti
+### <a name="azure-database-migration-service"></a>Azure Veritabanı Geçişi Hizmeti
 
 [Azure veritabanı geçiş hizmeti (DMS)](../dms/dms-overview.md) , birden çok veritabanı kaynağından Azure veri platformları arasında kesintisiz geçiş sağlamak için tasarlanan, tam olarak yönetilen bir hizmettir. Bu hizmet, var olan üçüncü taraf ve SQL Server veritabanlarını Azure 'a taşımak için gereken görevleri basitleştirir. Genel önizlemede dağıtım seçenekleri Azure SQL veritabanı 'ndaki veritabanlarını ve bir Azure sanal makinesinde SQL Server veritabanlarını içerir. DMS, kurumsal iş yükleriniz için önerilen geçiş yöntemidir.
 

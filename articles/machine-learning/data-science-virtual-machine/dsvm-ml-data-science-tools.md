@@ -4,7 +4,7 @@ description: Makine öğrenimi araçları ve çerçeveleri veri bilimi sanal mak
 keywords: veri bilimi araçları, veri bilimi sanal makinesi, veri bilimi için araçlar, linux veri bilimi
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.author: gokuma
-ms.openlocfilehash: e8876306e4ffbd0fa9a8aafc6d5d757fd3c9c614
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: vijetaj
+ms.openlocfilehash: 3b05d076a61593e8c34ce642f2fe2fd137e07109
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60502121"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565242"
 ---
 # <a name="machine-learning-and-data-science-tools"></a>Makine öğrenimi ve veri bilimi araçları
 Azure veri bilimi sanal makineleri zengin bir araç olan ve kitaplıklar için machine learning (ML), Python, R ve Julia'nın gibi popüler dilde kullanılabilir. 
@@ -32,7 +32,7 @@ ML araçları ve kitaplıkları üzerinde veri bilimi sanal makineleri bazılar�
 |    |           |
 | ------------- | ------------- |
 | Nedir?   |   Azure Machine Learning, geliştirmek ve ML modelleri dağıtmak için kullanabileceğiniz bir bulut hizmetidir. Oluşturmak, eğitmek, ölçeklendirme ve Python SDK'sı kullanılarak bunların yönetilmesi, Modellerinizi izleyebilirsiniz. Modelleri kapsayıcıları olarak dağıtma ve bulutta, şirket içinde veya Azure IOT Edge üzerinde çalıştırın.   |
-| Desteklenen sürümler     | Windows (conda ortam: AzureML), Linux (conda ortam: py36)    |
+| Desteklenen sürümler     | Windows (Conda ortamı: AzureML), Linux (Conda ortamı: py36)    |
 | Tipik kullanımları      | Genel ML platformu      |
 | Nasıl, yapılandırılmış yüklü mü?      |  GPU desteğine sahip yüklü   |
 | Kullanma veya çalıştırın      | Python SDK'sını ve Azure CLI. Conda ortama etkinleştirme `AzureML` Windows Edition *veya* için `py36` Linux Edition.      |

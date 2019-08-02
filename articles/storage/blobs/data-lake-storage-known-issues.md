@@ -6,14 +6,14 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/18/2019
+ms.date: 07/31/2019
 ms.author: normesta
-ms.openlocfilehash: fc2d7e4f611e1eee9c369ef26aa7bf66feb7c888
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 910e23814b627233395a2f7a646513d9cb6874d8
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385689"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699030"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake depolama Gen2 ile'ilgili bilinen sorunlar
 
@@ -100,7 +100,7 @@ Aşağıdaki tabloda henüz desteklenmeyen veya hiyerarşik ad alanı (Azure Dat
 | **Blobsigortası** |Henüz desteklenmiyor|
 | **Özel etki alanları** |Henüz desteklenmiyor|
 | **Dosya sistemi Gezgini** | Sınırlı destek |
-| **Tanılama günlüğüne kaydetme** |Yalnızca [Data Lake Storage önizlemede çoklu protokol erişimine](data-lake-storage-multi-protocol-access.md) kaydoldıysanız desteklenir.|
+| **Tanılama günlüğüne kaydetme** |Tanılama günlükleri yalnızca [Data Lake Storage önizlemede çoklu protokol erişimine](data-lake-storage-multi-protocol-access.md) kaydoldıysanız desteklenir. <br><br>Azure portal günlüklerin etkinleştirilmesi Şu anda desteklenmiyor. Günlükleri PowerShell kullanarak nasıl etkinleştireceğinizi gösteren bir örnek aşağıda verilmiştir. <br><br>`$storageAccount = Get-AzStorageAccount -ResourceGroupName <resourceGroup> -Name <storageAccountName>`<br><br>`Set-AzureStorageServiceLoggingProperty -Context $storageAccount.Context -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays <days>`. <br><br>Bu örnekte gösterildiği gibi `Blob` `-ServiceType` parametrenin değeri olarak belirttiğinizden emin olun. 
 | **Sabit depolama** |Henüz desteklenmiyor <br><br>Sabit depolama, verileri bir solucan içinde depolamanıza olanak tanır [(bir kez yaz, çok oku)](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) durumu sağlar.|
 | **Nesne düzeyi katmanları** |Seyrek erişimli ve arşiv katmanları yalnızca [Data Lake Storage önizlemesinde çoklu protokol erişimine](data-lake-storage-multi-protocol-access.md) kaydoldıysanız desteklenir. <br><br> Diğer tüm erişim katmanları henüz desteklenmiyor.|
 | **PowerShell ve CLı desteği** | Sınırlı işlevsellik <br><br>Hesap oluşturma gibi yönetim işlemleri desteklenir. Dosya yükleme ve indirme gibi veri düzlemi işlemleri, [Data Lake Storage üzerindeki çoklu protokol erişiminin](data-lake-storage-multi-protocol-access.md)bir parçası olarak genel önizlemededir. Dizinlerle çalışma ve erişim denetim listelerini (ACL 'Ler) ayarlama henüz desteklenmiyor. |

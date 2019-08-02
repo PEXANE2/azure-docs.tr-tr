@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/27/2017
 ms.author: dimart
 ms.custom: mvc
-ms.openlocfilehash: fd502a308d6298dc2941461632a2832ac336c45c
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: fe24ab21a9a7d227d58e50c58f9aff2bd91e767f
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849878"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598561"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-azure-devops"></a>Kullanım DıŞı Azure DevOps kullanarak ACS altyapısı ve Docker Sısınma modu ile Azure Container Service çok kapsayıcılı bir uygulama dağıtmak için tam CI/CD işlem hattı
 
@@ -122,14 +122,14 @@ Bu adımda, Azure DevOps projeniz için bir derleme işlem hattı ayarlarsınız
     ![Azure DevOps-konak Aracısı yapılandırması](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-agent.png)
 
 ### <a name="define-the-build-workflow"></a>Derleme iş akışını tanımlama
-Sonraki adımlar derleme iş akışını tanımlar. İlk olarak, kodun kaynağını yapılandırmanız gerekir. Bunu yapmak için **GitHub** ve deponuzu ve  dalınızı  (Docker-Linux) seçin.
+Sonraki adımlar derleme iş akışını tanımlar. İlk olarak, kodun kaynağını yapılandırmanız gerekir. Bunu yapmak için **GitHub** ve deponuzu ve dalınızı (Docker-Linux) seçin.
 
 ![Azure DevOps-kod kaynağını yapılandırma](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-source-code.png)
 
 *Myshop* uygulaması için oluşturulacak beş kapsayıcı görüntüsü vardır. Her görüntü, proje klasörlerinde bulunan Dockerfile kullanılarak oluşturulmuştur:
 
 * Productsapı
-* Ara sunucu
+* Proxy
 * Oytingsapı
 * RecommendationsApi
 * ShopFront
@@ -169,7 +169,7 @@ Her görüntü için iki Docker adımı, bir görüntüyü oluşturmak ve bir di
 
        ![Azure DevOps-kayıt defteri URL 'siyle oluşturma dosyası güncelleştirme](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-replace-registry.png)
 
-   2. Docker-Compose. yıml dosyasındaki, bir bash betiğini, bir bash  komut dosyası kullanarak, bir bash betiği kullanarak bir komut satırı görevi.
+   2. Docker-Compose. yıml dosyasındaki, bir bash betiğini, bir bash komut dosyası kullanarak, bir bash betiği kullanarak bir komut satırı görevi.
   
        ```-c "sed -i 's/AgentUrl/$(AgentURL)/g' src/docker-compose-v3.yml"```
 
@@ -251,6 +251,6 @@ Yapılandırma ile işiniz bittiğinde, bu yeni CI/CD işlem hattını test etme
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure DevOps ile CI/CD hakkında daha fazla bilgi için bkz. [Azure DevOps derlemesine genel bakış](https://www.visualstudio.com/docs/build/overview).
+* Azure DevOps ile CI/CD hakkında daha fazla bilgi için [Azure Pipelines belge](/azure/devops/pipelines/?view=azure-devops) makalesine bakın.
 * ACS altyapısı hakkında daha fazla bilgi için bkz. [ACS altyapısı GitHub deposu](https://github.com/Azure/acs-engine).
 * Docker Sısınma modu hakkında daha fazla bilgi için bkz. [Docker sısınma moduna genel bakış](https://docs.docker.com/engine/swarm/).

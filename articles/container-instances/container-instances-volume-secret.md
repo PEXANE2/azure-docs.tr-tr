@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: danlep
 ms.openlocfilehash: 2e96ef73c3ff89fd7941fa14a8a1e53e6d4d8593
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68325421"
 ---
 # <a name="mount-a-secret-volume-in-azure-container-instances"></a>Azure Container Instances bir gizli birimi bağlama
@@ -26,7 +26,7 @@ Tüm *gizli* BIRIMLER, RAM ile desteklenen bir dosya sistemi olan [tmpfs][tmpfs]
 
 ## <a name="mount-secret-volume---azure-cli"></a>Bağlama gizli birimi-Azure CLı
 
-Azure CLI kullanarak bir veya daha fazla gizli dizi ile bir kapsayıcı dağıtmak için `--secrets` [az Container Create][az-container-create] komutuna `--secrets-mount-path` ve parametrelerini dahil edin. Bu örnek, "  mysecret1" ve "mysecret2 `/mnt/secrets`" gibi iki gizli dizi içeren gizli bir birimi bağlar:
+Azure CLI kullanarak bir veya daha fazla gizli dizi ile bir kapsayıcı dağıtmak için `--secrets` [az Container Create][az-container-create] komutuna `--secrets-mount-path` ve parametrelerini dahil edin. Bu örnek, " mysecret1" ve "mysecret2 `/mnt/secrets`" gibi iki gizli dizi içeren gizli bir birimi bağlar:
 
 ```azurecli-interactive
 az container create \

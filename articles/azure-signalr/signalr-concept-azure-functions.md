@@ -1,28 +1,28 @@
 ---
-title: Azure işlevleri ve Azure SignalR hizmeti ile gerçek zamanlı uygulamalar oluşturma
-description: Azure SignalR hizmeti kullanarak sunucusuz uygulamalar genel bakış.
+title: Azure Işlevleri ve Azure SignalR hizmeti ile gerçek zamanlı uygulamalar oluşturun
+description: Sunucusuz uygulamalarda Azure SignalR hizmetini kullanmaya genel bakış.
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: c88e2b012086f61aad3143c8fe6b0bd25ec333e5
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 6a71647d452597c84e0df1beb6e9c6c3932d171b
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275103"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639919"
 ---
-# <a name="build-real-time-apps-with-azure-functions-and-azure-signalr-service"></a>Azure işlevleri ve Azure SignalR hizmeti ile gerçek zamanlı uygulamalar oluşturma
+# <a name="build-real-time-apps-with-azure-functions-and-azure-signalr-service"></a>Azure Işlevleri ve Azure SignalR hizmeti ile gerçek zamanlı uygulamalar oluşturun
 
 Azure SignalR Service ve Azure İşlevlerinin ikisi de altyapıyı yönetmek yerine uygulama geliştirmeye odaklanmanıza imkan tanıyan tam yönetimli, yüksek düzeyde ölçeklenebilir hizmetler olduğundan [sunucusuz](https://azure.microsoft.com/solutions/serverless/) bir ortamda gerçek zamanlı iletişim sağlamak için iki hizmetin birlikte kullanılması yaygındır.
 
 > [!NOTE]
-> SignalR ve Azure işlevleri etkileşimli öğreticinin birlikte kullanmayı öğrenme [Azure işlevleri ile SignalR hizmetini kullanarak bir web uygulaması otomatik güncelleştirmeleri etkinleştir](https://docs.microsoft.com/learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr).
+> [Azure işlevleri ve SignalR hizmetini kullanarak bir Web uygulamasındaki otomatik güncelleştirmeleri etkinleştirmek](https://docs.microsoft.com/learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr)için bkz. SignalR ve Azure işlevlerini etkileşimli öğreticide birlikte kullanmayı öğrenin.
 
 ## <a name="integrate-real-time-communications-with-azure-services"></a>Gerçek zamanlı iletişimleri Azure hizmetleriyle tümleştirme
 
-Azure İşlevleri, bulutta olaylar gerçekleştiğinde tetiklen bir kodu JavaScript, C# ve Java dahil olmak üzere [çeşitli dillerde](../azure-functions/supported-languages.md) yazmanıza olanak tanır. Bu olayların örnekleri arasında şunlar yer alır:
+Azure Işlevleri; JavaScript, Python, C#ve Java dahil olmak üzere [çeşitli dillerde](../azure-functions/supported-languages.md)kod yazmanıza olanak tanır. Bu, her olay bulutta gerçekleştiğinde tetiklenir. Bu olayların örnekleri arasında şunlar yer alır:
 
 * HTTP ve web kancası istekleri
 * Periyodik zamanlayıcılar
@@ -66,10 +66,10 @@ SignalR Service iletilerin tüm istemcilere veya tek bir kullanıcıya ait olanl
 
 Bu makalede, geniş yelpazedeki gerçek zamanlı mesajlaşma senaryolarını etkinleştirmek üzere Azure İşlevlerini SignalR Service ile birlikte kullanmaya yönelik bir genel bakış edinirsiniz.
 
-Azure işlevleri ve SignalR hizmeti birlikte kullanma hakkında tam Ayrıntılar için aşağıdaki kaynakları ziyaret edin:
+Azure Işlevleri 'ni ve SignalR hizmetini birlikte kullanma hakkında tam Ayrıntılar için aşağıdaki kaynakları ziyaret edin:
 
-* [Azure işlevleri geliştirme ve SignalR hizmeti ile yapılandırma](signalr-concept-serverless-development-config.md)
-* [Azure işlevleri ile SignalR hizmetini kullanarak bir web uygulaması otomatik güncelleştirmeleri etkinleştir](https://docs.microsoft.com/learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr)
+* [SignalR hizmeti ile Azure Işlevleri geliştirme ve yapılandırma](signalr-concept-serverless-development-config.md)
+* [Azure Işlevleri ve SignalR hizmetini kullanarak bir Web uygulamasında otomatik güncelleştirmeleri etkinleştirme](https://docs.microsoft.com/learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr)
 
 Daha fazla bilgi edinmek için bu hızlı başlangıçlardan birini izleyin.
 

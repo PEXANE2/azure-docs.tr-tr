@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/11/2018
 ms.author: dekapur
-ms.openlocfilehash: e5fa46930a3be3c85cd76e655fac3164cc45d957
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 78db25fed7c284b31491bdc9e5498493da4c7479
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60544747"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618856"
 ---
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>Plan ve hazırlık, Service Fabric tek başına Küme dağıtımı
 
@@ -45,7 +45,7 @@ UD içinde ClusterConfig.json belirttiğinizde, her UD için ad seçebilirsiniz.
 * "upgradeDomain": "UD0"
 * "upgradeDomain": "UD1A"
 * "upgradeDomain": "DomainRed"
-* "upgradeDomain": "Mavi"
+* "upgradeDomain": Ma
 
 FD ve Ud'ler hakkında daha ayrıntılı bilgi için bkz: [açıklayan bir Service Fabric kümesi](service-fabric-cluster-resource-manager-cluster-description.md).
 
@@ -65,7 +65,7 @@ Kümeye eklemek istediğiniz her makine için önerilen bazı özellikleri şunl
 * 40 GB kullanılabilir disk alanı en az
 * Bir 4 çekirdekli veya daha fazla CPU
 * Güvenli bir ağ veya tüm makineler için ağ bağlantısı
-* Windows Server işletim sistemi yüklü (geçerli sürüm: 2012 R2, 2016, 1709 veya 1803)
+* Windows Server işletim sistemi yüklü (geçerli sürümler: 2012 R2, 2016, 1709, 1803 veya 2019)
 * [.NET framework 4.5.1 veya üzeri](https://www.microsoft.com/download/details.aspx?id=40773), tam yükleme
 * [Windows PowerShell 3.0](https://msdn.microsoft.com/powershell/scripting/setup/installing-windows-powershell)
 * [RemoteRegistry hizmeti](https://technet.microsoft.com/library/cc754820) tüm makinelerde çalıştırılması
@@ -103,13 +103,13 @@ Bir Küme Yöneticisi, Service Fabric tek başına küme yapılandırdığında,
    * Uzak Kayıt Defteri hizmeti (uzak kayıt defteri) etkinleştirdiniz mi
    * Dosya Paylaşımı (SMB) etkin
    * Gerekli bağlantı noktaları açıldı, küme yapılandırması bağlantı noktalarına bağlı olan
-   * Açılan Windows SMB ve uzak kayıt defteri hizmeti için gerekli bağlantı noktaları vardır: 135 ve 137, 138, 139'dur ve 445
+   * Windows SMB ve uzak kayıt defteri hizmeti için gerekli bağlantı noktaları açıldı: 135, 137, 138, 139 ve 445
    * Başka bir ağ bağlantısına sahip
 3. Küme düğümü makinelerin hiçbirinin bir etki alanı denetleyicisi olmalıdır.
 4. Kümenin dağıtılması için güvenli bir küme ise, Önkoşullar içinde yerleştirin ve yapılandırmanın karşı doğru yapılandırıldığından gerekli güvenlik doğrulayın.
 5. Küme makinelerin İnternet'ten erişilebilen emin değilseniz, aşağıdaki küme yapılandırmasında ayarlayın:
-   * Telemetri devre dışı bırakın: Altında *özellikleri* ayarlamak *"enableTelemetry": false*
-   * Otomatik yapı sürümü indirme & Geçerli Küme sürümü, destek sonuna yaklaşıyor bildirimleri devre dışı bırak: Altında *özellikleri* ayarlamak *"fabricClusterAutoupgradeEnabled": false*
+   * Telemetrisi devre dışı bırak: *"Enabletelemetri"* ayar *özellikleri* : false
+   * Geçerli küme sürümünün destek sonuna yaklaştığı otomatik doku sürümü indirmeyi & bildirimleri devre dışı bırakın: *"Fabricclusteroto Upgradeenabled"* *Özellikler* kümesi altında: false
    * Alternatif olarak, ağ internet erişimi beyaz listelenen etki alanları için sınırlı ise, aşağıdaki etki alanlarına otomatik yükseltme için gereken: go.microsoft.com download.microsoft.com
 
 6. Service Fabric uygun virüsten koruma dışlamaları ayarlayın:

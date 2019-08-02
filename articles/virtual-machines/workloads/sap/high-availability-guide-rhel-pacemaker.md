@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/17/2018
 ms.author: sedusch
-ms.openlocfilehash: cd56df8e88a84f52933e5ee43fecd598252ba6c0
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: bffb92e37ccddd43c2a64466282084bb6226c338
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479765"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570570"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Azure 'da Red Hat Enterprise Linux Paceyapıcısı ayarlama
 
@@ -39,8 +39,6 @@ ms.locfileid: "68479765"
 
 [virtual-machines-linux-maintenance]:../../linux/maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot
 
-> [!TIP]
-> Red Hat Enterprise Linux pacemaker, gerekirse bir küme düğümünü dilimlendirmek için Azure çit Aracısı 'nı kullanır. Azure sınır aracısının yeni bir sürümü kullanılabilir ve yük devretme artık uzun sürmediği için bir kaynak durmuyorsa veya küme düğümleri birbirleriyle iletişim kuramadığında. Daha fazla bilgi için, [BIR RHEL yüksek kullanılabilirlik kümesi üyesi olarak çalışan Azure VM 'nin okuma işlemi çok uzun zaman alır veya VM kapatılmadan önce başarısız/zaman aşımına](https://access.redhat.com/solutions/3408711) uğrar
 
 Önce aşağıdaki SAP notlarını ve kağıtları okuyun:
 

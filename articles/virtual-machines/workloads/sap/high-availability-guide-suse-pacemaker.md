@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: cd377e78abe328814795bb1f75465b090a13e456
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 551f140c22677bea363ad5d8f43bf9670f783a1d
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68228357"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68725615"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>SLES azure'daki SUSE Linux Enterprise Server üzerinde Pacemaker ayarlama
 
@@ -35,14 +35,14 @@ ms.locfileid: "68228357"
 
 Azure'da Pacemaker kümeyi ayarlamak için iki seçenek vardır. Azure API'leri aracılığıyla başarısız bir düğümü yeniden başlatmak üstlenir bir sınır Aracısı ya da kullanabilir veya SBD cihaz kullanabilirsiniz.
 
-En az bir ek sanal SBD cihaz sağlar ve bir iSCSI hedef sunucusu olarak davranan makineyi SBD cihaz gerektirir. Bu iSCSI hedef sunucularına ancak olabilir diğer Pacemaker kümeleriyle paylaşılan. SBD cihaz kullanmanın avantajı, daha hızlı yük devretme zaman alan bir işlemdir ve SBD cihazlar şirket içinde kullanıyorsanız nasıl pacemaker küme çalıştırıyorsanız üzerinde herhangi bir değişiklik gerektirmez. Örneğin iSCSI hedef sunucusunun işletim sistemi düzeltme eki uygulama sırasında kullanılamaz hale SBD aygıtının izin vermek için en fazla üç SBD cihazlar Pacemaker küme için kullanabilirsiniz. Birden fazla SBD cihaz başına Pacemaker kullanmak istiyorsanız, birden fazla iSCSI hedef sunucularına dağıtmak ve her iSCSI hedef sunucudan bir SBD bağlanmak emin olun. Bir SBD cihaz veya üç kullanmanızı öneririz. Pacemaker yalnızca iki SBD cihazları yapılandırmak ve bunlardan biri kullanılabilir değilse, bir küme düğümünde otomatik olarak Çit mümkün olmayacaktır. Bir iSCSI hedef sunucusu kullanılamaz durumdayken Çit istiyorsanız, üç SBD cihazlar ve bu nedenle üç iSCSI hedef sunucusu kullanmanız gerekir.
+En az bir ek sanal SBD cihaz sağlar ve bir iSCSI hedef sunucusu olarak davranan makineyi SBD cihaz gerektirir. Bu iSCSI hedef sunucularına ancak olabilir diğer Pacemaker kümeleriyle paylaşılan. Bir SBD cihaz kullanmanın avantajı daha hızlı bir yük devretme zamanı olup, şirket içinde SBD cihazları kullanıyorsanız, paceoluşturucu kümesini nasıl çalıştıracaksınız üzerinde herhangi bir değişiklik yapılmasını gerektirmez. Örneğin iSCSI hedef sunucusunun işletim sistemi düzeltme eki uygulama sırasında kullanılamaz hale SBD aygıtının izin vermek için en fazla üç SBD cihazlar Pacemaker küme için kullanabilirsiniz. Birden fazla SBD cihaz başına Pacemaker kullanmak istiyorsanız, birden fazla iSCSI hedef sunucularına dağıtmak ve her iSCSI hedef sunucudan bir SBD bağlanmak emin olun. Bir SBD cihaz veya üç kullanmanızı öneririz. Pacemaker yalnızca iki SBD cihazları yapılandırmak ve bunlardan biri kullanılabilir değilse, bir küme düğümünde otomatik olarak Çit mümkün olmayacaktır. Bir iSCSI hedef sunucusu kullanılamaz durumdayken Çit istiyorsanız, üç SBD cihazlar ve bu nedenle üç iSCSI hedef sunucusu kullanmanız gerekir.
 
-Bir ek sanal makine yatırımını yapmak istemiyorsanız, Azure sınır Aracısı'nı kullanabilirsiniz. Dezavantajı, bir yük devretme kaynak durdurma başarısız olursa veya küme düğümleri, birbirine artık iletişim kuramıyor 10-15 dakika arasında sürebilir ' dir.
+Bir ek sanal makineye yatırım yapmak istemiyorsanız, Azure çit Aracısı 'nı da kullanabilirsiniz. Dezavantajı, bir yük devretme kaynak durdurma başarısız olursa veya küme düğümleri, birbirine artık iletişim kuramıyor 10-15 dakika arasında sürebilir ' dir.
 
 ![SLES genel SLES üzerinde pacemaker](./media/high-availability-guide-suse-pacemaker/pacemaker.png)
 
 >[!IMPORTANT]
-> Düğümleri ve SBD cihazları planlama ve dağıtma Linux Pacemaker kümelenmiş, söz konusu sanal makineler arasında yönlendirme ve SBD onları barındıran VM üzerinden geçmiyor tam küme yapılandırması genel güvenilirliği için gereklidir herhangi bir cihaza ister [nva'ları](https://azure.microsoft.com/solutions/network-appliances/). Aksi takdirde, sorunları ve NVA ile bakım olayları kararlılık ve güvenilirlik genel küme yapılandırması üzerinde olumsuz bir etkiye sahip olabilir. Tür engelleri önlemek için yönlendirme kuralları nva belirtmiyor veya [kullanıcı tanımlı yönlendirme kuralları](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) kümelenmiş düğümler ve Nva üzerinden SBD cihazları ve planlama ve Linux dağıtırken benzer cihazlar arasında trafiği yönlendirme Kümelenmiş pacemaker düğümleri ve SBD cihazlar. 
+> Düğümleri ve SBD cihazları planlama ve dağıtma Linux Pacemaker kümelenmiş, söz konusu sanal makineler arasında yönlendirme ve SBD onları barındıran VM üzerinden geçmiyor tam küme yapılandırması genel güvenilirliği için gereklidir herhangi bir cihaza ister [nva'ları](https://azure.microsoft.com/solutions/network-appliances/). Aksi takdirde, sorunları ve NVA ile bakım olayları kararlılık ve güvenilirlik genel küme yapılandırması üzerinde olumsuz bir etkiye sahip olabilir. Bu tür engelleri önlemek için, Linux Paceoluşturucu kümelenmiş düğümlerini planlarken ve dağıtmakta ve dağıttıktan sonra NVA 'lar ve benzer cihazlar aracılığıyla kümelenmiş düğümler ve SBD cihazları arasında trafiği yönlendiren NVA 'lar veya [Kullanıcı tanımlı yönlendirme kurallarının](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) yönlendirme kurallarını tanımlamayın ve SBD cihazları. 
 >
 
 ## <a name="sbd-fencing"></a>SBD çitlemek
@@ -53,7 +53,7 @@ SBD cihaz için sınır kullanmak istiyorsanız aşağıdaki adımları izleyin.
 
 Önce iSCSI hedef sanal makineler oluşturmak gerekir. iSCSI hedef sunucularına ile birden çok Pacemaker küme paylaşılabilir.
 
-1. Yeni SLES 12 SP1 ya da daha yüksek sanal makineleri dağıtmak ve bunları ssh bağlanın. Makineleri büyük olması gerekmez. Bir sanal makine boyutu Standard_E2s_v3 veya Standard_D2s_v3 gibi büyük/küçük harf yeterlidir. Premium depolama işletim sistemi diskini kullandığınızdan emin olun.
+1. Yeni SLES 12 SP1 ya da daha yüksek sanal makineleri dağıtmak ve bunları ssh bağlanın. Makinelerin büyük olması gerekmez. Bir sanal makine boyutu Standard_E2s_v3 veya Standard_D2s_v3 gibi büyük/küçük harf yeterlidir. Premium depolama işletim sistemi diskini kullandığınızdan emin olun.
 
 Tüm aşağıdaki komutları çalıştırın **iSCSI hedef sanal makinelere**.
 
@@ -84,7 +84,7 @@ Tüm aşağıdaki komutları çalıştırın **iSCSI hedef sanal makinelere**.
 
 Tüm aşağıdaki komutları çalıştırın **iSCSI hedef sanal makinelere** iSCSI disklerini, SAP sistemlerini tarafından kullanılan kümeler için oluşturulacak. Aşağıdaki örnekte, SBD cihazlar birden fazla küme için oluşturulur. Bir iSCSI hedef sunucusu birden fazla küme için nasıl kullanacağınız gösterilmektedir. SBD cihazlar, işletim sistemi diskinde yerleştirilir. Yeterli alana sahip olduğunuzdan emin olun.
 
-**`nfs`** , NFS kümesini tanımlamak için kullanılır. **ascsnw1** , **NW1**'ın ascs kümesini tanımlamak için kullanılır, **dbnw1** , NFS **-0** ve **NFS-1** , NFS küme düğümlerinin **ana bilgisayar adı, NW1-xscs-0** ve **NW1-xscs-1** , **NW1** ascs küme düğümlerinin ana bilgisayar adları ve **NW1-DB-0** ve **NW1-DB-1** , veritabanı kümesi düğümlerinin ana bilgisayar adı. Bunları, Küme düğümlerinizi ana bilgisayar adlarını ve SAP sisteminizin SID ile değiştirin.
+**`nfs`** , NFS kümesini tanımlamak için kullanılır. **ascsnw1** , **NW1**'ın ascs kümesini tanımlamak için kullanılır, **dbnw1** , NFS **-0** ve **NFS-1** , NFSküme düğümlerinin **ana bilgisayar adı, NW1-xscs-0** ve **NW1-xscs-1** , **NW1** ascs küme düğümlerinin ana bilgisayar adları ve **NW1-DB-0** ve **NW1-DB-1** , veritabanı kümesi düğümlerinin ana bilgisayar adı. Bunları, Küme düğümlerinizi ana bilgisayar adlarını ve SAP sisteminizin SID ile değiştirin.
 
 <pre><code># Create the root folder for all SBD devices
 sudo mkdir /sbd
@@ -398,6 +398,28 @@ Aşağıdaki öğeler ile önek **[A]** - tüm düğümler için geçerli **[1]*
    <pre><code>sudo zypper install fence-agents
    </code></pre>
 
+   >[!IMPORTANT]
+   > SAP 15 için SUSE Linux Enterprise Server kullanıyorsanız, ek modülü etkinleştirmeniz ve Azure sınır Aracısı kullanımı için önkoşul olan ek bileşen yüklemeniz gerektiğini unutmayın. SUSE modülleri ve uzantıları hakkında daha fazla bilgi edinmek için bkz. [modüller ve uzantılar açıklanmıştır](https://www.suse.com/documentation/sles-15/singlehtml/art_modules/art_modules.html). Azure Python SDK 'Yı yüklemek için en düşük yönergeleri izleyin. 
+
+   Azure Python SDK 'nın nasıl yükleneceğine ilişkin aşağıdaki yönergeler yalnızca SAP **15**Için Suse Enterprise Server için geçerlidir.  
+
+    - Kendi aboneliğinizi getir ' i kullanıyorsanız, bu yönergeleri izleyin  
+
+    <pre><code>
+    #Activate module PackageHub/15/x86_64
+    sudo SUSEConnect -p PackageHub/15/x86_64
+    #Install Azure Python SDK
+    sudo zypper in python3-azure-sdk
+    </code></pre>
+
+     - Kullandıkça Öde aboneliği kullanıyorsanız, bu yönergeleri izleyin  
+
+    <pre><code>#Activate module PackageHub/15/x86_64
+    zypper ar https://download.opensuse.org/repositories/openSUSE:/Backports:/SLE-15/standard/ SLE15-PackageHub
+    #Install Azure Python SDK
+    sudo zypper in python3-azure-sdk
+    </code></pre>
+
 1. **[A]**  Kurulum ana bilgisayar adı çözümlemesi
 
    Bir DNS sunucusu kullanabilir veya/etc/hosts tüm düğümlerde değiştirin. Bu örnek/Etc/Hosts dosyasının nasıl kullanılacağını gösterir.
@@ -443,12 +465,12 @@ Aşağıdaki öğeler ile önek **[A]** - tüm düğümler için geçerli **[1]*
    <pre><code>sudo passwd hacluster
    </code></pre>
 
-1. **[A]**  Corosync diğer aktarım kullanın ve bir düğüm listesine eklemek için yapılandırın. Aksi takdirde, küme çalışmaz.
+1. **[A]**  Corosync diğer aktarım kullanın ve bir düğüm listesine eklemek için yapılandırın. Küme başka bir şekilde çalışmaz.
 
    <pre><code>sudo vi /etc/corosync/corosync.conf
    </code></pre>
 
-   Değerler var. ya da farklı değilse kalın aşağıdaki içeriği dosyaya ekleyin. Bakımı koruma bellek izin vermek için 30000 belirteç değiştirdiğinizden emin olun. Daha fazla bilgi için or [Windows][virtual-machines-windows-maintenance] [Linux için bu makaleye][virtual-machines-linux-maintenance] bakın. Ayrıca parametre mcastaddr kaldırdığınızdan emin olun.
+   Değerler var. ya da farklı değilse kalın aşağıdaki içeriği dosyaya ekleyin. Bakımı koruma bellek izin vermek için 30000 belirteç değiştirdiğinizden emin olun. Daha fazla bilgi için Linux veya [Windows][virtual-machines-windows-maintenance] [için bu makaleye][virtual-machines-linux-maintenance] bakın. Ayrıca parametre mcastaddr kaldırdığınızdan emin olun.
 
    <pre><code>[...]
      <b>token:          30000
@@ -510,7 +532,7 @@ STONITH cihaz, Microsoft Azure karşı korunmasına yetki vermek için bir hizme
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]**  Sınır aracısı için özel bir rol oluşturun
 
-Hizmet sorumlusu kullanarak Azure kaynaklarınızı varsayılan olarak erişim izni yok. Başlatmak ve durdurmak için hizmet sorumlusu izinleri vermeniz gerekir (serbest bırakın) kümenin tüm sanal makineler. Özel rol zaten oluşturmadıysanız, bunu kullanarak oluşturabilirsiniz [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell) veya [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)
+Hizmet sorumlusu, varsayılan olarak Azure kaynaklarınıza erişme izinlerine sahip değildir. Başlatmak ve durdurmak için hizmet sorumlusu izinleri vermeniz gerekir (serbest bırakın) kümenin tüm sanal makineler. Özel rol zaten oluşturmadıysanız, bunu kullanarak oluşturabilirsiniz [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell) veya [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)
 
 Giriş dosyası için aşağıdaki içeriği kullanın. İhtiyacınız olan içeriği için aboneliklerinizi uyum, c276fc76-9cd4-44c9-99a7-4fd71546436e ve e91d47c4-76f3-4271-a796-21b4ecfe3624 aboneliğinizin kimliği ile değiştirin. İkinci girdi, yalnızca bir aboneliğiniz varsa, ın AssignableScopes içinde kaldırın.
 
@@ -536,7 +558,7 @@ Giriş dosyası için aşağıdaki içeriği kullanın. İhtiyacınız olan içe
 
 ### <a name="a-assign-the-custom-role-to-the-service-principal"></a>**[A]** hizmet sorumlusuna özel rol atama
 
-Özel rol "Linux sınır aracısı hizmet sorumlusuna son bölümde oluşturduğunuz rolü" atayın. Sahip rolü artık kullanmayın!
+Özel rol "Linux sınır aracısı hizmet sorumlusuna son bölümde oluşturduğunuz rolü" atayın. Sahip rolünü artık kullanmayın!
 
 1. Git[https://portal.azure.com](https://portal.azure.com)
 1. Tüm kaynaklar dikey penceresini açın

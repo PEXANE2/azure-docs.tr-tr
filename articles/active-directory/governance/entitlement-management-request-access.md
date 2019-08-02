@@ -16,12 +16,12 @@ ms.date: 04/19/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 578f78d1853194cad000aa2e54b40d1ac5003544
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 64a81a871d811c68f5e92822ca88446966be4d5c
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489040"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678127"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management-preview"></a>Azure AD Yetkilendirme Yönetimi 'nde (Önizleme) bir erişim paketine erişim isteme
 
@@ -44,7 +44,7 @@ ms.locfileid: "68489040"
 
 1. Erişim Portalı ' nda oturum açın.
 
-    Kuruluş hesabınızı kullandığınızdan emin olun. Emin değilseniz, projeniz veya Business Manager ile görüşün.
+    Kuruluş (iş veya okul) hesabınızı kullandığınızdan emin olun. Emin değilseniz, projeniz veya Business Manager ile görüşün.
 
 ## <a name="request-an-access-package"></a>Erişim paketi isteme
 
@@ -52,6 +52,9 @@ Access Portal 'da erişim paketini bulduktan sonra bir istek gönderebilirsiniz.
 
 **Önkoşul rolü:** İstek sahibi
 
+1. Listede erişim paketini bulun.  Gerekirse, arama dizesi yazarak ve ardından **ad**, **Katalog**veya **kaynaklar** filtresini seçerek arama yapabilirsiniz.
+
+    ![Erişim Portalı-kaynak arama](./media/entitlement-management-request-access/elm-myaccess-resource-search.png)
 1. Erişim paketini seçmek için onay işaretine tıklayın.
 
     ![Erişim Portalı-erişim paketlerim](./media/entitlement-management-shared/my-access-access-packages.png)

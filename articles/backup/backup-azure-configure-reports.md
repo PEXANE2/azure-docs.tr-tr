@@ -1,18 +1,19 @@
 ---
 title: Azure Backup raporlarını yapılandırma
 description: Kurtarma Hizmetleri kasasını kullanarak Azure Backup için Power BI raporlarını yapılandırın.
-author: adigan
-manager: shivamg
+ms.reviewer: adigan
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.author: adigan
-ms.openlocfilehash: ae772446a4955f9f9def830d5c770f7d826b7e48
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 169ce73ead52d6a275f13f084c681e14c89ab606
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466622"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689349"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup raporlarını yapılandırma
 Bu makalede, bir kurtarma hizmetleri Kasası kullanarak Azure Backup raporlarını yapılandırmak için izlenecek adımlar gösterilmektedir. Ayrıca, Power BI kullanarak raporlara nasıl erişdeğiştirileceğini gösterir. Bu adımları tamamladıktan sonra, raporları görüntülemek, özelleştirmek ve oluşturmak için doğrudan Power BI gidebilirsiniz.

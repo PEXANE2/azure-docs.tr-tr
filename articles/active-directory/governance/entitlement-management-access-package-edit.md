@@ -16,12 +16,12 @@ ms.date: 07/23/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c07f9dbcc21840bec4b4487225dfb8108586865e
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 17c85d53d05193313f9e166b88beb2a0f82eb197
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489196"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618363"
 ---
 # <a name="edit-and-manage-an-existing-access-package-in-azure-ad-entitlement-management-preview"></a>Azure AD Yetkilendirme Yönetimi 'nde var olan bir erişim paketini düzenleyin ve yönetin (Önizleme)
 
@@ -38,7 +38,7 @@ Bu makalede, mevcut erişim paketlerinin nasıl düzenleneceği ve yönetileceğ
 
 Kaynak rolü, bir kaynakla ilişkili izinlerin koleksiyonudur. Kaynakları kullanıcıların istemesi için kullanılabilir hale getirmenin yolu, erişim paketinize kaynak rolleri eklemektir. Gruplar, uygulamalar ve SharePoint siteleri için kaynak rolleri ekleyebilirsiniz.
 
-**Önkoşul rolü:** Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
+**Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
 
 1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
 
@@ -62,7 +62,7 @@ Bir erişim paketi atandığında, yetkilendirme yönetiminin kullanıcıları o
 Herhangi bir Office 365 grubunu veya Azure AD güvenlik grubunu seçebilirsiniz.  Yöneticiler, kataloğa herhangi bir grup ekleyebilir; Katalog sahipleri, grubun sahibiyseniz, kataloğa herhangi bir grup ekleyebilir. Bir grup seçerken aşağıdaki Azure AD kısıtlamalarını aklınızda bulundurun:
 
 - Konuk dahil bir Kullanıcı bir gruba üye olarak eklendiğinde, bu grubun tüm diğer üyelerini görebilirler.
-- Azure AD, Azure AD Connect kullanılarak Windows Server Active Directory eşitlenen bir grubun üyeliğini değiştiremiyor.  
+- Azure AD, Azure AD Connect kullanılarak Windows Server Active Directory eşitlenen veya Exchange Online 'da bir dağıtım grubu olarak oluşturulan bir grubun üyeliğini değiştiremiyor.  
 - Dinamik grupların üyeliği üye ekleyerek veya kaldırarak güncelleştirilemez, bu nedenle dinamik grup üyelikleri yetkilendirme yönetimiyle kullanım için uygun değildir.
 
 1. **Pakete erişmek için kaynak rolleri ekle** sayfasında, **Gruplar ' a** tıklayarak Grup Seç bölmesini açın.
@@ -136,7 +136,7 @@ Azure AD, kullanıcılara bir SharePoint Online sitesine veya SharePoint Online 
 
 ## <a name="remove-resource-roles"></a>Kaynak rollerini kaldırma
 
-**Önkoşul rolü:** Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
+**Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
 
 1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
 
@@ -150,7 +150,7 @@ Azure AD, kullanıcılara bir SharePoint Online sitesine veya SharePoint Online 
 
     Erişim paketine mevcut atamaları olan tüm kullanıcılar, kaldırıldığında bu kaynak rolü için otomatik olarak erişimi iptal eder.
 
-## <a name="add-a-new-policy"></a>Yeni ilke ekle
+## <a name="add-a-new-policy"></a>Yeni ilke Ekle
 
 Ne şekilde bir erişim paketi isteyebilen bir ilke oluşturmaktır. Farklı Kullanıcı kümelerine, farklı onay ve sona erme ayarlarına sahip atamalar verilmesini sağlamak istiyorsanız, tek bir erişim paketi için birden çok ilke oluşturabilirsiniz. Tek bir ilke, aynı erişim paketine iç ve dış kullanıcı atamak için kullanılamaz. Bununla birlikte, aynı erişim paketinde bir tane olmak üzere, biri iç kullanıcılar ve diğeri dış kullanıcılar için olmak üzere iki ilke oluşturabilirsiniz. Bir kullanıcı için uygulanan birden çok ilke varsa, kendilerine atanması gereken ilkeyi seçme istekleri sırasında istenir.
 
@@ -158,7 +158,7 @@ Aşağıdaki diyagramda, var olan bir erişim paketine yönelik bir ilke oluştu
 
 ![İlke işlemi oluşturma](./media/entitlement-management-access-package-edit/policy-process.png)
 
-**Önkoşul rolü:** Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
+**Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
 
 1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
 
@@ -178,7 +178,7 @@ Aşağıdaki diyagramda, var olan bir erişim paketine yönelik bir ilke oluştu
 
 Bir ilkeyi dilediğiniz zaman düzenleyebilirsiniz. Bir ilkenin sona erme tarihini değiştirirseniz, zaten bekleyen bir onaylama veya onaylanan durumda olan isteklerin sona erme tarihi değişmez.
 
-**Önkoşul rolü:** Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
+**Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
 
 1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
 
@@ -200,7 +200,7 @@ Bir ilkeyi dilediğiniz zaman düzenleyebilirsiniz. Bir ilkenin sona erme tarihi
 
 Bazı durumlarda, kullanıcıların erişim paketini isteme işlemini istememeleri için bir erişim paketine doğrudan belirli kullanıcıları atamak isteyebilirsiniz. Kullanıcıları doğrudan atamak için, erişim paketinin yönetici doğrudan atamalarına izin veren bir ilkesi olması gerekir.
 
-**Önkoşul rolü:** Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
+**Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
 
 1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
 
@@ -228,7 +228,7 @@ Bazı durumlarda, kullanıcıların erişim paketini isteme işlemini istememele
 
 ## <a name="view-who-has-an-assignment"></a>Kimin atamaya sahip olduğunu görüntüleme
 
-**Önkoşul rolü:** Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
+**Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
 
 1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
 
@@ -248,7 +248,7 @@ Bazı durumlarda, kullanıcıların erişim paketini isteme işlemini istememele
 
 ## <a name="view-requests"></a>İstekleri görüntüle
 
-**Önkoşul rolü:** Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
+**Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
 
 1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
 
@@ -260,7 +260,7 @@ Bazı durumlarda, kullanıcıların erişim paketini isteme işlemini istememele
 
 ## <a name="view-a-requests-delivery-errors"></a>Bir isteğin teslim hatalarını görüntüleme
 
-**Önkoşul rolü:** Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
+**Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
 
 1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
 
@@ -280,7 +280,7 @@ Bazı durumlarda, kullanıcıların erişim paketini isteme işlemini istememele
 
 Yalnızca henüz teslim edilmemiş bekleyen bir isteği iptal edebilirsiniz.
 
-**Önkoşul rolü:** Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
+**Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
 
 1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
 
@@ -296,7 +296,7 @@ Yalnızca henüz teslim edilmemiş bekleyen bir isteği iptal edebilirsiniz.
 
 Dizininizdeki çoğu kullanıcı erişim portalı 'nda oturum açabilir ve istedikleri erişim paketleri listesini otomatik olarak görebilir. Ancak, henüz dizininizden olmayan dış iş ortağı kullanıcıları için, onlara bir erişim paketi istemek üzere kullanabilecekleri bir bağlantı göndermeniz gerekecektir. Erişim paketi dış kullanıcılar için etkinleştirildiğinden ve dış kullanıcının dizini için bir ilkeniz varsa, dış Kullanıcı erişim paketini istemek için erişim portalı bağlantısını kullanabilir.
 
-**Önkoşul rolü:** Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
+**Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
 
 1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
 
@@ -312,7 +312,7 @@ Dizininizdeki çoğu kullanıcı erişim portalı 'nda oturum açabilir ve isted
 
 Erişim paketleri varsayılan olarak bulunabilir. Bu, bir ilke bir kullanıcının erişim paketini istemesine izin veriyorsa, erişim paketini otomatik olarak erişim portalı 'nda listelenmiş olarak görebilecekleri anlamına gelir.
 
-**Önkoşul rolü:** Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
+**Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
 
 1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
 
@@ -330,7 +330,7 @@ Erişim paketleri varsayılan olarak bulunabilir. Bu, bir ilke bir kullanıcın�
 
 Erişim paketi yalnızca etkin kullanıcı atamaları yoksa silinebilir.
 
-**Önkoşul rolü:** Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
+**Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
 
 1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
 

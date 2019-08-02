@@ -5,7 +5,7 @@ description: Program dil ve veri bilimi sanal makinesi üzerinde önceden yükle
 keywords: veri bilimi araçları, veri bilimi sanal makinesi, veri bilimi için araçlar, linux veri bilimi
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
@@ -16,13 +16,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.author: gokuma
-ms.openlocfilehash: 586f37ff972a6102da351794365f719a185857fc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: vijetaj
+ms.openlocfilehash: 1df3c986132de2a3e7ec9547a996abef60ea04ac
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60502275"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68558121"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>Veri bilimi sanal makinesi üzerinde desteklenen diller 
 
@@ -193,7 +193,7 @@ R tüm kullanıcılar tarafından okunabilir bir genel ortamında DSVM yüklenir
 | ------------- | ------------- |
 | Desteklenen dil sürümleri | 0,6 |
 | Desteklenen DSVM sürümleri      | Linux, Windows     |
-| Nasıl, yapılandırılmış / DSVM üzerinde yüklü?  | Windows: Yüklü `C:\JuliaPro-VERSION`<br /> Linux: Yüklü `/opt/JuliaPro-VERSION`    |
+| Nasıl, yapılandırılmış / DSVM üzerinde yüklü?  | Windows: Yükleme saati:`C:\JuliaPro-VERSION`<br /> Linux: Yükleme saati:`/opt/JuliaPro-VERSION`    |
 | Örneklere bağlantılar      | Julia örnek Jupyter not defterleri dahil edilir.     |
 | DSVM ilgili araçları      | Python, R      |
 ### <a name="how-to-use--run-it"></a>Kullanma / çalıştırın nasıl?    
@@ -222,7 +222,7 @@ Julia konumu tüm kullanıcılar tarafından okunabilir ortam bir genel varsayı
 Açık terminal ve sadece çalışma `julia`. 
 * IDE içinde kullanma
 
-Kullanım `Juno` Julia IDE DSVM yüklü ve bir uygulama menüsü kısayol olarak kullanılabilir.
+Dsvm 'de yüklü olan ve uygulama menüsü kısayolu olarak kullanılabilen Julia IDE 'yi kullanın `Juno` .
 
 * Jupyter'de kullanma
 
@@ -234,12 +234,12 @@ Julia konumu tüm kullanıcılar tarafından okunabilir ortam bir genel varsayı
 
 ## <a name="other-languages"></a>Diğer diller
 
-**C#** : Windows üzerinde kullanılabilen ve erişilebilen veya Visual Studio Community sürümü üzerinden bir `Developer Command Prompt for Visual Studio` az önce çalıştırdığınız `csc` komutu. 
+**C#** : Windows 'da kullanılabilir ve Visual Studio Community Edition ya da yalnızca komutu çalıştırabileceğiniz `Developer Command Prompt for Visual Studio` `csc` bir yerde erişilebilir. 
 
-**Java**: OpenJDK hem Linux hem de Windows sürümü DSVM ve yolun kümesinde kullanılabilir. Yazabilirsiniz `javac` veya `java` Windows komut istemi veya bash Kabuğu'nda Linux Java kullanma komutu. 
+**Java**: OpenJDK, DSVM 'nin hem Linux hem de Windows sürümünde kullanılabilir ve Path üzerinde ayarlanır. Yazabilirsiniz `javac` veya `java` Windows komut istemi veya bash Kabuğu'nda Linux Java kullanma komutu. 
 
 **node.js**: node.js DSVM ve yolun kümesinde hem Linux hem de Windows Edition'da kullanılabilir. Yazabilirsiniz `node` veya `npm` Windows komut istemi veya bash Kabuğu'nda node.js erişmek için Linux komutu. Windows üzerinde Visual Studio uzantısı için Node.js araçları, node.js uygulaması geliştirmeye yönelik bir grafik IDE sağlamak için yüklenir. 
 
-**F#** : Windows üzerinde kullanılabilen ve erişilebilen veya Visual Studio Community sürümü üzerinden bir `Developer Command Prompt for Visual Studio` az önce çalıştırdığınız `fsc` komutu. 
+**F#** : Windows 'da kullanılabilir ve Visual Studio Community Edition ya da yalnızca komutu çalıştırabileceğiniz `Developer Command Prompt for Visual Studio` `fsc` bir yerde erişilebilir. 
 
 

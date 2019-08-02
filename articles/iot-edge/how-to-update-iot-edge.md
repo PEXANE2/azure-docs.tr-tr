@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: b6b4cd38ce5f591d43f27f735a48993cc1a1ab63
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 27f0ebab1fd87eb1870c5a8be21c4f80be4132f1
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414457"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698597"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>IOT Edge güvenlik arka plan programı ve çalışma zamanını güncelleştirme
 
@@ -24,14 +24,6 @@ IoT Edge hizmeti yeni sürümleri yayındıkça, en son özellikler ve güvenlik
 IOT Edge cihazı iki bileşenden yeni bir sürüme taşımak istiyorsanız güncelleştirilmesi gerekir. Birincisi, cihazda çalışan ve cihaz başladığında çalışma zamanı modüllerini Başlatan güvenlik cini ' dir. Şu anda güvenlik arka plan programı CİHAZDAN yalnızca güncelleştirilebilir. İkinci bileşen, IoT Edge hub ve IoT Edge aracı modülleriyle oluşturulan çalışma zamanı. Dağıtımınızı nasıl yapısına bağlı olarak, çalışma zamanı CİHAZDAN veya uzaktan güncelleştirilebilir. 
 
 Azure IOT Edge en son sürümünü bulmak için bkz: [Azure IOT Edge serbest](https://github.com/Azure/azure-iotedge/releases).
-
->[!IMPORTANT]
->Bir Windows cihazında Azure IoT Edge çalıştırıyorsanız, cihazınız için aşağıdakilerden biri geçerliyse 1.0.5 sürümüne güncelleştirme yapın: 
->* Cihazınızı Windows Build 17763 ' e yükseltmedi. IoT Edge Version 1.0.5, 17763 'den eski Windows derlemelerini desteklemez.
->* Java veya Node. js modüllerini Windows cihazınızda çalıştırırsınız. Windows cihazınızı en son yapıya güncelleştirmiş olsanız bile sürüm 1.0.5 ' i atlayın. 
->
->IoT Edge Version 1.0.5 hakkında daha fazla bilgi için bkz. [1.0.5 sürüm notları](https://github.com/Azure/azure-iotedge/releases/tag/1.0.5). Geliştirme araçlarınızın en son sürüme güncelleştirilmesini engelleme hakkında daha fazla bilgi için bkz. [IoT Geliştirici blogu](https://devblogs.microsoft.com/iotdev/).
-
 
 ## <a name="update-the-security-daemon"></a>Güvenlik daemon'ı güncelleştirme
 

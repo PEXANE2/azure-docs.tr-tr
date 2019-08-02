@@ -1,6 +1,6 @@
 ---
-title: Kritik iş katmanı - Azure SQL veritabanı hizmeti | Microsoft Docs
-description: Azure SQL veritabanı iş açısından kritik katmanı hakkında bilgi edinin
+title: İş Açısından Kritik katmanı-Azure SQL veritabanı hizmeti | Microsoft Docs
+description: Azure SQL veritabanı İş Açısından Kritik katmanı hakkında bilgi edinin
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -10,46 +10,45 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
-manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: 90989a9105405f1784b3be9ab59f55cd3433feaf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 208224e10c3acfb17bc5fd89d2d66152943811dc
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66479234"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566752"
 ---
-# <a name="business-critical-tier---azure-sql-database"></a>Kritik iş katmanı - Azure SQL veritabanı
+# <a name="business-critical-tier---azure-sql-database"></a>İş Açısından Kritik katmanı-Azure SQL veritabanı
 
 > [!NOTE]
-> Kritik iş katmanı Premium DTU satın alma modeli denir. Sanal çekirdek tabanlı satın alma modeli DTU tabanlı satın alma modeli ile bir karşılaştırması için bkz: [Azure SQL veritabanı'nın modelleri ve kaynakları satın alma](sql-database-purchase-models.md).
+> İş Açısından Kritik katmana, DTU satın alma modelinde Premium adı verilir. DTU tabanlı satın alma modeliyle sanal çekirdek tabanlı satın alma modeli karşılaştırması için bkz. [Azure SQL veritabanı satın alma modelleri ve kaynakları](sql-database-purchase-models.md).
 
-Azure SQL veritabanı altyapı hataları durumda bile % 99,99 kullanılabilirlik sağlamak üzere bulut ortamı için ayarlanmış bir SQL Server veritabanı altyapısı mimarisini temel alır. Azure SQL veritabanı'nda kullanılan üç Mimari modeli vardır:
-- Genel amaçlı/standart 
-- Kritik iş/Premium
-- Hiper Ölçek
+Azure SQL veritabanı, altyapı hatalarının durumlarında bile% 99,99 kullanılabilirlik sağlamak için bulut ortamı için ayarlanmış SQL Server veritabanı motoru mimarisini temel alır. Azure SQL veritabanı 'nda kullanılan üç mimari modeli vardır:
+- Genel Amaçlı/standart 
+- İş Açısından Kritik/Premium
+- Hiper ölçek
 
-Premium/iş açısından kritik hizmet katman modeli, veritabanı altyapısı işlemleri kümede temel alır. Bu mimari bir model, her zaman bir kullanılabilir veritabanı altyapısı düğüm Çekirdeği ve en az düzeyde performans etkisi bile bakım etkinlikleri sırasında iş yüküne sahip bir olgu kullanır.
+Premium/İş Açısından Kritik hizmet katmanı modeli, bir veritabanı altyapısı işlemlerinin kümesini temel alır. Bu mimari model, kullanılabilir veritabanı altyapısı düğümlerinin her zaman bir çekirdeği olduğunu ve bakım etkinlikleri sırasında bile iş yükünüzde en az performans etkisi olduğunu bir olgusuna bağımlıdır.
 
-Azure, yükseltir ve son kullanıcılar için en düşük kapalı kalma süresi ile temel işletim sistemi, sürücüler ve SQL Server Veritabanı Altyapısı'nın şeffaf bir şekilde yamaları. 
+Azure, son kullanıcılar için en düşük düzeyde çalışan işletim sistemi, sürücü ve SQL Server veritabanı altyapısını şeffaf bir şekilde yükseltir ve düzeltme eklerini ekler. 
 
-Premium kullanılabilirlik, Premium ve iş açısından kritik hizmet katmanlarında Azure SQL veritabanı'nın etkinleştirilmiş ve devam eden bakım işlemleri nedeniyle bir performans etkisi kabul edilemez kullanımlı iş yükleri için tasarlanmıştır.
+Premium kullanılabilirlik, Azure SQL veritabanı 'nın Premium ve İş Açısından Kritik hizmet katmanlarında etkinleştirilmiştir ve devam eden bakım işlemleri nedeniyle herhangi bir performans etkisi için işlem yapmadan yoğun iş yükleri için tasarlanmıştır.
 
-Premium modelde, Azure SQL veritabanı, işlem ve depolama tek düğümde tümleştirir. Bu mimari modelinde yüksek kullanılabilirlik çoğaltma dört düğümlü küme, SQL Server'a benzer teknolojisini kullanarak dağıtılmış hesaplama (SQL Server veritabanı altyapısı işlem) ve depolama (yerel olarak bağlı SSD) tarafından gerçekleştirilir [her zaman açık Kullanılabilirlik grupları](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server).
+Premium modelde, Azure SQL veritabanı, işlem ve depolamayı tek düğümde tümleştirir. Bu mimari modelde yüksek kullanılabilirlik, [her zaman açık kullanılabilirlik grupları SQL Server benzer teknolojiyi kullanarak, işlem (SQL Server veritabanı altyapısı işlemi) ve depolama (yerel olarak bağlı SSD) ile dört düğüm kümesine dağıtılan depolama (yerel olarak eklenmiş SSD) tarafından sağlanır ](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server).
 
-![Veritabanı altyapısı düğüm kümesi](media/sql-database-managed-instance/business-critical-service-tier.png)
+![Veritabanı altyapısı düğümlerinin kümesi](media/sql-database-managed-instance/business-critical-service-tier.png)
 
-Hem SQL veritabanı altyapısı işlem ve arka plandaki mdf/ldf dosyaları aynı düğümde yerel olarak bağlı SSD depolamasında iş yükünüz için düşük gecikme süresi sağlayan yerleştirilir. Yüksek kullanılabilirlik için SQL Server benzer teknolojisi kullanılarak uygulanır [Always On kullanılabilirlik grupları](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server). Her müşterinin iş yükü ve verilerin kopyalarını içeren üç bir ikincil işlemleri için erişilebilir olan bir birincil veritabanı ile veritabanı düğümden oluşan bir kümede veritabanıdır. Birincil düğümden ikincil düğümlerine değişiklikleri herhangi bir nedenle birincil düğüm kilitlenmesi durumunda, veriler ikincil çoğaltmalarda kullanılabilir olmasını sağlamak için sürekli iter. Yük devretme SQL Server veritabanı altyapısı tarafından gerçekleştirilir: bir ikincil çoğaltma birincil düğüm haline gelir ve yeterli düğümleri sağlamak için yeni bir ikincil çoğaltma oluşturulur. İş yükü, yeni birincil düğüme otomatik olarak yönlendirilir.
+Hem SQL veritabanı altyapısı işlemi hem de temel alınan MDF/ldf dosyaları, iş yükünüze düşük gecikme süresi sağlayan yerel olarak eklenmiş SSD depolama ile aynı düğüme yerleştirilir. Yüksek kullanılabilirlik, [her zaman açık kullanılabilirlik grupları](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)SQL Server benzer teknolojiler kullanılarak uygulanır. Her veritabanı, müşteri iş yükü için erişilebilen tek bir birincil veritabanına sahip bir veritabanı düğümleri kümesi ve verilerin kopyalarını içeren üç ikincil işlem. Birincil düğüm, birincil düğüm herhangi bir nedenden dolayı çöktüğünde, verilerin ikincil çoğaltmalarda kullanılabilir olmasını sağlamak için değişiklikleri ikincil düğümlere sürekli olarak iter. Yük devretme SQL Server veritabanı altyapısı tarafından işlenir – bir ikincil çoğaltma birincil düğüm haline gelir ve kümede yeterli düğüm sağlamak için yeni bir ikincil çoğaltma oluşturulur. İş yükü otomatik olarak yeni birincil düğüme yönlendirilir.
 
-Ayrıca, iş açısından kritik küme yerleşiktir [okuma ölçeği genişletme](sql-database-read-scale-out.md) sağlayan ücretsiz, yetenek ücret performans engellememelidir salt okunur sorguları (örneğin, raporları) çalıştırmak için kullanılan yerleşik salt okunur düğüm Birincil iş yükünü.
+Ayrıca, İş Açısından Kritik kümede, birincil ağınızın performansını etkilememesi gereken salt okuma sorgularını (örneğin, raporlar) çalıştırmak için kullanılabilen, ücretsiz olarak yerleşik salt okunurdur bir düğüm sağlayan yerleşik bir yerleşik [okuma](sql-database-read-scale-out.md) özelliği vardır. yüküne.
 
-## <a name="when-to-choose-this-service-tier"></a>Bu hizmet katmanını seçmek ne zaman?
+## <a name="when-to-choose-this-service-tier"></a>Bu hizmet katmanını ne zaman seçmelisiniz?
 
-İş kritik hizmet katmanı, düşük gecikme süresi gerektiren uygulamalar için tasarlanmıştır yanıtları temel alınan SSD depolaması (1-2 ms içinde ortalama), altyapının başarısız olursa Hızlı Kurtarma ya da raporlar, analiz, yükünü azaltmak için gereksinim ve salt okunur ücretsiz olarak okunabilir ikincil çoğaltma birincil veritabanının ücretsiz sorgular.
+İş Açısından Kritik hizmet katmanı, temeldeki SSD depolamadan (ortalama 1-2 ms) düşük Gecikmeli yanıt gerektiren uygulamalar için tasarlanmıştır, temel alınan altyapı başarısız olursa hızlı kurtarma ve rapor, analiz ve salt okunurdur. birincil veritabanının ücretsiz okunabilir ikincil çoğaltmasını ücretsiz olarak sorgular.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- İş açısından kritik katmanında (çekirdek, GÇ, bellek sayısı) özelliklerini kaynak bulmak [yönetilen örneği](sql-database-managed-instance-resource-limits.md#service-tier-characteristics), tek veritabanını [vCore modeli](sql-database-vcore-resource-limits-single-databases.md#business-critical-service-tier-for-provisioned-compute-tier) veya [DTU modeli](sql-database-dtu-resource-limits-single-databases.md#premium-service-tier), ya da elastik içinde havuzu [vCore modeli](sql-database-vcore-resource-limits-elastic-pools.md#business-critical-service-tier-storage-sizes-and-compute-sizes) ve [DTU model](sql-database-dtu-resource-limits-elastic-pools.md#premium-elastic-pool-limits).
-- Hakkında bilgi edinin [genel amaçlı](sql-database-service-tier-general-purpose.md) ve [hiper ölçekli](sql-database-service-tier-hyperscale.md) katmanları.
-- Hakkında bilgi edinin [Service Fabric](../service-fabric/service-fabric-overview.md).
-- Yüksek kullanılabilirlik ve olağanüstü durum kurtarma için daha fazla seçenek için bkz: [iş sürekliliği](sql-database-business-continuity.md).
+- [Yönetilen örnekteki](sql-database-managed-instance-resource-limits.md#service-tier-characteristics)iş açısından kritik katmanının kaynak özelliklerini (çekirdek sayısı, GÇ, bellek), [Vcore modeli](sql-database-vcore-resource-limits-single-databases.md#business-critical-service-tier-for-provisioned-compute-tier) veya [DTU modelinde](sql-database-dtu-resource-limits-single-databases.md#premium-service-tier)tek veritabanı ya da [Vcore modeli](sql-database-vcore-resource-limits-elastic-pools.md#business-critical-service-tier-storage-sizes-and-compute-sizes) ve [DTU modelinde](sql-database-dtu-resource-limits-elastic-pools.md#premium-elastic-pool-limits)esnek havuz bulun.
+- [Genel amaçlı](sql-database-service-tier-general-purpose.md) ve [hiper ölçek](sql-database-service-tier-hyperscale.md) katmanları hakkında bilgi edinin.
+- [Service Fabric](../service-fabric/service-fabric-overview.md)hakkında bilgi edinin.
+- Yüksek kullanılabilirlik ve olağanüstü durum kurtarma için daha fazla seçenek için bkz. [Iş sürekliliği](sql-database-business-continuity.md).

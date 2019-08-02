@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/29/2019
 ms.author: dpalled
 ms.custom: seodec18
-ms.openlocfilehash: 2c1013829a7e6e94712e22ae235a47490c8c5eaa
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 3e56792673c33ac641ce23213f2b3662b889ec2a
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68677653"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68725655"
 ---
 # <a name="tutorial-explore-the-azure-time-series-insights-javascript-client-library"></a>Öğretici: Azure Time Series Insights JavaScript istemci kitaplığını keşfetme
 
@@ -40,14 +40,14 @@ Henüz yoksa ücretsiz bir [Azure aboneliğine](https://azure.microsoft.com/free
 
 * Bu öğretici, tarayıcınızın **Geliştirici Araçları** özelliğini kullanır. Modern Web tarayıcıları ([Microsoft Edge](/microsoft-edge/devtools-guide), [Chrome](https://developers.google.com/web/tools/chrome-devtools/), [Firefox](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools), [Safari](https://developer.apple.com/safari/tools/)ve diğerleri), genellikle klavyenizde F12 kısayol tuşu aracılığıyla **Web denetçisi görünümüne** erişim sağlar. Görünüme erişmenin başka bir yolu da bir Web sayfasına sağ tıklayıp ardından **öğeyi İncele**' yi seçeceksiniz.
 
-## <a name="video"></a>Video
+## <a name="review-video"></a>Videoyu gözden geçirin
 
 Bu videoda, açık kaynaklı Time Series Insights JavaScript SDK 'sını sunuyoruz:
 <br /><br />
 
 > [!VIDEO https://www.youtube.com/embed/X8sSm7Pl9aA]
 
-## <a name="time-series-insights-sample-application"></a>Time Series Insights örnek uygulaması
+## <a name="sample-application"></a>Örnek uygulama
 
 Bu öğreticide, uygulamanın arkasındaki kaynak kodu araştırmak ve Time Series Insights JavaScript istemci kitaplığını araştırmak için, ücretsiz ve barındırılan Time Series Insights örnek bir uygulama kullanırız. Örnek uygulamayı kullanarak JavaScript 'te Time Series Insights etkileşim kurmayı ve grafikleri ve grafikleri kullanarak verileri görselleştirmeyi öğreneceksiniz.
 
@@ -100,7 +100,7 @@ Bu öğreticide, uygulamanın arkasındaki kaynak kodu araştırmak ve Time Seri
 
    [![Gövde betiği](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-body-script.png)](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-body-script.png#lightbox)
 
-## <a name="time-series-insights-javascript-client-library-concepts"></a>JavaScript istemci kitaplığı kavramlarını Time Series Insights
+## <a name="javascript-client-library"></a>JavaScript istemci kitaplığı
 
 Time Series Insights istemci kitaplığı (*tsiclient. js*) Iki önemli JavaScript işlevi için soyut olanaklar sağlar:
 
@@ -231,7 +231,7 @@ JavaScript kodunun aşağıdaki bölümü, daha önce özetlenen desenleri kulla
 
 [![Aynı verilerle birden çok grafik türü](media/tutorial-explore-js-client-lib/tcs-multiple-chart-types-from-the-same-data.png)](media/tutorial-explore-js-client-lib/tcs-multiple-chart-types-from-the-same-data.png#lightbox)
 
-## <a name="advanced-features"></a>Gelişmiş özellikler
+## <a name="learn-about-advanced-features"></a>Gelişmiş özellikler hakkında bilgi edinin
 
 Time Series Insights istemci kitaplığı, veri görselleştirmeleri yürütmek için kullanabileceğiniz çeşitli ek özelliklere sahiptir.
 

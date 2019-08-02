@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
-manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: ef64fa1285efc2c271d8d7f37bdecabd67242cc0
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 711552501825e5d34d3547ede8dc998065083c96
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67874972"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566742"
 ---
 # <a name="general-purpose-service-tier---azure-sql-database"></a>Genel amaçlı hizmet katmanı-Azure SQL veritabanı
 
@@ -28,7 +27,7 @@ Azure SQL veritabanı, altyapı hatalarının durumlarında bile% 99,99 kullanı
 
 - Genel amaçlı
 - İş açısından kritik
-- Hiper Ölçek
+- Hiper ölçek
 
 Genel amaçlı hizmet katmanının mimari modeli, işlem ve depolamanın bir ayrımını temel alır. Bu mimari model, veritabanı dosyalarını saydam bir şekilde çoğaltan ve temel alınan altyapı arızası durumunda veri kaybı garanti eden Azure Blob Storage 'ın yüksek kullanılabilirliğe ve güvenilirliğini kullanır.
 

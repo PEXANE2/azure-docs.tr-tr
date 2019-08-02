@@ -4,15 +4,15 @@ description: Bu makalede, Azure Cosmos DB veritabanlarının, kapsayıcıların 
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 07/26/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 277564208a5e4a209aecf8f976aca6b35ab17781
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 9c8460380755c6057f7507443d0b564e85c2ff86
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467761"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598490"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>Azure Cosmos DB veritabanları, kapsayıcılar ve öğelerle çalışma
 
@@ -124,6 +124,9 @@ Her Azure Cosmos öğesi, sistem tarafından tanımlanan aşağıdaki özellikle
 |\_Self | Sistem tarafından oluşturulan | Öğenin adreslenebilir URI'si | Evet | Hayır | Hayır | Hayır | Hayır |
 |id | Ya da | Mantıksal bölümde Kullanıcı tanımlı benzersiz ad. Kullanıcı KIMLIĞI belirtmezse, sistem otomatik olarak bir tane oluşturur. | Evet | Evet | Evet | Evet | Evet |
 |Kullanıcı tanımlı isteğe bağlı özellikler | Kullanıcı tanımlı | API yerel gösteriminde temsil edilen Kullanıcı tanımlı Özellikler (JSON, BSON ve CQL dahil) | Evet | Evet | Evet | Evet | Evet |
+
+> [!NOTE]
+> `id` Özelliğin benzersizliği yalnızca her mantıksal bölüm içinde zorlanır. Birden çok belge, farklı bölüm `id` anahtarı değerleriyle aynı özelliğe sahip olabilir.
 
 ### <a name="operations-on-items"></a>Öğeleri üzerinde işlemler
 

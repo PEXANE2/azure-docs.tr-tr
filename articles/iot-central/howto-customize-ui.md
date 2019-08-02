@@ -1,6 +1,6 @@
 ---
-title: Azure IOT Central kullanıcı Arabirimi özelleştirme | Microsoft Docs
-description: Azure IOT central uygulamanız için tema ve Yardım bağlantıları özelleştirme
+title: Azure IoT Central kullanıcı arabirimini özelleştirme | Microsoft Docs
+description: Azure IoT Central uygulamanız için temayı özelleştirme ve yardım bağlantıları
 author: dominicbetts
 ms.author: dobett
 ms.date: 04/25/2019
@@ -8,72 +8,72 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 4d385f1e8c883453b4153ca4c9119d3be0a608bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cef0014fb47aeddcad785fb3f938ab928964a942
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66495554"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68725668"
 ---
-# <a name="customize-the-azure-iot-central-ui"></a>Azure IOT Central kullanıcı Arabirimi özelleştirme 
+# <a name="customize-the-azure-iot-central-ui"></a>Azure IoT Central kullanıcı arabirimini özelleştirme 
 
-*Bu makale, Yöneticiler için geçerlidir.*
+Bu makalede, bir yönetici olarak, özel temalar uygulayarak ve kendi özel yardım kaynaklarınıza işaret etmek üzere yardım bağlantılarını değiştirerek uygulamanızın kullanıcı arabirimini nasıl özelleştirebileceğinizi açıklar. 
 
-IOT Central özel temalar uygulayarak ve Yardım bağlantıları için kendi özel bir Yardım kaynakları işaret edecek şekilde değiştirilmesi, uygulamanızın kullanıcı arabirimini özelleştirmenizi sağlar. Aşağıdaki ekran görüntüsünde, standart tema kullanarak bir sayfa görüntülenir:
+Aşağıdaki ekran görüntüsünde, standart temanın kullanıldığı bir sayfa gösterilmektedir:
 
-![Standart IOT Central tema](./media/howto-customize-ui/standard-ui.png)
+![Standart IoT Central teması](./media/howto-customize-ui/standard-ui.png)
 
-Aşağıdaki ekran görüntüsünde vurgulanmış özelleştirilmiş kullanıcı Arabirimi öğeleri ile özel bir ekran görüntüsü kullanan bir sayfa gösterilmektedir:
+Aşağıdaki ekran görüntüsünde özelleştirilmiş kullanıcı arabirimi öğeleri vurgulanmış bir özel ekran görüntüsü kullanan bir sayfa gösterilmektedir:
 
-![Özel IOT Central tema](./media/howto-customize-ui/themed-ui.png)
+![Özel IoT Central teması](./media/howto-customize-ui/themed-ui.png)
 
-## <a name="create-theme"></a>Tema oluşturma
+## <a name="create-theme"></a>Tema oluştur
 
-Özel tema oluşturma için gidin **uygulamanızı özelleştirme** sayfasını **Yönetim** bölümü:
+Özel bir tema oluşturmak için **Yönetim** bölümünde **uygulamanızı özelleştirme** sayfasına gidin:
 
-![IOT Central temalar](./media/howto-customize-ui/themes.png)
+![IoT Central temaları](./media/howto-customize-ui/themes.png)
 
-Bu sayfada, uygulamanızın şu yönlerini özelleştirebilirsiniz:
+Bu sayfada, uygulamanızın aşağıdaki yönlerini özelleştirebilirsiniz:
 
 ### <a name="application-logo"></a>Uygulama logosu
 
-Bir PNG görüntüsünü, saydam arka plana sahip 1 MB'den büyük. Bu logo, IOT Central uygulaması başlık çubuğunda sol görüntüler.
+Saydam bir arka planla 1 MB 'den büyük olmayan bir PNG görüntüsü. Bu logo, IoT Central uygulaması başlık çubuğunda sol tarafta görüntülenir.
 
-Logo resmi uygulamanızın adını içeriyorsa, uygulama adı metin gizleyebilirsiniz. Daha fazla bilgi için [uygulama ayarlarını yönetme](./howto-administer.md#manage-application-settings).
+Logo resminiz uygulamanızın adını içeriyorsa, uygulama adı metnini gizleyebilirsiniz. Daha fazla bilgi için bkz. [uygulamanızı yönetme](./howto-administer.md#change-application-name-and-url).
 
-### <a name="browser-icon-favicon"></a>Tarayıcı simgesine (favicon)
+### <a name="browser-icon-favicon"></a>Tarayıcı simgesi (öncelik simgesi)
 
-Bir PNG görüntüsünü, saydam arka plana sahip 32 x 32 piksel değerinden daha büyük. Bir web tarayıcısında adres çubuğuna, geçmiş, yer işaretleri ve tarayıcı sekmesinde bu görüntüde kullanabilirsiniz.
+Saydam bir arka planla 32 x 32 pikselden daha büyük olmayan bir PNG görüntüsü. Web tarayıcısı bu görüntüyü adres çubuğunda, geçmiş, yer işaretleri ve tarayıcı sekmesinde kullanabilir.
 
 ### <a name="browser-colors"></a>Tarayıcı renkleri
 
-Sayfa üstbilgisi rengini ve düğme ve diğer önemli accenting için kullanılan rengi değiştirebilirsiniz. Altı karakterlik bir onaltılık renk değer biçiminde kullanın `##ff6347`. Hakkında daha fazla bilgi için **ONALTILIK değer** renk gösterimi için bkz. [HTML renkleri](https://www.w3schools.com/html/html_colors.asp).
+Sayfa üstbilgisinin rengini ve accenting düğmeleri ve diğer vurguları için kullanılan rengi değiştirebilirsiniz. Biçiminde `##ff6347`altı karakterli bir onaltılık renk değeri kullanın. **Onaltılık değer** renk gösterimi hakkında daha fazla bilgi için bkz. [HTML renkleri](https://www.w3schools.com/html/html_colors.asp).
 
 > [!NOTE]
-> Üzerinde her zaman varsayılan seçenekleri döndürebilirsiniz **uygulamanızı özelleştirme** sayfası.
+> **Uygulamanızı özelleştirme** sayfanızda her zaman varsayılan seçeneklere geri dönebilirsiniz.
 
 ### <a name="changes-for-operators"></a>İşleçler için değişiklikler
 
-Bir yönetici özel bir tema oluşturur sonra operatörler ve uygulamanızın diğer kullanıcılar artık seçim yapabileceğiniz bir tema **ayarları**.
+Bir yönetici özel bir tema oluşturursa, operatörler ve uygulamanızın diğer kullanıcıları artık **ayarlarda**bir tema seçilebilirler.
 
-## <a name="replace-help-links"></a>Yardım bağlantıları Değiştir
+## <a name="replace-help-links"></a>Yardım bağlantılarını Değiştir
 
-Operatörler ve diğer kullanıcılar için özel bir Yardım bilgileri sağlamak için uygulama bağlantıları değiştirebilirsiniz **yardımcı** menüsü.
+Operatörlerinizi ve diğer kullanıcılarınıza özel yardım bilgileri sağlamak için, uygulama **Yardım** menüsünde bağlantıları değiştirebilirsiniz.
 
-Yardım bağlantıları değiştirmek için gidin **Yardım özelleştirme** sayfasını **Yönetim** bölümü:
+Yardım bağlantılarını değiştirmek için **Yönetim** bölümünde **Yardım Özelleştir** sayfasına gidin:
 
-![IOT Central Yardım bağlantıları özelleştirme](./media/howto-customize-ui/help-links.png)
+![Yardım bağlantılarını IoT Central özelleştirme](./media/howto-customize-ui/help-links.png)
 
-Ayrıca, Yardım menüsüne yeni girişler ekleyin ve varsayılan girdilerini kaldırın:
+Ayrıca, Yardım menüsüne yeni girişler ekleyebilir ve varsayılan girişleri kaldırabilirsiniz:
 
-![Özelleştirilmiş IOT Central Yardım](./media/howto-customize-ui/custom-help.png)
+![Özelleştirilmiş IoT Central yardımı](./media/howto-customize-ui/custom-help.png)
 
 > [!NOTE]
-> Üzerinde her zaman varsayılan Yardım bağlantıları geri döndürebilirsiniz **Yardım özelleştirme** sayfası.
+> **Yardım 'ı Özelleştir** sayfasındaki varsayılan Yardım bağlantılarına her zaman geri dönebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-IOT Central uygulamanızın kullanıcı arabirimini özelleştirmek öğrendiniz, bazı önerilen sonraki adımlar şunlardır:
+IoT Central uygulamanızda Kullanıcı arabirimini özelleştirmeyi öğrendiğinize göre, aşağıda önerilen bazı adımlar verilmiştir:
 
 - [Uygulamanızı yönetme](./howto-administer.md)
-- [Uygulama Panosu yapılandırın](./howto-configure-homepage.md)
+- [Uygulama panosunu yapılandırma](./howto-configure-homepage.md)

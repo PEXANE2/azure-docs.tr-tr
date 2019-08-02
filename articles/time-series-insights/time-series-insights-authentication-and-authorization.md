@@ -1,6 +1,6 @@
 ---
-title: Kimlik doğrulama ve yetkilendirme Azure Time Series Insights içinde bir API kullanarak | Microsoft Docs
-description: Bu makalede, kimlik doğrulama ve yetkilendirme Azure zaman serisi öngörüleri API'yi çağıran özel bir uygulama için nasıl yapılandırılacağı açıklanır.
+title: Azure Time Series Insights bir API kullanarak kimlik doğrulaması ve yetkilendirme | Microsoft Docs
+description: Bu makalede, Azure Time Series Insights API 'sini çağıran özel bir uygulama için kimlik doğrulama ve yetkilendirmeyi yapılandırma açıklanmaktadır.
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
@@ -12,73 +12,73 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 06/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 899bcffaf3a54bd541d488f99c35ec6721d751ca
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: bdf0fbfb2b40e932f9e3627c3bc0356eb0afb472
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67543963"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677941"
 ---
-# <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Kimlik doğrulama ve yetkilendirme için Azure zaman serisi öngörüleri API'si
+# <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API 'SI için kimlik doğrulaması ve yetkilendirme
 
-Bu belge, Azure yeni Azure Active Directory dikey penceresini kullanarak Active Directory içinde bir uygulamayı kaydetme açıklar. Azure Active Directory'de kayıtlı uygulamalar kullanıcıların kimlik doğrulaması ve bir zaman serisi görüşleri ortamı ile ilişkili Azure zaman serisi Insight API kullanmak üzere yetki verilmesini sağlar.
+Bu belgede, yeni Azure Active Directory dikey penceresini kullanarak Azure Active Directory bir uygulamanın nasıl kaydedileceği açıklanmaktadır. Azure Active Directory kayıtlı uygulamalar, kullanıcıların kimlik doğrulaması yapmasını ve bir Time Series Insights ortamıyla ilişkili Azure zaman serisi Insight API 'sini kullanma yetkisine sahip olmasını sağlar.
 
 ## <a name="service-principal"></a>Hizmet sorumlusu
 
-Aşağıdaki bölümlerde, bir uygulama adına zaman serisi öngörüleri API erişmek için bir uygulama yapılandırma açıklanmaktadır. Uygulama ardından sorgulayabilir veya Azure Active Directory aracılığıyla kendi uygulama kimlik bilgilerini kullanarak Time Series Insights ortamdaki başvuru verilerini yayımlama.
+Aşağıdaki bölümlerde uygulama adına Time Series Insights API 'sine erişmek için bir uygulamanın nasıl yapılandırılacağı açıklanır. Uygulama daha sonra Azure Active Directory aracılığıyla kendi uygulama kimlik bilgilerini kullanarak Time Series Insights ortamında başvuru verilerini sorgulayabilir veya yayımlayabilir.
 
-## <a name="summary-and-best-practices"></a>Özet ve en iyi yöntemler
+## <a name="summary-and-best-practices"></a>Özet ve en iyi uygulamalar
 
 Azure Active Directory uygulama kayıt akışı üç ana adımdan oluşur.
 
-1. [Bir uygulamayı kaydetme](#azure-active-directory-app-registration) Azure Active Directory'de.
-1. Uygulamayı Yetkilendir [zaman serisi görüşleri ortamına veri erişimi](#granting-data-access).
-1. Kullanım **uygulama kimliği** ve **gizli** uygulamasından bir belirteç almak üzere `https://api.timeseries.azure.com/` içinde [istemci uygulaması](#client-app-initialization). Belirteç, daha sonra zaman serisi öngörüleri API'sini çağırmak için de kullanılabilir.
+1. Azure Active Directory [bir uygulamayı kaydedin](#azure-active-directory-app-registration) .
+1. Uygulamayı [Time Series Insights ortamına veri erişimi](#granting-data-access)sağlamak için yetkilendirin.
+1. [İstemci uygulamanızda](#client-app-initialization) `https://api.timeseries.azure.com/` bir belirteç almak için **uygulama kimliğini** ve istemci gizli anahtarını kullanın. Belirteç daha sonra Time Series Insights API 'sini çağırmak için kullanılabilir.
 
-Başına **3. adım**, uygulamanızın ve kullanıcı kimlik bilgilerinizi ayırma olanak tanır:
+**3. adım**başına, uygulamanızın ve Kullanıcı kimlik bilgilerinizin ayrılması şunları yapmanıza olanak sağlar:
 
-* Kendi izinlerinden ayrı uygulama kimliğine izinleri atayın. Genellikle, bu izinler için yalnızca ne gerektiren uygulama kısıtlanır. Örneğin, yalnızca belirli bir zaman serisi görüşleri ortamından veri okumasına izin verebilirsiniz.
-* Uygulamanın güvenlik oluşturma kullanıcının kimlik doğrulama bilgilerini kullanarak yalıtmak bir **gizli** veya güvenlik sertifikası. Sonuç olarak, uygulamanın kimlik bilgileri, belirli bir kullanıcının kimlik bilgilerine bağlı değildir. Kullanıcı rolü değişirse, uygulamanın yeni kimlik bilgileri veya daha fazla yapılandırma mutlaka gerektirmez. Tüm uygulama erişimi, kullanıcı parolasını değiştirirse, yeni kimlik bilgilerine veya anahtarlara gerektirmez.
-* Katılımsız betik kullanarak çalıştırın bir **gizli** veya güvenlik sertifika yerine belirli bir kullanıcının kimlik bilgilerini (bulunması gerek).
-* Azure zaman serisi öngörüleri API'NİZİN güvenliğini sağlamak için parola yerine bir güvenlik sertifikası'nı kullanın.
+* Uygulama kimliğine kendi izininizden farklı izinler atayın. Genellikle, bu izinler yalnızca uygulamanın gerektirdiği şekilde kısıtlanır. Örneğin, uygulamanın yalnızca belirli bir Time Series Insights ortamından veri okumasına izin verebilirsiniz.
+* Bir **Istemci gizli** dizisi veya güvenlik sertifikası kullanarak, kullanıcının kimlik doğrulama kimlik bilgileri oluşturma ile uygulamanın güvenliğini yalıtın. Sonuç olarak, uygulamanın kimlik bilgileri belirli bir kullanıcının kimlik bilgilerine bağımlı değildir. Kullanıcının rolü değişirse, uygulamanın yeni kimlik bilgileri veya daha fazla yapılandırma gerekmez. Kullanıcı parolasını değiştirirse, uygulamaya tüm erişim yeni kimlik bilgileri veya anahtarlar gerektirmez.
+* Belirli bir kullanıcının kimlik bilgileri yerine bir **Istemci gizli anahtarı** veya güvenlik sertifikası kullanarak katılımsız bir komut dosyası çalıştırın (bunların mevcut olmasını gerektirin).
+* Azure Time Series Insights API 'nize erişimi güvenli hale getirmek için parola yerine bir güvenlik sertifikası kullanın.
 
 > [!IMPORTANT]
-> İlkesini izleyin **ayrımı, ile ilgili sorunlar** (yukarıdaki senaryo için bu ne zaman açıklanmıştır) Azure Time Series Insights güvenlik ilkesini yapılandırma.
+> Azure Time Series Insights güvenlik ilkenizi yapılandırırken **kaygıları ayırma** (yukarıdaki senaryo için yukarıda açıklanmıştır) ilkesini izleyin.
 
 > [!NOTE]
-> * Bu makalede tek kiracılı bir uygulama yalnızca bir kuruluş içinde çalıştırmak için uygulamayı nerede yöneliktir odaklanır.
-> * Tek kiracılı uygulamalar, kuruluşunuzda satır iş kolu uygulamaları için genellikle kullanacaksınız.
+> * Makale, uygulamanın yalnızca bir kuruluşta çalıştırılması amaçlanan tek kiracılı bir uygulamaya odaklanır.
+> * Genellikle kuruluşunuzda çalışan iş kolu uygulamaları için tek kiracılı uygulamalar kullanırsınız.
 
-## <a name="detailed-setup"></a>Ayrıntılı Kurulum
+## <a name="detailed-setup"></a>Ayrıntılı kurulum
 
-### <a name="azure-active-directory-app-registration"></a>Azure Active Directory Uygulama kaydı
+### <a name="azure-active-directory-app-registration"></a>Azure Active Directory uygulama kaydı
 
 [!INCLUDE [Azure Active Directory app registration](../../includes/time-series-insights-aad-registration.md)]
 
 ### <a name="granting-data-access"></a>Veri erişimi verme
 
-1. Zaman serisi görüşleri ortamı için seçin **veri erişimi ilkeleri** seçip **Ekle**.
+1. Time Series Insights ortamı için, **veri erişim ilkeleri** ' ni seçin ve **Ekle**' yi seçin.
 
-   [![Zaman serisi görüşleri ortamına yeni bir veri erişim ilkesi Ekle](media/authentication-and-authorization/time-series-insights-data-access-policies-add.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-add.png#lightbox)
+   [![Time Series Insights ortamına yeni veri erişim ilkesi ekleme](media/authentication-and-authorization/time-series-insights-data-access-policies-add.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-add.png#lightbox)
 
-1. İçinde **Kullanıcı Seç** iletişim kutusunda, ya da yapıştırın **uygulama adı** veya **uygulama kimliği** Azure Active Directory uygulama kayıt bölümünden.
+1. **Kullanıcı Seç** iletişim kutusunda uygulama **adı** ' nı ya da **uygulama kimliği** ' ni Azure Active Directory uygulama kaydı bölümünden yapıştırın.
 
-   [![Kullanıcı Seç iletişim kutusunda uygulama Bul](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png#lightbox)
+   [![Kullanıcı Seç iletişim kutusunda bir uygulama bulma](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png#lightbox)
 
-1. Rolü seçin. Seçin **okuyucu** veri veya **katkıda bulunan** verileri sorgulamak ve başvuru verilerini değiştirmek için. **Tamam**’ı seçin.
+1. Rolü seçin. Verileri sorgulamak ve başvuru verilerini değiştirmek için **okuyucu** ' yı seçin. **Tamam**’ı seçin.
 
-   [![Okuyucu veya katkıda bulunan kullanıcı rolü Seç iletişim kutusunda seçin](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png#lightbox)
+   [![Kullanıcı rolü Seç iletişim kutusunda okuyucu veya katkıda bulunan seçin](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png#lightbox)
 
-1. Seçerek ilkeyi kaydedin **Tamam**.
+1. **Tamam ' ı**seçerek ilkeyi kaydedin.
 
    > [!TIP]
-   > Hakkında bilgi edinin [veri erişimi verme](./time-series-insights-data-access.md) zaman serisi görüşleri ortamınıza Azure Active Directory'de.
+   > Azure Active Directory Time Series Insights ortamınıza [veri erişimi verme](./time-series-insights-data-access.md) hakkında bilgi edinin.
 
-### <a name="client-app-initialization"></a>İstemci uygulama başlatma
+### <a name="client-app-initialization"></a>İstemci uygulaması başlatma
 
-1. Kullanım **uygulama kimliği** ve **gizli** (uygulama anahtarı) bölümünden uygulama adına belirteci almak için Azure Active Directory uygulama kayıt.
+1. Uygulamanın adına belirteci almak için Azure Active Directory uygulama kaydı bölümünde **uygulama kimliği** ve **istemci gizli** anahtarını (uygulama anahtarı) kullanın.
 
-    İçinde C#, aşağıdaki kod uygulama adına bir belirteç elde edebilirsiniz. Eksiksiz bir örnek için bkz. [C# kullanarak veri sorgulama](time-series-insights-query-data-csharp.md).
+    ' C#De, aşağıdaki kod, uygulama adına belirteci alabilir. Tüm örnek için bkz. [sorgu verileri kullanarak C# ](time-series-insights-query-data-csharp.md).
 
     ```csharp
     // Enter your Active Directory tenant domain name
@@ -99,14 +99,14 @@ Başına **3. adım**, uygulamanızın ve kullanıcı kimlik bilgilerinizi ayır
     string accessToken = token.AccessToken;
     ```
 
-1. Belirteç, ardından geçirilebilir `Authorization` uygulama zaman serisi öngörüleri API çağırdığında başlığı.
+1. Belirteç daha sonra uygulama Time Series Insights API 'sini çağırdığında `Authorization` üstbilgiye geçirilebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- GA zaman serisi öngörüleri API'yi çağıran örnek kod için bkz: [sorgu kullanarak verileri C# ](./time-series-insights-query-data-csharp.md).
+- GA Time Series Insights API 'sini çağıran örnek kod için bkz. [sorgu verileri kullanma C# ](./time-series-insights-query-data-csharp.md).
 
-- Önizleme zaman serisi öngörüleri API kod örnekleri için bkz. [sorgu Önizleme verileri kullanarak C# ](./time-series-insights-update-query-data-csharp.md).
+- Time Series Insights API kodu örnekleri için bkz. [sorgu Önizleme verileri kullanılarak C# ](./time-series-insights-update-query-data-csharp.md).
 
-- API başvuru bilgileri için bkz: [sorgu API'si başvurusu](/rest/api/time-series-insights/ga-query-api).
+- API başvuru bilgileri için bkz. [sorgu API 'si başvurusu](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api).
 
-- Bilgi edinmek için nasıl [hizmet sorumlusu oluşturma](../active-directory/develop/howto-create-service-principal-portal.md).
+- [Hizmet sorumlusu oluşturmayı](../active-directory/develop/howto-create-service-principal-portal.md)öğrenin.

@@ -1,25 +1,18 @@
 ---
-title: Azure Iaas Windows VM diskleri hakkında sık sorulan sorular (SSS) | Microsoft Docs
-description: Azure Iaas Windows sanal diskler ve premium disklerin (yönetilen ve yönetilmeyen) hakkında sık sorulan sorular
-services: virtual-machines-windows
-documentationcenter: ''
+title: Azure IaaS Windows VM diskleri hakkında sık sorulan sorular (SSS) | Microsoft Docs
+description: Azure IaaS Windows VM diskleri ve Premium diskleri hakkında sık sorulan sorular (yönetilen ve yönetilmeyen)
 author: roygara
-manager: twooley
-editor: tysonn
-ms.assetid: e2a20625-6224-4187-8401-abadc8f1de91
 ms.service: virtual-machines-windows
 ms.workload: storage
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 81cdb0273f64bd70fc77a6e61007290bdd4627c5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bcbd6b590e0b436044166a8a573df4f23cbd0c52
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64727451"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698704"
 ---
 [!INCLUDE [virtual-machines-faq-for-disks](../../../includes/virtual-machines-faq-for-disks.md)]

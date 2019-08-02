@@ -1,6 +1,6 @@
 ---
-title: Yüksek kullanılabilirlik - Azure SQL veritabanı hizmeti | Microsoft Docs
-description: Azure SQL veritabanı hizmet yüksek kullanılabilirlik yetenekleri ve özellikleri hakkında bilgi edinin
+title: Yüksek kullanılabilirlik-Azure SQL veritabanı hizmeti | Microsoft Docs
+description: Azure SQL veritabanı hizmeti yüksek kullanılabilirlik özellikleri ve özellikleri hakkında bilgi edinin
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -10,75 +10,74 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: sashan
 ms.reviewer: carlrab, sashan
-manager: craigg
 ms.date: 06/10/2019
-ms.openlocfilehash: a88842802759a5c3ae7af7334bbe125344c978ea
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 226b0c1cb11fc872cb7759e0d0e49275b9c2d9bf
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67066912"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568156"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Yüksek kullanılabilirlik ve Azure SQL veritabanı
 
-Azure SQL veritabanı'nda yüksek kullanılabilirlik mimarisi, veritabanınızı garantisi ve çalışan % 99,99 oranında süre için bakım işlemleri ve kesintileri etkisini hakkında endişelenmeden hedefidir. Azure, otomatik olarak düzeltme eki uygulama, yedekleme, Windows ve SQL yükseltmeleri hem de temel alınan donanım, yazılım veya ağ hataları gibi planlanmamış olaylar gibi kritik bakım görevlerini işler.  Temel alınan SQL örneği yama veya üzerinden başarısız olduğunda, kapalı kalma süresi belirgin değil ise, [yeniden deneme mantığı uyguluyor](sql-database-develop-overview.md#resiliency) uygulamanızda. Azure SQL veritabanı, verilerinizi her zaman kullanılabilir olduğundan emin olmanın hatta en kritik durumlarda hızla kurtarabilirsiniz.
+Azure SQL veritabanı 'nda yüksek kullanılabilirlik mimarisinin hedefi, bakım işlemlerinin ve kesintilerin etkileri hakkında kaygılanmadan veritabanınızın% 99,99 ' un çalışır durumda olmasını sağlamaktır. Azure, düzeltme eki uygulama, yedeklemeler, Windows ve SQL yükseltmeleri gibi kritik bakım görevlerini ve temel alınan donanım, yazılım veya ağ arızalarına yönelik planlanmamış olayları otomatik olarak işler.  Temel alınan SQL örneği düzeltme eki uygulanmış veya başarısız olduğunda, uygulamanızda [yeniden deneme mantığı](sql-database-develop-overview.md#resiliency) kullanırsanız kesinti olmaz. Azure SQL veritabanı, verilerinizin her zaman kullanılabilir olmasını sağlamak için en kritik koşullarda bile hızlı bir şekilde kurturabilir.
 
-Yüksek oranda kullanılabilirlik çözümü kaydedilmiş veri hiçbir zaman iş yükünüz, bakım işlemleri etkilemez hataları nedeniyle, kayıp olduğundan ve veritabanının tek bir yazılım mimarinizdeki hata noktası olmayacaktır emin olmak için tasarlanmıştır. Bakım pencereleri veya kapalı kalma süreleri, veritabanı yükseltme ya da korunan iş yükü durdurmak gereksinim duymanız yoktur. 
+Yüksek kullanılabilirlik çözümü, hatalar nedeniyle kaydedilmiş verilerin kaybolmamasını, bakım işlemlerinin iş yükünüzü etkilememesini ve veritabanının yazılım mimarinizdeki tek hata noktası olmamasını sağlamak üzere tasarlanmıştır. Veritabanı yükseltilirken veya korunurken iş yükünü durdurmanız gereken bakım pencereleri veya daha az zaman yoktur. 
 
-Azure SQL veritabanı'nda kullanılan iki yüksek kullanılabilirlik Mimari modeli vardır:
+Azure SQL veritabanı 'nda kullanılan iki yüksek kullanılabilirliğe sahip mimari modeli vardır:
 
-- İşlem ve depolama ayrılması tabanlı standart kullanılabilirlik modeli.  Bu, yüksek kullanılabilirlik ve güvenilirlik Uzak Depolama katmanının kullanır. Bu mimari, bakım etkinlikleri sırasında bazı performans düşüşü tolere edebilen bütçeye yönelik iş uygulamaları hedefler.
-- Veritabanı altyapısı işlemlerin bir kümeye bağlı premium kullanılabilirlik modeli. Bu olduğundan her zaman kullanılabilir veritabanı altyapısı düğüm çekirdeği bir olgu üzerinde kullanır. Bu mimari yüksek g/ç performans, yüksek işlem oranına ve Garantisi ile görev açısından kritik uygulamaları hedefleyen bakım etkinlikleri sırasında iş yükünüz için çok az performans etkisi.
+- İşlem ve depolama ayrımı temelinde kullanılan standart kullanılabilirlik modeli.  Bu, uzak depolama katmanının yüksek düzeyde kullanılabilirliğini ve güvenilirliğini kullanır. Bu mimari, bakım etkinlikleri sırasında bazı performans düşüşüne neden olan bütçe odaklı iş uygulamalarını hedefler.
+- Veritabanı altyapısı işlemlerinin bir kümesini temel alan Premium kullanılabilirlik modeli. Her zaman kullanılabilir veritabanı altyapısı düğümlerinin bir çekirdeği olduğundan emin olur. Bu mimari, yüksek GÇ performansı, yüksek işlem oranı ve bakım etkinlikleri sırasında iş yükünüzün en düşük performans etkisini güvence altına alarak görev açısından kritik uygulamaları hedefler.
 
-Azure SQL veritabanı, SQL Server veritabanı altyapısı ve Windows işletim sistemi en son kararlı sürümü üzerinde çalışan ve kullanıcıların çoğu yükseltmeleri sürekli olarak gerçekleştirildiğinden emin dikkat edin değil.
+Azure SQL veritabanı, SQL Server veritabanı altyapısının ve Windows işletim sisteminin en son kararlı sürümünde çalışır ve çoğu kullanıcı, yükseltmelerin sürekli olarak gerçekleştirildiğini fark etmez.
 
-## <a name="basic-standard-and-general-purpose-service-tier-availability"></a>Temel, standart ve genel amaçlı hizmet katmanı kullanılabilirliği
+## <a name="basic-standard-and-general-purpose-service-tier-availability"></a>Temel, standart ve Genel Amaçlı hizmet katmanı kullanılabilirliği
 
-Bu hizmet katmanları, standart kullanılabilirlik mimarisinden yararlanır. Ayrılmış işlem ve depolama katmanları ile dört farklı düğümlerde aşağıdaki şekilde gösterilmiştir.
+Bu hizmet katmanları standart kullanılabilirlik mimarisinden yararlanır. Aşağıdaki şekilde, ayrılmış işlem ve Depolama katmanlarına sahip dört farklı düğüm gösterilmektedir.
 
 ![İşlem ve depolama ayrımı](media/sql-database-high-availability/general-purpose-service-tier.png)
 
-Kullanılabilirlik standart modele iki katman içerir:
+Standart kullanılabilirlik modeli iki katman içerir:
 
-- Çalışan durum bilgisi olmayan bilgi işlem katmanını `sqlserver.exe` işlemek ve TempDB, model veritabanı, planı önbellek, arabellek havuzu ve sütun havuz deposu gibi ekli SSD yalnızca geçici ve önbelleğe alınmış verileri içerir. Bu durum bilgisi olmayan düğüm başlatır Azure Service Fabric tarafından işletilen `sqlserver.exe`, düğümün sistem durumu denetimleri ve gerekirse, başka bir düğüme yük devretme gerçekleştirir.
-- Bir durum bilgisi olan veri katmanı ile Azure Blob depolamada depolanan veritabanı dosyalarını (.mdf/.ldf). Azure blob depolama, yerleşik veri kullanılabilirlik ve yedeklilik özelliği vardır. SQL Server işlem çökse bile günlük dosyası veya sayfa veri dosyasındaki her bir kaydı korunur güvence altına alır.
+- `sqlserver.exe` İşlemi çalıştıran ve ekli SSD 'de tempdb, model veritabanı, plan önbelleği, arabellek havuzu ve sütun deposu havuzu gibi yalnızca geçici ve önbelleğe alınmış verileri içeren, durum bilgisi olmayan bir işlem katmanı. Bu durum bilgisiz düğüm, Azure Service Fabric tarafından başlatılır `sqlserver.exe`, düğümün sistem durumunu denetler ve gerekirse başka bir düğüme yük devretme işlemi gerçekleştirir.
+- Azure Blob depolamada depolanan veritabanı dosyaları (. mdf/. ldf) ile durum bilgisi olan bir veri katmanı. Azure Blob depolamada yerleşik veri kullanılabilirliği ve artıklık özelliği bulunur. SQL Server işlemi kilitlense bile, veri dosyasındaki günlük dosyasında veya sayfada bulunan her kaydın korunacağından emin olur.
 
-Veritabanı altyapısı veya işletim sistemi yükseltme ya da bir arıza tespit olduğunda, Azure Service Fabric durum bilgisi olmayan SQL Server işlemi ücretsiz yeterli kapasiteye sahip başka bir durum bilgisi olmayan bir işlem düğümüne yüklenecek taşınır. Azure Blob storage'da veri taşıma tarafından etkilenmez ve verileri/günlük dosyalarını yeni oluşturulmuş SQL Server işleme bağlı. Bu işlem, % 99,99 oranında kullanılabilirlik garanti eder, ancak yeni SQL Server örneği ile soğuk önbellek başlatılmasından bu yana ağır bir iş yükü geçişi sırasında bazı performans düşüşü karşılaşabilirsiniz.
+Veritabanı altyapısı veya işletim sistemi yükseltildiğinde veya bir hata algılandığında, Azure Service Fabric durum bilgisiz SQL Server işlemini yeterli boş kapasiteye sahip başka bir durum bilgisi olmayan işlem düğümüne taşıyacaktır. Azure Blob depolama alanındaki veriler taşımadan etkilenmez ve veri/günlük dosyaları yeni başlatılan SQL Server işlemine eklenir. Bu işlem% 99,99 kullanılabilirliği garanti eder, ancak yeni SQL Server örneği soğuk önbellek ile başladığından bu yana ağır bir iş yükü geçiş sırasında bazı performans düşüşüne neden olabilir.
 
-## <a name="premium-and-business-critical-service-tier-availability"></a>Premium ve iş açısından kritik hizmet katmanı kullanılabilirliği
+## <a name="premium-and-business-critical-service-tier-availability"></a>Premium ve İş Açısından Kritik hizmet katmanı kullanılabilirliği
 
-Premium ve iş açısından kritik hizmet katmanları yararlanarak tümleşen Premium kullanılabilirlik modeli bilgi işlem kaynakları (SQL Server veritabanı altyapısı işlem) ve tek bir düğüm üzerinde (yerel olarak bağlı SSD) depolama. Yüksek kullanılabilirlik, işlem ve depolama için ek düğümler üç için dört - düğüm kümesi oluşturma çoğaltılması yoluyla elde edilir. 
+Premium ve İş Açısından Kritik hizmet katmanları, işlem kaynaklarını (SQL Server veritabanı altyapısı işlemi) ve depolama alanını (yerel olarak bağlı SSD) tek bir düğümde tümleştiren Premium kullanılabilirlik modelinden yararlanır. Yüksek kullanılabilirlik, üç-dört düğümlü küme oluştururken hem işlem hem de depolamanın ek düğümlere çoğaltılmasıyla elde edilir. 
 
-![Veritabanı altyapısı düğüm kümesi](media/sql-database-high-availability/business-critical-service-tier.png)
+![Veritabanı altyapısı düğümlerinin kümesi](media/sql-database-high-availability/business-critical-service-tier.png)
 
-Temel alınan veritabanı dosyalarını (.mdf/.ldf), düşük gecikmeli GÇ iş yükünüz için sağlamak için eklenen SSD depolama alanına yerleştirilir. Yüksek kullanılabilirlik için SQL Server benzer bir teknolojiyi kullanarak gerçekleştirilen [Always On kullanılabilirlik grupları](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server). Küme üç ikincil çoğaltmaları (işlem ve depolama) ve okuma-yazma müşteri iş yükleri için erişilebilir olan tek bir birincil çoğaltma (SQL Server işlem) içerir, verilerin kopyalarını içeren. Birincil düğüm, sürekli olarak ikincil düğümlere sırayla değişiklikleri gönderir ve verilerin en az bir ikincil çoğaltma için her bir işlem yapmadan önce eşitlenmesi sağlanır. Bu işlem, herhangi bir nedenle birincil düğüm kilitlenmesi durumunda olduğunu her zaman yük devretme için tam bir eşitleme bir düğüm garanti eder. Yük devretme, Azure Service Fabric tarafından başlatılır. İkincil çoğaltma yeni birincil düğüm olduktan sonra küme yeterli düğümleri (çekirdek kümesi) sahip olmak için başka bir ikincil çoğaltma oluşturulur. Yük devretme işlemi tamamlandıktan sonra SQL bağlantılar yeni birincil düğüme otomatik olarak yönlendirilir.
+Temel alınan veritabanı dosyaları (. mdf/. ldf), iş yükünüze çok düşük gecikmeli GÇ sağlamak üzere eklenmiş SSD depolama alanına yerleştirilir. Yüksek kullanılabilirlik, [her zaman açık kullanılabilirlik grupları](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)SQL Server benzer bir teknoloji kullanılarak uygulanır. Küme, okuma/yazma müşteri iş yükleri için erişilebilen tek bir birincil çoğaltma (SQL Server işlemi) ve verilerin kopyalarını içeren üç ikincil çoğaltma (işlem ve depolama) içerir. Birincil düğüm değişiklikleri sürekli olarak ikincil düğümlere gönderir ve her bir işlem gerçekleştirilmeden önce verilerin en az bir ikincil çoğaltmayla eşitlenmesini sağlar. Bu işlem, birincil düğüm herhangi bir nedenden dolayı kilitlenirse, her zaman yük devretmek için tamamen eşitlenmiş bir düğüm vardır. Yük devretme işlemi Azure Service Fabric tarafından başlatılır. İkincil çoğaltma yeni birincil düğüm olduktan sonra, kümede yeterli düğüm (çekirdek kümesi) olduğundan emin olmak için başka bir ikincil çoğaltma oluşturulur. Yük devretme işlemi tamamlandıktan sonra, SQL bağlantıları otomatik olarak yeni birincil düğüme yönlendirilir.
 
-Ek bir avantaj olarak premium kullanılabilirlik model salt okunur SQL bağlantıları ikincil çoğaltmalardan birine yeniden yönlendirme özelliğini içerir. Bu özelliğin adı [okuma ölçeği genişletme](sql-database-read-scale-out.md). Bu, ek %100 birincil çoğaltmadan analiz iş yükleri gibi salt okunur işlemler yükünü azaltmak için ek ücret ödemeden kapasite işlem sağlar.
+Ek bir avantaj olarak Premium kullanılabilirlik modeli, salt okunurdur SQL bağlantılarını ikincil çoğaltmalardan birine yeniden yönlendirebilme özelliği içerir. Bu özelliğe [okuma ölçeği](sql-database-read-scale-out.md)genişletme denir. Birincil çoğaltmadan, analitik iş yükleri gibi salt okuma işlemlerini yük dışı bırakmak için ek ücret olmadan% 100 ek işlem kapasitesi sağlar.
 
-## <a name="zone-redundant-configuration"></a>Bölge yedekli yapılandırması
+## <a name="zone-redundant-configuration"></a>Bölge yedekli yapılandırma
 
-Varsayılan olarak, küme düğümlerinin premium kullanılabilirlik modeli için aynı veri merkezinde oluşturulur. Sunulmasıyla birlikte [Azure kullanılabilirlik alanları](../availability-zones/az-overview.md), SQL veritabanı, aynı bölgedeki farklı kullanılabilirlik bölgelerine kümedeki farklı kopyaya yerleştirebileceğiniz. Bir tek hata noktası ortadan kaldırmak için Denetim halka ayrıca birden çok bölge arasında üç ağ geçidi halkaları (GW) çoğaltılır. Belirli bir ağ geçidi kademesine yönlendirme tarafından denetlenen [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) (ATM). Bölge yedekli yapılandırmayı Premium veya iş açısından kritik hizmet katmanlarına ek veritabanı artıklığı oluşturmadığından olmadan etkinleştirebilirsiniz ek bir maliyet. Bölge yedekli Yapılandırması'nı seçerek, Premium veya iş açısından kritik veritabanlarınızı dayanıklı uygulama mantığı herhangi bir değişiklik yapmadan geri dönülemez veri merkezi kesintilerine hataları gibi daha büyük bir dizi yapabilirsiniz. Mevcut tüm Premium veya iş açısından kritik veritabanı veya havuzlar için bölge yedekli yapılandırması dönüştürebilirsiniz.
+Varsayılan olarak, Premium kullanılabilirlik modeli için düğümlerin kümesi aynı veri merkezinde oluşturulur. [Azure kullanılabilirlik alanları](../availability-zones/az-overview.md)tanıtımı Ile SQL veritabanı, kümeye farklı çoğaltmaları aynı bölgedeki farklı kullanılabilirlik bölgelerine yerleştirebilir. Tek bir başarısızlık noktasını ortadan kaldırmak için, denetim halkası aynı zamanda birden çok bölgede üç ağ geçidi halkaları (GW) olarak da yinelenir. Belirli bir ağ geçidi halkası yönlendirmesi [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) (ATM) tarafından denetlenir. Premium veya İş Açısından Kritik hizmet katmanlarında bölge yedekli yapılandırma ek veritabanı yedekliliği oluşturmadığından, ek ücret ödemeden etkinleştirebilirsiniz. Bölgesel olarak yedekli bir yapılandırma seçerek, Premium veya İş Açısından Kritik veritabanlarınızı, uygulama mantığındaki herhangi bir değişiklik yapmadan çok daha büyük bir veri merkezi kesintileri dahil olmak üzere çok daha büyük bir başarısızlık kümesine dayanıklı hale getirebilirsiniz. Ayrıca, mevcut Premium veya İş Açısından Kritik veritabanlarını veya havuzları bölge yedekli yapılandırmasına de dönüştürebilirsiniz.
 
-Bölge yedekli veritabanları, aralarındaki bazı uzaklığı ile farklı veri merkezlerinde çoğaltmaları olduğundan, artan ağ gecikme süresi işleme süresini artırabilir ve böylece bazı OLTP iş yüklerinin performansını etkileyebilir. Her zaman dilimi yedeklilik devre dışı bırakarak tek bölgeli yapılandırmaya geri dönebilirsiniz. Çevrimiçi bir işlem normal bir hizmet katmanı yükseltme benzer işlemidir. İşlemin sonunda, veritabanı veya havuz bir bölge yedekli halka dışında bir tek bir bölge halkası ya da tam tersi geçirilir.
+Bölge yedekli veritabanlarının aralarında biraz uzaklıktan farklı veri merkezlerinde çoğaltmaları olduğundan, artan ağ gecikmesi çalışma süresini artırabilir ve böylece bazı OLTP iş yüklerinin performansını etkileyebilir. Bölge artıklığı ayarını devre dışı bırakarak her zaman tek bölge yapılandırmasına dönebilirsiniz. Bu işlem, normal hizmet katmanı yükseltmesine benzer bir çevrimiçi işlemdir. İşlemin sonunda, veritabanı veya havuz, bölge yedekli halkadan tek bir bölge halkaine geçirilir veya tam tersi de geçerlidir.
 
 > [!IMPORTANT]
-> Bölge yedekli veritabanları ve elastik havuzlar şu anda yalnızca bölgelerde Premium ve iş açısından kritik hizmet katmanlarında desteklenir. 5\. nesil işlem donanım seçildiğinde iş açısından kritik katmanında kullanırken, bölge yedekli yapılandırması yalnızca kullanılabilir. Bölge yedekli veritabanları destekleyen bölgeler hakkında güncel bilgi için bkz: [bölgeye göre Destek Hizmetleri](../availability-zones/az-overview.md#services-support-by-region).  
+> Bölgesel olarak yedekli veritabanları ve elastik havuzlar Şu anda yalnızca Seç bölgelerinde Premium ve İş Açısından Kritik hizmet katmanlarında desteklenir. İş Açısından Kritik katmanını kullanırken, bölge yedekli yapılandırma yalnızca 5. nesil işlem donanımı seçildiğinde kullanılabilir. Bölge yedekli veritabanlarını destekleyen bölgeler hakkında güncel bilgiler için bkz. [bölgeye göre Hizmetler desteği](../availability-zones/az-overview.md#services-support-by-region).  
 
-Bölge yedekli sürümü, yüksek kullanılabilirlik mimarisi ile Aşağıdaki diyagramda gösterilmiştir:
+Yüksek kullanılabilirlik mimarisinin bölge yedekli sürümü aşağıdaki diyagram tarafından gösterilmiştir:
 
-![yüksek kullanılabilirlik mimarisi bölgesel olarak yedekli](./media/sql-database-high-availability/zone-redundant-business-critical-service-tier.png)
+![yüksek kullanılabilirlik mimarisi bölgesi yedekli](./media/sql-database-high-availability/zone-redundant-business-critical-service-tier.png)
 
 ## <a name="accelerated-database-recovery-adr"></a>Hızlandırılmış veritabanı kurtarma (ADR)
 
-[Veritabanı kurtarma (ADR) hızlandırılmış](sql-database-accelerated-database-recovery.md) işlemleri çalıştıran özellikle uzun olduğu durumda, veritabanı kullanılabilirlik büyük ölçüde geliştiren yeni bir SQL veritabanı altyapısı özelliği. ADR, tek veritabanları, elastik havuzlar ve Azure SQL veri ambarı şu anda kullanılabilir.
+[Hızlandırılmış veritabanı kurtarma (ADR)](sql-database-accelerated-database-recovery.md) , özellikle uzun süre çalışan işlemler söz konusu olduğunda veritabanı kullanılabilirliğini büyük ölçüde geliştiren yenı bir SQL veritabanı altyapısı özelliğidir. ADR Şu anda tek veritabanları, elastik havuzlar ve Azure SQL veri ambarı için kullanılabilir.
 
 ## <a name="conclusion"></a>Sonuç
 
-Azure SQL veritabanı, Azure platformuyla tamamen tümleştirilmiş bir yerleşik yüksek kullanılabilirlik çözümü sunar. Service Fabric için hata algılama ve kurtarma, veri koruma için Azure Blob Depolama ve kullanılabilirlik için daha yüksek hata toleransı bağlıdır. Ayrıca, Azure SQL veritabanı, çoğaltma ve yük devretme için SQL Server Always On kullanılabilirlik grubu teknolojisinden yararlanır. Bu teknolojilerin birlikte tam olarak bir karma depolamanın avantajları modelini ve En zorlu SLA'ları destekleyen hayata geçirmek uygulamaları etkinleştirir.
+Azure SQL veritabanı, Azure platformuyla çok daha tümleşik olan yerleşik bir yüksek oranda kullanılabilir çözüm sunar. Hata algılama ve kurtarma, veri koruma için Azure Blob depolama ve daha yüksek hata toleransı için Kullanılabilirlik Alanları Service Fabric bağımlıdır. Ayrıca, Azure SQL veritabanı, çoğaltma ve yük devretme için SQL Server 'dan her zaman açık kullanılabilirlik grubu teknolojisini kullanır. Bu teknolojilerin birleşimi, uygulamaların karma depolama modelinin avantajlarını tam olarak elde etmesini ve en zorlu SLA 'Ları desteklemesini sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Hakkında bilgi edinin [Azure kullanılabilirlik alanları](../availability-zones/az-overview.md)
-- Hakkında bilgi edinin [Service Fabric](../service-fabric/service-fabric-overview.md)
-- Hakkında bilgi edinin [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md)
-- Yüksek kullanılabilirlik ve olağanüstü durum kurtarma için daha fazla seçenek için bkz [iş sürekliliği](sql-database-business-continuity.md)
+- [Azure kullanılabilirlik alanları](../availability-zones/az-overview.md) hakkında bilgi edinin
+- [Service Fabric](../service-fabric/service-fabric-overview.md) hakkında bilgi edinin
+- [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) hakkında bilgi edinin
+- Yüksek kullanılabilirlik ve olağanüstü durum kurtarma için daha fazla seçenek için bkz. [Iş sürekliliği](sql-database-business-continuity.md)

@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: kumud
 ms.reviewer: yagup
-ms.openlocfilehash: ca3174ad69185da88bf89c843f641dd2b20d9ac5
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 03c0106d793fc7b77ccc8a9176f158a9928ab291
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67872482"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68620130"
 ---
 # <a name="traffic-analytics"></a>Trafik Analizi
 
@@ -55,7 +55,7 @@ Trafik Analizi, ham NSG akış günlüklerini inceler ve aynı kaynak IP adresi,
 
 ![NSG akış günlükleri işleme için veri akışı](./media/traffic-analytics/data-flow-for-nsg-flow-log-processing.png)
 
-## <a name="supported-regions"></a>Desteklenen bölgeler
+## <a name="supported-regions-nsg"></a>Desteklenen bölgeler: NSG 
 
 NSG 'ler için trafik analizini aşağıdaki desteklenen bölgelerden herhangi birinde kullanabilirsiniz:
 
@@ -84,6 +84,8 @@ NSG 'ler için trafik analizini aşağıdaki desteklenen bölgelerden herhangi b
 * Japonya Doğu 
 * Japonya Batı
 * ABD Devleti Virginia
+
+## <a name="supported-regions-log-analytics-workspaces"></a>Desteklenen bölgeler: Log Analytics Çalışma Alanları
 
 Log Analytics çalışma alanı aşağıdaki bölgelerde bulunmalıdır:
 * Orta Kanada
@@ -118,7 +120,7 @@ Hesabınız aşağıdaki Azure [yerleşik rollerinin](../role-based-access-contr
 |Resource Manager   | Sahip                  |
 |                   | Katılımcı            |
 |                   | Okuyucu                 |
-|                   | Ağ katılımcısı    |
+|                   | Ağ Katılımcısı    |
 
 Hesabınız yerleşik rollerden birine atanmamışsa, abonelik düzeyinde aşağıdaki eylemler atanmış olan [özel bir role](../role-based-access-control/custom-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) atanmalıdır. şu şekilde hesaba atanmalıdır:
 
@@ -137,7 +139,7 @@ Kullanıcı erişim izinlerini denetleme hakkında bilgi için bkz. [trafik anal
 
 ### <a name="enable-network-watcher"></a>Ağ İzleyicisini etkinleştirme
 
-Trafiği çözümlemek için, var olan bir ağ izleyicisine sahip olmanız ya da NSG 'ler bulunan her bölgede, trafiğini çözümlemek istediğiniz her bölgede [bir ağ izleyicisi etkinleştirmeniz](network-watcher-create.md) gerekir. Trafik Analizi, [desteklenen bölgelerde](#supported-regions)barındırılan NSG 'ler için etkinleştirilebilir.
+Trafiği çözümlemek için, var olan bir ağ izleyicisine sahip olmanız ya da NSG 'ler bulunan her bölgede, trafiğini çözümlemek istediğiniz her bölgede [bir ağ izleyicisi etkinleştirmeniz](network-watcher-create.md) gerekir. Trafik Analizi, [desteklenen bölgelerde](#supported-regions-nsg)barındırılan NSG 'ler için etkinleştirilebilir.
 
 ### <a name="select-a-network-security-group"></a>Bir ağ güvenlik grubu seçin
 
@@ -147,7 +149,7 @@ Azure portal sol tarafında **izleyici**' yi ve ardından **Ağ İzleyicisi**' n
 
 ![NSG akış günlüğünün etkinleştirilmesini gerektiren NSG 'ler seçimi](./media/traffic-analytics/selection-of-nsgs-that-require-enablement-of-nsg-flow-logging.png)
 
-[Desteklenen bölgeler](#supported-regions)dışında herhangi bir bölgede barındırılan bir NSG için trafik analizini etkinleştirmeye çalışırsanız, "bulunamadı" hatası alırsınız.
+[Desteklenen bölgeler](#supported-regions-nsg)dışında herhangi bir bölgede barındırılan bir NSG için trafik analizini etkinleştirmeye çalışırsanız, "bulunamadı" hatası alırsınız.
 
 ## <a name="enable-flow-log-settings"></a>Akış günlüğü ayarlarını etkinleştir
 
@@ -174,17 +176,18 @@ Resimde gösterildiği gibi aşağıdaki seçenekleri belirleyin:
 
 1. **Durum** için *Açık* seçeneğini belirleyin
 2. **Akış günlükleri sürümü**için *sürüm 2* ' yi seçin. Sürüm 2, akış oturumu istatistikleri içerir (bayt ve paket)
-3. Akış günlüklerini depolamak için mevcut bir depolama hesabı seçin. Verileri süresiz olarak depolamak istiyorsanız, değeri *0*olarak ayarlayın. Depolama hesabı için Azure depolama ücretine tabi olursunuz.
+3. Akış günlüklerini depolamak için mevcut bir depolama hesabı seçin. Verileri süresiz olarak depolamak istiyorsanız, değeri *0*olarak ayarlayın. Depolama hesabı için Azure depolama ücretine tabi olursunuz. Depolama alanınız "Data Lake Storage 2. hiyerarşik ad alanı etkin değil" özelliğinin true olarak ayarlandığından emin olun. Ayrıca, NSG akış Günlükleri güvenlik duvarı olan bir depolama hesabında depolanamaz. 
 4. **Bekletmeyi** , verilerini depolamak istediğiniz gün sayısına ayarlayın.
 5. **Trafik Analizi durumu**Için *Açık '* ı seçin.
-6. Var olan bir Log Analytics (OMS) çalışma alanı seçin veya yeni bir **çalışma alanı** oluştur ' u seçerek yeni bir tane oluşturun. Log Analytics çalışma alanı, analiz oluşturmak için kullanılan toplanmış ve dizine alınmış verileri depolamak için Trafik Analizi tarafından kullanılır. Mevcut bir çalışma alanını seçerseniz, [desteklenen bölgelerden](#supported-regions) birinde bulunmalıdır ve yeni sorgu diline yükseltilir. Mevcut bir çalışma alanını yükseltmek veya desteklenen bir bölgede çalışma alanınız yoksa yeni bir tane oluşturun. Sorgu dilleri hakkında daha fazla bilgi için bkz. [Azure Log Analytics yükseltme yeni günlük araması](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+6. İşleme aralığını seçin. Seçim yapmanız temelinde, akış günlüklerinizi depolama hesabından toplanacak ve Trafik Analizi tarafından işlenir. Her 1 saatte bir veya 10 dakikada bir işleme aralığı seçebilirsiniz.
+7. Var olan bir Log Analytics (OMS) çalışma alanı seçin veya yeni bir **çalışma alanı** oluştur ' u seçerek yeni bir tane oluşturun. Log Analytics çalışma alanı, analiz oluşturmak için kullanılan toplanmış ve dizine alınmış verileri depolamak için Trafik Analizi tarafından kullanılır. Mevcut bir çalışma alanını seçerseniz, [desteklenen bölgelerden](#supported-regions-log-analytics-workspaces) birinde bulunmalıdır ve yeni sorgu diline yükseltilir. Mevcut bir çalışma alanını yükseltmek veya desteklenen bir bölgede çalışma alanınız yoksa yeni bir tane oluşturun. Sorgu dilleri hakkında daha fazla bilgi için bkz. [Azure Log Analytics yükseltme yeni günlük araması](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
     Trafik Analizi çözümünü barındıran Log Analytics çalışma alanının ve NSG 'lerin aynı bölgede olması gerekmez. Örneğin, Batı Avrupa bölgesindeki bir çalışma alanında trafik analizlerinin olması, Doğu ABD ve Batı ABD NSG 'lerinizin olması olabilir. Aynı çalışma alanında birden çok NSG yapılandırılabilir.
-7. **Kaydet**’i seçin.
+8. **Kaydet**’i seçin.
 
-    ![Depolama hesabı, Log Analytics çalışma alanı ve Trafik Analizi etkinleştirme seçimi](./media/traffic-analytics/selection-of-storage-account-log-analytics-workspace-and-traffic-analytics-enablement-nsg-flowlogs-v2.png)
+    ![Depolama hesabı, Log Analytics çalışma alanı ve Trafik Analizi etkinleştirme seçimi](./media/traffic-analytics/ta-customprocessinginterval.png)
 
-İçin trafik analizini etkinleştirmek istediğiniz diğer NSG 'ler için önceki adımları tekrarlayın. Akış günlüklerinden alınan veriler çalışma alanına gönderilir, bu nedenle ülkenizde/bölgenizdeki yerel yasalar ve yönetmelikler çalışma alanının bulunduğu bölgede veri depolamaya izin verdiğinden emin olun.
+İçin trafik analizini etkinleştirmek istediğiniz diğer NSG 'ler için önceki adımları tekrarlayın. Akış günlüklerinden veriler çalışma alanına gönderilir, böylece ülkenizde bulunan yerel yasaları ve yönetmelikler, çalışma alanının bulunduğu bölgede veri depolamaya izin verdiğinden emin olun. Farklı NSG 'ler için farklı işleme aralıkları ayarladıysanız, veriler farklı aralıklarla toplanır. Örneğin: Kritik VNET 'ler için 10 dakikalık işleme aralığını ve kritik olmayan VNET 'ler için 1 saat etkinleştirmeyi seçebilirsiniz.
 
 Ayrıca, Azure PowerShell içindeki [set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) PowerShell cmdlet 'ini kullanarak trafik analizini yapılandırabilirsiniz. Yüklü `Get-Module -ListAvailable Az` sürümünüzü bulmak için ' i çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-Az-ps).
 

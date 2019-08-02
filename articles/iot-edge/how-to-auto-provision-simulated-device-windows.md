@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 01247dfc0046ef722d70fe48f7ab8ee63f685962
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0236491f9ebc8e3ecf7df8b74db4fd5ff441c7f8
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65153566"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677433"
 ---
 # <a name="create-and-provision-a-simulated-tpm-edge-device-on-windows"></a>Windows üzerinde sanal bir TPM Edge cihazı oluşturma ve sağlama
 
@@ -46,7 +46,7 @@ DPS'de bir kayıt oluşturduğunuzda, bildirme fırsatına sahip bir **ilk cihaz
 
 Sanal cihazı oluşturmak için kullanmak istediğiniz SDK dil seçin ve bireysel kayıt oluşturana kadar adımları izleyin.
 
-Bireysel kayıt oluşturduğunuzda **etkinleştirme** Windows geliştirme makinenizde sanal TPM cihazı olduğunu bildirmek için bir **IOT Edge cihazı**.
+Tek bir kaydı oluşturduğunuzda, Windows geliştirme makinenizdeki sanal bir TPM cihazının **IoT Edge bir cihaz**olduğunu bildirmek için **true** ' ı seçin.
 
 Sanal cihazı ve bireysel kayıt kılavuzları:
 
@@ -66,9 +66,9 @@ IoT Edge çalışma zamanı tüm IoT Edge cihazlarına dağıtılır. Bileşenle
 
 Sanal TPM önceki bölümden çalıştıran cihazın IOT Edge çalışma zamanı yüklemek için yönergeleri izleyin. Otomatik değil el ile sağlama için IOT Edge çalışma zamanı yapılandırdığınızdan emin olun.
 
-DPS'niz bilmeniz **kimlik kapsamı** ve cihaz **kayıt kimliği** IOT Edge Cihazınızda yüklemeden önce.
+Cihazınıza IoT Edge yüklemeden önce, DPS **kimlik kapsamınızı** ve CIHAZ **Kayıt kimliğinizi** öğrenin.
 
-[Yükleme ve IOT Edge otomatik olarak sağlama](how-to-install-iot-edge-windows.md#option-2-install-and-automatically-provision)
+[IoT Edge yükleyip otomatik olarak sağla](how-to-install-iot-edge-windows.md#option-2-install-and-automatically-provision)
 
 ## <a name="verify-successful-installation"></a>Yüklemenin başarılı olduğunu doğrulamak
 
