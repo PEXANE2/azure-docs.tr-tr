@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 08/01/2019
 ms.author: jowargo
-ms.openlocfilehash: d1aac5bb399fc113b57ad7e59f17d19f8bb1c97f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 39fa004b62bf7e2e2a50500f32fa7edcb0c4b6ba
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728854"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742434"
 ---
 # <a name="tutorial-push-notifications-to-xamarinandroid-apps-using-azure-notification-hubs"></a>Öğretici: Azure Notification Hubs kullanarak Xamarin. Android uygulamalarına anında iletme bildirimleri gönderin
 
@@ -66,6 +66,9 @@ Bildirim hub'ınız FCM ile birlikte çalışmak üzere yapılandırıldı. Ayr�
 
 ### <a name="create-visual-studio-project-and-add-nuget-packages"></a>Visual Studio projesi oluşturma ve NuGet paketleri ekleme
 
+> [!NOTE]
+> Bu öğreticide belgelenen adımlar Visual Studio 2017 içindir. 
+
 1. Visual Studio 'da **Dosya** menüsünü açın, **Yeni**' yi ve ardından **Proje**' yi seçin. **Yeni proje** penceresinde aşağıdaki adımları uygulayın:
     1. **Yüklü**, **görsel C#** ' i genişletin ve ardından **Android**' e tıklayın.
     2. Listeden **Android uygulaması (Xamarin)** öğesini seçin.
@@ -80,12 +83,18 @@ Bildirim hub'ınız FCM ile birlikte çalışmak üzere yapılandırıldı. Ayr�
 3. **Çözüm Gezgini** penceresinde **Özellikler**’i genişletin ve **AndroidManifest.xml** dosyasına tıklayın. Paket adını, Google Firebase Console’da projenize Firebase Cloud Messaging eklerken girdiğiniz paket adıyla eşleşecek şekilde güncelleştirin.
 
     ![GCM’de paket adı](./media/partner-xamarin-notification-hubs-android-get-started/package-name-gcm.png)
-4. Projeye sağ tıklayın ve **NuGet Paketlerini Yönet...** seçeneğini belirleyin.
-5. **Gözat** sekmesini seçin. **Xamarin.GooglePlayServices.Base** öğesini arayın. Sonuç listesinden **Xamarin.GooglePlayServices.Base** öğesini seçin. Ardından **Yükle**’yi seçin.
+4. Projenin hedef Android sürümünü şu adımları izleyerek **Android 9,0 (pasta)** olarak ayarlayın: 
+    1. Projenize sağ tıklayın ve **Özellikler**' i seçin. 
+    1. Android sürümünü kullanarak derle için: **(Hedef çerçeve) alan, **Android 9,0 (pasta)** öğesini seçin.** 
+    1. Hedef Framework 'ü değiştirmeye devam etmek için ileti kutusunda **Evet** ' i seçin.
+1. Aşağıdaki adımları izleyerek, gerekli NuGet paketlerini projeye ekleyin:
+    1. Projeye sağ tıklayın ve **NuGet Paketlerini Yönet...** seçeneğini belirleyin.
+    1. **Yüklü** sekmesine geçiş yapın, **Xamarin. Android. support. Design**' ı seçin ve sağ bölmedeki **Güncelleştir** ' i seçerek paketi en son sürüme güncelleştirin.
+    1. **Tarama** sekmesine geçin. **Xamarin.GooglePlayServices.Base** öğesini arayın. Sonuç listesinden **Xamarin.GooglePlayServices.Base** öğesini seçin. Ardından **Yükle**’yi seçin.
 
-    ![Google Play Services NuGet](./media/partner-xamarin-notification-hubs-android-get-started/google-play-services-nuget.png)
-6. **NuGet Package Manager** penceresinde **Xamarin.Firebase.Messaging** öğesini arayın. Sonuç listesinden **Xamarin.Firebase.Messaging** öğesini seçin. Ardından **Yükle**’yi seçin.
-7. Şimdi **Xamarin.Azure.NotificationHubs.Android** araması yapın. Sonuç listesinden **Xamarin.Azure.NotificationHubs.Android** öğesini seçin. Ardından **Yükle**’yi seçin.
+        ![Google Play Services NuGet](./media/partner-xamarin-notification-hubs-android-get-started/google-play-services-nuget.png)
+    6. **NuGet Package Manager** penceresinde **Xamarin.Firebase.Messaging** öğesini arayın. Sonuç listesinden **Xamarin.Firebase.Messaging** öğesini seçin. Ardından **Yükle**’yi seçin.
+    7. Şimdi **Xamarin.Azure.NotificationHubs.Android** araması yapın. Sonuç listesinden **Xamarin.Azure.NotificationHubs.Android** öğesini seçin. Ardından **Yükle**’yi seçin.
 
 ### <a name="add-the-google-services-json-file"></a>Google Services JSON Dosyasını ekleme
 

@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: a6b1e4e1571e6ce3cee1658907efd35e9c73ca1a
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 7ac87000a6bbe7515106b42f57f9184396ed4168
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62107271"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68735684"
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Azure’da bir zamanlayıcı tarafından tetiklenen bir işlev oluşturma
 
@@ -51,16 +51,16 @@ Ardından, yeni işlev uygulamasında bir işlev oluşturun.
 
     ![İşlevler hızlı başlangıcı diğer şablonlar](./media/functions-create-scheduled-function/add-first-function.png)
 
-3. Arama alanına `timer` ve Yeni tetikleyiciyi resmin altındaki tabloda belirtilen ayarları yapılandırın.
+3. Arama alanına, yeni tetikleyiciyi görüntünün `timer` altındaki tabloda belirtilen ayarlarla yazın ve yapılandırın.
 
     ![Azure portalında zamanlayıcı tarafından tetiklenen bir işlev oluşturun.](./media/functions-create-scheduled-function/functions-create-timer-trigger-2.png)
 
     | Ayar | Önerilen değer | Açıklama |
     |---|---|---|
-    | **Ad** | Varsayılan | Zamanlayıcı ile tetiklenen işlevinizin adını tanımlar. |
-    | **Zamanlama** | 0 \*/1 \* \* \* \* | İşlevinizi her dakika çalışacak şekilde zamanlayan altı haneli bir [CRON ifadesi](functions-bindings-timer.md#cron-expressions). |
+    | **Name** | Varsayılan | Zamanlayıcı ile tetiklenen işlevinizin adını tanımlar. |
+    | **Zamanlama** | 0 \*/1 \* \* \* \* | İşlevinizi her dakika çalışacak şekilde zamanlayan altı haneli bir [CRON ifadesi](functions-bindings-timer.md#ncrontab-expressions). |
 
-4. **Oluştur**’a tıklayın. Seçtiğiniz dilde her dakika çalışan bir işlev oluşturulur.
+4.           **Oluştur**'a tıklayın. Seçtiğiniz dilde her dakika çalışan bir işlev oluşturulur.
 
 5. Günlüklere yazılan izleme bilgilerini görüntüleyerek yürütmeyi doğrulayın.
 
@@ -84,6 +84,6 @@ Saatte bir çalışan bir işleviniz oldu.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir zamanlamaya göre çalışan bir işlev oluşturdunuz. Zamanlayıcı Tetikleyicileri hakkında daha fazla bilgi için bkz: [Azure işlevleri ile kod yürütme zamanlama](functions-bindings-timer.md).
+Bir zamanlamaya göre çalışan bir işlev oluşturdunuz. Zamanlayıcı Tetikleyicileri hakkında daha fazla bilgi için bkz. [Azure işlevleri ile kod yürütmeyi zamanlama](functions-bindings-timer.md).
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]

@@ -11,14 +11,14 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: b80be0db41ea8bd3996a7b8843c80f510289545f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 12e433a146d8dd8a6fb7e1d7c40acc72e023047b
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570052"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736200"
 ---
-# <a name="use-cli-to-move-an-azure-sql-database-in-a-sql-elastic-pool"></a>CLI kullanarak SQL elastik havuzunda bir Azure SQL veritabanını taşıma
+# <a name="use-cli-to-add-an-azure-sql-database-single-database-into-a-failover-group"></a>CLı kullanarak bir yük devretme grubuna Azure SQL veritabanı tek veritabanı ekleme
 
 Bu PowerShell betiği örneği tek bir veritabanı oluşturur, bir yük devretme grubu oluşturur, veritabanını buna ekler ve yük devretmeyi sınar. 
 

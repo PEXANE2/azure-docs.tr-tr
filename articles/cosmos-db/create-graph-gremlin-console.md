@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: quickstart
 ms.date: 07/23/2019
 ms.author: lbosq
-ms.openlocfilehash: 0b5af9a2f244f64aa77252a5cef4cb3eb9b64a25
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0a6ddfe1337575f4f61f4bba4638a16e54b0cde6
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565502"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68735263"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Hızlı Başlangıç: Gremlin konsolunu kullanarak Azure Cosmos DB Graph veritabanı oluşturma, sorgulama ve çapraz geçiş yapma
 
@@ -27,7 +27,7 @@ ms.locfileid: "68565502"
 
 Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritabanı hizmetidir. Bu hizmetle belge, anahtar/değer ve grafik veritabanlarını kolayca oluşturup sorgulayabilir ve tüm bunları yaparken Azure Cosmos DB'nin genel dağıtım ve yatay ölçeklendirme özelliklerinden faydalanabilirsiniz. 
 
-Bu hızlı başlangıçta Azure portalını kullanarak bir Azure Cosmos DB [Gremlin API](graph-introduction.md) hesabı, veritabanı ve grafiği (kapsayıcı) oluşturma işlemi ve [Apache TinkerPop](https://tinkerpop.apache.org) tarafından kullanıma sunulan [Gremlin Console](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console)'u kullanarak Gremlin API'si verileri ile çalışma işlemi anlatılmaktadır. Bu öğreticide köşe ve kenarlar oluşturup sorgular, bir köşe özelliğini güncelleştirir, köşeleri sorgular, grafiğin çapraz geçişini yapar ve bir köşeyi bırakırsınız.
+Bu hızlı başlangıçta, Azure portal kullanarak bir Azure Cosmos DB [Gremlin API](graph-introduction.md) hesabı, veritabanı ve Graf (kapsayıcı) oluşturma ve ardından Gremlin API verileriyle çalışmak Için [Apache tinkerpop](https://tinkerpop.apache.org) 'Tan [Gremlin konsolunu](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) kullanma gösterilmektedir. Bu öğreticide köşe ve kenarlar oluşturup sorgular, bir köşe özelliğini güncelleştirir, köşeleri sorgular, grafiğin çapraz geçişini yapar ve bir köşeyi bırakırsınız.
 
 ![Apache Gremlin konsolunda Azure Cosmos DB](./media/create-graph-gremlin-console/gremlin-console.png)
 
@@ -76,7 +76,7 @@ password: your_primary_key
 connectionPool: {
   enableSsl: true
 }
-serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessageSerializerV1d0, config: { serializeResultToString: true }}
+serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessageSerializerV2d0, config: { serializeResultToString: true }}
 ```
 
 Ana bilgisayar parametresinin değerini köşeli ayraç [] içinde sardığınızdan emin olun. 

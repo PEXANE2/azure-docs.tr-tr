@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 0778814d4a228afe3a986426684c7d1f2080b517
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 14a360e7dc672266e8445a5ae5eb2168ae766af8
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68553226"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68741874"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Konuşma hizmeti kapsayıcılarını yükleyip çalıştırma
 
@@ -169,7 +169,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 
 Kapsayıcı [ana bilgisayardan](#the-host-computer)olduktan sonra, kapsayıcında çalışmak için aşağıdaki işlemi kullanın.
 
-1. [Kapsayıcıyı](#run-the-container-with-docker-run)gereken ancak kullanılmayan faturalandırma ayarlarıyla çalıştırın. `docker run` Komuta daha fazla [örnek](speech-container-configuration.md#example-docker-run-commands) kullanılabilir.
+1. [Kapsayıcıyı](#run-the-container-with-docker-run)gerekli faturalandırma ayarlarıyla çalıştırın. `docker run` Komuta daha fazla [örnek](speech-container-configuration.md#example-docker-run-commands) kullanılabilir.
 1. [Kapsayıcının tahmin uç noktasını sorgulayın](#query-the-containers-prediction-endpoint).
 
 ## <a name="run-the-container-with-docker-run"></a>Kapsayıcıyı ile çalıştırma`docker run`
@@ -178,7 +178,7 @@ Kapsayıcı [ana bilgisayardan](#the-host-computer)olduktan sonra, kapsayıcınd
 
 **Önizleme sırasında**, kapsayıcıyı başlatmak için faturalandırma ayarlarının geçerli olması gerekir, ancak kullanım için faturalandırılmaz.
 
-| Yer tutucu | Değer |
+| Yer tutucu | Value |
 |-------------|-------|
 |{API_KEY} | Bu anahtar, kapsayıcıyı başlatmak için kullanılır ve Azure portal konuşma anahtarları sayfasında kullanılabilir.  |
 |{ENDPOINT_URI} | Faturalandırma uç noktası URI değeri Azure portal konuşmaya Genel Bakış sayfasında kullanılabilir.|

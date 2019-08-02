@@ -1,5 +1,5 @@
 ---
-title: SQL Server veritabanlarını Azure 'a yedekleme | Microsoft Docs
+title: Öğretici-SQL Server veritabanlarını Azure 'a yedekleme
 description: Bu öğreticide SQL Server Azure 'a nasıl yedekleyeceğiniz açıklanmaktadır.
 author: dcurwin
 manager: carmonm
@@ -7,18 +7,18 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 99e1e8194594d204a5080287794362dbe028a1f5
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 729eb0d77cee85356e359dc475f4e439b8236ebb
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688414"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736561"
 ---
-# <a name="back-up-sql-server-databases-in-azure-vms"></a>Azure VM’lerinde SQL Server veritabanlarını yedekleme
+# <a name="back-up-a-sql-server-database-in-an-azure-vm"></a>Azure VM 'de SQL Server veritabanını yedekleme
 
 
 
-Bu makalede, bir Azure VM üzerinde çalışan SQL Server bir veritabanını Azure Backup kurtarma hizmetleri kasasına nasıl yedekleyeceğiniz gösterilmektedir. Bu makalede şunları öğreneceksiniz:
+Bu öğreticide, bir Azure VM üzerinde çalışan SQL Server bir veritabanını Azure Backup kurtarma hizmetleri kasasına nasıl yedekleyeceğiniz gösterilmektedir. Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Kasa oluşturun ve yapılandırın.
@@ -136,7 +136,7 @@ Yedeklemeyi şu şekilde yapılandırın:
    Yedekleme yüklerini iyileştirmek için Azure Backup bir yedekleme işinde en fazla veritabanı sayısını 50 olarak ayarlar.
 
     
-     * Alternatif olarak, otomatik **koruma sütunundaki ilgili** açılan menüde **bulunan** seçeneğini belirleyerek tüm örnek veya Always on kullanılabilirlik grubu üzerinde otomatik korumayı etkinleştirebilirsiniz. Otomatik koruma özelliği yalnızca tek bir go içindeki tüm mevcut veritabanlarında koruma olanağı sağlar, ancak Ayrıca bu örneğe veya gelecekte kullanılabilirlik grubuna eklenecek yeni veritabanlarını otomatik olarak korur.  
+     * Alternatif olarak, otomatik koruma sütunundaki ilgili açılan menüde **bulunan** seçeneğini belirleyerek tüm örnek veya Always on kullanılabilirlik grubu üzerinde otomatik korumayı etkinleştirebilirsiniz. Otomatik koruma özelliği yalnızca tek bir go içindeki tüm mevcut veritabanlarında koruma olanağı sağlar, ancak Ayrıca bu örneğe veya gelecekte kullanılabilirlik grubuna eklenecek yeni veritabanlarını otomatik olarak korur.  
 
 4. **Tamam** ' a tıklayarak **yedekleme ilkesi** dikey penceresini açın.
 

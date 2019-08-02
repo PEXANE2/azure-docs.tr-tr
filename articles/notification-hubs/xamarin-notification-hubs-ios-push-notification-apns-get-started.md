@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/23/2019
 ms.author: jowargo
-ms.openlocfilehash: cd6d22e7c689bce5c325863b914c5ee8abcbf40a
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: baf7d5bdb156cc85a06ea2e315caca87832f3810
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66240771"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742517"
 ---
-# <a name="tutorial-push-notifications-to-xamarinios-apps-using-azure-notification-hubs"></a>Öğretici: Xamarin.iOS uygulamaları Azure Notification hubs'ı kullanarak anında iletme bildirimleri
+# <a name="tutorial-push-notifications-to-xamarinios-apps-using-azure-notification-hubs"></a>Öğretici: Azure Notification Hubs kullanarak Xamarin. iOS uygulamalarına anında iletme bildirimleri gönderme
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
@@ -31,7 +31,7 @@ ms.locfileid: "66240771"
 
 Bu öğretici, bir iOS uygulamasına anında iletme bildirimleri göndermek için Azure Notification Hubs'ın nasıl kullanılacağını size gösterir. [Apple Anında İletilen Bildirim Servisi'ni (APNs)](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html) kullanarak anında iletme bildirimleri alan boş bir Xamarin.iOS uygulaması oluşturursunuz.
 
-İşiniz bittiğinde, uygulamanızı çalıştıran tüm cihazlara anında iletme bildirimleri yayımlamak için bildirim hub’ınızı kullanabilirsiniz. Tamamlanan kodu [NotificationHubs uygulaması][GitHub] örneğinde bulabilirsiniz.
+İşiniz bittiğinde, uygulamanızı çalıştıran tüm cihazlara anında iletme bildirimleri yayımlamak için bildirim hub’ınızı kullanabilirsiniz. Tamamlanan kod, [Notificationhub uygulama][GitHub] örneğinde kullanılabilir.
 
 Bu öğreticide, aşağıdaki görevleri gerçekleştirmek için kod oluşturur/güncelleştirirsiniz:
 
@@ -44,7 +44,7 @@ Bu öğreticide, aşağıdaki görevleri gerçekleştirmek için kod oluşturur/
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* **Azure aboneliği**. Azure aboneliğiniz yoksa, [ücretsiz bir Azure hesabı oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) başlamadan önce.
+* **Azure aboneliği**. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 * [Xcode][Install Xcode]'un en son sürümü
 * iOS 10 (veya sonraki bir sürümü) uyumlu bir cihaz
 * [Apple Developer Program](https://developer.apple.com/programs/) üyeliği.
@@ -78,25 +78,25 @@ Bildirim hub'ınız şimdi APNs ile birlikte çalışmak üzere yapılandırıld
 
 ## <a name="connect-your-app-to-the-notification-hub"></a>Uygulamanızı bildirim hub'ına bağlama
 
-### <a name="create-a-new-project"></a>Yeni bir proje oluşturun
+### <a name="create-a-new-project"></a>Yeni bir proje oluşturma
 
 1. Visual Studio'da yeni bir iOS projesi oluşturup **Tek Görünüm Uygulaması** şablonunu seçin ve **İleri**'ye tıklayın
 
      ![Visual Studio - Uygulama Türünü Seçme][31]
 
-2. Uygulama adı ve kuruluş tanımlayıcınızı girin, ardından tıklatın **sonraki**, ardından **oluştur**
+2. Uygulama adınızı ve kuruluş tanımlarınızı girip **İleri**' ye ve ardından **Oluştur** ' a tıklayın.
 
 3. Çözüm görünümünde **Kimlik** bölümündeki *Info.plist* dosyasına çift tıklayarak Paket Tanımlayıcısının sağlama profili oluştururken kullandığınızla eşleştiğinden emin olun. **İmzalama** bölümünde **Ekip** altında Geliştirici hesabınızın seçili olduğundan, "İmzalamayı otomatik olarak yönet" seçeneğinin belirlendiğinden ve İmza Sertifikası ile Sağlama Profili bilgilerinizin otomatik olarak seçildiğinden emin olun.
 
     ![Visual Studio- iOS Uygulaması Yapılandırması][32]
 
-4. Çözüm görünümünde çift `Entitlements.plist` olduğundan emin olun **anında iletme bildirimlerini etkinleştirme** denetlenir.
+4. Çözüm görünümünden öğesine çift tıklayın `Entitlements.plist` ve **anında iletme bildirimlerini etkinleştir** ' in işaretli olduğundan emin olun.
 
     ![Visual Studio- iOS Destek Hakları Yapılandırması][33]
 
 5. Azure Messaging paketini ekleyin. Çözüm görünümünde projeye sağ tıklayıp **Ekle** > **NuGet Paketleri Ekle**'yi seçin. **Xamarin.Azure.NotificationHubs.iOS** araması yapıp projeyi pakete ekleyin.
 
-6. Sınıfınıza yeni bir dosya ekleyin, adlandırın `Constants.cs` ile dize sabiti yer tutucularını değiştirin ve aşağıdaki değişkenleri ekleyip `hubname` ve `DefaultListenSharedAccessSignature` daha önce not ettiğiniz.
+6. Sınıfınıza yeni bir dosya ekleyin, bu `Constants.cs` dosyayı adlandırın ve aşağıdaki değişkenleri ekleyin ve dize değişmez yer tutucularını `hubname` ve `DefaultListenSharedAccessSignature` daha önce belirtilen ile değiştirin.
 
     ```csharp
     // Azure app-specific connection string and hub path
@@ -104,27 +104,27 @@ Bildirim hub'ınız şimdi APNs ile birlikte çalışmak üzere yapılandırıld
     public const string NotificationHubName = "<Azure Notification Hub Name>";
     ```
 
-7. İçinde `AppDelegate.cs`, aşağıdaki using deyimi:
+7. İçinde `AppDelegate.cs`, aşağıdaki using ifadesini ekleyin:
 
     ```csharp
     using WindowsAzure.Messaging;
     using UserNotifications
     ```
 
-8. Bir örneğini bildirmeniz `SBNotificationHub`:
+8. Şunu bir örneği `SBNotificationHub`bildirin:
 
     ```csharp
     private SBNotificationHub Hub { get; set; }
     ```
 
-9. İçinde `AppDelegate.cs`, güncelleştirme `FinishedLaunching()` aşağıdaki kodu eşleştirmek için:
+9. ' `AppDelegate.cs`De, `FinishedLaunching()` aşağıdaki kodla eşleşecek şekilde güncelleştirin:
 
     ```csharp
     public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
     {
         if (UIDevice.CurrentDevice.CheckSystemVersion(10, 0))
         {
-            UNUserNotificationCenter.Current.RequestAuthorization(UNAuthorizationOptions.Alert | UNAuthorizationOptions.Sound | UNAuthorizationOptions.Sound,
+            UNUserNotificationCenter.Current.RequestAuthorization(UNAuthorizationOptions.Alert | UNAuthorizationOptions.Badge | UNAuthorizationOptions.Sound,
                                                                     (granted, error) =>
             {
                 if (granted)
@@ -146,7 +146,7 @@ Bildirim hub'ınız şimdi APNs ile birlikte çalışmak üzere yapılandırıld
     }
     ```
 
-10. İçinde `AppDelegate.cs`, geçersiz kılma `RegisteredForRemoteNotifications()` yöntemi:
+10. İçinde `AppDelegate.cs`, `RegisteredForRemoteNotifications()` yöntemini geçersiz kılın:
 
     ```csharp
     public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
@@ -169,7 +169,7 @@ Bildirim hub'ınız şimdi APNs ile birlikte çalışmak üzere yapılandırıld
     }
     ```
 
-11. İçinde `AppDelegate.cs`, geçersiz kılma `ReceivedRemoteNotification()` yöntemi:
+11. İçinde `AppDelegate.cs`, `ReceivedRemoteNotification()` yöntemini geçersiz kılın:
 
     ```csharp
     public override void ReceivedRemoteNotification(UIApplication application, NSDictionary userInfo)
@@ -178,7 +178,7 @@ Bildirim hub'ınız şimdi APNs ile birlikte çalışmak üzere yapılandırıld
     }
     ```
 
-12. İçinde `AppDelegate.cs`, oluşturma `ProcessNotification()` yöntemi:
+12. İçinde `AppDelegate.cs`, `ProcessNotification()` yöntemini oluşturun:
 
     ```csharp
     void ProcessNotification(NSDictionary options, bool fromFinishedLaunching)
@@ -217,7 +217,7 @@ Bildirim hub'ınız şimdi APNs ile birlikte çalışmak üzere yapılandırıld
     ```
 
     > [!NOTE]
-    > Geçersiz kılmayı seçebilirsiniz `FailedToRegisterForRemoteNotifications()` ağ bağlantısının olmaması gibi durumlarda işlemek için. Bu seçim, kullanıcı uygulamanızı çevrimdışı modda (örneğin, Uçak) başlattığında ve uygulamanıza özgü anında iletme mesajlaşması senaryoları kullanmak istediğinizde özellikle önemlidir.
+    > Ağ bağlantısı olmaması gibi durumları `FailedToRegisterForRemoteNotifications()` işlemek için geçersiz kılmayı seçebilirsiniz. Bu seçim, kullanıcı uygulamanızı çevrimdışı modda (örneğin, Uçak) başlattığında ve uygulamanıza özgü anında iletme mesajlaşması senaryoları kullanmak istediğinizde özellikle önemlidir.
 
 13. Cihazınızda uygulamayı çalıştırın.
 
