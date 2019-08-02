@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 9ca04bdd7f4ed577ad571e6a715201f8c3e2b6ee
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 79a372087e162fedc5b2e014a5cd4976df3cb2ce
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559971"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68637814"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>Node.js kullanarak program aracılığıyla LUIS uygulaması oluşturma
 
@@ -24,23 +24,35 @@ LUIS, her şeyi yapan programlı bir API sağlar [LUIS](luis-reference-regions.m
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Oturum [LUIS](luis-reference-regions.md) Web sitesi ve bulma, [anahtar yazma](luis-concept-keys.md#authoring-key) hesap ayarları'nda. Yazma API'leri çağırmak için bu anahtarı kullanırsınız.
+* Lusıs Web sitesinde [](luis-reference-regions.md) oturum açın ve hesap ayarları ' nda [yazma anahtarınızı](luis-concept-keys.md#authoring-key) bulun. Yazma API'leri çağırmak için bu anahtarı kullanırsınız.
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 * Bu öğretici, kullanıcı isteklerinin kuramsal bir şirketin günlük dosyaları için bir CSV ile başlar. İndirdiği [burada](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv).
 * NPM ile en son Node.js yükleyin. İndirdiği [burada](https://nodejs.org/en/download/).
 * **[Önerilen]**  Visual Studio Code için IntelliSense ve hata ayıklama, buradan indirin [burada](https://code.visualstudio.com/) ücretsiz.
 
+Bu öğreticideki tüm kod, [Azure-Samples Language Understanding GitHub deposunda](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/examples/build-app-programmatically-csv)bulunur. 
+
 ## <a name="map-preexisting-data-to-intents-and-entities"></a>Amaç ve varlıkları için önceden var olan veri eşlemesi
 Haritalar farklı şeyler kullanıcılara yapmak istediğiniz metin veri içeriyorsa, LUIS göz önünde bulundurun oluşturulmadıysa bir sistemde sahip olsanız bile, kullanıcı giriş LUIS içinde hedefleri için mevcut kategorilerden eşlemesi ile gündeme olabilir. Önemli bir sözcük ve tümcecikleri içinde hangi kullanıcıların kabul belirleyebiliyorsanız, bu sözcükler varlıklarına eşleyebilir.
 
-`IoT.csv` dosyasını açın. Bu, kullanıcı sorgularının bir kuramsal ev Otomasyonu hizmetinde, bunları dışında çekilen yararlı bilgilerle nasıl kategorilere ayrılan, hangi kullanıcı etti ve bazı sütunlar gibi günlük içerir. 
+[`IoT.csv`](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv) Dosyasını açın. Bu, kullanıcı sorgularının bir kuramsal ev Otomasyonu hizmetinde, bunları dışında çekilen yararlı bilgilerle nasıl kategorilere ayrılan, hangi kullanıcı etti ve bazı sütunlar gibi günlük içerir. 
 
 ![Önceden mevcut olan verileri CSV dosyası](./media/luis-tutorial-node-import-utterances-csv/csv.png) 
 
 Gördüğünüz **RequestType** sütun amacı, olabilir ve **istek** sütun örnek utterance gösterir. Utterance içinde oluşursa diğer alanları varlıkları olabilir. Amacı, varlıkları ve örnek konuşma olduğundan, basit bir örnek uygulama için gereksinimleri vardır.
 
 ## <a name="steps-to-generate-a-luis-app-from-non-luis-data"></a>LUIS olmayan verilerden bir LUIS uygulaması oluşturmak için adımları
-Kaynak dosyasından yeni bir LUIS uygulaması oluşturmak için ilk, CSV dosyasındaki verileri ayrıştırılamadı ve bu veriler için LUIS yazma API kullanarak karşıya yüklediğiniz bir biçimine dönüştürün. Ayrıştırılmış verilerden ne amaç ve varlıkları vardır bilgi toplayabilir. Ardından, uygulamayı oluşturmak için API çağrıları yapabilir ve hedefleri ve toplanan verileri ayrıştırılmış varlıklar ekleyin. LUIS uygulaması oluşturduktan sonra örnek konuşma ayrıştırılmış verileri ekleyebilirsiniz. Bu akış aşağıdaki kodun son bölümünde görebilirsiniz. Kopyalama veya [indirme](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/index.js) Bu kod ve kaydedin `index.js`.
+CSV dosyasından yeni bir LUO uygulaması oluşturmak için:
+
+* CSV dosyasından verileri ayrıştırın:
+    * Yazma API 'sini kullanarak LUYA indirebileceğiniz bir biçime dönüştürün. 
+    * Ayrıştırılmış verilerden, amaçlar ve varlıklar hakkında bilgi toplayın. 
+* Yazma API 'SI çağrıları yapın:
+    * Uygulamayı oluşturun.
+    * Ayrıştırılmış verilerden toplanan amaçları ve varlıkları ekleyin. 
+    * LUIS uygulaması oluşturduktan sonra örnek konuşma ayrıştırılmış verileri ekleyebilirsiniz. 
+
+Bu programın, `index.js` dosyanın son bölümünde akışını görebilirsiniz. Kopyalama veya [indirme](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/index.js) Bu kod ve kaydedin `index.js`.
 
    [!code-javascript[Node.js code for calling the steps to build a LUIS app](~/samples-luis/examples/build-app-programmatically-csv/index.js)]
 
@@ -119,7 +131,7 @@ Bu uygulamayı kullanmak için kendi uç noktası anahtarı için değerler inde
 
 ```javascript
 // Change these values
-const LUIS_programmaticKey = "YOUR_PROGRAMMATIC_KEY";
+const LUIS_programmaticKey = "YOUR_AUTHORING_KEY";
 const LUIS_appName = "Sample App";
 const LUIS_appCulture = "en-us"; 
 const LUIS_versionId = "0.1";
@@ -167,7 +179,7 @@ upload done
 
 
 ## <a name="open-the-luis-app"></a>LUIS uygulaması açın
-Betik tamamlandıktan sonra üzerinde oturum açabildiğinizden [LUIS](luis-reference-regions.md) ve altında oluşturduğunuz LUIS uygulaması **uygulamalarım**. Eklediğiniz altında konuşma görmeye olmalıdır **Sok**, **kapatma**, ve **hiçbiri** amacı.
+Betik tamamlandıktan sonra, Lusıs 'de oturum açabilir ve [](luis-reference-regions.md) **UYGULAMALARıM**altında oluşturduğunuz Luo uygulamasını görebilirsiniz. Eklediğiniz altında konuşma görmeye olmalıdır **Sok**, **kapatma**, ve **hiçbiri** amacı.
 
 ![Sok hedefi](./media/luis-tutorial-node-import-utterances-csv/imported-utterances-661.png)
 

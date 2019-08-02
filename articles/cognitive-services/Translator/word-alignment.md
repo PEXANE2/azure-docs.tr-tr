@@ -1,6 +1,6 @@
 ---
 title: Word hizalama - Translator metin çevirisi API'si
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Translator metin çevirisi API'si Word hizalama bilgiler alır.
 services: cognitive-services
 author: swmachan
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
 ms.custom: seodec18
-ms.openlocfilehash: 3db5e9651e307211e9dccee20bb8d69586bb9ef1
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 5818d3f4d2ebed7cbcd46aadf538640914d3b7d4
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448155"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68594788"
 ---
 # <a name="how-to-receive-word-alignment-information"></a>Word hizalama bilgi alma
 
@@ -26,9 +26,9 @@ Hizalama bilgileri almak için çeviri yöntemini kullanın ve isteğe bağlı i
 ## <a name="alignment-information-format"></a>Hizalama bilgileri biçimi
 Hizalama, her bir sözcüğün kaynağı için aşağıdaki biçimde bir dize değeri olarak döndürülür. Her sözcüğün bilgilerini boşluk ayrılmış (betik) gibi dillerin Çince dahil olmak üzere, bir boşluk ile ayrılır:
 
-[[SourceTextStartIndex]:[SourceTextEndIndex]-[TgtTextStartIndex]:[TgtTextEndIndex]] *
+[[SourceTextStartIndex]:\[SourceTextEndIndex]-[TgtTextStartIndex]:[TgtTextEndIndex]] *
 
-Örnek hizalama dizesi: "0:0-7:10 1:2-11:20 3:4-0:3 3:4-4:6 5:5-21:21".
+Örnek Hizalama dizesi: "0:0-7:10 1:2-11:20 3:4-0:3 3:4-4:6 5:5-21:21".
 
 Diğer bir deyişle, iki nokta üst üste başlangıç ayırır ve dilleri uç dizini, dash ayırır ve sözcükler alanı ayırır. Bir sözcük ile sıfır, bir veya birden çok sözcük başka bir dil yeteri kadar ve hizalanmış sözcükleri bitişik olmayan olabilir. Hizalama bilgi kullanılabilir duruma geldiğinde hizalama öğesi boş olur. Yöntemi, bu durumda hata döndürür.
 

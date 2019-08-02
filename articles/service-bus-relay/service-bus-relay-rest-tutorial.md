@@ -1,6 +1,6 @@
 ---
-title: Azure Geçişi'ni kullanarak REST Öğreticisi | Microsoft Docs
-description: REST tabanlı bir arabirimi kullanıma sunan basit bir Azure Service Bus geçişi ana bilgisayar uygulaması oluşturun.
+title: Azure Relay kullanarak REST öğreticisi | Microsoft Docs
+description: REST tabanlı bir arabirim sunan basit bir Azure Service Bus geçişi konak uygulaması oluşturun.
 services: service-bus-relay
 documentationcenter: na
 author: spelluru
@@ -14,26 +14,26 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/06/2018
 ms.author: spelluru
-ms.openlocfilehash: 4ed45e1ed18ad630831772997b1fc150882731bd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4e988724f842ff12cd599eba95c31006fe208fad
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62123408"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68422897"
 ---
-# <a name="azure-wcf-relay-rest-tutorial"></a>Azure WCF geçişi REST Öğreticisi
-Bu öğretici, REST tabanlı bir arabirimi kullanıma sunan basit bir Azure geçişi ana bilgisayar uygulaması derlemeyi açıklar. REST, HTTP istekleri üzerinden Service Bus API'lerine erişmek için web tarayıcısı gibi bir web istemcisi sunar.
+# <a name="azure-wcf-relay-rest-tutorial"></a>Azure WCF Geçişi REST öğreticisi
+Bu öğreticide, REST tabanlı arabirimi kullanıma sunan basit bir Azure Relay ana bilgisayar uygulamasının nasıl oluşturulacağı açıklanmaktadır. REST, HTTP istekleri üzerinden Service Bus API'lerine erişmek için web tarayıcısı gibi bir web istemcisi sunar.
 
-Bu öğreticide, Azure geçişi üzerinde bir REST hizmeti oluşturmak için programlama modeli Windows Communication Foundation (WCF) REST kullanılır. Daha fazla bilgi için WCF belgelerinde [WCF REST Programlama Modeli](/dotnet/framework/wcf/feature-details/wcf-web-http-programming-model) ve [Hizmetleri Tasarlama ve Uygulama](/dotnet/framework/wcf/designing-and-implementing-services) konularına bakın.
+Öğretici, Azure Relay bir REST hizmeti oluşturmak için Windows Communication Foundation (WCF) REST programlama modelini kullanır. Daha fazla bilgi için WCF belgelerinde [WCF REST Programlama Modeli](/dotnet/framework/wcf/feature-details/wcf-web-http-programming-model) ve [Hizmetleri Tasarlama ve Uygulama](/dotnet/framework/wcf/designing-and-implementing-services) konularına bakın.
 
-Bu öğreticide aşağıdaki adımları uygulayın:
+Bu öğreticide aşağıdaki adımları izleyebilirsiniz:
 
 > [!div class="checklist"]
-> * Bir geçiş ad alanı oluşturun.
-> * REST tabanlı WCF hizmet sözleşmesini tanımlama
-> * REST tabanlı WCF sözleşmesi uygulama
-> * REST tabanlı WCF Hizmeti barındırma ve çalıştırma
-> * Çalıştırma ve test etme hizmeti
+> * Geçiş ad alanı oluşturun.
+> * REST tabanlı bir WCF hizmet sözleşmesi tanımlama
+> * REST tabanlı WCF sözleşmesini uygulama
+> * REST tabanlı WCF hizmetini barındırma ve çalıştırma
+> * Hizmeti çalıştırma ve test etme
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -41,19 +41,19 @@ Bu öğreticiyi tamamlamak için aşağıdaki önkoşulları karşılamanız ger
 
 - Azure aboneliği. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 - [Visual Studio 2015 veya üzeri](https://www.visualstudio.com). Bu öğreticideki örneklerde Visual Studio 2017 kullanılmaktadır.
-- .NET için Azure SDK. Buradan yükleyin [SDK indirme sayfasını](https://azure.microsoft.com/downloads/).
+- .NET için Azure SDK. [SDK İndirmeleri sayfasından](https://azure.microsoft.com/downloads/)bu uygulamayı yükler.
 
-## <a name="create-a-relay-namespace"></a>Bir geçiş ad alanı oluşturma
+## <a name="create-a-relay-namespace"></a>Geçiş ad alanı oluşturma
 
 Azure'da geçiş özelliklerini kullanmaya başlamak için öncelikle bir hizmet ad alanı oluşturmanız gerekir. Ad alanı, uygulamanızda bulunan Azure kaynaklarını adreslemek için içeriğin kapsamını belirleyen bir kapsayıcı sunar. [Buradaki yönergeleri](relay-create-namespace-portal.md) izleyerek bir Geçiş ad alanı oluşturun.
 
-## <a name="define-a-rest-based-wcf-service-contract-to-use-with-azure-relay"></a>Azure geçişi ile kullanmak için REST tabanlı WCF hizmet sözleşmesini tanımlama
+## <a name="define-a-rest-based-wcf-service-contract-to-use-with-azure-relay"></a>Azure Relay ile kullanılacak REST tabanlı bir WCF hizmet sözleşmesi tanımlayın
 
-WCF REST stilinde bir hizmet oluşturduğunuzda sözleşme tanımlamanız gerekir. Sözleşmede ana bilgisayarın hangi işlemleri desteklediği belirtilir. Bir hizmet işlemi, web hizmeti yöntemi olarak düşünülebilir. Sözleşmeler; C++, C# veya Visual Basic arabirimi tanımlamasıyla oluşturulur. Arabirimdeki her yöntem belirli bir hizmet işlemine karşılık gelir. [ServiceContractAttribute](/dotnet/api/system.servicemodel.servicecontractattribute) özniteliğinin her arabirime ve [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute) özniteliğinin her işleme uygulanması gerekir. Arabirimdeki bir yöntem [ServiceContractAttribute](/dotnet/api/system.servicemodel.servicecontractattribute) özniteliğine sahip olup [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute) özniteliğine sahip olmazsa bu yöntem kullanıma sunulmaz. Bu görevler için kullanılan kod, aşağıdaki yordamın altındaki örnekte gösterilir.
+Bir WCF REST stili hizmeti oluşturduğunuzda, sözleşmeyi tanımlamanız gerekir. Sözleşmede ana bilgisayarın hangi işlemleri desteklediği belirtilir. Bir hizmet işlemi, web hizmeti yöntemi olarak düşünülebilir. Sözleşmeler; C++, C# veya Visual Basic arabirimi tanımlamasıyla oluşturulur. Arabirimdeki her yöntem belirli bir hizmet işlemine karşılık gelir. [ServiceContractAttribute](/dotnet/api/system.servicemodel.servicecontractattribute) özniteliğinin her arabirime ve [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute) özniteliğinin her işleme uygulanması gerekir. Arabirimdeki bir yöntem [ServiceContractAttribute](/dotnet/api/system.servicemodel.servicecontractattribute) özniteliğine sahip olup [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute) özniteliğine sahip olmazsa bu yöntem kullanıma sunulmaz. Bu görevler için kullanılan kod, aşağıdaki yordamın altındaki örnekte gösterilir.
 
-Bir WCF sözleşmesi ve REST stili sözleşmesi arasındaki birincil fark özellik ektir [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute): [WebGetAttribute](/dotnet/api/system.servicemodel.web.webgetattribute). Bu özellik sayesinde arabiriminizdeki bir yöntem ile arabirimin diğer tarafındaki bir yöntemi eşleyebilirsiniz. Bu örnekte [WebGetAttribute](/dotnet/api/system.servicemodel.web.webgetattribute) HTTP GET isteğine bir yöntemi bağlamak için özniteliği. Bu, Service Bus'ın doğru şekilde almak ve arabirime gönderilen komutları yorumlamasını sağlar.
+Bir WCF sözleşmesi ile REST stili sözleşme arasındaki birincil fark, [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute)öğesine bir özelliğin eklenmesinin bir özelliğidir: [WebGetAttribute](/dotnet/api/system.servicemodel.web.webgetattribute). Bu özellik sayesinde arabiriminizdeki bir yöntem ile arabirimin diğer tarafındaki bir yöntemi eşleyebilirsiniz. Bu örnek, bir yöntemi HTTP GET 'e bağlamak için [WebGetAttribute](/dotnet/api/system.servicemodel.web.webgetattribute) özniteliğini kullanır. Bu, Service Bus arabirime gönderilen komutları doğru bir şekilde almasını ve yorumlamasını sağlar.
 
-### <a name="to-create-a-contract-with-an-interface"></a>Bir arabirim ile bir sözleşme oluşturmak için
+### <a name="to-create-a-contract-with-an-interface"></a>Arabirim içeren bir sözleşme oluşturmak için
 
 1. Visual Studio'yu yönetici olarak açın: **Başlangıç** menüsünde programa sağ tıklayıp **Yönetici olarak çalıştır**'a tıklayın.
 2. Yeni bir konsol uygulama projesi oluşturun. **Dosya** menüsüne tıklayın ve **Yeni** seçeneğini belirleyip **Proje** seçimini yapın. **Yeni Proje** iletişim kutusunda **Visual C#** seçeneğine tıklayıp **Konsol Uygulaması** şablonuna tıklayın ve **ImageListener** olarak adlandırın. Varsayılan **Konum**'u kullanın. Projeyi oluşturmak için **Tamam**'a tıklayın.
@@ -73,7 +73,7 @@ Bir WCF sözleşmesi ve REST stili sözleşmesi arasındaki birincil fark özell
     using System.IO;
     ```
    
-    [System.ServiceModel](/dotnet/api/system.servicemodel), WCF'nin temel özelliklerine programlama erişimi sağlayan ad alanıdır. WCF geçişi birçok nesnesini ve özniteliklerini WCF hizmet sözleşmelerini tanımlamak için kullanır. Geçiş uygulamalarınızın çoğunda bu ad alanı kullanırsınız. Benzer şekilde, [System.ServiceModel.Channels](/dotnet/api/system.servicemodel.channels) yardımcı iletişim Azure geçişi ve istemci web tarayıcısı ile nesne olan kanalı tanımlayın. Son olarak [System.ServiceModel.Web](/dotnet/api/system.servicemodel.web), web tabanlı uygulamalar oluşturmanıza olanak sağlayan türleri içerir.
+    [System.ServiceModel](/dotnet/api/system.servicemodel), WCF'nin temel özelliklerine programlama erişimi sağlayan ad alanıdır. WCF Geçişi, hizmet sözleşmelerini tanımlamak için WCF 'nin birçok nesnesini ve özniteliğini kullanır. Bu ad alanını geçiş uygulamalarınızın çoğunda kullanırsınız. Benzer şekilde, [System. ServiceModel. Channels](/dotnet/api/system.servicemodel.channels) , Azure Relay ve istemci Web tarayıcısı ile iletişim kurduğunuz nesne olan kanalı tanımlamaya yardımcı olur. Son olarak [System.ServiceModel.Web](/dotnet/api/system.servicemodel.web), web tabanlı uygulamalar oluşturmanıza olanak sağlayan türleri içerir.
 7. `ImageListener` ad alanını **Microsoft.ServiceBus.Samples** olarak yeniden adlandırın.
    
     ```csharp
@@ -108,18 +108,18 @@ Bir WCF sözleşmesi ve REST stili sözleşmesi arasındaki birincil fark özell
     }
     ```
     
-    Bunu etkinleştirir alan geçiş hizmetine HTTP GET istekleri yapan `GetImage`ve dönüş değerlerini çevrilecek `GetImage` HTTP GetResponse YANITINA çevirmesine içine. Bu öğreticinin sonraki bölümlerinde, bu yönteme erişmek ve tarayıcıdaki görüntüyü görüntülemek için bir web tarayıcısı kullanacaksınız.
+    Bunun yapılması, geçiş hizmetinin http get isteklerini uygulamasına `GetImage`yönlendirmesine ve dönüş `GetImage` değerlerini bir http GetResponse yanıtına çevirebilmesine olanak sağlar. Bu öğreticinin sonraki bölümlerinde, bu yönteme erişmek ve tarayıcıdaki görüntüyü görüntülemek için bir web tarayıcısı kullanacaksınız.
 11. `IImageContract` tanımından hemen sonra, `IImageContract` ve `IClientChannel` arabirimlerinden devralma işlemini gerçekleştiren bir kanal bildirin.
     
     ```csharp
     public interface IImageChannel : IImageContract, IClientChannel { }
     ```
     
-    Kanal, hizmet ve istemcilerin bilgileri birbirlerine göndermek için kullandıkları WCF nesnesidir. Daha sonra ana bilgisayar uygulamanızda kanal oluşturun. Azure geçişi ardından kullanır bu kanalı HTTP GET isteklerini tarayıcıya geçirmek için **Getımage** uygulaması. Geçiş kanalı almak için de kullanır **Getımage** dönüş değeri ve istemci tarayıcısı için HTTP GetResponse çevir.
+    Kanal, hizmet ve istemcilerin bilgileri birbirlerine göndermek için kullandıkları WCF nesnesidir. Daha sonra, kanalı ana uygulamanızda oluşturursunuz. Azure Relay daha sonra bu kanalı kullanarak HTTP GET isteklerini tarayıcıdan **GetImage** uygulamanıza geçirebilirsiniz. Geçiş Ayrıca, **GetImage** dönüş değerini alıp istemci tarayıcısı IÇIN BIR http GetResponse 'a çevirecek kanalı kullanır.
 12. Çalışmanızın o ana kadarki doğruluğunu onaylamak için **Derle** menüsünde **Çözümü Derle**'ye tıklayın.
 
 ### <a name="example"></a>Örnek
-Aşağıdaki kod, bir WCF geçişi sözleşmesini tanımlayan temel bir arabirimi gösterir.
+Aşağıdaki kod, WCF Geçişi bir sözleşmeyi tanımlayan temel bir arabirimi gösterir.
 
 ```csharp
 using System;
@@ -153,9 +153,9 @@ namespace Microsoft.ServiceBus.Samples
 ```
 
 ## <a name="implement-the-rest-based-wcf-service-contract"></a>REST tabanlı WCF hizmet sözleşmesini uygulama
-REST stilinde WCF geçişi hizmetini oluşturmak için öncelikle bir arabirim kullanılarak tanımlanan sözleşmeyi oluşturmanız gerekir. Bir sonraki adım ise bu arabirimi uygulamaktır. Bu adımda kullanıcı tanımlı **IImageContract** arabirimini uygulayan **ImageService** adlı bir sınıf oluşturursunuz. Sözleşmeyi uyguladıktan sonra, App.config dosyası kullanarak arabirimi yapılandırırsınız. Yapılandırma dosyasında hizmetin adı, sözleşmeyi ve geçiş hizmeti ile iletişim kurmak için kullanılan protokol türü adı gibi bir uygulama için gerekli bilgileri içerir. Bu görevler için kullanılan kod, aşağıdaki yordamın altındaki örnekte sağlanır.
+REST stili WCF Geçişi bir hizmet oluşturmak için öncelikle bir arabirim kullanılarak tanımlanan sözleşmeyi oluşturmanız gerekir. Bir sonraki adım ise bu arabirimi uygulamaktır. Bu adımda kullanıcı tanımlı **IImageContract** arabirimini uygulayan **ImageService** adlı bir sınıf oluşturursunuz. Sözleşmeyi uyguladıktan sonra, App.config dosyası kullanarak arabirimi yapılandırırsınız. Yapılandırma dosyası, uygulama için hizmetin adı, sözleşmenin adı ve geçiş hizmeti ile iletişim kurmak için kullanılan protokol türü gibi gerekli bilgileri içerir. Bu görevler için kullanılan kod, aşağıdaki yordamın altındaki örnekte sağlanır.
 
-Önceki adımlarda olduğu gibi bir REST stilinde sözleşme ve bir WCF geçişi sözleşmesi uygulama arasında çok az bir fark yoktur.
+Önceki adımlarda olduğu gibi, REST stili bir sözleşme ve WCF Geçişi sözleşmesi uygulama arasında çok az fark vardır.
 
 ### <a name="to-implement-a-rest-style-service-bus-contract"></a>REST stilinde Service Bus sözleşmesini uygulama
 1. **IImageContract** arabiriminin tanımından hemen sonra **ImageService** adlı yeni bir sınıf oluşturun. **ImageService** sınıfı, **IImageContract** arabirimini uygular.
@@ -175,12 +175,12 @@ REST stilinde WCF geçişi hizmetini oluşturmak için öncelikle bir arabirim k
     }
     ```
    
-    Önceden belirtildiği gibi bu ad alanı, geleneksel bir ad alanı değildir. Bunun yerine, ad alanı sözleşmeyi tanımlayan WCF mimarisinin bir parçasıdır. Daha fazla bilgi için [veri sözleşmesi adları](https://msdn.microsoft.com/library/ms731045.aspx) makale için WCF belgelerinde bulunan.
+    Önceden belirtildiği gibi bu ad alanı, geleneksel bir ad alanı değildir. Bunun yerine, ad alanı sözleşmeyi tanımlayan WCF mimarisinin bir parçasıdır. Daha fazla bilgi için WCF belgelerindeki [veri sözleşmesi adları](https://msdn.microsoft.com/library/ms731045.aspx) makalesine bakın.
 3. Projenize bir .jpg görüntüsü ekleyin.  
    
     Bu resim, hizmetin alıcı tarayıcıda gösterdiği resimdir. Projenize sağ tıklayın ve ardından **Ekle**'ye tıklayın. Ardından **Var Olan Öğe**'ye tıklayın. Uygun bir .jpg aramak için **Var Olan Öğeyi Ekle** iletişim kutusunu kullanın ve **Ekle**'ye tıklayın.
    
-    Dosya eklerken **Dosya adı:** alanının yanındaki açılır listede **Tüm Dosyalar** seçeneğinin belirlendiğinden emin olun. Bu öğreticinin bundan sonraki bölümlerinde görüntü adının "image.jpg" olduğu varsayılır. Farklı bir dosyanız varsa görüntüyü tekrar adlandırmanız veya dengelemek için kodunu değiştirmeniz gerekir.
+    Dosya eklerken **Dosya adı:** alanının yanındaki açılır listede **Tüm Dosyalar** seçeneğinin belirlendiğinden emin olun. Bu öğreticinin bundan sonraki bölümlerinde görüntü adının "image.jpg" olduğu varsayılır. Farklı bir dosyanız varsa, görüntüyü yeniden adlandırmanız veya kodunuzu telafi olarak değiştirmeniz gerekir.
 4. Çalışan hizmetin görüntü dosyasını bulabileceğinden emin olmak için **Çözüm Gezgini**'nde görüntü dosyasına sağ tıklayın ve **Özellikler**'e tıklayın. **Özellikler** bölmesinde, **Çıktı Dizinine Kopyala** seçeneğini **Daha yeniyse kopyala** olarak ayarlayın.
 5. Projede **System.Drawing.dll** derlemesine başvuru ekleyin ve aşağıdaki ilişkili `using` deyimlerini ekleyin.  
    
@@ -226,7 +226,7 @@ REST stilinde WCF geçişi hizmetini oluşturmak için öncelikle bir arabirim k
 ### <a name="to-define-the-configuration-for-running-the-web-service-on-service-bus"></a>Service Bus üzerinde web hizmetini çalıştırmak için yapılandırma tanımlama
 1. **Çözüm Gezgini**'nde, **App.config** dosyasına çift tıklayarak dosyayı Visual Studio düzenleyicisinde açın.
    
-    **App.config** dosya içeren hizmet adını, uç noktayı (diğer bir deyişle, istemcilerin ve ana bilgisayarların birbirleriyle iletişim kurmak Azure geçişi sunulan konum) ve bağlamayı (iletişim kurmak için kullanılan protokol türü). Ana fark burada yapılandırılan hizmet uç noktasının ise bir [WebHttpRelayBinding](/dotnet/api/microsoft.servicebus.webhttprelaybinding) bağlama.
+    **App. config** dosyası hizmet adını, uç noktayı (diğer bir deyişle, istemci ve ana bilgisayarların birbirleriyle iletişim kurması için Azure Relay) ve bağlamayı (iletişim kurmak için kullanılan protokol türü) içerir. Buradaki temel fark, yapılandırılmış hizmet uç noktasının bir [WebHttpRelayBinding](/dotnet/api/microsoft.servicebus.webhttprelaybinding) bağlamasını ifade ettiği bir noktadır.
 2. `<system.serviceModel>` XML öğesi, bir veya birden çok hizmeti tanımlayan WCF öğesidir. Burada ise hizmet adını ve uç noktayı tanımlamak için kullanılır. `<system.serviceModel>` öğesinin alt kısmına (ancak hala `<system.serviceModel>` içinde) aşağıdaki içeriğe sahip olan `<bindings>` öğesini ekleyin. Bu işlem, uygulamada kullanılan bağlamaları tanımlar. Birden çok bağlama tanımlayabilirsiniz ancak bu öğreticide yalnızca bir tane tanımlayacaksınız.
    
     ```xml
@@ -240,7 +240,7 @@ REST stilinde WCF geçişi hizmetini oluşturmak için öncelikle bir arabirim k
     </bindings>
     ```
    
-    WCF geçişi önceki kodu tanımlar [WebHttpRelayBinding](/dotnet/api/microsoft.servicebus.webhttprelaybinding) ile bağlama **öğesinin** kümesine **hiçbiri**. Bu ayar, yukarıdaki bağlamayı kullanan bir uç noktanın istemci kimlik bilgilerini gerektirmeyeceğini belirtir.
+    Önceki kod, **relayClientAuthenticationType** kümesi **none**olarak ayarlanmış bir [webhttprelaybinding](/dotnet/api/microsoft.servicebus.webhttprelaybinding) bağlaması WCF geçişi tanımlar. Bu ayar, yukarıdaki bağlamayı kullanan bir uç noktanın istemci kimlik bilgilerini gerektirmeyeceğini belirtir.
 3. `<bindings>` öğesinden sonra `<services>` öğesini ekleyin. Bağlamalara benzer şekilde tek bir yapılandırma dosyasında birden çok hizmet tanımlayabilirsiniz. Ancak bu öğreticide yalnızca bir tane tanımlayacaksınız.
    
     ```xml
@@ -259,7 +259,7 @@ REST stilinde WCF geçişi hizmetini oluşturmak için öncelikle bir arabirim k
     ```
    
     Bu adımda, önceden tanımlanan varsayılan **webHttpRelayBinding** bağlamasını kullanan bir hizmet yapılandırılır. Ayrıca, bir sonraki adımda tanımlanan varsayılan **sbTokenProvider** öğesi kullanılır.
-4. Sonra `<services>` öğesi oluşturmak bir `<behaviors>` "SAS_KEY" ile değiştirerek aşağıdaki içeriğe sahip öğe *paylaşılan erişim imzası* (SAS) anahtarı, elde ettiğiniz [Azureportalı] [Azure portal].
+4. Öğesinden sonra, aşağıdaki içeriğe sahip `<behaviors>` bir öğe oluşturun ve "SAS_KEY" öğesini daha önce Azure Portal edindiğiniz *paylaşılan erişim imzası* (SAS) anahtarıyla değiştirin. [][Azure portal] `<services>`
    
     ```xml
     <behaviors>
@@ -446,11 +446,11 @@ Aşağıdaki örnek, hizmetle ilişkilendirilen App.config dosyasını gösterir
 </configuration>
 ```
 
-## <a name="host-the-rest-based-wcf-service-to-use-azure-relay"></a>Azure Geçişi'ni kullanmak için REST tabanlı WCF Hizmeti barındırma
-Bu adımda, WCF geçişi ile bir konsol uygulaması kullanarak bir web hizmetinin nasıl çalıştırılacağı açıklanır. Bu adımda yazılan kodların tam listesi yordamdan sonraki örnekte verilmiştir.
+## <a name="host-the-rest-based-wcf-service-to-use-azure-relay"></a>Azure Relay kullanmak için REST tabanlı WCF hizmetini barındırın
+Bu adım WCF Geçişi bir konsol uygulaması kullanarak bir Web hizmetinin nasıl çalıştırılacağını açıklar. Bu adımda yazılan kodların tam listesi yordamdan sonraki örnekte verilmiştir.
 
 ### <a name="to-create-a-base-address-for-the-service"></a>Hizmet için taban adresi oluşturma
-1. İçinde `Main()` işlevi bildiriminde, projenizin ad depolamak için bir değişken oluşturun. Değiştirdiğinizden emin olun `yourNamespace` daha önce oluşturduğunuz bir geçiş ad alanı adı.
+1. `Main()` İşlev bildiriminde, projenizin ad alanını depolamak için bir değişken oluşturun. ' İ daha önce `yourNamespace` oluşturduğunuz geçiş ad alanı adıyla değiştirdiğinizden emin olun.
    
     ```csharp
     string serviceNamespace = "yourNamespace";
@@ -567,7 +567,7 @@ namespace Microsoft.ServiceBus.Samples
 }
 ```
 
-## <a name="run-and-test-the-service"></a>Çalıştırma ve test etme hizmeti
+## <a name="run-and-test-the-service"></a>Hizmeti çalıştırma ve test etme
 Çözümü derledikten sonra uygulamayı çalıştırmak için şunları yapın:
 
 1. Hizmeti çalıştırmak için **F5**'e basın veya yürütülebilir dosya konumuna gözatın (ImageListener\bin\Debug\ImageListener.exe). Uygulamayı çalışır durumda tutmak için bir sonraki adımı gerçekleştirmeniz gerekir.
@@ -575,9 +575,9 @@ namespace Microsoft.ServiceBus.Samples
 3. İşiniz bittiğinde uygulamayı kapatmak için komut istemi penceresinde **Enter**'a basın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure geçişi hizmetini kullanan bir uygulama oluşturduğunuza göre daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
+Artık Azure Relay hizmetini kullanan bir uygulama oluşturduğunuza göre, daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
 * [Azure Geçiş’e genel bakış](relay-what-is-it.md)
-* [.NET ile WCF geçişi hizmetini kullanma](relay-wcf-dotnet-get-started.md)
+* [.NET ile WCF Relay hizmetini kullanma](service-bus-relay-tutorial.md)
 
 [Azure portal]: https://portal.azure.com

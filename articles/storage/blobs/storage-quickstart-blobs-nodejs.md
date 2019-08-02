@@ -1,37 +1,35 @@
 ---
-title: Node.js v2 için istemci kitaplığını kullanarak Azure Depolama'daki bir blob oluşturma
-description: Nesne (Blob) depolamada depolama hesabı ve kapsayıcı oluşturun. Ardından Azure Depolama'ya blob yüklemek, blob indirmek ve bir kapsayıcıdaki blobları listelemek için Node.js v2 için Azure depolama istemcisi kitaplığını kullanın.
-services: storage
+title: Node. js v2 için istemci kitaplığını kullanarak Azure depolama 'da blob oluşturma
+description: Nesne (Blob) depolamada depolama hesabı ve kapsayıcı oluşturun. Ardından, Azure depolama 'ya blob yüklemek, blob indirmek ve bir kapsayıcıdaki Blobları listelemek için Node. js v2 için Azure Storage istemci kitaplığı 'nı kullanın.
 author: mhopkins-msft
-ms.custom: mvc
-ms.service: storage
-ms.topic: conceptual
-ms.date: 02/04/2019
 ms.author: mhopkins
-ms.reviewer: seguler
-ms.openlocfilehash: 7ca1eacd1add7453833b4b9ad1d4bd0fbef13ca7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 02/04/2019
+ms.service: storage
+ms.subservice: blobs
+ms.topic: conceptual
+ms.openlocfilehash: 89dbd6cc9a03398427b157fa207adb898d3bfc56
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65149429"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68721962"
 ---
-# <a name="how-to-upload-download-and-list-blobs-using-the-client-library-for-nodejs-v2"></a>Karşıya yükleme, indirme ve Node.js v2 için istemci kitaplığını kullanarak blobları Listele
+# <a name="how-to-upload-download-and-list-blobs-using-the-client-library-for-nodejs-v2"></a>Node. js v2 için istemci kitaplığını kullanarak Blobları karşıya yükleme, indirme ve listeleme
 
-Bu nasıl yapılır kılavuzunda, karşıya yükleme, indirme ve Azure Blob Depolama ile blobları listeleme Node.js v2 için istemci kitaplığını kullanmayı öğrenin.
+Bu nasıl yapılır kılavuzunda, Azure Blob depolama ile Blobları karşıya yüklemek, indirmek ve listelemek için Node. js v2 için istemci kitaplığı 'nı nasıl kullanacağınızı öğreneceksiniz.
 
 > [!TIP]
-> Node.js için Azure depolama istemci Kitaplığı'nın en son sürümü v10 ' dir. Microsoft, mümkün olduğunda istemci Kitaplığı'nın en son sürümünü kullanmanızı önerir. V10 kullanmaya başlamak için bkz: [hızlı başlangıç: Yükleme, indirme, liste ve JavaScript v10 için Azure depolama istemci kitaplığı kullanarak blobları silme (Önizleme)](storage-quickstart-blobs-nodejs-v10.md).
+> Node. js için Azure Storage istemci kitaplığı 'nın en son sürümü ile v10 arasındaki 'dir. Microsoft, mümkün olduğunda istemci kitaplığı 'nın en son sürümünü kullanmanızı önerir. İle v10 arasındaki kullanmaya başlamak için bkz [. hızlı başlangıç: JavaScript ile v10 arasındaki için Azure Storage istemci kitaplığı 'nı kullanarak Blobları karşıya yükleyin, indirin, listeleyin ve silin (](storage-quickstart-blobs-nodejs-v10.md)Önizleme).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-Bir Azure depolama hesabı oluşturun [Azure portalında](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM). Hesap oluşturmayla ilgili yardım için bkz. [Depolama hesabı oluşturma](../common/storage-quickstart-create-account.md).
+[Azure Portal](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM)bir Azure depolama hesabı oluşturun. Hesap oluşturmayla ilgili yardım için bkz. [Depolama hesabı oluşturma](../common/storage-quickstart-create-account.md).
 
 ## <a name="download-the-sample-application"></a>Örnek uygulamayı indirin:
 
-[Örnek uygulama](https://github.com/Azure-Samples/storage-blobs-node-quickstart.git) basit bir Node.js konsol uygulamasıdır. Başlamak için, aşağıdaki komutu kullanarak depoyu makinenize kopyalayın:
+[Örnek uygulama](https://github.com/Azure-Samples/storage-blobs-node-quickstart.git) basit bir Node. js konsol uygulamasıdır. Başlamak için, aşağıdaki komutu kullanarak depoyu makinenize kopyalayın:
 
 ```bash
 git clone https://github.com/Azure-Samples/storage-blobs-node-quickstart.git
@@ -78,7 +76,7 @@ Container "demo" is deleted
 Done
 ```
 
-Bu örnek için yeni bir depolama hesabı kullanarak sonra etiketin altında listelenen herhangi bir kapsayıcı adı göremeyebilirsiniz "*kapsayıcıları*".
+Bu örnek için yeni bir depolama hesabı kullanıyorsanız, "*kapsayıcılar*" etiketi altında listelenen herhangi bir kapsayıcı adı göremeyebilirsiniz.
 
 ## <a name="understanding-the-code"></a>Kodu anlama
 İlk ifade değerleri ortam değişkenlerine yüklemek için kullanılır.
@@ -100,7 +98,7 @@ Modüllerin amacı aşağıdaki gibidir:
 
 *.env* adlı dosya geçerli yürütme bağlamına
 - *path*, blob depolamaya yüklenecek dosyanın mutlak dosya yolunu belirlemek için gereklidir
-- *Azure depolama* olduğu [Azure depolama istemci Kitaplığı](https://docs.microsoft.com/javascript/api/azure-storage) Node.js için Modülü
+- *Azure-Storage* , Node. js Için [Azure depolama istemci kitaplığı](https://docs.microsoft.com/javascript/api/azure-storage) modülüdür
 
 Daha sonra, **blobService** değişkeni Azure Blob hizmetinin yeni bir örneği olarak başlatılır.
 
@@ -359,7 +357,7 @@ Blob depolama ile Node.js geliştirmeye yönelik şu ek kaynaklara bakın:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, yerel bir disk ve Node.js kullanarak Azure Blob Depolama arasında bir dosya karşıya yükleme gösterilmektedir. Blob depolamayla çalışma hakkında daha fazla bilgi edinmek için, GitHub deposuyla devam edin.
+Bu makalede, Node. js kullanarak yerel bir disk ve Azure Blob depolama arasında bir dosya yükleme işleminin nasıl yapılacağı gösterilir. Blob depolamayla çalışma hakkında daha fazla bilgi edinmek için, GitHub deposuyla devam edin.
 
 > [!div class="nextstepaction"]
-> [Microsoft Azure depolama SDK'sı için Node.js ve JavaScript için tarayıcılar](https://github.com/Azure/azure-storage-node)
+> [For Node. js ve tarayıcılar için JavaScript Microsoft Azure Depolama SDK 'Sı](https://github.com/Azure/azure-storage-node)

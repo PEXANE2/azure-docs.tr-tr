@@ -1,6 +1,6 @@
 ---
-title: Abonelik anahtarları
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Abonelik anahtarları-LUSıS
+titleSuffix: Azure Cognitive Services
 description: LUIS, tahmin uç noktası kullanıcı Konuşma ile sorgulama için iki anahtar, modelinizi oluşturmak için ücretsiz geliştirme anahtarı ve tarifeli uç noktası anahtarı kullanır.
 services: cognitive-services
 author: diberry
@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/18/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: feb4622be14b51cfa72c33cda6c2477f799758c6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 69b4a92470b33ab6615eead16be044a88436d64e
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66473579"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619767"
 ---
-# <a name="authoring-and-query-prediction-endpoint-keys-in-luis"></a>LUIS yazma ve sorgu tahmin uç nokta anahtarları
+# <a name="authoring-and-query-prediction-endpoint-keys-in-luis"></a>LUSıS 'de yazma ve sorgu tahmin uç noktası anahtarları
 LUIS, iki anahtar kullanır: [yazma](#programmatic-key) ve [uç nokta](#endpoint-key). LUIS hesabınızı oluşturduğunuzda yazma anahtar sizin için otomatik olarak oluşturulur. LUIS uygulamanızı yayımlamaya hazır olduğunuzda yapmanız [uç nokta oluşturma](luis-how-to-azure-subscription.md), [atayabilirsiniz](luis-how-to-azure-subscription.md) LUIS uygulamanıza ve [ile uç nokta sorgu kullanın](#use-endpoint-key-in-query). 
 
 |Anahtar|Amaç|
@@ -29,11 +29,12 @@ LUIS, iki anahtar kullanır: [yazma](#programmatic-key) ve [uç nokta](#endpoint
 LUIS uygulamaları yazmak önemlidir [bölgeleri](luis-reference-regions.md#publishing-regions) ayrıca istediğiniz yere yayımlayın ve sorgu.
 
 <a name="programmatic-key" ></a>
+
 ## <a name="authoring-key"></a>Anahtar yazma
 
 Bir başlangıç anahtarı olarak da bilinen bir yazma anahtar otomatik olarak bir LUIS hesabı oluşturun ve ücretsiz olarak oluşturulur. Her yazma tüm uygulamalarınızda LUIS bir yazma anahtar sahip [bölge](luis-reference-regions.md). LUIS uygulamanızı yazar veya test uç noktası sorguları yazma anahtar sağlanır. 
 
-Yazma anahtarını bulmak için oturum açın [LUIS](luis-reference-regions.md#luis-website) ve hesap adı açmak için sağ Gezinti çubuğuna tıklayarak **hesap ayarları**.
+Yazma anahtarını bulmak için, Luo 'da oturum [](luis-reference-regions.md#luis-website) açın ve sağ üst gezinti çubuğundaki hesap adına tıklayarak **Hesap ayarlarını**açın.
 
 ![Anahtar yazma](./media/luis-concept-keys/programatic-key.png)
 
@@ -43,11 +44,11 @@ Yapmak istediğinizde **üretim uç noktası sorguları**, Azure'ı oluşturma [
 > Çünkü birkaç uç nokta çağrılarında sağlar kolaylık sağlamak için birçok örnekleri yazma anahtar kullanım kendi [kota](luis-boundaries.md#key-limits).  
 
 ## <a name="endpoint-key"></a>Uç noktası anahtarı
-Gerektiğinde **üretim uç noktası sorguları**, bir Azure kaynağı oluşturma sonra LUIS uygulaması için atama. 
+**Üretim uç noktası sorgularına**ihtiyacınız olduğunda, bir Azure kaynağı oluşturun ve bunu Luo uygulamasına atayın. 
 
 [!INCLUDE [Azure resource creation for Language Understanding and Cognitive Service resources](../../../includes/cognitive-services-luis-azure-resource-instructions.md)]
 
-Azure kaynağı oluşturma işlemi tamamlandığında [tuşu atama](luis-how-to-azure-subscription.md) uygulamaya. 
+Azure kaynak oluşturma işlemi tamamlandığında, [anahtarı uygulamaya atayın](luis-how-to-azure-subscription.md) . 
 
 * Uç nokta, uç noktası isabet anahtarı oluştururken belirttiğiniz kullanım planına dayanarak bir kota sağlar. Bkz: [Bilişsel hizmetler fiyatlandırması](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/?v=17.23h) fiyatlandırma bilgileri için.
 
@@ -78,9 +79,9 @@ Yayımlama bölgeler bölge geliştirme farklıdır. Yazma bölgesi istediğiniz
 ## <a name="key-limit-errors"></a>Anahtar sınırı hataları
 Aşarsanız, ikinci kota bir HTTP 429 hatasını alıyorsunuz. Aşarsanız, aylık kota bir HTTP 403 hatası alırsınız. Bir LUIS alarak bu hataları düzeltin [uç nokta](#endpoint-key) anahtar [atama](luis-how-to-azure-subscription.md) uygulamasında anahtar **Yayımla** sayfasının [LUIS](luis-reference-regions.md#luis-website) Web sitesi.
 
-## <a name="assignment-of-the-endpoint-key"></a>Uç nokta anahtarının atama
+## <a name="assignment-of-the-endpoint-key"></a>Uç nokta anahtarının atanması
 
-Yapabilecekleriniz [atama](luis-how-to-azure-subscription.md) uç noktası anahtarı [LUIS portalı](https://www.luis.ai) veya ilgili API'ler aracılığıyla. 
+Uç nokta anahtarını [LUIS portalında](https://www.luis.ai) veya Ilgili API 'ler aracılığıyla [atayabilirsiniz](luis-how-to-azure-subscription.md) . 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -1,6 +1,6 @@
 ---
-title: Bağlı cihazlarınızın yönetme (Önizleme) Profilim portal - Azure Active Directory | Microsoft Docs
-description: Cihazlar sayfasında Profilim Portalı hakkında üst düzey bir özeti.
+title: Bağlı cihazlarınızı profilim (Önizleme) portalından yönetme-Azure Active Directory | Microsoft Docs
+description: Profil portalının cihazlar sayfası hakkında üst düzey genel bakış.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,41 +12,44 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b303a1cd3da7010573ce34dd4762616f4b6581d0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c9035d68e95798eb238c1836e617e485c39194c4
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60475874"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68383040"
 ---
-# <a name="manage-your-connected-devices-from-the-my-profile-preview-portal"></a>Bağlı cihazlarınızın (Önizleme) Profilim portaldan yönetme
-Bağlı olduğunuz iş veya Okul hesabınızı kullanarak artık sahip olduğunuz, tüm devre dışı bırakma cihazları yönetmek gelen **cihazları** sayfasının **Profilim** portalı.
+# <a name="manage-your-connected-devices-from-the-my-profile-preview-portal"></a>Bağlı cihazlarınızı profilimi yönetme (Önizleme) portalından yönetme
+
+İş veya okul hesabınızı kullanarak bağlı olduğunuz cihazları, **profil** portalının **cihazlar** sayfasında, artık sahip olmadığınız her türlü devre dışı bırakarak yönetebilirsiniz.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-myprofile.md)]
 
-## <a name="view-your-connected-devices"></a>Bağlı cihazlarınızın görüntüleyin
-1. İş veya Okul hesabınızda oturum açın ve ardından Git kullanarak https://myprofile.microsoft.com/ sayfası.
+## <a name="view-your-connected-devices"></a>Bağlı cihazlarınızı görüntüleme
 
-2. Seçin **cihazları** seçin ya da sol gezinti bölmesinde **cihazları yönetme** bağlantı **cihazları** blok.
+1. İş veya okul hesabınızda oturum açın ve ardından https://myprofile.microsoft.com/ sayfanıza gidin.
 
-    ![Vurgulanan cihazları bağlantıları gösteren profili sayfam](media/myprofile-portal/myprofile-portal-devices.png)
+2. Sol gezinti bölmesinden **cihazlar** ' ı seçin veya **cihazlar bloğundan cihazları** **Yönet** bağlantısını seçin.
 
-3. Tüm bunları tanımak emin bağlı cihazlarınızın bilgilerini gözden geçirin. 
+    ![Vurgulanan cihaz bağlantılarını gösteren profilim sayfası](media/myprofile-portal/myprofile-portal-devices.png)
 
-    ![Cihazları gösteren cihaz sayfasının bağlı](media/myprofile-portal/myprofile-portal-devices-page.png)
+3. Bağlı cihazlarınızla ilgili bilgileri inceleyerek tümünü tanıdığınızdan emin olun. 
 
-## <a name="disable-a-device"></a>Bir cihazı devre dışı
-Herhangi bir bağlı cihazlarınızın dilediğiniz zaman devre dışı bırakabilirsiniz. Bu, bir cihaz alışık olduğunuz değilse veya bir cihaz kaybolur veya çalınırsa özellikle önem taşır. Bir cihazı devre dışı bıraktıktan sonra kuruluşunuz tarafından artık doğrulanabilir ve kuruluşunuzun kaynaklarına erişmek mümkün olmayacaktır.
+    ![Bağlı cihazları gösteren cihaz sayfası](media/myprofile-portal/myprofile-portal-devices-page.png)
+
+## <a name="disable-a-device"></a>Cihazı devre dışı bırakma
+
+Bağlı cihazlarınızdan herhangi birini dilediğiniz zaman devre dışı bırakabilirsiniz. Bu, özellikle bir cihaz sizi tanımıyorsanız veya bir cihazın kaybolması ya da çalınması durumunda önemlidir. Bir cihazı devre dışı bıraktıktan sonra, kuruluşunuz tarafından artık kimlik doğrulaması yapılmaz ve kuruluşunuzun kaynaklarından hiçbirine erişemeyecektir.
 
 >[!Important]
->Yanlışlıkla bir cihazı devre dışı bırakırsanız, geri almak için hiçbir yolu yoktur. Cihaz yeniden eklemek için kuruluşun yöneticisine başvurmak zorunda kalırsınız.
+>Bir cihazı yanlışlıkla devre dışı bırakırsanız, geri alma yöntemi yoktur. Cihazı yeniden eklemek için kuruluşunuzun yöneticisiyle iletişime geçmeniz gerekir.
 
-1. Seçin **devre dışı** kaldırmak istediğiniz bir CİHAZDAN.
+1. Kaldırmak istediğiniz cihazdan **devre dışı bırak** ' ı seçin.
 
-    ![Cihaz sayfası ile vurgulanan devre dışı bağlantı](media/myprofile-portal/myprofile-portal-devices-disable.png)
+    ![Vurgulanan devre dışı bağlantı ile cihaz sayfası](media/myprofile-portal/myprofile-portal-devices-disable.png)
 
-2. Seçin **Evet** için cihazın devre dışı bırakmak istediğinizi onaylayın.
+2. Cihazı devre dışı bırakmak istediğinizi onaylamak için **Evet** ' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bağlı cihazlarınızın izledikten sonra yönetmek veya görüntülemek için seçebileceğiniz, [güvenlik bilgisi](user-help-security-info-overview.md), [kuruluşlar](myprofile-portal-organizations-page.md), ya da görünüm nasıl Kuruluşunuz [verilerinizi kullanır](myprofile-portal-privacy-page.md).
+- Bağlı cihazlarınızı görüntüledikten sonra [güvenlik bilgilerinizi](user-help-security-info-overview.md), kuruluşlarınızı görüntülemeyi veya yönetmeyi seçebilirsiniz veya kuruluşunuzun [verilerinizi nasıl kullandığını](myprofile-portal-privacy-page.md)görüntüleyebilirsiniz. [](myprofile-portal-organizations-page.md)

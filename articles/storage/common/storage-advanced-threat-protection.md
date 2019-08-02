@@ -1,6 +1,6 @@
 ---
 title: Azure Depolama için Gelişmiş Tehdit Koruması
-description: Azure depolama Gelişmiş tehdit hesabı etkinliğinde anomalileri algılayın ve hesabınıza erişmek için zararlı olabilecek girişimleri hakkında bilgi Koruması'nı yapılandırın.
+description: Hesap etkinliğindeki anormallikleri algılamak ve hesabınıza erişmek için olası zararlı girişimleri bilgilendirmek üzere Azure depolama Gelişmiş tehdit koruması 'nı yapılandırın.
 services: storage
 author: tamram
 ms.service: storage
@@ -8,87 +8,97 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: 8cea4b3fb78f3430fdd92e40552d687501af4be8
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: bb2d5733704b0b31dc010cec2a90e99e1be07b56
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621968"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68592021"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Azure Depolama için Gelişmiş Tehdit Koruması
 
-Azure Depolama için Gelişmiş Tehdit Koruması, depolama hesaplarına erişmeye veya güvenlik açıklarından yararlanmaya yönelik sıra dışı, zararlı olabilecek girişimleri algılayan güvenlik zekasına sahip ek bir güvenlik katmanı sağlar. Bu koruma katmanı tehditlerle Uzman güvenlik veya güvenlik izleme sistemlerine yönetmek zorunda kalmadan olanak tanır. 
+Azure Depolama için Gelişmiş Tehdit Koruması, depolama hesaplarına erişmeye veya güvenlik açıklarından yararlanmaya yönelik sıra dışı, zararlı olabilecek girişimleri algılayan güvenlik zekasına sahip ek bir güvenlik katmanı sağlar. Bu koruma katmanı, bir güvenlik uzmanı olması veya güvenlik izleme sistemlerini yönetmeniz gerekmeden tehditleri ele almanıza olanak sağlar. 
 
-Güvenlik Uyarıları, anomalileri etkinliğinde meydana geldiğinde tetiklenir.  Bu güvenlik uyarıları ile tümleşik olduğu [Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/)ve ayrıca şüpheli etkinlik ve öneriler tehdit araştırma ve düzeltme konusunda ayrıntılarıyla abonelik yöneticilerine e-postayla gönderilir.
+Güvenlik uyarıları, etkinlik durumunda olan bozukluklar gerçekleştiğinde tetiklenir.  Bu güvenlik uyarıları [Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/)ile tümleşiktir ve ayrıca, şüpheli etkinliklerin ayrıntıları ve tehditleri İnceleme ve düzeltme önerileri ile abonelik yöneticilerine e-posta yoluyla da gönderilir.
 
 > [!NOTE]
-> * Gelişmiş tehdit koruması için Azure depolama şu anda yalnızca Blob Depolama alanı için kullanılabilir.
-> * Fiyatlandırma ayrıntıları, 30 günlük ücretsiz deneme sürümü dahil olmak üzere bkz [Azure Güvenlik Merkezi fiyatlandırma sayfasına]( https://azure.microsoft.com/pricing/details/security-center/).
-> * ATP Azure depolama özelliği için şu anda Azure devlet kurumları ve bağımsız bulut bölgelerinde kullanılabilir değil.
+> * Azure depolama için Gelişmiş tehdit koruması Şu anda yalnızca BLOB depolama alanı için kullanılabilir.
+> * Ücretsiz 30 günlük deneme sürümü de dahil olmak üzere fiyatlandırma ayrıntıları için bkz. [Azure Güvenlik Merkezi fiyatlandırma sayfası]( https://azure.microsoft.com/pricing/details/security-center/).
+> * Azure depolama özelliği için ATP özelliği şu anda Azure Kamu ve bağımsız bulut bölgelerinde kullanılamaz.
 
-Azure depolama için Gelişmiş tehdit koruması, okuma, yazma ve silme isteği tehdit algılama için Blob Depolama için tanılama günlükleri alır. Gelişmiş tehdit koruması uyarılardan araştırmak için depolama analizi günlük kaydı kullanarak ilgili depolama etkinliğini görüntüleyebilirsiniz. Daha fazla bilgi için bkz. nasıl [depolama analizi günlük tutmayı yapılandırma](storage-monitor-storage-account.md#configure-logging).
+Azure depolama için Gelişmiş tehdit koruması, tehdit algılama için blob depolamaya okuma, yazma ve silme isteklerinin tanılama günlüklerini geri alır. Gelişmiş tehdit korumasından gelen uyarıları araştırmak için Depolama Analizi günlüğünü kullanarak ilgili depolama etkinliğini görüntüleyebilirsiniz. Daha fazla bilgi için bkz. [depolama Analizi günlüğe kaydetmeyi yapılandırma](storage-monitor-storage-account.md#configure-logging).
 
-## <a name="set-up-advanced-threat-protection"></a>Gelişmiş tehdit korumasını ayarlama 
+## <a name="set-up-advanced-threat-protection"></a>Gelişmiş tehdit koruması ayarlama 
 
 ### <a name="using-the-portal"></a>Portalı kullanma
 
-1. Adresinden Azure portalında başlatma [ https://portal.azure.com ](https://portal.azure.com/).
+1. Üzerinde [https://portal.azure.com](https://portal.azure.com/)Azure Portal başlatın.
 
-2. Korumak istediğiniz Azure depolama hesabı yapılandırma sayfasına gidin. İçinde **ayarları** sayfasında **Gelişmiş tehdit koruması**.
+2. Korumak istediğiniz Azure depolama hesabının yapılandırma sayfasına gidin. **Ayarlar** sayfasında, **Gelişmiş tehdit koruması**' nı seçin.
 
-3. İçinde **Gelişmiş tehdit koruması** yapılandırma dikey penceresi
-    * Kapatma **ON** Gelişmiş *tehdit koruması*
-    * Tıklayın **Kaydet** yeni veya güncelleştirilmiş Gelişmiş tehdit koruması ilkeyi kaydedin. (Görüntüde örneğin yalnızca fiyatlarıdır.)
+3. **Gelişmiş tehdit koruması** yapılandırma dikey penceresinde
+    * Gelişmiş *tehdit korumasını* aç
+    * Yeni veya güncelleştirilmiş Gelişmiş tehdit koruması ilkesini kaydetmek için **Kaydet** ' e tıklayın. (Görüntüdeki fiyatlar yalnızca örnek amaçlıdır.)
 
-![Azure Gelişmiş tehdit koruması depolama üzerinde Aç](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
+![Azure Storage Gelişmiş tehdit korumasını aç](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
 
 ### <a name="using-azure-security-center"></a>Azure Güvenlik Merkezi'ni kullanma
-Standart katmana abone olduğunuzda Azure Güvenlik Merkezi'nde Gelişmiş tehdit koruması depolama hesaplarınızı ayarlanır. Daha fazla bilgi için [Güvenlik Merkezi'nin standart katmanında Gelişmiş güvenlik yükseltme](https://docs.microsoft.com/azure/security-center/security-center-pricing). (Görüntüde örneğin yalnızca fiyatlarıdır.)
 
-![ASC standart katmanda](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing.png)
+Azure Güvenlik Merkezi 'nde Standart katmana abone olduğunuzda, tüm depolama hesaplarınızda Gelişmiş tehdit koruması otomatik olarak ayarlanır. Belirli bir abonelik kapsamındaki depolama hesaplarınız için Gelişmiş tehdit korumasını aşağıdaki gibi etkinleştirebilir veya devre dışı bırakabilirsiniz:
 
-### <a name="using-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarını kullanma
+1. Azure portal **Azure Güvenlik Merkezi 'ni** başlatın [](https://portal.azure.com).
+1. Ana menüden **fiyatlandırma & ayarları**' na tıklayın.
+1. Depolama hesapları için tehdit korumasını etkinleştirmek veya devre dışı bırakmak istediğiniz aboneliğe tıklayın.
 
-Etkin. Gelişmiş tehdit koruması ile bir Azure depolama hesabı dağıtmak için bir Azure Resource Manager şablonu kullanın.
-Daha fazla bilgi için [Gelişmiş tehdit koruması ile depolama hesabı](https://azure.microsoft.com/resources/templates/201-storage-advanced-threat-protection-create/).
+    ![Abonelik seçme](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-subscription.png)
 
-### <a name="using-azure-policy"></a>Azure İlkesi'ni kullanma
+1. **Fiyatlandırma katmanı**' na tıklayın.
+1. **Kaynak türüne göre fiyatlandırma katmanını Seç** bölümünde, **depolama hesapları** satırında, **etkin** veya **devre dışı**' ya tıklayın.
 
-Belirli bir abonelik veya kaynak grubu altında depolama hesapları arasında Gelişmiş tehdit Koruması'nı etkinleştirmek için bir Azure İlkesi'ni kullanın.
+    ![Güvenlik Merkezi 'nde ATP 'yi etkinleştir](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing2.png)
+1. **Kaydet**’e tıklayın.
 
-1. Azure yemek **ilke - tanımlar** sayfası.
+### <a name="using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanma
 
-1. Arama **dağıtma Gelişmiş tehdit koruması depolama hesaplarında** ilkesi.
+Gelişmiş tehdit koruması etkinleştirilmiş bir Azure depolama hesabı dağıtmak için Azure Resource Manager şablonu kullanın. Daha fazla bilgi için bkz. [Gelişmiş tehdit koruması olan depolama hesabı](https://azure.microsoft.com/resources/templates/201-storage-advanced-threat-protection-create/).
 
-     ![Arama İlkesi](./media/storage-advanced-threat-protection/storage-atp-policy-definitions.png)
+### <a name="using-azure-policy"></a>Azure Ilkesini kullanma
+
+Belirli bir abonelik veya kaynak grubu altındaki depolama hesapları genelinde gelişmiş tehdit korumasını etkinleştirmek için bir Azure Ilkesi kullanın.
+
+1. Azure **Ilke tanımları** sayfasını başlatın.
+
+1. **Depolama hesaplarında Gelişmiş tehdit koruması dağıtma** ilkesi için arama yapın.
+
+     ![Ilke ara](./media/storage-advanced-threat-protection/storage-atp-policy-definitions.png)
   
-1. Azure abonelik veya kaynak grubunu seçin.
+1. Bir Azure aboneliği veya kaynak grubu seçin.
 
-    ![Abonelik veya Grup Seç](./media/storage-advanced-threat-protection/storage-atp-policy2.png)
+    ![Abonelik veya grup seçin](./media/storage-advanced-threat-protection/storage-atp-policy2.png)
 
 1. İlkeyi atayın.
 
     ![İlke tanımları sayfası](./media/storage-advanced-threat-protection/storage-atp-policy1.png)
 
 ### <a name="using-rest-api"></a>REST API kullanma
-Oluşturmak, güncelleştirmek veya belirli bir depolama hesabına için Gelişmiş tehdit koruması ayarı almak için REST API komutlarını kullanın.
+Belirli bir depolama hesabı için Gelişmiş tehdit koruması ayarı oluşturmak, güncelleştirmek veya almak için REST API komutlarını kullanın.
 
-* [Gelişmiş tehdit koruması - oluşturma](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/create)
-* [Gelişmiş tehdit koruması - Al](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/get)
+* [Gelişmiş tehdit koruması-oluştur](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/create)
+* [Gelişmiş tehdit koruması-Get](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/get)
 
 ### <a name="using-azure-powershell"></a>Azure PowerShell’i kullanma
 
-Aşağıdaki PowerShell cmdlet'lerini kullanın:
+Aşağıdaki PowerShell cmdlet 'lerini kullanın:
 
-  * [Gelişmiş tehdit korumasını etkinleştirin](https://docs.microsoft.com/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
-  * [Gelişmiş tehdit koruması](https://docs.microsoft.com/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
-  * [Gelişmiş tehdit koruması devre dışı bırak](https://docs.microsoft.com/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
+  * [Gelişmiş tehdit korumasını etkinleştir](https://docs.microsoft.com/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
+  * [Gelişmiş tehdit koruması al](https://docs.microsoft.com/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
+  * [Gelişmiş tehdit korumasını devre dışı bırak](https://docs.microsoft.com/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
 
-## <a name="explore-security-anomalies"></a>Güvenlik anormallikleri keşfedin
+## <a name="explore-security-anomalies"></a>Güvenlik anormalilerini keşfet
 
-Depolama etkinliği anormallikleri meydana geldiğinde, Şüpheli güvenlik olayı hakkında bilgi içeren bir e-posta bildirimi alırsınız. Olay ayrıntıları içerir:
+Depolama etkinliği bozuklukları gerçekleştiğinde, şüpheli güvenlik olayı hakkında bilgi içeren bir e-posta bildirimi alırsınız. Etkinliğin ayrıntıları şunları içerir:
 
-* Anomali yapısı
+* Anomali 'in doğası
 * Depolama hesabı adı
 * Olay saati
 * Depolama türü
@@ -97,67 +107,67 @@ Depolama etkinliği anormallikleri meydana geldiğinde, Şüpheli güvenlik olay
 * Düzeltme adımları
 
 
-E-posta, ayrıca olası nedenleri hakkında ayrıntılar içerir ve önerilen araştırıp olası tehdidi azaltmak için Eylemler.
+Bu e-posta, olası nedenlerdeki ayrıntıları ve olası tehdidi araştırmak ve azaltmak için önerilen eylemleri de içerir.
 
-![Gelişmiş tehdit koruması uyarı e-posta, azure depolama](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-alert-email.png)
+![Azure depolama Gelişmiş tehdit koruması uyarı e-postası](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-alert-email.png)
 
-Gözden geçirin ve Azure Güvenlik Merkezi'nden kullanıcının geçerli güvenlik uyarılarınızı yönetme [güvenlik uyarıları kutucuğu](../../security-center/security-center-managing-and-responding-alerts.md#managing-security-alerts). Belirli bir uyarıya tıklayarak ayrıntıları ve Eylemler için geçerli tehdit araştırma ve gelecekteki tehditleri adresleme sağlar.
+Azure Güvenlik Merkezi 'nin [güvenlik uyarıları kutucuğunda](../../security-center/security-center-managing-and-responding-alerts.md#managing-security-alerts)geçerli güvenlik uyarılarınızı gözden geçirebilir ve yönetebilirsiniz. Belirli bir uyarıyı tıklatmak, geçerli tehdidi araştırmak ve gelecekteki tehditleri ele almak için ayrıntıları ve eylemleri sağlar.
 
-![Gelişmiş tehdit koruması uyarı e-posta, azure depolama](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-alert.png)
+![Azure depolama Gelişmiş tehdit koruması uyarı e-postası](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-alert.png)
 
 ## <a name="protection-alerts"></a>Koruma uyarıları
 
-Erişmek veya depolama hesapları yararlanmak için sıra dışı ve zararlı olabilecek girişimleri tarafından uyarılar oluşturulur. Bu olaylar aşağıdaki uyarılar tetikleyebilirsiniz:
+Uyarılar, depolama hesaplarına erişmeye veya açıktan yararlanmaya yönelik olağan dışı ve potansiyel olarak zararlı denemelere göre oluşturulur. Bu olaylar aşağıdaki uyarıları tetikleyebilir:
 
-### <a name="anomalous-access-pattern-alerts"></a>Anormal erişim düzeni uyarıları
+### <a name="anomalous-access-pattern-alerts"></a>Anormal erişim deseninin uyarıları
 
-* **Olağan dışı bir konumdan erişim**: Bu uyarı, birisi bir depolama hesabı olağan dışı bir coğrafi konumdan eriştiğini durumlarda tetiklenir.
+* **Olağan dışı konumdan erişim**: Bu uyarı, bir kullanıcı olağan dışı bir coğrafi konumdan bir depolama hesabına eriştiğinde tetiklenir.
 Olası nedenler:
-   * Bir saldırgan, depolama hesabınıza erişme
-   * Bir kullanıcının gönderdiğini, depolama hesabınıza yeni bir konumdan eriştiğini
+   * Bir saldırgan depolama hesabınıza erişti
+   * Yasal bir Kullanıcı, depolama hesabınıza yeni bir konumdan erişti
  
-* **Uygulama Anomali**: Bu uyarı, olağandışı bir uygulama bu depolama hesabı eriştiğini belirtir. Olası nedenler:
-   * Bir saldırgan, yeni bir uygulama kullanarak depolama hesabınıza eriştiğini.
-   * Bir kullanıcının gönderdiğini, depolama hesabınıza erişmek için yeni bir uygulama/tarayıcı kullandı.
+* **Uygulama anomali**: Bu uyarı, olağan dışı bir uygulamanın bu depolama hesabına eriştiğini gösterir. Olası nedenler:
+   * Bir saldırgan, depolama hesabınıza yeni bir uygulama kullanarak erişmiştir.
+   * Yasal bir Kullanıcı, depolama hesabınıza erişmek için yeni bir uygulama/tarayıcı kullanmıştır.
 
-* **Anonim erişim**: Bu uyarı, bu hesabı olduğunu belirtir. (yani herhangi bir kimlik doğrulaması) anonim olarak erişilebilir, beklenmeyen olduğu Bu hesapta en son erişim düzeni ile karşılaştırıldığında.
+* **Anonim erişim**: Bu uyarı, bu hesabın anonim olarak erişildiğine (yani herhangi bir kimlik doğrulaması olmadan), bu hesaptaki son erişim düzeniyle karşılaştırıldığında beklenmeyen bir şekilde erişildiğini belirtir.
 Olası nedenler:
-   * Bir kapsayıcı için genel okuma erişimini saldırgan.
-   * Meşru bir kullanıcı veya uygulama bir kapsayıcı için genel okuma erişimini kullandı.
+   * Bir saldırgan bir kapsayıcıya genel okuma erişiminin yararlanmıştır.
+   * Meşru bir kullanıcı veya uygulama, bir kapsayıcıya genel okuma erişimi kullandı.
 
-* **Tor Anomali**: Bu uyarı, bu hesap bir Tor (anonymizing proxy) etkin çıkış düğümü olarak bilinen bir IP adresinden başarıyla erişildikten belirtir. Bu uyarının önem derecesini (varsa) kullanılan kimlik doğrulama türü olarak değerlendirir ve olup bu, ilk harf tür erişim.
+* **Tor anomali**: Bu uyarı, bu hesaba Tor 'ın etkin çıkış düğümü olarak bilinen bir IP adresinden başarıyla erişildiğini belirtir (bir anonim proxy). Bu uyarının önem derecesi, kullanılan (varsa) kimlik doğrulaması türünü ve bu erişimin ilk olması durumunda olup olmadığını dikkate alır.
 Olası nedenler:
-   * Bir saldırgan, Tor kullanarak depolama hesabınıza eriştiğini.
-   * Bir kullanıcının gönderdiğini Tor kullanarak depolama hesabınıza erişme.
+   * Bir saldırgan, depolama hesabınıza Tor kullanarak erişti.
+   * Yasal bir Kullanıcı, Tor kullanarak depolama hesabınıza erişti.
 
 
-### <a name="anomalous-extractupload-alerts"></a>Uyarılar anormal extract/karşıya yükleme
+### <a name="anomalous-extractupload-alerts"></a>Anormal uyarıları Ayıkla/karşıya yükle
 
-* **Veri Sızdırma**: Bu uyarı, olağan dışı derecede büyük bir veri miktarını bu depolama kapsayıcısındaki son etkinliklere göre çıkartılan belirtir. Olası nedenler:
-   * Bir saldırganın bir kapsayıcıdan büyük miktarda veri ayıklanan. (Örneğin: veri Sızdırma/ihlal, yetkisiz veri aktarımı)
-   * Olağan dışı bir veri miktarı, meşru bir kullanıcı veya uygulama bir kapsayıcı ayıklanan. (Örneğin: Bakım etkinliği)
+* **Veri tanımı**: Bu uyarı, bu depolama kapsayıcısındaki en son etkinliğe kıyasla alışılmadık büyük miktarda verilerin ayıklandığını gösterir. Olası nedenler:
+   * Bir saldırgan, bir kapsayıcıdan büyük miktarda veri ayıklamıştır. (Örneğin: veri ayıklanma/ihlal, yetkisiz veri aktarımı)
+   * Yasal bir kullanıcı veya uygulama bir kapsayıcıdan olağan dışı miktarda veri ayıklamıştır. (Örneğin: bakım etkinliği)
 
-* **Beklenmeyen silme**: Bu uyarı, bir veya daha fazla beklenmeyen silme işlemleri Bu hesapta en son etkinlik ile karşılaştırıldığında bir depolama hesabı oluştu belirtir. Olası nedenler:
-   * Bir saldırganın veri depolama hesabınızdan silindi.
-   * Bir kullanıcının gönderdiğini, olağan dışı bir silme işlemi gerçekleştirdi.
+* **Beklenmeyen silme**: Bu uyarı, bir depolama hesabında bir veya daha fazla beklenmeyen silme işlemi gerçekleştiğini, bu hesaptaki en son etkinlikle karşılaştırıldığında olduğunu gösterir. Olası nedenler:
+   * Bir saldırgan depolama hesabınızdan veri sildi.
+   * Meşru bir kullanıcı olağan dışı bir silme işlemi gerçekleştirmiştir.
 
-* **Azure bulut hizmeti paketi yükleme**: Bu uyarı, bir Azure bulut hizmeti paketi (.cspkg dosyası) bir depolama hesabına Bu hesapta en son etkinlik ile karşılaştırıldığında, olağan dışı bir şekilde yüklendiğini belirtir. Olası nedenler: 
-   * Bir saldırgan, depolama hesabınızdan bir Azure bulut hizmeti'ne kadar kötü amaçlı kod dağıtmak hazırlanıyor.
-   * Bir kullanıcının gönderdiğini yasal hizmet dağıtımı için hazırlama.
+* **Azure bulut hizmeti paketini karşıya yükle**: Bu uyarı, bir Azure bulut hizmeti paketinin (. cspkg dosyasının), bu hesaptaki en son etkinlikle karşılaştırıldığında, alışılmadık bir şekilde bir depolama hesabına yüklendiğini belirtir. Olası nedenler: 
+   * Bir saldırgan, depolama hesabınızdan bir Azure bulut hizmetine kötü amaçlı kod dağıtmaya hazırlanmıştır.
+   * Meşru bir Kullanıcı, meşru bir hizmet dağıtımı için hazırlanmıştır.
 
-### <a name="suspicious-storage-activities-alerts"></a>Depolama şüpheli etkinlikleri uyarıları
+### <a name="suspicious-storage-activities-alerts"></a>Şüpheli depolama etkinlikleri uyarıları
 
-* **Erişim izni Değiştir**: Bu uyarı, bu depolama kapsayıcısındaki erişim izni olağan dışı bir şekilde değiştiğini gösterir. Olası nedenler: 
-   * Bir saldırgan, kendi güvenlik düzeyini düşürmek için kapsayıcı izinlerini değişti.
-   * Bir kullanıcının gönderdiğini, kapsayıcı izinlerini değişti.
+* **Erişim izni değişikliği**: Bu uyarı, bu depolama kapsayıcısının erişim izinlerinin olağan dışı bir şekilde değiştirildiğini belirtir. Olası nedenler: 
+   * Saldırgan, güvenlik düzeyini yumuşatmak için kapsayıcı izinlerini değiştirdi.
+   * Meşru bir Kullanıcı kapsayıcı izinlerini değiştirdi.
 
-* **Erişim incelemesi**: Bu uyarı, bu hesapta en son etkinlik ile karşılaştırıldığında, olağan dışı bir şekilde bir depolama hesabına erişim izinlerini geçersiz inceledikten olmadığını belirtir. Olası nedenler: 
-   * Bir saldırgan için gelecekteki bir saldırı keşif gerçekleştirdi.
-   * Bir kullanıcının gönderdiğini depolama hesabında bakım gerçekleştirdi.
+* **Erişim incelemesi**: Bu uyarı, bir depolama hesabının erişim izinlerinin, bu hesaptaki en son etkinlikle karşılaştırıldığında olağan dışı bir şekilde incelenebileceğini belirtir. Olası nedenler: 
+   * Saldırgan, gelecekteki bir saldırı için keşif gerçekleştirdi.
+   * Yasal bir kullanıcı depolama hesabında bakım gerçekleştirdi.
 
-* **Veri keşfi**: Bu uyarı, BLOB veya bir depolama hesabındaki kapsayıcıları Bu hesapta en son etkinlik ile karşılaştırıldığında, olağan dışı bir şekilde numaralandırılmış olduğunu belirtir. Olası nedenler: 
-   * Bir saldırgan için gelecekteki bir saldırı keşif gerçekleştirdi.
-   * Veri depolama hesabında meşru bir kullanıcı veya uygulama mantığı incelediniz.
+* **Veri araştırması**: Bu uyarı, bir depolama hesabındaki Blobların veya kapsayıcıların, bu hesaptaki en son etkinlikle karşılaştırıldığında alışılmadık bir şekilde numaralandırıldığını gösterir. Olası nedenler: 
+   * Saldırgan, gelecekteki bir saldırı için keşif gerçekleştirdi.
+   * Yasal bir kullanıcı veya uygulama mantığı, depolama hesabı içinde verileri araştırmıştır.
 
 
 
@@ -166,6 +176,6 @@ Olası nedenler:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Daha fazla bilgi edinin [Azure depolama hesaplarındaki günlükleri](/rest/api/storageservices/About-Storage-Analytics-Logging)
+* [Azure depolama hesaplarında Günlükler](/rest/api/storageservices/About-Storage-Analytics-Logging) hakkında daha fazla bilgi edinin
 
-* Daha fazla bilgi edinin [Azure Güvenlik Merkezi](../../security-center/security-center-intro.md)
+* [Azure Güvenlik Merkezi](../../security-center/security-center-intro.md) hakkında daha fazla bilgi edinin

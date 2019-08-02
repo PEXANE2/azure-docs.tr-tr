@@ -1,6 +1,6 @@
 ---
 title: Bağımlılık Azure Application Insights izleme | Microsoft Docs
-description: Şirket içi veya Microsoft Azure Application Insights ile web uygulaması, bağımlılık çağrılarını izleme.
+description: Şirket içi veya Microsoft Azure Web uygulamanızdan gelen bağımlılık çağrılarını Application Insights ile izleyin.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -12,59 +12,59 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: mbullwin
-ms.openlocfilehash: d8ba5b19ad5d8f03203e9a028fbc5aec84e5ec06
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: c2f115564c81f38dd437f1d3ff1e33d7d162a42f
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565379"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326442"
 ---
-# <a name="dependency-tracking-in-azure-application-insights"></a>Azure Application Insights izleme bağımlılığı 
+# <a name="dependency-tracking-in-azure-application-insights"></a>Azure Application Insights 'de bağımlılık Izleme 
 
-A *bağımlılık* uygulamanız tarafından çağrılan bir dış bileşen. Bu genellikle adlı HTTP veya bir veritabanı veya dosya sistemi kullanılarak bir hizmettir. [Application Insights](../../azure-monitor/app/app-insights-overview.md) olup bağımlılık çağrıları süresini ölçer, veya değil, birlikte ek bilgileri bağımlılığının adı gibi vb. başarısız. Özel bağımlılık çağrıları incelemek ve istekler ve özel durumlar için ilişkilendirin.
+A *bağımlılık* uygulamanız tarafından çağrılan bir dış bileşen. Bu genellikle adlı HTTP veya bir veritabanı veya dosya sistemi kullanılarak bir hizmettir. [Application Insights](../../azure-monitor/app/app-insights-overview.md) , bağımlılık çağrılarının süresini ölçer, başarısız olup olmadığı ve bağımlılık adı gibi ek bilgilerle birlikte ölçer. Belirli bağımlılık çağrılarını araştırabilir ve bunları isteklerle ve özel durumlarla ilişkilendirmenize olanak sağlayabilirsiniz.
 
-## <a name="automatically-tracked-dependencies"></a>Otomatik olarak izlenen bağımlılıkları
+## <a name="automatically-tracked-dependencies"></a>Otomatik olarak izlenen bağımlılıklar
 
-İle birlikte gönderilmektedir .NET ve .NET Core için Application Insights SDK'ları `DependencyTrackingTelemetryModule` bağımlılıkları otomatik olarak toplayan Telemetri modül olduğu. Bu bağımlılık toplama için otomatik olarak etkinleştirilir [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) ve [ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) bağlı resmi belgeleri göre yapılandırıldığında uygulamalar. `DependencyTrackingTelemetryModule` olarak sevk edilir [bu](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) NuGet paketi ve NuGet paketlerini birini kullanırken otomatik olarak getirildikten `Microsoft.ApplicationInsights.Web` veya `Microsoft.ApplicationInsights.AspNetCore`.
+.Net ve .NET Core `DependencyTrackingTelemetryModule` için Application Insights SDK 'ları, otomatik olarak bağımlılıkları toplayan bir telemetri modülüdür. Bu bağımlılık koleksiyonu, bağlantılı resmi belgelere göre yapılandırıldığında [ASP.net](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) ve [ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) uygulamaları için otomatik olarak etkinleştirilir. , bu NuGet [](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) paketi olarak sevk edilir ve NuGet paketlerinden `Microsoft.ApplicationInsights.Web` `Microsoft.ApplicationInsights.AspNetCore`ya da ya da ya da herhangi biri kullanılırken otomatik olarak getirilir. `DependencyTrackingTelemetryModule`
 
- `DependencyTrackingTelemetryModule` şu anda aşağıdaki bağımlılıkları otomatik olarak izler:
+ `DependencyTrackingTelemetryModule`Şu anda aşağıdaki bağımlılıkları otomatik olarak izler:
 
 |Bağımlılıkları |Ayrıntılar|
 |---------------|-------|
-|HTTP/Https | Yerel veya uzak http/https çağrıları |
-|WCF çağrıları| HTTP tabanlı bağlamalar kullanıldığında yalnızca otomatik olarak izlenir.|
-|SQL | İle yapılan çağrılar `SqlClient`. Bkz: [bu](##advanced-sql-tracking-to-get-full-sql-query) SQL yakalamak için sorgu.  |
-|[Azure depolama (Blob, tablo, kuyruk)](https://www.nuget.org/packages/WindowsAzure.Storage/) | Azure depolama istemci ile yapılan çağrılar. |
-|[EventHub istemci SDK'sı](https://www.nuget.org/packages/Microsoft.Azure.EventHubs) | 1\.1.0 sürümü ve üzeri. |
-|[Service Bus istemci SDK'sı](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)| Sürüm 3.0.0 ve üstü. |
-|Azure Cosmos DB | HTTP/HTTPS kullanılıyorsa yalnızca otomatik olarak izlenir. TCP modu, Application Insights tarafından yakalanan olmaz. |
+|Http/https | Yerel veya uzak http/https çağrıları |
+|WCF çağrıları| Yalnızca HTTP tabanlı bağlamalar kullanılıyorsa otomatik olarak izlenir.|
+|SQL | İle `SqlClient`yapılan çağrılar. SQL sorgusunu yakalamak için [bunu](#advanced-sql-tracking-to-get-full-sql-query) inceleyin.  |
+|[Azure depolama (blob, tablo, kuyruk)](https://www.nuget.org/packages/WindowsAzure.Storage/) | Azure Storage Istemcisi ile yapılan çağrılar. |
+|[EventHub Istemci SDK 'Sı](https://www.nuget.org/packages/Microsoft.Azure.EventHubs) | Sürüm 1.1.0 ve üstü. |
+|[ServiceBus Istemci SDK 'Sı](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)| Sürüm 3.0.0 ve üstü. |
+|Azure Cosmos DB | Yalnızca HTTP/HTTPS kullanılıyorsa otomatik olarak izlenir. TCP modu, Application Insights tarafından yakalanan olmaz. |
 
 
-## <a name="setup-automatic-dependency-tracking-in-console-apps"></a>Otomatik bağımlılık izleme konsol uygulamalarında Kurulumu
+## <a name="setup-automatic-dependency-tracking-in-console-apps"></a>Konsol uygulamalarında otomatik bağımlılık izlemeyi ayarla
 
-Otomatik olarak bağımlılıkları.NET/.NET Core konsol uygulamaları izlemek için Nuget paketini yüklemek `Microsoft.ApplicationInsights.DependencyCollector`ve başlatma `DependencyTrackingTelemetryModule` gibi:
+.Net/.NET Core konsol uygulamalarından gelen bağımlılıkları otomatik olarak izlemek için, NuGet paketini `Microsoft.ApplicationInsights.DependencyCollector`yükledikten sonra aşağıdaki gibi başlatın: `DependencyTrackingTelemetryModule`
 
 ```csharp
     DependencyTrackingTelemetryModule depModule = new DependencyTrackingTelemetryModule();
     depModule.Initialize(TelemetryConfiguration.Active);
 ```
 
-### <a name="how-automatic-dependency-monitoring-works"></a>Otomatik bağımlılık izleme çalışır?
+### <a name="how-automatic-dependency-monitoring-works"></a>Otomatik bağımlılık izleme nasıl çalışıyor?
 
-Bağımlılıklar, aşağıdaki tekniklerden birini kullanarak otomatik olarak toplanır:
+Bağımlılıklar, aşağıdaki tekniklerden biri kullanılarak otomatik olarak toplanır:
 
-* Select yöntemleri etrafında bayt kod araçları kullanarak. (InstrumentationEngine StatusMonitor veya Azure Web uygulaması uzantısı)
+* Select metotları etrafında Byte Code izleme kullanma. (StatusMonitor ya da Azure Web App uzantısından ınstrumentationengine)
 * EventSource geri çağırmaları
-* (En son.NET/.NET Core SDK'ları içinde) DiagnosticSource geri çağırmaları
+* DiagnosticSource geri çağırmaları (en son .NET/.NET Core SDK 'lerinde)
 
 ## <a name="manually-tracking-dependencies"></a>Bağımlılıkları el ile izleme
 
-Otomatik olarak toplanan değildir ve bu nedenle el ile izleme gerektiren bağımlılıklara bazı örnekler aşağıda verilmiştir.
+Aşağıda, otomatik olarak toplanmayan ve bu nedenle el ile izleme gerektiren bazı bağımlılıklar örnekleri verilmiştir.
 
 * Azure Cosmos DB yalnızca otomatik olarak izlenir [HTTP/HTTPS](../../cosmos-db/performance-tips.md#networking) kullanılır. TCP modu, Application Insights tarafından yakalanan olmaz.
 * Redis
 
-SDK'sı tarafından otomatik olarak toplanan için bu bağımlılıkları el ile kullanarak bunları izleyebilirsiniz [TrackDependency API](api-custom-events-metrics.md#trackdependency) standart otomatik toplama modülleri tarafından kullanılır.
+SDK tarafından otomatik olarak toplanmayan bağımlılıklar için, standart otomatik toplama modülleri tarafından kullanılan [Trackdependency API](api-custom-events-metrics.md#trackdependency) 'sini kullanarak bunları el ile izleyebilirsiniz.
 
 Örneğin, kendi yazmadığınız sahip bir derleme, kodunuzu derlemek, kolaylaştırır, yanıt süreleri için hangi katkı öğrenmek için tüm çağrıları, süresi. Application ınsights bağımlılık grafiklerinde görüntülenir. Bu veriler için kullanarak göndermek `TrackDependency`.
 
@@ -84,72 +84,72 @@ SDK'sı tarafından otomatik olarak toplanan için bu bağımlılıkları el ile
     }
 ```
 
-Alternatif olarak, `TelemetryClient` genişletme yöntemleri sağlar `StartOperation` ve `StopOperation` kullanılabilen bağımlılıkları el ile izlemek için gösterildiği gibi [burada](custom-operations-tracking.md#outgoing-dependencies-tracking)
+Alternatif olarak `TelemetryClient` , [burada](custom-operations-tracking.md#outgoing-dependencies-tracking) gösterildiği `StartOperation` gibi `StopOperation` , bağımlılıkları el ile izlemek için kullanılabilecek uzantı yöntemlerini ve bu yöntemleri sağlar
 
-Standart bağımlılık izleme modülünü devre dışı geçiş yapmak istiyorsanız, içinde DependencyTrackingTelemetryModule başvurusunu kaldırın [Applicationınsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) ASP.NET uygulamaları için. ASP.NET Core uygulamaları için yönergeleri izleyin [burada](asp-net-core.md#configuring-or-removing-default-telemetrymodules).
+Standart bağımlılık izleme modülünü devre dışı bırakmak istiyorsanız, ASP.NET uygulamaları için [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) içindeki DependencyTrackingTelemetryModule başvurusunu kaldırın. ASP.NET Core uygulamalar için [buradaki](asp-net-core.md#configuring-or-removing-default-telemetrymodules)yönergeleri izleyin.
 
-## <a name="tracking-ajax-calls-from-web-pages"></a>AJAX çağrılarından Web sayfalarını izleme
+## <a name="tracking-ajax-calls-from-web-pages"></a>Web sayfalarından AJAX çağrılarını izleme
 
-Web sayfaları için Application Insights JavaScript SDK'sı AJAX çağrıları bağımlılık olarak açıklanan otomatik olarak toplar [burada](javascript.md#ajax-performance). Bu belge, sunucu bileşenleri bağımlılıklardan odaklanır.
+Web sayfaları için, JavaScript SDK Application Insights, [burada](javascript.md#ajax-performance)açıklandığı gıbı, Ajax çağrılarını otomatik olarak bağımlılıklar olarak toplar. Bu belge, sunucu bileşenlerinden bağımlılıklara odaklanır.
 
-## <a name="advanced-sql-tracking-to-get-full-sql-query"></a>Tam SQL sorgusunu almak için izleme SQL Gelişmiş
+## <a name="advanced-sql-tracking-to-get-full-sql-query"></a>Tam SQL sorgusu almak için gelişmiş SQL izleme
 
-SQL çağrıları için sunucu ve veritabanı adını her zaman toplanan ve toplanan adı olarak depolanan `DependencyTelemetry`. Tam SQL sorgusunu metin içerebilir ' veri' adlı ek bir alan yoktur.
+SQL çağrıları için sunucu ve veritabanının adı her zaman toplanır ve toplanan `DependencyTelemetry`adı olarak depolanır. Tam SQL sorgu metnini içerebilen ' Data ' adlı ek bir alan var.
 
-ASP.NET Core uygulamaları için tam SQL sorgusunu almak için gereken ek bir adım yoktur.
+ASP.NET Core uygulamalar için, tam SQL sorgusunu almak için ek bir adım gerekmez.
 
-ASP.NET uygulamaları için tam SQL sorgusunu izleme altyapısı gerektirir bayt kod araçları yardımıyla toplanır. Aşağıda açıklandığı gibi platforma özgü ek adımlar gereklidir.
+ASP.NET uygulamalar için, tam SQL sorgusu, izleme altyapısı gerektiren Byte Code Instrumentation yardımıyla toplanır. Aşağıda açıklandığı gibi platforma özgü ek adımlar gereklidir.
 
-| Platform | Tam SQL sorgusunu erişmek için gerekli adımları |
+| Platform | Tam SQL sorgusu almak için gereken adımlar |
 | --- | --- |
-| Azure Web Uygulaması |Web uygulaması Denetim Masası'ndaki [Application Insights dikey penceresini açın](../../azure-monitor/app/azure-web-apps.md) ve .NET altındaki SQL komutları etkinleştirin |
-| IIS sunucusu (Azure VM, şirket içi ve benzeri.) | [Uygulamanın çalıştığı sunucunuza Durum İzleyicisi yükleme](../../azure-monitor/app/monitor-performance-live-website-now.md) ve IIS'yi yeniden başlatın.
-| Azure bulut hizmeti | Ekleme [StatusMonitor yüklemek için başlangıç görevi](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional) <br> Uygulamanızı eklenen Applicationınsights SDK derleme zamanında için NuGet paketlerini yükleyerek olmalıdır [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) veya [ASP.NET Core uygulamaları](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) |
+| Azure Web Uygulaması |Web uygulaması denetim masasında [Application Insights dikey penceresini açın](../../azure-monitor/app/azure-web-apps.md) ve .net altında SQL komutlarını etkinleştirin |
+| IIS sunucusu (Azure VM, şirket içi vb.) | Durum İzleyicisi PowerShell modülünü kullanarak [Izleme altyapısını YÜKLEYIP](../../azure-monitor/app/status-monitor-v2-api-enable-instrumentation-engine.md) IIS 'yi yeniden başlatın. |
+| Azure bulut hizmeti | [StatusMonitor 'ı yüklemek için başlangıç görevi](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional) ekleme <br> [ASP.net](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) veya [ASP.NET Core uygulamalarına](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) yönelik NuGet paketlerini yükleyerek uygulamanızın derleme zamanında eklendi to ApplicationInsights SDK 'sı olması gerekir |
 | IIS Express | Desteklenmiyor
 
-Yukarıdaki durumlarda, bu araçları motor doğrulama doğru şekilde yüklendiğinden SDK'sı sürümü toplanan olduğunu doğrulayarak ise `DependencyTelemetry` 'rddp' olduğu. 'rdddsd' veya 'rddf' bağımlılıkları DiagnosticSource veya EventSource geri çağırmalar toplanır ve bu nedenle tam SQL sorgusunu yakalanan olmaz gösterir.
+Yukarıdaki durumlarda, izleme altyapısının doğru şekilde doğrulandığının doğru şekilde doğrulanması, toplanan `DependencyTelemetry` SDK sürümünün ' rddp ' olduğunu doğrulamakdır. ' rdddsd ' veya ' rddf ', bağımlılıkların DiagnosticSource veya EventSource Callbacks aracılığıyla toplanacağını ve bu nedenle tam SQL sorgusunun yakalanmayacağını gösterir.
 
 ## <a name="where-to-find-dependency-data"></a>Bağımlılık verileri nerede bulunur
 
 * [Uygulama Haritası](app-map.md) komşu bileşenlerini ve uygulama arasındaki bağımlılıkları görselleştirir.
-* [İşlem tanılamaları](transaction-diagnostics.md) gösterir birleşik, sunucu verileri bağıntılı.
-* [Tarayıcı sekmesini](javascript.md#ajax-performance) kullanıcılarınızın tarayıcılarından AJAX çağrılarını gösterir.
-* Bağımlılık çağrılarını denetlemek için yavaş veya başarısız istekleri tıklayın.
+* [Işlem tanılama](transaction-diagnostics.md) Birleşik, bağıntılı sunucu verilerini gösterir.
+* [Tarayıcılar sekmesi](javascript.md#ajax-performance) kullanıcılarınızın TARAYıCıLARıNDAKI Ajax çağrılarını gösterir.
+* Bağımlılık çağrılarını denetlemek için yavaş veya başarısız olan isteklerden öğesine tıklayın.
 * [Analytics](#logs-analytics) sorgu bağımlılık verileri için kullanılabilir.
 
 ## <a name="diagnosis"></a> Yavaş istekleri tanılayın
 
-Her istek olayı, bağımlılık çağrıları, özel durumlar ve uygulamanızı isteği işlerken izlenen gelen diğer olayları ile ilişkilidir. Bu nedenle bazı istekler hatalı yapıyorsanız, yavaş bağımlılık yanıtlarının nedeniyle olup olmadığını bulabilirsiniz.
+Her istek olayı, uygulamanız isteği işlerken bağımlılık çağrıları, özel durumlar ve izlenen diğer olaylarla ilişkilendirilir. Bu nedenle, bazı istekler hatalı çalışıyorsa, bir bağımlılıktan yavaş yanıt olup olmadığını öğrenebilirsiniz.
 
 ### <a name="tracing-from-requests-to-dependencies"></a>Bağımlılıklar için gelen istekleri izleme
 
-Açık **performans** gidin ve sekme **bağımlılıkları** üst yanındaki işlemleri sekmesini.
+**Performans** sekmesini açın ve işlemler yanındaki üst kısımdaki **Bağımlılıklar** sekmesine gidin.
 
-Tıklayarak bir **bağımlılık adı** genel altında. Bu bağımlılık'ın dağıtım süreleri, bir grafik bir bağımlılık seçtikten sonra sağ tarafta görünür.
+Genel altında bir **bağımlılık adına** tıklayın. Bir bağımlılığı seçtikten sonra, bağımlılık sürelerinin süreleri için bir grafik sağda görünür.
 
-![Performans sekmesine tıklayın bağımlılık sekmesinde üst sonra grafikteki bir bağımlılık adı](./media/asp-net-dependencies/2-perf-dependencies.png)
+![Performans sekmesinde, üstteki bağımlılık sekmesine tıklayın ve ardından grafikte bir bağımlılık adı](./media/asp-net-dependencies/2-perf-dependencies.png)
 
-Mavi tıklayın **örnekleri** düğmesine sağ alt kısmındaki ve uçtan uca işlem ayrıntıları görmek için bir örnek.
+Uçtan uca işlem ayrıntılarını görmek için sağ alt köşedeki mavi **örnekler** düğmesine ve ardından bir örneğe tıklayın.
 
-![Bir örneğe uçtan uca işlem ayrıntıları görmek için tıklayın](./media/asp-net-dependencies/3-end-to-end.png)
+![Uçtan uca işlem ayrıntılarını görmek için bir örneğe tıklayın](./media/asp-net-dependencies/3-end-to-end.png)
 
 ### <a name="profile-your-live-site"></a>Sitenizin Canlı profil
 
-Hiçbir fikriniz olduğu zaman gider? [Application Insights Profiler'ı](../../azure-monitor/app/profiler.md) izlemeleri HTTP canlı sitenize çağırır ve kodunuzda en uzun sürdü işlevleri gösterir.
+Hiçbir fikriniz olduğu zaman gider? [Application Insights Profiler](../../azure-monitor/app/profiler.md) , canlı sitenize http çağrılarını izler ve kodunuzda en uzun süreyi geçen işlevleri gösterir.
 
 ## <a name="failed-requests"></a>Başarısız istekler
 
 Başarısız istekler başarısız bağımlılık çağrıları ile ilişkili olabilir.
 
-Biz gidebilirsiniz **hataları** sekmesinde solda ve ardından **bağımlılıkları** en üstteki sekmedeki.
+Soldaki **sorunlar** sekmesine gidebilir ve sonra üstteki **Bağımlılıklar** sekmesine tıklayabilirsiniz.
 
 ![Başarısız istekler grafiğe tıklayın](./media/asp-net-dependencies/4-fail.png)
 
-Burada başarısız bağımlılık sayısı görmeniz mümkün olacaktır. Bir bağımlılık adı altındaki tabloda tıklayarak çalışırken başarısız bir olay hakkında daha fazla bilgi almak için. Mavi tıklayabilirsiniz **bağımlılıkları** uçtan uca işlem ayrıntıları almak için sağ alt köşede düğmesi.
+Burada, başarısız bağımlılık sayısını görebileceksiniz. Alt tablodaki bir bağımlılık adına tıklatmaya çalışırken başarısız bir oluşum hakkında daha fazla bilgi almak için. Uçtan uca işlem ayrıntılarını almak için sağ alt köşedeki mavi **Bağımlılıklar** düğmesine tıklayabilirsiniz.
 
-## <a name="logs-analytics"></a>Günlükleri (analiz)
+## <a name="logs-analytics"></a>Günlükler (Analiz)
 
-Bağımlılıkları izleyebilirsiniz [Kusto sorgu dili](/azure/kusto/query/). Bazı örnekler aşağıda verilmiştir.
+[Kusto sorgu dilinde](/azure/kusto/query/)bağımlılıkları izleyebilirsiniz. Bazı örnekler aşağıda verilmiştir.
 
 * Tüm başarısız bağımlılık çağrılarını bulun:
 
@@ -188,12 +188,12 @@ Bağımlılıkları izleyebilirsiniz [Kusto sorgu dili](/azure/kusto/query/). Ba
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
-### <a name="how-does-automatic-dependency-collector-report-failed-calls-to-dependencies"></a>*Nasıl yoksa otomatik bağımlılık Toplayıcı rapor bağımlılıklara yapılan çağrılar başarısız oldu?*
+### <a name="how-does-automatic-dependency-collector-report-failed-calls-to-dependencies"></a>*Otomatik bağımlılık toplayıcı raporu bağımlılıklara nasıl çağrı başarısız oldu?*
 
-* Başarısız bağımlılık çağrıları False olarak ayarlanmış 'başarılı' alanı olacaktır. `DependencyTrackingTelemetryModule` bildirmez `ExceptionTelemetry`. Tam veri modeli için bağımlılık açıklanan [burada](data-model-dependency-telemetry.md).
+* Başarısız bağımlılık çağrılarında ' success ' alanı false olarak ayarlanmalıdır. `DependencyTrackingTelemetryModule`Rapor `ExceptionTelemetry`etmez. Bağımlılık için tam veri modeli [burada](data-model-dependency-telemetry.md)açıklanmıştır.
 
-## <a name="open-source-sdk"></a>Açık kaynak SDK'sı
-Her Application Insights SDK gibi bağımlılık toplama modülü de açık kaynaklıdır. Okuma ve koda katkıda bulunan veya rapor sorunu [resmi GitHub deposunu](https://github.com/Microsoft/ApplicationInsights-dotnet-server).
+## <a name="open-source-sdk"></a>Açık kaynaklı SDK
+Her Application Insights SDK gibi bağımlılık koleksiyonu modülü de açık kaynaktır. [Resmi GitHub](https://github.com/Microsoft/ApplicationInsights-dotnet-server)deposunda kodu okuyun ve katkıda bulunun veya sorunları raporla.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

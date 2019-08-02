@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/15/2017
 ms.author: matd
 ms.openlocfilehash: 957fff73f2406e0e057a7c978dd76a6bd9c156b7
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "67876200"
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>NetBackup ile bir yedekleme hedefi olarak StorSimple
@@ -252,7 +252,7 @@ Yukarıdaki varsayımlar temelinde, aylık ve yıllık tam yedeklemeler için 26
 
 | Yedekleme türü tutma | Boyut (TiB) | GFS çarpanı\* | Toplam Kapasite (TiB)  |
 |---|---|---|---|
-| Haftalık tam | 1 | 4  | 4 |
+| Haftalık tam | 1\. | 4  | 4 |
 | Günlük artımlı | 0,5 | 20 (ayda eşit sayıda hafta döngüsü) | 12 (ek kota için 2) |
 | Aylık tam | 1\. | 12 | 12 |
 | Yıllık tam | 1\.  | 10 | 10 |
@@ -277,7 +277,7 @@ Yukarıdaki varsayımlar temelinde, aylık ve yıllık tam yedeklemeler için 26
 
     ![NetBackup Yönetim Konsolu, StorSimple birim diskini seçin](./media/storsimple-configure-backup-target-using-netbackup/nbimage3.png)
 
-4.  Yedekleme hedefi için bir ad girin ve ardından **İleri** > ' yi seçerek Sihirbazı sona erdirin.
+4.  Yedekleme hedefi için bir ad girin ve ardından **İleri** > ' yi seçerek Sihirbazı sona erdirin. ****
 
 5.  Ayarları gözden geçirin ve ardından **son**' u seçin.
 
@@ -302,9 +302,9 @@ Dört hafta, aylık ve yıllık için bir GFS döndürme zamanlaması örneği a
 
 | Sıklık/yedekleme türü | Tam | Artımlı (gün 1-5)  |   
 |---|---|---|
-| Haftalık (hafta 1-4) | Günü | Pazartesi-Cuma |
-| Aylık  | Günü  |   |
-| Yılın | Günü  |   |
+| Haftalık (hafta 1-4) | Cumartesi | Pazartesi-Cuma |
+| Aylık  | Cumartesi  |   |
+| Yıllık | Cumartesi  |   |
 
 ## <a name="assigning-storsimple-volumes-to-a-netbackup-backup-job"></a>Bir NetBackup yedekleme işine StorSimple birimleri atama
 
@@ -340,7 +340,7 @@ Aşağıdaki sıra, NetBackup 'ın ve hedef konağın NetBackup Aracısı yöner
 
    ![NetBackup Yönetim Konsolu, yeni bir ilke için yedekleme sıklığı ve döndürme](./media/storsimple-configure-backup-target-using-netbackup/nbimage12.png)
 
-8. **Sonraki** > sonrakison > **bitiş**' i seçin.  Zamanlamayı, ilke oluşturulduktan sonra değiştirebilirsiniz.
+8. **Sonraki** >  **** sonrakison > **bitiş**' i seçin.  Zamanlamayı, ilke oluşturulduktan sonra değiştirebilirsiniz.
 
 9. Yeni oluşturduğunuz ilkeyi genişletmeyi seçin ve ardından **zamanlamalar**' ı seçin.
 
@@ -397,9 +397,9 @@ Aşağıdaki tabloda, yerel ve StorSimple disklerinde çalışacak yedeklemeleri
 
 | Yedekleme türü ve bekletme | Yapılandırılan depolama alanı | Boyut (TiB) | GFS çarpanı | Toplam kapasite\* (Tib) |
 |---|---|---|---|---|
-| Hafta 1 (tam ve artımlı) |Yerel disk (kısa vadeli)| 1 | 1\. | 1 |
+| Hafta 1 (tam ve artımlı) |Yerel disk (kısa vadeli)| 1\. | 1\. | 1\. |
 | StorSimple hafta 2-4 |StorSimple diski (uzun vadeli) | 1\. | 4 | 4 |
-| Aylık tam |StorSimple diski (uzun vadeli) | 1 | 12 | 12 |
+| Aylık tam |StorSimple diski (uzun vadeli) | 1\. | 12 | 12 |
 | Yıllık tam |StorSimple diski (uzun vadeli) | 1\. | 1\. | 1\. |
 |GFS birimleri boyut gereksinimi |  |  |  | 18*|
 
@@ -415,7 +415,7 @@ Aşağıdaki tabloda, yerel ve StorSimple disklerinde çalışacak yedeklemeleri
 | Hafta 3 | StorSimple hafta 2-4 |   |   |   |   |   |
 | Hafta 4 | StorSimple hafta 2-4 |   |   |   |   |   |
 | Aylık | StorSimple aylık |   |   |   |   |   |
-| Yılın | StorSimple yıllık  |   |   |   |   |   |
+| Yıllık | StorSimple yıllık  |   |   |   |   |   |
 
 
 ## <a name="assign-storsimple-volumes-to-a-netbackup-archive-and-duplication-job"></a>Bir NetBackup arşivine ve yineleme işine StorSimple birimleri atama
@@ -471,7 +471,7 @@ NetBackup, depolama ve medya yönetimi için çok çeşitli seçenekler sağlad�
 
 | Yedekleme türü tutma | Boyut (TiB) | GFS çarpanı\* | Toplam Kapasite (TiB)  |
 |---|---|---|---|
-| Haftalık tam |  1  |  4 | 4  |
+| Haftalık tam |  1\.  |  4 | 4  |
 | Günlük artımlı  | 0,5  | 20 (döngü, ay başına hafta sayısına eşittir) | 12 (ek kota için 2) |
 | Aylık tam  | 1\. | 12 | 12 |
 | Yıllık tam | 1\.  | 10 | 10 |
@@ -535,7 +535,7 @@ Olağanüstü bir durum, çeşitli faktörlerden kaynaklanıyor olabilir. Aşağ
 | NetBackup sunucusu hatası | Yedekleme ve geri yükleme işlemleri kesintiye uğrar. | Yedekleme sunucusunu yeniden oluşturun ve veritabanı geri yükleme işlemini gerçekleştirin. | NetBackup sunucusunu olağanüstü durum kurtarma sitesinde yeniden oluşturmanız veya geri yüklemeniz gerekir. Veritabanını en son noktaya geri yükleyin. Geri yüklenen NetBackup veritabanı en son yedekleme işleriniz ile eşitlenmediğinde, dizin oluşturma ve kataloglama gereklidir. Bu dizin ve Katalog yeniden tarama işlemi, tüm yedekleme kümelerinin bulut katmanından yerel cihaz katmanına taranmasını ve çekilmesine neden olabilir. Bu, daha fazla zaman yoğunluğu sağlar. |
 | Hem yedekleme sunucusu hem de StorSimple kaybına neden olan site hatası | Yedekleme ve geri yükleme işlemleri kesintiye uğrar. | Önce StorSimple 'ı geri yükleyin ve ardından NetBackup 'ı geri yükleyin. | Önce StorSimple 'ı geri yükleyin ve ardından NetBackup 'ı geri yükleyin. Cihazın kurtarmasından sonra geri yükleme gerçekleştirmeniz gerekirse, tam veri çalışma kümeleri buluttan yeni cihaza alınır. Tüm işlemler bulut hızlardır. |
 
-## <a name="references"></a>Başvurular
+## <a name="references"></a>Referanslar
 
 Bu makale için aşağıdaki belgelere başvuruldu:
 

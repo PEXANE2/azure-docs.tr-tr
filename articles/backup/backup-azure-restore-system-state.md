@@ -1,18 +1,19 @@
 ---
 title: 'Azure Backup: Sistem durumunu bir Windows sunucusuna geri yükleme'
 description: Windows Server sistem durumunu Azure 'daki bir yedekten geri yüklemek için adım adım açıklama.
-author: saurabhsensharma
-manager: shivamg
+ms.reviewer: saurse
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 8/18/2017
-ms.author: saurse
-ms.openlocfilehash: 48eb9fce7b9863c84518546270a6566bb0cec711
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 6dc478f569b94450921e56c05b148bae357fef8e
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465644"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689138"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Sistem durumunu Windows Server 'a geri yükleme
 
@@ -146,7 +147,7 @@ Azure kurtarma hizmetleri Aracısı 'nı kullanarak sistem durumunu dosyalar ola
 
     ![Yerel sunucu veya başka bir sunucudan kurtarma yapılıp yapılmayacağını seçin](./media/backup-azure-restore-system-state/ss-recovery-remote-shared-folder.png)
 
-7. *WindowsImageBackup* dizininin yolunu girin veya bu dizini içeren yerel sürücüyü (örneğin, d:\windowsımagebackup) seçin, Azure kurtarma hizmetleri Aracısı 'Nı kullanarak sistem durumu dosyalarının kurtarmasının bir parçası olarak kurtarıldı ve ileri ' ye tıklayın. .
+7. *WindowsImageBackup* dizininin yolunu girin veya bu dizini içeren yerel sürücüyü (örneğin, d:\windowsımagebackup) seçin, Azure kurtarma hizmetleri Aracısı 'Nı kullanarak sistem durumu dosyalarının kurtarmasının bir parçası olarak kurtarıldı ve ileri ' ye tıklayın..
 
     ![paylaşılan dosyanın yolu](./media/backup-azure-restore-system-state/ss-recovery-remote-folder.png)
 

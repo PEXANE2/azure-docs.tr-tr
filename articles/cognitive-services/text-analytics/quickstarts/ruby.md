@@ -1,7 +1,7 @@
 ---
-title: "Hızlı Başlangıç: Metin analizi API'sini çağırmak için Ruby kullanma"
+title: "Hızlı Başlangıç: Metin Analizi API'si çağırmak için Ruby kullanma"
 titleSuffix: Azure Cognitive Services
-description: Hızlı bir şekilde yardımcı olması için alma bilgileri ve kod örnekleri, Azure Bilişsel hizmetler metin analizi API'sini kullanarak başlayın.
+description: Azure bilişsel hizmetler 'de Metin Analizi API'si kullanmaya hızlı bir şekilde başlamanıza yardımcı olması için bilgi ve kod örnekleri alın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,25 +10,23 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 04/16/2019
 ms.author: aahi
-ms.openlocfilehash: 56a482ae4eab4cde3cf39fcc187b703f253e0cbb
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: cc6f0a4c3fda2c5e474295704f3edddb678e9ed2
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65990259"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697205"
 ---
-# <a name="quickstart-using-ruby-to-call-the-text-analytics-cognitive-service"></a>Hızlı Başlangıç: Metin analizi Bilişsel hizmetini çağırmak için Ruby kullanma
+# <a name="quickstart-using-ruby-to-call-the-text-analytics-cognitive-service"></a>Hızlı Başlangıç: Metin Analizi bilişsel hizmeti çağırmak için Ruby kullanma
 <a name="HOLTop"></a>
 
-Bu makalede gösterilmektedir için [dili algılayın](#Detect), [düşüncelerini çözümleme](#SentimentAnalysis), [anahtar tümcecikleri ayıklayın](#KeyPhraseExtraction), ve [bağlı varlıkları tanımlama](#Entities) kullanma  [metin analizi API'lerini](//go.microsoft.com/fwlink/?LinkID=759711) Ruby ile.
+Bu makalede, Ruby ile [metin analizi API 'leri](//go.microsoft.com/fwlink/?LinkID=759711) kullanarak [](#SentimentAnalysis) [dilin nasıl algılanacağı](#Detect), yaklaşım analiziyle, [anahtar tümceciklerini ayıklamayla](#KeyPhraseExtraction)ve [bağlantılı varlıkların](#Entities) nasıl kullanılacağı gösterilir.
 
 API'lerle ilgili teknik bilgiler için [API tanımları](//go.microsoft.com/fwlink/?LinkID=759346) sayfasını inceleyin.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
-
-Ayrıca kayıt sırasında oluşturulan [uç nokta ve erişim anahtarı](../How-tos/text-analytics-how-to-access-key.md) değerlerine de sahip olmanız gerekir. 
 
 <a name="Detect"></a>
 

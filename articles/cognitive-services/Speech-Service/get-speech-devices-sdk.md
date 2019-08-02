@@ -1,7 +1,7 @@
 ---
 title: Konuşma Cihazları SDK’sını edinme
 titleSuffix: Azure Cognitive Services
-description: Konuşma Hizmetleri çok çeşitli cihazları ve ses kaynaklar ile çalışın. Şimdi, konuşma uygulamalarınızın eşleşen donanım ve yazılım ile bir sonraki düzeye alabilir. Bu makalede, konuşma cihaz SDK'sı erişin ve geliştirmeye başlayın öğreneceksiniz.
+description: Konuşma hizmeti, çok çeşitli cihazları ve ses kaynakları ile çalışır. Şimdi, konuşma uygulamalarınızın eşleşen donanım ve yazılım ile bir sonraki düzeye alabilir. Bu makalede, konuşma cihazları SDK 'sına nasıl erişebileceğinizi ve geliştirmeye nasıl başlayacağınızı öğreneceksiniz.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,29 +10,29 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: cff35398509c021a3d2ccf708e2705ab7e259d34
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: b60c8735833c3012523c5cc0d7eea6a50e9d10b6
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67719804"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559694"
 ---
 # <a name="get-the-cognitive-services-speech-devices-sdk"></a>Bilişsel hizmetler konuşma cihaz SDK'sı Al
 
-Konuşma cihaz SDK'sı, amaca yönelik olarak tasarlanmış bir geliştirme setleri ve değişen mikrofon dizi yapılandırmaları ile çalışmak üzere tasarlanmış pretuned bir kitaplıktır.
+Konuşma cihazları SDK 'Sı, amaç oluşturulmuş geliştirme takımları ve farklı mikrofon dizisi yapılandırmalarının birlikte çalışmak üzere tasarlanan önceden ayarlanmış bir kitaplıktır.
 
-## <a name="choose-a-development-kit"></a>Geliştirme Seti'ni seçin
+## <a name="choose-a-development-kit"></a>Geliştirme seti seçin
 
-|Cihazlar|Belirtimi|Açıklama|Senaryolar|
+|Cihazlar|Min|Açıklama|Senaryolar|
 |--|--|--|--|
-|[Roobo akıllı ses Dev Seti](https://ddk.roobo.com)</br>[Kurulum](speech-devices-sdk-roobo-v1.md) / [hızlı](speech-devices-sdk-android-quickstart.md)![Roobo akıllı ses Dev Seti](media/speech-devices-sdk/device-roobo-v1.jpg)|7 MIC dizisi, ARM SOC WIFI, ses çıkış, g/ç. </br>[Android](speech-devices-sdk-android-quickstart.md)|Microsoft Mic Array ve yüksek kaliteli tanıma ve konuşma senaryoları geliştirmek için SDK, işleme ön uyarlamak için ilk konuşma cihaz SDK'sı|Konuşma Transkripsiyonu, akıllı konuşmacının Ses Aracısı üstte taşınır|
-|[Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)</br>[Kurulum](https://docs.microsoft.com/azure/Kinect-dk/set-up-azure-kinect-dk) / [hızlı](speech-devices-sdk-windows-quickstart.md)![Azure Kinect DK](media/speech-devices-sdk/device-azure-kinect-dk.jpg)|MIC dizisi RGB ve derinlik kameralar 7. </br>[Windows](speech-devices-sdk-windows-quickstart.md)/[Linux](speech-devices-sdk-linux-quickstart.md)|Gelişmiş bilgisayar görme ve konuşma modelleri oluşturmak için Gelişmiş yapay zeka (AI) sensör ile bir Geliştirme Seti. Bir video kamera ve yönlendirmesini algılayıcısı ile sınıfının en iyisi uzamsal mikrofon dizi ve derinlik kamera birleştirir — birden çok modları, seçeneklerini ve SDK'ları bir dizi uyum sağlamak için küçük bir cihazla içindeki tüm işlem türleri.|Konuşma Transkripsiyonu, robotlara ilişkin, akıllı oluşturma|
-|Roobo Smart Audio Dev Kit 2![Roobo Smart Audio Dev Kit 2](media/speech-devices-sdk/device-roobo-v2.jpg)|7 MIC dizisi, ARM SOC WIFI, Bluetooth, g/ç. </br>Linux|2\. nesil konuşma cihaz SDK'sı, diğer işletim sistemi ve başvuru uygun maliyetli tasarımla daha fazla özellik sağlar.|Konuşma Transkripsiyonu, akıllı konuşmacının Ses Aracısı üstte taşınır|
-|URbetter T11 geliştirme Panosu![URbetter DDK](media/speech-devices-sdk/device-urbetter.jpg)|7 MIC dizisi, ARM SOC WIFI, Ethernet, HDMI, USB Kamera. </br>Linux|Bir sektör düzeyi Speech cihaz SDK'sı Microsoft Mic dizi uyum sağlar ve destekleyen g/ç HDMI veya Ethernet ve daha fazla USB çevre birimleri gibi genişletilmiş|Konuşma Transkripsiyonu, eğitim, hastaneler, Robotlar, OTT kutusu, aracı, sesli den sürücü|
+|[Roobo akıllı ses geliştirme seti](https://ddk.roobo.com)</br>[Kurulum](speech-devices-sdk-roobo-v1.md) / [hızlı](speech-devices-sdk-android-quickstart.md)başlangıçkökü![Bo akıllı ses geliştirme seti](media/speech-devices-sdk/device-roobo-v1.jpg)|7 MIC dizisi, ARM SOC, WIFI, ses çıkışı, GÇ. </br>[Android](speech-devices-sdk-android-quickstart.md)|Yüksek kaliteli savunma ve konuşma senaryoları geliştirmek için Microsoft MIC dizisi ve ön işleme SDK 'sını uyarlamak için ilk konuşma cihazları SDK 'Sı|Konuşma dökümü, akıllı konuşmacı, Ses Aracısı, takılabilir|
+|[Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)</br>[Kurulum](https://docs.microsoft.com/azure/Kinect-dk/set-up-azure-kinect-dk) / [hızlı](speech-devices-sdk-windows-quickstart.md)başlangıçAzure![Kinect dk](media/speech-devices-sdk/device-azure-kinect-dk.jpg)|7 MIC dizi RGB ve derinlik kameraları. </br>[Windows](speech-devices-sdk-windows-quickstart.md)Linux/[](speech-devices-sdk-linux-quickstart.md)|Gelişmiş yapay zeka (AI) algılayıcılarının yanı sıra karmaşık görüntü işleme ve konuşma modelleri oluşturmaya yönelik bir geliştirici seti. Bir video kamera ve yönlendirme algılayıcısını içeren bir en iyi sınıf uzamsal mikrofon dizisi ve derinlik kamerayı, bir dizi işlem türüne uyum sağlayacak şekilde birden çok modu, seçeneği ve SDK 'Sı olan bir küçük cihazda birleştirir.|Konuşma dökümü, Robotics, akıllı bina|
+|Roobo akıllı ses geliştirme seti 2![Roobo akıllı ses geliştirme seti 2](media/speech-devices-sdk/device-roobo-v2.jpg)|7 Mic Array, ARM SOC, WIFI, Bluetooth, GÇ. </br>Linux|Maliyet açısından geçerli bir başvuru tasarımında Alternatif işletim sistemi ve daha fazla özellik sağlayan 2. nesil konuşma cihazları SDK.|Konuşma dökümü, akıllı konuşmacı, Ses Aracısı, takılabilir|
+|Uriyt11 standardını geliştirme panosu![Urdaha Iyi DDK](media/speech-devices-sdk/device-urbetter.jpg)|7 Mic Array, ARM SOC, WIFI, Ethernet, HDMı, USB kamera. </br>Linux|Microsoft mik Array 'e uyum sağlayan ve HDMı/Ethernet ve daha fazla USB çevre birimi gibi genişletilmiş g/ç 'yi destekleyen bir sektör düzeyi konuşma cihazları SDK 'Sı|Konuşma dökümü, eğitim, Hospte, robots, OTT kutusu, Ses Aracısı, sürücüye geçme|
 
 ## <a name="download-the-speech-devices-sdk"></a>Konuşma cihaz SDK'sını indirin
 
-İndirme [konuşma cihaz SDK'sı](https://aka.ms/sdsdk-download).
+[Konuşma cihazları SDK 'sını](https://aka.ms/sdsdk-download)indirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

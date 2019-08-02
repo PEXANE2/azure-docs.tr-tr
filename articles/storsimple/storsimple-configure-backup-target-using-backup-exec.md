@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/05/2016
 ms.author: matd
 ms.openlocfilehash: 85c04b6ea3e40f1f1dcd12eb5d6f4a8f53836867
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "67876798"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>Backup Exec ile bir yedekleme hedefi olarak StorSimple
@@ -233,7 +233,7 @@ Konak yedekleme sunucusu depolamayı şu yönergelere göre ayarlayın:
 -   StorSimple, Backup Exec tam ve artımlı yedeklemeleri destekler. Yapay ve değişiklik yedeklemeleri kullanmanızı öneririz.
 -   Yedekleme veri dosyaları yalnızca belirli bir iş için veri içermelidir. Örneğin, farklı işlere hiçbir medya ekleme yapılmasına izin verilmez.
 -   İş doğrulamayı devre dışı bırakın. Gerekirse, doğrulama en son yedekleme işinden sonra zamanlanmalıdır. Bu işin yedekleme pencerenizi etkilediğini anlamak önemlidir.
--   **Disk** >  ayrıntıları > özelliklerinizi depolama 'yıseçin. >  **Önceden ayrılan disk alanını**devre dışı bırakın.
+-   **Disk** >  **** ayrıntıları >  **** özelliklerinizi depolama 'yıseçin. >  **Önceden ayrılan disk alanını**devre dışı bırakın.
 
 Bu gereksinimleri uygulamak için en son yedekleme yürütme ayarları ve en iyi uygulamalar için bkz. [VERITAS Web sitesi](https://www.veritas.com).
 
@@ -256,7 +256,7 @@ Yukarıdaki varsayımlar temelinde, aylık ve yıllık tam yedeklemeler için 26
 |---|---|---|---|
 | Haftalık tam | 1 | 4  | 4 |
 | Günlük artımlı | 0,5 | 20 (ayda eşit sayıda hafta döngüsü) | 12 (ek kota için 2) |
-| Aylık tam | 1 | 12 | 12 |
+| Aylık tam | 1\. | 12 | 12 |
 | Yıllık tam | 1\.  | 10 | 10 |
 | GFS gereksinimi |   | 38 |   |
 | Ek kota  | 4  |   | Toplam 42 GFS gereksinimi  |
@@ -312,9 +312,9 @@ Dört hafta, aylık ve yıllık için bir GFS döndürme zamanlaması örneği a
 
 | Sıklık/yedekleme türü | Tam | Artımlı (gün 1-5)  |   
 |---|---|---|
-| Haftalık (hafta 1-4) | Günü | Pazartesi-Cuma |
-| Aylık  | Günü  |   |
-| Yılın | Günü  |   |
+| Haftalık (hafta 1-4) | Cumartesi | Pazartesi-Cuma |
+| Aylık  | Cumartesi  |   |
+| Yıllık | Cumartesi  |   |
 
 
 ### <a name="assign-storsimple-volumes-to-a-backup-exec-backup-job"></a>Bir yedek exec yedekleme işine StorSimple birimleri atama
@@ -370,10 +370,10 @@ Aşağıdaki tabloda, yerel ve StorSimple disklerinde çalışacak yedeklemeleri
 
 | Yedekleme türü ve bekletme | Yapılandırılan depolama alanı | Boyut (TiB) | GFS çarpanı | Toplam kapasite\* (Tib) |
 |---|---|---|---|---|
-| Hafta 1 (tam ve artımlı) |Yerel disk (kısa vadeli)| 1 | 1\. | 1 |
+| Hafta 1 (tam ve artımlı) |Yerel disk (kısa vadeli)| 1\. | 1\. | 1\. |
 | StorSimple hafta 2-4 |StorSimple diski (uzun vadeli) | 1\. | 4 | 4 |
 | Aylık tam |StorSimple diski (uzun vadeli) | 1\. | 12 | 12 |
-| Yıllık tam |StorSimple diski (uzun vadeli) | 1\. | 1\. | 1\. |
+| Yıllık tam |StorSimple diski (uzun vadeli) | 1\. | 1\. | 1 |
 |GFS birimleri boyut gereksinimi |  |  |  | 18*|
 
 \*Toplam kapasite, StorSimple disklerinin 17 TiB ve yerel RAID birimi 'nin 1 TiB 'leri içerir.
@@ -388,7 +388,7 @@ Aşağıdaki tabloda, yerel ve StorSimple disklerinde çalışacak yedeklemeleri
 | Hafta 3 | StorSimple hafta 2-4 |   |   |   |   |   |
 | Hafta 4 | StorSimple hafta 2-4 |   |   |   |   |   |
 | Aylık | StorSimple aylık |   |   |   |   |   |
-| Yılın | StorSimple yıllık  |   |   |   |   |   |
+| Yıllık | StorSimple yıllık  |   |   |   |   |   |
 
 
 ### <a name="assign-storsimple-volumes-to-a-backup-exec-archive-and-deduplication-job"></a>Bir yedek yürütme Arşivi ve yinelenenleri kaldırma işine StorSimple birimleri atama
@@ -399,7 +399,7 @@ Aşağıdaki tabloda, yerel ve StorSimple disklerinde çalışacak yedeklemeleri
 
     ![Backup Exec Yönetim Konsolu, yedekleme tanımı Özellikler sekmesi](./media/storsimple-configure-backup-target-using-backup-exec/image19.png)
 
-2.   > **Disk** düzenlemeiçinaşamayinelemesiEkle > ' yi seçin.
+2.   > **Disk** **** düzenlemeiçinaşamayinelemesiEkle > ' yi seçin.
 
     ![Backup Exec Yönetim Konsolu, Aşama Ekle](./media/storsimple-configure-backup-target-using-backup-exec/image20.png)
 
@@ -478,7 +478,7 @@ Olağanüstü bir durum, çeşitli faktörlerden kaynaklanıyor olabilir. Aşağ
 | Yedekleme yürütme sunucusu hatası | Yedekleme ve geri yükleme işlemleri kesintiye uğrar. | Yedekleme sunucusunu yeniden oluşturun ve [yedekleme exec (BEDB) veritabanını el Ile yedekleme ve geri yükleme hakkında](http://www.veritas.com/docs/000041083)ayrıntılı olarak veritabanı geri yükleme işlemini gerçekleştirin. | Yedek exec sunucusunu olağanüstü durum kurtarma sitesinde yeniden oluşturmanız veya geri yüklemeniz gerekir. Veritabanını en son noktaya geri yükleyin. Geri yüklenen yedek exec veritabanı en son yedekleme işleriniz ile eşitlenmediğinde, dizin oluşturma ve kataloglama gereklidir. Bu dizin ve Katalog yeniden tarama işlemi, tüm yedekleme kümelerinin bulut katmanından yerel cihaz katmanına taranmasını ve çekilmesine neden olabilir. Bu, daha fazla zaman yoğunluğu sağlar. |
 | Hem yedekleme sunucusu hem de StorSimple kaybına neden olan site hatası | Yedekleme ve geri yükleme işlemleri kesintiye uğrar. | Önce StorSimple 'ı geri yükleyin ve ardından Backup Exec 'i geri yükleyin. | Önce StorSimple 'ı geri yükleyin ve ardından Backup Exec 'i geri yükleyin. Cihazın kurtarmasından sonra geri yükleme gerçekleştirmeniz gerekirse, tam veri çalışma kümeleri buluttan yeni cihaza alınır. Tüm işlemler bulut hızlardır. |
 
-## <a name="references"></a>Başvurular
+## <a name="references"></a>Referanslar
 
 Bu makale için aşağıdaki belgelere başvuruldu:
 

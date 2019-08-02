@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f3be6cebafb6d0f50b5ac9a9e40e5707202ea643
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: cdb1b49af5d3a85dc1853e5964c1cdfdd5c3a7cd
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849433"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68716682"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C özel ilkelerde teknik profiller hakkında
 
@@ -32,7 +32,7 @@ Teknik bir profil, bu tür senaryolara izin vermez:
 - **Telefon faktörü sağlayıcısı** -Multi-Factor Authentication.
 - [OAuth1](oauth1-technical-profile.md) -Federation ile herhangi bir OAuth 1,0 protokol kimlik sağlayıcısı.
 - [OAuth2](oauth2-technical-profile.md) -Federation ile herhangi bir OAuth 2,0 protokol kimlik sağlayıcısı.
-- [Openıdconnect](openid-connect-technical-profile.md) -any OpenID Connect protokol kimliği sağlayıcısıyla Federasyon.
+- [OpenID Connect](openid-connect-technical-profile.md) -any OpenID Connect protokol kimliği sağlayıcısıyla Federasyon.
 - [Talep dönüştürme](claims-transformation-technical-profile.md) -çağrı çıkışı, talep değerlerini işlemek, talepleri doğrulamak veya bir çıktı talepleri kümesi için varsayılan değerleri ayarlamak için bir dönüştürme talebi talep dönüştürmelerini sağlar.
 - [Reişsiz sağlayıcı](restful-technical-profile.md) -Kullanıcı girişini doğrulama, Kullanıcı verilerini zenginleştirme veya iş kolu uygulamalarıyla tümleştirme gibi REST API hizmetleri için çağrı.
 - [SAML2](saml-technical-profile.md) -Federasyon protokol kimlik sağlayıcısıyla Federasyonu.

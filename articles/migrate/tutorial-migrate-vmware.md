@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 07/08/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 885c877f219f59ab5049cf7b8e01243077d6d3eb
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 7fba9cbbaa15359e7e4dd95e66645dd5f4022431
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348392"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640775"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>VMware VM 'lerini Azure 'a geçirme (aracısız)
 
@@ -41,7 +41,7 @@ Azure geçişi sunucu geçiş aracını kullanarak VMware VM 'lerini Azure 'a ge
 
 Aracısız veya aracı tabanlı geçiş kullanmak isteyip istemediğinize karar vermek için şu makaleleri gözden geçirin:
 
-- Aracısız geçişin [nasıl çalıştığını öğrenin](server-migrate-overview.md) ve [sınırlamaları gözden geçirin](server-migrate-overview.md#agentless-migration-limitations).
+- Aracısız geçişin [nasıl çalıştığını öğrenin](server-migrate-overview.md) ve [geçiş yöntemlerini karşılaştırın](server-migrate-overview.md#compare-migration-methods).
 - Aracı tabanlı yöntemi kullanmak istiyorsanız [Bu makaleyi okuyun](tutorial-migrate-vmware-agent.md) .
 
 ## <a name="prerequisites"></a>Önkoşullar
@@ -93,7 +93,7 @@ Gereci ayarlamak için [Bu makaledeki](how-to-set-up-appliance-vmware.md) yöner
 
 Azure geçişi, VM 'Lerin Azure 'a geçirilmesini sağlamak için bazı VM değişiklikleri gerektirir.
 
-- Bazı [işletim sistemleri](server-migrate-overview.md#agentless-migration-limitations)Için Azure geçişi bu değişiklikleri otomatik olarak yapar.
+- Bazı işletim sistemleri için Azure geçişi bu değişiklikleri otomatik olarak yapar. [Daha fazla bilgi edinin](migrate-support-matrix-vmware.md#agentless-migration-vmware-vm-requirements)
 - Bu işletim sistemlerinden birine sahip olmayan bir VM 'yi geçiriyorsanız, sanal makineyi hazırlamak için yönergeleri izleyin.
 - Geçişe başlamadan önce bu değişiklikleri yapmak önemlidir. Değişikliği yapmadan önce VM 'yi geçirirseniz, VM Azure 'da önyüklenemeyebilir.
 - VM için çoğaltma etkinleştirildikten sonra şirket içi VM 'lerde yaptığınız yapılandırma değişiklikleri Azure 'a çoğaltılır. Değişikliklerin çoğaltılmasını sağlamak için, geçiş yaptığınız kurtarma noktasının şirket içinde yapılandırma değişikliklerinin gerçekleştirildiği zamandan daha geç olduğundan emin olun.
@@ -216,9 +216,9 @@ Delta çoğaltma başladığında, Azure 'a tam geçiş çalıştırmadan önce 
 Test geçişini aşağıdaki şekilde yapın:
 
 
-1. **Geçiş hedefleri** > sunucularındaAzuregeçişi > : **Sunucu geçişi**, **geçirilen sunucuları test et**' e tıklayın.
+1. **Geçiş hedefleri** >  **** sunucularındaAzuregeçişi > : **Sunucu geçişi**, **geçirilen sunucuları test et**' e tıklayın.
 
-     ![Geçirilen sunucuları test etme](./media/tutorial-migrate-vmware/test-migrated-servers.png)
+     ![Geçirilen sunucuları test et](./media/tutorial-migrate-vmware/test-migrated-servers.png)
 
 2. Sınanacak sanal makineye sağ tıklayın ve **test geçişi**' ne tıklayın.
 
@@ -238,7 +238,7 @@ Test geçişinin beklendiği gibi çalışıp çalışmadığını doğruladıkt
 
 1. Azure geçişi Proje > **sunucuları** > **Azure geçişi: Sunucu geçişi**, **sunucuları çoğaltma**' ya tıklayın.
 
-    ![Sunucuları çoğaltma](./media/tutorial-migrate-vmware/replicate-servers.png)
+    ![Sunucular çoğaltılıyor](./media/tutorial-migrate-vmware/replicate-servers.png)
 
 2. **Makineleri çoğaltmak**IÇIN, sanal makineye sağ tıklayın > **geçirin**.
 3. Sanal makineleri Kapat ' a **geçiş** > yapın**ve veri kaybı olmadan planlı bir geçiş gerçekleştirin**, **Evet** > **Tamam**' ı seçin.

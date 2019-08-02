@@ -1,6 +1,6 @@
 ---
 title: Azure API Management dönüştürme ilkeleri | Microsoft Docs
-description: Azure API Yönetimi'nde kullanıma dönüştürme ilkeleri hakkında bilgi edinin.
+description: Azure API Management 'de kullanıma sunulan dönüştürme ilkeleri hakkında bilgi edinin.
 services: api-management
 documentationcenter: ''
 author: miaojiang
@@ -13,42 +13,42 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 28720098206c7afdefacbd47de283b2ef8d5a606
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b55502bbc24868b6d8b0352f581bbf4adc81e53a
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66243233"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442244"
 ---
 # <a name="api-management-transformation-policies"></a>API Management dönüştürme ilkeleri
-Bu konu aşağıdaki API Management ilkeleri bir başvuru sağlar. Ekleme ve ilkeleri yapılandırma hakkında daha fazla bilgi için bkz: [API Management ilkeleri](https://go.microsoft.com/fwlink/?LinkID=398186).
+Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. İlke ekleme ve yapılandırma hakkında daha fazla bilgi için bkz. [API Management ilkeleri](https://go.microsoft.com/fwlink/?LinkID=398186).
 
-##  <a name="TransformationPolicies"></a> Dönüştürme ilkeleri
+##  <a name="TransformationPolicies"></a>Dönüştürme ilkeleri
 
--   [JSON XML'ye dönüştürür](api-management-transformation-policies.md#ConvertJSONtoXML) - dönüştürür istek veya yanıt gövdesi JSON'dan XML.
+-   [JSON 'ı XML 'e Dönüştür](api-management-transformation-policies.md#ConvertJSONtoXML) -JSON 'dan XML 'e istek veya Yanıt gövdesini dönüştürür.
 
--   [XML, JSON biçimine Dönüştür](api-management-transformation-policies.md#ConvertXMLtoJSON) - dönüştürür istek veya yanıt gövdesi XML'den JSON'a.
+-   [XML 'YI JSON 'A Dönüştür](api-management-transformation-policies.md#ConvertXMLtoJSON) -istek veya Yanıt gövdesini XML 'den JSON 'a dönüştürür.
 
--   [Bul ve Değiştir gövdedeki dizeyi](api-management-transformation-policies.md#Findandreplacestringinbody) - istek veya yanıtı alt dizeyi bulur ve farklı bir dizeyle değiştirir.
+-   [Gövdede dize bul ve Değiştir](api-management-transformation-policies.md#Findandreplacestringinbody) -bir istek veya Yanıt alt dizesini bulur ve farklı bir alt dizeyle değiştirir.
 
--   [Maske URL'leri içeriğinde](api-management-transformation-policies.md#MaskURLSContent) -yanıta bağlantı (maskeleri)'yeniden yazar, böylece eşdeğer bağlantı ağ geçidi üzerinden işaret gövde.
+-   Yanıt gövdesindeki içerik-yazma (maske) bağlantılarında [bulunan URL 'leri](api-management-transformation-policies.md#MaskURLSContent) , ağ geçidi aracılığıyla eşdeğer bağlantıya işaret eden şekilde maskelerle.
 
--   [Arka uç Hizmeti'ni](api-management-transformation-policies.md#SetBackendService) -arka uç hizmeti gelen bir istek için değiştirir.
+-   [Arka uç hizmetini ayarlama](api-management-transformation-policies.md#SetBackendService) -gelen istek için arka uç hizmetini değiştirir.
 
--   [Gövde ayarlamak](api-management-transformation-policies.md#SetBody) -ileti gövdesini gelen ve giden istekler için ayarlar.
+-   [Gövde ayarla](api-management-transformation-policies.md#SetBody) -ileti gövdesini gelen ve giden istekler için ayarlar.
 
--   [Set HTTP üstbilgisi](api-management-transformation-policies.md#SetHTTPheader) - bir var olan yanıt ve/veya istek üst bilgisi için bir değer atar veya yeni bir yanıt ve/veya istek üstbilgisi ekler.
+-   [Http üstbilgisini ayarla](api-management-transformation-policies.md#SetHTTPheader) -mevcut bir yanıt ve/veya istek üstbilgisine bir değer atar veya yeni bir yanıt ve/veya istek üst bilgisi ekler.
 
--   [Sorgu dizesi parametresini ayarlayın](api-management-transformation-policies.md#SetQueryStringParameter) - ekler, değerini değiştirir veya istek sorgu dizesi parametresi siler.
+-   [Sorgu dizesi parametresini ayarla](api-management-transformation-policies.md#SetQueryStringParameter) -ekler, değerini değiştirir veya istek sorgu dizesi parametresini siler.
 
--   [URL yeniden yazma](api-management-transformation-policies.md#RewriteURL) -istek URL'si, genel formu web hizmeti tarafından beklenen biçime dönüştürür.
+-   [Yeniden yazma URL 'si](api-management-transformation-policies.md#RewriteURL) -BIR istek URL 'sini ortak formdan Web hizmeti tarafından beklenen biçime dönüştürür.
 
--   [Bir XSLT kullanarak XML dönüştürme](api-management-transformation-policies.md#XSLTransform) -XSL dönüşümü için XML istek veya yanıt gövdesi içinde geçerlidir.
+-   [XSLT kullanarak XML dönüştürme](api-management-transformation-policies.md#XSLTransform) -istek veya yanıt gövdesinde XML 'e bir XSL dönüştürmesi uygular.
 
-##  <a name="ConvertJSONtoXML"></a> JSON XML'ye dönüştürür.
- `json-to-xml` İlkeyi JSON'dan istek veya yanıt gövdesi XML biçimine dönüştürür.
+##  <a name="ConvertJSONtoXML"></a>JSON 'ı XML 'e Dönüştür
+ İlke `json-to-xml` , JSON 'dan XML 'e bir istek veya yanıt gövdesi dönüştürür.
 
-### <a name="policy-statement"></a>İlke bildirimi
+### <a name="policy-statement"></a>İlke ekstresi
 
 ```xml
 <json-to-xml apply="always | content-type-json" consider-accept-header="true | false" parse-date="true | false"/>
@@ -72,27 +72,27 @@ Bu konu aşağıdaki API Management ilkeleri bir başvuru sağlar. Ekleme ve ilk
 
 |Ad|Açıklama|Gerekli|
 |----------|-----------------|--------------|
-|JSON xml|Kök öğe.|Evet|
+|JSON-XML|Kök öğe.|Evet|
 
 ### <a name="attributes"></a>Öznitelikler
 
 |Ad|Açıklama|Gerekli|Varsayılan|
 |----------|-----------------|--------------|-------------|
-|Uygula|Öznitelik aşağıdaki değerlerden birine ayarlanmalıdır.<br /><br /> -her zaman - her zaman dönüştürme uygulanır.<br />yanıt Content-Type üst bilgisi JSON varlığını gösteriyorsa - içerik-türü-json - Dönüştür.|Evet|Yok|
-|göz önünde bulundurun kabul-üstbilgisi|Öznitelik aşağıdaki değerlerden birine ayarlanmalıdır.<br /><br /> -true - JSON Accept üst bilgisi istekte istenirse dönüştürme uygulanır.<br />-yanlış - dönüştürme her zaman geçerlidir.|Hayır|true|
-|Ayrıştırma tarihi|Ayarlandığında `false` tarih değerlerini dönüştürme sırasında yalnızca kopyalanır|Hayır|true|
+|uygula|Özniteliğin aşağıdaki değerlerden birine ayarlanması gerekir.<br /><br /> -Always-her zaman dönüştürme uygula.<br />-Content-Type-JSON-yalnızca Response Content-Type üstbilgisi JSON varlığını gösteriyorsa Dönüştür.|Evet|Yok|
+|göz önünde bulundurun-üst bilgi|Özniteliğin aşağıdaki değerlerden birine ayarlanması gerekir.<br /><br /> -true-istek Accept üst bilgisinde JSON isteniyorsa dönüştürme uygulayın.<br />-false-dönüştürmeyi her zaman Uygula.|Hayır|true|
+|ayrıştırma tarihi|`false` Date değerleri ayarlandığında, dönüştürme sırasında yalnızca kopyalanır|Hayır|true|
 
 ### <a name="usage"></a>Kullanım
- Bu ilke aşağıdaki ilkesinde kullanılabilir [bölümleri](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamları](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve kapsamlarda kullanılabilir. [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)
 
--   **İlke bölümler:** gelen, giden, hata
+-   **İlke bölümleri:** gelen, giden, hata üzerine
 
--   **İlke kapsamları:** genel, ürün, API, işlemi
+-   **İlke kapsamları:** tüm kapsamlar
 
-##  <a name="ConvertXMLtoJSON"></a> XML, JSON biçimine Dönüştür
- `xml-to-json` İlkeyi XML'den bir istek veya yanıt gövdesi JSON değerine dönüştürür. Bu ilke, yalnızca XML arka uç web hizmetlerini temel alarak API'leri modernize etme kullanılabilir.
+##  <a name="ConvertXMLtoJSON"></a>XML 'i JSON 'ye Dönüştür
+ `xml-to-json` İlke bir isteği veya Yanıt gövdesini XML 'den JSON 'a dönüştürür. Bu ilke, yalnızca XML arka uç Web Hizmetleri tabanlı API 'Leri modernleştirin için kullanılabilir.
 
-### <a name="policy-statement"></a>İlke bildirimi
+### <a name="policy-statement"></a>İlke ekstresi
 
 ```xml
 <xml-to-json kind="javascript-friendly | direct" apply="always | content-type-xml" consider-accept-header="true | false"/>
@@ -116,27 +116,27 @@ Bu konu aşağıdaki API Management ilkeleri bir başvuru sağlar. Ekleme ve ilk
 
 |Ad|Açıklama|Gerekli|
 |----------|-----------------|--------------|
-|XML-json|Kök öğe.|Evet|
+|XML-JSON|Kök öğe.|Evet|
 
 ### <a name="attributes"></a>Öznitelikler
 
 |Ad|Açıklama|Gerekli|Varsayılan|
 |----------|-----------------|--------------|-------------|
-|tür|Öznitelik aşağıdaki değerlerden birine ayarlanmalıdır.<br /><br /> javascript-dostu - dönüştürülen JSON, JavaScript geliştiricileri için kolay bir forma sahiptir.<br />-doğrudan - özgün XML belgesinin yapısına dönüştürülen JSON yansıtır.|Evet|Yok|
-|Uygula|Öznitelik aşağıdaki değerlerden birine ayarlanmalıdır.<br /><br /> -her zaman - her zaman Dönüştür.<br />yanıt Content-Type üst bilgisi XML varlığını gösteriyorsa - içerik-türü-xml - Dönüştür.|Evet|Yok|
-|göz önünde bulundurun kabul-üstbilgisi|Öznitelik aşağıdaki değerlerden birine ayarlanmalıdır.<br /><br /> Accept üst bilgisi istekte XML istenirse - true - dönüştürme uygulanır.<br />-yanlış - dönüştürme her zaman geçerlidir.|Hayır|true|
+|denetlenmesi|Özniteliğin aşağıdaki değerlerden birine ayarlanması gerekir.<br /><br /> -JavaScript kullanımı kolay-dönüştürülen JSON, JavaScript geliştiricilerine kolay bir form içerir.<br />-Direct-dönüştürülmüş JSON orijinal XML belgesinin yapısını yansıtır.|Evet|Yok|
+|uygula|Özniteliğin aşağıdaki değerlerden birine ayarlanması gerekir.<br /><br /> -her zaman daima Dönüştür.<br />-Content-Type-XML-yalnızca Response Content-Type üstbilgisi XML varlığını gösteriyorsa Dönüştür.|Evet|Yok|
+|göz önünde bulundurun-üst bilgi|Özniteliğin aşağıdaki değerlerden birine ayarlanması gerekir.<br /><br /> -true-istek kabul üst bilgisinde XML isteniyorsa dönüştürmeyi Uygula.<br />-false-dönüştürmeyi her zaman Uygula.|Hayır|true|
 
 ### <a name="usage"></a>Kullanım
- Bu ilke aşağıdaki ilkesinde kullanılabilir [bölümleri](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamları](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve kapsamlarda kullanılabilir. [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)
 
--   **İlke bölümler:** gelen, giden, hata
+-   **İlke bölümleri:** gelen, giden, hata üzerine
 
--   **İlke kapsamları:** genel, ürün, API, işlemi
+-   **İlke kapsamları:** tüm kapsamlar
 
-##  <a name="Findandreplacestringinbody"></a> Bul ve Değiştir gövdedeki dizeyi
- `find-and-replace` İlke istek veya yanıtı alt dizeyi bulur ve farklı bir dizeyle değiştirir.
+##  <a name="Findandreplacestringinbody"></a>Gövdede dize bul ve Değiştir
+ `find-and-replace` İlke bir istek veya Yanıt alt dizesi bulur ve farklı bir alt dizeyle değiştirir.
 
-### <a name="policy-statement"></a>İlke bildirimi
+### <a name="policy-statement"></a>İlke ekstresi
 
 ```xml
 <find-and-replace from="what to replace" to="replacement" />
@@ -152,29 +152,29 @@ Bu konu aşağıdaki API Management ilkeleri bir başvuru sağlar. Ekleme ve ilk
 
 |Ad|Açıklama|Gerekli|
 |----------|-----------------|--------------|
-|Bul ve Değiştir|Kök öğe.|Evet|
+|bul ve Değiştir|Kök öğe.|Evet|
 
 ### <a name="attributes"></a>Öznitelikler
 
 |Ad|Açıklama|Gerekli|Varsayılan|
 |----------|-----------------|--------------|-------------|
 |from|Aranacak dize.|Evet|Yok|
-|-|Yeni dize. Arama dizesini kaldırmak için bir sıfır uzunluk değiştirme dizesini belirtin.|Evet|Yok|
+|to|Değiştirme dizesi. Arama dizesini kaldırmak için sıfır uzunluğunda bir değiştirme dizesi belirtin.|Evet|Yok|
 
 ### <a name="usage"></a>Kullanım
- Bu ilke aşağıdaki ilkesinde kullanılabilir [bölümleri](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamları](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve kapsamlarda kullanılabilir. [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)
 
--   **İlke bölümler:** gelen, giden arka uç, hata
+-   **İlke bölümleri:** gelen, giden, arka uç, hata durumunda
 
--   **İlke kapsamları:** genel, ürün, API, işlemi
+-   **İlke kapsamları:** tüm kapsamlar
 
-##  <a name="MaskURLSContent"></a> İçerik maskesi URL'leri
- `redirect-content-urls` İlke eşdeğer bağlantı ağ geçidi üzerinden üzerine böylece yanıt gövdesi (maskeleri) bağlantıları yeniden yazar. Giden bölümünde, yanıt gövdesi bağlantılar ağ geçidine noktası olacak şekilde yeniden yazmak için kullanın. Gelen bölümünde karşı efekt için kullanın.
+##  <a name="MaskURLSContent"></a>İçerikte maske URL 'Leri
+ Ağ Geçidi aracılığıyla eşdeğer bağlantıyı işaret ettikleri için, yanıt gövdesindeki ilkeyenidenyazma(maskeleri)bağlantıları.`redirect-content-urls` Yanıt gövdesi bağlantılarını, ağ geçidine işaret etmek üzere yeniden yazmak için çıkış bölümünde kullanın. Ters bir efekt için gelen bölümünde kullanın.
 
 > [!NOTE]
->  Bu ilkeyi herhangi bir üst bilgi değeri gibi değiştirmez `Location` üstbilgileri. Üstbilgi değerlerini değiştirmek için kullanın [üst bilgi ayarlama](api-management-transformation-policies.md#SetHTTPheader) ilkesi.
+>  Bu ilke, `Location` üst bilgiler gibi üst bilgi değerlerini değiştirmez. Üst bilgi değerlerini değiştirmek için, [Set-Header](api-management-transformation-policies.md#SetHTTPheader) ilkesini kullanın.
 
-### <a name="policy-statement"></a>İlke bildirimi
+### <a name="policy-statement"></a>İlke ekstresi
 
 ```xml
 <redirect-content-urls />
@@ -190,32 +190,32 @@ Bu konu aşağıdaki API Management ilkeleri bir başvuru sağlar. Ekleme ve ilk
 
 |Ad|Açıklama|Gerekli|
 |----------|-----------------|--------------|
-|yeniden yönlendirme içerik URL'leri|Kök öğe.|Evet|
+|yeniden yönlendirme-içerik-URL 'ler|Kök öğe.|Evet|
 
 ### <a name="usage"></a>Kullanım
- Bu ilke aşağıdaki ilkesinde kullanılabilir [bölümleri](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamları](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve kapsamlarda kullanılabilir. [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)
 
--   **İlke bölümler:** gelen, giden
+-   **İlke bölümleri:** gelen, giden
 
--   **İlke kapsamları:** genel, ürün, API, işlemi
+-   **İlke kapsamları:** tüm kapsamlar
 
-##  <a name="SetBackendService"></a> Arka uç hizmet belirleme
- Kullanım `set-backend-service` bu işlem için API ayarlarında belirtilenden farklı bir arka uca gelen bir isteği yönlendirmek için ilke. Bu ilke, ilkesinde belirtilen bir gelen istek arka uç hizmeti temel URL'sini değiştirir.
+##  <a name="SetBackendService"></a>Arka uç hizmetini ayarla
+ Gelen bir isteği, bu işlem için API ayarlarında belirtilenden farklı bir arka uca yeniden yönlendirmek için ilkeyikullanın.`set-backend-service` Bu ilke, gelen isteğin arka uç hizmeti taban URL 'sini ilkede belirtilen bir şekilde değiştirir.
 
-### <a name="policy-statement"></a>İlke bildirimi
+### <a name="policy-statement"></a>İlke ekstresi
 
 ```xml
 <set-backend-service base-url="base URL of the backend service" />
 ```
 
-or
+veya
 
 ```xml
 <set-backend-service backend-id="identifier of the backend entity specifying base URL of the backend service" />
 ```
 
 > [!NOTE]
-> Arka uç varlık yönetimi yönetilebilir [API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend) ve [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement).
+> Arka uç varlıkları, Yönetim [API 'si](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend) ve [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement)aracılığıyla yönetilebilir.
 
 ### <a name="example"></a>Örnek
 
@@ -237,13 +237,13 @@ or
     </outbound>
 </policies>
 ```
-Bu örnekte, arka uç hizmet ilkesi ayarlama istekleri farklı arka uç hizmeti bir API'de belirtilen sorgu dizesinde geçirilen sürüm değere göre yönlendirir.
+Bu örnekte, arka uç hizmet ilkesi, sorgu dizesinde geçirilen sürüm değerine bağlı olarak istekleri API 'de belirtilenden farklı bir arka uç hizmetine yönlendirir.
 
-Başlangıçta arka uç hizmeti temel URL'si, API ayarlarından elde edilir. Bu nedenle istek URL'si `https://contoso.azure-api.net/api/partners/15?version=2013-05&subscription-key=abcdef` olur `http://contoso.com/api/10.4/partners/15?version=2013-05&subscription-key=abcdef` burada `http://contoso.com/api/10.4/` API ayarlarında belirtilen arka uç hizmeti URL'si.
+Başlangıçta arka uç hizmeti temel URL 'si API ayarlarından türetilir. Bu nedenle, istek `https://contoso.azure-api.net/api/partners/15?version=2013-05&subscription-key=abcdef` URL `http://contoso.com/api/10.4/partners/15?version=2013-05&subscription-key=abcdef` `http://contoso.com/api/10.4/` 'si API ayarlarında arka uç hizmeti URL 'si olarak belirtilir.
 
-Zaman [< seçin\> ](api-management-advanced-policies.md#choose) ilke bildirimi uygulandığı arka uç hizmeti temel URL'si ya da yeniden değişebilir `http://contoso.com/api/8.2` veya `http://contoso.com/api/9.1`sürüm istek sorgu parametresi değeri bağlı olarak. Örneğin, değer ise `"2013-15"` son istek URL'si olur `http://contoso.com/api/8.2/partners/15?version=2013-05&subscription-key=abcdef`.
+< Select Policy deyimin [seçimi\> ](api-management-advanced-policies.md#choose) uygulandığında, arka uç hizmeti taban URL 'si, sürüm isteği sorgu parametresinin `http://contoso.com/api/8.2` değerine `http://contoso.com/api/9.1`bağlı olarak ya da olarak yeniden değişebilir. Örneğin, değer son istek URL 'si `"2013-15"` ise olur. `http://contoso.com/api/8.2/partners/15?version=2013-05&subscription-key=abcdef`
 
-Daha fazla dönüştürme isteği olup olmadığını istenen, diğer [dönüştürme ilkeleri](api-management-transformation-policies.md#TransformationPolicies) kullanılabilir. Örneğin, istek sürüm belirli arka uca yönlendirilmesini artık sürümü sorgu parametresi kaldırmak için [ayarlamak sorgu dizesi parametresi](api-management-transformation-policies.md#SetQueryStringParameter) İlkesi artık yedekli version özniteliği kaldırmak için kullanılabilir.
+İsteğin daha fazla dönüşümü isteniyorsa, diğer [dönüştürme ilkeleri](api-management-transformation-policies.md#TransformationPolicies) de kullanılabilir. Örneğin, isteğin sürüme özgü bir arka uca yönlendirildiğini artık sürüm sorgu parametresini kaldırmak için, artık gereksiz sürüm özniteliğini kaldırmak üzere [sorgu dizesi ayarla parametresi](api-management-transformation-policies.md#SetQueryStringParameter) ilkesi kullanılabilir.
 
 ### <a name="example"></a>Örnek
 
@@ -257,7 +257,7 @@ Daha fazla dönüştürme isteği olup olmadığını istenen, diğer [dönüşt
     </outbound>
 </policies>
 ```
-Bu örnekte, ilke UserID sorgu dizesi bölüm anahtarı olarak ve birincil çoğaltmasını kullanarak bir service fabric arka ucu için istek yönlendirir.
+Bu örnekte ilke, bir Service Fabric arka ucuna, bölüm anahtarı olarak UserID sorgu dizesini ve bölümün birincil çoğaltmasını kullanarak isteği yönlendirir.
 
 ### <a name="elements"></a>Öğeler
 
@@ -269,37 +269,37 @@ Bu örnekte, ilke UserID sorgu dizesi bölüm anahtarı olarak ve birincil çoğ
 
 |Ad|Açıklama|Gerekli|Varsayılan|
 |----------|-----------------|--------------|-------------|
-|temel url|Yeni arka uç hizmeti temel URL'si.|Aşağıdakilerden birini `base-url` veya `backend-id` mevcut olması gerekir.|Yok|
-|arka uç kimliği|Yönlendirmek için arka uç tanımlayıcısı. (Arka uç varlıkları aracılığıyla yönetilir [API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend) ve [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement).)|Aşağıdakilerden birini `base-url` veya `backend-id` mevcut olması gerekir.|Yok|
-|SF bölüm anahtarı|Yalnızca arka uç Service Fabric hizmeti ve 'backend-id' kullanarak belirtilen olduğunda geçerlidir. Ad çözümleme hizmeti belirli bir bölümünden çözmek için kullanılır.|Hayır|Yok|
-|SF çoğaltma türü|Yalnızca arka uç Service Fabric hizmeti ve 'backend-id' kullanarak belirtilen olduğunda geçerlidir. Denetimler bir bölüm için birincil veya ikincil çoğaltma isteği tamamlamalıdır. |Hayır|Yok|
-|SF çözümleme durumu|Yalnızca arka uç Service Fabric hizmeti olduğunda geçerlidir. Service Fabric arka uç çağrısı ile yeni çözüm yinelenmesi varsa tanımlama koşulu.|Hayır|Yok|
-|SF-service-örnek-name|Yalnızca arka uç Service Fabric hizmeti olduğunda geçerlidir. Hizmet örnekleri zamanında değiştirmesine olanak verir. |Hayır|Yok|
-|SF dinleyici adı|Yalnızca arka uç Service Fabric hizmeti ve 'backend-id' kullanarak belirtilen olduğunda geçerlidir. Service Fabric güvenilir hizmetler, bir hizmet birden çok dinleyici oluşturmanıza olanak sağlar. Bu öznitelik, bir güvenilir hizmet arka ucu birden fazla dinleyici sahip olduğunda, belirli bir dinleyici seçmek için kullanılır. Bu öznitelik belirtilmezse, API Management'ın adı olmadan bir dinleyici kullanmayı dener. Adı olmayan bir dinleyici Reliable Services için yalnızca bir dinleyicisi olması normaldir. |Hayır|Yok|
+|taban URL 'si|Yeni arka uç hizmeti temel URL 'SI.|`base-url` Bunlardan`backend-id` biri mevcut olmalıdır.|Yok|
+|arka uç kimliği|Yönlendirileceği arka ucun tanımlayıcısı. (Arka uç varlıkları [API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend) ve [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement)aracılığıyla yönetilir.)|`base-url` Bunlardan`backend-id` biri mevcut olmalıdır.|Yok|
+|BT-bölüm-anahtar|Yalnızca arka uç bir Service Fabric hizmeti olduğunda ve ' arka uç kimliği ' kullanılarak belirtildiğinde geçerlidir. Ad çözümleme hizmetinden belirli bir bölümü çözümlemek için kullanılır.|Hayır|Yok|
+|SF-Replication-Type|Yalnızca arka uç bir Service Fabric hizmeti olduğunda ve ' arka uç kimliği ' kullanılarak belirtildiğinde geçerlidir. İsteğin bir bölümün birincil veya ikincil çoğaltmaya gitmesi gerekip gerekmediğini denetler. |Hayır|Yok|
+|SF-Resolve-koşul|Yalnızca arka uç bir Service Fabric hizmeti olduğunda geçerlidir. Service Fabric arka uca çağrının yeni çözümlenerek tekrarlanması gerektiğini belirleyen koşul.|Hayır|Yok|
+|SF-Service-örnek-adı|Yalnızca arka uç bir Service Fabric hizmeti olduğunda geçerlidir. Çalışma zamanında hizmet örneklerinin değiştirilmesine izin verir. |Hayır|Yok|
+|SF-Listener-adı|Yalnızca arka uç bir Service Fabric hizmeti olduğunda ve ' arka uç kimliği ' kullanılarak belirtildiğinde geçerlidir. Service Fabric Reliable Services, bir hizmette birden çok dinleyici oluşturmanıza olanak sağlar. Bu öznitelik, bir arka uç güvenilir hizmeti birden fazla dinleyiciye sahip olduğunda belirli bir dinleyiciyi seçmek için kullanılır. Bu öznitelik belirtilmemişse API Management, ad olmadan bir dinleyici kullanmayı dener. Adı olmayan bir dinleyici, yalnızca bir dinleyici içeren Reliable Services için tipik bir addır. |Hayır|Yok|
 
 ### <a name="usage"></a>Kullanım
- Bu ilke aşağıdaki ilkesinde kullanılabilir [bölümleri](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamları](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve kapsamlarda kullanılabilir. [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)
 
--   **İlke bölümler:** gelen, arka uç
+-   **İlke bölümleri:** gelen, arka uç
 
--   **İlke kapsamları:** genel, ürün, API, işlemi
+-   **İlke kapsamları:** tüm kapsamlar
 
-##  <a name="SetBody"></a> Gövdeyi Ayarla
- Kullanım `set-body` gelen ve giden istekler için ileti gövdesi ayarlamak için ilke. İleti gövdesi kullanabileceğiniz erişmeye `context.Request.Body` özelliği veya `context.Response.Body`ilke gelen veya giden bölümünde olmasına bağlı olarak.
+##  <a name="SetBody"></a>Gövde ayarla
+ Gelen ve giden istekler için ileti gövdesini ayarlamak üzere ilkesinikullanın.`set-body` İleti gövdesine erişmek için, ilkenin gelen veya giden `context.Request.Body` bölümünde olup olmadığına `context.Response.Body`bağlı olarak özelliğini veya ' i kullanabilirsiniz.
 
 > [!IMPORTANT]
->  Varsayılan olarak, ileti eriştiğinizde kullanarak gövde unutmayın `context.Request.Body` veya `context.Response.Body`, özgün ileti gövdesi kaybolur ve gövdesine ifadede geri döndürerek ayarlamanız gerekir. Gövde içeriği korumak için ayarlanmış `preserveContent` parametresi `true` ileti erişirken. Varsa `preserveContent` ayarlanır `true` ve farklı bir gövde döndürülen ifade tarafından döndürülen gövde kullanılır.
-> 
->  Lütfen kullanılırken aşağıdaki önemli noktalar unutmayın `set-body` ilkesi.
-> 
-> - Kullanıyorsanız `set-body` İlkesi ayarlamak için gerekmez yeni veya güncelleştirilmiş bir gövde dönüş `preserveContent` için `true` çünkü yeni gövde içeriğini açıkça sağlamış olursunuz.
->   -   Olduğundan yanıt henüz gelen işlem hattındaki bir yanıt içeriği koruma mantıklı değildir.
->   -   Giden işlem hattındaki bir isteğin içerik koruma, çünkü istek zaten arka ucuna bu noktada gönderildi doesn't make Sense.
->   -   İleti gövdesi yok ise bu ilkeyi kullandıysanız, bir gelen alın, örneğin bir özel durum oluşturulur.
+>  Varsayılan olarak, veya `context.Request.Body` `context.Response.Body`kullanarak ileti gövdesine eriştiğinizde, özgün ileti gövdesinin kaybedildiğini ve gövdeye geri dönerek gövde döndürülerek ayarlanması gerektiğini unutmayın. Gövde içeriğini korumak için, iletiye erişirken `preserveContent` parametresini olarak `true` ayarlayın. `preserveContent` Olarak`true` ayarlıysa ve ifade tarafından farklı bir gövde döndürülürse, döndürülen gövde kullanılır.
+>
+>  Lütfen `set-body` ilkeyi kullanırken aşağıdaki noktalara dikkat edin.
+>
+> - Yeni veya güncelleştirilmiş bir gövdeye `set-body` geri dönmek için ilkeyi kullanıyorsanız, yeni gövde içeriğini açıkça tedarik ettiğiniz için `preserveContent` `true` ' a ayarlamanız gerekmez.
+>   -   Henüz yanıt bulunmadığından, gelen işlem hattındaki bir yanıtın içeriğini korumak anlamlı değildir.
+>   -   İstek bu noktada arka uca zaten gönderildiğinden, giden işlem hattındaki bir isteğin içeriğini korumak mantıklı değildir.
+>   -   Bu ilke, bir ileti gövdesi olmadığında (örneğin, gelen GET içinde kullanılırsa) bir özel durum oluşturulur.
 
- Daha fazla bilgi için `context.Request.Body`, `context.Response.Body`ve `IMessage` bölümlerine [bağlam değişkeni](api-management-policy-expressions.md#ContextVariables) tablo.
+ Daha `context.Request.Body`fazla bilgi için [bağlam değişkeni](api-management-policy-expressions.md#ContextVariables) tablosundaki `context.Response.Body`, ve `IMessage` bölümlerine bakın.
 
-### <a name="policy-statement"></a>İlke bildirimi
+### <a name="policy-statement"></a>İlke ekstresi
 
 ```xml
 <set-body>new body value as text</set-body>
@@ -307,13 +307,13 @@ Bu örnekte, ilke UserID sorgu dizesi bölüm anahtarı olarak ve birincil çoğ
 
 ### <a name="examples"></a>Örnekler
 
-#### <a name="literal-text-example"></a>Örnek metin
+#### <a name="literal-text-example"></a>Değişmez değer metin örneği
 
 ```xml
 <set-body>Hello world!</set-body>
 ```
 
-#### <a name="example-accessing-the-body-as-a-string-note-that-we-are-preserving-the-original-request-body-so-that-we-can-access-it-later-in-the-pipeline"></a>Örnek, dize olarak gövdesi erişme. Biz bunu daha sonra işlem hattında erişebilmesi için biz özgün istek gövdesi koruma olduğunu unutmayın.
+#### <a name="example-accessing-the-body-as-a-string-note-that-we-are-preserving-the-original-request-body-so-that-we-can-access-it-later-in-the-pipeline"></a>Bir dize olarak gövdeye erişen örnek. İşlem hattında daha sonra erişebilmemiz için özgün istek gövdesini koruma yaptık.
 
 ```xml
 <set-body>
@@ -327,7 +327,7 @@ Bu örnekte, ilke UserID sorgu dizesi bölüm anahtarı olarak ve birincil çoğ
 </set-body>
 ```
 
-#### <a name="example-accessing-the-body-as-a-jobject-note-that-since-we-are-not-reserving-the-original-request-body-accessing-it-later-in-the-pipeline-will-result-in-an-exception"></a>Örnek bir JObject olarak gövde erişme. Biz özgün istek gövdesi rezerve edersiniz değil olduğundan, daha sonra işlem hattında erişen bir özel durum sonuçlanacağını unutmayın.
+#### <a name="example-accessing-the-body-as-a-jobject-note-that-since-we-are-not-reserving-the-original-request-body-accessing-it-later-in-the-pipeline-will-result-in-an-exception"></a>Bir JObject olarak gövdeye erişen örnek. Özgün istek gövdesini ayırdığımızdan, daha sonra işlem hattının daha sonra erişilmesi için bir özel durumla sonuçlandığına unutmayın.
 
 ```xml
 <set-body> 
@@ -342,8 +342,8 @@ Bu örnekte, ilke UserID sorgu dizesi bölüm anahtarı olarak ve birincil çoğ
 
 ```
 
-#### <a name="filter-response-based-on-product"></a>Yanıt ürüne göre filtrele
- Bu örnekte, veri öğeleri kullanırken arka uç hizmetinden alınan yanıtı kaldırarak içerik filtreleme yapma işlemi açıklanır `Starter` ürün. Yapılandırma ve bu ilkeyi kullanan bir gösterimi için bkz. [Cloud Cover bölümü 177: Daha fazla API yönetimi özellikleri ile Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) ve 34:30 için ileri sarma. Başlangıç 31:50 özetini görmek [koyu Gök tahmin API](https://developer.forecast.io/) bu tanıtım için kullanılır.
+#### <a name="filter-response-based-on-product"></a>Yanıtı ürüne göre filtrele
+ Bu örnek, `Starter` ürünü kullanırken arka uç hizmetinden alınan yanıttan veri öğelerini kaldırarak içerik filtrelemenin nasıl gerçekleştirileceğini gösterir. Bu ilkeyi yapılandırma ve kullanma tanıtımı için bkz [. bulut kapak bölümü 177: Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) ile daha fazla API Management özellik ve 34:30 'e ileri sarma. Bu demo için kullanılan [koyu gök tahmini API 'sine](https://developer.forecast.io/) ilişkin bir genel bakış görmek için 31:50 adresinden başlayın.
 
 ```xml
 <!-- Copy this snippet into the outbound section to remove a number of data elements from the response received from the backend service based on the name of the api product -->
@@ -361,18 +361,18 @@ Bu örnekte, ilke UserID sorgu dizesi bölüm anahtarı olarak ve birincil çoğ
 </choose>
 ```
 
-### <a name="using-liquid-templates-with-set-body"></a>Liquid şablonları kümesi gövde ile kullanma
-`set-body` İlkesi kullanmak için yapılandırılabilir [Liquid](https://shopify.github.io/liquid/basics/introduction/) bir istek veya yanıt gövdesi dönüştürmek için şablon oluşturma dili. Bu, ileti biçimi tamamen yeniden şekillendirmeniz gerekiyorsa çok etkili olabilir.
+### <a name="using-liquid-templates-with-set-body"></a>Set Body ile sıvı şablonları kullanma
+İlke, bir isteğin veya yanıtın gövdesini dönüştürmek için likit şablon oluşturma dilini kullanacak şekilde yapılandırılabilir. [](https://shopify.github.io/liquid/basics/introduction/) `set-body` İletinizin biçimini tamamen yeniden şekillendirmenizi gerektiren bu, çok etkili olabilir.
 
 > [!IMPORTANT]
-> Sıvı uygulaması içinde kullanılan `set-body` İlkesi ', C# modu' yapılandırılır. Bu filtreleme gibi şeyler olduğunda özellikle önemlidir. Örnek olarak, bir tarih filtresi kullanarak Pascal kullanılmasını gerektiren büyük/küçük harf ve C# tarih biçimlendirme örn:
+> `set-body` İlkede kullanılan likit 'in uygulanması 'C# Mode ' içinde yapılandırılmıştır. Filtreleme gibi şeyler yaparken bu özellikle önemlidir. Örnek olarak, bir tarih filtresi kullanmak için, Pascal büyük/küçük harf ve C# Tarih biçimlendirmesinin kullanılması gerekir. Örneğin:
 >
-> {{body.foo.startDateTime| Date:"yyyyMMddTHH:mm:ddZ"}}
+> {{Body. foo. startDateTime | Tarih: "yyyyMMddTHH: mm: ddZ"}}
 
 > [!IMPORTANT]
-> Liquid şablonu kullanarak bir XML gövdesi doğru bir şekilde bağlamak için kullanılması bir `set-header` Content-Type ayarlamak için ilke veya uygulama/xml, metin/xml (veya tüm türü ile biten + xml); bir JSON gövdesi için uygulama/json olmalıdır metin/json (veya herhangi bir türü ile biten + JSON için).
+> Sıvı şablonunu kullanarak bir XML gövdesine doğru bir şekilde bağlamak için bir `set-header` ilke kullanarak içerik türünü Application/XML, Text/XML (veya + XML ile biten herhangi bir tür) olarak ayarlayın; bir JSON gövdesi için uygulama/JSON, metin/JSON (veya + ile biten herhangi bir tür) olmalıdır. JSON).
 
-#### <a name="convert-json-to-soap-using-a-liquid-template"></a>JSON için sıvı şablon kullanarak SOAP Dönüştür
+#### <a name="convert-json-to-soap-using-a-liquid-template"></a>Sıvı şablonu kullanarak JSON 'ı SOAP 'ye dönüştürme
 ```xml
 <set-body template="liquid">
     <soap:Envelope xmlns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
@@ -385,7 +385,7 @@ Bu örnekte, ilke UserID sorgu dizesi bölüm anahtarı olarak ve birincil çoğ
 </set-body>
 ```
 
-#### <a name="transform-json-using-a-liquid-template"></a>Liquid şablon kullanarak JSON dönüştürmesi Uygula
+#### <a name="transform-json-using-a-liquid-template"></a>Sıvı şablonu kullanarak JSON dönüştürme
 ```xml
 {
 "order": {
@@ -399,15 +399,15 @@ Bu örnekte, ilke UserID sorgu dizesi bölüm anahtarı olarak ve birincil çoğ
 
 |Ad|Açıklama|Gerekli|
 |----------|-----------------|--------------|
-|gövdeyi Ayarla|Kök öğe. Gövde metni veya bir gövde döndüren bir ifade içeriyor.|Evet|
+|gövde kümesi|Kök öğe. Gövde metnini veya gövde döndüren ifadeleri içerir.|Evet|
 
 ### <a name="properties"></a>Özellikler
 
 |Ad|Açıklama|Gerekli|Varsayılan|
 |----------|-----------------|--------------|-------------|
-|şablon|İlkesi ayarlama gövdesi içinde çalışacağı şablon oluşturma modunu değiştirmek için kullanılır. Şu anda desteklenen tek değerdir:<br /><br />-liquid - gövdesi İlkesi ayarlama liquid şablon oluşturma altyapısı da kullanır |Hayır||
+|şablon|Set Body ilkesinin çalışacağı şablon oluşturma modunu değiştirmek için kullanılır. Şu anda desteklenen tek değer:<br /><br />-sıvı-Set Body ilkesi likit şablon oluşturma altyapısını kullanacaktır |Hayır||
 
-İstek ve yanıt hakkında bilgi erişmek için sıvı şablon aşağıdaki özelliklere sahip bir bağlam nesnesi bağlayabilirsiniz: <br />
+İstek ve yanıt hakkındaki bilgilere erişmek için, sıvı şablonu aşağıdaki özelliklerle bir bağlam nesnesine bağlanabilir: <br />
 <pre>context.
     Request.
         Url
@@ -448,18 +448,18 @@ OriginalUrl.
 
 
 ### <a name="usage"></a>Kullanım
- Bu ilke aşağıdaki ilkesinde kullanılabilir [bölümleri](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamları](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve kapsamlarda kullanılabilir. [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)
 
--   **İlke bölümler:** gelen, giden arka uç
+-   **İlke bölümleri:** gelen, giden, arka uç
 
--   **İlke kapsamları:** genel, ürün, API, işlemi
+-   **İlke kapsamları:** tüm kapsamlar
 
-##  <a name="SetHTTPheader"></a> Set HTTP üstbilgisi
- `set-header` İlke bir var olan yanıt ve/veya istek üst bilgisi için bir değer atar veya yeni bir yanıt ve/veya istek üstbilgisi ekler.
+##  <a name="SetHTTPheader"></a>HTTP üstbilgisini ayarla
+ İlke `set-header` , var olan bir yanıt ve/veya istek üstbilgisine bir değer atar veya yeni bir yanıt ve/veya istek üst bilgisi ekler.
 
- HTTP üstbilgilerin listesi HTTP iletisine ekler. Bu ilke, gelen bir işlem hattında yerleştirildiğinde, hedef hizmete geçirilen istek için HTTP üstbilgilerini ayarlar. Bu ilke, bir giden işlem hattında yerleştirildiğinde, ağ geçidinin istemciye gönderilen yanıt için HTTP üstbilgilerini ayarlar.
+ Http üstbilgilerinin bir listesini bir HTTP iletisine ekler. Gelen bir işlem hattına yerleştirildiğinde, bu ilke hedef hizmete geçirilmekte olan isteğin HTTP üst bilgilerini ayarlar. Giden bir işlem hattına yerleştirildiğinde, bu ilke ağ geçidinin istemcisine gönderilen yanıtın HTTP üst bilgilerini ayarlar.
 
-### <a name="policy-statement"></a>İlke bildirimi
+### <a name="policy-statement"></a>İlke ekstresi
 
 ```xml
 <set-header name="header name" exists-action="override | skip | append | delete">
@@ -477,8 +477,8 @@ OriginalUrl.
 </set-header>
 ```
 
-#### <a name="forward-context-information-to-the-backend-service"></a>Bağlam bilgileri arka uç hizmetine iletmek
- Bu örnekte, arka uç hizmetine bağlam bilgilerini sağlamak için API düzeyinde ilkenin uygulanacağı gösterilmektedir. Yapılandırma ve bu ilkeyi kullanan bir gösterimi için bkz. [Cloud Cover bölümü 177: Daha fazla API yönetimi özellikleri ile Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) ve 10:30 için ileri sarma. 12: 10'da bir tanıtım İlkesi iş görebileceğiniz Geliştirici Portalı'nda bir işlemi çağırma yoktur.
+#### <a name="forward-context-information-to-the-backend-service"></a>Bağlam bilgilerini arka uç hizmetine ilet
+ Bu örnek, arka uç hizmetine bağlam bilgilerini sağlamak üzere API düzeyinde ilkenin nasıl uygulanacağını gösterir. Bu ilkeyi yapılandırma ve kullanma tanıtımı için bkz [. bulut kapak bölümü 177: Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) ile daha fazla API Management özellik ve 10:30 'e ileri sarma. 12:10 ' de, bir işlemi iş üzerindeki ilkeyi görebileceğiniz Geliştirici Portalında çağırma tanıtımı vardır.
 
 ```xml
 <!-- Copy this snippet into the inbound element to forward some context information, user id and the region the gateway is hosted in, to the backend service for logging or evaluation -->
@@ -488,17 +488,17 @@ OriginalUrl.
 </set-header>
 ```
 
- Daha fazla bilgi için [ilke ifadeleri](api-management-policy-expressions.md) ve [bağlam değişkeni](api-management-policy-expressions.md#ContextVariables).
+ Daha fazla bilgi için bkz. [ilke ifadeleri](api-management-policy-expressions.md) ve [bağlam değişkeni](api-management-policy-expressions.md#ContextVariables).
 
 > [!NOTE]
-> Birden çok üst bilgi değeri bir CSV dize, örneğin bitiştirilir: `headerName: value1,value2,value3`
+> Bir üstbilginin birden fazla değeri bir CSV dizesine birleştirilir, örneğin:`headerName: value1,value2,value3`
 >
-> Özel durumlar, standartlaştırılmış üst bilgiler, hangi değerleri şunlardır:
-> - virgül içerebilir (`User-Agent`, `WWW-Authenticate`, `Proxy-Authenticate`),
-> - tarih içerebilir (`Cookie`, `Set-Cookie`, `Warning`),
-> - tarih içeren (`Date`, `Expires`, `If-Modified-Since`, `If-Unmodified-Since`, `Last-Modified`, `Retry-After`).
+> Özel durumlar standartlaştırılmış üst bilgiler, bu değerleri içerir:
+> - virgül (`User-Agent`, `WWW-Authenticate`, `Proxy-Authenticate`) içerebilir,
+> - Tarih içerebilir (`Cookie`, `Set-Cookie`, `Warning`),
+> - Tarih`Date`(, `Expires`, `If-Modified-Since` ,,,`Retry-After`)içerir. `Last-Modified` `If-Unmodified-Since`
 >
-> Bu özel durumlar olması durumunda birden çok üstbilgi değerlerini bir dizeye birleştirilmiş değil ve ayrı üst bilgi olarak örneğin geçirilir: `User-Agent: value1`
+> Bu özel durumlar söz konusu olduğunda, birden çok üstbilgi değeri tek bir dizeye birleştirmeyecektir ve ayrı üstbilgiler olarak geçirilir, örneğin:`User-Agent: value1`
 >`User-Agent: value2`
 >`User-Agent: value3`
 
@@ -506,27 +506,27 @@ OriginalUrl.
 
 |Ad|Açıklama|Gerekli|
 |----------|-----------------|--------------|
-|üst bilgi ayarlama|Kök öğe.|Evet|
-|value|Ayarlanacak üstbilgi değerini belirtir. Aynı ada sahip birden çok üst bilgi ek eklemek için `value` öğeleri.|Evet|
+|Set-Header|Kök öğe.|Evet|
+|value|Ayarlanacak üst bilginin değerini belirtir. Aynı ada sahip birden çok üstbilgi için ek `value` öğeler ekleyin.|Evet|
 
 ### <a name="properties"></a>Özellikler
 
 |Ad|Açıklama|Gerekli|Varsayılan|
 |----------|-----------------|--------------|-------------|
-|Mevcut eylem|Üstbilgi zaten belirtildiğinde gerçekleştirilecek eylemi belirtir. Bu öznitelik aşağıdaki değerlerden birine sahip olmalıdır.<br /><br /> -override - mevcut üstbilgisinin değerini değiştirir.<br />-skip - var olan üstbilgi değeri yerini almaz.<br />-ekleme - değeri var olan üstbilgi değerine ekler.<br />-delete - üstbilgi istekten kaldırır.<br /><br /> Ayarlandığında `override` göre (Bu, birden çok kez listelenir), tüm girişleri ayarlanan üst bilgisindeki sonuçları aynı ada sahip birden çok girişi kaydetme; yalnızca listelenen değerler sonuç ayarlanır.|Hayır|geçersiz kılma|
-|name|Ayarlanacak üstbilginin adı belirtir.|Evet|Yok|
+|var-eylem|Üstbilgi zaten belirtildiğinde gerçekleştirilecek eylemi belirtir. Bu öznitelik aşağıdaki değerlerden birine sahip olmalıdır.<br /><br /> -override-mevcut üstbilginin değerini değiştirir.<br />-Skip-mevcut üst bilgi değerini değiştirmez.<br />-Append-değeri varolan üst bilgi değerine ekler.<br />-Delete-üstbilgiyi istekten kaldırır.<br /><br /> Aynı ada sahip `override` birden çok girdiyi listelemek üzere ayarlandığında, üstbilgi tüm girişlere göre ayarlanmakta (birden çok kez listelenecektir), ancak sonuçlarda listelenen değerler ayarlanır.|Hayır|manızı|
+|name|Ayarlanacak üst bilginin adını belirtir.|Evet|Yok|
 
 ### <a name="usage"></a>Kullanım
- Bu ilke aşağıdaki ilkesinde kullanılabilir [bölümleri](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamları](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve kapsamlarda kullanılabilir. [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)
 
--   **İlke bölümler:** gelen, giden arka uç, hata
+-   **İlke bölümleri:** gelen, giden, arka uç, hata durumunda
 
--   **İlke kapsamları:** genel, ürün, API, işlemi
+-   **İlke kapsamları:** tüm kapsamlar
 
-##  <a name="SetQueryStringParameter"></a> Sorgu dizesi parametresi kümesi
- `set-query-parameter` İlke ekler, değiştirir değeri, ya da silme isteği sorgu dizesi parametresi. Hiçbir zaman istekteki var veya sorgu parametreleri, isteğe bağlı olan arka uç hizmeti tarafından beklenen geçirmek için kullanılabilir.
+##  <a name="SetQueryStringParameter"></a>Sorgu dizesi parametresini ayarla
+ `set-query-parameter` İlke, değer ekler veya siler veya istek sorgu dizesi parametresini siler. İsteğe bağlı olan veya istekte hiçbir şekilde bulunmayan arka uç hizmeti tarafından beklenen sorgu parametrelerini geçirmek için kullanılabilir.
 
-### <a name="policy-statement"></a>İlke bildirimi
+### <a name="policy-statement"></a>İlke ekstresi
 
 ```xml
 <set-query-parameter name="param name" exists-action="override | skip | append | delete">
@@ -549,8 +549,8 @@ OriginalUrl.
 
 ```
 
-#### <a name="forward-context-information-to-the-backend-service"></a>Bağlam bilgileri arka uç hizmetine iletmek
- Bu örnekte, arka uç hizmetine bağlam bilgilerini sağlamak için API düzeyinde ilkenin uygulanacağı gösterilmektedir. Yapılandırma ve bu ilkeyi kullanan bir gösterimi için bkz. [Cloud Cover bölümü 177: Daha fazla API yönetimi özellikleri ile Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) ve 10:30 için ileri sarma. 12: 10'da bir tanıtım İlkesi iş görebileceğiniz Geliştirici Portalı'nda bir işlemi çağırma yoktur.
+#### <a name="forward-context-information-to-the-backend-service"></a>Bağlam bilgilerini arka uç hizmetine ilet
+ Bu örnek, arka uç hizmetine bağlam bilgilerini sağlamak üzere API düzeyinde ilkenin nasıl uygulanacağını gösterir. Bu ilkeyi yapılandırma ve kullanma tanıtımı için bkz [. bulut kapak bölümü 177: Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) ile daha fazla API Management özellik ve 10:30 'e ileri sarma. 12:10 ' de, bir işlemi iş üzerindeki ilkeyi görebileceğiniz Geliştirici Portalında çağırma tanıtımı vardır.
 
 ```xml
 <!-- Copy this snippet into the inbound element to forward a piece of context, product name in this example, to the backend service for logging or evaluation -->
@@ -560,42 +560,42 @@ OriginalUrl.
 
 ```
 
- Daha fazla bilgi için [ilke ifadeleri](api-management-policy-expressions.md) ve [bağlam değişkeni](api-management-policy-expressions.md#ContextVariables).
+ Daha fazla bilgi için bkz. [ilke ifadeleri](api-management-policy-expressions.md) ve [bağlam değişkeni](api-management-policy-expressions.md#ContextVariables).
 
 ### <a name="elements"></a>Öğeler
 
 |Ad|Açıklama|Gerekli|
 |----------|-----------------|--------------|
-|kümesi sorgu parametresi|Kök öğe.|Evet|
-|value|Ayarlanacak sorgu parametresi'ünün değerini belirtir. Aynı ada sahip birden çok sorgu parametreleri ek eklemek için `value` öğeleri.|Evet|
+|Set-Query-Parameter|Kök öğe.|Evet|
+|value|Ayarlanacak sorgu parametresinin değerini belirtir. Aynı ada sahip birden çok sorgu parametresi için ek `value` öğeler ekleyin.|Evet|
 
 ### <a name="properties"></a>Özellikler
 
 |Ad|Açıklama|Gerekli|Varsayılan|
 |----------|-----------------|--------------|-------------|
-|Mevcut eylem|Sorgu parametresi zaten belirtilmiş gerçekleştirilecek eylemi belirtir. Bu öznitelik aşağıdaki değerlerden birine sahip olmalıdır.<br /><br /> -override - mevcut parametresinin değerini değiştirir.<br />-skip - var olan sorgu parametresi değerini değiştirmez.<br />-ekleme - var olan sorgu parametresi değeri değeri ekler.<br />-delete - sorgu parametresi istekte kaldırır.<br /><br /> Ayarlandığında `override` göre (Bu, birden çok kez listelenir), tüm girişleri ayarlanan sorgu parametresi sonuçlarının aynı ada sahip birden çok girişi kaydetme; yalnızca listelenen değerler sonuç ayarlanır.|Hayır|geçersiz kılma|
-|name|Ayarlanacak sorgu parametresi adını belirtir.|Evet|Yok|
+|var-eylem|Sorgu parametresi zaten belirtildiğinde gerçekleştirilecek eylemi belirtir. Bu öznitelik aşağıdaki değerlerden birine sahip olmalıdır.<br /><br /> -override-var olan parametrenin değerini değiştirir.<br />-Skip-var olan sorgu parametresi değerinin yerini almaz.<br />-Append-değeri varolan sorgu parametresi değerine ekler.<br />-Delete-sorgu parametresini istekten kaldırır.<br /><br /> Aynı ada sahip `override` birden çok girdiyi listelemek üzere ayarlandığında, sorgu parametresi tüm girişlere göre ayarlanmakta (birden çok kez listelenecektir), ancak sonuçlarda listelenen değerler ayarlanır.|Hayır|manızı|
+|name|Ayarlanacak sorgu parametresinin adını belirtir.|Evet|Yok|
 
 ### <a name="usage"></a>Kullanım
- Bu ilke aşağıdaki ilkesinde kullanılabilir [bölümleri](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamları](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve kapsamlarda kullanılabilir. [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)
 
--   **İlke bölümler:** gelen, arka uç
+-   **İlke bölümleri:** gelen, arka uç
 
--   **İlke kapsamları:** genel, ürün, API, işlemi
+-   **İlke kapsamları:** tüm kapsamlar
 
-##  <a name="RewriteURL"></a> URL yeniden yazma
- `rewrite-uri` İlkeyi dönüştürür istek URL'si, genel formu web hizmeti tarafından beklenen biçime aşağıdaki örnekte gösterildiği gibi.
+##  <a name="RewriteURL"></a>Yeniden yazma URL 'SI
+ `rewrite-uri` İlke, aşağıdaki örnekte gösterildiği gibi, bir istek URL 'sini ortak formdan Web hizmeti tarafından beklenen biçime dönüştürür.
 
-- Genel URL- `http://api.example.com/storenumber/ordernumber`
+- Genel URL-`http://api.example.com/storenumber/ordernumber`
 
-- İstek URL'si- `http://api.example.com/v2/US/hardware/storenumber&ordernumber?City&State`
+- İstek URL 'SI-`http://api.example.com/v2/US/hardware/storenumber&ordernumber?City&State`
 
-  Bu ilke, bir insan ve/veya tarayıcı kullanımı kolay URL web hizmeti tarafından beklenen URL biçimine dönüştürülmesi gereken olduğunda kullanılabilir. Bu ilke yalnızca temiz URL'leri, RESTful URL'leri, kullanımı kolay URL'ler veya bir sorgu dizesi içermemelidir ve bunun yerine yalnızca kaynak (yolunu içeren zamanıyla ilgili yapısal URL'ler SEO dostu URL'leri gibi alternatif bir URL biçimi gösterme zaman uygulanması gerekiyor Şema ve yetkilisi sonra). Bu genellikle estetik, kullanılabilirlik veya arama motoru iyileştirmesi (SEO) amacıyla yapılır.
+  Bu ilke, bir insan ve/veya tarayıcı kullanımı kolay URL 'SI Web hizmeti tarafından beklenen URL biçimine dönüştürülebileceğinden kullanılabilir. Bu ilkenin yalnızca bir sorgu dizesi içermeyen ve bunun yerine yalnızca kaynağın yolunu içeren yapısal URL 'Ler, sorunsuz URL 'ler, Kullanıcı dostu URL 'ler veya SEO kullanımı kolay URL 'ler gibi alternatif bir URL biçimi kullanıma sunulduğundan uygulanması gerekir ( Düzen ve yetkilinin ardından). Bu genellikle Aesthetic Characteristics, kullanılabilirlik veya arama motoru iyileştirme (SEO) amaçları için yapılır.
 
 > [!NOTE]
->  İlkeyi kullanan bir sorgu dizesi parametreleri yalnızca ekleyebilirsiniz. Ek şablon yol parametreleri yeniden yazma URL ekleyemezsiniz.
+>  Yalnızca ilkeyi kullanarak sorgu dizesi parametreleri ekleyebilirsiniz. Yeniden yazma URL 'sine ek şablon yolu parametreleri ekleyemezsiniz.
 
-### <a name="policy-statement"></a>İlke bildirimi
+### <a name="policy-statement"></a>İlke ekstresi
 
 ```xml
 <rewrite-uri template="uri template" copy-unmatched-params="true | false" />
@@ -645,26 +645,26 @@ OriginalUrl.
 
 |Ad|Açıklama|Gerekli|
 |----------|-----------------|--------------|
-|URI yeniden yazma|Kök öğe.|Evet|
+|yeniden yazma-URI|Kök öğe.|Evet|
 
 ### <a name="attributes"></a>Öznitelikler
 
 |Öznitelik|Açıklama|Gerekli|Varsayılan|
 |---------------|-----------------|--------------|-------------|
-|şablon|Herhangi bir sorgu dizesi parametreleri ile gerçek web hizmeti URL'si. İfadeleri kullanırken, tam değeri bir ifade olmalıdır.|Evet|Yok|
-|kopyalama eşleşmeyen-params|Özgün URL şablonunda yok gelen istekteki sorgu parametreleri için URL yeniden yazma şablon tarafından tanımlanan eklenip eklenmeyeceğini belirtir|Hayır|true|
+|şablon|Herhangi bir sorgu dizesi parametresine sahip gerçek Web hizmeti URL 'SI. İfadeler kullanılırken, tüm değer bir ifade olmalıdır.|Evet|Yok|
+|kopya-eşleşmeyen-params|Gelen istekteki sorgu parametrelerinin özgün URL şablonunda mevcut değil olarak yeniden yazma şablonu tarafından tanımlanan URL 'ye eklenip eklenmeyeceğini belirtir|Hayır|true|
 
 ### <a name="usage"></a>Kullanım
- Bu ilke aşağıdaki ilkesinde kullanılabilir [bölümleri](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamları](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve kapsamlarda kullanılabilir. [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)
 
--   **İlke bölümler:** gelen
+-   **İlke bölümleri:** gelen
 
--   **İlke kapsamları:** genel, ürün, API, işlemi
+-   **İlke kapsamları:** tüm kapsamlar
 
-##  <a name="XSLTransform"></a> Bir XSLT kullanarak XML dönüştürme
- `Transform XML using an XSLT` İlke istek veya yanıt gövdesinde XML XSL dönüşümünü uygular.
+##  <a name="XSLTransform"></a>XSLT kullanarak XML dönüştürme
+ `Transform XML using an XSLT` İlke, istek veya yanıt gövdesinde XML 'e bir XSL dönüştürmesi uygular.
 
-### <a name="policy-statement"></a>İlke bildirimi
+### <a name="policy-statement"></a>İlke ekstresi
 
 ```xml
 <xsl-transform>
@@ -714,21 +714,21 @@ OriginalUrl.
 
 |Ad|Açıklama|Gerekli|
 |----------|-----------------|--------------|
-|XSL Dönüştürme|Kök öğe.|Evet|
-|Parametre|Dönüşüm kullanılan değişkenleri tanımlamak için kullanılır|Hayır|
-|xsl:stylesheet|Kök stil sayfası öğesi. Tüm öğeleri ve öznitelikleri içinde tanımlanan standarda [XSLT belirtimi](https://www.w3.org/TR/xslt)|Evet|
+|XSL dönüştürme|Kök öğe.|Evet|
+|parametre|Dönüşümde kullanılan değişkenleri tanımlamak için kullanılır|Hayır|
+|xsl: StyleSheet|Kök stil sayfası öğesi. İçinde tanımlanan tüm öğeler ve öznitelikler standart [XSLT belirtimine](https://www.w3.org/TR/xslt) uyar|Evet|
 
 ### <a name="usage"></a>Kullanım
- Bu ilke aşağıdaki ilkesinde kullanılabilir [bölümleri](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamları](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve kapsamlarda kullanılabilir. [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)
 
--   **İlke bölümler:** gelen, giden
+-   **İlke bölümleri:** gelen, giden
 
--   **İlke kapsamları:** genel, ürün, API, işlemi
+-   **İlke kapsamları:** tüm kapsamlar
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Daha fazla bilgi için aşağıdaki konulara bakın:
 
-+ [API Management ilkeleri](api-management-howto-policies.md)
-+ [İlke başvurusu](api-management-policy-reference.md) ilke bildirimlerine ve ayarlarının tam listesi için
++ [API Management ilkeler](api-management-howto-policies.md)
++ İlke deyimlerinin ve ayarlarının tam listesi için [Ilke başvurusu](api-management-policy-reference.md)
 + [İlke örnekleri](policy-samples.md)

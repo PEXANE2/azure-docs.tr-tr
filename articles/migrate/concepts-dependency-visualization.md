@@ -1,80 +1,90 @@
 ---
-title: Azure Geçişi'ndeki bağımlılık görselleştirmesi | Microsoft Docs
-description: Azure geçişi hizmetinde değerlendirme hesaplamaları genel bir bakış sağlar.
+title: Azure geçişi 'nde bağımlılık görselleştirme | Microsoft Docs
+description: Azure geçişi 'nde sunucu değerlendirmesi hizmeti 'nde değerlendirme hesaplamalarına genel bakış sağlar
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 12/05/2018
-ms.author: raynew
-ms.openlocfilehash: 8df587db7655e2aafd876d80581f3296c8c99fbf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 07/18/2019
+ms.author: hamusa
+ms.openlocfilehash: 8934306efadc4ec732afbb658c081ada30f232cd
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60201576"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68312214"
 ---
 # <a name="dependency-visualization"></a>Bağımlılık görselleştirme
 
-[Azure geçişi](migrate-overview.md) Hizmetleri grupları şirket içi makinelerin Azure'a geçiş için değerlendirir. Grupları oluşturmak için Azure geçişi bağımlılık görselleştirme işlevini kullanabilirsiniz. Bu makalede, bu özellik hakkında bilgi sağlar.
+Azure Geçişi: Sunucu değerlendirmesi, Azure 'a geçiş için şirket içi makinelerin değerlendirir gruplarıdır. Grupları oluşturmak için sunucu değerlendirmesi ' nde bağımlılık görselleştirme işlevini kullanabilirsiniz. Bu makale, bu özellik hakkında bilgi sağlar.
 
 > [!NOTE]
-> Bağımlılık görselleştirme işlevini Azure Kamu'da kullanılabilir değil.
+> Bağımlılık görselleştirme işlevselliği Azure Kamu 'da kullanılamaz.
 
 ## <a name="overview"></a>Genel Bakış
 
-Azure Geçişi'ndeki bağımlılık görselleştirmesi geçiş değerlendirmeler için yüksek güvenilirliğe sahip gruplar oluşturmanıza olanak sağlar. Ağ makinelerin bağımlılıklarını görüntülemek ve birlikte Azure'a geçirilmesi için gereken ilgili makinelerin tanımlanması bağımlılık görselleştirmesi kullanarak. Bu işlev, uygulamanızı oluşturan ve Azure'a birlikte geçirilmesi gereken makine tamamen uyumlu olmadığı senaryolarda yararlıdır.
+Sunucu değerlendirmesindeki bağımlılık görselleştirme, geçiş değerlendirmeleri için yüksek güvenilirlikli gruplar oluşturmanızı sağlar. Bağımlılık görselleştirmesini kullanarak, makinelerin ağ bağımlılıklarını görüntüleyebilir ve Azure 'a birlikte geçirilmesi gereken ilgili makineleri belirleyebilirsiniz. Bu işlevsellik, uygulamanızı oluşturan ve Azure 'a birlikte geçirilmesi gereken makinelere tamamen haberdar olduğunuz senaryolarda yararlıdır.
+
+## <a name="before-you-start"></a>Başlamadan önce
+
+- Bir Azure geçişi projesi [oluşturduğunuzdan](how-to-add-tool-first-time.md) emin olun.
+- Zaten bir proje oluşturduysanız, Azure geçişini eklediğinizden emin olun: [](how-to-assess.md) Sunucu değerlendirmesi aracı.
+- Azure geçişi 'nde makinelerinizi keşfetdiğinizden emin olun; Bunu, [VMware](how-to-set-up-appliance-vmware.md) veya [Hyper-V](how-to-set-up-appliance-hyper-v.md)için bir Azure geçiş gereci ayarlayarak yapabilirsiniz. Gereç, şirket içi makineleri bulur ve Azure geçişi 'ne meta veri ve performans verileri gönderir: Sunucu değerlendirmesi. [Daha fazla bilgi edinin](migrate-appliance.md).
 
 ## <a name="how-does-it-work"></a>Nasıl çalışır?
 
-Azure geçişi kullanan [hizmet eşlemesi](../operations-management-suite/operations-management-suite-service-map.md) çözümde [Azure İzleyici günlükleri](../log-analytics/log-analytics-overview.md) bağımlılık görselleştirmesi için.
-- Bağımlılık görselleştirmesi yararlanmak için yeni veya var olan, Log Analytics çalışma alanı yeniden eşlemeniz gerekir ile bir Azure geçişi projesi.
-- Yalnızca oluşturma veya geçiş projesi oluşturulduğu aynı Abonelikteki bir çalışma alanı ekleyin.
-- Bir Log Analytics çalışma alanı için bir proje eklemek için Git **Essentials** projenin bölümünü **genel bakış** sayfasında ve tıklayın **yapılandırma gerektirir**
+Azure geçişi, bağımlılık görselleştirmesi için [Azure izleyici günlüklerinde](../log-analytics/log-analytics-overview.md) [hizmet eşlemesi](../operations-management-suite/operations-management-suite-service-map.md) çözümünü kullanır.
+- Bağımlılık görselleştirmesini yükseltmek için, yeni veya mevcut bir Log Analytics çalışma alanını Azure geçişi projesi ile ilişkilendirmeniz gerekir.
+- Yalnızca Azure geçişi projesinin oluşturulduğu abonelikte bir çalışma alanı oluşturabilir veya ekleyebilirsiniz.
+- Bir projeye Log Analytics çalışma alanı iliştirmek için:
+    1. **Sunucular** sekmesinde, **Azure geçişi: Sunucu değerlendirmesi** kutucuğu, **Genel Bakış ' a**tıklayın.
+    2. **Genel bakış**bölümünde, **temelleri**genişletmek için aşağı oka tıklayın.
+    3. **OMS çalışma alanında** **yapılandırma gerekiyor**' a tıklayın.
+    4. **Çalışma alanını Yapılandır**' da, yeni bir çalışma alanı oluşturmak isteyip istemediğinizi belirtin veya var olanı kullanın:
+    
+    ![Çalışma alanı Ekle](./media/how-to-create-group-machine-dependencies/workspace.png)
 
-    ![Log Analytics çalışma alanını ilişkilendir](./media/concepts-dependency-visualization/associate-workspace.png)
-
-- Bir çalışma alanı ilişkilendirilirken yeni bir çalışma alanı oluşturun veya mevcut bir paylaşımın seçeneği alırsınız:
-  - Yeni bir çalışma alanı oluşturduğunuzda, çalışma alanı için bir ad belirtmeniz gerekir. Çalışma alanı aynı bölgede oluşturulduktan sonra [her Azure coğrafyası](https://azure.microsoft.com/global-infrastructure/geographies/) geçiş projesi olarak.
-  - Mevcut bir çalışma alanı eklediğinizde, geçiş projesi ile aynı abonelikte kullanılabilir olan tüm çalışma arasından seçim yapabilirsiniz. Yalnızca bu çalışma alanlarının bir bölgede oluşturulan listelendiğine dikkat edin burada [hizmet eşlemesi desteklenir](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-configure#supported-azure-regions). Bir çalışma alanı eklemek için çalışma alanına 'Reader' erişiminiz olduğundan emin olun.
+- Bir çalışma alanı ilişkilendirirken, yeni bir çalışma alanı oluşturma veya var olanı iliştirme seçeneğini alacaksınız:
+  - Yeni bir çalışma alanı oluşturduğunuzda, çalışma alanı için bir ad belirtmeniz gerekir. Çalışma alanı daha sonra geçiş projesiyle aynı [Azure Coğrafya](https://azure.microsoft.com/global-infrastructure/geographies/) içindeki bir bölgede oluşturulur.
+  - Mevcut bir çalışma alanını eklediğinizde, geçiş projesiyle aynı abonelikte bulunan tüm kullanılabilir çalışma alanlarını seçebilirsiniz. Yalnızca [hizmet eşlemesi desteklendiği](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-configure#supported-azure-regions)bir bölgede oluşturulan çalışma alanlarının listelendiğini unutmayın. Bir çalışma alanı iliştirebilmek için, çalışma alanına ' okuyucu ' erişiminizin olduğundan emin olun.
 
   > [!NOTE]
-  > Bir çalışma alanı bir projeye ekledikten sonra daha sonra değiştiremezsiniz.
+  > Bir projeye çalışma alanı iliştirdikten sonra, daha sonra değiştiremezsiniz.
 
-- İlişkili çalışma alanı anahtarı ile etiketlenmiş **geçiş projesi**ve değer **proje adı**, hangi Azure portalında aramak için kullanabilirsiniz.
-- Projeyle ilişkili çalışma alanına gidin, gidebilirsiniz **Essentials** projenin bölümünü **genel bakış** sayfasında ve çalışma alanına erişim
+- İlişkili çalışma alanı, anahtar **geçiş projesiyle**etiketlenebilir ve Azure Portal arama yapmak için kullanabileceğiniz değer **proje adıdır**.
+- Projeyle ilişkili çalışma alanına gitmek için projeye **genel bakış** sayfasının **Essentials** bölümüne gidebilir ve çalışma alanına erişebilirsiniz
 
-    ![Log Analytics çalışma alanına gidin](./media/concepts-dependency-visualization/oms-workspace.png)
+    ![Log Analytics çalışma alanında gezin](./media/concepts-dependency-visualization/oms-workspace.png)
 
-Bağımlılık görselleştirmesi kullanmak için indirip analiz etmek istediğiniz her bir şirket içi makinede aracıları yüklemeniz gerekir.  
+Bağımlılık görselleştirmesini kullanmak için, çözümlemek istediğiniz her şirket içi makineye aracıları indirip yüklemeniz gerekir.  
 
-- [Microsoft Monitoring agent(MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows) her makinede yüklü olması gerekir.
-- [Bağımlılık aracısını](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure) her makinede yüklü olması gerekir.
-- Ayrıca, internet bağlantısı olmayan makineleriniz varsa, indirmek ve Log Analytics gateway yükler gerekir.
+- [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows) her makineye yüklenmelidir. MMA aracısının nasıl yükleneceği hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-mma) .
+- [Bağımlılık aracısının](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure) her makinede yüklü olması gerekir. Bağımlılık aracısının nasıl yükleneceği hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-dependency-agent) .
+- Ayrıca, internet bağlantısı olmayan makineleriniz varsa Log Analytics ağ geçidini indirip yüklemeniz gerekir.
 
-Bu aracılar, bağımlılık görselleştirmesi kullanmıyorsanız değerlendirmek istediğiniz makinelerde gerekmez.
+Bağımlılık görselleştirmesi kullanmadığınız takdirde değerlendirmek istediğiniz makinelerde bu aracılara ihtiyacınız yoktur.
 
-## <a name="do-i-need-to-pay-for-it"></a>Bunun için ödeme yapmam gerekiyor?
+## <a name="do-i-need-to-pay-for-it"></a>Bunun için ödeme yapmam gerekiyor mu?
 
-Azure Geçişi ek ücret ödenmeden kullanılabilir. Azure Geçişi'ndeki bağımlılık görselleştirmesi özelliğini kullanımını hizmet eşlemesi gerektirir ve yeni veya var olan, Log Analytics çalışma alanı ilişkilendirmenizi gerektirir Azure geçişi projesi ile. Azure Geçişi'ndeki bağımlılık görselleştirme işlevini Azure Geçişi'ndeki ilk 180 gün boyunca ücretsizdir.
+Bağımlılık görselleştirme özelliği ek bir ücret ödemeden kullanılabilir. Sunucu değerlendirmesi içindeki bağımlılık görselleştirme özelliğinin kullanılması Hizmet Eşlemesi gerektirir ve Azure geçişi projesi ile yeni veya var olan bir Log Analytics çalışma alanını ilişkilendirmeniz gerekir. Sunucu değerlendirmesindeki bağımlılık görselleştirme işlevselliği ilk 180 gün boyunca ücretsizdir.
 
-1. Bu Log Analytics çalışma alanında hizmet eşlemesi dışında herhangi bir çözüm kullanımını sık erişimliye doğurur [standart Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) ücretleri.
-2. Hiçbir ek ücret ödemeden geçiş senaryolarını desteklemek üzere hizmet eşlemesi çözümünü tüm Log Analytics çalışma alanını Azure geçişi projesi ile ilişkili bir günden itibaren ilk 180 gün için ücret uygulanmaz. 180 gün dolduktan sonra standart Log Analytics ücretleri geçerli olacaktır.
+1. Bu Log Analytics çalışma alanındaki Hizmet Eşlemesi dışındaki çözümlerin kullanımı [standart Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) ücretlendirmeye tabi olacaktır.
+2. Geçiş senaryolarını ek bir ücret ödemeden desteklemek için Hizmet Eşlemesi çözümü, Log Analytics çalışma alanını Azure geçişi projesi ile ilişkilendirme gününden itibaren ilk 180 gün boyunca ücret ödemez. 180 gün sonra standart Log Analytics ücretleri uygulanır.
 
-Çalışma alanına aracıları kaydettiğinizde, kimlik ve proje tarafından verilen Yükleme Aracısı adımları sayfasında anahtarın kullanın.
+Aracıları çalışma alanına kaydettiğinizde, aracı adımları yüklensin sayfasında proje tarafından verilen KIMLIĞI ve anahtarı kullanın.
 
-Çalışma alanı, Azure geçişi projesi silindiğinde, onunla birlikte silinmez. Proje silme gönderin, hizmet eşlemesi kullanım ücretsiz olmayacak ve her düğüm, Log Analytics çalışma alanını Ücretli katmanına göre ücretlendirilir.
+Azure geçişi projesi silindiğinde, çalışma alanı onunla birlikte silinmez. Proje silme işlemini postala, Hizmet Eşlemesi kullanımı ücretsizdir ve her düğüm, Log Analytics çalışma alanının ücretli katmanına göre ücretlendirilecektir.
 
 > [!NOTE]
-> Bağımlılık görselleştirmesi özelliğini bir Log Analytics çalışma alanı hizmet eşlemesini kullanır. 28 Şubat 2018'den itibaren Azure geçişi, genel kullanılabilirlik duyurusuyla birlikte bu özellik artık başka bir ücret ödemeden kullanılabilir. Yapmak üzere yeni bir proje oluşturmak ihtiyacınız olacak ücretsiz kullanım çalışma alanını kullanın. Genel kullanılabilirlik öncesi mevcut çalışma alanları hala ücrete, bu nedenle yeni bir projeye taşımak için önerilir.
+> Bağımlılık görselleştirme özelliği bir Log Analytics çalışma alanı aracılığıyla Hizmet Eşlemesi kullanır. 28 Şubat 2018 ' den itibaren, Azure 'un genel kullanıma sunulmasından dolayı, özellik artık ek ücret ödemeden kullanılabilir. Ücretsiz kullanım çalışma alanını kullanmak için yeni bir proje oluşturmanız gerekecektir. Genel kullanılabilirlik öncesinde mevcut çalışma alanları ücrete tabi olmaya devam ediyor, bu nedenle yeni bir projeye geçiş yapmanızı öneririz.
 
 Azure Geçişi fiyatlandırması hakkında daha fazla bilgiyi [burada](https://azure.microsoft.com/pricing/details/azure-migrate/) bulabilirsiniz.
 
-## <a name="how-do-i-manage-the-workspace"></a>Çalışma alanı nasıl yönetebilirim?
+## <a name="how-do-i-manage-the-workspace"></a>Çalışma alanını yönetmek Nasıl yaparım? mı?
 
-Log Analytics çalışma alanını Azure geçişi dışında kullanabilirsiniz. Geçiş projesi içinde oluşturulduğu silerseniz silinmez. Çalışma alanı artık ihtiyacınız kalmadığında [silmeden](../azure-monitor/platform/manage-access.md) el ile.
+Log Analytics çalışma alanını Azure geçişi dışında kullanabilirsiniz. Oluşturulduğu Azure geçişi projesini silerseniz silinmez. Artık çalışma alanına ihtiyacınız yoksa el ile [silin](../azure-monitor/platform/manage-access.md) .
 
-Geçiş projesi silmediğiniz sürece, Azure geçişi tarafından oluşturulan çalışma alanını silme. Bunu yaparsanız, bağımlılık görselleştirme işlevini beklendiği gibi çalışmaz.
+Azure geçişi projesini silmediğiniz takdirde Azure geçişi tarafından oluşturulan çalışma alanını silmeyin. Bunu yaparsanız, bağımlılık görselleştirme işlevselliği beklendiği gibi çalışmaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Makine bağımlılıkları kullanan Grup makineleri](how-to-create-group-machine-dependencies.md)
-- [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/migrate/resources-faq#dependency-visualization) bağımlılık görselleştirme hakkında sık sorulan sorular hakkında.
+- [Makine bağımlılıklarını kullanan makineleri gruplandırın](how-to-create-group-machine-dependencies.md)
+- Bağımlılık görselleştirmesinde SSS hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/migrate/resources-faq#what-is-dependency-visualization) .

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 50d91c03ac33c32577ddf3838ed6b10024133333
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: a91860e9ec8d503a01d079925466093d19bbbccf
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414546"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698615"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Saydam bir ağ geçidi olarak görev yapacak bir IOT Edge cihazı yapılandırma
 
@@ -50,8 +50,8 @@ Aşağıdaki adımlar, sertifikaları oluşturma ve bunları ağ geçidine doğr
 ## <a name="prerequisites"></a>Önkoşullar
 
 Bir ağ geçidi olarak yapılandırmak için Azure IOT Edge cihazı. Aşağıdaki işletim sistemlerinden biri için IoT Edge yükleme adımlarını kullanın:
-  * [Windows](/how-to-install-iot-edge-windows.md)
-  * [Linux](/how-to-install-iot-edge-linux.md)
+  * [Windows](how-to-install-iot-edge-windows.md)
+  * [Linux](how-to-install-iot-edge-linux.md)
 
 Bu makale, *ağ geçidi ana bilgisayar adına* birkaç noktada başvurur. Ağ geçidi ana bilgisayar adı, IoT Edge ağ geçidi cihazında config. YAML dosyasının **hostname** parametresinde bildirilmiştir. Bu makaledeki sertifikaları oluşturmak için kullanılır ve aşağı akış cihazlarının bağlantı dizesinde öğesine başvurulur. Ağ geçidi ana bilgisayar adının DNS veya ana bilgisayar dosya girişi kullanılarak bir IP adresi ile çözümlenebilmelidir.
 

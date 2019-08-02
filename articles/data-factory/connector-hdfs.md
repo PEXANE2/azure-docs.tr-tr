@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: c528f37c8970380678a318ec2d63babd37f89501
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2cac2b350da5ca8738e40f9a288ecf4059e81060
+ms.sourcegitcommit: 80aaf27e3ad2cc4a6599a3b6af0196c6239e6918
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65228043"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673897"
 ---
 # <a name="copy-data-from-hdfs-using-azure-data-factory"></a>Hdfs Azure Data Factory kullanarak veri kopyalama
 > [!div class="op_single_selector" title1="Data Factory hizmetinin kullandığınız sürümü seçin:"]
@@ -58,7 +58,7 @@ HDFS bağlı hizmeti için aşağıdaki özellikleri destekler:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Type özelliği ayarlanmalıdır: **Hdfs**. | Evet |
+| türü | Type özelliği ayarlanmalıdır: **Hdfs**. | Evet |
 | url |HDFS URL'si |Evet |
 | authenticationType | İzin verilen değerler şunlardır: **Anonim**, veya **Windows**. <br><br> Kullanılacak **Kerberos kimlik doğrulaması** HDFS bağlayıcısının başvurmak [Bu bölümde](#use-kerberos-authentication-for-hdfs-connector) şirket içi ortamınızı uygun şekilde ayarlamak için. |Evet |
 | userName |Kullanıcı adı için Windows kimlik doğrulaması. Kerberos kimlik doğrulaması için belirtin `<username>@<domain>.com`. |Evet (Windows kimlik doğrulaması için) |
@@ -122,7 +122,7 @@ HDFS verileri kopyalamak için **Parquet veya sınırlandırılmış metin biçi
 
 | Özellik   | Açıklama                                                  | Gerekli |
 | ---------- | ------------------------------------------------------------ | -------- |
-| type       | Type özelliği altında `location` kümesinde ayarlanmalıdır **HdfsLocation**. | Evet      |
+| türü       | Type özelliği altında `location` kümesinde ayarlanmalıdır **HdfsLocation**. | Evet      |
 | folderPath | Klasör yolu. Joker karakter filtresi klasörüne kullanmak istiyorsanız, bu ayar atlayın ve etkinliği kaynak ayarları belirtin. | Hayır       |
 | fileName   | Verilen folderPath altında dosya adı. Joker karakter filtresi dosyalarını kullanmak istiyorsanız, bu ayar atlayın ve etkinliği kaynak ayarları belirtin. | Hayır       |
 
@@ -161,7 +161,7 @@ HDFS verileri kopyalamak için **ORC/Avro/JSON/ikili biçimi**, aşağıdaki öz
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Dataset öğesinin type özelliği ayarlanmalıdır: **Dosya Paylaşımı** |Evet |
+| türü | Dataset öğesinin type özelliği ayarlanmalıdır: **Dosya Paylaşımı** |Evet |
 | folderPath | Klasör yolu. Joker karakter filtresi desteklenir, joker karakterlere izin şunlardır: `*` (sıfır veya daha fazla karakter ile eşleşir) ve `?` (eşleşen sıfır ya da tek bir karakter); kullanma `^` joker karakter veya içinde bu kaçış karakteri, gerçek dosya adı varsa, kaçış için. <br/><br/>Örnekler: rootfolder/alt/daha fazla örneklere bakın [klasör ve dosya filtreleme örnekler](#folder-and-file-filter-examples). |Evet |
 | fileName |  **Adı veya joker karakter filtresi** belirtilen "folderPath" altında dosyaları için. Bu özellik için bir değer belirtmezseniz, klasördeki tüm dosyaları için veri kümesini işaret eder. <br/><br/>Filtre için joker karakterlere izin verilir: `*` (sıfır veya daha fazla karakter ile eşleşir) ve `?` (eşleşen sıfır ya da tek bir karakter).<br/>-Örnek 1: `"fileName": "*.csv"`<br/>-Örnek 2: `"fileName": "???20180427.txt"`<br/>Kullanım `^` joker karakter veya içinde bu kaçış karakteri, gerçek bir klasör adı varsa, kaçış için. |Hayır |
 | modifiedDatetimeStart | Dosya Filtresi özniteliğine dayanarak: Son değiştirme. Kendi son değiştirilme zamanı zaman aralığı içinde olduğunda dosyaları seçilir `modifiedDatetimeStart` ve `modifiedDatetimeEnd`. Zaman biçimi UTC saat diliminde uygulanan "2018-12-01T05:00:00Z". <br/><br/> Veri taşıma genel performansını filtre devasa miktarda bir dosyaları dosya istediğinizde, bu ayarı etkinleştirerek etkilenecek dikkat edin. <br/><br/> Özellikler, hiçbir dosya öznitelik filtresi, veri kümesine uygulanacak anlamına NULL olabilir.  Zaman `modifiedDatetimeStart` datetime değerine sahip ancak `modifiedDatetimeEnd` NULL olduğu için daha büyük olan son değiştirilen özniteliği dosyaları geldiğini veya tarih saat değeri ile eşit seçilir.  Zaman `modifiedDatetimeEnd` datetime değerine sahip ancak `modifiedDatetimeStart` NULL ise, son değiştirilen özniteliği, tarih saat değeri seçilir daha az dosya anlamına gelir.| Hayır |
@@ -217,7 +217,7 @@ HDFS verileri kopyalamak için **Parquet veya sınırlandırılmış metin biçi
 
 | Özellik                 | Açıklama                                                  | Gerekli                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
-| type                     | Type özelliği altında `storeSettings` ayarlanmalıdır **HdfsReadSetting**. | Evet                                           |
+| türü                     | Type özelliği altında `storeSettings` ayarlanmalıdır **HdfsReadSetting**. | Evet                                           |
 | recursive                | Belirtilen klasörün alt klasörleri ya da yalnızca veri yinelemeli olarak okunur olup olmadığını belirtir. Özyinelemeli true ve havuz için ayarlandığında bir dosya tabanlı depolama, bir boş klasör veya alt klasör olduğunu unutmayın kopyalanır değil veya havuz oluşturulur. İzin verilen değerler **true** (varsayılan) ve **false**. | Hayır                                            |
 | wildcardFolderPath       | Kaynak klasörleri filtrelemek için joker karakter içeren klasör yolu. <br>Joker karakterlere izin verilir: `*` (sıfır veya daha fazla karakter ile eşleşir) ve `?` (eşleşen sıfır ya da tek bir karakter); kullanma `^` joker karakter veya içinde bu kaçış karakteri, gerçek bir klasör adı varsa, kaçış için. <br>Daha fazla örneklere bakın [klasör ve dosya filtreleme örnekler](#folder-and-file-filter-examples). | Hayır                                            |
 | wildcardFileName         | Joker karakter filtresi kaynak dosyalarının belirli folderPath/wildcardFolderPath altında içeren dosya adı. <br>Joker karakterlere izin verilir: `*` (sıfır veya daha fazla karakter ile eşleşir) ve `?` (eşleşen sıfır ya da tek bir karakter); kullanma `^` joker karakter veya içinde bu kaçış karakteri, gerçek bir klasör adı varsa, kaçış için.  Daha fazla örneklere bakın [klasör ve dosya filtreleme örnekler](#folder-and-file-filter-examples). | Yanıt Evet ise `fileName` kümesinde belirtilmedi |
@@ -273,7 +273,7 @@ HDFS verileri kopyalamak için **ORC/Avro/JSON/ikili biçimi**, aşağıdaki öz
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağı öğesinin type özelliği ayarlanmalıdır: **HdfsSource** |Evet |
+| türü | Kopyalama etkinliği kaynağı öğesinin type özelliği ayarlanmalıdır: **HdfsSource** |Evet |
 | recursive | Belirtilen klasörün alt klasörleri ya da yalnızca veri yinelemeli olarak okunur olup olmadığını belirtir. Özyinelemeli true ve havuz için ayarlandığında Not dosya tabanlı depolama, boş klasör/alt-folder havuz kopyalanan/oluşturulmuş olmaz.<br/>İzin verilen değerler: **true** (varsayılan), **false** | Hayır |
 | distcpSettings | HDFS DistCp kullanırken özellik grubu. | Hayır |
 | resourceManagerEndpoint | Yarn Kaynak Yöneticisi uç noktası | DistCp kullanıyorsanız Evet |
@@ -311,7 +311,7 @@ Bu bölümde, sonuçta elde edilen davranışını klasör yolu ve dosya adı jo
 
 [DistCp](https://hadoop.apache.org/docs/current3/hadoop-distcp/DistCp.html) bir Hadoop kümesinde dağıtılmış kopyalamayı yapmak için bir Hadoop yerel komut satırı aracıdır. Distcp komutu çalıştırdığınızda, ilk kopyalanması, Hadoop kümesine birkaç harita işleri oluşturmak için tüm dosyaları listelenir ve her bir harita iş ikili kopyalama havuz kaynağından ne yapacağını.
 
-Kopyalama etkinliği destek dosyaları olarak kopyalamak için DistCp kullanma-Azure Blob içinde olduğu (dahil olmak üzere [kopyalama aşamalı](copy-activity-performance.md) veya Azure Data Lake Store, bu durumda, tam olarak şirket içinde barındırılan tümleştirme çalışma zamanını çalıştırmak yerine kümenizin power yararlanabilir . Özellikle, kümenizin çok güçlü ise daha iyi kopyalama aktarım hızı sağlar. Azure Data factory'de yapılandırmanıza bağlı olarak, kopyalama etkinliği otomatik olarak distcp komutu oluşturun, Hadoop kümenizi gönderin ve kopya durumunu izleyin.
+Kopyalama etkinliği destek dosyaları olarak kopyalamak için DistCp kullanma-Azure Blob içinde olduğu (dahil olmak üzere [kopyalama aşamalı](copy-activity-performance.md)) veya Azure Data Lake Store, bu durumda, tam olarak şirket içinde barındırılan Integration üzerinde çalıştırmak yerine kümenizin power yararlanabilir Çalışma zamanı. Özellikle, kümenizin çok güçlü ise daha iyi kopyalama aktarım hızı sağlar. Azure Data factory'de yapılandırmanıza bağlı olarak, kopyalama etkinliği otomatik olarak distcp komutu oluşturun, Hadoop kümenizi gönderin ve kopya durumunu izleyin.
 
 ### <a name="prerequisites"></a>Önkoşullar
 
@@ -327,7 +327,7 @@ Kopyalamak için DistCp kullanma dosyaları olarak-olan HDFS (hazırlanmış kop
 4. HDFS geçici bir klasörde hazırlayın. Bu geçici klasörü DistCp Kabuk betiği KB düzeyinde alanı kaplar şekilde depolamak için kullanılır.
 5. Emin olun, HDFS bağlı hizmette sağlanan kullanıcı hesabı için izne sahip bir); Yarn uygulama gönderme (b) bir alt klasör oluşturun, yukarıda geçici klasörü altındaki dosyaları okuma/yazma iznine sahip.
 
-### <a name="configurations"></a>Yapılandırmalar
+### <a name="configurations"></a>Yapılandırmaları
 
 DistCp bkz ilgili yapılandırmaları ve örneklerde [kaynağı olarak HDFS](#hdfs-as-source) bölümü.
 

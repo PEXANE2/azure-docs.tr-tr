@@ -1,26 +1,26 @@
 ---
-title: "Hızlı Başlangıç: Metin analizi API'sini çağırmak için Git kullanma"
+title: "Hızlı Başlangıç: Go kullanarak Metin Analizi API'si çağırın"
 titleSuffix: Azure Cognitive Services
-description: Hızlı bir şekilde yardımcı olması için alma bilgileri ve kod örnekleri, Azure Bilişsel hizmetler metin analizi API'sini kullanarak başlayın.
+description: Azure bilişsel hizmetler 'de Metin Analizi API'si kullanmaya hızlı bir şekilde başlamanıza yardımcı olması için bilgi ve kod örnekleri alın.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 04/16/2019
+ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: e6d641109bafdc3dba05a30fd627a3246c7edef5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 85eae936cf86d144f0baf91623b7be9f69eb4dbb
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60828639"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697537"
 ---
-# <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>Hızlı Başlangıç: Metin analizi Bilişsel hizmetini çağırmak için Git kullanma 
+# <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>Hızlı Başlangıç: Metin Analizi bilişsel hizmeti çağırmak için go kullanma 
 <a name="HOLTop"></a>
 
-Bu makalede gösterilmektedir için [dili algılayın](#Detect), [düşüncelerini çözümleme](#SentimentAnalysis), [anahtar tümcecikleri ayıklayın](#KeyPhraseExtraction), ve [bağlı varlıkları tanımlama](#Entities) kullanma  [metin analizi API'lerini](//go.microsoft.com/fwlink/?LinkID=759711) Go ile.
+Bu makalede, Go ile [metin analizi API 'leri](//go.microsoft.com/fwlink/?LinkID=759711) kullanarak [](#SentimentAnalysis) [dilin nasıl algılanacağı](#Detect), yaklaşım analiziyle, [anahtar tümceciklerini ayıklamada](#KeyPhraseExtraction)ve [bağlantılı varlıkların](#Entities) nasıl kullanılacağı gösterilir.
 
 API'lerle ilgili teknik bilgiler için [API tanımları](//go.microsoft.com/fwlink/?LinkID=759346) sayfasını inceleyin.
 
@@ -28,11 +28,11 @@ API'lerle ilgili teknik bilgiler için [API tanımları](//go.microsoft.com/fwli
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
-Ayrıca kayıt sırasında oluşturulan [uç nokta ve erişim anahtarı](../How-tos/text-analytics-how-to-access-key.md) değerlerine de sahip olmanız gerekir.
+Ayrıca kayıt sırasında oluşturulan [uç nokta ve erişim anahtarı](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) değerlerine de sahip olmanız gerekir.
 
 <a name="Detect"></a>
 
-## <a name="detect-language"></a>Dili algılama
+## <a name="detect-language"></a>Dili algıla
 
 Dil Algılama API'si, [Dili Algıla metodunu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) kullanarak bir metin belgesinin dilini algılar.
 
@@ -41,7 +41,7 @@ Dil Algılama API'si, [Dili Algıla metodunu](https://westcentralus.dev.cognitiv
 1. `subscriptionKey` değerini, aboneliğiniz için geçerli olan bir erişim anahtarı ile değiştirin.
 1. `uriBase` içindeki konumu (şu anda `westcentralus`) kaydolduğunuz bölge olacak şekilde değiştirin.
 1. Dosyayı '.go' uzantısıyla kaydedin.
-1. Açık olan bir bilgisayarda bir komut istemi Git yüklü uygulamanızın kök klasöründen.
+1. Kök klasörünüzden bir go yüklü olan bilgisayarda bir komut istemi açın.
 1. Dosyayı oluşturun, örneğin: `go build detect.go`.
 1. Dosyayı çalıştırın, örneğin: `go run detect.go`.
 
@@ -184,7 +184,7 @@ Yaklaşım Analizi API'si, [Yaklaşım metodunu](https://westcentralus.dev.cogni
 1. `subscriptionKey` değerini, aboneliğiniz için geçerli olan bir erişim anahtarı ile değiştirin.
 1. `uriBase` içindeki konumu (şu anda `westcentralus`) kaydolduğunuz bölge olacak şekilde değiştirin.
 1. Dosyayı '.go' uzantısıyla kaydedin.
-1. Açık olan bir bilgisayarda bir komut istemi Git yüklü uygulamanızın kök klasöründen.
+1. Kök klasörünüzden bir go yüklü olan bilgisayarda bir komut istemi açın.
 1. Dosyayı oluşturun, örneğin: `go build sentiment.go`.
 1. Dosyayı çalıştırın, örneğin: `go run sentiment.go`.
 
@@ -272,7 +272,7 @@ func main() {
 
 ## <a name="analyze-sentiment-response"></a>Yaklaşımı analiz etme yanıtı
 
-Sonuç 0.0 yakın puanlanır, 1.0 yakın ve negatif puanlanır ise pozitif ölçülür.
+Sonuç, 0,0 ' e daha yakınsa 1,0 ve negatif bir değer alıyorsa pozitif olarak ölçülür.
 Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde döndürülür:
 
 ```json
@@ -293,7 +293,7 @@ Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde d�
 
 <a name="KeyPhraseExtraction"></a>
 
-## <a name="extract-key-phrases"></a>Anahtar ifadeleri ayıklama
+## <a name="extract-key-phrases"></a>Başlıca sözcük gruplarını ayıkla
 
 Anahtar İfade Ayıklama API'si [Anahtar İfadeler metodunu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6) kullanarak bir metin belgesindeki anahtar ifadeleri ayıklar. Aşağıdaki örnekte hem İngilizce hem de İspanyolca belgelerin anahtarı ifadeleri ayıklanır.
 
@@ -433,7 +433,7 @@ Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde d�
 
 ## <a name="identify-entities"></a>Varlıkları tanımlama
 
-Varlıklar API'si, [Varlıklar metodunu](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634) kullanarak bir metin belgesindeki iyi bilinen varlıkları tanımlar. [Varlıkları](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) metinden "ABD" gibi sözcükleri ayıklama sonra bu sözcükler türü ve/veya Wikipedia bağlantısını verin. "ABD" için türdür `location`Wikipedia bağlantısını bilgileriyse `https://en.wikipedia.org/wiki/United_States`.  Aşağıdaki örnekte İngilizce belgelerin varlıkları tanımlanır.
+Varlıklar API'si, [Varlıklar metodunu](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634) kullanarak bir metin belgesindeki iyi bilinen varlıkları tanımlar. [Varlıklar](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) , "Birleşik Devletler" gibi metinden sözcükleri ayıklar, ardından bu kelimelerin türünü ve/veya Vimi bağlantısını verir. "Birleşik Devletler" `location`türü, `https://en.wikipedia.org/wiki/United_States`vikipe bağlantısı olduğunda.  Aşağıdaki örnekte İngilizce belgelerin varlıkları tanımlanır.
 
 1. Sık kullandığınız kod düzenleyicisinde yeni bir Go projesi oluşturun.
 1. Aşağıda sağlanan kodu ekleyin.

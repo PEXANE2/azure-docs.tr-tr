@@ -1,6 +1,6 @@
 ---
-title: İstemci uygulaması yapılandırması (Microsoft kimlik doğrulama kitaplığı) | Azure
-description: Uygulamaları Microsoft Authentication Library (MSAL) genel istemci ve istemci gizli yapılandırma seçeneklerinin öğrenin.
+title: İstemci uygulama yapılandırması (Microsoft kimlik doğrulama kitaplığı) | Mavisi
+description: Microsoft kimlik doğrulama kitaplığı 'nda (MSAL) ortak istemci ve gizli istemci uygulamaları için yapılandırma seçenekleri hakkında bilgi edinin.
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
@@ -12,124 +12,130 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/12/2019
+ms.date: 07/16/2019
 ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5e175a8cdd1622add90bd80df63303fe914ab9c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 767f7362a6c46d864ba17f23f6506bf6cdb71414
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66430815"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304723"
 ---
 # <a name="application-configuration-options"></a>Uygulama yapılandırma seçenekleri
 
-Kodunuzda, yeni genel veya gizli bir istemci (veya kullanıcı aracısı için MSAL.js) başlatma kimliğini doğrulamak ve belirteçlerini almak için uygulama. Microsoft Authentication Library (MSAL) istemci uygulamasını başlattığınızda, çeşitli yapılandırma seçeneklerini ayarlayabilirsiniz. Bu seçenekler ikiye ayrılır:
+Kodunuzda, belirteçlerin kimliğini doğrulamak ve almak için yeni bir genel veya gizli istemci uygulaması (veya MSAL. js için Kullanıcı Aracısı) başlatabilirsiniz. İstemci uygulamasını Microsoft kimlik doğrulama kitaplığı 'nda (MSAL) başlatırken bir dizi yapılandırma seçeneği belirleyebilirsiniz. Bu seçenekler iki gruba ayrılır:
 
-- Kayıt seçenekleri dahil olmak üzere:
-    - [Yetkilisi](#authority) (Kimlik sağlayıcısı oluşan [örneği](#cloud-instance) ve oturum açma [İzleyici](#application-audience) uygulama ve büyük olasılıkla Kiracı kimliği için).
-    - [İstemci kimliği](#client-id).
-    - [Yeniden yönlendirme URI'si](#redirect-uri).
-    - [İstemci gizli anahtarı](#client-secret) (için gizli istemci uygulamalar için).
-- [Günlüğe kaydetme seçeneklerini](#logging)günlük düzeyi, kişisel verilerin denetimini ve kitaplığını kullanarak bileşen adı.
+- Kayıt seçenekleri, şunlar dahildir:
+    - [Yetkili](#authority) (kimlik sağlayıcı [örneğinden](#cloud-instance) ve uygulama için oturum açma kitme [](#application-audience) ve muhtemelen Kiracı kimliği) oluşur.
+    - [ISTEMCI kimliği](#client-id).
+    - [Yeniden yönlendirme URI 'si](#redirect-uri).
+    - [İstemci parolası](#client-secret) (gizli istemci uygulamaları için).
+- Günlük düzeyi, kişisel verilerin denetimi ve kitaplığı kullanarak bileşen adı dahil olmak üzere [günlüğe kaydetme seçenekleri](#logging).
 
-## <a name="authority"></a>Yetkilisi
-MSAL belirteçleri isteyebileceği bir dizin belirten bir URL yetkilisidir. Ortak yetkilileri şunlardır:
+## <a name="authority"></a>İniz
+Yetkili, MSAL tarafından belirteçleri isteyebileceğini bir dizini gösteren bir URL 'dir. Ortak yetkililer şunlardır:
 
-- [https://login.microsoftonline.com/&amp;lt](https://login.microsoftonline.com/&lt ); Kiracı&gt; / burada &lt; Kiracı&gt; Azure Active Directory (Azure AD) kiracısı ya da bu Azure AD Kiracı ile ilişkilendirilen bir etki alanı Kiracı Kimliğini gösterir. Yalnızca belirli bir kuruluşun kullanıcıları imzalamak için kullanılır.
-- [https://login.microsoftonline.com/common/](https://login.microsoftonline.com/common/ ). Kullanıcılar iş ve Okul hesapları veya kişisel Microsoft hesapları ile imzalamak için kullanılır.
-- [https://login.microsoftonline.com/organizations/](https://login.microsoftonline.com/organizations/ ). Kullanıcılar iş ve Okul hesapları ile imzalamak için kullanılır.
-- [https://login.microsoftonline.com/consumers/](https://login.microsoftonline.com/consumers/ ). Kullanıcılar (eski adıyla Windows Live ID hesabı olarak da bilinir) yalnızca kişisel Microsoft hesapları ile imzalamak için kullanılır.
+- https\://Login.microsoftonline.com/\<kiracısı\>/, &lt;kiracı&gt; , Azure Active Directory (Azure AD) kiracısı veya bu Azure AD kiracısıyla ilişkili bir etki alanı olan kiracı kimliğidir. Yalnızca belirli bir kuruluşun kullanıcılarına oturum açmak için kullanılır.
+- https\://Login.microsoftonline.com/Common/. Kullanıcıları iş ve okul hesaplarıyla veya kişisel Microsoft hesaplarıyla oturum açmak için kullanılır.
+- https\://Login.microsoftonline.com/Organizations/. Kullanıcılara iş ve okul hesaplarıyla oturum açmak için kullanılır.
+- https\://Login.microsoftonline.com/consumers/. Kullanıcılara yalnızca kişisel Microsoft hesaplarıyla (eski adıyla Windows Live ID hesapları olarak biliniyordu) oturum açmak için kullanılır.
 
-Yetkilisi ayarı, uygulama kayıt Portalı'nda bildirilen ile tutarlı olması gerekiyor.
+Yetkili ayarının, uygulama kayıt portalında bildirildiği verilerle tutarlı olması gerekir.
 
-Yetkilisi URL'sini, örneği ve hedef kitle oluşur.
+Yetkili URL 'SI örnekten ve hedef kitlenden oluşur.
 
-Yetkilisi olabilir:
+Yetkili şu olabilir:
 - Bir Azure AD bulut yetkilisi.
-- bir Azure AD B2C yetkilisi. Bkz: [B2C özellikleri](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/AAD-B2C-specifics).
-- Bir Active Directory Federasyon Hizmetleri (ADFS) yetkilisi. Bkz: [ADFS Destek](https://aka.ms/msal-net-adfs-support).
+- Azure AD B2C yetkilisi. [B2C özelliklerine](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/AAD-B2C-specifics)bakın.
+- Active Directory Federasyon Hizmetleri (AD FS) (AD FS) yetkilisi. Bkz. [AD FS desteği](https://aka.ms/msal-net-adfs-support).
 
 Azure AD bulut yetkilileri iki bölümden oluşur:
 - Kimlik sağlayıcısı *örneği*
-- Oturum açma *İzleyici* uygulama
+- Uygulama için oturum açma *hedef kitlesi*
 
-Örneği ve hedef kitlesi birleştirilmiş ve yetkilisi URL'si sağlanmadı. Sürümlerinde MSAL.NET MSAL 3'ten önceki. *x*, yetkilisini kendiniz compose gerekiyordu, bulutta hedeflemek için değiştiriyorsanız ve oturum açma İzleyici göre.  Bu diyagram yetkilisi URL'sini nasıl oluşturulacağını gösterir:
+Örnek ve hedef kitle, yetkili URL 'SI olarak birleştirilebilir ve belirtilebilir. MSAL 3 ' ten önceki MSAL.NET sürümlerinde. *x*, hedeflemek istediğiniz buluta ve oturum açma kitlesini temel alarak yetkili bir şekilde oluşturmanız gerekiyordu.  Bu diyagram, yetkili URL 'sinin nasıl oluşturulduğunu gösterir:
 
-![Yetkilisi URL'sini nasıl oluştuğunu](media/msal-client-application-configuration/authority.png)
+![Yetkili URL 'SI nasıl oluşturulur?](media/msal-client-application-configuration/authority.png)
 
 ## <a name="cloud-instance"></a>Bulut örneği
-*Örneği* kullanıcılar Azure genel bulutunda veya Ulusal bulut uygulamanızı imzalama, belirtmek için kullanılır. MSAL, kodunuzu kullanarak, Azure bulut örneği numaralandırması kullanarak veya URL'sini geçirme ayarlayabilirsiniz [Ulusal bulut örneği](authentication-national-cloud.md#azure-ad-authentication-endpoints) olarak `Instance` (biliyorsanız) üye.
+*Örnek* , uygulamanızın Azure genel bulutundaki veya ulusal bulutlardan Kullanıcı imzalanmasını belirtmek için kullanılır. Kodunuzda msal kullanarak, bir sabit listesi kullanarak veya URL 'yi (bildiğiniz takdirde) [Ulusal bulut örneğine](authentication-national-cloud.md#azure-ad-authentication-endpoints) `Instance` geçirerek Azure bulut örneğini ayarlayabilirsiniz.
 
-Her iki MSAL.NET açık bir özel durum oluşturur `Instance` ve `AzureCloudInstance` belirtilir.
+Her ikisi de `Instance` `AzureCloudInstance` belirtilirse, msal.net açık bir özel durum oluşturur.
 
-Bir örneği belirtmezseniz, uygulamanızı Azure genel bulut örneği hedeflediğini (URL örneği `https://login.onmicrosoftonline.com`).
+Bir örnek belirtmezseniz, uygulamanız Azure genel bulut örneğini (URL `https://login.onmicrosoftonline.com`'nin örneği) hedefleyecek.
 
-## <a name="application-audience"></a>Uygulamanın hedef kitle
+## <a name="application-audience"></a>Uygulama hedef kitlesi
 
-Oturum açma İzleyici uygulamanızın iş ihtiyaçlarına bağlıdır:
-- Siz bir satır iş kolu (LOB) geliştiricisi gibiyseniz, büyük olasılıkla yalnızca kuruluşunuzdaki kullanılacak tek kiracılı bir uygulama oluşturmak. Bu durumda, kuruluş, Kiracı kimliği (Azure AD Örneğinize kimliği) veya Azure AD örneğiyle ilişkili bir etki alanı adı belirtmeniz gerekir.
-- Bir ISV iseniz, herhangi bir kuruluştaki ya da (çok kiracılı uygulama) bazı kuruluşlar kendi iş ve Okul hesaplarına sahip kullanıcılar oturum açma isteyebilirsiniz. Ancak, kullanıcıların kendi kişisel Microsoft hesapları ile oturum isteyebilirsiniz.
+Oturum açma hedef kitlesi, uygulamanız için iş ihtiyaçlarına bağlıdır:
+- İş kolu (LOB) geliştiricisiyseniz, muhtemelen yalnızca kuruluşunuzda kullanılacak tek kiracılı bir uygulama oluşturacaksınız. Bu durumda, kuruluş KIMLIĞI (Azure AD örneğinizin KIMLIĞI) veya Azure AD örneğiyle ilişkili bir etki alanı adı ile organizasyonu belirtmeniz gerekir.
+- ISV iseniz, kullanıcıların herhangi bir kuruluşta veya bazı kuruluşlarda (çok kiracılı uygulama) iş ve okul hesaplarıyla oturum açmak isteyebilirsiniz. Ancak kullanıcıların kişisel Microsoft hesaplarıyla oturum açmasını da isteyebilirsiniz.
 
-### <a name="how-to-specify-the-audience-in-your-codeconfiguration"></a>Kod/yapılandırma İzleyici belirtme
-MSAL kullanarak kodunuzda aşağıdaki değerlerden birini kullanarak hedef kitleye belirtin:
-- Azure AD yetkilisi İzleyici numaralandırması
-- Kiracı kimliği olabilir:
-  - Tek kiracılı uygulamalar için bir GUID (Azure AD Örneğinize kimliği)
-  - (Ayrıca tek kiracılı uygulamalar için) Azure AD örneğinizle ilgili bir etki alanı adı
-- Kiracı kimliği yerine Azure AD yetkilisi İzleyici numaralandırması olarak bu yer tutucuları biri:
-    - `organizations` çok kiracılı bir uygulama için
-    - `consumers` Kullanıcıların kişisel hesaplarıyla yalnızca oturum açmak için
-    - `common` Kullanıcılar kendi iş ve Okul hesapları veya kişisel Microsoft hesapları ile oturum açmak için
+### <a name="how-to-specify-the-audience-in-your-codeconfiguration"></a>Kodunuzda/yapılandırmanızda hedef kitleyi belirtme
+Kodunuzda MSAL kullanarak, aşağıdaki değerlerden birini kullanarak hedef kitleyi belirtirsiniz:
+- Azure AD yetkilisi hedef kitlesi numaralandırması
+- Kiracı KIMLIĞI:
+  - Tek kiracılı uygulamalar için GUID (Azure AD örneğinizin KIMLIĞI)
+  - Azure AD örneğiniz ile ilişkili bir etki alanı adı (tek kiracılı uygulamalar için de)
+- Azure AD yetkilisi hedef kitlesi numaralandırması yerine bir kiracı KIMLIĞI olarak bu yer tutuculardan biri:
+    - `organizations`çok kiracılı bir uygulama için
+    - `consumers`kullanıcıları yalnızca kendi kişisel hesaplarıyla oturum açmak için
+    - `common`kullanıcılara iş ve okul hesaplarıyla veya kendi kişisel Microsoft hesaplarıyla oturum açmak için
 
-Azure AD yetkilisi İzleyici hem Kiracı kimliğini belirtirseniz MSAL'ın anlamlı bir özel durum oluşturur
+Hem Azure AD yetkilisi kitleyi hem de kiracı KIMLIĞINI belirtirseniz MSAL anlamlı bir özel durum oluşturur.
 
-Bir izleyici belirtmezseniz, uygulamanızı Azure AD'ye hedeflediğini ve bir hedef kitle olarak kişisel Microsoft hesapları. (Diğer bir deyişle, gibi ancak davranış göstereceği `common` belirtildi.)
+Hedef kitle belirtmezseniz, uygulamanız Azure AD ve kişisel Microsoft hesaplarını bir hedef kitle olarak hedefleyecek. (Yani, belirtildiği gibi `common` davranır.)
 
-### <a name="effective-audience"></a>Geçerli hedef kitle
-Uygulamanız için geçerli İzleyici (bir kesişimi yoksa) en az uygulamanızda ayarladığınız Hedef kitleniz ve uygulama kaydında belirtilen bir izleyici olacaktır. Aslında, [uygulama kayıtları](https://aka.ms/appregistrations) deneyimini uygulamaya (desteklenen hesap türleri için) kitlesini belirtmenize olanak sağlar. Daha fazla bilgi için [hızlı başlangıç: Microsoft kimlik platformu bir uygulamayı kaydetme](quickstart-register-app.md).
+### <a name="effective-audience"></a>Etkin hedef kitle
+Uygulamanız için geçerli hedef kitle, uygulamanızda belirlediğiniz hedef kitlesinin ve uygulama kaydında belirtilen hedef kitlesinin en az (bir kesişmesi varsa) olacaktır. Aslında [uygulama kayıtları](https://aka.ms/appregistrations) deneyimi, uygulama için hedef kitleyi (desteklenen hesap türleri) belirtmenize olanak tanır. Daha fazla bilgi için bkz [. hızlı başlangıç: Bir uygulamayı Microsoft Identity platformu](quickstart-register-app.md)ile kaydedin.
 
-Şu anda, hem de bu ayarları yapılandırmak için kullanıcıların kişisel Microsoft hesapları ile oturum açmak için bir uygulamayı almanın tek yolu verilmiştir:
-- Uygulama kayıt İzleyici kümesine `Work and school accounts and personal accounts`.
-- Kod/yapılandırma için hedef kitle kümesindeki `AadAuthorityAudience.PersonalMicrosoftAccount` (veya `TenantID` = "tüketicilerin").
+Şu anda, yalnızca kişisel Microsoft hesaplarıyla kullanıcıların oturum açması için bir uygulama almanın tek yolu bu ayarların her ikisini de yapılandırmaktır:
+- Uygulama kaydı kitlesini olarak `Work and school accounts and personal accounts`ayarlayın.
+- Kodunuzda/yapılandırmanızda bulunan hedef kitleyi (veya `AadAuthorityAudience.PersonalMicrosoftAccount` `TenantID` = "tüketiciler") olarak ayarlayın.
 
 ## <a name="client-id"></a>İstemci Kimliği
-Uygulamanıza uygulama kaydedilirken Azure AD tarafından atanan benzersiz uygulama (istemci) kimliği istemci kimliğidir.
+İstemci KIMLIĞI, uygulama kaydedildiğinde Azure AD tarafından uygulamanıza atanan benzersiz uygulama (istemci) KIMLIĞIDIR.
 
-## <a name="redirect-uri"></a>Yeniden yönlendirme URI'si
-Yeniden yönlendirme URI'si, kimlik sağlayıcı güvenlik belirteçlerini geri gönderir URI'dir.
+## <a name="redirect-uri"></a>Yeniden yönlendirme URI 'SI
+Yeniden yönlendirme URI 'si, kimlik sağlayıcısı 'nın güvenlik belirteçlerini uygulamasına geri göndereceği URI 'dir.
 
-### <a name="redirect-uri-for-public-client-apps"></a>Genel istemci uygulamaları için yeniden yönlendirme URI'si
-MSAL kullanarak bir ortak istemci uygulama Geliştirici kullanıyorsanız:
-- Geçirmeniz gerekmez `RedirectUri` çünkü MSAL tarafından otomatik olarak hesaplanır. Bu yeniden yönlendirme URI'si platforma bağlı olarak bu değerlerden birine ayarlayın:
-   - `urn:ietf:wg:oauth:2.0:oob` tüm Windows platformları için
-   - `msal{ClientId}://auth` Xamarin Android ve iOS için
+### <a name="redirect-uri-for-public-client-apps"></a>Ortak istemci uygulamaları için yeniden yönlendirme URI 'SI
+MSAL kullanan ortak bir istemci uygulama geliştiricisiyseniz:
+- Masaüstü veya UWP uygulamalarında kullanmak `.WithDefaultRedirectUri()` istersiniz (msal.NET 4.1 +). Bu yöntem, ortak istemci uygulamasının yeniden yönlendirme URI özelliğini genel istemci uygulamaları için önerilen varsayılan yeniden yönlendirme URI 'si olarak ayarlar. 
 
-- Yeniden yönlendirme yapılandırmanız gereken URI [uygulama kayıtları](https://aka.ms/appregistrations):
+  Platform  | Yeniden yönlendirme URI 'SI  
+  ---------  | --------------
+  Masaüstü uygulaması (.NET ILT) | `https://login.microsoftonline.com/common/oauth2/nativeclient` 
+  UWP | `WebAuthenticationBroker.GetCurrentApplicationCallbackUri()`değeri. Bu, kaydolmanız gereken WebAuthenticationBroker. GetCurrentApplicationCallbackUri () sonucuna değer ayarlayarak, SSO 'yu tarayıcıda sağlar
+  .NET Core | `https://localhost`. Bu, .NET Core 'un katıştırılmış Web görünümü için bir kullanıcı arabirimine sahip olmadığından kullanıcının etkileşimli kimlik doğrulaması için sistem tarayıcısını kullanmasına olanak sağlar.
 
-   ![Uygulama kayıtları yeniden yönlendirme URI'si](media/msal-client-application-configuration/redirect-uri.png)
+- Aracıyı desteklemeyen bir Xamarin Android ve iOS uygulaması oluşturuyorsanız, yeniden yönlendirme URI 'si eklemeniz gerekmez (yeniden yönlendirme URI 'si Xamarin Android ve iOS `msal{ClientId}://auth` için otomatik olarak ayarlanır)
 
-Kullanarak yeniden yönlendirme URI'si geçersiz kılabilirsiniz `RedirectUri` özelliği (örneğin, aracıları kullanın). Yeniden yönlendirme URI'leri ilgili senaryonun bazı örnekleri aşağıda verilmiştir:
+- [Uygulama kayıtları](https://aka.ms/appregistrations)YENIDEN yönlendirme URI 'sini yapılandırmanız gerekir:
+
+   ![Uygulama kayıtları yeniden yönlendirme URI 'SI](media/msal-client-application-configuration/redirect-uri.png)
+
+`RedirectUri` Özelliğini kullanarak yeniden yönlendirme URI 'sini geçersiz kılabilirsiniz (örneğin, aracılar kullanıyorsanız). Bu senaryo için yeniden yönlendirme URI 'Leri örnekleri aşağıda verilmiştir:
 
 - `RedirectUriOnAndroid` = "msauth-5a434691-ccb2-4fd1-b97b-b64bcfbc03fc://com.microsoft.identity.client.sample";
-- `RedirectUriOnIos` = $"msauth.{Bundle.ID}://auth";
+- `RedirectUriOnIos`= $ "msauth. {Demeti. ID}://kimlik doğrulaması ";
 
-Ayrıntılar için bkz [Android ve iOS için belgeleri](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Leveraging-the-broker-on-iOS).
+Ayrıntılar için bkz. [Android ve iOS belgeleri](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Leveraging-the-broker-on-iOS).
 
-### <a name="redirect-uri-for-confidential-client-apps"></a>Gizli istemci uygulamaları için yeniden yönlendirme URI'si
-Web apps için yeniden yönlendirme URI'si (veya yanıt URI'si), Azure AD'nin belirteç uygulamasına geri göndermek için kullanacağı URI'dir. Gizli uygulama bunlardan biri ise bu web uygulaması/Web API URL'si olabilir. Yeniden yönlendirme URI'si uygulama kaydında kayıtlı olması gerekir. Başlangıçta yerel olarak test ettiğiniz bir uygulamayı dağıttığınızda, bu kayıt özellikle önemlidir. Ardından uygulama kayıt Portalı'nda dağıtılan uygulamanın yanıt URL'si eklemeniz gerekir.
+### <a name="redirect-uri-for-confidential-client-apps"></a>Gizli istemci uygulamaları için yeniden yönlendirme URI 'SI
+Web Apps için, yeniden yönlendirme URI 'SI (veya Yanıt URI 'SI), Azure AD 'nin belirteci uygulamaya geri göndermek için kullanacağı URI 'dir. Gizli uygulama bunlardan biri ise, bu URI Web uygulaması/Web API 'sinin URL 'si olabilir. Yeniden yönlendirme URI 'sinin uygulama kaydında kayıtlı olması gerekir. Başlangıçta yerel olarak test ettiğiniz bir uygulamayı dağıtırken bu kayıt özellikle önemlidir. Ardından, uygulama kayıt portalı 'nda dağıtılan uygulamanın yanıt URL 'sini eklemeniz gerekir.
 
-Arka plan programı uygulamaları için bir yeniden yönlendirme URI'si belirtmeniz gerekmez.
+Daemon uygulamaları için bir yeniden yönlendirme URI 'SI belirtmeniz gerekmez.
 
 ## <a name="client-secret"></a>Gizli anahtar
-Bu seçenek, gizli bir istemci uygulaması için gizli belirtir. Bu gizli dizi (uygulama parolası) uygulama kayıt portalı tarafından sağlanan veya uygulama kaydı sırasında Azure ad PowerShell AzureAD, PowerShell AzureRM veya Azure CLI ile sağlanan.
+Bu seçenek, gizli istemci uygulaması için istemci parolasını belirtir. Bu gizli dizi (uygulama parolası) uygulama kayıt portalı tarafından sağlanır veya PowerShell AzureAD, PowerShell Azurerd veya Azure CLı ile uygulama kaydı sırasında Azure AD 'ye sağlanır.
 
-## <a name="logging"></a>Günlüğe kaydetme
-Diğer yapılandırma seçenekleri, günlüğe kaydetme ve sorun giderme etkinleştirin. Bkz: [günlüğü](msal-logging.md) makale bunların nasıl kullanıldığı hakkında ayrıntılar için.
+## <a name="logging"></a>Günlüğe Kaydetme
+Diğer yapılandırma seçenekleri günlüğe kaydetme ve sorun gidermeyi etkinleştirir. Nasıl kullanılacağına ilişkin ayrıntılar için [günlüğe kaydetme](msal-logging.md) makalesine bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Hakkında bilgi edinin [istemci uygulamaları, MSAL.NET kullanarak örnekleme](msal-net-initializing-client-applications.md).
+[Msal.NET kullanarak istemci uygulamaları örneğini](msal-net-initializing-client-applications.md)oluşturma hakkında bilgi edinin.
 
-Hakkında bilgi edinin [MSAL.js kullanılarak istemci uygulamaları örnekleme](msal-js-initializing-client-applications.md).
+[Msal. js kullanarak istemci uygulamaları örneğini](msal-js-initializing-client-applications.md)oluşturma hakkında bilgi edinin.

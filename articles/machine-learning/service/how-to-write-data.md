@@ -1,5 +1,5 @@
 ---
-title: "Yazma: Python SDK'sı veri hazırlama"
+title: "Write: Data Prep Python SDK 'Sı"
 titleSuffix: Azure Machine Learning service
 description: Azure Machine Learning veri hazırlığı SDK'sı ile veri yazma hakkında bilgi edinin. Herhangi bir noktada bir veri akışı (yerel dosya sistemi, Azure Blob Depolama ve Azure Data Lake depolama), desteklenen konumlardan birini dosyalarında ve veri dışarı yazabilirsiniz.
 services: machine-learning
@@ -12,20 +12,20 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6206ad1a7356221bf94134e5d293c27d778cc187
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6753be5613b10b64936cddaafbb9859aad837b02
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66752862"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68358633"
 ---
-# <a name="write-and-configure-data--with-the-azure-machine-learning-data-prep-sdk"></a>Yazma ve verileri Azure Machine Learning veri hazırlığı SDK ile yapılandırma
+# <a name="write-and-configure-data--with-the-azure-machine-learning-data-prep-sdk"></a>Azure Machine Learning Data Prep SDK ile verileri yazma ve yapılandırma
 
-Bu makalede, farklı yöntemler kullanarak veri yazmak için bilgi [Azure Machine Learning veri hazırlığı Python SDK'sı](https://aka.ms/data-prep-sdk) ve deneme için bu verilerin nasıl yapılandırılacağına ilişkin [PythoniçinAzureMachineLearningSDK'sı](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).  Çıktı verilerini, bir veri akışı herhangi bir noktada yazılabilir. Yazma işlemleri, veri akış çalıştırmaları her zaman ortaya çıkan veri akışı için adımlar ve aşağıdaki adımları çalıştırın olarak eklenir. Veriler, paralel yazma izin vermek için birden çok bölüm dosyaya yazılır.
+Bu makalede, [Azure Machine Learning Data Prep Python SDK 'sını](https://aka.ms/data-prep-sdk) kullanarak verileri yazmak için farklı yöntemler öğrenirsiniz ve [Python için Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)ile bu verilerin deneme için nasıl yapılandırılacağı açıklanır.  Çıktı verileri, veri akışında herhangi bir noktada yazılabilir. Yazma işlemleri, sonuçta elde edilen veri akışına adım olarak eklenir ve bu adımlar veri akışı her çalıştığında çalışır. Veriler, paralel yazma izin vermek için birden çok bölüm dosyaya yazılır.
 
 > [!Important]
-> Yeni bir çözüm oluşturuyorsanız deneyin [Azure Machine Learning veri kümeleri](how-to-explore-prepare-data.md) (Önizleme) verileri, anlık görüntü verileri dönüştürme ve tutulan veri kümesi tanımlarını depolar. Veri kümeleri, veri hazırlığı SDK'sı, yapay ZEKA çözümlerini veri kümelerini yönetmek için genişletilmiş işlevselliği sunan sonraki sürümüdür.
-> Kullanırsanız `azureml-dataprep` Bağlantılarınızdaki kullanmak yerine bir veri akışı oluşturmak için paket `azureml-datasets` bir veri kümesini oluşturmak için paket, anlık görüntüler veya tutulan veri kümeleri, daha sonra kullanmak üzere mümkün olmayacaktır.
+> Yeni bir çözüm oluşturuyorsanız, verilerinizi dönüştürmek için Azure Machine Learning veri [kümelerini](how-to-explore-prepare-data.md) (Önizleme) deneyin, verileri anlık görüntü yapın ve sürümü tutulan veri kümesi tanımlarını depolayın. Veri kümeleri, veri hazırlama SDK 'sının bir sonraki sürümüdür ve AI çözümlerinde veri kümelerini yönetmek için genişletilmiş işlevler sunar.
+> Bir veri kümesi oluşturmak `azureml-dataprep` için `azureml-datasets` paketini kullanmak yerine dönüşümlerinizde bir veri akışı oluşturmak için paketini kullanırsanız, anlık görüntüleri veya sürümlenmiş veri kümelerini daha sonra kullanamazsınız.
 
 Kaç tane adımlar bir işlem hattında vardır yazma hiçbir sınırlama olduğundan, sorun giderme için veya diğer işlem hatları için Ara sonuçlar elde etmek için ek yazma adımları kolayca ekleyebilirsiniz.
 
@@ -37,7 +37,7 @@ Aşağıdaki dosya biçimlerini desteklenir
 -   Ayrılmış dosyalar (CSV, TSV, vb.)
 -   Parquet dosyalarını
 
-Azure Machine Learning veri hazırlığı Python SDK'sını kullanarak veri yazabilirsiniz:
+Azure Machine Learning Data Prep Python SDK 'sını kullanarak, aşağıdakileri yapmak için veri yazabilirsiniz:
 + bir yerel dosya sistemi
 + Azure Blob Depolama
 + Azure Data Lake Storage
@@ -52,7 +52,7 @@ Bir yazma işlemi tamamlandıktan sonra kolaylık olması için başarı adlı b
 
 ## <a name="example-write-code"></a>Örnek kod yazma
 
-Bu örnekte, bir veri akışı kullanarak verileri yükleyerek Başlat `auto_read_file()`. Bu farklı biçimlerin verilerle yeniden.
+Bu örnekte, kullanarak `auto_read_file()`veri akışına veri yükleyerek başlayın. Bu farklı biçimlerin verilerle yeniden.
 
 ```python
 import azureml.dataprep as dprep
@@ -73,10 +73,10 @@ t.head(5)
 
 ### <a name="delimited-file-example"></a>Ayrılmış dosyası örneği
 
-Aşağıdaki kod [ `write_to_csv()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow#write-to-csv-directory-path--datadestination--separator--str--------na--str----na---error--str----error------azureml-dataprep-api-dataflow-dataflow) ayrılmış bir dosyaya veri yazmak için işlevi.
+Aşağıdaki kod, ayrılmış bir [`write_to_csv()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow#write-to-csv-directory-path--datadestination--separator--str--------na--str----na---error--str----error------azureml-dataprep-api-dataflow-dataflow) dosyaya veri yazmak için işlevini kullanır.
 
 ```python
-# Create a new data flow using `write_to_csv` 
+# Create a new data flow using `write_to_csv`
 write_t = t.write_to_csv(directory_path=dprep.LocalFileOutput('./test_out/'))
 
 # Run the data flow to begin the write operation.
@@ -101,7 +101,7 @@ Yukarıdaki çıktıda çeşitli hatalar nedeniyle doğru şekilde ayrıştırı
 Parametreleri, yazma bir parçası olarak çağırın ve null değerleri temsil etmek için kullanılacak bir dize belirtin ekleyin.
 
 ```python
-write_t = t.write_to_csv(directory_path=dprep.LocalFileOutput('./test_out/'), 
+write_t = t.write_to_csv(directory_path=dprep.LocalFileOutput('./test_out/'),
                          error='BadData',
                          na='NA')
 write_t.run_local()
@@ -121,11 +121,11 @@ Yukarıdaki kod, bu çıktıyı üretir:
 
 ### <a name="parquet-file-example"></a>Parquet dosyası örneği
 
-Benzer şekilde `write_to_csv()`, [ `write_to_parquet()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow#write-to-parquet-file-path--typing-union--datadestination--nonetype----none--directory-path--typing-union--datadestination--nonetype----none--single-file--bool---false--error--str----error---row-groups--int---0-----azureml-dataprep-api-dataflow-dataflow) işlevi bir veri akış çalıştırmaları çalıştırılan Parquet adım yazma ile yeni bir veri akışı döndürür.
+Benzer şekilde `write_to_csv()` [`write_to_parquet()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow#write-to-parquet-file-path--typing-union--datadestination--nonetype----none--directory-path--typing-union--datadestination--nonetype----none--single-file--bool---false--error--str----error---row-groups--int---0-----azureml-dataprep-api-dataflow-dataflow) , işlevi, veri akışı çalıştırıldığında yürütülen bir Write Parquet adımı ile yeni bir veri akışı döndürür.
 
 ```python
 write_parquet_t = t.write_to_parquet(directory_path=dprep.LocalFileOutput('./test_parquet_out/'),
-error='MiscreantData')
+                                     error='MiscreantData')
 ```
 
 Yazma işlemi başlatmak için veri akışı çalıştırın.
@@ -147,11 +147,11 @@ Yukarıdaki kod, bu çıktıyı üretir:
 |3| 10013.0 | 99999.0 | MiscreantData | NO| NO| |   MiscreantData|    MiscreantData|    MiscreantData|
 |4| 10014.0 | 99999.0 | MiscreantData | NO| NO| ENSO|   59783.0|    5350.0| 500.0|
 
-## <a name="configure-data-for-automated-machine-learning-training"></a>Otomatik machine learning eğitim verilerini Yapılandır
+## <a name="configure-data-for-automated-machine-learning-training"></a>Otomatik makine öğrenimi eğitimi için verileri yapılandırma
 
-Yeni yazılmış veri dosyanıza geçirmek bir [ `AutoMLConfig` ](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#automlconfig) hazırlık otomatik makine öğrenimi eğitim için nesne. 
+Yeni yazılmış veri dosyanızı otomatik makine öğrenimi [`AutoMLConfig`](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#automlconfig) eğitimi hazırlığı içindeki bir nesneye geçirin. 
 
-Aşağıdaki kod örneği, veri akışı için bir Pandas dataframe dönüştürün ve daha sonra eğitim ve test veri kümeleri için otomatik makine öğrenimi eğitim bölün gösterilmektedir.
+Aşağıdaki kod örneği, veri akışınızı bir Pandas dataframe 'e dönüştürmenin yanı sıra otomatik makine öğrenimi eğitimi için bunu eğitim ve test veri kümelerine bölme işlemlerinin nasıl yapılacağını gösterir.
 
 ```Python
 from azureml.train.automl import AutoMLConfig
@@ -180,7 +180,7 @@ automated_ml_config = AutoMLConfig(task = 'regression',
 
 ```
 
-Önceki örnekte hiçbir ara veri hazırlama adımları ister gerekmiyorsa, veri akışı doğrudan geçirebilirsiniz `AutoMLConfig`.
+Yukarıdaki örnekte olduğu gibi ara veri hazırlama adımlarına gerek yoksa, veri akışınızı doğrudan içine `AutoMLConfig`geçirebilirsiniz.
 
 ```Python
 automated_ml_config = AutoMLConfig(task = 'regression', 
@@ -193,5 +193,5 @@ automated_ml_config = AutoMLConfig(task = 'regression',
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Bkz: SDK [genel bakış](https://aka.ms/data-prep-sdk) tasarım desenleri ve kullanım örnekleri 
-* Otomatik makine öğrenimi bkz [öğretici](tutorial-auto-train-models.md) bir regresyon modeli örnek
+* Tasarım desenleri ve kullanım örnekleri için SDK ['ya genel bakış](https://aka.ms/data-prep-sdk) bölümüne bakın 
+* Regresyon modeli için otomatik makine [](tutorial-auto-train-models.md) öğrenimi öğreticisine bakın

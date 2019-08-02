@@ -1,6 +1,6 @@
 ---
-title: Azure işlevleri C# Geliştirici Başvurusu
-description: C# kullanarak Azure işlevleri geliştirme hakkında bilgi edinin.
+title: Azure Işlevleri C# geliştirici başvurusu
+description: Kullanarak C#Azure işlevleri geliştirmeyi anlayın.
 services: functions
 documentationcenter: na
 author: ggailey777
@@ -11,34 +11,34 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 09/12/2018
 ms.author: glenga
-ms.openlocfilehash: 30c97eed5f28631bd2583cbda75df5755ffe2e34
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: 388b389cca7c3e820ea3ccfd37a2a93ccd476b31
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67626106"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68254645"
 ---
-# <a name="azure-functions-c-developer-reference"></a>Azure işlevleri C# Geliştirici Başvurusu
+# <a name="azure-functions-c-developer-reference"></a>Azure Işlevleri C# geliştirici başvurusu
 
 <!-- When updating this article, make corresponding changes to any duplicate content in functions-reference-csharp.md -->
 
-Bu makalede, C# .NET sınıf kitaplıkları kullanarak Azure işlevleri geliştirmeye giriş niteliğindedir.
+Bu makale, .NET sınıf kitaplıklarında kullanarak C# Azure işlevleri geliştirmeye giriş niteliğindedir.
 
-Azure işlevleri C# ve betik C# programlama dillerini destekler. İçin yönergeler arıyorsanız [C# kullanarak Azure portalında](functions-create-function-app-portal.md), bkz: [C# betiği (.csx) Geliştirici Başvurusu](functions-reference-csharp.md).
+Azure Işlevleri ve C# C# betik programlama dillerini destekler. [Azure Portal C# kullanma](functions-create-function-app-portal.md)hakkında rehberlik arıyorsanız, bkz [ C# . betik (. CSX) geliştirici başvurusu](functions-reference-csharp.md).
 
-Bu makalede, aşağıdaki makalelere zaten konusunu okuduğunuz varsayılır:
+Bu makalede, aşağıdaki makaleleri zaten okuduğunuzu varsaymış olursunuz:
 
-* [Azure işlevleri Geliştirici Kılavuzu](functions-reference.md)
-* [Azure işlevleri Visual Studio 2019 araçları](functions-develop-vs.md)
+* [Azure Işlevleri Geliştirici Kılavuzu](functions-reference.md)
+* [Azure Işlevleri Visual Studio 2019 araçları](functions-develop-vs.md)
 
-## <a name="functions-class-library-project"></a>İşlevleri sınıf kitaplığı projesi
+## <a name="functions-class-library-project"></a>İşlevler sınıf kitaplığı projesi
 
-Visual Studio'da **Azure işlevleri** proje şablonu, aşağıdaki dosyaları içeren bir C# sınıf kitaplığı projesi oluşturur:
+Visual Studio 'da **Azure işlevleri** proje şablonu, aşağıdaki dosyaları içeren C# bir sınıf kitaplığı projesi oluşturur:
 
-* [Host.JSON](functions-host-json.md) -proje uygulamasında tüm işlevleri yerel olarak veya azure'da çalıştırırken etkileyen yapılandırma ayarları depolar.
-* [Local.Settings.JSON](functions-run-local.md#local-settings-file) -uygulama ayarları ve yerel olarak çalıştırırken kullanılan bağlantı dizeleri depolar. Bu dosya, gizli dizileri içerir ve işlev uygulamanızı azure'da yayımlanan değil. Bunun yerine, [uygulama ayarlarını işlev uygulamanıza ekleme](functions-develop-vs.md#function-app-settings).
+* [Host. JSON](functions-host-json.md) -yerel olarak veya Azure 'da çalışırken projedeki tüm işlevleri etkileyen yapılandırma ayarlarını depolar.
+* [Local. Settings. JSON](functions-run-local.md#local-settings-file) -yerel olarak çalışırken kullanılan uygulama ayarlarını ve bağlantı dizelerini depolar. Bu dosya gizli dizileri içerir ve Azure 'da işlev uygulamanıza yayımlanmaz. Bunun yerine, [uygulama ayarlarını işlev uygulamanıza ekleyin](functions-develop-vs.md#function-app-settings).
 
-Aşağıdaki örnek, yapı çıktı dizininde oluşturulmuş gibi görünen bir klasör yapısı proje oluşturduğunuzda:
+Projeyi derlediğinizde, derleme çıkış dizininde aşağıdaki örnek gibi görünen bir klasör yapısı oluşturulur:
 
 ```
 <framework.version>
@@ -50,14 +50,14 @@ Aşağıdaki örnek, yapı çıktı dizininde oluşturulmuş gibi görünen bir 
  | - host.json
 ```
 
-Bu dizin ne işlev uygulamanızı azure'da dağıtılan olur. Gerekli bağlama uzantıları [sürüm 2.x](functions-versions.md) işlevleri çalışma zamanı olan [projeye NuGet paketleri olarak eklenen](./functions-bindings-register.md#vs).
+Bu dizin, Azure 'daki işlev uygulamanıza dağıtılır. Işlevler çalışma zamanının [2. x sürümünde](functions-versions.md) gerekli olan bağlama uzantıları [projeye NuGet paketleri olarak eklenir](./functions-bindings-register.md#vs).
 
 > [!IMPORTANT]
-> Derleme işlemi oluşturur bir *function.json* her işlev için dosya. Bu *function.json* dosyasının doğrudan düzenlenmesi değil yöneliktir. Bağlama yapılandırması değiştiremez veya bu dosyayı düzenleyerek işlevi devre dışı bırakın. Bir işlev devre dışı bırakma hakkında bilgi edinmek için [işlevler devre dışı bırakma](disable-function.md#functions-2x---c-class-libraries).
+> Yapı işlemi her işlev için bir *function. JSON* dosyası oluşturur. Bu *function. JSON* dosyası doğrudan düzenlenmeyecek. Bu dosyayı düzenleyerek bağlama yapılandırmasını değiştiremez veya işlevi devre dışı bırakabilirsiniz. Bir işlevi nasıl devre dışı bırakacağınızı öğrenmek için bkz. [işlevleri devre dışı bırakma](disable-function.md#functions-2x---c-class-libraries).
 
-## <a name="methods-recognized-as-functions"></a>İşlevleri kabul edilen yöntemleri
+## <a name="methods-recognized-as-functions"></a>İşlev olarak tanınan Yöntemler
 
-Bir sınıf kitaplığında bir işlev ile statik bir yöntemi olan bir `FunctionName` ve aşağıdaki örnekte gösterildiği gibi bir tetikleyici özniteliği:
+Bir sınıf kitaplığında, bir işlev, aşağıdaki örnekte gösterildiği gibi, `FunctionName` ve bir tetikleyici özniteliği olan statik bir yöntemdir:
 
 ```csharp
 public static class SimpleExample
@@ -72,24 +72,24 @@ public static class SimpleExample
 } 
 ```
 
-`FunctionName` Özniteliği yöntemi bir işlev giriş noktası olarak işaretler. Adı bir projesi içinde benzersiz olmalı, bir harf ile başlamalı ve yalnızca harf, sayı içeren `_`, ve `-`, en çok 127 karakter uzunluğunda. Proje şablonları, genellikle adlı bir yöntem oluşturma `Run`, ancak yöntem adı geçerli bir C# yöntem adı olabilir.
+`FunctionName` Özniteliği yöntemi bir işlev giriş noktası olarak işaretler. Ad bir proje içinde benzersiz olmalıdır, bir harfle başlamalı ve yalnızca harf, sayı, `_`ve `-`, en fazla 127 karakter içermelidir. Proje şablonları genellikle adlı `Run`bir yöntem oluşturur, ancak yöntem adı geçerli C# bir yöntem adı olabilir.
 
-Tetikleyici özniteliğini tetikleyici türü belirtir ve giriş verileri için bir yöntem parametresi bağlar. Örnek işlevi bir kuyruk iletisi tarafından tetiklenir ve kuyruk iletisini yöntemine geçirilen `myQueueItem` parametresi.
+Tetikleyici özniteliği Tetikleyici türünü belirtir ve giriş verilerini bir yöntem parametresine bağlar. Örnek işlev bir kuyruk iletisi tarafından tetiklenir ve kuyruk iletisi, `myQueueItem` parametresindeki yöntemine geçirilir.
 
-## <a name="method-signature-parameters"></a>Yöntem imzası parametreleri
+## <a name="method-signature-parameters"></a>Yöntem imza parametreleri
 
-Yöntem imzası tetikleyici özniteliğiyle kullanılan farklı parametreler içerebilir. Ekleyebileceğiniz ek parametreler bazıları şunlardır:
+Yöntem imzası, tetikleyici özniteliğiyle kullanılandan farklı parametreler içeriyor olabilir. Şunları dahil edebilirsiniz:
 
-* [Giriş ve çıkış bağlamaları](functions-triggers-bindings.md) özniteliklerle tasarlayarak işaretlenen.  
-* Bir `ILogger` veya `TraceWriter` ([yalnızca 1.x sürümü](functions-versions.md#creating-1x-apps)) parametresi için [günlüğü](#logging).
-* A `CancellationToken` parametresi için [kapatılmasını](#cancellation-tokens).
-* [İfadeleri bağlama](./functions-bindings-expressions-patterns.md) meta verileri için parametreleri tetikleyin.
+* [Giriş ve çıkış bağlamaları](functions-triggers-bindings.md) öznitelikleri ile süsleyerek bu şekilde işaretlenir.  
+* `ILogger` [Günlüğe kaydetme](#logging)için bir veya `TraceWriter` ([Sürüm 1. x-yalnızca sürüm](functions-versions.md#creating-1x-apps)) parametresi.
+* `CancellationToken` [Düzgün kapanma](#cancellation-tokens)için bir parametre.
+* Tetikleyici meta verilerini almak için [ifade parametreleri bağlama](./functions-bindings-expressions-patterns.md) .
 
-İşlev imzası parametrelerinde sırası önemli değildir. Örneğin, önce veya sonra diğer bağlamalar tetikleyici parametreleri yerleştirebilir ve Günlükçü parametrenin öncesinde veya sonrasında tetikleyicisi veya bağlaması parametreleri koyabilirsiniz.
+İşlev imzasında parametrelerin sırası önemi yoktur. Örneğin, tetikleme parametrelerini diğer bağlamalardan önce veya sonra koyabilirsiniz ve tetikleyici veya bağlama parametrelerinden önce veya sonra günlükçü parametresini yerleştirebilirsiniz.
 
-### <a name="output-binding-example"></a>Çıkış bağlaması örneği
+### <a name="output-binding-example"></a>Çıkış bağlama örneği
 
-Aşağıdaki örnek, önceki bir kuyruk çıkış bağlaması ekleyerek değiştirir. İşlev için farklı bir sırada yeni bir kuyruk iletisi işlevi tetikleyen bir kuyruk iletisi yazar.
+Aşağıdaki örnek, bir çıkış sırası bağlaması ekleyerek önceki birini değiştirir. İşlevi, işlevi tetikleyen sıra iletisini farklı bir kuyruktaki yeni bir kuyruk iletisine yazar.
 
 ```csharp
 public static class SimpleExampleWithOutput
@@ -106,11 +106,11 @@ public static class SimpleExampleWithOutput
 }
 ```
 
-Bağlama başvuru makalelerimize ([depolama kuyrukları](functions-bindings-storage-queue.md), örneğin) tetikleyici, giriş veya çıkış öznitelikleri bağlaması ile kullanabileceğiniz hangi parametre türleri açıklanmaktadır.
+Bağlama başvuru makaleleri (örneğin,[depolama kuyrukları](functions-bindings-storage-queue.md)) tetikleyici, giriş veya çıkış bağlama öznitelikleri ile hangi parametre türlerini kullanabileceğinizi açıklar.
 
 ### <a name="binding-expressions-example"></a>Bağlama ifadeleri örneği
 
-Aşağıdaki kod, bir uygulama ayarı izlemek için kuyruk adını alır ve kuyruk iletisi oluşturulma zamanını alır `insertionTime` parametresi.
+Aşağıdaki kod, bir uygulama ayarından izlenecek sıranın adını alır ve `insertionTime` parametresindeki sıra iletisi oluşturma zamanını alır.
 
 ```csharp
 public static class BindingExpressionsExample
@@ -127,13 +127,13 @@ public static class BindingExpressionsExample
 }
 ```
 
-## <a name="autogenerated-functionjson"></a>Otomatik olarak oluşturulan function.json
+## <a name="autogenerated-functionjson"></a>Otomatik olarak function. JSON
 
-Derleme işlemi oluşturur bir *function.json* derleme klasörü işlevi klasöründe bir dosya. Daha önce belirtildiği gibi bu dosyayı doğrudan düzenlenmesi için tasarlanmamıştır. Bağlama yapılandırması değiştiremez veya bu dosyayı düzenleyerek işlevi devre dışı bırakın. 
+Yapı işlemi yapı klasöründeki bir işlev klasöründe bir *function. JSON* dosyası oluşturur. Daha önce belirtildiği gibi, bu dosyanın doğrudan düzenlenmesi amaçlıyordu. Bu dosyayı düzenleyerek bağlama yapılandırmasını değiştiremez veya işlevi devre dışı bırakabilirsiniz. 
 
-Bu dosyanın amacı için kullanmak üzere ölçeği denetleyicisini bilgileri sağlamaktır [kararları tüketim planında ölçeklendirme](functions-scale.md#how-the-consumption-and-premium-plans-work). Bu nedenle, dosya yalnızca Tetikleyici bilgileri, giriş veya çıktı bağlaması var.
+Bu dosyanın amacı, [Tüketim planındaki kararları ölçeklendirirken](functions-scale.md#how-the-consumption-and-premium-plans-work)kullanılacak ölçek denetleyicisine bilgi sağlamaktır. Bu nedenle, dosya yalnızca tetikleyici bilgisine sahiptir, giriş veya çıkış bağlamaları değildir.
 
-Oluşturulan *function.json* dosya içeren bir `configurationSource` çalışma zamanı bağlamaları için .NET öznitelikleri kullanmak için bildiren özelliği yerine *function.json* yapılandırma. Bir örneği aşağıda verilmiştir:
+Oluşturulan *function. JSON* dosyası, çalışma zamanının `configurationSource` *function. JSON* yapılandırması yerine, bağlamalar için .net özniteliklerini kullanmasını söyleyen bir özelliği içerir. Bir örneği aşağıda verilmiştir:
 
 ```json
 {
@@ -152,13 +152,13 @@ Oluşturulan *function.json* dosya içeren bir `configurationSource` çalışma 
 }
 ```
 
-## <a name="microsoftnetsdkfunctions"></a>Microsoft.NET.Sdk.Functions
+## <a name="microsoftnetsdkfunctions"></a>Microsoft. NET. SDK. Functions
 
-*Function.json* dosya oluşturma, NuGet paketi tarafından gerçekleştirilir [Microsoft\.NET\.Sdk\.işlevleri](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions). 
+*Function. JSON* dosya oluşturma, NuGet paketi [\.Microsoft NET\.SDK\.işlevleri](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions)tarafından gerçekleştirilir. 
 
-Her iki sürümü için kullanılan aynı paket 1.x ve 2.x'i işlevler çalışma zamanı. Hedef Framework'ü ne 1.x proje 2.x projeden ayırır ' dir. İlgili bölümleri şunlardır *.csproj* farklı gösteren dosyalar, hedef çerçeveleri ve aynı `Sdk` paket:
+Aynı paket, Işlevler çalışma zamanının hem sürüm 1. x hem de 2. x için kullanılır. Hedef Framework, bir 2. x projesinden 1. x projesini farklılaştırır. Farklı hedef çerçeveleri ve aynı `Sdk` paketi gösteren *. csproj* dosyalarının ilgili bölümleri aşağıda verilmiştir:
 
-**1.x işlevleri**
+**İşlevler 1. x**
 
 ```xml
 <PropertyGroup>
@@ -169,7 +169,7 @@ Her iki sürümü için kullanılan aynı paket 1.x ve 2.x'i işlevler çalışm
 </ItemGroup>
 ```
 
-**2.x işlevleri**
+**İşlevler 2. x**
 
 ```xml
 <PropertyGroup>
@@ -181,39 +181,39 @@ Her iki sürümü için kullanılan aynı paket 1.x ve 2.x'i işlevler çalışm
 </ItemGroup>
 ```
 
-Arasında `Sdk` paket bağımlılıkları, Tetikleyicileri ve bağlamaları alınır. .NET Core 2.x Tetikleyicileri ve bağlamaları hedef sırada bu Tetikleyicileri ve bağlamaları .NET Framework'ü hedefleyen çünkü 1.x Tetikleyicileri ve bağlamaları için bir 1.x proje ifade eder.
+`Sdk` Paket bağımlılıkları arasında Tetikleyiciler ve bağlamalar vardır. 1\. x Projesi 1. x tetikleyicilerine ve bağlamalara başvurur çünkü bu Tetikleyiciler ve bağlamalar .NET Framework, ancak 2. x Tetikleyicileri ve bağlamaları hedef .NET Core ' u hedefler.
 
-`Sdk` Paket de bağlıdır [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json)ve dolaylı olarak [WindowsAzure.Storage](https://www.nuget.org/packages/WindowsAzure.Storage). Bu bağımlılıkları projenize işlevler çalışma zamanı sürümüyle çalışan bu paketleri sürümlerini kullandığından emin olun, proje. Örneğin, `Newtonsoft.Json` sürüm 11 için .NET Framework 4.6.1 var, ancak .NET Framework 4.6.1'i hedefleyen işlevler çalışma zamanı yalnızca uyumlu `Newtonsoft.Json` 9.0.1. Bu projedeki işlev kodunuzu kullanmak de sahiptir. `Newtonsoft.Json` 9.0.1.
+Paket Ayrıca, [Newtonsoft. JSON](https://www.nuget.org/packages/Newtonsoft.Json)öğesine ve dolaylı olarak [windowsazure. Storage](https://www.nuget.org/packages/WindowsAzure.Storage)'a bağımlıdır. `Sdk` Bu bağımlılıklar, projenizin, projenin hedeflediği Işlevler çalışma zamanı sürümüyle çalışan paketlerin sürümlerini kullandığından emin olun. Örneğin, `Newtonsoft.Json` .NET Framework 4.6.1 için sürüm 11 ' e sahiptir, ancak .NET Framework 4.6.1 hedefleyen işlevler çalışma zamanı yalnızca 9.0.1 ile `Newtonsoft.Json` uyumludur. Bu nedenle, bu projedeki işlev kodunuzun de 9.0.1 kullanması `Newtonsoft.Json` gerekir.
 
-Kaynak kodu `Microsoft.NET.Sdk.Functions` GitHub deposunda kullanılabilir [azure\-işlevleri\-vs\-derleme\-sdk](https://github.com/Azure/azure-functions-vs-build-sdk).
+`Microsoft.NET.Sdk.Functions` İçin kaynak kodu, GitHub deposu [\-Azure işlevleri\-vs\-\-derlemesi SDK 'sında](https://github.com/Azure/azure-functions-vs-build-sdk)bulunabilir.
 
 ## <a name="runtime-version"></a>Çalışma zamanı sürümü
 
-Visual Studio kullanan [Azure işlevleri çekirdek Araçları](functions-run-local.md#install-the-azure-functions-core-tools) işlevleri projelerini çalıştırmak için. Temel araçları, İşlevler çalışma zamanı için bir komut satırı arabirimidir.
+Visual Studio, Işlevler projelerini çalıştırmak için [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) kullanır. Temel araçlar, Işlevler çalışma zamanı için bir komut satırı arabirimidir.
 
-Npm kullanarak Core araçlarını yüklerseniz, Visual Studio tarafından kullanılan temel araçları sürümü etkilemez. İşlevler çalışma zamanı sürümü için 1.x, Visual Studio temel araçları sürümlerinde depolar *%USERPROFILE%\AppData\Local\Azure.Functions.Cli* ve burada depolanan en son sürümünü kullanır. İçin 2.x İşlevler, temel Araçlar dahil **Azure işlevleri ve Web işleri Araçları** uzantısı. 1\.x ve 2.x'i için İşlevler projesi çalıştırdığınızda, konsol çıkışında hangi sürümü kullanılıyor görebilirsiniz:
+Ana araçları NPM kullanarak yüklerseniz, Visual Studio tarafından kullanılan temel araçlar sürümünü etkilemez. Işlevler çalışma zamanı sürüm 1. x, Visual Studio *%USERPROFILE%\AppData\Local\Azure.Functions.cli* ' deki temel araçlar sürümlerini depolar ve burada depolanan en son sürümü kullanır. 2\. x Işlevleri için, temel araçlar **Azure işlevleri ve Web Işleri araçları** uzantısına dahildir. Hem 1. x hem de 2. x için, bir Işlevler projesi çalıştırdığınızda konsol çıkışında hangi sürümün kullanıldığını görebilirsiniz:
 
 ```terminal
 [3/1/2018 9:59:53 AM] Starting Host (HostId=contoso2-1518597420, Version=2.0.11353.0, ProcessId=22020, Debug=False, Attempt=0, FunctionsExtensionVersion=)
 ```
 
-## <a name="supported-types-for-bindings"></a>Bağlamaları için desteklenen türler:
+## <a name="supported-types-for-bindings"></a>Bağlamalar için desteklenen türler
 
-Her bağlama desteklenen türlerinden; yine de sahip istiyor musunuz? Örneğin, bir blob tetikleyici özniteliği bir POCO parametresi bir dize parametresi için uygulanabilir bir `CloudBlockBlob` parametresi ve birçok diğer hiçbirini desteklenen türleri. [Blob bağlamaları için bağlama başvurusu makalesinde](functions-bindings-storage-blob.md#trigger---usage) listeleri tüm desteklenen parametre türleri. Daha fazla bilgi için [Tetikleyicileri ve bağlamaları](functions-triggers-bindings.md) ve [bağlama her bağlama türü için başvuru belgeleri](functions-triggers-bindings.md#next-steps).
+Her bağlamanın kendi desteklenen türleri vardır; Örneğin, bir blob tetikleyici özniteliği bir dize parametresine, bir poco parametresine, `CloudBlockBlob` parametreye veya desteklenen başka birkaç türden birine uygulanabilir. [BLOB bağlamaları için bağlama başvuru makalesi](functions-bindings-storage-blob.md#trigger---usage) , desteklenen tüm parametre türlerini listeler. Daha fazla bilgi için, bkz. [Tetikleyiciler ve bağlamalar](functions-triggers-bindings.md) ve [her bağlama türü için bağlama başvurusu belgeleri](functions-triggers-bindings.md#next-steps).
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
-## <a name="binding-to-method-return-value"></a>Yöntemin dönüş değeri bağlama
+## <a name="binding-to-method-return-value"></a>Metot dönüş değerine bağlama
 
-Yöntemin dönüş değerini özniteliği uygulayarak, bir yöntemin dönüş değeri bir çıkış bağlaması için kullanabilirsiniz. Örnekler için bkz [Tetikleyicileri ve bağlamaları](./functions-bindings-return-value.md). 
+Özniteliği yöntem dönüş değerine uygulayarak bir çıkış bağlaması için bir yöntem dönüş değeri kullanabilirsiniz. Örnekler için bkz. [Tetikleyiciler ve bağlamalar](./functions-bindings-return-value.md). 
 
-Yalnızca her zaman başarılı işlevi yürütme için çıktı bağlama geçirmek için bir dönüş değeri sonuçlanırsa, dönüş değeri kullanın. Aksi takdirde kullanın `ICollector` veya `IAsyncCollector`aşağıdaki bölümde gösterildiği gibi.
+Dönüş değerini yalnızca başarılı bir işlev yürütmesi her zaman çıkış bağlamasına geçirilecek bir dönüş değeri ile sonuçlanırsa kullanın. Aksi takdirde, `ICollector` aşağıdaki `IAsyncCollector`bölümde gösterildiği gibi, veya kullanın.
 
-## <a name="writing-multiple-output-values"></a>Birden çok çıkış değerleri yazılıyor
+## <a name="writing-multiple-output-values"></a>Birden çok çıkış değeri yazma
 
-Bir çıkış bağlaması için birden çok değer yazın ya da başarılı işlev çağrısını çıkış bağlaması için geçirilecek herhangi bir şey de sağlamayabilir kullanırsanız [ `ICollector` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) veya [ `IAsyncCollector` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) türleri. Bu yöntem tamamlandığında, çıkış bağlaması için yazılan salt yazılır koleksiyonları türleridir.
+Bir çıkış bağlamasına birden çok değer yazmak için veya başarılı bir işlev çağrılması çıkış bağlamasına geçirilecek herhangi bir şeye neden olmazsa, [`ICollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) veya [`IAsyncCollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) türlerini kullanın. Bu türler, yöntem tamamlandığında çıkış bağlamaya yazılan salt yazılır koleksiyonlardır.
 
-Bu örnek aynı kullanarak kuyruk birden fazla kuyruk iletileri Yazar `ICollector`:
+Bu örnek, kullanarak `ICollector`birden çok kuyruk iletisini aynı kuyruğa Yazar:
 
 ```csharp
 public static class ICollectorExample
@@ -233,7 +233,7 @@ public static class ICollectorExample
 
 ## <a name="logging"></a>Günlüğe Kaydetme
 
-Çıkış akış günlüklerinizi oturum C#, türünde bir bağımsız değişken içeren [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger). Bu ad öneririz `log`, aşağıdaki örnekte olduğu gibi:  
+Çıktıyı içindeki C#akış günlüklerinizi günlüğe kaydetmek Için [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger)türünde bir bağımsız değişken ekleyin. Aşağıdaki örnekte olduğu gibi `log`, adını yazmanız önerilir:  
 
 ```csharp
 public static class SimpleExample
@@ -248,11 +248,11 @@ public static class SimpleExample
 } 
 ```
 
-Kullanmaktan kaçının `Console.Write` Azure işlevleri'nde. Daha fazla bilgi için bkz. [yazma oturum açtığında C# işlevleri](functions-monitoring.md#write-logs-in-c-functions) içinde **İzleyici Azure işlevleri** makalesi.
+Azure işlevleri `Console.Write` 'nde kullanmaktan kaçının. Daha fazla bilgi için bkz. **Azure Işlevlerini izleme** makalesindeki [ C# günlük yazma işlevleri](functions-monitoring.md#write-logs-in-c-functions) .
 
-## <a name="async"></a>zaman uyumsuz
+## <a name="async"></a>Eş
 
-Bir işlev yapmak için [zaman uyumsuz](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/), kullanın `async` anahtar sözcüğü ve dönüş bir `Task` nesne.
+Bir işlevi [zaman uyumsuz](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)yapmak için `async` anahtar sözcüğünü kullanın ve bir `Task` nesne döndürün.
 
 ```csharp
 public static class AsyncExample
@@ -270,13 +270,13 @@ public static class AsyncExample
 }
 ```
 
-Kullanamazsınız `out` zaman uyumsuz işlevleri parametreleri. Çıkış bağlamaları için kullanmak [işlev dönüş değeri](#binding-to-method-return-value) veya [Toplayıcı nesnesi](#writing-multiple-output-values) yerine.
+Zaman uyumsuz işlevlerde `out` parametreleri kullanamazsınız. Çıktı bağlamaları için, bunun yerine [işlev dönüş değeri](#binding-to-method-return-value) veya [toplayıcı nesnesi](#writing-multiple-output-values) kullanın.
 
 ## <a name="cancellation-tokens"></a>İptal belirteçleri
 
-Bir işlev kabul edebilen bir [CancellationToken](/dotnet/api/system.threading.cancellationtoken) işlev sona erdirilecek olduğunda kodunuzu bildirmek işletim sistemi sağlayan parametresi. Bu bildirim, işlev beklenmedik bir şekilde verileri tutarsız bir durumda bırakır şekilde sonlandırmaz emin olmak için kullanabilirsiniz.
+Bir işlev bir [CancellationToken](/dotnet/api/system.threading.cancellationtoken) parametresini kabul edebilir ve bu, işlev sonlandırıldıktan sonra işletim sisteminin kodunuza bildirmesini sağlar. Bu bildirimi, işlevin verileri tutarsız bir durumda bırakmak için beklenmedik bir şekilde sonlandığından emin olmak için kullanabilirsiniz.
 
-Aşağıdaki örnek, yaklaşan işlevi sonlandırma için nasıl kontrol edileceğini gösterir.
+Aşağıdaki örnek, yaklaşan işlev sonlandırmasının nasıl kontrol alınacağını gösterir.
 
 ```csharp
 public static class CancellationTokenExample
@@ -302,7 +302,7 @@ public static class CancellationTokenExample
 
 ## <a name="environment-variables"></a>Ortam değişkenleri
 
-Bir ortam değişkeni veya değeri ayarlamak uygulama almak için kullanın `System.Environment.GetEnvironmentVariable`aşağıdaki kod örneğinde gösterildiği gibi:
+Bir ortam değişkeni veya bir uygulama ayarı değeri almak için, aşağıdaki `System.Environment.GetEnvironmentVariable`kod örneğinde gösterildiği gibi kullanın:
 
 ```csharp
 public static class EnvironmentVariablesExample
@@ -323,19 +323,19 @@ public static class EnvironmentVariablesExample
 }
 ```
 
-Uygulama ayarları, yerel olarak geliştirirken hem Azure'da çalıştırırken ortam değişkenlerinden okunabilir. Uygulama ayarları yerel olarak geliştirirken, gelir `Values` koleksiyonda *local.settings.json* dosya. Her iki ortamda yerel ve Azure, `GetEnvironmentVariable("<app setting name>")` adlandırılmış uygulama ayarının değerini alır. Yerel olarak çalıştırırken, örneğin, "Site adı", döndürülecek olan, *local.settings.json* dosyasını içeren `{ "Values": { "WEBSITE_SITE_NAME": "My Site Name" } }`.
+Uygulama ayarları, hem yerel olarak hem de Azure 'da çalışırken ortam değişkenlerinden okunabilir. Yerel olarak geliştirilirken, uygulama ayarları `Values` *yerel. Settings. JSON* dosyasındaki koleksiyondan gelir. Yerel ve Azure `GetEnvironmentVariable("<app setting name>")` her iki ortamda da adlandırılmış uygulama ayarının değerini alır. Örneğin, yerel olarak çalışırken, *Local. Settings. JSON* dosyanız içeriyorsa `{ "Values": { "WEBSITE_SITE_NAME": "My Site Name" } }`"Sitem adı" döndürülür.
 
-[System.Configuration.ConfigurationManager.AppSettings](https://docs.microsoft.com/dotnet/api/system.configuration.configurationmanager.appsettings) özelliği, uygulama ayar değerleri almak için alternatif bir API olduğu halde kullanmanızı öneririz `GetEnvironmentVariable` burada gösterildiği gibi.
+[System. Configuration. ConfigurationManager. AppSettings](https://docs.microsoft.com/dotnet/api/system.configuration.configurationmanager.appsettings) özelliği, uygulama ayarı değerlerini almaya yönelik alternatif bir API 'dir, ancak burada gösterildiği gibi kullanmanızı `GetEnvironmentVariable` öneririz.
 
 ## <a name="binding-at-runtime"></a>Çalışma zamanında bağlama
 
-C# ve diğer .NET dilleri kullanabilirsiniz bir [kesinlik temelli](https://en.wikipedia.org/wiki/Imperative_programming) başlangıcı yerine sonundan desen, bağlama [ *bildirim temelli* ](https://en.wikipedia.org/wiki/Declarative_programming) bağlamaları öznitelikler. Kesinlik temelli bağlama bağlama parametreleri tasarım yerine çalışma zamanında hesaplanması gerektiğinde yararlıdır. Bu düzende, işlev kodunuzu desteklenen giriş ve çıkış bağlamaları üzerinde kolayca bağlayabilirsiniz.
+Ve diğer .NET dillerinde, özniteliklerde [bildirim temelli](https://en.wikipedia.org/wiki/Declarative_programming) bağlamaların aksine, tanımlayıcı bağlama modelini kullanabilirsiniz. [](https://en.wikipedia.org/wiki/Imperative_programming) C# Bağlama parametrelerinin tasarım zamanı yerine çalışma zamanında hesaplanması gerektiğinde, kesinlik temelli bağlama kullanışlıdır. Bu düzende, işlev kodunuzda, desteklenen giriş ve çıkış bağlamalarına bağlanabilirsiniz.
 
-Aşağıdaki şekilde bağlama bir zorunluluktur tanımlayın:
+Zorunlu bir bağlamayı aşağıdaki gibi tanımlayın:
 
-- **Sağlamadığı** istenen kesinlik temelli bağlamalarınızı için işlev imzası bir özniteliğini ekleyin.
-- Giriş parametresi geçişinde [ `Binder binder` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs) veya [ `IBinder binder` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs).
-- Veri bağlama gerçekleştirmek için aşağıdaki C# düzeni kullanın.
+- İstediğiniz kesinlik bağlamalarınız için işlev imzasına bir **öznitelik eklemeyin.**
+- Bir giriş parametresi [`Binder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs) veya [`IBinder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs)olarak geçirin.
+- Veri bağlamayı gerçekleştirmek C# için aşağıdaki kalıbı kullanın.
 
   ```cs
   using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
@@ -344,11 +344,11 @@ Aşağıdaki şekilde bağlama bir zorunluluktur tanımlayın:
   }
   ```
 
-  `BindingTypeAttribute` bağlamayı tanımlayan bir .NET özniteliktir ve `T` bağlama türü tarafından desteklenen bir giriş veya çıkış türü. `T` olamaz bir `out` parametre türü (gibi `out JObject`). Örneğin, bağlama destekler Mobile Apps tablo çıktısı [altı türleri çıkış](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22), ancak yalnızca kullanabilirsiniz [ICollector<T> ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) veya [IAsyncCollector<T> ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs)kesinlik temelli bağlamaya sahip.
+  `BindingTypeAttribute`, bağlamalarınızı tanımlayan .net özniteliğidir ve `T` bu bağlama türü tarafından desteklenen bir giriş veya çıkış türüdür. `T`bir `out` parametre türü ( `out JObject`gibi) olamaz. Örneğin, Mobile Apps tablo çıkış bağlaması [altı çıkış türünü](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22)destekler, ancak yalnızca [\<ICollector T >](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) veya [ıasynccollector\<T >](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) değerini kesinlik ile kullanabilirsiniz.
 
 ### <a name="single-attribute-example"></a>Tek öznitelik örneği
 
-Aşağıdaki örnek kod oluşturur bir [depolama blobu çıktı bağlamasını](functions-bindings-storage-blob.md#output) blob ile çalışma zamanında tanımlanan yol sonra yazan bir dize için blob.
+Aşağıdaki örnek kod, çalışma zamanında tanımlanmış blob yolu ile bir [Depolama Blobu çıkış bağlaması](functions-bindings-storage-blob.md#output) oluşturur ve sonra blob 'a bir dize yazar.
 
 ```cs
 public static class IBinderExample
@@ -369,11 +369,11 @@ public static class IBinderExample
 }
 ```
 
-[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) tanımlar [depolama blobu](functions-bindings-storage-blob.md) giriş veya çıktı bağlaması ve [TextWriter](/dotnet/api/system.io.textwriter) desteklenen çıkış bağlama türü.
+[Blobattribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) , [Depolama Blobu](functions-bindings-storage-blob.md) girişini veya çıkış bağlamasını tanımlar ve [TextWriter](/dotnet/api/system.io.textwriter) desteklenen bir çıkış bağlama türüdür.
 
 ### <a name="multiple-attribute-example"></a>Birden çok öznitelik örneği
 
-Yukarıdaki örnekte işlevi uygulamanın ana depolama hesabı bağlantı dizesi için uygulama ayarı alır (olduğu `AzureWebJobsStorage`). Ekleyerek depolama hesabı için kullanmak üzere bir özel uygulama ayarı belirtebilirsiniz [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) ve öznitelik diziye geçirerek `BindAsync<T>()`. Kullanım bir `Binder` parametresi olmayan `IBinder`.  Örneğin:
+Yukarıdaki örnek, işlev uygulamasının ana depolama hesabı bağlantı dizesi (yani `AzureWebJobsStorage`) için uygulama ayarını alır. [Storageaccountattribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) ' i ekleyip öznitelik dizisini Içine `BindAsync<T>()`geçirerek depolama hesabı için kullanılacak özel bir uygulama ayarı belirtebilirsiniz. `Binder` Değil`IBinder`parametresini kullanın.  Örneğin:
 
 ```cs
 public static class IBinderExampleMultipleAttributes
@@ -405,7 +405,7 @@ public static class IBinderExampleMultipleAttributes
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Tetikleyiciler ve bağlamalar hakkında daha fazla bilgi edinin](functions-triggers-bindings.md)
+> [Tetikleyiciler ve bağlamalar hakkında daha fazla bilgi](functions-triggers-bindings.md)
 
 > [!div class="nextstepaction"]
-> [Azure işlevleri için en iyi uygulamalar hakkında daha fazla bilgi edinin](functions-best-practices.md)
+> [Azure Işlevleri için en iyi uygulamalar hakkında daha fazla bilgi edinin](functions-best-practices.md)

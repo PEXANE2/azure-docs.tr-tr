@@ -1,6 +1,6 @@
 ---
-title: Azure önbelleği için Redis Node.js ile kullanma hakkında bilgi edinmek için hızlı başlangıç | Microsoft Docs
-description: Bu hızlı başlangıçta, Azure önbelleği için Redis ile Node.js ve node_redis nasıl kullanıldığını öğreneceksiniz.
+title: Node. js ile Redsıs için Azure önbelleğini nasıl kullanacağınızı öğrenmek için hızlı başlangıç | Microsoft Docs
+description: Bu hızlı başlangıçta, Node. js ve node_redis ile redin için Azure önbelleğini nasıl kullanacağınızı öğreneceksiniz.
 services: cache
 documentationcenter: ''
 author: yegu-ms
@@ -15,35 +15,23 @@ ms.workload: tbd
 ms.date: 05/21/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 739f0bd6381e872b5f989f9ecb4dd97fdbdb52c9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dc629133a393c4ff8f9193b02e9080d7f08f4958
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60830220"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326453"
 ---
-# <a name="quickstart-how-to-use-azure-cache-for-redis-with-nodejs"></a>Hızlı Başlangıç: Redis ile Node.js için Azure önbellek kullanma
+# <a name="quickstart-use-azure-cache-for-redis-with-nodejs"></a>Hızlı Başlangıç: Node. js ile Redsıs için Azure önbelleğini kullanma
 
-
-
-Azure önbelleği için Redis, Redis, Microsoft tarafından yönetilen için güvenli ve adanmış bir Azure önbelleğine erişmenizi sağlar. Önbelleğinize Microsoft Azure’daki her uygulamadan erişilebilir.
-
-Bu konu Node.js kullanarak Redis için Azure Cache kullanmaya başlama kullanmayı gösterir. 
-
-Bu hızlı başlangıçtaki adımları tamamlamak için herhangi bir kod düzenleyicisini kullanabilirsiniz. Ancak, Windows, macOS ve Linux platformlarında sağlanan [Visual Studio Code](https://code.visualstudio.com/) mükemmel bir seçenektir.
-
-![Önbellek uygulaması tamamlandı](./media/cache-nodejs-get-started/cache-app-complete.png)
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
+Bu hızlı başlangıçta, Azure 'daki herhangi bir uygulamadan erişilebilen güvenli, özel bir önbelleğe erişim sağlamak üzere redin için Azure önbelleğini bir Node. js uygulamasına katabilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
-[node_redis](https://github.com/mranney/node_redis) yükleyin:
 
-    npm install redis
+- Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
+- [](https://github.com/mranney/node_redis) komutuyla`npm install redis`yükleyebileceğiniz node_redis. 
 
-Bu öğreticide, [node_redis](https://github.com/mranney/node_redis) kullanılmaktadır. Diğer Node.js istemcilerini kullanmaya ilişkin örnekler için [Node.js Redis istemcileri](https://redis.io/clients#nodejs) listesindeki Node.js istemcilerinin kendi belgelerine bakın.
-
+Diğer Node.js istemcilerini kullanmaya ilişkin örnekler için [Node.js Redis istemcileri](https://redis.io/clients#nodejs) listesindeki Node.js istemcilerinin kendi belgelerine bakın.
 
 ## <a name="create-a-cache"></a>Bir önbellek oluşturma
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
@@ -58,10 +46,9 @@ set REDISCACHEHOSTNAME=contosoCache.redis.cache.windows.net
 set REDISCACHEKEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
-
 ## <a name="connect-to-the-cache"></a>Önbelleğe bağlanma
 
-En son derlemeleri, [node_redis](https://github.com/mranney/node_redis) Azure önbelleği için Redis SSL kullanarak bağlanma konusunda destek sağlar. Aşağıdaki örnekte, 6380 SSL bitiş noktasını kullanarak Azure önbelleği için Redis bağlanmak nasıl gösterir. 
+En son [node_redis](https://github.com/mranney/node_redis) DERLEMELERI, SSL kullanarak Redsıs Için Azure önbelleğine bağlanma desteği sağlar. Aşağıdaki örnek, 6380 SSL uç noktasını kullanarak Reda için Azure Cache 'e bağlanmayı gösterir. 
 
 ```js
 var redis = require("redis");
@@ -77,7 +64,7 @@ Kodunuzdaki her işlem için yeni bağlantı oluşturmayın. Bunun yerine, mümk
 
 *redistest.js* adlı yeni bir betik dosyası oluşturun.
 
-Aşağıdaki örnek JavaScript’i dosyaya ekleyin. Bu kod, bir Azure önbelleği için Redis örneği önbellek ana bilgisayar adı ve anahtar ortam değişkenlerini kullanarak bağlanmak nasıl gösterir. Kod ayrıca önbellekte bir dize değeri depolar ve alır. Ayrıca `PING` ve `CLIENT LIST` komutları da yürütüldü. Redis’i [node_redis](https://github.com/mranney/node_redis) istemcisiyle kullanmaya ilişkin daha fazla örnek için bkz. [https://redis.js.org/](https://redis.js.org/).
+Aşağıdaki örnek JavaScript’i dosyaya ekleyin. Bu kod, önbellek ana bilgisayar adı ve anahtar ortam değişkenlerini kullanarak Redsıs örneği için bir Azure önbelleğine bağlanmayı gösterir. Kod ayrıca önbellekte bir dize değeri depolar ve alır. Ayrıca `PING` ve `CLIENT LIST` komutları da yürütüldü. Redis’i [node_redis](https://github.com/mranney/node_redis) istemcisiyle kullanmaya ilişkin daha fazla örnek için bkz. [https://redis.js.org/](https://redis.js.org/).
 
 ```js
 var redis = require("redis");
@@ -128,7 +115,6 @@ Aşağıdaki örnekte, `Message` anahtarının Azure portaldaki Redis Konsolu ku
 
 ![Önbellek uygulaması tamamlandı](./media/cache-nodejs-get-started/cache-app-complete.png)
 
-
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Sonraki öğreticiyle devam edecekseniz, bu hızlı başlangıçta oluşturulan kaynakları tutabilir ve sonraki öğreticide yeniden kullanabilirsiniz.
@@ -149,14 +135,9 @@ Kaynak grubunun silinmesini onaylamanız istenir. Onaylamak için kaynak grubunu
 
 Birkaç dakika sonra kaynak grubu ve içerdiği kaynakların tümü silinir.
 
-
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, Azure önbelleği için Redis bir Node.js uygulamasından kullanma öğrendiniz. Azure önbelleği için Redis ile ASP.NET web uygulaması kullanmak sonraki hızlı başlangıca devam edin.
+Bu hızlı başlangıçta, Node. js uygulamasından Redsıs için Azure önbelleğini nasıl kullanacağınızı öğrendiniz. Bir ASP.NET Web uygulamasıyla Redsıs için Azure önbelleği 'ni kullanmak üzere bir sonraki hızlı başlangıca devam edin.
 
 > [!div class="nextstepaction"]
-> [Bir Azure önbelleği için Redis kullanan ASP.NET web uygulaması oluşturun.](./cache-web-app-howto.md)
-
-
-
+> [Redsıs için Azure önbelleği kullanan bir ASP.NET Web uygulaması oluşturun.](./cache-web-app-howto.md)

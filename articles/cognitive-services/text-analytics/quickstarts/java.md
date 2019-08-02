@@ -1,26 +1,27 @@
 ---
-title: "Hızlı Başlangıç: Metin analizi API'sini çağırmak için Java kullanma"
+title: 'Hızlı Başlangıç: Metin Analizi çağırmak için Java kullanın REST API'
 titleSuffix: Azure Cognitive Services
-description: Hızlı bir şekilde yardımcı olması için alma bilgileri ve kod örnekleri, Azure Bilişsel hizmetler metin analizi API'sini kullanarak başlayın.
+description: Azure bilişsel hizmetler 'de Metin Analizi API'si kullanmaya hızlı bir şekilde başlamanıza yardımcı olması için bilgi ve kod örnekleri alın.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 04/16/2019
+ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: fc848feb3f9a0e1160a8e36014ca4a469f792c96
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.custom: seo-java-july2019
+ms.openlocfilehash: 437456ecb700b2efb60f2f6269643ca39d8775e2
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60829353"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697521"
 ---
-# <a name="quickstart-using-java-to-call-the-text-analytics-cognitive-service"></a>Hızlı Başlangıç: Metin analizi Bilişsel hizmetini çağırmak için Java kullanma
+# <a name="quickstart-using-java-to-call-the-text-analytics-cognitive-service"></a>Hızlı Başlangıç: Metin Analizi bilişsel hizmeti çağırmak için Java kullanma
 <a name="HOLTop"></a>
 
-Bu makalede gösterilmektedir için [dili algılayın](#Detect), [düşüncelerini çözümleme](#SentimentAnalysis), [anahtar tümcecikleri ayıklayın](#KeyPhraseExtraction), ve [bağlı varlıkları tanımlama](#Entities) kullanma  [metin analizi API'lerini](//go.microsoft.com/fwlink/?LinkID=759711) Java ile.
+Bu makalede, Java ile [metin analizi API 'leri](//go.microsoft.com/fwlink/?LinkID=759711) kullanarak [](#SentimentAnalysis) [dilin nasıl algılanacağı](#Detect), yaklaşım analiziyle, [anahtar tümceciklerini ayıklamayla](#KeyPhraseExtraction)ve [bağlantılı varlıkların](#Entities) nasıl kullanılacağı gösterilir.
 
 API'lerle ilgili teknik bilgiler için [API tanımları](//go.microsoft.com/fwlink/?LinkID=759346) sayfasını inceleyin.
 
@@ -28,20 +29,20 @@ API'lerle ilgili teknik bilgiler için [API tanımları](//go.microsoft.com/fwli
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
-Ayrıca kayıt sırasında oluşturulan [uç nokta ve erişim anahtarı](../How-tos/text-analytics-how-to-access-key.md) değerlerine de sahip olmanız gerekir.
+Ayrıca kayıt sırasında oluşturulan [uç nokta ve erişim anahtarı](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) değerlerine de sahip olmanız gerekir.
 
 <a name="Detect"></a>
 
-## <a name="detect-language"></a>Dili algılama
+## <a name="detect-language"></a>Dili algıla
 
-Dil algılama API bir metnin dilini algılar kullanarak belge [dil algılama yöntemi](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7).
+Dil Algılama API 'SI, [Dili algıla yöntemini](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)kullanarak bir metin belgesinin dilini algılar.
 
-1. En sevdiğiniz IDE (veya masaüstünüzde yeni bir klasör) yeni bir Java projesi oluşturun. Adlı bir sınıf oluşturun `DetectLanguage.java`.
-1. Sınıfınıza aşağıda sağlanan kod ekleyin.
-1. Değiştirin `accessKey` değeri metin analizi aboneliğinizde anahtarla [Azure](https://ms.portal.azure.com).
+1. En sevdiğiniz IDE (veya masaüstünüzdeki yeni klasör) içinde yeni bir Java projesi oluşturun. Adlı `DetectLanguage.java`bir sınıf oluşturun.
+1. Aşağıda belirtilen kodu sınıfınıza ekleyin.
+1. Değeri Azure 'daki metin analizi aboneliğinizdeki anahtarla değiştirin. [](https://ms.portal.azure.com) `accessKey`
 1. `host` içindeki konumu (şu anda `westus`) kaydolduğunuz bölge olacak şekilde değiştirin.
-1. Olduğundan emin olun [Gson](https://github.com/google/gson) kitaplığının yüklü.
-1. Programı çalıştırın, IDE içinde veya (kod yorumlarında yönergeleri) çalıştırmak için komut satırını kullanın.
+1. [Gson](https://github.com/google/gson) kitaplığının yüklü olduğundan emin olun.
+1. Programı IDE 'de çalıştırın veya çalıştırmak için komut satırını kullanın (kod açıklamalarındaki yönergeler).
 
 ```java
 import java.io.*;
@@ -162,7 +163,7 @@ public class DetectLanguage {
 }
 ```
 
-### <a name="language-detection-response"></a>Dil algılama yanıt
+### <a name="language-detection-response"></a>Dil algılama yanıtı
 
 Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde döndürülür: 
 
@@ -212,12 +213,12 @@ Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde d�
 
 Yaklaşım Analizi API'si, [Yaklaşım metodunu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) kullanarak bir metin kaydı kümesinin yaklaşımını algılar. Aşağıdaki örnek, biri İngilizce diğeri İspanyolca olan iki belge puanlar.
 
-1. En sevdiğiniz IDE (veya masaüstünüzde yeni bir klasör) yeni bir Java projesi oluşturun. Bu adlı bir sınıf oluşturmanız `GetSentiment.java`.
-1. Sınıfınıza aşağıda sağlanan kod ekleyin.
-1. Değiştirin `accessKey` değeri metin analizi aboneliğinizde anahtarla [Azure](https://ms.portal.azure.com).
+1. En sevdiğiniz IDE (veya masaüstünüzdeki yeni klasör) içinde yeni bir Java projesi oluşturun. Adında `GetSentiment.java`bir sınıf oluşturun.
+1. Aşağıda belirtilen kodu sınıfınıza ekleyin.
+1. Değeri Azure 'daki metin analizi aboneliğinizdeki anahtarla değiştirin. [](https://ms.portal.azure.com) `accessKey`
 1. `host` içindeki konumu (şu anda `westus`) kaydolduğunuz bölge olacak şekilde değiştirin.
-1. Olduğundan emin olun [Gson](https://github.com/google/gson) kitaplığının yüklü.
-1. Programı çalıştırın, IDE içinde veya (kod yorumlarında yönergeleri) çalıştırmak için komut satırını kullanın.
+1. [Gson](https://github.com/google/gson) kitaplığının yüklü olduğundan emin olun.
+1. Programı IDE 'de çalıştırın veya çalıştırmak için komut satırını kullanın (kod açıklamalarındaki yönergeler).
 
 ```java
 import java.io.*;
@@ -338,9 +339,9 @@ public class GetSentiment {
 }
 ```
 
-### <a name="sentiment-analysis-response"></a>Yaklaşım analizi yanıt
+### <a name="sentiment-analysis-response"></a>Yaklaşım Analizi yanıtı
 
-Sonuç 0.0 yakın puanlanır, 1.0 yakın ve negatif puanlanır ise pozitif ölçülür.
+Sonuç, 0,0 ' e daha yakınsa 1,0 ve negatif bir değer alıyorsa pozitif olarak ölçülür.
 Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde döndürülür:
 
 ```json
@@ -361,16 +362,16 @@ Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde d�
 
 <a name="KeyPhraseExtraction"></a>
 
-## <a name="extract-key-phrases"></a>Anahtar ifadeleri ayıklama
+## <a name="extract-key-phrases"></a>Başlıca sözcük gruplarını ayıkla
 
 Anahtar İfade Ayıklama API'si [Anahtar İfadeler metodunu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6) kullanarak bir metin belgesindeki anahtar ifadeleri ayıklar. Aşağıdaki örnekte hem İngilizce hem de İspanyolca belgelerin anahtar ifadeleri ayıklanır.
 
-1. En sevdiğiniz IDE (veya masaüstünüzde yeni bir klasör) yeni bir Java projesi oluşturun. Bu adlı bir sınıf oluşturmanız `GetKeyPhrases.java`.
-1. Sınıfınıza aşağıda sağlanan kod ekleyin.
-1. Değiştirin `accessKey` değeri metin analizi aboneliğinizde anahtarla [Azure](https://ms.portal.azure.com).
+1. En sevdiğiniz IDE (veya masaüstünüzdeki yeni klasör) içinde yeni bir Java projesi oluşturun. Adında `GetKeyPhrases.java`bir sınıf oluşturun.
+1. Aşağıda belirtilen kodu sınıfınıza ekleyin.
+1. Değeri Azure 'daki metin analizi aboneliğinizdeki anahtarla değiştirin. [](https://ms.portal.azure.com) `accessKey`
 1. `host` içindeki konumu (şu anda `westus`) kaydolduğunuz bölge olacak şekilde değiştirin.
-1. Olduğundan emin olun [Gson](https://github.com/google/gson) kitaplığının yüklü.
-1. Programı çalıştırın, IDE içinde veya (kod yorumlarında yönergeleri) çalıştırmak için komut satırını kullanın.
+1. [Gson](https://github.com/google/gson) kitaplığının yüklü olduğundan emin olun.
+1. Programı IDE 'de çalıştırın veya çalıştırmak için komut satırını kullanın (kod açıklamalarındaki yönergeler).
 
 ```java
 import java.io.*;
@@ -492,7 +493,7 @@ public class GetKeyPhrases {
 }
 ```
 
-### <a name="key-phrase-extraction-response"></a>Anahtar ifade ayıklama yanıt
+### <a name="key-phrase-extraction-response"></a>Anahtar tümceciği ayıklama yanıtı
 
 Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde döndürülür:
 
@@ -535,14 +536,14 @@ Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde d�
 
 ## <a name="identify-entities"></a>Varlıkları tanımlama
 
-Varlıklar API'si, [Varlıklar metodunu](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634) kullanarak bir metin belgesindeki iyi bilinen varlıkları tanımlar. [Varlıkları](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) metinden "ABD" gibi sözcükleri ayıklama sonra bu sözcükler türü ve/veya Wikipedia bağlantısını verin. "ABD" için türdür `location`Wikipedia bağlantısını bilgileriyse `https://en.wikipedia.org/wiki/United_States`.  Aşağıdaki örnekte İngilizce belgelerin varlıkları tanımlanır.
+Varlıklar API'si, [Varlıklar metodunu](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634) kullanarak bir metin belgesindeki iyi bilinen varlıkları tanımlar. [Varlıklar](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) , "Birleşik Devletler" gibi metinden sözcükleri ayıklar, ardından bu kelimelerin türünü ve/veya Vimi bağlantısını verir. "Birleşik Devletler" `location`türü, `https://en.wikipedia.org/wiki/United_States`vikipe bağlantısı olduğunda.  Aşağıdaki örnekte İngilizce belgelerin varlıkları tanımlanır.
 
-1. En sevdiğiniz IDE (veya masaüstünüzde yeni bir klasör) yeni bir Java projesi oluşturun. Bu adlı bir sınıf oluşturmanız `GetEntities.java`.
-1. Sınıfınıza aşağıda sağlanan kod ekleyin.
-1. Değiştirin `accessKey` değeri metin analizi aboneliğinizde anahtarla [Azure](https://ms.portal.azure.com).
+1. En sevdiğiniz IDE (veya masaüstünüzdeki yeni klasör) içinde yeni bir Java projesi oluşturun. Adında `GetEntities.java`bir sınıf oluşturun.
+1. Aşağıda belirtilen kodu sınıfınıza ekleyin.
+1. Değeri Azure 'daki metin analizi aboneliğinizdeki anahtarla değiştirin. [](https://ms.portal.azure.com) `accessKey`
 1. `host` içindeki konumu (şu anda `westus`) kaydolduğunuz bölge olacak şekilde değiştirin.
-1. Olduğundan emin olun [Gson](https://github.com/google/gson) kitaplığının yüklü.
-1. Programı çalıştırın, IDE içinde veya (kod yorumlarında yönergeleri) çalıştırmak için komut satırını kullanın.
+1. [Gson](https://github.com/google/gson) kitaplığının yüklü olduğundan emin olun.
+1. Programı IDE 'de çalıştırın veya çalıştırmak için komut satırını kullanın (kod açıklamalarındaki yönergeler).
 
 ```java
 import java.io.*;

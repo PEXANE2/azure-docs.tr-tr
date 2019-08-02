@@ -7,26 +7,26 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 01/23/2019
+ms.topic: reference
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 595a835018475ed3aa915971f5ff2b78981e7bdf
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0bf7fe649a5a604c610307b9be0717dce01cb238
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560503"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638299"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Dil ortak Sözlük ve kavramların sözlüğünü anlama
 LUIS API'si hizmeti ile çalışırken, Language Understanding (LUIS), koşulları sözlüğü açıklar karşılaşabilirsiniz.
 
 ## <a name="active-version"></a>Etkin sürümü
 
-Etkin LUIS sürüm model değişiklikleri alan sürümdür. İçinde [LUIS](luis-reference-regions.md) Web sitesi, etkin bir sürüm değil bir sürüm olarak yapmanız gerekiyorsa, önce o sürümü etkin olarak ayarlanacak.
+Etkin LUIS sürüm model değişiklikleri alan sürümdür. Luu [](luis-reference-regions.md) portalında, etkin sürüm olmayan bir sürümde değişiklik yapmak istiyorsanız, önce bu sürümü etkin olarak ayarlamanız gerekir.
 
 ## <a name="authoring"></a>Yazma
 
-Yazımı yolunda oluşturma, yönetme ve dağıtma olanağı bir [LUIS uygulaması](#luis-app), ya da [LUIS](luis-reference-regions.md) Web sitesi veya [yazma API'leri](https://go.microsoft.com/fwlink/?linkid=2092087).
+Yazma, LUIS portalını veya [yazma API 'lerini](https://go.microsoft.com/fwlink/?linkid=2092087)kullanarak bir [LUIS uygulaması](#luis-app)oluşturma, yönetme ve [](luis-reference-regions.md) dağıtma olanağıdır.
 
 ## <a name="authoring-key"></a>Anahtar yazma
 
@@ -34,30 +34,12 @@ Daha önce "Programlama" anahtar adı. Uygulama yazmak için kullanılır. Üret
 
 ## <a name="batch-test-json-file"></a>Toplu metin JSON dosyası
 
-Toplu iş dosyası, bir JSON dizisidir. Dizideki her öğe üç özelliğe sahiptir: `text`, `intent`, ve `entities`. `entities` Bir dizi bir özelliktir. Dizi, boş olabilir. Varsa `entities` varlıkları doğru şekilde belirlemek gereken, dizi, boş değil.
+Toplu iş testi, geçerli bir LUO uygulamasının modelini tutarlı ve bilinen bir kullanıcı tarafından yapılan test kümesiyle doğrulama yeteneğidir. Batch testi, [JSON biçimli bir dosyada](luis-concept-batch-test.md#batch-file-format)tanımlanır.
 
-```JSON
-[
-    {
-        "text": "drive me home",
-        "intent": "None",
-        "entities": []
-    },
-    {
-        "text": "book a flight to orlando on the 25th",
-        "intent": "BookFlight",
-        "entities": [
-            {
-                "entity": "orlando",
-                "type": "Location",
-                "startIndex": 18,
-                "endIndex": 25
-            }
-        ]
-    }
-]
-
-```
+Ayrıca bkz: 
+* [Kavramlar ](luis-concept-batch-test.md)
+* [Nasıl yapılır](luis-how-to-batch-test.md)
+* [Öğretici] luiş-öğretici-Batch-testing.md)
 
 
 ## <a name="collaborator"></a>Ortak çalışanı
@@ -114,7 +96,7 @@ Bir [hedefi](luis-concept-intent.md) bir görev veya eylem gerçekleştirmek ist
 
 ## <a name="labeling"></a>Etiketleme
 
-Bir sözcük veya tümcecik bir amaç'ın içinde ilişkilendirme işlemi olduğundan etiketleme [utterance](#utterance) ile bir [varlık](#entity) (veri türü).
+Etiketleme veya işaretleme, bir [varlıkla](#entity) (veri türü) bir sözcüğün veya tümceciğin bir [amaca göre ilişkilendirilmesi](#utterance) işlemidir.
 
 ## <a name="luis-app"></a>LUIS uygulaması
 

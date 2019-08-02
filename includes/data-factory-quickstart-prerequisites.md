@@ -42,9 +42,9 @@ Bu hızlı başlangıçta, genel amaçlı Azure depolama hesabını (özel olara
 Bu hızlı başlangıçta, Azure depolama hesabınızın adına ve anahtarına ihtiyacınız olacaktır. Aşağıdaki yordamda, depolama hesabınızın adını ve anahtarını alma adımlarını verilmiştir: 
 
 1. Bir Web tarayıcısında [Azure Portal](https://portal.azure.com) gidin ve Azure Kullanıcı adınızı ve parolanızı kullanarak oturum açın.
-2. **Tüm hizmetler** > depolamadepolama > **hesapları**' nı seçin.
+2. **Tüm hizmetler** >  **** depolamadepolama > **hesapları**' nı seçin.
 3. **Depolama hesapları** sayfasında, depolama hesabınız için filtre uygulayın (gerekirse) ve ardından depolama hesabınızı seçin. 
-4.   *Hesap\<adı >*  - **depolama hesabı** sayfasının kenar çubuğundan ayarlar etiketine gidin ve erişim anahtarları ' nı seçin. Hesap adı > - **erişim tuşları** görünür.  *\<*
+4. *Hesap\<adı >*  - **depolama hesabı** sayfasının kenar çubuğundan ayarlar etiketine gidin ve erişim anahtarları ' nı seçin. Hesap adı > - **erişim tuşları** görünür.  *\<*
 
    ![Depolama hesabı adını ve anahtarını alma](media/data-factory-quickstart-prerequisites/storage-account-name-key.png)
 5. **Depolama hesabı adı** ve **key1** kutularının değerlerini panoya kopyalayın. Bunları Not Defteri’ne veya başka bir düzenleyiciye yapıştırın ve kaydedin. Bunları daha sonra bu hızlı başlangıçta kullanacaksınız.   
@@ -52,9 +52,9 @@ Bu hızlı başlangıçta, Azure depolama hesabınızın adına ve anahtarına i
 #### <a name="create-a-blob-container"></a>Blob kapsayıcısı oluşturma
 Bu bölümde, Azure Blob depolama alanında **adftutorial** adlı bir blob kapsayıcısı oluşturursunuz.
 
-1.  >   *Hesap\<adı >*  - erişim tuşları sayfasının kenar çubuğu ' ndan genel bakış**BLOB 'ları**' nı seçin.
-2. Hesap adı >  Bloblar sayfasının araç çubuğunda kapsayıcı ' yı seçin.  *\<*  - 
-3. **Yeni kapsayıcı** iletişim kutusunda ad olarak **adftutorial** girin ve ardından **Tamam**’ı seçin. Hesap adı >  blob 'lar sayfası, kapsayıcılar listesinde adföğreticisi içerecek şekilde güncelleştirilir.  *\<*  - 
+1.  >  ****  *Hesap\<adı >*  - erişim tuşları sayfasının kenar çubuğu ' ndan genel bakış**BLOB 'ları**' nı seçin.
+2. Hesap adı > **** Bloblar sayfasının araç çubuğunda kapsayıcı ' yı seçin.  *\<*  - 
+3. **Yeni kapsayıcı** iletişim kutusunda ad olarak **adftutorial** girin ve ardından **Tamam**’ı seçin. Hesap adı > **** blob 'lar sayfası, kapsayıcılar listesinde adföğreticisi içerecek şekilde güncelleştirilir.  *\<*  - 
 
    ![Kapsayıcılar listesi](media/data-factory-quickstart-prerequisites/list-of-containers.png)
 
@@ -68,7 +68,7 @@ Jane, Doe
 
 Dosyayı **C:\ADFv2QuickStartPSH** klasörüne kaydedin. (Klasör zaten mevcut değilse, oluşturun.) Sonra Azure portal geri dönüp şu adımları izleyin:
 
-1. Kaldığınız yerden -  *Hesap adı > Blobları sayfasında, güncelleştirilmiş kapsayıcı listesinden adföğreticisi ' ni seçin. \<* (Pencereyi kapattıysanız veya başka bir sayfaya bir sorun yaşıyorsanız, [Azure Portal](https://portal.azure.com) yeniden oturum açın, **tüm hizmetler** > **depolama** > **depolama hesapları**' nı seçin, depolama hesabınızı seçin ve ardından Bloblar ' ı  seçin. **adföğreticisi.)**  > 
+1. Kaldığınız yerden -  **** *Hesap adı > Blobları sayfasında, güncelleştirilmiş kapsayıcı listesinden adföğreticisi ' ni seçin. \<* (Pencereyi kapattıysanız veya başka bir sayfaya bir sorun yaşıyorsanız, [Azure Portal](https://portal.azure.com) yeniden oturum açın, **tüm hizmetler** > **depolama** > **depolama hesapları**' nı seçin, depolama hesabınızı seçin ve ardından Bloblar ' ı seçin. **adföğreticisi.)**  > 
 2. **Adföğreticisi** kapsayıcı sayfasının araç çubuğunda **karşıya yükle**' yi seçin.
 3. **Blobu karşıya yükle** sayfasında, **dosyalar** kutusunu seçin ve ardından, ve sonra da **. txt** dosyasını seçin.
 4. **Gelişmiş** başlık ' ı genişletin. Sayfa artık gösterildiği gibi görüntülenir:

@@ -1,5 +1,5 @@
 ---
-title: Bir özel Uyandırma word - konuşma hizmetleri oluşturma
+title: Özel bir uyandırma sözcük okuma hizmeti oluşturma
 titleSuffix: Azure Cognitive Services
 description: Cihazınız, her zaman bir Uyanma sözcük (veya tümceciği) dinliyor. Uyandırma word kullanıcı diyor, kullanıcının dikte durdurur kadar cihaz buluta tüm sonraki ses gönderir. Uyandırma Word'ün özelleştirme, Cihazınızı ayırt ve marka bilgilerinizi güçlendirmek için etkili bir yoludur.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: f43cbedc633b26a3a7fcbfb5f6a75da514bf0c45
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 2bc1a6cbbf1e0d790326849a41b0788e332daa31
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604877"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68553101"
 ---
 # <a name="create-a-custom-wake-word-by-using-the-speech-service"></a>Konuşma hizmeti kullanarak bir özel Uyandırma sözcük oluşturma
 
@@ -46,26 +46,26 @@ Uyandırma word seçtiğinizde aşağıdaki yönergeleri göz önünde bulunduru
 
 ## <a name="create-your-wake-word"></a>Uyandırma Word'ün oluşturma
 
-Cihazınızda bir özel Uyandırma sözcük kullanabilmeniz için önce Microsoft özel Uyandırma Word oluşturma hizmeti ile bir Uyanma word oluşturmak gerekir. Bir dosya hizmeti oluşturan bir Uyanma sözcük sağladıktan sonra Uyandırma word Cihazınızda etkinleştirmek için Geliştirme Seti dağıtın.
+Aygıtınızla özel bir uyandırma sözcüğü kullanabilmeniz için, Microsoft özel uyandırma sözcük oluşturma hizmeti ile bir uyandırma sözcüğü oluşturmanız gerekir. Bir uyandırma sözcüğü sağlamaktan sonra, hizmet cihazınızda uyandırma sözcüğünü etkinleştirmek için geliştirme setinizi dağıttığınız bir dosya oluşturur.
 
-1. Git [özel konuşma hizmeti portalı](https://aka.ms/sdsdk-speechportal) ve **oturum** ya da seçin bir konuşma abonelik yoksa [ **bir abonelik oluşturun**](https://go.microsoft.com/fwlink/?linkid=2086754)
+1. [Özel konuşma tanıma hizmet portalına](https://aka.ms/sdsdk-speechportal) gidin ve **oturum açın** ya da bir konuşma aboneliğiniz yoksa [**abonelik oluştur**](https://go.microsoft.com/fwlink/?linkid=2086754) ' a tıklayın.
 
-    ![Özel konuşma hizmeti portalı](media/speech-devices-sdk/wake-word-4.png)
+    ![Özel Konuşma Tanıma hizmet portalı](media/speech-devices-sdk/wake-word-4.png)
 
-1. Konumunda [özel Uyandırma Word](https://aka.ms/sdsdk-wakewordportal) sayfa türü Uyandırma Word seçim ve tıklatın **Uyandırma sözcük Ekle**. Bazı sahip olduğumuz [yönergeleri](#choose-an-effective-wake-word) etkili bir anahtar sözcüğü seçmenizi sağlayacak. Şu anda yalnızca en-US dil destekliyoruz.
+1. [Özel uyandırma sözcüğü](https://aka.ms/sdsdk-wakewordportal) sayfasında, tercih ettiğiniz en uyandırma sözcüğünü yazın ve **uyandırma sözcüğü ekle**' ye tıklayın. Etkin bir anahtar [](#choose-an-effective-wake-word) sözcük seçmenize yardımcı olmak için bazı kılavuzlardır. Şu anda yalnızca en-US dilini destekliyoruz.
 
     ![Uyandırma sözcük girin](media/speech-devices-sdk/wake-word-5.png)
 
-1. Uyandırma Word'ün üç Söyleyiş oluşturulur. İstediğiniz tüm Söyleniş seçebilirsiniz. Ardından **Gönder** Uyandırma word oluşturulacak. Söyleniş satırında geldiğinizde Uyandırma word Lütfen Kaldır var olan bir ilk olarak, değiştirmek istediğiniz Sil simgesini görünür.
+1. Uyandırma kelimesinin üç farklı söylenişleri oluşturulacaktır. Dilediğiniz söylenişleri seçebilirsiniz. Ardından, uyandırma sözcüğünü oluşturmak için **Gönder** ' i seçin. Uyandırma sözcüğünü değiştirmek istiyorsanız, lütfen önce var olanı kaldırın, telaffuz çizgisi üzerine geldiğinizde Sil simgesi görüntülenir.
 
-    ![Uyandırma Word'ün gözden geçirin](media/speech-devices-sdk/wake-word-6.png)
+    ![Uyandırma kelimeyi gözden geçirin](media/speech-devices-sdk/wake-word-6.png)
 
-1. Bu model oluşturulacağını belirtmek için en fazla bir dakika sürebilir. Dosyayı karşıdan yüklemeniz istenir.
+1. Modelin oluşturulması bir dakika kadar sürebilir. Dosyayı indirmeniz istenecektir.
 
-    ![Uyandırma Word'ün indirin](media/speech-devices-sdk/wake-word-7.png)
+    ![Uyandırma kelimeyi indirin](media/speech-devices-sdk/wake-word-7.png)
 
-1. .Zip dosyasını bilgisayarınıza kaydedin. Bu dosya, özel Uyandırma word geliştirme setine dağıtmak için ihtiyacınız olacak.
+1. .Zip dosyasını bilgisayarınıza kaydedin. Özel uyandırma kelimeyi geliştirme paketine dağıtmak için bu dosyaya ihtiyacınız olacaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kendi özel Uyandırma word ile test [konuşma cihaz SDK'sı hızlı](https://aka.ms/sdsdk-quickstart).
+Özel uyandırma Word 'ü [konuşma hızlı başlangıç](https://aka.ms/sdsdk-quickstart)ile test edin.

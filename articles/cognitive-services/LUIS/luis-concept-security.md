@@ -1,6 +1,6 @@
 ---
-title: İşbirliği, güvenlik
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: İşbirliği sırasında güvenlik-LUSıS
+titleSuffix: Azure Cognitive Services
 description: Erişim geliştirme sahipleri ve ortak çalışanlar için kullanılabilir. Özel bir uygulama için erişim uç noktası sahipleri ve ortak çalışanlar için kullanılabilir.
 services: cognitive-services
 author: diberry
@@ -11,15 +11,15 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: diberry
-ms.openlocfilehash: b52b0fffe9c32ab14600a3e296852faa626d794d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 25f6b675846f028b4ba9d49cce9e075bc79eece9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67058525"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560665"
 ---
 # <a name="authoring-and-endpoint-user-access"></a>Geliştirme ve uç noktası kullanıcı erişimi
-Erişim geliştirme sahipleri ve ortak çalışanlar için kullanılabilir. Özel bir uygulama için erişim uç noktası sahipleri ve ortak çalışanlar için kullanılabilir. Genel bir uygulama için uç nokta kendi Azure olan herkes için erişilebilir [Bilişsel hizmet](../cognitive-services-apis-create-account.md) veya [LUIS](luis-how-to-azure-subscription.md#create-prediction-endpoint-runtime-resource-in-the-azure-portal) kaynak ve genel uygulama kimliği vardır. 
+Erişim geliştirme sahipleri ve ortak çalışanlar için kullanılabilir. Özel bir uygulama için erişim uç noktası sahipleri ve ortak çalışanlar için kullanılabilir. Genel bir uygulama için uç nokta erişimi, kendi Azure bilişsel [hizmeti](../cognitive-services-apis-create-account.md) veya Luo kaynağına sahip olan [](luis-how-to-azure-subscription.md#create-prediction-endpoint-runtime-resource-in-the-azure-portal) herkes tarafından KULLANILABILIR ve ortak uygulamanın kimliği vardır. 
 
 ## <a name="access-to-authoring"></a>Yazma erişimi
 Uygulama erişimi [LUIS](luis-reference-regions.md#luis-website) Web sitesi veya [yazma API'leri](https://go.microsoft.com/fwlink/?linkid=2092087) uygulama sahibi tarafından denetlenir. 

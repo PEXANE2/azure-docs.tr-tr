@@ -10,14 +10,14 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/21/2019
-ms.openlocfilehash: 1433e71a5e4f9d4effe82d489145c364355100d4
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: c8bfb159dc56ff701f8d3c7eff00f04e28f8704a
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67330447"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667812"
 ---
-# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-c"></a>Hızlı Başlangıç: Bir IOT hub'ına bir CİHAZDAN telemetri gönderme ve bir arka uç uygulaması ile okuma (C#)
+# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-net"></a>Hızlı Başlangıç: Bir cihazdan IoT Hub 'ına telemetri gönderme ve arka uç uygulamasıyla okuma (.NET)
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
@@ -41,7 +41,7 @@ Aşağıdaki komutu kullanarak geliştirme makinenizde geçerli C# sürümünü 
 dotnet --version
 ```
 
-Microsoft Azure IOT uzantısı için Azure CLI Cloud Shell Örneğinize eklemek için aşağıdaki komutu çalıştırın. IOT uzantısı, Azure CLI için IOT Hub, IOT Edge ve IOT cihaz sağlama hizmeti (DPS) belirli komutları ekler.
+Azure CLı için Microsoft Azure IoT uzantısını Cloud Shell örneğinize eklemek için aşağıdaki komutu çalıştırın. IOT uzantısı, Azure CLı 'ye IoT Hub, IoT Edge ve IoT cihaz sağlama hizmeti 'ne (DPS) özel komutlar ekler.
 
 ```azurecli-interactive
 az extension add --name azure-cli-iot-ext
@@ -57,11 +57,11 @@ https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip adr
 
 Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu hızlı başlangıçta Azure Cloud Shell kullanarak bir simülasyon cihazı kaydedeceksiniz.
 
-1. Cihaz kimliği oluşturmak için Azure Cloud Shell'de aşağıdaki komutu çalıştırın.
+1. Cihaz kimliğini oluşturmak için Azure Cloud Shell aşağıdaki komutu çalıştırın.
 
-   **YourIoTHubName**: Aşağıda bu yer tutucu IOT hub'ınız için seçtiğiniz adıyla değiştirin.
+   **Youriothubname**: Aşağıdaki yer tutucusunu, IoT Hub 'ınız için seçtiğiniz adla değiştirin.
 
-   **MyDotnetDevice**: Kaydettirmekte cihazın adı. Kullanım **MyDotnetDevice** gösterildiği gibi. Cihazınız için farklı bir ad seçerseniz, bu makalenin tamamında adı ve örnek uygulamalarda bunları çalıştırmadan önce cihaz adı gerekir.
+   **MyDotnetDevice**: Kayıt yaptığınız cihazın adı. Gösterildiği gibi **MyDotnetDevice** kullanın. Cihazınız için farklı bir ad seçerseniz bu adı bu makale boyunca kullanmanız ve örnek uygulamalarda cihaz adını çalıştırmadan önce güncelleştirmeniz gerekir.
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyDotnetDevice
@@ -69,7 +69,7 @@ Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu h�
 
 2. Yeni kaydettiğiniz cihazın _cihaz bağlantı dizesini_ almak için aşağıdaki komutları Azure Cloud Shell'de çalıştırın:
 
-   **YourIoTHubName**: Aşağıda bu yer tutucu IOT hub'ınız için seçtiğiniz adıyla değiştirin.
+   **Youriothubname**: Aşağıdaki yer tutucusunu, IoT Hub 'ınız için seçtiğiniz adla değiştirin.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyDotnetDevice --output table
@@ -81,9 +81,9 @@ Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu h�
 
     Bu değeri hızlı başlangıcın ilerleyen bölümlerinde kullanacaksınız.
 
-3. Ayrıca gerekir _Event Hubs ile uyumlu uç nokta_, _Event Hubs ile uyumlu yolu_, ve _hizmet birincil anahtarı_ arka uç uygulaması için etkinleştirmek için IOT hub'ından IOT hub'ınıza bağlanmak ve iletileri alabilirsiniz. Aşağıdaki komutlar, IoT hub’ınız için şu değerleri alır:
+3. Ayrıca, arka uç uygulamasının IoT Hub 'ınıza bağlanmasını ve iletileri almanızı sağlamak için IoT Hub 'ınızdaki _Event Hubs uyumlu uç nokta_, _Event Hubs uyumlu yol_ve _hizmet birincil anahtarı_ gerekir. Aşağıdaki komutlar, IoT hub’ınız için şu değerleri alır:
 
-   **YourIoTHubName**: Aşağıda bu yer tutucu IOT hub'ınız için seçtiğiniz adıyla değiştirin.
+   **Youriothubname**: Aşağıdaki yer tutucusunu, IoT Hub 'ınız için seçtiğiniz adla değiştirin.
 
     ```azurecli-interactive
     az iot hub show --query properties.eventHubEndpoints.events.endpoint --name YourIoTHubName
@@ -133,7 +133,7 @@ Arka uç uygulaması, IoT Hub’ınızdaki bir hizmet tarafı **Olaylar** uç no
     | -------- | ----------- |
     | `s_eventHubsCompatibleEndpoint` | Değişkenin değerini, önceden not ettiğiniz Event Hubs uyumlu uç noktayla değiştirin. |
     | `s_eventHubsCompatiblePath`     | Değişkenin değerini, önceden not ettiğiniz Event Hubs uyumlu yolla değiştirin. |
-    | `s_iotHubSasKey`                | Değişkenin değerini, daha önce Not yaptığınız hizmet birincil anahtarı ile değiştirin. |
+    | `s_iotHubSasKey`                | Değişkenin değerini, daha önce bir örneği yaptığınız hizmet birincil anahtarıyla değiştirin. |
 
 3. Yerel terminal penceresinde, aşağıdaki komutları çalıştırarak arka uç uygulaması için gerekli kitaplıkları yükleyin:
 
@@ -162,4 +162,4 @@ Bu hızlı başlangıçta, bir IoT hub’ını ayarladınız, bir cihazı kaydet
 Bir arka uç uygulamasından simülasyon cihazınızı denetlemeyi öğrenmek için sonraki hızlı başlangıçla devam edin.
 
 > [!div class="nextstepaction"]
-> [Hızlı Başlangıç: Bir IOT hub'ına bağlı cihazı denetleme](quickstart-control-device-dotnet.md)
+> [Hızlı Başlangıç: IoT Hub 'ına bağlı bir cihazı denetleme](quickstart-control-device-dotnet.md)

@@ -1,19 +1,20 @@
 ---
 title: 'Azure Backup: Azure portal kullanarak sanal makineleri geri yükleme'
 description: Azure portal kullanarak bir Azure sanal makinesini bir kurtarma noktasından geri yükleme
-author: geethalakshmig
-manager: vijayts
+ms.reviewer: geg
+author: dcurwin
+manager: carmonm
 keywords: yedeği geri yükle; geri yükleme; kurtarma noktası;
 ms.service: backup
 ms.topic: conceptual
 ms.date: 05/08/2019
-ms.author: geg
-ms.openlocfilehash: 951e42c4eb7a9d897140a7422364cdbfe83e57cc
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
-ms.translationtype: MT
+ms.author: dacurwin
+ms.openlocfilehash: f961f472c0b00932bf5ee6302af58f39fa8421ed
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466894"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720438"
 ---
 # <a name="restore-azure-vms"></a>Azure VM'lerini geri yükleme
 
@@ -111,7 +112,8 @@ Bir VM 'yi geri yüklemek için (yeni bir VM oluşturun), VM 'Yi geri yükleme i
 
 4. **Yapılandırma geri yükleme**' de **Tamam**' ı seçin. GeriYükle ' ye **tıklayarak geri** yükleme işlemini tetikleyin.
 
-VM geri yükleme sırasında Azure Backup depolama hesabı kullanmaz. Ancak, **diskleri geri yükleme** ve **anında geri yükleme**durumunda depolama hesabı, şablonu depolamak için kullanılır.
+Sanal makineniz yönetilen diskler kullandığında ve **sanal makine oluştur** seçeneğini belirlediğinizde, Azure Backup belirtilen depolama hesabını kullanmaz. **Diskleri geri yükleme** ve **anında geri yükleme**durumunda depolama hesabı yalnızca şablonu depolamak için kullanılır. Yönetilen diskler, belirtilen kaynak grubunda oluşturulur.
+Sanal makineniz yönetilmeyen diskler kullandığında, depolama hesabına Bloblar olarak geri yüklenir.
 
 ### <a name="use-templates-to-customize-a-restored-vm"></a>Geri yüklenen bir VM 'yi özelleştirmek için şablonları kullanma
 
@@ -162,7 +164,7 @@ VM 'Leri geri yüklemeniz gerekebilecek bazı yaygın senaryolar vardır.
 **Bölge sabitlenmiş VM 'Ler** | Azure Backup, bölge sabitlenmiş sanal makinelerin yedeklenmesini ve geri yüklenmesini destekler. [Daha fazla bilgi edinin](https://azure.microsoft.com/global-infrastructure/availability-zones/)
 
 ## <a name="track-the-restore-operation"></a>Geri yükleme işlemini izleme
-Geri yükleme işlemini tetikledikten sonra, yedekleme hizmeti izleme için bir iş oluşturur. Azure Backup portalda iş hakkında bildirimleri görüntüler. Bunlar görünmüyorsa, bunları görmek için **Bildirimler** simgesine tıklayın.
+Geri yükleme işlemini tetikledikten sonra, yedekleme hizmeti izleme için bir iş oluşturur. Azure Backup portalda iş hakkında bildirimleri görüntüler. Bunlar görünmüyorsa, **Bildirimler** sembolünü seçin ve sonra geri yükleme işlemi durumunu görmek Için **tüm işleri görüntüle** ' yi seçin.
 
 ![Geri yükleme tetiklendi](./media/backup-azure-arm-restore-vms/restore-notification1.png)
 

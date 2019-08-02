@@ -16,10 +16,10 @@ ms.date: 12/18/2018
 ms.author: lahugh
 ms.custom: seodec18
 ms.openlocfilehash: bead5f0bec6d57c0f4aaddc6537e00c466d987f1
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68323903"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Batch içe büyük ölçekli paralel işlem çözümleri geliştirme
@@ -234,7 +234,7 @@ Havuz işlem düğümlerinin oluşturulması gereken Azure [sanal ağın (VNet)]
     Batch hizmetinde, *hiç* görevi olmayan işler, tüm görevleri tamamlanmış işler olarak kabul edilir. Bu nedenle, bu seçenek genellikle [iş yöneticisi görevi](#job-manager-task) ile kullanılır. İş yöneticisi olmadan otomatik iş sonlandırmayı kullanmak istiyorsanız başlangıçta yeni işin **onAllTasksComplete** özelliğini *noaction* olarak ayarlamanız ve işe görev eklemeyi bitirdiğinizde bu ayarı *terminatejob* olarak değiştirmeniz gerekir.
 
 ### <a name="job-priority"></a>İş önceliği
-Batch’de oluşturduğunuz işlere öncelik atayabilirsiniz. Batch hizmeti bir hesaptaki iş zamanlama sırasını belirlemek üzere işin öncelik değerini kullanır ([zamanlanmış iş](#scheduled-jobs) ile karıştırılmamalıdır). Öncelik değeri, -1000 en düşük öncelik ve 1000 en yüksek öncelik olmak üzere, -1000 ile 1000 aralığındadır. Bir işin önceliğini güncelleştirmek için [iş][rest_update_job] operation (Batch REST), or modify the [CloudJob.Priority][net_cloudjob_priority] özelliğinin özelliklerini güncelleştir (Batch .net) öğesini çağırın.
+Batch’de oluşturduğunuz işlere öncelik atayabilirsiniz. Batch hizmeti bir hesaptaki iş zamanlama sırasını belirlemek üzere işin öncelik değerini kullanır ([zamanlanmış iş](#scheduled-jobs) ile karıştırılmamalıdır). Öncelik değeri, -1000 en düşük öncelik ve 1000 en yüksek öncelik olmak üzere, -1000 ile 1000 aralığındadır. Bir işin önceliğini güncelleştirmek için, [bir iş işleminin özelliklerini güncelleştirme][rest_update_job] (Batch REST) ya da [Cloudjob. Priority][net_cloudjob_priority] özelliğini (Batch .net) çağırın.
 
 Aynı hesapta, yüksek öncelikli işlerin düşük öncelikli işlere göre zamanlama üstünlüğü vardır. Bir hesaptaki yüksek öncelik değerine sahip iş farklı bir hesaptaki düşük öncelik değerine sahip başka bir işe karşı zamanlama üstünlüğüne sahip değildir.
 
@@ -287,7 +287,7 @@ Bu, düğümün görevlere atanmak üzere hazır olduğunu düşünmeden önce b
 
 Bir işlem düğümünde başlangıç görevi başarısız olursa, düğümün durumu hatayı yansıtacak şekilde güncelleştirilir ve düğüm hiçbir göreve atanmaz. Bir başlangıç görevi, depolamadan kaynak dosya kopyalamada bir sorun olması ya da komut satırı tarafından yürütülen işlemin sıfır olmayan bir çıkış kodu döndürmesi durumunda başarısız olabilir.
 
-Mevcut bir havuz için başlangıç görevi ekler veya güncelleştirirseniz, başlangıç görevinin düğümlere uygulanması için işlem düğümlerini yeniden başlatmanız gerekir.
+Mevcut havuzlardan biri için başlangıç görevi ekler veya güncelleştirirseniz, başlangıç görevlerinin düğümlere uygulanması için işlem düğümlerini yeniden başlatmanız gerekir.
 
 >[!NOTE]
 > Batch, kaynak dosyalarını ve ortam değişkenlerini içeren başlangıç görevinin toplam boyutunu sınırlar. Bir başlangıç görevinin boyutunu azaltmanız gerekirse aşağıdaki iki yaklaşımdan birini kullanabilirsiniz:
@@ -335,14 +335,14 @@ Görev bağımlılıkları ile aşağıdaki gibi senaryoları yapılandırabilir
 * *görevC* hem *görevA* hem de *görevB* ’ye bağlıdır.
 * *görevD* yürütülmeden önce bir dizi göreve (örneğin görev *1* ile *10* arası) bağlıdır.
 
-Bu özellik hakkında daha ayrıntılı bilgi için Azure Batch ve [taskdependencies][github_sample_taskdeps] code sample in the [azure-batch-samples][github_samples] GitHub deposunda [görev bağımlılıklarını](batch-task-dependencies.md) inceleyin.
+Bu özellik hakkında daha ayrıntılı bilgi için [Azure-Batch-Samples][github_samples] GitHub deposundaki Azure Batch ve [taskdependencies][github_sample_taskdeps] kod örneğindeki [görev bağımlılıklarını](batch-task-dependencies.md) inceleyin.
 
 ## <a name="environment-settings-for-tasks"></a>Görevler için ortam ayarları
 Batch hizmeti tarafından yürütülen her görevin, işlem düğümleri üzerinde ayarladığı ortam değişkenlerine erişimi vardır. Bu, Batch hizmeti tarafından tanımlanan ortam değişkenlerini ([hizmet tanımlı][msdn_env_vars]) ve görevleriniz için tanımlayabileceğiniz özel ortam değişkenlerini içerir. Görevleriniz tarafından yürütülen uygulamalar ve komut dosyaları yürütme sırasında bu ortam değişkenlerine erişebilir.
 
-Bu varlıkların *ortam ayarları* özelliğini doldurarak görev ya da iş düzeyinde özel ortam değişkenleri ayarlayabilirsiniz. Örneğin Batch operation (Batch REST API), or the [CloudTask.EnvironmentSettings][net_cloudtask_env] .NET içindeki [bir işe görev ekleme][rest_add_task] ve [cloudjob. commonenvironmentsettings][net_job_env] özellikleri bölümüne bakın.
+Bu varlıkların *ortam ayarları* özelliğini doldurarak görev ya da iş düzeyinde özel ortam değişkenleri ayarlayabilirsiniz. Örneğin, Batch .NET içindeki [bir iş işlemine görev ekleme][rest_add_task] (Batch REST API) veya [Cloudtask. EnvironmentSettings][net_cloudtask_env] ve [Cloudjob. commonenvironmentsettings][net_job_env] özelliklerine bakın.
 
-İstemci uygulamanız veya hizmetiniz bir görevin ortam değişkenlerini, hem hizmet tanımlı hem de özel bir operation (Batch REST) or by accessing the [CloudTask.EnvironmentSettings][net_cloudtask_env] [görev özelliği hakkında bilgi al][rest_get_task_info] (Batch .net) ile elde edebilir. Bir işlem düğümünde yürütülen işlemler bu ve düğümdeki diğer ortam değişkenlerine erişebilir, örneğin bilinen bir `%VARIABLE_NAME%` (Windows) veya `$VARIABLE_NAME` (Linux) söz dizimini kullanarak.
+İstemci uygulamanız veya hizmetiniz bir görevin ortam değişkenlerini (toplu REST) veya [Cloudtask. EnvironmentSettings][net_cloudtask_env] özelliğine erişerek bir görevin [][rest_get_task_info] hem hizmet tanımlı hem de özel olarak elde edebilir ( Batch .NET). Bir işlem düğümünde yürütülen işlemler bu ve düğümdeki diğer ortam değişkenlerine erişebilir, örneğin bilinen bir `%VARIABLE_NAME%` (Windows) veya `$VARIABLE_NAME` (Linux) söz dizimini kullanarak.
 
 [İşlem düğümü ortam değişkenlerinde][msdn_env_vars], hizmet tarafından tanımlanan tüm ortam değişkenlerinin tam listesini bulabilirsiniz.
 
@@ -425,7 +425,7 @@ Bir uygulamayı otomatik olarak ölçeklendirme hakkında daha fazla bilgi için
 ## <a name="security-with-certificates"></a>Sertifikalar ile güvenlik
 Bir [Azure depolama hesabı][azure_storage]anahtarı gibi, görevler için hassas bilgileri şifrelerken veya şifrelerini çözdüğünde genellikle sertifikalar kullanmanız gerekir. Bunu desteklemek için düğümlere sertifikalar yükleyebilirsiniz. Şifrelenmiş parolalar komut satırı parametreleri aracılığıyla düğümlere geçirilir ya da görev kaynaklarından birine eklenir ve yüklü sertifikalar bunların şifrelerini çözmek için kullanılabilir.
 
-Batch hesabına bir sertifika eklemek için [sertifika][rest_add_cert] operation (Batch REST) or [CertificateOperations.CreateCertificate][net_create_cert] Ekle yöntemini (Batch .net) kullanırsınız. Sonra sertifikayı yeni ya da mevcut bir havuzla ilişkilendirebilirsiniz. Sertifika bir havuzla ilişkilendirildiğinde, Batch hizmeti havuzdaki her düğüme sertifikayı yükler. Batch hizmeti düğüm başlatıldığında başlangıç görevi ve iş yöneticisi görevi dahil herhangi bir görevi başlatmadan önce, uygun sertifikaları yükler.
+Batch hesabına bir sertifika eklemek için [sertifika ekle][rest_add_cert] Işlemini (Batch REST) veya [Certificateoperations. CreateCertificate][net_create_cert] yöntemini (Batch .net) kullanırsınız. Sonra sertifikayı yeni ya da mevcut bir havuzla ilişkilendirebilirsiniz. Sertifika bir havuzla ilişkilendirildiğinde, Batch hizmeti havuzdaki her düğüme sertifikayı yükler. Batch hizmeti düğüm başlatıldığında başlangıç görevi ve iş yöneticisi görevi dahil herhangi bir görevi başlatmadan önce, uygun sertifikaları yükler.
 
 *Mevcut* bir havuza sertifika eklerseniz sertifikaların düğümlere uygulanması için işlem düğümlerini yeniden başlatmanız gerekir.
 
@@ -462,7 +462,7 @@ Görev hataları kategorileri şunlardır:
 ### <a name="debugging-application-failures"></a>Uygulama hatalarını ayıklama
 * `stderr` ve `stdout`
 
-    Yürütme sırasında bir uygulama, sorunları gidermek için kullanabileceğiniz tanılama çıktıları üretebilir. Önceki [Dosyalar ve dizinler](#files-and-directories) bölümünde belirtildiği gibi, Batch hizmeti işlem düğümündeki görev dizininde yer alan `stdout.txt` ve `stderr.txt` dosyalarına standart çıktı ve standart hata çıktısı yazar. Bu dosyaları indirmek için Azure portalını veya toplu SDK'lardan birini kullanabilirsiniz. Örneğin, Batch .NET kitaplığı 'nda [ComputeNode. getnodefile][net_getfile_node] and [CloudTask.GetNodeFile][net_getfile_task] kullanarak bu ve diğer dosyaları sorun giderme amacıyla alabilirsiniz.
+    Yürütme sırasında bir uygulama, sorunları gidermek için kullanabileceğiniz tanılama çıktıları üretebilir. Önceki [Dosyalar ve dizinler](#files-and-directories) bölümünde belirtildiği gibi, Batch hizmeti işlem düğümündeki görev dizininde yer alan `stdout.txt` ve `stderr.txt` dosyalarına standart çıktı ve standart hata çıktısı yazar. Bu dosyaları indirmek için Azure portalını veya toplu SDK'lardan birini kullanabilirsiniz. Örneğin, Batch .NET kitaplığı 'nda [ComputeNode. GetNodeFile][net_getfile_node] ve [Cloudtask. getnodefile][net_getfile_task] kullanarak bu ve diğer dosyaları sorun giderme amacıyla alabilirsiniz.
 
 * **Görev çıkış kodları**
 
@@ -477,7 +477,7 @@ Bir görevin yanıt vermemesine veya yürütülmesi çok uzun sürmesine neden o
 Bir işlem düğümünde uzaktan oturum açarak ek hata ayıklama ve sorun giderme işlemlerini gerçekleştirebilirsiniz. Windows düğümleri için bir Uzak Masaüstü Protokolü (RDP) dosyası indirmek ve Linux düğümleri için Güvenli Kabuk (SSH) bağlantı bilgilerini elde etmek üzere Azure portalını kullanabilirsiniz. Bu Işlemi Batch API 'Lerini kullanarak da yapabilirsiniz; Örneğin, [Batch .net][net_rdpfile] veya [Batch Python](batch-linux-nodes.md#connect-to-linux-nodes-using-ssh)ile.
 
 > [!IMPORTANT]
-> RDP veya SSH aracılığıyla bir düğüme bağlanmak için düğümde bir kullanıcı oluşturmanız gerekir. Bunu yapmak için Azure Portal kullanabilir, Batch .net by using the Batch REST API, call the [ComputeNode.CreateComputeNodeUser][net_create_user] içindeki bir [node yöntemine bir kullanıcı hesabı ekleyebilir][rest_create_user] veya Batch Python modülündeki [add_user][py_add_user] yöntemini çağırabilirsiniz.
+> RDP veya SSH aracılığıyla bir düğüme bağlanmak için düğümde bir kullanıcı oluşturmanız gerekir. Bunu yapmak için Azure portal kullanabilir, Batch REST API kullanarak [bir düğüme bir kullanıcı hesabı ekleyebilir][rest_create_user] , Batch .NET içinde [ComputeNode. CreateComputeNodeUser][net_create_user] metodunu çağırabilir veya Batch Python modülünde [add_user][py_add_user] metodunu çağırabilirsiniz.
 >
 >
 
@@ -486,21 +486,21 @@ Bir işlem düğümünde uzaktan oturum açarak ek hata ayıklama ve sorun gider
 ### <a name="troubleshooting-problematic-compute-nodes"></a>Sorunlu işlem düğümleriyle ilgili sorunları giderme
 Bazı görevlerinizin başarısız olduğu durumlarda, Batch istemci uygulamanız ya da hizmetiniz, hatalı davranan düğümü tanımlamak üzere başarısız görevlerin meta verilerini inceleyebilir. Bir havuzdaki her düğüme benzersiz bir kimlik verilir ve bir görevin çalıştığı düğüm görev meta verilerine eklenir. Bir sorun düğümünü tanımladıktan sonra bununla birkaç eylem gerçekleştirebilirsiniz:
 
-* **Düğümü yeniden başlatın** ([Rest][rest_reboot] | [.NET][net_reboot])
+* **Düğümü yeniden başlatın** ([rest][rest_reboot] | [.net][net_reboot])
 
     Düğümü yeniden başlatmak bazen takılan veya çöken işlemler gibi görünmeyen sorunları temizleyebilir. Havuzunuz bir başlangıç görevi kullanıyorsa ya da işiniz iş hazırlama görevi kullanıyorsa, düğüm başlatıldığında bunlar yürütülür.
-* **Düğümü yeniden görüntü** oluştur ([Rest][rest_reimage] | [.NET][net_reimage])
+* **Düğümü yeniden görüntü** oluştur ([rest][rest_reimage] | [.net][net_reimage])
 
     Bu işlem, işletim sistemini düğüme yeniden yükler. Düğümün yeniden başlatılmasıyla düğümün görüntüsünün yeniden oluşturulmasının ardından başlangıç görevleri ve iş hazırlama görevleri yeniden çalıştırılır.
-* **Düğümü havuzdan kaldır** ([Rest][rest_remove] | [.NET][net_remove])
+* **Düğümü havuzdan kaldır** ([rest][rest_remove] | [.net][net_remove])
 
     Bazen düğümün havuzdan tamamen kaldırılması gereklidir.
-* **Düğümde görev zamanlamayı devre dışı bırak** ([Rest][rest_offline] | [.NET][net_offline])
+* **Düğümde görev zamanlamayı devre dışı bırak** ([rest][rest_offline] | [.net][net_offline])
 
-    Bu, başka görev atanmayacak şekilde düğümü çevrimdışı durumuna alır, ancak düğümün çalışır durumda ve havuzda kalmasına izin verir. Bu, başarısız olan görevin verilerini kaybetmeden ve düğüm, başka görev hatalarına neden olmadan hatalara ilişkin ayrıntılı araştırma gerçekleştirmenizi sağlar. Örneğin düğümde görev zamanlamayı devre dışı bırakabilir, sonra düğümün olay günlüklerini incelemek üzere [uzaktan oturum açabilir](#connecting-to-compute-nodes) ya da başka sorun giderme işlemleri uygulayabilirsiniz. Araştırmanızı bitirdikten sonra görev zamanlamayı ([rest][rest_online] | [.NET][net_online]) etkinleştirerek veya daha önce ele alınan diğer eylemlerden birini gerçekleştirerek düğümü yeniden çevrimiçi duruma getirebilirsiniz.
+    Bu, başka görev atanmayacak şekilde düğümü çevrimdışı durumuna alır, ancak düğümün çalışır durumda ve havuzda kalmasına izin verir. Bu, başarısız olan görevin verilerini kaybetmeden ve düğüm, başka görev hatalarına neden olmadan hatalara ilişkin ayrıntılı araştırma gerçekleştirmenizi sağlar. Örneğin düğümde görev zamanlamayı devre dışı bırakabilir, sonra düğümün olay günlüklerini incelemek üzere [uzaktan oturum açabilir](#connecting-to-compute-nodes) ya da başka sorun giderme işlemleri uygulayabilirsiniz. Araştırmanızı bitirdikten sonra görev zamanlamayı ([rest][rest_online] | [.net][net_online]) etkinleştirerek düğümü yeniden çevrimiçi duruma getirebilir veya daha önce ele alınan diğer eylemlerden birini gerçekleştirebilirsiniz.
 
 > [!IMPORTANT]
-> Bu bölümde açıklanan her bir eylemde (yeniden başlatma, yeniden görüntü oluşturma, görev zamanlamayı kaldırma ve devre dışı bırakma), eylemi gerçekleştirdiğinizde düğümde çalışmakta olan görevlerin nasıl işleneceğini belirtebilirsiniz. Örneğin, Batch .NET istemci kitaplığını kullanarak bir düğümde görev zamanlamayı devre dışı bıraktığınızda, çalışan görevlerin **sonlanıp sonlandırılmayacağını** belirtmek Için bir [DisableComputeNodeSchedulingOption][net_offline_option] Enum değeri belirtebilirsiniz.  diğer düğümlerde zamanlama yapın veya eylemi gerçekleştirmeden önce çalıştırma görevlerinin tamamlanmasına izin verin (**Taskcompletion**).
+> Bu bölümde açıklanan her bir eylemde (yeniden başlatma, yeniden görüntü oluşturma, görev zamanlamayı kaldırma ve devre dışı bırakma), eylemi gerçekleştirdiğinizde düğümde çalışmakta olan görevlerin nasıl işleneceğini belirtebilirsiniz. Örneğin, Batch .NET istemci kitaplığını kullanarak bir düğümde görev zamanlamayı devre dışı bıraktığınızda, çalışan görevlerin **sonlanıp sonlandırılmayacağını** belirtmek Için bir [DisableComputeNodeSchedulingOption][net_offline_option] Enum değeri belirtebilirsiniz. diğer düğümlerde zamanlama yapın veya eylemi gerçekleştirmeden önce çalıştırma görevlerinin tamamlanmasına izin verin (**Taskcompletion**).
 >
 >
 
