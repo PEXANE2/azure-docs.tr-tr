@@ -1,6 +1,6 @@
 ---
-title: Güvenlik iletilerinizi Azure Güvenlik Merkezi'ne IOT Önizleme için gönderin | Microsoft Docs
-description: IOT için Azure Güvenlik Merkezi'ni kullanarak güvenlik iletilerinizi göndereceğinizi öğrenin.
+title: IoT için Azure Güvenlik Merkezi 'ne güvenlik iletilerinizi gönderin | Microsoft Docs
+description: IoT için Azure Güvenlik Merkezi 'ni kullanarak güvenlik iletilerinizi gönderme hakkında bilgi edinin.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,51 +13,49 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/26/2019
+ms.date: 07/27/2019
 ms.author: mlottner
-ms.openlocfilehash: 73335773695059b3c2afd121a0dd39ada8d28bb0
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: c780eea15b9f064d3279c75ac2f967e8b6099ecb
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67618082"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596213"
 ---
-# <a name="send-security-messages-sdk"></a>SDK'sı güvenlik ileti gönderme
+# <a name="send-security-messages-sdk"></a>Güvenlik iletileri SDK 'Sı gönder
 
-> [!IMPORTANT]
-> IOT için Azure Güvenlik Merkezi şu anda genel Önizleme aşamasındadır.
-> Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanmaktadır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Bu nasıl yapılır kılavuzunda, toplamak ve cihazınız için IOT Aracısı bir ASC kullanmadan güvenlik iletileri göndermek seçtiğinizde Azure Güvenlik Merkezi (ASC) için IOT hizmet özellikleri açıklar ve bunun nasıl yapılacağı açıklanır.  
+Bu nasıl yapılır kılavuzunda, IoT Aracısı için Azure Güvenlik Merkezi 'ni kullanmadan cihaz güvenlik iletilerinizi toplayıp göndermenizi ve bunun nasıl yapılacağını anlatan IoT hizmeti özelliklerine yönelik Azure Güvenlik Merkezi açıklanır.  
 
 Bu kılavuzda şunların nasıl yapıldığını öğrenirsiniz: 
 > [!div class="checklist"]
-> * Gönderme güvenlik iletisi API kullanınC#
-> * C için gönderilen güvenlik iletiyi API kullanma
+> * İçin güvenlik iletisi gönder API 'sini kullanınC#
+> * C için güvenlik iletisi gönder API 'sini kullanma
 
-## <a name="asc-for-iot-capabilities"></a>ASC IOT özellikleri için
+## <a name="azure-security-center-for-iot-capabilities"></a>IoT özellikleri için Azure Güvenlik Merkezi
 
-IOT için ASC işleyebilir ve gönderilen verileri uyumlu olduğu sürece her türlü güvenlik ileti veri [ASC IOT şeması](https://aka.ms/iot-security-schemas) ve iletiyi bir güvenlik uyarısı ayarlanır.
+IoT için Azure Güvenlik Merkezi, gönderilen veriler [IoT şeması Için Azure Güvenlik Merkezi](https://aka.ms/iot-security-schemas) 'ne uygun olduğu ve ileti güvenlik iletisi olarak ayarlandığı sürece her türlü güvenlik iletisi verilerini işleyebilir ve analiz edebilir.
 
-## <a name="security-message"></a>Güvenlik Uyarısı
+## <a name="security-message"></a>Güvenlik iletisi
 
-ASC IOT için aşağıdaki ölçütleri kullanarak bir güvenlik uyarısı tanımlar:
-- Azure IOT C ile ileti gönderildiyse /C# SDK'sı
-- İleti için uyuyorsa [güvenlik ileti şeması](https://aka.ms/iot-security-schemas)
-- İleti göndermeden önce bir güvenlik uyarısı olarak ayarlandıysa
+IoT için Azure Güvenlik Merkezi, aşağıdaki ölçütleri kullanarak bir güvenlik iletisi tanımlar:
+- İleti Azure IoT C/C# SDK ile gönderildiyse
+- İleti [güvenlik iletisi şemasına](https://aka.ms/iot-security-schemas) uygunsa
+- İleti gönderilmeden önce bir güvenlik iletisi olarak ayarlandıysa
 
-Her güvenlik uyarısı gibi gönderenin meta verileri içeren `AgentId`, `AgentVersion`, `MessageSchemaVersion` ve güvenlik olaylarının bir listesi.
-Şema olay türleri dahil olmak üzere güvenlik iletinin geçerli ve gerekli özellikleri tanımlar.
+Her güvenlik iletisi `AgentId` `AgentVersion`,göndereninmeta verilerini, vegüvenlikolaylarınınbirlistesiniiçerir.`MessageSchemaVersion`
+Şema, olay türleri dahil olmak üzere güvenlik iletisinin geçerli ve gerekli özelliklerini tanımlar.
 
-[!NOTE]
-> Gönderilen iletileri şemasıyla uyumlu değil göz ardı edilir. Yoksayılan ileti şu anda depolanmadığı gibi veri gönderimi başlatmadan önce şemayı doğruladığınızdan emin olun. 
-> Gönderilen iletileri, ayarlı değil Azure IOT C kullanarak bir güvenlik uyarısı /C# SDK değil yönlendirilecek ASC IOT ardışık düzen için
+>[!Note]
+> Şemayla uyumlu olmayan gönderilen iletiler yok sayılır. Yoksayılan iletiler Şu anda depolanmadığından, verileri göndermeyi başlatmadan önce şemayı doğrulamaya dikkat edin. 
+
+>[!Note]
+> Azure IoT C/C# SDK kullanılarak gönderilen bir güvenlik iletisi olarak ayarlanmamış Iletiler, IoT işlem hattı Için Azure Güvenlik Merkezi 'ne yönlendirilmeyecektir
 
 ## <a name="valid-message-example"></a>Geçerli ileti örneği
 
-Aşağıdaki örnek, geçerli güvenlik ileti nesnesi gösterir. İleti meta verileri ve bir örnek içeren `ProcessCreate` güvenlik olayı.
+Aşağıdaki örnekte geçerli bir güvenlik iletisi nesnesi gösterilmektedir. Örnek, ileti meta verilerini ve bir `ProcessCreate` güvenlik olayını içerir.
 
-Bir güvenlik uyarısı ayarlamalı ve IOT için gönderilen bu ileti ASC tarafından işlenir.
+Bir güvenlik iletisi olarak ayarladıktan ve gönderildikten sonra, bu ileti IoT için Azure Güvenlik Merkezi tarafından işlenir.
 
 ```json
 "AgentVersion": "0.0.1",
@@ -76,28 +74,28 @@ Bir güvenlik uyarısı ayarlamalı ve IOT için gönderilen bu ileti ASC taraf�
         "Payload":
             [
                 {
-                    "Executable": "/usr/bin/echo",
+                    "Executable": "/usr/bin/myApp",
                     "ProcessId": 11750,
                     "ParentProcessId": 1593,
-                    "UserName": "nginx",
-                    "CommandLine": "./backup .htaccess"
+                    "UserName": "aUser",
+                    "CommandLine": "myApp -a -b"
                 }
             ]
     }
 ]
 ```
 
-## <a name="send-security-messages"></a>Güvenlik ileti gönderme 
+## <a name="send-security-messages"></a>Güvenlik iletilerini gönder 
 
-ASC IOT aracısının kullanmadan kullanarak güvenlik ileti gönderme [Azure IOT C# cihaz SDK'sını](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview) veya [Azure IOT C cihaz SDK'sını](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview).
+[Azure C# IoT cihaz SDK 'Sını](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview) veya [Azure IoT C cihaz SDK 'Sını](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview)kullanarak IoT Aracısı için Azure Güvenlik Merkezi 'ni kullanmadan güvenlik iletileri gönderin.
 
-Cihazlarınızı IOT ASC tarafından işlenmek için cihaz verilerini göndermek için doğru ASC'ye IOT işleme işlem hattı ve yönlendirme iletileri işaretlemek için aşağıdaki API'leri birini kullanın. Bu şekilde gönderilen iletileri işlenir ve IOT hem IOT hub'ının içinden olarak ya da Azure Güvenlik Merkezi güvenlik öngörüleri ASC içinde olarak görüntülenen. 
+IoT için Azure Güvenlik Merkezi 'Nde cihazlarınızdan cihaz verilerini işlenmek üzere göndermek için aşağıdaki API 'lerden birini kullanarak IoT işleme işlem hattı için Azure Güvenlik Merkezi 'ne doğru yönlendirme iletileri işaretleyin. 
 
-Doğru üstbilgiyle işaretlenmiş olsa bile gönderilen tüm verileri de uymalıdır [ASC IOT ileti şeması için](https://aka.ms/iot-security-schemas). 
+Doğru üst bilgiyle işaretlenmiş olsa bile gönderilen tüm veriler, [IoT ileti şeması Için Azure Güvenlik Merkezi](https://aka.ms/iot-security-schemas)ile de uyumlu olmalıdır. 
 
-### <a name="send-security-message-api"></a>Güvenlik iletisi API Gönder
+### <a name="send-security-message-api"></a>Güvenlik iletisi API 'SI gönder
 
-**Güvenlik ileti gönderme** API'si şu anda C ve C#.  
+**Güvenlik Iletileri gönderme** API 'si Şu anda C ve C#içinde kullanılabilir.  
 
 #### <a name="c-api"></a>C# API’si
 
@@ -112,7 +110,7 @@ private static async Task SendSecurityMessageAsync(string messageContent)
 }
 ```
 
-#### <a name="c-api"></a>C API
+#### <a name="c-api"></a>C API 'SI
 
 ```c
 bool SendMessageAsync(IoTHubAdapter* iotHubAdapter, const void* data, size_t dataSize) {
@@ -158,10 +156,10 @@ static void SendConfirmCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, void* 
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- ASC IOT hizmeti için okuma [genel bakış](overview.md)
-- ASC hakkında daha fazla bilgi edinmek için IOT [mimarisi](architecture.md)
-- Etkinleştirme [hizmeti](quickstart-onboard-iot-hub.md)
-- Okuma [SSS](resources-frequently-asked-questions.md)
-- Nasıl erişeceğinizi öğrenin [ham güvenlik verileri](how-to-security-data-access.md)
-- Anlamak [önerileri](concept-recommendations.md)
-- Anlamak [uyarıları](concept-security-alerts.md)
+- IoT hizmetine [genel bakış](overview.md) Için Azure Güvenlik Merkezi 'ni okuyun
+- IoT [mimarisi](architecture.md) Için Azure Güvenlik Merkezi hakkında daha fazla bilgi edinin
+- [Hizmeti](quickstart-onboard-iot-hub.md) etkinleştirme
+- [SSS](resources-frequently-asked-questions.md) 'yi okuyun
+- [Ham güvenlik verilerine](how-to-security-data-access.md) erişme hakkında bilgi edinin
+- [Önerileri](concept-recommendations.md) anlama
+- [Uyarıları](concept-security-alerts.md) anlama

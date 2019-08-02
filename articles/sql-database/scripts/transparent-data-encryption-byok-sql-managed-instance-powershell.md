@@ -1,6 +1,6 @@
 ---
-title: "PowerShell: -BYOK TDE'yi etkinleştirmek Azure SQL veritabanı yönetilen örneği | Microsoft Docs"
-description: Bir Azure SQL yönetilen bekleyen şifreleme için BYOK saydam veri şifrelemesi (TDE) kullanmaya başlamak için örnek yapılandırma konusunda bilgi PowerShell kullanarak.
+title: 'PowerShell: BYOK TDE-Azure SQL veritabanı yönetilen örneğini etkinleştirme | Microsoft Docs'
+description: Azure SQL yönetilen örneğini, PowerShell kullanarak bekleyen şifreleme için BYOK Saydam Veri Şifrelemesi (TDE) kullanmaya başlamak üzere nasıl yapılandıracağınızı öğrenin.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -10,34 +10,33 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: vanto, carlrab
-manager: craigg
 ms.date: 04/19/2019
-ms.openlocfilehash: c2c4bd7bffd923430d0817cb6ea975f4c1596623
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: d8f0f4a8e603a9040d166b00682077cff23abd8d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66729157"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569700"
 ---
-# <a name="manage-transparent-data-encryption-in-a-managed-instance-using-your-own-key-from-azure-key-vault-preview"></a>Kendi anahtarınızı Azure anahtar kasasından (Önizleme) kullanarak yönetilen örneğe saydam veri şifrelemeyi yönetme
+# <a name="manage-transparent-data-encryption-in-a-managed-instance-using-your-own-key-from-azure-key-vault-preview"></a>Azure Key Vault (Önizleme) ile kendi anahtarınızı kullanarak yönetilen bir örnekteki Saydam Veri Şifrelemesi yönetme
 
-Bu PowerShell Betiği örneği, Azure SQL yönetilen Azure Key vault'tan bir anahtar kullanarak örneği için kendi anahtarını getir (Önizleme) senaryosunda saydam veri şifrelemesi (TDE) yapılandırır. TDE Getir bilgisayarınızı kendi anahtarını (BYOK) destekli hakkında daha fazla bilgi için bkz: [TDE kendi anahtarını Getir için Azure SQL](../transparent-data-encryption-byok-azure-sql.md).
+Bu PowerShell betiği örneği, Azure Key Vault bir anahtar kullanarak Azure SQL yönetilen örneği için Kendi Anahtarını Getir (Önizleme) senaryosunda Saydam Veri Şifrelemesi (TDE) yapılandırır. TDE Kendi Anahtarını Getir (BYOK) desteği hakkında daha fazla bilgi edinmek için bkz. [tde kendi anahtarını getir Azure SQL 'e](../transparent-data-encryption-byok-azure-sql.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Mevcut bir yönetilen örneği. Bkz: [PowerShell kullanarak Azure SQL veritabanı yönetilen örneği](sql-database-create-configure-managed-instance-powershell.md).
+- Mevcut bir yönetilen örnek. Bkz. [Azure SQL veritabanı yönetilen örneği oluşturmak Için PowerShell kullanma](sql-database-create-configure-managed-instance-powershell.md).
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Her iki PowerShell kullanarak yerel olarak veya Azure Cloud Shell kullanarak AZ PowerShell 1.1.1-preview veya sonraki bir önizleme sürümünü gerektirir. Yükseltme gerekiyorsa, bkz [Azure PowerShell modülü yükleme](/powershell/azure/install-az-ps), veya modülü yüklemek için örnek kod aşağıda.
+Her iki PowerShell 'i yerel olarak veya Azure Cloud Shell kullanmak için AZ PowerShell 1.1.1-Preview veya daha sonraki bir önizleme sürümü gerekir. Yükseltmeniz gerekiyorsa, bkz. [Azure PowerShell modülünü Install](/powershell/azure/install-az-ps)veya aşağıdaki örnek betiği çalıştırarak modülü yüklemek için.
 
 `Install-Module -Name Az.Sql -RequiredVersion 1.1.1-preview -AllowPrerelease -Force`
 
 PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
 
-## <a name="sample-scripts"></a>Örnek komut dosyaları
+## <a name="sample-scripts"></a>Örnek betikler
 
 [!code-powershell-interactive[main](../../../powershell_scripts/sql-database/transparent-data-encryption/setup-tde-byok-sqlmi.ps1 "Set up BYOK TDE for SQL Managed Instance")]
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: e5674ffb4325eb27af8d0673b2d6ad5ba3a6195e
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 9a5e5dc414d487efd5f6762c89cecb77da74e3d5
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854352"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68592064"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute SSS
 
@@ -139,7 +139,7 @@ Sanal ağınıza farklı konumlarda eşleme (örneğin, Singapur, singapur2) Exp
 
 Şirket içinden Azure 'a giden yolun ExpressRoute bağlantı hattınızdan her zaman tercih edildiğini sağlamak için yönlendiricilerinizde *yerel tercih* özniteliğini uygulamanız gerekir.
 
-Daha [fazla ayrıntı IÇIN](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#path-selection-of-microsoft-and-public-peerings) BGP yolu seçimi ve ortak yönlendirici yapılandırması bölümüne bakın. 
+Daha [fazla ayrıntı IÇIN](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#path-selection-on-microsoft-and-public-peerings) BGP yolu seçimi ve ortak yönlendirici yapılandırması bölümüne bakın. 
 
 ### <a name="onep2plink"></a>Bulut değişiminde ortak konumlu değilim ve benim hizmet sağlayıcısı, noktadan noktaya bağlantısı sunar, my şirket içi ağınız ile Microsoft arasında iki fiziksel bağlantıları sıralamak ihtiyacım var?
 

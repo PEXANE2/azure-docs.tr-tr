@@ -16,12 +16,12 @@ ms.date: 07/23/2019
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e563d86abe3817e4c77cc0d5c8df928e41563f8
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 1654e0a8cd11ac1c7a2f4ef0667d0e99187c2374
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489081"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618317"
 ---
 # <a name="create-and-manage-a-catalog-in-azure-ad-entitlement-management-preview"></a>Azure AD Yetkilendirme Yönetimi 'nde Katalog oluşturma ve yönetme (Önizleme)
 
@@ -34,7 +34,7 @@ ms.locfileid: "68489081"
 
 Katalog, kaynak ve erişim paketlerinin bir kapsayıcısıdır. İlgili kaynakları ve erişim paketlerini gruplamak istediğinizde bir katalog oluşturursunuz. Her koşulda Katalog, ilk katalog sahibi olur. Katalog sahibi, ek Katalog sahipleri ekleyebilir.
 
-**Önkoşul rolü:** Kullanıcı Yöneticisi veya katalog Oluşturucu
+**Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi veya katalog Oluşturucu
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 
@@ -102,7 +102,7 @@ Bir katalogdan kaynakları kaldırabilirsiniz. Bir kaynak, kataloğun erişim pa
 
 Bir kataloğun adını ve açıklamasını düzenleyebilirsiniz. Kullanıcılar bu bilgileri bir erişim paketinin ayrıntılarında görür.
 
-**Önkoşul rolü:** Kullanıcı Yöneticisi veya katalog sahibi
+**Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi veya katalog sahibi
 
 1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
 
@@ -118,7 +118,7 @@ Bir kataloğun adını ve açıklamasını düzenleyebilirsiniz. Kullanıcılar 
 
 Bir kataloğu yalnızca herhangi bir erişim paketi yoksa silebilirsiniz.
 
-**Önkoşul rolü:** Kullanıcı Yöneticisi veya katalog sahibi
+**Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi veya katalog sahibi
 
 1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
 

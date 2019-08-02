@@ -1,6 +1,6 @@
 ---
-title: Azure dijital İkizlerini izlemesini yapılandırma | Microsoft Docs
-description: Azure dijital İkizlerini izlemeyi yapılandırma
+title: Azure dijital TWINS 'de izlemeyi yapılandırma | Microsoft Docs
+description: Azure dijital TWINS 'de izlemeyi yapılandırma.
 author: kingdomofends
 manager: alinast
 ms.service: digital-twins
@@ -9,126 +9,126 @@ ms.topic: conceptual
 ms.date: 06/03/2018
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 5dc2587a0c127106d5afb41e20eca43919065f1b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 66a0b98e2cae14c3708cf8a6aa3f8bd498f41c9f
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67118777"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609644"
 ---
-# <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>Azure dijital İkizlerini izlemeyi yapılandırma
+# <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>Azure dijital TWINS 'de izlemeyi yapılandırma
 
-Azure dijital İkizlerini güçlü günlük kayıtları, izleme ve analiz destekler. Çözümleri geliştiriciler, Azure İzleyici günlükleri, tanılama günlükleri, etkinlik günlüğü ve diğer hizmetleri, IOT uygulama karmaşık izleme gereksinimlerini desteklemek için kullanabilirsiniz. Sorgu veya çeşitli hizmetlerdeki kayıtları görüntülemek ve pek çok hizmeti için ayrıntılı günlük kaydı kapsamı sağlamak için günlük kaydı seçeneklerine birleştirilebilir.
+Azure dijital TWINS, sağlam günlük kaydı, izleme ve analiz desteği. Çözümler geliştiricileri, IoT uygulamasının karmaşık izleme ihtiyaçlarını desteklemek için Azure Izleyici günlüklerini, tanılama günlüklerini, etkinlik günlüğü 'nü ve diğer hizmetleri kullanabilir. Günlüğe kaydetme seçenekleri, çeşitli hizmetlerde kayıtları sorgulamak veya göstermek ve birçok hizmet için parçalı günlük kapsamı sağlamak üzere birleştirilebilir.
 
-Bu makalede, günlüğe kaydetme ve izleme seçenekleri ve bunları Azure dijital İkizlerini belirli şekillerde birleştirmek nasıl özetlenir.
+Bu makalede günlüğe kaydetme ve izleme seçenekleri ve bunları Azure dijital TWINS 'e özgü yollarla birleştirme özetlenmektedir.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="review-activity-logs"></a>Etkinlik günlüklerini gözden geçirin
+## <a name="review-activity-logs"></a>Etkinlik günlüklerini gözden geçirme
 
-Azure [etkinlik günlüklerini](../azure-monitor/platform/activity-logs-overview.md) her bir Azure hizmet örneği için abonelik düzeyinde olay ve işlem geçmişi hızlı Öngörüler sağlayın.
+Azure [etkinlik günlükleri](../azure-monitor/platform/activity-logs-overview.md) her bir Azure hizmet örneği için abonelik düzeyinde olay ve işlem geçmişlerine hızlı öngörüler sağlar.
 
-Abonelik düzeyindeki olayların şunlardır:
+Abonelik düzeyi olaylar şunları içerir:
 
 * Kaynak oluşturma
-* Kaynak temizleme
+* Kaynak kaldırma
 * Uygulama parolaları oluşturma
 * Diğer hizmetlerle tümleştirme
 
-Azure dijital çiftleri için etkinlik günlüğü varsayılan olarak etkindir ve tarafından Azure portalından bulunabilir:
+Azure dijital TWINS için etkinlik günlüğü varsayılan olarak etkindir ve Azure portal ile Şu şekilde bulunabilir:
 
-1. Azure dijital İkizlerini örneğinizi seçin.
-1. Seçme **etkinlik günlüğü** görüntüleme paneli getirmek için:
+1. Azure dijital TWINS örneğinizi seçme.
+1. Görüntüleme panelini açmak için **etkinlik günlüğü** seçiliyor:
 
     [![Etkinlik günlüğü](media/how-to-configure-monitoring/activity-log.png)](media/how-to-configure-monitoring/activity-log.png#lightbox)
 
-Gelişmiş etkinlik günlüğü:
+Gelişmiş etkinlik günlüğü için:
 
-1. Seçin **günlükleri** görüntülemek için seçeneği **etkinlik Log Analytics genel bakışı**:
+1. **Etkinlik günlüğü analizi genel bakışı**göstermek için **Günlükler** seçeneğini belirleyin:
 
     [![Seçimi](media/how-to-configure-monitoring/activity-log-select.png)](media/how-to-configure-monitoring/activity-log-select.png#lightbox)
 
-1. **Etkinlik Log Analytics genel bakışı** temel etkinlik günlüğü verilerini özetlemenin:
+1. **Etkinlik günlüğü analizi genel bakış** , önemli etkinlik günlüğü verilerini özetler:
 
-    [![Etkinlik log analytics'e genel bakış]( media/how-to-configure-monitoring/log-analytics-overview.png)]( media/how-to-configure-monitoring/log-analytics-overview.png#lightbox)
+    [![Etkinlik günlüğü analizinden genel bakış]( media/how-to-configure-monitoring/log-analytics-overview.png)]( media/how-to-configure-monitoring/log-analytics-overview.png#lightbox)
 
 >[!TIP]
->Kullanım **etkinlik günlüklerini** abonelik düzeyindeki olayların hızlı Öngörüler için.
+>Abonelik düzeyi olaylar hakkında hızlı Öngörüler için **etkinlik günlüklerini** kullanın.
 
-## <a name="enable-customer-diagnostic-logs"></a>Müşteri tanılama günlüklerini etkinleştirme
+## <a name="enable-customer-diagnostic-logs"></a>Müşteri tanılama günlüklerini etkinleştir
 
-Azure [tanılama ayarları](../azure-monitor/platform/diagnostic-logs-overview.md) etkinlik günlüğü tamamlamak Azure her örneği için ayarlanabilir. Etkinlik günlükleri için abonelik düzeyindeki olayların ilgilidir, ancak Tanılama Günlüğü kaynaklardaki işletimsel geçmişini Öngörüler sağlar.
+Azure [Tanılama ayarları](../azure-monitor/platform/diagnostic-logs-overview.md) , her bir Azure örneği için etkinlik günlüğünü tamamlamak üzere ayarlanabilir. Etkinlik günlükleri abonelik düzeyindeki etkinliklerle ilgilidir, tanılama günlüğü kaynakların işletimsel geçmişiyle ilgili öngörüler sağlar.
 
-Tanılama günlüğüne kaydetme örnekleri şunlardır:
+Tanılama günlüğü örnekleri şunları içerir:
 
-* Kullanıcı tanımlı bir işlev yürütme süresi
-* Başarılı bir API isteğinin yanıtı durum kodu
-* Bir uygulama anahtarı bir kasadan alınıyor
+* Kullanıcı tanımlı bir işlev için yürütme süresi
+* Başarılı bir API isteğinin yanıt durum kodu
+* Bir kasadan uygulama anahtarı alma
 
-Bir örneği için tanılama günlüklerini etkinleştirmek için:
+Bir örnek için tanılama günlüklerini etkinleştirmek için:
 
-1. Azure portalında kaynak getirecek.
-1. Seçin **tanılama ayarları**:
+1. Kaynağı Azure portal alın.
+1. **Tanılama ayarlarını**seçin:
 
-    [![Bir tanılama ayarları](media/how-to-configure-monitoring/diagnostic-settings-one.png)](media/how-to-configure-monitoring/diagnostic-settings-one.png#lightbox)
+    [![Tanılama ayarları tek](media/how-to-configure-monitoring/diagnostic-settings-one.png)](media/how-to-configure-monitoring/diagnostic-settings-one.png#lightbox)
 
-1. Seçin **tanılamayı Aç** (önceden etkinleştirilmemişse) verileri toplamak için.
-1. İstenen alanları doldurun ve nasıl ve verilerin kaydedileceği seçin:
+1. Veri toplamak için **tanılamayı aç '** ı seçin (daha önce etkinleştirilmemişse).
+1. İstenen alanları girin ve verilerin nasıl ve nerede kaydedileceğini seçin:
 
     [![Tanılama ayarları iki](media/how-to-configure-monitoring/diagnostic-settings-two.png)](media/how-to-configure-monitoring/diagnostic-settings-two.png#lightbox)
 
-    Tanılama günlükleri, kullanılarak genellikle kaydedilir [Azure dosya depolama](../storage/files/storage-files-deployment-guide.md) ve ile paylaşılan [Azure İzleyicisi](../azure-monitor/log-query/get-started-portal.md). İki seçenek de seçilebilir.
+    Tanılama günlükleri genellikle [Azure dosya depolama](../storage/files/storage-files-deployment-guide.md) kullanılarak kaydedilir ve [Azure izleyici günlükleriyle](../azure-monitor/log-query/get-started-portal.md)paylaşılır. Her iki seçenek de seçilebilir.
 
 >[!TIP]
->Kullanım **tanılama günlükleri** kaynak işlemleri hakkında Öngörüler için.
+>Kaynak işlemlerine yönelik Öngörüler için **tanılama günlüklerini** kullanın.
 
-## <a name="azure-monitor-and-log-analytics"></a>Azure İzleyici ve log analytics
+## <a name="azure-monitor-and-log-analytics"></a>Azure izleyici ve Log Analytics
 
-IOT uygulamaları birbirinden farklı kaynakları, cihazlar, konumlar ve veri birine birleştiren. Ayrıntılı günlüğü her belirli parça, hizmet veya bileşen, genel uygulama mimarisi hakkında ayrıntılı bilgi sağlar ancak birleşik bir genel bakış, sık sık Bakım ve hata ayıklama için gereklidir.
+IoT uygulamaları, farklı kaynakları, cihazları, konumları ve verileri tek bir konuma ayırır. Hassas günlüğe kaydetme, genel uygulama mimarisinin her bir parçası, hizmet veya bileşeni hakkında ayrıntılı bilgiler sağlar, ancak bakım ve hata ayıklama için genellikle Birleşik bir genel bakış gereklidir.
 
-Azure İzleyici görüntülenebilir ve tek bir yerde analiz için kaynakları günlüğü sağlayan güçlü log analytics hizmetine içerir. Azure İzleyici, bu nedenle Gelişmiş IOT uygulamaları içinde günlüklerini analiz için çok yararlı olur.
+Azure Izleyici, günlük kaynaklarının tek bir konumda görüntülenmesine ve çözümlenme olanağı sağlayan güçlü Log Analytics hizmetini içerir. Bu nedenle, Gelişmiş IoT Apps 'teki günlükleri çözümlemek için Azure Izleyici son derece yararlıdır.
 
 Kullanım örnekleri şunlardır:
 
-* Birden çok tanılama günlük geçmişi sorgulanıyor
-* Birkaç kullanıcı tanımlı işlevler için günlükleri görme
-* İçinde belirli bir zaman çerçevesinde iki veya daha fazla hizmet günlüklerini görüntüleme
+* Birden çok tanılama günlüğü geçmişi sorgulanıyor
+* Kullanıcı tanımlı birkaç işlev için günlükleri görme
+* Belirli bir zaman çerçevesi içinde iki veya daha fazla hizmet için günlükleri görüntüleme
 
-Tam günlüğü sorgulama aracılığıyla sağlanır [Azure İzleyicisi](../azure-monitor/log-query/log-query-overview.md). Bu güçlü özellikleri ayarlamak için:
+Tam günlük sorgulama [Azure izleyici günlükleri](../azure-monitor/log-query/log-query-overview.md)aracılığıyla sağlanır. Bu güçlü özellikleri ayarlamak için:
 
-1. Arama **Log Analytics** Azure portalında.
-1. Kullanılabilir gördüğünüz **Log Analytics çalışma alanı** örnekleri. Bu seçeneklerden birini belirleyip seçin **günlükleri** sorgu için:
+1. Azure portal **Log Analytics** için arama yapın.
+1. Kullanılabilir **Log Analytics çalışma alanı** örneklerinizi görürsünüz. Bir tane seçin ve sorgu için **günlükleri** seçin:
 
-    [![Log analytics](media/how-to-configure-monitoring/log-analytics.png)](media/how-to-configure-monitoring/log-analytics.png#lightbox)
+    [![Log Analytics](media/how-to-configure-monitoring/log-analytics.png)](media/how-to-configure-monitoring/log-analytics.png#lightbox)
 
-1. Henüz yoksa bir **Log Analytics çalışma alanı** örneği oluşturmak için kullanabileceğiniz bir çalışma alanı seçerek **Ekle** düğmesi:
+1. Zaten bir **Log Analytics çalışma alanı** örneğiniz yoksa, **Ekle** düğmesini seçerek bir çalışma alanı oluşturabilirsiniz:
 
     [![OMS oluşturma](media/how-to-configure-monitoring/log-analytics-oms.png)](media/how-to-configure-monitoring/log-analytics-oms.png#lightbox)
 
-Bir kez, **Log Analytics çalışma alanı** girişleri katları günlükleri bulmak ya da kullanarak belirli ölçütleri kullanarak aramak için güçlü sorgular kullanabilir, örnek hazırlanır **günlük yönetimi**:
+**Log Analytics çalışma alanı** örneğiniz sağlandıktan sonra, tek tek günlüklerde girişleri bulmak veya **günlük yönetimi**kullanarak belirli ölçütleri kullanarak aramak için güçlü sorgular kullanabilirsiniz:
 
    [![Günlük yönetimi](media/how-to-configure-monitoring/log-analytics-management.png)](media/how-to-configure-monitoring/log-analytics-management.png#lightbox)
 
-Güçlü sorgu işlemleri hakkında daha fazla bilgi için bkz: [sorguları ile çalışmaya başlama](../azure-monitor/log-query/get-started-queries.md).
+Güçlü sorgu işlemleri hakkında daha fazla bilgi için bkz. [sorguları](../azure-monitor/log-query/get-started-queries.md)kullanmaya başlama.
 
 > [!NOTE]
-> 5 dakikalık bir gecikmeyle olayları gönderirken karşılaşabilirsiniz **Log Analytics çalışma alanı** ilk kez.
+> İlk kez **Log Analytics çalışma alanına** olay gönderirken 5 dakikalık bir gecikmeyle karşılaşabilirsiniz.
 
-Azure İzleyici günlüklerine da sağlayan güçlü hata ve uyarı Bildirim Hizmetleri, seçilerek görüntülenebilir **tanılayın ve sorunlarını çözmek**:
+Azure Izleyici günlükleri Ayrıca, **Tanılama ve çözme sorunlarını**belirleyerek görüntülenebilen güçlü hata ve uyarı bildirim hizmetleri sağlar:
 
    [![Uyarı ve hata bildirimleri](media/how-to-configure-monitoring/log-analytics-notifications.png)](media/how-to-configure-monitoring/log-analytics-notifications.png#lightbox)
 
 >[!TIP]
->Kullanım **Log Analytics çalışma alanı** sorgu günlük geçmişlerini birden çok uygulama İşlevler, abonelikler veya hizmetler için.
+>Birden çok uygulama işlevi, abonelik veya hizmet için günlük geçmişlerini sorgulamak üzere **Log Analytics çalışma alanını** kullanın.
 
-## <a name="other-options"></a>Diğer Seçenekler
+## <a name="other-options"></a>Diğer seçenekler
 
-Azure dijital İkizlerini, uygulamaya özgü günlük kaydı ve güvenlik denetimi de destekler. Azure dijital İkizlerini Örneğinize kullanılabilir olan tüm Azure günlük seçenekleri kapsamlı bir genel bakış için bkz [Azure günlük denetim](../security/azure-log-audit.md) makalesi.
+Azure dijital TWINS ayrıca uygulamaya özgü günlüğe kaydetme ve güvenlik denetimini destekler. Azure dijital TWINS örneğiniz için sunulan tüm Azure günlük seçeneklerine ilişkin kapsamlı bir genel bakış için bkz. [Azure günlük denetimi](../security/fundamentals/log-audit.md) makalesi.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure hakkında daha fazla bilgi [etkinlik günlüklerini](../azure-monitor/platform/activity-logs-overview.md).
+- Azure [etkinlik günlükleri](../azure-monitor/platform/activity-logs-overview.md)hakkında daha fazla bilgi edinin.
 
-- Okuyarak ayrıntılar daha kapsamlı Azure tanılama ayarları bir [tanılama günlüklerine genel bakış](../azure-monitor/platform/diagnostic-logs-overview.md).
+- [Tanılama günlüklerine genel bir bakış](../azure-monitor/platform/diagnostic-logs-overview.md)okuyarak Azure tanılama ayarlarını daha ayrıntılı olarak inceleyin.
 
-- Daha fazla bilgi edinin [Azure İzleyicisi](../azure-monitor/log-query/get-started-portal.md).
+- [Azure izleyici günlükleri](../azure-monitor/log-query/get-started-portal.md)hakkında daha fazla bilgi edinin.

@@ -1,6 +1,6 @@
 ---
-title: Son kullanıcı protection (Önizleme) - Azure Active Directory temel ilkeleri
-description: Kullanıcılar için çok faktörlü kimlik doğrulaması gerektirmek için koşullu erişim ilkesi
+title: Temel ilke Son Kullanıcı koruması (Önizleme)-Azure Active Directory
+description: Kullanıcılar için çok faktörlü kimlik doğrulaması gerektiren koşullu erişim ilkesi
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,69 +11,69 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2644e0e35139ac470b89f6af1b95cf510f60a0a
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: afcd9c9d3191caeabe182f499b5fd80cd8e1d8dd
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67561013"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608143"
 ---
-# <a name="baseline-policy-end-user-protection-preview"></a>Temel ilke: Son kullanıcı protection (Önizleme)
+# <a name="baseline-policy-end-user-protection-preview"></a>Temel ilke: Son Kullanıcı koruması (Önizleme)
 
-Yönetici hesaplarını multi-Factor authentication (MFA) ile koruma gerektiren yalnızca hesapları olduğunu düşünmek eğilimindedir. Yöneticiler, geniş hassas bilgilere erişimi ve abonelik genelindeki ayarları için değişiklik yapabilirsiniz. Ancak, hedef son kullanıcılara kötü aktörleri eğilimindedir. Erişim kazandıktan sonra bu kötü aktörleri, ayrıcalıklı bilgileri özgün hesap sahibi adına erişim isteğinde ya da kuruluş genelinde bir kimlik avı saldırı gerçekleştirmek için tüm dizin indirin. Tüm kullanıcılar geliştirmek için bir ortak yöntemi Hesap doğrulama, çok faktörlü kimlik doğrulamasını (MFA) gibi daha güçlü bir form gerektirmektir.
+Yönetici hesaplarının, çok faktörlü kimlik doğrulamasıyla (MFA) korunması gereken tek hesap olduğunu düşündük. Yöneticiler hassas bilgilere geniş erişime sahiptir ve abonelik genelindeki ayarlarda değişiklik yapabilir. Ancak, kötü aktör hedef son kullanıcılara eğilimlidir. Erişim kazandıktan sonra, bu kötü aktörler özgün hesap sahibi adına ayrıcalıklı bilgilere erişim isteğinde bulunabilir veya tüm kuruluşunuzda bir kimlik avı saldırısı gerçekleştirmek için tüm dizini indirebilir. Tüm kullanıcılar için korumayı geliştirmenin yaygın bir yöntemi, çok faktörlü kimlik doğrulaması (MFA) gibi daha güçlü bir hesap doğrulaması biçimi gerektirmaktır.
 
-Güvenlik ve kullanılabilirlik makul bir denge sağlamak için oturum açma tek her zaman kullanıcılara istemde olmamalıdır. Aynı konumda aynı bir CİHAZDAN oturum açma gibi normal kullanıcı davranışı, kimlik doğrulama isteklerini tehlike düşük şansına sahip olabilirsiniz. Yalnızca oturum açma, riskli olarak kabul edilen ve kötü bir aktör özelliklerini göster işlemleri ile MFA zorluklarının sorulması gerekir.
+Güvenlik ve kullanılabilirlik açısından makul bir dengeyi elde etmek için kullanıcılardan her oturum açtıklarında uyarılmamalıdır. Aynı konumdan aynı cihazdan oturum açma gibi normal kullanıcı davranışlarını yansıtan kimlik doğrulama istekleri, düşük bir uzlaşmaya karşı risk altında olabilir. Yalnızca riskli olarak kabul edilen ve hatalı aktörün özelliklerini gösteren oturum açma işlemleri, MFA güçlükleri ile birlikte sorulmalıdır.
 
-Son kullanıcı korumadır bir risk tabanlı MFA [temel ilke](concept-baseline-protection.md) tüm yönetici rolleri dahil olmak üzere, bir dizindeki tüm kullanıcılar korur. Bu ilkeyi etkinleştirmek, tüm kullanıcıların kimlik doğrulayıcı uygulamasını kullanarak MFA'ya kaydetmeniz gerektirir. Kullanıcılar daha sonra kullanıcılar için mfa'yı kaydoluncaya kadar açmasını engellenir 14 gün için MFA kayıt istemi yoksayabilirsiniz. Kullanıcılar için mfa'yı kaydedildikten sonra MFA için yalnızca riskli oturum açma girişimleri sırasında istenir. Güvenliği aşılan kullanıcı hesapları kullanarak parolalarını sıfırlayabilir ve risk olayı kapatıldı kadar engellenir.
+Son Kullanıcı koruması, tüm yönetici rolleri dahil olmak üzere bir dizindeki tüm kullanıcıları koruyan risk tabanlı MFA [temel ilkesidir](concept-baseline-protection.md) . Bu ilkenin etkinleştirilmesi, tüm kullanıcıların kimlik doğrulayıcı uygulamasını kullanarak MFA 'ya kaydolmanızı gerektirir. Kullanıcılar MFA kayıt isteminde 14 gün boyunca yok sayabilir, sonrasında MFA 'ya kaydoluncaya kadar oturum açmalarını engellenecektir. MFA için kaydolduktan sonra kullanıcılardan yalnızca riskli oturum açma girişimleri sırasında MFA sorulur. Güvenliği aşılmış Kullanıcı hesapları, parolaları sıfırlanana ve risk olayları kapatıldıktan kadar engellenir.
 
 > [!NOTE]
-> Bu ilke, Konuk hesapları dahil olmak üzere tüm kullanıcılara uygulanır ve tüm uygulamalarda oturum açtığında değerlendirilir.
+> Bu ilke, Konuk hesapları dahil tüm kullanıcılar için geçerlidir ve tüm uygulamalarda oturum açarken değerlendirilir.
 
-## <a name="recovering-compromised-accounts"></a>Hesapları tehlikeye kurtarma
+## <a name="recovering-compromised-accounts"></a>Güvenliği aşılmış hesapları kurtarma
 
-Müşterilerimizin korumaya yardımcı olmak için genel kullanıma açık kullanıcı adı/parola çiftleri Microsoft'un kimlik bilgileri sızdırılan hizmetini bulur. Kullanıcılarımızın birini Eşleşirlerse, biz o hesabın hemen güvenli hale getirin. Kullanıcıların tanımlanmış kimlik bilgileri sızdırılan sahip olacak şekilde, tehlikeye onaylanır. Bu kullanıcılar, parolalarını sıfırlama kadar açmasını engellenir.
+Microsoft 'un sızdırılan kimlik bilgisi hizmeti, müşterilerimizin korunmasına yardımcı olmak için herkese açık Kullanıcı adı/parola çiftleri buluyor. Kullanıcılarımızdan biriyle eşleşiyorsa, bu hesabın güvenliğini hemen güvence altına almaya yardımcı olur. Sızdırılan kimlik bilgilerine sahip olarak tanımlanan kullanıcıların güvenliği aşılmış. Bu kullanıcıların, parolaları sıfırlanana kadar oturum açması engellenir.
 
-Bir Azure AD Premium lisansı atanmış kullanıcılar, kendi dizinde özelliği etkinse, Self Servis parola sıfırlama (SSPR) aracılığıyla erişim geri yükleyebilirsiniz. Engellenmiş duruma premium lisansı olmayan kullanıcılar, bir yöneticinin el ile parola sıfırlama işlemini gerçekleştirmesine ve bayrak eklenen kullanıcı risk olayı Kapat başvurmanız gerekir.
+Bir Azure AD Premium Lisansı atanan kullanıcılar, özelliği dizinde etkinleştirilmişse self servis parola sıfırlama (SSPR) üzerinden erişimi geri yükleyebilir. Premium lisansına sahip olmayan kullanıcıların, el ile parola sıfırlaması gerçekleştirmesi ve bayraklı Kullanıcı riski olayını kapatması için bir yöneticiye başvurması gerekir.
 
-### <a name="steps-to-unblock-a-user"></a>Bir kullanıcının engelini kaldırma adımlarını
+### <a name="steps-to-unblock-a-user"></a>Kullanıcının engellemesini kaldırma adımları
 
-Kullanıcının oturum açma günlükleri inceleyerek kullanıcı ilke tarafından engellendi onaylayın.
+Kullanıcının oturum açma günlüklerini inceleyerek Kullanıcı ilke tarafından engellenmiş olduğunu doğrulayın.
 
-1. Yönetici oturum açmak gereken **Azure portalında** gidin **Azure Active Directory** > **kullanıcılar** > kullanıcının adına tıklayıp gidin Oturum açma işlemleri.
-1. Parola sıfırlama engellenen bir kullanıcı başlatmak için yönetici gitmek gerek duyduğu **Azure Active Directory** > **risk için işaretlenen kullanıcılar**
-1. Kullanıcı hesabı oturum açma kullanıcının son etkinlik hakkındaki bilgileri görüntülemek için engellendi tıklayın.
-1. Sonraki oturum açtıktan sonra değiştirmesi gereken geçici bir parola atanacak parolayı Sıfırla'a tıklayın.
-1. Kullanıcının risk puanını sıfırlamak için tüm olayları Kapat'ı tıklatın.
+1. Yöneticinin **Azure Portal** oturum açması ve Kullanıcı adına > ve oturum açma işlemleri için **Azure Active Directory** > **kullanıcılara** gitmeniz gerekir.
+1. Engellenen bir kullanıcının parola sıfırlama işlemini başlatmak için, bir yöneticinin**risk olarak işaretlenen** **Azure Active Directory** > kullanıcılara gezinilmesi gerekir
+1. Hesabı, kullanıcının son oturum açma etkinliği hakkındaki bilgileri görüntülemek üzere engellenen kullanıcıya tıklayın.
+1. Bir sonraki oturum açma sonrasında değiştirilmesi gereken geçici bir parola atamak için Parolayı Sıfırla ' ya tıklayın.
+1. Kullanıcının risk Puanını sıfırlamak için tüm olayları Kapat ' a tıklayın.
 
-Artık kullanıcı oturum açın, kullanıcının parolasını sıfırlamak ve uygulamaya erişim.
+Kullanıcı artık oturum açabilir, parolasını sıfırlayabilir ve uygulamaya erişebilir.
 
 ## <a name="deployment-considerations"></a>Dağıtma konuları
 
-Çünkü **son kullanıcı korumasını** çeşitli konuları sorunsuz bir dağıtım sağlamak için yapılması gereken, dizininizdeki tüm kullanıcılar için ilke uygulanır. Kullanıcılar ve uygulamalar ve modern kimlik doğrulamayı desteklemeyen, kuruluşunuz tarafından kullanılan istemcilerin yanı sıra MFA'yı gerçekleştirmemelisiniz veya Azure AD'de hizmet ilkeleri tanımlayan bu konuları içerir.
+**Son Kullanıcı koruma** ilkesi dizininizdeki tüm kullanıcılara uygulandığından, sorunsuz bir dağıtım sağlamak için birkaç dikkat edilmesi gerekir. Bu noktalara, Azure AD 'deki kullanıcıları ve hizmet ilkelerini, MFA 'yı gerektirmeyen veya bu uygulamaların yanı sıra, kuruluşunuz tarafından modern kimlik doğrulamayı desteklemeyen uygulamalar ve istemciler için tanımlama sayılabilir.
 
-### <a name="legacy-protocols"></a>Eski protokolleri
+### <a name="legacy-protocols"></a>Eski protokoller
 
-Eski bir kimlik doğrulama protokolleri (IMAP, SMTP, POP3, vb.), kimlik doğrulama istekleri için posta istemcileri tarafından kullanılır. Bu protokollerin mfa'yı desteklemez.  Çoğu Microsoft tarafından görülen hesabı anladığınızda, eski protokolleri mfa'yı atlamak deneyen saldırıları gerçekleştiren kötü aktörleri kaynaklanır. Bir hesaba oturum açarken MFA gereklidir ve mfa'yı atlamak kötü aktörleri belirtemiyor emin olmak için bu ilkenin eski protokolleri arasından Yönetici hesaplarına yapılan tüm kimlik doğrulama isteklerini engeller.
+Eski kimlik doğrulama protokolleri (IMAP, SMTP, POP3, vb.), posta istemcileri tarafından kimlik doğrulama isteklerini yapmak için kullanılır. Bu protokoller MFA 'yı desteklemez.  Microsoft tarafından görülen hesabın büyük bir çoğunluğu, kötü aktörlerin, MFA 'yı atlamaya çalışan eski protokollere karşı saldırı gerçekleştirmesine neden olmuştur. Bir hesapta oturum açarken MFA 'nın gerekli olduğundan ve kötü aktörlerin MFA 'yı atlayabilmesi için, bu ilke eski protokollerden yönetici hesaplarına yapılan tüm kimlik doğrulama isteklerini engeller.
 
 > [!WARNING]
-> Bu ilke etkinleştirmeden önce eski kimlik doğrulama protokolleri, kullanıcılarınızın kullanmadığınız emin olun. Makaleye göz atın [nasıl yapılır: Azure AD koşullu erişim ile eski kimlik blok](howto-baseline-protect-legacy-auth.md#identify-legacy-authentication-use) daha fazla bilgi için.
+> Bu ilkeyi etkinleştirmeden önce, kullanıcılarınızın eski kimlik doğrulama protokollerini kullanmadığından emin olun. Bkz. nasıl yapılır: [ Daha fazla bilgi için koşullu erişimle](howto-baseline-protect-legacy-auth.md#identify-legacy-authentication-use) Azure AD 'ye yönelik eski kimlik doğrulamasını engelleyin.
 
-## <a name="enable-the-baseline-policy"></a>Temel ilke etkinleştir
+## <a name="enable-the-baseline-policy"></a>Temel ilkeyi etkinleştirme
 
-İlke **temel ilke: Son kullanıcı protection (Önizleme)** önceden yapılandırılmış olarak gelir ve Azure portalında koşullu erişim dikey penceresine gittiğinizde en üstünde gösterilir.
+İlke **temel ilkesi: Son Kullanıcı koruması (Önizleme)** önceden yapılandırılmış olarak gelir ve Azure Portal 'de koşullu erişim dikey penceresine gittiğinizde en üstte görünür.
 
 Bu ilkeyi etkinleştirmek ve kullanıcılarınızı korumak için:
 
-1. Oturum **Azure portalında** genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak.
-1. Gözat **Azure Active Directory** > **koşullu erişim**.
-1. İlkeler listesinde seçin **temel ilke: Son kullanıcı protection (Önizleme)** .
-1. Ayarlama **ilkesini etkinleştir** için **ilkeyi hemen kullan**.
-1. Tıklayın **Kaydet**.
+1.  **** AzurePortal genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
+1. **Koşullu erişimi** **Azure Active Directory** > için gidin.
+1. İlke listesinde temel ilke ' yi seçin **: Son Kullanıcı koruması (Önizleme)** .
+1. İlkeyi **ilkeyi hemen kullanacak** **şekilde ayarlayın** .
+1.  **Kaydet**' e tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Daha fazla bilgi için bkz.
 
 * [Koşullu erişim temel koruma ilkeleri](concept-baseline-protection.md)
-* [Kimlik altyapınızın güvenliğini sağlamak için beş adım](../../security/azure-ad-secure-steps.md)
-* [Azure Active Directory'de koşullu erişim nedir?](overview.md)
+* [Kimlik altyapınızı güvenli hale getirmenin beş adımı](../../security/fundamentals/steps-secure-identity.md)
+* [Azure Active Directory Koşullu erişim nedir?](overview.md)

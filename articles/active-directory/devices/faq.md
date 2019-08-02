@@ -11,14 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbba3f1b753738de57aa311387e522bae1b7b523
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 57bc2ca38b5166cfba39fb20254e169ce016ea12
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499805"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706325"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory cihaz yönetimi SSS
+
+## <a name="general-faq"></a>Genel SSS
 
 ### <a name="q-i-registered-the-device-recently-why-cant-i-see-the-device-under-my-user-info-in-the-azure-portal-or-why-is-the-device-owner-marked-as-na-for-hybrid-azure-active-directory-azure-ad-joined-devices"></a>S: Cihazı yakın zamanda kaydettiniz. Azure portal cihazı neden Kullanıcı Bilgilerim altında göremiyorum? Ya da cihaz sahibi, karma Azure Active Directory (Azure AD) ile birleştirilmiş cihazlar için N/A olarak işaretlendi mi?
 
@@ -39,6 +41,11 @@ Yalnızca aşağıdaki cihazlar **Kullanıcı cihazları**altında listelenir:
 
 - Windows 10 ve Windows Server 2016 veya üzeri cihazlarda ' ı çalıştırın `dsregcmd.exe /status`.
 - Alt düzey işletim sistemi sürümleri için çalıştırın `%programFiles%\Microsoft Workplace Join\autoworkplace.exe`.
+
+**C:** Sorun giderme bilgileri için şu makalelere bakın:
+- [Dsregcmd komutunu kullanan cihazların sorunlarını giderme](troubleshoot-device-dsregcmd.md)
+- [Karma Azure Active Directory katılmış Windows 10 ve Windows Server 2016 cihazlarında sorun giderme](troubleshoot-hybrid-join-windows-current.md)
+- [Karma Azure Active Directory katılmış alt düzey cihazlarda sorun giderme](troubleshoot-hybrid-join-windows-legacy.md)
 
 ---
 
@@ -65,6 +72,8 @@ Bu eylemlerin nasıl geri alınacağını aşağıda görebilirsiniz.
 **C:** Bu işlem tasarıma göre yapılır. Bu durumda, cihazın buluttaki kaynaklara erişimi yoktur. Yöneticiler, yetkisiz erişimi engellemek için eski, kaybolan veya çalınan cihazlar için bu eylemi gerçekleştirebilir. Bu eylem istenmeden gerçekleştirildiyse, cihazı aşağıda açıklandığı gibi yeniden etkinleştirmeniz veya yeniden kaydetmeniz gerekir
 
 - Cihaz Azure AD 'de devre dışı bırakılmışsa, yeterli ayrıcalıklara sahip bir yönetici tarafından Azure AD portalından izin verebilir  
+  > [!NOTE]
+  > Azure AD Connect kullanarak cihazları eşitlebiliyorsanız, karma Azure AD 'ye katılmış cihazlar sonraki eşitleme çevrimi sırasında otomatik olarak yeniden etkinleştirilecek. Bu nedenle, karma bir Azure AD 'ye katılmış cihazı devre dışı bırakmanız gerekirse, şirket içi AD 'nizden devre dışı bırakmanız gerekir
 
  - Cihaz Azure AD 'de silinirse, cihazı yeniden kaydetmeniz gerekir. Yeniden kaydolmak için cihazda el ile işlem yapmanız gerekir. Cihaz durumuna göre yeniden kayda yönelik yönergeler için aşağıya bakın. 
 
@@ -114,20 +123,30 @@ Bu eylemlerin nasıl geri alınacağını aşağıda görebilirsiniz.
 
 **S: Kullanıcı neden Azure portal devre dışı bırakıldığım bir cihazdan kaynaklara erişmeye devam edebilir?**
 
-**C:** Bir iptal etme uygulanması için bir saate kadar zaman alır.
+**C:** İptal etme işlemi, Azure AD cihazının devre dışı olarak işaretlenme zamanından itibaren uygulanması için bir saat kadar sürer.
 
 >[!NOTE] 
 >Kayıtlı cihazlar için, kullanıcıların kaynaklara erişemese emin olmak için cihazı kaldırmanızı öneririz. Daha fazla bilgi için bkz. [cihaz kaydı nedir?](https://docs.microsoft.com/intune/deploy-use/enroll-devices-in-microsoft-intune). 
 
 ---
 
+### <a name="q-why-are-there-devices-marked-as-pending-under-the-registered-column-in-the-azure-portal"></a>S: Neden Azure portal KAYıTLı sütun altında "bekliyor" olarak işaretlenmiş cihazlar var mı?
+
+Y:  Bekliyor, cihazın kayıtlı olmadığını gösterir. Bu durum, bir cihazın şirket içi AD 'den Azure AD Connect kullanılarak eşitlendiğinden ve cihaz kaydı için hazırlandığını gösterir. Bu cihazda KATıLıM türü "karma Azure AD 'ye katılmış" olarak ayarlanmıştır. [Karma Azure Active Directory JOIN uygulamanızın nasıl planlanacağı](hybrid-azuread-join-plan.md)hakkında daha fazla bilgi edinin.
+
+>[!NOTE]
+>Bir cihaz, kayıtlı durumunun "bekliyor" olarak değiştirilmesini de değiştirebilir
+>* Bir cihaz silinmişse ve Azure AD 'den önce ve şirket içi AD 'den yeniden eşitlendiğinde.
+>* Bir cihaz Azure AD Connect bir eşitleme kapsamından kaldırılırsa ve geri eklendiyse.
+>
+>Her iki durumda da, bu cihazların her birinde cihazı el ile yeniden kaydetmeniz gerekir. Cihazın daha önce kayıtlı olup olmadığını gözden geçirmek için, [dsregcmd komutunu kullanarak cihazlarda sorun giderme](troubleshoot-device-dsregcmd.md)yapabilirsiniz.
+
+---
 ## <a name="azure-ad-join-faq"></a>Azure AD 'ye ekleme hakkında SSS
 
 ### <a name="q-how-do-i-unjoin-an-azure-ad-joined-device-locally-on-the-device"></a>S: Azure AD 'ye katılmış bir cihazın cihazda yerel olarak katılmasını Nasıl yaparım? mı?
 
-**C:** 
-- Hibrit Azure AD 'ye katılmış cihazlar için otomatik kaydı kapatmayı unutmayın. Zamanlanan görev, cihazı yeniden kaydetmez. Sonra, yönetici olarak bir komut istemi açın ve girin `dsregcmd.exe /debug /leave`. Veya toplu olarak birleştirmeyi kaldırmak için bu komutu çeşitli cihazlarda bir komut dosyası olarak çalıştırın.
-- Saf Azure AD 'ye katılmış cihazlarda, çevrimdışı bir yerel yönetici hesabınız olduğundan emin olun veya bir tane oluşturun. Azure AD Kullanıcı kimlik bilgileriyle oturum açamazsınız. Sonra **Ayarlar** > hesaplariş > **veya okul erişimi**' ne gidin. Hesabınızı seçin ve **bağlantıyı kes**' i seçin. İstemleri izleyin ve istendiğinde yerel yönetici kimlik bilgilerini sağlayın. Birleştirmeyi kaldırma işlemini tamamlaması için cihazı yeniden başlatın.
+**C:** Saf Azure AD 'ye katılmış cihazlarda, çevrimdışı bir yerel yönetici hesabınız olduğundan emin olun veya bir tane oluşturun. Azure AD Kullanıcı kimlik bilgileriyle oturum açamazsınız. Sonra **Ayarlar** > hesaplariş > **veya okul erişimi**' ne gidin. Hesabınızı seçin ve **bağlantıyı kes**' i seçin. İstemleri izleyin ve istendiğinde yerel yönetici kimlik bilgilerini sağlayın. Birleştirmeyi kaldırma işlemini tamamlaması için cihazı yeniden başlatın.
 
 ---
 
@@ -223,6 +242,10 @@ Bu davranış:
 
 ## <a name="hybrid-azure-ad-join-faq"></a>Karma Azure AD 'ye ekleme hakkında SSS
 
+### <a name="q-how-do-i-unjoin-a-hybrid-azure-ad-joined-device-locally-on-the-device"></a>S: Hibrit Azure AD 'ye katılmış bir cihazın cihazda yerel olarak katılmasını Nasıl yaparım? mı?
+
+**C:** Hibrit Azure AD 'ye katılmış cihazlar için otomatik kaydı kapatmayı unutmayın. Zamanlanan görev, cihazı yeniden kaydetmez. Sonra, yönetici olarak bir komut istemi açın ve girin `dsregcmd.exe /debug /leave`. Veya toplu olarak birleştirmeyi kaldırmak için bu komutu çeşitli cihazlarda bir komut dosyası olarak çalıştırın.
+
 ### <a name="q-where-can-i-find-troubleshooting-information-to-diagnose-hybrid-azure-ad-join-failures"></a>S: Karma Azure AD JOIN başarısızlıklarını tanılamak için sorun giderme bilgilerini nerede bulabilirim?
 
 **C:** Sorun giderme bilgileri için şu makalelere bakın:
@@ -234,7 +257,7 @@ Bu davranış:
 
 **C:** Kullanıcılarınız etki alanına katılmış bir cihazdaki hesaplarını uygulamalara eklerken, **Windows 'a hesap ekleme** istenebilir. İstem üzerine **Evet** girerseniz, CIHAZ Azure AD 'ye kaydolur. Güven türü, Azure AD kayıtlı olarak işaretlenir. Kuruluşunuzda karma Azure AD katılmasını etkinleştirdikten sonra cihaz, karma Azure AD 'ye katılmış olarak da alınır. Daha sonra aynı cihaz için iki cihaz durumu gösterilir. 
 
-Karma Azure AD katılımı, Azure AD kayıtlı durumuna göre önceliklidir. Bu nedenle, cihazınız herhangi bir kimlik doğrulaması ve koşullu erişim değerlendirmesi için karma Azure AD 'ye katılmış olarak değerlendirilir. Azure AD kayıtlı cihaz kaydını Azure AD portalından güvenle silebilirsiniz. [Windows 10 makinesinde bu iki durumu kullanmaktan kaçının veya temizleyeceğinizi](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan#review-things-you-should-know)öğrenin. 
+Karma Azure AD katılımı, Azure AD kayıtlı durumuna göre önceliklidir. Bu nedenle, cihazınız herhangi bir kimlik doğrulaması ve koşullu erişim değerlendirmesi için karma Azure AD 'ye katılmış olarak değerlendirilir. Azure AD kayıtlı cihaz kaydını Azure AD portalından güvenle silebilirsiniz. [Windows 10 makinesinde bu iki durumu kullanmaktan kaçının veya temizleyeceğinizi](hybrid-azuread-join-plan.md#review-things-you-should-know)öğrenin. 
 
 ---
 
@@ -258,10 +281,19 @@ Karma Azure AD katılımı, Azure AD kayıtlı durumuna göre önceliklidir. Bu 
 
 ## <a name="azure-ad-register-faq"></a>Azure AD kaydı hakkında SSS
 
+### <a name="q-how-do-i-remove-an-azure-ad-registered-device-locally-on-the-device"></a>S: Azure AD kayıtlı bir cihazı cihazda yerel olarak Nasıl yaparım? kaldırılsın mı?
+
+**C:** 
+- Windows 10 Azure AD kayıtlı cihazlar için **Ayarlar** > **hesaplar** > **erişim iş veya okul**bölümüne gidin. Hesabınızı seçin ve **bağlantıyı kes**' i seçin. Cihaz kaydı, Windows 10 ' da Kullanıcı profili başına.
+- İOS ve Android için Microsoft Authenticator uygulama **ayarları** > **cihaz kaydını** kullanabilir ve **cihazı Sil**' i seçebilirsiniz.
+- MacOS için Microsoft Intune Şirket Portalı uygulamasını kullanarak cihazın yönetimden kaydını kaldırın ve kaydı kaldırabilirsiniz. 
+
+---
 ### <a name="q-can-i-register-android-or-ios-byod-devices"></a>S: Android veya iOS BYOD cihazlarını kaydedebilir miyim?
 
 **C:** Evet, ancak yalnızca Azure cihaz kayıt hizmeti ve hibrit müşteriler ile. Active Directory Federasyon Hizmetleri (AD FS) (AD FS) içindeki şirket içi cihaz kayıt hizmeti ile desteklenmez.
 
+---
 ### <a name="q-how-can-i-register-a-macos-device"></a>S: MacOS cihazını nasıl kaydedebilirim?
 
 **C:** Aşağıdaki adımları uygulayın:
@@ -274,6 +306,7 @@ Karma Azure AD katılımı, Azure AD kayıtlı durumuna göre önceliklidir. Bu 
 - Koşullu erişim ilkenize dahil olan kullanıcılar, kaynaklara erişmek için [macOS 'un desteklenen bir Office sürümüne](../conditional-access/technical-reference.md#client-apps-condition) ihtiyaç duyar. 
 - İlk erişim girişimi sırasında, kullanıcılarınızın Şirket portalı 'nı kullanarak cihazı kaydetmesi istenir.
 
+---
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure AD kayıtlı cihazlar](concept-azure-ad-register.md) hakkında daha fazla bilgi edinin

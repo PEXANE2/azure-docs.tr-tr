@@ -1,17 +1,17 @@
 ---
 title: Sistem işlevleri
-description: Azure Cosmos DB'de SQL sistem işlevleri hakkında bilgi edinin.
+description: Azure Cosmos DB 'deki SQL sistem işlevleri hakkında bilgi edinin.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: 11a6fdad187670bcb5af4c56198fd7343680690d
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: b0e9c751d46f805af75196da464a39783c95ae6a
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342946"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619986"
 ---
 # <a name="system-functions"></a>Sistem işlevleri
 
@@ -23,35 +23,35 @@ ms.locfileid: "67342946"
 |[Tür denetimini işlevleri](#type-checking-functions)|Tür denetimi işlevleri SQL sorgusu içindeki bir ifadenin türü denetlemenizi sağlar.|  
 |[Dize işlevleri](#string-functions)|Dize işlevleri, bir dize giriş değeri bir işlem gerçekleştirmek ve bir dize, sayısal veya Boolean değeri döndürür.|  
 |[Dizi işlevleri](#array-functions)|Dizi işlevler bir dizi giriş değeri ve dönüş sayısal, Boole değeri veya dizi değeri üzerinde bir işlem gerçekleştirir.|
-|[Tarih ve saat işlevleri](#date-time-functions)|Tarih ve saat işlevleri geçerli UTC tarih ve saat iki biçimde almanızı sağlar. değeri milisaniye cinsinden veya ISO 8601 biçimine uyan bir dize olarak UNIX dönem olan sayısal bir zaman damgası.|
+|[Tarih ve saat işlevleri](#date-time-functions)|Tarih ve saat işlevleri, geçerli UTC Tarih ve saatini iki şekilde almanızı sağlar; değeri, milisaniye cinsinden UNIX dönemi olan sayısal bir zaman damgası veya ISO 8601 biçimine uygun bir dize olarak.|
 |[Uzamsal İşlevler](#spatial-functions)|Uzamsal İşlevler, uzamsal nesne giriş değeri bir işlem gerçekleştirmek ve bir sayısal veya Boolean değeri döndürür.|  
 
-Her bir kategorideki işlevlerin bir listesi aşağıda verilmiştir:
+Her kategorinin içindeki işlevlerin listesi aşağıda verilmiştir:
 
 | İşlev grubu | İşlemler |
 |---------|----------|
-| Matematik işlevleri | ABS, TAVAN, EXP, FLOOR, GÜNLÜK, LOG10, GÜÇ, HEPSİNİ, OTURUM, SQRT, KARE, TRUNC, ACOS, ASIN, ATAN, ATN2, COT, DERECE, PI, RADIANS, SIN COS, TAN |
-| Tür denetleme işlevleri | IS_ARRAY, IS_BOOL, IS_NULL, IS_NUMBER, IS_OBJECT, IS_STRING, IS_DEFINED, IS_PRIMITIVE |
+| Matematik işlevleri | ABS, TAVAN, EXP, FLOOR, LOG, LOG10, POWER, ROUND, SIGN, SQRT, KARE, TRUNC, ACOS, ASIN, ATAN, ATN2, COS, COT, DERECE, PI, RADYAN, S_SAYI_ÜRET, SIN, TAN |
+| Tür denetimi işlevleri | IS_ARRAY, IS_BOOL, IS_NULL, IS_NUMBER, IS_OBJECT, IS_STRING, IS_DEFINED, IS_PRIMITIVE |
 | Dize işlevleri | CONCAT, İÇERİR, ENDSWITH, INDEX_OF, SOL, UZUNLUĞU, DÜŞÜK LTRIM, DEĞİŞTİR, ÇOĞALTMAK, SAĞ TERS RTRIM, STARTSWITH, ALT, ÜST |
 | Dizi işlevleri | ARRAY_CONCAT, ARRAY_CONTAINS ARRAY_LENGTH ve ARRAY_SLICE |
 | Tarih ve saat işlevleri | GETCURRENTDATETIME, GETCURRENTTIMESTAMP,  |
 | Uzamsal İşlevler | ST_DISTANCE ST_WITHIN, ST_INTERSECTS ST_ISVALID, ST_ISVALIDDETAILED |
 
-Şu anda yerleşik işlevi artık kullanılabilir olduğu bir kullanıcı tanımlı işlev (UDF) kullanıyorsanız, karşılık gelen yerleşik işlev çalıştırmak daha hızlı ve daha verimli olacaktır.
+Şu anda yerleşik bir işlevin artık kullanılabildiği Kullanıcı tanımlı bir işlev (UDF) kullanıyorsanız, ilgili yerleşik işlevin çalıştırılması daha hızlı ve daha verimli olacaktır.
 
-Cosmos DB işlevleri ve ANSI SQL işlevleri arasındaki temel fark, Cosmos DB işlevleri de şemasız hem de karma şema verilerle çalışacak şekilde tasarlanmıştır ' dir. Örneğin, bir özellik eksik veya varsa bir sayısal olmayan değer gibi `unknown`, bir hata döndürmek yerine öğenin atlandı.
+Cosmos DB işlevleri ve ANSI SQL işlevleri arasındaki temel fark, Cosmos DB işlevlerin şemasız ve karışık şema verileri ile sorunsuz çalışacak şekilde tasarlandıkları bir çalışmadır. Örneğin, bir özellik eksikse veya gibi `unknown`sayısal olmayan bir değer varsa, öğe bir hata döndürmek yerine atlanır.
 
 ##  <a name="mathematical-functions"></a> Matematik işlevleri  
 
 Matematiksel işlevler her bağımsız değişken olarak sağlanan ve sayısal bir değer döndürmesi giriş değerlerini temel alan, bir hesaplama gerçekleştirir.
 
-Aşağıdaki örnekte olduğu gibi sorguları çalıştırabilirsiniz:
+Aşağıdaki örnekte olduğu gibi sorgular çalıştırabilirsiniz:
 
 ```sql
     SELECT VALUE ABS(-4)
 ```
 
-Sonuç olur:
+Sonuç:
 
 ```json
     [4]
@@ -66,9 +66,9 @@ Desteklenen yerleşik matematiksel işlevler tablosu aşağıdadır.
 |[COS](#bk_cos)|[COT](#bk_cot)|[DERECE](#bk_degrees)|  
 |[EXP](#bk_exp)|[KAT](#bk_floor)|[GÜNLÜK](#bk_log)|  
 |[LOG10](#bk_log10)|[PI](#bk_pi)|[GÜÇ](#bk_power)|  
-|[RADYAN CİNSİNDEN](#bk_radians)|[YUVARLAK](#bk_round)|[SIN](#bk_sin)|  
-|[SQRT](#bk_sqrt)|[KARE](#bk_square)|[OTURUM](#bk_sign)|  
-|[TAN](#bk_tan)|[TRUNC](#bk_trunc)||  
+|[RADYAN CİNSİNDEN](#bk_radians)|[YUVARLAK](#bk_round)|[RAN](#bk_rand)|
+|[SIN](#bk_sin)|[SQRT](#bk_sqrt)|[KARE](#bk_square)|
+|[OTURUM](#bk_sign)|[TAN](#bk_tan)|[TRUNC](#bk_trunc)||  
   
 ####  <a name="bk_abs"></a> ABS  
  Belirtilen sayısal ifade (pozitif) mutlak değerini döndürür.  
@@ -425,7 +425,7 @@ EXP (<numeric_expression>)
   
   Bir sayının üssünü sabittir **e** sayının üssü. Örneğin, EXP(1.0) = e ^ 1.0 = 2.71828182845905 ve EXP(10) = e ^ 10 = 22026.4657948067.  
   
-  Bir sayının doğal logaritmasını üssü sayıdır kendisini: EXP (günlüğü (n)) = n. Ve üstel bir sayının doğal logaritmasını sayı kendisini: Günlük (EXP (n)) = n.  
+  Bir sayının doğal logaritmasını üstel olarak sayının üssü: EXP (günlük (n)) = n. Bir sayının üstel olarak bir sayının doğal logaritmasını sayının kendisidir: GÜNLÜK (EXP (n)) = n.  
   
   **Örnekler**  
   
@@ -482,7 +482,7 @@ LOG (<numeric_expression> [, <base>])
   
   Logaritmanın tabanı için doğal logaritmasını olan **e**burada **e** bir Irrational 2.718281828 için yaklaşık olarak eşit sabittir.  
   
-  Üstel bir sayının doğal logaritmasını sayıdır kendisini: Günlük (EXP (n)) = n. Ve üstel bir sayının doğal logaritma sayı kendisini: EXP (günlüğü (n)) = n.  
+  Bir sayının üstel değerinin doğal logaritması sayının kendisidir: GÜNLÜK (EXP (n)) = n. Ve bir sayının doğal logaritmanın üstel değerinin kendisi sayıdır: EXP (günlük (n)) = n.  
   
   **Örnekler**  
   
@@ -555,13 +555,7 @@ SELECT LOG10(100) AS log10
 ```  
 PI ()  
 ```  
-  
- **Bağımsız Değişkenler**  
-  
-- `numeric_expression`  
-  
-   Sayısal bir ifadedir.  
-  
+   
   **Dönüş türleri**  
   
   Sayısal bir ifade döndürür.  
@@ -677,14 +671,14 @@ ROUND(<numeric_expression>)
   
   **Açıklamalar**
   
-  Gerçekleştirilen yuvarlama işlemi sıfırdan öteye yuvarlama uygulanır Orta izler. Ardından giriş tam olarak iki tam sayılar arasında kalan sayısal bir ifadenin ise sonucu en yakın tamsayı değerini sıfırdan ıraksayarak olacaktır.  
+  Yuvarlama işlemi, sıfırdan uzağa yuvarlanan orta nokta yuvarlama işlemini gerçekleştirdi. Giriş iki tamsayı arasında tam olarak denk gelen sayısal bir ifadesiyse sonuç, sıfırdan bir en yakın tamsayı değeri olacaktır.  
   
   |< numeric_expression >|Yuvarlak|
   |-|-|
-  |-6.5000|-7|
-  |-0.5|-1|
-  |0,5|1|
-  |6.5000|7||
+  |-6,5000|-7|
+  |-0,5|-1|
+  |0,5|1\.|
+  |6,5000|7||
   
   **Örnekler**  
   
@@ -699,7 +693,34 @@ SELECT ROUND(2.4) AS r1, ROUND(2.6) AS r2, ROUND(2.5) AS r3, ROUND(-2.4) AS r4, 
 ```  
 [{r1: 2, r2: 3, r3: 3, r4: -2, r5: -3}]  
 ```  
+
+#### <a name="bk_rand"></a>RAN
+ [0, 1) öğesinden rastgele oluşturulan sayısal değeri döndürür.
+ 
+ **Söz dizimi**  
   
+```  
+RAND ()  
+```  
+
+  **Dönüş türleri**  
+  
+  Sayısal bir ifade döndürür.  
+  
+  **Örnekler**  
+  
+  Aşağıdaki örnek rastgele oluşturulmuş bir sayısal değer döndürür.  
+  
+```  
+SELECT RAND() AS rand 
+```  
+  
+ Sonuç kümesini burada verilmiştir.  
+  
+```  
+[{"rand": 0.87860053195618093}]  
+``` 
+
 ####  <a name="bk_sign"></a> OTURUM  
  (+ 1) pozitif, sıfır (0) veya eksi (-1) belirtilen sayısal ifade döndürür.  
   
@@ -898,9 +919,9 @@ SELECT TRUNC(2.4) AS t1, TRUNC(2.6) AS t2, TRUNC(2.5) AS t3, TRUNC(-2.4) AS t4, 
 [{t1: 2, t2: 2, t3: 2, t4: -2, t5: -2}]  
 ```
 
-## <a id="type-checking-functions"></a>Tür denetimini işlevleri
+## <a id="type-checking-functions"></a>Tür denetimi işlevleri
 
-Bir SQL sorgusu içindeki bir ifadenin türünü kontrol tür denetimi işlevlerini sağlar. Değişken veya bilinmeyen olduklarında özellikleri içinde hareket halindeyken öğeleri türlerini belirlemek için tür denetimi işlevlerini kullanabilirsiniz. Desteklenen yerleşik tür denetimi işlevler tablosu şu şekildedir:
+Tür denetimi işlevleri bir SQL sorgusu içindeki bir ifadenin türünü denetlemenizi sağlar. Değişken ya da bilinmiyor olduğunda, işlemler içindeki öğelerin içindeki özellik türlerini belirleyebilmek için tür denetimi işlevlerini kullanabilirsiniz. Desteklenen yerleşik tür denetleme işlevlerinin bir tablosu aşağıda verilmiştir:
 
 Tür denetimini karşı giriş değerleri aşağıdaki işlevleri destekler ve her bir Boole değeri döndürür.  
   
@@ -1225,7 +1246,7 @@ SELECT
 
 ## <a id="string-functions"></a>Dize işlevleri
 
-Aşağıdaki skaler İşlevler, bir dize giriş değeri bir işlem gerçekleştirmek ve bir dize, sayısal veya Boolean değeri döndürür:
+Aşağıdaki skaler işlevler dize girişi değerinde bir işlem gerçekleştirir ve bir dize, sayısal veya Boole değeri döndürür:
   
 ||||  
 |-|-|-|  
@@ -1557,10 +1578,10 @@ REPLICATE(<str_expr>, <num_expr>)
   
 - `num_expr`  
   
-   Geçerli bir sayısal ifade var. Num_expr negatif veya sonlu olmayan ise, sonuç tanımsızdır.
+   Geçerli bir sayısal ifade var. Num_expr negatifse veya sonlu değilse, sonuç tanımsızdır.
 
   > [!NOTE]
-  > Sonucun en fazla uzunluğu 10.000 karakterden yani (length(str_expr) * num_expr) < = 10.000.
+  > Sonucun uzunluk üst sınırı 10.000 karakterdir (length (str_expr) * num_expr) < = 10.000.
   
   **Dönüş türleri**  
   
@@ -1716,8 +1737,8 @@ SELECT STARTSWITH("abc", "b") AS s1, STARTSWITH("abc", "a") AS s2
 [{"s1": false, "s2": true}]  
 ```  
 
-  ####  <a name="bk_stringtoarray"></a> StringToArray  
- Bir diziye çevrilmiş bir ifade döndürür. İfade tercüme edilemez, tanımsız döndürür.  
+  ####  <a name="bk_stringtoarray"></a>StringToArray  
+ Bir diziye çevrilmiş bir ifade döndürür. İfade çevrilemez, tanımsız döndürür.  
   
  **Söz dizimi**  
   
@@ -1729,17 +1750,17 @@ StringToArray(<expr>)
   
 - `expr`  
   
-   Bir JSON dizisi ifade olarak değerlendirilebilmesi için geçerli bir skaler ifade var. İç içe geçmiş dize değerleri geçerli olması için çift tırnak işareti yazılması gerektiğini unutmayın. JSON biçimi hakkında daha fazla bilgi için bkz: [json.org](https://json.org/)
+   , Bir JSON dizi ifadesi olarak değerlendirilecek geçerli bir skaler ifadedir. İç içe geçmiş dize değerlerinin geçerli olması için çift tırnaklarla yazılması gerektiğini unutmayın. JSON biçimi hakkında daha fazla bilgi için bkz. [JSON.org](https://json.org/)
   
   **Dönüş türleri**  
   
-  Bir dizi ifadesi döndürür ya da tanımlanmamış.  
+  Dizi ifadesi veya tanımsız döndürür.  
   
   **Örnekler**  
   
-  Aşağıdaki örnek, StringToArray farklı türleri arasında nasıl davranacağını gösterir. 
+  Aşağıdaki örnek, StringToArray öğesinin farklı türlerde nasıl davrandığını gösterir. 
   
- Geçerli giriş ile örnekleri aşağıda verilmiştir.
+ Aşağıda, geçerli girişi olan örnekler verilmiştir.
 
 ```
 SELECT 
@@ -1756,10 +1777,10 @@ Sonuç kümesini burada verilmiştir.
 [{"a1": [], "a2": [1,2,3], "a3": ["str",2,3], "a4": [["5","6","7"],["8"],["9"]], "a5": [1,2,3,"[4,5,6]",[7,8]]}]
 ```
 
-Geçersiz giriş örneği verilmiştir. 
+Aşağıda, geçersiz giriş örneği verilmiştir. 
    
- Dizi içinde tek tırnak işareti, geçerli bir JSON değil.
-Bir sorgu içinde geçerli olsa da, geçerli dizilere ayrıştırılamıyor. Dizi dize içindeki dizeler ya da konulmalıdır "[\\"\\"]" ya da çevreleyen tırnak tek ' [""]'.
+ Dizideki tek tırnak işaretleri geçerli bir JSON değil.
+Bir sorgu içinde geçerli olsalar bile, geçerli dizilere ayrıştırmazlar. Dizi dizesi içindeki dizeler "[\\"\\"]" ya da çevreleyen teklifin tek bir ' [""] ' olması gerekir.
 
 ```
 SELECT
@@ -1772,9 +1793,9 @@ Sonuç kümesini burada verilmiştir.
 [{}]
 ```
 
-Geçersiz girdi örnekleri aşağıda verilmiştir.
+Aşağıda, geçersiz giriş örnekleri verilmiştir.
    
- Geçen ifadeye bir JSON dizisi olarak ayrıştırılacak; aşağıdaki dizi türü ve dolayısıyla tanımlanmamış döndürmek için değerlendirmez.
+ Geçirilen ifade bir JSON dizisi olarak ayrıştırılacak; aşağıdaki dizi tür dizisini değerlendirmez ve tanımsız döndürür.
    
 ```
 SELECT
@@ -1791,8 +1812,8 @@ Sonuç kümesini burada verilmiştir.
 [{}]
 ```
 
-####  <a name="bk_stringtoboolean"></a> StringToBoolean  
- İfade çevrilmiş bir Boole değeri döndürür. İfade tercüme edilemez, tanımsız döndürür.  
+####  <a name="bk_stringtoboolean"></a>StringToBoolean  
+ Boole değerine çevrilmiş bir ifade döndürür. İfade çevrilemez, tanımsız döndürür.  
   
  **Söz dizimi**  
   
@@ -1804,19 +1825,19 @@ StringToBoolean(<expr>)
   
 - `expr`  
   
-   Bir Boole ifadesi değerlendirilebilmesi için geçerli bir skaler ifade var.  
+   , Boole ifadesi olarak değerlendirilecek geçerli bir skaler ifadedir.  
   
   **Dönüş türleri**  
   
-  Bir Boolean ifadesi döndürür ya da tanımlanmamış.  
+  Boole ifadesi veya tanımsız döndürür.  
   
   **Örnekler**  
   
-  Aşağıdaki örnek, StringToBoolean farklı türleri arasında nasıl davranacağını gösterir. 
+  Aşağıdaki örnek, StringToBoolean 'ın farklı türlerde nasıl davrandığını gösterir. 
  
- Geçerli giriş ile örnekleri aşağıda verilmiştir.
+ Aşağıda, geçerli girişi olan örnekler verilmiştir.
 
-Boşluk yalnızca önce veya sonra "true"/ "false" izin verilmiyor.
+Boşluğa yalnızca "true"/"false" ile önce veya sonra izin verilir.
 
 ```  
 SELECT 
@@ -1831,9 +1852,9 @@ SELECT
 [{"b1": true, "b2": false, "b3": false}]
 ```  
 
-Geçersiz giriş ile örnekleri aşağıda verilmiştir.
+Aşağıda, geçersiz girişe sahip örnekler verilmiştir.
 
- Boole değerleri büyük/küçük harfe duyarlıdır ve tüm küçük harfle ör "true" ve "false" için yazılmış olmalıdır.
+ Boole değerleri büyük küçük harfe duyarlıdır ve "true" ve "false" gibi tüm küçük karakterlerle yazılması gerekir.
 
 ```  
 SELECT 
@@ -1847,7 +1868,7 @@ Sonuç kümesini burada verilmiştir.
 [{}]
 ``` 
 
-Geçen ifadeye bir Boole ifadesi ayrıştırılacak; Boolean türü ve dolayısıyla tanımlanmamış döndürmek için bu girişlerin değerlendirmez.
+Geçirilen ifade Boole ifadesi olarak ayrıştırılacak; Bu girişler Boolean türü olarak değerlendirilmez ve tanımsız döndürür.
 
 ```  
 SELECT 
@@ -1864,8 +1885,8 @@ Sonuç kümesini burada verilmiştir.
 [{}]
 ```  
 
-####  <a name="bk_stringtonull"></a> StringToNull  
- Null çevrilmiş bir ifade döndürür. İfade tercüme edilemez, tanımsız döndürür.  
+####  <a name="bk_stringtonull"></a>StringToNull  
+ Null değere çevrilmiş bir ifade döndürür. İfade çevrilemez, tanımsız döndürür.  
   
  **Söz dizimi**  
   
@@ -1877,19 +1898,19 @@ StringToNull(<expr>)
   
 - `expr`  
   
-   Boş bir ifade olarak değerlendirilebilmesi için geçerli bir skaler ifade var.
+   , Bir null ifade olarak değerlendirilecek geçerli bir skaler ifadedir.
   
   **Dönüş türleri**  
   
-  Boş bir ifade döndürür ya da tanımlanmamış.  
+  Null veya tanımsız bir ifade döndürür.  
   
   **Örnekler**  
   
-  Aşağıdaki örnek, StringToNull farklı türleri arasında nasıl davranacağını gösterir. 
+  Aşağıdaki örnek, StringToNull 'in farklı türlerde nasıl davrandığını gösterir. 
 
-Geçerli giriş ile örnekleri aşağıda verilmiştir.
+Aşağıda, geçerli girişi olan örnekler verilmiştir.
 
- Boşluk yalnızca önce veya sonra "null" izin verilmiyor.
+ Boşluk yalnızca "null" veya sonraki bir değere izin verilir.
 
 ```  
 SELECT 
@@ -1904,9 +1925,9 @@ SELECT
 [{"n1": null, "n2": null, "n3": true}]
 ```  
 
-Geçersiz giriş ile örnekleri aşağıda verilmiştir.
+Aşağıda, geçersiz girişe sahip örnekler verilmiştir.
 
-Null büyük/küçük harfe duyarlıdır ve tüm küçük harfle "null" yani yazılmış olmalıdır.
+Null, büyük/küçük harfe duyarlıdır ve "null" olarak tüm küçük karakterlerle yazılması gerekir.
 
 ```  
 SELECT    
@@ -1920,7 +1941,7 @@ SELECT
 [{}]
 ```  
 
-Geçen ifadeye null bir ifade olarak ayrıştırılacak; null yazın ve bu nedenle tanımlanmamış döndürmek için bu girişlerin değerlendirmez.
+Geçirilen ifade null bir ifade olarak ayrıştırılacak; Bu girişler null türü olarak değerlendirilmez ve bu nedenle tanımsız döndürür.
 
 ```  
 SELECT    
@@ -1936,8 +1957,8 @@ SELECT
 [{}]
 ```  
 
-####  <a name="bk_stringtonumber"></a> StringToNumber  
- Çevrilmiş bir sayıyı ifade döndürür. İfade tercüme edilemez, tanımsız döndürür.  
+####  <a name="bk_stringtonumber"></a>StringToNumber  
+ Sayıya çevrilmiş bir ifade döndürür. İfade çevrilemez, tanımsız döndürür.  
   
  **Söz dizimi**  
   
@@ -1949,17 +1970,17 @@ StringToNumber(<expr>)
   
 - `expr`  
   
-   JSON sayı ifade olarak değerlendirilebilmesi için geçerli bir skaler ifade var. JSON sayı bir tamsayı veya kayan nokta olmalıdır. JSON biçimi hakkında daha fazla bilgi için bkz: [json.org](https://json.org/)  
+   , Bir JSON sayı ifadesi olarak değerlendirilecek geçerli bir skaler ifadedir. JSON 'daki Sayılar tamsayı veya kayan nokta olmalıdır. JSON biçimi hakkında daha fazla bilgi için bkz. [JSON.org](https://json.org/)  
   
   **Dönüş türleri**  
   
-  Sayı bir ifade döndürür ya da tanımlanmamış.  
+  Bir sayı ifadesi veya tanımsız döndürür.  
   
   **Örnekler**  
   
-  Aşağıdaki örnek, StringToNumber farklı türleri arasında nasıl davranacağını gösterir. 
+  Aşağıdaki örnek, StringToNumber 'ın farklı türler genelinde nasıl davranacağını gösterir. 
 
-Boşluk yalnızca önce veya sonra sayısı izin verilir.
+Boşluğa yalnızca sayıdan önce veya sonra izin verilir.
 
 ```  
 SELECT 
@@ -1975,7 +1996,7 @@ SELECT
 {{"num1": 1, "num2": 3.14, "num3": 60, "num4": -1.79769e+308}}
 ```  
 
-JSON biçiminde geçerli bir sayı olmalıdır ya da bir tamsayı veya kayan olması nokta sayısı.
+JSON içinde geçerli bir sayı ya bir tamsayı ya da kayan nokta numarası olmalıdır.
 
 ```  
 SELECT   
@@ -1988,7 +2009,7 @@ SELECT
 {{}}
 ```  
 
-Geçen ifadeye sayı bir ifade olarak ayrıştırılacak; Numarasını yazın ve bu nedenle tanımlanmamış döndürmek için bu girişlerin değerlendirmez. 
+Geçirilen ifade sayı ifadesi olarak ayrıştırılacak; Bu girişler tür numarası olarak değerlendirilmez ve tanımsız döndürür. 
 
 ```  
 SELECT 
@@ -2006,8 +2027,8 @@ SELECT
 {{}}
 ```  
 
-####  <a name="bk_stringtoobject"></a> StringToObject  
- Bir nesneye çevrilmiş bir ifade döndürür. İfade tercüme edilemez, tanımsız döndürür.  
+####  <a name="bk_stringtoobject"></a>StringToObject  
+ Nesneye çevrilmiş bir ifade döndürür. İfade çevrilemez, tanımsız döndürür.  
   
  **Söz dizimi**  
   
@@ -2019,17 +2040,17 @@ StringToObject(<expr>)
   
 - `expr`  
   
-   Bir JSON nesne ifadesi değerlendirilebilmesi için geçerli bir skaler ifade var. İç içe geçmiş dize değerleri geçerli olması için çift tırnak işareti yazılması gerektiğini unutmayın. JSON biçimi hakkında daha fazla bilgi için bkz: [json.org](https://json.org/)  
+   , JSON nesnesi ifadesi olarak değerlendirilecek geçerli bir skaler ifadedir. İç içe geçmiş dize değerlerinin geçerli olması için çift tırnaklarla yazılması gerektiğini unutmayın. JSON biçimi hakkında daha fazla bilgi için bkz. [JSON.org](https://json.org/)  
   
   **Dönüş türleri**  
   
-  Bir nesne ifadesi döndürür ya da tanımlanmamış.  
+  Bir nesne ifadesi veya tanımsız döndürür.  
   
   **Örnekler**  
   
-  Aşağıdaki örnek, StringToObject farklı türleri arasında nasıl davranacağını gösterir. 
+  Aşağıdaki örnek, StringToObject 'in farklı türlerde nasıl davrandığını gösterir. 
   
- Geçerli giriş ile örnekleri aşağıda verilmiştir.
+ Aşağıda, geçerli girişi olan örnekler verilmiştir.
 
 ``` 
 SELECT 
@@ -2048,10 +2069,10 @@ Sonuç kümesini burada verilmiştir.
   "obj4": {"C":[{"c1":[5,6,7]},{"c2":8},{"c3":9}]}}]
 ```
 
- Geçersiz giriş ile örnekleri aşağıda verilmiştir.
-Bir sorgu içinde geçerli olsa da, geçerli nesnelere ayrıştırılamıyor. Nesnenin dize içindeki dizeler ya da konulmalıdır "{\\" bir\\":\\" str\\"}" veya çevreleyen tırnak tek ' {"a": "dizesi"}'.
+ Aşağıda, geçersiz girişe sahip örnekler verilmiştir.
+Bir sorgu içinde geçerli olsalar bile, geçerli nesnelere ayrıştırılamaz. Nesne dizesindeki\\dizeler "{" a\\":\\" Str\\"}" ya da çevreleyen teklifin tek bir ' {"a": "Str"} ' olması gerekir.
 
-Özellik adlarının çevreleyen tırnak geçerli JSON değil.
+Özellik adları çevreleyen tek tırnak geçerli bir JSON değil.
 
 ``` 
 SELECT 
@@ -2064,7 +2085,7 @@ Sonuç kümesini burada verilmiştir.
 [{}]
 ```  
 
-Özellik adlarının çevreleyen tırnak işaretleri olmadan geçerli bir JSON değil.
+Çevreleyen tırnak işaretleri olmadan Özellik adları geçerli bir JSON değil.
 
 ``` 
 SELECT 
@@ -2077,9 +2098,9 @@ Sonuç kümesini burada verilmiştir.
 [{}]
 ``` 
 
-Geçersiz giriş ile örnekleri aşağıda verilmiştir.
+Aşağıda, geçersiz girişe sahip örnekler verilmiştir.
 
- Geçen ifadeye bir JSON nesnesi olarak ayrıştırılacak; nesne türünü ve bu nedenle tanımlanmamış döndürmek için bu girişlerin değerlendirmez.
+ Geçirilen ifade bir JSON nesnesi olarak ayrıştırılacak; Bu girişler nesne türüne göre değerlendirilmez ve tanımsız döndürülür.
 
 ``` 
 SELECT 
@@ -2114,7 +2135,7 @@ SUBSTRING(<str_expr>, <num_expr>, <num_expr>)
   
 - `num_expr`  
   
-   Başlangıç ve bitiş karakteri belirtmek için geçerli bir sayısal ifade var.    
+   , Başlangıç ve bitiş karakterini göstermek için geçerli herhangi bir sayısal ifadedir.    
   
   **Dönüş türleri**  
   
@@ -2282,7 +2303,7 @@ SELECT UPPER("Abc") AS upper
 
 ## <a id="array-functions"></a>Dizi işlevleri
 
-Aşağıdaki skaler işlevler bir dizi giriş değeri ve dönüş sayısal, Boole veya dizi değeri üzerinde bir işlem uygulayın:
+Aşağıdaki skaler işlevler, dizi giriş değerinde bir işlem gerçekleştirir ve sayısal, Boolean veya dizi değeri döndürür:
   
 ||||  
 |-|-|-|  
@@ -2323,7 +2344,7 @@ SELECT ARRAY_CONCAT(["apples", "strawberries"], ["bananas"]) AS arrayConcat
 ```  
   
 ####  <a name="bk_array_contains"></a> ARRAY_CONTAINS  
-Dizi belirtilen değeri içerip içermediğini gösteren bir Boole değeri döndürür. Komut içinde bir Boole ifadesi kullanarak bir nesne için bir kısmi veya tam eşleşme kontrol edebilirsiniz. 
+Dizi belirtilen değeri içerip içermediğini gösteren bir Boole değeri döndürür. Komutu içinde Boole ifadesi kullanarak bir nesnenin kısmi veya tam eşleşmesini denetleyebilirsiniz. 
 
 **Söz dizimi**  
   
@@ -2343,7 +2364,7 @@ ARRAY_CONTAINS (<arr_expr>, <expr> [, bool_expr])
 
 - `bool_expr`  
   
-   Herhangi bir boolean ifadesi var. Bu ayarlanırsa ' true'and belirtilen arama değeri bir nesne ise, komutu bir kısmi eşleşme (arama nesnesi nesnelerinden birine özelliklerinin bir alt kümesidir) için denetler. 'False' olarak ayarlanırsa komutu dizi içinde tüm nesnelerin bir tam eşleşme olup olmadığını denetler. Belirtilmezse, varsayılan değer false'tur. 
+   Herhangi bir boolean ifadesi var. ' True' olarak ayarlandıysa ve belirtilen arama değeri bir nesnesiyse, komut kısmi eşleşme denetler (arama nesnesi nesnelerden birinin alt kümesidir). ' False ' olarak ayarlanırsa, komut dizideki tüm nesneler için tam eşleşme olup olmadığını denetler. Belirtilmemişse varsayılan değer false 'dur. 
   
   **Dönüş türleri**  
   
@@ -2473,16 +2494,16 @@ SELECT
            "s7": [] 
 }]  
 ```  
-## <a id="date-time-functions"></a>Tarih ve saat işlevi
+## <a id="date-time-functions"></a>Tarih ve saat Işlevi
 
-Aşağıdaki skaler işlevler geçerli UTC tarih ve saat iki biçimde almanızı sağlar. değeri milisaniye cinsinden veya ISO 8601 biçimine uyan bir dize olarak UNIX dönem olan sayısal bir zaman damgası. 
+Aşağıdaki skaler işlevler, geçerli UTC Tarih ve saatini iki şekilde almanızı sağlar; değeri, milisaniye cinsinden UNIX dönemi olan sayısal bir zaman damgası veya ISO 8601 biçimine uygun bir dize olarak. 
 
 |||
 |-|-|
 |[GETCURRENTDATETIME](#bk_get_current_date_time)|[GETCURRENTTIMESTAMP](#bk_get_current_timestamp)||
 
-####  <a name="bk_get_current_date_time"></a> GETCURRENTDATETIME
- Geçerli UTC tarihi ve saati ISO 8601 dize olarak döndürür.
+####  <a name="bk_get_current_date_time"></a>GETCURRENTDATETIME
+ Geçerli UTC Tarih ve saatini ISO 8601 dizesi olarak döndürür.
   
  **Söz dizimi**
   
@@ -2492,39 +2513,39 @@ GETCURRENTDATETIME ()
   
   **Dönüş türleri**
   
-  Geçerli UTC tarihi ve saati ISO 8601 dize değeri döndürür. 
+  Geçerli UTC Tarih ve saati ISO 8601 dize değerini döndürür. 
 
-  Bu biçimi YYYY-AA-DDThh:mm:ss.sssZ ifade burada:
+  Bu, YYYY-MM-DDThh: mm: ss. sssZ biçiminde ifade edilir:
   
   |||
   |-|-|
-  |YYYY|dört rakamlı yıl|
-  |MM|iki haneli ay (01 Ocak, = vs.)|
-  |DD|iki basamaklı ayın (01 ile 31)|
-  |T|Başlangıç saati öğelerin signifier|
-  |hh|iki basamaklı saat (00-23)|
-  |aa|iki basamaklı dakika (00 ile 59)|
-  |ss|iki basamaklı saniye (00 ile 59)|
-  |.SSS|kesirli saniyenin üç hanesi|
-  |Z|UTC (Eşgüdümlü Evrensel Saat) göstergesi||
+  |YYYY|dört basamaklı yıl|
+  |MM|iki basamaklı ay (01 = Ocak, vb.)|
+  |GG|iki basamaklı ayın günü (01 ile 31 arasında)|
+  |T|zaman öğelerinin başlangıcı için signifier|
+  |ss|iki basamaklı saat (00 ile 23 arasında)|
+  |d|iki basamaklı dakika (00 ila 59)|
+  |ss|iki basamaklı saniye (00 ila 59)|
+  |. SSS|saniyenin üç basamaklı ondalık kesirleri|
+  |KADAR|UTC (Eşgüdümlü Evrensel Saat) göstergesi||
   
   ISO 8601 biçimi hakkında daha fazla bilgi için bkz. [ISO_8601](https://en.wikipedia.org/wiki/ISO_8601)
 
   **Açıklamalar**
 
-  GETCURRENTDATETIME belirleyici olmayan bir işlevdir. 
+  GETCURRENTDATETIME, belirleyici olmayan bir işlevdir. 
   
-  UTC (Eşgüdümlü Evrensel Saat) döndürülen sonuç çizgidir.
+  Döndürülen sonuç UTC 'dir (Eşgüdümlü Evrensel Saat).
 
   **Örnekler**  
   
-  Aşağıdaki örnek, geçerli UTC tarih saat GetCurrentDateTime yerleşik işlevini kullanarak nasıl gösterir.
+  Aşağıdaki örnek, GetCurrentDateTime yerleşik işlevi kullanılarak geçerli UTC Tarih zamanının nasıl alınacağını gösterir.
   
 ```  
 SELECT GETCURRENTDATETIME() AS currentUtcDateTime
 ```  
   
- İşte bir örnek sonuç kümesi.
+ Örnek bir sonuç kümesi aşağıda verilmiştir.
   
 ```  
 [{
@@ -2532,8 +2553,8 @@ SELECT GETCURRENTDATETIME() AS currentUtcDateTime
 }]  
 ```  
 
-####  <a name="bk_get_current_timestamp"></a> GETCURRENTTIMESTAMP
- 00:00:00 beri Perşembe, 1 Ocak 1970 geçen milisaniye sayısını döndürür. 
+####  <a name="bk_get_current_timestamp"></a>GETCURRENTTIMESTAMP
+ 00:00:00 Perşembe, 1 Ocak 1970 tarihinden itibaren geçen milisaniye sayısını döndürür. 
   
  **Söz dizimi**  
   
@@ -2543,23 +2564,23 @@ GETCURRENTTIMESTAMP ()
   
   **Dönüş türleri**  
   
-  Sayısal bir değer, geçerli UNIX dönem itibaren Örneğin 00:00:00 beri Perşembe, 1 Ocak 1970 geçen milisaniye sayısını geçen milisaniye sayısını döndürür.
+  Bir sayısal değer döndürür. Bu, UNIX dönemi 'nden beri geçen milisaniye sayısı (00:00:00 Perşembe, 1 Ocak 1970).
 
   **Açıklamalar**
 
-  GETCURRENTTIMESTAMP belirleyici olmayan bir işlevdir.
+  GETCURRENTTIMESTAMP, belirleyici olmayan bir işlevdir.
   
-  UTC (Eşgüdümlü Evrensel Saat) döndürülen sonuç çizgidir.
+  Döndürülen sonuç UTC 'dir (Eşgüdümlü Evrensel Saat).
 
   **Örnekler**  
   
-  Aşağıdaki örnek alma GetCurrentTimestamp yerleşik işlevi kullanarak geçerli zaman damgasını gösterir.
+  Aşağıdaki örnek, GetCurrentTimestamp yerleşik işlevini kullanarak geçerli zaman damgasının nasıl alınacağını gösterir.
   
 ```  
 SELECT GETCURRENTTIMESTAMP() AS currentUtcTimestamp
 ```  
   
- İşte bir örnek sonuç kümesi.
+ Örnek bir sonuç kümesi aşağıda verilmiştir.
   
 ```  
 [{
@@ -2567,7 +2588,7 @@ SELECT GETCURRENTTIMESTAMP() AS currentUtcTimestamp
 }]  
 ```
 
-## <a id="spatial-functions"></a>Uzamsal İşlevler
+## <a id="spatial-functions"></a>Uzamsal işlevler
 
 Cosmos DB, Jeo-uzamsal sorgulamak için aşağıdaki açık Jeo-uzamsal Consortium (OGC) yerleşik işlevleri destekler. Aşağıdaki skaler İşlevler, uzamsal nesne giriş değeri bir işlem gerçekleştirmek ve bir sayısal veya Boolean değeri döndürür.  
   
@@ -2777,6 +2798,6 @@ SELECT ST_ISVALIDDETAILED({
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Cosmos DB'ye giriş](introduction.md)
-- [UDF](sql-query-udfs.md)
-- [toplamaları](sql-query-aggregates.md)
+- [Azure Cosmos DB giriş](introduction.md)
+- ['Leri](sql-query-udfs.md)
+- [Toplar](sql-query-aggregates.md)

@@ -1,18 +1,19 @@
 ---
 title: Azure Stack SQL Server iş yüklerini yedekleme
 description: Azure Stack SQL Server iş yükünü korumak için Azure Backup Sunucusu kullanın.
-author: adigan
-manager: shivamg
+ms.reviewer: adigan
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 6/8/2018
-ms.author: adigan
-ms.openlocfilehash: 11d03a9c5cc81b915f48bc66f5a0e5ab034662ed
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 3b116e25635873429dd164288c2764fd76c8f7a7
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465151"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688992"
 ---
 # <a name="back-up-sql-server-on-stack"></a>Yığında SQL Server yedekleme
 Azure Stack SQL Server veritabanlarını korumak için Microsoft Azure Backup sunucusu (MABS) yapılandırmak için bu makaleyi kullanın.
@@ -52,7 +53,7 @@ Azure 'da SQL Server veritabanı yedeklemenin yönetimi ve Azure 'da kurtarma i�
 
 6. **Kısa dönem hedeflerini belirtin** ekranında, diske yedekleme noktaları oluşturmak için gerekli girişleri ekleyin ve **İleri**' ye tıklayın.
 
-    Bu örnekte, **bekletme aralığı** **5 gündür**ve yedekleme sıklığı  , her **15 dakikada**bir yapılır. **Hızlı tam yedekleme** **8:00 P. M**olarak ayarlanır.
+    Bu örnekte, **bekletme aralığı** **5 gündür**ve yedekleme sıklığı , her **15 dakikada**bir yapılır. **Hızlı tam yedekleme** **8:00 P. M**olarak ayarlanır.
 
     ![Kısa vadeli hedefler](./media/backup-azure-backup-sql/pg-shortterm.png)
 

@@ -11,14 +11,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 04/08/2019
-ms.openlocfilehash: 8debd55cd1d5588a24dcd32a619ae772e499a939
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: e648f89a86d7d6064b883496f888cb27a4af27e4
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67850069"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566399"
 ---
 # <a name="what-is-azure-sql-database-service"></a>Azure SQL veritabanı hizmeti nedir?
 
@@ -168,7 +167,7 @@ Gelişmiş veri güvenliği, gelişmiş SQL güvenlik özelliklerine yönelik Bi
 
 [Denetim](sql-database-auditing.md) , veritabanı olaylarını izler ve bunları Azure Depolama hesabınızdaki bir denetim günlüğüne yazar. Denetim mevzuatla uyumluluk, veritabanı etkinliğini anlama ve işletme sorunlarını veya şüpheli güvenlik ihlallerini işaret edebilecek farklılıklar ve anormal durumlar hakkında öngörü sahip olmanıza yardımcı olabilir.
 
-### <a name="data-encryption"></a>Veri şifrelemesi
+### <a name="data-encryption"></a>Veri şifreleme
 
 SQL veritabanı, [Aktarım Katmanı Güvenliği](https://support.microsoft.com/kb/3135244)ile hareket halindeki veriler için, [Saydam veri şifrelemesiyle](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)bekleyen veriler için ve [her zaman şifreli](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine)olarak kullanılan veriler için şifreleme sağlayarak verilerinizin güvenliğini sağlar.
 

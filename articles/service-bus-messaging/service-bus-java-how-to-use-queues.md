@@ -1,5 +1,5 @@
 ---
-title: Java ile Azure Service Bus kuyruklarını kullanma | Microsoft Docs
+title: Java ile Azure Service Bus kuyruklarını kullanma
 description: Azure'da Service Bus kuyruklarını kullanmayı öğrenin. Java 'da yazılan kod örnekleri.
 services: service-bus-messaging
 documentationcenter: java
@@ -14,12 +14,13 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: a7e6e86be8b6fc901d9637c85794cdfe1f744fd4
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.custom: seo-java-july2019
+ms.openlocfilehash: 4075ceae6c40a6be8ee2b9f6580a57fafb96e17e
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360818"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663436"
 ---
 # <a name="how-to-use-service-bus-queues-with-java"></a>Java ile Service Bus kuyruklarını kullanma
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -39,7 +40,7 @@ Bu öğreticide, Service Bus kuyruğuna ileti göndermek ve ileti almak için Ja
 
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Uygulamanızı kullanmak için yapılandırma Service Bus
-Java için Azure SDK 'sını before building this sample. If you are using Eclipse, you can install the [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] içeren [Java için Azure SDK 'sını][Azure SDK for Java] yüklediğinizden emin olun. Ardından projenize **Java için Microsoft Azure kitaplıklarını** ekleyebilirsiniz:
+Bu örneği oluşturmadan önce [Java Için Azure SDK 'sını][Azure SDK for Java] yüklediğinizden emin olun. Çakışan Küreler kullanıyorsanız, Java için Azure SDK 'sını içeren [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] yükleyebilirsiniz. Ardından projenize **Java için Microsoft Azure kitaplıklarını** ekleyebilirsiniz:
 
 ![Kitaplıklar ekleyebileceğiniz kitaplıklar sekmesinin ekran görüntüsü](./media/service-bus-java-how-to-use-queues/eclipselibs.png)
 

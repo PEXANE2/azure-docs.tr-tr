@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: 0b97f2f6df87255e10faaf58c40ea9136354bff6
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 9966164ec1b6a37538a24d2ef8cb80007e6f6d29
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68386310"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698238"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Özel kök CA ile otomatik olarak imzalanan bir Azure Application Gateway sertifikası oluşturma
 
@@ -161,7 +161,7 @@ Aşağıdaki yapılandırma, SSL yapılandırmasına sahip bir [NGINX sunucu blo
    ![Güvenilen kök sertifikalar](media/self-signed-certificates/trusted-root-cert.png)
 
    > [!NOTE]
-   > DNS 'nin Web sunucusu adını (Bu örnekte, www.fabrikam.com) Web sunucunuzun IP adresine işaret etmek üzere yapılandırıldığı varsayılır. Aksi takdirde, adı çözümlemek için [Hosts dosyasını](https://answers.microsoft.com/windows/forum/windows_10-other_settings-winpc/how-to-edit-host-file-in-windows-10/7696f204-2aaf-4111-913b-09d6917f7f3d) düzenleyebilirsiniz.
+   > DNS 'nin Web sunucusu adını (Bu örnekte, www.fabrikam.com) Web sunucunuzun IP adresine işaret etmek üzere yapılandırıldığı varsayılır. Aksi takdirde, adı çözümlemek için [Hosts dosyasını](https://answers.microsoft.com/en-us/windows/forum/all/how-to-edit-host-file-in-windows-10/7696f204-2aaf-4111-913b-09d6917f7f3d) düzenleyebilirsiniz.
 1. Web sitenize gidin ve site ve sertifika bilgilerini doğrulamak için tarayıcınızın adres kutusundaki kilit simgesine tıklayın.
 
 ## <a name="verify-the-configuration-with-openssl"></a>OpenSSL ile yapılandırmayı doğrulama

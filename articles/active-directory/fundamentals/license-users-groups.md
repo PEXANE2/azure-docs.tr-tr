@@ -2,7 +2,7 @@
 title: Atamayı veya kaldırmayı lisanslar - Azure Active Directory | Microsoft Docs
 description: Atama veya Azure Active Directory lisansları, kullanıcıları veya grupları kaldırma hakkında yönergeler.
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.assetid: f8b932bc-8b4f-42b5-a2d3-f2c076234a78
 ms.service: active-directory
@@ -10,16 +10,16 @@ ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/05/2018
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e7a3f80067adb3093bd27e34a45b3afd72b4993
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9f76e766d0aedae88eb11dd244f71f130f77c57e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60247594"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561651"
 ---
 # <a name="assign-or-remove-licenses-using-the-azure-active-directory-portal"></a>Atayın veya Azure Active Directory portalı kullanarak lisansları kaldırın
 Birçok Azure Active Directory (Azure AD) Hizmetleri, Azure AD ürünü etkinleştirmek için ve her biri, kullanıcılar veya gruplar (ve ilişkili üyeler) lisans bu ürün için gerektirir. Etkin bir lisansa sahip kullanıcılar erişebilir ve lisanslı kullanma yalnızca Azure AD Hizmetleri.
@@ -47,7 +47,7 @@ Bağımsız lisans dahil olmak üzere ürünlerinizi kullanılabilir tüm bekley
 
     **Lisansları** sayfası görüntülenir.
 
-    ![Satın alınan ürünleri ve atanmış lisans sayısı lisans sayfası](media/license-users-groups/license-details-blade.png)
+    ![Lisanslar sayfası, satın alınan ürün sayısı ve atanan lisanslarla](media/license-users-groups/license-details-blade.png)
     
 3. Seçin **satın alınan ürünlerle** bağlantısına **ürünleri** sayfası ve **atanan**, **kullanılabilir**, ve  **Yakında sona erecek** her belirli bir ürün sürümü için ayrıntıları.
 
@@ -59,7 +59,7 @@ Bağımsız lisans dahil olmak üzere ürünlerinizi kullanılabilir tüm bekley
 Emin olun, herhangi bir lisanslı kullanmaya gerek Azure AD hizmeti uygun lisansa sahip. Bu, lisans haklarını bireysel kullanıcılar veya tüm bir gruba eklemek istediğiniz aittir.
 
 >[!Note]
->Azure ad genel önizleme özelliği olan Grup tabanlı Lisanslama ve tüm kullanılabilir Ücretli Azure AD lisans planınız. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).<br><br>Kullanıcı ekleme hakkında ayrıntılı bilgi için bkz: [ekleyin veya Azure Active Directory'de kullanıcı silme](add-users-azure-active-directory.md). Grupları oluşturma ve üye ekleme hakkında ayrıntılı bilgi için bkz. [temel bir grup oluşturma ve üye ekleme](active-directory-groups-create-azure-portal.md).
+>Grup tabanlı lisanslama, Azure AD 'nin genel önizleme özelliğidir ve ücretli Azure AD lisans planıyla birlikte kullanılabilir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).<br><br>Kullanıcı ekleme hakkında ayrıntılı bilgi için bkz: [ekleyin veya Azure Active Directory'de kullanıcı silme](add-users-azure-active-directory.md). Grupları oluşturma ve üye ekleme hakkında ayrıntılı bilgi için bkz. [temel bir grup oluşturma ve üye ekleme](active-directory-groups-create-azure-portal.md).
 
 ### <a name="to-assign-a-license-to-a-specific-user"></a>Belirli bir kullanıcıya lisans atamak için
 1. Üzerinde **ürünleri** sayfasında, kullanıcıya atamak istediğiniz sürüm adını belirleyin. Örneğin, _Azure Active Directory Premium Plan 2_.
@@ -76,7 +76,7 @@ Emin olun, herhangi bir lisanslı kullanmaya gerek Azure AD hizmeti uygun lisans
 
 4. Seçin **atama seçenekleri**, lisans seçenekleri açık ve ardından uygun olduğundan emin olun **Tamam**.
 
-    ![Lisans seçeneği sayfasında tüm seçenekleri Edition'da kullanılabilir](media/license-users-groups/license-option-blade-assignments.png)
+    ![Sürüm sayfasında tüm seçeneklerle sunulan lisans seçeneği sayfası](media/license-users-groups/license-option-blade-assignments.png)
 
     **Ata lisans** sayfasında bir kullanıcı seçili olduğunu ve atamaları yapılandırıldığını göstermek için güncelleştirmeler.
 
@@ -102,7 +102,7 @@ Emin olun, herhangi bir lisanslı kullanmaya gerek Azure AD hizmeti uygun lisans
 
 4. Seçin **atama seçenekleri**, lisans seçenekleri açık ve ardından uygun olduğundan emin olun **Tamam**.
 
-    ![Lisans seçeneği sayfasında tüm seçenekleri Edition'da kullanılabilir](media/license-users-groups/license-option-blade-group-assignments.png)
+    ![Sürüm sayfasında tüm seçeneklerle sunulan lisans seçeneği sayfası](media/license-users-groups/license-option-blade-group-assignments.png)
 
     **Ata lisans** sayfasında bir kullanıcı seçili olduğunu ve atamaları yapılandırıldığını göstermek için güncelleştirmeler.
 

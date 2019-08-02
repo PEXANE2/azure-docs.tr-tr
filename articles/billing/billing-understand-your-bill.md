@@ -2,28 +2,28 @@
 title: Azure faturanızı anlama
 description: Azure aboneliğiniz için kullanımınızı ve faturanızı nasıl okuyup anlayacağınızı öğrenin.
 author: bandersmsft
-manager: jureid
+manager: dougeby
 tags: billing
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/22/2019
+ms.date: 07/28/2019
 ms.author: banders
-ms.openlocfilehash: 69659e700ee47c8961ec21f0fb23573e13d72588
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 51143644a62a77a61c4540d9f2ad3dce401c496b
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383639"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68610124"
 ---
 # <a name="understand-your-microsoft-azure-bill"></a>Microsoft Azure faturanızı anlayın
 Azure faturanızı anlamak için faturanızı ayrıntılı günlük kullanım dosyası ile ve Azure portal maliyet yönetimi raporlarıyla karşılaştırırsınız.
 
-Bu makale, Kurumsal Anlaşma (EA müşterileri) olan Azure müşterilerine uygulanmaz. Bir EA müşterisiyseniz, bkz. [Azure müşterilerinin faturanızı bir kurumsal anlaşma anlayın](billing-understand-your-bill-ea.md).
-
-Bu makale, [Microsoft Müşteri anlaşmasıyla](#check-access-to-a-microsoft-customer-agreement)Azure müşterilerine uygulanmaz. Microsoft Müşteri sözleşmeniz varsa bkz. [Microsoft müşteri anlaşması faturanızda Azure ücretlerini anlama](billing-mca-understand-your-bill.md).
+Bu makale aşağıdaki müşterilere uygulanmaz:
+- Kurumsal Anlaşma (EA müşterileri) olan Azure müşterileri. Bir EA müşterisiyseniz, bkz. [Azure müşterilerinin faturanızı bir kurumsal anlaşma anlayın](billing-understand-your-bill-ea.md).
+- [Microsoft Müşteri anlaşmasıyla](#check-access-to-a-microsoft-customer-agreement)Azure müşterileri. Microsoft Müşteri sözleşmeniz varsa bkz. [Microsoft müşteri anlaşması faturanızda Azure ücretlerini anlama](billing-mca-understand-your-bill.md).
 
 Faturalandırma, ödeme çevrimi, fiyatlandırma ve kullanım dahil olmak üzere Azure bulut çözümü sağlayıcısı (Azure CSP) programında nasıl çalıştığına ilişkin bir açıklama için bkz. [Azure CSP faturalandırma genel bakış](/azure/cloud-solution-provider/billing/azure-csp-billing-overview/).
 
@@ -130,7 +130,7 @@ VM oluşturulduğunda, her ölçüm kullanım kayıtlarını yaymaya başlar. Bu
   - [Azure Fiyatlandırma Hesaplayıcı](https://azure.microsoft.com/pricing/calculator/)
   - [Toplam sahiplik Hesaplayıcı maliyeti](https://aka.ms/azure-tco-calculator)
   - [Her hizmet için ayrıntılı fiyatlandırma bilgileri](https://azure.microsoft.com/pricing/)
-- [Azure Portal kullanımı ve maliyetlerinizi düzenli olarak gözden geçirin](billing-getting-started.md#costs).
+- [Azure portal kullanımı ve maliyetlerinizi düzenli olarak gözden geçirin](billing-getting-started.md#costs)
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Microsoft Müşteri sözleşmesine erişimi denetleme
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]

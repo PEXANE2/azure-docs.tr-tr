@@ -1,19 +1,19 @@
 ---
 title: Azure Backup Sunucusu sistem durumunu korur ve çıplak 'a geri yükler
 description: Sistem durumunu yedeklemek ve tam kurtarma (BMR) koruması sağlamak için Azure Backup Sunucusu kullanın.
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 keywords: ''
 ms.service: backup
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.author: raynew
-ms.openlocfilehash: a21169a5d9da7c9f1baf8a7d1e7365348860fca1
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 12412122ba116eedc592fadc57949f707e52c355
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465041"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639676"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-with-azure-backup-server"></a>Sistem durumunu yedekleme ve Azure Backup Sunucusu ile çıplak sisteme geri yükleme
 

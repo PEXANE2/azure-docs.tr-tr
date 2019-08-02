@@ -5,14 +5,14 @@ author: mattwojo
 manager: evansma
 ms.author: parthp
 ms.service: marketplace
-ms.topic: how-to
+ms.topic: guide
 ms.date: 07/05/2019
-ms.openlocfilehash: 24ed03cde967f0fef7abdc4c2df1f8e5d6bdb6ab
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 16ed52aa2b56a97469ae8fc47299f09593b19c45
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68327128"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68668336"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Iş Ortağı Merkezi 'nde ticari Market hesabı oluşturma
 
@@ -52,7 +52,7 @@ Böylece, şirketinizin iş e-posta hesabı etki alanını yeni Iş Ortağı Mer
 
 #### <a name="agree-to-terms-and-conditions"></a>Hüküm ve koşulları kabul etme
 
-[Microsoft çevrimiçi abonelik sözleşmesi](https://go.microsoft.com/fwlink/?LinkId=870457)ve [Microsoft Market Yayımcı Sözleşmesi](https://go.microsoft.com/fwlink/?linkid=843476)dahil olmak üzere iki hüküm ve koşul kümesini kabul etmeniz gerekir.
+[Microsoft Market yayımcı anlaşmasındaki](http://go.microsoft.com/fwlink/?LinkID=699560)hüküm ve koşulları kabul etmeniz gerekir.
 
 #### <a name="provide-your-publisher-profile"></a>Yayımcı profilinizi sağlama
 

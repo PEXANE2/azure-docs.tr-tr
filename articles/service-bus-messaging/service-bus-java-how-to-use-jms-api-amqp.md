@@ -1,5 +1,5 @@
 ---
-title: CQP 1,0, Java JMS Service Bus API 'SI ile nasıl kullanılır | Microsoft Docs
+title: Java Message Service API 'SI ve Azure Service Bus AMQP 1,0 kullanın
 description: Java Ileti hizmeti 'ni (JMS) Azure Service Bus ve Gelişmiş İleti Sıraya Alma Protokolü (AMQP) 1,0 ile kullanma.
 services: service-bus-messaging
 documentationcenter: java
@@ -14,12 +14,13 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: aschhab
-ms.openlocfilehash: 47b077dbb62088093c60a588660045529678c58f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.custom: seo-java-july2019
+ms.openlocfilehash: f816a5c84416b7f40e3062bf22dd70cbb356c6f1
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68318449"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68662892"
 ---
 # <a name="how-to-use-the-java-message-service-jms-api-with-service-bus-and-amqp-10"></a>Service Bus ve AMQP 1,0 ile Java Ileti hizmeti (JMS) API 'sini kullanma
 Gelişmiş İleti Sıraya Alma Protokolü (AMQP) 1,0, güçlü, platformlar arası mesajlaşma uygulamaları oluşturmak için kullanabileceğiniz verimli, güvenilir, hat düzeyinde bir mesajlaşma protokolüdür.
@@ -374,6 +375,7 @@ Ayrıca, Azure Service Bus denetim düzlemi 'ni veri düzleminden ayırır ve bu
 | createBrowser               | Desteklenen. Service Bus API 'sinin Peek () işlevini kullanma                         |
 | createQueue                 | Yönetim API 'SI/araçlar/Portal aracılığıyla kuyruk oluşturma                                           | 
 | createTemporaryQueue        | bir sona erme dönemi için, *oto Deleteonıdle* ayarlanmış olan yönetim API/araçlar/Portal aracılığıyla kuyruk oluşturma |
+| receiveNoWait               | Service Bus SDK tarafından sunulan Receive () yöntemini kullanın ve çok düşük veya sıfır zaman aşımı belirtin |
 
 ## <a name="summary"></a>Özet
 Bu nasıl yapılır kılavuzunda, popüler JMS API ve AMQP 1,0 kullanılarak Java 'dan Service Bus Aracılı mesajlaşma özelliklerinin (kuyruklar ve yayımlama/abone olma konuları) nasıl kullanılacağı gösterildi.

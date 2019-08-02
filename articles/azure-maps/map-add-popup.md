@@ -1,68 +1,68 @@
 ---
-title: Azure Haritalar ile bir açılan pencere Ekle | Microsoft Docs
-description: Javascript harita için açılır pencere ekleme
+title: Azure Maps ile bir açılan pencere ekleyin | Microsoft Docs
+description: JavaScript eşlemesine açılan pencere ekleme
 author: jingjing-z
 ms.author: jinzh
-ms.date: 11/09/2018
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: a6c8a8aa954379036ce566a205b8cb4e97952727
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 92d44ef3d0db8e93d4babd7441238c7fa105dbd5
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60769558"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639012"
 ---
-# <a name="add-a-popup-to-the-map"></a>Haritaya açılır pencere ekleme
+# <a name="add-a-popup-to-the-map"></a>Haritaya bir açılan pencere ekleyin
 
-Bu makalede bir harita noktasının bir açılır pencere ekleme gösterilmektedir.
+Bu makalede, haritada bir noktaya açılan pencerenin nasıl ekleneceği gösterilmektedir.
 
 ## <a name="understand-the-code"></a>Kodu anlama
 
 <a id="addAPopup"></a>
 
-<iframe height='500' scrolling='no' title='Azure haritalar kullanan pop ekleme' src='//codepen.io/azuremaps/embed/MPRPvz/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Kalem bkz <a href='https://codepen.io/azuremaps/pen/MPRPvz/'>Azure haritalar kullanan pop ekleme</a> Azure haritalar tarafından (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) üzerinde <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Azure haritalar 'ı kullanarak bir açılan pencere ekleme' src='//codepen.io/azuremaps/embed/MPRPvz/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>'da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) ile <a href='https://codepen.io/azuremaps/pen/MPRPvz/'>Azure haritaları kullanarak bir açılan pencere ekleme</a> kalemine bakın.
 </iframe>
 
-Yukarıdaki kod, kod bloğunun ilk harita nesnesi oluşturur. Gördüğünüz [bir harita oluşturmak](./map-create.md) yönergeler için. Ayrıca HTML açılan içinde görüntülenecek içeriği oluşturur.
+Yukarıdaki kodda, ilk kod bloğu bir harita nesnesi oluşturur. Yönergeler için [bir harita oluşturma](./map-create.md) ' ya bakabilirsiniz. Ayrıca, açılan pencerede görüntülenecek HTML içeriğini de oluşturur.
 
-İkinci kod bloğunun bir veri kaynağı nesnesi kullanılarak oluşturur [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) sınıfı. Bir nokta bir [özellik](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) , [noktası](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) sınıfı. Bir ad ve açıklama özellikleriyle bir noktası nesnesi daha sonra oluşturulur ve veri kaynağına eklenir.
+İkinci kod bloğu, [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) sınıfını kullanarak bir veri kaynağı nesnesi oluşturur. Nokta, [nokta](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) sınıfının bir [özelliğidir](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) . Daha sonra ad ve açıklama özelliklerine sahip bir nokta nesnesi oluşturulup veri kaynağına eklenir.
 
-A [sembol katman](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) sarmalanmış noktası tabanlı veri işleme için metin veya simge kullanan [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) harita üzerinde simgeler olarak.  Sembol katman, üçüncü kod bloğu içinde oluşturulur. Veri kaynağı eşlemesine eklenen ardından sembol katmanı eklenir.
+Bir [sembol katmanı](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) , [veri kaynağında](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) kaydırılan nokta tabanlı verileri haritada semboller olarak oluşturmak için metin veya simgeleri kullanır.  Bir sembol katmanı, üçüncü kod bloğunda oluşturulur. Veri kaynağı, daha sonra haritaya eklenen sembol katmanına eklenir.
 
-Dördüncü bloğu kod oluşturur bir [açılan nesne](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest) aracılığıyla `new atlas.Popup()`. Açılan pencere konumu ve pixelOffset gibi özelliklerdir parçası [PopupOptions](/javascript/api/azure-maps-control/atlas.popupoptions). Açılan pencere Oluşturucusu veya yoluyla PopupOptions tanımlanabilir [setOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setoptions-popupoptions-) açılan sınıfının işlevi. A `mouseover` olay dinleyicisi sembol katmanın sonra oluşturulur.
+Dördüncü kod bloğu aracılığıyla `new atlas.Popup()`bir [açılan nesne](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest) oluşturur. Position ve Pixelsapmayı gibi açılan Özellikler [PopupOptions](/javascript/api/azure-maps-control/atlas.popupoptions)'in bir parçasıdır. PopupOptions, açılan oluşturucuda veya açılan sınıfın [SetOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setoptions-popupoptions-) işlevi aracılığıyla tanımlanabilir. Daha `mouseover` sonra sembol katmanı için bir olay dinleyicisi oluşturulur.
 
-Son kod bloğu tarafından tetiklenen bir işlev oluşturur `mouseover` olay dinleyicisi. Bu içerik ve açılan özelliklerini ayarlar ve haritayı açılan pencere nesnesi ekler.
+Son kod bloğu `mouseover` olay dinleyicisi tarafından tetiklenen bir işlev oluşturur. Açılan pencerenin içeriğini ve özelliklerini ayarlar ve açılan nesneyi haritaya ekler.
 
-## <a name="reusing-a-popup-with-multiple-points"></a>Açılır penceresi ile birden çok nokta yeniden kullanma
+## <a name="reusing-a-popup-with-multiple-points"></a>Birden çok noktayla açılan pencereyi yeniden kullanma
 
-Pek çok nokta vardır ve yalnızca bir kerede bir açılan pencere göstermek istersiniz, en iyi yaklaşım bir açılan pencere oluşturmak ve bunu her noktası özelliği için bir açılan pencere oluşturmak yerine yeniden oluşturmaktır. Bunu yaparak uygulama tarafından oluşturulan DOM öğe sayısını önemli ölçüde daha iyi performans sağlayan azalır. Bu örnek 3 nokta özellikleri oluşturur. Herhangi biri tıklarsanız noktası özellik içeriğe sahip bir açılır pencere görüntülenir.
+Çok sayıda noktanız olduğunda ve tek seferde bir açılan pencere göstermek istediğinizde, en iyi yaklaşım bir açılan pencere oluşturmak ve her nokta özelliği için bir açılan pencere oluşturmak yerine onu yeniden kullanmaktır. Bunu yaptığınızda, uygulama tarafından oluşturulan DOM öğelerinin sayısı büyük ölçüde azalır ve bu sayede daha iyi performans sağlayabiliriz. Bu örnek 3 nokta özellik oluşturur. Bunlardan birine tıklarsanız, bu nokta özelliği için içerik ile bir açılan pencere görüntülenir.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Açılır penceresi ile birden çok PIN yeniden kullanma' src='//codepen.io/azuremaps/embed/rQbjvK/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Kalem bkz <a href='https://codepen.io/azuremaps/pen/rQbjvK/'>açılır penceresi ile birden çok PIN yeniden</a> Azure haritalar tarafından (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) üzerinde <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Çoklu PIN ile açılan pencereyi yeniden kullanma' src='//codepen.io/azuremaps/embed/rQbjvK/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>üzerinde Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından <a href='https://codepen.io/azuremaps/pen/rQbjvK/'>birden fazla PIN ile açılan pencereyi yeniden kullanma</a> kalemine bakın.
 </iframe>
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede kullanılan yöntemleri ve sınıfları hakkında daha fazla bilgi edinin:
+Bu makalede kullanılan sınıflar ve yöntemler hakkında daha fazla bilgi edinin:
 
 > [!div class="nextstepaction"]
-> [Açılan menüsü](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
+> [Kutu](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
 > [PopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popupoptions?view=azure-iot-typescript-latest)
 
-Tam kod örnekleri için harika aşağıdaki makalelere bakın:
+Tam kod örnekleri için aşağıdaki harika makalelere göz atın:
 
 > [!div class="nextstepaction"]
-> [Sembol katmanı Ekle](./map-add-pin.md)
+> [Sembol katmanı ekleme](./map-add-pin.md)
 
 > [!div class="nextstepaction"]
-> [Bir HTML işaretleyici Ekle](./map-add-custom-html.md)
+> [HTML işaretleyicisi ekleme](./map-add-custom-html.md)
 
 > [!div class="nextstepaction"]
 > [Şekil ekleme](./map-add-shape.md)

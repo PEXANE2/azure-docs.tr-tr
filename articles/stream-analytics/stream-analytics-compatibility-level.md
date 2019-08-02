@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 5/2/2019
-ms.openlocfilehash: 8e3ae84242a1a9b76fbb18a8d8164c97a62a97d9
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: a6e5cd69a0655bf8235bf5755ab596ca2bde0387
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68003907"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68716170"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics işleri için uyumluluk düzeyi
 
@@ -90,6 +90,12 @@ Upsert davranış *INSERT veya Replace*.
 **Önceki düzeyler:** Değerler hedef türüne göre kesildi.
 
 **1,2 düzeyi:** Hedef türüne sığmayan değerler, çıkış hata ilkesine göre işlenir.
+
+### <a name="record-and-array-serialization-when-writing-to-sql-output"></a>SQL çıktısına yazarken kayıt ve dizi serileştirme
+
+**Önceki düzeyler:** Kayıtlar "kayıt" olarak yazıldı ve diziler "dizi" olarak yazılmıştır.
+
+**1,2 düzeyi:** Kayıtlar ve diziler JSON biçiminde serileştirilir.
 
 ### <a name="strict-validation-of-prefix-of-functions"></a>İşlevlerin ön ekinin katı doğrulaması
 
