@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3661b3f7fd37a329857a74d32d292678d98f5aef
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 3c6793581b797892c0bb468906d4f8ae72182618
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499827"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562117"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Nasıl Yapılır: Azure AD 'de eski cihazları yönetme
 
@@ -47,7 +47,7 @@ Etkinlik zaman damgasının hesaplanması, bir cihazın kimlik doğrulama giriş
 - Azure AD'ye katılmış veya hibrit Azure AD'ye katılmış Windows 10 cihazları ağda etkin olduğunda. 
 - Intune tarafından yönetilen cihazlar hizmete giriş yaptığında.
 
-Etkinlik zaman damgasının mevcut değeri ile geçerli değer arasındaki delta 14 günden fazlaysa, mevcut değer yeni değerle değiştirilir.
+Etkinlik zaman damgasının mevcut değeri ile geçerli değer arasındaki Delta 14 günden daha uzun (+/-5 gün sapması), varolan değer yeni değerle değiştirilmiştir.
 
 ## <a name="how-do-i-get-the-activity-timestamp"></a>Etkinlik zaman damgasını nasıl alabilirim?
 
@@ -77,7 +77,7 @@ Temizleme ilkenizde, gerekli rollerin atandığı hesapları seçin.
 
 ### <a name="timeframe"></a>Zaman çerçevesi
 
-Eski cihaz için göstergeniz olacak bir zaman çerçevesi tanımlayın. Zaman çerçevenizi tanımlarken, etkinlik zaman damgasının 14 günlük güncelleştirme süresini değerinizde dikkate alın. Örneğin, 14 günden kısa bir zaman damgasını eski cihazın göstergesi olarak kabul etmemelisiniz. Eski olmayan bir cihazın eski gibi görünmesine neden olabilecek senaryolar vardır. Örneğin, etkilenen cihazın sahibi, eski cihazlara ilişkin zaman çerçevenizi aşan bir süre  tatile çıkmış veya hastalık iznine ayrılmış olabilir.
+Eski cihaz için göstergeniz olacak bir zaman çerçevesi tanımlayın. Zaman dilimini tanımlarken, etkinlik zaman damgasını değere güncelleştirmek için belirtilen pencereyi çarpanlara ayırın. Örneğin, eski bir cihaz için 21 günden (varyansı içerir) daha küçük bir zaman damgasını göz önünde bulundurmamanız gerekir. Eski olmayan bir cihazın eski gibi görünmesine neden olabilecek senaryolar vardır. Örneğin, etkilenen cihazın sahibi, eski cihazlara ilişkin zaman çerçevenizi aşan bir süre  tatile çıkmış veya hastalık iznine ayrılmış olabilir.
 
 ### <a name="disable-devices"></a>Cihazları devre dışı bırakma
 
@@ -89,7 +89,7 @@ Cihazınız Intune'un veya başka bir MDM çözümünün denetimi altındaysa, c
 
 ### <a name="system-managed-devices"></a>Sistem tarafından yönetilen cihazlar
 
-Sistem tarafından yönetilen cihazları silmeyin. Bunlar genellikle auto-pilot gibi cihazlardır. Bir kez silindikten sonra yeniden sağlanamazlar. `get-msoldevice` cmdlet'i sistem tarafından yönetilen cihazları varsayılan olarak dışlar. 
+Sistem tarafından yönetilen cihazları silmeyin. Bunlar genellikle auto-pilot gibi cihazlardır. Silinen bu cihazlar yeniden sağlanmıyor. `get-msoldevice` cmdlet'i sistem tarafından yönetilen cihazları varsayılan olarak dışlar. 
 
 ### <a name="hybrid-azure-ad-joined-devices"></a>Hibrit Azure AD’ye katılmış cihazlar
 
@@ -98,15 +98,30 @@ Hibrit Azure AD'ye katılmış cihazlarınızın şirket içi eski cihaz yöneti
 Azure AD'yi temizlemek için:
 
 - **Windows 10 cihazları** - Windows 10 cihazlarını şirket içi AD'nizde devre dışı bırakın veya silin, sonra da Azure AD Connect'in değişen cihaz durumunu Azure AD'ye eşitlemesini sağlayın.
-- **Windows 7/8** -Azure AD 'de Windows 7/8 cihazlarını devre dışı bırakma veya silme. Windows 7/8 cihazlarını Azure AD'de devre dışı bırakmak veya silmek için Azure AD Connect kullanamazsınız.
+- **Windows 7/8** -ŞIRKET içi ad 'nizin Windows 7/8 cihazlarını devre dışı bırakın veya silin. Windows 7/8 cihazlarını Azure AD'de devre dışı bırakmak veya silmek için Azure AD Connect kullanamazsınız. Bunun yerine, şirket içi kuruluşunuzda değişiklik yaptığınızda, Azure AD 'de devre dışı bırakmanız/silmeniz gerekir.
+
+> [!NOTE]
+>* Şirket içi AD veya Azure AD 'deki cihazları silmek istemciye kayıt yapmaz. Yalnızca bir kimlik olarak cihaz kullanan kaynaklara erişimi engeller (örn. koşullu erişim). [İstemcide kayıt kaldırma](faq.md#hybrid-azure-ad-join-faq)hakkında daha fazla bilgi edinin.
+>* Bir Windows 10 cihazını yalnızca Azure AD 'de silmek, Azure AD Connect 'i kullanarak cihazı şirket içi cihazınızdan yeniden eşitler, ancak "bekliyor" durumunda yeni bir nesne olarak yeniden eşitlenir. Cihazda yeniden kayıt gereklidir.
+>* Windows 10/Server 2016 cihazları için eşitleme kapsamından cihaz kaldırma, Azure AD cihazını silecektir. Bunu eşitleme kapsamına geri eklemek, "bekleyen" durumuna yeni bir nesne yerleştirir. Cihazın yeniden kaydı gereklidir.
+>* Windows 10 cihazlarının eşitlenmesi için Azure AD Connect kullanmıyorsanız (örn. yalnızca kayıt için AD FS kullanıyorsanız), Windows 7/8 cihazlarına benzer yaşam döngüsünü yönetmeniz gerekir.
+
 
 ### <a name="azure-ad-joined-devices"></a>Azure AD’ye katılmış cihazlar
 
 Azure AD'ye katılmış cihazları Azure AD'de devre dışı bırakın veya silin.
 
+> [!NOTE]
+>* Bir Azure AD cihazının silinmesi, istemcide kaydı kaldırmaz. Yalnızca bir kimlik olarak cihaz kullanan kaynaklara erişimi engeller (örn. koşullu erişim). 
+>* [Azure AD 'ye nasıl katılalacağı](faq.md#azure-ad-join-faq) hakkında daha fazla bilgi edinin 
+
 ### <a name="azure-ad-registered-devices"></a>Azure AD kayıtlı cihazlar
 
 Azure AD'ye kayıtlı cihazları Azure AD'de devre dışı bırakın veya silin.
+
+> [!NOTE]
+>* Azure AD 'de kayıtlı bir cihazın Azure AD 'de silinmesi, istemcide kaydı kaldırmaz. Yalnızca bir kimlik olarak cihaz kullanan kaynaklara erişimi engeller (örn. koşullu erişim).
+>* [İstemcide kayıt kaldırma](faq.md#azure-ad-register-faq) hakkında daha fazla bilgi edinin
 
 ## <a name="clean-up-stale-devices-in-the-azure-portal"></a>Eski cihazları Azure portalda temizleme  
 
@@ -148,7 +163,7 @@ Windows 10 cihazlarında BitLocker anahtarları yapılandırıldığında, bu an
 
 ### <a name="why-should-i-worry-about-windows-autopilot-devices"></a>Windows Autopilot cihazları hakkında neden endişelenmeliyim?
 
-Bir Azure AD cihazı bir Windows Autopilot nesnesiyle ilişkilendirildiğinde, cihazın gelecekte yeniden oluşturulması durumunda aşağıdaki üç senaryo meydana gelebilir:
+Bir Azure AD cihazı bir Windows Autopilot nesnesiyle ilişkilendirildiğinde, cihazın gelecekte yeniden kullanılması durumunda aşağıdaki üç senaryo meydana gelebilir:
 - Windows Autopilot Kullanıcı odaklı dağıtımlarla, beyaz gloona kullanmadan yeni bir Azure AD cihazı oluşturulur, ancak bu, ZTDıD ile etiketlenmeyecektir.
 - Windows Autopilot Self-dağıtım modu dağıtımları ile, bir Azure AD cihazının ilişkilendirilmesi bulunamadığı için bunlar başarısız olur.  (Bu, hiçbir "ımpster" cihazlarının kimlik bilgileri olmadan Azure AD 'ye katılmayı denediğinizden emin olmak için bir güvenlik mekanizmasıdır.) Hata, ZTDıD uyuşmazlığını gösterir.
 - Windows Autopilot beyaz eldiven dağıtımlarında, ilişkili bir Azure AD cihazı bulunamadığı için bunlar başarısız olur. (Arka planda, beyaz eldiven dağıtımları aynı güvenlik mekanizmalarına zorlayabilmeleri için aynı kendi kendine dağıtım modu işlemini kullanır.)

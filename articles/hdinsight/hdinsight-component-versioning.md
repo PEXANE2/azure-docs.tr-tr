@@ -10,10 +10,10 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/07/2019
 ms.openlocfilehash: a9de7c75ef2bd29b2e401ba387ca16a5dfda34fb
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68442043"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight ile kullanılabilen Apache Hadoop bileşenleri ve sürümleri nelerdir?
@@ -170,7 +170,7 @@ Bu bölümde, HDInsight ile kullanılan Hortonçalışmalar veri platformu dağ�
 * HDInsight küme sürümü 3,2, [Hortonçalışmalar veri platformu 2,2][hdp-2-2]' ni temel alan bir Hadoop dağıtımı kullanır.
 
   * Belirli Apache bileşenleri için sürüm notları aşağıdaki gibi kullanılabilir: [Hive 0,14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310843&version=12326450), [Pig 0,14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310730&version=12326954), [HBase 0.98.4](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310753&version=12326810), [Phoenix 4.2.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12315120&version=12327581), [M/R 2,6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310941&version=12327180), RG [2,6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310942&version=12327181), [Yarn 2,6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12313722&version=12327197), [ortak](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310240&version=12327179), [tez 0.5.2](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314426&version=12328742), [ambarı 2,0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12312020&version=12327486), [fırtınası 0.9.3](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314820&version=12327112)ve [Oozie 4.1.0 ](https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12324960&projectId=12311620).
-* HDInsight küme sürümü 3,1, [Hortonçalışmalar veri platformu 2.1.7][hdp-2-1-7]. HDInsight 3.1 clusters created before November, 7, 2014, are based on [Hortonworks Data Platform 2.1.1][hdp-2-1-1]tabanlı bir Hadoop dağıtımı kullanır.
+* HDInsight küme sürümü 3,1, [Hortonçalışmalar veri platformu 2.1.7][hdp-2-1-7]tabanlı bir Hadoop dağıtımı kullanır. Kasım 7, 2014 tarihinden önce oluşturulan HDInsight 3,1 kümeleri, [Hortonçalışmalar veri platformu 2.1.1][hdp-2-1-1]tabanlıdır.
 * HDInsight küme sürümü 3,0, [Hortonçalışmalar veri platformu 2,0][hdp-2-0-8]' ni temel alan bir Hadoop dağıtımı kullanır.
 * HDInsight küme sürümü 2,1, [Hortonçalışmalar veri platformu 1,3][hdp-1-3-0]' ni temel alan bir Hadoop dağıtımı kullanır.
 * HDInsight küme sürümü 1,6, [Hortonçalışmalar veri platformu 1,1][hdp-1-1-0]' ni temel alan bir Hadoop dağıtımı kullanır.

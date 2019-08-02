@@ -10,10 +10,10 @@ ms.date: 04/15/2019
 ms.author: danlep
 ms.custom: mvc
 ms.openlocfilehash: c83648124f616670423b2ef459530c191d7e17e4
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68325770"
 ---
 # <a name="azure-container-instances-and-container-orchestrators"></a>Azure Container Instances ve kapsayıcı yöneticileri
@@ -61,7 +61,7 @@ Bu makinelere ek kapsayıcılar dağıtmak yerine, kümenizdeki sanal makine say
 
 Sanal düğümler Şu anda Linux kapsayıcı örneklerini desteklemektedir. [Azure CLI](https://go.microsoft.com/fwlink/?linkid=2047538) veya [Azure Portal](https://go.microsoft.com/fwlink/?linkid=2047545)kullanarak sanal düğümleri kullanmaya başlayın.
 
-Sanal düğümler, sınırsız kapasiteye sahip bir düğüm olarak kaydederek açık kaynaklı [sanal kubelet][aci-connector-k8s] to mimic the Kubernetes [kubelet][kubelet-doc] 'i kullanır. Sanal kubelet, Azure Container Instances ' de kapsayıcı grupları olarak [Pod][Pod belgesi] oluşturulmasını dağıtır.
+Sanal düğümler, sınırsız kapasiteye sahip bir düğüm olarak kaydederek Kubernetes [Kubelet][kubelet-doc] 'sini taklit etmek için açık kaynak [sanal Kubelet][aci-connector-k8s] kullanır. Sanal kubelet, Azure Container Instances ' de kapsayıcı grupları olarak [Pod][pod-doc] oluşturulmasını dağıtır.
 
 Kubernetes API 'sini sunucusuz kapsayıcı platformlarına genişletmeye yönelik ek örnekler için bkz. [sanal Kubelet](https://github.com/virtual-kubelet/virtual-kubelet) projesi.
 

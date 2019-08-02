@@ -1,6 +1,6 @@
 ---
-title: VMware çözümüyle CloudSimple - Azure VPN ağ geçitleri
-description: CloudSimple siteden siteye VPN ve noktadan siteye VPN kavramları hakkında bilgi edinin
+title: CloudSimple-Azure tarafından VMware çözümünde VPN ağ geçitleri
+description: CloudSimple siteden siteye VPN ve Noktadan siteye VPN kavramları hakkında bilgi edinin
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/10/2019
@@ -8,70 +8,71 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2eae81f357904bd5034d7409ef42b681d1085930
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 47d61f80cae926965dd71342980302c2b3045c52
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67695231"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689640"
 ---
-# <a name="vpn-gateways-overview"></a>VPN ağ geçitleri genel bakış
+# <a name="vpn-gateways-overview"></a>VPN ağ geçitlerine genel bakış
 
-Bir VPN ağ geçidi, şirket içi konum veya genel Internet üzerinden bir bilgisayar CloudSimple bölge ağ arasında şifrelenmiş trafik göndermek için kullanılır.  Her bölge, yalnızca bir VPN ağ geçidi olabilir. Ancak, aynı VPN ağ geçidi ile birden fazla bağlantı oluşturabilirsiniz. Aynı VPN ağ geçidiyle birden fazla bağlantı oluşturduğunuzda, tüm VPN tünelleri kullanılabilir ağ geçidi bant genişliğini paylaşır.
+VPN ağ geçidi, şirket içi konumdaki bir CloudSimple bölgesi ağı veya genel Internet üzerinden bir bilgisayar arasında şifrelenmiş trafik göndermek için kullanılır.  Her bölgede yalnızca bir VPN ağ geçidi olabilir. Ancak, aynı VPN ağ geçidi ile birden fazla bağlantı oluşturabilirsiniz. Aynı VPN ağ geçidiyle birden fazla bağlantı oluşturduğunuzda, tüm VPN tünelleri kullanılabilir ağ geçidi bant genişliğini paylaşır.
 
-VPN ağ geçitlerinin iki tür CloudSimple sağlar:
+CloudSimple, iki tür VPN ağ geçidi sağlar:
 
-* Siteden siteye VPN ağ geçidi
-* Noktadan siteye VPN ağ geçidi
+* Siteden siteye VPN Gateway
+* Noktadan siteye VPN Gateway
 
 ## <a name="site-to-site-vpn-gateway"></a>Siteden siteye VPN ağ geçidi
 
-Siteden siteye VPN ağ geçidi CloudSimple bölge ağ ve şirket içi veri merkezi arasında şifrelenmiş trafik göndermek için kullanılır. Şirket içi ağınız ile CloudSimple bölge ağı arasındaki iletişim için bir alt ağ/CIDR aralığını tanımlamak için bu bağlantıyı kullanın.
+Bir CloudSimple bölgesi ağı ile şirket içi veri merkezi arasında şifrelenmiş trafik göndermek için siteden siteye VPN ağ geçidi kullanılır. Şirket içi ağınız ve CloudSimple bölgesi ağı arasındaki iletişim için alt ağları/CıDR aralığını tanımlamak üzere bu bağlantıyı kullanın.
 
-VPN ağ geçidi, şirket içi özel bulutunuzda servislerini sağlar ve özel bulut, şirket içi ağdan gelen şirket Hizmetleri.  CloudSimple, şirket içi ağınız arasında bağlantı kurmak için bir ilke tabanlı VPN sunucusu sağlar.
+VPN ağ geçidi, şirket içi ağdan özel bulutunuzda ve özel bulutunuzda bulunan hizmetlerden gelen Hizmetleri kullanmanıza olanak sağlar.  CloudSimple, şirket içi ağınızdan bağlantı kurmak için ilke tabanlı bir VPN sunucusu sağlar.
 
-Siteden siteye VPN için kullanım örnekleri şunlardır:
+Siteden siteye VPN için kullanım örnekleri şunları içerir:
 
-* Şirket içi ağınızda herhangi bir iş istasyonundan, özel bulut vCenter'ın erişilebilirlik.
-* VCenter kimlik kaynağı olarak şirket içi Active Directory'nizde kullanımı.
-* Özel bulut vCenter'ınıza için şirket içi kaynaklardan kullanışlı aktarım VM şablonları, Iso'lar ve diğer dosyaları.
-* Şirket içi ağınızdan özel bulutunuzda çalışan iş yüklerini erişilebilirliğini.
+* Şirket içi ağınızdaki herhangi bir iş istasyonundan özel bulut vCenter ' nin erişilebilirliği.
+* Şirket içi Active Directory vCenter Identity kaynağı olarak kullanın.
+* VM şablonlarının, IOS 'nin ve diğer dosyaların şirket içi kaynaklarınızdan özel bulut vCenter 'a uygun şekilde aktarılması.
+* Şirket içi ağınızdan özel bulutunuzda çalışan iş yüklerinin erişilebilirliği.
 
 ![Siteden siteye VPN bağlantı topolojisi](media/cloudsimple-site-to-site-vpn-connection.png)
 
 > [!IMPORTANT]
-> TCP MSS 1078 bayt veya daha düşük sıkıştırmanız gerekir. Veya VPN cihazlarınız MSS clamping desteklemiyorsa, alternatif olarak MTU tünel arabiriminde 1118 bayt için bunun yerine ayarlayabilirsiniz. 
+> 1078 bayt veya daha düşük bir düzeyde TCP/yönetim paketi gerekir. Ya da VPN cihazlarınız, sahip olma özelliğini desteklemiyorsa, bunun yerine tünel arabirimindeki MTU değerini 1118 bayta ayarlayabilirsiniz. 
 
 ### <a name="cryptographic-parameters"></a>Şifreleme parametreleri
 
-Siteden siteye VPN bağlantısı, güvenli bir bağlantı kurmak için aşağıdaki varsayılan şifreleme parametreleri kullanır.  Şirket içi VPN CİHAZDAN bir bağlantı oluşturduğunuzda, şirket içi VPN ağ geçidi tarafından desteklenen aşağıdaki parametreleri kullanın.
+Siteden siteye VPN bağlantısı, güvenli bir bağlantı kurmak için aşağıdaki varsayılan şifreleme parametrelerini kullanır.  Şirket içi VPN cihazından bir bağlantı oluşturduğunuzda, şirket içi VPN ağ geçidiniz tarafından desteklenen aşağıdaki parametrelerden birini kullanın.
 
-#### <a name="phase-1-proposals"></a>1\. Aşama teklifleri
+#### <a name="phase-1-proposals"></a>1\. aşama teklifleri
 
-| Parametre | Teklif 1 | Teklif 2 | Teklif 3 |
-|-----------|------------|------------|------------|
-| IKE Sürümü | IKEv1 | IKEv1 | IKEv1 |
-| Şifreleme | AES 128 | AES 256 | AES 256 |
-| Karma algoritması| SHA 256 | SHA 256 | SHA 1 |
-| Diffie Hellman grubu (DH grubu) | 2 | 2 | 2 |
-| Yaşam süresi | 28.800 saniye | 28.800 saniye | 28.800 saniye |
-| Veri boyutu | 4 GB | 4 GB | 4 GB |
+| Parametre                       | Teklif 1     | Teklif 2     | Teklif 3     |
+|---------------------------------|----------------|----------------|----------------|
+| IKE Sürümü                     | IKEv1          | IKEv1          | IKEv1          |
+| Şifreleme                      | AES 128        | AES 256        | AES 256        |
+| Karma algoritması                  | SHA 256        | SHA 256        | SHA 1          |
+| Diffie Hellman grubu (DH grubu) | 2              | 2              | 2              |
+| Yaşam süresi                       | 28.800 saniye | 28.800 saniye | 28.800 saniye |
+| Veri Boyutu                       | 4 GB           | 4 GB           | 4 GB           |
+| Kullanılmayan Eş Algılama (DPD)       | Devre dışı/kapalı   | Devre dışı/kapalı   | Devre dışı/kapalı   |
 
 
-#### <a name="phase-2-proposals"></a>2\. Aşama teklifleri 
+#### <a name="phase-2-proposals"></a>2\. aşama teklifleri 
 
-| Parametre | Teklif 1 | Teklif 2 | Teklif 3 |
-|-----------|------------|------------|------------|
-| Şifreleme | AES 128 | AES 256 | AES 256 |
-| Karma algoritması| SHA 256 | SHA 256 | SHA 1 |
-| Mükemmel Forward Secrecy grubu (PFS grubu) | None | Yok. | Yok. |
-| Yaşam süresi | 1800 saniye | 1800 saniye | 1800 saniye |
-| Veri boyutu | 4 GB | 4 GB | 4 GB |
+| Parametre                                 | Teklif 1    | Teklif 2    | Teklif 3    |
+|-------------------------------------------|---------------|---------------|---------------|
+| Şifreleme                                | AES 128       | AES 256       | AES 256       |
+| Karma algoritması                            | SHA 256       | SHA 256       | SHA 1         |
+| Kusursuz Iletme gizliliği grubu (PFS Grubu) | None          | Yok.          | Yok.          |
+| Yaşam süresi                                 | 1\.800 saniye | 1\.800 saniye | 1\.800 saniye |
+| Veri Boyutu                                 | 4 GB          | 4 GB          | 4 GB          |
 
 ## <a name="point-to-site-vpn-gateway"></a>Noktadan siteye VPN ağ geçidi
 
-Noktadan siteye VPN CloudSimple bölge ağ ve bir istemci bilgisayar arasında şifrelenmiş trafik göndermek için kullanılır.  Noktadan siteye VPN, özel bulut vCenter ve iş yükü Vm'lerinden dahil olmak üzere, özel bulut ağ erişmek için kolay bir yoludur.  Özel bulut için uzaktan bağlanıyorsanız, noktadan siteye VPN bağlantısı kullanın.
+Bir CloudSimple bölgesi ağı ile istemci bilgisayar arasında şifrelenmiş trafik göndermek için Noktadan siteye VPN kullanılır.  Noktadan siteye VPN, özel bulut vCenter ve iş yükü VM 'Leri dahil olmak üzere özel bulut ağınıza erişmenin en kolay yoludur.  Özel buluta uzaktan bağlanıyorsanız Noktadan siteye VPN bağlantısı kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [VPN ağ geçidi ayarlama](https://docs.azure.cloudsimple.com/vpn-gateway/)
+* [VPN ağ geçidini ayarlama](https://docs.azure.cloudsimple.com/vpn-gateway/)

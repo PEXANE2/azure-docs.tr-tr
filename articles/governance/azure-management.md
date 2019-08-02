@@ -1,5 +1,5 @@
 ---
-title: Azure yönetimine genel bakış - Azure idare
+title: Azure yönetimine genel bakış-Azure Idare
 description: Yönetimi için Azure uygulamalarınızın ve kaynaklarınızın Azure Yönetim Araçları içeriği için bağlantılarla birlikte alanlarından genel bakış.
 author: DCtheGeek
 manager: carmonm
@@ -7,14 +7,14 @@ ms.service: governance
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: dacoulte
-ms.openlocfilehash: d68e7d9ec3b60b93f0050250d7e7d718db7aa5b8
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 520b84722d9434b309d3eb6da0baa3c1e4da33d0
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67488472"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608197"
 ---
-# <a name="overview-of-management-services-in-azure"></a>Azure'daki Yönetim Hizmetleri genel bakış
+# <a name="overview-of-management-services-in-azure"></a>Azure 'da Yönetim Hizmetleri 'ne genel bakış
 
 Azure'da idare, Azure Yönetimi'nin bir parçasıdır. Bu makale, dağıtmak ve Azure kaynaklarınızı korumak için yönetim işleminin farklı alanları kapsar.
 
@@ -22,9 +22,9 @@ Yönetim, iş uygulamalarınızı ve onları destekleyen kaynaklarınızı korum
 
 Aşağıdaki diyagramda herhangi bir uygulamayı veya kaynağı korumak için gereken farklı yönetim alanları gösterilmektedir. Bu farklı alanlar, bir yaşam döngüsü düşünülebilir. Her alanı, bir kaynağın ömrü sürekli art arda gereklidir. Bu kaynak yaşam döngüsü, devam eden işlemi aracılığıyla ilk dağıtımı ile başlar ve son olarak kullanımdan olduğunda.
 
-![Azure yönetimi, Bilim](../monitoring/media/management-overview/management-capabilities.png)
+![Azure 'da disiplindeki yönetim hatları](../monitoring/media/management-overview/management-capabilities.png)
 
-Herhangi bir Azure hizmeti, belirli yönetim alanı gereksinimlerini tamamen doldurur. Bunun yerine, her birlikte çalışan birkaç hizmet tarafından gerçekleştirilmiş. Application Insights gibi bazı hizmetleri, web uygulamaları için hedeflenmiş izleme işlevselliği sağlar. Diğer Azure izleme günlükleri gibi diğer hizmetler için yönetim verilerini depolar. Bu özellik, farklı hizmetler tarafından toplanan farklı türdeki verileri analiz etmek verir.
+Herhangi bir Azure hizmeti, belirli yönetim alanı gereksinimlerini tamamen doldurur. Bunun yerine, her birlikte çalışan birkaç hizmet tarafından gerçekleştirilmiş. Application Insights gibi bazı hizmetleri, web uygulamaları için hedeflenmiş izleme işlevselliği sağlar. Azure Izleyici günlükleri gibi diğerleri, diğer hizmetler için yönetim verilerini depolar. Bu özellik, farklı hizmetler tarafından toplanan farklı türdeki verileri analiz etmek verir.
 
 Aşağıdaki bölümlerde farklı yönetim alanları kısaca açıklanır ve ilgili temel Azure hizmetlerindeki ayrıntılı içeriklere yönelik bağlantılar sunulur.
 
@@ -44,7 +44,7 @@ Azure’da İdare, temelde iki hizmet ile uygulanır. [Azure İlkesi](./policy/o
 
 ## <a name="secure"></a>Güvenlik
 
-Kaynakları ve veri güvenliğini yönetin. Bir güvenlik programı, uygulamalarınızın ve kaynaklarınızın uyumluluk yanı sıra veri toplayıp analiz eden tehditleri değerlendirme içerir. Güvenlik İzleme ve tehdit analizi tarafından sağlanan [Azure Güvenlik Merkezi](../security-center/security-center-intro.md), içeren birleşik güvenlik yönetimi ve Gelişmiş tehdit koruması hibrit bulut iş yüklerinde. Bkz: [Azure güvenliğine giriş](../security/azure-security.md) kapsamlı bilgi ve Azure kaynaklarının güvenliğini sağlama konusunda yönergeler.
+Kaynakları ve veri güvenliğini yönetin. Bir güvenlik programı, uygulamalarınızın ve kaynaklarınızın uyumluluk yanı sıra veri toplayıp analiz eden tehditleri değerlendirme içerir. Güvenlik İzleme ve tehdit analizi tarafından sağlanan [Azure Güvenlik Merkezi](../security-center/security-center-intro.md), içeren birleşik güvenlik yönetimi ve Gelişmiş tehdit koruması hibrit bulut iş yüklerinde. Bkz: [Azure güvenliğine giriş](../security/fundamentals/overview.md) kapsamlı bilgi ve Azure kaynaklarının güvenliğini sağlama konusunda yönergeler.
 
 ## <a name="protect"></a>Koruma
 

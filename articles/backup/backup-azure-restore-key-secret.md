@@ -1,18 +1,19 @@
 ---
 title: Azure Backup kullanarak şifrelenmiş VM 'Ler için Key Vault anahtarı ve gizli anahtarı geri yükleme
 description: PowerShell kullanarak Azure Backup Key Vault anahtarı ve gizli anahtarı geri yüklemeyi öğrenin
-author: geetha
-manager: vijayts
+ms.reviewer: geg
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 08/28/2017
-ms.author: geg
-ms.openlocfilehash: bdc732ef02e9995e3d6dc17aa1f79eb97d895a73
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 379dd87edbbfa878a034cd61854ee15f215b0228
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465571"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689123"
 ---
 # <a name="restore-key-vault-key-and-secret-for-encrypted-vms-using-azure-backup"></a>Azure Backup kullanarak şifrelenmiş VM 'Ler için Key Vault anahtarı ve gizli anahtarı geri yükleme
 

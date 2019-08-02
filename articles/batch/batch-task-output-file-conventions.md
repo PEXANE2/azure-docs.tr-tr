@@ -16,10 +16,10 @@ ms.date: 11/14/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8be42399d9919d0ed410f1503353568c86a75f5a
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68322887"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>.NET için batch dosya kuralları kitaplığı ile iş ve görev verilerini Azure depolama 'ya kalıcı hale getirme
@@ -73,7 +73,7 @@ Azure depolama 'da kapsayıcılar ve BLOB 'larla çalışma hakkında daha fazla
 
 ### <a name="create-storage-container"></a>Depolama kapsayıcısı oluşturma
 
-Görev çıktısını Azure depolama 'ya kalıcı hale getirmek için, önce [Cloudjob][net_cloudjob].[PrepareOutputStorageAsync][net_prepareoutputasync]'u çağırarak bir kapsayıcı oluşturun. Bu genişletme yöntemi bir [Cloudstorageaccount][net_cloudstorageaccount] nesnesini parametre olarak alır. Dosya kuralları standardına göre adlı bir kapsayıcı oluşturur, böylece içerikleri Azure portal ve makalenin ilerleyen kısımlarında ele alınan alma yöntemleri tarafından bulunabilir.
+Görev çıktısını Azure depolama 'ya kalıcı hale getirmek için, önce [Cloudjob][net_cloudjob]'u çağırarak bir kapsayıcı oluşturun. [Prepareoutputstorageasync][net_prepareoutputasync]. Bu genişletme yöntemi bir [Cloudstorageaccount][net_cloudstorageaccount] nesnesini parametre olarak alır. Dosya kuralları standardına göre adlı bir kapsayıcı oluşturur, böylece içerikleri Azure portal ve makalenin ilerleyen kısımlarında ele alınan alma yöntemleri tarafından bulunabilir.
 
 Genellikle, istemci uygulamanızda &mdash; havuzlarınızı, işlerinizi ve görevlerinizi oluşturan uygulamayı oluşturan bir kapsayıcı oluşturmak için kodu yerleştirebilirsiniz.
 
@@ -94,7 +94,7 @@ await job.PrepareOutputStorageAsync(linkedStorageAccount);
 
 Artık Azure depolama 'da bir kapsayıcı hazırladığınıza göre, görevler dosya kuralları kitaplığında bulunan [Taskoutputstorage][net_taskoutputstorage] sınıfını kullanarak çıktıyı kapsayıcıya kaydedebilir.
 
-Görev kodunuzda, önce bir [taskoutputstorage][net_taskoutputstorage] nesnesi oluşturun, ardından görev işini tamamladığında, çıktısını Azure depolama 'ya kaydetmek için [taskoutputstorage][net_taskoutputstorage] .[SaveAsync][net_saveasync] yöntemini çağırın.
+Görev kodunuzda, önce bir [taskoutputstorage][net_taskoutputstorage] nesnesi oluşturun, ardından görev işini tamamladığında, [taskoutputstorage][net_taskoutputstorage]' ı çağırın. Çıktıyı Azure depolama 'ya kaydetmek için [Saveasync][net_saveasync] yöntemi.
 
 ```csharp
 CloudStorageAccount linkedStorageAccount = new CloudStorageAccount(myCredentials);
@@ -121,7 +121,7 @@ Bu çıktı türleri, belirli bir görevin kalıcı çıkışları için toplu I
 
 Görev çıktılarını depolamanın yanı sıra, tüm işle ilişkili çıktıları da saklayabilirsiniz. Örneğin, bir film işleme işinin birleştirme görevinde, tam olarak işlenen filmi iş çıkışı olarak kalıcı hale getirebilmeniz gerekir. İşiniz tamamlandığında, istemci uygulamanız iş için çıktıları listeleyebilir ve alabilir ve ayrı görevleri sorgulamasına gerek kalmaz.
 
-[Joi putstorage][net_joboutputstorage] .[SaveAsync][net_joboutputstorage_saveasync] metodunu çağırarak iş çıktısını depolayın ve [Joi putkind][net_joboutputkind] ve filename ' i belirtin:
+[Joi Putstorage][net_joboutputstorage]' ı çağırarak iş çıktısını saklayın. [Saveasync][net_joboutputstorage_saveasync] yöntemi ve [Joi putkind][net_joboutputkind] ve filename ' i belirtin:
 
 ```csharp
 CloudJob job = new JobOutputStorage(acct, jobId);
@@ -135,7 +135,7 @@ Görev çıkışları için **Taskoutputkind** türünde olduğu gibi, bir işin
 
 ### <a name="store-task-logs"></a>Görev günlüklerini depola
 
-Bir görev veya iş tamamlandığında, bir dosyayı dayanıklı depolamaya kalıcı hale getirmek için, bir görev &mdash; günlüğü dosyalarının yürütülmesi sırasında veya `stdout.txt` ve `stderr.txt`gibi güncelleştirilmiş dosyaları kalıcı hale getirmeniz gerekebilir. Bu amaçla, Azure Batch dosya kuralları Kitaplığı [taskoutputstorage][net_taskoutputstorage] .[SaveTrackedAsync][net_savetrackedasync] yöntemini sağlar. [Savetrackedadsync][net_savetrackedasync]ile, düğümdeki bir dosyadaki güncelleştirmeleri izleyebilir (belirttiğiniz aralıkta) ve bu güncelleştirmeleri Azure Storage 'da kalıcı hale getirebilirsiniz.
+Bir görev veya iş tamamlandığında, bir dosyayı dayanıklı depolamaya kalıcı hale getirmek için, bir görev &mdash; günlüğü dosyalarının yürütülmesi sırasında veya `stdout.txt` ve `stderr.txt`gibi güncelleştirilmiş dosyaları kalıcı hale getirmeniz gerekebilir. Bu amaçla, Azure Batch dosya kuralları Kitaplığı [Taskoutputstorage][net_taskoutputstorage]sağlar. [Savetrackedadsync][net_savetrackedasync] yöntemi. [Savetrackedadsync][net_savetrackedasync]sayesinde, düğümdeki bir dosyadaki güncelleştirmeleri izleyebilir (belirttiğiniz aralıkta) ve bu güncelleştirmeleri Azure Storage 'da kalıcı hale getirebilirsiniz.
 
 Aşağıdaki kod parçacığında, görevi yürütme sırasında her 15 saniyede bir Azure depolamada güncelleştirmek `stdout.txt` için [savetrackedadsync][net_savetrackedasync] kullanırız:
 
@@ -198,7 +198,7 @@ Azure portal, [toplu Işlem dosya kuralları standardı](https://github.com/Azur
 Çıkış dosyalarınızın portalda görüntülenmesini etkinleştirmek için aşağıdaki gereksinimleri karşılamanız gerekir:
 
 1. Bir Azure Depolama hesabını Batch hesabınıza bağlayın.
-1. Kalıcı çıkışları kalıcı hale getiren depolama kapsayıcıları ve dosyaları için önceden tanımlanmış adlandırma kurallarına uyar. Bu kuralların tanımını, çıktınızı sürdürmek için dosya kuralları Kitaplığı [Benioku][github_file_conventions_readme] . If you use the [Azure Batch File Conventions][nuget_package] kitaplığında bulabilirsiniz, dosyalarınız dosya kuralları standardına göre kalıcı hale getirilir.
+1. Kalıcı çıkışları kalıcı hale getiren depolama kapsayıcıları ve dosyaları için önceden tanımlanmış adlandırma kurallarına uyar. Bu kuralların tanımını dosya kuralları Kitaplığı [Benioku][github_file_conventions_readme]dosyasında bulabilirsiniz. Çıktlarınızı sürdürmek için [Azure Batch dosya kuralları][nuget_package] kitaplığını kullanırsanız dosyalarınız dosya kuralları standardına göre kalıcı hale getirilir.
 
 Azure portal görev çıktı dosyalarını ve günlüklerini görüntülemek için, çıktısını ilgilendiğiniz göreve gidin ve **kaydedilmiş çıkış dosyaları** veya **kayıtlı Günlükler**' e tıklayın. Bu görüntüde "007" KIMLIKLI görev için **Kaydedilen çıkış dosyaları** gösterilmektedir:
 
@@ -206,7 +206,7 @@ Azure portal görev çıktı dosyalarını ve günlüklerini görüntülemek iç
 
 ## <a name="code-sample"></a>Kod örneği
 
-[Persistouta][github_persistoutputs] sample project is one of the [Azure Batch code samples][github_samples] GitHub 'a yerleştirir. Bu Visual Studio çözümü, görev çıkışını dayanıklı depolamaya kalıcı hale getirmek için Azure Batch dosya kuralları kitaplığının nasıl kullanılacağını gösterir. Örneği çalıştırmak için aşağıdaki adımları izleyin:
+[Persistoutkoyar][github_persistoutputs] örnek proje, GitHub 'daki [Azure Batch kod örneklerinden][github_samples] biridir. Bu Visual Studio çözümü, görev çıkışını dayanıklı depolamaya kalıcı hale getirmek için Azure Batch dosya kuralları kitaplığının nasıl kullanılacağını gösterir. Örneği çalıştırmak için aşağıdaki adımları izleyin:
 
 1. Projeyi **Visual Studio 2019**' de açın.
 2. Batch ve Storage **hesabı kimlik bilgilerinizi** Microsoft. Azure. Batch. Samples. Common projesindeki **accountsettings. Settings** öğesine ekleyin.
@@ -219,7 +219,7 @@ Azure portal görev çıktı dosyalarını ve günlüklerini görüntülemek iç
 
 ### <a name="get-the-batch-file-conventions-library-for-net"></a>.NET için toplu Işlem dosya kuralları kitaplığını alın
 
-.NET için batch dosya kuralları kitaplığı, [NuGet][nuget_package] . The library extends the [CloudJob][net_cloudjob] ve [cloudtask][net_cloudtask] sınıflarında yeni yöntemlerle kullanılabilir. Ayrıca, dosya kuralları kitaplığı için [başvuru belgelerine](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.conventions.files) bakın.
+.NET için batch dosya kuralları kitaplığı, [NuGet][nuget_package]üzerinde kullanılabilir. Kitaplık [Cloudjob][net_cloudjob] ve [cloudtask][net_cloudtask] sınıflarını yeni yöntemlerle genişletir. Ayrıca, dosya kuralları kitaplığı için [başvuru belgelerine](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.conventions.files) bakın.
 
 Dosya kuralları Kitaplığı [kaynak kodu][github_file_conventions] , .NET için Microsoft Azure SDK deposundaki GitHub 'da kullanılabilir. 
 

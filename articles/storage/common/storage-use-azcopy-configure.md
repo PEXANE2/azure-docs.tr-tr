@@ -1,46 +1,52 @@
 ---
-title: Yapılandırma, en iyi duruma getirmek ve Azure Storage ile AzCopy sorunlarını giderme | Microsoft Docs
-description: Yapılandırma, en iyi duruma getirmek ve AzCopy giderebilirsiniz.
+title: Azure Storage ile AzCopy 'i yapılandırma, iyileştirme ve sorunlarını giderme | Microsoft Docs
+description: AzCopy 'i yapılandırın, iyileştirin ve sorun giderin.
 services: storage
 author: normesta
 ms.service: storage
 ms.topic: article
-ms.date: 05/14/2019
+ms.date: 07/25/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 1a67846889b43d582a7a7d477a33f0e2168fd760
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 3773f9a8464dc94436d6d2503b173d4674033ab1
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147860"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565045"
 ---
-# <a name="configure-optimize-and-troubleshoot-azcopy"></a>Yapılandırma, en iyi duruma getirmek ve AzCopy sorunlarını giderme
+# <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy 'i yapılandırma, iyileştirme ve sorun giderme
 
-AzCopy, BLOB veya dosyalar için veya bir depolama hesabına kopyalamak için kullanabileceğiniz bir komut satırı yardımcı programıdır. Bu makalede, Gelişmiş yapılandırma görevleri gerçekleştirmenize yardımcı olur ve AzCopy kullanırken ortaya çıkabilecek sorunları gidermenize yardımcı olur.
+AzCopy, bir depolama hesabına blob veya dosya kopyalamak için kullanabileceğiniz bir komut satırı yardımcı programıdır. Bu makale, gelişmiş yapılandırma görevlerini gerçekleştirmenize yardımcı olur ve AzCopy kullandığınızda oluşabilecek sorunları gidermenize yardımcı olur.
 
 > [!NOTE]
-> AzCopy ile çalışmaya başlamanıza yardımcı olmak için içeriği arıyorsanız aşağıdaki makalelerden herhangi birine bakın:
-> - [Azcopy'i kullanmaya başlama](storage-use-azcopy-v10.md)
-> - [AzCopy ve blob depolama ile veri aktarma](storage-use-azcopy-blobs.md)
+> AzCopy kullanmaya başlamanıza yardımcı olacak içerik arıyorsanız, aşağıdaki makalelerden birine bakın:
+> - [AzCopy ile çalışmaya başlama](storage-use-azcopy-v10.md)
+> - [AzCopy ve BLOB Storage ile veri aktarma](storage-use-azcopy-blobs.md)
 > - [AzCopy ve dosya depolama ile veri aktarma](storage-use-azcopy-files.md)
 > - [AzCopy ve Amazon S3 demetleri ile veri aktarma](storage-use-azcopy-s3.md)
 
-## <a name="configure-proxy-settings"></a>Proxy ayarlarını yapılandırma
+## <a name="configure-proxy-settings"></a>Ara sunucu ayarlarını yapılandırma
 
-AzCopy için proxy ayarlarını yapılandırmak için `https_proxy` ortam değişkeni.
+AzCopy ara sunucu ayarlarını yapılandırmak için `https_proxy` ortam değişkenini ayarlayın. AzCopy 'i Windows üzerinde çalıştırırsanız AzCopy proxy ayarlarını otomatik olarak algılar, bu nedenle bu ayarı Windows 'ta kullanmanız gerekmez. Bu ayarı Windows 'ta kullanmayı seçerseniz, otomatik algılamayı geçersiz kılar.
 
 | İşletim sistemi | Komut  |
 |--------|-----------|
-| **Windows** | İçinde bir komut istemi kullanın: `set https_proxy=<proxy IP>:<proxy port>`<br> PowerShell kullanımda: `$env:https_proxy="<proxy IP>:<proxy port>"`|
+| **Windows** | Komut isteminde şunu kullanın:`set https_proxy=<proxy IP>:<proxy port>`<br> PowerShell kullanımı:`$env:https_proxy="<proxy IP>:<proxy port>"`|
 | **Linux** | `export https_proxy=<proxy IP>:<proxy port>` |
 | **MacOS** | `export https_proxy=<proxy IP>:<proxy port>` |
 
-Şu anda, AzCopy NTLM veya Kerberos kimlik doğrulaması gerektiren proxy'leri desteklemez.
+Şu anda AzCopy, NTLM veya Kerberos ile kimlik doğrulaması gerektiren proxy 'leri desteklemiyor.
 
 ## <a name="optimize-throughput"></a>Aktarım hızını iyileştirme
 
-Ayarlama `AZCOPY_CONCURRENCY_VALUE` eşzamanlı istek sayısını yapılandırmak ve aktarım hızı performans ve kaynak tüketimi denetlemek için ortam değişkeni. Bilgisayarınızı 5'ten az CPU sahip sonra bu değişkenin değerini ayarlamak `32`. Aksi takdirde, varsayılan değer 16 CPU sayı ile çarpılan eşittir. Bu değişken varsayılan en fazla değeri `300`, ancak daha yüksek veya düşük değer el ile ayarlayabilirsiniz.
+Aktarım hızı veri hızına `cap-mbps` bir tavan koymak için bayrağını kullanabilirsiniz. Örneğin, aşağıdaki komut, aktarım hızını saniyede megabit `10` (MB) ile sınırlar.
+
+```azcopy
+azcopy cap-mbps 10
+```
+
+Küçük dosyalar aktarılırken üretilen iş azalabilir. `AZCOPY_CONCURRENCY_VALUE` Ortam değişkenini ayarlayarak aktarım hızını artırabilirsiniz. Bu değişken, gerçekleşebileceğini eşzamanlı isteklerin sayısını belirtir.  Bilgisayarınızda 5 ' ten az CPU varsa, bu değişkenin değeri olarak `32`ayarlanır. Aksi takdirde, varsayılan değer 16 ' ya eşittir CPU sayısıyla çarpılır. Bu değişkenin `300`en büyük varsayılan değeri, ancak bu değeri el ile veya daha düşük bir şekilde ayarlayabilirsiniz.
 
 | İşletim sistemi | Komut  |
 |--------|-----------|
@@ -48,11 +54,11 @@ Ayarlama `AZCOPY_CONCURRENCY_VALUE` eşzamanlı istek sayısını yapılandırma
 | **Linux** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
 | **MacOS** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
 
-Kullanım `azcopy env` bu değişkenin geçerli değeri denetlemek için.  Değer boşsa, sonra `AZCOPY_CONCURRENCY_VALUE` değişkeni varsayılan değerine ayarlanmış `300`.
+Bu değişkenin geçerli değerini denetlemek içinöğesinikullanın.`azcopy env`  Değer boşsa, `AZCOPY_CONCURRENCY_VALUE` değişkeni varsayılan `300`değerine ayarlanır.
 
-## <a name="change-the-location-of-the-log-files"></a>Günlük dosyalarının konumunu değiştirin
+## <a name="change-the-location-of-the-log-files"></a>Günlük dosyalarının konumunu değiştirme
 
-Varsayılan olarak, günlük dosyalarının yer `%USERPROFILE\\.azcopy` veya Windows üzerindeki dizin `$HOME\\.azcopy` Mac ve Linux'ta dizin. Şu komutları kullanarak ihtiyacınız varsa, bu konuma değiştirebilirsiniz.
+Varsayılan olarak, günlük dosyaları Windows veya `%USERPROFILE\\.azcopy` `$HOME\\.azcopy` Mac ve Linux dizinindeki dizinde bulunur. Bu komutları kullanarak gerekirse, bu konumu değiştirebilirsiniz.
 
 | İşletim sistemi | Komut  |
 |--------|-----------|
@@ -60,30 +66,30 @@ Varsayılan olarak, günlük dosyalarının yer `%USERPROFILE\\.azcopy` veya Win
 | **Linux** | `export AZCOPY_LOG_LOCATION=<value>` |
 | **MacOS** | `export AZCOPY_LOG_LOCATION=<value>` |
 
-Kullanım `azcopy env` bu değişkenin geçerli değeri denetlemek için. Ardından, değer boş ise, günlükleri varsayılan konuma yazılır.
+Bu değişkenin geçerli değerini denetlemek içinöğesinikullanın.`azcopy env` Değer boşsa, günlükler varsayılan konuma yazılır.
 
-## <a name="change-the-default-log-level"></a>Varsayılan günlük düzeyi değiştirme
+## <a name="change-the-default-log-level"></a>Varsayılan günlük düzeyini değiştirme
 
-Varsayılan olarak, AzCopy günlük düzeyini ayarlamak `INFO`. Disk alanından kazanmak için günlük ayrıntı azaltmak istiyorsanız, bu ayarı kullanarak üzerine ``--log-level`` seçeneği. 
+Varsayılan olarak, AzCopy günlük düzeyi olarak `INFO`ayarlanır. Disk alanından tasarruf etmek için günlük ayrıntı düzeyini azaltmak isterseniz, ``--log-level`` seçeneğini kullanarak bu ayarın üzerine yazın. 
 
-Kullanılabilir günlük düzeyleri: `DEBUG`, `INFO`, `WARNING`, `ERROR`, `PANIC`, ve `FATAL`.
+Kullanılabilir günlük düzeyleri şunlardır: `DEBUG`, `INFO`, `WARNING` `ERROR`,, `PANIC`ve. `FATAL`
 
 ## <a name="troubleshoot-issues"></a>Sorunları giderme
 
-AzCopy günlük ve planı dosyaları her işi oluşturur. Araştırmak ve olası sorunları gidermek için günlükleri'ni kullanabilirsiniz. 
+AzCopy her iş için günlük ve plan dosyaları oluşturur. Olası sorunları araştırmak ve sorunlarını gidermek için günlükleri kullanabilirsiniz. 
 
-Günlükleri hata durumunu içerir (`UPLOADFAILED`, `COPYFAILED`, ve `DOWNLOADFAILED`), tam yolunu ve hatanın nedenini.
+Günlükler hatanın durumunu (`UPLOADFAILED`, `COPYFAILED`, ve `DOWNLOADFAILED`), tam yolu ve hatanın nedenini içerecektir.
 
-Varsayılan olarak, günlük ve planı dosyaları yer `%USERPROFILE\\.azcopy` Windows dizininde veya `$HOME\\.azcopy` Mac ve Linux'ta dizin.
+Varsayılan olarak, günlük ve plan dosyaları, Mac ve Linux üzerindeki `%USERPROFILE\\.azcopy` Windows veya `$HOME\\.azcopy` dizindeki dizinde bulunur.
 
 > [!IMPORTANT]
-> Microsoft Support (veya herhangi bir üçüncü taraf ilgili sorun giderme), bir isteği gönderirken çalıştırmak istediğiniz komutun sonuç kısaltılmıştır sürümü paylaşabilir. Bu, SAS yanlışlıkla herkesle paylaşılmaz sağlar. Günlük dosyasının başında sonuç kısaltılmıştır sürümü bulabilirsiniz.
+> Microsoft Desteği bir istek gönderirken (veya herhangi bir üçüncü taraf ile ilgili sorunu gidermeye çalıştığınızda), yürütmek istediğiniz komutun Redaksiyonu yapılmış sürümünü paylaşabilirsiniz. Bu, SAS 'nin yanlışlıkla herhangi bir gövdele paylaşılmamasını sağlar. Redaksiyonu yapılmış sürümü günlük dosyasının başlangıcında bulabilirsiniz.
 
-### <a name="review-the-logs-for-errors"></a>Hatalar için günlükleri gözden geçirin
+### <a name="review-the-logs-for-errors"></a>Günlükleri hatalara karşı gözden geçirin
 
-Aşağıdaki komut, tüm hataları alırsınız `UPLOADFAILED` durumundan `04dc9ca9-158f-7945-5933-564021086c79` günlüğü:
+Aşağıdaki komut, `UPLOADFAILED` `04dc9ca9-158f-7945-5933-564021086c79` günlükteki durum ile tüm hataları alacak:
 
-**Windows**
+**Windows (PowerShell)**
 
 ```
 Select-String UPLOADFAILED .\04dc9ca9-158f-7945-5933-564021086c79.log
@@ -95,9 +101,9 @@ Select-String UPLOADFAILED .\04dc9ca9-158f-7945-5933-564021086c79.log
 grep UPLOADFAILED .\04dc9ca9-158f-7945-5933-564021086c79.log
 ```
 
-### <a name="view-and-resume-jobs"></a>İşleri görüntüleme ve devam et
+### <a name="view-and-resume-jobs"></a>İşleri görüntüleme ve sürdürme
 
-Her bir aktarım işlemi AzCopy işi oluşturur. İş geçmişini görüntülemek için aşağıdaki komutu kullanın:
+Her aktarım işlemi bir AzCopy işi oluşturur. İşlerin geçmişini görüntülemek için aşağıdaki komutu kullanın:
 
 ```
 azcopy jobs list
@@ -109,17 +115,17 @@ azcopy jobs list
 azcopy jobs show <job-id>
 ```
 
-Aktarımları durumuna göre filtre uygulamak için aşağıdaki komutu kullanın:
+Aktarımları duruma göre filtrelemek için aşağıdaki komutu kullanın:
 
 ```
 azcopy jobs show <job-id> --with-status=Failed
 ```
 
-Başarısız/iptal bir işi sürdürmek için aşağıdaki komutu kullanın. Güvenlik nedeniyle kalıcı değil olarak bu komut tanımlayıcısını SAS belirteci ile birlikte kullanır:
+Başarısız/iptal edildi bir işi yeniden başlatmak için aşağıdaki komutu kullanın. Bu komut, güvenlik nedenleriyle kalıcı olmadığından, kimliğini SAS belirteciyle birlikte kullanır:
 
 ```
 azcopy jobs resume <job-id> --source-sas="<sas-token>"
 azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 ```
 
-Bir iş devam edince, AzCopy iş planı dosyasını arar. Plan dosyası, proje ilk oluşturulduğunda işlemek için tanımlanmış olan tüm dosyaları listeler. Bir iş devam edince, AzCopy aktarılan olmayan planı dosyasında listelenen dosyaların tümünü aktarım dener.
+Bir işi sürdürürseniz AzCopy iş planı dosyasına bakar. Plan dosyası, iş ilk oluşturulduğunda işleme için tanımlanan tüm dosyaları listeler. Bir işi sürdürürseniz AzCopy, önceden aktarılmayan plan dosyasında listelenen tüm dosyaları aktarmaya çalışır.

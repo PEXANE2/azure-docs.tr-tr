@@ -4,7 +4,7 @@ titleSuffix: Azure
 description: Linux veri bilimi sanal makinesi ile çeşitli genel veri bilimi görevlerini gerçekleştirme.
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 editor: cgronlun
 ms.custom: seodec18
@@ -16,13 +16,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.author: gokuma
-ms.openlocfilehash: 6e8883870cc0f035df5122e91449f04203836218
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: vijetaj
+ms.openlocfilehash: df05b2605f3553ce26447a4f8e2440002b75ec3a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60516901"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68557340"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>İle bir Linux veri bilimi sanal makinesi Azure üzerinde veri bilimi
 Bu izlenecek yol, Linux veri bilimi sanal makinesi ile çeşitli genel veri bilimi görevlerini gerçekleştirmek nasıl gösterir. Linux veri bilimi sanal makinesi (DSVM) veri analizi ve makine öğrenimi için yaygın olarak kullanılan araçları koleksiyonu ile önceden yüklenmiş olan Azure üzerinde kullanılabilir bir sanal makine görüntüsüdür. Anahtar yazılım bileşenleri içinde listelenen [Linux veri bilimi sanal makinesi sağlama](linux-dsvm-intro.md) konu. VM görüntüsü, yüklemek ve araçların her biri ayrı ayrı yapılandırmak zorunda kalmadan, dakikalar içinde veri bilimi yapmaya başlayın kolaylaştırır. Kolayca VM'yi, gerekirse ölçeği ve kullanımda olmadığında durdurun. Bu nedenle bu kaynak, esnek ve maliyet açısından verimli içindir.
@@ -37,7 +37,7 @@ Linux veri bilimi sanal makinesi kullanabilmeniz için önce aşağıdakilere sa
 * Bir **Azure aboneliği**. Zaten bir yoksa, bkz. [ücretsiz Azure hesabınızı hemen oluşturun](https://azure.microsoft.com/free/).
 * A [ **Linux veri bilimi sanal makinesi**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm). Bu VM sağlama hakkında daha fazla bilgi için bkz: [Linux veri bilimi sanal makinesi sağlama](linux-dsvm-intro.md).
 * [X2Go](https://wiki.x2go.org/doku.php) bilgisayarınızda yüklü ve XFCE oturum açıldı. Yükleme ve yapılandırma hakkında bilgi için bir **X2Go istemci**, bkz: [yükleme ve yapılandırma X2Go istemci](linux-dsvm-intro.md#installing-and-configuring-x2go-client).
-* Hakkında gfx.xrender.enabled bayrağı daha yumuşak kaydırma deneyimi için geçiş: sanal makineleri FireFox tarayıcısı yapılandırmada. [Buradan daha fazla bakın. ](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). Ayrıca geçiş göz önünde bulundurun *mousewheel.enable_pixel_scrolling* false. [Buradaki yönergeleri.](https://support.mozilla.org/en-US/questions/981140)
+* Hakkında gfx.xrender.enabled bayrağı daha yumuşak kaydırma deneyimi için geçiş: sanal makineleri FireFox tarayıcısı yapılandırmada. [Buradan daha fazla bakın. ](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). Ayrıca geçiş göz önünde bulundurun *mousewheel.enable_pixel_scrolling* false. [Buradaki yönergeleri.](https://support.mozilla.org/questions/981140)
 * Bir **AzureML hesabı**. Yeni hesap için kaydolun biri yoksa, [AzureML giriş sayfası](https://studio.azureml.net/). Başlamanıza yardımcı olmak için ücretsiz kullanım katman mevcuttur.
 
 ## <a name="download-the-spambase-dataset"></a>Spambase veri kümesini indirin
@@ -180,10 +180,10 @@ Ayrıca bir rastgele orman modeli deneyelim. Rastgele ormanları karar ağaçlar
     accuracy
 
 
-## <a name="deploy-a-model-to-azure-machine-learning-studio"></a>Azure Machine Learning Studio'da model dağıtma
-[Azure Machine Learning Studio](https://studio.azureml.net/) , Tahmine dayalı analiz modellerini Derleme ve dağıtma kolay bir bulut hizmetidir. Azure Machine Learning Studio'nun iyi özelliklerinden herhangi bir web hizmeti olarak R işlevi yayımlamak için olmasıdır. Azure Machine Learning studio R paketi dağıtım sağ DSVM bizim R oturum yapmak daha kolay hale getirir.
+## <a name="deploy-a-model-to-azure-machine-learning-studio"></a>Azure Machine Learning Studio 'ya model dağıtma
+[Azure Machine Learning Studio](https://studio.azureml.net/) , tahmine dayalı analiz modelleri oluşturmayı ve dağıtmayı kolaylaştıran bir bulut hizmetidir. Azure Machine Learning Studio 'nun iyi özelliklerinden biri, bir Web hizmeti olarak herhangi bir R işlevini yayımlayabilmesidir. Azure Machine Learning Studio R paketi, DSVM 'deki R oturumumuza dağıtımı kolaylaştırır.
 
-Önceki bölümde karar ağacı kodu dağıtmak için Azure Machine Learning Studio'da oturum açmanız gerekir. Çalışma alanı Kimliğiniz ve bir yetkilendirme belirteci oturum açmanız gerekir. Bu değerleri bulmak ve onlarla Azure Machine Learning değişkenlerini başlatmak için:
+Önceki bölümde karar ağacı kodu dağıtmak için Azure Machine Learning Studio'da oturum açmanız gerekir. Çalışma alanı Kimliğiniz ve bir yetkilendirme belirteci oturum açmanız gerekir. Bu değerleri bulmak ve Azure Machine Learning değişkenlerini bunlar ile başlatmak için:
 
 Seçin **ayarları** sol menüdeki. Not, **çalışma alanı kimliği**. ![2](./media/linux-dsvm-walkthrough/workspace-id.png)
 
@@ -344,7 +344,7 @@ Birkaç örnek not defterleri VM üzerinde zaten yüklü:
 >
 
 ## <a name="rattle"></a>Çıngırağı
-[Rattle](https://cran.r-project.org/web/packages/rattle/index.html) (R analitik aracı için bilgi kolayca) grafiksel bir R veri madenciliği için aracıdır. Yük, keşfedin ve veri dönüştürme ve derleme ve modellerin değerlendirmesi daha kolay hale getirir, sezgisel bir arabirim var.  Makaleyi [Rattle: R için bir veri madenciliği GUI](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf) özelliklerini gösteren bir kılavuz sağlar.
+[Rattle](https://cran.r-project.org/web/packages/rattle/index.html) (R analitik aracı için bilgi kolayca) grafiksel bir R veri madenciliği için aracıdır. Yük, keşfedin ve veri dönüştürme ve derleme ve modellerin değerlendirmesi daha kolay hale getirir, sezgisel bir arabirim var.  Makale [Rattle: R](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf) için bir veri madenciliği GUI, özelliklerini gösteren bir anlatım sağlar.
 
 Yükleyin ve aşağıdaki komutlarla Çıngırağı başlatın:
 
@@ -423,7 +423,7 @@ Basit karar ağacı makine öğrenme modeli oluşturmak için:
 İşiniz bittiğinde modeller oluşturma seçeneğini belirleyin **günlük** Çıngırağı tarafından oturumunuz sırasında çalıştırmak R kodunu görüntülemek için sekmesinde. Seçebileceğiniz **dışarı** kaydetmek için düğme.
 
 > [!NOTE]
-> Çıngırağı geçerli sürümde hata yoktur. Komut dosyasını değiştirin veya sonraki adımlarınızı yinelenecek kullanmak için bir # karakteri önüne Ekle *bu günlüğünü dışarı aktar...*  metin günlüğü.
+> Çıngırağı geçerli sürümde hata yoktur. Betiği değiştirmek veya adımları daha sonra tekrarlamak üzere kullanmak için *Bu günlüğü...* ' nin önüne, günlüğün metninde bir # karakteri eklemeniz gerekir.
 >
 >
 

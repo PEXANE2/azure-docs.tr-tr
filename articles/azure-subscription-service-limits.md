@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: byvinyal
-ms.openlocfilehash: 1c30d9e70facaf9ab47bd33e5ca1fc1d35c6c979
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 7c4c80950e43f374b40085cb4e1c3e026e5f3abd
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405846"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698267"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure aboneliği ve hizmet sınırları, kotalar ve kısıtlamalar
 Bu belgede, bazen kotalar olarak da adlandırılan en yaygın Microsoft Azure limitlerin bazıları listelenir. Bu belge şu anda tüm Azure hizmetlerini kapsamıyor. Zamanla, liste genişletilir ve daha fazla hizmeti kapsayacak şekilde güncelleştirilir.
@@ -48,6 +48,7 @@ Aşağıdaki sınırlar listesinde, yeni bir tablo Azure Resource Manager kullan
 * [Otomasyon](#automation-limits)
 * [Redis için Azure Önbelleği](#azure-cache-for-redis-limits)
 * [Azure Cloud Services](#azure-cloud-services-limits)
+* [Azure Bilişsel Hizmetler](#azure-cognitive-services-limits)
 * [Azure Cosmos DB](#azure-cosmos-db-limits)
 * [MySQL için Azure Veritabanı](#azure-database-for-mysql)
 * [PostgreSQL için Azure Veritabanı](#azure-database-for-postgresql)
@@ -186,7 +187,7 @@ Aşağıdaki tablo, aksi belirtilmediği takdirde v1, v2, standart ve WAF SKU 'L
 
 Depolama hesabı sınırları hakkında daha fazla bilgi için bkz. [Azure Storage ölçeklenebilirlik ve performans hedefleri](storage/common/storage-scalability-targets.md).
 
-#### <a name="storage-resource-provider-limits"></a>Depolama kaynak sağlayıcısı sınırları 
+#### <a name="storage-resource-provider-limits"></a>Depolama kaynak sağlayıcısı sınırları
 
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../includes/azure-storage-limits-azure-resource-manager.md)]
 
@@ -225,6 +226,9 @@ Daha fazla bilgi için bkz. [sanal makine boyutları](virtual-machines/linux/siz
 
 ### <a name="azure-cloud-services-limits"></a>Azure Cloud Services limitleri
 [!INCLUDE [azure-cloud-services-limits](../includes/azure-cloud-services-limits.md)]
+
+### <a name="azure-cognitive-services-limits"></a>Azure bilişsel hizmetler sınırları
+[!INCLUDE [azure-cloud-services-limits](../includes/azure-cognitive-services-limits.md)]
 
 ### <a name="app-service-limits"></a>App Service sınırları
 Aşağıdaki App Service limitleri Web Apps, Mobile Apps ve API Apps sınırlarını içerir.

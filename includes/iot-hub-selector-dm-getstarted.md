@@ -4,30 +4,30 @@ ms.author: wesmc
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: 19331f35ea2fa773325ec61e728677e37767ab54
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 60c0c700dde5afda2ca93a92b334cbc4f0134043
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67188475"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667969"
 ---
 > [!div class="op_single_selector"]
-> * [Cihaz: Node.js hizmeti: Node.js](../articles/iot-hub/iot-hub-node-node-device-management-get-started.md)
-> * [Cihaz: C#Hizmet: C#](../articles/iot-hub/iot-hub-csharp-csharp-device-management-get-started.md)
-> * [Cihaz: Java hizmeti: Java](../articles/iot-hub/iot-hub-java-java-device-management-getstarted.md)
-> * [Cihaz: Python hizmeti: Python](../articles/iot-hub/iot-hub-python-python-device-management-get-started.md)
+> * [Node.js](../articles/iot-hub/iot-hub-node-node-device-management-get-started.md)
+> * [.NET](../articles/iot-hub/iot-hub-csharp-csharp-device-management-get-started.md)
+> * [Java](../articles/iot-hub/iot-hub-java-java-device-management-getstarted.md)
+> * [Python](../articles/iot-hub/iot-hub-python-python-device-management-get-started.md)
 
-Arka uç uygulamaları kullanabileceğiniz Azure IOT hub'ı temelleri gibi [cihaz ikizi] [ lnk-devtwin] ve [doğrudan yöntemler][lnk-c2dmethod], uzaktan başlatın ve izleme cihazda yönetim eylemleri. Bu öğretici, bir arka uç uygulaması ve bir cihaz uygulaması birlikte nasıl başlatmak ve IOT hub'ı kullanarak uzak cihazı yeniden başlatma izlemek için çalışabileceğini gösterir.
+Arka uç uygulamalar cihaz [ikizi][lnk-devtwin] ve [doğrudan yöntemler][lnk-c2dmethod]gibi Azure IoT Hub temel öğelerini kullanarak cihazlarda cihaz yönetimi eylemlerini uzaktan başlatabilir ve izleyebilir. Bu öğreticide, bir arka uç uygulamasının ve bir cihaz uygulamasının IoT Hub kullanarak uzak cihaz yeniden başlatma işlemini başlatmak ve izlemek için birlikte nasıl çalıştığı gösterilmektedir.
 
 [!INCLUDE [iot-hub-basic](iot-hub-basic-whole.md)]
 
-Bulutta bir arka uç uygulamasından (örneğin, yeniden başlatma, Fabrika sıfırlaması ve üretici yazılımı güncelleştirmesi) cihaz yönetim eylemleri başlatmak için bir doğrudan yöntem kullanın. Cihaz için sorumludur:
+Bulut içindeki bir arka uç uygulamasından cihaz yönetim eylemleri (yeniden başlatma, fabrika sıfırlaması ve bellenim güncelleştirmesi gibi) başlatmak için doğrudan bir yöntem kullanın. Cihazın sorumludur:
 
-* IOT Hub'ından gönderilen yöntemi istek işleme.
-* Cihazdaki ilgili cihaza özgü eylemi başlatılıyor.
-* Durum güncelleştirmeleri aracılığıyla sağlama *bildirilen özellikler* IOT hub'ına.
+* IoT Hub gönderilen Yöntem isteği işleniyor.
+* Cihazda cihaza özgü ilgili eylem başlatılıyor.
+* *Bildirilen özellikler* aracılığıyla IoT Hub durum güncelleştirmeleri sağlama.
 
-Bulutta bir arka uç uygulaması, cihaz yönetim eylemleri, ilerleme üzerinde rapor için cihaz çifti sorguları çalıştırmak için kullanabilirsiniz.
+Cihaz yönetimi eylemlerinizin ilerlemesini raporlamak üzere cihaz ikizi sorgularını çalıştırmak için bulutta bir arka uç uygulaması kullanabilirsiniz.
 
 [lnk-devtwin]: ../articles/iot-hub/iot-hub-devguide-device-twins.md
 [lnk-c2dmethod]: ../articles/iot-hub/iot-hub-devguide-direct-methods.md

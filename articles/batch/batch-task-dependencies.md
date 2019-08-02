@@ -16,10 +16,10 @@ ms.date: 05/22/2017
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a0a258630fcb3639f20de4c72591611b7af15b90
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68322970"
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>Diğer görevlere bağımlı görevleri çalıştırmak için görev bağımlılıkları oluşturma
@@ -41,7 +41,7 @@ Bire bir veya bire çok ilişkisinde diğer görevlere bağımlı görevler olu�
 Bu makalede, [Batch .net][net_msdn] kitaplığı 'nı kullanarak görev bağımlılıklarını yapılandırmayı tartıştık. Önce, işlerinizde [görev bağımlılığını](#enable-task-dependencies) nasıl etkinleştireceğinizi ve ardından [bağımlılıklara sahip bir görevin nasıl yapılandırılacağını](#create-dependent-tasks)gösterir. Ayrıca, üst öğe başarısız olursa bağımlı görevleri çalıştırmak için bir bağımlılık eyleminin nasıl belirtildüğüne de açıklıyoruz. Son olarak, Batch 'nin desteklediği [bağımlılık senaryolarını](#dependency-scenarios) tartıştık.
 
 ## <a name="enable-task-dependencies"></a>Görev bağımlılıklarını etkinleştir
-Batch uygulamanızda görev bağımlılıklarını kullanmak için, önce görevi görev bağımlılıklarını kullanacak şekilde yapılandırmanız gerekir. Batch .net 'te, [cloudjob][net_cloudjob] by setting its [UsesTaskDependencies][net_usestaskdependencies] özelliğindeki özelliği şu şekilde `true`etkinleştirin:
+Batch uygulamanızda görev bağımlılıklarını kullanmak için, önce görevi görev bağımlılıklarını kullanacak şekilde yapılandırmanız gerekir. Batch .NET sürümünde, [Usestaskdependencies][net_usestaskdependencies] özelliğini olarak `true`ayarlayarak [cloudişiniz][net_cloudjob] üzerinde etkinleştirin:
 
 ```csharp
 CloudJob unboundJob = batchClient.JobOperations.CreateJob( "job001",
@@ -54,7 +54,7 @@ unboundJob.UsesTaskDependencies = true;
 Yukarıdaki kod parçacığında, "batchClient" [batchclient][net_batchclient] sınıfının bir örneğidir.
 
 ## <a name="create-dependent-tasks"></a>Bağımlı görevler oluşturma
-Bir veya daha fazla üst görevin tamamlanmasına bağlı bir görev oluşturmak için, görevin diğer görevlere "bağlı" olduğunu belirtebilirsiniz. Batch .net 'te [cloudtask][net_cloudtask] .[DependsOn][net_dependson] özelliğini [taskdependencies][net_taskdependencies] sınıfının bir örneğiyle yapılandırın:
+Bir veya daha fazla üst görevin tamamlanmasına bağlı bir görev oluşturmak için, görevin diğer görevlere "bağlı" olduğunu belirtebilirsiniz. Batch .NET sürümünde [Cloudtask][net_cloudtask]öğesini yapılandırın. [Task Dependencies][net_taskdependencies] sınıfının bir örneğiyle [bağımlıdson][net_dependson] özelliği:
 
 ```csharp
 // Task 'Flowers' depends on completion of both 'Rain' and 'Sun'
@@ -68,7 +68,7 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 Bu kod parçacığı, görev KIMLIĞI "çiçekler" olan bağımlı bir görev oluşturur. "Çiçekler" görevi "yağmur" ve "Sun" görevlerine bağlıdır. Görev "çiçekler", yalnızca "yağmur" ve "Sun" görevleri başarıyla tamamlandıktan sonra bir işlem düğümünde çalışacak şekilde zamanlanır.
 
 > [!NOTE]
-> Varsayılan olarak, bir görevin **tamamlandı** durumunda olduğu ve **Çıkış kodu** olduğu `0`zaman başarıyla tamamlandı olarak kabul edilir. Batch .NET sürümünde bu, [Cloudtask][net_cloudtask].[State][net_taskstate] property value of `Completed` and the CloudTask's [TaskExecutionInformation][net_taskexecutioninformation]anlamına gelir.[ ExitCode][net_exitcode] özellik `0`değeri. Bunun nasıl değiştirileceği için [bağımlılık eylemleri](#dependency-actions) bölümüne bakın.
+> Varsayılan olarak, bir görevin **tamamlandı** durumunda olduğu ve **Çıkış kodu** olduğu `0`zaman başarıyla tamamlandı olarak kabul edilir. Batch .NET sürümünde bu, [Cloudtask][net_cloudtask]anlamına gelir. [Durum][net_taskstate] özelliği değeri `Completed` ve cloudtask 'ın [taskexecutionınformation][net_taskexecutioninformation].[ ExitCode][net_exitcode] Özellik değeri `0`. Bunun nasıl değiştirileceği için [bağımlılık eylemleri](#dependency-actions) bölümüne bakın.
 > 
 > 
 
@@ -77,7 +77,7 @@ Azure Batch kullanabileceğiniz üç temel görev bağımlılığı senaryosu va
 
 | Senaryon&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Örnek |  |
 |:---:| --- | --- |
-|  [Bire bir](#one-to-one) |*Taskb* , *Taska* 'a bağımlıdır <p/> *Taskb* , tasü başarıyla tamamlanana kadar yürütülmek  üzere zamanlanmayacak |![Diyagram: bire bir görev bağımlılığı][1] |
+|  [Bire bir](#one-to-one) |*Taskb* , *Taska* 'a bağımlıdır <p/> *Taskb* , tasü başarıyla tamamlanana kadar yürütülmek üzere zamanlanmayacak |![Diyagram: bire bir görev bağımlılığı][1] |
 |  [Bire çok](#one-to-many) |*görevC* hem *görevA* hem de *görevB*’ye bağlıdır <p/> *Taskc* , hem *Taska* hem de *taskb* başarıyla tamamlanana kadar yürütülmek üzere zamanlanmayacak |![Diyagram: bire çok görev bağımlılığı][2] |
 |  [Görev KIMLIĞI aralığı](#task-id-range) |*Taskd* , bir dizi göreve bağlıdır <p/> *1* ile *10* arasındaki görevler başarıyla tamamlanana kadar *taskd* yürütme için zamanlanmayacak |![Çizimindeki Görev kimliği aralığı bağımlılığı][3] |
 
@@ -87,7 +87,7 @@ Azure Batch kullanabileceğiniz üç temel görev bağımlılığı senaryosu va
 > Bu bölümdeki örneklerde, bağımlı bir görev yalnızca üst görevler başarıyla tamamlandıktan sonra çalışır. Bu davranış, bağımlı bir görev için varsayılan davranıştır. Bir üst görev başarısız olduktan sonra, varsayılan davranışı geçersiz kılmak için bir bağımlılık eylemi belirterek, bağımlı bir görevi çalıştırabilirsiniz. Ayrıntılar için [bağımlılık eylemleri](#dependency-actions) bölümüne bakın.
 
 ### <a name="one-to-one"></a>Bire bir
-Bire bir ilişkide, bir görev bir üst görevin başarıyla tamamlanmasına bağlıdır. Bir bağımlılık oluşturmak için, [cloudtask][net_cloudtask]'ın [bağımlıdson][net_dependson] özelliğini doldurduğunuzda [taskdependencies][net_taskdependencies] .[OnId][net_onid] statik yöntemine tek bir görev kimliği sağlayın.
+Bire bir ilişkide, bir görev bir üst görevin başarıyla tamamlanmasına bağlıdır. Bağımlılığı oluşturmak için, [Taskdependencies][net_taskdependencies]'e tek BIR görev kimliği sağlayın. [Cloudtask][net_cloudtask]'ın [bağımlıdson][net_dependson] özelliğini doldurduğunuzda [onıd][net_onid] static yöntemi.
 
 ```csharp
 // Task 'taskA' doesn't depend on any other tasks
@@ -101,7 +101,7 @@ new CloudTask("taskB", "cmd.exe /c echo taskB")
 ```
 
 ### <a name="one-to-many"></a>Bire çok
-Bire çok ilişkisinde, bir görev birden çok üst görevin tamamlanmasına bağlıdır. Bir bağımlılık oluşturmak için, [cloudtask][net_cloudtask]'ın [bağımlıdson][net_dependson] özelliğini doldurduğunuzda [taskdependencies][net_taskdependencies] .[OnIds][net_onids] statik yöntemine bir görev kimlikleri koleksiyonu sağlayın.
+Bire çok ilişkisinde, bir görev birden çok üst görevin tamamlanmasına bağlıdır. Bağımlılığı oluşturmak için, [Taskdependencies][net_taskdependencies]görev kimliklerinin bir koleksiyonunu sağlayın. [Cloudtask][net_cloudtask]'ın [bağımlıdson][net_dependson] özelliğini doldurduğunuzda [onıds][net_onids] statik yöntemi.
 
 ```csharp
 // 'Rain' and 'Sun' don't depend on any other tasks
@@ -118,7 +118,7 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 
 ### <a name="task-id-range"></a>Görev KIMLIĞI aralığı
 Bir üst görev aralığına bir bağımlılık içinde, bir görev, kimlikleri bir Aralık içinde olan görevlerin tamamlanmasına bağlıdır.
-Bir bağımlılık oluşturmak için, [cloudtask][net_cloudtask]'ın [bağımlıdson][net_dependson] özelliğini doldurduğunuzda [taskdependencies][net_taskdependencies] .[OnIdRange][net_onidrange] statik yöntemine aralıktaki ilk ve son görev kimliklerini sağlayın.
+Bağımlılığı oluşturmak için, [Taskdependencies][net_taskdependencies]aralığındaki ilk ve son görev kimliklerini sağlayın. [Cloudtask][net_cloudtask]'ın [bağımlıdson][net_dependson] özelliğini doldurduğunuzda [onıdrange][net_onidrange] statik yöntemi.
 
 > [!IMPORTANT]
 > Bağımlılıklarınız için görev KIMLIĞI aralıklarını kullandığınızda, yalnızca tamsayı değerlerini temsil eden kimlikleri olan görevler Aralık tarafından seçilir. Bu nedenle, `1..10` Aralık `3` `7`görevleri seçer, ancak değil `5flamingoes`. 
@@ -166,7 +166,7 @@ Bağımlılık eylemi, üst görevin çıkış koşulunu temel alır. Aşağıda
 - **DependencyAction** özelliğinin uygun olarak ayarlanması, üst görev belirtilen bir hatayla sonlandırılmadığı takdirde bağımlı görevlerin çalışmaya uygun **olduğunu gösterir.**
 - **DependencyAction** özelliğinin **blok** olarak ayarlanması bağımlı görevlerin çalıştırmaya uygun olmadığını gösterir.
 
-**DependencyAction** özelliği için varsayılan ayar, çıkış kodu  0 ve diğer tüm çıkış koşulları için **engellenir** .
+**DependencyAction** özelliği için varsayılan ayar, çıkış kodu 0 ve diğer tüm çıkış koşulları için **engellenir** .
 
 Aşağıdaki kod parçacığı, bir üst görev için **DependencyAction** özelliğini ayarlar. Üst görev bir ön işleme hatasıyla veya belirtilen hata kodlarıyla çıkış içeriyorsa, bağımlı görev engellenir. Üst görev sıfır olmayan başka bir hatayla sonlandıysanız, bağımlı görev çalışmaya uygundur.
 
@@ -204,7 +204,7 @@ new CloudTask("B", "cmd.exe /c echo B")
 ```
 
 ## <a name="code-sample"></a>Kod örneği
-GitHub 'daki [taskdependencies][github_taskdependencies] sample project is one of the [Azure Batch code samples][github_samples] . Bu Visual Studio çözümü şunları gösterir:
+[Taskdependencies][github_taskdependencies] örnek projesi, GitHub 'daki [Azure Batch kod örneklerinden][github_samples] biridir. Bu Visual Studio çözümü şunları gösterir:
 
 - Bir işte görev bağımlılığını etkinleştirme
 - Diğer görevlere bağımlı görevler oluşturma

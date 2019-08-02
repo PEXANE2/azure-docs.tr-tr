@@ -8,14 +8,14 @@ ms.assetid: 0e3b103c-6e2a-4634-9e8c-8b85cf5e9c84
 ms.service: application-insights
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 07/24/2019
+ms.date: 07/31/2019
 ms.author: mbullwin
-ms.openlocfilehash: 4c60cb78c01d7e18801cbe43c8b767f622ef4b39
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 3a504fe4475cee8e2949ee121c632b792f349758
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68473104"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68694298"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>Coğrafi konum ve IP adresi işleme
 
@@ -83,8 +83,8 @@ Yalnızca tek bir Application Insights kaynağı için davranışı değiştirme
 
     ![Ekran görüntüsü "ıbizaaiextension" öğesinden sonra virgül ekler ve "Disableipmaskeleme" ile aşağıya yeni bir satır ekler: true](media/ip-collection/save.png)
 
-    > [!NOTE]
-    > Şöyle bir hata yaşarsanız: _Kaynak grubu, şablondaki bir veya daha fazla kaynak tarafından desteklenmeyen bir konumda. Lütfen farklı bir kaynak grubu seçin._ Geçici olarak, açılan listeden farklı bir kaynak grubu seçin ve ardından hatayı çözümlemek için özgün kaynak grubunuzu yeniden seçin.
+    > [!WARNING]
+    > Şöyle bir hata yaşarsanız: **_Kaynak grubu, şablondaki bir veya daha fazla kaynak tarafından desteklenmeyen bir konumda. Lütfen farklı bir kaynak grubu seçin._** Geçici olarak, açılan listeden farklı bir kaynak grubu seçin ve ardından hatayı çözümlemek için özgün kaynak grubunuzu yeniden seçin.
 
 5. **Satın almayı** **kabul** > ediyorum ' u seçin. 
 
@@ -92,7 +92,7 @@ Yalnızca tek bir Application Insights kaynağı için davranışı değiştirme
 
     Bu durumda yeni bir şey satın alınmazız, yalnızca mevcut Application Insights kaynağının yapılandırmasını güncelleştiriyoruz.
 
-6. Dağıtım tamamlandıktan sonra yeni telemetri verileri, IP ile doldurulan ilk üç sekizli ve son sekizli sıfırlanarak kaydedilir.
+6. Dağıtım tamamlandıktan sonra yeni telemetri verileri IP ile doldurulan ilk üç sekizli ve son sekizli sıfırlanarak kaydedilir.
 
     Şablonu yeniden seçip düzenleydiyseniz, yalnızca varsayılan şablonu görürsünüz ve yeni eklenen özelliği ve ilişkili değerini göremez. IP adresi verilerini görmüyorsanız ve ayarlandığını doğrulamak `"DisableIpMasking": true` istiyorsanız. Aşağıdaki PowerShell 'i çalıştırın: (Uygun `Fabrikam-dev` kaynak ve kaynak grubu adıyla değiştirin.)
     
@@ -130,10 +130,11 @@ Content-Length: 54
 
 Yalnızca ilk üç sekizli yerine tüm IP adresini kaydetmeniz gerekirse, IP adresini maskelenecek özel bir alana kopyalamak için bir [telemetri başlatıcısı](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#add-properties-itelemetryinitializer) kullanabilirsiniz.
 
-### <a name="aspnetaspnet-core"></a>ASP.NET/ASP.NET Core
+### <a name="aspnet--aspnet-core"></a>ASP.NET/ASP.NET Core
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
+using Microsoft.ApplicationInsights.DataContracts;
 using Microsoft.ApplicationInsights.Extensibility;
 
 namespace MyWebApp
@@ -142,15 +143,20 @@ namespace MyWebApp
     {
         public void Initialize(ITelemetry telemetry)
         {
-            if(!string.IsNullOrEmpty(telemetry.Context.Location.Ip))
+            ISupportProperties propTelemetry = telemetry as ISupportProperties;
+
+            if (propTelemetry !=null && !propTelemetry.Properties.ContainsKey("client-ip"))
             {
-                telemetry.Context.Properties["client-ip"] = telemetry.Context.Location.Ip;
+                string clientIPValue = telemetry.Context.Location.Ip;
+                propTelemetry.Properties.Add("client-ip", clientIPValue);
             }
         }
-    }
-
+    } 
 }
 ```
+
+> [!NOTE]
+> Erişeerişemiyorsanız `ISupportProperties`, Application Insights SDK 'nın en son kararlı sürümünü çalıştırdığınızdan emin olun. `ISupportProperties`, yüksek kardinalite değerlerine yöneliktir, ancak `GlobalProperties` bölge adı, ortam adı vb. gibi düşük kardinalite değerleri için daha uygundur. 
 
 ### <a name="enable-telemetry-initializer-for-aspnet"></a>Telemetri başlatıcısı 'nı etkinleştirin. ASP.NET
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad2f25aac7f74c74eb63fd4666c5184ae751ec1f
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: cce5de98fe4914e18ee0154d4ac5f1af008d32a6
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499924"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561298"
 ---
 # <a name="enable-passwordless-sign-in-for-azure-ad-preview"></a>Azure AD için passwordless oturum açma özelliğini etkinleştirme (Önizleme)
 
@@ -39,7 +39,7 @@ Kuruluşlar, Windows oturum açma için güvenlik anahtarlarının kullanımın�
 ### <a name="enable-credential-provider-via-intune"></a>Intune aracılığıyla kimlik bilgisi sağlayıcısını etkinleştirme
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
-1. **Cihaz kaydı** **Windows kaydı** >  **iş için Windows Hello** **özelliklerini**Microsoft Intune gidin. >  >  > 
+1. **Cihaz kaydı** **Windows kaydı** > **iş için Windows Hello** **özelliklerini**Microsoft Intune gidin. >  >  > 
 1. **Ayarlar** ' ın altında **, oturum açma Için güvenlik anahtarlarını kullan '** ın altında **etkinleştirilmesi**.
 
 Oturum açma için güvenlik anahtarlarının yapılandırılması, Iş için Windows Hello 'Yu yapılandırmaya bağlı değildir.
@@ -109,7 +109,7 @@ FIDO2 güvenlik anahtarlarına yönelik kayıt özellikleri, Birleşik kayıt ö
 ### <a name="enable-new-passwordless-authentication-methods"></a>Yeni passwordless kimlik doğrulama yöntemlerini etkinleştir
 
 1. [Azure portalda](https://portal.azure.com) oturum açma
-1. **Azure Active Directory** > **kimlik doğrulama yöntemleri** > **kimlik doğrulama yöntemi ilkesi (Önizleme)** ' ne gidin
+1. **Azure Active Directory** > **güvenlik** **kimlik doğrulama yöntemleri kimlik doğrulama** **yöntemi ilkesini inceleyin (Önizleme)**  >  > 
 1. Her **yöntemin**altında, aşağıdaki seçenekleri belirleyin
    1. **Etkinleştir** -Evet veya Hayır
    1. **Hedef** -tüm kullanıcılar veya kullanıcıları seçin

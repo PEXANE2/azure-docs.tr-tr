@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 07/12/2019
 ms.author: dech
-ms.openlocfilehash: 01645e66907e01b2e8fcb771976b50e5bbc8abf4
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 0368e99135dd6e377dd2820b3e673c55182319b9
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68229030"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663806"
 ---
 # <a name="azure-cosmos-db-net-standard-sdk-for-sql-api-download-and-release-notes"></a>SQL API için .NET Standard SDK Azure Cosmos DB: Notları indir ve serbest bırak
 > [!div class="op_single_selector"]
@@ -28,8 +28,8 @@ ms.locfileid: "68229030"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST Kaynak Sağlayıcısı](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [Bulkexecutor'a - .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [Bulkexecutor'a - Java](sql-api-sdk-bulk-executor-java.md)
+> * [Toplu yürütücü-.NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Toplu yürütücü-Java](sql-api-sdk-bulk-executor-java.md)
 
 | |  |
 |---|---|
@@ -41,6 +41,25 @@ ms.locfileid: "68229030"
 |**Geçerli desteklenen çerçevesi**|[Microsoft .NET Standart 2,0](/dotnet/standard/net-standard)|
 
 ## <a name="release-notes"></a>Sürüm notları
+### <a name="a-name310310"></a><a name="3.1.0"/>3.1.0
+#### <a name="added"></a>Eklendi
+- [#541](https://github.com/Azure/azure-cosmos-dotnet-v3/pull/541) İstemci ve sorgu seçeneklerine tutarlılık düzeyi eklendi
+- [#544](https://github.com/Azure/azure-cosmos-dotnet-v3/pull/544) LINQ için devamlılık belirteci desteği eklendi
+- [#557](https://github.com/Azure/azure-cosmos-dotnet-v3/pull/557) Öğe isteği seçeneklerine tetikleyici seçenekleri eklendi
+- [#571](https://github.com/Azure/azure-cosmos-dotnet-v3/pull/571) İsteğe bağlı ayarlarla varsayılan bir JSON.net serileştirici eklendi
+- [#572](https://github.com/Azure/azure-cosmos-dotnet-v3/pull/572) Createcontainerıfnotexistsasync üzerine bölüm anahtarı doğrulaması eklendi
+- [#581](https://github.com/Azure/azure-cosmos-dotnet-v3/pull/581) LINQ to QueryDefinition API 'SI ekleniyor
+- [#592](https://github.com/Azure/azure-cosmos-dotnet-v3/pull/592) Container Builder 'a CreateIfNotExistsAsync eklendi
+- [#597](https://github.com/Azure/azure-cosmos-dotnet-v3/pull/597) ResponseMessage 'a devamlılık belirteci özelliği eklendi
+- [#604](https://github.com/Azure/azure-cosmos-dotnet-v3/pull/604) LINQ Tostreamıterator genişletme yöntemi eklendi
+
+#### <a name="fixed"></a>Sabit
+- [#548](https://github.com/Azure/azure-cosmos-dotnet-v3/pull/548) CosmosException. ToString (); içinde yanlış yazılmış ileti düzeltildi
+- [#558](https://github.com/Azure/azure-cosmos-dotnet-v3/pull/558) LocationCache ConcurrentDict kilit çakışması onarımı
+- [#561](https://github.com/Azure/azure-cosmos-dotnet-v3/pull/561) Getıtemlinqqueryable artık null sorgu ile çalışmaktadır
+- [#567](https://github.com/Azure/azure-cosmos-dotnet-v3/pull/567) Sorgu farklı dil kültürlerini doğru şekilde işliyor
+- [#574](https://github.com/Azure/azure-cosmos-dotnet-v3/pull/574) Sorgu ayrıştırma beklenmeyen bir özel durumla başarısız olursa, düzeltilen boş hata iletisi
+- [#576](https://github.com/Azure/azure-cosmos-dotnet-v3/pull/576) Sorgu girişi bir akışa doğru bir şekilde seri hale getirir
 
 ### <a name="a-name300300"></a><a name="3.0.0"/>3.0.0 
 * .NET SDK 'nın [sürüm 3.0.0](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) genel kullanılabilirliği
@@ -67,7 +86,9 @@ Kullanımdan kaldırılan bir SDK kullanarak Azure Cosmos DB yönelik istekler h
 
 | Version | Yayınlanma Tarihi | Sona erme tarihi |
 | --- | --- | --- |
+| [3.1.0](#3.1.0) |29 Temmuz 2019 |--- |
 | [3.0.0](#3.0.0) |15 Temmuz 2019 |--- |
+
 
 ## <a name="faq"></a>SSS
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]

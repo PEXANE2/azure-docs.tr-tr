@@ -10,15 +10,15 @@ ms.date: 03/21/2019
 ms.author: danlep
 ms.custom: mvc
 ms.openlocfilehash: 8ae7ab3f53f480f46165800504fbb1eb6649c3e2
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68325965"
 ---
 # <a name="retrieve-container-logs-and-events-in-azure-container-instances"></a>Azure Container Instances kapsayıcı günlüklerini ve olayları alma
 
-Yanlış bir Kapsayıcınız olduğunda, [az Container logs][az-container-logs], and streaming its standard out and standard error with [az container attach][az-container-attach]ile günlüklerini görüntüleyerek başlayın.
+Hatalı bir Kapsayıcınız olduğunda, [az Container logs][az-container-logs]ile günlüklerini görüntüleyerek başlayın ve standart çıkış ve standart hatayı [az Container Attach][az-container-attach]ile akışa koyun.
 
 ## <a name="view-logs"></a>Günlükleri görüntüleme
 

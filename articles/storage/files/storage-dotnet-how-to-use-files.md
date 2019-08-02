@@ -1,7 +1,6 @@
 ---
 title: .NET ile Azure Dosyaları için geliştirme | Microsoft Docs
 description: Dosya verilerini depolamak için Azure Dosyaları'nı kullanan .NET uygulamaları ve hizmetlerini geliştirmeyi öğrenin.
-services: storage
 author: roygara
 ms.service: storage
 ms.devlang: dotnet
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/22/2017
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 38bafdb4753b41a9c8acd599e6b7215e1777c6cd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 35f29e425fc471e4df4a037ef312af0fd041dcd7
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65779475"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699778"
 ---
 # <a name="develop-for-azure-files-with-net"></a>.NET ile Azure Dosyaları için geliştirme
 
@@ -35,12 +34,12 @@ Azure Dosyaları hakkında daha fazla bilgi için bkz. [Azure Dosyaları'na Giri
 
 ## <a name="understanding-the-net-apis"></a>.NET API'lerini anlama
 
-Azure dosyaları istemci uygulamalarına iki geniş yaklaşım sağlar: Sunucu İleti Bloğu (SMB) ve REST. .NET içinde bu yaklaşımlar `System.IO` ve `WindowsAzure.Storage` API'leri tarafından soyutlanır.
+Azure dosyaları, istemci uygulamalarına iki geniş yaklaşım sağlar: Sunucu Ileti bloğu (SMB) ve REST. .NET içinde bu yaklaşımlar `System.IO` ve `WindowsAzure.Storage` API'leri tarafından soyutlanır.
 
 API | Kullanılması gereken durumlar | Notlar
 ----|-------------|------
 [System.IO](https://docs.microsoft.com/dotnet/api/system.io) | Uygulamanız: <ul><li>SMB üzerinden dosya okuma/yazmaya ihtiyaç duyuyor</li><li>Azure Dosyaları hesabınıza 445 bağlantı noktası üzerinden erişimi olan bir cihazda çalışıyor</li><li>Dosya paylaşımının yönetim ayarlarından herhangi birini yönetmesi gerekmiyor</li></ul> | SMB üzerinden Azure Dosyaları ile dosya G/Ç kodlaması genellikle herhangi bir ağ dosya paylaşımı ya da yerel depolama cihazı ile G/Ç kodlaması işlemiyle aynıdır. .NET içindeki dosya G/Ç dahil birkaç özelliğe giriş için [bu öğreticiye](https://docs.microsoft.com/dotnet/csharp/tutorials/console-teleprompter) bakın.
-[Microsoft.Azure.Storage.File](https://docs.microsoft.com/dotnet/api/overview/azure/storage#client-library) | Uygulamanız: <ul><li>Güvenlik duvarı veya ISS kısıtlamaları nedeniyle bağlantı noktası 445’te SMB üzerinden Azure Dosyalarına erişemiyor</li><li>Bir dosya paylaşımının kotasını ayarlama veya paylaşılan bir erişim imzası oluşturma gibi yönetim işlevleri gerektiriyor</li></ul> | Bu makalede dosya G/Ç için REST ile (SMB yerine) `Microsoft.Azure.Storage.File` kullanımı ve dosya paylaşımının yönetimi gösterilmektedir.
+[Microsoft. Azure. Storage. File](https://docs.microsoft.com/dotnet/api/overview/azure/storage#client-library) | Uygulamanız: <ul><li>Güvenlik duvarı veya ISS kısıtlamaları nedeniyle bağlantı noktası 445’te SMB üzerinden Azure Dosyalarına erişemiyor</li><li>Bir dosya paylaşımının kotasını ayarlama veya paylaşılan bir erişim imzası oluşturma gibi yönetim işlevleri gerektiriyor</li></ul> | Bu makalede dosya G/Ç için REST ile (SMB yerine) `Microsoft.Azure.Storage.File` kullanımı ve dosya paylaşımının yönetimi gösterilmektedir.
 
 ## <a name="create-the-console-application-and-obtain-the-assembly"></a>Konsol uygulaması oluşturma ve derleme alma
 Visual Studio'da yeni bir Windows konsol uygulaması oluşturun. Aşağıdaki adımlar Visual Studio 2017’de konsol uygulaması oluşturmayı gösterir, ancak adımlar, diğer Visual Studio sürümlerindekilerle aynıdır.
@@ -53,14 +52,14 @@ Visual Studio'da yeni bir Windows konsol uygulaması oluşturun. Aşağıdaki ad
 
 Bu öğreticideki tüm kod örnekleri konsol uygulamanızın `Program.cs` dosyasındaki `Main()` yöntemine eklenebilir.
 
-Azure depolama istemci Kitaplığı'ndaki bir Azure bulut hizmeti veya web uygulaması da dahil olmak üzere, .NET uygulaması ve Masaüstü ve mobil uygulamaları herhangi bir türü kullanabilirsiniz. Bu kılavuzda, sadeleştirmek için konsol uygulaması kullanmaktayız.
+Azure depolama istemci kitaplığını, Azure bulut hizmeti veya Web uygulaması, masaüstü ve mobil uygulamalar dahil olmak üzere herhangi bir türde .NET uygulamasında kullanabilirsiniz. Bu kılavuzda, sadeleştirmek için konsol uygulaması kullanmaktayız.
 
 ## <a name="use-nuget-to-install-the-required-packages"></a>Gereken paketleri yüklemek için NuGet kullanma
 Bu öğreticiyi tamamlamak için projenizde başvurmanız gereken iki paket vardır:
 
-* [.NET için Microsoft Azure depolama ortak kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/): Bu paket depolama hesabınızdaki ortak kaynaklarına programlı erişim sağlar.
-* [.NET için Microsoft Azure depolama blobu Kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/): Bu paket depolama hesabınızdaki Blob kaynaklarına programlı erişim sağlar.
-* [.NET için Microsoft Azure Yapılandırma Yöneticisi Kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/): Bu paket, uygulamanızın nerede çalıştığına bakmaksızın yapılandırma dosyasındaki bağlantı dizesini ayrıştırmak için bir sınıf sağlar.
+* [.NET için Microsoft Azure depolama ortak kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/): Bu paket, Depolama hesabınızdaki ortak kaynaklara programlı erişim sağlar.
+* [.NET için Microsoft Azure depolama blob kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/): Bu paket, Depolama hesabınızdaki blob kaynaklarına programlı erişim sağlar.
+* [.NET için Microsoft Azure Configuration Manager kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/): Bu paket, uygulamanızın nerede çalıştığını fark etmeksizin yapılandırma dosyasında bir bağlantı dizesini ayrıştırmak için bir sınıf sağlar.
 
 Her iki paketi de almak için NuGet kullanabilirsiniz. Şu adımları uygulayın:
 
@@ -221,7 +220,7 @@ if (share.Exists())
 }
 ```
 
-Paylaşılan erişim imzaları oluşturma ve kullanma hakkında daha fazla bilgi için bkz. [kullanarak paylaşılan erişim imzaları (SAS)](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+Paylaşılan erişim imzalarını oluşturma ve kullanma hakkında daha fazla bilgi için bkz. [paylaşılan erişim imzaları (SAS) kullanma](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 ## <a name="copy-files"></a>Dosyaları kopyalama
 Azure Storage İstemci Kitaplığı’nın 5.x sürümünden başlayarak, bir dosyayı başka bir dosyaya, bir dosyayı başka bir bloba veya bir blobu bir dosyaya kopyalayabilirsiniz. Sonraki bölümlerde, bu kopyalama işlemlerini programlamayla nasıl gerçekleştirebileceğinizi göstereceğiz.
@@ -325,8 +324,8 @@ Console.WriteLine("Destination blob contents: {0}", destBlob.DownloadText());
 
 Aynı şekilde, bir blobu bir dosyaya kopyalayabilirsiniz. Kaynak dosya bir blob ise, kopyalama sırasında bu bloba erişimi yetkilendirmesi için bir SAS oluşturun.
 
-## <a name="share-snapshots"></a>Paylaşım anlık görüntüleri
-Azure depolama istemci Kitaplığı'nın 8.5 sürümünden başlayarak, bir paylaşım anlık görüntüsü oluşturabilirsiniz. Ayrıca paylaşım anlık görüntülerini listeleyebilir, onlara göz atabilir ve paylaşım anlık görüntülerini silebilirsiniz. Paylaşım anlık görüntüleri salt okunur olduğundan paylaşım anlık görüntüleri üzerinde yazma işlemi gerçekleştirilemez.
+## <a name="share-snapshots"></a>Anlık görüntü paylaşma
+Azure Storage Istemci kitaplığı sürüm 8,5 ' den başlayarak bir paylaşma anlık görüntüsü oluşturabilirsiniz. Ayrıca paylaşım anlık görüntülerini listeleyebilir, onlara göz atabilir ve paylaşım anlık görüntülerini silebilirsiniz. Paylaşım anlık görüntüleri salt okunur olduğundan paylaşım anlık görüntüleri üzerinde yazma işlemi gerçekleştirilemez.
 
 **Paylaşım anlık görüntüsü oluşturma**
 
@@ -402,7 +401,7 @@ CloudFileShare mySnapshot = fClient.GetShareReference(baseShareName, snapshotTim
 ## <a name="troubleshooting-azure-files-using-metrics"></a>Ölçümleri kullanarak Azure Dosyaları sorunlarını giderme
 Artık Azure Depolama Analizi, Azure Dosyaları için ölçümleri destekliyor. Ölçüm verilerini kullanarak istekleri ve tanılama sorunlarını izleyebilirsiniz.
 
-Azure dosyaları için ölçümleri etkinleştirebilirsiniz [Azure portalında](https://portal.azure.com). Ayrıca, REST API veya Depolama İstemci Kitaplığı'ndaki analoglarından biri aracılığıyla Dosya Hizmeti Özelliklerini Ayarla işlemine çağrı yaparak ölçümleri programlamayla etkinleştirebilirsiniz.
+[Azure Portal](https://portal.azure.com)Azure dosyaları için ölçümleri etkinleştirebilirsiniz. Ayrıca, REST API veya Depolama İstemci Kitaplığı'ndaki analoglarından biri aracılığıyla Dosya Hizmeti Özelliklerini Ayarla işlemine çağrı yaparak ölçümleri programlamayla etkinleştirebilirsiniz.
 
 Aşağıdaki kodda, Azure Dosyaları için ölçümleri etkinleştirmek üzere .NET için Depolama İstemcisi Kitaplığı'nı nasıl kullanacağınız gösterilmiştir.
 

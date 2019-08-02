@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/16/2019
 ms.author: zarhoads
 ms.openlocfilehash: 4eef31a050072c0413421a5490b35b765cb9557d
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68381825"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) üzerinde işlem yoğunluğu yoğun iş yükleri için GPU 'ları kullanma
@@ -20,7 +20,7 @@ ms.locfileid: "68381825"
 Grafik işleme birimleri (GPU 'Lar) genellikle grafik ve görselleştirme iş yükleri gibi işlem yoğunluğu yoğun iş yükleri için kullanılır. AKS, bu yoğun işlem yoğunluğu olan iş yüklerini Kubernetes 'de çalıştırmak için GPU etkin düğüm havuzlarının oluşturulmasını destekler. Kullanılabilir GPU etkin VM 'Ler hakkında daha fazla bilgi için bkz. [Azure 'Da GPU IYILEŞTIRILMIŞ VM boyutları][gpu-skus]. AKS düğümleri için en az *Standard_NC6*boyut önerilir.
 
 > [!NOTE]
-> GPU özellikli VM 'Ler, daha yüksek fiyatlandırma ve bölge kullanılabilirliğine tabi olan özel donanımlar içerir. Daha fazla bilgi için bkz. [fiyatlandırma][azure-pricing] tool and [region availability][azure-availability].
+> GPU özellikli VM 'Ler, daha yüksek fiyatlandırma ve bölge kullanılabilirliğine tabi olan özel donanımlar içerir. Daha fazla bilgi için bkz. [fiyatlandırma][azure-pricing] aracı ve [bölge kullanılabilirliği][azure-availability].
 
 Şu anda, GPU etkin düğüm havuzlarının kullanılması yalnızca Linux düğüm havuzları için kullanılabilir.
 

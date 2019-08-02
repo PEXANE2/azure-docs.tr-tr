@@ -16,12 +16,12 @@ ms.date: 07/10/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 896cc495d6f369c034171833a9b90aa53e6477b6
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 12452b4e9cc6caa64d4c81a310fbccb5d1717817
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234643"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678150"
 ---
 # <a name="what-is-azure-ad-entitlement-management-preview"></a>Azure AD yetkilendirme yönetimi nedir? (Önizleme)
 
@@ -90,7 +90,7 @@ Bir erişim paketiyle ve ilkelerine sahip olan erişim paketi Yöneticisi şunla
 
 - Kaynaklar
 - Kullanıcıların kaynaklar için ihtiyaç duyduğu roller
-- Erişim istemek için uygun olan iç kullanıcılar ve dış kullanıcılar
+- Erişim istemek için uygun olan dış kullanıcıların iç kullanıcıları ve iş ortağı kuruluşları
 - Onay işlemi ve erişimi onaylayabilen veya reddeden kullanıcılar
 - Kullanıcının erişim süresi
 
@@ -123,12 +123,12 @@ Yetkilendirme yönetimini ve belgelerini daha iyi anlamak için aşağıdaki ko�
 | policy | Kullanıcıların erişim alma, kimlerin ne kadar süreceğine ve kullanıcıların ne kadar süreceğine ilişkin erişim yaşam döngüsünü tanımlayan bir kurallar kümesi. Örnek ilkeler, çalışan erişimini ve dış erişimi içerir. |
 | catalog | İlgili kaynakların ve erişim paketlerinin kapsayıcısı. |
 | Genel Katalog | Her zaman kullanılabilir olan yerleşik bir katalog. Genel kataloğa kaynak eklemek için belirli izinler gerekir. |
-| resource | Bir kullanıcıya izin verilebilecek bir varlık veya hizmet (örneğin, bir grup, uygulama veya site). |
-| Kaynak türü | Gruplar, uygulamalar ve SharePoint Online siteleri içeren kaynak türü. |
+| resource | Bir kullanıcıya izin verilebilecek bir varlık veya hizmet (örneğin, bir Office grubu, güvenlik grubu, uygulama veya SharePoint Online sitesi). |
+| kaynak türü | Gruplar, uygulamalar ve SharePoint Online siteleri içeren kaynak türü. |
 | Kaynak rolü | Bir kaynakla ilişkili izinler koleksiyonu. |
 | Kaynak dizini | Paylaşılacak bir veya daha fazla kaynağı olan bir dizin. |
-| atanan kullanıcılar | Erişim paketinin bir kullanıcıya veya gruba atanması. |
-| Etkinleştirebilir | Kullanıcılara istemek için bir erişim paketi oluşturma işlemi. |
+| atanan kullanıcılar | Kullanıcının bu erişim paketinin tüm kaynak rollerine sahip olması için bir erişim paketinin kullanıcıya atanması. |
+| etkinleştir | Kullanıcılara istemek için bir erişim paketi oluşturma işlemi. |
 
 ## <a name="license-requirements"></a>Lisans gereksinimleri
 

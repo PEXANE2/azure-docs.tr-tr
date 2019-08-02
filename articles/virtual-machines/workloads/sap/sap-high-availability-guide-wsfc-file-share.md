@@ -18,10 +18,10 @@ ms.date: 07/24/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 70f9264357ca1a0c1a612481f4254e86f05e41d8
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68479186"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
@@ -312,11 +312,11 @@ Genişleme dosya paylaşımının kullanılması için sisteminizin aşağıdaki
 * Azure Premium disklerini kullanmanız gerekir.
 * Azure yönetilen diskleri kullanmanızı öneririz.
 * Birimleri dayanıklı dosya sistemi (ReFS) kullanarak biçimlendirmeniz önerilir.
-    * Daha fazla bilgi için bkz. sap Note 1869038-depolama alanları doğrudan 'de planlama birimleri planlama bölümünde bulunan, and the [Choosing the file system][planning-volumes-s2d-choosing-filesystem] [ReFs dosya sistemi için sap desteği][1869038] bölümü.
+    * Daha fazla bilgi için bkz. [SAP Note 1869038-ReFs dosya sistemi IÇIN sap desteği][1869038] ve depolama alanları doğrudan 'de planlama birimlerinin bulunduğu makalenin [dosya sistemini seçme][planning-volumes-s2d-choosing-filesystem] bölümü.
     * [MICROSOFT KB4025334 toplu güncelleştirme][kb4025334]'yi yüklediğinizden emin olun.
 * DS serisi veya DSv2 serisi Azure VM boyutlarını kullanabilirsiniz.
 * Depolama Alanları Doğrudan disk eşitleme için gerekli olan VM 'Ler arasında iyi ağ performansı için, en az "yüksek" ağ bant genişliğine sahip bir VM türü kullanın.
-    Daha fazla bilgi için bkz. [DSv2-Series][dv2-series] and [DS-Series][ds-series] belirtimleri.
+    Daha fazla bilgi için bkz. [DSv2-Series][dv2-series] ve [DS serisi][ds-series] belirtimleri.
 * Depolama havuzunda ayrılmamış kapasiteyi ayırmanızı öneririz. Depolama havuzundaki ayrılmamış kapasiteden ayrıldığınızda, bir sürücü başarısız olursa "yerinde" onarım için birim alanı verilir. Bu, veri güvenliğini ve performansını geliştirir.  Daha fazla bilgi için bkz. [birim boyutunu seçme][choosing-the-size-of-volumes-s2d].
 * Azure iç yük dengeleyiciyi, \<SAP Küresel Ana bilgisayar\>gibi genişleme dosya paylaşımının ağ adı için yapılandırmanız gerekmez. Bu, SAP ascs \</SCS örneğinin veya DBMS 'nin yoks/SCS sanal ana bilgisayar adı\> için yapılır. Genişleme dosya paylaşma, tüm küme düğümlerinde yükü ölçeklendirir. \<SAP Küresel Ana\> bilgisayar tüm küme düğümleri için yerel IP adresini kullanır.
 

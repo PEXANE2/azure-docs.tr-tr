@@ -10,10 +10,10 @@ ms.date: 07/08/2019
 ms.author: danlep
 ms.custom: mvc
 ms.openlocfilehash: 25cac6a66baeb1587e4b5ba3f0923ca9c4394706
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68325497"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Azure Container Instances Azure dosya paylaşımından bağlama
@@ -83,13 +83,13 @@ az container create \
 
 ## <a name="manage-files-in-mounted-volume"></a>Bağlı birimdeki dosyaları yönetme
 
-Kapsayıcı başlatıldıktan sonra, Microsoft [aci-hellofbir][aci-hellofiles] image to create small text files in the Azure file share at the mount path you specified. Obtain the web app's fully qualified domain name (FQDN) with the [az container show][az-container-show] komutu aracılığıyla dağıtılan basit Web uygulamasını kullanabilirsiniz:
+Kapsayıcı başlatıldıktan sonra, belirttiğiniz bağlama yolundaki Azure dosya paylaşımında küçük metin dosyaları oluşturmak için Microsoft [aci-hellofshare][aci-hellofiles] Image aracılığıyla dağıtılan basit Web uygulamasını kullanabilirsiniz. Web uygulamasının tam etki alanı adını (FQDN) [az Container Show][az-container-show] komutuyla edinin:
 
 ```azurecli-interactive
 az container show --resource-group $ACI_PERS_RESOURCE_GROUP --name hellofiles --query ipAddress.fqdn --output tsv
 ```
 
-Uygulamayı kullanarak metin kaydettikten sonra, dosya paylaşımında yazılmış dosyayı almak ve denetlemek için [Azure Portal][portal] or a tool like the [Microsoft Azure Storage Explorer][storage-explorer] kullanabilirsiniz.
+Uygulamayı kullanarak metin kaydettikten sonra, dosya paylaşımında yazılmış dosyayı almak ve denetlemek için [Microsoft Azure Depolama Gezgini][storage-explorer] gibi bir aracı [Azure Portal][portal] veya bir araç kullanabilirsiniz.
 
 ## <a name="deploy-container-and-mount-volume---yaml"></a>Kapsayıcı dağıtma ve bağlama birimi-YAML
 

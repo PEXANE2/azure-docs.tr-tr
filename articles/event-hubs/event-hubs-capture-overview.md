@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: 4ba3109460616be98b5330ec7175f161a6a3b750
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68326173"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Azure Blob Depolama veya Azure Data Lake Storage Azure Event Hubs ile olayları yakalama
@@ -73,7 +73,7 @@ Event Hubs yakalama tarafından üretilen dosyalar aşağıdaki Avro şemanın v
 
 ![Avro şeması][3]
 
-Avro dosyalarını keşfetmeye yönelik kolay bir yol, basit bir SQL odaklı deneyim için [avro araçları][Avro Tools] jar from Apache. You can also use [Apache Drill][Apache Drill] 'nı veya alınan verilerde karmaşık dağıtılmış işleme gerçekleştirmek için[Apache Spark] [Apache Spark]. 
+Avro dosyalarını keşfetmeye yönelik kolay bir yol, Apache 'den [avro araçları][Avro Tools] jar 'i kullanmaktır. Ayrıca, basit bir SQL odaklı deneyim için [Apache detaya gitme][Apache Drill] veya [Apache Spark][Apache Spark] , alınan verilerde karmaşık dağıtılmış işleme gerçekleştirmek için de kullanabilirsiniz. 
 
 ### <a name="use-apache-drill"></a>Apache detaya gitme kullan
 
@@ -129,7 +129,7 @@ Avro araçları, dosya JSON biçimine dönüştürün ve başka bir işlem gerç
 
 Daha gelişmiş işleme gerçekleştirmek için indirin ve kendi seçtiğiniz platform için Avro yükleyin. Bu makalenin yazıldığı sırada, kullanılabilir uygulamalar için C, C++, C\#, Java, NodeJS, Perl, PHP, Python ve Ruby.
 
-Apache avro, [Java][Java] and [Python][Python]için Başlarken kılavuzlarını içerir. Ayrıca okuyabilirsiniz [Event Hubs yakalama ile çalışmaya başlama](event-hubs-capture-python.md) makalesi.
+Apache avro, [Java][Java] ve [Python][Python]için Başlarken kılavuzlarını içerir. Ayrıca okuyabilirsiniz [Event Hubs yakalama ile çalışmaya başlama](event-hubs-capture-python.md) makalesi.
 
 ## <a name="how-event-hubs-capture-is-charged"></a>Event Hubs yakalama nasıl ücretlendirilir
 

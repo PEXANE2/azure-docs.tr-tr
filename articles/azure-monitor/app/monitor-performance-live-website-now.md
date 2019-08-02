@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: mbullwin
 ms.openlocfilehash: ea324d616928b0d517c00dc9cab3e282f1e3415e
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67876431"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Application Insights codeless Attach ile çalışma zamanında Web uygulamalarını işaretleme
@@ -64,7 +64,7 @@ Uygulamanız bir IIS sunucusunda barındırılıyorsa, Durum İzleyici’yi kull
 2. Application Insights Durum İzleyicisi henüz yüklü değilse, [yükleyiciyi indirin ve çalıştırın](#download)
 3. Durum İzleyicisi'nde yüklü web uygulamasını veya izlemek istediğiniz web sitesini seçin. Azure kimlik bilgilerinizle oturum açın.
 
-    Sonuçlarını Application Insights portalında görmek istediğiniz kaynağı yapılandırın. (Normalde, yeni bir kaynak oluşturmak en iyi yöntemdir. Bu uygulama için zaten [Web testleriniz][availability] or [client monitoring][client] varsa, var olan bir kaynağı seçin.) 
+    Sonuçlarını Application Insights portalında görmek istediğiniz kaynağı yapılandırın. (Normalde, yeni bir kaynak oluşturmak en iyi yöntemdir. Bu uygulama için [Web testleriniz][availability] veya [istemci izleme][client] zaten varsa var olan bir kaynağı seçin.) 
 
     ![Uygulama ve kaynak seçin.](./media/monitor-performance-live-website-now/appinsights-036-configAIC.png)
 
@@ -152,7 +152,7 @@ Ardından Durum izleyicisini yeniden başlatın.
 
 * Durum İzleyicisi bir .NET uygulaması olduğu gibi, [yapılandırma dosyasına uygun tanılamayı ekleyerek de .net izlemeyi](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/trace-debug/system-diagnostics-element)etkinleştirebilirsiniz. Örneğin, bazı senaryolarda [ağ izlemeyi yapılandırarak](https://docs.microsoft.com/dotnet/framework/network-programming/how-to-configure-network-tracing) ağ düzeyinde neler olduğunu görmek yararlı olabilir
 
-### <a name="insufficient-permissions"></a>Yetersiz izinler
+### <a name="insufficient-permissions"></a>İzinler yetersiz
   
 * "Yetersiz izinler" hakkında bir ileti görürseniz, sunucuda aşağıdakileri deneyin:
   * IIS Yöneticisi'nde, uygulama havuzunuzu seçin, **Gelişmiş Ayarlar**’ı açın ve **işlem modeli** altında kimliğini not edin.

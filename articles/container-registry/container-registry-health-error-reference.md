@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: danlep
-ms.openlocfilehash: 672d446fa8dc27612c7b046cac109bfa4ca5fec5
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 4585749c83432c19b6e62f57c1d954b3afc5ee33
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68309367"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608404"
 ---
 # <a name="health-check-error-reference"></a>Sistem durumu denetimi hata başvurusu
 
@@ -63,7 +63,7 @@ Bu hata, verilen kayıt defteri oturum açma sunucusu için DNS 'nin ping işlem
 
 ## <a name="connectivityforbiddenerror"></a>CONNECTIVITY_FORBIDDEN_ERROR
 
-Bu hata, verilen kayıt defteri için zorluk bitiş noktasının 403 yasaklanmış bir HTTP durumuyla yanıt verdiğini gösterir. Bu hata, büyük olasılıkla bir sanal ağ yapılandırması nedeniyle, kullanıcıların kayıt defterine erişemeyeceği anlamına gelir.
+Bu hata, verilen kayıt defteri için zorluk bitiş noktasının 403 yasaklanmış bir HTTP durumuyla yanıt verdiğini gösterir. Bu hata, büyük olasılıkla bir sanal ağ yapılandırması nedeniyle, kullanıcıların kayıt defterine erişemeyeceği anlamına gelir. Yapılandırılmış olan güvenlik duvarı kurallarını görmek için öğesini çalıştırın `az acr show --query networkRuleSet --name <registry>`.
 
 *Olası çözümler*: Sanal ağ kurallarını kaldırın veya geçerli istemci IP adresini izin verilen listeye ekleyin.
 

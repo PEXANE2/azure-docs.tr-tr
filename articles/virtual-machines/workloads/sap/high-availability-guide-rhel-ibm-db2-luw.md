@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 07/10/2019
 ms.author: juergent
 ms.openlocfilehash: 232468d9b3466759d7af2b7be68a1f553ced6e6d
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68348649"
 ---
 [1928533]: https://launchpad.support.sap.com/#/notes/1928533
@@ -125,7 +125,7 @@ Bir IBM DB2 yapılandırması dağıtmak için aşağıdaki adımları izlemeniz
   + VM 'Leri dağıtın.
   + RHEL Linux 'u güncelleştirin ve dosya sistemlerini yapılandırın.
   + Pacemaker 'ı yükleyip yapılandırın.
-  + [GlusterFS kümesini][glusterfs] ayarlama or [Azure NetApp Files][anf-rhel]
+  + [GlusterFS kümesi][glusterfs] veya [Azure NetApp Files][anf-rhel] ayarlama
   + [Yoks/ers ayrı bir kümeye][ascs-ha-rhel]yüklenir.
   + Dağıtılmış/yüksek kullanılabilirlik seçeneği (SWPM) ile IBM DB2 veritabanını yükler.
   + İkincil bir veritabanı düğümü ve örneği yükleyip oluşturun ve HADR 'yi yapılandırın.
@@ -241,7 +241,7 @@ Birincil IBM DB2 LUW veritabanı örneğini ayarlamak için:
 
 SAP homojen sistem kopyalama yordamını kullanarak bekleme veritabanı sunucusunu ayarlamak için aşağıdaki adımları yürütün:
 
-1. **Hedef sistemler**  **Dağıtılmış veritabanı örneği**> Sistem kopyalama seçeneğini belirleyin. >  > 
+1. **Hedef sistemler** **Dağıtılmış veritabanı örneği**> Sistem kopyalama seçeneğini belirleyin. >  > 
 1. Bir kopyalama yöntemi olarak, yedek sunucu örneğindeki bir yedeği geri yüklemek için yedekleme kullanabilmeniz için **homojen sistemi** ' ni seçin.
 1. Homojen sistem kopyası için veritabanını geri yüklemek üzere çıkış adımına ulaştığınızda yükleyiciden çıkın. Veritabanını birincil ana bilgisayarın yedeğinden geri yükleyin. Sonraki yükleme aşamaları, birincil veritabanı sunucusunda zaten yürütüldü.
 

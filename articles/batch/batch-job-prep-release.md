@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: lahugh
 ms.custom: seodec18
 ms.openlocfilehash: a85ced787529db7e6d607665d81632ab1c450dfe
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68466968"
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Toplu işlem düğümlerinde iş hazırlama ve iş bırakma görevlerini çalıştırma
@@ -31,7 +31,7 @@ Bir işin görevleri çalıştırılmadan önce, iş hazırlama görevi, en az b
 
 İş hazırlama ve bırakma görevleri, dosya indirme ([kaynak dosyaları][net_job_prep_resourcefiles]), yükseltilmiş yürütme, özel ortam değişkenleri, en uzun yürütme süresi, yeniden deneme sayısı ve dosya saklama süresi gibi tanıdık toplu görev özellikleri sunar.
 
-Aşağıdaki bölümlerde, [Batch .net][api_net] kitaplığı 'nda bulunan [JobPreparationTask][net_job_prep] and [JobReleaseTask][net_job_release] sınıflarının nasıl kullanılacağını öğreneceksiniz.
+Aşağıdaki bölümlerde, [Batch .net][api_net] kitaplığı 'Nda bulunan [JobPreparationTask][net_job_prep] ve [jobreleasetask][net_job_release] sınıflarını nasıl kullanacağınızı öğreneceksiniz.
 
 > [!TIP]
 > İş hazırlama ve bırakma görevleri özellikle bir işlem düğümü havuzunun iş çalıştırmaları arasında devam ettiği ve birçok iş tarafından kullanıldığı "paylaşılan havuz" ortamlarında yararlıdır.
@@ -64,7 +64,7 @@ Bir işin görevlerinin yürütülmesinden önce Batch, görevi çalıştırmak 
 İş hazırlama görevi yalnızca bir görevi çalıştırmak için zamanlanan düğümlerde yürütülür. Bu, bir düğüme bir görevin atanmadığı durumlarda bir hazırlık görevinin gereksiz şekilde yürütülmesini önler. Bu durum, bir iş için görev sayısı bir havuzdaki düğüm sayısından az olduğunda meydana gelebilir. Aynı zamanda, görev sayısı toplam olası eşzamanlı görevden daha düşükse bazı düğümleri boşta bırakan, [eşzamanlı görev yürütme](batch-parallel-node-tasks.md) etkinleştirildiğinde da geçerlidir. Boştaki düğümlerde iş hazırlama görevini çalıştırmayan zaman, veri aktarımı ücretlerine göre daha az para harcamanız sağlayabilirsiniz.
 
 > [!NOTE]
-> [JobPreparationTask][net_job_prep_cloudjob] differs from [CloudPool.StartTask][pool_starttask] bu JobPreparationTask her bir işin başlangıcında yürütülür, ancak startTask yalnızca bir işlem düğümü bir havuza katıldığında veya yeniden başlatıldığında yürütülür.
+> [JobPreparationTask][net_job_prep_cloudjob] , her bir Işin başlangıcında JobPreparationTask çalıştırdığı [Cloudpool. startTask][pool_starttask] öğesinden farklıdır, ancak startTask yalnızca bir işlem düğümü bir havuza katıldığında veya yeniden başlatıldığında yürütülür.
 > 
 > 
 
@@ -79,7 +79,7 @@ Iş sürümü görevleri, Batch hizmeti tarafından sonlandırılmadan önce en 
 > 
 
 ## <a name="job-prep-and-release-tasks-with-batch-net"></a>Batch .NET ile iş PREP ve sürüm görevleri
-Bir iş hazırlama görevini kullanmak için bir [JobPreparationTask][net_job_prep] object to your job's [CloudJob.JobPreparationTask][net_job_prep_cloudjob] özelliği atayın. Benzer şekilde, bir [jobreleasetask][net_job_release] başlatın ve işin yayın görevini ayarlamak Için iş 'Nin [cloudjob. jobreleasetask][net_job_prep_cloudjob] özelliğine atayın.
+İş hazırlama görevini kullanmak için, işinizin [Cloudjob. JobPreparationTask][net_job_prep_cloudjob] özelliğine bir [JobPreparationTask][net_job_prep] nesnesi atayın. Benzer şekilde, bir [jobreleasetask][net_job_release] başlatın ve işin yayın görevini ayarlamak için Iş 'Nin [Cloudjob. jobreleasetask][net_job_prep_cloudjob] özelliğine atayın.
 
 Bu kod parçacığında, `myBatchClient` bir [batchclient][net_batch_client]örneğidir ve `myPool` Batch hesabı içindeki mevcut bir havuzudur.
 
@@ -107,7 +107,7 @@ myJob.JobReleaseTask =
 await myJob.CommitAsync();
 ```
 
-Daha önce belirtildiği gibi, yayın görevi bir iş sonlandırıldığı veya silindiği zaman yürütülür. [JobOperations. TerminateJobAsync][net_job_terminate]. Delete a job with [JobOperations.DeleteJobAsync][net_job_delete]ile bir işi sonlandırın. Genellikle, görevleri tamamlandığında veya tanımladığınız zaman aşımıyla erişildiğinde bir işi sonlandırır veya silmeniz gerekir.
+Daha önce belirtildiği gibi, yayın görevi bir iş sonlandırıldığı veya silindiği zaman yürütülür. [JobOperations. TerminateJobAsync][net_job_terminate]ile bir işi sonlandırın. [JobOperations. DeleteJobAsync][net_job_delete]ile bir iş silin. Genellikle, görevleri tamamlandığında veya tanımladığınız zaman aşımıyla erişildiğinde bir işi sonlandırır veya silmeniz gerekir.
 
 ```csharp
 // Terminate the job to mark it as Completed; this will initiate the

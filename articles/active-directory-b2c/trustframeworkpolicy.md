@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 904893d4881de6be2c9055fefa9a8267cb045afd
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: b8b2cad95929d6132a4f0ae52597fb1633874ff1
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849419"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68592119"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -42,7 +42,7 @@ ms.locfileid: "67849419"
 |---------- | -------- | ----------- |
 | PolicySchemaVersion | Evet | İlkeyi yürütmek için kullanılacak şema sürümü. Değer şu şekilde olmalıdır`0.3.0.0` |
 | Tenantobjectıd | Hayır | Azure Active Directory (Azure AD) B2C kiracısı 'nin benzersiz nesne tanımlayıcısı. |
-| Değerine | Evet | Bu ilkenin ait olduğu kiracının benzersiz tanımlayıcısı. |
+| TenantId | Evet | Bu ilkenin ait olduğu kiracının benzersiz tanımlayıcısı. |
 | `PolicyId` | Evet | İlke için benzersiz tanımlayıcı. Bu tanımlayıcının önüne *B2C_1A_* gelmelidir |
 | PublicPolicyUri | Evet | İlke için kiracı KIMLIĞI ve ilke KIMLIĞI birleşimi olan URI. |
 | DeploymentMode | Hayır | Olası değerler: `Production`, `Debugging`, veya `Development`. `Production` varsayılan değerdir. İlkenizde hata ayıklamak için bu özelliği kullanın. Daha fazla bilgi için bkz. [günlükleri toplama](active-directory-b2c-troubleshoot-custom.md). |
@@ -88,9 +88,9 @@ Bir ilkeyi başka bir ilkeden devralması için bir **Basepolicy** öğesi, Ilke
 
 **Basepolicy** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Oluşumlar | Açıklama |
 | ------- | ----------- | --------|
-| Değerine | 1:1 | Azure AD B2C kiracınızın tanımlayıcısı. |
+| TenantId | 1:1 | Azure AD B2C kiracınızın tanımlayıcısı. |
 | `PolicyId` | 1:1 | Üst ilke tanımlayıcısı. |
 
 
@@ -138,7 +138,7 @@ B2C_1A_TrustFrameWorkBase veya B2C_1A_TrustFrameworkExtensionPolicy:
 
 Kullanıcı yolculuğu, kullanıcının ne kadar ilerreceğini belirleyen iş mantığını tanımlar. Her Kullanıcı yolculuğu, kimlik doğrulaması ve bilgi toplama açısından sırayla bir dizi eylem gerçekleştiren bir düzenleme adımları kümesidir.
 
-[Başlangıç paketindeki](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom#download-starter-pack-and-modify-policies) **SocialAndLocalAccounts** Ilke dosyası Signuporsignın, profileedit, passwordreset Kullanıcı bir bağlantı içerir. E-posta adresini değiştirme veya sosyal hesabın bağlantısını kaldırma gibi diğer senaryolar için daha fazla kullanıcı bağlantısı ekleyebilirsiniz.
+[Başlangıç paketindeki](active-directory-b2c-get-started-custom.md#custom-policy-starter-pack) **SocialAndLocalAccounts** Ilke dosyası Signuporsignın, profileedit, passwordreset Kullanıcı bir bağlantı içerir. E-posta adresini değiştirme veya sosyal hesabın bağlantısını kaldırma gibi diğer senaryolar için daha fazla kullanıcı bağlantısı ekleyebilirsiniz.
 
 Düzenleme adımları [Teknik bir profil](technicalprofiles.md)çağırabilir. Teknik bir profil, farklı türlerde taraflar ile iletişim kurmak için yerleşik mekanizmaya sahip bir çerçeve sağlar. Örneğin, teknik bir profil, diğerleri arasında bu eylemleri gerçekleştirebilir:
 

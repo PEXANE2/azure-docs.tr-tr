@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: load-data
-ms.date: 07/17/2019
+ms.date: 07/26/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: cbf642b47e4233cec2e2d860288b3bb35b419cf2
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 7bb775184a0d567fedf9da07cee60e5ba5a2097f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304178"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562368"
 ---
 # <a name="load-data-from-azure-data-lake-storage-to-sql-data-warehouse"></a>Azure Data Lake Storage verileri SQL veri ambarı 'na yükleme
 Azure Data Lake Storage verileri Azure SQL veri ambarı 'na yüklemek için PolyBase dış tablolarını kullanın. Data Lake Storage depolanan verilerde geçici sorgular çalıştırabilmenize karşın, en iyi performans için verileri SQL veri ambarı 'na aktarmayı öneririz.
@@ -32,20 +32,16 @@ Bu öğreticiye başlamadan önce, [SQL Server Management Studio](/sql/ssms/down
 
 Bu öğreticiyi çalıştırmak için şunlar gerekir:
 
-* Gen1 adresinden yüklüyorsanız hizmetten hizmete kimlik doğrulaması için kullanılacak uygulamayı Azure Active Directory. Oluşturmak için [Active Directory kimlik doğrulamasını](../data-lake-store/data-lake-store-authenticate-using-active-directory.md) izleyin
-
->[!NOTE] 
-> Azure Data Lake stroage Gen1 'tan yüklüyorsanız, SQL veri ambarı 'ndan depolama hesabınıza bağlanmak için Active Directory uygulamanızın istemci KIMLIĞI, anahtarı ve OAuth 2.0 belirteç uç nokta değeri gereklidir. Bu değerlerin nasıl alınacağı hakkındaki ayrıntılar yukarıdaki bağlantıdır. Azure Active Directory uygulama kaydı için Istemci KIMLIĞI olarak uygulama KIMLIĞINI kullanın.
-> 
+* Hizmetten hizmete kimlik doğrulaması için kullanılacak uygulamayı Azure Active Directory. Oluşturmak için [Active Directory kimlik doğrulamasını](../data-lake-store/data-lake-store-authenticate-using-active-directory.md) izleyin
 
 * Azure SQL veri ambarı. Bkz. [oluşturma ve sorgulama ve Azure SQL veri ambarı](create-data-warehouse-portal.md).
 
 * Data Lake Storage hesabı. Bkz. [Azure Data Lake Storage kullanmaya başlama](../data-lake-store/data-lake-store-get-started-portal.md). 
 
 ##  <a name="create-a-credential"></a>Kimlik bilgisi oluşturma
-Data Lake Storage hesabınıza erişmek için, bir sonraki adımda kullanılan kimlik bilgisi gizli anahtarını şifrelemek üzere bir veritabanı ana anahtarı oluşturmanız gerekir. Daha sonra bir veritabanı kapsamlı kimlik bilgisi oluşturursunuz. Gen1 için, veritabanı kapsamlı kimlik bilgileri AAD 'de ayarlanan hizmet sorumlusu kimlik bilgilerini depolar. Gen2 için veritabanı kapsamlı kimlik bilgilerinde depolama hesabı anahtarını kullanmanız gerekir. 
+Data Lake Storage hesabınıza erişmek için, bir sonraki adımda kullanılan kimlik bilgisi gizli anahtarını şifrelemek üzere bir veritabanı ana anahtarı oluşturmanız gerekir. Daha sonra bir veritabanı kapsamlı kimlik bilgisi oluşturursunuz. Hizmet sorumlularını kullanarak kimlik doğrulaması yaparken, veritabanı kapsamlı kimlik bilgileri AAD 'de ayarlanan hizmet sorumlusu kimlik bilgilerini depolar. Depolama hesabı anahtarını, Gen2 için veritabanı kapsamlı kimlik bilgilerinde de kullanabilirsiniz. 
 
-Data Lake Storage 1. bağlanmak için, **önce** bir Azure Active Directory uygulaması oluşturmanız, bir erişim anahtarı oluşturmanız ve uygulamaya Data Lake Storage 1. kaynağına erişim vermeniz gerekir. Yönergeler için bkz. [Active Directory kullanarak Azure Data Lake Storage 1. kimlik doğrulama](../data-lake-store/data-lake-store-authenticate-using-active-directory.md).
+Hizmet sorumlularını kullanarak Data Lake Storage bağlanmak için, **önce** bir Azure Active Directory uygulaması oluşturmanız, bir erişim anahtarı oluşturmanız ve uygulamaya Data Lake Storage hesabına erişim vermeniz gerekir. Yönergeler için bkz. [Active Directory kullanarak Azure Data Lake Storage kimlik doğrulama](../data-lake-store/data-lake-store-authenticate-using-active-directory.md).
 
 ```sql
 -- A: Create a Database Master Key.
@@ -56,7 +52,7 @@ Data Lake Storage 1. bağlanmak için, **önce** bir Azure Active Directory uygu
 CREATE MASTER KEY;
 
 
--- B (for Gen1): Create a database scoped credential
+-- B (for service principal authentication): Create a database scoped credential
 -- IDENTITY: Pass the client id and OAuth 2.0 Token Endpoint taken from your Azure Active Directory Application
 -- SECRET: Provide your AAD Application Service Principal key.
 -- For more information on Create Database Scoped Credential: https://msdn.microsoft.com/library/mt270260.aspx
@@ -67,7 +63,7 @@ WITH
     SECRET = '<key>'
 ;
 
--- B (for Gen2): Create a database scoped credential
+-- B (for Gen2 storage key authentication): Create a database scoped credential
 -- IDENTITY: Provide any string, it is not used for authentication to Azure storage.
 -- SECRET: Provide your Azure storage account key.
 
@@ -77,7 +73,7 @@ WITH
     SECRET = '<azure_storage_account_key>'
 ;
 
--- It should look something like this for Gen1:
+-- It should look something like this when authenticating using service principals:
 CREATE DATABASE SCOPED CREDENTIAL ADLSCredential
 WITH
     IDENTITY = '536540b4-4239-45fe-b9a3-629f97591c0c@https://login.microsoftonline.com/42f988bf-85f1-41af-91ab-2d2cd011da47/oauth2/token',
@@ -109,7 +105,7 @@ WITH (
 CREATE EXTERNAL DATA SOURCE AzureDataLakeStorage
 WITH (
     TYPE = HADOOP,
-    LOCATION='abfss://<container>@<AzureDataLake account_name>.dfs.core.windows.net', -- Please note the abfs endpoint
+    LOCATION='abfs[s]://<container>@<AzureDataLake account_name>.dfs.core.windows.net', -- Please note the abfss endpoint for when your account has secure transfer enabled
     CREDENTIAL = ADLSCredential
 );
 ```
@@ -221,13 +217,9 @@ Bu öğreticide, Data Lake Storage 1. depolanan verilerin yapısını tanımlama
 > * Data Lake Storage 1. yüklemek için gereken veritabanı nesneleri oluşturuldu.
 > * Bir Data Lake Storage 1. dizinine bağlanıldı.
 > * Azure SQL veri ambarı 'na veri yüklendi.
-> 
+>
 
 Veri yükleme, SQL veri ambarı kullanılarak veri ambarı çözümü geliştirmenin ilk adımıdır. Geliştirme kaynaklarımıza göz atın.
 
 > [!div class="nextstepaction"]
->[SQL veri ambarı 'nda tablo geliştirmeyi öğrenin](sql-data-warehouse-tables-overview.md)
-
-
-
-
+> [SQL veri ambarı 'nda tablo geliştirmeyi öğrenin](sql-data-warehouse-tables-overview.md)

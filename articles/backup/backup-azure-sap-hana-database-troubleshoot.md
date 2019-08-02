@@ -1,18 +1,19 @@
 ---
 title: Azure Backup kullanarak SAP HANA veritabanlarını yedeklerken hata giderme Microsoft Docs
 description: SAP HANA veritabanlarını yedeklemek için Azure Backup kullandığınızda oluşabilecek yaygın hataların nasıl giderileceği açıklanmaktadır.
-author: pvrk
-manager: vijayts
+ms.reviewer: pullabhk
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/22/2019
-ms.author: pullabhk
-ms.openlocfilehash: 221b669c141681749709d6a5a406c78499f21032
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: a2711339f5e952747adeeb6217b283770cb6cc6b
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465483"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689055"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Azure 'da SAP HANA veritabanlarının yedeklenmesi sorunlarını giderme
 

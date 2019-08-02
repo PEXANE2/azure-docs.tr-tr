@@ -18,10 +18,10 @@ ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 6f6dc7745a47c61cf28a0e860a68af677dae8010
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/13/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67869123"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>Azure sanal makineler SAP NetWeaver için yüksek kullanılabilirlik
@@ -198,7 +198,7 @@ Bu makale serisi şunları içerir:
     >
 * SAP yüksek kullanılabilirlik:
   * ![Windows][Logo_Windows] **Server yük devretme kümesi (wsfc)** kullanan Windows**Windows Windows**
-  * ![Linux Linux, Linux **kümesi çerçevesini** kullanma ][Logo_Linux]
+  * ![Linux Linux, Linux **kümesi çerçevesini** kullanma][Logo_Linux]
 
 Bu makalelerde, SAP Merkezi Hizmetleri (yoks/SCS) ve veritabanı yönetim sistemleri (DBMS) gibi tek hata noktası (SPI) bileşenlerini korumaya nasıl yardımcı olabileceğinizi öğreneceksiniz. Ayrıca, Azure 'da SAP uygulama sunucusu gibi yedekli bileşenler hakkında bilgi edinebilirsiniz.
 
@@ -210,7 +210,7 @@ Bu makalelerde, SAP Merkezi Hizmetleri (yoks/SCS) ve veritabanı yönetim sistem
 
 * [SAP NetWeaver için Azure sanal makineler yüksek kullanılabilirliğe sahip mimari ve senaryolar][sap-high-availability-architecture-scenarios]
 
-Makalede hem ![Windows  ![ Windows hem deLinux][Logo_Linux] Linux ele alınmaktadır.][Logo_Windows]
+Makalede hem ![Windows ![Windows hem deLinux][Logo_Linux] Linux ele alınmaktadır.][Logo_Windows]
 
 
 ## <a name="azure-infrastructure-preparation-for-sap-netweaver-high-availability-deployment"></a>SAP NetWeaver yüksek kullanılabilirlik dağıtımı için Azure altyapı hazırlığı

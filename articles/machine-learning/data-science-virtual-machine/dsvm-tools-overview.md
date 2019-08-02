@@ -4,7 +4,7 @@ description: Veri bilimi sanal makinesi üzerinde önceden yüklenen yardımcı 
 keywords: veri bilimi araçları, veri bilimi sanal makinesi, veri bilimi için araçlar, linux veri bilimi
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
@@ -15,22 +15,22 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/22/2019
-ms.author: gokuma
-ms.openlocfilehash: 0a503b82c07da62b5c5c768d8e1c92cb19e75aee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: vijetaj
+ms.openlocfilehash: d48c2b849f875289c89201f20478deebf4c00db9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66236473"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565229"
 ---
 # <a name="get-to-know-your-data-science-virtual-machine"></a>Veri bilimi sanal makinesi ile tanışın
 
 Veri bilimi sanal makinesi (DSVM), popüler veri bilimi, makine öğrenimi/yapay ZEKA araçları ve veri platformu, kapsamlı bir listesini içerir. Aracı yapılandırmalarını, veri bilimcilerine ve geliştiricilere Microsoft'ta ve kararlılık ve genel letim gereksinimlerinin emin olmak için daha geniş veri bilimi topluluğu tarafından tarafından titizlikle test edilmez.
 
-DSVM birden çok kod örnekleri ve izlenecek yollar da yerel olarak yürütüldüğü Jupyter Notebook biçiminde içerir. Kavramayı yardımcı olması bu örnekleri için belgeler de mevcuttur. 
+DSVM Ayrıca, yerel olarak yürütülebilecek jupi Not defterleri biçiminde birden çok kod örneği ve izlenecek yollar içerir. Ayrıca, bu örneklere yardımcı olacak belgeler de vardır. 
 
 > [!NOTE]
-> Kullanabileceğiniz [Azure not defterleri](/azure/notebooks/azure-notebooks-overview) oluşturma, çalıştırma ve Jupyter Notebook bulutta paylaşın. Yapabilecekleriniz [Azure not defterleri için veri bilimi sanal makinesi ekleme](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier) kullanılabilir bilgi işlem gücü genişletin.
+> Bulutta Jupyıter not defterlerini oluşturmak, çalıştırmak ve paylaşmak için [Azure Notebooks](../../notebooks/azure-notebooks-overview.md) kullanabilirsiniz. Kullanılabilir işlem gücünü genişletmek için [Azure Notebooks veri bilimi VM'si](../../notebooks/configure-manage-azure-notebooks-projects.md#compute-tier) ekleyebilirsiniz.
 
 Araçları, platformları, yardımcı programlar ve veri bilimi sanal Makinesi'ne örnekleri aşağıdaki bölümler düzenlenmiştir:
 

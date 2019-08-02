@@ -16,12 +16,12 @@ ms.date: 05/30/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25ad17f4c4d338e1d0b8118c1a172e0aaad7118e
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: eb5f322d8bc974274f7f2da7811b124499224635
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489092"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678140"
 ---
 # <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management-preview"></a>Azure AD Yetkilendirme Yönetimi 'nde (Önizleme) işlem ve e-posta bildirimleri iste
 
@@ -47,7 +47,7 @@ Erişim paketine erişmesi gereken bir Kullanıcı, erişim isteği gönderebili
 | Süresi dolmuş | Onay isteği zaman aşımı içinde bir onaylayan isteği onaylamadıysanız, isteğin süresi dolar. Yeniden denemek için, kullanıcının isteklerini yeniden göndermek zorunda kalır. |
 | Engellendi | Onaylayan bir isteği reddeder. |
 | Onaylandı | Onaylayan bir isteği onaylar. |
-| Teslim ediliyor | Kullanıcıya erişim  paketindeki tüm kaynaklara erişim atanmamış. Bu bir dış Kullanıcı ise, Kullanıcı henüz kaynak dizinine erişmemiş ve izin isteğini kabul etmedi. |
+| Teslim ediliyor | Kullanıcıya erişim paketindeki tüm kaynaklara erişim atanmamış. Bu bir dış Kullanıcı ise, Kullanıcı henüz kaynak dizinine erişmemiş ve onay isteğini kabul etmiş olabilir. |
 | Teslim Edildi | Kullanıcıya erişim paketindeki tüm kaynaklara erişim atandı. |
 | Genişletilmiş erişim | İlkede uzantılara izin veriliyorsa Kullanıcı atamayı genişletti. |
 | Erişim zaman aşımına uğradı | Kullanıcının erişim paketine erişiminin süresi doldu. Yeniden erişim sağlamak için kullanıcının bir istek göndermesi gerekir. |

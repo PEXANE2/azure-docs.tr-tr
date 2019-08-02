@@ -16,10 +16,10 @@ ms.date: 06/20/2017
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 431212b2b0ac7bba209130e511e3510e3008a6c4
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68500033"
 ---
 # <a name="create-an-automatic-scaling-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Batch havuzundaki işlem düğümlerini ölçeklendirmek için otomatik ölçeklendirme formülü oluşturma
@@ -240,7 +240,7 @@ Batch hizmeti düzenli aralıklarla görev ve kaynak ölçümlerinin örneklerin
 
 **Örnek yüzdesi**
 
-Yöntemine geçirildiğinde ya da yöntemi çağrıldığında yüzde, Batch hizmeti tarafından kaydedilen toplam olası örnek sayısı ve şu sayıda örnek sayısı arasındaki bir karşılaştırmaya başvurur.  `samplePercent` `GetSample()` `GetSamplePercent()` Otomatik ölçeklendirme formülünüz için kullanılabilir.
+Yöntemine geçirildiğinde ya da yöntemi çağrıldığında yüzde, Batch hizmeti tarafından kaydedilen toplam olası örnek sayısı ve şu sayıda örnek sayısı arasındaki bir karşılaştırmaya başvurur. `samplePercent` `GetSample()` `GetSamplePercent()` Otomatik ölçeklendirme formülünüz için kullanılabilir.
 
 Örnek olarak 10 dakikalık bir TimeSpan bölümüne bakalım. Örnekler 10 dakikalık bir TimeSpan içinde her 30 saniyede bir kaydedildiğinden, Batch tarafından kaydedilen en fazla örnek sayısı 20 örnek (dakika başına 2) olacaktır. Ancak, raporlama mekanizmasından ve Azure 'daki diğer sorunların devralınan gecikmesi nedeniyle, okuma için otomatik ölçeklendirme formülünüzün kullanabildiği yalnızca 15 örnek olabilir. Bu nedenle, örneğin, bu 10 dakikalık dönem için, Formülünüzde kaydedilen toplam örnek sayısının yalnızca% 75 ' u kullanılabilir olabilir.
 
@@ -271,7 +271,7 @@ $runningTasksSample = $RunningTasks.GetSample(60 * TimeInterval_Second, 120 * Ti
 Örnek kullanılabilirliğinde bir gecikme olabileceğinden, bir dakikadan daha eski bir geri arama başlangıç zamanına sahip bir zaman aralığı belirlemek önemlidir. Örneklerin sistem aracılığıyla yayılması yaklaşık bir dakika sürer, bu nedenle aralıktaki `(0 * TimeInterval_Second, 60 * TimeInterval_Second)` örnekler kullanılamayabilir. Yine, belirli bir örnek yüzdesi gereksinimini zorlamak `GetSample()` için Percentage parametresini kullanabilirsiniz.
 
 > [!IMPORTANT]
-> **Yalnızca Otomatik`GetSample(1)` ölçeklendirme formüllerinizde bağlı olmasını  önlemenize** **kesinlikle tavsiye** ederiz. Bunun nedeni `GetSample(1)` , temel olarak Batch hizmetine, "sizin ne kadar süre önce ne kadar süreyle elde ettiğinize bakılmaksızın" sahip olduğunuz son örneği bana vermektir. Yalnızca tek bir örnek olduğundan ve bu, eski bir örnek olabileceğinden, son görevin veya kaynak durumunun daha büyük resmini temsil edemeyebilir. Kullanıyorsanız `GetSample(1)`, formülün bağımlı olduğu tek veri noktası değil daha büyük bir deyimin parçası olduğundan emin olun.
+> **Yalnızca Otomatik`GetSample(1)` ölçeklendirme formüllerinizde bağlı olmasını önlemenize** **kesinlikle tavsiye** ederiz. Bunun nedeni `GetSample(1)` , temel olarak Batch hizmetine, "sizin ne kadar süre önce ne kadar süreyle elde ettiğinize bakılmaksızın" sahip olduğunuz son örneği bana vermektir. Yalnızca tek bir örnek olduğundan ve bu, eski bir örnek olabileceğinden, son görevin veya kaynak durumunun daha büyük resmini temsil edemeyebilir. Kullanıyorsanız `GetSample(1)`, formülün bağımlı olduğu tek veri noktası değil daha büyük bir deyimin parçası olduğundan emin olun.
 >
 >
 

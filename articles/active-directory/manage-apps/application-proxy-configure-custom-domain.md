@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bae13de156d502cdd731005d460641ca452448d5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5d721e750ddb77ba293643ad978cecf4bd2dbac0
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108669"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618818"
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>Azure AD uygulama proxy'sinde özel etki alanları ile çalışma
 
@@ -61,7 +61,7 @@ Bu üç gereksinimleri hazır olduğunda, özel etki alanı oluşturmak için a�
 6. PFX sertifikasını karşıya yükleyin ve sertifikanın parolasını girin. 
 7. Seçin **Kaydet** yaptığınız değişiklikleri kaydedin. 
 8. Ekleme bir [DNS kaydı](../../dns/dns-operations-recordsets-portal.md) yeni dış URL msappproxy.net etki alanına yeniden yönlendirir.
-9. DNS kaydı doğru şekilde kullanarak yapılandırıldığından emin olun [nslookup](https://social.technet.microsoft.com/wiki/contents/articles/29184.nslookup-for-beginners.aspx) , dış URL erişilebilir olduğundan ve diğer ad olarak msapproxy.net etki alanı gösterilir görmek için komutu.
+9. Dış URL 'nizin erişilebilir olup olmadığını ve msapproxy.net etki alanının bir diğer ad olarak gösterir olduğunu görmek için [nslookup](https://social.technet.microsoft.com/wiki/contents/articles/29184.nslookup-for-beginners.aspx) komutunu kullanarak DNS kaydının doğru şekilde yapılandırıldığından emin olun.
 
 >[!TIP] 
 >Özel etki alanı başına bir sertifikayı karşıya yüklemek yeterlidir. Sertifika karşıya yükledikten sonra yeni bir uygulama yayımlama ve DNS kaydı dışında ek yapılandırma gerekmez, özel etki alanını seçebilirsiniz. 
@@ -73,7 +73,7 @@ Sertifika imza yöntemler konusunda bir kısıtlama yoktur. Tüm Eliptik Eğri �
 
 İstenen dış URL'yi joker karakter eşleşmesi şartıyla, bir joker sertifikası kullanabilirsiniz.
 
-Kendi ortak anahtar altyapısı (PKI) nedeniyle güvenlik konuları tarafından verilen bir sertifika kullanamazsınız.
+Kendi ortak anahtar altyapınız (PKI) tarafından verilen sertifikalar, sertifika zinciri istemci cihazlarınızda yüklüyse kullanılabilir. Intune, bu sertifikaları yönetilen cihazlara dağıtmak için kullanılabilir. Yönetilmeyen cihazlar için bu sertifikaların el ile yüklenmesi gerekir.
 
 ### <a name="changing-the-domain"></a>Etki alanını değiştirme
 Tüm doğrulanmış etki alanları, uygulamanız için dış URL aşağı açılan listede görünür. Etki alanını değiştirmek için bu alan için uygulamayı güncelleştirmeniz yeterlidir. İstediğiniz etki alanının listesinde değilse [doğrulanmış bir etki alanı ekleme](../fundamentals/add-custom-domain.md). İlişkili bir sertifikanız henüz, sertifika eklemek için 5-7 adımları bir etki alanı seçtiğinizde. Ardından, yeni harici URL'den yönlendirmek için DNS kaydı güncelleştirdiğinizden emin olun. 
@@ -87,7 +87,7 @@ Bir sertifikanın süresi dolduğunda, portal üzerinden başka bir sertifikayı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Çoklu oturum açmayı etkinleştirme](application-proxy-configure-single-sign-on-with-kcd.md) yayımlanan uygulamalarınıza Azure AD kimlik doğrulamasıyla.
-* [Koşullu erişimi etkinleştirme](application-proxy-integrate-with-sharepoint-server.md) , yayımlanan uygulamalar için.
+* Yayınlanan uygulamalarınıza [koşullu erişimi etkinleştirin](application-proxy-integrate-with-sharepoint-server.md) .
 * [Özel etki alanı adınızı Azure AD'ye ekleme](../fundamentals/add-custom-domain.md)
 
 

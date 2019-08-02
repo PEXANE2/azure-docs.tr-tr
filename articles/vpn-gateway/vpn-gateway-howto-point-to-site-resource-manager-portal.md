@@ -1,26 +1,24 @@
 ---
-title: 'Bir bilgisayarı noktadan siteye ve yerel Azure sertifika doğrulaması kullanarak bir Azure sanal ağına bağlama: Azure portalı | Microsoft Docs'
-description: Windows, Mac OS X ve Linux istemcileri, bir Azure sanal ağı kullanarak P2S ve otomatik olarak imzalanan veya CA tarafından verilen sertifikaları güvenli bir şekilde bağlanın. Bu makalede Azure portalı kullanılmaktadır.
+title: 'Noktadan siteye ve yerel Azure sertifikası kimlik doğrulaması kullanarak bir bilgisayarı Azure sanal ağına bağlama: Azure portalı | Microsoft Docs'
+description: P2S ve otomatik olarak imzalanan veya CA tarafından verilen sertifikaları kullanarak Windows, Mac OS X ve Linux istemcilerini Azure sanal ağına güvenli bir şekilde bağlayın. Bu makalede Azure portalı kullanılmaktadır.
 services: vpn-gateway
 author: cherylmc
-tags: azure-resource-manager
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 6/18/2019
+ms.date: 07/31/2019
 ms.author: cherylmc
-ms.openlocfilehash: 07bcf50a816c090ccef846909dff671486e514c4
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: e603eed34aaff4ad7303819a730fea09a332b7a8
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203054"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706749"
 ---
-# <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Yerel Azure sertifika doğrulaması kullanarak bir sanal ağa noktadan siteye bağlantı yapılandırma: Azure portal
+# <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Yerel Azure sertifikası kimlik doğrulaması kullanarak bir sanal ağa Noktadan siteye bağlantı yapılandırma: Azure portal
 
-Bu makale, Azure sanal ağına Windows, Linux veya Mac OS X çalıştıran bireysel istemcileri güvenli bir şekilde bağlamanıza yardımcı olur. Noktadan Siteye VPN bağlantıları, ev veya bir konferans gibi uzak bir noktadan Vnet'inize bağlanmak istediğinizde faydalıdır. Bir sanal ağa bağlanması gereken yalnızca birkaç istemciniz olduğunda Siteden Siteye VPN yerine P2S’yi de kullanabilirsiniz. Noktadan Siteye bağlantılar için bir VPN cihazına veya genel kullanıma yönelik bir IP adresine gerek yoktur. P2S, VPN bağlantısını SSTP (Güvenli Yuva Tünel Protokolü) veya IKEv2 üzerinden oluşturur. Noktadan Siteye VPN hakkında daha fazla bilgi edinmek için bkz. [Noktadan Siteye VPN hakkında](point-to-site-about.md).
+Bu makale Windows, Linux veya Mac OS X çalıştıran ayrı istemcileri bir Azure VNet 'e güvenli bir şekilde bağlamanıza yardımcı olur. Noktadan Siteye VPN bağlantıları, ev veya bir konferans gibi uzak bir noktadan Vnet'inize bağlanmak istediğinizde faydalıdır. Bir sanal ağa bağlanması gereken yalnızca birkaç istemciniz olduğunda Siteden Siteye VPN yerine P2S’yi de kullanabilirsiniz. Noktadan Siteye bağlantılar için bir VPN cihazına veya genel kullanıma yönelik bir IP adresine gerek yoktur. P2S, VPN bağlantısını SSTP (Güvenli Yuva Tünel Protokolü) veya IKEv2 üzerinden oluşturur. Noktadan Siteye VPN hakkında daha fazla bilgi edinmek için bkz. [Noktadan Siteye VPN hakkında](point-to-site-about.md).
 
 ![Bir bilgisayarı Azure sanal ağına bağlama - Noktadan Siteye bağlantı diyagramı](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/p2snativeportal.png)
-
 
 ## <a name="architecture"></a>Mimari
 
@@ -39,14 +37,14 @@ Aşağıdaki değerleri kullanarak bir test ortamı oluşturabilir veya bu makal
 * **Adres alanı:** 192.168.0.0/16<br>Bu örnekte yalnızca bir adres alanı kullanılmaktadır. Sanal ağınıza ait birden fazla adres alanı olabilir.
 * **Alt ağ adı:** FrontEnd
 * **Alt ağ adres aralığı:** 192.168.1.0/24
-* **Abonelik:** Birden fazla aboneliğiniz varsa doğru olanı kullandığınızı doğrulayın.
+* **Aboneliğiniz** Birden fazla aboneliğiniz varsa, doğru olanı kullandığınızdan emin olun.
 * **Kaynak grubu:** TestRG
-* **Konum:** Doğu ABD
-* **GatewaySubnet:** 192.168.200.0/24<br>
+* **Konumuna** East US
+* **GatewaySubnet** 192.168.200.0/24<br>
 * **DNS Sunucusu (İsteğe Bağlı):** Ad çözümlemesi için kullanmak istediğiniz DNS sunucusunun IP adresi.
 * **Sanal ağ geçidi adı:** VNet1GW
-* **Ağ geçidi türü:** VPN
-* **VPN türü:** Rota tabanlı
+* **Ağ Geçidi türü:** VPN
+* **VPN türü:** Rota temelli
 * **Genel IP adresi adı:** VNet1GWpip
 * **Bağlantı türü:** Noktadan siteye
 * **İstemci adres havuzu:** 172.16.201.0/24<br>Sanal ağa bu Noktadan Siteye bağlantıyı kullanarak bağlanan VPN istemcileri, istemci adres havuzdan bir IP adresi alır.
@@ -73,7 +71,7 @@ Sanal ağınızı oluşturduktan sonra ad çözünürlüğünü işlemek için b
 [!INCLUDE [create-gateway](../../includes/vpn-gateway-add-gw-p2s-rm-portal-include.md)]
 
 >[!NOTE]
->Temel SKU, IKEv2 veya RADIUS kimlik doğrulamasını desteklemez. Mac istemcileri, sanal ağınıza bağlanmak zorunda planlıyorsanız, temel SKU kullanmayın.
+>Temel ağ geçidi SKU 'SU Ikev2 veya RADIUS kimlik doğrulamasını desteklemez. Mac istemcilerinin sanal ağınıza bağlanmasını planlıyorsanız, temel SKU 'YU kullanmayın.
 >
 
 ## <a name="generatecert"></a>5. Sertifika oluşturma
@@ -98,7 +96,7 @@ Sertifikalar, Noktadan Noktaya VPN bağlantısı üzerinden VNet’e bağlanan i
 2. Yapılandırma sayfasını açmak için **Şimdi yapılandır**’a tıklayın.
 
    ![Şimdi yapılandır](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/configurenow.png)
-3. **Noktadan siteye** yapılandırma sayfasında, **Adres havuzu** kutusunda kullanmak istediğiniz özel IP adresi aralığını ekleyin. VPN istemcileri, belirttiğiniz aralıktan dinamik olarak bir IP adresi alır. 29 bit Aktif/Pasif ve 28 bit aktif/aktif yapılandırma için en az bir alt ağ maskesidir. Ayarı doğrulayıp kaydetmek için **Kaydet**’e tıklayın.
+3. **Noktadan siteye** yapılandırma sayfasında, **Adres havuzu** kutusunda kullanmak istediğiniz özel IP adresi aralığını ekleyin. VPN istemcileri, belirttiğiniz aralıktan dinamik olarak bir IP adresi alır. Etkin/etkin yapılandırma için en düşük alt ağ maskesi, etkin/Pasif ve 28 bit için 29 bittir. Ayarı doğrulayıp kaydetmek için **Kaydet**’e tıklayın.
 
    ![İstemci adres havuzu](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/addresspool.png)
 
@@ -108,7 +106,7 @@ Sertifikalar, Noktadan Noktaya VPN bağlantısı üzerinden VNet’e bağlanan i
 
 ## <a name="tunneltype"></a>7. Tünel türünü yapılandırma
 
-Tünel türünü seçebilirsiniz. Tünel OpenVPN, SSTP ve Ikev2 seçeneklerdir. Android ve Linux üzerindeki strongSwan istemcisi ile iOS ve OSX üzerindeki yerel IKEv2 VPN istemcisi, bağlanmak için yalnızca IKEv2 tünelini kullanır. Windows istemcileri önce IKEv2’yi dener ve bağlanamazsa SSTP’ye döner. OpenVPN istemci OpenVPN tünel türüne bağlamak için kullanabilirsiniz.
+Tünel türünü seçebilirsiniz. Tünel seçenekleri OpenVPN, SSTP ve IKEv2 ' dir. Android ve Linux üzerindeki strongSwan istemcisi ile iOS ve OSX üzerindeki yerel IKEv2 VPN istemcisi, bağlanmak için yalnızca IKEv2 tünelini kullanır. Windows istemcileri önce IKEv2’yi dener ve bağlanamazsa SSTP’ye döner. OpenVPN istemcisini, OpenVPN tünel türüne bağlanmak için kullanabilirsiniz.
 
 ![Tünel türü](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/tunneltype.png)
 
@@ -172,7 +170,7 @@ VPN istemcisi yapılandırma dosyaları, P2S bağlantısı üzerinden bir sanal 
 
 Ağ iletişim kutusunda kullanmak istediğiniz istemci profilini bulun, [VpnSettings.xml](point-to-site-vpn-client-configuration-azure-cert.md#installmac) dosyasından ayarları belirleyin ve **Bağlan**’a tıklayın.
 
-Denetleme [yükleyin - Mac (OS X)](https://docs.microsoft.com/azure/vpn-gateway/point-to-site-vpn-client-configuration-azure-cert#installmac) ayrıntılı yönergeler için. Bağlantı sorunları yaşıyorsanız, sanal ağ geçidi temel SKU kullanmadığından emin olun. Temel SKU, Mac istemcileri için desteklenmiyor.
+Ayrıntılı yönergeler için [Install-Mac (OS X)](https://docs.microsoft.com/azure/vpn-gateway/point-to-site-vpn-client-configuration-azure-cert#installmac) ' i işaretleyin. Bağlanmayla ilgili sorun yaşıyorsanız, sanal ağ geçidinin temel bir SKU kullanmadığından emin olun. Temel SKU, Mac istemcileri için desteklenmez.
 
   ![Mac bağlantısı](./media/vpn-gateway-howto-point-to-site-rm-ps/applyconnect.png)
 

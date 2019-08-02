@@ -8,22 +8,25 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: danlep
-ms.openlocfilehash: 2030496548df312b4f4cfab60c216d5f332c7ac2
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 3050a52da4d39657bd7b2fb38e235b9bd418faf4
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310400"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619889"
 ---
 # <a name="restrict-access-to-an-azure-container-registry-using-an-azure-virtual-network-or-firewall-rules"></a>Azure sanal ağını veya güvenlik duvarı kurallarını kullanarak bir Azure Container Registry 'ye erişimi kısıtlama
 
 [Azure sanal ağ](../virtual-network/virtual-networks-overview.md) , Azure ve şirket içi kaynaklarınız için güvenli, özel ağ sağlar. Azure sanal ağından özel Azure Container Registry 'nize erişimi sınırlayarak, yalnızca sanal ağdaki kaynakların kayıt defterine erişebildiğinden emin olursunuz. Şirketler arası senaryolar için, yalnızca belirli IP adreslerinden kayıt defteri erişimine izin vermek üzere güvenlik duvarı kurallarını da yapılandırabilirsiniz.
 
-Bu makalede, bir Azure Container Registry 'ye erişimi sınırlandırmak için ağ erişim kuralları oluşturmaya yönelik iki senaryo gösterilmektedir: bir sanal ağda dağıtılan bir sanal makineden veya bir VM 'nin genel IP adresinden.
+Bu makalede bir kapsayıcı kayıt defterinde gelen ağ erişim kurallarını yapılandırmak için iki senaryo gösterilmektedir: sanal bir ağda dağıtılan bir sanal makineden veya bir VM 'nin genel IP adresinden.
 
 > [!IMPORTANT]
 > Bu özellik şu anda önizleme aşamasındadır ve bazı [sınırlamalar geçerlidir](#preview-limitations). Önizlemeler, [ek kullanım koşullarını][terms-of-use] kabul etmeniz şartıyla kullanımınıza sunulur. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir.
 >
+
+Bunun yerine, bir güvenlik duvarının arkasındaki bir kapsayıcı kayıt defterine ulaşmak için kaynakların erişim kurallarını ayarlamanız gerekiyorsa, bkz. [güvenlik duvarı arkasındaki bir Azure Container Registry 'ye erişmek için kuralları yapılandırma](container-registry-firewall-access-rules.md).
+
 
 ## <a name="preview-limitations"></a>Önizleme sınırlamaları
 
@@ -39,7 +42,7 @@ Bu makalede, bir Azure Container Registry 'ye erişimi sınırlandırmak için a
 
 * Bu makalede Azure CLı adımlarını kullanmak için Azure CLı sürüm 2.0.58 veya üzeri gereklidir. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme][azure-cli].
 
-* Zaten bir kapsayıcı kayıt defteriniz yoksa, bir (Premium SKU gerekir) oluşturun ve Docker Hub 'dan gibi `hello-world` örnek bir görüntü gönderin. Örneğin, bir kayıt defteri oluşturmak için [Azure Portal][quickstart-portal] or the [Azure CLI][quickstart-cli] kullanın. 
+* Zaten bir kapsayıcı kayıt defteriniz yoksa, bir (Premium SKU gerekir) oluşturun ve Docker Hub 'dan gibi `hello-world` örnek bir görüntü gönderin. Örneğin, [Azure Portal][quickstart-portal] veya [Azure CLI][quickstart-cli] kullanarak bir kayıt defteri oluşturun. 
 
 * Farklı bir Azure aboneliğindeki bir sanal ağ kullanarak kayıt defteri erişimini kısıtlamak istiyorsanız, bu abonelikte Azure Container Registry kaynak sağlayıcısını kaydetmeniz gerekir. Örneğin:
 

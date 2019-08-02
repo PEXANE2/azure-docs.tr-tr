@@ -5,36 +5,36 @@ ms.date: 04/30/2019
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: jeconnoc
-ms.openlocfilehash: 55d73b2602a9a862375ca3e72dee4597c1d6f1d6
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: fa34baa7569b0552708cd1a9b57d79186e5acd57
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67659930"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68669876"
 ---
-Standart sanal makine (VM) görüntülerini kuruluşların buluta taşımayı ve dağıtımlarında tutarlılığı sağlar. Görüntüler genellikle önceden tanımlı güvenlik ve yapılandırma ayarlarını ve gerekli yazılımı da içerir. Kendi görüntü işlem hattı ayarlama süresi, altyapı ve Kurulum gerektirir ancak Azure VM Görüntü Oluşturucu ile yalnızca görüntünüzü açıklayan basit bir yapılandırma sağlayın, hizmete gönderme ve görüntü oluşturulan dağıtılmış ve.
+Standartlaştırılmış sanal makine (VM) görüntüleri, kuruluşların buluta geçiş yapmasına ve dağıtımlarda tutarlılık sağlamanıza olanak tanır. Görüntüler genellikle önceden tanımlanmış güvenlik ve yapılandırma ayarlarını ve gerekli yazılımları içerir. Kendi görüntüleme işlem hattınızı ayarlamak için zaman, altyapı ve kurulum gerekir, ancak Azure VM Image Builder sayesinde görüntünüzü açıklayan basit bir yapılandırma sağlamanız, hizmete göndermeniz ve görüntünün oluşturulup dağıtılması sağlanır.
  
-Azure VM Görüntü Oluşturucu (Azure Görüntü Oluşturucu), bir Windows veya Linux tabanlı Azure Market görüntüsü, var olan özel görüntüler veya Red Hat Enterprise Linux (RHEL) ISO ile ve kendi özelleştirmelerinizi eklemek başlatabilirsiniz olanak tanır. Görüntü Oluşturucusu oluşturulduğundan [HashiCorp Packer](https://packer.io/), ayrıca mevcut Packer Kabuk sağlayıcısı betiklerinizi içeri aktarabilirsiniz. Görüntülerinizin barındırılan, buna istediğiniz belirtebilirsiniz [Azure paylaşılan görüntü Galerisi](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries), yönetilen bir görüntü veya VHD olarak.
+Azure VM görüntü Oluşturucu (Azure görüntü Oluşturucu), bir Windows veya Linux tabanlı Azure Marketi görüntüsü, mevcut özel görüntüler veya Red Hat Enterprise Linux (RHEL) ISO ile başlamanıza ve kendi özelleştirmelerinizi eklemeye başlamanızı sağlar. Görüntü Oluşturucu [HashiCorp Packer](https://packer.io/)üzerinde oluşturulduğundan, mevcut Packer kabuğu sağlayıcısı oluştur betiklerinizi de içeri aktarabilirsiniz. Ayrıca, [Azure Paylaşılan görüntü galerisinde](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)bir yönetilen görüntü veya VHD olarak, görüntülerinizi nerede barındırıyorsanız istediğinizi belirtebilirsiniz.
 
 > [!IMPORTANT]
-> Azure Görüntü Oluşturucu şu anda genel Önizleme aşamasındadır.
+> Azure görüntü Oluşturucu Şu anda genel önizleme aşamasındadır.
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="preview-features"></a>Önizleme özellikleri
 
-Önizleme için bu özellikler desteklenir:
+Önizleme için, bu özellikler desteklenir:
 
-- En düşük güvenlik ve kurumsal yapılandırmaları içerir ve kullanıcıların ihtiyaçlarına daha fazla özelleştirmek bölümler oluşturma altın temel görüntü.
-- Var olan görüntülerden düzeltme eki uygulama, Görüntü Oluşturucu, sürekli olarak mevcut özel görüntüleri düzeltme eki olanak tanıyacaktır.
-- Azure paylaşılan görüntü Galerisi ile tümleştirme, sürüm, dağıtılacak sağlar ve ölçek, küresel olarak görüntüler ve bir görüntü yönetimi sistemi sağlar.
-- Varolan bir görüntü ile tümleştirme işlem hatları oluşturun, yalnızca Görüntü Oluşturucu, işlem hattından çağırma veya basit Önizleme Görüntü Oluşturucu Azure DevOps görevi kullanın.
-- Varolan bir görüntü özelleştirme ardışık düzeni Azure'a geçirin. Var olan bir betik, komutları ve işlemleri görüntülerini özelleştirmek için kullanın.
-- Red Hat Getir bilgisayarınızı kendi aboneliklerini desteğini kullanın. Red Hat Enterprise görüntüleri kullanmak için uygun, kullanılmayan Red Hat aboneliklerinizi ile oluşturun.
-- VHD biçiminde görüntüleri oluşturma.
+- En düşük güvenlik ve kurumsal yapılandırmalarınızı içeren altın taban çizgisi görüntülerinin oluşturulması ve departmanların ihtiyaçları için daha fazla özelleştirme yapmasına izin vermek.
+- Var olan görüntülerin düzeltme eki uygulama, görüntü Oluşturucu var olan özel görüntüleri sürekli olarak yamanız için izin verir.
+- Azure Paylaşılan görüntü Galerisi ile tümleştirme, görüntüleri küresel olarak dağıtmanıza, sürümüne ve ölçeklendirmenize olanak tanır ve size bir görüntü yönetim sistemi sağlar.
+- Mevcut görüntü oluşturma işlem hatlarıyla tümleştirme, işlem hattınızdan görüntü Oluşturucu 'Yu çağırın veya basit önizleme resmi Oluşturucu Azure DevOps görevini kullanın.
+- Mevcut bir görüntü özelleştirme işlem hattını Azure 'a geçirin. Görüntüleri özelleştirmek için mevcut betikleri, komutlarınızı ve işlemlerinizi kullanın.
+- Red Hat kullanın kendi abonelik desteğini getirin. Uygun, kullanılmayan Red Hat aboneliklerinizle kullanılmak üzere Red Hat kurumsal görüntüleri oluşturun.
+- VHD biçimindeki görüntülerin oluşturulması.
  
 
 ## <a name="regions"></a>Regions
-Azure Görüntü Oluşturucu hizmeti bu bölgelerde Önizleme için kullanıma sunulacaktır. Bu bölgeler dışında görüntüleri dağıtılabilir.
+Azure görüntü Oluşturucu hizmeti bu bölgelerde önizleme için kullanılabilir olacak. Görüntüler, bu bölgelerin dışına dağıtılabilir.
 - East US
 - Doğu ABD 2
 - Batı Orta ABD
@@ -42,47 +42,48 @@ Azure Görüntü Oluşturucu hizmeti bu bölgelerde Önizleme için kullanıma s
 - Batı ABD 2
 
 ## <a name="os-support"></a>İşletim sistemi desteği
-AIB Azure Marketi'nde temel işletim sistemi görüntüleri destekler:
+AıB, Azure Marketi temel işletim sistemi görüntülerini destekleyecektir:
 - Ubuntu 18.04
 - Ubuntu 16.04
-- RHEL 7.6
-- CentOS 7.6
+- RHEL 7,6
+- CentOS 7,6
+- Sanal Masaüstü için Windows 10 RS5 Enterödülü/Professional/Enterprise (EVD) 
 - Windows 2016
 - Windows 2019
 
-AIB RHEL ISO'YU'ın destekleyeceği için bir kaynak olarak:
-- RHEL 7.3
-- RHEL 7.4
+AıB, için bir kaynak olarak RHEL ISO 'yu destekleyecektir:
+- RHEL 7,3
+- RHEL 7,4
 - RHEL 7.5
 
-RHEL 7.6 Iso'lar desteklenmez, ancak test edilir.
+RHEL 7,6 ISOs desteklenmez, ancak test ediliyor.
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
 
-![Azure Görüntü Oluşturucu kavramsal çizimi](./media/virtual-machines-image-builder-overview/image-builder.png)
+![Azure Image Builder kavramsal çizimi](./media/virtual-machines-image-builder-overview/image-builder.png)
 
-Azure Görüntü Oluşturucu, bir Azure kaynak sağlayıcısı tarafından erişilebilen tam olarak yönetilen bir Azure hizmetidir. Azure Görüntü Oluşturucu işlemi üç ana bölümden oluşur: kaynak, özelleştirme ve dağıtma, bu şablonda temsil edilir. Aşağıdaki diyagramda, bazı özelliklerini bileşenleri gösterilmektedir. 
+Azure görüntü Oluşturucu, bir Azure Kaynak sağlayıcısı tarafından erişilebilen, tam olarak yönetilen bir Azure hizmetidir. Azure görüntü Oluşturucu işleminin üç ana bölümü vardır: kaynak, özelleştirme ve dağıtma, bunlar bir şablonda temsil edilir. Aşağıdaki diyagramda, bazı özellikleriyle birlikte bileşenler gösterilmektedir. 
  
 
 
-**Görüntü Oluşturucu işlemi** 
+**Image Builder işlemi** 
 
-![Azure Görüntü Oluşturucu işlemi kavramsal çizimi](./media/virtual-machines-image-builder-overview/image-builder-process.png)
+![Azure Image Builder işleminin kavramsal çizimi](./media/virtual-machines-image-builder-overview/image-builder-process.png)
 
-1. Görüntüyü şablon bir .json dosyası oluşturun. Bu bir .json dosyası görüntü kaynağı, özelleştirmeler ve dağıtım hakkında bilgi içerir. Birden çok örnekler vardır [Azure Görüntü Oluşturucu GitHub deposu](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts).
-1. Hizmete gönderme, bu belirttiğiniz kaynak grubunda bir görüntü şablon yapıt oluşturur. Arka planda Görüntü Oluşturucu kaynak görüntüsü veya ISO ve gerektiğinde betikleri indirir. Bu biçimde aboneliğinizi otomatik olarak oluşturulan ayrı bir kaynak grubu depolanır: IT_\<DestinationResourceGroup>_\<TemplateName>. 
-1. Görüntü şablonu oluşturulduktan sonra görüntü oluşturabilirsiniz. Arka planda görüntü Oluşturucusu bir VM, ağ ve depolama içinde IT_ oluşturmak için şablon ve kaynak dosyalarını kullanır\<DestinationResourceGroup > _\<TemplateName > kaynak grubu.
-1. Görüntü oluşturmanın bir parçası, görüntünün Görüntü Oluşturucu dağıtır IT_ ek kaynakları ardından siler şablon göre\<DestinationResourceGroup > _\<TemplateName > için oluşturulan kaynak grubu işlemi.
+1. Görüntü şablonunu bir. JSON dosyası olarak oluşturun. Bu. JSON dosyası, görüntü kaynağı, özelleştirmeler ve dağıtım hakkındaki bilgileri içerir. [Azure Image Builder GitHub deposunda](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts)birden çok örnek vardır.
+1. Bu hizmeti hizmetine gönderirseniz, belirttiğiniz kaynak grubunda bir görüntü şablonu yapıtı oluşturulur. Arka planda, görüntü Oluşturucu kaynak görüntüyü veya ISO ve komut dosyalarını gerektiği şekilde indirir. Bunlar, aboneliğinizde otomatik olarak oluşturulan ayrı bir kaynak grubunda depolanır ve şu biçimdedir: IT_\<destinationresourcegroup > _\<TemplateName >. 
+1. Görüntü şablonu oluşturulduktan sonra görüntüyü oluşturabilirsiniz. Arka plan resmi tasarımcısında, IT_\<destinationresourcegroup > _\<TemplateName > kaynak grubunda bir VM, ağ ve depolama oluşturmak için şablon ve kaynak dosyalarını kullanır.
+1. Görüntü oluşturma işlemi kapsamında, görüntü Oluşturucu görüntüyü şablona göre dağıtır ve sonra IT_\<destinationresourcegroup > _\<TemplateName > kaynak grubundaki ek kaynakları siler işlem.
 
 
 ## <a name="permissions"></a>İzinler
 
-Yönetilen görüntülerine veya paylaşılan görüntü Galerisine görüntülerini dağıtmak Azure VM Görüntü Oluşturucu izin vermek için "Azure sanal makine Görüntü Oluşturucu" hizmeti için 'Katkıda bulunan' izinleri sağlamanız gerekir (uygulama kimliği: cf32a0cc-373c-47c9-9156-0db11f6a6dfc ) kaynak grupları. 
+Azure VM Image Builder 'ın görüntüleri yönetilen görüntülere veya paylaşılan bir görüntü galerisine dağıtmasını sağlamak için, "Azure sanal makine görüntüsü Oluşturucusu" hizmeti (uygulama KIMLIĞI: cf32a0cc-373c-47c9-9156-0db11f6a6dfc) için ' katılımcı ' izinleri sağlamanız gerekir. ). 
 
-Mevcut özel yönetilen resim veya görüntü sürümü kullanıyorsanız, Azure görüntü Oluşturucusu en az bu kaynak gruplarını 'Reader' erişimi gerekir.
+Mevcut bir özel yönetilen görüntü veya görüntü sürümü kullanıyorsanız, Azure görüntü oluşturucunun bu kaynak gruplarına en az ' okuyucu ' erişimi olması gerekir.
 
-Azure CLI kullanarak erişimi atayabilirsiniz:
+Azure CLı kullanarak erişim atayabilirsiniz:
 
 ```azurecli-interactive
 az role assignment create \
@@ -91,20 +92,20 @@ az role assignment create \
     --scope /subscriptions/$subscriptionID/resourceGroups/<distributeResoureGroupName>
 ```
 
-Hizmet hesabı bulunmazsa, rol ataması burada eklemekte olduğunuz abonelik henüz kaynak sağlayıcı kaydolmadı anlamına gelebilir.
+Hizmet hesabı bulunmazsa, rol atamasını eklediğiniz aboneliğin kaynak sağlayıcısı için henüz kaydolmadığından bu durum oluşabilir.
 
 
 ## <a name="costs"></a>Maliyetler
-Bazı işlem, ağ ve oluşturma, derleme ve görüntülerini Azure Görüntü Oluşturucu ile depolama, depolama maliyetlerine neden olur. Bu maliyetler, özel görüntüleri el ile oluşturma maliyetleri benzerdir. Kaynaklar için Azure ücretleri üzerinden ücretlendirilir. 
+Azure Image Builder ile görüntü oluştururken, derlerken ve depolarken bazı işlem, ağ ve depolama maliyetlerine tabi olursunuz. Bu maliyetler, el ile özel görüntüler oluşturma bölümünde tahakkuk eden maliyetlere benzer. Kaynaklar için Azure ücretlerinizi ücretlendirilecektir. 
 
-Görüntü oluşturma işlemi sırasında dosyaları indirilir ve depolanan `IT_<DestinationResourceGroup>_<TemplateName>` kaynak grubu, bir küçük depolama maliyetlerine neden olur. Bunlar tutmak istemediğiniz f görüntü şablon görüntü derlemeden sonra silin.
+Görüntü oluşturma işlemi sırasında dosyalar indirilir ve `IT_<DestinationResourceGroup>_<TemplateName>` kaynak grubunda depolanır ve bu, küçük bir depolama maliyetlerine neden olur. f bu adımları saklamak istemiyorsanız, görüntü oluşturulduktan sonra görüntü şablonunu silin.
  
-Görüntü Oluşturucusu bir VM D1v2 VM boyutu ve depolama kullanarak ve ağ sanal makine için gerekli oluşturur. Bu kaynaklar, yapı işleminin süresi boyunca en son ve Görüntü Oluşturucu görüntüsü oluşturma tamamlandıktan sonra silinir. 
+Image Builder, VM için gereken bir D1v2 VM boyutu, depolama alanı ve ağ kullanarak bir VM oluşturur. Bu kaynaklar, derleme işleminin süresi boyunca son verilecek ve görüntü Oluşturucu görüntüyü oluşturmayı tamamladığında silinir. 
  
-Ağ çıkışı ücretlerine tabi olabilirsiniz, seçtiğiniz bölgelerde, görüntüyü Azure Görüntü Oluşturucu dağıtacak.
+Azure Image Builder, görüntüyü seçtiğiniz bölgelere dağıtır ve bu da ağ çıkış ücretleri doğuracaktır.
  
 ## <a name="next-steps"></a>Sonraki adımlar 
  
-Azure Görüntü Oluşturucu ' ' ı denemek için makaleleri oluşturmak için bkz. [Linux](../articles/virtual-machines/linux/image-builder.md) veya [Windows](../articles/virtual-machines/windows/image-builder.md) görüntüler.
+Azure görüntü Oluşturucu 'Yu denemek için [Linux](../articles/virtual-machines/linux/image-builder.md) veya [Windows](../articles/virtual-machines/windows/image-builder.md) görüntülerini oluşturma makalelerine bakın.
  
  

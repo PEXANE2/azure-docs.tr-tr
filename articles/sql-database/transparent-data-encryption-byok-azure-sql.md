@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
-manager: craigg
 ms.date: 07/18/2019
-ms.openlocfilehash: cdd5e29fcc01639c03da70614f53ac648ee6620c
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 6b1b706e68b090090ed4268b70b7c9d254f8b629
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68318577"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596703"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-keys-in-azure-key-vault-bring-your-own-key-support"></a>Azure SQL Saydam Veri Şifrelemesi Azure Key Vault müşteri tarafından yönetilen anahtarlarla: Kendi Anahtarını Getir desteği
 
@@ -74,7 +73,7 @@ TDE, Key Vault ' dan bir TDE koruyucusu kullanacak şekilde yapılandırıldığ
 - Azure Active Directory (Azure AD) kimliğini kullanarak SQL veritabanı sunucusuna anahtar kasasına erişim izni verin.  Portal Kullanıcı arabirimini kullanırken, Azure AD kimliği otomatik olarak oluşturulur ve sunucuya Anahtar Kasası erişim izinleri verilir.  BYOK ile TDE yapılandırmak için PowerShell 'i kullanarak Azure AD kimliğinin oluşturulması ve tamamlanmasının doğrulanması gerekir. PowerShell kullanırken ayrıntılı adım adım yönergeler için bkz. [bYok Ile TDE yapılandırma](transparent-data-encryption-byok-azure-sql-configure.md) ve [yönetilen örnek için bYok Ile TDE yapılandırma](https://aka.ms/sqlmibyoktdepowershell) .
 
    > [!NOTE]
-   > Azure AD kimliği **yanlışlıkla silinirse veya sunucu izinleri** anahtar kasasının erişim ilkesi kullanılarak iptal edildiğinde veya sunucu farklı bir kiracıya taşınarak yanlışlıkla iptal edildiğinde, sunucu anahtar kasasına erişimi kaybeder ve şifreli veritabanları , mantıksal sunucunun Azure AD kimliği ve izinleri geri yüklenene kadar erişilemez olur ve oturum açmalar reddedilir.  
+   > Azure AD kimliği **yanlışlıkla silinirse veya sunucu izinleri** anahtar kasasının erişim ilkesi kullanılarak iptal edildiğinde veya sunucu farklı bir kiracıya taşınarak yanlışlıkla iptal edildiğinde, sunucu anahtar kasasına erişimi kaybeder ve şifreli veritabanları erişilemez olacak ve mantıksal sunucunun Azure AD kimliği ve izinleri geri yüklenene kadar oturum açma işlemleri reddedilir.  
 
 - Azure Key Vault ile güvenlik duvarları ve sanal ağlar kullanılırken, güvenilen Microsoft hizmetlerinin bu güvenlik duvarını atlamasına izin vermeniz gerekir. Evet ' i seçin.
 
@@ -87,15 +86,15 @@ TDE, Key Vault ' dan bir TDE koruyucusu kullanacak şekilde yapılandırıldığ
 
 ### <a name="guidelines-for-configuring-the-tde-protector-asymmetric-key"></a>TDE koruyucuyu yapılandırma yönergeleri (asimetrik anahtar)
 
-- Yerel bir HSM cihazında şifreleme anahtarınızı yerel olarak oluşturun. Bunun asimetrik, RSA 2048 anahtarı olduğundan emin olun, bu nedenle Azure Key Vault.
+- Yerel bir HSM cihazında şifreleme anahtarınızı yerel olarak oluşturun. Bunun asimetrik, RSA 2048 veya RSA HSM 2048 anahtarı olduğundan emin olun, çünkü Azure Key Vault.
 - Anahtarı bir anahtar Emanet sisteminde emanet.  
 - Azure Key Vault için şifreleme anahtarı dosyasını (. pfx,. bYok veya. Backup) içeri aktarın.
 
    > [!NOTE]
    > Sınama amacıyla, Azure Key Vault bir anahtar oluşturulabilir, ancak özel anahtar anahtar kasasından hiçbir şekilde ayrılamadığından, bu anahtar esutlenemez.  Anahtar kaybı (anahtar kasasındaki yanlışlıkla silme, süre sonu vb.), kalıcı veri kaybına neden olacak şekilde, üretim verilerini şifrelemek için her zaman yedekleme ve emanet tuşlarını kullanır.
 
-- Sona erme tarihi olan bir anahtar kullanırsanız, anahtarı süresi dolmadan önce döndürmek için bir süre sonu uyarı sistemi uygulayın: **anahtarın süresi dolduğunda, şifrelenen veritabanları TDE koruyucularına erişimi kaybeder ve erişilebilir** hale gelir ve tüm oturum açmalar anahtar yeni bir anahtara döndürüldü.
-- Anahtarın etkinleştirildiğinden ve anahtar *Al*, sarmalama ve *sarmalama* 'yı kaldırma işlemleri gerçekleştirmek için izinlere sahip olduğundan emin olun.
+- Sona erme tarihi olan bir anahtar kullanırsanız, anahtarı süresi dolmadan önce döndürmek için bir süre sonu uyarı sistemi uygulayın: **anahtarın süresi dolduğunda, şifrelenen veritabanları TDE koruyucularına erişimi kaybeder ve erişilebilir** hale gelir ve tüm oturum açmalar anahtar yeni bir anahtara döndürüldü ve mantıksal SQL Server için yeni anahtar ve varsayılan TDE koruyucu olarak seçildi.
+- Anahtarın etkinleştirildiğinden ve anahtar *Al*, sarmalama ve *sarmalama* 'yıkaldırma işlemleri gerçekleştirmek için izinlere sahip olduğundan emin olun.
 - Anahtarı ilk kez Azure Key Vault kullanmadan önce Azure Key Vault anahtar yedeklemesi oluşturun. [Backup-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey) komutu hakkında daha fazla bilgi edinin.
 - Anahtara her değişiklik yapıldığında yeni bir yedekleme oluşturun (örneğin, ACL 'Ler ekleyin, Etiketler ekleyin, anahtar öznitelikleri ekleyin).
 - Anahtarları döndürürken anahtar kasasında anahtarın **önceki sürümlerini saklayın** , bu nedenle eski veritabanı yedeklemeleri geri yüklenebilir. Bir veritabanı için TDE koruyucusu değiştirildiğinde, veritabanının eski yedekleri en son TDE koruyucuyu kullanacak şekilde **güncellenmez** .  Her bir yedeklemenin, geri yükleme zamanında oluşturulduğu TDE koruyucusu vardır. Anahtar döndürmeler [, PowerShell kullanarak saydam veri şifrelemesi koruyucusunu döndürme](transparent-data-encryption-byok-azure-sql-key-rotation.md)bölümündeki yönergeleri izleyerek gerçekleştirilebilir.
@@ -107,7 +106,7 @@ TDE, Key Vault ' dan bir TDE koruyucusu kullanacak şekilde yapılandırıldığ
 
 Mantıksal SQL Server, Azure Key Vault ' deki müşteri tarafından yönetilen TDE koruyucuya erişimi kaybederse, veritabanı tüm bağlantıları reddeder ve Azure portal erişilemez olarak görünür.  Bunun en yaygın nedenleri şunlardır:
 - Anahtar Kasası yanlışlıkla bir güvenlik duvarının arkasına veya arkasına silindi
-- Anahtar Kasası Anahtarı yanlışlıkla silindi veya zaman aşımına uğradı
+- Anahtar Kasası Anahtarı yanlışlıkla silindi, devre dışı veya zaman aşımına uğradı
 - Mantıksal SQL Server örneği AppID yanlışlıkla silindi
 - Mantıksal SQL Server örneği AppID 'Sine yönelik anahtara özel izinler iptal edildi
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Kubernetes Service'i (AKS) için CoreDNS özelleştirme
-description: Azure Kubernetes Service (AKS) kullanarak özel DNS uç noktaları alt etki alanlarını ekleyin veya CoreDNS özelleştirmeyi öğrenin
+title: Azure Kubernetes hizmeti (AKS) için CoreDNS 'i özelleştirme
+description: Azure Kubernetes Service (AKS) kullanarak alt etki alanları eklemek veya özel DNS uç noktalarını genişletmek için CoreDNS 'i özelleştirmeyi öğrenin
 services: container-service
 author: jnoller
 ms.service: container-service
@@ -8,34 +8,34 @@ ms.topic: article
 ms.date: 03/15/2019
 ms.author: jenoller
 ms.openlocfilehash: 247665f58dd064565f0e9aebc9859e97ce0ab0c0
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67836968"
 ---
-# <a name="customize-coredns-with-azure-kubernetes-service"></a>Azure Kubernetes hizmeti ile CoreDNS özelleştirme
+# <a name="customize-coredns-with-azure-kubernetes-service"></a>Azure Kubernetes hizmeti ile CoreDNS 'i özelleştirme
 
-Azure Kubernetes Service (AKS) kullanan [CoreDNS][coredns] küme DNS Yönetimi ve tüm proje *1.12.x* ve daha yüksek kümeleri. Daha önce kube-dns proje kullanıldı. Bu dns kube proje artık kullanım dışı bırakılmıştır. CoreDNS özelleştirme ve Kubernetes hakkında daha fazla bilgi için bkz. [Yukarı Akış resmi belgelerine][corednsk8s].
+Azure Kubernetes hizmeti (AKS), küme DNS yönetimi için [coredns][coredns] projesini ve tüm *1.12. x* ve üzeri kümeleriyle çözümü kullanır. Daha önce kuin-DNS projesi kullanıldı. Bu Kuto-DNS projesi artık kullanım dışıdır. CoreDNS özelleştirmesi ve Kubernetes hakkında daha fazla bilgi için bkz. [resmi yukarı akış belgeleri][corednsk8s].
 
-AKS, yönetilen bir hizmet olduğundan, CoreDNS ana yapılandırması değiştirilemiyor. (bir *CoreFile*). Bunun yerine, bir Kubernetes kullandığınız *ConfigMap* varsayılan ayarları geçersiz kılmak için. ' % S'varsayılan AKS CoreDNS ConfigMaps görmek için `kubectl get configmaps coredns -o yaml` komutu.
+AKS yönetilen bir hizmet olduğundan, CoreDNS (bir *Corefile*) ana yapılandırmasını değiştiremezsiniz. Bunun yerine, varsayılan ayarları geçersiz kılmak için bir Kubernetes *Configmap* kullanın. Varsayılan aks coredns configmaps öğesini görmek için `kubectl get configmaps coredns -o yaml` komutunu kullanın.
 
-Bu makalede aks'deki CoreDNS temel özelleştirme seçenekleri için ConfigMaps kullanmayı gösterir.
+Bu makalede, AKS 'de CoreDNS 'in temel özelleştirme seçenekleri için ConfigMaps 'ın nasıl kullanılacağı gösterilir.
 
 > [!NOTE]
-> `kube-dns` farklı sunulan [özelleştirme seçenekleri][kubednsblog] Kubernetes yapılandırma eşlemesi aracılığıyla. CoreDNS olduğu **değil** kube-dns geriye dönük uyumludur. Daha önce kullandığınız tüm özelleştirmeler CoreDNS ile kullanılmak üzere güncelleştirilmelidir.
+> `kube-dns`bir Kubernetes yapılandırma eşlemesi aracılığıyla farklı [özelleştirme seçenekleri][kubednsblog] sunuluyor. CoreDNS, KUIN-DNS ile geriye dönük olarak uyumlu **değildir** . Daha önce kullandığınız tüm özelleştirmeler CoreDNS ile kullanım için güncelleştirilmeleri gerekir.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu makalede, var olan bir AKS kümesi olduğunu varsayar. AKS hızlı bir AKS kümesi gerekirse bkz [Azure CLI kullanarak][aks-quickstart-cli] or [using the Azure portal][aks-quickstart-portal].
+Bu makalede, mevcut bir AKS kümeniz olduğunu varsaymaktadır. AKS kümesine ihtiyacınız varsa bkz. [Azure CLI kullanarak][aks-quickstart-cli] aks hızlı başlangıç veya [Azure Portal kullanımı][aks-quickstart-portal].
 
-## <a name="what-is-supportedunsupported"></a>Desteklenen/desteklenmeyen nedir
+## <a name="what-is-supportedunsupported"></a>Desteklenir/desteklenmez
 
-Tüm yerleşik CoreDNS eklentileri desteklenir. Add-on/üçüncü taraf eklenti desteklenir. 
+Tüm yerleşik CoreDNS eklentileri desteklenir. Eklenti/üçüncü taraf eklentileri desteklenmez. 
 
-## <a name="rewrite-dns"></a>DNS yeniden yazma
+## <a name="rewrite-dns"></a>DNS 'i yeniden yaz
 
-Sahip olduğunuz bir senaryo üzerinde halindeyken DNS adı yeniden gerçekleştirmektir. Aşağıdaki örnekte, değiştirin `<domain to be written>` kendi tam etki alanı adına sahip. Adlı bir dosya oluşturun `corednsms.yaml` örnek aşağıdaki yapılandırmayı yapıştırın:
+Sahip olduğunuz bir senaryo, anlık DNS adını yeniden yazar işlemini gerçekleştirmenizi sağlar. Aşağıdaki örnekte, kendi tam etki `<domain to be written>` alanı adınızla değiştirin. Adlı `corednsms.yaml` bir dosya oluşturun ve aşağıdaki örnek yapılandırmayı yapıştırın:
 
 ```yaml
 apiVersion: v1
@@ -53,30 +53,30 @@ data:
     }
 ```
 
-ConfigMap kullanarak oluşturduğunuz [kubectl uygulamak configmap][kubectl-apply] komut ve YAML bildiriminizi adını belirtin:
+[Kubectl Apply configmap][kubectl-apply] komutunu kullanarak configmap 'i oluşturun ve YAML bildiriminizde adı belirtin:
 
 ```console
 kubectl apply -f corednsms.yaml
 ```
 
-Özelleştirmeleri uygulanıp uygulanmadığını doğrulamak için [kubectl alma configmaps][kubectl-get] ve belirtin, *coredns özel* ConfigMap:
+Özelleştirmelerin uygulandığını doğrulamak için [kubectl Get configmaps][kubectl-get] ' i kullanın ve *coredns-Custom* configmap 'nizi belirtin:
 
 ```
 kubectl get configmaps --namespace=kube-system coredns-custom -o yaml
 ```
 
-Artık CoreDNS ConfigMap yeniden yüklemek için zorla. [Kubectl Sil pod][kubectl delete] komut bozucu değildir ve süresini neden olmaz. `kube-dns` Pod'ların silinir ve Kubernetes Zamanlayıcı bunları yeniden oluşturur. Bu yeni pod'ların TTL değerindeki içerir.
+Şimdi CoreDNS 'i ConfigMap 'i yeniden yüklemeye zorlayın. [Kubectl Delete Pod][kubectl delete] komutu bozucu değil ve zamana neden olmaz. `kube-dns` Pod 'ler silinir ve Kubernetes Zamanlayıcı bunları yeniden oluşturur. Bu yeni FID 'ler TTL değerindeki değişikliği içerir.
 
 ```console
 kubectl delete pod --namespace kube-system -l k8s-app=kube-dns
 ```
 
 > [!Note]
-> Yukarıdaki komutu büyük/küçük harf doğrudur. Değiştirmekte olduğunuz sırada `coredns`, dağıtım altındadır **kube-dns** adı.
+> Yukarıdaki komutu doğru. Değişiklik `coredns`yaptığımız sırada dağıtım **kuin-DNS** adı altındadır.
 
-## <a name="custom-proxy-server"></a>Özel bir proxy sunucusu
+## <a name="custom-proxy-server"></a>Özel proxy sunucusu
 
-Ağ trafiğiniz için proxy sunucusunu belirtmek gerekirse, DNS özelleştirmek için bir ConfigMap oluşturabilirsiniz. Aşağıdaki örnekte, güncelleştirme `proxy` ad ve adres için kendi ortamınızdaki değerlerle. Adlı bir dosya oluşturun `corednsms.yaml` örnek aşağıdaki yapılandırmayı yapıştırın:
+Ağ trafiğiniz için bir proxy sunucusu belirtmeniz gerekiyorsa, DNS 'yi özelleştirmek için bir ConfigMap oluşturabilirsiniz. Aşağıdaki örnekte, `proxy` ad ve adresi kendi ortamınızın değerleriyle güncelleştirin. Adlı `corednsms.yaml` bir dosya oluşturun ve aşağıdaki örnek yapılandırmayı yapıştırın:
 
 ```yaml
 apiVersion: v1
@@ -91,18 +91,18 @@ data:
     }
 ```
 
-Önceki örneklerde olduğu gibi ConfigMap kullanarak oluşturma [kubectl uygulamak configmap][kubectl-apply] command and specify the name of your YAML manifest. Then, force CoreDNS to reload the ConfigMap using the [kubectl delete pod][kubectl delete] bunları yeniden oluşturmak Kubernetes Zamanlayıcı için:
+Önceki örneklerde olduğu gibi, [kubectl Apply configmap][kubectl-apply] komutunu kullanarak configmap 'i oluşturun ve YAML bildirimin adını belirtin. Ardından, CoreDNS 'yi, Kubernetes Zamanlayıcı için [kubectl Delete Pod][kubectl delete] kullanarak configmap 'i yeniden yüklemeye zorlayın:
 
 ```console
 kubectl apply -f corednsms.yaml
 kubectl delete pod --namespace kube-system --label k8s-app=kube-dns
 ```
 
-## <a name="use-custom-domains"></a>Özel etki alanları kullanın
+## <a name="use-custom-domains"></a>Özel etki alanlarını kullanma
 
-Yalnızca dahili olarak çözülebilir özel etki alanlarını yapılandırmak isteyebilirsiniz. Örneğin, özel etki alanını çözümlemek isteyebilirsiniz *puglife.local*, geçerli bir üst düzey etki alanı değil. Özel bir etki alanı ConfigMap, AKS kümesi adresi çözümlenemiyor.
+Yalnızca dahili olarak çözümlenebileceğiniz özel etki alanlarını yapılandırmak isteyebilirsiniz. Örneğin, geçerli bir üst düzey etki alanı olmayan, *poglife. Local*özel etki alanını çözümlemek isteyebilirsiniz. Özel bir etki alanı ConfigMap olmadan AKS kümesi adresi çözemiyor.
 
-Aşağıdaki örnekte, özel etki alanı ve IP adresi için trafiği için kendi ortamınızdaki değerlerle güncelleştirin. Adlı bir dosya oluşturun `corednsms.yaml` örnek aşağıdaki yapılandırmayı yapıştırın:
+Aşağıdaki örnekte, özel etki alanını ve IP adresini kendi ortamınızın değerleriyle doğrudan trafiğe yönlendirmek için güncelleştirin. Adlı `corednsms.yaml` bir dosya oluşturun ve aşağıdaki örnek yapılandırmayı yapıştırın:
 
 ```yaml
 apiVersion: v1
@@ -119,7 +119,7 @@ data:
     }
 ```
 
-Önceki örneklerde olduğu gibi ConfigMap kullanarak oluşturma [kubectl uygulamak configmap][kubectl-apply] command and specify the name of your YAML manifest. Then, force CoreDNS to reload the ConfigMap using the [kubectl delete pod][kubectl delete] bunları yeniden oluşturmak Kubernetes Zamanlayıcı için:
+Önceki örneklerde olduğu gibi, [kubectl Apply configmap][kubectl-apply] komutunu kullanarak configmap 'i oluşturun ve YAML bildirimin adını belirtin. Ardından, CoreDNS 'yi, Kubernetes Zamanlayıcı için [kubectl Delete Pod][kubectl delete] kullanarak configmap 'i yeniden yüklemeye zorlayın:
 
 ```console
 kubectl apply -f corednsms.yaml
@@ -128,7 +128,7 @@ kubectl delete pod --namespace kube-system --label k8s-app=kube-dns
 
 ## <a name="stub-domains"></a>Saplama etki alanları
 
-CoreDNS saplama etki alanlarını yapılandırmak için de kullanılabilir. Aşağıdaki örnekte, özel etki alanları ve IP adresleri için kendi ortamınızdaki değerlerle güncelleştirin. Adlı bir dosya oluşturun `corednsms.yaml` örnek aşağıdaki yapılandırmayı yapıştırın:
+CoreDNS, saplama etki alanlarını yapılandırmak için de kullanılabilir. Aşağıdaki örnekte, özel etki alanlarını ve IP adreslerini kendi ortamınızın değerleriyle güncelleştirin. Adlı `corednsms.yaml` bir dosya oluşturun ve aşağıdaki örnek yapılandırmayı yapıştırın:
 
 ```yaml
 apiVersion: v1
@@ -151,16 +151,16 @@ data:
 
 ```
 
-Önceki örneklerde olduğu gibi ConfigMap kullanarak oluşturma [kubectl uygulamak configmap][kubectl-apply] command and specify the name of your YAML manifest. Then, force CoreDNS to reload the ConfigMap using the [kubectl delete pod][kubectl delete] bunları yeniden oluşturmak Kubernetes Zamanlayıcı için:
+Önceki örneklerde olduğu gibi, [kubectl Apply configmap][kubectl-apply] komutunu kullanarak configmap 'i oluşturun ve YAML bildirimin adını belirtin. Ardından, CoreDNS 'yi, Kubernetes Zamanlayıcı için [kubectl Delete Pod][kubectl delete] kullanarak configmap 'i yeniden yüklemeye zorlayın:
 
 ```console
 kubectl apply -f corednsms.yaml
 kubectl delete pod --namespace kube-system --label k8s-app=kube-dns
 ```
 
-## <a name="hosts-plugin"></a>Konaklar eklentisi
+## <a name="hosts-plugin"></a>Ana bilgisayarlar eklentisi
 
-Tüm yerleşik eklentileri desteklenen CoreDNS buna [konakları][coredns hosts] eklentidir de özelleştirmek kullanılabilir:
+Tüm yerleşik eklentiler desteklenmekle birlikte, CoreDNS [ana bilgisayarları][coredns hosts] eklentisinin özelleştirmek için kullanılabilir olduğu anlamına gelir:
 
 ```yaml
 apiVersion: v1
@@ -178,9 +178,9 @@ data:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede CoreDNS özelleştirme için bazı örnek senaryolar gösterilmiştir. CoreDNS proje hakkında daha fazla bilgi için bkz: [CoreDNS Yukarı Akış proje sayfası][coredns].
+Bu makalede, CoreDNS özelleştirmesi için bazı örnek senaryolar gösterildi. CoreDNS projesi hakkında daha fazla bilgi için bkz. [coredns yukarı akış projesi sayfası][coredns].
 
-Çekirdek Ağ kavramları hakkında daha fazla bilgi edinmek için [kavramları aks'deki uygulamalar için ağ][concepts-network].
+Çekirdek ağ kavramları hakkında daha fazla bilgi için bkz. [AKS 'teki uygulamalar Için ağ kavramları][concepts-network].
 
 <!-- LINKS - external -->
 [kubednsblog]: https://www.danielstechblog.io/using-custom-dns-server-for-domain-specific-name-resolution-with-azure-kubernetes-service/

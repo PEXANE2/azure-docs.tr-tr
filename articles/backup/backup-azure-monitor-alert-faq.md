@@ -1,18 +1,19 @@
 ---
 title: Azure Backup Izleme uyarısı SSS
 description: 'Hakkında sık sorulan soruların yanıtları: Azure Backup Izleme uyarısı'
-author: srinathvasireddy
-manager: sivan
+ms.reviewer: srinathv
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.author: srinathv
-ms.openlocfilehash: dc68b68ffa0ae2ee4f1bdd8f2c7ac0d7ff5ebb8c
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 50dd4f8df11b597ca90d9f45a749c8732d7025e6
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465850"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688343"
 ---
 # <a name="azure-backup-monitoring-alert---faq"></a>Azure Backup Izleme uyarısı-SSS
 Bu makalede, Azure izleme uyarısıyla ilgili sık sorulan sorular yanıtlanmaktadır.
@@ -25,7 +26,7 @@ Yapılandırdığınız depolama hesabına gidin ve kapsayıcılar ' ı seçin. 
 ### <a name="what-is-the-frequency-of-data-push-to-a-storage-account-and-the-azure-backup-content-pack-in-power-bi"></a>Bir depolama hesabına veri gönderme sıklığı ve Power BI Azure Backup içerik paketi nedir?
   Gün 0 kullanıcıları için, bir depolama hesabına veri göndermek yaklaşık 24 saat sürer. Bu ilk gönderme işlemi tamamlandıktan sonra, veriler aşağıdaki şekilde gösterilen sıklığa göre yenilenir.
 
-  * **İşlerle**, **uyarılarla**, **yedekleme öğeleriyle**, kasaların,  **korumalı sunucularla**ve **ilkelerden** ilgili veriler, bir müşteri depolama hesabına ve ne zaman günlüğe kaydedilir.
+  * **İşlerle**, **uyarılarla**, **yedekleme öğeleriyle**, kasaların, **korumalı sunucularla**ve **ilkelerden** ilgili veriler, bir müşteri depolama hesabına ve ne zaman günlüğe kaydedilir.
 
   * **Depolama** ile ilgili veriler her 24 saatte bir müşteri depolama hesabına gönderilir.
 

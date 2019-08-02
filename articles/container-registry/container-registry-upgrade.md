@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: danlep
 ms.openlocfilehash: 05c227e7de078c6bb371049f16e191598b9ca4e5
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68310371"
 ---
 # <a name="upgrade-a-classic-container-registry"></a>Klasik bir kapsayıcı kayıt defterini yükseltme
@@ -53,7 +53,7 @@ Geçiş işlemi tamamlandıktan sonra, aboneliğinizdeki depolama hesabı, klasi
 
 ## <a name="how-to-upgrade"></a>Yükseltme
 
-Yönetilmeyen klasik bir kayıt defterini yönetilen SKU 'Lardan birine çeşitli yollarla yükseltebilirsiniz. Aşağıdaki bölümlerde, [Azure CLI][azure-cli] and the [Azure portal][azure-portal]kullanma sürecini açıklıyoruz.
+Yönetilmeyen klasik bir kayıt defterini yönetilen SKU 'Lardan birine çeşitli yollarla yükseltebilirsiniz. Aşağıdaki bölümlerde, [Azure CLI][azure-cli] ve [Azure Portal][azure-portal]kullanma sürecini açıklıyoruz.
 
 ## <a name="upgrade-in-azure-cli"></a>Azure CLı 'da yükseltme
 

@@ -1,6 +1,6 @@
 ---
-title: Azure SQL veritabanı hizmet katmanları - DTU tabanlı satın alma modeli | Microsoft Docs
-description: Hizmet katmanlarında işlem ve depolama boyutları sağlamak tek ve havuza alınmış veritabanları için DTU tabanlı satın alma modeli hakkında bilgi edinin.
+title: Azure SQL veritabanı hizmet katmanları-DTU tabanlı satın alma modeli | Microsoft Docs
+description: İşlem ve depolama boyutları sağlamak üzere tek ve havuza alınmış veritabanları için DTU tabanlı satın alma modelindeki hizmet katmanları hakkında bilgi edinin.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -10,21 +10,20 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 06/25/2019
-ms.openlocfilehash: 964a2931267ad2f1e2842693eadf43f8f629a084
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.openlocfilehash: c46913f24deffc7c4db95d8a77db1c49ae54b6ae
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67357234"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566694"
 ---
-# <a name="service-tiers-in-the-dtu-based-purchase-model"></a>DTU tabanlı satın alma modeli olarak hizmet katmanları
+# <a name="service-tiers-in-the-dtu-based-purchase-model"></a>DTU tabanlı satın alma modelindeki hizmet katmanları
 
-DTU tabanlı satın alma modeli hizmet katmanlarında işlem boyutları dahil edilen depolama alanı, yedekleme ve sabit fiyat için bekletme süresi sabit tutarda aralığına göre ayrılır. DTU tabanlı satın alma modeli tüm hizmet katmanlarında işlem boyutları en düşük ile değiştirme esnekliği [kapalı kalma süresi](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/); ancak olduğundan geçiş dönemi boyunca bağlantı olduğu için veritabanı kayıp kısa bir zaman miktarı için hangi yeniden deneme mantığı kullanılarak azaltılabilir. Tek veritabanları ve elastik havuzlar, hizmet katmanı ve işlem boyutu saatlere göre faturalandırılır.
+DTU tabanlı satın alma modelindeki hizmet katmanları, sabit bir dahil edilen depolama alanı, yedeklemeler için sabit saklama süresi ve sabit fiyat içeren bir dizi işlem boyutuna göre farklılaştırılır. DTU tabanlı satın alma modelindeki tüm hizmet katmanları, işlem boyutlarının en az [kapalı kalma süresiyle](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/)değiştirilmesi esnekliği sağlar; Ancak, bağlantının veritabanına kısa bir süre boyunca kaybedildiği, yeniden deneme mantığı kullanılarak azaltılan bir süre içinde bir anahtar vardır. Tek veritabanları ve elastik havuzlar, hizmet katmanı ve işlem boyutu saatlere göre faturalandırılır.
 
 > [!IMPORTANT]
-> SQL veritabanı yönetilen örneği, DTU tabanlı satın alma modeli desteklemez. Daha fazla bilgi için [Azure SQL veritabanı yönetilen örneği](sql-database-managed-instance.md).
+> SQL veritabanı yönetilen örneği, DTU tabanlı satın alma modelini desteklemez. Daha fazla bilgi için [Azure SQL veritabanı yönetilen örneği](sql-database-managed-instance.md).
 > [!NOTE]
 > Sanal çekirdek tabanlı hizmet katmanları hakkında daha fazla bilgi için bkz: [sanal çekirdek tabanlı hizmet katmanları](sql-database-service-tiers-vcore.md). DTU tabanlı hizmet katmanları ve sanal çekirdek tabanlı hizmet katmanları ayrım yapma hakkında daha fazla bilgi için bkz: [Azure SQL veritabanı'nın satın alma modeli](sql-database-purchase-models.md).
 
@@ -45,7 +44,7 @@ Hizmet katmanı seçme, öncelikli olarak iş sürekliliği, depolama ve perform
 |||||
 
 > [!NOTE]
-> Azure keşfetmek için ücretsiz bir Azure hesabı ile birlikte temel bir hizmet katmanında, ücretsiz bir Azure SQL veritabanı alabilirsiniz. Bilgi için [Azure ücretsiz hesabınızla yönetilen bir bulut veritabanı oluşturun](https://azure.microsoft.com/free/services/sql-database/).
+> Azure 'ı araştırmak için Azure Ücretsiz hesabıyla birlikte, temel hizmet katmanında ücretsiz bir Azure SQL veritabanı edinebilirsiniz. Bilgi için [Azure ücretsiz hesabınızla yönetilen bir bulut veritabanı oluşturun](https://azure.microsoft.com/free/services/sql-database/).
 
 ## <a name="single-database-dtu-and-storage-limits"></a>Tek veritabanı DTU ve depolama limitleri
 
@@ -72,9 +71,9 @@ Hizmet katmanı seçme, öncelikli olarak iş sürekliliği, depolama ve perform
 |||||
 
 > [!IMPORTANT]
-> 1 TB'den fazla depolama Premium katmanında şu anda tüm bölgelerde kullanılabilir: Çin Doğu, Kuzey Çin, Almanya Orta, Almanya Kuzeydoğu, Batı Orta ABD, US DoD bölgeler ve ABD kamu orta. Bu bölgelerde Premium katmanda depolama için 1 TB üst sınırı uygulanır.  Daha fazla bilgi için [P11 P15 geçerli sınırlamalar](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).  
+> Premium katmanda 1 TB 'den fazla depolama alanı şu anda tüm bölgelerde kullanılabilir: Çin Doğu, Çin Kuzey, Almanya Orta, Almanya Kuzeydoğu, Orta Batı ABD, US DoD bölgeler ve ABD devlet Orta. Bu bölgelerde Premium katmanda depolama için 1 TB üst sınırı uygulanır.  Daha fazla bilgi için bkz. [P11-P15 geçerli sınırlamalar](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).  
 > [!IMPORTANT]
-> Bazı durumlarda, kullanılmayan alanı geri kazanmak için bir veritabanı daraltma gerekebilir. Daha fazla bilgi için [Azure SQL veritabanı'nda dosya alanı yönetmek](sql-database-file-space-management.md).
+> Bazı durumlarda, kullanılmayan alanı geri kazanmak için bir veritabanı daraltma gerekebilir. Daha fazla bilgi için bkz. [Azure SQL veritabanı 'nda dosya alanını yönetme](sql-database-file-space-management.md).
 
 ## <a name="dtu-benchmark"></a>DTU Kıyaslama
 
@@ -88,7 +87,7 @@ Kıyaslama ve metodolojisi aşağıda daha ayrıntılı olarak açıklanmıştı
 
 ### <a name="benchmark-summary"></a>Kıyaslama özeti
 
-Çevrimiçi işlem işleme (OLTP) iş yükleri en sık gerçekleşen temel veritabanı işlem bir karışımını performansını Kıyaslama ölçer. Kıyaslama bulut bilgi işlem, veritabanı şemasını, veri doldurma göz önünde tasarlanmıştır ve işlem OLTP iş yüklerinde en sık kullanılan temel öğe eyaleti'nde temsili olacak şekilde tasarlanmıştır ancak.
+Kıyaslama, çevrimiçi işlem işleme (OLTP) iş yüklerinde en sık oluşan temel veritabanı işlemleri karışımının performansını ölçer. Kıyaslama bulut bilgi işlem, veritabanı şemasını, veri doldurma göz önünde tasarlanmıştır ve işlem OLTP iş yüklerinde en sık kullanılan temel öğe eyaleti'nde temsili olacak şekilde tasarlanmıştır ancak.
 
 ### <a name="schema"></a>Şema
 

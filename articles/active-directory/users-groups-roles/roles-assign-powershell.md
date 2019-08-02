@@ -1,6 +1,6 @@
 ---
-title: Atama ve Azure PowerShell - Azure Active Directory ile yönetici rol atamasını Kaldır | Microsoft Docs
-description: Kişiler için sık rol atamalarını yönetmek, artık Azure PowerShell ile bir Azure AD yöneticisi rolünün üyeleri yönetebilirsiniz.
+title: Yönetici rolü atamasını atama ve kaldırma Azure PowerShell-Azure Active Directory | Microsoft Docs
+description: Rol atamalarını sık sık yönetenler için artık Azure PowerShell bir Azure AD yönetici rolü üyelerini yönetebilirsiniz.
 services: active-directory
 author: curtand
 manager: mtillman
@@ -8,25 +8,25 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 04/15/2019
+ms.date: 07/31/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6877c3e547d625cf58129a546dae798b37a24ae
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: aa4bddf84720265afe361dff665f10ff8184f6f6
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60469103"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706494"
 ---
-# <a name="assign-azure-active-directory-admin-roles-using-powershell"></a>PowerShell kullanarak Azure Active Directory'de yönetici rolleri atama
+# <a name="assign-azure-active-directory-admin-roles-using-powershell"></a>PowerShell kullanarak Azure Active Directory yönetici rolleri atama
 
-Azure PowerShell kullanarak kullanıcı hesaplarına Rolleri Ata nasıl otomatik hale getirebilirsiniz. Bu makalede [Azure Active Directory PowerShell sürüm 2](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#directory_roles) modülü.
+Azure PowerShell kullanarak Kullanıcı hesaplarına roller atamayı otomatik hale getirebilirsiniz. Bu makale, [Azure Active Directory PowerShell sürüm 2](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#directory_roles) modülünü kullanır.
 
-## <a name="prepare-powershell"></a>PowerShell hazırlama
+## <a name="prepare-powershell"></a>PowerShell 'i hazırlama
 
-İlk olarak, şunları yapmalısınız [Azure AD PowerShell modülünü indirme](https://www.powershellgallery.com/packages/AzureAD/).
+İlk olarak, [Azure AD PowerShell modülünü indirmeniz](https://www.powershellgallery.com/packages/AzureAD/)gerekir.
 
 ## <a name="install-the-azure-ad-powershell-module"></a>Azure AD PowerShell modülünü yükleme
 
@@ -37,7 +37,7 @@ install-module azuread
 import-module azuread
 ```
 
-Modül kullanıma hazır olduğunu doğrulamak için aşağıdaki komutu kullanın:
+Modülün kullanıma hazırsa emin olmak için aşağıdaki komutu kullanın:
 
 ```powershell
 get-module azuread
@@ -46,15 +46,15 @@ get-module azuread
   Binary     2.0.0.115    azuread                      {Add-AzureADAdministrati...}
 ```
 
-Artık modülünde cmdlet'leri kullanmaya başlayabilirsiniz. Azure AD modülündeki cmdlet'ler tam bir açıklaması için lütfen çevrimiçi başvuru belgelerine bakın [Azure Active Directory PowerShell sürüm 2](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#directory_roles).
+Artık modüldeki cmdlet 'leri kullanmaya başlayabilirsiniz. Azure AD modülündeki cmdlet 'lerin tam açıklaması için lütfen [Azure Active Directory PowerShell sürüm 2](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#directory_roles)' ye yönelik çevrimiçi başvuru belgelerine bakın.
 
 ## <a name="permissions-required"></a>Gerekli izinler
 
-Azure AD kiracınıza atamayı veya kaldırmayı roller genel yönetici hesabını kullanarak bağlanın.
+Rolleri atamak veya kaldırmak için bir genel yönetici hesabı kullanarak Azure AD kiracınıza bağlanın.
 
-## <a name="assign-a-single-role"></a>Tek bir rol atayın
+## <a name="assign-a-single-role"></a>Tek bir rol atama
 
-Rol atamak için önce görünen adını ve atama rolün adını almanız gerekir. Hesabın görünen adını ve rolün adı varsa, kullanıcıya rol atamak için aşağıdaki cmdlet'leri kullanın.
+Rol atamak için, önce kendi görünen adını ve atadığınız rolün adını edinmeniz gerekir. Hesabın görünen adına ve rolün adına sahip olduğunuzda, rolü kullanıcıya atamak için aşağıdaki cmdlet 'leri kullanın.
 
 ``` PowerShell
 # Fetch user to assign to role
@@ -80,9 +80,9 @@ Add-AzureADDirectoryRoleMember -ObjectId $role.ObjectId -RefObjectId $roleMember
 Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId | Get-AzureADUser
 ```
 
-## <a name="assign-a-role-to-a-service-principal"></a>Bir hizmet sorumlusuna bir rol atayın
+## <a name="assign-a-role-to-a-service-principal"></a>Hizmet sorumlusuna rol atama
 
-Bir hizmet sorumlusu, rol atama örneği.
+Bir role hizmet sorumlusu atama örneği.
 
 ```powershell
 # Fetch a service principal to assign to role
@@ -101,9 +101,9 @@ Add-AzureADDirectoryRoleMember -ObjectId $role.ObjectId -RefObjectId $roleMember
 Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId | Get-AzureADServicePrincipal
 ```
 
-## <a name="multiple-role-assignments"></a>Birden çok rol atamaları
+## <a name="multiple-role-assignments"></a>Çoklu rol atamaları
 
-Atama ve aynı anda birden çok rol kaldırma örnekleri.
+Aynı anda birden çok rol atama ve kaldırma örnekleri.
 
 ```powershell
 #File name
@@ -141,7 +141,7 @@ for ($i=2; $i -le $count; $i++)
 
 ## <a name="remove-a-role-assignment"></a>Rol atamasını kaldırma
 
-Bu örnek, belirtilen kullanıcı için rol ataması kaldırır.
+Bu örnek, belirtilen kullanıcı için bir rol atamasını kaldırır.
 
 ```powershell
 # Fetch user to assign to role
@@ -149,20 +149,20 @@ $roleMember = Get-AzureADUser -ObjectId "username@contoso.com"
 
 #Fetch list of all directory roles with object id
 Get-AzureADDirectoryRole
- 
+
 # Fetch a directory role by id
 $role = Get-AzureADDirectoryRole -ObjectId "5b3fe201-fa8b-4144-b6f1-875829ff7543"
- 
+
 # Remove user from role
 Remove-AzureADDirectoryRoleMember -ObjectId $role.ObjectId -MemberId $roleMember.ObjectId 
 
 # Fetch role membership for role to confirm
 Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId | Get-AzureADUser
- 
+
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Bizimle paylaşmayı rahatça [Azure AD yönetim rolleri Forumu](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
-* Rolleri ve Yönetici rolü atama hakkında daha fazla bilgi için bkz. [yönetici rolleri atama](directory-assign-admin-roles.md).
-* Varsayılan kullanıcı izinleri için bkz. bir [varsayılan Konuk ve üye kullanıcı izinlerini karşılaştırma](../fundamentals/users-default-permissions.md).
+* [Azure AD Yönetim rolleri forumundan](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)bizimle paylaşabilirsiniz.
+* Roller ve yönetici rolü atama hakkında daha fazla bilgi için bkz. [yönetici rolleri atama](directory-assign-admin-roles.md).
+* Varsayılan Kullanıcı izinleri için bkz. [varsayılan Konuk ve üye Kullanıcı izinlerinin karşılaştırması](../fundamentals/users-default-permissions.md).

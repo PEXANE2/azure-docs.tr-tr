@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/10/2019
+ms.date: 07/31/2019
 ms.author: rkarlin
-ms.openlocfilehash: fef9fa128d2ebb84fb82579f254735fdb9aa7ee2
-ms.sourcegitcommit: 1b7b0e1c915f586a906c33d7315a5dc7050a2f34
+ms.openlocfilehash: dad74410562aa54aeb61675e7dc1c0adccc44797
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67881059"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68679204"
 ---
 # <a name="connect-your-external-solution-using-syslog"></a>Syslog kullanarak dış çözümünüzü bağlama
 
@@ -47,6 +47,9 @@ Daha fazla bilgi için bkz. [Azure izleyici 'de Syslog veri kaynakları](../azur
 1. Azure Sentinel portalında **veri bağlayıcıları** ' nı seçin ve tablodaki **Syslog** satırını seçin ve sağdaki Syslog bölmesinde **bağlayıcı sayfasını aç**' a tıklayın.
 2. Linux makineniz Azure içindeyse, **indir ve aracıyı Azure Linux sanal makinesine**Yükle ' yi seçin. Sanal makineler penceresinde, aracıyı yüklemek istediğiniz makineleri seçin ve üst kısımdaki **Bağlan** ' a tıklayın.
 1. Linux makineniz Azure 'da değilse, **Linux 'U Linux olmayan makineye indir ve yükle**' yi seçin. **Doğrudan aracı** penceresinde, **Linux için indirme ve ekleme Aracısı** altındaki komutu kopyalayın ve makinenizde çalıştırın. 
+   > [!NOTE]
+   > Makinenin güvenliğini kuruluşunuzun güvenlik ilkesine göre yapılandırdığınızdan emin olun. Örneğin, ağınızı kurumsal ağ güvenlik ilkenize göre olacak şekilde yapılandırabilir ve gereksinimlerinize göre uyum sağlamak için arka plan programındaki bağlantı noktalarını ve protokolleri değiştirmelisiniz. 
+
 1. Günlükleri, syslog Bağlayıcısı Kurulumu penceresinde **bağlanacak şekilde yapılandırın** altında şu yönergeleri izleyin:
     1. **Çalışma alanı Gelişmiş ayarları yapılandırmanızı açmak**için bağlantıya tıklayın. 
     1. **Verileri**seçin ve sonra **Syslog**' ı seçin.
@@ -55,7 +58,7 @@ Daha fazla bilgi için bkz. [Azure izleyici 'de Syslog veri kaynakları](../azur
        > **Aşağıdaki yapılandırmayı makinelerime uygulamak**için onay kutusunu seçerseniz bu yapılandırma, bu çalışma alanına bağlı tüm Linux makinelere uygulanır. Bu yapılandırmayı Syslog makinenizde şu şekilde görebilirsiniz: 
 1. **Yapılandırma dikey penceresini açmak için buraya bas**' ye tıklayın.
 1. **Veri** ve ardından **Syslog**öğesini seçin.
-   - Syslog tarafından gönderdiğiniz her bir özelliğin tabloda olduğundan emin olun. İzlenecek her tesis için bir önem derecesi belirleyin. **Uygula**'ya tıklayın.
+   - Syslog tarafından gönderdiğiniz her bir özelliğin tabloda olduğundan emin olun. Her tesis için, bir önem derecesi ayarlayacağız. **Uygula**'ya tıklayın.
 1. Syslog makinenizde bu tesisleri gönderdiğinizden emin olun. 
 
 1. Syslog günlükleri için Log Analytics ilgili şemayı kullanmak için **Syslog**araması yapın.

@@ -9,20 +9,31 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 06/25/2019
+ms.date: 07/22/2019
 ms.author: diberry
-ms.openlocfilehash: 63a898bd807b168ae17ec90e442c6ee6c001c715
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ab30e201dc5e4e9a226e23a37e8dbd63f17dd742
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559885"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717446"
 ---
 # <a name="whats-new-in-language-understanding"></a>Language Understanding yenilikleri
 
 Hizmette nelerin yeni olduğunu öğrenin. Bu öğeler notları, Videoları, blog yayınlarını ve diğer bilgi türlerini bırakabilir. Hizmetle güncel kalmasını sağlamak için bu sayfaya yer işareti ekleyin.  
 
 ## <a name="release-notes"></a>Sürüm notları 
+
+### <a name="july-23-2019"></a>23 Temmuz 2019
+
+* [Tanıyıcıları-metin](https://github.com/microsoft/Recognizers-Text/releases/tag/dotnet-v1.2.3) ile 1.2.3 güncelleştirme
+    * Italyanca ' de yaş, sıcaklık, boyut ve para birimi tanıyıcıları.
+    * Tatil tabanlı tarihleri doğru şekilde hesaplamak için Ingilizce olarak tatil tanıma geliştirme.
+    * Tarih ve saat olmayan varlıkların yanlış pozitiflerini azaltmak için Fransız Tarih/saatteki geliştirmeler.
+    * Ingilizce gün içinde takvim/okul/mali yıl ve kısaltmalar için destek.
+    * Çince ve Japonca için, iyileştirilmiş PhoneNumber Tanıma.
+    * Ingilizce olarak NumberRange desteği geliştirildi.
+    * Performans iyileştirmeleri.
 
 ### <a name="june-24-2019"></a>24 Haziran 2019
 

@@ -1,7 +1,7 @@
 ---
-title: Akademik bilgi API'si ilişkisi varlık öznitelikleri
+title: Akademik Bilgi API 'sindeki ilişki varlığı öznitelikleri
 titlesuffix: Azure Cognitive Services
-description: Akademik bilgi API'si ilişkisi varlığı ile kullanabileceğiniz öznitelikleri hakkında bilgi edinin.
+description: Akademik Bilgi API 'sindeki Ilişki varlığı ile kullanabileceğiniz öznitelikleri öğrenin.
 services: cognitive-services
 author: alch-msft
 manager: nitinme
@@ -10,27 +10,28 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: 82e6a5b66342e58e62da029d617cbd1d74c28149
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 333875472d9b859196c4d828061301b9d32c4d5a
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61340528"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705108"
 ---
-# <a name="affiliation-entity"></a>Bağlantı varlığı
+# <a name="affiliation-entity"></a>İlişki varlığı
 
-<sub> * Şu öznitelikleri ilişkisi varlığa özgüdür. (Ty = '5') </sub>
+<sub>* Aşağıdaki öznitelikler ilişki varlığına özgüdür. (Ty = ' 5 ')</sub>
 
-Ad    |Açıklama                            |Tür       | İşlemler
+Ad    |Açıklama                            |Type       | İşlemler
 ------- | ------------------------------------- | --------- | ----------------------------
-Kimlik      |Varlık Kimliği                              |Int64      |Eşittir
-AfN     |Normalleştirilmiş ilişkisi adı        |String     |Eşittir
-DAfN    |İlişki görünen adı       |String     |Yok
-CC      |İlişki alıntı toplam sayısı           |Int32      |Yok  
-ECC     |İlişki toplam tahmini alıntı sayısı |Int32      |Yok
+Id      |Varlık Kimliği                              |Int64      |Eşittir
+AfN     |İlişki normalleştirilmiş adı        |Dize     |Eşittir
+Bafn    |İlişki görünen adı       |Dize     |yok
+BİLGİ      |İlişki toplam alıntı sayısı           |Int32      |yok  
+ECC     |Toplam tahmini alıntı sayısı |Int32      |yok
 
 ## <a name="extended-metadata-attributes"></a>Genişletilmiş meta veri öznitelikleri ##
 
 Ad    | Açıklama               
 --------|---------------------------    
-PC      |Bağlantı'nın kağıt sayısı
+PC      |İlişki kağıt sayısı

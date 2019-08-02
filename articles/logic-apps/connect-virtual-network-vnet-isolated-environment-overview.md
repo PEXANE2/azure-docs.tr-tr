@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 07/19/2019
-ms.openlocfilehash: 3e14604955a64c7a146a947c5c320b42ea3ebcba
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.date: 07/26/2019
+ms.openlocfilehash: 831a1457d865429fd53af1887a14c363b806300c
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325402"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516615"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Tümleştirme hizmeti ortamlarını (sesleri) kullanarak Azure Logic Apps Azure sanal ağ kaynaklarına erişim
 
@@ -80,7 +80,22 @@ ISE 'yi oluşturduğunuzda, geliştirici SKU 'SU veya Premium SKU 'YU seçebilir
 
   Üretim için kullanabileceğiniz ve SLA desteği, yerleşik Tetikleyiciler ve Eylemler, standart bağlayıcılar, kurumsal bağlayıcılar, tek bir [Standart katman](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) tümleştirme hesabı, kapasiteyi ölçeklendirme seçenekleri ve sabit bir aylık fiyat için geri dönüştürme.
 
+> [!IMPORTANT]
+> SKU seçeneği yalnızca ıSE oluşturma sırasında kullanılabilir ve daha sonra değiştirilemez.
+
 Fiyatlandırma fiyatları için bkz. [Logic Apps fiyatlandırması](https://azure.microsoft.com/pricing/details/logic-apps/). Fiyatlandırma ve faturalandırma işinin nasıl sesleri olduğunu öğrenmek için [Logic Apps fiyatlandırma modeline](../logic-apps/logic-apps-pricing.md#fixed-pricing)bakın.
+
+<a name="endpoint-access"></a>
+
+## <a name="ise-endpoint-access"></a>ISE uç noktası erişimi
+
+ISE 'yi oluşturduğunuzda, iç veya dış erişim uç noktaları kullanmayı tercih edebilirsiniz. Bu uç noktalar, işinizdeki Logic Apps 'teki istek veya Web kancasının, sanal ağınızın dışından çağrı alıp almamadığını belirtir. Bu uç noktalar Ayrıca Logic App çalıştırma geçmişinde girişlere ve çıkışlara erişimi de etkiler.
+
+* **İç**: İşinizdeki Logic Apps çağrılarına ve yalnızca *sanal ağınızın* içinden çalıştırma geçmişinde girişlere ve çıkışlara erişilmesine izin veren özel uç noktalar
+* **Dış**: İşinizdeki Logic Apps çağrılarına ve *sanal ağınızın dışından* çalıştırma geçmişindeki giriş ve çıkışlara erişilmesine izin veren genel uç noktalar
+
+> [!IMPORTANT]
+> Erişim uç noktası seçeneği yalnızca ıSE oluşturma sırasında kullanılabilir ve daha sonra değiştirilemez.
 
 <a name="on-premises"></a>
 
@@ -106,6 +121,8 @@ Tümleştirme hesaplarını bir tümleştirme hizmeti ortamı (ıSE) içinde Log
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Yalıtılmış Logic Apps 'Ten Azure sanal ağlarına](../logic-apps/connect-virtual-network-vnet-isolated-environment.md) nasıl bağlanacağınızı öğrenin
+* [Yalıtılmış Logic Apps 'ten Azure sanal ağlarına bağlanma](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)
+* [Tümleştirme hizmeti ortamlarına yapıt ekleme](../logic-apps/add-artifacts-integration-service-environment-ise.md)
+* [Tümleştirme hizmeti ortamlarını yönetme](../logic-apps/ise-manage-integration-service-environment.md)
 * [Azure sanal ağ](../virtual-network/virtual-networks-overview.md) hakkında daha fazla bilgi edinin
 * [Azure hizmetleri için sanal ağ tümleştirmesi](../virtual-network/virtual-network-for-azure-services.md) hakkında bilgi edinin

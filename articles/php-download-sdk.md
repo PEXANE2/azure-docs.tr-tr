@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/01/2016
 ms.author: yaya
 ms.openlocfilehash: 9dd336ef973b603108aad62c90e4dab385d20317
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67873889"
 ---
 # <a name="download-the-azure-sdk-for-php"></a>PHP için Azure SDK'sını indirme
@@ -45,7 +45,7 @@ Bu konudaki yönergeler, [php][install-php] 'nin yüklü olduğunu varsayar.
 
 Azure için PHP Istemci kitaplıkları, herhangi bir işletim sisteminden veri yönetimi hizmetleri ve bulut hizmetleri gibi Azure özelliklerine erişmek için bir arabirim sağlar. Bu kitaplıklar, besteci aracılığıyla yüklenebilir.
 
-Azure için php istemci kitaplıklarını kullanma hakkında daha fazla bilgi için bkz. [BLOB hizmetini][blob-service] , [How to Use the Table Service][table-service] kullanma ve [Queue Service][Queue-Service]hizmetini kullanma.
+Azure için PHP Istemci kitaplıklarını kullanma hakkında daha fazla bilgi için bkz. [BLOB hizmetini kullanma][blob-service], [tablo hizmetini kullanma][table-service] ve [kuyruk hizmetini kullanma][queue-service].
 
 ### <a name="install-via-composer"></a>Besteci aracılığıyla Install
 

@@ -12,142 +12,148 @@ author: chinadragon0515
 ms.author: dashe
 ms.reviewer: sawinark
 manager: craigg
-ms.openlocfilehash: 17fe8d9ed02156b8fe9aafd7adca946531895883
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 8abffdf443e26c03c38c12a3947a47a94157c9da
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68253025"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609630"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>Azure Data Factory 'de SSIS Integration Runtime yönetimi sorunlarını giderme
 
-Bu belge, SSIS Integration Runtime (SSIS IR) yönetim sorunlarına yönelik sorun giderme kılavuzu sağlar.
+Bu makalede, SSIS IR olarak da bilinen Azure-SQL Server Integration Services (SSIS) Integration Runtime (IR) içindeki yönetim sorunlarına yönelik sorun giderme kılavuzu sunulmaktadır.
 
 ## <a name="overview"></a>Genel Bakış
 
-SSIS IR sağlama veya sağlama konusunda herhangi bir sorun varsa ADF portalında bir hata mesajı olacaktır veya PowerShell cmdlet 'inden döndürülür. Hata, ayrıntılı bir hata iletisiyle hata kodu olarak her zaman biçimindedir.
+SSIS IR sağlama veya sağlamayı kaldırma sırasında herhangi bir sorunla karşılaşırsanız, Microsoft Azure Data Factory portalında bir hata iletisi veya bir PowerShell cmdlet 'inden döndürülen bir hata görürsünüz. Hata her zaman, ayrıntılı bir hata iletisiyle birlikte hata kodu biçiminde görüntülenir.
 
-Bu, hata kodu ınternalservererror ise hizmette bazı geçici sorunlar olduğu anlamına gelir. İşlemi daha sonra yeniden deneyebilirsiniz. Yeniden deneme konusunda yardım yoksa Azure Data Factory destek ekibine başvurun.
+Hata kodu ınternalservererror ise, hizmette geçici sorunlar olur ve işlemi daha sonra yeniden denemeniz gerekir. Yeniden deneme işlemi yardım vermezse, Azure Data Factory destek ekibine başvurun.
 
-Hatalara neden olabilecek üç ana dış bağımlılık vardır: Hata kodu ınternalservererror değilse Azure SQL veritabanı sunucusu veya yönetilen örnek, özel kurulum betiği ve sanal ağ yapılandırması.
+Aksi takdirde, üç önemli dış bağımlılıklar hatalara neden olabilir: bir Azure SQL veritabanı sunucusu veya yönetilen örnek, özel bir kurulum betiği ve sanal ağ yapılandırması.
 
 ## <a name="azure-sql-database-server-or-managed-instance-issues"></a>Azure SQL veritabanı sunucusu veya yönetilen örnek sorunları
 
-SSIS-SSSıS Katalog veritabanı ile SSIS IR sağlanması halinde bir Azure SQL veritabanı sunucusu veya yönetilen örnek gereklidir. Azure SQL veritabanı sunucusuna veya yönetilen örneğe SSIS IR tarafından erişilebilmelidir. Azure SQL veritabanı sunucusunun veya yönetilen örneğin hesabının SSIS Katalog veritabanı (SSSıSDB) oluşturma izni olmalıdır. Herhangi bir hata varsa, ADF portalında ayrıntılı SQL özel durum iletisi içeren bir hata kodu gösterilir. Hata kodlarının sorunlarını gidermek için aşağıdaki adımları izleyin.
+SSIS IR 'yi bir SSIS Katalog veritabanıyla sağlıyorsanız, bir Azure SQL veritabanı sunucusu veya yönetilen örnek gereklidir. SSIS IR, Azure SQL veritabanı sunucusuna veya yönetilen örneğe erişebilmelidir. Ayrıca, Azure SQL veritabanı sunucusunun veya yönetilen örneğin hesabının bir SSIS Katalog veritabanı (SSSıSDB) oluşturma izni olmalıdır. Bir hata oluşursa, Data Factory portalında ayrıntılı bir SQL özel durum iletisi içeren bir hata kodu gösterilir. Hata kodlarının sorunlarını gidermek için aşağıdaki listede bulunan bilgileri kullanın.
 
 ### <a name="azuresqlconnectionfailure"></a>Azuressqlconnectionfailure
 
-Bu sorunu, yeni bir SSIS IR sağlarken veya IR çalışırken görebilirsiniz.
+Yeni bir SSIS IR sağlanırken veya IR çalışırken bu sorunu görebilirsiniz. IR sağlama sırasında bu hatayla karşılaşırsanız, aşağıdaki sorunlardan birini belirten hata iletisinde ayrıntılı bir SqlException iletisi alabilirsiniz:
 
-IR sağlama sırasında hata görüyorsanız ve hata iletisinde ayrıntı SqlException iletisi alırsanız, bu durum aşağıdaki nedenlerden kaynaklanabilir.
+* Bir ağ bağlantısı sorunu. SQL Server veya yönetilen örnek ana bilgisayar adının erişilebilir olup olmadığını denetleyin. Ayrıca, bir güvenlik duvarı veya ağ güvenlik grubu (NSG) için SSIS IR erişiminin engellemediğini doğrulayın.
+* SQL kimlik doğrulaması sırasında oturum açma başarısız oldu. Girilen hesap SQL Server veritabanında oturum açamıyor. Doğru Kullanıcı hesabını sağladığınızdan emin olun.
+* Microsoft Azure Active Directory (Azure AD) kimlik doğrulaması (yönetilen kimlik) sırasında oturum açma başarısız oldu. Fabrikanızın yönetilen kimliğini bir AAD grubuna ekleyin ve yönetilen kimliğin Katalog veritabanı sunucunuza erişim izinlerine sahip olduğundan emin olun.
+* Bağlantı zaman aşımı. Bu hata her zaman güvenlikle ilgili bir yapılandırma nedeniyle oluşur. Şunları yapmanızı öneririz:
+  1. Yeni bir VM oluşturun.
+  1. IR bir sanal ağda ise, VM 'yi IR 'nin aynı Microsoft Azure Sanal Ağ birleştirin.
+  1. SSMS 'yi yükleyip Azure SQL veritabanı sunucusunu veya yönetilen örnek durumunu denetleyin.
 
-* Ağ bağlantısı sorunu. SQL Server veya yönetilen örnek ana bilgisayar adına erişilebilir olup olmadığını denetleyin ve sunucuya erişmek için SSIS IR güvenlik duvarı veya NSG bloğu yoktur.
-* Oturum açılamadı ve SQL kimlik doğrulaması kullanılıyor. Girilen hesap SQL Server oturum açamıyor anlamına gelir. Doğru Kullanıcı hesabının sağlandığından emin olun.
-* Oturum açma başarısız oldu ve AAD kimlik doğrulaması (yönetilen kimlik) kullanılıyor. Fabrikanızın yönetilen kimliğini bir AAD grubuna ekleyin ve yönetilen kimliğin Katalog veritabanı sunucunuza erişim izinleri olduğundan emin olun.
-* Bağlantı zaman aşımı, her zaman güvenlikle ilgili yapılandırma nedeniyle oluşur. Yeni bir sanal makine oluşturmanız önerilir, IR VNet 'te ise VM 'nin aynı IR VNet 'e katılmasını, ardından SSMS 'yi yüklemesini ve Azure SQL veritabanı sunucusunu ya da yönetilen örnek durumunu denetlemesini öneririz.
+Diğer sorunlar için ayrıntılı SQL özel durum hata iletisinde gösterilen sorunu giderin. Hala sorun yaşıyorsanız, Azure SQL veritabanı sunucusu veya yönetilen örnek desteği ekibine başvurun.
 
-Diğer sorunlar için, ayrıntılı SQL özel durum hata iletisine bakın ve hata iletisinde gösterilen sorunu giderin. Hala sorun yaşıyorsanız, Azure SQL veritabanı sunucusu veya yönetilen örnek desteği ekibine başvurun.
-
-IR çalışıyor sırasında hata görürseniz, SSIS IR çalışan düğümünün Azure SQL veritabanı sunucusuna veya yönetilen örneğe artık erişemediğini belirten bazı ağ güvenlik grupları veya güvenlik duvarı değişiklikleri olabilir. Azure SQL veritabanı sunucusuna veya yönetilen örneğe erişmek için SSIS IR çalışan düğümünün engellemesini kaldırın.
+IR çalışırken hata görürseniz, ağ güvenlik grubu veya güvenlik duvarı değişiklikleri büyük olasılıkla SSIS IR çalışan düğümünün Azure SQL veritabanı sunucusuna veya yönetilen örneğe erişmesini engelleyebilir. Azure SQL veritabanı sunucusuna veya yönetilen örneğe erişebilmeleri için SSIS IR çalışan düğümünün engellemesini kaldırın.
 
 ### <a name="catalogcapacitylimiterror"></a>CatalogCapacityLimitError
 
-Hata iletisi "' SSSıSDB ' veritabanı boyut kotasına ulaştı. Verileri bölümleyin veya silin, dizinleri bırakın veya olası çözümler için belgelere başvurun. " Olası çözümler şunlardır:
-* SSSıSDB 'nizin boyut kotasını artırın.
-* SSSıSDB 'nin yapılandırmasını değiştirerek şu şekilde boyutu azaltın:
+İşte bu tür bir hata iletisi şöyle görünebilir: "' SSSıSDB ' veritabanı boyut kotasına ulaştı. Verileri bölümleyin veya silin, dizinleri bırakın veya olası çözümler için belgelere başvurun. " 
+
+Olası çözümler şunlardır:
+* SSSıSDB 'nizin kota boyutunu artırın.
+* Boyutunu azaltmak için SSSıSDB yapılandırmasını değiştirin:
    * Saklama süresini ve proje sürümü sayısını azaltma.
-   * Günlük tutma dönemi azaltıyor.
-   * Günlüğün varsayılan düzeyini değiştirme ve bu şekilde devam eden.
+   * Günlüğün Bekletme dönemi azaltıyor.
+   * Günlüğün varsayılan düzeyini değiştirme.
 
 ### <a name="catalogdbbelongstoanotherir"></a>CatalogDbBelongsToAnotherIR
 
-Bu hata, Azure SQL veritabanı sunucusunda veya yönetilen örnekte zaten başka bir IR tarafından oluşturulan ve kullanılan bir SSSıSDB 'nin bulunduğu anlamına gelir. Farklı bir Azure SQL veritabanı sunucusu veya yönetilen örnek sağlamanız ya da var olan SSSıSDB 'yi silmeniz ve yeni IR 'yi yeniden başlatmanız gerekir.
+Bu hata, Azure SQL veritabanı sunucusunun veya yönetilen örneğin zaten bir SSSıSDB 'ye sahip olduğu ve başka bir IR tarafından kullanıldığı anlamına gelir. Farklı bir Azure SQL veritabanı sunucusu veya yönetilen örnek sağlamanız ya da var olan SSSıSDB 'yi silmeniz ve yeni IR 'yi yeniden başlatmanız gerekir.
 
 ### <a name="catalogdbcreationfailure"></a>CatalogDbCreationFailure
 
-Bu hatanın nedeni aşağıdakilerden biri olabilir.
+Bu hata, aşağıdakilerden biri nedeniyle oluşabilir:
 
 * SSIS IR için yapılandırılmış kullanıcı hesabının veritabanını oluşturma izni yok. Kullanıcıya veritabanını oluşturma izni verebilirsiniz.
-* Yürütme zaman aşımı, DB işlem zaman aşımı vb. gibi veritabanı zaman aşımı oluşturun. Sorunu çözülemediğini görmek için daha sonra yeniden deneyebilirsiniz. Yeniden deneme işe yaramazsa Azure SQL veritabanı sunucusu veya yönetilen örnek desteği ekibine başvurun.
+* Bir yürütme zaman aşımı veya bir DB işlem zaman aşımı gibi veritabanı oluşturma sırasında zaman aşımı oluşur. İşlemi daha sonra yeniden denemeniz gerekir. Yeniden deneme işe yaramazsa, Azure SQL veritabanı sunucusu veya yönetilen örnek desteği ekibine başvurun.
 
-Diğer sorunlar için SQL özel durum hata iletisini kontrol edin ve hata iletisinde belirtilen sorunu giderin. Hala sorun yaşıyorsanız, Azure SQL veritabanı sunucusu veya yönetilen örnek desteği ekibine başvurun.
+Diğer sorunlar için, SQL özel durum hata iletisini kontrol edin ve hata ayrıntılarında bahsedilen sorunu giderin. Hala sorun yaşıyorsanız, Azure SQL veritabanı sunucusu veya yönetilen örnek desteği ekibine başvurun.
 
 ### <a name="invalidcatalogdb"></a>Invalidcatalogdb
 
-Hata iletisi, "geçersiz nesne adı ' Catalog. catalog_properties '." gibidir. Bu, zaten SSSıSDB adlı bir veritabanınız var, ancak SSIS IR tarafından oluşturulmamış ya da veritabanı, son SSIS IR sağlama 'daki hatalardan kaynaklanan geçersiz bir durumda. Var olan veritabanını SSSıSDB adıyla bırakabilir veya IR için yeni bir Azure SQL veritabanı sunucusu veya yönetilen örnek yapılandırabilirsiniz.
+Bu tür bir hata iletisi şöyle görünür: "Geçersiz nesne adı ' Catalog. catalog_properties '." Bu durumda, zaten SSSıSDB adlı bir veritabanınız var, ancak SSIS IR tarafından oluşturulmamış veya veritabanı, son SSIS IR sağlama hatalarından kaynaklanan geçersiz bir durumda. Var olan veritabanını SSSıSDB adıyla bırakabilir veya IR için yeni bir Azure SQL veritabanı sunucusu veya yönetilen örneği yapılandırabilirsiniz.
 
-## <a name="custom-setup"></a>Özel Kurulum
+## <a name="custom-setup-issues"></a>Özel Kurulum sorunları
 
-Özel Kurulum, SSIS IR 'nizin sağlanması veya yeniden yapılandırılması sırasında kendi kurulum adımlarınızı eklemek için bir arabirim sağlar. Daha fazla bilgi için bkz. [Azure-SSIS tümleştirme çalışma zamanı için kurulumu özelleştirme](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup).
+Özel Kurulum, SSIS IR 'nizin sağlanması veya yeniden yapılandırılması sırasında kendi kurulum adımlarınızı eklemek için bir arabirim sağlar. Daha fazla bilgi için bkz. [Azure-ssıs Integration Runtime için kurulumu özelleştirme](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup).
 
-Kapsayıcıdaki tüm dosyalar SSIS IR çalışan düğümüne indirileceği için kapsayıcının yalnızca gerekli özel kurulum dosyalarını içerdiğinden emin olun. SSIS IR 'de betiği çalıştırmadan önce betik yürütme sorunlarını gidermek için özel kurulum betiğini yerel bir makinede sınamanız önerilir.
+Kapsayıcının yalnızca gerekli özel kurulum dosyalarını içerdiğinden emin olun; kapsayıcıdaki tüm dosyalar SSIS IR çalışan düğümüne indirilir. Betiği SSIS IR 'de çalıştırmadan önce betik yürütme sorunlarını gidermek için özel kurulum betiğini yerel bir makinede test etmenizi öneririz.
 
-Özel kurulum betiği kapsayıcısı, her ne kadar çalışan IR sırasında, özel kurulum betiğini indirmek ve yeniden yüklemek için kapsayıcıya yeniden erişmesi gereken bir şekilde düzenli olarak güncelleştirilir. Bu denetim, kapsayıcının erişilebilir olup olmadığını ve Main. cmd dosyasının var olup olmadığını içerir.
+SSIS IR düzenli olarak güncelleştirildiğinden, özel kurulum betiği kapsayıcısı IR çalışırken kontrol edilecek. Bu güncelleştirme, özel kurulum betiğini indirmek ve yeniden yüklemek için kapsayıcıya erişim gerektirir. İşlem ayrıca kapsayıcının erişilebilir olup olmadığını ve Main. cmd dosyasının mevcut olup olmadığını denetler.
 
-Özel kurulumda herhangi bir hata, CustomSetupScriptFailure kodunda bir hata görürsünüz, bir alt hata kodu olan hata iletisini kontrol edin.  Alt hata kodlarının sorunlarını gidermek için aşağıdaki adımları izleyin.  
+Özel kurulumu içeren herhangi bir hata için, Customsetupscriptblobcontainererişilemeyen veya CustomSetupScriptNotFound gibi Sub Code ile bir CustomSetupScriptFailure hata kodu görürsünüz.
 
 ### <a name="customsetupscriptblobcontainerinaccessible"></a>Customsetupscriptblobcontainererişilemeyen
 
-Bu, SSIS IR 'nin özel kurulum için Azure Blob kapsayıcınıza erişemeyeceği anlamına gelir. Kapsayıcının SAS URI 'sinin erişilebilir olduğunu ve süre dolmadığından emin olun.
+Bu hata, SSIS IR 'nin özel kurulum için Azure Blob kapsayıcınıza erişemeyeceği anlamına gelir. Kapsayıcının SAS URI 'sinin erişilebilir olduğundan ve süresi dolmadığından emin olun.
 
-IR çalışır durumdaysa önce IR 'yi durdurun, IR 'yi yeni özel kurulum kapsayıcısı SAS URI 'SI ile yeniden yapılandırın ve ardından IR 'yi yeniden başlatın.
+Çalışıyorsa IR 'yi durdurun, yeni özel kurulum kapsayıcısı SAS URI 'SI ile IR 'yi yeniden yapılandırın ve ardından IR 'yi yeniden başlatın.
 
 ### <a name="customsetupscriptnotfound"></a>CustomSetupScriptNotFound
 
-Bu, SSIS IR 'nin blob kapsayıcınızda özel kurulum betiği (Main. cmd) bulamadığı anlamına gelir. Özel Kurulum yüklemesinin giriş noktası olan kapsayıcıda Main. cmd ' nin bulunduğundan emin olun.
+Bu hata, SSIS IR 'nin blob kapsayıcıda özel bir kurulum betiği (Main. cmd) bulamadığı anlamına gelir. Özel Kurulum yüklemesinin giriş noktası olan kapsayıcıda Main. cmd ' nin bulunduğundan emin olun.
 
 ### <a name="customsetupscriptexecutionfailure"></a>CustomSetupScriptExecutionFailure
 
-Özel kurulum komut dosyasının (Main. cmd) yürütülmesi başarısız oldu, önce betiği yerel makinenizde deneyebilir veya blob kabınızda özel kurulum yürütme günlüklerini kontrol edebilirsiniz.
+Bu hata, özel kurulum betiğini (Main. cmd) yürütmenin başarısız olduğu anlamına gelir. Betiği önce yerel makinenizde deneyin veya blob kabınızda özel kurulum yürütme günlüklerine bakın.
 
 ### <a name="customsetupscripttimeout"></a>CustomSetupScriptTimeout
 
-Özel kurulum betiği zaman aşımı yürütme anlamına gelir. Blob kabınızda yalnızca gerekli özel kurulum dosyalarını içerdiğinden emin olun. Blob kabınızda özel kurulum yürütme günlüklerini de denetleyebilirsiniz. Özel kurulum için maksimum süre, zaman aşımına uğramadan önce 45 dakika veya en fazla süre, kapsayıcıınızdan tüm dosyaları indirme ve bunları SSIS IR 'ye yükleme süresini içerir. Daha uzun bir süre gerekliyse, bir destek bileti yükseltin.
+Bu hata bir yürütme özel kurulum betiği zaman aşımını gösterir. Blob kabınızda yalnızca gerekli özel kurulum dosyalarını içerdiğinden emin olun. Blob kabınızda özel kurulum yürütme günlüklerini de denetlemeniz gerekir. Özel kurulum için maksimum süre, zaman aşımına uğramadan 45 dakikadır ve en fazla süre, kapsayıcıınızdan tüm dosyaları indirme ve SSIS IR 'ye yükleme süresini içerir. Daha uzun bir süreye ihtiyacınız varsa, bir destek bileti yükseltin.
 
 ### <a name="customsetupscriptloguploadfailure"></a>CustomSetupScriptLogUploadFailure
 
-Özel Kurulum yürütme günlüklerinin blob kapsayıcısına yüklenmesi başarısız oldu, çünkü SSIS IR 'nin blob kapsayıcınıza veya bazı depolama ya da ağ sorunlarına yazma izni yoktur. Özel Kurulum başarılı olursa, bu hata SSIS işlevini etkilemez, ancak Günlükler eksiktir. Özel Kurulum başka bir hatayla başarısız olduysa ve günlüğü karşıya yükleyemedik, bu hatayı ilk olarak raporlarız ve bu sorun çözümlendikten sonra, daha fazla belirtilen sorunu bildirecağız. Bu sorun yeniden denendikten sonra çözülemezse, Azure Data Factory destek ekibine başvurun.
+Bu hata, Özel Kurulum yürütme günlüklerini blob kapsayıcınıza yükleme denemesinin başarısız olduğu anlamına gelir. Bu sorun, SSIS IR 'nin blob kapsayıcınızda veya depolama ya da ağ sorunları nedeniyle yazma izinleri olmadığından meydana gelir. Özel Kurulum başarılı olursa, bu hata SSIS işlevini etkilemez, ancak Günlükler eksik olur. Özel Kurulum başka bir hatayla başarısız olursa ve günlük karşıya yüklenememişse, bu hatayı öncelikle günlüğün analiz için karşıya yüklenebilmesi için rapor göndereceğiz. Ayrıca, bu sorun çözümlendikten sonra, daha belirli sorunları bildirecağız. Bu sorun bir yeniden denemeden sonra çözümlenemezse, Azure Data Factory destek ekibine başvurun.
 
 ## <a name="virtual-network-configuration"></a>Sanal ağ yapılandırması
 
-SSIS IR 'yi bir sanal ağa (VNet) eklerken, kullanıcı aboneliği altında VNet 'i kullanır. Daha fazla bilgi için bkz. [Azure-SSIS tümleştirme çalışma zamanını bir sanal ağa ekleme](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network).
+SSIS IR 'yi Azure sanal ağına katdığınızda, SSIS IR, kullanıcı aboneliği altındaki sanal ağı kullanır. Daha fazla bilgi için bkz. bir [Azure-ssıs Integration Runtime sanal ağa ekleme](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network).
 
-VNet ile ilgili sorun olduğunda, aşağıdaki gibi bir hata görürsünüz
+Ağla ilgili sanal bir sorun olduğunda aşağıdaki hatalardan birini görürsünüz.
 
 ### <a name="invalidvnetconfiguration"></a>Invalidvnetconfiguration
 
-Bunun nedeni, değişken nedenlerinden kaynaklanabilir. Alt hata kodlarının sorunlarını gidermek için aşağıdaki adımları izleyin.
+Bu hata çeşitli nedenlerden kaynaklanabilir. Sorunu gidermek için [yasaklanmış](#forbidden), [InvalidPropertyValue](#invalidpropertyvalue)ve [Misconfigureddnsserverornsgsettings](#misconfigureddnsserverornsgsettings) bölümlerine bakın.
 
 ### <a name="forbidden"></a>Yasak
 
-Hata iletisi, "SubnetID geçerli hesap için etkinleştirilmemiş. Microsoft. Batch kaynak sağlayıcısı, VNet 'in aynı aboneliğine kayıtlı değil. "
+Bu tür bir hata şuna benzeyebilir: "SubnetID geçerli hesap için etkinleştirilmemiş. Microsoft. Batch kaynak sağlayıcısı, VNet 'in aynı aboneliğine kayıtlı değil. "
 
-Azure Batch sanal ağınıza erişemeyeceği anlamına gelir. Microsoft. Batch kaynak sağlayıcısını aynı VNet aboneliğine kaydedin.
+Bu ayrıntılar Azure Batch sanal ağınıza erişemiyorum anlamına gelir. Microsoft. Batch kaynak sağlayıcısını, sanal ağ ile aynı abonelikte kaydettirin.
 
 ### <a name="invalidpropertyvalue"></a>InvalidPropertyValue
 
-Hata iletisi "belirtilen VNet yok ya da Batch hizmetinin buna erişimi yok" veya "belirtilen alt ağ xxx yok" gibidir.
+Bu tür bir hata aşağıdakilerden birine benzemeyebilir: 
 
-Bu, VNet 'in bulunmadığı veya Azure Batch hizmetin bu ağa erişemediği veya belirtilen alt ağın bulunmadığı anlamına gelir. VNet ve alt ağın mevcut olduğundan ve Azure Batch erişebildiğinden emin olun.
+- "Belirtilen sanal ağ yok ya da Batch hizmetinin erişimi yok."
+- "Belirtilen alt ağ xxx yok."
+
+Bu hatalar, sanal ağın mevcut olmadığı, Azure Batch hizmetinin buna erişemediğini veya belirtilen alt ağın mevcut olmadığı anlamına gelir. Sanal ağın ve alt ağın mevcut olduğundan ve Azure Batch bunlara erişebildiğinden emin olun.
 
 ### <a name="misconfigureddnsserverornsgsettings"></a>Hatalı Configureddnsserverornsgsettings
 
-İleti "VNET 'teki Integration Runtime sağlanamadı. DNS sunucusu veya NSG ayarları yapılandırılırsa, DNS sunucusunun erişilebilir olduğundan ve NSG 'nin doğru yapılandırıldığından emin olun "
+Bu tür bir hata iletisi şöyle görünebilir: "VNet 'te Integration Runtime sağlanamadı. DNS sunucusu veya NSG ayarları yapılandırılırsa, DNS sunucusunun erişilebilir olduğundan ve NSG 'nin doğru yapılandırıldığından emin olun. "
 
-Büyük olasılıkla DNS sunucusu veya NSG ayarlarının özelleştirilmiş bir yapılandırması olabilir. Bu, SSIS IR tarafından gerekli olan Azure sunucusu adının çözümlenemeyeceğini veya erişilememesine neden olur. Daha fazla bilgi için bkz. [SSIS IR VNET yapılandırma](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network) belgesi. Hala sorun yaşıyorsanız Azure Data Factory destek ekibine başvurun.
+Bu durumda, büyük olasılıkla DNS sunucusu veya NSG ayarlarının özelleştirilmiş bir yapılandırması vardır. Bu, SSIS IR tarafından istenen Azure sunucu adının çözümlenme veya erişilmesine karşı yapılmasını engeller. Daha fazla bilgi için bkz. [SSIS IR sanal ağ yapılandırması](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network). Hala sorun yaşıyorsanız Azure Data Factory destek ekibine başvurun.
 
 ### <a name="vnetresourcegrouplockedduringupgrade"></a>VNetResourceGroupLockedDuringUpgrade
 
-SSIS IR, düzenli aralıklarla otomatik olarak güncelleştirilir ve yükseltme sırasında yeni bir Azure Batch havuzu oluşturulur ve eski Azure Batch havuzu silinir, eski havuzun VNet ile ilgili kaynağı silinir ve yeni VNet ile ilgili kaynak şu şekilde oluşturulur. aboneliğiniz. Bu hata, abonelikte veya kaynak grubu düzeyinde silme kilidi nedeniyle eski havuz için VNet ile ilgili kaynağın silinmesinin başarısız olduğu anlamına gelir. Silme kilidini kaldırma yardımı.
+SSIS IR, düzenli aralıklarla otomatik olarak güncelleştirilir. Yükseltme sırasında yeni bir Azure Batch havuzu oluşturulur ve eski Azure Batch havuzu silinir. Ayrıca, eski havuz için sanal ağla ilgili kaynaklar silinir ve aboneliğiniz altında sanal ağla ilgili yeni kaynaklar oluşturulur. Bu hata, abonelikte veya kaynak grubu düzeyinde silme kilidi nedeniyle eski havuz için sanal ağla ilgili kaynakların silinmesinin başarısız olduğu anlamına gelir. Müşteri, silme kilidini denetletiğinden ve ayarlamadığı için bu durumda silme kilidini kaldırmalıdır.
 
 ### <a name="vnetresourcegrouplockedduringstart"></a>VNetResourceGroupLockedDuringStart
 
-SSIS IR sağlama nedeni nedenlerden dolayı başarısız olabilir ve bir hata oluşursa oluşturulan tüm kaynaklar silinir. Ancak, abonelikte veya kaynak grubu düzeyinde kaynak silme kilidi olduğundan VNet kaynakları silinemedi. Silme kilidini kaldırın ve IR 'yi yeniden başlatın.
+SSIS IR sağlama başarısız olursa, oluşturulan tüm kaynaklar silinir. Ancak, abonelikte veya kaynak grubu düzeyinde bir kaynak silme kilidi varsa, sanal ağ kaynakları beklendiği gibi silinmez. Bu hatayı onarmak için, silme kilidini kaldırın ve IR 'yi yeniden başlatın.
 
 ### <a name="vnetresourcegrouplockedduringstop"></a>VNetResourceGroupLockedDuringStop
 
-SSIS IR 'yi durdururken, VNet ile ilgili tüm kaynaklar silinir, ancak abonelikte veya kaynak grubu düzeyinde kaynak silme kilidi olduğundan silme işlemi başarısız olur. Silme kilidini kaldırmak ve durdurmayı yeniden denemek için yardım.
+SSIS IR 'yi durdurduğunuzda, sanal ağla ilgili tüm kaynaklar silinir. Ancak, abonelikte veya kaynak grubu düzeyinde bir kaynak silme kilidi varsa silme işlemi başarısız olabilir. Burada, müşteri, silme kilidini denetler ve ayarlar. Bu nedenle, silme kilidini kaldırması ve sonra SSIS IR 'yi yeniden durdurması gerekir.
 
 ### <a name="nodeunavailable"></a>NodeUnavailable
 
-Bu hata, çalışan IR sırasında oluşur, bu durum IR 'nin öncesinde sistem durumu olduğu ve sağlıksız olacağı anlamına gelir, her zaman DNS sunucusu veya NSG yapılandırması değiştiği ve SSIS IR 'nin bağımlı hizmete bağlanamadığı, DNS sunucusunu veya NSG yapılandırma sorunlarını gidermeye yardımcı olma Daha fazla bilgi için bkz. [SSIS IR VNET yapılandırması](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network). Hala sorun yaşıyorsanız Azure Data Factory destek ekibine başvurun.
+IR çalışırken bu hata oluşur ve IR 'nin sağlıksız hale geldiği anlamına gelir. Bu hata her zaman, SSIS IR 'nin gerekli bir hizmete bağlanmasını engelleyen DNS sunucusu veya NSG yapılandırmasındaki bir değişiklikten kaynaklanır. DNS sunucusu ve NSG yapılandırması müşteri tarafından denetlentiğinden, müşterinin kendi sonunda engelleyici sorunları çözmesi gerekir. Daha fazla bilgi için bkz. [SSIS IR sanal ağ yapılandırması](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network). Hala sorun yaşıyorsanız Azure Data Factory destek ekibine başvurun.

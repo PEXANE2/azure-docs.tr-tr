@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 07/26/2019
-ms.openlocfilehash: dbc92502cdab6e76ba6b8730fca7e0aed3966a43
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.date: 08/01/2019
+ms.openlocfilehash: 083c908609ebcf1bdc6dcad5e37ae03daa41758f
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494928"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706498"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>Azure Logic Apps için Azure Resource Manager şablonları dağıtma
 
@@ -35,7 +35,7 @@ Mantıksal uygulama şablonunu Azure 'a otomatik olarak dağıtmak için, aşağ
 
 [![Azure’a dağıtma](./media/logic-apps-deploy-azure-resource-manager-templates/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-logic-app-create%2Fazuredeploy.json)
 
-Örneğin, Azure portal oturum açtıktan sonra bu bilgileri girmeniz istenir:
+Örneğin, Azure portal oturum açtıktan sonra aşağıdaki bilgiler istenir:
 
 * Azure abonelik adı
 * Kullanmak istediğiniz kaynak grubu
@@ -59,7 +59,7 @@ Visual Studio kullanarak oluşturduğunuz bir Azure Kaynak grubu projesinden bir
 
 ## <a name="deploy-with-azure-powershell"></a>Azure PowerShell ile dağıtma
 
-Belirli bir Azure Kaynak grubuna dağıtmak için şu komutu kullanın:
+Belirli bir *Azure Kaynak grubuna*dağıtmak için aşağıdaki komutu kullanın:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName <Azure-resource-group-name> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json
@@ -74,7 +74,7 @@ Daha fazla bilgi için şu konulara bakın:
 
 ## <a name="deploy-with-azure-cli"></a>Azure CLI ile dağıtma
 
-Belirli bir *Azure Kaynak grubuna*dağıtmak için şu komutu kullanın:
+Belirli bir *Azure Kaynak grubuna*dağıtmak için aşağıdaki komutu kullanın:
 
 ```azurecli
 az group deployment create -g <Azure-resource-group-name> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json
@@ -91,10 +91,14 @@ Daha fazla bilgi için şu konulara bakın:
 
 Mantıksal uygulama şablonları dağıtmak ve ortamları yönetmek için, ekipler genellikle [Azure DevOps](https://docs.microsoft.com/azure/devops/user-guide/what-is-azure-devops-services)'da [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/what-is-azure-pipelines) gibi bir araç kullanır. Azure Pipelines, herhangi bir derleme veya yayın ardışık düzenine ekleyebileceğiniz bir [Azure Kaynak grubu dağıtım görevi](https://github.com/Microsoft/azure-pipelines-tasks/tree/master/Tasks/AzureResourceGroupDeploymentV2) sağlar. Yayın işlem hattını dağıtma ve oluşturma yetkilendirmesi için Azure Active Directory (AD) [hizmet sorumlusu](../active-directory/develop/app-objects-and-service-principals.md)da gerekir. [Azure Pipelines ile hizmet sorumlularını kullanma](https://docs.microsoft.com/azure/devops/pipelines/library/connect-to-azure)hakkında daha fazla bilgi edinin.
 
-Azure Pipelines olan Azure Resource Manager şablonlar için sürekli tümleştirme ve sürekli dağıtım (CI/CD) hakkında daha fazla bilgi için şu konulara bakın:
+Azure Pipelines olan Azure Resource Manager şablonlar için sürekli tümleştirme ve sürekli dağıtım (CI/CD) hakkında daha fazla bilgi için şu konulara ve örneklere bakın:
 
 * [Kaynak Yöneticisi şablonlarını Azure Pipelines ile tümleştirme](../azure-resource-manager/vs-resource-groups-project-devops-pipelines.md)
 * [Öğretici: Azure Pipelines olan Azure Resource Manager şablonlar için sürekli tümleştirme](../azure-resource-manager/resource-manager-tutorial-use-azure-pipelines.md)
+* [Örnek: Azure DevOps 'da Azure Logic Apps Azure Service Bus kuyruklara bağlanma ve Azure Pipelines ile dağıtma](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Örnek: Azure depolama hesaplarına Azure Logic Apps ve Azure DevOps 'da Azure Pipelines ile dağıtma](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Örnek: Azure Logic Apps için bir işlev uygulaması eylemi ayarlama ve Azure DevOps 'da Azure Pipelines ile dağıtma](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Örnek: Azure Logic Apps 'ten bir tümleştirme hesabına bağlanın ve Azure DevOps 'da Azure Pipelines ile dağıtın](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
 
 Azure Pipelines kullanmaya yönelik genel üst düzey adımlar aşağıda verilmiştir:
 
