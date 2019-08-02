@@ -1,18 +1,18 @@
 ---
 title: Azure VM yedeklemesi hakkında
 description: Azure VM yedeklemesi hakkında bilgi edinin ve bazı en iyi yöntemleri göz önünde edin.
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 03/04/2019
-ms.author: raynew
-ms.openlocfilehash: bf6aa07319b8029744a5c8898a4104d330fbb1d1
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 7a470674fa9ccdde2b33bb33bfb52bead1822895
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465227"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639737"
 ---
 # <a name="about-azure-vm-backup"></a>Azure VM yedeklemesi hakkında
 
@@ -111,8 +111,8 @@ Bu yaygın senaryolar toplam yedekleme süresini etkileyebilir:
 VM yedeklemelerini yapılandırırken, aşağıdaki yöntemleri takip ederiz:
 
 - Bir ilkede ayarlanan varsayılan zamanlama sürelerini değiştirin. Örneğin, ilkedeki varsayılan süre 12:00 ise, kaynakların en iyi şekilde kullanılması için zamanlamayı birkaç dakikaya kadar artırın.
-- Premium depolama kullanan VM 'lerin yedeklenmesi için Azure Backup en son sürümünü ([anında geri yükleme](backup-instant-restore-capability.md)) kullanmanızı öneririz. En son sürümü çalıştırsanız, yedekleme toplam depolama alanının yüzde 50 ' ünü ayırır. Yedekleme hizmeti, anlık görüntüyü aynı depolama hesabına kopyalamak ve bunu kasaya aktarmak için bu alanı gerektirir.
 - VM 'Leri tek bir kasadan geri yüklüyorsanız, hedef depolama hesabının kısıtlanmasını sağlamak için farklı [genel amaçlı v2 depolama hesapları](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) kullanmanızı önemle tavsiye ederiz. Örneğin, her sanal makinenin farklı bir depolama hesabı olmalıdır. Örneğin, 10 VM geri yüklenirse, 10 farklı depolama hesabı kullanın.
+- Hızlı geri yükleme ile Premium depolama kullanan VM 'lerin yedeklenmesi için, **yalnızca** ilk yedekleme için gerekli olan toplam ayrılan depolama alanının *% 50* boş alanını ayırmayı öneririz. İlk yedekleme tamamlandıktan sonra% 50 boş alan yedeklemeler için bir gereksinim değildir
 - Anlık görüntü aynı depolama hesabında olduğundan, genel amaçlı v1 depolama katmanından (anlık görüntü) geri yüklemeler dakikalar içinde tamamlanır. Genel amaçlı v2 depolama katmanından (kasadan) geri yüklemeler saat sürebilir. Verilerin genel amaçlı v1 depolamada kullanılabildiği durumlarda, daha hızlı [geri yükleme Için anında geri yükleme](backup-instant-restore-capability.md) özelliğini kullanmanızı öneririz. (Verilerin bir kasadan geri yüklenmesi gerekiyorsa daha fazla zaman alır.)
 - Depolama hesabı başına disk sayısı sınırı, diskler hizmet olarak altyapı (IaaS) VM 'sinde çalışan uygulamalar tarafından ne kadar yoğun erişildiğine bağlıdır. Genel bir uygulama olarak, tek bir depolama hesabında 5 ila 10 disk veya daha fazlası varsa, bazı diskleri ayrı depolama hesaplarına taşıyarak yükü dengeleyin.
 

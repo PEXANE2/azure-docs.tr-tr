@@ -1,64 +1,64 @@
 ---
-title: Azure haritalar stili planlanabilecek harita | Microsoft Docs
-description: Azure haritalar hakkında bilgi edinin stili ilgili işlevler.
+title: Azure haritalar 'da harita stili işlevleri | Microsoft Docs
+description: Azure Maps stiliyle ilgili işlevler hakkında bilgi edinin.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 10/08/2018
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: ffed12b9184c7b6a690c30db9826f031fe6c9f9b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 52936b14264bd4fe1846ae365e1de447d594b612
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60795893"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639051"
 ---
-# <a name="choose-a-map-style-in-azure-maps"></a>Azure haritalar harita stil seçin
+# <a name="choose-a-map-style-in-azure-maps"></a>Azure haritalar 'da harita stili seçme
 
-Azure haritalar seçebileceğiniz dört farklı eşlemeler stilleri sahiptir. Eşleme stilleri hakkında daha fazla bilgi için bkz. [eşleme stilleri Azure eşlemelerinde desteklenen](./supported-map-styles.md). Bu makale stil harita üzerindeki yükü ayarlamak, yeni bir stil ve stil seçici denetimi kullanmak için stil işlevlerini kullanma.
+Azure haritalar 'ın aralarından seçim yapabileceğiniz dört farklı harita stili vardır. Harita stilleri hakkında daha fazla bilgi için bkz. [Azure Maps 'de desteklenen harita stilleri](./supported-map-styles.md). Bu makalede, harita yükünde bir stil ayarlamak, yeni bir stil ayarlamak ve stil seçici denetimini kullanmak için stille ilgili işlevlerin nasıl kullanılacağı gösterilmektedir.
 
-## <a name="set-style-on-map-load"></a>Harita yükleme kümesi stili
+## <a name="set-style-on-map-load"></a>Harita yükünde stil ayarla
 
-<iframe height='500' scrolling='no' title='Harita üzerindeki yükü stili ayarlanıyor' src='//codepen.io/azuremaps/embed/WKOQRq/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Kalem bkz <a href='https://codepen.io/azuremaps/pen/WKOQRq/'>harita üzerindeki yükü stili ayarlanıyor</a> Azure haritalar tarafından (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) üzerinde <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Harita yükte stili ayarlama' src='//codepen.io/azuremaps/embed/WKOQRq/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>'da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından <a href='https://codepen.io/azuremaps/pen/WKOQRq/'>harita yükünün stilini ayarlama</a> kalemine bakın.
 </iframe>
 
-Yukarıdaki kod bloğu abonelik anahtarını ayarlar ve ayarlamak için grayscale_dark stili bir harita nesnesi oluşturur. Bkz: [bir harita oluşturmak](./map-create.md) bir harita oluşturmak yönergeler.
+Yukarıdaki kod bloğu, abonelik anahtarını ayarlar ve stili grayscale_dark olarak ayarlanmış bir harita nesnesi oluşturur. Harita oluşturma hakkında yönergeler için bkz. [harita oluşturma](./map-create.md) .
 
-## <a name="update-the-style"></a>Güncelleştirme stili
+## <a name="update-the-style"></a>Stili Güncelleştir
 
-<iframe height='500' scrolling='no' title='Stil güncelleştiriliyor' src='//codepen.io/azuremaps/embed/yqXYzY/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Kalem bkz <a href='https://codepen.io/azuremaps/pen/yqXYzY/'>stili güncelleştirme</a> Azure haritalar tarafından (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) üzerinde <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Stili güncelleştirme' src='//codepen.io/azuremaps/embed/yqXYzY/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>üzerinde Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) ile <a href='https://codepen.io/azuremaps/pen/yqXYzY/'>stili güncelleştirme</a> kalemine bakın.
 </iframe>
 
-Yukarıdaki kod bloğu abonelik anahtarını ayarlar ve stili önceden ayarlamadan bir harita oluşturur. Bkz: [bir harita oluşturmak](./map-create.md) bir harita oluşturmak yönergeler.
+Yukarıdaki kod bloğu, abonelik anahtarını ayarlar ve stili önceden ayarlamadan bir Map nesnesi oluşturur. Harita oluşturma hakkında yönergeler için bkz. [harita oluşturma](./map-create.md) .
 
-İkinci kod bloğu haritanın kullanan [setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) harita stili için uydu ayarlamak için yöntemi.
+İkinci kod bloğu harita stilini uydu olarak ayarlamak için haritanın [setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) yöntemini kullanır.
 
-## <a name="add-the-style-picker"></a>Stil seçiciyi Ekle
+## <a name="add-the-style-picker"></a>Stil seçiciyi ekleme
 
-<iframe height='500' scrolling='no' title='Stil seçiciyi ekleme' src='//codepen.io/azuremaps/embed/OwgyvG/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Kalem bkz <a href='https://codepen.io/azuremaps/pen/OwgyvG/'>stil seçiciyi ekleme</a> Azure haritalar tarafından (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) üzerinde <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Stil seçiciyi ekleme' src='//codepen.io/azuremaps/embed/OwgyvG/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>üzerinde Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından <a href='https://codepen.io/azuremaps/pen/OwgyvG/'>Stil seçiciyi ekleme</a> kalemine bakın.
 </iframe>
 
-Yukarıdaki kod ilk kod bloğunda abonelik anahtarını ayarlar ve bir harita nesnesi oluşturur, harita stili grayscale_dark için önceden ayarlanmış. Bkz: [bir harita oluşturmak](./map-create.md) bir harita oluşturmak yönergeler.
+Yukarıdaki koddaki ilk kod bloğu, abonelik anahtarını ayarlar ve bir harita nesnesi oluşturur, harita stili önceden grayscale_dark olarak ayarlanmıştır. Harita oluşturma hakkında yönergeler için bkz. [harita oluşturma](./map-create.md) .
 
-İkinci kod bloğu atlas kullanarak bir stil seçicisini yapıları [StyleControl](/javascript/api/azure-maps-control/atlas.control.stylecontrol) Oluşturucusu.
+İkinci kod bloğu, Atlas [Stylecontrol](/javascript/api/azure-maps-control/atlas.control.stylecontrol) oluşturucusunu kullanarak bir stil Seçici oluşturur.
 
-Stil seçimi eşlemesi için stil seçiciyi sağlar. Üçüncü kod bloğu stil seçiciyi kullanarak haritanın harita ekler [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) yöntemi. Stil seçiciyi içinde haritasıdır **olay dinleyicisi** harita tamamen yüklendikten sonra yüklendikten emin olmak için.
+Stil Seçici, harita için stil seçimini sunar. Üçüncü kod bloğu haritanın [Controls. Add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metodunu kullanarak Stil seçiciyi haritaya ekler. Stil Seçici, eşleme tam olarak yüklendikten sonra yüklendiğinden emin olmak için harita **olay dinleyicisinin** içindedir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede kullanılan yöntemleri ve sınıfları hakkında daha fazla bilgi için:
+Bu makalede kullanılan sınıflar ve yöntemler hakkında daha fazla bilgi edinmek için:
 
 > [!div class="nextstepaction"]
 > [Harita](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
-Denetim, eşlenir ekleyin:
+Haritalarınıza denetim ekleyin:
 
 > [!div class="nextstepaction"]
-> [Eşleme denetimleri ekleme](./map-add-controls.md)
+> [Harita denetimleri Ekle](./map-add-controls.md)
 
-Bir harita raptiyesini ekleyin:
+Harita PIN 'i ekle:
 
 > [!div class="nextstepaction"]
-> [Pin ekleme](./map-add-pin.md)
+> [PIN Ekle](./map-add-pin.md)

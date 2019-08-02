@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 35d494702673d59290a0073c55135138f533b8bf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e2464332727b0ef1e616c04a975df5ac475a7b19
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65956701"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68610280"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure Disk şifrelemesi sorun giderme kılavuzu
 
@@ -34,9 +34,9 @@ Linux işletim sistemi (OS) disk şifrelemesi, işletim sistemi sürücüsünü 
 - Veri sürücüleri /mnt/ dizini veya birbiriyle (örneğin, /mnt/data1, /mnt/data2, /data3 + /data3/data4) altında yinelemeli olarak sağlar.
 - Diğer Azure Disk şifrelemesi [önkoşulları](azure-security-disk-encryption-prerequisites.md) Linux için karşılanmadığı.
 
-## <a name="bkmk_Ubuntu14"></a> Ubuntu 14.04 LTS varsayılan çekirdek güncelleştirmesi
+## <a name="bkmk_Ubuntu14"></a>Ubuntu 14,04 LTS için varsayılan çekirdeği güncelleştirme
 
-Ubuntu 14.04 LTS görüntüsünü 4.4 varsayılan çekirdek sürümü ile birlikte gelir. Bu çekirdek sürümü, yetersiz bellek kaldırıcı yanlış gg komutu işletim sistemi şifreleme işlemi sırasında sonlandırır bilinen bir sorun var. Bu hatanın en son düzeltildiğini Azure Linux çekirdeğinin ayarlanmış. Görüntü şifreleme etkinleştirilmeden önce bu hatayı önlemek için güncelleştirme [Azure çekirdek 4.15 ayarlanmış](https://packages.ubuntu.com/trusty/linux-azure) veya daha sonra aşağıdaki komutları kullanarak:
+Ubuntu 14,04 LTS görüntüsü, varsayılan bir 4,4 çekirdek sürümü ile birlikte gelir. Bu çekirdek sürümü, işletim sistemi şifreleme işlemi sırasında, bellek yetersiz olduğundan, dd komutunu yanlış bir şekilde sonlandırdığı bilinen bir sorunla karşılaştı. Bu hata, en son Azure ayarlanmış Linux çekirdekte düzeltildi. Bu hatadan kaçınmak için, görüntüde Şifrelemeyi etkinleştirmeden önce, aşağıdaki komutları kullanarak [Azure ayarlanmış çekirdek 4,15](https://packages.ubuntu.com/trusty/linux-azure) veya sonraki bir sürüme güncelleştirin:
 
 ```
 sudo apt-get update
@@ -44,19 +44,19 @@ sudo apt-get install linux-azure
 sudo reboot
 ```
 
-VM yeni çekirdeğe yeniden başlatıldıktan sonra yeni çekirdek sürümü kullanarak onaylanabilir:
+VM yeni çekirdekte yeniden başlatıldıktan sonra yeni çekirdek sürümü şu kullanılarak onaylanabilir:
 
 ```
 uname -a
 ```
 
-## <a name="update-the-azure-virtual-machine-agent-and-extension-versions"></a>Uzantı sürümleri ve Azure sanal makine aracısını güncelleştir
+## <a name="update-the-azure-virtual-machine-agent-and-extension-versions"></a>Azure sanal makine Aracısı ve uzantı sürümlerini güncelleştirme
 
-Azure Disk şifrelemesi işlemleri, Azure sanal makine Aracısı'nın desteklenmeyen sürümleri kullanılarak sanal makine görüntülerinde başarısız olabilir. Şifreleme etkinleştirilmeden önce aracı 2.2.38'den önceki sürümler ile Linux görüntüleri güncelleştirilmesi gerekir. Daha fazla bilgi için [bir VM'de Azure Linux Aracısı güncelleştirme](../virtual-machines/extensions/update-linux-agent.md) ve [azure'da sanal makine aracıları için Minimum sürüm desteği](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support).
+Azure disk şifrelemesi işlemleri, Azure sanal makine aracısının desteklenmeyen sürümlerini kullanan sanal makine görüntülerinde başarısız olabilir. 2\.2.38 'den önceki aracı sürümlerine sahip Linux görüntülerinin, Şifrelemeyi etkinleştirmeden önce güncelleştirilmeleri gerekir. Daha fazla bilgi için bkz. Azure 'da [Azure Linux aracısını güncelleştirme](../virtual-machines/extensions/update-linux-agent.md) ve [sanal makine aracıları için en düşük sürüm desteği](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support).
 
-Microsoft.Azure.Security.AzureDiskEncryption veya Microsoft.Azure.Security.AzureDiskEncryptionForLinux Konuk Aracısı uzantısı doğru sürümünü de gereklidir. Uzantı sürümleri tutulur ve Azure sanal makine Aracısı önkoşullara uyduğunuzdan ve desteklenen bir sanal makine Aracısı sürümü kullanıldığında platform tarafından otomatik olarak güncelleştirilir.
+Microsoft. Azure. Security. AzureDiskEncryption veya Microsoft. Azure. Security. AzureDiskEncryptionForLinux Guest aracı uzantısının doğru sürümü de gereklidir. Uzantı sürümleri, Azure sanal makine Aracısı önkoşulları karşılanacağı ve sanal makine aracısının desteklenen bir sürümü kullanıldığında platform tarafından otomatik olarak güncelleştirilir ve güncelleştirilir.
 
-Microsoft.OSTCExtensions.AzureDiskEncryptionForLinux uzantı kullanım dışı bırakıldı ve artık desteklenmiyor.  
+Microsoft. OSTCExtensions. AzureDiskEncryptionForLinux uzantısı kullanım dışı bırakılmış ve artık desteklenmiyor.  
 
 ## <a name="unable-to-encrypt-linux-disks"></a>Linux diskleri şifrelenemiyor
 
@@ -64,7 +64,7 @@ Bazı durumlarda, disk şifreleme "İşletim sistemi şifreleme kullanmaya disk"
 
 Linux işletim sistemi disk şifreleme dizisi, işletim sistemi sürücüsünü geçici olarak çıkarır. Ardından, şifrelenmiş durumunda remounts önce tüm işletim sistemi diskinin blok blok şifreleme gerçekleştirir. Şifreleme işlemi devam ederken Windows üzerinde Azure Disk şifrelemesi, eş zamanlı kullanımını VM için Linux Disk şifrelemesi izin vermez. VM performans özellikleri, şifrelemeyi tamamlamak için gereken süreyi önemli bir fark yapabilirsiniz. Bu özellikleri, disk ve depolama hesabı olup standart veya premium (SSD) depolama boyutunu içerir.
 
-Şifreleme durumu denetlemek için yoklama **ProgressMessage** döndürüldüğü alan [Get-AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) komutu. İşletim sistemi sürücüsünü şifrelenir, ancak VM hizmet durumu girer ve herhangi bir kesinti devam eden işlemi için SSH devre dışı bırakır. **EncryptionInProgress** şifreleme işlemi devam ederken çoğu zaman raporları iletisi. Birkaç saat sonra bir **VMRestartPending** ileti sanal Makineyi yeniden başlatmanızı ister. Örneğin:
+Şifreleme durumunu denetlemek için [Get-AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) komutundan döndürülen **ilerlemedurumuiletisi** alanını yoklayın. İşletim sistemi sürücüsünü şifrelenir, ancak VM hizmet durumu girer ve herhangi bir kesinti devam eden işlemi için SSH devre dışı bırakır. **EncryptionInProgress** şifreleme işlemi devam ederken çoğu zaman raporları iletisi. Birkaç saat sonra bir **VMRestartPending** ileti sanal Makineyi yeniden başlatmanızı ister. Örneğin:
 
 
 ```azurepowershell
@@ -97,10 +97,10 @@ Uygulanan ağ güvenlik grubu ayarlarını belgelenmiş ağ yapılandırmasını
 
 ### <a name="azure-key-vault-behind-a-firewall"></a>Bir güvenlik duvarının arkasındaki Azure Key Vault
 
-Şifreleme etkinleştirildiğinde ile [Azure AD kimlik](azure-security-disk-encryption-prerequisites-aad.md), hedef sanal Makineyi hem Azure Active Directory uç noktalarına hem de anahtar kasası uç noktaları bağlanmaya izin vermelidir. Geçerli Azure Active Directory kimlik doğrulama uç noktaları 56 ve 59, bölümlerde tutulan [Office 365 URL'leri ve IP adresi aralıkları](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) belgeleri. Key Vault yönergeler, ilgili belgelerde verilmiştir [bir güvenlik duvarının arkasındaki Azure anahtar kasası](../key-vault/key-vault-access-behind-firewall.md).
+Şifreleme, [Azure AD kimlik bilgileriyle](azure-security-disk-encryption-prerequisites-aad.md)etkinleştirildiğinde, hedef VM hem Azure Active Directory uç noktalarına hem de Key Vault uç noktalarına bağlantı kurulmasına izin vermelidir. Geçerli Azure Active Directory kimlik doğrulama uç noktaları, [Office 365 URL 'leri ve IP adresi aralıkları](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) belgelerinin 56 ve 59 bölümlerinde saklanır. Key Vault yönergeler, [bir güvenlik duvarının arkasındaki Azure Key Vault erişme](../key-vault/key-vault-access-behind-firewall.md)hakkındaki belgelerde sunulmaktadır.
 
-### <a name="azure-instance-metadata-service"></a>Azure örnek meta veri hizmeti 
-VM erişebilir olmalıdır [Azure örnek meta veri hizmetine](../virtual-machines/windows/instance-metadata-service.md) iyi bilinen yönlendirilemeyen bir IP adresi kullanan uç noktası (`169.254.169.254`), erişilebilir yalnızca VM içinden.  Bu adrese (örneğin, X-iletilen-için üst bilgi ekleme) yerel HTTP trafiğini alter proxy yapılandırmaları desteklenmez.
+### <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service 
+VM, yalnızca VM içinden erişilebilen, iyi bilinen yönlendirilemeyen IP adresini (`169.254.169.254`) kullanan [Azure örnek meta veri hizmeti](../virtual-machines/windows/instance-metadata-service.md) uç noktasına erişebilmelidir.  Yerel HTTP trafiğini bu adrese dönüştüren ara sunucu (örneğin, X-Iletilmiş-for üstbilgisi ekleme) desteklenmez.
 
 ### <a name="linux-package-management-behind-a-firewall"></a>Bir güvenlik duvarının arkasında Linux paket Yönetimi
 
@@ -148,15 +148,15 @@ If the expected encryption state does not match what is being reported in the po
 
 ## <a name="troubleshooting-encryption-status"></a>Şifreleme durumu sorunlarını giderme 
 
-Portal bile VM içinden şifrelenmemiş edildikten sonra bir disk olarak şifrelenmiş görüntüleyebilir.  Alt düzey komutları doğrudan diskten daha yüksek düzey Azure Disk şifrelemesi yönetimi komutları kullanmak yerine VM'de sıfırlamaktır kullanıldığında ortaya çıkabilir.  Daha yüksek düzeyde, yalnızca diskten VM içinde sıfırlamaktır, ancak VM dışında Ayrıca önemli platform düzeyinde şifreleme ayarları ve VM ile ilişkili uzantı ayarları güncelleştirme komutları.  Bu hizalama tutulmazsa, platform şifreleme durumu bildirmek veya VM'yi düzgün şekilde sağlamak mümkün olmayacaktır.   
+Portal, sanal makine içinde şifrelenmemiş olduktan sonra bile bir disk şifreli olarak görüntülenebilir.  Bu durum, daha yüksek düzeyde Azure disk şifrelemesi yönetim komutları kullanmak yerine, diskin VM içinden doğrudan şifresini kaldırmak için düşük düzey komutlar kullanıldığında meydana gelebilir.  Üst düzey komutlar yalnızca VM 'nin içinden diskin şifresini kaldıramaz, ancak VM 'nin dışında, önemli platform düzeyi şifreleme ayarlarını ve VM ile ilişkili uzantı ayarlarını da güncelleştirir.  Bunlar hizalamayla tutulmazsa, Platform şifreleme durumunu bildiremez veya VM 'yi düzgün şekilde sağlayamaz.   
 
-PowerShell ile Azure Disk şifrelemesini devre dışı bırakmak için [devre dışı bırak AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) ardından [Remove-AzVMDiskEncryptionExtension](/powershell/module/az.compute/remove-azvmdiskencryptionextension). Remove-AzVMDiskEncryptionExtension şifreleme devre dışı bırakılmasına çalıştıran başarısız olur.
+Azure disk şifrelemesini PowerShell ile devre dışı bırakmak için [Disable-azvmdiskencryption](/powershell/module/az.compute/disable-azvmdiskencryption) ' ı ve ardından [Remove-AzVMDiskEncryptionExtension](/powershell/module/az.compute/remove-azvmdiskencryptionextension)' i kullanın. Şifreleme devre dışı olmadan önce Remove-AzVMDiskEncryptionExtension çalıştırma başarısız olur.
 
-CLI ile Azure Disk şifrelemesini devre dışı bırakmak için [az vm şifreleme devre dışı](/cli/azure/vm/encryption). 
+CLı ile Azure disk şifrelemesini devre dışı bırakmak için [az VM Encryption Disable](/cli/azure/vm/encryption)seçeneğini kullanın. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu belgede, Azure Disk şifrelemesi ve bu sorunları gidermeye yönelik bazı yaygın sorunlar hakkında daha fazla öğrendiniz. Bu hizmet ve özellikleri hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
 - [Güvenlik Merkezi'nde Azure disk şifrelemesi Uygula](../security-center/security-center-apply-disk-encryption.md)
-- [Azure veri bekleme sırasında şifreleme](azure-security-encryption-atrest.md)
+- [Azure veri bekleme sırasında şifreleme](fundamentals/encryption-atrest.md)

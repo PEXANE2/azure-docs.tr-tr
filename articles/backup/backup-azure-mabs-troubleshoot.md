@@ -1,18 +1,19 @@
 ---
 title: Azure Backup Sunucusu sorunlarını giderme
 description: Yükleme, Azure Backup Sunucusu kaydı ve uygulama iş yüklerinin yedeklenmesi ve geri yüklenmesi sorunlarını giderin.
-author: srinathvasireddy
-manager: sivan
+ms.reviewer: srinathv
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/05/2019
-ms.author: srinathv
-ms.openlocfilehash: f601901ed0cb90421dbf7254d657ef80e1769541
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: c08acaf65cd42abd9db97fab1267ce5628595b78
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466087"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689265"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Azure Backup Sunucusu sorunlarını giderme
 
@@ -48,7 +49,7 @@ Microsoft Azure Backup Server (MABS) sorun gidermeye başlamadan önce aşağıd
 
 | Çalışma | Hata ayrıntıları | Geçici Çözüm |
 | --- | --- | --- |
-| Yedekle | Çevrimiçi kurtarma noktası oluşturma başarısız oldu | **Hata iletisi**: Windows Azure Backup Aracısı seçili birimin anlık görüntüsünü oluşturamadı. <br> **Geçici çözüm**: Çoğaltma ve kurtarma noktası birimindeki alanı artırmayı deneyin.<br> <br> **Hata iletisi**: Windows Azure Backup Aracısı OBEngine hizmetine bağlanamıyor <br> **Geçici çözüm**: obengine 'in bilgisayardaki çalışan hizmetler listesinde var olduğunu doğrulayın. OBEngine hizmeti çalışmıyorsa, OBEngine hizmetini başlatmak için "net start OBEngine" komutunu kullanın. <br> <br> **Hata iletisi**: Bu sunucu için şifreleme parolası ayarlanmadı. Lütfen bir şifreleme parolası yapılandırın. <br> **Geçici çözüm**: Bir şifreleme parolası yapılandırmayı deneyin. Başarısız olursa, aşağıdaki adımları uygulayın: <br> <ol><li>Karalama konumunun mevcut olduğunu doğrulayın. Bu, kayıt defteri **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config**'da belirtilen konumdur ve bu ad, **scratchlocation** adında olmalıdır.</li><li> Karalama konumu varsa, eski parolayı kullanarak yeniden kaydetmeyi deneyin. *Şifreleme parolasını yapılandırdığınızda, güvenli bir konuma kaydedin.*</li><ol>|
+| Yedekle | Çevrimiçi kurtarma noktası oluşturma başarısız oldu | **Hata İletisi**: Windows Azure Backup Aracısı seçili birimin anlık görüntüsünü oluşturamadı. <br> **Geçici çözüm**: Çoğaltma ve kurtarma noktası birimindeki alanı artırmayı deneyin.<br> <br> **Hata İletisi**: Windows Azure Backup Aracısı OBEngine hizmetine bağlanamıyor <br> **Geçici çözüm**: obengine 'in bilgisayardaki çalışan hizmetler listesinde var olduğunu doğrulayın. OBEngine hizmeti çalışmıyorsa, OBEngine hizmetini başlatmak için "net start OBEngine" komutunu kullanın. <br> <br> **Hata İletisi**: Bu sunucu için şifreleme parolası ayarlanmadı. Lütfen bir şifreleme parolası yapılandırın. <br> **Geçici çözüm**: Bir şifreleme parolası yapılandırmayı deneyin. Başarısız olursa, aşağıdaki adımları uygulayın: <br> <ol><li>Karalama konumunun mevcut olduğunu doğrulayın. Bu, kayıt defteri **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config**'da belirtilen konumdur ve bu ad, **scratchlocation** adında olmalıdır.</li><li> Karalama konumu varsa, eski parolayı kullanarak yeniden kaydetmeyi deneyin. *Şifreleme parolasını yapılandırdığınızda, güvenli bir konuma kaydedin.*</li><ol>|
 
 ## <a name="the-vault-credentials-provided-are-different-from-the-vault-the-server-is-registered"></a>Belirtilen kasa kimlik bilgileri, sunucunun kayıtlı olduğu kasadan farklı
 
@@ -137,13 +138,13 @@ Hata iletisi | Önerilen eylem |
 -- | --
 Çoğaltmadaki meta veriler geçersiz olduğundan kaynak birim anlık görüntüsü başarısız oldu. | Bu veri kaynağı için bir disk kurtarma noktası oluşturun ve çevrimiçi yedeklemeyi yeniden deneyin
 
-### <a name="cbpsourcesnapshotfailedreplicainconsistent"></a>Cbpsourcesnapshotfailedreplicatutarsız
+### <a name="cbpsourcesnapshotfailedreplicainconsistent"></a>CBPSourceSnapshotFailedReplicaInconsistent
 
 Hata iletisi | Önerilen eylem |
 -- | --
 Kaynak birim anlık görüntüsü, tutarsız veri kaynağı çoğaltması nedeniyle başarısız oldu. | Bu veri kaynağı üzerinde bir tutarlılık denetimi çalıştırın ve yeniden deneyin
 
-### <a name="cbpsourcesnapshotfailedreplicacloningissue"></a>Cbpsourcesnapshotfailedreplicacloningıssue
+### <a name="cbpsourcesnapshotfailedreplicacloningissue"></a>CBPSourceSnapshotFailedReplicaCloningIssue
 
 Hata iletisi | Önerilen eylem |
 -- | --

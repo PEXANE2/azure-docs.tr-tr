@@ -1,10 +1,10 @@
 ---
-title: Veri keşfi ve görselleştirme araçları - Azure | Microsoft Docs
-description: Veri keşfi ve görselleştirme araçları için veri bilimi sanal makinesi.
+title: Veri keşif ve görselleştirme araçları-Azure | Microsoft Docs
+description: Veri Bilimi Sanal Makinesi için veri keşif ve görselleştirme araçları.
 keywords: veri bilimi araçları, veri bilimi sanal makinesi, veri bilimi için araçlar, linux veri bilimi
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.assetid: ''
 ms.service: machine-learning
@@ -14,45 +14,45 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.author: gokuma
-ms.openlocfilehash: 693be80e493a0ba259d147f432dc9d6c07ba876d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: vijetaj
+ms.openlocfilehash: 31b05ec4fa68c3d4804000caee94b62432bdaed9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66427523"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68557771"
 ---
-# <a name="data-exploration-and-visualization-tools-on-the-data-science-virtual-machine"></a>Veri keşfi ve görselleştirme araçları üzerinde veri bilimi sanal makinesi
+# <a name="data-exploration-and-visualization-tools-on-the-data-science-virtual-machine"></a>Veri Bilimi Sanal Makinesi veri keşif ve görselleştirme araçları
 
-Veri bilimi anahtar bir adımda verileri öğrenmektir. Görselleştirme ve veri İnceleme araçlarının veri anlama artırmanıza yardımcı olur. Bu önemli adım kolaylaştıran DSVM'nin sağlanan bazı araçları şunlardır. 
+Veri bilimi 'nde önemli bir adım verileri anlamaktır. Görselleştirme ve veri araştırma araçları, verilerin öğrenilmesini hızlandırmaya yardımcı olur. Bu anahtar adımını daha kolay hale getirmek için DSVM 'de sunulan bazı araçlar aşağıda verilmiştir. 
 
 ## <a name="apache-drill"></a>Apache ayrıntıya
 |    |           |
 | ------------- | ------------- |
 | Nedir?   | Büyük veriler üzerinde açık kaynak SQL sorgu altyapısı    |
 | Desteklenen DSVM sürümleri      | Windows, Linux  |
-| Nasıl, yapılandırılmış / DSVM üzerinde yüklü?      |  Yüklü `/dsvm/tools/drill*` yalnızca katıştırılmış modunda   |
-| Tipik kullanımları      |  ETL gerektirmeden situ veri keşfi. Farklı veri kaynakları ve biçimler CSV, JSON, ilişkisel tabloları, Hadoop dahil olmak üzere sorgu     |
-| Kullanma / çalıştırın nasıl?      | Masaüstü kısayolu  <br/> [Ayrıntıya 10 dakika içinde kullanmaya başlayın](https://drill.apache.org/docs/drill-in-10-minutes/)  |
-| DSVM ilgili araçları      |   Çıngırağı, Weka, SQL Server Management Studio      |
+| Nasıl, yapılandırılmış / DSVM üzerinde yüklü?      |  `/dsvm/tools/drill*` Yalnızca katıştırılmış modda yüklenir   |
+| Tipik kullanımları      |  ETL gerekmeden SITU veri araştırması. CSV, JSON, ilişkisel tablolar, Hadoop gibi farklı veri kaynaklarını ve biçimleri sorgulama     |
+| Kullanma / çalıştırın nasıl?      | Masaüstü kısayolu  <br/> [10 dakika içinde detaya gitmeyi kullanmaya başlayın](https://drill.apache.org/docs/drill-in-10-minutes/)  |
+| DSVM ilgili araçları      |   Rattle, WEKA, SQL Server Management Studio      |
 
 ## <a name="weka"></a>Weka
 |    |           |
 | ------------- | ------------- |
-| Nedir?   |  Weka veri araştırma görevleri için makine öğrenimi algoritmaları koleksiyonudur. Algoritmalar doğrudan bir veri kümesine uygulanan veya kendi Java koddan çağrılır. Weka veri ön işleme, Sınıflandırma, regresyon, kümeleme, ilişkilendirme kuralları ve görselleştirme araçları içerir. |
+| Nedir?   |  WEKA, veri araştırma görevleri için makine öğrenimi algoritmalarının bir koleksiyonudur. Algoritmalar doğrudan bir veri kümesine uygulanabilir veya kendi Java kodınızdan çağrılabilir. Weka veri ön işleme, Sınıflandırma, regresyon, kümeleme, ilişkilendirme kuralları ve görselleştirme araçları içerir. |
 | Desteklenen DSVM sürümleri     | Windows, Linux     |
 | Tipik kullanımları      | Genel ML aracı     |
-| Kullanma / çalıştırın nasıl?      | Windows üzerinde Başlat menüsündeki Weka arayın. Linux üzerinde X2Go bilgilerinizle oturum açın ve ardından gitmek uygulamaları geliştirme -> Weka ' ->. |
+| Kullanma / çalıştırın nasıl?      | Windows 'ta, Başlat menüsünde WEKA araması yapın. Linux 'ta X2Go ile oturum açın, ardından uygulamalar-> Geliştirme-> WEKA ' a gidin. |
 | Örneklere bağlantılar      | [Weka örnekleri](https://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
 | DSVM ilgili araçları      |LightGBM, Rattle, Xgboost   |
 
 ## <a name="rattle"></a>Çıngırağı
 |    |           |
 | ------------- | ------------- |
-| Nedir?   |   R kullanarak veri araştırma için bir grafik kullanıcı arabirimi   |
+| Nedir?   |   R kullanarak veri madenciliği için grafik kullanıcı arabirimi   |
 | Desteklenen DSVM sürümleri     | Windows, Linux     |
-| Tipik kullanımları      | R için genel kullanıcı Arabirimi veri araştırma aracı    |
-| Kullanma / çalıştırın nasıl?      | Kullanıcı Arabirimi aracıdır. Windows, bir komut istemi açın, R, ardından R çalıştırma içinde çalıştırma `rattle()`. Linux üzerinde X2Go ile bağlanmak, bir terminal Başlat, R, ardından R çalıştırma içinde çalıştırmak `rattle()`. |
+| Tipik kullanımları      | R için genel UI veri araştırma aracı    |
+| Kullanma / çalıştırın nasıl?      | Kullanıcı Arabirimi aracıdır. Windows 'da bir komut Istemi başlatın, r ' yi çalıştırın ve ardından R 'nin `rattle()`içinde çalıştırın. Linux 'ta X2Go ile bağlanın, bir Terminal başlatın, R 'yi çalıştırın ve ardından R 'nin içinde `rattle()`çalıştırın. |
 | Örneklere bağlantılar      | [Çıngırağı](https://togaware.com/onepager/) |
 | DSVM ilgili araçları      |LightGBM, Weka, Xgboost   |
 
@@ -63,5 +63,5 @@ Veri bilimi anahtar bir adımda verileri öğrenmektir. Görselleştirme ve veri
 | Desteklenen DSVM sürümleri      | Windows  |
 | Tipik kullanımları      |  Veri Görselleştirme ve panolar oluşturma   |
 | Kullanma / çalıştırın nasıl?      | Masaüstü kısayolu (`C:\Program Files\Microsoft Power BI Desktop\bin\PBIDesktop.exe`)      |
-| DSVM ilgili araçları      |   Visual Studio 2019, Visual Studio kodu, Juno      |
+| DSVM ilgili araçları      |   Visual Studio 2019, Visual Studio Code, Juno      |
 

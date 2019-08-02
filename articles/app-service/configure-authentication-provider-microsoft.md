@@ -1,6 +1,6 @@
 ---
-title: Microsoft Account kimlik doğrulama - Azure App Service'ı yapılandırma
-description: Uygulama Hizmetleri uygulamanıza Microsoft Account kimlik doğrulaması yapılandırmayı öğrenin.
+title: Microsoft hesabı kimlik doğrulamasını Yapılandırma-Azure App Service
+description: Uygulama Hizmetleri uygulamanız için Microsoft hesabı kimlik doğrulamasını yapılandırma hakkında bilgi edinin.
 author: mattchenderson
 services: app-service
 documentationcenter: ''
@@ -15,49 +15,49 @@ ms.topic: article
 ms.date: 04/19/2018
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: e3da856efd7d44f15f9de27c9e38375d40dc211d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 10b661f0c4b7dc45284b907e83df3c0372f97cab
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60850977"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561533"
 ---
-# <a name="how-to-configure-your-app-service-application-to-use-microsoft-account-login"></a>App Service uygulamanızı Microsoft Account login kullanacak şekilde yapılandırma
+# <a name="how-to-configure-your-app-service-application-to-use-microsoft-account-login"></a>App Service uygulamanızı Microsoft hesabı oturum açma bilgilerini kullanacak şekilde yapılandırma
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-Bu konuda, Azure App Service'ı Microsoft Account bir kimlik doğrulama sağlayıcısı olarak kullanmak üzere yapılandırma gösterilmektedir. 
+Bu konuda, Azure App Service bir kimlik doğrulama sağlayıcısı olarak Microsoft hesabı kullanmak üzere nasıl yapılandırılacağı gösterilmektedir. 
 
-## <a name="register-microsoft-account"> </a>Microsoft hesabı ile uygulamanızı kaydetme
-1. Oturum [Azure portal]ve uygulamanıza gidin. Kopyalama, **URL**, daha sonra Microsoft Account Uygulamanızı yapılandırmak için kullanın.
-2. Gidin [uygulamalarım] sayfasında Microsoft Account Developer Center'da ve oturum açın, Microsoft hesabınızla gerekirse.
-3. Tıklayın **uygulama ekleme**, bir uygulama adı girin ve tıklayın **Oluştur**.
-4. Not **uygulama kimliği**, daha sonra ihtiyaç duyacaksınız. 
-5. "Platforms altında" tıklayın **Platform Ekle** ve "Web"'i seçin.
-6. "Yeniden yönlendirme URI'leri" altında uygulamanız için uç nokta sağlayın ve ardından **Kaydet**. 
+## <a name="register-microsoft-account"> </a>Uygulamanızı Microsoft hesabı ile kaydedin
+1. [Azure Portal]oturum açın ve uygulamanıza gidin. Uygulamanızı Microsoft hesabıyla yapılandırmak için daha sonra kullandığınız **URL**'nizi kopyalayın.
+2. [**Uygulama kayıtları**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)gidin ve istenirse Microsoft hesabı oturum açın.
+3. **Uygulama Ekle**' ye tıklayın, ardından bir uygulama adı yazın ve **Oluştur**' a tıklayın.
+4. Daha sonra ihtiyacınız olacağı için **uygulama kimliğini**bir yere unutmayın. 
+5. "Platformlar" altında **Platform Ekle** ' ye tıklayın ve "Web" i seçin.
+6. "Yeniden yönlendirme URI 'Leri" altında uygulamanız için uç noktayı sağlayın ve **Kaydet**' e tıklayın. 
    
    > [!NOTE]
-   > URL yoluyla eklenmiş uygulamanızın URI'dir, yeniden yönlendirme */.auth/login/microsoftaccount/callback*. Örneğin, `https://contoso.azurewebsites.net/.auth/login/microsoftaccount/callback`.   
-   > HTTPS şeması kullandığınızdan emin olun.
+   > Yeniden yönlendirme URI 'si, */.Auth/login/MicrosoftAccount/callback*yoluna eklenen uygulamanızın URL 'sidir. Örneğin: `https://contoso.azurewebsites.net/.auth/login/microsoftaccount/callback`.   
+   > HTTPS şemasını kullandığınızdan emin olun.
    
-7. "Uygulama gizli öğeleri altında" tıklayın **yeni parola oluştur**. Görüntülenen değeri not edin. Sayfadan çıkmak sonra bir yeniden görüntülenmez.
+7. "Uygulama gizli dizileri" altında **Yeni parola oluştur**' a tıklayın. Görüntülenen değeri unutmayın. Sayfadan ayrıldığınızda, bir daha görüntülenmeyecektir.
 
     > [!IMPORTANT]
-    > Parola, bir önemli güvenlik kimlik bilgisidir. Parola kimseyle paylaşmayın değil veya bir istemci uygulaması içinde dağıtın.
+    > Parola, önemli bir güvenlik kimlik bilgileridir. Parolayı kimseyle paylaşmayın veya bir istemci uygulaması içinde dağıtmayın.
     
 8. **Kaydet**'e tıklayın.
 
-## <a name="secrets"> </a>App Service uygulamanızı Microsoft Account bilgilerini ekleyin
-1. Geri [Azure portal], uygulamanıza gidin, tıklayın **ayarları** > **kimlik doğrulama / yetkilendirme**.
-2. Kimlik doğrulama / yetkilendirme özelliği etkin değil, bu geçiş **üzerinde**.
-3. Tıklayın **Microsoft hesabı**. Daha önce aldığınız uygulama kimliği ve parola değerleri yapıştırın ve isteğe bağlı olarak uygulamanızın gerektirdiği herhangi bir kapsam etkinleştirin. Daha sonra, **Tamam**'a tıklayın.
+## <a name="secrets"> </a>App Service uygulamanıza Microsoft hesabı bilgilerini ekleme
+1. [Azure Portal]geri dönüp uygulamanıza gidin, **Ayarlar** > **kimlik doğrulaması/yetkilendirme**' ye tıklayın.
+2. Kimlik doğrulama/yetkilendirme özelliği etkinleştirilmemişse, **üzerinde**geçiş yapın.
+3. **Microsoft hesabı**' na tıklayın. Daha önce aldığınız uygulama KIMLIĞI ve parola değerlerini yapıştırın ve isteğe bağlı olarak uygulamanızın gerektirdiği kapsamları etkinleştirin. Daha sonra, **Tamam**'a tıklayın.
    
     ![][1]
    
-    Varsayılan olarak, App Service kimlik doğrulaması sağlar, ancak site içerik ve API'ler için yetkili erişimi kısıtlamaz. Kullanıcılar, uygulama kodunuzda yetkilendirmeniz gerekir.
-4. (İsteğe bağlı) Sitenizi yalnızca Microsoft hesabı ile kimliği doğrulanmış kullanıcılar için erişimi kısıtlamak için ayarlanmış **isteğin kimliği doğrulanmamış olduğunda gerçekleştirilecek eylem** için **Microsoft Account**. Bu, tüm istekleri kimliğinin doğrulanmasını gerektirir ve kimliği doğrulanmamış tüm istekleri kimlik doğrulaması için Microsoft hesabı yönlendirilirsiniz.
+    Varsayılan olarak, App Service kimlik doğrulaması sağlar ancak site içeriğinize ve API 'lerinize yetkili erişimi kısıtlamaz. Uygulama kodunuzda kullanıcıları yetkilendirmelisiniz.
+4. Seçim Sitenize erişimi yalnızca Microsoft hesabı tarafından kimlik doğrulaması yapılan kullanıcılarla kısıtlamak için, isteğin kimliği **Microsoft hesabına**göre **doğrulanmadığı zaman gerçekleştirilecek eylemi** ayarlayın. Bu, tüm isteklerin doğrulanmasını gerektirir ve kimliği doğrulanmamış tüm istekler kimlik doğrulaması için Microsoft hesabı yönlendirilir.
 5. **Kaydet**’e tıklayın.
 
-Şimdi uygulamanıza kimlik doğrulaması için Microsoft Account kullanmaya hazırsınız.
+Artık uygulamanızda kimlik doğrulaması için Microsoft hesabı 'nı kullanmaya hazırsınız.
 
 ## <a name="related-content"> </a>İlgili içerik
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
@@ -69,5 +69,5 @@ Bu konuda, Azure App Service'ı Microsoft Account bir kimlik doğrulama sağlay�
 
 <!-- URLs. -->
 
-[Uygulamalarım]: https://go.microsoft.com/fwlink/p/?LinkId=262039
+[My Applications]: https://go.microsoft.com/fwlink/p/?LinkId=262039
 [Azure portal]: https://portal.azure.com/

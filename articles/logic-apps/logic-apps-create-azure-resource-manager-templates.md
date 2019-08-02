@@ -9,25 +9,27 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/26/2019
-ms.openlocfilehash: 7d216a3706c13a5fff312850e244a521ab22ae9e
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 9e62dd25c3ff16e280eda1ad11053ef520a85e4d
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68386544"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706519"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Azure Logic Apps için dağıtımı otomatikleştirmek üzere Azure Resource Manager şablonları oluşturun
 
 Mantıksal uygulamanızı oluşturma ve dağıtma işlemlerini otomatik hale getirmenize yardımcı olmak için, bu makalede mantıksal uygulamanız için [Azure Resource Manager şablonu](../azure-resource-manager/resource-group-overview.md) oluşturabileceğiniz yollar açıklanmaktadır. İş akışı tanımınızı ve dağıtım için gereken diğer kaynakları içeren bir şablonun yapısı ve sözdizimi hakkında genel bakış için bkz [. genel bakış: Azure Resource Manager şablonlarıyla](logic-apps-azure-resource-manager-templates-overview.md)Logic Apps için dağıtımı otomatikleştirin.
 
-Azure Logic Apps, yalnızca mantıksal uygulamalar oluşturmak için değil, yeniden kullanabileceğiniz [önceden oluşturulmuş bir Logic apps Azure Resource Manager şablonu](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json) sağlar, ancak dağıtım için kullanılacak kaynakları ve parametreleri de tanımlayabilir. Bu şablonu kendi iş senaryolarınız için kullanabilir veya şablonu gereksinimlerinize uyacak şekilde özelleştirebilirsiniz. Azure Resource Manager şablonları hakkında daha fazla bilgi için şu konulara bakın:
+Azure Logic Apps, yalnızca mantıksal uygulamalar oluşturmak için değil, yeniden kullanabileceğiniz [önceden oluşturulmuş bir mantıksal uygulama Azure Resource Manager şablonu](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json) sağlar, ancak dağıtım için kullanılacak kaynakları ve parametreleri de tanımlayabilir. Bu şablonu kendi iş senaryolarınız için kullanabilir veya şablonu gereksinimlerinize uyacak şekilde özelleştirebilirsiniz.
+
+> [!IMPORTANT]
+> Şablonunuzda bulunan bağlantıların mantıksal uygulamanızla aynı Azure kaynak grubunu ve konumunu kullandığınızdan emin olun.
+
+Azure Resource Manager şablonları hakkında daha fazla bilgi için şu konulara bakın:
 
 * [Azure Resource Manager şablon yapısı ve sözdizimi](../azure-resource-manager/resource-group-authoring-templates.md)
 * [Azure Resource Manager şablonları yaz](../azure-resource-manager/resource-group-authoring-templates.md)
 * [Bulut tutarlılığı için Azure Resource Manager şablonları geliştirme](../azure-resource-manager/templates-cloud-consistency.md)
-
-> [!IMPORTANT]
-> Şablonunuzda bulunan bağlantıların, mantıksal uygulamanızla aynı Azure kaynak grubunu ve konumunu kullanması gerekir.
 
 <a name="visual-studio"></a>
 
@@ -47,6 +49,13 @@ Mantıksal uygulamanızı indirerek, mantıksal uygulamanızın tanımlarını v
 [Logicapptemplate modülüyle](https://github.com/jeffhollan/LogicAppTemplateCreator)Azure PowerShell kullanarak kaynak yöneticisi şablonlar oluşturabilirsiniz. Bu açık kaynaklı modül öncelikle mantıksal uygulamanızı ve mantıksal uygulamanın kullandığı tüm bağlantıları değerlendirir. Modül daha sonra dağıtım için gerekli parametrelerle şablon kaynakları oluşturur.
 
 Örneğin, bir Azure Service Bus kuyruğundan ileti alan ve bir Azure SQL veritabanına veri yükleyen bir mantıksal uygulamanız olduğunu varsayalım. Modül, tüm düzenleme mantığını korur ve SQL ve Service Bus bağlantı dizelerini parametreleştirir ve bu değerleri dağıtım gereksinimlerinize göre sağlayabilmeniz ve değiştirebilmenizi sağlar.
+
+Bu örnekler Azure Resource Manager şablonları kullanarak Logic Apps oluşturmayı ve dağıtmayı, Azure DevOps 'da Azure Pipelines ve Azure PowerShell şunları gösterir:
+
+* [Örnek: Azure Logic Apps Azure Service Bus kuyruklara bağlanma](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Örnek: Azure Logic Apps Azure Storage hesaplarına bağlanma](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Örnek: Azure Logic Apps için bir işlev uygulama eylemi ayarlama](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Örnek: Azure Logic Apps bir tümleştirme hesabına bağlanma](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
 
 ### <a name="install-powershell-modules"></a>PowerShell modüllerini yükler
 

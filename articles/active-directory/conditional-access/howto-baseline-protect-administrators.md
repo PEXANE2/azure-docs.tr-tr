@@ -1,6 +1,6 @@
 ---
-title: Temel ilke yöneticilerin - Azure Active Directory MFA gerektirir
-description: Yöneticiler için çok faktörlü kimlik doğrulaması gerektirmek için koşullu erişim ilkesi
+title: Temel ilke, Yöneticiler için MFA gerektiriyor-Azure Active Directory
+description: Yöneticiler için çok faktörlü kimlik doğrulaması gerektiren koşullu erişim ilkesi
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,60 +11,60 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4474283b9a233e39497cd05f0f04ea0984f02401
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: 213540a5b6c77146155365133f2cca08eea25351
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67560945"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608167"
 ---
-# <a name="baseline-policy-require-mfa-for-admins-preview"></a>Temel ilke: Mfa'yı (Önizleme) yöneticileri için gerekli
+# <a name="baseline-policy-require-mfa-for-admins-preview"></a>Temel ilke: Yöneticiler için MFA gerektir (Önizleme)
 
-Kullanıcılara ayrıcalıklı hesaplara erişim ortamınıza sınırsız erişimi vardır. Bu hesaplara sahip güç nedeniyle, bunları özel dikkatli düşünmelisiniz. Ayrıcalıklı hesapların geliştirmek için bir ortak oturum açma için kullanıldığında, daha güçlü bir form Hesap doğrulama gerektirecek şekilde yöntemidir. Azure Active Directory'ye multi factor authentication (MFA) zorunlu daha güçlü bir hesap doğrulama alabilirsiniz.
+Ayrıcalıklı hesaplara erişimi olan kullanıcıların ortamınıza sınırsız erişimi vardır. Bu hesapların gücüyle ilgili olan güç nedeniyle, onlara özel bir dikkatli davranmanız gerekir. Ayrıcalıklı hesapların korunmasını artırmanın yaygın bir yöntemi, oturum açmak için kullanıldıkları zaman daha güçlü bir hesap doğrulama biçimi gerektirmaktır. Azure Active Directory, çok faktörlü kimlik doğrulaması (MFA) gerektirerek daha güçlü bir hesap doğrulaması alabilirsiniz.
 
-**Mfa'yı (Önizleme) yöneticileri için gerekli** olduğu bir [temel ilke](concept-baseline-protection.md) ayrıcalıklı yönetici aşağıdaki rollerden birinde oturum açtığı her seferinde mfa'yı gerektirir:
+**Yöneticiler için MFA gerektir (Önizleme)**  , aşağıdaki ayrıcalıklı yönetici rollerden her biri oturum açtığında MFA gerektiren bir [temel ilkedir](concept-baseline-protection.md) :
 
 * Genel yönetici
 * SharePoint yöneticisi
-* Exchange Yöneticisi
-* Koşullu Erişim Yöneticisi
+* Exchange yöneticisi
+* Koşullu Erişim yöneticisi
 * Güvenlik yöneticisi
-* Yardım Masası Yöneticisi / parola Yöneticisi
+* Yardım Masası Yönetici/Parola Yöneticisi
 * Faturalama yöneticisi
-* Kullanıcı Yöneticisi
+* Kullanıcı yöneticisi
 
-Yöneticiler ilkesi için gerekli MFA etkinleştirme sırasında yukarıdaki dokuz yönetici rolleri kimlik doğrulayıcı uygulamasını kullanarak MFA'ya kaydetmeniz gerekir. MFA kayıt tamamlandıktan sonra Yöneticiler, oturum açma tek her seferinde MFA gerçekleştirmeniz gerekir.
+Yöneticiler için MFA gerektir ilkesi etkinleştirildikten sonra, Authenticator uygulamasını kullanarak MFA 'ya kaydolmak için yukarıdaki dokuz yönetici rolü gerekecektir. MFA kaydı tamamlandıktan sonra, yöneticilerin her oturum açtıklarında MFA gerçekleştirmesi gerekir.
 
 ## <a name="deployment-considerations"></a>Dağıtma konuları
 
-Çünkü **yöneticileri (Önizleme) için MFA gerektiren** ilkenin geçerli tüm kritik yöneticilere, çeşitli konuları sorunsuz bir dağıtım sağlamak için yapılması gerekir. Kullanıcılar ve uygulamalar ve modern kimlik doğrulamayı desteklemeyen, kuruluşunuz tarafından kullanılan istemcilerin yanı sıra MFA'yı gerçekleştirmemelisiniz veya Azure AD'de hizmet ilkeleri tanımlayan bu konuları içerir.
+**Yöneticiler IÇIN MFA gerektir (Önizleme)** ilkesi tüm kritik Yöneticiler için geçerli olduğundan, kesintisiz bir dağıtım sağlamak için çeşitli hususlar yapılmalıdır. Bu noktalara, Azure AD 'deki kullanıcıları ve hizmet ilkelerini, MFA 'yı gerektirmeyen veya bu uygulamaların yanı sıra, kuruluşunuz tarafından modern kimlik doğrulamayı desteklemeyen uygulamalar ve istemciler için tanımlama sayılabilir.
 
-### <a name="legacy-protocols"></a>Eski protokolleri
+### <a name="legacy-protocols"></a>Eski protokoller
 
-Eski bir kimlik doğrulama protokolleri (IMAP, SMTP, POP3, vb.), kimlik doğrulama istekleri için posta istemcileri tarafından kullanılır. Bu protokollerin mfa'yı desteklemez. Çoğu Microsoft tarafından görülen hesabı anladığınızda, eski protokolleri mfa'yı atlamak deneyen saldırıları gerçekleştiren kötü aktörleri kaynaklanır. Bir yönetici hesabı ile oturum açarken MFA gereklidir ve mfa'yı atlamak kötü aktörleri belirtemiyor emin olmak için bu ilkenin eski protokolleri arasından Yönetici hesaplarına yapılan tüm kimlik doğrulama isteklerini engeller.
-
-> [!WARNING]
-> Bu ilke etkinleştirmeden önce eski kimlik doğrulama protokolleri yöneticilerinize kullanmadığınız emin olun. Makaleye göz atın [nasıl yapılır: Azure AD koşullu erişim ile eski kimlik blok](howto-baseline-protect-legacy-auth.md#identify-legacy-authentication-use) daha fazla bilgi için.
-
-## <a name="enable-the-baseline-policy"></a>Temel ilke etkinleştir
-
-İlke **temel ilke: Mfa'yı (Önizleme) yöneticileri için gerekli** önceden yapılandırılmış olarak gelir ve Azure portalında koşullu erişim dikey penceresine gittiğinizde en üstünde gösterilir.
-
-Bu ilkeyi etkinleştirmek ve yöneticileriniz korumak için:
-
-1. Oturum **Azure portalında** genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak.
-1. Gözat **Azure Active Directory** > **koşullu erişim**.
-1. İlkeler listesinde seçin **temel ilke: Mfa'yı (Önizleme) yöneticileri için gerekli**.
-1. Ayarlama **ilkesini etkinleştir** için **ilkeyi hemen kullan**.
-1. Tıklayın **Kaydet**.
+Eski kimlik doğrulama protokolleri (IMAP, SMTP, POP3, vb.), posta istemcileri tarafından kimlik doğrulama isteklerini yapmak için kullanılır. Bu protokoller MFA 'yı desteklemez. Microsoft tarafından görülen hesabın büyük bir çoğunluğu, kötü aktörlerin, MFA 'yı atlamaya çalışan eski protokollere karşı saldırı gerçekleştirmesine neden olmuştur. Bir yönetim hesabında oturum açarken MFA 'nın gerekli olduğundan ve kötü aktörlerin MFA 'yı atlayabilmesi için, bu ilke eski protokollerden yönetici hesaplarına yapılan tüm kimlik doğrulama isteklerini engeller.
 
 > [!WARNING]
-> Bir seçenek oluştu **ilke gelecekte otomatik olarak etkinleştir** bu ilkesinin ne zaman önizlemede. Ani kullanıcı etkisini en aza indirmek için bu seçeneği kaldırdık. Kullanılabilir olduğunda bu seçeneği işaretlediyseniz **ilke kullanmayın** otomatik olarak artık seçili. Bunlar bu temel ilke kullanmak istiyorsanız, bunu etkinleştirmek için yukarıdaki adımları bakın.
+> Bu ilkeyi etkinleştirmeden önce, yöneticilerin eski kimlik doğrulama protokollerini kullanmıyor olduğundan emin olun. Bkz. nasıl yapılır: [ Daha fazla bilgi için koşullu erişimle](howto-baseline-protect-legacy-auth.md#identify-legacy-authentication-use) Azure AD 'ye yönelik eski kimlik doğrulamasını engelleyin.
+
+## <a name="enable-the-baseline-policy"></a>Temel ilkeyi etkinleştirme
+
+İlke **temel ilkesi: Yöneticiler için MFA (Önizleme)** önceden yapılandırılmış olarak gelir ve Azure Portal ' deki koşullu erişim dikey penceresine gittiğinizde en üstte görünür.
+
+Bu ilkeyi etkinleştirmek ve yöneticilerinizi korumak için:
+
+1.  **** AzurePortal genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
+1. **Koşullu erişimi** **Azure Active Directory** > için gidin.
+1. İlke listesinde temel ilke ' yi seçin **: Yöneticiler için MFA gerektir (Önizleme)** .
+1. İlkeyi **ilkeyi hemen kullanacak** **şekilde ayarlayın** .
+1.  **Kaydet**' e tıklayın.
+
+> [!WARNING]
+> Bu ilke Önizlemedeki bir ilke daha **sonra otomatik olarak etkinleştir** seçeneği vardı. Ani Kullanıcı etkisini en aza indirmek için bu seçeneği kaldırdık. Kullanılabilir olduğunda bu seçeneği belirlediyseniz, **ilkeyi kullanma** otomatik olarak seçilidir. Bu temel ilkeyi kullanmak istiyorlarsa, etkinleştirmek için yukarıdaki adımlara bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Daha fazla bilgi için bkz.
 
 * [Koşullu erişim temel koruma ilkeleri](concept-baseline-protection.md)
-* [Kimlik altyapınızın güvenliğini sağlamak için beş adım](../../security/azure-ad-secure-steps.md)
-* [Azure Active Directory'de koşullu erişim nedir?](overview.md)
+* [Kimlik altyapınızı güvenli hale getirmenin beş adımı](../../security/fundamentals/steps-secure-identity.md)
+* [Azure Active Directory Koşullu erişim nedir?](overview.md)

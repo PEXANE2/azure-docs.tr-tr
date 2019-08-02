@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4bd0b6f0652f49c16bd67bbca5a89d19e17a8b2c
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 150d30085976c89e9053d4715da98e487684e45c
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498411"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717253"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 'da Güncelleştirme Yönetimi çözümü
 
@@ -23,7 +23,7 @@ Azure 'da, şirket içi ortamlarda veya diğer bulut sağlayıcılarında Window
 Sanal makineler için Güncelleştirme Yönetimi doğrudan Azure Otomasyonu hesabınızdan etkinleştirebilirsiniz. Otomasyon hesabınızdan sanal makineler için Güncelleştirme Yönetimi etkinleştirmeyi öğrenmek için bkz. [birden çok sanal makine için güncelleştirmeleri yönetme](manage-update-multi.md). Ayrıca, bir sanal makine için Güncelleştirme Yönetimi, Azure portal sanal makine sayfasından da etkinleştirebilirsiniz. Bu senaryo, [Linux](../virtual-machines/linux/tutorial-monitoring.md#enable-update-management) ve [Windows](../virtual-machines/windows/tutorial-monitoring.md#enable-update-management) sanal makineleri için kullanılabilir.
 
 > [!NOTE]
-> Güncelleştirme Yönetimi çözümü, Otomasyon hesabınıza bir Log Analytics çalışma alanı bağlamayı gerektirir. Desteklenen bölgelerin kesin listesi için bkz. [./How-to/Region-Mappings.MD]. Bölge eşlemeleri, Otomasyon hesabınızdan ayrı bir bölgedeki sanal makineleri yönetme özelliğini etkilemez.
+> Güncelleştirme Yönetimi çözümü, Otomasyon hesabınıza bir Log Analytics çalışma alanı bağlamayı gerektirir. Desteklenen bölgelerin kesin listesi için, bkz. [https://docs.microsoft.com/en-us/azure/automation/how-to/region-mappings ]. Bölge eşlemeleri, Otomasyon hesabınızdan ayrı bir bölgedeki sanal makineleri yönetme özelliğini etkilemez.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -100,6 +100,11 @@ Aşağıdaki tabloda, desteklenmeyen bir işletim sistemleri listelenmektedir:
 
 Windows aracılarının bir WSUS sunucusuyla iletişim kuracak şekilde yapılandırılması veya Microsoft Update erişimi olması gerekir. System Center Configuration Manager Güncelleştirme Yönetimi kullanabilirsiniz. Tümleştirme senaryoları hakkında daha fazla bilgi için bkz. [Güncelleştirme Yönetimi System Center Configuration Manager tümleştirme](oms-solution-updatemgmt-sccmintegration.md#configuration). [Windows Aracısı](../azure-monitor/platform/agent-windows.md) gereklidir. Bir Azure sanal makinesini oluşturuyorsanız, aracı otomatik olarak yüklenir.
 
+> [!NOTE]
+> Bir kullanıcının, makine yeniden başlatmaları yalnızca Kullanıcı tarafından değil, sistem tarafından gerçekleştirilebileceği şekilde grup ilkesi değiştirmesi mümkündür. Güncelleştirme Yönetimi yönetilen makineler, kullanıcıdan el ile etkileşim kurmadan makineyi yeniden başlatma haklarına sahip değilse kesilebilir.
+>
+> Daha fazla bilgi için bkz. [Otomatik Güncelleştirmeler için Grup İlkesi ayarlarını yapılandırma](https://docs.microsoft.com/en-us/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates).
+
 #### <a name="linux"></a>Linux
 
 Linux için, makinenin bir güncelleştirme deposuna erişimi olması gerekir. Güncelleştirme deposu özel veya genel olabilir. Güncelleştirme Yönetimi etkileşimde bulunmak için TLS 1,1 veya TLS 1,2 gereklidir. Linux için birden fazla Log Analytics çalışma alanına raporlamak üzere yapılandırılmış bir Log Analytics Aracısı bu çözümle desteklenmez.
@@ -131,7 +136,7 @@ System Center Operations Manager yönetim grubunuz bir Log Analytics çalışma 
 * MP Dağıtımını güncelleştirme
 
 > [!NOTE]
-> Yönetim grubu düzeyinde bir çalışma alanı ile ilişkilendirilecek aracıların yapılandırıldığı bir Operations Manager 1807 yönetim grubunuz varsa, bu sorunun gösterilmesi için geçerli geçici çözüm,   **Microsoft. ıntelligencepacks. AzureAutomation. Hybridadgent. Init** kuralı.
+> Yönetim grubu düzeyinde bir çalışma alanı ile ilişkilendirilecek aracıların yapılandırıldığı bir Operations Manager 1807 yönetim grubunuz varsa, bu sorunun gösterilmesi için geçerli geçici çözüm, **Microsoft. ıntelligencepacks. AzureAutomation. Hybridadgent. Init** kuralı.
 
 Çözüm Yönetimi paketlerinin nasıl güncelleştirildiği hakkında daha fazla bilgi için bkz. [Azure izleyici günlüklerine bağlanma Operations Manager](../azure-monitor/platform/om-agents.md).
 

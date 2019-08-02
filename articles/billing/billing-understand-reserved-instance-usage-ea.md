@@ -1,6 +1,6 @@
 ---
-title: Kurumsal anlaşmalar için Azure ayırmaları kullanımını anlama
-description: Kurumsal kayıt için Azure ayırma nasıl uygulanacağını anlamak için kullanım okumayı öğrenin.
+title: Kurumsal anlaşmalar için Azure ayırmaları kullanımını anlayın
+description: Kurumsal kaydınız için Azure ayırmasının nasıl uygulandığını anlamak için kullanımınızı nasıl okuyacağınızı öğrenin.
 author: bandersmsft
 manager: yashar
 tags: billing
@@ -11,141 +11,142 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: b0c7c38ebabfdd142394152f735d40320a98dced
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 507ad62a917120689bee3f1e293e23c9ab8b0f66
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798150"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598106"
 ---
-# <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Kurumsal Anlaşma ayırma maliyetleri ve kullanım bilgilerini alma
+# <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Kurumsal Anlaşma rezervasyon maliyetlerini ve kullanımını alın
 
-Maliyet ayırma ve kullanım verileri, Kurumsal Anlaşma müşterileri için Azure portalı ve REST API'ler kullanılabilir. Bu makale size yardımcı olur:
+Rezervasyon maliyetleri ve kullanım verileri, Azure portal ve REST API 'Lerinde Kurumsal Anlaşma müşteriler için kullanılabilir. Bu makale şunları yapmanıza yardımcı olur:
 
-- Rezervasyon satın alma veri alma
-- Ayırma eksik kullanım verileri alın
-- Ayırma maliyetleri İtfası
-- Geri ödeme ayırma kullanımı
-- Ayırma tasarruf hesaplayın
+- Rezervasyon satın alma verilerini al
+- Hangi aboneliğin, kaynak grubunun veya kaynağın ayırmayı kullanıldığını öğrenin
+- Rezervasyon kullanımı için geri ödeme
+- Rezervasyon tasarrufunu hesapla
+- Kullanım için rezervasyon verileri al
+- Rezervasyon maliyetlerini İtfası
 
-Market ücretlerini, Kullanım verilerinin birleştirilir. Tek bir veri kaynağı gerçekleştirilen birinci taraf kullanım ve Market kullanım ücretleri görebilirsiniz.
+Market ücretleri kullanım verilerinde birleştirilir. Tek bir veri kaynağından ilk parti kullanımı, Market kullanımı ve satın alma ücretleri görüntülenir.
 
-## <a name="reservation-charges-in-azure-usage-data"></a>Azure kullanım verilerindeki rezervasyon ücreti
+## <a name="reservation-charges-in-azure-usage-data"></a>Azure kullanım verilerinde rezervasyon ücretleri
 
-Verileri iki ayrı veri kümeleri halinde ayrılmıştır: _Gerçek maliyet_ ve _amorti edilmiş maliyet_. Bu iki veri kümesi farkı:
+Veriler iki ayrı veri kümesine ayrılmıştır: _Gerçek maliyet_ ve _itfası maliyeti_. Bu iki veri kümesi nasıl farklılık gösterir:
 
-**Gerçek maliyet** -ile aylık faturanızı mutabık kılmak için veri sağlar. Bu veriler, rezervasyon satın almak maliyet vardır. Ayırma indirimi alınan kullanım için sıfır EffectivePrice var.
+**Gerçek maliyet** -aylık faturanızla mutabık kılınacak verileri sağlar. Bu verilerde rezervasyon satın alma maliyetleri ve rezervasyon uygulaması ayrıntıları vardır. Bu verilerle, hangi aboneliğin veya kaynak grubunun ya da kaynağın belirli bir günde rezervasyon indirimi aldığını bilirsiniz. Rezervasyon iskontosunu alan kullanım için uygulanan bir ücret sıfırdır.
 
-**Amorti edilmiş maliyet** -kaynak ayırma indirimi alır EffectiveCost ayrılmış örnek saatlere eşit olarak dağıtılmış maliyetidir. Veri kümesi de sahip kullanılmamış ayırma maliyetlerini. Toplam Maliyet ayırma ve kullanılmamış ayırma, ayırma günlük amorti edilmiş maliyetini sağlar.
+**Itfası maliyeti** -bu veri kümesi gerçek maliyet veri kümesine benzer, ancak rezervasyon indirimi alan kullanım için uygulanan ücret, rezervasyonun eşit olarak dağıtılmasından (sıfır yerine). Bu, bir abonelik, kaynak grubu veya kaynak tarafından rezervasyon tüketiminin parasal değerini bilmenize yardımcı olur ve rezervasyon kullanımının dahili olarak geri ücretlendirmenize yardımcı olabilir. Veri kümesinde kullanılmayan ayırma saatleri de vardır. Veri kümesinde rezervasyon satın alma kayıtları yok. 
 
 İki veri kümesi karşılaştırması:
 
-| Data | Gerçek maliyet veri kümesi | Amorti edilmiş maliyet veri kümesi |
+| Data | Gerçek maliyet veri kümesi | İtfası maliyet veri kümesi |
 | --- | --- | --- |
-| Rezervasyon satın alma | Bu görünümde kullanılabilir.<br><br>  Bu veri filtresi ChargeType üzerinde almak için = &quot;satın alma&quot;. <br><br> Reservationıd veya ReservationName ücretlendirme yapılır hangi ayırma bilmesi için bakın.  | Bu görünüm için geçerli değildir. <br><br> Satın alma maliyetleri amorti edilmiş veri sağlanmayan. |
-| effectivePrice | Ayırma indirimi alır kullanım için sıfır değerdir. | Değer, rezervasyon ayırma indirimi olan kullanımlar için saatlik günlere eşit olarak dağıtılır maliyetidir. |
-| Kullanılmamış ayırma (ayırma bir gün içinde kullanılan değildi saat sayısı ve atık parasal değerini sağlar) | Bu görünümde geçerli değildir. | Bu görünümde kullanılabilir.<br><br> Bu verileri almak için filtre ChargeType üzerinde = &quot;UnusedReservation&quot;.<br><br>  Hangi ayırma potansiyelinden az kullanılmasına neden bilmek Reservationıd veya ReservationName başvurun. Rezervasyon ne kadar günün boşa budur.  |
-| UnitPrice (kaynak, fiyat fiyatı) | Kullanılabilir | Kullanılabilir |
+| Rezervasyon satın alımları | Bu görünümde kullanılabilir.<br><br>  Bu veri filtresini chargetype = &quot;Purchase&quot;üzerinde almak için. <br><br> Ücrette hangi ayırmayı olduğunu bildirmek için Rezervationıd veya Rezervationname bölümüne bakın.  | Bu görünüm için geçerli değildir. <br><br> Satın alma maliyetleri, itfası verilerinde sağlanmaz. |
+| Efekt fiyatı | Değer, rezervasyon iskontosunu alan kullanım için sıfırdır. | Değer, rezervasyon indirimi olan kullanım için rezervasyonun saat başına eşit olarak dağıtılmış maliyetlidir. |
+| Kullanılmayan ayırma (rezervasyonun bir gün içinde kullanıldığı saat sayısını ve atık değerinin parasal değerini sağlar) | Bu görünümde geçerli değildir. | Bu görünümde kullanılabilir.<br><br> Bu verileri almak için, chargetype = &quot;UnusedReservation&quot;üzerine filtre uygulayın.<br><br>  Hangi ayırmanın az kullanıldığını bildirmek için Rezervationıd veya Rezervationname bölümüne bakın. Bu, gün için rezervasyonun ne kadarının harcanmıştı.  |
+| BirimFiyat (fiyat sayfanızdaki kaynağın fiyatı) | Kullanılabilir | Kullanılabilir |
 
-Azure kullanım verilerinde başka bilgilerine değişmiştir:
+Azure kullanım verilerinde bulunan diğer bilgiler değiştirilmiştir:
 
-- Daha önce yaptığınız gibi Azure Reservationıd ve ReservationName, ürün ve ölçüm bilgilerini - kaldırmayacağına başlangıçta tüketilen ölçer.
-- Reservationıd ve ReservationName - kendi veri alanları oldukları. Daha önce yalnızca Additionalınfo altında kullanılabilir olması için kullanılır.
-- Kendi alan olarak eklenen ProductOrderId - rezervasyon sipariş kimliği.
-- ProductOrderName - satın alınan ayırmanın ürün adı.
-- Terim - 12 ay içinde veya 36 ay.
-- RINormalizationRatio - Additionalınfo altında kullanılabilir. Bu rezervasyon kullanım kaydı uygulandığı oranıdır. Örneği boyutu esnekliği, ayırma için etkin değilse, diğer boyutları için uygulayabilirsiniz. Değer, ayırma için kullanım kaydı uygulandığından oranını gösterir.
+- Ürün ve ölçüm bilgileri-Azure, daha önce olduğu gibi, ilk tüketilen ölçümü Rezervationıd ve Rezervationname ile değiştirmez.
+- Rezervkimliği ve Rezervadı-bunlar verilerdeki kendi alanlarıdır. Daha önce, yalnızca AdditionalInfo altında kullanılabilir.
+- ProductOrderId-rezervasyon siparişi KIMLIĞI, kendi alanı olarak eklendi.
+- ProductOrderName-satın alınan ayırmanın ürün adı.
+- Dönem-12 ay veya 36 ay.
+- RINormalizationRatio-AdditionalInfo altında kullanılabilir. Bu, rezervasyonun kullanım kaydına uygulandığı orandır. Ayırma için örnek boyutu esnekliği etkinleştirilirse, diğer boyutlara de uygulanabilir. Değer, kullanım kaydı için rezervasyonun uygulanma oranını gösterir.
 
-## <a name="get-azure-consumption-and-reservation-usage-data-using-api"></a>API kullanarak Azure tüketim ve ayırma kullanım veri alma
+## <a name="get-azure-consumption-and-reservation-usage-data-using-api"></a>API kullanarak Azure tüketim ve ayırma kullanım verilerini edinme
 
-API'sini kullanarak veri alma veya Azure portalından indirin.
+Verileri API kullanarak alabilir veya Azure portal adresinden indirebilirsiniz.
 
-Çağırmanızı [kullanım ayrıntılarını API'si](/rest/api/consumption/usagedetails/list) API sürümüyle &quot;2019-04-01-preview&quot; yeni verileri almak için. Terimler hakkında daha fazla ayrıntı için bkz: [kullanım koşulları](billing-understand-your-usage.md). Çağıran, Kurumsal Sözleşme kullanan bir kuruluş yöneticisi olmalıdır [EA portal](https://ea.azure.com). Kuruluş Yöneticileri salt okunur veri de alabilirsiniz.
+Yeni verileri almak için API sürüm &quot;2019-04-01-Önizleme&quot; ile [kullanım ayrıntıları API](/rest/api/consumption/usagedetails/list) 'sini çağırabilirsiniz. Terminoloji hakkında daha fazla bilgi için bkz. [kullanım koşulları](billing-understand-your-usage.md). Çağıranın [EA Portalı](https://ea.azure.com)kullanılarak kurumsal anlaşma Için bir kuruluş yöneticisi olması gerekir. Salt okunurdur kurumsal Yöneticiler verileri de alabilir.
 
-Veriler kullanılabilir değil [Kurumsal müşteriler - kullanım ayrıntıları için raporlama API'lerini](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail).
+Veriler, [Kurumsal müşteriler Için Raporlama API 'lerinde kullanılabilir değildir-kullanım ayrıntıları](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail).
 
-Bir örnek araması API'sine şu şekildedir:
+API 'ye örnek bir çağrı aşağıda verilmiştir:
 
 ```
 https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enrollmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodId}/providers/Microsoft.Consumption/usagedetails?metric={metric}&amp;api-version=2019-04-01-preview&amp;$filter={filter}
 ```
 
-Daha fazla bilgi {Enrollmentıd} ve {billingPeriodId} için bakın [kullanım ayrıntıları – liste](https://docs.microsoft.com/rest/api/consumption/usagedetails/list) API makalesi.
+{Kayıtkimliği} ve {billingPeriodId} hakkında daha fazla bilgi için bkz. [kullanım ayrıntıları – liste](https://docs.microsoft.com/rest/api/consumption/usagedetails/list) API 'si makalesi.
 
-Ölçüm ve filtre hakkında bilgi aşağıdaki tabloda, için ortak bir ayırma sorunlarını çözmenize yardımcı olabilir.
+Ölçüm ve filtre hakkında aşağıdaki tablodaki bilgiler, yaygın ayırma sorunlarının çözülmesine yardımcı olabilir.
 
-| **API veri türü** | Eylem API çağrısı |
+| **API verilerinin türü** | API çağrısı eylemi |
 | --- | --- |
-| **Tüm ücretler (kullanım ve satın alma)** | {Ölçümü} ActualCost ile değiştirin. |
-| **Ayırma indirimi alındı kullanımı** | {Ölçümü} ActualCost ile değiştirin.<br><br>{Filter} değiştirin: properties/reservationId%20ne%20 |
-| **Ayırma indirimi almadınız kullanımı** | {Ölçümü} ActualCost ile değiştirin.<br><br>{Filter} değiştirin: properties/reservationId%20eq%20 |
-| **Amorti edilmiş ücretleri (kullanım ve satın alma)** | {Ölçümü} AmortizedCost ile değiştirin. |
-| **Kullanılmamış ayırma raporu** | {Ölçümü} AmortizedCost ile değiştirin.<br><br>{Filter} değiştirin: properties/ChargeType%20eq%20'UnusedReservation' |
-| **Rezervasyon satın alma** | {Ölçümü} ActualCost ile değiştirin.<br><br>{Filter} değiştirin: properties/ChargeType%20eq%20'Purchase'  |
-| **Mahsup işlemleri** | {Ölçümü} ActualCost ile değiştirin.<br><br>{Filter} değiştirin: properties/ChargeType%20eq%20'Refund' |
+| **Tüm ücretler (kullanım ve satın alma)** | {Metric} öğesini ActualCost ile değiştirin |
+| **Rezervasyon indirimi olan kullanım** | {Metric} öğesini ActualCost ile değiştirin<br><br>{Filter} öğesini ile Değiştir: Özellikler/Rezervationıd% 20ne% 20 |
+| **Ayırma indirimi almadığınız kullanım** | {Metric} öğesini ActualCost ile değiştirin<br><br>{Filter} öğesini ile Değiştir: Özellikler/Rezervationıd% 20eq% 20 |
+| **İtfası ücretleri (kullanım ve satın alma)** | {Metric} değerini Itfası Zedcost ile değiştirin |
+| **Kullanılmayan ayırma raporu** | {Metric} değerini Itfası Zedcost ile değiştirin<br><br>{Filter} öğesini ile Değiştir: Özellikler/ChargeType% 20eq% 20 ' UnusedReservation ' |
+| **Rezervasyon satın alımları** | {Metric} öğesini ActualCost ile değiştirin<br><br>{Filter} öğesini ile Değiştir: Özellikler/ChargeType% 20eq% 20 ' satın alma '  |
+| **İadelerini** | {Metric} öğesini ActualCost ile değiştirin<br><br>{Filter} öğesini ile Değiştir: Özellikler/ChargeType% 20eq% 20 ' Iadesi ' |
 
-## <a name="download-the-usage-csv-file-with-new-data"></a>Yeni verilerle kullanım CSV dosyalarını indirme
+## <a name="download-the-usage-csv-file-with-new-data"></a>Kullanım CSV dosyasını yeni verilerle indirin
 
-EA yöneticisinin, Azure portalından yeni kullanım verilerini içeren CSV dosyası indirebilirsiniz. Bu veriler kullanılabilir değil [EA portal](https://ea.azure.com).
+EA yöneticisiyseniz, Azure portal yeni kullanım verilerini içeren CSV dosyasını indirebilirsiniz. Bu veriler [EA portalından](https://ea.azure.com)kullanılamaz.
 
-Azure portalında gidin [maliyet Yönetimi + faturalandırma](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/BillingAccounts).
+Azure portal [maliyet yönetimi + faturalandırma](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/BillingAccounts)' e gidin.
 
-1. Fatura hesabı seçin.
-2. Tıklayın **kullanım ve Ücret**.
+1. Faturalandırma hesabını seçin.
+2. **Kullanım + ücretler**' e tıklayın.
 3. **İndir**'e tıklayın.  
-![Azure portalında CSV kullanım verileri dosyasını indirmek nereye gösteren örnek](./media/billing-understand-reserved-instance-usage-ea/portal-download-csv.png)
-4. İçinde **kullanımı indir + ücretleri** altında **kullanım ayrıntılarını sürüm 2** seçin **(kullanım ve satın alma) tüm ücretleri** ve indir'e tıklayın. Yineleme için **ücretleri (kullanım ve satın alma) amorti edilmiş**.
+![Azure portal CSV kullanım verileri dosyasının nereye Indirileceği gösteren örnek](./media/billing-understand-reserved-instance-usage-ea/portal-download-csv.png)
+4. **Kullanım kullanımı + ücretler** bölümünde, **kullanım ayrıntıları sürüm 2** altında **Tüm ücretler ' i (kullanım ve satın alma)** seçin ve ardından İndir ' e tıklayın. **İtfası ücretleri (kullanım ve satın alma)** için yineleyin.
 
-İndirdiğiniz CSV dosyaları fiili maliyet ve amorti edilmiş maliyet içerir.
+İndirilen CSV dosyaları gerçek maliyetler ve itfası maliyeti içerir.
 
-## <a name="common-cost-and-usage-tasks"></a>Maliyet ve kullanım ortak görevler
+## <a name="common-cost-and-usage-tasks"></a>Ortak maliyet ve kullanım görevleri
 
-Aşağıdaki bölümlerde ayırma maliyet ve kullanım verilerini görüntülemek için çoğu kişi kullanan ortak görevlerdir.
+Aşağıdaki bölümler, çoğu kişinin rezervasyon maliyetini ve kullanım verilerini görüntülemek için kullandığı ortak görevlerdir.
 
-### <a name="get-reservation-purchase-costs"></a>Rezervasyon satın alma maliyetleri alın
+### <a name="get-reservation-purchase-costs"></a>Rezervasyon satın alma maliyetlerini al
 
-Gerçek maliyet verileri, rezervasyon satın alma maliyetleri kullanılabilir. Filtre _ChargeType satın alma =_ . Satın alma için hangi rezervasyon siparişi belirlemek için ProductOrderID bakın.
+Rezervasyon satın alma maliyetleri gerçek maliyet verilerinde kullanılabilir. _Chargetype = Purchase_için filtre. Satınalmanın hangi rezervasyon sırasını öğrenmek için ProductOrderID adresine başvurun.
 
-### <a name="get-underutilized-reservation-quantity-and-costs"></a>Az kullanılan ayırma miktarını ve maliyetleri alın
+### <a name="get-underutilized-reservation-quantity-and-costs"></a>Az kullanılan rezervasyon miktarı ve maliyetlerini alın
 
-Amorti edilmiş maliyet veri almak ve filtre _ChargeType_ _UnusedReservation =_ . Günlük kullanılmamış ayırma miktarını ve maliyet olursunuz. Verileri için bir ayırma veya rezervasyon siparişi kullanarak filtreleyebilirsiniz _Reservationıd_ ve _ProductOrderId_ alanlar, sırasıyla. Rezervasyon kullanılan % 100 idiyse, kaydı bir miktar 0 ' var.
+_Chargetype_ _= UnusedReservation_için itfası maliyet verileri ve filtresi alın. Günlük kullanılmayan rezervasyon miktarını ve maliyeti alırsınız. Sırasıyla _Rezervationıd_ ve _ProductOrderId_ alanlarını kullanarak bir ayırma veya rezervasyon siparişi için verileri filtreleyebilirsiniz. Bir rezervasyon% 100 oranında kullanılıyorsa, kaydın 0 miktarı vardır.
 
-### <a name="amortize-reservation-costs"></a>Ayırma maliyetleri İtfası
+### <a name="amortize-reservation-costs"></a>Rezervasyon maliyetlerini İtfası
 
-Amorti edilmiş maliyet verilerini ve kullanarak bir rezervasyon siparişi için filtre _ProductOrderID_ günlük amorti edilmiş maliyet almak için bir ayırma için.
+Bir rezervasyona yönelik günlük itfası maliyetlerini almak için _ProductOrderID_ kullanarak bir rezervasyon siparişi Için itfası maliyeti ve filtre uygulayın.
 
-### <a name="chargeback-for-a-reservation"></a>Geri ödeme için bir ayırma
+### <a name="chargeback-for-a-reservation"></a>Rezervasyon için geri ödeme
 
-Geri ödeme ayırma diğer kuruluşlar için abonelik, kaynak grupları veya etiketleri kullanabilirsiniz. Amorti edilmiş maliyet verilerini parasal değerini bir ayırma'nın kullanımı, aşağıdaki veri türlerini sağlar:
+Rezervasyon kullanımını, abonelik, kaynak grupları veya etiketlere göre diğer kuruluşlara geri ödeme yapabilirsiniz. İtfası maliyet verileri, aşağıdaki veri türlerinde bir ayırma kullanımının parasal değerini sağlar:
 
-- Kaynakları (örneğin, bir VM)
+- Kaynaklar (örneğin, bir VM)
 - Resource group
 - Tags
 - Subscription
 
-### <a name="get-the-blended-rate-for-chargeback"></a>Harmanlanmış oranı geri ödemeye Al
+### <a name="get-the-blended-rate-for-chargeback"></a>Geri ödeme için karıştırılan ücret alın
 
-Harmanlanmış oranını belirlemek için amorti edilmiş maliyet verileri alın ve toplam maliyeti toplama. VM'ler için Additionalınfo JSON verileri MeterName ya da ServiceType bilgiler kullanabilirsiniz. Toplam maliyeti Harmanlanmış oranı almak için kullanılan miktar bölün.
+Karışım oranını öğrenmek için, itfası maliyeti verilerini alın ve toplam maliyeti toplayın. VM 'Ler için, AdditionalInfo JSON verilerinden MeterName veya ServiceType bilgilerini kullanabilirsiniz. Toplam maliyeti, karıştırılan oranı almak için kullanılan miktara bölün.
 
-### <a name="audit-optimum-reservation-use-for-instance-size-flexibility"></a>Denetim optimum ayırma kullanma örneği için boyutu esneklik
+### <a name="audit-optimum-reservation-use-for-instance-size-flexibility"></a>Örnek boyutu esnekliği için en iyi ayırma kullanımını denetleme
 
-Birden fazla miktarla _RINormalizationRatio_, Additionalınfo öğesinden. Kaç saat ayırma kullanımı, kullanım kaydı uygulandığı sonuçları gösterir.
+AdditionalInfo 'dan, _Rinormalizationratio_ile birden fazla miktar. Sonuçlar, kullanım kaydına kaç saatlik rezervasyon kullanımının uygulandığını gösterir.
 
-### <a name="determine-reservation-savings"></a>Ayırma tasarruf belirleme
+### <a name="determine-reservation-savings"></a>Rezervasyon tasarrufunu belirleme
 
-Amortized maliyetleri veri almak ve ayrılmış örnek için verileri filtreleyin. Daha sonra:
+Itfası maliyet verilerini alın ve ayrılmış bir örnek için verileri filtreleyin. Ni
 
-1. Kullandıkça Öde tahmini maliyetleri alın. Çarp _UnitPrice_ değerini _miktar_ değerleri almak için tahmini Kullandıkça Öde maliyetleri ayırma indirimi kullanım için geçerliyse kaydetmedi.
-2. Ayırma maliyetleri alın. Sum _maliyet_ ayrılmış örnek için ücretli parasal değerini almak için değerler. Bu rezervasyon kullanılan ve kullanılmayan maliyetlerini içerir.
-3. Tahmini tasarruf almak için Kullandıkça Öde Tahmini maliyetler ayırma maliyetlerden çıkarın.
+1. Tahmini Kullandıkça Öde maliyetlerini alın. Rezervasyon iskontosunun kullanım için uygulanmadıysa, tahmin edilen Kullandıkça Öde maliyetlerini almak için _BirimFiyat_ değerini _Miktar_ değerleriyle çarpın.
+2. Rezervasyon maliyetlerini alın. Ayrılmış örnek için ödediklerinizin parasal değerini almak üzere _Maliyet_ değerlerini toplayın. Bu, rezervasyonun kullanılan ve kullanılmayan maliyetlerini içerir.
+3. Tahmini tasarruf elde etmek için tahmini Kullandıkça Öde maliyetlerinden rezervasyon maliyetlerini çıkarın.
 
-## <a name="reservation-purchases-and-amortization-in-cost-analysis"></a>Rezervasyon satın alma ve maliyet analizi itfa
+## <a name="reservation-purchases-and-amortization-in-cost-analysis"></a>Maliyet analizinde rezervasyon satınalmaları ve İtfası
 
-Ayırma maliyetleri kullanılabilir [maliyet analizi](https://aka.ms/costanalysis). Varsayılan olarak, maliyet analizi gösterir **gerçek maliyet**, olduğu maliyetleri faturanızda nasıl gösterilir. Ayrılmış ve kullanılan avantajı kaynaklarla ilişkili rezervasyon satın alma işlemleri görüntülemek için geçiş **amorti edilmiş maliyet**:
+Rezervasyon maliyetleri, [Maliyet Analizi](https://aka.ms/costanalysis)'nde kullanılabilir. Varsayılan olarak, maliyet analizi, faturanızda maliyetlerin nasıl gösterileceğini gösteren **gerçek maliyeti**gösterir. Ayrılmış olan ve avantajın kullanıldığı kaynaklarla ilişkili rezervasyon satınalmaları görüntülemek için, **itfası maliyetine**geçin:
 
-![Amorti edilmiş maliyet maliyet analizi seçmek nereye gösteren örnek](./media/billing-understand-reserved-instance-usage-ea/portal-cost-analysis-amortized-view.png)
+![Maliyet analizinde itfası maliyetinin nerede seçileceğini gösteren örnek](./media/billing-understand-reserved-instance-usage-ea/portal-cost-analysis-amortized-view.png)
 
-Kullanım, satın alma ve para iadesi aşağı mola görmek için ücret türüne göre grup; veya bir çözümleme için bir ayırma maliyet ayırma ve isteğe bağlı. Gerçek maliyet ararken göreceğiniz yalnızca ayırma maliyetleri satın alınır, ancak maliyetleri benfit amorti edilmiş maliyet ararken kullanılan kaynakların ayrılacak unutmayın. Ayrıca yeni bir görürsünüz **UnusedReservation** amorti edilmiş maliyet bakarak olduğunda Ücret türü.
+Kullanım, satın alma ve para iadesi işlemlerinin bir listesini görmek için, ücretlendirme türüne göre gruplandırma; rezervasyon ve isteğe bağlı maliyetlerin dökümünü alır. Gerçek maliyetten satın alma işlemleri yaparken göreceğiniz rezervasyon maliyetlerini unutmayın, ancak bu işlem, en düşük maliyetli bir ücret alırken benle kullanılan tek tek kaynaklara göre ücretlendirilir. Ayrıca, itfası maliyetlendirerek yeni bir **UnusedReservation** ücret türü görürsünüz.
 
 ## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bizimle iletişim kurun.
 
@@ -159,6 +160,6 @@ Azure ayırmaları hakkında daha fazla bilgi edinmek için aşağıdaki makalel
 - [Azure Ayrılmış VM Örnekleri ile Sanal Makinelere ön ödeme yapma](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Azure SQL Veritabanı ayrılmış kapasitesi ile SQL Veritabanı işlem kaynakları için ön ödeme yapma](../sql-database/sql-database-reserved-capacity.md)
 - [Azure Ayırmalarını yönetme](billing-manage-reserved-vm-instance.md)
-- [Ayırma indirimi nasıl uygulanacağını anlama](billing-understand-vm-reservation-charges.md)
-- [Kullandıkça Öde aboneliğinizi için ayırma kullanımını anlama](billing-understand-reserved-instance-usage.md)
-- [Windows yazılım maliyetleri ile ayırmaları dahil değil](billing-reserved-instance-windows-software-costs.md)
+- [Rezervasyon iskontosunun nasıl uygulanacağını anlayın](billing-understand-vm-reservation-charges.md)
+- [Kullandıkça Öde aboneliğiniz için rezervasyon kullanımını anlayın](billing-understand-reserved-instance-usage.md)
+- [Windows yazılım maliyetleri rezervasyonlar içermez](billing-reserved-instance-windows-software-costs.md)

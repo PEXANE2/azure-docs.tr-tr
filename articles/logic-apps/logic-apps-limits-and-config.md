@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: b649ea1c69f82840a663cf32391e4c74ac6cc33e
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: dd4eef7998b83c7a527738762379d0d3e720d70f
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68319502"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699811"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps için sınırlar ve yapılandırma bilgileri
 
@@ -143,7 +143,7 @@ Bazı bağlayıcı işlemleri, zaman uyumsuz çağrılar yapar veya Web kancası
 
 | Ad | Sınır | Notlar |
 | ---- | ----- | ----- |
-| Yeniden deneme sayısı | 90 | Varsayılan değer 4 ' dir. Varsayılanı değiştirmek için [yeniden deneme ilkesi parametresini](../logic-apps/logic-apps-workflow-actions-triggers.md)kullanın. |
+| Yeniden deneme girişimleri | 90 | Varsayılan değer 4 ' dir. Varsayılanı değiştirmek için [yeniden deneme ilkesi parametresini](../logic-apps/logic-apps-workflow-actions-triggers.md)kullanın. |
 | Yeniden deneme en fazla gecikme | 1 gün | Varsayılanı değiştirmek için [yeniden deneme ilkesi parametresini](../logic-apps/logic-apps-workflow-actions-triggers.md)kullanın. |
 | Yeniden deneme en düşük gecikme | 5 saniye | Varsayılanı değiştirmek için [yeniden deneme ilkesi parametresini](../logic-apps/logic-apps-workflow-actions-triggers.md)kullanın. |
 ||||
@@ -175,7 +175,7 @@ Web API 'Lerinden oluşturabileceğiniz özel bağlayıcıların sınırları a�
 
 Her Azure aboneliği şu tümleştirme hesabı sınırlarına sahiptir:
 
-* Tek bir [ücretsiz katman](../logic-apps/logic-apps-pricing.md#integration-accounts) tümleştirme hesabı
+* Azure bölgesi başına bir [ücretsiz katman](../logic-apps/logic-apps-pricing.md#integration-accounts) tümleştirme hesabı
 
 * [Geliştirici ve Premium SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)'larda her türlü [tümleştirme hizmeti ortamında (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) tümleştirme hesapları dahil olmak üzere 1.000 toplam tümleştirme hesabı.
 
@@ -198,7 +198,7 @@ Her bir tümleştirme hesabı katmanının yapıt sayısına ilişkin sınırlar
 > [!NOTE]
 > Ücretsiz katmanı yalnızca araştırmacı senaryolar için kullanın, üretim senaryolarından değil. Bu katman, aktarım hızını ve kullanımı kısıtlar ve hizmet düzeyi anlaşması (SLA) içermez.
 
-| Deposunun | Boş | Temel | Standart |
+| Yapay Nesne | Boş | Temel | Standart |
 |----------|------|-------|----------|
 | EDI ticari sözleşmeleri | 10 | 1\. | 1000 |
 | EDI ticari iş ortakları | 25 | 2 | 1000 |
@@ -206,14 +206,14 @@ Her bir tümleştirme hesabı katmanının yapıt sayısına ilişkin sınırlar
 | Şemalar | 25 | 500 | 1000 |
 | Derlemeler | 10 | 25 | 1000 |
 | Sertifikalar | 25 | 2 | 500 |
-| Batch yapılandırması | 5 | 1\. | 50 |
+| Toplu iş yapılandırmaları | 5 | 1\. | 50 |
 ||||
 
 <a name="artifact-capacity-limits"></a>
 
 ### <a name="artifact-capacity-limits"></a>Yapıt kapasitesi sınırları
 
-| Deposunun | Sınır | Notlar |
+| Yapay Nesne | Sınır | Notlar |
 | -------- | ----- | ----- |
 | Derleme | 8 MB | 2 MB 'tan büyük dosyaları karşıya yüklemek için bir [Azure depolama hesabı ve BLOB kapsayıcısı](../logic-apps/logic-apps-enterprise-integration-schemas.md)kullanın. |
 | Map (XSLT dosyası) | 8 MB | 2 MB 'tan büyük dosyaları karşıya yüklemek için [Azure Logic Apps REST API haritaları](https://docs.microsoft.com/rest/api/logic/maps/createorupdate)kullanın. |

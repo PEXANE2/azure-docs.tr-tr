@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 07/26/2019
-ms.openlocfilehash: afafaa86988905329a0e4ff45f29bea9d1d57820
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.date: 07/27/2019
+ms.openlocfilehash: 7cd8b7c2accae097c971aec4b92cf38ed5d3af08
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501033"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561506"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-database"></a>Azure SQL veritabanı 'na çevrimiçi geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları
 
@@ -27,7 +27,9 @@ Azure SQL veritabanı 'na SQL Server çevrimiçi geçişlerle ilişkili bilinen 
 
 ### <a name="migration-of-temporal-tables-not-supported"></a>Zamana bağlı tabloların geçirilmesi desteklenmez
 
-**Belirti** Kaynak veritabanınız bir veya daha fazla zamana bağlı tablodan oluşuyorsa, veritabanı geçişiniz "tam veri yükleme" işlemi sırasında başarısız olur ve aşağıdaki iletiyi görebilirsiniz:
+**Belirti**
+
+Kaynak veritabanınız bir veya daha fazla zamana bağlı tablodan oluşuyorsa, veritabanı geçişiniz "tam veri yükleme" işlemi sırasında başarısız olur ve aşağıdaki iletiyi görebilirsiniz:
 
 ```
 { "resourceId":"/subscriptions/<subscription id>/resourceGroups/migrateready/providers/Microsoft.DataMigration/services/<DMS Service name>", "errorType":"Database migration error", "errorEvents":"["Capture functionalities could not be set. RetCode: SQL_ERROR SqlState: 42000 NativeError: 13570 Message: [Microsoft][SQL Server Native Client 11.0][SQL Server]The use of replication is not supported with system-versioned temporal table '[Application. Cities]' Line: 1 Column: -1 "]" }
@@ -35,7 +37,9 @@ Azure SQL veritabanı 'na SQL Server çevrimiçi geçişlerle ilişkili bilinen 
 
  ![Zamana bağlı tablo hataları örneği](media/known-issues-azure-sql-online/dms-temporal-tables-errors.png)
 
-**Geçici çözüm** Aşağıdaki adımları kullanın.
+**Geçici çözüm**
+
+Aşağıdaki adımları kullanın.
 
 1. Aşağıdaki sorguyu kullanarak kaynak şemanızda zamana bağlı tabloları bulun.
 
@@ -47,15 +51,21 @@ Azure SQL veritabanı 'na SQL Server çevrimiçi geçişlerle ilişkili bilinen 
 
 3. Geçiş etkinliğini yeniden çalıştırın.
 
-**Kaynaklar** Daha fazla bilgi için bkz. [geçici tablolar](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables?view=sql-server-2017)makalesi.
+**Kaynakları**
+
+Daha fazla bilgi için bkz. [geçici tablolar](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables?view=sql-server-2017)makalesi.
 
 ### <a name="migration-of-tables-includes-one-or-more-columns-with-the-hierarchyid-data-type"></a>Tabloların geçirilmesi HierarchyId veri türüne sahip bir veya daha fazla sütun içeriyor
 
-**Belirti** "Tam veri yükleme" işlemi sırasında "ntext, HierarchyId ile uyumlu değil" öneren bir SQL özel durumu görebilirsiniz:
+**Belirti**
+
+"Tam veri yükleme" işlemi sırasında "ntext, HierarchyId ile uyumlu değil" öneren bir SQL özel durumu görebilirsiniz:
 
 ![HierarchyId hataları örneği](media/known-issues-azure-sql-online/dms-hierarchyid-errors.png)
 
-**Geçici çözüm** Aşağıdaki adımları kullanın.
+**Geçici çözüm**
+
+Aşağıdaki adımları kullanın.
 
 1. Aşağıdaki sorguyu kullanarak HierarchyId veri türüne sahip sütunları içeren Kullanıcı tablolarını bulun.
 
@@ -69,7 +79,9 @@ Azure SQL veritabanı 'na SQL Server çevrimiçi geçişlerle ilişkili bilinen 
 
 ### <a name="migration-failures-with-various-integrity-violations-with-active-triggers-in-the-schema-during-full-data-load-or-incremental-data-sync"></a>"Tam veri yükleme" veya "artımlı veri eşitleme" sırasında şemadaki etkin tetikleyicilerle çeşitli bütünlük ihlalleriyle geçiş hataları
 
-**Geçici çözüm** Aşağıdaki adımları kullanın.
+**Geçici çözüm**
+
+Aşağıdaki adımları kullanın.
 
 1. Aşağıdaki sorguyu kullanarak kaynak veritabanında Şu anda etkin olan Tetikleyicileri bulun:
 
@@ -83,17 +95,23 @@ Azure SQL veritabanı 'na SQL Server çevrimiçi geçişlerle ilişkili bilinen 
 
 ### <a name="support-for-lob-data-types"></a>LOB veri türleri için destek
 
-**Belirti** Büyük nesne (LOB) sütununun uzunluğu 32 KB 'tan büyükse, veriler hedefte kesilebilir. Aşağıdaki sorguyu kullanarak LOB sütununun uzunluğunu kontrol edebilirsiniz:
+**Belirti**
+
+Büyük nesne (LOB) sütununun uzunluğu 32 KB 'tan büyükse, veriler hedefte kesilebilir. Aşağıdaki sorguyu kullanarak LOB sütununun uzunluğunu kontrol edebilirsiniz:
 
 ``` 
 SELECT max(DATALENGTH(ColumnName)) as LEN from TableName
 ```
 
-**Geçici çözüm** 32 KB 'den büyük bir LOB sütununuz varsa [Azure veritabanı geçişleri sorun](mailto:AskAzureDatabaseMigrations@service.microsoft.com)' nın mühendislik ekibine başvurun.
+**Geçici çözüm**
+
+32 KB 'den büyük bir LOB sütununuz varsa [Azure veritabanı geçişleri sorun](mailto:AskAzureDatabaseMigrations@service.microsoft.com)' nın mühendislik ekibine başvurun.
 
 ### <a name="issues-with-timestamp-columns"></a>Zaman damgası sütunları ile ilgili sorunlar
 
-**Belirti** Azure veritabanı geçiş hizmeti kaynak zaman damgası değerini geçirmez; Bunun yerine, Azure veritabanı geçiş hizmeti hedef tabloda yeni bir zaman damgası değeri oluşturur.
+**Belirti**
+
+Azure veritabanı geçiş hizmeti kaynak zaman damgası değerini geçirmez; Bunun yerine, Azure veritabanı geçiş hizmeti hedef tabloda yeni bir zaman damgası değeri oluşturur.
 
 **Geçici çözüm**
 
@@ -101,11 +119,15 @@ Kaynak tabloda depolanan tam zaman damgası değerini geçirmek için Azure veri
 
 ### <a name="data-migration-errors-dont-provide-additional-details-on-the-database-detailed-status-blade"></a>Veri geçiş hataları veritabanı ayrıntılı durum dikey penceresinde ek ayrıntılar sağlamaz
 
-**Belirti** Veritabanları ayrıntıları durum görünümünde geçiş hatalarıyla karşılaşdığınızda, üstteki şeritte **veri geçiş hataları** bağlantısını seçtiğinizde geçiş hatalarına özgü ek ayrıntılar sağlayamayabilir.
+**Belirti**
+
+Veritabanları ayrıntıları durum görünümünde geçiş hatalarıyla karşılaşdığınızda, üstteki şeritte **veri geçiş hataları** bağlantısını seçtiğinizde geçiş hatalarına özgü ek ayrıntılar sağlayamayabilir.
 
 ![veri geçiş hataları ayrıntı yok örnek](media/known-issues-azure-sql-online/dms-data-migration-errors-no-details.png)
 
-**Geçici çözüm** Belirli hata ayrıntılarına ulaşmak için aşağıdaki adımları kullanın.
+**Geçici çözüm**
+
+Belirli hata ayrıntılarına ulaşmak için aşağıdaki adımları kullanın.
 
 1. Geçiş etkinliği ekranını göstermek için veritabanı ayrıntılı durum dikey penceresini kapatın.
 
@@ -115,16 +137,24 @@ Kaynak tabloda depolanan tam zaman damgası değerini geçirmek için Azure veri
 
 ### <a name="geography-datatype-not-supported-in-sqldb-online-migration"></a>Coğrafya veri türü SQLDB çevrimiçi geçişte desteklenmez
 
-**Belirti** Geçiş şu metni içeren bir hata iletisiyle başarısız olur:
+**Belirti**
 
- "* * önemli bir hatayla karşılaştı", "errorEvents":<Table>.<Column> ' Full LOB ' destek modu altında ' Full Load ' tarafından desteklenmeyen ' Coğrafya ' türünde. "
+Geçiş şu metni içeren bir hata iletisiyle başarısız olur:
 
-**Geçici çözüm** Azure veritabanı geçiş hizmeti, çevrimiçi geçişler için Azure SQL veritabanı 'na çevrimdışı geçişlere yönelik Coğrafya veri türünü destekleirken, Coğrafya veri türü desteklenmez. Bu veritabanının çevrimiçi geçişi için Azure veritabanı geçiş hizmeti 'ni kullanmayı denemeden önce, kaynak veri türünü desteklenen bir tür olarak değiştirmek için alternatif yöntemleri deneyin.
+     “** encountered a fatal error”, "errorEvents":<Table>.<Column> is of type 'GEOGRAPHY', which is not supported by 'Full Load' under 'Full LOB' support mode."
+
+**Geçici çözüm**
+
+Azure veritabanı geçiş hizmeti, çevrimiçi geçişler için Azure SQL veritabanı 'na çevrimdışı geçişlere yönelik Coğrafya veri türünü destekleirken, Coğrafya veri türü desteklenmez. Bu veritabanının çevrimiçi geçişi için Azure veritabanı geçiş hizmeti 'ni kullanmayı denemeden önce, kaynak veri türünü desteklenen bir tür olarak değiştirmek için alternatif yöntemleri deneyin.
 
 ### <a name="supported-editions"></a>Desteklenen sürümler
 
-**Belirti** Geçiş şu metni içeren bir hata iletisiyle başarısız olur:
+**Belirti**
 
- Geçiş ayarları doğrulama hatası: [Business Intelligence Edition (64-bit)] sunucusunun sürümü, desteklenen sürüm (ler) [Enterprise, Standard, Developer] ile eşleşmiyor.
+Geçiş şu metni içeren bir hata iletisiyle başarısız olur:
 
-**Geçici çözüm** Azure veritabanı geçiş hizmeti kullanılarak Azure SQL veritabanı 'na çevrimiçi geçiş desteği yalnızca Enterprise, Standard ve Developer sürümlerini genişletir. Geçiş işlemine başlamadan önce desteklenen bir sürüm kullandığınızdan emin olun.
+    Migration settings validation error: The edition of the server [Business Intelligence Edition (64-bit)] does not match the supported edition(s) [Enterprise,Standard,Developer].
+
+**Geçici çözüm**
+
+Azure veritabanı geçiş hizmeti kullanılarak Azure SQL veritabanı 'na çevrimiçi geçiş desteği yalnızca Enterprise, Standard ve Developer sürümlerini genişletir. Geçiş işlemine başlamadan önce desteklenen bir sürüm kullandığınızdan emin olun.

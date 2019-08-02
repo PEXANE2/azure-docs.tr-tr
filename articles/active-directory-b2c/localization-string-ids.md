@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: da1390de4e2eb0624032dc490416e7b6e5d61baa
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67846845"
 ---
 # <a name="localization-string-ids"></a>Yerelleştirme dize kimlikleri
@@ -36,18 +36,18 @@ KIMLIĞI olan bir içerik tanımı için aşağıdaki kimlikler kullanılır `ap
 | **email_pattern** | ^ [a-zA-Z0-9.! # $% & ' ' *+/=? ^ _\`{\|} ~-] + @ [a-Za-z0-9-] + (?:\\. [ a-zA-Z0-9-] +)* $ |
 | **local_intro_username** | Kullanıcı adınızla oturum açın |
 | **logonIdentifier_username** | Kullanıcı Adı |
-| **requiredField_username** | Lütfen Kullanıcı adınızı girin |
+| **requiredField_username** | Lütfen kullanıcı adınızı girin |
 | **Parola** | istemcisiyle yönetilen bir cihaz için) |
 | **requiredField_password** | Lütfen parolanızı girin |
 | **invalid_password** | Girdiğiniz parola beklenen biçimde değil. |
 | **forgotpassword_link** | Parolanızı mı unuttunuz? |
 | **createaccount_intro** | Hesabınız yok mu? |
-| **createaccount_link** | Hemen kaydolun |
+| **createaccount_link** | Şimdi kaydolun |
 | **divider_title** | OR |
-| **cancel_message** | Kullanıcı parolasını unutuldu |
+| **cancel_message** | Kullanıcı parolasını unuttu |
 | **button_signin** | Oturum aç |
 | **social_intro** | Sosyal hesabınızla oturum açın |
-  **remember_me** |Oturumumu Açık tut|
+  **remember_me** |Oturumumu açık bırak|
 | **unknown_error** | Oturumunuzu açmada sorun yaşıyoruz. Lütfen daha sonra tekrar deneyin. |
 
 Aşağıdaki örnek, kayıt veya oturum açma sayfasında bazı Kullanıcı arabirimi öğelerinin kullanımını gösterir:
@@ -83,10 +83,10 @@ Aşağıdaki örnek, Facebook kimlik sağlayıcısını Arapça olarak yerelleş
 
 | id | Varsayılan değer |
 | -- | ------------- |
-| **Usermessageifınvalidpassword** | Parolanız yanlış. |
+| **Usermessageifınvalidpassword** | Yanlış parola girdiniz. |
 | **UserMessageIfClaimsPrincipalDoesNotExist** | Hesabınızı bulamıyoruz. |
 | **UserMessageIfOldPasswordUsed** | Eski bir parola kullandınız gibi görünüyor. |
-| **DefaultMessage** | Geçersiz Kullanıcı adı veya parola. |
+| **DefaultMessage** | Geçersiz kullanıcı adı veya parola. |
 | **UserMessageIfUserAccountDisabled** | Hesabınız kilitlendi. Dosyanın kilidini açmak için destek sorumlunuza başvurun, sonra yeniden deneyin. |
 | **Usermessageifuseraccountkilitlendi** | Hesabınız yetkisiz kullanımı engellemek için geçici olarak kilitlidir. Daha sonra tekrar deneyin. |
 | **Aadrequestskısıtlanıyor** | Şu anda çok fazla istek var. Lütfen bir süre bekleyip yeniden deneyin. |
@@ -97,7 +97,7 @@ Aşağıda, `api.localaccountsignup` `api.selfasserted.profileupdate` ve `api.se
 
 | id | Varsayılan değer |
 | -- | ------------- |
-| **ver_sent** | Doğrulama kodu gönderildi: |
+| **ver_sent** | Doğrulama kodu şu adrese gönderildi: |
 | **ver_but_default** | Varsayılan |
 | **cancel_message** | Kullanıcı kendi kendine onaylanan bilgileri girmeyi iptal etti |
 | **preloader_alt** | Lütfen bekleyin |
@@ -105,7 +105,7 @@ Aşağıda, `api.localaccountsignup` `api.selfasserted.profileupdate` ve `api.se
 | **alert_yes** | Evet |
 | **error_fieldIncorrect** | Bir veya daha fazla alan yanlış doldurulmuş. Lütfen girişlerinizi denetleyin ve yeniden deneyin. |
 | **yıl** | Yıl |
-| **verifying_blurb** | Bilgilerinizi işlerken lütfen bekleyin. |
+| **verifying_blurb** | Bilgileriniz işlenirken lütfen bekleyin. |
 | **button_cancel** | İptal |
 | **ver_fail_no_retry** | Çok fazla hatalı deneme yaptınız. Lütfen daha sonra tekrar deneyin. |
 | **başından** | Ay |
@@ -126,9 +126,9 @@ Aşağıda, `api.localaccountsignup` `api.selfasserted.profileupdate` ve `api.se
 | **ver_fail_throttled** | Bu e-posta adresini doğrulamak için çok fazla istek vardı. Lütfen bekleyin, sonra yeniden deneyin. |
 | **helplink_text** | Bu nedir? |
 | **ver_fail_retry** | Bu kod yanlış. Lütfen yeniden deneyin. |
-| **alert_title** | Ayrıntılarınızı girmeyi iptal edin |
-| **required_field** | Bu bilgiler gereklidir. |
-| **alert_message** | Ayrıntılarınızı girmeyi iptal etmek istediğinizden emin misiniz? |
+| **alert_title** | Bilgilerinizi Girmeyi İptal Edin |
+| **required_field** | Bu bilgi gereklidir. |
+| **alert_message** | Bilgilerinizi girmeyi iptal etmek istediğinizden emin misiniz? |
 | **ver_intro_msg** | Doğrulama gereklidir. Lütfen gönder düğmesine tıklayın. |
 | **ver_input** | Doğrulama kodu |
 
@@ -159,29 +159,29 @@ Aşağıda KIMLIĞI `api.phonefactor`olan bir içerik tanımının kimlikleri ve
 
 | id | Varsayılan değer |
 | -- | ------------- |
-| **button_verify** | Beni ara |
+| **button_verify** | Beni Arayın |
 | **country_code_label** | Ülke kodu |
 | **cancel_message** | Kullanıcı Multi-Factor Authentication 'ı iptal etti |
-| **text_button_send_second_code** | Yeni kod gönder |
+| **text_button_send_second_code** | Yeni bir kod gönder |
 | **code_pattern** | \\d{6} |
 | **intro_mixed** | Sizin için kayıt üzerinde aşağıdaki sayıyı sunuyoruz. Kimliğinizi doğrulamak için SMS veya Phone aracılığıyla kod gönderebiliriz. |
 | **intro_mixed_p** | Sizin için kayıt için aşağıdaki numaralara ihtiyacımız var. Kimliğinizi doğrulamak için SMS aracılığıyla telefon ve kod gönderebileceğimiz bir sayı seçin. |
-| **button_verify_code** | Kodu doğrula |
+| **button_verify_code** | Kodu Doğrula |
 | **requiredField_code** | Lütfen aldığınız doğrulama kodunu girin |
 | **invalid_code** | Lütfen aldığınız 6 basamaklı kodu girin |
 | **button_cancel** | İptal |
 | **local_number_input_placeholder_text** | Telefon numarası |
 | **button_retry** | Yeniden Dene |
-| **alternative_text** | Telefonum yok |
+| **alternative_text** | Telefonum yanımda değil |
 | **intro_phone_p** | Sizin için kayıt için aşağıdaki numaralara ihtiyacımız var. Kimliğinizi doğrulamak için telefon yapabilmemiz gereken bir sayı seçin. |
 | **intro_phone** | Sizin için kayıt üzerinde aşağıdaki sayıyı sunuyoruz. Kimliğinizi doğrulamak için telefon göndereceğiz. |
 | **enter_code_text_intro** | Doğrulama kodunuzu aşağıya girin veya  |
-| **intro_entry_phone** | Kimliğinizi doğrulamak için telefon yapabilmemiz gereken bir sayı girin. |
-| **intro_entry_sms** | Kimliğinizi doğrulamak için SMS aracılığıyla kod gönderebileceğimiz bir sayı girin. |
-| **button_send_code** | Kodu gönder |
+| **intro_entry_phone** | Aşağıya kimliğinizi doğrulamak için arayabileceğimiz bir numara girin. |
+| **intro_entry_sms** | Aşağıya kimliğinizi doğrulamak için SMS aracılığıyla kod gönderebileceğimiz bir numara girin. |
+| **button_send_code** | Kod Gönder |
 | **invalid_number** | Lütfen geçerli bir telefon numarası girin |
 | **intro_sms** | Sizin için kayıt üzerinde aşağıdaki sayıyı sunuyoruz. Kimliğinizi doğrulamak için SMS aracılığıyla bir kod göndereceğiz. |
-| **intro_entry_mixed** | Kimliğinizi doğrulamak için SMS veya Phone aracılığıyla kod gönderebileceğimiz bir sayı girin. |
+| **intro_entry_mixed** | Aşağıya kimliğinizi doğrulamak için SMS aracılığıyla kod gönderebileceğimiz veya arayabileceğimiz bir numara girin. |
 | **number_pattern** | ^\\+ (?: [0-9] [\\x20-]?) {6,14}[0-9] $ |
 | **intro_sms_p** |Sizin için kayıt için aşağıdaki numaralara ihtiyacımız var. Kimliğinizi doğrulamak için SMS aracılığıyla kod gönderebileceğimiz bir sayı seçin. |
 | **requiredField_countryCode** | Lütfen ülke kodunuzu seçin |
@@ -191,8 +191,8 @@ Aşağıda KIMLIĞI `api.phonefactor`olan bir içerik tanımının kimlikleri ve
 | **error_tryagain** | Verdiğiniz telefon numarası meşgul veya kullanılamıyor. Lütfen numarayı denetleyip yeniden deneyin. |
 | **error_incorrect_code** | Girdiğiniz doğrulama kodu kayıtlarımızla eşleşmiyor. Lütfen yeniden deneyin veya yeni bir kod isteyin. |
 | **countryList** | {\"Varsayılan\":ülke/\"bölge,AF\":\"Afganistan,AX\":,\"\"\"\"\" Adaları\",\"Al:\"Arnavutluk\",DZ\" : Cezayir,as\":\"\"\"\"\"\" Amerikan Samoa\",\"ad\":Andora\",\"Ao:\"Angola,AI\":\"\"\"\" \"Anguilla\", aq:\"Antarktika\",AG\":Antigua veBarbuda\",\"\" \"\"\"Ar\":Arjantin,har\": Ermenistan,AW:\"Aruba\"\"\"\"\"\"\" \",Au\":\"Avustralya,\"at:Avusturya,\"\"\"\"\"\" AZ\":\"Azerbaycan,\"BS\":Bahamalar\", BH:\"\"\"\"\" Bahreyn\",\"BD:\"Bangladeş\",BB\":Barbados,\"\"\"\"\" Şu\"kadar\":\"Belarus,\"beyaz:\"Belçika,\"BZ:\" \"\"\" Belize\",\"BJ:\"Benin\",BM\":Bermuda,\"\"\"\"\"BT\":Bhutan\",\"Bo:\"Bolivya,BQ:\"\"\"\"\"\" Bonaire\",\"ba\":Bosna\"-Hersek\",Siyah\"beyaz\":Botsvana\"<span class="notransla class=""></span class="notransla> Harici Adaları\",\"VI\":ABD\" Virgin Adaları\",\"UG\":\"Uganda,\"UA\":Ukrayna\",AE:\"\"\"\"\" Birleşik Arap Emirlikleri\",\"GB\":BirleşikKrallık\",ABD\":BirleşikDevletler\",uy\"\"\"\" \":Uruguay\",\"uz:\"Özbekistan, vu & lt:Vanuatu\",\"\"\"\"\"\" \"VA:\"Vatikanşehri\",ve\": Venezuela, vn:\"Vietnam\"\"\"\"\"\" \",WF\":Wallisve\"Futuna,YS:\"Yemen,\"ZM\"\"\"\"\"\":Zambiya\",\"ZW:Zimbabve\"}\"\"\" |
-| **error_448** | Verdiğiniz telefon numarasına ulaşılamıyor. |
-| **error_449** | Kullanıcı yeniden deneme girişimlerinin sayısını aştı. |
+| **error_448** | Belirttiğiniz telefon numarasına ulaşılamıyor. |
+| **error_449** | Kullanıcı yeniden deneme girişimi sayısını aştı. |
 | **verification_code_input_placeholder_text** | Doğrulama kodu |
 
 Aşağıdaki örnek, MFA kayıt sayfasında bazı Kullanıcı arabirimi öğelerinin kullanımını gösterir:

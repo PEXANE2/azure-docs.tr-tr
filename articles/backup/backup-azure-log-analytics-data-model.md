@@ -1,18 +1,19 @@
 ---
 title: Azure Backup için Azure Izleyici günlükleri veri modeli
 description: Bu makalede, Azure Backup verileri için Azure Izleyici günlükleri veri modeli ayrıntıları ele bildirilir.
-author: adigan
-manager: shivamg
+ms.reviewer: adigan
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.author: adigan
-ms.openlocfilehash: 6563eefffee0ed8d9ce94c3e0a1e24b0d32314f0
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 878e4e7508d82f78e82f1fd8bda69079d9468e9f
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466149"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689231"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Azure Backup verileri için Log Analytics veri modeli
 
@@ -329,12 +330,12 @@ Bu tablo yedekleme yönetim sunucuları hakkında temel alanlar sağlar.
 
 |Alan  |Veri Türü  | Açıklama  |
 |---------|---------|----------|
-|BackupManagmentServerName_s     |Text         |Yedekleme yönetim sunucusunun adı        |
+|BackupManagementServerName_s     |Text         |Yedekleme yönetim sunucusunun adı        |
 |AzureBackupAgentVersion_s     |Text         |Yedekleme yönetim sunucusundaki Azure Backup aracısının sürümü          |
-|BackupManagmentServerVersion_s     |Text         |Yedekleme yönetim sunucusunun sürümü|
-|BackupManagmentServerOSVersion_s     |Text            |Yedekleme yönetim sunucusunun işletim sistemi sürümü|
+|BackupManagementServerVersion_s     |Text         |Yedekleme yönetim sunucusunun sürümü|
+|BackupManagementServerOSVersion_s     |Text            |Yedekleme yönetim sunucusunun işletim sistemi sürümü|
 |BackupManagementServerType_s     |Text         |Yedekleme yönetim sunucusunun türü, MABS, SC DPM olarak|
-|BackupManagmentServerUniqueId_s     |Text         |Yedekleme yönetim sunucusunu benzersiz olarak tanımlamak için alan       |
+|BackupManagementServerUniqueId_s     |Text         |Yedekleme yönetim sunucusunu benzersiz olarak tanımlamak için alan       |
 
 ### <a name="preferredworkloadonvolume"></a>PreferredWorkloadOnVolume
 

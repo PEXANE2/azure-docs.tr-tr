@@ -1,6 +1,6 @@
 ---
 title: Azure SQL Elastik Veritabanı İşleri | Microsoft Docs
-description: Bir veya daha fazla Azure SQL veritabanı kümesi arasında Transact-SQL (T-SQL) betikleri çalıştırmak için elastik veritabanı işleri yapılandırın
+description: Elastik veritabanı Işlerini bir veya daha fazla Azure SQL veritabanı kümesi üzerinde Transact-SQL (T-SQL) betikleri çalıştıracak şekilde yapılandırma
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -10,25 +10,24 @@ ms.topic: conceptual
 author: srinia
 ms.author: srinia
 ms.reviewer: sstein
-manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 62efee57f3663f1dad0446da659de16d2800bf75
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7c5905716c0aada4a5070b9968c330eafaffb741
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61482967"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561341"
 ---
-# <a name="create-configure-and-manage-elastic-jobs"></a>Oluşturma, yapılandırma ve elastik işleri Yönet
+# <a name="create-configure-and-manage-elastic-jobs"></a>Elastik işler oluşturma, yapılandırma ve yönetme
 
-Bu makalede, oluşturma, yapılandırma ve elastik işleri yönetme öğreneceksiniz. Esnek işler, kullanmadıysanız [Azure SQL veritabanı'nda proje Otomasyon kavramları hakkında daha fazla bilgi](sql-database-job-automation-overview.md).
+Bu makalede, elastik işler oluşturmayı, yapılandırmayı ve yönetmeyi öğreneceksiniz. Elastik işler kullandıysanız, [Azure SQL veritabanı 'nda iş Otomasyonu kavramları hakkında daha fazla bilgi edinin](sql-database-job-automation-overview.md).
 
 ## <a name="create-and-configure-the-agent"></a>Aracıyı oluşturma ve yapılandırma
 
-1. Boş bir S0 veya üzeri SQL veritabanı oluşturun ya da tanımlayın. Bu veritabanı olarak kullanılacak *iş veritabanı* elastik İş Aracısı oluşturma sırasında.
+1. Boş bir S0 veya üzeri SQL veritabanı oluşturun ya da tanımlayın. Bu veritabanı, elastik Iş Aracısı oluşturma sırasında *iş veritabanı* olarak kullanılacaktır.
 2. [Portalda](https://portal.azure.com/#create/Microsoft.SQLElasticJobAgent) veya [PowerShell](elastic-jobs-powershell.md#create-the-elastic-job-agent) kullanarak bir Elastik İş aracısı oluşturun.
 
-   ![Elastik İş Aracısı oluşturma](media/elastic-jobs-overview/create-elastic-job-agent.png)
+   ![Elastik Iş Aracısı oluşturma](media/elastic-jobs-overview/create-elastic-job-agent.png)
 
 ## <a name="create-run-and-manage-jobs"></a>İşleri oluşturma, çalıştırma ve yönetme
 
@@ -49,8 +48,8 @@ Bu makalede, oluşturma, yapılandırma ve elastik işleri yönetme öğreneceks
 Bir işi çalıştırmak için uygun kimlik bilgilerinin ayarlanması kafa karışıklığına neden olabileceğinden aşağıdaki noktaları göz önünde bulundurun:
 
 - Veritabanı kapsamlı kimlik bilgileri *İş veritabanında* oluşturulmalıdır.
-- **Tüm hedef veritabanları oturum açma kimliğiyle olmalıdır [yeterli izinlere](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) iş, başarıyla tamamlanması için** (`jobuser` aşağıdaki çizimde).
-- İşleri arasında yeniden kullanılabilir kimlik bilgileri ve kimlik bilgisi parolaları şifrelenir ve iş nesnelere salt okunur erişime sahip kullanıcıların güvenli.
+- **Tüm hedef veritabanlarının, işin başarıyla tamamlanabilmesi için [yeterli izinlere](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) sahip bir oturum açma işlemi olması gerekir** (`jobuser` aşağıdaki diyagramda).
+- Kimlik bilgileri işler arasında yeniden kullanılabilir ve kimlik bilgisi parolaları, iş nesnelerine salt okuma erişimi olan kullanıcılardan şifrelenir ve bunların güvenliğini sağlar.
 
 Aşağıdaki resim, uygun iş kimlik bilgilerinin anlaşılması ve ayarlanması konusunda yardımcı olmak üzere tasarlanmıştır. **Kullanıcının, işin çalıştırılacağı her veritabanında (tüm *hedef kullanıcı veritabanlarında*) oluşturulması gerektiğini unutmayın**.
 
@@ -61,8 +60,8 @@ Aşağıdaki resim, uygun iş kimlik bilgilerinin anlaşılması ve ayarlanması
 Elastik İşlerle çalışırken dikkat etmeniz gereken en iyi deneyimlerin bazıları:
 
 - API’lerin kullanımını güvenilir kişilerle sınırlayın.
-- Kimlik bilgileri iş adımını gerçekleştirmek için gerekli olan en düşük ayrıcalıklara sahip olmalıdır. Daha fazla bilgi için [yetkilendirme ve izinler SQL Server](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server).
-- Bir sunucu ve/veya havuzu hedef grup üyesi kullanırken, yüksek oranda listesini görüntüle/sunucuları ve/veya iş yürütülmeden önce havuzlarını veritabanı listesini genişletmek için kullanılan veritabanları için ana veritabanı üzerinde haklara sahip ayrı bir kimlik bilgisi oluşturmak için önerilir.
+- Kimlik bilgileri iş adımını gerçekleştirmek için gerekli olan en düşük ayrıcalıklara sahip olmalıdır. Daha fazla bilgi için bkz. [Yetkilendirme ve izinler SQL Server](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server).
+- Sunucu ve/veya havuz hedef grubu üyesini kullanırken, iş yürütmeden önce sunucu (ler) ve/veya havuzların veritabanı listelerini genişletmek için kullanılan veritabanlarını görüntülemek/listelemek için ana veritabanında haklara sahip ayrı bir kimlik bilgisi oluşturmanız önerilir.
 
 ## <a name="agent-performance-capacity-and-limitations"></a>Aracı performansı, kapasitesi ve sınırlamaları
 
@@ -76,7 +75,7 @@ Hedef veritabanı grubunun boyutuna ve bir işin istenen yürütme süresine (e�
 
 Bir SQL elastik havuzundaki veritabanları üzerinde iş çalıştırılması sırasında kaynakların aşırı yüklenmesini önlemek için işler aynı anda üzerinde çalışılabilecek veritabanı sayısını sınırlayacak şekilde yapılandırılabilir.
 
-Üzerinde çalıştığı ayarlayarak bir iş eş zamanlı veritabanlarının sayısını ayarlayın `sp_add_jobstep` saklı yordamı'nın `@max_parallelism` T-SQL, parametre veya `Add-AzSqlElasticJobStep -MaxParallelism` PowerShell'de.
+Bir işin üzerinde çalıştığı eşzamanlı veritabanı sayısını, T-SQL içinde veya `sp_add_jobstep` `Add-AzSqlElasticJobStep -MaxParallelism` PowerShell 'de saklı `@max_parallelism` yordamın parametresini ayarlayarak ayarlayın.
 
 ## <a name="best-practices-for-creating-jobs"></a>İş oluşturmak için en iyi deneyimler
 

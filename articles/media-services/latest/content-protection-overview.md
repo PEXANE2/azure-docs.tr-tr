@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2019
+ms.date: 07/25/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 174184993e40b60dc89022d360f0c09fb31bc60b
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: a928640aa6d56f0a39011a2cabcf979b4d907a46
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501278"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561466"
 ---
 # <a name="protect-your-content-by-using-media-services-dynamic-encryption"></a>Media Services dinamik şifrelemeyi kullanarak içeriğinizi koruyun
 
@@ -170,7 +170,7 @@ Ortak tarayıcılar aşağıdaki DRM istemcilerini destekler:
 
 Bir açık kısıtlanmış içerik anahtarı ilkesi, yetkilendirmesiz herkese lisans vermek istediğinizde kullanılabilir. Örneğin, gelirleriniz ad tabanlıdır ve abonelik temelli değildir.  
 
-Belirteç kısıtlı içerik anahtar ilkesiyle, içerik anahtarı yalnızca geçerli bir JWT belirteci veya lisans/anahtar isteğinde basit bir Web belirteci sunan bir istemciye gönderilir. Bu belirtecin bir STS tarafından verilmesi gerekir. 
+Belirteç kısıtlı içerik anahtar ilkesiyle, içerik anahtarı yalnızca lisans/anahtar isteğinde geçerli bir JWT belirteci veya basit bir Web belirteci (SWT) sunan bir istemciye gönderilir. Bu belirtecin bir STS tarafından verilmesi gerekir. 
 
 Azure AD 'yi STS olarak kullanabilir veya özel bir STS dağıtımı yapabilirsiniz. STS belirteci kısıtlama yapılandırmasında belirtilen belirtilen anahtarı ve sorunu talepleri ile imzalanmış bir belirteç oluşturmak için yapılandırılmalıdır. Media Services lisansı/anahtar teslim hizmeti, bu koşulların her ikisi de varsa, istenen lisansı veya anahtarı istemciye döndürür:
 
@@ -196,8 +196,10 @@ Belirteç kısıtlı ilkesini yapılandırırken, birincil doğrulama anahtarın
 
 Bir müşteri, belirteç sağlamak için özel bir STS kullanmayı tercih edebilir. Nedenler şunlardır:
 
-* Müşteri tarafından kullanılan IDP STS desteklemiyor. Bu durumda, özel STS bir seçenek olabilir.
-* Müşteri faturalandırma sistemine müşterinin aboneyle STS tümleştirmek için daha esnek veya sıkı denetim gerekebilir. Örneğin, birden fazla temel, premium gibi OTT abone paketleri ve Spor MVPD operatörün sunabilir. İşleci, yalnızca belirli bir paket içeriğini kullanılabilir hale getirilir, böylece bir abonenin paket belirteciyle Taleplerde eşleştirilecek isteyebilirsiniz. Bu durumda, özel STS gereken esneklik ve denetim sağlar.
+* Müşteri tarafından kullanılan kimlik sağlayıcısı (ıDP) STS 'yi desteklemez. Bu durumda, özel STS bir seçenek olabilir.
+* Müşteri faturalandırma sistemine müşterinin aboneyle STS tümleştirmek için daha esnek veya sıkı denetim gerekebilir. 
+
+   Örneğin, bir [Ott](https://en.wikipedia.org/wiki/Over-the-top_media_services) hizmeti operatörü Premium, temel ve spor gibi birden çok abone paketi sunabilir. İşleci, yalnızca belirli bir paket içeriğini kullanılabilir hale getirilir, böylece bir abonenin paket belirteciyle Taleplerde eşleştirilecek isteyebilirsiniz. Bu durumda, özel STS gereken esneklik ve denetim sağlar.
 * Farklı bir DRM lisans parametreleriyle farklı ContentKeyPolicyOptions arasında seçim yapmak üzere belirtece özel talepler eklemek için (bir abonelik lisansı, bir kiralama lisansına karşı).
 * Belirtecin erişim izni verdiği anahtarın içerik anahtar tanımlayıcısını temsil eden bir talep eklemek için.
 

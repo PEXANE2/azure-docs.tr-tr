@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 070dd07aa6705e97a532bdc5f53a08a9abe0f83d
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 7799b62b2c330610663e361bbb3930340b1ebdaf
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68361018"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726293"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Bir web hizmeti olarak bir Azure Machine Learning modeli kullanma
 
@@ -37,8 +37,10 @@ Machine Learning Web hizmeti kullanan bir istemci oluşturmak için genel iş ak
 
 [Azureml. Core. WebService](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) sınıfı, istemci oluşturmak için gereken bilgileri sağlar. Aşağıdaki `Webservice` Özellikler bir istemci uygulaması oluşturmak için yararlıdır:
 
-* `auth_enabled` -Kimlik doğrulama etkinse `True`; Aksi takdirde `False`.
+* `auth_enabled`-Anahtar kimlik doğrulaması etkinse `True`; Aksi takdirde,. `False`
+* `token_auth_enabled`-Belirteç kimlik doğrulaması etkinse `True`; Aksi takdirde,. `False`
 * `scoring_uri` -REST API adresi.
+
 
 Dağıtılan web hizmetleri için bu bilgileri almak için üç yol vardır:
 
@@ -67,7 +69,15 @@ Dağıtılan web hizmetleri için bu bilgileri almak için üç yol vardır:
     print(service.scoring_uri)
     ```
 
-### <a name="authentication-key"></a>Kimlik doğrulama anahtarı
+### <a name="authentication-for-services"></a>Hizmetler için kimlik doğrulaması
+
+Azure Machine Learning, Web hizmetlerinizi erişimi denetlemek için iki yol sağlar. 
+
+|Kimlik Doğrulama Yöntemi|ACI|AKS|
+|---|---|---|
+|Anahtar|Varsayılan olarak devre dışı| Varsayılan olarak etkin|
+|Belirteç| Kullanılamaz| Varsayılan olarak devre dışı |
+#### <a name="authentication-with-keys"></a>Anahtarlar ile kimlik doğrulama
 
 Bir dağıtım için kimlik doğrulamasını etkinleştirdiğinizde, otomatik olarak kimlik doğrulama anahtarları oluşturursunuz.
 
@@ -85,6 +95,26 @@ print(primary)
 
 > [!IMPORTANT]
 > Bir anahtarı yeniden oluşturmak ihtiyacınız varsa [ `service.regen_key` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py).
+
+
+#### <a name="authentication-with-tokens"></a>Belirteçlerle kimlik doğrulama
+
+Bir Web hizmeti için belirteç kimlik doğrulamasını etkinleştirdiğinizde, bir kullanıcının, Web hizmetine erişmek için bir Azure Machine Learning JWT belirteci sağlaması gerekir. 
+
+* Azure Kubernetes hizmetine dağıtım yaparken belirteç kimlik doğrulaması varsayılan olarak devre dışıdır.
+* Azure Container Instances dağıtım yaparken belirteç kimlik doğrulaması desteklenmez.
+
+Belirteç kimlik doğrulamasını denetlemek için, bir `token_auth_enabled` dağıtım oluştururken veya güncelleştirirken parametresini kullanın.
+
+Belirteç kimlik doğrulaması etkinleştirilirse, bir taşıyıcı belirteci almak için `get_token` yöntemini ve bu belirteçlerin süre sonu süresini kullanabilirsiniz:
+
+```python
+token, refresh_by = service.get_tokens()
+print(token)
+```
+
+> [!IMPORTANT]
+> Belirtecin `refresh_by` zamanından sonra yeni bir belirteç istemeniz gerekir. 
 
 ## <a name="request-data"></a>İstek verileri
 

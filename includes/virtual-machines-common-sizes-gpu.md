@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/11/2019
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: 0325fc8cabc43988fb27a307921977b9b487c123
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 402379a99be467e9db7fb692d7d532e9d39a54a6
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68286205"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68700805"
 ---
 GPU iyileştirilmiş VM boyutları, tek veya birden çok NVıDıA GPU ile kullanılabilen özelleştirilmiş sanal makinelerdir. Bu boyutlar, işlem yoğunluğu, grafik yoğun ve görselleştirme iş yükleri için tasarlanmıştır. Bu makalede GPU 'Lar, vCPU 'Lar, veri diskleri ve NIC 'lerin sayısı ve türleri hakkında bilgi sağlanır. Bu gruplandırmadaki her boyut için depolama verimlilik ve ağ bant genişliği de mevcuttur.
 
@@ -33,7 +33,7 @@ NC serisi VM 'Ler [NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/So
 
 | Size | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | GPU | GPU belleği: GiB | Maksimum veri diskleri | En fazla NIC |
 | --- | --- | --- | --- | --- | --- | --- | ---- |
-| Standard_NC6 |6 |56 | 340 | 1\. | 12 | 24 | 1 |
+| Standard_NC6 |6 |56 | 340 | 1\. | 12 | 24 | 1\. |
 | Standard_NC12 |12 |112 | 680 | 2 | 24 | 48 | 2 |
 | Standard_NC24 |24 |224 | 1440 | 4 | 48 | 64 | 4 |
 | Standard_NC24r* |24 |224 | 1440 | 4 | 48 | 64 | 4 |
@@ -56,7 +56,7 @@ NC24rs v2 yapılandırması, sıkı şekilde bağlanmış paralel bilgi işlem i
 > Bu boyut ailesi için, aboneliğinizdeki vCPU (çekirdek) kotası başlangıçta her bölgede 0 olarak ayarlanır. Bu aile için [kullanılabilir bir bölgede](https://azure.microsoft.com/regions/services/) [vCPU kotası artışı isteyin](../articles/azure-supportability/resource-manager-core-quotas-request.md) .
 >
 
-| Size | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | GPU | GPU belleği: GiB | Maksimum veri diskleri | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS/MBps | En fazla NIC |
+| Size | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD): GiB | GPU | GPU belleği: GiB | Maksimum veri diskleri | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS/MBps | En fazla NIC |
 | --- | --- | --- | --- | --- | --- | ---  | ---| --- |
 | Standard_NC6s_v2 | 6 |112 | 736 | 1\. | 16 | 12 | 20000/ 200 | 4 |
 | Standard_NC12s_v2 | 12 |224 | 1474 | 2 | 32 | 24 | 40000/400 | 8 |
@@ -79,9 +79,9 @@ NCv3 serisi VM 'Ler [NVIDIA Tesla V100](https://www.nvidia.com/en-us/data-center
 > Bu boyut ailesi için, aboneliğinizdeki vCPU (çekirdek) kotası başlangıçta her bölgede 0 olarak ayarlanır. Bu aile için [kullanılabilir bir bölgede](https://azure.microsoft.com/regions/services/) [vCPU kotası artışı isteyin](../articles/azure-supportability/resource-manager-core-quotas-request.md) .
 >
 
-| Size | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | GPU | GPU belleği: GiB | Maksimum veri diskleri | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS/MBps | En fazla NIC |
+| Size | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD): GiB | GPU | GPU belleği: GiB | Maksimum veri diskleri | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS/MBps | En fazla NIC |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_NC6s_v3 | 6 |112 | 736 | 1 | 16 | 12 | 20000/200 | 4 |
+| Standard_NC6s_v3 | 6 |112 | 736 | 1\. | 16 | 12 | 20000/200 | 4 |
 | Standard_NC12s_v3 | 12 |224 | 1474 | 2 | 32 | 24 | 40000/400 | 8 |
 | Standard_NC24s_v3 | 24 |448 | 2948 | 4 | 64 | 32 | 80000/800 | 8 | 
 | Standard_NC24rs_v3* |24 |448 | 2948 | 4 | 64 | 32 | 80000/800 | 8 |
@@ -103,9 +103,9 @@ NDv2 serisi sanal makine, HPC, AI ve makine öğrenimi iş yüklerinin ihtiyaçl
 [Önizleme sırasında bu makinelere kaydolun ve erişim kazanın](https://aka.ms/ndv2signup).
 <br>
 
-| Size | Sanal işlemci | GPU | Bellek | NIC'ler (Maks.) | Geçici depolama (SSD) GiB | En çok, veri diskleri | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS/MBps | En yüksek ağ bant genişliği | 
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_ND40s_v2 | 40 | 8 V100 (NVLink) | 672 GiB | 8 | 2948 | 32 | 80000/800 | 24000 Mbps |
+| Size | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD): GiB | GPU | GPU belleği: GiB | Maksimum veri diskleri | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS/MBps | En yüksek ağ bant genişliği | En fazla NIC |
+|---|---|---|---|---|---|---|---|---|---|
+| Standard_ND40s_v2 | 40 | 672 | 2948 | 8 V100 (NVLink) | 16 | 32 | 80000/800 | 24000 Mbps | 8 |
 
 ## <a name="nd-series"></a>ND serisi
 
@@ -142,7 +142,7 @@ NV örneklerindeki her GPU bir KıLAVUZ lisansıyla birlikte gelir. Bu lisans, b
 
 | Size | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | GPU | GPU belleği: GiB | Maksimum veri diskleri | En fazla NIC | Sanal Iş Istasyonları | Sanal uygulamalar |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_NV6 |6 |56 |340 | 1\. | 8 | 24 | 1 | 1\. | 25 |
+| Standard_NV6 |6 |56 |340 | 1\. | 8 | 24 | 1\. | 1\. | 25 |
 | Standard_NV12 |12 |112 |680 | 2 | 16 | 48 | 2 | 2 | 50 |
 | Standard_NV24 |24 |224 |1440 | 4 | 32 | 64 | 4 | 4 | 100 |
 
@@ -160,7 +160,7 @@ NVv3 örneklerinde her GPU bir KıLAVUZ lisansıyla gelir. Bu lisans, bir NV ör
 
 | Size | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | GPU | GPU belleği: GiB | Maksimum veri diskleri | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS/MBps | En fazla NIC | Sanal Iş Istasyonları | Sanal uygulamalar | 
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_NV12s_v3 |12 |112 |320 | 1\. | 8 | 12 | 20000/200 | 4 | 1 | 25 |
+| Standard_NV12s_v3 |12 |112 |320 | 1\. | 8 | 12 | 20000/200 | 4 | 1\. | 25 |
 | Standard_NV24s_v3 |24 |224 |640 | 2 | 16 | 24 | 40000/400 | 8 | 2 | 50 |
 | Standard_NV48s_v3 |48 |448 |1280 | 4 | 32 | 32 | 80000/800 | 8 | 4 | 100 |
 

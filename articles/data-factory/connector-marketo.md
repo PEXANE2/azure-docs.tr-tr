@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: d6d6517a85997265021573b2f9d481c81283c216
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 37634a76b0c8e08d7a4688a7ba3fd913391cd408
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61400466"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726128"
 ---
 # <a name="copy-data-from-marketo-using-azure-data-factory-preview"></a>Azure Data Factory (Önizleme) kullanarak Marketo'dan veri kopyalama
 
@@ -33,7 +33,7 @@ Marketo'dan veri tüm desteklenen havuz veri deposuna kopyalayabilirsiniz. Kayna
 Azure Data Factory bağlantısını etkinleştirmek için yerleşik bir sürücü sağlar, bu nedenle bu bağlayıcıyı kullanarak herhangi bir sürücü el ile yüklemeniz gerekmez.
 
 >[!NOTE]
->Bu Marketo bağlayıcı Marketo REST API temelinde oluşturulmuştur. Marketo olduğuna dikkat [eşzamanlı istek sınırı](https://developers.marketo.com/rest-api/) hizmet tarafındaki. Hataları belirten ulaşırsanız "REST API kullanma girişimi sırasında hata oluştu: En fazla oranı sınırı '100' ile '20' aşıldı saniye (606) "veya" REST API kullanma girişimi sırasında hata oluştu: Eş zamanlı erişim (615) ulaşıldı. '10' limit ", hizmete istek sayısını azaltmak için eşzamanlı kopyalama etkinlik çalıştırmalarını azaltmak için göz önünde bulundurun.
+>Bu Marketo bağlayıcı Marketo REST API temelinde oluşturulmuştur. Marketo olduğuna dikkat [eşzamanlı istek sınırı](https://developers.marketo.com/rest-api/) hizmet tarafındaki. Hata durumunda "REST API kullanmaya çalışırken hata oluştu: ' 100 ' en yüksek hız sınırı ' 20 ' saniye (606) "veya" REST API kullanılmaya çalışılırken hata ile aşıldı: ' 10 ' eşzamanlı erişim sınırına ulaşıldı (615) ", hizmete yönelik isteklerin sayısını azaltmak için eşzamanlı kopyalama etkinliği çalıştırmalarını azaltmayı göz önünde bulundurun.
 
 ## <a name="getting-started"></a>Başlarken
 
@@ -47,7 +47,7 @@ Marketo bağlı hizmeti için aşağıdaki özellikleri destekler:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Type özelliği ayarlanmalıdır: **Marketo** | Evet |
+| türü | Type özelliği şu şekilde ayarlanmalıdır: **Marketo** | Evet |
 | endpoint | Marketo sunucu uç noktası. (yani 123-ABC-321.mktorest.com)  | Evet |
 | clientId | İstemci kimliği Marketo hizmetinizin.  | Evet |
 | clientSecret | Marketo hizmetinizin istemci gizli anahtarı. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Evet |
@@ -82,7 +82,7 @@ Marketo'dan veri kopyalamak için dataset öğesinin type özelliği ayarlamak *
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Dataset öğesinin type özelliği ayarlanmalıdır: **MarketoObject** | Evet |
+| türü | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **Menkul ToObject** | Evet |
 | tableName | Tablonun adı. | Hayır (etkinlik kaynağı "sorgu" belirtilmişse) |
 
 **Örnek**
@@ -92,11 +92,12 @@ Marketo'dan veri kopyalamak için dataset öğesinin type özelliği ayarlamak *
     "name": "MarketoDataset",
     "properties": {
         "type": "MarketoObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Marketo linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -111,7 +112,7 @@ Marketo'dan veri kopyalamak için kopyalama etkinliği için kaynak türünü ay
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağı öğesinin type özelliği ayarlanmalıdır: **MarketoSource** | Evet |
+| türü | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **Pazartokaynak** | Evet |
 | query | Verileri okumak için özel bir SQL sorgusu kullanın. Örneğin: `"SELECT * FROM Activitiy_Types"`. | Yok (veri kümesinde "TableName" değeri belirtilmişse) |
 
 **Örnek:**

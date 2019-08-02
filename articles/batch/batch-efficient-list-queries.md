@@ -16,10 +16,10 @@ ms.date: 12/07/2018
 ms.author: lahugh
 ms.custom: seodec18
 ms.openlocfilehash: 3bf9ba52bc4071755918b842da477384dcd38973
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68323499"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>Toplu Işlem kaynaklarını etkili bir şekilde listelemek için sorgular oluşturma
@@ -29,7 +29,7 @@ Burada, [Batch .net][api_net] kitaplığı ile işleri, görevleri, işlem düğ
 Neredeyse tüm Batch uygulamalarının, genellikle düzenli aralıklarla Batch hizmetini sorgulayan bir tür izleme veya başka işlem gerçekleştirmesi gerekir. Örneğin, bir işte kalan sıraya alınmış görevler olup olmadığını anlamak için, işteki her görevde veri almanız gerekir. Havuzunuzdaki düğümlerin durumunu öğrenmek için, havuzdaki her düğümde veri almanız gerekir. Bu makalede, bu tür sorguların en verimli şekilde nasıl yürütüleceği açıklanmaktadır.
 
 > [!NOTE]
-> Batch hizmeti, bir işteki görevleri saymaya ilişkin genel senaryolar ve Batch havuzundaki işlem düğümlerini saymak için özel API desteği sağlar. Bunlar için bir liste sorgusu kullanmak yerine, [görev sayısını][rest_get_task_counts] and [List Pool Node Counts][rest_get_node_counts] Al işlemlerini çağırabilirsiniz. Bu işlemler liste sorgusundan daha verimlidir, ancak daha sınırlı bilgi döndürür. Bkz. [görevleri ve işlem düğümlerini duruma göre sayma](batch-get-resource-counts.md). 
+> Batch hizmeti, bir işteki görevleri saymaya ilişkin genel senaryolar ve Batch havuzundaki işlem düğümlerini saymak için özel API desteği sağlar. Bunlar için bir liste sorgusu kullanmak yerine, [görev sayısını Al][rest_get_task_counts] ve [Havuz düğüm sayılarını Listele][rest_get_node_counts] işlemlerini çağırabilirsiniz. Bu işlemler liste sorgusundan daha verimlidir, ancak daha sınırlı bilgi döndürür. Bkz. [görevleri ve işlem düğümlerini duruma göre sayma](batch-get-resource-counts.md). 
 
 
 ## <a name="meet-the-detaillevel"></a>Ayrıntı düzeyini karşılayın
@@ -43,7 +43,7 @@ IPagedEnumerable<CloudTask> allTasks =
     batchClient.JobOperations.ListTasks("job-001");
 ```
 
-Bununla birlikte, sorgunuza bir "ayrıntı düzeyi" uygulayarak daha verimli bir liste sorgusu gerçekleştirebilirsiniz. Bunu bir [odatadetaillevel][odata] object to the [JobOperations.ListTasks][net_list_tasks] yöntemi sağlayarak yapabilirsiniz. Bu kod parçacığı yalnızca, tamamlanan görevlerin KIMLIK, komut satırı ve işlem düğümü bilgi özelliklerini döndürür:
+Bununla birlikte, sorgunuza bir "ayrıntı düzeyi" uygulayarak daha verimli bir liste sorgusu gerçekleştirebilirsiniz. Bunu, [JobOperations. ListTasks][net_list_tasks] yöntemine bir [Odatadetaillevel][odata] nesnesi sağlayarak yapabilirsiniz. Bu kod parçacığı yalnızca, tamamlanan görevlerin KIMLIK, komut satırı ve işlem düğümü bilgi özelliklerini döndürür:
 
 ```csharp
 // Configure an ODATADetailLevel specifying a subset of tasks and
@@ -65,7 +65,7 @@ Bu örnek senaryoda, işte binlerce görev varsa, ikinci sorgudaki sonuçlar gen
 > 
 
 ## <a name="filter-select-and-expand"></a>Filtrele, seç ve Genişlet
-[Batch .net][api_net] and [Batch REST][api_rest] API 'leri, bir listede döndürülen öğelerin sayısını ve her biri için döndürülen bilgi miktarını azaltma yeteneği sağlar. Bunu, liste sorguları gerçekleştirirken **filtre**, **seçme**ve **dizeleri Genişlet** ' i belirterek yapabilirsiniz.
+[Batch .net][api_net] ve [Batch Rest][api_rest] API 'leri, bir listede döndürülen öğelerin sayısını ve her biri için döndürülen bilgi miktarını azaltmaya olanak sağlar. Bunu, liste sorguları gerçekleştirirken **filtre**, **seçme**ve **dizeleri Genişlet** ' i belirterek yapabilirsiniz.
 
 ### <a name="filter"></a>Filtre
 Filtre dizesi döndürülen öğelerin sayısını azaltan bir ifadedir. Örneğin, yalnızca bir iş için çalışan görevleri listeleyin veya yalnızca görevleri çalıştırmaya hazırlamış olan işlem düğümlerini listeleyin.
@@ -89,12 +89,12 @@ Expand dize, belirli bilgileri almak için gerekli olan API çağrılarının sa
 * Bu örnek dize genişletme, listedeki her öğe için İstatistik bilgilerinin döndürülmesini belirtir: `stats`.
 
 > [!NOTE]
-> Üç sorgu dizesi türünden birini oluştururken (Filter, Select ve Expand), özellik adlarının ve durumunun REST API öğelerinin karşılıklarıyla eşleştiğinden emin olmanız gerekir. Örneğin, .NET [cloudtask](/dotnet/api/microsoft.azure.batch.cloudtask) sınıfıyla çalışırken, .NET özelliği [Cloudtask. State](/dotnet/api/microsoft.azure.batch.cloudtask.state#Microsoft_Azure_Batch_CloudTask_State)olsa bile durum yerine  **State** belirtmeniz gerekir. .NET ve REST API 'Ler arasındaki özellik eşlemeleri için aşağıdaki tablolara bakın.
+> Üç sorgu dizesi türünden birini oluştururken (Filter, Select ve Expand), özellik adlarının ve durumunun REST API öğelerinin karşılıklarıyla eşleştiğinden emin olmanız gerekir. Örneğin, .NET [cloudtask](/dotnet/api/microsoft.azure.batch.cloudtask) sınıfıyla çalışırken, .NET özelliği [Cloudtask. State](/dotnet/api/microsoft.azure.batch.cloudtask.state#Microsoft_Azure_Batch_CloudTask_State)olsa bile durum yerine **State** belirtmeniz gerekir. .NET ve REST API 'Ler arasındaki özellik eşlemeleri için aşağıdaki tablolara bakın.
 > 
 > 
 
 ### <a name="rules-for-filter-select-and-expand-strings"></a>Filter, Select ve Expand dizeleri için kurallar
-* Filtredeki Özellikler adları, Select ve Genişlet dizeleri [toplu iş geri kalanında][api_rest] API--even when you use [Batch .NET][api_net] veya diğer Batch SDK 'larından birinde olduğu gibi görünmelidir.
+* Filtre içindeki Özellikler adları, Select ve Genişlet dizeleri Batch [.net][api_net] veya diğer Batch SDK 'larından birini kullandığınızda bile, [toplu Rest][api_rest] API 'sinde olduğu gibi görünmelidir.
 * Tüm özellik adları büyük/küçük harfe duyarlıdır, ancak özellik değerleri büyük/küçük harfe duyarsızdır.
 * Tarih/saat dizeleri iki biçimden biri olabilir ve önünde `DateTime`olmalıdır.
   
@@ -104,11 +104,11 @@ Expand dize, belirli bilgileri almak için gerekli olan API çağrılarının sa
 * Geçersiz bir özellik veya işleç belirtilirse, bir `400 (Bad Request)` hata ortaya kaydedilir.
 
 ## <a name="efficient-querying-in-batch-net"></a>Batch .NET 'te verimli sorgulama
-[Batch .net][api_net] API, the [ODATADetailLevel][odata] sınıfı içinde filtre sağlamak için kullanılır, öğesini seçin ve dizeleri listelemek için dizeleri genişletin. ODataDetailLevel sınıfı, oluşturucuda belirtime üç genel dize özelliklerine sahiptir veya doğrudan nesne üzerinde ayarlanır. Daha sonra ODataDetailLevel nesnesini [Listpools][net_list_pools], [ListJobs][net_list_jobs], and [ListTasks][net_list_tasks]gibi çeşitli liste işlemlerine bir parametre olarak geçirebilirsiniz.
+[Batch .net][api_net] API 'si Içinde, [Odatadetaillevel][odata] sınıfı filtre sağlamak için kullanılır, seçme ve dizeleri listelemek için dizeleri genişletme. ODataDetailLevel sınıfı, oluşturucuda belirtime üç genel dize özelliklerine sahiptir veya doğrudan nesne üzerinde ayarlanır. Ardından, ODataDetailLevel nesnesini [Listpools][net_list_pools], [ListJobs][net_list_jobs]ve [ListTasks][net_list_tasks]gibi çeşitli liste işlemlerine bir parametre olarak geçitirsiniz.
 
-* [ODATADetailLevel][odata].[FilterClause][odata_filter]: Döndürülen öğelerin sayısını sınırlayın.
-* [ODATADetailLevel][odata].[SelectClause][odata_select]: Hangi özellik değerlerinin her öğe ile döndürüleceğini belirtin.
-* [ODATADetailLevel][odata].[ExpandClause][odata_expand]: Her öğe için ayrı çağrılar yerine tek bir API çağrısındaki tüm öğeler için veri alın.
+* [Odatadetaillevel][odata]. [FilterClause][odata_filter]: Döndürülen öğelerin sayısını sınırlayın.
+* [Odatadetaillevel][odata]. [Selectclause][odata_select]: Hangi özellik değerlerinin her öğe ile döndürüleceğini belirtin.
+* [Odatadetaillevel][odata]. [Expandclause][odata_expand]: Her öğe için ayrı çağrılar yerine tek bir API çağrısındaki tüm öğeler için veri alın.
 
 Aşağıdaki kod parçacığı, Batch hizmetini belirli bir havuz kümesinin istatistikleri için etkin bir şekilde sorgulamak üzere Batch .NET API 'sini kullanır. Bu senaryoda Batch kullanıcısının hem test hem de üretim havuzları vardır. Test havuzu kimlikleri "test" önekini alır ve üretim havuzu kimlikleri "prod" önekini alır. Kod parçacığında, *Mybatchclient* , [batchclient](/dotnet/api/microsoft.azure.batch.batchclient) sınıfının düzgün başlatılmış bir örneğidir.
 
@@ -177,7 +177,7 @@ Filtre içindeki Özellik adları, Select ve *Genişlet dizeleri,* hem ad hem de
 | [CloudTask][net_task] |[Bir görev hakkında bilgi edinme][rest_get_task] |
 
 ## <a name="example-construct-a-filter-string"></a>Örnek: bir filtre dizesi oluşturun
-[Odatadetaillevel. FilterClause][odata_filter] , consult the table above under "Mappings for filter strings" to find the REST API documentation page that corresponds to the list operation that you wish to perform. You will find the filterable properties and their supported operators in the first multirow table on that page. If you wish to retrieve all tasks whose exit code was nonzero, for example, this row on [List the tasks associated with a job][rest_list_tasks] için bir filtre dizesi oluşturduğunuzda, uygulanabilir özellik dizesini ve izin verilen işleçleri belirtir:
+[Odatadetaillevel. FilterClause][odata_filter]için bir filtre dizesi oluşturduğunuzda, gerçekleştirmek istediğiniz liste işlemine karşılık gelen REST API belge sayfasını bulmak için yukarıdaki "Filtre dizeleri için eşlemeler" altındaki tabloya başvurun. Filtrelenebilir özellikleri ve bu sayfadaki ilk multirow tablosunda desteklenen işleçlerini bulacaksınız. Çıkış kodu sıfır olmayan tüm görevleri almak isterseniz, örneğin, [bir işle ilişkili görevleri listede][rest_list_tasks] bu satır ilgili özellik dizesini ve izin verilen işleçleri belirler:
 
 | Özellik | İzin verilen işlemler | Type |
 |:--- |:--- |:--- |
@@ -188,7 +188,7 @@ Bu nedenle, sıfır dışında çıkış koduna sahip tüm görevleri listelemek
 `(executionInfo/exitCode lt 0) or (executionInfo/exitCode gt 0)`
 
 ## <a name="example-construct-a-select-string"></a>Örnek: Select String oluşturun
-[Odatadetaillevel. SelectClause][odata_select], consult the table above under "Mappings for select strings" and navigate to the REST API page that corresponds to the type of entity that you are listing. You will find the selectable properties and their supported operators in the first multirow table on that page. If you wish to retrieve only the ID and command line for each task in a list, for example, you will find these rows in the applicable table on [Get information about a task][rest_get_task]oluşturmak için:
+[Odatadetaillevel. SelectClause][odata_select]oluşturmak için, "dizeleri seç için eşlemeler" altındaki tabloya bakın ve listelerken varlık türüne karşılık gelen REST API sayfasına gidin. Seçilebilir özellikleri ve bu sayfadaki ilk multirow tablosunda desteklenen işleçlerini bulacaksınız. Bir listedeki her bir görev için yalnızca KIMLIĞI ve komut satırını almak istiyorsanız, [bir görevle ilgili bilgi edinmek][rest_get_task]için bu satırları uygulanabilir tabloda bulabilirsiniz:
 
 | Özellik | Type | Notlar |
 |:--- |:--- |:--- |
@@ -201,7 +201,7 @@ Yalnızca listelenen her görevle ilgili KIMLIĞI ve komut satırını dahil etm
 
 ## <a name="code-samples"></a>Kod örnekleri
 ### <a name="efficient-list-queries-code-sample"></a>Etkili liste sorguları kod örneği
-[Idientlistqueries][efficient_query_sample] sample project on GitHub to see how efficient list querying can affect performance in an application. This C# console application creates and adds a large number of tasks to a job. Then, it makes multiple calls to the [JobOperations.ListTasks][net_list_tasks] metodunu inceleyin ve döndürülecek veri miktarını değiştirmek için farklı özellik değerleriyle yapılandırılan [odatadetaillevel][OData] nesnelerini geçirir. Aşağıdakine benzer bir çıktı üretir:
+Etkili liste sorgulama 'nın bir uygulamadaki performansı nasıl etkileyebileceğini görmek için GitHub 'daki [verimlilik Entlistqueries][efficient_query_sample] örnek projesine göz atın. Bu C# konsol uygulaması, bir işe çok sayıda görev oluşturur ve ekler. Daha sonra, [JobOperations. ListTasks][net_list_tasks] yöntemine birden çok çağrı yapar ve döndürülecek veri miktarını değiştirmek için farklı özellik değerleriyle yapılandırılan [Odatadetaillevel][odata] nesnelerini geçirir. Aşağıdakine benzer bir çıktı üretir:
 
 ```
 Adding 5000 tasks to job jobEffQuery...
@@ -220,7 +220,7 @@ Sample complete, hit ENTER to continue...
 Geçen zamanlarda gösterildiği gibi, özellikleri ve döndürülen öğelerin sayısını sınırlayarak sorgu yanıt sürelerini önemli ölçüde düşürebilirsiniz. Bu ve diğer örnek projeleri GitHub 'daki [Azure-Batch-Samples][github_samples] deposunda bulabilirsiniz.
 
 ### <a name="batchmetrics-library-and-code-sample"></a>Batchölçümler kitaplığı ve kod örneği
-Yukarıdaki verimlilientlistqueries kod örneğine ek olarak, [batchölçümlerini][batch_metrics] project in the [azure-batch-samples][github_samples] GitHub deposunu bulabilirsiniz. Batchölçümler örnek projesi, Batch API 'SI kullanılarak Azure Batch iş ilerlemesini verimli bir şekilde izlemeyi gösterir.
+Yukarıdaki Verimlilientlistqueries kod örneğine ek olarak, [Azure-Batch-Samples][github_samples] GitHub deposunda [batchölçümler][batch_metrics] projesini bulabilirsiniz. Batchölçümler örnek projesi, Batch API 'SI kullanılarak Azure Batch iş ilerlemesini verimli bir şekilde izlemeyi gösterir.
 
 [Batchölçümler][batch_metrics] örneği, kendi projelerinizle birleştirebileceğiniz bir .NET sınıf kitaplığı projesi ve kitaplığın kullanımını sağlamak ve göstermek için basit bir komut satırı programı içerir.
 

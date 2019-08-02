@@ -1,6 +1,6 @@
 ---
-title: Şirket içinde Azure AD parola koruması SSS - Azure Active Directory
-description: Şirket içi Azure AD parola koruması ile ilgili SSS
+title: Şirket içi Azure AD parola koruması hakkında SSS-Azure Active Directory
+description: Şirket içi Azure AD parola koruması hakkında SSS
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,129 +11,135 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b4879093ed80a554219b053cc5a2bc895126725
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 9f1f2e06eb6b5f8d402515ff1c07a4163174495d
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67702885"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68666353"
 ---
-# <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Azure AD parola koruması hakkında sık sorulan sorular şirket içinde
+# <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Şirket içi Azure AD parola koruması-sık sorulan sorular
+
+Bu bölümde, Azure AD parola koruması hakkında sık sorulan birçok soruya yanıtlar verilmektedir.
 
 ## <a name="general-questions"></a>Genel sorular
 
-**S: Hangi Kılavuzu kullanıcıların güvenli bir parola seçin nasıl verilmesi gerekir?**
+**S: Güvenli parola seçme konusunda kullanıcılara hangi yönergeler verilmelidir?**
 
-Bu konu Microsoft'un geçerli yönergeler aşağıdaki bağlantıda bulunabilir:
+Microsoft 'un bu konuyla ilgili geçerli Kılavuzu aşağıdaki bağlantıda bulunabilir:
 
-[Microsoft parolası Kılavuzu](https://www.microsoft.com/research/publication/password-guidance)
+[Microsoft parola Kılavuzu](https://www.microsoft.com/research/publication/password-guidance)
 
-**S: Şirket içi Azure AD parola koruması genel olmayan bulutlarda desteklenir mi?**
+**S: Şirket içi Azure AD parola koruması, genel olmayan bulutlarda destekleniyor mu?**
 
-Hayır - şirket içi Azure AD parola koruması yalnızca genel bulut ortamında desteklenir. Tarih için genel olmayan bulut kullanılabilirlik duyurdu.
+Şirket içi Azure AD parola koruması yalnızca genel bulutta desteklenir. Genel olmayan bulut kullanılabilirliği için hiçbir tarih duyurulmamıştır.
 
-**S: Nasıl ben Azure AD parola koruması avantajları bir şirket içi kullanıcılar alt kümesine uygulayabilir miyim?**
+**S: Azure AD parola koruma avantajlarını şirket içi kullanıcılarınızın bir alt kümesine nasıl uygulayabilirim?**
 
-Desteklenmiyor. Dağıtılan ve etkinleştirilen sonra Azure AD parola koruması ayrım yoktur - tüm kullanıcılar eşit güvenlik avantajlardan yararlanabilir.
+Desteklenmiyor. Dağıtım ve etkinleştirildikten sonra Azure AD parola koruması, tüm kullanıcılar eşit güvenlik avantajları elde etmez.
 
-**S: Parola değiştirme ve bir parola ayarlama (veya Sıfırla) arasındaki fark nedir?**
+**S: Parola değiştirme ve parola ayarlama (veya sıfırlama) arasındaki fark nedir?**
 
-Parola kullanıcı yeni bir parola eski parola bilgisine sahip oldukları kanıtlama sonra seçtiğinde farklıdır. Örneğin, bir kullanıcı Windows günlüğe kaydeder ve sonra yeni bir parola seçmesi istenir ne olur budur.
+Parola değişikliği, bir Kullanıcı eski parola hakkında bilgi sahibi olduktan sonra yeni bir parola seçtiğinde. Örneğin, bir Kullanıcı Windows 'da oturum açtığında ve ardından yeni bir parola seçmesi istendiğinde bu durum gerçekleşir.
 
-Yönetici bir hesap parolası ile yeni bir parola, örneğin Active Directory Kullanıcıları ve Bilgisayarları yönetim aracını kullanarak değiştirir (bazen bir parola sıfırlama olarak adlandırılır) bir parola ayarlama andır. Bu işlem bir yüksek düzeydeki ayrıcalıkla (genellikle etki alanı yöneticisi) gerektirir ve genellikle işlemi yapan kişi eski parola bilgilere sahip değildir. Yardım Masası senaryoları genellikle bunu örneği için bir kullanıcı parolasını unutmuş Yardım. Ayrıca, yeni bir kullanıcı hesabı için bir parola ile ilk kez oluşturulduğunda olayları parola ayarlama görürsünüz.
+Bir parola kümesi (bazen parola sıfırlama olarak adlandırılır), bir yönetici bir hesaptaki parolayı yeni bir parolayla Değiştir, örneğin Active Directory Kullanıcılar ve bilgisayarlar Yönetim Aracı ' nı kullanmaktır. Bu işlem, yüksek düzeyde ayrıcalık (genellikle etki alanı Yöneticisi) gerektirir ve işlemi gerçekleştiren kişi genellikle eski parola hakkında bilgi sahibi değildir. Yardım Masası senaryoları genellikle bu işlemi, parolasını unuttueden bir kullanıcıyı öğrenerek, örneğin. Ayrıca, yeni bir kullanıcı hesabı bir parola ile ilk kez oluşturulduğunda parola ayarlama olaylarını da görürsünüz.
 
-Parola doğrulama ilkesinin bir parola değişikliği veya yapıldığını bağımsız olarak aynı şekilde davranır. Azure AD parola koruması DC Aracı hizmeti bir parola değişikliği olmadığını bildirmek için farklı olayları günlüğe kaydetmez veya set işlemi yapılmadı.  Bkz: [izleme ve günlüğe kaydetme Azure AD parola koruması](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-monitor).
+Parola doğrulama ilkesi, parola değiştirme veya ayarlama işleminin yapılıp yapılmadığına bakılmaksızın aynı şekilde davranır. Azure AD parola koruması DC Aracısı hizmeti, parola değiştirme veya ayarlama işleminin yapılıp yapılmadığını bildirmek için farklı olayları günlüğe kaydeder.  Bkz. [Azure AD parola koruması izleme ve günlüğe kaydetme](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-monitor).
 
-**S: Neden zayıf bir parola ayarlamaya çalışırken oturum yinelenen parola ret olayları Active Directory Kullanıcıları ve Bilgisayarları yönetim ek bileşenini kullanıyor musunuz?**
+**S: Active Directory Kullanıcıları ve bilgisayarları Yönetimi ek bileşenini kullanarak zayıf bir parola ayarlamaya çalışırken neden yinelenen parola reddetme olayları günlüğe kaydedilir?**
 
-İlk Active Directory Kullanıcıları ve Bilgisayarları yönetim ek bileşenini Kerberos protokolünü kullanarak yeni parola ayarlamayı deneyecek. Başarısızlık durumunda ek bileşenini (kullanılan belirli protokoller önemli değildir) eski bir (SAM RPC) protokolü kullanarak parolayı ayarlama girişimi ikinci bir hale getirir. Yeni parola Azure AD parola koruması tarafından zayıf kabul ediliyorsa, bu iki parola sıfırlama ret olayların günlüğe kaydedilmesini kümelerinde neden olur.
+Active Directory Kullanıcıları ve Bilgisayarları yönetim ek bileşeni, önce Kerberos protokolünü kullanarak yeni parolayı ayarlamaya çalışır. Hata durumunda, ek bileşen eski (SAM RPC) protokolü kullanarak parolayı ayarlamaya yönelik ikinci bir deneme yapar (kullanılan protokoller önemli değildir). Yeni parola Azure AD parola koruması tarafından zayıf kabul edildiğinde, bu iki parola sıfırlama reddetme olayı kümesine neden olur.
 
-**S: Azure AD parola koruması parola-filtre tabanlı diğer ürünleri ile yan yana yüklenecek destekleniyor mu?**
+**S: Azure AD parola koruma parolası doğrulama olayları neden boş bir kullanıcı adıyla günlüğe kaydediliyor?**
 
-Evet. Birden çok kayıtlı parola filtresi DLL'leri çekirdek Windows özelliği için destek ve Azure AD parola koruması özgüdür. Bir parola kabul edilmeden önce tüm kayıtlı parola filtresi DLL'leri kabul etmesi gerekir.
+Active Directory, örneğin [NetValidatePasswordPolicy](https://docs.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netvalidatepasswordpolicy) API 'sini kullanarak etki alanının geçerli parola karmaşıklığı gereksinimlerini geçirmesinin başarılı olup olmadığını görmek için bir parolayı test etme özelliğini destekler. Bu şekilde bir parola doğrulandığında, test, Azure AD parola koruması gibi parola filtresi DLL tabanlı ürünlerin doğrulanmasını de içerir, ancak belirli bir parola filtresi dll 'sine geçirilen kullanıcı adları boş olur. Bu senaryoda, Azure AD parola koruması Şu anda etkin olan parola ilkesini kullanarak parolayı doğrular ve sonucu yakalamak için bir olay günlüğü iletisi verir, ancak olay günlüğü iletisinde boş Kullanıcı adı alanları olacaktır.
 
-**S: Nasıl dağıtmak ve Azure'ı kullanmadan my Active Directory ortamında Azure AD parola koruması yapılandırma?**
+**S: Azure AD parola korumasını diğer parola filtresi tabanlı ürünlerle yan yana yüklemek mi istiyorsunuz?**
 
-Desteklenmiyor. Azure AD parola koruması bir şirket içi Active Directory ortamına Genişletilmekte olan destekleyen bir Azure özelliğidir.
+Evet. Birden çok kayıtlı parola filtresi dll 'leri için destek, Azure AD parola korumasına özgü olmayan bir temel Windows özelliğidir. Bir parola kabul edilmeden önce tüm kayıtlı parola filtresi dll 'leri kabul etmelidir.
 
-**S: Active Directory düzeyinde bir ilke içeriğini nasıl değişiklik yapabilirsiniz?**
+**S: Azure AD parola korumasını Azure 'ı kullanmadan Active Directory ortammda nasıl dağıtırım ve yapılandırabilirim?**
 
-Desteklenmiyor. İlke, yalnızca Azure AD Yönetim Portalı kullanılarak yönetilebilir. Ayrıca önceki soruya bakın.
+Desteklenmiyor. Azure AD parola koruması, şirket içi Active Directory ortamına genişletilmesini destekleyen bir Azure özelliğidir.
 
-**S: DFSR, sysvol çoğaltma için neden gereklidir?**
+**S: Active Directory düzeyinde ilkenin içeriğini nasıl değiştirebilirim?**
 
-FRS (DFSR için öncül teknolojisi) birçok bilinen sorunlar ve Windows Server Active Directory daha yeni sürümlerinde tamamen desteklenmez. Azure AD parola koruması sıfır test etki alanlarında FRS yapılandırılmış gerçekleştirilir.
+Desteklenmiyor. İlke yalnızca Azure AD Yönetim Portalı kullanılarak yönetilebilir. Ayrıca önceki soruya bakın.
+
+**S: SYSVOL çoğaltma için neden DFSR gereklidir?**
+
+FRS (DFSR 'nin öncül teknolojisi) birçok bilinen soruna sahiptir ve Windows Server Active Directory 'in daha yeni sürümlerinde tümüyle desteklenmez. Azure AD parola korumasının sıfır testi, FRS tarafından yapılandırılan etki alanlarında yapılır.
 
 Daha fazla bilgi için lütfen aşağıdaki makalelere bakın:
 
-[Durum taşıma sysvol çoğaltması DFSR için](https://blogs.technet.microsoft.com/askds/2010/04/22/the-case-for-migrating-sysvol-to-dfsr)
+[SYSVOL çoğaltmasını DFSR 'ye geçirme durumu](https://blogs.technet.microsoft.com/askds/2010/04/22/the-case-for-migrating-sysvol-to-dfsr)
 
-[Sonu Nigh için FRS](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs)
+[Son, FRS için Nigh](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs)
 
-**S: Etki alanı sysvol paylaşımı özellik ne kadar disk alanı gerektiriyor?**
+**S: Özellik, etki alanı SYSVOL paylaşımında ne kadar disk alanı gerektiriyor?**
 
-Sayısı ve Microsoft global Engellenenler listesi ve Kiracı başına özel liste yanı sıra şifreleme yükü yasaklı belirteçlerin uzunluğu gibi etkenlere bağlı olduğundan, kesin alan kullanımının değişir. Bu listeler, içeriğini, gelecekte büyümeye olasıdır. İle unutmayın, makul bir olasılığın özellik en az beş (5) alanın megabayt olarak miktarını etki alanı sysvol paylaşımına gerektiğini olmasıdır.
+Kesin alan kullanımı, Microsoft Global yasaklanmış listesindeki yasaklanmış belirteçlerin sayısı ve uzunluğu, kiracı başına özel liste ve şifreleme ek yükü gibi etkenlere bağlı olduğundan farklılık gösterir. Bu listelerin içeriği gelecekte büyümek için büyük olasılıkla. Göz önünde bulundurularak, özelliğin etki alanı SYSVOL paylaşımında en az beş (5) megabayt alana ihtiyacı olacak şekilde makul bir beklentidir.
 
-**S: Neden yüklemek veya DC Aracısı yazılımını yükseltmek için bir yeniden başlatma gerekiyor?**
+**S: DC Aracısı yazılımını yüklemek veya yükseltmek için neden yeniden başlatma gerekiyor?**
 
-Bu gereksinim, Windows davranışı core tarafından neden olur.
+Bu gereksinim, çekirdek Windows davranışının oluşmasına neden olur.
 
-**S: Belirli bir proxy sunucuyu kullanmak için bir DC aracısını yapılandırmak için herhangi bir yolu var mı?**
+**S: Belirli bir proxy sunucusunu kullanmak için DC aracısını yapılandırmak için herhangi bir yol var mı?**
 
-Hayır. Proxy sunucusu durum bilgisiz olduğundan, hangi belirli bir proxy sunucusu kullanılan önemli değildir.
+Hayır. Proxy sunucusu durum bilgisiz olduğundan, belirli bir proxy sunucusunun kullanıldığı önemli değildir.
 
-**S: Diğer hizmetler gibi Azure AD Connect ile yan yana Azure AD parola koruması Proxy Hizmeti dağıtmak mudur?**
+**S: Azure AD parola koruma proxy hizmetini Azure AD Connect gibi diğer hizmetlerle yan yana dağıtmayı sorunsuz mı?**
 
-Evet. Azure AD parola koruması Proxy Hizmeti ve Azure AD Connect hiçbir zaman doğrudan birbiriyle çelişen.
+Evet. Azure AD parola koruma proxy hizmeti ve Azure AD Connect hiçbir şekilde doğrudan çakışmalıdır.
 
-**S: Hangi sırayla proxy'leri ve DC aracıları yüklü ve kayıtlı?**
+**S: DC aracıları ve proxy 'ler hangi sırada yüklenir ve kaydedilir?**
 
-Bir Proxy Aracısı yüklemesi, DC aracı yüklemesi, orman kayıt ve kayıt Proxy sıralama desteklenir.
+Proxy aracısı yüklemesi, DC Aracısı yüklemesi, orman kaydı ve proxy kaydı için herhangi bir sıralama desteklenir.
 
-**S: Ben öğesine dağıtılması nedeniyle bu özellik, my etki alanı denetleyicilerinde isabet performans endişe olması gerekiyor mu?**
+**S: Bu özelliği dağıtmaktan etki alanı denetleyicilerimin performans isabetinden endişe almam gerekir mi?**
 
-Azure AD parola koruması DC Aracı hizmeti sağlıklı bir Active Directory dağıtımda mevcut etki alanı denetleyicisi performansını önemli ölçüde etkisi olmaması gerekir.
+Azure AD parola koruması DC Aracısı hizmeti, mevcut bir sağlıklı Active Directory dağıtımında etki alanı denetleyicisi performansını önemli ölçüde etkilememelidir.
 
-Çoğu Active Directory dağıtımları parola değişikliği küçük bir kısmını herhangi belirli bir etki alanı denetleyicisinde genel iş yükü işlemlerdir. Örneğin, 10000 kullanıcı hesapları içeren bir Active Directory etki alanı ve 30 gün olarak ayarlanmış bir MaxPasswordAge ilke düşünün. Ortalama olarak, bu etki alanı 10000 30 görürsünüz ~ 333 parola değiştirme işlemleri = her gün işlemleri tek bir etki alanı denetleyicisi için küçük bir sayıdır. Olası bir kötü durum senaryosunda göz önünde bulundurun: Bu ~ parola değişiklikleri tek bir DC üzerinde yapılan tek bir saatten fazla 333 varsayalım. Örneğin, çok sayıda çalışan tüm Pazartesi sabahı çalışmaya geldiğinde bu senaryo ortaya çıkabilir. Hatta durumda hala ~333/60 dakikalarda bekliyoruz, yeniden önemli bir yük olmayan dakika başına altı parola değişikliklerini =.
+Çoğu Active Directory dağıtım parolası değiştirme işlemleri, belirli bir etki alanı denetleyicisindeki genel iş yükünün küçük bir oransıdır. Örnek olarak, 10000 Kullanıcı hesabı ve bir Maxpasswordadge ilkesi içeren Active Directory bir etki alanını 30 gün olarak düşünün. Ortalama olarak, bu etki alanı, tek bir etki alanı denetleyicisi için çok az sayıda işlem olan her gün 10000/30 = ~ bir parola değiştirme işlemi görür. Olası bir en kötü durum senaryosunu göz önünde bulundurun: tek bir DC 'de ~ 333 parola değişikliklerinin tek bir saat içinde yapıldığını varsayalım. Örneğin, bu senaryo birçok çalışanın bir Pazartesi sabah günü üzerinde çalışması halinde gerçekleşebilir. Bu durumda bile, hala önemli bir yük olmayan ~ 333/60 dakika = altı parola değişikliğine bakıyoruz.
 
-Geçerli etki alanı denetleyicilerinizin zaten performans sınırlı düzeyde (örneğin, CPU, disk alanı, disk g/ç vb. göre kullanıma maxed) çalıştırıyorsanız, ancak bu ek etki alanı denetleyicilerini ekleyin veya önce kullanılabilir disk alanı genişletmek için önerilir Bu özellik dağıtılıyor. Ayrıca bkz. Yukarıdaki sysvol disk alanı kullanımı hakkında soru üzerinde.
+Ancak, geçerli etki alanı denetleyicileriniz zaten performans sınırlı düzeylerde çalışıyorsa (örneğin, CPU, disk alanı, disk g/ç gibi), daha önce ek etki alanı denetleyicileri eklemeniz veya kullanılabilir disk alanını genişletmeniz önerilir Bu özellik dağıtılıyor. Yukarıdaki SYSVOL disk alanı kullanımı hakkında yukarıdaki soruya de bakın.
 
-**S: Azure AD parola koruması yalnızca birkaç DCs etki alanım içinde test istiyorsunuz. Bu kullanıcı parolası değiştirme işlemleri bu belirli DC'leri kullanmaya zorlamak mümkün mü?**
+**S: Azure AD parola korumasını etki alanım 'da yalnızca birkaç DC 'de test etmek istiyorum. Kullanıcı parolası değişikliklerini söz konusu DC 'leri kullanacak şekilde zorlamak mümkün midir?**
 
-Hayır. Windows istemci işletim sistemi, bir kullanıcı parolasını değiştirene hangi etki alanı denetleyicisi kullanıldığında denetler. Etki alanı denetleyicisi, Active Directory sitesi ve alt ağ atamaları, ortama özgü ağ yapılandırması, vb. gibi faktörlere göre seçilir. Azure AD parola koruması faktörlerin denetlemez ve hangi etki alanı denetleyicisine bir kullanıcının parolasını değiştirmek için seçili etkiler.
+Hayır. Windows istemci işletim sistemi, Kullanıcı parolasını değiştirdiğinde kullanılacak etki alanı denetleyicisini denetler. Etki alanı denetleyicisi, Active Directory site ve alt ağ atamaları, ortama özgü ağ yapılandırması vb. gibi etkenlere göre belirlenir. Azure AD parola koruması bu faktörleri denetlemez ve kullanıcının parolasını değiştirmek için hangi etki alanı denetleyicisinin seçili olduğunu etkilemez.
 
-Azure AD parola koruması tüm belirli bir Active Directory sitesindeki etki alanı denetleyicileri dağıtma kısmen bu hedefe ulaşmak için bir yol olabilir. Bu yaklaşım, o siteye atanmış olan Windows istemcileri için makul kapsamı sağlar ve bu nedenle de kullanıcılar için bu istemcileri günlüğe kaydetme ve kullanıcıların parolalarını değiştirme.
+Bu hedefe kısmen ulaşmak için bir yol, Azure AD parola korumasını belirli bir Active Directory sitesindeki tüm etki alanı denetleyicilerine dağıtmaktır. Bu yaklaşım, bu siteye atanan Windows istemcileri için ve ayrıca bu istemcilere oturum açan ve parolalarını değiştiren kullanıcılar için makul bir kapsam sağlar.
 
-**S: Yalnızca birincil etki alanı denetleyicisi (PDC üzerindeki) Azure AD parola koruması DC aracı hizmetini yüklerseniz, diğer etki alanındaki tüm etki alanı denetleyicileri de korunur?**
+**S: Azure AD parola koruması DC Aracısı hizmetini yalnızca birincil etki alanı denetleyicisine (PDC) yüklediğimde, etki alanındaki diğer tüm etki alanı denetleyicileri de korunacaktır mi?**
 
-Hayır. Verilen PDC olmayan etki alanı denetleyicisine bir kullanıcının parolasını değiştirildiğinde, düz metin parolası hiç (Bu yaygın bir yanlış perception olur) PDC gönderilir. Belirli bir DC üzerinde yeni bir parola kabul edildikten sonra Bu DC parola çeşitli kimlik doğrulama protokolü belirli karma değerlerini oluşturmak için bu parolayı kullanır ve sonra bu karma dizine devam ederse. Düz metin parolayı kalıcı olmaz. Güncelleştirilmiş karmalar, ardından PDC'ye çoğaltılır. Bazı durumlarda kullanıcı parolalarını yeniden ağ topolojisi ve Active Directory site tasarımı gibi çeşitli faktörlere bağlı olarak, doğrudan PDC'de değiştirilebilir. (Önceki soruya bakın.)
+Hayır. Bir kullanıcının parolası, belirli bir PDC olmayan etki alanı denetleyicisinde değiştirildiğinde, şifresiz metin parolası hiçbir zaman PDC 'ye gönderilmez (Bu fikir, yaygın olarak karşılaşılan bir açıklıkdır). Belirli bir DC 'de yeni bir parola kabul edildikten sonra bu DC, söz konusu parolanın kimlik doğrulama protokolüne özgü karmalarını oluşturmak için bu parolayı kullanır ve sonra bu karmaların dizinde devam eder. Şifresiz metin parolası kalıcı değil. Güncelleştirilmiş karmalar daha sonra PDC 'ye çoğaltılır. Kullanıcı parolaları, bazı durumlarda ağ topolojisi ve Active Directory site tasarımı gibi çeşitli faktörlere bağlı olarak doğrudan PDC üzerinde değiştirilebilir. (Önceki soruya bakın.)
 
-Özet olarak, etki alanları arasında % 100 güvenlik kapsamı özelliğinin ulaşmak için PDC üzerindeki Azure AD parola koruması DC aracı hizmetinin dağıtılması gerekir. PDC'nin özelliği dağıtmayı yalnızca Azure AD parola koruması güvenlik avantajları etki alanındaki başka bir DC'ler için sağlamaz.
+Özet olarak, etki alanı genelinde özelliğin% 100 güvenlik kapsamına ulaşmak için PDC 'de Azure AD parola koruması DC Aracısı hizmetinin dağıtımı gerekir. Özelliği PDC 'ye dağıtmak, etki alanındaki diğer DC 'Ler için Azure AD parola koruması güvenlik avantajları sağlamaz.
 
-**S: System Center Operations Manager Yönetim Paketi için Azure AD parola koruması kullanılabilir mi?**
+**S: Azure AD parola koruması için kullanılabilir bir System Center Operations Manager yönetim paketi var mı?**
 
 Hayır.
 
-**S: Neden Denetim modunda olacak şekilde bir ilke yapılandırmış olduğunuz olsa da Azure hala zayıf parolalarda reddediyor?**
+**S: İlkeyi denetim modunda olacak şekilde yapılandırdığım halde Azure neden zayıf parolaların reddettiği halde kalıyor?**
 
-Denetleme modunda, yalnızca şirket içi Active Directory ortamında desteklenir. Parolaları değerlendirirken örtük olarak her zaman "Uygula" modunda azure'dur.
+Denetim modu yalnızca şirket içi Active Directory ortamında desteklenir. Azure, parolaları değerlendirdiğinde "zorla" modunda her zaman örtülü olarak gerçekleştirilir.
 
-## <a name="additional-content"></a>Ek içeriği
+## <a name="additional-content"></a>Ek içerik
 
-Aşağıdaki bağlantılar temel Azure AD parola koruması belgeleri parçası değildir ancak yararlı bir özellik hakkında ek bilgi kaynağı olabilir.
+Aşağıdaki bağlantılar çekirdek Azure AD parola koruma belgelerinin bir parçası değildir, ancak bu özellik hakkında yararlı bir ek bilgi kaynağı olabilir.
 
-[Azure AD parola koruması genel kullanıma sunulmuştur!](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Password-Protection-is-now-generally-available/ba-p/377487)
+[Azure AD parola koruması genel kullanıma sunuldu!](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Password-Protection-is-now-generally-available/ba-p/377487)
 
-[Kimlik koruması Kılavuzu – Bölüm 15'e-posta: Microsoft Azure AD parola koruması uygulayan (şirket içi çok!)](https://blogs.technet.microsoft.com/cloudready/2018/10/14/email-phishing-protection-guide-part-15-implement-the-microsoft-azure-ad-password-protection-service-for-on-premises-too/)
+[E-posta sızdırma koruma Kılavuzu – 15. Bölüm: Microsoft Azure AD parola koruma hizmetini uygulayın (Şirket Içi için çok fazla!)](https://blogs.technet.microsoft.com/cloudready/2018/10/14/email-phishing-protection-guide-part-15-implement-the-microsoft-azure-ad-password-protection-service-for-on-premises-too/)
 
-[Azure AD parola koruması ve akıllı kilitleme genel Önizleme aşamasında kullanıma sunuldu!](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Password-Protection-and-Smart-Lockout-are-now-in-Public/ba-p/245423#M529)
+[Azure AD parola koruması ve akıllı kilitleme artık genel önizlemede!](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Password-Protection-and-Smart-Lockout-are-now-in-Public/ba-p/245423#M529)
 
-## <a name="microsoft-premierunified-support-training-available"></a>Microsoft Premier\Unified destek eğitimi
+## <a name="microsoft-premierunified-support-training-available"></a>Microsoft Premier\Unified destek eğitimi kullanılabilir
 
-Azure AD parola koruması hakkında daha fazla öğrenme ve ortamınıza dağıtmak istiyorsanız, proaktif bir Microsoft hizmetinin kullanılabilir Premier veya birleştirilmiş bir destek sözleşmesi ile bu müşterilere yararlanabilirsiniz. Hizmet, Azure Active Directory çağrılır: Parola koruması. Daha fazla bilgi için teknik hesap yöneticinize başvurun.
+Azure AD parola koruması hakkında daha fazla bilgi edinmek ve ortamınıza dağıtmak istiyorsanız, Premier veya Birleşik destek sözleşimiyle bu müşterilere sunulan Microsoft proaktif bir hizmetten yararlanabilirsiniz. Hizmet Azure Active Directory çağrılır: Parola koruması. Daha fazla bilgi için teknik hesap yöneticinize başvurun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Burada bulamadığınız bir şirket içi Azure AD parola koruması sorunuz varsa, bir geri bildirim öğesi altında - teşekkür gönderin!
+Burada yanıtlanmayan bir şirket içi Azure AD parola koruma sorunuz varsa, bir geri bildirim öğesi gönderin; teşekkürler!
 
 [Azure AD parola korumasını dağıtma](howto-password-ban-bad-on-premises-deploy.md)

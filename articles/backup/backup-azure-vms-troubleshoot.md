@@ -1,18 +1,19 @@
 ---
 title: Azure sanal makineler ile yedekleme hatalarını giderme
 description: Azure sanal makinelerini yedekleme ve geri yükleme sorunlarını giderme
-author: srinathvasireddy
-manager: sivan
+ms.reviewer: srinathv
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/05/2019
-ms.author: srinathv
-ms.openlocfilehash: 4f95192aa2b3c5890a3cafbb442f9f15ebee9280
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 810484060850400a6af8e5be4cf16164eb8f18cc
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465212"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688917"
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Azure sanal makine yedekleme sorunlarını giderme
 Aşağıda listelenen bilgilerle Azure Backup kullanırken karşılaşılan hatalarla ilgili sorunları çözebilirsiniz:
@@ -106,7 +107,7 @@ Varsayılan izinler aşağıdaki gibidir:
     * Okuma izinleri
 2. ' A **verilen** tüm sertifikaları, klasik dağıtım modeli veya **Microsoft Azure CRP sertifika Oluşturucu**olarak silin:
     * [Sertifikaları yerel bir bilgisayar konsolunda açın](https://msdn.microsoft.com/library/ms788967(v=vs.110).aspx).
-    * **Kişisel**  Sertifikalar ' ın altında, ' a verilen tüm sertifikaları, klasik dağıtım modeli veya Microsoft Azure CRP sertifika Oluşturucu olarak silin. > 
+    * **Kişisel**Sertifikalar ' ın altında, ' a verilen tüm sertifikaları, klasik dağıtım modeli veya Microsoft Azure CRP sertifika Oluşturucu olarak silin. > 
 3. Bir VM yedekleme işi tetikleyin.
 
 ## <a name="extensionstuckindeletionstate---extension-state-is-not-supportive-to-backup-operation"></a>ExtensionStuckInDeletionState-uzantı durumu yedekleme işlemi için destekmedi
@@ -181,7 +182,7 @@ Bu, anlık görüntünün Konuk yerine konak üzerinden alınmasını sağlar. Y
 | Bu iş türü için iptal desteklenmez: <br>İş bitene kadar bekleyin. |Yok. |
 | İş iptal edilebilen durumunda değil: <br>İş bitene kadar bekleyin. <br>**or**<br> Seçilen iş iptal edilebilen bir durumda değil: <br>İşin bitmesini bekleyin. |İşin neredeyse tamamlanmış olması olasıdır. İş tamamlanana kadar bekleyin.|
 | Yedekleme, devam ettiğinden işi iptal edemiyor: <br>İptal etme işlemi yalnızca devam eden işler için desteklenir. Devam eden bir işi iptal etmeyi deneyin. |Bu hata, geçici bir durum nedeniyle oluşur. Bir dakika bekleyip iptal işlemini yeniden deneyin. |
-| Yedekleme işi iptal edemedi: <br>İş bitene kadar bekleyin. |None |
+| Yedekleme işi iptal edemedi: <br>İş bitene kadar bekleyin. |Yok. |
 
 ## <a name="restore"></a>Geri yükle
 

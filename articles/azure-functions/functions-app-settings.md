@@ -10,16 +10,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.author: glenga
-ms.openlocfilehash: 62d359494050b188869d51d1e3975c823b9c0a76
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 50056d4d05d2426ff644518aea04a2c9f4d817f3
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204932"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667177"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure işlevleri için uygulama ayarları başvurusu
 
-Uygulama ayarlarında, bir işlev uygulaması, işlev uygulaması için tüm işlevleri etkiler genel yapılandırma seçenekleri içerir. Bu ayarlar, yerel olarak çalıştırdığınızda, yerel erişilen [ortam değişkenlerini](functions-run-local.md#local-settings-file). Bu makalede, işlev uygulamalarında kullanılabilir uygulama ayarlarını listeler.
+Uygulama ayarlarında, bir işlev uygulaması, işlev uygulaması için tüm işlevleri etkiler genel yapılandırma seçenekleri içerir. Yerel olarak çalıştırdığınızda, bu ayarlara yerel [ortam değişkenleri](functions-run-local.md#local-settings-file)olarak erişilir. Bu makalede, işlev uygulamalarında kullanılabilir uygulama ayarlarını listeler.
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
@@ -35,7 +35,7 @@ Application Insights kullanıyorsanız, Application Insights izleme anahtarı. B
 
 ## <a name="azurefunctionsenvironment"></a>AZURE_FUNCTIONS_ENVIRONMENT
 
-Sürümünde işlevler çalışma zamanının 2.x çalışma zamanı ortamı tabanlı uygulama davranışını yapılandırır. Bu değer [başlatma sırasında okuma](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/Program.cs#L43). Ayarlayabileceğiniz `AZURE_FUNCTIONS_ENVIRONMENT` herhangi bir değere ancak [üç değerden](/dotnet/api/microsoft.aspnetcore.hosting.environmentname) desteklenir: [Geliştirme](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development), [hazırlama](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging), ve [üretim](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production). Zaman `AZURE_FUNCTIONS_ENVIRONMENT` değil, varsayılan olarak, belirlenen `Production`. Bu ayar yerine kullanılması gereken `ASPNETCORE_ENVIRONMENT` çalışma zamanı ortamı ayarlamak için. 
+Işlevler çalışma zamanının 2. x sürümünde, çalışma zamanı ortamı temelinde uygulama davranışını yapılandırır. Bu değer [başlatma sırasında okundu](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/Program.cs#L43). Herhangi bir değere `AZURE_FUNCTIONS_ENVIRONMENT` ayarlayabilirsiniz, ancak [üç değer](/dotnet/api/microsoft.aspnetcore.hosting.environmentname) desteklenir: [Geliştirme](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development), [hazırlık](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging)ve [Üretim](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production). Ayarlanmadıysa, varsayılan olarak yerel bir ortamda ve `Production` Azure 'da olur. `Development` `AZURE_FUNCTIONS_ENVIRONMENT` Bu ayar, çalışma zamanı ortamını ayarlamak `ASPNETCORE_ENVIRONMENT` için yerine kullanılmalıdır. 
 
 ## <a name="azurewebjobsdashboard"></a>AzureWebJobsDashboard
 
@@ -102,7 +102,7 @@ TypeScript için kullanılan derleme yolu. Gerekirse varsayılan geçersiz kılm
 
 ## <a name="functionappeditmode"></a>İŞLEV\_UYGULAMA\_DÜZENLE\_MODU
 
-Azure portalında düzenleme etkin olup olmadığını belirler. Geçerli değerler şunlardır: "readwrite" ve "salt okunur".
+Azure portal düzenlemenin etkinleştirilip etkinleştirilmeyeceğini belirler. Geçerli değerler şunlardır: "readwrite" ve "salt okunur".
 
 |Anahtar|Örnek değer|
 |---|------------|
@@ -118,7 +118,7 @@ Bu işlev uygulamasında kullanmak için İşlevler çalışma zamanı sürümü
 
 ## <a name="functionsworkerruntime"></a>İŞLEVLERİ\_ÇALIŞAN\_ÇALIŞMA ZAMANI
 
-İşlev uygulamasına yüklemek için dil alt çalışma zamanı.  Bu, uygulamada (örneğin, "dotnet") kullanılan dil karşılık gelir. Birden çok dilde işlevler için her bir karşılık gelen alt çalışma zamanı değeri ile birden fazla uygulama yayımlamak gerekir.  Geçerli değerler `dotnet` (C#/F#), `node` (JavaScript/TypeScript) `java` (Java) `powershell` (PowerShell) ve `python` (Python).
+İşlev uygulamasına yüklemek için dil alt çalışma zamanı.  Bu, uygulamada (örneğin, "dotnet") kullanılan dil karşılık gelir. Birden çok dilde işlevler için her bir karşılık gelen alt çalışma zamanı değeri ile birden fazla uygulama yayımlamak gerekir.  Geçerli değerler şunlardır `dotnet` (C#/F#), `node` (JavaScript/TypeScript), `java` (Java), `powershell` (PowerShell) ve `python` (Python).
 
 |Anahtar|Örnek değer|
 |---|------------|
@@ -126,7 +126,7 @@ Bu işlev uygulamasında kullanmak için İşlevler çalışma zamanı sürümü
 
 ## <a name="websitecontentazurefileconnectionstring"></a>WEBSITE_CONTENTAZUREFILECONNECTIONSTRING
 
-Yalnızca tüketim planları için. İşlevi uygulama kodu ve yapılandırması depolandığı depolama hesabı için bağlantı dizesi. Bkz: [bir işlev uygulaması oluşturma](functions-infrastructure-as-code.md#create-a-function-app).
+Yalnızca tüketim & Premium planlar için. İşlevi uygulama kodu ve yapılandırması depolandığı depolama hesabı için bağlantı dizesi. Bkz: [bir işlev uygulaması oluşturma](functions-infrastructure-as-code.md#create-a-function-app).
 
 |Anahtar|Örnek değer|
 |---|------------|
@@ -134,7 +134,7 @@ Yalnızca tüketim planları için. İşlevi uygulama kodu ve yapılandırması 
 
 ## <a name="websitecontentshare"></a>WEB SİTESİ\_CONTENTSHARE
 
-Yalnızca tüketim planları için. İşlev uygulaması kod ve yapılandırma dosyası yolu. WEBSITE_CONTENTAZUREFILECONNECTIONSTRING ile kullanılır. Varsayılan işlev uygulamasının adı ile başlayan benzersiz bir dizedir. Bkz: [bir işlev uygulaması oluşturma](functions-infrastructure-as-code.md#create-a-function-app).
+Yalnızca tüketim & Premium planlar için. İşlev uygulaması kod ve yapılandırma dosyası yolu. WEBSITE_CONTENTAZUREFILECONNECTIONSTRING ile kullanılır. Varsayılan işlev uygulamasının adı ile başlayan benzersiz bir dizedir. Bkz: [bir işlev uygulaması oluşturma](functions-infrastructure-as-code.md#create-a-function-app).
 
 |Anahtar|Örnek değer|
 |---|------------|
@@ -175,7 +175,7 @@ Varsayılan olarak, yeni bir HTTP isteği oluşturmak yerine, işlev uygulaması
 
 |Anahtar|Değer|Açıklama|
 |-|-|-|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|Yerel bir işleve işaret eden bir arka uç URL'si ile çağrıları işlev uygulaması artık doğrudan işlevini gönderilir ve bunun yerine işlev uygulaması için geri HTTP ön ucu yönlendirilirsiniz|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|Yerel İşlev Uygulaması bir işleve işaret eden arka uç URL 'si olan çağrılar artık doğrudan işleve gönderilmez ve bunun yerine İşlev Uygulaması için HTTP ön ucuna geri yönlendirilir|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|Varsayılan değer budur. Yerel bir işleve işaret eden bir arka uç URL'si ile çağrıları işlev uygulaması bu işleve iletilir.|
 
 

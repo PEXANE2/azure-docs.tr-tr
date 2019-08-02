@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: hrasheed
 ms.openlocfilehash: 1828efb410849677e859d341e4e16e4f5d4ca681
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68405983"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>HDInsight 'ta Apache Hadoop kümelerinin kullanılabilirliği ve güvenilirliği
@@ -247,7 +247,7 @@ Ambarı web kullanıcı arabiriminden, günlükleri görüntülemek istediğiniz
 
 Bir düğümün boyutu yalnızca küme oluşturma sırasında seçilebilir. HDInsight [fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/hdinsight/)HDInsight için KULLANILABILIR farklı VM boyutlarının listesini bulabilirsiniz.
 
-Bir küme oluştururken düğümlerin boyutunu belirtebilirsiniz. Aşağıdaki bilgiler, [Azure Portal][preview-portal], [Azure PowerShell module Az][azure-powershell]ve [Azure CLI][Azure-CLI]kullanarak boyutun nasıl belirtilbileceğine ilişkin yönergeler sağlar:
+Bir küme oluştururken düğümlerin boyutunu belirtebilirsiniz. Aşağıdaki bilgiler [Azure Portal][preview-portal], [Azure PowerShell modül az][azure-powershell]ve [Azure CLI][azure-cli]kullanarak boyutun nasıl belirtilbileceğine ilişkin yönergeler sağlar:
 
 * **Azure Portal**: Bir küme oluştururken, küme tarafından kullanılan düğümlerin boyutunu ayarlayabilirsiniz:
 

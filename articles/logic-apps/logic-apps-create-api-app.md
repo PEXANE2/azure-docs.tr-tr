@@ -10,12 +10,12 @@ ms.reviewer: klam, jehollan, LADocs
 ms.topic: article
 ms.assetid: bd229179-7199-4aab-bae0-1baf072c7659
 ms.date: 05/26/2017
-ms.openlocfilehash: 233aa92b30404ac7ad2b93bb37380bea984be566
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: e5dc913d682088296f84fb6bd7595a09d9d3fe7b
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273215"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609860"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Azure Logic Apps çağırabilmeniz için özel API 'Ler oluşturun
 
@@ -25,7 +25,7 @@ Azure Logic Apps, mantıksal uygulama iş akışlarında kullanabileceğiniz [y�
 * Müşterilerin profesyonel veya kişisel görevleri yönetmek için hizmetinizi kullanmasına yardımcı olun.
 * Hizmetiniz için erişim, keşfedilebilirlik ve kullanım alanını genişletin.
 
-Temel olarak bağlayıcılar, eklenebilir arabirimler için REST, belgeler için [Swagger meta veri biçimi](https://swagger.io/specification/) ve veri değişim BIÇIMI olarak JSON kullanan Web API 'lardır. Bağlayıcılar HTTP uç noktaları üzerinden iletişim kuran REST API 'Leri olduğundan, bağlayıcılar oluşturmak için .NET, Java veya Node. js gibi herhangi bir dili kullanabilirsiniz. API 'lerinizi, API barındırma için en iyi, en kolay ve en ölçeklenebilir yollarla bir hizmet olarak platform (PaaS) sunan [Azure App Service](../app-service/overview.md)de barındırabilirsiniz. 
+Temel olarak bağlayıcılar, eklenebilir arabirimler için REST, belgeler için [Swagger meta veri biçimi](https://swagger.io/specification/) ve veri değişim BIÇIMI olarak JSON kullanan Web API 'lardır. Bağlayıcılar HTTP uç noktaları üzerinden iletişim kuran REST API 'Leri olduğundan, bağlayıcılar oluşturmak için .NET, Java, Python veya Node. js gibi herhangi bir dili kullanabilirsiniz. API 'lerinizi, API barındırma için en iyi, en kolay ve en ölçeklenebilir yollarla bir hizmet olarak platform (PaaS) sunan [Azure App Service](../app-service/overview.md)de barındırabilirsiniz. 
 
 Özel API 'Lerin Logic Apps ile çalışması için API 'niz mantıksal uygulama iş akışlarında belirli görevleri gerçekleştiren [*Eylemler*](./logic-apps-overview.md#logic-app-concepts) sağlayabilir. API 'niz Ayrıca, yeni veriler veya bir olay belirtilen bir koşulu karşıladığında bir mantıksal uygulama iş akışı Başlatan bir [*tetikleyici*](./logic-apps-overview.md#logic-app-concepts) işlevi görür. Bu konu, API 'nizin sağlamasını istediğiniz davranışa bağlı olarak API 'inizdeki eylemleri ve Tetikleyicileri oluşturmak için izleyebileceğiniz ortak desenleri açıklar.
 
@@ -45,7 +45,7 @@ API 'lerinizi, yüksek düzeyde ölçeklenebilir ve kolay API barındırma sağl
 
 ## <a name="how-do-custom-apis-differ-from-custom-connectors"></a>Özel API 'Lerin özel bağlayıcılardan farkı nedir?
 
-Özel API 'ler ve [özel bağlayıcılar](../logic-apps/custom-connector-overview.md) , eklenebilir ARABIRIMLER için REST, belgeler için [Swagger meta veri biçimi](https://swagger.io/specification/) ve VERI değişim biçimi olarak JSON kullanan Web API 'lerdedir. Bu API 'Ler ve bağlayıcılar HTTP uç noktaları üzerinden iletişim kuran REST API 'Leri olduğundan, özel API 'Ler ve bağlayıcılar oluşturmak için .NET, Java veya Node. js gibi herhangi bir dili kullanabilirsiniz.
+Özel API 'ler ve [özel bağlayıcılar](../logic-apps/custom-connector-overview.md) , eklenebilir ARABIRIMLER için REST, belgeler için [Swagger meta veri biçimi](https://swagger.io/specification/) ve VERI değişim biçimi olarak JSON kullanan Web API 'lerdedir. Bu API 'Ler ve bağlayıcılar HTTP uç noktaları üzerinden iletişim kuran REST API 'Leri olduğundan, özel API 'Ler ve bağlayıcılar oluşturmak için .NET, Java, Python veya Node. js gibi herhangi bir dili kullanabilirsiniz.
 
 Özel API 'ler, bağlayıcılar olmayan API 'Leri çağırmasına ve HTTP + Swagger, Azure API Management veya App Services ile çağırabilmeniz için uç noktalar sağlamanıza olanak tanır. Özel Bağlayıcılar özel API 'Ler gibi çalışır, ancak aynı zamanda şu özniteliklere sahiptir:
 
@@ -167,7 +167,7 @@ Aşağıda, API 'nin perspektifinden tanımlanan bir yoklama tetikleyicisi için
 
 | Yeni veri veya olay bulundu mu?  | API yanıtı | 
 | ------------------------- | ------------ |
-| Bulunamaz | Yanıt yüküne ( `200 OK` sonraki adım için giriş) sahip bir HTTP durumu döndürün. <br/>Bu yanıt bir mantıksal uygulama örneği oluşturur ve iş akışını başlatır. | 
+| Bulundu | Yanıt yüküne ( `200 OK` sonraki adım için giriş) sahip bir HTTP durumu döndürün. <br/>Bu yanıt bir mantıksal uygulama örneği oluşturur ve iş akışını başlatır. | 
 | Bulunamadı | `location` Üst bilgi ve `202 ACCEPTED` üst`retry-after` bilgi içeren bir HTTP durumu döndürür. <br/>Tetikleyiciler `location` için üst bilgi, genellikle "timestamp" `triggerState` olan bir sorgu parametresi de içermelidir. API 'niz mantıksal uygulamanın tetiklendiği son saati izlemek için bu tanımlayıcıyı kullanabilir. | 
 ||| 
 

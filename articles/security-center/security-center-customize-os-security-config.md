@@ -1,6 +1,6 @@
 ---
-title: İşletim sistemi güvenlik yapılandırmaları (Önizleme) Azure Güvenlik Merkezi'nde özelleştirme | Microsoft Docs
-description: Bu makalede Güvenlik Merkezi'nde değerlendirmeleri özelleştirmek nasıl gösterir
+title: Azure Güvenlik Merkezi 'nde işletim sistemi güvenlik yapılandırmalarının özelleştirilmesi (Önizleme) | Microsoft Docs
+description: Bu makalede Güvenlik Merkezi değerlendirmelerinin nasıl özelleştirileceği gösterilmektedir
 services: security-center
 documentationcenter: na
 author: rkarlin
@@ -14,112 +14,112 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 7095992253fbbe5aafce1eab889965250f5d59a8
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: 8216aee1c27fd5bcb722648aa6380044e1431452
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67551392"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68662484"
 ---
-# <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>İşletim sistemi güvenlik yapılandırmaları (Önizleme) Azure Güvenlik Merkezi'nde özelleştirme
+# <a name="customize-os-security-configurations-in-azure-security-center-retired"></a>Azure Güvenlik Merkezi 'nde işletim sistemi güvenlik yapılandırmasını özelleştirme (kullanımdan kaldırıldı)
 
-Bu kılavuzda, Azure Güvenlik Merkezi'nde işletim sistemi güvenlik yapılandırması değerlendirmeleri özelleştirmek gösterilmiştir.
+Bu izlenecek yol, Azure Güvenlik Merkezi 'nde işletim sistemi güvenlik yapılandırması değerlendirmelerinin (Önizleme) nasıl özelleştirileceğini gösterir.
 
 > [!NOTE]
-> İşletim sistemi güvenlik yapılandırmaları özelleştirme yeteneği, 31 Temmuz 2019 üzerinde kullanımdan kaldırılacaktır. Daha fazla bilgi ve diğer hizmetler için bkz. [devre dışı bırakılması, Güvenlik Merkezi özelliklerini (Temmuz 2019)](security-center-features-retirement-july2019.md#menu_securityconfigurations).
+> İşletim sistemi güvenlik yapılandırmalarının (Önizleme özelliği) özelleştirilmesi, 31 Temmuz 2019 tarihinde kullanımdan kaldırılmıştır. Daha fazla bilgi ve diğer hizmetler için bkz. [Güvenlik Merkezi özelliklerini devre dışı bırakma (2019 Temmuz)](security-center-features-retirement-july2019.md#menu_securityconfigurations).
 
-## <a name="what-are-os-security-configurations"></a>İşletim sistemi güvenlik yapılandırmaları nelerdir?
+## <a name="what-are-os-security-configurations"></a>İşletim sistemi güvenlik yapılandırması nedir?
 
 Azure Güvenlik Merkezi, işletim sistemini daha güçlü hale getirmek için güvenlik duvarları, denetim, parola ilkeleri ve benzeri birçok kural dahil olmak üzere [150'den fazla önerilen kuraldan](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335) oluşan bir kümeyi uygulayarak güvenlik yapılandırmalarını izler. Bir makinenin yapılandırmasında güvenlik açığı varsa Güvenlik Merkezi bu konuyla ilgili bir güvenlik önerisi oluşturur.
 
-Kuralları özelleştirerek, kuruluşlar, kendi ortamlarından daha uygun olan yapılandırma seçenekleri denetleyebilirsiniz. Özelleştirilmiş değerlendirme ilkesi ayarlayabilir ve Abonelikteki tüm geçerli makinelerde uygulayın.
+Şirketler, kuralları özelleştirerek, ortamları için hangi yapılandırma seçeneklerinin daha uygun olduğunu denetleyebilir. Özelleştirilmiş bir değerlendirme ilkesi ayarlayabilir ve ardından aboneliğin ilgili tüm makinelere uygulayabilirsiniz.
 
 > [!NOTE]
-> - Şu anda işletim sistemi güvenlik yapılandırması özelleştirmesini Windows Server 2008, 2008 R2, 2012, 2012 R2 ve 2016 sürümleri yalnızca işletim sistemleri için kullanılabilir.
-> - Yapılandırma tüm Vm'leri ve seçilen abonelik altındaki tüm çalışma alanlarına bağlı olan bilgisayarlar için geçerlidir.
-> - İşletim sistemi güvenlik yapılandırması özelleştirme, yalnızca Güvenlik Merkezi'nin standart katmanında kullanılabilir.
+> - Şu anda, işletim sistemi güvenlik yapılandırmasının özelleştirilmesi yalnızca Windows Server sürümleri 2008, 2008 R2, 2012, 2012 R2 ve 2016 işletim sistemleri için kullanılabilir.
+> - Yapılandırma, seçili abonelik altındaki tüm çalışma alanlarına bağlı olan tüm sanal makinelere ve bilgisayarlara uygulanır.
+> - İşletim sistemi güvenlik yapılandırması özelleştirmesi yalnızca güvenlik merkezi standart katmanında kullanılabilir.
 >
 >
 
-İşletim sistemi güvenlik yapılandırması kurallarını etkinleştirme ve belirli bir kural devre dışı bırakma, mevcut bir kuralı için istenen ayarlarını değiştirme veya desteklenen kural türlerinden (kayıt defteri, Denetim İlkesi ve güvenlik ilkesi) alarak yeni bir kural ekleyerek özelleştirebilirsiniz. Şu anda, istenen ayar tam bir değer olmalıdır.
+Belirli bir kuralı etkinleştirip devre dışı bırakarak, var olan bir kural için istenen ayarı değiştirerek veya desteklenen kural türlerini (kayıt defteri, denetim ilkesi ve güvenlik ilkesi) temel alan yeni bir kural ekleyerek, işletim sistemi güvenlik yapılandırması kurallarını özelleştirebilirsiniz. Şu anda, istenen ayar tam bir değer olmalıdır.
 
-Yeni kurallar aynı biçim ve yapısıyla aynı tür var olan diğer kuralları olması gerekir.
+Yeni kuralların aynı türdeki diğer mevcut kurallarla aynı biçimde ve yapıda olması gerekir.
 
 > [!NOTE]
-> İşletim sistemi güvenlik yapılandırmaları özelleştirmek için rolü atanmış *abonelik sahibi*, *abonelik katkıda bulunanı*, veya *Güvenlik Yöneticisi*.
+> İşletim sistemi güvenlik yapılandırmasını özelleştirmek için *abonelik sahibi*, *abonelik katılımcısı*veya *Güvenlik Yöneticisi*rolüne sahip olmanız gerekir.
 >
 >
 
-## <a name="customize-the-default-os-security-configuration"></a>Varsayılan işletim sistemi Güvenlik Yapılandırması'nı özelleştirme
+## <a name="customize-the-default-os-security-configuration"></a>Varsayılan işletim sistemi güvenlik yapılandırmasını özelleştirme
 
-Güvenlik Merkezi'nde varsayılan işletim sistemi güvenlik yapılandırmasını özelleştirmek için aşağıdakileri yapın:
+Güvenlik Merkezi 'nde varsayılan işletim sistemi güvenlik yapılandırmasını özelleştirmek için aşağıdakileri yapın:
 
 1.  **Güvenlik Merkezi** panosunu açın.
 
-2.  Sol bölmede seçin **fiyatlandırma & ayarları**.
+2.  Sol bölmede, **fiyatlandırma & ayarları**' nı seçin.
 
-    ![Güvenlik İlkesi listesi](media/security-center-customize-os-security-config/manual-provision.png)
+    ![Güvenlik Ilkesi listesi](media/security-center-customize-os-security-config/manual-provision.png)
 
-4. Geçerli abonelik seçip **güvenlik yapılandırmalarını Düzenle**.  
+4. Geçerli aboneliği seçin ve **güvenlik yapılandırmasını düzenle**' yi seçin.  
 
-    !["Güvenlik yapılandırmalarını Düzenle" penceresi](media/security-center-customize-os-security-config/blade.png)
+    !["Güvenlik yapılandırmasını düzenle" penceresi](media/security-center-customize-os-security-config/blade.png)
 
-5. İndirmek, düzenlemek ve değiştirilen dosya karşıya yükleme adımlarını izleyin.
+5. Değiştirilen dosyayı indirme, düzenleme ve karşıya yükleme adımlarını izleyin.
 
    > [!NOTE]
-   > Varsayılan olarak, karşıdan yapılandırma dosyasının bulunduğu *json* biçimi. Bu dosyayı değiştirme hakkında yönergeler için Git [yapılandırma dosyasını özelleştirme](#customize-the-configuration-file).
+   > Varsayılan olarak, indirçalıştığınız yapılandırma dosyası *JSON* biçimindedir. Bu dosyayı değiştirme hakkında yönergeler için [yapılandırma dosyasını özelleştirme](#customize-the-configuration-file)bölümüne gidin.
    >
 
-6. Değişikliği kaydetmek için seçin **Kaydet**. Aksi takdirde, ilke depolanmaz.
+6. Değişikliği **kaydetmek Için kaydet**' i seçin. Aksi takdirde, ilke depolanmaz.
 
     ![Kaydet düğmesi](media/security-center-customize-os-security-config/save-successfully.png)
 
-   Dosya başarıyla kaydettikten sonra yapılandırma tüm Vm'lere ve abonelik altında çalışma alanlarına bağlı bilgisayarlara uygulanır. İşlem, genellikle birkaç dakika sürer ancak altyapı boyutuna bağlı olarak daha uzun sürebilir.
+   Dosyayı başarıyla kaydettikten sonra, yapılandırma, aboneliğin altındaki çalışma alanlarına bağlı tüm sanal makinelere ve bilgisayarlara uygulanır. İşlem genellikle birkaç dakika sürer, ancak altyapı boyutuna bağlı olarak daha uzun sürebilir.
 
-Herhangi bir noktada, varsayılan durumuna getirmek geçerli ilke yapılandırmasının sıfırlayabilirsiniz. Bunu yapmak için **Düzenle işletim sistemi güvenlik yapılandırması kurallarını** penceresinde **sıfırlama**. Bu seçeneği işaretleyerek onaylayın **Evet** onay açılır pencerede.
+Herhangi bir noktada, geçerli ilke yapılandırmasını varsayılan durumuna sıfırlayabilirsiniz. Bunu yapmak için, **işletim sistemi güvenlik yapılandırması kurallarını Düzenle** penceresinde **Sıfırla**' yı seçin. Onay açılır penceresinde **Evet** ' i seçerek bu seçeneği onaylayın.
 
-![Pencere Sıfırlama onayı](media/security-center-customize-os-security-config/edit-alert.png)
+![Sıfırlama onayı penceresi](media/security-center-customize-os-security-config/edit-alert.png)
 
 ## <a name="customize-the-configuration-file"></a>Yapılandırma dosyasını özelleştirme
 
-Özelleştirme dosyasında, desteklenen her işletim sistemi sürümü, bir dizi kural veya kural kümesi vardır. Her bir kural kümesi, aşağıdaki örnekte gösterildiği gibi kendi adı ve benzersiz bir kimlik vardır:
+Özelleştirme dosyasında, desteklenen her işletim sistemi sürümü bir kural kümesine veya RuleSet 'e sahiptir. Her RuleSet 'in, aşağıdaki örnekte gösterildiği gibi kendi adı ve benzersiz KIMLIĞI vardır:
 
-![Kural kümesi adını ve Kimliğini](media/security-center-customize-os-security-config/custom-file.png)
+![RuleSet adı ve KIMLIĞI](media/security-center-customize-os-security-config/custom-file.png)
 
 > [!NOTE]
-> Bu örnek dosya Visual Studio'da düzenlendi, ancak JSON Görüntüleyici eklenti varsa de Not Defteri'ni kullanabilirsiniz.
+> Bu örnek dosya Visual Studio 'da düzenlendi, ancak JSON Görüntüleyicisi eklentisi yüklüyse Not defteri 'ni de kullanabilirsiniz.
 >
 >
 
-Özelleştirme dosyası düzenlenirken bir kural veya tümünü değiştirebilirsiniz. Her bir kural kümesi içeren bir *kuralları* bölüm üç kategoriye ayrılır: Kayıt defteri, Denetim İlkesi ve güvenlik ilkesi, burada gösterildiği gibi:
+Özelleştirme dosyasını düzenlediğinizde, bir kuralı veya bunların tümünü değiştirebilirsiniz. Her RuleSet, üç kategoride ayrılmış bir *Rules* bölümü içerir: Kayıt defteri, denetim Ilkesi ve Güvenlik Ilkesi burada gösterildiği gibi:
 
-![Üç ruleset kategorileri](media/security-center-customize-os-security-config/rules-section.png)
+![Üç RuleSet kategorisi](media/security-center-customize-os-security-config/rules-section.png)
 
-Her kategorinin kendi öznitelikleri kümesi vardır. Aşağıdaki öznitelikler değiştirebilirsiniz:
+Her kategorinin kendi öznitelik kümesi vardır. Aşağıdaki öznitelikleri değiştirebilirsiniz:
 
-- **expectedValue**: Bu özniteliğin alanın veri türü başına desteklenen değerler eşleşmelidir *kural türü*, örneğin:
+- **ExpectedValue**: Bu özniteliğin alan veri türü, *kural türü*başına desteklenen değerlerle eşleşmelidir, örneğin:
 
-  - **baselineRegistryRules**: Değer eşleşmelidir [regValueType](https://msdn.microsoft.com/library/windows/desktop/ms724884) bu kuralda tanımlı.
+  - **baselineRegistryRules**: Değer, bu kuralda tanımlanan [Regvaluetype](https://msdn.microsoft.com/library/windows/desktop/ms724884) ile eşleşmelidir.
 
-  - **baselineAuditPolicyRules**: Aşağıdaki dize değerlerinden birini kullanın:
+  - **Baselineauditpolicyrules**: Aşağıdaki dize değerlerinden birini kullanın:
 
     - *Başarı ve başarısızlık*
 
     - *Başarılı*
 
-  - **baselineSecurityPolicyRules**: Aşağıdaki dize değerlerinden birini kullanın:
+  - **Baselinesecuritypolicyrules**: Aşağıdaki dize değerlerinden birini kullanın:
 
     - *Hiç kimse*
 
-    - Örneğin, izin verilen kullanıcı grupları listesi: *Yöneticiler*, *Yedekleme İşletmenleri*
+    - İzin verilen kullanıcı gruplarının listesi, örneğin: *Yöneticiler*, *yedekleme işleçleri*
 
--   **Durum**: Dize seçenekleri içerebilir *devre dışı bırakılmış* veya *etkin*. Bu sürüm için dize büyük/küçük harf duyarlıdır.
+-   **durum**: Dize *devre dışı* veya *etkin*seçenekleri içerebilir. Bu sürümde, dize büyük/küçük harfe duyarlıdır.
 
-Bunlar, yapılandırılabilir tek alanlardır. Dosya biçimini veya boyutunu ihlal değişikliği kaydetmek mümkün olmayacaktır. Geçerli bir JSON yapılandırma dosyasını karşıya yüklemek için gereken bildiren bir hata alırsınız.
+Bunlar, yapılandırılabilecek tek alanlardır. Dosya biçimini veya boyutunu ihlal ederseniz değişikliği kaydedemezsiniz. Geçerli bir JSON yapılandırma dosyasını karşıya yüklemeniz gerektiğini belirten bir hata alırsınız.
 
-Diğer olası hataları listesi için bkz. [hata kodları](#error-codes).
+Diğer olası hataların listesi için bkz. [hata kodları](#error-codes).
 
-Aşağıdaki üç bölümler önceki kuralların örnekleri içerir. *ExpectedValue* ve *durumu* öznitelikler değiştirilebilir.
+Aşağıdaki üç bölüm, önceki kuralların örneklerini içerir. *ExpectedValue* ve *State* öznitelikleri değiştirilebilir.
 
 **baselineRegistryRules**
 ```json
@@ -179,38 +179,38 @@ Aşağıdaki üç bölümler önceki kuralların örnekleri içerir. *ExpectedVa
     }
 ```
 
-Bazı kurallar, farklı işletim sistemi türleri için çoğaltılır. Yinelenen kurallara sahip aynı *originalId* özniteliği.
+Bazı kurallar farklı işletim sistemi türleri için yinelenir. Yinelenen kuralların aynı *OriginalID* özniteliği var.
 
 ## <a name="create-custom-rules"></a>Özel kurallar oluşturma
 
-Ayrıca, yeni kurallar oluşturabilirsiniz. Yeni bir kural oluşturmadan önce aşağıdaki kısıtlamaları göz önünde bulundurun:
+Yeni kurallar da oluşturabilirsiniz. Yeni bir kural oluşturmadan önce, aşağıdaki kısıtlamaları göz önünde bulundurun:
 
--   Şema sürümü *baselineId* ve *baselineName* değiştirilemez.
+-   Şema sürümü, *Baselineıd* ve *baselinename* değiştirilemez.
 
--   Kural kümesi kaldırılamıyor.
+-   RuleSet kaldırılamıyor.
 
--   Kural kümesi eklenemez.
+-   RuleSet eklenemiyor.
 
--   Kurallar (varsayılan kuralları dahil olmak üzere) izin verilen en fazla sayısı 1000'dir.
+-   İzin verilen en fazla kural sayısı (varsayılan kurallar dahil) 1000 ' dir.
 
-Yeni özel kurallar, yeni bir özel kaynak ile işaretlenir (! = "Microsoft"). *RuleId* alanı null veya boş olabilir. Boşsa, Microsoft bir tane oluşturur. Boş değilse, tüm kurallar arasında (varsayılan ve özel) benzersiz olan geçerli bir GUID olması gerekir. Temel alanlar için aşağıdaki kısıtlamaları gözden geçirin:
+Yeni özel kurallar yeni bir özel kaynakla (! = "Microsoft") işaretlenir. *RuleId* alanı null veya boş olabilir. Boşsa, Microsoft bir tane oluşturur. Boş değilse, tüm kurallarda benzersiz olan geçerli bir GUID 'ye sahip olmalıdır (varsayılan ve özel). Çekirdek alanlar için aşağıdaki kısıtlamaları gözden geçirin:
 
--   **originalId**: Null veya boş olabilir. Varsa *originalId* olan boş, geçerli bir GUID olması.
+-   **OriginalID**: Null veya boş olabilir. *OriginalID* boş değilse, GEÇERLI bir GUID olmalıdır.
 
--   **cceId**: Null veya boş olabilir. Varsa *cceId* olduğundan boş değil benzersiz olmalıdır.
+-   **Cceıd**: Null veya boş olabilir. *Cceıd* boş değilse, benzersiz olmalıdır.
 
--   **kural türü**: (birini) kayıt defteri, AuditPolicy veya SecurityPolicy.
+-   **RuleType**: (bir tane seçin) Registry, AuditPolicy veya SecurityPolicy.
 
--   **Önem derecesi**: (birini) bilinmiyor, kritik, uyarı ve bilgilendirici.
+-   **Önem derecesi**: (bir tane seçin) bilinmeyen, kritik, uyarı veya bilgilendirici.
 
--   **analyzeOperation**: Olmalıdır *eşittir*.
+-   **analiz eden işlem**: *Eşit*olmalıdır.
 
--   **auditPolicyId**: Geçerli bir GUID olmalıdır.
+-   **Auditpolicyıd**: Geçerli bir GUID olmalıdır.
 
--   **regValueType**: (birini) Int, Long, dize veya MultipleString.
+-   **Regvaluetype**: (Select One) Int, Long, String veya multiplestring.
 
 > [!NOTE]
-> Hive olmalıdır *LocalMachine*.
+> Hive *LocalMachine*olmalıdır.
 >
 >
 
@@ -233,7 +233,7 @@ Yeni bir özel kural örneği:
     "state": "Enabled"
     }
 ```
-**Güvenlik İlkesi**:
+**Güvenlik ilkesi**:
 ```json
    {
    "sectionName": "Privilege Rights",
@@ -248,7 +248,7 @@ Yeni bir özel kural örneği:
    "state": "Enabled"
    }
 ```
-**Denetim İlkesi**:
+**Denetim ilkesi**:
 ```json
    {
    "auditPolicyId": "0cce923a-69ae-11d9-bed3-505054503030",
@@ -262,9 +262,9 @@ Yeni bir özel kural örneği:
    }
 ```
 
-## <a name="file-upload-failures"></a>Karşıya dosya yükleme hataları
+## <a name="file-upload-failures"></a>Karşıya dosya yükleme sorunları
 
-Değerleri veya biçimlendirme içindeki hatalar nedeniyle gönderilen yapılandırma dosyası geçersiz bir hata, aşağıdaki gibi görüntülenir **kaydetme eylemi başarısız oldu**. Düzeltilen yapılandırma dosyası yeniden önce hataları düzeltin ve düzeltmek için ayrıntılı hatalar .csv raporu indirebilirsiniz.
+Gönderilen yapılandırma dosyası, değerler veya biçimlendirme içindeki hatalar nedeniyle geçersiz ise, **kaydetme eylemi başarısız oldu**gibi bir hata hatası görüntülenir. Düzeltilen bir yapılandırma dosyasını yeniden göndermeden önce hataları düzeltmek ve gidermek için ayrıntılı bir Errors. csv raporu indirebilirsiniz.
 
 Bir hata dosyası örneği:
 
@@ -272,49 +272,49 @@ Bir hata dosyası örneği:
 
 ## <a name="error-codes"></a>Hata kodları
 
-Tüm olası hatalar aşağıdaki tabloda listelenmiştir:
+Olası tüm hatalar aşağıdaki tabloda listelenmiştir:
 
 | **Hata:**                                | **Açıklama**                                                                                                                              |
 |------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
-| BaselineConfigurationSchemaVersionError  | Özellik *schemaVersion* geçersiz veya boş bulunamadı. Değer ayarlanmalıdır *{0}* .                                                         |
-| BaselineInvalidStringError               | Özellik *{0}* içeremez  *\\n*.                                                                                                         |
-| BaselineNullRuleError                    | Değerine sahip bir kural taban çizgisi yapılandırma kuralları listesi içeren *null*.                                                                         |
+| BaselineConfigurationSchemaVersionError  | *SchemaVersion* özelliği geçersiz veya boş. Değerin olarak *{0}* ayarlanması gerekir.                                                         |
+| BaselineInvalidStringError               | Özellik *{0}*  *n\\* içeremez.                                                                                                         |
+| BaselineNullRuleError                    | Taban çizgisi yapılandırma kuralları listesi *null*değeri olan bir kural içeriyor.                                                                         |
 | BaselineRuleCceIdNotUniqueError          | CCE kimliği *{0}* benzersiz değil.                                                                                                                  |
-| BaselineRuleEmptyProperty                | Özellik *{0}* eksik veya geçersiz.                                                                                                       |
-| BaselineRuleIdNotInDefault               | Kural için bir kaynak özelliği yok *Microsoft* ancak Microsoft varsayılan kümesinde bulunamadı.                                                   |
+| Baselineruliemptyözelliği                | Özellik *{0}* eksik veya geçersiz.                                                                                                       |
+| BaselineRuleIdNotInDefault               | Kuralda *Microsoft* kaynak özelliği bulunur, ancak Microsoft varsayılan RuleSet içinde bulunamadı.                                                   |
 | BaselineRuleIdNotUniqueError             | Kural tanımlayıcısı benzersiz değil.                                                                                                                       |
-| BaselineRuleInvalidGuid                  | Özellik *{0}* geçersiz bulundu. Değer geçerli bir GUID değil.                                                                             |
-| BaselineRuleInvalidHive                  | Hive LocalMachine olması gerekir.                                                                                                                   |
+| Baselinerutaınvalidguid                  | Özellik *{0}* geçersiz bulundu. Değer geçerli bir GUID değil.                                                                             |
+| Baselineruliınvalidhive                  | Hive LocalMachine olmalıdır.                                                                                                                   |
 | BaselineRuleNameNotUniqueError           | Kural adı benzersiz değil.                                                                                                                 |
 | BaselineRuleNotExistInConfigError        | Kural yeni yapılandırmada bulunamadı. Kural silinemiyor.                                                                     |
-| BaselineRuleNotFoundError                | Varsayılan kural temel kural kümesi bulunamadı.                                                                                        |
-| BaselineRuleNotInPlace                   | Kuralın bir varsayılan kural türüyle eşleşmesi {0} ve listelenen {1} listesi.                                                                       |
-| BaselineRulePropertyTooLong              | Özellik *{0}* çok uzun. İzin verilen en fazla uzunluk: {1}.                                                                                        |
-| BaselineRuleRegTypeInvalidError          | Beklenen değer *{0}* tanımlanan kayıt defteri değeri türü ile eşleşmiyor.                                                              |
-| BaselineRulesetAdded                     | Tanımlayıcısına sahip ruleset *{0}* Varsayılan yapılandırmada bulunamadı. Kural kümesi eklenemez.                                               |
-| BaselineRulesetIdMustBeUnique            | Belirtilen temel ruleset *{0}* benzersiz olması gerekir.                                                                                           |
-| BaselineRulesetNotFound                  | Tanımlayıcısına sahip ruleset *{0}* ve ad *{1}* belirli yapılandırmada bulunamadı. Kural kümesi silinemiyor.                                |
-| BaselineRuleSourceNotMatch               | Tanımlayıcısına sahip kural *{0}* zaten tanımlandı.                                                                                                       |
+| BaselineRuleNotFoundError                | Kural varsayılan temel kural kümesi içinde bulunamadı.                                                                                        |
+| BaselineRuleNotInPlace                   | Kural, türü {0} olan bir varsayılan kuralla eşleşir ve {1} listede listelenir.                                                                       |
+| BaselineRulePropertyTooLong              | Özellik *{0}* çok uzun. İzin verilen en fazla {1}Uzunluk:.                                                                                        |
+| Baselineruleregtypeınvalinothing          | Beklenen değer *{0}* tanımlanan kayıt defteri değer türüyle eşleşmiyor.                                                              |
+| Baselinerulisetadded                     | Tanımlayıcıya *{0}* sahip RuleSet, varsayılan yapılandırmada bulunamadı. RuleSet eklenemiyor.                                               |
+| BaselineRulesetIdMustBeUnique            | Verilen taban çizgisi RuleSet *{0}* benzersiz olmalıdır.                                                                                           |
+| BaselineRulesetNotFound                  | Tanıtıcı *{0}* ve ada *{1}* sahip RuleSet, belirtilen yapılandırmada bulunamadı. RuleSet silinemiyor.                                |
+| BaselineRuleSourceNotMatch               | Tanımlayıcıya *{0}* sahip kural zaten tanımlandı.                                                                                                       |
 | BaselineRuleTypeDoesntMatch              | Varsayılan kural türü *{0}* .                                                                                                              |
-| BaselineRuleTypeDoesntMatchError         | Kural gerçek türü *{0}* , ancak *kural türü* özelliği *{1}* .                                                                          |
-| BaselineRuleUnpermittedChangesError      | Yalnızca *expectedValue* ve *durumu* özellikleri değiştirilmesine izin verilir.                                                                       |
-| BaselineTooManyRules                     | Maksimum sayısı izin verilen özelleştirilmiş kurallar {0} kuralları. Belirli bir yapılandırma içeriyor {1} kuralları {2} varsayılan kuralları ve {3} özelleştirilmiş kurallar. |
-| ErrorNoConfigurationStatus               | Hiçbir yapılandırma durumu bulunamadı. İstenen yapılandırma durumunun durumu: *Varsayılan* veya *özel*.                                    |
-| ErrorNonEmptyRulesetOnDefault            | Yapılandırma durumu, varsayılan olarak ayarlanır. *BaselineRulesets* listesi null veya boş olmalıdır.                                                          |
-| ErrorNullRulesetsPropertyOnCustom        | Belirtilen yapılandırma durumu *özel* ancak *baselineRulesets* özelliği null veya boş.                                             |
-| ErrorParsingBaselineConfig               | Belirtilen yapılandırma geçersiz. Bir veya daha fazla tanımlı değerlerin bir null değer ya da geçersiz bir türe sahip.                                  |
-| ErrorParsingIsDefaultProperty            | Verilen *configurationStatus* değer *{0}* geçersiz. Değer yalnızca olabilir *varsayılan* veya *özel*.                                         |
-| InCompatibleViewVersion                  | Görünüm sürümü *{0}* olduğu *değil* üzerinde bu çalışma alanı türü desteklenmiyor.                                                                                   |
-| InvalidBaselineConfigurationGeneralError | Belirli bir taban çizgisi yapılandırmasını bir veya daha fazla tür doğrulama hataları bulundu.                                                          |
-| ViewConversionError                      | Çalışma alanını destekleyen daha eski bir sürüm görünümüdür. Görüntüleme dönüştürme başarısız oldu: {0}.                                                                 |
+| Baselinerulitypeunntmatcherror         | Kuralın *{0}* gerçek türü, ancak *{1}* *RuleType* özelliği.                                                                          |
+| BaselineRuleUnpermittedChangesError      | Yalnızca *ExpectedValue* ve *State* özelliklerinin değiştirilmesine izin verilir.                                                                       |
+| BaselineTooManyRules                     | İzin verilen özelleştirilmiş kuralların {0} en fazla sayısı kurallardır. Verilen yapılandırma kurallar, {1} {2} varsayılan kurallar ve {3} özelleştirilmiş kurallar içerir. |
+| ErrorNoConfigurationStatus               | Yapılandırma durumu bulunamadı. İstenen yapılandırma durumunu durum: *Varsayılan* veya *özel*.                                    |
+| ErrorNonEmptyRulesetOnDefault            | Yapılandırma durumu varsayılan olarak ayarlanır. *Baselinerulisets* listesi null veya boş olmalıdır.                                                          |
+| ErrorNullRulesetsPropertyOnCustom        | Verilen yapılandırma durumu *özel* ancak *Baselinerulisets* özelliği null veya boş.                                             |
+| ErrorParsingBaselineConfig               | Verilen yapılandırma geçersiz. Tanımlı bir veya daha fazla değer null değere sahip veya geçersiz türde.                                  |
+| ErrorParsingIsDefaultProperty            | Verilen *configurationstatus* değeri *{0}* geçersiz. Değer yalnızca *varsayılan* veya *özel*olabilir.                                         |
+| Incompatibleviewversion                  | Bu çalışma alanı *{0}* türünde Görünüm *sürümü desteklenmiyor.*                                                                                   |
+| Invalidbaselineconfigurationgeneralerror | Verilen temel yapılandırma bir veya daha fazla tür doğrulama hatası ile bulundu.                                                          |
+| ViewConversionError                      | Görünüm, çalışma alanının desteklediğinden daha eski bir sürümdür. Görüntüleme dönüşümü başarısız oldu {0}:.                                                                 |
 
-Yeterli izinleriniz yoksa, burada gösterildiği gibi bir genel hata hatası alabilirsiniz:
+Yeterli izniniz yoksa, burada gösterildiği gibi genel bir hata hatası alabilirsiniz:
 
-!["Kaydetme eylemi başarısız oldu" hata iletisi](media/security-center-customize-os-security-config/general-failure-error.png)
+!["Eylem kaydetme başarısız oldu" hata iletisi](media/security-center-customize-os-security-config/general-failure-error.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu makalede Güvenlik Merkezi'ndeki işletim sistemi güvenlik yapılandırması değerlendirmeleri özelleştirmek açıklanır. Yapılandırma kuralları ve düzeltme hakkında daha fazla bilgi için bkz:
+Bu makalede, güvenlik merkezi 'nde işletim sistemi güvenlik yapılandırması değerlendirmelerinin nasıl özelleştirileceği açıklanır. Yapılandırma kuralları ve düzeltme hakkında daha fazla bilgi edinmek için bkz.:
 
-- [Güvenlik Merkezi ortak yapılandırma tanımlayıcılarını ve temel kurallar](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335).
-- Güvenlik Merkezi, benzersiz tanımlayıcıları için yapılandırma kuralları atamak için yaygın yapılandırma numaralandırması (CCE) kullanır. Daha fazla bilgi için [CCE](https://nvd.nist.gov/config/cce/index).
-- İşletim sistemi yapılandırması önerilen güvenlik yapılandırması kurallarını eşleşmediğinde, güvenlik açıklarını gidermek için bkz: [güvenlik yapılandırmalarını düzeltme](security-center-remediate-os-vulnerabilities.md).
+- [Güvenlik Merkezi ortak yapılandırma tanımlayıcıları ve temel kuralları](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335).
+- Güvenlik Merkezi, yapılandırma kurallarına benzersiz tanımlayıcılar atamak için ortak yapılandırma numaralandırması (CCE) kullanır. Daha fazla bilgi için bkz. [CCE](https://nvd.nist.gov/config/cce/index).
+- İşletim sistemi yapılandırmanızın önerilen güvenlik yapılandırması kurallarıyla eşleşmemesi durumunda güvenlik açıklarını gidermek için bkz. [güvenlik yapılandırmalarını düzeltme](security-center-remediate-os-vulnerabilities.md).

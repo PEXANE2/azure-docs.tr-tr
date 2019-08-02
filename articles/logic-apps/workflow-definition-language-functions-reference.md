@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: reference
-ms.date: 08/15/2018
-ms.openlocfilehash: 8ad7d7497a0fbe6fcf20ad5b50ef4e6cac9ed51f
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.date: 07/27/2019
+ms.openlocfilehash: 30123e03a686eed8df0595c8562f2f9d9351bbde
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868894"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706461"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps-and-microsoft-flow"></a>Azure Logic Apps ve Microsoft Flow Iş akışı tanımlama dili için işlevler başvurusu
 
@@ -50,8 +50,8 @@ Deyimlerde işlevleri kullanabileceğiniz bazı genel yollar şunlardır:
 | Görev | İfadede işlev sözdizimi |
 | ---- | -------------------------------- |
 | Öğeyi bir işleve geçirerek bir öğeyle çalışmayı gerçekleştirin. | "\@fonksiyonadı > (< öğe >)"< |
-| 1. İç içe geçmiş `parameters()` işlevini kullanarak ParameterName 'in değerini alın. </br>2. Bu değeri *fonksiyonadı*değerine geçirerek sonuçla birlikte iş gerçekleştirin. | "\@fonksiyonadı > (Parametreler (' < ParameterName > '))"< |
-| 1. İç içe geçmiş iç işlev Işlevbir sonucu elde edin. </br>2. Sonucu *functionName2*dış işlevine geçirin. | "\@functionName2 > (< fonksiyonadı > (< öğesi >))"< |
+| 1. İç içegeçmiş `parameters()` işlevini kullanarak ParameterName 'in değerini alın. </br>2. Bu değeri *fonksiyonadı*değerine geçirerek sonuçla birlikte iş gerçekleştirin. | "\@fonksiyonadı > (Parametreler (' < ParameterName > '))"< |
+| 1. İç içe geçmiş iç işlev Işlevbir sonucuelde edin. </br>2. Sonucu *functionName2*dış işlevine geçirin. | "\@functionName2 > (< fonksiyonadı > (< öğesi >))"< |
 | 1. Sonuç olarak *fonksiyonadı*'dan elde edin. </br>2. Sonuç, *PropertyName*özelliği olan bir nesne olduğundan, bu özelliğin değerini alır. | "\@fonksiyonadı > (< öğe >). < PropertyName >"< |
 |||
 
@@ -107,7 +107,7 @@ Koleksiyonlar, genellikle diziler, dizeler ve bazen sözlüklerle çalışmak i�
 | [contains](../logic-apps/workflow-definition-language-functions-reference.md#contains) | Bir koleksiyonun belirli bir öğeye sahip olup olmadığını denetleyin. |
 | [empty](../logic-apps/workflow-definition-language-functions-reference.md#empty) | Bir koleksiyonun boş olup olmadığını kontrol edin. |
 | [first](../logic-apps/workflow-definition-language-functions-reference.md#first) | Bir koleksiyondaki ilk öğeyi döndürür. |
-| [imin](../logic-apps/workflow-definition-language-functions-reference.md#intersection) | Belirtilen koleksiyonlar genelinde *yalnızca* ortak öğeler içeren bir koleksiyon döndürür. |
+| [intersection](../logic-apps/workflow-definition-language-functions-reference.md#intersection) | Belirtilen koleksiyonlar genelinde *yalnızca* ortak öğeler içeren bir koleksiyon döndürür. |
 | [maddesinin](../logic-apps/workflow-definition-language-functions-reference.md#item) | Bir dizi üzerinde yinelenen bir eylem içindeyken, eylemin geçerli yinelemesi sırasında dizideki geçerli öğeyi döndürün. |
 | [join](../logic-apps/workflow-definition-language-functions-reference.md#join) | Bir diziden, belirtilen karakterle ayrılmış olan *Tüm* öğeleri içeren bir dize döndürür. |
 | [last](../logic-apps/workflow-definition-language-functions-reference.md#last) | Bir koleksiyondaki son öğeyi döndürür. |
@@ -139,7 +139,7 @@ Her işlev hakkında tam başvuru için [alfabetik listeye](../logic-apps/workfl
 
 <a name="conversion-functions"></a>
 
-## <a name="conversion-functions"></a>Dönüştürme işlevleri
+## <a name="conversion-functions"></a>Dönüşüm işlevleri
 
 Bir değerin türünü veya biçimini değiştirmek için bu dönüştürme işlevlerini kullanabilirsiniz.
 Örneğin, Boole değerinden bir değeri tamsayı olarak değiştirebilirsiniz.
@@ -148,8 +148,8 @@ Her işlev hakkında tam başvuru için [alfabetik listeye](../logic-apps/workfl
 
 | Dönüştürme işlevi | Görev |
 | ------------------- | ---- |
-| [dizide](../logic-apps/workflow-definition-language-functions-reference.md#array) | Belirtilen tek bir girdiden bir dizi döndürür. Birden çok giriş için bkz. [Createarray](../logic-apps/workflow-definition-language-functions-reference.md#createArray). |
-| [biçiminde](../logic-apps/workflow-definition-language-functions-reference.md#base64) | Bir dize için Base64 kodlamalı sürüm döndürün. |
+| [array](../logic-apps/workflow-definition-language-functions-reference.md#array) | Belirtilen tek bir girdiden bir dizi döndürür. Birden çok giriş için bkz. [Createarray](../logic-apps/workflow-definition-language-functions-reference.md#createArray). |
+| [base64](../logic-apps/workflow-definition-language-functions-reference.md#base64) | Bir dize için Base64 kodlamalı sürüm döndürün. |
 | [base64ToBinary](../logic-apps/workflow-definition-language-functions-reference.md#base64ToBinary) | Base64 ile kodlanmış bir dize için ikili sürümü döndürün. |
 | [base64ToString](../logic-apps/workflow-definition-language-functions-reference.md#base64ToString) | Base64 ile kodlanmış bir dize için dize sürümünü döndürün. |
 | [ý](../logic-apps/workflow-definition-language-functions-reference.md#binary) | Bir giriş değeri için ikili sürümü döndürün. |
@@ -165,7 +165,7 @@ Her işlev hakkında tam başvuru için [alfabetik listeye](../logic-apps/workfl
 | [float](../logic-apps/workflow-definition-language-functions-reference.md#float) | Giriş değeri için bir kayan nokta numarası döndürür. |
 | ['tir](../logic-apps/workflow-definition-language-functions-reference.md#int) | Bir dize için tamsayı sürümünü döndürün. |
 | [nesnesinde](../logic-apps/workflow-definition-language-functions-reference.md#json) | Bir dize veya XML için JavaScript Nesne Gösterimi (JSON) türü değerini veya nesnesini döndürün. |
-| [dize](../logic-apps/workflow-definition-language-functions-reference.md#string) | Bir giriş değeri için dize sürümünü döndürün. |
+| [string](../logic-apps/workflow-definition-language-functions-reference.md#string) | Bir giriş değeri için dize sürümünü döndürün. |
 | [URIComponent](../logic-apps/workflow-definition-language-functions-reference.md#uriComponent) | URL-güvenli olmayan karakterleri kaçış karakterleriyle değiştirerek, bir giriş değeri için URI kodlu sürümü döndürün. |
 | [Urıonenttobinary](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToBinary) | URI kodlamalı dize için ikili sürümü döndürün. |
 | [uriComponentToString](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToString) | URI kodlamalı dize için dize sürümünü döndürün. |
@@ -174,7 +174,7 @@ Her işlev hakkında tam başvuru için [alfabetik listeye](../logic-apps/workfl
 
 <a name="math-functions"></a>
 
-## <a name="math-functions"></a>Matematik işlevleri
+## <a name="math-functions"></a>Matematiksel işlevler
 
 Tamsayılar ve float ile çalışmak için, bu matematik işlevlerini kullanabilirsiniz.
 Her işlev hakkında tam başvuru için [alfabetik listeye](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list)bakın.
@@ -183,12 +183,12 @@ Her işlev hakkında tam başvuru için [alfabetik listeye](../logic-apps/workfl
 | ------------- | ---- |
 | [ekleyemiyorum](../logic-apps/workflow-definition-language-functions-reference.md#add) | İki sayı eklemenin sonucunu döndürür. |
 | [div](../logic-apps/workflow-definition-language-functions-reference.md#div) | İki sayının bölünme sonucunu döndürür. |
-| [Biçimlendir](../logic-apps/workflow-definition-language-functions-reference.md#max) | Sayı veya dizi kümesinden en yüksek değeri döndürün. |
-| [Min](../logic-apps/workflow-definition-language-functions-reference.md#min) | Sayı veya dizi kümesinden en düşük değeri döndürün. |
+| [max](../logic-apps/workflow-definition-language-functions-reference.md#max) | Sayı veya dizi kümesinden en yüksek değeri döndürün. |
+| [min](../logic-apps/workflow-definition-language-functions-reference.md#min) | Sayı veya dizi kümesinden en düşük değeri döndürün. |
 | [alma](../logic-apps/workflow-definition-language-functions-reference.md#mod) | İki sayıdan ayırarak kalanı döndürün. |
 | [MUL](../logic-apps/workflow-definition-language-functions-reference.md#mul) | Ürünü iki sayıdan çarpmadan döndürün. |
 | [ran](../logic-apps/workflow-definition-language-functions-reference.md#rand) | Belirtilen aralıktan rastgele bir tamsayı döndürür. |
-| [aralığı](../logic-apps/workflow-definition-language-functions-reference.md#range) | Belirtilen tamsayıdan başlayan bir tamsayı dizisi döndürür. |
+| [range](../logic-apps/workflow-definition-language-functions-reference.md#range) | Belirtilen tamsayıdan başlayan bir tamsayı dizisi döndürür. |
 | [alt](../logic-apps/workflow-definition-language-functions-reference.md#sub) | İkinci sayının ilk sayıdan çıkarılmadan elde edilen sonucu döndürür. |
 |||
 
@@ -240,7 +240,7 @@ Her işlev hakkında tam başvuru için [alfabetik listeye](../logic-apps/workfl
 | ----------------- | ---- |
 | [ön](../logic-apps/workflow-definition-language-functions-reference.md#action) | Çalışma zamanında geçerli eylemin çıkışını veya diğer JSON ad ve değer çiftleriyle değerleri döndürün. Ayrıca bkz. [Eylemler](../logic-apps/workflow-definition-language-functions-reference.md#actions). |
 | [actionBody](../logic-apps/workflow-definition-language-functions-reference.md#actionBody) | Çalışma zamanında bir eylemin `body` çıktısını döndürün. Ayrıca bkz. [gövde](../logic-apps/workflow-definition-language-functions-reference.md#body). |
-| [Actionçıktılar](../logic-apps/workflow-definition-language-functions-reference.md#actionOutputs) | Çalışma zamanında bir eylemin çıktısını döndürün. Bkz. [Eylemler](../logic-apps/workflow-definition-language-functions-reference.md#actions). |
+| [Actionçıktılar](../logic-apps/workflow-definition-language-functions-reference.md#actionOutputs) | Çalışma zamanında bir eylemin çıktısını döndürün. Bkz. [çıktılar](../logic-apps/workflow-definition-language-functions-reference.md#outputs) ve [Eylemler](../logic-apps/workflow-definition-language-functions-reference.md#actions). |
 | [eylem](../logic-apps/workflow-definition-language-functions-reference.md#actions) | Çalışma zamanında bir eylemin çıkışını veya diğer JSON ad ve-değer çiftleriyle değerleri döndürün. Ayrıca bkz. [eylem](../logic-apps/workflow-definition-language-functions-reference.md#action).  |
 | [body](#body) | Çalışma zamanında bir eylemin `body` çıktısını döndürün. Ayrıca bkz. [Actionbody](../logic-apps/workflow-definition-language-functions-reference.md#actionBody). |
 | [formDataMultiValues](../logic-apps/workflow-definition-language-functions-reference.md#formDataMultiValues) | *Form-Data* veya *form kodlu* eylem çıktılarında anahtar adı ile eşleşen değerlerle bir dizi oluşturun. |
@@ -250,6 +250,7 @@ Her işlev hakkında tam başvuru için [alfabetik listeye](../logic-apps/workfl
 | [Iterationındexes](../logic-apps/workflow-definition-language-functions-reference.md#iterationIndexes) | Bir Until döngüsü içindeyken, geçerli yineleme için dizin değerini döndürür. Bu işlevi iç içe kadar, iç içe kadar kullanabilirsiniz. |
 | [listCallbackUrl](../logic-apps/workflow-definition-language-functions-reference.md#listCallbackUrl) | Tetikleyici veya eylem çağıran "geri çağırma URL 'sini" döndürür. |
 | [multipartBody](../logic-apps/workflow-definition-language-functions-reference.md#multipartBody) | Bir eylemin birden çok parçaya sahip olan çıkışında belirli bir bölümün gövdesini döndürün. |
+| [çıkışı](../logic-apps/workflow-definition-language-functions-reference.md#outputs) | Çalışma zamanında bir eylemin çıktısını döndürün. |
 | [parameters](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | İş akışı tanımınızda açıklanan parametre için değeri döndürün. |
 | [Tetikleyicinin](../logic-apps/workflow-definition-language-functions-reference.md#trigger) | Çalışma zamanında bir tetikleyicinin çıkışını veya diğer JSON ad ve değer çiftlerinden döndürün. Ayrıca bkz. [Triggerçıktılar](#triggerOutputs) ve [triggerbody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody). |
 | [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) | Çalışma zamanında Tetikleyicinin `body` çıkışını döndürün. Bkz. [tetikleyici](../logic-apps/workflow-definition-language-functions-reference.md#trigger). |
@@ -380,9 +381,7 @@ Ve şu sonucu döndürür:
 
 ### <a name="actionoutputs"></a>Actionçıktılar
 
-Çalışma zamanında bir eylemin çıktısını döndürün.
-İçin `actions('<actionName>').outputs`toplu değer.
-Bkz. [Eylemler ()](#actions).
+Çalışma zamanında bir eylemin çıktısını döndürün.  ve için `actions('<actionName>').outputs`toplu bir özelliktir. Bkz. [Eylemler ()](#actions). İşlevi, Logic App `outputs()` Designer 'da öğesine çözümleniyor, bu nedenle `actionOutputs()`yerine [çıktılar ()](#outputs)kullanmayı düşünün. `actionOutputs()` Her iki işlev de aynı şekilde çalışır, `outputs()` ancak tercih edilir.
 
 ```
 actionOutputs('<actionName>')
@@ -443,7 +442,7 @@ Ve şu sonucu döndürür:
 
 <a name="actions"></a>
 
-### <a name="actions"></a>Eylem
+### <a name="actions"></a>eylem
 
 Çalışma zamanında bir eylemin çıktısını veya diğer JSON ad ve değer çiftlerinde bulunan değerleri bir ifadeye atayabilirsiniz. Varsayılan olarak, işlev tüm eylem nesnesine başvurur, ancak isteğe bağlı olarak değerini istediğiniz bir özelliği belirtebilirsiniz.
 Toplu sürümler için bkz. [Actionbody ()](#actionBody), [actionçıktılar ()](#actionOutputs)ve [body ()](#body).
@@ -481,7 +480,7 @@ Ve şu sonucu döndürür:`"Succeeded"`
 
 <a name="add"></a>
 
-### <a name="add"></a>add
+### <a name="add"></a>ekle
 
 İki sayı eklemenin sonucunu döndürür.
 
@@ -964,7 +963,7 @@ Ve şu sonucu döndürür:
 
 <a name="body"></a>
 
-### <a name="body"></a>bölümü
+### <a name="body"></a>body
 
 Çalışma zamanında bir eylemin `body` çıktısını döndürün.
 İçin `actions('<actionName>').outputs.body`toplu değer.
@@ -1703,7 +1702,7 @@ Ve şu sonuçları döndürür:
 
 <a name="endswith"></a>
 
-### <a name="endswith"></a>EndsWith
+### <a name="endswith"></a>endsWith
 
 Bir dizenin belirli bir alt dizeyle bitip bitmediğini denetleyin.
 Alt dize bulunduğunda true, bulunamazsa false döndürün.
@@ -2376,7 +2375,7 @@ Bu örnek, bir sayaç değişkeni oluşturur ve sayaç değeri beş olana kadar 
 
 <a name="json"></a>
 
-### <a name="json"></a>nesnesinde
+### <a name="json"></a>json
 
 Bir dize veya XML için JavaScript Nesne Gösterimi (JSON) türü değerini veya nesnesini döndürün.
 
@@ -2704,7 +2703,7 @@ Bu örnekte, bu işlevin döndürebileceğini örnek bir geri çağırma URL 'SI
 
 <a name="max"></a>
 
-### <a name="max"></a>Biçimlendir
+### <a name="max"></a>en çok
 
 Bir liste veya diziden en yüksek değeri, her iki uçta da dahil olmak üzere sayı ile döndürün.
 
@@ -2954,6 +2953,69 @@ Ve şu sonuçları döndürür:
 * İlk örnek: En az bir ifade true, bu nedenle işlev döndürür `true`.
 * İkinci örnek: Her iki ifade de false 'dur, bu nedenle `false`işlev döndürür.
 
+<a name="outputs"></a>
+
+### <a name="outputs"></a>outputs
+
+Çalışma zamanında bir eylemin çıkışlarını döndürün. Mantıksal uygulama tasarımcısında ' i `actionOutputs()` `outputs()` çözümleyen, yerine bu işlevi kullanın. Her iki işlev de aynı şekilde çalışır, `outputs()` ancak tercih edilir.
+
+```
+outputs('<actionName>')
+```
+
+| Parametre | Gerekli | Tür | Açıklama |
+| --------- | -------- | ---- | ----------- |
+| <*actionName*> | Evet | Dize | Eylem için istediğiniz çıkışın adı |
+|||||
+
+| Dönüş değeri | Type | Açıklama |
+| ------------ | -----| ----------- |
+| <*çıktıların*> | Dize | Belirtilen eylemden alınan çıkış |
+||||
+
+*Örnek*
+
+Bu örnek, Twitter eyleminden `Get user`çıktıyı alır:
+
+```
+outputs('Get_user')
+```
+
+Ve şu sonucu döndürür:
+
+```json
+{
+  "statusCode": 200,
+  "headers": {
+    "Pragma": "no-cache",
+    "Vary": "Accept-Encoding",
+    "x-ms-request-id": "a916ec8f52211265d98159adde2efe0b",
+    "X-Content-Type-Options": "nosniff",
+    "Timing-Allow-Origin": "*",
+    "Cache-Control": "no-cache",
+    "Date": "Mon, 09 Apr 2018 18:47:12 GMT",
+    "Set-Cookie": "ARRAffinity=b9400932367ab5e3b6802e3d6158afffb12fcde8666715f5a5fbd4142d0f0b7d;Path=/;HttpOnly;Domain=twitter-wus.azconn-wus.p.azurewebsites.net",
+    "X-AspNet-Version": "4.0.30319",
+    "X-Powered-By": "ASP.NET",
+    "Content-Type": "application/json; charset=utf-8",
+    "Expires": "-1",
+    "Content-Length": "339"
+  },
+  "body": {
+    "FullName": "Contoso Corporation",
+    "Location": "Generic Town, USA",
+    "Id": 283541717,
+    "UserName": "ContosoInc",
+    "FollowersCount": 172,
+    "Description": "Leading the way in transforming the digital workplace.",
+    "StatusesCount": 93,
+    "FriendsCount": 126,
+    "FavouritesCount": 46,
+    "ProfileImageUrl": "https://pbs.twimg.com/profile_images/908820389907722240/gG9zaHcd_400x400.jpg"
+  }
+}
+```
+
 <a name="parameters"></a>
 
 ### <a name="parameters"></a>parameters
@@ -3149,7 +3211,7 @@ setProperty(json('customerProfile'), 'accountNumber', guid())
 
 <a name="skip"></a>
 
-### <a name="skip"></a>Şimdilik
+### <a name="skip"></a>atla
 
 Öğeleri bir koleksiyonun önünden kaldırın ve *diğer tüm* öğeleri döndürün.
 
@@ -3531,7 +3593,7 @@ Ve şu sonuçları döndürür:
 
 <a name="ticks"></a>
 
-### <a name="ticks"></a>onay
+### <a name="ticks"></a>tık
 
 Belirtilen zaman damgası için özellikdeğerinidöndürün.`ticks`
 *Değer* bir 100-nanosaniyelik aralığıdır.
@@ -4133,7 +4195,7 @@ Ve şu sonucu döndürür:`"Sunday, April 15, 2018"`
 
 <a name="variables"></a>
 
-### <a name="variables"></a>Değişkenlerinin
+### <a name="variables"></a>değişkenlerinin
 
 Belirtilen değişken için değeri döndürün.
 

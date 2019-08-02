@@ -5,13 +5,13 @@ ms.author: rimman
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
-ms.openlocfilehash: 1bfa7104425b5013f9cdf36ff3c1dd88107d3ec7
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.date: 08/01/2019
+ms.openlocfilehash: e80e548ceae2149fe7061da42c71ee8b61f00a72
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467852"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717564"
 ---
 # <a name="partitioning-in-azure-cosmos-db"></a>Azure Cosmos DB bölümleniyor
 
@@ -39,7 +39,7 @@ Aşağıda, bölüm anahtarı seçmeye yönelik iyi bir kılavuz verilmiştir:
 
 * Tek bir mantıksal bölümün 10 GB depolama üst sınırı vardır.  
 
-* Azure Cosmos kapsayıcıları, saniyede en az 400 istek birimi (RU/sn) aktarım hızına sahiptir. Aynı bölüm anahtarına yapılan istekler bir bölüme ayrılan aktarım hızını aşamaz. İstekler ayrılan aktarım hızını aşarsa, istekler hız sınırlı olacaktır. Bu nedenle, uygulamanızın içinde "etkin noktalar" ile sonuçlanmaması gereken bir bölüm anahtarı seçmek önemlidir.
+* Azure Cosmos kapsayıcıları, saniyede en az 400 istek birimi (RU/sn) aktarım hızına sahiptir. Bir veritabanında aktarım hızı sağlandığında, kapsayıcı başına en az RU, saniyede 100 istek birimi (RU/s) olur. Aynı bölüm anahtarına yapılan istekler bir bölüme ayrılan aktarım hızını aşamaz. İstekler ayrılan aktarım hızını aşarsa, istekler hız sınırlı olacaktır. Bu nedenle, uygulamanızın içinde "etkin noktalar" ile sonuçlanmaması gereken bir bölüm anahtarı seçmek önemlidir.
 
 * Geniş bir değer aralığına ve mantıksal bölümler arasında eşit olarak yayılan erişim düzenlerine sahip bir bölüm anahtarı seçin. Bu, veri depolama ve verimlilik için kaynakların mantıksal bölümler arasında dağıtılabilecek şekilde, kapsayıcıda verileri ve etkinliği mantıksal bölümler kümesi genelinde yaymaya yardımcı olur.
 

@@ -6,14 +6,14 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 15c74637a2dc42ec44f582878b5505d94637cd7b
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: 974243da07a2570e851b7d44eac2556c201c2782
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314205"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678520"
 ---
-# <a name="azure-data-factory-mapping-data-flow-select-transformation"></a>Azure Data Factory eşleme veri akışı dönüşümü seçme
+# <a name="mapping-data-flow-select-transformation"></a>Eşleme veri akışı dönüşüm seçme
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
 Seçiciliği (sütun sayısını azaltma), diğer ad sütunları ve akış adları ve sütunları yeniden sıralama için bu dönüşümü kullanın.
@@ -27,10 +27,7 @@ Yukarıdaki diyagramda, select Transform en üstte. Bu, özgün akışın "OrigS
 
 Ayrıca, veri akışınızdan sütunları seçmek için bir yöntem olarak da kullanılabilir. Örneğin, havuzunuzu tanımlanmış 6 sütunlarınız varsa, ancak yalnızca belirli bir 3 ' ü dönüştürmek ve havuza akışa almak istiyorsanız, select Transform 'u kullanarak yalnızca bu 3 ' ü seçebilirsiniz.
 
-> [!NOTE]
-> Yalnızca belirli sütunları seçmek için "Tümünü Seç" seçeneğini kapatmanız gerekir
-
-![Dönüşüm seçin](media/data-flow/select001.png "Diğer ad Seç")
+![Dönüşüm seçin](media/data-flow/newselect1.png "Diğer ad Seç")
 
 ## <a name="options"></a>Seçenekler
 * "Select" için varsayılan ayar tüm gelen sütunları dahil etmek ve bu özgün adları tutmak içindir. Seçim dönüşümünün adını ayarlayarak akışa diğer ad verebilirsiniz.
@@ -38,6 +35,23 @@ Ayrıca, veri akışınızdan sütunları seçmek için bir yöntem olarak da ku
 * Giriş veya çıkış meta verilerinden yinelenen sütunları kaldırmak için Yinelenenleri atla ' yı seçin.
 
 ![Yinelenenleri atla](media/data-flow/select-skip-dup.png "Yinelenenleri atla")
+
+> [!NOTE]
+> Eşleme kurallarını temizlemek için **Sıfırla** düğmesine basın.
+
+## <a name="mapping"></a>Eşleme
+Varsayılan olarak, select dönüşümü tüm sütunları otomatik olarak eşleştirir. Bu, tüm gelen sütunları çıktıda aynı ada geçirecek şekilde otomatik olarak eşler. Seçim ayarları 'nda ayarlanan çıkış akışı adı, akış için yeni bir diğer ad tanımlar. Otomatik eşleme için seçim kümesini tutarsanız, tüm akış için aynı olan tüm akışı aynı şekilde diğer ad olarak kullanabilirsiniz.
+
+![Dönüşüm kurallarını seçin](media/data-flow/rule2.png "Kural tabanlı eşleme")
+
+Sütunları diğer ad, kaldırma, yeniden adlandırma veya yeniden sıralama yapmak istiyorsanız, önce "otomatik eşleme" seçeneğini kapatmanız gerekir. Varsayılan olarak, "tüm giriş sütunları" olarak adlandırılabilecek bir varsayılan kural görürsünüz. Tüm gelen sütunların çıktılarıyla aynı ada sahip olacak şekilde her zaman izin vermeyi düşünüyorsanız, bu kuralı yerinde bırakabilirsiniz.
+
+Ancak, özel kurallar eklemek istiyorsanız, "eşleme Ekle" seçeneğine tıklamanız gerekir. Alan eşleme, eşleme ve diğer ad için gelen ve giden sütun adlarının bir listesini sağlar. "Kural tabanlı eşleme" yi seçerek model eşleştirme kuralları oluşturun.
+
+## <a name="rule-based-mapping"></a>Kural tabanlı eşleme
+Kural tabanlı eşleme ' yi seçtiğinizde, gelen model kurallarını eşleştirmek ve giden alan adlarını tanımlamak için eşleşen ifadenizi değerlendirmek üzere ADF 'yi öğreneceksiniz. Hem alan hem de kural tabanlı eşlemelerin birleşimini ekleyebilirsiniz. Daha sonra alan adları, kaynaktan gelen meta veriler temelinde ADF tarafından çalışma zamanında oluşturulur. Oluşturulan alanların adlarını hata ayıklama sırasında ve veri önizleme bölmesini kullanarak görüntüleyebilirsiniz.
+
+Model eşleştirme hakkında daha fazla ayrıntı, [sütun deseninin belgelerinde](concepts-data-flow-column-pattern.md)bulunabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Yeniden adlandırma, yeniden sıralama ve diğer ad Sütunlarını Seç ' i kullandıktan sonra, verileri bir veri deposuna eklemek için [Havuz dönüştürmeyi](data-flow-sink.md) kullanın.

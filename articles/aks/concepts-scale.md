@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: zarhoads
-ms.openlocfilehash: 3230d85dfcf57bfd4e2e1684f4f5620600ec4e3a
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: c25bc316a345404c759b346b4fb877de42ee4d13
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424208"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561561"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki uygulamalar için ölçeklendirme seçenekleri
 
@@ -45,9 +45,9 @@ Aks 'deki yatay Pod otomatik Scaler 'ı kullanmaya başlamak için bkz. [aks 'de
 
 Yatay Pod otomatik Scaler, ölçüm API 'sini her 30 saniyede bir denetlediğinde, önceki ölçek olayları, başka bir denetim yapılmadan önce başarıyla tamamlanmamış olabilir. Bu davranış, önceki ölçeklendirme olayı uygulama iş yükünü ve uygun şekilde ayarlanacak kaynak taleplerini elde etmeden önce, yatay Pod otomatik Scaler 'ın yineleme sayısını değiştirmesine neden olabilir.
 
-Bu yarış olaylarını en aza indirmek için, coolaşağı veya Delay değerleri ayarlanabilir. Bu değerler, başka bir ölçek olayının tetiklenmesi için bir ölçek olayından sonra yatay Pod otomatik Scaler 'ın ne kadar süre beklemesi gerektiğini tanımlar. Bu davranış, yeni çoğaltma sayısının etkili olmasına ve ölçüm API 'sinin dağıtılmış iş yükünü yansıtmasını sağlar. Varsayılan olarak, ölçek artırma olayları gecikmesi 3 dakikadır ve ölçek azaltma olaylardaki gecikme 5 dakikadır
+Bu yarış olaylarını en aza indirmek için, coolaşağı veya Delay değerleri ayarlanır. Bu değerler, başka bir ölçek olayının tetiklenmesi için bir ölçek olayından sonra yatay Pod otomatik Scaler 'ın ne kadar süre beklemesi gerektiğini tanımlar. Bu davranış, yeni çoğaltma sayısının etkili olmasına ve ölçüm API 'sinin dağıtılmış iş yükünü yansıtmasını sağlar. Varsayılan olarak, ölçek artırma olayları gecikmesi 3 dakikadır ve ölçek azaltma olaylardaki gecikme 5 dakikadır
 
-Bu coolvalues değerlerini ayarlamanız gerekebilir. Varsayılan coolaşağı değerler, yatay Pod otomatik Scaler 'ın çoğaltma sayısını yeterince hızlı ölçeklendirmeyeceği izlenimi verebilir. Örneğin, kullanımdaki çoğaltmaların sayısını daha hızlı bir şekilde artırmak için, kullanarak `--horizontal-pod-autoscaler-upscale-delay` `kubectl`yatay Pod otomatik Scaler tanımlarınızı oluştururken öğesini azaltın.
+Şu anda, bu coolvalues değerlerini varsayılan değerden ayarlayamamaktadır.
 
 ## <a name="cluster-autoscaler"></a>Küme otomatik Scaler
 
@@ -93,7 +93,7 @@ Sanal düğümler, AKS kümeniz ile aynı sanal ağdaki ek bir alt ağa dağıt�
 
 Ölçeklendirme uygulamaları kullanmaya başlamak için öncelikle [Azure CLI ile BIR AKS kümesi oluşturmak üzere hızlı][aks-quickstart]başlangıcı izleyin. Daha sonra, AKS kümenizdeki uygulamaları el ile veya otomatik olarak ölçeklendirmeye başlayabilirsiniz:
 
-- [Pod][aks-manually-scale-pods] 'yi el ile ölçeklendirme or [nodes][aks-manually-scale-nodes]
+- [Pod][aks-manually-scale-pods] veya [düğümleri][aks-manually-scale-nodes] el ile ölçeklendirme
 - [Yatay Pod otomatik Scaler][aks-hpa] 'ı kullanma
 - [Küme otomatik Scaler][aks-cluster-autoscaler] 'ı kullanma
 

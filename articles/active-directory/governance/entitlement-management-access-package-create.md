@@ -16,12 +16,12 @@ ms.date: 07/23/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83eee019ee8530297689b85e6f3300fed4392610
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 9f033cf57c5a285e94372728677c91e021065fa9
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489189"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678183"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management-preview"></a>Azure AD Yetkilendirme Yönetimi 'nde yeni bir erişim paketi oluşturma (Önizleme)
 
@@ -44,7 +44,7 @@ Aşağıdaki diyagramda yeni bir erişim paketi oluşturmak için üst düzey i�
 
 ## <a name="start-new-access-package"></a>Yeni erişim paketini Başlat
 
-**Önkoşul rolü:** Kullanıcı Yöneticisi veya katalog sahibi
+**Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi veya katalog sahibi
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 
@@ -64,21 +64,20 @@ Aşağıdaki diyagramda yeni bir erişim paketi oluşturmak için üst düzey i�
 
 1. **Katalog** açılan listesinde, erişim paketini oluşturmak istediğiniz kataloğu seçin. Örneğin, istenmiş olan tüm pazarlama kaynaklarını yöneten bir katalog sahibi olabilirsiniz. Bu durumda, pazarlama kataloğunu seçebilirsiniz.
 
-    Yalnızca ' de erişim paketleri oluşturma izniniz olan kataloglar görüntülenir. Mevcut bir katalogda erişim paketi oluşturmak için, en az bir Kullanıcı Yöneticisi, Katalog sahibi veya paket Yöneticisi erişim gerekir.
+    Yalnızca ' de erişim paketleri oluşturma izniniz olan kataloglar görüntülenir. Mevcut bir katalogda bir erişim paketi oluşturmak için, en az bir genel yönetici, bir Kullanıcı Yöneticisi, bu katalogda Katalog sahibi olmanız veya bu katalogdaki paket yöneticisine erişmeniz gerekir.
 
     ![Erişim paketi-temel bilgiler](./media/entitlement-management-access-package-create/basics.png)
 
-    Erişim paketinizi yeni bir katalogda oluşturmak istiyorsanız **Yeni oluştur**' a tıklayın. Katalog adı ve açıklamasını girip **Oluştur**' a tıklayın.
+    Bir genel Yöneticiyseniz veya bir Kullanıcı yöneticisiyseniz ve listelenmeyen yeni bir katalogda erişim paketinizi oluşturmak istiyorsanız **Yeni oluştur**' a tıklayın. Katalog adı ve açıklamasını girip **Oluştur**' a tıklayın.
 
-    Oluşturmakta olduğunuz erişim paketi ve kendisine dahil edilen kaynaklar yeni kataloğa eklenecektir. Ayrıca, kataloğun ilk sahibi de otomatik olarak olacaktır. Ek katalog sahipleri ekleyebilirsiniz.
+    Oluşturmakta olduğunuz erişim paketi ve kendisine dahil edilen kaynaklar yeni kataloğa eklenecektir. Daha sonra da ek Katalog sahipleri ekleyebilirsiniz.
 
-    Yeni bir katalog oluşturmak için en az bir Kullanıcı Yöneticisi veya katalog Oluşturucu olmalıdır.
 
 1.           **İleri**'ye tıklayın.
 
 ## <a name="resource-roles"></a>Kaynak rolleri
 
-**Kaynak rolleri** sekmesinde, erişim paketine dahil edilecek kaynakları seçersiniz.
+**Kaynak rolleri** sekmesinde, erişim paketine dahil edilecek kaynakları seçersiniz.  Erişim paketini isteyen ve alan kullanıcılar, erişim paketindeki tüm kaynak rollerini alacaktır.
 
 1. Eklemek istediğiniz kaynak türüne (**gruplar**, **uygulamalar**veya **SharePoint siteleri**) tıklayın.
 
@@ -86,11 +85,11 @@ Aşağıdaki diyagramda yeni bir erişim paketi oluşturmak için üst düzey i�
 
     ![Paket-kaynak rollerine erişme](./media/entitlement-management-access-package-create/resource-roles.png)
 
-    Erişim paketini genel katalogda veya yeni bir katalogda oluşturuyorsanız, sahip olduğunuz dizinden herhangi bir kaynak seçebilirsiniz. En az bir Kullanıcı Yöneticisi veya katalog Oluşturucu olmalıdır.
+    Erişim paketini genel katalogda veya yeni bir katalogda oluşturuyorsanız, sahip olduğunuz dizinden herhangi bir kaynak seçebilirsiniz. En az bir genel yönetici, bir Kullanıcı Yöneticisi veya katalog Oluşturucu olmalıdır.
 
     Erişim paketini mevcut bir katalogda oluşturuyorsanız, zaten katalogda olan herhangi bir kaynağı sahip olmadan seçebilirsiniz.
 
-    Kullanıcı yöneticisiyseniz veya katalog sahibiyseniz, sahip olduğunuz kaynakları seçme konusunda henüz katalogda olmayan ek bir seçeneğe sahip olursunuz. Seçili katalogda mevcut olmayan kaynakları seçerseniz, bu kaynaklar diğer katalog yöneticilerinin ile erişim paketleri oluşturması için kataloğa da eklenecektir. Yalnızca seçili katalogda olan kaynakları seçmek istiyorsanız, kaydırma kutusunun en üstündeki **yalnızca göster** onay kutusunu işaretleyin.
+    Bir genel yöneticiyseniz, bir Kullanıcı Yöneticisi veya katalog sahibiyseniz, sahip olduğunuz kaynakları seçerken henüz katalogda olmayan ek bir seçeneğe sahip olursunuz. Seçili katalogda mevcut olmayan kaynakları seçerseniz, bu kaynaklar diğer katalog yöneticilerinin ile erişim paketleri oluşturması için kataloğa da eklenecektir. Yalnızca seçili katalogda olan kaynakları seçmek istiyorsanız, kaydırma kutusunun en üstündeki **yalnızca göster** onay kutusunu işaretleyin.
 
 1. Kaynakları seçtikten sonra, **rol** listesinde, kullanıcıların kaynak için atanmasını istediğiniz rolü seçin.
 

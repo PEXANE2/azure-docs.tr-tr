@@ -9,18 +9,19 @@ manager: barbkess
 editor: ''
 ms.assetid: cd906856-f4f9-4ddc-9249-c998386f4085
 ms.service: security
+ms.subservice: security-develop
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: terrylan
-ms.openlocfilehash: 66719d43db277e6c82d89ee17c602309d16140f8
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 0683c065285a6ddf8d966bbd3d22e88c39b34d5c
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489984"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68728812"
 ---
 # <a name="develop-a-secure-web-app"></a>Güvenli bir Web uygulaması geliştirme
 
@@ -137,7 +138,7 @@ Uygulamayı çalışır duruma getirmek için şu araçları yüklemeniz gerekir
 - Sisteminizde [Git](https://git-scm.com/) . Git, kaynak kodu yerel olarak kopyalamak için kullanılır.
 - [JQ](https://stedolan.github.io/jq/), JSON 'u Kullanıcı dostu bir şekilde sorgulamak IÇIN bir UNIX aracıdır.
 
-Örnek uygulamanın kaynaklarını dağıtmak için bir Azure aboneliğine ihtiyacınız vardır. Azure aboneliğiniz yoksa, örnek uygulamayı test etmek için [ücretsiz bir hesap oluşturabilirsiniz](https://azure.microsoft.com/en-us/free/) .
+Örnek uygulamanın kaynaklarını dağıtmak için bir Azure aboneliğine ihtiyacınız vardır. Azure aboneliğiniz yoksa, örnek uygulamayı test etmek için [ücretsiz bir hesap oluşturabilirsiniz](https://azure.microsoft.com/free/) .
 
 Bu araçları yükledikten sonra, uygulamayı Azure 'da dağıtmaya hazırsınız demektir.
 
@@ -353,7 +354,7 @@ PostgreSQL için SSL ve sertifika yetkilisi (CA) doğrulamasını ayarlama hakk�
 Kapsayıcıda bir kök sertifika bulunur. Sertifikayı elde etmek için uygulanan adımlar şunlardır:
 
 1. Sertifika [yetkilisinden](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt)sertifika dosyasını indirin.
-2. [Makinenizde OpenSSL indirin ve yükleyin](https://docs.microsoft.com/en-us/azure/postgresql/concepts-ssl-connection-security#download-and-install-openssl-on-your-machine).
+2. [Makinenizde OpenSSL indirin ve yükleyin](https://docs.microsoft.com/en-us/azure/postgresql/concepts-ssl-connection-security).
 3. Sertifika dosyanızın kodunu çözün:
 
    ```powershell

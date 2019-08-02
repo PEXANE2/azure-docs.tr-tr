@@ -1,6 +1,6 @@
 ---
-title: 'Uygulama yönetici rolleri: Azure Active Directory temsilci | Microsoft Docs'
-description: Uygulama erişim yönetimi Azure Active Directory'de izinleri hakları vermek rolleri için temsilci seçme
+title: Uygulama Yöneticisi oluşturma ve yönetim izinlerini devretmek-Azure Active Directory | Microsoft Docs
+description: Azure Active Directory 'de uygulama erişim yönetimi için izin verme
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -10,95 +10,94 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 07/31/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58ca814551d8c7d309328f236052e1d07ac6f035
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 896bd7f9af3c319ec4190131036d8aa8ee49bb79
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60469137"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705429"
 ---
-# <a name="delegate-app-administrator-roles-in-azure-active-directory"></a>Azure Active Directory'de yönetici rolleri uygulama temsilcisi
+# <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Azure Active Directory 'de uygulama kayıt izinleri verme
 
- Azure AD, temsilci bir dizi yerleşik yönetici rolleri için uygulama erişim yönetimi sağlar. Genel yönetici ek yükünü azaltmanın yanı sıra, uygulama erişim görevleri yönetmek üzere özelleştirilmiş ayrıcalıkları temsilci olarak görevlendirme güvenlik duruşunu ve yetkisiz erişim olasılığını azaltır. Temsilci seçme sorunlarını ve genel yönergeleri açıklanmıştır [temsilci Azure Active Directory'de yönetim](roles-concept-delegation.md).
+Bu makalede uygulama yönetimi ihtiyaçlarınızı karşılamak üzere Azure Active Directory (Azure AD) içindeki özel rollerde uygulama izinlerinin nasıl kullanılacağı açıklanır. Azure Active Directory (Azure AD), uygulama oluşturma ve yönetim izinlerinin aşağıdaki yollarla temsilciliğini sağlar:
 
-## <a name="delegate-app-administration"></a>Temsilci uygulama yönetimi
+- [Kimlerin uygulama oluşturup](#restrict-who-can-create-applications) oluşturdukları uygulamaları yönetebileceğini sınırlandırma. Azure AD 'de varsayılan olarak, tüm kullanıcılar uygulama kayıtlarını kaydedebilir ve oluşturdukları uygulamaların tüm yönlerini yönetebilir. Bu, yalnızca izin verilen kullanıcılara izin vermek için kısıtlanabilir.
+- Bir [uygulamaya bir veya daha fazla sahip atama](#assign-application-owners). Bu, birine belirli bir uygulama için Azure AD yapılandırmasının tüm yönlerini yönetme olanağı sağlamanın basit bir yoludur.
+- Tüm uygulamalar için Azure AD 'de yapılandırmayı yönetme erişimi veren [yerleşik bir yönetim rolü atama](#assign-built-in-application-admin-roles) . Bu, BT uzmanlarına, Azure AD 'nin uygulama yapılandırmasıyla ilgili olmayan diğer kısımlarını yönetmek için erişim izni vermeden, geniş uygulama yapılandırma izinlerini yönetmek üzere erişim vermek için önerilen yoldur.
+- [Özel bir rol oluşturmak](#create-and-assign-a-custom-role) ve bunu, tek bir uygulamanın sınırlı bir sahip olarak veya dizin kapsamında (tüm uygulamalar) sınırlı yönetici olarak bir kişiye atamak.
 
-Aşağıdaki roller, uygulama kayıtları, çoklu oturum açma ayarları, kullanıcı ve Grup atamalarını yönetmeye ve temsilci izinleri ve uygulama izinleri (Microsoft Graph ve Azure AD Graph hariç) onay için izinleri verin. Tek fark, uygulama yöneticisi rolü de uygulama proxy'si ayarlarını yönetmek için izinler verir. Her iki rol, koşullu erişim ayarlarını yönetme olanağı verir.
-> [!IMPORTANT]
-> Bu role atanan kullanıcılar, kimlik bilgileri için uygulama ekleme ve uygulamanın kimliğine bürünülecek bu kimlik bilgilerini kullanın. Bu kimliğe bürünme uygulamanın kimliğini, kullanıcı, bir rol atamaları altında Azure AD'de neler yapabileceğinizi ayrıcalık olabilir. Bu role atanmış kullanıcı potansiyel olarak oluşturun veya uygulama kimliğine bürünülürken kullanıcılara veya diğer nesneleri güncelleştirin.
+Yukarıdaki yöntemlerden birini kullanarak iki nedenden dolayı erişim vermek önemlidir. İlk olarak, yönetim görevlerini gerçekleştirmek için temsilci seçme, genel yönetici ek yükünü azaltır. İkincisi, sınırlı izinleri kullanmak güvenlik duruşunuzu iyileştirir ve yetkisiz erişim potansiyelini azaltır. Temsilci seçme sorunları ve genel yönergeler, [Azure Active Directory sürümünde temsilci yönetimi](roles-concept-delegation.md)bölümünde ele alınmıştır.
 
-Azure portalında uygulama erişimini yönetme olanağı vermek için:
+## <a name="restrict-who-can-create-applications"></a>Kimlerin uygulama oluşturacağını kısıtla
 
-1. Oturum açın, [Azure AD kiracısı](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) kiracısında genel yönetici rolü için uygun olan bir hesapla.
-2. Yeterli izinlere sahip açtığınızda [roller ve yöneticiler sayfası](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators).
-3. Üye atamalarının görmek için aşağıdaki rollerden biri açın:
-   * **Uygulama Yöneticisi**
-   * **Bulut uygulaması Yöneticisi**
-4. Üzerinde **üyeleri** rolü seçme sayfasında **Üye Ekle**.
-5. Role eklenecek bir veya daha fazla üyeleri seçin. <!--Members can be users or groups.-->
+Azure AD 'de varsayılan olarak, tüm kullanıcılar uygulama kayıtlarını kaydedebilir ve oluşturdukları uygulamaların tüm yönlerini yönetebilir. Herkes Ayrıca şirket verilerine kendi adına erişen uygulamalar için izin verebilir. Genel anahtarları ' Hayır ' olarak ayarlayarak ve seçilen kullanıcıları uygulama geliştirici rolüne ekleyerek, bu izinleri seçmeli olarak vermeyi tercih edebilirsiniz.
 
-Bu rolü için bir açıklama görüntüleyebilirsiniz [kullanılabilir roller](directory-assign-admin-roles.md#available-roles).
+### <a name="to-disable-the-default-ability-to-create-application-registrations-or-consent-to-applications"></a>Uygulama kayıtları veya uygulamalara onay oluşturma için varsayılan özelliği devre dışı bırakmak için
 
-## <a name="delegate-app-registration"></a>Temsilci uygulama kaydı
+1. Azure AD kuruluşunuzda genel yönetici rolüne uygun bir hesapla Azure AD kuruluşunuzda oturum açın.
+1. Yeterli izinleri edindiğinizde aşağıdakilerden birini veya her ikisini birden ayarlayın:
 
-Varsayılan olarak, tüm kullanıcılar, uygulama kayıtları oluşturabilir, ancak seçerek uygulama kayıtları oluşturma izni veya uygulama yetkilendirmek için onaylamasına izin verebilirsiniz.
+    -  [Kuruluşunuzun Kullanıcı ayarları sayfasında](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings), **kullanıcılar uygulamaları kaydedebilir** ayarını Hayır olarak ayarlayın. Bu, kullanıcıların uygulama kayıtları oluşturmalarına yönelik varsayılan özelliği devre dışı bırakır.
+    -  [Kurumsal uygulamalar için Kullanıcı ayarları](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)' na, **kullanıcıların kendi adına şirket verilerine erişen uygulamalara Izin verebilir** ayarını Hayır olarak ayarlayın. Bu, kullanıcıların kendi adına şirket verilerine erişen uygulamalara izin vermesini sağlayacak varsayılan özelliği devre dışı bırakır.
 
-1. Oturum açın, [Azure AD kiracısı](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) kiracısında genel yönetici rolü için uygun olan bir hesapla.
-2. Yeterli izinlere edindiğinizde, birini veya her ikisini aşağıdakileri ayarlayın:
-   * Üzerinde [kiracınız için kullanıcı ayarları sayfası](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings)ayarlayın **kullanıcılar uygulamaları kaydedebilir** No
-   * Üzerinde [kurumsal uygulamalar için kullanıcı ayarlarını](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)ayarlayın **kullanıcılar uygulamaları kendileri adına şirket verilerine erişme izni verebilir** No
-3. Daha sonra gerektiğinde Uygulama geliştirici rol üyelerinin olması için bu izne ihtiyaç duyan kullanıcılar atayın.
+### <a name="grant-individual-permissions-to-create-and-consent-to-applications-when-the-default-ability-is-disabled"></a>Varsayılan özellik devre dışı bırakıldığında uygulamaları oluşturmak ve kabul etmek için ayrı ayrı izinler verin
 
-Bir kullanıcı bir uygulama kaydettiğinde, uygulamanın ilk sahibi olarak otomatik olarak eklenir.
+**Kullanıcıların uygulamaları kaydedebileceği** durumlarda uygulama kayıtları oluşturma özelliği Hayır olarak ayarlanırsa uygulama geliştirici rolünü atayın. Bu rol Ayrıca, **Kullanıcılar, Kullanıcı adına şirket verilerine erişen uygulamalara izin verebilmeleri** durumunda kendi adına izin vermek için izin verir. Bir sistem davranışı olarak, bir Kullanıcı yeni bir uygulama kaydı oluşturduğunda, bunlar otomatik olarak ilk sahip olarak eklenir. Sahiplik izinleri, kullanıcıya sahip oldukları bir uygulama kaydı veya kurumsal uygulamanın tüm yönlerini yönetme olanağı sunar.
 
-## <a name="delegate-app-ownership"></a>Uygulama sahipliğini devretme
+## <a name="assign-application-owners"></a>Uygulama sahipleri atama
 
-Uygulama sahipleri ve uygulama kayıt sahipleri her yalnızca uygulamaları veya sahip oldukları uygulama kayıtları olarak yönetebilirsiniz. Örneğin, Salesforce uygulama için bir sahibe eklediğinizde, o sahibi erişim ve Salesforce, ancak hiçbir diğer uygulamalar için yapılandırma yönetebilir. Bir uygulamanın fazla sahip olabilir ve bir kullanıcı çok sayıda uygulama sahibi olabilir.
+Sahipleri atamak, belirli bir uygulama kaydı veya kurumsal uygulama için Azure AD yapılandırmasının tüm yönlerini yönetme olanağı sağlamanın basit bir yoludur. Bir sistem davranışı olarak, bir Kullanıcı yeni bir uygulama kaydı oluşturduğunda ilk sahip olarak otomatik olarak eklenir. Sahiplik izinleri, kullanıcıya sahip oldukları bir uygulama kaydı veya kurumsal uygulamanın tüm yönlerini yönetme olanağı sunar. Özgün sahip kaldırılabilir ve ek sahipler eklenebilir.
 
-Uygulama sahibi yapabilirsiniz:
+### <a name="enterprise-application-owners"></a>Kurumsal uygulama sahipleri
 
-* Değiştirme izinleri ve adı gibi uygulama özellikleri uygulama istekleri
-* Kimlik bilgilerini yönetme
-* Çoklu oturum açmayı yapılandırma
-* Kullanıcı erişim atama
-* Ekleme veya diğer sahipleri kaldırma
-* Uygulama bildirimini Düzenle
-* Uygulamayı uygulama galerisinde yayımlayabilirsiniz.
+Bir Kullanıcı bir sahip olarak, kurumsal uygulama için çoklu oturum açma yapılandırması, sağlama ve Kullanıcı atamaları gibi kuruluşa özgü yapılandırmayı yönetebilir. Sahipler başka kullanıcıları sahip olarak ekleyebilir veya kaldırabilir. Küresel yöneticilerin aksine, sahipler yalnızca sahip oldukları kurumsal uygulamaları yönetebilir.
+
+Bazı durumlarda, uygulama galerisinden oluşturulan kurumsal uygulamalarda hem kurumsal uygulama hem de uygulama kaydı bulunur. Bu doğru olduğunda, kurumsal uygulamaya sahip eklemek, sahibi bir sahip olarak ilgili uygulama kaydına otomatik olarak ekler.
+
+### <a name="to-assign-an-owner-to-an-enterprise-application"></a>Bir kuruluş uygulamasına sahip atamak için
+
+1. Uygulama Yöneticisi veya kuruluş için bulut uygulama Yöneticisi için uygun bir hesapla [Azure AD kuruluşunuzda](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) oturum açın.
+1. Kuruluşun [uygulama kayıtları sayfasında](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) , uygulamanın genel bakış sayfasını açmak için bir uygulama seçin.
+1. Uygulama sahiplerinin listesini görmek için **sahipler** ' i seçin.
+1. Uygulamaya eklenecek bir veya daha fazla sahip seçmek için **Ekle** ' yi seçin.
 
 > [!IMPORTANT]
-> Bu role atanan kullanıcılar, kimlik bilgileri için uygulama ekleme ve uygulamanın kimliğine bürünülecek bu kimlik bilgilerini kullanın. Bu kimliğe bürünme uygulamanın kimliğini, kullanıcı, bir rol atamaları altında Azure AD'de neler yapabileceğinizi ayrıcalık olabilir. Bu role atanmış kullanıcı potansiyel olarak oluşturun veya uygulama kimliğine bürünülürken kullanıcılara veya diğer nesneleri güncelleştirin.
+> Kullanıcılar ve hizmet sorumluları, uygulama kayıtlarının sahipleri olabilir. Yalnızca kullanıcılar kurumsal uygulamaların sahipleri olabilir. Gruplar, birinin sahipleri olarak atanamaz.
+>
+> Sahipler bir uygulamaya kimlik bilgileri ekleyebilir ve bu kimlik bilgilerini uygulamanın kimliğini taklit etmek için kullanabilir. Uygulamanın sahibinden daha fazla izni olabilir ve bu nedenle, sahibin Kullanıcı veya hizmet sorumlusu olarak erişimine sahip olduğu konusunda ayrıcalık yükselmesine neden olabilir. Uygulama sahibi, uygulamanın izinlerine bağlı olarak uygulamayı taklit ederken kullanıcıları veya diğer nesneleri oluşturabilir ya da güncelleştirebilir.
 
-Sahibi uygulama kaydını görüntüleyebilir ve uygulama kaydını Düzenle.
+## <a name="assign-built-in-application-admin-roles"></a>Yerleşik uygulama yöneticisi rolleri atama
 
-<!-- ### To assign an enterprise app ownership role to a user
+Azure AD 'nin tüm uygulamalar için Azure AD 'de yapılandırmayı yönetme erişimi vermek üzere yerleşik bir yönetim rolleri kümesi vardır. Bu roller, BT uzmanlarına, Azure AD 'nin uygulama yapılandırmasıyla ilgili olmayan diğer kısımlarını yönetmek için erişim izni vermeden, geniş uygulama yapılandırma izinlerini yönetmek için önerilen yoldur.
 
-1. Sign in to your [Azure AD tenant](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) with an account that is the Global Administrator for the tenant.
-2. On the [Roles and administrators page](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators), open one of the following roles to see its member assignments:
-  * **Enterprise Application Owner**
-  * **Application Registration Owner**
-3. On the **Members** page for the role, select **Add member**.
-4. Select one or more members to add to the role. -->
+- Uygulama Yöneticisi: Bu roldeki kullanıcılar kurumsal uygulamaların, uygulama kayıtlarının ve uygulama proxy ayarlarının tüm yönlerini oluşturabilir ve yönetebilir. Bu rol Ayrıca, Microsoft Graph ve Azure AD grafiğini dışlayarak uygulama izinleri için izin verme izni verir. Bu role atanan kullanıcılar, yeni uygulama kayıtları veya kurumsal uygulamalar oluştururken sahip olarak eklenmez.
+- Bulut uygulaması Yöneticisi: Bu roldeki kullanıcılar uygulama proxy 'si rolüyle aynı izinlere sahiptir ve uygulama ara sunucusunu yönetme imkanını dışlar. Bu role atanan kullanıcılar, yeni uygulama kayıtları veya kurumsal uygulamalar oluştururken sahip olarak eklenmez.
 
-### <a name="to-assign-an-owner-to-an-application"></a>Uygulama sahibi atamak için
+Daha fazla bilgi edinmek ve bu rollerin açıklamasını görüntülemek için bkz. [kullanılabilir roller](directory-assign-admin-roles.md#available-roles).
 
-1. Oturum açın, [Azure AD kiracısı](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) uygulama yönetici veya Kiracı için bulut uygulaması Yöneticisi için uygun olan bir hesapla.
-2. Üzerinde [uygulama kayıtları sayfası](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) kiracısı için'ı açmak için bir uygulama seçin **genel bakış** sayfasını.
-3. Seçin **sahipleri** uygulama sahipleri listesini görmek için.
-4. Seçin **Ekle** uygulamasına eklemek için bir veya daha fazla sahip seçin.
+Uygulama Yöneticisi veya bulut uygulama yöneticisi rollerini atamak için Azure Active Directory nasıl yapılır Kılavuzu [ile kullanıcılara roller atama](../fundamentals/active-directory-users-assign-role-azure-portal.md) bölümündeki yönergeleri izleyin.
 
-### <a name="to-assign-an-owner-to-an-application-registration"></a>Bir uygulama kaydı için bir sahip atamak için
+> [!IMPORTANT]
+> Uygulama yöneticileri ve bulut uygulaması yöneticileri bir uygulamaya kimlik bilgileri ekleyebilir ve bu kimlik bilgilerini uygulamanın kimliğini taklit etmek için kullanabilir. Uygulamanın, yönetici rolü izinleri üzerinde ayrıcalık yükseltmesi olan izinleri olabilir. Bu roldeki bir yönetici, uygulamanın izinlerine bağlı olarak uygulamayı taklit ederken kullanıcıları veya diğer nesneleri oluşturabilir ya da güncelleştirebilir.
+> Hiçbiri rol, koşullu erişim ayarlarını yönetme olanağı vermez.
 
-1. Oturum açın, [Azure AD kiracısı](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) bu uygulama yönetici veya Bulut Kiracı Yöneticisi rolünde uygulama için uygun bir hesapla.
-2. Ne zaman yeterli izinlere sahip, üzerinde [kurumsal uygulamalar sayfası](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) Kiracı için bir uygulama kaydı açmak için seçin.
-3. Seçin **ayarları**.
-4. Seçin **sahipleri** üzerinde **ayarları** uygulama sahipleri listesini görmek için sayfayı.
-5. Seçin **Ekle sahibi** uygulamasına eklemek için bir veya daha fazla sahip seçin.
+## <a name="create-and-assign-a-custom-role"></a>Özel bir rol oluşturma ve atama
+
+Özel Roller oluşturmak ve özel roller atamak ayrı adımlardır:
+
+- [Özel bir *rol tanımı* oluşturun](roles-create-custom.md) ve [önceden ayarlanmış bir listeden izinleri ekleyin](roles-custom-available-permissions.md). Bunlar, yerleşik rollerde kullanılan izinlerdir.
+- Özel rolü atamak için [bir *rol ataması* oluşturun](roles-assign-graph.md) .
+
+Bu ayrım, tek bir rol tanımı oluşturmanızı ve sonra farklı *kapsamlara*birçok kez atamanızı sağlar. Özel bir rol kuruluş genelinde bir kapsamda atanabilir veya tek bir Azure AD nesnesi ise kapsamda atanabilir. Bir nesne kapsamına örnek olarak tek bir uygulama kaydı vardır. Farklı kapsamları kullanarak, aynı rol tanımı kuruluştaki tüm uygulama kayıtları üzerinden Sally ve ardından yalnızca contoso gider raporları uygulama kaydı üzerinden değiştirilebilir.
+
+Özel rollerin temelleri hakkında daha fazla bilgi için bkz. [özel rollere genel bakış](roles-custom-overview.md)ve [özel rol oluşturma](roles-create-custom.md) ve [rol atama](roles-assign-graph.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure AD Yönetici rolü başvurusu](directory-assign-admin-roles.md)
+- [Uygulama kaydı alt türleri ve izinleri](roles-custom-available-permissions.md)
+- [Azure AD yönetici rolü başvurusu](directory-assign-admin-roles.md)

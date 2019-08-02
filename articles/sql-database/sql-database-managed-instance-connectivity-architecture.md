@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
-manager: craigg
 ms.date: 04/16/2019
-ms.openlocfilehash: 960320e280a613a537f1918d93e4584a13a0b374
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: aac328806e2570bd124626e916c250d481a11311
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68309969"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567581"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Azure SQL veritabanı 'nda yönetilen bir örnek için bağlantı mimarisi
 
@@ -125,105 +124,105 @@ Yönetilen bir örneği sanal ağın içindeki ayrılmış bir alt ağda dağıt
 |Ad|Adres ön eki|Sonraki atlama|
 |----|--------------|-------|
 |subnet_to_vnetlocal|MI ALT AĞI|Sanal ağ|
-|mi-13-64-11-sonrakii-Internet|13.64.0.0/11|Internet|
-|mi-13-96-13-sonrakii-Internet|13.96.0.0/13|Internet|
-|mi-13-104-14-sonrakii-Internet|13.104.0.0/14|Internet|
-|mi-20-8-sonrakii-Internet|20.0.0.0/8|Internet|
-|mi-23-96-13-sonrakii-Internet|23.96.0.0/13|Internet|
-|mi-40-64-10-sonrakii-Internet|40.64.0.0/10|Internet|
-|mi-42-159-16-sonrakii-Internet|42.159.0.0/16|Internet|
-|mi-51-8-sonrakii-Internet|51.0.0.0/8|Internet|
-|mi-52-8-sonrakii-Internet|52.0.0.0/8|Internet|
-|mi-64-4-18-sonrakii-Internet|64.4.0.0/18|Internet|
-|mi-65-52-14-sonrakii-Internet|65.52.0.0/14|Internet|
-|mi-66-119-144-20-sonrakii-Internet|66.119.144.0/20|Internet|
-|mi-70-37-17-sonrakii-Internet|70.37.0.0/17|Internet|
-|mi-70-37-128-18-sonrakii-Internet|70.37.128.0/18|Internet|
-|mi-91-190-216-21-sonrakii-Internet|91.190.216.0/21|Internet|
-|mi-94-245-64-18-sonrakii-Internet|94.245.64.0/18|Internet|
-|mi-103-9-8-22-sonrakii-Internet|103.9.8.0/22|Internet|
-|mi-103-25-156-22-sonrakii-Internet|103.25.156.0/22|Internet|
-|mi-103-36-96-22-sonrakii-Internet|103.36.96.0/22|Internet|
-|mi-103-255-140-22-sonrakii-Internet|103.255.140.0/22|Internet|
-|mi-104-40-13-sonrakii-Internet|104.40.0.0/13|Internet|
-|mi-104-146-15-sonrakii-Internet|104.146.0.0/15|Internet|
-|mi-104-208-13-sonrakii-Internet|104.208.0.0/13|Internet|
-|mi-111-221-16-20-sonrakii-Internet|111.221.16.0/20|Internet|
-|mi-111-221-64-18-sonrakii-Internet|111.221.64.0/18|Internet|
-|mi-129-75-16-sonrakii-Internet|129.75.0.0/16|Internet|
-|mi-131-253-16-sonrakii-Internet|131.253.0.0/16|Internet|
-|mi-132-245-16-sonrakii-Internet|132.245.0.0/16|Internet|
-|mi-134-170-16-sonrakii-Internet|134.170.0.0/16|Internet|
-|mi-134-177-16-sonrakii-Internet|134.177.0.0/16|Internet|
-|mi-137-116-15-sonrakii-Internet|137.116.0.0/15|Internet|
-|mi-137-135-16-sonrakii-Internet|137.135.0.0/16|Internet|
-|mi-138-91-16-sonrakii-Internet|138.91.0.0/16|Internet|
-|mi-138-196-16-sonrakii-Internet|138.196.0.0/16|Internet|
-|mi-139-217-16-sonrakii-Internet|139.217.0.0/16|Internet|
-|mi-139-219-16-sonrakii-Internet|139.219.0.0/16|Internet|
-|mi-141-251-16-sonrakii-Internet|141.251.0.0/16|Internet|
-|mi-146-147-16-sonrakii-Internet|146.147.0.0/16|Internet|
-|mi-147-243-16-sonrakii-Internet|147.243.0.0/16|Internet|
-|mi-150-171-16-sonrakii-Internet|150.171.0.0/16|Internet|
-|mi-150-242-48-22-sonrakii-Internet|150.242.48.0/22|Internet|
-|mi-157-54-15-sonrakii-Internet|157.54.0.0/15|Internet|
-|mi-157-56-14-sonrakii-Internet|157.56.0.0/14|Internet|
-|mi-157-60-16-sonrakii-Internet|157.60.0.0/16|Internet|
-|mi-167-220-16-sonrakii-Internet|167.220.0.0/16|Internet|
-|mi-168-61-16-sonrakii-Internet|168.61.0.0/16|Internet|
-|mi-168-62-15-sonrakii-Internet|168.62.0.0/15|Internet|
-|mi-191-232-13-sonrakii-Internet|191.232.0.0/13|Internet|
-|mi-192-32-16-sonrakii-Internet|192.32.0.0/16|Internet|
-|mi-192-48-225-24-sonrakii-Internet|192.48.225.0/24|Internet|
-|mi-192-84-159-24-sonrakii-Internet|192.84.159.0/24|Internet|
-|mi-192-84-160-23-sonrakii-Internet|192.84.160.0/23|Internet|
-|mi-192-100-102-24-sonrakii-Internet|192.100.102.0/24|Internet|
-|mi-192-100-103-24-sonrakii-Internet|192.100.103.0/24|Internet|
-|mi-192-197-157-24-sonrakii-Internet|192.197.157.0/24|Internet|
-|mi-193-149-64-19-sonrakii-Internet|193.149.64.0/19|Internet|
-|mi-193-221-113-24-sonrakii-Internet|193.221.113.0/24|Internet|
-|mi-194-69-96-19-sonrakii-Internet|194.69.96.0/19|Internet|
-|mi-194-110-197-24-sonrakii-Internet|194.110.197.0/24|Internet|
-|mi-198-105-232-22-sonrakii-Internet|198.105.232.0/22|Internet|
-|mi-198-200-130-24-sonrakii-Internet|198.200.130.0/24|Internet|
-|mi-198-206-164-24-sonrakii-Internet|198.206.164.0/24|Internet|
-|mi-199-60-28-24-sonrakii-Internet|199.60.28.0/24|Internet|
-|mi-199-74-210-24-sonrakii-Internet|199.74.210.0/24|Internet|
-|mi-199-103-90-23-sonrakii-Internet|199.103.90.0/23|Internet|
-|mi-199-103-122-24-sonrakii-Internet|199.103.122.0/24|Internet|
-|mi-199-242-32-20-sonrakii-Internet|199.242.32.0/20|Internet|
-|mi-199-242-48-21-sonrakii-Internet|199.242.48.0/21|Internet|
-|mi-202-89-224-20-sonrakii-Internet|202.89.224.0/20|Internet|
-|mi-204-13-120-21-sonrakii-Internet|204.13.120.0/21|Internet|
-|mi-204-14-180-22-sonrakii-Internet|204.14.180.0/22|Internet|
-|mi-204-79-135-24-sonrakii-Internet|204.79.135.0/24|Internet|
-|mi-204-79-179-24-sonrakii-Internet|204.79.179.0/24|Internet|
-|mi-204-79-181-24-sonrakii-Internet|204.79.181.0/24|Internet|
-|mi-204-79-188-24-sonrakii-Internet|204.79.188.0/24|Internet|
-|mi-204-79-195-24-sonrakii-Internet|204.79.195.0/24|Internet|
-|mi-204-79-196-23-sonrakii-Internet|204.79.196.0/23|Internet|
-|mi-204-79-252-24-sonrakii-Internet|204.79.252.0/24|Internet|
-|mi-204-152-18-23-sonrakii-Internet|204.152.18.0/23|Internet|
-|mi-204-152-140-23-sonrakii-Internet|204.152.140.0/23|Internet|
-|mi-204-231-192-24-sonrakii-Internet|204.231.192.0/24|Internet|
-|mi-204-231-194-23-sonrakii-Internet|204.231.194.0/23|Internet|
-|mi-204-231-197-24-sonrakii-Internet|204.231.197.0/24|Internet|
-|mi-204-231-198-23-sonrakii-Internet|204.231.198.0/23|Internet|
-|mi-204-231-200-21-sonrakii-Internet|204.231.200.0/21|Internet|
-|mi-204-231-208-20-sonrakii-Internet|204.231.208.0/20|Internet|
-|mi-204-231-236-24-sonrakii-Internet|204.231.236.0/24|Internet|
-|mi-205-174-224-20-sonrakii-Internet|205.174.224.0/20|Internet|
-|mi-206-138-168-21-sonrakii-Internet|206.138.168.0/21|Internet|
-|mi-206-191-224-19-sonrakii-Internet|206.191.224.0/19|Internet|
-|mi-207-46-16-sonrakii-Internet|207.46.0.0/16|Internet|
-|mi-207-68-128-18-sonrakii-Internet|207.68.128.0/18|Internet|
-|mi-208-68-136-21-sonrakii-Internet|208.68.136.0/21|Internet|
-|mi-208-76-44-22-sonrakii-Internet|208.76.44.0/22|Internet|
-|mi-208-84-21-sonrakii-Internet|208.84.0.0/21|Internet|
-|mi-209-240-192-19-sonrakii-Internet|209.240.192.0/19|Internet|
-|mi-213-199-128-18-sonrakii-Internet|213.199.128.0/18|Internet|
-|mi-216-32-180-22-sonrakii-Internet|216.32.180.0/22|Internet|
-|mi-216-220-208-20-sonrakii-Internet|216.220.208.0/20|Internet|
+|mi-13-64-11-sonrakii-Internet|13.64.0.0/11|İnternet|
+|mi-13-96-13-sonrakii-Internet|13.96.0.0/13|İnternet|
+|mi-13-104-14-sonrakii-Internet|13.104.0.0/14|İnternet|
+|mi-20-8-sonrakii-Internet|20.0.0.0/8|İnternet|
+|mi-23-96-13-sonrakii-Internet|23.96.0.0/13|İnternet|
+|mi-40-64-10-sonrakii-Internet|40.64.0.0/10|İnternet|
+|mi-42-159-16-sonrakii-Internet|42.159.0.0/16|İnternet|
+|mi-51-8-sonrakii-Internet|51.0.0.0/8|İnternet|
+|mi-52-8-sonrakii-Internet|52.0.0.0/8|İnternet|
+|mi-64-4-18-sonrakii-Internet|64.4.0.0/18|İnternet|
+|mi-65-52-14-sonrakii-Internet|65.52.0.0/14|İnternet|
+|mi-66-119-144-20-sonrakii-Internet|66.119.144.0/20|İnternet|
+|mi-70-37-17-sonrakii-Internet|70.37.0.0/17|İnternet|
+|mi-70-37-128-18-sonrakii-Internet|70.37.128.0/18|İnternet|
+|mi-91-190-216-21-sonrakii-Internet|91.190.216.0/21|İnternet|
+|mi-94-245-64-18-sonrakii-Internet|94.245.64.0/18|İnternet|
+|mi-103-9-8-22-sonrakii-Internet|103.9.8.0/22|İnternet|
+|mi-103-25-156-22-sonrakii-Internet|103.25.156.0/22|İnternet|
+|mi-103-36-96-22-sonrakii-Internet|103.36.96.0/22|İnternet|
+|mi-103-255-140-22-sonrakii-Internet|103.255.140.0/22|İnternet|
+|mi-104-40-13-sonrakii-Internet|104.40.0.0/13|İnternet|
+|mi-104-146-15-sonrakii-Internet|104.146.0.0/15|İnternet|
+|mi-104-208-13-sonrakii-Internet|104.208.0.0/13|İnternet|
+|mi-111-221-16-20-sonrakii-Internet|111.221.16.0/20|İnternet|
+|mi-111-221-64-18-sonrakii-Internet|111.221.64.0/18|İnternet|
+|mi-129-75-16-sonrakii-Internet|129.75.0.0/16|İnternet|
+|mi-131-253-16-sonrakii-Internet|131.253.0.0/16|İnternet|
+|mi-132-245-16-sonrakii-Internet|132.245.0.0/16|İnternet|
+|mi-134-170-16-sonrakii-Internet|134.170.0.0/16|İnternet|
+|mi-134-177-16-sonrakii-Internet|134.177.0.0/16|İnternet|
+|mi-137-116-15-sonrakii-Internet|137.116.0.0/15|İnternet|
+|mi-137-135-16-sonrakii-Internet|137.135.0.0/16|İnternet|
+|mi-138-91-16-sonrakii-Internet|138.91.0.0/16|İnternet|
+|mi-138-196-16-sonrakii-Internet|138.196.0.0/16|İnternet|
+|mi-139-217-16-sonrakii-Internet|139.217.0.0/16|İnternet|
+|mi-139-219-16-sonrakii-Internet|139.219.0.0/16|İnternet|
+|mi-141-251-16-sonrakii-Internet|141.251.0.0/16|İnternet|
+|mi-146-147-16-sonrakii-Internet|146.147.0.0/16|İnternet|
+|mi-147-243-16-sonrakii-Internet|147.243.0.0/16|İnternet|
+|mi-150-171-16-sonrakii-Internet|150.171.0.0/16|İnternet|
+|mi-150-242-48-22-sonrakii-Internet|150.242.48.0/22|İnternet|
+|mi-157-54-15-sonrakii-Internet|157.54.0.0/15|İnternet|
+|mi-157-56-14-sonrakii-Internet|157.56.0.0/14|İnternet|
+|mi-157-60-16-sonrakii-Internet|157.60.0.0/16|İnternet|
+|mi-167-220-16-sonrakii-Internet|167.220.0.0/16|İnternet|
+|mi-168-61-16-sonrakii-Internet|168.61.0.0/16|İnternet|
+|mi-168-62-15-sonrakii-Internet|168.62.0.0/15|İnternet|
+|mi-191-232-13-sonrakii-Internet|191.232.0.0/13|İnternet|
+|mi-192-32-16-sonrakii-Internet|192.32.0.0/16|İnternet|
+|mi-192-48-225-24-sonrakii-Internet|192.48.225.0/24|İnternet|
+|mi-192-84-159-24-sonrakii-Internet|192.84.159.0/24|İnternet|
+|mi-192-84-160-23-sonrakii-Internet|192.84.160.0/23|İnternet|
+|mi-192-100-102-24-sonrakii-Internet|192.100.102.0/24|İnternet|
+|mi-192-100-103-24-sonrakii-Internet|192.100.103.0/24|İnternet|
+|mi-192-197-157-24-sonrakii-Internet|192.197.157.0/24|İnternet|
+|mi-193-149-64-19-sonrakii-Internet|193.149.64.0/19|İnternet|
+|mi-193-221-113-24-sonrakii-Internet|193.221.113.0/24|İnternet|
+|mi-194-69-96-19-sonrakii-Internet|194.69.96.0/19|İnternet|
+|mi-194-110-197-24-sonrakii-Internet|194.110.197.0/24|İnternet|
+|mi-198-105-232-22-sonrakii-Internet|198.105.232.0/22|İnternet|
+|mi-198-200-130-24-sonrakii-Internet|198.200.130.0/24|İnternet|
+|mi-198-206-164-24-sonrakii-Internet|198.206.164.0/24|İnternet|
+|mi-199-60-28-24-sonrakii-Internet|199.60.28.0/24|İnternet|
+|mi-199-74-210-24-sonrakii-Internet|199.74.210.0/24|İnternet|
+|mi-199-103-90-23-sonrakii-Internet|199.103.90.0/23|İnternet|
+|mi-199-103-122-24-sonrakii-Internet|199.103.122.0/24|İnternet|
+|mi-199-242-32-20-sonrakii-Internet|199.242.32.0/20|İnternet|
+|mi-199-242-48-21-sonrakii-Internet|199.242.48.0/21|İnternet|
+|mi-202-89-224-20-sonrakii-Internet|202.89.224.0/20|İnternet|
+|mi-204-13-120-21-sonrakii-Internet|204.13.120.0/21|İnternet|
+|mi-204-14-180-22-sonrakii-Internet|204.14.180.0/22|İnternet|
+|mi-204-79-135-24-sonrakii-Internet|204.79.135.0/24|İnternet|
+|mi-204-79-179-24-sonrakii-Internet|204.79.179.0/24|İnternet|
+|mi-204-79-181-24-sonrakii-Internet|204.79.181.0/24|İnternet|
+|mi-204-79-188-24-sonrakii-Internet|204.79.188.0/24|İnternet|
+|mi-204-79-195-24-sonrakii-Internet|204.79.195.0/24|İnternet|
+|mi-204-79-196-23-sonrakii-Internet|204.79.196.0/23|İnternet|
+|mi-204-79-252-24-sonrakii-Internet|204.79.252.0/24|İnternet|
+|mi-204-152-18-23-sonrakii-Internet|204.152.18.0/23|İnternet|
+|mi-204-152-140-23-sonrakii-Internet|204.152.140.0/23|İnternet|
+|mi-204-231-192-24-sonrakii-Internet|204.231.192.0/24|İnternet|
+|mi-204-231-194-23-sonrakii-Internet|204.231.194.0/23|İnternet|
+|mi-204-231-197-24-sonrakii-Internet|204.231.197.0/24|İnternet|
+|mi-204-231-198-23-sonrakii-Internet|204.231.198.0/23|İnternet|
+|mi-204-231-200-21-sonrakii-Internet|204.231.200.0/21|İnternet|
+|mi-204-231-208-20-sonrakii-Internet|204.231.208.0/20|İnternet|
+|mi-204-231-236-24-sonrakii-Internet|204.231.236.0/24|İnternet|
+|mi-205-174-224-20-sonrakii-Internet|205.174.224.0/20|İnternet|
+|mi-206-138-168-21-sonrakii-Internet|206.138.168.0/21|İnternet|
+|mi-206-191-224-19-sonrakii-Internet|206.191.224.0/19|İnternet|
+|mi-207-46-16-sonrakii-Internet|207.46.0.0/16|İnternet|
+|mi-207-68-128-18-sonrakii-Internet|207.68.128.0/18|İnternet|
+|mi-208-68-136-21-sonrakii-Internet|208.68.136.0/21|İnternet|
+|mi-208-76-44-22-sonrakii-Internet|208.76.44.0/22|İnternet|
+|mi-208-84-21-sonrakii-Internet|208.84.0.0/21|İnternet|
+|mi-209-240-192-19-sonrakii-Internet|209.240.192.0/19|İnternet|
+|mi-213-199-128-18-sonrakii-Internet|213.199.128.0/18|İnternet|
+|mi-216-32-180-22-sonrakii-Internet|216.32.180.0/22|İnternet|
+|mi-216-220-208-20-sonrakii-Internet|216.220.208.0/20|İnternet|
 ||||
 
 Ayrıca, sanal ağ geçidi veya sanal ağ gereci (NVA) aracılığıyla şirket içi özel IP aralıklarına sahip trafiği bir hedef olarak yönlendirmek için yol tablosuna giriş ekleyebilirsiniz.

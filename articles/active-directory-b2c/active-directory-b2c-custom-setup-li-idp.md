@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9f854e1771eec1d02fd14e040510688bf33c59c8
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 9465c1991418c7ebef8c4eed825affc7b1d93492
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442439"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68693337"
 ---
 # <a name="set-up-sign-in-with-a-linkedin-account-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeler kullanarak LinkedIn hesabı ile oturum açmayı ayarlama
 
@@ -27,7 +27,7 @@ Bu makalede, Azure Active Directory (Azure AD) B2C 'de [özel ilkeler](active-di
 
 - [Azure Active Directory B2C özel ilkeleri kullanmaya başlama](active-directory-b2c-get-started-custom.md)bölümündeki adımları uygulayın.
 - LinkedIn hesabı-henüz yoksa [bir hesap oluşturun](https://www.linkedin.com/start/join).
-- LinkedIn sayfası-sonraki bölümde oluşturduğunuz LinkedIn uygulamasıyla ilişkilendirmek için bir [LinkedIn sayfasına](https://www.linkedin.com/company/setup/new/) ihtiyacınız vardır.
+- LinkedIn sayfası-sonraki bölümde oluşturduğunuz LinkedIn uygulamasıyla ilişkilendirmek için bir [LinkedIn sayfasına](https://www.linkedin.com/help/linkedin/answer/710/creating-a-linkedin-company-page) ihtiyacınız vardır.
 
 ## <a name="create-an-application"></a>Uygulama oluşturma
 

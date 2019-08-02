@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/24/2018
 ms.author: iainfou
 ms.openlocfilehash: 2135a3a5a8f14cf6c2e7fd2984d9b221e2445c1d
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68309503"
 ---
 # <a name="use-azure-container-registry-as-a-helm-repository-for-your-application-charts"></a>Uygulama grafiklerinizde Helu deposu olarak Azure Container Registry kullanın
@@ -31,7 +31,7 @@ Bu makalede, Azure Container Registry depolanan bir Helu grafik deposunun nasıl
 Bu makaledeki adımları tamamlayabilmeniz için aşağıdaki önkoşulların karşılanması gerekir:
 
 - **Azure Container Registry** -Azure aboneliğinizde bir kapsayıcı kayıt defteri oluşturun. Örneğin, [Azure Portal](container-registry-get-started-portal.md) veya [Azure CLI](container-registry-get-started-azure-cli.md)'yi kullanın.
-- **Hele istemci sürümü 2.11.0 (RC sürümü değil) veya daha sonra** geçerli sürümünüzü `helm version` bulmak için ' i çalıştırın. Ayrıca bir Kubernetes kümesi içinde başlatılan bir Held sunucusuna (Tiller) ihtiyacınız vardır. Gerekirse, [bir Azure Kubernetes hizmet kümesi][aks-quickstart]. For more information on how to install and upgrade Helm, see [Installing Helm][helm-install]oluşturabilirsiniz.
+- **Hele istemci sürümü 2.11.0 (RC sürümü değil) veya daha sonra** geçerli sürümünüzü `helm version` bulmak için ' i çalıştırın. Ayrıca bir Kubernetes kümesi içinde başlatılan bir Held sunucusuna (Tiller) ihtiyacınız vardır. Gerekirse, [bir Azure Kubernetes hizmet kümesi oluşturabilirsiniz][aks-quickstart]. Held 'yi yükleme ve yükseltme hakkında daha fazla bilgi için bkz. [Held yükleme][helm-install].
 - Sürümü bulmak için **Azure CLI sürüm 2.0.46 veya üzeri** -çalıştırın `az --version` . Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme][azure-cli-install].
 
 ## <a name="add-a-repository-to-helm-client"></a>Hele istemcisine bir depo ekleyin

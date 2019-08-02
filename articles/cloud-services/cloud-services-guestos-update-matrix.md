@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 7/18/2019
+ms.date: 7/26/2019
 ms.author: raiye
-ms.openlocfilehash: 2dac76ef0d0d71c11291e63fdb3a7ce307638b50
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 9f796d4fe0edd1b6a944fc96e8045b1434d939f0
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405546"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68592423"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure Konuk işletim sistemi sürümleri ve SDK uyumluluk matrisi
 Cloud Services için en son Azure Konuk işletim sistemi sürümleri hakkında güncel bilgiler sağlar. Bu bilgiler, Konuk işletim sistemi devre dışı bırakmadan önce yükseltme yolunuzu planlamanızı sağlar. Rollerinizi [Azure Konuk işletim sistemi güncelleştirme ayarlarında][Azure Guest OS Update Settings]açıklandığı şekilde *Otomatik* Konuk işletim sistemi güncelleştirmelerini kullanacak şekilde yapılandırırsanız, bu sayfayı okumanız çok önemli değildir.
@@ -42,6 +42,9 @@ Cloud Services için en son Azure Konuk işletim sistemi sürümleri hakkında g
 Konuk işletim sistemini nasıl güncelleştireceğinizden emin misiniz? [Bunu][cloud updates] kontrol edin.
 
 ## <a name="news-updates"></a>Haber güncelleştirmeleri
+
+###### <a name="july-26-2019"></a>**26 Temmuz 2019**
+Temmuz Konuk işletim sistemi serbest bırakıldı.
 
 ###### <a name="july-8-2019"></a>**8 Temmuz 2019**
 Haziran Konuk işletim sistemi serbest bırakıldı.
@@ -98,8 +101,9 @@ Eylül Konuk işletim sistemi serbest bırakıldı.
 
 | Yapılandırma dizesi | Sürüm tarihi | Tarihi devre dışı bırak |
 | --- | --- | --- |
+| WA-KONUK-IŞLETIM SISTEMI-6.9 _201907-01 |26 Temmuz 2019 |6,11 sonrası |
 | WA-GUEST-OS-6.8 _201906-01 |8 Temmuz 2019 |6,10 sonrası |
-| WA-GUEST-OS-6.7 _201905-01 |6 Haziran 2019 |6,9 sonrası |
+|~~WA-GUEST-OS-6.7 _201905-01~~ |6 Haziran 2019 |26 Temmuz 2019 |
 |~~WA-KONUK-IŞLETIM SISTEMI-6,6 _201904-01~~ |7 Mayıs 2019 |8 Temmuz 2019 |
 |~~WA-KONUK-IŞLETIM SISTEMI-6.5 _201903-01~~ |26 Mart 2019 |6 Haziran 2019 |
 |~~WA-GUEST-OS-6.4 _201902-01~~ |12 Mart 2019 |7 Mayıs 2019 |
@@ -119,8 +123,9 @@ Eylül Konuk işletim sistemi serbest bırakıldı.
 
 | Yapılandırma dizesi | Sürüm tarihi | Tarihi devre dışı bırak |
 | --- | --- | --- |
+| WA-GUEST-OS-5.33 _201907-01 |26 Temmuz 2019 |5,35 sonrası |  
 | WA-GUEST-OS-5.32 _201906-01 |8 Temmuz 2019 |5,34 sonrası |
-| WA-GUEST-OS-5.31 _201905-01 |6 Haziran 2019 |5,33 sonrası |
+|~~WA-GUEST-OS-5.31 _201905-01~~ |6 Haziran 2019 |26 Temmuz 2019 |
 |~~WA-GUEST-OS-5.30 _201904-01~~ |7 Mayıs 2019 |8 Temmuz 2019 |
 |~~WA-GUEST-OS-5.29 _201903-01~~ |26 Mart 2019 |6 Haziran 2019 |
 |~~WA-GUEST-OS-5.28 _201902-01~~ |12 Mart 2019 |7 Mayıs 2019 |
@@ -137,8 +142,9 @@ Eylül Konuk işletim sistemi serbest bırakıldı.
 
 | Yapılandırma dizesi | Sürüm tarihi | Tarihi devre dışı bırak |
 | --- | --- | --- |
+| WA-GUEST-OS-4.68 _201907-01 | 26 Temmuz 2019  |4,70 sonrası |
 | WA-GUEST-OS-4.67 _201906-01 |8 Temmuz 2019 |4,69 sonrası |
-| WA-GUEST-OS-4.66 _201905-01 |6 Haziran 2019 |4,68 sonrası |
+|~~WA-GUEST-OS-4.66 _201905-01~~ |6 Haziran 2019 |26 Temmuz 2019 |
 |~~WA-GUEST-OS-4.65 _201904-01~~ |7 Mayıs 2019 |8 Temmuz 2019 |
 |~~WA-GUEST-OS-4.64 _201903-01~~ |26 Mart 2019 |6 Haziran 2019 |
 |~~WA-GUEST-OS-4.63 _201902-01~~ |12 Mart 2019 |7 Mayıs 2019 |
@@ -155,8 +161,9 @@ Eylül Konuk işletim sistemi serbest bırakıldı.
 
 | Yapılandırma dizesi | Sürüm tarihi | Tarihi devre dışı bırak |
 | --- | --- | --- |
+| WA-GUEST-OS-3,75 _201907-01 | 26 Temmuz 2019 |3,77 sonrası |
 | WA-GUEST-OS-3.74 _201906-01 |8 Temmuz 2019 |3,76 sonrası |
-| WA-GUEST-OS-3.73 _201905-01 |6 Haziran 2019 |3,75 sonrası |
+|~~WA-GUEST-OS-3.73 _201905-01~~ |6 Haziran 2019 |26 Temmuz 2019 |
 |~~WA-GUEST-OS-3.72 _201904-01~~ |7 Mayıs 2019 |8 Temmuz 2019 |
 |~~WA-GUEST-OS-3.71 _201903-01~~ |26 Mart 2019 |6 Haziran 2019 |
 |~~WA-GUEST-OS-3.70 _201902-01~~ |12 Mart 2019 |7 Mayıs 2019 |
@@ -173,8 +180,9 @@ Eylül Konuk işletim sistemi serbest bırakıldı.
 
 | Yapılandırma dizesi | Sürüm tarihi | Tarihi devre dışı bırak |
 | --- | --- | --- |
+| WA-GUEST-OS-2.88 _201907-01 | 26 Temmuz 2019 |2,90 sonrası |
 | WA-GUEST-OS-2.87 _201906-01 |8 Temmuz 2019 |2,89 sonrası |
-| WA-GUEST-OS-2.86 _201905-01 |6 Haziran 2019 |2,88 sonrası |
+|~~WA-GUEST-OS-2.86 _201905-01~~ |6 Haziran 2019 |26 Temmuz 2019 |
 |~~WA-GUEST-OS-2.85 _201904-01~~ |7 Mayıs 2019 |8 Temmuz 2019 |
 |~~WA-GUEST-OS-2.84 _201903-01~~ |26 Mart 2019 |6 Haziran 2019 |
 |~~WA-GUEST-OS-2.83 _201902-01~~ |12 Mart 2019 |7 Mayıs 2019 |

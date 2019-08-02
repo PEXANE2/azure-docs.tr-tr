@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 562daa024985a546ffb49c4da11eace3bc81a659
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: b5777300f5033569caf3868218e747df3ff83a76
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314817"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640238"
 ---
 # <a name="mapping-data-flow-schema-drift"></a>Eşleme veri akışı şema DRFT
 
@@ -65,7 +65,7 @@ Ardından, bu eşleşen sütunların her biri için değerleri yuvarlayacağız:
 
 ```round(sum ($$))```
 
-Bunu, "Taxi demo" Azure Data Factory veri akışı örneğiyle test edebilirsiniz. Sonuçları etkileşimli olarak görebilmeniz için veri akışı tasarım yüzeyinin en üstündeki hata ayıklama oturumunda geçiş yapın:
+Bu şema, "Taxi demo" Azure Data Factory veri akışı örneği ile çalışırken çalışır. Sonuçları etkileşimli olarak görebilmeniz için veri akışı tasarım yüzeyinin en üstündeki hata ayıklama oturumunda geçiş yapın:
 
 <img src="media/data-flow/taxidrift2.png" width="800">
 
@@ -75,6 +75,9 @@ Sütun desenleriyle yeni sütunlar oluşturduğunuzda, bu yeni sütunlara aşağ
 * Yeni sütunları konum numarasına göre tanımlamak için "byPosition" kullanın.
 * Yeni sütunları adına göre tanımlamak için "byName" kullanın.
 * Sütun desenleri ' nde, "ad", "akış", "konum" veya "tür" ya da bunların herhangi bir birleşimini yeni sütunlarla eşleşecek şekilde kullanın.
+
+## <a name="rule-based-mapping"></a>Kural tabanlı eşleme
+Select ve Sink dönüşümü, kural tabanlı eşleme ile eşleşen model. Bu, düzeltebilecekler sütunları sütun diğer adlarına eşleyebileceğiniz ve bu sütunları hedeflemenize havuza alan kurallar oluşturmanıza olanak sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Veri akışı Ifade dilinde](data-flow-expression-functions.md) , sütun desenleri ve "byName" ve "byposition" gibi şema kayması için ek tesisler bulacaksınız.

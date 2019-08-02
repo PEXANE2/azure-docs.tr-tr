@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a313240685e539b613dee1c7ff8bd56bb24eb2ba
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 91cc2707034eabf85afae70278f2448b77d3ee14
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227316"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608080"
 ---
 # <a name="baseline-policy-block-legacy-authentication-preview"></a>Temel ilke: Eski kimlik doğrulamasını engelle (Önizleme)
 
@@ -117,5 +117,5 @@ Bu ilkeyi etkinleştirmek ve kuruluşunuzu korumak için:
 Daha fazla bilgi için bkz.
 
 * [Koşullu erişim temel koruma ilkeleri](concept-baseline-protection.md)
-* [Kimlik altyapınızı güvenli hale getirmenin beş adımı](../../security/azure-ad-secure-steps.md)
+* [Kimlik altyapınızı güvenli hale getirmenin beş adımı](../../security/fundamentals/steps-secure-identity.md)
 * [Azure Active Directory Koşullu erişim nedir?](overview.md)

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fa2254ff3223be4312f4e9b3db4d9d83da443c0
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 182b9da402e633033411f85eb59b31f76749f3cd
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311338"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68666246"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Bulut tabanlı bir Azure Multi-Factor Authentication dağıtımını planlama
 
@@ -95,25 +95,25 @@ Kuruluşların, [adlandırılmış konumları](../conditional-access/location-co
       2. IP aralıklarını belirtin
    2. Ülke/bölge kullanılıyorsa
       1. Açılan menüyü genişletin ve bu adlandırılmış konum için tanımlamak istediğiniz ülkeleri veya bölgeleri seçin.
-      2. Bilinmeyen alanların eklenip eklenmeyeceğini belirleyin. Bilinmeyen alan, bir ülkeye/bölgeye eşlenemeyen IP adresleridir.
+      2. Bilinmeyen alanların eklenip eklenmeyeceğini belirleyin. Bilinmeyen alanlar, bir ülke/bölge ile eşleştirilemeyen IP adresleridir.
 7. **Oluştur**'a tıklayın.
 
 ## <a name="plan-authentication-methods"></a>Kimlik doğrulama yöntemlerini planlayın
 
 Yöneticiler, kullanıcılar için kullanılabilir hale getirmek istedikleri [kimlik doğrulama yöntemlerini](../authentication/concept-authentication-methods.md) seçebilirler. Birincil yöntemi kullanılamaz durumda olduğunda kullanıcıların bir yedekleme yöntemine sahip olması için birden fazla kimlik doğrulama yöntemine izin vermek önemlidir. Yöneticilerin etkinleştiremeleri için aşağıdaki yöntemler kullanılabilir:
 
-### <a name="notification-through-mobile-app"></a>Mobil uygulama aracılığıyla bildirim
+### <a name="notification-through-mobile-app"></a>Mobil uygulama üzerinden bildirim
 
 Mobil cihazınızda Microsoft Authenticator uygulamasına anında iletme bildirimi gönderilir. Kullanıcı bildirimi görüntüler ve doğrulamayı tamamlamaya yönelik **onaylamayı** seçer. Mobil uygulama aracılığıyla anında iletme bildirimleri, kullanıcılar için en az zorive seçeneğini sağlar. Bunlar ayrıca, telefon yerine bir veri bağlantısı kullandıkları için en güvenilir ve güvenli seçenektir.
 
 > [!NOTE]
 > Kuruluşunuzda Çin 'de çalışan veya Çin 'e geçiş yapan personel varsa, **Android cihazlarda** **mobil uygulama yöntemi ile ilgili bildirim** söz konusu ülkede çalışmaz. Bu kullanıcılar için alternatif yöntemler kullanılabilir hale gelmelidir.
 
-### <a name="verification-code-from-mobile-app"></a>Mobil uygulamadaki doğrulama kodu
+### <a name="verification-code-from-mobile-app"></a>Mobil uygulamadan alınan doğrulama kodu
 
 Microsoft Authenticator uygulaması gibi bir mobil uygulama, her 30 saniyede yeni bir OATH doğrulama kodu oluşturur. Kullanıcı doğrulama kodunu oturum açma arabirimine girer. Mobil uygulama seçeneği, telefonun bir veri ya da hücresel sinyal içerip içermediğini veya bu şekilde kullanılabilir.
 
-### <a name="call-to-phone"></a>Telefon çağrısı
+### <a name="call-to-phone"></a>Telefonu arama
 
 Kullanıcıya otomatik bir sesli çağrı konur. Kullanıcı, kimlik doğrulamasını onaylamak için çağrıyı **#** yanıtlar ve telefon tuş takımında basar. Telefon çağrısı, bir mobil uygulamadan bildirim veya doğrulama kodu için harika bir yedekleme yöntemidir.
 
@@ -261,7 +261,7 @@ Azure AD kiracınızdan yanlışlıkla kilitlenmesini engellemeniz önemlidir. [
     * Tıklayın **seçin**.
 1. **Oturum** bölümünü atlayın.
 1. **Ilkeyi etkinleştir** **' i açık**yap olarak ayarlayın.
-1. **Oluştur**’a tıklayın.
+1.           **Oluştur**'a tıklayın.
 
 ![Pilot grubundaki Azure portal kullanıcılar için MFA 'yı etkinleştirmek üzere koşullu erişim ilkesi oluşturma](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
 
@@ -360,6 +360,9 @@ Aşağıdaki kılavuzda, AD FS sunucularınızda Azure MFA sertifikalarını yö
    1. [Kimlik koruması](../identity-protection/howto-mfa-policy.md) ile
 1. Kullanıcı iletişimleri gönder ve kaydolmalarını kullanıcılara al[https://aka.ms/mfasetup](https://aka.ms/mfasetup)
 1. [Kimin kaydolduğunu takip edin](#identify-non-registered-users)
+
+> [!TIP]
+> Kamu Bulutu kullanıcıları şurada kaydedebilir:[https://aka.ms/GovtMFASetup](https://aka.ms/GovtMFASetup)
 
 ## <a name="manage-your-solution"></a>Çözümünüzü yönetin
 

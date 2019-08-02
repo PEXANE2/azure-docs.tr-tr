@@ -4,7 +4,7 @@ description: Araçlar ve veri bilimi sanal makinesi üzerinde önceden yüklenen
 keywords: veri bilimi araçları, veri bilimi sanal makinesi, veri bilimi için araçlar, linux veri bilimi
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.author: gokuma
-ms.openlocfilehash: c4e101e45dc1641c5731e246f7fdeeb37ebc0823
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: vijetaj
+ms.openlocfilehash: 3b8eaae63f0e316d82dd5a1238a802eefd756d9e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65864412"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68557792"
 ---
 # <a name="development-tools-on-the-data-science-virtual-machine"></a>Veri bilimi sanal makinesi üzerinde geliştirme araçları
 
@@ -46,7 +46,7 @@ Veri bilimi sanal makinesi (DSVM), çeşitli popüler Araçlar ve IDE paketleme 
 | Desteklenen DSVM sürümleri      | Windows, Linux     |
 | Tipik kullanımları      | Kod Düzenleyicisi ve Git tümleştirmesi   |
 | Kullanma / çalıştırın nasıl?      | Masaüstü kısayolu (`C:\Program Files (x86)\Microsoft VS Code\Code.exe`) Windows, masaüstü kısayolu veya terminal (`code`) Linux'ta    |
-| DSVM ilgili araçları      |     RStudio, Visual Studio 2019 Juno  |
+| DSVM ilgili araçları      |     Visual Studio 2019, RStudio, Juno  |
 
 ## <a name="rstudio--desktop"></a>RStudio Desktop 
 
@@ -56,7 +56,7 @@ Veri bilimi sanal makinesi (DSVM), çeşitli popüler Araçlar ve IDE paketleme 
 | Desteklenen DSVM sürümleri      | Windows, Linux      |
 | Tipik kullanımları      |  R geliştirme     |
 | Kullanma / çalıştırın nasıl?      | Masaüstü kısayolu (`C:\Program Files\RStudio\bin\rstudio.exe`) Windows, masaüstü kısayolu üzerinde (`/usr/bin/rstudio`) Linux'ta      |
-| DSVM ilgili araçları      |   Visual Studio 2019, Visual Studio kodu, Juno      |
+| DSVM ilgili araçları      |   Visual Studio 2019, Visual Studio Code, Juno      |
 
 ## <a name="rstudio--server"></a>RStudio  Server 
 
@@ -65,8 +65,8 @@ Veri bilimi sanal makinesi (DSVM), çeşitli popüler Araçlar ve IDE paketleme 
 | Nedir?   | R için Web tabanlı IDE    |
 | Desteklenen DSVM sürümleri      | Linux      |
 | Tipik kullanımları      |  R geliştirme     |
-| Kullanma / çalıştırın nasıl?      | Etkinleştirme hizmete _systemctl etkinleştirme rstudio server_, hizmeti ile başlatın _systemctl Başlat rstudio server_. Ardından RStudio Server için http oturum açabilirsiniz:\//,-vm-ip:8787.       |
-| DSVM ilgili araçları      |   Visual Studio 2019, Visual Studio kodu, RStudio Desktop      |
+| Kullanma / çalıştırın nasıl?      | Etkinleştirme hizmete _systemctl etkinleştirme rstudio server_, hizmeti ile başlatın _systemctl Başlat rstudio server_. Daha sonra http:\//Your-VM-IP: 8787 konumundaki rstudio sunucusunda oturum açabilirsiniz.       |
+| DSVM ilgili araçları      |   Visual Studio 2019, Visual Studio Code, RStudio Desktop      |
 
 ## <a name="juno"></a>Juno 
 
@@ -98,5 +98,5 @@ Veri bilimi sanal makinesi (DSVM), çeşitli popüler Araçlar ve IDE paketleme 
 | Desteklenen DSVM sürümleri      | Windows  |
 | Tipik kullanımları      |  Veri Görselleştirme ve panolar oluşturma   |
 | Kullanma / çalıştırın nasıl?      | Masaüstü kısayolu (`C:\Program Files\Microsoft Power BI Desktop\bin\PBIDesktop.exe`)      |
-| DSVM ilgili araçları      |   Visual Studio 2019, Visual Studio kodu, Juno      |
+| DSVM ilgili araçları      |   Visual Studio 2019, Visual Studio Code, Juno      |
 

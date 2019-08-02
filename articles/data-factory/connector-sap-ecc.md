@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory kullanarak SAP ECC veri kopyalama | Microsoft Docs
-description: Desteklenen bir havuz veri depolarına SAP ECC bir Azure Data Factory işlem hattında kopyalama etkinliği'ni kullanarak veri kopyalama hakkında bilgi edinin.
+title: Azure Data Factory kullanarak SAP ECC 'den veri kopyalama | Microsoft Docs
+description: Azure Data Factory bir işlem hattındaki kopyalama etkinliğini kullanarak SAP ECC 'den desteklenen havuz veri depolarına veri kopyalamayı öğrenin.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -10,63 +10,63 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/02/2019
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 7ccd2e7a804c6495f6caf5e264b1f7c2a36cb02e
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.openlocfilehash: c92c1b87de1b728fd79c1ef02b32135463c7124f
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827781"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720677"
 ---
-# <a name="copy-data-from-sap-ecc-by-using-azure-data-factory"></a>Azure Data Factory kullanarak SAP ECC veri kopyalama
+# <a name="copy-data-from-sap-ecc-by-using-azure-data-factory"></a>Azure Data Factory kullanarak SAP ECC 'den veri kopyalama
 
-Bu makalede, kopyalama etkinliği Azure Data Factory'de veri SAP Kurumsal merkezi bileşeni (ECC gelen) kopyalamak için nasıl kullanılacağını özetlenmektedir. Daha fazla bilgi için [kopyalama etkinliğine genel bakış](copy-activity-overview.md).
+Bu makalede, SAP Enterprise merkezi bileşeninden (ECC) veri kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. Daha fazla bilgi için bkz. [kopyalama etkinliğine genel bakış](copy-activity-overview.md).
 
 ## <a name="supported-capabilities"></a>Desteklenen özellikler
 
-SAP ECC tüm desteklenen havuz veri deposuna veri kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak ve havuz desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablo.
+SAP ECC 'den, desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak ve havuz desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablo.
 
-Özellikle, bu SAP ECC bağlayıcı'yı destekler:
+Özellikle, bu SAP ECC Bağlayıcısı şunları destekler:
 
-- SAP NetWeaver sürüm 7.0 ve üzeri üzerinde SAP ECC veri kopyalama.
-- Gibi SAP ECC OData Hizmetleri tarafından kullanıma sunulan tüm nesneler veri kopyalama:
+- SAP NetWeaver sürüm 7,0 ve üzeri sürümlerde SAP ECC 'den veri kopyalama.
+- SAP ECC OData Hizmetleri tarafından kullanıma sunulan nesnelerden verileri kopyalama, örneğin:
 
   - SAP tabloları veya görünümleri.
-  - İş uygulaması programlama arabirimi [BAPI] nesneleri.
+  - İş uygulaması programlama arabirimi [BAPı] nesneleri.
   - Veri ayıklayıcıları.
-  - Veri veya SAP işlem tümleştirme'için (PI), OData göreli bağdaştırıcıları alınabilir gönderilen Ara belgeler (IDoc gönderir).
+  - Bağlı bağdaştırıcılar aracılığıyla OData olarak alınabilecek SAP Işlem tümleştirmesine (PI) gönderilen veri veya ara belgeler (IDoc 'Lar).
 
-- Temel kimlik doğrulaması kullanarak veri kopyalama.
+- Temel kimlik doğrulaması kullanarak verileri kopyalama.
 
 >[!TIP]
->SAP ECC, bir SAP tablo veya Görünüm veri kopyalamak için kullanın [SAP tablo](connector-sap-table.md) daha hızlı ve daha ölçeklenebilir Bağlayıcısı.
+>SAP, SAP tablosu veya görünümü aracılığıyla SAP ECC 'den veri kopyalamak için, daha hızlı ve daha ölçeklenebilir olan [SAP tablosu](connector-sap-table.md) bağlayıcısını kullanın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Genel olarak, SAP ECC varlıkları SAP ağ geçidi ile OData Hizmetleri yoluyla kullanıma sunar. SAP ECC bu bağlayıcıyı kullanmak için gerekir:
+SAP ECC genellikle, SAP Gateway aracılığıyla OData Hizmetleri aracılığıyla varlıkları kullanıma sunar. Bu SAP ECC bağlayıcısını kullanmak için şunları yapmanız gerekir:
 
-- **SAP ağ geçidi ayarlama**. Daha fazla 7.4 SAP NetWeaver sürümleriyle sunucular için SAP ağ geçidine zaten yüklü. Önceki sürümler için katıştırılmış SAP ağ geçidine veya SAP ağ geçidine hub sistem OData hizmetlerini SAP ECC verilerine gösterme önce yüklemelisiniz. SAP ağ geçidini ayarlamak için bkz: [Yükleme Kılavuzu](https://help.sap.com/saphelp_gateway20sp12/helpdata/en/c3/424a2657aa4cf58df949578a56ba80/frameset.htm).
+- **SAP Gateway ayarlayın**. 7,4 ' den sonraki SAP NetWeaver sürümleri olan sunucular için SAP Gateway zaten yüklüdür. Önceki sürümler için, OData Hizmetleri aracılığıyla SAP ECC verileri kullanıma sunmadan önce gömülü SAP Gateway veya SAP Gateway hub sistemini yüklemelisiniz. SAP Gateway ayarlamak için bkz. [Yükleme Kılavuzu](https://help.sap.com/saphelp_gateway20sp12/helpdata/en/c3/424a2657aa4cf58df949578a56ba80/frameset.htm).
 
-- **Etkinleştirme ve SAP OData hizmeti yapılandırma**. Saniye cinsinden OData hizmeti aracılığıyla TCODE SICF etkinleştirebilirsiniz. Ayrıca, hangi nesnelerin sağlamak ihtiyaç yapılandırabilirsiniz. Daha fazla bilgi için [adım adım rehberlik](https://blogs.sap.com/2012/10/26/step-by-step-guide-to-build-an-odata-service-based-on-rfcs-part-1/).
+- **SAP OData hizmetini etkinleştirin ve yapılandırın**. Bir saniyede TCODE SıCF aracılığıyla OData hizmetini etkinleştirebilirsiniz. Ayrıca, hangi nesnelerin gösterilmesini gerektiğini de yapılandırabilirsiniz. Daha fazla bilgi için bkz. [adım adım Kılavuzu](https://blogs.sap.com/2012/10/26/step-by-step-guide-to-build-an-odata-service-based-on-rfcs-part-1/).
 
 ## <a name="get-started"></a>başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Aşağıdaki bölümler belirli bir Data Factory varlıklarını SAP ECC bağlayıcıya tanımlamak için kullanılan özellikleri hakkında ayrıntılı bilgi sağlar.
+Aşağıdaki bölümlerde, SAP ECC bağlayıcısına özgü Data Factory varlıklarını tanımlamak için kullanılan özellikler hakkında ayrıntılı bilgi sağlanmaktadır.
 
 ## <a name="linked-service-properties"></a>Bağlı hizmeti özellikleri
 
-SAP ECC bağlı hizmeti için aşağıdaki özellikleri destekler:
+SAP ECC bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| `type` | `type` Özelliği ayarlanmalıdır `SapEcc`. | Evet |
-| `url` | SAP ECC OData hizmeti URL'si. | Evet |
-| `username` | SAP ECC için bağlanmak için kullanılan kullanıcı adı. | Hayır |
-| `password` | SAP ECC için bağlanmak için kullanılan düz metin parolası. | Hayır |
-| `connectVia` | [Integration runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. (Veri deponuz genel olarak erişilebilir değilse), şirket içinde barındırılan tümleştirme çalışma zamanı veya Azure tümleştirme çalışma zamanı kullanabilirsiniz. Bir çalışma zamanı belirtmezseniz `connectVia` varsayılan Azure Integration runtime'ı kullanır. | Hayır |
+| `type` | `type` Özelliğin olarak`SapEcc`ayarlanması gerekir. | Evet |
+| `url` | SAP ECC OData hizmetinin URL 'SI. | Evet |
+| `username` | SAP ECC 'ye bağlanmak için kullanılan Kullanıcı adı. | Hayır |
+| `password` | SAP ECC 'ye bağlanmak için kullanılan düz metin parolası. | Hayır |
+| `connectVia` | [Integration runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. Şirket içinde barındırılan bir tümleştirme çalışma zamanı veya Azure Integration Runtime (veri depoluiz herkese açık ise) kullanabilirsiniz. Çalışma zamanı belirtmezseniz, `connectVia` varsayılan Azure tümleştirme çalışma zamanını kullanır. | Hayır |
 
 ### <a name="example"></a>Örnek
 
@@ -93,15 +93,15 @@ SAP ECC bağlı hizmeti için aşağıdaki özellikleri destekler:
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
-Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi için bkz: [veri kümeleri](concepts-datasets-linked-services.md). Aşağıdaki bölümde, SAP ECC veri kümesi tarafından desteklenen özellikler listesini sağlar.
+Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri](concepts-datasets-linked-services.md). Aşağıdaki bölümde, SAP ECC veri kümesi tarafından desteklenen özelliklerin bir listesi verilmiştir.
 
-SAP ECC verileri kopyalamak için ayarlanmış `type` veri kümesine özelliği `SapEccResource`.
+SAP ECC 'den veri kopyalamak için veri kümesinin `type` özelliğini olarak `SapEccResource`ayarlayın.
 
 Aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| `path` | SAP ECC OData varlık yolu. | Evet |
+| `path` | SAP ECC OData varlığının yolu. | Evet |
 
 ### <a name="example"></a>Örnek
 
@@ -113,6 +113,7 @@ Aşağıdaki özellikler desteklenir:
         "typeProperties": {
             "path": "<entity path, e.g., dd04tentitySet>"
         },
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<SAP ECC linked service name>",
             "type": "LinkedServiceReference"
@@ -123,18 +124,18 @@ Aşağıdaki özellikler desteklenir:
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 
-Bölümleri ve etkinlikleri tanımlamak için mevcut özelliklerin tam listesi için bkz: [işlem hatları](concepts-pipelines-activities.md). Aşağıdaki bölümde SAP ECC kaynak tarafından desteklenen özellikler listesini sağlar.
+Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. işlem [hatları](concepts-pipelines-activities.md). Aşağıdaki bölüm, SAP ECC kaynağı tarafından desteklenen özelliklerin bir listesini sağlar.
 
-### <a name="sap-ecc-as-a-source"></a>SAP ECC kaynağı olarak
+### <a name="sap-ecc-as-a-source"></a>Kaynak olarak SAP ECC
 
-SAP ECC verileri kopyalamak için ayarlanmış `type` özelliğinde `source` kopyalama etkinliğine bölümünü `SapEccSource`.
+SAP ECC 'den veri kopyalamak için kopyalama etkinliğinin `type` `source` bölümündeki özelliğini olarak `SapEccSource`ayarlayın.
 
-Kopyalama etkinliği ait aşağıdaki özellikler desteklenir `source` bölümü:
+Kopyalama etkinliğinin `source` bölümünde aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| `type` | `type` Kopyalama etkinliği'nin özelliği `source` bölümü ayarlanmalıdır `SapEccSource`. | Evet |
-| `query` | Verileri filtrelemek için OData sorgu seçenekleri. Örneğin:<br/><br/>`"$select=Name,Description&$top=10"`<br/><br/>SAP ECC Bağlayıcısı verileri birleşik URL'den kopyalar:<br/><br/>`<URL specified in the linked service>/<path specified in the dataset>?<query specified in the copy activity's source section>`<br/><br/>Daha fazla bilgi için [OData URL'si bileşenleri](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Hayır |
+| `type` | Kopyalama etkinliğinin bölümünün özelliği olarak `SapEccSource`ayarlanmalıdır. `type` `source` | Evet |
+| `query` | Verileri filtrelemek için OData sorgu seçenekleri. Örneğin:<br/><br/>`"$select=Name,Description&$top=10"`<br/><br/>SAP ECC Bağlayıcısı, verileri birleştirilmiş URL 'den kopyalar:<br/><br/>`<URL specified in the linked service>/<path specified in the dataset>?<query specified in the copy activity's source section>`<br/><br/>Daha fazla bilgi için bkz. [OData URL bileşenleri](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Hayır |
 
 ### <a name="example"></a>Örnek
 
@@ -170,7 +171,7 @@ Kopyalama etkinliği ait aşağıdaki özellikler desteklenir `source` bölümü
 
 ## <a name="data-type-mappings-for-sap-ecc"></a>SAP ECC için veri türü eşlemeleri
 
-SAP ECC veri kopyalama yapılırken, şu eşlemeler OData veri türlerinden SAP ECC verileri Azure veri fabrikası geçici veri türleri için kullanılır. Kopyalama etkinliği havuz için kaynak şema ve veri türü eşlemelerini nasıl bilgi edinmek için [şema ve veri türü eşlemeleri](copy-activity-schema-and-type-mapping.md).
+SAP ECC 'den veri kopyalarken aşağıdaki eşlemeler, SAP ECC verileri için OData veri türlerinden, geçici veri türlerini Azure Data Factory için kullanılır. Kopyalama etkinliğinin kaynak şemayı ve veri türünü havuza nasıl eşlediğini öğrenmek için bkz. [şema ve veri türü eşlemeleri](copy-activity-schema-and-type-mapping.md).
 
 | OData veri türü | Veri Fabrikası geçici veri türü |
 |:--- |:--- |
@@ -191,8 +192,8 @@ SAP ECC veri kopyalama yapılırken, şu eşlemeler OData veri türlerinden SAP 
 | `Edm.DateTimeOffset` | `DateTimeOffset` |
 
 > [!NOTE]
-> Karmaşık veri türleri şu anda desteklenmiyor.
+> Karmaşık veri türleri şu anda desteklenmemektedir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Data Factory kopyalama etkinliği tarafından kaynak ve havuz olarak desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats).
+Azure Data Factory içindeki kopyalama etkinliği tarafından kaynak ve havuz olarak desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats).

@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2872d106eea56a37c362195e7a3250058336768b
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 7cbddc4b7af546396a1a5a4c86d349a96054a6f3
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295051"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726267"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>Ek Azure Disk şifrelemesi 
 
@@ -104,7 +104,7 @@ Başlamadan önce gözden [önkoşulları](azure-security-disk-encryption-prereq
      ```
 
 ### <a name="bkmk_prereq-script"></a> Azure Disk şifrelemesi önkoşulları PowerShell Betiği kullanma
-Zaten Azure Disk şifrelemesi önkoşulları alışık olduğunuz, kullanabileceğiniz [Azure Disk şifrelemesi önkoşulları PowerShell Betiği](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 ). Bu PowerShell Betiği kullanma örneği için bkz: [VM hızlı başlangıç şifrelemek](quick-encrypt-vm-powershell.md). Satırında 211, mevcut bir kaynak grubunda var olan VM'ler için tüm diskler şifrelemek için başlatma komut dosyasının bir bölümünden açıklamaları kaldırabilirsiniz. 
+Zaten Azure Disk şifrelemesi önkoşulları alışık olduğunuz, kullanabileceğiniz [Azure Disk şifrelemesi önkoşulları PowerShell Betiği](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 ). Bu PowerShell Betiği kullanma örneği için bkz: [VM hızlı başlangıç şifrelemek](azure-disk-encryption-linux-powershell-quickstart.md). Satırında 211, mevcut bir kaynak grubunda var olan VM'ler için tüm diskler şifrelemek için başlatma komut dosyasının bir bölümünden açıklamaları kaldırabilirsiniz. 
 
 Aşağıdaki tabloda, PowerShell betik parametreleri kullanılabileceğini gösterir: 
 
@@ -133,15 +133,15 @@ Aşağıdaki tabloda, PowerShell betik parametreleri kullanılabileceğini göst
   - [Çalışan bir Linux VM üzerinde şifrelemeyi devre dışı bırak](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad) 
     - Şifreleme devre dışı bırakıldığında yalnızca veri birimlerinde Linux VM'ler için izin verilir.  
 
-### <a name="encrypt-or-decrypt-virtual-machine-scale-sets"></a>Şifreleme veya şifrelerini çözme sanal makine ölçek kümeleri
+### <a name="encrypt-or-decrypt-virtual-machine-scale-sets"></a>Sanal makine ölçek kümelerini şifreleme veya şifresini çözme
 
 - [Bir çalışan Linux sanal makine ölçek kümesinde disk şifrelemeyi etkinleştir](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-linux)
 
 - [Bir çalışan Windows sanal makine ölçek kümesinde disk şifrelemeyi etkinleştir](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-windows)
 
-  - [Linux Vm'leri Linux VMSS bir Sıçrama kutusu ve etkinleştirir şifreleme ile bir sanal makine ölçek kümesini dağıtma](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
+  - [Bir sıçrama kutusu ile Linux VM 'leri sanal makine ölçek kümesi dağıtma ve Linux VMSS üzerinde şifrelemeyi mümkün](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
 
-  - [Windows Vm'leri Windows VMSS bir Sıçrama kutusu ve etkinleştirir şifreleme ile bir sanal makine ölçek kümesini dağıtma](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
+  - [Bir sıçrama kutusu ile bir sanal makine ölçek kümesi Windows VM 'Leri dağıtma ve Windows VMSS 'de şifrelemeyi izin veren](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
 
 - [Bir çalışan Linux sanal makine ölçek kümesinde disk şifrelemeyi devre dışı bırakma](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-linux)
 
@@ -206,7 +206,7 @@ Kullanım [ `manage-bde` ](https://technet.microsoft.com/library/ff829849.aspx) 
 
 ### <a name="prerequisites-for-os-disk-encryption"></a>İşletim sistemi disk şifrelemesi önkoşulları
 
-* VM işletim sistemi disk şifreleme ile uyumlu bir dağıtım bağlantısında listelendiği gibi kullanılmalıdır [Azure Disk şifrelemesi desteklenen işletim sistemleri: Linux](azure-security-disk-encryption-prerequisites.md#linux) 
+* VM, [Azure Disk Şifrelemesi tarafından desteklenen işletim sistemlerinde listelendiği gibi işletim sistemi disk şifrelemesi ile uyumlu bir dağıtım kullanıyor olmalıdır: 'Un](azure-security-disk-encryption-prerequisites.md#linux) 
 * Azure Resource Manager'daki Market görüntüsünden VM yeniden oluşturulması gerekir.
 * En az 4 GB RAM ile Azure VM (boyutudur, 7 GB önerilir).
 * (RHEL ve CentOS) SELinux devre dışı bırakın. SELinux devre dışı bırakmak için "4.4.2. bkz. SELinux devre dışı bırakma" [SELinux kullanıcı ve Yönetici Kılavuzu](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/sect-Security-Enhanced_Linux-Working_with_SELinux-Changing_SELinux_Modes.html#sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux) VM üzerinde.
@@ -234,7 +234,7 @@ Kullanım [ `manage-bde` ](https://technet.microsoft.com/library/ff829849.aspx) 
 
 5. Düzenli aralıklarla içindeki yönergeleri kullanarak şifreleme ilerleyişini izlemek [sonraki bölümde](#monitoring-os-encryption-progress).
 
-6. Get-AzVmDiskEncryptionStatus "VMRestartPending" gösterdikten sonra oturum açma veya portal, PowerShell veya CLI kullanarak VM'nizi yeniden başlatın.
+6. Get-AzVmDiskEncryptionStatus "VMRestartPending" değerini görüntülendikten sonra, sanal makineyi oturum açarak veya Portal, PowerShell veya CLı kullanarak yeniden başlatın.
     ```powershell
     C:\> Get-AzVmDiskEncryptionStatus  -ResourceGroupName $ResourceGroupName -VMName $VMName
     -ExtensionName $ExtensionName
@@ -546,7 +546,7 @@ Bir Azure AD uygulamasını (önceki sürüm) kullanarak şifreleme, daha önce 
 ``` 
 
 ### <a name="bkmk_SecretnoKEK"></a> Disk şifreleme gizli bilgisi bir KEK ile şifrelenmiş değil
-Gizli anahtar kasanızdaki ayarlamak için kullanın [kümesi AzKeyVaultSecret](/powershell/module/az.keyvault/set-azkeyvaultsecret). Bir Windows sanal makine varsa, bek dosya kodlanmış bir base64 dizesi ve ardından kullanarak anahtar kasası karşıya `Set-AzKeyVaultSecret` cmdlet'i. Linux için parola base64 dizesi olarak kodlanmış ve daha sonra anahtar kasasına yüklenmiş. Ayrıca, anahtar kasasında gizli dizi oluşturduğunuzda, aşağıdaki etiketleri ayarlandığından emin olun.
+Anahtar kasasında gizli dizi ayarlamak için [set-AzKeyVaultSecret](/powershell/module/az.keyvault/set-azkeyvaultsecret)kullanın. Bir Windows sanal makine varsa, bek dosya kodlanmış bir base64 dizesi ve ardından kullanarak anahtar kasası karşıya `Set-AzKeyVaultSecret` cmdlet'i. Linux için parola base64 dizesi olarak kodlanmış ve daha sonra anahtar kasasına yüklenmiş. Ayrıca, anahtar kasasında gizli dizi oluşturduğunuzda, aşağıdaki etiketleri ayarlandığından emin olun.
 
 #### <a name="windows-bek-file"></a>Windows BEK dosyası
 ```powershell

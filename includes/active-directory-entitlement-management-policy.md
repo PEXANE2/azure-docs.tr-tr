@@ -8,119 +8,119 @@ ms.topic: include
 ms.date: 05/16/2019
 ms.author: rolyon
 ms.custom: include file
-ms.openlocfilehash: 6711506c1e489dcbd50aedd36241affc3bbed80b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: da4bc51cdd8cdfad8212ee5a288f03874f673c2c
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67188542"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678209"
 ---
 ### <a name="policy-for-users-in-your-directory"></a>İlke: Dizininizdeki kullanıcılar için
 
-İlkeniz, kullanıcıların ve grupların dizininizdeki bu erişim paketini talep edebilir olmasını istiyorsanız şu adımları izleyin.
+İlkenizin bu erişim paketini isteyebilmek için dizininizdeki kullanıcılar için olmasını istiyorsanız bu adımları izleyin.  **Dizininizdeki kullanıcılar** hem dahili kullanıcılara hem de daha önce dizine davet edilen dış kullanıcılara, başka bir erişim paketiyle ya da Azure AD İlkeyi tanımlarken, bireysel kullanıcıları veya daha yaygın kullanıcı gruplarını belirtebilirsiniz. Örneğin, kuruluşunuz **tüm çalışanlar**gibi bir gruba zaten sahip olabilir.  Bu grup, erişim isteyebilen kullanıcılar için ilkeye eklenirse, o grubun herhangi bir üyesi daha sonra erişim isteğinde bulunabilir.
 
-1. İçinde **erişim isteğinde bulunabileceği kullanıcılar** bölümünden **dizininizdeki kullanıcılar için**.
+1. **Erişim isteyebilen kullanıcılar** bölümünde, **dizininizdeki kullanıcılar için**öğesini seçin.
 
-1. İçinde **kullanıcıları ve grupları seçin** bölümünde **kullanıcılar ve gruplar ekleme**.
+1. **Kullanıcıları ve grupları seç** bölümünde, **Kullanıcı ve Grup Ekle**' ye tıklayın.
 
-1. Belirli kullanıcılar ve grupları bölmesi, kullanıcıları ve eklemek istediğiniz grupları seçin.
+1. Kullanıcıları ve grupları seç bölmesinde, eklemek istediğiniz kullanıcıları ve grupları seçin.
 
-    ![Erişim package - ilke seçme kullanıcılar ve gruplar](./media/active-directory-entitlement-management-policy/policy-select-users-groups.png)
+    ![Erişim paketi-Ilke-kullanıcıları ve grupları seçin](./media/active-directory-entitlement-management-policy/policy-select-users-groups.png)
 
-1. Tıklayın **seçin** kullanıcılar ve gruplar eklemek için.
+1. Kullanıcıları ve grupları eklemek için **Seç** ' e tıklayın.
 
-1. Aşağı atla [İlkesi: İstek](#policy-request) bölümü.
+1. [İlkeye atlayın: İstek](#policy-request) bölümü.
 
-### <a name="policy-for-users-not-in-your-directory"></a>İlke: Kullanıcılar için dizin içinde değil
+### <a name="policy-for-users-not-in-your-directory"></a>İlke: Dizininizde bulunmayan kullanıcılar için
 
-İlkeniz, dizininizdeki bu erişim paket isteyebileceği olmayan kullanıcılar için olmasını istiyorsanız şu adımları izleyin. Dizinleri izin verilmesi için yapılandırılmalıdır **kuruluş ilişkileri işbirliği kısıtlamaları** ayarları.
+İlkenizin bu erişim paketini isteyebilmek için dizininizde olmayan kullanıcılar için olmasını istiyorsanız bu adımları izleyin. **Dizininizde olmayan kullanıcılar** , başka BIR Azure AD dizinindeki kullanıcılara başvurur ve henüz dizininizden davet edilmemiş olabilir.  Dizinler, **Kurumsal ilişkiler işbirliği kısıtlamaları** ayarlarında izin verilecek şekilde yapılandırılmalıdır.
 
 > [!NOTE]
-> Henüz dizininizin, istek onaylanamıyor veya otomatik olarak onaylanan'de bir kullanıcı için bir Konuk kullanıcı hesabı oluşturulur. Konuk davet edilir, ancak bir davet e-posta almayacaksınız. Bunun yerine, kendi erişim paket atamasını gönderildiğinde bir e-posta alırsınız. Son kullanıcıların atama süresi doldu veya iptal edilmiş olduğundan varsayılan olarak, Konuk kullanıcının, artık sonraki herhangi bir erişim paket atamaları Konuk kullanıcı hesabı oturum açma engellendi ve silindi, vardır. Hiçbir erişim paket atamalarını olsa bile Konuk kullanıcılar dizininizde önbelleğinde kalıcı olarak kalması olmasını istiyorsanız, hak yönetimi yapılandırmanız için ayarları değiştirebilirsiniz.
+> Henüz, isteğiniz onaylanmış veya otomatik olarak onaylanan dizininizde olmayan bir kullanıcı için bir konuk dış Kullanıcı hesabı oluşturulacaktır. Konuk davet edilecek, ancak davet e-postası almacaktır. Bunun yerine, bunlara erişim paketi ataması teslim edildiğinde bir e-posta gönderilir. Varsayılan olarak, Konuk kullanıcının artık herhangi bir erişim paketi ataması olmadığında, son atamasının süresi dolduğunda veya iptal edildiğinden, bu Konuk Kullanıcı hesabının oturum açması engellenir ve daha sonra silinir. Konuk kullanıcılarınızın, hiçbir erişim paketi ataması olmasa bile dizininizden sonsuza kadar kalmasını istiyorsanız, Yetkilendirme Yönetimi yapılandırmanızın ayarlarını değiştirebilirsiniz.
 
-1. İçinde **erişim isteğinde bulunabileceği kullanıcılar** bölümünden **sizin dizininizdeki kullanıcılar için**.
+1. **Erişim isteyebilen kullanıcılar** bölümünde, **dizininizde olmayan kullanıcılar için**öğesini seçin.
 
-1. İçinde **seçin dış Azure AD directory** bölümünde **ekleme dizinleri**.
+1. **Dış Azure ad dizini seçin** bölümünde, **Dizin Ekle**' ye tıklayın.
 
-1. Bir etki alanı adını ve dış Ara girin Azure AD dizini.
+1. Bir etki alanı adı girin ve bu etki alanı adına sahip bir Azure AD dizini arayın.
 
-1. Sağlanan dizin adı ve ilk etki alanı tarafından doğru dizinde olduğunu doğrulayın.
+1. Belirtilen dizin adı ve ilk etki alanı tarafından doğru dizin olduğunu doğrulayın.
 
     > [!NOTE]
-    > Dizindeki tüm kullanıcılar bu erişim paket isteği mümkün olacaktır. Bu dizin, yalnızca Search'te kullanılan etki alanı ile ilişkili tüm alt etki alanlarını kullanıcılardan içerir.
+    > Dizindeki tüm kullanıcılar bu erişim paketini isteyebilecektir. Bu, yalnızca aramada kullanılan etki alanını değil, dizinle ilişkili tüm alt etki alanlarından gelen kullanıcıları içerir.
 
-    ![Erişim package - ilke seçme dizinleri](./media/active-directory-entitlement-management-policy/policy-select-directories.png)
+    ![Erişim paketi-Ilke-dizinleri seçin](./media/active-directory-entitlement-management-policy/policy-select-directories.png)
 
-1. Tıklayın **Ekle** dizin eklemek için.
+1. Dizin eklemek için **Ekle** ' ye tıklayın.
 
-1. Daha fazla herhangi bir dizin eklemek için bu adımı yineleyin.
+1. Daha fazla dizin eklemek için bu adımı tekrarlayın.
 
-1. Tüm dizinler ekledikten sonra istediğiniz ilkeye dahil **seçin**.
+1. İlkeye dahil etmek istediğiniz tüm dizinleri ekledikten sonra **Seç**' e tıklayın.
 
-1. Aşağı atla [İlkesi: İstek](#policy-request) bölümü.
+1. [İlkeye atlayın: İstek](#policy-request) bölümü.
 
-### <a name="policy-none-administrator-direct-assignments-only"></a>İlke: Hiçbiri (doğrudan atama Yöneticisi yalnızca)
+### <a name="policy-none-administrator-direct-assignments-only"></a>İlke: Hiçbiri (yalnızca yönetici doğrudan atamaları)
 
-İlkenizin erişim isteklerini atlayabilir ve doğrudan erişim paketi belirli kullanıcılara atamanız yöneticilerin izin vermek istiyorsanız şu adımları izleyin. Kullanıcılar, erişim paket isteği gerekmez. Sona erme tarihi hala ayarlanmış, ancak hiçbir istek ayarları vardır.
+İlkenizin erişim isteklerini atlayıp yöneticilerin erişim paketine doğrudan belirli kullanıcıları atamasını istiyorsanız bu adımları izleyin. Kullanıcıların erişim paketini istemesi gerekmez. Süre sonu ayarlarını ayarlamaya devam edebilirsiniz, ancak hiçbir istek ayarı yoktur.
 
-1. İçinde **erişim isteğinde bulunabileceği kullanıcılar** bölümünden **yok (yalnızca yönetici doğrudan atamaları**.
+1. **Erişim Isteyebilen kullanıcılar** bölümünde Hiçbiri ' ni **(yalnızca yönetici doğrudan atamaları**) seçin.
 
-    Erişim paket oluşturduğunuzda, doğrudan erişim paketi belirli iç ve dış kullanıcılara atayabilirsiniz. Bir dış kullanıcının belirtirseniz, dizininizde bir Konuk kullanıcı hesabı oluşturulur.
+    Erişim paketini oluşturduktan sonra, erişim paketine belirli iç ve dış kullanıcıları doğrudan atayabilirsiniz. Bir dış Kullanıcı belirtirseniz, dizininizde bir Konuk Kullanıcı hesabı oluşturulur.
 
-1. Aşağı atla [İlkesi: Sona erme](#policy-expiration) bölümü.
+1. [İlkeye atlayın: Süre](#policy-expiration) sonu bölümü.
 
 ### <a name="policy-request"></a>İlke: İstek
 
-Kullanıcıların erişim paket istediğinde isteği bölümünde onay ayarlarını belirtin.
+Istek bölümünde, kullanıcıların erişim paketini istemesi durumunda onay ayarlarını belirtirsiniz.
 
-1. Seçilen kullanıcılardan gelen istekleri onay gerektirmek için ayarlanmış **onayı iste** geç **Evet**. Otomatik olarak onaylanan istekler için getirin **Hayır**.
+1. Seçili kullanıcılardan gelen isteklere onay gerektirmek için **onay gerektir** seçeneğini **Evet**olarak ayarlayın. İsteklerin otomatik olarak onaylanmasını sağlamak için, geçiş seçeneğini **Hayır**olarak ayarlayın.
 
-1. İçinde onay gerekiyorsa **onaylayanları seçin** bölümünde **onaylayan Ekle**.
+1. Onay gerekiyorsa, **onaylayanları Seç** bölümünde, **onaylayanları Ekle**' ye tıklayın.
 
-1. Select onaylayanlar bölmesinde, bir veya daha fazla kullanıcı ve/veya grupları onaylayan olarak seçin.
+1. Onaylayanları seç bölmesinde, bir veya daha fazla kullanıcıyı ve/veya grubu onaylayanlara seçin.
 
-    Bir isteği onaylamak seçili onaylayanlar yalnızca biri gerekir. Tüm onaylayanlara onay gerekli değildir. Onay kararını hangi onaylayan isteği önce gözden geçirmeleri üzerinde temel alır.
+    Seçili onaylayanlardan yalnızca birinin bir isteği onaylaması gerekir. Tüm onaylayanlardan onay gerekli değildir. Onay kararı, onaylayan kullanıcının isteği gözden geçirmelerine göre belirlenir.
 
-    ![Erişim package - ilke seçme onaylayanlar](./media/active-directory-entitlement-management-policy/policy-select-approvers.png)
+    ![Erişim paketi-Ilke-onaylayanları Seç](./media/active-directory-entitlement-management-policy/policy-select-approvers.png)
 
-1. Tıklayın **seçin** onaylayanlardan eklemek için.
+1. Onaylayanları eklemek için **Seç** ' e tıklayın.
 
-1. Tıklayın **Gelişmiş istek ayarlarını göster** ek ayarlar gösterilecek.
+1. Ek ayarları göstermek için **Gelişmiş istek ayarlarını göster** ' e tıklayın.
 
-    ![Erişim package - ilke seçme dizinleri](./media/active-directory-entitlement-management-policy/policy-advanced-request.png)
+    ![Erişim paketi-Ilke-dizinleri seçin](./media/active-directory-entitlement-management-policy/policy-advanced-request.png)
 
-1. Kullanıcıların erişim paket isteği için bir kullanıcının bir gerekçe gerektirecek şekilde **gerekçelendirme iste** için **Evet**.
+1. Kullanıcıların erişim paketi istemek için bir gerekçe sağlamasını gerektirmek için, **gerekçe iste** seçeneğini **Evet**olarak ayarlayın.
 
-1. Erişim paket için bir isteği onaylamak için gerekçe göstermesi onaylayan gerektirecek şekilde **onaylayan gerekçelendirme iste** için **Evet**.
+1. Onaylayanın erişim paketine yönelik bir isteği onaylamaya yönelik bir gerekçe sağlamasını gerektirmek için, **onaylayan gerekçe iste** seçeneğini **Evet**olarak ayarlayın.
 
-1. İçinde **onay isteği zaman aşımı (gün)** kutusunda, onaylayanlar sahip bir isteği gözden geçirmek için süreyi belirtin. Bu gün sayısı içinde hiçbir onaylayan gözden geçirin, isteğin süresi dolar ve kullanıcının erişim paket için başka bir istek göndermeniz gerekir.
+1. **Onay isteği zaman aşımı (gün)** kutusunda, onaylayanların bir isteği gözden geçirmesi gereken süre miktarını belirtin. Bu gün sayısında hiçbir onaylayan gözden geçiremez, isteğin süresi dolar ve kullanıcının erişim paketi için başka bir istek göndermesi gerekir.
 
-### <a name="policy-expiration"></a>İlke: süre sonu
+### <a name="policy-expiration"></a>İlke: Süre sonu
 
-Sona erme bölümünde, bir kullanıcının erişim paket atamaya süresinin sona erdiği belirtin.
+Süre sonu bölümünde, bir kullanıcının erişim paketine atamanın ne zaman sona ereceğini belirtirsiniz.
 
-1. İçinde **sona erme** bölümünde, **erişim paket süresi** için **tarihinde**, **gün sayısı**, veya **hiçbir zaman**.
+1. **Süre sonu** bölümünde, **erişim paketi** bitiş tarihi ' ni **Tarih**, **gün sayısı**veya **hiçbir zaman**olarak ayarlayın.
 
-    İçin **tarihinde**, gelecekte bir sona erme tarihi seçin.
+    **Tarih**açısından, gelecekte bir sona erme tarihi seçin.
 
-    İçin **gün sayısı**, 0 ile 3660 gün arasında bir sayı belirtin.
+    **Gün sayısı**için 0 ila 3660 gün arasında bir sayı belirtin.
 
-    Yaptığınız seçime göre bir kullanıcının erişim paket atamaya belirli bir tarihte, belirli sayıda gün onaylandıktan sonra süresi dolar veya hiçbir zaman.
+    Seçiminize bağlı olarak, bir kullanıcının erişim paketine atanması belirli bir tarihte, belirli bir gün sonra onaylandıktan sonra veya hiçbir zaman sona erer.
 
-1. Tıklayın **Gelişmiş sona erme ayarları göster** ek ayarlar gösterilecek.
+1. Ek ayarları göstermek için **Gelişmiş süre sonu ayarlarını göster** ' e tıklayın.
 
-1. Kullanıcı atamalarını genişletmek izin verecek şekilde ayarlanmış **erişim genişletmek kullanıcıların** için **Evet**.
+1. Kullanıcının atamalarını genişletmesine izin vermek için **kullanıcıların erişimi genişlemesine Izin ver** seçeneğini belirleyin **.**
 
-    Uzantıları ilkede izin veriliyorsa, kullanıcı 14 gün e-posta alır ve ayrıca kendi erişim paket atamasını süresi dolacak şekilde ayarlanmadan önce 1 gün bunları atamasını genişletme isteyen.
+    İlkede uzantılara izin veriliyorsa, Kullanıcı bir e-posta 14 gün ve ayrıca erişim paketi atamasının, atamayı genişletmesini istemek üzere süre sonu olarak ayarlanmayacak şekilde 1 gün alır.
 
-    ![Erişim package - ilkeyi - sona erme tarihi](./media/active-directory-entitlement-management-policy/policy-expiration.png)
+    ![Erişim paketi-Ilke-süre sonu ayarları](./media/active-directory-entitlement-management-policy/policy-expiration.png)
 
 ### <a name="policy-enable-policy"></a>İlke: İlkeyi etkinleştirme
 
-1. Erişim paket ilke ile kullanıcılara için hemen kullanılabilir olmasını isterseniz **Evet** ilkesini etkinleştirmek üzere.
+1. Erişim paketinin ilkedeki kullanıcılar için hemen kullanılabilir olmasını istiyorsanız, ilkeyi etkinleştirmek için **Evet** ' i tıklatın.
 
-    Erişim paket oluşturma işlemini tamamladıktan sonra her zaman gelecekteki etkinleştirebilirsiniz.
+    Erişim paketini oluşturma işlemi bittikten sonra bunu gelecekte etkinleştirebilirsiniz.
 
-    ![Erişim package - ilke etkinleştirmek ilke ayarı](./media/active-directory-entitlement-management-policy/policy-enable.png)
+    ![Erişim paketi-Ilke-ilke ayarını etkinleştir](./media/active-directory-entitlement-management-policy/policy-enable.png)
 
-1. Tıklayın **sonraki** veya **oluşturma**.
+1. **İleri** veya **Oluştur**' a tıklayın.

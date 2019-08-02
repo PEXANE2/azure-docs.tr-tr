@@ -1,7 +1,7 @@
 ---
-title: Konferans örneği varlık öznitelikleri - akademik bilgi API'si
+title: Konferans örneği varlık öznitelikleri-Akademik Bilgi API
 titlesuffix: Azure Cognitive Services
-description: Akademik bilgi API'si konferans örneği varlıkta ile kullanabileceğiniz öznitelikleri hakkında bilgi edinin.
+description: Akademik Bilgi API 'sindeki konferans örneği varlığıyla kullanabileceğiniz öznitelikleri öğrenin.
 services: cognitive-services
 author: alch-msft
 manager: nitinme
@@ -10,35 +10,36 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: 183a307159adb5dfdb248eb0cf4862462a626db6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ROBOTS: NOINDEX
+ms.openlocfilehash: 37a353fbb86ca199b2316dcfba5904f4b46b0276
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60498755"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705051"
 ---
-# <a name="conference-instance-entity"></a>Konferans örneği varlık
+# <a name="conference-instance-entity"></a>Konferans örneği varlığı
 
-<sub> * Şu öznitelikleri konferans örneği varlığa özgüdür. (Ty = '4') </sub>
+<sub>* Aşağıdaki öznitelikler, konferans örneği varlığına özeldir. (Ty = ' 4 ')</sub>
 
-Ad    |Açıklama                            |Tür       | İşlemler
+Ad    |Açıklama                            |Type       | İşlemler
 ------- | ------------------------------------- | --------- | ----------------------------
-Kimlik      |Varlık Kimliği                              |Int64      |Eşittir
-CIN     |Konferans örneği normalleştirilmiş adı ({ConferenceSeriesNormalizedName} {ConferenceInstanceYear})        |String     |Eşittir
-DCN     |Konferans örneği görünen ad ({ConferenceSeriesName}: {ConferenceInstanceYear})       |String     |Yok
-CIL'İ     |Konferans örneği konumu    |String     |Eşittir<br/>StartsWith
-CISD    |Konferans örneği başlangıç tarihi  |Tarih       |Eşittir<br/>IsBetween
-CIED    |Konferans örneği bitiş tarihi    |Tarih       |Eşittir<br/>IsBetween
-CIARD   |Soyut kayıt son tarihi konferans örneği  |Tarih       |Eşittir<br/>IsBetween
-CISDD   |Gönderim konferans örneği son tarihi     |Tarih       |Eşittir<br/>IsBetween
-CIFVD   |Son sürüm konferans örneği son tarihi  |Tarih       |Eşittir<br/>IsBetween
-CINDD   |Konferans örneği bildirim tarihi   |Tarih       |Eşittir<br/>IsBetween
-CD. T    |Konferans örneği olay başlığı   |Tarih       |Eşittir<br/>IsBetween
-CD. D    |Konferans örneği olay tarihi    |Tarih       |Eşittir<br/>IsBetween
-PCS.CN  |Örneğin konferans serisi adı |String     |Eşittir
-PCS.CId |Konferans serisi kimliği örneği |Int64    |Eşittir
-CC      |Konferans örneği alıntı toplam sayısı           |Int32      |Yok  
-ECC     |Konferans örneği toplam tahmini alıntı sayısı |Int32      |Yok
+Id      |Varlık Kimliği                              |Int64      |Eşittir
+CIN     |Konferans örneği normalleştirilmiş adı ({ConferenceSeriesNormalizedName} {ConferenceInstanceYear})        |Dize     |Eşittir
+DCN     |Konferans örneği görünen adı ({ConferenceSeriesName}: {ConferenceInstanceYear})       |Dize     |yok
+CIL     |Konferans örneğinin konumu    |Dize     |Eşittir<br/>StartsWith
+CID    |Konferans örneğinin başlangıç tarihi  |Date       |Eşittir<br/>Isbetween
+CIED    |Konferans örneğinin bitiş tarihi    |Date       |Eşittir<br/>Isbetween
+CIARD   |Konferans örneğinin Özet kayıt bitiş tarihi  |Date       |Eşittir<br/>Isbetween
+CIDD   |Konferans örneğinin gönderim bitiş tarihi     |Date       |Eşittir<br/>Isbetween
+CIFVD   |Konferans örneğinin son sürüm bitiş tarihi  |Date       |Eşittir<br/>Isbetween
+CINDD   |Konferans örneğinin bildirim tarihi   |Date       |Eşittir<br/>Isbetween
+CD. ŞI    |Bir konferans örneği olayının başlığı   |Date       |Eşittir<br/>Isbetween
+CD. TID    |Bir konferans örneği olayının tarihi    |Date       |Eşittir<br/>Isbetween
+AÇILA. ,  |Örneğin konferans serisi adı |Dize     |Eşittir
+Açıla. CID |Örneğin konferans serisi KIMLIĞI |Int64    |Eşittir
+BİLGİ      |Konferans örneği toplam alıntı sayısı           |Int32      |yok  
+ECC     |Konferans örneği toplam tahmini alıntı sayısı |Int32      |yok
 
 
 ## <a name="extended-metadata-attributes"></a>Genişletilmiş meta veri öznitelikleri ##

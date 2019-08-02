@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: ecb2059e529347b7eff72bf6af74b82558a4c251
-ms.sourcegitcommit: 83a89c45253b0d432ce8dcd70084c18e9930b1fd
+ms.openlocfilehash: 4688cf6fb82eb8f726205d54d0c852fd3daf8dfb
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371684"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564781"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>Azure Işlevleri 2. x için Host. JSON başvurusu  
 
@@ -147,7 +147,10 @@ Yapılandırma ayarları, [Olay Hub 'ı Tetikleyicileri ve bağlamaları](functi
 
 ## <a name="functiontimeout"></a>functionTimeout
 
-Tüm işlevler için zaman aşımı süresini gösterir. Sunucusuz tüketim planında geçerli Aralık 1 saniye ila 10 dakika ve varsayılan değer 5 dakikadır. Bir App Service planında, genel bir sınır yoktur ve varsayılan değer çalışma zamanı sürümüne bağlıdır. Sürüm 2. x içinde, bir App Service planı için varsayılan değer 30 dakikadır. 1\. x sürümünde, zaman aşımı olmadığını belirten *null*olur. Sonsuz olarak ayarlanamaz. Bu değeri açıkça ayarlamadığımızda, varsayılan 30 dakika değerini alır.
+Tüm işlevler için zaman aşımı süresini gösterir. TimeSpan dize biçimini izler. Sunucusuz tüketim planında geçerli Aralık 1 saniye ila 10 dakika ve varsayılan değer 5 dakikadır.  
+Adanmış bir (App Service) planında, genel bir sınır yoktur ve varsayılan değer çalışma zamanı sürümüne bağlıdır: 
++ Sürüm 1. x: varsayılan değer, zaman aşımı olmadığını gösteren *null*.   
++ Sürüm 2. x: varsayılan değer 30 dakikadır. Değeri, `-1` sınırsız yürütmeyi gösterir.
 
 ```json
 {

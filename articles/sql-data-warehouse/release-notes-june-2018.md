@@ -1,5 +1,5 @@
 ---
-title: Haziran 2018 tarihinden itibaren Azure SQL veri ambarı sürüm notları | Microsoft Docs
+title: Azure SQL veri ambarı sürüm notları Haziran 2018 | Microsoft Docs
 description: Azure SQL veri ambarı için sürüm notları.
 services: sql-data-warehouse
 author: anumjs
@@ -11,21 +11,21 @@ ms.date: 07/23/2018
 ms.author: anjangsh
 ms.reviewer: jrasnick
 ms.openlocfilehash: 4348a634fd5b2b33f36d8e79f28caf659b82ccf4
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67626145"
 ---
-# <a name="whats-new-in-azure-sql-data-warehouse-june-2018"></a>Azure SQL veri ambarı'nda yenilikler nelerdir? Haziran 2018
-Azure SQL veri ambarı, sürekli olarak iyileştirmeler alır. Bu makalede, Haziran 2018'de sunulan değişiklikler ve yeni özellikleri açıklar. 
+# <a name="whats-new-in-azure-sql-data-warehouse-june-2018"></a>Azure SQL veri ambarı 'ndaki yenilikler nelerdir? Haziran 2018
+Azure SQL veri ambarı geliştirmeleri sürekli olarak alır. Bu makalede Haziran 2018 ' de sunulan yeni özellikler ve değişiklikler açıklanmaktadır. 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="user-defined-restore-points"></a>Kullanıcı tanımlı geri yükleme noktaları
-SQL veri ambarı, veri ambarınızın anlık görüntüleri otomatik olarak her 8 saatte bir sekiz saatlik kurtarma noktası hedefi (RPO) güvence altına almak alır. Bu anlık görüntüler bir kolayca veri Ambarınızı çalışan yönetim yükünü otomatik karşın, iş gereksinimlerinize göre kritik zamanlarda anlık gerek yoktur. Örneğin, önemli veri yüklemesi ya da dağıtımı yeni komut dosyaları hemen önce bir anlık görüntü işlemi hemen önce geri yükleme noktası etkinleştirmek için veri ambarı'na yönlendiriliyorsunuz. 
+SQL veri ambarı, sekiz saatlik bir kurtarma noktası hedefini (RPO) garanti etmek için her 8 saatte bir veri ambarınızın anlık görüntülerini otomatik olarak alır. Bu otomatik anlık görüntüler, veri Ambarınızı çalıştırmanın yönetim yükünü kolaylaştırırken, iş gereksiniminizi temel alarak kritik zamanlarda anlık görüntü alma ihtiyacı vardır. Örneğin, bir anlık görüntüyü, önemli bir veri yükünün önüne veya yeni betikler, işlemden önce bir geri yükleme noktasını etkinleştirmek için veri ambarına dağıtımından önce yapılır. 
 
-SQL veri ambarı destekler [kullanıcı tanımlı bir geri yükleme noktaları](https://azure.microsoft.com/blog/quick-recovery-time-with-sql-data-warehouse-using-user-defined-restore-points/) aracılığıyla [yeni AzSqlDatabaseRestorePoint](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaserestorepoint) cmdlet'i.
+SQL veri ambarı artık [New-AzSqlDatabaseRestorePoint](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaserestorepoint) cmdlet 'i aracılığıyla [Kullanıcı tanımlı geri yükleme noktalarını](https://azure.microsoft.com/blog/quick-recovery-time-with-sql-data-warehouse-using-user-defined-restore-points/) desteklemektedir.
 
 ```powershell
 New-AzSqlDatabaseRestorePoint
@@ -35,10 +35,10 @@ New-AzSqlDatabaseRestorePoint
     -RestorePointLabel $RestorePointName
 ```
 
-## <a name="column-level-security"></a>Sütun düzeyi güvenlik
-Veri erişimi ve güvenlik, veri ambarı'nda yönetme, müşteriler ve iş ortakları ile güven oluşturmak için önemlidir. SQL veri ambarı [sütun düzeyi güvenlik (CLS) artık destekliyor](https://azure.microsoft.com/blog/column-level-security-is-now-supported-in-azure-sql-data-warehouse/) veri Ambarınızı tasarlamanız gerekmeden tablolarınızı belirli sütunlardaki kullanıcı erişimini kısıtlayarak hassas verileri görüntülemeye yönelik izinleri ayarlamanızı sağlar.
+## <a name="column-level-security"></a>Sütun düzeyinde güvenlik
+Veri ambarınızdaki veri erişimini ve güvenliğini yönetmek, müşterileriniz ve iş Ortaklığınızla güven oluşturmak için kritik öneme sahiptir. SQL veri ambarı artık, veri Ambarınızı yeniden tasarlamanız gerekmeden gizli verileri görüntüleme izinlerini ayarlamanıza olanak tanıyan [sütun düzeyi güvenliği 'ni (CLS) desteklemektedir](https://azure.microsoft.com/blog/column-level-security-is-now-supported-in-azure-sql-data-warehouse/) .
 
-CLS standardını kullanarak kullanıcının yürütme bağlamı veya grup üyeliklerini temel tablo sütunlarına erişimini denetlemesine olanak tanır [GRANT](https://docs.microsoft.com/azure/sql-data-warehouse/column-level-security) T-SQL deyimi. Erişimi kısıtlama mantıksal bulunduğu veritabanı katmanındaki yerine başka bir uygulamadaki verileri uzağa genel güvenlik uygulaması basitleştirir.
+CLS, standart [Grant](https://docs.microsoft.com/azure/sql-data-warehouse/column-level-security) T-SQL ifadesini kullanarak, kullanıcının yürütme bağlamına veya grup üyeliklerine göre tablo sütunlarına erişimi denetlemenize olanak sağlar. Erişim kısıtlama mantığı, başka bir uygulamadaki verilerden uzakta olmak yerine veritabanı katmanının kendisinde bulunur ve genel güvenlik uygulamasını basitleştirir.
 
 
 ```sql
@@ -52,7 +52,7 @@ The SELECT permission was denied on the column 'SSN' of the object 'Membership',
 ```
 
 ## <a name="objectschemaname"></a>OBJECT_SCHEMA_NAME
-[OBJECT_SCHEMA_NAME()](https://docs.microsoft.com/sql/t-sql/functions/object-schema-name-transact-sql) işlevi şema kapsamlı nesneler için veritabanı şema adını döndürür. Bu işlev ETL araçlarındaki yaygın haline gelmiştir zaman şema doğrulama nesnesi. 
+[OBJECT_SCHEMA_NAME ()](https://docs.microsoft.com/sql/t-sql/functions/object-schema-name-transact-sql) işlevi, şema kapsamlı nesneler için veritabanı şeması adını döndürür. Bu işlev, nesne şeması doğrulaması yapılırken ETL araçlarında yaygın hale geldi. 
 
 ```sql
 SELECT
@@ -62,7 +62,7 @@ FROM
     [sys].[tables];
 ```
 
-**Örnek sonuçları**
+**Örnek sonuçlar**
 ```
 table_schema    | table_name
 -----------------------------
@@ -72,14 +72,14 @@ dbo               nation
 dbo               orders
 ```
 
-## <a name="support-for-the-systimezoneinfo-view"></a>Sys.time_zone_info görünümü desteği
-[Sys.time_zone_info](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) görünümü, Azure SQL Data warehouse'da desteklenen saat dilimleri hakkında bilgi döndürür.
+## <a name="support-for-the-systimezoneinfo-view"></a>Sys. time_zone_info görünümü desteği
+[Sys. time_zone_info](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) görünümü, Azure SQL veri ambarı 'nda desteklenen Saat dilimleriyle ilgili bilgileri döndürür.
 
 ```sql
 SELECT * FROM [sys].[time_zone_info];
 ```
 
-**Örnek sonuçları**
+**Örnek sonuçlar**
 ```
 name                            | current_utc_offset | is_currently_dst
 -------------------------------------------------------------------------
@@ -89,9 +89,9 @@ Mountain Standard Time (Mexico)   -06:00               1
 Central Standard Time             -05:00               1
 ```
 
-## <a name="auto-stats-operations-appear-in-sysdmpdwexecrequests-behavior-change"></a>Otomatik İstatistikler operations sys.dm_pdw_exec_requests (davranış değişikliği) görünür.
+## <a name="auto-stats-operations-appear-in-sysdmpdwexecrequests-behavior-change"></a>Otomatik Istatistikler işlemleri sys. DM _pdw_exec_requests (davranış değişikliği) içinde görünür
 
-Sunulmasıyla birlikte [otomatik Create STATISTICS](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic), Azure SQL veri ambarı sorgu yürütme en iyi duruma getirme istatistikleri üretir. İstatistikleri otomatik olarak oluşturulan bir kayıtta ekleyerek, izleme olanağı Haziran 2018'den sürüm ekler [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) herhangi her görüntülemek [CREATE STATISTICS](https://docs.microsoft.com/sql/t-sql/statements/create-statistics-transact-sql) işlemi yürütülür.
+[Otomatik oluşturma istatistiklerinin](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic)kullanıma sunulmasıyla birlikte, Azure SQL veri ambarı sorgu yürütmeyi iyileştirmek için istatistikler oluşturacaktır. Haziran 2018 sürümü, her bir [Istatistik oluşturma](https://docs.microsoft.com/sql/t-sql/statements/create-statistics-transact-sql) işlemi yürütüldüğünde [sys. DM _pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) görünümüne bir kayıt eklenerek istatistiklerin otomatik olarak ne zaman oluşturulduğunu izleme özelliği ekler.
 
 ```sql
 SELECT
@@ -103,7 +103,7 @@ FROM
 WHERE
     [command] LIKE 'CREATE STATISTICS _WA_Sys%';
 ```
-**Örnek sonuçları**
+**Örnek sonuçlar**
 ```
 start_time                | end_time                | command
 ------------------------------------------------------------------------------------------------------------------------------
@@ -111,7 +111,7 @@ start_time                | end_time                | command
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-SQL veri ambarı hakkında biraz bilmek, bilgi nasıl hızlı bir şekilde [SQL veri ambarı oluşturma][create a SQL Data Warehouse] . If you are new to Azure, you may find the [Azure glossary][Azure glossary] yeni terimlerle karşılaşabileceğinizi yardımcı. Alternatif olarak, aşağıdaki diğer SQL Veri Ambarı Kaynakları’na göz atın.  
+SQL veri ambarı hakkında biraz bilgi sahibi olduğunuza göre, hızlı [bir şekılde SQL veri ambarı oluşturmayı][create a SQL Data Warehouse]öğrenin. Azure’da yeniyseniz yeni terimlerle karşılaşabileceğinizi için [Azure sözlüğünü][Azure glossary] yararlı bulabilirsiniz. Alternatif olarak, aşağıdaki diğer SQL Veri Ambarı Kaynakları’na göz atın.  
 
 * [Müşteri başarı hikayeleri]
 * [Bloglar]

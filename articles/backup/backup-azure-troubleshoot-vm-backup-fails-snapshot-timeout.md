@@ -1,19 +1,20 @@
 ---
 title: 'Sorun giderme Azure Backup hatası: Konuk Aracısı durumu kullanılamıyor'
 description: Belirtiler, nedenler ve Aracı, uzantısı ve disklerle ilgili Azure Backup hatalarının çözümleri.
-author: saurabhsensharma
-manager: saurabhsensharma
+ms.reviewer: saurse
+author: dcurwin
+manager: carmonm
 keywords: Azure yedekleme; VM Aracısı; Ağ bağlantısı;
 ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.author: saurse
-ms.openlocfilehash: e4337c9c89ca239bb664cbb7fb953ab9eedd3ac5
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 7fc288ad9e33088b1b5248c1b61ed439ac95a9c4
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465324"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688972"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Sorun giderme Azure Backup hatası: Aracı veya uzantıyla ilgili sorunlar
 
@@ -77,9 +78,9 @@ Azure Backup hizmeti için bir VM 'yi kaydettikten ve zamanladıktan sonra, yede
 **Neden 2: [Yedekleme Uzantısı güncelleştirme veya yükleme başarısız oluyor](#the-backup-extension-fails-to-update-or-load)**  
 **Neden 3: [VM 'nin internet erişimi yok](#the-vm-has-no-internet-access)**
 
-## <a name="ExtentionOperationFailed-vmsnapshot-extension-operation-failed"></a>ExtentionOperationFailedForManagedDisks-VMSnapshot genişletme işlemi başarısız oldu
+## <a name="ExtensionOperationFailed-vmsnapshot-extension-operation-failed"></a>ExtensionOperationFailedForManagedDisks-VMSnapshot genişletme işlemi başarısız oldu
 
-**Hata kodu**: ExtentionOperationFailedForManagedDisks <br>
+**Hata kodu**: ExtensionOperationFailedForManagedDisks <br>
 **Hata iletisi**: VMSnapshot uzantısı işlemi başarısız oldu<br>
 
 Azure Backup hizmeti için bir VM 'yi kaydettikten ve zamanladıktan sonra, yedekleme işlemi bir zaman noktaya anlık görüntü almak için VM yedekleme uzantısıyla iletişim kurarak işi başlatır. Aşağıdaki koşullardan herhangi biri, anlık görüntünün tetiklenmesi önlenebilir. Anlık görüntü tetiklenmemişse bir yedekleme hatası oluşabilir. Aşağıdaki sorun giderme adımlarını listelenen sırayla doldurun ve ardından işleminizi yeniden deneyin:  
@@ -106,7 +107,7 @@ Azure Backup hizmeti için bir VM 'yi kaydettikten ve zamanladıktan sonra, yede
 **Hata kodu**: UserErrorUnsupportedDiskSize <br>
 **Hata iletisi**: Şu anda Azure Backup, 4095GB 'tan büyük disk boyutlarını desteklemiyor <br>
 
-Disk boyutu 4095GB 'tan büyük olan VM yedeklenirken yedekleme işlemi başarısız olabilir. Büyük disklere yönelik destek yakında kullanıma sunulacak.  
+Disk boyutu 4095GB 'tan büyük olan VM yedeklenirken yedekleme işlemi başarısız olabilir. 4 TB 'den büyük disklere yönelik Azure Backup büyük disk desteğinin özel önizlemesine kaydolmak için, AskAzureBackupTeam@microsoft.comboyut olarak en fazla 30tb 'a gidin.
 
 ## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>Usererrorbackupoperationınprogress-Şu anda başka bir yedekleme işlemi sürdüğünden yedekleme başlatılamıyor
 

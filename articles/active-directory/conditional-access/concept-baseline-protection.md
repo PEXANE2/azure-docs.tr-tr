@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2fc552211ed55239259ce84d84584c451733d70
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 819b2f3c54d97639eceae9aed60fdd5da2e7b3ef
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499867"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608175"
 ---
 # <a name="what-are-baseline-policies"></a>Temel ilkeler nelerdir?
 
@@ -97,7 +97,7 @@ Temel bir ilkeyi etkinleştirmek için:
 
 Daha fazla bilgi için bkz.
 
-* [Kimlik altyapınızı güvenli hale getirmenin beş adımı](../../security/azure-ad-secure-steps.md)
+* [Kimlik altyapınızı güvenli hale getirmenin beş adımı](../../security/fundamentals/steps-secure-identity.md)
 * [Azure Active Directory Koşullu erişim nedir?](overview.md)
 * [Yöneticiler için MFA gerektir (Önizleme)](howto-baseline-protect-administrators.md)
 * [Son Kullanıcı koruması (Önizleme)](howto-baseline-protect-end-users.md)

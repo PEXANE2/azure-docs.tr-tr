@@ -14,33 +14,33 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: rkarlin
-ms.openlocfilehash: 984bd4d5db210679884655721be0cbcdac8c1705
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 8845cb0a91edefa0350558f35488519ec37d064d
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485290"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663581"
 ---
-# <a name="custom-alert-rules-in-azure-security-center-preview"></a>Azure Güvenlik Merkezi'ndeki Özel Uyarı Kuralları (Önizleme)
-Bu belge, Azure Güvenlik Merkezi'nde özel uyarı kuralları oluşturmanıza yardımcı olur.
+# <a name="custom-alert-rules-in-azure-security-center-retired"></a>Azure Güvenlik Merkezi 'ndeki özel uyarı kuralları (kullanımdan kaldırıldı)
+Bu belge, Azure Güvenlik Merkezi 'nde özel uyarı kuralları (Önizleme) oluşturmanıza yardımcı olur.
 
 > [!NOTE]
-> Özel uyarılar kullanımdan kaldırıldı Güvenlik Merkezi'nden. 
+> Özel uyarılar 30 Haziran 2019 tarihinde Azure Güvenlik Merkezi 'nden kullanımdan kaldırıldı. 
 
-## <a name="retirement-of-custom-alert-rules-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde devre dışı bırakılması özel uyarı kuralları
+## <a name="retirement-of-custom-alert-rules-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde özel uyarı kurallarının kullanımdan kaldırılması
 
-Özel uyarı deneyimi 30 Haziran 2019, altyapının üzerinde yararlandı emeklilik nedeniyle kullanımdan kaldırılmıştır. önce retriement tanımlanan herhangi bir özel uyarı etkisi olmuyor ve bu özel uyarılar kurallara göre güvenlik uyarıları değil oluşturuluyor. Yine de bunları aşağıda belirtilen alternatifleri de yeniden oluşturmak için Güvenlik Merkezi'ndeki özel uyarı kurallarınızı sorguları görüntüleyebilirsiniz:
+Özel uyarılar deneyimi, üzerinde çalıştığı temeldeki altyapının kullanımdan kaldırılması nedeniyle 30 Haziran 2019 tarihinde kullanımdan kaldırıldı. Retriement 'ten önce tanımlanan tüm özel uyarılar etkili olmaz ve bu özel uyarılar kuralları temel alınarak güvenlik uyarıları oluşturulmaz. Özel uyarı kurallarınızın sorgularını aşağıda bahsedilen alternatifler içinde yeniden oluşturmak için Güvenlik Merkezi 'nde yine de görüntüleyebilirsiniz:
 
-Kullanıcılar için önerilir:
-- Etkinleştirme [Azure Gözcü](https://azure.microsoft.com/services/azure-sentinel/) ve yerleşik [analytics](https://docs.microsoft.com/azure/sentinel/tutorial-detect-threats) işlevselliği, uyarı kuralları yeniden oluşturmak için
-- Azure izleyici günlüğü uyarıları, uyarılarla yeniden oluşturun
+Kullanıcılardan şunları yapmanız önerilir:
+- [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) 'i etkinleştirin ve yerleşik [analiz](https://docs.microsoft.com/azure/sentinel/tutorial-detect-threats) işlevlerini kullanarak uyarı kurallarını yeniden oluşturun
+- Azure Izleyici günlük uyarıları ile uyarılarını yeniden oluşturma
                                      
-Mevcut uyarılarınızı tutun ve Azure Gözcü bunları yeniden oluşturmak için lütfen [Azure Gözcü başlatma](https://portal.azure.com/#create/Microsoft.ASI/preview). İlk adımı olarak özel uyarıları depolandığı çalışma alanını seçin ve ardından, özel uyarı kuralları ayarlamak için 'Analytics' menü öğesini seçin. Lütfen [belgeleri](https://docs.microsoft.com/azure/sentinel/tutorial-detect-threats) ek bilgi için.
+Mevcut uyarılarınızı korumak ve Azure Sentinel 'de yeniden oluşturmak için lütfen [Azure Sentinel 'i başlatın](https://portal.azure.com/#create/Microsoft.ASI/preview). İlk adım olarak, özel uyarılarınızın depolandığı çalışma alanını seçin ve ardından özel uyarı kurallarınızı ayarlamak için ' analiz ' menü öğesini seçin. Daha fazla bilgi için lütfen [belgeleri](https://docs.microsoft.com/azure/sentinel/tutorial-detect-threats) ziyaret edin.
 
 > [!NOTE]
-> Kullanarak özel uyarılar [arama](https://docs.microsoft.com/azure/azure-monitor/log-query/search-queries) veya [birleşim](https://docs-analytics-eus.azurewebsites.net/queryLanguage/query_language_unionoperator.html) deyimleri sorgular Azure Gözcü içinde desteklenmez. Geçişi gerçekleştirmeden önce lütfen bu uyarılar düzenleyin.
+> [Arama](https://docs.microsoft.com/azure/azure-monitor/log-query/search-queries) veya [birleşim](https://docs-analytics-eus.azurewebsites.net/queryLanguage/query_language_unionoperator.html) deyimleri sorgularını kullanan özel uyarılar Azure Sentinel 'de desteklenmez. Lütfen geçiş işlemini gerçekleştirmeden önce bu uyarıları düzenleyin.
 
-Azure İzleyici günlük uyarıları kullanarak uyarıları yeniden oluşturmak için lütfen bkz: [Oluşturun, görüntüleyin ve Azure İzleyicisi'ni kullanarak günlük uyarıları yönetme](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log) günlüğü uyarıları oluşturma hakkında yönergeler için. Azure İzleyici'de günlüğü uyarılarına genel bakış için tıklayın [burada](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log).
+Azure Izleyici günlük uyarılarını kullanarak uyarılarınızı yeniden oluşturmayı öğrenmek için bkz. [Azure izleyici kullanarak günlük uyarılarını oluşturma, görüntüleme ve yönetme](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log). Genel bir bakış için bkz. [Azure izleyici 'de günlük uyarıları](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log).
 
 ## <a name="what-are-custom-alert-rules-in-security-center"></a>Güvenlik Merkezi'ndeki özel uyarı kuralları nelerdir?
 
@@ -49,7 +49,7 @@ Güvenlik Merkezi'nde bir tehdit veya şüpheli etkinlik gerçekleştiğinde tet
 Güvenlik Merkezi'ndeki özel uyarı kuralları, ortamınızdan toplanmış olan verilerle yeni güvenlik uyarıları tanımlamanızı sağlar. Sorgu oluşturabilir, bu sorguların sonuçlarını özel kuralın ölçütü olarak kullanabilir ve ölçütler karşılandığında kuralın yürütülmesini sağlayabilirsiniz. Özel sorgularınızı oluşturmak için bilgisayarların güvenlik olaylarını, iş ortağı güvenlik çözümü günlüklerini veya API'ler kullanılarak toplanan verileri kullanabilirsiniz.
 
 > [!NOTE]
-> Özel uyarılar, Güvenlik Merkezi'nin içinde desteklenmez [araştırma özelliği](security-center-investigation.md).
+> Özel uyarılar Güvenlik Merkezi 'nin [araştırma özelliğinde](security-center-investigation.md)desteklenmez.
 >
 >
 
@@ -70,10 +70,10 @@ Güvenlik Merkezi'ndeki özel uyarı kuralları, ortamınızdan toplanmış olan
 5.  **Açıklama** alanına bu kuralın amacını belirten kısa bir açıklama yazın.
 6.  **Güvenlik** alanında ihtiyaçlarınıza uygun önem derecesini (Yüksek, Orta, Düşük) seçin.
 7.  **Abonelik** alanında kuralın uygulanacağı aboneliği seçin.
-8.  Bölümünde bu kuralla izlemek istediğiniz çalışma alanını seçin **çalışma** alan ve **arama sorgusu** alanında da sonuçları almak için kullanmak istediğiniz sorgu.
+8.  **Çalışma** alanı alanında bu kuralla izlemek istediğiniz çalışma alanını seçin ve **arama sorgusu** alanında sonuçları elde etmek için kullanmak istediğiniz sorguyu seçin.
 
     > [!NOTE]
-    > Özel Uyarınız depolamak için seçtiğiniz çalışma alanında yazma izni.
+    > Özel uyarınızı depolamak için seçtiğiniz çalışma alanında yazma izninizin olması gerekir.
     >
     >
 
