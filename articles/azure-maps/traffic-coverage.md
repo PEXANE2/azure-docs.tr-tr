@@ -1,6 +1,6 @@
 ---
-title: Trafik kapsamı içinde Azure haritalar | Microsoft Docs
-description: Trafik kapsamı içinde Azure haritalar hakkında bilgi edinin
+title: Azure haritalar 'da trafik kapsamı | Microsoft Docs
+description: Azure haritalar 'da trafik kapsamı hakkında bilgi edinin
 author: walsehgal
 ms.author: v-musehg
 ms.date: 09/22/2018
@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: ad7d4dceefcaa06effa6b2974b0a8a03ad641372
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f9a3c4875f01c650485034fe46f53bb5aa1fd75b
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60794046"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68722647"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Azure haritalar trafik kapsamı
 
-Azure haritalar zengin trafiği bilgi trafiği biçiminde sağlar **akış** ve **olayları**. Bu veriler eşlemeleri görselleştirilmiş veya faktörü daha akıllıca yollarını koşullar sürüş gerçek içinde oluşturmak için kullanılan.
+Azure Maps, trafik **akışı** ve **olayları**biçiminde zengin trafik bilgileri sağlar. Bu veriler, haritalar üzerinde görselleştirilir veya gerçek zamanlı koşullarda etken olan daha akıllı yollar oluşturmak için kullanılabilir.
 
-Ancak, Maps yok bilgi ve doğruluk tüm bölgeler için aynı düzeyde. Aşağıdaki tabloda, her bölgede ne tür bir akış bilgileri isteyebilir hakkında bilgi sağlar: 
+Ancak, haritalar tüm bölgeler için aynı düzeyde bilgi ve doğruluk düzeyine sahip değildir. Aşağıdaki tabloda, her bir bölgeden isteyebilmeniz gereken trafik bilgileri türü hakkında bilgi verilmektedir: 
 
 ## <a name="americas"></a>Kuzey ve Güney Amerika
 
-|Ülke/Bölge  |Olaylar  |Akış  |
+|Ülke/Bölge  |Olaylara  |Akış  |
 |---------|:---------:|:---------:|
 |Arjantin      |✓         |✓         |
 |Brezilya     |✓         |✓         |
@@ -33,13 +33,13 @@ Ancak, Maps yok bilgi ve doğruluk tüm bölgeler için aynı düzeyde. Aşağı
 |Meksika     |✓         |✓         |
 |Peru       |✓         |✓         | 
 |Amerika Birleşik Devletleri     |✓         |✓        |
-|+Puerto Rico     |✓         |✓         |
+|\+ Porto Riko     |✓         |✓         |
 |Uruguay |✓         |✓         |
 
 
 ## <a name="asia-pacific"></a>Asya Pasifik
 
-|Ülke/Bölge   |Olaylar  |Akış  |
+|Ülke/Bölge   |Olaylara  |Akış  |
 |---------|:---------:|:---------:|
 |Avustralya     |✓         |✓        |
 |Brunei   |✓         |✓        |
@@ -58,18 +58,20 @@ Ancak, Maps yok bilgi ve doğruluk tüm bölgeler için aynı düzeyde. Aşağı
 
 ## <a name="europe"></a>Avrupa
 
-|Ülke/Bölge   |Olaylar  |Akış  |
+|Ülke/Bölge   |Olaylara  |Akış  |
 |---------|:---------:|:---------:|
 |Andorra   |✓         |✓         |
 |Avusturya     |✓         |✓         |
+|Belarus    |✓         |✓         |
 |Belçika     |✓         |✓         |
+|Bosna - Hersek    |✓         |✓         |
 |Bulgaristan     |✓         |✓         |
 |Hırvatistan     |✓         |✓         |
 |Çek Cumhuriyeti     |✓         |✓         |
 |Danimarka     |✓         |✓         |
 |Estonya     |         | ✓        |
 |Finlandiya     |✓         |✓         |
-|\+ Aland Adaları      |✓         |✓         |
+|\+ Bir yaş Adaları      |✓         |✓         |
 |Fransa     |✓         |✓         |
 |Monako     |✓         |✓         |
 |Almanya     |✓         |✓         |
@@ -78,9 +80,10 @@ Ancak, Maps yok bilgi ve doğruluk tüm bölgeler için aynı düzeyde. Aşağı
 |İzlanda     |✓         |✓         |
 |İrlanda     |✓         |✓         |
 |İtalya     |✓         |✓        |
+|Kazakistan    |✓         |✓        |
 |Letonya     |✓         |✓         |
-|Lesoto     |✓         |✓         |
-|Lihtenştayn      |✓         |✓         |
+|Lesotho     |✓         |✓         |
+|Liechtenstein      |✓         |✓         |
 |Litvanya     |✓         |✓         |
 |Lüksemburg     |✓         |✓         |
 |Malta     |✓         |✓         |
@@ -93,26 +96,27 @@ Ancak, Maps yok bilgi ve doğruluk tüm bölgeler için aynı düzeyde. Aşağı
 |Romanya     |✓         |✓         |
 |Rusya Federasyonu     |✓         |✓         |
 |San Marino    |✓         |✓         |
+|Sırbistan   |✓         |✓         |
 |Slovakya     |✓         |✓         |
 |Slovenya     |✓         |✓         |
 |İspanya     |✓         |✓         |
-|+Andorra     |✓         |✓         |
-|\+ Balearic Adaları     |✓         |✓         |
-|\+ Kanarya Adaları     |✓         |✓         |
+|\+ Andora     |✓         |✓         |
+|\+ Baöğrenic Adaları     |✓         |✓         |
+|\+ Canary Adaları     |✓         |✓         |
 |İsveç     |✓         |✓         |
 |İsviçre     |✓         |✓        |
 |Türkiye     |✓         |✓         |
 |Ukrayna     |✓         |✓         |
 |Birleşik Krallık     |✓         |✓         |
-|\+ Cebelitarık     |✓         |✓         |
-|+Guernsey & Jersey     |✓         |✓         |
+|\+ Gibraltar     |✓         |✓         |
+|\+ Guernsey & Jersey     |✓         |✓         |
 |\+ Man Adası     |✓         |✓         |
-|Vatikan   |✓         |✓         |
+|Vatikan Şehri   |✓         |✓         |
 
 
 ## <a name="middle-east-and-africa"></a>Orta Doğu ve Afrika
 
-|Ülke/Bölge |Olaylar  |Akış  |
+|Ülke/Bölge |Olaylara  |Akış  |
 |---------|:---------:|:---------:|
 |Bahreyn     |✓         |✓         |
 |Mısır     |✓         |✓         |
@@ -130,4 +134,4 @@ Ancak, Maps yok bilgi ve doğruluk tüm bölgeler için aynı düzeyde. Aşağı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure haritalar trafik verileri hakkında daha fazla bilgi için bkz: [trafiği](https://docs.microsoft.com/rest/api/maps/traffic) başvuru sayfalarına.
+Azure Maps trafik verileri hakkında daha fazla bilgi için bkz. [trafik](https://docs.microsoft.com/rest/api/maps/traffic) başvuru sayfaları.

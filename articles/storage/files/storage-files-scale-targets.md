@@ -1,19 +1,18 @@
 ---
 title: Azure dosyaları ölçeklenebilirlik ve performans hedefleri | Microsoft Docs
 description: Kapasite, istek hızı ve gelen ve giden bant genişliği sınırlarını dahil olmak üzere Azure dosyaları için ölçeklenebilirlik ve performans hedefleri hakkında öğrenin.
-services: storage
 author: roygara
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 5/5/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 91ec65e17b77ccb3864fce45e30729ff420a48b6
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: ed4aa832c4ec7ccda760d535aa920be8d5c4e2e3
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67542665"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699634"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure dosyaları ölçeklenebilirlik ve performans hedefleri
 
@@ -30,30 +29,30 @@ Azure depolama hesabınız bir Azure dosya paylaşımı için üst kaynaktır. B
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../../../includes/azure-storage-limits-azure-resource-manager.md)]
 
 > [!Important]  
-> Genel amaçlı depolama hesabı kullanımı diğer depolama hizmetlerinde, Azure dosya paylaşımlarını depolama hesabınızda etkiler. Azure Blob Depolama ile en fazla depolama hesabı kapasitesi ulaşırsa, en fazla paylaşım boyutunun altında Azure dosya paylaşımınızı olsa bile, örneğin, yeni dosyaları Azure dosya paylaşımınızı oluşturmak mümkün olmayacaktır.
+> Diğer depolama hizmetlerinden genel amaçlı depolama hesabı kullanımı, Depolama hesabınızdaki Azure dosya paylaşımlarınızı etkiler. Azure Blob Depolama ile en fazla depolama hesabı kapasitesi ulaşırsa, en fazla paylaşım boyutunun altında Azure dosya paylaşımınızı olsa bile, örneğin, yeni dosyaları Azure dosya paylaşımınızı oluşturmak mümkün olmayacaktır.
 
 ## <a name="azure-files-scale-targets"></a>Azure dosyaları ölçek hedefleri
 
-Azure dosyaları için dikkate alınması gereken sınırlamalar üç kategoriye ayrılır: depolama hesapları, paylaşımları ve dosyaları.
+Azure dosyaları için göz önünde bulundurmanız gereken üç sınırlama kategorisi vardır: depolama hesapları, paylaşımlar ve dosyalar.
 
-Örneğin: Premium dosya paylaşımları ile tek bir paylaşım 100.000 IOPS değerlerine ulaşabilir ve tek bir dosyayı en fazla 5000 IOPS ölçeklendirme yapabilirsiniz. Bu nedenle, bir paylaşımda üç dosyanız varsa bu paylaşımdan alabilirsiniz maksimum IOPS 15.000 ' dir.
+Örneğin: Premium dosya paylaşımları ile, tek bir paylaşım 100.000 ıOPS elde edebilir ve tek bir dosya 5.000 ıOPS 'ye kadar ölçeklendirebilirler. Bu nedenle, bir paylaşımda üç dosya varsa, bu paylaşımdan alabileceğiniz maksimum ıOPS 15.000 ' dir.
 
-### <a name="standard-storage-account-limits"></a>Standart depolama hesabı sınırları
+### <a name="standard-storage-account-limits"></a>Standart depolama hesabı limitleri
 
-Bkz: [Azure depolama hesabı ölçek hedefleri](#azure-storage-account-scale-targets) limitler bölümü.
+Bu sınırlar için [Azure depolama hesabı ölçek hedefleri](#azure-storage-account-scale-targets) bölümüne bakın.
 
-### <a name="premium-filestorage-account-limits"></a>Premium dosya deposundan hesabı sınırları
+### <a name="premium-filestorage-account-limits"></a>Premium FileStorage hesap limitleri
 
 [!INCLUDE [azure-storage-limits-filestorage](../../../includes/azure-storage-limits-filestorage.md)]
 
 > [!IMPORTANT]
-> Depolama hesabı sınırları, tüm paylaşımlar için geçerlidir. Kadar ölçeklendirme en yüksek dosya deposundan hesapları için yalnızca dosya deposundan hesap başına yalnızca bir paylaşım ise ulaşılabilir eşittir.
+> Depolama hesabı sınırları tüm paylaşımlar için geçerlidir. FileStorage hesaplarının en büyük değerine kadar ölçeklendirilmesi yalnızca dosya depolama hesabı başına yalnızca bir paylaşımın olması durumunda ulaşılabilir.
 
-### <a name="file-share-and-file-scale-targets"></a>Dosya Paylaşımı ve dosya ölçek hedefleri
+### <a name="file-share-and-file-scale-targets"></a>Dosya paylaşma ve dosya ölçeği hedefleri
 
 > [!NOTE]
-> Standart dosya paylaşımları 5 TiB daha büyük önizleme aşamasındadır ve belirli sınırlamaları vardır.
-> Bir liste kısıtlamaları ve bu daha büyük bir dosya paylaşımı boyutları Önizleme ekleme için bkz [standart dosya paylaşımları](storage-files-planning.md#standard-file-shares) Planlama Kılavuzu'nun bölümü.
+> 5 TiB 'den büyük standart dosya paylaşımları önizlemededir ve belirli sınırlamalar vardır.
+> Kısıtlamaların listesi ve bu büyük dosya paylaşım boyutlarının önizlemesine eklenmesi için, planlama kılavuzunun [Standart dosya paylaşımları](storage-files-planning.md#standard-file-shares) bölümüne bakın.
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 
@@ -61,18 +60,18 @@ Bkz: [Azure depolama hesabı ölçek hedefleri](#azure-storage-account-scale-tar
 
 ## <a name="azure-file-sync-scale-targets"></a>Azure dosya eşitleme ölçek hedefleri
 
-Azure dosya eşitleme ile sınırsız kullanım amacı tasarlanmıştır ancak sınırsız kullanım her zaman mümkün değildir. Aşağıdaki tabloda, Microsoft'un test sınırları gösterir ve de hangi hedeflerin sabit limitlerdir gösterir:
+Azure Dosya Eşitleme sınırsız kullanım hedefi ile tasarlanmıştır, ancak sınırsız kullanım her zaman mümkün değildir. Aşağıdaki tabloda Microsoft 'un test olan sınırları ve hangi hedeflerin sabit sınırları olduğunu gösterilmektedir:
 
 [!INCLUDE [storage-sync-files-scale-targets](../../../includes/storage-sync-files-scale-targets.md)]
 
 ### <a name="azure-file-sync-performance-metrics"></a>Azure dosya eşitleme performans ölçümleri
 
-Azure dosya eşitleme aracısının Azure dosya paylaşımları için bağlanan bir Windows Server makinesi üzerinde çalıştığından, etkili eşitleme performansı altyapınızdaki bir dizi etkene bağlıdır: Windows Server ve temel alınan disk yapılandırmasını, sunucu ve Azure depolama arasındaki ağ bant genişliği veri kümesinde dosya boyutu, toplam veri kümesi boyutu ve etkinlik. Azure dosya eşitleme dosya düzeyinde çalışır olduğundan, Azure dosya eşitleme tabanlı bir çözüm performans özelliklerini daha iyi ölçülür saniyede işlenen nesne (dosyalar ve dizinler) sayısı.
+Azure Dosya Eşitleme Aracısı Azure dosya paylaşımlarına bağlanan bir Windows Server makinesinde çalıştığından, etkin eşitleme performansı altyapınızdaki bir dizi etkene bağlıdır: Windows Server ve temel disk yapılandırması, sunucu ile Azure depolama arasındaki ağ bant genişliği, dosya boyutu, toplam veri kümesi boyutu ve veri kümesindeki etkinlik. Azure dosya eşitleme dosya düzeyinde çalışır olduğundan, Azure dosya eşitleme tabanlı bir çözüm performans özelliklerini daha iyi ölçülür saniyede işlenen nesne (dosyalar ve dizinler) sayısı.
 
 Azure dosya eşitleme için performans iki aşamada önemlidir:
 
-1. **İlk tek seferlik sağlama**: İlk sağlama üzerinde performansını iyileştirmek için başvurmak [Azure dosya eşitleme ile ekleme](storage-sync-files-deployment-guide.md#onboarding-with-azure-file-sync) için en uygun dağıtım ayrıntıları.
-2. **Devam eden eşitleme**: Azure dosya eşitleme verileri başlangıçta Azure dosya paylaşımlarını sağlanmış sonra birden fazla uç noktası uyumlu kalmasını sağlar.
+1. **İlk bir kerelik sağlama**: İlk sağlama sırasında performansı iyileştirmek için en iyi dağıtım ayrıntıları için [Azure dosya eşitleme Ile ekleme](storage-sync-files-deployment-guide.md#onboarding-with-azure-file-sync) bölümüne bakın.
+2. **Devam eden eşitleme**: Veriler başlangıçta Azure dosya paylaşımlarında oluşturulduktan sonra Azure Dosya Eşitleme birden çok uç noktayı eşitlenmiş halde tutar.
 
 Her aşamalar için dağıtım planlamanıza yardımcı olması için aşağıdaki sonuçları iç bir sistemde bir yapılandırma ile test sırasında gözetilir
 
@@ -86,11 +85,11 @@ Her aşamalar için dağıtım planlamanıza yardımcı olması için aşağıda
 
 | İlk tek seferlik sağlama  |  |
 |-|-|
-| Nesne sayısı | 25 milyon nesneleri |
-| Veri kümesi boyutu| ~4.7 TiB |
-| Ortalama dosya boyutu | Yaklaşık 200 KiB (en büyük dosya: 100 giB) |
+| Nesne sayısı | 25.000.000 nesneleri |
+| Veri kümesi boyutu| ~ 4,7 TiB |
+| Ortalama dosya boyutu | ~ 200 KiB (en büyük dosya: 100 GiB) |
 | Aktarım hızı karşıya yükleme | saniye başına 20 nesneleri |
-| Namespace indirme aktarım hızı * | Saniyede 400 nesneleri |
+| Namespace indirme aktarım hızı * | saniyede 400 nesne |
 
 \* Yeni bir sunucu uç noktası oluşturulduğunda, Azure dosya eşitleme aracısının dosya içeriği indirmez. İlk tam ad alanı eşitler ve ardından Tetikleyiciler ya da tamamen dosyaları indirmek için geri çağırma arka plan veya Bulut katmanlaması sunucu uç noktasında ayarlayın bulut katmanlama ilkesi etkinleştirilir.
 
@@ -100,7 +99,7 @@ Her aşamalar için dağıtım planlamanıza yardımcı olması için aşağıda
 | Veri kümesi boyutu| 50 giB |
 | Ortalama dosya boyutu | Yaklaşık 500 KiB |
 | Aktarım hızı karşıya yükleme | saniyede 30 nesneleri |
-| Tam yükleme verimi * | saniyede 60 nesneleri |
+| Tam yükleme verimi * | saniyede 60 nesne |
 
 \* İse bulut katmanlama etkin olduğunda, muhtemelen yalnızca bazı veri karşıdan dosya olarak daha iyi performans gözlemleyin. Bunlar herhangi bir uç nokta değiştirildiğinde azure dosya eşitleme yalnızca verilerin önbelleğe alınmış dosyaları indirir. Aracı, tüm katmanlı veya yeni oluşturulan dosyalar için dosya verilerini indirmez ve bunun yerine, tüm sunucu uç noktaları için ad alanı yalnızca eşitleyebilir. Kullanıcı tarafından erişilen gibi aracı katmanlı dosyaların kısmi yüklemeleri de destekler. 
 

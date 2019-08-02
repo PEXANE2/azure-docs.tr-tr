@@ -9,12 +9,12 @@ ms.date: 07/29/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: 921528c50bae03b67800bf3ccab8b5cd9bb704f6
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 4c81daa1f55167fa868c69f3bff388dbaa4887cd
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68677746"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68725749"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>Öğretici: Azure Time Series Insights ortamı oluşturma
 
@@ -34,7 +34,7 @@ Bu öğretici, sanal cihazlardan alınan verilerle doldurulan bir Azure Time Ser
 
 * Azure oturum açma hesabınız Ayrıca aboneliğin **sahip** rolünün bir üyesi olmalıdır. Daha fazla bilgi için bkz. [rol tabanlı erişim denetimi ve Azure Portal kullanarak erişimi yönetme](../role-based-access-control/role-assignments-portal.md).
 
-## <a name="video"></a>Video
+## <a name="review-video"></a>Videoyu gözden geçirin
 
 ### <a name="learn-how-to-use-an-azure-iot-solution-accelerator-to-generate-data-and-get-started-with-time-series-insights-br"></a>Azure IoT Çözüm Hızlandırıcısı kullanarak veri oluşturma ve Time Series Insights kullanmaya başlama hakkında bilgi edinin. </br>
 
@@ -116,7 +116,7 @@ Bu öğretici Ayrıca IoT Hub için örnek telemetri verileri oluşturmak ve ak�
 
    [![Time Series Insights ortamı dağıtımı başarılı oldu](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-deployment-succeeded.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-deployment-succeeded.png#lightbox)
 
-## <a name="run-device-simulation-to-stream-data"></a>Veri akışı için cihaz benzetimi Çalıştır
+## <a name="run-device-simulation"></a>Cihaz benzetimi Çalıştır
 
 Dağıtım ve ilk yapılandırmanın tamamlandığına göre, Time Series Insights ortamını [Hızlandırıcı tarafından oluşturulan sanal cihazlardan](#create-a-device-simulation)örnek verilerle doldurun.
 

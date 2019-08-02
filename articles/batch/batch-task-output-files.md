@@ -14,10 +14,10 @@ ms.date: 03/05/2019
 ms.author: lahugh
 ms.custom: seodec18
 ms.openlocfilehash: c113521a1828a27ce9454ea142cb1708b7c5a1b6
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68322834"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Batch hizmeti API 'SI ile Azure depolama 'ya görev verilerini kalıcı hale getirme
@@ -178,7 +178,7 @@ Dışında bir dilde geliştiriyorsanız C#, dosya kuralları standardını kend
 
 ## <a name="code-sample"></a>Kod örneği
 
-[Persistouta][github_persistoutputs] sample project is one of the [Azure Batch code samples][github_samples] GitHub 'a yerleştirir. Bu Visual Studio çözümü, görev çıkışını dayanıklı depolamaya devam ettirmek için .NET için Batch istemci kitaplığı 'nın nasıl kullanılacağını gösterir. Örneği çalıştırmak için aşağıdaki adımları izleyin:
+[Persistoutkoyar][github_persistoutputs] örnek proje, GitHub 'daki [Azure Batch kod örneklerinden][github_samples] biridir. Bu Visual Studio çözümü, görev çıkışını dayanıklı depolamaya devam ettirmek için .NET için Batch istemci kitaplığı 'nın nasıl kullanılacağını gösterir. Örneği çalıştırmak için aşağıdaki adımları izleyin:
 
 1. Projeyi **Visual Studio 2019**' de açın.
 2. Batch ve Storage **hesabı kimlik bilgilerinizi** Microsoft. Azure. Batch. Samples. Common projesindeki **accountsettings. Settings** öğesine ekleyin.

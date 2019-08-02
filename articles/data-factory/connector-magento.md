@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: cecdb9f9af9c5194eb56cfefd63b31348f111980
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 424a2c28176813abc10011c030971047ea50e3da
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61400739"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726118"
 ---
 # <a name="copy-data-from-magento-using-azure-data-factory-preview"></a>Magento, Azure Data Factory (Önizleme) kullanarak verileri kopyalama
 
@@ -44,7 +44,7 @@ Magento bağlı hizmeti için aşağıdaki özellikleri destekler:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Type özelliği ayarlanmalıdır: **Magento** | Evet |
+| türü | Type özelliği şu şekilde ayarlanmalıdır: **Magento** | Evet |
 | host | Magento örneğinin URL'si. (diğer bir deyişle, 192.168.222.110/magento3)  | Evet |
 | accessToken | Magento erişim belirteci. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Evet |
 | useEncryptedEndpoints | Veri kaynağı uç noktaları HTTPS kullanılarak şifrelenmiş olup olmadığını belirtir. Varsayılan değer true olur.  | Hayır |
@@ -80,7 +80,7 @@ Magento verileri kopyalamak için dataset öğesinin type özelliği ayarlamak *
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Dataset öğesinin type özelliği ayarlanmalıdır: **MagentoObject** | Evet |
+| türü | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **MagentoObject** | Evet |
 | tableName | Tablonun adı. | Hayır (etkinlik kaynağı "sorgu" belirtilmişse) |
 
 **Örnek**
@@ -90,11 +90,12 @@ Magento verileri kopyalamak için dataset öğesinin type özelliği ayarlamak *
     "name": "MagentoDataset",
     "properties": {
         "type": "MagentoObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Magento linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -109,7 +110,7 @@ Magento verileri kopyalamak için kopyalama etkinliği için kaynak türünü ay
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağı öğesinin type özelliği ayarlanmalıdır: **MagentoSource** | Evet |
+| türü | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **MagentoSource** | Evet |
 | query | Verileri okumak için özel bir SQL sorgusu kullanın. Örneğin: `"SELECT * FROM Customers"`. | Yok (veri kümesinde "TableName" değeri belirtilmişse) |
 
 **Örnek:**

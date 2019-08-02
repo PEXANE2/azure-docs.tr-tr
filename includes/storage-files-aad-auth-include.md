@@ -8,21 +8,21 @@ ms.topic: include
 ms.date: 06/18/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: ff2ed5abbf2ce67a0b96a5da450b83832403db1f
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: d1b10b55481b41f42c6c872522d3dd4dd4be0e77
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67269374"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570585"
 ---
-[Azure dosyaları](../articles/storage/files/storage-files-introduction.md) kimlik tabanlı kimlik doğrulaması üzerinden SMB üzerinden (sunucu ileti bloğu) (Önizleme) destekler. [Azure Active Directory (Azure AD) etki alanı Hizmetleri](../articles/active-directory-domain-services/overview.md). Etki alanına katılmış Windows sanal makinelerinizi (VM) kullanarak Azure dosya paylaşımlarını erişip [Azure AD'ye](../articles/active-directory/fundamentals/active-directory-whatis.md) kimlik bilgileri. 
+[Azure dosyaları](../articles/storage/files/storage-files-introduction.md) , sunucu ileti bloğu (SMB) üzerinden [Azure Active Directory Domain Services (AD DS)](../articles/active-directory-domain-services/overview.md)üzerinden kimlik tabanlı kimlik doğrulamasını destekler. Etki alanına katılmış Windows sanal makineleriniz (VM), [Azure Active Directory (Azure AD)](../articles/active-directory/fundamentals/active-directory-whatis.md) kimlik bilgilerini kullanarak Azure dosya paylaşımlarına erişebilir.
 
-Azure dosya paylaşımı düzeyinde erişimi ile Azure AD grubundaki bir kullanıcı gibi kimlik yönetebileceğiniz [rol tabanlı erişim denetimi (RBAC)](../articles/role-based-access-control/overview.md). Yaygın Azure dosyalarına erişmek için kullanılan izin kümelerini kapsayacak özel RBAC rollerini tanımlayabilirsiniz. Ne zaman kimlik bu izinlere göre bir Azure dosya paylaşımına erişim izni verilir bir Azure AD kimlik için özel bir RBAC rolü atayın.
+Azure dosyalarını [rol tabanlı erişim denetimi (RBAC)](../articles/role-based-access-control/overview.md)kullanarak Azure AD 'deki bir kullanıcı veya grup gibi bir kimlikle yönetebilirsiniz. Azure dosyalarına erişmek için kullanılan ortak izin kümelerini içeren özel RBAC rolleri tanımlayabilirsiniz. Özel RBAC rolünüzü bir Azure AD kimliğine atadığınızda, bu kimliğe bu izinlere göre bir Azure dosya paylaşımının erişimi verilir.
 
-Önizlemenin bir parçası olarak, Azure dosyaları ayrıca koruma, devralma ve zorlama destekler [NTFS DACL](https://technet.microsoft.com/library/2006.01.howitworksntfs.aspx) tüm dosyaları ve dizinleri bir dosya paylaşımındaki. Bir dosya paylaşımından Azure dosyaları'na veri kopyalama ya da tam tersi belirtebilirsiniz NTFS DACL sürdürülür. Bu şekilde yedekleme senaryoları kullanarak Azure dosyaları, şirket içi dosya paylaşımınızı ve bulut dosya paylaşımınızı arasında NTFS DACL koruma uygulayabilirsiniz. 
+Önizlemenin bir parçası olarak Azure dosyaları, bir dosya paylaşımındaki tüm dosya ve dizinlerde bulunan [NTFS DACL 'lerini](https://technet.microsoft.com/library/2006.01.howitworksntfs.aspx) koruma, devralma ve zorunlu tutmayı de destekler. Verileri bir dosya paylaşımından Azure dosyalarına kopyalayabilir veya bunun tersini yaparsanız, NTFS DACL 'lerin korunmasını belirtebilirsiniz. Bu şekilde, Azure dosyalarını kullanarak yedekleme senaryolarını uygulayabilir ve şirket içi dosya paylaşımınız ile bulut dosya paylaşımınız arasındaki NTFS DACL 'larınızı koruma altına alabilirsiniz. 
 
 > [!NOTE]
-> - Azure AD etki alanı hizmeti kimlik doğrulaması SMB erişimi için Linux Vm'leri için desteklenmiyor. Yalnızca Windows sanal makineleri desteklenir.
-> - SMB erişimi için Azure AD etki alanı hizmeti kimlik doğrulaması için Active Directory etki alanına katılmış makinedeki desteklenmiyor. Bu arada, yararlanarak düşünebilirsiniz [Azure dosya eşitleme](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning) Azure dosyaları'na veri geçişini Başlat ve AD kimlik bilgileri gerektirip, şirket içinden kullanarak erişim denetimini zorunlu tutmak devam etmek için AD etki alanına katılmış, makineleri. 
-> - Azure AD etki alanı hizmeti kimlik doğrulaması için SMB erişimini yalnızca 24 Eylül 2018'den sonra oluşturulan depolama hesapları için kullanılabilir.
-> - Azure dosya paylaşımlarını Azure dosya eşitleme hizmeti tarafından yönetilen Azure AD etki alanı hizmeti kimlik doğrulama için SMB erişimini ve NTFS DACL kalıcı desteklenmiyor. 
+> - Sunucu Ileti bloğu (SMB) erişimi için Azure AD DS kimlik doğrulaması, Linux VM 'Leri için desteklenmez. Yalnızca Windows sanal makineleri desteklenir.
+> - SMB erişimi için Azure AD DS kimlik doğrulaması, Active Directory etki alanına katılmış makineler için desteklenmez. Bu arada, verilerinizi Azure dosyalarına geçirmeye başlamak ve şirket içi Active Directory etki alanına katılmış makinelerinizden Active Directory kimlik bilgilerini kullanarak erişim denetimini uygulamaya devam etmek için [Azure dosya eşitleme](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning) kullanmayı göz önünde bulundurun. 
+> - SMB erişimi için Azure AD DS kimlik doğrulaması yalnızca 24 Eylül 2018 ' den sonra oluşturulan depolama hesapları için kullanılabilir.
+> - SMB erişimi için Azure AD DS kimlik doğrulaması ve NTFS DACL kalıcılığı, Azure Dosya Eşitleme tarafından yönetilen Azure dosya paylaşımlarında desteklenmez.

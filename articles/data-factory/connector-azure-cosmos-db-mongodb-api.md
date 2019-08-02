@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB API gelen veya MongoDB için Data Factory kullanarak verileri kopyalama | Microsoft Docs
-description: Desteklenen kaynak veri depolarından ya da Azure Cosmos DB'nin API'sinden MongoDB için desteklenen havuz mağazalarının Data Factory kullanarak verileri kopyalama öğrenin.
+title: Data Factory kullanarak MongoDB için Azure Cosmos DB API 'sine veri kopyalama Microsoft Docs
+description: Data Factory kullanarak desteklenen kaynak veri depolarından veya MongoDB için Azure Cosmos DB API 'sine olan verileri desteklenen havuz depolarına kopyalama hakkında bilgi edinin.
 services: data-factory, cosmosdb
 documentationcenter: ''
 author: linda33wj
@@ -10,46 +10,46 @@ ms.service: multiple
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/20/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 82418c03039219adedf45828d769d278a14499ff
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dfacecbaaf627b05d7706f60b4eb86cca9d856ba
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61259724"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720844"
 ---
-# <a name="copy-data-to-or-from-azure-cosmos-dbs-api-for-mongodb-by-using-azure-data-factory"></a>Azure Cosmos DB API gelen veya MongoDB için Azure Data Factory kullanarak verileri kopyalama
+# <a name="copy-data-to-or-from-azure-cosmos-dbs-api-for-mongodb-by-using-azure-data-factory"></a>Azure Data Factory kullanarak MongoDB için Azure Cosmos DB API 'sine veri kopyalama
 
-Bu makalede, kopyalama etkinliği Azure Data Factory'de veri MongoDB için gelen ve Azure Cosmos DB'nin API'sini kopyalamak için nasıl kullanılacağını özetlenmektedir. Makaleyi yapılar [Azure veri fabrikasında kopyalama etkinliği](copy-activity-overview.md), kopyalama etkinliği genel bir bakış sunar.
+Bu makalede, MongoDB için Azure Cosmos DB API 'sinden ve ' den veri kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. Makaleyi yapılar [Azure veri fabrikasında kopyalama etkinliği](copy-activity-overview.md), kopyalama etkinliği genel bir bakış sunar.
 
 >[!NOTE]
->Bu bağlayıcı yalnızca destek kopyalama veri gönderip buralardan veri Azure Cosmos DB'nin MongoDB API'si. SQL API'si için başvurmak [Cosmos DB SQL API Bağlayıcısı](connector-azure-cosmos-db.md). Diğer API türleri artık desteklenmez.
+>Bu bağlayıcı yalnızca MongoDB için Azure Cosmos DB API 'sine veri kopyalamayı destekler. SQL API 'SI için [Cosmos db SQL API Bağlayıcısı](connector-azure-cosmos-db.md)' na bakın. Diğer API türleri şu anda desteklenmiyor.
 
 ## <a name="supported-capabilities"></a>Desteklenen özellikler
 
-Verileri Azure Cosmos DB'nin API'SİNDEN MongoDB için hiçbir desteklenen havuz veri deposuna kopyalamak ya da veri herhangi bir desteklenen kaynak veri deposundan Azure Cosmos DB'nin API'si için MongoDB kopyalayın. Kopyalama etkinliği kaynak ve havuz olarak desteklediğini veri listesini depolar için bkz: [desteklenen veri depoları ve biçimler](copy-activity-overview.md#supported-data-stores-and-formats).
+MongoDB için Azure Cosmos DB API 'sindeki verileri desteklenen herhangi bir havuz veri deposuna kopyalayabilir veya desteklenen herhangi bir kaynak veri deposundan verileri MongoDB için Azure Cosmos DB API 'sine kopyalayabilirsiniz. Kopyalama etkinliği kaynak ve havuz olarak desteklediğini veri listesini depolar için bkz: [desteklenen veri depoları ve biçimler](copy-activity-overview.md#supported-data-stores-and-formats).
 
-Azure Cosmos DB API için MongoDB bağlayıcısını kullanabilirsiniz:
+MongoDB Bağlayıcısı için Azure Cosmos DB API 'sini kullanarak şunları yapabilirsiniz:
 
-- Verileri kaynak ve hedef [Azure Cosmos DB'nin MongoDB API'si](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction).
+- Ve [Azure Cosmos DB MongoDB IÇIN API](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction)'sine verileri kopyalayın.
 - Azure Cosmos DB yazma **Ekle** veya **upsert**.
-- İçeri aktarma ve JSON belgeleri olarak dışarı aktarma- ya da ya da tablolu bir veri kümesine veri kopyalayın. SQL veritabanı ve bir CSV dosyası verilebilir. Kopyalamak için belgeler olarak-JSON dosyalarından veya için veya başka bir Azure Cosmos DB koleksiyonu, içeri aktarma bakın veya JSON belgelerini dışa sağlamaktır.
+- İçeri aktarma ve JSON belgeleri olarak dışarı aktarma- ya da ya da tablolu bir veri kümesine veri kopyalayın. SQL veritabanı ve bir CSV dosyası verilebilir. Belgeleri JSON dosyalarından ya da başka bir Azure Cosmos DB koleksiyonuna veya farklı bir koleksiyon olarak kopyalamak için bkz. JSON belgelerini Içeri veya dışarı aktarma.
 
 ## <a name="get-started"></a>başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Aşağıdaki bölümler, Azure Cosmos DB'nin MongoDB API'si için özel olan Data Factory varlıkları tanımlamak için kullanabileceğiniz özellikleri hakkında ayrıntılı bilgi sağlar.
+Aşağıdaki bölümler, MongoDB için Azure Cosmos DB API 'sine özgü Data Factory varlıkları tanımlamak için kullanabileceğiniz özelliklerle ilgili ayrıntıları sağlar.
 
 ## <a name="linked-service-properties"></a>Bağlı hizmeti özellikleri
 
-Azure Cosmos DB API MongoDB bağlı hizmeti için aşağıdaki özellikler desteklenir:
+Aşağıdaki özellikler, Azure Cosmos DB MongoDB bağlı hizmeti için API 'SI için desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | **Türü** özelliği ayarlanmalıdır **CosmosDbMongoDbApi**. | Evet |
-| connectionString |Bağlantı dizesi için MongoDB API'si için Azure Cosmos DB'nin belirtin. Bulabilirsiniz, Azure portalında -> Cosmos DB dikey pencerenize desenini ile birincil veya ikincil bağlantı dizesi -> `mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb`. <br/><br />Bu alan olarak işaretlemek bir **SecureString** Data Factory'de güvenle depolamak için türü. Ayrıca [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). |Evet |
+| türü | **Type** özelliği **Cosmosdbmongodbapı**olarak ayarlanmalıdır. | Evet |
+| connectionString |MongoDB için Azure Cosmos DB API 'niz için bağlantı dizesi belirtin. Azure portal, Cosmos DB dikey pencere > birincil veya ikincil bağlantı dizeniz ile >, düzeniyle `mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb`bulabilirsiniz. <br/><br />Bu alan olarak işaretlemek bir **SecureString** Data Factory'de güvenle depolamak için türü. Ayrıca [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). |Evet |
 | database | Erişmek istediğiniz veritabanının adı. | Evet |
 | connectVia | [Integration Runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. (Veri deponuz özel bir ağda yer alıyorsa) Azure Integration Runtime veya şirket içinde barındırılan tümleştirme çalışma zamanı kullanabilirsiniz. Bu özellik belirtilmezse, varsayılan Azure tümleştirme çalışma zamanı kullanılır. |Hayır |
 
@@ -77,12 +77,12 @@ Azure Cosmos DB API MongoDB bağlı hizmeti için aşağıdaki özellikler deste
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
-Bölümleri ve veri kümeleri tanımlamak için kullanılabilir olan özellikleri tam listesi için bkz: [veri kümeleri ve bağlı hizmetler](concepts-datasets-linked-services.md). MongoDB veri kümesi için Azure Cosmos DB API'si için aşağıdaki özellikleri destekler:
+Bölümleri ve veri kümeleri tanımlamak için kullanılabilir olan özellikleri tam listesi için bkz: [veri kümeleri ve bağlı hizmetler](concepts-datasets-linked-services.md). Aşağıdaki özellikler Azure Cosmos DB MongoDB veri kümesi için API 'SI için desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | **Türü** kümesinin özelliği ayarlanmalıdır **CosmosDbMongoDbApiCollection**. |Evet |
-| collectionName |Azure Cosmos DB koleksiyonu adı. |Evet |
+| türü | Veri kümesinin **Type** özelliği **Cosmosdbmongodbapicollection**olarak ayarlanmalıdır. |Evet |
+| collectionName |Azure Cosmos DB koleksiyonunun adı. |Evet |
 
 **Örnek**
 
@@ -91,12 +91,13 @@ Bölümleri ve veri kümeleri tanımlamak için kullanılabilir olan özellikler
     "name": "CosmosDbMongoDBAPIDataset",
     "properties": {
         "type": "CosmosDbMongoDbApiCollection",
+        "typeProperties": {
+            "collectionName": "<collection name>"
+        },
+        "schema": [],
         "linkedServiceName":{
             "referenceName": "<Azure Cosmos DB's API for MongoDB linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "collectionName": "<collection name>"
         }
     }
 }
@@ -104,26 +105,26 @@ Bölümleri ve veri kümeleri tanımlamak için kullanılabilir olan özellikler
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 
-Bu bölümde, MongoDB kaynak ve havuz için Azure Cosmos DB'nin API'sini destekleyen özelliklerin bir listesini sağlar.
+Bu bölüm, Azure Cosmos DB MongoDB kaynak ve havuz desteği için API 'sinin özelliklerinin bir listesini sağlar.
 
 Bölümleri ve etkinlikleri tanımlamak için kullanılabilir olan özellikleri tam listesi için bkz: [işlem hatları](concepts-pipelines-activities.md).
 
-### <a name="azure-cosmos-dbs-api-for-mongodb-as-source"></a>Kaynak olarak MongoDB için Azure Cosmos DB API'si
+### <a name="azure-cosmos-dbs-api-for-mongodb-as-source"></a>Kaynak olarak MongoDB için API Azure Cosmos DB
 
 Kopyalama etkinliği aşağıdaki özellikler desteklenir **kaynak** bölümü:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | **Türü** kopyalama etkinliği kaynağı özelliği ayarlanmalıdır **CosmosDbMongoDbApiSource**. |Evet |
-| filter | Sorgu işleçlerini kullanma seçimi filtresini belirtir. Bir koleksiyondaki tüm belgeleri döndürmek için bu parametreyi atlarsanız veya boş bir belge geçirin ({}). | Hayır |
-| cursorMethods.project | Belgelerde yansıtma için döndürülecek alanları belirtir. Tüm alanları eşleşen belgeleri döndürmek için bu parametreyi atlayın. | Hayır |
-| cursorMethods.sort | Sorgu eşleşen belgelerin döndüren sırasını belirtir. Başvurmak [cursor.sort()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort). | Hayır |
-| cursorMethods.limit | Sunucu belgeleri maksimum sayısını belirtir. Başvurmak [cursor.limit()](https://docs.mongodb.com/manual/reference/method/cursor.limit/#cursor.limit).  | Hayır | 
-| cursorMethods.skip | Atlamak için belgeler ve sonuçları döndürmek MongoDB başladığı belirtir. Başvurmak [cursor.skip()](https://docs.mongodb.com/manual/reference/method/cursor.skip/#cursor.skip). | Hayır |
-| batchSize | Her toplu iş yanıt MongoDB örneğine döndürmek için belge sayısını belirtir. Çoğu durumda, toplu iş boyutu değiştirme kullanıcı veya uygulamanın etkilemez. Cosmos DB sınırları her toplu işin aşamaz belgelerin boyutunun batchSize sayının toplamı olan boyutu, 40MB, bu değer kadar Azalt Belge boyutunuz büyük olması. | Hayır<br/>(varsayılan değer **100**) |
+| türü | Kopyalama etkinliği kaynağının **Type** özelliği **Cosmosdbmongodbapısource**olarak ayarlanmalıdır. |Evet |
+| filter | Sorgu işleçlerini kullanarak seçim filtresini belirtir. Bir koleksiyondaki tüm belgeleri döndürmek için, bu parametreyi atlayın veya boş bir belge ({}) geçirin. | Hayır |
+| cursorMethods. Project | Projeksiyon için belgelere döndürülecek alanları belirtir. Eşleşen belgelerdeki tüm alanları döndürmek için bu parametreyi atlayın. | Hayır |
+| cursorMethods. Sort | Sorgunun eşleşen belgeleri döndürdüğü sırayı belirtir. [İmleç. Sort ()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort)öğesine bakın. | Hayır |
+| cursorMethods. limit | Sunucunun döndürdüğü en fazla belge sayısını belirtir. [İmleç. limit ()](https://docs.mongodb.com/manual/reference/method/cursor.limit/#cursor.limit)öğesine bakın.  | Hayır | 
+| cursorMethods. Skip | Atlanacak belge sayısını ve MongoDB 'nin sonuçları döndürmek için başladığı yeri belirtir. [İmleç. Skip ()](https://docs.mongodb.com/manual/reference/method/cursor.skip/#cursor.skip)öğesine başvurun. | Hayır |
+| batchSize | MongoDB örneğinden alınan yanıtın her bir toplu işinde döndürülecek belge sayısını belirtir. Çoğu durumda, toplu iş boyutunu değiştirmek Kullanıcı veya uygulamayı etkilemez. Cosmos DB sınırlar, her toplu işlem, belge boyutunun batchSize toplam sayısı olan 40MB 'ı aşamaz, bu nedenle belge boyutunuz büyükse bu değeri azaltın. | Hayır<br/>(varsayılan değer **100**' dir) |
 
 >[!TIP]
->BSON belgede tüketen ADF Destek **katı mod**. Filtre sorgunuzla Kabuk modu yerine katı modda olduğundan emin olun. Daha fazla açıklama şu yolda bulunabilir: [MongoDB el ile](https://docs.mongodb.com/manual/reference/mongodb-extended-json/index.html).
+>ADF desteği BSON belgeyi **katı modda**kullanıyor. Filtre sorgunuzun kabuk modu yerine katı modda olduğundan emin olun. [MongoDB el ile](https://docs.mongodb.com/manual/reference/mongodb-extended-json/index.html)daha fazla açıklama bulabilirsiniz.
 
 **Örnek**
 
@@ -163,16 +164,16 @@ Kopyalama etkinliği aşağıdaki özellikler desteklenir **kaynak** bölümü:
 ]
 ```
 
-### <a name="azure-cosmos-dbs-api-for-mongodb-as-sink"></a>Havuz olarak MongoDB için Azure Cosmos DB API'si
+### <a name="azure-cosmos-dbs-api-for-mongodb-as-sink"></a>Havuz olarak MongoDB için API Azure Cosmos DB
 
 Kopyalama etkinliği aşağıdaki özellikler desteklenir **havuz** bölümü:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | **Türü** kopyalama etkinliği havuz özelliği ayarlanmalıdır **CosmosDbMongoDbApiSink**. |Evet |
-| writeBehavior |Azure Cosmos DB'ye veri yazmak açıklar. İzin verilen değerler: **Ekle** ve **upsert**.<br/><br/>Davranışını **upsert** aynı Kimliğe sahip bir belge zaten varsa belge değiştirmek üzere; Aksi takdirde, belge ekleyin.<br /><br />**Not**: Bir kimliği, özgün belgenin veya sütun eşlemesi tarafından belirtilmezse veri fabrikası otomatik olarak bir belge için bir kimlik üretir. İçin emin olmanız gerekir, yani **upsert** beklendiği şekilde çalışması için belgeyi bir kimliği vardır. |Hayır<br />(varsayılan değer **Ekle**) |
-| writeBatchSize | **WriteBatchSize** özelliği, her toplu yazmak için belgeler boyutunu denetler. Değerini artırmayı deneyin **writeBatchSize** performansını ve değeri, azalan Belge boyutunuz büyük olması. |Hayır<br />(varsayılan değer **10.000**) |
-| writeBatchTimeout | Batch için bekleme süresi, işlemin zaman aşımına uğramadan önce tamamlanmasını ekleyin. İzin verilen timespan değerdir. | Hayır<br/>(varsayılan değer **00:30:00** - 30 dakika) |
+| türü | Kopyalama etkinliği havuzunun **Type** özelliği **CosmosDbMongoDbApiSink**olarak ayarlanmalıdır. |Evet |
+| writeBehavior |Azure Cosmos DB'ye veri yazmak açıklar. İzin verilen değerler: **Ekle** ve **upsert**.<br/><br/>Davranışını **upsert** aynı Kimliğe sahip bir belge zaten varsa belge değiştirmek üzere; Aksi takdirde, belge ekleyin.<br /><br />**Not**: Özgün belgede veya sütun eşlemesinde bir KIMLIK belirtilmemişse, Data Factory otomatik olarak bir belge KIMLIĞI oluşturur. İçin emin olmanız gerekir, yani **upsert** beklendiği şekilde çalışması için belgeyi bir kimliği vardır. |Hayır<br />(varsayılan değer **Ekle**) |
+| writeBatchSize | **Writebatchsize** özelliği, her toplu işte yazılacak belgelerin boyutunu denetler. Performansı artırmak ve belge boyutunuz büyükse değeri azaltmak için **Writebatchsize** değerini artırmayı deneyebilirsiniz. |Hayır<br />(varsayılan değer **10.000**) |
+| writeBatchTimeout | Toplu iş ekleme işleminin, zaman aşımına uğramadan önce tamamlaması için bekleme süresi. İzin verilen değer TimeSpan değeridir. | Hayır<br/>(varsayılan değer **00:30:00** -30 dakikadır) |
 
 **Örnek**
 
@@ -207,7 +208,7 @@ Kopyalama etkinliği aşağıdaki özellikler desteklenir **havuz** bölümü:
 ```
 
 >[!TIP]
->JSON belgeleri olarak içeri aktarmak için-olan başvurmak için [içeri aktarma veya dışarı aktarma JSON belgelerini](#import-or-export-json-documents) bölümünde; tablo şeklinde veri kopyalamak için bkz [şema eşleme](#schema-mapping).
+>JSON belgelerini olduğu gibi içeri aktarmak için [JSON belgelerini içeri veya dışarı aktarma](#import-or-export-json-documents) bölümüne bakın; tablosal şekillendirilmiş verilerden kopyalamak için [şema eşlemesine](#schema-mapping)bakın.
 
 ## <a name="import-or-export-json-documents"></a>JSON belgelerini içeri veya dışarı aktarma
 
@@ -217,17 +218,17 @@ Bu Azure Cosmos DB Bağlayıcısı için kolayca kullanabilirsiniz:
 * JSON belgeleri bir Azure Cosmos DB koleksiyonundan çeşitli dosya tabanlı depoları dışarı aktarın.
 * Belgeler iki Azure Cosmos DB koleksiyonları arasında kopyalama-olduğu.
 
-Bu tür şemadan kopyalama elde etmek için "yapı" Atla (olarak da bilinir *şema*) bölümünde veri kümesini ve şema eşleme kopyalama etkinliğindeki.
+Bu tür şemadan bağımsız bir kopya elde etmek için, kopyalama etkinliğinde veri kümesi ve şema eşleme ' de "yapı" (kısaca *şema*) bölümünü atlayın.
 
 ## <a name="schema-mapping"></a>Şema eşleme
 
-Verileri Azure Cosmos DB'nin API'SİNDEN MongoDB için tablo havuza kopyalama veya tersine, [şema eşleme](copy-activity-schema-and-type-mapping.md#schema-mapping).
+MongoDB için Azure Cosmos DB API 'sinden tablo havuzuna veya ters çevrilmesine veri kopyalamak için [şema eşlemesine](copy-activity-schema-and-type-mapping.md#schema-mapping)bakın.
 
-Yazma Cosmos DB içine için özel olarak Cosmos DB doğru nesne Kimliğine sahip kaynak verilerinizden doldurmak emin olmak için örneğin, SQL veritabanı tablosunda bir "id" sütununuz ve MongoDB belge kimliği olarak Ekle/upsert, değerini kullanmak istediğiniz , MongoDB katı mod tanımına göre uygun şema eşlemesi ayarlamanız gerekir (`_id.$oid`) aşağıdaki gibi:
+Özellikle Cosmos DB yazmak için, Cosmos DB kaynak verilerinizde doğru nesne KIMLIĞIYLE doldurduğunuzdan emin olmak için, SQL veritabanı tablosunda bir "kimlik" sütunumuz ve INSERT/upsert için MongoDB içindeki belge KIMLIĞI olarak bu değeri kullanmak istiyorsunuz , aşağıdaki gibi MongoDB katı mod tanımına (`_id.$oid`) uygun şema eşlemesini ayarlamanız gerekir:
 
-![MongoDB havuzunda eşleme kimliği](./media/connector-azure-cosmos-db-mongodb-api/map-id-in-mongodb-sink.png)
+![MongoDB havuzunda eşleme KIMLIĞI](./media/connector-azure-cosmos-db-mongodb-api/map-id-in-mongodb-sink.png)
 
-Kopyalamadan sonra BSON objectID altında Etkinlik yürütme havuzunda oluşturulur:
+Kopyalama etkinliği yürütmeden sonra, BSON ObjectID 'nin aşağıdaki havuzda oluşturulması gerekir:
 
 ```json
 {

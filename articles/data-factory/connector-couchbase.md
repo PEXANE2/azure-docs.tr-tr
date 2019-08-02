@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 27f327493fbf3d7856b9488ecd0dd2509976ccfc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c3cd734380e2a3e3fbf35439ff807738c549a086
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60533999"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726158"
 ---
 # <a name="copy-data-from-couchbase-using-azure-data-factory-preview"></a>Couchbase, Azure Data Factory (Önizleme) kullanarak verileri kopyalama
 
@@ -44,8 +44,8 @@ Couchbase bağlı hizmeti için aşağıdaki özellikleri destekler:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Type özelliği ayarlanmalıdır: **Couchbase** | Evet |
-| connectionString | Couchbase için bağlanmak için bir ODBC bağlantı dizesi. <br/>Bu alan, Data Factory'de güvenle depolamak için bir SecureString olarak işaretleyin. Kimlik bilgisi dizesi Azure anahtar kasası ve çekme koyabilirsiniz `credString` yapılandırma bağlantı dizesini dışında. Aşağıdaki örneklere bakın ve [kimlik bilgilerini Azure Key Vault'ta Store](store-credentials-in-key-vault.md) daha fazla ayrıntı içeren makalesi. | Evet |
+| türü | Type özelliği şu şekilde ayarlanmalıdır: **Couchbase** | Evet |
+| connectionString | Couchbase için bağlanmak için bir ODBC bağlantı dizesi. <br/>Bu alanı, Data Factory güvenli bir şekilde depolamak için SecureString olarak işaretleyin. Ayrıca kimlik bilgisi dizesi Azure Key Vault yerleştirebilir ve `credString` yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Daha ayrıntılı bilgi için aşağıdaki örneklere bakın ve [kimlik bilgilerini Azure Key Vault makalesine depolayın](store-credentials-in-key-vault.md) . | Evet |
 | connectVia | [Integration Runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. (Veri deponuz genel olarak erişilebilir değilse), şirket içinde barındırılan tümleştirme çalışma zamanı veya Azure Integration Runtime kullanabilirsiniz. Belirtilmezse, varsayılan Azure Integration Runtime kullanır. |Hayır |
 
 **Örnek:**
@@ -69,7 +69,7 @@ Couchbase bağlı hizmeti için aşağıdaki özellikleri destekler:
 }
 ```
 
-**Örnek: kimlik bilgisi dizesi Azure Key Vault'ta depolama**
+**Örnek: Azure Key Vault içinde depolama kimlik bilgisi dizesi**
 
 ```json
 {
@@ -106,7 +106,7 @@ Couchbase verileri kopyalamak için dataset öğesinin type özelliği ayarlamak
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Dataset öğesinin type özelliği ayarlanmalıdır: **CouchbaseTable** | Evet |
+| türü | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **Couşbasetable** | Evet |
 | tableName | Tablonun adı. | Hayır (etkinlik kaynağı "sorgu" belirtilmişse) |
 
 
@@ -117,11 +117,12 @@ Couchbase verileri kopyalamak için dataset öğesinin type özelliği ayarlamak
     "name": "CouchbaseDataset",
     "properties": {
         "type": "CouchbaseTable",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Couchbase linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -136,7 +137,7 @@ Couchbase verileri kopyalamak için kopyalama etkinliği için kaynak türünü 
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağı öğesinin type özelliği ayarlanmalıdır: **CouchbaseSource** | Evet |
+| türü | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **Couşbasesource** | Evet |
 | query | Verileri okumak için özel bir SQL sorgusu kullanın. Örneğin: `"SELECT * FROM MyTable"`. | Yok (veri kümesinde "TableName" değeri belirtilmişse) |
 
 **Örnek:**

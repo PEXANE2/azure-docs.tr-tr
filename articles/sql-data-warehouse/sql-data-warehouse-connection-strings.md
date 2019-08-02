@@ -11,14 +11,14 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: afc8dbfa0bc1b1ad37e5f1a0f290c42998ed1e4b
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68479714"
 ---
 # <a name="connection-strings-for-azure-sql-data-warehouse"></a>Azure SQL veri ambarı için bağlantı dizeleri
-SQL veri ambarına, [ADO.net][ADO.NET], [ODBC][ODBC], [php][php] ve [JDBC][JDBC]gibi çeşitli farklı uygulama protokolleriyle bağlanabilirsiniz. Her protokol için bazı bağlantı dizesi örnekleri aşağıda verilmiştir.  Bağlantı dizenizi oluşturmak için Azure portal de kullanabilirsiniz.  Azure portal kullanarak Bağlantı dizenizi derlemek için, veritabanı dikey pencerenize gidin, *temel parçalar* altında *veritabanı bağlantı dizelerini göster*' e tıklayın.
+SQL veri ambarına, [ADO.net][ADO.NET], [ODBC][ODBC], [php][PHP] ve [JDBC][JDBC]gibi çeşitli farklı uygulama protokolleriyle bağlanabilirsiniz. Her protokol için bazı bağlantı dizesi örnekleri aşağıda verilmiştir.  Bağlantı dizenizi oluşturmak için Azure portal de kullanabilirsiniz.  Azure portal kullanarak Bağlantı dizenizi derlemek için, veritabanı dikey pencerenize gidin, *temel parçalar* altında *veritabanı bağlantı dizelerini göster*' e tıklayın.
 
 ## <a name="sample-adonet-connection-string"></a>Örnek ADO.NET bağlantı dizesi
 ```csharp

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/17/2019
 ms.author: danlep
 ms.openlocfilehash: 9cd62c378270da31079a38f89b040985105a4218
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68326028"
 ---
 # <a name="set-environment-variables-in-container-instances"></a>Kapsayıcı örneklerinde ortam değişkenlerini ayarlama
@@ -33,7 +33,7 @@ Gizli dizileri ortam değişkenleri olarak geçirmeniz gerekiyorsa, Azure Contai
 
 ## <a name="azure-cli-example"></a>Azure CLı örneği
 
-[Aci-WORDCOUNT][aci-wordcount] container, run it first with this [az container create][az-container-create] komutunun varsayılan çıkışını görmek için (ortam değişkeni belirtilmemiş):
+[Aci-WORDCOUNT][aci-wordcount] kapsayıcısının varsayılan çıktısını görmek için, bunu önce bu [az Container Create][az-container-create] komutuyla çalıştırın (ortam değişkeni belirtilmemiş):
 
 ```azurecli-interactive
 az container create \
@@ -54,7 +54,7 @@ az container create \
     --environment-variables 'NumWords'='5' 'MinLength'='8'
 ```
 
-Her iki kapsayıcının durumu de *sonlandırıldığını* gösteriyorsa (çıktıyı görmek için [az Container Show][az-container-show] to check state), display their logs with [az container logs][az-container-logs] ' ı kullanın.
+Her iki kapsayıcının durumu *sonlandırıldığını* gösterir (durumu denetlemek için [az Container Show][az-container-show] kullanın), çıktıyı görmek için [az Container logs][az-container-logs] ile günlüklerini görüntüleyin.
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer1
@@ -88,7 +88,7 @@ azureuser@Azure:~$ az container logs --resource-group myResourceGroup --name myc
 
 PowerShell 'de ortam değişkenlerinin ayarlanması CLI 'ye benzerdir, ancak `-EnvironmentVariable` komut satırı bağımsız değişkenini kullanır.
 
-İlk olarak, [aci-WORDCOUNT][aci-wordcount] container in its default configuration with this [New-AzContainerGroup][new-Azcontainergroup] komutunu başlatın:
+İlk olarak, bu [New-AzContainerGroup][new-Azcontainergroup] komutuyla [aci-WORDCOUNT][aci-wordcount] kapsayıcısını varsayılan yapılandırmasında başlatın:
 
 ```azurepowershell-interactive
 New-AzContainerGroup `
@@ -109,7 +109,7 @@ New-AzContainerGroup `
     -EnvironmentVariable $envVars
 ```
 
-Her iki kapsayıcının durumu sonlandırıldıktan  sonra (durumu denetlemek için [Get-AzContainerInstanceLog][azure-instance-log] kullanın), [Get-AzContainerInstanceLog][azure-instance-log] komutuyla günlüklerini çekin.
+Her iki kapsayıcının durumu sonlandırıldıktan sonra (durumu denetlemek için [Get-AzContainerInstanceLog][azure-instance-log] kullanın), [Get-AzContainerInstanceLog][azure-instance-log] komutuyla günlüklerini çekin.
 
 ```azurepowershell-interactive
 Get-AzContainerInstanceLog -ResourceGroupName myResourceGroup -ContainerGroupName mycontainer1

@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 6b9ebb2f7ef46fd2900d036f178201863ecbc8d4
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: c7c2ba104b4d528cd3f8443e6f5615aa6ab3e672
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358829"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720381"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Azure Machine Learning hizmeti ile modelleri dağıtma
 
@@ -57,7 +57,7 @@ Machine Learning modelleri Azure Machine Learning çalışma alanınıza kaydedi
 + **CLı 'yi kullanma**
 
   ```azurecli-interactive
-  az ml model register -n sklearn_mnist  --asset-path outputs/sklearn_mnist_model.pkl  --experiment-name myexperiment
+  az ml model register -n sklearn_mnist  --asset-path outputs/sklearn_mnist_model.pkl  --experiment-name myexperiment --run-id myrunid
   ```
 
   > [!TIP]
@@ -290,7 +290,7 @@ Daha fazla bilgi için bkz. [ınenceconfig](https://docs.microsoft.com/python/ap
 
 ### <a name="cli-example-of-inferenceconfig"></a>Inenceconfig CLı örneği
 
-[!INCLUDE [inferenceconfig](../../../includes/machine-learning-service-inference-config.md)]
+[!INCLUDE [inference config](../../../includes/machine-learning-service-inference-config.md)]
 
 Aşağıdaki komut, CLı kullanarak bir modelin nasıl dağıtılacağını göstermektedir:
 
@@ -308,7 +308,7 @@ Bu örnekte, yapılandırma aşağıdaki öğeleri içerir:
 
 ### <a name="3-define-your-deployment-configuration"></a>3. Dağıtım yapılandırmanızı tanımlama
 
-Dağıtılmadan önce dağıtım yapılandırmasını tanımlamanız gerekir. Dağıtım yapılandırması, Web hizmetini barındıracak işlem hedefine özgüdür. Örneğin, yerel olarak dağıttığınızda, hizmetin istekleri kabul ettiği bağlantı noktasını belirtmeniz gerekir.
+Dağıtılmadan önce dağıtım yapılandırmasını tanımlamanız gerekir. __Dağıtım yapılandırması, Web hizmetini barındıracak işlem hedefine özgüdür__. Örneğin, yerel olarak dağıttığınızda, hizmetin istekleri kabul ettiği bağlantı noktasını belirtmeniz gerekir.
 
 İşlem kaynağını da oluşturmanız gerekebilir. Örneğin, çalışma alanınız ile ilişkili bir Azure Kubernetes hizmetiniz yoksa.
 
@@ -320,191 +320,54 @@ Aşağıdaki tabloda her işlem hedefi için bir dağıtım yapılandırması ol
 | Azure Container Örneği | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 | Azure Kubernetes Service | `deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 
-Aşağıdaki bölümlerde, dağıtım yapılandırmasının nasıl oluşturulacağı ve Web hizmetini dağıtmak için nasıl kullanılacağı gösterilmektedir.
-
-### <a name="optional-profile-your-model"></a>İsteğe bağlı: Modelinizin profilini yapın
-
-Modelinizi bir hizmet olarak dağıtmadan önce SDK veya CLı kullanarak en iyi CPU ve bellek gereksinimlerini öğrenmek için profili oluşturabilirsiniz.  Model profil oluşturma sonuçları bir `Run` nesne olarak yayınlanır. [Model profili şemasının tüm ayrıntıları API belgelerinde bulunabilir](https://docs.microsoft.com/python/api/azureml-core/azureml.core.profile.modelprofile?view=azure-ml-py)
-
-[SDK 'yı kullanarak modelinizin profilini](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-)oluşturma hakkında daha fazla bilgi edinin.
-
-CLı kullanarak modelinizin profilini eklemek için [az ml model profili](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-profile)kullanın.
+> [!TIP]
+> Modelinizi bir hizmet olarak dağıtmadan önce en iyi CPU ve bellek gereksinimlerini öğrenmek için profili oluşturmanız gerekebilir. SDK ya da CLı kullanarak modelinize profil oluşturabilirsiniz. Daha fazla bilgi için [profile ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-) ve [az ml model profil](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-profile) başvurusuna bakın.
+>
+> Model profil oluşturma sonuçları bir `Run` nesne olarak yayınlanır. Daha fazla bilgi için bkz. [Modelprofile](https://docs.microsoft.com/python/api/azureml-core/azureml.core.profile.modelprofile?view=azure-ml-py) sınıf başvurusu.
 
 ## <a name="deploy-to-target"></a>Hedefe dağıt
+
+Dağıtım, model (ler) dağıtmak için çıkarım yapılandırma dağıtım yapılandırmasını kullanır. Dağıtım işlemi, işlem hedefi ne olursa olsun benzerdir. Aks kümesine bir başvuru sağlamanız gerektiği için AKS 'e dağıtım biraz farklıdır.
 
 ### <a id="local"></a>Yerel dağıtım
 
 Yerel olarak dağıtmak için, yerel makinenizde **Docker 'ın yüklü** olması gerekir.
 
-+ **SDK 'Yı kullanma**
+#### <a name="using-the-sdk"></a>SDK’yı kullanarak
 
-  ```python
-  deployment_config = LocalWebservice.deploy_configuration(port=8890)
-  service = Model.deploy(ws, "myservice", [model], inference_config, deployment_config)
-  service.wait_for_deployment(show_output = True)
-  print(service.state)
-  ```
+```python
+deployment_config = LocalWebservice.deploy_configuration(port=8890)
+service = Model.deploy(ws, "myservice", [model], inference_config, deployment_config)
+service.wait_for_deployment(show_output = True)
+print(service.state)
+```
 
-+ **CLı 'yi kullanma**
+Daha fazla bilgi için bkz. [Localwebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py), [model. deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config--deployment-config-none--deployment-target-none-)ve [WebService](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py)için başvuru belgeleri.
 
-    CLı kullanarak dağıtmak için aşağıdaki komutu kullanın. Kayıtlı `mymodel:1` modelin adı ve sürümüyle değiştirin:
+#### <a name="using-the-cli"></a>CLı 'yi kullanma
 
-  ```azurecli-interactive
-  az ml model deploy -m mymodel:1 -ic inferenceconfig.json -dc deploymentconfig.json
-  ```
+CLı kullanarak dağıtmak için aşağıdaki komutu kullanın. Kayıtlı `mymodel:1` modelin adı ve sürümüyle değiştirin:
 
-    [!INCLUDE [deploymentconfig](../../../includes/machine-learning-service-local-deploy-config.md)]
+```azurecli-interactive
+az ml model deploy -m mymodel:1 -ic inferenceconfig.json -dc deploymentconfig.json
+```
+
+[!INCLUDE [aml-local-deploy-config](../../../includes/machine-learning-service-local-deploy-config.md)]
+
+Daha fazla bilgi için, [az ml model dağıtım](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) başvurusuna bakın.
 
 ### <a id="aci"></a>Azure Container Instances (DEVTEST)
 
-Bir web hizmeti bir veya daha aşağıdaki koşullardan biri Modellerinizi dağıtmak için Azure Container Instances kullanmak doğrudur:
-- Hızlı bir şekilde dağıtın ve modelinizi doğrulama gerekir.
-- Geliştirilmekte olan bir modeli test edersiniz. 
-
-ACı 'nin kota ve bölge kullanılabilirliğini görmek için [Azure Container Instances Için kotalar ve bölge kullanılabilirliği](https://docs.microsoft.com/azure/container-instances/container-instances-quotas) bölümüne bakın.
-
-+ **SDK 'Yı kullanma**
-
-  ```python
-  deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)
-  service = Model.deploy(ws, "aciservice", [model], inference_config, deployment_config)
-  service.wait_for_deployment(show_output = True)
-  print(service.state)
-  ```
-
-+ **CLı 'yi kullanma**
-
-    CLı kullanarak dağıtmak için aşağıdaki komutu kullanın. Kayıt `mymodel:1` , kayıtlı modelin adı ve sürümü ile değiştirin. Bu `myservice` hizmete verilecek adla değiştirin:
-
-    ```azurecli-interactive
-    az ml model deploy -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploymentconfig.json
-    ```
-
-    [!INCLUDE [deploymentconfig](../../../includes/machine-learning-service-aci-deploy-config.md)]
-
-+ **VS Code kullanma**
-
-  [Modellerinizi vs Code ile dağıtmak](how-to-vscode-tools.md#deploy-and-manage-models) için, hızlı bir şekilde test etmek üzere bir aci kapsayıcısı oluşturmanız gerekmez, çünkü hızlı bir şekilde hareket halindeyken birlikte oluşturulur.
-
-Daha fazla bilgi için başvuru belgeleri için bkz. [AciWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py) ve [Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py) sınıfları.
+Bkz. [Azure Container Instances dağıtma](how-to-deploy-azure-container-instance.md).
 
 ### <a id="aks"></a>Azure Kubernetes hizmeti (DEVTEST & ÜRETIMI)
 
-Mevcut bir AKS kümesi kullanmak veya Azure Machine Learning SDK'sı, CLI veya Azure portalını kullanarak yeni bir tane oluşturun.
-
-<a id="deploy-aks"></a>
-
-Zaten bağlı bir AKS kümeniz varsa, bu kümeye dağıtım yapabilirsiniz. Bir AKS kümesi oluşturmadıysanız veya eklemediyseniz, <a href="#create-attach-aks">Yeni BIR AKS kümesi oluşturmak</a>için işlemi izleyin.
-
-+ **SDK 'Yı kullanma**
-
-  ```python
-  aks_target = AksCompute(ws,"myaks")
-  # If deploying to a cluster configured for dev/test, ensure that it was created with enough
-  # cores and memory to handle this deployment configuration. Note that memory is also used by
-  # things such as dependencies and AML components.
-  deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)
-  service = Model.deploy(ws, "aksservice", [model], inference_config, deployment_config, aks_target)
-  service.wait_for_deployment(show_output = True)
-  print(service.state)
-  print(service.get_logs())
-  ```
-
-+ **CLı 'yi kullanma**
-
-    CLı kullanarak dağıtmak için aşağıdaki komutu kullanın. Aks işlem hedefinin adıyla değiştirin `myaks` . Kayıt `mymodel:1` , kayıtlı modelin adı ve sürümü ile değiştirin. Bu `myservice` hizmete verilecek adla değiştirin:
-
-  ```azurecli-interactive
-  az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploymentconfig.json
-  ```
-
-    [!INCLUDE [deploymentconfig](../../../includes/machine-learning-service-aks-deploy-config.md)]
-
-+ **VS Code kullanma**
-
-  Ayrıca, [vs Code uzantısı aracılığıyla aks 'e de dağıtım](how-to-vscode-tools.md#deploy-and-manage-models)yapabilirsiniz, ancak aks kümelerini önceden yapılandırmanız gerekecektir.
-
-[Akswebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice) başvurusunda aks dağıtımı ve otomatik ölçeklendirme hakkında daha fazla bilgi edinin.
-
-#### Yeni bir AKS kümesi oluşturma<a id="create-attach-aks"></a>
-**Tahmini süre**: Yaklaşık 20 dakika.
-
-AKS kümesi oluşturma veya iliştirme, çalışma alanınız için tek seferlik bir işlemdir. Bu kümeye birden çok dağıtımlar için yeniden kullanabilirsiniz. Kümeyi veya onu içeren kaynak grubunu silerseniz, bir dahaki sefer dağıtmanız gerektiğinde yeni bir küme oluşturmanız gerekir. Çalışma alanınıza eklenmiş birden çok AKS kümeniz olabilir.
-
-Geliştirme, doğrulama ve test için bir aks kümesi oluşturmak istiyorsanız, kullanırken `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST` [`provisioning_configuration()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py)ayarlanır. Bu ayarla oluşturulmuş bir küme yalnızca bir düğüme sahip olur.
-
-> [!IMPORTANT]
-> Ayar `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST` , üretim trafiğini işlemek için uygun olmayan bir aks kümesi oluşturur. Çıkarım süreleri, üretim için oluşturulmuş bir kümeden daha uzun olabilir. Hata toleransı geliştirme ve test kümeleri için de garanti edilmez.
->
-> Geliştirme ve test için oluşturulan kümelerin en az iki sanal CPU kullanması önerilir.
-
-Aşağıdaki örnekte, yeni bir Azure Kubernetes hizmet kümesinin nasıl oluşturulacağı gösterilmektedir:
-
-```python
-from azureml.core.compute import AksCompute, ComputeTarget
-
-# Use the default configuration (you can also provide parameters to customize this).
-# For example, to create a dev/test cluster, use:
-# prov_config = AksCompute.provisioning_configuration(cluster_purpose = AksComputee.ClusterPurpose.DEV_TEST)
-prov_config = AksCompute.provisioning_configuration()
-
-aks_name = 'myaks'
-# Create the cluster
-aks_target = ComputeTarget.create(workspace=ws,
-                                  name=aks_name,
-                                  provisioning_configuration=prov_config)
-
-# Wait for the create process to complete
-aks_target.wait_for_completion(show_output=True)
-```
-
-Azure Machine Learning SDK dışında bir AKS kümesi oluşturma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
-* [AKS kümesi oluşturma](https://docs.microsoft.com/cli/azure/aks?toc=%2Fazure%2Faks%2FTOC.json&bc=%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest#az-aks-create)
-* [AKS kümesi oluşturma (portal)](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal?view=azure-cli-latest)
-
-`cluster_purpose` Parametresi hakkında daha fazla bilgi için, bkz. [akscompute. clusteramaç](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py) başvurusu.
-
-> [!IMPORTANT]
-> İçin [`provisioning_configuration()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py), agent_count ve vm_size için özel değerler seçerseniz, vm_size ile çarpılan agent_count 'in 12 sanal CPU 'ya eşit veya daha büyük olduğundan emin olmanız gerekir. Örneğin, 4 sanal CPU içeren bir vm_size "Standard_D3_v2" kullanırsanız, bir agent_count 3 veya daha büyük seçmeniz gerekir.
->
-> Azure Machine Learning SDK, bir AKS kümesini ölçeklendirmeye yönelik destek sağlamaz. Kümedeki düğümleri ölçeklendirmek için Azure portal AKS kümeniz için Kullanıcı arabirimini kullanın. Kümenin VM boyutunu değil, yalnızca düğüm sayısını değiştirebilirsiniz.
-
-#### <a name="attach-an-existing-aks-cluster"></a>Mevcut bir AKS kümesini iliştirme
-**Tahmini süre:** Yaklaşık 5 dakika.
-
-Azure aboneliğinizde zaten AKS kümeniz varsa ve sürüm 1.12. # # ise, görüntünüzü dağıtmak için kullanabilirsiniz.
-
-> [!WARNING]
-> Bir çalışma alanına aks kümesi eklerken, `cluster_purpose` parametresini ayarlayarak kümeyi nasıl kullanacağınızı tanımlayabilirsiniz.
->
-> `cluster_purpose` Parametresini ayarlamayın veya ayarlarsanız `cluster_purpose = AksCompute.ClusterPurpose.FAST_PROD`, kümede en az 12 sanal CPU kullanılabilir olmalıdır.
->
-> Ayarlarsanız `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`, kümenin 12 sanal CPU 'ya sahip olması gerekmez. Ancak, geliştirme/test için yapılandırılan bir küme, üretim düzeyi trafiğe uygun olmayacaktır ve çıkarım sürelerini artırabilir.
-
-Aşağıdaki kod, var olan bir AKS 1.12. # # kümesini çalışma alanınıza nasıl ekleyebilirim gösterilmektedir:
-
-```python
-from azureml.core.compute import AksCompute, ComputeTarget
-# Set the resource group that contains the AKS cluster and the cluster name
-resource_group = 'myresourcegroup'
-cluster_name = 'mycluster'
-
-# Attach the cluster to your workgroup. If the cluster has less than 12 virtual CPUs, use the following instead:
-# attach_config = AksCompute.attach_configuration(resource_group = resource_group,
-#                                         cluster_name = cluster_name,
-#                                         cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST)
-attach_config = AksCompute.attach_configuration(resource_group=resource_group,
-                                                cluster_name=cluster_name)
-aks_target = ComputeTarget.attach(ws, 'mycompute', attach_config)
-```
-
-Hakkında `attack_configuration()`daha fazla bilgi için, bkz. [akscompute. attach_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-) başvurusu.
-
-`cluster_purpose` Parametresi hakkında daha fazla bilgi için, bkz. [akscompute. clusteramaç](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py) başvurusu.
+Bkz. [Azure Kubernetes hizmetine dağıtma](how-to-deploy-azure-kubernetes-service.md).
 
 ## <a name="consume-web-services"></a>Web hizmetlerini kullanma
 
-Dağıtılan her Web hizmeti, çeşitli programlama dillerinde istemci uygulamaları oluşturabilmeniz için bir REST API sağlar. Hizmetiniz için kimlik doğrulamasını etkinleştirdiyseniz, istek üst bilgisinde belirteç olarak bir hizmet anahtarı sağlamanız gerekir.
+Dağıtılan her Web hizmeti, çeşitli programlama dillerinde istemci uygulamaları oluşturabilmeniz için bir REST API sağlar. Hizmetiniz için anahtar kimlik doğrulamasını etkinleştirdiyseniz, istek üst bilgisinde belirteç olarak bir hizmet anahtarı sağlamanız gerekir.
+Hizmetiniz için belirteç kimlik doğrulamasını etkinleştirdiyseniz, istek üst bilgisinde taşıyıcı belirteci olarak bir Azure Machine Learning JWT belirteci sağlamanız gerekir.
 
 ### <a name="request-response-consumption"></a>İstek-yanıt tüketimi
 
@@ -517,6 +380,8 @@ headers = {'Content-Type': 'application/json'}
 
 if service.auth_enabled:
     headers['Authorization'] = 'Bearer '+service.get_keys()[0]
+elif service.token_auth_enabled:
+    headers['Authorization'] = 'Bearer '+service.get_token()[0]
 
 print(headers)
 
@@ -546,28 +411,7 @@ Kenara dağıtım desteği önizleme aşamasındadır. Daha fazla bilgi için [I
 
 ## <a id="update"></a>Web hizmetlerini güncelleştirme
 
-Yeni bir model oluşturduğunuzda, yeni modeli kullanmak istediğiniz her hizmeti el ile güncelleştirmeniz gerekir. Web hizmetini güncelleştirmek için `update` yöntemi. Aşağıdaki kod, Web hizmetinin yeni bir model kullanmak üzere nasıl güncelleşdiğini göstermektedir:
-
-```python
-from azureml.core.webservice import Webservice
-from azureml.core.model import Model
-
-# register new model
-new_model = Model.register(model_path="outputs/sklearn_mnist_model.pkl",
-                           model_name="sklearn_mnist",
-                           tags={"key": "0.1"},
-                           description="test",
-                           workspace=ws)
-
-service_name = 'myservice'
-# Retrieve existing service
-service = Webservice(name=service_name, workspace=ws)
-
-# Update to new model(s)
-service.update(models=[new_model])
-print(service.state)
-print(service.get_logs())
-```
+[!INCLUDE [aml-update-web-service](../../../includes/machine-learning-update-web-service.md)]
 
 ## <a name="continuous-model-deployment"></a>Sürekli model dağıtımı 
 

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: f57a83fb83152055692e6f614b7958d099b6c70d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 48ebdca1b6abf57a84927e25bca1f85b023fa208
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60808923"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726168"
 ---
 # <a name="copy-data-from-concur-using-azure-data-factory-preview"></a>Concur Azure Data Factory (Önizleme) kullanarak verileri kopyalama
 
@@ -47,7 +47,7 @@ Concur bağlı hizmeti için aşağıdaki özellikleri destekler:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Type özelliği ayarlanmalıdır: **Concur** | Evet |
+| türü | Type özelliği şu şekilde ayarlanmalıdır: **Concur** | Evet |
 | clientId | Concur Uygulama Yönetimi tarafından sağlanan uygulama client_id.  | Evet |
 | username | Concur hizmete erişmek için kullandığınız kullanıcı adı.  | Evet |
 | password | Kullanıcı adı alanında sağlanan kullanıcı adı için karşılık gelen parola. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Evet |
@@ -82,7 +82,7 @@ Concur verileri kopyalamak için dataset öğesinin type özelliği ayarlamak **
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Dataset öğesinin type özelliği ayarlanmalıdır: **ConcurObject** | Evet |
+| türü | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **ConcurObject** | Evet |
 | tableName | Tablonun adı. | Hayır (etkinlik kaynağı "sorgu" belirtilmişse) |
 
 
@@ -93,11 +93,12 @@ Concur verileri kopyalamak için dataset öğesinin type özelliği ayarlamak **
     "name": "ConcurDataset",
     "properties": {
         "type": "ConcurObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Concur linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -112,7 +113,7 @@ Concur verileri kopyalamak için kopyalama etkinliği için kaynak türünü aya
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağı öğesinin type özelliği ayarlanmalıdır: **ConcurSource** | Evet |
+| türü | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **ConcurSource** | Evet |
 | query | Verileri okumak için özel bir SQL sorgusu kullanın. Örneğin: `"SELECT * FROM Opportunities where Id = xxx "`. | Yok (veri kümesinde "TableName" değeri belirtilmişse) |
 
 **Örnek:**

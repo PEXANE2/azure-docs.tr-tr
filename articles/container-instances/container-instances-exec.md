@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/30/2018
 ms.author: danlep
 ms.openlocfilehash: a8583cf605891631a2bce6914b24525aebd59ea0
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68325991"
 ---
 # <a name="execute-a-command-in-a-running-azure-container-instance"></a>Çalışan bir Azure Container Instance 'da bir komut yürütün
@@ -21,7 +21,7 @@ Azure Container Instances, çalışan bir kapsayıcıda bir komutun yürütülme
 
 ## <a name="run-a-command-with-azure-cli"></a>Azure CLı ile bir komut çalıştırma
 
-[Az Container exec][az-container-exec] in the [Azure CLI][azure-cli]ile çalışan bir kapsayıcıda bir komut yürütün:
+[Azure CLI][azure-cli]'de [az Container exec][az-container-exec] ile çalışan bir kapsayıcıda bir komut yürütün:
 
 ```azurecli
 az container exec --resource-group <group-name> --name <container-group-name> --exec-command "<command>"

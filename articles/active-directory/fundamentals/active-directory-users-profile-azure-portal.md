@@ -2,22 +2,22 @@
 title: Ekleme veya güncelleştirme kullanıcı profili bilgileri - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory'de bir resim ve iş ayrıntılar dahil olmak üzere, bir kullanıcının profilini bilgi ekleme hakkında yönergeler.
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
 ms.date: 04/11/2019
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d710a86bb63765ea8a1a777818ca5f99e38d3a7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4002c14ed6340a0e1a89ee295d47c98436515775
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60248134"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561769"
 ---
 # <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>Ekleme veya Azure Active Directory'yi kullanarak kullanıcının profil bilgilerini güncelleştirme
 Kullanıcı profili bilgilerini, profil resminizi dahil olmak üzere, işe özgü bilgileri ve Azure Active Directory (Azure AD) kullanarak bazı ayarları ekleyin. Yeni kullanıcı ekleme hakkında daha fazla bilgi için bkz. [ekleyin veya Azure Active Directory'de kullanıcı silme](add-users-azure-active-directory.md).
@@ -26,7 +26,7 @@ Kullanıcı profili bilgilerini, profil resminizi dahil olmak üzere, işe özg�
 Gördüğünüz gibi yok daha fazla bilgi bir kullanıcının profilinde daha kullanıcının oluşturma sırasında ekleyebilirsiniz. Bu ek bilgiler isteğe bağlıdır ve kuruluşunuz tarafından gereken şekilde eklenebilir.
 
 ## <a name="to-add-or-change-profile-information"></a>Ekleme veya profil bilgilerini değiştirme
-1. Oturum [Azure portalında](https://portal.azure.com/) kuruluş için bir kullanıcı Yöneticisi olarak.
+1. [Azure Portal](https://portal.azure.com/) , kuruluş için Kullanıcı Yöneticisi olarak oturum açın.
 
 2. Seçin **Azure Active Directory**seçin **kullanıcılar**ve ardından bir kullanıcı seçin. Örneğin, _Alain Charon_.
 
@@ -40,7 +40,7 @@ Gördüğünüz gibi yok daha fazla bilgi bir kullanıcının profilinde daha ku
 
     - **Profil resmi.** Kullanıcı hesabı için bir küçük resim görüntüsünü seçin. Bu resim, Azure Active Directory ve myapps.microsoft.com sayfası gibi kullanıcının kişisel sayfalarında görünür.
 
-    - **Kimlik.** Ekleyin veya Evli Soyadı gibi bir kullanıcı için bir ek kimlik değerini güncelleştirin. Bu ad, ad ve Soyadı değerlerinden bağımsız olarak ayarlayabilirsiniz. Örneğin, bir şirket adı baş harflerini eklemek veya gösterilen adları dizisini değiştirmek için bunu kullanabilirsiniz. Başka bir örnekte, adları 'ALi Yılmaz' olan iki kullanıcı için kimlik dizesi 'Chris b yeşil' 'ALi r Yılmaz (Contoso).' adlarını ayarlamak için kullanabilirsiniz
+    - **Kimlik.** Kullanıcı için evli soyadı gibi ek bir kimlik değeri ekleyin veya güncelleştirin. Bu adı, adı ve soyadı değerlerini bağımsız olarak ayarlayabilirsiniz. Örneğin, bunu, harfleri, bir şirket adını veya gösterilen adların sırasını değiştirmek için kullanabilirsiniz. Başka bir örnekte, adları ' Chris Green ' olan iki kullanıcı için kimlik dizesini kullanarak adlarını ' Chris B. yeşil ' ' Chris R. Green (contoso) olarak ayarlayabilirsiniz.
 
     - **İş bilgisi.** Kullanıcının iş unvanı, bölüme veya Yöneticisi gibi tüm iş ile ilgili bilgileri ekleyin.
 

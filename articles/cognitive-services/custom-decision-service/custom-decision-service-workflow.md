@@ -1,7 +1,7 @@
 ---
 title: Özel Karar Alma Hizmeti iş akışı
 titlesuffix: Azure Cognitive Services
-description: Bu makalede, Azure Custom Decision Service için önerilen iş akışı sağlar.
+description: Bu makale, Azure Özel Karar Alma Hizmeti için önerilen iş akışını sağlar.
 services: cognitive-services
 author: noellelacharite
 manager: nitinme
@@ -10,20 +10,21 @@ ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: nolachar
-ms.openlocfilehash: 086858f88a1b058e0e94fb356fbd06cf299b14f3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ROBOTS: NOINDEX
+ms.openlocfilehash: cce40c53fdfb052cc6c1f2941b2e3b4ae710ae21
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60580052"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707209"
 ---
 # <a name="custom-decision-service-workflow"></a>Özel Karar Alma Hizmeti iş akışı
 
-Uygulamalarınızı oluştururken bu örneği izlemeniz önerilir.
+Uygulamalarınızı derlerken bu düzenin takip edilmesini öneririz.
 
 ![Özel Karar Alma Hizmeti iş akışı](media/custom-decision-service-workflow.png)
 
-Ekleme bir [Azure depolama bağlantı dizesi](https://docs.microsoft.com/azure/storage/common/storage-configure-connection-string).
+[Azure depolama bağlantı dizesi](https://docs.microsoft.com/azure/storage/common/storage-configure-connection-string)ekleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 07/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: b462f0c427020b1422b91fbd7ac34e3023e546b8
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 998471d99a785eeff39ef7c99e60e1d9b49e0d7a
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68677878"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68725825"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Öğretici: Azure Time Series Insights önizleme ortamı ayarlama
 
@@ -62,7 +62,7 @@ Bu bölümde, bir Azure IoT Hub örneğine veri gönderen üç sanal cihaz oluş
 
     [![Cihaz benzetimi çözüm sayfası oluştur](media/v2-update-provision/device-two-create.png)](media/v2-update-provision/device-two-create.png#lightbox)
 
-## <a name="create-a-time-series-insights-preview-payg-environment"></a>Time Series Insights Preview PAYG ortamı oluşturma
+## <a name="create-a-preview-payg-environment"></a>Önizleme PAYG ortamı oluşturma
 
 Bu bölümde, Azure Time Series Insights önizleme ortamının nasıl oluşturulacağı ve [Azure Portal](https://portal.azure.com/)kullanılarak IoT Çözüm Hızlandırıcısı tarafından oluşturulan IoT Hub 'ına nasıl bağlanacağı açıklanır.
 
@@ -130,7 +130,9 @@ Bu bölümde, Azure Time Series Insights önizleme ortamının nasıl oluşturul
 
    Kimlik bilgileriniz listelenmiyorsa, ortama erişmek için kendinize izin vermeniz gerekir. İzinleri ayarlama hakkında daha fazla bilgi edinmek için bkz. [veri erişimi izni](./time-series-insights-data-access.md)okuma.
 
-## <a name="stream-data-into-your-environment"></a>Ortamınızdaki verileri akışa ekleyin
+## <a name="stream-data"></a>Akış verileri
+
+Time Series Insights ortamınızı dağıttığınıza göre, verileri analiz etmek için veri akışını sağlayabilirsiniz.
 
 1. [Azure IoT Çözüm Hızlandırıcıları sayfasına](https://www.azureiotsolutions.com/Accelerators)geri gidin. Çözümünüzü Çözüm Hızlandırıcısı panosunda bulun. Ardından **Başlat**' ı seçin:
 
@@ -158,7 +160,7 @@ Bu bölümde, Azure Time Series Insights önizleme ortamının nasıl oluşturul
 
     [![Azure IoT simülasyonu panosu](media/v2-update-provision/device-seven-dashboard.png)](media/v2-update-provision/device-seven-dashboard.png#lightbox)
 
-## <a name="analyze-data-in-your-environment"></a>Ortamınızı verileri analiz etme
+## <a name="analyze-data"></a>Verileri analiz etme
 
 Bu bölümde, [Azure Time Series Insights önizleme Gezginini](./time-series-insights-update-explorer.md)kullanarak zaman serisi verilerinizde temel analiz gerçekleştirirsiniz.
 

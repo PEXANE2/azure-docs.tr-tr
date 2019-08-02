@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: spelluru
-ms.openlocfilehash: 9f38502cc543f19855dbca32c4724a5651b1a3f2
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: fb66fa2d4a6a03841fa057c4d1982b7bf4c6976d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68318113"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565325"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs SSS
 Azure DevTest Labs hakkındaki en yaygın soruların bazılarına yanıt alın.
@@ -46,7 +46,7 @@ Twitter tanıtıcımız:[@azlabservices](https://twitter.com/azlabservices)
 ### <a name="what-if-my-question-isnt-answered-here"></a>Sorum burada yanıtlanmazsa ne olacak?
 Sorunuz burada listelenmiyorsa bize bilgi verin. bu nedenle bir yanıt bulmanıza yardımcı olabiliriz.
 
-- Bu SSS sonunda bir soru gönderin. Bu makaleyle ilgili olarak Azure önbellek ekibi ve diğer topluluk üyeleriyle birlikte devreye ın.
+- Bu SSS sonunda bir soru gönderin. 
 - Daha geniş bir hedef kitleye ulaşmak için [Azure DEVTEST Labs MSDN forumuna](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureDevTestLabs)bir soru gönderin. Azure DevTest Labs ekiple ve topluluktaki diğer üyelerle birlikte katılın.
 - Özellik istekleri için isteklerinizi ve fikirlerinizi [Azure DevTest Labs Kullanıcı seslerine](https://feedback.azure.com/forums/320373-azure-devtest-labs)gönderebilirsiniz.
 

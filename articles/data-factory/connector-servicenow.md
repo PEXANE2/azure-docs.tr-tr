@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 234b78a97c2663121d0d585154695887a58b9522
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c9ffd5a173bcfae41e08babbadae1e67047ed452
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60203423"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68725981"
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory"></a>Servicenow'ı Azure Data Factory kullanarak verileri kopyalama
 
@@ -41,7 +41,7 @@ Servicenow'ı bağlı hizmeti için aşağıdaki özellikleri destekler:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Type özelliği ayarlanmalıdır: **ServiceNow** | Evet |
+| türü | Type özelliği şu şekilde ayarlanmalıdır: **ServiceNow** | Evet |
 | endpoint | ServiceNow sunucu uç noktası (`http://<instance>.service-now.com`).  | Evet |
 | authenticationType | Kullanılacak kimlik doğrulaması türü. <br/>İzin verilen değerler şunlardır: **Temel**, **OAuth2** | Evet |
 | username | Temel ve OAuth2 kimlik doğrulaması için ServiceNow sunucusuna bağlanmak için kullanılan kullanıcı adı.  | Evet |
@@ -80,7 +80,7 @@ Servicenow'ı verileri kopyalamak için dataset öğesinin type özelliği ayarl
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Dataset öğesinin type özelliği ayarlanmalıdır: **ServiceNowObject** | Evet |
+| türü | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **ServiceNowObject** | Evet |
 | tableName | Tablonun adı. | Hayır (etkinlik kaynağı "sorgu" belirtilmişse) |
 
 **Örnek**
@@ -90,11 +90,12 @@ Servicenow'ı verileri kopyalamak için dataset öğesinin type özelliği ayarl
     "name": "ServiceNowDataset",
     "properties": {
         "type": "ServiceNowObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<ServiceNow linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -109,7 +110,7 @@ Servicenow'ı verileri kopyalamak için kopyalama etkinliği için kaynak türü
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağı öğesinin type özelliği ayarlanmalıdır: **ServiceNowSource** | Evet |
+| türü | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **ServiceNowSource** | Evet |
 | query | Verileri okumak için özel bir SQL sorgusu kullanın. Örneğin: `"SELECT * FROM Actual.alm_asset"`. | Yok (veri kümesinde "TableName" değeri belirtilmişse) |
 
 Şema ve sütun için ServiceNow sorguda belirtirken, aşağıdakilere dikkat edin ve **başvurmak [performans ipuçları](#performance-tips) kopyalama performans olduğu çıkarımında üzerinde**.
@@ -117,7 +118,7 @@ Servicenow'ı verileri kopyalamak için kopyalama etkinliği için kaynak türü
 - **Şema:** şeması olarak belirtmek `Actual` veya `Display` adresinden parametresi olarak bakabilirsiniz ServiceNow sorgusunda `sysparm_display_value` true veya false çağırırken olarak [ServiceNow restful API'leri](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET). 
 - **Sütun:** altında gerçek değer için sütun adı `Actual` şeması `[column name]_value`sırada altında görüntüleme değeri için `Display` şeması `[column name]_display_value`. Not sütun adı, sorguda kullanılan şema eşlemesine gerekir.
 
-**Örnek Sorgu:** 
+**Örnek sorgu:** 
 `SELECT col_value FROM Actual.alm_asset` VEYA 
 `SELECT col_display_value FROM Display.alm_asset`
 

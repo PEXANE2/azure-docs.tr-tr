@@ -1,19 +1,18 @@
 ---
 title: Azure dosyaları dağıtımını planlama | Microsoft Docs
 description: Azure dosyaları dağıtımı için planlama yaparken göz önünde bulundurmanız gerekenler hakkında bilgi edinin.
-services: storage
 author: roygara
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6282ce426b08c4ad9c44bead0bd4ec3d259f65fe
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 93c36ccb244931c12d8b038f448fbda4eff77f16
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501427"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68721723"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Dosyaları dağıtımı planlama
 
@@ -98,7 +97,7 @@ Premium dosya paylaşımının nasıl oluşturulduğunu öğrenmek isterseniz, k
 > [!IMPORTANT]
 > Premium dosya paylaşımları yalnızca LRS ile kullanılabilir ve depolama hesapları sunan çoğu bölgede kullanılabilir. Premium dosya paylaşımlarının bölgede şu anda kullanılabilir olup olmadığını öğrenmek için bkz. Azure için [bölgeye göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/?products=storage) sayfası.
 
-### <a name="provisioned-shares"></a>Sağlanan paylaşımlar
+#### <a name="provisioned-shares"></a>Sağlanan paylaşımlar
 
 Premium dosya paylaşımları, sabit bir GiB/ıOPS/verimlilik oranına göre sağlanır. Sağlanan her GiB için, paylaşıma tek bir ıOPS ve 0,1 MIB/s aktarım hızı, her bir paylaşıma göre en fazla sınırlara verilecek. İzin verilen en düşük sağlama, minimum ıOPS/aktarım hızı ile 100 GiB 'dir.
 
@@ -135,7 +134,7 @@ Aşağıdaki tabloda sağlanan paylaşma boyutları için bu formüle birkaç ö
 > [!NOTE]
 > Dosya paylaşımları performansı, diğer birçok etken arasında makine ağ sınırlarına, kullanılabilir ağ bant genişliğine, GÇ boyutlarına ve paralellik özelliklerine tabidir. En yüksek performans ölçeğini elde etmek için, yükü birden çok VM arasında yayın. Bazı yaygın performans sorunları ve geçici çözümler için lütfen [sorun giderme kılavuzuna](storage-troubleshooting-files-performance.md) bakın.
 
-### <a name="bursting"></a>Patlaması
+#### <a name="bursting"></a>Patlaması
 
 Premium dosya paylaşımları, ıOPS 'yi üç etmene kadar alabilir. Burdıya otomatik ve bir kredi sistemine göre çalışır. Burdıya en iyi çaba temelinde çalışır ve veri bloğu sınırı bir garanti değildir; dosya paylaşımları sınıra *kadar* veri bloğu alabilir.
 
@@ -206,11 +205,15 @@ Bu bölüm yalnızca standart dosya paylaşımları için geçerlidir. Tüm Prem
 
 Standart dosya paylaşımları, 5 TiB 'ye kadar tüm bölgelerde kullanılabilir. Belirli bölgelerde, bu bölge 100 TiB sınırı ile kullanılabilir, bu bölgeler aşağıdaki tabloda listelenmiştir:
 
-|Bölge  |Desteklenen artıklık  |Var olan depolama hesaplarını destekler  |
-|---------|---------|---------|
-|Güneydoğu Asya     |LRS|Hayır         |
-|Batı Avrupa     |LRS, ZRS|Hayır         |
-|Batı ABD 2     |LRS, ZRS|Hayır         |
+|Bölge |Desteklenen artıklık |Var olan depolama hesaplarını destekler |Portal desteği *   |
+|-------|---------|---------|---------|
+|Avustralya Doğu  |LRS|Hayır         |Evet|
+|Fransa Orta  |LRS|Hayır         |Henüz değil|
+|Güneydoğu Asya  |LRS, ZRS|Hayır         |Yalnızca LRS, ZRS-henüz değil|
+|Batı Avrupa     |LRS, ZRS|Hayır       |Evet|
+|Batı ABD 2       |LRS, ZRS|Hayır         |Evet|
+
+\* Portal desteği olmayan bölgelerde, 5 ' ten büyük bir paylaşım oluşturmak için PowerShell veya Azure komut satırı arabirimi 'ni (CLı) kullanmaya devam edebilirsiniz. , Kota belirtmeden Portal aracılığıyla yeni bir paylaşma oluşturun. Bu, daha sonra PowerShell veya Azure CLı aracılığıyla güncelleştirilebilen 100 TiB varsayılan boyutuyla bir paylaşma oluşturur.
 
 Yeni bölgelerin ve özelliklerin önceliklendirmemize yardımcı olmak için lütfen bu [anketi](https://aka.ms/azurefilesatscalesurvey)doldurun.
 
@@ -239,7 +242,7 @@ Kayıt durumunuzu doğrulamak için şu komutu çalıştırabilirsiniz:
 Get-AzProviderFeature -FeatureName AllowLargeFileShares -ProviderNamespace Microsoft.Storage
 ```
 
-Durumunuzu güncelleştirmek 15 dakika kadar **sürebilir.** Durumunuz kaydedildikten sonra özelliğini kullanabilmeniz gerekir.
+Durumunuzu güncelleştirmek 15 dakika kadar **sürebilir.** Durumunuz kaydedildikten sonra özelliğinikullanabilmeniz gerekir.
 
 ### <a name="use-larger-file-shares"></a>Daha büyük dosya paylaşımları kullanın
 

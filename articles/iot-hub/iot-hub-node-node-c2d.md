@@ -9,14 +9,14 @@ services: iot-hub
 ms.devlang: javascript
 ms.topic: conceptual
 ms.date: 06/16/2017
-ms.openlocfilehash: b1aa8f2ce7d271187657d57993032069639ca9c7
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: d3e4e0f4e7b1f8d3e100b3f1b3446907cfd587c5
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68404108"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68716961"
 ---
-# <a name="send-cloud-to-device-messages-with-iot-hub-node"></a>IoT Hub (node) ile buluttan cihaza iletileri gönderme
+# <a name="send-cloud-to-device-messages-with-iot-hub-nodejs"></a>IoT Hub ile buluttan cihaza iletileri gönderme (node. js)
 
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
@@ -41,7 +41,7 @@ Bu öğreticinin sonunda iki Node. js konsol uygulaması çalıştırırsınız:
 * IoT Hub aracılığıyla sanal cihaz uygulamasına buluttan cihaza ileti gönderen **Sendcloudtodevicemessage**ve sonra teslim onayını alır.
 
 > [!NOTE]
-> IoT Hub, Azure IoT cihaz SDK 'Ları aracılığıyla birçok cihaz platformu ve dili (C, Java ve JavaScript dahil) için SDK desteğine sahiptir. Cihazınızı Bu öğreticinin koduna bağlama ve genellikle Azure IoT Hub 'e yönelik adım adım yönergeler için bkz. [Azure IoT Geliştirici Merkezi](https://azure.microsoft.com/develop/iot).
+> IoT Hub, Azure IoT cihaz SDK 'Ları aracılığıyla birçok cihaz platformu ve dili (C, Java, Python ve JavaScript dahil) için SDK desteğine sahiptir. Cihazınızı Bu öğreticinin koduna bağlama ve genellikle Azure IoT Hub 'e yönelik adım adım yönergeler için bkz. [Azure IoT Geliştirici Merkezi](https://azure.microsoft.com/develop/iot).
 >
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
@@ -53,33 +53,26 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 Bu bölümde, IoT Hub 'ından buluttan cihaza iletileri almak için [bir cihazdan Telemetriyi bir cihazdan IoT Hub 'ına](quickstart-send-telemetry-node.md) oluşturduğunuz sanal cihaz uygulamasını değiştirirsiniz.
 
-1. Bir metin düzenleyicisi kullanarak SimulatedDevice. js dosyasını açın.
+1. Bir metin düzenleyicisi kullanarak **SimulatedDevice. js** dosyasını açın. Bu dosya, [bir cihazdan IoT Hub 'ına bir cihazdan Telemetriyi gönder](quickstart-send-telemetry-node.md) hızlı başlangıç bölümünde indirdiğiniz Node. js örnek kodunun kök klasöründe yer alan **iot-hub\Quickstarts\simulated-Device** klasöründe bulunur.
 
-2. IoT Hub gönderilen iletileri işleyecek şekilde **Connectcallback** işlevini değiştirin. Bu örnekte, cihaz her zaman ileti işleme IoT Hub bildirmek için **tamamlandı** işlevini çağırır. **Connectcallback** işlevinin yeni sürümü aşağıdaki kod parçacığına benzer şekilde görünür:
+2. IoT Hub gönderilen iletileri almak için cihaz istemcisiyle bir işleyici kaydettirin. Aşağıdaki kod parçacığında, `client.on` cihaz istemcisini oluşturan satırın hemen sonrasına çağrı ekleyin:
 
     ```javascript
-    var connectCallback = function (err) {
-      if (err) {
-        console.log('Could not connect: ' + err);
-      } else {
-        console.log('Client connected');
-        client.on('message', function (msg) {
-          console.log('Id: ' + msg.messageId + ' Body: ' + msg.data);
-          client.complete(msg, printResultFor('completed'));
-        });
-        // Create a message and send it to the IoT Hub every second
-        setInterval(function(){
-            var temperature = 20 + (Math.random() * 15);
-            var humidity = 60 + (Math.random() * 20);
-            var data = JSON.stringify({ deviceId: 'myFirstNodeDevice', temperature: temperature, humidity: humidity });
-            var message = new Message(data);
-            message.properties.add('temperatureAlert', (temperature > 30) ? 'true' : 'false');
-            console.log("Sending message: " + message.getData());
-            client.sendEvent(message, printResultFor('send'));
-        }, 1000);
-      }
-    };
+    var client = DeviceClient.fromConnectionString(connectionString, Mqtt);
+
+    client.on('message', function (msg) {
+      console.log('Id: ' + msg.messageId + ' Body: ' + msg.data);
+      client.complete(msg, function (err) {
+        if (err) {
+          console.error('complete error: ' + err.toString());
+        } else {
+          console.log('complete sent');
+        }
+      });
+    });
     ```
+
+    Bu örnekte, cihaz iletiyi işlediğinden IoT Hub bildirmek için **tamamlandı** işlevini çağırır. MQTT taşıması kullanıyorsanız, **tamamlanacak** çağrı gerekli değildir ve atlanabilir. HTTPS ve AMQP için gereklidir.
   
    > [!NOTE]
    > Taşıma olarak MQTT veya AMQP yerine HTTPS kullanırsanız, **Deviceclient** örneği IoT Hub seyrek 'tan (her 25 dakikada bir daha az) ileti olup olmadığını denetler. MQTT, AMQP ve HTTPS desteği arasındaki farklar ve IoT Hub azaltma hakkında daha fazla bilgi için bkz. [IoT Hub Geliştirici Kılavuzu](iot-hub-devguide-messaging.md).
@@ -93,7 +86,7 @@ Bu makalede, [bir cihazdan IoT Hub 'ına telemetri gönderme](quickstart-send-te
 
 ## <a name="send-a-cloud-to-device-message"></a>Buluttan cihaza ileti gönderme
 
-Bu bölümde, sanal cihaz uygulamasına buluttan cihaza iletiler gönderen bir Node. js konsol uygulaması oluşturacaksınız. [Bir cihazdan IoT Hub 'ına bir cihazdan Telemetriyi gönder](quickstart-send-telemetry-node.md) hızlı başlangıç bölümünde eklediğiniz CIHAZıN cihaz kimliği gereklidir. [IoT Hub bağlantı dizesini al](#get-the-iot-hub-connection-string)bölümünde daha önce kopyaladığınız IoT Hub bağlantı dizesine da ihtiyacınız vardır.
+Bu bölümde, sanal cihaz uygulamasına buluttan cihaza iletiler gönderen bir Node. js konsol uygulaması oluşturacaksınız. [Bir cihazdan IoT Hub 'ına bir cihazdan Telemetriyi gönder](quickstart-send-telemetry-node.md) hızlı başlangıç bölümünde eklediğiniz CIHAZıN cihaz kimliği gereklidir. [IoT Hub bağlantı dizesini al](#get-the-iot-hub-connection-string)bölümünde daha önce kopyaladığınız IoT Hub bağlantı dizesine de ihtiyacınız vardır.
 
 1. **Sendcloudtodevicemessage**adlı boş bir klasör oluşturun. Komut isteminizde aşağıdaki komutu kullanarak **sendcloudtodevicemessage** klasöründe bir Package. JSON dosyası oluşturun. Tüm varsayılanları kabul edin:
 
@@ -173,7 +166,7 @@ Bu bölümde, sanal cihaz uygulamasına buluttan cihaza iletiler gönderen bir N
 
 Şimdi uygulamaları çalıştırmaya hazırsınız.
 
-1. **Simulateddevice** klasöründeki komut isteminde, IoT Hub telemetri göndermek ve buluttan cihaza iletileri dinlemek için aşağıdaki komutu çalıştırın:
+1. **Sanal cihaz** klasöründeki komut isteminde, IoT Hub telemetri göndermek ve buluttan cihaza iletileri dinlemek için aşağıdaki komutu çalıştırın:
 
     ```shell
     node SimulatedDevice.js

@@ -1,20 +1,19 @@
 ---
 title: Azure depolama yaşam döngüsünü yönetme
 description: Sık erişimli verileri sık erişimli ve arşiv katmanlarına geçirmeye yönelik yaşam döngüsü ilke kuralları oluşturmayı öğrenin.
-services: storage
 author: mhopkins-msft
-ms.service: storage
-ms.topic: conceptual
-ms.date: 05/21/2019
 ms.author: mhopkins
-ms.reviewer: yzheng
+ms.date: 05/21/2019
+ms.service: storage
 ms.subservice: common
-ms.openlocfilehash: 6902bf73707dc749da76cd32fe48911fcc88ba1e
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.topic: conceptual
+ms.reviewer: yzheng
+ms.openlocfilehash: 77ed643afaf5e69f41224af68f5e9f8a93fcace5
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305715"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68722091"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Azure Blob depolama yaşam döngüsünü yönetme
 
@@ -29,6 +28,8 @@ Yaşam döngüsü yönetimi ilkesi şunları yapmanızı sağlar:
 
 Yaşam döngüsünün erken aşamaları sırasında, ancak iki hafta sonra zaman içinde sık sık erişim aldığı bir senaryo düşünün. İlk ayın ötesinde veri kümesine nadiren erişilir. Bu senaryoda, etkin depolama, erken aşamalar sırasında en iyisidir. Seyrek Erişimli Depolama, büyük olasılıkla erişim için en uygun. Arşiv depolaması, verilerin bir ay boyunca yaşından sonraki en iyi katman seçeneğidir. Depolama katmanlarını verilerin yaşına göre ayarlayarak, gereksinimlerinize göre en düşük maliyetli depolama seçeneklerini tasarlayabilirsiniz. Bu geçişe ulaşmak için, eskime verilerini daha soğuk katmanlara taşımak amacıyla yaşam döngüsü yönetimi ilke kuralları kullanılabilir.
 
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
+
 ## <a name="storage-account-support"></a>Depolama hesabı desteği
 
 Yaşam döngüsü yönetimi ilkesi Genel Amaçlı v2 (GPv2) hesapları, BLOB depolama hesapları ve Premium Blok Blob depolama hesapları ile kullanılabilir. Azure portal, var olan bir Genel Amaçlı (GPv1) hesabını bir GPv2 hesabına yükseltebilirsiniz. Depolama hesapları hakkında daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](../common/storage-account-overview.md).  
@@ -39,7 +40,7 @@ Yaşam döngüsü yönetimi özelliği ücretsizdir. Müşteriler, [liste Blobla
 
 ## <a name="regional-availability"></a>Bölgesel kullanılabilirlik
 
-Yaşam döngüsü yönetimi özelliği tüm genel Azure ve Azure Kamu bölgelerinde kullanılabilir.
+Yaşam döngüsü yönetimi özelliği tüm Azure bölgelerinde kullanılabilir.
 
 ## <a name="add-or-remove-a-policy"></a>İlke ekleme veya kaldırma
 
@@ -281,7 +282,7 @@ Filtre, kural eylemlerini depolama hesabındaki Blobların bir alt kümesiyle s�
 
 Filtreler şunları içerir:
 
-| Filtre adı | Filtre türü | Notlar | Gereklidir |
+| Filtre adı | Filtre türü | Notlar | Gerekli |
 |-------------|-------------|-------|-------------|
 | blobTypes   | Önceden tanımlanmış sabit listesi değerleri dizisi. | Geçerli yayın şunları destekler `blockBlob`. | Evet |
 | prefixMatch | Öneklerin eşleşmesi için bir dize dizisi. Her kural en fazla 10 ön ek tanımlayabilir. Önek dizesinin bir kapsayıcı adıyla başlaması gerekir. Örneğin, bir kural için altındaki `https://myaccount.blob.core.windows.net/container1/foo/...` tüm Blobları eşleştirmek istiyorsanız, prefixMatch olur. `container1/foo` | PrefixMatch tanımlayamazsınız, kural depolama hesabındaki tüm Bloblar için geçerlidir.  | Hayır |
@@ -296,7 +297,7 @@ Yaşam döngüsü yönetimi, Blobları ve silme işlemini ve BLOB anlık görün
 |---------------|---------------------------------------------|---------------|
 | tierToCool    | Şu anda sık erişimli bir katmanda blob 'ları destekle         | Desteklenmiyor |
 | tierToArchive | Şu anda sık erişimli veya seyrek erişimli bir katmanda blob 'ları destekleme | Desteklenmiyor |
-| delete        | Desteklenen                                   | Desteklenen     |
+| sil        | Desteklenen                                   | Desteklenen     |
 
 >[!NOTE]
 >Aynı blob üzerinde birden fazla eylem tanımlarsanız, yaşam döngüsü yönetimi Blobun en az maliyetli eylemi uygular. Örneğin eylem `delete` , eylemden `tierToArchive`daha fazla. Eylem `tierToArchive` eylemden`tierToCool`daha fazla.

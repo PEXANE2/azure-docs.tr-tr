@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3152dead04510078dd475b611afbfc30264e58f7
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: d500f6c74bb62322a5e14ce3c489e8dba11dc2f2
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297643"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68555800"
 ---
 # <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>Bulutta Azure Multi-Factor Authentication ile Kullanıcı ayarlarını yönetme
 
@@ -31,6 +31,10 @@ Yönetici olarak, aşağıdaki Kullanıcı ve cihaz ayarlarını yönetebilirsin
 Yönetici kimlik doğrulama Yöneticisi rolünü atadıkları için kullanıcıların parolalarını sıfırlamasını, MFA için yeniden kaydolmayı veya mevcut MFA oturumlarını kullanıcı nesnesinden iptal etmeyi zorunlu kılabilirsiniz.
 
 ![Azure portal kimlik doğrulama yöntemlerini yönetin](./media/howto-mfa-userdevicesettings/manage-authentication-methods.png)
+
+1. Parola sıfırlama, kullanıcının parolasını sıfırlayıp bir sonraki oturum açma sırasında değiştirilmesi gereken geçici bir parola atacaktır.
+2. MFA 'yı yeniden kaydettirmek için, Kullanıcı bir sonraki sefer oturum açtığında yeni bir MFA kimlik doğrulama yöntemi kurmak istemeleri gerekir.
+3. MFA oturumlarını iptal etme, kullanıcının hatırlanan MFA oturumlarını temizler ve cihazdaki ilke için bir sonraki ihtiyaç duyulışında MFA gerçekleştirmesini gerektirir.
 
 ## <a name="require-users-to-provide-contact-methods-again"></a>Kullanıcıların iletişim yöntemlerini yeniden sağlamasını gerektir
 

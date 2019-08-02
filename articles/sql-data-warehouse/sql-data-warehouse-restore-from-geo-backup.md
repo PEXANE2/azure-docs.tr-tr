@@ -11,10 +11,10 @@ ms.date: 07/12/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.openlocfilehash: 768646522c2589c302fd7a58031d4ebdb7fcdc12
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68426661"
 ---
 # <a name="geo-restore-azure-sql-data-warehouse"></a>Azure SQL veri ambarını coğrafi olarak geri yükleme
@@ -29,7 +29,7 @@ Bu makalede, Azure portal ve PowerShell aracılığıyla veri Ambarınızı coğ
 
 ## <a name="restore-from-an-azure-geographical-region-through-powershell"></a>PowerShell aracılığıyla Azure coğrafi bölgesinden geri yükleme
 
-Bir coğrafi yedeklemeden geri yüklemek için [Get-azsqldatabasegeobackup][Get-AzSqlDatabaseGeoBackup] and [Restore-AzSqlDatabase][Restore-AzSqlDatabase] cmdlet 'ini kullanın.
+Bir coğrafi yedeklemeden geri yüklemek için [Get-AzSqlDatabaseGeoBackup][Get-AzSqlDatabaseGeoBackup] ve [restore-azsqldatabase][Restore-AzSqlDatabase] cmdlet 'ini kullanın.
 
 > [!NOTE]
 > Gen2 'e coğrafi geri yükleme yapabilirsiniz! Bunu yapmak için, isteğe bağlı bir parametre olarak bir Gen2 ServiceObjectiveName (ör. DW1000**c**) belirtin.
