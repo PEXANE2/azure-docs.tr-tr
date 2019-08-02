@@ -101,14 +101,18 @@
       items:
         - name: Uygulamanızı yönetme
           href: howto-administer.md
+        - name: Kullanıcıları ve rolleri yönetme
+          href: howto-manage-users-roles.md
+        - name: Faturanızı görüntüleme
+          href: howto-view-bill.md
+        - name: Uygulama kullanıcı arabirimini özelleştirme
+          href: howto-customize-ui.md
         - name: Görüntüleri hazırlama ve karşıya yükleme
           href: howto-prepare-images.md
         - name: Uygulama panosunu yapılandırma
           href: howto-configure-homepage.md
         - name: Pano kutucukları kullanma
           href: howto-use-tiles.md
-        - name: Uygulama kullanıcı arabirimini özelleştirme
-          href: howto-customize-ui.md
         - name: Uygulama şablonlarını kullanma
           href: howto-use-app-templates.md
         - name: Azure portalından yönetme

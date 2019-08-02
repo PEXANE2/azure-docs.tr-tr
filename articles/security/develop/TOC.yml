@@ -18,3 +18,17 @@
           href: secure-develop.md
         - name: Güvenli uygulamalar dağıtma
           href: secure-deploy.md
+- name: Çözümler
+  expanded: true
+  items:
+    - name: Microsoft Güvenlik Kodu Analizi
+      expanded: true
+      items:
+        - name: Genel Bakış
+          href: security-code-analysis-overview.md
+        - name: Ekleme ve yükleme
+          href: security-code-analysis-onboard.md
+        - name: Yapılandırma
+          href: security-code-analysis-customize.md
+        - name: SSS
+          href: security-code-analysis-faq.md

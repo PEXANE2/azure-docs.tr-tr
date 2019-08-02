@@ -48,4 +48,11 @@ sections:
         className: spaced noBullet
         items:
           - html: <a href="/azure/security/develop/secure-dev-overview">Güvenli geliştirme en iyi uygulamaları</a>
-          - html: <a href="/azure/security/azure-security-threat-modeling-tool">Tehdit modelleme</a>
+  - title: Kaynaklar
+    items:
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/security/develop/security-code-analysis-overview">Microsoft Güvenlik Kodu Analizi</a>
+          - html: <a href="/azure/security/develop/threat-modeling-tool">Tehdit modelleme aracı</a>

@@ -2,7 +2,7 @@
   href: index.yml
 - name: Genel Bakış
   items:
-    - name: 'Kullanıcılar, gruplar, lisans ve roller'
+    - name: 'Azure AD kullanıcıları, grupları, lisanslaması ve rolleri'
       href: directory-overview-user-model.md
 - name: Hızlı Başlangıçlar
   items:
@@ -10,6 +10,8 @@
       href: /azure/active-directory/fundamentals/add-users-azure-active-directory?context=azure/active-directory/users-groups-roles/context/ugr-context
     - name: Kullanıcılara lisans atama
       href: /azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: Kaynak kapsamına sahip bir rol atama
+      href: roles-quickstart-app-registration-limits.md
     - name: Grupların süre sonunu ayarlama
       href: groups-quickstart-expiration.md
     - name: Grup adlandırma ilkesini ayarlama
@@ -126,10 +128,24 @@
           href: directory-assign-admin-roles.md
         - name: Rolleri görüntüleme ve atama
           href: directory-manage-roles-portal.md
-        - name: PowerShell ile roller atama
+        - name: Graph API’de özel roller atama
           href: roles-assign-powershell.md
-        - name: Uygulama yönetici rollerine temsilci seçme
-          href: roles-delegate-app-roles.md
+        - name: Özel roller önizlemesi
+          items:
+            - name: Özel roller önizlemesi
+              href: roles-custom-overview.md
+            - name: Özel rol oluştur
+              href: roles-create-custom.md
+            - name: Özel rol atamalarını görüntüleme
+              href: roles-view-assignments.md
+            - name: Azure AD’de yönetim merkezinde rol atama
+              href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+            - name: Graph API’de özel roller atama
+              href: roles-assign-graph.md
+            - name: Özel rol önizleme izinleri
+              href: roles-custom-available-permissions.md
+            - name: Uygulama yöneticisi izinlerine temsilci seçme
+              href: roles-delegate-app-roles.md
         - name: Göreve göre en az ayrıcalıklı roller
           href: roles-delegate-by-task.md
         - name: Microsoft 365 rolleri

@@ -17,9 +17,9 @@
           href: time-series-insights-update-quickstart.md
 - name: Öğreticiler
   items:
-    - name: Time Series Insights JavaScript istemci kitaplığını keşfetme
+    - name: Time Series Insights JavaScript istemci kitaplığı
       href: tutorial-explore-js-client-lib.md
-    - name: Time Series Insights tek sayfalı web uygulaması oluşturma
+    - name: Tek sayfalı web uygulaması oluşturma
       href: tutorial-create-tsi-sample-spa.md
     - name: Azure Time Series Insights GA
       items:

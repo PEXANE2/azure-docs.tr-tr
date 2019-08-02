@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: b000610b5cba6f768a629ad797500a57597f2569
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 25f8c19ad1c574f6a3d84d50d911b4da6b52cfc3
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335703"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516497"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Azure disk şifrelemesi etkinleştirilmiş sanal makineleri başka bir Azure bölgesine çoğaltma
 
@@ -23,9 +23,9 @@ Bu makalede, Azure Disk Şifrelemesi etkin VM 'lerinin bir Azure bölgesinden di
 >Azure Site Recovery Şu anda yalnızca bir Windows işletim sistemi çalıştıran ve [Azure Active Directory (Azure AD) ile şifreleme için etkinleştirilen](https://aka.ms/ade-aad-app)Azure sanal makinelerini desteklemektedir.
 
 ## <a id="required-user-permissions"></a>Gerekli Kullanıcı izinleri
-Site Recovery, kullanıcının hedef bölgede anahtar kasasını oluşturma ve anahtarları bölgeye kopyalama izinlerine sahip olmasını gerektirir.
+Site Recovery, kullanıcının hedef bölgede anahtar kasasını oluşturma ve kaynak bölgesi anahtar kasasından anahtarları hedef bölgeye anahtar kasasına kopyalama izinlerine sahip olmasını gerektirir.
 
-Azure portal disk şifrelemesi etkin VM 'lerinin çoğaltılmasını etkinleştirmek için, Kullanıcı aşağıdaki izinlere ihtiyaç duyuyor:
+Azure portal disk şifrelemesi etkin VM 'lerinin çoğaltılmasını etkinleştirmek için, kullanıcının hem **kaynak bölge hem de hedef bölge** Anahtar kasaları üzerinde aşağıdaki izinlere ihtiyacı vardır.
 
 - Anahtar Kasası izinleri
     - Listeleme, oluşturma ve al

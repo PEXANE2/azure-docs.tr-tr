@@ -579,6 +579,9 @@
         - name: Veritabanında aktarım hızı sağlama
           displayName: 'request units, RUs, RU, shared throughput, database level'
           href: how-to-provision-database-throughput.md
+        - name: Cosmos kapasite planlayıcısı ile RU/sn’yi tahmin etme
+          displayName: 'request units, RUs, RU, capacity'
+          href: estimate-ru-with-capacity-planner.md
         - name: İstek birimi ücreti bul
           displayName: 'request units, RUs, RU, charge, consumption'
           href: find-request-unit-charge.md

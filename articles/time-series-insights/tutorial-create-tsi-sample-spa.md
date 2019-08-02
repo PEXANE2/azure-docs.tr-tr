@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Bir Azure Time Series Insights tek sayfa web uygulaması oluşturma | Microsoft Docs'
-description: Sorgular ve bir Azure zaman serisi görüşleri ortamından veri işleyen bir tek sayfalı web uygulaması oluşturmayı öğrenin.
+title: 'Öğretici: Azure Time Series Insights tek sayfalı Web uygulaması oluşturma | Microsoft Docs'
+description: Azure Time Series Insights ortamından verileri sorgulayan ve işleyen tek sayfalı bir Web uygulaması oluşturmayı öğrenin.
 author: ashannon7
 ms.service: time-series-insights
 ms.topic: tutorial
@@ -8,86 +8,86 @@ ms.date: 06/29/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: 8ee4cd30d5742896df96ccfd714d85ebbab194f9
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 4d9af918c222107cfca5863309efb391b8e6d2e0
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595711"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720876"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>Öğretici: Azure Time Series Insights tek sayfalı web uygulaması oluşturma
 
-Bu öğreticide, Azure Time Series Insights verilerine erişmek için kendi web tek sayfalı uygulama (SPA) oluşturma işlemi boyunca size yol gösterir.
+Bu öğretici, Azure Time Series Insights verilerine erişmek için kendi tek sayfalı web uygulamanızı (SPA) oluşturma sürecinde size rehberlik eder.
 
 Bu öğreticide şu konular hakkında bilgi edineceksiniz:
 
 > [!div class="checklist"]
 > * Uygulama tasarımı
-> * Azure Active Directory (Azure AD) ile uygulamanızı kaydetme
+> * Uygulamanızı Azure Active Directory kaydetme (Azure AD)
 > * Web uygulamanızı derleme, yayımlama ve test etme
 
 > [!NOTE]
-> * Bu öğretici için kaynak kod üzerinde sağlanan [GitHub](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial).
-> * Time Series Insights [istemci örnek uygulaması](https://insights.timeseries.azure.com/clientsample) Bu öğreticide kullanılan tamamlanan uygulama göstermek için barındırılır.
+> * Bu öğreticinin kaynak kodu [GitHub](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial)' da verilmiştir.
+> * Time Series Insights [istemci örnek uygulaması](https://insights.timeseries.azure.com/clientsample) , bu öğreticide kullanılan tamamlanmış uygulamayı göstermek için barındırılır.
+
+Henüz yoksa ücretsiz bir [Azure aboneliğine](https://azure.microsoft.com/free/) kaydolun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Kaydolun bir [Azure aboneliği](https://azure.microsoft.com/free/) zaten yoksa.
+* Visual Studio 'nun ücretsiz bir kopyası. Başlamak için [2017 veya 2019 Community sürümlerini](https://www.visualstudio.com/downloads/) indirin.
 
-* Visual Studio ücretsiz bir kopyası. İndirme [2017 veya 2019 topluluk sürümlerini](https://www.visualstudio.com/downloads/) kullanmaya başlamak için.
+* Visual Studio için IIS Express, Web Dağıtımı ve Azure Cloud Services Core araçları bileşenleri. Visual Studio yüklemenizi değiştirerek bileşenleri ekleyin.
 
-* IIS Express, Web dağıtımı ve Azure Cloud Services araçları için çekirdek bileşenler Visual Studio. Bileşenler, Visual Studio yüklemenizi değiştirerek ekleyin.
+## <a name="understand-application-design"></a>Uygulama tasarımını anlama
 
-## <a name="application-design"></a>Uygulama tasarımı
+Time Series Insights örnek SPA, bu öğreticide kullanılan tasarımın ve kodun temelini oluşturur. Kod Time Series Insights JavaScript istemci kitaplığını kullanır. Time Series Insights istemci kitaplığı, iki ana API kategorisi için bir soyutlama sağlar:
 
-Time Series Insights örnek SPA tasarım ve Bu öğreticide kullanılan kod temelini oluşturur. Kod, zaman serisi öngörüleri JavaScript istemci kitaplığını kullanır. Time Series Insights istemci kitaplığı, iki ana API kategorisi için bir Özet sağlar:
+- **Time Series Insights sorgu API 'lerini çağırmak Için sarmalayıcı yöntemleri**: JSON tabanlı ifadeler kullanarak Time Series Insights verilerini sorgulamak için kullanabileceğiniz REST API 'Leri. Yöntemler, kitaplığın TsiClient. Server ad alanı altında düzenlenir.
 
-- **Time Series Insights'ı çağırmak için sarmalayıcı yöntemleri sorgu API'leri**: JSON göre ifadeler kullanarak zaman serisi öngörüleri için veri sorgulamak için kullanabileceğiniz REST API'ler. Yöntemleri kitaplığı TsiClient.server ad alanı altında düzenlenir.
+- **Çeşitli grafik denetimleri türlerini oluşturma ve doldurma yöntemleri**: Bir Web sayfasında Time Series Insights verileri görselleştirmek için kullanabileceğiniz yöntemler. Yöntemler, kitaplığın TsiClient. ux ad alanı altında düzenlenir.
 
-- **Oluşturma ve doldurma denetimleri grafik türleri çeşitli yöntemleri**: Bir Web sayfasındaki zaman serisi öngörüleri verilerini görselleştirmek için kullanabileceğiniz yöntemler. Yöntemleri kitaplığı TsiClient.ux ad alanı altında düzenlenir.
+Bu öğretici, örnek uygulamanın Time Series Insights ortamındaki verileri de kullanır. Time Series Insights örnek uygulamasının yapısı ve Time Series Insights istemci kitaplığı 'nın nasıl kullanıldığı hakkında ayrıntılar için, bkz. [Azure Time Series Insights JavaScript istemci kitaplığı 'Nı araştırma](tutorial-explore-js-client-lib.md).
 
-Bu öğreticide, örnek uygulamanın zaman serisi görüşleri ortamından veri de kullanır. Öğretici yapısını Time Series Insights örnek uygulama ve Time Series Insights istemci kitaplığını kullanma hakkında daha fazla ayrıntı için bkz [Azure zaman serisi öngörüleri JavaScript istemci kitaplığını keşfedin](tutorial-explore-js-client-lib.md).
-
-## <a name="register-the-application-with-azure-ad"></a>Uygulamayı Azure AD’ye kaydetme
+## <a name="register-with-azure-ad"></a>Azure AD 'ye kaydolun
 
 [!INCLUDE [Azure Active Directory app registration](../../includes/time-series-insights-aad-registration.md)]
 
-## <a name="build-and-publish-the-web-application"></a>Web uygulamasını derleme ve yayımlama
+## <a name="build-and-publish"></a>Derleme ve yayımlama
 
-1. Uygulamanızın proje dosyalarını depolamak için bir dizin oluşturun. Ardından, aşağıdaki URL'lerden her birine gidin. Sağ **ham** sayfanın sağ üst köşesinde bulunan bağlantı ve ardından **Kaydet** proje dizininizde dosyaları kaydetmek için.
+1. Uygulamanızın proje dosyalarını depolamak için bir dizin oluşturun. Ardından, aşağıdaki URL 'Lerin her birine gidin. Sayfanın sağ üst köşesindeki **RAW** bağlantısına sağ tıklayın ve sonra da dosyaları proje dizininize kaydetmek Için **farklı kaydet** ' i seçin.
 
-   - [*index.HTML*](https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/index.html): sayfası için JavaScript ve HTML
-   - [*sampleStyles.css*]( https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/sampleStyles.css): CSS stil sayfası
+   - [*index. html*](https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/index.html): sayfa için HTML ve JavaScript
+   - [*Samplestyles. css*](https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/sampleStyles.css): CSS stil sayfası
 
    > [!NOTE]
-   > Tarayıcıya bağlı olarak, dosyayı kaydetmeden önce dosya uzantılarını .html veya .css değiştirmeniz gerekebilir.
+   > Tarayıcıya bağlı olarak, dosyayı kaydetmeden önce dosya uzantılarını. html veya. CSS olarak değiştirmeniz gerekebilir.
 
-1. Visual Studio'da gerekli bileşenlerin yüklü olduğunu doğrulayın. Visual Studio için IIS Express, Web dağıtımı ve Azure Cloud Services temel araçları bileşenleri yüklü olmalıdır.
+1. Gerekli bileşenlerin Visual Studio 'da yüklü olduğunu doğrulayın. Visual Studio için IIS Express, Web Dağıtımı ve Azure Cloud Services Core araçları bileşenleri yüklü olmalıdır.
 
-    [![Visual Studio - yüklü bileşenlerin değiştirme](media/tutorial-create-tsi-sample-spa/vs-installation.png)](media/tutorial-create-tsi-sample-spa/vs-installation.png#lightbox)
+    [![Visual Studio-yüklü bileşenleri değiştirme](media/tutorial-create-tsi-sample-spa/vs-installation.png)](media/tutorial-create-tsi-sample-spa/vs-installation.png#lightbox)
 
     > [!NOTE]
-    > Visual Studio deneyiminizi sürümü ve yapılandırma ayarlarınıza bağlı olarak gösterilen örneklerden biraz farklı olabilir.
+    > Visual Studio deneyiminiz, sürümünüze ve yapılandırma ayarlarınıza bağlı olarak, gösterilen örneklerden biraz farklılık gösterebilir.
 
-1. Visual Studio'yu açın ve oturum açın. Web uygulaması projesi oluşturmak için **dosya** menüsünde **açık** > **Web sitesi**.
+1. Visual Studio 'Yu açın ve oturum açın. Web uygulaması için bir proje oluşturmak için **Dosya** menüsünde,**Web sitesi** **Aç** > ' ı seçin.
 
-    [![Visual Studio - yeni bir çözüm oluşturma](media/tutorial-create-tsi-sample-spa/vs-solution-create.png)](media/tutorial-create-tsi-sample-spa/vs-solution-create.png#lightbox)
+    [![Visual Studio-yeni çözüm oluşturma](media/tutorial-create-tsi-sample-spa/vs-solution-create.png)](media/tutorial-create-tsi-sample-spa/vs-solution-create.png#lightbox)
 
-1. İçinde **açık Web sitesi** bölmesinde, HTML ve CSS dosyaları depolandığı çalışma dizini seçin ve ardından **açık**.
+1. **Web sitesi aç** BÖLMESINDE, HTML ve CSS dosyalarını depoladığınız çalışma dizinini seçip **Aç**' ı seçin.
 
-   [![Visual Studio - Dosya menüsünü açın ve Web sitesi seçenekleriyle](media/tutorial-create-tsi-sample-spa/vs-file-open-web-site.png)](media/tutorial-create-tsi-sample-spa/vs-file-open-web-site.png#lightbox)
+   [![Visual Studio-açık ve Web sitesi seçenekleriyle Dosya menüsü](media/tutorial-create-tsi-sample-spa/vs-file-open-web-site.png)](media/tutorial-create-tsi-sample-spa/vs-file-open-web-site.png#lightbox)
 
-1. Visual Studio **görünümü** menüsünde **Çözüm Gezgini**. Yeni çözümünüzü açılır. HTML ve CSS dosyaları içeren bir Web sitesi projesi (dünya simgesi) içeriyor.
+1. Visual Studio **Görünüm** menüsünde **Çözüm Gezgini**' yi seçin. Yeni çözümünüz açılır. HTML ve CSS dosyalarını içeren bir Web sitesi projesi (Dünya simgesi) içerir.
 
-   [![Visual Studio - Çözüm Gezgini'ndeki yeni çözüm](media/tutorial-create-tsi-sample-spa/vs-solution-explorer.png)](media/tutorial-create-tsi-sample-spa/vs-solution-explorer.png#lightbox)
+   [![Visual Studio-Çözüm Gezgini yeni çözüm](media/tutorial-create-tsi-sample-spa/vs-solution-explorer.png)](media/tutorial-create-tsi-sample-spa/vs-solution-explorer.png#lightbox)
 
-1. Uygulamanızı yayımlamadan önce yapılandırma ayarlarında alter *index.html*.
+1. Uygulamanızı yayımlamadan önce *index. html*dosyasındaki yapılandırma ayarlarını değiştirmeniz gerekir.
 
-   1. Yorum altında üç satırı açıklamadan çıkarın `"PROD RESOURCE LINKS"` bağımlılıkları geliştirmeden üretime geçin. Yorum altında üç satır yorum `"DEV RESOURCE LINKS"`.
+   1. Bağımlılıkları geliştirmeden üretime geçirmek için açıklama `"PROD RESOURCE LINKS"` altındaki üç satırın açıklamasını kaldırın. Açıklamanın `"DEV RESOURCE LINKS"`altındaki üç satırı açıklama olarak değerlendirin.
 
       [!code-html[head-sample](~/samples-javascript/pages/tutorial/index.html?range=2-20&highlight=10-13,15-18)]
 
-      Aşağıdaki örnekteki gibi bağımlılıklarınızı Açıklamalı:
+      Bağımlılıklarınız aşağıdaki örnekte olduğu gibi yorumlanmalıdır:
 
       ```HTML
       <!-- PROD RESOURCE LINKS -->
@@ -101,7 +101,7 @@ Bu öğreticide, örnek uygulamanın zaman serisi görüşleri ortamından veri 
       <link rel="stylesheet" type="text/css" href="../../dist/tsiclient.css"> -->
       ```
 
-   1. Uygulamayı Azure AD uygulama kayıt Kimliğinizi kullanacak şekilde yapılandırmak için değiştirme `clientID` kullanılacak değeri **uygulama kimliği** , içinde kopyalanan **3. adım** olduğunda, [kullanmak için uygulamayı kayıtlı Azure AD](#register-the-application-with-azure-ad). Oluşturulduktan sonra bir **oturum kapatma URL'si** olarak bu değeri Azure AD'de ayarlamak `postLogoutRedirectUri` değeri.
+   1. Uygulamayı Azure AD uygulama kayıt kimliğinizi kullanacak şekilde yapılandırmak `clientID` için, [uygulamayı Azure AD kullanacak şekilde](#register-with-azure-ad)kaydettiğinizde **Adım 3** ' te kopyaladığınız **uygulama kimliğini** kullanmak için değeri değiştirin. Azure AD 'de bir **oturum kapatma URL 'si** oluşturduysanız, bu değeri `postLogoutRedirectUri` değeri olarak ayarlayın.
 
       [!code-javascript[head-sample](~/samples-javascript/pages/tutorial/index.html?range=147-153&highlight=4-5)]
 
@@ -112,58 +112,58 @@ Bu öğreticide, örnek uygulamanın zaman serisi görüşleri ortamından veri 
       postLogoutRedirectUri: 'https://tsispaapp.azurewebsites.net',
       ```
 
-   1. Değişiklikleri bitirdiğinizde kaydetmeniz *index.html*.
+   1. Değişiklikleri yapmayı tamamladığınızda *index. html*dosyasını kaydedin.
 
-1. Web uygulaması, Azure aboneliğinizde bir Azure uygulama hizmeti olarak yayımlayın.  
+1. Web uygulamasını Azure aboneliğinizde bir Azure App Service olarak yayımlayın.  
 
    > [!NOTE]
-   > Aşağıdaki adımlarda gösterildiği ekran görüntüleri de çeşitli seçenekler, Azure aboneliğinizde verilerle otomatik olarak doldurulur. İşlemin her bölme için tamamen yüklemek için birkaç saniye sürebilir.  
+   > Aşağıdaki adımlarda gösterilen ekran görüntülerinde çeşitli seçenekler, Azure aboneliğinizdeki verilerle otomatik olarak doldurulur. Her bölmenin tamamen yüklenmesi birkaç saniye sürebilir.  
 
-   1. Çözüm Gezgini'nde Web sitesi proje düğümüne sağ tıklayın ve ardından **Web uygulaması yayımlama**.  
+   1. Çözüm Gezgini ' de, Web sitesi proje düğümüne sağ tıklayın ve ardından **Web uygulaması Yayımla**' yı seçin.  
 
-      [![Visual Studio - Çözüm Gezgini Web uygulaması yayımlama seçeneğini seçin](media/tutorial-create-tsi-sample-spa/vs-solution-explorer-publish-web-app.png)](media/tutorial-create-tsi-sample-spa/vs-solution-explorer-publish-web-app.png#lightbox)
+      [![Visual Studio-Çözüm Gezgini Web uygulaması Yayımla seçeneğini belirleyin](media/tutorial-create-tsi-sample-spa/vs-solution-explorer-publish-web-app.png)](media/tutorial-create-tsi-sample-spa/vs-solution-explorer-publish-web-app.png#lightbox)
 
-   1. Seçin **Başlat** uygulamanız yayımlanırken başlatmak için.
+   1. Uygulamanızı yayımlamaya başlamak için **Başlat** ' ı seçin.
 
-      [![Visual Studio - yayımlama profili bölmesi](media/tutorial-create-tsi-sample-spa/vs-publish-profile-target.png)](media/tutorial-create-tsi-sample-spa/vs-publish-profile-target.png#lightbox)
+      [![Visual Studio-yayımlama profili bölmesi](media/tutorial-create-tsi-sample-spa/vs-publish-profile-target.png)](media/tutorial-create-tsi-sample-spa/vs-publish-profile-target.png#lightbox)
 
-   1. Uygulamayı yayımlamak için kullanmak istediğiniz aboneliği seçin. Seçin **TsiSpaApp** proje. Sonra **Tamam**’ı seçin.
+   1. Uygulamayı yayımlamak için kullanmak istediğiniz aboneliği seçin. **Tsispaapp** projesini seçin. Sonra **Tamam**’ı seçin.
 
-      [![Visual Studio - App Service bölmesinde yayımlama profili](media/tutorial-create-tsi-sample-spa/vs-publish-profile-app-service.png)](media/tutorial-create-tsi-sample-spa/vs-publish-profile-app-service.png#lightbox)
+      [![Visual Studio-yayımlama profili App Service bölmesi](media/tutorial-create-tsi-sample-spa/vs-publish-profile-app-service.png)](media/tutorial-create-tsi-sample-spa/vs-publish-profile-app-service.png#lightbox)
 
-   1. Seçin **Yayımla** web uygulamasını dağıtma işlemi.
+   1. Web uygulamasını dağıtmak için **Yayımla** ' yı seçin.
 
-      [![Visual Studio - Yayımla seçeneğini ve yayınlama günlük çıktısı](media/tutorial-create-tsi-sample-spa/vs-publish-profile-output.png)](media/tutorial-create-tsi-sample-spa/vs-publish-profile-output.png#lightbox)
+      [![Visual Studio-yayımla seçeneği ve yayımlama günlüğü çıkışı](media/tutorial-create-tsi-sample-spa/vs-publish-profile-output.png)](media/tutorial-create-tsi-sample-spa/vs-publish-profile-output.png#lightbox)
 
-   1. Visual Studio'da başarılı Yayımla günlük görünür **çıkış** bölmesi. Dağıtım tamamlandığında, Visual Studio web uygulaması bir tarayıcı sekmesinde açılır ve oturum açma için ister. Başarılı oturum açma işleminden sonra zaman serisi görüşleri denetimlerin verilerle doldurulur.
+   1. Başarılı bir yayımlama günlüğü, Visual Studio **çıktı** bölmesinde görünür. Dağıtım tamamlandığında, Visual Studio Web uygulamasını bir tarayıcı sekmesinde açar ve oturum açmayı ister. Başarılı oturum açma işleminden sonra Time Series Insights denetimleri verilerle doldurulur.
 
 ## <a name="troubleshoot"></a>Sorun giderme  
 
 Hata kodu/durumu | Açıklama
 ---------------------| -----------
-*AADSTS50011: Uygulama için kayıtlı yanıt adresi yok.* | Azure AD kaydı eksik **yanıt URL'si** özelliği. Git **ayarları** > **yanıt URL'leri** , Azure AD uygulama kaydı için. Doğrulayın **yeniden yönlendirme URI'si** belirtin seçeneğine sahip **2. adım** olduğunda, [kayıtlı Azure AD kullanmak için uygulamayı](#register-the-application-with-azure-ad) mevcuttur.
-*AADSTS50011: Yanıt URL'si istekte belirtilen uygulama için yapılandırılan yanıt URL'lerinden eşleşmiyor: '\<Uygulama kimliği GUID >'.* | `postLogoutRedirectUri` Belirtilen **6. adım** içinde [oluşturun ve web uygulaması yayımlamaya](#build-and-publish-the-web-application) altında belirtilen değer eşleşmelidir **ayarları**  >  **Yanıt URL'leri** , Azure AD uygulama kaydı içinde. Ayrıca değerini değiştirdiğinizden emin olun **hedef URL** kullanılacak *https* başına **5. adım** içinde [oluşturun ve web uygulaması yayımlamaya](#build-and-publish-the-web-application).
-Web uygulaması yükler, ancak bir unstyled, salt metin oturum açma sayfası, beyaz arka plan bulunur. | Yolları konusunda değinildiği doğrulayın **4. adım** içinde [oluşturun ve web uygulaması yayımlamaya](#build-and-publish-the-web-application) doğrudur. Web uygulaması .css dosyalarını bulamadığında sayfa stili doğru şekilde uygulanmaz.
+*AADSTS50011: Uygulama için kaydedilmiş bir yanıt adresi yok.* | Azure AD kaydında **yanıt URL 'si** özelliği eksik. Azure AD uygulama kaydınız için **Ayarlar** > **yanıt URL 'lerine** gidin. **Yeniden yönlendirme URI 'sinin** **Adım 2** ' de veya [Azure AD 'yi kullanmak için uygulamayı](#register-with-azure-ad) kaydettiğinizde **Adım 4** ' te belirtme seçeneğine sahip olduğunuzu doğrulayın.
+*AADSTS50011: İstekte belirtilen yanıt URL 'si, uygulama için yapılandırılan yanıt URL 'leriyle eşleşmiyor: '\<Uygulama kimliği GUID > '.* | [Derleme ve yayımlama](#build-and-publish) içindeki **6. adımda** >  belirtilenbuWebuygulamasınıAzureADuygulamakaydınızdaayarlaryanıtURL'lerialtındabelirtilendeğerleaynı`postLogoutRedirectUri` olmalıdır. |
+Web uygulaması yüklenir, ancak biçimlendirilmiş, salt metin oturum açma sayfasına beyaz bir arka plana sahiptir. | [Web uygulamasını derleme ve yayımlama](#build-and-publish) içindeki **6. adımda** açıklanan yolların doğru olduğundan emin olun. Web uygulaması .css dosyalarını bulamadığında sayfa stili doğru şekilde uygulanmaz.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu öğretici çalışan birkaç Azure hizmeti oluşturur. Bu öğretici serisinin tamamlanmasını planlamıyorsanız, gereksiz yinelenen maliyetler oluşmasını önlemek için tüm kaynakları silmeniz önerilir.
+Bu öğretici çalışan birkaç Azure hizmeti oluşturur. Bu öğretici serisini tamamlamayı planlamıyorsanız, gereksiz maliyetlerin oluşmasını önlemek için tüm kaynakları silmenizi öneririz.
 
-Azure portalında sol taraftaki menüde:
+Azure portal sol menüsünde:
 
-1. Seçin **kaynak grupları**ve ardından zaman serisi görüşleri ortamı için oluşturduğunuz kaynak grubunu seçin. Sayfanın üst kısmında seçin **kaynak grubunu Sil**kaynak grubunun adını girin ve ardından **Sil**.
-1. Seçin **kaynak grupları**ve ardından cihaz benzetimi çözüm Hızlandırıcı tarafından oluşturulan kaynak grubunu seçin. Sayfanın üst kısmında seçin **kaynak grubunu Sil**kaynak grubunun adını girin ve ardından **Sil**.
+1. **Kaynak grupları**' nı seçin ve ardından Time Series Insights ortamı için oluşturduğunuz kaynak grubunu seçin. Sayfanın üst kısmında, **kaynak grubunu sil**' i seçin, kaynak grubunun adını girin ve **Sil**' i seçin.
+1. **Kaynak grupları**' nı seçin ve ardından cihaz benzetimi Çözüm Hızlandırıcısı tarafından oluşturulan kaynak grubunu seçin. Sayfanın üst kısmında, **kaynak grubunu sil**' i seçin, kaynak grubunun adını girin ve **Sil**' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, hakkında bilgi edindiniz:
+Bu öğreticide hakkında bilgi edindiniz:
 
 > [!div class="checklist"]
 > * Uygulama tasarımı
-> * Uygulamanızı Azure AD'ye kaydetme
+> * Uygulamanızı Azure AD 'ye kaydetme
 > * Web uygulamanızı derleme, yayımlama ve test etme
 
-Bu öğreticide, Azure AD ile tümleştirir ve erişim belirteci alma oturum açmış olan kullanıcının kimliğini kullanır. Bir hizmet veya yordam uygulama kimliğini kullanarak zaman serisi öngörüleri API erişimi öğrenmek için bu makaleye bakın:
+Bu öğretici, Azure AD ile tümleşir ve erişim belirteci almak için oturum açan kullanıcının kimliğini kullanır. Bir hizmet veya Daemon uygulamasının kimliğini kullanarak Time Series Insights API 'sine nasıl erişebileceğinizi öğrenmek için şu makaleye bakın:
 
 > [!div class="nextstepaction"]
 > [Azure Time Series Insights API’si için kimlik doğrulaması ve yetkilendirme](time-series-insights-authentication-and-authorization.md)

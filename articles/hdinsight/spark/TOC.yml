@@ -60,6 +60,12 @@
               href: ./apache-spark-troubleshoot-outofmemory-heap-space.md
             - name: Livy Server başlatılamıyor
               href: ./apache-spark-troubleshoot-outofmemory-native-thread.md
+        - name: Apache Spark iş başarısızlıkları - NoClassDefFoundError
+          href: ./apache-spark-troubleshoot-job-fails-noclassdeffounderror.md
+        - name: Apache Spark iş başarısızlıkları - InvalidClassException
+          href: ./apache-spark-troubleshoot-job-fails-invalidclassexception.md
+        - name: Yavaş Apache Spark işleri - listStatus
+          href: ./apache-spark-troubleshoot-job-slowness-liststatus.md
         - name: Yavaş Apache Spark işleri - depolama kapsayıcısı
           href: ./apache-spark-troubleshoot-job-slowness-container.md
         - name: IllegalArgumentException özel durumu
@@ -72,6 +78,8 @@
           href: ./apache-spark-troubleshoot-blocking-cross-origin.md
         - name: Kryo serileştirme işlemi başarısız oldu
           href: ./apache-spark-troubleshoot-sparkexception-kryo-serialization-failed.md
+        - name: Apache Spark olay günlüğü - RequestBodyTooLarge
+          href: ./apache-spark-troubleshoot-event-log-requestbodytoolarge.md
 - name: Nasıl yapılır
   items:
     - name: Küme depolama alanını kullanma

@@ -12,45 +12,46 @@ metadata:
   ms.author: zarhoads
   manager: gwallace
 abstract:
-  description: 'Azure Dev Spaces, bağımlılıkları çoğaltmak veya taklit etmek zorunda kalmadan Azure Kubernetes Service''te (AKS) çalışan mikro hizmet uygulamanızın tamamını test etmenizi ve yinelemeli olarak geliştirmenizi sağlar. Azure Dev Spaces hem paylaşılan bir Azure Kubernetes Service (AKS) kümesinde takımınızla işbirliği yapmanın hem de doğrudan AKS''nin içinde kapsayıcıları çalıştırmanın ve hatalarını ayıklamanın zorluğunu ve karmaşıklığını azaltır. Bu hızlı başlangıçlardan yararlanarak Azure Dev Spaces''i kullanmayı öğrenin.'
+  description: 'Azure Dev Spaces, bağımlılıkları çoğaltmak veya taklit etmek zorunda kalmadan Azure Kubernetes Service''te (AKS) çalıştırarak mikro hizmet uygulamanızın tamamını test etmenizi ve yinelemeli olarak geliştirmenizi sağlar. Azure Dev Spaces hem paylaşılan bir Azure Kubernetes Service (AKS) kümesinde takımınızla işbirliği yapmanın hem de doğrudan AKS''nin içinde kapsayıcıları çalıştırmanın ve hatalarını ayıklamanın zorluğunu ve karmaşıklığını azaltır. Bu hızlı başlangıçlardan yararlanarak Azure Dev Spaces''i kullanmayı öğrenin.'
 sections:
   - title: 5 Dakikalık Hızlı Başlangıçlar
     items:
       - type: paragraph
-        text: 'AKS’te Azure Dev Spaces’i kullanmayı öğrenin:'
+        text: 'AKS’deki mikro hizmetlerde işbirliği yapmak için Azure Dev Spaces kullanmayı öğrenin:'
       - type: list
         style: icon48
         items:
           - image:
-              src: 'https://docs.microsoft.com/media/common/i_cligeneric.svg'
-            text: Ekibin bir parçası olarak geliştirme
+              src: 'https://docs.microsoft.com/media/common/i_configure-teams.svg'
+            text: Bir ekibin parçası olarak mikro hizmetler geliştirme
             href: quickstart-team-development.md
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_cligeneric.svg'
-            text: Bir uygulamayı çalıştırma
-            href: quickstart-cli.md
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_cligeneric.svg'
-            text: Dockerfile ile bir uygulama çalıştırma
-            href: quickstart-cli-dockerfile.md
       - type: paragraph
-        text: 'Azure Dev Spaces ile doğrudan AKS''nin içinde yinelemeli geliştirmeyi ve hata ayıklamayı öğrenin:'
+        text: 'Azure Dev Spaces ile bir iç döngü geliştirme deneyimi için hızla yinelemeyi ve hata ayıklamayı öğrenin:'
       - type: list
         style: icon48
         items:
           - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_java.svg'
-            text: Java ile geliştirme
+              src: 'https://docs.microsoft.com/media/logos/logo_vs-code.svg'
+            text: Visual Studio Code ve Java kullanma
             href: quickstart-java.md
           - image:
               src: 'https://docs.microsoft.com/media/logos/logo_vs-code.svg'
-            text: .NET ve VS Code ile geliştirme
+            text: Visual Studio Code ve .NET Core kullanma
             href: quickstart-netcore.md
           - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_visual-studio.svg'
-            text: .NET ve Visual Studio ile geliştirme
-            href: quickstart-netcore-visualstudio.md
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_nodejs.svg'
-            text: Node.js ile geliştirme
+              src: 'https://docs.microsoft.com/media/logos/logo_vs-code.svg'
+            text: Visual Studio Code ve Node.js kullanma
             href: quickstart-nodejs.md
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_visual-studio.svg'
+            text: Visual Studio ve .NET Core kullanma
+            href: quickstart-netcore-visualstudio.md
+      - type: paragraph
+        text: 'Azure Dev Spaces ile Azure CLI’yi kullanarak neredeyse tüm diller için mikro hizmetler geliştirmeyi öğrenin:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_cligeneric.svg'
+            text: Azure CLI kullanarak geliştirme
+            href: quickstart-cli.md

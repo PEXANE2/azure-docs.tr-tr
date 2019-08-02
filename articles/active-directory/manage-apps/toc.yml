@@ -221,6 +221,8 @@
           items:
             - name: Galeri uygulamaları için kullanıcı sağlama
               href: application-provisioning-config-how-to.md
+            - name: Çok kiracılı uygulamalar için otomatik kullanıcı sağlamayı etkinleştirme
+              href: isv-automatic-provisioning-multi-tenant-apps.md
             - name: Otomatik kullanıcı sağlamayı yapılandırma
               href: configure-automatic-user-provisioning-portal.md
             - name: Uygulama özniteliklerini özelleştirme
