@@ -10,12 +10,12 @@ ms.date: 07/31/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3087f0ac69126c6d509eee77abe15cc35319dfb
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: eda457747a6a3e374e7fdea571f64446e15ded21
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68693914"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774168"
 ---
 # <a name="what-is-azure-active-directory"></a>Azure Active Directory nedir?
 
@@ -33,7 +33,7 @@ Azure AD için tasarlanmıştır:
 
 - **BT yöneticileri.** BT yöneticisi, uygulamalarınızın ve iş gereksinimlerinize göre uygulama kaynaklarınızı erişimi denetlemek için Azure AD kullanabilirsiniz. Örneğin, önemli kurumsal kaynaklara erişirken çok faktörlü kimlik doğrulaması gerektirmek için Azure AD kullanın. Ayrıca, Azure AD kullanıcı sağlama, mevcut Windows Server AD ve Office 365 dahil olmak üzere bulut uygulamalarınız arasında otomatik hale getirmek için kullanabilirsiniz. Son olarak, Azure AD'ye otomatik olarak kullanıcı kimliklerini ve kimlik bilgilerinin korunmasına yardımcı olmak ve erişim yönetimi gereksinimlerinizi karşılamak için güçlü araçlar sağlar. Başlamak için oturum açmak için bir [Ücretsiz 30 günlük Azure Active Directory Premium deneme](https://azure.microsoft.com/trial/get-started-active-directory/).
 
-- **Uygulama geliştiricileri.** Uygulama geliştiricisi olarak, Azure AD, standartlara dayalı bir yaklaşım çoklu oturum açma (SSO) uygulamanıza eklemek için önceden var olan bir kullanıcının kimlik bilgileriyle çalışmaya izin verir. Azure AD, mevcut kurumsal verileri kullanarak kişiselleştirilmiş uygulama deneyimleri oluşturmanıza yardımcı olabilecek API 'Ler de sağlar. Başlamak için oturum açmak için bir [Ücretsiz 30 günlük Azure Active Directory Premium deneme](https://azure.microsoft.com/trial/get-started-active-directory/). Daha fazla bilgi için atabilirsiniz [geliştiriciler için Azure Active Directory](../develop/index.yml).
+- **Uygulama geliştiricileri.** Uygulama geliştiricisi olarak, Azure AD 'yi uygulamanıza çoklu oturum açma (SSO) eklemek için standartlara dayalı bir yaklaşım olarak kullanabilirsiniz, böylece kullanıcının önceden mevcut kimlik bilgileriyle çalışmasına izin verebilirsiniz. Azure AD, mevcut kurumsal verileri kullanarak kişiselleştirilmiş uygulama deneyimleri oluşturmanıza yardımcı olabilecek API 'Ler de sağlar. Başlamak için oturum açmak için bir [Ücretsiz 30 günlük Azure Active Directory Premium deneme](https://azure.microsoft.com/trial/get-started-active-directory/). Daha fazla bilgi için atabilirsiniz [geliştiriciler için Azure Active Directory](../develop/index.yml).
 
 - **Microsoft 365, Office 365, Azure veya Dynamics CRM Online aboneleri.** Abone olarak, Azure AD zaten kullanıyorsunuz. Microsoft 365, Office 365, Azure ve Dynamics CRM Online her kiracıya otomatik olarak Azure AD kiracısı olur. Tümleşik bulut uygulamalarınıza erişimi yönetmek hemen başlayabilirsiniz.
 

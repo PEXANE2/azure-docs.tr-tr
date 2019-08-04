@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 4350cc215c776317d3bde24c7561c317a31fb4c3
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 53f8742df0a03327069da083e6cb46a7c03118c1
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321866"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68773069"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Öğretici: .NET API kullanarak Azure Batch ile paralel iş yükü çalıştırma
 
@@ -175,7 +175,7 @@ Sonra, dosyalar yerel `InputFiles` klasöründen giriş kapsayıcısına yüklen
 
 Dosyalar karşıya yüklenirken `Program.cs` içindeki iki yöntem kullanılır:
 
-* `UploadResourceFilesToContainerAsync`: Bir resourceFile nesneleri koleksiyonunu ve `UploadResourceFileToContainerAsync` `inputFilePaths` parametreye geçirilen her dosyayı karşıya yüklemek için dahili çağrıları döndürür.
+* `UploadFilesToContainerAsync`: Bir resourceFile nesneleri koleksiyonunu ve `UploadResourceFileToContainerAsync` `inputFilePaths` parametreye geçirilen her dosyayı karşıya yüklemek için dahili çağrıları döndürür.
 * `UploadResourceFileToContainerAsync`: Her bir dosyayı bir blob olarak giriş kapsayıcısına yükler. Blob karşıya yükledikten sonra, dosya için paylaşılan erişim imzasını (SAS) alır ve temsil ettiği bir ResourceFile nesnesini döndürür.
 
 ```csharp
@@ -184,7 +184,7 @@ string inputPath = Path.Combine(Environment.CurrentDirectory, "InputFiles");
 List<string> inputFilePaths = new List<string>(Directory.GetFileSystemEntries(inputPath, "*.mp4",
     SearchOption.TopDirectoryOnly));
 
-List<ResourceFile> inputFiles = await UploadResourceFilesToContainerAsync(
+List<ResourceFile> inputFiles = await UploadFilesToContainerAsync(
   blobClient,
   inputContainerName,
   inputFilePaths);
@@ -230,7 +230,7 @@ pool.ApplicationPackageReferences = new List<ApplicationPackageReference>
 await pool.CommitAsync();  
 ```
 
-### <a name="create-a-job"></a>Bir iş oluşturma
+### <a name="create-a-job"></a>İş oluştur
 
 Bir Batch işi, üzerinde görevlerin çalıştırılacağı bir havuz ve iş için öncelik ile zamanlama gibi isteğe bağlı ayarları belirtir. Örnek, `CreateJobAsync` çağrısıyla bir iş oluşturur. Bu tanımlı yöntem, havuzunuzda bir iş oluşturmak üzere [BatchClient.JobOperations.CreateJob](/dotnet/api/microsoft.azure.batch.joboperations.createjob) yöntemini kullanır.
 

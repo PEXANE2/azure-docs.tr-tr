@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7fdf9c52df502bc94519ab6c65be2e9fb546ce48
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: e5088cfa417c76933be6785188f2b173b7b461d0
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699131"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68772567"
 ---
 # <a name="explore-azure-machine-learning-service-with-jupyter-notebooks"></a>Jupyıter Not defterleri ile Azure Machine Learning hizmetini keşfet
 
@@ -35,7 +35,7 @@ Bu makalede, aşağıdaki ortamlardan depoya nasıl erişebileceğiniz gösteril
 <a name="notebookvm"></a>
 ## <a name="get-samples-on-azure-machine-learning-notebook-vm"></a>Azure Machine Learning Not defteri VM 'sinde örnekleri al
 
-Örnekleri kullanmaya başlamanın en kolay yolu, [bulut tabanlı Not defteri hızlı](quickstart-run-cloud-notebook.md)başlangıcını tamamlayacak. Tamamlandıktan sonra, SDK ve örnek depoyla önceden yüklenmiş adanmış bir not defteri sunucusu olacaktır. İndirme veya yükleme gerekli değildir.
+Örnekleri kullanmaya başlamak için en kolay yol, [öğreticiyi tamamdır: Kurulum ortamı ve çalışma](tutorial-1st-experiment-sdk-setup.md)alanı. Tamamlandıktan sonra, SDK ve örnek depoyla önceden yüklenmiş adanmış bir not defteri sunucusu olacaktır. İndirme veya yükleme gerekli değildir.
 
 <a name="byo"></a>
 

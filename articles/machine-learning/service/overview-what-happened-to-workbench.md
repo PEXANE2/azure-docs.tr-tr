@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: a164276d41d182c5b439efc691d80693f1ac831e
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 2bc036fcde7ac541dbf7d8511f82080e52135777
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360136"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68772631"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench’te neler oldu?
 
@@ -120,8 +120,8 @@ Bilgisayar görme, metin analizi ve tahmin için etki alanı paketleri Azure Mac
 
 [Azure Machine Learning hizmeti için en son mimari](concept-azure-machine-learning-architecture.md)hakkında bilgi edinin. 
 
-Hizmete genel bakış için [Azure Machine Learning hizmeti nedir?](overview-what-is-azure-ml.md) makalesini okuyun.
+Hizmete genel bakış için [Azure Machine Learning hizmeti nedir?](overview-what-is-azure-ml.md)makalesini okuyun.
 
-Bir komut dosyasının nasıl çalıştırılacağını gösteren bir hızlı başlangıç için Azure Machine Learning hizmetinin en son sürümü ile betiğin çalıştırma geçmişini keşfetmeye yönelik bir hızlı başlangıç için [Azure Machine Learning hizmeti ile çalışmaya başlayın](quickstart-run-cloud-notebook.md).
+[Ortamı ve çalışma alanını ayarlamak](tutorial-1st-experiment-sdk-setup.md) ve [İlk modelinize eğmek](tutorial-1st-experiment-sdk-train.md) için iki bölümden oluşan öğreticide ilk denemenizi oluşturun
 
 Bu iş akışı hakkında daha ayrıntılı bir deneyim için, Azure Machine Learning hizmeti ile modellerle dağıtım ve dağıtım için ayrıntılı adımlar içeren [tam uzunluklu öğreticiyi](tutorial-train-models-with-aml.md) izleyin. 

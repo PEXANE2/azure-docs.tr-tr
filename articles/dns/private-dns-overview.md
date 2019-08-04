@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: overview
 ms.date: 6/12/2019
 ms.author: victorh
-ms.openlocfilehash: 35a4c7410b36e9716d2ee9625ed98fcc34043e58
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 0921a1ac7aa1192fae78f168c2eb51ee3e74e24a
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742456"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774617"
 ---
 # <a name="what-is-azure-private-dns"></a>Azure Özel DNS nedir?
 
@@ -71,10 +71,11 @@ Aşağıdaki öğeler önizleme sürümündeki bilinen hatalar ve sorunlardır:
 
 Azure DNS aşağıdaki sınırlamalara sahiptir:
 
-* Belirli bir sanal ağ, VM DNS kayıtlarının otomatik kaydı etkin olduğu gibi yalnızca bir özel bölgeye bağlanabilir. Ancak, birden çok sanal ağı tek bir DNS bölgesine bağlayabilirsiniz.
+* Belirli bir sanal ağ, VM DNS kayıtlarının otomatik kaydı etkinse yalnızca bir özel bölgeye bağlanabilir. Ancak, birden çok sanal ağı tek bir DNS bölgesine bağlayabilirsiniz.
 * Ters DNS yalnızca bağlı sanal ağdaki özel IP alanı için geçerlidir
 * Bağlı bir sanal ağın özel IP 'si için ters DNS, sanal makine için varsayılan sonek olarak "internal.cloudapp.net" döndürür. Bir özel bölgeyle bağlantılı olan sanal ağlar için, bir özel IP için ters DNS, *internal.cloudapp.net* varsayılan sonekine ve diğeri de özel bölge sonekine sahip olan 2 FQDN döndürür.
-* Koşullu iletme Şu anda yerel olarak desteklenmiyor. Azure ile şirket içi ağlar arasında çözünürlüğü etkinleştirmek için. Bkz. [VM 'ler ve rol örnekleri Için ad çözümlemesi](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)
+* Koşullu iletme Şu anda yerel olarak desteklenmiyor. Azure ile şirket içi ağlar arasında çözünürlüğü etkinleştirmek için bkz. [VM 'ler ve rol örnekleri Için ad çözümlemesi](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
+
  
 ## <a name="pricing"></a>Fiyatlandırma
 

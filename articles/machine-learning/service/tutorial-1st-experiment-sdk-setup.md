@@ -1,7 +1,7 @@
 ---
 title: 'Öğretici: Kurulum ortamı ve çalışma alanı.'
 titleSuffix: Azure Machine Learning service
-description: Bu öğreticide, Jupyıter not defterlerinde çalışan Azure Machine Learning Python SDK 'sını kullanmaya başlamak için uçtan uca adımları tamamlarız.
+description: Bu öğretici serisinde, Jupyıter not defterlerinde çalışan Azure Machine Learning Python SDK 'sını kullanmaya başlamak için uçtan uca adımları tamamlarız.  Birinci bölüm, bir bulut Not defteri sunucu ortamının oluşturulmasını ve denemeleri ve makine öğrenimi modellerinizi yönetmek için bir çalışma alanı oluşturmayı kapsamaktadır.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: e17d9286453aeb5c7eac688555177c2c42faad21
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: baeb175c57573e557d298ff3197394ab619434ff
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668633"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68772642"
 ---
 # <a name="tutorial-setup-environment-and-workspace"></a>Öğretici: Kurulum ortamı ve çalışma alanı
 
@@ -25,7 +25,7 @@ Bu öğreticide şunları yaptınız:
 
 > [!div class="checklist"]
 > * Sonraki öğreticide kullanmak üzere bir Machine Learning çalışma alanı oluşturun.
-> * Bir bulut Not defteri sunucu ortamı oluşturun.
+> * Azure Machine Learning Python SDK 'nın önceden yüklenmiş ve önceden yapılandırılmış olduğu bulut tabanlı bir Jupyter Not defteri sunucusu olan bir not defteri VM 'si oluşturun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
