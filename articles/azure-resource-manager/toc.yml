@@ -87,6 +87,8 @@
       items:
         - name: Şablon oluşturma
           href: how-to-create-template.md
+        - name: Alt kaynak adı ve türü
+          href: child-resource-name-type.md
         - name: Abonelikte kaynak grupları ve kaynaklar oluşturma
           displayName: subscription level deployment
           href: deploy-to-subscription.md

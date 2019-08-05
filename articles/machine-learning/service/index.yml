@@ -43,6 +43,9 @@ sections:
       - type: list
         style: unordered
         items:
+          - html: 'Başlarken: Azure portalında ilk otomatikleştirilmiş ML modelinizi <a href="tutorial-first-experiment-automated-ml">eğitip dağıtın</a>.'
+          - html: 'Başlarken: Jupyter notebook kullanarak <a href="tutorial-1st-experiment-sdk-setup">geliştirme ortamınızı ayarlayın</a> ve <a href="tutorial-1st-experiment-sdk-train">ilk ML modelinizi eğitin</a> (<b>iki bölümden oluşan seriler</b>).'
+          - html: 'Başlarken: Sürükle-bırak görsel arabirimiyle ilk ML denemenizi <a href="ui-tutorial-automobile-price-train-score">eğitin</a> ve <a href="ui-tutorial-automobile-price-deploy">dağıtın</a> (<b>iki bölümden oluşan seriler</b>).'
           - html: Görüntü sınıflandırma modellerini <a href="tutorial-train-models-with-aml">eğitme</a> ve <a href="tutorial-deploy-models-with-aml">dağıtma</a> (<b>iki parçalı seri</b>).
           - html: Regresyon modellerini eğitmek ve ayarlamak için <a href="tutorial-data-prep">veri hazırlama</a> ve <a href="tutorial-auto-train-models">otomatik makine öğrenmesini kullanma</a> (<b>iki parçalı seri</b>).
           - html: Görsel arabirimde <a href="ui-tutorial-automobile-price-train-score">otomobil fiyatını tahmin edin</a> ve regresyon modelini <a href="ui-tutorial-automobile-price-deploy">dağıtın</a>.

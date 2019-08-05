@@ -68,6 +68,8 @@
       items:
         - name: SQL Server veritabanını geçirme
           href: virtual-machines-windows-migrate-sql.md
+        - name: Yeni bir bölgeye yönelik VM
+          href: virtual-machines-windows-sql-move-different-region.md
     - name: Yüksek Kullanılabilirliği Yapılandırma
       items:
         - name: Yedekleme ve geri yükleme için Azure Depolama’yı Kullanma
