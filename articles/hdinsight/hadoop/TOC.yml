@@ -56,6 +56,8 @@
       maintainContext: true
     - name: Sorun giderme
       items:
+        - name: HDInsight kümesinde oturum açılamıyor
+          href: ./hdinsight-troubleshoot-unable-log-in-cluster.md
         - name: HDInsight kümesine düğümler eklenemiyor
           href: ./hdinsight-troubleshoot-unable-add-nodes.md
         - name: InvalidNetworkSecurityGroupSecurityRules - küme oluşturulamıyor

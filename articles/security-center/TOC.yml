@@ -43,6 +43,8 @@
       href: security-center-incident.md
     - name: Olay yanıtı
       href: security-center-incident-response.md
+    - name: Kiracılar arası yönetim
+      href: security-center-cross-tenant-management.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Secure score’unuzu iyileştirme
@@ -81,6 +83,8 @@
       items:
         - name: Güvenlik önerileri nedir
           href: security-center-recommendations.md
+        - name: Önerileri düzeltme
+          href: security-center-remediate-recommendations.md
         - name: Güvenlik duruşunu güçlendirme
           href: security-center-monitoring.md
         - name: Makinelerinizi ve uygulamalarınızı koruma

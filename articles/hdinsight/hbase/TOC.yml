@@ -25,6 +25,10 @@
       href: ../hdinsight-component-versioning.md
     - name: HDInsight 4.0
       href: ../hdinsight-version-release.md
+    - name: Sorun giderme
+      items:
+        - name: '''hbase hbck'' komutuyla zaman aşımları'
+          href: ./hbase-troubleshoot-timeouts-hbase-hbck.md
 - name: Nasıl yapılır
   items:
     - name: Küme depolama alanını kullanma

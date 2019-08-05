@@ -305,6 +305,8 @@
           href: logic-apps-enterprise-integration-accounts.md
         - name: Tümleştirme hizmeti ortamlarını yönetme
           href: ise-manage-integration-service-environment.md
+        - name: Mantıksal uygulama kaynaklarını taşıma
+          href: move-logic-app-resources.md
         - name: En son şemaya geçiş
           href: ../connectors/connectors-schema-migration.md
     - name: Test etme

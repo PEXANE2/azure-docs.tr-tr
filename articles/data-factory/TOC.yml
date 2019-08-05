@@ -536,6 +536,8 @@
           href: how-to-schedule-azure-ssis-integration-runtime.md
         - name: Azure-SSIS IR’yi bir sanal ağa ekleme
           href: join-azure-ssis-integration-runtime-virtual-network.md
+        - name: Azure-SSIS IR için Şirket İçinde Barındırılan IR’yi ara sunucu olarak yapılandırma
+          href: self-hosted-integration-runtime-proxy-ssis.md
         - name: Azure SSIS IR için Azure AD kimlik doğrulamasını etkinleştirme
           href: enable-aad-authentication-azure-ssis-ir.md
         - name: Azure-SSIS IR için Enterprise Edition sağlama

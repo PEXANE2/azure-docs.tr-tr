@@ -747,6 +747,8 @@
           href: cosmosdb-sql-api-migrate-data-striim.md
         - name: Striim kullanarak Cassandra API’ye geçirme
           href: cosmosdb-cassandra-api-migrate-data-striim.md
+        - name: Azure Cosmos DB’ye yüzlerce terabaytlık verileri geçirme
+          href: migrate-cosmosdb-data.md
     - name: Toplu yürütücü kitaplığı
       items:
         - name: Toplu yürütücü kitaplığı hakkında
