@@ -58,7 +58,7 @@ HDFS bağlı hizmeti için aşağıdaki özellikleri destekler:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Type özelliği ayarlanmalıdır: **Hdfs**. | Evet |
+| type | Type özelliği ayarlanmalıdır: **Hdfs**. | Evet |
 | url |HDFS URL'si |Evet |
 | authenticationType | İzin verilen değerler şunlardır: **Anonim**, veya **Windows**. <br><br> Kullanılacak **Kerberos kimlik doğrulaması** HDFS bağlayıcısının başvurmak [Bu bölümde](#use-kerberos-authentication-for-hdfs-connector) şirket içi ortamınızı uygun şekilde ayarlamak için. |Evet |
 | userName |Kullanıcı adı için Windows kimlik doğrulaması. Kerberos kimlik doğrulaması için belirtin `<username>@<domain>.com`. |Evet (Windows kimlik doğrulaması için) |
