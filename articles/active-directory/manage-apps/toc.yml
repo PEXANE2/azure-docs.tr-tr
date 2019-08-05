@@ -209,10 +209,6 @@
           href: /azure/active-directory/saas-apps/
     - name: Kavramlar
       items:
-        - name: İlk sağlama eşitlemesi
-          href: user-provisioning.md
-        - name: Artımlı sağlama eşitlemesi
-          href: user-provisioning.md
         - name: SCIM etkin uygulamalar için otomatik sağlama
           href: use-scim-to-provision-users-and-groups.md
     - name: Nasıl yapılır kılavuzları

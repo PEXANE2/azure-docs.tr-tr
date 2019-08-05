@@ -54,8 +54,6 @@
           href: cloudsimple-faq.md
     - name: Öğreticiler
       items:
-        - name: Kaynak sağlayıcısını etkinleştirme
-          href: enable-cloudsimple-service.md
         - name: CloudSimple Hizmeti oluşturma
           href: create-cloudsimple-service.md
         - name: CloudSimple portalına erişim

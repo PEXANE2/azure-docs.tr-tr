@@ -29,7 +29,7 @@
         - name: Azure AD Connect ve Connect Health nedir?
           href: whatis-azure-ad-connect.md
         - name: Doğru kimlik doğrulamasını seçme
-          href: 'https://docs.microsoft.com/azure/security/azure-ad-choose-authn'
+          href: 'https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn'
         - name: Kimlik eşitleme ve yinelenen öznitelik dayanıklılığı
           href: how-to-connect-syncservice-duplicate-attribute-resiliency.md
     - name: Parola karması eşitleme

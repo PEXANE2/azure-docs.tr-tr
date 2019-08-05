@@ -1,5 +1,5 @@
 ---
-title: Azure portalı - Hızlı Başlangıç'ı kullanarak HDInsight üzerinde Apache kafka'yı ayarlama
+title: Azure portal kullanarak HDInsight 'ta Apache Kafka ayarlama-hızlı başlangıç
 description: Bu hızlı başlangıçta, Azure portalını kullanarak Azure HDInsight’ta bir Apache Kafka kümesi oluşturmayı öğrenirsiniz. Kafka konuları, aboneleri ve tüketicileri hakkında da bilgi edinirsiniz.
 ms.service: hdinsight
 author: hrasheed-msft
@@ -7,14 +7,14 @@ ms.author: hrasheed
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 61ae6cdf7c31c9a6e40860eb1dc4628bb2d37496
-ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
+ms.openlocfilehash: 9fa6ad3c52e9b01fe9a62a2de52f62b1b1a95aa8
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67150897"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779518"
 ---
-# <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>Hızlı Başlangıç: Azure portalını kullanarak Azure HDInsight Apache Kafka kümesi oluşturma
+# <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>Hızlı Başlangıç: Azure portal kullanarak Azure HDInsight 'ta Apache Kafka kümesi oluşturma
 
 Apache Kafka açık kaynaklı, dağıtılmış bir akış platformudur. Yayımla-abone ol ileti kuyruğuna benzer işlevler sağladığı için genellikle ileti aracısı olarak kullanılır. 
 
@@ -28,7 +28,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bir SSH istemcisi. Daha fazla bilgi için [SSH kullanarak HDInsight (Apache Hadoop) bağlanma](../hdinsight-hadoop-linux-use-ssh-unix.md).
+Bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="create-an-apache-kafka-cluster"></a>Apache Kafka kümesi oluşturma
 
@@ -36,31 +36,31 @@ HDInsight kümesinde Apache Kafka oluşturmak için aşağıdaki adımları kull
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 
-2. Sol menüden gidin **+ kaynak Oluştur** > **Analytics** > **HDInsight**.
+2. Sol taraftaki menüden **+ Resource** > **Analytics** > **HDInsight**oluştur ' a gidin.
    
     ![HDInsight kümesi oluşturma](./media/apache-kafka-get-started/create-hdinsight.png)
 
 3. **Temel Bilgiler** bölümünde aşağıdaki bilgileri girin veya seçin:
 
-    | Ayar | Değer |
+    | Ayar | Value |
     | --- | --- |
     | Küme Adı | HDInsight kümesine ait benzersiz bir ad. |
-    | Abonelik | Aboneliğinizi seçin. |
+    | Subscription | Aboneliğinizi seçin. |
     
    **Küme yapılandırması**’nı görüntülemek için __Küme Türü__’nü seçin.
    
    ![HDInsight üzerinde Apache Kafka kümesi temel yapılandırma](./media/apache-kafka-get-started/custom-basics-kafka.png)
 
-4. Gelen __küme yapılandırması__, aşağıdaki değerleri seçin:
+4. __Küme yapılandırmasından__aşağıdaki değerleri seçin:
 
-    | Ayar | Değer |
+    | Ayar | Value |
     | --- | --- |
     | Küme Türü | Kafka |
     | Version | Kafka 1.1.0 (HDI 3.6) |
 
-    Seçin **seçin** küme türü ayarlarını kaydedin ve dönmek için __Temelleri__.
+    Küme türü ayarlarını kaydetmek ve __temel bilgilere__dönmek için **Seç** ' i seçin.
 
-    ![Küme türü seçme](./media/apache-kafka-get-started/kafka-cluster-type.png)
+    ![Küme türü seçin](./media/apache-kafka-get-started/kafka-cluster-type.png)
 
 5. __Temel Bilgiler__ bölümünde aşağıdaki bilgileri girin veya seçin:
 
@@ -78,7 +78,7 @@ HDInsight kümesinde Apache Kafka oluşturmak için aşağıdaki adımları kull
 
    ![Abonelik seçme](./media/apache-kafka-get-started/hdinsight-basic-configuration-2.png)
 
-    Seçin __sonraki__ temel yapılandırmayı tamamlayın.
+    Temel yapılandırmayı son vermek için __İleri ' yi__ seçin.
 
 6. Bu hızlı başlangıçta varsayılan güvenlik ayarlarını değiştirmeden bırakın. Kurumsal Güvenlik paketi hakkında daha fazla bilgi edinmek için [Azure Active Directory Domain Services'i kullanarak bir HDInsight kümesi ile Kurumsal Güvenlik Paketi yapılandırma](../domain-joined/apache-domain-joined-configure-using-azure-adds.md) sayfasını ziyaret edin. Apache Kafka Disk Şifrelemesi'nde kendi anahtarınızı kullanmayı öğrenmek için [Azure HDInsight üzerinde Apache Kafka için kendi anahtarını getir](apache-kafka-byok.md) sayfasını ziyaret edin
 
@@ -86,7 +86,7 @@ HDInsight kümesinde Apache Kafka oluşturmak için aşağıdaki adımları kull
 
    ![Sanal ağa küme ekleme](./media/apache-kafka-get-started/kafka-security-config.png)
 
-7. **Depolama**’dan bir depolama hesabı seçin veya oluşturun. Bu belgedeki adımlar için diğer alanları varsayılan değerlerinde bırakın. __İleri__ düğmesini kullanarak depolama yapılandırmasını kaydedin. Data Lake depolama Gen2 kullanma hakkında daha fazla bilgi için bkz. [hızlı başlangıç: HDInsight kümelerinde ayarlama](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+7. **Depolama**’dan bir depolama hesabı seçin veya oluşturun. Bu belgedeki adımlar için diğer alanları varsayılan değerlerinde bırakın. __İleri__ düğmesini kullanarak depolama yapılandırmasını kaydedin. Data Lake Storage 2. kullanma hakkında daha fazla bilgi için bkz [. hızlı başlangıç: HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)'ta kümeleri ayarlama.
 
    ![HDInsight depolama hesabı ayarlarını belirleme](./media/apache-kafka-get-started/storage-configuration.png)
 
@@ -102,7 +102,7 @@ HDInsight kümesinde Apache Kafka oluşturmak için aşağıdaki adımları kull
 
 10. __Gelişmiş ayarlar__ bölümünden __İleri__'yi seçerek varsayılan ayarlarla devam edin.
 
-11. **Özet**’ten kümenin yapılandırmasını gözden geçirin. Yanlış olan ayarları değiştirmek için __Düzenle__ bağlantılarını kullanın. Son olarak, seçin **Oluştur** kümeyi oluşturun.
+11. **Özet**’ten kümenin yapılandırmasını gözden geçirin. Yanlış olan ayarları değiştirmek için __Düzenle__ bağlantılarını kullanın. Son olarak, kümeyi oluşturmak için **Oluştur** ' u seçin.
 
     ![Küme yapılandırma özeti](./media/apache-kafka-get-started/kafka-configuration-summary.png)
 
@@ -110,7 +110,7 @@ HDInsight kümesinde Apache Kafka oluşturmak için aşağıdaki adımları kull
 
 ## <a name="connect-to-the-cluster"></a>Kümeye bağlanma
 
-1. Apache Kafka kümesinin birincil baş düğümüne bağlanmak için aşağıdaki komutu kullanın. `sshuser` değerini, SSH kullanıcı adıyla değiştirin. Değiştirin `mykafka` , Apache Kafkacluster adı.
+1. Apache Kafka kümesinin birincil baş düğümüne bağlanmak için aşağıdaki komutu kullanın. `sshuser` değerini, SSH kullanıcı adıyla değiştirin. Apache `mykafka` Kafkacluster adıyla değiştirin.
 
     ```bash
     ssh sshuser@mykafka-ssh.azurehdinsight.net
@@ -122,7 +122,7 @@ HDInsight kümesinde Apache Kafka oluşturmak için aşağıdaki adımları kull
 
     Bağlandığında, aşağıdaki metne benzer bilgiler görürsünüz:
     
-    ```text
+    ```output
     Authorized uses only. All activity may be monitored and reported.
     Welcome to Ubuntu 16.04.4 LTS (GNU/Linux 4.13.0-1011-azure x86_64)
     
@@ -140,42 +140,41 @@ HDInsight kümesinde Apache Kafka oluşturmak için aşağıdaki adımları kull
     Welcome to Apache Kafka on HDInsight.
     
     Last login: Thu Mar 29 13:25:27 2018 from 108.252.109.241
-    ssuhuser@hn0-mykafk:~$
     ```
 
-## <a id="getkafkainfo"></a>Apache Zookeeper ve aracı konak bilgilerini alma
+## <a id="getkafkainfo"></a>Apache Zookeeper ve aracı ana bilgisayar bilgilerini al
 
-Kafka ile çalışırken bilmeniz gerekir *Apache Zookeeper* ve *Aracısı* konaklar. Bu konaklar Apache Kafka API'si ve Kafka ile gönderilen yardımcı programların birçoğu ile birlikte kullanılır.
+Kafka ile çalışırken *Apache Zookeeper* ve *Aracı* konaklarınızı bilmeniz gerekir. Bu konaklar Apache Kafka API'si ve Kafka ile gönderilen yardımcı programların birçoğu ile birlikte kullanılır.
 
-Bu bölümde, küme üzerinde Apache Ambari REST API konak bilgilerini alın.
+Bu bölümde, küme üzerindeki Apache ambarı REST API ana bilgisayar bilgilerini alırsınız.
 
-1. Yükleme [jq](https://stedolan.github.io/jq/), bir komut satırı JSON işlemcisine giden. Bu yardımcı program JSON belgelerini ayrıştırmak için kullanılır ve konak bilgilerini ayrıştırma işlemlerinde yararlıdır. Açık SSH bağlantısından yüklemek için komutu girin `jq`:
+1. Komut satırı JSON işlemcisi olan [JQ](https://stedolan.github.io/jq/)'yi yükler. Bu yardımcı program JSON belgelerini ayrıştırmak için kullanılır ve ana bilgisayar bilgilerini Ayrıştırmada faydalıdır. Açık SSH bağlantısından yüklemek `jq`için aşağıdaki komutu girin:
    
     ```bash
     sudo apt -y install jq
     ```
 
-2. Ortam değişkenlerini ayarlamak. Değiştirin `PASSWORD` ve `CLUSTERNAME` ile küme oturum açma parolasını ve küme adı sırasıyla, sonra komutu girin:
+2. Ortam değişkenlerini ayarlayın. `PASSWORD` Ve`CLUSTERNAME` öğesini sırasıyla küme oturum açma parolası ve küme adıyla değiştirin, ardından şu komutu girin:
 
     ```bash
     export password='PASSWORD'
     export clusterNameA='CLUSTERNAME'
     ```
 
-3. Büyük küçük harfleri doğru extract küme adı. Küme adı gerçek büyük küçük harfleri, küme nasıl oluşturulduğuna bağlı olarak, beklenenden farklı olabilir. Bu komut gerçek büyük/küçük harf almak, bir değişkende depolayın ve sonra görünen doğru cased adı ve daha önce belirtilen adı. Aşağıdaki komutu girin:
+3. Doğru şekilde oluşturulmuş küme adını ayıklayın. Kümenin nasıl oluşturulduğuna bağlı olarak, küme adının gerçek büyük küçük harfleri beklediğinizden farklı olabilir. Bu komut, gerçek büyük/küçük harf elde eder, bir değişkende depolar ve ardından doğru şekilde, daha önce verdiğiniz adı görüntüler. Aşağıdaki komutu girin:
 
     ```bash
     export clusterName=$(curl -u admin:$password -sS -G "https://$clusterNameA.azurehdinsight.net/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
     echo $clusterName, $clusterNameA
     ```
 
-4. Bir ortam değişkenini Zookeeper konak bilgileriyle ayarlamak için aşağıdaki komutu kullanın. Komut, tüm Zookeeper konaklar alır, ardından yalnızca ilk iki girişe döndürür. Bunun nedeni, bir ana bilgisayarın ulaşılamaz olması durumunda yedeklilik istemenizdir.
+4. Bir ortam değişkenini Zookeeper ana bilgisayar bilgileriyle ayarlamak için aşağıdaki komutu kullanın. Komut tüm Zookeeper Konakları alır, ardından yalnızca ilk iki girişi döndürür. Bunun nedeni, bir ana bilgisayarın ulaşılamaz olması durumunda yedeklilik istemenizdir.
 
     ```bash
     export KAFKAZKHOSTS=`curl -sS -u admin:$password -G http://headnodehost:8080/api/v1/clusters/$clusterName/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`
     ```
 
-    Bu komut küme baş düğümünde doğrudan Ambari hizmetini sorgular. Ambari genel adresini kullanarak da erişebilirsiniz `https://$CLUSTERNAME.azurehdinsight.net:80/`. Bazı ağ yapılandırmaları genel adrese erişimi engelleyebilir. Örneğin, bir sanal ağda HDInsight’a erişimi kısıtlamak için Ağ Güvenlik Grupları’nı (NSG) kullanmak gibi.
+    Bu komut küme baş düğümünde doğrudan Ambari hizmetini sorgular. Ayrıca, ambarı genel adresini `https://$CLUSTERNAME.azurehdinsight.net:80/`kullanarak da erişebilirsiniz. Bazı ağ yapılandırmaları genel adrese erişimi engelleyebilir. Örneğin, bir sanal ağda HDInsight’a erişimi kısıtlamak için Ağ Güvenlik Grupları’nı (NSG) kullanmak gibi.
 
 5. Ortam değişkeninin düzgün şekilde ayarlandığını doğrulamak için aşağıdaki komutu kullanın:
 
@@ -227,7 +226,7 @@ Kafka, veri akışlarını *konular* içinde depolar. Konuları yönetmek için 
 
         Apache Kafka, Azure hata etki alanları ile uyumlu değildir. Konular için bölüm çoğaltmaları oluşturulurken, çoğaltmalar yüksek kullanılabilirlik için düzgün şekilde dağıtılmayabilir.
 
-        Yüksek kullanılabilirlik sağlamak için kullanın [Apache Kafka bölüm yeniden Dengeleme aracını](https://github.com/hdinsight/hdinsight-kafka-tools). Bu araç, Apache Kafka kümenizin baş düğümüyle kurulan bir SSH bağlantısından çalıştırılmalıdır.
+        Yüksek kullanılabilirlik sağlamak için [Apache Kafka bölüm yeniden dengeleme aracını](https://github.com/hdinsight/hdinsight-kafka-tools)kullanın. Bu araç, Apache Kafka kümenizin baş düğümüyle kurulan bir SSH bağlantısından çalıştırılmalıdır.
 
         Apache Kafka verilerinizin en yüksek kullanılabilirliğe sahip olması için aşağıdaki durumlarda konunuz için bölüm çoğaltmalarını yeniden dengelemeniz gerekir:
 
@@ -288,7 +287,7 @@ Daha önce oluşturduğunuz test konu başlığında kayıtları depolamak ve ar
 
 4. Tüketiciyi durdurmak için __Ctrl + C__ tuşlarını kullanın.
 
-Ayrıca programlı olarak üretici ve tüketici de oluşturabilirsiniz. Bu API kullanma örneği için bkz: [Apache Kafka üretici ve tüketici API'si HDInsight ile](apache-kafka-producer-consumer-api.md) belge.
+Ayrıca programlı olarak üretici ve tüketici de oluşturabilirsiniz. Bu API 'nin kullanımıyla ilgili bir örnek için bkz. [HDInsight Ile tüketici API 'si Apache Kafka üreticisi](apache-kafka-producer-consumer-api.md) belgesi.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

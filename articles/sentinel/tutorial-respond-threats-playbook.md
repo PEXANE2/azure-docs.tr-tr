@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/25/2019
 ms.author: rkarlin
-ms.openlocfilehash: cdfe22b67585221e2d7e17f47c6a09ba929d68ef
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: cd3288e308308729cf9b97e3c699d489857840a8
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599024"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780368"
 ---
 # <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel-preview"></a>Öğretici: Azure Sentinel önizlemesinde otomatik tehdit yanıtlarını ayarlama
 
@@ -90,7 +90,7 @@ Azure Sentinel 'de yeni bir güvenlik PlayBook oluşturmak için aşağıdaki ad
 
 Bir PlayBook 'u isteğe bağlı olarak çalıştırmak için:
 
-1. **Durumlar** sayfasında, bir servis talebi seçin ve **tüm ayrıntıları görüntüle**' ye tıklayın.
+1. **Olaylar** sayfasında bir olay seçin ve **tüm ayrıntıları görüntüle**' ye tıklayın.
 
 2. **Uyarılar** sekmesinde, PlayBook 'u çalıştırmak istediğiniz uyarıya tıklayın ve sağa doğru bir şekilde ilerleyin ve PlayBook 'ları **görüntüle** ' ye tıklayın ve abonelik üzerindeki kullanılabilir PlayBook 'ları listesinden **çalıştırmak** için bir PlayBook seçin. 
 
