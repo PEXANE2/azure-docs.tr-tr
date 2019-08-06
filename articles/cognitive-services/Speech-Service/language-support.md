@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 031367a8a05defad475ae077f9b38b7294837460
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ac3cb1d637eae1b4ee0a7db59efe631c7eb1ac6f
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559402"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815265"
 ---
 # <a name="language-and-region-support-for-the-speech-services"></a>Konuşma Hizmetleri için dil ve bölge desteği
 
@@ -31,12 +31,12 @@ Hem Microsoft konuşma tanıma SDK 'Sı hem de REST API aşağıdaki dilleri (ye
  ar EG | Arapça (Mısır) modern standart | Hayır | Evet | Hayır
  CA-ES | Katalanca | Hayır | Hayır | Hayır
  v-DK | Danca (Danimarka) | Hayır | Hayır | Hayır
- de-DE | Almanca (Almanya) | Evet | Evet | Hayır
- tr-AU | İngilizce (Avustralya) | Hayır | Evet | Evet
- CA tr | İngilizce (Kanada) | Hayır | Evet | Evet
- en-GB | İngilizce (Birleşik Krallık) | Hayır | Evet | Evet
- tr-giriş | English (India) | Evet | Evet | Evet
- tr NZ | İngilizce (Yeni Zelanda) | Hayır | Evet | Evet  
+ de-DE | Almanca (Almanya) | Evet | Evet | Evet
+ tr-AU | İngilizce (Avustralya) | Hayır | Evet | Hayır
+ CA tr | İngilizce (Kanada) | Hayır | Evet | Hayır
+ en-GB | İngilizce (Birleşik Krallık) | Hayır | Evet | Hayır
+ tr-giriş | English (India) | Evet | Evet | Hayır
+ tr NZ | İngilizce (Yeni Zelanda) | Hayır | Evet | Hayır 
  en-US | İngilizce (ABD) | Evet | Evet | Evet
  es-ES | İspanyolca (İspanya) | Evet | Evet | Hayır
  es-MX | İspanyolca (Meksika) | Hayır | Evet | Hayır
