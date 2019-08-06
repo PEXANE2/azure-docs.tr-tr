@@ -178,12 +178,12 @@ Mongodb'deki verileri kopyalama, aşağıdaki eşlemeler MongoDB veri türlerind
 |:--- |:--- |
 | Binary |Byte[] |
 | Boolean |Boolean |
-| Tarih |DateTime |
+| Date |DateTime |
 | NumberDouble |Double |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
 | ObjectID |String |
-| Dize |String |
+| String |String |
 | UUID |Guid |
 | Object |Renormalized içine sütunları içeren iç içe geçmiş ayırıcı olarak "_" düzleştirme |
 
