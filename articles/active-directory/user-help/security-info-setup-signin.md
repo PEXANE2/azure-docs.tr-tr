@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
-ms.date: 02/13/2019
+ms.date: 08/05/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c20256fb712d9381ba2adc90e2e68ce4fdc8911a
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: d4ca21ecf7ad0707ad33220a8e8c2700638f8e25
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382784"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68824835"
 ---
 # <a name="set-up-your-security-info-preview-from-the-sign-in-page-prompt"></a>Oturum açma sayfası isteminden güvenlik bilgilerinizi (Önizleme) ayarlama
 
@@ -75,7 +75,7 @@ Bu istemi yalnızca kuruluşunuz için gereken güvenlik bilgilerini ayarlamadı
 
 8. Microsoft Authenticator uygulamasındaki bildirimi onaylayın ve ardından **İleri**' yi seçin.
 
-    ![Başarı bildirimi, uygulamayı ve hesabınızı bağlama](media/security-info/securityinfo-prompt-auth-app-success.png).
+    ![Başarı bildirimi, uygulamayı ve hesabınızı bağlama](media/security-info/securityinfo-prompt-auth-app-success.png)
 
     Güvenlik bilgileriniz, iki adımlı doğrulama veya parola sıfırlama kullanırken kimliğinizi doğrulamak için varsayılan olarak Microsoft Authenticator uygulamasını kullanacak şekilde güncelleştirilir.
 
@@ -98,6 +98,40 @@ Bu istemi yalnızca kuruluşunuz için gereken güvenlik bilgilerini ayarlamadı
 12. Güvenlik bilgileriniz için hem Microsoft Authenticator uygulamasını hem de telefon (kısa mesaj veya telefon araması) yöntemini başarıyla ayarladığınızı doğrulamak için **başarı** sayfasını gözden geçirin ve **bitti**' yi seçin.
 
     ![Sihirbaz başarıyla tamamlandı sayfası](media/security-info/securityinfo-prompt-setup-success.png)
+
+    >[!Note]
+    >Kuruluşunuz uygulama parolalarını kullanmanızı gerektiriyorsa, bu sihirbazda ayarlayabileceğiniz ek bir bölüm görürsünüz. **Uygulama parolaları**olarak adlandırılan üçüncü bir bölüm görürseniz, Sihirbazı tamamlayabilmeniz için önce onu doldurmanız gerekir. Uygulama parolası ekleme hakkında adımlar için bu makalenin [uygulama parolalarını yönetme](#manage-your-app-passwords) bölümüne bakın.
+
+### <a name="manage-your-app-passwords"></a>Uygulama parolalarınızı yönetin
+
+Outlook 2010 gibi bazı uygulamalar iki aşamalı doğrulamayı desteklemez. Bu destek eksikliği, kuruluşunuzda iki aşamalı doğrulama kullanıyorsanız uygulamanın çalışmamasıdır. Bu sorunu çözmek için, normal parolanınızdan ayrı olarak, her tarayıcı olmayan uygulamayla birlikte kullanmak üzere otomatik olarak kullanılan bir parola oluşturabilirsiniz.
+
+>[!Note]
+>Sihirbazda bu seçeneği görmüyorsanız, yöneticinizin bunu ayarlamadığı anlamına gelir. Bu ayarlanmamışsa, ancak uygulama parolalarını kullanmanız gerektiğini biliyorsanız, [güvenlik bilgileri (Önizleme) sayfasından uygulama parolalarını ayarlama](security-info-app-passwords.md)bölümündeki adımları izleyebilirsiniz.
+
+Uygulama parolalarını kullanırken, dikkat edilmesi önemlidir:
+
+- Uygulama parolaları otomatik olarak oluşturulur ve uygulama başına yalnızca bir kez girilir.
+
+- Kullanıcı başına 40 parola sınırı vardır. Bu sınırdan sonra bir tane oluşturmayı denerseniz, yenisini oluşturmaya izin verilmeden önce mevcut bir parolayı silmeniz istenir.
+
+- Her uygulama için değil, cihaz başına bir uygulama parolası kullanın. Örneğin, dizüstü bilgisayarınızdaki tüm uygulamalar için tek bir parola ve masaüstünüzdeki tüm uygulamalar için tek bir parola oluşturun.
+
+#### <a name="to-add-app-passwords-in-the-sign-in-wizard"></a>Uygulama parolalarını oturum açma sihirbazına eklemek için
+
+1. Sihirbazın önceki bölümlerini tamamladıktan sonra, **İleri** ' yi seçin ve **uygulama parolası** bölümünü doldurun.
+
+2. Parola gerektiren uygulamanın adını yazın (örneğin `Outlook 2010`,) ve ardından **İleri**' yi seçin.
+
+    ![Sihirbazda uygulama parolası adını ekleme](media/security-info/app-password-app-password.png)
+
+3. Parola kodunu **uygulama parolası** ekranından kopyalayın ve uygulamanın **parola** alanına yapıştırın (bu örnekte, Outlook 2010).
+
+    ![Kopyalama parolası olan uygulama parolası sayfası](media/security-info/app-password-copy-password.png)
+
+4. Parolayı kopyaladıktan ve uygulamaya yapıştırdıktan sonra, tüm oturum açma yöntemi bilgilerinizin doğru olduğundan emin olmak için Bu sihirbaza dönün ve **bitti**' yi seçin.
+
+    ![Uygulama parolası sayfası, tamamlanma bildirimi](media/security-info/app-password-complete.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

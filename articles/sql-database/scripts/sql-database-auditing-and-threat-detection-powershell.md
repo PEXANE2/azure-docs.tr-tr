@@ -1,6 +1,6 @@
 ---
-title: PowerShell örneği-denetim-tehdit algılama-Azure SQL Veritabanı  | Microsoft Docs
-description: Azure SQL Veritabanı’nda denetim ve tehdit algılamayı yapılandırmak için Azure PowerShell örnek betiği
+title: Denetim ve Gelişmiş tehdit koruması PowerShell örneği-Azure SQL veritabanı | Microsoft Docs
+description: Azure SQL veritabanında denetim ve Gelişmiş tehdit koruması yapılandırmak için örnek betik Azure PowerShell
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -9,18 +9,18 @@ ms.devlang: PowerShell
 ms.topic: sample
 author: ronitr
 ms.author: ronitr
-ms.reviewer: carlrab
-ms.date: 03/12/2019
-ms.openlocfilehash: c0293cd8f06a1988d89e9a88d9b03f71f1181765
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.reviewer: carlrab, vanto
+ms.date: 08/05/2019
+ms.openlocfilehash: f9ef894f4c4d1d0ad0ab43b538c984f9cf5b2d01
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570044"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816695"
 ---
-# <a name="use-powershell-to-configure-sql-database-auditing-and-threat-detection"></a>PowerShell kullanarak SQL Veritabanı denetim ve tehdit algılamasını yapılandırma
+# <a name="use-powershell-to-configure-sql-database-auditing-and-advanced-threat-protection"></a>PowerShell kullanarak SQL veritabanı denetimini ve Gelişmiş tehdit korumasını yapılandırın
 
-Bu PowerShell betiği örneği, SQL Veritabanı denetim ve tehdit algılamasını yapılandırır.
+Bu PowerShell betiği örneği, SQL veritabanı denetimini ve Gelişmiş tehdit korumasını yapılandırır.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
@@ -51,7 +51,7 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 | [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Tek bir veritabanı veya elastik havuz oluşturur. |
 | [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) | Bir Depolama hesabı oluşturur. |
 | [Set-AzSqlDatabaseAuditing](/powershell/module/az.sql/set-azsqldatabaseauditing) | Bir veritabanı için denetim ilkesini ayarlar. |
-| [Set-AzSqlDatabaseThreatDetectionPolicy](/powershell/module/az.sql/set-azsqldatabasethreatdetectionpolicy) | Bir veritabanında tehdit algılama ilkesi ayarlar. |
+| [Set-AzSqlDatabaseThreatDetectionPolicy](/powershell/module/az.sql/set-azsqldatabasethreatdetectionpolicy) | Veritabanında Gelişmiş tehdit koruması ilkesini ayarlar. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 |||
 

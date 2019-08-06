@@ -4,14 +4,14 @@ description: Azure Cosmos DB'deki çakışmaları yönetme
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 06/25/2019
+ms.date: 08/05/2019
 ms.author: mjbrown
-ms.openlocfilehash: 96171d4729187ca03f1e9529551a7fb6a26c6976
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 77fb0e195cee03405c4a601fe8c57d4a2690a4b2
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360365"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815079"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Azure Cosmos DB çakışma çözümleme ilkelerini yönetme
 
@@ -19,7 +19,7 @@ ms.locfileid: "68360365"
 
 ## <a name="create-a-last-writer-wins-conflict-resolution-policy"></a>Son yazıcı oluşturma-WINS çakışma çözümü ilkesi
 
-Bu örnekler, son yazıcı WINS çakışma çözümleme ilkesiyle bir kapsayıcının nasıl ayarlanacağını gösterir. Son-yazıcı için varsayılan yol, zaman damgası alanı veya `_ts` özelliğidir. Bu, sayısal bir tür için Kullanıcı tanımlı bir yol olarak da ayarlanabilir. Çakışma durumunda en yüksek değer kazanır. Yol ayarlanmamışsa veya geçersizse, varsayılan olarak `_ts`olur. Bu ilkeyle çözümlenen çakışmalar çakışma akışında gösterilmez. Bu ilke, tüm API 'Ler tarafından kullanılabilir.
+Bu örnekler, son yazıcı WINS çakışma çözümleme ilkesiyle bir kapsayıcının nasıl ayarlanacağını gösterir. Son-yazıcı için varsayılan yol, zaman damgası alanı veya `_ts` özelliğidir. SQL API 'SI için bu, sayısal türde Kullanıcı tanımlı bir yola de ayarlanabilir. Çakışma durumunda en yüksek değer kazanır. Yol ayarlanmamışsa veya geçersizse, varsayılan olarak `_ts`olur. Bu ilkeyle çözümlenen çakışmalar çakışma akışında gösterilmez. Bu ilke, tüm API 'Ler tarafından kullanılabilir.
 
 ### <a id="create-custom-conflict-resolution-policy-lww-dotnet"></a>.NET SDK V2
 
@@ -114,7 +114,6 @@ Bu örnekler çakışmayı çözümlemek için saklı yordama içeren özel çak
 
 > [!IMPORTANT]
 > Her türlü saklı yordamda olduğu gibi, özel bir çakışma çözümü yordamı aynı bölüm anahtarına sahip tüm verilere erişebilir ve çakışmaları çözümlemek için herhangi bir ekleme, güncelleştirme veya silme işlemi gerçekleştirebilir.
-
 
 Bu örnek saklı yordam, `/myCustomId` yoldan en düşük değeri seçerek çakışmaları çözer.
 
@@ -273,7 +272,6 @@ udp_collection = self.try_create_document_collection(
 
 Kapsayıcınız oluşturulduktan sonra `resolver` saklı yordamı oluşturmanız gerekir.
 
-
 ## <a name="create-a-custom-conflict-resolution-policy"></a>Özel bir çakışma çözümleme ilkesi oluşturma
 
 Bu örnekler özel çakışma çözümleme ilkesine sahip bir kapsayıcı ayarlama adımlarını göstermektedir. Bu çakışmalar çakışma akışında görünür.
@@ -428,10 +426,10 @@ while conflict:
 
 Aşağıdaki Azure Cosmos DB kavramları hakkında bilgi edinin:
 
-* [Küresel dağıtım-alt düzey](global-dist-under-the-hood.md)
-* [Uygulamalarınızda çoklu yönetici yapılandırma](how-to-multi-master.md)
-* [İstemcileri çoklu barındırma için yapılandırma](how-to-manage-database-account.md#configure-multiple-write-regions)
-* [Azure Cosmos DB hesabınızdan bölge ekleme veya kaldırma](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
-* [Uygulamalarınızda çoklu yönetici yapılandırma](how-to-multi-master.md).
-* [Bölümleme ve veri dağıtımı](partition-data.md)
-* [Azure Cosmos DB 'de dizin oluşturma](indexing-policies.md)
+- [Küresel dağıtım-alt düzey](global-dist-under-the-hood.md)
+- [Uygulamalarınızda çoklu yönetici yapılandırma](how-to-multi-master.md)
+- [İstemcileri çoklu barındırma için yapılandırma](how-to-manage-database-account.md#configure-multiple-write-regions)
+- [Azure Cosmos DB hesabınızdan bölge ekleme veya kaldırma](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
+- [Uygulamalarınızda çoklu yönetici yapılandırma](how-to-multi-master.md).
+- [Bölümleme ve veri dağıtımı](partition-data.md)
+- [Azure Cosmos DB 'de dizin oluşturma](indexing-policies.md)

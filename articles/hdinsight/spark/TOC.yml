@@ -53,13 +53,7 @@
     - name: Sorun giderme
       items:
         - name: OutOfMemoryError özel durumu
-          items:
-            - name: Yetersiz yığın belleği
-              href: ./apache-spark-troubleshoot-outofmemory-heap.md
-            - name: Java yığın alanı
-              href: ./apache-spark-troubleshoot-outofmemory-heap-space.md
-            - name: Livy Server başlatılamıyor
-              href: ./apache-spark-troubleshoot-outofmemory-native-thread.md
+          href: ./apache-spark-troubleshoot-outofmemory.md
         - name: Apache Spark iş başarısızlıkları - NoClassDefFoundError
           href: ./apache-spark-troubleshoot-job-fails-noclassdeffounderror.md
         - name: Apache Spark iş başarısızlıkları - InvalidClassException

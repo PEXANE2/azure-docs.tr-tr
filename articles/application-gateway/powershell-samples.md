@@ -1,26 +1,26 @@
 ---
-title: Azure uygulama ağ geçidi PowerShell örnekleri
-description: Azure uygulama ağ geçidi PowerShell örnekleri
+title: Azure Application Gateway Azure PowerShell örnekleri
+description: Azure Application Gateway Azure PowerShell örnekleri
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
-ms.date: 6/18/2019
+ms.topic: sample
+ms.date: 08/07/2019
 ms.author: victorh
-ms.openlocfilehash: ce86a97f8f565c7917c8f71b8910acf8ceffbede
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 2fb809026e8b604ddf25a8160774972eae99411a
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164649"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68824354"
 ---
-# <a name="azure-application-gateway-powershell-samples"></a>Azure uygulama ağ geçidi PowerShell örnekleri
+# <a name="azure-powershell-examples-for-azure-application-gateway"></a>Azure Application Gateway Azure PowerShell örnekleri
 
-Aşağıdaki tabloda, uygulama ağ geçitleri oluşturma ve Azure PowerShell Betiği örnekleri bağlantılarını içerir.
+Aşağıdaki tabloda, Azure Application Gateway için Azure PowerShell betik örneklerinin bağlantıları yer almaktadır.
 
 | | |
 |---|---|
-| [Web trafiğini yönetme](./scripts/create-vmss-powershell.md) | Bir uygulama ağ geçidi ve tüm ilgili kaynakları oluşturur.|
-| [Web trafiğini kısıtlama](./scripts/create-vmss-waf-powershell.md) | OWASP kurallarını kullanarak trafiği sınırlayan uygulama ağ geçidi oluşturur.|
-|[WAF v2 özel kurallar](scripts/waf-custom-rules-powershell.md)|Bir Application Gateway Web uygulaması güvenlik duvarı v2 özel kuralları oluşturur.
+| [Web trafiğini yönetme](./scripts/create-vmss-powershell.md) | Bir Application Gateway ve tüm ilgili kaynakları oluşturur.|
+| [Web trafiğini kısıtlama](./scripts/create-vmss-waf-powershell.md) | OWASP kurallarını kullanarak trafiği kısıtlayan bir Application Gateway oluşturur.|
+|[WAF v2 özel kuralları](scripts/waf-custom-rules-powershell.md)|Özel kurallarla Application Gateway Web uygulaması güvenlik duvarı v2 oluşturur.
 | | |

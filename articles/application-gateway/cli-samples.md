@@ -1,32 +1,25 @@
 ---
-title: Azure uygulama ağ geçidi Azure CLI örnekleri | Microsoft Docs
-description: Uygulama ağ geçidi Azure CLI örnekleri
+title: Azure Application Gateway için Azure CLı örnekleri
+description: Azure Application Gateway için Azure CLı örnekleri
 services: application-gateway
-documentationcenter: networking
 author: vhorne
-manager: jpconnock
-editor: tysonn
-tags: azure-resource-manager
 ms.service: application-gateway
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure
-ms.date: 01/30/2018
+ms.topic: sample
+ms.date: 08/07/2019
 ms.author: victorh
-ms.custom: mvc
-ms.openlocfilehash: 90e5c52c9efae7538308371a157b552d4e4d12ee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eac8569f16c84211c1e881a9cb8daab9d7e602b5
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60831138"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68824503"
 ---
-# <a name="azure-application-gateway-azure-cli-samples"></a>Azure uygulama ağ geçidi Azure CLI örnekleri
+# <a name="azure-cli-examples-for-azure-application-gateway"></a>Azure Application Gateway için Azure CLı örnekleri
 
-Aşağıdaki tabloda, uygulama ağ geçitleri oluşturma ve Azure CLI betiği örnekleri bağlantılarını içerir.
+Aşağıdaki tabloda Azure Application Gateway için Azure CLı betik örnekleri bağlantıları yer almaktadır.
 
 | | |
 |---|---|
 | [Web trafiğini yönetme](./scripts/create-vmss-cli.md) | Bir uygulama ağ geçidi ve tüm ilgili kaynakları oluşturur. |
-| [Web trafiğini kısıtlama](./scripts/create-vmss-waf-cli.md) | OWASP kurallarını kullanarak trafiği sınırlayan bir uygulama ağ geçidi oluşturur.|
+| [Web trafiğini kısıtlama](./scripts/create-vmss-waf-cli.md) | OWASP kurallarını kullanarak trafiği kısıtlayan bir uygulama ağ geçidi oluşturur.|
 | | |

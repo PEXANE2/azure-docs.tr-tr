@@ -1,5 +1,5 @@
 ---
-title: Bilgi deposuna giriş ve genel bakış (Önizleme)-Azure Search
+title: Bilgi deposuna giriş (Önizleme)-Azure Search
 description: Azure Search ve diğer uygulamalarda zenginleştirilmiş belgeleri görüntüleyebileceğiniz, yeniden şekillendirbileceğiniz ve kullanabileceğiniz Azure depolama 'ya zenginleştirilmiş belgeler gönderin.
 manager: cgronlun
 author: HeidiSteen
@@ -9,12 +9,12 @@ ms.devlang: NA
 ms.topic: overview
 ms.date: 08/02/2019
 ms.author: heidist
-ms.openlocfilehash: 6cbf8dfe51e8b553fd84e9eb81a2ea37a65c387e
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 21530ca309a18c95e947a265b951fe78044aec93
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668267"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828480"
 ---
 # <a name="what-is-knowledge-store-in-azure-search"></a>Azure Search bilgi deposu nedir?
 

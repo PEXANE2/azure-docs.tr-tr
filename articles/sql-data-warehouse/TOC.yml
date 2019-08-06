@@ -287,8 +287,6 @@
       items:
         - name: Gen2'ye yükselt
           href: upgrade-to-latest-generation.md
-        - name: Veri ambarınızı geri yükleme
-          href: sql-data-warehouse-restore.md
         - name: İş yükünüzü izleme - Portal
           href: sql-data-warehouse-monitor-workload-portal.md
         - name: İş yükünüzü izleme - DMV’ler

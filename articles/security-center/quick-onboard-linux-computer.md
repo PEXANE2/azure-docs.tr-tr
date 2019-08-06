@@ -15,22 +15,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2018
 ms.author: rkarlin
-ms.openlocfilehash: 9f4e001909fb739aa368e5201649e85cce9906d3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 110dcb1531390b207ae741af07fe0ad18964aae1
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60910651"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816130"
 ---
-# <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>Hızlı Başlangıç: Linux bilgisayarları Azure Güvenlik Merkezi'ne ekleme
-Azure aboneliklerinizi ekledikten sonra Linux Aracısı’nı sağlayarak Azure dışında (örneğin, şirket içinde veya diğer bulutlarda) çalışan Linux kaynakları için Güvenlik Merkezi’ni etkinleştirebilirsiniz.
+# <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>Hızlı Başlangıç: Linux bilgisayarlarını Azure Güvenlik Merkezi 'ne ekleme
+Azure aboneliklerinizi ekledikten sonra, Azure dışında çalışan Linux kaynakları için güvenlik merkezini, örneğin şirket içi veya diğer bulutlarda, bir aracı sağlayarak etkinleştirebilirsiniz. Aracıya Microsoft Monitoring Agent (MMA) denir, ancak OMS Aracısı olarak da bilinir.
 
-Bu hızlı başlangıçta bir Linux bilgisayara Linux Aracısı'nın nasıl yükleneceği gösterir.
+Bu hızlı başlangıçta aracının bir Linux bilgisayara nasıl yükleneceği gösterilmektedir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 Güvenlik Merkezi ile çalışmaya başlamak için Microsoft Azure aboneliğinizin olması gerekir. Bir aboneliğiniz yoksa [ücretsiz hesap](https://azure.microsoft.com/pricing/free-trial/) için kaydolabilirsiniz.
 
-Bu hızlı başlangıca başlamadan önce Güvenlik Merkezi’nin Standart fiyatlandırma katmanında olmanız gerekir. Yükseltme yönergeleri için bkz. [Azure aboneliğinizi Güvenlik Merkezi Standart katmanına ekleme](security-center-get-started.md). Güvenlik Merkezi'nin standart hiçbir ücret ödemeden deneyebilirsiniz. Daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/).
+Bu hızlı başlangıca başlamadan önce Güvenlik Merkezi’nin Standart fiyatlandırma katmanında olmanız gerekir. Yükseltme yönergeleri için bkz. [Azure aboneliğinizi Güvenlik Merkezi Standart katmanına ekleme](security-center-get-started.md). Güvenlik Merkezi 'nin standardını ücretsiz olarak deneyebilirsiniz. Daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="add-new-linux-computer"></a>Yeni Linux bilgisayarı ekleme
 
@@ -57,7 +57,7 @@ Bu hızlı başlangıca başlamadan önce Güvenlik Merkezi’nin Standart fiyat
 
    ![Aracıyı yükleme][5]
 
-Linux için Güvenlik Merkezi Aracısı günlükleri şu yolda bulunabilir:: */var/opt/microsoft/omsagent/\<çalışma alanı kimliği > /log/*
+Aracının günlükleri şurada bulunabilir: */var/SeçenekKodu/Microsoft/omsagent/\<Workspace ID >/log/*
 
   ![Aracı günlükleri][6]
 

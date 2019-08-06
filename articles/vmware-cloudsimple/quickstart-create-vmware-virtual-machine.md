@@ -1,86 +1,86 @@
 ---
-title: Azure VMware çözümüyle CloudSimple hızlı başlangıç - azure'da VMware sanal makinelerini kullanma
-description: Bu hızlı başlangıçta, yapılandırma ve VMware Vm'lerini Azure VMware CloudSimple çözümüyle kullanarak Azure portalından kullanma hakkında bilgi edineceksiniz
+title: CloudSimple hızlı başlangıç ile Azure VMware çözümü-Azure 'da VMware VM 'lerini kullanma
+description: Bu hızlı başlangıçta, CloudSimple tarafından Azure VMware çözümünü kullanarak Azure portal VMware VM 'lerini yapılandırma ve kullanma hakkında bilgi edineceksiniz.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/11/2019
 ms.topic: quickstart
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: b430efbc931d72de4b095a7eac4c1e7ca496b1b9
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: dd4faf6df54d478654c59ffc18bf8c5873d576b9
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393507"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816663"
 ---
 # <a name="quickstart-consume-vmware-vms-on-azure"></a>Hızlı Başlangıç: Azure'da VMware sanal makinelerini kullanma
 
-Azure portalında sanal makine oluşturmak için kullanılabilir sanal makine şablonları, özel bulut vCenter kullanabilirsiniz. Bir vCenter Yöneticisi üzerine özel buluta ek şablonlar oluşturabilirsiniz.
+Azure portal bir sanal makine oluşturmak için özel bulut vCenter 'unuzda bulunan sanal makine şablonlarını kullanabilirsiniz. VCenter Yöneticisi özel bulutta ek şablonlar oluşturabilir.
 
-## <a name="create-a-vm-template"></a>Bir VM şablonu oluşturma
+## <a name="create-a-vm-template"></a>VM şablonu oluşturma
 
-İlk olarak bir sanal makine, kullanıcı Arabirimi vCenter'ı kullanarak özel bulutunuzda oluşturun. Bir şablon oluşturmak için VMware makaledeki yönergeleri [vSphere Web istemcisi şablonunda, sanal bir makineyi kopyalayıp](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-FE6DE4DF-FAD0-4BB0-A1FD-AFE9A40F4BFE.html). VM şablonu, özel bulut vCenter Store.
+İlk olarak, vCenter Kullanıcı arabirimini kullanarak özel bulutunuzda bir sanal makine oluşturun. Bir şablon oluşturmak için, VMware makalesindeki yönergeleri izleyerek [sanal makineyi vSphere Web istemcisinde bir şablona kopyalayın](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-FE6DE4DF-FAD0-4BB0-A1FD-AFE9A40F4BFE.html). VM şablonunu özel bulut vCenter 'unuzda depolayın.
 
-## <a name="create-a-virtual-machine-in-the-azure-portal"></a>Azure portalında sanal makine oluşturma
+## <a name="create-a-virtual-machine-in-the-azure-portal"></a>Azure portal bir sanal makine oluşturun
 
 1. **Tüm Hizmetler**’i seçin.
 
-2. Arama **CloudSimple sanal makineler**.
+2. **Cloudsimple sanal makineleri**için arama yapın.
 
 3. **Add (Ekle)** seçeneğini belirleyin.
 
-    ![Ekle'yi seçin](media/create-cloudsimple-virtual-machine.png)
+    ![Ekle 'yi seçin](media/create-cloudsimple-virtual-machine.png)
 
-4. Sanal makine hakkında aşağıdaki bilgileri girin ve ardından **sonraki: Boyutu**.
+4. Sanal makineyle ilgili olarak aşağıdaki bilgileri girin ve ardından İleri ' **yi seçin: Boyut**.
 
-    ![Sanal makine CloudSimple - temelleri oluşturma](media/create-cloudsimple-virtual-machine-basic-info.png)
+    ![CloudSimple sanal makinesi oluşturma-temel kavramlar](media/create-cloudsimple-virtual-machine-basic-info.png)
 
     | Alan | Açıklama |
     | ------------ | ------------- |
-    | **Abonelik** | Özel bulut ile ilişkili Azure aboneliği.  |
-    | **Kaynak grubu** | Kaynak grubu VM'ye atanacak. Varolan bir grubu seçin veya yeni bir tane oluşturun. |
-    | **Ad** | Sanal Makineyi tanımlamak için bir ad.  |
-    | **Konum** | Hangi VM'nin barındırıldığı Azure bölgesi.  |
-    | **Özel bulut** | VM'yi oluşturmak istediğiniz CloudSimple özel bulut. |
-    | **ResourcePool** | Sanal makine için eşlenen kaynak havuzu. Kullanılabilir kaynak havuzlarından seçin. |
+    | **Abonelik** | Özel bulutunuz ile ilişkili Azure aboneliği.  |
+    | **Kaynak grubu** | VM 'nin atanacağı kaynak grubu. Var olan bir grubu seçebilir veya yeni bir grup oluşturabilirsiniz. |
+    | **Name** | VM 'yi tanımlayacak bir ad.  |
+    | **Location** | VM 'nin barındırıldığı Azure bölgesi.  |
+    | **Özel bulut** | Sanal makineyi oluşturmak istediğiniz CloudSimple özel bulutu. |
+    | **ResourcePool** | VM için eşlenmiş bir kaynak havuzu. Kullanılabilir kaynak havuzlarından seçin. |
     | **vSphere şablonu** | VM için vSphere şablonu.  |
-    | **Kullanıcı adı** | VM Yöneticisi kullanıcı adı (için Windows Şablonları).|
-    | **Parola** |  VM (Windows şablonları için) yönetici parolası. |
-    | **Parolayı onayla** | Önceki alanında sağlanan parola. |
+    | **Kullanıcı adı** | VM yöneticisinin Kullanıcı adı (Windows şablonları için).|
+    | **Parola** |  VM yöneticisinin parolası (Windows şablonları için). |
+    | **Parolayı onayla** | Önceki alanda belirtilen parola. |
 
-5. Çekirdek ve bellek kapasitesi için VM sayısını seçin. Seçin **konuk işletim sistemine kullanıma** tam CPU sanallaştırma konuk işletim sisteminde kullanıma sunmak istiyorsanız. Donanım sanallaştırma gerektiren uygulamalar, ikili çeviri veya yarı olmadan sanal makinelerinde çalıştırabilirsiniz. Daha fazla bilgi için VMware bkz <a href="https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-2A98801C-68E8-47AF-99ED-00C63E4857F6.html" target="_blank">VMware donanım Yardımlı sanallaştırma kullanıma</a>. İşiniz bittiğinde **sonraki: Yapılandırmaları**.
+5. Sanal makine için çekirdek sayısını ve bellek kapasitesini seçin. Tam CPU sanallaştırmayı Konuk işletim sistemine sunmak istiyorsanız Konuk işletim sistemi **olarak** Seç ' i seçin. Donanım sanallaştırma gerektiren uygulamalar, ikili çeviri veya paravirtualization olmadan sanal makinelerde çalıştırılabilir. Daha fazla bilgi için <a href="https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-2A98801C-68E8-47AF-99ED-00C63E4857F6.html" target="_blank">VMware donanım yardımlı sanallaştırma 'Yi kullanıma</a>sunma VMware makalesine bakın. İşiniz bittiğinde ileri ' yi seçin **: Yapılandırma**.
 
-    ![Sanal makine CloudSimple - boyutu oluşturun](media/create-cloudsimple-virtual-machine-size.png)
+    ![CloudSimple sanal makinesi oluşturma-boyut](media/create-cloudsimple-virtual-machine-size.png)
 
-6. Ağ arabirimleri ve diskleri aşağıdaki tabloda açıklandığı gibi yapılandırın ve ardından **gözden geçir + Oluştur**.
+6. Ağ arabirimlerini ve diskleri aşağıdaki tablolarda açıklandığı şekilde yapılandırın ve ardından **gözden geçir + oluştur**' u seçin.
 
-    ![Sanal makine CloudSimple - yapılandırmaları oluşturma](media/create-cloudsimple-virtual-machine-configurations.png)
+    ![CloudSimple sanal makinesi oluşturma-yapılandırma](media/create-cloudsimple-virtual-machine-configurations.png)
 
-    Ağ arabirimleri için seçin **Ekle ağ arabirimi** ve sonra aşağıdaki ayarları yapılandırın:
+    Ağ arabirimleri için, **ağ arabirimi Ekle** ' yi seçin ve ardından aşağıdaki ayarları yapılandırın:
     
     | Ayar | Açıklama |
     | ------------ | ------------- |
-    | **Ad** | Arabirim tanımlamak için bir ad girin.  |
-    | **Ağ** | İçinde özel bulut vSphere dağıtılmış yapılandırılan bağlantı noktası gruplarının listesini seçin.  |
-    | **Bağdaştırıcı** | Sanal makine için yapılandırılan kullanılabilir türler listesinden bir vSphere bağdaştırıcıyı seçin. Daha fazla bilgi için VMware bkz <a href="https://kb.vmware.com/s/article/1001805" target="_blank">sanal makineniz için bir ağ bağdaştırıcısı seçme</a>. |
-    | **Önyükleme sırasında açma** | Sanal makine önyüklendiğinde NIC donanımı etkinleştirmek isteyip istemediğinizi seçin. Varsayılan değer **etkinleştirme**. |
+    | **Name** | Arabirimi tanımlamak için bir ad girin.  |
+    | **Ağ** | Özel bulut vSphere 'unuzda yapılandırılmış dağıtılmış bağlantı noktası grupları listesinden seçim yapın.  |
+    | **Örünü** | VM için yapılandırılmış kullanılabilir türler listesinden bir vSphere bağdaştırıcısı seçin. Daha fazla bilgi için bkz. <a href="https://kb.vmware.com/s/article/1001805" target="_blank">sanal makineniz için ağ bağdaştırıcısı seçme</a>VMware makalesi. |
+    | **Önyüklemede açma** | VM önyüklendiğinde NIC donanımını etkinleştirip etkinleştirmeyeceğinizi seçin. Varsayılan olarak **etkinleştirilir**. |
 
-    Diskler için seçtiğiniz **Ekle disk** ve sonra aşağıdaki ayarları yapılandırın:
+    Diskler için, **Disk Ekle** ' yi seçin ve ardından aşağıdaki ayarları yapılandırın:
 
     | Ayar | Açıklama |
     | ------------ | ------------- |
-    | **Ad** | Diski tanımlamak için bir ad girin.  |
-    | **Boyut** | Kullanılabilir boyutlar birini seçin.  |
-    | **SCSI denetleyicisi** | Disk bir SCSI denetleyicisi seçin.  |
-    | **Modu** | Disk anlık görüntüleri nasıl katıldığı modunu belirtir. Bu seçeneklerden birini seçin: <br> **Bağımsız kalıcı**: Diske yazılan tüm değişiklikler kalıcı olarak yazılır.<br> **Kalıcı olmayan bağımsız**: Kapatmak veya sanal makineyi Sıfırla diske yazılan değişiklikler atılır. Bağımsız kalıcı olmayan modu her zaman aynı durumda sanal Makineyi yeniden başlatmanızı sağlar. Daha fazla bilgi için <a href="https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html" target="_blank">VMware belgeleri</a>.
+    | **Name** | Diski tanımlamak için bir ad girin.  |
+    | **Boyut** | Kullanılabilir boyutlardan birini seçin.  |
+    | **SCSI denetleyicisi** | Disk için bir SCSI denetleyicisi seçin.  |
+    | **Modundaysa** | Modu, diskin anlık görüntülerle nasıl katıldığını belirtir. Bu seçeneklerden birini seçin: <br> **Bağımsız kalıcı**: Diske yazılan tüm değişiklikler kalıcı olarak yazılmıştır.<br> **Bağımsız olarak kalıcı olmayan**: Sanal makineyi kapattığınızda veya sıfırladığınızda diske yazılan değişiklikler atılır. Bağımsız olarak kalıcı olmayan bağımsız mod, sanal makineyi her zaman aynı durumda yeniden başlatmanıza olanak tanır. Daha fazla bilgi için bkz. <a href="https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html" target="_blank">VMware belgeleri</a>.
 
-7. Doğrulama tamamlandıktan sonra ayarları gözden geçirin ve seçin **Oluştur**. Değişiklik yapmak için seçin ve üst sekmeleri seçin **önceki: Yapılandırmaları**.
+7. Doğrulama tamamlandıktan sonra ayarları gözden geçirin ve **Oluştur**' u seçin. Değişiklik yapmak için üstteki sekmeleri seçin veya öncekini seçin **: Yapılandırma**.
 
-    ![Sanal makine CloudSimple - gözden geçirmesi oluşturma + oluştur](media/create-cloudsimple-virtual-machine-review.png)
+    ![CloudSimple sanal makinesi oluşturma-Inceleme ve oluşturma](media/create-cloudsimple-virtual-machine-review.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [CloudSimple sanal makinelerin listesini görüntüleyin](https://docs.azure.cloudsimple.com/azure-create-vm/#view-list-of-cloudsimple-virtual-machines)
-* [Azure'dan CloudSimple sanal makineleri yönetme](https://docs.azure.cloudsimple.com/azure-manage-vm/)
+* [CloudSimple sanal makinelerinin listesini görüntüle](https://docs.azure.cloudsimple.com/azure-create-vm/#view-list-of-cloudsimple-virtual-machines)
+* [Azure 'dan CloudSimple sanal makinelerini yönetme](https://docs.azure.cloudsimple.com/azure-manage-vm/)

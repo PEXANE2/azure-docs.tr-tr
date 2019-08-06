@@ -4,26 +4,16 @@
   expanded: true
   items:
     - name: Azure Machine Learning hizmeti nedir?
-      displayName: AML services overview
+      displayName: 'AML, services, overview, introduction'
       href: overview-what-is-azure-ml.md
     - name: Bu hizmet nasıl çalışır?
-      displayName: architecture concepts definitions
+      displayName: 'architecture, concepts, definitions, glossary'
       href: concept-azure-machine-learning-architecture.md
 - name: Kurulum
   items:
     - name: Çalışma alanı oluşturma
       displayName: install sdk workspace
       href: setup-create-workspace.md
-- name: Hızlı Başlangıçlar
-  items:
-    - name: Python SDK'sı
-      items:
-        - name: Bulutta deneme çalıştırma
-          displayName: workspace
-          href: quickstart-run-cloud-notebook.md
-        - name: Yerel olarak deneme çalıştırma
-          displayName: 'workspace, install, sdk'
-          href: quickstart-run-local-notebook.md
 - name: Öğreticiler
   items:
     - name: Python SDK'sı
@@ -52,10 +42,10 @@
     - name: Görsel arabirim
       items:
         - name: Regresyon modelini eğitme
-          displayName: experiment drag-and-drop visual interface Tutorial 1
+          displayName: studio
           href: ui-tutorial-automobile-price-train-score.md
         - name: Regresyon modelini dağıtma
-          displayName: experiment drag-and-drop visual interface Tutorial 2
+          displayName: studio
           href: ui-tutorial-automobile-price-deploy.md
     - name: Otomatik makine öğrenimi
       items:
@@ -65,27 +55,27 @@
 - name: Örnekler
   items:
     - name: Notebooks
-      displayName: 'example, examples, jupyter, azure notebooks, python, notebook, github'
+      displayName: 'example, examples, server, jupyter, azure notebooks, python, notebook, github'
       href: samples-notebooks.md
     - name: Görsel arabirim denemeleri
       items:
         - name: Fiyat tahmini
-          displayName: 'Basic Sample, training, regression, sample 1'
+          displayName: 'regression, studio'
           href: ui-sample-regression-predict-automobile-price-basic.md
         - name: Fiyat tahmini (gelişmiş)
-          displayName: 'Advanced Sample, training, regression, sample 2'
+          displayName: 'regression, studio'
           href: ui-sample-regression-predict-automobile-price-compare-algorithms.md
         - name: Kredi riski tahmini
-          displayName: 'Basic Sample, training, classification, sample 3'
+          displayName: 'classification, studio'
           href: ui-sample-classification-predict-credit-risk-basic.md
         - name: Kredi riski tahmini (gelişmiş)
-          displayName: 'Advanced Sample, training, classification, sample 4'
+          displayName: 'classification, studio'
           href: ui-sample-classification-predict-credit-risk-cost-sensitive.md
         - name: Değişim sıklığı tahmini
-          displayName: 'Basic Sample, training, classification, sample 5'
+          displayName: 'classification, studio'
           href: ui-sample-classification-predict-churn.md
         - name: Uçuş rötarları tahmini
-          displayName: 'Basic Sample, training, classification, sample 6'
+          displayName: 'classification, studio'
           href: ui-sample-classification-predict-flight-delay.md
     - name: Azure Açık Veri Kümeleri
       href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
@@ -97,7 +87,7 @@
     - name: Çalışma alanı
       href: concept-workspace.md
     - name: İşlem hedefi
-      displayName: 'compute, resource, target, dsvm, AKS, kubernetes, amlcompute, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
+      displayName: 'resource, dsvm, AKS, kubernetes, amlcompute, Data Science Virtual Machine, local, cluster, ACI, container instance, ADB, Databricks, data lake, lake, HDI, HDInsight'
       href: concept-compute-target.md
     - name: Görsel arabirim
       displayName: studio
@@ -106,7 +96,7 @@
       displayName: 'automl, auto ml'
       href: concept-automated-ml.md
     - name: Model yönetimi (MLOps)
-      displayName: 'deploy, deployment, mlops, operationalize, operationalization'
+      displayName: 'deploy, deployment, publish, production, operationalize, operationalization'
       href: concept-model-management-and-deployment.md
     - name: ML işlem hatları
       href: concept-ml-pipelines.md
@@ -157,15 +147,15 @@
           href: how-to-vscode-tools.md
     - name: Verilerle çalışma
       items:
+        - name: Bir veri deposundan veri alma
+          displayName: 'blob, get, fileshare, access storage'
+          href: how-to-access-data.md
         - name: Veri kümelerini ekleme ve kaydetme
           displayName: 'data, dataset'
           href: how-to-create-register-datasets.md
         - name: Verileri inceleme
           displayName: 'data, eda, exploratory, analysis, etl, dataset, summary statistics, profile, explore, data preparation, dataprep'
           href: how-to-explore-prepare-data.md
-        - name: Bir veri deposundan veri alma
-          displayName: blob get fileshare access storage
-          href: how-to-access-data.md
         - name: azureml.dataprep ile hazırlama
           items:
             - name: Veri yükleme
@@ -229,7 +219,7 @@
     - name: Modelleri dağıtma ve sunma
       items:
         - name: Dağıtım nereye ve nasıl yapılır?
-          displayName: publish web service
+          displayName: 'publish, web, service, operationalize, aks, kubernetes, aci, container, cli, consume, docker'
           href: how-to-deploy-and-where.md
         - name: Azure Container Instances
           href: how-to-deploy-azure-container-instance.md
@@ -285,13 +275,13 @@
 - name: Başvuru
   items:
     - name: Machine learning SDK
-      displayName: api core package python data prep
-      href: 'https://aka.ms/aml-sdk'
+      displayName: 'api, core, package, python, class'
+      href: 'https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py'
     - name: Machine Learning CLI
-      displayName: 'cli, extension, command line, command-line, az, ci/cd, automate, automated'
+      displayName: 'extension, command line, command-line, az, ci/cd, automate, automated'
       href: reference-azure-machine-learning-cli.md
     - name: Görsel arabirim modülleri
-      displayName: module reference
+      displayName: 'module, reference, algorithm, studio'
       items:
         - name: Modül başvurusuna genel bakış
           href: ../algorithm-module-reference/module-reference.md
@@ -384,7 +374,7 @@
 - name: Kaynaklar
   items:
     - name: Sürüm notları
-      displayName: what's new issues bugs
+      displayName: 'what''s, new, issues, bugs'
       href: azure-machine-learning-release-notes.md
     - name: Azure yol haritası
       href: 'https://azure.microsoft.com/roadmap/'
@@ -393,7 +383,7 @@
     - name: Bölgesel kullanılabilirlik
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Bilinen sorunlar
-      displayName: bugs errors troubleshoot
+      displayName: 'bugs, errors, troubleshoot'
       href: resource-known-issues.md
     - name: Kullanıcı forumu
       href: 'https://aka.ms/aml-forum-service'
@@ -402,5 +392,5 @@
     - name: ML ürünlerimizi karşılaştırın
       href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/service/context/ml-context
     - name: Workbench’e ne oldu?
-      displayName: desktop ui Workbench upgrade update transfer
+      displayName: 'desktop, ui, Workbench, upgrade, update, transfer'
       href: overview-what-happened-to-workbench.md

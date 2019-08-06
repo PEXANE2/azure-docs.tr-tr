@@ -3,7 +3,7 @@ title: Microsoft Identity platform iOS hızlı başlangıç | Mavisi
 description: Bir iOS uygulamasındaki kullanıcıların oturumunu açma ve sorgu Microsoft Graph hakkında bilgi edinin.
 services: active-directory
 documentationcenter: dev-center-name
-author: brandwe
+author: TylerMSFT
 manager: CelesteDG
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/18/2019
-ms.author: brandwe
+ms.author: twhitney
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfb136529c606cafa235a525fcbe6e03b1d583d0
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: e749e46a4a7398f7b862ce5d4dab7a1ba6d57c8f
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335601"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68813044"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-app"></a>Hızlı Başlangıç: Kullanıcı oturum açma ve iOS uygulamasından Microsoft Graph API 'sini çağırma
 
@@ -91,7 +91,7 @@ Bu hızlı başlangıç, yerel bir iOS uygulaması ile kişisel, iş ve okul hes
 >    let kClientID = "Enter_the_Application_Id_here"
 >    let kAuthority = "https://login.microsoftonline.com/Enter_the_Tenant_Info_Here"
 >    ``` 
-> 1. **Info. plist** öğesine sağ tıklayın ve  > **kaynak kodu**aç ' ı seçin.
+> 1. **Info. plist** öğesine sağ tıklayın ve > **kaynak kodu**aç ' ı seçin.
 > 1. Dict kök düğümünün altında, değerini ***paket Kimliğinizle***değiştirin:
 >
 >    ```xml
@@ -121,7 +121,7 @@ Bu hızlı başlangıç, yerel bir iOS uygulaması ile kişisel, iş ve okul hes
 >    let kClientID = "<ENTER_YOUR_APPLICATION/CLIENT_ID>"
 > 
 >    ```
-> 1. **Info. plist** öğesine sağ tıklayın ve  > **kaynak kodu**aç ' ı seçin.
+> 1. **Info. plist** öğesine sağ tıklayın ve > **kaynak kodu**aç ' ı seçin.
 > 1. Dict kök düğümünün altında, değerini ***paket Kimliğinizle***değiştirin:
 >
 >    ```xml

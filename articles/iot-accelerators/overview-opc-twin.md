@@ -1,6 +1,6 @@
 ---
-title: OPC İkizi - Azure nedir | Microsoft Docs
-description: OPC İkizi'ne genel bakış
+title: OPC Ikizi-Azure nedir | Microsoft Docs
+description: OPC Ikizi 'ye Genel Bakış
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
@@ -8,38 +8,38 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: d58dc18d5513259d5c01f7ddcc54736796e5c824
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: c0d824e23a98aa14081fbd21bd6a9fbec5d583e0
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603637"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815948"
 ---
-# <a name="what-is-opc-twin"></a>OPC İkizi nedir?
+# <a name="what-is-opc-twin"></a>OPC Ikizi nedir?
 
-Bulut ve Fabrika ağ bağlanmak için Azure IOT Edge ve IOT Hub'ı kullanan mikro OPC İkizi oluşur. OPC İkizi bulma, kayıt ve REST API'ler aracılığıyla endüstriyel cihazlara uzaktan denetimi sağlar. OPC İkizi bir OPC birleşik mimari (OPC UA) SDK'sı dilden programlama ve sunucusuz bir iş akışında bulunan gerektirmez. Bu makalede, çeşitli OPC İkizi kullanım örnekleri açıklanmaktadır.
+OPC Ikizi, bulutu ve fabrika ağını bağlamak için Azure IoT Edge ve IoT Hub kullanan mikro hizmetlerden oluşur. OPC Ikizi, REST API 'Leri aracılığıyla endüstriyel cihazların keşif, kayıt ve uzaktan denetimini sağlar. OPC Ikizi, OPC Birleşik mimarisi (OPC UA) SDK 'Sı gerektirmez, programlama dili belirsiz değildir ve sunucusuz bir iş akışına dahil edilebilir. Bu makalede çeşitli OPC Ikizi kullanım durumları açıklanmaktadır.
 
-## <a name="discovery-and-control"></a>Bulma ve Denetim
-Bulma ve kayıt için basit için OPC İkizi'ni kullanabilirsiniz.
+## <a name="discovery-and-control"></a>Bulma ve denetim
+Bulma ve kayıt için basit için OPC Ikizi kullanabilirsiniz.
 
 ### <a name="simple-discovery-and-registration"></a>Basit bulma ve kayıt
-OPC İkizi OPC UA sunucuları bulundu ve kayıtlı Fabrika ağ taramak Fabrika işleçleri sağlar. Alternatif olarak, Fabrika işleçleri de el ile bilinen bulma URL'si kullanarak OPC UA cihazları kaydedebilir. Örneğin, IOT Edge ağ geçidi OPC İkizi modülü ile fabrikadaki yüklendikten sonra tüm OPC UA cihazlara bağlanmak için Fabrika operatör uzaktan bir ağ tarama tetikleyin ve tüm OPC UA sunucuları görsel olarak bakın. 
+OPC Ikizi, fabrika İşletmenleri 'nin fabrika ağını taramasını sağlar, böylece OPC UA sunucuları keşfedilebilir ve kaydedilebilir. Alternatif olarak, fabrika işletmenleri, OPC UA cihazlarını bilinen bir bulgu URL 'SI kullanarak el ile kaydedebilir. Örneğin, fabrika katında OPC Ikizi modülü olan IoT Edge ağ geçidi yüklendikten sonra tüm OPC UA cihazlarına bağlanmak için, Factory operatörü uzaktan ağ taramasını tetikleyebilir ve tüm OPC UA sunucularını görsel olarak görebilir. 
 
-### <a name="simple-control"></a>Basit Denetim
-OPC İkizi olaylarına tepki verme ve Fabrika katı makinelerinde buluttan otomatik olarak veya el ile yeniden çalışma sırasında Fabrika işleçleri sağlar. OPC İkizi OPC UA server hizmetlerini çağırmak için değişkenleri okuma/yazma yöntemleri ve yürütme için adres alanı de göz atın, REST API'ler sağlar. Örneğin, bir ortak, üretim hattı denetlemek için sıcaklık KPI'yı kullanır. Sıcaklık algılayıcısı değişiklik OPC Publisher'ı kullanarak verileri yayımlar. Fabrika işleci sıcaklık eşiğine ulaştığında bir uyarı alır. Üretim hattı otomatik olarak OPC İkizi soğutma imkanı sunar. Fabrika işleci, aşağı seyrek erişimli bildirilir.
+### <a name="simple-control"></a>Basit denetim
+OPC Ikizi, fabrika İşletmenleri 'nin olaylara tepki vermesini ve fabrika katlarını otomatik olarak ya da el ile el ile yeniden yapılandırmasını sağlar. OPC Ikizi, OPC UA sunucusunda Hizmetleri çağırmak için REST API 'Ler sağlar, kendi adres alanına gözatabilir, değişkenleri okuma/yazma ve çalıştırma yöntemleri de sağlar. Örneğin, bir Boiler üretim satırını denetlemek için sıcaklık KPI 'sını kullanır. Sıcaklık algılayıcısı OPC yayımcısı kullanarak verilerde değişiklik yayımlar. Factory işleci, sıcaklığın eşiğe ulaştığı uyarıyı alır. Üretim satırı OPC Ikizi aracılığıyla otomatik olarak aşağı doğru yapılır. Fabrika işlecine soğuk bir şekilde bildirilir.
 
 ## <a name="authentication"></a>Authentication
-Basit kimlik doğrulaması ve basit bir geliştirici deneyimi için OPC İkizi'ni kullanabilirsiniz.
+Kimlik doğrulama ve basit bir geliştirici deneyimi için, OPC Ikizi 'yi basit olarak kullanabilirsiniz.
 
 ### <a name="simple-authentication"></a>Basit kimlik doğrulaması 
-Azure Active Directory AAD tabanlı kimlik doğrulaması ve uçtan uca denetim OPC İkizi kullanır. Örneğin, OPC İkizi OPC İkizi'ne bir makine üzerinde operatör yürüttü belirlemek için en üstünde oluşturulacak uygulamanın sağlar. Makine tarafında, bu denetim, OPC UA olur. Bulut tarafındaki bir sabit istemci denetim günlüğü ve AAD kimlik doğrulaması REST API ile ilgili depolama aracılığıyla öyledir.
+OPC Ikizi, uçtan uca Azure Active Directory (AAD) tabanlı kimlik doğrulaması ve denetim kullanır. Örneğin OPC Ikizi, bir makinede bir işlecin ne yaptığını belirlemek için uygulamanın OPC Ikizi üzerine derlenmesini sağlar. Makine tarafında, OPC UA denetimi aracılığıyla yapılır. Bulut tarafında, REST API sabit bir istemci denetim günlüğünü ve AAD kimlik doğrulamasını depolarsınız.
 
-### <a name="simple-developer-experience"></a>Basit bir geliştirici deneyimi 
-OPC İkizi REST API'leri aracılığıyla tüm programlama dillerinde yazılan uygulamalar ile kullanılabilir. Geliştiriciler bir çözüme bir OPC UA istemcisi tümleştirme gibi OPC UA SDK'sının bilgi gerekli değildir. OPC İkizi durum bilgisi olmayan, sunucusuz mimarileri ile sorunsuz bir şekilde tümleştirebilirsiniz. Bir uyarı ve olayı Panosu, JavaScript veya TypeScript OPC İkizi C bilgisi kullanarak olayları yanıtlamak için mantığı yazabilirsiniz için geliştirdiği bir uygulama gibi bir tam yığın web Geliştirici C#, ya da tam OPC UA yığını uygulaması. 
+### <a name="simple-developer-experience"></a>Basit geliştirici deneyimi 
+OPC Ikizi, REST API 'Leri aracılığıyla herhangi bir programlama dilinde yazılmış uygulamalarla birlikte kullanılabilir. Geliştiriciler OPC UA istemcisini bir çözümle tümleştirdikleri için OPC UA SDK bilgisi gerekli değildir. OPC Ikizi, durumsuz, sunucusuz mimarilerde sorunsuz bir şekilde tümleştirilebilir. Örneğin, bir alarm ve olay panosu için uygulama geliştiren bir tam yığın Web geliştiricisi, C C#veya tam OPC UA Stack uygulaması olmadan OPC Ikizi kullanarak JavaScript veya TypeScript 'teki olaylara yanıt vermek için mantığı yazabilir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-OPC İkizi ve kullanımları hakkında öğrendiniz, önerilen sonraki adım aşağıda verilmiştir:
+Artık OPC Ikizi ve kullanımları hakkında bilgi edindiğinize göre, önerilen sonraki adım aşağıda verilmiştir:
 
 > [!div class="nextstepaction"]
-> [OPC kasası nedir](overview-opc-twin-architecture.md)
+> [OPC Kasası nedir?](overview-opc-vault.md)

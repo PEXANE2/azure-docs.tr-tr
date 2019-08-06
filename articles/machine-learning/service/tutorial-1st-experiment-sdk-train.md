@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: 8b89f5572ae94986590fe76096daeb0ad088fe59
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 66a0c625d300a74787e3640992675d5a3f31610c
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668619"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828574"
 ---
 # <a name="tutorial-train-your-first-model"></a>Öğretici: İlk modelinizi eğitme
 
@@ -111,7 +111,7 @@ Eğitim tamamlandıktan sonra, portalda deneye bir `experiment` bağlantı getir
 experiment
 ```
 
-<table style="width:100%"><tr><th>Ad</th><th>Çalışma alanı</th><th>Rapor sayfası</th><th>Docs sayfası</th></tr><tr><td>Diabetes-deneme</td><td>çalışma alanınızın adı</td><td><a href="" target="_blank" rel="noopener">Azure portalına bağlantı</a></td><td><a href="" target="_blank" rel="noopener">Belge bağlantısı</a></td></tr></table>
+<table style="width:100%"><tr><th>Ad</th><th>Çalışma alanı</th><th>Rapor sayfası</th><th>Docs sayfası</th></tr><tr><td>Diabetes-deneme</td><td>çalışma alanınızın adı</td><td>Azure portalına bağlantı</td><td>Belge bağlantısı</td></tr></table>
 
 ## <a name="view-training-results-in-portal"></a>Portalda Eğitim sonuçlarını görüntüleme
 
@@ -181,7 +181,7 @@ Bir bulut Not defteri sunucusu kullandıysanız, maliyeti azaltmak için kullanm
 
 1. Çalışma alanınızda, **Not defteri VM 'leri**' ni seçin.
 
-   ![VM sunucusunu durdur](./media/quickstart-run-cloud-notebook/stop-server.png)
+   ![VM sunucusunu durdur](./media/tutorial-1st-experiment-sdk-setup/stop-server.png)
 
 1. Listeden VM’yi seçin.
 

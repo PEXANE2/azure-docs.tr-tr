@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 04/22/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 55bcce3c5a4b0dd00d9217d6cb3cc2cfbe6d5828
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: da7e41ae77226c2a18b92329507855ac30891058
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66753810"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816097"
 ---
 # <a name="overview-of-azure-service-fabric"></a>Azure Service Fabric'e genel bakış
 Azure Service Fabric; ölçeklenebilir ve güvenilir mikro hizmetleri ve kapsayıcıları paketlemeyi, dağıtmayı ve yönetmeyi kolaylaştırmayı sağlayan bir dağıtılmış sistemler platformudur. Service Fabric ayrıca bulut yerel uygulamalarını geliştirme ve yönetme sürecinde karşılaşılan başlıca sorunların giderilmesini de sağlar. Geliştiriciler ve yöneticiler, karmaşık altyapı sorunlarını çözmeye çalışmak yerine görev açısından kritik, zorlu iş yüklerini uygulamaya odaklanabilir. Service Fabric, bu iş yüklerinin ölçeklenebilir, güvenilir ve yönetilebilir olmasını sağlar. Service Fabric, kapsayıcılarda çalıştırılan 1. katman bulut ölçeğindeki bu kurumsal sınıf uygulamaları oluşturmak ve yönetmek için tasarlanan yeni nesil bir platformdur.
@@ -29,7 +29,7 @@ Bu kısa videoda Service Fabric ve mikro hizmetler tanıtılır:
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Service-Fabric/player]
 
 ## <a name="compliance"></a>Uyumluluk
-Azure Service Fabric kaynak sağlayıcısı, tüm Azure bölgelerinde kullanılabilir durumdadır ve Azure olan tüm uyumluluk sertifikaları ile uyumludur; Buna aşağıdakiler dahildir: SOC ve ISO, PCI DSS, HIPAA ve GDPR. Lütfen uyumluluk sertifikaları tam listesi için aşağıdakileri inceleyin: [Uyumluluk teklifi](https://www.microsoft.com/trustcenter/compliance/complianceofferings)
+Azure Service Fabric kaynak sağlayıcısı tüm Azure bölgelerinde kullanılabilir ve Azure 'un sahip olduğu tüm uyumluluk sertifikaları ile uyumludur; Buna aşağıdakiler dahildir: SOC, ISO, PCI DSS, HIPAA ve GDPR. Uyumluluk sertifikalarının tüm listesi için lütfen aşağıdakileri gözden geçirin: [Uyumluluk teklifleri](https://www.microsoft.com/trustcenter/compliance/complianceofferings)
 
 ## <a name="applications-composed-of-microservices"></a>Mikro hizmetlerden oluşturulmuş uygulamalar 
 Service Fabric, makinenin küme olarak adlandırılan bir paylaşılan havuzunda yüksek yoğunlukta çalışan mikro hizmetlerden oluşturulmuş, ölçeklendirilebilir ve güvenilir uygulamalar oluşturmanıza ve bunları yönetmenize olanak tanır. Dağıtılmış, ölçeklendirilebilir, durum bilgisi olmayan, durum bilgisi olan ve kapsayıcılarda çalıştırılan mikro hizmetler oluşturmak için gelişmiş, basit bir çalışma zamanı sağlar. Ayrıca, kapsayıcılı hizmetler de dahil olmak üzere dağıtılan uygulamaları sağlamak, dağıtmak, izlemek, yükseltmek/yama uygulamak ve silmek için kapsamlı uygulama yönetim özellikleri de sağlar.
@@ -59,7 +59,7 @@ Kümeleri oluşturma hakkında daha fazla bilgi için, [Windows Server veya Linu
 ## <a name="stateless-and-stateful-microservices-for-service-fabric"></a>Service Fabric için durum bilgisi olan ve olmayan mikro hizmetler
 Service Fabric, mikro hizmetlerden veya kapsayıcılardan oluşmuş uygulamalar hazırlamanıza olanak tanır. Durum bilgisi olmayan mikro hizmetler (protokol ağ geçitleri ve web ara sunucuları gibi), isteğin veya hizmetten gelen yanıtının dışında değişebilir bir durum bilgisi bulundurmaz. Azure Cloud Services çalışan rolleri, durum bilgisi olmayan hizmet örnekleridir. Durum bilgisi olan mikro hizmetler (kullanıcı hesapları, veritabanları, cihazlar, alışveriş sepetleri ve kuyruklar gibi), isteğin ve yanıtının ötesinde değişebilir, yetkili bir durum bilgisi bulundurur. Günümüzün İnternet ölçeğindeki uygulamaları, durum bilgisi olan ve olmayan mikro hizmetlerin bileşiminden oluşur. 
 
-Güçlü odağı ile ya da durum bilgisi olan hizmetler oluşturmaya odaklanmasıdır Service Fabric olan [yerleşik programlama modelleriyle](service-fabric-choose-framework.md) veya kapsayıcılı durum bilgisi olan hizmetler. [Uygulama senaryoları](service-fabric-application-scenarios.md), durum bilgisi olan hizmetlerin kullanıldığı senaryoları açıklar.
+Service Fabric bir temel fark, [yerleşik programlama modelleriyle](service-fabric-choose-framework.md) ya da Kapsayıcılı durum bilgisi olan hizmetler ile durum bilgisi olan hizmetler oluşturmaya yönelik güçlü bir odadır. [Uygulama senaryoları](service-fabric-application-scenarios.md), durum bilgisi olan hizmetlerin kullanıldığı senaryoları açıklar.
 
 
 ## <a name="application-lifecycle-management"></a>Uygulama yaşam döngüsü yönetimi
@@ -67,7 +67,7 @@ Service Fabric, kapsayıcılar da dahil olmak üzere bulut uygulamalarının tü
 
 Service Fabric uygulama yaşam döngüsü yönetim özellikleri, uygulama yöneticileriyle BT operatörlerinin basit, az müdahale gerektiren iş akışları kullanarak uygulamaları sağlamasına, dağıtmasına, yama uygulamasına ve izlemesine olanak tanır. Bu yerleşik iş akışları BT operatörlerinin uygulamaları sürekli kullanılabilir durumda tutma yüklerini büyük ölçüde azaltır.
 
-Uygulamaların çoğu durum bilgisi olan ve olmayan mikro hizmetler, kapsayıcılar ve birlikte dağıtılan diğer yürütülebilir dosyaların bileşiminden oluşur. Service Fabric güçlü uygulama türleri sağlayarak, birden çok uygulama örneğinin dağıtılmasına olanak tanır. Her örnek bağımsız olarak yönetilir ve yükseltilir. Önemli olan, Service Fabric'in kapsayıcıları ve yürütülebilir dosyaları dağıtabilmesi ve bunların güvenilir olmasını sağlamasıdır. Örneğin Service Fabric .NET, ASP.NET Core, node.js, Windows kapsayıcıları, Linux kapsayıcıları, Java sanal makineleri, betikler, Angular veya sözcük anlamıyla uygulamanızı oluşturan her şeyi dağıtabilir.
+Uygulamaların çoğu durum bilgisi olan ve olmayan mikro hizmetler, kapsayıcılar ve birlikte dağıtılan diğer yürütülebilir dosyaların bileşiminden oluşur. Service Fabric güçlü uygulama türleri sağlayarak, birden çok uygulama örneğinin dağıtılmasına olanak tanır. Her örnek bağımsız olarak yönetilir ve yükseltilir. Önemli olan, Service Fabric'in kapsayıcıları ve yürütülebilir dosyaları dağıtabilmesi ve bunların güvenilir olmasını sağlamasıdır. Örneğin, Service Fabric .NET, ASP.NET Core, Python, Node. js, Windows kapsayıcıları, Linux kapsayıcıları, Java sanal makineleri, betikleri, angular ya da uygulamanızı oluşturan herhangi bir şeyi dağıtabilir.
 
 [Azure Pipelines](https://www.visualstudio.com/team-services/), [Jenkins](https://jenkins.io/index.html) ve [Octopus Deploy](https://octopus.com/) gibi CI/CD araçlarıyla tümleştirilmiş olan Service Fabric, diğer herhangi bir popüler CI/CD aracıyla da kullanılabilir.
 

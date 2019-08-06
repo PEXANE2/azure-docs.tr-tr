@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: baeb175c57573e557d298ff3197394ab619434ff
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: b3fdcfbb9869c0199c91f5bbc6ca1f02fec996cf
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68772642"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828645"
 ---
 # <a name="tutorial-setup-environment-and-workspace"></a>Öğretici: Kurulum ortamı ve çalışma alanı
 
@@ -49,14 +49,12 @@ Jupyıter not defterlerini kullanmaya başlamak için çalışma alanınızdan b
 
 1. Bir not defteri VM 'si oluşturmak için **+ Yeni** ' yi seçin.
 
-     ![Yeni VM 'yi seçin](./media/quickstart-run-cloud-notebook/add-workstation.png)
+     ![Yeni VM 'yi seçin](./media/tutorial-1st-experiment-sdk-setup/add-workstation.png)
 
 1. VM 'niz için bir ad sağlayın. Ardından **Oluştur**’u seçin.
 
     > [!NOTE]
     > Not defteri sanal makinenizin adı 2 ila 16 karakter arasında olmalıdır. Geçerli karakterler harfler, rakamlar ve-karakterdir.  Ad ayrıca Azure aboneliğinizde benzersiz olmalıdır.
-
-    ![Yeni VM oluşturma](media/quickstart-run-cloud-notebook/create-new-workstation.png)
 
 1. Durum **çalışıyor**olarak değişene kadar bekleyin.
 
@@ -66,7 +64,7 @@ VM 'niz çalıştıktan sonra, Jupyter Web arabirimini başlatmak için **Not de
 
 1. VM 'niz için **URI** sütununda **Jupyıter** ' ı seçin.
 
-    ![Jupyter Not defteri sunucusunu başlatma](./media/quickstart-run-cloud-notebook/start-server.png)
+    ![Jupyter Not defteri sunucusunu başlatma](./media/tutorial-1st-experiment-sdk-setup/start-server.png)
 
     Bağlantı, Not defteri sunucunuzu başlatır ve yeni bir tarayıcı sekmesinde Jupyter Not defteri Web sayfasını açar.  Bu bağlantı yalnızca VM 'yi oluşturan kişi için çalışır. Çalışma alanının her bir kullanıcısının kendi sanal makinesini oluşturması gerekir.
 
@@ -87,7 +85,7 @@ Bir bulut Not defteri sunucusu kullandıysanız, maliyeti azaltmak için kullanm
 
 1. Çalışma alanınızda, **Not defteri VM 'leri**' ni seçin.
 
-   ![VM sunucusunu durdur](./media/quickstart-run-cloud-notebook/stop-server.png)
+   ![VM sunucusunu durdur](./media/tutorial-1st-experiment-sdk-setup/stop-server.png)
 
 1. Listeden VM’yi seçin.
 

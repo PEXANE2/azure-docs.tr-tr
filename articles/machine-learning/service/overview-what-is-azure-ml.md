@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: overview
 author: j-martens
 ms.author: jmartens
-ms.date: 05/02/2019
+ms.date: 08/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: c1ec9db2b026dd1853eceb1f110878d6b2beb4d4
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 5323c996b8d974c9db11a508503f767cfee80301
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678011"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828114"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Azure Machine Learning hizmeti nedir?
 
@@ -29,7 +29,7 @@ Makine öğreniminin öngörüleri veya tahminleri, uygulama ve cihazları daha 
 
 ## <a name="what-is-azure-machine-learning-service"></a>Azure Machine Learning hizmeti nedir?
 
-Azure Machine Learning hizmeti, makine öğrenimi modellerini geliştirmek, test etmek, dağıtmak, yönetmek ve izlemek için kullanabileceğiniz bulut tabanlı bir ortam sağlar. Yerel makinenizde eğitime başlayın ve ardından buluta ölçeklendirin. Hizmet, PyTorch, TensorFlow ve scikit-öğrenme gibi açık kaynaklı teknolojileri tam olarak destekler ve klasik ml 'den derin öğrenme, denetimli ve denetlenmediğini öğrenme açısından her türlü makine öğrenimi için de kullanılabilir. 
+Azure Machine Learning hizmeti, makine öğrenimi modellerini geliştirmek, test etmek, dağıtmak, yönetmek ve izlemek için kullanabileceğiniz bulut tabanlı bir ortam sağlar. Yerel makinenizde eğitime başlayın ve ardından buluta ölçeklendirin. Hizmet, PyTorch, TensorFlow ve scikit-öğrenme gibi açık kaynaklı teknolojileri tam olarak destekler ve klasik ml 'den derin öğrenme, denetimli ve denetlenmediğini öğrenme açısından her türlü makine öğrenimi için de kullanılabilir.
 
 Verileri bulun ve hazırlayın, modelleri eğitme ve test edin ve şu gibi zengin araçları kullanarak dağıtın:
 + Denemeleri 'nizi derlemek ve ardından modeller dağıtmak için sürükleyip n bırakma modüllerini sürüklediğiniz bir [görsel arabirim](ui-tutorial-automobile-price-train-score.md)
@@ -55,20 +55,25 @@ SDK kullanarak [model eğitimi ve ayarlamayı otomatik hale](tutorial-auto-train
 Kod ücretsiz eğitim için şunu deneyin:
 
 + Sürükleme-n bırakma deneme ve dağıtım için görsel arabirim
-    
+
     ![Azure Machine Learning hizmeti için görsel arabirim](media/overview-what-is-azure-ml/visual-interface.png)
 
 + Otomatikml denemeleri için Azure portal seçeneği
 
 ### <a name="operationalization-mlops"></a>Operationalization (MLOps)
 
-Doğru modele sahip olduğunuzda, bir Web hizmetinde, IoT cihazında veya Power BI aracılığıyla kolayca kullanabilirsiniz. Daha fazla bilgi için, [nasıl dağıtılacağı ve nerede yapılacağı](how-to-deploy-and-where.md)hakkındaki makaleye bakın. 
+Doğru modele sahip olduğunuzda, bir Web hizmetinde, IoT cihazında veya Power BI aracılığıyla kolayca kullanabilirsiniz. Daha fazla bilgi için, [nasıl dağıtılacağı ve nerede yapılacağı](how-to-deploy-and-where.md)hakkındaki makaleye bakın.
 
-Ardından, [Python için Azure MACHINE LEARNING SDK](https://aka.ms/aml-sdk) veya [Azure Portal](https://portal.azure.com/)kullanarak dağıtılan modellerinizi yönetebilirsiniz. 
+Ardından, [Python için Azure MACHINE LEARNING SDK](https://aka.ms/aml-sdk) veya [Azure Portal](https://portal.azure.com/)kullanarak dağıtılan modellerinizi yönetebilirsiniz.
 
 Bu modeller tüketilebilir ve [gerçek zamanlı](how-to-consume-web-service.md) veya [zaman uyumsuz](how-to-run-batch-predictions.md) olarak büyük miktarlarda veri alabilir.
 
-Gelişmiş [makine öğrenimi ardışık düzenleri](concept-ml-pipelines.md)sayesinde, dağıtım aracılığıyla veri hazırlama, model eğitimi ve değerlendirmede her bir adımla işbirliği yapabilirsiniz.
+Gelişmiş [makine öğrenimi ardışık düzenleri](concept-ml-pipelines.md)sayesinde, dağıtım aracılığıyla veri hazırlama, model eğitimi ve değerlendirmede her bir adımla işbirliği yapabilirsiniz. İşlem hatları şunları yapmanıza olanak sağlar:
+
+* bulutta uçtan uca makine öğrenimi işlemini otomatikleştirin
+* bileşenleri yeniden kullanın ve yalnızca gerektiğinde adımları yeniden çalıştırın
+* her adımda farklı işlem kaynakları kullanın
+* toplu Puanlama görevlerini Çalıştır
 
 Azure Machine Learning hizmetini kullanmaya başlamak için bkz. [sonraki adımlar](#next-steps).
 
@@ -76,7 +81,7 @@ Azure Machine Learning hizmetini kullanmaya başlamak için bkz. [sonraki adıml
 
 [Machine Learning Studio](../studio/what-is-ml-studio.md) , kod yazmaya gerek kalmadan makine öğrenimi çözümlerini oluşturabileceğiniz, test ettiğiniz ve dağıtabileceğiniz, birlikte çalışan, sürükle ve bırak görsel çalışma alanıdır. Önceden oluşturulmuş ve önceden yapılandırılmış makine öğrenimi algoritmalarını ve veri işleme modüllerini, ayrıca özel bir işlem platformunu kullanır.
 
-Azure Machine Learning hizmet, veri hızla geliştirmek, makine öğrenimi modellerini eğitmek ve dağıtmak için **hem SDK 'lar** hem de bir görsel arabirim (Önizleme) sağlar. Bu görsel arabirim (Önizleme) Studio 'ya benzer bir sürükle ve bırak deneyimi sağlar. Ancak, Studio 'nun özel işlem platformunun aksine, görsel arabirim kendi işlem kaynaklarınızı kullanır ve Azure Machine Learning hizmeti ile tamamen tümleşiktir.
+Azure Machine Learning hizmet, veri hızla geliştirmek, makine öğrenimi modellerini eğitmek ve dağıtmak Için hem SDK 'lar hem de bir görsel arabirim (Önizleme) sağlar. Bu görsel arabirim (Önizleme) Studio 'ya benzer bir sürükle ve bırak deneyimi sağlar. Ancak, Studio 'nun özel işlem platformunun aksine, görsel arabirim kendi işlem kaynaklarınızı kullanır ve Azure Machine Learning hizmeti ile tamamen tümleşiktir.
 
 Hızlı bir karşılaştırma aşağıda verilmiştir.
 
@@ -86,7 +91,7 @@ Hızlı bir karşılaştırma aşağıda verilmiştir.
 |Arabirim için modüller| Sayısı | İlk popüler modüller kümesi|
 |Eğitim işlem hedefleri| Özel işlem hedefi, yalnızca CPU desteği| Azure Machine Learning işlem, GPU veya CPU 'yu destekler.<br/>(SDK 'da desteklenen diğer hesaplar)|
 |Dağıtım işlem hedefleri| Özel Web hizmeti biçimi özelleştirilebilir değil | Azure Kubernetes hizmeti & Kurumsal güvenlik seçenekleri. <br/>(SDK 'da desteklenen[diğer hesaplar](how-to-deploy-and-where.md) ) |
-|Otomatik model eğitimi ve hyperparameter ayarlaması | Hayır | Henüz görsel arabirimde değil. <br/> (SDK 'da desteklenir ve Azure portal.) | 
+|Otomatik model eğitimi ve hyperparameter ayarlaması | Hayır | Henüz görsel arabirimde değil. <br/> (SDK 'da desteklenir ve Azure portal.) |
 
 Visual Interface 'i (Önizleme) öğreticiyle [deneyin: Görsel arabirim](ui-tutorial-automobile-price-train-score.md)ile otomobil fiyatını tahmin edin.
 
@@ -103,8 +108,8 @@ Azure hizmetlerinde harcayabileceğiniz krediler alırsınız. Krediler bittikte
 
 - Başlamak için [Machine Learning bir hizmet çalışma alanı oluşturun](setup-create-workspace.md) .
 
-- Tam uzunluklu öğreticileri izleyin: 
-  + [Azure Machine Learning hizmeti ile görüntü sınıflandırma modeli eğitme](tutorial-train-models-with-aml.md) 
+- Tam uzunluklu öğreticileri izleyin:
+  + [Azure Machine Learning hizmeti ile görüntü sınıflandırma modeli eğitme](tutorial-train-models-with-aml.md)
   + [Regresyon modelini otomatik olarak eğitme için verileri hazırlayın ve otomatik makine öğrenimi kullanın](tutorial-data-prep.md)
 
 - Makine öğrenmesi senaryolarınızı derlemek, iyileştirmek ve yönetmek için [makine öğrenmesi işlem hatları](/azure/machine-learning/service/concept-ml-pipelines) hakkında bilgi edinin.

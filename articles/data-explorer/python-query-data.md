@@ -1,24 +1,24 @@
 ---
-title: 'Hızlı Başlangıç: Azure Veri Gezgini Python kitaplığını kullanarak verileri sorgulama'
-description: Bu hızlı başlangıçta, Python kullanarak Azure Veri Gezgini'ndeki verileri sorgulamayı öğreneceksiniz.
+title: Azure Veri Gezgini Python kitaplığını kullanarak verileri sorgulama
+description: Bu makalede, Azure Veri Gezgini Python kullanarak verileri sorgulamayı öğreneceksiniz.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 10/16/2018
-ms.openlocfilehash: 253629bab6b0985ab8f540c653f3671c49e6d278
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.topic: conceptual
+ms.date: 08/05/2019
+ms.openlocfilehash: 2c32e67bb2b47a24036a341ea4e1b83037abbaee
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360225"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827521"
 ---
-# <a name="quickstart-query-data-using-the-azure-data-explorer-python-library"></a>Hızlı Başlangıç: Azure Veri Gezgini Python kitaplığını kullanarak verileri sorgulama
+# <a name="query-data-using-the-azure-data-explorer-python-library"></a>Azure Veri Gezgini Python kitaplığını kullanarak verileri sorgulama
 
-Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve yüksek oranda ölçeklenebilir veri keşfetme hizmetidir. Azure Veri Gezgini [Python için bir veri istemci kitaplığı](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data) sağlar. Bu kitaplık kodunuzdan verileri sorgulamanıza olanak tanır. Bu hızlı başlangıçta, eğitime yardımcı olması için ayarladığımız *yardım kümesindeki* bir tabloya bağlanırsınız. Ardından bu kümedeki tabloyu sorgular ve sonuçları döndürürsünüz.
+Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve yüksek oranda ölçeklenebilir veri keşfetme hizmetidir. Azure Veri Gezgini [Python için bir veri istemci kitaplığı](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data) sağlar. Bu kitaplık kodunuzdan verileri sorgulamanıza olanak tanır. Bu makalede, *Yardım kümesi* üzerinde öğrendiğimiz bir tabloya bağlanırsınız. Ardından bu kümedeki tabloyu sorgular ve sonuçları döndürürsünüz.
 
-Bu hızlı başlangıç bir [Azure Not Defteri](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueryKusto.ipynb) olarak da sağlanır.
+Bu makale bir [Azure Not defteri](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueryKusto.ipynb)olarak da kullanılabilir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -98,4 +98,4 @@ StormEvents tablosunda ilk on sonucu görüyor olmalısınız.
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Hızlı Başlangıç: Azure Veri Gezgini Python kitaplığını kullanarak verileri alma](python-ingest-data.md)
+> [Azure Veri Gezgini Python kitaplığını kullanarak verileri alma](python-ingest-data.md)

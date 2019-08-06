@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/06/2019
 ms.author: v-mohabe
-ms.openlocfilehash: f0ee4a1129246cedd7899056359144cab75f9475
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: 7bd18ab0cedf94f0ecc08c3523a608a8d554e6b2
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782446"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827927"
 ---
 # <a name="what-is-azure-security-center"></a>Azure Güvenlik Merkezi nedir?
 
@@ -126,9 +126,9 @@ Güvenlik Merkezi, deneme yanılma saldırıları ile olan pozlamayı sınırlam
 
 Güvenlik Merkezi, Azure SQL 'de verilerinizin otomatik sınıflandırmasını gerçekleştirmenize yardımcı olan özellikleri içerir. Ayrıca Azure SQL ve depolama hizmetleri 'ndeki olası güvenlik açıklarına yönelik değerlendirmeler alabilir ve bunların nasıl azaltılacağını önerirsiniz.
 
-### <a name="protect-iot-and-hybrid-cloud-workloads-preview"></a>IoT ve hibrit bulut iş yüklerini koruma (Önizleme)
+### <a name="protect-iot-and-hybrid-cloud-workloads"></a>IoT ve hibrit bulut iş yüklerini koruma
 
-IoT için Azure Güvenlik Merkezi (Nesnelerin İnterneti) karma görünürlük ve denetim, uyarlamalı tehdit önleme ve akıllı tehdit algılama ve şirket içi, şirket içinde çalışan iş yükleri genelinde Azure ve diğer bulutlarda. Daha fazla bilgi için bkz. [IoT Için Azure Güvenlik Merkezi (Önizleme)](https://docs.microsoft.com/azure/asc-for-iot/).
+IoT için Azure Güvenlik Merkezi (Nesnelerin İnterneti) karma görünürlük ve denetim, uyarlamalı tehdit önleme ve akıllı tehdit algılama ve şirket içi, şirket içinde çalışan iş yükleri genelinde Azure ve diğer bulutlarda. Daha fazla bilgi için bkz. [IoT Için Azure Güvenlik Merkezi](https://docs.microsoft.com/azure/asc-for-iot/).
 
 ## <a name="get-secure-faster"></a>Daha hızlı bir şekilde güvende edin
 

@@ -3,7 +3,7 @@ title: Android ile çalışmaya başlama-Microsoft Identity platform | Mavisi
 description: Android uygulaması, bir erişim belirteci alabilir ve Microsoft Identity platform 'dan erişim belirteçleri gerektiren API 'Leri veya API 'Leri çağırabilir Microsoft Graph.
 services: active-directory
 documentationcenter: dev-center-name
-author: danieldobalian
+author: tylermsft
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5bd19b6094d68277130916b5cda565ba9e633c59
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 76547fd708f880bdf5167d71db121e69fc5b1d30
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68334117"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68823807"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>Kullanıcıları oturum açın ve Android uygulamasından Microsoft Graph çağırın
 
@@ -62,7 +62,7 @@ Bu öğretici, yeni bir proje oluşturur. Bunun yerine tamamlanan öğreticiyi i
 5. **En düşük API düzeyini** **api 19** veya üzeri olarak ayarlayın ve **son**' a tıklayın.
 6. Proje görünümünde, açılan listeden **Proje** ' yi seçerek kaynak ve kaynak olmayan proje dosyalarını görüntüleyin, **App/Build. Gradle** dosyasını açın ve olarak `targetSdkVersion` `27`ayarlayın.
 
-## <a name="register-your-application"></a>Uygulamanızı kaydetme
+## <a name="register-your-application"></a>Uygulamanızı kaydedin
 
 1. [Azure Portal](https://aka.ms/MobileAppReg) gidin.
 2. [Uygulama kayıtları dikey penceresini](https://ms.portal.azure.com/?feature.broker=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) açın ve **+ Yeni kayıt**' ye tıklayın.
@@ -113,7 +113,7 @@ Bu öğretici, yeni bir proje oluşturur. Bunun yerine tamamlanan öğreticiyi i
 
 ### <a name="create-the-apps-ui"></a>Uygulamanın kullanıcı arabirimini oluşturma
 
-1. Android Studio projesi penceresinde, **App** > **src** > **ana** > **res**   düzeni ' ne gidin ve activity_main. xml ' i açın ve metni açın >  görüntüleyin.
+1. Android Studio projesi penceresinde, **App** > **src** > **ana** > **res** düzeni ' ne gidin ve activity_main. xml ' i açın ve metni açın > görüntüleyin.
 2. Etkinlik yerleşimini değiştirin, örneğin: `<androidx.coordinatorlayout.widget.CoordinatorLayout`. `<androidx.coordinatorlayout.widget.LinearLayout`
 3. `android:orientation="vertical"` Özelliği`LinearLayout` düğümüne ekleyin.
 4. Aşağıdaki kodu `LinearLayout` düğüme yapıştırın ve geçerli içeriği değiştirin:
@@ -531,7 +531,7 @@ Uygulamayı derleyin ve bir test cihazında veya öykünücüsünde dağıtın. 
 
 Oturum açtıktan sonra, uygulama Microsoft Graph `/me` uç noktasından döndürülen verileri görüntüler.
 
-### <a name="consent"></a>İzniniz
+### <a name="consent"></a>Onayla
 
 Herhangi bir Kullanıcı uygulamanızda ilk kez oturum açtığında, bu kullanıcılara istenen izinleri onaylaması için Microsoft kimliği sorulur.  Birçok kullanıcı kabul etme yeteneğine sahip olsa da, bazı Azure AD kiracılar, yöneticilerin tüm kullanıcılar adına onay vermesini gerektiren Kullanıcı onayını devre dışı bırakmış olur. Bu senaryoyu desteklemek için, uygulamanızın kapsamlarını Azure portal kaydedin.
 

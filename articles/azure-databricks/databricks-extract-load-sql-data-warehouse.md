@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: 4e28da9ab9502e2dac4fc08452a46841c4e50b66
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: 172921dcb082f511d16394b7693f40edf8394821
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67466804"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68826056"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Öğretici: Azure Databricks kullanarak verileri ayıklama, dönüştürme ve yükleme
 
@@ -204,7 +204,7 @@ Hücrede, kodu çalıştırmak için **SHIFT + enter** tuşlarına basın.
 
 Şimdi bu değerin altındaki yeni bir hücrede aşağıdaki kodu girin ve köşeli ayraçlar içinde görüntülenen değerleri daha önce kullandığınız değerlerle değiştirin:
 
-    dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfss://" + fileSystemName + "@" + storageAccount + ".dfs.core.windows.net/")
+    dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfss://" + fileSystemName + "@" + storageAccountName + ".dfs.core.windows.net/")
 
 Hücrede, kodu çalıştırmak için **SHIFT + enter** tuşlarına basın.
 
