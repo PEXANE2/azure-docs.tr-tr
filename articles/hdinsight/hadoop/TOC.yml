@@ -64,6 +64,8 @@
           href: ./hdinsight-troubleshoot-invalidnetworksecuritygroupsecurityrules-cluster-creation-fails.md
         - name: Hizmet sorumlusu sertifikasını dönüştürme
           href: ./hdinsight-troubleshoot-converting-service-principal-certificate.md
+        - name: Apache Ambari sinyal sorunları
+          href: ./apache-ambari-troubleshoot-heartbeat-issues.md
 - name: Nasıl yapılır
   items:
     - name: Apache Hadoop korumalı alanını kullanma

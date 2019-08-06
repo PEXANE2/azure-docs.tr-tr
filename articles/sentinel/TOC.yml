@@ -13,7 +13,7 @@
   items:
     - name: Şüpheli tehditleri algılama
       href: tutorial-detect-threats.md
-    - name: Durumları inceleme
+    - name: Olayları araştırma
       href: tutorial-investigate-cases.md
     - name: Tehditlere yanıt verme
       href: tutorial-respond-threats-playbook.md

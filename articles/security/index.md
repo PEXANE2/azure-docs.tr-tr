@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 06/11/2019
 ms.author: angrobe
-ms.openlocfilehash: d921e529140bc7446e3c9f97b33ba226431d7b91
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: 7c41b09c35de7ef8694f9215b8f3dc271e243de2
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67143507"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780487"
 ---
 # <a name="azure-security-documentation"></a>Azure Güvenlik Belgeleri
 
@@ -70,7 +70,7 @@ Güvenlik, Azure’un her yönüne tümleştirilmiştir. Azure, genel güvenlik 
         </a>
     </li>
     <li style="list-style: none;">
-        <a href="/azure/security/azure-security-infrastructure">
+        <a href="/azure/security/fundamentals/infrastructure">
             <div class="cardSize">
                 <div class="cardPadding">
                     <div class="card" style="min-height: 0;padding-bottom: 24px; text-align: center;">
@@ -135,7 +135,7 @@ Güvenlik, Azure’un her yönüne tümleştirilmiştir. Azure, genel güvenlik 
         </a>
     </li>
     <li style="list-style: none;">
-        <a href="/azure/security/azure-security-encryption-atrest">
+        <a href="/azure/security/fundamentals/encryption-atrest">
             <div class="cardSize">
                 <div class="cardPadding">
                     <div class="card" style="min-height: 0;padding-bottom: 24px; text-align: center;">
@@ -192,13 +192,13 @@ Güvenlik, Azure’un her yönüne tümleştirilmiştir. Azure, genel güvenlik 
                                 <a class="barLink" href="https://aka.ms/SecurityResponsepaper">Bulutta Azure güvenlik yanıtı</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/azure-threat-detection">Azure gelişmiş tehdit algılama</a>
+                                <a class="barLink" href="/azure/security/fundamentals/threat-detection">Azure gelişmiş tehdit algılama</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/abstract-azure-network-security">Azure ağ güvenliği</a>
+                                <a class="barLink" href="/azure/security/fundamentals/abstract-network-security>Azure network security"</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/abstract-develop-secure-apps">Azure üzerinde güvenli uygulamalar geliştirme</a>
+                                <a class="barLink" href="/azure/security/fundamentals/abstract-develop-secure-apps">Azure üzerinde güvenli uygulamalar geliştirme</a>
                             </li>
                         </ul>
                     </div>
@@ -218,25 +218,25 @@ Güvenlik, Azure’un her yönüne tümleştirilmiştir. Azure, genel güvenlik 
                                 <a class="barLink" href="https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions/">Azure için güvenlik en iyi uygulamaları</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/azure-security-network-security-best-practices">Ağ güvenliği</a>
+                                <a class="barLink" href="/azure/security/fundamentals/network-best-practices">Ağ güvenliği</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/azure-security-data-encryption-best-practices">Veri güvenliği</a>
+                                <a class="barLink" href="/azure/security/fundamentals/data-encryption-best-practices">Veri güvenliği</a>
                             </li>
                             <li style="list-style: none;">
                                 <a class="barLink" href="/azure/security/azure-security-best-practices-vms">Sanal makine güvenliği</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/azure-security-identity-management-best-practices">Kimlik ve erişim</a>
+                                <a class="barLink" href="/azure/security/fundamentals/identity-management-best-practices">Kimlik ve erişim</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/azure-security-iaas">IaaS güvenliği</a>
+                                <a class="barLink" href="/azure/security/fundamentals/iaas">IaaS güvenliği</a>
                             </li>
                             <li style="list-style: none;">
                                 <a class="barLink" href="/azure/security/security-paas-deployments">PaaS dağıtımlarının güvenliğini sağlama</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/azure-security-global-admin">Azure Yönetici hesaplarının güvenliğini sağlama</a>
+                                <a class="barLink" href="/azure/security/fundamentals/global-admin">Azure Yönetici hesaplarının güvenliğini sağlama</a>
                             </li>
                         </ul>
                     </div>
@@ -380,7 +380,7 @@ Güvenlik, Azure’un her yönüne tümleştirilmiştir. Azure, genel güvenlik 
         </a>
     </li>
     <li style="list-style: none;">
-        <a href="/azure/security/azure-security-cyber-services">
+        <a href="/azure/security/fundamentals/cyber-services">
             <div class="cardSize">
                 <div class="cardPadding">
                     <div class="card" style="min-height: 0;padding-bottom: 24px; text-align: center;">
@@ -393,7 +393,7 @@ Güvenlik, Azure’un her yönüne tümleştirilmiştir. Azure, genel güvenlik 
         </a>
     </li>
     <li style="list-style: none;">
-        <a href="/azure/security/azure-security-pen-testing">
+        <a href="/azure/security/fundamentals/pen-testing">
             <div class="cardSize">
                 <div class="cardPadding">
                     <div class="card" style="min-height: 0;padding-bottom: 24px; text-align: center;">
