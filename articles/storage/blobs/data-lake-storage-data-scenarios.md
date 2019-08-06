@@ -87,7 +87,7 @@ Güvenliğin diğer yönlerini ayarlama hakkında bilgi edinmek için bkz. [Azur
 
 Bu bölümde, farklı veri kaynakları ve verilerin Data Lake Storage 2. hesaba alınmasının farklı yolları vurgulanmaktadır.
 
-![Data Lake Storage 2. verileri] alma (./media/data-lake-storage-data-scenarios/ingest-data.png "Data Lake Storage 2. verileri") alma
+![Data Lake Storage 2. verileri alma](./media/data-lake-storage-data-scenarios/ingest-data.png "Data Lake Storage 2. verileri") alma
 
 ### <a name="ad-hoc-data"></a>Geçici veri
 
