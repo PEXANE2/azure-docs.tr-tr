@@ -81,7 +81,7 @@ Bölümleri ve veri kümeleri tanımlamak için kullanılabilir olan özellikler
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **MongoDbV2Collection** | Evet |
+| type | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **MongoDbV2Collection** | Evet |
 | collectionName |MongoDB veritabanındaki koleksiyonun adı. |Evet |
 
 **Örnek:**
