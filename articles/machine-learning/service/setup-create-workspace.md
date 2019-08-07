@@ -1,7 +1,7 @@
 ---
 title: Çalışma alanı oluşturma
 titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning hizmeti çalışma alanınızı oluşturmak için Azure portalı, SDK, bir şablon veya CLI kullanın. Bu çalışma alanı, Azure Machine Learning hizmeti kullanırken oluşturduğunuz tüm yapıları ile çalışma için merkezi bir yerde sağlar.
+description: Azure Machine Learning hizmeti çalışma alanınızı oluşturmak için Azure portal, SDK, bir şablon veya CLı kullanın. Bu çalışma alanı, Azure Machine Learning hizmeti kullandığınızda oluşturduğunuz tüm yapıtlarla çalışmak üzere merkezi bir yer sağlar.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,70 +10,70 @@ ms.reviewer: sgilley
 ms.author: sgilley
 author: sdgilley
 ms.date: 05/21/2019
-ms.openlocfilehash: 36f3d421ee0b41a0ff71b549a4d4b5646188c3fa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4d689b51a53a27a0e85a52724752d959c4c2506d
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66417345"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68775058"
 ---
-# <a name="create-an-azure-machine-learning-service-workspace"></a>Bir Azure Machine Learning hizmeti çalışma alanı oluşturma
+# <a name="create-an-azure-machine-learning-service-workspace"></a>Azure Machine Learning hizmet çalışma alanı oluşturma
 
-Azure Machine Learning hizmeti kullanmak için gereken bir [ **Azure Machine Learning hizmeti çalışma alanında**](concept-workspace.md).  Bu çalışma alanı hizmeti için en üst düzey bir kaynaktır ve oluşturduğunuz tüm yapıları ile çalışma için merkezi bir yerde sağlar. 
+Azure Machine Learning hizmetini kullanmak için bir [**Azure Machine Learning hizmeti çalışma alanına**](concept-workspace.md)ihtiyacınız vardır.  Bu çalışma alanı, hizmet için en üst düzey kaynaktır ve oluşturduğunuz tüm yapıtlarla çalışmak üzere merkezi bir yer sağlar. 
 
-Bu makalede, bu yöntemlerden birini kullanarak bir çalışma alanı oluşturmayı öğrenin: 
-* [Azure portalında](#portal) arabirimi
-* [Azure makine için Python SDK'sı öğrenme](#sdk)
-* Bir Azure Resource Manager şablonu
-* [Azure Machine Learning CLI](#cli)
+Bu makalede, aşağıdaki yöntemlerden herhangi birini kullanarak bir çalışma alanı oluşturmayı öğreneceksiniz: 
+* [Azure Portal](#portal) arabirimi
+* [Python için Azure Machine Learning SDK 'sı](#sdk)
+* Azure Resource Manager şablonu
+* [Azure MACHINE LEARNING CLI](#cli)
 
-Burada içindeki adımları kullanarak oluşturduğunuz çalışma alanı, diğer öğreticileri ve nasıl yapılır makaleleri bir önkoşul olarak kullanılabilir.
+Burada bulunan adımları kullanarak oluşturduğunuz çalışma alanı, diğer öğreticiler ve nasıl yapılır makaleleri için bir ön koşul olarak kullanılabilir.
 
-Yerel Python ortamı otomatik machine learning'de kurmak için bir betik kullanmak istiyorsanız, bkz [Azure/MachineLearningNotebooks GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning) yönergeler için.  
+Yerel bir Python ortamında otomatik makine öğrenimi ayarlamak için bir komut dosyası kullanmak istiyorsanız lütfen yönergeler için [Azure/Machinelearningnot defterleri GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning) ' a bakın.  
 
-Bir çalışma alanı oluşturduğunuzda aşağıdaki Azure kaynakları otomatik olarak (Bölgesel kullanılabilir iseler) eklendi:
+Bir çalışma alanı oluşturduğunuzda, aşağıdaki Azure kaynakları otomatik olarak eklenir (bölgesel olarak kullanılabiliyorsa):
  
-- [Azure kapsayıcı kayıt defteri](https://azure.microsoft.com/services/container-registry/): ACR maliyetleri en aza indirmektir **yavaş yüklenen** dağıtım yansımaları oluşturulana kadar.
+- [Azure Container Registry](https://azure.microsoft.com/services/container-registry/): Maliyetleri en aza indirmek için, dağıtım görüntüleri oluşturuluncaya kadar ACR **yavaş yüklenir** .
 - [Azure Depolama](https://azure.microsoft.com/services/storage/)
 - [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 
 - [Azure Anahtar Kasası.](https://azure.microsoft.com/services/key-vault/)
 
 >[!Note]
->Diğer Azure hizmetlerinde olduğu gibi bazı limitler ve kotalar Machine Learning ile ilişkilendirilir. [Kotalar ve artış talebinde bulunma hakkında bilgi edinin.](how-to-manage-quotas.md)
+>Diğer Azure hizmetlerinde olduğu gibi, belirli sınırlar ve Kotalar Machine Learning ilişkilendirilir. [Kotalar ve artış talebinde bulunma hakkında bilgi edinin.](how-to-manage-quotas.md)
 
 
 ## <a name="prerequisites"></a>Önkoşullar
-Bir çalışma alanı oluşturmak için bir Azure aboneliğinizin olması gerekir. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. Deneyin [Azure Machine Learning hizmetinin ücretsiz veya Ücretli sürümüne](https://aka.ms/AMLFree) bugün.
+Bir çalışma alanı oluşturmak için bir Azure aboneliğinizin olması gerekir. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning Service 'in ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
-## <a name="portal"></a> Azure portalı
+## <a name="portal"></a>Azure portal
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-Nasıl oluşturulduğu ne olursa olsun, çalışma alanınızda görüntüleyebilirsiniz [Azure portalında](https://portal.azure.com/).  Bkz: [bir çalışma alanını görüntülemek](how-to-manage-workspace.md#view) Ayrıntılar için.
+Nasıl oluşturulduğuna bakılmaksızın, çalışma alanınızı [Azure Portal](https://portal.azure.com/)görüntüleyebilirsiniz.  Ayrıntılar için bkz. [çalışma alanını görüntüleme](how-to-manage-workspace.md#view) .
 
-## <a name="sdk"></a> Python SDK'sı
+## <a name="sdk"></a>Python SDK 'Sı
 
-Python SDK'sını kullanarak çalışma alanınızı oluşturun. Öncelikle, SDK'yı yüklemeniz gerekir.
+Python SDK 'sını kullanarak çalışma alanınızı oluşturun. Öncelikle SDK 'Yı yüklemeniz gerekir.
 
 > [!IMPORTANT]
-> Bir Azure veri bilimi sanal makinesi veya Azure Databricks kullanırsanız, SDK'ın yüklenmesini atlayın.
-> * 27 Eylül 2018'den sonra oluşturulan Azure veri bilimi sanal makineleri, önceden yüklenmiş Python SDK ile birlikte gelir. Yüklemeyi atlayabilir ve başlayın [SDK'sı ile çalışma alanı oluşturma](#sdk-create).
-> * Azure Databricks ortamda [Databricks yükleme adımlarını](how-to-configure-environment.md#azure-databricks) yerine.
+> Azure Veri Bilimi Sanal Makinesi veya Azure Databricks kullanıyorsanız SDK yüklemesini atlayın.
+> * 27 Eylül 2018 ' den sonra oluşturulan Azure veri bilimi sanal makineleri, Python SDK 'sının önceden yüklenmiş olarak gelir. Yüklemeyi atlayın ve [SDK ile çalışma alanı oluşturma](#sdk-create)ile başlayın.
+> * Azure Databricks ortamında, bunun yerine [Databricks yükleme adımlarını](how-to-configure-environment.md#azure-databricks) kullanın.
 
 >[!NOTE]
-> Yerel bilgisayarınızdan SDK'yı yükleyip için bu yönergeleri kullanın. Jupyter uzak bir sanal makinede kullanmak için bir Uzak Masaüstü veya terminal oturumu ayarlayın.
+> SDK 'Yı yerel bilgisayarınızdan yüklemek ve kullanmak için bu yönergeleri kullanın. Jupi 'yi uzak bir sanal makinede kullanmak için, uzak masaüstü veya X terminal oturumu ayarlayın.
 
-SDK'yı yüklemeden yalıtılmış bir Python ortamı oluşturmanızı öneririz. Bu makalede kullansa [Miniconda](https://docs.conda.io/en/latest/miniconda.html), ayrıca tam kullanabilirsiniz [Anaconda](https://www.anaconda.com/) yüklü veya [Python virtualenv](https://virtualenv.pypa.io/en/stable/).
+SDK'yı yüklemeden yalıtılmış bir Python ortamı oluşturmanızı öneririz. Bu makalede [Miniconda](https://docs.conda.io/en/latest/miniconda.html)kullanılıyorsa, tam [Anaconda](https://www.anaconda.com/) yüklü veya [Python virtualalenv](https://virtualenv.pypa.io/en/stable/)de kullanabilirsiniz.
 
-Bu makaledeki yönergeleri hızlı ve öğretici not defterlerini çalıştırmak için gereken tüm paketleri yükler.  Diğer örnek not defterleri, ek bileşen yüklenmesini gerektirebilir.  Bu bileşenler hakkında daha fazla bilgi için bkz. [Python için Azure Machine Learning SDK'sını yükleme](https://docs.microsoft.com/python/api/overview/azure/ml/install).
+Bu makaledeki yönergeler, hızlı başlangıç ve öğretici not defterlerini çalıştırmak için ihtiyacınız olan tüm paketleri yükler.  Diğer örnek Not defterleri, ek bileşenlerin yüklenmesini gerektirebilir.  Bu bileşenler hakkında daha fazla bilgi için bkz. [Python için Azure Machine Learning SDK 'Sını yüklemeyin](https://docs.microsoft.com/python/api/overview/azure/ml/install).
 
 ### <a name="install-miniconda"></a>Miniconda'yı yükleme
 
-[Miniconda yükleyip](https://docs.conda.io/en/latest/miniconda.html). Python 3.7 sürümün yükleneceğini seçin. Python 2.x sürümünü seçmeyin.  
+[Miniconda indirin ve yükleyin](https://docs.conda.io/en/latest/miniconda.html). Yüklenecek Python 3,7 sürümünü seçin. Python 2.x sürümünü seçmeyin.  
 
 ### <a name="create-an-isolated-python-environment"></a>Yalıtılmış Python ortamı oluşturma
 
-1. Anaconda komut istemi açın ve ardından adlı yeni bir conda ortam oluşturmak *myenv* ve Python 3.6.5 yükleyin. Python 3.5.2 ile iş veya üzeri Azure Machine Learning SDK'sı olacaktır, ancak otomatik makine bileşenleri öğrenimi Python-3.7 tam işlevsel değildir.  Bileşenleri ve paketleri indirilen ortamı oluşturmak için birkaç dakika sürer. 
+1. Anaconda Prompt ' ı açın ve ardından *MyENV* adlı yeni bir Conda ortamı oluşturun ve Python 3.6.5 ' yi kurun. Azure Machine Learning SDK, Python 3.5.2 veya sonraki sürümleriyle çalışır, ancak otomatik makine öğrenimi bileşenleri Python 3,7 ' de tamamen işlevsel değildir.  Bileşenler ve paketler indirilirken ortamın oluşturulması birkaç dakika sürer. 
 
     ```shell
     conda create -n myenv python=3.6.5
@@ -85,13 +85,13 @@ Bu makaledeki yönergeleri hızlı ve öğretici not defterlerini çalıştırma
     conda activate myenv
     ```
 
-1. Ortama özgü ıpython çekirdekler etkinleştir:
+1. Ortama özel IPython kernels 'yi etkinleştir:
 
     ```shell
     conda install notebook ipykernel
     ```
 
-    Ardından çekirdek oluşturun:
+    Ardından çekirdeği oluşturun:
 
     ```shell
     ipython kernel install --user
@@ -99,37 +99,37 @@ Bu makaledeki yönergeleri hızlı ve öğretici not defterlerini çalıştırma
 
 ### <a name="install-the-sdk"></a>SDK yükle
 
-1. Etkinleştirilen conda ortamında, Machine Learning SDK'sı temel bileşenleri ile Jupyter not defteri özellikleri yükleyin. Yükleme, makinenizin yapılandırmasına göre tamamlanması birkaç dakika sürer.
+1. Etkinleştirilen Conda ortamında, Jupyter Not defteri özellikleri ile Machine Learning SDK 'nın temel bileşenlerini yükler. Yükleme işleminin, makinenizin yapılandırmasına bağlı olarak birkaç dakika sürer.
 
     ```shell
     pip install --upgrade azureml-sdk[notebooks]
     ```
 
-1. Azure Machine Learning öğreticileri için bu ortamı kullanmak için bu paketleri yükleyin.
+1. Bu ortamı Azure Machine Learning öğreticileri için kullanmak üzere bu paketleri yüklemek için.
 
     ```shell
     conda install -y cython matplotlib pandas
     ```
 
-1. Azure Machine Learning öğreticileri için bu ortamı kullanmak için otomatik makine öğrenme bileşenleri yükleyin.
+1. Azure Machine Learning öğreticileri için bu ortamı kullanmak üzere, otomatik makine öğrenimi bileşenlerini yükler.
 
     ```shell
     pip install --upgrade azureml-sdk[automl]
     ```
 
 > [!IMPORTANT]
-> Bazı komut satırı araçlarını, tırnak işaretleri gibi eklemeniz gerekebilir:
-> *  'azureml-sdk[notebooks]'
-> * 'azureml-sdk [automl]'
+> Bazı komut satırı araçlarında, tırnak işaretlerini aşağıdaki şekilde eklemeniz gerekebilir:
+> *  ' azureml-SDK [Not defterleri] '
+> * ' azureml-SDK [Oto ml] '
 >
 
-### <a name='sdk-create'></a> SDK'sı ile çalışma alanı oluşturma
+### <a name='sdk-create'></a>SDK ile çalışma alanı oluşturma
 
-Python SDK'sını kullanarak bir Jupyter not defterinde çalışma alanınızı oluşturun.
+Python SDK 'sını kullanarak bir Jupyter Notebook çalışma alanınızı oluşturun.
 
-1. Oluşturma ve/veya öğreticileri ve hızlı başlangıç için kullanmak istediğiniz dizine cd.
+1. Hızlı başlangıç ve öğreticiler için kullanmak istediğiniz dizine ve/veya CD 'yi oluşturun.
 
-1. Jupyter not defteri başlatmak için şu komutu girin:
+1. Jupyter Notebook başlatmak için şu komutu girin:
 
     ```shell
     jupyter notebook
@@ -137,11 +137,11 @@ Python SDK'sını kullanarak bir Jupyter not defterinde çalışma alanınızı 
 
 1. Tarayıcı penceresinde varsayılan `Python 3` çekirdeğini kullanarak yeni bir notebook oluşturun. 
 
-1. SDK sürümü görüntülemek için girin ve ardından bir not defteri hücreye aşağıdaki Python kodunu yürütün:
+1. SDK sürümünü göstermek için bir not defteri hücresinde aşağıdaki python kodunu girin ve ardından yürütün:
 
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=import)]
 
-1. Bulma için bir değer `<azure-subscription-id>` parametresinde [Azure portalında abonelikleri listesi](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). Sahip veya katkıda bulunan rolüne sahip olduğunuz herhangi bir aboneliği kullanabilirsiniz. Roller hakkında daha fazla bilgi için bkz. [yönetmek için bir Azure Machine Learning çalışma alanına erişim](how-to-assign-roles.md) makalesi.
+1. `<azure-subscription-id>` [Azure Portal abonelikler listesinde](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)parametre için bir değer bulun. Sahip veya katkıda bulunan rolüne sahip olduğunuz herhangi bir aboneliği kullanabilirsiniz. Roller hakkında daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanına erişimi yönetme](how-to-assign-roles.md) .
 
    ```python
    from azureml.core import Workspace
@@ -153,22 +153,22 @@ Python SDK'sını kullanarak bir Jupyter not defterinde çalışma alanınızı 
                         )
    ```
 
-   Siz kodu yürütürken, Azure hesabınızda oturum açmanız istenebilir. Oturum açtıktan sonra kimlik doğrulama belirteci yerel önbelleğe alınır.
+   Kodu yürüttüğünüzde, Azure hesabınızda oturum açmanız istenebilir. Oturum açtıktan sonra kimlik doğrulama belirteci yerel önbelleğe alınır.
 
-1. Çalışma alanını görüntülemek için aşağıdaki kodu ilişkili depolama, kapsayıcı kayıt defteri ve anahtar kasası gibi ayrıntılarını girin:
+1. İlişkili depolama, kapsayıcı kayıt defteri ve anahtar kasası gibi çalışma alanı ayrıntılarını görüntülemek için aşağıdaki kodu girin:
 
     [!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=getDetails)]
 
 
 ### <a name="write-a-configuration-file"></a>Yapılandırma dosyası yazma
 
-Bir yapılandırma dosyası geçerli dizin için çalışma alanınızı ayrıntılarını kaydedin. Bu dosya adında *.azureml/config.json*.  
+Çalışma alanınızın ayrıntılarını bir yapılandırma dosyasına geçerli dizine kaydedin. Bu dosya *. azureml/config. JSON*olarak adlandırılır.  
 
-Bu çalışma alanı yapılandırma dosyası, aynı çalışma alanına daha sonra yüklemek kolaylaştırır. Diğer dizüstü bilgisayarlar ve aynı dizine veya kod kullanarak bir alt komut yük `ws=Workspace.from_config()` . 
+Bu çalışma alanı yapılandırma dosyası, daha sonra aynı çalışma alanını yüklemeyi kolaylaştırır. Kodu `ws=Workspace.from_config()` kullanarak aynı dizinde veya bir alt dizinde bulunan diğer Not defterleri ve betiklerle yükleyebilirsiniz. 
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=writeConfig)]
 
-Bu `write_config()` API çağrısı, yapılandırma dosyasını geçerli dizinde oluşturur. *.Azureml/config.json* dosyası şunları içerir:
+Bu `write_config()` API çağrısı geçerli dizinde yapılandırma dosyası oluşturur. *. Azureml/config. JSON* dosyası şunları içerir:
 
 ```json
 {
@@ -179,16 +179,16 @@ Bu `write_config()` API çağrısı, yapılandırma dosyasını geçerli dizinde
 ```
 
 > [!TIP]
-> Python betiklerini veya Jupyter Notebook diğer dizinlerde yer alan çalışma alanınızla kullanmak üzere, bu dosya bu dizine kopyalayın. Adlı bir alt dizinde aynı dizinde dosya olabilir *.azureml*, veya bir üst dizin.
+> Çalışma alanınızı, diğer dizinlerde bulunan Python betiklerine veya Jupyıter not defterlerine kullanmak için bu dosyayı bu dizine kopyalayın. Dosya aynı dizinde, *. azureml*adlı bir alt dizin veya bir üst dizin içinde olabilir.
 
-## <a name="resource-manager-template"></a>Resource manager şablonu
+## <a name="resource-manager-template"></a>Resource Manager şablonu
 
-Bir çalışma alanı ile bir şablon oluşturmak için bkz [bir şablonu kullanarak bir Azure Machine Learning hizmeti çalışma alanı oluşturma](how-to-create-workspace-template.md)
+Şablon ile bir çalışma alanı oluşturmak için bkz. [şablon kullanarak Azure Machine Learning hizmet çalışma alanı oluşturma](how-to-create-workspace-template.md)
 
 <a name="cli"></a>
 ## <a name="command-line-interface"></a>Komut satırı arabirimi
 
-CLI ile bir çalışma alanı oluşturmak için bkz [CLI uzantısını Azure Machine Learning hizmeti için kullanacağınız](reference-azure-machine-learning-cli.md).
+CLı ile bir çalışma alanı oluşturmak için bkz. [Azure Machine Learning hizmeti IÇIN CLI uzantısını kullanma](reference-azure-machine-learning-cli.md).
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme 
 
@@ -196,15 +196,14 @@ CLI ile bir çalışma alanı oluşturmak için bkz [CLI uzantısını Azure Mac
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Nasıl oluşturulduğu ne olursa olsun, çalışma alanınızda görüntüleyebilirsiniz [Azure portalında](https://portal.azure.com/).  Bkz: [bir çalışma alanını görüntülemek](how-to-manage-workspace.md#view) Ayrıntılar için.
+* Nasıl oluşturulduğuna bakılmaksızın, çalışma alanınızı [Azure Portal](https://portal.azure.com/)görüntüleyebilirsiniz.  Ayrıntılar için bkz. [çalışma alanını görüntüleme](how-to-manage-workspace.md#view) .
 
-* Bu hızlı başlangıçlar ve öğreticilerle çalışma alanınızı deneyin.
+* Bu öğreticilerle çalışma alanınızı deneyin.
 
-    * Hızlı Başlangıç: [Jupyter not defteri bulutta çalışan](quickstart-run-cloud-notebook.md).
-    * Hızlı Başlangıç: [Kendi sunucunuza Jupyter not defteri çalıştırmak](quickstart-run-local-notebook.md).
-    * İki bölümlü öğretici: [Train](tutorial-train-models-with-aml.md) ve [dağıtma](tutorial-deploy-models-with-aml.md) bir görüntü sınıflandırma modu.
-    * İki bölümlü öğretici: [Veri hazırlama](tutorial-data-prep.md) ve [otomatik machine Learning'i](tutorial-auto-train-models.md) bir regresyon modeli derler.
+    * İki bölümden oluşan öğretici: [Ortamı ve çalışma alanını kurun](tutorial-1st-experiment-sdk-setup.md) ve [İlk modelinize eğitme](tutorial-1st-experiment-sdk-train.md).
+    * İki bölümden oluşan öğretici: Görüntü sınıflandırma modunu [eğitme](tutorial-train-models-with-aml.md) ve [dağıtma](tutorial-deploy-models-with-aml.md) .
+    * İki bölümden oluşan öğretici: Bir gerileme modeli oluşturmak için [verileri hazırlayın](tutorial-data-prep.md) ve [otomatik makine öğrenimi kullanın](tutorial-auto-train-models.md) .
 
-* Kullanma hakkında daha fazla bilgi edinin [geliştirme ortamını yapılandırma](how-to-configure-environment.md).
+* [Geliştirme ortamının nasıl yapılandırılacağı](how-to-configure-environment.md)hakkında daha fazla bilgi edinin.
 
-* Daha fazla bilgi edinin [Python için Azure Machine Learning SDK](https://aka.ms/aml-sdk).
+* [Python için Azure MACHINE LEARNING SDK](https://aka.ms/aml-sdk)hakkında daha fazla bilgi edinin.

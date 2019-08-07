@@ -7,14 +7,14 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: dacurwin
-ms.openlocfilehash: 7a470674fa9ccdde2b33bb33bfb52bead1822895
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 07faf03ee9b12d1bf4a200de47d6df714c2248d9
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639737"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68737159"
 ---
-# <a name="about-azure-vm-backup"></a>Azure VM yedeklemesi hakkında
+# <a name="an-overview-of-azure-vm-backup"></a>Azure VM yedeklemesine genel bakış
 
 Bu makalede, [Azure Backup hizmetinin](backup-introduction-to-azure-backup.md) Azure sanal makinelerini (VM) nasıl yedeklediği açıklanır.
 

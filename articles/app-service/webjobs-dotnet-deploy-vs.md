@@ -15,12 +15,12 @@ ms.workload: azure-vs
 ms.date: 02/18/2019
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: 2695ee2751a2834466c42d224101af246b829aca
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: d50acc50880229626c847d41d9abe9a9e13d9c6e
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717634"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736125"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Visual Studio kullanarak Web Işleri geliştirme ve dağıtma-Azure App Service
 
@@ -228,7 +228,7 @@ Bu dosya Web işi klasörünün kökünde, veya `wwwroot\app_data\jobs\triggered
 
 ### <a name="cron-expressions"></a>CRON ifadeleri
 
-WebJobs, Azure Işlevlerinde Zamanlayıcı tetikleyicisi olarak zamanlama için aynı CRON ifadelerini kullanır. CRON desteği hakkında daha fazla bilgi edinmek için bkz. [süreölçer tetikleme başvurusu makalesi](../azure-functions/functions-bindings-timer.md#cron-expressions).
+WebJobs, Azure Işlevlerinde Zamanlayıcı tetikleyicisi olarak zamanlama için aynı CRON ifadelerini kullanır. CRON desteği hakkında daha fazla bilgi edinmek için bkz. [süreölçer tetikleme başvurusu makalesi](../azure-functions/functions-bindings-timer.md#ncrontab-expressions).
 
 ### <a name="settingjob-reference"></a>ayar. iş başvurusu
 
@@ -238,7 +238,7 @@ Web Işleri tarafından aşağıdaki ayarlar desteklenir:
 | ----------- | --------- | --------------- |
 | `is_in_place` | Tümü | İşin geçici bir klasöre kopyalanmadan yerinde çalışmasına izin verir. Daha fazla bilgi için bkz. [WebJobs çalışma dizini](https://github.com/projectkudu/kudu/wiki/WebJobs#webjob-working-directory). |
 | `is_singleton` | Sürekli | Web Işlerini yalnızca ölçeklendirildiğinde tek bir örnek üzerinde çalıştırın. Daha fazla bilgi edinmek için bkz. [tek bir iş olarak sürekli olarak ayarlama](https://github.com/projectkudu/kudu/wiki/WebJobs-API#set-a-continuous-job-as-singleton). |
-| `schedule` | Tetiklenmiş | WebJob 'u bir CRON tabanlı zamanlamaya göre çalıştırın. Daha fazla bilgi edinmek IÇIN [Zamanlayıcı tetikleyici başvurusu makalesine](../azure-functions/functions-bindings-timer.md#cron-expressions)bakın. |
+| `schedule` | Tetiklenmiş | WebJob 'u bir CRON tabanlı zamanlamaya göre çalıştırın. Daha fazla bilgi edinmek IÇIN [Zamanlayıcı tetikleyici başvurusu makalesine](../azure-functions/functions-bindings-timer.md#ncrontab-expressions)bakın. |
 | `stopping_wait_time`| Tümü | , Kapatılma davranışının denetimine izin verir. Daha fazla bilgi için bkz. [düzgün kapanma](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown). |
 
 ## <a name="next-steps"></a>Sonraki adımlar

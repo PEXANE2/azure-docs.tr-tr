@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: absha
-ms.openlocfilehash: 2d808548ef91ed416f27b0dbb3e3e93d79ade30c
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: ae1ac3df3da4e5c25e5538f0e8cc4cd12f9186c6
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382049"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774784"
 ---
 # <a name="create-certificates-to-allow-the-backend-with-azure-application-gateway"></a>Azure Application Gateway arka uca izin vermek için sertifikalar oluşturma
 
@@ -73,7 +73,7 @@ SSL sertifikaınızdan ortak anahtar. cer dosyasını (özel anahtarı değil) d
 
 ## <a name="export-trusted-root-certificate-for-v2-sku"></a>Güvenilen kök sertifikayı dışarı aktarma (v2 SKU 'SU için)
 
-Application Gateway v2 SKU 'sunda arka uç örneklerine izin vermek için güvenilen bir kök sertifika gerekir. Kök sertifika, Base-64 ile kodlanmış bir X. 509.440 (. CER) arka uç sunucu sertifikalarından kök sertifikayı biçimlendirin. Bu örnekte, arka uç sertifikası için bir SSL sertifikası kullanacaksınız ve ortak anahtarını dışarı aktaracaksınız. Ardından Güvenilen CA 'nın kök sertifikasını Base64 kodlamalı biçimdeki ortak anahtardan, güvenilen kök sertifikayı almak için dışarı aktaracaksınız. 
+Güvenilen kök sertifika, Application Gateway v2 SKU 'sunda arka uç örneklerini beyaz listeye almak için gereklidir. Kök sertifika, Base-64 ile kodlanmış bir X. 509.440 (. CER) arka uç sunucu sertifikalarından kök sertifikayı biçimlendirin. Bu örnekte, arka uç sertifikası için bir SSL sertifikası kullanacağız, ortak anahtarını dışarı aktarıp güvenilen CA 'nın kök sertifikasını Base64 kodlamalı biçimde ortak anahtardan dışarı aktararak güvenilen kök sertifikayı alırsınız. Ara sertifikalar sunucu sertifikasıyla paketlenmiş ve arka uç sunucusuna yüklenmiş olmalıdır.
 
 Aşağıdaki adımlar, sertifikanız için. cer dosyasını dışarı aktarmaya yardımcı olur:
 
@@ -105,4 +105,5 @@ Aşağıdaki adımlar, sertifikanız için. cer dosyasını dışarı aktarmaya 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık Base-64 ile kodlanmış X. 509.440 () kimlik doğrulama sertifikasına/güvenilen kök sertifikaya sahipsiniz. CER) biçiminde. Uçtan uca SSL şifrelemesi için arka uç sunucularınızı sağlamak üzere uygulamayı uygulama ağ geçidine ekleyebilirsiniz. Bkz. [uçtan uca SSL şifrelemeyi yapılandırma](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell).
+Artık Base-64 ile kodlanmış X. 509.440 () kimlik doğrulama sertifikasına/güvenilen kök sertifikaya sahipsiniz. CER) biçiminde. Bu uygulamayı, uçtan uca SSL şifrelemesi için arka uç sunucularınızı beyaz listelemek üzere Application Gateway 'e ekleyebilirsiniz. Bkz. [uçtan uca SSL şifrelemeyi yapılandırma](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell).
+

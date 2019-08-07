@@ -5,14 +5,14 @@ author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 07/19/2019
+ms.date: 08/06/2019
 ms.author: banders
-ms.openlocfilehash: c63447ff0a3329e0cc0dc0605984ae4f26e9c25f
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 2e595fbee90b710ec6b8090a770d93e688a04818
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359221"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839988"
 ---
 # <a name="what-are-azure-reservations"></a>Azure Ayırmaları nedir?
 
@@ -38,7 +38,7 @@ Windows sanal makineler ve SQL veritabanı için [Azure hibrit avantajı](https:
 
 Bir planı satın almak için, bir kuruluşta (MS-AZR-0017P veya MS-AZR-0148P) veya Kullandıkça Öde aboneliğine (MS-AZR-003P veya MS-AZR-0023P) bir abonelik sahibi rolüne sahip olmanız gerekir. Bulut çözümü sağlayıcıları Azure Portal veya [iş ortağı merkezi](/partner-center/azure-reservations) 'ni kullanarak Azure ayırmaları satın alabilir.
 
-Kurumsal Anlaşma (EA) müşterileri, satınalmaları EA yöneticileri ile sınırlayabilir. Bunu, EA portalındaki **ayrılmış örnekleri Ekle** seçeneğini devre dışı bırakarak yapabilirler. EA yöneticileri, bir ayırma satın almak için en az bir EA aboneliğine sahip bir abonelik sahibi olmalıdır. Bu seçenek, merkezi bir ekibin farklı maliyet merkezleri için rezervasyonlar satın almasını isteyen kuruluşlar için yararlıdır. Satın alma işleminden sonra merkezi takımlar, rezervasyonların maliyet merkezi sahiplerini ekleyebilirler. Sahipleri daha sonra, rezervasyonlarını aboneliklerine göre kapsamlarına alabilir. Merkezi ekibin, rezervasyonun satın alındığı yerde abonelik sahibi erişimi olması gerekmez.
+Kurumsal Anlaşma (EA) müşterileri, EA portalındaki **ayrılmış örnekleri Ekle** seçeneğini devre dışı BıRAKARAK satınalmaları EA yöneticilerle sınırlayabilir. EA yöneticileri, bir ayırma satın almak için en az bir EA aboneliğine sahip bir abonelik sahibi olmalıdır. Bu seçenek, merkezi bir ekibin farklı maliyet merkezleri için rezervasyonlar satın almasını isteyen kuruluşlar için yararlıdır. Satın alma işleminden sonra merkezi takımlar, rezervasyonların maliyet merkezi sahiplerini ekleyebilirler. Sahipleri daha sonra, rezervasyonlarını aboneliklerine göre kapsamlarına alabilir. Merkezi ekibin, rezervasyonun satın alındığı yerde abonelik sahibi erişimi olması gerekmez.
 
 Rezervasyon indirimi yalnızca kurumsal, bulut çözümü sağlayıcısı (CSP) ile satın alınan abonelikler ve kullandıkça öde tarifeleri ile bireysel planlar ile ilişkili kaynaklar için geçerlidir.
 

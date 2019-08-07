@@ -7,12 +7,12 @@ ms.date: 07/17/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: b90986e449df7e81f97f9ef86ce3cf69621c76d6
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 17fa443c3b0113d80a020f2a43c7099cf5a832d2
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335743"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68772893"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Cosmos DB için Azure Işlevleri tetikleyicisi 'ni kullanırken sorunları tanılayın ve sorun giderin
 
@@ -88,6 +88,15 @@ Tetikleyicinizin tümünde bazı değişikliklerin alınmadığını fark ederse
 Ayrıca, kaç Azure İşlev Uygulaması örneğinin çalıştığını biliyorsanız senaryo doğrulanabilir. Kira kapsayıcınızı inceleyebilir ve içindeki kira öğelerinin sayısını saydıysanız, içindeki `Owner` özelliğin farklı değerleri, işlev uygulaması örneklerinin sayısına eşit olmalıdır. Bilinen Azure İşlev Uygulaması örneklerinden daha fazla sahip varsa, bu ek sahipler değişikliklerin "çalmasını" olduğu anlamına gelir.
 
 Bu durumun kolay bir yolu, yeni/farklı bir değere sahip `LeaseCollectionPrefix/leaseCollectionPrefix` işleviniz için bir ya da yeni bir kiralama kapsayıcısı ile test etmek için tek bir çözümdür.
+
+### <a name="need-to-restart-and-re-process-all-the-items-in-my-container-from-the-beginning"></a>Kapsayıcımda bulunan tüm öğelerin başlangıçtan itibaren yeniden başlatılması ve yeniden işlenmesi gerekiyor 
+Bir kapsayıcıdaki tüm öğeleri baştan sonra yeniden işlemek için:
+1. Şu anda çalışıyorsa Azure işlevinizi durdurun. 
+1. Kira koleksiyonundaki belgeleri silin (veya boş olması için kira koleksiyonunu silip yeniden oluşturun)
+1. İşlevinizdeki [Startfromstarted](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) cosmosdbtrigger özniteliğini doğru olarak ayarlayın. 
+1. Azure işlevini yeniden başlatın. Şimdi, başlangıçtan itibaren tüm değişiklikleri okur ve işler. 
+
+[Startfromstart](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) 'ı true olarak ayarlamak, Azure işlevine geçerli saat yerine koleksiyonun geçmişinden başlayarak okuma işlemi başlatmasını bildirir. Bu yalnızca, zaten oluşturulan kiralamalar (örn. kiralamalar koleksiyonundaki belgeler) olmadığında işe yarar. Zaten oluşturulan kiralamalar varsa, bu özelliğin true olarak ayarlanması etkisizdir; Bu senaryoda, bir işlev durdurulduğunda ve yeniden başlatıldığında, kiralamalar koleksiyonunda tanımlandığı gibi son denetim noktasından okumaya başlar. Baştan sonra yeniden işlemek için yukarıdaki 1-4 adımları izleyin.  
 
 ### <a name="binding-can-only-be-done-with-ireadonlylistdocument-or-jarray"></a>Bağlama yalnızca IReadOnlyList\<belgesi > veya jarray ile yapılabilir
 

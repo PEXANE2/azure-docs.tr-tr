@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 6dc8fcc32d7f05063da15eb6ca6bf7a7d69baebb
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: f4d3a4d9a5785ae350874c400384477da1a6c22e
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663130"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774726"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Azure Izleyici 'yi kullanarak günlük uyarıları oluşturma, görüntüleme ve yönetme
 
@@ -58,7 +58,7 @@ Ayrıntılı ileri, Azure portal arabirimini kullanarak günlük uyarılarını 
 
    > [!NOTE]
    > 
-   > Uyarı listeleri, yukarıdaki çizimde görüldüğü gibi Analytics sorgusunu, sinyal türü- **günlük (kaydedilmiş sorgu)** olarak içeri aktarabilir. Böylece kullanıcılar, sorgulamanızı sorgulayabilir ve daha sonra uyarılarda kullanmak üzere kaydedebilir. [Azure izleyici 'de günlük sorgusu](../log-query/log-query-overview.md) veya [Application Insights Analytics 'te paylaşılan sorgu](../log-query/log-query-overview.md)kullanarak, sorguyu kaydetme hakkında daha ayrıntılı bilgi edinin.
+   > Uyarı listeleri, yukarıdaki çizimde görüldüğü gibi Analytics sorgusunu, sinyal türü- **günlük (kaydedilmiş sorgu)** olarak içeri aktarabilir. Böylece kullanıcılar, sorgulamanızı sorgulayabilir ve daha sonra uyarılarda kullanmak üzere kaydedebilir. [Azure izleyici 'de günlük sorgusu](../log-query/log-query-overview.md) veya [Application Insights Analytics 'te paylaşılan sorgu](../app/app-insights-overview.md)kullanarak, sorguyu kaydetme hakkında daha ayrıntılı bilgi edinin.
 
 1. *Günlük uyarıları*: Seçildiğinde, uyarı sorgusu **arama sorgu** alanında belirtilebilir; sorgu söz dizimi yanlışsa, alan hatayı kırmızı olarak görüntüler. Sorgu söz dizimi doğruysa, belirtilen sorgunun başvuru tarihi geçmiş verileri Için, son altı saatten geçen haftaya kadar olan zaman penceresini ince ayar seçeneği içeren bir grafik olarak gösterilir.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/24/2019
 ms.author: v-mohabe
-ms.openlocfilehash: f33b69ac443a1bb8f6b7d6e1b19f2f077bf38f58
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 8812ac325e6bfd5ee019f6ddd6bf86c846ed5c10
+ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501475"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68782458"
 ---
 # <a name="threat-detection-for-data-services-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde veri Hizmetleri için tehdit algılama
 
@@ -60,6 +60,7 @@ Güvenlik Merkezi, tehditleri algılamak için blob depolamaya okuma, yazma ve s
 |**Olağan dışı konum erişim anomali**|Örneklenmiş ağ trafiği analizi, dağıtımınızdaki bir kaynaktan kaynaklanan anormal giden Uzak Masaüstü Protokolü (RDP) iletişimi algıladı. Bu etkinlik, bu ortam için anormal olarak kabul edilir ve kaynağınızın tehlikede olduğunu belirtebilir ve artık dış RDP uç noktası zorla deneme için kullanılır. Bu etkinlik türünün, IP’nizin dış varlıklar tarafından kötü amaçlı olarak işaretlenmesine neden olabileceğini unutmayın.|
 |**Uygulama erişimi anomali**|Olağan dışı bir uygulamanın bu depolama hesabına eriştiği anlamına gelir. Olası bir neden, bir saldırganın yeni bir uygulama kullanarak depolama hesabınıza eriştiği bir nedendir.|
 |**Anonim erişim anomali**|Bir depolama hesabına erişim modelinde değişiklik olduğunu gösterir. Örneğin, hesaba bu hesapta son erişim düzeniyle karşılaştırıldığında beklenmeyen bir şekilde (herhangi bir kimlik doğrulaması olmadan) erişilebilir. Olası bir neden, bir saldırganın BLOB depolama alanı tutan bir kapsayıcıya genel okuma erişiminin yararlanmasıdır.|
+|**Tor anomali**|Bu hesaba, Tor 'ın etkin çıkış düğümü olarak bilinen bir IP adresinden başarıyla erişildiğini belirtir (bir anonim proxy). Bu uyarının önem derecesi, kullanılan (varsa) kimlik doğrulaması türünü ve bu erişimin ilk olması durumunda olup olmadığını dikkate alır. Olası nedenler, bir saldırgan tarafından, depolama hesabınıza Tor kullanılarak erişmiş olabilir veya yasal Kullanıcı, Tor kullanarak depolama hesabınıza erişmiş olabilir.|
 |**Veri Taşalımı anomali**|Bu depolama kapsayıcısındaki en son etkinliğe kıyasla alışılmadık büyük miktarda verilerin ayıklandığını gösterir. Olası bir neden, bir saldırganın BLOB depolama alanı tutan bir kapsayıcıdan büyük miktarda veri ayıklamasıdır.|
 |**Beklenmeyen silme anomali**|Bir depolama hesabında bir veya daha fazla beklenmeyen silme işlemi gerçekleştiğini, bu hesaptaki en son etkinliğe kıyasla olduğunu gösterir. Olası bir neden, saldırganın depolama hesabınızdan veri sildiği bir nedendir.|
 |**Azure bulut hizmeti paketini karşıya yükle**|Bir Azure bulut hizmeti paketinin (. cspkg dosyası), bu hesaptaki en son etkinlikle karşılaştırıldığında, alışılmadık bir şekilde bir depolama hesabına yüklendiğini belirtir. Olası bir neden, bir saldırganın depolama hesabınızdan bir Azure bulut hizmetine kötü amaçlı kod dağıtmaya hazırlanmasıyla ilgili bir nedendir.|
@@ -70,7 +71,7 @@ Güvenlik Merkezi, tehditleri algılamak için blob depolamaya okuma, yazma ve s
 >[!NOTE]
 >Azure depolama için Gelişmiş tehdit koruması Şu anda Azure Kamu ve bağımsız bulut bölgelerinde kullanılamaz.
 
-Depolama uyarıları hakkında daha fazla bilgi için bkz. [Azure Storage Için Gelişmiş tehdit koruması](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection) makalesi ve koruma uyarıları bölümünü gözden geçirme.
+Depolama uyarıları hakkında daha fazla bilgi için bkz. [Azure Storage Için Gelişmiş tehdit koruması](../storage/common/storage-advanced-threat-protection.md) makalesi ve koruma uyarıları bölümünü gözden geçirme.
 
 ## Cosmos DB<a name="cosmos-db"></a>
 

@@ -1,7 +1,7 @@
 ---
-title: PyTorch modelleri eğitme ve kaydetme
+title: PyTorch ile derin öğrenme sinir ağını eğitme
 titleSuffix: Azure Machine Learning service
-description: Bu makalede eğitme ve Azure Machine Learning hizmetini kullanarak bir PyTorch modeli kaydetmeyi gösterilmektedir.
+description: Pytorch eğitim betiklerinizi, Azure Machine Learning pytorch tahmin aracı sınıfını kullanarak kurumsal ölçekte çalıştırmayı öğrenin.  Örnek betikler,, PyTorch 'ın aktarım öğrenimi öğreticisini temel alarak derin bir öğrenme sinir ağı oluşturmak için tavuk ve Türkiye görüntülerini sınıflandırır.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,47 +9,49 @@ ms.topic: conceptual
 ms.author: maxluk
 author: maxluk
 ms.reviewer: peterlu
-ms.date: 06/18/2019
+ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: d9c953eeecedf14a8f3fae43c5d4713252d58b4c
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 99217106c456adcc338138190be2060b0c9a195b
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67840093"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68772683"
 ---
-# <a name="train-and-register-pytorch-models-at-scale-with-azure-machine-learning-service"></a>Eğitim ve uygun ölçekte PyTorch modeller Azure Machine Learning hizmeti ile kaydetme
+# <a name="train-pytorch-deep-learning-models-at-scale-with-azure-machine-learning"></a>Pytorch derin öğrenme modellerini Azure Machine Learning ölçeklendirirken eğitme
 
-Bu makalede eğitme ve Azure Machine Learning hizmetini kullanarak bir PyTorch modeli kaydetmeyi gösterilmektedir. Dayanır [öğretici PyTorch'ın aktarımlı](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html) , derin sinir ağı (DNN) sınıflandırıcı chickens ve turkeys görüntüleri oluşturur.
+Bu makalede, Azure Machine Learning [pytorch tahmin aracı](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py) sınıfını kullanarak [pytorch](https://pytorch.org/) eğitim betiklerinizi kurumsal ölçekte çalıştırmayı öğrenin.  
 
-[PyTorch](https://pytorch.org/) , derin sinir ağı (DNN) oluşturmak için yaygın olarak kullanılan bir açık kaynaklı bilgi işlem altyapısıdır. Azure Machine Learning hizmeti ile açık kaynaklı eğitim işleri elastik bulut bilgi işlem kaynaklarını kullanarak hızlı bir şekilde ölçeklendirebilirsiniz. Ayrıca izleyebilirsiniz eğitim çalıştırmaları, sürüm modelleri, modelleri ve daha fazlasını dağıtın.
+Bu makaledeki örnek betikler, PyTorch 'ın aktarım öğrenimi [öğreticisini](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html)temel alan derin bir öğrenme sinir ağı oluşturmak için tavuk ve Türkiye görüntülerini sınıflandırmak üzere kullanılır. 
 
-Azure Machine Learning hizmeti, sıfırdan PyTorch modelden geliştiriyor ister mevcut bir model buluta getirdiğiniz, üretime hazır modelleri oluşturmanıza yardımcı olabilir.
+Derin bir öğrenme PyTorch modelini baştan sona eğiyor veya mevcut bir modeli buluta çıkarksanız, elastik bulut işlem kaynakları kullanarak açık kaynaklı eğitim işlerini ölçeklendirmek için Azure Machine Learning kullanabilirsiniz. Azure Machine Learning ile üretim sınıfı modellerini oluşturabilir, dağıtabilir, sürüm ve izleyebilirsiniz. 
+
+[Derin öğrenme ve makine öğrenimi](concept-deep-learning-vs-machine-learning.md)hakkında daha fazla bilgi edinin.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu kod, bu ortamların birini çalıştırın:
+Bu kodu şu ortamlardan birinde çalıştırın:
 
- - Azure Machine Learning not defteri VM - herhangi bir indirme veya yükleme gerekli
+ - Azure Machine Learning Not defteri VM-indirme veya yükleme gerekli değil
 
-    - Tamamlamak [bulut tabanlı bir not defteri hızlı](quickstart-run-cloud-notebook.md) adanmış notebook sunucusu önceden yüklenmiş SDK'sı ve örnek depoyu oluşturmak için.
-    - Bu dizine giderek notebook sunucusu örnekleri klasöründe, tamamlanan ve genişletilmiş bir not defteri Bul: **Yardım-How-to-kullanın-azureml > Eğitim ile derin öğrenme > train-hyperparameter-tune-deploy-with-pytorch** klasör. 
+    - [Öğreticiyi doldurun: SDK ve örnek depoyla önceden yüklenmiş adanmış bir not defteri sunucusu oluşturmak için ortamı ve çalışma alanını](tutorial-1st-experiment-sdk-setup.md) ayarlayın.
+    - Not defteri sunucusundaki örnekler derin öğrenimi klasöründe, bu dizine giderek tamamlanmış ve genişletilmiş bir not defteri bulun: **kullanımı nasıl kullanılır-azureml > eğitimi-derin öğrenme > tren-hyperparameter-ayarla-dağıt--pytorch** klasörü. 
  
- - Kendi Jupyter Notebook sunucusu
+ - Kendi Jupyter Notebook sunucunuz
 
-    - [Azure Machine için Python SDK'sı Learning yükleme](setup-create-workspace.md#sdk)
+    - [Python için Azure Machine Learning SDK 'sını yükler](setup-create-workspace.md#sdk)
     - [Çalışma alanı yapılandırma dosyası oluşturma](setup-create-workspace.md#write-a-configuration-file)
-    - [Örnek komut dosyalarını indirme](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch) `pytorch_train.py`
+    - [Örnek betik dosyalarını indirin](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch)`pytorch_train.py`
      
-    Ayrıca bir tamamlanmış bulabilirsiniz [Jupyter Not Defteri sürüm](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch/train-hyperparameter-tune-deploy-with-pytorch.ipynb) GitHub örnekleri sayfasında bu kılavuzun. Not Defteri, akıllı hiper parametre ayarı, model dağıtımı ve not defteri pencere öğeleri kapsayan genişletilmiş bölümler içerir.
+    Ayrıca, bu kılavuzun tamamlanmış bir [Jupyter Notebook sürümünü](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch/train-hyperparameter-tune-deploy-with-pytorch.ipynb) GitHub örnekleri sayfasından bulabilirsiniz. Not defteri, akıllı hiper parametre ayarlamayı, model dağıtımını ve Not defteri pencere öğelerini kapsayan genişletilmiş bölümler içerir.
 
-## <a name="set-up-the-experiment"></a>Deneme ayarlama
+## <a name="set-up-the-experiment"></a>Denemeyi ayarlama
 
-Bu bölümde, gerekli python paketlerini yükleme, bir çalışma alanı başlatma, deneme oluşturma ve eğitim verilerini ve eğitim betikleriniz karşıya eğitim denemesini ayarlar.
+Bu bölüm, gerekli Python paketlerini yükleyerek, bir çalışma alanı başlatarak, bir deneme oluşturarak ve eğitim verilerini ve eğitim betikleri karşıya yükleyerek Eğitim denemesini ayarlar.
 
 ### <a name="import-packages"></a>Paketleri içeri aktarma
 
-İlk olarak, gerekli Python kitaplıkları içeri aktarın.
+İlk olarak, gerekli Python kitaplıklarını içeri aktarın.
 
 ```Python
 import os
@@ -63,19 +65,19 @@ from azureml.core.compute_target import ComputeTargetException
 from azureml.train.dnn import PyTorch
 ```
 
-### <a name="initialize-a-workspace"></a>Bir çalışma alanını Başlat
+### <a name="initialize-a-workspace"></a>Çalışma alanını başlatma
 
-[Azure Machine Learning hizmeti çalışma alanında](concept-workspace.md) hizmeti için en üst düzey bir kaynaktır. Oluşturduğunuz tüm yapıları ile çalışma için merkezi bir yerde sağlar. Python SDK'da çalışma yapıları oluşturarak erişebileceğiniz bir [ `workspace` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) nesne.
+[Azure Machine Learning hizmet çalışma alanı](concept-workspace.md) , hizmet için en üst düzey kaynaktır. Oluşturduğunuz tüm yapıtlarla çalışmak için merkezi bir yer sağlar. Python SDK 'sında bir [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) nesne oluşturarak çalışma alanı yapıtlarına erişebilirsiniz.
 
-Bir çalışma alanı nesne oluşturmak `config.json` 'te dosya oluşturulduğunda [Önkoşullar bölümüne](#prerequisites).
+`config.json` [Önkoşullar bölümünde](#prerequisites)oluşturulan dosyadan bir çalışma alanı nesnesi oluşturun.
 
 ```Python
 ws = Workspace.from_config()
 ```
 
-### <a name="create-an-experiment"></a>Deneme oluşturma
+### <a name="create-a-deep-learning-experiment"></a>Derin öğrenme denemesi oluşturun
 
-Bir deney ve eğitim betiklerinizi tutmak için bir klasör oluşturun. Bu örnekte, "Kuşlar pytorch" adlı bir deneme oluşturun.
+Eğitim betiklerinizi tutmak için bir deneme ve bir klasör oluşturun. Bu örnekte, "pytorch-kuşlar" adlı bir deneme oluşturun.
 
 ```Python
 project_folder = './pytorch-birds'
@@ -87,23 +89,23 @@ experiment = Experiment(ws, name=experiment_name)
 
 ### <a name="get-the-data"></a>Verileri alma
 
-Veri kümesi, yaklaşık 120 eğitim görüntülerin her turkeys ve chickens, her sınıf için 100 doğrulama görüntülerle oluşur. Biz indirir ve eğitim betiğimizi bir parçası olarak dataset ayıklamak `pytorch_train.py`. Bir alt kümesini görüntülerdir [açık görüntüleri v5 Dataset](https://storage.googleapis.com/openimages/web/index.html).
+Veri kümesi, her bir sınıf için 100 doğrulama görüntüleriyle birlikte, her biri Turkey ve tavkens için 120 eğitim görüntülerinden oluşur. Veri kümesini eğitim betiğimizin `pytorch_train.py`bir parçası olarak indirecek ve ayıklayacağız. Görüntüler, [Açık görüntüler v5 veri kümesinin](https://storage.googleapis.com/openimages/web/index.html)bir alt kümesidir.
 
-### <a name="prepare-training-scripts"></a>Eğitim betikleriniz hazırlama
+### <a name="prepare-training-scripts"></a>Eğitim betikleri hazırlama
 
-Bu öğreticide, bir eğitim betiğini `pytorch_train.py`, zaten sağlanır. Uygulamada olduğu gibi tüm özel eğitim betiği alıp ve Azure Machine Learning hizmeti ile çalıştırın.
+Bu öğreticide, eğitim betiği `pytorch_train.py`zaten sağlanmış. Uygulamada, tüm özel eğitim komut dosyalarını olduğu gibi alabilir ve Azure Machine Learning hizmeti ile çalıştırabilirsiniz.
 
-Pytorch eğitim betiğini yükleme `pytorch_train.py`.
+Pytorch eğitim betiğini `pytorch_train.py`yükleyin.
 
 ```Python
 shutil.copy('pytorch_train.py', project_folder)
 ```
 
-Ancak, Azure Machine Learning hizmeti izleme ve ölçümler özellikleri kullanmak istiyorsanız, bir eğitim betiğinizi içinde küçük miktar kod eklemeniz gerekir. İzleme ölçümlerini örnekleri bulunabilir `pytorch_train.py`.
+Ancak Azure Machine Learning hizmeti izleme ve ölçüm yeteneklerini kullanmak istiyorsanız, eğitim betiğinizin içine küçük bir tutar kodu eklemeniz gerekir. Ölçüm izleme örnekleri içinde `pytorch_train.py`bulunabilir.
 
 ## <a name="create-a-compute-target"></a>İşlem hedefi oluşturmak
 
-PyTorch işinizi çalıştırmak işlem hedefi oluşturmak. Bu örnekte, bir GPU özellikli Azure Machine Learning işlem kümesini oluşturun.
+PyTorch işinizin üzerinde çalışacağı bir işlem hedefi oluşturun. Bu örnekte, GPU özellikli Azure Machine Learning işlem kümesi oluşturun.
 
 ```Python
 cluster_name = "gpucluster"
@@ -123,13 +125,13 @@ except ComputeTargetException:
 
 İşlem hedefleri hakkında daha fazla bilgi için bkz. [işlem hedefi nedir](concept-compute-target.md) makalesi.
 
-## <a name="create-a-pytorch-estimator"></a>PyTorch tahmin oluşturma
+## <a name="create-a-pytorch-estimator"></a>Pytorch tahmin aracı oluşturma
 
-[PyTorch estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py) işlem hedefi üzerinde bir PyTorch eğitim işini başlatmak için basit bir yol sağlar.
+[Pytorch tahmin aracı](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py) , bir bilgi işlem hedefinde bir pytorch eğitim işi başlatmanın basit bir yolunu sağlar.
 
-PyTorch estimator genel uygulanır [ `estimator` ](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) herhangi bir çerçeveyi desteklemek için kullanılan sınıf. Genel tahmin Aracı'nı kullanarak modellerin eğitimi hakkında daha fazla bilgi için bkz. [tahmin Aracı'nı kullanarak Azure Machine Learning modellerini eğitin](how-to-train-ml-models.md)
+Pytorch tahmin aracı, herhangi bir çerçeveyi desteklemek için [`estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) kullanılabilen genel sınıf aracılığıyla uygulanır. Genel tahmin aracı kullanan eğitim modelleri hakkında daha fazla bilgi için bkz. [tahmin aracı kullanarak Azure Machine Learning modelleri eğitme](how-to-train-ml-models.md)
 
-Eğitim betiğinizi ek pip ya da conda paketleri çalıştırmak için gerekiyorsa, paketlerin adlarını aracılığıyla geçirerek elde edilen bir docker görüntüsü üzerinde yüklü olabilir `pip_packages` ve `conda_packages` bağımsız değişkenler.
+Eğitim betiğinizin çalışması için ek PIP veya Conda paketleri gerekiyorsa, bu paketlerin adlarını `pip_packages` ve `conda_packages` bağımsız değişkenleri aracılığıyla geçirerek elde edilen Docker görüntüsüne yüklenmiş olmasını sağlayabilirsiniz.
 
 ```Python
 script_params = {
@@ -145,34 +147,34 @@ estimator = PyTorch(source_directory=project_folder,
                     pip_packages=['pillow==5.4.1'])
 ```
 
-## <a name="submit-a-run"></a>Bir farklı çalıştır gönderin
+## <a name="submit-a-run"></a>Bir çalıştırma gönder
 
-[Nesnesini çalıştırmak](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py) işi devam ederken ve tamamlandıktan sonra çalıştırma geçmişini arabirim sağlar.
+[Run nesnesi](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py) , iş çalışırken ve tamamlandıktan sonra çalışma geçmişi için arabirim sağlar.
 
 ```Python
 run = experiment.submit(estimator)
 run.wait_for_completion(show_output=True)
 ```
 
-Çalıştırma yürütülür gibi aşağıdaki aşamalarının geçer:
+Çalıştırma yürütüldüğü için aşağıdaki aşamalardan geçer:
 
-- **Hazırlama**: Bir docker görüntüsü PyTorch estimator göre oluşturulur. Görüntü çalışma alanınızın container registry'ye yüklendi ve sonraki çalıştırmalar için önbelleğe alınır. Günlükler için çalıştırma geçmişi de aktarılır ve ilerleme durumunu izlemek için görüntülenebilir.
+- **Hazırlanıyor**: PyTorch Estimator 'a göre bir Docker görüntüsü oluşturulur. Görüntü, çalışma alanının kapsayıcı kayıt defterine yüklenir ve daha sonra çalışacak şekilde önbelleğe alınır. Günlükler, çalıştırma geçmişine de kaydedilir ve ilerlemeyi izlemek için görüntülenebilir.
 
-- **Ölçeklendirme**: Daha fazla düğüm çalıştırma şu anda mevcut olandan yürütmek için Batch AI kümesi gerektiriyorsa, Ölçek kümesi çalışır.
+- **Ölçeklendirme**: Batch AI kümesi, çalışmayı yürütmek için daha fazla düğüm, şu anda kullanılabilir olandan daha fazla düğüm gerektiriyorsa, küme ölçeklendirmeyi dener.
 
-- **Çalışan**: Betik klasöründeki tüm betikler işlem hedefine yüklenen, veri depoları bağlı veya kopyalanır ve entry_script yürütülür. Stdout çıkışları ve. / Günlükler klasöründe için çalıştırma geçmişi aktarılır ve çalıştırmasını izlemek için kullanılabilir.
+- **Çalıştırma**: Betik klasöründeki tüm betikler işlem hedefine yüklenir, veri depoları bağlanır veya kopyalanır ve entry_script yürütülür. Stdout ve./logs klasörü çıkışları, çalıştırma geçmişine akışla kaydedilir ve çalıştırmayı izlemek için kullanılabilir.
 
-- **İşleme sonrası**: . / Çalışma klasörüne kopyalanır üzerinden için çalıştırma geçmişi çıkarır.
+- **Işlem sonrası**: Çalıştırmanın./çıktılar klasörü, çalışma geçmişine kopyalanır.
 
-## <a name="register-or-download-a-model"></a>Kaydolun veya bir model indirin
+## <a name="register-or-download-a-model"></a>Bir modeli kaydetme veya indirme
 
-Modeli eğittiğimize sonra çalışma alanınıza kaydedebilirsiniz. Model kaydı sağlar, depolama ve sürüm Modellerinizi basitleştirmek için çalışma alanınızdaki [model yönetimi ve dağıtım](concept-model-management-and-deployment.md).
+Modeli eğittikten sonra, çalışma alanınıza kaydedebilirsiniz. Model kaydı, [model yönetimi ve dağıtımını](concept-model-management-and-deployment.md)basitleştirmek için modellerinizi çalışma alanınızda depolamanızı ve sürümlerini oluşturmanıza imkan tanır.
 
 ```Python
 model = run.register_model(model_name='pt-dnn', model_path='outputs/')
 ```
 
-Ayrıca, çalışma nesnesini kullanarak model yerel bir kopyasını indirebilirsiniz. Eğitim betiğinde `pytorch_train.py`, bir PyTorch kaydetme nesne modeli (işlem hedefine yerel) yerel bir klasöre devam ederse. Çalışma nesnesinin bir kopyasını indirmek için kullanabilirsiniz.
+Ayrıca, Çalıştır nesnesini kullanarak modelin yerel bir kopyasını indirebilirsiniz. Eğitim betiğinde `pytorch_train.py`, pytorch Save nesnesi modeli yerel bir klasöre (yerel olarak işlem hedefine) devam ettirir. Bir kopyasını indirmek için Run nesnesini kullanabilirsiniz.
 
 ```Python
 # Create a model folder in the current directory
@@ -187,12 +189,12 @@ for f in run.get_file_names():
 
 ## <a name="distributed-training"></a>Dağıtılmış eğitimi
 
-[ `PyTorch` ](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py) Estimator ayrıca CPU ve GPU kümeleri arasında dağıtılmış eğitimi destekler. Dağıtılmış PyTorch işleri kolayca çalıştırabilir ve düzenleme için Azure Machine Learning hizmeti yönetir.
+[`PyTorch`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py) Tahmin aracı Ayrıca CPU ve GPU kümelerinde dağıtılmış eğitimi destekler. Dağıtılmış PyTorch işlerini kolayca çalıştırabilir ve Azure Machine Learning hizmeti düzenlemeyi sizin için yönetecektir.
 
 ### <a name="horovod"></a>Horovod
-[Horovod](https://github.com/uber/horovod) bir açık kaynaklı, dağıtılmış eğitimi Uber tarafından geliştirilen için tüm framework azaltın. Dağıtılmış GPU PyTorch işleri kolay bir yolunu sunar.
+[Horovod](https://github.com/uber/horovod) , bir açık kaynak, hepsi Uber tarafından geliştirilen dağıtılmış eğitimin çerçevesini azaltır. Dağıtılmış GPU PyTorch işlerinin kolay bir yolunu sunar.
 
-Horovod kullanmak için belirtin bir [ `MpiConfiguration` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py) nesnesi `distributed_training` PyTorch oluşturucuda parametresi. Bu parametre, eğitim betiğinizde kullanabilmeniz için Horovod kitaplığı yüklendiğini sağlar.
+Horovod 'yi kullanmak için, pytorch [`MpiConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py) oluşturucusunda `distributed_training` parametresi için bir nesne belirtin. Bu parametre, eğitim betiğinizdeki kullanabileceğiniz Horovod kitaplığının yüklenmesini sağlar.
 
 
 ```Python
@@ -208,22 +210,22 @@ estimator= PyTorch(source_directory=project_folder,
                       framework_version='1.13',
                       use_gpu=True)
 ```
-Eğitim betiğinizde alabilmeniz Horovod ve bağımlılıklarını sizin için yüklenecek `train.py` gibi:
+Horovod ve bağımlılıkları sizin için yüklenecek, bu sayede eğitim betiğinizdeki `train.py` şu şekilde içeri aktarabilirsiniz:
 
 ```Python
 import torch
 import horovod
 ```
-## <a name="export-to-onnx"></a>ONNX için dışarı aktarma
+## <a name="export-to-onnx"></a>ONNX 'e aktar
 
-Çıkarım ile en iyi duruma getirme [ONNX çalışma zamanı](concept-onnx.md), eğitilen PyTorch modelinizi ONNX biçimine dönüştürün. Çıkarım veya Puanlama modeli, dağıtılan model için tahmin, üretim veri çubuğunda en yaygın olarak kullanıldığı aşamasıdır. Bkz: [öğretici](https://github.com/onnx/tutorials/blob/master/tutorials/PytorchOnnxExport.ipynb) örneği.
+[Onnx çalışma zamanıyla](concept-onnx.md)çıkarımı iyileştirmek için, eğitimli PyTorch MODELINIZI onnx biçimine dönüştürün. Çıkarım veya model Puanlama, dağıtılan modelin tahmin için en yaygın olarak üretim verilerinde kullanıldığı aşamadır. Örnek için [öğreticiye](https://github.com/onnx/tutorials/blob/master/tutorials/PytorchOnnxExport.ipynb) bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, eğitim ve Azure Machine Learning hizmetinde bir PyTorch modelin kayıtlı. Model dağıtımı makalemizi açın devam model dağıtma hakkında bilgi edinin.
+Bu makalede, Azure Machine Learning hizmetinde PyTorch kullanarak derin bir öğrenme, sinir ağı eğitildiniz ve kaydettiniz. Modeli dağıtmayı öğrenmek için model dağıtım makalemize devam edin.
 
 > [!div class="nextstepaction"]
-> [Nasıl ve nerede modelleri dağıtma](how-to-deploy-and-where.md)
+> [Modellerin nasıl ve nereye dağıtılacağı](how-to-deploy-and-where.md)
 * [İzleme ölçümlerini eğitim sırasında çalıştırın](how-to-track-experiments.md)
 * [Hiperparametreleri ayarlama](how-to-tune-hyperparameters.md)
 * [Eğitilen model dağıtma](how-to-deploy-and-where.md)

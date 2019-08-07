@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 500ae75f9bf53c1633290e706e33165dd9d67a88
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 4e33b22c5bc931685f5848db55fc4b9b8fc6eafe
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726604"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780619"
 ---
 # <a name="azure-advanced-threat-detection"></a>Azure Gelişmiş tehdit algılama
 
@@ -216,7 +216,7 @@ Bu birleştirilmiş çabalar, anında yararlanabilmeniz için yeni ve geliştiri
 
 ### <a name="virtual-machines-microsoft-antimalware"></a>Sanal makineler: Microsoft kötü amaçlı yazılımdan koruma
 
-Azure için [Microsoft kötü amaçlı yazılımdan koruma](https://docs.microsoft.com/azure/security/azure-security-antimalware) , uygulamalar ve kiracı ortamları için, insan müdahalesi olmadan arka planda çalışacak şekilde tasarlanan tek bir aracı çözümüdür. Kötü amaçlı yazılımdan koruma izleme de dahil olmak üzere temel güvenli veya gelişmiş özel yapılandırma ile uygulama iş yüklerinizin ihtiyaçlarına göre koruma dağıtabilirsiniz. Azure kötü amaçlı yazılımdan koruma, Azure sanal makineleri için tüm Azure PaaS sanal makinelerine otomatik olarak yüklenen bir güvenlik seçeneğidir.
+Azure için [Microsoft kötü amaçlı yazılımdan koruma](https://docs.microsoft.com/azure/security/fundamentals/antimalware) , uygulamalar ve kiracı ortamları için, insan müdahalesi olmadan arka planda çalışacak şekilde tasarlanan tek bir aracı çözümüdür. Kötü amaçlı yazılımdan koruma izleme de dahil olmak üzere temel güvenli veya gelişmiş özel yapılandırma ile uygulama iş yüklerinizin ihtiyaçlarına göre koruma dağıtabilirsiniz. Azure kötü amaçlı yazılımdan koruma, Azure sanal makineleri için tüm Azure PaaS sanal makinelerine otomatik olarak yüklenen bir güvenlik seçeneğidir.
 
 #### <a name="microsoft-antimalware-core-features"></a>Microsoft kötü amaçlı yazılımdan koruma temel özellikleri
 

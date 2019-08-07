@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ebeed3636ea6da77e05a9a790e51c7771ebe685
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 596020952fd02a414c050ac7fe7ab37d7137c391
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68666279"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779655"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Azure AD parola korumasını dağıtma
 
@@ -38,7 +38,7 @@ Daha güçlü parola doğrulamanın mevcut Active Directory etki alanı denetley
 * [Etki alanı denetleyicisi çoğaltma yükseltmesi zayıf bir dizin hizmetleri onarım modu parolası nedeniyle başarısız oluyor](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password)
 * [Etki alanı denetleyicisi indirgeme zayıf bir yerel yönetici parolası nedeniyle başarısız oluyor](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-demotion-fails-due-to-a-weak-local-administrator-password)
 
-Özellik, makul bir süre için denetim modunda çalıştıktan sonra, daha güvenli parolalar *istemek için yapılandırmayı* *Denetim* modundan geçirebilirsiniz. Bu süre boyunca odaklanmış izleme iyi bir fikirdir.
+Özellik, makul bir süre için denetim modunda çalıştıktan sonra, daha güvenli parolalar istemek için yapılandırmayı *Denetim* modundan geçirebilirsiniz. Bu süre boyunca odaklanmış izleme iyi bir fikirdir.
 
 ## <a name="deployment-requirements"></a>Dağıtım gereksinimleri
 
@@ -282,12 +282,29 @@ Azure AD parola koruması için gereken iki yükleyici vardır. Bunlar [Microsof
 
    Yazılım yüklemesini standart MSI yordamlarını kullanarak otomatikleştirebilirsiniz. Örneğin:
 
-   `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn`
+   `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart`
 
-   > [!WARNING]
-   > Burada örnek Msiexec komutu, hemen yeniden başlatmaya neden olur. Bunu önlemek için `/norestart` bayrağını kullanın.
+   Yükleyicinin makineyi otomatik olarak `/norestart` yeniden başlatması tercih ediyorsanız bayrak atlayabilirsiniz.
 
 Bir etki alanı denetleyicisine DC Aracısı yazılımı yüklendikten sonra yükleme tamamlanır ve bu bilgisayar yeniden başlatılır. Başka yapılandırma gerekmez veya mümkün değildir.
+
+## <a name="upgrading-the-proxy-agent"></a>Proxy aracısını yükseltme
+
+Azure AD parola koruma proxy yazılımının daha yeni bir sürümü kullanılabilir olduğunda, yükseltme, `AzureADPasswordProtectionProxySetup.exe` yazılım yükleyicisinin en son sürümü çalıştırılarak gerçekleştirilir. Proxy yazılımının geçerli sürümünü kaldırmak gerekli değildir-yükleyici yerinde bir yükseltme gerçekleştirir. Proxy yazılımı yükseltilirken yeniden başlatma gerekmez. Yazılım yükseltme standart MSI yordamları kullanılarak otomatikleştirilebilir, örneğin: `AzureADPasswordProtectionProxySetup.exe /quiet`.
+
+Proxy aracısı otomatik yükseltmeyi destekler. Otomatik yükseltme, proxy hizmeti ile yan yana yüklenen Microsoft Azure AD Connect Agent Güncelleştirici hizmetini kullanır. Otomatik yükseltme varsayılan olarak etkindir ve set-AzureADPasswordProtectionProxyConfiguration cmdlet 'i kullanılarak etkinleştirilebilir veya devre dışı bırakılabilir. Geçerli ayar Get-AzureADPasswordProtectionProxyConfiguration cmdlet 'i kullanılarak sorgulanabilir. Microsoft otomatik yükseltmenin etkin olmasını önerir.
+
+Cmdlet `Get-AzureADPasswordProtectionProxy` 'i, bir ormandaki yüklü olan tüm proxy aracılarının yazılım sürümünü sorgulamak için kullanılabilir.
+
+## <a name="upgrading-the-dc-agent"></a>DC aracısını yükseltme
+
+Azure AD parola koruması DC Aracısı yazılımının daha yeni bir sürümü kullanılabilir olduğunda, `AzureADPasswordProtectionDCAgentSetup.msi` yazılım paketinin en son sürümü çalıştırılarak yükseltme gerçekleştirilir. DC Aracısı yazılımının geçerli sürümünü kaldırmak gerekli değildir-yükleyicinin yerinde bir yükseltme gerçekleştirmesi gerekir. DC Aracısı yazılımı yükseltilirken her zaman yeniden başlatma gerekir. bunun nedeni çekirdek Windows davranışıdır. 
+
+Yazılım yükseltme standart MSI yordamları kullanılarak otomatikleştirilebilir, örneğin: `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart`.
+
+Yükleyicinin makineyi otomatik olarak `/norestart` yeniden başlatması tercih ediyorsanız bayrak atlayabilirsiniz.
+
+Cmdlet `Get-AzureADPasswordProtectionDCAgent` 'i, bir ormandaki yüklü olan tüm DC aracılarının yazılım sürümünü sorgulamak için kullanılabilir.
 
 ## <a name="multiple-forest-deployments"></a>Birden çok orman dağıtımı
 
@@ -301,7 +318,7 @@ Parola değişiklikleri/kümeler, salt okuma etki alanı denetleyicilerinde (ROD
 
 Parola koruması için başlıca kullanılabilirlik sorunu, bir ormandaki etki alanı denetleyicileri yeni ilkeleri veya Azure 'dan başka verileri indirmeye çalıştığında proxy sunucularının kullanılabilirliğine yöneliktir. Her DC Aracısı, hangi ara sunucunun çağrılacağını saptarken basit bir hepsini bir kez deneme stili algoritması kullanır. Aracı yanıt vermeyen proxy sunucularını atlar. Hem dizin hem de SYSVOL klasörü durumunun iyi şekilde çoğaltılmasını sağlayan çoğu tam bağlı Active Directory dağıtımı için, kullanılabilirlik sağlamak üzere iki proxy sunucu yeterlidir. Bu, yeni ilkelerin ve diğer verilerin zamanında indirilmesine neden olur. Ancak ek proxy sunucuları dağıtabilirsiniz.
 
-DC Aracısı yazılımının tasarımı, yüksek kullanılabilirliğe ilişkin olağan sorunları azaltır. DC Aracısı en son indirilen parola ilkesinin yerel bir önbelleğini tutar. Tüm kayıtlı proxy sunucuları kullanılamaz hale gelirse, DC aracıları önbelleğe alınmış parola ilkelerini zorlamaya devam eder. Büyük bir dağıtımda parola ilkeleri için makul bir güncelleştirme sıklığı genellikle *günler*, saat veya daha az değildir. Bu nedenle, proxy sunucularının kısa kesintileri Azure AD parola korumasını önemli ölçüde etkilemez.
+DC Aracısı yazılımının tasarımı, yüksek kullanılabilirliğe ilişkin olağan sorunları azaltır. DC Aracısı en son indirilen parola ilkesinin yerel bir önbelleğini tutar. Tüm kayıtlı proxy sunucuları kullanılamaz hale gelirse, DC aracıları önbelleğe alınmış parola ilkelerini zorlamaya devam eder. Büyük bir dağıtımda parola ilkeleri için makul bir güncelleştirme sıklığı genellikle günler, saat veya daha az değildir. Bu nedenle, proxy sunucularının kısa kesintileri Azure AD parola korumasını önemli ölçüde etkilemez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

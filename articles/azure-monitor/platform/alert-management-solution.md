@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/19/2018
 ms.author: bwren
-ms.openlocfilehash: 06532369efb802606eb13a4b38a8579a3528f999
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dacc4179483de5d5ef8a05fd836e4241c161deac
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60777036"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68741272"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Azure Log analytics'teki uyarı yönetimi çözümü
 
 ![Uyarı Yönetimi simgesi](media/alert-management-solution/icon.png)
 
 > [!NOTE]
->  Destekleyen gelişmiş yetenekleri için artık azure İzleyici [uygun ölçekte uyarılarınızı yönetme](https://aka.ms/azure-alerts-overview), tarafından oluşturulan dahil olmak üzere [izleme araçları SCOM, Zabbix veya Nagios gibi](https://aka.ms/managing-alerts-other-monitoring-services).
+>  Azure Izleyici, [SCOM, Zabbix veya Nagios gibi izleme araçlarıyla](https://aka.ms/managing-alerts-other-monitoring-services)oluşturulanlar da dahil olmak üzere [uyarılarınızı uygun ölçekte yönetmek](https://aka.ms/azure-alerts-overview)için gelişmiş özellikleri desteklemektedir.
 >  
 
 
@@ -87,28 +87,28 @@ Uyarı yönetimi çözümü türünde herhangi bir kayıt çözümler **uyarı**
 
 Çözüm, uyarıları System Center Operations Manager'dan içe ve her bir türü ile ilgili bir kayıt oluşturur **uyarı** ve Analytics'teki **OpsManager**.  Bu kayıtlar aşağıdaki tabloda özelliklere sahiptir:  
 
-| Özellik | Description |
+| Özellik | Açıklama |
 |:--- |:--- |
-| Tür |*Uyarı* |
-| SourceSystem |*OpsManager* |
-| AlertContext |XML biçiminde oluşturulacak uyarıya neden veri öğesi ayrıntıları. |
-| AlertDescription |Uyarı ayrıntılı açıklaması. |
-| Alertıd |Uyarı GUİD'si. |
-| AlertName |Uyarının adı. |
-| AlertPriority |Uyarı öncelik düzeyi. |
-| AlertSeverity |Uyarı önem derecesi. |
-| AlertState |Uyarı çözümleme durumu son. |
-| LastModifiedBy |Uyarıyı son değiştiren kullanıcı adı. |
-| ManagementGroupName |Uyarının verildiği yeri yönetim grubunun adı. |
-| RepeatCount |Aynı aynı uyarının verildiği sayısı, çözümlenen bu yana nesne izlediniz. |
-| ResolvedBy |Uyarıyı çözümleyen kullanıcı adı. Uyarı henüz çözümlenmedi, boş. |
-| SourceDisplayName |Uyarıyı üreten izleme nesnesinin görünen adı. |
-| SourceFullName |Uyarıyı üreten izleme nesnesi tam adı. |
-| TicketId |System Center Operations Manager ortamı biletleri için uyarı atamak için bir işlem ile tümleşikse uyarı için bilet kimliği.  Boş yok biletin kimliği atanır. |
-| TimeGenerated |Tarihi ve uyarının oluşturulduğu saat. |
-| TimeLastModified |Tarihi ve uyarının son değiştirilme saati. |
-| TimeRaised |Tarihi ve uyarının verildiği saat. |
-| TimeResolved |Tarih ve saat, uyarı çözümlendi. Uyarı henüz çözümlenmedi, boş. |
+| `Type` |*Uyarı* |
+| `SourceSystem` |*OpsManager* |
+| `AlertContext` |XML biçiminde oluşturulacak uyarıya neden veri öğesi ayrıntıları. |
+| `AlertDescription` |Uyarı ayrıntılı açıklaması. |
+| `AlertId` |Uyarı GUİD'si. |
+| `AlertName` |Uyarının adı. |
+| `AlertPriority` |Uyarı öncelik düzeyi. |
+| `AlertSeverity` |Uyarı önem derecesi. |
+| `AlertState` |Uyarı çözümleme durumu son. |
+| `LastModifiedBy` |Uyarıyı son değiştiren kullanıcı adı. |
+| `ManagementGroupName` |Uyarının verildiği yeri yönetim grubunun adı. |
+| `RepeatCount` |Aynı aynı uyarının verildiği sayısı, çözümlenen bu yana nesne izlediniz. |
+| `ResolvedBy` |Uyarıyı çözümleyen kullanıcı adı. Uyarı henüz çözümlenmedi, boş. |
+| `SourceDisplayName` |Uyarıyı üreten izleme nesnesinin görünen adı. |
+| `SourceFullName` |Uyarıyı üreten izleme nesnesi tam adı. |
+| `TicketId` |System Center Operations Manager ortamı biletleri için uyarı atamak için bir işlem ile tümleşikse uyarı için bilet kimliği.  Boş yok biletin kimliği atanır. |
+| `TimeGenerated` |Tarihi ve uyarının oluşturulduğu saat. |
+| `TimeLastModified` |Tarihi ve uyarının son değiştirilme saati. |
+| `TimeRaised` |Tarihi ve uyarının verildiği saat. |
+| `TimeResolved` |Tarih ve saat, uyarı çözümlendi. Uyarı henüz çözümlenmedi, boş. |
 
 ## <a name="sample-log-searches"></a>Örnek günlük aramaları
 Aşağıdaki tabloda bu çözüm tarafından toplanan uyarı kayıtlarına ilişkin örnek günlük aramaları sağlar: 

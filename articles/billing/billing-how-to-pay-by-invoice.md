@@ -1,6 +1,6 @@
 ---
-title: Azure abonelikleri için fatura ile ödeme
-description: Azure abonelikleri için fatura ile ödemeyi açıklar.
+title: Azure abonelikleri için faturaya göre ödeme yapın
+description: Azure aboneliklerinin faturaya göre nasıl ödeme yapılacağını açıklar.
 author: bandersmsft
 manager: jureid
 tags: billing
@@ -11,32 +11,34 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 9ca726ef737ce4750018d2461bc4bcd6c7ebb5f5
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 90c7014e3c22ac7186854d5c01b911aa630d20dd
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491196"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774668"
 ---
-# <a name="pay-for-your-azure-subscription-by-invoice"></a>Azure aboneliğiniz için fatura ile ödeme
+# <a name="pay-for-your-azure-subscription-by-invoice"></a>Azure aboneliğiniz için faturaya göre ödeme yapın
 
-Fatura ile ödemeyi geçiş yapıyorsanız, bu onay/havale tarafından Fatura tarihinden sonraki 30 gün içinde faturanızın ödeme anlamına gelir. Azure aboneliğinizi faturayla ödeme yapmak için uygun olmak için bir Azure destek isteği gönderin. İsteğiniz onaylandıktan sonra fatura ödeme (onay/havale) içinde geçebilirsiniz [Azure portalında](https://portal.azure.com).
+Faturaya göre öde ' ye geçerseniz, fatura tarihinin 30 gün içinde Çek/tel aktarımı ile faturalandırıldığınız anlamına gelir. Azure aboneliğiniz için faturaya göre ödeme yapmayı uygun hale gelmesi için Azure desteği 'ne bir istek gönderebilirsiniz. İsteğiniz onaylandıktan sonra, [Azure Portal](https://portal.azure.com)fatura ödeme (Çek/tel aktarımı) seçeneğine geçebilirsiniz.
 
 > [!IMPORTANT]
-> * Fatura ödeme (onay/havale) yalnızca iş hesapları için kullanılabilir.
-> * Fatura ödeme geçmeden önce tüm ödenmemiş ödeme yapmanız gerekir.
+> * Fatura ödemesi (Çek/tel aktarımı) yalnızca iş hesaplarında kullanılabilir.
+> * Fatura ödeme geçmeden önce tüm bekleyen ücretleri ödemelidir.
 
-## <a name="request-to-pay-by-invoice"></a>Faturayla ödeme talep
+## <a name="request-to-pay-by-invoice"></a>Faturaya göre ödeme isteği
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın. Seçin **Yardım + Destek** > **yeni destek isteği**.
+1. [Azure Portal](https://portal.azure.com/) oturum açın. **Yardım ve destek** > **Yeni destek isteği ' ni**seçin.
 
     ![Yardım ve destek bağlantısı](./media/billing-how-to-pay-by-invoice/help-and-support.png)
 
-2. Seçin **faturalama** olarak **sorun türü**. *Sorun türü* destek isteği kategorisi. Faturayla ödeme yapmak, bir destek planı seçin ve ardından istediğiniz aboneliği seçin **sonraki**.
+2. **Sorun türü**olarak **faturalandırma** ' i seçin. *Sorun türü* , destek isteği kategorisidir. Faturaya göre ödeme yapmak istediğiniz aboneliği seçin, bir destek planı seçin ve ardından **İleri**' yi seçin.
 
-3. **Sorun Türü** kutusunda **Fatura ile ödeme**'yi seçin. *Sorun türü* destek isteği kategori olan.
+3. **Sorun türü**olarak **ödeme** ' yi seçin. *Sorun türü* , destek isteği alt kategorisidir.
 
-4. Aşağıdaki bilgileri girin **ayrıntıları** kutusuna ve ardından **sonraki**.
+4. **Sorun alt türü** olarak **faturaya göre ödeme yap** ' ı seçin
+
+5. **Ayrıntılar** kutusuna aşağıdaki bilgileri girin ve ardından **İleri**' yi seçin.
 
          New or existing customer:
          If existing, current payment method:
@@ -61,60 +63,60 @@ Fatura ile ödemeyi geçiş yapıyorsanız, bu onay/havale tarafından Fatura ta
          (New quota) Requested cores:
          Specific region & series of Subscription:
 
-    - **Şirket adı** ve **şirket adresi** Azure hesabı için sağlanan bilgilerin eşleşmesi gerekir. Görüntülemek veya bilgileri güncelleştirmek için bkz: [Azure hesap profili bilgilerinizi değiştirmek](billing-how-to-change-azure-account-profile.md).
-    - Kredi sınırınıza onaylanabilir önce Azure portalında faturalama, iletişim bilgilerinizi eklemeniz gerekir. Şirketin Borç hesapları veya Finans departmanı için kişi ayrıntılarını ilişkili olmalıdır. Fatura bilgilerini güncelleştirmek için Git [Azure hesap Merkezi](https://account.azure.com/Profile).
+    - **Şirket adı** ve **Şirket adresi** , Azure hesabı için verdiğiniz bilgilerle eşleşmelidir. Bilgileri görüntülemek veya güncelleştirmek için bkz. [Azure hesap profili bilgilerinizi değiştirme](billing-how-to-change-azure-account-profile.md).
+    - Kredi sınırının onaylanabilmesi için faturalandırma iletişim bilgilerinizi Azure portal eklemeniz gerekir. İletişim ayrıntıları, şirketin hesaplarının borç veya finans departmanıyla ilişkili olmalıdır. Faturalandırma iletişim bilgilerini güncelleştirmek için [Azure Hesap Merkezi](https://account.azure.com/Profile)adresine gidin.
 
-5. İletişim bilgilerinizi ve tercih edilen iletişim yöntemini seçip **Oluştur**'a tıklayın.
+6. İletişim bilgilerinizi ve tercih edilen iletişim yöntemini seçip **Oluştur**'a tıklayın.
 
-Size gereken kredi miktarı nedeniyle bir kredi kontrolü çalıştırmanız gerekiyorsa, kredi application should check göndereceğiz.
+İhtiyaç duyduğunuz kredi miktarı nedeniyle bir kredi denetimi çalıştırdığımızda size bir kredi denetimi uygulaması göndereceğiz.
 
-## <a name="switch-to-invoice-pay-checkwire-transfer"></a>Ödeme (onay/havale) faturaya geç
+## <a name="switch-to-invoice-pay-checkwire-transfer"></a>Fatura ödeme geç (Çek/tel aktarımı)
 
-Faturayla ödeme onaylandıktan sonra Azure portalında ödeme (onay/havale) fatura geçiş yapabilirsiniz.
+Faturaya göre ödeme yapmayı onayladıktan sonra, Azure portal fatura ödeme (Çek/tel aktarımı) seçeneğine geçebilirsiniz.
 
-Bir Microsoft Online Services programı hesabınız varsa, onay/aktarım kablo için Azure aboneliğinizi geçiş yapabilirsiniz. Microsoft Müşteri sözleşmesi varsa, onay/aktarım kablo için fatura profilinizde geçiş yapabilirsiniz. [Hesap türünüzü kontrol öğrenin](#check-access-to-a-microsoft-customer-agreement).
+Bir Microsoft Online Services program hesabınız varsa, Azure aboneliğinizi denetim/hat aktarımına geçirebilirsiniz. Bir Microsoft Müşteri anlaşmanız varsa, faturalandırma profilinizi denetim/tel aktarım için değiştirebilirsiniz. [Hesap türünü nasıl denetleyeceğinizi öğrenin](#check-access-to-a-microsoft-customer-agreement).
 
-### <a name="switch-azure-subscription-to-checkwire-transfer"></a>Onay/aktarım kablo için Azure aboneliğine geçiş
+### <a name="switch-azure-subscription-to-checkwire-transfer"></a>Azure aboneliğini denetim/tel aktarımına geçir
 
-Fatura ödeme (onay/havale) için Azure aboneliğinizi geçiş yapmak için aşağıdaki adımları izleyin. **Fatura ödeme (onay/havale) geçtikten sonra kredi kartına geçiş yapamazsınız**.
+Azure aboneliğinizi fatura ödemenize (Çek/tel aktarımı) geçirmek için aşağıdaki adımları izleyin. **Fatura ödemenize geçtiğinizde (Çek/tel aktarımı), kredi kartına geri**dönemezsiniz.
 
-1. Oturum [Azure portalında](https://portal.azure.com) hesap yöneticisi olarak.
-1. Arama **maliyet Yönetimi + faturalandırma**.
+1. [Azure Portal](https://portal.azure.com) hesap yöneticisi olarak oturum açın.
+1. **Maliyet yönetimi + faturalandırma**için arama yapın.
 
-    ![Arama gösteren ekran görüntüsü](./media/billing-how-to-pay-by-invoice/search.png)
+    ![Aramayı gösteren ekran görüntüsü](./media/billing-how-to-pay-by-invoice/search.png)
 
-1. Fatura ödeme geçiş yapmak istediğiniz aboneliği seçin.
+1. Fatura ödemesine geçmek istediğiniz aboneliği seçin.
 1. **Ödeme yöntemleri**'ni seçin.
-1. Komut çubuğunda **faturayla ödeme** düğmesi.
+1. Komut çubuğunda, **faturaya göre öde** düğmesine tıklayın.
 
-    ![Ödeme tarafından Fatura düğmesini gösteren ekran görüntüsü](./media/billing-how-to-pay-by-invoice/pay-by-invoice.png)
+    ![Faturaya göre ödeme düğmesini gösteren ekran görüntüsü](./media/billing-how-to-pay-by-invoice/pay-by-invoice.png)
 
-### <a name="switch-billing-profile-to-checkwire-transfer"></a>Geçiş için onay/aktarım kablo faturalandırma profili
+### <a name="switch-billing-profile-to-checkwire-transfer"></a>Faturalandırma profilini denetim/tel aktarımına geçir
 
-Onay/kablo aktarımı için bir faturalandırma profili geçmek için aşağıdaki adımları izleyin. Azure için kaydolan kişi varsayılan ödeme yöntemini'fatura profilinin değiştirebileceğinizi unutmayın.
+Bir faturalandırma profilini denetim/tel aktarım için değiştirmek üzere aşağıdaki adımları izleyin. Lütfen yalnızca Azure 'a kaydolan kişi, bir faturalandırma profilinin varsayılan ödeme yöntemini değiştirebileceğinizi unutmayın.
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Arama **maliyet Yönetimi + faturalandırma**.
-1. Soldaki menüde tıklayarak **faturalandırma profilleri**.
+1. Soldaki menüde **faturalandırma profilleri**' ne tıklayın.
 
-    ![Faturalandırma profili menüde gösteren ekran görüntüsü](./media/billing-how-to-pay-by-invoice/billing-profile.png)
+    ![menüdeki faturalama profilini gösteren ekran görüntüsü](./media/billing-how-to-pay-by-invoice/billing-profile.png)
 
-1. Faturalandırma profili seçin.
-1. Soldaki menüde **ödeme yöntemlerini**.
+1. Bir faturalandırma profili seçin.
+1. Soldaki menüden **ödeme yöntemleri**' ni seçin.
 
-   ![Menüde ödeme yöntemlerini gösteren ekran görüntüsü](./media/billing-how-to-pay-by-invoice/billing-profile-payment-methods.png)
+   ![Menüdeki ödeme yöntemlerini gösteren ekran görüntüsü](./media/billing-how-to-pay-by-invoice/billing-profile-payment-methods.png)
 
-1. Onay/havale ile ödeme yapmak uygun olan bildiren mavi başlığa tıklayın.
+1. Çek/tel aktarımı ile ödeme yapmayı uygun hale getirdiğini belirten mavi başlık ' a tıklayın.
 
-    ![Onay/kablo geçmek için mavi renkli bir başlık gösteren ekran görüntüsü](./media/billing-how-to-pay-by-invoice/customer-led-switch-to-invoice.png)
+    ![Denetim/tel 'ya geçiş yapmak için mavi başlık gösteren ekran görüntüsü](./media/billing-how-to-pay-by-invoice/customer-led-switch-to-invoice.png)
 
-## <a name="check-access-to-a-microsoft-customer-agreement"></a>Microsoft Müşteri sözleşmesi için erişim denetimi
+## <a name="check-access-to-a-microsoft-customer-agreement"></a>Microsoft Müşteri sözleşmesine erişimi denetleme
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
 ## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bizimle iletişim kurun.
 
-Sorularınız varsa veya yardıma ihtiyacınız [bir destek isteği oluşturma](https://go.microsoft.com/fwlink/?linkid=2083458).
+Sorularınız varsa veya yardıma ihtiyacınız varsa, [destek isteği oluşturun](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Gerekirse, fatura kişi bilgilerinizi güncelleştirin [Azure hesap Merkezi](https://account.azure.com/Profile).
+- Gerekirse faturalandırma iletişim bilgilerinizi [Azure Hesap Merkezi](https://account.azure.com/Profile)güncelleştirin.

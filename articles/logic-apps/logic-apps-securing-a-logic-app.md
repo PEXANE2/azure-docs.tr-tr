@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 06/28/2019
-ms.openlocfilehash: f27dfd1f907d106ddb3b1b9dd7534d56380149c2
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 15ec46511f1269606e0b0416c7c4a25f93012bec
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385504"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736892"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps 'da güvenli erişim ve veriler
 
@@ -183,7 +183,7 @@ Başkalarının mantıksal uygulamanızı değiştirmesini veya silmesini engell
 
 ## <a name="access-to-run-history-data"></a>Çalışma geçmişi verilerine erişim
 
-Mantıksal uygulama çalıştırması sırasında, tüm veriler aktarım sırasında ve bekleyen sırada şifrelenir. Mantıksal uygulamanız çalışmayı bitirdiğinde, her eylem için durum, süre, girişler ve çıkışlarla birlikte çalışan adımlar dahil olmak üzere o çalıştırmaya ilişkin geçmişi görüntüleyebilirsiniz. Bu zengin ayrıntı, mantıksal uygulamanızın nasıl çalıştığı ve ortaya çıkan tüm sorunları gidermeye başlayabileceğiniz hakkında öngörüler sağlar.
+Mantıksal uygulama çalıştırması sırasında, tüm veriler aktarım sırasında aktarım [Katmanı Güvenliği (TLS)](https://azure.microsoft.com/updates/app-service-and-functions-hosted-apps-can-now-update-tls-versions/) ve [bekleyen](../security/fundamentals/encryption-atrest.md)' i kullanılarak şifrelenir. Mantıksal uygulamanız çalışmayı bitirdiğinde, her eylem için durum, süre, girişler ve çıkışlarla birlikte çalışan adımlar dahil olmak üzere o çalıştırmaya ilişkin geçmişi görüntüleyebilirsiniz. Bu zengin ayrıntı, mantıksal uygulamanızın nasıl çalıştığı ve ortaya çıkan tüm sorunları gidermeye başlayabileceğiniz hakkında öngörüler sağlar.
 
 Mantıksal uygulamanızın çalıştırma geçmişine eriştiğinizde Logic Apps erişiminizin kimliğini doğrular ve mantıksal uygulamanızın çalıştırmasında isteklerinizin ve yanıtların giriş ve çıkışları için bağlantılar sağlar. Ancak, herhangi bir parolayı, parolayı, anahtarı veya diğer hassas bilgileri işleyen eylemler için başkalarının bu verilere bakmasını ve erişimini engellemek isteyebilirsiniz. Örneğin, mantıksal uygulamanız bir HTTP eyleminin kimlik doğrulaması sırasında kullanmak üzere [Azure Key Vault](../key-vault/key-vault-whatis.md) bir gizli dizi alırsa, bu gizli anahtarı görünümden gizlemek istersiniz.
 

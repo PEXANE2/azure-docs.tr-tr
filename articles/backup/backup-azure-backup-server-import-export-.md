@@ -1,6 +1,6 @@
 ---
 title: Azure Backup-DPM ve Azure Backup Sunucusu için çevrimdışı yedekleme
-description: Azure Backup Azure Içeri/dışarı aktarma hizmetini kullanarak ağ üzerinden veri göndermenizi nasıl sağlayacağınızı öğrenin. Bu makalede, Azure Içeri aktarma hizmeti kullanılarak ilk yedekleme verilerinin çevrimdışı dengeli dağıtımı açıklanmaktadır.
+description: Azure Backup, Azure Içeri/dışarı aktarma hizmetini kullanarak ağdan veri göndermenizi sağlar. Bu makalede, DPM ve Azure Backup Sunucusu (MABS) için çevrimdışı yedekleme iş akışı açıklanmaktadır.
 ms.reviewer: saurse
 author: dcurwin
 manager: carmonm
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 5/8/2018
 ms.author: dacurwin
-ms.openlocfilehash: 4bc0421f16d56d34e3f3156700a7a141d38fd63d
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 0f60fbf22541e5fdd003d0ab663b5905cd31adcd
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689390"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68737248"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>DPM ve Azure Backup Sunucusu için çevrimdışı yedekleme iş akışı
 Azure Backup, Azure 'a verilerin ilk tam yedeklemesi sırasında ağ ve depolama maliyetlerini kaydetmekle ilgili çeşitli yerleşik verimlilik içerir. İlk tam yedeklemeler genellikle büyük miktarda veriyi aktarır ve yalnızca deltas/artımlarsa aktarımı yapan sonraki yedeklemelerle karşılaştırıldığında daha fazla ağ bant genişliği gerektirir. Azure Backup ilk yedeklemeleri sıkıştırır. Azure Backup çevrimdışı dağıtım sürecinde, sıkıştırılmış ilk yedekleme verilerini çevrimdışı olarak Azure 'a yüklemek için diskleri kullanabilir.
@@ -102,7 +102,7 @@ En yakın Azure veri merkezine gönderilen SATA sürücüleri hazırlamak için 
 
 1. Dizinine gidin ve **AzureOfflineBackupDiskPrep** dizinini, HAZıRLANMAKTA olan SATA sürücülerin bağlı olduğu bir kopya bilgisayara kopyalayın. Aşağıdaki gibi, kopyalama bilgisayarına dikkat edin:
 
-   * Kopya bilgisayar, çevrimdışı dağıtım için **hazırlama iş akışında** sağlanan aynı ağ yolunu kullanarak çevrimdışı dengeli dağıtım iş akışının hazırlama konumuna erişebilir.
+   * Kopya bilgisayar, çevrimdışı dağıtım için hazırlama iş akışında sağlanan aynı ağ yolunu kullanarak çevrimdışı dengeli dağıtım iş akışının hazırlama konumuna erişebilir.
    * BitLocker, kopyalama bilgisayarında etkinleştirilmiştir.
    * Kopya bilgisayar Azure portal erişebilir.
 

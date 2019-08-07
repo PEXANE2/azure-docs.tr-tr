@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 6516bbcb4ea879279812d61d9fe31f1ea4268280
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7dcf962345a2453fca52825c4be33a439d25df54
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67616250"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68740928"
 ---
 # <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' de yetkili IP adresi aralıklarını kullanarak API sunucusuna önizleme-güvenli erişim
 
@@ -218,13 +218,13 @@ API sunucusu yetkilendirilmiş IP aralıklarını etkinleştirmek için, yetkile
 
 [Az aks Update][az-aks-update] komutunu kullanın ve izin vermek için *--api-Server-yetkilendirilmiş-IP aralıklarını* belirtin. Bu IP adresi aralıkları genellikle şirket içi ağlarınız tarafından kullanılan adres aralıklarından oluşur. Önceki adımda elde edilen kendi Azure Güvenlik duvarınızın genel IP adresini ekleyin (örneğin, *20.42.25.196/32*).
 
-Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *Myakscluster* adlı kümede bulunan API sunucusu yetkili IP aralıklarını mümkün bir şekilde sunar. Yetkilendirmede kullanılacak IP adresi aralıkları *20.42.25.196/32* ' dir (Azure Güvenlik DUVARı genel IP adresi), ardından *172.0.0.10/16* ve *168.10.0.10/18*:
+Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *Myakscluster* adlı kümede bulunan API sunucusu yetkili IP aralıklarını mümkün bir şekilde sunar. Yetkilendirmede kullanılacak IP adresi aralıkları *20.42.25.196/32* ' dir (Azure Güvenlik DUVARı genel IP adresi), ardından *172.0.0.0/16* ve *168.10.0.0/18*:
 
 ```azurecli-interactive
 az aks update \
     --resource-group myResourceGroup \
     --name myAKSCluster \
-    --api-server-authorized-ip-ranges 20.42.25.196/32,172.0.0.10/16,168.10.0.10/18
+    --api-server-authorized-ip-ranges 20.42.25.196/32,172.0.0.0/16,168.10.0.0/18
 ```
 
 ## <a name="update-or-disable-authorized-ip-ranges"></a>Yetkili IP aralıklarını Güncelleştir veya devre dışı bırak

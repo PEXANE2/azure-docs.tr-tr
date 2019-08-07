@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory'de etkinlik meta veri alma | Microsoft Docs
-description: GetMetadata etkinliği bir Data Factory işlem hattında nasıl kullanabileceğinizi öğrenin.
+title: Azure Data Factory meta verileri Al etkinliği | Microsoft Docs
+description: GetMetadata etkinliğini bir Data Factory işlem hattında nasıl kullanabileceğinizi öğrenin.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -11,81 +11,84 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/11/2019
+ms.date: 08/06/2019
 ms.author: jingwang
-ms.openlocfilehash: 78f63b4f46fe5479d4d0fd5849ad80536d8a137c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b819a990b9f607aaf70bf2e16a5857de3f7306cc
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61346927"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827501"
 ---
-# <a name="get-metadata-activity-in-azure-data-factory"></a>Azure Data Factory'de etkinlik meta verilerini al
+# <a name="get-metadata-activity-in-azure-data-factory"></a>Azure Data Factory meta veri Al etkinliği
 
-GetMetadata etkinliği, almak için kullanılabilir **meta verileri** Azure Data factory'deki herhangi bir veri. Bu etkinlik, aşağıdaki senaryolarda kullanılabilir:
+GetMetadata etkinliği, Azure Data Factory tüm verilerin **meta verilerini** almak için kullanılabilir. Bu etkinlik aşağıdaki senaryolarda kullanılabilir:
 
-- Herhangi bir verinin meta veri bilgilerini doğrula
-- Veriler hazır / kullanılabilir olduğunda, bir işlem hattını tetikleme
+- Tüm verilerin meta veri bilgilerini doğrulama
+- Veri hazır/kullanılabilir olduğunda bir işlem hattı tetikleyin
 
-Aşağıdaki işlevleri denetim akışında kullanılabilir:
+Aşağıdaki işlev Denetim akışında mevcuttur:
 
-- GetMetadata etkinliğin çıkışı doğrulama gerçekleştirmek için koşullu ifadelerde kullanılabilir.
-- Koşul karşılanmazsa bir işlem hattı tetiklenebilir-kadar döngü
+- GetMetadata etkinliğinin çıktısı, doğrulama gerçekleştirmek için koşullu ifadelerde kullanılabilir.
+- İşlem-Until döngü aracılığıyla koşul karşılandığında bir işlem hattı tetiklenebilir
 
 ## <a name="supported-capabilities"></a>Desteklenen özellikler
 
-GetMetadata etkinliği, bir veri kümesi gerekli bir giriş olarak alır ve etkinlik çıkışı kullanılabilir meta veri bilgilerini çıkarır. Şu anda aşağıdaki bağlayıcılar karşılık gelen alınabilir meta verileri ile desteklenir ve desteklenen en fazla meta veri boyutu en fazla olan **1MB**.
+GetMetadata etkinliği, bir veri kümesini gerekli giriş olarak alır ve etkinlik çıkışı olarak kullanılabilir meta veri bilgileri verir. Şu anda, karşılık gelen alınabilir meta veriler ile aşağıdaki bağlayıcılar desteklenir ve desteklenen en büyük meta veri boyutu **1 MB**'a kadar olur.
 
 >[!NOTE]
->GetMetadata etkinliği şirket içinde barındırılan tümleştirme çalışma zamanı üzerinde çalıştırıyorsanız, en son özellik sürümü 3.6 veya sonraki sürümlere desteklenir. 
+>Şirket içinde barındırılan bir Integration Runtime GetMetadata etkinliğini çalıştırırsanız en son yetenek sürüm 3,6 veya üzeri sürümlerde desteklenir. 
 
 ### <a name="supported-connectors"></a>Desteklenen bağlayıcılar
 
-**Dosya depolama:**
+**Dosya depolama alanı:**
 
-| Bağlayıcı/meta verileri | ItemName<br>(dosya/klasör) | Itemtype<br>(dosya/klasör) | size<br>(dosya) | Oluşturulan<br>(dosya/klasör) | Son değiştirme<br>(dosya/klasör) |childItems<br>(klasör) |contentMD5<br>(dosya) | structure<br/>(dosya) | columnCount<br>(dosya) | Var.<br>(dosya/klasör) |
+| Bağlayıcı/meta veriler | ItemName<br>(dosya/klasör) | ItemType<br>(dosya/klasör) | size<br>dosyasýný | oluşturuldu<br>(dosya/klasör) | lastModified<br>(dosya/klasör) |childItems<br>klasörde |contentMD5<br>dosyasýný | structure<br/>dosyasýný | columnCount<br>dosyasýný | bulunur<br>(dosya/klasör) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
-| Amazon S3 | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
-| Google bulut depolama | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
-| Azure Blob | √/√ | √/√ | √ | x/x | √/√* | √ | √ | √ | √ | √/√ |
-| Azure Data Lake Storage Gen1 | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
-| Azure Data Lake Storage Gen2 | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
-| Azure Dosya Depolama | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
-| Dosya Sistemi | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
-| SFTP | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
-| FTP | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| [Amazon S3](connector-amazon-simple-storage-service.md) | √/√ | √/√ | √ | x/x | √/√ * | √ | x | √ | √ | √/√ * |
+| [Google bulut depolaması](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√ * | √ | x | √ | √ | √/√ * |
+| [Azure blobu](connector-azure-blob-storage.md) | √/√ | √/√ | √ | x/x | √/√ * | √ | √ | √ | √ | √/√ |
+| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| [Azure Dosya Depolama](connector-azure-file-storage.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
+| [Dosya Sistemi](connector-file-system.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
+| [SFTP](connector-sftp.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| [FTP](connector-ftp.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 
-- Amazon S3 ve Google Sloud depolama `lastModified` demet ve anahtar ancak sanal klasör; için geçerlidir; ve `exists` ön eki veya sanal klasör değil, demet ve anahtarı için geçerlidir.
-- Azure Blob için `lastModified` kapsayıcı ve blob ancak sanal klasör için geçerlidir.
+- Amazon S3 ve Google Cloud Storage `lastModified` için, demet ve anahtar için geçerlidir; ancak sanal klasörü için geçerlidir;; `exists` ve demet ve anahtar için geçerlidir ancak önek veya sanal klasör değildir.
+- Azure Blob `lastModified` için, kapsayıcı ve BLOB için geçerlidir ancak sanal klasör değildir.
 
 **İlişkisel veritabanı:**
 
-| Bağlayıcı/meta verileri | structure | columnCount | Var. |
+| Bağlayıcı/meta veriler | structure | columnCount | bulunur |
 |:--- |:--- |:--- |:--- |
-| Azure SQL Veritabanı | √ | √ | √ |
-| Azure SQL Veritabanı Yönetilen Örneği | √ | √ | √ |
-| Azure SQL Veri Ambarı | √ | √ | √ |
-| SQL Server | √ | √ | √ |
+| [Azure SQL Veritabanı](connector-azure-sql-database.md) | √ | √ | √ |
+| [Azure SQL veritabanı yönetilen örneği](connector-azure-sql-database-managed-instance.md) | √ | √ | √ |
+| [Azure SQL Veri Ambarı](connector-azure-sql-data-warehouse.md) | √ | √ | √ |
+| [SQL Server](connector-sql-server.md) | √ | √ | √ |
 
 ### <a name="metadata-options"></a>Meta veri seçenekleri
 
-Alınacak GetMetadata etkinliği alan listesinde, aşağıdaki meta veri türleri belirtilebilir:
+Aşağıdaki meta veri türleri, alınacak GetMetadata etkinlik alanı listesinde belirtilebilir:
 
 | Meta veri türü | Açıklama |
 |:--- |:--- |
 | ItemName | Dosya veya klasörün adı. |
-| Itemtype | Dosya veya klasörün türü. Çıkış değeri `File` veya `Folder`. |
-| size | Dosyanın bayt cinsinden boyutu. Yalnızca dosya için geçerli. |
-| Oluşturulan | Dosya veya klasörün oluşturulan datetime. |
-| Son değiştirme | Son değiştirme: dosyanın veya klasörün datetime. |
-| childItems | Belirli klasörün içindeki dosyaları ve alt klasörlerin listesi. Yalnızca klasör için geçerli. Çıkış değeri, adı ve her alt öğenin türü listesidir. |
-| contentMD5 | Dosya MD5. Yalnızca dosya için geçerli. |
-| structure | İlişkisel veritabanı tablo ve dosya içinde veri yapısı. Çıkış değeri sütun adı ve sütun türü listesidir. |
+| ItemType | Dosya veya klasörün türü. Çıkış değeri `File` veya `Folder`. |
+| size | Dosyanın bayt cinsinden boyutu. Yalnızca dosya için geçerlidir. |
+| oluşturuldu | Dosya veya klasörün DateTime değeri oluşturuldu. |
+| lastModified | Dosya veya klasörün son değiştirilme tarihi. |
+| childItems | Verilen klasör içindeki alt klasörlerin ve dosyaların listesi. Yalnızca klasör için geçerlidir. Çıkış değeri her bir alt öğenin ad ve türünün bir listesidir. |
+| contentMD5 | Dosyanın MD5. Yalnızca dosya için geçerlidir. |
+| structure | Dosya veya ilişkisel veritabanı tablosu içindeki veri yapısı. Çıkış değeri, sütun adı ve sütun türünün bir listesidir. |
 | columnCount | Dosya veya ilişkisel tablo içindeki sütun sayısı. |
-| Var.| Olup olmadığını veya bir dosya/klasör/tablosu bulunmaktadır. "Var" GetaMetadata alan listesinde belirtilirse, ' % s'öğesi (dosya/klasör/tablosu) bile yok, etkinlik başarısız olmaz dikkat edin. Bunun yerine döndürür `exists: false` çıktı. |
+| bulunur| Bir dosya/klasör/tablonun var olup olmadığı. "GetaMetadata alan listesinde" Exists "belirtilirse, öğe (dosya/klasör/tablo) mevcut olmadığında bile etkinlik başarısız olmaz; Bunun yerine çıktıyı geri `exists: false` döndürür. |
 
 >[!TIP]
->Bir dosya/klasör/table veya varsa doğrulamak istediğinizde, belirtin `exists` GetMetadata etkinliği alan listesinde, daha sonra kontrol edebilirsiniz `exists: true/false` neden etkinlik çıkışı. Varsa `exists` alan listesinde, GetMetadata etkinliği başarısız olur nesne bulunamadığında yapılandırılmadı.
+>Bir dosya/klasör/tablo varsa doğrulamak istediğinizde, GetMetadata etkinlik alanı listesinde belirtin `exists` , ardından etkinlik çıktısından `exists: true/false` elde edilen sonucu kontrol edebilirsiniz. `exists` Alan listesinde yapılandırılmamışsa, nesne bulunamadığında GetMetadata etkinliği başarısız olur.
+
+>[!NOTE]
+>Dosya mağazalarından meta verileri aldığınızda ve/veya `modifiedDatetimeStart` yapılandırıp/veya `modifiedDatetimeEnd`yapılandırdığınızda, `childItems` içindeki çıktı yalnızca, Aralık arasındaki son değiştirme zamanına sahip, ancak alt klasörler olmadan verilen yolun altındaki dosyaları döndürür.
 
 ## <a name="syntax"></a>Sözdizimi
 
@@ -105,7 +108,7 @@ Alınacak GetMetadata etkinliği alan listesinde, aşağıdaki meta veri türler
 }
 ```
 
-**Veri kümesi:**
+**Veri kümesi**
 
 ```json
 {
@@ -129,16 +132,18 @@ Alınacak GetMetadata etkinliği alan listesinde, aşağıdaki meta veri türler
 
 ## <a name="type-properties"></a>Tür özellikleri
 
-Şu anda GetMetadata etkinliği, meta veri bilgilerini aşağıdaki türleri getirebilir.
+Şu anda GetMetadata etkinliği aşağıdaki tür meta veri bilgilerini alabilir.
 
 Özellik | Açıklama | Gerekli
 -------- | ----------- | --------
-alan listesi | Gerekli meta veri bilgilerini türlerini listeler. Ayrıntılara bakın [meta veri seçenekleri](#metadata-options) desteklenen meta veriler bölümü. | Evet 
-Veri kümesi | GetMetadata etkinliği tarafından alınmasına izin, meta verileri etkinliği olan başvuru veri kümesi. Bkz: [desteklenen yetenekler](#supported-capabilities) bölüm üzerinde desteklenen bağlayıcılar ve veri kümesi söz dizimi ayrıntıları bağlayıcı konusuna bakın. | Evet
+fieldList | Gerekli meta veri bilgisi türlerini listeler. Desteklenen meta verilerde [meta veri seçenekleri](#metadata-options) bölümünde ayrıntılara bakın. | Evet 
+veri kümesi | Meta veri etkinliği GetMetadata etkinliği tarafından alınacak olan başvuru veri kümesi. Desteklenen bağlayıcılar bölümünde [desteklenen yetenekler](#supported-capabilities) bölümüne bakın ve veri kümesi sözdizimi ayrıntılarında bağlayıcı konusuna başvurun. | Evet
+formatSettings | Biçim türü veri kümesi (Parquet, DelimitedText) kullanılırken geçerlidir. | Hayır
+storeSettings | Biçim türü veri kümesi (Parquet, DelimitedText) kullanılırken geçerlidir. | Hayır
 
 ## <a name="sample-output"></a>Örnek çıktı
 
-GetMetadata sonucu etkinlik çıktıda gösterilir. Başvuru olarak alan listesinde seçilen kapsamlı meta veri seçenekleri ile iki örnek aşağıda verilmiştir. Sonuç, sonraki etkinliği kullanmak için desenini kullanın `@{activity('MyGetMetadataActivity').output.itemName}`.
+GetMetadata sonucu etkinlik çıkışında gösterilir. Aşağıda, alan listesinde başvuru olarak seçilen ayrıntılı meta veri seçenekleriyle iki örnek verilmiştir. Sonraki etkinlikteki sonucu kullanmak için, öğesinin `@{activity('MyGetMetadataActivity').output.itemName}`stilini kullanın.
 
 ### <a name="get-a-files-metadata"></a>Bir dosyanın meta verilerini al
 
@@ -165,7 +170,7 @@ GetMetadata sonucu etkinlik çıktıda gösterilir. Başvuru olarak alan listesi
 }
 ```
 
-### <a name="get-a-folders-metadata"></a>Klasör meta verilerini al
+### <a name="get-a-folders-metadata"></a>Klasörün meta verilerini alın
 
 ```json
 {
@@ -188,7 +193,7 @@ GetMetadata sonucu etkinlik çıktıda gösterilir. Başvuru olarak alan listesi
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Data Factory tarafından desteklenen diğer denetim akışı etkinlikleri bakın: 
+Data Factory tarafından desteklenen diğer denetim akışı etkinliklerini görün: 
 
 - [İşlem Hattı Yürütme Etkinliği](control-flow-execute-pipeline-activity.md)
 - [Her etkinlik için](control-flow-for-each-activity.md)

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: apimpm
-ms.openlocfilehash: d902a65c4e36ff698e486e2af899d055de1afca0
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 2756444db010e23f7114e99f474de9ce6614aaee
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638544"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68837911"
 ---
 # <a name="access-and-customize-the-new-developer-portal-in-azure-api-management"></a>Azure API Management yeni geliştirici portalına erişin ve özelleştirin
 
@@ -77,6 +77,10 @@ Evet, yeni bir tane genel kullanıma sunulduğunda kullanım dışı olacaktır.
 Genel kullanım amacı, eski portalla senaryo tabanlı bir özellik eşliği sağlamaktır. Bu durumda, önizleme sürümünde uygulanan özellikler uygulanmamış olabilir.
 
 Özel durumlar, eski portaldan yeni portalda kullanılamayacak *uygulamalar* ve *sorunlardır* . Eski portalda *sorunlar* ve yeni bir tane varsa, [özel bir GitHub sorununa](https://github.com/Azure/api-management-developer-portal/issues/122)yorum gönderin.
+
+### <a name="ive-found-bugs-andor-id-like-to-request-a-feature"></a>Hata buldum ve/veya bir özellik istemek istiyorum.
+
+Harika! [GitHub deposunun sorunlar bölümünde](https://github.com/Azure/api-management-developer-portal/issues)bize geri bildirim verebilir, bir özellik isteği gönderebilir veya hata raporu dosyalayabilir. Bu sırada, `community` etiketle işaretlenmiş sorunlar hakkında geri bildirimlerinizi de beğeneceğiz.
 
 ### <a name="i-want-to-move-the-content-of-the-new-portal-between-environments-how-can-i-do-that-and-do-i-need-to-go-with-the-self-hosted-version"></a>Yeni portalın içeriğini ortamlar arasında taşımak istiyorum. Bunu nasıl yapabilirim ve şirket içinde barındırılan sürüme gitmem gerekir mi?
 

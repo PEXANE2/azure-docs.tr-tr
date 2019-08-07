@@ -1,5 +1,5 @@
 ---
-title: Azure Yedekleme SSS
+title: Azure Backup özelliklerle ilgili yaygın soruların yanıtları
 description: 'Hakkında sık sorulan soruların yanıtları: Kurtarma Hizmetleri kasaları, ne yedekleyebilecekleri, nasıl çalışır, şifreleme ve limitler dahil olmak üzere Azure Backup Özellikler. '
 author: dcurwin
 manager: carmonm
@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/07/2019
 ms.author: dacurwin
-ms.openlocfilehash: c60b2bfae0d974d454c03b7eba655cbdacab5943
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: c41381dd3e53c80e74da3dc0d0a08e1ac83daec6
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466682"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827624"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup-sık sorulan sorular
 Bu makalede Azure Backup hizmetiyle ilgili sık sorulan sorular yanıtlanmaktadır.
@@ -24,6 +24,13 @@ Evet. Her abonelik için desteklenen Azure Backup bölge başına en fazla 500 k
 
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault"></a>Her bir kasa için kaydedilebilen sunucu/makine sayısına yönelik sınırlar var mıdır?
 Kasa başına en fazla 1000 Azure sanal makinesi kaydedebilirsiniz. Microsoft Azure Backup aracısını kullanıyorsanız, kasa başına 50 MAB aracısına kadar kaydolabilirsiniz. Bir kasaya 50 MAB sunucuları/DPM sunucuları kaydedebilirsiniz.
+
+### <a name="how-many-datasourcesitems-can-be-protected-in-a-vault"></a>Kasada kaç veri kaynağı/öğe korunabilecek? 
+Bir kasadaki tüm iş yükleri (IaaS VM, SQL, AFS, vb.) üzerinde en fazla 2000 veri kaynağı/öğe koruyabilirsiniz.<br>  
+Örneğin, kasadaki 500 VM 'Leri ve 400 Azure dosya paylaşımlarını zaten koruduysanız, yalnızca bu anda en fazla 1100 SQL veritabanı koruyabilirsiniz. 
+
+### <a name="how-many-policies-can-i-create-per-vault"></a>Her kasa için kaç ilke oluşturabilirim? 
+Her kasa için yalnızca 200 ilke olabilir.
 
 ### <a name="if-my-organization-has-one-vault-how-can-i-isolate-data-from-different-servers-in-the-vault-when-restoring-data"></a>Kuruluşumun tek bir Kasası varsa, verileri geri yüklerken kasadaki farklı sunuculardan verileri nasıl ayırabilirim?
 Birlikte kurtarmak istediğiniz sunucu verileri, yedeklemeyi ayarlarken aynı parolayı kullanmalıdır. Kurtarmayı belirli bir sunucu veya sunuculara yalıtmak istiyorsanız, yalnızca o sunucu veya sunucular için bir parola kullanın. Örneğin, insan kaynakları sunucuları bir şifreleme parolası kullanırken, muhasebe sunucuları ve depolama sunucuları farklı birer şifreleme parolası kullanabilir.

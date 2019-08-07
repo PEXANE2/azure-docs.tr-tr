@@ -1,6 +1,6 @@
 ---
-title: Profili Azure bulut Hizmetleri, Application Insights ile canlı | Microsoft Docs
-description: Azure Cloud Services için Application Insights Profiler ' ı etkinleştirin.
+title: Application Insights ile canlı Azure Cloud Services profili | Microsoft Docs
+description: Azure Cloud Services için Application Insights Profiler etkinleştirin.
 services: application-insights
 documentationcenter: ''
 author: cweining
@@ -12,44 +12,44 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 8ad472b9c92e3bc2164146191a63985fd26becab
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 93392e379cbb03508fefc1877d5d50e04436b79c
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60306380"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68737226"
 ---
-# <a name="profile-live-azure-cloud-services-with-application-insights"></a>Profil Canlı Application ınsights'la Azure Cloud Services
+# <a name="profile-live-azure-cloud-services-with-application-insights"></a>Application Insights ile canlı Azure Cloud Services profili
 
-Ayrıca, bu hizmetler Application Insights Profiler dağıtabilirsiniz:
+Ayrıca, bu hizmetlerde Application Insights Profiler dağıtabilirsiniz:
 * [Azure uygulama hizmeti](profiler.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Service Fabric uygulamaları](profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
 * [Azure sanal makineleri](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
-Application Insights Profiler Azure tanılama uzantısı ile yüklenir. Profiler'ı yükleyin ve Application Insights kaynağınıza profilleri göndermek için Azure Tanılama'yı yapılandırmak yeterlidir.
+Application Insights Profiler, Azure Tanılama uzantısıyla yüklenir. Profil oluşturucuyu yüklemek ve Application Insights kaynağına profil göndermek için Azure Tanılama yapılandırmanız yeterlidir.
 
-## <a name="enable-profiler-for-azure-cloud-services"></a>Azure Cloud Services için Profiler'ı etkinleştir
-1. Kullandığınızdan emin olun [.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) veya üzeri. Onaylamak yeterliyse *ServiceConfiguration.\*.cscfg* dosyalarınız bir `osFamily` değeri "5" veya sonraki sürümüne yükseltilmesi.
+## <a name="enable-profiler-for-azure-cloud-services"></a>Azure Cloud Services için profil oluşturucuyu etkinleştir
+1. [.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) veya daha yeni bir sürümünü kullandığınızdan emin olun. İşletim sistemi ailesi 4 kullanıyorsanız, bir [Başlangıç göreviyle](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-dotnet-install-dotnet).NET Framework 4.6.1 veya daha yeni bir sürümü yüklemeniz gerekir. İşletim sistemi ailesi 5, varsayılan olarak .NET Framework uyumlu bir sürümünü içerir. 
 
-1. Ekleme [Application Insights SDK'sı Azure bulut Hizmetleri](../../azure-monitor/app/cloudservices.md?toc=/azure/azure-monitor/toc.json).
+1. [Application Insights SDK 'Yı Azure Cloud Services 'a](../../azure-monitor/app/cloudservices.md?toc=/azure/azure-monitor/toc.json)ekleyin.
 
-    **WAD içinde birlikte gelen bulut Hizmetleri için profil oluşturucu hata düzeltildi.** WAD (1.12.2.0) bulut Hizmetleri için en son sürümünü tüm son sürümleri App Insights SDK'sı ile çalışır. Bulut hizmet konakları WAD otomatik olarak yükseltilir, ancak hemen değildir. Yükseltme zorlamak için hizmetinizi yeniden dağıtın veya düğümü yeniden başlatma.
+    **Cloud Services için WAD içinde yer alan Profiler 'daki hata düzeltildi.** Cloud Services için en son WAD (1.12.2.0) sürümü, App Insights SDK 'sının tüm son sürümleriyle birlikte çalışmaktadır. Bulut hizmeti ana bilgisayarları WAD 'yi otomatik olarak yükseltir, ancak bu işlem anında değil. Bir yükseltmeyi zorlamak için hizmetinizi yeniden dağıtabilirsiniz veya düğümü yeniden başlatabilirsiniz.
 
-1. Application Insights ile izleme istekleri:
+1. Application Insights ile istekleri izle:
 
-    * ASP.NET web rolleri için Application Insights istekleri otomatik olarak izleyebilirsiniz.
+    * ASP.NET Web rolleri için Application Insights istekleri otomatik olarak izleyebilir.
 
-    * Çalışan rolleri için [istekleri izlemek için kod ekleme](profiler-trackrequests.md?toc=/azure/azure-monitor/toc.json).
+    * Çalışan rolleri için [istekleri izlemek için kod ekleyin](profiler-trackrequests.md?toc=/azure/azure-monitor/toc.json).
 
-1. Profiler'ı etkinleştirmek için Azure tanılama uzantısını yapılandırın:
+1. Profil oluşturucuyu etkinleştirmek için Azure Tanılama uzantısını yapılandırın:
 
-    a. Bulun [Azure tanılama](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) *diagnostics.wadcfgx* burada gösterildiği gibi uygulama rolü için dosya:  
+    a. Aşağıda gösterildiği gibi, uygulama rolünüzün [Azure tanılama](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) *Diagnostics. wadcfgx* dosyasını bulun:  
 
-      ![Tanılama yapılandırma dosyası konumu](./media/profiler-cloudservice/cloudservice-solutionexplorer.png)  
+      ![Tanılama yapılandırma dosyasının konumu](./media/profiler-cloudservice/cloudservice-solutionexplorer.png)  
 
-      Dosyayı bulamazsa, bakın [tanılama ayarlama, Azure bulut Hizmetleri ve sanal makineler için ayarlama](https://docs.microsoft.com/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines).
+      Dosyayı bulamıyorsanız bkz. [Azure Cloud Services için tanılamayı ayarlama ve sanal makineler](https://docs.microsoft.com/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines).
 
-    b. Aşağıdaki `SinksConfig` bölüm öğesinin alt öğesi olarak `WadCfg`:  
+    b. Aşağıdaki `SinksConfig` bölümü öğesinin `WadCfg`bir alt öğesi olarak ekleyin:  
 
       ```xml
       <WadCfg>
@@ -64,18 +64,18 @@ Application Insights Profiler Azure tanılama uzantısı ile yüklenir. Profiler
       ```
 
     > [!NOTE]
-    > Varsa *diagnostics.wadcfgx* dosyası ayrıca Applicationınsights türünün başka bir havuz içerir, aşağıdaki izleme anahtarı üç eşleşmesi gerekir:  
+    > *Diagnostics. wadcfgx* dosyası aynı zamanda ApplicationInsights türünde başka bir havuz içeriyorsa, aşağıdaki izleme anahtarlarından üçü de aynı olmalıdır:  
     > * Uygulamanız tarafından kullanılan anahtar. 
-    > * Applicationınsights havuzu tarafından kullanılan anahtar. 
-    > * ApplicationInsightsProfiler havuzu tarafından kullanılan anahtar. 
+    > * ApplicationInsights havuzu tarafından kullanılan anahtar. 
+    > * Applicationınsightsprofiler havuzu tarafından kullanılan anahtar. 
     >
     > Tarafından kullanılan gerçek araçları anahtar değerini bulabilirsiniz `ApplicationInsights` havuz *ServiceConfiguration.\*.cscfg* dosyaları. 
-    > Visual Studio 15.5 Azure SDK'sı sürümünden sonra birbiriyle aynı uygulama ve ApplicationInsightsProfiler havuz tarafından kullanılan izleme anahtarı gerekir.
+    > Visual Studio 15,5 Azure SDK sürümünden sonra, yalnızca uygulama ve Applicationınsightsprofiler havuzunun kullandığı izleme anahtarlarının birbirleriyle eşleşmesi gerekir.
 
-1. Yeni tanılama yapılandırması hizmetinizle dağıtın ve Application Insights Profiler, hizmette çalıştıracak şekilde yapılandırılır.
+1. Hizmetinizi yeni tanılama yapılandırmasıyla dağıtın ve Application Insights Profiler hizmetinize çalışacak şekilde yapılandırılır.
  
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Uygulamanız için trafiği oluşturur (örneğin, başlatma bir [kullanılabilirlik testi](monitor-web-app-availability.md)). Ardından, izlemeleri Application Insights örneğine gönderilmek üzere başlatmak 10-15 dakika bekleyin.
-* Bkz: [Profiler izlemeleri](profiler-overview.md?toc=/azure/azure-monitor/toc.json) Azure portalında.
-* Profiler sorunlarını gidermek için bkz: [sorun giderme Profiler](profiler-troubleshooting.md?toc=/azure/azure-monitor/toc.json).
+* Uygulamanıza trafik oluşturun (örneğin, bir [Kullanılabilirlik testi](monitor-web-app-availability.md)başlatın). Ardından, izlemelerin Application Insights örneğine gönderilmesi için 10 ila 15 dakika bekleyin.
+* Azure portal [Profil Oluşturucu izlemeleri](profiler-overview.md?toc=/azure/azure-monitor/toc.json) bölümüne bakın.
+* Profil Oluşturucu sorunlarını gidermek için bkz. [Profil Oluşturucu sorun giderme](profiler-troubleshooting.md?toc=/azure/azure-monitor/toc.json).

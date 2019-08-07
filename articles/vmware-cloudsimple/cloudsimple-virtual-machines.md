@@ -1,40 +1,40 @@
 ---
-title: VMware çözümüyle CloudSimple - Azure sanal makinelerine genel bakış
-description: CloudSimple sanal makineler ve avantajları hakkında bilgi edinin.
+title: CloudSimple ile VMware çözümü-Azure sanal makinelerine genel bakış
+description: CloudSimple sanal makineleri ve bunların avantajları hakkında bilgi edinin.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/10/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 77a2901ae2d81f42780110b1576c1f32c7ff397b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0f4967bbd12107bf6a04cb80537d4425c75c5f46
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65209498"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812498"
 ---
-# <a name="cloudsimple-virtual-machines-overview"></a>CloudSimple sanal makinelere genel bakış
+# <a name="cloudsimple-virtual-machines-overview"></a>CloudSimple sanal makinelerine genel bakış
 
-CloudSimple VMware Vm'lerini Azure portalından yönetmenize olanak sağlar.  Bir küme veya bir kaynak havuzu vSphere kümenizden Azure aboneliğinize eşleme tarafından yönetilir.  CloudSimple sanal makine Self Servis Yönetimi VMware vm'lerinin Azure portalından getirir.  
+CloudSimple, Azure portal VMware VM 'lerini yönetmenizi sağlar.  VSphere kümenizdeki bir küme veya kaynak havuzu, aboneliğiniz ile eşleyerek Azure üzerinden yönetilir.  CloudSimple sanal makinesi, Azure portal VMware VM 'lerinin self servis yönetimini getirir.  
 
-Azure'dan CloudSimple VM oluşturmak için bir VM şablonu, özel bulut vCenter mevcut olması gerekir.  Şablon, uygulamalar ve işletim sistemini özelleştirmek için kullanılır.  VM şablonu, Kurumsal güvenlik ilkeleri karşılamak için sağlamlaştırılmış.  Sanal makineler oluşturmak ve bunları bir Self Servis modeli kullanılarak Azure portalından kullanmak için bir şablon kullanabilirsiniz.
+Azure 'dan CloudSimple VM oluşturmak için özel bulut vCenter 'unuzda bir VM şablonu bulunmalıdır.  Şablon, işletim sistemini ve uygulamaları özelleştirmek için kullanılır.  Kurumsal güvenlik ilkelerini karşılamak için şablon sanal makinesi sağlamlaştırılmış olabilir.  Bir self servis modeli kullanarak Azure portal VM 'Ler oluşturmak ve bunları kullanmak için şablonu kullanabilirsiniz.
 
 ## <a name="benefits"></a>Avantajlar
 
-Azure portalından CloudSimple sanal makineler oluşturmak ve VMware sanal makinelerini yönetmek kullanıcılar için Self Servis bir mekanizma sağlar.
+Azure portal CloudSimple sanal makineleri, kullanıcıların VMware sanal makinelerini oluşturmalarına ve yönetmesine yönelik bir self servis mekanizması sağlar.
 
-* Özel bulut vCenter CloudSimple VM oluşturma
+* Özel bulut vCenter 'unuzda CloudSimple VM oluşturma
 * VM özelliklerini yönetme
-  * Diskleri ekleme/kaldırma
-  * NIC Ekle/Kaldır
-* Sanal makinenizin CloudSimple Power işlemleri
+  * Disk Ekle/Kaldır
+  * NIC 'Leri Ekle/Kaldır
+* CloudSimple VM 'nizin güç işlemleri
   * Açma ve kapatma
-  * VM sıfırlama
-* VM silme
+  * VM'yi Sıfırla
+* VM 'yi silme
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Bilgi edinmek için nasıl [azure'da VMware sanal makinelerini kullanma](quickstart-create-vmware-virtual-machine.md)
-* Bilgi nasıl [Azure aboneliğinize eşleme](https://docs.azure.cloudsimple.com/azure-subscription-mapping/)
+* [Azure 'Da VMware VM](quickstart-create-vmware-virtual-machine.md) 'lerini kullanmayı öğrenin
+* [Azure aboneliğinizi](https://docs.azure.cloudsimple.com/azure-subscription-mapping/) nasıl eşleyeceğinizi öğrenin

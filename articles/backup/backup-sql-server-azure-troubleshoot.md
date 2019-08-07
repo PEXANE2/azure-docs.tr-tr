@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: article
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 849065460acda36426f8a594a984ad1cc8590c34
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 323470adfe56ee20fe0fb64aeba38b6af4330351
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688831"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827592"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Azure Backup kullanarak SQL Server veritabanı yedeklemesi sorunlarını giderme
 
@@ -119,6 +119,19 @@ Bir sanal makinede SQL Server veritabanının korumasını yapılandırmak için
 | Hata iletisi | Olası nedenler | Önerilen eylem |
 |---|---|---|
 | Otomatik koruma amacı kaldırılmış veya başka bir geçerli değil. | SQL Server örneğinde otomatik korumayı etkinleştirdiğinizde, bu örnekteki tüm veritabanları için **yedekleme Işlerini yapılandırın** . İşler çalışırken otomatik korumayı devre dışı bırakırsanız, bu hata kodu ile **devam eden** işler iptal edilir. | Kalan tüm veritabanlarının korunmasına yardımcı olmak için otomatik korumayı bir kez daha etkinleştirin. |
+
+### <a name="clouddosabsolutelimitreached"></a>Clouddosabsolutelimitulaşıldı
+
+| Hata iletisi | Olası nedenler | Önerilen eylem |
+|---|---|---|
+24 saat içinde izin verilen işlem sayısı sınırına ulaştığınızdan işlem engellendi. | 24 saatin bir sınırında bir işlem için izin verilen en yüksek sınıra ulaştıysanız, bu hata gelir. <br> Örneğin: Günlük tetiklenebilecek yedekleme yapılandırma işi sayısı sınırına ulaşılırsa ve yeni bir öğede yedeklemeyi yapılandırmaya çalışırsanız, bu hatayı görürsünüz. | Genellikle, 24 saat sonra işlemi yeniden denemek bu sorunu çözer. Ancak sorun devam ederse, yardım için Microsoft desteğine başvurabilirsiniz.
+
+### <a name="clouddosabsolutelimitreachedwithretry"></a>CloudDosAbsoluteLimitReachedWithRetry
+
+| Hata iletisi | Olası nedenler | Önerilen eylem |
+|---|---|---|
+Kasa, 24 saatlik bir yayılmaya izin verilen bu işlemler için maksimum sınırına ulaştığından, işlem engellendi. | 24 saatin bir sınırında bir işlem için izin verilen en yüksek sınıra ulaştıysanız, bu hata gelir. Bu hata genellikle değiştirme ilkesi veya otomatik koruma gibi ölçekli işlemler söz konusu olduğunda gelir. Clouddosabsolutelimitulaştığı durumdan farklı olarak, bu durumu çözmek için pek çok şey yapabilirsiniz, aslında Azure Backup hizmet, söz konusu tüm öğeler için işlemleri dahili olarak yeniden dener.<br> Örneğin: Bir ilkeyle korunan çok sayıda veri kaynağı varsa ve bu ilkeyi değiştirmeye çalışırsanız, korumalı öğelerin her biri için koruma işlerini yapılandırın ve bazen bu gibi işlemler için izin verilen en yüksek sınıra ulaşabiliriz.| Azure Backup hizmeti, 24 saat sonra bu işlemi otomatik olarak yeniden deneyecek. 
+
 
 ## <a name="re-registration-failures"></a>Yeniden kayıt sorunları
 

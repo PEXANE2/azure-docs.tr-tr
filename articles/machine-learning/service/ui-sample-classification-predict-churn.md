@@ -1,7 +1,7 @@
 ---
-title: 'Sınıflandırma: Değişim sıklığı, deneyde ve yukarı satış tahmin edin '
+title: Sınıflandırmaya Karmaşıklığı tahmin edin + uygulama-satış
 titleSuffix: Azure Machine Learning service
-description: Bu görsel arabirim örnek deneyde, değişim sıklığı, müşteri ilişkileri yönetimi (CRM) için genel bir görev ikili dosya sınıflandırıcı tahminini gösterir.
+description: Bu görsel arabirim örnek denemesi, müşteri ilişkileri yönetimi (CRM) için ortak bir görev olan ikili sınıflandırıcı kullanımını gösterir.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,62 +10,62 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: 7d10d996febd0e31c9085bf5cb82324cce101c80
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 172089d5371d8c3e38a2a22b3285b5eb180baf00
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606150"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742300"
 ---
-# <a name="sample-5---classification-predict-churn-appetency-and-up-selling"></a>5 - sınıflandırma. örnek: Değişim sıklığı, deneyde ve yukarı satış tahmin edin 
+# <a name="sample-5---classification-predict-churn-appetency-and-up-selling"></a>Örnek 5-sınıflandırma: Dalgalanma, uygulama ve BT satışı tahmin etme 
 
-Tek satırlık bir görsel arabirim kullanarak kod yazmadan karmaşık machine learning denemesi oluşturmayı öğrenin.
+Görsel arabirimi kullanarak tek bir kod satırı yazmadan karmaşık makine öğrenimi denemesinin nasıl oluşturulacağını öğrenin.
 
-Bu deneyde, üç eğitir **iki sınıflı artırmalı karar ağacı** Müşteri İlişkileri Yönetimi (CRM) sistemleri için ortak görevler tahmin etmek için sınıflandırıcılar: değişim sıklığı, deneyde ve yukarı satış. Etiketleri ve veri değerleri birden çok veri kaynağında bölme ve müşteri bilgilerinin anonimleştirmek için karıştırılmış, ancak yine de görsel arabirim karıştırılmış değerleri kullanarak bir model eğitip ve veri kümeleri birleştirmek için kullanabiliriz.
+Bu deneme, müşteri ilişkileri yönetimi (CRM) sistemlerine yönelik genel görevleri tahmin etmek için üç, **iki sınıf önceden artırılmış karar ağacı** sınıflandırıcıları sağlar: dalgalanma, uygulama ve yukarı satış. Veri değerleri ve Etiketler birden çok veri kaynağına bölünür ve Anonimleştir müşteri bilgilerine göre karıştırır, ancak veri kümelerini birleştirmek ve karıştırılmış değerleri kullanarak bir modeli eğmek için görsel arabirimi kullanmaya devam edebilirsiniz.
 
-"Hangisinin?" sorusunu deniyoruz nedeni Bu, bir sınıflandırma problemi olarak adlandırılır. Ancak, bu deneme regresyon, Sınıflandırma, kümeleme ve benzeri oluşmasından herhangi bir türde machine learning sorun gidermek için aynı adımları uygulayabilirsiniz.
+Soruyu "bir tane mi?" sorusunu yanıtlamaya çalışıyoruz. Bu, sınıflandırma sorunu olarak adlandırılır. Bununla birlikte, gerileme, sınıflandırma, kümeleme gibi her türlü makine öğrenimi sorununu çözmek için bu deneyde aynı adımları uygulayabilirsiniz.
 
-Bu deneme için tamamlanan grafiği aşağıda verilmiştir:
+Bu deneme için tamamlanan grafik aşağıda verilmiştir:
 
-![Deneme grafiğini](./media/ui-sample-classification-predict-churn/experiment-graph.png)
+![Deneme grafiği](./media/ui-sample-classification-predict-churn/experiment-graph.png)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. Seçin **açık** örnek 5 deneme düğmesi.
+4. Örnek 5 denemenin **Aç** düğmesini seçin.
 
     ![Denemeyi açın](media/ui-sample-classification-predict-churn/open-sample5.png)
 
 ## <a name="data"></a>Data
 
-Bu deneme için kullandığımız KDD Kupası 2009 ' verilerdir. 50.000 satırları ve 230 özellik sütunları bir veri kümesine sahiptir. Değişim sıklığı, deneyde ve bu özellikleri kullanan müşteriler için yukarı satış tahmin etmek için bir görevdir. Veri ve görev hakkında daha fazla bilgi için bkz: [KDD Web sitesi](https://www.kdd.org/kdd-cup/view/kdd-cup-2009).
+Bu deneme için kullandığımız veriler, KDD Kupa 2009 ' dir. Veri kümesinde 50.000 satır ve 230 özellik sütunu vardır. Bu görev, bu özellikleri kullanan müşteriler için dalgalanma, uygulama ve BT satışı tahmin etmeye yöneliktir. Veriler ve görev hakkında daha fazla bilgi için, bkz. [kdd Web sitesi](https://www.kdd.org/kdd-cup/view/kdd-cup-2009).
 
-## <a name="experiment-summary"></a>Deneme özeti
+## <a name="experiment-summary"></a>Deneme Özeti
 
-Bu görsel arabirim örnek deneyde, ikili dosya sınıflandırıcı tahmin değişim sıklığı, deneyde ve yukarı-satış, müşteri ilişkileri yönetimi (CRM) için ortak bir görevi gösterir.
+Bu görsel arabirim örnek denemesi, müşteri ilişkileri yönetimi (CRM) için ortak bir görev olan değişim, uygulama ve iş satışı için ikili sınıflandırıcı tahminini gösterir.
 
-İlk olarak, bazı basit veri işleme desteklemiyoruz.
+İlk olarak, bazı basit veri işlemleri yaptık.
 
-- Ham veri kümesi eksik değerleri çok sayıda içerir. Kullandığımız **eksik verileri temizleme** değerleri 0 ile modülü eksik değiştirin.
+- Ham veri kümesi çok sayıda eksik değer içeriyor. Eksik değerleri 0 ile değiştirmek için **Temizleme eksik veri** modülünü kullanıyoruz.
 
-    ![Veri kümesi Temizle](./media/ui-sample-classification-predict-churn/cleaned-dataset.png)
+    ![Veri kümesini Temizleme](./media/ui-sample-classification-predict-churn/cleaned-dataset.png)
 
-- Özellikleri ve karşılık gelen, deneyde, karmaşıklığı ve farklı veri kümelerini olan yukarı satış etiketleri. Kullandığımız **Sütun Ekle** modülü için özellik sütunları etiket sütunlar eklenecek. İlk sütun **Col1**, etiket sütundur. Sütunlara rest **Var1**, **Var2**ve benzeri özellik sütunlarıdır.
+- Özellikler ve karşılık gelen dalgalanma, uygulama ve en çok satılan Etiketler farklı veri kümelerinde bulunur. Etiket sütunlarını Özellik sütunlarına eklemek için **sütun Ekle** modülünü kullanırız. İlk sütun olan **Sütun1**, etiket sütunudur. Sütunların geri kalanı, **var1**, **Var2**vb., özellik sütunlarıdır.
 
-    ![Sütun veri kümesi Ekle](./media/ui-sample-classification-predict-churn/added-column1.png)
+    ![Sütun veri kümesini ekleme](./media/ui-sample-classification-predict-churn/added-column1.png)
 
-- Kullandığımız **verileri bölme** train veri kümesi bölünemiyor ve kümeleri test etmek için modül.
+- Veri kümesini eğmek ve test kümelerine bölmek için **bölünmüş veri** modülünü kullanıyoruz.
 
-    Ardından artırılmış karar ağacı ikili dosya sınıflandırıcı varsayılan parametreleri tahmin modellerini oluşturmak için kullanıyoruz. Her görev, diğer bir deyişle, bir model yukarı satış, deneyde ve karmaşıklığı tahmin etmek için her bir model ekleriz.
+    Daha sonra tahmin modellerini derlemek için varsayılan parametrelerle birlikte artırılmış karar ağacı ikili sınıflandırıcısını kullanıyoruz. Her görev için bir model, diğer bir deyişle, her biri için bir model derliyoruz.
 
 ## <a name="results"></a>Sonuçlar
 
-Çıkışı görselleştirme **Evaluate Model** test kümesi üzerinde model performansını görmek için modülü. Yukarı satış görev için model rastgele bir modeli daha iyi yaptığı ROC eğrisi gösterir. Eğriyi (AUC) altında 0.857 alanıdır. Daha Eşikte 0,5, duyarlık 0,7 olduğundan, geri çağırma 0.463, ve F1 puanı 0.545.
+Test kümesinde modelin performansını görmek için **modeli değerlendir** modülünün çıkışını görselleştirin. Yukarı satış görevi için ROC eğrisi, modelin rastgele bir modelden daha iyi olduğunu gösterir. Eğrinin altındaki alan (AUC) 0,857 ' dir. 0,5 eşiğinden duyarlık 0,7, geri çağırma ise 0,463 ve F1 puanı 0,545.
 
 ![Sonuçları değerlendirin](./media/ui-sample-classification-predict-churn/evaluate-result.png)
 
- Taşıyabilir **eşiği** kaydırıcı ve ölçümleri değiştirmek için ikili sınıflandırma görevi bakın.
+ **Eşik** kaydırıcısını taşıyabilir ve ikili sınıflandırma görevi için ölçüm değişikliğini görebilirsiniz.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -73,10 +73,10 @@ Bu görsel arabirim örnek deneyde, ikili dosya sınıflandırıcı tahmin deği
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Görsel bir arabirim için kullanılabilir diğer örneklerini keşfedin:
+Görsel arabirim için kullanılabilen diğer örnekleri keşfet:
 
-- [Örnek 1 - regresyon: Otomobilin fiyatını tahmin edin](ui-sample-regression-predict-automobile-price-basic.md)
-- [2 - regresyon. örnek: Otomobil fiyat tahmini için algoritmalar karşılaştırın](ui-sample-regression-predict-automobile-price-compare-algorithms.md)
-- [3 - sınıflandırma. örnek: Kredi riskini tahmin](ui-sample-classification-predict-credit-risk-basic.md)
-- [4 - sınıflandırma. örnek: (Maliyet hassas) kredi riskini tahmin](ui-sample-classification-predict-credit-risk-cost-sensitive.md)
-- [Örnek 6 - sınıflandırma: Uçuş gecikme tahmin edin](ui-sample-classification-predict-flight-delay.md)
+- [Örnek 1-gerileme: Bir otomobil fiyatını tahmin edin](ui-sample-regression-predict-automobile-price-basic.md)
+- [Örnek 2-gerileme: Otomobil fiyat tahmini için algoritmaları karşılaştırın](ui-sample-regression-predict-automobile-price-compare-algorithms.md)
+- [Örnek 3-sınıflandırma: Kredi riskini tahmin etme](ui-sample-classification-predict-credit-risk-basic.md)
+- [Örnek 4-sınıflandırma: Kredi riskini tahmin etme (maliyet duyarlı)](ui-sample-classification-predict-credit-risk-cost-sensitive.md)
+- [Örnek 6-sınıflandırma: Uçuş gecikmelerini tahmin etme](ui-sample-classification-predict-flight-delay.md)

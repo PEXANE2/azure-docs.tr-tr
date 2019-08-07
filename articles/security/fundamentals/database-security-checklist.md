@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: 3f51f23f47cfbd81c71234bc2ce5a0adeeadd3f9
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: bf11d7a9dbaa37db521da67deddbed977cc1d251
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727382"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780545"
 ---
 # <a name="azure-database-security-checklist"></a>Azure veritabanı güvenlik denetim listesi
 
@@ -41,7 +41,7 @@ Bunlar:
 Bulut bilgi işlem, birçok uygulama kullanıcısı, veritabanı yöneticileri ve programcılara alışkın olmayan yeni güvenlik paradigmalarına gerektirir. Sonuç olarak, bazı kuruluşlar, algılanan güvenlik riskleri nedeniyle veri yönetimi için bir bulut altyapısı uygulamaya yöneliktir. Bununla birlikte, Microsoft Azure ve Microsoft Azure SQL Veritabanı yerleşik güvenlik özellikleri hakkında daha iyi bir anlayışının yanı sıra bu kaygıdan çok alleviated olabilir.
 
 ## <a name="checklist"></a>Denetim listesi
-Bu denetim listesini gözden geçirmeden önce [Azure veritabanı güvenliği En Iyi Yöntemler](https://docs.microsoft.com/azure/security/azure-database-security-best-practices) makalesini okumanızı öneririz. En iyi yöntemleri anladıktan sonra bu denetim listesinden en iyi şekilde yararlanabileceksiniz. Daha sonra bu denetim listesini kullanarak Azure veritabanı güvenliği 'nde önemli sorunları giderdiğinizden emin olabilirsiniz.
+Bu denetim listesini gözden geçirmeden önce [Azure veritabanı güvenliği En Iyi Yöntemler](https://docs.microsoft.com/azure/security/fundamentals/database-best-practices) makalesini okumanızı öneririz. En iyi yöntemleri anladıktan sonra bu denetim listesinden en iyi şekilde yararlanabileceksiniz. Daha sonra bu denetim listesini kullanarak Azure veritabanı güvenliği 'nde önemli sorunları giderdiğinizden emin olabilirsiniz.
 
 
 |Denetim listesi kategorisi| Açıklama|

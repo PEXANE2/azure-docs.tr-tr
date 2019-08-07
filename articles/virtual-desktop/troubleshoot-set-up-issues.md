@@ -2,17 +2,17 @@
 title: Windows sanal masaüstü kiracısı ve konak havuzu oluşturma-Azure
 description: Windows sanal masaüstü kiracı ortamının kurulumu sırasında kiracı ve konak havuzu sorunlarını giderme ve çözme.
 services: virtual-desktop
-author: ChJenk
+author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 07/10/2019
-ms.author: v-chjenk
-ms.openlocfilehash: 9e58c3bfc0e74f9aac61085608a843954b0923c0
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.author: helohr
+ms.openlocfilehash: 7ab8ec9536af74102d2c9384ea3d0d0503f58f63
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249552"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816484"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Kiracı ve ana bilgisayar havuzu oluşturma
 
@@ -331,7 +331,7 @@ Ham hata örneği:
 Azure Marketi teklifini çalıştırıyorsanız, Windows sanal masaüstü 'nde düzgün şekilde kimlik doğrulaması yapmak için aşağıdaki parametrelerin değerlerini sağlayın:
 
 - Windows sanal masaüstü kiracı RDS sahibi: Hizmet sorumlusu
-- Uygulama KIMLIĞI: Oluşturduğunuz yeni hizmet sorumlusunun uygulama kimliği
+- Uygulama Kimliği: Oluşturduğunuz yeni hizmet sorumlusunun uygulama kimliği
 - Parola/parolayı onayla: Hizmet sorumlusu için oluşturduğunuz parola parolası
 - Azure AD kiracı KIMLIĞI: Oluşturduğunuz hizmet sorumlusunun Azure AD kiracı KIMLIĞI
 

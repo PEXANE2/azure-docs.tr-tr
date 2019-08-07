@@ -6,12 +6,12 @@ ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: grgale
-ms.openlocfilehash: b68bdb6d1c349df67943889b511eac87c940b531
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f7f78dbde9810c8786e2344555444efabcc989b0
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68571893"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779317"
 ---
 # <a name="system-monitoring-for-security-in-azure-australia"></a>Azure Avustralya 'da güvenlik için sistem izleme
 
@@ -108,7 +108,7 @@ Azure 'da toplanan Günlükler aşağıdaki üç kategoriden biri altında yer a
 
 Azure sanal makine izleme, hem Windows hem de Linux için sanal makine aracısının dağıtımı tarafından geliştirilmiştir. Bu, toplanan günlüğe kaydetme bilgilerinin kapsamını artırır. Bu aracının dağıtımı, Azure Güvenlik Merkezi aracılığıyla otomatik olarak gerçekleşecek şekilde yapılandırılabilir.
 
-Microsoft, Azure kaynağına özgü Günlükler ve bunların [şemaları](https://docs.microsoft.com/azure/security/azure-log-audit)hakkında ayrıntılı bilgi sağlar.
+Microsoft, Azure kaynağına özgü Günlükler ve bunların [şemaları](https://docs.microsoft.com/azure/security/fundamentals/log-audit)hakkında ayrıntılı bilgi sağlar.
 
 ### <a name="log-retention-and-protection"></a>Günlük tutma ve koruma
 

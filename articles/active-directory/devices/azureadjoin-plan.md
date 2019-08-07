@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e58762bd5bf4342804767a200c94b432dd152a0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e5dc1c3fb7ae12c36a8c1fe383290435c03ee0c4
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562221"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68741381"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Nasıl yapılır: Azure AD katılımınızı uygulamayı planlama
 
@@ -68,7 +68,11 @@ Bu senaryolar, kimlik doğrulaması için bir federasyon sunucusu yapılandırma
 Federasyon ortamının hem WS-Trust hem de WS-beslenir protokollerini destekleyen bir kimlik sağlayıcısı olmalıdır:
 
 - **WS-beslenir:** Bu protokol, bir cihazın Azure AD 'ye katılması için gereklidir.
-- **WS-Trust:** Bu protokol, bir Azure AD 'ye katılmış cihazda oturum açmak için gereklidir. 
+- **WS-Trust:** Bu protokol, bir Azure AD 'ye katılmış cihazda oturum açmak için gereklidir.
+AD FS kullanırken, aşağıdaki WS-Trust uç noktalarını etkinleştirmeniz gerekir:`/adfs/services/trust/2005/usernamemixed`
+ `/adfs/services/trust/13/usernamemixed`
+ `/adfs/services/trust/2005/certificatemixed`
+ `/adfs/services/trust/13/certificatemixed`
 
 Kimlik sağlayıcınız bu protokolleri desteklemiyorsa Azure AD katılımı yerel olarak çalışmaz. Windows 10 1809 ' den başlayarak, kullanıcılarınız [Windows 10 ' da Web oturumu açma](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10)yoluyla SAML tabanlı bir kimlik sağlayıcısı Ile BIR Azure AD 'ye katılmış cihazda oturum açabilirler. Şu anda, Web oturumu açma bir önizleme özelliğidir ve üretim dağıtımları için önerilmez.
 

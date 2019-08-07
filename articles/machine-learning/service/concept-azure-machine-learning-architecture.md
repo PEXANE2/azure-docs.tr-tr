@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 82d3656e0adc03157de57b700f8f0be6bde1f2ee
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 59ce6719c117db53b02ed6594de219010ee08ee6
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663483"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828225"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Azure Machine Learning hizmeti nasıl kullanılır: Mimari ve kavramlar
 
@@ -40,13 +40,13 @@ Machine Learning modeli iş akışı genellikle bu diziyi izler:
 
 1. Dağıtılmış bir modelin eğitim veri kümesi ve çıkarım verileri arasında **veri kayması** için **izleyici** izleyici. Gerektiğinde, modeli yeni eğitim verileriyle yeniden eğitmek için 1. adıma geri dönün.
 
-## <a name="tools-for-azure-machine-learning"></a>Azure Machine Learning için Araçlar 
+## <a name="tools-for-azure-machine-learning"></a>Azure Machine Learning için Araçlar
 
 Bu araçları Azure Machine Learning için kullanın:
 
 +  [Python için Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)ile herhangi bir Python ortamında hizmetle etkileşime geçin.
 + [Azure MACHINE LEARNING CLI](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli)ile makine öğrenimi etkinliklerinizi otomatikleştirin.
-+ [Azure Machine Learning vs Code uzantılı](how-to-vscode-tools.md) Visual Studio Code kod yazma 
++ [Azure Machine Learning vs Code uzantılı](how-to-vscode-tools.md) Visual Studio Code kod yazma
 + Kod yazmadan iş akışı adımlarını gerçekleştirmek için [Azure Machine Learning hizmeti için görsel arabirimi (Önizleme)](ui-concept-visual-interface.md) kullanın.
 
 ## <a name="glossary-of-concepts"></a>Kavramların sözlüğü
@@ -87,7 +87,7 @@ Bu araçları Azure Machine Learning için kullanın:
 
 Deneme, belirtilen bir betikten birçok çalıştırma gruplandırmasıdır. Her zaman, bir çalışma alanına aittir. Bir farklı çalıştır gönderdiğinizde bir deney adı sağlayın. Çalıştırma için bilgileri, bu deneme altında depolanır. Bir çalıştırma gönderirseniz ve var olmayan bir deneme adı belirtirseniz, yeni belirtilen ada sahip yeni bir deneme otomatik olarak oluşturulur.
 
-Deneme kullanmayla ilgili bir örnek için bkz [. hızlı başlangıç: Azure Machine Learning hizmeti](quickstart-run-cloud-notebook.md)ile çalışmaya başlayın.
+Deneme kullanmanın bir örneği için bkz [. Öğretici: İlk modelinizi](tutorial-1st-experiment-sdk-train.md)eğitme.
 
 ### <a name="models"></a>Modeller
 
@@ -132,9 +132,9 @@ Bir **veri deposu** , bir Azure depolama hesabı üzerinden bir depolama soyutla
 
 ### <a name="compute-targets"></a>Hedef işlem
 
-[İşlem hedefi](concept-compute-target.md) , eğitim betiğinizi çalıştırdığınız veya hizmet dağıtımınızı barındıran işlem kaynağını belirtmenize olanak tanır. Bu konum, yerel makineniz veya bulut tabanlı bir işlem kaynağıdır. İşlem hedefleri, kodunuzu değiştirmeden işlem ortamınızı değiştirmeyi kolaylaştırır. 
+[İşlem hedefi](concept-compute-target.md) , eğitim betiğinizi çalıştırdığınız veya hizmet dağıtımınızı barındıran işlem kaynağını belirtmenize olanak tanır. Bu konum, yerel makineniz veya bulut tabanlı bir işlem kaynağıdır. İşlem hedefleri, kodunuzu değiştirmeden işlem ortamınızı değiştirmeyi kolaylaştırır.
 
-[Eğitim ve dağıtım için kullanılabilir işlem hedefleri](concept-compute-target.md)hakkında daha fazla bilgi edinin. 
+[Eğitim ve dağıtım için kullanılabilir işlem hedefleri](concept-compute-target.md)hakkında daha fazla bilgi edinin.
 
 ### <a name="training-scripts"></a>Eğitim betikleriniz
 
@@ -153,7 +153,6 @@ Aşağıdaki bilgileri içeren bir kaydı bir çalıştırmadır:
 
 Bir modeli eğitme için bir komut dosyası gönderdiğinizde bir çalıştırma oluşturursunuz. Bir çalıştırma, sıfır veya daha fazla alt çalıştırma olabilir. Örneğin, en üst düzey çalıştırmanın iki alt çalıştırması olabilir ve bunların her biri kendi alt öğesi olabilir.
 
-Bir model eğitimi tarafından üretilen çalıştırmaları görüntüleyen bir örnek için bkz [. hızlı başlangıç: Azure Machine Learning hizmeti](quickstart-run-cloud-notebook.md)ile çalışmaya başlayın.
 
 ### <a name="github-tracking-and-integration"></a>GitHub izleme ve Tümleştirme
 
@@ -222,7 +221,9 @@ Azure IoT Edge modülünüzün çalıştığından emin olur ve bunu barındıra
 
 ### <a name="ml-pipelines"></a>ML işlem hatları
 
-Machine Learning işlem hatlarını kullanarak makine öğrenimi aşamalarını birlikte akışlı iş akışları oluşturabilir ve yönetebilirsiniz. Örneğin, bir işlem hattı veri hazırlığı, model eğitimi, model dağıtımı ve çıkarım/Puanlama aşamaları içerebilir. Her aşamada, her biri çeşitli işlem hedeflerini katılımsız çalışabilir, birden çok adım kapsayabilir.
+Machine Learning işlem hatlarını kullanarak makine öğrenimi aşamalarını birlikte akışlı iş akışları oluşturabilir ve yönetebilirsiniz. Örneğin, bir işlem hattı veri hazırlığı, model eğitimi, model dağıtımı ve çıkarım/Puanlama aşamaları içerebilir. Her aşamada, her biri çeşitli işlem hedeflerini katılımsız çalışabilir, birden çok adım kapsayabilir. 
+
+İşlem hattı adımları yeniden kullanılabilir ve bu adımın çıkışı değişmemişse sonraki adımları yeniden çalıştırmadan çalıştırılabilir. Örneğin, veriler değişmemişse maliyetli veri hazırlama adımlarını yeniden çalıştırmadan bir modeli yeniden eğitebilirsiniz. İşlem hatları, makine öğrenimi iş akışının ayrı alanlarında çalışırken veri bilimcilerinin işbirliği yapmasına de olanak tanır.
 
 Bu hizmetle makine öğrenimi ardışık düzenleri hakkında daha fazla bilgi için bkz. işlem [hatları ve Azure Machine Learning](concept-ml-pipelines.md).
 

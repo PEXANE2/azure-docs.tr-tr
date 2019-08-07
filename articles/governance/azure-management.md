@@ -7,12 +7,12 @@ ms.service: governance
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: dacoulte
-ms.openlocfilehash: 520b84722d9434b309d3eb6da0baa3c1e4da33d0
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 958f82ef94a08adaf2bbae1ef8ceefae5db289ea
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608197"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780807"
 ---
 # <a name="overview-of-management-services-in-azure"></a>Azure 'da Yönetim Hizmetleri 'ne genel bakış
 
@@ -40,7 +40,7 @@ Bu görevlerin Otomasyonu, zaman ve çabayı en aza indirmek ve doğruluk ve ver
 ## <a name="govern"></a>İdare
 
 İdare, Azure’daki uygulama ve kaynaklarınız üzerindeki denetimi sürdürmenize yönelik mekanizmalar ve süreçler sağlar. Girişimlerinizi planlama ve stratejik öncelikleri belirleme de bu kapsama dahildir.
-Azure’da İdare, temelde iki hizmet ile uygulanır. [Azure İlkesi](./policy/overview.md) oluşturmanıza olanak tanır atayabilir ve kaynaklarınız için kuralları zorlamak için İlke tanımları yönetebilirsiniz. Bu özellik, bu kaynakları Kurumsal standartlarınız uyumlu tutar. [Cloudyn Azure maliyet Yönetimi](../cost-management/overview.md) , Azure kaynaklarınızın ve diğer bulut sağlayıcıları için bulut kullanımınızı ve harcamalarınızı izlemenize imkan tanır.
+Azure’da İdare, temelde iki hizmet ile uygulanır. [Azure İlkesi](./policy/overview.md) oluşturmanıza olanak tanır atayabilir ve kaynaklarınız için kuralları zorlamak için İlke tanımları yönetebilirsiniz. Bu özellik, bu kaynakları Kurumsal standartlarınız uyumlu tutar. [Azure maliyet yönetimi](../cost-management/overview-cost-mgt.md) , Azure kaynaklarınız ve diğer bulut sağlayıcıları için bulut kullanımını ve harcamalarınızı izlemenize olanak sağlar.
 
 ## <a name="secure"></a>Güvenlik
 

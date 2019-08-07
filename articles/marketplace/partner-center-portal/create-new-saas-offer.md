@@ -7,12 +7,12 @@ ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: a4947349e64d5f9bf95a9213701dc62a0e018b8f
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 300dd634cc99e5203145619b475d813705f09553
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501314"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815682"
 ---
 # <a name="create-a-new-saas-offer"></a>Yeni bir SaaS teklifi oluşturun
 
@@ -317,7 +317,7 @@ Teklif açıklamanızı daha ilgi çekici hale getirmek için, açıklamayı bi�
 
 #### <a name="contact-information"></a>İletişim bilgileri
 
-- **Kişiler**: Her müşteri kişisi için, bir çalışan **adı** , **telefon numarası**ve **e-posta** adresi sağlayın.  (Bunlar *herkese* açık olarak gösterilmez). **Destek kişi** grubu Için bir **Destek URL 'si** de gereklidir.  (Bu bilgiler genel *olarak* görüntülenecektir).
+- **Kişiler**: Her müşteri kişisi için, bir çalışan **adı** , **telefon numarası**ve **e-posta** adresi sağlayın.  (Bunlar herkese açık olarak gösterilmez). **Destek kişi** grubu Için bir **Destek URL 'si** de gereklidir.  (Bu bilgiler genel *olarak* görüntülenecektir).
 
 **Destek kişisi** (gerekli): Genel destek sorularına yöneliktir.
 
@@ -431,7 +431,7 @@ Planınız için Birleşik Devletler dolar (USD) cinsinden zaten fiyatlar ayarla
 
 **Düz hız:** Tek bir aylık veya yıllık fiyat sabit fiyat fiyatı ile teklifinizin erişimini etkinleştirin. Bu, bazen site tabanlı fiyatlandırma olarak adlandırılır. Bu fiyatlandırma modeliyle isteğe bağlı olarak, müşterileri standart olmayan birimlere göre ücretlendirmesi için Market ölçüm hizmeti API 'sini kullanan tarifeli planlar tanımlayabilirsiniz.  Tarifeli faturalandırma hakkında daha fazla bilgi için bkz. [Market ölçüm hizmeti kullanılarak ölçülen faturalandırma](./saas-metered-billing.md).
 
-**Bilgisayar tabanlı:** Teklifle veya şirket dışı bilgisayarlara erişen kullanıcı sayısına göre fiyat ile teklifinizin erişimini *etkinleştirin.* Bu koltuk tabanlı model, izin verilen en düşük ve en yüksek lisans sayısını fiyata göre ayarlamanıza olanak sağlar. Bu şekilde, farklı fiyat noktaları, birden çok plan yapılandırılarak kullanıcı sayısına göre yapılandırılabilir.  Bu alanlar isteğe bağlıdır. Boş bırakılırsa, bilgisayar sayısının bir sınırı olmadığı (en az 1 ve en fazla bir sistem destekleyebiliyor) olarak yorumlanacaktır. Bu alanlar, planınızdaki bir güncelleştirmenin parçası olarak düzenlenebilir.
+**Kullanıcı başına:** Teklifle veya şirket dışı bilgisayarlara erişen kullanıcı sayısına göre fiyat ile teklifinizin erişimini etkinleştirin. Bu Kullanıcı tabanlı model, fiyata göre izin verilen en düşük ve en yüksek Kullanıcı sayısını ayarlamanıza olanak sağlar. Bu şekilde, farklı fiyat noktaları, birden çok plan yapılandırılarak kullanıcı sayısına göre yapılandırılabilir.  Bu alanlar isteğe bağlıdır. Sol tarafta yoksa, Kullanıcı sayısı bir sınıra sahip değildir (en az 1, en fazla sistem tarafından desteklenebilir). Bu alanlar, planınızdaki bir güncelleştirmenin parçası olarak düzenlenebilir.
 
 Yayımlandıktan sonra faturalandırma fiyatlandırma modeli seçimi değiştirilemez. Ayrıca, aynı teklif için tüm planlar aynı fiyatlandırma modelini paylaşmalıdır.
 
@@ -497,7 +497,7 @@ Aşağıdaki test sürücüsü türleri, her biri kendi teknik yapılandırma ge
 
 **Sık**erişimli: Bu tür bir örnek dağıtılır ve seçilen bölgeye göre erişim bekleniyor. Müşteriler, bir dağıtımı beklemek yerine bir test sürücüsünün *sık* erişimli örneklerine anında erişebilir. Artırabilen maliyeti daha büyük bir çalışma süresi tabi şekilde, bu örneklerin her zaman Azure aboneliğinize göre çalıştığını ' dir. En az bir *sıcak* örnek olması önemle önerilir, çünkü çoğu müşteri tam dağıtımları beklemek Istemelidir ve *etkin* örnek yoksa, müşteri kullanımındaki bir bırakmaya neden olur.
 
-**Soğuk**: Bu örnek türü, bölge başına büyük olasılıkla dağıtılabilecek örneklerin toplam sayısını temsil eder. Soğuk örnekler, bir müşteri test sürücüsünü istediğinde tüm test sürücüsü Kaynak Yöneticisi şablonun dağıtılmasını gerektirir, böylece *soğuk* örnekler, *etkin* örneklere göre yüklenmeye çok daha yavaştır. Zorunluluğunu getirir, yalnızca test sürücüsünün süresi için ödeme yapmanız gereken bir deyişle, Azure *aboneliğinizde her zaman* bir *sıcak* örnekle birlikte çalışmıyor.
+**Soğuk**: Bu örnek türü, bölge başına büyük olasılıkla dağıtılabilecek örneklerin toplam sayısını temsil eder. Soğuk örnekler, bir müşteri test sürücüsünü istediğinde tüm test sürücüsü Kaynak Yöneticisi şablonun dağıtılmasını gerektirir, böylece *soğuk* örnekler, *etkin* örneklere göre yüklenmeye çok daha yavaştır. Zorunluluğunu getirir, yalnızca test sürücüsünün süresi için ödeme yapmanız gereken bir deyişle, Azure aboneliğinizde her zaman bir *sıcak* örnekle birlikte çalışmıyor.
 
 - **Test sürücüsü Azure Resource Manager şablonu**: Azure Resource Manager şablonunuzu içeren. zip ' i yükleyin.  Hızlı başlangıç makalesinde Azure Resource Manager şablonu oluşturma hakkında daha fazla bilgi edinin [Azure Portal kullanarak Azure Resource Manager şablonları oluşturun ve dağıtın](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
 
@@ -555,7 +555,7 @@ Sonraki bölüme geçmeden önce **kaydetmeyi** unutmayın!
 
 ### <a name="test-drive-listings-optional"></a>Sürücü listelerini test etme (isteğe bağlı)
 
-Test **sürücüsü sekmesinde bulunan** **Test sürücü listeleri** seçeneği, test sürücünüzün kullanılabildiği dilleri (ve pazarlar) görüntüler; şu anda İngilizce (Birleşik Devletler) kullanılabilir tek konumdur. Ayrıca, Bu sayfa dile özgü listenin durumunu ve eklendiği tarih/saati görüntüler. Her dil/Pazar için test sürücüsü ayrıntılarını (Açıklama, Kullanıcı el ile, videolar vb.) tanımlamanız gerekir.
+Test sürücüsü sekmesinde bulunan **Test sürücü listeleri** seçeneği , test sürücünüzün kullanılabildiği dilleri (ve pazarlar) görüntüler; şu anda İngilizce (Birleşik Devletler) kullanılabilir tek konumdur. Ayrıca, Bu sayfa dile özgü listenin durumunu ve eklendiği tarih/saati görüntüler. Her dil/Pazar için test sürücüsü ayrıntılarını (Açıklama, Kullanıcı el ile, videolar vb.) tanımlamanız gerekir.
 
 - **Açıklama** (gerekli): Kullanıcı teklifinizi elde edip etmeyeceğinizi belirlemesine yardımcı olmak için test sürücünüzü, neyi gösterdiklerinizi, kullanıcının deneme amaçlarını, araştırılacak özellikleri ve ilgili bilgileri tanıtın. Bu alana en fazla 3.000 karakter metin girilebilir. 
 

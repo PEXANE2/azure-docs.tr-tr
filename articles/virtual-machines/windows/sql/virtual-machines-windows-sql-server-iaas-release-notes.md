@@ -12,18 +12,26 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 2/13/2019
-ms.openlocfilehash: e7dea69b507117ba8a3765b5e9bc1fad46be4c53
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.date: 08/01/2019
+ms.openlocfilehash: e656cd4d901ad9f3180963047a85cd980e56df8b
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444201"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774208"
 ---
 # <a name="sql-server-on-azure-virtual-machine-release-notes"></a>Azure sanal makinesi sürüm notlarında SQL Server
 
 Azure, içinde yerleşik SQL Server bir görüntü ile sanal makine dağıtmanıza olanak tanır. Bu makalede, [Azure sanal makinelerinde son SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)sürümlerindeki yeni özellikler ve geliştirmeler özetlenmektedir. Makalede ayrıca, yayınla doğrudan ilgili olmayan ancak aynı zaman çerçevesinde yayınlanan önemli içerik güncelleştirmeleri de listelenir. Diğer Azure hizmetlerine yönelik iyileştirmeler için bkz. [hizmet güncelleştirmeleri](https://azure.microsoft.com/updates)
 
+## <a name="july-2019"></a>2019 Temmuz
+
+### <a name="documentation-improvements"></a>Belge geliştirmeleri
+
+| Belgeler | Ayrıntılar |
+| --- | --- |
+| **SQL VM 'yi farklı bir bölgeye taşıma** | [SQL Server VM bir bölgeden diğerine geçirmek](virtual-machines-windows-sql-move-different-region.md)için Azure Site Recovery kullanın. |
+| &nbsp; | &nbsp; |
 
 ## <a name="june-2019"></a>Haziran 2019
 
@@ -63,7 +71,7 @@ Azure, içinde yerleşik SQL Server bir görüntü ile sanal makine dağıtmanı
 
 | Hizmet geliştirmeleri | Ayrıntılar |
 | --- | --- |
-| **SQL Server 2008/2008R2 desteğini uzat** | SQL Server 2008 ve SQL Server 2008 R2 desteğini bir Azure VM 'sine *geçiş yaparak* [genişletin](virtual-machines-windows-sql-server-2008-eos-extend-support.md) . | 
+| **SQL Server 2008/2008R2 desteğini uzat** | SQL Server 2008 ve SQL Server 2008 R2 desteğini bir Azure VM 'sine geçiş yaparak [genişletin](virtual-machines-windows-sql-server-2008-eos-extend-support.md) . | 
 | &nbsp; | &nbsp; |
 
 

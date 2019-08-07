@@ -1,42 +1,42 @@
 ---
-title: Azure hdınsight HDFS sorunlarını giderme
-description: Azure HDInsight ile HDFS ile çalışma hakkında sık sorulan soruların yanıtlarını alın.
+title: Azure HDInsight 'ta sorun giderme
+description: Azure HDInsight ile çalışma hakkında sık sorulan soruların yanıtlarını alın.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 0a310eaeb9baf6ed2438b9f824cd6ad7eb492915
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f9b9e691c0c9f26ff765ca849777c278bc3ae03b
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64714194"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779559"
 ---
-# <a name="troubleshoot-apache-hadoop-hdfs-by-using-azure-hdinsight"></a>Azure HDInsight'ı kullanarak Apache Hadoop HDFS sorunlarını giderme
+# <a name="troubleshoot-apache-hadoop-hdfs-by-using-azure-hdinsight"></a>Azure HDInsight 'ı kullanarak Apache Hadoop, sorun giderme
 
-Apache Ambari yüklerde Hadoop dağıtılmış dosya sistemi (HDFS) ile çalışırken sık karşılaşılan sorunlar ve çözümleri hakkında bilgi edinin.
+Apache ambarı 'nda Hadoop Dağıtılmış Dosya Sistemi (,) yükleriyle çalışırken en üstteki sorunlar ve çözümleri hakkında bilgi edinin.
 
-## <a name="how-do-i-access-local-hdfs-from-inside-a-cluster"></a>Bir küme içindeki yerel HDFS nasıl erişim sağlanır?
+## <a name="how-do-i-access-local-hdfs-from-inside-a-cluster"></a>Yerel olarak bir küme içinden erişim Nasıl yaparım? mi?
 
 ### <a name="issue"></a>Sorun
 
-Komut satırı ve HDInsight kümesi içinde Azure Blob Depolama veya Azure Data Lake depolama alanından kullanarak uygulama kodu yerine yerel HDFS'ye erişim.   
+Azure Blob depolama veya HDInsight kümesinin içinden Azure Data Lake Storage yerine komut satırı ve uygulama kodundan yerel olarak erişin.   
 
 ### <a name="resolution-steps"></a>Çözüm adımları
 
-1. Komut isteminde kullanmak `hdfs dfs -D "fs.default.name=hdfs://mycluster/" ...` başka bir deyişle, aşağıdaki komutu olduğu gibi:
+1. Komut isteminde, aşağıdaki komutta olduğu `hdfs dfs -D "fs.default.name=hdfs://mycluster/" ...` gibi, harfine kullanın:
 
-    ```apache
-    hdiuser@hn0-spark2:~$ hdfs dfs -D "fs.default.name=hdfs://mycluster/" -ls /
+    ```output
+    hdfs dfs -D "fs.default.name=hdfs://mycluster/" -ls /
     Found 3 items
     drwxr-xr-x   - hdiuser hdfs          0 2017-03-24 14:12 /EventCheckpoint-30-8-24-11102016-01
     drwx-wx-wx   - hive    hdfs          0 2016-11-10 18:42 /tmp
     drwx------   - hdiuser hdfs          0 2016-11-10 22:22 /user
     ```
 
-2. Kaynak koddan bir URI kullanın `hdfs://mycluster/` başka bir deyişle, aşağıdaki örnek uygulamayı olduğu gibi:
+2. Kaynak koddan aşağıdaki örnek uygulamada olduğu gibi `hdfs://mycluster/` , URI 'yi tam olarak kullanın:
 
     ```Java
     import java.io.IOException;
@@ -61,10 +61,10 @@ Komut satırı ve HDInsight kümesi içinde Azure Blob Depolama veya Azure Data 
     }
     ```
 
-3. Derlenmiş .jar dosyasını çalıştırın (örneğin, adında bir dosya `java-unit-tests-1.0.jar`) aşağıdaki komutla HDInsight kümesinde:
+3. Aşağıdaki komutla, HDInsight kümesinde derlenen. jar dosyasını (örneğin, adlı `java-unit-tests-1.0.jar`bir dosya) çalıştırın:
 
     ```apache
-    hdiuser@hn0-spark2:~$ hadoop jar java-unit-tests-1.0.jar JavaUnitTests
+    hadoop jar java-unit-tests-1.0.jar JavaUnitTests
     hdfs://mycluster/tmp/hive/hive/5d9cf301-2503-48c7-9963-923fb5ef79a7/inuse.info
     hdfs://mycluster/tmp/hive/hive/5d9cf301-2503-48c7-9963-923fb5ef79a7/inuse.lck
     hdfs://mycluster/tmp/hive/hive/a0be04ea-ae01-4cc4-b56d-f263baf2e314/inuse.info
@@ -72,24 +72,24 @@ Komut satırı ve HDInsight kümesi içinde Azure Blob Depolama veya Azure Data 
     ```
 
 
-## <a name="how-do-i-force-disable-hdfs-safe-mode-in-a-cluster"></a>Nasıl miyim zorla-HDFS güvenli bir küme modunda devre dışı?
+## <a name="how-do-i-force-disable-hdfs-safe-mode-in-a-cluster"></a>Nasıl yaparım?, bir kümede ne tür kullanımı zorla modu devre dışı bırakılır?
 
 ### <a name="issue"></a>Sorun
 
-HDInsight kümesi üzerinde güvenli modda yerel HDFS takıldı.   
+Yerel kip, HDInsight kümesinde güvenli modda takılmış.   
 
 ### <a name="detailed-description"></a>Ayrıntılı bir açıklaması
 
-Aşağıdaki HDFS komutu çalıştırdığınızda hata oluşur:
+Aşağıdaki, bu komutu çalıştırdığınızda hata oluşur:
 
 ```apache
 hdfs dfs -D "fs.default.name=hdfs://mycluster/" -mkdir /temp
 ```
 
-Komutu çalıştırdığınızda, aşağıdaki hatayı görürsünüz:
+Komutunu çalıştırdığınızda aşağıdaki hatayı görürsünüz:
 
-```apache
-hdiuser@hn0-spark2:~$ hdfs dfs -D "fs.default.name=hdfs://mycluster/" -mkdir /temp
+```output
+hdfs dfs -D "fs.default.name=hdfs://mycluster/" -mkdir /temp
 17/04/05 16:20:52 WARN retry.RetryInvocationHandler: Exception while invoking ClientNamenodeProtocolTranslatorPB.mkdirs over hn0-spark2.2oyzcdm4sfjuzjmj5dnmvscjpg.dx.internal.cloudapp.net/10.0.0.22:8020. Not retrying because try once and fail.
 org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.hdfs.server.namenode.SafeModeException): Cannot create directory /temp. Name node is in safe mode.
 It was turned on manually. Use "hdfs dfsadmin -safemode leave" to turn safe mode off.
@@ -142,18 +142,18 @@ mkdir: Cannot create directory /temp. Name node is in safe mode.
 
 ### <a name="probable-cause"></a>Olası neden
 
-HDInsight küme aşağı ölçeklendirilebilir bir çok az sayıda düğüm. Aşağıda veya HDFS çoğaltma faktörü yakın düğümler sayısıdır.
+HDInsight kümesi çok az sayıda düğüme göre ölçeklendirildi. Düğüm sayısı, aşağıdaki veya daha fazla.
 
 ### <a name="resolution-steps"></a>Çözüm adımları 
 
-1. Aşağıdaki komutları kullanarak HDInsight kümesinde HDFS durumunu alın:
+1. Aşağıdaki komutları kullanarak HDInsight kümesindeki bir durum durumunu alın:
 
-    ```apache
+    ```bash
     hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -report
     ```
 
-    ```apache
-    hdiuser@hn0-spark2:~$ hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -report
+    ```output
+    hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -report
     Safe mode is ON
     Configured Capacity: 3372381241344 (3.07 TB)
     Present Capacity: 3138625077248 (2.85 TB)
@@ -187,13 +187,13 @@ HDInsight küme aşağı ölçeklendirilebilir bir çok az sayıda düğüm. Aş
     ...
     ```
 
-2. Aşağıdaki komutları kullanarak HDInsight kümesinde HDFS bütünlüğünü denetleyin:
+2. Aşağıdaki komutları kullanarak HDInsight kümesinde TBU 'un bütünlüğünü denetleyin:
 
-    ```apache
-    hdiuser@hn0-spark2:~$ hdfs fsck -D "fs.default.name=hdfs://mycluster/" /
+    ```bash
+    hdfs fsck -D "fs.default.name=hdfs://mycluster/" /
     ```
 
-    ```apache
+    ```output
     Connecting to namenode via http://hn0-spark2.2oyzcdm4sfjuzjmj5dnmvscjpg.dx.internal.cloudapp.net:30070/fsck?ugi=hdiuser&path=%2F
     FSCK started by hdiuser (auth:SIMPLE) from /10.0.0.22 for path / at Wed Apr 05 16:40:28 UTC 2017
     ....................................................................................................
@@ -220,7 +220,7 @@ HDInsight küme aşağı ölçeklendirilebilir bir çok az sayıda düğüm. Aş
     The filesystem under path '/' is HEALTHY
     ```
 
-3. Belirlerseniz vardır, bozuk, eksik veya under-çoğaltılmış blokları veya söz konusu bloklar göz ardı edilebilir olduğunu, ad düğümü güvenli mod dışında olması için aşağıdaki komutu çalıştırın:
+3. Eksik, bozuk veya bir çoğaltılan blok olmadığını veya bu blokların yoksayılabileceğini belirlerseniz, ad düğümünü güvenli moddan almak için aşağıdaki komutu çalıştırın:
 
     ```apache
     hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -safemode leave

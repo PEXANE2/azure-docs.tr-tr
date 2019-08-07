@@ -9,14 +9,14 @@ editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-ms.date: 07/01/2019
+ms.date: 08/01/2019
 ms.author: apimpm
-ms.openlocfilehash: 9eb03be5cd9704c3b124bfb16fd30c5c3466890d
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: b3513ab2583939943ff188b582f57f49530e5ded
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326134"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736253"
 ---
 # <a name="configure-a-custom-domain-name"></a>Özel bir etki alanı adı yapılandırma
 
@@ -40,17 +40,19 @@ Bu makalede açıklanan adımları gerçekleştirmek için şunları yapmanız g
 ## <a name="use-the-azure-portal-to-set-a-custom-domain-name"></a>Özel bir etki alanı adı ayarlamak için Azure portal kullanın
 
 1. [Azure portal](https://portal.azure.com/)API Management örneğine gidin.
-1. **Özel etki alanları ve SSL**seçin.
+1. **Özel etki alanları ' nı**seçin.
 
     Özel bir etki alanı adı atayabilmeniz için birkaç uç nokta vardır. Şu anda aşağıdaki uç noktalar kullanılabilir:
 
-    - **Ara sunucu** (varsayılan: `<apim-service-name>.azure-api.net`),
+    - **Ağ geçidi** (varsayılan: `<apim-service-name>.azure-api.net`),
     - **Portal** (varsayılan: `<apim-service-name>.portal.azure-api.net`),
     - **Yönetim** (varsayılan: `<apim-service-name>.management.azure-api.net`),
     - **SCM** (varsayılan: `<apim-service-name>.scm.azure-api.net`).
 
     > [!NOTE]
-    > Tüm uç noktaları veya bunlardan bazılarını güncelleştirebilirsiniz. Genellikle, müşteriler **proxy** 'yi güncelleştirir (Bu URL, API Management Ile sunulan API 'yi çağırmak için kullanılır) ve **Portal** (geliştirici portalı URL 'si). **Yönetim** ve **SCM** uç noktaları yalnızca API Management örnek sahipleri tarafından dahili olarak kullanılır ve bu nedenle, özel bir etki alanı adı daha az sıklıkla atanır. Çoğu durumda, belirli bir uç nokta için yalnızca tek bir özel etki alanı adı ayarlanabilir. Ancak, **Premium** katmanı, **proxy** uç noktası için birden çok konak adı ayarlamayı destekler.
+    > Yalnızca tüketim katmanında yapılandırma için kullanılabilir olan **ağ geçidi** uç noktası.
+    > Tüm uç noktaları veya bunlardan bazılarını güncelleştirebilirsiniz. Genellikle müşteriler **ağ geçidini** güncelleştirir (Bu URL, API Management Ile sunulan API 'yi çağırmak için kullanılır) ve **Portal** (geliştirici portalı URL 'si).
+    > **Yönetim** ve **SCM** uç noktaları yalnızca API Management örnek sahipleri tarafından dahili olarak kullanılır ve bu nedenle, özel bir etki alanı adı daha az sıklıkla atanır. **Premium** katmanı, **ağ geçidi** uç noktası için birden çok konak adı ayarlamayı destekler.
 
 1. Güncelleştirmek istediğiniz uç noktayı seçin.
 1. Sağdaki pencerede **Özel ' e**tıklayın.

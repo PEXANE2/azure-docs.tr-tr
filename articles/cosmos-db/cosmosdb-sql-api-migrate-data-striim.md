@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: b1817b54e16d77c41b5d5e80776c92eedfec7fc6
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: dba29ea2d4d0ad18f021e0271c6131f9473cbe8b
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68600702"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827805"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-sql-api-account-using-striim"></a>Anlık ileti kullanarak Azure Cosmos DB SQL API hesabına veri geçirme
  
@@ -22,7 +22,7 @@ Bu makalede, verileri bir **Oracle veritabanından** **Azure Cosmos DB bir SQL A
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* [Azure aboneliğiniz](/azure/guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
+* [Azure aboneliğiniz](/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing)yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
 
 * Şirket içinde çalışan ve içindeki verilerle bir Oracle veritabanı.
 

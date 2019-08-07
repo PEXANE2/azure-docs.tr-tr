@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: cee91de9e0a5d75be258705f636248a6a6213664
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 16e12021a65a09376293f28efe9a6e9ef74ef5c2
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444043"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839556"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools çalışın
 
@@ -314,7 +314,7 @@ Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 İşlevlerinizi yerel olarak test etmek için, [işlevleri ana bilgisayarı başlatır](#start) ve http isteklerini kullanarak yerel sunucuda uç noktaları çağırabilirsiniz. Çağırdığınız uç nokta, işlevin türüne bağlıdır.
 
 >[!NOTE]
-> Bu konudaki örnekler, Terminal veya komut isteminden HTTP istekleri göndermek için kıvrımlı aracı kullanır. Yerel sunucuya HTTP istekleri göndermek için tercih ettiğiniz bir aracı kullanabilirsiniz. Kıvrımlı Aracı, Linux tabanlı sistemlerde varsayılan olarak kullanılabilir. Windows 'ta, önce [kıvrımlı aracı](https://curl.haxx.se/)'nı indirip yüklemeniz gerekir.
+> Bu konudaki örnekler, Terminal veya komut isteminden HTTP istekleri göndermek için kıvrımlı aracı kullanır. Yerel sunucuya HTTP istekleri göndermek için tercih ettiğiniz bir aracı kullanabilirsiniz. , Linux tabanlı sistemlerde ve Windows 10 derleme 17063 ve sonraki sürümlerde kıvrımlı aracı varsayılan olarak kullanılabilir. Daha eski Windows 'ta, önce [kıvrımlı aracını](https://curl.haxx.se/)indirip yüklemeniz gerekir.
 
 Test işlevleri hakkında daha fazla genel bilgi için bkz. [Azure işlevlerinde kodunuzu test etme stratejileri](functions-test-a-function.md).
 

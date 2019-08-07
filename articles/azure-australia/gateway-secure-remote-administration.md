@@ -6,12 +6,12 @@ ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: grgale
-ms.openlocfilehash: 827dffc1c7544d9373b5f8d4426ea8c448fa25ab
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1e4c4712312faf2274a4a0737c4fc1f7ce39f98e
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68571607"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68824196"
 ---
 # <a name="secure-remote-administration-of-your-gateway-in-azure-australia"></a>Azure Avustralya 'da ağ geçidinizin uzaktan yönetimi
 
@@ -33,7 +33,6 @@ Bu belge, güvenli yönetimin önemini anlatmaktadır ve güvenli bir yönetim o
 |Günlüğe kaydetme ve denetleme   |İş istasyonlarından, sunuculardan, ağ cihazlarından ve geçiş kutularından gelen güvenlik ve yönetim ile ilgili olayların otomatik olarak oluşturulması, toplanması ve çözümlenmesi, cometkinlikleri algılamayı ve bu işlem denemeleri gerçekleştirmeye imkan tanır. Otomasyon, kuruluşların daha hızlı yanıt vermesini sağlar ve bir tehlikeye aşmasının etkilerini azaltır.|
 |Ağ kesimlemesi ve ayırma|Bir ağı farklı güvenlik etki alanları gibi mantıksal bölgelere ayırma ve bir bölgeden diğerine akan veri türlerini kısıtlayarak bu mantıksal ağları daha da ayırmak, yan yana taşımayı kısıtlar. Segmentleme, bir saldırganın ek kaynaklara erişim kazanmasını önler.|
 |Atma kutuları|Bir geçiş kutusu, Microsoft 'un Uzak Masaüstü Hizmetleri veya Secure Shell (SSH) yazılımını yaygın olarak kullanılan sıkı bir uzaktan erişim sunucusudur. Atlama kutuları, adanmış ana bilgisayardan gerçekleştirilen tüm yönetim eylemleriyle kritik sistemlere erişen Yöneticiler için bir atlama noktası görevi görür.|
-|
 
 Bu makalede, yukarıdaki öğelerin Azure 'da dağıtılan sistemlerin güvenli yönetimi için nasıl kullanılabileceği hakkında bir başvuru mimarisi sunulmaktadır.
 
@@ -77,7 +76,6 @@ Yönetim için erişim kazanmak, mimaride listelenen bileşenleri içeren çok a
 |Koşullu Erişim |Koşullu erişim ilkeleri, bağlantının geldiği IP adresi, ayrıcalıklı hesap için Grup üyeliği ve yönetim ve uyumluluk durumu gibi gerekli gereksinimleri karşıladığından emin olmak için kimlik doğrulama girişimini denetler. Intune tarafından bildirilen ayrıcalıklı iş istasyonu. |
 |Privileged Identity Management (PıM) |Azure portal aracılığıyla yönetici artık PıM aracılığıyla yetkilendirdikleri ayrıcalıklı roller için etkinleştirme etkinleştirebilir veya isteği isteyebilir. PıM, ayrıcalıklı hesapların hiç türlü yönetim ayrıcalıklarına sahip olmamasını ve ayrıcalıklı erişim için tüm isteklerin yalnızca yönetim görevlerini gerçekleştirmek için gerekli olan süre için olmasını sağlar. PıM ayrıca denetim amaçlarıyla tüm isteklerin ve etkinleştirmelerin günlüğe kaydedilmesini sağlar. |
 |Kimlik ve Erişim Denetimi|Ayrıcalıklı hesap güvenli bir şekilde tanımlandıktan ve roller etkinleştirildikten sonra, yönetici, kimlik ve erişim yönetimi aracılığıyla izinlerin atandığı Azure abonelikleri ve kaynaklarına erişim sağlanır.|
-|
 
 Ayrıcalıklı hesap Azure portal yönetim erişimi elde etmek için gereken adımları tamamladıktan sonra, iş yüklerine erişim yapılandırılabilir ve Yönetim bağlantıları yapılabilir.
 
@@ -91,7 +89,6 @@ Ayrıcalıklı hesap Azure portal yönetim erişimi elde etmek için gereken ad�
 |Ağ Ilkesi sunucusu (NPS)|NPS, RD Ağ Geçidi kimlik doğrulama isteğini alır ve bir Azure MFA kimlik doğrulama isteğini tetiklemek üzere Azure Active Directory bir istek göndermeden önce Active Directory Kullanıcı adı ve parolayı doğrular.|
 |Azure MFA|Azure MFA, ayrıcalıklı hesabın kayıtlı mobil cihazına bir kimlik doğrulama isteği gönderir. Mobil cihaz, güvenlik gereksinimleriyle uyumluluğu sağlamak için Intune tarafından yönetilir. Yönetici, kimlik doğrulama girişiminden Azure MFA 'ya yetki vermeden önce, önce mobil cihazda ve ardından bir PIN veya biyometrik sistem kullanarak Microsoft Authenticator uygulamasına kimlik doğrulaması yapması gerekir.|
 |Sunucu atlayın|Başarıyla kimlik doğrulamasından sonra RDP bağlantısı, Aktarım Katmanı Güvenliği (TLS) kullanılarak şifrelenir ve sonra RD Ağ Geçidi ve doğrudan geçiş sunucusu üzerinden Azure VPN Gateway şifreli IPSec Tünelini aracılığıyla gönderilir. Yönetim sunucusundan yönetici artık, sanal makinelerin JıT isteğinde belirtilen şekilde iş yükünü sağlamak için RDP veya SSH kullanabilir.|
-|
 
 ## <a name="general-guidance"></a>Genel rehberlik
 
@@ -133,7 +130,6 @@ Ayrıcalıklı iş istasyonu, yönetim görevlerini gerçekleştirmek için kull
 |---|---|
 |Ayrıcalıklı erişim Iş Istasyonları mimarisine genel bakış|[https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)|
 |Ayrıcalıklı erişim başvuru malzemelerinin güvenliğini sağlama|[https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)|
-|
 
 ### <a name="mobile-device"></a>Mobil cihaz
 
@@ -143,7 +139,6 @@ Mobil cihaz, taşınabilirliği ve boyutu nedeniyle yanlışlıkla kayıp veya h
 |---|---|
 |Azure AD kimlik doğrulama yöntemleri|[https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-methods](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-methods)|
 |Microsoft Authenticator uygulamasını kullanma|[https://support.microsoft.com/help/4026727/microsoft-account-how-to-use-the-microsoft-authenticator-app](https://support.microsoft.com/help/4026727/microsoft-account-how-to-use-the-microsoft-authenticator-app)|
-|
 
 ### <a name="microsoft-intune"></a>Microsoft Intune
 
@@ -153,7 +148,6 @@ Intune, mobil cihazları ve uygulamaları yöneten Enterprise Mobility + Securit
 |---|---|
 |Microsoft Intune belgeleri|[https://docs.microsoft.com/intune/](https://docs.microsoft.com/intune/)|
 |Intune 'da cihaz uyumluluğunu kullanmaya başlama|[https://docs.microsoft.com/intune/device-compliance-get-started](https://docs.microsoft.com/intune/device-compliance-get-started)|
-|
 
 ### <a name="group-policy"></a>Grup İlkesi
 
@@ -162,7 +156,6 @@ Grup ilkesi, işletim sistemlerinin ve uygulamaların yapılandırmasını denet
 |Kaynaklar|Bağlantı|
 |---|---|
 |Yerel olarak oturum açmaya izin ver grup ilkesi ayarı|[https://docs.microsoft.com/windows/security/threat-protection/security-policy-settings/allow-log-on-locally](https://docs.microsoft.com/windows/security/threat-protection/security-policy-settings/allow-log-on-locally)|
-|
 
 ### <a name="jump-server--bastion-host"></a>Sunucu/savunma konağını geç
 
@@ -171,7 +164,6 @@ Atma sunucusu/savunma ana bilgisayarı, yönetim için bir denetleyebileceği no
 |Kaynaklar|Bağlantı|
 |---|---|
 |Güvenli Yönetim konakları uygulama|[https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/implementing-secure-administrative-hosts](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/implementing-secure-administrative-hosts)|
-|
 
 ### <a name="just-in-time-jit-access"></a>Tam zamanında (JıT) erişim
 
@@ -181,7 +173,6 @@ JıT, sanal makinelerde RDP ve SSH gibi yönetim protokollerine erişimi engelle
 |---|---|
 |Tam zamanında (JıT) erişimi yönetme|[https://docs.microsoft.com/azure/security-center/security-center-just-in-time](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)|
 |Azure 'un tam zamanında VM erişimi 'ni otomatikleştirme|[https://blogs.technet.microsoft.com/motiba/2018/06/24/automating-azure-just-in-time-vm-access](https://blogs.technet.microsoft.com/motiba/2018/06/24/automating-azure-just-in-time-vm-access)|
-|
 
 ## <a name="secure-communication"></a>Güvenli iletişim
 
@@ -194,7 +185,6 @@ Azure portal iletişimleri Aktarım Katmanı Güvenliği (TLS) kullanılarak şi
 |Kaynaklar |Bağlantı |
 |---|---|
 |Azure şifrelemeye genel bakış – aktarım sırasında şifreleme|[https://docs.microsoft.com/azure/security/security-azure-encryption-overview#encryption-of-data-in-transit](https://docs.microsoft.com/azure/security/security-azure-encryption-overview#encryption-of-data-in-transit)|
-|
 
 ### <a name="azure-vpn-gateway"></a>Azure VPN Gateway
 
@@ -204,8 +194,7 @@ Azure VPN Gateway, ayrıcalıklı iş istasyonundan Azure 'a güvenli şifreli b
 |---|---|
 |Noktadan siteye bağlantılar hakkında|[https://docs.microsoft.com/azure/vpn-gateway/point-to-site-about](https://docs.microsoft.com/azure/vpn-gateway/point-to-site-about)|
 |Azure VPN Gateway şifreleme ayrıntıları|[https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-compliance-crypto](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-compliance-crypto)|
-|Azure VPN Gateway yapılandırması|[https://aka.ms/AzGovAUSecurity](https://aka.ms/AzGovAUSecurity)|
-|
+|Azure VPN Gateway yapılandırması|[Azure VPN Gateway yapılandırması](vpn-gateway.md)|
 
 ### <a name="remote-desktop-rd-gateway"></a>Uzak Masaüstü (RD) ağ geçidi
 
@@ -214,7 +203,6 @@ RD Ağ Geçidi, sistemler için RDP bağlantılarını denetlemek ve güvenilir 
 |Kaynaklar |Bağlantı |
 |---|---|
 |Uzak Masaüstü Hizmetleri mimarisi|[https://docs.microsoft.com/windows-server/remote/remote-desktop-services/desktop-hosting-logical-architecture](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/desktop-hosting-logical-architecture)|
-|
 
 ### <a name="network-security-groups-nsgs"></a>Ağ güvenlik grupları (NSG 'ler)
 
@@ -224,7 +212,6 @@ NSG 'Ler, alt ağları veya sanal makineleri girerek veya bırakarak ağ trafiğ
 |---|---|
 |Azure güvenlik gruplarına genel bakış|[https://docs.microsoft.com/azure/virtual-network/security-overview](https://docs.microsoft.com/azure/virtual-network/security-overview)|
 |Nasıl yapılır: Sanal ağları planlayın|[https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)|
-|
 
 ## <a name="strong-authentication"></a>Güçlü kimlik doğrulama
 
@@ -237,7 +224,6 @@ Yüksek düzeyde bir DC, bir etki alanı içindeki tüm kullanıcıları, bilgis
 |Kaynaklar |Bağlantı |
 |---|---|
 |Active Directory Domain Services genel bakış|[https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)|
-|
 
 ### <a name="azure-active-directory-azure-ad"></a>Azure Active Directory (Azure AD)
 
@@ -249,7 +235,6 @@ kimlikler ve bir Azure ortamı için kimlik doğrulaması ve yetkilendirme sağl
 |---|---|
 |Azure Active Directory Belgeleri|[https://docs.microsoft.com/azure/active-directory](https://docs.microsoft.com/azure/active-directory)|
 |Karma kimlik belgeleri|[https://docs.microsoft.com/azure/active-directory/hybrid](https://docs.microsoft.com/azure/active-directory/hybrid)|
-|
 
 ### <a name="network-policy-server-nps"></a>Ağ Ilkesi sunucusu (NPS)
 
@@ -258,7 +243,6 @@ NPS, Gelişmiş kimlik doğrulaması ve yetkilendirme süreçlerini sağlayan bi
 |Kaynaklar |Bağlantı |
 |---|---|
 |Ağ Ilkesi sunucusu belgeleri|[https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top)|
-|
 
 ### <a name="azure-mfa"></a>Azure MFA
 
@@ -268,7 +252,6 @@ Azure MFA, Azure portal gibi bulut kaynaklarına erişim için bir Kullanıcı a
 |---|---|
 |Nasıl çalışır? Azure Multi-Factor Authentication|[https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks)|
 |Nasıl yapılır: Bulut tabanlı Azure Multi-Factor Authentication'ı dağıtın|[https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)|
-|
 
 ## <a name="strong-authorisation"></a>Güçlü yetkilendirme
 
@@ -282,7 +265,6 @@ Azure 'da ayrıcalıklı eylemler gerçekleştirme erişimi, bu hesaba atanan ro
 |---|---|
 |Azure rol tabanlı Access Control|[https://docs.microsoft.com/azure/role-based-access-control](https://docs.microsoft.com/azure/role-based-access-control)|
 |Rol tanımlarını anlama|[https://docs.microsoft.com/azure/role-based-access-control/role-definitions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions)|
-|
 
 ### <a name="privileged-identity-management-pim"></a>Privileged Identity Management (PıM)
 
@@ -292,7 +274,6 @@ PıM, ayrıcalıklı rollere erişimi denetleyen bir Azure Active Directory bile
 |---|---|
 |Privileged Identity Management (PıM) belgeleri|[https://docs.microsoft.com/azure/active-directory/privileged-identity-management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management)|
 |PIM kullanmaya başlama|[https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-getting-started](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-getting-started)|
-|
 
 ### <a name="conditional-access"></a>Koşullu erişim
 
@@ -302,7 +283,6 @@ Koşullu erişim, koşullara göre kaynaklara erişime izin veren veya erişimi 
 |---|---|
 |Koşullu Erişim Belgeleri|[https://docs.microsoft.com/azure/active-directory/conditional-access](https://docs.microsoft.com/azure/active-directory/conditional-access)|
 |Nasıl yapılır: Koşullu erişimle Cloud App erişimi için yönetilen cihazlar gerektir|[https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)|
-|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

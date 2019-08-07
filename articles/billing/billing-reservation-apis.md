@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/25/2019
+ms.date: 08/02/2019
 ms.author: banders
-ms.openlocfilehash: 20ed2bcf793ab5c3913ccf66d338e71c1a99a003
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 36bc403c4000e58541f22c2cb44f77a28e81cb72
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478931"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779897"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>Azure ayırma otomasyonu için API 'Ler
 
@@ -84,7 +84,7 @@ Kuruluşunuzun ayırmalarının kullanıldığı fark ederseniz:
 - Kuruluşunuzun oluşturduğu sanal makinelerin, rezervasyondaki VM boyutuyla eşleştiğinden emin olun.
 - Örnek boyutu esnekliğin açık olduğundan emin olun. Daha fazla bilgi için bkz. [ayırmaları yönetme-ayrılmış VM örnekleri için en iyileştirme ayarını değiştir](billing-manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances).
 - Daha geniş bir uygulama için ayırma kapsamını paylaşılan olarak değiştirin. Daha fazla bilgi için bkz. [ayırmaları yönetme-bir ayırmanın kapsamını değiştirme](billing-manage-reserved-vm-instance.md#change-the-reservation-scope).
-- Kullanılmayan miktarı Exchange. Daha fazla bilgi için bkz. [ayırmaları-iptaller ve alışverişlerde yönetme](billing-manage-reserved-vm-instance.md#cancellations-and-exchanges).
+- Kullanılmayan miktarı Exchange. Daha fazla bilgi için bkz. [rezervasyonları yönetme](billing-manage-reserved-vm-instance.md).
 
 ## <a name="give-access-to-reservations"></a>Rezervasyonların erişimine izin ver
 

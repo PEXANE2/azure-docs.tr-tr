@@ -8,14 +8,14 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: bfc9d01284bb5623989676afbdeadc1c91c14ab0
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 025052a5005702232eb9eaf255e6aac2c58fec98
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688389"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68735581"
 ---
-# <a name="manage-azure-vm-backups"></a>Azure VM yedeklemelerini yönetme
+# <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Azure Backup hizmeti ile Azure VM yedeklemelerini yönetme
 
 Bu makalede, [Azure Backup hizmeti](backup-overview.md)kullanılarak yedeklenen Azure sanal makinelerinin (VM) nasıl yönetileceği açıklanmaktadır. Makale Ayrıca, kasa panosunda bulabileceğiniz yedekleme bilgilerini de özetler.
 

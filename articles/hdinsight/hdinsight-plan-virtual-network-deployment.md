@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 9906fe5de9c24f1b1a8c3f713fa772e56ed4e13f
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 135855ee33f783e85b398c7f9716c2c897633de9
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68441955"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779535"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Azure HDInsight için bir sanal ağ planlayın
 
@@ -25,7 +25,7 @@ Azure sanal ağı kullanmak aşağıdaki senaryolara izin vermez:
 * Internet üzerinden genel kullanıma açık olmayan [Apache Hadoop](https://hadoop.apache.org/) hizmetlere doğrudan erişme. Örneğin, [Apache Kafka](https://kafka.apache.org/) API 'Ler veya [Apache HBASE](https://hbase.apache.org/) Java API 'si.
 
 > [!IMPORTANT]
-> VNET 'te HDInsight kümesi oluşturmak, NIC 'ler ve yük dengeleyiciler gibi çeşitli ağ kaynakları oluşturur. Kümenizin VNET ile düzgün çalışması için gerektiğinden, bu ağ **kaynaklarını silmeyin.**
+> VNET 'te HDInsight kümesi oluşturmak, NIC 'ler ve yük dengeleyiciler gibi çeşitli ağ kaynakları oluşturur. Kümenizin VNET ile düzgün çalışması için gerektiğinden, bu ağ kaynaklarını silmeyin.
 >
 > 28 Şubat 2019 ' den sonra, VNET 'te oluşturulan yenı HDInsight kümeleri için ağ kaynakları (örneğin, NIC 'ler, LBs vb.), aynı HDInsight kümesi kaynak grubunda sağlanacak. Daha önce bu kaynaklar VNET kaynak grubunda sağlandı. Geçerli çalışan kümelerde ve VNET olmadan oluşturulan kümelerdeki hiçbir değişiklik yoktur.
 
@@ -117,7 +117,7 @@ Azure, bir sanal ağda yüklü olan Azure hizmetleri için ad çözümlemesi sa�
 
 * İnternet 'te kullanılabilir olan herhangi bir kaynak. Örneğin, microsoft.com, windowsupdate.com.
 
-* Kaynağın __Iç DNS adını__ kullanarak aynı Azure sanal ağında olan herhangi bir kaynak. Örneğin, varsayılan ad çözümlemesi kullanıldığında, HDInsight çalışan düğümlerine atanan örnek iç DNS adları aşağıda verilmiştir:
+* Kaynağın __Iç DNS adını__ kullanarak aynı Azure sanal ağında olan herhangi bir kaynak. Örneğin, varsayılan ad çözümlemesi kullanıldığında, HDInsight çalışan düğümlerine atanan iç DNS adları örnekleri aşağıda verilmiştir:
 
   * wn0-hdinsi.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net
   * wn2-hdinsi.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net
@@ -232,9 +232,9 @@ Ağ güvenlik grupları hakkında daha fazla bilgi için bkz. [ağ güvenlik gru
 
 HDInsight kümelerinden giden trafiği denetleme hakkında daha fazla bilgi için bkz. [Azure HDInsight kümeleri için giden ağ trafiği kısıtlamasını yapılandırma](hdinsight-restrict-outbound-traffic.md).
 
-#### <a name="forced-tunneling-to-on-premise"></a>Şirket içi için Zorlamalı tünel
+#### <a name="forced-tunneling-to-on-premise"></a>Şirket içine zorlamalı tünel oluşturma
 
-Zorlamalı tünel, bir alt ağdan gelen tüm trafiğin, şirket içi ağınız gibi belirli bir ağa veya konuma zorlanarak Kullanıcı tanımlı bir yönlendirme yapılandırmadır. HDInsight, şirket içi ağlarda trafiğin zorlamalı tünelini __desteklemez.__ 
+Zorlamalı tünel, bir alt ağdan gelen tüm trafiğin, şirket içi ağınız gibi belirli bir ağa veya konuma zorlanarak Kullanıcı tanımlı bir yönlendirme yapılandırmadır. HDInsight, şirket içi ağlarda trafiğin zorlamalı tünelini desteklemez. 
 
 ## <a id="hdinsight-ip"></a>Gerekli IP adresleri
 

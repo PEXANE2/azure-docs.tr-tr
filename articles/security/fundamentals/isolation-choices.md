@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 4115964533072e5d8f1760c8c5cdf0f20c9b7625
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 0c07cbd9fef865f3fc7b782210ef44094df9f629
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727130"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779825"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure genel bulutunda yalıtım
 ##  <a name="introduction"></a>Giriş
@@ -240,7 +240,7 @@ Aktarım sırasında şifreleme, ağlar arasında iletilirken verilerin korunmas
 -   Depolama alanına aktarılmadan önce verileri şifrelemek ve depolama alanı dışına aktarıldıktan sonra verilerin şifresini çözmek için [istemci tarafı şifreleme](https://docs.microsoft.com/azure/storage/storage-security-guide#using-client-side-encryption-to-secure-data-that-you-send-to-storage).
 
 #### <a name="encryption-at-rest"></a>Bekleyen şifreleme
-Birçok kuruluş için, [bekleyen veri şifreleme](https://docs.microsoft.com/azure/security/azure-isolation) , veri gizliliği, uyumluluk ve veri egemenlik 'e yönelik zorunlu bir adımdır. "Bekleyen" veri şifrelemesini sağlayan üç Azure özelliği vardır:
+Birçok kuruluş için, [bekleyen veri şifreleme](https://docs.microsoft.com/azure/security/fundamentals/isolation-choices) , veri gizliliği, uyumluluk ve veri egemenlik 'e yönelik zorunlu bir adımdır. "Bekleyen" veri şifrelemesini sağlayan üç Azure özelliği vardır:
 
 -   [Depolama hizmeti şifrelemesi](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-at-rest) , depolama hizmetinin verileri Azure depolama 'ya yazarken otomatik olarak şifrelemesine olanak tanır.
 

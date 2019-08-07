@@ -10,23 +10,23 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.reviewer: brahmnes
-ms.date: 03/07/2019
+ms.date: 08/06/2019
 ms.author: mbullwin
-ms.openlocfilehash: 4157285e8af67acd1dc3627bebc12076d7fe072c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02d72ab877577e97592dfdd763a58cb01b201d8b
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65595575"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839359"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET uygulamalarında özel durumlarda anlık görüntü hata ayıklama
 Bir özel durum oluştuğunda, hata ayıklama anlık görüntüsünü canlı web uygulamanızı otomatik olarak toplayabilirsiniz. Anlık görüntü, özel durumun oluştuğu şu anda kaynak kodu ve değişkenleri durumunu gösterir. Snapshot Debugger (Önizleme) içinde [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) web uygulamanızdan özel telemetri izler. Böylece, üretim sorunlarını tanılamak ihtiyacınız olan bilgileri sahip anlık görüntüleri, üst özel durum atma özel durumları toplar. Dahil [Snapshot collector NuGet paketini](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) uygulamanızda ve isteğe bağlı olarak koleksiyon parametrelerinde yapılandırma [Applicationınsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md). Anlık görüntüler görüntülenerek [özel durumları](../../azure-monitor/app/asp-net-exceptions.md) Application Insights portalında.
 
-Hata ayıklama anlık görüntülerini portalda görüntüleyerek çağrı yığınını görebilir ve her bir çağrı yığını çerçevesinde değişkenleri inceleyebilirsiniz. Kaynak koduyla birlikte daha güçlü bir hata ayıklama deneyimi elde etmek için Visual Studio 2019 Enterprise ile anlık görüntüleri açmak. Visual Studio'da ayrıca [etkileşimli anlık görüntülerini almak için anlık görüntü noktaları ayarlamak](https://aka.ms/snappoint) olmadan için bir özel durum bekleniyor.
+Hata ayıklama anlık görüntülerini portalda görüntüleyerek çağrı yığınını görebilir ve her bir çağrı yığını çerçevesinde değişkenleri inceleyebilirsiniz. Kaynak kodla daha güçlü bir hata ayıklama deneyimi sağlamak için, Visual Studio 2019 Enterprise ile anlık görüntüler açın. Visual Studio'da ayrıca [etkileşimli anlık görüntülerini almak için anlık görüntü noktaları ayarlamak](https://aka.ms/snappoint) olmadan için bir özel durum bekleniyor.
 
 Hata ayıklama anlık görüntüleri yedi gün boyunca saklanır. Bu bekletme ilkesi, bir uygulama başına temelinde ayarlanır. Bu değeri arttırmak gerekiyorsa, Azure portalında bir destek talebi açarak artışı isteyebilirsiniz.
 
-## <a name="enable-application-insights-snapshot-debugger-for-your-application"></a>Uygulamanız için Application Insights Snapshot Debugger'ı etkinleştir
+## <a name="enable-application-insights-snapshot-debugger-for-your-application"></a>Uygulamanız için Application Insights Snapshot Debugger etkinleştirin
 Anlık görüntü koleksiyonu için kullanılabilir:
 * .NET Framework 4.5 veya üzeri çalışan .NET framework ve ASP.NET uygulamaları.
 * Windows üzerinde çalışan .NET core 2.0 ve ASP.NET Core 2.0 uygulamaları.
@@ -34,15 +34,15 @@ Anlık görüntü koleksiyonu için kullanılabilir:
 Şu ortamlarda desteklenir:
 
 * [Azure uygulama hizmeti](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)
-* [Azure bulut Hizmetleri](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) işletim sistemi ailesi 4 veya sonraki sürümlerini çalıştırıyor
-* [Azure Service Fabric Hizmetleri](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) Windows Server 2012 R2 veya sonraki sürümlerde çalışan
-* [Azure sanal makineler ve sanal makine ölçek kümeleri](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) çalıştıran Windows Server 2012 R2 veya üzeri
-* [Şirket içi sanal veya fiziksel makinelere](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) çalıştıran Windows Server 2012 R2 veya üzeri
+* İşletim sistemi ailesi 4 veya üstünü çalıştıran [Azure Cloud Services](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
+* Windows Server 2012 R2 veya üzeri sürümlerde çalışan [Azure Service Fabric Hizmetleri](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
+* Windows Server 2012 R2 veya üstünü çalıştıran [Azure sanal makineleri ve sanal makine ölçek kümeleri](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
+* Windows Server 2012 R2 veya üstünü çalıştıran [Şirket içi sanal veya fiziksel makineler](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 
 > [!NOTE]
 > İstemci uygulamaları (örneğin, WPF, Windows Forms veya UWP) desteklenmez.
 
-Snapshot Debugger etkinleştirildi, ancak anlık görüntüleri görmüyorsanız, kontrol bizim [sorun giderme kılavuzu](snapshot-debugger-troubleshoot.md?toc=/azure/azure-monitor/toc.json).
+Snapshot Debugger etkinleştirdiyseniz, anlık görüntüleri görmüyorsanız, [sorun giderme](snapshot-debugger-troubleshoot.md?toc=/azure/azure-monitor/toc.json)kılavuzumuzu kontrol edin.
 
 ## <a name="grant-permissions"></a>İzinleri verme
 
@@ -64,13 +64,13 @@ Abonelik sahipleri Ata `Application Insights Snapshot Debugger` rol kullanıcıl
 > [!IMPORTANT]
 > Anlık görüntüler, potansiyel olarak değişkeni ve parametre değerlerini kişisel ve hassas bilgileri içerebilir.
 
-## <a name="view-snapshots-in-the-portal"></a>Portalda anlık görüntüleri Göster
+## <a name="view-snapshots-in-the-portal"></a>Portalda anlık görüntüleri görüntüleme
 
-Uygulamanızda bir özel durum oluştu ve anlık görüntü oluşturulduktan sonra görüntülemek için anlık görüntüleri olması gerekir. Uygulamanın hazır ve görüntülenebilir bir anlık görüntüye portaldan oluşan bir özel durumdan 5-10 dakika sürebilir. Anlık görüntüleri görüntülemek için **hatası** bölmesinde **Operations** düğmesini görüntülerken **Operations** sekmesinde veya seçin **özel durumları**düğmesini görüntülerken **özel durumları** sekmesinde:
+Uygulamanızda bir özel durum oluştu ve bir anlık görüntü oluşturulduktan sonra, görüntülenecek anlık görüntülere sahip olmanız gerekir. Bir anlık görüntüye hazırlık ve portaldan görünebilen bir özel durumdan 5 ila 10 dakika sürebilir. Anlık görüntüleri görüntülemek için, **hata** bölmesinde, **Işlemler** sekmesini görüntülerken **Işlemler** düğmesini seçin veya **özel durumlar** sekmesini görüntülerken **özel durumlar** düğmesini seçin:
 
-![Sayfa hataları](./media/snapshot-debugger/failures-page.png)
+![Arızalar sayfası](./media/snapshot-debugger/failures-page.png)
 
-Bir işlem veya özel durum açmak için sağ bölmede seçin **uçtan uca işlem ayrıntıları** bölmesi ve özel durum olayı seçin. Belirtilen özel durum için bir anlık görüntü varsa bir **Aç hata ayıklama anlık görüntüsü** düğmesinin sağ bölmede ayrıntılarıyla [özel durum](../../azure-monitor/app/asp-net-exceptions.md).
+Sağ bölmedeki bir işlem veya özel durum seçerek **uçtan uca Işlem ayrıntıları** bölmesini açın, sonra özel durum olayını seçin. Verilen özel durum için bir anlık görüntü varsa, sağdaki bölmede [özel durum](../../azure-monitor/app/asp-net-exceptions.md)ayrıntılarının bulunduğu bir **hata ayıklama anlık görüntüsü aç** düğmesi görünür.
 
 ![Özel durum hata ayıklama anlık görüntüsü düğmesinde Aç](./media/snapshot-debugger/e2e-transaction-page.png)
 
@@ -80,10 +80,10 @@ Anlık görüntü hata ayıklama Görünümü'nde, çağrı yığını ve deği�
 
 Anlık görüntüler, hassas bilgiler içerebilir ve görüntülenebilir olmayan varsayılan olarak. Anlık görüntüleri görüntülemek için olmalıdır `Application Insights Snapshot Debugger` size atanan rol.
 
-## <a name="view-snapshots-in-visual-studio-2017-enterprise-or-above"></a>Anlık görüntüleri Göster Visual Studio 2017 Enterprise veya üzeri
-1. Tıklayın **anlık görüntüyü indir** indirmek için düğmeye bir `.diagsession` dosyasını Visual Studio Enterprise tarafından açılabilir.
+## <a name="view-snapshots-in-visual-studio-2017-enterprise-or-above"></a>Visual Studio 2017 Enterprise veya üzeri anlık görüntüleri görüntüleme
+1. Visual Studio Enterprise tarafından açılabilen bir `.diagsession` dosyayı indirmek için **anlık görüntüyü indir** düğmesine tıklayın.
 
-2. Açmak için `.diagsession` dosya anlık görüntü hata ayıklayıcısı Visual Studio bileşeninin yüklü olması gerekir. Anlık görüntü hata ayıklayıcı bileşeni Visual Studio'da ASP.net iş yükü, gerekli bir bileşenidir ve Visual Studio yükleyicisi tek tek bileşenler listesinden seçilebilir. Visual Studio 2017 sürüm 15.5 önce Visual Studio sürümünü kullanıyorsanız, uzantısını yüklemeniz gerekir [Visual Studio Market](https://aka.ms/snapshotdebugger).
+2. `.diagsession` Dosyayı açmak için Snapshot Debugger Visual Studio bileşeninin yüklü olması gerekir. Snapshot Debugger bileşeni, Visual Studio 'daki ASP.net iş yükünün gerekli bir bileşenidir ve Visual Studio yükleyicisi 'ndeki ayrı bileşen listesinden seçilebilir. Visual Studio 2017 sürüm 15,5 ' den önceki bir Visual Studio sürümü kullanıyorsanız, uzantıyı [Visual Studio Market](https://aka.ms/snapshotdebugger)yüklemeniz gerekecektir.
 
 3. Anlık görüntü dosyası açtıktan sonra Visual Studio'da mini döküm hata ayıklama sayfası görüntülenir. Tıklayın **hata ayıklama yönetilen kodu** anlık görüntü hata ayıklama başlatılamıyor. Anlık görüntü geçerli işlemin durumunu ayıklayabilirsiniz, burada özel durumun oluştuğu kod satırına açılır.
 
@@ -112,7 +112,7 @@ Ana işlem, çalıştırmak ve trafiğin az kesinti ile kullanıcılara hizmet d
 
 ## <a name="limitations"></a>Sınırlamalar
 
-Varsayılan veri saklama süresi 15 gündür. Her bir Application Insights örneği için 50 anlık görüntü sayısı üst sınırı, gün başına izin verilir.
+Varsayılan veri saklama süresi 15 gündür. Her bir Application Insights örneği için günde en fazla 50 anlık görüntüye izin verilir.
 
 ### <a name="publish-symbols"></a>Yayım simgeleri
 Snapshot Debugger, değişkenleri çözülecek ve Visual Studio'da hata ayıklama bir deneyim sağlamak üzere üretim sunucusundaki sembol dosyalarını gerektiri.
@@ -124,6 +124,10 @@ Sürüm 15.2 (veya üstü) App Service'te yayımlarken, varsayılan olarak sür�
 
 Azure işlem ve diğer türleri için Sembol dosyaları ana uygulama .dll aynı klasörde olduğundan emin olun (genellikle `wwwroot/bin`) ya da geçerli yolda kullanılabilir.
 
+> [!NOTE]
+> Kullanılabilir farklı sembol seçenekleri hakkında daha fazla bilgi için [Visual Studio belgelerine](https://docs.microsoft.com/visualstudio/ide/reference/advanced-build-settings-dialog-box-csharp?view=vs-2019#output
+)başvurun. En iyi sonuçlar için, "tam", "taşınabilir" veya "katıştırılmış" kullanmanızı öneririz.
+
 ### <a name="optimized-builds"></a>En iyi duruma getirilmiş derlemeleri
 Bazı durumlarda, yerel değişkenler, JIT derleyicisi tarafından uygulanan en iyi duruma getirme nedeniyle sürüm yapılarında görüntülenemiyor.
 Ancak, Azure uygulama hizmetleri, anlık görüntü toplayıcının koleksiyon planı parçası olan oluşturma yöntemleri deoptimize.
@@ -132,15 +136,15 @@ Ancak, Azure uygulama hizmetleri, anlık görüntü toplayıcının koleksiyon p
 > Application Insights Site uzantısının deoptimization destek almak için App Service içinde yükleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Uygulamanız için Application Insights Snapshot Debugger etkinleştir:
+Uygulamanız için Application Insights Snapshot Debugger etkinleştirin:
 
 * [Azure uygulama hizmeti](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Cloud Services](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Service Fabric Hizmetleri](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
-* [Azure sanal makineler ve sanal makine ölçek kümeleri](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
+* [Azure sanal makineleri ve sanal makine ölçek kümeleri](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * [Şirket içi sanal veya fiziksel makineler](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 
-Application Insights Snapshot Debugger:
+Application Insights Snapshot Debugger ötesinde:
  
 * [Anlık görüntü noktaları kodunuzda ayarlayın](https://docs.microsoft.com/visualstudio/debugger/debug-live-azure-applications) için bir özel durum beklemeden anlık görüntüler alınacak.
 * [Web uygulamalarınızda özel durumları tanılama](../../azure-monitor/app/asp-net-exceptions.md) daha fazla özel durum Application Insights tarafından görülebilmesi açıklanmaktadır.

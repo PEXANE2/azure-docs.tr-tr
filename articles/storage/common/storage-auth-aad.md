@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 07/25/2019
+ms.date: 08/02/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 236d880af780114dfb906021f53d5c09aee75332
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: f33193e3102afca73344fcd640d14d9af9c1d46e
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68514883"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68775356"
 ---
 # <a name="authorize-access-to-azure-blobs-and-queues-using-azure-active-directory"></a>Azure Active Directory kullanarak Azure bloblarına ve kuyruklara erişim yetkisi verme
 
@@ -22,7 +22,7 @@ Azure depolama, istekleri blob ve kuyruk depolamaya yetkilendirmek için Azure A
 
 Azure AD tarafından döndürülen bir OAuth 2,0 belirtecini kullanarak kullanıcıları veya uygulamaları yetkilendirmek, paylaşılan anahtar yetkilendirmesi ve paylaşılan erişim imzaları (SAS) üzerinde üstün güvenlik ve kullanım kolaylığı sağlar. Azure AD ile, hesap erişim anahtarını kodunuzla depolamanız ve potansiyel güvenlik açıklarına karşı risk altında olması gerekmez. Uygulamalarınızla paylaşılan anahtar yetkilendirmesi kullanmaya devam edebilirsiniz, ancak Azure AD atlama 'yi kullanarak hesap erişim anahtarınızı kodunuzla depolama gereksinimini ortadan kaldırabilirsiniz. Ayrıca, Depolama hesabınızdaki kaynaklara ayrıntılı erişim sağlamak için paylaşılan erişim imzaları (SAS) kullanmaya devam edebilirsiniz, ancak Azure AD SAS belirteçlerini yönetmeye gerek kalmadan veya güvenliği aşılmış bir SAS iptal etme gereksinimi olmadan benzer yetenekler sunmaktadır. Microsoft, mümkün olduğunda Azure depolama uygulamalarınızla Azure AD yetkilendirmesi kullanılmasını önerir.
 
-Azure AD ile yetkilendirme, tüm genel bölgelerde ve ulusal bulutlarda tüm genel amaçlı ve BLOB depolama hesapları için kullanılabilir. Yalnızca Azure Resource Manager dağıtım modeliyle oluşturulan depolama hesapları Azure AD yetkilendirmesini destekler.
+Azure AD ile yetkilendirme, tüm genel bölgelerde ve ulusal bulutlarda tüm genel amaçlı ve BLOB depolama hesapları için kullanılabilir. Yalnızca Azure Resource Manager dağıtım modeliyle oluşturulan depolama hesapları Azure AD yetkilendirmesini destekler. Azure AD ile yetkilendirme, Azure Tablo depolama için desteklenmez.
 
 ## <a name="overview-of-azure-ad-for-blobs-and-queues"></a>Blob 'lar ve kuyruklar için Azure AD 'ye Genel Bakış
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: bwren
-ms.openlocfilehash: 05d9dc8f676589dcb301c19b0a2e80e9fd4c1fa0
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: cc0fcbb2005ce2aaa70c9e1d2a9993d341169209
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249752"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68814228"
 ---
 # <a name="collect-iis-logs-in-azure-monitor"></a>Azure Izleyici 'de IIS günlükleri toplama
 Internet Information Services (IIS), Azure Izleyici tarafından toplanabilecek ve [günlük verileri](data-platform.md)olarak depolanan günlük dosyalarındaki Kullanıcı etkinliklerini depolar.
@@ -34,7 +34,7 @@ Azure Izleyici yalnızca W3C biçiminde depolanan IIS günlük dosyalarını des
 
 
 ## <a name="data-collection"></a>Veri toplama
-Azure Izleyici, günlük zaman damgası her değiştiğinde veya yeni bir dosya oluşturulduğunda her bir aracıdan IIS günlük girişleri toplar. Günlük her 5 dakikada bir okunurdur. Yeni dosya oluşturma sıklığı, varsayılan olarak günde bir kez olan IIS sitesi için **günlük dosyası aktarma zamanlaması** ayarıyla denetlenir. Herhangi bir nedenden dolayı IIS, geçiş zamanından önce zaman damgasını güncelleştirmezse, ayar **saatlik**ise, Azure İzleyici günlüğü her saat toplar. Ayar **günlük**Ise Azure izleyici, günlüğü her 24 saatte bir toplar.
+Azure Izleyici, günlük zaman damgasının her değiştirilişinde her bir aracıdan IIS günlük girişleri toplar. Günlük her **5 dakikada**bir okunurdur. Herhangi bir nedenden dolayı IIS, yeni bir dosya oluşturulduğunda geçiş zamanından önce zaman damgasını güncelleştirmezse, yeni dosya oluşturulduktan sonra girdiler toplanır. Yeni dosya oluşturma sıklığı, varsayılan olarak günde bir kez olan IIS sitesi için **günlük dosyası aktarma zamanlaması** ayarıyla denetlenir. Ayar **saatlik**ise, Azure İzleyici günlüğü her saat toplar. Ayar **günlük**Ise Azure izleyici, günlüğü her 24 saatte bir toplar.
 
 
 ## <a name="iis-log-record-properties"></a>IIS günlük kaydı özellikleri

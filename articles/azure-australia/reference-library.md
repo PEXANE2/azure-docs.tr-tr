@@ -6,12 +6,12 @@ ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: grgale
-ms.openlocfilehash: 0c575076439e3405d34fe0ef3beff0242a53a8c5
-ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
+ms.openlocfilehash: 48b4b71d80bcef1eaf3bf89c0b14c8033748684e
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68601819"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779341"
 ---
 # <a name="additional-documentation-and-resources-by-focus-area"></a>Odak alanına göre ek belgeler ve kaynaklar
 
@@ -22,7 +22,7 @@ Bu kaynak kitaplığı, Azure Avustralya 'daki Avustralya kamu iş yüklerinin g
 * [Microsoft hizmet güveni portalı Avustralya sayfası](https://aka.ms/au-irap)
 * [Microsoft Trust Center CCSL sayfası](https://www.microsoft.com/trustcenter/compliance/ccsl)
 * [KORUMALı için Azure Güvenlik ve uyumluluk şemaları](https://aka.ms/au-protected)
-* [Microsoft Azure kiracı yalıtımı](https://docs.microsoft.com/azure/security/azure-isolation)
+* [Microsoft Azure kiracı yalıtımı](https://docs.microsoft.com/azure/security/fundamentals/isolation-choices)
 * [Avustralya Information Security el kitabı](https://www.cyber.gov.au/ism)
 * [Avustralya Cyber Güvenlik Merkezi (ACSC) sertifikalı bulut listesi](https://www.cyber.gov.au/irap/asd-certified-cloud-services)
 
@@ -32,7 +32,7 @@ Bu kaynak kitaplığı, Azure Avustralya 'daki Avustralya kamu iş yüklerinin g
 * [Anahtarlar, gizli diziler ve sertifikalar hakkında](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates)
 * [Azure Key Vault güvenlik duvarlarını ve sanal ağları yapılandırma](https://docs.microsoft.com/azure/key-vault/key-vault-network-security)
 * [Anahtar kasasına güvenli erişim](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault)
-* [Azure veri şifreleme-Rest](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest)
+* [Azure veri şifreleme-Rest](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
 * [.NET ' te Azure Windows Sanal Makineleri ile Azure Key Vault kullanma](https://docs.microsoft.com/azure/key-vault/tutorial-net-windows-virtual-machine)
 * [Azure Key Vault yönetilen depolama hesabı-PowerShell](https://docs.microsoft.com/azure/key-vault/tutorial-net-windows-virtual-machine)
 * [Anahtar dönüşü ve denetimini ayarlama](https://docs.microsoft.com/azure/key-vault/key-vault-key-rotation-log-monitoring)
@@ -68,7 +68,7 @@ Bu kaynak kitaplığı, Azure Avustralya 'daki Avustralya kamu iş yüklerinin g
 * [Azure RBAC genel bakış](https://docs.microsoft.com/azure/role-based-access-control/overview)
 * [Azure ayrıcalıklı kimlik tanımla yönetimine genel bakış](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure)
 * [Azure Yönetim Grupları genel bakış](https://docs.microsoft.com/azure/governance/management-groups/)
-* [Azure kimlik ve Access Control En Iyi uygulamaları](https://docs.microsoft.com/azure/security/azure-security-identity-management-best-practices)
+* [Azure kimlik ve Access Control En Iyi uygulamaları](https://docs.microsoft.com/azure/security/fundamentals/identity-management-best-practices)
 * [Azure AD gruplarını yönetme](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups)
 * [Karma kimlik](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-hybrid-identity)
 * [RBAC özel rolleri](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)

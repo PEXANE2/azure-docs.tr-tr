@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 974243da07a2570e851b7d44eac2556c201c2782
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 3c81ec5e213364ed6f159fd20e12879a098caad4
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678520"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774984"
 ---
 # <a name="mapping-data-flow-select-transformation"></a>Eşleme veri akışı dönüşüm seçme
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
@@ -35,6 +35,8 @@ Ayrıca, veri akışınızdan sütunları seçmek için bir yöntem olarak da ku
 * Giriş veya çıkış meta verilerinden yinelenen sütunları kaldırmak için Yinelenenleri atla ' yı seçin.
 
 ![Yinelenenleri atla](media/data-flow/select-skip-dup.png "Yinelenenleri atla")
+
+* Yinelemeleri atlamayı seçtiğinizde sonuçlar Inceleme sekmesinde görünür olur. ADF, sütunun ilk oluşumunu tutar ve aynı sütunun sonraki geçtiği her oluşumun akıştan kaldırıldığını görürsünüz.
 
 > [!NOTE]
 > Eşleme kurallarını temizlemek için **Sıfırla** düğmesine basın.

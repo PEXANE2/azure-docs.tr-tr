@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/22/2019
+ms.date: 08/05/2019
 ms.author: raynew
-ms.openlocfilehash: 787bcf28a64c98f82deb0725e2362bf8144d6c4e
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: da68c0ae1dc92f5b854c30c90b93856248c43281
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640858"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828341"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>Hyper-V değerlendirmesi ve geçiş için destek matrisi
 
@@ -36,14 +36,18 @@ Tablo, Hyper-V VM 'Leri için desteklenen senaryoları özetler.
 **Destek** | **Ayrıntılar**
 --- | ---
 Azure izinleri | Azure geçişi projesi oluşturmak için abonelikte katkıda bulunan veya sahip izinlerinizin olması gerekir.
-Hyper-V Sanal Makineleri | Tek bir projede 10.000 adede kadar Hyper-V VM 'yi değerlendirin. Bir Azure aboneliğinde birden çok projeniz olabilir. Bir proje, değerlendirme sınırlarına kadar hem VMware VM 'lerini hem de Hyper-V sanal makinelerini içerebilir.
+Hyper-V Sanal Makineleri | Tek bir projede 35.000 adede kadar Hyper-V VM 'yi değerlendirin. Bir Azure aboneliğinde birden çok projeniz olabilir. Bir proje, değerlendirme sınırlarına kadar hem VMware VM 'lerini hem de Hyper-V sanal makinelerini içerebilir.
 Coğrafya | Azure geçişi projelerini çeşitli coğrafi bölgelerde oluşturabilirsiniz. Belirli ograflarda projeler oluşturabilseniz de, diğer hedef konumlar için makineleri değerlendirebilir veya geçirebilirsiniz. Proje Coğrafya yalnızca keşfedilen meta verileri depolamak için kullanılır.
 
   **Coğrafya** | **Meta veri depolama konumu**
   --- | ---
   Azure Kamu | ABD Devleti Virginia
-  Asya Pasifik | Güneydoğu Asya veya Doğu Asya
-  Avrupa | Güney Avrupa veya Batı Avrupa
+  Asya Pasifik | Doğu Asya veya Güneydoğu Asya
+  Avustralya | Avustralya Doğu veya Avustralya Güneydoğu
+  Kanada | Kanada Orta veya Kanada Doğu
+  Avrupa | Kuzey Avrupa veya Batı Avrupa
+  Hindistan | Orta Hindistan veya Güney Hindistan
+  Japonya |  Japonya Doğu veya Japonya Batı
   Birleşik Krallık | UK Güney veya UK Batı
   Amerika Birleşik Devletleri | Orta ABD veya Batı ABD 2
 
@@ -84,7 +88,7 @@ Değerlendirme için Azure geçişi, Hyper-V VM 'lerini bulmaya ve VM meta veril
 | **Destek**                | **Ayrıntılar**               
 | :-------------------       | :------------------- |
 | **Azure geçişi projesi**  |  Bir gereç, tek bir projeyle ilişkilendirilebilir.<br/> Tek bir gereç ile 5000 adede kadar Hyper-V sanal makinesi bulabilirsiniz.
-| **Hyper-V**    |  Gereci bir Hyper-V VM 'si olarak dağıtırsınız.<br/> Belirtilen gereç sanal makinesi, Hyper-V VM sürüm 5,0 ' dir.<br/> VM konağının Windows Server 2012 R2 veya üstünü çalıştırması gerekir.<br/> Gereç VM 'si için 16 GB RAM, 4 sanal işlemci ve 1 harici anahtar ayırmak üzere yeterli alana sahip olması gerekir.<br/> Gereç statik veya dinamik bir IP adresi ve internet erişimi gerektirir.
+| **Hyper-V**    |  Gereci bir Hyper-V VM 'si olarak dağıtırsınız.<br/> Belirtilen gereç sanal makinesi, Hyper-V VM sürüm 5,0 ' dir.<br/> VM konağının Windows Server 2012 R2 veya üstünü çalıştırması gerekir.<br/> Gereç VM 'si için 16 GB RAM, 8 vCPU ve 1 harici anahtar ayırmak üzere yeterli alana sahip olması gerekir.<br/> Gereç statik veya dinamik bir IP adresi ve internet erişimi gerektirir.
 
 
 ## <a name="assessment-appliance-url-access"></a>Değerlendirme-gereç URL 'SI erişimi

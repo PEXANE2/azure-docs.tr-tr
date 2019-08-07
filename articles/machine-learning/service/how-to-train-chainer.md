@@ -1,7 +1,7 @@
 ---
-title: Chainer modellerini eğitme ve kaydetme
+title: Chainer ile derin öğrenme sinir ağını eğitme
 titleSuffix: Azure Machine Learning service
-description: Bu makalede, Azure Machine Learning hizmetini kullanarak bir Chainer modelinin nasıl eğiteyapılacağı ve kaydedileceği gösterilmektedir.
+description: Azure Machine Learning Chainer tahmin aracı sınıfını kullanarak pytorch eğitim betiklerinizi kurumsal ölçekte çalıştırmayı öğrenin.  Örnek komut dosyası, büyük/büyük/büyük/veya büyük/veya büyük/veya büyük/büyük bir öğrenme sinir ağı oluşturmak için classifis
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,21 +9,21 @@ ms.topic: conceptual
 ms.author: maxluk
 author: maxluk
 ms.reviewer: sdgilley
-ms.date: 06/15/2019
-ms.openlocfilehash: 7cf5650708cd951e872e3df6ea533a62bde0389d
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.date: 08/02/2019
+ms.openlocfilehash: f95a7efd8b9303db0a9ba98c1be32e13d0c5e984
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618333"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780876"
 ---
 # <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning-service"></a>Azure Machine Learning hizmeti ile Chainer modellerini eğitme ve kaydetme
 
-Bu makalede, Azure Machine Learning hizmetini kullanarak bir Chainer modelinin nasıl eğiteyapılacağı ve kaydedileceği gösterilmektedir. Büyük/büyük/ [](http://yann.lecun.com/exdb/mnist/) [büyük/büyük](https://www.numpy.org/)/veya büyük/veya büyük/veya büyük/veya büyük [](https://Chainer.org)
+Bu makalede, Azure Machine Learning [Chainer tahmin aracı](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) sınıfını kullanarak [Chainer](https://chainer.org/) eğitim betiklerinizi kurumsal ölçekte çalıştırmayı öğrenin. Bu makaledeki örnek eğitim betiği, el yazısı [y](https://www.numpy.org/)'nin üstünde çalışan Chainer Python kitaplığı kullanılarak oluşturulan derin bir sinir ağı (DNN) kullanarak el yazısı rakamları sınıflandırmak için popüler [veri kümesini](http://yann.lecun.com/exdb/mnist/) kullanır.
 
-Chainer, geliştirmeyi basitleştirmek için diğer popüler DNN çerçevelerinin üzerinde çalışan üst düzey bir sinir ağ API 'sidir. Azure Machine Learning hizmeti sayesinde, esnek bulut işlem kaynaklarını kullanarak eğitim işlerini hızla ölçeklendirebilirsiniz. Ayrıca eğitim çalıştırmalarını, sürüm modellerinizi, modellerinizi dağıtmayı ve daha fazlasını izleyebilirsiniz.
+Derin bir öğrenme Chainer modelini baştan sona eğiyor veya mevcut bir modeli buluta çıkardığınızı, elastik bulut işlem kaynaklarını kullanarak açık kaynaklı eğitim işlerini ölçeklendirmek için Azure Machine Learning kullanabilirsiniz. Azure Machine Learning ile üretim sınıfı modellerini oluşturabilir, dağıtabilir, sürüm ve izleyebilirsiniz. 
 
-Baştan sona bir Chainer modeli geliştirirken veya var olan bir modeli buluta verdiğinize göre Azure Machine Learning hizmet, üretime hazırlamış modeller oluşturmanıza yardımcı olabilir.
+[Derin öğrenme ve makine öğrenimi](concept-deep-learning-vs-machine-learning.md)hakkında daha fazla bilgi edinin.
 
 Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning Service 'in ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
@@ -33,8 +33,8 @@ Bu kodu şu ortamlardan birinde çalıştırın:
 
 - Azure Machine Learning Not defteri VM-indirme veya yükleme gerekli değil
 
-    - SDK ve örnek depoyla önceden yüklenmiş adanmış bir not defteri sunucusu oluşturmak için [bulut tabanlı Not defteri hızlı](quickstart-run-cloud-notebook.md) başlangıcını doldurun.
-    - Not defteri sunucusundaki örnekler klasöründe, **nasıl yapılır-kullan-azureml** -------------------------ile  Not defteri, akıllı hiper parametre ayarlamayı, model dağıtımını ve Not defteri pencere öğelerini kapsayan genişletilmiş bölümler içerir.
+    - [Öğreticiyi doldurun: SDK ve örnek depoyla önceden yüklenmiş adanmış bir not defteri sunucusu oluşturmak için ortamı ve çalışma alanını](tutorial-1st-experiment-sdk-setup.md) ayarlayın.
+    - Not defteri sunucusundaki örnekler derin öğrenimi klasöründe, **nasıl yapılır-kullan-azureml-to-Use-azureml/eğitimleri-with-derin-öğrenme/eğitme-hyperparameter-ayarla-dağıt-Chainer** klasöründe tamamlanmış bir not defteri ve dosya bulun.  Not defteri, akıllı hiper parametre ayarlamayı, model dağıtımını ve Not defteri pencere öğelerini kapsayan genişletilmiş bölümler içerir.
 
 - Kendi Jupyter Notebook sunucunuz
 
@@ -94,7 +94,7 @@ import shutil
 shutil.copy('chainer_mnist.py', project_folder)
 ```
 
-### <a name="create-an-experiment"></a>Deneme oluşturma
+### <a name="create-a-deep-learning-experiment"></a>Derin öğrenme denemesi oluşturun
 
 Deneme oluşturma. Bu örnekte, "Chainer-mnist" adlı bir deneme oluşturun.
 
@@ -209,9 +209,7 @@ for f in run.get_file_names():
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, Azure Machine Learning hizmetinde bir Chainer modeli eğitildi. 
-
-* Modeli dağıtmayı öğrenmek için [model dağıtım](how-to-deploy-and-where.md) makalemize devam edin.
+Bu makalede, Azure Machine Learning hizmetinde Chainer kullanarak derin bir öğrenme, sinir ağı eğitildiniz ve kaydettiniz. Modeli dağıtmayı öğrenmek için [model dağıtım](how-to-deploy-and-where.md) makalemize devam edin.
 
 * [Hiperparametreleri ayarlama](how-to-tune-hyperparameters.md)
 

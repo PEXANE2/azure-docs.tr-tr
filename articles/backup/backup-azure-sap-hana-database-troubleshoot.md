@@ -6,18 +6,18 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 07/22/2019
+ms.date: 08/03/2019
 ms.author: dacurwin
-ms.openlocfilehash: a2711339f5e952747adeeb6217b283770cb6cc6b
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 0512facbdf5f2222aee1e9bb5d2be64e22bf1a69
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689055"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774653"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Azure 'da SAP HANA veritabanlarının yedeklenmesi sorunlarını giderme
 
-Bu makale, Azure sanal makinelerinde SAP HANA veritabanlarının yedeklenmesi için sorun giderme bilgileri sağlar.
+Bu makale, Azure sanal makinelerinde SAP HANA veritabanlarının yedeklenmesi için sorun giderme bilgileri sağlar. Aşağıdaki bölümde SAP HANA Yedeklemedeki yaygın bir hatayı tanılamak için gereken önemli kavramsal veriler ele alınmaktadır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -56,6 +56,26 @@ Yedekleme için bir veritabanı seçildikten sonra, Azure Backup hizmeti, geri I
 
 > [!NOTE]
 > Bu parametrelerin konak düzeyinde mevcut *olmadığından* emin olun. Ana bilgisayar düzeyindeki Parametreler bu parametreleri geçersiz kılacak ve beklenmeyen davranışlara neden olabilir.
+
+## <a name="restore-checks"></a>Geri yükleme denetimleri
+
+### <a name="single-container-database-sdc-restore"></a>Tek kapsayıcı veritabanı (SDC) geri yükleme
+
+HANA için tek bir kapsayıcı veritabanını (SDC) başka bir SDC makinesine geri yüklerken girişlerden yararlanın. Veritabanı adı, köşeli ayraçlar içinde "SDC" eklenmiş şekilde, küçük harfle verilmelidir. HANA örneği büyük harf olarak görüntülenecektir.
+
+"H21" SDC HANA örneğinin yedeklenmekte olduğunu varsayalım. Yedekleme öğeleri sayfasında, yedekleme öğesi adı **"H21 (SDC)"** olarak gösterilir. Bu veritabanını başka bir hedef SDC 'ye geri yüklemeye çalışırsanız, H11 deyin ve aşağıdaki girişlerin sağlanması gerekir.
+
+![SDC geri yükleme girişleri](media/backup-azure-sap-hana-database/hana-sdc-restore.png)
+
+Aşağıdakilere göz önünde
+- Varsayılan olarak, geri yüklenen veritabanı adı, yedek öğe adı (örneğin, H21 (SDC) ile doldurulur
+- H11 olarak Target seçildiğinde geri yüklenen veritabanı adı otomatik olarak değişmez. **H11 (SDC) olarak düzenlenmelidir**. SDC söz konusu olduğunda, geri yüklenen veritabanı adı, büyük harfle birlikte hedef örnek KIMLIĞI ve köşeli ayraçlar içinde ' SDC ' olarak eklenir.
+- SDC 'nin yalnızca tek bir veritabanı olduğundan, var olan veritabanı verilerinin kurtarma noktası verileriyle geçersiz kılınmasına izin vermek için onay kutusuna tıklamanız gerekir.
+- Linux büyük/küçük harfe duyarlıdır ve bu nedenle durumu koruduğunuzdan emin olun.
+
+### <a name="multiple-container-database-mdc-restore"></a>Birden çok kapsayıcı veritabanı (MDC) geri yükleme
+
+HANA için birden çok kapsayıcı veritabanında standart yapılandırma SISTEM DB + 1 veya daha fazla kiracı DBs 'dir. SAP HANA örneğinin tamamının geri yüklenmesi hem SYSTEMDB hem de kiracı veritabanlarını geri yüklemek anlamına gelir. İlk olarak SYSTEMDB 'yi geri yükler ve ardından kiracı DB 'ye devam eder. Sistem DB temelde, seçili hedefteki sistem bilgilerini geçersiz kılmak anlamına gelir. Bu ayrıca hedef örnekteki BackInt ile ilgili bilgileri geçersiz kılar. Bu nedenle, sistem DB bir hedef örneğe geri yüklendikten sonra, birinin ön kayıt betiğini yeniden çalıştırması gerekir. Yalnızca sonraki kiracı DB geri yüklemeleri başarılı olur.
 
 ## <a name="common-user-errors"></a>Ortak Kullanıcı hataları
 

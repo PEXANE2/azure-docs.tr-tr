@@ -9,23 +9,37 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 07/17/2019
+ms.date: 08/04/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5167ba170181bed6dc76d4ca3df79306f432eaf2
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: e139b274ab8a1f7d91d46ec56171b84db4f5025e
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722659"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812839"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 'de yönetici rolü izinleri
 
 Azure Active Directory (Azure AD) kullanarak, daha az ayrıcalıklı rollerdeki kimlik görevlerini yönetmek için sınırlı yöneticiler atayabilirsiniz. Yöneticiler, Kullanıcı ekleme veya değiştirme, yönetici rolleri atama, Kullanıcı parolalarını sıfırlama, kullanıcı lisanslarını yönetme ve etki alanı adlarını yönetme gibi amaçlar için atanabilir. Varsayılan Kullanıcı izinleri yalnızca Azure AD 'deki Kullanıcı ayarları ' nda değiştirilebilir.
 
-Genel yönetici, tüm yönetim özelliklerine erişebilir. Varsayılan olarak, bir Azure aboneliği için kaydolan kişi dizin için genel Yönetici rolüne atanır. Yalnızca genel Yöneticiler ve ayrıcalıklı rol yöneticileri yönetici rollerini temsil edebilir. İşletmenize yönelik riski azaltmak için, bu rolü şirketinizdeki yalnızca birkaç kişiye atamanız önerilir.
+## <a name="limit-the-use-of-global-administrator"></a>Genel yönetici kullanımını sınırlayın
+
+Genel yönetici rolüne atanan kullanıcılar, Azure AD kuruluşunuzda her yönetim ayarını okuyabilir ve değiştirebilir. Varsayılan olarak, bir Azure aboneliğine kaydolan kişiye Azure AD kuruluşu için genel yönetici rolü atanır. Yalnızca genel Yöneticiler ve ayrıcalıklı rol yöneticileri yönetici rollerini temsil edebilir. İşletmenize yönelik riski azaltmak için, bu rolü kuruluşunuzdaki en az olası kişilere atamanızı öneririz.
+
+## <a name="best-practices"></a>En İyi Uygulamalar
+
+En iyi uygulama olarak, bu rolü kuruluşunuzda 5 ' ten az kişiye atamanız önerilir. Kuruluşunuzda genel yönetici rolüne atanmış beş kullanıcı varsa, bunun kullanımını azaltmanın bazı yolları aşağıda verilmiştir.
+
+### <a name="find-the-role-you-need"></a>İhtiyaç duyduğunuz rolü bulun
+
+Birçok rolün bir listesi için ihtiyacınız olan rolü bulmak sıkıcı ise, Azure AD size rol kategorilerine göre daha kısa listeler verebilir. [Azure AD rolleri ve yöneticileri](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators) Için yeni **tür** filtreimize göz atın ve yalnızca seçili türdeki rolleri gösterin.
+
+### <a name="a-role-exists-now-that-didnt-exist-when-you-assigned-the-global-administrator-role"></a>Genel yönetici rolünü atadığınızda artık mevcut olmayan bir rol var
+
+Azure AD 'ye, bazı kullanıcıları küresel yöneticiye yükseltmiş bir seçenek olmayan daha ayrıntılı izinler sağlayan bir rol veya rol eklenmiş olabilir. Zaman içinde, yalnızca genel yönetici rolünün gerçekleştirebileceği görevleri gerçekleştiren ek roller sunuyoruz. Aşağıdaki [kullanılabilir rollere](#available-roles)yansıtıldığını görebilirsiniz.
 
 ## <a name="assign-or-remove-administrator-roles"></a>Yönetici rolleri atama veya kaldırma
 
@@ -206,7 +220,7 @@ Ayrıca, Kullanıcı, kaizala tarafından Kaizala tarafından kullanılan ve Kai
   --- | ---
   [Microsoft 365 Güvenlik Merkezi](https://protection.office.com) | Microsoft 365 hizmetleri arasında güvenlikle ilgili ilkeleri izleme<br>Güvenlik tehditlerini ve uyarıları yönetme<br>Raporları görüntüle
   Kimlik Koruma Merkezi | Güvenlik okuyucusu rolünün tüm izinleri<br>Ayrıca, parola sıfırlama hariç tüm kimlik koruması merkezi işlemlerini gerçekleştirme özelliği
-  [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | Güvenlik okuyucusu rolünün tüm izinleri<br>Azure AD rol atamaları veya **ayarları yönetemez**
+  [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | Güvenlik okuyucusu rolünün tüm izinleri<br>Azure AD rol atamaları veya ayarları yönetemez
   [Office 365 Güvenlik ve Uyumluluk Merkezi](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Güvenlik ilkelerini yönetme<br>Güvenlik tehditlerini görüntüleyin, araştırın ve yanıtlayın<br>Raporları görüntüle
   Azure Gelişmiş Tehdit Koruması | Şüpheli güvenlik etkinliğini izleyin ve yanıtlayın
   Windows Defender ATP ve EDR | Rol atama<br>Makine gruplarını yönetme<br>Uç nokta tehdit algılamasını ve otomatik düzeltmeyi yapılandırma<br>Uyarıları görüntüleyin, araştırın ve yanıtlayın
@@ -235,7 +249,7 @@ Ayrıca, Kullanıcı, kaizala tarafından Kaizala tarafından kullanılan ve Kai
   --- | ---
   [Microsoft 365 Güvenlik Merkezi](https://protection.office.com) | Microsoft 365 hizmetleri arasında güvenlikle ilgili ilkeleri görüntüleme<br>Güvenlik tehditlerini ve uyarılarını görüntüleme<br>Raporları görüntüle
   Kimlik Koruma Merkezi | Güvenlik özellikleri için tüm güvenlik raporlarını ve ayar bilgilerini okuyun<br><ul><li>İstenmeyen postadan koruma<li>Şifreleme<li>Veri kaybını önleme<li>Kötü amaçlı yazılımdan koruma<li>Gelişmiş tehdit koruması<li>Kimlik avlayan koruma<li>Mailflow kuralları
-  [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | Azure AD PıM 'de ortaya çıkacak tüm bilgilere salt okuma erişimi vardır: Azure AD rol atamalarına yönelik ilkeler ve raporlar, güvenlik incelemeleri ve gelecekte ilke verilerine yönelik okuma erişimi ve Azure AD rol atamasının yanı sıra senaryolar için raporlar.<br>Azure AD PıM 'ye **kaydolabilir veya** üzerinde herhangi bir değişiklik yapabilirsiniz. PıM portalında veya PowerShell aracılığıyla, bu roldeki birisi, Kullanıcı için uygun olduğunda ek rolleri (örneğin, genel yönetici veya ayrıcalıklı rol yöneticisi) etkinleştirebilir.
+  [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | Azure AD PıM 'de ortaya çıkacak tüm bilgilere salt okuma erişimi vardır: Azure AD rol atamalarına yönelik ilkeler ve raporlar, güvenlik incelemeleri ve gelecekte ilke verilerine yönelik okuma erişimi ve Azure AD rol atamasının yanı sıra senaryolar için raporlar.<br>Azure AD PIM 'ye kaydolabilir veya üzerinde herhangi bir değişiklik yapabilirsiniz. PıM portalında veya PowerShell aracılığıyla, bu roldeki birisi, Kullanıcı için uygun olduğunda ek rolleri (örneğin, genel yönetici veya ayrıcalıklı rol yöneticisi) etkinleştirebilir.
   [Office 365 Güvenlik ve Uyumluluk Merkezi](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Güvenlik ilkelerini görüntüleme<br>Güvenlik tehditlerini görüntüle ve araştır<br>Raporları görüntüle
   Windows Defender ATP ve EDR | Uyarıları görüntüle ve araştır
   [Intune](https://docs.microsoft.com/intune/role-based-access-control) | Kullanıcı, cihaz, kayıt, yapılandırma ve uygulama bilgilerini görüntüler. Intune üzerinde değişiklik yapılamıyor.

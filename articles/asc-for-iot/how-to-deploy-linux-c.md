@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 3fd4287c6dd1cc42f419cfa6b252c1d276d1d5a5
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 7578811c37cd0bbe47821dadacce5fa5974f56cf
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597230"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812737"
 ---
 # <a name="deploy-azure-security-center-for-iot-c-based-security-agent-for-linux"></a>Linux için IoT C tabanlı güvenlik Aracısı için Azure Güvenlik Merkezi 'Ni dağıtma
 
@@ -48,7 +48,7 @@ Güvenlik aracısını yüklemek ve dağıtmak için aşağıdaki iş akışın�
 
 1. [GitHub](https://aka.ms/iot-security-github-c)'dan makinenize en son sürümü indirin.
 
-1. Paketin içeriğini ayıklayın ve _/install_ klasörüne gidin.
+1. Paketin içeriğini ayıklayın ve _/src/installation_ klasörüne gidin.
 
 1. Aşağıdaki komutu çalıştırarak **ınstallsecurityagent betiğine** çalışan izinleri ekleyin:
     

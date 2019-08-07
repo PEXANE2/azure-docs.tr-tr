@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: cherylmc
-ms.openlocfilehash: 032b6a4f5147d06a4613a827a0372437dca47f47
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5b4be7464a4c19cd0a71d5a786b46091cdbc074b
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60407749"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780199"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Azure portalında Siteden Siteye bağlantı oluşturma
 
@@ -42,23 +42,23 @@ Yapılandırmanıza başlamadan önce aşağıdaki ölçütleri karşıladığı
 
 Bu makaledeki örneklerde aşağıdaki değerler kullanılır. Bu değerleri kullanarak bir test ortamı oluşturabilir veya bu makaledeki örnekleri daha iyi anlamak için bunlara bakabilirsiniz. Genel olarak VPN Gateway ayarları hakkında daha fazla bilgi için [VPN Gateway Ayarları Hakkında](vpn-gateway-about-vpn-gateway-settings.md) konusunu inceleyin.
 
-* **VNet adı:** TestVNet1
+* **VNet adı:** VNet1
 * **Adres Alanı:** 10.1.0.0/16
-* **Abonelik:** Kullanmak istediğiniz abonelik
+* **Aboneliğiniz** Kullanmak istediğiniz abonelik
 * **Kaynak grubu:** TestRG1
-* **Konum:** Doğu ABD
-* **Alt ağı:** Ön uç: 10.1.0.0/24, BackEnd: 10.1.1.0/24 (Bu alıştırma için isteğe bağlı)
-* **Ağ geçidi alt ağ adı:** GatewaySubnet (Bu işlem otomatik olarak Doldur Portalı'nda)
+* **Konumuna** East US
+* **Alt ağ** Uçta 10.1.0.0/24, arka uç: 10.1.1.0/24 (Bu alıştırma için isteğe bağlı)
+* **Ağ geçidi alt ağ adı:** GatewaySubnet (Bu, portalda otomatik olarak doldurulur)
 * **Ağ geçidi alt ağ adres aralığı:** 10.1.255.0/27
-* **DNS sunucusu:** 8.8.8.8 - isteğe bağlı. DNS sunucunuzun IP adresidir.
+* **DNS sunucusu:** 8.8.8.8-isteğe bağlı. DNS sunucunuzun IP adresidir.
 * **Sanal ağ geçidi adı:** VNet1GW
 * **Genel IP:** VNet1GWIP
-* **VPN türü:** Rota tabanlı
+* **VPN türü:** Rota temelli
 * **Bağlantı türü:** Siteden siteye (IPSec)
-* **Ağ geçidi türü:** VPN
+* **Ağ Geçidi türü:** VPN
 * **Yerel ağ geçidi adı:** Site1
 * **Bağlantı adı:** VNet1toSite1
-* **Paylaşılan anahtar:** Bu örnekte abc123 kullanılır. Ancak, VPN donanımınızla uyumlu herhangi bir seçeneği kullanabilirsiniz. Önemli olan, değerin bağlantının her iki tarafında eşleşmesidir.
+* **Paylaşılan anahtar:** Bu örnekte, abc123 kullanacağız. Ancak, VPN donanımınızla uyumlu herhangi bir seçeneği kullanabilirsiniz. Önemli olan, değerin bağlantının her iki tarafında eşleşmesidir.
 
 ## <a name="CreatVNet"></a>1. Sanal ağ oluşturma
 
@@ -66,9 +66,11 @@ Bu makaledeki örneklerde aşağıdaki değerler kullanılır. Bu değerleri kul
 
 ## <a name="dns"></a>2. DNS sunucusu belirleme
 
-Siteden Siteye bağlantı oluşturmak için DNS gerekli değildir. Ancak, sanal ağınıza dağıtılmış olan kaynaklarınız için ad çözümleme istiyorsanız bir DNS sunucusu belirtmeniz gerekir. Bu ayar, bu sanal ağ için ad çözümlemede kullanmak istediğiniz DNS sunucusunu belirtmenizi sağlar. Bir DNS sunucusu oluşturmaz. Ad çözümlemesi hakkında daha fazla bilgi için bkz. [VM'ler ve rol örnekleri için Ad Çözümlemesi](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
+Siteden Siteye bağlantı oluşturmak için DNS gerekli değildir.
 
-[!INCLUDE [Specify a dns server - optional](../../includes/vpn-gateway-specify-dns-portal-include.md)]
+Ancak, sanal ağınıza dağıtılmış olan kaynaklarınız için ad çözümleme istiyorsanız bir DNS sunucusu belirtmeniz gerekir. Bu ayar, bu sanal ağ için ad çözümlemede kullanmak istediğiniz DNS sunucusunu belirtmenizi sağlar. Bir DNS sunucusu oluşturmaz. Ad çözümlemesi hakkında daha fazla bilgi için bkz. [VM'ler ve rol örnekleri için Ad Çözümlemesi](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
+
+[!INCLUDE [Specify a dns server - optional](../../includes/vpn-gateway-add-dns-rm-portal-include.md)]
 
 ## <a name="gatewaysubnet"></a>3. Ağ geçidi alt ağını oluşturma
 

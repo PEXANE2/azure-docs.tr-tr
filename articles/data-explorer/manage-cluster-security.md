@@ -7,12 +7,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/22/2019
-ms.openlocfilehash: fbc5b18de093b2c91b17fa310c08a5b02b113a22
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 86350f21f5c530a00560c92cc0ae2fd58c9a2c57
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68406528"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780052"
 ---
 # <a name="secure-your-cluster-in-azure-data-explorer"></a>Azure Veri Gezgini kümenizin güvenliğini sağlama
 
@@ -20,7 +20,7 @@ ms.locfileid: "68406528"
   
 ## <a name="enable-encryption-at-rest"></a>Bekleyen şifrelemeyi etkinleştir
   
-Kümenizdeki [geri kalan şifrelemeyi](/azure/security/azure-security-encryption-atrest) etkinleştirmek, depolanan veriler için veri koruması sağlar (bekleyen). 
+Kümenizdeki [geri kalan şifrelemeyi](/azure/security/fundamentals/encryption-atrest) etkinleştirmek, depolanan veriler için veri koruması sağlar (bekleyen). 
 
 1. Azure portal Azure Veri Gezgini küme kaynağına gidin. **Ayarlar** başlığı altında **güvenlik**' i seçin. 
 

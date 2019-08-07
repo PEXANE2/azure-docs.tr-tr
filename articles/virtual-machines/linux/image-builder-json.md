@@ -7,12 +7,12 @@ ms.date: 07/31/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: a623aa98cd26e1636e47cb0e2831eeced17935b9
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: abaf96b11abee0bf519a276f825b9c47cd333c1b
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68695394"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816316"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Önizleme: Azure görüntü Oluşturucu şablonu oluşturma 
 
@@ -65,7 +65,11 @@ Konum, özel görüntünün oluşturulacağı bölgedir. Image Builder önizleme
 ```json
     "location": "<region>",
 ```
-    
+
+## <a name="tags"></a>Tags
+
+Bunlar, oluşturulan görüntü için belirtebileceğiniz anahtar/değer çiftleridir.
+
 ## <a name="depends-on-optional"></a>Bağımlı (isteğe bağlı)
 
 Bu isteğe bağlı bölüm, devam etmeden önce bağımlılıkların tamamlandığından emin olmak için kullanılabilir. 
@@ -344,7 +348,8 @@ Bu, Windows dizinleri ve Linux yolları tarafından desteklenir, ancak bazı far
  
 Dosyayı indirmeye çalışırken bir hata varsa veya belirtilen bir dizine yerleştirirseniz, özelleştirme adımı başarısız olur ve bu, özelleştirme. log ' da olur.
 
->> Notun! Dosya Özelleştirici yalnızca küçük dosya indirmeleri için uygundur < 20 MB. Daha büyük dosya indirmeleri için bir betik veya satır içi komutu, Linux `wget` veya `curl`Windows `Invoke-WebRequest`gibi dosyaları indirmek için kullanılan kodu kullanın.
+> [!NOTE]
+> Dosya Özelleştirici yalnızca küçük dosya indirmeleri için uygundur < 20 MB. Daha büyük dosya indirmeleri için bir betik veya satır içi komutu, Linux `wget` veya `curl`Windows `Invoke-WebRequest`gibi dosyaları indirmek için kullanılan kodu kullanın.
 
 Dosya Özelleştirici içindeki dosyalar, [MSI](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage)kullanılarak Azure Storage 'dan indirilebilir.
 

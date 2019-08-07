@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: dacurwin
-ms.openlocfilehash: 2556887008ecbe081168d3fc81fa07b45cda4bcb
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 369be73e2884594171419a66b94db64184582e58
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639606"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68813818"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM yedeklemesi için destek matrisi
 [Azure Backup hizmetini](backup-overview.md) şirket içi makineleri ve iş yüklerini ve Azure sanal makinelerini (VM) yedeklemek için kullanabilirsiniz. Bu makalede, Azure Backup ile Azure VM 'Leri yedeklerken destek ayarları ve sınırlamaları özetlenmektedir.
@@ -130,7 +130,6 @@ Abonelik/bölge/bölge genelinde geri yükleme. | Desteklenmiyor.
 Mevcut bir VM 'ye geri yükleme | Diski Değiştir seçeneğini kullanın.
 Azure Depolama Hizmeti Şifrelemesi için etkinleştirilmiş depolama hesabı ile diski geri yükleme (SSE) | Desteklenmiyor.<br/><br/> SSE özellikli olmayan bir hesaba geri yükleyin.
 Karma depolama hesaplarına geri yükleme | Desteklenmiyor.<br/><br/> Depolama hesabı türüne bağlı olarak, tüm geri yüklenen diskler Premium veya standart olur ve karışmaz.
-Bölgesel olarak yedekli depolama (ZRS) kullanarak depolama hesabına geri yükleme | Desteklenir (Ocak 2019 ' den sonra yedeklenen VM ve [kullanılabilirlik bölgesi](https://azure.microsoft.com/global-infrastructure/availability-zones/) kullanılabilir)
 VM 'yi doğrudan bir kullanılabilirlik kümesine geri yükleme | Yönetilen diskler için diski geri yükleyebilir ve şablondaki kullanılabilirlik kümesi seçeneğini kullanabilirsiniz.<br/><br/> Yönetilmeyen diskler için desteklenmez. Yönetilmeyen diskler için, diski geri yükleyin ve ardından kullanılabilirlik kümesinde bir VM oluşturun.
 Yönetilen VM 'ye yükselttikten sonra yönetilmeyen VM 'lerin yedeklemesini geri yükleme| Destekleniyor.<br/><br/> Diskleri geri yükleyebilir ve ardından yönetilen bir VM oluşturabilirsiniz.
 VM yönetilen disklere geçirilmeden önce VM 'yi geri yükleme noktasına geri yükleme | Destekleniyor.<br/><br/> Yönetilmeyen disklere geri yükleme (varsayılan), geri yüklenen diskleri yönetilen diske Dönüştür ve yönetilen disklerle bir VM oluşturun.
@@ -151,6 +150,7 @@ VM boyutu |   En az 2 CPU çekirdeği ve 1 GB RAM içeren herhangi bir Azure VM 
 Azure 'a geçirilen VM 'Leri yedekleme  | Destekleniyor.<br/><br/> VM 'yi yedeklemek için, geçirilen makinede VM aracısının yüklü olması gerekir.
 Çoklu VM tutarlılığını yedekleme | Azure Backup birden çok VM arasında veri ve uygulama tutarlılığı sağlamaz.
 [Tanılama ayarlarıyla](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview) yedekleme  | Desteklenen. <br/><br/> Azure VM 'yi tanılama ayarlarıyla geri yükleme [yeni seçenek oluştur](backup-azure-arm-restore-vms.md#create-a-vm) seçeneği kullanılarak tetikleniyorsa geri yükleme başarısız olur.
+Bölge ile sabitlenmiş VM 'Leri geri yükleme | Desteklenir (Ocak 2019 ' den sonra yedeklenen VM ve [kullanılabilirlik bölgesi](https://azure.microsoft.com/global-infrastructure/availability-zones/) kullanılabilir).<br/><br/>Şu anda VM 'lerde sabitlenmiş aynı bölgeye geri yüklemeyi destekliyoruz. Ancak bölge kullanılamıyorsa, geri yükleme başarısız olur.
 
 
 ## <a name="vm-storage-support"></a>VM depolama desteği
@@ -158,8 +158,8 @@ Azure 'a geçirilen VM 'Leri yedekleme  | Destekleniyor.<br/><br/> VM 'yi yedekl
 **Bileşen** | **Destek**
 --- | ---
 Azure VM veri diskleri | 16 veya daha az veri diski olan bir VM 'yi yedekleyin. <br/><br/> 4 TB 'a kadar disk boyutlarını destekler.
-Veri diski boyutu | Tek disk 4095 GB 'a kadar olabilir.<br/><br/> Kasalar Azure Backup en son sürümünü (anında geri yükleme olarak bilinir) çalıştırıyorsa, 4 TB 'a kadar olan disk boyutları desteklenir. [Daha fazla bilgi edinin](backup-instant-restore-capability.md).  
-Depolama türü | Standart HDD, standart SSD, Premium SSD. <br/><br/> Standart SSD, kasalarınız Azure VM yedekleme 'nin en son sürümüne (anında geri yükleme olarak bilinir) yükseltilirse desteklenir. [Daha fazla bilgi edinin](backup-instant-restore-capability.md).
+Veri diski boyutu | Tek disk 4095 GB 'a kadar olabilir.<br/><br/>4 TB 'den büyük disklere yönelik Azure Backup büyük disk desteğinin özel önizlemesine kaydolmak için, AskAzureBackupTeam@microsoft.comboyut olarak en fazla 30tb 'a gidin.  
+Depolama türü | Standart HDD, Standart SSD Premium SSD.
 Yönetilen diskler | Destekleniyor.
 Şifrelenmiş diskler | Destekleniyor.<br/><br/> Azure disk şifrelemesi ile etkinleştirilen Azure VM 'Leri yedeklenebilir (Azure AD uygulaması ile veya olmadan).<br/><br/> Şifrelenmiş VM 'Ler dosya/klasör düzeyinde kurtarılamaz. Tüm VM 'yi kurtarmanız gerekir.<br/><br/> Azure Backup tarafından zaten korunan VM 'lerde şifrelemeyi etkinleştirebilirsiniz.
 Yazma Hızlandırıcısı etkin olan diskler | Desteklenmiyor.<br/><br/> Azure Backup, yedekleme sırasında Yazma Hızlandırıcısı etkin olan diskleri otomatik olarak dışlar. Yedeklenmediğinden, bu diskleri sanal makinenin kurtarma noktalarından geri yükleyemezsiniz.
@@ -167,7 +167,6 @@ Yinelenenleri kaldırılmış diskleri yedekleme | Desteklenmiyor.
 Korumalı VM 'ye disk ekleme | Destekleniyor.
 Korumalı VM 'de diski yeniden boyutlandır | Destekleniyor.
 Paylaşılan depolama alanı| Küme Paylaşılan Birimi (CSV) veya genişleme dosya sunucusu kullanarak VM 'Leri yedekleme önerilmez. Yedekleme sırasında CSV yazıcılarının başarısız olma olasılığı yüksektir. Geri yükleme sırasında CSV birimleri içeren diskler gelmeyebilir.
-
 
 
 ## <a name="vm-network-support"></a>VM ağı desteği

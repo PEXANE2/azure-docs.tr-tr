@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 07/31/2019
-ms.openlocfilehash: ea36f8a6a8c1db031de8f6ce2b4e3a88d73907e7
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 6c2e2c7395fcc45fe74c50beb3624eabb1d395c9
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68700333"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828018"
 ---
 # <a name="scenario-unable-to-add-nodes-to-azure-hdinsight-cluster"></a>Senaryo: Azure HDInsight kümesine düğüm eklenemiyor
 
@@ -27,7 +27,7 @@ Nedenler farklılık gösterebilir.
 
 ## <a name="resolution"></a>Çözüm
 
-[Küme boyutu](/hdinsight-scaling-best-practices.md) özelliğini kullanarak, küme için gereken ek çekirdek sayısını hesaplayın. Bu, yeni çalışan düğümlerindeki toplam çekirdek sayısına bağlıdır. Ardından aşağıdaki adımlardan birini veya daha fazlasını deneyin:
+[Küme boyutu](../hdinsight-scaling-best-practices.md) özelliğini kullanarak, küme için gereken ek çekirdek sayısını hesaplayın. Bu, yeni çalışan düğümlerindeki toplam çekirdek sayısına bağlıdır. Ardından aşağıdaki adımlardan birini veya daha fazlasını deneyin:
 
 * Kümenin konumunda kullanılabilir çekirdekler olup olmadığını denetleyin.
 

@@ -7,14 +7,14 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.author: dacurwin
-ms.openlocfilehash: 7ee4cffea9c997e5fcd3631594d61e6d5383cb38
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 6b79b34b1db6c201a8f132e4c608e251edb3666a
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639488"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68735413"
 ---
-# <a name="azure-backup-support-matrix"></a>Azure Backup destek matrisi
+# <a name="support-matrix-for-azure-backup"></a>Azure Backup için destek matrisi
 
 [Azure Backup](backup-overview.md) , verileri Microsoft Azure bulut platformuna yedeklemek için kullanabilirsiniz. Bu makalede Azure Backup senaryolar ve dağıtımlar için genel destek ayarları ve sınırlamaları özetlenmektedir.
 

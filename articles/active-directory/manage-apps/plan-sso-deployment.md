@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0602de13fefbf105e69ba42651216fb479c4c86
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 733b0d7650d68bddae60cf524947590c2b689968
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68477121"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779373"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Çoklu oturum açma dağıtımını planlama
 
@@ -95,7 +95,7 @@ Oturum açma perspektifinden, paylaşılan hesaplara sahip uygulamalar, bireysel
 
 Doğru kimlik doğrulama yönteminin seçilmesi, bir Azure AD karma kimlik çözümü ayarlamaya yönelik önemli bir ilk karardır. Bulut içindeki kullanıcıları da sağlayan Azure AD Connect kullanılarak yapılandırılan kimlik doğrulama yöntemini uygulayın.
 
-Bir kimlik doğrulama yöntemi seçmek için, seçiminizi uygulayan süreyi, var olan altyapıyı, karmaşıklığı ve maliyeti göz önünde bulundurmanız gerekir. Bu faktörler her kuruluş için farklılık gösterebilir ve zaman içinde değişebilir. Belirli senaryolarınız en yakından eşleşen olanı seçmeniz gerekir. Daha fazla bilgi için bkz. [Azure Active Directory karma kimlik çözümünüz için doğru kimlik doğrulama yöntemini seçme](https://docs.microsoft.com/azure/security/azure-ad-choose-authn).
+Bir kimlik doğrulama yöntemi seçmek için, seçiminizi uygulayan süreyi, var olan altyapıyı, karmaşıklığı ve maliyeti göz önünde bulundurmanız gerekir. Bu faktörler her kuruluş için farklılık gösterebilir ve zaman içinde değişebilir. Belirli senaryolarınız en yakından eşleşen olanı seçmeniz gerekir. Daha fazla bilgi için bkz. [Azure Active Directory karma kimlik çözümünüz için doğru kimlik doğrulama yöntemini seçme](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn).
 
 ## <a name="plan-your-security-and-governance"></a>Güvenlik ve idare planınızı planlayın 
 
@@ -238,9 +238,9 @@ Rolü her zaman Azure Active Directory içinde gerekli görevi gerçekleştirmek
 |--------|-------|-----------------------------|
 | Yardım Masası Yöneticisi | Katman 1 desteği | None |
 | Kimlik Yöneticisi | Sorunları Azure AD ' i etkileyen yapılandırma ve hata ayıklama | Genel yönetici |
-| Uygulama Yöneticisi | Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma | Yok. |
+| Uygulama Yöneticisi | Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma | None |
 | Altyapı Yöneticileri | Sertifika aktarma sahibi | Genel yönetici |
-| İşletme sahibi/paydaş | Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma | Yok. |
+| İşletme sahibi/paydaş | Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma | None |
 
 Dizin izinleri olan kullanıcılar için ek denetim, denetim ve erişim incelemesi sağlamak üzere rollerinizi yönetmek üzere [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) (PIM) kullanmanızı öneririz.
 

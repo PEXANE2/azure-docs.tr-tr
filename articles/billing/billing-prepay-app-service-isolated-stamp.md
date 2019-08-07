@@ -6,14 +6,14 @@ author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 07/16/2019
+ms.date: 08/02/2019
 ms.author: banders
-ms.openlocfilehash: 40ccee7a993ce39a9b4c7a86309b0554daa56026
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: f122ec2474c09cdd6c9ada4ddc59b1adb44f619f
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68298275"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780023"
 ---
 # <a name="prepay-for-azure-app-service-isolated-stamp-fee-with-reserved-capacity"></a>Ayrılmış kapasiteye sahip Azure App Service yalıtılmış damga ücreti için ön ödeme
 
@@ -35,7 +35,7 @@ Ayrıca, yalıtılmış damgasının Linux veya Windows ölçümü yaydığını
 
 Bu nedenle, damga kullanım ömrü boyunca damga ölçümü Windows ve Linux arasında değişebilir.
 
-Damgada bir veya daha fazla Windows çalışananız varsa Windows damga ayırmaları satın alın. Yalnızca damgada Linux _çalışanları olmasını planlıyorsanız_ , bir Linux damga ayırması satın almanız gereken tek zaman.
+Damgada bir veya daha fazla Windows çalışananız varsa Windows damga ayırmaları satın alın. Yalnızca damgada Linux çalışanları olmasını planlıyorsanız, bir Linux damga ayırması satın almanız gereken tek zaman.
 
 ## <a name="buy-isolated-stamp-reserved-capacity"></a>Yalıtılmış damga ayrılmış kapasitesini satın al
 
@@ -47,7 +47,7 @@ Yalıtılmış damga ayrılmış kapasitesini [Azure Portal](https://portal.azur
 **Satın almak için:**
 
 1. [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22AppService%22%7D)gidin.
-1. Bir abonelik seçin. Ayrılmış kapasite için ödeme yapmak üzere kullanılan aboneliği seçmek için **abonelik** listesini kullanın. Aboneliğin ödeme yöntemi, ayrılmış kapasitenin ön maliyetlerine göre ücretlendirilir. Abonelik türü bir kurumsal anlaşma olmalıdır (teklif numaraları: MS-AZR-0017P veya MS-AZR-0148P) veya Kullandıkça Öde (teklif numaraları: MS-AZR-0003P veya MS-AZR-0023P) veya CSP aboneliği.
+1. Abonelik seçin. Ayrılmış kapasite için ödeme yapmak üzere kullanılan aboneliği seçmek için **abonelik** listesini kullanın. Aboneliğin ödeme yöntemi, ayrılmış kapasitenin ön maliyetlerine göre ücretlendirilir. Abonelik türü bir kurumsal anlaşma olmalıdır (teklif numaraları: MS-AZR-0017P veya MS-AZR-0148P) veya Kullandıkça Öde (teklif numaraları: MS-AZR-0003P veya MS-AZR-0023P) veya CSP aboneliği.
     - Kurumsal abonelik için ücretler kaydın maddi işlem bakiyesinden düşülür ve fazla kullanım olarak ücretlendirilir.
     - Kullandıkça Öde aboneliğinde ücretler, aboneliğin kredi kartı veya fatura ödeme yöntemi ile faturalandırılır.
 1. Abonelik kapsamı seçmek için bir **kapsam** seçin.
@@ -62,13 +62,9 @@ Yalıtılmış damga ayrılmış kapasitesini [Azure Portal](https://portal.azur
 
 Satın aldıktan sonra, satın alma durumunu görüntülemek ve istediğiniz zaman izlemek için [rezervasyonlar](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) ' a gidin.
 
-## <a name="cancellations-and-exchanges"></a>İptaller ve alışverişlerde
+## <a name="cancel-exchange-or-refund-reservations"></a>İptal, Exchange veya para iadesi rezervasyonları
 
-Ayrılmış damga ayırmış kapasiteyi iptal etmeniz gerekirse,% 12 erken sonlandırma ücreti olabilir. Para iadeleri satın aldığınız fiyattan veya geçerli rezervasyon fiyatından düşük olana göre hesaplanır. Para iadesi, yıl başına $50.000,00 ile sınırlıdır. Aldığınız para iadesi, kalan eşit oranda dağıtılmış bakiye eksi% 12 erken sonlandırma ücreti üzerinden alınır. İptal etmek için Azure portal rezervasyonuna gidin ve **para iadesi**' ni seçin.
-
-Yalıtılmış damga ayrılmış kapasitenizi başka bir bölgeye taşımanız gerekiyorsa, bu değeri eşit veya daha büyük bir değer olan başka bir ayırma için değiş tokuş edebilirsiniz. Yeni ayırma işleminin başlangıç tarihi değiştirilen ayırma işleminin başlangıç tarihiyle aynı olmaz. Yeni ayırmayı oluşturduğunuzda üç yıllık bir terim başlar. Exchange 'e Azure portal gidin, Exchange için istediğiniz ayırmayı seçin ve **Exchange**' i seçin.
-
-Rezervasyonları Exchange veya para iadesi hakkında daha fazla bilgi için bkz. [rezervasyon alışverişi ve para](billing-azure-reservations-self-service-exchange-and-refund.md)iadesi.
+Belirli sınırlamalara sahip rezervasyonları iptal edebilir, Exchange veya para iadesi yapabilirsiniz. Daha fazla bilgi için bkz. [Azure ayırmaları Için self servis değişimlerinin ve para iadesi](billing-azure-reservations-self-service-exchange-and-refund.md).
 
 ## <a name="discount-application-shown-in-usage-data"></a>Kullanım verilerinde gösterilen indirim uygulaması
 

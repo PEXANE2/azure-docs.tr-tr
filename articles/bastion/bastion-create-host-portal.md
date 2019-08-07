@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 06/25/2019
+ms.date: 08/02/2019
 ms.author: cherylmc
-ms.openlocfilehash: 881d89170c82731fca3f6977da486eac5be772f8
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 4c283e840208ab9f53d084ca17221ea2c835b794
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466987"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68814149"
 ---
 # <a name="create-an-azure-bastion-host-preview"></a>Azure savunma Konağı (Önizleme) oluşturma
 
@@ -39,7 +39,7 @@ Bu bölüm Azure portal yeni bir Azure savunma kaynağı oluşturmanıza yardım
 
 1. [Azure Portal-](https://aka.ms/BastionHost)savunma Önizlemedeki giriş sayfasından **+ kaynak oluştur ' a**tıklayın. Bu önizleme için portala erişmek için sunulan bağlantıyı, normal Azure portal değil, kullandığınızdan emin olun.
 
-1. **Yeni** sayfada, *marketi ara* alanında, giriş **yazın ve**ardından arama sonuçlarına ulaşmak için **ENTER** ' a tıklayın.
+1. **Yeni** sayfada, *marketi ara* alanında, giriş yazın ve ardından arama sonuçlarınaulaşmak için **ENTER** ' a tıklayın.
 
 1. Sonuçlardan, savunma **(Önizleme)** seçeneğine tıklayın. Yayımcının *Microsoft* olduğundan ve kategorinin *ağ*olduğundan emin olun.
 
@@ -54,7 +54,7 @@ Bu bölüm Azure portal yeni bir Azure savunma kaynağı oluşturmanıza yardım
     * **Ad**: Yeni savunma kaynağının adı
     * **Bölge**: Kaynağın oluşturulacağı Azure ortak bölgesi.
     * **Sanal ağ**: Savunma kaynağının oluşturulacağı sanal ağ. Bu işlem sırasında portalda yeni bir sanal ağ oluşturabilirsiniz. Bu durumda, mevcut bir sanal ağı kullanmak zorunda kalmazsınız. Var olan bir sanal ağı kullanıyorsanız, var olan sanal ağın savunma alt ağ gereksinimlerine uyum sağlamak için yeterli boş adres alanı olduğundan emin olun.
-    * **Alt ağ**: Sanal ağınızdaki, yeni savunma ana bilgisayar kaynağının dağıtılacağı alt ağ. **AzureBastionSubnet**ad değerini kullanarak bir alt ağ oluşturmanız gerekir. Bu değer, Azure 'un savunma kaynaklarını hangi alt ağa dağıtacağınızı bilmesini sağlar. Bu, bir ağ geçidi alt ağından farklıdır. En az bir/27 veya daha büyük alt ağ (/27,/26, vb.) kullanmanızı kesinlikle öneririz. Rota tabloları veya temsilcileri olmadan **AzureBastionSubnet** oluşturun. **AzureBastionSubnet**üzerinde ağ güvenlik grupları kullandığınızda [NSG 'ler ile çalışma](bastion-nsg.md)bölümüne bakın.
+    * **Alt ağ**: Sanal ağınızdaki, yeni savunma ana bilgisayar kaynağının dağıtılacağı alt ağ. **AzureBastionSubnet**ad değerini kullanarak bir alt ağ oluşturmanız gerekir. Bu değer, Azure 'un savunma kaynaklarını hangi alt ağa dağıtacağınızı bilmesini sağlar. Bu, bir ağ geçidi alt ağından farklıdır. En az bir/27 veya daha büyük alt ağın (/27,/26, vb.) bir alt ağını kullanmanız gerekir. Rota tabloları veya temsilcileri olmadan **AzureBastionSubnet** oluşturun. **AzureBastionSubnet**üzerinde ağ güvenlik grupları kullandığınızda [NSG 'ler ile çalışma](bastion-nsg.md)bölümüne bakın.
     * **Genel IP adresi**: RDP/SSH 'ye erişilecek savunma kaynağının genel IP 'si (443 numaralı bağlantı noktası üzerinden). Yeni bir genel IP oluşturun veya var olan bir IP 'yi kullanın. Genel IP adresi, oluşturmakta olduğunuz savunma kaynağıyla aynı bölgede olmalıdır.
     * **Genel IP adresi adı**: Genel IP adresi kaynağının adı.
     * **Genel IP adresi SKU 'su**: Varsayılan olarak **Standart**öğesine önceden doldurulur. Azure savunma yalnızca standart genel IP SKU 'sunu kullanır/destekler.
@@ -72,7 +72,7 @@ Portalda var olan bir VM 'yi kullanarak bir savunma Konağı oluşturursanız, s
 
     ![VM bağlantısı](./media/bastion-create-host-portal/vmsettings.png)
 
-1. Sağ kenar çubuğunda, savunma ' yı ve ardından **savunma ' yi** **kullanın**.
+1. Sağ kenar çubuğunda, savunma 'yı ve ardından savunma ' yi **kullanın**.
 
     ![Bastion](./media/bastion-create-host-portal/vmbastion.png)
 

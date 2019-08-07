@@ -12,12 +12,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba63f9c04e062741eded9c39e44ba64281931387
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 6646217149cec48ca5fcee59b3dd9d850965c602
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311343"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779915"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>Azure Active Directory için Federasyondan geçişli kimlik doğrulamaya geçiş
 
@@ -156,7 +156,7 @@ Windows 8 ve Windows 7 bilgisayar hesaplarında, karma birleşimi bilgisayarı A
 
 Daha fazla bilgi için bkz. [karma Azure AD 'ye katılmış cihazları yapılandırma](https://docs.microsoft.com/azure/active-directory/device-management-hybrid-azuread-joined-devices-setup).
 
-#### <a name="branding"></a>Olanağı
+#### <a name="branding"></a>Markalama
 
 Kuruluşunuz, kuruluşa daha uygun bilgileri göstermek için [AD FS oturum açma sayfalarınızı özelleştirmiş](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-user-sign-in-customization) ve [Azure AD oturum açma sayfasında benzer özelleştirmeler](https://docs.microsoft.com/azure/active-directory/customize-branding)yapmayı düşünün.
 
@@ -235,7 +235,7 @@ Oturum açma yöntemini doğrudan kimlik doğrulama ve sorunsuz SSO etkinleştir
 
 #### <a name="option-a-configure-pass-through-authentication-by-using-azure-ad-connect"></a>Seçenek A: Azure AD Connect kullanarak geçişli kimlik doğrulamasını yapılandırma
 
-AD FS ortamınızı başlangıçta Azure AD Connect kullanarak yapılandırdıysanız bu yöntemi kullanın. AD FS *ortamınızı ilk olarak* Azure AD Connect kullanarak yapılandırmadıysanız bu yöntemi kullanamazsınız.
+AD FS ortamınızı başlangıçta Azure AD Connect kullanarak yapılandırdıysanız bu yöntemi kullanın. AD FS ortamınızı ilk olarak Azure AD Connect kullanarak yapılandırmadıysanız bu yöntemi kullanamazsınız.
 
 > [!IMPORTANT]
 > Aşağıdaki adımları tamamladıktan sonra, tüm etki alanlarınız Federal kimlikten yönetilen kimliğe dönüştürülür. Daha fazla bilgi için, [geçiş yöntemini planlayın](#plan-the-migration-method)' i gözden geçirin.
@@ -454,5 +454,5 @@ Daha fazla bilgi için bkz. [Azure Active Directory geçişli kimlik doğrulamas
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure AD Connect tasarım kavramları](plan-connect-design-concepts.md)hakkında bilgi edinin.
-* [Doğru kimlik doğrulamasını](https://docs.microsoft.com/azure/security/azure-ad-choose-authn)seçin.
+* [Doğru kimlik doğrulamasını](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn)seçin.
 * [Desteklenen topolojiler](plan-connect-design-concepts.md)hakkında bilgi edinin.

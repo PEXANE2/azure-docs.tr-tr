@@ -1,6 +1,6 @@
 ---
-title: NetApp Azure dosyaları için ölçümleri | Microsoft Docs
-description: Ölçümler, Azure için NetApp dosyaları açıklar.
+title: Azure NetApp Files ölçümleri | Microsoft Docs
+description: Azure NetApp Files için ölçümleri açıklar.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,41 +12,47 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 08/06/2019
 ms.author: b-juche
-ms.openlocfilehash: 1563b60ef26ac5e4d40f45095d0109dd9dd71570
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9a56fb27fdf9e196291942041d68b249d7f16648
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61084948"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839242"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Azure NetApp Files için ölçümler
 
-Azure NetApp dosyaları ayrılan depolama alanını, gerçek depolama alanı kullanımı, birim aktarım hızı, IOPS ve gecikme süresi ölçümlerini sağlar. Bu ölçümleri analiz ederek daha iyi anlamak kullanım desenini ve toplu performansını NetApp hesaplarınız elde edebilirsiniz.  
+Azure NetApp Files, ayrılan depolama, gerçek depolama alanı kullanımı, birim üretimi, ıOPS ve gecikme hakkında ölçümler sağlar. Bu ölçümleri çözümleyerek, NetApp hesaplarınızın kullanım deseninin ve birim performansının daha iyi şekilde öğrenilmesine sahip olabilirsiniz.  
 
 ## <a name="capacity_pools"></a>Kapasite havuzları için kullanım ölçümleri
 
-- *Birim ayrılmamış havuz boyutu*  
-    Sağlanan kapasitesi havuzu boyutu (GiB) budur.  
-- *Ayrılmış birim havuzu kullanılan*  
-    Bu birimi kotası (GiB) verilen kapasite havuzunda (diğer bir deyişle, sağlanan boyutları kapasitesi havuzu birimlerinin toplam) toplamıdır. Bu, birim oluşturma sırasında seçtiğiniz boyutudur.  
-- *Birim havuzu toplam mantıksal boyutu*  
-    Kapasite havuzundaki birimler arasında kullanılan mantıksal alanı (GiB) toplamıdır.  
-- *Birim havuzu toplam anlık görüntü boyutu*  
-    Bu anlık görüntüler görüntülenerek kullanılan artımlı mantıksal alanı toplamıdır.  
+<!-- 
+- *Volume pool allocated size*  
+    This is the size (GiB) of the provisioned capacity pool.  
+--> 
+- *Ayrılan birim havuzu*  
+    Bu, belirli bir kapasite havuzundaki birim kotasının (GiB) toplamıdır (diğer bir deyişle, kapasite havuzundaki birimlerin sağlanan boyutlarının toplamıdır). Bu, birim oluşturma sırasında seçtiğiniz boyutudur.  
+- *Birim havuzu toplam mantıksal boyut*  
+    Bu, bir kapasite havuzundaki birimler genelinde kullanılan mantıksal alanın (GiB) toplamıdır.  
+<!-- 
+- *Volume pool total snapshot size*  
+    This is the total of incremental logical space used by the snapshots.  
+-->
 
 ## <a name="volumes"></a>Birimler için kullanım ölçümleri
 
-- *Boyutu ayrılmış birim*   
-    Birim boyutu (kota) cinsinden sağlanan budur.  
-- *Mantıksal birim boyutu*   
-    Bir birim (GiB) kullanılan toplam mantıksal alanı budur. Bu boyut etkin dosya sistemleri ve anlık görüntüleri tarafından kullanılan mantıksal alanı içerir.  
+<!-- 
+- *Volume allocated size*   
+    This is the volume size (quota) provisioned in GiB.  
+--> 
+- *Birim mantıksal boyutu*   
+    Bu, bir birimde (GiB) kullanılan toplam mantıksal alandır. Bu boyut, etkin dosya sistemleri ve anlık görüntüleri tarafından kullanılan mantıksal alanı içerir.  
 - *Birim anlık görüntü boyutu*   
-    Bir birim anlık görüntü tarafından kullanılan artımlı mantıksal alanı budur.  
+    Bu, bir birimdeki anlık görüntüler tarafından kullanılan artımlı mantıksal alandır.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [NetApp dosyaları Azure depolama hiyerarşisini anlama](azure-netapp-files-understand-storage-hierarchy.md)
+* [Azure NetApp Files depolama hiyerarşisini anlayın](azure-netapp-files-understand-storage-hierarchy.md)
 * [Kapasitesi havuzunu ayarlama](azure-netapp-files-set-up-capacity-pool.md)
 * [Azure NetApp Files için birim oluşturma](azure-netapp-files-create-volumes.md)

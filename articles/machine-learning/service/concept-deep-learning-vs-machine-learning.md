@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
-ms.date: 07/30/2019
-ms.openlocfilehash: d97c3d47a277ecd8b1de635e3d835f9ee1f42057
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.date: 08/07/2019
+ms.openlocfilehash: 4b66d015e8a182e305a36dacaa2e082288a3e19e
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68700359"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840532"
 ---
 # <a name="introduction-to-deep-learning-vs-machine-learning"></a>Derin öğrenme ve makine öğrenimine giriş
 
@@ -43,9 +43,9 @@ Machine Learning 'e genel bakış ve derin öğrenime sahip olduğunuza göre, i
 
 Aşağıdaki tabloda, iki teknik daha ayrıntılı olarak karşılaştırılmaktadır:
 
-| |Makine öğrenimi |Derin öğrenme|
+| |Tüm makine öğrenimi |Yalnızca derin öğrenme|
 |---|---|---|
-|  **Veri noktası sayısı** | , Kullanıcılar tarafından sunulan küçük veri miktarlarını kullanabilir | Kısa ekibinizle yapmak için büyük miktarda etiketlenmemiş eğitim verisi gerektirir |
+|  **Veri noktası sayısı** | , Kullanıcılar tarafından sunulan küçük veri miktarlarını kullanabilir | Kısa ekibinizle yapmak için büyük miktarda eğitim verisi gerektirir |
 |  **Donanım bağımlılıkları** | , Düşük kaliteli makinelerde çalışabilir. Büyük miktarda hesaplama gücüne gerek yoktur | , Yüksek kaliteli makinelere bağlıdır. Bu, doğal olarak çok sayıda matris çarpma işlemi yapar. Bu işlemler, GPU kullanılarak etkili bir şekilde iyileştirilebilir |
 |  **Korturlama işlemi** | Özelliklerin Kullanıcı tarafından doğru şekilde tanımlanması ve oluşturulması gerekir | Verilerin üst düzey özelliklerini öğrenir ve kendi kendine yeni özellikler oluşturuyor |
 |  **Öğrenme yaklaşımı** | Görevleri küçük parçalara böler ve ardından alınan sonuçları tek bir sonuç olarak birleştirir | Sorunu, uçtan uca temelinde çözer |

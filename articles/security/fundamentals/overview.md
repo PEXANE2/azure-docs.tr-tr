@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 62fd2c3f46104fdf3193f105c234f1dae417b0fd
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 527c9cfa64eab9fe2286098d2c10186391bdde4d
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726860"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780586"
 ---
 # <a name="introduction-to-azure-security"></a>Azure güvenliğine giriş
 ## <a name="overview"></a>Genel Bakış
@@ -114,7 +114,7 @@ Bu bölümde, uygulama güvenliği ve bu özellikler hakkında özet bilgileri i
 [App Service uygulamanızda](https://docs.microsoft.com/azure/app-service/overview) güvenlik açıklarını test etmeye başlamak için en kolay yollarından biri, uygulamanızda tek tıklamayla bir güvenlik açığı taraması gerçekleştirmek Için [tinfoil Security ile tümleştirmeyi](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/) kullanmaktır. Test sonuçlarını kolay anlaşılır bir raporda görüntüleyebilir ve adım adım yönergelerle her bir güvenlik açığını nasıl düzelteceğinizi öğrenebilirsiniz.
 
 ### <a name="penetration-testing"></a>Sızma Testi
-Kendi sızma testlerinizi gerçekleştirmeyi tercih ediyorsanız veya başka bir tarayıcı paketi veya sağlayıcı kullanmak istiyorsanız, [Azure sızma testi onay işlemini](https://docs.microsoft.com/azure/security/azure-security-pen-testing ) izlemeniz ve istenen Sızma testlerini gerçekleştirmek için önceki onayı edinmeniz gerekir.
+Kendi sızma testlerinizi gerçekleştirmeyi tercih ediyorsanız veya başka bir tarayıcı paketi veya sağlayıcı kullanmak istiyorsanız, [Azure sızma testi onay işlemini](https://docs.microsoft.com/azure/security/fundamentals/pen-testing ) izlemeniz ve istenen Sızma testlerini gerçekleştirmek için önceki onayı edinmeniz gerekir.
 
 ### <a name="web-application-firewall"></a>Web uygulaması güvenlik duvarı
 [Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) Web uygulaması güvenlik duvarı (WAF), Web uygulamalarını SQL ekleme, siteler arası komut dosyası saldırıları ve oturum ele geçirme gibi yaygın web tabanlı saldırılara karşı korumanıza yardımcı olur. Bu [uygulama, Open Web Application Security Project (OWASP) tarafından tanımlanan tehditlere karşı, en sık kullanılan 10 ortak güvenlik açığı olarak](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project)önceden yapılandırılmış olarak gelir.
@@ -313,7 +313,7 @@ Kullanılabilir ağ önerileri şunlardır:
 Bu bölümde, bu alandaki temel özelliklerle ilgili ek bilgiler ve bu yetenekler hakkında özet bilgiler sağlanmaktadır.
 
 ### <a name="antimalware--antivirus"></a>Kötü amaçlı yazılımdan koruma &
-Azure IaaS ile, bir kötü amaçlı yazılımdan koruma yazılımını Microsoft, Symantec, Trend Micro, McAfee ve Kaspersky gibi güvenlik satıcılarından kullanarak sanal makinelerinizi kötü amaçlı dosyalardan, reklam yazılımlarından ve diğer tehditlere karşı koruyabilirsiniz. Azure Cloud Services için [Microsoft kötü amaçlı yazılımdan](https://docs.microsoft.com/azure/security/azure-security-antimalware) koruma ve sanal makineler, virüsler, casus yazılım ve diğer kötü amaçlı yazılımların tanımlanmasına ve kaldırılmasına yardımcı olan bir koruma özelliğidir. Microsoft Antimalware, bilinen kötü amaçlı veya istenmeyen yazılımlar kendisini yüklemeye veya Azure sistemlerinizde çalışmaya çalıştığında yapılandırılabilir uyarılar sağlar. Microsoft kötü amaçlı yazılımdan koruma, Azure Güvenlik Merkezi kullanılarak da dağıtılabilir
+Azure IaaS ile, bir kötü amaçlı yazılımdan koruma yazılımını Microsoft, Symantec, Trend Micro, McAfee ve Kaspersky gibi güvenlik satıcılarından kullanarak sanal makinelerinizi kötü amaçlı dosyalardan, reklam yazılımlarından ve diğer tehditlere karşı koruyabilirsiniz. Azure Cloud Services için [Microsoft kötü amaçlı yazılımdan](https://docs.microsoft.com/azure/security/fundamentals/antimalware) koruma ve sanal makineler, virüsler, casus yazılım ve diğer kötü amaçlı yazılımların tanımlanmasına ve kaldırılmasına yardımcı olan bir koruma özelliğidir. Microsoft Antimalware, bilinen kötü amaçlı veya istenmeyen yazılımlar kendisini yüklemeye veya Azure sistemlerinizde çalışmaya çalıştığında yapılandırılabilir uyarılar sağlar. Microsoft kötü amaçlı yazılımdan koruma, Azure Güvenlik Merkezi kullanılarak da dağıtılabilir
 
 ### <a name="hardware-security-module"></a>Donanım güvenlik modülü
 Anahtarlar korunmadığı takdirde şifreleme ve kimlik doğrulama güvenliği geliştirir. Kritik gizli dizilerlerinizin ve anahtarların yönetim ve güvenliğini [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)içinde depolayarak kolaylaştırabilirsiniz. Key Vault, anahtarlarınızı FIPS 140-2 düzey 2 standartlarına sertifikalı donanım güvenlik modüllerinde (HSM 'ler) depolama seçeneği sunar. Yedekleme veya [Saydam veri şifrelemesi](https://msdn.microsoft.com/library/bb934049.aspx) için SQL Server şifreleme anahtarlarınızın tümü, uygulamalarınızda herhangi bir anahtar veya gizli dizi ile Key Vault depolanabilir. Bu korumalı öğelere izinler ve erişim [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/)üzerinden yönetilir.

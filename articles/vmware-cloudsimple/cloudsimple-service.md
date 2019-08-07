@@ -1,28 +1,28 @@
 ---
-title: VMware çözümü CloudSimple hizmet tarafından
-description: Genel Bakış CloudSimple hizmeti ve kavramlarını açıklar.
+title: CloudSimple hizmetine göre VMware çözümü
+description: CloudSimple hizmeti ve kavramlarının genel bakışını açıklar.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 04/24/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0bebc68129ee2ff79241bcefec1ce0c3ca0b472d
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: a43fbebb21be82fd751778d6fec95e0ee9c346ad
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595308"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812515"
 ---
 # <a name="cloudsimple-service-overview"></a>CloudSimple hizmetine genel bakış
 
-CloudSimple hizmetiyle CloudSimple tarafından Azure VMware çözümü kullanabilirsiniz. Hizmeti oluşturduktan sonra düğümleri sağlama, düğümler ayırmak ve özel Bulutlar oluştur. CloudSimple hizmet CloudSimple hizmet kullanılabilir olduğu her Azure bölgesinde oluşturun. Hizmet, Azure VMware CloudSimple çözümüyle uç ağı tanımlar. Edge ağını, VPN, Azure ExpressRoute ve internet bağlantısı için özel bulutlarınızın Hizmetleri destekler.
+CloudSimple hizmeti sayesinde CloudSimple ile Azure VMware çözümünü kullanabilirsiniz. Hizmeti oluşturduktan sonra düğümleri sağlayabilir, düğümleri ayırabilir ve özel bulutlar oluşturabilirsiniz. Cloudsimple hizmetini, CloudSimple hizmetinin kullanılabildiği her bir Azure bölgesinde oluşturursunuz. Hizmet, CloudSimple tarafından Azure VMware çözümünün Edge ağını tanımlar. Edge ağı VPN, Azure ExpressRoute ve özel bulutlarınıza internet bağlantısı içeren hizmetleri destekler.
 
 ## <a name="gateway-subnet"></a>Ağ geçidi alt ağı
 
-Bir ağ geçidi alt ağı CloudSimple hizmeti başına gereklidir ve da oluşturulduğu bölgesiyle benzersizdir. Ağ geçidi alt ağı/28 gerektirir ve edge ağını oluşturduğunuzda kullanılan CIDR bloğu. Ağ geçidi alt ağ adres alanı benzersiz olmalıdır. CloudSimple ortamıyla iletişim kurduğu herhangi bir ağ ile örtüşmemelidir. Şirket içi ağlar ve Azure sanal ağları CloudSimple ile iletişim kuran ağlar içerir. Oluşturulduktan sonra ağ geçidi alt ağı silinemiyor. Ağ geçidi alt ağı hizmet silindikten kaldırılır.
+CloudSimple hizmeti başına bir ağ geçidi alt ağı gerekir ve oluşturulduğu bölge için benzersizdir. Ağ geçidi alt ağı, Edge ağını oluşturduğunuzda ve/28 CıDR bloğunu gerektirdiğinde kullanılır. Ağ geçidi alt ağ adresi alanı benzersiz olmalıdır. CloudSimple ortamıyla iletişim kuran herhangi bir ağla çakışmamalıdır. CloudSimple ile iletişim kuran ağlarda şirket içi ağlar ve Azure sanal ağları bulunur. Bir ağ geçidi alt ağı oluşturulduktan sonra silinemez. Ağ geçidi alt ağı, hizmet silindiğinde kaldırılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Bilgi edinmek için nasıl [Azure'da CloudSimple hizmet oluşturma](quickstart-create-cloudsimple-service.md).
+* [Azure 'Da CloudSimple hizmeti oluşturmayı](quickstart-create-cloudsimple-service.md)öğrenin.

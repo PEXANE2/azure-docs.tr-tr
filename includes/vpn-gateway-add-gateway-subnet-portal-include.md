@@ -5,24 +5,26 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 04/04/2018
+ms.date: 08/02/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 9132cf438cab518e20e6c2ddfdb7d0928753bd19
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 52ab0413dffeee59cb9d34c6276a0c806a4d0322
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67188218"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780239"
 ---
+Ağ geçidi alt ağı, sanal ağ geçidi hizmetlerinin kullandığı ayrılmış IP adreslerini içerir. Ağ geçidi alt ağı oluşturun.
+
 1. Portalda, sanal ağ geçidini oluşturmak istediğiniz sanal ağa gidin.
-2. VNet’inizin sayfasının **Ayarlar** bölümünde, Alt Ağlar sayfasını genişletmek için **Alt Ağlar**'a tıklayın.
-3. **Alt ağlar** sayfasında, üstteki **+Alt ağ**’a tıklayarak **Alt ağ ekle** sayfasını açın.
+2. Sanal ağ sayfanızda **VNet1-alt ağlar** sayfasını genişletmek Için **alt ağlar** ' a tıklayın.
+3. **Alt ağ ekle** sayfasını açmak için üst kısımdaki **+ Gateway alt ağına** tıklayın.
 
    ![Ağ geçidi alt ağını ekleme](./media/vpn-gateway-add-gateway-subnet-portal-include/gateway-subnet.png "Ağ geçidi alt ağını ekleme")
-  
-4. Alt ağınız için **Ad** alanı otomatik olarak ‘GatewaySubnet’ değeriyle doldurulur. Alt ağın Azure tarafından ağ geçidi alt ağı olarak tanınması için GatewaySubnet değeri gereklidir. Otomatik olarak doldurulmuş **Adres aralığı** değerlerini, yapılandırma gereksinimlerinize uyacak şekilde ayarlayın.
+4. Alt ağınızın **adı** , gereken ' gatewaysubnet ' değeri ile otomatik olarak doldurulur. Otomatik doldurulmuş **adres aralığını (CIDR bloğu)** aşağıdaki değerle eşleşecek şekilde ayarlayın:
 
-   ![Ağ geçidi alt ağını ekleme](./media/vpn-gateway-add-gateway-subnet-portal-include/add-gateway-subnet.png "Ağ geçidi alt ağını ekleme")
-  
-5. Alt ağ oluşturmak için sayfanın altından **Tamam**’a tıklayın.
+   **Adres aralığı (CIDR bloğu)** : 10.1.255.0/27
+
+   ![Ağ geçidi alt ağını ekleme](./media/vpn-gateway-add-gateway-subnet-portal-include/add-gateway-subnet1.png "Ağ geçidi alt ağını ekleme")
+5. Ayarların geri kalanını **none** veya **0 seçili**olarak bırakın. Sonra, ağ geçidi alt ağını oluşturmak için **Tamam** ' ı tıklatın.

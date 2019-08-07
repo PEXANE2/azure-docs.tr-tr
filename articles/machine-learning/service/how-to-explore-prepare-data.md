@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/23/2019
-ms.openlocfilehash: f680a1cb15edf0141897c74da3b7c7afa01acae0
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 31a367fcde909f393efa4fea65b25716f95c56ee
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699112"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828442"
 ---
 # <a name="explore-and-prepare-data-with-the-dataset-class-preview"></a>Veri kümesi sınıfıyla verileri keşfet ve hazırlama (Önizleme)
 
@@ -35,7 +35,7 @@ Verilerinizi incelemek ve hazırlamak için şunları yapmanız gerekir:
 
 * Azureml için Azure Machine Learning SDK (sürüm 1.0.21 veya üzeri), bu, azureml veri kümesi paketini içerir. SDK 'nın en son sürümünü yüklemek veya güncelleştirmek için bkz. [SDK 'Yı yüklemek veya güncelleştirmek](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
 
-* Azure Machine Learning Data Prep SDK 'Sı. En son sürümü yüklemek veya güncelleştirmek için bkz. [Data Prep SDK 'Sını yüklemek veya güncelleştirmek](https://docs.microsoft.com/python/api/overview/azure/dataprep/intro?view=azure-dataprep-py#install).
+* Azure Machine Learning Data Prep SDK 'Sı. En son sürümü yüklemek veya güncelleştirmek için bkz. [Data Prep SDK 'Sını yüklemek veya güncelleştirmek](https://docs.microsoft.com/python/api/overview/azure/dataprep/intro?view=azure-dataprep-py).
 
 * Örnek dosyaları aşağıdaki örneklerle birlikte indirin: [suc. csv](https://dprepdata.blob.core.windows.net/dataset-sample-files/crime.csv) ve [City. JSON](https://dprepdata.blob.core.windows.net/dataset-sample-files/city.json).
 
@@ -106,7 +106,7 @@ sample_dataset.to_pandas_dataframe()
 ||id|Büyük/küçük harf numarası|Tarih|Engelle|IUCR|Birincil tür|...|
 -|--|-----------|----|-----|----|------------|---
 0|10516598|HZ258664|4/15/2016 17:00|082XX S ŞEKLIK ALANI AVE|890|HIRSIZLIĞI|...
-1|10534446|HZ277630|4/15/2016 10:00|055XX N KEDZIE AVE|890|HIRSIZLIĞI|...
+1\.|10534446|HZ277630|4/15/2016 10:00|055XX N KEDZIE AVE|890|HIRSIZLIĞI|...
 2|10535059|HZ278872|4/15/2016 4:30|004XX SN KILBOURN AVE|810|HIRSIZLIĞI|...
 
 ## <a name="explore-with-summary-statistics"></a>Özet istatistikleriyle keşfet
@@ -131,7 +131,7 @@ Arrest|,. BOOLEAN|False|False|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 Yurt içi|,. BOOLEAN|False|False|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 Sinyal|,. INTEGER|531|2433|10.0|0.0|10.0|0.0|0.0|0.0|531|531|531|614|1318,5|1911|2433|2433|2433|1371,1|692,094|478994|0,105418|-1,60684
 Bölge|,. INTEGER|5|24|10.0|0.0|10.0|0.0|0.0|0.0|5|5|5|6|13|19|24|24|24|13.5|6,94822|48,2778|0,0930109|-1,62325
-İleri Git|,. INTEGER|1\.|48|10.0|0.0|10.0|0.0|0.0|0.0|1\.|5|1\.|9|22.5|40|48|48|48|24.5|16,2635|264,5|0,173723|-1,51271
+İleri Git|,. INTEGER|1\.|48|10.0|0.0|10.0|0.0|0.0|0.0|1|5|1\.|9|22.5|40|48|48|48|24.5|16,2635|264,5|0,173723|-1,51271
 Topluluk alan|,. INTEGER|4|77|10.0|0.0|10.0|0.0|0.0|0.0|4|8.5|4|24|37,5|71|77|77|77|41,2|26,6366|709,511|0,112157|-1,73379
 FBI kod|,. INTEGER|6|11|10.0|0.0|10.0|0.0|0.0|0.0|6|6|6|6|11|11|11|11|11|9.4|2,36643|5.6|-0,702685|-1,59582
 X koordinatı|,. INTEGER|1.16309 e + 06|1.18336 e + 06|10.0|7.0|3,0|0,7|0.0|0.0|1.16309 e + 06|1.16309 e + 06|1.16309 e + 06|1.16401 e + 06|1.16678 e + 06|1.17921 e + 06|1.18336 e + 06|1.18336 e + 06|1.18336 e + 06|1.17108 e + 06|10793,5|1.165 e + 08|0,335126|-2,33333
@@ -313,7 +313,7 @@ Aşağıdaki tabloda, Date_Time_Range yeni bir sütunun belirtilen biçimdeki ka
 ||id|Date|Date_Time_Range
 -|--------|-----|----
 0|10498554|2016-04-04 23:56:00|2016-04-04 10PM-12:00
-1\.|10516598|2016-04-15 17:00:00|2016-04-15 4PM-6PM
+1|10516598|2016-04-15 17:00:00|2016-04-15 4PM-6PM
 2|10519196|2016-04-15 10:00:00|2016-04-15 10:00-12PM
 
 ```Python

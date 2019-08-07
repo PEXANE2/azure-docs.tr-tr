@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f1f2e06eb6b5f8d402515ff1c07a4163174495d
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 8ccefec9e548b7981f696712bb4a983f4b577a9b
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68666353"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779642"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Şirket içi Azure AD parola koruması-sık sorulan sorular
 
@@ -40,19 +40,19 @@ Desteklenmiyor. Dağıtım ve etkinleştirildikten sonra Azure AD parola korumas
 
 **S: Parola değiştirme ve parola ayarlama (veya sıfırlama) arasındaki fark nedir?**
 
-Parola değişikliği, bir Kullanıcı eski parola hakkında bilgi sahibi olduktan sonra yeni bir parola seçtiğinde. Örneğin, bir Kullanıcı Windows 'da oturum açtığında ve ardından yeni bir parola seçmesi istendiğinde bu durum gerçekleşir.
+Parola değişikliği, bir Kullanıcı eski parola hakkında bilgi sahibi olduktan sonra yeni bir parola seçtiğinde. Örneğin, bir Kullanıcı Windows 'da oturum açtığında ve ardından yeni bir parola seçmesi istendiğinde parola değişikliği olur.
 
-Bir parola kümesi (bazen parola sıfırlama olarak adlandırılır), bir yönetici bir hesaptaki parolayı yeni bir parolayla Değiştir, örneğin Active Directory Kullanıcılar ve bilgisayarlar Yönetim Aracı ' nı kullanmaktır. Bu işlem, yüksek düzeyde ayrıcalık (genellikle etki alanı Yöneticisi) gerektirir ve işlemi gerçekleştiren kişi genellikle eski parola hakkında bilgi sahibi değildir. Yardım Masası senaryoları genellikle bu işlemi, parolasını unuttueden bir kullanıcıyı öğrenerek, örneğin. Ayrıca, yeni bir kullanıcı hesabı bir parola ile ilk kez oluşturulduğunda parola ayarlama olaylarını da görürsünüz.
+Bir parola kümesi (bazen parola sıfırlama olarak adlandırılır), bir yönetici bir hesaptaki parolayı yeni bir parolayla Değiştir, örneğin Active Directory Kullanıcılar ve bilgisayarlar Yönetim Aracı ' nı kullanmaktır. Bu işlem, yüksek düzeyde ayrıcalık (genellikle etki alanı Yöneticisi) gerektirir ve işlemi gerçekleştiren kişi genellikle eski parola hakkında bilgi sahibi değildir. Yardım Masası senaryoları genellikle parola kümeleri gerçekleştirir, örneğin, parolasını unutmuş bir kullanıcıyı öğreniyor. Ayrıca, yeni bir kullanıcı hesabı bir parola ile ilk kez oluşturulduğunda parola ayarlama olaylarını da görürsünüz.
 
 Parola doğrulama ilkesi, parola değiştirme veya ayarlama işleminin yapılıp yapılmadığına bakılmaksızın aynı şekilde davranır. Azure AD parola koruması DC Aracısı hizmeti, parola değiştirme veya ayarlama işleminin yapılıp yapılmadığını bildirmek için farklı olayları günlüğe kaydeder.  Bkz. [Azure AD parola koruması izleme ve günlüğe kaydetme](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-monitor).
 
 **S: Active Directory Kullanıcıları ve bilgisayarları Yönetimi ek bileşenini kullanarak zayıf bir parola ayarlamaya çalışırken neden yinelenen parola reddetme olayları günlüğe kaydedilir?**
 
-Active Directory Kullanıcıları ve Bilgisayarları yönetim ek bileşeni, önce Kerberos protokolünü kullanarak yeni parolayı ayarlamaya çalışır. Hata durumunda, ek bileşen eski (SAM RPC) protokolü kullanarak parolayı ayarlamaya yönelik ikinci bir deneme yapar (kullanılan protokoller önemli değildir). Yeni parola Azure AD parola koruması tarafından zayıf kabul edildiğinde, bu iki parola sıfırlama reddetme olayı kümesine neden olur.
+Active Directory Kullanıcıları ve Bilgisayarları yönetim ek bileşeni, önce Kerberos protokolünü kullanarak yeni parolayı ayarlamaya çalışır. Hata sonrasında, ek bileşen eski (SAM RPC) protokolünü kullanarak parolayı ayarlamaya yönelik ikinci bir deneme yapar (kullanılan protokoller önemli değildir). Yeni parola Azure AD parola koruması tarafından zayıf kabul edildiğinde, bu ek bileşen davranışı iki parola sıfırlama reddetme olayı kümesine yol açar.
 
 **S: Azure AD parola koruma parolası doğrulama olayları neden boş bir kullanıcı adıyla günlüğe kaydediliyor?**
 
-Active Directory, örneğin [NetValidatePasswordPolicy](https://docs.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netvalidatepasswordpolicy) API 'sini kullanarak etki alanının geçerli parola karmaşıklığı gereksinimlerini geçirmesinin başarılı olup olmadığını görmek için bir parolayı test etme özelliğini destekler. Bu şekilde bir parola doğrulandığında, test, Azure AD parola koruması gibi parola filtresi DLL tabanlı ürünlerin doğrulanmasını de içerir, ancak belirli bir parola filtresi dll 'sine geçirilen kullanıcı adları boş olur. Bu senaryoda, Azure AD parola koruması Şu anda etkin olan parola ilkesini kullanarak parolayı doğrular ve sonucu yakalamak için bir olay günlüğü iletisi verir, ancak olay günlüğü iletisinde boş Kullanıcı adı alanları olacaktır.
+Active Directory, örneğin [NetValidatePasswordPolicy](https://docs.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netvalidatepasswordpolicy) API 'sini kullanarak etki alanının geçerli parola karmaşıklığı gereksinimlerini geçirmesinin başarılı olup olmadığını görmek için bir parolayı test etme özelliğini destekler. Bu şekilde bir parola doğrulandığında, test, Azure AD parola koruması gibi parola filtresi DLL tabanlı ürünlerin doğrulanmasını de içerir, ancak belirli bir parola filtresi dll 'sine geçirilen kullanıcı adları boş olur. Bu senaryoda, Azure AD parola koruması Şu anda etkin olan parola ilkesini kullanarak parolayı doğrular ve sonucu yakalamak için bir olay günlüğü iletisi verir, ancak olay günlüğü iletisinde boş Kullanıcı adı alanları vardır.
 
 **S: Azure AD parola korumasını diğer parola filtresi tabanlı ürünlerle yan yana yüklemek mi istiyorsunuz?**
 
@@ -115,6 +115,10 @@ Bu hedefe kısmen ulaşmak için bir yol, Azure AD parola korumasını belirli b
 Hayır. Bir kullanıcının parolası, belirli bir PDC olmayan etki alanı denetleyicisinde değiştirildiğinde, şifresiz metin parolası hiçbir zaman PDC 'ye gönderilmez (Bu fikir, yaygın olarak karşılaşılan bir açıklıkdır). Belirli bir DC 'de yeni bir parola kabul edildikten sonra bu DC, söz konusu parolanın kimlik doğrulama protokolüne özgü karmalarını oluşturmak için bu parolayı kullanır ve sonra bu karmaların dizinde devam eder. Şifresiz metin parolası kalıcı değil. Güncelleştirilmiş karmalar daha sonra PDC 'ye çoğaltılır. Kullanıcı parolaları, bazı durumlarda ağ topolojisi ve Active Directory site tasarımı gibi çeşitli faktörlere bağlı olarak doğrudan PDC üzerinde değiştirilebilir. (Önceki soruya bakın.)
 
 Özet olarak, etki alanı genelinde özelliğin% 100 güvenlik kapsamına ulaşmak için PDC 'de Azure AD parola koruması DC Aracısı hizmetinin dağıtımı gerekir. Özelliği PDC 'ye dağıtmak, etki alanındaki diğer DC 'Ler için Azure AD parola koruması güvenlik avantajları sağlamaz.
+
+**S: Aracılar şirket içi Active Directory ortamımı yükledikten sonra bile özel akıllı kilitleme çalışmıyor mu?**
+
+Özel akıllı kilitleme yalnızca Azure 'da desteklenir. Azure yönetim portalı 'ndaki özel akıllı kilitleme ayarları üzerinde yapılan değişiklikler, aracıların yüklü olduğu hatta şirket içi Active Directory ortamında hiçbir etkiye sahip değildir.
 
 **S: Azure AD parola koruması için kullanılabilir bir System Center Operations Manager yönetim paketi var mı?**
 

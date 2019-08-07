@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 07/22/2019
+ms.date: 08/05/2019
 ms.author: raynew
-ms.openlocfilehash: bbbec680cd2575cc63761c9fbe1335d548ec4d3b
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: ed7e53570127f12dbe41932481a3286a78865dde
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640797"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828288"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>VMware değerlendirmesi ve geçiş için destek matrisi
 
@@ -42,8 +42,12 @@ Tablo, VMware VM 'Leri için desteklenen senaryoları özetler.
 **Coğrafya** | **Meta veri depolama konumu**
 --- | ---
 Azure Kamu | ABD Devleti Virginia
-Asya Pasifik | Güneydoğu Asya veya Doğu Asya
-Avrupa | Güney Avrupa veya Batı Avrupa
+Asya Pasifik | Doğu Asya veya Güneydoğu Asya
+Avustralya | Avustralya Doğu veya Avustralya Güneydoğu
+Kanada | Kanada Orta veya Kanada Doğu
+Avrupa | Kuzey Avrupa veya Batı Avrupa
+Hindistan | Orta Hindistan veya Güney Hindistan
+Japonya |  Japonya Doğu veya Japonya Batı
 Birleşik Krallık | UK Güney veya UK Batı
 Amerika Birleşik Devletleri | Orta ABD veya Batı ABD 2
 
@@ -70,7 +74,7 @@ VMware için Azure geçişi gereci, vCenter Server içeri aktarılan bir OVA şa
 
 **Destek** | **Ayrıntılar**
 --- | ---
-**vCenter Server** | 32 GB bellek, 4 vCPU ve dış sanal anahtar içeren bir VM ayırmak için vCenter Server yeterli kaynağa ihtiyacınız vardır.<br/><br/> Gereç doğrudan veya bir ara sunucu üzerinden internet erişimi gerektirir.
+**vCenter Server** | 32 GB RAM, 8 vCPU ve harici bir sanal anahtarla bir VM ayırmak için vCenter Server yeterli kaynağa ihtiyacınız vardır.<br/><br/> Gereç doğrudan veya bir ara sunucu üzerinden internet erişimi gerektirir.
 **ESXi** | Gereç VM 'si, 5,5 veya sonraki bir sürümü çalıştıran bir ESXi konağına dağıtılmalıdır.
 **Azure geçişi projesi** | Bir gereç, tek bir projeyle ilişkilendirilebilir.
 **vCenter Server** | Bir gereç, vCenter Server en fazla 10.000 VMware VM 'yi bulabilir.<br/> Bir gereç, tek bir vCenter Server bağlanabilir.
@@ -78,7 +82,7 @@ VMware için Azure geçişi gereci, vCenter Server içeri aktarılan bir OVA şa
 
 ## <a name="assessment-url-access-requirements"></a>Değerlendirme-URL erişim gereksinimleri
 
-Azure geçişi gereci internet 'e internet bağlantısı gerektirir.
+Azure geçişi gereci internet bağlantısı gerektirir.
 
 - Gereci dağıttığınızda Azure geçişi, aşağıdaki tabloda özetlenen URL 'lere bir bağlantı denetimi yapar.
 - İnternet 'e bağlanmak için URL tabanlı bir ara sunucu kullanıyorsanız, bu URL 'lere erişim izni verin ve proxy 'nin URL 'Leri ararken alınan CNAME kayıtlarını çözümlediği emin olun.

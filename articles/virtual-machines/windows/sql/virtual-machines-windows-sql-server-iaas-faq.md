@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 07/12/2018
+ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: 7f6ec1ee65727fb8c3c7d98f696c288e95ec880a
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 4b50b4acf6ea655c40821e7c49824af11aeeb9ab
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876186"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816294"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Azure 'da Windows sanal makinelerinde çalışan SQL Server hakkında sık sorulan sorular
 
@@ -122,6 +122,11 @@ Bu makalede, [Azure 'da Windows sanal makineleri üzerinde SQL Server](https://a
 
     Evet. SQL Server kendi medyanınızdan dağıttıysanız ve SQL IaaS uzantısını yüklediyseniz, SQL IaaS uzantısının sağladığı yönetilebilirlik avantajlarından yararlanmak için SQL Server VM kaynak sağlayıcısına kaydedebilirsiniz. Öte yandan kendi dağıttığımız SQL VM'yi kullandıkça öde modeline dönüştüremezsiniz.
 
+1. **Klasik model kullanılarak dağıtılan bir SQL Server VM lisans modelini değiştirmek mümkün mü?**
+
+   Hayır. Lisanslama modelinin değiştirilmesi, klasik bir sanal makinede desteklenmez. VM 'nizi Resource Manager modeline (ARM) geçirebilir ve SQL VM kaynak sağlayıcısına kaydolabilirsiniz. VM, SQL VM kaynak sağlayıcısına kaydedildikten sonra, VM 'de lisans modeli değişiklikleri kullanılabilir olacaktır. 
+   
+
 ## <a name="administration"></a>Yönetim
 
 1. **Aynı VM'ye SQL Server'ın ikinci örneğini yükleyebilir miyim? Varsayılan örneğin yüklü özelliklerini değiştirebilir miyim?**
@@ -146,9 +151,9 @@ Bu makalede, [Azure 'da Windows sanal makineleri üzerinde SQL Server](https://a
    
 ## <a name="updating-and-patching"></a>Güncelleştirme ve düzeltme eki uygulama
 
-1. **Nasıl yaparım?, Azure VM 'deki SQL Server farklı bir sürüme/sürümüne değiştirilsin mi?**
+1. **Azure sanal makinesinde SQL Server'ın farlı bir sürümüne/yayınına nasıl geçebilirim?**
 
-   Müşteriler, SQL Server, istenen sürümü veya sürümünü içeren kurulum medyasını kullanarak SQL Server sürümünü/sürümünü değiştirebilirler. Sürüm değiştirildikten sonra, sanal makinenin sürüm özelliğini değiştirmek için Azure portal kullanın. Daha fazla bilgi için bkz. [SQL Server VM sürümünü değiştirme](virtual-machines-windows-sql-change-edition.md). 
+   Müşteriler SQL Server'ın istenen sürümünü veya yayınını içeren kurulum medyasını kullanarak SQL Server sürümlerini/yayınlarını değiştirebilir. Yayın değiştikten sonra Azure portalını kullanarak VM için faturalamayı doğru yansıtacak şekilde VM'nin yayın özelliğini değiştirin. Daha fazla bilgi için bkz. [SQL Server VM sürümünü değiştirme](virtual-machines-windows-sql-change-edition.md). 
 
 
 1. **Güncelleştirmeler ve hizmet paketleri bir SQL Server VM nasıl uygulanır?**

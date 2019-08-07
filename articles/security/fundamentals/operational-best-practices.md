@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: e815c038cce2e792fe7ea39f1ee43342be0b679f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 97f061d94209d84b70626f8735d08f89870e7319
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726908"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828717"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure operasyonel güvenlik en iyi uygulamaları
 Bu makalede, Azure 'daki verilerinizi, uygulamalarınızı ve diğer varlıkları korumaya yönelik işlemsel en iyi uygulamalar sağlanır.
@@ -118,7 +118,7 @@ Internet güvenliği (CIS) denetimlerinin merkezini temel alan güvenli puan, ku
 **Ayrıntı**: SıEM olan kuruluşların çoğu, bir analist yanıtı gerektiren güvenlik uyarıları için merkezi bir Clearinghouse olarak kullanır. Güvenlik Merkezi tarafından üretilen işlenen olaylar, Azure Izleyici aracılığıyla kullanılabilen günlüklerden biri olan Azure etkinlik günlüğünde yayımlanır. Azure Izleyici, izleme verilerinizin herhangi birini SıEM aracında yönlendirmek için birleştirilmiş bir işlem hattı sunar. Yönergeler için bkz. [Güvenlik Merkezi 'nde güvenlik çözümlerini tümleştirme](../../security-center/security-center-partner-integration.md#exporting-data-to-a-siem) . Azure Sentinel kullanıyorsanız bkz. [Azure Güvenlik Merkezi 'Ni bağlama](../../sentinel/connect-azure-security-center.md).
 
 **En iyi uygulama**: Azure günlüklerini SıEM 'inizle tümleştirin.   
-**Ayrıntı**: [Verileri toplamak ve dışarı aktarmak Için Azure izleyici 'yi](/azure/azure-monitor/overview.md#integrate-and-export-data)kullanın. Bu uygulama, güvenlik olay araştırmasını etkinleştirmek için önemlidir ve çevrimiçi günlük tutma sınırlı olur. Azure Sentinel kullanıyorsanız, bkz. [veri kaynaklarını bağlama](../../sentinel/connect-data-sources.md).
+**Ayrıntı**: [Verileri toplamak ve dışarı aktarmak Için Azure izleyici 'yi](/azure/azure-monitor/overview#integrate-and-export-data)kullanın. Bu uygulama, güvenlik olay araştırmasını etkinleştirmek için önemlidir ve çevrimiçi günlük tutma sınırlı olur. Azure Sentinel kullanıyorsanız, bkz. [veri kaynaklarını bağlama](../../sentinel/connect-data-sources.md).
 
 **En iyi uygulama**: Uç nokta algılama ve yanıt (EDR) yeteneklerini saldırı araştırmanıza tümleştirerek, araştırma ve işleme işlemlerinizi hızlandırın ve hatalı pozitif sonuçları azaltabilirsiniz.   
 **Ayrıntı**: Güvenlik Merkezi güvenlik ilkeniz aracılığıyla [Windows Defender ATP tümleştirmesini etkinleştirin](../../security-center/security-center-wdatp.md#enable-windows-defender-atp-integration) . Tehdit ve olay yanıtı için Azure Sentinel kullanmayı göz önünde bulundurun.
@@ -207,7 +207,7 @@ Kuruluşunuzun yazılı ilkesini izleyip zorlamak için Azure Ilkesini etkinleş
 Azure Ilkesini benimsedikten sonra izlenecek en iyi güvenlik uygulamaları aşağıda verilmiştir:
 
 **En iyi uygulama**: İlke çeşitli efekt türlerini destekler. [Azure ilke tanımı yapısında](../../governance/policy/concepts/definition-structure.md#policy-rule)bunlarla ilgili bilgi edinebilirsiniz. İş işlemleri, **reddetme** etkisinden olumsuz etkilenebilir ve bu nedenle, ilkeden olumsuz etkisi riskini sınırlamak için **Denetim** efektiyle başlayın.   
-**Ayrıntı**: [İlke dağıtımlarını denetim modunda başlatın](../../governance/policy/concepts/definition-structure.md#policy-rule) ve daha sonra **reddetme** **veya düzeltme**için ilerleme durumunu yapın. **Reddet** veya **Düzelt**'e geçmeden önce denetim efektinin sonuçlarını test edin ve gözden geçirin.
+**Ayrıntı**: [İlke dağıtımlarını denetim modunda başlatın](../../governance/policy/concepts/definition-structure.md#policy-rule) ve daha sonra **reddetme** veya düzeltme için ilerlemedurumunu yapın. **Reddet** veya **Düzelt**'e geçmeden önce denetim efektinin sonuçlarını test edin ve gözden geçirin.
 
 Daha fazla bilgi için bkz. [uyumluluğu zorlamak için Ilke oluşturma ve yönetme](../../governance/policy/tutorials/create-and-manage.md).
 

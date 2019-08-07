@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3a316de54600d18f7ab839b8459bfe4eb0ff86e8
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 5dee966f8664bc14d81004e625ad9632066ffcb2
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479788"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742315"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python 'da otomatik ML denemeleri yapılandırma
 
@@ -40,7 +40,7 @@ Kod deneyimini tercih ediyorsanız, [Azure Portal otomatik makine öğrenimi den
 
 Denemenizi başlamadan önce çözümü machine learning sorun türünü belirlemeniz gerekir. Otomatik machine learning, Sınıflandırma, regresyon ve tahmin görev türlerini destekler.
 
-Otomatik machine learning, otomasyon ve ayarlama işlemi sırasında aşağıdaki algoritmalarını destekler. Bir kullanıcı olarak, algoritma belirtmek gerek yoktur. 
+Otomatik machine learning, otomasyon ve ayarlama işlemi sırasında aşağıdaki algoritmalarını destekler. Bir kullanıcı olarak, algoritma belirtmek gerek yoktur.
 
 Sınıflandırma | Regresyon | Zaman serisi tahmin
 |-- |-- |--
@@ -104,7 +104,7 @@ Uzaktan yürütmeler için, verileri uzak işlem üzerinden erişilebilir hale g
 ```python
     import pandas as pd
     from sklearn import datasets
-    
+
     data_train = datasets.load_digits()
 
     pd.DataFrame(data_train.data[100:,:]).to_csv("data/X_train.csv", index=False)
@@ -114,7 +114,7 @@ Uzaktan yürütmeler için, verileri uzak işlem üzerinden erişilebilir hale g
     ds.upload(src_dir='./data', target_path='digitsdata', overwrite=True, show_progress=True)
 ```
 
-### <a name="define-deprep-references"></a>Deprep başvurularını tanımla
+### <a name="define-dprep-references"></a>Dprep başvurularını tanımlayın
 
 Aşağıdaki gibi otomatik makine öğrenimi `AutoMLConfig` nesnesine geçirilecek dprep başvurusu olarak X ve y tanımlayın:
 
@@ -122,8 +122,8 @@ Aşağıdaki gibi otomatik makine öğrenimi `AutoMLConfig` nesnesine geçirilec
 
     X = dprep.auto_read_file(path=ds.path('digitsdata/X_train.csv'))
     y = dprep.auto_read_file(path=ds.path('digitsdata/y_train.csv'))
-    
-    
+
+
     automl_config = AutoMLConfig(task = 'classification',
                                  debug_log = 'automl_errors.log',
                                  path = project_folder,
@@ -253,9 +253,60 @@ automl_config = AutoMLConfig(task='forecasting',
                              **time_series_settings)
 ```
 
+### <a name="ensemble"></a>Sorgu yapılandırma
+
+Enseletirme modelleri varsayılan olarak etkindir ve otomatik makine öğrenimi çalıştırmasında son çalıştırma yinelemeleri olarak görünür. Şu anda desteklenen ensesıya yöntemleri oylama ve yığınlama. Oylama, ağırlıklı ortalamalar kullanılarak geçici oylama olarak uygulanır ve yığınlama uygulamasının, birinci katmanın oylama ile aynı modellere sahip olduğu ve ikinci katman modelinin en iyi birleşimini bulmak için kullanıldığı 2 katmanlı bir uygulama kullanıyor. ilk katmandan modeller. ONNX modellerini kullanıyorsanız **veya** model-explainability etkinse, yığınlama devre dışı bırakılır ve yalnızca oylama kullanılacaktır.
+
+Varsayılan yığın ensebir davranışını değiştirmek için bir nesnede `kwargs` olarak sağlanbir `AutoMLConfig` çoklu varsayılan bağımsız değişken vardır.
+
+* `stack_meta_learner_type`: meta-Learner, bireysel heterojen modellerinin çıktısı üzerinde eğitilen bir modeldir. `LogisticRegression` Varsayılan meta öğrenenler, sınıflandırma görevlerine (veya `LogisticRegressionCV` çapraz doğrulamanın etkin olması) ve `ElasticNet` gerileme/tahmin görevlerine (veya `ElasticNetCV` çapraz doğrulamanın etkin olması halinde) yöneliktir. Bu parametre şu dizelerden `LogisticRegression`biri olabilir:, `LogisticRegressionCV`, `LightGBMClassifier` `ElasticNet`,, `ElasticNetCV`, `LightGBMRegressor`, veya `LinearRegression`.
+* `stack_meta_learner_train_percentage`: meta-Learner eğitimi için ayrılacak olan eğitim kümesi oranını belirtir (eğitim ve doğrulama türünü seçerken). Varsayılan değer `0.2`.
+* `stack_meta_learner_kwargs`: meta-Learner başlatıcısına geçirilecek isteğe bağlı parametreler. Bu parametreler ve parametre türleri, ilgili model oluşturucusundan bunları yansıtır ve model oluşturucusuna iletilir.
+
+Aşağıdaki kod, bir nesnesinde özel bir `AutoMLConfig` ensebir davranışını belirtmenin bir örneğini gösterir.
+
+```python
+ensemble_settings = {
+    "stack_meta_learner_type": "LogisticRegressionCV",
+    "stack_meta_learner_train_percentage": 0.3,
+    "stack_meta_learner_kwargs": {
+        "refit": True,
+        "fit_intercept": False,
+        "class_weight": "balanced",
+        "multi_class": "auto",
+        "n_jobs": -1
+    }
+}
+
+automl_classifier = AutoMLConfig(
+        task='classification',
+        primary_metric='AUC_weighted',
+        iterations=20,
+        X=X_train,
+        y=y_train,
+        n_cross_validations=5,
+        **ensemble_settings
+        )
+```
+
+Ensebölümlü eğitim varsayılan olarak etkindir, ancak `enable_voting_ensemble` ve `enable_stack_ensemble` Boole parametreleri kullanılarak devre dışı bırakılabilir.
+
+```python
+automl_classifier = AutoMLConfig(
+        task='classification',
+        primary_metric='AUC_weighted',
+        iterations=20,
+        X=X_train,
+        y=y_train,
+        n_cross_validations=5,
+        enable_voting_ensemble=False,
+        enable_stack_ensemble=False
+        )
+```
+
 ## <a name="run-experiment"></a>Denemeyi çalıştırma
 
-Otomatik ml için, denemeleri çalıştırmak için kullanılan bir `Experiment` `Workspace` adlandırılmış nesne olan bir nesnesi oluşturmanız gerekir.
+Otomatik ml için, denemeleri çalıştırmak `Experiment` için kullanılan bir `Workspace` adlandırılmış nesne olan bir nesnesi oluşturursunuz.
 
 ```python
 from azureml.core.experiment import Experiment

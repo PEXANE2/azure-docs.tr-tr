@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 93c36ccb244931c12d8b038f448fbda4eff77f16
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 287902c149fd3a8732ce9ce95b05b0d9fa36147b
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721723"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816613"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Dosyaları dağıtımı planlama
 
@@ -207,11 +207,12 @@ Standart dosya paylaşımları, 5 TiB 'ye kadar tüm bölgelerde kullanılabilir
 
 |Bölge |Desteklenen artıklık |Var olan depolama hesaplarını destekler |Portal desteği *   |
 |-------|---------|---------|---------|
-|Avustralya Doğu  |LRS|Hayır         |Evet|
-|Fransa Orta  |LRS|Hayır         |Henüz değil|
-|Güneydoğu Asya  |LRS, ZRS|Hayır         |Yalnızca LRS, ZRS-henüz değil|
-|Batı Avrupa     |LRS, ZRS|Hayır       |Evet|
-|Batı ABD 2       |LRS, ZRS|Hayır         |Evet|
+|Avustralya Doğu  |LRS     |Hayır    |Evet|
+|Fransa Orta  |LRS     |Hayır    |Henüz değil|
+|Fransa Güney    |LRS     |Hayır    |Henüz değil|
+|Güneydoğu Asya  |LRS, ZRS|Hayır    |Evet|
+|Batı Avrupa     |LRS, ZRS|Hayır    |Evet|
+|Batı ABD 2       |LRS, ZRS|Hayır    |Evet|
 
 \* Portal desteği olmayan bölgelerde, 5 ' ten büyük bir paylaşım oluşturmak için PowerShell veya Azure komut satırı arabirimi 'ni (CLı) kullanmaya devam edebilirsiniz. , Kota belirtmeden Portal aracılığıyla yeni bir paylaşma oluşturun. Bu, daha sonra PowerShell veya Azure CLı aracılığıyla güncelleştirilebilen 100 TiB varsayılan boyutuyla bir paylaşma oluşturur.
 
@@ -242,7 +243,7 @@ Kayıt durumunuzu doğrulamak için şu komutu çalıştırabilirsiniz:
 Get-AzProviderFeature -FeatureName AllowLargeFileShares -ProviderNamespace Microsoft.Storage
 ```
 
-Durumunuzu güncelleştirmek 15 dakika kadar **sürebilir.** Durumunuz kaydedildikten sonra özelliğinikullanabilmeniz gerekir.
+Durumunuzu güncelleştirmek 15 dakika kadar sürebilir. Durumunuz kaydedildikten sonra özelliğinikullanabilmeniz gerekir.
 
 ### <a name="use-larger-file-shares"></a>Daha büyük dosya paylaşımları kullanın
 

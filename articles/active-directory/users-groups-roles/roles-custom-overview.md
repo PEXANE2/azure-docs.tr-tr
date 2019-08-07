@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 546abdae5d7c03bb0d4b49f9485fe06b521fdc1d
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 82638e3e102f7b8e39cd797960a11f3193132bc1
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722206"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779384"
 ---
 # <a name="custom-administrator-roles-in-azure-active-directory-preview"></a>Azure Active Directory 'de özel yönetici rolleri (Önizleme)
 
@@ -72,7 +72,11 @@ Rol tanımı veya rol, izin koleksiyonudur. Rol tanımı, oluşturma, okuma, gü
 
 ### <a name="scope"></a>`Scope`
 
-Kapsam, belirli bir Azure AD kaynağı üzerinde izin verilen eylemlerin kısıtlamasıdır. Bir rol atadığınızda, bir eylem kapsamı tanımlayarak yöneticinin izin verilen eylemlerini sınırlamak için rolü özelleştirebilirsiniz. Örneğin, geliştiricilerinizin tüm uygulamaları tamamen yönetmesi gerekmiyorsa, yalnızca uygulama kayıtlarını yönetmesine izin vermek için Azure AD özel rollerini kullanabilirsiniz.
+Kapsam, belirli bir Azure AD kaynağına izin verilen eylemlerin kısıtlamasıdır. Bir rol atadığınızda, yöneticinin izin verilen eylemlerini belirli bir kaynağa sınırlayan bir kapsam belirtebilirsiniz. Örneğin, bir geliştiriciye özel bir rol vermek istiyorsanız ancak yalnızca belirli bir uygulama kaydını yönetmek için, belirli uygulama kaydını rol atamasında bir kapsam olarak dahil edebilirsiniz.
+
+  > [!Note]
+  > Özel roller, dizin kapsamı ve kaynak kapsamlı olarak atanabilir. Bunlar henüz yönetim birimi kapsamında atanamaz.
+  > Yerleşik roller dizin kapsamında ve bazı durumlarda yönetim birimi kapsamında atanabilir. Nesne kapsamında henüz atanamazlar.
 
 ## <a name="required-license-plan"></a>Gerekli lisans planı
 

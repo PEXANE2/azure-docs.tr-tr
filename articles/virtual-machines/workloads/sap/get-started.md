@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/29/2019
+ms.date: 08/05/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 60474148d1eac6ca9d85fbc1d103ad612787aeae
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 4af30a24c5913abec1c2c2287e1b0f145470f42c
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68607876"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828368"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>SAP iş yükü senaryolarını barındırmak ve çalıştırmak için Azure kullanın
 
@@ -34,20 +34,8 @@ SAP HANA için Azure 'un benzersizliği, Azure 'ı ayrı ayarlayan bir tekliftir
 
 Azure 'da SAP iş yükü senaryolarını barındırmak, kimlik tümleştirmesi ve çoklu oturum açma gereksinimleri de oluşturabilir. Bu durum, farklı SAP bileşenleri ve hizmet olarak yazılım (SaaS) veya hizmet olarak platform (PaaS) tekliflerini bağlamak için Azure Active Directory (Azure AD) kullandığınızda ortaya çıkabilir. Azure AD ve SAP varlıklarıyla ilgili tümleştirme ve çoklu oturum açma senaryolarından oluşan bir liste, "AAD SAP kimlik tümleştirmesi ve çoklu oturum açma" bölümünde açıklanmaktadır ve belgelenmiştir.
 
-## <a name="change-log"></a>Değişiklik günlüğü
-
-- [Bir Windows Yük devretme kümesindeki BIR SAP ASCS/SCS örneği](sap-high-availability-guide-wsfc-file-share.md) , Azure Site Recovery Hizmetleri tarafından doğrudan depolama alanı desteğini yansıtmak için Azure 'da bir dosya paylaşma kullanarak
-- [SAP uygulamalarıyla en iyi ağ gecikmesi Için Azure yakınlık yerleştirme gruplarının](sap-proximity-placement-scenarios.md) yayını
-- [Red Hat Enterprise Server 'Da IBM DB2 HADR](high-availability-guide-rhel-ibm-db2-luw.md) için yeni kılavuz sürümü
-- SAP [NetWeaver Için yüksek kullanılabilirlik sürümü SAP uygulamaları için Azure NetApp Files ile Red Hat Enterprise Linux](high-availability-guide-rhel-netapp-files.md)
-- ExpressRoute hızlı yolu ve [SAP HANA (büyük örnekler) ağ mimarisi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture) ve ılgılı belgelerde Hana büyük örnekleri için Global Reach giriş
-- [Azure Portal aracılığıyla Azure Hana büyük örnekler denetimini](hana-li-portal.md) serbest bırakma
-- [SAP NetWeaver Için Azure VM 'Lerde yüksek kullanılabilirlik sürümü SUSE Linux Enterprise Server, SAP uygulamaları için Azure NetApp Files](high-availability-guide-suse-netapp-files.md)
-- [Azure NetAppFiles (ANF) BETA SAP HANA IÇIN SAP NetWeaver yoks yüklemesi](lama-installation.md) sürümü
-
-
-
-
+## <a name="changes-to-the-sap-workload-section"></a>SAP iş yükü bölümünde yapılan değişiklikler
+Azure iş yükünde SAP bölümündeki belgelerde yapılan değişiklikler bu makalenin sonunda listelenmiştir.
 
 
 ## <a name="sap-hana-on-azure-large-instances"></a>Azure’da SAP HANA (Büyük Örnekler)
@@ -132,5 +120,13 @@ Azure hizmetlerini SAP bileşenleriyle tümleştirme hakkında daha fazla bilgi 
 - [Azure Data Factory, SAP HANA ve Business Warehouse veri tümleştirmesi sunuyor](https://azure.microsoft.com/blog/azure-data-factory-offer-sap-hana-and-business-warehouse-data-integration)
 
 
+## <a name="change-log"></a>Değişiklik günlüğü
+
+- 08/01/2019: Değişiklikleri özel olarak SLES 15 için tümleştirmede [Azure 'daki SUSE Linux Enterprise Server pacemaker ayarlamaya](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) yönelik değişiklikler 
+- 07/23/2019: [Bir Windows Yük devretme kümesindeki BIR SAP ASCS/SCS örneği](sap-high-availability-guide-wsfc-file-share.md) , Azure Site Recovery Hizmetleri tarafından doğrudan depolama alanı desteğini yansıtmak için Azure 'da bir dosya paylaşma kullanarak
+- 07/14/2019: [SAP uygulamalarıyla en iyi ağ gecikmesi Için Azure yakınlık yerleştirme gruplarının](sap-proximity-placement-scenarios.md) yayını
+- 07/11/2019: Hana büyük örneklerinin 3. düzeltmesini kapsayan çeşitli belgelerdeki değişiklikler
+- 07/09/2019: [Red Hat Enterprise Server 'Da IBM DB2 HADR](high-availability-guide-rhel-ibm-db2-luw.md) için yeni kılavuz sürümü
+- 06/13/2019: SAP [NetWeaver Için yüksek kullanılabilirlik sürümü SAP uygulamaları için Azure NetApp Files ile Red Hat Enterprise Linux](high-availability-guide-rhel-netapp-files.md)
 
 

@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 8f1fa6f7823c643278e52ffd0faa1c0ce4972ef8
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 41037e0687274d123bea742cee5cf2887548aa0f
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640245"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68775220"
 ---
 # <a name="mapping-data-flows-column-patterns"></a>Veri akışları eşleme sütun desenleri
 
@@ -45,6 +45,16 @@ Sütunları temel alan desenler oluşturmak için, sütun adı, tür, akış vey
 Kaynaktaki sütunları eşlerken ve dönüşümleri seçtiğinizde, "sabit eşleme" veya "kural tabanlı eşleme" seçeneğini belirleyebilirsiniz. Verilerinizin şemasını bildiğiniz ve kaynak veri kümesinden her zaman belirli statik adlarıyla eşleşen belirli sütunlar beklendiğinde, sabit eşlemeyi kullanabilirsiniz. Ancak esnek şemalar ile çalışırken kural tabanlı eşleme kullanın. Yukarıda açıklanan kuralları kullanarak bir model eşleşmesi derleyebilirsiniz.
 
 ![kural tabanlı eşleme](media/data-flow/rule2.png "Kural tabanlı eşleme")
+
+Deyim oluşturucuyu kullanarak kurallarınızı oluşturun. Deyimleriniz sütunlar (true) veya dışlama sütunları (false) için bir Boole değeri döndürür.
+
+## <a name="pattern-matching-special-columns"></a>Özel sütunlar ile eşleşen desenler
+
+* `$$`, hata ayıklama modundaki tasarım zamanında ve çalışma zamanında yürütme sonrasında her eşleşmenin adına çevrilecek
+* `name`Her gelen sütunun adını temsil eder
+* `type`Her gelen sütunun veri türünü temsil eder
+* `stream`akışdaki her bir Stream veya dönüşümle ilişkilendirilen adı temsil eder
+* `position`, veri akışındaki sütunların sıralı konumudur
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Veri dönüştürmeleri için ADF eşleme veri akışı [ifade dili](http://aka.ms/dataflowexpressions) hakkında daha fazla bilgi edinin

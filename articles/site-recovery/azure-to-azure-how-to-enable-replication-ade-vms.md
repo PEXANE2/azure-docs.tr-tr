@@ -8,19 +8,19 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 25f8c19ad1c574f6a3d84d50d911b4da6b52cfc3
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 5e5ae11a00b2a3656deceeeaf928536238a325fc
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516497"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840643"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Azure disk şifrelemesi etkinleştirilmiş sanal makineleri başka bir Azure bölgesine çoğaltma
 
 Bu makalede, Azure Disk Şifrelemesi etkin VM 'lerinin bir Azure bölgesinden diğerine nasıl çoğaltılacağı açıklanır.
 
 >[!NOTE]
->Azure Site Recovery Şu anda yalnızca bir Windows işletim sistemi çalıştıran ve [Azure Active Directory (Azure AD) ile şifreleme için etkinleştirilen](https://aka.ms/ade-aad-app)Azure sanal makinelerini desteklemektedir.
+>Azure Site Recovery Şu anda yalnızca bir Windows işletim sistemi çalıştıran Azure VM 'lerini desteklemektedir.
 
 ## <a id="required-user-permissions"></a>Gerekli Kullanıcı izinleri
 Site Recovery, kullanıcının hedef bölgede anahtar kasasını oluşturma ve kaynak bölgesi anahtar kasasından anahtarları hedef bölgeye anahtar kasasına kopyalama izinlerine sahip olmasını gerektirir.

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 9d19441b2f2202573086a711c202d4b36bbee5fa
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: b1fa24f919888e4454096e1ef84d2ba2948b865a
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846140"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774292"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Azure portal bir Windows SQL Server sanal makinesi sağlama
 
@@ -77,7 +77,7 @@ SQL Server bir sanal makineyi yapılandırmaya yönelik birden çok sekme vardı
 | **SQL Server ayarları** |[SQL Server ayarlarını yapılandırma](#3-configure-sql-server-settings) |
 | **Gözden geçir + oluştur** | [Özeti gözden geçirme](#4-review--create) |
 
-## <a name="1-configure-basic-settings"></a>1. Temel ayarları yapılandırma
+## <a name="1-configure-basic-settings"></a>1. Temel ayarları yapılandırın
 
 
 **Temel bilgiler** sekmesinde, aşağıdaki bilgileri sağlayın:
@@ -112,7 +112,7 @@ SQL Server bir sanal makineyi yapılandırmaya yönelik birden çok sekme vardı
    ![Gelen bağlantı noktası kuralları](media/quickstart-sql-vm-create-portal/basics-inbound-port-rules.png)
 
 
-## <a name="2-configure-optional-features"></a>2. İsteğe bağlı özellikleri yapılandırma
+## <a name="2-configure-optional-features"></a>2. İsteğe bağlı özellikleri yapılandır
 
 ### <a name="disks"></a>Diskler
 
@@ -133,7 +133,7 @@ SQL Server bir sanal makineyi yapılandırmaya yönelik birden çok sekme vardı
 
 * Yeni bir **sanal ağ**oluşturun veya SQL Server VM mevcut bir vNet 'i kullanın. Bir **alt ağ** da belirleyin. 
 
-* **NIC güvenlik grubu**altında, temel bir güvenlik grubu ya da Gelişmiş güvenlik grubu ' nu seçin. Temel seçeneği belirlemek SQL Server VM için gelen bağlantı noktalarını seçmenizi sağlar ( **temel** sekmede yapılandırılmış olan değerler). Gelişmiş seçeneğinin belirlenmesi, var olan bir ağ güvenlik grubunu seçmenizi sağlar veya yeni bir tane oluşturabilirsiniz. 
+* **NIC ağ güvenlik grubu**altında, temel bir güvenlik grubu ya da Gelişmiş güvenlik grubu ' nu seçin. Temel seçeneği belirlemek SQL Server VM için gelen bağlantı noktalarını seçmenizi sağlar ( **temel** sekmede yapılandırılmış olan değerler). Gelişmiş seçeneğinin belirlenmesi, var olan bir ağ güvenlik grubunu seçmenizi sağlar veya yeni bir tane oluşturabilirsiniz. 
 
 * Ağ ayarlarında başka değişiklikler yapabilir veya varsayılan değerleri tutabilirsiniz.
 
@@ -143,7 +143,7 @@ SQL Server bir sanal makineyi yapılandırmaya yönelik birden çok sekme vardı
 
 **İzleme** sekmesinde, izleme ve oto kapatma yapılandırın. 
 
-* Azure, varsayılan olarak, sanal makine için ayrılmış depolama hesabıyla **önyükleme izlemeyi** mümkün bir şekilde sunar. Bu ayarları burada değiştirebilir ve **Işletim sistemi Konuk tanılamayı**etkinleştirebilirsiniz. 
+* Azure, varsayılan olarak, sanal makine için ayrılmış depolama hesabıyla **önyükleme tanılamayı** mümkün bir şekilde sunar. Bu ayarları burada değiştirebilir ve **Işletim sistemi Konuk tanılamayı**etkinleştirebilirsiniz. 
 * Bu sekmede, **sistem tarafından atanan yönetilen kimliği** ve **oto de kapatma** özelliğini etkinleştirebilirsiniz. 
 
 ![SQL VM yönetimi ayarları](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-management.png)
@@ -200,11 +200,11 @@ SQL Server Kimlik Doğrulamasını etkinleştirirseniz, bir **Oturum açma adı*
 SQL Server Kimlik Doğrulamasını etkinleştirmezseniz, SQL Server örneğine bağlanmak için VM’deki yerel Yönetici hesabını kullanabilirsiniz.
 
 
-### <a name="azure-key-vault-integration"></a>Azure Anahtar Kasası tümleştirme
+### <a name="azure-key-vault-integration"></a>Azure Key Vault tümleştirmesi
 
 Şifreleme için Azure 'da güvenlik gizli dizileri depolamak için **SQL Server ayarları**' nı seçin ve **Azure Anahtar Kasası tümleştirmesi**' ne gidin. **Etkinleştir** ' i seçin ve istenen bilgileri girin. 
 
-![Azure Anahtar Kasası tümleştirme](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-akv.png)
+![Azure Key Vault tümleştirmesi](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-akv.png)
 
 Aşağıdaki tabloda Azure Anahtar Kasası Tümleştirmeyi yapılandırmak için gereken parametreler listelenmektedir.
 
@@ -275,7 +275,7 @@ Daha fazla bilgi için bkz. [Azure Virtual Machines’de SQL Server için Otomat
 [SQL Server R Services (gelişmiş analiz)](/sql/advanced-analytics/r/sql-server-r-services/)seçeneğini etkinleştirme seçeneğiniz vardır. Bu seçenek SQL Server 2017 ile gelişmiş analiz kullanmanıza olanak sağlar. **SQL Server ayarları** penceresinde **Etkinleştir** ' i seçin.
 
 
-## <a name="4-review--create"></a>4. Gözden geçir + oluştur
+## <a name="4-review--create"></a>4. Gözden geçirme + oluşturma
 
 **Gözden geçir + oluştur** sekmesinde, Özeti gözden geçirin ve **Oluştur** ' u seçerek bu VM için belirtilen SQL Server, kaynak grubu ve kaynakları oluşturun.
 

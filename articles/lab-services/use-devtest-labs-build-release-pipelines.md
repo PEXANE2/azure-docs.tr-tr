@@ -1,6 +1,6 @@
 ---
-title: Azure DevOps derleme ve yayın işlem hatları 'nda DevTest Labs kullanma | Microsoft Docs
-description: Azure DevOps derleme ve yayın işlem hatları 'nda Azure DevTest Labs kullanmayı öğrenin.
+title: Azure Pipelines oluşturma ve yayınlama işlem hatları 'nda DevTest Labs kullanma | Microsoft Docs
+description: Azure Pipelines derleme ve serbest bırakma işlem hatlarında Azure DevTest Labs nasıl kullanacağınızı öğrenin.
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/29/2019
 ms.author: spelluru
-ms.openlocfilehash: 606563cd7d7adcdd79bf9561876eb0640fb68b21
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 032f598fed765b281d4a6a124f8855abc201ee94
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620902"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774467"
 ---
-# <a name="use-devtest-labs-in-azure-devops-build-and-release-pipelines"></a>Azure DevOps derleme ve yayın işlem hatlarında DevTest Labs’i kullanma
-Bu makalede, DevTest Labs 'in Azure DevOps derleme ve yayın işlem hatları 'nda nasıl kullanılabileceği hakkında bilgiler verilmektedir. 
+# <a name="use-devtest-labs-in-azure-pipelines-build-and-release-pipelines"></a>Azure Pipelines derleme ve yayınlama işlem hatları 'nda DevTest Labs kullanın
+Bu makalede, DevTest Labs Azure Pipelines oluşturma ve yayınlama işlem hatları 'nda nasıl kullanılabileceği hakkında bilgiler verilmektedir. 
 
 ## <a name="overall-flow"></a>Genel akış
 Temel akış, aşağıdaki görevleri gerçekleştiren bir **Yapı ardışık düzenine** sahip olur:
@@ -49,7 +49,7 @@ Yapı/test aşamasında DevTest Labs 'i kullanarak, yayın aşamasında, test et
 Yapı işlem hattı bir DevTest Labs ortamı oluşturur ve test için kodu dağıtır.
 
 ## <a name="set-up-a-build-pipeline"></a>Derleme işlem hattı ayarlama
-Azure DevOps 'da [öğreticideki kodu kullanarak bir yapı işlem hattı oluşturun: Azure App Service](../app-service/app-service-web-tutorial-dotnetcore-sqldb.md)' de bir .NET Core ve SQL veritabanı Web uygulaması oluşturun. Kodu derlemek, test etmek ve yayımlamak için gerekli görevi doldurmayacak **ASP.NET Core** şablonunu kullanın.
+Azure Pipelines, [öğreticideki kodu kullanarak bir yapı işlem hattı oluşturun: Azure App Service](../app-service/app-service-web-tutorial-dotnetcore-sqldb.md)' de bir .NET Core ve SQL veritabanı Web uygulaması oluşturun. Kodu derlemek, test etmek ve yayımlamak için gerekli görevi doldurmayacak **ASP.NET Core** şablonunu kullanın.
 
 ![ASP.NET şablonunu seçin](./media/use-devtest-labs-build-release-pipelines/select-asp-net.png)
 
@@ -85,7 +85,7 @@ Kaynak Yöneticisi şablonuna bilgi geçirmek için parametre dosyası ya da par
 
 ![App Service Dağıtım görevi](./media/use-devtest-labs-build-release-pipelines/app-service-deploy.png)
 
-## <a name="setup-release-pipeline"></a>Kurulum sürümü işlem hattı
+## <a name="set-up-release-pipeline"></a>Yayın ardışık düzenini ayarlama
 İki görevle bir yayın işlem hattı oluşturursunuz: **Azure dağıtımı: Kaynak grubu** oluşturun veya güncelleştirin ve **Azure App Service dağıtın**. 
 
 İlk görev için kaynak grubunun adını ve konumunu belirtin. Şablon konumu bağlı bir yapıdır. Kaynak Yöneticisi şablonu bağlantılı şablonlar içeriyorsa, özel bir kaynak grubu dağıtımının uygulanması gerekir. Şablon, yayımlanan bırakma yapıtında. Kaynak Yöneticisi şablonu için şablon parametrelerini geçersiz kılın. Kalan ayarları varsayılan değerlerle bırakabilirsiniz. 
@@ -98,5 +98,5 @@ Her iki işlem hattı da ayarlandığına göre, bir derlemeyi el ile sıraya al
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki makalelere bakın:
 
-- [Azure DevTest Labs Azure DevOps sürekli tümleştirme ve teslim ardışık düzenine tümleştirin](devtest-lab-integrate-ci-cd-vsts.md)
-- [Ortamları Azure DevOps CI/CD işlem hatlarınızla tümleştirin](integrate-environments-devops-pipeline.md)
+- [Azure DevTest Labs Azure Pipelines sürekli tümleştirme ve teslim ardışık düzenine tümleştirin](devtest-lab-integrate-ci-cd-vsts.md)
+- [Ortamları Azure Pipelines CI/CD işlem hatlarınızla tümleştirin](integrate-environments-devops-pipeline.md)

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee3309bdd3629057d174866dde58ffd95e9e5ca8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 49f8d0e418f43648665b95f5bf1f672e9f9dae28
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562137"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779448"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Nasıl Yapılır: Hibrit Azure Active Directory JOIN Uygulamanızı planlayın
 
@@ -111,12 +111,18 @@ Bu senaryolar, kimlik doğrulaması için bir federasyon sunucusu yapılandırma
 
 ### <a name="federated-environment"></a>Federasyon ortamı
 
-Federasyon ortamında, aşağıdaki gereksinimleri destekleyen bir kimlik sağlayıcısı olmalıdır:
+Federasyon ortamında, aşağıdaki gereksinimleri destekleyen bir kimlik sağlayıcısı olmalıdır. Active Directory Federasyon Hizmetleri (AD FS) (AD FS) kullanan bir Federasyon ortamınız varsa, aşağıdaki gereksinimler zaten desteklenmektedir.
 
-- **WS-Trust protokolü:** Bu protokol, Azure AD ile Windows geçerli karma Azure AD 'ye katılmış cihazların kimliğini doğrulamak için gereklidir.
 - **WIAORMULTIAUTHN talebi:** Bu talep, Windows alt düzey cihazlara yönelik karma Azure AD katılımı yapmak için gereklidir.
+- **WS-Trust protokolü:** Bu protokol, Azure AD ile Windows geçerli karma Azure AD 'ye katılmış cihazların kimliğini doğrulamak için gereklidir. AD FS kullanırken, aşağıdaki WS-Trust uç noktalarını etkinleştirmeniz gerekir:`/adfs/services/trust/2005/windowstransport`  
+`/adfs/services/trust/13/windowstransport`  
+  `/adfs/services/trust/2005/usernamemixed` 
+  `/adfs/services/trust/13/usernamemixed`
+  `/adfs/services/trust/2005/certificatemixed` 
+  `/adfs/services/trust/13/certificatemixed` 
 
-Active Directory Federasyon Hizmetleri (AD FS) (AD FS) kullanan bir Federasyon ortamınız varsa yukarıdaki gereksinimler zaten desteklenmektedir.
+> [!WARNING] 
+> Hem **ADFS/Service/Trust/2005/windowstransport** ya da **ADFS/Services/Trust/13/windowstransport** , yalnızca intranet 'e yönelik uç noktalar olarak etkinleştirilmelidir ve Web uygulaması ara sunucusu aracılığıyla extranet 'e yönelik uç noktalar olarak gösterilmemelidir. WS-Trust WIndows uç noktalarını devre dışı bırakma hakkında daha fazla bilgi için, bkz. [proxy 'de WS-Trust Windows uç noktalarını devre dışı bırakma](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). **Hizmet** > **uç noktaları**altında AD FS Yönetim Konsolu aracılığıyla hangi uç noktaların etkinleştirildiğini görebilirsiniz.
 
 > [!NOTE]
 > Azure AD, yönetilen etki alanlarında akıllı kartlar veya sertifikaları desteklemez.
@@ -130,7 +136,7 @@ Kimlik altyapınızla eşleşen senaryoya bağlı olarak, bkz:
 
 ## <a name="review-on-premises-ad-upn-support-for-hybrid-azure-ad-join"></a>Karma Azure AD katılımı için şirket içi AD UPN desteğini gözden geçirin
 
-Bazen, şirket içi AD UPN 'niz Azure AD UPN 'inizden farklı olabilir. Bu gibi durumlarda, Windows 10 hibrit Azure AD katılımı, [kimlik doğrulama yöntemine](https://docs.microsoft.com/azure/security/azure-ad-choose-authn), etki alanı türüne ve Windows 10 sürümüne bağlı olarak ŞIRKET Içi ad UPN 'leri için sınırlı destek sağlar. Ortamınızda mevcut olabilir iki tür şirket içi AD UPN vardır:
+Bazen, şirket içi AD UPN 'niz Azure AD UPN 'inizden farklı olabilir. Bu gibi durumlarda, Windows 10 hibrit Azure AD katılımı, [kimlik doğrulama yöntemine](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn), etki alanı türüne ve Windows 10 sürümüne bağlı olarak ŞIRKET Içi ad UPN 'leri için sınırlı destek sağlar. Ortamınızda mevcut olabilir iki tür şirket içi AD UPN vardır:
 
 - Yönlendirilebilir UPN: Yönlendirilebilir bir UPN, bir etki alanı kaydedicisinde kayıtlı geçerli bir doğrulanmış etki alanı içerir. Örneğin, contoso.com, Azure AD 'deki birincil etki alanı ise, contoso.org, şirket içi AD 'de contoso 'ya ait olan ve [Azure AD 'de doğrulanan](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain) birincil etki alanıdır.
 - Yönlendirilemeyen UPN: Yönlendirilemeyen bir UPN 'de doğrulanmış bir etki alanı yok. Yalnızca kuruluşunuzun özel ağı dahilinde geçerlidir. Örneğin, contoso.com, Azure AD 'deki birincil etki alanı ise, contoso. Local şirket içi AD 'deki birincil etki alanıdır, ancak internet 'te doğrulanabilir bir etki alanı değildir ve yalnızca contoso ağı içinde kullanılır.

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: dacurwin
-ms.openlocfilehash: 8948a620c27311f0371a557c91a971da37111cb9
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 078c8763a08df339b9291807102e2d187d2a882f
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688588"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827580"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Sık sorulan sorular-Azure VM 'lerini yedekleme
 
@@ -64,14 +64,14 @@ Evet. Yedeklemeler bir makine kapatıldığında çalışır. Kurtarma noktası 
 ### <a name="can-i-cancel-an-in-progress-backup-job"></a>Devam eden bir yedekleme işini iptal edebilir miyim?
 Evet. Bir **anlık görüntü** durumunda yedekleme işini iptal edebilirsiniz. Anlık görüntüden veri aktarımı devam ediyorsa bir işi iptal edemezsiniz.
 
-### <a name="i-enabled-lock-on-resource-group-created-by-azure-backup-service-ie-azurebackuprggeonumber-will-my-backups-continue-to-work"></a>Azure Backup hizmeti tarafından oluşturulan kaynak grubunda kilidi etkinleştirdim (ör. `AzureBackupRG_<geo>_<number>`), yedeklemelerim çalışmaya devam eder mi?
+### <a name="i-enabled-lock-on-resource-group-created-by-azure-backup-service-ie-azurebackuprg_geo_number-will-my-backups-continue-to-work"></a>Azure Backup hizmeti tarafından oluşturulan kaynak grubunda kilidi etkinleştirdim (ör. `AzureBackupRG_<geo>_<number>`), yedeklemelerim çalışmaya devam eder mi?
 Azure Backup hizmeti tarafından oluşturulan kaynak grubunu kilitlerseniz, en fazla 18 geri yükleme noktası sınırı olduğundan yedeklemeler başarısız olur.
 
 Sonraki yedeklemelerin başarılı olması için kullanıcının kilidi kaldırması ve bu kaynak grubundan geri yükleme noktası koleksiyonunu temizlenmesi gerekir, geri yükleme noktası koleksiyonunu kaldırmak için [aşağıdaki adımları izleyin](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal) .
 
 
 ### <a name="does-azure-backup-support-standard-ssd-managed-disk"></a>Azure Backup standart SSD yönetilen diskini destekliyor mu?
-Azure Backup, [Standart SSD tarafından yönetilen diskleri](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/)destekler. SSD ile yönetilen diskler, Azure VM 'Ler için yeni bir dayanıklı depolama türü sağlar. SSD tarafından yönetilen diskler için destek, [anında geri yükleme](backup-instant-restore-capability.md)sırasında sağlanır.
+Evet, Azure Backup [Standart SSD yönetilen diskleri](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/)destekler.
 
 ### <a name="can-we-back-up-a-vm-with-a-write-accelerator-wa-enabled-disk"></a>Yazma Hızlandırıcısı (WA) özellikli bir diskle VM 'yi yedekleyebiliriz?
 Anlık görüntüler, WA özellikli diskte alınamaz. Ancak Azure Backup hizmeti, WA özellikli diski yedekten hariç tutabilir.
@@ -119,7 +119,7 @@ Evet. VM 'yi silseniz bile kasadaki karşılık gelen yedekleme öğesine gidebi
 Yönetilen disk Azure VM için, kullanılabilirlik kümelerine geri yükleme, yönetilen diskler olarak geri yüklenirken şablon içinde bir seçenek sunarak etkinleştirilir. Bu şablon, **kullanılabilirlik kümeleri**adlı giriş parametresine sahiptir.
 
 ### <a name="how-do-we-get-faster-restore-performances"></a>Daha hızlı geri yükleme performanslarını nasıl sağlıyoruz?
-Daha hızlı geri yükleme performansı için [anında geri yükleme](backup-instant-restore-capability.md) özelliğine geçeceğiz.
+[Anında geri yükleme](backup-instant-restore-capability.md) özelliği, anlık görüntülerden daha hızlı yedeklemeler ve anında geri yüklemeler sağlanmasına yardımcı olur.
 
 ## <a name="manage-vm-backups"></a>VM yedeklemelerini yönetme
 

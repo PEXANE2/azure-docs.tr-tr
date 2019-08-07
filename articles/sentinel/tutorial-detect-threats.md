@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: ad9c752898733286701db2d0f0b1fc40029b7521
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: 2cc33a9ac55ae9e906d88b72476d4b5ee244d2c8
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68370687"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780417"
 ---
 # <a name="tutorial-detect-threats-with-azure-sentinel-preview"></a>Öğretici: Azure Sentinel önizleme ile tehditleri algılama
 
@@ -28,7 +28,7 @@ ms.locfileid: "68370687"
 > Azure Sentinel Şu anda genel önizlemededir.
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-[Veri kaynaklarınızı](quickstart-onboard.md) Azure Sentinel 'e bağladıktan sonra, şüpheli bir sorun olduğunda bildirim almak istersiniz. Bunu yapmanızı sağlamak için Azure Sentinel, ortamınızdaki aykırları ve tehditleri derinlemesine araştırmak için atayabileceğiniz ve kullanabileceğiniz durumlar oluşturan gelişmiş uyarı kuralları oluşturmanıza olanak sağlar. 
+[Veri kaynaklarınızı](quickstart-onboard.md) Azure Sentinel 'e bağladıktan sonra, şüpheli bir sorun olduğunda bildirim almak istersiniz. Bunu yapmanızı sağlamak için Azure Sentinel, ortamınızdaki aykırları ve tehditleri derinlemesine araştırmak için atayabileceğiniz ve kullanabileceğiniz olaylar üreten gelişmiş uyarı kuralları oluşturmanıza olanak sağlar. 
 
 Bu öğretici, Azure Sentinel ile tehditleri algılamanıza yardımcı olur.
 > [!div class="checklist"]
@@ -37,7 +37,7 @@ Bu öğretici, Azure Sentinel ile tehditleri algılamanıza yardımcı olur.
 
 ## <a name="create-detection-rules"></a>Algılama kuralları oluşturma
 
-Durumları araştırmak için, önce algılama kuralları oluşturmanız gerekir. 
+Olayları araştırmak için, önce algılama kuralları oluşturmanız gerekir. 
 
 > [!NOTE]
 > Azure Sentinel 'de oluşturulan uyarılar [Microsoft Graph güvenliği](https://aka.ms/securitygraphdocs)aracılığıyla kullanılabilir. Daha fazla ayrıntı ve Tümleştirme iş ortakları için [Microsoft Graph güvenlik uyarıları belgelerine](https://aka.ms/graphsecurityreferencebetadocs) bakın.
@@ -77,9 +77,9 @@ Algılama kuralları, ortamınızda, araştırılması ve düzeltildiklerinden e
 
 8. Sorgunuzu **uyarı kuralına ayarla** alanına yapıştırdıktan sonra, uyarı için belirli bir zaman aralığı boyunca ne kadar veri oluşturulacağını anlayabilmeniz Için, **mantıksal uyarı simülasyonuna** göre uyarının benzetimini hemen görebilirsiniz. oluşturdunuz. Bu, **Sıklık** ve **eşik**için ayarlandığınıza bağlıdır. Bu durumda, uyarılarınızın çok sık tetikleneceğini görürseniz, sonuç sayısını ortalama taban çizgisinin üstünde olacak şekilde ayarlamak isteyeceksiniz.
 
-9. Uyarı kuralınızı başlatmak için **Oluştur** ' a tıklayın. Uyarı oluşturulduktan sonra, uyarıyı içeren bir durum oluşturulur. Tanımlı algılama kurallarını, **Güvenlik analizi** sekmesinde satır olarak görebilirsiniz. Ayrıca, her bir kuralla ilgili eşleşme sayısını görebilirsiniz. uyarılar tetiklenir. Bu listeden her kuralı etkinleştirebilir, devre dışı bırakabilir veya silebilirsiniz. Ayrıca, her bir uyarının satır sonundaki üç nokta (...) simgesini sağ seçerek seçebilirsiniz, devre dışı bırakabilir, kopyalayabilir, eşleşmeleri gösterebilir veya bir kuralı silebilirsiniz. **Analiz** sayfası, etkinleştirdiğiniz şablonlar ve şablonlar temelinde oluşturduğunuz uyarı kuralları da dahil olmak üzere tüm etkin uyarı kurallarınızın bir galerisidir.
+9. Uyarı kuralınızı başlatmak için **Oluştur** ' a tıklayın. Uyarı oluşturulduktan sonra, uyarıyı içeren bir olay oluşturulur. Tanımlı algılama kurallarını, **Güvenlik analizi** sekmesinde satır olarak görebilirsiniz. Ayrıca, her bir kuralla ilgili eşleşme sayısını görebilirsiniz. uyarılar tetiklenir. Bu listeden her kuralı etkinleştirebilir, devre dışı bırakabilir veya silebilirsiniz. Ayrıca, her bir uyarının satır sonundaki üç nokta (...) simgesini sağ seçerek seçebilirsiniz, devre dışı bırakabilir, kopyalayabilir, eşleşmeleri gösterebilir veya bir kuralı silebilirsiniz. **Analiz** sayfası, etkinleştirdiğiniz şablonlar ve şablonlar temelinde oluşturduğunuz uyarı kuralları da dahil olmak üzere tüm etkin uyarı kurallarınızın bir galerisidir.
 
-1. Uyarı kurallarının sonuçları, **durumlar** sayfasında görülebilir; burada, çalışmaları önceliklendirebilirsiniz, [araştırabilir](tutorial-investigate-cases.md)ve tehditleri düzeltebilirsiniz.
+1. Uyarı kurallarının sonuçları, **Olaylar** sayfasında görülebilir; burada, olayları önceliklendirebilirsiniz, [araştırabilir](tutorial-investigate-cases.md)ve tehditleri düzeltebilirsiniz.
 
 
 

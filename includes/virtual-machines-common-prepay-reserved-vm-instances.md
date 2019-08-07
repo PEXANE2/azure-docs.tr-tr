@@ -3,13 +3,13 @@ author: yashesvi
 ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 07/19/2019
-ms.openlocfilehash: 763d424d9d462c4a9531df84f3e5e26bfc1b0a14
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.date: 08/02/2019
+ms.openlocfilehash: 5c300cb7d5416ada435811872e2cea8865e3c657
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68502339"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68781253"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances-ri"></a>Azure ayrılmış VM örnekleri (RI) ile sanal makineler için ön ödeme
 
@@ -132,13 +132,9 @@ Satın alma işleminden sonra aşağıdaki değişiklik türlerini yapamazsını
 
 Ancak, değişiklik yapmak istiyorsanız bir rezervasyon *alışverişi* yapabilirsiniz.
 
-## <a name="cancellations-and-exchanges"></a>İptaller ve alışverişlerde
+## <a name="cancel-exchange-or-refund-reservations"></a>İptal, Exchange veya para iadesi rezervasyonları
 
-Ayırma işlemini iptal etmeniz gerekiyorsa %12 erken sonlandırma ücreti tahsil edilebilir. Para iadeleri satın aldığınız fiyattan veya geçerli rezervasyon fiyatından düşük olana göre hesaplanır. Para iadesi yıllık 50.000 ABD doları ile sınırlıdır. Yapılacak para iadesi, %12 erken sonlandırma ücreti kesildikten sonra kalan kullanım süresine göre hesaplanır. İptal etmek için Azure portal rezervasyonuna gidin ve **para iadesi**' ni seçin.
-
-Ayrılmış VM örnekleri ayırmayı başka bir bölgeye, VM boyut grubuna veya terime değiştirmeniz gerekiyorsa, bunu değiş tokuş edebilirsiniz. Exchange, eşit veya daha büyük değer olan başka bir ayırma için olmalıdır. Yeni ayırma işleminin başlangıç tarihi değiştirilen ayırma işleminin başlangıç tarihiyle aynı olmaz. Yeni ayırmayı oluştururken bir veya üç yıllık dönem, öğesinden başlar. Exchange için Azure portal rezervasyon bölümüne gidin ve **Exchange**' i seçin.
-
-Rezervasyonları Exchange veya para iadesi hakkında daha fazla bilgi için bkz. [rezervasyon alışverişi ve para](../articles/billing/billing-azure-reservations-self-service-exchange-and-refund.md)iadesi.
+Belirli sınırlamalara sahip rezervasyonları iptal edebilir, Exchange veya para iadesi yapabilirsiniz. Daha fazla bilgi için bkz. [Azure ayırmaları Için self servis değişimlerinin ve para iadesi](../articles/billing/billing-azure-reservations-self-service-exchange-and-refund.md).
 
 ## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bizimle iletişim kurun.
 

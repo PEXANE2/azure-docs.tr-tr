@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: d3d4679703f6d98cb2062144cfde7d11fe44130c
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 8aeb32ecddc0ef368b615a201179f17178ececad
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68386993"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68817256"
 ---
 ## <a name="application-performance-indicators"></a>Uygulama performansı göstergeleri
 
@@ -268,6 +268,9 @@ Premium depolama veri disklerinde ReadOnly önbelleğe alma yapılandırarak, d�
 
 *ReadWrite*  
 Varsayılan olarak, işletim sistemi disklerinin ReadWrite önbelleği etkindir. Kısa süre önce veri disklerinde de ReadWrite önbelleği desteği ekledik. Okuma önbelleği kullanıyorsanız, verileri önbellekten kalıcı disklere yazmak için uygun bir yola sahip olmanız gerekir. Örneğin, SQL Server önbelleğe alınan verileri kendi kendine kalıcı depolama disklerine yazmayı işler. Gerekli verileri kalıcı olarak işlemeyen bir uygulamayla ReadWrite önbelleği kullanmak, VM kilitlenirse veri kaybına yol açabilir.
+
+*Yok.*  
+Şu anda **hiçbiri** yalnızca veri disklerinde desteklenir. İşletim sistemi disklerinde desteklenmez. Bir işletim sistemi diskinde **hiçbiri** ayarlarsanız, bunu dahili olarak geçersiz kılar ve **salt okunur**olarak ayarlar.
 
 Örnek olarak, aşağıdaki işlemleri yaparak Premium depolamada çalışan SQL Server için bu yönergeleri uygulayabilirsiniz.
 

@@ -1,7 +1,7 @@
 ---
-title: Çalışma alanı nedir
+title: Çalışma alanı nedir?
 titleSuffix: Azure Machine Learning service
-description: Çalışma alanı, Azure Machine Learning hizmeti için en üst düzey kaynaktır. Bu günlükler, ölçümler, çıkış ve komut dosyalarınızın anlık görüntüsünü de dahil olmak üzere tüm eğitim çalıştırmalarının geçmişini tutar. Hangi eğitim çalıştırmanın en iyi modeli belirlemek için bu bilgileri kullanın
+description: Çalışma alanı Azure Machine Learning hizmeti için en üst düzey kaynaktır. Günlükler, ölçümler, çıktılar ve betiklerinizin bir anlık görüntüsü dahil olmak üzere tüm eğitim çalıştırmaları geçmişini tutar. Hangi eğitim çalışmasının en iyi modeli ürettiğini öğrenmek için bu bilgileri kullanırsınız
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,61 +9,61 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 05/21/2019
-ms.openlocfilehash: 912c064fb5ca4e7ca311f60ed04a0122809cb0ff
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: fc3f88e627e0ce19195f6df947d4f11f5f8a73ae
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442364"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68772747"
 ---
-# <a name="what-is-an-azure-machine-learning-service-workspace"></a>Bir Azure Machine Learning hizmeti çalışma alanı nedir?
+# <a name="what-is-an-azure-machine-learning-service-workspace"></a>Azure Machine Learning hizmet çalışma alanı nedir?
 
-Çalışma alanı, Azure Machine Learning hizmeti, Azure Machine Learning hizmeti kullanırken oluşturduğunuz tüm yapıları ile çalışma için merkezi bir yerde sağlamak için en üst düzey kaynaktır.  Çalışma alanı, günlükler, ölçümler, çıkış ve komut dosyalarınızın anlık görüntüsünü de dahil olmak üzere tüm eğitim çalıştırmalarının geçmişini tutar. Hangi eğitim çalıştırmanın en iyi modeli belirlemek için bu bilgileri kullanın.  
+Çalışma alanı, Azure Machine Learning hizmeti için en üst düzey kaynaktır ve Azure Machine Learning hizmeti kullandığınızda oluşturduğunuz tüm yapıtlarla birlikte çalışmak üzere merkezi bir yer sağlar.  Çalışma alanı; Günlükler, ölçümler, çıktılar ve betiklerinizin bir anlık görüntüsü dahil olmak üzere tüm eğitim çalıştırmaları geçmişini tutar. Hangi eğitim çalıştırmasının en iyi modeli ürettiğini öğrenmek için bu bilgileri kullanın.  
 
-İstediğiniz bir modeli oluşturduktan sonra çalışma alanı ile kaydedin. Ardından Azure Container Instances, Azure Kubernetes hizmeti veya bir REST tabanlı bir HTTP uç noktası olarak bir alanda programlanabilir kapı dizileri (FPGA) dağıtmak için kayıtlı model ve puanlama betik'ni kullanın. Ayrıca, Azure IOT Edge cihazına bir modül olarak model dağıtabilirsiniz.
+İstediğiniz bir modele sahip olduktan sonra, çalışma alanına kayıt yaptırmış olursunuz. Daha sonra Azure Container Instances, Azure Kubernetes hizmetine dağıtmak için kayıtlı model ve Puanlama betiklerini ve REST tabanlı HTTP uç noktası olarak bir alan ile programlanabilir kapı dizisine (FPGA) dağıtım yapmak için kullanılır. Modeli bir Azure IoT Edge cihazına modül olarak da dağıtabilirsiniz.
 
-## <a name="taxonomy"></a>Sınıflandırma 
+## <a name="taxonomy"></a>Sınıflandır 
 
-Çalışma alanının bir taksonomi, aşağıdaki diyagramda gösterilmiştir:
+Çalışma alanının bir sınıflandırması aşağıdaki diyagramda gösterilmiştir:
 
 [![Çalışma alanı sınıflandırma](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
 
-Aşağıdaki bileşenler bir çalışma alanının diyagramda gösterilmektedir:
+Diyagramda bir çalışma alanının aşağıdaki bileşenleri gösterilmektedir:
 
-+ Bir çalışma alanı içerebilir [not defteri Vm'leri](quickstart-run-cloud-notebook.md), bulut kaynaklarına Azure Machine Learning çalıştırmak için gereken Python ortamını ile yapılandırılmış.
-+ [Kullanıcı rolleri](how-to-assign-roles.md) diğer kullanıcıları, ekipleri veya projeleri çalışma alanınızda paylaşın olanak sağlar.
-+ [Hedef işlem](concept-azure-machine-learning-architecture.md#compute-targets) denemelerinizi çalıştırmak için kullanılır.
-+ Çalışma alanı oluşturduğunuzda [ilişkili kaynakları](#resources) ayrıca sizin için oluşturulur.
-+ [Denemeleri](concept-azure-machine-learning-architecture.md#experiments) eğitim çalıştığı modellerinizi oluşturmak için kullanın.  Oluşturma ve çalıştırma denemeleri
-    + [Azure Machine için Python SDK'sı Learning](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
-    + [Makine öğrenimi denemeleri (Önizleme) otomatik](how-to-create-portal-experiments.md) bölümünde Azure portalında.
++ Bir çalışma alanı, Azure Machine Learning çalıştırmak için gereken Python ortamıyla yapılandırılmış bulut kaynakları ve [Not defteri VM 'leri](tutorial-1st-experiment-sdk-setup.md)içerebilir.
++ [Kullanıcı rolleri](how-to-assign-roles.md) , çalışma alanınızı diğer kullanıcılar, takımlar veya projelerle paylaşmanızı sağlar.
++ [İşlem hedefleri](concept-azure-machine-learning-architecture.md#compute-targets) , denemeleri hesabınızı çalıştırmak için kullanılır.
++ Çalışma alanını oluşturduğunuzda [ilişkili kaynaklar](#resources) da sizin için oluşturulur.
++ [Denemeleri](concept-azure-machine-learning-architecture.md#experiments) , modellerinizi oluşturmak için kullandığınız eğitim çalışmalardır.  İle denemeleri oluşturabilir ve çalıştırabilirsiniz
+    + [Python için Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
+    + Azure portal [Otomatik Machine Learning denemeleri (Önizleme)](how-to-create-portal-experiments.md) bölümü.
     + [Görsel arabirim (Önizleme)](ui-concept-visual-interface.md).
-+ [İşlem hatları](concept-azure-machine-learning-architecture.md#ml-pipelines) modelinizi yeniden eğitme ve eğitim için yeniden kullanılabilir iş akışlarıdır.
-+ [Veri kümeleri](concept-azure-machine-learning-architecture.md#datasets-and-datastores) modeli eğitimi ve işlem hattı oluşturmak için kullandığınız veri Yönetimi Yardımı.
-+ Dağıtmak istediğiniz bir model aldıktan sonra kayıtlı bir modeli oluşturun.
-+ Kayıtlı model ve puanlama betiğine oluşturulacağı bir [dağıtım](concept-azure-machine-learning-architecture.md#deployment).
++ İşlem [hatları](concept-azure-machine-learning-architecture.md#ml-pipelines) , modelinize eğitim ve yeniden eğitim için yeniden kullanılabilir iş akışlarıdır.
++ Veri [kümeleri](concept-azure-machine-learning-architecture.md#datasets-and-datastores) , model eğitimi ve işlem hattı oluşturma için kullandığınız verilerin yönetimine yardımcı olur.
++ Dağıtmak istediğiniz bir model olduktan sonra, kayıtlı bir model oluşturursunuz.
++ Bir [dağıtım](concept-azure-machine-learning-architecture.md#deployment)oluşturmak için kayıtlı modeli ve bir Puanlama betiğini kullanın.
 
 ## <a name="tools-for-workspace-interaction"></a>Çalışma alanı etkileşimi için Araçlar
 
-Aşağıdaki yollarla çalışma alanınız ile etkileşim kurabilirsiniz:
+Aşağıdaki yollarla çalışma alanım ile etkileşim kurabilirsiniz:
 
-+ Web üzerinde:
++ Web 'de:
     + [Azure portalı](https://portal.azure.com)
     + [Görsel arabirim (Önizleme)](ui-concept-visual-interface.md)
-+ Azure Machine Learning Python kullanarak [SDK'sı](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
-+ Azure Machine Learning kullanarak komut satırında [CLI uzantısı](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli)
++ Azure Machine Learning [SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) kullanan Python 'da
++ Azure Machine Learning [CLI uzantısını](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli) kullanarak komut satırında
 
-## <a name="machine-learning-with-a-workspace"></a>Machine learning çalışma alanı ile
+## <a name="machine-learning-with-a-workspace"></a>Çalışma alanıyla makine öğrenimi
 
-Makine öğrenimi görevlerini okuyun ve/veya yapıtları çalışma alanınıza yazma. 
+Machine Learning görevleri çalışma alanınıza yapıları okur ve/veya yazar. 
 
-+ Bir model - eğitmek için bir deneme çalıştırma yazma, çalıştırma sonuçları çalışma alanına denemeler yapın.
-+ Kullanım otomatik ML model - eğitmek için çalışma alanına eğitim sonuçları yazar.
-+ Bir modeli, çalışma alanına kaydedin.
-+ Model dağıtma - bir dağıtım oluşturmak için kayıtlı modeli kullanır.
-+ Oluşturun ve yeniden kullanılabilir iş akışlarını çalıştırın.
-+ Görünüm makine öğrenme denemeleri, işlem hatları, modelleri, dağıtımları gibi yapılarını.
-+ İzleme ve izleme modeller.
++ Model yazma denemesi çalışma alanı için bir deneme çalıştırın.
++ Model yazma eğitim sonuçlarını çalışma alanına eğitme için otomatik ML kullanın.
++ Çalışma alanına bir model kaydettirin.
++ Model dağıtma-bir dağıtım oluşturmak için kayıtlı modeli kullanır.
++ Yeniden kullanılabilir iş akışları oluşturun ve çalıştırın.
++ Denemeleri, işlem hatları, modeller, dağıtımlar gibi makine öğrenimi yapılarını görüntüleyin.
++ Modelleri izleyin ve izleyin.
 
 ## <a name="workspace-management"></a>Çalışma alanı yönetimi
 
@@ -72,29 +72,29 @@ Ayrıca, aşağıdaki çalışma alanı yönetim görevlerini gerçekleştirebil
 | Çalışma alanı yönetim görevi   | Portal              | SDK        | CLI        |
 |---------------------------|------------------|------------|------------|
 | Çalışma alanı oluşturma        | **&check;**     | **&check;** | **&check;** |
-| İşlem kaynaklarını oluşturmak ve yönetmek    | **&check;**   | **&check;** |  **&check;**   |
-| Çalışma alanı erişimi yönetme    | **&check;**   | |  **&check;**    |
-| Not Defteri VM oluşturma | **&check;**   | |     |
+| İşlem kaynaklarını oluşturma ve yönetme    | **&check;**   | **&check;** |  **&check;**   |
+| Çalışma alanı erişimini yönetme    | **&check;**   | |  **&check;**    |
+| Not defteri VM 'si oluşturma | **&check;**   | |     |
 
-Hizmet tarafından başlama [çalışma alanı oluşturma](setup-create-workspace.md).
+[Çalışma alanı oluşturarak](setup-create-workspace.md)hizmeti kullanmaya başlayın.
 
-## <a name="resources"></a> İlişkili kaynakları
+## <a name="resources"></a>İlişkili kaynaklar
 
 Yeni bir çalışma alanı oluşturduğunuzda, çalışma alanı tarafından kullanılan bazı Azure kaynakları otomatik olarak oluşturur:
 
-+ [Azure kapsayıcı kayıt defteri](https://azure.microsoft.com/services/container-registry/): Eğitim sırasında ve bir modeli dağıtırken kullandığınız docker kapsayıcıları kaydeder. ACR maliyetleri en aza indirmektir **yavaş yüklenen** dağıtım yansımaları oluşturulana kadar.
-+ [Azure depolama hesabı](https://azure.microsoft.com/services/storage/): Çalışma alanı için varsayılan veri deposu olarak kullanılır.  Not Defteri Vm'lerinizi kullanılan Jupyter not defterleri de burada depolanır.
-+ [Azure Application Insights](https://azure.microsoft.com/services/application-insights/): İzleme, modelleri hakkında bilgi depolar.
-+ [Azure anahtar kasası](https://azure.microsoft.com/services/key-vault/): Hedefleri ve gerekli olan diğer hassas bilgiler depolar gizli dizileri tarafından kullanılan işlem tarafından çalışma alanı.
++ [Azure Container Registry](https://azure.microsoft.com/services/container-registry/): Eğitim sırasında ve bir modeli dağıtırken kullandığınız Docker kapsayıcılarını kaydeder. Maliyetleri en aza indirmek için, dağıtım görüntüleri oluşturuluncaya kadar ACR **yavaş yüklenir** .
++ [Azure depolama hesabı](https://azure.microsoft.com/services/storage/): , Çalışma alanı için varsayılan veri deposu olarak kullanılır.  Not defteri sanal makineleriyle kullanılan Jupyter Not defterleri burada da depolanır.
++ [Azure Application Insights](https://azure.microsoft.com/services/application-insights/): Modelleriniz hakkında izleme bilgilerini depolar.
++ [Azure Key Vault](https://azure.microsoft.com/services/key-vault/): İşlem hedefleri ve çalışma alanı için gereken diğer hassas bilgiler tarafından kullanılan gizli dizileri depolar.
 
 > [!NOTE]
-> Yeni sürümler oluşturmaya ek olarak, var olan Azure hizmetleri de kullanabilirsiniz.
+> Yeni sürümler oluşturmaya ek olarak, var olan Azure hizmetlerini de kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning hizmeti ile çalışmaya başlamak için bkz:
+Azure Machine Learning hizmetine başlamak için bkz.:
 
-+ [Azure Machine Learning hizmetine genel bakış](overview-what-is-azure-ml.md)
++ [Azure Machine Learning hizmete genel bakış](overview-what-is-azure-ml.md)
 + [Çalışma Alanı oluşturma](setup-create-workspace.md)
 + [Çalışma Alanını Yönetme](how-to-manage-workspace.md)
-+ [Öğretici: Bir model eğitip](tutorial-train-models-with-aml.md)
++ [Öğretici: Model eğitme](tutorial-train-models-with-aml.md)

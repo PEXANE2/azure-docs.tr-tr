@@ -1,5 +1,5 @@
 ---
-title: Azure Backup tarafından yedeklenen bir Azure VM 'de SQL Server veritabanlarını yönetme ve izleme | Microsoft Docs
+title: Azure Backup ile Azure VM 'de SQL Server veritabanlarını yönetme ve izleme
 description: Bu makalede, bir Azure VM üzerinde çalışan SQL Server veritabanlarının nasıl yönetileceği ve izleneceği açıklanır.
 author: dcurwin
 manager: carmonm
@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: dacurwin
-ms.openlocfilehash: c5f61c778849a57d9143580e0e1041c7fe992d52
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 7cd916c8e52b40dee3ce2d63d43dc88f09001b32
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639578"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827567"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Yedeklenen SQL Server veritabanlarını yönetme ve izleme
 
@@ -120,7 +120,7 @@ Bir SQL veritabanı için korumayı sürdürmesini sağlamak için:
 * Değişiklik yedeği
 * Günlük yedekleme
 
-Yalnızca kopya tam yedekleme için saklama süresini belirtmeniz gerektiğinde, diğer yedekleme türleri için bekletme aralığı otomatik olarak geçerli zamandan 30 gün olarak ayarlanır. <br/>
+Yalnızca kopya tam yedekleme için saklama süresini belirtmeniz gerektiğinde, geçici tam yedekleme için bekletme aralığı otomatik olarak geçerli zamandan 45 gün olarak ayarlanır. <br/>
 Daha fazla bilgi için bkz. [SQL Server yedekleme türleri](backup-architecture.md#sql-server-backup-types).
 
 ## <a name="unregister-a-sql-server-instance"></a>SQL Server örneğinin kaydını silme

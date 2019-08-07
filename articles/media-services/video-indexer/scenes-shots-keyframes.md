@@ -1,45 +1,45 @@
 ---
-title: Video Indexer sahneler, görüntüleri ve ana kareleri - Azure
+title: Video Indexer sahneleri, görüntüleri ve ana kareleri-Azure
 titlesuffix: Azure Media Services
-description: Bu konu, Video Indexer sahneler, görüntüleri ve ana kareler hakkında genel bir bakış sağlar.
+description: Bu konu, Video Indexer sahneleri, görüntüleri ve ana kareleri için bir genel bakış sunar.
 services: media-services
 author: Juliako
 manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 07/05/2019
 ms.author: juliako
-ms.openlocfilehash: d312a93f83ef38fa1ae855a1e313280fc608948d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cdabc1b6bfed519098f656710ef49a946e676cf2
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799395"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815661"
 ---
 # <a name="scenes-shots-and-keyframes"></a>Sahneler, çekimler, ana kareler
 
-Video Indexer, zamana bağlı birimleri yapısal ve anlamsal özelliklerine bağlı olarak ayırarak videoları destekler. Bu özellik, müşterilerin kolayca bulun, yönetin ve düzenleyin üzerinde çeşitli ayrıntı düzeylerinde temel video içeriklerinin sağlar. Örneğin, görünümler, görüntüleri ve ana kareleri, bu konuda açıklanan temel. **Sahne algılama** özelliği şu anda Önizleme aşamasındadır.   
+Video Indexer, Videoları yapısal ve anlam özelliklerine göre zamana bağlı birimlere parçalara ayırır. Bu özellik, müşterilerin, değişen granlular temelinde video içeriğine kolayca gözatmasını, yönetmesini ve düzenlemesini sağlar. Örneğin, bu konuda açıklanan sahneleri, görüntüleri ve ana kareleri temel alan.   
 
 ![Sahneler, çekimler, ana kareler](./media/scenes-shots-keyframes/scenes-shots-keyframes.png)
-
-## <a name="scene-detection-preview"></a>Sahne algılama (Önizleme)
-
-Video Indexer, videoda üzerinde görsel ipuçları Sahne değiştiğinde belirler. Tek bir olayı Sahne gösterir ve anlamsal olarak ilişkili ardışık görüntüleri bir dizi oluşur. Sahne küçük resim, kendi temel görüntüsü ilk karedir. Video Indexer, video arasında ardışık görüntüleri renk modellenmiş üzerinde temel planda içine kesim ve başlangıç ve bitiş zamanı her sahnenin alır. Videoları anlam yönlerini niceleme içermesidir Sahne algılama zor bir görev olarak kabul edilir.
+ 
+## <a name="scene-detection"></a>Sahne algılama  
+ 
+Video Indexer görsel ipuçlarıyla videoda bir sahnenin ne zaman değişiklik olduğunu belirler. Bir sahne, tek bir olay gösterir ve bu, anlam ile ilgili olan bir dizi ardışık anlık görüntüsünü meydana gelir. Sahne küçük resmi, temel alınan görüntüsündeki ilk ana karedir. Video Indexer, bir videoyu ardışık görüntülerdeki renk tutarlılılığını temel alarak sahneleri parçalara ayırır ve her sahnenin başlangıç ve bitiş saatini alır. Sahne algılama, videoların anlamlı yönlerini içerdiğinden zorlayıcı bir görev olarak değerlendirilir.
 
 > [!NOTE]
-> En az 3 içeren videolar için geçerlidir.
+> En az 3 sahne içeren videolar için geçerlidir.
 
-## <a name="shot-detection"></a>Kare algılama
+## <a name="shot-detection"></a>Çekim algılama
 
-Video Indexer bir kare değiştirildiğinde üzerinde görsel ipuçları, bitişik çerçeve ani ve aşamalı geçişler, renk düzenini izleyerek tabanlı video belirler. Görüntüsü ait meta verileri, bir başlangıç ve bitiş zamanı yanı sıra, bu görüntüsünde dahil ana kareleri listesini içerir. Aynı anda aynı kameradan alınan ardışık kare görüntülerini var.
+Video Indexer, ardışık çerçevelerin renk düzeninde hem sert hem de dereceli geçişleri izleyerek görsel ipuçlarıyla videoda bir çekneye ne zaman değişiklik olduğunu belirler. Alıcının meta verileri bir başlangıç ve bitiş zamanı ve bu çekte yer alan ana kare listesini içerir. Bu görüntüleri aynı kameradaki aynı kameradan alınan ardışık çerçevelerdir.
 
 ## <a name="keyframe-detection"></a>Ana kare algılama
 
-En iyi görüntüsü temsil eden çerçeve(leri) seçer. Ana kareleri estetik özelliklerine (örneğin, karşıtlık ve stableness) bağlı tüm video seçildiği temsili karelerdir. Video Indexer, ana kare kimlikleri görüntüsü ait meta verileri, hangi müşteriler ana kare küçük ayıklayabilmeniz için temel bir parçası olarak bir listesini alır. 
+Resmi en iyi temsil eden çerçeveleri seçer. Ana kareler, Aesthetic Characteristics özelliklerine (örneğin, kontrast ve stablete) göre videonun tamamının seçtiği temsili çerçevelerdir. Video Indexer, ana kare kimliklerinin bir listesini, hangi müşterilerin ana kare küçük resmini ayıklayabileceği temel alınarak, alıcının meta verilerinin bir parçası olarak alır. 
 
-Ana kareleri JSON çıkışında görüntüleri ile ilişkilidir. 
+Ana kareler, JSON çıkışı içindeki görüntüleriyle ilişkilendirilir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[API'sı tarafından üretilen Video dizinleyici çıktısını İnceleme](video-indexer-output-json-v2.md#scenes)
+[API tarafından üretilen Video Indexer çıkışını inceleyin](video-indexer-output-json-v2.md#scenes)

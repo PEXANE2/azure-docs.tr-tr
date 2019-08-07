@@ -1,5 +1,5 @@
 ---
-title: Azure Backup ile Azure VM 'lerinde SQL Server veritabanlarının yedeklenmesi hakkında sık sorulan sorular
+title: SSS-Azure Backup ile Azure VM 'lerinde SQL Server veritabanlarını yedekleme
 description: Azure Backup ile Azure VM 'lerinde SQL Server veritabanlarının yedeklenmesi hakkında sık sorulan soruların yanıtlarını bulun.
 ms.reviewer: vijayts
 author: dcurwin
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: dacurwin
-ms.openlocfilehash: 23dda22a8350591d5cf87cefc1a2f15fd90f17c7
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: a600c50e97f0d069443112a59d529c0d6f6fecad
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688845"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68737071"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Azure VM yedeklemesi üzerinde çalışan SQL Server veritabanları hakkında SSS
 
@@ -89,7 +89,7 @@ Yeniden adlandırılmış bir veritabanı yeni bir veritabanı olarak değerlend
 Şimdi yeniden adlandırılan veritabanını seçebilirsiniz ve üzerinde koruma yapılandırabilirsiniz. Örnekte otomatik korumanın etkin olması durumunda, yeniden adlandırılmış veritabanı otomatik olarak algılanır ve korunur.
 
 ##  <a name="why-cant-i-see-an-added-database-for-an-autoprotected-instance"></a>Neden yeniden korunan bir örnek için eklenen bir veritabanını göremiyorum?
-[Bir oto korumalı örneğe eklediğiniz](backup-sql-server-database-azure-vms.md#enable-auto-protection) bir veritabanı, korunan öğeler altında hemen görünmeyebilir. Bunun nedeni, bulmanın genellikle her 8 saatte bir çalışır. Bununla birlikte, aşağıdaki görüntüde gösterildiği **gibi, bir**bulmayı el ile çalıştırırsanız yeni veritabanlarını daha sonra bulabilir ve koruyabilirsiniz.
+[Bir oto korumalı örneğe eklediğiniz](backup-sql-server-database-azure-vms.md#enable-auto-protection) bir veritabanı, korunan öğeler altında hemen görünmeyebilir. Bunun nedeni, bulmanın genellikle her 8 saatte bir çalışır. Bununla birlikte, aşağıdaki görüntüde gösterildiği gibi, bir bulmayı el ile çalıştırırsanız yeni veritabanlarını daha sonra bulabilirve koruyabilirsiniz.
 
   ![Yeni eklenen bir veritabanını el ile bulma](./media/backup-azure-sql-database/view-newly-added-database.png)
 

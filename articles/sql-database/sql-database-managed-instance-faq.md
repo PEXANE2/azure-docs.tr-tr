@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 32da92fb3c5573d24eb18a01a4ede8fe6a0bf36a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3637676a330b324d5620885f0cbe50d4aa68ed51
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567444"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779042"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>SQL veritabanı yönetilen örnek hakkında sık sorulan sorular (SSS)
 
@@ -79,9 +79,9 @@ Aynı bölgede her iki donanım neslini de desteklenmiyorsa, donanım oluşturma
 
 ## <a name="how-do-i-tune-performance-of-my-managed-instance"></a>Yönetilen örneðimin performansı Nasıl yaparım? mi? 
 
-Genel Amaçlı yönetilen örnek, performans için önemli veri ve günlük dosyası boyutu nedeniyle uzak depolama kullanır. Genel Amaçlı hizmet katmanı performansını ayarlamak için bu blog gönderisine ilişkin yönergeleri izleyin.
+Genel Amaçlı yönetilen örnek, performans için önemli veri ve günlük dosyası boyutu nedeniyle uzak depolama kullanır. Daha fazla bilgi için bkz. [genel amaçlı yönetilen örnek performansı üzerinde günlük dosyası boyutunun etkisi](https://medium.com/azure-sqldb-managed-instance/impact-of-log-file-size-on-general-purpose-managed-instance-performance-21ad170c823e).
 
-Yoğun GÇ yoğunluklu iş yükleri için Gen 5 donanımı kullanmayı ve işlem yoğunluğu iş yükleri için gen 4 ' ü kullanmayı düşünün. Daha fazla bilgi için, donanım nesilleri arasında seçim yapma hakkında SSS bölümüne bakın.
+Yoğun GÇ yoğunluklu iş yükleri için Gen 5 donanımı kullanmayı ve işlem yoğunluğu iş yükleri için gen 4 ' ü kullanmayı düşünün. Daha fazla bilgi için bkz. [Gen 4 ve Gen 5 arasında nasıl yaparım? seçme](#how-do-i-choose-between-gen-4-and-gen-5-hardware-generation-for-managed-instance).
 
 İş yükünüz çok sayıda küçük işlem içeriyorsa, bağlantı türünü proxy 'den yeniden yönlendirme moduna geçirmeyi düşünün.
 

@@ -7,12 +7,12 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: dcfdec0a746406296616456f6e6b8c0eabddf4b5
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 2499842eeb2dd5a8fa845ed364a6aea7418acc8b
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478592"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68824417"
 ---
 # <a name="create-and-use-web-application-firewall-v2-custom-rules"></a>Web uygulaması güvenlik duvarı v2 özel kurallarını oluşturma ve kullanma
 
@@ -27,7 +27,7 @@ Bu makalede, v2 WAF 'niz ile oluşturabileceğiniz ve kullanabileceğiniz bazı 
 
 ## <a name="example-1"></a>Örnek 1
 
-Web sitenizde gezinmeyi engellemek istediğiniz *evilbot* adlı bir bot olduğunu bilirsiniz. Bu durumda, istek üst bilgilerinde Kullanıcı Aracısı evbotu 'yı  engellemelisiniz.
+Web sitenizde gezinmeyi engellemek istediğiniz *evilbot* adlı bir bot olduğunu bilirsiniz. Bu durumda, istek üst bilgilerinde Kullanıcı Aracısı evbotu 'yı engellemelisiniz.
 
 Logic: p
 
@@ -179,7 +179,7 @@ Karşılık gelen yukarı ve kuralları:`SecRule REMOTE_ADDR "@ipMatch 192.168.5
 
 ## <a name="example-3"></a>Örnek 3
 
-Bu örnek için, Kullanıcı Aracısı *evbotbot*'ı ve 192.168.5.4/24 aralığındaki trafiği engellemek istiyorsunuz. Bunu gerçekleştirmek için iki ayrı eşleştirme koşulu oluşturabilir ve bunları aynı kurala yerleştirebilirsiniz. Bu, hem Kullanıcı **Aracısı üstbilgisinde hem** de 192.168.5.4/24 aralığından IP adreslerinde bulunan *evilbot* 'ın engellenmesini sağlar.
+Bu örnek için, Kullanıcı Aracısı *evbotbot*'ı ve 192.168.5.4/24 aralığındaki trafiği engellemek istiyorsunuz. Bunu gerçekleştirmek için iki ayrı eşleştirme koşulu oluşturabilir ve bunları aynı kurala yerleştirebilirsiniz. Bu, hem Kullanıcı Aracısı üstbilgisinde hem de 192.168.5.4/24 aralığından IP adreslerinde bulunan *evilbot* 'ın engellenmesini sağlar.
 
 Logic: p **ve** q
 
@@ -227,7 +227,7 @@ Buna karşılık gelen JSON şu şekildedir:
             { 
               "matchVariable": "RemoteAddr", 
               "operator": "IPMatch", 
-              "negateCondition": true, 
+              "negateCondition": false, 
               "matchValues": [ 
                 "192.168.5.4/24" 
               ] 
@@ -253,7 +253,7 @@ Buna karşılık gelen JSON şu şekildedir:
 
 Bu örnekte, isteğin *192.168.5.4/24*IP adresi aralığının dışında veya Kullanıcı Aracısı dizesinin *Chrome* olmadığından (Kullanıcı Chrome tarayıcısını kullanmıyor anlamına gelir) engellemek isteyebilirsiniz. Bu mantık **veya**kullandığından, iki koşul aşağıdaki örnekte görüldüğü gibi ayrı kurallarda bulunur. trafiği engellemek için *myrule1* ve *myrule2* öğelerinin her ikisinin de eşleşmesi gerekir.
 
-Logic: **Not** (p **ve** q) =  p değil **veya** q değil.
+Logic: **Not** (p **ve** q) = p değil **veya** q değil.
 
 ```azurepowershell
 $variable1 = New-AzApplicationGatewayFirewallMatchVariable `

@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: c8528ac81f2248e417d7d25d0f3c2650845c3d7d
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 87e6f69c06fb9f8bc03d184cfe160964403e7a2a
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68404311"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780862"
 ---
 # <a name="get-started-with-device-management-java"></a>Cihaz yönetimini kullanmaya başlama (Java)
 
@@ -62,6 +62,8 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 ## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
+
+## <a name="register-a-new-device-in-the-iot-hub"></a>IoT Hub 'a yeni bir cihaz kaydetme
 
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
@@ -287,7 +289,7 @@ Bu bölümde, bir cihaza benzetim yapan bir Java konsol uygulaması oluşturursu
     import java.util.HashSet;
     ```
 
-7. Aşağıdaki sınıf düzeyi değişkenleri **App** sınıfına ekleyin. `{yourdeviceconnectionstring}` *Cihaz kimliği oluşturma* bölümünde not ettiğiniz cihaz bağlantı dizesiyle değiştirin:
+7. Aşağıdaki sınıf düzeyi değişkenleri **App** sınıfına ekleyin. `{yourdeviceconnectionstring}` [IoT Hub 'ında yeni bir cihaz kaydet](#register-a-new-device-in-the-iot-hub) bölümünde not ettiğiniz cihaz bağlantı dizesiyle değiştirin:
 
     ```java
     private static final int METHOD_SUCCESS = 200;

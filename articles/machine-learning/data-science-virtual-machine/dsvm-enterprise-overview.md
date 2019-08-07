@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: vijetaj
-ms.openlocfilehash: 81aac356f49f7bf8dc57f77054d10aa3e09d473f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 40b8f101d968514ac599b43a79b7e62b7fd837a4
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565257"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779473"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>Veri bilimi sanal makinesi tabanlı takım analizi ve yapay ZEKA ortamı 
 [Veri bilimi sanal makinesi](overview.md) (DSVM), Azure platformunda yapay zeka (AI) ve veri analizi için önceden oluşturulmuş yazılım ile zengin bir ortam sağlar. 
@@ -43,12 +43,12 @@ Bir kurumsal takım analiz ortamını temel yapı taşları bazıları şunlard�
 
 Bu makale serisi, rehberlik ve işaretçileri her önceki öğeler için sağlar. Tüm önemli noktalar ve büyük kuruluş yapılandırmalarında DSVM dağıtmanın gereksinimlerini ele alınmamıştır. DSVM örnekleri, kuruluşunuzda uygulama çalışırken kullanabileceğiniz diğer Azure belgeleri aşağıda verilmiştir: 
 
-* [Ağ güvenliği](https://docs.microsoft.com/azure/security/azure-network-security)
+* [Ağ güvenliği] (https://docs.microsoft.com/azure/security/fundamentals/network-security
 * [İzleme](https://docs.microsoft.com/azure/virtual-machines/windows/monitor) ve [Yönetimi](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates)
-* [Günlük kaydı ve denetim](https://docs.microsoft.com/azure/security/azure-log-audit)
+* [Günlük kaydı ve denetim](https://docs.microsoft.com/azure/security/fundamentals/log-audit)
 * [Rol tabanlı erişim denetimi](https://docs.microsoft.com/azure/role-based-access-control/overview)
 * [İlke ayarı ve zorlama](../../governance/policy/overview.md)
-* [Kötü Amaçlı Yazılımdan Koruma](https://docs.microsoft.com/azure/security/azure-security-antimalware)
+* [Kötü Amaçlı Yazılımdan Koruma](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
 * [Şifreleme](https://docs.microsoft.com/azure/virtual-machines/windows/encrypt-disks)
 * [Veri bulma ve idare](https://docs.microsoft.com/azure/data-catalog/)
 

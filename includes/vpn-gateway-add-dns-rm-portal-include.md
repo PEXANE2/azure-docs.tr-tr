@@ -5,24 +5,21 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 11/30/2018
+ms.date: 08/02/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: fe90de618df04063a5486af80bdade67fb886a48
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 1e6bc9b0bc4df8ab4e5c801b95a0f607eb3231e1
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67188215"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780120"
 ---
-1. İçinde **ayarları** sanal ağınızın sayfasında, select bölümünü **DNS sunucuları** açmak için **DNS sunucuları** sayfası.
+1. Sanal ağınızın **Ayarlar** sayfasında, **DNS** sunucuları ' na gidin ve **DNS sunucuları** sayfasını açmak için tıklayın.
 
-2. Üzerinde **DNS sunucuları** sayfasında, aşağıdaki değerleri doldurun:
+    ![DNS sunucusu belirtme](./media/vpn-gateway-add-dns-rm-portal-include/dns-server.png "DNS Sunucusu belirtme")
 
-   - **DNS sunucuları**: Seçin **özel**.
+   - **DNS sunucuları:** **Özel**' i seçin.
+   - **DNS sunucusu Ekle:** Ad çözümlemesi için kullanmak istediğiniz DNS sunucusunun IP adresini girin.
 
-   - **DNS sunucusu ekleme**: Ad çözümlemesi için kullanmak istediğiniz DNS sunucusunun IP adresini girin.
-
-3. DNS sunucularını eklemeyi tamamladığınızda, seçin **Kaydet**.
-
-    ![DNS sunucusu belirtme](./media/vpn-gateway-add-dns-rm-portal-include/specify-dns-server.png "DNS Sunucusu belirtme")
+2. DNS sunucularını eklemeyi tamamladıktan sonra sayfanın üst tarafında yer alan **Kaydet**'e tıklayın.

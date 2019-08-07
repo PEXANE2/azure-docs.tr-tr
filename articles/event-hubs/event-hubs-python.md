@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/26/2018
 ms.author: shvija
-ms.openlocfilehash: f86dc92b4df45119930970acfe9e173f32f894fb
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 0960862da9e65cff4d957e97a7488dc7a245651a
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68356042"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742117"
 ---
 # <a name="how-to-use-azure-event-hubs-from-a-python-application"></a>Bir Python uygulamasından Azure Event Hubs'ı kullanma
 Azure Event Hubs saniyede milyonlarca olay alıp işleme kapasitesine sahip olan bir Büyük Veri akış platformu ve olay alma hizmetidir. Event Hubs dağıtılan yazılımlar ve cihazlar tarafından oluşturulan olayları, verileri ve telemetrileri işleyebilir ve depolayabilir. Bir olay hub’ına gönderilen veriler, herhangi bir gerçek zamanlı analiz sağlayıcısı ve işlem grubu oluşturma/depolama bağdaştırıcıları kullanılarak dönüştürülüp depolanabilir. Daha fazla bilgi için [Event hubs'a giriş](event-hubs-what-is-event-hubs.md). 
@@ -162,7 +162,7 @@ startProcessing('YOUR STORAGE ACCOUNT NAME', 'YOUR KEY', 'capture')
 Python'da yazılmış bir uygulamadan Azure blob depolama alanındaki yakalanan Event Hubs verilerini okumak hakkında eksiksiz bir öğretici için bkz: [bu makalede](event-hubs-capture-python.md)
 
 ## <a name="github-samples"></a>GitHub örnekleri
-Daha fazla Python örnekleri bulabilirsiniz [azure-event-hubs-python Git deposu](https://github.com/Azure/azure-event-hubs-python/).
+Daha fazla Python örnekleri bulabilirsiniz [azure-event-hubs-python Git deposu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhubs).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Başlangıç kavramları bölümdeki makaleleri inceleyin [Event Hubs özelliklerine genel bakış](event-hubs-features.md).

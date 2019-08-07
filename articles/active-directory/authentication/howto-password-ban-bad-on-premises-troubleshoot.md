@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d96f5bb189dfd20c65fc6fc6ddcb8fff66d52ff
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 07c035f4823ea8c8eaa96ca9bda22450246811cd
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68666229"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779618"
 ---
 # <a name="azure-ad-password-protection-troubleshooting"></a>Azure AD parola koruması sorunlarını giderme
 
@@ -32,7 +32,7 @@ Bu sorunun olağan nedeni, bir ara sunucu henüz kaydedilmemiştir. Bir ara sunu
 
 Bu sorunun ana belirtisi, DC Aracısı Yönetici olay günlüğündeki 30018 olaydır. Bu sorun birkaç olası nedeni olabilir:
 
-1. DC Aracısı ağın yalıtılmış bir bölümünde bulunur ve bu, kayıtlı ara sunucu (lar) a ağ bağlantısına izin vermez. Bu nedenle, diğer DC aracıları Azure 'dan parola ilkelerini indirmek üzere proxy (ler) i ile iletişim kurabildiği sürece bu sorun zararsız olabilir. böylece, SYSVOL paylaşımında ilke dosyalarının çoğaltılmasıyla yalıtılmış DC tarafından elde edilir.
+1. DC Aracısı ağın yalıtılmış bir bölümünde bulunur ve bu, kayıtlı ara sunucu (lar) a ağ bağlantısına izin vermez. Bu sorun, diğer DC aracılarının Azure 'dan parola ilkelerini indirmek için proxy (ler) ile iletişim kurabildiği sürece zararsız olabilir. İndirildikten sonra, bu ilkeler, SYSVOL paylaşımındaki ilke dosyalarının çoğaltılması yoluyla yalıtılmış DC tarafından elde edilir.
 
 1. Proxy konak makinesi RPC uç nokta Eşleyici uç noktasına erişimi engelliyor (bağlantı noktası 135)
 
@@ -70,6 +70,8 @@ KDS hizmetinin başlatılamamasına neden olan en yaygın kök nedeni, Active Di
 
 Bu sorunun çeşitli nedenleri olabilir.
 
+1. DC aracılarınız, süresi biten bir genel önizleme yazılım sürümünü çalıştırıyor. Bkz. [genel ÖNIZLEME DC Aracısı yazılımının süresi doldu](howto-password-ban-bad-on-premises-troubleshoot.md#public-preview-dc-agent-software-has-expired).
+
 1. DC aracılarınız bir ilkeyi indiremez veya mevcut ilkelerin şifresini çözemiyor. Yukarıdaki konularda olası nedenleri kontrol edin.
 
 1. Parola ilkesi zorla modu hala denetim olarak ayarlanmıştır. Bu yapılandırma etkin ise, Azure AD parola koruma portalı 'nı kullanmaya zorlamak için yeniden yapılandırın. Bkz. [parola korumasını etkinleştirme](howto-password-ban-bad-on-premises-operations.md#enable-password-protection).
@@ -99,7 +101,7 @@ Setting password failed.
         Error Message: Password doesn't meet the requirements of the filter dll's
 ```
 
-Azure AD parola koruması, Active Directory DSRM parolası için parola doğrulama olay günlüğü olaylarını günlüğe kaydettiği zaman, olay günlüğü iletilerinin bir Kullanıcı adı içermeyecektir. Bu durum, DSRM hesabının gerçek Active Directory etki alanının parçası olmayan bir yerel hesap olduğu için oluşur.  
+Azure AD parola koruması, Active Directory DSRM parolası için parola doğrulama olay günlüğü olaylarını günlüğe kaydettiği zaman, olay günlüğü iletilerinin bir Kullanıcı adı içermeyecektir. Bu davranış, DSRM hesabının gerçek Active Directory etki alanının parçası olmayan bir yerel hesap olduğu için oluşur.  
 
 ## <a name="domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password"></a>Etki alanı denetleyicisi çoğaltma yükseltmesi zayıf bir DSRM parolası nedeniyle başarısız oluyor
 
@@ -119,7 +121,67 @@ Hala DC Aracısı yazılımını çalıştıran bir etki alanı denetleyicisini 
 
 ## <a name="booting-into-directory-services-repair-mode"></a>Dizin Hizmetleri onarım modunda önyükleme
 
-Etki alanı denetleyicisi dizin hizmetleri onarım modunda önbaşlatıldıysa, DC Aracısı hizmeti bu durumu algılar ve şu anda etkin olan ilke yapılandırmasından bağımsız olarak tüm parola doğrulama veya zorlama etkinliklerinin devre dışı olmasına neden olur.
+Etki alanı denetleyicisi dizin hizmetleri onarım modunda önbaşlatıldıysa, DC aracısı parola filtresi dll 'si bu durumu algılar ve şu anda etkin olan ilkeden bağımsız olarak tüm parola doğrulama veya zorlama etkinliklerinin devre dışı olmasına neden olur yapılandırmada. DC aracı parola filtresi dll 'si, bir 10023 uyarı olayını yönetici olay günlüğüne kaydeder, örneğin:
+
+```text
+The password filter dll is loaded but the machine appears to be a domain controller that has been booted into Directory Services Repair Mode. All password change and set requests will be automatically approved. No further messages will be logged until after the next reboot.
+```
+## <a name="public-preview-dc-agent-software-has-expired"></a>Genel Önizleme DC Aracısı yazılımının süresi doldu
+
+Azure AD parola koruması genel önizleme dönemi boyunca, DC Aracısı yazılımı aşağıdaki tarihlerde parola doğrulama isteklerini işlemeyi durduracak biçimde sabit olarak kodlanmıştır:
+
+* Sürüm 1.2.65.0, Eylül 1 2019 ' de parola doğrulama isteklerini işlemeyi durduracak.
+* Sürüm 1.2.25.0 ve önceki sürümleri, 1 2019 Temmuz 'da parola doğrulama isteklerini işlemeyi durdurdu.
+
+Son Tarih yaklaşımının ardından, tüm zaman sınırlı DC Aracısı sürümleri, aşağıdaki gibi görünen önyükleme zamanında DC Aracısı Yönetici olay günlüğüne bir 10021 olayı yayacaktır:
+
+```text
+The password filter dll has successfully loaded and initialized.
+
+The allowable trial period is nearing expiration. Once the trial period has expired, the password filter dll will no longer process passwords. Please contact Microsoft for an newer supported version of the software.
+
+Expiration date:  9/01/2019 0:00:00 AM
+
+This message will not be repeated until the next reboot.
+```
+
+Son tarih geçtikten sonra, tüm zaman sınırlı DC Aracısı sürümleri, aşağıdaki gibi görünen önyükleme zamanında DC Aracısı Yönetici olay günlüğüne bir 10022 olayı yayar:
+
+```text
+The password filter dll is loaded but the allowable trial period has expired. All password change and set requests will be automatically approved. Please contact Microsoft for a newer supported version of the software.
+
+No further messages will be logged until after the next reboot.
+```
+
+Son Tarih yalnızca ilk önyüklemede denetlendiğinden, takvim son tarihi geçtikten sonra bu olayları göremeyebilirsiniz. Son Tarih tanındıktan sonra, etki alanı denetleyicisi veya daha büyük ortam üzerinde hiçbir olumsuz efekt, tüm parolaların otomatik olarak onaylanacaktır.
+
+> [!IMPORTANT]
+> Microsoft, zaman aşımına uğradı genel önizleme DC aracılarının en son sürüme hemen yükseltilmesini önerir.
+
+Ortamınızda yükseltilmesi gereken DC aracılarını bulmayı kolay bir yöntem `Get-AzureADPasswordProtectionDCAgent` cmdlet 'i çalıştırıyor, örneğin:
+
+```powershell
+PS C:\> Get-AzureADPasswordProtectionDCAgent
+
+ServerFQDN            : bpl1.bpl.com
+SoftwareVersion       : 1.2.125.0
+Domain                : bpl.com
+Forest                : bpl.com
+PasswordPolicyDateUTC : 8/1/2019 9:18:05 PM
+HeartbeatUTC          : 8/1/2019 10:00:00 PM
+AzureTenant           : bpltest.onmicrosoft.com
+```
+
+Bu konu için, SoftwareVersion alanı, göz atmak için önemli bir özelliktir. PowerShell filtrelemesini Ayrıca, gerekli temel sürümde zaten veya üzerinde olan DC aracılarını filtrelemek için de kullanabilirsiniz; örneğin:
+
+```powershell
+PS C:\> $LatestAzureADPasswordProtectionVersion = "1.2.125.0"
+PS C:\> Get-AzureADPasswordProtectionDCAgent | Where-Object {$_.SoftwareVersion -lt $LatestAzureADPasswordProtectionVersion}
+```
+
+Azure AD parola koruma proxy yazılımı, hiçbir sürümde zaman sınırlı değildir. Microsoft, hem DC 'nin hem de ara sunucu aracılarının yayımlandıklarında en son sürümlere yükseltilmesini öneriyor. `Get-AzureADPasswordProtectionProxy` Cmdlet 'i, DC aracıları için yukarıdaki örneğe benzer şekilde yükseltmeleri gerektiren proxy aracılarını bulmak için kullanılabilir.
+
+Belirli yükseltme yordamları hakkında daha fazla bilgi için lütfen [DC aracısını yükseltme](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-dc-agent) ve [proxy aracısını yükseltme](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-proxy-agent) bölümüne bakın.
 
 ## <a name="emergency-remediation"></a>Acil durum Düzeltme
 
@@ -134,7 +196,7 @@ Azure AD parola koruma yazılımını kaldırmaya ve etki alanından ve ormandan
 > [!IMPORTANT]
 > Bu adımları sırasıyla gerçekleştirmek önemlidir. Proxy hizmeti 'nin herhangi bir örneği çalışmaya ayrıldıysa, Service ConnectionPoint nesnesini düzenli olarak yeniden oluşturur. DC Aracısı hizmeti 'nin herhangi bir örneği çalışmaya ayrıldıysa, serviceConnectionPoint nesnesini ve SYSVOL durumunu düzenli olarak yeniden oluşturur.
 
-1. Tüm makinelerden proxy yazılımını kaldırın. Bu adım için yeniden **başlatma gerekmez.**
+1. Tüm makinelerden proxy yazılımını kaldırın. Bu adım için yeniden başlatma gerekmez.
 2. DC Aracısı yazılımını tüm etki alanı denetleyicilerinden kaldırın. Bu adım **için** yeniden başlatma gerekir.
 3. Her bir etki alanı adlandırma bağlamındaki tüm proxy hizmeti bağlantı noktalarını el ile kaldırın. Bu nesnelerin konumu aşağıdaki Active Directory PowerShell komutuyla bulunabilir:
 

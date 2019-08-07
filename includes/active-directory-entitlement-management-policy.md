@@ -5,21 +5,23 @@ services: active-directory
 author: rolyon
 ms.service: active-directory
 ms.topic: include
-ms.date: 05/16/2019
+ms.date: 07/31/2019
 ms.author: rolyon
 ms.custom: include file
-ms.openlocfilehash: da4bc51cdd8cdfad8212ee5a288f03874f673c2c
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: db16a2f122da1bf6c767e0a47c93c22f1882c406
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678209"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68817255"
 ---
 ### <a name="policy-for-users-in-your-directory"></a>İlke: Dizininizdeki kullanıcılar için
 
 İlkenizin bu erişim paketini isteyebilmek için dizininizdeki kullanıcılar için olmasını istiyorsanız bu adımları izleyin.  **Dizininizdeki kullanıcılar** hem dahili kullanıcılara hem de daha önce dizine davet edilen dış kullanıcılara, başka bir erişim paketiyle ya da Azure AD İlkeyi tanımlarken, bireysel kullanıcıları veya daha yaygın kullanıcı gruplarını belirtebilirsiniz. Örneğin, kuruluşunuz **tüm çalışanlar**gibi bir gruba zaten sahip olabilir.  Bu grup, erişim isteyebilen kullanıcılar için ilkeye eklenirse, o grubun herhangi bir üyesi daha sonra erişim isteğinde bulunabilir.
 
 1. **Erişim isteyebilen kullanıcılar** bölümünde, **dizininizdeki kullanıcılar için**öğesini seçin.
+
+    **Dizininizdeki kullanıcılar için** , dizininize eklenen hem üye kullanıcıları hem de Konuk kullanıcıları içerdiğini unutmayın. Yalnızca üye kullanıcıları dahil etmek ve konuk kullanıcıları eklemek istiyorsanız, **dizininizdeki kullanıcılar için** öğesini seçin ve ardından üye kullanıcılarınızın bir grubunu seçin. Gerekirse, üye kullanıcılarınızın dinamik bir grubunu oluşturabilirsiniz (Kullanıcı. userType-EQ "üye"). Daha fazla bilgi için bkz. [Azure Active Directory gruplar Için dinamik üyelik kuralları](../articles/active-directory/users-groups-roles/groups-dynamic-membership.md).
 
 1. **Kullanıcıları ve grupları seç** bölümünde, **Kullanıcı ve Grup Ekle**' ye tıklayın.
 
@@ -109,7 +111,7 @@ Süre sonu bölümünde, bir kullanıcının erişim paketine atamanın ne zaman
 
 1. Ek ayarları göstermek için **Gelişmiş süre sonu ayarlarını göster** ' e tıklayın.
 
-1. Kullanıcının atamalarını genişletmesine izin vermek için **kullanıcıların erişimi genişlemesine Izin ver** seçeneğini belirleyin **.**
+1. Kullanıcının atamalarını genişletmesine izin vermek için **kullanıcıların erişimi genişlemesine Izin ver** seçeneğini belirleyin.
 
     İlkede uzantılara izin veriliyorsa, Kullanıcı bir e-posta 14 gün ve ayrıca erişim paketi atamasının, atamayı genişletmesini istemek üzere süre sonu olarak ayarlanmayacak şekilde 1 gün alır.
 

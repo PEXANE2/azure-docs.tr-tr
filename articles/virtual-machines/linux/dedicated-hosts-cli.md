@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 07/29/2019
 ms.author: cynthn
-ms.openlocfilehash: 7eda675ed7694e1ad7de90f89282bd7a3cc50ea1
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 0c060e2ab94c0a57d4d4dc897702e115cfabd9a0
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68700424"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827299"
 ---
 # <a name="preview-deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>Önizleme: Azure CLı kullanarak VM 'Leri adanmış konaklara dağıtma
  
@@ -53,7 +53,7 @@ Her iki durumda da, konak grubunuz için hata etki alanı sayısını sağlaman�
 
 Hem kullanılabilirlik bölgelerini hem de hata etki alanlarını kullanmaya karar verebilirsiniz. 
 
-Bu örnekte, kullanılabilirlik bölgelerini ve hata etki alanlarını kullanarak bir konak grubu oluşturmak için [az VM konak grubu oluştur](/cli/azure/vm#az-vm-host-group-create) ' u kullanacağız. 
+Bu örnekte, kullanılabilirlik bölgelerini ve hata etki alanlarını kullanarak bir konak grubu oluşturmak için [az VM konak grubu oluştur](/cli/azure/vm/host/group#az-vm-host-group-create) ' u kullanacağız. 
 
 ```bash
 az vm host group create \
@@ -65,7 +65,7 @@ az vm host group create \
 
 ### <a name="other-examples"></a>Diğer örnekleri
 
-Kullanılabilirlik bölge 1 ' de (hata etki alanları olmadan) bir konak grubu oluşturmak için [az VM konak grubu oluştur](/cli/azure/vm#az-vm-host-group-create) ' u de kullanabilirsiniz.
+Kullanılabilirlik bölge 1 ' de (hata etki alanları olmadan) bir konak grubu oluşturmak için [az VM konak grubu oluştur](/cli/azure/vm/host/group#az-vm-host-group-create) ' u de kullanabilirsiniz.
 
 ```bash
 az vm host group create \
@@ -75,7 +75,7 @@ az vm host group create \
    --platform-fault-domain-count 1 
 ```
  
-Aşağıdaki, yalnızca hata etki alanlarını kullanarak bir konak grubu oluşturmak için [az VM konak grubu oluştur](/cli/azure/vm#az-vm-host-group-create) ' u kullanır (kullanılabilirlik bölgelerinin desteklenmediği bölgelerde kullanılmak üzere). 
+Aşağıdaki, yalnızca hata etki alanlarını kullanarak bir konak grubu oluşturmak için [az VM konak grubu oluştur](/cli/azure/vm/host/group#az-vm-host-group-create) ' u kullanır (kullanılabilirlik bölgelerinin desteklenmediği bölgelerde kullanılmak üzere). 
 
 ```bash
 az vm host group create \
@@ -91,7 +91,7 @@ az vm host group create \
 
 Konak SKU 'Ları ve fiyatlandırma hakkında daha fazla bilgi için bkz. [Azure ayrılmış ana bilgisayar fiyatlandırması](https://aka.ms/ADHPricing).
 
-Konak oluşturmak için [az VM Host Create](/cli/azure/vm#az-vm-host-create) kullanın. Konak grubunuz için bir hata etki alanı sayısı ayarlarsanız, ana bilgisayarınız için hata etki alanını belirtmeniz istenir.  
+Konak oluşturmak için [az VM Host Create](/cli/azure/vm/host#az-vm-host-create) kullanın. Konak grubunuz için bir hata etki alanı sayısı ayarlarsanız, ana bilgisayarınız için hata etki alanını belirtmeniz istenir.  
 
 ```bash
 az vm host create \
@@ -126,7 +126,7 @@ az vm create \
 
 ## <a name="check-the-status-of-the-host"></a>Konağın durumunu denetleme
 
-Ana bilgisayar sistem durumunu ve [az VM Host Get-Instance-View](/cli/azure/vm#az-vm-host-get-instance-view)kullanarak konağa ne kadar sanal makine dağıtacağınızı kontrol edebilirsiniz.
+Ana bilgisayar sistem durumunu ve [az VM Host Get-Instance-View](/cli/azure/vm/host#az-vm-host-get-instance-view)kullanarak konağa ne kadar sanal makine dağıtacağınızı kontrol edebilirsiniz.
 
 ```bash
 az vm host get-instance-view \
@@ -260,13 +260,13 @@ Bir konağı yalnızca, onu kullanan daha fazla sanal makine olmadığında sile
 az vm delete -n myVM -g myDHResourceGroup
 ```
 
-VM 'Leri sildikten sonra [az VM Host Delete](/cli/azure/vm#az-vm-host-delete)kullanarak Konağı silebilirsiniz.
+VM 'Leri sildikten sonra [az VM Host Delete](/cli/azure/vm/host#az-vm-host-delete)kullanarak Konağı silebilirsiniz.
 
 ```bash
 az vm host delete -g myDHResourceGroup --host-group myHostGroup --name myHost 
 ```
  
-Tüm konaklarınızı sildikten sonra [az VM konak grubu Sil](/cli/azure/vm#az-vm-host-group-delete)' i kullanarak konak grubunu silebilirsiniz.  
+Tüm konaklarınızı sildikten sonra [az VM konak grubu Sil](/cli/azure/vm/host/group#az-vm-host-group-delete)' i kullanarak konak grubunu silebilirsiniz.  
  
 ```bash
 az vm host group delete -g myDHResourceGroup --host-group myHostGroup  

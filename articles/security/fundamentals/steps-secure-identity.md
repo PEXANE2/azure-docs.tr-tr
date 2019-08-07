@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: martinco
-ms.openlocfilehash: 0ccd2ee8b2c9f542eabe7a297f4c99a3993a47e9
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: c5cdd12c3075d48ff32c40d686b32a650ec43d8e
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726747"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779774"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Kimlik altyapınızı güvenli hale getirmenin beş adımı
 
@@ -74,7 +74,7 @@ Azure AD 'de doğrudan kimlik oluşturursanız, kullanıcıların kullanıcılar
 Kuruluşunuz doğrudan kimlik doğrulama veya Federasyon ile karma kimlik çözümü kullanıyorsa, aşağıdaki iki nedenden dolayı Parola karması eşitlemesini etkinleştirmelisiniz:
 
 * Azure AD yönetiminde [sızdırılan kimlik bilgilerine sahip kullanıcılar](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-risk-events) , "koyu Web" üzerinde sunulan Kullanıcı adı ve parola çiftleri hakkında sizi uyarır. Daha sonra ihlal edilen üçüncü taraf sitelerde kimlik avı, kötü amaçlı yazılım ve parola yeniden kullanımı aracılığıyla inanılmaz bir parola miktarı sızdırıldı. Microsoft bu sızdırılan kimlik bilgilerinin birçoğunu bulur ve bu raporda, kuruluşunuzda kimlik bilgileriyle eşleşiyorsa, ancak yalnızca [parola karma eşitlemesini etkinleştirdiğinizde](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization)size bildirir!
-* Şirket içi kesinti durumunda (örneğin, fidye yazılımı saldırısında), [Parola karması eşitlemesini kullanarak bulut kimlik doğrulamasını](https://docs.microsoft.com/azure/security/azure-ad-choose-authn)kullanmaya geçebilirsiniz. Bu yedekleme kimlik doğrulama yöntemi, Office 365 dahil Azure Active Directory kimlik doğrulaması için yapılandırılan uygulamalara erişmeye devam etmeyi sağlar. Bu durumda BT çalışanları şirket içi kesinti çözümlenene kadar verileri paylaşmak için kişisel e-posta hesapları için gerekli olmayacaktır.
+* Şirket içi kesinti durumunda (örneğin, fidye yazılımı saldırısında), [Parola karması eşitlemesini kullanarak bulut kimlik doğrulamasını](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn)kullanmaya geçebilirsiniz. Bu yedekleme kimlik doğrulama yöntemi, Office 365 dahil Azure Active Directory kimlik doğrulaması için yapılandırılan uygulamalara erişmeye devam etmeyi sağlar. Bu durumda BT çalışanları şirket içi kesinti çözümlenene kadar verileri paylaşmak için kişisel e-posta hesapları için gerekli olmayacaktır.
 
 [Parola karması eşitleme](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization) 'nin nasıl çalıştığı hakkında daha fazla bilgi edinin.
 
@@ -146,7 +146,7 @@ Güvenlikle ilgili olayları ve ilgili uyarıları denetleme ve günlüğe kayde
 
 ### <a name="monitor-azure-ad"></a>Azure AD 'yi izleme
 
-Microsoft Azure hizmetleri ve özellikleri, güvenlik ilkeleriniz ve mekanizmalarda boşlukları belirlemenize ve binleri önlemeye yardımcı olmak üzere bu boşlukları gidermenize yardımcı olmak için yapılandırılabilir güvenlik denetimi ve günlüğe kaydetme seçenekleri sağlar. [Azure günlük kaydı ve](https://docs.microsoft.com/azure/security/azure-log-audit) denetim [, Azure Active Directory portalındaki denetim etkinliği raporları](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-audit-logs)kullanabilirsiniz.
+Microsoft Azure hizmetleri ve özellikleri, güvenlik ilkeleriniz ve mekanizmalarda boşlukları belirlemenize ve binleri önlemeye yardımcı olmak üzere bu boşlukları gidermenize yardımcı olmak için yapılandırılabilir güvenlik denetimi ve günlüğe kaydetme seçenekleri sağlar. [Azure günlük kaydı ve](https://docs.microsoft.com/azure/security/fundamentals/log-audit) denetim [, Azure Active Directory portalındaki denetim etkinliği raporları](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-audit-logs)kullanabilirsiniz.
 
 ### <a name="monitor-azure-ad-connect-health-in-hybrid-environments"></a>Karma ortamlarda Azure AD Connect Health izleme
 

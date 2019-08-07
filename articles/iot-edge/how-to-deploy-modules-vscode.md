@@ -10,12 +10,12 @@ ms.reviewer: ''
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 91a074cf98291b105864a69730314efff3482254
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 61ea7eb0b81c5489ad2bf20e8148d2481bb4fb13
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62126418"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840171"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-visual-studio-code"></a>Visual Studio code'dan Azure IOT Edge modüllerini dağıtmak
 
@@ -28,7 +28,7 @@ Bu makalede, bir JSON dağıtım bildirimi oluşturun, sonra IOT Edge cihazına 
 * Bir [IOT hub'ı](../iot-hub/iot-hub-create-through-portal.md) Azure aboneliğinizdeki.
 * Bir [IOT Edge cihazı](how-to-register-device-portal.md) yüklü olan bir IOT Edge çalışma zamanı ile.
 * [Visual Studio Code](https://code.visualstudio.com/).
-* [Azure IOT Araçları](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools#overview) Visual Studio Code için.
+* Visual Studio Code için [Azure IoT araçları](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools#overview) .
 
 ## <a name="configure-a-deployment-manifest"></a>Bir dağıtım bildirimi yapılandırma
 
@@ -71,7 +71,7 @@ Visual Studio Code kullanarak modüllerini dağıtmak için dağıtım bildirimi
              }
            },
            "modules": {
-             "tempSensor": {
+             "SimulatedTemperatureSensor": {
                "version": "1.0",
                "type": "docker",
                "status": "running",
@@ -95,7 +95,7 @@ Visual Studio Code kullanarak modüllerini dağıtmak için dağıtım bildirimi
            }
          }
        },
-       "tempSensor": {
+       "SimulatedTemperatureSensor": {
          "properties.desired": {}
        }
      }
@@ -128,10 +128,10 @@ Modül bilgileri yapılandırdığınız dağıtım bildirimini uygulayarak mod�
 
 1. Visual Studio Code Gezgini görünümünde genişletin **Azure IOT Hub cihazları** bölümü.
 
-1. Dağıtım bildirimi ile yapılandırmak istediğiniz IOT Edge cihazı sağ tıklayın.
+1. Dağıtım bildirimiyle yapılandırmak istediğiniz IoT Edge cihaza sağ tıklayın.
 
     > [!TIP]
-    > Seçtiğiniz cihazın IOT Edge cihazı olduğunu onaylamak için bu modüllerin listesini genişletin ve varlığını doğrulamak için seçin **$edgeHub** ve **$edgeAgent**. Her IOT Edge cihazı, bu iki modül dahildir.
+    > Seçtiğiniz cihazın IoT Edge bir cihaz olduğunu doğrulamak için, modül listesini genişletmek ve **$edgeHub** ve **$edgeAgent**varlığını doğrulamak için seçin. Her IoT Edge cihaz bu iki modülü içerir.
 
 1. Seçin **tek cihaz için dağıtım oluşturma**.
 

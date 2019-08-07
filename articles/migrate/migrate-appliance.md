@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/04/2019
 ms.author: raynew
-ms.openlocfilehash: 6537bfe5df8de298593428fb21448181ad8075fc
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: c31a9fde50de8190cdd7bc19600344a8e58cf60b
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663456"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827327"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Geçişi aleti
 
@@ -42,7 +42,7 @@ Gereç bu aracıların yüklü olduğunu.
 
 **Aracı** | **Ayrıntılar**
 --- | ---
-Bulma aracısı | Şirket içi VM 'lerden yapılandırma verilerini toplar.
+Bulma aracısı | Şirket içi sanal makinelerin yapılandırma verilerini toplar
 Değerlendirme aracısı | VM performans verilerini toplamak için şirket içi ortamı profiller.
 Geçiş bağdaştırıcısı | VM çoğaltmasını düzenleyin ve VM 'Ler ile Azure arasındaki iletişimi koordine edin.
 Geçiş ağ geçidi | Çoğaltılan VM verilerini Azure 'a gönderir.
@@ -200,8 +200,8 @@ Gereç üzerinde çalışan Azure geçiş aracıları güncelleştirildiğinden,
 
 - Otomatik güncelleştirme gereç üzerinde varsayılan olarak etkin olduğundan bu otomatik olarak gerçekleşir.
 - Aracıları el ile güncelleştirmek için bu varsayılan ayarı değiştirebilirsiniz.
-- Otomatik güncelleştirmeleri devre dışı bırakmak için, HKLM\SOFTWAREMicrosoft\Azure. içinde kayıt defteri anahtarı gereç otomatik güncelleştirmesini ayarlayın.
-
+- Otomatik güncelleştirmeyi devre dışı bırakmak için, HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance > kayıt defteri düzenleyicisine gidin ve kayıt defteri anahtarını-"otomatik güncelleştirme" (DWORD) olarak ayarlayın.
+ 
 ### <a name="set-agent-updates-to-manual"></a>Aracı güncelleştirmelerini el ile olarak ayarla
 
 El ile güncelleştirmeler için, Gereç üzerindeki tüm olmayan aracıların **Güncelleştir** düğmesini kullanarak, aracıdaki tüm aracıları aynı anda güncelleştirdiğinizden emin olun. Güncelleştirme ayarını dilediğiniz zaman yeniden otomatik güncelleştirmelere geçirebilirsiniz.

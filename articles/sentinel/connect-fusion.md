@@ -1,6 +1,6 @@
 ---
-title: Fusion Gözcü Azure önizlemesinde etkinleştirme | Microsoft Docs
-description: Fusion Azure Gözcü içinde etkinleştirmeyi öğrenin.
+title: Azure Sentinel önizlemesinde Fusion 'ı etkinleştirin | Microsoft Docs
+description: Azure Sentinel 'de Fusion 'ı nasıl etkinleştireceğinizi öğrenin.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -15,51 +15,51 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 1e17afb2f06265975442c127baecc8cab75d63f7
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: f90bb86632886d8a2ca6c6e8c60d3b79f5d0b9e9
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67611268"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780437"
 ---
 # <a name="enable-fusion"></a>Fusion etkinleştirme
 
 > [!IMPORTANT]
-> Azure Sentinel şu anda genel Önizleme aşamasındadır.
+> Azure Sentinel Şu anda genel önizlemededir.
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
 > Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Gözcü Azure Machine Learning'de en baştan doğru yerleşik olarak sunulmaktadır. Sistem bağlarla ile güvenlik analistleri, güvenlik veri Bilim insanlarının ve mühendislerin verimli hale amaçlayan ML yeniliklerini tasarladık. Özellikle uyarı yorulma azaltmak için Azure Gözcü Fusion yerleşik bir yenilik olan.
+Azure Sentinel 'deki Machine Learning, baştan itibaren yerleşik olarak bulunur. Güvenlik analistlerini, güvenlik veri bilimcileri ve mühendislerini üretken hale getirmek için ML yenilikleri ile sistemi geliştirdik. Bu tür bir yenilik, özellikle de uyarı FAG 'yi azaltmak için oluşturulmuş Azure Sentinel Fusion ' dur.
 
-Fusion, Azure AD kimlik koruması gibi farklı ürün daha düşük doğruluk anormal etkinlikler milyonlarca Microsoft Cloud App yönetilebilir bir dizi birleştirilecek Security, arasındaki ilişkilendirmeyi desteklenen graf makine öğrenimi algoritması kullanır. ilgi çekici güvenlik çalışmaları.
+Fusion, Azure AD Kimlik Koruması ve Microsoft Cloud App Security gibi farklı ürünlerden milyonlarca daha düşük uygunlukta anormal etkinlik arasında ilişki kurmak için grafik tabanlı makine öğrenimi algoritmalarını kullanır ve bunları Yönetilebilir sayıda ilginç güvenlik olayları.
 
 ## <a name="enable-fusion"></a>Fusion etkinleştirme
 
-1. Azure portalında Cloud Shell'i açmak için simgeyi seçin.
+1. Azure portal Cloud Shell açmak için simgeyi seçin.
   ![Cloud Shell](./media/connect-fusion/cloud-shell.png)
 
-2.  İçinde **Hoş Geldiniz Cloud Shell** açar, aşağıdaki windows PowerShell seçin.
+2.  Aşağıda açılan **Cloud Shell Windows 'A hoş geldiniz** sayfasında PowerShell ' i seçin.
 
-3.  Dağıtılan Azure Gözcü, aboneliği seçin ve **depolama oluşturma**.
+3.  Azure Sentinel 'i dağıttığınız aboneliği seçin ve **depolama alanını oluşturun**.
 
-4. Kimlik doğrulaması yaptıktan sonra Azure sürücüsü oluşturulmuştur, komut isteminde aşağıdaki komutları çalıştırın:
+4. Kimliğiniz doğrulandıktan ve Azure sürücünüz derlendikten sonra, komut isteminde aşağıdaki komutları çalıştırın:
 
             az resource update --ids /subscriptions/{Subscription Guid}/resourceGroups/{Log analytics resource Group Name}/providers/Microsoft.OperationalInsights/workspaces/{Log analytics workspace Name}/providers/Microsoft.SecurityInsights/settings/Fusion --api-version 2019-01-01-preview --set properties.IsEnabled=true --subscription "{Subscription Guid}"
 
-## <a name="disable-fusion"></a>Fusion devre dışı bırak
+## <a name="disable-fusion"></a>Fusion 'ı devre dışı bırak
 
-Yukarıdaki yordamı izleyin ve aşağıdaki komutu çalıştırın:
+Yukarıdaki yordamın aynısını izleyin ve aşağıdaki komutu çalıştırın:
 
             az resource update --ids /subscriptions/{Subscription Guid}/resourceGroups/{Log analytics resource Group Name}/providers/Microsoft.OperationalInsights/workspaces/{Log analytics workspace Name}/providers/Microsoft.SecurityInsights/settings/Fusion --api-version 2019-01-01-preview --set properties.IsEnabled=false --subscription "{Subscription Guid}"
 
-## <a name="view-the-status-of-fusion"></a>Fusion durumunu görüntüleme
+## <a name="view-the-status-of-fusion"></a>Fusion 'un durumunu görüntüleme
 
             az resource show --ids /subscriptions/{Subscription Guid}/resourceGroups/{Log analytics resource Group Name}/providers/Microsoft.OperationalInsights/workspaces/{Log analytics workspace Name}/providers/Microsoft.SecurityInsights/settings/Fusion --api-version 2019-01-01-preview --subscription "{Subscription Guid}"
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu belgede, Azure Gözcü içinde Fusion etkinleştirme öğrendiniz. Azure Gözcü hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
-- Bilgi nasıl [görünürlük almak, veri ve olası tehditleri](quickstart-get-visibility.md).
-- Başlama [Azure Gözcü kullanarak tehditleri algılama](tutorial-detect-threats.md).
+Bu belgede, Azure Sentinel 'de Fusion 'u etkinleştirmeyi öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
+- [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
+- [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats.md)başlayın.
 

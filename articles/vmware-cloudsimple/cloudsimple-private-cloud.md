@@ -1,132 +1,132 @@
 ---
-title: Özel VMware çözümüyle CloudSimple - Azure bulutlarında
-description: CloudSimple özel Bulutlar ve kavramları hakkında bilgi edinin.
+title: CloudSimple-Azure tarafından VMware çözümünde özel bulutlar
+description: CloudSimple özel bulutları ve kavramları hakkında bilgi edinin.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/10/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e3ab53466cae5bd39d85f8d846c8e59ad94f1f2d
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 9885366d5987870fe2739083ff47abaae9ef6ed1
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165756"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816197"
 ---
 # <a name="cloudsimple-private-cloud-overview"></a>CloudSimple özel buluta genel bakış
 
-CloudSimple dönüştürür ve genel bulutlara VMware iş yüklerini dakikalar içinde genişletir. CloudSimple hizmetini kullanarak VMware Azure çıplak metal altyapısı üzerinde yerel olarak dağıtabilirsiniz. Dağıtımınız, Azure konumlarında yaşar ve Azure bulut geri kalanı ile tamamen tümleştirilir.
+CloudSimple, VMware iş yüklerini dakikalar içinde genel bulutlara dönüştürür ve genişletir. CloudSimple hizmetini kullanarak VMware 'yi Azure çıplak altyapısına yerel olarak dağıtabilirsiniz. Dağıtımınız Azure konumlarında çalışır ve Azure bulutunun geri kalanı ile tamamen tümleştirilir.
 
-* Tam VMware operasyonel devamlılığı CloudSimple çözümüdür. Bu çözüm, genel bulut avantajlarını sağlar:
+* CloudSimple çözümü, tamamen VMware operasyonel devamlılığını sağlar. Bu çözüm, için genel bulut avantajları sağlar:
   * Esneklik
   * Yenilik
-  * Verimliliği
-* CloudSimple ile toplam sahiplik maliyetinizi düşürür bir bulut tüketim modelinden yararlanır. Ayrıca, isteğe bağlı sağlama, ödeme olarak-,-büyütme ve kapasite iyileştirme de sunar.
-* CloudSimple tamamen uyumludur:
-  * Mevcut araçları
+  * Verimlilik
+* CloudSimple sayesinde, toplam sahip olma maliyetinizi alçaltan bir bulut tüketim modelinden faydalanırsınız. İsteğe bağlı sağlama, Kullandıkça öde ve kapasite iyileştirmesi de sunar.
+* CloudSimple, ile tamamen uyumludur:
+  * Mevcut araçlar
   * Beceriler
   * İşlemler
-* Bu uyumluluk ilkeleriniz kesintiye uğratmadan iş yükleri, Azure bulutunda yönetme olanağı sağlar:
+* Bu uyumluluk, takımlarınızın, ilkelerinizi kesintiye uğratmadan Azure bulutundaki iş yüklerini yönetmesini sağlar:
   * Ağ
   * Güvenlik  
   * Veri koruma  
   * Denetim
-* Altyapı ve gerekli tüm ağ ve Yönetim Hizmetleri CloudSimple yönetir. CloudSimple hizmet odaklanmak takımınızın sağlar:
+* CloudSimple, altyapıyı ve tüm gerekli ağ ve yönetim hizmetlerini yönetir. CloudSimple hizmeti takımınızın odaklanılmasını sağlar:
   * İş değeri
   * Uygulama sağlama
   * İş sürekliliği
   * Destek
-  * İlke zorlama
+  * İlke uygulama
 
 ## <a name="private-cloud-environment-overview"></a>Özel bulut ortamına genel bakış
 
-Bir özel buluta bu ortamları gibi yalıtılmış bir VMware yığınınızın şöyledir:
+Özel bulut, bu ortamlar gibi yalıtılmış bir VMware yığınına sahiptir:
 
-* ESXi ana bilgisayarları
+* ESXi Konakları
 * vCenter
 * vSAN
 * NSX
 
-Özel Bulutlar, kendi Yönetim etki alanındaki bir vCenter sunucusu tarafından yönetilir.
+Özel bulutlar, kendi yönetim etki alanında bir vCenter sunucusu tarafından yönetilir.
 
-Yığın çalışır:
+Yığın üzerinde çalışır:
 
-* Ayrılmış düğümler
-* Yalıtılmış çıplak metal donanım
+* Adanmış düğümler
+* Yalıtılmış tam donanım düğümleri
 
-Kullanıcılar yerel VMware araçları yığınından kullanır:
+Kullanıcılar, yığını aşağıdakiler dahil olmak üzere yerel VMware araçları aracılığıyla kullanır:
 
 * vCenter
 * NSX Yöneticisi
 
-Azure konumları adanmış düğümler dağıtabilirsiniz. Daha sonra bunları CloudSimple ve Azure ile yönetebilirsiniz. Özel bulut bir veya daha fazla vSphere kümelerindeki oluşur ve her küme 3-16 düğüm içerir.
+Azure konumlarında adanmış düğümler dağıtabilirsiniz. Daha sonra bunları Azure ve CloudSimple ile yönetebilirsiniz. Bir özel bulut, bir veya daha fazla vSphere kümesinden oluşur ve her küme 3 ile 16 arasında düğüm içerir.
 
 Sağlanan düğümleri kullanarak özel bir bulut oluşturabilirsiniz:
 
 * Kullandıkça Öde düğümleri
 * Ayrılmış, adanmış düğümler
 
-Özel bulut, şirket içi ortamınız ve aşağıdaki bağlantıları kullanarak Azure ağı bağlanabilirsiniz:
+Özel bulutu aşağıdaki bağlantıları kullanarak şirket içi ortamınıza ve Azure ağına bağlayabilirsiniz:
 
 * Güvenlik
 * Özel VPN
 * Azure ExpressRoute
 
-Özel bulut ortamı, bir tek hata noktası bulunmamasına ortadan kaldırmak için tasarlanmıştır:
+Özel bulut ortamı, tek bir hata noktası olmasını önlemek için tasarlanmıştır:
 
-* ESXi kümeleri vSphere yüksek kullanılabilirlik ile yapılandırılmış ve dayanıklılık için en az bir yedek düğüm için boyutlandırılır.
-* vsan'ı birincil yedek depolama sağlar. vsan'ı tek bir hataya karşı koruma sağlamak için en az üç düğüm gerektirir. Vsan'ı, daha büyük kümeleri için daha yüksek bir dayanıklılık sağlamak üzere yapılandırabilirsiniz.
-* Depolama arızasına karşı korumak için RAID 10 depolama ilkesiyle vCenter ve PSC NSX Manager Vm'leri yapılandırabilirsiniz. Ardından, vSphere HA düğümü ve ağ hatalarına karşı tarafından korumalı olup olmadıklarını.
+* ESXi kümeleri vSphere yüksek kullanılabilirliğiyle yapılandırılır ve dayanıklılık için en az bir yedek düğüme sahip olacak şekilde boyutlandırılır.
+* vSAN, yedekli birincil depolama alanı sağlar. vSan, tek bir hataya karşı koruma sağlamak için en az üç düğüm gerektirir. VSAN 'ı daha büyük kümeler için daha yüksek esneklik sağlayacak şekilde yapılandırabilirsiniz.
+* Depolama hatasına karşı korunmak için, vCenter, PSC ve NSX Yöneticisi sanal makinelerini RAID-10 depolama ilkesi ile yapılandırabilirsiniz. Daha sonra, düğüm ve ağ hatalarıyla karşı vSphere HA tarafından korunur.
 
-## <a name="scenarios-for-deploying-a-private-cloud"></a>Özel bir buluta dağıtmak için senaryolar
+## <a name="scenarios-for-deploying-a-private-cloud"></a>Özel bulut dağıtmaya yönelik senaryolar
 
-* **Veri merkezinin kullanımdan kaldırma veya taşıma**
+* **Veri merkezi kullanımdan kaldırma veya geçiş**
 
-  * Ek kapasite sınırları mevcut veri Merkezinize ulaşın veya donanım Yenile alın.
-  * Gereken kapasite buluta ekleyin ve donanım yenilemeleri yönetme sıkıntılarına otomatik çözüm sağlamaya ortadan kaldırın.
-  * Risk ve buluta geçiş, zaman alıcı dönüştürmeleri veya rearchitecture karşılaştırıldığında maliyetini azaltın.
-  * Buluta geçiş hızlandırmak için alışık olduğunuz VMware araçları ve becerileri kullanın. Bulutta Azure Hizmetleri, kendi belirlediğiniz hızda uygulamalarınızı modernize etme kullanın.
+  * Var olan veri merkezinizin sınırlarına ulaştığınızda veya donanımı yenilediğiniz zaman ek kapasite kazanın.
+  * Gerekli kapasiteyi buluta ekleyin ve donanım yenilemelerinin yönetilmesine engel olursunuz.
+  * Zaman alan Dönüştürmelere veya yeniden mimariye kıyasla bulut geçişlerinin riskini ve maliyetini azaltın.
+  * Bulut geçişlerini hızlandırmak için tanıdık VMware araçlarını ve yeteneklerini kullanın. Bulutta uygulamalarınızın hızını modernleştirin için Azure hizmetlerini kullanın.
 
-* **İsteğe bağlı olarak genişletin**
+* **İsteğe bağlı Genişlet**
 
-  * Yeni geliştirme ortamları veya dönemsel kapasite artışları gibi beklenmeyen ihtiyaçlarınızı karşılayacak şekilde buluta genişletin.
-  * İsteğe bağlı olarak yeni kapasite oluşturun ve yalnızca ihtiyacınız olduğu sürece saklayın.
-  * Ön yatırımınızı azaltın, sağlama hızını artırın ve hem şirket içinde ve bulutta aynı mimarisi ve ilkeleri ile karmaşıklığı azaltın.
+  * Yeni geliştirme ortamları veya mevsimsel kapasite patlamaları gibi, beklenmeyen ihtiyaçları karşılamak için buluta genişletin.
+  * İsteğe bağlı olarak yeni kapasite oluşturun ve yalnızca ihtiyaç duyduğunuz sürece saklayın.
+  * Hem şirket içinde hem de bulutta aynı mimari ve ilkelerle, ön yatırımınızı düşürün, sağlama hızını hızlandırın ve karmaşıklığı azaltabilirsiniz.
 
-* **Olağanüstü durum kurtarma ve Azure bulut ortamında sanal masaüstleri**
+* **Azure bulutunda olağanüstü durum kurtarma ve sanal masaüstleri**
 
-  * Uzaktan erişim verileri, uygulamalar ve masaüstü bilgisayarlar Azure bulutunda oluşturun. Yüksek bant genişlikli bağlantıları olan karşıya yükleme / indirme veri kaynaklı olayların Hızlı Kurtarma. Yanıt hızlı, düşük gecikmeli ağlar verin, kullanıcıların bir masaüstü uygulamasından beklediğiniz zaman.
+  * Azure bulutundaki verilere, uygulamalara ve masaüstlerine uzaktan erişim sağlayın. Yüksek bant genişliğine sahip bağlantılarla, olayları kurtarmak için verileri hızlı bir şekilde karşıya yükler/indirirler. Düşük gecikmeli ağlar, kullanıcıların bir masaüstü uygulamasından beklediği sürelerle hızlı yanıt süreleri sağlar.
 
-  * Tüm ilkeler ve CloudSimple portalı ve alışık olduğunuz VMware Araçları'nı kullanarak bulutta ağ çoğaltın. Bu çoğaltma, çaba ve oluşturma ve yönetme DR ve VDI uygulamaları riskini azaltır.
+  * CloudSimple portalını ve tanıdık VMware araçlarını kullanarak buluttaki tüm ilkelerinizi ve ağınızı çoğaltın. Bu çoğaltma, DR ve VDı uygulamalarının oluşturulmasına ve yönetilmesine ilişkin çabayı ve riskleri azaltır.
 
-* **Yüksek performanslı uygulamaları ve veritabanları**
+* **Yüksek performanslı uygulamalar ve veritabanları**
 
-  * Hiper yakınsanmış mimarisi CloudSimple tarafından sağlanan En zorlu iş yüklerini çalıştırın.
-  * Oracle, Microsoft SQL server, ara yazılım sistemleri ve yüksek performanslı no-SQL veritabanı'nı çalıştırın.
+  * En zorlu iş yüklerinizi CloudSimple tarafından sunulan hiper yakınsama mimarisiyle çalıştırın.
+  * Oracle, Microsoft SQL Server, ara yazılım sistemleri ve yüksek performanslı SQL veritabanlarını çalıştırın.
 
-  * Yüksek hızlı 25 GB/sn ağ bağlantıları ile kendi veri merkezi olarak bulut deneyimi. Yüksek hızlı bağlantıları etkinleştirmek, şirket içinde azure'da VMware kapsayan hibrit uygulamalar çalıştırmak ve performanstan taviz olmadan Azure çok özel iş yükleri.
+  * Yüksek hızda 25 Gbps ağ bağlantıları sayesinde bulutu kendi veri merkezinizle yaşayın. Yüksek hızlı bağlantılar, performansa ödün vermeden şirket içi, Azure 'da VMware ve Azure özel iş yüklerine yayılan hibrit uygulamalar çalıştırmanızı sağlar.
 
-* **Gerçek Hibrit**
+* **Doğru karma**
 
-  * DevOps, VMware ve Azure Hizmetleri genelinde birleştirin.
-  * VMware yönetimi için Azure Hizmetleri ve tüm yüklerinize uygulanabilir çözümleri iyileştirin.
-  * Genel bulut Hizmetleri, veri merkezinizi genişletin veya uygulamalarınızı yeniden oluşturma zorunda kalmadan erişir.
-  * Kimlik, erişim denetimi ilkeleri, günlüğe kaydetme ve izleme için azure'da VMware uygulamaları tek bir merkezden yönetin.
+  * VMware ve Azure hizmetleri arasında DevOps 'u birleştirin.
+  * Azure hizmetleri ve tüm iş yüklerinizde uygulanabilen çözümler için VMware yönetimini iyileştirin.
+  * Veri merkezinizi genişletmek veya uygulamalarınızı yeniden mimarmadan genel bulut hizmetlerine erişin.
+  * Azure 'da VMware uygulamaları için kimlikleri, erişim denetim ilkelerini, günlüğe kaydetmeyi ve izlemeyi merkezileştirin.
 
-## <a name="limits"></a>Limits
+## <a name="limits"></a>Sınırlar
 
-Aşağıdaki tablo, bir özel bulut kaynaklarında düğümü sınırları gösterir.
+Aşağıdaki tabloda, özel bir bulutun kaynaklarına ait düğüm sınırları gösterilmektedir.
 
 | Resource | Sınır |
 |----------|-------|
 | Özel bir bulut oluşturmak için düğüm sayısı alt sınırı | 3 |
-| En fazla özel bulut üzerinde bir kümedeki düğüm sayısını | 16 |
-| En fazla özel bulutta düğüm sayısı | 64 |
-| Yeni kümede düğüm sayısı alt sınırı | 3 |
+| Özel buluttaki bir kümede bulunan en fazla düğüm sayısı | 16 |
+| Özel buluttaki en fazla düğüm sayısı | 64 |
+| Yeni kümedeki düğüm sayısı alt sınırı | 3 |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Bilgi edinmek için nasıl [özel bulut oluşturma](https://docs.azure.cloudsimple.com/create-private-cloud/)
-* Bilgi edinmek için nasıl [bir özel bulut ortamı yapılandırma](quickstart-create-private-cloud.md)
+* [Özel bulut oluşturmayı](https://docs.azure.cloudsimple.com/create-private-cloud/) öğrenin
+* [Özel bir bulut ortamını yapılandırmayı](quickstart-create-private-cloud.md) öğrenin

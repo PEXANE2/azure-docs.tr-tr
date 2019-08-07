@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/10/2019
-ms.openlocfilehash: f9fd9f88a0aa6af9cd4160bf5879b9b8f383dca1
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: f0fb6f0d2b2579679ee8a6ec43b3241377701d48
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720422"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780894"
 ---
 # <a name="enterprise-security-for-azure-machine-learning-service"></a>Azure Machine Learning hizmeti için kurumsal güvenlik
 
@@ -161,7 +161,7 @@ Kayıt defterinizde (ACR) bulunan tüm kapsayıcı görüntüleri, bekleyen olar
 
 Her işlem düğümü için işletim sistemi diski, Azure depolama 'da depolanır Azure Machine Learning hizmet depolama hesaplarında Microsoft tarafından yönetilen anahtarlar kullanılarak şifrelenir. Bu işlem kısa ömürlü olur ve normalde sıraya alınmış bir çalışan olmadığında kümeler ayarlanır. Temel alınan sanal makine, için de sağlanmış ve işletim sistemi diski silinmiş. Azure disk şifrelemesi, işletim sistemi diski için desteklenmez.
 Her bir sanal makinenin işletim sistemi işlemleri için yerel bir geçici diski de vardır. Bu disk, eğitim verilerini hazırlamak için isteğe bağlı olarak da kullanılabilir. Bu disk şifrelenmedi.
-Rest 'in Azure 'da nasıl çalıştığı hakkında daha fazla bilgi için, bkz. [Azure veri şifreleme-Rest](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest).
+Rest 'in Azure 'da nasıl çalıştığı hakkında daha fazla bilgi için, bkz. [Azure veri şifreleme-Rest](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest).
 
 ### <a name="encryption-in-transit"></a>Aktarım sırasında şifreleme
 

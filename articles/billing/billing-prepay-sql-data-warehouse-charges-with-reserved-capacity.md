@@ -6,14 +6,14 @@ author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 07/19/2019
+ms.date: 08/02/2019
 ms.author: banders
-ms.openlocfilehash: 08c9f958f5103da9961f4c2d29be97f455cecc4b
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 6ee7a661434bb756c6cf196937229db19d06b373
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359255"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779976"
 ---
 # <a name="prepay-for-sql-data-warehouse-charges-with-reserved-capacity"></a>Ayrılmış kapasiteye sahip SQL veri ambarı ücretleri için ön ödeme
 
@@ -61,15 +61,11 @@ SQL veri ambarı rezervasyon boyutu, kullandığınız toplam bilgi işlem veril
 8. **Satın al**'ı seçin.
 9. Satın alma durumunuzu görmek için **Bu ayırmayı görüntüle** ' yi seçin.
 
-## <a name="cancellations-and-exchanges"></a>İptaller ve alışverişlerde
+## <a name="cancel-exchange-or-refund-reservations"></a>İptal, Exchange veya para iadesi rezervasyonları
 
-SQL veri ambarı ayrılmış kapasitesini iptal etmeniz gerekirse,% 12 erken sonlandırma ücreti olabilir. Para iadeleri satın aldığınız fiyattan veya geçerli rezervasyon fiyatından düşük olana göre hesaplanır. Para iadesi, yıl başına $50.000,00 ile sınırlıdır. Aldığınız para iadesi, kalan eşit oranda dağıtılmış bakiye eksi% 12 erken sonlandırma ücreti üzerinden alınır. İptal etmek için Azure portal rezervasyonuna gidin ve **para iadesi**' ni seçin.
+Belirli sınırlamalara sahip rezervasyonları iptal edebilir, Exchange veya para iadesi yapabilirsiniz. Daha fazla bilgi için bkz. [Azure ayırmaları Için self servis değişimlerinin ve para iadesi](billing-azure-reservations-self-service-exchange-and-refund.md).
 
-SQL veri ambarı ayrılmış kapasitenizi başka bir bölgeye veya terime değiştirmeniz gerekiyorsa, bu değeri eşit veya daha büyük bir değer olan başka bir rezervasyon için değiş tokuş edebilirsiniz. Yeni ayırma işleminin başlangıç tarihi değiştirilen ayırma işleminin başlangıç tarihiyle aynı olmaz. Yeni ayırmayı oluştururken bir veya üç yıllık terim başlar. Exchange için Azure portal ayırmayı açın ve **Exchange**' i seçin.
-
-Rezervasyonları Exchange veya para iadesi hakkında daha fazla bilgi için bkz. [rezervasyon alışverişi ve para](billing-azure-reservations-self-service-exchange-and-refund.md)iadesi.
-
-Rezervasyon indirimi, SQL veri ambarı ayrılmış kapasite kapsamı ve bölgesiyle eşleşen SQL veri ambarı örneği sayısına otomatik olarak uygulanır. SQL veri ambarı ayrılmış kapasitesinin kapsamını [Azure Portal](https://portal.azure.com/), POWERSHELL, CLı veya API aracılığıyla güncelleştirebilirsiniz.
+Bir rezervasyon indirimi, SQL veri ambarı ayrılmış kapasite kapsamı ve bölgesiyle eşleşen SQL veri ambarı örneklerinin sayısına otomatik olarak uygulanır. SQL veri ambarı ayrılmış kapasitesinin kapsamını [Azure Portal](https://portal.azure.com/), POWERSHELL, CLı veya API aracılığıyla güncelleştirebilirsiniz.
 
 ## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bizimle iletişim kurun
 

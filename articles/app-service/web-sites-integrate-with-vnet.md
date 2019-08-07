@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/25/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 20ef71f98817a57f884e9c5a3cef4ceeaebe74eb
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 8321a9dd779406b2d1de44bd4c9313e4d855548d
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498432"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68740905"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Uygulamanızı bir Azure sanal ağıyla tümleştirin
 Bu belgede Azure App Service sanal ağ tümleştirme özelliği ve [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)uygulamalarla nasıl ayarlanacağı açıklanmaktadır. [Azure sanal ağları][VNETOverview] (VNet 'ler), internet 'ten yönlendirilebilir olmayan bir ağa birçok Azure kaynağınız yerleştireklemenize olanak tanır.  
@@ -136,11 +136,10 @@ Ağ Geçidi gereken VNet tümleştirme özelliği:
 * App Service planında tümleştirilebilen beş adede kadar VNET sağlar 
 * Bir App Service planı tarafından kullanılabilecek toplam sayıyı etkilemeden bir App Service planında birden çok uygulama tarafından kullanılmasını sağlar.  Aynı App Service planında aynı VNet 'i kullanan 6 uygulamanız varsa, bu, kullanılmakta olan 1 VNet olarak sayılır. 
 * Noktadan siteye VPN ile yapılandırılmış bir sanal ağ geçidi gerektirir
-* Linux uygulamalarıyla kullanım için desteklenmez
 * Ağ geçidinde SLA nedeniyle% 99,9 SLA 'sını destekler
 
 Bu özellik şunları desteklemez:
-
+* Linux uygulamalarıyla kullanma
 * ExpressRoute üzerinden kaynaklara erişme 
 * Hizmet Uç Noktaları üzerinden kaynaklara erişme 
 
@@ -268,7 +267,7 @@ Sonraki araç, bir konak ve bağlantı noktası birleşimine TCP bağlantısı i
 #### <a name="debugging-access-to-vnet-hosted-resources"></a>VNet barındırılan kaynaklara erişim hatası ayıklama
 Uygulamanızın belirli bir konağa ve bağlantı noktasına ulaşmasını engelleyebilen birçok şey vardır. Çoğu zaman üç işlemlerden biridir:
 
-* **Bir güvenlik duvarı bu şekilde yapılır.** Bu şekilde bir güvenlik duvarınız varsa, TCP zaman aşımına uğrayacaktır. Bu durumda TCP zaman aşımı 21 saniyedir. Bağlantıyı sınamak  için tcma aracını kullanın. TCP zaman aşımları, güvenlik duvarlarının ötesinde çok sayıda şey olabilir ancak buradan başlayabilir. 
+* **Bir güvenlik duvarı bu şekilde yapılır.** Bu şekilde bir güvenlik duvarınız varsa, TCP zaman aşımına uğrayacaktır. Bu durumda TCP zaman aşımı 21 saniyedir. Bağlantıyı sınamak için tcma aracını kullanın. TCP zaman aşımları, güvenlik duvarlarının ötesinde çok sayıda şey olabilir ancak buradan başlayabilir. 
 * **DNS erişilebilir değil.** DNS sunucusu başına DNS zaman aşımı üç saniyedir. İki DNS sunucunuz varsa, zaman aşımı 6 saniyedir. DNS çalışıp çalışmadığını görmek için nameresolver kullanın. Sanal ağınızın yapılandırıldığı DNS 'i kullanmayan için nslookup 'ı kullanamıyoruz. Erişilemezse, DNS erişimi engelleyen bir güvenlik duvarına veya NSG 'ye sahip olabilirsiniz veya bu durumda olabilir.
 
 Bu öğeler sorunlarınızı yanıtlamazsanız, şunun gibi şeyler için göz atın: 

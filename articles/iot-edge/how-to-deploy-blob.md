@@ -9,12 +9,12 @@ ms.service: iot-edge
 ms.custom: seodec18
 ms.reviewer: arduppal
 manager: mchad
-ms.openlocfilehash: 4511510dec6f488e1a6ea9a6842b771d2a298fec
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 86040020c8f9163a327b2029008e3648723b14ec
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640664"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839678"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>IoT Edge modülünde Azure Blob Storage 'ı cihazınıza dağıtma
 
@@ -168,7 +168,7 @@ Azure IOT Edge, uç çözümleri geliştirmenize yardımcı olması için Visual
 
 1. Açık *deployment.template.json* yeni çözüm çalışma alanı ve Bul **modülleri** bölümü. Aşağıdaki yapılandırma değişikliklerini yapın:
 
-   1. Silme **tempSensor** haliyle modülü, bu dağıtım için gerekli değildir.
+   1. Bu dağıtım için gerekli olmadığından **SimulatedTemperatureSensor** modülünü silin.
 
    1. Aşağıdaki kodu `createOptions` kopyalayıp alanına yapıştırın:
 

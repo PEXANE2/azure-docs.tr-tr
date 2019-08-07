@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 7/30/2019
-ms.openlocfilehash: 780b9ae6e4664af86fa655c9136193bed58526d9
-ms.sourcegitcommit: 6ad03fa28a0f60cb6dce6144f728c2ceb56ff6e2
+ms.openlocfilehash: a61ddf57d4f01fcaf4a949add29c677aa94060a9
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68708504"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827851"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-your-data-lake-or-data-warehouse-to-azure"></a>Data Lake veya veri ambarınızdan verileri Azure 'a geçirmek için Azure Data Factory kullanın 
 
@@ -26,7 +26,7 @@ Azure Data Factory Data Lake veya kurumsal veri Ambarınızı (EDW) Azure 'a ge�
 - AWS S3, şirket içi Hadoop dosya sisteminden Azure 'a büyük veri iş yükü geçişi. 
 - Oracle sınavlarından (Netezza, Teradata, AWS Redshift 'den Azure 'a) EDW geçişi. 
 
-Azure Data Factory, Data Lake geçişi için PBs ' veri düzeyini ve veri ambarı geçişi için on TB veri taşıyabilir. 
+Azure Data Factory Data Lake geçişi için veri PBs ve veri ambarı geçişi için on TB veri taşıyabilir. 
 
 ## <a name="why-azure-data-factory-can-be-used-for-data-migration"></a>Veri geçişi için neden Azure Data Factory kullanılabilir? 
 
@@ -59,4 +59,4 @@ Veri geçişini iki hafta içinde (geçiş penceresi) gerçekleştirmek istiyors
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Data Factory ile birden çok kapsayıcıdan dosya kopyalama](solution-template-copy-files-multiple-containers.md)
+- [AWS S3 'ten Azure 'a veri geçirme](data-migration-guidance-s3-azure-storage.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure Önizleme Gözcü çalışmalarıyla araştırma | Microsoft Docs
-description: Azure Gözcü çalışmalarıyla araştırmak öğrenmek için bu öğreticiyi kullanın.
+title: Azure Sentinel önizleme ile olayları araştırın | Microsoft Docs
+description: Azure Sentinel ile olayları araştırmayla ilgili bilgi edinmek için bu öğreticiyi kullanın.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -15,65 +15,65 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/6/2019
 ms.author: rkarlin
-ms.openlocfilehash: 82fac23fc2d718aa908f6291241abaa2aedb8815
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: bad3fddd6caf7e6eb455e59280f181c787b95a4e
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621178"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780393"
 ---
-# <a name="tutorial-investigate-cases-with-azure-sentinel-preview"></a>Öğretici: Azure Önizleme Gözcü çalışmalarıyla araştırın
+# <a name="tutorial-investigate-incidents-with-azure-sentinel-preview"></a>Öğretici: Azure Sentinel önizleme ile olayları araştırın
 
 > [!IMPORTANT]
-> Azure Sentinel şu anda genel Önizleme aşamasındadır.
+> Azure Sentinel Şu anda genel önizlemededir.
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Bu öğretici Azure Gözcü ile tehditleri algılamanıza yardımcı olur.
+Bu öğretici, Azure Sentinel ile tehditleri algılamanıza yardımcı olur.
 
-Çalıştırdıktan sonra [veri kaynaklarınıza bağlı](quickstart-onboard.md) şüpheli bir şey olduğunda size bildirilmesini istiyorsanız Azure Gözcü için. Bunu sağlamak için oluşturduğunuz Azure Gözcü atayabileceğiniz çalışmaları üreten uyarı kuralları ve kullanım anomalileri ve ortamınızdaki tehditlere derin bir şekilde araştırmak için Gelişmiş sağlar. 
+[Veri kaynaklarınızı](quickstart-onboard.md) Azure Sentinel 'e bağladıktan sonra, şüpheli bir sorun olduğunda bildirim almak istersiniz. Bunu yapmanızı sağlamak için Azure Sentinel, ortamınızdaki aykırları ve tehditleri derinlemesine araştırmak için atayabileceğiniz ve kullanabileceğiniz olaylar üreten gelişmiş uyarı kuralları oluşturmanıza olanak sağlar. 
 
 > [!div class="checklist"]
-> * Çalışmaları oluşturma
-> * Durumları inceleme
+> * Olay oluşturma
+> * Olayları araştırma
 > * Tehditlere yanıt verme
 
-## <a name="investigate-cases"></a>Durumları inceleme
+## <a name="investigate-incidents"></a>Olayları araştırma
 
-Bir durum, birden çok uyarı içerebilir. Bu, belirli bir araştırma için tüm kanıt bir toplama olur. Servis talebi, tanımladığınız uyarılar temel alınarak oluşturulur **Analytics** sayfası. Uyarıları önem ve durum gibi ilgili özellikleri büyük/küçük harf düzeyinde ayarlanır. Azure, bildiğiniz aradığınız tehditleri ve bunları nasıl bulacağınıza ilişkin ne tür Gözcü izin sonra durumlarda araştırma tarafından algılanan tehditleri izleyebilirsiniz. 
+bir olay birden çok uyarı içerebilir. Bu, belirli bir araştırma için ilgili tüm kanıtın bir toplamadır. **analiz** sayfasında tanımladığınız uyarılara göre bir olay oluşturulur. Önem ve durum gibi uyarılarla ilgili özellikler olay düzeyinde ayarlanır. Azure Sentinel 'e hangi tehditleri aradığınızı ve bunların nasıl bulunacağını öğrendikten sonra, olayları araştırarak algılanan tehditleri izleyebilirsiniz. 
 
-1. Seçin **çalışmaları**. **Çalışmaları** sayfa, sahip olduğunuz kaç çalışması bilmenizi sağlar, ne kadar kaç ayarladığınız açık olduğunu **sürüyor**, ve kaç kapatılır. Her durumda, gerçekleştiği zaman ve servis talebi durumunu görebilirsiniz. İlk işlemeye karar verirken önem derecesi arayın. İçinde **çalışmaları** sayfasında **uyarılar** olayla ilgili tüm uyarıları görmek için sekmesinde. Durum bölümü görüntülenebilir önceki eşlenen varlıkları **varlıkları** sekmesi.  Durumlarda, örneğin durumu veya önem sırasına göre gerektiği şekilde filtreleyebilirsiniz. Baktığınızda **çalışmaları** sekmesinde tanımlanan algılama kurallarınızı tarafından tetiklenen uyarılar içerir açık durumda görürsünüz **Analytics**. Üst kısmında gördüğünüz etkin servis talepleri, yeni çalışmaları ve ilerleme durumlarda. Önem derecesine göre tüm çalışmalarınızı genel bir bakış da görebilirsiniz.
+1. **Olayları**seçin. **Olaylar** sayfası, kaç olay olduğunu, kaç tane açık olduğunu, **devam**ediyor olarak ayarlamış olduğunuzu ve kaç tane kapatıldığını görmenizi sağlar. Her olay için, gerçekleştiği zamanı ve olayın durumunu görebilirsiniz. Öncelikle ne işleyileceğine karar vermek için önem derecesine bakın. **Olaylar** sayfasında, bir olayla ilgili tüm uyarıları görmek için **Uyarılar** sekmesine tıklayın. Daha önce olayın bir parçası olarak eşleştirilmiş varlıklar, **varlıklar** sekmesinde görüntülenebilir.  Olayları gerektiği gibi filtreleyebilirsiniz, örneğin durum veya önem derecesine göre. **Olaylar** sekmesine baktığınızda, **analiz**' de tanımlanan algılama kurallarınız tarafından tetiklenen uyarıları içeren açık olaylar görürsünüz. Üst kısımda etkin olaylarınızı, yeni olayları ve devam eden olayları görürsünüz. Ayrıca, tüm olaylarınızın önem derecesine göre genel bir görünümünü görebilirsiniz.
 
-   ![Uyarı Panosu](./media/tutorial-investigate-cases/cases.png)
+   ![Uyarı panosu](./media/tutorial-investigate-cases/cases.png)
 
-2. Bir araştırma başlamak için belirli bir servis talebi üzerinde tıklayın. Sağ tarafta (sizin eşlemesini göre), önem derecesi, Özet ilgili varlıkların sayısı dahil olmak üzere durumu için ayrıntılı bilgileri görebilirsiniz. Her durumda benzersiz bir kimliğe sahiptir. Servis talebi önem durumda dahil en önemli uyarı göre belirlenir.  
+2. Bir araştırmaya başlamak için, belirli bir olaya tıklayın. Sağ tarafta, olayla ilgili ayrıntılı bilgileri, dahil edilen varlıkların sayısının özetini ve ilgili varlık sayısını (eşlemenizi temel alarak) görebilirsiniz. Her olayın benzersiz bir KIMLIĞI vardır. Olayın önem derecesi, olayda bulunan en ciddi uyarıya göre belirlenir.  
 
-1. Bir durumda uyarılar ve varlıklar hakkında daha fazla ayrıntı görüntülemek için tıklayın **tam ayrıntılarını görüntüleme** durumda sayfasında ve durum bilgileri özetleyen ilgili sekmeleri gözden geçirin.  Tam durum görünümü, uyarı, ilişkili uyarı ve varlıkları tüm kanıt birleştirir.
+1. Olaydaki uyarılar ve varlıklar hakkında daha fazla ayrıntı görüntülemek için olay sayfasında **tam ayrıntıları görüntüle** ' ye tıklayın ve olay bilgilerini özetleyen ilgili sekmeleri gözden geçirin.  Tam olay görünümü, uyarıdaki tüm kanıtları, ilişkili uyarıları ve varlıkları birleştirir.
 
-1. İçinde **uyarılar** sekmesinde, uyarının kendisine - tetiklendi zaman ve ne kadar belirlediğiniz eşikleri aşıldı tarafından gözden geçirin. Uyarı: Sorgu ve uyarı üzerinde playbook'ları çalıştırma olanağı başına döndürülen sonuç sayısı uyarıyı tetikleyen sorgu ilgili tüm bilgileri görebilirsiniz. Detaya gitmek için aşağı daha durumuna, isabet sayısına tıklayın. Bu, sonuçları ve uyarının Log analytics'te sonuçlar oluşturulan sorgu açar.
+1. **Uyarılar** sekmesinde, tetiklendikten sonra ve ayarladığınız eşiklerden ne kadar aşılacağı uyarısını gözden geçirin. Uyarı ile ilgili tüm bilgileri, uyarıyı tetikleyen sorguyu, sorgu başına döndürülen sonuç sayısını ve uyarılar üzerinde PlayBook 'ları çalıştırma özelliğini görebilirsiniz. Olay içinde daha fazla ayrıntıya geçmek için, isabet sayısına tıklayın. Bu, sonuçları oluşturan sorguyu ve Log Analytics uyarıyı tetikleyen sonuçları açar.
 
-3. İçinde **varlıkları** sekmesinde uyarı kuralı tanımının bir parçası, eşleşen tüm varlıkları görebilirsiniz. 
+3. **Varlıklar** sekmesinde, uyarı kuralı tanımının bir parçası olarak eşleştirmekte olduğunuz tüm varlıkları görebilirsiniz. 
 
-4. Bir durum etkin olarak araştırdığınızı ise, durumu ayarlamak için iyi bir fikirdir **sürüyor** Siz kapatana kadar. Durum da kapatabilirsiniz burada **çözümlenen kapalı** durumu gösteren bir olay işlendiğini, çalışmaları sırasında **kapatılmış kapalı** işleme gerektirmeyen çalışmaları durumu. Açıklamalar, servis talebi kapatma, mantık açıklayan gereklidir.
+4. Bir olayı etkin bir şekilde araştırıyorsanız, siz kapatıncaya kadar olay durumunu **devam ediyor** olarak ayarlamanız iyi bir fikirdir. Ayrıca, **Kapatılan çözümlenmiş** 'in bir olayın işlendiğini belirten olayların durumu olduğu, **Kapatılan kapatılan** olayların durumu, işleme gerektirmeyen olaylardaki durum olduğunu da kapatabilirsiniz. Bir olayı kapatma nedeninizi açıklayan açıklamalar gereklidir.
 
-5. Durumlarda, belirli bir kullanıcıya atanabilir. Her durum için durum ayarlayarak bir sahip atayabilir **sahibi** alan. Tüm durumlarda başlangıç olarak atanmamış. Örneklerinden gidin ve sahip olduğunuz tüm durumları görmek için ada göre Filtrele. 
+5. Olaylar, belirli bir kullanıcıya atanabilir. Her olay için, olay **sahibi** alanını ayarlayarak bir sahip atayabilirsiniz. Tüm olaylar atanmamış olarak başlar. Sahip olduğunuz tüm olayları görmek için olaylara gidebilir ve adınızla filtre uygulayabilirsiniz. 
 
-5. Tıklayın **Araştır** araştırma Haritası ve düzeltme adımları, ihlal kapsamına görüntülemek için. 
+5. İnceleme haritasını ve düzeltme adımlarıyla ihlalin kapsamını görüntülemek için **Araştır** ' a tıklayın. 
 
 
 
 ## <a name="respond-to-threats"></a>Tehditlere yanıt verme
 
-Azure Sentinel playbook'ları kullanarak tehditlerine yanıt verme için iki birincil seçenek sunar. Playbook bir uyarı tetiklenir ya da bir uyarıya yanıt olarak bir playbook el ile çalıştırabilirsiniz otomatik olarak çalışacak şekilde ayarlayabilirsiniz.
+Azure Sentinel, PlayBook 'ları kullanarak tehditlere yanıt vermek için iki birincil seçenek sunar. Bir uyarı tetiklendiğinde bir PlayBook 'u otomatik olarak çalışacak şekilde ayarlayabilir veya bir uyarı karşılığında el ile bir PlayBook çalıştırabilirsiniz.
 
-- Playbook playbook yapılandırdığınızda, bir uyarı tetiklendiğinde otomatik olarak çalışacak şekilde ayarlayabilirsiniz. 
+- PlayBook 'u yapılandırırken bir uyarı tetiklendiğinde otomatik olarak çalışacak bir PlayBook ayarlayabilirsiniz. 
 
-- Gelen bir playbook uyarı içine tıklayarak el ile çalıştırabilirsiniz **playbook'ları görüntüleme** ve sonra çalıştırılacak bir playbook seçerek.
+- PlayBook 'ları **görüntüle** ' ye tıklayıp çalıştırmak için bir PlayBook seçerek, uyarının içinden el ile bir PlayBook çalıştırabilirsiniz.
 
 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu öğreticide, Azure Gözcü kullanarak araştırmaya başlama öğrendiniz. Öğreticiye devam [otomatik playbook'ları kullanarak tehditleri nasıl](tutorial-respond-threats-playbook.md).
+Bu öğreticide, Azure Sentinel kullanarak olayları araştırmaya nasıl başladığınızı öğrendiniz. [Otomatikleştirilmiş PlayBook 'lar kullanılarak tehditlere yanıt verme](tutorial-respond-threats-playbook.md)öğreticisine devam edin.
 > [!div class="nextstepaction"]
-> [Tehditleri](tutorial-respond-threats-playbook.md) tehditleri verdiğiniz yanıtları otomatik hale getirmek için.
+> Tehditlere yönelik yanıtlarınızı otomatik hale getirmek için [tehditleri yanıtlayın](tutorial-respond-threats-playbook.md) .
 
