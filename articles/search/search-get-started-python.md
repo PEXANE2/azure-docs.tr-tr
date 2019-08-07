@@ -1,5 +1,5 @@
 ---
-title: "Python hızlı başlangıç: Azure Search REST API 'Leri kullanarak dizin oluşturma, yükleme ve sorgulama-Azure Search"
+title: "Python hızlı başlangıç: REST API 'Leri kullanarak dizin oluşturma, yükleme ve sorgulama-Azure Search"
 description: Python, jupi Notebook ve Azure Search REST API kullanarak dizin oluşturma, verileri yükleme ve sorguları çalıştırma işlemlerinin nasıl yapılacağını açıklar.
 ms.date: 07/11/2019
 author: heidisteen
@@ -9,12 +9,12 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.openlocfilehash: 8b9c6ad4560d613941e5e73e2e6b7b5abede7019
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 9e12133179ca02c3474e768305feb8ae19a6178e
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828759"
+ms.locfileid: "68840756"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-python-using-jupyter-notebooks"></a>Hızlı Başlangıç: Jupyıter not defterlerini kullanarak Python 'da Azure Search dizin oluşturma
 > [!div class="op_single_selector"]

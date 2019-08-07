@@ -7,14 +7,14 @@ ms.service: managed-applications
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
-ms.date: 10/04/2018
+ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: 1f80d7e63d994f0e3eb3733b99afaa1b056f4686
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7682670131b0ef50a1480285bc379b634169e49e
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60252409"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840629"
 ---
 # <a name="publish-an-azure-managed-application-definition"></a>Azure yönetilen uygulaması tanımı yayımlama
 
@@ -41,7 +41,7 @@ Yönetilen uygulama tanımlarken bir kullanıcı, grup veya tüketici için kayn
 Kimliğinizin nesne kimliğini almak için aşağıdaki komutta kullanıcı asıl adınızı sağlayın:
 
 ```azurecli-interactive
-userid=$(az ad user show --upn-or-object-id example@contoso.org --query objectId --output tsv)
+userid=$(az ad user show --id example@contoso.org --query objectId --output tsv)
 ```
 
 Bundan sonra, kullanıcıya erişim izni vermek istediğiniz RBAC yerleşik rolünün rol tanımı kimliği gerekir. Aşağıdaki komut, Sahip rolünün rol tanımı kimliğinin nasıl alınacağını gösterir:
@@ -69,13 +69,13 @@ Komut tamamlandığında, kaynak grubunuzda bir yönetilen uygulamanız olur.
 Yukarıdaki örnekte kullanılan parametrelerden bazıları şunlardır:
 
 * **kaynak grubu**: Yönetilen uygulama tanımının oluşturulduğu kaynak grubunun adı.
-* **Kilit düzeyi**: Yönetilen kaynak grubuna yerleştirilen kilit türü. Müşterinin bu kaynak grubunda istenmeyen işlemler gerçekleştirmesini engeller. ReadOnly şu anda desteklenen tek kilit düzeyidir. ReadOnly belirtildiğinde müşteri yalnızca yönetilen kaynak grubunda mevcut olan kaynakları okuyabilir. Yönetilen kaynak grubuna erişim izni verilen yayımcı kimlikleri kilitli olmaz.
-* **yetkilendirmeleri**: Sorumlu Kimliği ve yönetilen kaynak grubuna izin vermek için kullanılan rol tanımı Kimliğini açıklar. `<principalId>:<roleDefinitionId>` biçiminde belirtilir. Birden fazla değer kullanacaksanız `<principalId1>:<roleDefinitionId1> <principalId2>:<roleDefinitionId2>` biçiminde belirtin. Değerler boşlukla ayrılır.
-* **Paket dosya URI'si**: Gerekli dosyaları içeren .zip paketinin konumu. Paket **mainTemplate.json** ve **createUiDefinition.json** dosyalarını içermelidir. **mainTemplate.json**, yönetilen uygulamanın bir parçası olarak oluşturulan Azure kaynaklarını tanımlar. Şablon normal bir Resource Manager şablonundan farklı değildir. **createUiDefinition.json**, portal üzerinden yönetilen uygulamayı oluşturan kullanıcılar için kullanıcı arabirimi oluşturur.
+* **kilit düzeyi**: Yönetilen kaynak grubuna yerleştirilmiş kilit türü. Müşterinin bu kaynak grubunda istenmeyen işlemler gerçekleştirmesini engeller. ReadOnly şu anda desteklenen tek kilit düzeyidir. ReadOnly belirtildiğinde müşteri yalnızca yönetilen kaynak grubunda mevcut olan kaynakları okuyabilir. Yönetilen kaynak grubuna erişim izni verilen yayımcı kimlikleri kilitli olmaz.
+* **yetkilendirmeler**: Yönetilen kaynak grubu için izin vermek üzere kullanılan asıl KIMLIĞI ve rol tanımı KIMLIĞINI açıklar. `<principalId>:<roleDefinitionId>` biçiminde belirtilir. Birden fazla değer kullanacaksanız `<principalId1>:<roleDefinitionId1> <principalId2>:<roleDefinitionId2>` biçiminde belirtin. Değerler boşlukla ayrılır.
+* **paket-dosya-URI**: Gerekli dosyaları içeren bir. zip paketinin konumu. Paket **mainTemplate.json** ve **createUiDefinition.json** dosyalarını içermelidir. **mainTemplate.json**, yönetilen uygulamanın bir parçası olarak oluşturulan Azure kaynaklarını tanımlar. Şablon normal bir Resource Manager şablonundan farklı değildir. **createUiDefinition.json**, portal üzerinden yönetilen uygulamayı oluşturan kullanıcılar için kullanıcı arabirimi oluşturur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Yönetilen uygulama tanımını yayımladınız. Şimdi bu tanımın bir örneğini nasıl dağıtacağınızı öğrenin.
 
 > [!div class="nextstepaction"]
-> [Hızlı Başlangıç: Hizmet Kataloğu uygulaması dağıtma](deploy-service-catalog-quickstart.md)
+> [Hızlı Başlangıç: Hizmet kataloğu uygulaması dağıtma](deploy-service-catalog-quickstart.md)

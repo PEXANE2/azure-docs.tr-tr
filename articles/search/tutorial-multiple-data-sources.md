@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Birden çok veri kaynağını Dizin-Azure Search'
+title: C#Öğreticide Birden çok veri kaynağını Dizin-Azure Search
 description: Birden çok veri kaynağından verileri tek bir Azure Search dizinine aktarmayı öğrenin.
 author: RobDixon22
 manager: HeidiSteen
@@ -7,13 +7,13 @@ services: search
 ms.service: search
 ms.topic: tutorial
 ms.date: 06/21/2019
-ms.author: v-rodixo
-ms.openlocfilehash: dcc4a7f267d1e852fcd50050f6683baa0e736199
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.author: heidist
+ms.openlocfilehash: 2776bcd095c570be500fa6ddb2675820b2259716
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827211"
+ms.locfileid: "68840664"
 ---
 # <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-search-index"></a>C#Öğreticide Birden çok veri kaynağından gelen verileri tek bir Azure Search dizininde birleştirme
 

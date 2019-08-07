@@ -138,8 +138,6 @@
               href: roles-view-assignments.md
             - name: Azure AD’de yönetim merkezinde rol atama
               href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-            - name: Graph API’de özel roller atama
-              href: roles-assign-graph.md
             - name: PowerShell'de özel roller atama
               href: roles-assign-powershell.md
             - name: Özel rol önizleme izinleri

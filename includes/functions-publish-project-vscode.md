@@ -9,18 +9,18 @@ ms.topic: include
 ms.date: 04/16/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: ba3cf3e77e5414804e881e0cddb151fb14fb7fd5
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: abb8b6bed6766ff0ea85eab1434014a057af4ca3
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68669859"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68843354"
 ---
 ## <a name="publish-the-project-to-azure"></a>Projeyi Azure'da yayımlama
 
 Visual Studio Code, işlevler projenizi doğrudan Azure’da dağıtmanıza olanak sağlar. Süreç kapsamında, Azure abonelik bir işlev uygulaması ve ilgili kaynakları oluşturursunuz. İşlev uygulaması, işlevlerinize ilişkin bir yürütme bağlamı sağlar. Proje, Azure aboneliğinizdeki yeni işlev uygulamasında paketlenir ve dağıtılır.
 
-Varsayılan olarak, Visual Studio, işlev uygulamanızı oluşturmak için gereken tüm Azure kaynaklarını oluşturur. Bu kaynakların adları, seçtiğiniz işlev uygulaması adına göre yapılır. Oluşturulan kaynaklar üzerinde tam denetime sahip olmanız gerekiyorsa, bunun yerine [Gelişmiş seçenekleri kullanarak yayımlayabilirsiniz](../articles/azure-functions/functions-develop-vs-code.md#enable-publishing-with-advanced-create-options).
+Visual Studio Code, varsayılan olarak, işlev uygulamanızı oluşturmak için gereken tüm Azure kaynaklarını oluşturur. Bu kaynakların adları, seçtiğiniz işlev uygulaması adına göre yapılır. Oluşturulan kaynaklar üzerinde tam denetime sahip olmanız gerekiyorsa, bunun yerine [Gelişmiş seçenekleri kullanarak yayımlayabilirsiniz](../articles/azure-functions/functions-develop-vs-code.md#enable-publishing-with-advanced-create-options).
 
 Bu bölümde, Azure 'da yeni bir işlev uygulaması oluşturduğunuzu varsayılmaktadır.
 

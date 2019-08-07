@@ -4,16 +4,17 @@ description: Azure portal veri alma sihirbazını kullanarak bir bilgi deposu ol
 author: heidisteen
 services: search
 ms.service: search
+ms.subservice: cognitive-search
 ms.devlang: NA
 ms.topic: tutorial
 ms.date: 07/30/2019
 ms.author: heidist
-ms.openlocfilehash: 66a051c430be9f59569a5843c0138c7ddc15b87c
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 518a96ae8ace5c9630d594fe70487635b6ec1d2c
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68707146"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840848"
 ---
 # <a name="create-an-azure-search-knowledge-store-and-connect-using-power-bi"></a>Azure Search bilgi deposu oluşturma ve Power BI kullanarak bağlanma
 
@@ -99,12 +100,12 @@ Bilgi deposu oluşturmak için veri alma Sihirbazı 'nı kullanın. Veri kümesi
 
 1. Azure Search içinde isteğe bağlı tam metin arama sorguları için bir dizin yapılandırın. Bu izlenecek yol, Azure Tablo depolamaya Power BI bağlı olsa da, **verileri Içeri aktarma** sihirbazı, Azure Search tam metin araması için kullanılan bir dizin de oluşturabilir. 
 
-   Sihirbaz, alanları ve veri türlerini çıkarması için veri kaynağınızı örneklerimizden, tüm yapmanız gereken davranışları kullanmak için gerekli öznitelikleri seçin. Örneğin, açık bir şekilde alan içeriğinin hizmetten *alınabileceği anlamına gelir* , *arama yapılabilen* seçili alanlarda tam metin aramasına izin verebilir.
+   Sihirbaz, alanları ve veri türlerini çıkarması için veri kaynağınızı örneklerimizden, tüm yapmanız gereken davranışları kullanmak için gerekli öznitelikleri seçin. Örneğin, açık bir şekilde alan içeriğinin hizmetten alınabileceği anlamına gelir, *arama yapılabilen* seçili alanlarda tam metin aramasına izin verebilir.
 
    - Dizine *otel-incelemeler-idx*gibi bir ad verin.
    - Tüm alanları **alınabilir**olarak ayarlayın.
    - *Şehir*, *ad*, *reviews_text*, *Language*, *keyphrases* ile **aranabilir**olarak ayarlayın.
-   - Yaklaşım, *Language*, *Keyphrases* olarak **filtrelenebilir** ve çok **yönlü tablo** *olarak ayarlayın.* 
+   - Yaklaşım, *Language*, *keyphrases* olarak **filtrelenebilir** ve çok **yönlü tablo**olarak ayarlayın. 
    
     Dizininiz aşağıdaki görüntüye benzer görünmelidir.
 
