@@ -22,7 +22,7 @@ Azure Otomasyonu, işletim sistemi güvenlik güncelleştirmelerini yönetmek, d
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-https://portal.azure.com adresinden Azure'da oturum açın
+[https://portal.azure.com](https://portal.azure.com ) adresinden Azure'da oturum açın
 
 ## <a name="enable-solutions"></a>Çözümleri etkinleştirme
 

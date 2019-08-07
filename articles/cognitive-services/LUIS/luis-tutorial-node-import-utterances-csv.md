@@ -24,7 +24,7 @@ LUIS, her şeyi yapan programlı bir API sağlar [LUIS](luis-reference-regions.m
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Lusıs Web sitesinde [](luis-reference-regions.md) oturum açın ve hesap ayarları ' nda [yazma anahtarınızı](luis-concept-keys.md#authoring-key) bulun. Yazma API'leri çağırmak için bu anahtarı kullanırsınız.
+* [Lusıs](luis-reference-regions.md) Web sitesinde oturum açın ve hesap ayarları ' nda [yazma anahtarınızı](luis-concept-keys.md#authoring-key) bulun. Yazma API'leri çağırmak için bu anahtarı kullanırsınız.
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 * Bu öğretici, kullanıcı isteklerinin kuramsal bir şirketin günlük dosyaları için bir CSV ile başlar. İndirdiği [burada](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv).
 * NPM ile en son Node.js yükleyin. İndirdiği [burada](https://nodejs.org/en/download/).
@@ -179,7 +179,7 @@ upload done
 
 
 ## <a name="open-the-luis-app"></a>LUIS uygulaması açın
-Betik tamamlandıktan sonra, Lusıs 'de oturum açabilir ve [](luis-reference-regions.md) **UYGULAMALARıM**altında oluşturduğunuz Luo uygulamasını görebilirsiniz. Eklediğiniz altında konuşma görmeye olmalıdır **Sok**, **kapatma**, ve **hiçbiri** amacı.
+Betik tamamlandıktan sonra, [Lusıs](luis-reference-regions.md) 'de oturum açabilir ve **UYGULAMALARıM**altında oluşturduğunuz Luo uygulamasını görebilirsiniz. Eklediğiniz altında konuşma görmeye olmalıdır **Sok**, **kapatma**, ve **hiçbiri** amacı.
 
 ![Sok hedefi](./media/luis-tutorial-node-import-utterances-csv/imported-utterances-661.png)
 
