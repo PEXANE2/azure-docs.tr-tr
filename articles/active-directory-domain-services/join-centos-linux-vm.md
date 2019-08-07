@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: c4a04f55f4f69521f00ed450a2d3d1a80b56761c
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 7b3159b6b963cf422442ee7c04253b8172e8f3e9
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234090"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68773145"
 ---
 # <a name="join-a-centos-linux-virtual-machine-to-a-managed-domain"></a>Bir CentOS Linux sanal makinesini yönetilen bir etki alanına katma
 Bu makalede, Azure 'daki bir CentOS Linux sanal makinesini Azure AD Domain Services yönetilen bir etki alanına nasıl katılabilmeniz gösterilmektedir.
@@ -107,6 +107,8 @@ Artık gerekli paketler Linux sanal makinesinde yüklü olduğuna göre, bir son
 
     > [!TIP]
     > Önceki adımda belirttiğiniz kullanıcı hesabını kullanın (' kinit ').
+    >
+    > VM 'niz etki alanına katılamediğinde, VM 'nin ağ güvenlik grubunun TCP + UDP bağlantı noktası 464 üzerinde giden Kerberos trafiğinin Azure AD DS yönetilen etki alanınıza yönelik sanal ağ alt ağına izin verdiğinden emin olun.
 
     ```console
     sudo realm join --verbose CONTOSO100.COM -U 'bob@CONTOSO100.COM'

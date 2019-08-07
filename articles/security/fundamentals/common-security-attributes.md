@@ -10,12 +10,12 @@ ms.subservice: security-fundamentals
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: be39a623dc5dac09dcfe47de67e025191b5c7de3
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 43eb7e5c4cab722eb97f9e2fe819c9c79bae45d9
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727496"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828773"
 ---
 # <a name="security-attributes-for-azure-services"></a>Azure hizmetleri için güvenlik öznitelikleri
 
@@ -646,7 +646,7 @@ SQL veritabanı hem [tek veritabanı](/azure/sql-database/sql-database-single-in
 | Hizmet uç noktası desteği| Evet | Yalnızca [tek veritabanı](/azure/sql-database/sql-database-single-index) için geçerlidir. |
 | Azure sanal ağ ekleme desteği| Evet | Yalnızca [yönetilen örnek](/azure/sql-database/sql-database-managed-instance) için geçerlidir. |
 | Ağ yalıtımı ve güvenlik duvarı desteği| Evet | Hem veritabanı düzeyinde hem de sunucu düzeyinde güvenlik duvarı. Ağ yalıtımı yalnızca [yönetilen örnek](/azure/sql-database/sql-database-managed-instance) içindir. |
-| Zorlamalı tünel desteği| Evet | [ExpressRoute](/azure/expressroute/index.yml) VPN aracılığıyla [yönetilen örnek](/azure/sql-database/sql-database-managed-instance) . |
+| Zorlamalı tünel desteği| Evet | [ExpressRoute](/azure/expressroute/index) VPN aracılığıyla [yönetilen örnek](/azure/sql-database/sql-database-managed-instance) . |
 
 ### <a name="detection"></a>Algılama
 
@@ -659,7 +659,7 @@ SQL veritabanı hem [tek veritabanı](/azure/sql-database/sql-database-single-in
 | Güvenlik özniteliği | Evet/Hayır | Notlar|
 |---|---|--|
 | Authentication| Evet | Azure Active Directory (Azure AD) |
-| Authorization| Evet | None |
+| Authorization| Evet | Yok. |
 
 ### <a name="audit-trail"></a>Denetim izi
 

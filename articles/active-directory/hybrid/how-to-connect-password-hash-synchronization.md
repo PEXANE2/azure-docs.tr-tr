@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d74eb91b5122f63088f3344836eab8decf5c57d2
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 98101973627750f87fd06d3f617a1af764a837ee
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227363"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774245"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect eşitlemesi ile parola karması eşitlemeyi uygulama
 Bu makalede, şirket içi Active Directory örneğinden bulut tabanlı bir Azure Active Directory (Azure AD) örneği, kullanıcı parolalarını eşitlemek için gereken bilgileri sağlar.
@@ -63,10 +63,7 @@ Aşağıdaki bölümde açıklanmaktadır, ayrıntılı, Active Directory ve Azu
 >[!Note] 
 >Özgün MD4 karma Azure AD'ye aktarılan değil. Bunun yerine, özgün MD4 karma SHA256 karma iletilir. Sonuç olarak, Azure AD'de depolanan karma aldıysanız, bir şirket içi pass--hash saldırısında kullanılamaz.
 
-### <a name="how-password-hash-synchronization-works-with-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services ile parola karma eşitleme nasıl çalışır
-Şirket içi parolalarınızı eşitlemek için parola karması eşitleme özelliğini de kullanabilirsiniz [Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md). Bu senaryoda, şirket içi Active Directory Örneğinizde kullanılabilir tüm yöntemleri ile kullanıcılarınızın buluttaki Azure Active Directory Domain Services örneğini doğrular. Bu senaryonun deneyimi, bir şirket içi ortamda Active Directory Geçiş Aracı (ADMT) kullanmaya benzer.
-
-### <a name="security-considerations"></a>Güvenlikle ilgili dikkat edilmesi gerekenler
+### <a name="security-considerations"></a>Güvenlik konuları
 Parola eşitleme yaparken parolanızı düz metin sürümünü Azure AD'ye parola karması eşitleme özelliğini veya tüm ilişkili hizmetlerin gösterilmez.
 
 Kullanıcı kimlik doğrulamasını Azure AD'ye yönelik yerine kuruluşun kendi Active Directory örneğine karşı gerçekleşir. Azure AD'de--depolanan SHA256 parola verileri özgün MD4 karma--karma Active Directory'de depolanan değerinden daha güvenlidir. Ayrıca, bu SHA256 karma şifresi çözülemiyor olduğundan, bu olamaz kuruluşun Active Directory ortamına geri getirildi ve pass--hash saldırısı bir geçerli kullanıcı parolası olarak sunulan.
@@ -104,6 +101,39 @@ Parola Eşitleme, oturum açmış kullanıcının Azure üzerinde hiçbir etkisi
 
 - Genellikle, parola karması eşitleme bir Federasyon Hizmeti uygulamak daha kolaydır. Diğer sunucular gerektirmez ve kullanıcıların kimliğini doğrulamak için bir yüksek oranda kullanılabilir bir Federasyon Hizmeti bağımlılığa ortadan kaldırır.
 - Parola Karması eşitleme, Federasyon yanı sıra da etkinleştirilebilir. Federasyon hizmetinize bir kesinti oluşursa bir geri dönüş olarak kullanılabilir.
+
+## <a name="password-hash-sync-process-for-azure-ad-domain-services"></a>Azure AD Domain Services için Parola karması eşitleme işlemi
+
+Keberos, LDAP veya NTLM kullanması gereken uygulamalar ve hizmetler için eski kimlik doğrulama sağlamak üzere Azure AD Domain Services kullanırsanız, bazı ek süreçler Parola karması eşitleme akışının bir parçasıdır. Azure AD Connect, Azure AD Domain Services kullanım için parola karmalarını Azure AD ile eşitlemeye yönelik aşağıdaki ek işlemleri kullanır:
+
+> [!IMPORTANT]
+> Azure AD Connect yalnızca Azure AD kiracınız için Azure AD DS etkinleştirdiğinizde eski parola karmalarını eşitler. Yalnızca Azure AD ile şirket içi AD DS ortamı eşitlemesini Azure AD Connect kullanıyorsanız aşağıdaki adımlar kullanılmaz.
+>
+> Eski uygulamalarınız NTLM kimlik doğrulaması veya LDAP basit bağlamalar kullanmıyorsanız, Azure AD DS için NTLM parola karma eşitlemesini devre dışı bırakmanızı öneririz. Daha fazla bilgi için bkz. [zayıf şifre paketlerini ve NTLM kimlik bilgisi karma eşitlemesini devre dışı bırakma](../../active-directory-domain-services/secure-your-domain.md).
+
+1. Azure AD Connect kiracının Azure AD Domain Services örneğinin ortak anahtarını alır.
+1. Kullanıcı parolasını değiştirdiğinde, şirket içi etki alanı denetleyicisi parola değişikliğinin (karma) sonucunu iki özniteliğe depolar:
+    * NTLM parola karması için *unicodePwd* .
+    * , Kerberos Parola karması için *kimlik bilgileri* .
+1. Azure AD Connect, Dizin çoğaltma kanalı aracılığıyla parola değişikliklerini algılar (öznitelik değişiklikleri diğer etki alanı denetleyicilerine çoğaltılmaya gerek yoktur).
+1. Parolası değişmiş olan her kullanıcı için, Azure AD Connect aşağıdaki adımları gerçekleştirir:
+    * Rastgele bir AES 256 bit simetrik anahtar üretir.
+    * Şifrelemenin ilk yuvarlaklaştırmak için gereken rastgele bir başlatma vektörü üretir.
+    * , *Mentalcredentials* özniteliklerinden Kerberos parola karmalarını ayıklar.
+    * Azure AD Domain Services Güvenlik Yapılandırması *Syncntlmpasswords* ayarını denetler.
+        * Bu ayar devre dışı bırakılırsa, rastgele, yüksek entropi bir NTLM karması (kullanıcının parolasından farklı) oluşturur. Bu karma daha sonra, exacted Kerberos parola karmalarıyla birlikte, *Mentalcrendetials* özniteliğinden bir veri yapısına birleştirilir.
+        * Etkinleştirilirse, *unicodePwd* özniteliğinin değerini, *dtalcredentials* özniteliğinden ayıklanan Kerberos parola karmalarıyla tek bir veri yapısına birleştirir.
+    * AES Simetrik anahtarını kullanarak tek veri yapısını şifreler.
+    * Kiracının Azure AD Domain Services ortak anahtarını kullanarak AES Simetrik anahtarını şifreler.
+1. Azure AD Connect şifreli AES Simetrik anahtarını, parola karmalarını içeren şifreli veri yapısını ve Azure AD 'ye başlatma vektörünü iletir.
+1. Azure AD şifreli AES Simetrik anahtarını, şifreli veri yapısını ve Kullanıcı için başlatma vektörünü depolar.
+1. Azure AD, şifreli AES Simetrik anahtarını, şifrelenmiş veri yapısını ve Azure AD Domain Services için şifrelenmiş bir HTTP oturumunda iç eşitleme mekanizması kullanarak başlatma vektörünü gönderir.
+1. Azure AD Domain Services kiracının Azure Anahtar Kasası 'na ait örneğinin özel anahtarını alır.
+1. Her şifreli veri kümesi (tek bir kullanıcının parola değişikliğini temsil eden) için Azure AD Domain Services aşağıdaki adımları gerçekleştirir:
+    * , AES Simetrik anahtarının şifresini çözmek için özel anahtarını kullanır.
+    * Parola karmalarını içeren şifreli veri yapısının şifresini çözmek için başlatma vektörü ile AES Simetrik anahtarını kullanır.
+    * Aldığı Kerberos parola karmalarını Azure AD Domain Services etki alanı denetleyicisine yazar. Karmalar, Azure AD Domain Services etki alanı denetleyicisinin ortak anahtarına şifrelenmiş Kullanıcı nesnesinin *Mentalcredentials* özniteliğine kaydedilir.
+    * Azure AD Domain Services, Azure AD Domain Services etki alanı denetleyicisine aldığı NTLM parola karmasını yazar. Karma, Azure AD Domain Services etki alanı denetleyicisinin ortak anahtarına şifrelenmiş Kullanıcı nesnesinin *unicodePwd* özniteliğine kaydedilir.
 
 ## <a name="enable-password-hash-synchronization"></a>Parola karma eşitlemesini etkinleştirme
 

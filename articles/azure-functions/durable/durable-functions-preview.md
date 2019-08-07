@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 7356541ed6288603a66d5caa43138284d8d4d918
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 1609931cd5fcab0977ff64f680fbb1f253f3caaf
+ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68320479"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68782183"
 ---
 # <a name="durable-functions-20-preview-azure-functions"></a>Dayanıklı İşlevler 2,0 Preview (Azure Işlevleri)
 
@@ -101,7 +101,7 @@ Varlık işlevleri, *dayanıklı varlıklar*olarak bilinen küçük durum parça
 
 ### <a name="net-programing-models"></a>.NET programlama modelleri
 
-Dayanıklı varlıklar yazmak için iki isteğe bağlı programlama modeli vardır. Aşağıdaki kod, standart bir işlev olarak uygulanan basit bir *sayaç* varlığına bir örnektir. Bu işlev, `get` `add` `reset`  herbiribirtamsayıdurumdeğeriüzerindeçalışanüçişlem,,,ve`currentValue`tanımlar.
+Dayanıklı varlıklar yazmak için iki isteğe bağlı programlama modeli vardır. Aşağıdaki kod, standart bir işlev olarak uygulanan basit bir *sayaç* varlığına bir örnektir. Bu işlev, `get` `add` `reset` herbiribirtamsayıdurumdeğeriüzerindeçalışanüçişlem,,,ve`currentValue`tanımlar.
 
 ```csharp
 [FunctionName("Counter")]
@@ -242,6 +242,16 @@ public static async Task AddValueClient(
 ```
 
 Önceki örnekte, `proxy` parametresi, `Add` çağrısını iç olarak eşdeğer (türsüz) `ICounter`çağrıya `SignalEntityAsync`çeviren, dinamik olarak üretilmiş bir örneğidir.
+
+İçin `SignalEntityAsync<T>` tür parametresi aşağıdaki kısıtlamalara sahiptir:
+
+* Tür parametresi bir arabirim olmalıdır.
+* Arabirim üzerinde yalnızca Yöntemler tanımlanabilir. Özellikler desteklenmiyor.
+* Her yöntemin bir veya hiç parametre tanımlamamalıdır.
+* Her yöntemin `void`, `Task`, `Task<T>` veya`T` , bazı JSON-serializlenebilir tür olduğunu döndürmesi gerekir.
+* Arabirimin, arabirimin derlemesi içinde tam olarak bir tür tarafından uygulanması gerekir.
+
+Çoğu durumda, bu gereksinimleri karşılamayan arabirimler çalışma zamanı özel durumuna neden olur.
 
 > [!NOTE]
 > Tutarlılık açısından performansı `ReadEntityStateAsync` `IDurableOrchestrationClient` önceliklendirmek için ve `SignalEntityAsync` yöntemlerinin dikkate alınacağını göz önünde bulundurulmalıdır. `ReadEntityStateAsync`Eski bir değer döndürebilir ve `SignalEntityAsync` işlem tamamlanmadan önce dönebilir.

@@ -3,16 +3,16 @@ title: Event Grid için Azure SignalR hizmeti olaylarını gönderme
 description: SignalR hizmetiniz için Event Grid olaylarını nasıl etkinleştireceğinizi ve ardından istemci bağlantısı bağlı/bağlantısı kesilen olayları örnek bir uygulamaya göndermenizi gösteren bir kılavuz.
 services: signalr
 author: chenyl
-ms.service: azure-signalr
+ms.service: signalr
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: chenyl
-ms.openlocfilehash: 52e4194acd6a3abfed3fabadb892b0de76025b7e
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 100c7120889f88c1bab3418822835e8d4ece9826
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68296855"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839288"
 ---
 # <a name="how-to-send-events-from-azure-signalr-service-to-event-grid"></a>Azure SignalR hizmetinden olayları Event Grid 'a gönderme
 

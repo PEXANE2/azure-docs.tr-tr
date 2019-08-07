@@ -203,7 +203,7 @@
         - name: Azure SQL Veritabanı
           href: connector-azure-sql-database.md
         - name: Azure SQL Veritabanı Yönetilen Örneği
-          href: connector-azure-sql-database-managed-insance.md
+          href: connector-azure-sql-database-managed-instance.md
         - name: Azure SQL Veri Ambarı
           href: connector-azure-sql-data-warehouse.md
         - name: Azure Table Storage
@@ -592,6 +592,8 @@
       items:
         - name: Neden Azure Data Factory?
           href: data-migration-guidance-overview.md
+        - name: AWS S3'ten Azure'a verileri geçirme
+          href: data-migration-guidance-s3-azure-storage.md
 - name: Başvuru
   items:
     - name: .NET

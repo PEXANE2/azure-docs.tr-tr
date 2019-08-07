@@ -128,8 +128,6 @@
           href: directory-assign-admin-roles.md
         - name: Rolleri görüntüleme ve atama
           href: directory-manage-roles-portal.md
-        - name: Graph API’de özel roller atama
-          href: roles-assign-powershell.md
         - name: Özel roller önizlemesi
           items:
             - name: Özel roller önizlemesi
@@ -142,6 +140,8 @@
               href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
             - name: Graph API’de özel roller atama
               href: roles-assign-graph.md
+            - name: PowerShell'de özel roller atama
+              href: roles-assign-powershell.md
             - name: Özel rol önizleme izinleri
               href: roles-custom-available-permissions.md
             - name: Uygulama yöneticisi izinlerine temsilci seçme

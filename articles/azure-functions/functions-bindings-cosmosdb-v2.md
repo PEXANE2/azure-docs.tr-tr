@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 3c0a10bf03106bc7e1b89e4664dfed9fc76fc34f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 67b70a67065bfc66639b0f6911f66111829c9a0f
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564833"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774920"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>Azure Işlevleri için Azure Cosmos DB bağlamaları 2. x
 
@@ -1745,6 +1745,7 @@ Dile özgü örneklere bakın:
 * [F#](#output---f-examples)
 * [Java](#output---java-examples)
 * [JavaScript](#output---javascript-examples)
+* [Python](#output---python-examples)
 
 Ayrıca bkz: [giriş örnek](#input---c-examples) kullanan `DocumentClient`.
 
@@ -2274,6 +2275,57 @@ Aşağıdaki örnek, bir ```OutputBinding<T>``` çıkış parametresi aracılı�
 
 [Java işlevleri çalışma zamanı kitaplığı](/java/api/overview/azure/functions/runtime)'nda, Cosmos DB yazılacak `@CosmosDBOutput` parametrelerde ek açıklamayı kullanın.  Ek açıklama parametre türü olmalıdır ```OutputBinding<T>```; burada T, yerel bir Java türü ya da Pojo.
 
+### <a name="output---python-examples"></a>Output-Python örnekleri
+
+Aşağıdaki örnek, bir işlevin çıktısı olarak bir Azure CosmosDB veritabanına nasıl bir belge yazılacağını gösterir.
+
+Bağlama tanımı, *türünün* olarak `cosmosDB`ayarlandığı *function. JSON* içinde tanımlanır.
+
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "type": "cosmosDB",
+      "direction": "out",
+      "name": "doc",
+      "databaseName": "demodb",
+      "collectionName": "data",
+      "createIfNotExists": "true",
+      "connectionStringSetting": "AzureCosmosDBConnectionString"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "$return"
+    }
+  ]
+}
+```
+
+Veritabanına yazmak için, veritabanı parametresinin `set` yöntemine bir belge nesnesi geçirin.
+
+```python
+import azure.functions as func
+
+def main(req: func.HttpRequest, doc: func.Out[func.Document]) -> func.HttpResponse:
+
+    request_body = req.get_body()
+
+    doc.set(func.Document.from_json(request_body))
+
+    return 'OK'
+```
 
 ## <a name="output---attributes"></a>Çıkış - öznitelikleri
 

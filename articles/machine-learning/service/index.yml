@@ -27,28 +27,25 @@ abstract:
     href: 'https://channel9.msdn.com/Events/Connect/Microsoft-Connect--2018/D240/'
     width: 250
 sections:
-  - title: 5 Dakikalık Hızlı Başlangıçlar
-    items:
-      - type: paragraph
-        text: "Azure Machine Learning hizmeti için bir \_ <a href=\"setup-create-workspace\">çalışma alanı oluşturduktan</a> sonra bu hızlı başlangıçları kullanarak çalışmaya başlayabilirsiniz:"
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="quickstart-run-cloud-notebook">Bulutta bir deneme çalıştırma</a> (yükleme gerekmez).
-          - html: <a href="quickstart-run-local-notebook">Yerel not defteri sunucusu kullanarak bir deneme çalıştırma</a> (yerel SDK yüklemesi gerekir).
   - title: Adım Adım Öğreticiler
     items:
       - type: paragraph
-        text: 'Veri hazırlamayı, deneyleri ayarlamayı ve makine öğrenmesi modellerinizi eğitip kullanıma hazır hale getirmeyi öğrenin:'
+        text: 'Veri hazırlamayı, deneyleri ayarlamayı ve makine öğrenmesi modellerinizi eğitip kullanıma hazır hale getirmeyi öğrenin.'
+      - type: paragraph
+        text: 'Makine öğrenmesi için kullanımı kolay, kod içermeyen bir arabirim olan <b>Azure portalını kullanma</b>:'
       - type: list
         style: unordered
         items:
-          - html: 'Başlarken: Azure portalında ilk otomatikleştirilmiş ML modelinizi <a href="tutorial-first-experiment-automated-ml">eğitip dağıtın</a>.'
-          - html: 'Başlarken: Jupyter notebook kullanarak <a href="tutorial-1st-experiment-sdk-setup">geliştirme ortamınızı ayarlayın</a> ve <a href="tutorial-1st-experiment-sdk-train">ilk ML modelinizi eğitin</a> (<b>iki bölümden oluşan seriler</b>).'
-          - html: 'Başlarken: Sürükle-bırak görsel arabirimiyle ilk ML denemenizi <a href="ui-tutorial-automobile-price-train-score">eğitin</a> ve <a href="ui-tutorial-automobile-price-deploy">dağıtın</a> (<b>iki bölümden oluşan seriler</b>).'
-          - html: Görüntü sınıflandırma modellerini <a href="tutorial-train-models-with-aml">eğitme</a> ve <a href="tutorial-deploy-models-with-aml">dağıtma</a> (<b>iki parçalı seri</b>).
-          - html: Regresyon modellerini eğitmek ve ayarlamak için <a href="tutorial-data-prep">veri hazırlama</a> ve <a href="tutorial-auto-train-models">otomatik makine öğrenmesini kullanma</a> (<b>iki parçalı seri</b>).
-          - html: Görsel arabirimde <a href="ui-tutorial-automobile-price-train-score">otomobil fiyatını tahmin edin</a> ve regresyon modelini <a href="ui-tutorial-automobile-price-deploy">dağıtın</a>.
+          - html: <a href="tutorial-first-experiment-automated-ml">İlk otomatik makine öğrenmesi denemenizi eğitme</a>.
+          - html: <a href="ui-tutorial-automobile-price-train-score">Görsel arabirimin sürükleyip bırakma kullanıcı arabiriminde ilk denemenizi eğitme.</a>
+      - type: paragraph
+        text: 'Makine öğrenmesi için betiklerde ve not defterlerinde <b>Python SDK''sını kullanma</b>:'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="tutorial-1st-experiment-sdk-setup">Ortamınızı ayarlama ve ilk ML denemenizi eğitme.</a>
+          - html: <a href="tutorial-train-models-with-aml">Resim sınıflandırma modellerini eğitme ve dağıtma</a>.
+          - html: <a href="tutorial-data-prep">Taksi ücretlerini tahmin etmek için verileri ve otomatik ML'yi hazırlama</b>).</a>
   - title: Örnekler
     items:
       - type: paragraph

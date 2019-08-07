@@ -7,23 +7,23 @@ ms.subservice: development
 ms.custom: ''
 ms.devlang: PowerShell
 ms.topic: conceptual
-author: oslake
-ms.author: moslake
+author: rohitnayakmsft
+ms.author: rohitna
 ms.reviewer: genemi, vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: fd8cabb14ad65b4da562c7d6048a52b574513b26
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 326eec68ed3ca1d42552b89fe4519d24c62cf12a
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566177"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68841363"
 ---
 # <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>PowerShell:  SQL için bir sanal hizmet uç noktası ve VNet kuralı oluşturma
 
 *Sanal ağ kuralları* , tek veritabanlarınıza yönelik veritabanı sunucusunun ve Azure [SQL veritabanı](sql-database-technical-overview.md) 'ndaki elastik havuzunuzun ve [SQL veri ambarı](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 'ndaki veritabanlarınızın iletişim kabul edip etmediğini denetleyen bir güvenlik duvarı güvenlik özelliğidir Bu, sanal ağlardaki belirli alt ağlardan gönderilir.
 
 > [!IMPORTANT]
-> Bu makale Azure SQL Server ve Azure SQL Server 'da oluşturulan SQL veritabanı ve SQL veri ambarı veritabanları için geçerlidir. Kolaylık açısından, hem SQL Veritabanı hem de SQL Veri Ambarı için SQL Veritabanı terimi kullanılmaktadır. Bu makale, kendisiyle ilişkili bir hizmet uç noktası olmadığından Azure SQL veritabanı 'nda **yönetilen bir örnek** dağıtımı *için uygulanmıyor.*
+> Bu makale Azure SQL Server ve Azure SQL Server 'da oluşturulan SQL veritabanı ve SQL veri ambarı veritabanları için geçerlidir. Kolaylık açısından, hem SQL Veritabanı hem de SQL Veri Ambarı için SQL Veritabanı terimi kullanılmaktadır. Bu makale, kendisiyle ilişkili bir hizmet uç noktası OLMADıĞıNDAN Azure SQL veritabanı 'nda **yönetilen bir örnek** dağıtımı için uygulanmıyor.
 
 Bu makalede, aşağıdaki eylemleri alan bir PowerShell betiği sağlanmıştır ve açıklanmaktadır:
 

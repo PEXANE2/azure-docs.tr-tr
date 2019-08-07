@@ -56,14 +56,20 @@
       maintainContext: true
     - name: Sorun giderme
       items:
+        - name: Yazılım kilitlemesi - CPU
+          href: ./hdinsight-troubleshoot-soft-lockup-cpu.md
+        - name: InvalidNetworkConfigurationErrorCode - küme oluşturulamıyor
+          href: ./troubleshoot-invalidnetworkconfigurationerrorcode-cluster-creation-fails.md
+        - name: InvalidNetworkSecurityGroupSecurityRules - küme oluşturulamıyor
+          href: ./hdinsight-troubleshoot-invalidnetworksecuritygroupsecurityrules-cluster-creation-fails.md
         - name: HDInsight kümesinde oturum açılamıyor
           href: ./hdinsight-troubleshoot-unable-log-in-cluster.md
         - name: HDInsight kümesine düğümler eklenemiyor
           href: ./hdinsight-troubleshoot-unable-add-nodes.md
-        - name: InvalidNetworkSecurityGroupSecurityRules - küme oluşturulamıyor
-          href: ./hdinsight-troubleshoot-invalidnetworksecuritygroupsecurityrules-cluster-creation-fails.md
         - name: Hizmet sorumlusu sertifikasını dönüştürme
           href: ./hdinsight-troubleshoot-converting-service-principal-certificate.md
+        - name: Yerel HDFS güvenli modda takılıyor
+          href: ./hdinsight-hdfs-troubleshoot-safe-mode.md
         - name: Apache Ambari sinyal sorunları
           href: ./apache-ambari-troubleshoot-heartbeat-issues.md
 - name: Nasıl yapılır

@@ -27,64 +27,31 @@ sections:
         style: cards
         type: list
   - items:
-      - text: 'Azure Machine Learning hizmetini ayarlayın ve kullanmaya başlayın:'
+      - text: Azure Machine Learning hizmetini ayarlayın ve kullanmaya başlayın.
         type: paragraph
-      - text: '<b>Hızlı Başlangıçlar:</b>'
-        type: paragraph
-      - items:
-          - html: <a href="service/quickstart-run-cloud-notebook">Bulutta bir deneme çalıştırma</a> (yükleme gerekmez)
-          - html: <a href="service/quickstart-run-local-notebook">Yerel not defteri sunucusu kullanarak bir deneme çalıştırma</a> (yerel SDK yüklemesi gerekir)
-        style: unordered
-        type: list
-      - text: '<b>Öğretici: Azure portalında ilk otomatikleştirilmiş ML modelinizi eğitip dağıtma:</b>'
+      - text: 'ML modellerini eğitmek, dağıtmak ve yönetmek için kullanımı kolay, kod içermeyen bir arabirim olan Azure portalını kullanın:'
         type: paragraph
       - items:
+          - html: <a href="service/ui-tutorial-automobile-price-train-score">Görsel arabirimin sürükleyip bırakma kullanıcı arabiriminde ilk denemenizi eğitme</a>
           - html: <a href="service/tutorial-first-experiment-automated-ml">İlk sınıflandırma modelinizi eğitip dağıtmak için otomatikleştirilmiş makine öğrenmesini kullanma</a>
         style: unordered
         type: list
-      - text: '<b>Öğretici: SDK ile ilk ML modelinizi eğitme:</b>'
+      - text: 'ML modellerini eğitmek, dağıtmak ve yönetmek için betiklerde ve not defterlerinde Python SDK''sını kullanma:'
         type: paragraph
       - items:
-          - html: '1. Bölüm: <a href="service/tutorial-1st-experiment-sdk-setup">Ortam ve çalışma alanı ayarlama</a>'
-          - html: '2. Bölüm: <a href="service/tutorial-1st-experiment-sdk-train">İlk modelinizi eğitme</a>'
+          - html: <a href="service/tutorial-1st-experiment-sdk-setup">Ortamınızı ayarlama ve ilk ML denemenizi eğitme</a>
+          - html: <a href="service/tutorial-train-models-with-aml">Resim sınıflandırma modellerini eğitme ve dağıtma</a>
+          - html: <a href="service/tutorial-data-prep">Taksi ücretlerini tahmin etmek için verileri hazırlama ve otomatik ML kullanma</a>
         style: unordered
         type: list
-      - text: '<b>Öğretici: Görsel arabirim kullanarak ilk denemenizi eğitip dağıtma:</b>'
-        type: paragraph
-      - items:
-          - html: '1. Bölüm: <a href="service/ui-tutorial-automobile-price-train-score">Regresyon modelini eğitme</a>'
-          - html: '2. Bölüm: <a href="service/ui-tutorial-automobile-price-deploy">Modeli dağıtma</a>'
-        style: unordered
-        type: list
-      - text: '<b>Öğretici: SDK ile MNIST verilerinin görüntü sınıflandırması:</b>'
-        type: paragraph
-      - items:
-          - html: '1. Bölüm: <a href="service/tutorial-train-models-with-aml">Kendi modelinizi eğitme</a>'
-          - html: '2. Bölüm: <a href="service/tutorial-deploy-models-with-aml">Bu modeli dağıtma</a>'
-        style: unordered
-        type: list
-      - text: '<b>Öğretici: SDK''yı kullanarak taksi ücretini tahmin etme:</b>'
-        type: paragraph
-      - items:
-          - html: '1. Bölüm: <a href="service/tutorial-data-prep">Verileri modelleme için hazırlama</a>'
-          - html: '2. Bölüm: <a href="service/tutorial-auto-train-models">Otomatik ML''nin modelleri sizin için eğitmesine olanak tanıma</a>'
-        style: unordered
-        type: list
-      - text: '<b>Öğretici: Görsel arabirimi kullanarak otomobil fiyatını tahmin etme:</b>'
-        type: paragraph
-      - items:
-          - html: '1. Bölüm: <a href="service/ui-tutorial-automobile-price-train-score">Otomobil fiyatını tahmin etme</a>'
-          - html: '2. Bölüm: <a href="service/ui-tutorial-automobile-price-deploy">Regresyon modelini dağıtma</a>'
-        style: unordered
-        type: list
-      - text: '<b>Modellerinizi kullanma:</b>'
+      - text: 'Modellerinizi kullanma:'
         type: paragraph
       - items:
           - html: <a href="service/how-to-consume-web-service">İstek-yanıt modeli kullanma</a>
           - html: <a href="service/how-to-run-batch-predictions">ML işlem hatlarıyla toplu tahminler</a>
         style: unordered
         type: list
-    title: Hızlı başlangıçlar ve öğreticiler
+    title: Adım adım öğreticiler
   - items:
       - className: cardsM
         columns: 2

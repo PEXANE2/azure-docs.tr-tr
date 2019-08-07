@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 99bfab5a5f80fc0a49c7cc6405154394391f43e0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3a55de2d5f47274ea112e52ddbcc0d946db56470
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60908229"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68775328"
 ---
 # <a name="using-azure-security-center-for-an-incident-response"></a>Olay yanıtı için Azure Güvenlik Merkezi’ni kullanma
 Birçok kuruluş güvenlik olaylarına nasıl yanıt vereceğini ancak bir saldırıya uğradıktan sonra öğrenir. Maliyetini ve zararını azaltmak için bir saldırı gerçekleşmeden önce olay yanıtı planınızın olması önemlidir. Bir olay yanıtının farklı aşamalarında Azure Güvenlik Merkezi’ni kullanabilirsiniz.
@@ -56,7 +56,7 @@ Zehra güvenlik operasyonlarında görev almaktadır. Sorumlulukları şunlardı
 * Gün boyunca güvenlik tehditlerini izleme ve yanıtlama.
 * Gerektiğinde bulut iş yükü sahibine veya güvenlik analiz uzmanına başvurma.
 
-Vedat bir güvenlik analiz uzmanıdır ve aşağıdaki sorumluluklara sahiptir:
+Sam, bir güvenlik analisti ve sorumlulukları şunları içerir:
 
 * Saldırıları araştırma.
 * Uyarıları düzeltme.
@@ -65,17 +65,17 @@ Vedat bir güvenlik analiz uzmanıdır ve aşağıdaki sorumluluklara sahiptir:
 Gördüğünüz gibi Zehra ve Vedat farklı sorumluluklara sahiptir ve Güvenlik Merkezi bilgilerini paylaşarak birlikte çalışmaları gerekir.
 
 ## <a name="recommended-solution"></a>Önerilen çözüm
-Zehra ve Vedat farklı rollere sahip olduğundan günlük etkinlikleriyle ilgili bilgileri almak için Güvenlik Merkezi’nin farklı alanlarını kullanacaklardır. Zehra günlük izleme görevinin bir parçası olarak **Güvenlik uyarılarını** kullanır.
+Zehra ve Vedat farklı rollere sahip olduğundan günlük etkinlikleriyle ilgili bilgileri almak için Güvenlik Merkezi’nin farklı alanlarını kullanacaklardır. Gamze, günlük izlemenin bir parçası olarak **güvenlik uyarılarını** kullanacaktır.
 
 ![Güvenlik uyarıları](./media/security-center-incident-response/security-center-incident-response-fig3.png)
 
-Zehra, Algılama ve Değerlendirme aşamaları sırasında Güvenlik uyarılarını kullanır. Zehra ilk değerlendirmesini tamamladıktan sonra ek araştırma gerekiyorsa sorunu Vedat’a taşıyabilir. Bu noktada Vedat, Tanılama aşamasına geçmek için bazen diğer veri kaynaklarıyla birlikte Güvenlik Merkezi tarafından sağlanan bilgileri kullanmak zorundadır.
+Zehra, Algılama ve Değerlendirme aşamaları sırasında Güvenlik uyarılarını kullanır. Gamze ilk değerlendirmeyi tamamladıktan sonra ek araştırma gerekliyse sorunu Sam 'a ilerletebilir. Bu noktada Vedat, Tanılama aşamasına geçmek için bazen diğer veri kaynaklarıyla birlikte Güvenlik Merkezi tarafından sağlanan bilgileri kullanmak zorundadır.
 
 ## <a name="how-to-implement-this-solution"></a>Bu çözümü uygulama
 Bir olay yanıtı senaryosunda Azure Güvenlik Merkezi’nin nasıl kullanılacağını görmek için Meltem’in Algılama ve Değerlendirme aşamasındaki adımlarını izleyecek ve Vedat’ın sorunu tanılamak için ne yaptığını göreceğiz.
 
 ### <a name="detect-and-assess-incident-response-stages"></a>Olay yanıtının Algılama ve Değerlendirme aşamaları
-Zehra Azure portalında oturum açmıştır ve Güvenlik Merkezi konsolunda çalışmaktadır. Günlük izleme etkinliklerinin bir parçası olarak aşağıdaki adımları uygulayarak yüksek öncelikli güvenlik ayarlarını gözden geçirmeye başlamıştır:
+Zehra Azure portalında oturum açmıştır ve Güvenlik Merkezi konsolunda çalışmaktadır. Günlük izleme etkinliklerinin bir parçası olarak, aşağıdaki adımları uygulayarak yüksek öncelikli güvenlik uyarılarını incelemeye başlamıştır:
 
 1. **Güvenlik uyarıları** kutucuğuna tıklamış ve **Güvenlik uyarıları** dikey penceresine erişmiştir.
     ![Güvenlik uyarısı dikey penceresi](./media/security-center-incident-response/security-center-incident-response-fig4.png)
@@ -84,12 +84,12 @@ Zehra Azure portalında oturum açmıştır ve Güvenlik Merkezi konsolunda çal
    > Bu senaryoda Zehra, önceki şekilde görünen Kötü Amaçlı SQL etkinliği uyarısı üzerinde bir değerlendirme yapacaktır.
    >
    >
-2. Tıklayın **kötü amaçlı SQL etkinliği** için saldırılan kaynakları gözden geçirin ve uyarı **kötü amaçlı SQL etkinliği** dikey penceresinde:  ![Olay Ayrıntıları](./media/security-center-incident-response/security-center-incident-response-fig5.png)
+2. Kötü amaçlı **SQL etkinliği** uyarısına tıklayın ve **kötü amaçlı SQL etkinliği** dikey penceresinde saldırıya uğrayan kaynakları gözden geçirin:  ![Olay ayrıntıları](./media/security-center-incident-response/security-center-incident-response-fig5.png)
 
     Bu dikey pencerede Zehra, saldırıya uğrayan kaynaklar, bu saldırının kaç kez gerçekleştiği ve ne zaman algılandığı ile ilgili notlar alabilir.
 3. Bu saldırı hakkında daha fazla bilgi almak için **saldırıya uğrayan kaynak** öğesine tıklayın.
 
-Meltem açıklamayı okuduktan sonra bunun yanlış pozitif olmadığına ve bu sorunu Vedat’a götürmesi gerektiğine ikna olur.
+Bu açıklamayı okuduktan sonra, bu, yanlış pozitif bir değer değil ve bu durumu Sam 'a ilerletilmeleri gerektiğini ikna etmelidir.
 
 ### <a name="diagnose-incident-response-stage"></a>Tanılama olay yanıtı aşaması
 Vedat olayı Zehra’dan alır ve Güvenlik Merkezi tarafından önerilen düzeltme adımlarını gözden geçirmeye başlar.

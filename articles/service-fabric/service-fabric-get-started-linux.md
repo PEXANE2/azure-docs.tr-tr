@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 49e80c3fc8935064aceef8ef4e2bd3257c41e5e7
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 6916eea26f03d7b9cd0b3792fa65354619f97f74
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514188"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828495"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Linux üzerinde geliştirme ortamınızı hazırlama
 > [!div class="op_single_selector"]
@@ -103,11 +103,11 @@ SDK ve ilişkili çalışma zamanı paketini apt-get komut satırı aracıyla y�
     sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
     ```
 
-7. Azul JDK anahtarını APT Anahtarlığınıza ekleyin ve onun deposunu ayarlayın.
+7. APT kimlik anahtarlığı 'e Azul JDK anahtarını ekleyin ve deposunu ayarlayın.
 
     ```bash
-    curl -fsSL https://repos.azul.com/azul-repo.key | sudo apt-key add -
-    sudo add-apt-repository 'deb http://repos.azulsystems.com/ubuntu stable main'
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361219BD9C9
+    sudo apt-add-repository "deb http://repos.azul.com/azure-only/zulu/apt stable main"
     ```
 
 8. Paket listelerinizi yeni eklenen depolara göre yenileyin.
@@ -178,7 +178,7 @@ SDK yüklemesiyle birlikte gelen Service Fabric çalışma zamanı, aşağıdaki
 
  | | DotNetCore | Java | Python | NodeJS | 
 --- | --- | --- | --- |---
-Ubuntu | 2.0.0 | AzulJDK 1.8 | Npm’de örtük | latest |
+Ubuntu | 2.0.0 | AzulJDK 1,8 | Npm’de örtük | latest |
 RHEL | - | OpenJDK 1.8 | Npm’de örtük | latest |
 
 ## <a name="set-up-a-local-cluster"></a>Yerel küme oluşturma
@@ -239,7 +239,7 @@ Oluşturucuları yükledikten sonra, sırasıyla `yo azuresfguest` ve `yo azures
 
 ## <a name="set-up-java-development"></a>Java ile geliştirmeyi ayarlama
 
-Java kullanarak Service Fabric hizmetleri oluşturmak için derleme görevleri çalıştırmak için Gradle'ı yükleyin. Çalıştırma aşağıdaki Gradle'ı yüklemek için komutu. Service Fabric Java kitaplıkları Maven’dan alınır.
+Java kullanarak Service Fabric Hizmetleri derlemek için, derleme görevlerini çalıştırmak için Gradle ' yi kullanın. Gradle yüklemek için aşağıdaki komutu çalıştırın. Service Fabric Java kitaplıkları Maven’dan alınır.
 
 
 * Ubuntu
@@ -272,7 +272,7 @@ Service Fabric için Eclipse eklentisini Java EE Geliştiricileri veya Java Geli
 > 
 > Ubuntu üzerinde, paket yükleyici (`apt` veya `apt-get`) kullanmak yerine doğrudan Eclipse sitesinden yükleme yapılmasını öneririz. Böylece, Eclipse’in en güncel sürümünü elde etmeniz sağlanır. Java EE Geliştiricileri için veya Java Geliştiricileri için Eclipse IDE’yi yükleyebilirsiniz.
 
-1. Eclipse’te, Eclipse Neon veya sonraki bir sürümünün ve Buildship 2.2.1 veya sonraki bir sürümünün yüklü olduğundan emin olun. **Yardım** > **Eclipse Hakkında** > **Yükleme Ayrıntıları**’nı seçerek yüklü bileşenlerin sürümlerini denetleyin. Bölümündeki yönergeleri kullanarak Buildship güncelleştirebilirsiniz [Eclipse Buildship: Gradle için Eclipse eklentileri][buildship-update].
+1. Eclipse’te, Eclipse Neon veya sonraki bir sürümünün ve Buildship 2.2.1 veya sonraki bir sürümünün yüklü olduğundan emin olun. **Yardım** > **Eclipse Hakkında** > **Yükleme Ayrıntıları**’nı seçerek yüklü bileşenlerin sürümlerini denetleyin. Buildsevkiyat ' i, tutulma buildsevkiyat konumundaki [yönergeleri kullanarak güncelleştirebilirsiniz: Gradle][buildship-update]için tutulma eklentileri.
 
 2. Service Fabric eklentisini yüklemek için **Yardım** > **Yeni Yazılım Yükle**’yi seçin.
 

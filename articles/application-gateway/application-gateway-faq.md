@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 6/1/2019
 ms.author: victorh
-ms.openlocfilehash: dc3b9cceda10ae1ff648306236d5ac4868b5b426
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 5bfb3a093cd101f30daf4439dc8f58b5b4f693ca
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722149"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68740880"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway hakkında sık sorulan sorular
 
@@ -101,7 +101,7 @@ Evet. [Bir Istekteki değişikliklere](https://docs.microsoft.com/azure/applicat
 
 Yeni Application Gateway v1 SKU dağıtımları, sağlanması 20 dakikaya kadar sürebilir. Örnek boyutu veya sayımla yapılan değişiklikler karışıklığa neden olmaz ve ağ geçidi bu süre içinde etkin kalır.
 
-V2 SKU 'SU kullanan dağıtımlar, sağlanması 6 dakika kadar sürebilir.
+V2 SKU 'sunu kullanan dağıtımların çoğu, sağlanması 6 dakika sürer. Ancak, dağıtımın türüne bağlı olarak daha uzun sürebilir. Örneğin, çok sayıda örneğe sahip birden fazla Kullanılabilirlik Alanları dağıtımı 6 dakikadan fazla sürebilir. 
 
 ### <a name="can-i-use-exchange-server-as-a-backend-with-application-gateway"></a>Exchange Server 'ı Application Gateway arka uç olarak kullanabilir miyim?
 
@@ -323,10 +323,6 @@ Evet. DDoS korumasını, uygulama ağ geçidinin dağıtıldığı sanal ağ üz
 ### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>V1 SKU 'sunda v2 SKU 'suna geçiş yapmak için kullanılabilecek bir kılavuz var mı?
 
 Evet. Ayrıntılar için bkz: [Azure Application Gateway ve Web uygulaması güvenlik duvarını v1 'den v2 'ye geçirme](migrate-v1-v2.md).
-
-### <a name="does-waf-support-non-utf-8-encoding"></a>WAF sıfırdan UTF-8 kodlaması destekliyor mu?
-
-Hayır. WAF Şu anda yalnızca UTF-8 kodlamasını desteklemektedir.
 
 ## <a name="diagnostics-and-logging"></a>Tanılama ve günlüğe kaydetme
 

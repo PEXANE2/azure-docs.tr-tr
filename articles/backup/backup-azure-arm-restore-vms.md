@@ -9,14 +9,14 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: dacurwin
-ms.openlocfilehash: f961f472c0b00932bf5ee6302af58f39fa8421ed
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
-ms.translationtype: HT
+ms.openlocfilehash: 126e33d4bedb56eb479361f16c02e7e167e49392
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720438"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736703"
 ---
-# <a name="restore-azure-vms"></a>Azure VM'lerini geri yükleme
+# <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure portal Azure VM verilerini geri yükleme
 
 Bu makalede, Azure VM verilerinin [Azure Backup](backup-overview.md) kurtarma hizmetleri kasalarında depolanan kurtarma noktalarından nasıl geri yükleneceği açıklanmaktadır.
 
@@ -93,7 +93,7 @@ Bir VM 'yi geri yüklemek için (yeni bir VM oluşturun), VM 'Yi geri yükleme i
 
     ![Yapılandırma geri yükleme Sihirbazı](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard1.png)
 
-6. **Yapılandırma geri yükleme**' de **Tamam**' ı seçin. GeriYükle ' ye **tıklayarak geri** yükleme işlemini tetikleyin.
+6. **Yapılandırma geri yükleme**' de **Tamam**' ı seçin. GeriYükle ' ye tıklayarak geri yükleme işlemini tetikleyin.
 
 
 ## <a name="restore-disks"></a>Diskleri geri yükleme
@@ -110,7 +110,7 @@ Bir VM 'yi geri yüklemek için (yeni bir VM oluşturun), VM 'Yi geri yükleme i
 
     ![Kurtarma yapılandırması tamamlandı](./media/backup-azure-arm-restore-vms/trigger-restore-operation1.png)
 
-4. **Yapılandırma geri yükleme**' de **Tamam**' ı seçin. GeriYükle ' ye **tıklayarak geri** yükleme işlemini tetikleyin.
+4. **Yapılandırma geri yükleme**' de **Tamam**' ı seçin. GeriYükle ' ye tıklayarak geri yükleme işlemini tetikleyin.
 
 Sanal makineniz yönetilen diskler kullandığında ve **sanal makine oluştur** seçeneğini belirlediğinizde, Azure Backup belirtilen depolama hesabını kullanmaz. **Diskleri geri yükleme** ve **anında geri yükleme**durumunda depolama hesabı yalnızca şablonu depolamak için kullanılır. Yönetilen diskler, belirtilen kaynak grubunda oluşturulur.
 Sanal makineniz yönetilmeyen diskler kullandığında, depolama hesabına Bloblar olarak geri yüklenir.

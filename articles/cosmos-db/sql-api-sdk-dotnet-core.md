@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: ce22efd6eccdc067b05697b8389c821c4c01a347
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 58db76401439befd476bc78c1a1a20eeed5c2342
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638603"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779159"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>SQL API için Azure Cosmos DB .NET Core SDK: Sürüm notları ve kaynakları
 > [!div class="op_single_selector"]
@@ -45,13 +45,18 @@ ms.locfileid: "68638603"
 > [!NOTE]
 > .NET Core kullanıyorsanız, lütfen .NET Standard hedefleyen [.NET SDK 'sının](sql-api-sdk-dotnet-standard.md)en son sürüm 3. x sürümünü inceleyin. 
 
+### <a name="a-name251251"></a><a name="2.5.1"/>2.5.1
+
+* SDK 'nın System .net. http sürümü artık NuGet paketinde tanımlananla eşleşiyor.
+* Özgün diğeri başarısız olursa, yazma isteklerinin farklı bir bölgeye geri dönüş yapmasına izin verin.
+* Yazma isteği için oturum yeniden deneme ilkesi ekleyin.
+
 ### <a name="a-name241241"></a><a name="2.4.1"/>2.4.1
 
 * Boş sayfalara neden olan sorgular için izleme yarış durumunu düzeltir
 
 ### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
 
-* SDK 'nın System .net. http sürümü NuGet paketinde tanımlananla eşleşiyor
 * LINQ sorguları için artırılmış ondalık duyarlık boyutu.
 * Yeni sınıflar CompositePath, CompositePathSortOrder, SpatialSpec, SpatialType ve PartitionKeyDefinitionVersion eklendi
 * DocumentCollection 'a TimeToLivePropertyPath eklendi
@@ -250,6 +255,7 @@ Bu SDK ile ilgili sorularınız varsa, [StackOverflow](https://stackoverflow.com
 
 | Sürüm | Yayınlanma Tarihi | Sona erme tarihi |
 | --- | --- | --- |
+| [2.5.1](#2.5.1) |02 Temmuz 2019 |--- |
 | [2.4.1](#2.4.1) |20 Haziran 2019 |--- |
 | [2.4.0](#2.4.0) |05 Mayıs 2019 |--- |
 | [2.3.0](#2.3.0) |04 Nisan 2019 |--- |

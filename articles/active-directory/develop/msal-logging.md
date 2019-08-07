@@ -9,7 +9,7 @@ editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: overview
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/22/2019
@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4288ff4aba216a214d10c56ba448fc03e13b81f2
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 09590fbd340ac3945f05346f99254ec0b76dcd76
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68693940"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68834986"
 ---
 # <a name="logging"></a>Günlüğe Kaydetme
 Sorunları tanılamanıza ve ayrıntı sağlamanıza yardımcı olabilecek günlük iletileri oluşturmak için Microsoft kimlik doğrulama kitaplığı (MSAL) uygulamaları. Bir uygulama, birkaç satırlık kodla günlüğe kaydetmeyi yapılandırabilir ve ayrıntı düzeyi üzerinde özel denetime sahip olabilir ve kişisel ve kurumsal verilerin günlüğe kaydedilip kaydedilmeyeceğini belirtir. Bir MSAL günlüğe kaydetme geri çağırması ayarlamanız ve kullanıcıların kimlik doğrulama sorunlarıyla karşılaştıklarında günlükleri göndermesi için bir yol sağlamanız önerilir.

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2019
 ms.author: TomSh
-ms.openlocfilehash: 688492188bb8a29e33568011c2cf75439ca5f4af
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: fbce475e1f783595fb67e62e15d5a503a4c687ed
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726660"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780589"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure güvenliği teknik özellikleri
 Bu makalede, Azure 'da verilerinizi, kaynaklarınızı ve uygulamalarınızı korumanıza ve işletmenizin güvenlik ihtiyaçlarını karşılamanıza yardımcı olan güvenlik hizmetlerine giriş sunulmaktadır.
@@ -331,7 +331,7 @@ Azure, uygulamanız için hem gelen hem de giden trafiğin güvenliğini sağlam
 
 - [Karma Bağlantılar kullanarak uygulamanızı özel bir ağdaki kaynaklarla güvenli bir şekilde bağlayın](https://docs.microsoft.com/azure/app-service/app-service-hybrid-connections)
 
-Azure App Service, Azure Cloud Services ve sanal makineler tarafından kullanılan aynı kötü amaçlı yazılımdan koruma çözümünü kullanır. Bu konuda daha fazla bilgi edinmek için [kötü amaçlı yazılımdan koruma belgelerinize](https://docs.microsoft.com/azure/security/azure-security-antimalware)bakın.
+Azure App Service, Azure Cloud Services ve sanal makineler tarafından kullanılan aynı kötü amaçlı yazılımdan koruma çözümünü kullanır. Bu konuda daha fazla bilgi edinmek için [kötü amaçlı yazılımdan koruma belgelerinize](https://docs.microsoft.com/azure/security/fundamentals/antimalware)bakın.
 
 ## <a name="secure-your-network"></a>Ağınızın güvenliğini sağlama
 Microsoft Azure, uygulamanızı ve hizmet bağlantı gereksinimlerinizi desteklemek için sağlam bir ağ altyapısı içerir. Azure 'da bulunan kaynaklar arasında, şirket içi ve Azure 'da barındırılan kaynaklar arasında ve Internet ve Azure arasında ağ bağlantısı kurulabilir.
@@ -352,7 +352,7 @@ Azure, şirket içi ağınız ve [ExpressRoute](https://docs.microsoft.com/azure
 
 [Azure sanal makineleri](https://docs.microsoft.com/azure/virtual-machines/) , çok çeşitli bilgi işlem çözümlerini çevik bir şekilde dağıtmanıza olanak tanır. Microsoft Windows, Linux, Microsoft SQL Server, Oracle, IBM, SAP ve Azure BizTalk Hizmetleri desteği sayesinde, istediğiniz iş yükünü istediğiniz dilde ve neredeyse tüm işletim sistemlerinde dağıtabilirsiniz.
 
-Azure ile, sanal makinelerinizi kötü amaçlı dosyalardan, reklam yazılımlarından ve diğer tehditlerden korumak için Microsoft, Symantec, Trend Micro ve Kaspersky gibi güvenlik satıcılarından [kötü amaçlı yazılımdan koruma yazılımı](https://docs.microsoft.com/azure/security/azure-security-antimalware) kullanabilirsiniz.
+Azure ile, sanal makinelerinizi kötü amaçlı dosyalardan, reklam yazılımlarından ve diğer tehditlerden korumak için Microsoft, Symantec, Trend Micro ve Kaspersky gibi güvenlik satıcılarından [kötü amaçlı yazılımdan koruma yazılımı](https://docs.microsoft.com/azure/security/fundamentals/antimalware) kullanabilirsiniz.
 
 Azure Cloud Services için Microsoft Antimalware ve sanal makineler, virüsler, casus yazılım ve diğer kötü amaçlı yazılımların tanımlanmasına ve kaldırılmasına yardımcı olan gerçek zamanlı bir koruma özelliğidir. Microsoft Antimalware, bilinen kötü amaçlı veya istenmeyen yazılımlar kendisini yüklemeye veya Azure sistemlerinizde çalışmaya çalıştığında yapılandırılabilir uyarılar sağlar.
 
@@ -382,7 +382,7 @@ Ayrıca, denetim listesi:
 
 ## <a name="azure-infrastructure-and-application-security-validation"></a>Azure altyapısı ve uygulama güvenliği doğrulaması
 
-[Azure operasyonel güvenlik](https://docs.microsoft.com/azure/security/azure-operational-security) , kullanıcıların verilerini, uygulamalarını ve diğer varlıklarını Microsoft Azure korumak için kullanıcılara sunulan hizmetleri, denetimleri ve özellikleri ifade eder.
+[Azure Operasyonel Güvenlik] (https://docs.microsoft.com/azure/security/fundamentals/operational-security Microsoft Azure içindeki verileri, uygulamaları ve diğer varlıkları korumak için kullanıcılara sunulan hizmetleri, denetimleri ve özellikleri ifade eder.
 
 ![güvenlik doğrulaması (Algıla)](./media/technical-capabilities/azure-security-technical-capabilities-fig7.png)
 

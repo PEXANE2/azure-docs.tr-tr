@@ -131,6 +131,8 @@
   items:
     - name: Azure İzleyici'yi yönetme
       items:
+        - name: Çalışma alanı dağıtımını tasarlama
+          href: platform/design-logs-deployment.md
         - name: Rol izinleri ve güvenlik
           href: platform/roles-permissions-security.md
         - name: IP adresleri

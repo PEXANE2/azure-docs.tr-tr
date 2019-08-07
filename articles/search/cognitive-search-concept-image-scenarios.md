@@ -5,18 +5,19 @@ services: search
 manager: pablocas
 author: luiscabrer
 ms.service: search
+ms.subservice: cognitive-search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 589f8c8f11138b4fb5c3c3096229e28c633efb0d
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: e60eeb601a0a5796609b9c38b7394c2de0610cdf
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423015"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68841287"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Bilişsel arama senaryolarında görüntülerden bilgi işleme ve çıkarma
 
@@ -72,7 +73,8 @@ Aşağıdaki şekilde, [Dizin Oluşturucu tanımınızda](https://docs.microsoft
 | originalWidth      | Normalleştirme yapmadan önce resmin orijinal genişliği. |
 | originalHeight      | Normalleştirme yapmadan önce resmin orijinal yüksekliği. |
 | rotationFromOriginal |  Normalleştirilmiş görüntüyü oluşturmak için oluşan derece saat yönünde döndürme. 0 derece ve 360 derece arasında bir değer. Bu adım, kamera veya tarayıcı tarafından oluşturulan görüntüden meta verileri okur. Genellikle 90 derecenin katları. |
-| Contenentoffset |Görüntünün ayıklandığı içerik alanı içindeki karakter konumu. Bu alan yalnızca katıştırılmış görüntülere sahip dosyalar için geçerlidir. |
+| Contenentoffset | Görüntünün ayıklandığı içerik alanı içindeki karakter konumu. Bu alan yalnızca katıştırılmış görüntülere sahip dosyalar için geçerlidir. |
+| pageNumber | Görüntü bir PDF 'den ayıklandıysa veya işlendiğinde, bu alan, 1 ' den başlayarak ayıklanan veya işlenen PDF 'deki sayfa numarasını içerir.  Görüntü bir PDF 'den değilse, bu alan 0 olur.  |
 
  *Normalized_images*örnek değeri:
 ```json
@@ -84,7 +86,8 @@ Aşağıdaki şekilde, [Dizin Oluşturucu tanımınızda](https://docs.microsoft
     "originalWidth": 5000,  
     "originalHeight": 3000,
     "rotationFromOriginal": 90,
-    "contentOffset": 500  
+    "contentOffset": 500,
+    "pageNumber": 2
   }
 ]
 ```

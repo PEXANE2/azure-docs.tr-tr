@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7799b62b2c330610663e361bbb3930340b1ebdaf
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: a007e3adb72148cfde1590e996f7df9082159445
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726293"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840506"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Bir web hizmeti olarak bir Azure Machine Learning modeli kullanma
 
@@ -29,6 +29,9 @@ Machine Learning Web hizmeti kullanan bir istemci oluşturmak için genel iş ak
 1. Bağlantı bilgilerini almak için SDK 'Yı kullanın.
 1. Model tarafından kullanılan istek verilerinin türünü belirleme.
 1. Web hizmetini çağıran bir uygulama oluşturun.
+
+> [!TIP]
+> Bu belgedeki örnekler, Openapı (Swagger) belirtimlerinin kullanımı olmadan el ile oluşturulur. Dağıtımınız için bir Openapı belirtimini etkinleştirdiyseniz, hizmetinize yönelik istemci kitaplıkları oluşturmak için [Swagger-CodeGen](https://github.com/swagger-api/swagger-codegen) gibi araçları kullanabilirsiniz.
 
 ## <a name="connection-information"></a>Bağlantı bilgileri
 

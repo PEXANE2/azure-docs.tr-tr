@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: danlep
-ms.openlocfilehash: 285d5592ce667f7b4d84f26d67a00af0698c2967
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 88b6da4e9bd2938adadadc1ef0e696399fc3c75e
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620967"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828010"
 ---
 # <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>Güvenlik duvarının arkasındaki bir Azure Container Registry 'ye erişmek için kuralları yapılandırma
 
@@ -123,9 +123,9 @@ Bir Azure sanal ağında, sanal makine gibi bir kaynaktan bir kapsayıcı kayıt
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Ağ güvenliği için En Iyi Azure uygulamaları](../security/azure-security-network-security-best-practices.md) hakkında bilgi edinin
+* [Ağ güvenliği için En Iyi Azure uygulamaları](../security/fundamentals/network-best-practices.md) hakkında bilgi edinin
 
-* Azure sanal ağındaki [güvenlik grupları](https://docs.microsoft.com/en-us/azure/virtual-network/security-overview.md) hakkında daha fazla bilgi edinin
+* Azure sanal ağındaki [güvenlik grupları](/azure/virtual-network/security-overview) hakkında daha fazla bilgi edinin
 
 
 

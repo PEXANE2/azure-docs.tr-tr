@@ -23,7 +23,7 @@
           href: azure-to-azure-tutorial-failover-failback.md
         - name: Yük devretmeyi çalıştırma
           href: azure-to-azure-tutorial-failback.md
-    - name: Azure VM'lerini taşıma
+    - name: Taşı
       items:
         - name: Azure VM’lerini başka bir bölgeye taşıma
           href: azure-to-azure-tutorial-migrate.md
@@ -31,6 +31,8 @@
           href: move-Azure-VMs-AVset-Azone.md
         - name: Azure VM’lerini Kamu ve Genel bölgeler arasında taşıma
           href: region-move-cross-geos.md
+        - name: Bir kasayı farklı bir bölgeye taşıma
+          href: move-vaults-across-regions.md
     - name: Azure'a VMware VM olağanüstü durum kurtarma
       items:
         - name: Azure’u hazırlama
@@ -365,8 +367,6 @@
               href: service-updates-how-to.md
             - name: Bir kasayı silme
               href: delete-vault.md
-            - name: Bir kasayı farklı bir bölgeye taşıma
-              href: move-vaults-across-regions.md
     - name: Uygulamalar için olağanüstü durum kurtarma
       items:
         - name: Şirket içi uygulamalar için Azure’a olağanüstü durum kurtarmayı ayarlama
@@ -441,6 +441,8 @@
       items:
         - name: Azure VM çoğaltma sorunlarını giderme
           href: azure-to-azure-troubleshoot-errors.md
+        - name: Azure VM bağlantısıyla ilgili sorunları giderme
+          href: azure-to-azure-troubleshoot-network-connectivity.md
         - name: Devam eden çoğaltma sorunlarını giderme
           href: azure-to-azure-troubleshoot-replication.md
         - name: Mobility hizmeti sorunlarını giderme

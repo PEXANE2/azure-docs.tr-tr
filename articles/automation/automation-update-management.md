@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 150d30085976c89e9053d4715da98e487684e45c
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 1bb437511ed89de626489516ce5b06664ace6fba
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717253"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68741852"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 'da Güncelleştirme Yönetimi çözümü
 
@@ -23,7 +23,7 @@ Azure 'da, şirket içi ortamlarda veya diğer bulut sağlayıcılarında Window
 Sanal makineler için Güncelleştirme Yönetimi doğrudan Azure Otomasyonu hesabınızdan etkinleştirebilirsiniz. Otomasyon hesabınızdan sanal makineler için Güncelleştirme Yönetimi etkinleştirmeyi öğrenmek için bkz. [birden çok sanal makine için güncelleştirmeleri yönetme](manage-update-multi.md). Ayrıca, bir sanal makine için Güncelleştirme Yönetimi, Azure portal sanal makine sayfasından da etkinleştirebilirsiniz. Bu senaryo, [Linux](../virtual-machines/linux/tutorial-monitoring.md#enable-update-management) ve [Windows](../virtual-machines/windows/tutorial-monitoring.md#enable-update-management) sanal makineleri için kullanılabilir.
 
 > [!NOTE]
-> Güncelleştirme Yönetimi çözümü, Otomasyon hesabınıza bir Log Analytics çalışma alanı bağlamayı gerektirir. Desteklenen bölgelerin kesin listesi için, bkz. [https://docs.microsoft.com/en-us/azure/automation/how-to/region-mappings ]. Bölge eşlemeleri, Otomasyon hesabınızdan ayrı bir bölgedeki sanal makineleri yönetme özelliğini etkilemez.
+> Güncelleştirme Yönetimi çözümü, Otomasyon hesabınıza bir Log Analytics çalışma alanı bağlamayı gerektirir. Desteklenen bölgelerin kesin listesi için bkz. [Azure çalışma alanı eşlemeleri](./how-to/region-mappings.md). Bölge eşlemeleri, Otomasyon hesabınızdan ayrı bir bölgedeki sanal makineleri yönetme özelliğini etkilemez.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 

@@ -11,19 +11,19 @@ ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3daf44ee29a2f7b29eec9215876ca6edc18a5800
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 59a2cc971fbc1df967bc2655c672ab8f419eef71
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325054"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835525"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Nasıl yapılır: Azure Access Control Service'ten geçiş yapma
 
@@ -60,7 +60,7 @@ https://<mynamespace>.accesscontrol.windows.net
 
 STS ve yönetim işlemleriyle tüm iletişimler bu URL 'de yapılır. Farklı amaçlar için farklı yollar kullanırsınız. Uygulamalarınızın veya hizmetlerinizin Access Control kullanıp kullanmadığını öğrenmek için, https://&lt;Namespace&gt;. AccessControl.Windows.net öğesine giden trafiği izleyin. Bu URL 'ye giden tüm trafik Access Control tarafından işlenir ve üretimi devam etmek gerekir. 
 
-Bunun özel durumu, için `https://accounts.accesscontrol.windows.net`tüm trafiktir. Bu URL 'ye giden trafik zaten farklı bir hizmet tarafından işlenmiştir  ve Access Control kullanımdan kalkarak etkilenmemektedir. 
+Bunun özel durumu, için `https://accounts.accesscontrol.windows.net`tüm trafiktir. Bu URL 'ye giden trafik zaten farklı bir hizmet tarafından işlenmiştir ve Access Control kullanımdan kalkarak etkilenmemektedir. 
 
 Access Control hakkında daha fazla bilgi için bkz. [Access Control Service 2,0 (arşivlenmiş)](https://msdn.microsoft.com/library/hh147631.aspx).
 
@@ -205,7 +205,7 @@ Aşağıdaki tabloda, Azure AD 'de bulunan özelliklerle Web uygulamalarıyla il
 | WS-Trust | Desteklenen | Desteklenmiyor |
 | **Belirteç biçimleri** | | |
 | JWT | Beta sürümünde destekleniyor | Desteklenen |
-| SAML 1,1 | Desteklenen | Önizleme |
+| SAML 1.1 | Desteklenen | Önizleme |
 | SAML 2.0 | Desteklenen | Desteklenen |
 | SWT | Desteklenen | Desteklenmiyor |
 | **Melere** | | |
@@ -256,7 +256,7 @@ Aşağıdaki tabloda, Web uygulamalarıyla ilgili Access Control özellikleri, A
 | WS-Trust | Desteklenen | Desteklenmiyor |
 | **Belirteç biçimleri** | | |
 | JWT | Beta sürümünde destekleniyor | Desteklenen |
-| SAML 1,1 | Desteklenen | Desteklenmiyor |
+| SAML 1.1 | Desteklenen | Desteklenmiyor |
 | SAML 2.0 | Desteklenen | Desteklenmiyor |
 | SWT | Desteklenen | Desteklenmiyor |
 | **Melere** | | |
@@ -325,7 +325,7 @@ Ayrıca, Azure AD 'yi, OAuth istemci kimlik bilgileri verme 'nin Azure AD uygula
 | Web hizmeti kaydetme | Access Control yönetim portalında bağlı olan taraf oluşturma | Azure portal bir Azure AD Web uygulaması oluşturma |
 | Bir istemciyi kaydetme | Access Control yönetim portalında hizmet kimliği oluşturma | Azure portal başka bir Azure AD Web uygulaması oluşturma |
 | Kullanılan protokol |-OAuth WRAP Protokolü<br />-OAuth 2,0 taslak 13 istemci kimlik bilgileri verme | OAuth 2.0 istemci kimlik bilgileri verme |
-| İstemci kimlik doğrulama yöntemleri |-Basit parola<br />-İmzalı SWT<br />-Federasyon kimliği sağlayıcısından SAML belirteci |-Basit parola<br />-İmzalı JWT |
+| İstemci kimlik doğrulaması yöntemleri |-Basit parola<br />-İmzalı SWT<br />-Federasyon kimliği sağlayıcısından SAML belirteci |-Basit parola<br />-İmzalı JWT |
 | Belirteç biçimleri |-JWT<br />-SAML 1,1<br />-SAML 2,0<br />-SWT<br /> | Yalnızca JWT |
 | Belirteç dönüştürmesi |-Özel talepler ekleme<br />-Basit if-then talep verme mantığı | Özel talepler Ekle | 
 | Yapılandırma ve yönetim görevlerini otomatikleştirin | Access Control Management Service aracılığıyla desteklenir | Microsoft Graph ve Azure AD Graph API aracılığıyla desteklenir |

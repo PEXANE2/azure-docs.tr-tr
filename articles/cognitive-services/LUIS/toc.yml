@@ -114,6 +114,9 @@
     - name: En iyi uygulamalar
       href: luis-concept-best-practices.md
       displayName: 'phrase list, pattern, intent, utterance, version, do, don''t, example utterances, iteration, cycle, correct, right'
+    - name: LUIS ve Soru-Cevap Oluşturma'yı kullanma
+      href: choose-natural-language-processing-service.md
+      displayName: 'nlp, qna maker'
     - name: Uygulamanızı planlama
       displayName: 'simple, composite, prebuilt, list, regex, regular expression'
       href: luis-how-plan-your-app.md

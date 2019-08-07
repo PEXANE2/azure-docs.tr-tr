@@ -7,14 +7,14 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: dacurwin
-ms.openlocfilehash: f88555c6a8b3d4122a1a8ef82f58788a46dd5226
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: f5a76ef44ebef0689ec0587434996f28ba7b7025
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639834"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68735534"
 ---
-# <a name="back-up-an-sap-hana-database"></a>SAP HANA veritabanını yedekleme
+# <a name="back-up-an-sap-hana-database-to-azure"></a>SAP HANA veritabanını Azure 'a yedekleme
 
 [Azure Backup](backup-overview.md) , SAP HANA veritabanlarının Azure 'a yedeklenmesini destekler.
 
@@ -173,7 +173,7 @@ Azure Backup ile yedeklenen bir veritabanının yerel yedeklemesini (HANA Studio
 1. Veritabanının tamamlaması için herhangi bir tam veya günlük yedeklemesi bekleyin. SAP HANA Studio 'daki durumu denetleyin.
 2. Günlük yedeklemelerini devre dışı bırakın ve ilgili veritabanı için yedekleme kataloğunu dosya sistemine ayarlayın.
 3. Bunu yapmak için **SystemDB** > **yapılandırması** > **veritabanı** > **filtresi Seç (günlük)** öğesine çift tıklayın.
-4. **Enable_auto_log_backup** **olarak ayarlayın**.
+4. **Enable_auto_log_backup** olarak ayarlayın.
 5. **Log_backup_using_backint** **değerini false**olarak ayarlayın.
 6. Veritabanının geçici bir tam yedeklemesini alın.
 7. Tam yedekleme ve Katalog yedeklemesinin bitmesini bekleyin.

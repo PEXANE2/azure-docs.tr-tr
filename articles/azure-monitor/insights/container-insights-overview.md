@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/22/2019
+ms.date: 08/02/2019
 ms.author: magoedte
-ms.openlocfilehash: 96a312630c92048f36f79e3bec18f83ed5a445ff
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: e1fca1532352c4955f478df70f818ee3151053c1
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414138"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742199"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>Kapsayıcılara genel bakış için Azure İzleyici
 
@@ -40,9 +40,11 @@ Kapsayıcılar için Azure Izleyici, Azure Izleyici 'nin farklı özelliklerini 
 * Düğümleri veya kapsayıcılardaki CPU ve bellek kullanımı eşiklerinizi aştığında, sizi önceden bilgilendirmesi veya kayıt yapmanız için uyarıları yapılandırın.
 * Özel uyarılar, panolar oluşturmak ve ayrıntılı analiz gerçekleştirmek için [sorguları](container-insights-log-search.md) kullanarak düğümlerden ve Kubernetes tarafından toplanan uygulama ve iş yükü ölçümlerini görüntülemek Için [Prometheus](https://prometheus.io/docs/introduction/overview/) ile tümleştirin.
 
->[!NOTE]
->Prometheus desteği şu anda genel önizlemede bir özelliktir.
->
+    >[!NOTE]
+    >Prometheus desteği şu anda genel önizlemede bir özelliktir.
+    >
+
+* [AKS-Engine 'e dağıtılan](https://github.com/microsoft/OMS-docker/tree/aks-engine)kapsayıcı iş yüklerini izleyin.
 
 AKS kümenizi kapsayıcılar için Azure Izleyici ile izleme hakkında bilgi edinmenize yardımcı olmak için, aşağıdaki videoya göz atın.
 

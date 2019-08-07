@@ -11,12 +11,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 05/21/2019
 ms.author: shvija
-ms.openlocfilehash: dfdeee9591b5d6ccbadadaef83c6598dd0e850d8
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 117b7d4adb508628ee768bb9531d0bbc52f61121
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448137"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816066"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Etkin Directory Role-Based erişim denetimi (Önizleme)
 
@@ -27,19 +27,19 @@ Azure Event Hubs için ad alanları ve Azure portalı üzerinden tüm ilgili kay
 SAS kuralları ve anahtarlar ya da olay hub'ları için belirli diğer herhangi bir erişim belirteçleri işlemek Azure AD RBAC kullanan bir uygulamayı gerekmez. İstemci uygulaması kimlik doğrulaması bağlamı'kurmak için Azure AD ile etkileşime geçer ve olay hub'ları için bir erişim belirteci alır. Etkileşimli oturum açma gerektiren etki alanı kullanıcı hesaplarını, uygulama hiçbir zaman herhangi bir kimlik bilgisi doğrudan işler.
 
 ## <a name="event-hubs-roles-and-permissions"></a>Olay hub'ları rolleri ve izinleri
-Azure Event Hubs ad alanına erişim yetkisi vermek için aşağıdaki yerleşik RBAC rolleri sağlar:
+Azure, bir Event Hubs ad alanına erişim yetkilendirmek için aşağıdaki yerleşik RBAC rollerini sağlar:
 
-[Azure olay hub'ları veri sahibi (Önizleme)](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner-preview) bir Event Hubs ad alanı ve varlıkları (kuyruklar, konular, abonelikler ve filtreleri) veri erişim rolünü etkinleştirir
+[Azure Event Hubs veri sahibi (Önizleme)](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner-preview) rolü, bir Event Hubs ad alanına ve varlıklarına (kuyruklar, konular, abonelikler ve filtreler) veri erişimi sağlar
 
 >[!IMPORTANT]
-> Biz daha önce desteklenen yönetilen kimliğe ekleme **sahibi** veya **katkıda bulunan** rol. Ancak, veri ayrıcalıklarına erişim **sahibi** ve **katkıda bulunan** rolü artık dikkate alınır. Kullanıyorsanız **sahibi** veya **katkıda bulunan** rolü kullanmanın anahtar **Azure olay hub'ları veri sahibi (Önizleme)** rol.
+> Daha önce yönetilen kimliği **sahibine** veya **katkıda bulunan** rolüne eklemeyi destekliyoruz. Bununla birlikte, **sahip** ve **katkıda bulunan** rolü için veri erişimi ayrıcalıkları artık onaylanmaz. **Sahip** veya **katkıda bulunan** rolü kullanıyorsanız, **Azure Event Hubs veri sahibi (Önizleme)** rolünü kullanarak geçiş yapın.
 
 
 ## <a name="use-event-hubs-with-an-azure-ad-domain-user-account"></a>Event Hubs ile bir Azure AD etki alanı kullanıcı hesabı kullanın.
 
 Aşağıdaki bölümde oluşturmak ve çalıştırmak için etkileşimli bir Azure ister örnek bir uygulama için gereken adımlar açıklanmaktadır. oturum açma için AD kullanıcı, söz konusu kullanıcı hesabı için Event Hubs erişim izni verme hakkında ve Event Hubs erişmek için bu kimlik kullanma. 
 
-Basit bir konsol uygulaması, bu tanıtımda açıklanmaktadır [kodu, GitHub üzerinde.](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Rbac/EventHubsSenderReceiverRbac/)
+Bu giriş, bir basit konsol uygulamasını, [GitHub üzerinde olan kodunu](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/AzureEventHubsSDK) açıklar
 
 ### <a name="create-an-active-directory-user-account"></a>Bir Active Directory kullanıcı hesabı oluşturma
 
@@ -49,7 +49,7 @@ Yine de bu senaryo için özel bir hesap oluşturmak istiyorsanız [adımları](
 
 ### <a name="create-an-event-hubs-namespace"></a>Event Hubs ad alanı oluşturma
 
-Ardından, [bir Event Hubs ad alanı oluşturma](event-hubs-create.md). 
+Sonra [bir Event Hubs ad alanı oluşturun](event-hubs-create.md). 
 
 Ad alanı oluşturduktan sonra gidin, **erişim denetimi (IAM)** sayfasında portalda ve ardından **rol ataması Ekle** sahip rolü için Azure AD kullanıcı hesabı eklemek için. Kendi kullanıcı hesabı kullanıyorsanız ve oluşturduğunuz ad alanı, zaten sahip rolüne sahiptirler. Rolü için farklı bir hesap eklemek için web uygulamasının adını arayın **izinleri eklemek** paneli **seçin** alan ve sonra giriş'e tıklayın. Daha sonra **Kaydet**'e tıklayın. Kullanıcı hesabı artık Event Hubs ad alanına erişimi olan ve daha önce oluşturduğunuz olay hub'ına.
  
@@ -65,16 +65,16 @@ Ayrıntılı kayıt adımları açıklanmıştır [Bu öğreticide](../active-di
 
 Örneği çalıştırmadan önce App.config dosyasını düzenleyin ve senaryonuza bağlı olarak, aşağıdaki değerleri ayarlayın:
 
-- `tenantId`: Kümesine **Tenantıd** değeri.
-- `clientId`: Kümesine **ApplicationId** değeri. 
-- `clientSecret`: İstemci gizli anahtarı kullanarak oturum istiyorsanız, Azure AD'de oluşturun. Ayrıca, bir web uygulaması veya API yerine yerel bir uygulama kullanın. Ayrıca, altında uygulama Ekle **erişim denetimi (IAM)** daha önce oluşturduğunuz ad alanı içinde.
-- `eventHubNamespaceFQDN`: Yeni oluşturulan Event Hubs ad alanınız için tam DNS adı ayarlayın; Örneğin, `example.servicebus.windows.net`.
-- `eventHubName`: Oluşturduğunuz olay hub'ı adına ayarlayın.
+- `tenantId`: **Tenantıd** değeri olarak ayarlayın.
+- `clientId`: **ApplicationId** değerine ayarlanır. 
+- `clientSecret`: İstemci parolasını kullanarak oturum açmak istiyorsanız, Azure AD 'de oluşturun. Ayrıca, bir web uygulaması veya API yerine yerel bir uygulama kullanın. Ayrıca, altında uygulama Ekle **erişim denetimi (IAM)** daha önce oluşturduğunuz ad alanı içinde.
+- `eventHubNamespaceFQDN`: Yeni oluşturulan Event Hubs ad alanının tam DNS adına ayarlanır; Örneğin, `example.servicebus.windows.net`.
+- `eventHubName`: Oluşturduğunuz Olay Hub 'ının adına ayarlanır.
 - Uygulamanıza, önceki adımlarda belirtilen yeniden yönlendirme URI'si.
  
 Konsol uygulamasını çalıştırdığınızda, bir senaryo seçmek istenir; tıklayın **etkileşimli kullanıcı oturum açma** sayısı yazıp ENTER tuşuna basın. Uygulama oturum açma penceresinde görüntülenir, Event Hubs erişmeye için izninizi isteyen ve ardından hizmeti oturum açma kimliğini kullanarak gönderme ve alma senaryosunu çalıştırın için kullanır.
 
-Uygulamanın kullandığı `ServiceAudience.EventHubsAudience` belirteç hedef kitlesi olarak. İzleyici bir sabit olarak kullanılabilir olduğu diğer bir dil ya da SDK'ları kullanarak kullanmak için doğru değeri olur `https://eventhubs.azure.net/`.
+Uygulama, belirteç `ServiceAudience.EventHubsAudience` hedef kitlesi olarak kullanır. İzleyicinin bir sabit olarak kullanılamadığı diğer dilleri veya SDK 'Ları kullanırken, kullanılacak `https://eventhubs.azure.net/`doğru değer.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

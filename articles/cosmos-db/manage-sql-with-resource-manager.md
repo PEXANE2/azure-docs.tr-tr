@@ -4,14 +4,14 @@ description: SQL (Core) API için Azure Cosmos DB oluşturmak ve yapılandırmak
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/25/2019
+ms.date: 08/05/2019
 ms.author: mjbrown
-ms.openlocfilehash: 4cd66c9da0650c9eb9de5b51ce82b48fe781c6f4
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: b4d121e0628512f7bbd6aedc0a9067b31d46d0ed
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68500518"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68814981"
 ---
 # <a name="manage-azure-cosmos-db-sql-core-api-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Azure Cosmos DB SQL (çekirdek) API kaynaklarını yönetme
 
@@ -23,6 +23,7 @@ Azure Resource Manager şablonu kullanarak Azure Cosmos DB kaynakları oluşturu
 >
 > - Şu anda Kullanıcı tanımlı Işlevleri (UDF 'ler), saklı yordamları ve Tetikleyicileri Kaynak Yöneticisi şablonları kullanarak dağıtamazsınız.
 > - Azure Cosmos hesabına eş zamanlı olarak konum ekleyemez veya bunları kaldıramaz ve diğer özellikleri değiştirebilirsiniz. Bunların ayrı işlemler olarak yapılması gerekir.
+> - Hesap adları küçük harf ve 31 karakter < olmalıdır.
 
 [!code-json[create-cosmosdb-sql](~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json)]
 

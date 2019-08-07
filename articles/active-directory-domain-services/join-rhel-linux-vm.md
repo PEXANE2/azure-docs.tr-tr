@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: 52df4308020b03565c851b6969c0e2e31464d7d7
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: d0acbd02103ebd8dd3819579c85b4ddac22dba78
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234045"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68773108"
 ---
 # <a name="join-a-red-hat-enterprise-linux-7-virtual-machine-to-a-managed-domain"></a>Red Hat Enterprise Linux 7 sanal makinesini yönetilen bir etki alanına ekleme
 Bu makalede, bir Red Hat Enterprise Linux (RHEL) 7 sanal makinesini Azure AD Domain Services yönetilen bir etki alanına nasıl katılabilmeniz gösterilmektedir.
@@ -107,6 +107,8 @@ Artık gerekli paketler Linux sanal makinesinde yüklü olduğuna göre, bir son
 
     > [!TIP]
     > Önceki adımda belirttiğiniz kullanıcı hesabını kullanın (' kinit ').
+    >
+    > VM 'niz etki alanına katılamediğinde, VM 'nin ağ güvenlik grubunun TCP + UDP bağlantı noktası 464 üzerinde giden Kerberos trafiğinin Azure AD DS yönetilen etki alanınıza yönelik sanal ağ alt ağına izin verdiğinden emin olun.
 
     ```console
     sudo realm join --verbose CONTOSO100.COM -U 'bob@CONTOSO100.COM'

@@ -1,7 +1,7 @@
 ---
 title: İçin model ayarlama hiperparametreleri
 titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning hizmetini kullanarak derin öğrenme / makine öğrenimi modeliniz için hiperparametreleri verimli bir şekilde ayarlayın. Parametre arama alanı tanımlayın, iyileştirin ve hatalı çalıştırmalar gerçekleştirme erken sonlandırma için birincil bir ölçüm belirtin öğreneceksiniz.
+description: Azure Machine Learning hizmetini kullanarak derin öğrenme / makine öğrenimi modeliniz için hiperparametreleri verimli bir şekilde ayarlayın. Parametre arama alanını nasıl tanımlayacağınızı, iyileştirmek için bir birincil ölçüm belirtmenizi ve kötü performanslı çalıştırmaları erken sonlandırmayı öğreneceksiniz.
 ms.author: swatig
 author: swatig007
 ms.reviewer: sgilley
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 730f39bf0b05ef33bbbca150532f96f1e495a9ed
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: cb4378047f34f3f635b2f1dd2425bbee28f91178
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302359"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815730"
 ---
 # <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning-service"></a>Azure Machine Learning hizmeti ile modeliniz için ayarlama hiperparametreleri
 
@@ -45,7 +45,7 @@ Her bir hiper parametre için tanımlanan değerleri aralığı inceleyerek hipe
 
 ### <a name="types-of-hyperparameters"></a>Hiperparametreleri türleri
 
-Her bir hiper parametre ayrık veya sürekli olarak ya da olabilir.
+Her hiper parametre ayrı veya sürekli olabilir ve bir [parametre ifadesi](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.parameter_expressions?view=azure-ml-py)tarafından tanımlanan değerlerin bir dağıtımına sahiptir.
 
 #### <a name="discrete-hyperparameters"></a>Ayrık hiperparametreleri 
 
@@ -129,7 +129,7 @@ param_sampling = GridParameterSampling( {
 
 Bayes örnekleme kullandığınızda, eş zamanlı çalıştırma sayısını ayarlama işleminin verimliliğini üzerinde bir etkisi yoktur. Genellikle, daha küçük bir paralellik derecesi önceden tamamlanmış çalıştırmalardan fayda çalıştırmalarının sayısı artar olduğundan daha küçük bir eş zamanlı çalıştırma sayısını daha iyi örnekleme yakınsama için yol açabilir.
 
-Bayes örneklemeyi destekleyip yalnızca `choice` ve `uniform` arama alanı üzerinden dağıtımları. 
+Bayeder örneklemesi yalnızca arama `choice`alanı `uniform`üzerinde, `quniform` ve dağıtımlarını destekler.
 
 ```Python
 from azureml.train.hyperdrive import BayesianParameterSampling
@@ -179,7 +179,7 @@ Eğitim betiğini hesaplar `val_accuracy` ve birincil ölçüm kullanılan "doğ
 
 ## <a name="specify-early-termination-policy"></a>Erken sonlandırma ilkesini belirtin
 
-Bir [erken sonlandırma ilkesiyle otomatik olarak kötü performanslı çalıştırmaları sonlandır. Sonlandırma kaynakların atık azalır ve bunun yerine bu kaynakları diğer parametre yapılandırmalarını keşfetmek için kullanır.
+Kötü bir erken sonlandırma İlkesi ile otomatik olarak çalışmaları gerçekleştirme sonlandırın. Sonlandırma kaynakların atık azalır ve bunun yerine bu kaynakları diğer parametre yapılandırmalarını keşfetmek için kullanır.
 
 Bir erken sonlandırma ilkesini kullanarak, bir ilke uygulandığında denetleyen aşağıdaki parametreleri yapılandırabilirsiniz:
 
@@ -234,7 +234,7 @@ from azureml.train.hyperdrive import TruncationSelectionPolicy
 early_termination_policy = TruncationSelectionPolicy(evaluation_interval=1, truncation_percentage=20, delay_evaluation=5)
 ```
 
-Bu örnekte, değerlendirme aralığı 5 başlayarak her bir aralıkta erken sonlandırma ilke uygulanır. 5 aralığında tüm çalıştırmalar performansının düşük %20 performansını 5 aralığında ise, bir farklı çalıştır 5 aralığında sonlandırılacak.
+Bu örnekte, değerlendirme aralığı 5 başlayarak her bir aralıkta erken sonlandırma ilke uygulanır. 5\. aralığa yönelik performansı 5 Aralık 5 ' teki tüm çalıştırmalar performansının en düşük% 20 ' si ise, bir çalıştırma 5. aralığa sonlandırılır.
 
 ### <a name="no-termination-policy"></a>Sonlandırma İlkesi yok
 
@@ -246,7 +246,7 @@ policy=None
 
 ### <a name="default-policy"></a>Varsayılan ilke
 
-İlke yok belirtilirse, Hiper parametre ayarı hizmet tüm eğitim çalıştırmalarının tamamlanmak üzere çalıştırılmasını sağlayacaktır.
+Herhangi bir ilke belirtilmemişse, hyperparameter ayarlama hizmeti tüm eğitimin tamamlanmasını yürütmeye izin verir.
 
 >[!NOTE] 
 >Taahhüdü işleri sonlandırmadan tasarruf sağlar koruyucu bir ilke arıyorsanız ORTANCA durdurma ilkesiyle kullanabileceğiniz `evaluation_interval` 1 ve `delay_evaluation` 5. Yaklaşık % 25-%35 tasarruf kaybı olmadan ile birincil ölçüm (değerlendirme verilerimizi göre) üzerinde sağlayabilen koruyucu ayarları şunlardır.
@@ -275,7 +275,7 @@ max_total_runs=20,
 max_concurrent_runs=4
 ```
 
-Bu kod, en fazla 4 yapılandırmaları aynı anda çalışan 20 toplam çalıştırma kullanmak için deneme ayarlama hiper parametre yapılandırır.
+Bu kod, tek seferde dört yapılandırmayı çalıştıran en fazla 20 toplam çalıştırma kullanmak için hyperparameter ayarlama denemesini yapılandırır.
 
 ## <a name="configure-experiment"></a>Deneme yapılandırma
 

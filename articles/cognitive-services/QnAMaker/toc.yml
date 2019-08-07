@@ -70,6 +70,8 @@
     - name: Bilgi bankası
       href: Concepts/knowledge-base.md
       displayName: 'metadata, pair'
+    - name: LUIS ve Soru-Cevap Oluşturma'yı kullanma
+      href: ../luis/choose-natural-language-processing-service.md?toc=/azure/cognitive-services/qnamaker/toc.json
     - name: Bilgi bankası geliştirme yaşam döngüsü
       href: Concepts/development-lifecycle-knowledge-base.md
     - name: En iyi uygulamalar

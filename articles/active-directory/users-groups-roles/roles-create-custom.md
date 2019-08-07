@@ -13,16 +13,16 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae773bc1a4e1831dbe462149bb827c26b7e74b96
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: e0e33cf9fa1c4661dd71fc41cb667b0373c9e955
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722257"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774828"
 ---
-# <a name="create-a-custom-role-and-assign-a-resource-scope-in-azure-active-directory"></a>Azure Active Directory bir özel rol oluşturma ve kaynak kapsamı atama
+# <a name="create-a-custom-role-and-assign-at-resource-scope-in-azure-active-directory"></a>Azure Active Directory bir özel rol oluşturma ve kaynak kapsamına atama
 
-Bu makalede, Azure Active Directory (Azure AD) içinde yeni özel roller oluşturma açıklanır. Özel roller, Azure AD Genel Bakış sayfasında veya [uygulama kaydı sayfasında](https://portal.azure.com/?Microsoft_AAD_IAM_enableCustomRoleManagement=true&Microsoft_AAD_IAM_enableCustomRoleAssignment=true&feature.rbacv2roles=true&feature.rbacv2=true&Microsoft_AAD_RegisteredApps=demo#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) **Roller ve yöneticiler** sekmesinde oluşturulabilir. Rol, dizin düzeyindeki kapsamda ya da yalnızca uygulama kayıtlarına atanabilir.
+Bu makalede, Azure Active Directory (Azure AD) içinde yeni özel roller oluşturma açıklanır. Özel roller, Azure AD Genel Bakış sayfasındaki [Roller ve yöneticiler](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators) sekmesinde oluşturulabilir. Rol, yalnızca dizin düzeyindeki kapsamda veya yalnızca bir uygulama kayıt kaynağı kapsamında atanabilir.
 
 Daha fazla bilgi için özel rollerin [genel bakış](roles-custom-overview.md) bölümüne bakın.
 
@@ -35,33 +35,31 @@ Daha fazla bilgi için özel rollerin [genel bakış](roles-custom-overview.md) 
 
    ![Roller ve yöneticiler sayfasından roller oluşturma veya düzenleme](./media/roles-create-custom/new-custom-role.png)
 
-1. **Temel bilgiler** sekmesinde, rol için bir ad ve açıklama girin.
+1. **Temel bilgiler** sekmesinde, rol için bir ad ve açıklama girin ve ardından **İleri**' ye tıklayın.
 
    ![Temel bilgiler sekmesinde özel rol için bir ad ve açıklama girin](./media/roles-create-custom/basics-tab.png)
 
-1. Uygulama kayıt kimlik bilgilerini ve ad gibi temel özellikleri yönetmek için gerekli izinleri seçmek için:
-   1. Arama çubuğuna "kimlik bilgileri" girin ve `microsoft.directory/applications/credentials/update` izni seçin.
+1. **İzinler** sekmesinde, uygulama kayıtlarının temel özelliklerini ve kimlik bilgisi özelliklerini yönetmek için gerekli izinleri seçin. Her iznin ayrıntılı bir açıklaması için bkz. [Azure Active Directory 'de uygulama kaydı alt türleri ve izinleri](./roles-custom-available-permissions.md).
+   1. İlk olarak, arama çubuğuna "kimlik bilgileri" girin ve `microsoft.directory/applications/credentials/update` izni seçin.
 
       ![Izinler sekmesinde özel bir rol için izinleri seçin](./media/roles-create-custom/permissions-tab.png)
 
-   1. Arama çubuğuna "temel" yazın, `microsoft.directory/applications/basic/update` izni seçin ve ardından **İleri**' ye tıklayın.
+   1. Sonra, arama çubuğuna "temel" yazın, `microsoft.directory/applications/basic/update` izni seçin ve ardından **İleri**' ye tıklayın.
 1. **Gözden geçir + oluştur** sekmesinde izinleri gözden geçirin ve **Oluştur**' u seçin.
 
 Özel rolünüzün atanacak kullanılabilir roller listesinde görünür.
 
 ## <a name="assign-a-role-scoped-to-a-resource"></a>Kaynak kapsamına alınmış bir rol atama
 
-Yerleşik roller gibi, özel roller, tüm uygulama kayıtları üzerinden erişim sağlamak için varsayılan kuruluş kapsamında atanabilir. Ancak, özel roller de nesne kapsamında atanabilir. Bu, bir ikinci özel rol oluşturmak zorunda kalmadan tek bir uygulamanın kimlik bilgilerini ve temel özelliklerini güncelleştirme izni vermenizi sağlar.
+Yerleşik roller gibi, özel roller, tüm uygulama kayıtları üzerinden erişim sağlamak için kuruluş genelinde kapsama atanabilir. Ancak, özel roller de kaynak kapsamında atanabilir. Bu, bir ikinci özel rol oluşturmak zorunda kalmadan tek bir uygulamanın kimlik bilgilerini ve temel özelliklerini güncelleştirme izni vermenizi sağlar.
 
-1. Azure AD kuruluşunda uygulama geliştirici izinleriyle [Azure AD Yönetim merkezinde](https://aad.portal.azure.com) oturum açın.
+1. Henüz yoksa Azure AD kuruluşunda uygulama geliştirici izinleriyle [Azure AD Yönetim merkezinde](https://aad.portal.azure.com) oturum açın.
 1. **Uygulama kayıtları**'nı seçin.
 1. Yönetmek üzere erişim verdiğiniz uygulama kaydını seçin. Azure AD kuruluşunuzda uygulama kayıtlarının tüm listesini görmek için **tüm uygulamalar** ' ı seçmeniz gerekebilir.
 
     ![Rol ataması için kaynak kapsamı olarak uygulama kaydını seçin](./media/roles-create-custom/appreg-all-apps.png)
 
 1. Uygulama kaydında **Roller ve yöneticiler**' i seçin. Henüz bir tane oluşturmadıysanız, yönergeler [önceki yordamda](#create-a-new-custom-role-to-grant-access-to-manage-app-registrations)bulunur.
-
-    Bu rolü açık bir uygulama kaydı bağlamından atarsanız, atanan kullanıcının bu tek uygulama kaydında izinleri vardır. Atadığınız rol, her uygulama kaydında listede görüntülenir. Bu erişim modeli, bir sahibe rollere göre belirli Azure AD kaynaklarına atanabileceği, Azure kaynak erişimi denetimi için [Azure RBAC](../../role-based-access-control/overview.md) 'de kullanılan modele benzerdir.
 
 1. **Atamalar** sayfasını açmak için rolü seçin.
 1. Kullanıcı eklemek için **atama Ekle** ' yi seçin. Kullanıcıya seçili olan herhangi bir uygulama kaydı üzerinde herhangi bir izin verilmez.
@@ -70,7 +68,7 @@ Yerleşik roller gibi, özel roller, tüm uygulama kayıtları üzerinden erişi
 
 ### <a name="prepare-powershell"></a>PowerShell 'i hazırlama
 
-İlk olarak, [Azure AD PowerShell modülünü indirmeniz](https://www.powershellgallery.com/packages/AzureAD/)gerekir.
+İlk olarak, [Azure AD önizleme PowerShell modülünü indirmeniz](https://www.powershellgallery.com/packages/AzureADPreview)gerekir.
 
 Azure AD PowerShell modülünü yüklemek için aşağıdaki komutları kullanın:
 
@@ -82,10 +80,10 @@ import-module azureadpreview
 Modülün kullanıma hazırsa emin olmak için aşağıdaki komutu kullanın:
 
 ``` PowerShell
-get-module azuread
+get-module azureadpreview
   ModuleType Version      Name                         ExportedCommands
   ---------- ---------    ----                         ----------------
-  Binary     2.0.0.115    azuread                      {Add-AzureADAdministrati...}
+  Binary     2.0.2.31     azuread                      {Add-AzureADAdministrati...}
 ```
 
 ### <a name="create-the-custom-role"></a>Özel rol oluşturma
@@ -101,7 +99,6 @@ $templateId = (New-Guid).Guid
 # Set of permissions to grant
 $allowedResourceAction =
 @(
-    "microsoft.directory/applications/allProperties/read",
     "microsoft.directory/applications/basic/update",
     "microsoft.directory/applications/credentials/update"
 )
@@ -110,7 +107,24 @@ $rolePermission = @{'resourceActions' = $resourceActions}
 $rolePermissions = $rolePermission
 
 # Create new custom admin role
-$customAdmin = New-AzureAdRoleDefinition -RolePermissions $rolePermissions -DisplayName $displayName -Description $description -TemplateId $templateId -IsEnabled $true
+$customAdmin = New-AzureADMSRoleDefinition -RolePermissions $rolePermissions -DisplayName $displayName -Description $description -TemplateId $templateId -IsEnabled $true
+```
+
+### <a name="assign-the-custom-role-using-azure-ad-powershell"></a>Azure AD PowerShell kullanarak özel rol atama
+
+Aşağıdaki PowerShell betiğini kullanarak rolü atayın:
+
+``` PowerShell
+# Get the user and role definition you want to link
+$user = Get-AzureADUser -Filter "userPrincipalName eq 'cburl@f128.info'"
+$roleDefinition = Get-AzureADRoleDefinition -Filter "displayName eq ' Application Registration Creator'"
+
+# Get app registration and construct resource scope for assignment.
+$appRegistration = Get-AzureADApplication -Filter "displayName eq 'f/128 Filter Photos'"
+$resourceScopes = '/' + $appRegistration.objectId
+
+# Create a scoped role assignment
+$roleAssignment = New-AzureADRoleAssignment -ResourceScopes $resourceScopes -RoleDefinitionId $roleDefinition.objectId -PrincipalId $user.objectId
 ```
 
 ## <a name="create-a-custom-role-using-microsoft-graph-api"></a>Microsoft Graph API kullanarak özel bir rol oluşturma
@@ -134,13 +148,8 @@ $customAdmin = New-AzureAdRoleDefinition -RolePermissions $rolePermissions -Disp
     "isEnabled":true,
     "rolePermissions":
     [
-        {
-            "allowedResourceActions": 
-            [
-                "microsoft.directory/applications/basic/read",
-                "microsoft.directory/applications/credentials/update"
-            ]
-        }
+        "microsoft.directory/applications/basic/update",
+        "microsoft.directory/applications/credentials/update"
     ]
     }
     ```
@@ -152,7 +161,7 @@ $customAdmin = New-AzureAdRoleDefinition -RolePermissions $rolePermissions -Disp
     POST
 
     ``` HTTP
-    https://graph.microsoft.com/beta/roleManagement/directory/roleDefinitions/roleAssignments
+    https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
     ```
 
     Body

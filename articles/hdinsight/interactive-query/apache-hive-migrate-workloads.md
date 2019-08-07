@@ -7,12 +7,12 @@ ms.author: tacox
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.openlocfilehash: b9bf3b41bcd0a79027c5dd9a4f3df979fb0bd9f0
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: eb6b42a88e47e3fcb35700ec542c8ca642e17a6a
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68250161"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815813"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Azure HDInsight 3,6 Hive iş yüklerini HDInsight 'a geçirme 4,0
 
@@ -99,9 +99,7 @@ HDInsight 3,6 ' de Hive sunucusu ile etkileşim için GUI istemcisi, ambarı Hiv
 
 Yürütme için düğüm türü olarak "baş düğümler" ile kümenize karşı bir betik eylemi başlatın. Aşağıdaki URI 'yi "Bash betiği URI 'SI" olarak işaretlenen metin kutusuna yapıştırın: https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh
 
-Data Analytics Studio, URL: https://\<clustername >. azurehdinsight. net/Das/ile başlatılabilir.
-
-
+5 ila 10 dakika bekleyin, sonra şu URL 'yi kullanarak Data Analytics Studio 'yu başlatın:\<https://clustername >. azurehdinsight. net/das/
 
 DAS yüklendikten sonra, sorgular görüntüleyicisinde çalıştırdığınız sorguları görmüyorsanız, aşağıdaki adımları uygulayın:
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: f53d3bd64b4f837fe29baa338cd338158d59d95d
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 0dd61deb372822c5c564758d26d4c4a4938c1064
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466963"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68741458"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>Azure Izleyici günlük sorgularındaki dizelerle çalışma
 
@@ -30,11 +30,11 @@ ms.locfileid: "68466963"
 
 Bu makalede, dizeler üzerinde nasıl düzenleme, karşılaştırma, arama yapmak ve çeşitli işlemler gerçekleştirme işlemleri açıklanmaktadır.
 
-Bir dizedeki her karakterin konumuna göre bir dizin numarası vardır. İlk karakter dizin 0 ' dır, sonraki karakter 1 ' dir ve bu şekilde bir tane olur. Farklı dize işlevleri, aşağıdaki bölümlerde gösterildiği gibi dizin numaralarını kullanır. Aşağıdaki örneklerden birçoğu, belirli bir veri kaynağı kullanmadan dize işlemeyi göstermek için **Print** komutunu kullanır.
+Bir dizedeki her karakterin konumuna göre bir dizin numarası vardır. İlk karakter dizin 0 ' dır, sonraki karakter 1 ' dir ve bu şekilde devam eder. Farklı dize işlevleri, aşağıdaki bölümlerde gösterildiği gibi dizin numaralarını kullanır. Aşağıdaki örneklerden birçoğu, belirli bir veri kaynağı kullanmadan dize işlemeyi göstermek için **Print** komutunu kullanır.
 
 
 ## <a name="strings-and-escaping-them"></a>Dizeler ve kaçış
-Dize değerleri, tek veya çift tırnak karakterleriyle paketlenir. Ters eğik\) çizgi (Tab için \t, yeni satır için c:\lt ve \" quote karakterinin kendisi gibi karakterleri izleyen karaktere atlamak için kullanılır.
+Dize değerleri, tek veya çift tırnak karakterleriyle paketlenir. Ters eğik\\çizgi (), bu karakteri izleyen karaktere, örneğin \t, yeni satır için \n, ve \" tırnak karakterinin kendisine ait karakter kaçış için kullanılır.
 
 ```Kusto
 print "this is a 'string' literal in double \" quotes"
@@ -90,7 +90,7 @@ Operator       |Açıklama                         |Büyük/küçük harfe duyar
 
 ## <a name="countof"></a>CountOf
 
-Dizedeki alt dizenin tekrarlamalarını sayar. Düz dizeler ile eşleştirebilir veya normal ifade kullanabilir. Regex ile eşleşirken düz dize eşleşmeleri çakışmayabilir.
+Dizedeki alt dizenin tekrarlamalarını sayar. Düz dizeler ile eşleştirebilir veya normal ifade kullanabilir. Regex eşleştirirken düz dize eşleşmeleri çakışmayabilir.
 
 ### <a name="syntax"></a>Sözdizimi
 ```
@@ -129,7 +129,7 @@ print countof("abcabc", "a.c", "regex");  // result: 2
 
 ## <a name="extract"></a>süzmek
 
-Belirli bir dizeden normal ifade için bir eşleşme alır. İsteğe bağlı olarak, ayıklanan alt dizenin belirtilen türünü de dönüştürür.
+Belirli bir dizeden normal ifade için bir eşleşme alır. İsteğe bağlı olarak, ayıklanan alt dizeyi belirtilen türe dönüştürür.
 
 ### <a name="syntax"></a>Sözdizimi
 

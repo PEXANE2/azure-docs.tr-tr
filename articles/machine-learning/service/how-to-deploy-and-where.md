@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 07/08/2019
+ms.date: 08/06/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: c7c2ba104b4d528cd3f8443e6f5615aa6ab3e672
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 7e88b99cf0ecede64d75b36eafdcc88798e2e4a4
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720381"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840450"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Azure Machine Learning hizmeti ile modelleri dağıtma
 
@@ -130,7 +130,7 @@ Betik, modeli yükleyen ve çalıştıran iki işlev içerir:
 
 * `run(input_data)`: Bu işlev, giriş verilerine göre bir değeri tahmin etmek için modeli kullanır. Çalıştırma girişleri ve çıkışları genellikle serileştirme ve seri hale getirme için JSON kullanır. Ham ikili verilerle de çalışabilirsiniz. Modele göndermeden önce veya istemciye döndürmeden önce verileri dönüştürebilirsiniz.
 
-#### <a name="what-is-getmodelpath"></a>Get_model_path nedir?
+#### <a name="what-is-get_model_path"></a>Get_model_path nedir?
 
 Bir modeli kaydettiğinizde, kayıt defterinde modeli yönetmek için kullanılan bir model adı sağlarsınız. Bu adı modeliyle birlikte kullanırsınız. yerel dosya sistemindeki model dosyalarının yolunu almak için [_model_path () alın](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) . Bir klasörü veya bir dosya koleksiyonunu kaydettiğinizde, bu API bu dosyaları içeren dizinin yolunu döndürür.
 
@@ -142,7 +142,7 @@ Aşağıdaki örnek, adlı `sklearn_mnist_model.pkl` tek bir dosyaya (ada `sklea
 model_path = Model.get_model_path('sklearn_mnist')
 ```
 
-#### <a name="optional-automatic-swagger-schema-generation"></a>Seçim Otomatik Swagger şeması oluşturma
+#### <a name="optional-automatic-schema-generation"></a>Seçim Otomatik şema oluşturma
 
 Web hizmetiniz için otomatik olarak bir şema oluşturmak üzere, tanımlı tür nesnelerinden biri için kurucudaki giriş ve/veya çıkışın bir örneğini sağlayın ve tür ve örnek şemayı otomatik olarak oluşturmak için kullanılır. Azure Machine Learning hizmet daha sonra dağıtım sırasında Web hizmeti için bir [Openapı](https://swagger.io/docs/specification/about/) (Swagger) belirtimi oluşturur.
 
@@ -153,9 +153,10 @@ Web hizmetiniz için otomatik olarak bir şema oluşturmak üzere, tanımlı tü
 * `pyspark`
 * Standart Python nesnesi
 
-Şema oluşturmayı kullanmak için, `inference-schema` paketi Conda ortam dosyanıza ekleyin. Aşağıdaki örnek, giriş `[numpy-support]` betiği bir sayısal tuş-parametre türü kullandığından kullanılır: 
+Şema oluşturmayı kullanmak için, `inference-schema` paketi Conda ortam dosyanıza ekleyin.
 
-#### <a name="example-dependencies-file"></a>Örnek bağımlılıklar dosyası
+##### <a name="example-dependencies-file"></a>Örnek bağımlılıklar dosyası
+
 Aşağıdaki YAML, çıkarım için Conda Dependencies bir dosya örneğidir.
 
 ```YAML
@@ -168,14 +169,11 @@ dependencies:
     - inference-schema[numpy-support]
 ```
 
-Otomatik şema oluşturmayı kullanmak istiyorsanız, giriş betiğinizin `inference-schema` paketleri içeri aktarması **gerekir** . 
+Otomatik şema oluşturmayı kullanmak istiyorsanız, giriş betiğinizin `inference-schema` paketleri içeri aktarması **gerekir** .
 
 Web hizmetinin istek ve yanıt biçimlerini temsil eden `input_sample` ve `output_sample` değişkenlerinde giriş ve çıkış örnek biçimlerini tanımlayın. Bu örnekleri `run()` işlevindeki giriş ve çıkış işlevi Dekoratörleri içinde kullanın. Scikit-aşağıdaki örnek, şema oluşturmayı kullanır.
 
-> [!TIP]
-> Hizmeti dağıttıktan sonra şema JSON belgesini almak `swagger_uri` için özelliğini kullanın.
-
-#### <a name="example-entry-script"></a>Örnek giriş betiği
+##### <a name="example-entry-script"></a>Örnek giriş betiği
 
 Aşağıdaki örnek, JSON verilerinin nasıl kabul edileceği ve geri dönebileceğinizi göstermektedir:
 
@@ -216,9 +214,7 @@ def run(data):
         return error
 ```
 
-#### <a name="example-script-with-dictionary-input-support-consumption-from-power-bi"></a>Sözlük girişi ile örnek betik (Power BI destek tüketimi)
-
-Aşağıdaki örnek, veri çerçevesini kullanarak giriş verilerinin < anahtar: değer > sözlüğü olarak nasıl tanımlanacağını gösterir. Bu yöntem, dağıtılan Web hizmetinin Power BI tüketmesi için desteklenir ([Power BI Web hizmetini kullanma hakkında daha fazla bilgi edinin](https://docs.microsoft.com/power-bi/service-machine-learning-integration)):
+Aşağıdaki örnek, veri çerçevesini kullanarak giriş verilerinin bir `<key: value>` sözlük olarak nasıl tanımlanacağını göstermektedir. Bu yöntem, dağıtılan Web hizmetinin Power BI tüketmesi için desteklenir ([Power BI Web hizmetini kullanma hakkında daha fazla bilgi edinin](https://docs.microsoft.com/power-bi/service-machine-learning-integration)):
 
 ```python
 import json
@@ -266,6 +262,7 @@ def run(data):
         error = str(e)
         return error
 ```
+
 Daha fazla örnek komut dosyası için aşağıdaki örneklere bakın:
 
 * Pytorch:[https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch)
@@ -369,6 +366,9 @@ Bkz. [Azure Kubernetes hizmetine dağıtma](how-to-deploy-azure-kubernetes-servi
 Dağıtılan her Web hizmeti, çeşitli programlama dillerinde istemci uygulamaları oluşturabilmeniz için bir REST API sağlar. Hizmetiniz için anahtar kimlik doğrulamasını etkinleştirdiyseniz, istek üst bilgisinde belirteç olarak bir hizmet anahtarı sağlamanız gerekir.
 Hizmetiniz için belirteç kimlik doğrulamasını etkinleştirdiyseniz, istek üst bilgisinde taşıyıcı belirteci olarak bir Azure Machine Learning JWT belirteci sağlamanız gerekir.
 
+> [!TIP]
+> Hizmeti dağıttıktan sonra şema JSON belgesini alabilirsiniz. Yerel Web hizmetinin Swagger dosyasına URI 'yi almak için gibi dağıtılan Web `service.swagger_uri`hizmetindeki [swagger_uri özelliğini](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri) kullanın.
+
 ### <a name="request-response-consumption"></a>İstek-yanıt tüketimi
 
 Aşağıda, Python 'da hizmetinizin nasıl çağrılcağına dair bir örnek verilmiştir:
@@ -399,6 +399,147 @@ print(response.json())
 
 Daha fazla bilgi için bkz. [WebServices kullanmak için istemci uygulamaları oluşturma](how-to-consume-web-service.md).
 
+### <a name="web-service-schema-openapi-specification"></a>Web hizmeti şeması (Openapı belirtimi)
+
+Dağıtım ile otomatik şema oluşturmayı kullandıysanız, [swagger_uri özelliğini](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri)kullanarak hizmet Için openapı belirtiminin adresini alabilirsiniz. Örneğin: `print(service.swagger_uri)`. Belirtimi almak için GET isteği kullanın (veya URI 'yi bir tarayıcıda açın).
+
+Aşağıdaki JSON belgesi, bir dağıtım için oluşturulan bir şemanın (Openapı belirtimi) bir örneğidir:
+
+```json
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "myservice",
+        "description": "API specification for the Azure Machine Learning service myservice",
+        "version": "1.0"
+    },
+    "schemes": [
+        "https"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "securityDefinitions": {
+        "Bearer": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header",
+            "description": "For example: Bearer abc123"
+        }
+    },
+    "paths": {
+        "/": {
+            "get": {
+                "operationId": "ServiceHealthCheck",
+                "description": "Simple health check endpoint to ensure the service is up at any given point.",
+                "responses": {
+                    "200": {
+                        "description": "If service is up and running, this response will be returned with the content 'Healthy'",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "application/json": "Healthy"
+                        }
+                    },
+                    "default": {
+                        "description": "The service failed to execute due to an error.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/score": {
+            "post": {
+                "operationId": "RunMLService",
+                "description": "Run web service's model and get the prediction output",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "serviceInputPayload",
+                        "in": "body",
+                        "description": "The input payload for executing the real-time machine learning service.",
+                        "schema": {
+                            "$ref": "#/definitions/ServiceInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The service processed the input correctly and provided a result prediction, if applicable.",
+                        "schema": {
+                            "$ref": "#/definitions/ServiceOutput"
+                        }
+                    },
+                    "default": {
+                        "description": "The service failed to execute due to an error.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "ServiceInput": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                }
+            },
+            "example": {
+                "data": [
+                    [ 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 ]
+                ]
+            }
+        },
+        "ServiceOutput": {
+            "type": "array",
+            "items": {
+                "type": "number",
+                "format": "double"
+            },
+            "example": [
+                3726.995
+            ]
+        },
+        "ErrorResponse": {
+            "type": "object",
+            "properties": {
+                "status_code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
+```
+
+Belirtim hakkında daha fazla bilgi için bkz. [Open API Specification](https://swagger.io/specification/).
+
+Belirtiden istemci kitaplıkları oluşturabileceğiniz bir yardımcı program için bkz. [Swagger-CodeGen](https://github.com/swagger-api/swagger-codegen).
 
 ### <a id="azuremlcompute"></a>Toplu çıkarım
 Azure Machine Learning Işlem hedefleri Azure Machine Learning hizmeti tarafından oluşturulur ve yönetilir. Bunlar, Azure Machine Learning işlem hatlarından toplu tahmin için kullanılabilirler.
