@@ -9,12 +9,12 @@ ms.date: 07/22/2019
 ms.topic: article
 ms.service: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 3c9fd286fd28d55318221177f69948c20ed1b935
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 0ed7d65601465a197cb4d7f92f500e1bf29ad8c2
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414478"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839664"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Azure IoT Edge için modülleri geliştirmek ve hatalarını ayıklamak için Visual Studio 2019 kullanın
 
@@ -105,13 +105,13 @@ Visual Studio'da Azure IOT Edge proje şablonu, Azure IOT hub'ı Azure IOT Edge 
 
 1. Ya da C# C kullanan bir modülle Azure IoT Edge çözümünü oluşturmak için Tamam ' ı seçin.
 
-Artık bir **AzureIoTEdgeApp1. Linux. amd64** projeniz veya bir **AzureIoTEdgeApp1. Windows. amd64** projeniz ve ayrıca çözümünüzde bir **IoTEdgeModule1** projesi vardır. Her bir **AzureIoTEdgeApp1** projesi, `deployment.template.json` IoT Edge çözümünüz için derlemek ve dağıtmak istediğiniz modülleri tanımlayan bir dosyasına sahiptir ve ayrıca modüller arasındaki yolları tanımlar. Varsayılan çözümü olan bir **tempSensor** modülü ve **IoTEdgeModule1** modülü. **Tempalgılayıcı** modülü **IoTEdgeModule1** modülüne sanal veriler üretir, ancak **IoTEdgeModule1** modülündeki varsayılan kod, Azure IoT Hub 'e iletileri doğrudan yöneltirken doğrudan yöneltme sağlar.
+Artık bir **AzureIoTEdgeApp1. Linux. amd64** projeniz veya bir **AzureIoTEdgeApp1. Windows. amd64** projeniz ve ayrıca çözümünüzde bir **IoTEdgeModule1** projesi vardır. Her bir **AzureIoTEdgeApp1** projesi, `deployment.template.json` IoT Edge çözümünüz için derlemek ve dağıtmak istediğiniz modülleri tanımlayan bir dosyasına sahiptir ve ayrıca modüller arasındaki yolları tanımlar. Varsayılan çözümde bir **SimulatedTemperatureSensor** modülü ve bir **IoTEdgeModule1** modülü vardır. **SimulatedTemperatureSensor** modülü, **IoTEdgeModule1** modülüne sanal verileri üretir, ancak **IoTEdgeModule1** modülündeki varsayılan kod, Azure IoT Hub ileti alma işlemleri için doğrudan kanallar sağlar.
 
 **IoTEdgeModule1** projesi bir C# modülle bir .NET Core 2,1 konsol uygulamasıdır. Windows kapsayıcısı veya Linux kapsayıcısı ile çalışan IoT Edge cihazınız için gereken gerekli Docker dosyalarını içerir. `module.json` Dosya, bir modülün meta verilerini açıklar. Azure IoT cihaz SDK 'sını bağımlılık olarak alan gerçek modül kodu, `Program.cs` veya `main.c` dosyasında bulunur.
 
 ## <a name="develop-your-module"></a>Modülü geliştirme
 
-Çözümle birlikte gelen varsayılan modül kodu **IoTEdgeModule1** > **program.cs** (for C#) veya **Main. c** (c) konumundadır. Modül ve `deployment.template.json` dosya, çözümü derlemek, kapsayıcı Kayıt defterinize gönderebilmeniz ve herhangi bir koda dokunmadan teste başlamak için bir cihaza dağıtabilmeniz için ayarlanır. Modül, bir kaynaktan giriş almak için oluşturulmuştur (Bu durumda, verileri taklit eden **Tempalgılayıcı** modülü) ve Azure IoT Hub 'yi kanal oluşturarak.
+Çözümle birlikte gelen varsayılan modül kodu **IoTEdgeModule1** > **program.cs** (for C#) veya **Main. c** (c) konumundadır. Modül ve `deployment.template.json` dosya, çözümü derlemek, kapsayıcı Kayıt defterinize gönderebilmeniz ve herhangi bir koda dokunmadan teste başlamak için bir cihaza dağıtabilmeniz için ayarlanır. Modül bir kaynaktan giriş almak için oluşturulmuştur (Bu durumda, verileri taklit eden **SimulatedTemperatureSensor** modülü) ve Azure IoT Hub 'yi kanal oluşturarak.
 
 Modül şablonunu kendi kodunuzla özelleştirmeye hazır olduğunuzda, güvenlik, cihaz yönetimi ve güvenilirlik gibi IoT çözümlerinin temel ihtiyaçlarını ele alan modüller oluşturmak için [Azure IoT Hub SDK](../iot-hub/iot-hub-devguide-sdks.md) 'larını kullanın.
 
@@ -121,7 +121,7 @@ Modül şablonunu kendi kodunuzla özelleştirmeye hazır olduğunuzda, güvenli
 
    ![Edge cihaz bağlantı dizesini kopyalayın](./media/how-to-visual-studio-develop-csharp-module/copy-edge-conn-string.png)
 
-1. **** **** Araçlar Azure IoT EdgeAraçlar > kurulum IoT Edge simülatörü ' ne gidin, bağlantı dizesini yapıştırın ve Tamam ' a tıklayın. > 
+1. Araçlar Azure IoT EdgeAraçlar > kurulum IoT Edge simülatörü ' ne gidin, bağlantı dizesini yapıştırın ve Tamam ' a tıklayın. > 
 
    ![Küme kenar bağlantı dizesi penceresini açın](./media/how-to-visual-studio-develop-csharp-module/set-edge-conn-string.png)
 
@@ -172,9 +172,9 @@ Tek bir modülün geliştirilmesini tamamladıktan sonra, birden çok modülle b
     ```json
         "routes": {
           "IoTEdgeModule1ToIoTHub": "FROM /messages/modules/IoTEdgeModule1/outputs/* INTO $upstream",
-          "sensorToIoTEdgeModule1": "FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/IoTEdgeModule1/inputs/input1\")",
+          "sensorToIoTEdgeModule1": "FROM /messages/modules/SimulatedTemperatureSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/IoTEdgeModule1/inputs/input1\")",
           "IoTEdgeModule2ToIoTHub": "FROM /messages/modules/IoTEdgeModule2/outputs/* INTO $upstream",
-          "sensorToIoTEdgeModule2": "FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/IoTEdgeModule2/inputs/input1\")"
+          "sensorToIoTEdgeModule2": "FROM /messages/modules/SimulatedTemperatureSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/IoTEdgeModule2/inputs/input1\")"
         },
     ```
 
@@ -232,7 +232,7 @@ IoT Edge cihazınızı ayarlamak için kullandığınız hızlı başlangıç ma
    > [!NOTE]
    > Seçmelisiniz değil `$AzureIoTEdgeAppSolutionDir\config\deployment_for_local_debug.json`
 
-1. Birlikte çalışan yeni modülleri **Tempalgılayıcı** modülüyle ve **$edgeAgent** ve **$edgeHub**görmek için Yenile düğmesine tıklayın.
+1. **SimulatedTemperatureSensor** modülüyle ve **$edgeAgent** ve **$edgeHub**birlikte çalışan yeni modülleri görmek için Yenile düğmesine tıklayın.
 
 ## <a name="view-generated-data"></a>Oluşturulan verileri görüntüleme
 

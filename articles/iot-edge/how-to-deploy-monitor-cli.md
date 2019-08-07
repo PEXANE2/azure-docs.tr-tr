@@ -10,20 +10,20 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 61a3c1cdccf01b266581a13fe3c660bd57f59b2c
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 2601d05c5d2302bedb51e959747939aa3c33db44
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67796196"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839639"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>Dağıtma ve izleme uygun ölçekte Azure CLI kullanarak IOT Edge modülleri
 
-Oluşturma bir **IOT Edge otomatik dağıtım** tek seferde birçok cihaz için devam eden dağıtımları yönetmek için Azure komut satırı arabirimi kullanarak. IOT Edge için otomatik dağıtımlar parçası olan [otomatik cihaz Yönetimi](/azure/iot-hub/iot-hub-automatic-device-management) IOT hub'ı özelliğidir. Birden çok cihaz için birden çok modül dağıtma, sistem modüllerinin izlemek ve gerektiğinde değişiklik olanak sağlayan dinamik işlemler dağıtımlarıdır. 
+Tek seferde birçok cihaza yönelik devam eden dağıtımları yönetmek için Azure komut satırı arabirimini kullanarak **IoT Edge otomatik dağıtım** oluşturun. IoT Edge için otomatik dağıtımlar IoT Hub [otomatik cihaz yönetimi](/azure/iot-hub/iot-hub-automatic-device-management) özelliğinin bir parçasıdır. Dağıtımlar birden çok modülü birden çok cihaza dağıtmanızı, modüllerin durumunu ve durumunu izlemenizi ve gerektiğinde değişiklik yapmayı sağlayan dinamik işlemlerdir. 
 
-Daha fazla bilgi için [otomatik dağıtımlar tek tek cihazlarda veya uygun ölçekte IOT Edge anlamak](module-deployment-monitoring.md).
+Daha fazla bilgi için bkz. [tek cihazlarda veya ölçekte IoT Edge otomatik dağıtımları anlama](module-deployment-monitoring.md).
 
-Bu makalede, Azure CLI ve IOT uzantısını ayarlama. Ardından bir dizi cihaza IOT Edge modüllerini dağıtmak ve CLI komutları kullanarak ilerleme durumunu izlemek hakkında bilgi edinin.
+Bu makalede, Azure CLI ve IOT uzantısını ayarlama. Daha sonra, bir IoT Edge cihaz kümesine modül dağıtmayı ve kullanılabilir CLı komutlarını kullanarak ilerlemeyi izlemeyi öğreneceksiniz.
 
 ## <a name="cli-prerequisites"></a>CLI önkoşulları
 
@@ -34,9 +34,9 @@ Bu makalede, Azure CLI ve IOT uzantısını ayarlama. Ardından bir dizi cihaza 
 
 ## <a name="configure-a-deployment-manifest"></a>Bir dağıtım bildirimi yapılandırma
 
-Bir dağıtım bildirimi dağıtmak için modülleri ve modül ikizlerini istenen özellikleri arasında verilerin nasıl aktığını modüllerine açıklayan bir JSON belgesidir. Daha fazla bilgi için [modülleri dağıtma ve IOT Edge'de rotaları oluşturmak hakkında bilgi edinin](module-composition.md).
+Bir dağıtım bildirimi dağıtmak için modülleri ve modül ikizlerini istenen özellikleri arasında verilerin nasıl aktığını modüllerine açıklayan bir JSON belgesidir. Daha fazla bilgi için bkz. [IoT Edge modül dağıtmayı ve yollar oluşturmayı öğrenin](module-composition.md).
 
-Azure CLI kullanarak modüllerini dağıtmak için dağıtım bildirimi yerel olarak bir .txt dosyası olarak kaydedin. Cihazınıza yapılandırmayı uygulamak için komutu çalıştırdığınızda, sonraki bölümde dosya yolunu kullanın. 
+Azure CLI kullanarak modüllerini dağıtmak için dağıtım bildirimi yerel olarak bir .txt dosyası olarak kaydedin. Yapılandırmayı cihazınıza uygulamak için komutunu çalıştırdığınızda sonraki bölümde dosya yolunu kullanın. 
 
 Örnek olarak bir modülü ile temel bir dağıtım bildirimi şöyledir:
 
@@ -80,7 +80,7 @@ Azure CLI kullanarak modüllerini dağıtmak için dağıtım bildirimi yerel ol
             }
           },
           "modules": {
-            "tempSensor": {
+            "SimulatedTemperatureSensor": {
               "version": "1.0",
               "type": "docker",
               "status": "running",
@@ -104,7 +104,7 @@ Azure CLI kullanarak modüllerini dağıtmak için dağıtım bildirimi yerel ol
           }
         }
       },
-      "tempSensor": {
+      "SimulatedTemperatureSensor": {
         "properties.desired": {}
       }
     }
@@ -114,7 +114,7 @@ Azure CLI kullanarak modüllerini dağıtmak için dağıtım bildirimi yerel ol
 
 ## <a name="identify-devices-using-tags"></a>Etiketleri kullanarak cihazları belirleyin
 
-Bir dağıtımı oluşturmadan önce değiştirmek istediğiniz hangi cihazların belirtebilmek sahip. Azure IOT Edge kullanarak cihazları tanımlar **etiketleri** cihaz ikizinde. Her cihaz, çözümünüz için mantıklı olan herhangi bir şekilde tanımlayan birden çok etiketi olabilir. Örneğin, bir akıllı binalar, kampüs yönetiyorsanız, bir cihaza aşağıdaki etiketler ekleyebilirsiniz:
+Bir dağıtımı oluşturmadan önce değiştirmek istediğiniz hangi cihazların belirtebilmek sahip. Azure IOT Edge kullanarak cihazları tanımlar **etiketleri** cihaz ikizinde. Her cihazda, çözümünüz için anlamlı olacak şekilde tanımladığınız birden fazla etiket olabilir. Örneğin, bir akıllı binalar, kampüs yönetiyorsanız, bir cihaza aşağıdaki etiketler ekleyebilirsiniz:
 
 ```json
 "tags":{
@@ -133,30 +133,30 @@ Cihaz ikizleri ve etiketleri hakkında daha fazla bilgi için bkz: [IOT hub'daki
 
 Dağıtım bildiriminin yanı sıra diğer parametreler içeren bir dağıtım oluşturarak modülleri, hedef cihazlara dağıtın. 
 
-Kullanım [az IOT edge dağıtımı oluşturma](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-create) komutu bir dağıtımı oluşturmak için:
+Dağıtım oluşturmak için [az IoT Edge Deployment Create](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-create) komutunu kullanın:
 
 ```cli
 az iot edge deployment create --deployment-id [deployment id] --hub-name [hub name] --content [file path] --labels "[labels]" --target-condition "[target query]" --priority [int]
 ```
 
-Dağıtım komut alır aşağıdaki parametreleri oluşturun: 
+Dağıtım oluşturma komutu aşağıdaki parametreleri alır: 
 
 * **--Dağıtım kimliği** -IOT hub'ında oluşturulacak dağıtım adı. Dağıtımınızı en çok 128 küçük harf olan benzersiz bir ad verin. Boşluk ve şu geçersiz karakterlerden kaçının: `& ^ [ ] { } \ | " < > /`.
-* **--hub adı** -dağıtım oluşturulacağı IOT hub'ının adı. Hub'ın geçerli abonelikte olmalıdır. Geçerli aboneliğinizi değiştirme `az account set -s [subscription name]` komutu.
+* **--hub adı** -dağıtım oluşturulacağı IOT hub'ının adı. Hub'ın geçerli abonelikte olmalıdır. Geçerli aboneliğinizi `az account set -s [subscription name]` komutla değiştirin.
 * **--İçerik** -dağıtım yolu JSON bildirim. 
-* **--Etiket** -dağıtımlarınızı izlenmesine yardımcı olması için etiketler ekleyin. Etiket adı, dağıtımınızı tanımlayan değer çiftleri olan. Etiket adları ve değerleri için JSON biçimlendirme yararlanın. Örneğin, `{"HostPlatform":"Linux", "Version:"3.0.1"}`
+* **--Etiket** -dağıtımlarınızı izlenmesine yardımcı olması için etiketler ekleyin. Etiket adı, dağıtımınızı tanımlayan değer çiftleri olan. Etiketler, adlar ve değerler için JSON biçimlendirmesi alır. Örneğin, `{"HostPlatform":"Linux", "Version:"3.0.1"}`
 * **--Hedef koşulu** -hangi cihazların bu dağıtım ile hedeflenecek belirlemek için bir hedef koşulu girin. Koşul, cihaz ikizi etiketlere göre veya cihaz çiftinin bildirilen özellikler ve ifade biçim ile eşleşmesi. Örneğin: `tags.environment='test' and properties.reported.devicemodel='4000x'`. 
 * **--öncelik** -pozitif bir tamsayı. İki veya daha fazla dağıtım aynı cihazda hedeflenen durumunda durumunda, sayısal değeri en yüksek dağıtım önceliği geçerli olur.
 
 ## <a name="monitor-a-deployment"></a>Bir dağıtımını izleme
 
-Kullanım [az IOT edge dağıtımı show](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-show) komutu tek bir dağıtım ayrıntılarını görüntülemek için:
+Tek bir dağıtımın ayrıntılarını görüntülemek için [az IoT Edge Deployment Show](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-show) komutunu kullanın:
 
 ```cli
 az iot edge deployment show --deployment-id [deployment id] --hub-name [hub name]
 ```
 
-Dağıtım komut alır aşağıdaki parametreleri göster:
+Dağıtım göster komutu aşağıdaki parametreleri alır:
 * **--Dağıtım kimliği** -IOT hub'ında bulunan dağıtım adı.
 * **--hub adı** -dağıtım bulunduğu IOT hub'ının adı. Hub'ın geçerli abonelikte olmalıdır. Komutu istediğiniz aboneliğe geçin `az account set -s [subscription name]`
 
@@ -164,16 +164,16 @@ Komut penceresinde dağıtım inceleyin. **Ölçümleri** özelliği her hub ta
 
 * **targetedCount** -hedefleme koşulu IOT hub'da cihaz ikizlerini sayısını belirten bir sistem ölçümü.
 * **appliedCount** -bir sistem ölçüm kendi modül ikizlerini IOT hub'ında uygulanan dağıtım içeriğine kalmışlardır cihaz sayısını belirtir.
-* **reportedSuccessfulCount** -IOT Edge istemci çalışma zamanı başarı raporlama dağıtım IOT Edge cihaz sayısını belirten bir cihaz ölçümü.
-* **reportedFailedCount** -IOT Edge istemci çalışma zamanı hatasından raporlama dağıtım IOT Edge cihaz sayısını belirten bir cihaz ölçümü.
+* **Reportedbaşarıyla Fulcount** -IoT Edge istemci çalışma zamanının başarılı olarak bildirdiği IoT Edge cihazların sayısını belirten bir cihaz ölçümü.
+* **Reportedfailedcount** -IoT Edge istemci çalışma zamanından dağıtım raporlama hatası içindeki IoT Edge cihazlarının sayısını belirten bir cihaz ölçümü.
 
-Kullanarak her ölçümler için bir cihaz kimlikleri veya nesneleri listesi gösterebilirsiniz [az IOT edge dağıtımı show-ölçüm](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-show-metric) komutu:
+[Az IoT Edge Deployment Show-Metric](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-show-metric) komutunu kullanarak her ölçüm Için cihaz kimliklerinin veya nesnelerinin bir listesini gösterebilirsiniz:
 
 ```cli
 az iot edge deployment show-metric --deployment-id [deployment id] --metric-id [metric id] --hub-name [hub name] 
 ```
 
-Dağıtım show-ölçüm komutu aşağıdaki parametreleri alır: 
+Dağıtım Show-Metric komutu aşağıdaki parametreleri alır: 
 * **--Dağıtım kimliği** -IOT hub'ında bulunan dağıtım adı.
 * **--Ölçüm kimliği** - örneğin cihaz kimliklerinin listesini görmek istediğiniz ölçüm adı `reportedFailedCount`
 * **--hub adı** -dağıtım bulunduğu IOT hub'ının adı. Hub'ın geçerli abonelikte olmalıdır. Komutu istediğiniz aboneliğe geçin `az account set -s [subscription name]`
@@ -188,7 +188,7 @@ Hedef koşul güncelleştirme aşağıdaki güncelleştirmeleri oluşur:
 * Şu anda bu dağıtım artık çalıştıran bir cihaza hedef koşulu karşılıyorsa, bu dağıtım kaldırır ve sonraki en yüksek öncelikli dağıtımı alır. 
 * Şu anda bu dağıtım artık çalıştıran bir cihaza hedef koşulu karşılayan ve diğer tüm dağıtımları, hedef koşulu yerine getirmeyen, hiçbir değişiklik cihazda gerçekleşir. Cihaz, geçerli alt modüller kendi geçerli durumunda çalışmaya devam eder ancak artık bu dağıtımın bir parçası olarak yönetilmez. Başka bir dağıtım hedef koşulu karşılayan sonra bu dağıtım kaldırır ve yeni alır. 
 
-Kullanım [az IOT edge dağıtımı güncelleştirme](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-update) komutu bir dağıtımı güncelleştirmek için:
+Bir dağıtımı güncelleştirmek için [az IoT Edge Deployment Update](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-update) komutunu kullanın:
 
 ```cli
 az iot edge deployment update --deployment-id [deployment id] --hub-name [hub name] --set [property1.property2='value']
@@ -207,16 +207,16 @@ Dağıtım güncelleştirme komutu aşağıdaki parametreleri alır:
 
 Bir dağıtım sildiğinizde, sonraki en yüksek öncelikli dağıtım üzerinde herhangi bir cihaza yararlanın. Daha sonra başka bir dağıtım hedef koşulu cihazlarınızı karşılamıyorsa, dağıtım silindiğinde modülleri kaldırılmaz. 
 
-Kullanım [az IOT edge dağıtımı Sil](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-delete) dağıtımı silmek için:
+Bir dağıtımı silmek için [az IoT Edge Deployment Delete](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-delete) komutunu kullanın:
 
 ```cli
 az iot edge deployment delete --deployment-id [deployment id] --hub-name [hub name] 
 ```
 
-Dağıtım silme komutunu aşağıdaki parametreleri alır: 
+Dağıtım silme komutu aşağıdaki parametreleri alır: 
 * **--Dağıtım kimliği** -IOT hub'ında bulunan dağıtım adı.
 * **--hub adı** -dağıtım bulunduğu IOT hub'ının adı. Hub'ın geçerli abonelikte olmalıdır. Komutu istediğiniz aboneliğe geçin `az account set -s [subscription name]`
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi edinin [modülleri IOT Edge cihazlarına dağıtma](module-deployment-monitoring.md).
+[IoT Edge cihazlara modül dağıtma](module-deployment-monitoring.md)hakkında daha fazla bilgi edinin.

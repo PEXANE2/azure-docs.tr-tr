@@ -10,21 +10,21 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: 1a970bb2c33db1ad78dca088b7d9b2430984df96
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.subservice: cognitive-search
+ms.openlocfilehash: 16bb7d84bbf19081c146aaac13ecc798610bc4bc
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698858"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840959"
 ---
 #   <a name="shaper-cognitive-skill"></a>Bilişsel Beceri başına mil
 
-**Mil başına** , birkaç girişi, daha sonra zenginleştirme ardışık düzeninde başvurulabilen [karmaşık bir türde](search-howto-complex-data-types.md) birleştirir. Her **Beceri,** temel olarak bir yapı oluşturmanızı, bu yapının üyelerinin adını tanımlamanızı ve her üyeye değer atamanızı sağlar. Birleştirme senaryolarında yararlı olan birleştirilmiş alan örnekleri, tek bir yapıya bir ad ve soyadı, tek bir yapıya şehir ve eyalet, benzersiz kimlik oluşturmak için ise tek bir yapıya bir ad ve Doğum tarihi birleştirmek içerir.
+**Mil başına** , birkaç girişi, daha sonra zenginleştirme ardışık düzeninde başvurulabilen [karmaşık bir türde](search-howto-complex-data-types.md) birleştirir. Her Beceri, temel olarak bir yapı oluşturmanızı, bu yapının üyelerinin adını tanımlamanızı ve her üyeye değer atamanızı sağlar. Birleştirme senaryolarında yararlı olan birleştirilmiş alan örnekleri, tek bir yapıya bir ad ve soyadı, tek bir yapıya şehir ve eyalet, benzersiz kimlik oluşturmak için ise tek bir yapıya bir ad ve Doğum tarihi birleştirmek içerir.
 
 Ayrıca, [Senaryo 3](#nested-complex-types) ' te gösterilen yetenek **başına mil** , girişe Isteğe bağlı bir *SourceContext* özelliği ekler. *Kaynak* ve *SourceContext* özellikleri birbirini dışlıyor. Giriş beceri bağlamındaki ise, *kaynağı*kullanmanız yeterlidir. Giriş, yetenek bağlamından *farklı* bir bağlamda bulunuyorsa *SourceContext*kullanın. *SourceContext* , kaynak olarak değinmekte olan belirli bir öğe ile iç içe bir giriş tanımlamanızı gerektirir. 
 
-Çıkış adı her zaman "çıktı" olur. Dahili olarak, işlem hattı aşağıdaki örneklerde gösterildiği gibi "çözümleyiciler Edtext" gibi farklı bir adı eşleyebilir, **ancak niteliğin kendisi** yanıtta "çıktı" döndürür. Bu, zenginleştirilmiş belgelerde hata ayıklaması yapıyorsanız ve adlandırma tutarsızlığı fark ediyorsanız veya özel bir yetenek oluşturuyorsanız ve yanıtı kendi kendinize yapılandırırken önemli olabilir.
+Çıkış adı her zaman "çıktı" olur. Dahili olarak, işlem hattı aşağıdaki örneklerde gösterildiği gibi "çözümleyiciler Edtext" gibi farklı bir adı eşleyebilir, ancak niteliğin kendisi yanıtta " çıktı" döndürür. Bu, zenginleştirilmiş belgelerde hata ayıklaması yapıyorsanız ve adlandırma tutarsızlığı fark ediyorsanız veya özel bir yetenek oluşturuyorsanız ve yanıtı kendi kendinize yapılandırırken önemli olabilir.
 
 > [!NOTE]
 > Beceri **başına mil** , bilişsel HIZMETLER API 'siyle bağlantılı değildir ve bunu kullanmak için ücretlendirilirsiniz. Yine de bir bilişsel [Hizmetler kaynağı iliştirmelisiniz](cognitive-search-attach-cognitive-services.md), ancak her gün çok az sayıda günlük zenginleştirme için sizi sınırlayan **ücretsiz** Kaynak seçeneğini geçersiz kılabilirsiniz.
@@ -34,7 +34,7 @@ Microsoft. yetenekler. util. Shaperbeceri
 
 ## <a name="scenario-1-complex-types"></a>Senaryo 1: karmaşık türler
 
-İki üyeye sahip olan *çözümleyiciler* adlı bir yapı oluşturmak istediğiniz bir senaryo düşünün: *metin* *ve yaklaşım*sırasıyla. Azure Search dizinde, çok parçalı aranabilir bir alana *karmaşık tür* denir ve genellikle kaynak verilere eşlenen karşılık gelen bir karmaşık yapıya sahip olduğunda oluşturulur.
+İki üyeye sahip olan *çözümleyiciler* adlı bir yapı oluşturmak istediğiniz bir senaryo düşünün: *metin* ve yaklaşım sırasıyla. Azure Search dizinde, çok parçalı aranabilir bir alana *karmaşık tür* denir ve genellikle kaynak verilere eşlenen karşılık gelen bir karmaşık yapıya sahip olduğunda oluşturulur.
 
 Ancak karmaşık türler oluşturmaya yönelik başka bir yaklaşım, Beceri **başına** biçimlendiricilerledir. Bu yeteneği bir beceri dahil ederek, Beceri işleme sırasında bellek içi işlemler veri şekillerini, daha sonra dizininizdeki karmaşık bir türle eşleştirilebilen iç içe yapılar ile çıktısını alabilir. 
 
@@ -112,7 +112,7 @@ Yetenek **başına bu mil** için kullanılabilir giriş sağlayan gelen JSON be
 
 ### <a name="skill-output"></a>Yetenek çıkışı
 
-**Biçimlendiriciye** , *metin* ve yaklaşım birleştirilmiş öğeleri Ile *çözümleyiciler, Çözümleyicileri edtext* adlı yeni bir öğe *oluşturur.* Bu çıktı dizin şemasına uyar. Azure Search dizinde içeri ve dizine alınır.
+**Biçimlendiriciye** , *metin* ve yaklaşım birleştirilmiş öğeleri Ile *çözümleyiciler, Çözümleyicileri edtext* adlı yeni bir öğeoluşturur. Bu çıktı dizin şemasına uyar. Azure Search dizinde içeri ve dizine alınır.
 
 ```json
 {

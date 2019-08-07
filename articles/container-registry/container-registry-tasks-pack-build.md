@@ -5,14 +5,14 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 07/22/2019
+ms.date: 08/06/2019
 ms.author: danlep
-ms.openlocfilehash: 5100418651e24d74ad747e8c436ffce53c899a92
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4e41bcaff8faef2c4eaec9ae852955d4b7ce354b
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68500903"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839902"
 ---
 # <a name="build-and-push-an-image-from-an-app-using-a-cloud-native-buildpack"></a>Cloud Native Buildpack kullanarak bir uygulamadan görüntü oluşturma ve gönderme
 
@@ -44,11 +44,13 @@ Aşağıdaki örnek, `cloudfoundry/cnb:bionic` oluşturucuyu kullanarak [Azure-S
 az acr pack build \
     --registry myregistry \
     --image {{.Run.Registry}}/node-app:1.0 \
-    --builder cloudfoundry/cnb:bionic \
+    --pull --builder cloudfoundry/cnb:bionic \
     https://github.com/Azure-Samples/nodejs-docs-hello-world.git
 ```
 
 Bu örnek, `node-app` görüntüsünü `1.0` etiketiyle oluşturur ve *myregistry* kapsayıcı kayıt defterine gönderir. Burada, hedef kayıt defteri adı, görüntü adına açıkça sona erer. Belirtilmezse, kayıt defteri URL 'SI otomatik olarak görüntü adına eklenir.
+
+`--pull` Parametresi, komutun en son Oluşturucu görüntüsünü çekbir şekilde belirtir.
 
 Komut çıktısı, görüntüyü oluşturma ve gönderme sürecini gösterir. 
 
@@ -80,7 +82,7 @@ az acr pack build \
 
 Bu örnekte, komutun `java-app` çalıştırma kimliğiyle etiketlenmiş görüntü oluşturulur ve bunu *myregistry* kapsayıcı kayıt defterine iter.
 
-`--pull` Parametresi, Heroku Builder görüntüsü ACR görevleri tarafından önbelleğe alınmadığı için, komutun gerekli en son Oluşturucu görüntüsünü çektiğinden emin olur.
+`--pull` Parametresi, komutun en son Oluşturucu görüntüsünü çekbir şekilde belirtir.
 
 Komut çıktısı, görüntüyü oluşturma ve gönderme sürecini gösterir. 
 

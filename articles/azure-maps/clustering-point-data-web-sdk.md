@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 69e95a9e6c76da5d502314a7190e99fc10e968f7
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 5f51c1166364a3470a1cc943e66d429c32cdc49b
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639071"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839484"
 ---
 # <a name="clustering-point-data"></a>Kümeleme noktası verileri
 
@@ -35,7 +35,7 @@ var datasource = new atlas.source.DataSource(null, {
 
     //The maximum zoom level in which clustering occurs.
     //If you zoom in more than this, all points are rendered as symbols.
-    clusterMaxZoom: 15 
+    clusterMaxZoom: 15
 });
 ```
 
@@ -107,6 +107,16 @@ Bir kümenin temsil ettiği nokta verileri bir alanın üzerine yayılır. Bu ö
 
  <iframe height="500" style="width: 100%;" scrolling="no" title="Küme alanı convex kabuk" src="//codepen.io/azuremaps/embed/QoXqWJ/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 <a href='https://codepen.io'>Codepen</a>üzerinde Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından <a href='https://codepen.io/azuremaps/pen/QoXqWJ/'>convex kabuk olan kalem kümesi alanı</a> ' na bakın.
+</iframe>
+
+## <a name="aggregating-data-in-clusters"></a>Kümelerdeki verileri toplama
+
+Genellikle kümeler, küme içindeki noktaların sayısıyla birlikte bir sembol kullanılarak temsil edilir, ancak bazen küme içindeki tüm noktaların toplam geliri gibi bazı bir ölçüme göre kümelerin stilini daha da özelleştirmek istenebilir. Küme toplamaları ile özel özellikler, bir [toplama ifadesi](data-driven-style-expressions-web-sdk.md#aggregate-expression) hesaplaması kullanılarak oluşturulup doldurulabilir.  Küme toplamaları, `clusterProperties` `DataSource`seçeneğinde tanımlanabilir.
+
+Aşağıdaki örnek, bir kümedeki her bir veri noktasının varlık türü özelliğine dayalı olarak bir sayıyı hesaplamak için bir toplama ifadesi kullanır.
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="Küme toplamaları" src="//codepen.io/azuremaps/embed/jgYyRL/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<a href='https://codepen.io'>Codepen</a>'da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) ile ilgili kalem <a href='https://codepen.io/azuremaps/pen/jgYyRL/'>kümesi toplamlarını</a> inceleyin.
 </iframe>
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -10,12 +10,12 @@ ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: edcde083934bb454f62ce3dd55c026138ad8fcca
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: fe947dbb7effde7bfa4f0b9824c6af645c85691c
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797685"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840201"
 ---
 # <a name="deploy-azure-iot-edge-modules-with-azure-cli"></a>Azure CLI ile Azure IOT Edge modüllerini dağıtmak
 
@@ -73,7 +73,7 @@ Azure CLI kullanarak modüllerini dağıtmak için dağıtım bildirimi yerel ol
              }
            },
            "modules": {
-             "tempSensor": {
+             "SimulatedTemperatureSensor": {
                "version": "1.0",
                "type": "docker",
                "status": "running",
@@ -97,7 +97,7 @@ Azure CLI kullanarak modüllerini dağıtmak için dağıtım bildirimi yerel ol
            }
          }
        },
-       "tempSensor": {
+       "SimulatedTemperatureSensor": {
          "properties.desired": {}
        }
      }
@@ -108,7 +108,7 @@ Azure CLI kullanarak modüllerini dağıtmak için dağıtım bildirimi yerel ol
 
 Modül bilgileri yapılandırdığınız dağıtım bildirimini uygulayarak modülleri cihazınıza dağıtın.
 
-Dağıtım bildiriminin kaydedildiği klasöre dizinleri değiştirin. VS Code IOT Edge şablonlardan birini kullandıysanız, `deployment.json` dosyası **config** çözüm dizininizin klasörünü ve `deployment.template.json` dosya.
+Dağıtım bildiriminin kaydedildiği klasöre dizinleri değiştirin. VS Code IoT Edge şablonlarından birini kullandıysanız dosyayı değil `deployment.json` `deployment.template.json` çözüm dizininizin **config** klasöründeki dosyasını kullanın.
 
 IOT Edge cihazına yapılandırmayı uygulamak için aşağıdaki komutu kullanın:
 

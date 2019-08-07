@@ -4,14 +4,14 @@ description: Kaynaklarla ilgili değerleri almak için bir Azure Resource Manage
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 07/31/2019
+ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7548b75f201c896e3a5248cb9d0154a9a676a86f
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 2ec6e58438e7be953e1f672fb815ff3f68a7f252
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698193"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839264"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager şablonları için kaynak işlevleri
 
@@ -342,8 +342,8 @@ Bir kaynağın çalışma zamanı durumunu temsil eden bir nesne döndürür.
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| resourceName veya Resourceıdentifier |Evet |dize |Adı veya bir kaynağın benzersiz tanımlayıcısı. |
-| apiVersion |Hayır |dize |Belirtilen kaynak API sürümü. Kaynak, aynı şablonu içinde sağlanan değil, bu parametreyi dahil edin. Genellikle, biçiminde **yyyy-aa-gg**. |
+| resourceName veya Resourceıdentifier |Evet |dize |Adı veya bir kaynağın benzersiz tanımlayıcısı. Geçerli şablon kaynağında başvuran bir parametre olarak yalnızca kaynak adı belirtin. Daha önce dağıtılan bir kaynağa başvururken kaynak KIMLIĞI sağlayın. |
+| apiVersion |Hayır |dize |Belirtilen kaynak API sürümü. Kaynak, aynı şablonu içinde sağlanan değil, bu parametreyi dahil edin. Genellikle, biçiminde **yyyy-aa-gg**. Kaynağınız için geçerli API sürümleri için bkz. [şablon başvurusu](/azure/templates/). |
 | 'Full' |Hayır |dize |Tam kaynak nesnesini döndürülüp döndürülmeyeceğini belirleyen değer. Belirtmezseniz `'Full'`, yalnızca kaynak özellikleri nesne döndürülür. Tam nesne, konum ve kaynak kimliği gibi değerlerini içerir. |
 
 ### <a name="return-value"></a>Dönüş değeri
@@ -352,17 +352,7 @@ Her kaynak türü için başvuru işlevi farklı özellikleri döndürür. İşl
 
 ### <a name="remarks"></a>Açıklamalar
 
-Başvuru işlevi, daha önceden dağıtılan bir kaynak ya da geçerli şablon dağıtılan bir kaynak çalışma zamanı durumunu alır. Bu makalede her iki senaryo için örnekler gösterilmektedir. Geçerli şablon kaynağında başvuran bir parametre olarak yalnızca kaynak adı belirtin. Daha önceden dağıtılan bir kaynağa başvuran, kaynak Kimliğine ve bir API sürümü için kaynak sağlar. Kaynağınızda için geçerli API sürümlerini belirlemek [şablon başvurusu](/azure/templates/).
-
-Başvuru işlevi yalnızca bir kaynak tanımı özelliklerini ve bir şablonu veya dağıtım çıktılar bölümünü kullanılabilir. [Özellik yinelemesi](resource-group-create-multiple.md#property-iteration)ile kullanıldığında, ifadesi Resource özelliğine atandığı için `input` başvuru işlevini kullanabilirsiniz. Count, başvuru işlevi çözümlenmeden önce belirlenmesi gerektiğinden, ile `count` kullanamazsınız.
-
-İç içe yerleştirilmiş şablonda dağıttığınız bir kaynağı döndürmek için, [iç içe geçmiş bir şablonun](resource-group-linked-templates.md#nested-template) çıktılarında başvuru işlevini kullanamazsınız. Bunun yerine, [bağlantılı bir şablon](resource-group-linked-templates.md#external-template-and-external-parameters)kullanın.
-
-Başvuru işlevini kullanarak, aynı şablonu içinde başvurulan kaynak sağlandıktan ve kaynağa adıyla (kaynak kimliği değil) başvurun bir kaynak başka bir kaynaktaki bağlıdır örtük olarak bildirdiğiniz. Ayrıca dependsOn özelliği kullanmanız gerekmez. Başvurulan kaynak dağıtımı tamamlanana kadar işlevi değerlendirilmez.
-
-Koşullu olarak dağıtılan bir kaynakta **başvuru** işlevini kullanırsanız, işlev, kaynak dağıtılmasa bile değerlendirilir.  **Başvuru** işlevi mevcut olmayan bir kaynağa başvuruyorsa bir hata alırsınız. İşlevin yalnızca kaynak dağıtıldığında değerlendirildiğinden emin olmak için **IF** işlevini kullanın. Koşullu olarak dağıtılan bir kaynakla IF ve Reference kullanan bir örnek şablon için [IF işlevine](resource-group-template-functions-logical.md#if) bakın.
-
-Özellik adlarını ve değerlerini bir kaynak türü için görmek için çıkışları bölümünde nesnesi döndüren bir şablon oluşturun. Mevcut bir kaynak türü varsa, tüm yeni kaynaklar dağıtmadan şablonunuzu nesneyi döndürür. 
+Başvuru işlevi, daha önceden dağıtılan bir kaynak ya da geçerli şablon dağıtılan bir kaynak çalışma zamanı durumunu alır. Bu makalede her iki senaryo için örnekler gösterilmektedir.
 
 Genellikle, kullandığınız **başvuru** blob uç noktası URI'si veya tam etki alanı adı gibi bir nesne belirli bir değer döndürüleceğini işlevi.
 
@@ -403,7 +393,45 @@ Kullanım `'Full'` özellikleri şemanın parçası olmayan kaynak değerleri ge
     ...
 ```
 
-Yukarıdaki şablonu tam örnek için bkz: [Windows için Key Vault](https://github.com/rjmax/AzureSaturday/blob/master/Demo02.ManagedServiceIdentity/demo08.msiWindowsToKeyvault.json). Benzer bir örnek için kullanılabilir [Linux](https://github.com/rjmax/AzureSaturday/blob/master/Demo02.ManagedServiceIdentity/demo07.msiLinuxToArm.json).
+### <a name="valid-uses"></a>Geçerli kullanımlar
+
+Başvuru işlevi yalnızca bir kaynak tanımı özelliklerini ve bir şablonu veya dağıtım çıktılar bölümünü kullanılabilir. [Özellik yinelemesi](resource-group-create-multiple.md#property-iteration)ile kullanıldığında, ifadesi Resource özelliğine atandığı için `input` başvuru işlevini kullanabilirsiniz. Count, başvuru işlevi çözümlenmeden önce belirlenmesi gerektiğinden, ile `count` kullanamazsınız.
+
+İç içe yerleştirilmiş şablonda dağıttığınız bir kaynağı döndürmek için, [iç içe geçmiş bir şablonun](resource-group-linked-templates.md#nested-template) çıktılarında başvuru işlevini kullanamazsınız. Bunun yerine, [bağlantılı bir şablon](resource-group-linked-templates.md#external-template-and-external-parameters)kullanın.
+
+Koşullu olarak dağıtılan bir kaynakta **başvuru** işlevini kullanırsanız, işlev, kaynak dağıtılmasa bile değerlendirilir.  **Başvuru** işlevi mevcut olmayan bir kaynağa başvuruyorsa bir hata alırsınız. İşlevin yalnızca kaynak dağıtıldığında değerlendirildiğinden emin olmak için **IF** işlevini kullanın. Koşullu olarak dağıtılan bir kaynakla IF ve Reference kullanan bir örnek şablon için [IF işlevine](resource-group-template-functions-logical.md#if) bakın.
+
+### <a name="implicit-dependency"></a>Örtük bağımlılık
+
+Başvuru işlevini kullanarak, aynı şablonu içinde başvurulan kaynak sağlandıktan ve kaynağa adıyla (kaynak kimliği değil) başvurun bir kaynak başka bir kaynaktaki bağlıdır örtük olarak bildirdiğiniz. Ayrıca dependsOn özelliği kullanmanız gerekmez. Başvurulan kaynak dağıtımı tamamlanana kadar işlevi değerlendirilmez.
+
+### <a name="resource-name-or-identifier"></a>Kaynak adı veya tanımlayıcı
+
+Aynı şablonda dağıtılan bir kaynağa başvururken kaynağın adını belirtin.
+
+```json
+"value": "[reference(parameters('storageAccountName'))]"
+```
+
+Aynı şablonda dağıtılan bir kaynağa başvururken kaynak KIMLIĞI ' ni belirtin.
+
+```json
+"value": "[reference(resourceId(parameters('storageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2018-07-01')]"
+```
+
+Hangi kaynağı başvurduğunuz hakkında belirsizliğe engel olmak için tam bir kaynak adı sağlayabilirsiniz.
+
+```json
+"value": "[reference(concat('Microsoft.Network/publicIPAddresses/', parameters('ipAddressName')))]"
+```
+
+Bir kaynağa tam nitelikli bir başvuru oluştururken, kesimleri tür ve ad ile birleştirme sırası yalnızca iki birleştirme değildir. Bunun yerine, ad alanından sonra en az belirli bir *türe/ad* çiftinden en belirgin bir dizi kullanın:
+
+**{Resource-Provider-Namespace}/{Parent-Resource-Type}/{Parent-Resource-Name} [/{Child-Resource-Type}/{Child-Resource-Name}]**
+
+Örneğin:
+
+`Microsoft.Compute/virtualMachines/myVM/extensions/myExt`doğru `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` değil
 
 ### <a name="example"></a>Örnek
 
@@ -539,7 +567,9 @@ Döndürülen nesne aşağıdaki biçimdedir:
 {
   "id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}",
   "name": "{resourceGroupName}",
+  "type":"Microsoft.Resources/resourceGroups",
   "location": "{resourceGroupLocation}",
+  "managedBy": "{identifier-of-managing-resource}",
   "tags": {
   },
   "properties": {
@@ -547,6 +577,8 @@ Döndürülen nesne aşağıdaki biçimdedir:
   }
 }
 ```
+
+**ManagedBy** özelliği yalnızca başka bir hizmet tarafından yönetilen kaynakları içeren kaynak grupları için döndürülür. Yönetilen uygulamalar, Databricks ve AKS için, özelliğinin değeri, yöneten kaynağın kaynak KIMLIĞIDIR.
 
 ### <a name="remarks"></a>Açıklamalar
 
@@ -592,6 +624,7 @@ Yukarıdaki örnekte, aşağıdaki biçimde bir nesne döndürür:
 {
   "id": "/subscriptions/{subscription-id}/resourceGroups/examplegroup",
   "name": "examplegroup",
+  "type":"Microsoft.Resources/resourceGroups",
   "location": "southcentralus",
   "properties": {
     "provisioningState": "Succeeded"

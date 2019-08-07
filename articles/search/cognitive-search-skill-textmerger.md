@@ -1,6 +1,6 @@
 ---
-title: Metin birleştirme bilişsel arama beceri - Azure Search
-description: Alanlar koleksiyonu metinden birleştirilmiş tek bir alanda birleştirin. Bilişsel Bu yetenek, bir Azure Search zenginleştirme hattında kullanın.
+title: Metin birleştirme bilişsel arama yeteneği-Azure Search
+description: Bir alan koleksiyonundan metin birleştirme birleştirilmiş bir alan. Bu bilişsel yeteneği bir Azure Search zenginleştirme ardışık düzeninde kullanın.
 services: search
 manager: pablocas
 author: luiscabrer
@@ -10,23 +10,23 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: bbf2e524d626ac17596ded61746c26f20a6caf1b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.subservice: cognitive-search
+ms.openlocfilehash: 312caf2d514d630c5bc1fb7755b7ab7a6a3d443a
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65021834"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840917"
 ---
-#    <a name="text-merge-cognitive-skill"></a>Metin birleştirme bilişsel beceri
+#    <a name="text-merge-cognitive-skill"></a>Metin birleştirme Bilişsel Beceri
 
-**Metin birleştirme** beceri alanlar koleksiyonu tek bir alana metinden birleştirir. 
+**Metin birleştirme** yeteneği, bir alan koleksiyonundan metni tek bir alanda birleştirir. 
 
 > [!NOTE]
-> Bu yetenek bir Bilişsel hizmetler API'sine bağlı değil ve kullanmak için ücretlendirilmez. Hala [Bilişsel hizmetler kaynağı ekleme](cognitive-search-attach-cognitive-services.md), ancak geçersiz kılmak için **ücretsiz** , az sayıda gün başına günlük zenginleştirmelerinin sınırlar resource seçeneği.
+> Bu yetenek bilişsel hizmetler API 'SI ile bağlantılı değildir ve bunu kullanmak için ücretlendirilirsiniz. Yine de bir bilişsel [Hizmetler kaynağı iliştirmelisiniz](cognitive-search-attach-cognitive-services.md), ancak her gün çok az sayıda günlük zenginleştirme için sizi sınırlayan **ücretsiz** Kaynak seçeneğini geçersiz kılabilirsiniz.
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft.Skills.Text.MergeSkill
+Microsoft. yetenekler. Text. Mergeskıll
 
 ## <a name="skill-parameters"></a>Yetenek parametreleri
 
@@ -34,12 +34,12 @@ Parametreler büyük/küçük harfe duyarlıdır.
 
 | Parametre adı     | Açıklama |
 |--------------------|-------------|
-| insertPreTag  | Önce her bir ekleme eklenecek dize. Varsayılan değer `" "` şeklindedir. Değer alanı atlamak için kümesine `""`.  |
-| insertPostTag | Sonra her bir ekleme eklenecek dize. Varsayılan değer `" "` şeklindedir. Değer alanı atlamak için kümesine `""`.  |
+| ınsertpretag  | Her ekleme işleminden önce eklenecek dize. Varsayılan değer `" "` şeklindedir. Alanı atlamak için değerini olarak `""`ayarlayın.  |
+| ınsertposttag | Her ekleme işleminden sonra eklenecek dize. Varsayılan değer `" "` şeklindedir. Alanı atlamak için değerini olarak `""`ayarlayın.  |
 
 
-##  <a name="sample-input"></a>Örnek Giriş
-Bu yetenek için kullanılabilir girişi sağlayan bir JSON belgesi olabilir:
+##  <a name="sample-input"></a>Örnek giriş
+Bu yetenek için kullanılabilir giriş sağlayan bir JSON belgesi şu olabilir:
 
 ```json
 {
@@ -58,7 +58,7 @@ Bu yetenek için kullanılabilir girişi sağlayan bir JSON belgesi olabilir:
 ```
 
 ##  <a name="sample-output"></a>Örnek çıktı
-Bu örnek olduğunu varsayarak önceki giriş çıkış gösterir *insertPreTag* ayarlanır `" "`, ve *insertPostTag* ayarlanır `""`. 
+Bu örnek, *ınsertpretag* öğesinin olarak ayarlandığı `" "`ve *ınsertposttag* 'in olarak `""`ayarlandığı varsayıldığında, önceki girdinin çıktısını gösterir. 
 
 ```json
 {
@@ -74,11 +74,11 @@ Bu örnek olduğunu varsayarak önceki giriş çıkış gösterir *insertPreTag*
 }
 ```
 
-## <a name="extended-sample-skillset-definition"></a>Genişletilmiş örnek beceri kümesi tanımı
+## <a name="extended-sample-skillset-definition"></a>Genişletilmiş örnek beceri tanımı
 
-Metin birleştirme kullanmaya yönelik yaygın bir senaryo görüntüleri (OCR beceri veya görüntünün bir açıklamalı alt yazı metni) değerinin metinsel gösterimini birleştirmek için içerik bir belgenin bir alandır. 
+Metin birleştirme kullanmanın yaygın bir senaryosu, görüntülerin metinsel gösterimini (bir OCR becerinden gelen metin veya bir görüntünün resim yazısı) belgenin içerik alanına birleştirmektir. 
 
-Aşağıdaki örnek becerilerine OCR beceri belgeye gömülü görüntülerinden ayıklamak için kullanmaktadır. Ardından, oluşturur bir *merged_text* hem özgün hem de her görüntü OCRed metni içeren alan. OCR yetenek hakkında daha fazla bilgi [burada](https://docs.microsoft.com/azure/search/cognitive-search-skill-ocr).
+Aşağıdaki örnek Beceri, belgeye katıştırılmış görüntülerden metin ayıklamak için OCR becerisi kullanır. Sonra, her görüntüden hem orijinal hem de OCRed metin içeren bir *merged_text* alanı oluşturur. [Burada](https://docs.microsoft.com/azure/search/cognitive-search-skill-ocr)OCR yeteneği hakkında daha fazla bilgi edinebilirsiniz.
 
 ```json
 {
@@ -129,7 +129,7 @@ Aşağıdaki örnek becerilerine OCR beceri belgeye gömülü görüntülerinden
   ]
 }
 ```
-Yukarıdaki örnekte, bir normalleştirilmiş görüntüleri alan bulunduğunu varsayar. Normalleştirilmiş görüntüleri alan almak üzere *imageAction* yapılandırma için dizin oluşturucu Tanımınızda *generateNormalizedImages* aşağıda gösterildiği gibi:
+Yukarıdaki örnekte, normalleştirilmiş görüntüler alanının var olduğu varsayılır. Normalleştirilmiş görüntüler alanını almak için, Indexer tanımınızdaki *ımageaction* yapılandırmasını aşağıda gösterildiği gibi *Generatenormalizediges* olarak ayarlayın:
 
 ```json
 {
@@ -145,6 +145,6 @@ Yukarıdaki örnekte, bir normalleştirilmiş görüntüleri alan bulunduğunu v
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-+ [Önceden tanımlanmış beceriler](cognitive-search-predefined-skills.md)
-+ [Bir beceri kümesi tanımlama](cognitive-search-defining-skillset.md)
-+ [Dizin Oluşturucu (REST) oluşturma](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [Önceden tanımlanmış yetenekler](cognitive-search-predefined-skills.md)
++ [Beceri tanımlama](cognitive-search-defining-skillset.md)
++ [Dizin Oluşturucu oluştur (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

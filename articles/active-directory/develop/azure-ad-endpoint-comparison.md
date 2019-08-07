@@ -10,18 +10,18 @@ ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df12b0db397656f639275f6a3f9697109985ea35
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 815ff980abdde7ab91861d8550030476312fb6d3
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722181"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835170"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Neden Microsoft Identity platform (v 2.0) güncelleştirmesi?
 
@@ -117,7 +117,7 @@ Bu kapsamlar, uygulamanızı en düşük düzeyde bir şekilde kodlarabilmeniz i
 Microsoft Identity platform uç noktası, yüklerini küçük tutmak için varsayılan olarak belirteçlerinde daha küçük bir talepler kümesi yayınlar. Bir Microsoft Identity platform belirtecinde artık varsayılan olarak sağlanmayan bir v 1.0 belirtecindeki belirli bir talebe bağımlılığı olan uygulama ve hizmetlerinize sahipseniz, bu talebi dahil etmek için [isteğe bağlı talepler](active-directory-optional-claims.md) özelliğini kullanmayı göz önünde bulundurun.
 
 > [!IMPORTANT]
-> v 1.0 ve v 2.0 belirteçleri hem v 1.0 hem de v 2.0 uç noktaları tarafından verilebilir! id_tokens *her zaman* istediğiniz uç noktayla eşleşir ve *erişim belirteçleri,* istemcinizin bu belirteci kullanarak çağırabilecekleri Web API 'si tarafından beklenen biçimle eşleşir.  Uygulama, v 1.0 biçim erişim belirteçlerini bekleyen Microsoft Graph çağrısı yapmak için bir belirteç almak üzere v 2.0 endpoiazı 'yi kullanıyorsa, uygulamanız v 1.0 biçiminde bir belirteç alır.  
+> v 1.0 ve v 2.0 belirteçleri hem v 1.0 hem de v 2.0 uç noktaları tarafından verilebilir! id_tokens *her zaman* istediğiniz uç noktayla eşleşir ve erişim belirteçleri, istemcinizin bu belirteci kullanarak çağırabilecekleri Web API 'si tarafından beklenen biçimle eşleşir.  Uygulama, v 1.0 biçim erişim belirteçlerini bekleyen Microsoft Graph çağrısı yapmak için bir belirteç almak üzere v 2.0 endpoiazı 'yi kullanıyorsa, uygulamanız v 1.0 biçiminde bir belirteç alır.  
 
 ## <a name="limitations"></a>Sınırlamalar
 

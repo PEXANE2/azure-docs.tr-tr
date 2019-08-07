@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7b9c9a7639ed7a9938052197758e5796fb9fc879
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 6fe08c15de7ea388a5194054791eb394dc2f6e01
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699432"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840612"
 ---
 # <a name="deploy-azure-file-sync"></a>Azure Dosya Eşitleme’yi dağıtma
 Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server 'ı Azure dosya paylaşımınızın hızlı önbelleğine dönüştürür. SMB, NFS ve FTPS dahil olmak üzere verilerinize yerel olarak erişmek için Windows Server 'da bulunan herhangi bir protokolü kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.
@@ -237,7 +237,7 @@ $registeredServer = Register-AzStorageSyncServer -ParentObject $storageSync
 ---
 
 ## <a name="create-a-sync-group-and-a-cloud-endpoint"></a>Bir eşitleme grubu ve bir bulut uç noktası oluşturma
-Eşitleme grubu, bir dosya kümesi için eşitleme topolojisini tanımlar. Bir eşitleme grubu içindeki uç noktalar, birbiriyle eşitlenmiş durumda tutulur. Eşitleme grubu, bir Azure dosya paylaşımı ve en az bir sunucu uç noktasını temsil eden bir bulut uç noktası içermelidir. Sunucu uç noktası kayıtlı sunucuda bir yolu temsil eder. Bir sunucu birden çok eşitleme grubunda sunucu uç noktalarına sahip olabilir. İstediğiniz eşitleme topolojinizi uygun şekilde açıklamanız için ihtiyacınız olan sayıda eşitleme grubu oluşturabilirsiniz.
+Eşitleme grubu, bir dosya kümesi için eşitleme topolojisini tanımlar. Bir eşitleme grubu içindeki uç noktalar, birbiriyle eşitlenmiş durumda tutulur. Eşitleme grubu, bir Azure dosya paylaşımı ve en az bir sunucu uç noktasını temsil eden bir bulut uç noktası içermelidir. Sunucu uç noktası, kayıtlı bir sunucudaki yolu temsil eder. Bir sunucu birden çok eşitleme grubunda sunucu uç noktalarına sahip olabilir. İstediğiniz eşitleme topolojinizi uygun şekilde açıklamanız için ihtiyacınız olan sayıda eşitleme grubu oluşturabilirsiniz.
 
 Bulut uç noktası, Azure dosya paylaşımının bir işaretçisidir. Tüm sunucu uç noktaları bulut uç noktasıyla eşitlenir ve bu da bulut uç noktası hub 'ı yapar. Azure dosya paylaşımının depolama hesabı, depolama eşitleme hizmeti ile aynı bölgede bulunmalıdır. Azure dosya paylaşımının tamamı eşitlenir ve tek bir özel durum oluşur: Bir NTFS biriminde gizli "sistem birimi bilgileri" klasörüyle karşılaştırılabilen özel bir klasör sağlanacak. Bu dizin "olarak adlandırılır. Systemshareınformation ". Diğer uç noktalarla eşitlenmeyecek önemli eşitleme meta verileri içerir. Kullanma veya silme!
 

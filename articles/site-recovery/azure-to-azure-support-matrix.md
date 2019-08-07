@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/22/2019
+ms.date: 08/06/2019
 ms.author: raynew
-ms.openlocfilehash: 87362b785ecbb17c5a49a8c087b6a70715480877
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: d0e24d7621218ccac23842072a5f08be94c80d9d
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679372"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840593"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Azure VM'lerini bir bölgeden diğerine çoğaltma için destek matrisi
 
@@ -117,7 +117,7 @@ Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5,
 14,04 LTS | 9,25 | 3.13.0-24-genel-3.13.0-169-Generic,<br/>3.16.0-25-Genel-3.16.0-77-Generic,<br/>3.19.0-18-Generic ila 3.19.0-80-Generic,<br/>4.2.0-18-Generic ila 4.2.0-42-Generic,<br/>4.4.0-21-Generic-4.4.0-146-Generic,<br/>4.15.0-1023-Azure to 4.15.0-1042-Azure |
 14,04 LTS | 9,24 | 3.13.0-24-genel-3.13.0-167-Generic,<br/>3.16.0-25-Genel-3.16.0-77-Generic,<br/>3.19.0-18-Generic ila 3.19.0-80-Generic,<br/>4.2.0-18-Generic ila 4.2.0-42-Generic,<br/>4.4.0-21-Generic-4.4.0-143.360-Generic,<br/>4.15.0-1023-Azure to 4.15.0-1040-Azure |
 |||
-16,04 LTS | 9,27 | 4.4.0-21-Generic-4.4.0-154-Generic,<br/>4.8.0-34-Generic ile 4.8.0-58-Generic,<br/>4.10.0-14-generic to 4.10.0-42-Generic<br/>4.11.0-13-Genel-4.11.0-14-generic,<br/>4.13.0-16-Generic to 4.13.0-45-Generic,<br/>4.15.0-13-Genel-4.15.0-54-Generic<br/>4.11.0-1009-Azure-4.11.0-1016-Azure,<br/>4.13.0-1005-Azure-4.13.0-1018-Azure <br/>4.15.0-1012-Azure-4.15.0-1050-Azure|
+16,04 LTS | 9,27 | 4.4.0-21-Generic-4.4.0-154-Generic,<br/>4.8.0-34-Generic ile 4.8.0-58-Generic,<br/>4.10.0-14-generic to 4.10.0-42-Generic<br/>4.11.0-13-Genel-4.11.0-14-generic,<br/>4.13.0-16-Generic to 4.13.0-45-Generic,<br/>4.15.0-13-Genel-4.15.0-55-Generic<br/>4.11.0-1009-Azure-4.11.0-1016-Azure,<br/>4.13.0-1005-Azure-4.13.0-1018-Azure <br/>4.15.0-1012-Azure-4.15.0-1051-Azure|
 16,04 LTS | 9,26 | 4.4.0-21-Generic-4.4.0-148-Generic,<br/>4.8.0-34-Generic ile 4.8.0-58-Generic,<br/>4.10.0-14-generic to 4.10.0-42-Generic<br/>4.11.0-13-Genel-4.11.0-14-generic,<br/>4.13.0-16-Generic to 4.13.0-45-Generic,<br/>4.15.0-13-Generic ila 4.15.0-50-Generic<br/>4.11.0-1009-Azure-4.11.0-1016-Azure,<br/>4.13.0-1005-Azure-4.13.0-1018-Azure <br/>4.15.0-1012-Azure-4.15.0-1045-Azure|
 16,04 LTS | 9,25 | 4.4.0-21-Generic-4.4.0-146-Generic,<br/>4.8.0-34-Generic ile 4.8.0-58-Generic,<br/>4.10.0-14-generic-4.10.0-42-Generic,<br/>4.11.0-13-Genel-4.11.0-14-generic,<br/>4.13.0-16-Generic to 4.13.0-45-Generic,<br/>4.15.0-13-Genel-4.15.0-48-Generic<br/>4.11.0-1009-Azure-4.11.0-1016-Azure,<br/>4.13.0-1005-Azure-4.13.0-1018-Azure <br/>4.15.0-1012-Azure-4.15.0-1042-Azure|
 16,04 LTS | 9,24 | 4.4.0-21-Generic-4.4.0-143.360-Generic,<br/>4.8.0-34-Generic ile 4.8.0-58-Generic,<br/>4.10.0-14-generic-4.10.0-42-Generic,<br/>4.11.0-13-Genel-4.11.0-14-generic,<br/>4.13.0-16-Generic to 4.13.0-45-Generic,<br/>4.15.0-13-Genel-4.15.0-46-genel<br/>4.11.0-1009-Azure-4.11.0-1016-Azure,<br/>4.13.0-1005-Azure-4.13.0-1018-Azure <br/>4.15.0-1012-Azure-4.15.0-1040-Azure|
@@ -136,7 +136,7 @@ Debian 8 | 9,24 | 3.16.0-4-AMD64-3.16.0-7-AMD64, 4.9.0 -0. BPO. 4-AMD64-4.9.0 -0
 
 **Yayın** | **Mobility hizmeti sürümü** | **Çekirdek sürümü** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,27 | SP1 3.12.49-11-varsayılan olarak 3.12.74-60.64.40-default</br></br> SP1 (LTSS) 3.12.74-60.64.45-varsayılan olarak 3.12.74-60.64.115-default</br></br> SP2 4.4.21-69-varsayılan olarak 4.4.120-92.70-default</br></br>SP2 (LTSS) 4.4.121-92.73-varsayılan olarak 4.4.121-92.114-default</br></br>SP3 4.4.73-5-varsayılan olarak 4.4.180-94.97-default</br></br>SP3 4.4.138-4.7-Azure to 4.4.180-4.31-Azure</br></br>SP4 4.12.14-94.41-varsayılan olarak 4.12.14-95.19-default</br>SP4 4.12.14-6.3-Azure to 4.12.14-6.15-Azure |
+SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,27 | SP1 3.12.49-11-varsayılan olarak 3.12.74-60.64.40-default</br></br> SP1 (LTSS) 3.12.74-60.64.45-varsayılan olarak 3.12.74-60.64.115-default</br></br> SP2 4.4.21-69-varsayılan olarak 4.4.120-92.70-default</br></br>SP2 (LTSS) 4.4.121-92.73-varsayılan olarak 4.4.121-92.117-default</br></br>SP3 4.4.73-5-varsayılan olarak 4.4.180-94.97-default</br></br>SP3 4.4.138-4.7-Azure to 4.4.180-4.31-Azure</br></br>SP4 4.12.14-94.41-varsayılan olarak 4.12.14-95.24-default</br>SP4 4.12.14-6.3-Azure to 4.12.14-6.18-Azure |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,26 | SP1 3.12.49-11-varsayılan olarak 3.12.74-60.64.40-default</br></br> SP1 (LTSS) 3.12.74-60.64.45-varsayılan olarak 3.12.74-60.64.110-default</br></br> SP2 4.4.21-69-varsayılan olarak 4.4.120-92.70-default</br></br>SP2 (LTSS) 4.4.121-92.73-varsayılan olarak 4.4.121-92.109-default</br></br>SP3 4.4.73-5-varsayılan olarak 4.4.178-94.91-default</br></br>SP3 4.4.138-4.7-Azure to 4.4.178-toplam 4,28 olacaktır-Azure</br></br>SP4 4.12.14-94.41-varsayılan olarak 4.12.14-95.16-default</br>SP4 4.12.14-6.3-Azure to 4.12.14-6.9-Azure |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,25 | SP1 3.12.49-11-varsayılan olarak 3.12.74-60.64.40-default</br></br> SP1 (LTSS) 3.12.74-60.64.45-varsayılan olarak 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-varsayılan olarak 4.4.120-92.70-default</br></br>SP2 (LTSS) 4.4.121-92.73-varsayılan olarak 4.4.121-92.104-default</br></br>SP3 4.4.73-5-varsayılan olarak 4.4.176-94.88-default</br></br>SP3 4.4.138-4.7-Azure to 4.4.176-4.25-Azure</br></br>SP4 4.12.14-94.41-varsayılan olarak 4.12.14-95.13-default</br>SP4 4.12.14-6.3-Azure to 4.12.14-6.9-Azure |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,24 | SP1 3.12.49-11-varsayılan olarak 3.12.74-60.64.40-default</br></br> SP1 (LTSS) 3.12.74-60.64.45-varsayılan olarak 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-varsayılan olarak 4.4.120-92.70-default</br></br>SP2 (LTSS) 4.4.121-92.73-varsayılan olarak 4.4.121-92.104-default</br></br>SP3 4.4.73-5-varsayılan olarak 4.4.176-94.88-default</br></br>SP4 4.12.14-94.41-varsayılan olarak 4.12.14-95.13-default |
@@ -197,7 +197,7 @@ Yedeklilik | LRS ve GRS desteklenir.<br/><br/> ZRS desteklenmez.
 Seyrek erişimli ve sık erişimli depolama | Desteklenmiyor | Seyrek erişimli ve sık erişimli depolamada VM diskleri desteklenmez
 Depolama alanları | Desteklenen |
 Bekleyen şifreleme (SSE) | Desteklenen | SSE, depolama hesaplarında varsayılan ayardır.   
-Windows işletim sistemi için Azure disk şifrelemesi (ADE) | [Azure AD uygulaması ile şifreleme](https://aka.ms/ade-aad-app) Için etkinleştirilen VM 'ler destekleniyor |
+Windows işletim sistemi için Azure disk şifrelemesi (ADE) | Desteklenen |
 Linux işletim sistemi için Azure disk şifrelemesi (ADE) | Desteklenmiyor |
 Sık erişimli ekleme | Desteklenen | Çoğaltılan bir Azure VM 'ye eklediğiniz bir veri diski için çoğaltmanın etkinleştirilmesi, yönetilen diskleri kullanan VM 'Ler için desteklenir.
 Diski sık erişimli kaldır | Desteklenmiyor | SANAL makinede veri diski kaldırırsanız, çoğaltmayı devre dışı bırakmanız ve VM için çoğaltmayı yeniden etkinleştirmeniz gerekir.

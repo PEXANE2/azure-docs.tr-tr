@@ -7,23 +7,23 @@ ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: oslake
-ms.author: moslake
+author: rohitnayakmsft
+ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 03/12/2019
-ms.openlocfilehash: fbe6c4cc82272c7ab82931b089dbc3c70b07bee0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9b28a8efcc09954d9046ad1dda3ba5f10f45bdfa
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566227"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840466"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Veritabanı sunucuları için sanal ağ hizmet uç noktalarını ve kurallarını kullanma
 
 *Sanal ağ kuralları* , tek veritabanlarınıza yönelik veritabanı sunucusunun ve Azure [SQL veritabanı](sql-database-technical-overview.md) 'ndaki elastik havuzunuzun ve [SQL veri ambarı](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 'ndaki veritabanlarınızın iletişim kabul edip etmediğini denetleyen bir güvenlik duvarı güvenlik özelliğidir Bu, sanal ağlardaki belirli alt ağlardan gönderilir. Bu makalede, Azure SQL veritabanınıza ve SQL veri ambarınıza yönelik iletişimin güvenli bir şekilde yapılmasına olanak tanımak için sanal ağ kuralı özelliğinin neden bazen en iyi seçenektir.
 
 > [!IMPORTANT]
-> Bu makale Azure SQL Server ve Azure SQL Server 'da oluşturulan SQL veritabanı ve SQL veri ambarı veritabanları için geçerlidir. Kolaylık açısından, hem SQL Veritabanı hem de SQL Veri Ambarı için SQL Veritabanı terimi kullanılmaktadır. Bu makale, kendisiyle ilişkili bir hizmet uç noktası olmadığından Azure SQL veritabanı 'nda **yönetilen bir örnek** dağıtımı *için uygulanmıyor.*
+> Bu makale Azure SQL Server ve Azure SQL Server 'da oluşturulan SQL veritabanı ve SQL veri ambarı veritabanları için geçerlidir. Kolaylık açısından, hem SQL Veritabanı hem de SQL Veri Ambarı için SQL Veritabanı terimi kullanılmaktadır. Bu makale, kendisiyle ilişkili bir hizmet uç noktası OLMADıĞıNDAN Azure SQL veritabanı 'nda **yönetilen bir örnek** dağıtımı için uygulanmıyor.
 
 Bir sanal ağ kuralı oluşturmak için öncelikle kuralın başvurması için bir [sanal ağ hizmet uç noktası][vm-virtual-network-service-endpoints-overview-649d] olması gerekir.
 
@@ -53,7 +53,7 @@ Bir sanal ağ kuralı, SQL veritabanı sunucunuza alt ağdaki her düğümden ge
 
 ### <a name="a-allow-access-to-azure-services"></a>A. Azure hizmetlerine erişime izin ver
 
-Güvenlik Duvarı bölmesinde, **Azure hizmetlerine erişime Izin ver**etiketli bir **açık/kapalı** düğmesi vardır. **Açık** ayarı tüm Azure IP adreslerinden ve tüm Azure alt ağlarının iletişimlerine izin verir. Bu Azure IP 'Leri veya alt ağları size ait olmayabilir. Bu **ayar** , SQL veritabanınızın olmasını istediğiniz büyük olasılıkla daha açıktır. Sanal ağ kuralı özelliği, daha ayrıntılı bir denetim sağlar.
+Güvenlik Duvarı bölmesinde, **Azure hizmetlerine erişime Izin ver**etiketli bir **açık/kapalı** düğmesi vardır. **Açık** ayarı tüm Azure IP adreslerinden ve tüm Azure alt ağlarının iletişimlerine izin verir. Bu Azure IP 'Leri veya alt ağları size ait olmayabilir. Bu ayar, SQL veritabanınızın olmasını istediğiniz büyük olasılıkla daha açıktır. Sanal ağ kuralı özelliği, daha ayrıntılı bir denetim sağlar.
 
 ### <a name="b-ip-rules"></a>B. IP kuralları
 

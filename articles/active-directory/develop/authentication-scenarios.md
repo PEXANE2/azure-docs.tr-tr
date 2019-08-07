@@ -1,6 +1,6 @@
 ---
-title: Microsoft kimlik platformu kimlik doğrulaması | Azure
-description: Microsoft kimlik platformu, uygulama kimlik doğrulaması hakkında bilgi edinin, sağlama, API, model ve söz konusu Microsoft kimlik platformu en yaygın kimlik doğrulama senaryoları destekler.
+title: Microsoft Identity platformunda kimlik doğrulaması | Mavisi
+description: Microsoft Identity platform 'da kimlik doğrulaması, uygulama modeli, API, sağlama ve Microsoft Identity platformunun desteklediği en yaygın kimlik doğrulama senaryoları hakkında bilgi edinin.
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
@@ -10,7 +10,7 @@ ms.assetid: 0c84e7d0-16aa-4897-82f2-f53c6c990fd9
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: overview
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/05/2019
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b35d2e21de3da184496da53fdf46d865fdfdf5c7
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: 7883c32e60a09c6fdfc4146c30472cfcdb57b689
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66734478"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835175"
 ---
 # <a name="what-is-authentication"></a>Kimlik doğrulaması nedir?
 
@@ -31,14 +31,14 @@ ms.locfileid: "66734478"
 
 *Yetkilendirme*, kimliği doğrulanmış bir güvenlik sorumlusuna bir şeyi yapma iznini vermektir. Erişme iznine sahip olduğunuz verileri ve bu verilerle gerçekleştirebileceğiniz işlemleri belirtir. Yetkilendirme bazen AuthZ şeklinde kısaltılabilir.
 
-Microsoft kimlik platformu için farklı platformlar için açık kaynak kitaplıkları yanı sıra OAuth 2.0 ve Openıd Connect gibi endüstri standardı protokoller için desteği ile bir hizmet olarak kimlik sağlayarak uygulama geliştiriciler için kimlik doğrulaması basitleştirir. hızlı bir şekilde kodlamaya başlamanıza yardımcı olur.
+Microsoft Identity platform, OAuth 2,0 ve OpenID Connect gibi endüstri standardı protokoller desteğiyle ve farklı platformlar için açık kaynak kitaplıkların yanı sıra, hizmet olarak kimlik sağlayarak uygulama geliştiricileri için kimlik doğrulamasını basitleştirir. kodlamaya hızlı bir şekilde başlamanıza yardımcı olur.
 
-Microsoft kimlik platformu programlama modeli içinde iki ana kullanım örneği vardır:
+Microsoft Identity platform programlama modelinde iki birincil kullanım durumu vardır:
 
 * OAuth 2.0 yetki verme akışı: Burada kaynak sahibi istemci uygulamayı yetkilendirerek istemcinin kaynak sahibinin kaynaklarına erişmesini sağlar.
 * İstemci tarafından kaynak erişimi sırasında: Kaynak sunucusu erişim belirtecindeki talep değerlerini kullanarak erişim denetimi kararları alır.
 
-## <a name="authentication-basics-in-microsoft-identity-platform"></a>Microsoft kimlik platformu kimlik doğrulaması temel bilgileri
+## <a name="authentication-basics-in-microsoft-identity-platform"></a>Microsoft Identity platformunda kimlik doğrulama temelleri
 
 Kimliğin gerekli olduğu en basit senaryoyu ele alalım: Bir kullanıcının web tarayıcısından bir web uygulaması için kimlik doğrulamasından geçmesi gerekiyor. Aşağıdaki diyagramda bu senaryo gösterilmektedir:
 
@@ -46,9 +46,9 @@ Kimliğin gerekli olduğu en basit senaryoyu ele alalım: Bir kullanıcının we
 
 Diyagramda gösterilen bileşenlerle ilgili bilmeniz gerekenler burada v erilmiştir:
 
-* Microsoft kimlik platformu kimlik sağlayıcıdır. Kimlik sağlayıcısı, kuruluşun dizinindeki kullanıcıların ve uygulamaların kimliğinin doğrulanmasından sorumludur ve bu kullanıcılarla uygulamalar kimlik doğrulamasından başarıyla geçtiğinde güvenlik belirteçleri oluşturur.
-* Dış kimlik doğrulama için Microsoft kimlik platformu istediği bir uygulamayı Azure Active Directory (Azure AD) kayıtlı olması gerekir. Azure AD, dizindeki her uygulamayı kaydeder ve benzersiz bir şekilde tanımlar.
-* Geliştiriciler, kimlik doğrulama protokolü ayrıntıları işleyerek kolaylaştıran açık kaynak Microsoft kimlik platformu kimlik doğrulama kitaplıklarını kullanabilir. Daha fazla bilgi için bkz. Microsoft kimlik platformu [v2.0 kimlik doğrulama kitaplıkları](reference-v2-libraries.md) ve [v1.0 kimlik doğrulama kitaplıkları](active-directory-authentication-libraries.md).
+* Microsoft Identity platform, kimlik sağlayıcıdır. Kimlik sağlayıcısı, kuruluşun dizinindeki kullanıcıların ve uygulamaların kimliğinin doğrulanmasından sorumludur ve bu kullanıcılarla uygulamalar kimlik doğrulamasından başarıyla geçtiğinde güvenlik belirteçleri oluşturur.
+* Microsoft Identity platformuna kimlik doğrulaması yapmak isteyen bir uygulama, Azure Active Directory (Azure AD) içinde kayıtlı olmalıdır. Azure AD, dizindeki her uygulamayı kaydeder ve benzersiz bir şekilde tanımlar.
+* Geliştiriciler, sizin için protokol ayrıntılarını işleyerek kimlik doğrulama kolaylığı sağlamak üzere açık kaynaklı Microsoft Identity platform kimlik doğrulama kitaplıklarını kullanabilir. Daha fazla bilgi için bkz. Microsoft Identity Platform [v 2.0 kimlik doğrulama kitaplıkları](reference-v2-libraries.md) ve [v 1.0 kimlik doğrulama kitaplıkları](active-directory-authentication-libraries.md).
 * Kullanıcının kimliği doğrulandıktan sonra uygulamanın kimlik doğrulamasının başarılı olduğundan emin olmak için kullanıcının güvenlik belirtecini doğrulaması gerekir. Farklı diller ve çerçeveler için uygulamanın yapması gereken işlemleri anlatan birçok hızlı başlangıç, öğretici ve kod örneği mevcuttur.
   * Hızlıca uygulama derlemek ve belirteç alma, belirteçleri yenileme, kullanıcı oturumu açma ve kullanıcı bilgilerini görüntüleme gibi işlevler eklemek için belgelerin **Hızlı başlangıçlar** bölümüne bakın.
   * Erişim belirteçleri alma ve bunları Microsoft Graph API ve diğer API'lere yapılan çağrılarda kullanma, OpenID Connect kullanarak geleneksel bir web tarayıcısı tabanlı uygulamaya Microsoft ile oturum açma özelliğini ekleme ve daha fazla geliştirici görevi için ayrıntılı ve senaryo tabanlı yordamlar için belgelerin **Öğreticiler** bölümüne bakın.
@@ -60,42 +60,42 @@ Yukarıdaki örnek senaryoda uygulamaları bu iki role göre sınıflandırabili
 * Kaynaklara güvenli bir şekilde erişmesi gereken uygulamalar
 * Kaynağın rolünü oynaması gereken uygulamalar
 
-API ve kimlik uygulama modeli anlamak için okumaya devam temel bir bakış gördüğünüze nasıl sağlama Microsoft kimlik platformu çalışır ve yaygın senaryolar hakkında ayrıntılı bilgi için Microsoft kimlik platformu bağlantıları destekler.
+Temel bilgilere genel bir bakış edindiğinize göre, kimlik uygulama modeli ve API 'sini, sağlama işlemini Microsoft Identity platformunda nasıl çalıştığını ve Microsoft Identity platformunun desteklediği yaygın senaryolar hakkında ayrıntılı bilgi bağlantılarını öğrenmek için okumaya devam edin.
 
 ## <a name="application-model"></a>Uygulama modeli
 
-Microsoft kimlik platformu uygulamaları aşağıdaki iki ana işlev karşılamak üzere tasarlanmış belirli bir modeli temsil eder:
+Microsoft Identity platform iki ana işlevi yerine getirmek için tasarlanan belirli bir modeli takip eden uygulamaları temsil eder:
 
-* **Uygulamayı desteklediği kimlik doğrulaması protokollerine göre tanımlama**: Bu model tüm tanımlayıcıların, URL'lerin, gizli dizilerin ve kimlik doğrulaması sırasında gerekli olan ilgili bilgilerin listelenmesini kapsar. Burada, Microsoft kimlik platformu:
+* **Uygulamayı desteklediği kimlik doğrulaması protokollerine göre tanımlama**: Bu model tüm tanımlayıcıların, URL'lerin, gizli dizilerin ve kimlik doğrulaması sırasında gerekli olan ilgili bilgilerin listelenmesini kapsar. Burada, Microsoft Identity Platform:
 
     * Çalışma zamanında kimlik doğrulamasını gerçekleştirmek için gerekli tüm verileri barındırır.
     * Bir uygulamanın erişmesi gerekebilecek kaynakları ve belirli bir isteğin gerçekleştirilip gerçekleştirilmeyeceğini ve hangi koşullarda gerçekleştirileceğini belirlemek için gerekli tüm verileri barındırır.
     * Uygulama geliştiricisinin kiracısında ve diğer Azure AD kiracısında uygulama sağlamak için gerekli altyapıyı sağlar.
 
-* **Belirteç isteği süre boyunca kullanıcı onayı işlemek ve dinamik uygulamalar kiracılar genelinde sağlama kolaylaştırmak** - Burada, Microsoft kimlik platformu:
+* **Belirteç istek süresi boyunca Kullanıcı onayını işleyin ve kiracılar genelinde uygulamaların dinamik sağlamasını kolaylaştırır** -burada, Microsoft Identity Platform:
 
     * Kullanıcıların ve yöneticilerin uygulamanın kendileri adına kaynaklara erişmesine dinamik olarak onay vermesini veya reddetmesini sağlar.
     * Yöneticilerin uygulamaların gerçekleştirebilecekleri işlemler, belirli uygulamalara erişebilecek kullanıcılar ve erişilen dizin kaynakları hakkında son kararı vermesini sağlar.
 
-Microsoft kimlik platformu içinde bir **uygulama nesnesi** soyut bir varlık olarak bir uygulamayı açıklar. Geliştiriciler uygulamalarla çalışır. Dağıtım sırasında Microsoft kimlik platformu belirli uygulama nesnesi bir şema oluşturmak için kullandığı bir **hizmet sorumlusu**, dizin veya Kiracı içinde bir uygulama somut bir örneğini temsil eder. Uygulamanın belirli bir hedef dizinde yapabileceklerini, onu kullanabilecek kişileri, erişim sağlayabileceği kaynakları ve diğer bilgileri tanımlayan hizmet sorumlusudur. Microsoft kimlik platformu uygulama nesneden bir hizmet sorumlusu oluşturur **onay**.
+Microsoft Identity platformunda bir **uygulama nesnesi** , bir uygulamayı soyut bir varlık olarak açıklar. Geliştiriciler uygulamalarla çalışır. Dağıtım zamanında, Microsoft Identity platform bir dizin veya kiracı içindeki bir uygulamanın somut örneğini temsil eden bir **hizmet sorumlusu**oluşturmak için bir şema olarak belirli bir uygulama nesnesini kullanır. Uygulamanın belirli bir hedef dizinde yapabileceklerini, onu kullanabilecek kişileri, erişim sağlayabileceği kaynakları ve diğer bilgileri tanımlayan hizmet sorumlusudur. Microsoft Identity platform bir uygulama nesnesinden **onay**aracılığıyla bir hizmet sorumlusu oluşturur.
 
-Akış tarafından onay temelli sağlama basitleştirilmiş bir Microsoft kimlik platformu Aşağıdaki diyagramda gösterilmiştir.  İçinde iki Kiracı yok (A ve B), burada Kiracı A sahip uygulamayı ve B kiracısındaki bir hizmet sorumlusu aracılığıyla uygulamaya örnekleme.  
+Aşağıdaki diyagramda, izin tarafından yönetilen basitleştirilmiş bir Microsoft Identity platformu sağlama akışı gösterilmektedir.  Bu durumda, kiracının uygulamanın sahibi olduğu iki kiracı (A ve B) vardır ve B kiracısı bir hizmet sorumlusu aracılığıyla uygulamayı örnekledir.  
 
 ![Onay temelli basitleştirilmiş sağlama akışı](./media/authentication-scenarios/simplified-provisioning-flow-consent-driven.svg)
 
 Bu sağlama akışında:
 
-1. Oturum uygulamayı imzalamak için B çalışır kiracıda bir kullanıcı, yetkilendirme uç noktası, uygulama için bir belirteç ister.
-1. Kullanıcı kimlik bilgilerini alınan ve kimlik doğrulaması için doğrulandı
-1. Kullanıcının B kiracısındaki erişim elde etmek uygulama için onay vermeniz istenir
-1. Microsoft kimlik platformu uygulama nesnesi bir kiracıda bir şema bir hizmet sorumlusu B kiracısındaki oluşturmak için kullanır
+1. B kiracısından bir kullanıcı uygulamayla oturum açmaya çalışır, yetkilendirme uç noktası uygulama için bir belirteç ister.
+1. Kimlik doğrulaması için Kullanıcı kimlik bilgileri alındı ve doğrulandı
+1. Kullanıcıdan, B kiracısına erişim kazanmak için uygulamanın onayını sağlaması istenir
+1. Microsoft Identity platform B kiracısında bir hizmet sorumlusu oluşturmak için bir şema olarak kiracı 'daki uygulama nesnesini kullanır
 1. Kullanıcı istenen belirteci alır
 
-Bu işlemi diğer kiracılar için (C, D vb.) istediğiniz kadar tekrarlayabilirsiniz. Kiracı bir uygulama (uygulama nesnesi) için şema korur. Uygulama için onay verilen diğer kiracıların kullanıcıları ve yöneticileri kiracıdaki hizmet sorumlusu nesnesini kullanarak uygulamanın gerçekleştirmesine izin verilen işlemleri belirler. Daha fazla bilgi için [uygulama ve hizmet sorumlusu nesneleri Microsoft Identity platformuna](app-objects-and-service-principals.md).
+Bu işlemi diğer kiracılar için (C, D vb.) istediğiniz kadar tekrarlayabilirsiniz. Kiracı A, uygulama için şemayı saklar (uygulama nesnesi). Uygulama için onay verilen diğer kiracıların kullanıcıları ve yöneticileri kiracıdaki hizmet sorumlusu nesnesini kullanarak uygulamanın gerçekleştirmesine izin verilen işlemleri belirler. Daha fazla bilgi için bkz. [Microsoft Identity platformunda uygulama ve hizmet sorumlusu nesneleri](app-objects-and-service-principals.md).
 
-## <a name="claims-in-microsoft-identity-platform-security-tokens"></a>Microsoft kimlik platformu belirteç içindeki talep
+## <a name="claims-in-microsoft-identity-platform-security-tokens"></a>Microsoft Identity platform güvenlik belirteçlerinde talepler
 
-Microsoft kimlik platformu tarafından verilen güvenlik belirteçleri (erişim ve kimlik belirteçlerini) talep veya onayları doğrulandıktan sonra konu hakkında bilgi içerir. Uygulamalar talepleri birçok görev için kullanabilir; bazıları:
+Microsoft Identity platform tarafından verilen güvenlik belirteçleri (erişim ve KIMLIK belirteçleri) talepler veya kimliği doğrulanmış konuyla ilgili bilgi onaylamaları içerir. Uygulamalar talepleri birçok görev için kullanabilir; bazıları:
 
 * Belirteci doğrulama
 * Öznenin dizin kiracısını tanımlama
@@ -104,9 +104,9 @@ Microsoft kimlik platformu tarafından verilen güvenlik belirteçleri (erişim 
 
 Herhangi bir güvenlik belirtecindeki talepler belirteç türüne, kullanıcının kimliğini doğrulamak için kullanılan kimlik bilgisi türüne ve uygulama yapılandırmasına göre değişiklik gösterir.
 
-Aşağıdaki tabloda her Microsoft kimlik platformu tarafından yayılan talep türünü kısa bir açıklaması sağlanmaktadır. Daha ayrıntılı bilgi için bkz. [erişim belirteçlerini](access-tokens.md) ve [kimlik belirteçlerini](id-tokens.md) Microsoft kimlik platformu tarafından verilmiş.
+Aşağıdaki tabloda Microsoft Identity platform tarafından yayılan her bir talep türünün kısa bir açıklaması verilmiştir. Daha ayrıntılı bilgi için bkz. Microsoft Identity platform tarafından verilen [erişim belirteçleri](access-tokens.md) ve [Kimlik belirteçleri](id-tokens.md) .
 
-| İste | Açıklama |
+| Talep | Açıklama |
 | --- | --- |
 | Uygulama Kimliği | Belirteci kullanan uygulamayı tanımlar. |
 | Hedef kitle | Belirtecin gönderileceği alıcı kaynağını tanımlar. |
@@ -131,4 +131,4 @@ Aşağıdaki tabloda her Microsoft kimlik platformu tarafından yayılan talep t
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Hakkında bilgi edinin [uygulama türleri ve Microsoft kimlik platformu desteklenen senaryolar](app-types.md)
+* [Microsoft Identity platformunda desteklenen uygulama türleri ve senaryoları](app-types.md) hakkında bilgi edinin

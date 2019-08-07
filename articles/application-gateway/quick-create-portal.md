@@ -196,7 +196,7 @@ Bu örnekte, yalnızca Azure 'un Application Gateway 'i başarıyla oluşturduğ
 
 Uygulama ağ geçidini oluşturmak için IIS gerekli olmasa da, Azure 'un uygulama ağ geçidini başarıyla oluşturup oluşturmadığını doğrulamak için bu hızlı başlangıçta yüklediniz. Uygulama ağ geçidini test etmek için IIS kullanın:
 
-1. Uygulama ağ geçidinin genel IP adresini **genel bakış** sayfasında bulabilirsiniz. Uygulama Ağ Geçidi genel IP adresini](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png) kaydedin veya **tüm kaynaklar**' ı seçip Arama kutusuna *myagpublicıpaddress* girebilir ve arama sonuçlarında bunu seçebilirsiniz. ![ Azure **genel bakış** SAYFASıNDA genel IP adresini görüntüler.
+1. Uygulama ağ geçidinin genel IP adresini **genel bakış** sayfasında ![bulabilirsiniz. Uygulama Ağ Geçidi genel IP adresini](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png) kaydedin veya **tüm kaynaklar** seçip Arama kutusuna *myagpublicıpaddress* girebilir ve arama sonuçlarında bunu seçebilirsiniz. Azure **genel bakış** SAYFASıNDA genel IP adresini görüntüler.
 2. Genel IP adresini kopyalayıp tarayıcınızın adres çubuğuna yapıştırın.
 3. Yanıtı denetleyin. Geçerli bir yanıt, uygulama ağ geçidinin başarıyla oluşturulduğunu ve arka uca başarıyla bağlanıp bağlanabileceğini doğrular.![Uygulama ağ geçidini test etme](./media/application-gateway-create-gateway-portal/application-gateway-iistest.png)
 

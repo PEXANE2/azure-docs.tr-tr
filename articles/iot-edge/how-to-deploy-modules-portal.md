@@ -10,12 +10,12 @@ ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 8337c8672eb886d79b38b2a38a74037f88604497
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f27484fd1d47a2e29aa5083a7d440e5c7dba11c1
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448556"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839653"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>Azure portalından Azure IOT Edge modüllerini dağıtmak
 
@@ -39,25 +39,25 @@ Bu makalede, nasıl Azure portalında bir dağıtım bildirimi oluşturmak ve IO
 
 Bir dağıtım bildirimi dağıtmak için modülleri ve modül ikizlerini istenen özellikleri arasında verilerin nasıl aktığını modüllerine açıklayan bir JSON belgesidir. Nasıl iş dağıtım bildirimleri ve bunların nasıl oluşturulacağı hakkında daha fazla bilgi için bkz. [nasıl IOT Edge modülleri, yapılandırılmış, yeniden kaldırılabilir ve anlamak](module-composition.md).
 
-Azure portalı, JSON belgesini el ile oluşturmak yerine dağıtım bildirimini oluşturmada size yol gösterir. bir sihirbaz vardır. Bu üç adım vardır: **Modül Ekle**, **yolları belirtin**, ve **gözden geçirin, dağıtım**.
+Azure portalı, JSON belgesini el ile oluşturmak yerine dağıtım bildirimini oluşturmada size yol gösterir. bir sihirbaz vardır. Üç adım vardır: **Modüller ekleyin**, **rotalar belirtin**ve **dağıtımı gözden geçirin**.
 
 ### <a name="add-modules"></a>Modül Ekle
 
-1. İçinde **kapsayıcı kayıt defteri ayarları** Bölümü sayfasının, modül görüntüleri içeren herhangi bir özel kapsayıcı kayıt defterleri erişmek için kimlik bilgilerini sağlayın.
+1. Sayfanın **Container Registry ayarları** bölümünde, modül görüntülerinizi içeren özel kapsayıcı kayıt defterlerine erişim için kimlik bilgilerini sağlayın.
 
-1. İçinde **dağıtım modülleri** sayfasında bölümünü **Ekle**.
+1. Sayfanın **dağıtım modülleri** bölümünde **Ekle**' yi seçin.
 
 1. Modüller, türler, aşağı açılan listeden bakın:
 
    * **IOT Edge Modülü** -varsayılan seçenek.
    * **Azure Stream Analytics Modülü** -yalnızca bir Azure Stream Analytics iş yükünden oluşturulan modüller.
-   * **Azure Machine Learning Modülü** -yalnızca bir Azure Machine Learning çalışma alanına oluşturulan görüntüleri model.
+   * Yalnızca **modül Azure Machine Learning** bir Azure Machine Learning çalışma alanından oluşturulan model görüntüleri.
 
 1. Seçin **IOT Edge Modülü**.
 
 1. Modül için bir ad belirtin ve ardından kapsayıcı görüntüsünü belirtin. Örneğin:
 
-   * **Ad** -tempSensor
+   * **Ad** -SimulatedTemperatureSensor
    * **Görüntü URI'si** -mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0
 
 1. Gerekirse, isteğe bağlı alanları doldurun. Kapsayıcı hakkında daha fazla bilgi seçenekleri, yeniden başlatma ilkesi oluşturabilir ve istenen durumunu görmek için [EdgeAgent istenen özelliklerini](module-edgeagent-edgehub.md#edgeagent-desired-properties). Modül ikizi hakkında daha fazla bilgi için bkz. [tanımlayın veya güncelleştirme istenen özelliklerini](module-composition.md#define-or-update-desired-properties).
@@ -84,28 +84,28 @@ Dağıtım bilgilerinizi gözden geçirin ve ardından **Gönder**.
 
 Cihazınıza modülleri dağıttıktan sonra bunların tümünün görüntüleyebilirsiniz **cihaz ayrıntıları** portal sayfası. Bu sayfa, her dağıtılan modülü yanı sıra dağıtım durumu ve çıkış kodu gibi yararlı bilgiler adını görüntüler.
 
-## <a name="deploy-modules-from-azure-marketplace"></a>Azure Market'ten modülleri dağıtma
+## <a name="deploy-modules-from-azure-marketplace"></a>Azure Marketi 'nden modüller dağıtma
 
-Azure Market, burada, göz çok çeşitli Kurumsal uygulamaları ve onaylanmış ve Azure üzerinde çalıştırmak için en iyi duruma getirilmiş çözümleri aracılığıyla bir çevrimiçi uygulama ve hizmet Marketi olan dahil olmak üzere [IOT Edge modülleri](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules). Azure Market de erişilebilir altında Azure portalından **kaynak Oluştur**.
+Azure Marketi, [IoT Edge modüller](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules)dahil olmak üzere Azure 'da çalışmak üzere sertifikalı ve iyileştirilmiş çok sayıda kurumsal uygulama ve çözüm arasında dolaşabileceğiniz çevrimiçi bir uygulamalar ve hizmetler marketi. Azure Market 'Te **kaynak oluştur**altında Azure Portal aracılığıyla da erişilebilir.
 
-Azure Market veya Azure portalında bir IOT Edge modülünü yükleyebilirsiniz:
+IoT Edge modülünü Azure Market 'ten veya Azure portal yükleyebilirsiniz:
 
-1. Modülü bulun ve dağıtım işlemine başlar.
+1. Bir modül bulun ve dağıtım işlemine başlayın.
 
-   * Azure portalı: Modülü bulun ve seçin **Oluştur**.
+   * Azure portal: Bir modül bulun ve **Oluştur**' u seçin.
 
-   * Azure Market:
+   * Azure Marketi:
 
-     1. Modülü bulun ve seçin **şimdi edinin**.
-     1. İşaretleyerek sağlayıcının koşulları kullanımı ve gizlilik ilkesini kabul **devam**.
+     1. Bir modül bulun ve **Şimdi al**' ı seçin.
+     1. Devam ' i seçerek sağlayıcının kullanım koşullarını ve gizlilik ilkesini kabul **edin**.
 
-1. Aboneliğiniz ve hedef cihaza bağlı olduğu IOT Hub'ı seçin.
+1. Aboneliğinizi ve hedef cihazın eklendiği IoT Hub seçin.
 
-1. Seçin **cihazlara dağıtma**.
+1. **Cihaza dağıt**' ı seçin.
 
-1. Seçin ve cihaz adını girin **cihaz bulma** hub'da kayıtlı cihazlar arasında gidin.
+1. Cihazın adını girin veya hub 'a kayıtlı cihazlar arasında gezinmek için **Cihazı bul** ' u seçin.
 
-1. Seçin **Oluştur** isterseniz diğer modüller ekleme dahil olmak üzere bir dağıtım bildirimi yapılandırma standart işlemine devam etmek için. Görüntü URI'si, gibi yeni modül ayrıntılarını oluşturma seçenekleri ve istenen özellikler önceden tanımlanmıştır, ancak değiştirilebilir.
+1. İsterseniz başka modüller ekleme dahil olmak üzere, bir dağıtım bildirimini yapılandırma işlemi için standart işleme devam etmek için **Oluştur** ' u seçin. Görüntü URI 'SI, oluşturma seçenekleri ve istenen özellikler gibi yeni modülün ayrıntıları önceden tanımlanmıştır ancak değiştirilebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

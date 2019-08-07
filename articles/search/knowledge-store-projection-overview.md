@@ -1,6 +1,6 @@
 ---
-title: Projeksiyonlar deposundaki bir Bilgi Bankası (Önizleme) - Azure Search ile çalışma
-description: Kaydet ve zenginleştirilmiş arama dışında senaryolarında kullanım için yapay ZEKA dizinleme işlem hattına verilerinizden Şekil
+title: Bir bilgi deposunda (Önizleme) projeksiyonlarla çalışma-Azure Search
+description: Arama dışındaki senaryolarda kullanılmak üzere zenginleştirilmiş verilerinizi AI dizin oluşturma ardışık düzeninde kaydedin ve şekillendirin
 manager: eladz
 author: vkurpad
 services: search
@@ -9,74 +9,74 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: vikurpad
-ms.custom: seomay2019
-ms.openlocfilehash: f1c7278909557dc92f86c5dfc1f190fddf33f607
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.subservice: cognitive-search
+ms.openlocfilehash: 39bf5c65cd4577007dfbfe973963849ea663ec16
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540819"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840770"
 ---
-# <a name="working-with-projections-in-a-knowledge-store-in-azure-search"></a>Azure Search'te bir Bilgi Bankası deposunda projeksiyonlar ile çalışma
+# <a name="working-with-projections-in-a-knowledge-store-in-azure-search"></a>Azure Search bir bilgi deposunda projeksiyonlarla çalışma
 
 > [!Note]
-> Bilgi Bankası preview ve üretim kullanımı için değil amaçlayan deposudur. [2019-05-06-Önizleme REST API sürümü](search-api-preview.md) bu özelliği sağlar. .NET SDK'sı desteği şu anda yoktur.
+> Bilgi deposu önizleme aşamasındadır ve üretim kullanımı için tasarlanmamıştır. [REST API sürüm 2019-05-06-önizleme](search-api-preview.md) bu özelliği sağlar. Şu anda .NET SDK desteği yok.
 >
 
-Azure arama, yapay ZEKA bilişsel beceriler ve dizin oluşturma işleminin parçası olarak özel beceriler aracılığıyla içerik iyileştirmesini sağlar. Zenginleştirmelerinin yapısı belgelerinize eklemek ve daha etkili hale aranıyor. Çoğu durumda, zenginleştirilmiş belgeleri arama, örneğin bilgi araştırma dışındaki senaryolar için kullanışlıdır.
+Azure Search, dizin oluşturmanın bir parçası olarak AI bilişsel beceriler ve özel yetenekler aracılığıyla içerik zenginleştirmesini mümkün. Zenginleştirme belgelerinize yapı ekler ve daha etkili bir şekilde arama yapın. Birçok örnekte, zenginleştirilmiş belgeler, bilgi madenciliği gibi arama dışındaki senaryolar için yararlıdır.
 
-Tahminleri, bir bileşeninin [bilgi deposu](knowledge-store-concept-intro.md), araştırma amacıyla bilgi fiziksel depolama alanına kaydedildi zenginleştirilmiş belgeleri görünümleridir. Bir projeksiyon "ile Power BI gibi araçlarla veri ek çaba ile okuyabilmeniz için ilişkileri koruma gereksinimlerine uygun bir şeklin içinde verilerinizi proje" sağlar. 
+[Bilgi deposunun](knowledge-store-concept-intro.md)bir bileşeni olan tahminler, bilgi madenciliği için fiziksel depolamaya kaydedilebilen zenginleştirilmiş belgelerin görünümleridir. Bir projeksiyon, verilerinizi, Power BI gibi araçların ek bir çaba olmadan okuyabilmesi için, ilişkilerini koruyarak, verilerinizi gereksinimlerinize göre hizalayan bir şekle "proje" sağlar. 
 
-Projeksiyonlar satırları ve sütunları Azure tablo depolamada depolanan veriler ya da JSON nesneleri Azure Blob depolamada depolanan tablo, olabilir. Bunu zenginleştirilmiş verilerinizin birden çok projeksiyonlar tanımlayabilirsiniz. Bireysel kullanım durumları için farklı şeklinde aynı verileri istediğinizde bu kullanışlıdır. 
+Tahminler, Azure Tablo depolamada veya Azure Blob depolama alanında depolanan JSON nesnelerinde bulunan satırlar ve sütunlarda depolanan verilerle tablosal olabilir. Verilerinizin zenginleştirmekte olduğu haliyle birden fazla projeksiyoni tanımlayabilirsiniz. Bu, bireysel kullanım durumları için aynı verilerin farklı şekilde şekillendirilmiş olmasını istediğinizde faydalıdır. 
 
-Bilgi deposunu iki tür projeksiyonları destekler:
+Bilgi deposu iki tür projeksiyonu destekler:
 
-+ **Tabloları**: En iyi satırları ve sütunları temsil edilen veri tablo projeksiyonlar tablo depolamada bir şema şekil ya da projeksiyon tanımlamanızı sağlar. 
++ **Tablolar**: Tablo tahminleri, satır ve sütun olarak en iyi şekilde temsil edilen veriler için tablo depolamadaki şema veya projeksiyon tanımlamanızı sağlar. 
 
-+ **Nesneleri**: Veri ve zenginleştirmelerinin JSON gösterimi, ihtiyacınız olduğunda, nesne projeksiyonlar blobları olarak kaydedilir.
++ **Nesneler**: Verilerinizin ve zenginleştirme için bir JSON temsiline ihtiyacınız olduğunda, nesne projeksiyonlar blob olarak kaydedilir.
 
-Projeksiyonlar bağlamında tanımlanan görmek için adım adım [nasıl bilgi store ile çalışmaya başlama](knowledge-store-howto.md)
+Bağlamda tanımlanan projeksiyonları görmek için [bilgi deposu ile çalışmaya başlama](knowledge-store-howto.md)
 
 ## <a name="projection-groups"></a>Projeksiyon grupları
 
-Bazı durumlarda, farklı Hedeflerinizin karşılanması için farklı şekillerde zenginleştirilmiş verilerinizi proje gerekecektir. Bilgi deposunu yansıtılamadı birden fazla grubu tanımlamanıza olanak sağlar. Projeksiyon grupları karşılıklı olmama ve bağlılık aşağıdaki önemli özelliklere sahip.
+Bazı durumlarda, farklı hedefleri karşılamak için zenginleştirilmiş verilerinizi farklı şekillerde proje yapmanız gerekir. Bilgi deposu, birden çok projeksiyonun grubunu tanımlamanızı sağlar. Projeksiyon grupları, karşılıklı denetim ve related'ın aşağıdaki temel özelliklerine sahiptir.
 
-### <a name="mutually-exclusivity"></a>Birbirini kurumlarına özel
+### <a name="mutually-exclusivity"></a>Birbirini dışlayan denetim
 
-Tüm içeriği tek bir grup olarak öngörülen diğer projeksiyon gruplar halinde öngörülen veri bağımsızdır. Bu, farklı şeklinde, ancak her projeksiyon grubunda yinelenen veri olduğunu gösterir. 
+Tek bir grupta yansıtılan tüm içerikler, diğer projeksiyon gruplarında yansıtılan verilerden bağımsızdır. Bu, aynı verilerin şekillendirilmiş bir şekilde farklı, ancak her projeksiyon grubunda tekrarlanabileceği anlamına gelir. 
 
-Projeksiyon gruplarında zorunlu bir projeksiyon türü bir projeksiyon grubuyla karşılıklı özel kullanım olanağını sınırlamadır. Yalnızca tablo projeksiyonlar ya da nesne projeksiyonlar tek bir grup içinde tanımlayabilirsiniz. Tablolar ve nesneler hem istiyorsanız, tablolar için bir yansıtma grubu ve nesneler için ikinci bir projeksiyon Grup tanımlayın.
+Projeksiyon gruplarında uygulanan bir kısıtlama, projeksiyon türlerindeki karşılıklı denetim karşılıklı bir gruptur. Tek bir grup içinde yalnızca tablo projeksiyonlarını veya nesne projeksiyonlarını tanımlayabilirsiniz. Hem tablo hem de nesne istiyorsanız, tablolar için bir yansıtma grubu ve nesneler için ikinci bir projeksiyon grubu tanımlayın.
 
-### <a name="relatedness"></a>Bağlılık
+### <a name="relatedness"></a>Relatedlik
 
-Tüm içeriği tek bir projeksiyon gruptaki öngörülen verilerdeki ilişkileri korur. İlişkiler üzerinde oluşturulmuş bir anahtar temel alır ve her alt düğümü üst düğümün başvuru korur. İlişkiler projeksiyon grupları yayılmaz ve tablo ya da bir projeksiyon grubunda oluşturulan nesneleri hiçbir diğer projeksiyon gruplarında oluşturulan verileri ilişkisi.
+Tek bir projeksiyon grubu içinde yansıtılan tüm içerik, veriler içindeki ilişkileri korur. İlişkiler oluşturulan bir anahtara dayalıdır ve her bir alt düğüm üst düğüme bir başvuru tutar. İlişkiler, yansıtma gruplarını ve bir projeksiyon grubunda oluşturulan tabloları veya nesneleri diğer projeksiyon gruplarında oluşturulan verilerle hiçbir ilişkiye sahip değildir.
 
-## <a name="input-shaping"></a>Şekillendirme giriş
-Anahtar için etkili kullanımını doğru şekle veya yapıda verileriniz alınıyor, tablo veya nesne olabilir. Şekil veya verilerinizi nasıl, erişim ve kullanmak planınıza göre yapı özelliği olarak sunulan temel özelliktir **Shaper** beceri becerilerine içinde.  
+## <a name="input-shaping"></a>Giriş şekillendirme
+Verilerinizin doğru şekilde veya yapıda alınması, etkin kullanım için anahtar, BT tabloları veya nesneleri olmalıdır. Verilerinizi nasıl kullanabileceğinizi ve kullanabileceğinizi temel alarak verilerinizi şekillendirebilir veya yapısal hale getirme özelliği, Beceri içinde her yetenek için **mil** olarak kullanıma sunulan bir temel yetenektir.  
 
-Projeksiyonlar izdüşümü şemasını eşleşen zenginleştirme ağacında bir nesne varsa tanımlamak kolaydır. Güncelleştirilmiş [Shaper beceri](cognitive-search-skill-shaper.md) zenginleştirme ağacı farklı düğümünden bir nesne oluşturun ve bunları yeni bir düğüm üst olanak tanır. **Shaper** beceri karmaşık türler ile iç içe geçmiş nesnelerde tanımlamanıza izin verir.
+Projeksiyon şeması ile eşleşen zenginleştirme ağacında bir nesneniz olduğunda, projeksiyonu daha kolay tanımlanır. [Her yetenek](cognitive-search-skill-shaper.md) Için güncelleştirilmiş mil, zenginleştirme ağacının farklı düğümlerinden bir nesne oluşturmanıza ve bunların üstünü yeni bir düğüm altında oluşturmanıza olanak sağlar. **Mil başına** , iç içe geçmiş nesnelerle karmaşık türler tanımlamanıza olanak sağlar.
 
-Bu şeklin artık kullanıma proje için ihtiyacınız olan tüm öğeleri içeren tanımlanan yeni bir şekil varsa, projeksiyonlar kaynağı olarak veya başka bir beceri girdi olarak kullanabilirsiniz.
+Projeniz için gereken tüm öğeleri içeren yeni bir şekil tanımladığınız zaman, artık bu şekli projeksiyonlarınızın kaynağı olarak veya başka bir beceriye giriş olarak kullanabilirsiniz.
 
-## <a name="table-projections"></a>Tablo projeksiyonlar
+## <a name="table-projections"></a>Tablo projeksiyonlarını
 
-Alma daha kolay hale getirdiği için Power BI ile veri keşfi için tablo projeksiyonlar öneririz. Ayrıca, değiştirmek için tablo ilişkisini arasındaki kardinalite tablo tahminleri sağlar. 
+İçeri aktarma işlemi daha da kolaylaştırdığı için Power BI ile veri araştırması için tablo projeksiyonlarını öneririz. Ayrıca, tablo projeksiyonları değiştirmeye izin veren tablo ilişkisi arasındaki kardinalite değiştirme. 
 
-İlişkileri koruma dizininizdeki tek bir belgenin birden çok tabloya yansıtabilirsiniz. Bir alt düğüm aynı gruptaki başka bir tablonun kaynağı olmadığı sürece tüm şekil için birden çok tablo yansıtılırken her tabloya yansıtılacak.
+Dizininizdeki tek bir belgeyi birden çok tabloya proje ekleyebilirsiniz ve ilişkileri korur. Birden çok tabloya yansıtıldığınızda, bir alt düğüm aynı grup içindeki başka bir tablonun kaynağı değilse, tüm şekil her tabloya yansıtılır.
 
-### <a name="defining-a-table-projection"></a>Bir tablo projeksiyon tanımlama
+### <a name="defining-a-table-projection"></a>Tablo projeksiyonu tanımlama
 
-İçinde bir tablo projeksiyon tanımlarken `knowledgeStore` öğesi becerilerinizi tablo kaynak iyileştirmesini ağacında bir düğümü eşleyerek başlatın. Genellikle bu düğümün çıktısı olup bir **Shaper** tablolarına proje için gereken belirli bir şekilde oluşturmak için becerileri listesine eklenen beceri. Seçtiğiniz proje düğümü dilimlenebilir birden çok tablo projeye için. Proje istediğiniz tablo listesini tablo tanımıdır. 
+Beceri `knowledgeStore` öğesi içinde tablo projeksiyonu tanımlarken, zenginleştirme ağacındaki bir düğümü tablo kaynağına eşleyerek başlayın. Genellikle bu düğüm, tablolarda proje yapmanız gereken belirli bir şekli oluşturmak için yetenekler listesine eklediğiniz **her** bir beceriye ait çıktıdır. Projeyi seçtiğiniz düğüm birden çok tablo halinde projeye dilimlenebilir. Tablolar tanımı, proje yapmak istediğiniz tabloların bir listesidir. 
 
 Her tablo üç özellik gerektirir:
 
-+ TableName: Azure depolama tablo adı.
++ TableName Azure depolama 'daki tablonun adı.
 
-+ generatedKeyName: Bu satırı benzersiz olarak tanımlayan anahtar sütun adı.
++ generatedKeyName: Bu satırı benzersiz bir şekilde tanımlayan anahtarın sütun adı.
 
-+ Kaynak: Zenginleştirme ağaç düğümü, zenginleştirmelerinin gelen ayarlanabileceğine. Bu genellikle bir shaper çıktısı olan, ancak çıkış herhangi birinin becerileri olabilir.
++ kaynaktaki Zenginleştirme ağacınızdaki düğüm, zenginleştirmelerin kaynağını kaynak olarak gerçekleştirebilirsiniz. Bu genellikle biçimlendiricilerin çıktıdır, ancak yeteneklerin herhangi birinin çıktısı olabilir.
 
-İşte bir örnek tablo yansıtılamadı.
+Aşağıda tablo projeksiyonlarını örnek verilmiştir.
 
 ```json
 {
@@ -108,15 +108,15 @@ Her tablo üç özellik gerektirir:
     }
 }
 ```
-Bu örnekte gösterildiği gibi anahtar ifadeleri ve varlıkları farklı tablolara modellenir ve her satır için üst (MainTable) geri başvuru içerir. 
+Bu örnekte gösterildiği gibi, anahtar tümcecikler ve varlıklar farklı tablolara modellenir ve her satır için üst (MainTable) öğesine geri bir başvuru içerir. 
 
-Aşağıdaki çizim Caselaw alıştırmada bir başvurudur [bilgi store ile çalışmaya başlama konusunda](knowledge-store-howto.md). Burada birden çok fikirlerini bir durumda olması ve içerdiği varlıklar tanımlayan tarafından her fikrim zenginleştirilmiş bir senaryoda, burada gösterildiği gibi projeksiyonlar model.
+Aşağıdaki çizimde, [bilgi deposu ile çalışmaya başlama makalesindeki](knowledge-store-howto.md)Caselaw alıştırmasına yönelik bir başvuru yer alır. Bir durumda birden çok opvaya sahip olan bir senaryoda ve her bir görüşün içinde yer alan varlıkları tanımlayarak zenginleştirilerek, bu tahminleri burada gösterildiği gibi modelleyebilirsiniz.
 
-![Varlıklar ve ilişkiler tablolardaki](media/knowledge-store-projection-overview/TableRelationships.png "tablo projeksiyonlar ilişkileri modelleme")
+![Tablolardaki varlıklar ve ilişkiler](media/knowledge-store-projection-overview/TableRelationships.png "Tablo projeksiyonda Ilişkileri modelleme")
 
-## <a name="object-projections"></a>Nesne projeksiyonlar
+## <a name="object-projections"></a>Nesne projeksiyonları
 
-Nesnesi, JSON temsilleri herhangi bir düğümden kaynaklanan zenginleştirme ağacının projeksiyonlardır. Birçok durumda, aynı **Shaper** tablo projeksiyon oluşturan beceri, bir nesne yansıtma oluşturmak için kullanılabilir. 
+Nesne projeksiyonları herhangi bir düğümden kaynaksız bir şekilde zenginleştirme ağacının JSON temsilleridir. Çoğu durumda, bir tablo projeksiyonu oluşturan her yetenek için aynı **mil** , nesne projeksiyonu oluşturmak için kullanılabilir. 
 
 ```json
 {
@@ -151,29 +151,29 @@ Nesnesi, JSON temsilleri herhangi bir düğümden kaynaklanan zenginleştirme a�
 }
 ```
 
-Bir nesne yansıtma oluşturuluyor, birkaç nesneye özgü öznitelik gerektirir:
+Nesne projeksiyonu oluşturmak, nesneye özgü birkaç özniteliği gerektirir:
 
-+ storageContainer: Nesneleri kaydedileceği kapsayıcı
-+ Kaynak: İzdüşüm kökündeki olan zenginleştirme ağaç düğümünü yolu
-+ Anahtar: Depolanacak nesne için benzersiz bir anahtar temsil eden bir yolu. Kapsayıcıda blob adı oluşturmak için kullanılır.
++ storageContainer: Nesnelerin kaydedileceği kapsayıcı
++ kaynaktaki Projeksiyonun kökü olan zenginleştirme ağacının düğümünün yolu
++ anahtar Depolanacak nesnenin benzersiz bir anahtarını temsil eden bir yol. Kapsayıcıda Blobun adını oluşturmak için kullanılır.
 
 ## <a name="projection-lifecycle"></a>Projeksiyon yaşam döngüsü
 
-Projeksiyonlar, kaynak verilere veri kaynağınıza bağlı yaşam döngüleri vardır. Verilerinizi güncelleştirildi ve yeniden dizine, projeksiyonlar sonuçları, sonunda tutarlı bir veri kaynağındaki verileri projeksiyonlardır sağlama zenginleştirmelerinin ile güncelleştirilir. Projeksiyonlar dizininiz için yapılandırdığınız silme ilkesi devralır. 
+Projeksiyonlarınızın veri kaynağınızdaki kaynak verilere bağlı bir yaşam döngüsü vardır. Verileriniz güncelleştirildiğinden ve yeniden dizinlendiğinden, tahminleriniz, projeksiyonlarınızın veri kaynağınızdaki verilerle tutarlı olmasını sağlayan zenginlerin sonuçlarıyla güncelleştirilir. Tahminler, dizininiz için yapılandırdığınız silme ilkesini alırlar. 
 
-## <a name="using-projections"></a>Projeksiyonlar kullanma
+## <a name="using-projections"></a>Projeksiyonları kullanma
 
-Dizin Oluşturucu çalıştırdıktan sonra kapsayıcıları veya projeksiyonlar belirtilen tablolarda öngörülen verileri okuyabilir. 
+Dizin Oluşturucu çalıştırıldıktan sonra, tahminler aracılığıyla belirttiğiniz kapsayıcılardaki veya tablolardaki yansıtılan verileri okuyabilirsiniz. 
 
-Analiz için Power bı'da araştırma Azure tablo depolama veri kaynağı olarak ayarlamak gibi basit bir işlemdir. Görsel öğeleri kümesini, ilişkileri içinde yararlanarak verileriniz üzerinde çok bir kolayca oluşturabilirsiniz.
+Analiz için Power BI araştırma, Azure Tablo depolama alanını veri kaynağı olarak ayarlamak kadar basittir. İçindeki ilişkilerden yararlanarak verilerinize kolayca bir görselleştirme kümesi oluşturabilirsiniz.
 
-Alternatif olarak, bir veri bilimi işlem hattında zenginleştirilmiş verileri kullanmanız gerekiyorsa, yapabilirsiniz [verileri bloblarından Pandas Dataframe'e yüklemek](../machine-learning/team-data-science-process/explore-data-blob.md).
+Alternatif olarak, bir veri bilimi ardışık düzeninde zenginleştirilmiş verileri kullanmanız gerekiyorsa, [verileri bloblardan bir Pandas DataFrame 'e yükleyebilirsiniz](../machine-learning/team-data-science-process/explore-data-blob.md).
 
-Son olarak, Bilgi Bankası Mağazası'ndan verilerinizi dışarı aktarmak gerekiyorsa, Azure Data Factory, verileri dışarı aktarma ve tercih ettiğiniz veritabanına kavuşmak için bağlayıcı yok. 
+Son olarak, verilerinizi bilgi deposundan dışarı aktarmanız gerekiyorsa Azure Data Factory, verileri dışarı aktarmak ve seçtiğiniz veritabanına eklemek için bağlayıcılar içerir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sonraki adım olarak, ilk bilgi deponuza örnek veriler ve yönergeleri kullanarak oluşturun.
+Bir sonraki adım olarak, örnek verileri ve yönergeleri kullanarak ilk bilgi deponuzu oluşturun.
 
 > [!div class="nextstepaction"]
-> [Bir Bilgi Bankası deposu oluşturmak nasıl](knowledge-store-howto.md).
+> [Bilgi deposu oluşturma](knowledge-store-howto.md).

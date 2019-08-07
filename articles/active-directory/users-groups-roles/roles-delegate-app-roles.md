@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 07/31/2019
+ms.date: 08/06/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 896bd7f9af3c319ec4190131036d8aa8ee49bb79
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: e15fa8c79663fc2517039124f9be8c1ecd57b8a8
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68705429"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68837886"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Azure Active Directory 'de uygulama kayıt izinleri verme
 
@@ -29,7 +29,7 @@ Bu makalede uygulama yönetimi ihtiyaçlarınızı karşılamak üzere Azure Act
 - [Kimlerin uygulama oluşturup](#restrict-who-can-create-applications) oluşturdukları uygulamaları yönetebileceğini sınırlandırma. Azure AD 'de varsayılan olarak, tüm kullanıcılar uygulama kayıtlarını kaydedebilir ve oluşturdukları uygulamaların tüm yönlerini yönetebilir. Bu, yalnızca izin verilen kullanıcılara izin vermek için kısıtlanabilir.
 - Bir [uygulamaya bir veya daha fazla sahip atama](#assign-application-owners). Bu, birine belirli bir uygulama için Azure AD yapılandırmasının tüm yönlerini yönetme olanağı sağlamanın basit bir yoludur.
 - Tüm uygulamalar için Azure AD 'de yapılandırmayı yönetme erişimi veren [yerleşik bir yönetim rolü atama](#assign-built-in-application-admin-roles) . Bu, BT uzmanlarına, Azure AD 'nin uygulama yapılandırmasıyla ilgili olmayan diğer kısımlarını yönetmek için erişim izni vermeden, geniş uygulama yapılandırma izinlerini yönetmek üzere erişim vermek için önerilen yoldur.
-- [Özel bir rol oluşturmak](#create-and-assign-a-custom-role) ve bunu, tek bir uygulamanın sınırlı bir sahip olarak veya dizin kapsamında (tüm uygulamalar) sınırlı yönetici olarak bir kişiye atamak.
+- [Özel bir rol oluşturmak](#create-and-assign-a-custom-role-preview) ve bunu, tek bir uygulamanın sınırlı bir sahip olarak veya dizin kapsamında (tüm uygulamalar) sınırlı yönetici olarak bir kişiye atamak.
 
 Yukarıdaki yöntemlerden birini kullanarak iki nedenden dolayı erişim vermek önemlidir. İlk olarak, yönetim görevlerini gerçekleştirmek için temsilci seçme, genel yönetici ek yükünü azaltır. İkincisi, sınırlı izinleri kullanmak güvenlik duruşunuzu iyileştirir ve yetkisiz erişim potansiyelini azaltır. Temsilci seçme sorunları ve genel yönergeler, [Azure Active Directory sürümünde temsilci yönetimi](roles-concept-delegation.md)bölümünde ele alınmıştır.
 
@@ -86,16 +86,21 @@ Uygulama Yöneticisi veya bulut uygulama yöneticisi rollerini atamak için Azur
 > Uygulama yöneticileri ve bulut uygulaması yöneticileri bir uygulamaya kimlik bilgileri ekleyebilir ve bu kimlik bilgilerini uygulamanın kimliğini taklit etmek için kullanabilir. Uygulamanın, yönetici rolü izinleri üzerinde ayrıcalık yükseltmesi olan izinleri olabilir. Bu roldeki bir yönetici, uygulamanın izinlerine bağlı olarak uygulamayı taklit ederken kullanıcıları veya diğer nesneleri oluşturabilir ya da güncelleştirebilir.
 > Hiçbiri rol, koşullu erişim ayarlarını yönetme olanağı vermez.
 
-## <a name="create-and-assign-a-custom-role"></a>Özel bir rol oluşturma ve atama
+## <a name="create-and-assign-a-custom-role-preview"></a>Özel bir rol oluşturma ve atama (Önizleme)
 
 Özel Roller oluşturmak ve özel roller atamak ayrı adımlardır:
 
 - [Özel bir *rol tanımı* oluşturun](roles-create-custom.md) ve [önceden ayarlanmış bir listeden izinleri ekleyin](roles-custom-available-permissions.md). Bunlar, yerleşik rollerde kullanılan izinlerdir.
-- Özel rolü atamak için [bir *rol ataması* oluşturun](roles-assign-graph.md) .
+- Özel rolü atamak için [bir *rol ataması* oluşturun](roles-assign-powershell.md) .
 
 Bu ayrım, tek bir rol tanımı oluşturmanızı ve sonra farklı *kapsamlara*birçok kez atamanızı sağlar. Özel bir rol kuruluş genelinde bir kapsamda atanabilir veya tek bir Azure AD nesnesi ise kapsamda atanabilir. Bir nesne kapsamına örnek olarak tek bir uygulama kaydı vardır. Farklı kapsamları kullanarak, aynı rol tanımı kuruluştaki tüm uygulama kayıtları üzerinden Sally ve ardından yalnızca contoso gider raporları uygulama kaydı üzerinden değiştirilebilir.
 
-Özel rollerin temelleri hakkında daha fazla bilgi için bkz. [özel rollere genel bakış](roles-custom-overview.md)ve [özel rol oluşturma](roles-create-custom.md) ve [rol atama](roles-assign-graph.md).
+Uygulama yönetiminin yetkisini oluşturmak için özel roller oluşturma ve kullanma ipuçları:
+- Özel roller yalnızca Azure AD portalının en güncel uygulama kayıt dikey pencerelerinde erişim izni verir. Bunlar, eski uygulama kayıtları dikey pencerelerinde erişim vermez.
+- Özel roller, "Azure AD Yönetim portalına erişimi kısıtla" Kullanıcı ayarı Evet olarak ayarlandığında Azure AD portalına erişim izni vermez.
+- Kullanıcı, rol atamalarını kullanma erişimine sahip Uygulama kayıtları yalnızca uygulama kayıt sayfasındaki ' tüm uygulamalar ' sekmesinde görünür. Bunlar, ' sahip olan uygulamalar ' sekmesinde gösterilmez.
+
+Özel rollerin temelleri hakkında daha fazla bilgi için bkz. [özel rollere genel bakış](roles-custom-overview.md)ve [özel rol oluşturma](roles-create-custom.md) ve [rol atama](roles-assign-powershell.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
