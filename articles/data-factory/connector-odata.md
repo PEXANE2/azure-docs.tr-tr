@@ -51,8 +51,8 @@ Bir OData bağlı hizmeti için aşağıdaki özellikler desteklenir:
 | type | **Türü** özelliği ayarlanmalıdır **OData**. |Evet |
 | url | OData hizmet kök URL'si. |Evet |
 | authenticationType | OData kaynağına bağlanmak için kullanılan kimlik doğrulama türü. İzin verilen değerler **anonim**, **temel**, **Windows**, **AadServicePrincipal**, ve **ManagedServiceIdentity** . Kullanıcı tabanlı OAuth desteklenmiyor. | Evet |
-| userName | Belirtin **kullanıcıadı** temel veya Windows kimlik doğrulamasını kullanır. | Hayır |
-| password | Belirtin **parola** , belirtilen kullanıcı için hesap **userName**. Bu alan olarak işaretlemek bir **SecureString** Data Factory'de güvenle depolamak için türü. Ayrıca [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Hayır |
+| userName | Belirtin **userName** temel veya Windows kimlik doğrulamasını kullanır. | Hayır |
+| password | Belirtin **password** , belirtilen kullanıcı için hesap **userName**. Bu alan olarak işaretlemek bir **SecureString** Data Factory'de güvenle depolamak için türü. Ayrıca [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Hayır |
 | servicePrincipalId | Azure Active Directory Uygulama istemci kimliği belirtin. | Hayır |
 | aadServicePrincipalCredentialType | Hizmet sorumlusu kimlik doğrulaması için kullanılacak kimlik bilgisi türü belirtin. İzin verilen değerler: `ServicePrincipalKey` veya `ServicePrincipalCert`. | Hayır |
 | serviceprincipalkey değerleri | Azure Active Directory Uygulama anahtarını belirtin. Bu alan olarak işaretlemek bir **SecureString** Data Factory'de güvenle depolamak için veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Hayır |
