@@ -10,12 +10,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 01/25/2019
-ms.openlocfilehash: 677d9b5a8ca837288755ab098fbccd8a5b7ddacd
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1b8d4965edb446235e28f47a0226c82b89c73e0b
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567855"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68845045"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Veritabanı işlerini kullanarak yönetim görevlerini otomatikleştirme
 
@@ -27,7 +27,7 @@ Bir iş, hedef veritabanında oturum açma görevini işler. Ayrıca, Azure SQL 
 
 İş Otomasyonu 'nu kullanabileceğiniz birkaç senaryo vardır:
 
-- Yönetim görevlerini otomatikleştirin ve saat sonra her haftanın her günü, vb. çalıştırmayı zamanlayın.
+- Yönetim görevlerini otomatikleştirin ve saatler, saat sonra her hafta içinde çalışacak şekilde zamanlayın.
   - Şema değişiklikleri, kimlik bilgileri yönetimi, performans verisi toplama veya kiracı (müşteri) telemetri verilerini toplama gibi görevleri dağıtın.
   - Başvuru verilerini güncelleştirme (tüm veritabanlarında ortak bilgiler), Azure Blob depolamadan veri yükleme.
   - Sorgu performansını artırmak için dizinleri yeniden oluşturun. İşleri bir veritabanı koleksiyonunda yoğun saatlerin dışında yenilenecek şekilde yapılandırın.
@@ -36,7 +36,7 @@ Bir iş, hedef veritabanında oturum açma görevini işler. Ayrıca, Azure SQL 
   - Bir Azure SQL veritabanı koleksiyonunda bulunan verileri tek bir hedef tabloda toplayın.
   - Çok sayıda veritabanında müşteri telemetri verilerinin toplanması gibi daha uzun süre çalışan veri işleme sorguları çalıştırın. Sonuçlar daha ayrıntılı analiz için tek bir hedef tabloda toplanır.
 - Veri taşımaları
-  - Veritabanlarınızda yapılan değişiklikleri diğer veritabanlarına çoğaltan veya uzak veritabanlarında yapılan güncelleştirmeleri toplayıp veritabanında değiştirilen işleri oluşturun.
+  - Veritabanlarınızda yapılan değişiklikleri diğer veritabanlarına çoğaltan veya uzak veritabanlarında yapılan güncelleştirmeleri toplayacak ve değişiklikleri veritabanına uygulayan işler oluşturun.
   - SQL Server Integration Services (SSIS) kullanarak veritabanlarınızdan veri yükleyen işler oluşturun.
 
 ## <a name="overview"></a>Genel Bakış
@@ -44,7 +44,7 @@ Bir iş, hedef veritabanında oturum açma görevini işler. Ayrıca, Azure SQL 
 Aşağıdaki iş zamanlama teknolojileri Azure SQL veritabanı 'nda kullanılabilir:
 
 - **SQL Aracısı işleri** , yönetilen örnekte kullanılabilen, klasik ve bir test SQL Server iş zamanlama bileşenidir. SQL Aracısı Işleri tek veritabanlarında kullanılamaz.
-- **Elastik veritabanı işleri** , bir veya birden çok Azure SQL veritabanında özel Işleri yürüten iş zamanlama hizmetidir.
+- **Elastik veritabanı işleri** , bir veya birden çok Azure SQL veritabanında özel Işler çalıştıran iş zamanlama hizmetlerdir.
 
 SQL Aracısı (Şirket içi ve SQL veritabanı yönetilen örneği 'nin bir parçası olarak kullanılabilir) ve veritabanı elastik Iş Aracısı (Azure SQL veritabanı ve SQL veri ambarı 'ndaki veritabanları için kullanılabilir) arasında birkaç farklılık olduğunu belirtmekte bir değer.
 
@@ -55,18 +55,18 @@ SQL Aracısı (Şirket içi ve SQL veritabanı yönetilen örneği 'nin bir par�
 
 ## <a name="sql-agent-jobs"></a>SQL Aracısı Işleri
 
-SQL Aracısı Işleri, veritabanınıza yönelik T-SQL betikleri serisi olarak belirtilmiştir. İşleri, bir veya daha fazla kez çalıştırılabilen ve başarı veya başarısızlık için izlenen bir yönetim görevi tanımlamak için kullanın.
-Bir iş, bir yerel sunucuda veya birden çok uzak sunucuda çalıştırılabilir. SQL Agent Işi, yönetilen örnek hizmeti içinde yürütülen bir iç veritabanı altyapısı bileşenidir.
+SQL Aracısı Işleri, veritabanınıza göre belirtilen bir T-SQL komut dosyası dizisidir. İşleri, bir veya daha fazla kez çalıştırılabilen ve başarı veya başarısızlık için izlenen bir yönetim görevi tanımlamak için kullanın.
+Bir iş, bir yerel sunucuda veya birden çok uzak sunucuda çalıştırılabilir. SQL Aracısı Işleri, yönetilen örnek hizmeti içinde yürütülen bir iç veritabanı altyapısı bileşenidir.
 SQL Aracısı Işlerinde birkaç temel kavram vardır:
 
 - İş içinde yürütülmesi gereken bir veya daha fazla adımın **iş adımları** kümesi. Her iş adımı için yeniden deneme stratejisi tanımlayabilir ve iş adımının başarılı veya başarısız olması durumunda gerçekleşmesi gereken eylemi belirleyebilirsiniz.
 - **Zamanlamalar** , işin ne zaman yürütülmesi gerektiğini tanımlar.
-- **Bildirimler** , iş tamamlandıktan sonra işleçleri e-posta yoluyla bilgilendirmek için kullanılacak kuralları tanımlamanızı sağlar.
+- **Bildirimler** , iş tamamlandıktan sonra işleçlere e-posta aracılığıyla bildirimde bulunan kurallar tanımlamanızı sağlar.
 
 ### <a name="job-steps"></a>İş adımları
 
 SQL Aracısı Iş adımları SQL aracısının yürütmesi gereken eylem dizileridir. Her adımda, adım başarılı veya başarısız olursa yürütülmesi gereken adım, hata durumunda yeniden deneme sayısı.
-SQL Aracısı, veritabanında tek bir Transact-SQL toplu işi yürüten Transact-SQL iş adımı veya özel işletim sistemi betiği yürütebilmesi için SSIS iş adımları gibi farklı iş adımları türleri oluşturmanızı sağlar SSIS çalışma zamanı 'nı veya veritabanınızdaki değişiklikleri diğer veritabanlarına yayımlayabilen [çoğaltma](sql-database-managed-instance-transactional-replication.md) adımlarını kullanma.
+SQL Aracısı, veritabanına göre tek bir Transact-SQL toplu işi yürüten Transact-SQL iş adımı veya özel işletim sistemi betiği yürütebilmesi için SSIS iş adımları ile veri yükleme işlemini yapmanızı sağlar. SSIS çalışma zamanı veya değişiklikleri veritabanınızdaki diğer veritabanlarına yayımlayabilen [çoğaltma](sql-database-managed-instance-transactional-replication.md) adımları.
 
 [İşlemsel çoğaltma](sql-database-managed-instance-transactional-replication.md) , bir veya birden çok tabloda yapılan değişiklikleri tek bir veritabanında yayımlamanıza ve bunları bir abone veritabanları kümesine yayımlamanıza/dağıtmanıza olanak sağlayan bir veritabanı altyapısı özelliğidir. Değişiklikleri yayımlamak aşağıdaki SQL Aracısı işi adım türleri kullanılarak uygulanır:
 
@@ -90,11 +90,11 @@ Bir zamanlama, bir işin çalıştığı zaman için aşağıdaki koşulları ta
 - Yinelenen bir zamanlamaya göre.
 
 > [!Note]
-> Yönetilen örnek şu anda, örnek "boşta" olduğunda bir iş başlatmanız mümkün değildir.
+> Yönetilen örnek şu anda örnek "boşta" olduğunda bir iş başlatmayı etkinleştirmiyor.
 
 ### <a name="job-notifications"></a>İş bildirimleri
 
-SQL Aracısı işleri, iş başarıyla tamamlandığında veya başarısız olduğunda bildirim almanızı sağlar. E-posta ile e-posta bildirimi alabilirsiniz.
+SQL Aracısı Işleri, iş başarıyla tamamlandığında veya başarısız olduğunda bildirim almanızı sağlar. E-posta aracılığıyla bildirim alabilirsiniz.
 
 İlk olarak, aşağıdaki örnekte gösterildiği gibi e-posta bildirimlerini göndermek ve hesabı adlı `AzureManagedInstance_dbmail_profile`e-posta profiline atamak için kullanılacak e-posta hesabını ayarlamanız gerekir:
 
@@ -134,10 +134,10 @@ GO
 RECONFIGURE 
 ```
 
-SQL Agent işleriniz ile bir şeyin meydana geldiğini bildirebilmeniz gerekir. Bir işleç, bir veya daha fazla yönetilen örnek bakımda sorumlu için kişi bilgilerini tanımlar. Bir süre, operatör sorumlulukları bir kişiye atanır.
+SQL Agent işleriniz ile ilgili bir şeyin olduğunu işlecine bildirebilirsiniz. Bir işleç, bir veya daha fazla yönetilen örnek bakımda sorumlu için kişi bilgilerini tanımlar. Bazen, operatör sorumlulukları tek bir kişiye atanır.
 Birden çok yönetilen örnek veya SQL Server içeren sistemlerde, birçok kişi işleç sorumluluklarını paylaşabilir. Operatör güvenlik bilgilerini içermez ve bir güvenlik sorumlusu tanımlamaz.
 
-Aşağıdaki örnekte gösterilen SSMS veya Transact-SQL komut dosyasını kullanarak operatörler oluşturabilirsiniz:
+SSMS veya Transact-SQL komut dosyasını kullanarak aşağıdaki örnekte gösterilen işleçler oluşturabilirsiniz:
 
 ```sql
 EXEC msdb.dbo.sp_add_operator 
@@ -146,7 +146,7 @@ EXEC msdb.dbo.sp_add_operator
         @email_address=N'mihajlo.pupin@contoso.com'
 ```
 
-İş tamamlandığında, başarısız olursa veya SSMS veya aşağıdaki Transact-SQL komut dosyası ile başarılı olursa, e-posta ile bildirim yapılacak herhangi bir işi ve atama işlecini değiştirebilirsiniz:
+Her türlü işi değiştirebilir ve iş tamamlandığında, başarısız olursa veya SSMS veya aşağıdaki Transact-SQL komut dosyası ile başarılı olursa e-posta yoluyla bildirim gönderilecek işleçleri atayabilirsiniz:
 
 ```sql
 EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS', 
@@ -158,11 +158,11 @@ EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS',
 
 SQL Server ' de kullanılabilir olan SQL Aracısı özelliklerinden bazıları yönetilen örnekte desteklenmez:
 - SQL Aracısı ayarları salt okunurdur. Yordam `sp_set_agent_properties` yönetilen örnekte desteklenmiyor.
-- Aracının etkinleştirilmesi/devre dışı bırakılması Şu anda yönetilen örnekte desteklenmiyor. SQL Aracısı her zaman çalışır.
+- SQL aracısının etkinleştirilmesi/devre dışı bırakılması Şu anda yönetilen örnekte desteklenmiyor. SQL Aracısı her zaman çalışır.
 - Bildirimler kısmen destekleniyor
   - Sayfalayıcı desteklenmiyor.
   - NetSend desteklenmez.
-  - Uyarılar henüz desteklenmiyor.
+  - Uyarılar desteklenmez.
 - Proxy 'ler desteklenmez.
 - EventLog desteklenmiyor.
 
@@ -194,11 +194,11 @@ Elastik İş aracısı; işlerin oluşturulması, çalıştırılması ve yönet
 
 **Elastik İş aracısı** oluşturmak için bir SQL veritabanı gerekir. Aracı, mevcut veritabanını [*İş veritabanı*](#job-database) olarak yapılandırır.
 
-Elastik İş aracısı ücretsizdir. İş veritabanı, sıradan SQL veritabanları ile aynı şekilde faturalandırılır.
+Elastik İş aracısı ücretsizdir. İş veritabanı, herhangi bir SQL veritabanıyla aynı hızda faturalandırılır.
 
 #### <a name="job-database"></a>İş veritabanı
 
-*İş veritabanı*, işleri tanımlamanın yanı sıra iş yürütme durumunu ve geçmişini takip etmek için kullanılır. *İş veritabanı* ayrıca aracı meta verilerini, günlükleri, sonuçları, iş tanımlarını depolamak için kullanılır ve ayrıca T-SQL kullanarak işlerin oluşturulması, çalıştırılması ve yönetilmesi için birçok faydalı saklı yordam ve farklı veritabanı nesnesi içerir.
+*İş veritabanı*, işleri tanımlamanın yanı sıra iş yürütme durumunu ve geçmişini takip etmek için kullanılır. *İş veritabanı* , aracı meta verilerini, günlükleri, sonuçları, iş tanımlarını depolamak için de kullanılır ve T-SQL ' i kullanarak iş oluşturmak, çalıştırmak ve yönetmek için çok sayıda kullanışlı saklı yordam ve diğer veritabanı nesneleri içerir.
 
 Geçerli önizlemede, Elastik İş aracısı oluşturmak için bir Azure SQL veritabanı (S0 veya üzeri) gerekir.
 
@@ -248,7 +248,7 @@ Aşağıdaki örneklerde işin çalıştırılacağı veritabanlarının belirle
 
 ![Hedef grup örnekleri](media/elastic-jobs-overview/targetgroup-examples2.png)
 
-**Örnek 5** ve **Örnek 6**'da Azure SQL Servers, elastik havuz ve veritabanı örneklerinin dahil etme ve hariç tutma kurallarıyla birleştirildiği gelişmiş senaryolar gösterilmektedir.<br>
+**Örnek 5** ve **örnek 6** Azure SQL sunucularının, elastik havuzların ve veritabanlarının dahil etme ve dışlama kuralları kullanılarak birleştirilebileceği gelişmiş senaryolar gösterme.<br>
 **Örnek 7**'de parça eşlemesi içinde bulunan ve iş çalıştırma zamanında değerlendirilebilecek parçalar gösterilmektedir.
 
 #### <a name="job"></a>İş

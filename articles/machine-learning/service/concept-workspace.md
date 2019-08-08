@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 05/21/2019
-ms.openlocfilehash: fc3f88e627e0ce19195f6df947d4f11f5f8a73ae
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.date: 08/06/2019
+ms.openlocfilehash: cb1fd8e98a5eba350774ff6ccb8f86dcd3e4d734
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68772747"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856206"
 ---
 # <a name="what-is-an-azure-machine-learning-service-workspace"></a>Azure Machine Learning hizmet çalışma alanı nedir?
 
@@ -65,6 +65,9 @@ Machine Learning görevleri çalışma alanınıza yapıları okur ve/veya yazar
 + Denemeleri, işlem hatları, modeller, dağıtımlar gibi makine öğrenimi yapılarını görüntüleyin.
 + Modelleri izleyin ve izleyin.
 
+
+
+
 ## <a name="workspace-management"></a>Çalışma alanı yönetimi
 
 Ayrıca, aşağıdaki çalışma alanı yönetim görevlerini gerçekleştirebilirsiniz:
@@ -76,7 +79,14 @@ Ayrıca, aşağıdaki çalışma alanı yönetim görevlerini gerçekleştirebil
 | Çalışma alanı erişimini yönetme    | **&check;**   | |  **&check;**    |
 | Not defteri VM 'si oluşturma | **&check;**   | |     |
 
-[Çalışma alanı oluşturarak](setup-create-workspace.md)hizmeti kullanmaya başlayın.
+### <a name='create-workspace'></a>Çalışma alanı oluşturma
+
+Çalışma alanı oluşturmanın birden çok yolu vardır.
+
+* Her adımda size yol göstermek için bir nokta ve tıklama arabirimi için [Azure Portal](how-to-manage-workspace.md) kullanın.
+* Python betikleri veya Jupiter not defterlerinden anında çalışma alanı oluşturmak için [Python için Azure Machine Learning SDK 'sını](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#workspace) kullanın
+* Şirket güvenlik standartları ile oluşturma işlemini otomatik hale getirmeniz veya özelleştirmeniz gerektiğinde bir [Azure Resource Manager şablonu](how-to-create-workspace-template.md) veya [Azure Machine Learning CLI](reference-azure-machine-learning-cli.md) kullanın.
+* Visual Studio Code ' de çalışıyorsanız [vs Code uzantısını](how-to-vscode-tools.md#get-started-with-azure-machine-learning)kullanın.
 
 ## <a name="resources"></a>İlişkili kaynaklar
 
@@ -95,6 +105,6 @@ Yeni bir çalışma alanı oluşturduğunuzda, çalışma alanı tarafından kul
 Azure Machine Learning hizmetine başlamak için bkz.:
 
 + [Azure Machine Learning hizmete genel bakış](overview-what-is-azure-ml.md)
-+ [Çalışma Alanı oluşturma](setup-create-workspace.md)
++ [Çalışma Alanı oluşturma](how-to-manage-workspace.md)
 + [Çalışma Alanını Yönetme](how-to-manage-workspace.md)
 + [Öğretici: Model eğitme](tutorial-train-models-with-aml.md)

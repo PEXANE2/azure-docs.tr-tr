@@ -1,128 +1,128 @@
 ---
-title: 'Sınıflandırma: Uçuş rötarları tahmini'
+title: Sınıflandırmaya Uçuş rötarları tahmini
 titleSuffix: Azure Machine Learning service
-description: Bu makalede bir machine learning modeli görsel sürükle ve bırak arabirimi ve özel R kodunu kullanarak uçuş gecikme tahmin etmek için derleme gösterilmektedir.
+description: Bu makalede, sürükle ve bırak görsel arabirimini ve özel R kodunu kullanarak uçuş gecikmelerini tahmin etmek için bir makine öğrenimi modelinin nasıl oluşturulacağı gösterilmektedir.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: article
+ms.topic: conceptual
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 07/02/2019
-ms.openlocfilehash: 773e55fe4b5ca5acf27ba1765e5a16075f625187
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: f2ef5fd17d6c6a91fa5f3c5d62700b68c5fbca24
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67607643"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855975"
 ---
-# <a name="sample-6---classification-predict-flight-delays-using-r"></a>Örnek 6 - sınıflandırma: R kullanarak uçuş gecikme tahmin edin
+# <a name="sample-6---classification-predict-flight-delays-using-r"></a>Örnek 6-sınıflandırma: R kullanarak uçuş gecikmelerini tahmin etme
 
-Bu deneyde, geçmiş uçuş ve hava durumu verileri 15 dakikadan fazla geciktirilecek tarifeli uçuş tahmin etmek için kullanır.
+Bu deneme, zamanlanmış bir pasger uçuşun 15 dakikadan uzun süre ertelenmesini tahmin etmek için geçmiş Uçuş ve hava durumu verilerini kullanır.
 
-Bu sorun, iki sınıf--geciktirilmiş tahmin etmeye yönelik bir sınıflandırma problemi olarak veya zamanında yaklaşıldığında. Sınıflandırıcı, çok sayıda örneklerden geçmiş uçuş verileri kullanarak bu modeli oluşturmak için.
+Bu sorun bir sınıflandırma sorunu olarak approached olabilir, iki sınıfı tahmin edebilir, gecikir veya zaman alabilir. Bu model, geçmiş uçuş verilerinden çok sayıda örnek kullanarak bir sınıflandırıcı oluşturmak için.
 
-Son deneme grafiği aşağıda verilmiştir:
+İşte son deneme grafiği:
 
-[![Denemeyi grafiği](media/ui-sample-classification-predict-flight-delay/experiment-graph.png)](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
+[![Deneme grafiği](media/ui-sample-classification-predict-flight-delay/experiment-graph.png)](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. Seçin **açık** düğmesi için örnek 6 deneme:
+4. Örnek 6 deneme için **Aç** düğmesini seçin:
 
     ![Denemeyi açın](media/ui-sample-classification-predict-flight-delay/open-sample6.png)
 
 ## <a name="get-the-data"></a>Verileri alma
 
-Bu deneme kullandığı **uçuş gecikme verilerini** veri kümesi. Gereksinimlerimizim bir ABD TranStats veri koleksiyonunu bir parçasıdır Ulaştırma Bakanlığı. Veri kümesi, Ekim 2013'e Nisan uçuş gecikme bilgilerini içerir. Veriler için görsel arabirimle karşıya yüklemeden önce bunu şu şekilde ön işlemden geçtikten:
+Bu deneme, **uçuş gecikmeleri veri** veri kümesini kullanır. Bu, ABD 'den gelen TranStats veri koleksiyonunun bir parçasıdır Taşıma Departmanı. Veri kümesi, Nisan 'dan Ekim 2013 ' e kadar olan Uçuş gecikmesi bilgilerini içerir. Verileri görsel arabirime yüklemeden önce, aşağıdaki gibi önceden işlenir:
 
-* 70'ten en yoğun saatinde havaalanları Kıta Amerika Birleşik Devletleri'nde içerecek şekilde filtrelenmiş'i tıklatın.
-* İçin 15'ten fazla dakikaya Gecikmeli olarak relabeled uçuşlar, iptal edildi.
-* Yolu saptırabilir uçuşlar filtre.
-* 14 sütun seçilmedi.
+* Sürekli olarak 70 ortalamanızı havaalanları içerecek şekilde filtrelenir Birleşik Devletler.
+* İptal edilen fışıklara göre, 15 dakikadan uzun bir süre gecikiyor.
+* Filtrelenmiş, ayrılmış fışıkları.
+* 14 sütun seçildi.
 
-Uçuş verileri desteklemek üzere **hava durumu Dataset** kullanılır. Hava Durumu verilerini saatlik land bulunduğunuz gözlemleri noaa'ya içeren ve aynı Nisan-Ekim 2013 dönemini kapsayan havaalanı hava durumu istasyonu gelen gözlemler temsil eder. Azure ML görsel arabirim olarak karşıya yüklemeden önce aşağıdaki gibi önceden işlendi:
+Uçuş verilerini tamamlamak için **Hava durumu veri kümesi** kullanılır. Hava durumu verileri NOAA 'den saatlik Land tabanlı hava durumu gözlemlerini içerir ve Nisan-Ekim 2013 ile aynı zaman dilimini kapsayan Havaalanı hava durumu istasyonlarından gelen gözlemlerini temsil eder. Azure ML görsel arabirimine yüklemeden önce, şu şekilde önceden işlenir:
 
-* Hava durumu istasyonu kimlikleri karşılık gelen havaalanı kimlikleri eşlendi.
-* Hava durumu istasyonu 70'ten en yoğun saatinde havaalanları ile ilişkili olmayan kaldırıldı.
-* Tarih sütununu ayrı sütunlara bölme: Yıl, ay ve gün.
-* 26 sütun seçilmedi.
+* Hava durumu istasyonu kimlikleri ilgili Havaalanı kimliklerine eşlendi.
+* 70 ortalamanızı ile ilişkilendirilmemiş Hava durumu istasyonları kaldırılmıştır.
+* Tarih sütunu ayrı sütunlara bölündü: Yıl, ay ve gün.
+* Seçili 26 sütun.
 
 ## <a name="pre-process-the-data"></a>Verileri önceden işleme
 
-Bir veri kümesi analiz edilmeden önce bazı ön işleme genellikle gerektirir.
+Bir veri kümesi, analiz edilebilmesi için genellikle bazı ön işleme gerektirir.
 
-![veri işlem](media/ui-sample-classification-predict-flight-delay/data-process.png)
+![veri işleme](media/ui-sample-classification-predict-flight-delay/data-process.png)
 
 ### <a name="flight-data"></a>Uçuş verileri
 
-Sütunları **taşıyıcı**, **OriginAirportID**, ve **DestAirportID** tamsayı olarak kaydedilir. Kullanın, ancak bunlar kategorik öznitelikleri hedeflenmiştir **meta verileri Düzenle** bunları için kategorik dönüştürmek için modülü.
+**Taşıyıcı**, **Originairportıd**ve **destairportıd** sütunları, tamsayılar olarak kaydedilir. Ancak kategorik özniteliklerdir, bunları kategorik olarak dönüştürmek için **meta verileri Düzenle** modülünü kullanın.
 
-![meta veri düzenleme](media/ui-sample-classification-predict-flight-delay/edit-metadata.png)
+![Düzenle-meta veriler](media/ui-sample-classification-predict-flight-delay/edit-metadata.png)
 
-Ardından **Sütunları Seç** olası hedef leakers olan dataset sütunları dışlamak için veri kümesi modülünde: **DepDelay**, **DepDel15**, **ArrDelay**, **iptal**, **yıl**. 
+Ardından, olası hedef makineleri olan veri kümesi sütunlarından dışlamak için veri kümesindeki **Sütunları Seç** modülünü kullanın: **Depdelay**, **DepDel15**, **ArrDelay**, **iptal edildi**, **yıl**. 
 
-Saatlik hava durumu kayıtları uçuş kayıtlarla katılmak için zamanlanmış Kalkış Saati birleştirme anahtarlarından birini kullanın. Birleştirme yapmak için CSRDepTime sütunu tarafından gerçekleştirilir en yakın saate yuvarlanır gerekir **R betiği yürütme** modülü. 
+Saatlik hava durumu kayıtlarıyla uçuş kayıtlarına katılabilmek için, JOIN anahtarlarından biri olarak zamanlanan ayrılma saatini kullanın. Birleştirmeyi yapmak için, CSRDepTime sütunu, **yürütme R betiği** modülünde tarafından gerçekleştirilen en yakın saate yuvarlanmalıdır. 
 
 ### <a name="weather-data"></a>Hava durumu verileri
 
-Büyük kısmı eksik değerlere sahip sütun kullanarak dışlanır **proje sütunları** modülü. Bu sütunlar, tüm dize değerli sütunlar şunlardır: **ValueForWindCharacter**, **WetBulbFarenheit**, **WetBulbCelsius**, **PressureTendency**, **PressureChange**, **SeaLevelPressure**, ve **StationPressure**.
+Eksik değerlerin büyük bir oranındaki sütunlar **Proje sütunları** modülü kullanılarak dışlanır. Bu sütunlar, tüm dize değerli sütunları içerir: **Valueforwınxcharacter**, **WetBulbFarenheit**, **wetbulbgrat**, **PressureTendency**, **PressureChange**, **deniz levelbasınç**ve **stationbasıncı**.
 
-**Eksik verileri temizleme** modülü eksik veri içeren satırları kaldırmak için kalan sütunlara sonra uygulanır.
+Eksik verileri **Temizleme** modülü daha sonra eksik verileri olan satırları kaldırmak için kalan sütunlara uygulanır.
 
-Hava durumu gözlem defa, en yakın tam saate yuvarlanır. Model uçuş zamanından önce yalnızca hava durumu kullandığından emin olun aksi yöne uçuşta süreleri ve hava durumu gözlem zamanları yuvarlanır. 
+Hava durumu gözlemme süreleri en yakın tam saate yuvarlanır. Zamanlanan uçuş süreleri ve hava durumu izleme süreleri, modelin uçuş zamanından önce yalnızca hava durumunu kullandığından emin olmak için ters yönlere yuvarlanır. 
 
-Hava durumu verileri yerel saatle bildirilir olduğundan, saat dilimi farklarını için zamanlanmış Kalkış Saati ve hava durumu gözlem saat saat dilimi sütunlarından çıkararak tüketici. Bu işlemler yapılır kullanarak **R betiği yürütme** modülü.
+Hava durumu verileri yerel saatte raporlandığından, saat dilimi farklılıkları, zamanlanan ayrılma saatinden ve hava durumu izleme zamanından itibaren saat dilimi sütunları çıkarılarak hesaba katılmaz. Bu işlemler **R betiği Yürüt** modülü kullanılarak yapılır.
 
-### <a name="joining-datasets"></a>Veri kümeleri birleştirme
+### <a name="joining-datasets"></a>Veri kümelerini birleştirme
 
-Uçuş kayıtları, hava durumu veri kaynağı uçuş sırasında ile birleştirilir (**OriginAirportID**) kullanarak **veri birleştirme** modülü.
+Uçuş kayıtları, **veri katılma** modülünü kullanarak uçuş (**Originairportıd**) başlangıcında Hava durumu verileriyle birleştirilir.
 
- ![Uçuş ve hava durumu, kaynak tarafından katılın](media/ui-sample-classification-predict-flight-delay/join-origin.png)
+ ![başlangıca göre uçuş ve hava durumunu birleştirin](media/ui-sample-classification-predict-flight-delay/join-origin.png)
 
 
-Uçuş kayıtları, uçuş hedefini kullanarak hava durumu verileri ile birleştirilir (**DestAirportID**).
+Uçuş kayıtları, uçuşın hedefi (**Destairportıd**) kullanılarak hava durumu verileriyle birleştirilir.
 
- ![Uçuş ve hava durumu hedef tarafından katılın](media/ui-sample-classification-predict-flight-delay/join-destination.png)
+ ![Hedefe göre uçuş ve hava durumunu birleştirin](media/ui-sample-classification-predict-flight-delay/join-destination.png)
 
-### <a name="preparing-training-and-test-samples"></a>Eğitim ve Test Örnekleri hazırlama
+### <a name="preparing-training-and-test-samples"></a>Eğitim ve test örnekleri hazırlama
 
-**Verileri bölme** modülü Eylül kayıtları eğitim aracılığıyla Nisan verileri ayırır ve Ekim test için kaydeder.
+**Verileri Böl** modülü, verileri eğitim için Eylül kayıtlarına ve test için Ekim kayıtlarına böler.
 
- ![Bölme eğitim ve test verileri](media/ui-sample-classification-predict-flight-delay/split.png)
+ ![Eğitim ve test verilerini bölme](media/ui-sample-classification-predict-flight-delay/split.png)
 
-Yıl, ay ve saat dilimi sütunlar Sütun Seç modülünü kullanarak bir eğitim veri kümesinden kaldırılır.
+Year, month ve TimeZone sütunları, select Columns modülünü kullanarak eğitim veri kümesinden kaldırılır.
 
 ## <a name="define-features"></a>Özellikleri tanımlama
 
-Makine öğrenimi, ilgilendiğiniz bir şeyin tek tek ölçülebilir özellikleri özellikleridir. Güçlü bir özellikler kümesi bulmak, deneme ve etki alanı bilgisi gerektirir. Bazı özellikler, hedefi tahmin etmede diğerlerinden daha uygundur. Ayrıca, bazı özelliklerin diğer özelliklerle güçlü bir bağıntısı olabilir ve yeni bilgiler modele eklemeyeceğiz. Bu özellikler kaldırılabilir.
+Machine Learning 'de, Özellikler ilgilendiğiniz bir şeyin bağımsız olarak ölçülebilir özellikleridir. Güçlü bir özellik kümesinin bulunması deneme ve etki alanı bilgisi gerektirir. Bazı özellikler, hedefi tahmin etmede diğerlerinden daha uygundur. Ayrıca, bazı özelliklerin diğer özelliklerle güçlü bir bağıntısı olabilir ve modele yeni bilgi eklemez. Bu özellikler kaldırılabilir.
 
-Bir model oluşturmak için sunulan tüm özellikleri kullanmak veya bir alt özellikler kümesini seçin.
+Bir model oluşturmak için, kullanılabilen tüm özellikleri kullanabilir veya özelliklerin bir alt kümesini seçebilirsiniz.
 
-## <a name="choose-and-apply-a-learning-algorithm"></a>Bir öğrenme algoritması seçme ve uygulama
+## <a name="choose-and-apply-a-learning-algorithm"></a>Öğrenme algoritması seçme ve uygulama
 
-Kullanarak bir model oluşturma **iki sınıflı Lojistik regresyon** modülü ve eğitim veri kümesi üzerinde eğitin. 
+**Iki sınıf lojistik regresyon** modülünü kullanarak bir model oluşturun ve bunu eğitim veri kümesinde eğitin. 
 
-Sonucu **modeli eğitme** tahminde bulunmak amacıyla yeni örnekleri puanlamak için kullanılabilecek eğitilmiş bir sınıflandırma modeli modülüdür. Test puanlarını eğitilen modellerinden oluşturmak üzere kullanın. Ardından **Evaluate Model** analiz ve model kalitesi karşılaştırmak için modülü.
+**Eğitim modeli** modülünün sonucu, tahmine dayalı hale getirmek için yeni örnekleri puan etmek üzere kullanılabilecek eğitilen bir sınıflandırma modelidir. Eğitilen modellerden puanlar oluşturmak için test kümesini kullanın. Ardından, modellerin kalitesini analiz etmek ve karşılaştırmak için **modeli değerlendir** modülünü kullanın.
 
-Denemeyi çalıştırdıktan sonra çıktısını görüntüleyebilirsiniz **Score Model** modülünün çıkış bağlantı noktasına tıklayıp seçerek **Görselleştir**. Çıktı, puanlanmış etiketler ve olasılıklar etiketlerinin içerir.
+Denemeyi çalıştırdıktan sonra, çıkış bağlantı noktasına tıklayıp **Görselleştir**' i seçerek **puanı model** modülündeki çıktıyı görüntüleyebilirsiniz. Çıktı, Etiketler için puanlanmış etiketleri ve olasılıklara sahiptir.
 
-Son olarak sonuçların kalitesini test etmek için ekleyin **Evaluate Model** modülünü deneme tuvaline ve sol giriş bağlantı noktasına Score Model modülünün çıkışına bağlayın. Denemeyi çalıştırın ve çıktısını görüntülemek **Evaluate Model** modülü, çıkış bağlantı noktasına tıklayıp seçerek **Görselleştir**.
+Son olarak, sonuçların kalitesini test etmek için, deneme tuvaline **modeli değerlendir** modülünü ekleyin ve sol giriş bağlantı noktasını puan modeli modülünün çıktısına bağlayın. Denemeyi çalıştırın ve çıkış bağlantı noktasına tıklayıp **Görselleştir**' i seçerek **modeli değerlendir** modülünün çıkışını görüntüleyin.
 
 ## <a name="evaluate"></a>Değerlendir
-Lojistik regresyon modelini AUC ayarlama, test 0.631 sahiptir.
+Lojistik regresyon modelinde test kümesinde AUC 0,631 vardır.
 
  ![değerlendir](media/ui-sample-classification-predict-flight-delay/evaluate.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Görsel bir arabirim için kullanılabilir diğer örneklerini keşfedin:
+Görsel arabirim için kullanılabilen diğer örnekleri keşfet:
 
-- [Örnek 1 - regresyon: Otomobilin fiyatını tahmin edin](ui-sample-regression-predict-automobile-price-basic.md)
-- [2 - regresyon. örnek: Otomobil fiyat tahmini için algoritmalar karşılaştırın](ui-sample-regression-predict-automobile-price-compare-algorithms.md)
-- [3 - sınıflandırma. örnek: Kredi riskini tahmin](ui-sample-classification-predict-credit-risk-basic.md)
-- [4 - sınıflandırma. örnek: (Maliyet hassas) kredi riskini tahmin](ui-sample-classification-predict-credit-risk-cost-sensitive.md)
-- [5 - sınıflandırma. örnek: Dalgalanmasını tahmin](ui-sample-classification-predict-churn.md)
+- [Örnek 1-gerileme: Bir otomobil fiyatını tahmin edin](ui-sample-regression-predict-automobile-price-basic.md)
+- [Örnek 2-gerileme: Otomobil fiyat tahmini için algoritmaları karşılaştırın](ui-sample-regression-predict-automobile-price-compare-algorithms.md)
+- [Örnek 3-sınıflandırma: Kredi riskini tahmin etme](ui-sample-classification-predict-credit-risk-basic.md)
+- [Örnek 4-sınıflandırma: Kredi riskini tahmin etme (maliyet duyarlı)](ui-sample-classification-predict-credit-risk-cost-sensitive.md)
+- [Örnek 5-sınıflandırma: Dalgalanma tahmin etme](ui-sample-classification-predict-churn.md)
