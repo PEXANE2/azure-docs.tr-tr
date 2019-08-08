@@ -24,10 +24,10 @@
       maintainContext: true
     - name: Sorun giderme
       items:
-        - name: OutOfMemoryError özel durumu
-          items:
-            - name: GC ek yük sınırı aşıldı
-              href: ./interactive-query-troubleshoot-outofmemory-overhead-exceeded.md
+        - name: GC ek yük sınırı aşıldı
+          href: ./interactive-query-troubleshoot-outofmemory-overhead-exceeded.md
+        - name: Apache Ambari Tez Görünümü yavaş yükleniyor
+          href: ./interactive-query-troubleshoot-tez-view-slow.md
         - name: Apache Hive Görünümünde hata iletisi gösterilmiyor
           href: ./interactive-query-troubleshoot-error-message-hive-view.md
         - name: Apache Hive Görünümüne erişilemiyor

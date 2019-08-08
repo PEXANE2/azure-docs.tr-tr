@@ -45,7 +45,7 @@ sections:
         items:
           - html: <a href="tutorial-1st-experiment-sdk-setup">Ortamınızı ayarlama ve ilk ML denemenizi eğitme.</a>
           - html: <a href="tutorial-train-models-with-aml">Resim sınıflandırma modellerini eğitme ve dağıtma</a>.
-          - html: <a href="tutorial-data-prep">Taksi ücretlerini tahmin etmek için verileri ve otomatik ML'yi hazırlama</b>).</a>
+          - html: <a href="tutorial-data-prep">Taksi ücretlerini tahmin etmek için verileri hazırlayın ve otomatik ML kullanın</b>.</a>
   - title: Örnekler
     items:
       - type: paragraph
