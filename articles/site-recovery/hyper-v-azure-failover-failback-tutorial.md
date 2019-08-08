@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/30/2019
+ms.date: 08/07/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: a4889d82ac1c837581771860f2aba86faf7650ee
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 4b9680b00905126d261562d7bec64bb931c1cda3
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399450"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68845716"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-azure"></a>Azure'da çoğaltılan Hyper-V VM'lerinde yük devretme ve yeniden çalışma
 
@@ -39,9 +39,9 @@ VM'de anlık görüntü olmadığından ve şirket içi VM'nin yeniden çalışm
 
 Yük devretme ve yeniden çalışma üç aşamalıdır:
 
-1. **Azure'a yük devretme**: Azure'a yük devretme Hyper-V Vm'lerini şirket içi siteden.
-2. **Şirket içine yeniden çalışma**: Şirket içi siteniz kullanılabilir olduğunda, şirket içi sitenizi Azure Vm'lere yük devretme. Azure'daki veriler şirket içi siteyle eşitlenmeye başlar ve tamamlandığında şirket içindeki VM'ler açılır.  
-3. **Ters çoğaltma şirket içi Vm'leri**: Yeniden şirket içine başarısız sonra ters bunları Azure'a çoğaltmaya başlamak için şirket içi Vm'leri çoğaltın.
+1. **Azure 'A yük devretme**: Hyper-V VM 'lerini şirket içi siteden Azure 'a devretmek.
+2. **Şirket içine yeniden çalışma**: Şirket içi site kullanılabilir olduğunda Azure sanal makinelerini şirket içi sitenizde yük devretme. Azure'daki veriler şirket içi siteyle eşitlenmeye başlar ve tamamlandığında şirket içindeki VM'ler açılır.  
+3. **Şirket Içi VM 'Leri ters çoğaltma**: Şirket içi olarak yeniden başlatıldıktan sonra, şirket içi VM 'Leri Azure 'a Çoğaltmaya başlamak için ters çevirin.
 
 ## <a name="verify-vm-properties"></a>VM özelliklerini doğrulama
 
@@ -65,7 +65,7 @@ Yük devretme öncesinde VM özelliklerini doğrulayın ve VM’nin [Azure gerek
 4. Yük devretmeyi doğruladıktan sonra **Yürüt**'e tıklayın. Bu işlem tüm kullanılabilir kurtarma noktalarını siler.
 
 > [!WARNING]
-> **Devam eden bir yük devretme işlemini iptal etmeyin**: İptal ediyor, yük devretme durdurulur, ancak VM yeniden çoğaltılmaz
+> **Devam eden bir yük devretme işlemini Iptal etmeyin**: Devam ederseniz, yük devretme işlemi duraklar, ancak VM yeniden çoğaltılmaz.
 
 ## <a name="failback-azure-vm-to-on-premises-and-reverse-replicate-the-on-premises-vm"></a>Azure VM'yi şirket içinde yeniden çalıştırma ve şirket içi VM'yi tersine çoğaltma
 

@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 8d107aed75904c27b9ed231d50c884f96318a324
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: e3f6ad4338863fcbb35bad4f286b71993cf6fa2a
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321424"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854826"
 ---
 # <a name="install-and-run-anomaly-detector-containers"></a>Anomali algılayıcı kapsayıcılarını yükleyip çalıştırın
 
@@ -98,7 +98,7 @@ Kapsayıcı [ana bilgisayardan](#the-host-computer)olduktan sonra, kapsayıcınd
 
 Üç kapsayıcının herhangi birini çalıştırmak için [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) komutunu kullanın. Komut aşağıdaki parametreleri kullanır:
 
-| Yer tutucu | Value |
+| Yer tutucu | Değer |
 |-------------|-------|
 |{API_KEY} | Bu anahtar, kapsayıcıyı başlatmak için kullanılır ve Azure portal anomali algılayıcı anahtarları sayfasında kullanılabilir.  |
 |{ENDPOINT_URI} | Faturalandırma uç noktası URI değeri Azure portal anomali algılayıcısı Genel Bakış sayfasında bulunur.|
@@ -198,4 +198,5 @@ Bu makalede, anomali algılayıcı kapsayıcılarını indirmek, yüklemek ve ç
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Gözden geçirme [kapsayıcıları yapılandırma](anomaly-detector-container-configuration.md) yapılandırma ayarları
+* [Azure Container Instances için bir anomali algılayıcı kapsayıcısı dağıtın](how-to/deploy-anomaly-detection-on-container-instances.md)
 * [Anomali algılayıcı API hizmeti hakkında daha fazla bilgi edinin](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)

@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/11/2019
-ms.openlocfilehash: f51c6bdc6cb2e381d5d5b855bf2f87b07d7fc180
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 0025f488f6a9b0af4e05a8bdf3ddf36c089d4d9f
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638431"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856116"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-image"></a>Özel bir Docker görüntüsü kullanarak model dağıtma
 
@@ -40,8 +40,8 @@ Bu belge iki bölüme ayrılmıştır:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Bir Azure Machine Learning hizmet çalışma grubu. Daha fazla bilgi için [çalışma alanı oluşturma](setup-create-workspace.md) makalesine bakın.
-* Azure Machine Learning SDK. Daha fazla bilgi için [çalışma alanı oluşturma](setup-create-workspace.md#sdk) MAKALESININ Python SDK bölümüne bakın.
+* Bir Azure Machine Learning hizmet çalışma grubu. Daha fazla bilgi için [çalışma alanı oluşturma](how-to-manage-workspace.md) makalesine bakın.
+* [Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py). 
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 * [Azure Machine Learning Için CLI uzantısı](reference-azure-machine-learning-cli.md).
 * Internet üzerinden erişilebilen bir [Azure Container Registry](/azure/container-registry) veya başka bir Docker kayıt defteri.

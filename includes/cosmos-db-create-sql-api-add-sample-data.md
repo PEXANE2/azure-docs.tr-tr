@@ -5,23 +5,23 @@ services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: include
-ms.date: 04/13/2018
+ms.date: 08/07/2019
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: 127d67cc3b5dcd0ddd585470821eb1baa08c2388
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 6656c374ae0ff4aae7f99fd340e9e25e5cbc67d1
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67188917"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854179"
 ---
-Şimdi Veri Gezgini'ni kullanarak yeni koleksiyonunuza veri ekleyebilirsiniz.
+Artık Veri Gezgini kullanarak yeni kapsayıcınıza veri ekleyebilirsiniz.
 
-1. Yeni veritabanı, Veri Gezgini'nin Koleksiyonlar bölmesinde görüntülenir. **Görevler** veritabanını genişletin, **Öğeler** koleksiyonunu genişletin, **Belgeler**'e ve ardından **Yeni Belge**'ye tıklayın. 
+1. **Veri Gezgini**, **Görevler** veritabanını genişletin, **öğeler** kapsayıcısını genişletin. **Öğeleri**seçin ve ardından **Yeni öğe**' ye tıklayın.
 
    ![Azure portalındaki Veri Gezgini'nde yeni belge oluşturma](./media/cosmos-db-create-sql-api-add-sample-data/azure-cosmosdb-data-explorer-new-document.png)
   
-2. Şimdi koleksiyona aşağıdaki yapıya sahip bir belge ekleyin.
+2. Şimdi aşağıdaki yapıyla kapsayıcıya bir belge ekleyin.
 
      ```json
      {
@@ -33,8 +33,8 @@ ms.locfileid: "67188917"
      }
      ```
 
-3. JSON öğesini **Belgeler** sekmesine ekledikten sonra **Kaydet**'e tıklayın.
+3. JSON 'u **Belgeler** sekmesine ekledikten sonra **Kaydet**' i seçin.
 
-    ![Azure portalında JSON verilerini kopyalayın ve Veri Gezgini'ne kaydedin](./media/cosmos-db-create-sql-api-add-sample-data/azure-cosmosdb-data-explorer-save-document.png)
+    ![JSON verilerini kopyalayın ve Azure portal Veri Gezgini Kaydet ' i seçin](./media/cosmos-db-create-sql-api-add-sample-data/azure-cosmosdb-data-explorer-save-document.png)
 
 4.  `id` özelliği için benzersiz bir değer eklediğiniz yerde bir veya daha fazla belge oluşturun ve kaydedin ve diğer özellikleri uygun şekilde değiştirin. Azure Cosmos DB, verilerinizin bir şemaya uygun olmasını şart koşmadığı için yeni belgelerinizin yapısını istediğiniz şekilde oluşturabilirsiniz.

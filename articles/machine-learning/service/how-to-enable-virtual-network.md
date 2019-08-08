@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 08/05/2019
-ms.openlocfilehash: 7c4c4ff611b35cac9aa8be1a9697a0d11bc4dc8b
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 9bd56984f088ab16fc5d80c588afce2cdc31240b
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815954"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848110"
 ---
 # <a name="securely-run-experiments-and-inference-inside-an-azure-virtual-network"></a>Bir Azure sanal ağı içinde denemeleri ve çıkarımı güvenle çalıştırın
 
@@ -27,7 +27,7 @@ Bu makalede **Gelişmiş güvenlik ayarları**hakkında ayrıntılı bilgi sağl
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Henüz bir Azure Machine Learning hizmet [çalışma alanı](setup-create-workspace.md) oluşturun. Bu belgede, Azure sanal ağları ve genel olarak IP ağı hakkında bilgi sahibi olduğunuz varsayılır. Bu belge, işlem kaynaklarınızla kullanılacak bir sanal ağ ve alt ağ oluşturduğunuzu da varsayar. Azure sanal ağları hakkında bilginiz yoksa, hizmet hakkında bilgi edinmek için aşağıdaki makaleleri okuyun:
+Henüz bir Azure Machine Learning hizmet [çalışma alanı](how-to-manage-workspace.md) oluşturun. Bu belgede, Azure sanal ağları ve genel olarak IP ağı hakkında bilgi sahibi olduğunuz varsayılır. Bu belge, işlem kaynaklarınızla kullanılacak bir sanal ağ ve alt ağ oluşturduğunuzu da varsayar. Azure sanal ağları hakkında bilginiz yoksa, hizmet hakkında bilgi edinmek için aşağıdaki makaleleri okuyun:
 
 * [IP adresleme](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)
 * [Güvenlik grupları](https://docs.microsoft.com/azure/virtual-network/security-overview)
@@ -36,7 +36,7 @@ Henüz bir Azure Machine Learning hizmet [çalışma alanı](setup-create-worksp
 
 ## <a name="storage-account-for-your-workspace"></a>Çalışma alanınızın depolama hesabı
 
-Bir sanal ağdaki çalışma alanı için varsayılan Azure Depolama hesabını kullanmak için aşağıdaki adımları kullanın:
+Bir sanal ağdaki çalışma alanı için bir Azure depolama hesabı kullanmak için aşağıdaki adımları kullanın:
 
 1. Deneme işlem EX oluşturun. Bir sanal ağın arkasında Machine Learning İşlem veya çalışma alanı EX 'e bir deneme işlemi iliştirin. HDInsight kümesi veya sanal makine. Daha fazla bilgi için bkz. [Machine Learning işlem kullanma](#use-machine-learning-compute) ve bu belgedeki [bir sanal makine veya HDInsight küme bölümleri kullanma](#use-a-virtual-machine-or-hdinsight-cluster)
 2. Çalışma alanına bağlı depolamaya gidin. ![Azure Machine Learning hizmeti çalışma alanına bağlı Azure Storage 'ı gösteren Azure portal görüntüsü](./media/how-to-enable-virtual-network/workspace-storage.png)
@@ -55,7 +55,9 @@ Bir sanal ağdaki çalışma alanı için varsayılan Azure Depolama hesabını 
 > [!IMPORTANT]
 > Azure Machine Learning hizmetiniz için __varsayılan depolama hesabı__ __yalnızca deneme çalışırken__bir sanal ağa yerleştirilebilir.
 >
-> __Deneme için varsayılan olmayan depolama hesapları__için veya __çıkarımı__için bir depolama hesabı kullanıyorsanız, __depolama hesabına Kısıtlanmamış erişiminizin__olması gerekir.
+> __Varsayılan olmayan depolama hesapları__ da bir sanal ağa yerleştirilebilir, ancak __yalnızca deneme için__de kullanılabilir.
+>
+> __Çıkarımı__ için kullanılan varsayılan veya varsayılan olmayan depolama hesaplarının __depolama hesabına Kısıtlanmamış erişimi__olmalıdır.
 >
 > Bu ayarları değiştirdiğinizden emin değilseniz, bkz. [Azure Storage güvenlik duvarlarını ve sanal ağları yapılandırma](https://docs.microsoft.com/azure/storage/common/storage-network-security)bölümünde __varsayılan ağ erişim kuralını değiştirme__ . Çıkarım veya model Puanlama sırasında tüm ağlardan erişime izin vermek için adımları kullanın.
 

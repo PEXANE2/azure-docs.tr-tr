@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2018
 ms.author: apimpm
-ms.openlocfilehash: 0e7c6fe10467bb68417172dc95fef874d37fc97b
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: f0f89275006498c0ff4883f259d7e76f723b922b
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68696251"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851332"
 ---
 # <a name="advanced-request-throttling-with-azure-api-management"></a>Azure API Management Gelişmiş istek azaltma
 Gelen istekleri kısıtlayamaz, Azure API Management 'nin önemli bir rolü bulunur. İsteklerin oranını veya aktarılan toplam istek/veri sayısını denetleyerek API Management, API sağlayıcılarının API 'Lerini uygunsuz bir şekilde korumasına ve farklı API ürün katmanları için değer oluşturmasına izin verir.
@@ -29,7 +29,7 @@ Tarih olarak, hız azaltma özellikleri Azure portal tanımlı belirli bir ürü
 
 ## <a name="custom-key-based-throttling"></a>Özel anahtar tabanlı azaltma
 
-> NOT: `rate-limit-by-key` İlke, Azure API Management tüketim katmanında kullanılabilir değildir. 
+> NOT: `rate-limit-by-key` Ve`quota-by-key` ilkeleri, Azure API Management tüketim katmanında kullanılabilir değildir. 
 
 Yeni [hız-limit](/azure/api-management/api-management-access-restriction-policies#LimitCallRateByKey) ve [Kota-anahtar](/azure/api-management/api-management-access-restriction-policies#SetUsageQuotaByKey) ilkeleri, trafik denetimine daha esnek bir çözüm sağlar. Bu yeni ilkeler, trafik kullanımını izlemek için kullanılan anahtarları belirlemek için ifadeler tanımlamanızı sağlar. Bu yöntem, bir örnek ile en kolay şekilde gösterilmiştir. 
 

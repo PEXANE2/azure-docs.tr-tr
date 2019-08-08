@@ -3,20 +3,20 @@ title: Proje Acoustics Unreal ve Wwise tümleştirmesi
 titlesuffix: Azure Cognitive Services
 description: Bu nasıl yapılır-proje Acoustics Unreal ve Wwise eklentileri projenize tümleştirmeyi açıklar.
 services: cognitive-services
-author: kegodin
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.author: kegodin
+ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5511dd6b9a7d77c0988a94fef747a30d25bb4fc3
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 3fe9a28a99ea8becbfc40e1e64d1f5b109caace3
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706617"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854364"
 ---
 # <a name="project-acoustics-unreal-and-wwise-integration"></a>Proje Acoustics Unreal ve Wwise tümleştirmesi
 Bu nasıl yapılır, mevcut olmayan ve Wwise oyun projenize Project Acoustics eklenti paketinin ayrıntılı tümleştirme adımlarını sağlar. 

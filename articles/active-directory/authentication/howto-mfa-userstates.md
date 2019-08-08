@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54146927bf344eed63e24a3df073aa13f7fa0676
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 98a339f3fe9d5318b71ef60ac916bc4dcc6112fb
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68319923"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853746"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Bir kullanıcı için iki aşamalı doğrulama gerektirme
 
@@ -45,7 +45,7 @@ Azure Multi-Factor Authentication 'daki Kullanıcı hesapları aşağıdaki üç
 |:---:|:---:|:---:|:--:|:--:|
 | Devre dışı |Azure MFA 'da kayıtlı olan yeni bir kullanıcının varsayılan durumu. |Hayır |Hayır |Hayır |
 | Enabled |Kullanıcı Azure MFA 'ya kaydoldu, ancak kaydolmadı. Bir sonraki oturum açışlarında kaydolmak için bir istem alırlar. |Hayır.  Kayıt işlemi tamamlanana kadar çalışmaya devam eder. | Evet. Oturumun süresi dolduktan sonra, Azure MFA kaydı gereklidir.| Evet. Erişim belirtecinin süresi dolduktan sonra, Azure MFA kaydı gereklidir. |
-| Uygulandı |Kullanıcı kaydedildi ve Azure MFA için kayıt işlemini tamamladı. |Evet. Uygulamalar uygulama parolaları gerektirir. |Evet. Azure MFA, oturum açma sırasında gereklidir. | Evet. Azure MFA, oturum açma sırasında gereklidir. |
+| Zorunlu |Kullanıcı kaydedildi ve Azure MFA için kayıt işlemini tamamladı. |Evet. Uygulamalar uygulama parolaları gerektirir. |Evet. Azure MFA, oturum açma sırasında gereklidir. | Evet. Azure MFA, oturum açma sırasında gereklidir. |
 
 Bir kullanıcının durumu, yöneticinin Azure MFA 'ya kaydolduğunu ve kayıt sürecini tamamlamadığını yansıtır.
 
@@ -142,11 +142,7 @@ Aşağıdaki PowerShell, koşullu erişim tabanlı Azure Multi-Factor Authentica
 # Disable MFA for all users, keeping their MFA methods intact
 Get-MsolUser -All | Disable-MFA -KeepMethods
 
-# Enforce MFA for all users
-Get-MsolUser -All | Set-MfaState -State Enforced
-
-# Wrapper to disable MFA with the option to keep the MFA
-# methods (to avoid having to proof-up again later)
+# Wrapper to disable MFA with the option to keep the MFA methods (to avoid having to proof-up again later)
 function Disable-Mfa {
 
     [CmdletBinding()]

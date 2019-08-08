@@ -1,24 +1,23 @@
 ---
-title: 'Öğretici: Blob storage - Azure depolama üzerinde statik Web sitesi barındırma'
+title: 'Öğretici: Blob depolamada statik bir Web sitesi barındırma-Azure depolama'
 description: Statik Web sitesi barındırmak için bir depolama hesabı yapılandırma hakkında bilgi edinin ve Azure depolama için statik bir Web sitesi dağıtın.
-services: storage
 author: normesta
 ms.service: storage
+ms.subservice: blobs
 ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: normesta
-ms.reviewer: seguler
-ms.custom: seodec18
-ms.openlocfilehash: e3f2dd74d00b36016549cd33d76b866de241d977
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.reviewer: dineshm
+ms.openlocfilehash: 4cc38b952e773002e0b5f6b2311187f8d3d46400
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148495"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855382"
 ---
 <!---Customer intent: I want to host files for a static website in Blob storage and access the website from an Azure endpoint.--->
 
-# <a name="tutorial-host-a-static-website-on-blob-storage"></a>Öğretici: Blob Depolama üzerinde statik Web sitesi barındırma
+# <a name="tutorial-host-a-static-website-on-blob-storage"></a>Öğretici: Blob depolamada statik bir Web sitesi barındırma
 
 Bu öğretici, bir dizinin birinci bölümüdür. İçinde oluşturun ve Azure depolama için statik bir Web sitesi dağıtma hakkında bilgi edinin. İşlemi tamamladığınızda, kullanıcıların herkese açık şekilde erişebileceği statik bir Web sitesi olacaktır. 
 
@@ -79,7 +78,7 @@ Ardından, Visual Studio Code ile bir Hello World web sayfası oluşturabilir ve
     ```
 
 1. Varsayılan hata dosyasını oluşturun ve adlandırın *404. html*.
-1. Açık *404. html* düzenleyicisinde, aşağıdaki metni dosyaya yapıştırın ve kaydedin:
+1. Düzenleyicide *404. html* dosyasını açın, aşağıdaki metni dosyaya yapıştırın ve kaydedin:
 
     ```
     <h1>404</h1>

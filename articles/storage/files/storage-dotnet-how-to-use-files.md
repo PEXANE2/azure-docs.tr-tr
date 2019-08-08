@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/22/2017
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 35f29e425fc471e4df4a037ef312af0fd041dcd7
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: da8e82652b5406cb4e5fe6438f721e3394a4cd96
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699778"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854582"
 ---
 # <a name="develop-for-azure-files-with-net"></a>.NET ile Azure Dosyaları için geliştirme
 
@@ -55,10 +55,11 @@ Bu öğreticideki tüm kod örnekleri konsol uygulamanızın `Program.cs` dosyas
 Azure depolama istemci kitaplığını, Azure bulut hizmeti veya Web uygulaması, masaüstü ve mobil uygulamalar dahil olmak üzere herhangi bir türde .NET uygulamasında kullanabilirsiniz. Bu kılavuzda, sadeleştirmek için konsol uygulaması kullanmaktayız.
 
 ## <a name="use-nuget-to-install-the-required-packages"></a>Gereken paketleri yüklemek için NuGet kullanma
-Bu öğreticiyi tamamlamak için projenizde başvurmanız gereken iki paket vardır:
+Bunlar, bu öğreticiyi tamamlayabilmeniz için projenize başvurmanız gereken paketlerdir:
 
 * [.NET için Microsoft Azure depolama ortak kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/): Bu paket, Depolama hesabınızdaki ortak kaynaklara programlı erişim sağlar.
 * [.NET için Microsoft Azure depolama blob kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/): Bu paket, Depolama hesabınızdaki blob kaynaklarına programlı erişim sağlar.
+* [.NET için Microsoft Azure depolama dosya kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.Storage.File/): Bu paket, Depolama hesabınızdaki dosya kaynaklarına programlı erişim sağlar.
 * [.NET için Microsoft Azure Configuration Manager kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/): Bu paket, uygulamanızın nerede çalıştığını fark etmeksizin yapılandırma dosyasında bir bağlantı dizesini ayrıştırmak için bir sınıf sağlar.
 
 Her iki paketi de almak için NuGet kullanabilirsiniz. Şu adımları uygulayın:

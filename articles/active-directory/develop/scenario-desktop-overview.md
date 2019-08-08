@@ -1,6 +1,6 @@
 ---
-title: Web API'leri (genel bakış) - Microsoft kimlik platformu çağrıları masaüstü uygulaması
-description: Bir masaüstü uygulaması oluşturmayı öğrenin çağrıları veritabanını web API'leri (Genel)
+title: Web API 'Leri çağıran masaüstü uygulaması (genel bakış)-Microsoft Identity platform
+description: Web API 'Leri çağıran bir masaüstü uygulaması oluşturmayı öğrenin (genel bakış)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 476703b52813e6b3081dcfb3ab5a2fb4f3a7bfc5
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 5288fe57b2f83522b140f65fa62e08f9c63a7af5
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67785629"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68852680"
 ---
 # <a name="scenario-desktop-app-that-calls-web-apis"></a>Senaryo: Web API'lerini çağıran masaüstü uygulaması
 
-Web API'leri çağıran bir masaüstü uygulaması oluşturmak için gereken her şeyi öğrenin
+Web API 'Lerini çağıran bir masaüstü uygulaması oluşturmak için ihtiyacınız olan tüm hakkında bilgi edinin
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -32,40 +32,40 @@ Web API'leri çağıran bir masaüstü uygulaması oluşturmak için gereken her
 
 ## <a name="getting-started"></a>Başlarken
 
-Henüz yapmadıysanız, .NET Masaüstü hızlı başlangıç veya UWP hızlı başlangıcı izleyerek ilk uygulamanızı oluşturun:
+Henüz yapmadıysanız, .NET Masaüstü hızlı başlangıç veya UWP hızlı başlangıcı ' nı izleyerek ilk uygulamanızı oluşturun:
 
 > [!div class="nextstepaction"]
-> [Hızlı Başlangıç: Bir belirteç almak ve bir Windows Masaüstü uygulamasından Microsoft Graph API çağırma](./quickstart-v2-windows-desktop.md)
+> [Hızlı Başlangıç: Bir Windows masaüstü uygulamasından belirteç alma ve Microsoft Graph API çağrısı](./quickstart-v2-windows-desktop.md)
 
 
 > [!div class="nextstepaction"]
-> [Hızlı Başlangıç: Bir belirteç almak ve Microsoft Graph API'sini çağırmak bir UWP uygulaması](./quickstart-v2-uwp.md)
+> [Hızlı Başlangıç: UWP uygulamasından bir belirteç edinin ve Microsoft Graph API çağrısı yapın](./quickstart-v2-uwp.md)
 
 ## <a name="overview"></a>Genel Bakış
 
-Bir masaüstü uygulaması yazma ve kullanıcılar uygulamanıza oturum açma ve web API'leri gibi Microsoft Graph, diğer Microsoft APIs veya kendi web API'sini çağırmak istiyorsunuz. Birkaç olasılık vardır:
+Bir masaüstü uygulaması yazar ve kullanıcılara oturum açmak ve Microsoft Graph, diğer Microsoft API 'Leri ya da kendi Web API 'niz gibi Web API 'Lerini çağırmak istiyorsunuz. Çeşitli olanaklar vardır:
 
-- Etkileşimli belirteç edinme işlemi kullanabilirsiniz:
+- Etkileşimli belirteç alımı kullanabilirsiniz:
 
-  - Masaüstü uygulamanızı grafik denetimleri, örneğin destekleyip desteklemediğini Windows.Form uygulaması veya bir WPF uygulaması ise.
-  - Bir .NET Core uygulaması ise ve sahip olarak kabul Azure AD ile kimlik doğrulaması etkileşim durum sistemi tarayıcıda
+  - Masaüstü uygulamanız grafik denetimlerini destekliyorsa (örneğin, bir Windows. form uygulaması veya bir WPF uygulaması).
+  - Bu bir .NET Core uygulamasıdır ve Azure AD ile kimlik doğrulama etkileşiminin sistem tarayıcısında gerçekleşme durumunu kabul etmiş olursunuz.
 
-- Barındırılan Windows uygulamaları için de bir Windows etki alanına katılmış bilgisayarlarda çalışan uygulamalar için olası veya tümleşik Windows kimlik doğrulaması kullanarak sessizce belirteç almak için AAD birleştirilmiş.
-- Son olarak, bu önerilmez olsa da, kullanıcı adı/parola genel istemci uygulamalarında kullanabilirsiniz. (DevOps gibi) Bazı senaryolarda yine de gereklidir, ancak bunu kullanarak uygulamanızı kısıtlamaları dayatır dikkatli olun. Örneğin, çok faktörlü kimlik doğrulaması (koşullu erişim) gerçekleştirmek için gereken kullanıcı oturum açamaz. Ayrıca uygulamanıza çoklu oturum açma (SSO) yararlı olmaz.
+- Windows barındırılan uygulamalar için, Windows etki alanına katılmış bilgisayarlarda çalışan uygulamaların veya AAD 'nin tümleşik Windows kimlik doğrulaması kullanarak sessizce bir belirteç almasına katılmış olması de mümkündür.
+- Son olarak, ancak önerilmese de, genel istemci uygulamalarında Kullanıcı adı/parola ' yı kullanabilirsiniz. Bazı senaryolarda (DevOps gibi) hala gereklidir, ancak bunu kullanmanın uygulamanıza kısıtlamalar getirdiğinden emin olun. Örneğin, çok faktörlü kimlik doğrulaması (koşullu erişim) gerçekleştirmesi gereken kullanıcı oturum açamaz. Ayrıca uygulamanız çoklu oturum açma (SSO) özelliğinden yarar olmayacaktır.
 
-  Modern kimlik doğrulama ilkelerine karşı da olduğundan ve eski nedenlerle yalnızca sağlanır.
+  Bu, modern kimlik doğrulaması ilkelerine de karşı geçerlidir ve yalnızca eski nedenlerle sağlanır.
 
   ![Masaüstü uygulaması](media/scenarios/desktop-app.svg)
 
-- Taşınabilir bir komut satırı aracı - Linux veya Mac üzerinde çalışan büyük olasılıkla bir .NET Core uygulaması - yazıyorsanız ve kimlik doğrulama sistemi tarayıcıya aktarılabileceğini kabul ederseniz, etkileşimli kimlik doğrulaması kullanmanız mümkün olacaktır. (.NET core sunmaz henüz bir [Web tarayıcısı](https://aka.ms/msal-net-uses-web-browser) ve bu nedenle kimlik doğrulama sistemi tarayıcıda gerçekleşir), aksi takdirde, en iyi durumda cihaz kod akışı kullanmak için bir seçenektir. Bu akış ayrıca IOT uygulamaları gibi tarayıcı olmayan uygulamalar için kullanılır
+- Taşınabilir bir komut satırı aracı yazıyorsanız (büyük olasılıkla Linux veya Mac üzerinde çalışan bir .NET Core uygulaması) ve kimlik doğrulamasının sistem tarayıcısına verilmiş olmasını kabul ediyorsanız etkileşimli kimlik doğrulaması kullanabilirsiniz. (.NET Core henüz bir [Web tarayıcısı](https://aka.ms/msal-net-uses-web-browser) sağlamıyor ve bu nedenle sistem tarayıcısında kimlik doğrulaması gerçekleşmez), aksi takdirde, bu durumda en iyi seçenek cihaz kodu akışını kullanmaktır. Bu akış, IoT uygulamaları gibi tarayıcı olmayan uygulamalar için de kullanılır
 
-  ![Browserless uygulama](media/scenarios/device-code-flow-app.svg)
+  ![Tarayıcısız uygulama](media/scenarios/device-code-flow-app.svg)
 
-## <a name="specifics"></a>Özellikleri
+## <a name="specifics"></a>Özelliklerini
 
-Masaüstü uygulamaları, çoğunlukla olup uygulamanızı etkileşimli kimlik doğrulaması veya kullandığına bağlıdır specificities, birtakım sahiptir.
+Masaüstü uygulamalarında, genellikle uygulamanızın etkileşimli kimlik doğrulaması kullanıp kullanmadığına bağlı olarak bir dizi karmaşıklık vardır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Masaüstü uygulaması - uygulama kaydı](scenario-desktop-app-registration.md)
+> [Masaüstü uygulaması-uygulama kaydı](scenario-desktop-app-registration.md)

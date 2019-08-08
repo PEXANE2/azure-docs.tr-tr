@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: e4ed781544d3cd11e8494e40589676adf57a9c75
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 1827bfdbebaf1ffa17c7c631a94aa8fc6471d13b
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405122"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854094"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>Bing Özel Arama deneyiminizi yapılandırın
 
@@ -82,7 +82,7 @@ Bu API 'ler, özel olmayan [Bing resim arama](../Bing-Image-Search/overview.md) 
 
 Arama sorguları göndermek ve sonuçları görüntülemek için portalın sağ tarafındaki önizleme bölmesini kullanarak arama örneğinizi test edebilirsiniz. 
 
-1. Arama kutusunun altında örneğim ' ı seçin. **Bing**' i seçerek arama deneyiminizdeki sonuçları Bing ile karşılaştırabilirsiniz. 
+1. Arama kutusunun altında örneğim 'ı seçin. **Bing**' i seçerek arama deneyiminizdeki sonuçları Bing ile karşılaştırabilirsiniz. 
 2. Güvenli bir arama filtresi seçin ve hangi pazarın aranmasına (bkz. [Sorgu parametrelerine](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)bakın).
 3. Geçerli yapılandırmanın sonuçlarını görüntülemek için bir sorgu girin ve ENTER tuşuna basın veya arama simgesine tıklayın. İlgili sonuçları almak için **Web**, **resim**veya **video** ' ya tıklayarak gerçekleştirdiğiniz arama türünü değiştirebilirsiniz. 
 
@@ -129,7 +129,7 @@ Varsayılan olarak, Web sayfaları yalnızca bir kullanıcının sorgu dizesi **
 > [!NOTE]
 > Kullanıcının arama sorgusu ve PIN 'in arama sorgusu arasındaki tüm karşılaştırmalar büyük/küçük harfe duyarlıdır.
 
-| Değer | Açıklama                                                                          |
+| Value | Açıklama                                                                          |
 |---------------|----------------------------------------------------------------------------------|
 | İle başlar | Kullanıcının sorgu dizesi, PIN 'in sorgu dizesiyle başlıyorsa, PIN bir eşleşmedir |
 | Şununla biter   | Kullanıcının sorgu dizesi, PIN 'in sorgu dizesiyle biterse PIN bir eşleşmedir.  |
@@ -159,5 +159,5 @@ Birden fazla PIN eşleşme koşulunu karşılamadığı takdirde Bing Özel Aram
 
 - [Özel arama örneğinizi çağırma](./search-your-custom-view.md)
 - [Barındırılan kullanıcı arabirimi deneyiminizi yapılandırma](./hosted-ui.md)
-- [Metni vurgulamak için süsleme işaretçilerini kullanma](./hit-highlighting.md)
+- [Metni vurgulamak için süsleme işaretçilerini kullanma](../bing-web-search/hit-highlighting.md)
 - [Sayfa web sayfaları](./page-webpages.md)

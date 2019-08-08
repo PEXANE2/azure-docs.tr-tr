@@ -8,12 +8,12 @@ ms.author: tarcher
 manager: jeconnoc
 ms.topic: tutorial
 ms.date: 11/15/2018
-ms.openlocfilehash: 019c4a8f77f2664c68dcc6499fb2f27cc0d1447c
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 51ca9602ff155bf61eb28a59a97faa7a06322c7a
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326921"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855167"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>Öğretici: Jenkins sürekli tümleştirme ve dağıtım ile Azure App Service GitHub 'dan dağıtma
 
@@ -170,7 +170,7 @@ Hizmet sorumlusu adının etrafında tırnak işaretleri kullandığınızdan em
    | **Kiracı KIMLIĞI** | <*yourAzureActiveDirectoryTenant KIMLIĞI*> | Azure Active Directory `tenant` kiracınızın GUID değeri | 
    | **ID** | <*yourAzureServicePrincipalName*> | Azure hizmet sorumlunuz için değer `displayName` | 
 
-1. Hizmet sorumlunun çalıştığını doğrulamak için **hizmet sorumlusunu doğrula**' yı seçin. İşiniz bittiğinde **Tamam**' ı seçin.
+1. Hizmet sorumlunun çalıştığını doğrulamak için **hizmet sorumlusunu doğrula**' yı seçin. İşiniz bittiğinde **Tamam**’ı seçin.
 
 Ardından, uygulamanızı oluşturup dağıtan Jenkins işlem hattını oluşturun.
 
@@ -200,7 +200,7 @@ Jenkins 'de, uygulamanızı oluşturmak ve dağıtmak için işlem hattı işi o
 
       !["Çalıştırma için bir ortam hazırlayın" seçeneğini belirleyin ve ortam değişkenlerini ayarlayın](media/tutorial-jenkins-deploy-web-app-azure-app-service/prepare-environment-for-run.png)
 
-1. İşiniz bittiğinde **Kaydet**’i seçin.
+1. İşiniz bittiğinde **Kaydet**'i seçin.
 
 Daha sonra Jenkins için derleme ve dağıtım betikleri oluşturun.
 
@@ -273,7 +273,7 @@ Artık Jenkins 'in uygulamanızı oluşturmak ve dağıtmak için kullandığı 
 
    ![Betikteki nokta işlem hattı](media/tutorial-jenkins-deploy-web-app-azure-app-service/set-up-jenkins-github.png)
 
-1. İşiniz bittiğinde **Kaydet**’i seçin.
+1. İşiniz bittiğinde **Kaydet**'i seçin.
 
 Sonra, Azure App Service için uygulamanızı derleyin ve dağıtın. 
 

@@ -8,27 +8,27 @@ ms.topic: include
 ms.date: 05/05/2019
 ms.author: wgries
 ms.custom: include file
-ms.openlocfilehash: 2614c9290bf31813d59ee753a31622bccf0682b8
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 46bf9851ccf8877885d9f98a023aa95ebdc533bc
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67188578"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68857517"
 ---
-| Resource | Hedef | Sabit sınırı |
+| Resource | Hedef | Sabit sınır |
 |----------|--------------|------------|
-| Bölge başına depolama Eşitleme Hizmetleri | 20 depolama Eşitleme Hizmetleri | Evet |
+| Bölge başına depolama Eşitleme Hizmetleri | 20 depolama eşitleme hizmeti | Evet |
 | Depolama eşitleme hizmeti başına eşitleme grupları | 100 eşitleme grupları | Evet |
-| Depolama eşitleme hizmeti başına kayıtlı sunucular | 99 sunucuları | Evet |
-| Bulut uç noktaları her eşitleme grubu | 1 bulut uç noktası | Evet |
-| Sunucu uç noktaları her eşitleme grubu | 50 sunucu uç noktaları | Hayır |
-| Sunucu başına sunucu uç noktaları | 30 sunucu uç noktaları | Evet |
-| Dosya sistemi nesneleri (dizinler ve dosyalar) her bir eşitleme grubu | 25 milyon nesneleri | Hayır |
-| Dosya sistemi nesneleri (dizinleri ve dosyaları) bir dizinde en fazla sayısı | 1 milyon nesneleri | Evet |
-| En büyük nesne (dizinler ve dosyalar) güvenlik tanımlayıcısı boyutu | 64 KiB | Evet |
+| Depolama eşitleme hizmeti başına kayıtlı sunucular | 99 sunucu | Evet |
+| Eşitleme grubu başına bulut uç noktaları | 1 bulut uç noktası | Evet |
+| Eşitleme grubu başına sunucu uç noktaları | 50 sunucu uç noktaları | Hayır |
+| Sunucu başına sunucu uç noktaları | 30 sunucu uç noktası | Evet |
+| Eşitleme grubu başına dosya sistemi nesneleri (dizinler ve dosyalar) | 25.000.000 nesneleri | Hayır |
+| Bir dizindeki en fazla dosya sistemi nesnesi (Dizin ve dosya) sayısı | 5\.000.000 nesneleri | Evet |
+| En fazla nesne (dizinler ve dosyalar) güvenlik tanımlayıcısı boyutu | 64 KiB | Evet |
 | Dosya boyutu | 100 GiB | Hayır |
-| Katmanlanmış bir dosyanın en küçük dosya boyutu | 64 KiB | Evet |
-| Eşzamanlı bir eşitleme oturumları | V4 aracı ve daha sonra: Kullanılabilir sistem kaynaklarına göre değişiklik gösterir. <BR> V3 aracı: İşlemci veya en fazla sunucu başına sekiz etkin eşitleme oturumu başına iki active sync oturum. | Evet
+| Katman oluşturulacak bir dosya için en küçük dosya boyutu | 64 KiB | Evet |
+| Eşzamanlı eşitleme oturumları | V4 Aracısı ve üzeri: Sınır, kullanılabilir sistem kaynaklarına göre farklılık gösterir. <BR> V3 Aracısı: Her işlemci için iki etkin eşitleme oturumu veya sunucu başına en fazla sekiz etkin eşitleme oturumu. | Evet
 
 > [!Note]  
-> Bir Azure dosya eşitleme uç noktası için bir Azure dosya paylaşımı boyutunu ölçeklendirebilirsiniz. Azure dosya paylaşımı boyutu sınırına ulaşıldığında, eşitleme çalışılacak mümkün olmayacaktır.
+> Azure Dosya Eşitleme uç noktası, bir Azure dosya paylaşımının boyutuna kadar ölçeklendirilebilir. Azure dosya paylaşımının boyut sınırına ulaşıldığında, eşitleme çalışamayacak.

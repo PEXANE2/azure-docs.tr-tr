@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d721e750ddb77ba293643ad978cecf4bd2dbac0
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 82b8dcfa02d21183a06fa510adb774338e72cb4e
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618818"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851717"
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>Azure AD uygulama proxy'sinde özel etki alanları ile çalışma
 
@@ -87,7 +87,7 @@ Bir sertifikanın süresi dolduğunda, portal üzerinden başka bir sertifikayı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Çoklu oturum açmayı etkinleştirme](application-proxy-configure-single-sign-on-with-kcd.md) yayımlanan uygulamalarınıza Azure AD kimlik doğrulamasıyla.
-* Yayınlanan uygulamalarınıza [koşullu erişimi etkinleştirin](application-proxy-integrate-with-sharepoint-server.md) .
+* Yayınlanan uygulamalarınıza [koşullu erişimi etkinleştirin](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/technical-reference#cloud-apps-assignments) .
 * [Özel etki alanı adınızı Azure AD'ye ekleme](../fundamentals/add-custom-domain.md)
 
 

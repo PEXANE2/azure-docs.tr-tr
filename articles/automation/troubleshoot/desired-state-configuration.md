@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6de348a19081eba685deafebd8a7c9b9d6556444
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 67e5364996be2945d67aa1a95cbc3ab8137e077e
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688105"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68850248"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Istenen durum yapılandırması (DSC) sorunlarını giderme
 
@@ -24,23 +24,24 @@ Bu makalede, Istenen durum yapılandırması (DSC) ile ilgili sorunları giderme
 
 Azure Durum Yapılandırması 'nda yapılandırmaları derlerken veya dağıtmada hatalar olduğunda, sorunu tanılamanıza yardımcı olacak birkaç adım aşağıda verilmiştir.
 
-1. **Yapılandırmanızın yerel makinenizde başarıyla derlendiğinden emin olun:**  Azure Durum Yapılandırması PowerShell DSC üzerine kurulmuştur. DSC dilinin ve sözdiziminin belgelerini [POWERSHELL DSC docs](/powershell/dsc/overview/overview)' da bulabilirsiniz.
+1. **Yapılandırmanızın yerel makinenizde başarıyla derlendiğinden emin olun:**  Azure Durum Yapılandırması PowerShell DSC üzerine kurulmuştur. DSC dilinin ve sözdiziminin belgelerini [POWERSHELL DSC docs](https://docs.microsoft.com/en-us/powershell/scripting/overview)' da bulabilirsiniz.
 
-   Yerel makinenizde DSC yapılandırmanızı derlerken, şu gibi yaygın hataları bulabilir ve çözebilirsiniz:
+   Yerel makinenizde DSC yapılandırmanızı derleyerek, şu gibi yaygın hataları bulabilir ve çözebilirsiniz:
 
    - **Eksik modüller**
    - **Sözdizimi hataları**
    - **Mantık hataları**
+
 2. **Düğümünüz için DSC günlüklerini görüntüleyin:** Yapılandırmanız başarıyla derlenir, ancak bir düğüme uygulandığında başarısız olursa, günlüklerde ayrıntılı bilgiler bulabilirsiniz. DSC günlüklerinin nerede bulunacağı hakkında daha fazla bilgi için, bkz. [WHERE DSC olay günlükleri](/powershell/dsc/troubleshooting/troubleshooting#where-are-dsc-event-logs).
 
-   Futhermore, [Xdscdiagnostics](https://github.com/PowerShell/xDscDiagnostics) , DSC günlüklerinden ayrıntılı bilgiler ayrıştırılırken size yardımcı olabilir. Desteğe başvurursanız, bu günlüklere bu günlüklerin sizin için gerekli olmaları gerekir.
+   Ayrıca, [Xdscdiagnostics](https://github.com/PowerShell/xDscDiagnostics) , DSC günlüklerinden ayrıntılı bilgiler ayrıştırılırken size yardımcı olabilir. Desteğe başvurursanız, bu günlüklerin sorununuzu tanılamak için bu günlüklere ihtiyacı olacaktır.
 
    [Sabit sürüm modülünü Install](https://github.com/PowerShell/xDscDiagnostics#install-the-stable-version-module)altında bulunan yönergeleri kullanarak, **xdscdiagnostics** 'i yerel makinenize yükleyebilirsiniz.
 
    Azure makinenizde **Xdscdiagnostics** 'i yüklemek için [az VM Run-Command](/cli/azure/vm/run-command) veya [Invoke-azvmruncommand](/powershell/module/azurerm.compute/invoke-azurermvmruncommand)komutunu kullanabilirsiniz. Ayrıca, [Çalıştır komutuyla WINDOWS sanal makinenizde PowerShell betikleri çalıştırma](../../virtual-machines/windows/run-command.md)bölümünde bulunan adımları izleyerek portaldan **Çalıştır komut** seçeneğini de kullanabilirsiniz.
 
    **Xdscdiagnostics**kullanımı hakkında bilgi için bkz. [XDSCDIAGNOSTICS kullanarak DSC günlüklerini analiz etme](/powershell/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs)ve [xdscdiagnostics cmdlet 'leri](https://github.com/PowerShell/xDscDiagnostics#cmdlets).
-3. **Düğümlerinizin ve Otomasyon çalışma alanınızın gerekli modüllere sahip olduğundan emin olun:** İstenen durum yapılandırması, düğümde yüklü olan modüllere bağımlıdır.  Azure Otomasyonu durum yapılandırması kullanılırken, [Içeri aktarma modülleri](../shared-resources/modules.md#import-modules)' nde listelenen adımları kullanarak, gerekli tüm modülleri Otomasyon hesabınıza aktarın. Yapılandırmaların belirli modül sürümlerine de bağımlılığı olabilir.  Daha fazla bilgi için bkz. [modüller sorunlarını giderme](shared-resources.md#modules).
+3. **Düğümlerinizin ve Otomasyon çalışma alanınızın gerekli modüllere sahip olduğundan emin olun:** İstenen durum yapılandırması, düğümde yüklü olan modüllere bağımlıdır.  Azure Otomasyonu durum yapılandırması kullanılırken, [Içeri aktarma modülleri](../shared-resources/modules.md#import-modules)' nde listelenen adımları kullanarak, gerekli tüm modülleri Otomasyon hesabınıza aktarın. Yapılandırmaların belirli modül sürümlerine de bağımlılığı olabilir.  Daha fazla bilgi için bkz., [modüller sorunlarını giderme](shared-resources.md#modules).
 
 ## <a name="common-errors-when-working-with-desired-state-configuration-dsc"></a>Istenen durum yapılandırması (DSC) ile çalışırken sık karşılaşılan hatalar
 
@@ -130,7 +131,7 @@ DSC yapılandırmasındaki **düğüm** anahtar sözcüğünü izleyen ifade ola
 Aşağıdaki çözümlerden herhangi biri sorunu çözer:
 
 * Yapılandırma tanımındaki **node** anahtar sözcüğünün yanındaki ifadenin $null olarak değerlendirilmediğinden emin olun.
-* Yapılandırmayı derlerken ConfigurationData geçiriyorken, yapılandırmanın [configurationData](../automation-dsc-compile.md#configurationdata)tarafından gerek duyduğu beklenen değerleri geçirdiğinizden emin olun.
+* Yapılandırmayı derlerken ConfigurationData geçiriyorken, yapılandırmanın [configurationData](../automation-dsc-compile.md)tarafından gerek duyduğu beklenen değerleri geçirdiğinizden emin olun.
 
 ### <a name="dsc-in-progress"></a>Senaryon DSC düğüm raporu "sürüyor" durumunda kalmış olur
 
@@ -166,7 +167,7 @@ Yapılandırmada bir kimlik bilgisi kullandınız, ancak her düğüm yapıland�
 
 #### <a name="resolution"></a>Çözüm
 
-* Yapılandırmada belirtilen her düğüm yapılandırması için **Psdscallowplaintextpassword** öğesini true olarak ayarlamak üzere doğru **configurationData** ' ın geçdiğinizden emin olun. Daha fazla bilgi için bkz. [Azure Automation DSC varlıklar](../automation-dsc-compile.md#assets).
+* Yapılandırmada belirtilen her düğüm yapılandırması için **Psdscallowplaintextpassword** öğesini true olarak ayarlamak üzere doğru **configurationData** ' ın geçdiğinizden emin olun. Daha fazla bilgi için bkz. [Azure Automation DSC varlıklar](../automation-dsc-compile.md#working-with-assets-in-azure-automation-during-compilation).
 
 ### <a name="failure-processing-extension"></a>Senaryon DSC uzantısından ekleme, "uzantı işleme hatası" hatası
 
@@ -199,11 +200,27 @@ This event indicates that failure happens when LCM is processing the configurati
 
 #### <a name="cause"></a>Nedeni
 
-Müşteriler/tmp konumu noexec olarak ayarlandıysa, geçerli DSC sürümü yapılandırmaların uygulanmamasının başarısız olacağını belirledi.
+Müşteriler, `/tmp` konum olarak `noexec`ayarlandıysa, geçerli DSC sürümü yapılandırmaların uygulanmamasının başarısız olacağını tanımlamıştır.
 
 #### <a name="resolution"></a>Çözüm
 
-* Noexec seçeneğini/tmp konumundan kaldırın.
+* `noexec` Seçeneği`/tmp` konumdan kaldırın.
+
+### <a name="compilation-node-name-overlap"></a>Senaryon Çakışan düğüm yapılandırma adları bozuk bir yayına neden olabilir
+
+#### <a name="issue"></a>Sorun
+
+Birden çok düğüm yapılandırması oluşturmak için tek bir yapılandırma betiği kullanılıyorsa ve bazı düğüm yapılandırmalarının başkalarının alt kümesi olan bir adı varsa, derleme hizmetindeki bir sorun yanlış yapılandırma atamaya neden olabilir.  Bu yalnızca, düğüm başına yapılandırma verileri olan yapılandırmalar oluşturmak için tek bir komut dosyası kullanıldığında ve yalnızca ad örtüşme dizenin başlangıcında oluştuğunda oluşur.
+
+Örnek olarak, cmdlet 'ler kullanılarak bir karma tablosu olarak geçirilen düğüm verilerine dayalı yapılandırmalar oluşturmak için tek bir yapılandırma betiği kullanılırsa ve düğüm verileri "sunucu" ve "1Sunucu" adlı bir sunucu içeriyorsa.
+
+#### <a name="cause"></a>Nedeni
+
+Derleme hizmeti ile ilgili bilinen sorun.
+
+#### <a name="resolution"></a>Çözüm
+
+En iyi geçici çözüm, yerel olarak veya bir CI/CD ardışık düzeninde derlemek ve MOF dosyalarını doğrudan hizmete yüklemek olacaktır.  Hizmette derleme bir gereksinimle karşılaşırsanız, bir sonraki en iyi geçici çözüm, ad içinde çakışma olmaması için derleme işlerinin bölünmesi olacaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,19 +1,18 @@
 ---
 title: AzCopy ile v10 arasındaki kullanarak Azure depolama 'ya veri kopyalama veya taşıma | Microsoft Docs
 description: AzCopy, depolama hesaplarına veri kopyalamak için kullanabileceğiniz bir komut satırı yardımcı programıdır. Bu makale, AzCopy indirmenize, depolama hesabınıza bağlanmanıza ve sonra dosyaları aktarmaya yardımcı olur.
-services: storage
 author: normesta
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 7ad5be0c7774beacaa15fcca0646c78e2d328ba4
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 9dc53867cb780b2c40e76cc6f24f7e6cf882b407
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699856"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68844870"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy’i kullanmaya başlama
 
@@ -285,7 +284,7 @@ URL Bu komutun çıktısında görüntülenir. Komut dosyası daha sonra bu URL 
 
 AzCopy 'in performans avantajlarından yararlanmak istiyorsanız, ancak dosyalarınıza etkileşimde bulunmak için komut satırı yerine Depolama Gezgini kullanmayı tercih ediyorsanız, Depolama Gezgini AzCopy özelliğini etkinleştirin. 
 
-Depolama Gezgini,**Gelişmiş blob karşıya yükleme ve indirme için AzCopy kullan**' **ı seçin.** ->
+Depolama Gezgini,**Gelişmiş blob karşıya yükleme ve indirme için AzCopy kullan**' ı seçin.->
 
 ![Azure Depolama Gezgini bir aktarım altyapısı olarak AzCopy 'i etkinleştirin](media/storage-use-azcopy-v10/enable-azcopy-storage-explorer.jpg)
 

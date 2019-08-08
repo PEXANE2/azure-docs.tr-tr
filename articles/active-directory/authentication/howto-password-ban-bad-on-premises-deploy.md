@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 596020952fd02a414c050ac7fe7ab37d7137c391
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 4a745648f1b7abac7267d51cac9e1fe642ae13d8
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779655"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853695"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Azure AD parola korumasını dağıtma
 
@@ -290,7 +290,9 @@ Bir etki alanı denetleyicisine DC Aracısı yazılımı yüklendikten sonra yü
 
 ## <a name="upgrading-the-proxy-agent"></a>Proxy aracısını yükseltme
 
-Azure AD parola koruma proxy yazılımının daha yeni bir sürümü kullanılabilir olduğunda, yükseltme, `AzureADPasswordProtectionProxySetup.exe` yazılım yükleyicisinin en son sürümü çalıştırılarak gerçekleştirilir. Proxy yazılımının geçerli sürümünü kaldırmak gerekli değildir-yükleyici yerinde bir yükseltme gerçekleştirir. Proxy yazılımı yükseltilirken yeniden başlatma gerekmez. Yazılım yükseltme standart MSI yordamları kullanılarak otomatikleştirilebilir, örneğin: `AzureADPasswordProtectionProxySetup.exe /quiet`.
+Azure AD parola koruma proxy yazılımının daha yeni bir sürümü kullanılabilir olduğunda, yükseltme, `AzureADPasswordProtectionProxySetup.exe` yazılım yükleyicisinin en son sürümü çalıştırılarak gerçekleştirilir. Yazılımın en son sürümü [Microsoft Indirme merkezi](https://www.microsoft.com/download/details.aspx?id=57071)' nde bulunabilir.
+
+Proxy yazılımının geçerli sürümünü kaldırmak gerekli değildir-yükleyici yerinde bir yükseltme gerçekleştirir. Proxy yazılımı yükseltilirken yeniden başlatma gerekmez. Yazılım yükseltme standart MSI yordamları kullanılarak otomatikleştirilebilir, örneğin: `AzureADPasswordProtectionProxySetup.exe /quiet`.
 
 Proxy aracısı otomatik yükseltmeyi destekler. Otomatik yükseltme, proxy hizmeti ile yan yana yüklenen Microsoft Azure AD Connect Agent Güncelleştirici hizmetini kullanır. Otomatik yükseltme varsayılan olarak etkindir ve set-AzureADPasswordProtectionProxyConfiguration cmdlet 'i kullanılarak etkinleştirilebilir veya devre dışı bırakılabilir. Geçerli ayar Get-AzureADPasswordProtectionProxyConfiguration cmdlet 'i kullanılarak sorgulanabilir. Microsoft otomatik yükseltmenin etkin olmasını önerir.
 
@@ -298,7 +300,9 @@ Cmdlet `Get-AzureADPasswordProtectionProxy` 'i, bir ormandaki yüklü olan tüm 
 
 ## <a name="upgrading-the-dc-agent"></a>DC aracısını yükseltme
 
-Azure AD parola koruması DC Aracısı yazılımının daha yeni bir sürümü kullanılabilir olduğunda, `AzureADPasswordProtectionDCAgentSetup.msi` yazılım paketinin en son sürümü çalıştırılarak yükseltme gerçekleştirilir. DC Aracısı yazılımının geçerli sürümünü kaldırmak gerekli değildir-yükleyicinin yerinde bir yükseltme gerçekleştirmesi gerekir. DC Aracısı yazılımı yükseltilirken her zaman yeniden başlatma gerekir. bunun nedeni çekirdek Windows davranışıdır. 
+Azure AD parola koruması DC Aracısı yazılımının daha yeni bir sürümü kullanılabilir olduğunda, `AzureADPasswordProtectionDCAgentSetup.msi` yazılım paketinin en son sürümü çalıştırılarak yükseltme gerçekleştirilir. Yazılımın en son sürümü [Microsoft Indirme merkezi](https://www.microsoft.com/download/details.aspx?id=57071)' nde bulunabilir.
+
+DC Aracısı yazılımının geçerli sürümünü kaldırmak gerekli değildir-yükleyicinin yerinde bir yükseltme gerçekleştirmesi gerekir. DC Aracısı yazılımı yükseltilirken her zaman yeniden başlatma gerekir. bunun nedeni çekirdek Windows davranışıdır. 
 
 Yazılım yükseltme standart MSI yordamları kullanılarak otomatikleştirilebilir, örneğin: `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart`.
 

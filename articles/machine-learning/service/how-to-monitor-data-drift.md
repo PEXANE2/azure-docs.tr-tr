@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 07/08/2019
-ms.openlocfilehash: 9852ec450b6da3814a3bd2bfc6aae7d19acaf584
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: c5484c37d89cc9ae880bbe17987bb47f3114b8a4
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68370396"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847886"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' e dağıtılan modellerdeki veri kayması 'nı (Önizleme) Algıla
 
@@ -46,12 +46,14 @@ Azure Machine Learning hizmetini kullanarak veri kümeleri, veri kümeleri veya 
 
 - Azure aboneliği. Bir tane yoksa, başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning Service 'in ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
-- Bir Azure Machine Learning hizmeti çalışma alanında ve yüklü Python için Azure Machine Learning SDK'sı. [Azure Machine Learning hizmet çalışma alanı oluşturma](setup-create-workspace.md#sdk) bölümündeki yönergeleri kullanarak şunları yapın:
+- Python için Azure Machine Learning SDK 'Sı yüklendi. Şunları yapmak için [Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) 'daki yönergeleri kullanın:
 
     - Miniconda ortamı oluşturma
     - Python için Azure Machine Learning SDK 'sını yükler
-    - Çalışma alanı oluşturma
-    - Bir çalışma alanı yapılandırma dosyası (aml_config/config. JSON) yazın.
+
+- Bir [Azure Machine Learning hizmet çalışma alanı](how-to-manage-workspace.md).
+
+- Bir çalışma alanı [yapılandırma dosyası](how-to-configure-environment.md#workspace).
 
 - Aşağıdaki komutu kullanarak verileri DRFT SDK 'yi yükler:
 
@@ -195,6 +197,6 @@ old_training_dataset.diff(new_training_dataset)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Veri drkullanımı hakkında tam bir örnek için bkz. [Azure ML Data değişikliklerini Not defteri](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/data-drift/azure-ml-datadrift.ipynb). Bu Jupyter Notebook, bir [Azure açık veri kümesini](https://docs.microsoft.com/azure/open-datasets/overview-what-are-open-datasets) kullanarak, hava durumunu tahmin etmek, aks 'e dağıtmak ve veri drını izlemek için bir modeli eğitmeniz gerektiğini gösterir. 
+* Veri drkullanımı hakkında tam bir örnek için bkz. [Azure ML Data değişikliklerini Not defteri](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/monitor-models/data-drift/azure-ml-datadrift.ipynb). Bu Jupyter Notebook, bir [Azure açık veri kümesini](https://docs.microsoft.com/azure/open-datasets/overview-what-are-open-datasets) kullanarak, hava durumunu tahmin etmek, aks 'e dağıtmak ve veri drını izlemek için bir modeli eğitmeniz gerektiğini gösterir. 
 
 * Veri, genel kullanıma yönelik olarak hareket ederken sorularınızı, yorumlarınızı veya önerilerinizi önemli ölçüde beğeneceğiz. Aşağıdaki ürün geri bildirim düğmesini kullanın! 

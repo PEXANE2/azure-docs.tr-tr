@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e139b274ab8a1f7d91d46ec56171b84db4f5025e
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: a4d692110a304cbfbbfda69bb2b10e3a065b2450
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812839"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851536"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 'de yönetici rolü izinleri
 
@@ -200,9 +200,7 @@ Ayrıca, Kullanıcı, kaizala tarafından Kaizala tarafından kullanılan ve Kai
   > [!NOTE]
   > Microsoft Graph API, Azure AD Graph API ve Azure AD PowerShell 'de, bu rol "Power BI Hizmet Yöneticisi" olarak tanımlanır. Bu, [Azure Portal](https://portal.azure.com)"Power BI Yöneticisi" dir.
 
-* **[Ayrıcalıklı kimlik doğrulama Yöneticisi](#privileged-authentication-administrator)** : Bu role sahip kullanıcılar, genel yöneticiler dahil olmak üzere tüm kullanıcılar için parola olmayan kimlik bilgilerini ayarlayabilir veya sıfırlayabilir ve tüm kullanıcılar için parolaları güncelleştirebilirler. Ayrıcalıklı kimlik doğrulama yöneticileri, kullanıcıları mevcut parola olmayan kimlik bilgisine (örn. MFA, FIDO) yeniden kaydetmeye zorlayabilir ve ' cihazda MFA 'yı anımsa ' seçeneğini iptal edebilir ve tüm kullanıcıların bir sonraki oturumunda MFA için istemde bulunabilir. Ayrıcalıklı kimlik doğrulama yöneticileri şunları yapabilir:
-  * Kullanıcıları var olan parola olmayan kimlik bilgisine (örn. MFA, FIDO) yeniden kaydolmaya zorla
-  * Bir sonraki oturum açma sırasında MFA için istemde bulunan ' cihazda MFA 'yı anımsa ' seçeneğinin iptali
+* **[Ayrıcalıklı kimlik doğrulama Yöneticisi](#privileged-authentication-administrator)** : Bu role sahip kullanıcılar, genel yöneticiler dahil olmak üzere tüm kullanıcılar için parola olmayan kimlik bilgilerini ayarlayabilir veya sıfırlayabilir ve tüm kullanıcılar için parolaları güncelleştirebilirler. Ayrıcalıklı kimlik doğrulama yöneticileri, kullanıcıları mevcut parola olmayan kimlik bilgisine (örn. MFA, FIDO) yeniden kaydetmeye zorlayabilir ve ' cihazda MFA 'yı anımsa ' seçeneğini iptal edebilir ve tüm kullanıcıların bir sonraki oturumunda MFA için istemde bulunabilir.
 
 * **[Ayrıcalıklı rol yöneticisi](#privileged-role-administrator)** : Bu role sahip kullanıcılar, Azure Active Directory ve Azure AD Privileged Identity Management içindeki rol atamalarını yönetebilir. Ayrıca, bu rol Privileged Identity Management ve yönetim birimlerinin tüm yönlerinin yönetimine izin verir.
 

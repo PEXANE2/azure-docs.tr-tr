@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 07/10/2019
-ms.openlocfilehash: f0fb6f0d2b2579679ee8a6ec43b3241377701d48
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.date: 08/07/2019
+ms.openlocfilehash: d1ad89943f6acfec6e42199ef399643be12e2b8b
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780894"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856232"
 ---
 # <a name="enterprise-security-for-azure-machine-learning-service"></a>Azure Machine Learning hizmeti için kurumsal güvenlik
 
@@ -181,7 +181,19 @@ Her çalışma alanı, Key Vault tüm anahtarlar, gizlilikler ve sertifikalara e
 
 ## <a name="monitoring"></a>İzleme
 
-Kullanıcılar çalışma alanında gerçekleştirilen çeşitli işlemleri görmek için çalışma alanındaki etkinlik günlüğünü görebilir ve işlem adı, olay tarafından başlatılan olay, zaman damgası vb. gibi temel bilgileri alır.
+### <a name="metrics"></a>Ölçümler
+
+Azure Izleyici ölçümleri, Azure Machine Learning hizmeti çalışma alanınızın ölçümlerini görüntülemek ve izlemek için kullanılabilir. [Azure Portal](https://portal.azure.com), çalışma alanınızı seçin ve ardından __ölçümler__ bağlantısını kullanın.
+
+![Bir çalışma alanı için örnek ölçümleri gösteren ekran görüntüsü](./media/enterprise-readiness/workspace-metrics.png)
+
+Ölçümler, çalıştırmalar, dağıtımlar ve kayıtlar hakkındaki bilgileri içerir.
+
+Daha fazla bilgi için bkz. [Azure izleyici 'de ölçümler](/azure/azure-monitor/platform/data-platform-metrics).
+
+### <a name="activity-log"></a>Etkinlik günlüğü
+
+Çalışma alanında gerçekleştirilen çeşitli işlemleri görmek için etkinlik günlüğünü çalışma alanında görebilir ve işlem adı, olay tarafından başlatılan olay, zaman damgası vb. gibi temel bilgileri alın.
 
 Aşağıdaki ekran görüntüsünde bir çalışma alanı için etkinlik günlüğü gösterilmektedir:
 

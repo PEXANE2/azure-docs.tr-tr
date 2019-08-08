@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 11/13/2017
-ms.openlocfilehash: a0358859d6f806a94c529bae2eb6fa9d1ab82963
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 284dcd99dc77d7ec0fb5cb214d49b6fcf93a6aef
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60884835"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854494"
 ---
 # <a name="create-a-vm-cluster-with-terraform-and-hcl"></a>Terraform ve HCL ile VM kümesi oluşturma
 
@@ -62,7 +62,7 @@ Bu bölümde bir Azure hizmet sorumlusu ve hizmet sorumlusu kimlik bilgilerini i
 
 6. Terraform değişkenlerinin değerlerini için yeni bir dosya oluşturun. Terraform değişken dosyaları genellikle `terraform.tfvars` olarak adlandırılır. Bunun nedeni Terraform'un geçerli dizinde bulunan `terraform.tfvars` adlı (veya `*.auto.tfvars` düzenine sahip) tüm dosyaları otomatik olarak yüklemesidir. 
 
-7. Aşağıdaki kodu değişken dosyanıza kopyalayın. Yer tutucuları gibi değiştirdiğinizden emin olun: İçin `subscription_id`, çalıştırıldığında, belirtilen Azure abonelik kimliği kullanan `az account set`. `tenant_id` için `az ad sp create-for-rbac` komutunun döndürdüğü `tenant` değerini kullanın. `client_id` için `az ad sp create-for-rbac` komutunun döndürdüğü `appId` değerini kullanın. `client_secret` için `az ad sp create-for-rbac` komutunun döndürdüğü `password` değerini kullanın.
+7. Aşağıdaki kodu değişken dosyanıza kopyalayın. Yer tutucuları aşağıdaki gibi değiştirdiğinizden emin olun: İçin `subscription_id`, çalıştırırken `az account set`belirttiğiniz Azure abonelik kimliğini kullanın. `tenant_id` için `az ad sp create-for-rbac` komutunun döndürdüğü `tenant` değerini kullanın. `client_id` için `az ad sp create-for-rbac` komutunun döndürdüğü `appId` değerini kullanın. `client_secret` için `az ad sp create-for-rbac` komutunun döndürdüğü `password` değerini kullanın.
 
    ```tf
    subscription_id = "<azure-subscription-id>"
@@ -103,7 +103,7 @@ Bu bölümde altyapınız için kaynak tanımlarını içeren dosyayı oluştura
     name                         = "publicIPForLB"
     location                     = "${azurerm_resource_group.test.location}"
     resource_group_name          = "${azurerm_resource_group.test.name}"
-    public_ip_address_allocation = "static"
+    allocation_method            = "Static"
    }
 
    resource "azurerm_lb" "test" {

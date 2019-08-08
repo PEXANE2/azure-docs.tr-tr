@@ -9,11 +9,6 @@
     - name: Bu hizmet nasıl çalışır?
       displayName: 'architecture, concepts, definitions, glossary'
       href: concept-azure-machine-learning-architecture.md
-- name: Kurulum
-  items:
-    - name: Çalışma alanı oluşturma
-      displayName: install sdk workspace
-      href: setup-create-workspace.md
 - name: Öğreticiler
   items:
     - name: Python SDK'sı

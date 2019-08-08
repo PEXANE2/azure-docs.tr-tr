@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 07/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 5409ed799454a6bb64077ee884065fc518556142
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 03918976935f9071ba2a7951e29195118943a8ef
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227820"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68845840"
 ---
 # <a name="about-azure-migrate"></a>Azure Geçişi Hakkında
 
@@ -41,16 +41,16 @@ Azure geçişi, yerel Azure araçlarına ek olarak çeşitli ISV teklifleri ile 
 
 **'YE** | **Özelliği**
 --- | ---
-[Cloudamize](https://www.cloudamize.com/platform) | Değerlendirme
-[Cihaz 42](https://docs.device42.com/) | Değerlendirme
-[Turbonomic](https://learn.turbonomic.com/azure-migrate-portal-free-trial) | Değerlendirme
-[Unifrivcloud](https://www.cloudatlasinc.com/cloudrecon/) | Değerlendirme
+[Cloudamize](https://www.cloudamize.com/platform) | Değerlendir
+[Cihaz 42](https://docs.device42.com/) | Değerlendir
+[Turbonomic](https://learn.turbonomic.com/azure-migrate-portal-free-trial) | Değerlendir
+[Unifrivcloud](https://www.cloudatlasinc.com/cloudrecon/) | Değerlendir
 [Corent teknolojisi](https://www.corenttech.com/AzureMigrate/) | Değerlendirin ve geçirin
 [Carbonite](https://www.carbonite.com/globalassets/files/datasheets/carb-migrate4azure-microsoft-ds.pdf) | Geçiş
 
 ### <a name="selecting-an-isv-tool"></a>ISV aracı seçme
 
-Bir Azure geçişi projesine ISV aracı ekledikten sonra, bir lisans alarak ve ISV ilkesine uygun olarak ücretsiz bir denemeye kaydolarak araca başlayın. Her araçta Azure geçişi 'ne bağlanma seçeneği vardır. Aracı Azure geçişi ile bağlamak için araç yönergelerini ve belgeleri izleyin.
+Bir Azure geçişi projesine ISV aracı ekledikten sonra, bir lisans alarak ve ISV ilkesine uygun olarak ücretsiz bir denemeye kaydolarak araca başlayın. Her araçta Azure geçişi 'ne bağlanma seçeneği vardır. Aracı Azure geçişi ile bağlamak için araç yönergelerini ve belgeleri izleyin. ISV araçları için lisanslama, ISV lisanslama modeline göre belirlenir.
 
 ## <a name="azure-migrate-server-assessment"></a>Azure geçişi sunucu değerlendirmesi
 

@@ -11,12 +11,12 @@ ms.author: sihhu
 ms.reviewer: trbye
 ms.date: 07/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6692f64dc7e7fa2799f9095af39171a2ddc0e76d
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: aacb7cbaf3d5864d39d00bc341615f2a0e4e82f2
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360910"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855910"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>Öğretici: Gerileme modelleme için verileri hazırlama
 
@@ -56,7 +56,7 @@ Kendi bulut tabanlı Not defteri sunucunuza kolayca başlamak kolaydır. Python 
 
 Bilgisayarınızda yerel bir Jupyter not defteri sunucusu oluşturmak için aşağıdaki adımları kullanın.  Adımları tamamladıktan sonra **öğreticiler/Regression-part1-Data-Prep. ipynb** Not defterini çalıştırın.
 
-1. Bir Miniconda ortamı oluşturmak ve SDK 'Yı yüklemek için [Azure Machine Learning Python hızlı başlangıç](setup-create-workspace.md#sdk) ' deki yükleme adımlarını doldurun.  İsterseniz **çalışma alanı oluştur** bölümünün atlanmasını atlayabilirsiniz, ancak bu öğretici serisinin [2. bölümünde](tutorial-auto-train-models.md) olması gerekir.
+1. [Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)'daki yükleme adımlarını doldurun.
 1. SDK 'yı yüklediğinizde paket otomatik olarak yüklenir. `azureml-dataprep`
 1. [GitHub deposunu](https://aka.ms/aml-notebooks) kopyalayın.
 
@@ -100,10 +100,11 @@ import azureml.dataprep as dprep
 
 ```python
 from IPython.display import display
-dataset_root = "https://dprepdata.blob.core.windows.net/demo"
 
-green_path = "/".join([dataset_root, "green-small/*"])
-yellow_path = "/".join([dataset_root, "yellow-small/*"])
+green_path = "https://dprepdata.blob.core.windows.net/demo/green-small/*"])
+yellow_path = "https://dprepdata.blob.core.windows.net/demo/yellow-small/*"])
+
+# (optional) Download and view a subset of the data: https://dprepdata.blob.core.windows.net/demo/green-small/green_tripdata_2013-08.csv
 
 green_df_raw = dprep.read_csv(
     path=green_path, header=dprep.PromoteHeadersMode.GROUPED)
@@ -113,9 +114,6 @@ yellow_df_raw = dprep.auto_read_file(path=yellow_path)
 display(green_df_raw.head(5))
 display(yellow_df_raw.head(5))
 ```
-
-> [!Note]
-> Aynı örnekteki URL Bu bir URL değil. Bunun yerine, blob 'daki demo klasörünü ifade eder. Bazı verilerin tam URL 'SI https://dprepdata.blob.core.windows.net/demo/green-small/green_tripdata_2013-08.csv
 
 Bir `Dataflow` nesne bir veri çerçevesine benzerdir ve veriler üzerinde geç tarafından değerlendirilen, sabit bir işlem dizisi temsil eder. İşlemler, farklı dönüştürme ve filtreleme yöntemleri çağrılarak eklenebilir. Bir `Dataflow` işlemi öğesine eklemenin sonucu her zaman yeni `Dataflow` bir nesnedir.
 

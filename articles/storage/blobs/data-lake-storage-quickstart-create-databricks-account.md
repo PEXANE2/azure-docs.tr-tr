@@ -1,44 +1,44 @@
 ---
-title: 'Hızlı Başlangıç: Azure Databricks kullanarak verileri Azure Data Lake depolama Gen2 çözümleme | Microsoft Docs'
-description: Azure portalı ve Azure Data Lake depolama Gen2'ye depolama hesabınız kullanarak Azure Databricks'te Spark işini çalıştırma öğrenin.
-services: storage
+title: 'Hızlı Başlangıç: Azure Databricks kullanarak Azure Data Lake Storage 2. verileri analiz etme | Microsoft Docs'
+description: Azure portal ve Azure Data Lake Storage 2. depolama hesabı kullanarak Azure Databricks Spark işini çalıştırmayı öğrenin.
 author: normesta
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
 ms.date: 02/15/2019
-ms.openlocfilehash: d27f89b5a6f6da0732b98fe7b15793e80d491038
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.reviewer: jeking
+ms.openlocfilehash: a1e7ee4f81f2b40b804ee69c8366ca87c377e6ac
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67357488"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855490"
 ---
-# <a name="quickstart-analyze-data-in-azure-data-lake-storage-gen2-by-using-azure-databricks"></a>Hızlı Başlangıç: Azure Databricks kullanarak Azure Data Lake depolama Gen2 verileri çözümleme
+# <a name="quickstart-analyze-data-in-azure-data-lake-storage-gen2-by-using-azure-databricks"></a>Hızlı Başlangıç: Azure Data Lake Storage 2. Azure Databricks kullanarak verileri çözümleme
 
-Bu hızlı başlangıçta, Azure Data Lake depolama Gen2'ye etkin olan bir depolama hesabına depolanan veriler üzerinde analiz gerçekleştirmek için Azure Databricks kullanarak bir Apache Spark işi çalıştırma işlemini göstermektedir.
+Bu hızlı başlangıçta, Azure Data Lake Storage 2. etkin olan bir depolama hesabında depolanan verileri analiz etmek için Azure Databricks kullanarak Apache Spark işi çalıştırma işlemi gösterilmektedir.
 
-Spark işi bir parçası olarak, demografiye dayalı ücretsiz/Ücretli kullanımı hakkında Öngörüler elde etmek için bir radyo kanalının abonelik verilerini analiz.
+Spark işinin bir parçası olarak, demografik tabanlı ücretsiz/ücretli kullanıma yönelik Öngörüler elde etmek için bir radyo kanalı abonelik verilerini çözümleyebilirsiniz.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Bir Data Lake Gen2'ye depolama hesabı oluşturun. Bkz: [hızlı başlangıç: Bir Azure Data Lake depolama Gen2'ye depolama hesabı oluşturma](data-lake-storage-quickstart-create-account.md)
+* Data Lake Gen2 depolama hesabı oluşturun. Bkz [. hızlı başlangıç: Azure Data Lake Storage 2. depolama hesabı oluşturma](data-lake-storage-quickstart-create-account.md)
 
-  Depolama hesabı adı, bir metin dosyasına yapıştırın. Yakında gerekir.
+  Depolama hesabının adını bir metin dosyasına yapıştırın. Yakında ihtiyacınız olacak.
 
-* Bir hizmet sorumlusu oluşturun. Bkz: [nasıl yapılır: Azure AD'yi kaynaklara erişebilen uygulaması ve hizmet sorumlusu oluşturmak için portalı kullanma](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+* Hizmet sorumlusu oluşturun. Bkz [. nasıl yapılır: Kaynaklara](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)ERIŞEBILEN bir Azure AD uygulaması ve hizmet sorumlusu oluşturmak için portalını kullanın.
 
-  Birkaç, bu makaledeki adımları gerçekleştirmek olarak gerçekleştirmeniz yeterli belirli bir şey yoktur.
+  Söz konusu makaledeki adımları gerçekleştirirken yapmanız gereken birkaç şey vardır.
 
-  :heavy_check_mark: Adımları gerçekleştirirken [uygulamanızı bir role atama](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) bölümü makalenin atadığınızdan emin olun **depolama Blob verileri katkıda bulunan** rolüne hizmet sorumlusu.
+  :heavy_check_mark: Makalenin [role uygulamayı atama](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) bölümünde bulunan adımları gerçekleştirirken, **Depolama Blobu veri katılımcısı** rolünü hizmet sorumlusuna atadığınızdan emin olun.
 
   > [!IMPORTANT]
-  > Data Lake depolama Gen2'ye depolama hesabı kapsamında bir rol atamak emin olun. Üst kaynak grubuna veya aboneliğe rol atayabilir, ancak bu rol atamaları depolama hesabına dolmaya başladığını kadar izinleri ile ilgili hataları alırsınız.
+  > Rolü Data Lake Storage 2. depolama hesabının kapsamına atadığınızdan emin olun. Üst kaynak grubuna veya aboneliğine bir rol atayabilirsiniz, ancak bu rol atamaları depolama hesabına yayana kadar izinlerle ilgili hatalar alırsınız.
 
-  :heavy_check_mark: Adımları gerçekleştirirken [oturum açma için değerleri alma](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) makalesi, Yapıştır Kiracı kimliği, uygulama kimliği ve parola değerlerini bir metin dosyasına bölümü. Bu kısa süre içinde olması gerekir.
+  :heavy_check_mark: Makalenin [oturum açma için değerleri Al](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) bölümünde bulunan adımları gerçekleştirirken, Kiracı kimliği, uygulama kimliği ve parola değerlerini bir metin dosyasına yapıştırın. Bu kadar yakında ihtiyacınız olacak.
 
 ## <a name="create-an-azure-databricks-workspace"></a>Azure Databricks çalışma alanı oluşturma
 
@@ -62,7 +62,7 @@ Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı
     |**Location**     | **Batı ABD 2**'yi seçin. Tercih ettiğiniz başka bir genel bölgeyi seçebilirsiniz.        |
     |**Fiyatlandırma Katmanı**     |  **Standart** veya **Premium** arasında seçim yapın. Bu katmanlar hakkında daha fazla bilgi için bkz. [Databricks fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/databricks/).       |
 
-3. Hesabın oluşturulması birkaç dakika sürer. İşlem durumunu izlemek için üst kısmında ilerleme çubuğunu görüntüleyin.
+3. Hesabın oluşturulması birkaç dakika sürer. İşlem durumunu izlemek için üstteki ilerleme çubuğunu görüntüleyin.
 
 4. **Panoya sabitle**’yi ve sonra **Oluştur**’u seçin.
 
@@ -81,7 +81,7 @@ Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı
     Aşağıdakiler dışında diğer tüm varsayılan değerleri kabul edin:
 
     * Küme için bir ad girin.
-    * Bir küme oluşturun **5.1** çalışma zamanı.
+    * **5,1** çalışma zamanına sahip bir küme oluşturun.
     * **120 dakika işlem yapılmadığında sonlandır** onay kutusunu seçtiğinizden emin olun. Küme kullanılmazsa kümenin sonlandırılması için biz süre (dakika cinsinden) belirtin.
 
 4. **Küme oluştur**’u seçin. Küme çalışmaya başladıktan sonra kümeye not defterleri ekleyebilir ve Spark işleri çalıştırabilirsiniz.
@@ -104,7 +104,7 @@ Bu bölümde, Azure Databricks çalışma alanında bir not defteri oluşturacak
 
     **Oluştur**’u seçin.
 
-4. Kopyala ve ilk hücreye aşağıdaki kod bloğu yapıştırın, ancak bu kodun henüz çalışmıyor.
+4. Aşağıdaki kod bloğunu kopyalayıp ilk hücreye yapıştırın, ancak henüz bu kodu çalıştırmayın.
 
    ```scala
    spark.conf.set("fs.azure.account.auth.type.<storage-account-name>.dfs.core.windows.net", "OAuth")
@@ -119,14 +119,14 @@ Bu bölümde, Azure Databricks çalışma alanında bir not defteri oluşturacak
    ```
 
     > [!NOTE]
-    > Data Lake Gen2 uç noktası doğrudan erişir OAuth kullanarak bu kod bloğu, ancak Databricks çalışma alanı, Data Lake depolama Gen2 hesabınıza bağlanmak için farklı yöntemleri vardır. Örneğin, OAuth kullanarak dosya sistemini bağlamalarına veya paylaşılan anahtar ile doğrudan bir erişim kullanın. <br>Bu yaklaşımların örneklerini görmek için bkz: [Azure Data Lake depolama Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) makale Azure Databricks Web sitesinde.
+    > Bu kod bloğu, OAuth kullanarak Data Lake Gen2 uç noktasına doğrudan erişir, ancak Databricks çalışma alanını Data Lake Storage 2. hesabınıza bağlamak için başka yollar vardır. Örneğin, OAuth kullanarak dosya sistemini bağlayabilir veya paylaşılan anahtarla doğrudan erişim kullanabilirsiniz. <br>Bu yaklaşımlara yönelik örnekleri görmek için Azure Databricks Web sitesindeki [Azure Data Lake Storage 2.](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) makalesine bakın.
 
-5. Bu kod bloğunda değiştirin `storage-account-name`, `appID`, `password`, ve `tenant-id` Bu kod bloğu içinde yer tutucu değerlerini, hizmet sorumlusu oluştururken, toplanan değerlere sahip. Ayarlama `file-system-name` örneğin adı için yer tutucu değerini istediğiniz dosya sistemi sağlar.
+5. Bu kod bloğunda, bu kod bloğundaki `storage-account-name` `password`, `appID`, ve `tenant-id` yer tutucu değerlerini hizmet sorumlusunu oluştururken topladığınız değerlerle değiştirin. `file-system-name` Yer tutucu değerini, dosya sistemine vermek istediğiniz herhangi bir ada ayarlayın.
 
     > [!NOTE]
-    > Bir üretim ayarında, Azure Databricks'te, kimlik doğrulama anahtarı depolamayı düşünün. Ardından, kimlik doğrulama anahtarı yerine, kod bloğu için bir arama anahtarı ekleyin. Bu hızlı başlangıcı tamamladıktan sonra bkz [Azure Data Lake depolama Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) makalede bu yaklaşım örneklerini görmek için Azure Databricks Web sitesinde.
+    > Bir üretim ayarında, kimlik doğrulama anahtarınızı Azure Databricks ' de depolamayı göz önünde bulundurun. Ardından, kimlik doğrulama anahtarı yerine kod blosonra bir arama anahtarı ekleyin. Bu hızlı başlangıcı tamamladıktan sonra, bu yaklaşımın örneklerini görmek için Azure Databricks Web sitesindeki [Azure Data Lake Storage 2.](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) makalesine bakın.
 
-6. Tuşuna **SHIFT + ENTER** bu blok kodu çalıştırmak için anahtarları.
+6. Bu bloktaki kodu çalıştırmak için **SHIFT + enter** tuşlarına basın.
 
 ## <a name="ingest-sample-data"></a>Örnek verileri ekleme
 
@@ -136,13 +136,13 @@ Aşağıdaki kodu bir not defteri hücresine girin:
 
     %sh wget -P /tmp https://raw.githubusercontent.com/Azure/usql/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json
 
-Hücre içine basın **SHIFT + ENTER** kodu çalıştırmak için.
+Hücrede, kodu çalıştırmak için **SHIFT + enter** tuşlarına basın.
 
-Şimdi bunun altında yeni bir hücreye aşağıdaki kodu girin ve daha önce kullandığınız aynı değerlerle köşeli ayraçlar içindeki görülen değerleri değiştirin:
+Şimdi bu değerin altındaki yeni bir hücrede aşağıdaki kodu girin ve köşeli ayraçlar içinde görüntülenen değerleri daha önce kullandığınız değerlerle değiştirin:
 
     dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfss://<file-system>@<account-name>.dfs.core.windows.net/")
 
-Hücre içine basın **SHIFT + ENTER** kodu çalıştırmak için.
+Hücrede, kodu çalıştırmak için **SHIFT + enter** tuşlarına basın.
 
 ## <a name="run-a-spark-sql-job"></a>Spark SQL işi çalıştırma
 
@@ -175,7 +175,7 @@ Verilerde bir Spark SQL işi çalıştırmak için aşağıdaki görevleri gerç
 
     ![Örnek JSON verileri](./media/data-lake-storage-quickstart-create-databricks-account/databricks-sample-csv-data.png "Sample JSON data")
 
-    Diğer ayrıntılara ek olarak, örnek veriler bir radyo kanalının dinleyicilerinin yakalar (sütun adı **cinsiyet**) ve ücretsiz veya Ücretli aboneliğini olup (sütun adı **düzeyi**).
+    Diğer ayrıntıların yanı sıra, örnek veriler bir radyo kanalının (sütun adı, **cinsiyet**) hedef kitlesinin cinsiyetini ve aboneliğin ücretsiz mi yoksa ücretli mi (sütun adı, **düzey**) olduğunu yakalar.
 
 4. Bu durumda, bu verilerin her bir cinsiyet, ücretsiz hesaba sahip kullanıcı sayısı ve ücretli hesabı olan abone sayısı için gösterilecek görsel bir açıklamasını oluşturursunuz. Tablo çıktısının alt kısmında bulunan **Çubuk grafik** simgesine ve sonra **Çizim Seçenekleri**’ne tıklayın.
 
@@ -198,11 +198,11 @@ Verilerde bir Spark SQL işi çalıştırmak için aşağıdaki görevleri gerç
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu makaleyle bitirdikten sonra kümeyi sonlandırabilirsiniz. Azure Databricks çalışma alanında **Kümeler**'i seçin ve sonlandırmak istediğiniz kümeyi bulun. Fare imlecini **Eylemler** sütununun altındaki üç noktanın üzerine götürün ve **Sonlandır** simgesini seçin.
+Bu makaleyle işiniz bittiğinde kümeyi sonlandırabilirsiniz. Azure Databricks çalışma alanında **Kümeler**'i seçin ve sonlandırmak istediğiniz kümeyi bulun. Fare imlecini **Eylemler** sütununun altındaki üç noktanın üzerine götürün ve **Sonlandır** simgesini seçin.
 
 ![Databricks kümesini durdurma](./media/data-lake-storage-quickstart-create-databricks-account/terminate-databricks-cluster.png "Databricks kümesini durdurma")
 
-Kümeyi el ile sonlandırmazsanız seçtiğiniz sağlanan bunu otomatik olarak durdurulur **sonra Sonlandır \_ \_ yapılmadan geçecek dakika cinsinden** küme oluşturulurken onay kutusu. Bu seçeneği belirlerseniz küme belirtilen zaman boyunca devre dışı olması halinde durdurulur.
+Otomatik olarak durduğu kümeyi el ile sonlandırdıysanız, kümeyi oluştururken süre **etkinlik süresi dolduktan \_ sonra \_ Sonlandır** onay kutusunu işaretlediyseniz. Bu seçeneği belirlerseniz küme belirtilen zaman boyunca devre dışı olması halinde durdurulur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

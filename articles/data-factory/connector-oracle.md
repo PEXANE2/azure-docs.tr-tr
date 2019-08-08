@@ -248,7 +248,7 @@ Verileri Oracle 'a kopyalamak için kopyalama etkinliğindeki havuz türünü ol
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Kopyalama etkinliği havuzunun Type özelliği olarak `OracleSink`ayarlanmalıdır. | Evet |
+| type | Kopyalama etkinliği havuzunun Type özelliği olarak `OracleSink`ayarlanmalıdır. | Evet |
 | writeBatchSize | Arabellek boyutu ulaştığında `writeBatchSize`SQL tablosuna veri ekler.<br/>İzin verilen değerler Integer (satır sayısı). |Hayır (varsayılan değer 10.000) |
 | writeBatchTimeout | Toplu iş ekleme işleminin, zaman aşımına uğramadan önce tamamlaması için bekleme süresi.<br/>İzin verilen değerler TimeSpan. Örnek olarak 00:30:00 (30 dakika). | Hayır |
 | preCopyScript | Kopyalama etkinliği için, her çalıştırmada verileri Oracle 'a yazmadan önce çalıştırılacak bir SQL sorgusu belirtin. Bu özelliği, önceden yüklenmiş verileri temizlemek için kullanabilirsiniz. | Hayır |

@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 05/16/2019
+ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: c01e138c8afcdd59fcb0c87f189d98bec10e16d7
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 13f80b42ef6dfd0c70067a3ecf5f3e172527a63f
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828145"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68846536"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix profil kapsayıcıları ve Azure dosyaları
 
@@ -75,13 +75,13 @@ S2D kümeleri, güvenli bir durumda düzeltme eki uygulanmış, güncelleştiril
 
 Alma işlemi, Microsoft, FSLogix profil kapsayıcılarıyla UPD gibi mevcut kullanıcı profili çözümlerini değiştirmeye başladı.
 
-## <a name="azure-files-integration-with-azure-active-directory"></a>Azure Active Directory ile Azure dosyaları tümleştirmesi
+## <a name="azure-files-integration-with-azure-active-directory-domain-service"></a>Azure Active Directory etki alanı hizmeti ile Azure dosyaları tümleştirmesi
 
-FSLogix profil kapsayıcıları performansı ve özellikleri buluttan faydalanır. 24 Eylül 2018 ' de Microsoft Azure dosyalar [Azure Active Directory kimlik doğrulamasını destekleyen Azure dosyalarının](https://azure.microsoft.com/blog/azure-active-directory-integration-for-smb-access-now-in-public-preview/)genel bir önizlemesini duyurmuştur. Hem maliyet hem de yönetim yükünü ele alarak, Azure Active Directory kimlik doğrulaması ile Azure dosyaları, yeni Windows sanal masaüstü hizmetindeki Kullanıcı profilleri için bir Premium çözümdür.
+FSLogix profil kapsayıcılarının performansı ve özellikleri buluttan faydalanır. 7 Ağustos 2019 ' de Microsoft Azure dosyalar [Azure Active Directory etki alanı hizmeti (AD DS) Ile Azure dosyaları kimlik doğrulamasının](/articles/storage/files/storage-files-active-directory-overview.md)genel kullanıma sunulduğunu duyurmuştur. Hem maliyet hem de yönetim yükünü ele alarak Azure AD DS kimlik doğrulaması ile Azure dosyaları, Windows sanal masaüstü hizmetindeki Kullanıcı profillerine yönelik bir Premium çözümdür.
 
 ## <a name="best-practices-for-windows-virtual-desktop"></a>Windows sanal masaüstü için en iyi yöntemler
 
-Windows sanal masaüstü, müşteriler tarafından kullanılmakta olan VM 'lerin boyutu, türü ve sayısı üzerinde tam denetim sağlar. Daha fazla bilgi için bkz. [Windows sanal masaüstü önizlemesi nedir?](https://docs.microsoft.com/azure/virtual-desktop/overview).
+Windows sanal masaüstü, müşteriler tarafından kullanılmakta olan VM 'lerin boyutu, türü ve sayısı üzerinde tam denetim sağlar. Daha fazla bilgi için bkz. [Windows sanal masaüstü önizlemesi nedir?](overview.md).
 
 Windows sanal masaüstü ortamınızın en iyi yöntemleri takip edin:
 
@@ -94,11 +94,11 @@ Windows sanal masaüstü ortamınızın en iyi yöntemleri takip edin:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Windows sanal masaüstü ortamı ayarlamak için aşağıdaki yönergeleri kullanın.
+Windows sanal masaüstü ortamı ayarlamak için aşağıdaki kılavuzlardan yararlanabilirsiniz.
 
-- Masaüstü Sanallaştırma çözümünüzü oluşturmaya başlamak için bkz. [Windows sanal masaüstü 'nde kiracı oluşturma](https://docs.microsoft.com/azure/virtual-desktop/tenant-setup-azure-active-directory).
-- Windows sanal masaüstü kiracınızda bir konak havuzu oluşturmak için bkz. [Azure Marketi ile konak havuzu oluşturma](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-azure-marketplace).
-- Bulutta tam olarak yönetilen dosya paylaşımları ayarlamak için bkz. [Azure dosyaları paylaşımını ayarlama](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-enable).
-- FSLogix profil kapsayıcılarını yapılandırmak için bkz. [bir konak havuzu için Kullanıcı profili paylaşma ayarlama](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-user-profile).
-- Kullanıcıları bir konak havuzuna atamak için bkz. [Windows sanal masaüstü için uygulama gruplarını yönetme](https://docs.microsoft.com/azure/virtual-desktop/manage-app-groups).
-- Windows sanal masaüstü kaynaklarınıza bir Web tarayıcısından erişmek için bkz. [Windows sanal masaüstüne bağlanma](https://docs.microsoft.com/azure/virtual-desktop/connect-web).
+- Masaüstü Sanallaştırma çözümünüzü oluşturmaya başlamak için bkz. [Windows sanal masaüstü 'nde kiracı oluşturma](tenant-setup-azure-active-directory.md).
+- Windows sanal masaüstü kiracınızda bir konak havuzu oluşturmak için bkz. [Azure Marketi ile konak havuzu oluşturma](create-host-pools-azure-marketplace.md).
+- Bulutta tam olarak yönetilen dosya paylaşımları ayarlamak için bkz. [Azure dosyaları paylaşımını ayarlama](/articles/storage/files/storage-files-active-directory-enable.md).
+- FSLogix profil kapsayıcılarını yapılandırmak için bkz. [bir konak havuzu için Kullanıcı profili paylaşma ayarlama](create-host-pools-user-profile.md).
+- Kullanıcıları bir konak havuzuna atamak için bkz. [Windows sanal masaüstü için uygulama gruplarını yönetme](manage-app-groups.md).
+- Windows sanal masaüstü kaynaklarınıza bir Web tarayıcısından erişmek için bkz. [Windows sanal masaüstüne bağlanma](connect-web.md).

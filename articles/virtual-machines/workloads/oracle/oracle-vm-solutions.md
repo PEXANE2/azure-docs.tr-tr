@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/23/2019
 ms.author: rogirdh
 ms.custom: seodec18
-ms.openlocfilehash: f13c7e6db2bf13c0547ee8689e22c9f04fe6d511
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 44fb955c4539a3330386c38a7798c9f3c3fed2d9
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68826766"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68846057"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Microsoft Azure Oracle VM görüntüleri ve bunların dağıtımı
 
@@ -91,7 +91,7 @@ Oracle Database Enterprise Edition için yüksek kullanılabilirlik ve olağanü
 
 [Azure 'Da Oracle Data Guard 'ı uygulama](configure-oracle-dataguard.md) öğreticisinde, Azure 'da temel kurulum yordamında size adım adım yol gösterilir.  
 
-Oracle Data Guard ile yüksek kullanılabilirlik, bir sanal makinedeki birincil veritabanıyla, başka bir sanal makinedeki ikincil (bekleme) bir veritabanında ve aralarında tek yönlü bir çoğaltmanın ayarlanmasıyla elde edilebilir. Sonuç, veritabanının kopyasına okuma erişimdir. Oracle GoldenGate ile iki veritabanı arasında çift yönlü çoğaltmayı yapılandırabilirsiniz. Bu araçları kullanarak veritabanınız için yüksek kullanılabilirliğe sahip bir çözüm ayarlamayı öğrenmek için Oracle Web sitesindeki [Active Data Guard](https://www.oracle.com/technetwork/database/features/availability/data-guard-documentation-152848.html) ve [GoldenGate](https://docs.oracle.com/goldengate/1212/gg-winux/index.html) belgeleri bölümüne bakın. Veritabanının kopyasına okuma/yazma erişimi gerekiyorsa, [Oracle Active Data Guard](https://www.oracle.com/uk/products/database/options/active-data-guard/overview/index.html)' ı kullanabilirsiniz.
+Oracle Data Guard ile yüksek kullanılabilirlik, bir sanal makinedeki birincil veritabanıyla, başka bir sanal makinedeki ikincil (bekleme) bir veritabanında ve aralarında tek yönlü bir çoğaltmanın ayarlanmasıyla elde edilebilir. Sonuç, veritabanının kopyasına okuma erişimdir. Oracle GoldenGate ile iki veritabanı arasında çift yönlü çoğaltmayı yapılandırabilirsiniz. Bu araçları kullanarak veritabanınız için yüksek kullanılabilirliğe sahip bir çözüm ayarlamayı öğrenmek için Oracle Web sitesindeki [Active Data Guard](https://www.oracle.com/database/technologies/high-availability/dataguard.html) ve [GoldenGate](https://docs.oracle.com/goldengate/1212/gg-winux/index.html) belgeleri bölümüne bakın. Veritabanının kopyasına okuma/yazma erişimi gerekiyorsa, [Oracle Active Data Guard](https://www.oracle.com/uk/products/database/options/active-data-guard/overview/index.html)' ı kullanabilirsiniz.
 
 [Azure 'Da Oracle GoldenGate uygulayan](configure-oracle-golden-gate.md) öğretici, Azure 'daki temel kurulum yordamında size yol gösterir.
 

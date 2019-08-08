@@ -1,88 +1,88 @@
 ---
-title: 'Regresyon: Tahmin ve algoritmaları karşılaştırın'
+title: Regresyon Fiyat ve karşılaştırma algoritmalarını tahmin etme
 titleSuffix: Azure Machine Learning service
-description: Bu makalede tek satırlık bir görsel arabirim kullanarak kod yazmadan karmaşık machine learning denemesi oluşturma gösterilmektedir. Eğitim ve teknik özelliklerini temel alarak bir arabanın fiyatını tahmin etmek için birden çok regresyon modeli hakkında bilgi edinin
+description: Bu makalede, görsel arabirimi kullanarak tek bir kod satırı yazmadan karmaşık makine öğrenimi denemesinin nasıl oluşturulacağı gösterilmektedir. Bir otomobil 'nin teknik özelliklerine göre fiyatını tahmin etmek için birden çok regresyon modelini eğitme ve karşılaştırma hakkında bilgi edinin
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: article
+ms.topic: conceptual
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: aa0a1fc2acdc9687030040c23cdb1781e9529169
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 28af7b814a8d214c3529ecb12ffe25ede78b1cb6
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605683"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855928"
 ---
-# <a name="sample-2---regression-predict-price-and-compare-algorithms"></a>2 - regresyon. örnek: Tahmin ve algoritmaları karşılaştırın
+# <a name="sample-2---regression-predict-price-and-compare-algorithms"></a>Örnek 2-gerileme: Fiyat ve karşılaştırma algoritmalarını tahmin etme
 
-Tek satırlık bir görsel arabirim kullanarak kod yazmadan karmaşık machine learning denemesi oluşturmayı öğrenin. Bu örnek eğitir ve teknik özelliklerini alarak bir arabanın fiyatını tahmin etmek için birden fazla regresyon modeli karşılaştırır. Bu deneme kullanarak kendi makine öğrenimi sorunlarını gidermek şekilde yapılan seçimleri için stratejinin sağlarız.
+Görsel arabirimi kullanarak tek bir kod satırı yazmadan karmaşık makine öğrenimi denemesinin nasıl oluşturulacağını öğrenin. Bu örnek, bir arabasının teknik özelliklerine göre fiyatını tahmin etmek için birden çok regresyon modelini karşılaştırır. Kendi makine öğrenimi sorunlarınızı ortadan kaldırmak için bu deneçde yapılan seçenekler için ktionale sağlıyoruz.
 
-Yalnızca machine Learning'i kullanmaya başlıyorsanız, göz atın [temel sürümü](ui-sample-regression-predict-automobile-price-basic.md) deneme temel bir regresyon görmek için bu deneyde.
+Machine Learning 'i kullanmaya yeni başladıysanız, temel bir gerileme denemesi görmek için bu deneyin [temel sürümüne](ui-sample-regression-predict-automobile-price-basic.md) göz atabilirsiniz.
 
-Bu deneme için tamamlanan grafiği aşağıda verilmiştir:
+Bu deneme için tamamlanan grafik aşağıda verilmiştir:
 
-[![Denemeyi grafiği](media/ui-sample-regression-predict-automobile-price-compare-algorithms/graph.png)](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
+[![Deneme grafiği](media/ui-sample-regression-predict-automobile-price-compare-algorithms/graph.png)](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. Seçin **açık** düğmesi için örnek 2 deneme:
+4. Örnek 2 deneme için **Aç** düğmesini seçin:
 
     ![Denemeyi açın](media/ui-sample-regression-predict-automobile-price-compare-algorithms/open-sample2.png)
 
-## <a name="experiment-summary"></a>Deneme özeti
+## <a name="experiment-summary"></a>Deneme Özeti
 
-Bir deneme oluşturmak için aşağıdaki adımları kullanın:
+Bu adımları, denemeyi oluşturmak için kullanırız:
 
-1. Verileri elde edersiniz.
-1. Verileri önceden işleme.
+1. Verileri alın.
+1. Verileri önceden işleyin.
 1. Modeli eğitme.
-1. Test, değerlendirin ve modelleri karşılaştırın.
+1. Modelleri test edin, değerlendirin ve karşılaştırın.
 
 ## <a name="get-the-data"></a>Verileri alma
 
-Bu deneyde kullandığımız **otomobil fiyat verileri (ham)** UCI Machine Learning depodan olan veri kümesi. Bu veri kümesi, otomobil üreticisi, modeli, fiyat, araç özellikleri (silindir sayısı gibi) MPG ve sigorta risk puanı da dahil olmak üzere ilgili bilgiler içeren 26 sütunlar içeriyor. Bu deneyde amaç, bir araba fiyatını tahmin etmektir.
+Bu deneyde, kullanırsınız Machine Learning deposundan olan **otomobil fiyat verileri (ham)** veri kümesini kullanacağız. Bu veri kümesi, marka, model, Fiyat, araç özellikleri (silindir sayısı gibi), MPG ve sigorta risk puanı dahil olmak üzere otomobil 'ler hakkında bilgi içeren 26 sütun içerir. Bu denemenin hedefi, bir otomobil fiyatını tahmin etmek için kullanılır.
 
 ## <a name="pre-process-the-data"></a>Verileri önceden işleme
 
-Ana veri hazırlama görevleri, veri temizleme, tümleştirme, dönüştürme, azaltma ve ayrılma veya boyutlandırma içerir. Bu işlemleri ve diğer veri görevlerinde önceden işleme gerçekleştirmek için modülleri görsel arabirim içinde bulabilirsiniz **veri dönüştürme** sol bölmedeki grubu.
+Ana veri hazırlama görevleri, veri temizleme, tümleştirme, dönüştürme, azaltma ve ayırma ya da değerleştirme dahil olmak üzere. Görsel arabirimde, bu işlemleri gerçekleştirmek için modüller ve sol paneldeki **veri dönüştürme** grubundaki diğer veri ön işleme görevlerini bulabilirsiniz.
 
-Bu deneyde kullandığımız **kümesindeki sütunları seçme** normalleştirilmiş birçok eksik değerleri olan kayıplar dışlanacak modülü. Ardından kullandığımız **eksik verileri temizleme** eksik değerler içeren satırları kaldırmak için. Bu, temiz bir eğitim veri kümesi oluşturmak için yardımcı olur.
+Bu deneyde, çok sayıda eksik değeri olan normalleştirilmiş zararları hariç tutmak için **veri kümesindeki sütunları seçme** modülünü kullanırız. Daha sonra eksik değerleri olan satırları kaldırmak için **eksik verileri temizle** seçeneğini kullanıyoruz. Bu, temiz bir eğitim verisi kümesi oluşturulmasına yardımcı olur.
 
-![Veri ön işleme](media/ui-sample-regression-predict-automobile-price-compare-algorithms/data-processing.png)
+![Verileri önceden işleme](media/ui-sample-regression-predict-automobile-price-compare-algorithms/data-processing.png)
 
 ## <a name="train-the-model"></a>Modeli eğitme
 
-Machine learning sorunları farklılık gösterir. Sınıflandırma, kümeleme, regresyon ve her biri farklı bir algoritma gerektirebilir öneren sistemleri, ortak makine öğrenimi görevlerini içerir. Tercih ettiğiniz algoritması, genellikle kullanım örneği gereksinimlerine bağlıdır. Bir algoritma seçin sonra daha doğru bir model eğitip parametrelerini ayarlamak gerekir. Ardından tüm modellerin doğruluğu anlaşılabilirliği ve verimliliği gibi ölçümleri temel değerlendirmesi gerekir.
+Machine Learning sorunları farklılık gösterir. Ortak makine öğrenimi görevleri, her biri farklı bir algoritma gerektirebilecek sınıflandırma, kümeleme, gerileme ve öneren sistemleri içerir. Algoritma seçiminiz genellikle kullanım durumunun gereksinimlerine bağlıdır. Bir algoritma seçtikten sonra, daha doğru bir modeli eğitmek için parametrelerini ayarlamanız gerekir. Daha sonra doğruluk, intelligibility ve verimlilik gibi ölçümlere göre tüm modelleri değerlendirmelisiniz.
 
-Bu deneyde amaç, otomobil fiyatlarını tahmin etmek için olduğundan ve gerçek sayılar (Fiyat) etiketi sütun içerdiği için bir regresyon modeli iyi bir seçimdir. Birçok özellik (daha az en az 100) görece küçük olduğunu ve bu özellikleri seyrek olduğunu dikkate alarak, karar sınır doğrusal olması olasıdır.
+Bu denemenin hedefi, otomobil fiyatlarını tahmin etmek ve etiket sütunu (fiyat) gerçek sayılar içerdiğinden, regresyon modeli iyi bir seçimdir. Özellik sayısının nispeten küçük (100 ' den az) olduğunu ve bu özelliklerin seyrek olmadığı düşünüldüğünde, karar sınırının doğrusal olması olasıdır.
 
-İki doğrusal algoritması kullanırız farklı algoritmalar performansını karşılaştırmak için **artırılmış karar ağacı regresyonu** ve **karar ormanı regresyon**, modelleri oluşturabilir. Her iki algoritmaları değiştirebileceğiniz parametrelere sahip, ancak bu deneme için varsayılan değerler kullanıyoruz.
+Farklı algoritmaların performansını karşılaştırmak için, modellerden oluşan iki doğrusal algoritma kullanıyoruz, **karar ağacı gerileme** ve **karar ormanı gerilemesini**kullanırız. Her iki algoritmaların de değiştirebileceğiniz parametreleri vardır, ancak bu deneme için varsayılan değerleri kullanırız.
 
-Kullandığımız **verileri bölme** modülü rastgele giriş verileri özgün veri 70 oranında eğitim veri kümesi içerir ve özgün veriler % 30'luk test veri kümesini içeren bölme.
+**Veri ayırma** modülünü, eğitim veri kümesinin orijinal verilerin% 70 ' i içermesi ve test veri kümesinin özgün verilerin% 30 ' ü içermesi adına, giriş verilerini rastgele bölmek için kullanırız.
 
-## <a name="test-evaluate-and-compare-the-models"></a>Test, değerlendirin ve modelleri karşılaştırın
+## <a name="test-evaluate-and-compare-the-models"></a>Modelleri test edin, değerlendirin ve karşılaştırın
 
-İki farklı rastgele seçilen veri kümesi eğitmek ve sonra modeli test etmek için önceki bölümde açıklandığı gibi kullanırız. Veri kümesi bölünemiyor ve farklı veri kümelerini eğitme ve değerlendirme modelin daha fazla hedefi bulunmak üzere modelinizi test etme için kullanırız.
+Önceki bölümde açıklandığı gibi, modeli eğitmek ve test etmek için iki farklı rastgele seçilmiş veri kümesi kullanıyoruz. Modeli eğitme ve test etmek için modeli eğitmek ve test etmek üzere farklı veri kümeleri kullandık.
 
-Modeli eğitilir sonra kullandığımız **Score Model** ve **Evaluate Model** tahmini sonuçlar oluşturur ve modelleri değerlendirmek için modüller. **Modeli Puanlama** eğitilen modeli kullanarak test veri kümesi için tahminler oluşturur. Biz sonra puanlar geçirin **Evaluate Model** değerlendirme ölçümleri oluşturulacak.
+Model eğitilirken, **puan modelini** kullanır ve tahmin edilen sonuçlar oluşturmak ve modelleri değerlendirmek için **model modüllerini değerlendirin** . **Puan modeli** , eğitilen modeli kullanarak test veri kümesi için tahminler oluşturur. Daha sonra değerlendirme ölçümleri oluşturmak için **modeli değerlendirmek** üzere puanları geçiririz.
 
-Bu deneyde iki örneklerini kullanırız **Evaluate Model** modelleri iki çiftlerini karşılaştırmak için.
+Bu deneyde, iki model çiftini karşılaştırmak için iki ayrı **modeli değerlendir** örneği kullanırız.
 
-İlk olarak, iki algoritması eğitim veri kümesi üzerinde karşılaştırın.
-İkinci olarak, test veri kümesinde iki algoritması karşılaştırın.
-Sonuçları şunlardır:
+İlk olarak, eğitim veri kümesindeki iki algoritmanızı karşılaştırıyoruz.
+İkincisi, test veri kümesindeki iki algoritmanızı karşılaştırıyoruz.
+Sonuçlar şunlardır:
 
-![Sonuçları karşılaştırma](media/ui-sample-regression-predict-automobile-price-compare-algorithms/result.png)
+![Sonuçları karşılaştırın](media/ui-sample-regression-predict-automobile-price-compare-algorithms/result.png)
 
-Bu sonuçları ile derlenen modelini gösteren **artırılmış karar ağacı regresyonu** ortalama karesi alınmış hata üzerinde oluşturulan model değerinden daha düşük bir kök varsa **karar ormanı regresyon**.
+Bu sonuçlar, **Artırılmış karar ağacı gerileme** ile oluşturulan modelin, **karar ormanı gerilemesi**üzerine inşa edilen modelden daha düşük bir kök ortalama kare hatası olduğunu gösterir.
 
-Her iki algoritmaları daha düşük bir hata eğitim veri kümesi üzerinde görünmeyen sınama veri kümesi vardır.
+Her iki algoritmadaki eğitim veri kümesinde görülmeyen test veri kümesinden daha düşük bir hata vardır.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -90,10 +90,10 @@ Her iki algoritmaları daha düşük bir hata eğitim veri kümesi üzerinde gö
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Görsel bir arabirim için kullanılabilir diğer örneklerini keşfedin:
+Görsel arabirim için kullanılabilen diğer örnekleri keşfet:
 
-- [Örnek 1 - regresyon: Otomobilin fiyatını tahmin edin](ui-sample-regression-predict-automobile-price-basic.md)
-- [3 - sınıflandırma. örnek: Kredi riskini tahmin](ui-sample-classification-predict-credit-risk-basic.md)
-- [4 - sınıflandırma. örnek: (Maliyet hassas) kredi riskini tahmin](ui-sample-classification-predict-credit-risk-cost-sensitive.md)
-- [5 - sınıflandırma. örnek: Dalgalanmasını tahmin](ui-sample-classification-predict-churn.md)
-- [Örnek 6 - sınıflandırma: Uçuş gecikme tahmin edin](ui-sample-classification-predict-flight-delay.md)
+- [Örnek 1-gerileme: Bir otomobil fiyatını tahmin edin](ui-sample-regression-predict-automobile-price-basic.md)
+- [Örnek 3-sınıflandırma: Kredi riskini tahmin etme](ui-sample-classification-predict-credit-risk-basic.md)
+- [Örnek 4-sınıflandırma: Kredi riskini tahmin etme (maliyet duyarlı)](ui-sample-classification-predict-credit-risk-cost-sensitive.md)
+- [Örnek 5-sınıflandırma: Dalgalanma tahmin etme](ui-sample-classification-predict-churn.md)
+- [Örnek 6-sınıflandırma: Uçuş gecikmelerini tahmin etme](ui-sample-classification-predict-flight-delay.md)

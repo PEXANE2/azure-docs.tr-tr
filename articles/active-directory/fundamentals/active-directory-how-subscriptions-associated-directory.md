@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a64bad11f5b83ddd7f6d7236ffed4ff4a6e39c2c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: fb4fa92d8b3c174cdf9b3695f8564cc11c1ad291
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561854"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851758"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Azure Active Directory kiracınız için Azure aboneliği ekleme veya ilişkilendirme
 
@@ -66,7 +66,7 @@ Tüm kullanıcılarınızın kimlik doğrulaması için tek bir *giriş* dizini 
     Abonelik için dizinin değiştirilir ve bir başarı iletisi alın.
 
     ![Dizin değişikliği hakkında başarı iletisi](media/active-directory-how-subscriptions-associated-directory/edit-directory-success.png)
-4. Yeni dizininize gitmek için **Dizin değiştiricisini** kullanın. Her şeyin düzgün şekilde gösterilmesi birkaç saat sürebilir. Çok uzun sürmek üzere görünüyorsa, taşınan aboneliğin **genel abonelik filtresini** denetleyerek gizli olmadığından emin olun.
+4. Yeni dizininize gitmek için **Dizin değiştiricisini** kullanın. Her şeyin düzgün şekilde gösterilmesi birkaç saat sürebilir. Çok uzun sürüyor görünüyorsa, gizlenen aboneliğin gizli olmadığından emin olmak için **genel abonelik filtresini** kontrol edin. Yeni dizini görebilmeniz için Azure portal oturumunuzu kapatıp yeniden açmanız gerekebilir. 
 
     ![Örnek bilgilerle Dizin değiştirici sayfası](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
 

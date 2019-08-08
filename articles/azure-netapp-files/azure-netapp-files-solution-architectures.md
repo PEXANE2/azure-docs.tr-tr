@@ -12,17 +12,21 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/24/2019
+ms.date: 08/07/2019
 ms.author: b-juche
-ms.openlocfilehash: d4682ed375453cee4e5aa107d69c288e66cd11a7
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 03a9f61d8840149419eac2b4cf5f8d9f50ed6546
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67867414"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848769"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Azure NetApp Files kullanan çözüm mimarileri
 Bu makalede, Azure NetApp Files kullanmaya yönelik çözüm mimarilerini anlamanıza yardımcı olabilecek en iyi yöntemlere başvurular sağlanmaktadır.  
+
+## <a name="solutions-for-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmeti (AKS) için çözümler
+
+[AKS ile tümleştirme Azure NetApp Files](https://github.com/andyzhangx/demo/tree/master/linux/nfs)
 
 ## <a name="solutions-for-oracle-database"></a>Oracle veritabanı için çözümler
 

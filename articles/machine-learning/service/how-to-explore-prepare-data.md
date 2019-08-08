@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/23/2019
-ms.openlocfilehash: 31a367fcde909f393efa4fea65b25716f95c56ee
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: dbdd088e5a78a4f78eec27b5ee74856c6aecc209
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828442"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847915"
 ---
 # <a name="explore-and-prepare-data-with-the-dataset-class-preview"></a>Veri kümesi sınıfıyla verileri keşfet ve hazırlama (Önizleme)
 
@@ -31,7 +31,7 @@ Verilerinizi incelemek ve hazırlamak için şunları yapmanız gerekir:
 
 * Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning Service 'in ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
-* Bir Azure Machine Learning hizmeti çalışma alanı. Bkz. [Azure Machine Learning hizmet çalışma alanı oluşturma](https://docs.microsoft.com/azure/machine-learning/service/setup-create-workspace).
+* Bir Azure Machine Learning hizmeti çalışma alanı. Bkz. [Azure Machine Learning hizmet çalışma alanı oluşturma](how-to-manage-workspace.md).
 
 * Azureml için Azure Machine Learning SDK (sürüm 1.0.21 veya üzeri), bu, azureml veri kümesi paketini içerir. SDK 'nın en son sürümünü yüklemek veya güncelleştirmek için bkz. [SDK 'Yı yüklemek veya güncelleştirmek](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
 
@@ -131,7 +131,7 @@ Arrest|,. BOOLEAN|False|False|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 Yurt içi|,. BOOLEAN|False|False|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 Sinyal|,. INTEGER|531|2433|10.0|0.0|10.0|0.0|0.0|0.0|531|531|531|614|1318,5|1911|2433|2433|2433|1371,1|692,094|478994|0,105418|-1,60684
 Bölge|,. INTEGER|5|24|10.0|0.0|10.0|0.0|0.0|0.0|5|5|5|6|13|19|24|24|24|13.5|6,94822|48,2778|0,0930109|-1,62325
-İleri Git|,. INTEGER|1\.|48|10.0|0.0|10.0|0.0|0.0|0.0|1|5|1\.|9|22.5|40|48|48|48|24.5|16,2635|264,5|0,173723|-1,51271
+İleri Git|,. INTEGER|1\.|48|10.0|0.0|10.0|0.0|0.0|0.0|1\.|5|1\.|9|22.5|40|48|48|48|24.5|16,2635|264,5|0,173723|-1,51271
 Topluluk alan|,. INTEGER|4|77|10.0|0.0|10.0|0.0|0.0|0.0|4|8.5|4|24|37,5|71|77|77|77|41,2|26,6366|709,511|0,112157|-1,73379
 FBI kod|,. INTEGER|6|11|10.0|0.0|10.0|0.0|0.0|0.0|6|6|6|6|11|11|11|11|11|9.4|2,36643|5.6|-0,702685|-1,59582
 X koordinatı|,. INTEGER|1.16309 e + 06|1.18336 e + 06|10.0|7.0|3,0|0,7|0.0|0.0|1.16309 e + 06|1.16309 e + 06|1.16309 e + 06|1.16401 e + 06|1.16678 e + 06|1.17921 e + 06|1.18336 e + 06|1.18336 e + 06|1.18336 e + 06|1.17108 e + 06|10793,5|1.165 e + 08|0,335126|-2,33333

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 316c5b6b52c30b51fb2f177a0ae2bd9758fc91d9
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 390c961eaa692e6ca5bf26e2954c0764207fc210
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442469"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853666"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory Koşullu erişim ayarları başvurusu
 
@@ -116,19 +116,20 @@ Koşullu erişim ilkenizde **tarayıcıları** istemci uygulaması olarak seçeb
 
 Bu ayar tüm tarayıcılarla birlikte kullanılabilir. Bununla birlikte, uyumlu bir cihaz gereksinimi gibi bir cihaz ilkesini karşılamak için, aşağıdaki işletim sistemleri ve tarayıcılar desteklenir:
 
-| OS                     | Tarayıcılar                                      |
-| :--                    | :--                                           |
-| Windows 10             | Internet Explorer, Microsoft Edge, Chrome     |
-| Windows 8/8,1        | Internet Explorer, Chrome                     |
-| Windows 7              | Internet Explorer, Chrome                     |
-| iOS                    | Safari, Microsoft Edge, Intune Managed Browser |
-| Android                | Chrome, Microsoft Edge, Intune Managed Browser |
-| Windows Phone          | Internet Explorer, Microsoft Edge             |
-| Windows Server 2016    | Internet Explorer, Microsoft Edge             |
-| Windows Server 2016    | Chrome                                        |
-| Windows Server 2012 R2 | Internet Explorer, Chrome                     |
-| Windows Server 2008 R2 | Internet Explorer, Chrome                     |
-| Mac OS                  | Chrome, Safari                                |
+| OS                     | Tarayıcılar                                        |
+| :--                    | :--                                             |
+| Windows 10             | Microsoft Edge, Internet Explorer, Chrome       |
+| Windows 8/8,1        | Internet Explorer, Chrome                       |
+| Windows 7              | Internet Explorer, Chrome                       |
+| iOS                    | Microsoft Edge, Intune Managed Browser, Safari  |
+| Android                | Microsoft Edge, Intune Managed Browser, Chrome  |
+| Windows Phone          | Microsoft Edge, Internet Explorer               |
+| Windows Server 2019    | Microsoft Edge, Internet Explorer, Chrome       |
+| Windows Server 2016    | Microsoft Edge, Internet Explorer               |
+| Windows Server 2012 R2 | Internet Explorer                       |
+| Windows Server 2008 R2 | Internet Explorer                       |
+| Mac OS                  | Chrome, Safari                                  |
+
 
 #### <a name="why-do-i-see-a-certificate-prompt-in-the-browser"></a>Neden tarayıcıda bir sertifika istemi görüyorum?
 

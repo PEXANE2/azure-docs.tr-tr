@@ -3,20 +3,20 @@ title: Project Acoustics genel bakış
 titlesuffix: Azure Cognitive Services
 description: Project Acoustics, etkileşimli tasarım denetimleriyle, bakmış dalga fizik benzetimini tümleştirerek, 3B etkileşimli deneyimler için bir Acoustics altyapısıdır.
 services: cognitive-services
-author: kegodin
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: overview
 ms.date: 03/20/2019
-ms.author: kegodin
+ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: a654dd966c40b5b079f92b910ade52f4eda10344
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 382d4febed98b53a469ac2788e6e8c8cbf064c23
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68704749"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854806"
 ---
 # <a name="what-is-project-acoustics"></a>Project Acoustics nedir?
 Project Acoustics, 3B etkileşimli deneyimler için bir Wave Acoustics altyapısıdır. El ile bölge işaretlemesi gerektirmeden, karmaşık sahnelerde oylama, portallama ve yankı etkileri gibi dalga efektlerini modellemez. Ayrıca oyun altyapısı ve ses ara yazılım tümleştirmesi de içerir. Project Acoustics ' fanlar, statik aydınlatmaya benzerdir: fiziksel bir taban çizgisi sağlamak için bakmalı ve daha ayrıntılı tasarım denetimleriyle sanatsal hedeflerinizi karşılamak için basit bir çalışma zamanı kullanın.

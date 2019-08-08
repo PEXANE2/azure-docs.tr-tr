@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/07/2019
 ms.author: b-juche
-ms.openlocfilehash: 9a56fb27fdf9e196291942041d68b249d7f16648
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 7cf382f511d2ba8452d77bf207f36b749cb31e94
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839242"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848801"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Azure NetApp Files için ölçümler
 
@@ -29,27 +29,40 @@ Azure NetApp Files, ayrılan depolama, gerçek depolama alanı kullanımı, biri
 
 <!-- 
 - *Volume pool allocated size*  
-    This is the size (GiB) of the provisioned capacity pool.  
+    The size (GiB) of the provisioned capacity pool  
 --> 
 - *Ayrılan birim havuzu*  
-    Bu, belirli bir kapasite havuzundaki birim kotasının (GiB) toplamıdır (diğer bir deyişle, kapasite havuzundaki birimlerin sağlanan boyutlarının toplamıdır). Bu, birim oluşturma sırasında seçtiğiniz boyutudur.  
+    Belirli bir kapasite havuzundaki birim kotasının (GiB) toplamı (yani, kapasite havuzundaki birimlerin sağlanan boyutlarının toplamı)  
+    Bu, birim oluşturma sırasında seçtiğiniz boyutudur.  
 - *Birim havuzu toplam mantıksal boyut*  
-    Bu, bir kapasite havuzundaki birimler genelinde kullanılan mantıksal alanın (GiB) toplamıdır.  
+    Bir kapasite havuzundaki birimlerde kullanılan toplam mantıksal alan (GiB)  
 <!-- 
 - *Volume pool total snapshot size*  
-    This is the total of incremental logical space used by the snapshots.  
+    The total of incremental logical space used by the snapshots  
 -->
 
 ## <a name="volumes"></a>Birimler için kullanım ölçümleri
 
 <!-- 
 - *Volume allocated size*   
-    This is the volume size (quota) provisioned in GiB.  
+    The volume size (quota) provisioned in GiB  
 --> 
 - *Birim mantıksal boyutu*   
-    Bu, bir birimde (GiB) kullanılan toplam mantıksal alandır. Bu boyut, etkin dosya sistemleri ve anlık görüntüleri tarafından kullanılan mantıksal alanı içerir.  
+    Bir birimde kullanılan toplam mantıksal alan (GiB)  
+    Bu boyut, etkin dosya sistemleri ve anlık görüntüleri tarafından kullanılan mantıksal alanı içerir.  
 - *Birim anlık görüntü boyutu*   
-    Bu, bir birimdeki anlık görüntüler tarafından kullanılan artımlı mantıksal alandır.  
+   Bir birimdeki anlık görüntüler tarafından kullanılan artımlı mantıksal alan  
+
+## <a name="performance-metrics-for-volumes"></a>Birimler için performans ölçümleri
+
+- *AverageReadLatency*   
+    Birimdeki ortalama okuma süresi (milisaniye)
+- *AverageWriteLatency*   
+    Birimdeki ortalama yazma süresi (milisaniye)
+- *ReadIops*   
+    Birime saniye başına okuma sayısı
+- *Writeıops*   
+    Birime saniye başına yazma sayısı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

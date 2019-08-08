@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5dee966f8664bc14d81004e625ad9632066ffcb2
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: adca67152c33f4c6a3ec272b63c4c8157a777f36
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742315"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856184"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python 'da otomatik ML denemeleri yapılandırma
 
@@ -215,6 +215,9 @@ Birincil ölçüm; Yukarıdaki örneklerde gösterildiği gibi, iyileştirme iç
 Her otomatik makine öğrenimi denemesinde, verileriniz [otomatik olarak ölçeklendirilir ve](concept-automated-ml.md#preprocess) algoritmaların iyi hale getirebileceği şekilde normalleştirilir.  Ancak, eksik değerler imputation, kodlama ve dönüşümler gibi ek ön işleme/korleştirme de etkinleştirebilirsiniz. [Nelerin dahil olduğu hakkında daha fazla bilgi edinin](how-to-create-portal-experiments.md#preprocess).
 
 Bu özelliği etkinleştirmek için `"preprocess": True` [ `AutoMLConfig` sınıfı](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)için belirtin.
+
+> [!NOTE]
+> Otomatik makine öğrenimi ön işleme adımları (özellik normalleştirme, eksik verileri işleme, metni sayısal olarak dönüştürme, vb.) temel modelin bir parçası haline gelir. Tahmin için model kullanılırken, eğitim sırasında uygulanan aynı ön işleme adımları, giriş verilerinize otomatik olarak uygulanır.
 
 ### <a name="time-series-forecasting"></a>Zaman serisi tahmin
 Zaman serisi tahmin görev türü için, tanımlamanız gereken ek parametreleriniz vardır.

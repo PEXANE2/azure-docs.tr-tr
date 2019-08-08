@@ -1,20 +1,19 @@
 ---
-title: 'Azure Data Lake Storage 2. verileri yönetmek için Azure Depolama Gezgini kullanma '
+title: Azure Data Lake Storage 2. verileri yönetmek için Azure Depolama Gezgini kullanma
 description: Bu hızlı başlangıçta, bir Azure Data Lake Storage 2. hesabında bir dosya sistemi ve bir dizin ve dosya oluşturmak için Azure Depolama Gezgini kullanmayı öğreneceksiniz. Ardından, dosyanın yerel bilgisayarınıza nasıl indirileceği ve tüm dosyanın bir dizinde nasıl görüntüleneceği hakkında bilgi edineceksiniz.
-services: storage
 author: normesta
 ms.subservice: data-lake-storage-gen2
-ms.custom: mvc
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/19/2019
 ms.author: normesta
-ms.openlocfilehash: 38cc0533d3e993dd90a037ee6a504c2dcd575e6f
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.reviewer: stewu
+ms.openlocfilehash: 3450de26c12d91f4be00fe39bd5703564c786190
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360863"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855602"
 ---
 # <a name="use-azure-storage-explorer-to-manage-data-in-an-azure-data-lake-storage-gen2-account"></a>Azure Data Lake Storage 2. hesabındaki verileri yönetmek için Azure Depolama Gezgini kullanma
 

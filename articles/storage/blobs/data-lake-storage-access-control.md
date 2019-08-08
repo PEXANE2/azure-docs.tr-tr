@@ -1,7 +1,6 @@
 ---
 title: Azure Data Lake Storage 2. | erişim denetimine genel bakış | Microsoft Docs
 description: Erişim denetiminin Azure Data Lake Storage 2. nasıl çalıştığını anlama
-services: storage
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 112d3b18df8205aac173eafb8f8e30ed6c32e048
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: aa2cfbee6feeacf46003fdc244f0aeea5df0f41a
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249088"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847355"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. erişim denetimi
 
@@ -147,7 +146,7 @@ Kullanıcıların ve grupların kimlikleri, Azure Active Directory (Azure AD) ki
 * Sahip olan kullanıcı aynı zamanda hedef grubun bir üyesi oldukça, sahip olunan bir dosyanın sahibi olan grubunu değiştirme.
 
 > [!NOTE]
-> Sahip olan Kullanıcı, bir dosyanın veya dizinin sahibi olan *kullanıcısını değiştiremiyor.* Yalnızca süper kullanıcılar bir dosyanın veya dizinin sahibi olan kullanıcısını değiştirebilir.
+> Sahip olan Kullanıcı , bir dosyanın veya dizinin sahibi olan kullanıcısını değiştiremiyor. Yalnızca süper kullanıcılar bir dosyanın veya dizinin sahibi olan kullanıcısını değiştirebilir.
 
 #### <a name="the-owning-group"></a>Sahip olan grup
 

@@ -1,6 +1,6 @@
 ---
-title: Azure VM'de SQL Server sürümünden yerinde yükseltilmesini gerçekleştirme | Microsoft Docs
-description: Azure'da SQL Server VM'nize sürümü değiştirmeyi öğrenin.
+title: Azure VM 'de SQL Server sürümünün yerinde yükseltmesini gerçekleştirme | Microsoft Docs
+description: Azure 'da SQL Server VM sürümünü değiştirmeyi öğrenin.
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -14,90 +14,89 @@ ms.workload: iaas-sql-server
 ms.date: 06/26/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 05d2170fe9e6055179bf49d803d4739ddc05be89
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 04e447b7d8da1c8769239aee7650fe3bc5585590
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67607552"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855244"
 ---
-# <a name="how-to-perform-an-in-place-upgrade-of-sql-server-edition-on-azure-vm"></a>Azure VM'de SQL Server sürümünden yerinde yükseltilmesini gerçekleştirme
+# <a name="perform-an-in-place-upgrade-of-a-sql-server-edition-on-an-azure-vm"></a>Azure VM 'de SQL Server sürümünün yerinde yükseltmesini gerçekleştirme
 
-Bu makalede, azure'da Windows sanal makinesinde mevcut bir SQL Server için SQL Server sürümünü değiştirmek açıklar. 
+Bu makalede, Azure 'da bir Windows sanal makinesinde SQL Server sürümünün nasıl değiştirileceği açıklanır. 
 
-SQL Server sürümü ürün anahtarı tarafından belirlenir ve yükleme işlemi ile belirtilir. Sürüm ne belirleyen [özellikleri](/sql/sql-server/editions-and-components-of-sql-server-2017) SQL Server ürün içinde kullanılabilir. Yükleme medyasında ve maliyeti azaltın veya daha fazla özellikleri etkinleştirmek için yükseltin ya da Sürüm Düşürme SQL Server sürümüyle değiştirebilirsiniz.
+SQL Server sürümü ürün anahtarı tarafından belirlenir ve yükleme işlemiyle belirtilir. Sürüm, SQL Server üründe hangi [özelliklerin](/sql/sql-server/editions-and-components-of-sql-server-2017) kullanılabildiğini belirler. SQL Server sürümünü yükleme medyası ile değiştirebilir ve daha fazla özelliği etkinleştirmek üzere maliyeti düşürmek veya yükseltmek için düşürme yapın.
 
-SQL VM kaynak sağlayıcısı ile kaydettikten sonra yükleme medyasını kullanarak SQL Server sürümü güncelleştirdiyseniz, ardından Azure güncelleştirmek için buna uygun olarak fatura SQL Server sürümü özelliği SQL VM kaynağı şu şekilde ayarlamanız gerekir:
+SQL VM kaynak sağlayıcısına kaydolduktan sonra yükleme medyasını kullanarak SQL Server sürümünü güncelleştirdiyseniz, Azure Faturalandırma 'yi uygun şekilde güncelleştirmek için, SQL VM kaynağının SQL Server sürümü özelliğini aşağıdaki gibi ayarlamanız gerekir:
 
-1. [Azure portal](https://portal.azure.com) oturum açın. 
-1. SQL Server sanal makine kaynağınıza gidin. 
-1. Altında **ayarları**seçin **yapılandırma** ve istenen sürümünüz SQL Server'ın açılır listeden seçip **Edition**. 
+1. [Azure Portal](https://portal.azure.com) oturum açın. 
+1. SQL Server sanal makine kaynağına gidin. 
+1. **Ayarlar**altında **Yapılandır**' ı seçin. Ardından, **Sürüm**' ün altındaki açılan listeden istediğiniz SQL Server sürümünüzü seçin. 
 
-   ![Değişiklik sürümü meta verileri](media/virtual-machines-windows-sql-change-edition/edition-change-in-portal.png)
+   ![Sürüm meta verilerini değiştirme](media/virtual-machines-windows-sql-change-edition/edition-change-in-portal.png)
 
-1. SQL Server sürümü önce değiştirmeniz gerekir ve bu sürüm özelliğini SQL Server sürümü ile eşleşmelidir bildiren uyarıyı gözden geçirin. 
-1. Seçin **Uygula** sürüm meta verileri değişikliklerinizi uygulamak için. 
+1. Önce SQL Server sürümünü değiştirmeniz gerektiğini ve sürüm özelliğinin SQL Server sürümüyle eşleşmesi gerektiğini belirten uyarıyı gözden geçirin. 
+1. Sürüm meta verileri değişikliklerinizi uygulamak için **Uygula** ' yı seçin. 
 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-SQL Server sürümünün herhangi bir yerinde değişiklik yapmak için aşağıdakiler gerekir: 
+SQL Server sürümünde yerinde bir değişiklik yapmak için şunlar gerekir: 
 
 - Bir [Azure aboneliği](https://azure.microsoft.com/free/).
-- Bir Windows [SQL Server VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) kayıtlı [SQL VM kaynak sağlayıcısı](virtual-machines-windows-sql-register-with-resource-provider.md).
-- İstenen SQL Server sürümü ile medya ayarlayın. Kullanan müşteriler [Yazılım Güvencesi](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) , yükleme medyasından edinebilirsiniz [Toplu Lisanslama Merkezi](https://www.microsoft.com/Licensing/servicecenter/default.aspx). Müşterilerin sahip Yazılım Güvencesi kendi istediğiniz sürüm olan Market SQL Server VM görüntüsü Kurulum medyasından kullanabilirsiniz.
+- [SQL VM kaynak sağlayıcısına](virtual-machines-windows-sql-register-with-resource-provider.md)kayıtlı [Windows SQL Server VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) .
+- SQL Server istenen sürümü ile medyayı kurun. [Yazılım güvencesi](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) sahibi olan müşteriler, yükleme medyasını [toplu lisanslama merkezinden](https://www.microsoft.com/Licensing/servicecenter/default.aspx)elde edebilir. Yazılım Güvencesi sahibi olmayan müşteriler, istenen sürümü olan bir Azure Marketi SQL Server VM görüntüsünden kurulum medyasını kullanabilir.
 
 
-## <a name="upgrade-edition"></a>Sürüm yükseltme
+## <a name="upgrade-an-edition"></a>Sürüm yükseltme
 
-  > [!WARNING]
-  > - **SQL Server sürümüne yükseltme, Analysis Services ve R Services gibi ilişkili hizmetlerin yanı sıra, SQL Server için hizmeti yeniden başlatılır.** 
+> [!WARNING]
+> SQL Server sürümünü yükseltmek, Analysis Services ve R hizmetleri gibi ilişkili hizmetlerle birlikte SQL Server hizmetini yeniden başlatır. 
 
-SQL Server sürümüne yükseltmek için istenen SQL Server sürümünün SQL Server Kurulumu medya almak ve sonra aşağıdakileri yapın:
+SQL Server yükseltmek için, istenen SQL Server sürümü için SQL Server Kurulum medyasını edinin ve ardından aşağıdakileri yapın:
 
-1. SQL Server yükleme medyasından Setup.exe başlatın. 
-1. Gidin **Bakım** ve **sürüm yükseltme** seçeneği. 
+1. SQL Server yükleme medyasından Setup. exe dosyasını açın. 
+1. **Bakım** ' a gidin ve **sürüm yükseltme** seçeneğini belirleyin. 
 
-   ![SQL Server sürümüne yükseltin](media/virtual-machines-windows-sql-change-edition/edition-upgrade.png)
+   ![SQL Server sürümünü yükseltmek için seçim](media/virtual-machines-windows-sql-change-edition/edition-upgrade.png)
 
-1. Seçin **sonraki** ulaşana kadar **sürüm yükseltme hazır** sayfasında ve ardından **yükseltme**. Değişiklik etkisi sürüyor ve ardından görürsünüz Kurulum penceresine birkaç dakikalığına sarkabilir bir **tam** yükseltmenizi edition tamamlandığını onaylayan sayfa. 
+1. **Yükseltmeye hazırlanma** sayfasına ulaşana kadar **İleri** ' yi seçin ve ardından **Yükselt**' i seçin. Değişiklik etkinleşirken kurulum penceresi birkaç dakika yanıt vermeyi durdurabilir. **Tamamlanmış** bir sayfa, sürüm yükseltmeniz işleminin bittiğini doğrulayacaktır. 
 
-SQL Server sürümünden yükseltildikten sonra yukarıda gösterildiği gibi Azure portalında Sql sanal makinesi, "Sürüm" özelliğini değiştirmeniz gerekir; Bu meta veriler ve bu VM ile ilişkili faturalandırma güncelleştirir.
+SQL Server sürümü yükseltildikten sonra, Azure portal SQL Server sanal makinesinin sürüm özelliğini daha önce gösterildiği gibi değiştirin. Bu işlem, bu VM ile ilişkili meta verileri ve faturaları güncelleştirir.
 
-## <a name="downgrade-edition"></a>Sürüm Düşürme
+## <a name="downgrade-an-edition"></a>Sürümü düşürme
 
-  > [!WARNING]
-  > - **SQL Server sürümü önceki sürüme indirme gerektirir tamamen ek kapalı kalma süresi kaynaklanabilecek SQL Server'ı kaldırma**. 
+SQL Server sürümünün indirgenmesini sağlamak için, SQL Server tamamen kaldırmanız ve istenen sürüm kurulum medyası ile yeniden yüklemeniz gerekir.
 
+> [!WARNING]
+> SQL Server kaldırıldığında ek kesinti oluşabilir. 
 
-SQL Server sürümü indirgemek için tamamen SQL Server'ı kaldırın ve istenen sürümü Kurulum medyası ile yeniden yükleyin gerekecektir. 
+Aşağıdaki adımları izleyerek SQL Server sürümünü indirgeyebilmeniz gerekir:
 
-SQL Server sürümü, aşağıdaki adımları izleyerek düşürebilir:
-
-1. Sistem veritabanları dahil olmak üzere tüm veritabanlarını yedekleyin. 
-1. Sistem veritabanları (master, model ve msdb) yeni bir konuma taşıyın. 
+1. Sistem veritabanları da dahil olmak üzere tüm veritabanlarını yedekleyin. 
+1. Sistem veritabanlarını (ana, model ve msdb) yeni bir konuma taşıyın. 
 1. SQL Server ve tüm ilişkili hizmetleri tamamen kaldırın. 
 1. Sanal makineyi yeniden başlatın. 
-1. İstenen SQL Server sürümü ile medya kullanarak SQL Server'ı yükleyin.
-1. En son hizmet paketleri ve toplu güncelleştirmeleri yükleyin.  
-1. Daha önce farklı bir konuma taşınmış sistem veritabanları ile yükleme sırasında oluşturulan yeni sistem veritabanları değiştirin. 
+1. SQL Server istenen sürümü olan medyayı kullanarak SQL Server yükleyin.
+1. En son hizmet paketlerini ve toplu güncelleştirmeleri yükler.  
+1. Yükleme sırasında oluşturulan yeni sistem veritabanlarını, daha önce farklı bir konuma taşıdığınız sistem veritabanları ile değiştirin. 
 
-SQL Server sürümü indirgenen sonra yukarıda gösterildiği gibi Azure portalındaki SQL sanal makinesi 'Sürüm' özelliğini değiştirmeniz; Bu meta veriler ve bu VM ile ilişkili faturalandırma güncelleştirir.
+SQL Server sürümü indirgendikten sonra, Azure portal SQL Server sanal makinesinin sürüm özelliğini daha önce gösterildiği gibi değiştirin. Bu işlem, bu VM ile ilişkili meta verileri ve faturaları güncelleştirir.
 
 ## <a name="remarks"></a>Açıklamalar
 
- - Edition özellik SQL Server VM'si için tüm SQL sanal PAYG hem KLG lisans türleri dahil olmak üzere makineler için sanal makinede yüklü olan SQL Server sürümü ile eşleşmelidir.
- - SQL Server VM kaynağınızı sürüklerseniz, görüntünün sabit kodlu sürümü ayarına geri geçer.
-  - Sürümü değiştirme özelliği, SQL VM kaynak Sağlayıcısı'nın bir özelliğidir. Bir SQL Server VM, Azure portalı üzerinden bir Market görüntüsü otomatik olarak dağıtma ile kaynak sağlayıcısını kaydeder. Bununla birlikte, müşteriler, şirket içinde SQL Server yükleme el ile gerekecektir [kendi SQL Server sanal Makinesini kaydetme](virtual-machines-windows-sql-register-with-resource-provider.md).
-- Bir SQL Server VM bir kullanılabilirlik kümesine ekleme, sanal Makineyi yeniden oluşturmayı gerektirir. Kullanılabilirlik eklenmiş gibi tüm Vm'leri olarak kümesi varsayılan sürüm'e geri gider ve sürümü yeniden değiştirilmesi gerekir.
+- SQL Server VM Edition özelliği, hem Kullandıkça Öde hem de kendi lisans türlerini getir dahil olmak üzere tüm SQL Server sanal makineler için yüklenmiş SQL Server örneğinin sürümüyle eşleşmelidir.
+- SQL Server VM kaynağınızı düşürülebiliyorsanız, görüntünün sabit kodlanmış sürüm ayarına geri dönebilirsiniz.
+- Sürümü değiştirme özelliği, SQL VM kaynak sağlayıcısı 'nın bir özelliğidir. Azure Marketi görüntüsünü Azure portal aracılığıyla dağıtmak, SQL Server VM otomatik olarak kaynak sağlayıcısıyla kaydeder. Ancak, kendi kendini yükleyen SQL Server müşterilerin SQL Server VM el ile [kaydetmesi](virtual-machines-windows-sql-register-with-resource-provider.md)gerekir.
+- Bir kullanılabilirlik kümesine SQL Server VM eklendiğinde VM 'nin yeniden oluşturulması gerekir. Bir kullanılabilirlik kümesine eklenen tüm VM 'Ler varsayılan sürüme geri döner ve sürüm yeniden değiştirilmeyecektir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Daha fazla bilgi için aşağıdaki makalelere bakın: 
 
-* [Bir Windows VM üzerinde SQL Server'a genel bakış](virtual-machines-windows-sql-server-iaas-overview.md)
-* [SQL Server üzerindeki bir Windows VM ile ilgili SSS](virtual-machines-windows-sql-server-iaas-faq.md)
-* [Fiyatlandırma Kılavuzu bir Windows VM'de SQL Server](virtual-machines-windows-sql-server-pricing-guidance.md)
-* [SQL Server Windows VM sürüm notları](virtual-machines-windows-sql-server-iaas-release-notes.md)
+* [Windows VM 'de SQL Server genel bakış](virtual-machines-windows-sql-server-iaas-overview.md)
+* [Windows VM 'de SQL Server hakkında SSS](virtual-machines-windows-sql-server-iaas-faq.md)
+* [Windows VM üzerinde SQL Server için fiyatlandırma Kılavuzu](virtual-machines-windows-sql-server-pricing-guidance.md)
+* [Windows VM 'de SQL Server için sürüm notları](virtual-machines-windows-sql-server-iaas-release-notes.md)
 
 

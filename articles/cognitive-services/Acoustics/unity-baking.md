@@ -3,20 +3,20 @@ title: Project Acoustics Unity Bake öğreticisi
 titlesuffix: Azure Cognitive Services
 description: Bu öğreticide, Unity 'de Project Acoustics ile Acoustics fırlama açıklanmaktadır.
 services: cognitive-services
-author: kegodin
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: tutorial
 ms.date: 03/20/2019
-ms.author: kegodin
+ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 2362b3916d1b1f430350d975dc0b61914a777be2
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: e26df58de08d0941b5e3165852ed0b26f8890f66
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706686"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854928"
 ---
 # <a name="project-acoustics-unity-bake-tutorial"></a>Project Acoustics Unity Bake öğreticisi
 Bu öğreticide, Unity 'de Project Acoustics ile Acoustics fırlama açıklanmaktadır.
@@ -167,7 +167,7 @@ Azure Batch hizmetini kullanarak sahneye bulutta bir işlem kümesiyle bakmanız
 11. Benzetimleri çalıştırmak için gereken bilgi işlem zamanının toplam miktarı. Bu, Azure 'da kullanılacak olan düğüm işlem zamanının toplam miktarıdır. Bu değeri kullanma hakkında daha fazla bilgi için bkz. [hazırlama maliyeti tahmini](#Estimating-bake-cost) .
 12. Bu ileti, iş tamamlandığında hazırlama sonuçlarının kaydedileceği yeri belirtir.
 13. (Yalnızca Gelişmiş kullanım) Bir nedenden dolayı, gönderdiğiniz bir fırt hakkında daha fazla bilgi almak için Unity 'ye zorlamanız gerekir (örneğin, başka bir makine kullanarak sonuçları indirdiniz), gönderilen işi unutmak için **durumu temizle** düğmesine tıklayın. Bu, sonuç dosyasının hazırlandığına indirilmeyeceği anlamına gelir ve bu , **işi iptal etme ile aynı değildir**. Çalışıyorsa, iş bulutta çalışmaya devam edecektir.
-14. Fırt **düğmesine tıklayarak** , hazırlama 'yi buluta gönderebilirsiniz. Bir iş çalışırken bunun yerine **Iptal işi** gösterilir.
+14. Fırt düğmesine tıklayarak, hazırlama 'yi buluta gönderebilirsiniz. Bir iş çalışırken bunun yerine **Iptal işi** gösterilir.
 15. Bilgisayarınızda [Acoustics simülasyonu](#Local-bake)işlemeye hazırlar.
 16. Bu alan, Bake 'nin durumunu gösterir. Tamamlandığında, Indirmeli gösterilmesi gerekir.
 

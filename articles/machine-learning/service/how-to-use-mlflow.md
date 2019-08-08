@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 55722c35dddcbf8a20f4f51958170938225e87e5
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 2b59797e60585876764e8c9e1276e4fd36571b18
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668402"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856012"
 ---
 # <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-service-preview"></a>MLflow ve Azure Machine Learning hizmeti (Önizleme) ile ölçümleri izleyin ve modeller dağıtın
 
@@ -52,7 +52,9 @@ Bu makalede, Azure Machine Learning hizmetiyle [Mlflow izleme](https://mlflow.or
 ## <a name="prerequisites"></a>Önkoşullar
 
 * [MLflow 'ı yükler.](https://mlflow.org/docs/latest/quickstart.html)
-* [Azure Machine Learning Python SDK 'sını yerel bilgisayarınıza yükleyip bir Azure Machine Learning çalışma alanı oluşturun](setup-create-workspace.md#sdk). SDK, çalışma alanınıza erişmek için MLflow bağlantısını sağlar.
+* [Azure Machine Learning SDK 'sını](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) yerel BILGISAYARıNıZA yüklediğinizde SDK, çalışma alanınıza erişmek Için mlflow bağlantısını sağlar.
+* [Azure Machine Learning çalışma alanı oluşturun](how-to-manage-workspace.md).
+
 
 ## <a name="track-experiment-runs"></a>Deneme çalıştırmalarını izleyin
 
@@ -154,7 +156,7 @@ Kümenizi kümenize yüklemek için **Kitaplıklar** sekmesine gidin ve **Yeni**
 
 Kümeniz kurulduktan sonra, deneme not defterinizi içeri aktarın, açın ve kümenizi ona ekleyin.
 
-Aşağıdaki kod, deneme Not defterinizde olmalıdır. Bu, çalışma alanınızı başlatmak için Azure aboneliğinizin ayrıntılarını alır. Bu, var olan bir kaynak grubunuz ve Azure Machine Learning çalışma alanınızın olduğunu varsayar, aksi takdirde [bunları oluşturabilirsiniz](setup-create-workspace.md#portal). 
+Aşağıdaki kod, deneme Not defterinizde olmalıdır. Bu, çalışma alanınızı başlatmak için Azure aboneliğinizin ayrıntılarını alır. Bu, var olan bir kaynak grubunuz ve Azure Machine Learning çalışma alanınızın olduğunu varsayar, aksi takdirde [bunları oluşturabilirsiniz](how-to-manage-workspace.md). 
 
 ```python
 import mlflow

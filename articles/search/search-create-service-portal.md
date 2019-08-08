@@ -1,30 +1,30 @@
 ---
-title: Portal - Azure Search bir Azure Search hizmeti oluşturma
-description: Azure portalında bir Azure Search kaynak sağlayın. Kaynak grupları, bölgeler ve SKU veya fiyatlandırma katmanı seçin.
+title: Portalda bir Azure Search hizmeti oluşturun-Azure Search
+description: Azure portal bir Azure Search kaynağı sağlayın. Kaynak grupları, bölgeler ve SKU veya fiyatlandırma katmanı seçin.
 manager: cgronlun
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 07/09/2019
+ms.date: 08/09/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: d0d1dbb81f00f500f3eb95c605ed0c15c634f624
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 9de7a6fdddf732f13c8dc7ab50fd151d9f90dc20
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706820"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855811"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>Portalda Azure Search hizmeti oluşturma
 
-Azure arama, bir arama deneyimi özel uygulamalarda takın için kullanılan tek başına bir kaynaktır. Diğer Azure Hizmetleri ile Azure Search bir kolayca tümleşir olsa da, ayrıca tek başına bileşeni olarak kullanın, veya ağ sunucuları uygulamaları veya diğer bulut platformlarında çalışan yazılımı ile tümleştirin.
+Azure Search, özel uygulamalarda arama deneyimine bağlanmak için kullanılan tek başına kaynaktır. Azure Search diğer Azure hizmetleriyle kolayca tümleştirilebilse de, bunu tek başına bir bileşen olarak kullanabilir veya ağ sunucularındaki uygulamalarla veya diğer bulut platformlarında çalışan yazılımlarla tümleştirebilirsiniz.
 
-Bu makalede, bir Azure Search kaynağı oluşturmayı öğrenin [Azure portalında](https://portal.azure.com/).
+Bu makalede, [Azure portal](https://portal.azure.com/)Azure Search kaynağı oluşturmayı öğrenin.
 
 [![Animasyonlu GIF](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
 
-PowerShell’i mi tercih ediyorsunuz? Azure Resource Manager [hizmet şablonunu](https://azure.microsoft.com/resources/templates/101-azure-search-create/) kullanın. Başlama konusunda yardım için bkz: [PowerShell ile Azure Search yönetme](search-manage-powershell.md).
+PowerShell’i mi tercih ediyorsunuz? Azure Resource Manager [hizmet şablonunu](https://azure.microsoft.com/resources/templates/101-azure-search-create/) kullanın. Kullanmaya başlama hakkında yardım için bkz. [PowerShell ile Azure Search yönetme](search-manage-powershell.md).
 
 ## <a name="subscribe-free-or-paid"></a>Abone olma (ücretsiz veya ücretli)
 
@@ -35,16 +35,31 @@ Alternatif olarak, [MSDN abone avantajlarınızı etkinleştirin](https://azure.
 ## <a name="find-azure-search"></a>Azure Search’ü bulma
 
 1. [Azure Portal](https://portal.azure.com/) oturum açın.
-2. Sol üst köşedeki artı işaretine ("+ Kaynak Oluştur") tıklayın.
-3. Kaynağa gidin veya "Azure Search" bulmak için arama çubuğunu kullanın **Web** > **Azure Search**.
+2. Sol üst köşedeki artı işaretine ("+ kaynak oluştur") tıklayın.
+3. "Azure Search" bulmak için arama çubuğunu kullanın veya **Web** > **Azure Search**aracılığıyla kaynağa gidin.
 
-![Bir Azure Search kaynağına gidin](./media/search-create-service-portal/find-search3.png "Azure Search için Gezinti yolu")
+![Azure Search kaynağına gitme](./media/search-create-service-portal/find-search3.png "Azure Search Için gezinti yolu")
+
+## <a name="select-a-subscription"></a>Bir abonelik seçin
+
+Birden fazla aboneliğiniz varsa, veri veya dosya depolama hizmetleri de içeren bir abonelik seçin. Azure Search, Dizin [*oluşturucular*](search-indexer-overview.md)aracılığıyla Dizin oluşturma Için Azure Tablo ve BLOB depolama, SQL veritabanı ve Azure Cosmos DB otomatik olarak açabilir, ancak yalnızca aynı abonelikteki hizmetler için.
+
+## <a name="select-a-resource-group"></a>Kaynak grubu seç
+
+Kaynak grubu gereklidir ve maliyet yönetimi dahil olmak üzere kaynakları yönetmek için faydalıdır. Bir kaynak grubu, bir hizmetten veya birlikte kullanılan birden fazla hizmetten oluşabilir. Örneğin, bir Azure Cosmos DB veritabanının dizinini oluşturmak için Azure Search kullanıyorsanız, her iki hizmeti de yönetim amaçlarıyla aynı kaynak grubunun bir parçası yapabilirsiniz. 
+
+Kaynakları tek bir grupta birleştirmemişse veya mevcut kaynak grupları ilişkisiz çözümlerde kullanılan kaynaklarla doldurulduysa, yalnızca Azure Search kaynağınız için yeni bir kaynak grubu oluşturun. 
+
+Hizmeti kullanırken, geçerli ve tasarlanan maliyetleri (ekran görüntüsünde gösterildiği gibi) izleyebilir veya tek tek kaynakların ücretlerini görüntülemek için aşağı kaydırın.
+
+![Kaynak grubu düzeyinde maliyetleri yönetin](./media/search-create-service-portal/resource-group-cost-management.png "Kaynak grubu düzeyinde maliyetleri yönetin")
+
+> [!TIP]
+> Bir kaynak grubu silindiğinde, o kaynak grubunun içindeki hizmetler de silinir. Birden fazla hizmet kullanan prototip projeler için, tüm bunların aynı kaynak grubuna yerleştirilmesi, proje bittikten sonra temizleme işlemini kolaylaştırır.
 
 ## <a name="name-the-service-and-url-endpoint"></a>Hizmet ve URL uç noktasını adlandırma
 
-Hizmet adı, API çağrılarının düzenlendiği URL uç noktasının bir kısmıdır: `https://your-service-name.search.windows.net`. **URL** alanına hizmet adınızı girin.
-
-Örneğin, uç istiyorsanız `https://my-app-name-01.search.windows.net`, şunu yazarsınız: `my-app-name-01`.
+Örnek ayrıntıları ' nda **URL** alanında bir hizmet adı belirtin. Ad, API çağrılarının verildiği URL uç noktasının bir parçasıdır: `https://your-service-name.search.windows.net`. Örneğin, uç noktanın olmasını `https://myservice.search.windows.net`istiyorsanız, girmeniz `myservice`gerekir.
 
 Hizmet adı gereksinimleri:
 
@@ -54,59 +69,49 @@ Hizmet adı gereksinimleri:
 * İlk 2 karakter olarak veya sondaki tek karakter olarak tire ("-") kullanmaktan kaçının
 * Hiçbir yerde art arda tire ("--") kullanmayın
 
-## <a name="select-a-subscription"></a>Abonelik seçme
-
-Birden fazla aboneliğiniz varsa, veri veya dosya depolama hizmetleri de içeren bir abonelik seçin. Azure arama için otomatik algıla Azure Tablosu'nu ve Blob Depolama, SQL veritabanı ve Azure Cosmos DB aracılığıyla dizin oluşturmak için [ *dizin oluşturucular*](search-indexer-overview.md), ancak yalnızca aynı Abonelikteki hizmetler için.
-
-## <a name="select-a-resource-group"></a>Kaynak grubu seçme
-
-Kaynak grubu, birlikte kullanılan Azure hizmetleri ve kaynakları koleksiyonudur. Örneğin, bir SQL veritabanının dizinini oluşturmak için Azure Search kullanıyorsanız, her iki hizmet de aynı kaynak grubunun parçası olmalıdır.
-
-Tek bir grup olarak birleştirip olmayan ya da mevcut kaynak gruplarını ilgisiz çözümlerinde kullanılan kaynaklarla doldurulursa, yalnızca Azure Search kaynağınız için yeni bir kaynak grubu oluşturun.
-
 > [!TIP]
-> Bir kaynak grubu silindiğinde, o kaynak grubunun içindeki hizmetler de silinir. Birden fazla hizmet kullanan prototip projeler için, tüm bunların aynı kaynak grubuna yerleştirilmesi, proje bittikten sonra temizleme işlemini kolaylaştırır.
+> Birden çok hizmet kullandığınızı düşünüyorsanız, hizmet adına bölge (veya konum) bir adlandırma kuralı olarak dahil etmenizi öneririz. Aynı bölgedeki hizmetler ücretsiz olarak verileri değiş tokuş edebilir, bu nedenle Azure Search Batı ABD ve diğer hizmetleriniz Batı ABD de varsa, gibi `mysearchservice-westus` bir ad, kaynakları birleştirme veya iliştirme konusunda karar verirken Özellikler sayfasına seyahat edebilir.
 
-## <a name="select-a-location"></a>Bir konum seçin
+## <a name="select-a-location"></a>Konum seçin
 
-Azure hizmeti olarak Azure Search, dünyanın dört bir yanındaki veri merkezlerinde barındırılabilir. Desteklenen bölgelerin listesini bulunabilir [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/search/). 
+Azure hizmeti olarak Azure Search, dünyanın dört bir yanındaki veri merkezlerinde barındırılabilir. Desteklenen bölgelerin listesi [fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/search/)bulunabilir. 
 
-Başka bir Azure tarafından sağlanan veri sıralıyorsanız hizmeti (Azure depolama, Azure Cosmos DB, Azure SQL veritabanı), bant genişliği ücretleri önlemek için aynı bölgede Azure Search hizmetinizi oluşturma öneririz. Hizmetler aynı bölgede çalışırken giden veriler için herhangi bir ücreti yoktur.
+Birden fazla hizmet için aynı konumu seçerek bant genişliği ücretlerini en aza indirebilir veya önleyebilirsiniz. Örneğin, başka bir Azure hizmeti (Azure depolama, Azure Cosmos DB, Azure SQL veritabanı) tarafından sağlanmış verileri dizinlendirirken, Azure Search hizmetinizi aynı bölgede oluşturmak bant genişliği ücretlerini önler (hizmetler içinde olduğunda giden veriler için ücret alınmaz). aynı bölge).
 
-Bilişsel arama AI zenginleştirmelerinin kullanıyorsanız, Bilişsel hizmetler kaynağınızı aynı bölgede hizmetinizi oluşturun. *Azure Search ve Bilişsel hizmetler ile aynı bölgede birlikte bulundurma AI zenginleştirme için bir gereksinimdir*.
+Ek olarak, bilişsel arama AI 'nin zenginleştirme kullanıyorsanız, hizmetinizi bilişsel hizmetler kaynağınız ile aynı bölgede oluşturun. *Aynı bölgedeki Azure Search ve bilişsel hizmetlerin birlikte bulunması, AI zenginleştirme gereksinimidir*.
 
 > [!Note]
-> Orta Hindistan, yeni hizmetler için şu anda kullanılamıyor. Orta Hindistan zaten Hizmetleri, kısıtlama olmadan ölçeği artırabilirsiniz ve hizmetiniz bu bölgeye tam olarak desteklenir. Bu bölge sınırlaması geçici ve yalnızca yeni hizmetleri sınırlıdır. Kısıtlama Artık uygulanmadığında bu notta kaldıracağız.
+> Orta Hindistan, yeni hizmetler için şu anda kullanılamıyor. Zaten Orta Hindistan olan hizmetler için, kısıtlama olmadan ölçeği ölçeklendirebilirsiniz ve hizmetiniz bu bölgede tam olarak desteklenmektedir. Bu bölgedeki kısıtlama geçicidir ve yalnızca yeni hizmetlerle sınırlıdır. Kısıtlama artık geçerli olmadığında bu notun kaldırılması gerekir.
 
 ## <a name="select-a-pricing-tier-sku"></a>Fiyatlandırma katmanı (SKU) seçme
 
-[Azure arama şu anda birden fazla fiyatlandırma katmanında sunulan](https://azure.microsoft.com/pricing/details/search/): Ücretsiz, temel veya standart. Her katmanın kendi [kapasitesi ve sınırları](search-limits-quotas-capacity.md) vardır. Yönergeler için [Fiyatlandırma katmanı veya SKU seçme](search-sku-tier.md) bölümüne bakın.
+[Azure Search Şu anda birden çok fiyatlandırma katmanlarında sunulmaktadır](https://azure.microsoft.com/pricing/details/search/): Ücretsiz, temel veya standart. Her katmanın kendi [kapasitesi ve sınırları](search-limits-quotas-capacity.md) vardır. Yönergeler için [Fiyatlandırma katmanı veya SKU seçme](search-sku-tier.md) bölümüne bakın.
 
-Üretim iş yükleri için genellikle Standart seçilir ancak çoğu müşteri başlangıçta Ücretsiz hizmeti kullanır.
+Temel ve standart, üretim iş yükleri için en yaygın seçimlerdir, ancak çoğu müşteri ücretsiz hizmetle başlar.
 
-Hizmet oluşturulduktan sonra fiyatlandırma katmanı değiştirilemez. Daha yüksek veya daha düşük bir katmana ihtiyacınız olursa, hizmeti yeniden oluşturmanız gerekir.
+Hizmet oluşturulduktan sonra bir fiyatlandırma katmanının değiştirilemeyeceğini unutmayın. Daha yüksek veya daha düşük bir katmana ihtiyacınız olursa, hizmeti yeniden oluşturmanız gerekir.
 
 ## <a name="create-your-service"></a>Sitenizi oluşturma
 
-Bir hizmet oluşturmak için gerekli girişleri girin. 
+Gerekli girişleri sağladıktan sonra, devam edin ve hizmeti oluşturun. 
 
-![Gözden geçirin ve hizmet oluşturma](./media/search-create-service-portal/new-service3.png "gözden geçirme ve hizmet oluşturma")
+![Hizmeti gözden geçirin ve oluşturun](./media/search-create-service-portal/new-service3.png "Hizmeti gözden geçirin ve oluşturun")
 
-Hizmetinizi Azure bildirimler izleyebilirsiniz dakika içinde dağıtılır. Panonuz için hizmet kolay erişim için gelecekte sabitleme göz önünde bulundurun.
+Hizmetiniz, Azure bildirimleri aracılığıyla izleyebilmeniz için dakikalar içinde dağıtılır. Gelecekte kolay erişim sağlamak için hizmeti panonuza sabitlemeyi göz önünde bulundurun.
 
-![İzleme ve hizmet sabitleme](./media/search-create-service-portal/monitor-notifications.png "İzleyici ve PIN hizmeti")
+![Hizmeti izleme ve sabitleme](./media/search-create-service-portal/monitor-notifications.png "Hizmeti izleme ve sabitleme")
 
-## <a name="get-a-key-and-url-endpoint"></a>Bir anahtarı ve URL uç noktasını alın
+## <a name="get-a-key-and-url-endpoint"></a>Anahtar ve URL uç noktası al
 
-Portal kullanmıyorsanız, yeni hizmetinize erişmek URL uç noktasını ve kimlik doğrulaması api anahtarı sağlamanızı gerektirir.
+Portalı kullanmıyorsanız, yeni hizmetinize programlı erişim, URL uç noktasını ve bir kimlik doğrulama API anahtarı sağlamanızı gerektirir.
 
-1. Hizmet genel bakış sayfasında bulun ve sayfanın sağ tarafındaki URL uç noktasını kopyalayın.
+1. Hizmete genel bakış sayfasında, sayfanın sağ tarafındaki URL uç noktasını bulup kopyalayın.
 
-2. Sol gezinti bölmesinde seçin **anahtarları** (bunlar eşdeğerdir) yönetici anahtarlarından birini kopyalayın. Yönetici API anahtarları oluşturma, güncelleştirme, hizmetinizde nesneleri silme için gereklidir.
+2. Sol gezinti bölmesinde **anahtarlar** ' ı seçin ve ardından Yönetici anahtarlarından birini kopyalayın (eşdeğerdir). Yönetim API 'si-hizmetinize nesneleri oluşturmak, güncelleştirmek ve silmek için anahtarlar gereklidir.
 
-   ![Hizmet genel bakış sayfasında URL uç noktası ile](./media/search-create-service-portal/get-url-key.png "URL uç noktasını ve diğer hizmet ayrıntıları")
+   ![URL uç noktası Ile hizmete genel bakış sayfası](./media/search-create-service-portal/get-url-key.png "URL uç noktası ve diğer hizmet ayrıntıları")
 
-Bir uç noktasını ve anahtarı portal tabanlı görevler için gerekli değildir. Portalda Azure Search kaynağınıza yönetici haklarıyla zaten bağlı. Bir portal kılavuzu için başlayın [hızlı başlangıç: Portalda Azure Search dizini oluşturma](search-get-started-portal.md).
+Portal tabanlı görevler için bir uç nokta ve anahtar gerekli değildir. Portal, yönetici haklarıyla Azure Search kaynağına zaten bağlı. Portal Kılavuzu için [hızlı başlangıç: Portalda](search-get-started-portal.md)bir Azure Search dizini oluşturun.
 
 ## <a name="scale-your-service"></a>Hizmetinizi ölçeklendirme
 
@@ -125,14 +130,14 @@ Kaynak eklemek aylık faturanız artırır. [Fiyatlandırma hesaplayıcısı](ht
 2. Sol gezinti bölmesinde **Ayarlar** > **Ölçek** seçeneklerini belirleyin.
 3. Her iki türdeki kaynakları eklemek için kaydırma çubuğunu kullanın.
 
-![Kapasite eklemek](./media/search-create-service-portal/settings-scale.png "çoğaltmalar ve bölümler aracılığıyla kapasite ekleyin")
+![Kapasite Ekle](./media/search-create-service-portal/settings-scale.png "Çoğaltmalar ve bölümler aracılığıyla kapasite ekleme")
 
 > [!Note]
-> Bölüm başına daha yüksek bir katmanda depolama ve hızı artar. Daha fazla bilgi için [kapasitesi ve sınırları](search-limits-quotas-capacity.md).
+> Bölüm başına depolama ve hız daha yüksek katmanlarda artar. Daha fazla bilgi için bkz. [Kapasite ve sınırlar](search-limits-quotas-capacity.md).
 
 ## <a name="when-to-add-a-second-service"></a>Ne zaman ikinci bir hizmet eklenir?
 
-Müşterilerin çoğu yalnızca bir hizmet katmanı sağlayarak sağlanan kullanın [doğru kaynak bakiyesini](search-sku-tier.md). Bir hizmet, her bir dizinin diğerinden yalıtıldığı, [seçtiğiniz maksimum katman sınırlarına](search-capacity-planning.md) tabi olan birden fazla dizin barındırabilir. Azure Search’te istekler yalnızca bir dizine yönlendirilerek aynı hizmetteki diğer dizinlerden yanlışlıkla veya kasıtlı olarak veri alınması ihtimalini en aza indirir.
+Çoğu müşteri [, doğru kaynak dengesini](search-sku-tier.md)sağlayan bir katmanda sağlanan tek bir hizmeti kullanır. Bir hizmet, her bir dizinin diğerinden yalıtıldığı, [seçtiğiniz maksimum katman sınırlarına](search-capacity-planning.md) tabi olan birden fazla dizin barındırabilir. Azure Search’te istekler yalnızca bir dizine yönlendirilerek aynı hizmetteki diğer dizinlerden yanlışlıkla veya kasıtlı olarak veri alınması ihtimalini en aza indirir.
 
 Müşterilerin çoğu yalnızca bir hizmet kullansa da, işletim gereksinimleri arasında aşağıdakiler yer alıyorsa hizmet yedekliliği gerekebilir:
 
@@ -141,13 +146,13 @@ Müşterilerin çoğu yalnızca bir hizmet kullansa da, işletim gereksinimleri 
 * Genel olarak dağıtılan uygulamalar için, uygulamanızın uluslararası trafiğinin gecikme süresini en aza indirmek amacıyla birden fazla bölgede bir Azure Search örneği gerekebilir.
 
 > [!NOTE]
-> Azure Search’te, dizin oluşturma ve sorgulama iş yüklerini ayıramazsınız; bu nedenle ayrılmış iş yükleri için hiçbir zaman birden fazla hizmet oluşturmazsınız. Bir dizin her zaman oluşturulduğu hizmette sorgulanır (bir hizmette bir dizini oluşturup başka bir hizmete kopyalayamazsınız).
+> Azure Search, dizin oluşturma ve sorgulama işlemlerini ayırt edemez; Bu nedenle, ayrılmış iş yükleri için hiçbir şekilde birden çok hizmet oluşturmazsınız. Bir dizin her zaman oluşturulduğu hizmette sorgulanır (bir hizmette bir dizini oluşturup başka bir hizmete kopyalayamazsınız).
 
 Yüksek düzeyde kullanılabilirlik için ikinci bir hizmet gerekmez. Aynı hizmette 2 veya daha fazla çoğaltma kullandığınızda sorguların yüksek kullanılabilirliği elde edilir. Çoğaltma güncelleştirmeleri sıralıdır; başka bir deyişle bir hizmet güncelleştirmesi kullanıma sunulduğunda en az biri işlevsel olur. Çalışma süresi hakkında daha fazla bilgi için bkz. [Hizmet Düzeyi Sözleşmeleri](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Search Hizmeti sağlandıktan sonra portalda ilk dizininizi oluşturmaya devam edebilirsiniz.
+Azure Search bir hizmet sağlamadıktan sonra, ilk dizininizi oluşturmak için portalda devam edebilirsiniz.
 
 > [!div class="nextstepaction"]
-> [Hızlı Başlangıç: Portalda Azure Search dizini oluşturma](search-get-started-portal.md)
+> [Hızlı Başlangıç: Portalda Azure Search dizin oluşturma](search-get-started-portal.md)

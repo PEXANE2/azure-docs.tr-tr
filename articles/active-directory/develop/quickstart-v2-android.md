@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/17/2019
 ms.author: ryanwi
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c22d93d39f086aaa6e2f103d3becbe9376b49b0
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 88a0f16a01a7e421558b5cea99daee6944adae11
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68324556"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853037"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Hızlı Başlangıç: Kullanıcıların oturum açması ve Android uygulamasından Microsoft Graph API 'sini çağırma
 
@@ -45,7 +45,7 @@ Bu hızlı başlangıç, bir Android uygulaması ile kişisel, iş ve okul hesap
 > * Kitabında [Seçenek 2: Uygulamanızı ve kod örneğinizi kaydetme ve el ile yapılandırma](#option-2-register-and-manually-configure-your-application-and-code-sample)
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Seçenek 1: Uygulamanızı kaydedin ve otomatik olarak yapılandırın ve ardından kod örneğinizi indirin
-> #### <a name="step-1-register-your-application"></a>1\. adım: Uygulamanızı kaydetme
+> #### <a name="step-1-register-your-application"></a>1\. adım: Uygulamanızı kaydedin
 > Uygulamanızı kaydetmek için
 > 1. Yeni [Azure Portal-uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AndroidQuickstartPage/sourceType/docs) bölmesine gidin.
 > 1. Uygulamanız için bir ad girin ve **Kaydet**'i seçin.
@@ -53,7 +53,7 @@ Bu hızlı başlangıç, bir Android uygulaması ile kişisel, iş ve okul hesap
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Seçenek 2: Uygulamanızı ve kod örneğinizi kaydetme ve el ile yapılandırma
 >
-> #### <a name="step-1-register-your-application"></a>1\. adım: Uygulamanızı kaydetme
+> #### <a name="step-1-register-your-application"></a>1\. adım: Uygulamanızı kaydedin
 > Uygulamanızı kaydetmek ve uygulama kayıt bilgilerinizi çözümünüze el ile eklemek için şu adımları izleyin:
 >
 > 1. Geliştiriciler için Microsoft Identity platformu [uygulama kayıtları](https://aka.ms/MobileAppReg) sayfasına gidin.
@@ -87,7 +87,7 @@ Bu hızlı başlangıç, bir Android uygulaması ile kişisel, iş ve okul hesap
 
 > [!div renderon="portal" class="sxs-lookup"]
 > 1. Projeyi ayıklayın ve Android Studio’da açın.
-> 1. **App** src ana res RAW içinde, auth_config. JSON öğesini açın. >  >  >  > 
+> 1. **App**src ana res RAW içinde, auth_config. JSON öğesini açın. >  >  >  > 
 > 1. **Auth_config. JSON** öğesini düzenleyin ve Azure Portal JSON ile değiştirin. Bunun yerine, değişiklikleri el ile yapmak istiyorsanız:
 >    ```javascript
 >    {
@@ -130,7 +130,7 @@ Bu hızlı başlangıç, bir Android uygulaması ile kişisel, iş ve okul hesap
 
 > [!div renderon="docs"]
 > 1. Projeyi ayıklayın ve Android Studio’da açın.
-> 1. **Uygulama** > **res** RAW içinde, auth_config. json ' u açın. > 
+> 1. **Uygulama** > **res**RAW içinde, auth_config. json ' u açın. > 
 > 1. **Auth_config. JSON** öğesini düzenleyin ve Azure Portal JSON ile değiştirin. Bunun yerine, bu değişiklikleri el ile yapmak istiyorsanız:
 >    ```javascript
 >    "client_id" : "ENTER_YOUR_APPLICATION_ID",

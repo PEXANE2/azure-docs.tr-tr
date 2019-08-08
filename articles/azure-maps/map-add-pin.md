@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: ba5d5d3aaa6a83dbcc5e5072872bca0fcd22bbf9
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 3bce4922a33648f5d7c0d211dba126f35603239b
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638709"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68849292"
 ---
 # <a name="add-a-symbol-layer-to-a-map"></a>Haritaya sembol katmanı ekleme
 
@@ -30,7 +30,7 @@ Bu makalede, bir veri kaynağından bir harita üzerinde sembol katmanı olarak 
 
 Yukarıdaki ilk kod bloğu bir harita nesnesi oluşturur. Yönergeler için [bir harita oluşturma](./map-create.md) ' ya bakabilirsiniz.
 
-İkinci kod bloğunda, [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) sınıfı kullanılarak bir veri kaynağı nesnesi oluşturulur. Bir [nokta](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) geometrisi Içeren [özellik], daha kolay güncelleştirilmesini sağlamak için [Şekil](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) sınıfı tarafından sarmalanır, sonra oluşturulup veri kaynağına eklenebilir.
+İkinci kod bloğunda, [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) sınıfı kullanılarak bir veri kaynağı nesnesi oluşturulur. Bir [nokta](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) geometrisi Içeren bir geojson [özelliği](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature) , daha sonra güncelleştirilmesini kolaylaştırmak ve veri kaynağına eklemek için [Şekil](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) sınıfı tarafından sarmalanır.
 
 Üçüncü kod bloğu bir [olay dinleyicisi](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) oluşturur ve şekil sınıfı [setkoordinatlar](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) yöntemini kullanarak fare tıklamasıyla noktanın koordinatlarını günceller.
 
@@ -47,6 +47,9 @@ Sembol katmanları WebGL kullanılarak işlenir. Bu nedenle, simge görüntüler
 
 <iframe height='500' scrolling='no' title='Özel sembol resmi simgesi' src='//codepen.io/azuremaps/embed/WYWRWZ/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>üzerinde Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/WYWRWZ/'>özel sembol görüntüsü simgesine</a> bakın.
 </iframe>
+
+> [!TIP]
+> Azure Haritalar Web SDK 'Sı, sembol katmanıyla birlikte kullanabileceğiniz çeşitli özelleştirilebilir görüntü şablonları sağlar. Daha fazla bilgi için bkz. [görüntü şablonlarını kullanma](how-to-use-image-templates-web-sdk.md) belgesi.
 
 ## <a name="customize-a-symbol-layer"></a>Sembol katmanını özelleştirme 
 
@@ -80,6 +83,9 @@ Haritalarınıza eklemek için daha fazla kod örneği için aşağıdaki makale
 
 > [!div class="nextstepaction"]
 > [Veri tabanlı stil ifadeleri kullanın](data-driven-style-expressions-web-sdk.md)
+
+> [!div class="nextstepaction"]
+> [Görüntü şablonlarını kullanma](how-to-use-image-templates-web-sdk.md)
 
 > [!div class="nextstepaction"]
 > [Şekil ekleme](map-add-shape.md)

@@ -8,17 +8,15 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: mialdrid
 ms.custom: seodec18
-ms.openlocfilehash: 18615cf737eedcd188fd59d2aa98482210b9333a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fc614626131236361246664a1bcef34f82b54ec5
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991583"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848476"
 ---
 # <a name="expressroute-virtual-network-gateway-and-fastpath"></a>ExpressRoute sanal ağ geçidi ve FastPath
-Azure sanal ağınız ve ExpressRoute aracılığıyla şirket içi ağınıza bağlanmak için bir sanal ağ geçidi oluşturmalısınız. Bir sanal ağ geçidi iki amaca hizmet eder: exchange IP yolları ağları arasında ağ trafiği yönlendirme. Bu makalede, ağ geçidi türleri, ağ geçidi SKU'ları ve SKU'ya göre tahmini performans açıklanmaktadır. Bu makalede ayrıca ExpressRoute açıklar [FastPath](#fastpath), performansı artırmak için sanal ağ geçidi atlamak için şirket içi ağınızdan ağ trafiğini etkinleştiren bir özellik.
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+Azure Sanal ağınızı ve şirket içi ağınızı ExpressRoute aracılığıyla bağlamak için önce bir sanal ağ geçidi oluşturmanız gerekir. Bir sanal ağ geçidi iki amaca hizmet eder: ağlar arasında Exchange IP yolları ve ağ trafiği yönlendirme. Bu makalede, ağ geçidi türleri, ağ geçidi SKU 'Ları ve SKU 'nun tahmini performansı açıklanmaktadır. Bu makalede ayrıca, şirket içi ağınızdan gelen ağ trafiğinin performansı artırmak için sanal ağ geçidini atlaması sağlayan bir özellik olan ExpressRoute [FastPath](#fastpath)açıklanır.
 
 ## <a name="gateway-types"></a>Ağ geçidi türleri
 
@@ -33,7 +31,7 @@ Bir sanal ağın her ağ geçidi türü için yalnızca bir sanal ağ geçidi ol
 ## <a name="gwsku"></a>Ağ Geçidi SKU'ları
 [!INCLUDE [expressroute-gwsku-include](../../includes/expressroute-gwsku-include.md)]
 
-Çoğu durumda, daha güçlü bir ağ geçidi SKU'sunu ağ geçidinize yükseltmek istiyorsanız, 'Yeniden boyutlandırma AzVirtualNetworkGateway' PowerShell cmdlet'ini kullanabilirsiniz. Bu, standart ve yüksek performanslı SKU'lar yükseltmeleri için çalışır. Ancak, UltraPerformance SKU'su için yükseltmek için ağ geçidini yeniden oluşturmanız gerekecektir. Bir ağ geçidi yeniden kapalı kalma süresi artmasına neden olur.
+Ağ geçidinizin daha güçlü bir ağ geçidi SKU 'suna yükseltmek istiyorsanız, çoğu durumda ' Resize-AzVirtualNetworkGateway ' PowerShell cmdlet 'ini kullanabilirsiniz. Bu, standart ve yüksek performanslı SKU'lar yükseltmeleri için çalışır. Ancak, UltraPerformance SKU'su için yükseltmek için ağ geçidini yeniden oluşturmanız gerekecektir. Bir ağ geçidi yeniden kapalı kalma süresi artmasına neden olur.
 
 ### <a name="aggthroughput"></a>Ağ geçidi SKU'suna göre tahmini performans
 Aşağıdaki tabloda, ağ geçidi türleri ve tahmini performanslarını gösterir. Bu tablo hem Resource Manager, hem de klasik dağıtım modellerine uygulanır.
@@ -60,13 +58,13 @@ Bölgesel olarak yedekli ağ geçitleri, ExpressRoute ağ geçidi için belirli 
 Yeni ağ geçidi SKU'ları, en iyi sonucu gereksinimlerinize uyacak şekilde diğer dağıtım seçenekleri de destekler. Yeni ağ geçidi SKU'ları kullanarak bir sanal ağ geçidi oluştururken, aynı zamanda belirli bir bölgenin ağ geçidi dağıtmak için seçeneğiniz vardır. Bu, bölgesel bir ağ geçidi olarak adlandırılır. Bölgesel bir ağ geçidi dağıttığınızda, ağ geçidinin tüm örnekleri aynı kullanılabilirlik alanında dağıtılır.
 
 ## <a name="fastpath"></a>FastPath
-ExpressRoute sanal ağ geçidi, ağ yollarını gönderip ve ağ trafiğini yönlendirmek için tasarlanmıştır. FastPath sanal ağınız ile şirket içi ağınız arasında veri yolu performansını artırmak için tasarlanmıştır. Etkin olduğunda, FastPath ağ trafiğini doğrudan sanal ağdaki sanal makinelerin ağ geçidi atlayarak gönderir. 
+ExpressRoute sanal ağ geçidi, ağ yollarını Exchange ve ağ trafiğini yönlendirme için tasarlanmıştır. FastPath, şirket içi ağınız ve sanal ağınız arasındaki veri yolu performansını geliştirmek için tasarlanmıştır. Etkin olduğunda, FastPath ağ trafiğini, ağ geçidini atlayarak sanal ağdaki sanal makinelere doğrudan gönderir. 
 
-FastPath edinilebilir [ExpressRoute doğrudan](expressroute-erdirect-about.md) yalnızca. Bu özellik yalnızca, diğer bir deyişle, etkinleştirebilirsiniz, [uygulamanızı sanal ağınıza bağlama](expressroute-howto-linkvnet-arm.md) bir ExpressRoute doğrudan bağlantı noktasında oluşturulan bir ExpressRoute devresi için. FastPath yine de şirket içi ağ ile sanal ağ arasındaki yolları için oluşturulacak sanal ağ geçidi gerektirir. Sanal ağ geçidi, Ultra yüksek performans veya ErGw3AZ olması gerekir.
+FastPath yalnızca [ExpressRoute doğrudan](expressroute-erdirect-about.md) üzerinden kullanılabilir. Diğer bir deyişle, bu özelliği yalnızca [Sanal ağınızı](expressroute-howto-linkvnet-arm.md) ExpressRoute doğrudan bağlantı noktasında oluşturulmuş bir ExpressRoute devresine bağladığınızda etkinleştirebilirsiniz. FastPath, sanal ağ ile şirket içi ağ arasındaki yolların değişimi için bir sanal ağ geçidinin oluşturulmasını gerektirir. Sanal ağ geçidi, Ultra Performance veya ErGw3AZ olmalıdır.
 
 FastPath aşağıdaki özellikleri desteklemez:
-* Ağ geçidi alt ağı üzerinde UDR: şirket içi ağınızdan ağ trafiğini sanal ağ geçidi için gönderilecek devam edecek, sanal ağınızın ağ geçidi alt ağı için UDR geçerli değilse.
-* VNet eşlemesi: varsa diğer sanal ağlar ile şirket içi ağınızdan ağ trafiğini diğer sanal ağlara (yani sözde "Uç" sanal ağlar) sanal ağa gönderilecek devam edecek expressroute'a bağlı bir eşlenmiş ağ geçidi. Tüm sanal ağları ExpressRoute işlem hattına doğrudan bağlanmak için çözüm olabilir.
+* UDR on Gateway alt ağı: sanal ağınızın ağ geçidi alt ağına UDR uygularsanız, şirket içi ağınızdan gelen ağ trafiği sanal ağ geçidine gönderilmeye devam edecektir.
+* VNet eşlemesi: ExpressRoute 'a bağlı başka sanal ağlarınız varsa, şirket içi ağınızdan diğer sanal ağlara (yani "bağlı bileşen" sanal ağları) ağ trafiğini, sanal ağa gönderilmeye devam eder geçidinde. Geçici çözüm tüm sanal ağları ExpressRoute devresine doğrudan bağlamak olur.
 
 ## <a name="resources"></a>REST API ve PowerShell cmdlet'leri
 Ek teknik kaynaklar ve sanal ağ geçidi yapılandırması için REST API'ler ve PowerShell cmdlet'lerini kullanırken, belirli bir söz dizimi gereksinimler için şu sayfalara bakın:
@@ -83,4 +81,4 @@ Bkz: [ExpressRoute için sanal ağ geçidi oluşturma](expressroute-howto-add-ga
 
 Bkz: [bölgesel olarak yedekli sanal ağ geçidi oluşturma](../../articles/vpn-gateway/create-zone-redundant-vnet-gateway.md) bölgesel olarak yedekli ağ geçitlerini yapılandırma hakkında daha fazla bilgi.
 
-Bkz: [ExpressRoute için sanal ağ bağlantısı](expressroute-howto-linkvnet-arm.md) FastPath etkinleştirme hakkında daha fazla bilgi için. 
+FastPath 'in nasıl etkinleştirileceği hakkında daha fazla bilgi için bkz. [sanal ağı ExpressRoute 'A bağlama](expressroute-howto-linkvnet-arm.md) . 

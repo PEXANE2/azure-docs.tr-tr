@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/29/2019
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: f7cf3f4cc0ceba89c031f5c36e90bbd6ef3dd20a
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 8bb25fc373ff0816154795d2ef25a44066c1acc1
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68327166"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847751"
 ---
 # <a name="quickstart-deploy-a-java-spring-boot-application-to-service-fabric"></a>Hızlı Başlangıç: Service Fabric için bir Java Spring Boot uygulaması dağıtma
 
@@ -149,7 +149,7 @@ Bu aşamada, Spring Boot Kullanmaya Başlama örneği için Service Fabric’e d
     
     ![Yerel küme sorunsuz çalışıyor](./media/service-fabric-quickstart-java-spring-boot/sfxlocalhost.png)
 
-1. `gs-spring-boot/SpringServiceFabric` klasörüne gidin.
+1. Açık `gs-spring-boot/SpringServiceFabric` klasör.
 1. Yerel kümenize bağlanmak için aşağıdaki komutu çalıştırın.
 
     ```bash
@@ -176,13 +176,13 @@ Service Fabric Explorer tüm Service Fabric kümelerinde çalıştırılır ve t
 Web ön uç hizmetini ölçeklendirmek için aşağıdakileri yapın:
 
 1. Kümenizde Service Fabric Explorer'ı açın. Örneğin: `http://localhost:19080`.
-1. Ağaç görünümünde **fabric:/SpringServiceFabric/SpringGettingStarted** düğümünün yanındaki üç noktaya tıklayın ve **Hizmeti Ölçeklendir**'i seçin.
+1. TreeView 'daki **Fabric:/SpringServiceFabric/SpringGettingStarted** düğümünün yanındaki üç nokta ( **...** ) simgesini seçin ve **hizmeti Ölçeklendir**' i seçin.
 
     ![Service Fabric Explorer Hizmeti Ölçeklendir](./media/service-fabric-quickstart-java-spring-boot/sfxscaleservicehowto.png)
 
     Şimdi hizmetin örnek sayısını ölçeklendirebilirsiniz.
 
-1. Rakamı **3** olarak değiştirin ve **Hizmeti Ölçeklendir**'e tıklayın.
+1. Numarayı **3** olarak değiştirin ve **hizmeti Ölçeklendir**' i seçin.
 
     Komut satırını kullanarak hizmeti ölçeklendirmenin alternatif bir yolu aşağıda verilmiştir.
 
@@ -194,7 +194,7 @@ Web ön uç hizmetini ölçeklendirmek için aşağıdakileri yapın:
     sfctl service update --service-id 'SpringServiceFabric~SpringGettingStarted' --instance-count 3 --stateless 
     ``` 
 
-1. Ağaç görünümünde **fabric:/SpringServiceFabric/SpringGettingStarted** düğümüne tıklayın ve bölüm düğümünü (GUID ile gösterilir) genişletin.
+1. Ağaç görünümünde **Fabric:/SpringServiceFabric/SpringGettingStarted** düğümünü seçin ve bölüm DÜĞÜMÜNÜ (GUID ile gösterilir) genişletin.
 
     ![Service Fabric Explorer Hizmeti Ölçeklendirme Tamamlandı](./media/service-fabric-quickstart-java-spring-boot/sfxscaledservice.png)
 
@@ -207,7 +207,7 @@ Bu basit yönetim görevi sayesinde ön uç hizmetinin kullanıcı yükünü iş
 Hizmet yük devretmesini göstermek için Service Fabric Explorer'ı kullanarak bir düğümü yeniden başlatma işleminin benzetimi yapılmıştır. Hizmetinizin yalnızca bir örneğinin çalıştığından emin olun.
 
 1. Kümenizde Service Fabric Explorer'ı açın. Örneğin: `http://localhost:19080`.
-1. Hizmetinizin örneğini çalıştıran düğümün yanındaki üç nokta işaretine tıklayın ve düğümü yeniden başlatın.
+1. Hizmetinizin örneğini çalıştıran düğümün yanındaki üç nokta ( **...** ) simgesini seçin ve düğümü yeniden başlatın.
 
     ![Service Fabric Explorer Düğümünü Yeniden Başlatma](./media/service-fabric-quickstart-java-spring-boot/sfxhowtofailover.png)
 1. Hizmetinizin örneği bu durumda farklı bir düğüme taşınmıştır ve uygulamanızda kesinti yaşanmaz.

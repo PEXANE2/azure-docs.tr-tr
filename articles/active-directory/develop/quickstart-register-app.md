@@ -1,5 +1,5 @@
 ---
-title: Microsoft kimlik platformu ile - Microsoft kimlik platformu bir uygulamayı kaydetme
+title: Microsoft Identity platformu ile uygulama kaydetme-Microsoft Identity platform
 description: Microsoft kimlik platformu ile uygulama eklemeyi ve kaydetmeyi öğrenin.
 services: active-directory
 documentationcenter: ''
@@ -14,27 +14,27 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/09/2019
 ms.author: ryanwi
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 541253cf3a8f2628ea0e76f1115ddc4a290daf62
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 80040aab0ea9d1444e1afd77d45d990f3d05f0de
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67655489"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853034"
 ---
-# <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Hızlı Başlangıç: Microsoft kimlik platformu bir uygulamayı kaydetme
+# <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Hızlı Başlangıç: Microsoft Identity platformu ile uygulama kaydetme
 
 Kurumsal geliştiriciler ve hizmet olarak yazılım (SaaS) sağlayıcıları, hizmetleri için güvenli oturum açma ve yetkilendirme imkanı sunmak için Microsoft kimlik platformu ile tümleştirilebilen ticari bulut hizmetleri veya iş kolu uygulamaları geliştirebilir.
 
-Bu hızlı başlangıçta ekleme ve bir uygulama kullanarak kaydolmanız gösterilmektedir **uygulama kayıtları** uygulamanızı Microsoft kimlik platformu ile tümleştirilebilir, böylece Azure portalında karşılaşırsınız. Yeni uygulama kaydı deneyimi geliştirmeleri ve yeni özellikleri hakkında daha fazla bilgi için bkz: [bu blog gönderisini](https://developer.microsoft.com/graph/blogs/new-app-registration/).
+Bu hızlı başlangıçta, uygulamanızın Microsoft Identity platformu ile tümleştirilebilmesi için Azure portal **uygulama kayıtları** deneyimini kullanarak bir uygulama ekleme ve kaydetme işlemi gösterilmektedir. Yeni uygulama kayıtları deneyiminde yeni özellikler ve geliştirmeler hakkında daha fazla bilgi edinmek için [Bu blog gönderisine](https://developer.microsoft.com/graph/blogs/new-app-registration/)bakın.
 
 ## <a name="register-a-new-application-using-the-azure-portal"></a>Yeni bir uygulamayı Azure portalını kullanarak kaydetme
 
 1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalında](https://portal.azure.com) oturum açın.
 1. Hesabınız size birden fazla Azure AD kiracısına erişim veriyorsa sağ üst köşeden hesabınızı seçin ve portal oturumunuzu istediğiniz Azure AD kiracısına ayarlayın.
-1. Sol gezinti bölmesinde seçin **Azure Active Directory** hizmet ve ardından **uygulama kayıtları > Yeni kayıt**.
+1. Sol taraftaki Gezinti bölmesinde **Azure Active Directory** hizmetini seçin ve sonra **yeni kayıt > uygulama kayıtları**seçin.
 1. **Uygulama kaydet** sayfası göründüğünde uygulamanızın kayıt bilgilerini girin:
 
    - **Ad** - Uygulama kullanıcılarına gösterilecek anlamlı bir uygulama adı girin.
@@ -54,11 +54,11 @@ Bu hızlı başlangıçta ekleme ve bir uygulama kullanarak kaydolmanız göster
 
 1. Bittiğinde **Kaydet**’i seçin.
 
-    [![Azure portalında yeni bir uygulama kaydetmek için ekranın gösterir](./media/quickstart-add-azure-ad-app-preview/new-app-registration-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-registration-expanded.png#lightbox)
+    [![Azure portal yeni bir uygulamanın kaydedileceği ekranı gösterir](./media/quickstart-add-azure-ad-app-preview/new-app-registration-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-registration-expanded.png#lightbox)
 
 Azure AD, uygulamanıza benzersiz bir uygulama (istemci) kimliği atar ve uygulamanızın **Genel Bakış** sayfasına yönlendirilirsiniz. Uygulamanıza ek özellikler eklemek için, markalama, sertifikalar ve gizli diziler, API izinleri ve daha fazlasını içeren diğer yapılandırma seçeneklerini belirleyebilirsiniz.
 
-[![Yeni kaydettiğiniz bir uygulamanın genel bakış sayfası örneği](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png#lightbox)
+[![Yeni kayıtlı bir uygulamanın genel bakış sayfasına örnek](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png#lightbox)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

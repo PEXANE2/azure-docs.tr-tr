@@ -4,23 +4,22 @@ description: ', Python, Node. js, Java veya C kullanarak C#Azure IoT Edge için 
 services: iot-edge
 keywords: ''
 author: shizn
-manager: philmea
 ms.author: xshi
-ms.date: 07/23/2019
+ms.date: 08/07/2019
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 39b8485ac3f98cb7ca6739fe31378726bea3452b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2efda0e506cf0525b1a8ea868acca48a929f8f41
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565353"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848304"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Azure IoT Edge için modülleri geliştirmek ve hatalarını ayıklamak için Visual Studio Code kullanın
 
 İçin Azure IOT Edge modülleri, iş mantığınızı kapatabilirsiniz. Bu makalede, modülleri geliştirme ve hata ayıklama için ana araç olarak Visual Studio Code nasıl kullanacağınız gösterilmektedir.
 
-, Node. js C#veya Java 'da yazılan modüller için Visual Studio Code modülünde hata ayıklamanın iki yolu vardır: Modül kapsayıcısına bir işlem ekleyebilir veya modül kodunu hata ayıklama modunda başlatabilirsiniz. Python veya C 'de yazılan modüller için yalnızca Linux AMD64 kapsayıcılarındaki bir işleme eklenerek hata ayıklaması yapılabilir.
+Visual Studio Code, Node. js veya Java 'da C#yazılan modüllerde hata ayıklamanın iki yolu vardır: Modül kapsayıcısına bir işlem ekleyebilir veya modül kodunu hata ayıklama modunda başlatabilirsiniz. Python veya C 'de yazılan modüllerde hata ayıklamak için yalnızca Linux AMD64 kapsayıcılarındaki bir işleme ekleyebilirsiniz.
 
 Visual Studio Code hata ayıklama yeteneklerini bilmiyorsanız, [hata ayıklama](https://code.visualstudio.com/Docs/editor/debugging)hakkında bilgi edinin.
 
@@ -107,7 +106,7 @@ Visual Studio Code verdiğiniz bilgileri alır, bir IoT Edge çözümü oluştur
   > [!NOTE]
   > Ortam dosyası yalnızca modül için bir görüntü deposu sağlarsanız oluşturulur. Yerel olarak test etme ve hata ayıklama için localhost varsayılan değerlerini kabul ettiyseniz, ortam değişkenlerini bildirmeniz gerekmez.
 
-- Bir **Deployment. Template. JSON** dosyası, test için kullanabileceğiniz verileri taklit eden örnek bir **tempalgılayıcı** modülüyle birlikte yeni modülünüzü listeler. Dağıtım bildirimlerinin nasıl çalıştığı hakkında daha fazla bilgi için bkz. [dağıtım bildirimlerini kullanarak modül dağıtma ve rotalar oluşturma](module-composition.md)hakkında bilgi edinin.
+- Bir **Deployment. Template. JSON** dosyası yeni modülünüzü, test için kullanabileceğiniz verileri taklit eden örnek bir **SimulatedTemperatureSensor** modülüyle birlikte listeler. Dağıtım bildirimlerinin nasıl çalıştığı hakkında daha fazla bilgi için bkz. [dağıtım bildirimlerini kullanarak modül dağıtma ve rotalar oluşturma](module-composition.md)hakkında bilgi edinin.
 
 ## <a name="add-additional-modules"></a>Ek modüller ekleme
 
@@ -124,7 +123,7 @@ Visual Studio Code verdiğiniz bilgileri alır, bir IoT Edge çözümü oluştur
 - Java:  ***&lt;modüladınızı&gt;* > src > Ana > Java > com > edgemodulemodules > App. Java ' > Modüller**
 - C: **modüller > *&lt;&gt;* ana. c > Modül adınızı**
 
-Çözümü derleyin, kapsayıcı kayıt defterinize itme ve herhangi bir kod dokunmadan testi başlatmak için bir aygıta dağıtmak modülü ve deployment.template.json dosya ayarlanır. Modül, yalnızca bir kaynak (Bu durumda, veri benzetimi gerçekleştiren tempSensor Modülü) gelenlerin ve IOT Hub'ına kanal için oluşturulmuştur.
+Çözümü derleyin, kapsayıcı kayıt defterinize itme ve herhangi bir kod dokunmadan testi başlatmak için bir aygıta dağıtmak modülü ve deployment.template.json dosya ayarlanır. Modül, bir kaynaktan giriş yapmak için oluşturulmuştur (Bu durumda, verileri taklit eden SimulatedTemperatureSensor modülü) ve IoT Hub için kanal oluşturma.
 
 Şablonu kendi kodunuzla özelleştirmeye hazır olduğunuzda, güvenlik, cihaz yönetimi ve güvenilirlik gibi IoT çözümlerinin temel ihtiyaçlarını ele alan modüller oluşturmak için [Azure IoT Hub SDK](../iot-hub/iot-hub-devguide-sdks.md) 'larını kullanın.
 
@@ -227,7 +226,7 @@ Geliştirme makinenizde, IoT Edge çözümünüzü çalıştırabilmeniz için I
 
 1. Visual Studio Code gezgin görünümünde, çözümünüz için `deployment.debug.template.json` dosyaya sağ tıklayın ve ardından **derleme ve IoT Edge çözümü oluştur ve simülatör**' ı seçin. Tüm modül kapsayıcısı günlüklerini aynı pencerede izleyebilirsiniz. Ayrıca, kapsayıcı durumunu izlemek için Docker görünümüne gidebilirsiniz.
 
-   ![Değişkenleri izle](media/how-to-develop-csharp-module/view-log.png)
+   ![Değişkenleri izle](media/how-to-vs-code-develop-module/view-log.png)
 
 1. Visual Studio Code hata ayıklama görünümüne gidin ve modülünüzün hata ayıklama yapılandırma dosyasını seçin. Hata ayıklama seçeneği adı  ***&lt;modül adı&gt;* uzaktan hata ayıklama ile aynı olmalıdır**
 

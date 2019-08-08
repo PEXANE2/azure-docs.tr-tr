@@ -1,24 +1,23 @@
 ---
-title: Azure Data Lake depolama Gen2'ye Giriş
-description: Azure Data Lake depolama Gen2'ye genel bakış sağlar
-services: storage
+title: Azure Data Lake Storage 2. giriş
+description: Azure Data Lake Storage 2. bir genel bakış sağlar
 author: normesta
 ms.service: storage
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: daa5efcf1be075e81e402edff56239a7cf21db18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3dea4dfc58bf087b8f6bc0a3f45646da5cb597ad
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64939220"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847236"
 ---
-# <a name="introduction-to-azure-data-lake-storage-gen2"></a>Azure Data Lake depolama Gen2'ye Giriş
+# <a name="introduction-to-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. giriş
 
-Azure Data Lake depolama Gen2 üzerinde oluşturulmuş, büyük veri analizi için ayrılmış özellikleri kümesidir [Azure Blob Depolama](storage-blobs-introduction.md). Data Lake depolama Gen2 bizim iki var olan depolama hizmetleri, Azure Blob Depolama ve Azure Data Lake depolama Gen1 yeteneklerini yakınsamaya sonucudur. Öğesinden özellikleri [Azure Data Lake depolama Gen1](https://docs.microsoft.com/azure/data-lake-store/index)gibi dosya sistemi sematiğini, dizin ve dosya düzeyinde güvenlik ve ölçek ile düşük maliyetli, katmanlı depolama, yüksek kullanılabilirlik/olağanüstü durum kurtarma özelliklerini birleştirilir[Azure Blob Depolama](storage-blobs-introduction.md).
+Azure Data Lake Storage 2., [Azure Blob depolama](storage-blobs-introduction.md)üzerinde oluşturulmuş, büyük veri analizi için adanmış bir yetenekler kümesidir. Data Lake depolama Gen2 bizim iki var olan depolama hizmetleri, Azure Blob Depolama ve Azure Data Lake depolama Gen1 yeteneklerini yakınsamaya sonucudur. Öğesinden özellikleri [Azure Data Lake depolama Gen1](https://docs.microsoft.com/azure/data-lake-store/index)gibi dosya sistemi sematiğini, dizin ve dosya düzeyinde güvenlik ve ölçek ile düşük maliyetli, katmanlı depolama, yüksek kullanılabilirlik/olağanüstü durum kurtarma özelliklerini birleştirilir[Azure Blob Depolama](storage-blobs-introduction.md).
 
 ## <a name="designed-for-enterprise-big-data-analytics"></a>Kurumsal büyük veri analizi için tasarlanmış
 
@@ -38,13 +37,13 @@ Geçmişte, bulut tabanlı analiz performansı, yönetim ve güvenlik alanların
 
 ## <a name="key-features-of-data-lake-storage-gen2"></a>Data Lake depolama Gen2 temel özellikleri
 
--   **Hadoop uyumlu erişim**: Data Lake depolama Gen2'ye yönetmenizi ve sahip olduğu gibi veri erişim sağlayan bir [Hadoop dağıtılmış dosya sistemi (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Yeni [ABFS sürücü](data-lake-storage-abfs-driver.md) dahil olmak üzere tüm Apache Hadoop ortamlar içinde kullanılabilir [Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/index) *,* [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/index), ve [SQL veri ambarı](https://docs.microsoft.com/azure/sql-data-warehouse/) Data Lake depolama 2. nesil'deki depolanan verilere erişmek için.
+-   **Hadoop uyumlu erişim**: Data Lake Storage 2., verileri bir [Hadoop Dağıtılmış dosya sistemi (")](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html)ile yaptığınız gibi yönetmenizi ve erişmenize olanak tanır. Yeni [ABFS sürücü](data-lake-storage-abfs-driver.md) dahil olmak üzere tüm Apache Hadoop ortamlar içinde kullanılabilir [Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/index) *,* [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/index), ve [SQL veri ambarı](https://docs.microsoft.com/azure/sql-data-warehouse/) Data Lake depolama 2. nesil'deki depolanan verilere erişmek için.
 
--   **POSIX izinleri kümesi**: ACL ve POSIX izinlerle birlikte için Data Lake depolama Gen2'ye özel bazı ek ayrıntı Data Lake Gen2 güvenlik modelini destekler. Ayarları, Depolama Gezgini veya Hive ve Spark gibi çerçeveleri aracılığıyla yapılandırılabilir.
+-   **POSIX Izinlerinin bir üst kümesi**: Data Lake Gen2 için güvenlik modeli, Data Lake Storage 2. özgü bazı ayrıntı düzeyi ile birlikte ACL ve POSIX izinlerini destekler. Ayarları, Depolama Gezgini veya Hive ve Spark gibi çerçeveleri aracılığıyla yapılandırılabilir.
 
--   **Uygun maliyetli**: Data Lake depolama Gen2, düşük maliyetli depolama kapasitesi ve işlem sunar. Tam yaşam döngüsü aracılığıyla veri geçişi faturalandırma ücretleri tutma maliyetleri minimum yerleşik özellikleri aracılığıyla geçin; örneğin [Azure Blob Depolama yaşam döngüsü](storage-lifecycle-management-concepts.md).
+-   Uygun **maliyetli**: Data Lake Storage 2. düşük maliyetli depolama kapasitesi ve işlemler sunar. Tam yaşam döngüsü aracılığıyla veri geçişi faturalandırma ücretleri tutma maliyetleri minimum yerleşik özellikleri aracılığıyla geçin; örneğin [Azure Blob Depolama yaşam döngüsü](storage-lifecycle-management-concepts.md).
 
--   **En iyi duruma getirilmiş sürücü**: ABFS sürücü [özellikle en iyi duruma getirilmiş](data-lake-storage-abfs-driver.md) büyük veri analizi için. Karşılık gelen REST API uç noktası aracılığıyla çıkmış `dfs.core.windows.net`.
+-   **İyileştirilmiş sürücü**: ABFS sürücüsü, büyük veri analizi için [özel olarak iyileştirilmiştir](data-lake-storage-abfs-driver.md) . Karşılık gelen REST API 'Leri uç noktadan `dfs.core.windows.net`geliyor.
 
 ### <a name="scalability"></a>Ölçeklenebilirlik
 
@@ -77,10 +76,10 @@ Data Lake depolama Gen2'ye birden fazla açık kaynak platformları destekler. B
 | Platform |  Desteklenen sürümler | Daha Fazla Bilgi |
 | --- | --- | --- |
 | [HDInsight](https://azure.microsoft.com/services/hdinsight/) | 3.6 + | [Apache Hadoop bileşenleri ve sürümleri HDInsight ile kullanılabilen nelerdir?](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning?toc=%2Fen-us%2Fazure%2Fhdinsight%2Fstorm%2FTOC.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
-| [Hadoop](https://hadoop.apache.org/) | 3.2+ | [Apache Hadoop arşiv serbest bırakır.](https://hadoop.apache.org/release.html) |
+| [Hadoop](https://hadoop.apache.org/) | 3.2 + | [Apache Hadoop arşiv serbest bırakır.](https://hadoop.apache.org/release.html) |
 | [Cloudera](https://www.cloudera.com/) | 6.1 + | [Cloudera Enterprise 6.x sürüm notları](https://www.cloudera.com/documentation/enterprise/6/release-notes/topics/rg_cdh_6_release_notes.html) |
-| [Azure Databricks](https://azure.microsoft.com/services/databricks/) | 5.1+ | [Databricks çalışma zamanı sürümleri](https://docs.databricks.com/release-notes/runtime/databricks-runtime-ver.html) |
-|[Hortonworks](https://hortonworks.com/)| 3.1.x++ | [Bulut veri erişimi yapılandırma](https://docs.hortonworks.com/HDPDocuments/Cloudbreak/Cloudbreak-2.9.0/cloud-data-access/content/cb_configuring-access-to-adls2.html) |
+| [Azure Databricks](https://azure.microsoft.com/services/databricks/) | 5.1 + | [Databricks çalışma zamanı sürümleri](https://docs.databricks.com/release-notes/runtime/databricks-runtime-ver.html) |
+|[Hortonworks](https://hortonworks.com/)| 3.1.x++ | [Bulut veri erişimini yapılandırma](https://docs.hortonworks.com/HDPDocuments/Cloudbreak/Cloudbreak-2.9.0/cloud-data-access/content/cb_configuring-access-to-adls2.html) |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

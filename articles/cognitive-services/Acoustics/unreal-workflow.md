@@ -3,20 +3,20 @@ title: Project Acoustics Unreal tasarım öğreticisi
 titlesuffix: Azure Cognitive Services
 description: Bu öğretici proje Acoustics için tasarım iş akışını gerçek zamanlı ve Wwise 'ta açıklar.
 services: cognitive-services
-author: kegodin
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: tutorial
 ms.date: 03/20/2019
-ms.author: kegodin
+ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5061370f43947341bb05bc30fa596604bc27ce74
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 817a11171c5b4b4ef205e5fbb04f9b6d6d85b248
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706564"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854257"
 ---
 # <a name="project-acoustics-unrealwwise-design-tutorial"></a>Proje Acoustics Unreal/Wwise tasarım öğreticisi
 Bu öğreticide, proje Acoustics için gerçek zamanlı ve Wwise 'da tasarım kurulumu ve iş akışı açıklanmaktadır.

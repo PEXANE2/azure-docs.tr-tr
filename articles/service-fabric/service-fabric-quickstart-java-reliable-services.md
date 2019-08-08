@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 01/29/2019
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ddd56b8479678b288424dd896baadea6a41a2aef
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 656ebed78aab1ad078eb7e9410cb01876159cf13
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60726558"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68845795"
 ---
-# <a name="quickstart-deploy-a-java-reliable-services-application-to-service-fabric"></a>Hızlı Başlangıç: Service Fabric için Java reliable services uygulaması dağıtma
+# <a name="quickstart-deploy-a-java-reliable-services-application-to-service-fabric"></a>Hızlı Başlangıç: Service Fabric için Java güvenilir Hizmetleri uygulaması dağıtma
 
 Azure Service Fabric; mikro hizmetleri ve kapsayıcıları dağıtmayı ve yönetmeyi sağlayan bir dağıtılmış sistemler platformudur.
 
@@ -65,17 +65,17 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
     ![Yerel küme sorunsuz çalışıyor](./media/service-fabric-quickstart-java/localclusterup.png)
 
 2. Eclipse’i açın.
-3. Dosya -> İçeri Aktar -> Gradle -> Var Olan Gradle Projesi'ne tıklayın ve sihirbazı izleyin.
-4. Dizin'e tıklayın ve seçin `Voting` yer `service-fabric-java-quickstart` Github'dan kopyaladığınız klasörü. Son'a tıklayın.
+3. **Dosya**içeriaktarma > Gradlemevcut**Gradle projesini** seçin ve Sihirbazı izleyin. >  > 
+4. **Dizin** ' i seçin ve `Voting` GitHub ' dan `service-fabric-java-quickstart` kopyaladığınız klasörden dizini seçin. **Son**’u seçin.
 
     ![Eclipse İçeri Aktarma İletişim Kutusu](./media/service-fabric-quickstart-java/eclipseimport.png)
 
 5. Artık, Package Explorer for Eclipse’de `Voting` projesine sahipsiniz.
-6. Projeye sağ tıklayın ve **Service Fabric** açılan listesinde **Uygulamayı Yayımla...** seçeneğini belirleyin. **PublishProfiles/Local.json** öğesini Hedef Profil olarak seçin ve Yayımla’ya tıklayın.
+6. Projeye sağ tıklayın ve **Service Fabric** açılan menüsünde **uygulamayı Yayımla** ' yı seçin. **Publishprofiles/Local. JSON** öğesini hedef profil olarak seçin ve **Yayımla**' yı seçin.
 
     ![Yayımla İletişim Kutusu Konumu](./media/service-fabric-quickstart-java/localjson.png)
 
-7. Sık kullandığınız web tarayıcınızı açın ve uygulama erişerek `http://localhost:8080`.
+7. En sevdiğiniz web tarayıcınızı açın ve uygulamasına erişerek `http://localhost:8080`uygulamaya erişin.
 
     ![Uygulama ön ucu Konumu](./media/service-fabric-quickstart-java/runninglocally.png)
 
@@ -90,14 +90,14 @@ Service Fabric Explorer tüm Service Fabric kümelerinde çalıştırılır ve t
 Web ön uç hizmetini ölçeklendirmek için aşağıdakileri yapın:
 
 1. Kümenizde Service Fabric Explorer'ı açın. Örneğin: `https://localhost:19080`.
-2. Ağaç görünümünde **fabric:/Voting/VotingWeb** düğümünün yanındaki üç noktaya tıklayın ve **Hizmeti Ölçeklendir**'i seçin.
+2. TreeView 'daki **Fabric:/oylama/VotingWeb** düğümünün yanındaki üç nokta ( **...** ) simgesini seçin ve **hizmeti Ölçeklendir**' i seçin.
 
     ![Service Fabric Explorer Hizmeti Ölçeklendir](./media/service-fabric-quickstart-java/scaleservicejavaquickstart.png)
 
     Şimdi web ön uç hizmetindeki örnek sayısını ölçeklendirebilirsiniz.
 
-3. Rakamı **2** olarak değiştirin ve **Hizmeti Ölçeklendir**'e tıklayın.
-4. Ağaç görünümünde **fabric:/Voting/VotingWeb** düğümüne tıklayın ve bölüm düğümünü (GUID ile gösterilir) genişletin.
+3. Sayıyı **2** olarak değiştirin ve **hizmeti Ölçeklendir**' i seçin.
+4. Ağaç görünümünde **Fabric:/oylama/VotingWeb** düğümünü seçin ve bölüm DÜĞÜMÜNÜ (GUID ile gösterilir) genişletin.
 
     ![Service Fabric Explorer Hizmeti Ölçeklendirme Tamamlandı](./media/service-fabric-quickstart-java/servicescaled.png)
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Application Insights ile Hızlı Başlangıç | Microsoft Docs
-description: Application Insights ve App Center ile izleme için bir mobil uygulama hızlı bir şekilde ayarlamak için yönergeler sağlar
+description: Application Insights ve App Center izleme için bir mobil uygulamayı hızlı bir şekilde ayarlamaya yönelik yönergeler sağlar
 services: application-insights
 keywords: ''
 author: mrbullwinkle
@@ -11,12 +11,12 @@ ms.reviewer: daviste
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: b8ce08c662e1615b62160e0c681a2fe8dbcb2be1
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 40b3e0260e08ab5a8870c726042d06d80393fb15
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447036"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68849076"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>Mobil uygulamanızı App Center ve Application Insights ile analiz etmeye başlama
 
@@ -33,7 +33,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 ## <a name="onboard-to-app-center"></a>App Center'a ekleme
 
-Application Insights'ı mobil uygulamanızla kullanabilmeniz için, önce uygulamanızı [App Center](https://docs.microsoft.com/mobile-center/)'a eklemelisiniz. Application Insights doğrudan mobil uygulamanızdan telemetri almaz. Bunun yerine, uygulamanız özel olay telemetrisini App Center'a gönderir. Ardından, App Center olaylar alındıkça bu özel olayların kopyalarını sürekli Application Insights'a aktarır.
+Application Insights'ı mobil uygulamanızla kullanabilmeniz için, önce uygulamanızı [App Center](https://docs.microsoft.com/mobile-center/)'a eklemelisiniz. Application Insights doğrudan mobil uygulamanızdan telemetri almaz. Bunun yerine, uygulamanız özel olay telemetrisini App Center'a gönderir. Ardından, App Center olaylar alındıkça bu özel olayların kopyalarını sürekli Application Insights'a aktarır. (Bu, [APPLICATION INSIGHTS js SDK 'sı](https://github.com/Microsoft/ApplicationInsights-JS) için veya Telemetriyi doğrudan Application Insights ' e gönderilen [tepki verme yerel eklentisine](https://github.com/Microsoft/ApplicationInsights-JS/tree/master/vNext/extensions/applicationinsights-react-native) uygulanmaz.)
 
 Uygulamanızı eklemek için, uygulamanızın desteklediği her platform için App Center hızlı başlangıç yönergelerini izleyin. Her platform için ayrı App Center örnekleri oluşturun:
 
@@ -71,7 +71,7 @@ Uygulamanız özel olayları gönderdikten ve bunlar App Center tarafından alı
 2. **Kaynak oluştur** > **Geliştirici araçları** > **Application Insights** seçeneğini belirleyin.
 
     > [!NOTE]
-    > Bu ilk kez ise bir Application Insights kaynağı oluşturma hakkında daha fazla ederek edinebilirsiniz [bir Application Insights kaynağı oluşturma](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) belge.
+    > İlk kez bir Application Insights kaynağı oluşturuyorsanız [Application Insights kaynak oluştur belge oluştur](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) ' a giderek daha fazla bilgi edinebilirsiniz.
 
     Yapılandırma kutusu görüntülenir. Giriş alanlarını doldurmak için aşağıdaki tabloyu kullanın.
 
@@ -87,9 +87,9 @@ Uygulamanız birden çok platformu (iOS, Android, vb.) destekliyorsa, en iyisi h
 
 ## <a name="export-to-application-insights"></a>Application Insights'a aktarma
 
-İçinde yeni Application Insights kaynağınızda **genel bakış** sayfası. Kaynağınızın izleme anahtarını kopyalayın.
+Yeni Application Insights kaynağında **genel bakış** sayfasında. İzleme anahtarını kaynağından kopyalayın.
 
-İçinde [App Center](https://appcenter.ms/) uygulamanız için örnek:
+Uygulamanızın [App Center](https://appcenter.ms/) örneğinde:
 
 1. **Ayarlar** sayfasında **Dışarı Aktar**'a tıklayın.
 2. **Yeni Dışarı Aktarma**'yı seçin, **Application Insights**'ı seçin ve ardından **Özelleştir**'e tıklayın.
@@ -106,11 +106,11 @@ Uygulamanızın desteklediği her platformda bu işlemi yinelemeyi unutmayın.
 
 Application Insights, uygulamalarınızın özel olay telemetrisini App Center'ın sağladığı analiz araçlarının çok ötesinde sorgulayabilir, segmentlere ayırabilir, filtreleyebilir ve analiz edebilir.
 
-1. **Özel olay telemetrinizi sorgulayın.** Application ınsights **genel bakış** sayfasında **günlükleri (analiz)** .
+1. **Özel olay telemetrinizi sorgulayın.** Application Insights **genel bakış** sayfasında **Günlükler (Analiz)** öğesini seçin.
 
-   Application Insights kaynağınızla ilişkilendirilmiş Application Insights günlükleri (analiz) portalı açılır. Günlükleri (analiz) portalın doğrudan uygulamanız ve onun kullanıcıları hakkında rastgele karmaşık sorular sorabilirsiniz Log Analytics sorgu dilini kullanarak verilerinizi sorgulayın olanak sağlar.
+   Application Insights kaynağınız ile ilişkili Application Insights günlükleri (Analiz) portalı açılır. Günlükler (Analiz) portalı Log Analytics sorgu dilini kullanarak verilerinizi doğrudan sorgulamanıza olanak tanıyarak, uygulamanız ve kullanıcılarınızla ilgili rastgele karmaşık sorular sorabilirsiniz.
    
-   Günlükleri (analiz) Portalı'nda yeni bir sekme açın ve aşağıdaki sorguyu yapıştırın. Son 24 saat içinde uygulamanızdan her özel olayı ayrı ayrı kaç kullanıcının gönderdiğini, bu ayrı sayımlara göre sıralanmış olarak döndürür.
+   Günlükler (Analiz) portalında yeni bir sekme açın, sonra aşağıdaki sorguyu yapıştırın. Son 24 saat içinde uygulamanızdan her özel olayı ayrı ayrı kaç kullanıcının gönderdiğini, bu ayrı sayımlara göre sıralanmış olarak döndürür.
 
    ```AIQL
    customEvents
@@ -119,7 +119,7 @@ Application Insights, uygulamalarınızın özel olay telemetrisini App Center'�
    | order by dcount_user_Id desc 
    ```
 
-   ![Günlükleri (analiz) portalı](./media/mobile-center-quickstart/analytics-portal-001.png)
+   ![Günlükler (Analiz) portalı](./media/mobile-center-quickstart/analytics-portal-001.png)
 
    1. Metin düzenleyicisinde sorgunun herhangi bir yerine tıklayarak sorguyu seçin.
    2. Ardından, **Git**'e tıklayarak sorguyu çalıştırın. 

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: edc0da77fc1c2813c2485fca18d50952e3060db8
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: f7cd0125de886eed4b3e5c31503fdd4b7cbb76dd
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68370480"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847815"
 ---
 # <a name="log-metrics-during-training-runs-in-azure-machine-learning"></a>Azure Machine Learning eğitim sırasında günlük ölçümleri
 
@@ -49,7 +49,7 @@ Aşağıdaki ölçümler, bir denemeyi eğitim sırasında çalıştırılacak e
 ## <a name="set-up-the-workspace"></a>Çalışma alanını ayarlama
 Günlüğe kaydetme ve deneme gönderme eklemeden önce çalışma alanını ayarlamanız gerekir.
 
-1. Çalışma alanı yükleyin. Çalışma alanı yapılandırmasını ayarlama hakkında daha fazla bilgi edinmek için [Azure Machine Learning hizmet çalışma alanı oluşturma](setup-create-workspace.md#sdk)bölümündeki adımları izleyin.
+1. Çalışma alanı yükleyin. Çalışma alanı yapılandırmasını ayarlama hakkında daha fazla bilgi için bkz. [çalışma alanı yapılandırma dosyası](how-to-configure-environment.md#workspace).
 
    ```python
    from azureml.core import Experiment, Run, Workspace
@@ -58,7 +58,7 @@ Günlüğe kaydetme ve deneme gönderme eklemeden önce çalışma alanını aya
    ws = Workspace.from_config()
    ```
   
-## <a name="option-1-use-startlogging"></a>Seçenek 1: Start_logging kullanma
+## <a name="option-1-use-start_logging"></a>Seçenek 1: Start_logging kullanma
 
 **start_logging** dizüstü bilgisayarlar gibi senaryolarda kullanım için etkileşimli bir çalışma oluşturur. Oturumu sırasında günlüğe kaydedilen tüm ölçümler, denemeyi çalıştırma kaydı eklenir.
 

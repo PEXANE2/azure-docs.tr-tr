@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: trbye
 ms.date: 04/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: bbb9653173925e1443504aa3f2e9c5e6edbfc486
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: 70a95cdba2a8b41c7b2fc3ee4b2664f049a84e95
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371042"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68846024"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Öğretici: Gerileme modelinizi derlemek için otomatik makine öğrenimi kullanma
 
@@ -54,7 +54,7 @@ Not defteri adımlarını okumak için [geliştirme ortamınızı ayarlamayı](#
 
 Bu önkoşulların tümünü aşağıdaki bölümlerden birine alın.
 
-* Çalışma alanınızda bir [bulut Not defteri sunucusu](#azure) kullanın 
+* Çalışma alanınızda bir [bulut Not defteri sunucusu](#azure) kullanın
 * [Kendi Not defteri sunucunuzu](#server) kullanın
 
 ### <a name="azure"></a>Çalışma alanınızda bir bulut Not defteri sunucusu kullanın
@@ -615,7 +615,7 @@ dflow_prepared.get_profile()
   </tbody>
 </table>
 
-Sütunlar ekleyerek deneme için verileri hazırlama `dflow_x` bizim model oluşturmaya yönelik özellikler için. Tahmin değeri `dflow_y` , maliyetimiz olacak şekilde tanımlayın :
+Sütunlar ekleyerek deneme için verileri hazırlama `dflow_x` bizim model oluşturmaya yönelik özellikler için. Tahmin değeri `dflow_y` , maliyetimiz olacak şekilde tanımlayın:
 
 ```python
 dflow_X = dflow_prepared.keep_columns(
@@ -687,6 +687,9 @@ automated_ml_config = AutoMLConfig(task='regression',
                                    y=y_train.values.flatten(),
                                    **automl_settings)
 ```
+
+> [!NOTE]
+> Otomatik makine öğrenimi ön işleme adımları (özellik normalleştirme, eksik verileri işleme, metni sayısal olarak dönüştürme, vb.) temel modelin bir parçası haline gelir. Tahmin için model kullanılırken, eğitim sırasında uygulanan aynı ön işleme adımları, giriş verilerinize otomatik olarak uygulanır.
 
 ### <a name="train-the-automatic-regression-model"></a>Otomatik bir regresyon modeli eğitme
 
@@ -764,7 +767,7 @@ Aynı sonuçlar çalışma alanınızda depolanır.  Çalıştırmanın sonuçla
 ```
 local_run.get_portal_url()
 ```
-  
+
 
 ### <a name="option-2-get-and-examine-all-run-iterations-in-python"></a>Seçenek 2: Python 'da tüm çalıştırma yinelemelerini alın ve inceleyin
 
@@ -1163,7 +1166,7 @@ plt.show()
 
 ![Tahmin dağılım çizimi](./media/tutorial-auto-train-models/automl-scatter-plot.png)
 
-`root mean squared error` Sonuçların sayısını hesaplayın. `y_test` Veri çerçevesini kullanın. Tahmin edilen değerlerle karşılaştırmak için bunu bir listeye dönüştürün. İşlevi `mean_squared_error` iki dizi değer alır ve aralarındaki ortalama kare içinde hata sayısını hesaplar. Sonucun kare kökünü almak, y değişkeni ile aynı birimlerde bir hata **verir.** EPI tarifeli havayolu tahminlerinin gerçek farlarından ne kadar olduğunu kabaca gösterir:
+`root mean squared error` Sonuçların sayısını hesaplayın. `y_test` Veri çerçevesini kullanın. Tahmin edilen değerlerle karşılaştırmak için bunu bir listeye dönüştürün. İşlevi `mean_squared_error` iki dizi değer alır ve aralarındaki ortalama kare içinde hata sayısını hesaplar. Sonucun kare kökünü almak, y değişkeni ile aynı birimlerde bir hata verir. EPI tarifeli havayolu tahminlerinin gerçek farlarından ne kadar olduğunu kabaca gösterir:
 
 ```python
 from sklearn.metrics import mean_squared_error

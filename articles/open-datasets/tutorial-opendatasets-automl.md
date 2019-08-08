@@ -9,12 +9,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 05/02/2019
-ms.openlocfilehash: 963e4f7e9db638450a89dd4ae0091019fc58e2a4
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 6f72daa4a601df0e3592910645c2f9b35ab64431
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359436"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68845824"
 ---
 # <a name="tutorial-build-a-regression-model-with-automated-machine-learning-and-open-datasets"></a>Öğretici: Otomatik makine öğrenimi ve açık veri kümeleri ile regresyon modeli oluşturma
 
@@ -37,7 +37,7 @@ Bu öğretici aşağıdaki önkoşulları gerektirir.
 
 ### <a name="create-a-workspace"></a>Çalışma alanı oluşturma
 
-Henüz bir tane yoksa Azure portal bir çalışma alanı oluşturmak için [yönergeleri](https://docs.microsoft.com/azure/machine-learning/service/setup-create-workspace#portal) izleyin. Oluşturulduktan sonra çalışma alanı adınızı, kaynak grubu adını ve abonelik KIMLIĞINI unutmayın.
+Henüz bir tane yoksa Azure portal bir çalışma alanı oluşturmak için [yönergeleri](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-workspace) izleyin. Oluşturulduktan sonra çalışma alanı adınızı, kaynak grubu adını ve abonelik KIMLIĞINI unutmayın.
 
 ### <a name="create-a-python-environment"></a>Python ortamı oluşturma
 
@@ -147,8 +147,8 @@ green_taxi_df.head(10)
       <td>2016-01-20 17:46:33</td>
       <td>1\.</td>
       <td>0,98</td>
-      <td>None</td>
       <td>Yok.</td>
+      <td>None</td>
       <td>-73,921715</td>
       <td>40,766682</td>
       <td>-73,916908</td>
@@ -171,7 +171,7 @@ green_taxi_df.head(10)
       <td>2016-01-02 00:00:00</td>
       <td>1\.</td>
       <td>3,08</td>
-      <td>None</td>
+      <td>Yok.</td>
       <td>None</td>
       <td>-73,979973</td>
       <td>40,677071</td>
@@ -196,7 +196,7 @@ green_taxi_df.head(10)
       <td>1\.</td>
       <td>2.44</td>
       <td>Yok.</td>
-      <td>Yok.</td>
+      <td>None</td>
       <td>-73,863045</td>
       <td>40,882923</td>
       <td>-73,839836</td>
@@ -220,7 +220,7 @@ green_taxi_df.head(10)
       <td>1\.</td>
       <td>2,87</td>
       <td>Yok.</td>
-      <td>Yok.</td>
+      <td>None</td>
       <td>-73,977730</td>
       <td>40,684647</td>
       <td>-73,931259</td>
@@ -268,7 +268,7 @@ green_taxi_df.head(10)
       <td>1\.</td>
       <td>2.25</td>
       <td>None</td>
-      <td>None</td>
+      <td>Yok.</td>
       <td>-73,830894</td>
       <td>40,759434</td>
       <td>-73,842422</td>
@@ -291,7 +291,7 @@ green_taxi_df.head(10)
       <td>2016-01-14 00:54:16</td>
       <td>1\.</td>
       <td>1.93</td>
-      <td>None</td>
+      <td>Yok.</td>
       <td>Yok.</td>
       <td>-73,927109</td>
       <td>40,762848</td>
@@ -339,8 +339,8 @@ green_taxi_df.head(10)
       <td>2016-01-25 18:23:50</td>
       <td>1\.</td>
       <td>1,04</td>
-      <td>Yok.</td>
-      <td>Yok.</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,954376</td>
       <td>40,805729</td>
       <td>-73,939117</td>
@@ -364,7 +364,7 @@ green_taxi_df.head(10)
       <td>6</td>
       <td>2,82</td>
       <td>Yok.</td>
-      <td>None</td>
+      <td>Yok.</td>
       <td>-73,845200</td>
       <td>40,722134</td>
       <td>-73,810638</td>
@@ -453,8 +453,8 @@ green_taxi_df.head(10)
       <td>2016-01-20 17:46:33</td>
       <td>1\.</td>
       <td>0,98</td>
-      <td>None</td>
       <td>Yok.</td>
+      <td>None</td>
       <td>-73,921715</td>
       <td>40,766682</td>
       <td>-73,916908</td>
@@ -488,7 +488,7 @@ green_taxi_df.head(10)
       <td>NaN</td>
       <td>12,8</td>
       <td>1.0</td>
-      <td>1\.</td>
+      <td>1</td>
       <td>1\.</td>
       <td>4</td>
       <td>21</td>
@@ -512,7 +512,7 @@ green_taxi_df.head(10)
       <td>NaN</td>
       <td>13,8</td>
       <td>1.0</td>
-      <td>1\.</td>
+      <td>1</td>
       <td>1\.</td>
       <td>4</td>
       <td>0</td>
@@ -550,7 +550,7 @@ green_taxi_df.head(10)
       <td>1\.</td>
       <td>0.50</td>
       <td>None</td>
-      <td>Yok.</td>
+      <td>None</td>
       <td>-73,942589</td>
       <td>40,841423</td>
       <td>-73,943672</td>
@@ -571,9 +571,9 @@ green_taxi_df.head(10)
       <td>2</td>
       <td>2016-01-29 17:16:18</td>
       <td>2016-01-29 17:27:52</td>
-      <td>1</td>
+      <td>1\.</td>
       <td>2.25</td>
-      <td>None</td>
+      <td>Yok.</td>
       <td>None</td>
       <td>-73,830894</td>
       <td>40,759434</td>
@@ -621,7 +621,7 @@ green_taxi_df.head(10)
       <td>2016-01-09 14:32:48</td>
       <td>2</td>
       <td>0,80</td>
-      <td>Yok.</td>
+      <td>None</td>
       <td>Yok.</td>
       <td>-73,881195</td>
       <td>40,741779</td>
@@ -643,10 +643,10 @@ green_taxi_df.head(10)
       <td>2</td>
       <td>2016-01-25 18:13:47</td>
       <td>2016-01-25 18:23:50</td>
-      <td>1\.</td>
+      <td>1</td>
       <td>1,04</td>
-      <td>Yok.</td>
       <td>None</td>
+      <td>Yok.</td>
       <td>-73,954376</td>
       <td>40,805729</td>
       <td>-73,939117</td>
@@ -743,7 +743,7 @@ green_taxi_df.head(5)
       <th>117695</th>
       <td>2</td>
       <td>2016-01-20</td>
-      <td>1\.</td>
+      <td>1</td>
       <td>0,98</td>
       <td>-73,921715</td>
       <td>40,766682</td>
@@ -809,7 +809,7 @@ green_taxi_df.head(5)
     </tr>
     <tr>
       <th>608125</th>
-      <td>1\.</td>
+      <td>1</td>
       <td>2016-01-13</td>
       <td>1\.</td>
       <td>0.50</td>
@@ -883,7 +883,7 @@ holidays_df.head(5)
       <th>40689</th>
       <td>Cezayir</td>
       <td>Yılbaşı günü</td>
-      <td>None</td>
+      <td>Yok.</td>
       <td>DZ</td>
       <td>Yılbaşı günü</td>
       <td>2008-01-01</td>
@@ -892,7 +892,7 @@ holidays_df.head(5)
       <th>40690</th>
       <td>Andorra</td>
       <td>Yılbaşı günü</td>
-      <td>Yok.</td>
+      <td>None</td>
       <td>AD</td>
       <td>Yılbaşı günü</td>
       <td>2008-01-01</td>

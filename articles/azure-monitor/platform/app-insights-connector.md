@@ -13,23 +13,23 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: magoedte
-ms.openlocfilehash: c7c0d2e3fb818f74a65502674188c523d23729e8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 05f2f52da90f499f7ac16de179d9967b97579997
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65606748"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68849181"
 ---
-# <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights Bağlayıcısı yönetim çözümü (kullanım dışı)
+# <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights Bağlayıcısı Management çözümü (kullanım dışı)
 
 ![Application Insights simgesi](./media/app-insights-connector/app-insights-connector-symbol.png)
 
 >[!NOTE]
-> Desteğiyle [kaynaklar arası sorgular](../../azure-monitor/log-query/cross-workspace-query.md), Application Insights Bağlayıcısı yönetim çözümü artık gerekli değildir. Bu olduğundan kullanım dışı ve 15 Ocak 2019 için Azure ticari bulutundaki resmi olarak kullanım dışı bırakılmış OMS portalında yanı sıra Azure Marketi'nde kaldırıldı. Azure ABD kamu bulutu için 30 Mart 2019 üzerinde bırakılacaktır.
+> [Çapraz kaynak sorguları](../../azure-monitor/log-query/cross-workspace-query.md)desteğiyle Application Insights Bağlayıcısı yönetim çözümü artık gerekli değildir. Azure ticari bulut için 15 Ocak 2019 tarihinde kullanımdan kaldırılan OMS portalı ile birlikte kullanımdan kaldırılmıştır ve Azure Marketi 'nden kaldırılmıştır. Azure ABD Kamu Bulutu için 30 Mart 2019 ' de kullanımdan kaldırılacaktır.
 >
->Varolan bağlantılar 30 Haziran 2019 kadar çalışmaya devam eder.  OMS portalı kullanımdan kaldırma ile yapılandırmak ve mevcut bağlantıları Portalı'ndan kaldırmak için hiçbir yolu yoktur. Bkz [PowerShell ile bağlayıcının çıkarılması](#removing-the-connector-with-powershell) aşağıda mevcut bağlantıları kaldırmak için PowerShell kullanma hakkında bir komut dosyası.
+>Mevcut bağlantılar 30 Haziran 2019 ' e kadar çalışmaya devam edecektir.  OMS portalının kullanımdan kaldırılması sayesinde, mevcut bağlantıları portaldan yapılandırmanın ve kaldırmanın bir yolu yoktur. Mevcut bağlantıları kaldırmak için PowerShell 'i kullanma konusunda bir betik için aşağıdaki [PowerShell ile bağlayıcıyı kaldırma](#removing-the-connector-with-powershell) bölümüne bakın.
 >
->Application Insights'ı sorgulama hakkında rehberlik için birden fazla uygulama için verileri günlüğe kaydetmek için bkz: [birden çok Azure İzleyici Application Insights kaynaklarını birleştirin](../log-query/unify-app-resource-data.md). OMS portalı kullanımdan kaldırma hakkında daha fazla bilgi için bkz. [Azure'a taşıyarak OMS portalında](../../azure-monitor/platform/oms-portal-transition.md).
+>Birden çok uygulama için Application Insights günlük verilerini sorgulama konusunda rehberlik için bkz. [birden çok Azure izleyicisini Application Insights kaynağı](../log-query/unify-app-resource-data.md)birleştirme. OMS portalının kullanımdan kaldırılması hakkında daha fazla bilgi için bkz. [OMS portalı Azure 'a taşınıyor](../../azure-monitor/platform/oms-portal-transition.md).
 >
 > 
 
@@ -192,10 +192,10 @@ Bir kayıt bir *türü* , *Applicationınsights* her giriş veri türü için ol
 | deviceType | İstemci cihazı |
 | ScreenResolution |   |
 | Kıta | İsteğin geldiği kıta |
-| Ülke | İsteğin geldiği ülke/bölge |
+| Country | İsteğin kaynaklandığı ülke/bölge |
 | İl | Bölge, eyalet veya yerel ayar isteği geldiği |
 | Şehir | Şehir veya isteğin geldiği Şehir |
-| isSynthetic | İstek bir kullanıcı veya otomatikleştirilmiş bir yöntem tarafından oluşturulup oluşturulmadığını belirtir. Oluşturulan kullanıcı = true veya false = otomatik yöntemi |
+| isSynthetic | İstek bir kullanıcı veya otomatikleştirilmiş bir yöntem tarafından oluşturulup oluşturulmadığını belirtir. True = otomatik Yöntem veya yanlış = Kullanıcı tarafından oluşturulan |
 | SamplingRate | Portala gönderilen SDK'sı tarafından oluşturulan telemetri yüzdesi. 0,0-100.0 aralığı. |
 | SampledCount | 100/(SamplingRate). Örneğin, 4 =&gt; % 25 |
 | Isauthenticated durumunda olmasını gerektirir | True veya false |
@@ -272,8 +272,8 @@ Bir kayıt bir *türü* , *Applicationınsights* her giriş veri türü için ol
 
 Bu çözüm panosunda gösterilen örnek günlük aramaları kümesi yok. Örnek günlük arama sorguları açıklamalarıyla birlikte ancak gösterilir [görünüm Application Insights Bağlayıcısı bilgi](#view-application-insights-connector-information) bölümü.
 
-## <a name="removing-the-connector-with-powershell"></a>PowerShell ile bir bağlayıcı kaldırılıyor
-OMS portalı kullanımdan kaldırma ile yapılandırmak ve mevcut bağlantıları Portalı'ndan kaldırmak için hiçbir yolu yoktur. Var olan bağlantıları aşağıdaki PowerShell Betiği ile kaldırabilirsiniz. Sahip veya bu işlemi gerçekleştirmek için çalışma alanının katkıda bulunan ve okuyucu Application Insights kaynağına ait olmalıdır.
+## <a name="removing-the-connector-with-powershell"></a>Bağlayıcı PowerShell ile kaldırılıyor
+OMS portalının kullanımdan kaldırılması sayesinde, mevcut bağlantıları portaldan yapılandırmanın ve kaldırmanın bir yolu yoktur. Mevcut bağlantıları aşağıdaki PowerShell betiğinden kaldırabilirsiniz. Bu işlemi gerçekleştirmek için çalışma alanı ve Application Insights kaynak okuyucu sahibi veya katılımcısı olmanız gerekir.
 
 ```powershell
 $Subscription_app = "App Subscription Name"
@@ -290,7 +290,7 @@ Set-AzContext -SubscriptionId $Subscription_workspace
 Remove-AzOperationalInsightsDataSource -WorkspaceName $Workspace -ResourceGroupName $ResourceGroup_workspace -Name $AIApp.Id
 ```
 
-REST API çağrısı çağıran aşağıdaki PowerShell betiğini kullanarak uygulamaların bir listesini alabilirsiniz. 
+Bir REST API çağrısını çağıran aşağıdaki PowerShell betiğini kullanarak uygulamaların listesini alabilirsiniz. 
 
 ```powershell
 Connect-AzAccount
@@ -311,13 +311,13 @@ $Headers = @{
 $Connections = Invoke-RestMethod -Method "GET" -Uri "https://management.azure.com$($LAWorkspace.ResourceId)/dataSources/?%24filter=kind%20eq%20'ApplicationInsights'&api-version=2015-11-01-preview" -Headers $Headers
 $ConnectionsJson = $Connections | ConvertTo-Json
 ```
-Bu betik, Azure Active Directory kimlik doğrulaması için bir taşıyıcı kimlik doğrulaması belirteci gerektirir. Bu belirteci almak için bir yol kullanarak bir makaledeki [REST API belgeleri site](https://docs.microsoft.com/rest/api/loganalytics/datasources/createorupdate). Tıklayın **deneyin** ve Azure aboneliğinizde oturum açın. Taşıyıcı belirtecinden kopyalayabilirsiniz **istek Önizleme** aşağıdaki görüntüde gösterildiği gibi.
+Bu betik, Azure Active Directory karşı kimlik doğrulaması için bir taşıyıcı kimlik doğrulama belirteci gerektirir. Bu belirteci almanın bir yolu [REST API belgeleri sitesindeki](https://docs.microsoft.com/rest/api/loganalytics/datasources/createorupdate)bir makaleyi kullanmaktır. **Dene** ' ye tıklayın ve Azure aboneliğinizde oturum açın. Aşağıdaki görüntüde gösterildiği gibi, **Istek önizlemeden** taşıyıcı belirtecini kopyalayabilirsiniz.
 
 
-![Taşıyıcı belirteç](media/app-insights-connector/bearer-token.png)
+![Taşıyıcı belirteci](media/app-insights-connector/bearer-token.png)
 
 
-Ayrıca, günlük sorgusu uygulamaların kullanım listesini alabilirsiniz:
+Ayrıca, bir günlük sorgusu kullanan uygulamaların bir listesini alabilirsiniz:
 
 ```Kusto
 ApplicationInsights | summarize by ApplicationName

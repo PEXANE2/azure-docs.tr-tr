@@ -47,7 +47,8 @@
 - name: Nasıl yapılır kılavuzları
   items:
     - name: İsabet vurgulamayı gerçekleştirme
-      href: hit-highlighting.md
+      href: ../Bing-Web-Search/hit-highlighting.md
+      maintainContext: true
     - name: Sayfa haberleri
       href: paging-news.md
     - name: Küçük resimleri yeniden boyutlandırma ve kırpma

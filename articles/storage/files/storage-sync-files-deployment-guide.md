@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6fe08c15de7ea388a5194054791eb394dc2f6e01
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: de0eb685e212b59705d8d659cbe9627338697e9d
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840612"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854518"
 ---
 # <a name="deploy-azure-file-sync"></a>Azure Dosya Eşitleme’yi dağıtma
 Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server 'ı Azure dosya paylaşımınızın hızlı önbelleğine dönüştürür. SMB, NFS ve FTPS dahil olmak üzere verilerinize yerel olarak erişmek için Windows Server 'da bulunan herhangi bir protokolü kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.
@@ -94,7 +94,7 @@ if ($installType -ne "Server Core") {
 Azure Dosya Eşitleme dağıtımı, **depolama eşitleme hizmeti** kaynağı seçtiğiniz aboneliğin bir kaynak grubuna yerleştirilerek başlar. Gerektiğinde sağlamamız önerilir. Sunucularınız ile bu kaynak arasında bir güven ilişkisi oluşturacaksınız ve bir sunucu yalnızca bir depolama Eşitleme hizmetine kaydedilebilir. Sonuç olarak, sunucu gruplarını ayırmak için gereken sayıda depolama eşitleme hizmeti dağıtmanız önerilir. Farklı depolama eşitleme hizmetlerinden sunucuların birbirleriyle eşitlenemeyeceğini aklınızda bulundurun.
 
 > [!Note]
-> Depolama eşitleme hizmeti, dağıtılan abonelik ve kaynak grubundan erişim izinlerini devraldı. Kimin erişimi olduğunu dikkatle denetlemeniz önerilir. Yazma erişimi olan varlıklar, bu depolama Eşitleme hizmetine kaydedilen sunuculardan yeni dosya kümelerini eşitlemeye başlayabilir ve verilerin bunlara erişebilen Azure Storage 'a akmasını sağlar.
+> Depolama eşitleme hizmeti, dağıtılan abonelik ve kaynak grubundan erişim izinlerini devralır. Kimin erişimi olduğunu dikkatle denetlemeniz önerilir. Yazma erişimi olan varlıklar, bu depolama Eşitleme hizmetine kaydedilen sunuculardan yeni dosya kümelerini eşitlemeye başlayabilir ve verilerin bunlara erişebilen Azure Storage 'a akmasını sağlar.
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 Bir depolama eşitleme hizmeti dağıtmak için, [Azure Portal](https://portal.azure.com/)gidin, *kaynak oluştur ' a* tıklayın ve ardından Azure dosya eşitleme aratın. Arama sonuçlarında **Azure dosya eşitleme**' yi seçin ve ardından **Oluştur** ' u seçerek **depolama eşitlemesini dağıt** sekmesini açın.
@@ -164,7 +164,7 @@ Azure Dosya Eşitleme aracısı, Windows Server’ın bir Azure dosya paylaşım
 Aracıyı [Microsoft Indirme merkezi](https://go.microsoft.com/fwlink/?linkid=858257)' nden indirebilirsiniz. İndirme tamamlandığında, Azure Dosya Eşitleme Aracısı yüklemesini başlatmak için MSI paketine çift tıklayın.
 
 > [!Important]  
-> Azure Dosya Eşitleme bir yük devretme kümesiyle kullanmak istiyorsanız, Azure Dosya Eşitleme aracısının kümedeki her düğüme yüklenmesi gerekir. Kümedeki her düğümün Azure Dosya Eşitleme çalışmak için kayıtlı olması gerekir.
+> Azure Dosya Eşitleme bir yük devretme kümesiyle kullanmak istiyorsanız, Azure Dosya Eşitleme aracısının kümedeki her düğüme yüklenmesi gerekir. Azure Dosya Eşitleme çalışmak için kümedeki her düğümün kayıtlı olması gerekir.
 
 Aşağıdakileri yapmanızı öneririz:
 - Sorun gidermeyi ve sunucu bakımını kolaylaştırmak için varsayılan yükleme yolunu (C:\Program Files\Azure\StorageSyncAgent) bırakın.

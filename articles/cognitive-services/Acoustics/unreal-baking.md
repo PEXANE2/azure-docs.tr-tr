@@ -3,20 +3,20 @@ title: Project Acoustics Unreal Bake öğreticisi
 titlesuffix: Azure Cognitive Services
 description: Bu belgede, gerçek olmayan Düzenleyici uzantısı kullanılarak bir Acoustics hazırlama gönderme işlemi açıklanmaktadır.
 services: cognitive-services
-author: kegodin
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: tutorial
 ms.date: 03/20/2019
-ms.author: michem
+ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 47946570db305ff3d54dfed9ea6f698e5deb7b72
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 7a868a5f9b06499e23710399733b0659d97f900d
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68704781"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854897"
 ---
 # <a name="project-acoustics-unreal-bake-tutorial"></a>Project Acoustics Unreal Bake öğreticisi
 Bu belgede, gerçek olmayan Düzenleyici uzantısı kullanılarak bir Acoustics hazırlama gönderme işlemi açıklanmaktadır.
@@ -72,7 +72,7 @@ Simülasyon için araştırma noktaları yerleştirmek üzere bir gezinti kafesi
 
 ### <a name="acoustics-volumes"></a>Acoustics birimleri ###
 
-**Acoustics birimleri**ile gezinti alanlarınızla yapabileceğiniz daha fazla gelişmiş özelleştirme de vardır. **Acoustics birimler** , sahneye ekleyebileceğiniz aktörlerdir ve gezinti kafesine dahil edilecek ve göz ardı edilecek bölgeleri seçmenizi sağlar. Aktör, "Include" ve "Exclude" arasında geçiş yapılabilir bir özellik sunar. "Dahil" birimler yalnızca içindeki gezinti kafesinin ve "hariç tutma" birimlerinin kabul edildiği ve bu alanların yoksayılmasını sağlar. "Hariç tut" birimleri her zaman "Ekle" birimlerinden sonra uygulanır. Nesneler sekmesindeki olağan işlem aracılığıyla **Acoustics birimlerini** **Acoustics gezintisi** olarak etiketlediğinizden emin olun. Bu ***aktörler otomatik olarak*** etiketlenemez.
+**Acoustics birimleri**ile gezinti alanlarınızla yapabileceğiniz daha fazla gelişmiş özelleştirme de vardır. **Acoustics birimler** , sahneye ekleyebileceğiniz aktörlerdir ve gezinti kafesine dahil edilecek ve göz ardı edilecek bölgeleri seçmenizi sağlar. Aktör, "Include" ve "Exclude" arasında geçiş yapılabilir bir özellik sunar. "Dahil" birimler yalnızca içindeki gezinti kafesinin ve "hariç tutma" birimlerinin kabul edildiği ve bu alanların yoksayılmasını sağlar. "Hariç tut" birimleri her zaman "Ekle" birimlerinden sonra uygulanır. Nesneler sekmesindeki olağan işlem aracılığıyla **Acoustics birimlerini** **Acoustics gezintisi** olarak etiketlediğinizden emin olun. Bu aktörler otomatik olarak etiketlenemez.
 
 ![Acoustics Volume özelliklerinin gerçek zamanlı olmayan ekran görüntüsü](media/unreal-acoustics-volume-properties.png)
 
@@ -82,7 +82,7 @@ Simülasyon için araştırma noktaları yerleştirmek üzere bir gezinti kafesi
 
 "Dahil etme" birimleri sahnenin el ile bölümlerini oluşturmak için faydalıdır. Örneğin, sahnesinizi birden çok akustik bölgeye bölmek ister. Örneğin, çok sayıda kilometre kare ve büyük bir sahneye sahipseniz ve Acoustics hakkında daha fazla ilgi alanına ihtiyacınız varsa iki ilginiz varsa. Sahnede iki büyük "Içerme" birimi çizebilir ve her biri için her biri için as dosyaları üretebilirsiniz. Ardından, oyuncu her kutucuğa yaklaşırsa, uygun ACE dosyasını yüklemek için şema çağrılarıyla birleştirilmiş tetikleyici birimleri kullanabilirsiniz.
 
-**Acoustics birimler** yalnızca, geometriyi kısıtlar, ****** yalnızca gezinmeyi kısıtlar. Bir "Include" **Acoustics birimi** içindeki her bir araştırma, dalga simülasyonu gerçekleştirirken birimin dışındaki tüm gerekli geometriyi yine de çekmeye devam edecektir. Bu nedenle, bir bölümden diğerine geçen oyuncudan kaynaklanan, occlusiyon veya diğer Acoustics hiçbir süreksizlik olmaması gerekir.
+**Acoustics birimler** yalnızca, geometriyi kısıtlar, yalnızca gezinmeyi kısıtlar. Bir "Include" **Acoustics birimi** içindeki her bir araştırma, dalga simülasyonu gerçekleştirirken birimin dışındaki tüm gerekli geometriyi yine de çekmeye devam edecektir. Bu nedenle, bir bölümden diğerine geçen oyuncudan kaynaklanan, occlusiyon veya diğer Acoustics hiçbir süreksizlik olmaması gerekir.
 
 ## <a name="select-acoustic-materials"></a>Akustik malzemeleri seçin
 

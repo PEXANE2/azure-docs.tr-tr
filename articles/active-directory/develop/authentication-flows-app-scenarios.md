@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/25/2019
 ms.author: jmprieur
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3d9f96f0b61129a0f881c8fe8676bd5df7376ad
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: 946eb0343c2858e275e40b7a581fd48e1713accd
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494573"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853526"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>Kimlik doğrulama akışları ve uygulama senaryoları
 
@@ -43,7 +43,7 @@ Belirteçleri bir dizi uygulama türünden elde edilebilir: Web uygulamaları, m
 
 Kimlik doğrulama senaryoları iki etkinlik içerir:
 
-- Korumalı bir Web API 'SI için **güvenlik belirteçleri alınıyor** . Microsoft, özel MicroSoft kimlik doğrulama kitaplıkları ailesi (MSAL) içinde belirteçleri almak için [kimlik doğrulama kitaplıklarını](reference-v2-libraries.md#microsoft-supported-client-libraries) kullanmanızı önerir
+- Korumalı bir Web API 'SI için **güvenlik belirteçleri alınıyor** . Microsoft, özel Microsoft kimlik doğrulama kitaplıkları ailesi (MSAL) içinde belirteçleri almak için [kimlik doğrulama kitaplıklarını](reference-v2-libraries.md#microsoft-supported-client-libraries) kullanmanızı önerir
 - **Web API 'Sini koruma** (veya bir Web uygulaması). Bir kaynağı korumanın güçlüklerinden biri (Web uygulaması veya Web API 'SI), güvenlik belirtecini doğrulamaktır. Microsoft, bazı platformlarda, [Ara yazılım kitaplıklarında](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries)sunulmaktadır.
 
 ### <a name="with-users-or-without-users"></a>Kullanıcılar veya kullanıcılar olmadan

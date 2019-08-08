@@ -1,22 +1,22 @@
 ---
-title: Azure dosyaları için SMB üzerinden Azure Active Directory kimlik doğrulamasını etkinleştirme (Önizleme)-Azure depolama
+title: Azure dosyaları için SMB üzerinden Azure Active Directory kimlik doğrulamasını etkinleştirme-Azure depolama
 description: Azure Active Directory Domain Services aracılığıyla Azure dosyaları için sunucu Ileti bloğu (SMB) üzerinden kimlik tabanlı kimlik doğrulamasını nasıl etkinleştireceğinizi öğrenin. Etki alanına katılmış Windows sanal makineleriniz (VM), Azure AD kimlik bilgilerini kullanarak Azure dosya paylaşımlarına erişebilir.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: rogarana
-ms.openlocfilehash: c0cfb8b7f0d6e3988ccdfa51cae2748b7008308d
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 060c47cc25d04bccc253bcebf6479d660621f6d2
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699759"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855317"
 ---
-# <a name="enable-azure-active-directory-domain-services-authentication-over-smb-for-azure-files-preview"></a>Azure dosyaları için SMB üzerinden Azure Active Directory Domain Services kimlik doğrulamasını etkinleştirme (Önizleme)
+# <a name="enable-azure-active-directory-domain-services-authentication-over-smb-for-azure-files"></a>Azure dosyaları için SMB üzerinden Azure Active Directory Domain Services kimlik doğrulamasını etkinleştirme
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
 
-Azure dosyaları için SMB üzerinden Azure AD kimlik doğrulamasına genel bakış için bkz. [Azure dosyaları IÇIN SMB üzerinden Azure Active Directory kimlik doğrulamasına genel bakış (Önizleme)](storage-files-active-directory-overview.md).
+Azure dosyaları için SMB üzerinden Azure AD kimlik doğrulamasına genel bakış için bkz. [Azure dosyaları IÇIN SMB üzerinden Azure Active Directory kimlik doğrulamasına genel bakış](storage-files-active-directory-overview.md).
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -78,7 +78,7 @@ Azure AD DS kimlik doğrulamasını yalnızca Azure AD DS Azure AD kiracınıza 
 
 1. Azure portal, mevcut depolama hesabınıza gidin veya [bir depolama hesabı oluşturun](../common/storage-quickstart-create-account.md).
 2. **Ayarlar** bölümünde **yapılandırma**' yı seçin.
-3. **Azure dosyaları için Azure Active Directory kimlik doğrulamasını etkinleştirin (Önizleme)** .
+3. **Azure dosya kimlik doğrulaması Için kimlik tabanlı dizin hizmetinden** **Azure Active Directory Domain Services (Azure AD DS)** öğesini seçin.
 
 Aşağıdaki görüntüde, depolama hesabınız için SMB üzerinden Azure AD DS kimlik doğrulamasının nasıl etkinleştirileceği gösterilmektedir.
 
@@ -86,13 +86,9 @@ Aşağıdaki görüntüde, depolama hesabınız için SMB üzerinden Azure AD DS
   
 ### <a name="powershell"></a>PowerShell  
 
-Azure PowerShell SMB üzerinden Azure AD DS kimlik doğrulamasını etkinleştirmek için en son az modülünü (2,4 veya daha yeni) veya az. Storage modülünü (1,5 veya daha yeni bir sürüm). PowerShell 'i yükleme hakkında daha fazla bilgi için bkz. [PowerShellGet Ile Windows 'da Azure PowerShell yükleme](https://docs.microsoft.com/powershell/azure/install-Az-ps):
+Azure PowerShell SMB üzerinden Azure AD DS kimlik doğrulamasını etkinleştirmek için en son az modülünü (2,4 veya daha yeni) veya az. Storage modülünü (1,5 veya daha yeni bir sürüm). PowerShell 'i yükleme hakkında daha fazla bilgi için bkz. [PowerShellGet Ile Windows 'da Azure PowerShell yükleme](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 
-```powershell
-Install-Module -Name Az.Storage -AllowPrerelease -Force -AllowClobber
-```
-
-Yeni bir depolama hesabı oluşturun, [set-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/set-azstorageaccount)' ı çağırın ve sonra **Enableazureactivedirectorydomainservicesforfile** parametresini **true**olarak ayarlayın. Aşağıdaki örnekte, yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın. (Önceki önizleme modülünü kullanıyorsanız, özellik etkinleştirme parametresi **Enableazurefilesaadıntegrationforsmb**' dir.)
+Yeni bir depolama hesabı oluşturmak için [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/New-azStorageAccount?view=azps-2.5.0)' ı çağırın ve sonra **Enableazureactivedirectorydomainservicesforfile** parametresini **true**olarak ayarlayın. Aşağıdaki örnekte, yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın. (Önceki önizleme modülünü kullanıyorsanız, özellik etkinleştirme parametresi **Enableazurefilesaadıntegrationforsmb**' dir.)
 
 ```powershell
 # Create a new storage account
@@ -103,6 +99,7 @@ New-AzStorageAccount -ResourceGroupName "<resource-group-name>" `
     -Kind StorageV2 `
     -EnableAzureActiveDirectoryDomainServicesForFile $true
 ```
+
 Mevcut depolama hesaplarında bu özelliği etkinleştirmek için aşağıdaki komutu kullanın:
 
 ```powershell
@@ -115,18 +112,22 @@ Set-AzStorageAccount -ResourceGroupName "<resource-group-name>" `
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Azure CLI 2,0 ' den SMB üzerinden Azure AD kimlik doğrulamasını etkinleştirmek için önce `storage-preview` uzantıyı yüklemeniz gerekir:
+Azure CLı ile SMB üzerinden Azure AD kimlik doğrulamasını etkinleştirmek için en son CLı sürümünü (sürüm 2.0.70 veya üzeri) yüklemelisiniz. Azure CLı yükleme hakkında daha fazla bilgi için bkz. [Azure CLI 'Yı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-```cli-interactive
-az extension add --name storage-preview
-```
-  
-Sonra yeni bir depolama hesabı oluşturun, [az Storage Account Update](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-update)' i çağırın ve `--file-aad` özelliği **true**olarak ayarlayın. Aşağıdaki örnekte, yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın.
+Yeni bir depolama hesabı oluşturmak için[az Storage Account Create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)çağırın ve `--enable-files-aadds` özelliği **true**olarak ayarlayın. Aşağıdaki örnekte, yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın. (Önceki önizleme modülünü kullanıyorsanız, özellik etkinleştirme parametresi **Dosya-AAD**' dir.)
 
 ```azurecli-interactive
 # Create a new storage account
-az storage account create -n <storage-account-name> -g <resource-group-name> --file-aad true
+az storage account create -n <storage-account-name> -g <resource-group-name> --enable-files-aadds $true
 ```
+
+Mevcut depolama hesaplarında bu özelliği etkinleştirmek için aşağıdaki komutu kullanın:
+
+```azurecli-interactive
+# Update a new storage account
+az storage account update -n <storage-account-name> -g <resource-group-name> --enable-files-aadds $true
+```
+
 
 ## <a name="assign-access-permissions-to-an-identity"></a>Kimliğe erişim izinleri atama
 
@@ -136,20 +137,12 @@ Kullanıcılara paylaşma düzeyi izinleri vermek için iki Azure yerleşik rol�
 
 - **Depolama dosyası VERI SMB paylaşımı okuyucusu** , SMB üzerinden Azure depolama dosya paylaşımlarında okuma erişimine izin verir.
 - **Depolama dosyası VERI SMB paylaşımı katılımcısı** , SMB üzerinden Azure depolama dosya paylaşımlarında okuma, yazma ve silme erişimine izin verir.
+- **Depolama dosyası VERI SMB paylaşımı yükseltilmiş katkıda bulunanlar** , SMB üzerinden Azure depolama dosya paylaşımlarında okuma, yazma, silme ve değiştirme izinleri sağlar.
 
 > [!IMPORTANT]
 > Bir kimliğe rol atama özelliği de dahil olmak üzere bir dosya paylaşımının tam yönetim denetimi, depolama hesabı anahtarının kullanılmasını gerektirir. Yönetim denetimi, Azure AD kimlik bilgileriyle desteklenmez.
 
-Azure portal, PowerShell veya Azure CLı kullanarak, yerleşik rolleri, bir kullanıcının Azure AD kimliğine, paylaşma düzeyi izinleri vermek için atayabilirsiniz.
-
-#### <a name="azure-portal"></a>Azure portal
-[Azure Portal](https://portal.azure.com)kullanarak BIR Azure AD kimliğine RBAC rolü atamak için aşağıdaki adımları izleyin:
-
-1. Azure portal, dosya paylaşımınıza gidin veya [Azure dosyalarında bir dosya paylaşma oluşturun](storage-how-to-create-file-share.md).
-2. Seçin **erişim denetimi (IAM)** .
-3. **Rol ataması Ekle** ' yi seçin
-4. **Rol ataması Ekle** dikey penceresinde, **rol** listesinden uygun yerleşik rolü (depolama dosyası veri SMB paylaşma okuyucusu, depolama dosya veri SMB paylaşma katılımcısı) seçin. Varsayılan ayarda **erişim ata** seçeneğini bırakın: **Azure AD kullanıcısı, grubu veya hizmet sorumlusu**. Hedef Azure AD kimliğini ada veya e-posta adresine göre seçin.
-5. Rol atama işlemini gerçekleştirmek için **Kaydet** ' i seçin.
+Azure PowerShell veya Azure CLı kullanarak, yerleşik rolleri, bir kullanıcının Azure AD kimliğine, paylaşma düzeyi izinleri vermek için atayabilirsiniz.
 
 #### <a name="powershell"></a>PowerShell
 
@@ -159,9 +152,9 @@ Aşağıdaki örnek betiği çalıştırmadan önce, parantez dahil yer tutucu d
 
 ```powershell
 #Get the name of the custom role
-$FileShareContributorRole = Get-AzRoleDefinition "<role-name>" #Use one of the built-in roles: Storage File Data SMB Share Reader, Storage File Data SMB Share Contributor
+$FileShareContributorRole = Get-AzRoleDefinition "<role-name>" #Use one of the built-in roles: Storage File Data SMB Share Reader, Storage File Data SMB Share Contributor, Storage File Data SMB Share Elevated Contributor
 #Constrain the scope to the target file share
-$scope = "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/fileServices/default/fileshare/<share-name>"
+$scope = "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/fileServices/default/fileshares/<share-name>"
 #Assign the custom role to the target identity with the specified scope.
 New-AzRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $FileShareContributorRole.Name -Scope $scope
 ```
@@ -173,17 +166,14 @@ Aşağıdaki CLı 2,0 komutunda, oturum açma adına göre bir Azure AD kimliği
 Aşağıdaki örnek betiği çalıştırmadan önce, parantez dahil yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın.
 
 ```azurecli-interactive
-#Assign the built-in role to the target identity: Storage File Data SMB Share Reader, Storage File Data SMB Share Contributor
-az role assignment create --role "<role-name>" --assignee <user-principal-name> --scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/fileServices/default/fileshare/<share-name>"
+#Assign the built-in role to the target identity: Storage File Data SMB Share Reader, Storage File Data SMB Share Contributor, Storage File Data SMB Share Elevated Contributor
+az role assignment create --role "<role-name>" --assignee <user-principal-name> --scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/fileServices/default/fileshares/<share-name>"
 ```
 
 ## <a name="configure-ntfs-permissions-over-smb"></a>SMB üzerinde NTFS izinlerini yapılandırma 
 RBAC ile paylaşma düzeyi izinleri atadıktan sonra, kök, dizin veya dosya düzeyinde uygun NTFS izinleri atamanız gerekir. Bir kullanıcının paylaşıma erişip erişemeyeceğini belirleyen üst düzey ağ geçidi olarak paylaşma düzeyi izinleri düşünün. NTFS izinleri, kullanıcının dizin veya dosya düzeyinde hangi işlemleri yapabileceğini belirlemek için daha ayrıntılı bir düzeyde davranır.
 
-Azure dosyaları, tüm NTFS temel ve gelişmiş izinleri kümesini destekler. Bir Azure dosya paylaşımındaki dizin ve dosyalardaki NTFS izinlerini, SHARE komutunu bağlayarak ve sonra Windows [ıacl](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) veya [set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-acl) komutunu çalıştırarak görüntüleyebilir ve yapılandırabilirsiniz. 
-
-> [!NOTE]
-> Önizleme sürümü yalnızca Windows Dosya Gezgini ile izinlerin görüntülenmesini destekler. Düzen izinleri henüz desteklenmiyor.
+Azure dosyaları, tüm NTFS temel ve gelişmiş izinleri kümesini destekler. Windows Dosya Gezgini 'ni kullanarak veya Windows [ıacl](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) veya [set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-acl) komutunu çalıştırarak bir Azure dosya PAYLAŞıMıNDAKI dizin ve dosyalarda NTFS izinlerini görüntüleyebilir ve yapılandırabilirsiniz. 
 
 NTFS 'yi üst Kullanıcı izinleriyle yapılandırmak için, etki alanına katılmış VM 'nizden depolama hesabı anahtarınızı kullanarak paylaşıma bağlamanız gerekir. Bir sonraki bölümdeki yönergeleri izleyerek bir Azure dosya paylaşımından komut isteminden bağlama yapın ve NTFS izinlerini uygun şekilde yapılandırın.
 
@@ -204,6 +194,17 @@ Azure dosya paylaşımından bağlamak için Windows **net use** komutunu kullan
 ```
 net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
 ```
+### <a name="configure-ntfs-permissions-with-windows-file-explorer"></a>Windows Dosya Gezgini ile NTFS izinlerini yapılandırma
+Kök dizin dahil olmak üzere dosya paylaşımındaki tüm dizinlere ve dosyalara tam izin vermek için Windows Dosya Gezgini 'ni kullanın.
+
+1. Windows Dosya Gezgini 'ni açın ve dosya/dizine sağ tıklayıp **Özellikler** ' i seçin.
+2. **Güvenlik** sekmesine tıklayın
+3. Düzenle 'ye tıklayın **..** . izinleri değiştirme düğmesi
+4. Mevcut kullanıcıların iznini değiştirebilir veya yeni kullanıcılara izin vermek için **Ekle..** . seçeneğine tıklayabilirsiniz
+5. Yeni Kullanıcı ekleme istemi penceresinde, izin vermek istediğiniz hedef Kullanıcı adını **Seçilecek nesne adlarını girin** kutusuna girin ve hedef kullanıcının tam UPN adını bulmak Için **adları denetle** ' ye tıklayın.
+7.  **Tamam 'a** tıklayın
+8.  Güvenlik sekmesinde, Yeni Kullanıcı Ekle ' ye vermek istediğiniz tüm izinleri seçin
+9.  **Uygula** ' ya tıklayın
 
 ### <a name="configure-ntfs-permissions-with-icacls"></a>Iacl 'lerle NTFS izinlerini yapılandırma
 Kök dizin dahil olmak üzere, dosya paylaşımındaki tüm dizin ve dosyalara tam izinler vermek için aşağıdaki Windows komutunu kullanın. Örnekteki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın.
@@ -235,5 +236,5 @@ Azure AD kimlik doğrulamasını SMB üzerinden başarıyla etkinleştirdiniz ve
 Azure dosyaları ve SMB üzerinden Azure AD kullanma hakkında daha fazla bilgi için şu kaynaklara bakın:
 
 - [Azure dosyaları 'na giriş](storage-files-introduction.md)
-- [Azure Dosyalar için SMB üzerinden Azure Active Directory kimlik doğrulamasına genel bakış (önizleme)](storage-files-active-directory-overview.md)
+- [Azure dosyaları için SMB üzerinden Azure Active Directory kimlik doğrulamasına genel bakış](storage-files-active-directory-overview.md)
 - [SSS](storage-files-faq.md)

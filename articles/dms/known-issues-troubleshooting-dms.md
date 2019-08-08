@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 06/18/2019
-ms.openlocfilehash: e33f195ea821b34147c748e9c0aa64cb63b58fdc
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: a35e0496c7e36d42e28a64fef438fe56713d3c78
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249991"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854992"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Yaygın Azure veritabanı geçiş hizmeti sorunlarını ve hatalarını giderme
 
@@ -54,11 +54,11 @@ Azure veritabanı geçiş hizmeti 'ni kullanarak MySQL 'ten MySQL için Azure ve
 
 Azure veritabanı geçiş hizmeti örneğini durdururken şu hatayı alırsınız:
 
-* **Hata**: Hizmet durdurulamadı. Hata: {' Error ': {' Code ': ' ınvalidrequest ', ' Message ': ' Şu anda çalışan bir veya daha fazla etkinlik. Hizmeti durdurmak için etkinlikler tamamlanana kadar bekleyin veya bu etkinlikleri el ile durdurun ve yeniden deneyin. '}}
+* **Hata**: Hizmet durdurulamadı. Hata: {'error':{'code':'InvalidRequest','message':'Şu anda bir veya birden fazla etkinlik çalışıyor. Hizmeti durdurmak için etkinlikler tamamlanana kadar bekleyin veya bu etkinlikleri el ile durdurun ve yeniden deneyin. '}}
 
 | Nedeni         | Çözüm |
 | ------------- | ------------- |
-| Bu hata, durdurmaya çalıştığınız hizmet örneği, hala çalışmakta olan veya geçiş projelerinde bulunan etkinlikleri içerdiğinde görüntülenir. <br><br><br><br><br><br> | Durdurmaya çalıştığınız Azure veritabanı geçiş hizmeti örneğinde çalışan bir etkinlik bulunmadığından emin olun. Ayrıca, hizmeti durdurmayı denemeden önce etkinlikleri veya projeleri de silebilirsiniz. Aşağıdaki adımlarda, çalışan tüm görevleri silerek geçiş hizmeti örneğini temizlemek için projelerin nasıl kaldırılacağı gösterilmektedir:<br>1. Install-Module-Name Azurerd. DataMigration <br>2. Login-AzureRmAccount <br>3. Select-azurermsubscription-subscriptionName "\<subName >" <br> 4. Remove-azurermdatamigrationproject-adı \<ProjectName >-resourcegroupname \<RgName >-ServiceName \<HizmetAdı >-DeleteRunningTask |
+| Bu hata, durdurmaya çalıştığınız hizmet örneği, hala çalışmakta olan veya geçiş projelerinde bulunan etkinlikleri içerdiğinde görüntülenir. <br><br><br><br><br><br> | Durdurmaya çalıştığınız Azure veritabanı geçiş hizmeti örneğinde çalışan bir etkinlik bulunmadığından emin olun. Ayrıca, hizmeti durdurmayı denemeden önce etkinlikleri veya projeleri de silebilirsiniz. Aşağıdaki adımlarda, çalışan tüm görevleri silerek geçiş hizmeti örneğini temizlemek için projelerin nasıl kaldırılacağı gösterilmektedir:<br>1. Install-Module -Name AzureRM.DataMigration <br>2. Login-AzureRmAccount <br>3. Select-azurermsubscription-subscriptionName "\<subName >" <br> 4. Remove-azurermdatamigrationproject-adı \<ProjectName >-resourcegroupname \<RgName >-ServiceName \<HizmetAdı >-DeleteRunningTask |
 
 ## <a name="error-when-attempting-to-start-azure-database-migration-service"></a>Azure veritabanı geçiş hizmeti başlatılmaya çalışılırken hata oluştu
 
@@ -98,7 +98,7 @@ Azure Veritabanı Geçiş Hizmeti proje sihirbazında kaynağa bağlanmayı dene
 | ------------- | ------------- |
 | [ExpressRoute](https://azure.microsoft.com/services/expressroute/)kullanılırken, Azure veritabanı geçiş hizmeti, hizmetle Ilişkili sanal ağ alt ağında üç hizmet uç noktası sağlanması [gerekir](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online) :<br> --Service Bus uç noktası<br> --Depolama uç noktası<br> --Hedef veritabanı uç noktası (örneğin, SQL uç noktası, Cosmos DB uç noktası)<br><br><br><br><br> | Kaynak ve Azure veritabanı geçiş hizmeti arasında ExpressRoute bağlantısı için gerekli hizmet uç noktalarını [etkinleştirin](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online) . <br><br><br><br><br><br><br><br> |
 
-## <a name="timeout-error-when-migrating-a-mysql-database-to-azure-mysql"></a>MySQL veritabanını Azure MySQL 'e geçirirken zaman aşımı hatası
+## <a name="timeout-error-when-migrating-a-mysql-database-to-azure-db-for-mysql"></a>MySQL veritabanını MySQL için Azure DB 'ye geçirirken zaman aşımı hatası
 
 Azure veritabanı geçiş hizmeti aracılığıyla bir MySQL veritabanını MySQL için Azure veritabanı örneğine geçirdiğinizde, geçiş aşağıdaki zaman aşımı hatasıyla başarısız olur:
 

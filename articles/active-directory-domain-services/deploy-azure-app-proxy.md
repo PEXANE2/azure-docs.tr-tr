@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: iainfou
-ms.openlocfilehash: eca421697081310b1bf245172b3ff125e11c8728
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: b3fb5d665380bc15b61d3b4b7913a992915f9afb
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234165"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853837"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Azure AD Uygulama Ara Sunucusu Azure AD Domain Services yönetilen bir etki alanında dağıtma
 Azure Active Directory (AD) uygulama proxy 'Si, internet üzerinden erişilecek şirket içi uygulamaları yayımlayarak uzak çalışanları desteklemenize yardımcı olur. Azure AD Domain Services ile, artık şirket içinde çalışan eski uygulamaları Azure altyapı hizmetleri 'ne açabilir ve taşıyabilirsiniz. Böylece, kuruluşunuzdaki kullanıcılara güvenli uzaktan erişim sağlamak için Azure AD Uygulama Ara Sunucusu kullanarak bu uygulamaları yayımlayabilirsiniz.
@@ -46,13 +46,10 @@ Azure AD dizininiz için Azure AD Uygulama Ara Sunucusu etkinleştirmek üzere a
 
 2. Dizine genel bakışı getirmek için **Azure Active Directory** ' a tıklayın. **Kurumsal uygulamalar**' a tıklayın.
 
-    ![Azure AD dizini seçin](./media/app-proxy/app-proxy-enable-start.png)
-3. **Uygulama proxy 'si**' ne tıklayın. Bir Azure AD Temel veya Azure AD Premium aboneliğiniz yoksa, denemeyi etkinleştirme seçeneğini görürsünüz. **Uygulama proxy 'Sini etkinleştir** ' i **etkinleştirmek** ve **Kaydet**' e tıklayın.
+3. **Uygulama proxy 'si**' ne tıklayın.
 
-    ![Uygulama Ara Sunucusunu etkinleştirme](./media/app-proxy/app-proxy-enable-proxy-blade.png)
 4. Bağlayıcıyı indirmek için **bağlayıcı** düğmesine tıklayın.
 
-    ![Bağlayıcıyı indir](./media/app-proxy/app-proxy-enabled-download-connector.png)
 5. İndirme sayfasında, lisans koşullarını ve gizlilik sözleşmesi 'ni kabul edin ve **İndir** düğmesine tıklayın.
 
     ![İndirmeyi Onayla](./media/app-proxy/app-proxy-enabled-confirm-download.png)
@@ -75,7 +72,7 @@ Daha önce, bir Windows Server sanal makinesi sağladınız ve yönetilen etki a
 
     ![Yüklenmek üzere koşulları kabul et](./media/app-proxy/app-proxy-install-connector-terms.png)
 3. Yükleme sırasında, bağlayıcıyı Azure AD dizininizin uygulama proxy 'Si ile kaydetmeniz istenir.
-   * **Azure AD Genel yönetici kimlik bilgilerinizi**sağlayın. Genel yönetici kiracınız, Microsoft Azure kimlik bilgilerinizden farklı olabilir.
+   * **Azure AD uygulama Yöneticisi kimlik bilgilerinizi**sağlayın. Uygulama Yöneticisi kiracınız Microsoft Azure kimlik bilgilerinizle farklı olabilir.
    * Bağlayıcıyı kaydetmek için kullanılan yönetici hesabı, uygulama ara sunucusu hizmetini etkinleştirdiğiniz dizine ait olmalıdır. Örneğin, kiracı etki alanı contoso.com ise, yönetici admin@contoso.com bu etki alanında veya diğer geçerli bir diğer ad olmalıdır.
    * Bağlayıcıyı yüklemekte olduğunuz sunucu için IE artırılmış güvenlik yapılandırması açıksa, kayıt ekranı engellenebilir. Erişime izin vermek için hata iletisindeki yönergeleri uygulayın. Internet Explorer Artırılmış Güvenlik seçeneğinin devre dışı olduğundan emin olun.
    * Bağlayıcı kaydı başarısız olursa bkz. [Uygulama Proxy’si Sorunlarını Giderme](../active-directory/manage-apps/application-proxy-troubleshoot.md).

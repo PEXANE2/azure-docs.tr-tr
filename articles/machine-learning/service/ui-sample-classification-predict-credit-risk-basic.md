@@ -1,70 +1,70 @@
 ---
-title: 'Sınıflandırma: Kredi riski tahmini'
+title: Sınıflandırmaya Kredi riski tahmini
 titleSuffix: Azure Machine Learning service
-description: Tek satırlık bir görsel arabirim kullanarak kod yazmadan sınıflandırıcı öğrenme bir makine oluşturmayı öğrenin.
+description: Görsel arabirimi kullanarak tek bir kod satırı yazmadan makine öğrenimi sınıflandırıcısını oluşturmayı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: article
+ms.topic: conceptual
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: 6ec91ca83d7aa1bc5e6c290d35b573a60cc0ed19
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: d1b3b8fa61492f3cf18e44e3e3046f32ea9c9b03
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605765"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855980"
 ---
-# <a name="sample-3---classification-predict-credit-risk"></a>3 - sınıflandırma. örnek: Kredi riski tahmini
+# <a name="sample-3---classification-predict-credit-risk"></a>Örnek 3-sınıflandırma: Kredi riski tahmini
 
-Tek satırlık bir görsel arabirim kullanarak kod yazmadan sınıflandırıcı öğrenme bir makine oluşturmayı öğrenin. Bu örnek eğitir bir **iki sınıflı artırmalı karar ağacı** kredi tahmin etmek için iade uygulama bilgilerini kredi geçmişi yaş ve kredi kartı numarası gibi risk (yüksek veya düşük) bağlı.
+Görsel arabirimi kullanarak tek bir kod satırı yazmadan makine öğrenimi sınıflandırıcısını oluşturmayı öğrenin. Bu örnek kredi geçmişi, yaş ve kredi kartı sayısı gibi kredi uygulama bilgilerine göre kredi riskini (yüksek veya düşük) tahmin etmek için **iki sınıflı bir karar ağacına** sahiptir.
 
-"Hangisinin?" sorusunu deniyoruz nedeni Bu, bir sınıflandırma problemi olarak adlandırılır. Ancak, regresyon, Sınıflandırma, kümeleme ve benzeri oluşmasından herhangi bir türde machine learning sorun gidermek için aynı temel işlem uygulayabilirsiniz.
+Soruyu "bir tane mi?" sorusunu yanıtlamaya çalışıyoruz. Bu, sınıflandırma sorunu olarak adlandırılır. Ancak, aynı temel süreci, herhangi bir makine öğrenimi sorununun, gerileme, sınıflandırma, kümeleme gibi bir tür olup olmadığını bir şekilde uygulayabilir.
 
-Bu deneme için tamamlanan grafiği aşağıda verilmiştir:
+Bu deneme için tamamlanan grafik aşağıda verilmiştir:
 
-![Denemeyi grafiği](media/ui-sample-classification-predict-credit-risk-basic/overall-graph.png)
+![Deneme grafiği](media/ui-sample-classification-predict-credit-risk-basic/overall-graph.png)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. Seçin **açık** düğmesi için örnek 3 deneme:
+4. Örnek 3 deneme için **Aç** düğmesini seçin:
 
     ![Denemeyi açın](media/ui-sample-classification-predict-credit-risk-basic/open-sample3.png)
 
 ## <a name="related-sample"></a>İlgili örnek
 
-[4 - sınıflandırma. örnek: Kredi riski tahmini (maliyeti gizli)](ui-sample-classification-predict-credit-risk-cost-sensitive.md) Bu deney olarak aynı sorunu çözdü Gelişmiş bir deneme sunar. Nasıl gerçekleştirileceğini gösterir _maliyet hassas_ kullanarak sınıflandırma bir **Python betiği yürütme** modülü ve iki ikili sınıflandırma algoritmaların performansını karşılaştırın. Sınıflandırma denemeleri oluşturma hakkında daha fazla bilgi edinmek istiyorsanız buna bakın.
+[Örnek 4-sınıflandırma: Kredi riski tahmini (maliyet duyarlı)](ui-sample-classification-predict-credit-risk-cost-sensitive.md) , bu deneyle aynı sorunu çözen gelişmiş bir deneme sağlar. Bir **Python betik modülünü yürütme** ve iki ikili sınıflandırma algoritmalarının performansını karşılaştırma ile _Maliyet duyarlı_ sınıflandırmanın nasıl gerçekleştirileceğini gösterir. Sınıflandırma denemeleri oluşturma hakkında daha fazla bilgi edinmek istiyorsanız buna başvurun.
 
 ## <a name="data"></a>Data
 
-UC Irvine depodan Almanca kredi kartı veri kümesi kullanıyoruz.
-Veri kümesi 20 özellikleri ve 1 etiket 1.000 örnekleri içerir. Her örnek, bir kişiyi temsil eder. Özellikler, sayısal ve kategorik özelliklerini içerir. Bkz: [UCI Web sitesi](https://archive.ics.uci.edu/ml/datasets/Statlog+%28German+Credit+Data%29) kategorik özelliklerinin anlamını için. Kredi riski gösterir ve yalnızca iki olası değerler içeren etiket son sütundur: yüksek kredi riski = 2 ve düşük kredi riski = 1.
+UC Irvine deposundan Almanya kredi kartı veri kümesini kullanıyoruz.
+Veri kümesi 20 özellik ve 1 etiketli 1.000 örnek içerir. Her örnek bir kişiyi temsil eder. Özellikler sayısal ve kategorik özellikler içerir. Kategorik özelliklerinin anlamı için [UCI Web sitesine](https://archive.ics.uci.edu/ml/datasets/Statlog+%28German+Credit+Data%29) bakın. Son sütun, kredi riskini belirten ve yalnızca iki olası değere sahip olan etikettir: yüksek kredi riski = 2 ve düşük kredi riski = 1.
 
-## <a name="experiment-summary"></a>Deneme özeti
+## <a name="experiment-summary"></a>Deneme Özeti
 
-Biz, bir deneme oluşturmak için şu adımları izleyin:
+Denemeyi oluşturmak için aşağıdaki adımları izliyoruz:
 
-1. Almanca kredi kartı UCI veri veri kümesi modülü deneme tuvale sürükleyin.
-1. Ekleme bir **meta verileri Düzenle** her sütun için anlamlı adlar ekleyebiliriz. böylece modülü.
-1. Ekleme bir **verileri bölme** modülünün eğitim ve test kümesi oluşturun. İlk çıkış veri kümesinde 0,7 için satırlar için kesir değerini ayarlayın. Bu ayar, verilerin %70 modülünün sol bağlantı noktası için çıktı ve doğru bağlantı noktasına rest olacağını belirtir. Eğitim ve test etmek için doğru olanı sol veri kümesi kullanıyoruz.
-1. Ekleme bir **iki sınıflı artırılmış karar ağacı** modülü artırmalı karar ağacı Sınıflandırıcısı başlatılamadı.
-1. Ekleme bir **modeli eğitme** modülü. Sınıflandırıcı önceki adımdaki sol giriş bağlantı noktasına bağlayın **modeli eğitme**. Eğitim kümesi Ekle (sol çıkış bağlantı noktasına **verileri bölme**) sağ giriş bağlantı noktasına **modeli eğitme**. **Modeli eğitme** sınıflandırıcı eğitme.
-1. Ekleme bir **Score Model** modülü ve bağlama **modeli eğitme** ona modülü. Sınama kümesi eklersiniz (sağ bağlantı noktası **verileri bölme**) için **Score Model**. **Score Model** tahminler yapar. Tahminler ve pozitif sınıfı olasılıklar görmek için çıkış bağlantı noktasını seçebilirsiniz.
-1. Ekleme bir **Evaluate Model** modülü ve puanlanmış veri kümesi sol giriş bağlantı noktasına bağlayın. Değerlendirme sonuçlarını görmek için çıkış bağlantı noktasına seçin **Evaluate Model** modülü ve select **Görselleştir**.
+1. Alman kredi kartı UCı veri kümesi modülünü deneme tuvaline sürükleyin.
+1. Her sütun için anlamlı adlar ekleyebilmemiz için bir **veri düzenleme** modülü ekleyin.
+1. Eğitim ve test kümelerini oluşturmak için bir **bölünmüş veri** modülü ekleyin. İlk çıkış veri kümesindeki satır kesirini 0,7 olarak ayarlayın. Bu ayar, verilerin% 70 ' un, modülün sol bağlantı noktasına ve geri kalanı doğru bağlantı noktasına çıkış olacağını belirtir. Eğitim için sol veri kümesini ve test için doğru olanı kullanırız.
+1. Önceden maliyetli bir karar ağacı sınıflandırıcısını başlatmak için **Iki sınıf bir önceden maliyetli karar ağacı** modülü ekleyin.
+1. **Eğitim modeli** modülü ekleme. Önceki adımdan gelen sınıflandırıcının, **tren modelinin**sol giriş bağlantı noktasına bağlanmasını sağlar. Eğitim kümesini ( **bölünmüş verilerin**sol çıkış bağlantı noktası) **tren modelinin**sağ giriş bağlantı noktasına ekleyin. **Eğitme modeli** sınıflandırıcısını eğitecektir.
+1. Bir **puan modeli** modülü ekleyin ve **model eğitme** modülünü buna bağlayın. Sonra test kümesini ( **bölünmüş verilerin**sağ bağlantı noktası) **puan modeline**ekleyin. **Puan modeli** tahmine göre yapılır. Tahmine dayalı ve olumlu sınıf olasılıklarına bakmak için çıkış bağlantı noktasını seçebilirsiniz.
+1. **Model değerlendirme** modülünü ekleyin ve puanlanmış veri kümesini sol giriş bağlantı noktasına bağlayın. Değerlendirme sonuçlarını görmek için **modeli değerlendir** modülünün çıkış bağlantı noktasını seçin ve **Görselleştir**' i seçin.
 
-Eksiksiz bir deneme grafiğini şu şekildedir:
+İşte tüm deneme grafiği:
 
-![Denemeyi grafiği](media/ui-sample-classification-predict-credit-risk-basic/overall-graph.png)
+![Deneme grafiği](media/ui-sample-classification-predict-credit-risk-basic/overall-graph.png)
 
 ## <a name="results"></a>Sonuçlar
 
 ![Sonuçları değerlendirin](media/ui-sample-classification-predict-credit-risk-basic/evaluate-result.png)
 
-Değerlendirme sonuçları, modelin AUC 0.776 olduğunu görebilirsiniz. Daha Eşikte 0,5, duyarlık 0.621 olduğundan, geri çağırma 0.456, ve F1 puanı 0.526.
+Değerlendirme sonuçlarında, modelin AUC 'nin 0,776 olduğunu görebilirsiniz. 0,5 eşiğinden duyarlık 0,621, geri çağırma ise 0,456 ve F1 puanı 0,526.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -72,10 +72,10 @@ Değerlendirme sonuçları, modelin AUC 0.776 olduğunu görebilirsiniz. Daha E�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Görsel bir arabirim için kullanılabilir diğer örneklerini keşfedin:
+Görsel arabirim için kullanılabilen diğer örnekleri keşfet:
 
-- [Örnek 1 - regresyon: Otomobilin fiyatını tahmin edin](ui-sample-regression-predict-automobile-price-basic.md)
-- [2 - regresyon. örnek: Otomobil fiyat tahmini için algoritmalar karşılaştırın](ui-sample-regression-predict-automobile-price-compare-algorithms.md)
-- [4 - sınıflandırma. örnek: (Maliyet hassas) kredi riskini tahmin](ui-sample-classification-predict-credit-risk-cost-sensitive.md)
-- [5 - sınıflandırma. örnek: Dalgalanmasını tahmin](ui-sample-classification-predict-churn.md)
-- [Örnek 6 - sınıflandırma: Uçuş gecikme tahmin edin](ui-sample-classification-predict-flight-delay.md)
+- [Örnek 1-gerileme: Bir otomobil fiyatını tahmin edin](ui-sample-regression-predict-automobile-price-basic.md)
+- [Örnek 2-gerileme: Otomobil fiyat tahmini için algoritmaları karşılaştırın](ui-sample-regression-predict-automobile-price-compare-algorithms.md)
+- [Örnek 4-sınıflandırma: Kredi riskini tahmin etme (maliyet duyarlı)](ui-sample-classification-predict-credit-risk-cost-sensitive.md)
+- [Örnek 5-sınıflandırma: Dalgalanma tahmin etme](ui-sample-classification-predict-churn.md)
+- [Örnek 6-sınıflandırma: Uçuş gecikmelerini tahmin etme](ui-sample-classification-predict-flight-delay.md)

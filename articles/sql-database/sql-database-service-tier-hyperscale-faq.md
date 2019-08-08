@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/06/2019
-ms.openlocfilehash: 70ba6c5507cf31732d679a61c3e185a520b4c5f3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 94894126be98f0d3d4d404d97d0a4a39fff2e665
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566664"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847401"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Azure SQL hiper ölçek veritabanları hakkında SSS
 
@@ -44,7 +44,7 @@ Sanal çekirdek tabanlı hizmet katmanları, birincil olarak kullanılabilirlik,
 - İş Açısından Kritik hizmet katmanı, GÇ gecikmesi önem derecesi olan iş yükleri için uygundur.
 
 | | Kaynak türü | Genel Amaçlı |  Hiper ölçek | İş Açısından Kritik |
-|:---|:---:|:---:|:---:|:---:|:---:|
+|:---:|:---:|:---:|:---:|:---:|
 | **En iyisi** |Tümü|  Birçok iş yükü. Bütçe odaklı dengeli işlem ve depolama seçenekleri sunar. | Büyük veri kapasitesi gereksinimlerine sahip veri uygulamaları ve depolamayı otomatik olarak ölçeklendirme ve işlem akıcı bir şekilde ölçeklendirme özelliği. | Yüksek işlem hızına sahip OLTP uygulamaları ve en düşük gecikmeli GÇ. Birkaç, yalıtılmış çoğaltma kullanarak hatalara en yüksek esnekliği sağlar.|
 |  **Kaynak türü** ||Tek veritabanı/elastik havuz/yönetilen örnek | Tek veritabanı | Tek veritabanı/elastik havuz/yönetilen örnek |
 | **İşlem boyutu**|Tek veritabanı/elastik havuz * | 1-80 sanal çekirdek | 1-80 sanal çekirdek * | 1-80 sanal çekirdek |
@@ -55,7 +55,7 @@ Sanal çekirdek tabanlı hizmet katmanları, birincil olarak kullanılabilirlik,
 | **GÇ işleme** | Tek veritabanı * * | maksimum 7000 ıOPS ile vCore başına 500 ıOPS | Hiper ölçek, birden çok düzeyde önbelleğe alma özelliği olan çok katmanlı bir mimaridir. Etkin IOPS iş yüküne bağlı olacaktır. | 5000 ıOPS, en fazla 200.000 ıOPS|
 | | Yönetilen örnek | Dosyanın boyutuna bağlıdır | Yok | Yönetilen örnek: Dosyanın boyutuna bağlıdır|
 |**Kullanılabilirlik**|Tümü|1 çoğaltma, okuma ölçeği yok, yerel önbellek yok | Birden çok çoğaltma, en fazla 15 okuma ölçeği, kısmi yerel önbellek | 3 çoğaltma, 1 okuma ölçeği, bölge yedekli HA, tam yerel önbellek |
-|**Lerine**|Tümü|RA-GRS, 7-35 gün (varsayılan olarak 7 gün)| RA-GRS, 7-35 gün (varsayılan olarak 7 gün), sabit zaman zaman noktası kurtarma (sür) | RA-GRS, 7-35 gün (varsayılan olarak 7 gün) |
+|**Lerine**|Tümü|RA-GRS, 7-35 gün (varsayılan olarak 7 gün)| RA-GRS, 7 gün, sabit zaman zaman aşımı kurtarma (sür) | RA-GRS, 7-35 gün (varsayılan olarak 7 gün) |
 
 \*Esnek havuzlar hiper ölçek hizmeti katmanında desteklenmiyor
 

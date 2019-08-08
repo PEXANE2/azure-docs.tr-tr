@@ -1,6 +1,6 @@
 ---
-title: Azure VM sürüm notları 'nda SQL Server | Microsoft Docs
-description: Azure VM 'de SQL Server yeni özellikler ve iyileştirmeler hakkında bilgi edinin
+title: Azure sanal makinelerinde SQL Server için sürüm notları | Microsoft Docs
+description: Azure VM 'de SQL Server yönelik yeni özellikler ve iyileştirmeler hakkında bilgi edinin
 services: virtual-machines-windows
 author: MashaMSFT
 ms.author: mathoma
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/01/2019
-ms.openlocfilehash: e656cd4d901ad9f3180963047a85cd980e56df8b
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: a482e599914e8b91a237f4395e9c0c47ea84ad59
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774208"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68846065"
 ---
-# <a name="sql-server-on-azure-virtual-machine-release-notes"></a>Azure sanal makinesi sürüm notlarında SQL Server
+# <a name="release-notes-for-sql-server-on-azure-virtual-machines"></a>Azure sanal makinelerinde SQL Server için sürüm notları
 
-Azure, içinde yerleşik SQL Server bir görüntü ile sanal makine dağıtmanıza olanak tanır. Bu makalede, [Azure sanal makinelerinde son SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)sürümlerindeki yeni özellikler ve geliştirmeler özetlenmektedir. Makalede ayrıca, yayınla doğrudan ilgili olmayan ancak aynı zaman çerçevesinde yayınlanan önemli içerik güncelleştirmeleri de listelenir. Diğer Azure hizmetlerine yönelik iyileştirmeler için bkz. [hizmet güncelleştirmeleri](https://azure.microsoft.com/updates)
+Azure, içinde yerleşik SQL Server bir görüntü ile sanal makine (VM) dağıtmanıza olanak tanır. Bu makalede, [Azure sanal makinelerinde son SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)sürümlerindeki yeni özellikler ve geliştirmeler özetlenmektedir. Makalede ayrıca, yayınla doğrudan ilgili olmayan ancak aynı zaman çerçevesinde yayınlanan önemli içerik güncelleştirmeleri de listelenir. Diğer Azure hizmetlerine yönelik iyileştirmeler için bkz. [hizmet güncelleştirmeleri](https://azure.microsoft.com/updates).
 
 ## <a name="july-2019"></a>2019 Temmuz
 
@@ -39,10 +39,10 @@ Azure, içinde yerleşik SQL Server bir görüntü ile sanal makine dağıtmanı
 
 | Hizmet geliştirmeleri | Ayrıntılar |
 | --- | --- |
-| **Yeni SQL IaaS yükleme modları** | SQL Server hizmeti yeniden başlatmanıza engel olmak için SQL IaaS uzantısını [hafif modda](virtual-machines-windows-sql-server-agent-extension.md) yüklemek artık mümkündür.  |
+| **Yeni SQL IaaS yükleme modları** | SQL Server hizmetinin yeniden başlatılmasını önlemek için SQL Server IaaS uzantısını [hafif modda](virtual-machines-windows-sql-server-agent-extension.md) yüklemek mümkündür.  |
 | **SQL Server sürümü değişikliği** | Artık SQL Server VM için [sürüm özelliğini](virtual-machines-windows-sql-change-edition.md) değiştirebilirsiniz. |
-| **SQL VM RP değişiklikleri** | Yeni SQL IaaS modlarını kullanarak, [SQL Server VM SQL VM kaynak sağlayıcısı](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-sql-vm-resource-provider) -hatta [Windows 2008 görüntüleri](virtual-machines-windows-sql-register-with-resource-provider.md#register-sql-server-2008r2-on-windows-server-2008-vms) ile kaydedebilirsiniz. |
-| **AHUB kullanan KLG görüntüleri** | Market 'ten dağıtılan KLG görüntüleri artık [Lisans türlerini ' PAYG ' olarak](virtual-machines-windows-sql-ahb.md#remarks)değiştirebilir.| 
+| **SQL VM kaynak sağlayıcısında yapılan değişiklikler** | [SQL VM kaynak sağlayıcısı ile SQL Server VM](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-the-sql-vm-resource-provider) yeni SQL IaaS modlarını kullanarak kaydedebilirsiniz. Bu özellik [Windows 2008 görüntülerini](virtual-machines-windows-sql-register-with-resource-provider.md#register-sql-server-2008-or-2008-r2-on-windows-server-2008-vms)içerir.|
+| **Azure Hibrit Avantajı kullanarak kendi lisans görüntülerini getirin** | Azure Marketi 'nden dağıtılan kendi lisans görüntülerini getir, şimdi de [Lisans türlerini Kullandıkça Öde olarak](virtual-machines-windows-sql-ahb.md#remarks)değiştirebilir.| 
 | &nbsp; | &nbsp; |
 
 
@@ -52,14 +52,14 @@ Azure, içinde yerleşik SQL Server bir görüntü ile sanal makine dağıtmanı
 
 | Hizmet geliştirmeleri | Ayrıntılar |
 | --- | --- |
-| **Azure portal yeni SQL VM yönetimi** | Artık Azure portal SQL Server VM yönetmenin yeni bir yolu vardır. Daha fazla bilgi için [Azure portal SQL Server VM yönetme](virtual-machines-windows-sql-manage-portal.md)bölümüne bakın.  |
+| **Azure portal yeni SQL Server VM yönetimi** | Artık Azure portal SQL Server VM yönetmenin bir yolu vardır. Daha fazla bilgi için bkz. [Azure portal SQL Server VM 'Leri yönetme](virtual-machines-windows-sql-manage-portal.md).  | 
 | &nbsp; | &nbsp; |
 
 ### <a name="documentation-improvements"></a>Belge geliştirmeleri
 
 | Belgeler | Ayrıntılar |
 | --- | --- |
-| **Yeni SQL VM Portal yönetimi** | Yeni SQL VM yönetim portalı deneyimine bir düzine makale güncelleştirildi. | 
+| **Yeni SQL Server VM yönetim portalı** | Yeni SQL Server VM yönetim portalı deneyimine bir düzine makale güncelleştirildi. | 
 | &nbsp; | &nbsp; |
 
 
@@ -71,7 +71,7 @@ Azure, içinde yerleşik SQL Server bir görüntü ile sanal makine dağıtmanı
 
 | Hizmet geliştirmeleri | Ayrıntılar |
 | --- | --- |
-| **SQL Server 2008/2008R2 desteğini uzat** | SQL Server 2008 ve SQL Server 2008 R2 desteğini bir Azure VM 'sine geçiş yaparak [genişletin](virtual-machines-windows-sql-server-2008-eos-extend-support.md) . | 
+| **SQL Server 2008/2008 R2 için genişletilmiş destek** | SQL Server 2008 ve SQL Server 2008 R2 desteğini bir Azure VM 'ye *olduğu gibi* geçirerek [genişletin](virtual-machines-windows-sql-server-2008-eos-extend-support.md) . | 
 | &nbsp; | &nbsp; |
 
 
@@ -79,9 +79,9 @@ Azure, içinde yerleşik SQL Server bir görüntü ile sanal makine dağıtmanı
 
 | Hizmet geliştirmeleri | Ayrıntılar |
 | --- | --- |
-| **Özel görüntü desteklenebilirliği** | Artık, [Esnek lisanslamanın](virtual-machines-windows-sql-ahb.md)sınırlı işlevlerini sunan özel işletim SISTEMI ve SQL görüntülerine [SQL IaaS uzantısını](virtual-machines-windows-sql-server-agent-extension.md#installation) yükleyebilirsiniz. Özel görüntünüzü SQL kaynak sağlayıcısına kaydederken, lisans türünü ' AHUB ' olarak belirtin, aksi takdirde kayıt başarısız olur. | 
-| **Adlandırılmış örnek desteklenebilirliği** | Artık varsayılan örnek doğru şekilde kaldırılmışsa [SQL IaaS uzantısını](virtual-machines-windows-sql-server-agent-extension.md#installation) adlandırılmış bir örnekle kullanabilirsiniz. | 
-| **Portal geliştirmesi** | SQL Server VM dağıtmaya yönelik Azure portal deneyim, kullanılabilirliği iyileştirmeye yönelik olarak yeniden belirlenmiştir. Daha fazla bilgi için bkz. kısa [Başlangıç](quickstart-sql-vm-create-portal.md) ve daha fazla kapsamlı [nasıl yapılır](virtual-machines-windows-portal-sql-server-provision.md) Kılavuzu SQL Server VM dağıtma.|
+| **Özel görüntü desteklenebilirliği** | Artık [SQL Server IaaS uzantısını](virtual-machines-windows-sql-server-agent-extension.md#installation) özel işletim SISTEMI ve SQL yansımalarına yükleyebilirsiniz ve bu da [Esnek lisansın](virtual-machines-windows-sql-ahb.md)sınırlı işlevlerini sunar. Özel görüntünüzü SQL kaynak sağlayıcısı ile kaydederken, lisans türünü "AHUB" olarak belirtin. Aksi takdirde, kayıt başarısız olur. | 
+| **Adlandırılmış örnek desteklenebilirliği** | Varsayılan örnek düzgün şekilde kaldırılmışsa, artık [SQL Server IaaS uzantısını](virtual-machines-windows-sql-server-agent-extension.md#installation) adlandırılmış bir örnekle kullanabilirsiniz. | 
+| **Portal geliştirmesi** | SQL Server VM dağıtmaya yönelik Azure portal deneyim, kullanılabilirliği iyileştirmeye yönelik olarak yeniden belirlenmiştir. Daha fazla bilgi için bkz. kısa [Başlangıç](quickstart-sql-vm-create-portal.md) ve daha kapsamlı [nasıl yapılır Kılavuzu](virtual-machines-windows-portal-sql-server-provision.md) SQL Server VM dağıtma.|
 | &nbsp; | &nbsp; |
 
 
@@ -89,8 +89,8 @@ Azure, içinde yerleşik SQL Server bir görüntü ile sanal makine dağıtmanı
 
 | Hizmet geliştirmeleri | Ayrıntılar |
 | --- | --- |
-| **Portal geliştirme** | Bir SQL Server VM için lisans modelini, Kullandıkça Öde 'den kendi lisansını getir ' e kadar değiştirmek mümkündür [Azure Portal](virtual-machines-windows-sql-ahb.md#change-license-for-vms-already-registered-with-resource-provider)|
-|**Azure SQL VM CLı ile AG dağıtımı basitleştirmesi** | Artık bir kullanılabilirlik grubunu Azure 'daki bir SQL Server VM dağıtmak her zamankinden daha kolay. [Azure SQL VM CLI](/cli/azure/sql/vm?view=azure-cli-2018-03-01-hybrid) , komut satırından ve kayıt zamanında wsfc, ILB ve AG dinleyicisi oluşturmanızı sağlar! Daha fazla bilgi için bkz. Azure [SQL VM CLI kullanarak Azure VM 'de SQL Server Için Always on kullanılabilirlik grubunu yapılandırma](virtual-machines-windows-sql-availability-group-cli.md). | 
+| **Portal geliştirme** | Bir SQL Server VM için lisans modelini, [Azure Portal](virtual-machines-windows-sql-ahb.md#change-the-license-for-vms-already-registered-with-the-resource-provider)kullanarak kendi lisansınıza sahip olmak üzere Kullandıkça Öde için değiştirmek mümkündür.|
+|**Azure SQL Server VM CLı ile kullanılabilirlik grubu dağıtımının basitleştirmesi** | Artık bir kullanılabilirlik grubunu Azure 'da bir SQL Server VM dağıtmaya hiç zamankinden daha kolay. Windows Yük devretme kümesi, iç yük dengeleyici ve kullanılabilirlik grubu dinleyicilerini komut satırından oluşturmak için [Azure CLI](/cli/azure/sql/vm?view=azure-cli-2018-03-01-hybrid) 'yı kullanabilirsiniz. Daha fazla bilgi için bkz. Azure [SQL Server VM CLI kullanarak bir Azure VM 'de SQL Server Için her zaman açık kullanılabilirlik grubu yapılandırma](virtual-machines-windows-sql-availability-group-cli.md). | 
 | &nbsp; | &nbsp; |
 
 
@@ -98,9 +98,9 @@ Azure, içinde yerleşik SQL Server bir görüntü ile sanal makine dağıtmanı
 
 | Hizmet geliştirmeleri | Ayrıntılar |
 | --- | --- |
-| **Yeni SQL cluster grubu kaynak sağlayıcısı** | Windows Yük devretme kümesinin meta verilerini tanımlayan yeni bir kaynak sağlayıcısı (Microsoft. SqlVirtualMachine/SqlVirtualMachineGroups). Windows Yük devretme Küme hizmeti önyükleme SQL Server VM *Sqlvirtualmachinegroups* 'a katılma ve VM 'yi kümeyle birleştirme.  |
-|**Azure hızlı başlangıç şablonlarıyla bir kullanılabilirlik grubu dağıtımı ayarlamayı otomatikleştirme** |Artık Windows Yük devretme kümesi oluşturmak, bu VM 'ye SQL Server VM 'ye katmak, dinleyiciyi oluşturmak ve Iç Load Balancer iki Azure hızlı başlangıç şablonlarıyla yapılandırmak mümkündür. Daha fazla bilgi için bkz. Azure [hızlı başlangıç şablonunu kullanarak Azure VM 'de SQL Server Için Always on kullanılabilirlik grubunu yapılandırma](virtual-machines-windows-sql-availability-group-quickstart-template.md). | 
-| **Otomatik SQL VM kaynak sağlayıcısı kaydı** | Bu aydan sonra dağıtılan SQL Server VM 'Ler yeni SQL Server kaynak sağlayıcısına otomatik olarak kaydedilir. Bu aydan önce dağıtılan SQL Server sanal makinelerin yine de el ile kaydedilmesi gerekir. Daha fazla bilgi için bkz. [SQL VM kaynak sağlayıcısı ile var olan SQL VM 'Yi kaydetme](virtual-machines-windows-sql-register-with-resource-provider.md).|
+| **SQL Server kümesi için yeni kaynak sağlayıcısı** | Yeni bir kaynak sağlayıcısı (Microsoft. SqlVirtualMachine/SqlVirtualMachineGroups), Windows Yük devretme kümesinin meta verilerini tanımlar. Windows Server yük devretme kümesi (WSFC) hizmeti önyükleme ve VM 'yi kümeyle birleştiren *Sqlvirtualmachinegroups* 'a katılma SQL Server VM.  |
+|**Azure hızlı başlangıç şablonları ile bir kullanılabilirlik grubu dağıtımının otomatik kurulumu** |Windows Yük devretme kümesi oluşturmak, bu kümeye SQL Server VM 'Leri birleştirmek, dinleyiciyi oluşturmak ve iç yük dengeleyiciyi iki Azure hızlı başlangıç şablonu ile yapılandırmak mümkündür. Daha fazla bilgi için bkz. Azure [Hızlı Başlangıç şablonlarını kullanarak bir Azure VM 'de SQL Server Için her zaman açık kullanılabilirlik grubu yapılandırma](virtual-machines-windows-sql-availability-group-quickstart-template.md). | 
+| **SQL VM kaynak sağlayıcısına otomatik kayıt** | Bu aydan sonra dağıtılan SQL Server VM 'Ler yeni SQL Server kaynak sağlayıcısına otomatik olarak kaydedilir. Bu aya göre dağıtılan SQL Server sanal makinelerin yine de el ile kaydedilmesi gerekir. Daha fazla bilgi için bkz. [Azure 'da SQL Server sanal MAKINESINI SQL VM kaynak sağlayıcısıyla kaydetme](virtual-machines-windows-sql-register-with-resource-provider.md).|
 | &nbsp; | &nbsp; |
 
 
@@ -108,8 +108,8 @@ Azure, içinde yerleşik SQL Server bir görüntü ile sanal makine dağıtmanı
 
 | Hizmet geliştirmeleri | Ayrıntılar |
 | --- | --- |
-| **Yeni SQL VM kaynak sağlayıcısı** |  SQL Server VM daha iyi yönetim sağlayan SQL Server VM 'Ler (Microsoft. SqlVirtualMachine) için yeni bir kaynak sağlayıcısı. VM 'nizi kaydetme hakkında daha fazla bilgi için bkz. [var olan SQL VM 'yi yeni kaynak sağlayıcısına kaydetme](virtual-machines-windows-sql-register-with-resource-provider.md). |
-|**Lisans modelini Değiştir** | Artık Azure CLı veya PowerShell kullanarak SQL sanal makinenizin kullanım başına ödeme ve kendi lisans modeli arasında geçiş yapabilirsiniz. Daha fazla bilgi için bkz. [SQL VM için lisans modelini değiştirme](virtual-machines-windows-sql-ahb.md). | 
+| **Yeni SQL VM kaynak sağlayıcısı** |  Yeni bir kaynak sağlayıcısı (Microsoft. SqlVirtualMachine) SQL Server sanal makinelerinizin daha iyi yönetilmesini sağlar. VM 'lerinizi kaydetme hakkında daha fazla bilgi için bkz. [Azure 'da SQL Server sanal MAKINESINI SQL VM kaynak sağlayıcısıyla kaydetme](virtual-machines-windows-sql-register-with-resource-provider.md). |
+|**Lisans modelini Değiştir** | Artık Azure CLı veya PowerShell kullanarak SQL Server VM için, kullanım başına ödeme ve kendi lisans modelleriniz arasında geçiş yapabilirsiniz. Daha fazla bilgi için bkz. [Azure 'da SQL Server sanal makinesi için lisans modelini değiştirme](virtual-machines-windows-sql-ahb.md). | 
 | &nbsp; | &nbsp; |
 
 
@@ -117,12 +117,12 @@ Azure, içinde yerleşik SQL Server bir görüntü ile sanal makine dağıtmanı
 
 **Windows VM 'leri**:
 
-* [WINDOWS VM 'de SQL Server genel bakış](virtual-machines-windows-sql-server-iaas-overview.md).
+* [Windows VM 'de SQL Server genel bakış](virtual-machines-windows-sql-server-iaas-overview.md)
 * [SQL Server Windows VM sağlama](virtual-machines-windows-portal-sql-server-provision.md)
 * [Bir veritabanını Azure VM 'de SQL Server geçirme](virtual-machines-windows-migrate-sql.md)
 * [Azure sanal makinelerinde SQL Server için yüksek kullanılabilirlik ve olağanüstü durum kurtarma](virtual-machines-windows-sql-high-availability-dr.md)
-* [Azure Sanal Makineler’de SQL Server için performansa yönelik en iyi uygulamalar](virtual-machines-windows-sql-performance.md)
-* [Azure Sanal Makineler'de SQL Server için Uygulama Desenleri ve Geliştirme Stratejileri](virtual-machines-windows-sql-server-app-patterns-dev-strategies.md)
+* [Azure sanal makinelerinde SQL Server için en iyi performans uygulamaları](virtual-machines-windows-sql-performance.md)
+* [Azure sanal makinelerinde SQL Server için uygulama desenleri ve geliştirme stratejileri](virtual-machines-windows-sql-server-app-patterns-dev-strategies.md)
 
 **Linux VM 'leri**:
 

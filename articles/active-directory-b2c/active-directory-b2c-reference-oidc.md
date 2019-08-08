@@ -11,12 +11,12 @@ ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: c5626e2ddfc24eeaeed562f3eaf73d16626eb458
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 6b5157a71ce15d4dfd199b6826be22235e61df97
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278029"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848541"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'de OpenID Connect ile Web oturumu açma
 
@@ -32,7 +32,7 @@ Azure AD B2C, standart OpenID Connect protokolünü basit kimlik doğrulaması v
 
 Web uygulamanızın kullanıcı kimliğini doğrulaması ve bir Kullanıcı akışı çalıştırması gerektiğinde, kullanıcıyı `/authorize` uç noktaya yönlendirebilir. Kullanıcı, Kullanıcı akışına bağlı olarak eylem gerçekleştirir.
 
-Bu istekte istemci, `scope` parametresindeki kullanıcıdan almaları gereken izinleri ve `p` parametresinde çalıştırmak için kullanıcı akışını gösterir. Üç örnek, her biri farklı bir Kullanıcı akışı kullanan aşağıdaki bölümlerde (okunabilirlik için satır sonları ile) verilmiştir. Her isteğin nasıl çalıştığına ilişkin bir fikir almak için, isteği bir tarayıcıya yapıştırmayı ve çalıştırmayı deneyin. Bir tane varsa `fabrikamb2c` ve bir Kullanıcı akışı oluşturduysanız, kiracınızın adıyla değiştirebilirsiniz.
+Bu istekte istemci, `scope` parametresindeki kullanıcıdan almaları gereken izinleri ve `p` parametresinde çalıştırmak için kullanıcı akışını gösterir. Üç örnek, her biri farklı bir Kullanıcı akışı kullanan aşağıdaki bölümlerde (okunabilirlik için satır sonları ile) verilmiştir. Her isteğin nasıl çalıştığına ilişkin bir fikir almak için, isteği bir tarayıcıya yapıştırmayı ve çalıştırmayı deneyin. Bir tane varsa `fabrikamb2c` ve bir Kullanıcı akışı oluşturduysanız, kiracınızın adıyla değiştirebilirsiniz. Ayrıca, ' i de değiştirmeniz `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6`gerekir. Bu istemci KIMLIĞINI, oluşturduğunuz uygulama kaydının uygulama KIMLIĞIYLE değiştirin. Ayrıca, ilke adını `b2c_1_sign_in` kiracınızda bulunan ilke adıyla değiştirin. 
 
 #### <a name="use-a-sign-in-user-flow"></a>Oturum açma Kullanıcı akışı kullanma
 ```
@@ -83,7 +83,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | state | Hayır | İsteğin belirteç yanıtında de döndürülen bir değeri. İstediğiniz herhangi bir içerik dizesi olabilir. Rastgele oluşturulan benzersiz bir değer genellikle siteler arası istek sahteciliği saldırılarını önlemek için kullanılır. Durum Ayrıca, kullanıcının uygulamadaki durumuyla ilgili bilgileri, üzerinde bulundukları sayfa gibi kimlik doğrulama isteği yapılmadan önce kodlamak için de kullanılır. |
 | nonce | Evet | İstek olarak ortaya çıkan KIMLIK belirtecine dahil edilen isteğe (uygulama tarafından oluşturulan) dahil bir değer. Daha sonra uygulama, belirteç yeniden yürütme saldırılarını azaltmak için bu değeri doğrulayabilirler. Değer genellikle, isteğin kaynağını belirlemek için kullanılan rastgele benzersiz bir dizedir. |
 | p | Evet | Çalıştırılan Kullanıcı akışı. Azure AD B2C kiracınızda oluşturulan bir Kullanıcı akışının adıdır. Kullanıcı akışının adı ile `b2c\_1\_`başlamalıdır. |
-| İsteme | Hayır | Gerekli Kullanıcı etkileşimi türü. Şu anda geçerli olan tek değer, kullanıcıyı `login`bu istek üzerine kimlik bilgilerini girmeye zorlayan olur. |
+| isteme | Hayır | Gerekli Kullanıcı etkileşimi türü. Şu anda geçerli olan tek değer, kullanıcıyı `login`bu istek üzerine kimlik bilgilerini girmeye zorlayan olur. |
 
 Bu noktada, kullanıcıdan iş akışını tamamlaması istenir. Kullanıcının Kullanıcı adı ve parolasını girmesi, sosyal kimlik ile oturum açması veya dizine kaydolmanız gerekebilir. Kullanıcı akışının nasıl tanımlandığına bağlı olarak başka herhangi bir sayıda adım olabilir.
 
@@ -115,7 +115,7 @@ error=access_denied
 
 | Parametre | Açıklama |
 | --------- | ----------- |
-| error | Oluşan hata türlerini sınıflandırmak için kullanılabilen bir kod. |
+| hata | Oluşan hata türlerini sınıflandırmak için kullanılabilen bir kod. |
 | error_description | Bir kimlik doğrulama hatasının temel nedenini belirlemenize yardımcı olabilecek belirli bir hata iletisi. |
 | state | İsteğe bir `state` parametre dahil ise, yanıtta aynı değer görünmelidir. Uygulamanın, istek ve yanıt `state` değerlerinin özdeş olduğunu doğrulaması gerekir. |
 
@@ -209,7 +209,7 @@ Hata yanıtları şöyle görünür:
 
 | Parametre | Açıklama |
 | --------- | ----------- |
-| error | Oluşan hata türlerini sınıflandırmak için kullanılan kod. |
+| hata | Oluşan hata türlerini sınıflandırmak için kullanılan kod. |
 | error_description | Kimlik doğrulama hatasının temel nedenini belirlemenize yardımcı olabilecek bir ileti. |
 
 ## <a name="use-the-token"></a>Belirteci kullanma
@@ -276,7 +276,7 @@ Hata yanıtları şöyle görünür:
 
 | Parametre | Açıklama |
 | --------- | ----------- |
-| error | Oluşan hata türlerini sınıflandırmak için kullanılan kod. |
+| hata | Oluşan hata türlerini sınıflandırmak için kullanılan kod. |
 | error_description | Kimlik doğrulama hatasının temel nedenini belirlemenize yardımcı olabilecek bir ileti. |
 
 ## <a name="send-a-sign-out-request"></a>Oturum kapatma isteği gönder

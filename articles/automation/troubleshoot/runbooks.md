@@ -8,14 +8,30 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: f732ab6ceb17dcd013c6d032ef3943f6ad9bef71
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: 759422ea8c327ae67278354217dac4c60b32f7a9
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782322"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68850331"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbook 'larda hatalarda sorun giderme
+
+Bu makalede runbook 'larla ilgili yaygın sorunlar ve bunların nasıl çözümleneceği anlatılmaktadır.
+
+## <a name="steps-to-troubleshoot-runbooks"></a>Runbook sorunlarını giderme adımları
+
+Azure Otomasyonu 'nda runbook yürütmekte olan hatalar olduğunda, sorunu tanılamanıza yardımcı olması için aşağıdaki adımları kullanabilirsiniz.
+
+1. **Runbook betiğinizin yerel makinenizde başarıyla yürütüldüğünden emin olun:**  Dil başvurusu ve öğrenme modülleri için [PowerShell belgeleri](/powershell/scripting/overview) veya [Python belgeleri](https://docs.python.org/3/) bölümüne bakın.
+
+   Komut dosyanızı yerel olarak yürütmek, şu gibi yaygın hataları bulabilir ve çözümleyebilir:
+
+   - **Eksik modüller**
+   - **Sözdizimi hataları**
+   - **Mantık hataları**
+
+2. **Düğümlerinizin ve Otomasyon çalışma alanınızın gerekli modüllere sahip olduğundan emin olun:** Runbook 'ünüz herhangi bir modülü içeri aktardığında, [Içeri aktarma modülleri](../shared-resources/modules.md#import-modules)' nde listelenen adımları kullanarak Otomasyon hesabınızda kullanılabilir olduklarından emin olun. Daha fazla bilgi için bkz. [Modül sorunlarını giderme](shared-resources.md#modules).
 
 ## <a name="authentication-errors-when-working-with-azure-automation-runbooks"></a>Azure Otomasyonu runbook 'ları ile çalışırken kimlik doğrulama hataları
 

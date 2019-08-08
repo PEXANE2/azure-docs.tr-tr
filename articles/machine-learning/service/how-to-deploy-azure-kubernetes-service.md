@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
-ms.openlocfilehash: deb6482c0419a5872ccf86f0014adbecc7be6c9d
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 4a0aab2ca2f0bbcee07f09124e68c3623d16004d
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68694398"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848145"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes hizmet kümesine model dağıtma
 
@@ -38,7 +38,7 @@ Azure Kubernetes hizmetine dağıtırken, __çalışma alanınıza bağlı__bir 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Bir Azure Machine Learning hizmeti çalışma alanı. Daha fazla bilgi için bkz. [Azure Machine Learning hizmet çalışma alanı oluşturma](setup-create-workspace.md).
+- Bir Azure Machine Learning hizmeti çalışma alanı. Daha fazla bilgi için bkz. [Azure Machine Learning hizmet çalışma alanı oluşturma](how-to-manage-workspace.md).
 
 - Bir Machine Learning modeli, çalışma alanınıza kaydedildi. Kayıtlı bir modeliniz yoksa, bkz. [modellerin nasıl ve nereye dağıtılacağı](how-to-deploy-and-where.md).
 
@@ -61,6 +61,9 @@ Azure Kubernetes hizmetine dağıtırken, __çalışma alanınıza bağlı__bir 
 AKS kümesi oluşturma veya iliştirme, çalışma alanınız için tek seferlik bir işlemdir. Bu kümeye birden çok dağıtımlar için yeniden kullanabilirsiniz. Kümeyi veya onu içeren kaynak grubunu silerseniz, bir dahaki sefer dağıtmanız gerektiğinde yeni bir küme oluşturmanız gerekir. Çalışma alanınıza eklenmiş birden çok AKS kümeniz olabilir.
 
 Üretim yerine __geliştirme__, __doğrulama__ve __Test__ için bir aks kümesi oluşturmak istiyorsanız, geliştirme __testi__için __küme amacını__ belirtebilirsiniz.
+
+> [!WARNING]
+> Ayarlarsanız `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`, oluşturulan küme üretim düzeyi trafik için uygun değildir ve çıkarım sürelerini artırabilir. Geliştirme ve test kümeleri de hata toleransı garantisi vermez. Geliştirme ve test kümeleri için en az 2 sanal CPU önerilir.
 
 Aşağıdaki örneklerde SDK ve CLı kullanarak yeni bir AKS kümesinin nasıl oluşturulacağı gösterilmektedir:
 
@@ -85,7 +88,7 @@ aks_target.wait_for_completion(show_output = True)
 ```
 
 > [!IMPORTANT]
-> İçin [`provisioning_configuration()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py), agent_count ve vm_size için özel değerler seçerseniz, vm_size ile çarpılan agent_count 'in 12 sanal CPU 'ya eşit veya daha büyük olduğundan emin olmanız gerekir. Örneğin, 4 sanal CPU içeren bir vm_size "Standard_D3_v2" kullanırsanız, bir agent_count 3 veya daha büyük seçmeniz gerekir.
+> İçin [`provisioning_configuration()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py), ve `agent_count` `vm_size` `agent_count` için özel değerler seçerseniz ve `cluster_purpose` yoksa `DEV_TEST`, ile çarpılarak 12 sanal CPU 'ya eşit veya daha büyük olduğundan emin olmanız gerekir. `vm_size` Örneğin, 4 sanal CPU içeren bir `vm_size` "Standard_D3_v2" kullanırsanız, 3 veya daha büyük bir `agent_count` sürümü seçmelisiniz.
 >
 > Azure Machine Learning SDK, bir AKS kümesini ölçeklendirmeye yönelik destek sağlamaz. Kümedeki düğümleri ölçeklendirmek için Azure portal AKS kümeniz için Kullanıcı arabirimini kullanın. Kümenin VM boyutunu değil, yalnızca düğüm sayısını değiştirebilirsiniz.
 
@@ -118,7 +121,7 @@ Azure aboneliğinizde zaten AKS kümeniz varsa ve sürüm 1.12. # # ise, görün
 >
 > `cluster_purpose` Parametresini ayarlamayın veya ayarlarsanız `cluster_purpose = AksCompute.ClusterPurpose.FAST_PROD`, kümede en az 12 sanal CPU kullanılabilir olmalıdır.
 >
-> Ayarlarsanız `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`, kümenin 12 sanal CPU 'ya sahip olması gerekmez. Ancak, geliştirme/test için yapılandırılan bir küme, üretim düzeyi trafiğe uygun olmayacaktır ve çıkarım sürelerini artırabilir.
+> Ayarlarsanız `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`, kümenin 12 sanal CPU 'ya sahip olması gerekmez. Geliştirme ve test için en az 2 sanal CPU önerilir. Ancak, geliştirme/test için yapılandırılan bir küme, üretim düzeyi trafiğe uygun değildir ve çıkarım sürelerini artırabilir. Geliştirme ve test kümeleri de hata toleransı garantisi vermez.
 
 Azure CLı veya portalını kullanarak bir AKS kümesi oluşturma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 

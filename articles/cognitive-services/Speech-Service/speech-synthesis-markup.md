@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 1bd1882218630aca0707a792d120045c06dea127
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 89b8b5f8c574de033fabf6861e24fc7d2b31e171
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68552680"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855092"
 ---
 # <a name="speech-synthesis-markup-language-ssml"></a>Konuşma Sentezi Biçimlendirme Dili (SSML)
 
@@ -413,8 +413,8 @@ SSML belgesi başına yalnızca bir arka plan ses dosyasına izin verilir. Ancak
 |-----------|-------------|---------------------|
 | YN | Arka plan ses dosyasının konumunu/URL 'sini belirtir. | SSML belgenizde arka plan sesi kullanılıyorsa gereklidir. |
 | birim | Arka plan ses dosyasının hacmini belirtir. **Kabul edilen değerler** `0` : `100` dahil. Varsayılan değer `1` şeklindedir. | İsteğe Bağlı |
-| FADEIN | Arka plan sesinin silinme süresini belirtir. **Kabul edilen değerler** `0` : `10000` dahil.  | İsteğe Bağlı |
-| fadeout | Arka plan sesinin silinme süresini belirtir. **Kabul edilen değerler** `0` : `10000` dahil.  | İsteğe Bağlı |
+| FADEIN | Arka plan sesinin saniye cinsinden silinme süresini belirtir. Varsayılan değer `0`, belirme olmaması ile eşdeğerdir. **Kabul edilen değerler** `0` : `10000` dahil.  | İsteğe Bağlı |
+| fadeout | Arka plan sesinin milisaniye cinsinden silinme süresini belirtir. Varsayılan değer, soluklaştırma eşdeğeri olan ' tir `0`. **Kabul edilen değerler** `0` : `10000` dahil.  | İsteğe Bağlı |
 
 **Örnek**
 

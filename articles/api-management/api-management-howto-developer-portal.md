@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: apimpm
-ms.openlocfilehash: 2756444db010e23f7114e99f474de9ce6614aaee
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 27d5dcc99db040036ba296911aa33d8a312bb23f
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68837911"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851521"
 ---
 # <a name="access-and-customize-the-new-developer-portal-in-azure-api-management"></a>Azure API Management yeni geliştirici portalına erişin ve özelleştirin
 
@@ -95,10 +95,6 @@ Bir *Düzen* , URL şablonuyla *sayfanın* URL 'siyle eşleştirerek bir sayfaya
 ### <a name="why-doesnt-the-interactive-developer-console-work"></a>Etkileşimli Geliştirici Konsolu neden çalışmıyor?
 
 Bu, büyük olasılıkla CORS ile ilgilidir. Etkileşimli konsol tarayıcıdan istemci tarafı API isteği yapar. API 'lerinize [BIR CORS ilkesi](https://docs.microsoft.com/azure/api-management/api-management-cross-domain-policies#CORS) ekleyerek CORS sorununu çözebilirsiniz. Tüm parametreleri el ile belirtebilirsiniz (örneğin, Origin as https://contoso.com) veya joker karakter `*` değeri kullanabilirsiniz).
-
-### <a name="where-can-i-file-bugs"></a>Hataları nerede depolayabilirim?
-
-[GitHub deposunda](http://aka.ms/apimdevportal).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

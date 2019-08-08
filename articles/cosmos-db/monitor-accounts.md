@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 1c12007e04ff8cd08ddb7afdf9a3c2add9638de3
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: d8e80594e0c56f57527d1703b0cf1323571cf351
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277439"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855720"
 ---
 # <a name="monitor-performance-and-storage-metrics-in-azure-cosmos-db"></a>Azure Cosmos DB performans ve depolama ölçümlerini izleyin
 
@@ -50,7 +50,7 @@ Hesap sayfasında, yeni ölçümler sayfası veya Azure İzleyici ölçümleri g
 ## <a name="set-up-alerts-in-the-portal"></a>Portalında uyarıları ayarlama
 
 > [!NOTE]
-> Azure Izleyici 'deki klasik uyarılar 31 Ağustos 2019 tarihinde kullanımdan kaldırılacaktır. Azure portal, klasik uyarı kurallarını geçirmek için bir [geçiş aracı](../azure-monitor/platform/alerts-using-migration-tool.md) sağlar. Ancak, Azure Cosmos DB ölçümlerinde bulunan tüm klasik uyarılar geçirilemeyebilir, bazı özel durumlar vardır ve geçirilemeyen klasik uyarıların bir listesi için [Azure izleyici](../azure-monitor/platform/alerts-understand-migration.md#cosmos-db-metrics) makalesine bakın. 
+> Azure Izleyici 'de klasik uyarılar yakında kullanımdan kaldırılacaktır. Azure portal, klasik uyarı kurallarını geçirmek için bir [geçiş aracı](../azure-monitor/platform/alerts-using-migration-tool.md) sağlar. Ancak, Azure Cosmos DB ölçümlerinde bulunan tüm klasik uyarılar geçirilemeyebilir, bazı özel durumlar vardır ve geçirilebilecek klasik uyarıların bir listesi için bkz. [Azure izleyici](../azure-monitor/platform/alerts-understand-migration.md#cosmos-db-metrics) makalesi. 
 
 1. İçinde [Azure portalında](https://portal.azure.com/), tıklayın **tüm hizmetleri**, tıklayın **Azure Cosmos DB**ve ardından, istediğiniz performansını ayarlamak Azure Cosmos DB hesabının adına tıklayın Ölçüm uyarıları.
 2. Kaynak menüden **uyarı kuralları** uyarı kuralları sayfasını açmak için.  
