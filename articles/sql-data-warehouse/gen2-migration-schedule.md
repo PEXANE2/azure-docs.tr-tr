@@ -10,12 +10,12 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 07/22/2019
-ms.openlocfilehash: d4724672510d6ccbbc819691d621400cb00d8c9a
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: cd55e078e14ec34006df05096f161e7bdef39a03
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405445"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827216"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Veri Ambarınızı Gen2 'ye yükseltme
 
@@ -88,7 +88,7 @@ Kendi kendine yükseltme yaparken iki seçenek vardır.  Geçerli veri Ambarın�
 - [Yerinde yükseltme](upgrade-to-latest-generation.md) -Bu seçenek, var olan Gen1 veri Ambarınızı Gen2 'e yükseltir. Yükseltme işlemi, veri Ambarınızı yeniden başlatdığımızda bağlantı (yaklaşık 5 dakika) ile kısa bir yer içerir.  Veri ambarınız yeniden başlatıldıktan sonra, tam kullanıma açık olacaktır. Yükseltme sırasında sorunlarla karşılaşırsanız, olası neden olarak bir [destek isteği](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket) ve "Gen2 Upgrade" başvurusu açın.
 - [Geri yükleme noktasından Yükselt](sql-data-warehouse-restore.md) -geçerli Gen1 veri Ambarınızda Kullanıcı tanımlı bir geri yükleme noktası oluşturun ve ardından doğrudan bir Gen2 örneğine geri yükleyin. Mevcut Gen1 veri ambarı yerinde kalır. Geri yükleme tamamlandıktan sonra, Gen2 veri ambarınızın kullanımı tamamen kullanılabilir olacaktır.  Geri yüklenen Gen2 örneğinde tüm test ve doğrulama süreçlerini çalıştırdıktan sonra, özgün Gen1 örneği silinebilir.
 
-   - 1\. adım: Azure portal, [Kullanıcı tanımlı bir geri yükleme noktası oluşturun](sql-data-warehouse-restore.md#create-a-user-defined-restore-point-using-the-azure-portal).
+   - 1\. adım: Azure portal, [Kullanıcı tanımlı bir geri yükleme noktası oluşturun](sql-data-warehouse-restore-active-paused-dw.md#restore-an-existing-data-warehouse-through-the-azure-portal).
    - 2\. adım: Kullanıcı tanımlı geri yükleme noktasından geri yükleme yaparken, "performans düzeyi" ni tercih ettiğiniz Gen2 katmanına ayarlayın.
 
 Yükseltme işlemi arka planda veri dosyalarını yükseltmeye devam ederken bir süre için performansta düşüş yaşayabilirsiniz. Performans düşüşünün toplam süresi veri dosyalarınızın boyutuna bağlı olarak değişiklik gösterir.
@@ -110,7 +110,7 @@ Daha fazla bilgi için bkz. [Gen2 sürümüne yükseltme](upgrade-to-latest-gene
 
 **S: Yükseltmeler Otomasyon betiklerimi nasıl etkiler?**
 
-- Y: Hizmet düzeyi hedefine başvuran tüm otomasyon betikleri, Gen2 eşdeğerine karşılık olacak şekilde değiştirilmelidir.  [Ayrıntılara bakın](upgrade-to-latest-generation.md#sign-in-to-the-azure-portal).
+- Y: Hizmet düzeyi hedefine başvuran tüm otomasyon betikleri, Gen2 eşdeğerine karşılık olacak şekilde değiştirilmelidir.  Ayrıntılara bakın [](upgrade-to-latest-generation.md#sign-in-to-the-azure-portal).
 
 **S: Kendi kendine yükseltme ne kadar sürer?**
 
@@ -155,6 +155,6 @@ Daha fazla bilgi için bkz. [Gen2 sürümüne yükseltme](upgrade-to-latest-gene
 - [Kaynak sistem durumu İzleyicisi](https://docs.microsoft.com/azure/service-health/resource-health-overview)
 - [Geçişe başlamadan önce gözden geçirin](upgrade-to-latest-generation.md#before-you-begin)
 - [Bir geri yükleme noktasından yerinde yükseltme ve yükseltme](upgrade-to-latest-generation.md)
-- [Kullanıcı tanımlı geri yükleme noktası oluşturma](sql-data-warehouse-restore.md#restore-through-the-azure-portal)
-- [Gen2 'e geri yüklemeyi öğrenin](sql-data-warehouse-restore.md#restore-an-active-or-paused-database-using-the-azure-portal)
+- [Kullanıcı tanımlı geri yükleme noktası oluşturma](sql-data-warehouse-restore-points.md)
+- [Gen2 'e geri yüklemeyi öğrenin](sql-data-warehouse-restore-active-paused-dw.md#restore-an-existing-data-warehouse-through-the-azure-portal)
 - [Bir SQL veri ambarı destek isteği açın](https://go.microsoft.com/fwlink/?linkid=857950)

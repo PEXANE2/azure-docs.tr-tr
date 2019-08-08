@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory Tümleştirmesi ile Workteam | Microsoft Docs'
-description: Azure Active Directory ve Workteam arasında çoklu oturum açmayı yapılandırmayı öğrenin.
+title: 'Öğretici: Iş ekibine Azure Active Directory tümleştirme | Microsoft Docs'
+description: Azure Active Directory ve Workteam arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,49 +15,49 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 697f5c06d2c1d6b669cfa244f0328f4fb86aeea2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d628b12171cd67455ea308a2ca2b29e67855cccc
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67086824"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68825605"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-workteam"></a>Öğretici: Workteam ile Azure Active Directory Tümleştirme
+# <a name="tutorial-azure-active-directory-integration-with-workteam"></a>Öğretici: Iş ekibine Azure Active Directory tümleştirme
 
-Bu öğreticide, Azure Active Directory (Azure AD) ile Workteam tümleştirme konusunda bilgi edinin.
-Azure AD ile Workteam tümleştirme ile aşağıdaki avantajları sağlar:
+Bu öğreticide, Iş ekibini Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
+Iş ekibini Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 
-* Workteam erişimi, Azure AD'de kontrol edebilirsiniz.
-* Otomatik olarak (çoklu oturum açma) Workteam için kendi Azure AD hesapları ile oturum açmış, kullanıcıların etkinleştirebilirsiniz.
+* Azure AD 'de, Iş ekibine erişimi olan denetim yapabilirsiniz.
+* Kullanıcılarınızın Azure AD hesaplarıyla otomatik olarak Iş ekibine (çoklu oturum açma) oturum açmasını sağlayabilirsiniz.
 * Hesaplarınız bir merkezi konumda - Azure portalında yönetebilir.
 
-Azure AD SaaS uygulama tümleştirmesi hakkında daha fazla ayrıntı bilmek istiyorsanız, bkz. [uygulama erişimi ve Azure Active Directory ile çoklu oturum açma nedir](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Azure AD Tümleştirmesi ile Workteam yapılandırmak için aşağıdaki öğeler gerekir:
+Azure AD tümleştirmesini Iş ekibine göre yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Azure AD aboneliğiniz. Bir Azure AD ortamını yoksa alabileceğiniz bir [ücretsiz bir hesap](https://azure.microsoft.com/free/).
-* Abonelik Workteam çoklu oturum açma etkin
+* Bir Azure AD aboneliği. Azure AD ortamınız yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* İş ekibi çoklu oturum açma etkin aboneliği
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, yapılandırma ve Azure AD çoklu oturum açma bir test ortamında test edin.
+Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
 
-* Workteam destekler **SP** ve **IDP** tarafından başlatılan
+* İş ekibi **SP** ve **IDP** tarafından başlatılan SSO 'yu destekler
 
-## <a name="adding-workteam-from-the-gallery"></a>Galeriden Workteam ekleme
+## <a name="adding-workteam-from-the-gallery"></a>Galeriden Iş ekibi ekleme
 
-Azure AD'de Workteam tümleştirmesini yapılandırmak için Workteam Galeriden yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
+Iş ekibinin tümleştirmesini Azure AD 'ye göre yapılandırmak için galerideki Iş ekibini yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-**Galeriden Workteam eklemek için aşağıdaki adımları gerçekleştirin:**
+**Galeriden Iş ekibi eklemek için aşağıdaki adımları uygulayın:**
 
 1. İçinde **[Azure portalında](https://portal.azure.com)** , sol gezinti panelinde tıklayın **Azure Active Directory** simgesi.
 
     ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. Gidin **kurumsal uygulamalar** seçip **tüm uygulamaları** seçeneği.
+2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -65,59 +65,59 @@ Azure AD'de Workteam tümleştirmesini yapılandırmak için Workteam Galeriden 
 
     ![Yeni Uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Workteam**seçin **Workteam** sonucu panelinden ardından **Ekle** uygulama eklemek için Ekle düğmesine.
+4. Arama kutusuna **workteam**yazın, sonuç panelinden **workteam** ' i seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
-     ![Sonuç listesinde Workteam](common/search-new-app.png)
+     ![Sonuç listesinde iş ekibi](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
 
-Bu bölümde, yapılandırma ve Azure AD çoklu oturum açma Workteam adlı bir test kullanıcı tabanlı test **Britta Simon**.
-Tek iş için oturum açma için bir Azure AD kullanıcısının Workteam ilgili kullanıcı arasında bir bağlantı ilişkisi kurulması gerekir.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre iş ekibi ile yapılandırıp test edersiniz.
+Çoklu oturum açma için, bir Azure AD kullanıcısı ve iş ekibinizdeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
-Yapılandırma ve Azure AD çoklu oturum açma Workteam ile test etmek için aşağıdaki yapı taşlarını tamamlanması gerekir:
+Azure AD çoklu oturum açmayı Iş ekibi ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açmayı yapılandırmayı](#configure-azure-ad-single-sign-on)**  - bu özelliği kullanmak, kullanıcılarınızın etkinleştirmek için.
-2. **[Workteam çoklu oturum açmayı yapılandırma](#configure-workteam-single-sign-on)**  - uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+2. **[Iş ekibini çoklu oturum açmayı yapılandırma](#configure-workteam-single-sign-on)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
 3. **[Bir Azure AD test kullanıcısı oluşturma](#create-an-azure-ad-test-user)**  - Azure AD çoklu oturum açma Britta Simon ile test etmek için.
 4. **[Azure AD test kullanıcı atama](#assign-the-azure-ad-test-user)**  - Azure AD çoklu oturum açmayı kullanmak Britta Simon etkinleştirmek için.
-5. **[Workteam test kullanıcısı oluşturma](#create-workteam-test-user)**  - kullanıcı Azure AD gösterimini bağlı Workteam Britta simon'un bir karşılığı vardır.
+5. İş ekibi **[test kullanıcısı oluşturun](#create-workteam-test-user)** -iş ekibindeki, kullanıcının Azure AD gösterimine bağlı olan Britta Simon 'un bir karşılığı olacak şekilde.
 6. **[Çoklu oturum açmayı test](#test-single-sign-on)**  - yapılandırma çalışıp çalışmadığını doğrulayın.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırın
 
-Bu bölümde, Azure AD çoklu oturum açma Azure portalında etkinleştirin.
+Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
 
-Azure AD çoklu oturum açma ile Workteam yapılandırmak için aşağıdaki adımları gerçekleştirin:
+Azure AD çoklu oturum açmayı Iş ekibi ile yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. İçinde [Azure portalında](https://portal.azure.com/), **Workteam** uygulama tümleştirme sayfasında **çoklu oturum açma**.
+1. [Azure Portal](https://portal.azure.com/), **iş ekibi** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
 
     ![Çoklu oturum açma bağlantısı yapılandırma](common/select-sso.png)
 
-2. Üzerinde **tek bir oturum açma yönteminizi seçmeniz** iletişim kutusunda, **SAML/WS-Federasyon** modu, çoklu oturum açmayı etkinleştirmek için.
+2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
 
-    ![Çoklu oturum açma seçim modu](common/select-saml-option.png)
+    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
 3. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **Düzenle** açmak için simgeyi **temel SAML yapılandırma** iletişim.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. Üzerinde **temel SAML yapılandırma** uygulamada yapılandırmak isterseniz, bölümü **IDP** başlatılan modu uygulama zaten önceden tümleştirilmiş herhangi bir adımı gerçekleştirmek için kullanıcı yok Azure ile.
+4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak Istiyorsanız, uygulama zaten Azure ile önceden tümleştirildiği için Kullanıcı herhangi bir adım gerçekleştirmek zorunda değildir.
 
-    ![Workteam etki alanı ve URL'ler tek oturum açma bilgileri](common/preintegrated.png)
+    ![İş ekibi etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/preintegrated.png)
 
-5. Tıklayın **ek URL'lerini ayarlayın** ve uygulamada yapılandırmak istiyorsanız, aşağıdaki adımı uygulayın **SP** başlatılan modu:
+5. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    ![Workteam etki alanı ve URL'ler tek oturum açma bilgileri](common/metadata-upload-additional-signon.png)
+    ![İş ekibi etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/metadata-upload-additional-signon.png)
 
-    İçinde **oturum açma URL'si** metin kutusuna bir URL yazın:  `https://app.workte.am`
+    **Oturum açma URL 'si** metin kutusuna bir URL yazın:`https://app.workte.am`
 
-6. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **SAML imzalama sertifikası** bölümünde **indirme** indirmek için **sertifika (Base64)** bilgisayarınızdaki belirli seçenekler ihtiyacınıza göre ve kaydedin.
+6. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-7. Üzerinde **Workteam kümesi** bölümünde, ihtiyacınıza göre uygun URL'lerini kopyalayın.
+7. **Iş ekibini ayarla** bölümünde uygun URL 'leri gereksiniminize göre kopyalayın.
 
-    ![Yapılandırma URL'leri kopyalayın](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
     a. Oturum Açma URL'si:
 
@@ -125,31 +125,31 @@ Azure AD çoklu oturum açma ile Workteam yapılandırmak için aşağıdaki ad�
 
     c. Oturum Kapatma URL'si
 
-### <a name="configure-workteam-single-sign-on"></a>Workteam tek oturum açmayı yapılandırın
+### <a name="configure-workteam-single-sign-on"></a>Iş ekibini çoklu oturum açmayı yapılandırma
 
-1. Farklı bir web tarayıcı penceresinde Workteam için bir güvenlik yöneticisi olarak oturum açın.
+1. Farklı bir Web tarayıcısı penceresinde, Iş ekibine güvenlik yöneticisi olarak oturum açın.
 
-2. Sağ üst köşedeki tıklayarak **logosu profil** ve ardından **kuruluş ayarlarına**. 
+2. Sağ üst köşedeki **profil logosu** ' na tıklayın ve ardından **kuruluş ayarları**' na tıklayın. 
 
-    ![Workteam ayarları](./media/workteam-tutorial/tutorial_workteam_settings.png)
+    ![İş ekibi ayarları](./media/workteam-tutorial/tutorial_workteam_settings.png)
 
-3. Altında **kimlik doğrulaması** bölümünde, tıklayarak **ayarları logosu**.
+3. **Kimlik doğrulama** bölümünde **Ayarlar logosu**' na tıklayın.
 
-     ![Workteam azure](./media/workteam-tutorial/tutorial_workteam_azure.png)
+     ![İş ekibi Azure](./media/workteam-tutorial/tutorial_workteam_azure.png)
 
-4. Üzerinde **SAML ayarlarını** sayfasında, aşağıdaki adımları gerçekleştirin:
+4. **SAML ayarları** sayfasında, aşağıdaki adımları gerçekleştirin:
 
-     ![Workteam saml](./media/workteam-tutorial/tutorial_workteam_saml.png)
+     ![Workteam SAML](./media/workteam-tutorial/tutorial_workteam_saml.png)
 
-    a. Seçin **SAML IDP** olarak **AD Azure**.
+    a. **AD Azure**olarak **SAML IDP** 'yi seçin.
 
-    b. İçinde **SAML çoklu oturum açma hizmeti URL'si** metin değerini yapıştırın **oturum açma URL'si**, hangi Azure portaldan kopyaladığınız.
+    b. **SAML çoklu oturum açma hizmeti URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
 
-    c. İçinde **SAML varlık kimliği** metin değerini yapıştırın **Azure AD tanımlayıcısı**, hangi Azure portaldan kopyaladığınız.
+    c. **SAML VARLıK kimliği** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının**değerini yapıştırın.
 
-    d. Not Defteri'nde açın **base-64 kodlamalı sertifika** Azure portalından indirdiğiniz, içeriğini kopyalayın ve ardından yapıştırın **SAML imzalama sertifikası (Base64)** kutusu.
+    d. Not defteri 'nde, Azure portal indirdiğiniz **temel 64 kodlu sertifikayı** açın, içeriğini kopyalayın ve ardından **SAML Imzalama sertifikası (base64)** kutusuna yapıştırın.
 
-    e. **Tamam**'ı tıklatın.
+    e.           **Tamam**'ı tıklatın.
 
 ### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma 
 
@@ -161,74 +161,74 @@ Bu bölümün amacı, Britta Simon adlı Azure portalında bir test kullanıcıs
 
 2. Seçin **yeni kullanıcı** ekranın üstünde.
 
-    ![Yeni kullanıcı düğmesi](common/new-user.png)
+    ![Yeni Kullanıcı düğmesi](common/new-user.png)
 
 3. Kullanıcı özellikleri, aşağıdaki adımları gerçekleştirin.
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. İçinde **adı** alana **BrittaSimon**.
+    a. **Ad** alanına **Brittasıon**girin.
   
-    b. İçinde **kullanıcı adı** alan türü **brittasimon@yourcompanydomain.extension**  
+    b. **Kullanıcı adı** alan türü **brittasimon@yourcompanydomain.extension**  
     Örneğin, BrittaSimon@contoso.com
 
-    c. Seçin **Show parola** onay kutusunu işaretleyin ve ardından parola kutusunda görüntülenen değeri yazın.
+    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d.           **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
-Bu bölümde, Azure çoklu oturum açma kullanmak için Workteam erişim vererek Britta Simon etkinleştirin.
+Bu bölümde, Iş ekibine erişim izni vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
 
-1. Azure portalında **kurumsal uygulamalar**seçin **tüm uygulamaları**, ardından **Workteam**.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **iş ekibi**' ni seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Workteam**.
+2. Uygulamalar listesinde, **çalışma ekibi**' ni seçin.
 
-    ![Uygulamalar listesinde Workteam bağlantı](common/all-applications.png)
+    ![Uygulamalar listesindeki Workteam bağlantısı](common/all-applications.png)
 
-3. Soldaki menüde **kullanıcılar ve gruplar**.
+3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
 
     !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
 
-4. Tıklayın **Kullanıcı Ekle** düğmesine ve ardından **kullanıcılar ve gruplar** içinde **atama Ekle** iletişim.
+4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Atama Ekle bölmesi](common/add-assign-user.png)
 
 5. İçinde **kullanıcılar ve gruplar** iletişim kutusunda **Britta Simon** 'a tıklayın kullanıcı listesinde **seçin** ekranın alt kısmındaki düğmesi.
 
-6. SAML onaylaması ardından içinde herhangi bir rolü değer bekleniyor durumunda **rolü Seç** 'a tıklayın listeden bir kullanıcı için uygun rolü Seç iletişim kutusu **seçin** ekranın alt kısmındaki düğmesi.
+6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-7. İçinde **atama Ekle** iletişim tıklatın **atama** düğmesi.
+7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-### <a name="create-workteam-test-user"></a>Workteam test kullanıcısı oluşturma
+### <a name="create-workteam-test-user"></a>Iş ekibi test kullanıcısı oluştur
 
-Workteam için oturum açmak Azure AD kullanıcılarının etkinleştirmek için bunların Workteam sağlanması gerekir. Workteam içinde sağlama bir el ile gerçekleştirilen bir görevdir.
+Azure AD kullanıcılarının Iş ekibine oturum açmasını sağlamak için, bunların Iş ekibine sağlanması gerekir. Iş ekibi 'nde sağlama, el ile gerçekleştirilen bir görevdir.
 
 **Bir kullanıcı hesabı sağlamak için aşağıdaki adımları gerçekleştirin:**
 
-1. İçin Workteam bir güvenlik yöneticisi olarak oturum açın.
+1. Iş ekibine güvenlik yöneticisi olarak oturum açın.
 
-2. Üst Orta kısmındaki üzerinde **kuruluş ayarlarına** sayfasında **kullanıcılar** ve ardından **yeni kullanıcı**.
+2. **Kuruluş ayarları** sayfasının üst ortasında **Kullanıcılar** ' a ve ardından **Yeni Kullanıcı**' ya tıklayın.
 
-    ![Workteam kullanıcı](./media/workteam-tutorial/tutorial_workteam_user.png)
+    ![İş ekibi kullanıcısı](./media/workteam-tutorial/tutorial_workteam_user.png)
 
-3. Üzerinde **yeni çalışan** sayfasında, aşağıdaki adımları gerçekleştirin:
+3. **Yeni çalışan** sayfasında, aşağıdaki adımları uygulayın:
 
-    ![Workteam newuser](./media/workteam-tutorial/tutorial_workteam_newuser.png)
+    ![Workekibi Newuser](./media/workteam-tutorial/tutorial_workteam_newuser.png)
 
-    a. İçinde **adı** metin kutusunda, gibi kullanıcı adını girin **Brittasimon**.
+    a. **Ad** metin kutusuna, **Brittasıon**gibi kullanıcının adını girin.
 
-    b. İçinde **e-posta** metin kutusuna, kullanıcının gibi e-posta girin **Brittasimon\@contoso.com**.
+    b. **E-posta** metin kutusuna, **\@brittasıon contoso.com**gibi kullanıcının e-postasını girin.
 
-    c. **Tamam**'ı tıklatın.
+    c.           **Tamam**'ı tıklatın.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
 
-Erişim paneli Workteam kutucuğa tıkladığınızda, size otomatik olarak SSO'yu ayarlama Workteam için oturum açmanız. Erişim paneli hakkında daha fazla bilgi için bkz: [erişim Paneli'ne giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde Iş ekibi kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Iş ekibine otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
@@ -236,5 +236,5 @@ Erişim paneli Workteam kutucuğa tıkladığınızda, size otomatik olarak SSO'
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

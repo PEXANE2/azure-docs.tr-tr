@@ -1,270 +1,270 @@
 ---
-title: 'Hızlı Başlangıç: Geri bildirim döngüsü oluşturma-kişiselleştirici'
+title: 'Hızlı Başlangıç: .NET için kişiselleştirici istemci kitaplığı | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
-description: Bu C# hızlı başlangıçta Içeriği kişiselleştirici hizmetiyle kişiselleştirin.
+description: Bir öğrenme döngüsü kullanarak .NET için kişiselleştirici istemci kitaplığı ile çalışmaya başlayın.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 06/11/2019
+ms.date: 08/5/2019
 ms.author: diberry
-ms.openlocfilehash: 54aa23071fef09058a1702218d6b7fc920363518
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 3b583fa7d9c7bab89accabf68034df407cb89a9c
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68662807"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839940"
 ---
-# <a name="quickstart-personalize-content-using-c"></a>Hızlı Başlangıç: Kullanarak içeriği kişiselleştirmeC# 
+# <a name="quickstart-personalize-client-library-for-net"></a>Hızlı Başlangıç: .NET için istemci kitaplığını kişiselleştirin
 
 Bu C# hızlı başlangıçta kişiselleştirilmiş Içeriği kişiselleştirici hizmeti ile görüntüleyin.
 
-Bu örnek, için C# kişiselleştirici istemci kitaplığının aşağıdaki işlemleri gerçekleştirmek üzere nasıl kullanılacağını gösterir: 
+.NET için kişiselleştirici istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin.
 
  * Kişiselleştirmeye yönelik eylemlerin listesini sıralama.
- * Rapor, belirtilen olay için Kullanıcı seçimine dayalı olarak en üst dereceli eyleme ayırmayı yeniden sağlar.
+ * En çok kullanılan derecelendirme eyleminin başarısını belirten rapor ödül.
 
-Kişiselleştiriciye Başlarken aşağıdaki adımları içerir:
-
-1. SDK 'ya başvurma 
-1. Kullanıcılarınıza göstermek istediğiniz eylemleri derecelendirmek için kod yazma,
-1. Döngüyü eğitme için kod yazma.
+[Başvuru belge](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.Personalizer?view=azure-dotnet-preview) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Personalizer) | [paketi (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/) | [örnekleri](https://github.com/Azure-Samples/cognitive-services-personalizer-samples)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Abonelik anahtarınızı ve uç nokta hizmeti URL 'nizi almak için bir [kişiselleştirici hizmeti](how-to-settings.md) gereklidir. 
-* [Visual Studio 2015 veya 2017](https://visualstudio.microsoft.com/downloads/).
-* [Microsoft. Azure. Biliveservices. kişiselleştirici](https://go.microsoft.com/fwlink/?linkid=2092272) SDK NuGet paketi. Yükleme yönergeleri aşağıda verilmiştir.
+* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
+* [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)'un geçerli sürümü.
 
-## <a name="change-the-model-update-frequency"></a>Model güncelleştirme sıklığını değiştirme
+## <a name="setting-up"></a>Ayarlanıyor
+
+### <a name="create-a-personalizer-azure-resource"></a>Bir kişiselleştirici Azure kaynağı oluşturma
+
+Azure bilişsel hizmetler, abone olduğunuz Azure kaynakları tarafından temsil edilir. Yerel makinenizde [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) veya [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) kullanarak kişiselleştirici için bir kaynak oluşturun. Aşağıdakileri de yapabilirsiniz:
+
+* [Deneme anahtarını](https://azure.microsoft.com/try/cognitive-services) ücretsiz olarak 7 gün boyunca geçerli olacak şekilde öğrenin. Kaydolduktan sonra [Azure Web sitesinde](https://azure.microsoft.com/try/cognitive-services/my-apis/)mevcut olacaktır.  
+* [Azure Portal](https://portal.azure.com/)kaynağı görüntüleyin.
+
+<!-- rename TBD_KEY to something meaningful for your service, like TEXT_ANALYTICS_KEY -->
+Deneme aboneliğinizden veya kaynağından bir anahtar aldıktan sonra, iki [ortam değişkeni](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)oluşturun:
+
+* `PERSONALIZER_RESOURCE_KEY`Kaynak anahtarı için.
+* `PERSONALIZER_RESOURCE_ENDPOINT`Kaynak uç noktası için.
+
+### <a name="change-the-model-update-frequency"></a>Model güncelleştirme sıklığını değiştirme
 
 Azure portal kişiselleştirici kaynağında, **model güncelleştirme sıklığını** 10 saniye olarak değiştirin. Bu, hizmeti hızlı bir şekilde eğitecektir ve her yineleme için en iyi eylem değişikliğini görmenizi sağlar.
 
-Bir kişiselleştirici döngüsü ilk kez oluşturulduğunda, üzerinden eğitelenecek bir API çağrısı olmadığından model yoktur. Sıralama çağrıları her öğe için eşit olasılıklara dönüşe sahip olur. Uygulamanız hala Rewarterctionıd çıkışını kullanarak içeriği her zaman derecelendirmelidir.
-
 ![Model güncelleştirme sıklığını Değiştir](./media/settings/configure-model-update-frequency-settings.png)
 
-## <a name="creating-a-new-console-app-and-referencing-the-personalizer-sdk"></a>Yeni bir konsol uygulaması oluşturma ve kişiselleştirici SDK 'ya başvurma 
+Bir kişiselleştirici döngüsü ilk kez oluşturulduğunda, üzerinden eğitelenecek bir API çağrısı olmadığından model yoktur. Sıralama çağrıları her öğe için eşit olasılıklara dönüşe sahip olur. Uygulamanız hala Rewarterctionıd çıkışını kullanarak içeriği her zaman derecelendirmelidir.
 
-<!--
-Get the latest code as a Visual Studio solution from [GitHub] (add link).
--->
+### <a name="create-a-new-c-application"></a>Yeni C# bir uygulama oluşturun
 
-1. Visual Studio'da yeni bir Visual C# Konsol Uygulaması oluşturun.
-1. Kişiselleştirici istemci kitaplığı NuGet paketini yükler. Menüsünde **Araçlar**' ı seçin, **NuGet Paket Yöneticisi**' ni seçin ve ardından **çözüm için NuGet paketlerini yönetin**.
-1. **Ön sürümü dahil**et 'i işaretleyin.
-1. Araştır sekmesini **seçin** ve **arama** kutusuna yazın `Microsoft.Azure.CognitiveServices.Personalizer`.
-1. Görüntülediğinde **Microsoft. Azure. Biliveservices. kişiselleştirici** ' ı seçin.
-1. Proje adınızın yanındaki onay kutusunu işaretleyin ve ardından **Install**' ı seçin.
+Tercih ettiğiniz düzenleyicide veya IDE 'de yeni bir .NET Core uygulaması oluşturun. 
 
-## <a name="add-the-code-and-put-in-your-personalizer-and-azure-keys"></a>Kodu ekleyin ve kişiselleştirici ve Azure Anahtarlarınıza yerleştirin
+Konsol penceresinde (cmd, PowerShell veya Bash gibi), ad `new` `personalizer-quickstart`ile yeni bir konsol uygulaması oluşturmak için DotNet komutunu kullanın. Bu komut, tek bir kaynak dosyası olan C# basit bir "Merhaba Dünya" projesi oluşturur `Program.cs`:. 
 
-1. Program.cs içeriğini şu kodla değiştirin. 
-1. Değeri `serviceKey` geçerli kişiselleştirici abonelik anahtarınızla değiştirin.
-1. Hizmet `serviceEndpoint` uç noktanızla değiştirin. `https://westus2.api.cognitive.microsoft.com/` bunun bir örneğidir.
-1. Programı çalıştırın.
+```console
+dotnet new console -n personalizer-quickstart
+```
 
-## <a name="add-code-to-rank-the-actions-you-want-to-show-to-your-users"></a>Kullanıcılarınıza göstermek istediğiniz eylemleri derecelendirmek için kod ekleyin
+Dizininizi yeni oluşturulan uygulama klasörüyle değiştirin. Uygulamayı ile oluşturabilirsiniz:
 
-Aşağıdaki C# kod, SDK 'Yı kullanarak kişiselleştiriciye Kullanıcı bilgilerini, _özellikleri ve İçerikleriniz hakkındaki bilgileri geçirmek için kapsamlıbir listedir. Kişiselleştirici, Kullanıcı göstermek için en üstteki dereceli eylemi döndürür.  
+```console
+dotnet build
+```
+
+Derleme çıktısı hiçbir uyarı veya hata içermemelidir. 
+
+```console
+...
+Build succeeded.
+ 0 Warning(s)
+ 0 Error(s)
+...
+```
+
+### <a name="install-the-sdk"></a>SDK yükle
+
+Uygulama dizini içinde, aşağıdaki komutla .NET için kişiselleştirici istemci Kitaplığı ' nı yükleyeceksiniz:
+
+```console
+dotnet add package Microsoft.Azure.CognitiveServices.Personalizer --version 0.8.0
+```
+
+Visual Studio IDE kullanıyorsanız, istemci kitaplığı indirilebilir bir NuGet paketi olarak kullanılabilir.
+
+## <a name="object-model"></a>Nesne modeli
+
+Kişiselleştirici istemci, anahtarınızı içeren Microsoft. Rest. ServiceClientCredentials kullanarak Azure 'da kimlik doğrulaması yapan bir [Personizerclient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer.personalizerclient?view=azure-dotnet) nesnesidir.
+
+İçeriğin bir derecesini sormak için bir [Rankrequest](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer.models.rankrequest?view=azure-dotnet-preview)oluşturun ve ardından [istemciye geçirin. Rank](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer.personalizerclientextensions.rank?view=azure-dotnet-preview) yöntemi. Rank yöntemi, derecelendirilen içeriği içeren bir RankResponse döndürür. 
+
+Kişiselleştiriciye bir ödül göndermek için bir [RewardRequest](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer.models.rewardrequest?view=azure-dotnet-preview)oluşturun ve ardından [istemciye geçirin. Reward](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer.personalizerclientextensions.reward?view=azure-dotnet-preview) yöntemi. 
+
+Bu hızlı başlangıçta önemsiz bir şekilde belirlenir. Bir üretim sisteminde, İleri [puanı](concept-rewards.md) neyin etkilediğini ve ne kadar karmaşık bir süreç olabileceğini belirleme, zaman içinde değiştirmeye karar verebilirsiniz. Bu, kişiselleştirici mimarinizdeki birincil tasarım kararlarından biri olmalıdır. 
+
+## <a name="code-examples"></a>Kod örnekleri
+
+Bu kod parçacıkları, .NET için kişiselleştirici istemci kitaplığı ile aşağıdakilerin nasıl yapılacağını göstermektedir:
+
+* [Bir kişiselleştirici istemci oluşturma](#create-a-personalizer-client)
+* [Bir derece iste](#request-a-rank)
+* [Bir ödül gönderin](#send-a-reward)
+
+## <a name="add-the-dependencies"></a>Bağımlılıkları ekleme
+
+Proje dizininden, **program.cs** dosyasını tercih ettiğiniz DÜZENLEYICIDE veya IDE 'de açın. Mevcut `using` kodu aşağıdaki `using` yönergelerle değiştirin:
+
+[!code-csharp[Using statements](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=Dependencies)]
+
+## <a name="add-personalizer-resource-information"></a>Kişiselleştirici kaynak bilgileri ekleme
+
+**Program** sınıfında, ve `PERSONALIZER_RESOURCE_KEY` `PERSONALIZER_RESOURCE_ENDPOINT`adlı ortam değişkenlerinden çekilen kaynak Azure anahtarı ve uç nokta için değişkenler oluşturun. Uygulama başlatıldıktan sonra ortam değişkenlerini oluşturduysanız, değişkene erişmek için bu uygulamayı çalıştıran düzenleyici, IDE veya kabuğun kapatılıp yeniden yüklenmesi gerekir. Yöntemler daha sonra bu hızlı başlangıçta oluşturulacaktır.
+
+[!code-csharp[Create variables to hold the Personalizer resource key and endpoint values found in the Azure portal.](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=classVariables)]
+
+## <a name="create-a-personalizer-client"></a>Bir kişiselleştirici istemci oluşturma
+
+Sonra, bir kişiselleştirici istemci döndürmek için bir yöntem oluşturun. Yöntemine `PERSONALIZER_RESOURCE_ENDPOINT` parametresi, ve apikey `PERSONALIZER_RESOURCE_KEY`' dir.
+
+[!code-csharp[Create the Personalizer client](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=authorization)]
+
+## <a name="get-content-choices-represented-as-actions"></a>Eylem olarak temsil edilen içerik seçimlerini al
+
+Eylemler, Kişiselleştiriciye göre derecelendirmek istediğiniz içerik seçimlerini temsil eder. Komut satırından günün saati ve geçerli yiyecek tercihi için bir kullanıcının girişini almak üzere program sınıfına aşağıdaki yöntemleri ekleyin.
+
+[!code-csharp[Present time out day preference to the user](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=createUserFeatureTimeOfDay)]
+
+[!code-csharp[Present food taste preference to the user](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=createUserFeatureTastePreference)]
+
+Her iki yöntem de `GetKey` , komut satırından kullanıcının seçimini okumak için yöntemini kullanır. 
+
+[!code-csharp[Read user's choice from the command line](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=readCommandLine)]
+
+## <a name="create-the-learning-loop"></a>Öğrenme döngüsünü oluşturma
+
+Kişiselleştirici öğrenme döngüsü, bir derece ve yeniden arama çağrısı döngüsüdür. Bu hızlı başlangıçta, içeriği kişiselleştirmek için her bir derecelendirme çağrısı, kişiselleştirmeden hizmetin içeriği derecelendirerek ne kadar iyi bir şekilde bilgi verdiğini söyleyerek bir ödül çağrısıyla izlenir. 
+
+Program `main` yönteminde aşağıdaki kod, kullanıcıdan komut satırında tercihlerini isteme, bu bilgileri kişisel olarak derecelendirmeyi bir şekilde gönderme ve derecelendirme seçimini bir Kullanıcı arasından seçim yapmak üzere müşteriye sunma daha sonra, kişiselleştirmeden bir ödül göndererek hizmetin seçimi derecelendirerek ne kadar iyi olduğunu işaret edin.
 
 ```csharp
-using Microsoft.Azure.CognitiveServices.Personalizer;
-using Microsoft.Azure.CognitiveServices.Personalizer.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace PersonalizerExample
+static void Main(string[] args)
 {
-    class Program
+    int iteration = 1;
+    bool runLoop = true;
+
+    // Get the actions list to choose from personalizer with their features.
+    IList<RankableAction> actions = GetActions();
+
+    // Initialize Personalizer client.
+    PersonalizerClient client = InitializePersonalizerClient(ServiceEndpoint);
+
+    do
     {
-        // The key specific to your personalizer service instance; e.g. "0123456789abcdef0123456789ABCDEF"
-        private const string ApiKey = "";
+        Console.WriteLine("\nIteration: " + iteration++);
 
-        // The endpoint specific to your personalizer service instance; e.g. https://westus2.api.cognitive.microsoft.com/
-        private const string ServiceEndpoint = "";
+        // <rank>
+        // Get context information from the user.
+        string timeOfDayFeature = GetUsersTimeOfDay();
+        string tasteFeature = GetUsersTastePreference();
 
-        static void Main(string[] args)
+        // Create current context from user specified data.
+        IList<object> currentContext = new List<object>() {
+            new { time = timeOfDayFeature },
+            new { taste = tasteFeature }
+        };
+
+        // Exclude an action for personalizer ranking. This action will be held at its current position.
+        // This simulates a business rule to force the action "juice" to be ignored in the ranking.
+        // As juice is excluded, the return of the API will always be with a probability of 0.
+        IList<string> excludeActions = new List<string> { "juice" };
+
+        // Generate an ID to associate with the request.
+        string eventId = Guid.NewGuid().ToString();
+
+        // Rank the actions
+        var request = new RankRequest(actions, currentContext, excludeActions, eventId);
+        RankResponse response = client.Rank(request);
+        // </rank>
+
+        Console.WriteLine("\nPersonalizer service thinks you would like to have: " + response.RewardActionId + ". Is this correct? (y/n)");
+
+        // <reward>
+        float reward = 0.0f;
+        string answer = GetKey();
+
+        if (answer == "Y")
         {
-            int iteration = 1;
-            bool runLoop = true;
-
-            // Get the actions list to choose from personalizer with their features.
-            IList<RankableAction> actions = GetActions();
-
-            // Initialize Personalizer client.
-            PersonalizerClient client = InitializePersonalizerClient(ServiceEndpoint);
-
-            do
-            {
-                Console.WriteLine("\nIteration: " + iteration++);
-
-                // Get context information from the user.
-                string timeOfDayFeature = GetUsersTimeOfDay();
-                string tasteFeature = GetUsersTastePreference();
-
-                // Create current context from user specified data.
-                IList<object> currentContext = new List<object>() {
-                    new { time = timeOfDayFeature },
-                    new { taste = tasteFeature }
-                };
-
-                // Exclude an action for personalizer ranking. This action will be held at its current position.
-                IList<string> excludeActions = new List<string> { "juice" };
-
-                // Generate an ID to associate with the request.
-                string eventId = Guid.NewGuid().ToString();
-
-                // Rank the actions
-                var request = new RankRequest(actions, currentContext, excludeActions, eventId);
-                RankResponse response = client.Rank(request);
-
-                Console.WriteLine("\nPersonalizer service thinks you would like to have: " + response.RewardActionId + ". Is this correct? (y/n)");
-
-                float reward = 0.0f;
-                string answer = GetKey();
-
-                if (answer == "Y")
-                {
-                    reward = 1;
-                    Console.WriteLine("\nGreat! Enjoy your food.");
-                }
-                else if (answer == "N")
-                {
-                    reward = 0;
-                    Console.WriteLine("\nYou didn't like the recommended food choice.");
-                }
-                else
-                {
-                    Console.WriteLine("\nEntered choice is invalid. Service assumes that you didn't like the recommended food choice.");
-                }
-
-                Console.WriteLine("\nPersonalizer service ranked the actions with the probabilities as below:");
-                foreach (var rankedResponse in response.Ranking)
-                {
-                    Console.WriteLine(rankedResponse.Id + " " + rankedResponse.Probability);
-                }
-
-                // Send the reward for the action based on user response.
-                client.Reward(response.EventId, new RewardRequest(reward));
-
-                Console.WriteLine("\nPress q to break, any other key to continue:");
-                runLoop = !(GetKey() == "Q");
-
-            } while (runLoop);
+            reward = 1;
+            Console.WriteLine("\nGreat! Enjoy your food.");
+        }
+        else if (answer == "N")
+        {
+            reward = 0;
+            Console.WriteLine("\nYou didn't like the recommended food choice.");
+        }
+        else
+        {
+            Console.WriteLine("\nEntered choice is invalid. Service assumes that you didn't like the recommended food choice.");
         }
 
-        /// <summary>
-        /// Initializes the personalizer client.
-        /// </summary>
-        /// <param name="url">Azure endpoint</param>
-        /// <returns>Personalizer client instance</returns>
-        static PersonalizerClient InitializePersonalizerClient(string url)
+        Console.WriteLine("\nPersonalizer service ranked the actions with the probabilities as below:");
+        foreach (var rankedResponse in response.Ranking)
         {
-            PersonalizerClient client = new PersonalizerClient(
-                new ApiKeyServiceClientCredentials(ApiKey)) {Endpoint = url};
-
-            return client;
+            Console.WriteLine(rankedResponse.Id + " " + rankedResponse.Probability);
         }
 
-        /// <summary>
-        /// Get users time of the day context.
-        /// </summary>
-        /// <returns>Time of day feature selected by the user.</returns>
-        static string GetUsersTimeOfDay()
-        {
-            string[] timeOfDayFeatures = new string[] { "morning", "afternoon", "evening", "night" };
+        // Send the reward for the action based on user response.
+        client.Reward(response.EventId, new RewardRequest(reward));
+        // </reward>
 
-            Console.WriteLine("\nWhat time of day is it (enter number)? 1. morning 2. afternoon 3. evening 4. night");
-            if (!int.TryParse(GetKey(), out int timeIndex) || timeIndex < 1 || timeIndex > timeOfDayFeatures.Length)
-            {
-                Console.WriteLine("\nEntered value is invalid. Setting feature value to " + timeOfDayFeatures[0] + ".");
-                timeIndex = 1;
-            }
+        Console.WriteLine("\nPress q to break, any other key to continue:");
+        runLoop = !(GetKey() == "Q");
 
-            return timeOfDayFeatures[timeIndex - 1];
-        }
-
-        /// <summary>
-        /// Gets user food preference.
-        /// </summary>
-        /// <returns>Food taste feature selected by the user.</returns>
-        static string GetUsersTastePreference()
-        {
-            string[] tasteFeatures = new string[] { "salty", "sweet" };
-
-            Console.WriteLine("\nWhat type of food would you prefer (enter number)? 1. salty 2. sweet");
-            if (!int.TryParse(GetKey(), out int tasteIndex) || tasteIndex < 1 || tasteIndex > tasteFeatures.Length)
-            {
-                Console.WriteLine("\nEntered value is invalid. Setting feature value to " + tasteFeatures[0] + ".");
-                tasteIndex = 1;
-            }
-
-            return tasteFeatures[tasteIndex - 1];
-        }
-
-        /// <summary>
-        /// Creates personalizer actions feature list.
-        /// </summary>
-        /// <returns>List of actions for personalizer.</returns>
-        static IList<RankableAction> GetActions()
-        {
-            IList<RankableAction> actions = new List<RankableAction>
-            {
-                new RankableAction
-                {
-                    Id = "pasta",
-                    Features =
-                    new List<object>() { new { taste = "salty", spiceLevel = "medium" }, new { nutritionLevel = 5, cuisine = "italian" } }
-                },
-
-                new RankableAction
-                {
-                    Id = "ice cream",
-                    Features =
-                    new List<object>() { new { taste = "sweet", spiceLevel = "none" }, new { nutritionalLevel = 2 } }
-                },
-
-                new RankableAction
-                {
-                    Id = "juice",
-                    Features =
-                    new List<object>() { new { taste = "sweet", spiceLevel = "none" }, new { nutritionLevel = 5 }, new { drink = true } }
-                },
-
-                new RankableAction
-                {
-                    Id = "salad",
-                    Features =
-                    new List<object>() { new { taste = "salty", spiceLevel = "low" }, new { nutritionLevel = 8 } }
-                }
-            };
-
-            return actions;
-        }
-
-        private static string GetKey()
-        {
-            return Console.ReadKey().Key.ToString().Last().ToString().ToUpper();
-        }
-    }
+    } while (runLoop);
 }
 ```
 
+## <a name="request-a-rank"></a>Bir derece iste
+
+Sıralama isteğini gerçekleştirmek için, program kullanıcının tercihlerini içerik seçimlerinden `currentContent` birini oluşturacak şekilde sorar. İşlem, olarak `excludeActions`gösterilen derecenin dışında tutulacak içerik oluşturabilir. Sıralama isteğinin, sıralanmış yanıtı almak için Eylemler, currentContext, excludeActions ve benzersiz bir sıra olay KIMLIĞI (GUID olarak) gerekir. 
+
+Bu hızlı başlangıçta, günün saati ve Kullanıcı yiyecek tercihi basit bağlam özelliklerine sahiptir. Üretim sistemlerinde, [eylemleri ve özellikleri](concepts-features.md) belirlemek ve [değerlendirmek](concept-feature-evaluation.md) önemsiz olmayan bir şekilde olabilir.  
+
+[!code-csharp[The Personalizer learning loop ranks the request.](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=rank)]
+
+## <a name="send-a-reward"></a>Bir ödül gönderin
+
+Yeniden isteği tamamlamaya yönelik olarak, program kullanıcının seçimini komut satırından alır, her seçime bir sayısal değer atar, sonra benzersiz sıralama olay kimliğini ve sayısal değeri ödül yöntemine gönderir.
+
+Bu hızlı başlangıç, sıfır veya 1 olarak basit bir sayı atar. Üretim sistemlerinde, bu çağrıya ne zaman ve ne gönderileceğini belirlemek, [](concept-rewards.md) özel gereksinimlerinize bağlı olarak önemsiz olmayan bir önemi olabilir. 
+
+[!code-csharp[The Personalizer learning loop ranks the request.](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=reward)]
+
 ## <a name="run-the-program"></a>Programı çalıştırma
 
-Programı derleyin ve çalıştırın. Hızlı başlangıç programı, özellikler olarak bilinen Kullanıcı tercihlerini toplamak için birkaç soru sorar ve sonra en iyi eylemi sağlar.
+Uygulama dizininizde DotNet `run` komutuyla uygulamayı çalıştırın.
+
+```dotnet
+dotnet run
+```
 
 ![Hızlı başlangıç programı, özellikler olarak bilinen Kullanıcı tercihlerini toplamak için birkaç soru sorar ve sonra en iyi eylemi sağlar.](media/csharp-quickstart-commandline-feedback-loop/quickstart-program-feedback-loop-example.png)
 
+[Bu hızlı başlangıç için kaynak kodu](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/csharp/PersonalizerExample/Program.cs) , kişiselleştirici örnekleri GitHub deposunda bulunur.
+
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
-Hızlı başlangıçla işiniz bittiğinde, bu hızlı başlangıçta oluşturulan tüm dosyaları kaldırın. 
+
+Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağı veya kaynak grubunu silebilirsiniz. Kaynak grubunun silinmesi, onunla ilişkili diğer tüm kaynakları da siler.
+
+* [Portal](../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Azure CLI](../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Kişiselleştirici nasıl kullanılır?](how-personalizer-works.md)
+> [!div class="nextstepaction"]
+>[Kişiselleştirici nasıl kullanılır?](how-personalizer-works.md)
 
+* [Kişiselleştirici nedir?](what-is-personalizer.md)
+* [Kişiselleştirici 'yi nerede kullanabilirsiniz?](where-can-you-use-personalizer.md)
+* [Sorun giderme](troubleshooting.md)
 

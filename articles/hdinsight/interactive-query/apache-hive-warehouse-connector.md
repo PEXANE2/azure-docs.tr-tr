@@ -7,12 +7,12 @@ ms.author: nakhanha
 ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: f3a0fa1ecdb2db94b43a5380f9497b4b1c266e47
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: bf9bb7adfa25ea16498a32b57d4927de7e81c007
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68441939"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68826924"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>Hive ambarı Bağlayıcısı ile Apache Spark ve Apache Hive tümleştirme
 
@@ -51,7 +51,7 @@ Azure HDInsight 'ta Spark ve etkileşimli sorgu kümesi arasında Hive ambarı b
 
         ![Spark2 ambarı yapılandırması](./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark2-ambari.png)
 
-    1. `spark.hadoop.hive.llap.daemon.service.hosts` **Gelişmiş Hive-Interactive-env**altındaki **LLAP uygulama adı** özelliğiyle aynı değere ayarlayın. Örneğin, `@llap0`
+    1. `spark.hadoop.hive.llap.daemon.service.hosts` **Gelişmiş Hive-Interactive-env**altındaki **LLAP uygulama adı** özelliğiyle aynı değere ayarlayın. Örneğin, `llap0`
 
     1. Etkileşimli `spark.sql.hive.hiveserver2.jdbc.url` sorgu kümesinde Hiveserver2 'e bağlanan JDBC bağlantı dizesine ayarlayın. Kümeniz için bağlantı dizesi aşağıdaki URI gibi görünür. `CLUSTERNAME`Spark Kümenizin adı ve `user` ve `password` parametreleri kümeniz için doğru değerlere ayarlanır.
 

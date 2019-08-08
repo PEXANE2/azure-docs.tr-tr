@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: c790667c73adfed061b97b14ebb7df4c68461786
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 60e1db913336cc9f9e355c2e8f8466854de20389
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663797"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828337"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Azure geçişi sunucu değerlendirmesi ile Hyper-V VM 'lerini değerlendirin
 
@@ -98,7 +98,7 @@ Azure geçişi sunucu değerlendirmesi, hafif bir Hyper-V sanal makine gereci ç
 
 Gereç için daraltılmış VHD şablonunu indirin.
 
-1. **Geçiş hedefleri** >  **** sunucularındaAzuregeçişi > : **Sunucu değerlendirmesi**için **bul**' a tıklayın.
+1. **Geçiş hedefleri** > sunucularındaAzuregeçişi > : **Sunucu değerlendirmesi**için **bul**' a tıklayın.
 2. Makinelerde bulunan makinelerde makineler**sanallaştırılmış mı?** , **Hyper-V ile Evet 'e**tıklayın. > 
 3. VHD dosyasını indirmek için **İndir** ' e tıklayın.
 
@@ -115,12 +115,12 @@ Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
     - ```C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm]```
     - Örnek kullanım: ```C:\>Get-FileHash -Path ./AzureMigrateAppliance_v1.19.06.27.zip -Algorithm SHA256```
 
-3.  Gereç sürümü 1.19.06.27 için, oluşturulan karma bu ayarlarla eşleşmelidir.
+3.  Gereç sürümü 2.19.07.30 için, oluşturulan karma bu ayarlarla eşleşmelidir.
 
   **Algoritma** | **Karma değeri**
   --- | ---
-  MD5 | 3681F745FA2B0A0A6910707D85161EC5
-  SHA256 | E6CA109AFAB9657BDCFB291C343B3E3ABCED9A273D25273059171F9954D25832
+  MD5 | d0a68e76ea24ba4e4a494c0dab95e90e
+  SHA256 | 0551221d2a9de75c352c201ccc88f7f10e87e5df1ecda42bfd4ec6c8defc57c0
 
 
 
@@ -274,7 +274,7 @@ Bir değerlendirme şunları açıklar:
 
 ### <a name="view-an-assessment"></a>Değerlendirme görüntüleme
 
-1. **Geçiş hedefleri** >   **** sunucularındaAzuregeçişi > : **Sunucu değerlendirmesi**, **değerlendirmeler**' a tıklayın.
+1. **Geçiş hedefleri** >  sunucularındaAzuregeçişi > : **Sunucu değerlendirmesi**, **değerlendirmeler**' a tıklayın.
 2. **Değerlendirmede**, bir değerlendirmeye tıklayarak açın.
 
     ![Değerlendirme özeti](./media/tutorial-assess-hyper-v/assessment-summary.png)

@@ -1,23 +1,30 @@
 ---
-title: CloudSimple hızlı başlangıç - Azure VMware çözümüyle özel bulut oluşturma
-description: Oluşturma ve Azure VMware CloudSimple çözümüyle ile özel bir bulut yapılandırma hakkında bilgi edinin
+title: CloudSimple hızlı başlangıç ile Azure VMware çözümü-özel bir bulut oluşturma
+description: CloudSimple ile Azure VMware çözümü ile özel bir bulut oluşturma ve yapılandırma hakkında bilgi edinin
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/10/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 85a8840ccf6f6fe6390b5eeaccd715d87169f157
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 6b68dcd47377ee56c4ebedc94905e1f0a8b70b38
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476021"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812345"
 ---
-# <a name="quickstart---configure-a-private-cloud-environment"></a>Hızlı Başlangıç - özel bir bulut ortamı yapılandırma
+# <a name="quickstart---configure-a-private-cloud-environment"></a>Hızlı başlangıç-özel bir bulut ortamı yapılandırma
 
-Bu makalede, CloudSimple özel bir bulut oluşturmak ve özel bulut ortamınızı ayarlama hakkında bilgi edinin.
+Bu makalede, CloudSimple özel bulutu oluşturmayı ve özel bulut ortamınızı ayarlamayı öğrenin.
+
+## <a name="before-you-begin"></a>Başlamadan önce
+
+Özel bulut için vSphere/vSAN alt ağları için bir CıDR aralığı ayırın. Özel bulut, bir vCenter sunucusu tarafından yönetilen yalıtılmış bir VMware yığını (ESXi Konakları, vCenter, vSAN ve NSX) ortamı olarak oluşturulur. Yönetim bileşenleri, vSphere/vSAN alt ağları CıDR için seçilen ağda dağıtılır. Ağ CıDR aralığı, dağıtım sırasında farklı alt ağlara bölünmüştür.  VSphere/vSAN alt ağ adresi alanı benzersiz olmalıdır. CloudSimple ortamıyla iletişim kuran herhangi bir ağla çakışmamalıdır.  CloudSimple ile iletişim kuran ağlarda şirket içi ağlar ve Azure sanal ağları bulunur.  VSphere/vSAN alt ağları hakkında daha fazla bilgi için bkz. [VLAN ve alt ağlara genel bakış](cloudsimple-vlans-subnets.md).
+
+* Minimum vSphere/vSAN alt ağları CıDR aralığı ön eki:/24 
+* Maksimum vSphere/vSAN alt ağları CıDR aralığı ön eki:/21
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
@@ -25,183 +32,183 @@ Bu makalede, CloudSimple özel bir bulut oluşturmak ve özel bulut ortamınız�
 ## <a name="create-a-private-cloud"></a>Özel bulut oluşturma
 
 1. **Tüm Hizmetler**’i seçin.
-2. Arama **CloudSimple Hizmetleri**.
-3. Özel bulut oluşturmak istediğiniz CloudSimple hizmeti seçin.
-4. Genel Bakış'tan tıklayın **özel bulut oluşturma** CloudSimple portalı için yeni bir tarayıcı sekmesinde açmak için.  İstenirse, oturum, Azure'da oturum kimlik oturum açın.  
+2. **Cloudsimple Hizmetleri**için arama yapın.
+3. Özel bulutunuzu oluşturmak istediğiniz CloudSimple hizmetini seçin.
+4. **Özel bulut oluştur** ' a tıklayarak cloudsimple portalı için yeni bir tarayıcı sekmesi açın.  İstenirse, Azure oturum açma kimlik bilgilerinizle oturum açın.  
 
-    ![Azure'dan özel bulut oluşturma](media/create-private-cloud-from-azure.png)
+    ![Azure 'dan özel bulut oluşturma](media/create-private-cloud-from-azure.png)
 
-5. CloudSimple Portalı'nda özel bulut için bir ad sağlayın
-6. Seçin **konumu** , özel bulutun
-7. Seçin **düğüm türü** Azure'da sağlanan.  Seçebileceğiniz [CS28 veya CS36 seçeneği](cloudsimple-node.md#vmware-solution-by-cloudsimple-nodes-sku). İkinci seçeneği, en fazla işlem ve bellek kapasitesini içerir.
-8. Belirtin **düğüm sayısı**.  Bir özel bulut oluşturmak için gereken en az üç düğüm
+5. CloudSimple Portal 'da, özel bulutunuz için bir ad sağlayın
+6. Özel bulutunuzun **konumunu** seçin
+7. Azure 'da sağladığınız **düğüm türünü** seçin.  [CS28 veya CS36 seçeneğini](cloudsimple-node.md#vmware-solution-by-cloudsimple-nodes-sku)belirleyebilirsiniz. İkinci seçenek, en yüksek işlem ve bellek kapasitesini içerir.
+8. **Düğüm sayısını**belirtin.  Özel bir bulut oluşturmak için en az üç düğüm gerekir
 
-    ![Özel bulut - temel bilgilerini oluşturma](media/create-private-cloud-basic-info.png)
+    ![Özel bulut oluşturma-temel bilgi](media/create-private-cloud-basic-info.png)
 
-9. Tıklayın **sonraki: Gelişmiş Seçenekleri**.
-10. VSphere/vSAN alt ağ için CIDR aralığı girin. CIDR aralığı herhangi bir şirket içi veya diğer Azure alt ağlar ile çakışmayacak emin olun.
+9. İleri **' ye tıklayın: Gelişmiş Seçenekler**.
+10. VSphere/vSAN alt ağları için CıDR aralığını girin. CıDR aralığının, şirket içi veya diğer Azure alt ağlarınız ile çakışmadığından emin olun.
 
-    ![Gelişmiş Seçenekleri - özel bulut oluşturma](media/create-private-cloud-advanced-options.png)
+    ![Özel bulut oluşturma-Gelişmiş Seçenekler](media/create-private-cloud-advanced-options.png)
 
-11. Seçin **sonraki: Gözden geçir ve Oluştur**.
-12. Ayarları gözden geçirin. Herhangi bir ayarı değiştirmeniz gerekiyorsa, tıklayın **önceki**.
-13. **Oluştur**’a tıklayın.
+11. İleri **' yi seçin: Gözden geçirin ve**oluşturun.
+12. Ayarları gözden geçirin. Herhangi bir ayarı değiştirmeniz gerekiyorsa, **önceki**' ye tıklayın.
+13.           **Oluştur**'a tıklayın.
 
-Özel bulut sağlama işlemi başlatıldı.  Bu, en fazla sağlanacak özel bulut için iki saat sürebilir.
+Özel bulut sağlama işlemi başlatılacak.  Özel bulutun sağlanması iki saate kadar sürebilir.
 
-## <a name="launch-cloudsimple-portal"></a>CloudSimple portalını başlatma
+## <a name="launch-cloudsimple-portal"></a>CloudSimple portalını Başlat
 
-Azure Portalı'ndan CloudSimple portalına erişebilmek için.  CloudSimple portalı ile Azure başlatılır kimlik çoklu oturum açma (SSO) kullanarak oturum açın.  CloudSimple portalına erişim gerektirir yetkilendirmek **CloudSimple hizmet yetkilendirme** uygulama.  İzinler verme daha fazla bilgi için bkz: [CloudSimple hizmet yetkilendirme uygulamaya onay](https://docs.azure.cloudsimple.com/access-cloudsimple-portal/#consent-to-cloudsimple-service-authorization-application)
+Azure portal 'ten CloudSimple portalına erişebilirsiniz.  CloudSimple Portal, çoklu oturum açma (SSO) ile Azure oturum açma kimlik bilgilerinizle başlatılır.  CloudSimple portalına erişmek için **Cloudsimple hizmet Yetkilendirme** uygulamasını yetkilendirmeniz gerekir.  İzinleri verme hakkında daha fazla bilgi için bkz. [CloudSimple hizmet Yetkilendirme uygulamasına izin](https://docs.azure.cloudsimple.com/access-cloudsimple-portal/#consent-to-cloudsimple-service-authorization-application) verme
 
 1. **Tüm Hizmetler**’i seçin.
-2. Arama **CloudSimple Hizmetleri**.
-3. Özel bulut oluşturmak istediğiniz CloudSimple hizmeti seçin.
-4. Genel Bakış'tan tıklayın **CloudSimple Portal'a** CloudSimple portalı için yeni bir tarayıcı sekmesinde açmak için.  İstenirse, oturum, Azure'da oturum kimlik oturum açın.  
+2. **Cloudsimple Hizmetleri**için arama yapın.
+3. Özel bulutunuzu oluşturmak istediğiniz CloudSimple hizmetini seçin.
+4. Genel bakışta, cloudsimple portalına **Git** ' e tıklayarak cloudsimple portalı için yeni bir tarayıcı sekmesi açın.  İstenirse, Azure oturum açma kimlik bilgilerinizle oturum açın.  
 
-    ![CloudSimple portalını başlatma](media/launch-cloudsimple-portal.png)
+    ![CloudSimple portalını Başlat](media/launch-cloudsimple-portal.png)
 
 ## <a name="create-point-to-site-vpn"></a>Noktadan siteye VPN oluşturma
 
-Noktadan siteye VPN bağlantısı, özel bulut için bilgisayarınızdan bağlanmak için en basit yoludur. Özel bulutta uzaktan bağlanıyorsanız, noktadan siteye VPN bağlantısı kullanın.  Özel bulut, hızlı erişim için aşağıdaki adımları izleyin.  Şirket içi ağınızdan CloudSimple bölgeye erişim yapılabilir kullanarak [siteden siteye VPN](https://docs.azure.cloudsimple.com/vpn-gateway/) veya [Azure ExpressRoute](https://docs.azure.cloudsimple.com/on-premises-connection/).
+Noktadan siteye VPN bağlantısı, bilgisayarınızdan özel bulutunuzu bağlamak için en kolay yoldur. Özel buluta uzaktan bağlanıyorsanız Noktadan siteye VPN bağlantısı kullanın.  Özel bulutunuz için hızlı erişim için aşağıdaki adımları izleyin.  Şirket içi ağınızdan CloudSimple bölgesine erişim, [siteden sıteye VPN](https://docs.azure.cloudsimple.com/vpn-gateway/) veya [Azure ExpressRoute](https://docs.azure.cloudsimple.com/on-premises-connection/)kullanılarak yapılabilir.
 
-### <a name="create-gateway"></a>Ağ geçidi oluşturma
+### <a name="create-gateway"></a>Ağ Geçidi oluştur
 
-1. Portal ve select CloudSimple başlatma **ağ**.
-2. Seçin **VPN ağ geçidi**.
-3. Tıklayın **yeni VPN ağ geçidi**.
+1. CloudSimple portalını başlatın ve **ağ**' ı seçin.
+2. **VPN Gateway**seçin.
+3. **Yeni VPN Gateway**' ye tıklayın.
 
     ![VPN ağ geçidi oluşturma](media/create-vpn-gateway.png)
 
-4. İçin **ağ geçidi Yapılandırması**, aşağıdaki ayarları belirtin ve tıklayın **sonraki**.
+4. **Ağ geçidi yapılandırması**için aşağıdaki ayarları belirtin ve **İleri**' ye tıklayın.
 
-    * Seçin **noktadan siteye VPN** ağ geçidi türü.
-    * Ağ geçidi tanımlamak için bir ad girin.
-    * CloudSimple hizmetinizin dağıtıldığı Azure konumu seçin.
-    * Noktadan siteye ağ geçidi için istemci ile ilgili alt ağ belirtin.  Bağlandığınızda bu alt ağdan DHCP adresi verilir.
+    * Ağ Geçidi türü olarak **noktadan sıteye VPN ' yi** seçin.
+    * Ağ geçidini tanımlamak için bir ad girin.
+    * CloudSimple hizmetinizin dağıtıldığı Azure konumunu seçin.
+    * Noktadan siteye ağ geçidi için istemci alt ağını belirtin.  Bağlandığınızda, DHCP adresleri bu alt ağdan verilecek.
 
-5. İçin **kullanıcı bağlantı**, aşağıdaki ayarları belirtin ve tıklayın **sonraki**.
+5. **Bağlantı/Kullanıcı**için aşağıdaki ayarları belirtin ve **İleri**' ye tıklayın.
 
-    * Otomatik olarak özel buluta bu noktadan siteye ağ geçidi üzerinden erişmek tüm mevcut ve gelecekteki kullanıcılara izin vermek için seçin **tüm kullanıcılarını otomatik olarak Ekle**. Bu seçeneği belirlediğinizde, kullanıcı listesindeki tüm kullanıcıları otomatik olarak seçilir. Bireysel kullanıcılar listesinden kaldırarak otomatik seçeneğini geçersiz kılabilirsiniz.
-    * Yalnızca bireysel kullanıcılar için kullanıcı listesini onay kutularına tıklayın.
+    * Tüm geçerli ve gelecekteki kullanıcıların bu noktadan siteye ağ geçidi aracılığıyla özel buluta erişmesine otomatik olarak izin vermek için **tüm kullanıcıları otomatik olarak ekle**' yi seçin. Bu seçeneği belirlediğinizde, Kullanıcı listesindeki tüm kullanıcılar otomatik olarak seçilir. Listedeki bireysel kullanıcıların seçimini kaldırarak otomatik seçeneği geçersiz kılabilirsiniz.
+    * Yalnızca bireysel kullanıcıları seçmek için Kullanıcı listesindeki onay kutularına tıklayın.
 
-6. VLAN'lar/alt ağlar bölümü, yönetim ve kullanıcı VLAN'lar/alt ağlar için bağlantıları ve ağ geçidi belirtmenize olanak sağlar.
+6. VLAN/alt ağlar bölümü, ağ geçidi ve bağlantılar için yönetim ve Kullanıcı VLAN 'Ları/alt ağları belirtmenize olanak tanır.
 
-    * **Otomatik olarak Ekle** bu ağ geçidi için genel ilke seçeneklerini ayarlayın. Ayarlar, geçerli ağ geçidi için geçerlidir. Ayarları kılınabilir **seçin** alan.
-    * Seçin **ekleme VLAN'lar/alt ağlar özel bulut Yönetimi**. 
-    * Kullanıcı tanımlı VLAN'lar/alt ağlar eklemek için tıklatın **kullanıcı tanımlı VLAN'lar/alt ağlar eklemek**. 
-    * **Seçin** ayarlarını geçersiz kılmak, genel ayarlar altında **otomatik olarak Ekle**. 
+    * **Otomatik olarak ekle** seçeneği bu ağ geçidinin genel ilkesini ayarlar. Ayarlar geçerli ağ geçidi için geçerlidir. Ayarlar **seçim** alanında geçersiz kılınabilir.
+    * **Özel bulutların yönetim VLAN 'ları/alt ağlarını Ekle**' yi seçin. 
+    * Kullanıcı tanımlı tüm VLAN 'Ları/alt ağları eklemek için **Kullanıcı tanımlı VLAN 'lar/alt ağlar Ekle**' ye tıklayın. 
+    * **Seçim** ayarları **otomatik olarak ekle**altındaki genel ayarları geçersiz kılar. 
 
-7. Tıklayın **sonraki** ayarları gözden geçirin. Değişiklik yapmak için Düzenle simgeleri tıklatın.
-8. Tıklayın **Oluştur** VPN ağ geçidi oluşturmak için.
+7. Ayarları gözden geçirmek için **İleri** 'ye tıklayın. Herhangi bir değişiklik yapmak için düzenleme simgeleri ' ne tıklayın.
+8. VPN ağ geçidini oluşturmak için **Oluştur** ' a tıklayın.
 
-### <a name="connect-to-cloudsimple-using-point-to-site-vpn"></a>İçin CloudSimple noktadan siteye VPN kullanarak bağlanma
+### <a name="connect-to-cloudsimple-using-point-to-site-vpn"></a>Noktadan siteye VPN kullanarak CloudSimple 'a bağlanma
 
-VPN istemcisi için CloudSimple bilgisayarınızdan bağlanmak için gereklidir.  İndirme [OpenVPN istemci](https://openvpn.net/community-downloads/) Windows için veya [ilişkili Akışkanlık](https://www.sparklabs.com/viscosity/download/) macOS ve OS X için.
+VPN istemcisi, bilgisayarınızdan CloudSimple 'a bağlanmak için gereklidir.  MacOS ve OS X için Windows veya [viscosity](https://www.sparklabs.com/viscosity/download/) Için [OpenVPN istemcisini](https://openvpn.net/community-downloads/) indirin.
 
-1. Portal ve select CloudSimple başlatma **ağ**.
-2. Seçin **VPN ağ geçidi**.
-3. VPN ağ geçitleri listesinden noktadan siteye VPN ağ geçidi'ni tıklatın.
-4. Seçin **kullanıcılar**.
-5. Tıklayarak **my VPN yapılandırmasını indir**
+1. CloudSimple portalını başlatın ve **ağ**' ı seçin.
+2. **VPN Gateway**seçin.
+3. VPN ağ geçitleri listesinden Noktadan siteye VPN Gateway ' e tıklayın.
+4. **Kullanıcıları**seçin.
+5. **VPN yapılandırması 'Nı indir** 'e tıklayın
 
-    ![VPN yapılandırmasını indirme](media/download-p2s-vpn-configuration.png)
+    ![VPN yapılandırmasını indir](media/download-p2s-vpn-configuration.png)
 
-6. İçeri aktarma üzerinde VPN istemcinizi yapılandırma
+6. VPN istemcinizdeki yapılandırmayı içeri aktarın
 
-    * Yönergeler için [Windows istemci yapılandırmasını alma](https://openvpn.net/vpn-server-resources/connecting-to-access-server-with-windows/#openvpn-open-source-openvpn-gui-program)
-    * Yönergeler için [macOS ya da OS x'te yapılandırmasını alma](https://www.sparklabs.com/support/kb/article/getting-started-with-viscosity-mac/#creating-your-first-connection)
+    * [Windows istemcisinde yapılandırmayı içeri aktarma](https://openvpn.net/vpn-server-resources/connecting-to-access-server-with-windows/#openvpn-open-source-openvpn-gui-program) yönergeleri
+    * [MacOS veya OS X üzerinde yapılandırmayı içeri aktarma](https://www.sparklabs.com/support/kb/article/getting-started-with-viscosity-mac/#creating-your-first-connection) yönergeleri
 
-7. İçin CloudSimple bağlanma
+7. CloudSimple 'a bağlanma
 
-## <a name="create-a-vlan-for-your-workload-vms"></a>İş yükünüz olan VM'ler için bir VLAN'ı oluşturma
+## <a name="create-a-vlan-for-your-workload-vms"></a>İş yükü sanal makinelerinize yönelik bir VLAN oluşturma
 
-Özel bulut oluşturduktan sonra iş yükü/uygulama sanal makineleri dağıtacağınız bir VLAN oluşturun.
+Özel bir bulut oluşturduktan sonra, iş yükünüzü/uygulama VM 'lerinizi dağıtacağınız bir VLAN oluşturun.
 
-1. CloudSimple portalında **ağ**.
-2. Tıklayın **VLAN/alt ağlar**.
-3. Tıklayın **VLAN/alt ağ oluşturma**
+1. CloudSimple portalında **ağ**' ı seçin.
+2. **VLAN/alt ağlar**' a tıklayın.
+3. **VLAN/subnet oluştur** öğesine tıklayın
 
-    ![VLAN/alt ağ oluşturma](media/create-new-vlan-subnet.png)
+    ![VLAN/subnet oluştur](media/create-new-vlan-subnet.png)
 
-4. Seçin **özel bulut** yeni VLAN/alt ağ için.
-5. Bir VLAN kimliği listeden seçin.  
-6. Alt ağ tanımlamak için bir alt ağ adı girin.
-7. Maske ve alt ağ CIDR aralığı belirtin.  Bu aralık mevcut hiçbir alt ağ ile çakışmaması gerekir.
+4. Yeni VLAN/alt ağ için **özel bulutu** seçin.
+5. Listeden bir VLAN KIMLIĞI seçin.  
+6. Alt ağı tanımlamak için bir alt ağ adı girin.
+7. CıDR aralığını ve maskesini belirtin.  Bu Aralık varolan alt ağlarla çakışmamalıdır.
 8. **Gönder**'e tıklayın.
 
-    ![VLAN/alt ağ ayrıntıları oluşturma](media/create-new-vlan-subnet-details.png)
+    ![VLAN/subnet ayrıntıları oluştur](media/create-new-vlan-subnet-details.png)
 
-VLAN/alt ağ oluşturulur.  Artık bu VLAN kimliği üzerinde özel bulut vCenter'ınıza bir dağıtılmış bağlantı noktası grubu oluşturmak için de kullanabilirsiniz. 
+VLAN/subnet oluşturulacak.  Artık özel bulut vCenter 'unuzda dağıtılmış bir bağlantı noktası grubu oluşturmak için bu VLAN KIMLIĞINI kullanabilirsiniz. 
 
 ## <a name="connect-your-environment-to-an-azure-virtual-network"></a>Ortamınızı bir Azure sanal ağına bağlama
 
-CloudSimple ile bir ExpressRoute bağlantı hattı için özel bulutunuzun sağlar. ExpressRoute bağlantı hattı için Azure sanal ağınızda bağlanabilirsiniz. Bağlantı kurma hakkında tam Ayrıntılar için adımları [Azure sanal ağı ExpressRoute kullanarak bağlantı](https://docs.azure.cloudsimple.com/cloudsimple-azure-network-connection/)
+CloudSimple, özel bulutunuz için bir ExpressRoute devresi sağlar. Azure 'daki Sanal ağınızı ExpressRoute devresine bağlayabilirsiniz. Bağlantıyı ayarlamayla ilgili tam Ayrıntılar için [ExpressRoute kullanarak Azure sanal ağ bağlantısı](https://docs.azure.cloudsimple.com/cloudsimple-azure-network-connection/) 'ndaki adımları izleyin
 
-## <a name="sign-in-to-vcenter"></a>VCenter'ı açın
+## <a name="sign-in-to-vcenter"></a>VCenter 'da oturum açın
 
-Artık vCenter sanal makineler ve ilkeleri ayarlamak oturum açabilir.
+Artık sanal makineleri ve ilkeleri ayarlamak için vCenter 'da oturum açabilirsiniz.
 
-1. VCenter erişmeye CloudSimple portaldan başlatın. Giriş sayfasında altında **ortak görevleri**, tıklayın **vSphere istemci başlatma**.  Özel Bulutu seçin ve ardından **vSphere istemci başlatma** özel bulutta.
+1. VCenter 'a erişmek için CloudSimple portalından başlatın. Giriş sayfasında, **ortak görevler**altında, **vSphere istemcisini Başlat**' a tıklayın.  Özel bulutu seçin ve ardından özel bulutta **vSphere Istemcisini Başlat** ' a tıklayın.
 
-    ![VSphere İstemcisi'ni başlatma](media/launch-vcenter-from-cloudsimple-portal.png)
+    ![VSphere Istemcisini Başlat](media/launch-vcenter-from-cloudsimple-portal.png)
 
-2. VCenter erişip bunları, kullanıcı adı ve parolanızla oturum için tercih edilen vSphere istemcinizi seçin.  Varsayılan değerler şunlardır:
+2. VCenter 'a erişmek için tercih ettiğiniz vSphere istemcinizi seçin ve Kullanıcı adınızla parolanızla oturum açın.  Varsayılanlar şunlardır:
     * Kullanıcı adı: **CloudOwner@cloudsimple.local**
     * Parola: **CloudSimple123!**  
 
-VSphere (HTML5) istemciden sonraki yordamlarda vCenter ekranlardır.
+Sonraki yordamlardaki vCenter ekranları vSphere (HTML5) istemcisinden alınır.
 
 ## <a name="change-your-vcenter-password"></a>VCenter parolanızı değiştirme
 
-CloudSimple ilk kez vCenter oturum yöneticiniz parolanızı değiştirmenizi önerir.  
-Belirlediğiniz parola aşağıdaki gereksinimleri karşılaması gerekir:
+CloudSimple, vCenter 'da ilk kez oturum açtığınızda parolanızı değiştirmenizi önerir.  
+Ayarladığınız parolanın aşağıdaki gereksinimleri karşılaması gerekir:
 
-* Maksimum ömrü: Parola 365 günde bir değiştirilmesi
-* Yeniden kısıtla: Kullanıcılar herhangi bir önceki beş parolaları yeniden kullanılamaz.
-* Uzunluk: 8 - 20 karakter
+* En yüksek yaşam süresi: Parolanın her 365 günde bir değiştirilmesi gerekir
+* Yeniden kullanımı kısıtla: Kullanıcılar önceki beş parolanın hiçbirini yeniden kullanmıyorum
+* Uzunluk: 8-20 karakter
 * Özel karakter: En az bir özel karakter
-* Alfabetik karakter sayısı: En az bir büyük harf karakter, A-Z ve en az bir küçük harf karakter, a-z
-* Sayılar: En az bir sayısal karakteri, 0-9
-* En fazla özdeş bitişik karakter: Üç
+* Alfabetik karakterler: En az bir büyük harf, A-Z ve en az bir küçük harf, a-z
+* Sayılarının En az bir sayısal karakter, 0-9
+* Aynı bitişik karakterlerin üst sınırı: Üç
 
-    Örnek: Bilgi veya Kutulardaki parola bir parçası olarak kabul edilebilir olmakla birlikte CCCC değil.
+    Örnek: CC veya CCC parolanın bir parçası olarak kabul edilebilir, ancak CCCC değildir.
 
-Bir parola ayarlarsanız, gereksinimleri karşılamıyor:
+Gereksinimleri karşılamayan bir parola ayarlarsanız:
 
-* vSphere istemci Flash kullanırsanız, bir hata bildirir.
-* HTML5 istemci kullanırsanız, bir hata bildirmez. İstemci değişikliği kabul etmez ve eski parolayı çalışmaya devam eder.
+* vSphere Flash Istemcisini kullanıyorsanız bir hata bildiriyor
+* HTML5 istemcisini kullanıyorsanız bir hata raporlamaz. İstemci değişikliği kabul etmez ve eski parola çalışmaya devam eder.
 
 ## <a name="change-nsx-administrator-password"></a>NSX yönetici parolasını değiştirme
 
-Varsayılan parola NSX manager dağıtılır.  Özel bulut oluşturduktan sonra parolayı değiştirmesi önerilir.
+NSX Yöneticisi varsayılan parolayla dağıtılır.  Özel bulutunuzu oluşturduktan sonra parolayı değiştirmenizi öneririz.
 
    * Kullanıcı adı: **yönetici**
    * Parola: **CloudSimple123!**
 
-Tam etki alanı adı (FQDN) ve IP adresi NSX Manager CloudSimple portalında bulabilirsiniz.
+CloudSimple portalında tam etki alanı adını (FQDN) ve NSX Manager IP adresini bulabilirsiniz.
 
-1. Portal ve select CloudSimple başlatma **kaynakları**.
-2. Kullanmak istediğiniz özel buluta üzerinde tıklayın.
-3. Seçin **vSphere yönetim ağı**
-4. FQDN veya IP adresini kullanın **NSX Manager** ve bir web tarayıcısı kullanarak bağlanın. 
+1. CloudSimple portalını başlatın ve **kaynakları**seçin.
+2. Kullanmak istediğiniz özel buluta tıklayın.
+3. **VSphere yönetim ağını** seçin
+4. **NSX Manager** 'ıN FQDN 'SINI veya IP adresini kullanın ve bir Web tarayıcısı kullanarak bağlanın. 
 
-    ![NSX Manager FQDN Bul](media/private-cloud-nsx-manager-fqdn.png)
+    ![NSX Manager FQDN bulun](media/private-cloud-nsx-manager-fqdn.png)
 
-Parolayı değiştirmek için yönergeleri izleyin. [bir kullanıcının parolasını yönetmek](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.4/administration/GUID-DB31B304-66A5-4516-9E55-2712D12B4F27.html).
+Parolayı değiştirmek için [kullanıcının parolasını yönetme](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.4/administration/GUID-DB31B304-66A5-4516-9E55-2712D12B4F27.html)bölümündeki yönergeleri izleyin.
 
 > [!WARNING]
-> Varsayılan olarak, NSX yönetici parolasını 90 gün sonra süresi dolar.
+> Varsayılan olarak, NSX Yönetici parolasının süresi 90 gün sonra dolar.
 
-## <a name="create-a-port-group"></a>Bir bağlantı noktası grubu oluştur
+## <a name="create-a-port-group"></a>Bağlantı noktası grubu oluşturma
 
-VSphere dağıtılmış bağlantı noktası grubu oluşturmak için:
+VSphere içinde dağıtılmış bir bağlantı noktası grubu oluşturmak için:
 
-1. "Bir dağıtılmış bağlantı noktası Grup Ekle"'ndaki yönergeleri takip edin [vSphere Ağ Kılavuzu](https://docs.vmware.com/en/VMware-vSphere/6.5/vsphere-esxi-vcenter-server-65-networking-guide.pdf).
-2. Dağıtılmış bir bağlantı noktası grubu ayarlama oluşturduğunuz VLAN kimliği belirtin [iş yükü Vm'leriniz için bir VLAN oluşturma](#create-a-vlan-for-your-workload-vms).
+1. [VSphere ağ kılavuzunda](https://docs.vmware.com/en/VMware-vSphere/6.5/vsphere-esxi-vcenter-server-65-networking-guide.pdf)"dağıtılmış bir bağlantı noktası grubu ekleme" bölümündeki yönergeleri izleyin.
+2. Dağıtılmış bağlantı noktası grubunu ayarlarken, [Iş yükü sanal makinelerinize VLAN oluşturma](#create-a-vlan-for-your-workload-vms)bölümünde oluşturulan VLAN kimliğini sağlayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure'da VMware sanal makinelerini kullanma](https://docs.azure.cloudsimple.com/quickstart-create-vmware-virtual-machine)
-* [Azure'da VMware sanal makinelerini kullanma](quickstart-create-vmware-virtual-machine.md)
+* [Azure 'da VMware VM 'lerini kullanma](https://docs.azure.cloudsimple.com/quickstart-create-vmware-virtual-machine)
+* [Azure 'da VMware VM 'lerini kullanma](quickstart-create-vmware-virtual-machine.md)
 * [Azure ExpressRoute kullanarak şirket içi ağa bağlanma](https://docs.azure.cloudsimple.com/on-premises-connection/)
-* [Şirket içi siteden siteye VPN Kurulumu](https://docs.azure.cloudsimple.com/vpn-gateway/)
+* [Şirket içinden siteden siteye VPN kurma](https://docs.azure.cloudsimple.com/vpn-gateway/)

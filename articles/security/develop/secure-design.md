@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 67687e217372c17b007982ef99bf1f80c3e6be5f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: e31db74807b850b3d8cb8fc057e94e98db18fca2
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728710"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780624"
 ---
 # <a name="design-secure-applications-on-azure"></a>Azure 'da güvenli uygulamalar tasarlama
 Bu makalede, bulut için uygulama tasarlarken göz önünde bulundurmanız gereken güvenlik etkinlikleri ve denetimler sunuyoruz. Microsoft [güvenlik geliştirme yaşam döngüsü (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) gereksinimleri ve tasarım aşamaları sırasında göz önünde bulundurmanız gereken güvenlik sorularıyla ve kavramların yanı sıra eğitim kaynakları da ele alınmıştır. Amaç, daha güvenli bir uygulama tasarlamak için kullanabileceğiniz etkinlikleri ve Azure hizmetlerini tanımlamanıza yardımcı olmaktır.
@@ -156,7 +156,7 @@ Uygulama tasarımını modelleme ve [ilerleme](https://docs.google.com/viewer?a=
 | Sızdır               | Authentication        | [HTTPS bağlantıları gerektir](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio). |
 | Kurcalama              | Bütünlük             | SSL/TLS sertifikalarını doğrulayın. SSL/TLS kullanan uygulamaların, bağlandıkları varlıkların X. 509.440 sertifikalarını tam olarak doğrulaması gerekir. [X509 sertifikalarınızı yönetmek](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)için Azure Key Vault sertifikaları kullanın. |
 | Kar            | İnkar edilemez       | Azure [izleme ve tanılama 'yı](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)etkinleştirin.|
-| Bilgilerin Açığa Çıkması | Gizlilik       | REST ve iletim [sırasında](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest) hassas verileri [](https://docs.microsoft.com/azure/security/azure-security-data-encryption-best-practices#protect-data-in-transit)şifreleyin. |
+| Bilgilerin Açığa Çıkması | Gizlilik       | REST ve iletim [sırasında](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest) hassas verileri [](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices#protect-data-in-transit)şifreleyin. |
 | Hizmet Reddi      | Kullanılabilirlik          | Olası hizmet reddi koşulları için performans ölçümlerini izleyin. Bağlantı filtrelerini uygulayın. [Azure DDoS koruması](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview#next-steps), uygulama tasarımı en iyi uygulamaları ile birlikte, DDoS saldırılarına karşı savunma sağlar.|
 | Ayrıcalık Yükseltme | Authorization         | Azure Active Directory <span class="underline"></span> [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure)kullanın.|
 
@@ -246,7 +246,7 @@ Anahtar yönetimi çözümüne her zaman anahtarlarınızı, sertifikalarınız�
 
 *Gizli bir depo*olan Key Vault: uygulama gizli dizileri depolamak için merkezi bir bulut hizmetidir. Key Vault, uygulama gizli dizilerini tek bir merkezi konumda tutarak ve güvenli erişim, izin denetimi ve erişim günlüğü sağlayarak gizli verilerinizi güvende tutar.
 
-Gizli *dizileri tek tek*kasaların içinde depolanır. Her kasanın, erişimi denetlemek için kendi yapılandırması ve güvenlik ilkeleri vardır. Verilerinize bir REST API veya birçok programlama dili için kullanılabilen bir istemci SDK 'Sı üzerinden ulaşabilirsiniz.
+Gizli dizileri tek tek kasaların içinde depolanır. Her kasanın, erişimi denetlemek için kendi yapılandırması ve güvenlik ilkeleri vardır. Verilerinize bir REST API veya birçok programlama dili için kullanılabilen bir istemci SDK 'Sı üzerinden ulaşabilirsiniz.
 
 > [!IMPORTANT]
 > Azure Key Vault, sunucu uygulamaları için yapılandırma gizli dizilerini depolamak üzere tasarlanmıştır. Uygulama kullanıcılarına ait olan verileri depolamak için tasarlanmamıştır. Bu, performans özelliklerine, API 'ye ve maliyet modeline yansıtılır.
@@ -267,7 +267,7 @@ Veri biçimlerinizi tasarlarken tüm uygulanabilir verileri hassas olarak etiket
 #### <a name="use-encryption"></a>Şifreleme kullan
 
 Verilerin korunması, güvenlik stratejinizin önemli bir parçası olmalıdır.
-Verileriniz bir veritabanında depolanıyorsa veya konumlar arasında geri ve ileri taşınırsa, [bekleyen](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest) verilerin şifrelemesini (veritabanında iken) ve [Aktarım sırasında verilerin](https://docs.microsoft.com/azure/security/azure-security-data-encryption-best-practices#protect-data-in-transit) şifrelemesini (Kullanıcı, veritabanı, API veya hizmet uç noktası) kullanın. Verileri Exchange için her zaman SSL/TLS protokollerini kullanmanızı öneririz. Şifreleme için TLS 'nin en son sürümünü kullandığınızdan emin olun (Şu anda bu sürüm 1,2 ' dir).
+Verileriniz bir veritabanında depolanıyorsa veya konumlar arasında geri ve ileri taşınırsa, [bekleyen](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest) verilerin şifrelemesini (veritabanında iken) ve [Aktarım sırasında verilerin](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices#protect-data-in-transit) şifrelemesini (Kullanıcı, veritabanı, API veya hizmet uç noktası) kullanın. Verileri Exchange için her zaman SSL/TLS protokollerini kullanmanızı öneririz. Şifreleme için TLS 'nin en son sürümünü kullandığınızdan emin olun (Şu anda bu sürüm 1,2 ' dir).
 
 #### <a name="avoid-hard-coding"></a>Sabit kodlamadan kaçının
 

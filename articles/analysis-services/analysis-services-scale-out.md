@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 08/01/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8297a2b1e78da6685b3129071612dc4457990bc1
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
-ms.translationtype: HT
+ms.openlocfilehash: 29188013b75dbefbaf80f3c59360f203ae5b5a82
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68696396"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736743"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Azure Analysis Services ölçeğini genişletme
 
@@ -33,7 +33,7 @@ Bir sorgu havuzunda sahip olduğunuz sorgu çoğaltmalarının sayısından bağ
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
-Ölçeği ilk kez yapılandırırken, birincil sunucunuzdaki model veritabanları yeni bir sorgu havuzundaki yeni yinelemelerle *otomatik olarak* eşitlenir. Otomatik eşitleme yalnızca bir kez gerçekleşir. Otomatik eşitleme sırasında, birincil sunucunun veri dosyaları (blob depolamada Rest 'te şifrelenir), blob depolamada bekleyen bir ikinci konuma kopyalanır. Sorgu havuzundaki *çoğaltmalar daha sonra* ikinci dosya kümesindeki verilerle birlikte gösterilir. 
+Ölçeği ilk kez yapılandırırken, birincil sunucunuzdaki model veritabanları yeni bir sorgu havuzundaki yeni yinelemelerle *otomatik olarak* eşitlenir. Otomatik eşitleme yalnızca bir kez gerçekleşir. Otomatik eşitleme sırasında, birincil sunucunun veri dosyaları (blob depolamada Rest 'te şifrelenir), blob depolamada bekleyen bir ikinci konuma kopyalanır. Sorgu havuzundaki çoğaltmalar daha sonra ikinci dosya kümesindeki verilerle birlikte gösterilir. 
 
 Otomatik eşitleme yalnızca bir sunucuyu ilk kez ölçeklendirirken gerçekleştirilir, ayrıca el ile eşitleme gerçekleştirebilirsiniz. Sorgu havuzundaki çoğaltmalarda verilerin eşitlenmesi, birincil sunucuyla eşleşir. Birincil sunucudaki modelleri işlerken (yenileme), işleme işlemleri *tamamlandıktan sonra* bir eşitleme gerçekleştirilmelidir. Bu eşitleme, güncelleştirilmiş verileri, BLOB depolama alanındaki birincil sunucunun dosyalarından ikinci dosya kümesine kopyalar. Sorgu havuzundaki çoğaltmalar daha sonra blob depolamada bulunan ikinci dosya kümesinden güncelleştirilmiş verilerle birlikte gösterilir. 
 
@@ -63,7 +63,7 @@ Sunucunuz için ölçek genişletme gerekip gerekmediğini öğrenmek için, öl
 
 ### <a name="to-configure-qpu-by-serverresourcetype"></a>QPU 'yi ServerResourceType ile yapılandırmak için
 1. Ölçüm çizgisi grafiğinde **ölçüm Ekle**' ye tıklayın. 
-2. **Kaynak**bölümünde, sunucunuzu seçin, ardından **ölçüm ad**alanında **Standart ölçümler Analysis Services**seçin, sonra **metrik**bölümünde **qpu**' yi seçin ve ardından **toplama**' yı **seçin.** 
+2. **Kaynak**bölümünde, sunucunuzu SEÇIN, ardından **ölçüm ad**alanında **Standart ölçümler Analysis Services**seçin, sonra **metrik**bölümünde **qpu**' yi seçin ve ardından **toplama**' yı seçin. 
 3. **Bölmeyi Uygula**' ya tıklayın. 
 4. **Değerler**' de **serverresourcetype**' ı seçin.  
 
@@ -143,9 +143,9 @@ PowerShell, Azure Işlev uygulamaları ve AMO 'daki SSMS, SSDT ve bağlantı diz
 
 ![Sunucu adları](media/analysis-services-scale-out/aas-scale-out-name.png)
 
-## <a name="scale-up--down-vs-scale-out"></a>Ölçeği artırma/azaltma karşılaştırması Ölçeği genişletme
+## <a name="scale-up-scale-down-vs-scale-out"></a>Ölçeği artırma, ölçek azaltma ve Ölçeklendirme
 
-Sunucuda birden çok çoğaltmayla sunucunun fiyatlandırma katmanını değiştirebilirsiniz. Aynı fiyatlandırma katmanı tüm çoğaltmalar için geçerlidir. Ölçeği artırma ve ölçeği azaltma işlemi önce tüm çoğaltmaları tek seferde getirip yeni fiyatlandırma katmanındaki tüm çoğaltmaları getirir.
+Birden çok çoğaltmayla bir sunucuda fiyatlandırma katmanını değiştirebilirsiniz. Aynı fiyatlandırma katmanı tüm çoğaltmalar için geçerlidir. Bir ölçeklendirme işlemi önce tüm çoğaltmaları tek seferde getirip yeni fiyatlandırma katmanındaki tüm çoğaltmaları getirir.
 
 ## <a name="troubleshoot"></a>Sorun giderme
 

@@ -1,6 +1,6 @@
 ---
-title: HDFS Azure Data Factory kullanarak verileri kopyalama | Microsoft Docs
-description: Desteklenen bir havuz veri depolarına bir bulut veya şirket içi HDFS kaynaktan bir Azure Data Factory işlem hattında kopyalama etkinliği'ni kullanarak veri kopyalama hakkında bilgi edinin.
+title: Azure Data Factory kullanarak, 1 ' den veri kopyalama Microsoft Docs
+description: Azure Data Factory bir işlem hattındaki kopyalama etkinliği kullanarak bir buluttan veya şirket içi bir sunucudan, desteklenen havuz veri depolarına veri kopyalamayı öğrenin.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -10,62 +10,62 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/29/2019
+ms.date: 08/06/2019
 ms.author: jingwang
-ms.openlocfilehash: 2cac2b350da5ca8738e40f9a288ecf4059e81060
-ms.sourcegitcommit: 80aaf27e3ad2cc4a6599a3b6af0196c6239e6918
+ms.openlocfilehash: e1b8da52870af80b2f9e34ee26d80d9b71d39851
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67673897"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839819"
 ---
-# <a name="copy-data-from-hdfs-using-azure-data-factory"></a>Hdfs Azure Data Factory kullanarak veri kopyalama
-> [!div class="op_single_selector" title1="Data Factory hizmetinin kullandığınız sürümü seçin:"]
+# <a name="copy-data-from-hdfs-using-azure-data-factory"></a>Azure Data Factory kullanarak, verileri bir sunucudan kopyalayın
+> [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-hdfs-connector.md)
 > * [Geçerli sürüm](connector-hdfs.md)
 
-Bu makalede, HDFS sunucusundan veri kopyalamak nasıl özetlenmektedir. Azure Data Factory hakkında bilgi edinmek için [giriş makalesi](introduction.md).
+Bu makalede, verileri, bir sunucu sunucusu ' ndan nasıl kopyalanacağı özetlenmektedir. Azure Data Factory hakkında bilgi edinmek için [giriş makalesi](introduction.md).
 
 ## <a name="supported-capabilities"></a>Desteklenen özellikler
 
-Bu HDFS Bağlayıcısı için aşağıdaki etkinlikleri desteklenir:
+Bu bağlantı, aşağıdaki etkinlikler için desteklenir:
 
-- [Kopyalama etkinliği](copy-activity-overview.md) ile [desteklenen kaynak/havuz Matrisi](copy-activity-overview.md)
+- [Desteklenen kaynak/havuz matrisi](copy-activity-overview.md) ile [kopyalama etkinliği](copy-activity-overview.md)
 - [Arama etkinliği](control-flow-lookup-activity.md)
 
-Özellikle, bu HDFS bağlayıcı'yı destekler:
+Özellikle, bu, bu bağlantı, şunları destekler:
 
-- Dosyalar kopyalanıyor kullanarak **Windows** (Kerberos) veya **anonim** kimlik doğrulaması.
-- Dosyalar kopyalanıyor kullanarak **webhdfs** protokolü veya **yerleşik DistCp** destekler.
+- **Windows** (Kerberos) veya **anonim** kimlik doğrulaması kullanarak dosyaları kopyalama.
+- **Web** , protokol veya **yerleşik dıtcp** desteği kullanarak dosyaları kopyalama.
 - Dosyaları olarak kopyalama- ya da ayrıştırma/oluşturma dosyalarıyla [desteklenen dosya biçimleri ve codec sıkıştırma](supported-file-formats-and-compression-codecs.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Genel olarak erişilebilir değil bir HDFS veri kopyalamak için şirket içinde barındırılan tümleştirme çalışma zamanını oluşturan gerekir. Bkz: [şirket içinde barındırılan tümleştirme çalışma zamanı](concepts-integration-runtime.md) daha fazla bilgi edinmek için makaleyi.
+Herkese açık olmayan bir IBir sunucudan veri kopyalamak için, şirket içinde barındırılan bir Integration Runtime ayarlamanız gerekir. Ayrıntıları öğrenmek için [Şirket içinde barındırılan Integration Runtime](concepts-integration-runtime.md) makalesine bakın.
 
 > [!NOTE]
-> Emin Integration Runtime için erişebileceği **tüm** [ad sunucusu düğümü]: [ad, düğüm bağlantı noktası] ve [veri düğümü sunucuları]: [veri düğümü bağlantı noktası] Hadoop kümesi. 50070 varsayılan [ad düğümü bağlantı noktası] ve [veri düğümü bağlantı noktası] 50075 varsayılandır.
+> Integration Runtime, Hadoop kümesinin [name node Server]: [name node port] ve [Data node Servers]: [veri düğümü bağlantı noktası] öğesine erişebildiğinizden emin olun. Varsayılan [ad düğümü bağlantı noktası] 50070, varsayılan [veri düğümü bağlantı noktası] 50075 ' dir.
 
 ## <a name="getting-started"></a>Başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Aşağıdaki bölümler, Data Factory varlıklarını belirli HDFS'ye tanımlamak için kullanılan özellikleri hakkında ayrıntılı bilgi sağlar.
+Aşağıdaki bölümlerde, Data Factory 'e özgü varlıkları tanımlamak için kullanılan özellikler hakkında ayrıntılı bilgi sağlanmaktadır.
 
 ## <a name="linked-service-properties"></a>Bağlı hizmeti özellikleri
 
-HDFS bağlı hizmeti için aşağıdaki özellikleri destekler:
+Şu özellikler, "
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Type özelliği ayarlanmalıdır: **Hdfs**. | Evet |
-| url |HDFS URL'si |Evet |
-| authenticationType | İzin verilen değerler şunlardır: **Anonim**, veya **Windows**. <br><br> Kullanılacak **Kerberos kimlik doğrulaması** HDFS bağlayıcısının başvurmak [Bu bölümde](#use-kerberos-authentication-for-hdfs-connector) şirket içi ortamınızı uygun şekilde ayarlamak için. |Evet |
-| userName |Kullanıcı adı için Windows kimlik doğrulaması. Kerberos kimlik doğrulaması için belirtin `<username>@<domain>.com`. |Evet (Windows kimlik doğrulaması için) |
+| type | Type özelliği şu şekilde ayarlanmalıdır:" | Evet |
+| url |Bu URL 'nin URL 'si |Evet |
+| authenticationType | İzin verilen değerler şunlardır: **Anonim**veya **Windows**. <br><br> Bir bağlantı **kimliği Için Kerberos kimlik doğrulaması** kullanmak üzere, şirket içi ortamınızı uygun şekilde ayarlamak için [Bu bölüme](#use-kerberos-authentication-for-hdfs-connector) bakın. |Evet |
+| userName |Windows kimlik doğrulaması için Kullanıcı adı. Kerberos kimlik doğrulaması için, `<username>@<domain>.com`belirtin. |Evet (Windows kimlik doğrulaması için) |
 | password |Windows kimlik doğrulaması için parola. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). |Evet (Windows kimlik doğrulaması için) |
 | connectVia | [Integration Runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. (Veri deponuz genel olarak erişilebilir değilse), şirket içinde barındırılan tümleştirme çalışma zamanı veya Azure Integration Runtime kullanabilirsiniz. Belirtilmezse, varsayılan Azure Integration Runtime kullanır. |Hayır |
 
-**Örnek: Anonim kimlik doğrulamasını kullanma**
+**Örnek: anonim kimlik doğrulaması kullanma**
 
 ```json
 {
@@ -85,7 +85,7 @@ HDFS bağlı hizmeti için aşağıdaki özellikleri destekler:
 }
 ```
 
-**Örnek: Windows kimlik doğrulaması kullanma**
+**Örnek: Windows kimlik doğrulamasını kullanma**
 
 ```json
 {
@@ -113,21 +113,21 @@ HDFS bağlı hizmeti için aşağıdaki özellikleri destekler:
 
 Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi için bkz: [veri kümeleri](concepts-datasets-linked-services.md) makalesi. 
 
-- İçin **Parquet ve sınırlandırılmış metin biçimi**, başvurmak [Parquet ve sınırlandırılmış metin biçimi veri kümesi](#parquet-and-delimited-text-format-dataset) bölümü.
-- Diğer biçimlerden için **ORC/Avro/JSON/ikili biçimi**, başvurmak [diğer biçim veri kümesi](#other-format-dataset) bölümü.
+- **Parquet, sınırlandırılmış metin ve ikili biçimi**Için, [Parquet, sınırlandırılmış metin ve ikili biçim veri kümesi](#format-based-dataset) bölümüne bakın.
+- **Orc/avro/JSON biçimi**gibi diğer biçimler için [diğer biçim veri kümesi](#other-format-dataset) bölümüne bakın.
 
-### <a name="parquet-and-delimited-text-format-dataset"></a>Parquet ve sınırlandırılmış metin biçimi veri kümesi
+### <a name="format-based-dataset"></a>Parquet, sınırlandırılmış metin ve ikili biçim veri kümesi
 
-HDFS verileri kopyalamak için **Parquet veya sınırlandırılmış metin biçimi**, başvurmak [Parquet biçimi](format-parquet.md) ve [sınırlandırılmış metin biçimi](format-delimited-text.md) makale biçimi tabanlı veri kümesinde ve desteklenen Ayarlar. Aşağıdaki özellikler altında HDFS için desteklenen `location` biçimi tabanlı bir veri kümesi ayarlarında:
+**Parquet, sınırlandırılmış metin veya ikili biçiminden**veri kopyalamak için, biçim tabanlı veri kümesinde ve desteklenen ayarlarda [Parquet biçimine](format-parquet.md), [sınırlandırılmış metin biçimine](format-delimited-text.md) ve [ikili biçim](format-binary.md) makalesine başvurun. Aşağıdaki özellikler, biçim tabanlı veri kümesindeki ayarlar `location` ' ın altında bulunan için desteklenir:
 
 | Özellik   | Açıklama                                                  | Gerekli |
 | ---------- | ------------------------------------------------------------ | -------- |
-| type       | Type özelliği altında `location` kümesinde ayarlanmalıdır **HdfsLocation**. | Evet      |
-| folderPath | Klasör yolu. Joker karakter filtresi klasörüne kullanmak istiyorsanız, bu ayar atlayın ve etkinliği kaynak ayarları belirtin. | Hayır       |
-| fileName   | Verilen folderPath altında dosya adı. Joker karakter filtresi dosyalarını kullanmak istiyorsanız, bu ayar atlayın ve etkinliği kaynak ayarları belirtin. | Hayır       |
+| type       | DataSet `location` içinde Type özelliği **hdfslocation**olarak ayarlanmalıdır. | Evet      |
+| folderPath | Klasörün yolu. Klasörü filtrelemek için joker karakter kullanmak istiyorsanız, bu ayarı atlayın ve etkinlik kaynağı ayarları ' nda belirtin. | Hayır       |
+| fileName   | Verilen folderPath altındaki dosya adı. Dosyaları filtrelemek için joker karakter kullanmak istiyorsanız, bu ayarı atlayın ve etkinlik kaynağı ayarları ' nda belirtin. | Hayır       |
 
 > [!NOTE]
-> **Dosya paylaşımını** sonraki bölümde bahsedilen Parquet/metin biçimine sahip tür veri kümesi olarak desteklenen hala-kopyalama/arama etkinliği için geriye dönük uyumluluk içindir. İleride bu yeni modeli kullanmak için önerilir ve bu yeni tür oluşturma için kullanıcı Arabirimi geliştirme ADF geçti.
+> Sonraki bölümde belirtilen Parquet/metin biçimine sahip **FileShare** türü veri kümesi, geriye dönük uyumluluk için kopyalama/arama etkinliği için olduğu gibi hala desteklenmektedir. Bu yeni modeli ileriye doğru kullanmanız önerilir ve ADF yazma Kullanıcı arabirimi bu yeni türleri oluşturmaya geçti.
 
 **Örnek:**
 
@@ -157,17 +157,17 @@ HDFS verileri kopyalamak için **Parquet veya sınırlandırılmış metin biçi
 
 ### <a name="other-format-dataset"></a>Diğer biçim veri kümesi
 
-HDFS verileri kopyalamak için **ORC/Avro/JSON/ikili biçimi**, aşağıdaki özellikler desteklenir:
+**Orc/avro/JSON biçiminde**bir veri kopyalamak için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Dataset öğesinin type özelliği ayarlanmalıdır: **Dosya Paylaşımı** |Evet |
-| folderPath | Klasör yolu. Joker karakter filtresi desteklenir, joker karakterlere izin şunlardır: `*` (sıfır veya daha fazla karakter ile eşleşir) ve `?` (eşleşen sıfır ya da tek bir karakter); kullanma `^` joker karakter veya içinde bu kaçış karakteri, gerçek dosya adı varsa, kaçış için. <br/><br/>Örnekler: rootfolder/alt/daha fazla örneklere bakın [klasör ve dosya filtreleme örnekler](#folder-and-file-filter-examples). |Evet |
-| fileName |  **Adı veya joker karakter filtresi** belirtilen "folderPath" altında dosyaları için. Bu özellik için bir değer belirtmezseniz, klasördeki tüm dosyaları için veri kümesini işaret eder. <br/><br/>Filtre için joker karakterlere izin verilir: `*` (sıfır veya daha fazla karakter ile eşleşir) ve `?` (eşleşen sıfır ya da tek bir karakter).<br/>-Örnek 1: `"fileName": "*.csv"`<br/>-Örnek 2: `"fileName": "???20180427.txt"`<br/>Kullanım `^` joker karakter veya içinde bu kaçış karakteri, gerçek bir klasör adı varsa, kaçış için. |Hayır |
-| modifiedDatetimeStart | Dosya Filtresi özniteliğine dayanarak: Son değiştirme. Kendi son değiştirilme zamanı zaman aralığı içinde olduğunda dosyaları seçilir `modifiedDatetimeStart` ve `modifiedDatetimeEnd`. Zaman biçimi UTC saat diliminde uygulanan "2018-12-01T05:00:00Z". <br/><br/> Veri taşıma genel performansını filtre devasa miktarda bir dosyaları dosya istediğinizde, bu ayarı etkinleştirerek etkilenecek dikkat edin. <br/><br/> Özellikler, hiçbir dosya öznitelik filtresi, veri kümesine uygulanacak anlamına NULL olabilir.  Zaman `modifiedDatetimeStart` datetime değerine sahip ancak `modifiedDatetimeEnd` NULL olduğu için daha büyük olan son değiştirilen özniteliği dosyaları geldiğini veya tarih saat değeri ile eşit seçilir.  Zaman `modifiedDatetimeEnd` datetime değerine sahip ancak `modifiedDatetimeStart` NULL ise, son değiştirilen özniteliği, tarih saat değeri seçilir daha az dosya anlamına gelir.| Hayır |
-| modifiedDatetimeEnd | Dosya Filtresi özniteliğine dayanarak: Son değiştirme. Kendi son değiştirilme zamanı zaman aralığı içinde olduğunda dosyaları seçilir `modifiedDatetimeStart` ve `modifiedDatetimeEnd`. Zaman biçimi UTC saat diliminde uygulanan "2018-12-01T05:00:00Z". <br/><br/> Veri taşıma genel performansını filtre devasa miktarda bir dosyaları dosya istediğinizde, bu ayarı etkinleştirerek etkilenecek dikkat edin. <br/><br/> Özellikler, hiçbir dosya öznitelik filtresi, veri kümesine uygulanacak anlamına NULL olabilir.  Zaman `modifiedDatetimeStart` datetime değerine sahip ancak `modifiedDatetimeEnd` NULL olduğu için daha büyük olan son değiştirilen özniteliği dosyaları geldiğini veya tarih saat değeri ile eşit seçilir.  Zaman `modifiedDatetimeEnd` datetime değerine sahip ancak `modifiedDatetimeStart` NULL ise, son değiştirilen özniteliği, tarih saat değeri seçilir daha az dosya anlamına gelir.| Hayır |
-| format | İsterseniz **olarak dosya kopyalama-olan** dosya tabanlı depoları arasında (ikili kopya), her iki girdi ve çıktı veri kümesi tanımları biçimi bölümünde atlayın.<br/><br/>Belirli bir biçime sahip dosyalarını ayrıştırmak istiyorsanız, aşağıdaki dosya biçimi türleri desteklenir: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Ayarlama **türü** özelliği şu değerlerden biri olarak biçimine altında. Daha fazla bilgi için [metin biçimi](supported-file-formats-and-compression-codecs.md#text-format), [Json biçimine](supported-file-formats-and-compression-codecs.md#json-format), [Avro biçimi](supported-file-formats-and-compression-codecs.md#avro-format), [Orc biçimi](supported-file-formats-and-compression-codecs.md#orc-format), ve [Parquetbiçimi](supported-file-formats-and-compression-codecs.md#parquet-format) bölümler. |Hayır (yalnızca ikili kopya senaryosu için) |
-| compression | Veri sıkıştırma düzeyi ve türünü belirtin. Daha fazla bilgi için [desteklenen dosya biçimleri ve codec sıkıştırma](supported-file-formats-and-compression-codecs.md#compression-support).<br/>Desteklenen türler şunlardır: **GZip**, **Deflate**, **Bzıp2**, ve **ZipDeflate**.<br/>Desteklenen düzeyleri şunlardır: **En iyi** ve **hızlı**. |Hayır |
+| type | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **FileShare** |Evet |
+| folderPath | Klasör yolu. Joker karakter filtresi desteklenir, izin verilen joker karakterler `*` şunlardır: (sıfır veya daha fazla karakterle `?` eşleşir) ve (sıfır veya tek karakterle eşleşir `^` ); gerçek dosya adınızın joker karakter veya içinde bu kaçış karakteri varsa kaçış için kullanın. <br/><br/>Örnekler: RootFolder/alt klasör/, bkz. [klasör ve dosya filtresi örneklerinde](#folder-and-file-filter-examples)daha fazla örnek. |Evet |
+| fileName |  **Adı veya joker karakter filtresi** belirtilen "folderPath" altında dosyaları için. Bu özellik için bir değer belirtmezseniz, klasördeki tüm dosyaları için veri kümesini işaret eder. <br/><br/>Filtre için joker karakterlere izin verilir: `*` (sıfır veya daha fazla karakter ile eşleşir) ve `?` (eşleşen sıfır ya da tek bir karakter).<br/>-Örnek 1: `"fileName": "*.csv"`<br/>-Örnek 2: `"fileName": "???20180427.txt"`<br/>Gerçek `^` klasör adınızın joker karakter veya içinde bu kaçış karakteri varsa kaçış için kullanın. |Hayır |
+| modifiedDatetimeStart | Özniteliği temel alan dosya filtresi: Son değiştirme. Kendi son değiştirilme zamanı zaman aralığı içinde olduğunda dosyaları seçilir `modifiedDatetimeStart` ve `modifiedDatetimeEnd`. Zaman biçimi UTC saat diliminde uygulanan "2018-12-01T05:00:00Z". <br/><br/> Çok büyük miktarlarda dosyadan dosya filtresi yapmak istediğinizde, bu ayarın etkinleştirilmesi durumunda veri hareketinin genel performansını unutmayın. <br/><br/> Veri kümesine hiçbir dosya özniteliği filtresinin uygulanamadığını gösteren Özellikler NULL olabilir.  Zaman `modifiedDatetimeStart` datetime değerine sahip ancak `modifiedDatetimeEnd` NULL olduğu için daha büyük olan son değiştirilen özniteliği dosyaları geldiğini veya tarih saat değeri ile eşit seçilir.  Zaman `modifiedDatetimeEnd` datetime değerine sahip ancak `modifiedDatetimeStart` NULL ise, son değiştirilen özniteliği, tarih saat değeri seçilir daha az dosya anlamına gelir.| Hayır |
+| modifiedDatetimeEnd | Özniteliği temel alan dosya filtresi: Son değiştirme. Kendi son değiştirilme zamanı zaman aralığı içinde olduğunda dosyaları seçilir `modifiedDatetimeStart` ve `modifiedDatetimeEnd`. Zaman biçimi UTC saat diliminde uygulanan "2018-12-01T05:00:00Z". <br/><br/> Çok büyük miktarlarda dosyadan dosya filtresi yapmak istediğinizde, bu ayarın etkinleştirilmesi durumunda veri hareketinin genel performansını unutmayın. <br/><br/> Veri kümesine hiçbir dosya özniteliği filtresinin uygulanamadığını gösteren Özellikler NULL olabilir.  Zaman `modifiedDatetimeStart` datetime değerine sahip ancak `modifiedDatetimeEnd` NULL olduğu için daha büyük olan son değiştirilen özniteliği dosyaları geldiğini veya tarih saat değeri ile eşit seçilir.  Zaman `modifiedDatetimeEnd` datetime değerine sahip ancak `modifiedDatetimeStart` NULL ise, son değiştirilen özniteliği, tarih saat değeri seçilir daha az dosya anlamına gelir.| Hayır |
+| format | İsterseniz **olarak dosya kopyalama-olan** dosya tabanlı depoları arasında (ikili kopya), her iki girdi ve çıktı veri kümesi tanımları biçimi bölümünde atlayın.<br/><br/>Dosyaları belirli bir biçimde ayrıştırmak isterseniz, aşağıdaki dosya biçimi türleri desteklenir: **TextFormat**, **jsonformat**, **avroformat**, **orcformat**, **parquetformat**. Ayarlama **türü** özelliği şu değerlerden biri olarak biçimine altında. Daha fazla bilgi için [metin biçimi](supported-file-formats-and-compression-codecs.md#text-format), [Json biçimine](supported-file-formats-and-compression-codecs.md#json-format), [Avro biçimi](supported-file-formats-and-compression-codecs.md#avro-format), [Orc biçimi](supported-file-formats-and-compression-codecs.md#orc-format), ve [Parquetbiçimi](supported-file-formats-and-compression-codecs.md#parquet-format) bölümler. |Hayır (yalnızca ikili kopya senaryosu için) |
+| compression | Veri sıkıştırma düzeyi ve türünü belirtin. Daha fazla bilgi için [desteklenen dosya biçimleri ve codec sıkıştırma](supported-file-formats-and-compression-codecs.md#compression-support).<br/>Desteklenen türler şunlardır: **Gzip**, **söndür**, **bzip2**ve **zipsöndür**.<br/>Desteklenen düzeyler şunlardır: **En iyi** ve **en hızlı**. |Hayır |
 
 >[!TIP]
 >Bir klasör altındaki tüm dosyaları kopyalamak için belirtin **folderPath** yalnızca.<br>Belirli bir ada sahip tek bir dosya kopyalamak için belirtin **folderPath** klasör bölümüyle ve **fileName** dosya adına sahip.<br>Bir alt klasörü altında bulunan dosyaları kopyalamak için belirtin **folderPath** klasör bölümüyle ve **fileName** joker karakter Filtresi ile.
@@ -204,29 +204,33 @@ HDFS verileri kopyalamak için **ORC/Avro/JSON/ikili biçimi**, aşağıdaki öz
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 
-Bölümleri ve etkinlikleri tanımlamak için mevcut özelliklerin tam listesi için bkz: [işlem hatları](concepts-pipelines-activities.md) makalesi. Bu bölümde, HDFS kaynak tarafından desteklenen özelliklerin bir listesini sağlar.
+Bölümleri ve etkinlikleri tanımlamak için mevcut özelliklerin tam listesi için bkz: [işlem hatları](concepts-pipelines-activities.md) makalesi. Bu bölüm,,,
 
-### <a name="hdfs-as-source"></a>Kaynak olarak HDFS
+### <a name="hdfs-as-source"></a>Kaynak olarak
 
-- Kopyalama için **Parquet ve sınırlandırılmış metin biçimi**, başvurmak [Parquet ve sınırlandırılmış metin biçimi kaynak](#parquet-and-delimited-text-format-source) bölümü.
-- Kopyalama gibi diğer biçimlerinden **ORC/Avro/JSON/ikili biçimi**, başvurmak [başka bir biçim kaynağı](#other-format-source) bölümü.
+- **Parquet, sınırlandırılmış metin ve ikili biçiminden**kopyalamak Için, [Parquet, sınırlandırılmış metin ve ikili biçim kaynağı](#format-based-source) bölümüne bakın.
+- **Orc/avro/JSON biçimi**gibi diğer biçimlerden kopyalamak için [diğer biçim kaynağı](#other-format-source) bölümüne bakın.
 
-#### <a name="parquet-and-delimited-text-format-source"></a>Parquet ve sınırlandırılmış metin biçimi kaynağı
+#### <a name="format-based-source"></a>Parquet, sınırlandırılmış metin ve ikili biçim kaynağı
 
-HDFS verileri kopyalamak için **Parquet veya sınırlandırılmış metin biçimi**, başvurmak [Parquet biçimi](format-parquet.md) ve [sınırlandırılmış metin biçimi](format-delimited-text.md) makale biçimi tabanlı kopyalama etkinliği kaynağı ve desteklenen ayarlar. Aşağıdaki özellikler altında HDFS için desteklenen `storeSettings` biçimi tabanlı kopyalama kaynak ayarları:
+**Parquet, sınırlandırılmış metin veya ikili biçiminden**verileri kopyalamak için, biçim tabanlı kopyalama etkinliği kaynağı ve desteklenen ayarlar ' da [Parquet biçimine](format-parquet.md), [sınırlandırılmış metin biçimine](format-delimited-text.md) ve [ikili biçim](format-binary.md) makalesine başvurun. Aşağıdaki özellikler, biçim tabanlı kopyalama kaynağı 'ndaki `storeSettings` ayarlar bölümünde yer aldığı için desteklenir:
 
 | Özellik                 | Açıklama                                                  | Gerekli                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
-| type                     | Type özelliği altında `storeSettings` ayarlanmalıdır **HdfsReadSetting**. | Evet                                           |
+| type                     | Altındaki `storeSettings` Type özelliği **hdfsreadsetting**olarak ayarlanmalıdır. | Evet                                           |
 | recursive                | Belirtilen klasörün alt klasörleri ya da yalnızca veri yinelemeli olarak okunur olup olmadığını belirtir. Özyinelemeli true ve havuz için ayarlandığında bir dosya tabanlı depolama, bir boş klasör veya alt klasör olduğunu unutmayın kopyalanır değil veya havuz oluşturulur. İzin verilen değerler **true** (varsayılan) ve **false**. | Hayır                                            |
-| wildcardFolderPath       | Kaynak klasörleri filtrelemek için joker karakter içeren klasör yolu. <br>Joker karakterlere izin verilir: `*` (sıfır veya daha fazla karakter ile eşleşir) ve `?` (eşleşen sıfır ya da tek bir karakter); kullanma `^` joker karakter veya içinde bu kaçış karakteri, gerçek bir klasör adı varsa, kaçış için. <br>Daha fazla örneklere bakın [klasör ve dosya filtreleme örnekler](#folder-and-file-filter-examples). | Hayır                                            |
-| wildcardFileName         | Joker karakter filtresi kaynak dosyalarının belirli folderPath/wildcardFolderPath altında içeren dosya adı. <br>Joker karakterlere izin verilir: `*` (sıfır veya daha fazla karakter ile eşleşir) ve `?` (eşleşen sıfır ya da tek bir karakter); kullanma `^` joker karakter veya içinde bu kaçış karakteri, gerçek bir klasör adı varsa, kaçış için.  Daha fazla örneklere bakın [klasör ve dosya filtreleme örnekler](#folder-and-file-filter-examples). | Yanıt Evet ise `fileName` kümesinde belirtilmedi |
-| modifiedDatetimeStart    | Dosya Filtresi özniteliğine dayanarak: Son değiştirme. Kendi son değiştirilme zamanı zaman aralığı içinde olduğunda dosyaları seçilir `modifiedDatetimeStart` ve `modifiedDatetimeEnd`. Zaman biçimi UTC saat diliminde uygulanan "2018-12-01T05:00:00Z". <br> Özellikler, hiçbir dosya öznitelik filtresi, veri kümesine uygulanacak anlamına NULL olabilir.  Zaman `modifiedDatetimeStart` datetime değerine sahip ancak `modifiedDatetimeEnd` NULL olduğu için daha büyük olan son değiştirilen özniteliği dosyaları geldiğini veya tarih saat değeri ile eşit seçilir.  Zaman `modifiedDatetimeEnd` datetime değerine sahip ancak `modifiedDatetimeStart` NULL ise, son değiştirilen özniteliği, tarih saat değeri seçilir daha az dosya anlamına gelir. | Hayır                                            |
-| modifiedDatetimeEnd      | Yukarıdakiyle aynı.                                               | Hayır                                            |
-| maxConcurrentConnections | Depolama deposu bağlanmayan bağlantılarının sayısı. Yalnızca veri deposuna eş zamanlı bağlantı sınırlandırmak istediğinizde bu seçeneği belirtin. | Hayır                                            |
+| Yavaya Cardfolderpath       | Kaynak klasörlerin filtreleneceği joker karakter içeren klasör yolu. <br>İzin verilen joker karakterler `*` : (sıfır veya daha fazla karakterle eşleşir `?` ) ve (sıfır veya tek karakterle eşleşir) `^` ; gerçek klasör adınızın joker karakter veya içinde bu kaçış karakteri varsa kaçış için kullanın. <br>[Klasör ve dosya filtresi örneklerinde](#folder-and-file-filter-examples)daha fazla örnek görüntüleyin. | Hayır                                            |
+| Yavaya Cardfilename         | Kaynak dosyalarını filtrelemek için, belirtilen folderPath/, Cardfolderpath altındaki joker karakterlerle dosya adı. <br>İzin verilen joker karakterler `*` : (sıfır veya daha fazla karakterle eşleşir `?` ) ve (sıfır veya tek karakterle eşleşir) `^` ; gerçek klasör adınızın joker karakter veya içinde bu kaçış karakteri varsa kaçış için kullanın.  [Klasör ve dosya filtresi örneklerinde](#folder-and-file-filter-examples)daha fazla örnek görüntüleyin. | `fileName` Veri kümesinde belirtilmemişse Evet |
+| modifiedDatetimeStart    | Özniteliği temel alan dosya filtresi: Son değiştirme. Kendi son değiştirilme zamanı zaman aralığı içinde olduğunda dosyaları seçilir `modifiedDatetimeStart` ve `modifiedDatetimeEnd`. Zaman biçimi UTC saat diliminde uygulanan "2018-12-01T05:00:00Z". <br> Özellikler, hiçbir dosya öznitelik filtresi, veri kümesine uygulanacak anlamına NULL olabilir.  Zaman `modifiedDatetimeStart` datetime değerine sahip ancak `modifiedDatetimeEnd` NULL olduğu için daha büyük olan son değiştirilen özniteliği dosyaları geldiğini veya tarih saat değeri ile eşit seçilir.  Zaman `modifiedDatetimeEnd` datetime değerine sahip ancak `modifiedDatetimeStart` NULL ise, son değiştirilen özniteliği, tarih saat değeri seçilir daha az dosya anlamına gelir. | Hayır                                            |
+| modifiedDatetimeEnd      | Yukarıdaki gibi.                                               | Hayır                                            |
+| distcpSettings | , Bir özellik grubu. | Hayır |
+| resourceManagerEndpoint | Yarn Kaynak Yöneticisi uç noktası | DistCp kullanılıyorsa Evet |
+| tempScriptPath | Temp Dıtcp komut betiğini depolamak için kullanılan bir klasör yolu. Betik dosyası Data Factory tarafından oluşturulur ve kopyalama işi tamamlandıktan sonra kaldırılır. | DistCp kullanılıyorsa Evet |
+| distcpOptions | DistCp komutuna ek seçenekler sağlanmaktadır. | Hayır |
+| maxConcurrentConnections | Depolama deposuna aynı anda bağlanacak bağlantı sayısı. Yalnızca veri deposuyla eşzamanlı bağlantıyı sınırlandırmak istediğinizde belirtin. | Hayır                                            |
 
 > [!NOTE]
-> Parquet ve sınırlandırılmış metin biçimi **FileSystemSource** sonraki bölümde bahsedilen türü kopyalama etkinliği kaynağı olarak desteklenen hala-geriye dönük uyumluluğu içindir. İleride bu yeni modeli kullanmak için önerilir ve bu yeni tür oluşturma için kullanıcı Arabirimi geliştirme ADF geçti.
+> Parquet/delimited metin biçimi için, sonraki bölümde bahsedilen **filesystemsource** türü kopyalama etkinliği kaynağı, geriye dönük uyumluluk için olduğu gibi desteklenmeye devam etmektedir. Bu yeni modeli ileriye doğru kullanmanız önerilir ve ADF yazma Kullanıcı arabirimi bu yeni türleri oluşturmaya geçti.
 
 **Örnek:**
 
@@ -256,7 +260,12 @@ HDFS verileri kopyalamak için **Parquet veya sınırlandırılmış metin biçi
                 },
                 "storeSettings":{
                     "type": "HdfsReadSetting",
-                    "recursive": true
+                    "recursive": true,
+                    "distcpSettings": {
+                        "resourceManagerEndpoint": "resourcemanagerendpoint:8088",
+                        "tempScriptPath": "/usr/hadoop/tempscript",
+                        "distcpOptions": "-m 100"
+                    }
                 }
             },
             "sink": {
@@ -267,21 +276,21 @@ HDFS verileri kopyalamak için **Parquet veya sınırlandırılmış metin biçi
 ]
 ```
 
-#### <a name="other-format-source"></a>Başka bir biçim kaynağı
+#### <a name="other-format-source"></a>Diğer biçim kaynağı
 
-HDFS verileri kopyalamak için **ORC/Avro/JSON/ikili biçimi**, aşağıdaki özellikleri kopyalama etkinliğinde desteklenen **kaynak** bölümü:
+**Orc/avro/JSON biçiminde**bir veri kopyalamak için, etkinlik **kaynağını** kopyalama bölümünde aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağı öğesinin type özelliği ayarlanmalıdır: **HdfsSource** |Evet |
+| type | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **HdfsSource** |Evet |
 | recursive | Belirtilen klasörün alt klasörleri ya da yalnızca veri yinelemeli olarak okunur olup olmadığını belirtir. Özyinelemeli true ve havuz için ayarlandığında Not dosya tabanlı depolama, boş klasör/alt-folder havuz kopyalanan/oluşturulmuş olmaz.<br/>İzin verilen değerler: **true** (varsayılan), **false** | Hayır |
-| distcpSettings | HDFS DistCp kullanırken özellik grubu. | Hayır |
-| resourceManagerEndpoint | Yarn Kaynak Yöneticisi uç noktası | DistCp kullanıyorsanız Evet |
-| tempScriptPath | Geçici DistCp komut dosyasını depolamak için kullanılan bir klasör yolu. Komut dosyası, Data Factory tarafından oluşturulur ve kopyalama işi tamamlandıktan sonra kaldırılır. | DistCp kullanıyorsanız Evet |
-| distcpOptions | DistCp komutu için sağlanan ek seçenekler. | Hayır |
-| maxConcurrentConnections | Depolama deposu bağlanmayan bağlantılarının sayısı. Yalnızca veri deposuna eş zamanlı bağlantı sınırlandırmak istediğinizde bu seçeneği belirtin. | Hayır |
+| distcpSettings | , Bir özellik grubu. | Hayır |
+| resourceManagerEndpoint | Yarn Kaynak Yöneticisi uç noktası | DistCp kullanılıyorsa Evet |
+| tempScriptPath | Temp Dıtcp komut betiğini depolamak için kullanılan bir klasör yolu. Betik dosyası Data Factory tarafından oluşturulur ve kopyalama işi tamamlandıktan sonra kaldırılır. | DistCp kullanılıyorsa Evet |
+| distcpOptions | DistCp komutuna ek seçenekler sağlanmaktadır. | Hayır |
+| maxConcurrentConnections | Depolama deposuna aynı anda bağlanacak bağlantı sayısı. Yalnızca veri deposuyla eşzamanlı bağlantıyı sınırlandırmak istediğinizde belirtin. | Hayır |
 
-**Örnek: HDFS kaynak kopyalama etkinliğindeki DistCp kullanma**
+**Örnek: DistCp kullanarak kopyalama etkinliğinde bu kaynak**
 
 ```json
 "source": {
@@ -294,94 +303,94 @@ HDFS verileri kopyalamak için **ORC/Avro/JSON/ikili biçimi**, aşağıdaki öz
 }
 ```
 
-Verileri HDFS sonraki bölümünden verimli bir şekilde kopyalamak için DistCp kullanma konusunda daha fazla bilgi edinin.
+Bir sonraki bölümden, verileri, her yerden etkin bir şekilde kopyalamak için DistCp kullanma hakkında daha fazla bilgi edinin.
 
 ### <a name="folder-and-file-filter-examples"></a>Klasör ve dosya filtresi örnekleri
 
-Bu bölümde, sonuçta elde edilen davranışını klasör yolu ve dosya adı joker filtrelerle açıklanmaktadır.
+Bu bölümde, klasör yolu ve dosya adının joker karakter filtreleriyle elde edilen davranışı açıklanmaktadır.
 
-| folderPath | fileName             | recursive | Kaynak klasör yapısını ve filtre sonucunu (dosyalar **kalın** alınır) |
+| folderPath | fileName             | recursive | Kaynak klasör yapısı ve filtre sonucu ( **kalın** olan dosyalar alınır) |
 | :--------- | :------------------- | :-------- | :----------------------------------------------------------- |
-| `Folder*`  | (boş, varsayılan kullanın) | false     | Klasörüdür<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.JSON<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
-| `Folder*`  | (boş, varsayılan kullanın) | true      | Klasörüdür<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File4.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
-| `Folder*`  | `*.csv`              | false     | Klasörüdür<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.JSON<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
-| `Folder*`  | `*.csv`              | true      | Klasörüdür<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.JSON<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
+| `Folder*`  | (boş, Varsayılanı kullan) | false     | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**FILE1. csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Dosya2. JSON**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3. csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4. JSON<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6. csv |
+| `Folder*`  | (boş, Varsayılanı kullan) | true      | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**FILE1. csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Dosya2. JSON**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3. csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File4. JSON**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5. csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6. csv |
+| `Folder*`  | `*.csv`              | false     | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**FILE1. csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya2. JSON<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3. csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4. JSON<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6. csv |
+| `Folder*`  | `*.csv`              | true      | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**FILE1. csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya2. JSON<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3. csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4. JSON<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5. csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6. csv |
 
-## <a name="use-distcp-to-copy-data-from-hdfs"></a>HDFS veri kopyalamak için DistCp kullanma
+## <a name="use-distcp-to-copy-data-from-hdfs"></a>Sunucudan verileri kopyalamak için DistCp kullanma
 
-[DistCp](https://hadoop.apache.org/docs/current3/hadoop-distcp/DistCp.html) bir Hadoop kümesinde dağıtılmış kopyalamayı yapmak için bir Hadoop yerel komut satırı aracıdır. Distcp komutu çalıştırdığınızda, ilk kopyalanması, Hadoop kümesine birkaç harita işleri oluşturmak için tüm dosyaları listelenir ve her bir harita iş ikili kopyalama havuz kaynağından ne yapacağını.
+[Distcp](https://hadoop.apache.org/docs/current3/hadoop-distcp/DistCp.html) , Hadoop kümesinde dağıtılmış kopya yapmak Için bir Hadoop yerel komut satırı aracıdır. Distcp komutunu çalıştırdığınızda, ilk olarak kopyalanacak tüm dosyaları listeler, Hadoop kümesinde birkaç eşleme işi oluşturur ve her bir eşleme işi kaynaktan ikili kopyayı havuza dönüştürür.
 
-Kopyalama etkinliği destek dosyaları olarak kopyalamak için DistCp kullanma-Azure Blob içinde olduğu (dahil olmak üzere [kopyalama aşamalı](copy-activity-performance.md)) veya Azure Data Lake Store, bu durumda, tam olarak şirket içinde barındırılan Integration üzerinde çalıştırmak yerine kümenizin power yararlanabilir Çalışma zamanı. Özellikle, kümenizin çok güçlü ise daha iyi kopyalama aktarım hızı sağlar. Azure Data factory'de yapılandırmanıza bağlı olarak, kopyalama etkinliği otomatik olarak distcp komutu oluşturun, Hadoop kümenizi gönderin ve kopya durumunu izleyin.
+Dosyaları Azure Blob ( [hazırlanan kopya](copy-activity-performance.md)dahil) veya Azure Data Lake Store olarak kopyalamak Için distcp kullanarak etkinlik desteğini kopyalayın; Bu durumda, kendinden konak Integration Runtime çalıştırmak yerine kümenizin gücünden tamamen yararlanabilir. Özellikle kümeniz çok güçlü olduğunda daha iyi kopyalama performansı sağlar. Azure Data Factory yapılandırmanıza bağlı olarak, kopyalama etkinliği otomatik olarak bir distcp komutu oluşturun, Hadoop kümenize gönderebilirsiniz ve kopyalama durumunu izleyin.
 
 ### <a name="prerequisites"></a>Önkoşullar
 
-Kopyalamak için DistCp kullanma dosyaları olarak-olan HDFS (hazırlanmış kopya dahil) Azure Blob veya Azure Data Lake Store, Hadoop kümenizi gereksinimleri karşıladığından emin olun:
+Dosya kopyalamak için DistCp 'yi kullanarak (hazırlanan kopya dahil) veya Azure Data Lake Store, Hadoop kümenizin aşağıdaki gereksinimleri karşıladığından emin olun:
 
-1. MapReduce ve Yarn hizmetler etkinleştirilir.
-2. Yarn sürümüdür 2.5 veya üstü.
-3. HDFS sunucusuna, hedef veri deposu ile - Azure Blob veya Azure Data Lake Store tümleştirilir:
+1. MapReduce ve Yarn Hizmetleri etkinleştirilmiştir.
+2. Yarn sürümü 2,5 veya üzeri.
+3. Bu sunucu hedef veri deponuzda (Azure Blob veya Azure Data Lake Store) tümleşiktir:
 
-    - Azure Blob dosya sistemi, Hadoop 2.7 beri yerel olarak desteklenir. Yalnızca Hadoop env yapılandırmada jar yolunu belirtmeniz gerekir.
-    - Hadoop 3.0.0-alpha1 ' itibaren Azure Data Lake Store dosya sistemi ile paketlenmiştir. Hadoop kümenizi Bu sürümden daha düşükse, ilgili ADLS el ile almanız gerekir kümeden halinde paketler (azure-datalake-store.jar) jar [burada](https://hadoop.apache.org/releases.html)ve Hadoop env yapılandırmada jar yolunu belirtin.
+    - Azure Blob FileSystem, Hadoop 2,7 ' den bu yana yerel olarak desteklenir. Yalnızca Hadoop env config içinde jar yolunu belirtmeniz gerekir.
+    - Azure Data Lake Store dosya sistemi, Hadoop 3.0.0-Alpha1 'den başlayarak paketlenir. Hadoop kümeniz bu sürümden düşükse, ADLS ile ilgili jar paketlerini (Azure-datalake-Store. jar) [buradan](https://hadoop.apache.org/releases.html)kümeye el ile aktarmanız ve Hadoop env config içinde jar yolunu belirtmeniz gerekir.
 
-4. HDFS geçici bir klasörde hazırlayın. Bu geçici klasörü DistCp Kabuk betiği KB düzeyinde alanı kaplar şekilde depolamak için kullanılır.
-5. Emin olun, HDFS bağlı hizmette sağlanan kullanıcı hesabı için izne sahip bir); Yarn uygulama gönderme (b) bir alt klasör oluşturun, yukarıda geçici klasörü altındaki dosyaları okuma/yazma iznine sahip.
+4. Bir Temp klasörünü, "bir" de hazırlayın. Bu Temp klasörü, DistCp kabuğu betiğini depolamak için kullanılır, bu nedenle KB düzeyinde alan kaplar.
+5. Yarn 'da belirtilen kullanıcı hesabının, Yarn 'de uygulama gönderme izni olduğundan emin olun. b) alt klasör oluşturma, yukarıdaki Temp klasörü altında dosya okuma/yazma izinlerine sahiptir.
 
 ### <a name="configurations"></a>Yapılandırmaları
 
-DistCp bkz ilgili yapılandırmaları ve örneklerde [kaynağı olarak HDFS](#hdfs-as-source) bölümü.
+Bkz. TCP ile ilgili yapılandırma ve örneklere [kaynak](#hdfs-as-source) bölümünde.
 
-## <a name="use-kerberos-authentication-for-hdfs-connector"></a>HDFS Bağlayıcısı için Kerberos kimlik doğrulaması kullan
+## <a name="use-kerberos-authentication-for-hdfs-connector"></a>Bağlantı kimliği için Kerberos kimlik doğrulaması kullan
 
-HDFS bağlayıcısında Kerberos kimlik doğrulamasını kullanmak için şirket içi ortamı ayarlamak için iki seçenek vardır. Bir Olayınıza daha iyi uyduğunu seçebilirsiniz.
-* 1\. seçenek: [Şirket içinde barındırılan tümleştirme çalışma zamanı makine Kerberos bölgesinde katılın](#kerberos-join-realm)
-* 2\. seçenek: [Windows etki alanı ve Kerberos alanı arasında karşılıklı güven etkinleştir](#kerberos-mutual-trust)
+Bir şirket içi ortamı ayarlamak için, bu şekilde iki seçenek bulunur. Büyük/küçük harf durumuna göre daha iyi bir seçim yapabilirsiniz.
+* Seçenek 1: [Kendi kendine barındırılan Integration Runtime makinesini Kerberos bölgesi 'nde birleştirin](#kerberos-join-realm)
+* Seçenek 2: [Windows etki alanı ve Kerberos bölgesi arasında karşılıklı güveni etkinleştir](#kerberos-mutual-trust)
 
-### <a name="kerberos-join-realm"></a>1. seçenek: Şirket içinde barındırılan tümleştirme çalışma zamanı makine Kerberos bölgesinde katılın
+### <a name="kerberos-join-realm"></a>Seçenek 1: Kendi kendine barındırılan Integration Runtime makinesini Kerberos bölgesi 'nde birleştirin
 
 #### <a name="requirements"></a>Gereksinimler
 
-* Şirket içinde barındırılan tümleştirme çalışma zamanı makine Kerberos alanı katılmak gereken ve herhangi bir Windows etki alanına katılma işlemi gerçekleştirilemiyor.
+* Şirket içinde barındırılan Integration Runtime makinenin Kerberos bölgesine katılması ve herhangi bir Windows etki alanına katılamıyor olması gerekir.
 
 #### <a name="how-to-configure"></a>Yapılandırma
 
-**Şirket içinde barındırılan tümleştirme çalışma zamanı makinesinde:**
+**Şirket içinde barındırılan Integration Runtime makinesinde:**
 
-1.  Çalıştırma **Ksetup** Kerberos KDC sunucu ve bölgeyi yapılandırmak için yardımcı program.
+1.  Kerberos KDC sunucusunu ve bölgesini yapılandırmak için **Ksetup** yardımcı programını çalıştırın.
 
-    Kerberos alanı bir Windows etki alanından farklı olduğundan makine bir çalışma grubunun üyesi yapılandırılmalıdır. Bu, Kerberos alanı ayarlama ve şu şekilde bir KDC sunucu ekleyerek gerçekleştirilebilir. Değiştirin *REALM.COM* gerektiği gibi ilgili kendi bölge ile.
+    Kerberos bölgesi bir Windows etki alanından farklı olduğundan, makinenin bir çalışma grubunun üyesi olarak yapılandırılması gerekir. Bu, Kerberos bölgesi ayarlanarak ve bir KDC sunucusunu aşağıdaki gibi ekleyerek elde edilebilir. *Realm.com* değerini, gereken şekilde kendi ilgili bölge ile değiştirin.
 
             C:> Ksetup /setdomain REALM.COM
             C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
 
-    **Yeniden** 2 Bu komutları yürütmeden sonra makine.
+    Bu 2 komutu yürüttükten sonra makineyi **yeniden başlatın** .
 
-2.  Yapılandırmayı doğrulamak **Ksetup** komutu. Çıkış, gibi olmalıdır:
+2.  **Ksetup** komutuyla yapılandırmayı doğrulayın. Çıktının şöyle olması gerekir:
 
             C:> Ksetup
             default realm = REALM.COM (external)
             REALM.com:
                 kdc = <your_kdc_server_address>
 
-**Azure Data Factory'de:**
+**Azure Data Factory:**
 
-* HDFS bağlayıcısını kullanarak yapılandırma **Windows kimlik doğrulaması** Kerberos asıl adı ve HDFS veri kaynağına bağlanmak için parola. Denetleme [HDFS bağlı hizmeti özellikleri](#linked-service-properties) yapılandırma ayrıntıları bölümü.
+* Bir **Windows kimlik doğrulamasını** kullanarak, bu TBU veri kaynağına bağlanmak Için, Kerberos asıl adınız ve parolanızla birlikte, Yapılandırma ayrıntıları sayfasında, bu [bağlantı hizmeti özellikleri](#linked-service-properties) bölümüne bakın.
 
-### <a name="kerberos-mutual-trust"></a>2. seçenek: Windows etki alanı ve Kerberos alanı arasında karşılıklı güven etkinleştir
+### <a name="kerberos-mutual-trust"></a>Seçenek 2: Windows etki alanı ve Kerberos bölgesi arasında karşılıklı güveni etkinleştir
 
 #### <a name="requirements"></a>Gereksinimler
 
-*   Şirket içinde barındırılan tümleştirme çalışma zamanı bilgisayarın Windows etki alanına Katıl gerekir.
-*   Etki alanı denetleyicisinin ayarlarını güncelleştirmek için izne ihtiyacınız var.
+*   Şirket içinde barındırılan Integration Runtime makinenin bir Windows etki alanına katılması gerekir.
+*   Etki alanı denetleyicisinin ayarlarını güncelleştirmek için izninizin olması gerekir.
 
 #### <a name="how-to-configure"></a>Yapılandırma
 
 > [!NOTE]
-> REALM.COM ve AD.COM aşağıdaki öğreticide kendi ilgili bölge ve etki alanı denetleyicisi gerektiği gibi değiştirin.
+> Aşağıdaki öğreticide, REALM.COM ve AD.COM ' i kendi ilgili bölge ve etki alanı denetleyiciyle gerektiği şekilde değiştirin.
 
 **KDC sunucusunda:**
 
-1. KDC yapılandırmayı Düzenle **krb5.conf** KDC izin vermek için dosyanın Windows aşağıdaki yapılandırma şablonuna başvuran etki alanı güven. Varsayılan olarak, şu yapılandırma konumdadır **/etc/krb5.conf**.
+1. KDC güveni Windows etki alanının aşağıdaki yapılandırma şablonuna başvurmasına izin vermek için **krb5. conf** dosyasındaki KDC yapılandırmasını düzenleyin. Varsayılan olarak, yapılandırma **/etc/kronb5,conf**konumunda bulunur.
 
            [logging]
             default = FILE:/var/log/krb5libs.log
@@ -417,61 +426,61 @@ HDFS bağlayıcısında Kerberos kimlik doğrulamasını kullanmak için şirket
              REALM.COM = .
             }
 
-   **Yeniden** yapılandırma sonrasında KDC Hizmeti.
+   Yapılandırmadan sonra KDC hizmetini **yeniden başlatın** .
 
-2. Adlı bir asıl hazırlama **krbtgt/REALM.COM\@AD.COM** KDC sunucusunda aşağıdaki komutla:
+2. Aşağıdaki komutla, KDC sunucusunda **krbtgt/Realm.\@com ad.com** adlı bir sorumlu hazırlayın:
 
            Kadmin> addprinc krbtgt/REALM.COM@AD.COM
 
-3. İçinde **hadoop.security.auth_to_local** HDFS hizmet yapılandırma dosyasında, ekleme `RULE:[1:$1@$0](.*\@AD.COM)s/\@.*//`.
+3. **Hadoop. Security. auth_to_local** bir hizmet yapılandırma dosyasında, öğesini ekleyin `RULE:[1:$1@$0](.*\@AD.COM)s/\@.*//`.
 
 **Etki alanı denetleyicisinde:**
 
-1.  Aşağıdaki komutu çalıştırın **Ksetup** komutları bölge giriş eklemek için:
+1.  Bir bölge girişi eklemek için aşağıdaki **Ksetup** komutlarını çalıştırın:
 
             C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
             C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
 
-2.  Kerberos alanı için Windows etki alanı güven oluşturun. [parola] olan asıl parola **krbtgt/REALM.COM\@AD.COM**.
+2.  Windows etki alanından Kerberos bölgesine güven oluşturun. [password] sorumlu **krbtgt/Realm.\@com ad.com**için paroladır.
 
             C:> netdom trust REALM.COM /Domain: AD.COM /add /realm /passwordt:[password]
 
-3.  Kerberos kullanılan şifreleme algoritması seçin.
+3.  Kerberos 'da kullanılan şifreleme algoritmasını seçin.
 
-    1. Sunucu Yöneticisi'ne gidin > Grup İlkesi Yönetimi > etki alanı > Grup İlkesi nesneleri > Varsayılan veya etkin bir etki alanı ilkesi ve düzenleyin.
+    1. Sunucu Yöneticisi > grup ilkesi Yönetim > etki alanı > Grup İlkesi nesneleri > varsayılan veya etkin etki alanı Ilkesi ' ne gidin ve düzenleyin.
 
-    2. İçinde **Grup İlkesi Yönetimi Düzenleyicisi** açılan pencere, bilgisayar yapılandırması gidin > ilkeler > Windows Ayarları > Güvenlik Ayarları > yerel ilkeler > güvenlik seçeneklerini ve yapılandırma **ağ Güvenlik: Kerberos'ta izin verilen şifreleme türlerini yapılandır**.
+    2. **Grup İlkesi Yönetimi Düzenleyicisi** açılır penceresinde, Bilgisayar Yapılandırması > İlkeler > Windows ayarları > Güvenlik ayarları > Yerel ilkeler > Güvenlik seçenekleri ' ne gidin ve ağ güvenliğini yapılandırın **: Kerberos**Için izin verilen şifreleme türlerini yapılandırın.
 
-    3. Seçin, kullanmak istediğiniz şifreleme algoritması için KDC bağlanın. Genellikle, yalnızca tüm seçenekleri seçebilirsiniz.
+    3. KDC 'ye bağlanırken kullanmak istediğiniz şifreleme algoritmasını seçin. Genellikle, tüm seçenekleri seçmeniz yeterlidir.
 
-        ![Kerberos için şifreleme türlerini yapılandırma](media/connector-hdfs/config-encryption-types-for-kerberos.png)
+        ![Kerberos için yapılandırma şifreleme türleri](media/connector-hdfs/config-encryption-types-for-kerberos.png)
 
-    4. Kullanım **Ksetup** belirli bölge üzerinde kullanılacak şifreleme algoritmasını belirtmek için komutu.
+    4. Belirli bir bölgede kullanılacak şifreleme algoritmasını belirtmek için **Ksetup** komutunu kullanın.
 
                 C:> ksetup /SetEncTypeAttr REALM.COM DES-CBC-CRC DES-CBC-MD5 RC4-HMAC-MD5 AES128-CTS-HMAC-SHA1-96 AES256-CTS-HMAC-SHA1-96
 
-4.  Windows etki alanında Kerberos asıl kullanmak için etki alanı hesabını ve Kerberos asıl arasındaki eşleme oluşturun.
+4.  Windows etki alanında Kerberos sorumlusu kullanmak için etki alanı hesabı ve Kerberos sorumlusu arasındaki eşlemeyi oluşturun.
 
-    1. Yönetimsel Araçları başlatmak > **Active Directory Kullanıcıları ve Bilgisayarları**.
+    1. **Kullanıcı ve bilgisayar Active Directory**yönetim araçlarını > başlatın.
 
-    2. Tıklayarak Gelişmiş özellikleri yapılandırma **görünümü** > **Gelişmiş Özellikler**.
+    2. Gelişmiş özellikleri **görüntüle** > **Gelişmiş**özellikleri ' ne tıklayarak yapılandırın.
 
-    3. Hangi eşlemeleri oluşturmak istiyorsanız ve görüntülemek için sağ hesabını bulun **adı eşlemeleri** > tıklatın **Kerberos adları** sekmesi.
+    3. Eşleme oluşturmak istediğiniz hesabı bulun ve **ad eşlemelerini** görüntülemek için sağ tıklayın > **Kerberos adları** sekmesi ' ne tıklayın.
 
-    4. Sorumlu bölge ekleyin.
+    4. Realm 'tan bir sorumlu ekleyin.
 
-        ![Güvenlik kimliğine eşleyin](media/connector-hdfs/map-security-identity.png)
+        ![Eşleme güvenlik kimliği](media/connector-hdfs/map-security-identity.png)
 
-**Şirket içinde barındırılan tümleştirme çalışma zamanı makinesinde:**
+**Şirket içinde barındırılan Integration Runtime makinesinde:**
 
-* Aşağıdaki komutu çalıştırın **Ksetup** bölge giriş eklemek için komutları.
+* Bir bölge girişi eklemek için aşağıdaki **Ksetup** komutlarını çalıştırın.
 
             C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
             C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
 
-**Azure Data Factory'de:**
+**Azure Data Factory:**
 
-* HDFS bağlayıcısını kullanarak yapılandırma **Windows kimlik doğrulaması** etki alanı hesabı veya Kerberos asıl HDFS veri kaynağına bağlanmak için birlikte. Denetleme [HDFS bağlı hizmeti özellikleri](#linked-service-properties) yapılandırma ayrıntıları bölümü.
+* **Windows kimlik doğrulamasını** kullanarak, TBU veri kaynağına bağlanmak Için etki alanı hesabınızla veya Kerberos sorumlusuyla birlikte,, Yapılandırma ayrıntıları sayfasında, bu [bağlantı hizmeti özellikleri](#linked-service-properties) bölümüne bakın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

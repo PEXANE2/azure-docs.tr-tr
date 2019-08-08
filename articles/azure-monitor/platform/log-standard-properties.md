@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 07/18/2019
 ms.author: bwren
 ms.openlocfilehash: b9a4a0a18e120a2843e23d44b03c0fe53b0d84fc
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
+ms.lasthandoff: 08/08/2019
 ms.locfileid: "68370680"
 ---
 # <a name="standard-properties-in-azure-monitor-logs"></a>Azure Izleyici günlüklerinde standart özellikler
@@ -51,7 +51,7 @@ exceptions
 | sort by timestamp asc 
 ```
 
-## <a name="timereceived"></a>\_Timerecelmiş
+## <a name="_timereceived"></a>\_Timerecelmiş
 Timereceiıntıtıon özelliği, Azure bulutundaki Azure izleyici alma noktası tarafından kaydın alındığı tarih ve saati içerir.  **\_** Bu, veri kaynağı ve bulut arasındaki gecikme sorunlarını belirlemek için yararlı olabilir. Bir örnek, bir aracıdan alınan verilerle gecikmeye neden olan bir ağ sorunu olabilir. Daha fazla ayrıntı için bkz. [Azure izleyici 'de günlük verisi alma süresi](data-ingestion-time.md) .
 
 Aşağıdaki sorgu, bir aracıdan gelen olay kayıtları için saate göre ortalama gecikme süresini verir. Bu, aracıdan buluta kadar olan süreyi ve günlük sorguları için kullanılabilir kayıt için toplam süreyi içerir.
@@ -77,11 +77,11 @@ search *
 | summarize count() by Type
 
 ```
-## <a name="itemid"></a>\_ID
+## <a name="_itemid"></a>\_ID
 ItemId özelliği, kayıt için benzersiz bir tanımlayıcı tutar.  **\_**
 
 
-## <a name="resourceid"></a>\_RESOURCEID
+## <a name="_resourceid"></a>\_RESOURCEID
 RESOURCEID özelliği, kaydın ilişkilendirildiği kaynak için benzersiz bir tanımlayıcı tutar.  **\_** Bu, sorgunuzu yalnızca belirli bir kaynaktaki kayıtlarla birleştirmek veya ilgili verileri birden çok tablo genelinde birleştirmek için kullanabileceğiniz standart bir özellik sunar.
 
 Azure kaynakları için **_Resourceıd** değeri [Azure kaynak kimliği URL 'sidir](../../azure-resource-manager/resource-group-template-functions-resource.md). Özelliği şu anda Azure kaynaklarıyla sınırlıdır, ancak şirket içi bilgisayarlar gibi Azure dışındaki kaynaklara genişletilir.
@@ -127,8 +127,8 @@ union withsource = tt *
 
 Veri türlerindeki `union withsource = tt *` taramaların yürütülmesi pahalı olduğundan bu sorguları dikkatli bir şekilde kullanın.
 
-## <a name="isbillable"></a>\_Miktarbirimi
-Ifaturalanabilir özelliği, alınan verilerin faturalandırılabilir olup olmadığını belirtir.  **\_** **\_Ifaturalanabilir** değerine eşit olan veriler _ücretsiz olarak toplanır_ ve Azure hesabınıza faturalandırılmaz.
+## <a name="_isbillable"></a>\_Miktarbirimi
+Ifaturalanabilir özelliği, alınan verilerin faturalandırılabilir olup olmadığını belirtir.  **\_** **\_Ifaturalanabilir** değerine eşit olan veriler ücretsiz olarak toplanır ve Azure hesabınıza faturalandırılmaz.
 
 ### <a name="examples"></a>Örnekler
 Faturalanan veri türlerini gönderen bilgisayarların listesini almak için aşağıdaki sorguyu kullanın:
@@ -154,7 +154,7 @@ union withsource = tt *
 | summarize dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc
 ```
 
-## <a name="billedsize"></a>\_BilledSize
+## <a name="_billedsize"></a>\_BilledSize
 Billedsize özelliği,  **\_ısfaturalandırılabilir** değeri true ise Azure hesabınıza faturalandırılacak verilerin bayt cinsinden boyutunu belirtir.  **\_**
 
 

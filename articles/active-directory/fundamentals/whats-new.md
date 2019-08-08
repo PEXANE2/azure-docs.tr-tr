@@ -16,12 +16,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d25204e8842eb01ea626966de6c03ae81f41385
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 45a7477fa312a172579c6b4717e9f679ac253e1b
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717298"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68823821"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory'deki yenilikler nelerdir?
 
@@ -45,7 +45,7 @@ Bu sayfaya ay güncelleştirilir, böylece bunu düzenli olarak tekrar ziyaret. 
 
 **Türüyle** Değişiklik planı  
 **Hizmet kategorisi:** Uygulama Proxy'si  
-**Ürün yeteneği:** Access Control
+**Ürün yeteneği:** Erişim Denetimi
 
 En güçlü şifreimizi size sağlamaya yardımcı olmak için, uygulama proxy hizmeti erişimini yalnızca TLS 1,2 protokollerine sınırlandırmaya başlayacağız. Bu sınırlama, başlangıçta zaten TLS 1,2 protokollerini kullanan müşterilere dağıtılır, bu nedenle etkiyi görmezsiniz. TLS 1,0 ve TLS 1,1 protokollerinin kullanım dışı bırakılması, 31 Ağustos 2019 tarihinde tamamlanacaktır. Hala TLS 1,0 ve TLS 1,1 kullanan müşteriler, bu değişikliğe hazırlanmak için gelişmiş bir bildirim alır.
 
@@ -75,7 +75,7 @@ MFA sunucusu IP adresini [Office 365 IP adresi ve URL Web hizmetinden](https://d
 
 ---
 
-### <a name="app-only-tokens-now-require-the-resource-application-web-api-to-exist-in-the-resource-tenant"></a>Artık yalnızca uygulama belirteçleri, kaynak uygulamanın (Web API) kaynak kiracısında var olmasını gerektiriyor
+### <a name="app-only-tokens-now-require-the-client-app-to-exist-in-the-resource-tenant"></a>Yalnızca uygulama belirteçleri, artık istemci uygulamasının kaynak kiracısında var olmasını gerektiriyor
 
 **Türüyle** Sabit  
 **Hizmet kategorisi:** Kimlik Doğrulamaları (Oturum Açma İşlemleri)  
@@ -112,7 +112,7 @@ Daha fazla bilgi için bkz. yönetici ile ilgili bilgiler için [Azure AD 'de pa
 
 Haziran 2019 ' de, uygulama galerisine federasyon desteği olan bu 18 yeni uygulamayı ekledik:
 
-[Ungerboeck Software](https://docs.microsoft.com/azure/active-directory/saas-apps/ungerboeck-software-tutorial), [parlak model omnichannel Contact Center](https://docs.microsoft.com/azure/active-directory/saas-apps/bright-pattern-omnichannel-contact-center-tutorial), [Clever Nelly](https://docs.microsoft.com/azure/active-directory/saas-apps/clever-nelly-tutorial), [acquireıo](https://docs.microsoft.com/azure/active-directory/saas-apps/acquireio-tutorial), [Gevop](https://www.looop.co/schedule-a-demo/), [Productboard](https://docs.microsoft.com/azure/active-directory/saas-apps/productboard-tutorial), [MS Azure SSO erişimi, nııdex uyumluluk ofisi™](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on#password-based-sso), [hype](https://docs.microsoft.com/azure/active-directory/saas-apps/hype-tutorial), [ Abstract](https://docs.microsoft.com/azure/active-directory/saas-apps/abstract-tutorial), [ascentis](https://docs.microsoft.com/azure/active-directory/saas-apps/ascentis-tutorial), [flipsnack](https://www.flipsnack.com/accounts/sign-in-sso.html), [wandera](https://docs.microsoft.com/azure/active-directory/saas-apps/wandera-tutorial), [TwineSocial](https://stage.twinesocial.com/), [Kallifer](https://docs.microsoft.com/azure/active-directory/saas-apps/kallidus-tutorial), [hyperanna](https://docs.microsoft.com/azure/active-directory/saas-apps/hyperanna-tutorial), [ilaç, wastetanık](https://www.pharmid.com/), [i2B Connect](https://www.i2b-online.com/sign-up-to-use-i2b-connect-here-sso-access/), [JFrog Artifactory](https://docs.microsoft.com/azure/active-directory/saas-apps/jfrog-artifactory-tutorial)
+[Ungerboeck Software](https://docs.microsoft.com/azure/active-directory/saas-apps/ungerboeck-software-tutorial), [parlak model omnichannel Contact Center](https://docs.microsoft.com/azure/active-directory/saas-apps/bright-pattern-omnichannel-contact-center-tutorial), [Clever Nelly](https://docs.microsoft.com/azure/active-directory/saas-apps/clever-nelly-tutorial), [acquireıo](https://docs.microsoft.com/azure/active-directory/saas-apps/acquireio-tutorial), [Gevop](https://www.looop.co/schedule-a-demo/), [Productboard](https://docs.microsoft.com/azure/active-directory/saas-apps/productboard-tutorial), [MS Azure SSO erişimi, nııdex uyumluluk ofisi™](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on#password-based-sso), [hype](https://docs.microsoft.com/azure/active-directory/saas-apps/hype-tutorial), [ Abstract](https://docs.microsoft.com/azure/active-directory/saas-apps/abstract-tutorial), [ascentis](https://docs.microsoft.com/azure/active-directory/saas-apps/ascentis-tutorial), [flipsnack](https://www.flipsnack.com/accounts/sign-in-sso.html), [wandera](https://docs.microsoft.com/azure/active-directory/saas-apps/wandera-tutorial), [TwineSocial](https://twinesocial.com/), [Kallifer](https://docs.microsoft.com/azure/active-directory/saas-apps/kallidus-tutorial), [hyperanna](https://docs.microsoft.com/azure/active-directory/saas-apps/hyperanna-tutorial), [ilaç, wastetanık](https://www.pharmid.com/), [i2B Connect](https://www.i2b-online.com/sign-up-to-use-i2b-connect-here-sso-access/), [JFrog Artifactory](https://docs.microsoft.com/azure/active-directory/saas-apps/jfrog-artifactory-tutorial)
 
 Uygulamalar hakkında daha fazla bilgi için bkz. [Azure Active Directory ile SaaS uygulama tümleştirmesi](https://aka.ms/appstutorial). Azure AD uygulama galerisinde uygulamanızı listeleme hakkında daha fazla bilgi için bkz. [uygulamanızı Azure Active Directory Uygulama galerisinde listeleyin](https://aka.ms/azureadapprequest).
 
@@ -169,7 +169,7 @@ Daha fazla bilgi için bkz. [Azure AD Domain Services Için güvenlik denetimler
 ### <a name="new-authentication-methods-usage--insights-public-preview"></a>Yeni kimlik doğrulama yöntemleri kullanım & öngörüleri (Genel Önizleme)
 
 **Türüyle** Yeni özellik  
-**Hizmet kategorisi:** Self servis parola sıfırlama  
+**Hizmet kategorisi:** Self Servis Parola Sıfırlama  
 **Ürün yeteneği:** İzleme ve Raporlama
 
 Yeni kimlik doğrulama yöntemleri kullanım & öngörüleri raporları, Azure Multi-Factor Authentication ve self servis parola sıfırlama gibi özelliklerin kuruluşunuzda nasıl kaydedildiği ve kullanıldığı hakkında bilgi almanıza yardımcı olabilir; Örneğin, kayıtlı sayısı dahil her özelliğe yönelik kullanıcılar, parolaları sıfırlamak için self servis parola sıfırlamasının ne sıklıkta kullanıldığı ve hangi yöntemin sıfırlanacağı.
@@ -386,7 +386,7 @@ Daha fazla bilgi için bkz. [Azure Multi-Factor Authentication sunucusu ile çal
 
 **Türüyle** Değişiklik planı  
 **Hizmet kategorisi:** Uygulama Proxy'si  
-**Ürün yeteneği:** Access Control
+**Ürün yeteneği:** Erişim Denetimi
 
 Müşterilerimiz için en iyi sınıf şifrelemeyi sağlamaya yardımcı olmak için, yalnızca uygulama proxy 'Si hizmetindeki TLS 1,2 protokollerine erişimi sınırlıyoruz. Bu değişiklik, yalnızca TLS 1,2 protokollerini kullanan müşterilere yavaş bir şekilde dağıtılır, bu nedenle herhangi bir değişiklik göremezsiniz.
 
@@ -780,7 +780,7 @@ Daha fazla bilgi için bkz. [geri yükleme süre aşımına uğradı veya silinm
 
 **Türüyle** Yeni özellik  
 **Hizmet kategorisi:** Uygulama Proxy'si  
-**Ürün yeteneği:** Access Control
+**Ürün yeteneği:** Erişim Denetimi
 
 Artık şirket içi, SAML kimliği doğrulanmış uygulamalar için çoklu oturum açma (SSO) deneyimi ve uygulama proxy 'Si aracılığıyla bu uygulamalara uzaktan erişim sağlayabilirsiniz. Şirket içi uygulamalarınızla SAML SSO 'yu ayarlama hakkında daha fazla bilgi için bkz. [uygulama proxy 'si (Önizleme) ile şirket içi uygulamalar Için SAML çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-on-premises-apps).
 
@@ -856,7 +856,7 @@ Bu özellik hakkında daha fazla bilgi için bkz [. hızlı başlangıç: Azure 
 
 **Türüyle** Değişiklik planı  
 **Hizmet kategorisi:** Koşullu Erişim  
-**Ürün yeteneği:** Access Control
+**Ürün yeteneği:** Erişim Denetimi
 
 Exchange ActiveSync 'in (EAS) aşağıdaki koşulları nasıl değerlendirdiği hakkında güncelleştirme sürecimiz vardır:
 
@@ -872,7 +872,7 @@ Bu koşulları daha önce koşullu erişim ilkeleriniz üzerinde kullandıysanı
 
 ## <a name="february-2019"></a>Şubat 2019
 
-### <a name="configurable-azure-ad-saml-token-encryption-public-preview"></a>Yapılandırılabilir Azure AD SAML belirteci şifrelemesi (Genel Önizleme) 
+### <a name="configurable-azure-ad-saml-token-encryption-public-preview"></a>Yapılandırılabilir Azure AD SAML belirteci şifreleme (Genel önizleme) 
 
 **Türüyle** Yeni özellik  
 **Hizmet kategorisi:** Kurumsal Uygulamalar  
@@ -884,7 +884,7 @@ SAML belirteci şifrelemeyi yapılandırma hakkında daha fazla bilgi için bkz.
 
 ---
 
-### <a name="create-an-access-review-for-groups-or-apps-using-azure-ad-access-reviews"></a>Azure AD erişim gözden geçirmeleri kullanarak gruplar veya uygulamalar için erişim gözden geçirmesi oluşturma
+### <a name="create-an-access-review-for-groups-or-apps-using-azure-ad-access-reviews"></a>Azure AD Erişim Gözden Geçirmelerini kullanarak gruplar veya uygulamalar için erişim incelemesi oluşturma
 
 **Türüyle** Yeni özellik  
 **Hizmet kategorisi:** Erişim Gözden Geçirmeleri  
@@ -896,7 +896,7 @@ Azure AD erişim gözden geçirmeleri kullanarak erişim incelemesi oluşturma h
 
 ---
 
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---february-2019"></a>Azure AD uygulama galerisinde yeni Federasyon uygulamaları kullanılabilir-Şubat 2019
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---february-2019"></a>Azure AD uygulama galerisinde yeni Federasyon Uygulamaları kullanıma sunuldu - Şubat 2019
 
 **Türüyle** Yeni özellik  
 **Hizmet kategorisi:** Kurumsal Uygulamalar  
@@ -913,7 +913,7 @@ Uygulamalar hakkında daha fazla bilgi için bkz. [Azure Active Directory ile Sa
 ### <a name="enhanced-combined-mfasspr-registration"></a>Geliştirilmiş Birleşik MFA/SSPR kaydı
 
 **Türüyle** Değişen özellik  
-**Hizmet kategorisi:** Self servis parola sıfırlama  
+**Hizmet kategorisi:** Self Servis Parola Sıfırlama  
 **Ürün yeteneği:** Kullanıcı Kimlik Doğrulaması
 
 Müşteri geri bildirimlerine yanıt olarak, birleştirilmiş MFA/SSPR kayıt önizleme deneyimini geliştirdik. böylece kullanıcılarınız hem MFA hem de SSPR için güvenlik bilgilerini daha hızlı kaydetmeye yardımcı olur. 
@@ -938,7 +938,7 @@ Gelişmiş kayıt deneyimi hakkında daha fazla bilgi için bkz. [Azure AD BIRLE
 
 ---
 
-### <a name="updated-policy-management-experience-for-user-flows"></a>Kullanıcı akışları için ilke yönetimi deneyimi güncelleştirildi
+### <a name="updated-policy-management-experience-for-user-flows"></a>Kullanıcı akışları için güncelleştirilmiş ilke yönetimi deneyimi
 
 **Türüyle** Değişen özellik  
 **Hizmet kategorisi:** B2C - Tüketici Kimlik Yönetimi  
@@ -952,7 +952,7 @@ Yeni ilke yönetimi deneyimi hakkında daha fazla bilgi için, [şimdi Azure AD 
 
 ---
 
-### <a name="choose-specific-page-element-versions-provided-by-azure-ad-b2c"></a>Azure AD B2C tarafından sunulan belirli sayfa öğesi sürümlerini seçin
+### <a name="choose-specific-page-element-versions-provided-by-azure-ad-b2c"></a>Azure AD B2C tarafından sağlanan belirli sayfa öğesi sürümlerini seçme
 
 **Türüyle** Yeni özellik  
 **Hizmet kategorisi:** B2C - Tüketici Kimlik Yönetimi  
@@ -964,7 +964,7 @@ Sayfa öğelerinin belirli sürümlerini seçme hakkında daha fazla bilgi için
 
 ---
 
-### <a name="configurable-end-user-password-requirements-for-b2c-ga"></a>B2C için yapılandırılabilir Son Kullanıcı parolası gereksinimleri (GA)
+### <a name="configurable-end-user-password-requirements-for-b2c-ga"></a>B2C için yapılandırılabilir son kullanıcı parola gereksinimleri (GA)
 
 **Türüyle** Yeni özellik  
 **Hizmet kategorisi:** B2C - Tüketici Kimlik Yönetimi  
@@ -976,7 +976,7 @@ Parola karmaşıklığı gereksinim yapılandırması hakkında daha fazla bilgi
 
 ---
 
-### <a name="new-default-templates-for-custom-branded-authentication-experiences"></a>Özel markalı kimlik doğrulama deneyimleri için yeni varsayılan şablonlar
+### <a name="new-default-templates-for-custom-branded-authentication-experiences"></a>Özel markalı kimlik doğrulaması deneyimleri için yeni varsayılan şablonlar
 
 **Türüyle** Yeni özellik  
 **Hizmet kategorisi:** B2C - Tüketici Kimlik Yönetimi  

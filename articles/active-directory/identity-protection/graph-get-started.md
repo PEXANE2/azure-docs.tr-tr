@@ -11,20 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f939811bec312baa1f4c37f0f915d2e881121af
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 1640511c2f97865f5026f9f977ed0e4a9c03e338
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68334085"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774384"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Azure Active Directory Kimlik Koruması ve Microsoft Graph kullanmaya başlama
 
-Microsoft Graph, Microsoft Birleşik API uç noktası ve [Azure Active Directory kimlik koruması](../active-directory-identityprotection.md) API 'lerinin ana adresidir. Riskli kullanıcılar ve oturum açma bilgileri sunan üç API vardır. Birinci API, **ıdentityriskevents**, [risk olaylarının](../reports-monitoring/concept-risk-events.md) listesi ve ilgili bilgiler için Microsoft Graph sorgulamanızı sağlar. İkinci API, **Riskyusers**, risk halinde algılanan kullanıcılar kimlik koruması hakkında bilgi için Microsoft Graph sorgulamanızı sağlar. Üçüncü API, **oturum**açma, risk durumu, ayrıntı ve düzeyiyle ilgili belirli ÖZELLIKLERLE Azure AD oturum açma bilgileri için Microsoft Graph sorgulamanızı sağlar. Bu makale, Microsoft Graph bağlanma ve bu API 'Leri sorgulama ile çalışmaya başlamanızı sağlar. Ayrıntılı bir giriş, tam belgeler ve grafik Gezgini 'ne erişim için, bu API 'Ler için [Microsoft Graph sitesine](https://graph.microsoft.io/) veya belirli başvuru belgelerine bakın:
+Microsoft Graph, Microsoft Birleşik API uç noktası ve [Azure Active Directory kimlik koruması](../active-directory-identityprotection.md) API 'lerinin ana adresidir. Riskli kullanıcılar ve oturum açma bilgileri sunan dört API vardır. İlk API, **riskDetection**, hem Kullanıcı hem de oturum açma ile bağlantılı risk algılamaları ve algılamayla ilgili bilgiler için Microsoft Graph sorgulamanızı sağlar. İkinci API, **Riskyusers**, risk halinde algılanan kullanıcılar kimlik koruması hakkında bilgi için Microsoft Graph sorgulamanızı sağlar. Üçüncü API, **oturum**açma, risk durumu, ayrıntı ve düzeyiyle ilgili belirli ÖZELLIKLERLE Azure AD oturum açma bilgileri için Microsoft Graph sorgulamanızı sağlar. Dördüncü API, **ıdentityriskevents**, [risk olaylarının](../reports-monitoring/concept-risk-events.md) listesi ve ilgili bilgiler için Microsoft Graph sorgulamanızı sağlar. Bu makale, Microsoft Graph bağlanma ve bu API 'Leri sorgulama ile çalışmaya başlamanızı sağlar. Ayrıntılı bir giriş, tam belgeler ve grafik Gezgini 'ne erişim için, bu API 'Ler için [Microsoft Graph sitesine](https://graph.microsoft.io/) veya belirli başvuru belgelerine bakın:
 
-* [ıdentityriskevents API 'SI](https://docs.microsoft.com/graph/api/resources/identityriskevent?view=graph-rest-beta)
+* [riskDetection API 'SI](https://docs.microsoft.com/graph/api/resources/riskdetection?view=graph-rest-beta)
 * [riskyUsers API 'SI](https://docs.microsoft.com/graph/api/resources/riskyuser?view=graph-rest-beta)
 * [Oturum açma API 'SI](https://docs.microsoft.com/graph/api/resources/signin?view=graph-rest-beta)
+* [ıdentityriskevents API 'SI](https://docs.microsoft.com/graph/api/resources/identityriskevent?view=graph-rest-beta)
 
 ## <a name="connect-to-microsoft-graph"></a>Microsoft Graph 'a bağlanma
 
@@ -194,6 +195,14 @@ Yalnızca istemci KIMLIĞINIZI, gizli anahtarı ve kiracı etki alanını ekleyi
 ## <a name="query-the-apis"></a>API 'Leri sorgulama
 
 Bu üç API, kuruluşunuzdaki riskli kullanıcılar ve oturum açma bilgileri hakkında bilgi almak için çok sayıda fırsat sağlar. Aşağıda, bu API 'Ler ve ilişkili örnek istekler için bazı yaygın kullanım durumları verilmiştir. Bu sorguları yukarıdaki örnek kodu kullanarak veya [grafik Gezginini](https://developer.microsoft.com/graph/graph-explorer)kullanarak çalıştırabilirsiniz.
+
+### <a name="get-all-of-the-offline-risk-detections-riskdetection-api"></a>Tüm çevrimdışı risk algılamalarını al (riskDetection API)
+
+Kimlik koruması oturum açma risk ilkeleri sayesinde, risk gerçek zamanlı algılandığında koşullar uygulayabilirsiniz. Ancak çevrimdışı bulunan algılamalar (veya gerçek zamanlı olmayan) nelerdir? Hangi algılamaların çevrimdışı olduğunu anlamak ve bu nedenle oturum açma risk ilkesini tetiklemeyeceğini anlamak için riskDetection API 'sini sorgulayabilirsiniz.
+
+```
+GET https://graph.microsoft.com/beta/riskDetections?$filter=detectionTimingType eq 'offline'
+```
 
 ### <a name="get-the-high-risk-and-medium-risk-events-identityriskevents-api"></a>Yüksek riskli ve orta riskli etkinlikleri edinme (ıdentityriskevents API 'SI)
 

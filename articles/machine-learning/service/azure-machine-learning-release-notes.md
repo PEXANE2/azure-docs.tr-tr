@@ -10,18 +10,75 @@ ms.author: jmartens
 author: j-martens
 ms.date: 07/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: ade107f51fabb133e8e4046bf645f4dff284102b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ec913133ef97a632b12db2859bd4ac32df70a1c5
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565117"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828626"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure Machine Learning hizmeti sürüm notları
 
 Bu makalede, Azure Machine Learning hizmet sürümleri hakkında bilgi edinin.  Tam SDK başvuru içeriği için Azure Machine Learning [**Python başvurusu için ana SDK**](https://aka.ms/aml-sdk) sayfasına gidin.
 
 Bkz: [bilinen sorunların listesi](resource-known-issues.md) bilinen hataların ve geçici çözümleri hakkında bilgi edinmek için.
+
+## <a name="2019-08-05"></a>2019-08-05
+
+### <a name="azure-machine-learning-sdk-for-python-v1055"></a>Python v 1.0.55 için SDK Azure Machine Learning
+
++ **Yeni Özellikler**
+  + Belirteç tabanlı kimlik doğrulaması artık AKS üzerinde dağıtılan Puanlama uç noktasına yapılan çağrılar için desteklenir. Geçerli anahtar tabanlı kimlik doğrulamasını desteklemeye devam edeceğiz ve kullanıcılar aynı anda bu kimlik doğrulama mekanizmalarından birini kullanabilir.
+  + Sanal ağın (VNet) arkasındaki bir blob depolamayı bir veri deposu olarak kaydetme yeteneği.
+  
++ **Hata düzeltmeleri ve geliştirmeleri**
+  + **azureml-oto ml-çekirdek**
+    + CV bölme için doğrulama boyutunun küçük olduğu ve gerileme ve tahmin için gerçek grafik ile sonuçları elde eden bir hatayı düzeltir.
+    + Uzak çalışmalarla ilgili tahmin görevlerinin günlüğe kaydedilmesi, çalışma başarısız olursa, artık kullanıcı kapsamlı bir hata iletisiyle sunulmaktadır.
+    + Ön işleme bayrağı true ise timeseries 'in düzeltilen sorunları.
+    + Bazı tahmin verileri doğrulama hata iletileri daha fazla işlem yapılabilir.
+    + , Özellikle işlem kaynakları arasında yer aldığı veri kümelerinin düşürümine ve/veya geç yüklenmesine göre, oto 'nin azaltılmış bellek tüketimi
+  + **azureml-contrib-açıkla-model**
+    + Kullanıcının model türü için varsayılan otomatik çıkarım mantığını geçersiz kılmasına izin vermek için explainers 'e model_task bayrağı eklendi
+    + Pencere öğesi değişiklikleri: Yalnızca genel özellik önem derecesine sahip contrib, başka bir nbextension install/Enable-support açıklaması olmadan otomatik olarak yüklenir (örn. permütasyon)
+    + Pano değişiklikleri:-Box çizimleri ve keman çizimleri Özet sayfasındaki beessıcak çizimi, ' top-k ' kaydırıcısının çok daha hızlı bir şekilde rerendering, bu arada veriler sağlanmadı
+  + **azureml-çekirdek**
+    + Modelleri ve bunların bağımlılıklarını kapsülleyen Docker görüntüleri ve Dockerfiles oluşturmak için model. Package () yöntemi eklendi.
+    + Ortam nesneleri içeren ınenceconfigs 'leri kabul etmek için yerel WebServices güncelleştirildi.
+    + Sabit model. Register (), '. ' olduğunda geçersiz modeller üretmiyor (geçerli dizin için) model_path parametresi olarak geçirilir.
+    + Run. submit_child öğesini ekleyin, işlev, gönderilen alt öğenin üst öğesi olarak çalıştırmayı belirtirken denemeler. gönderim yansıtır.
+    + Modelden yapılandırma seçeneklerini destekler. Run. register_model içinde kaydolun.
+    + Mevcut kümede JAR işlerini çalıştırma özelliği.
+    + Artık instance_pool_id ve cluster_log_dbfs_path parametrelerini destekleme.
+    + Bir model bir Web WebService 'a dağıtıldığında bir ortam nesnesi kullanma desteği eklendi. Ortam nesnesi artık ınısenceconfig nesnesinin bir parçası olarak sağlanıyor olabilir.
+    + Yeni bölgeler için appınsıfht Mapping ekleme-tek merkezde ABD-westus-Kuzeydoğu ABD
+    + Tüm veri deposu sınıflarında tüm öznitelikler için belge eklendi.
+    + Blob_cache_timeout parametresi `Datastore.register_azure_blob_container`eklendi.
+    + Save_to_directory ve load_from_directory yöntemleri azureml. Core. Environment. Environment öğesine eklendi.
+    + CLı 'ya "az ml Environment Download" ve "az ml Environment Register" komutları eklendi.
+    + Ortam eklendi. _private_pip_wheel metodunu ekleyin.
+  + **azureml-açıkla-model**
+    + DataSet hizmeti (Önizleme) kullanılarak açıklamaları olan veri kümesi izleme eklendi.
+    + 10.000 'den 100 'e genel açıklamalar akışı yapılırken varsayılan toplu iş boyutu azalır.
+    + Kullanıcının model türü için varsayılan otomatik çıkarım mantığını geçersiz kılmasına izin vermek için explainers 'e model_task bayrağı eklendi.
+  + **azureml-mlflow**
+    + İç içe dizinler göz ardı edildiği mlflow. azureml. build_image öğesinde hata düzeltildi.
+  + **azureml-işlem hattı-adımlar**
+    + Mevcut Azure Databricks kümesinde JAR işlerini çalıştırma özelliği eklendi.
+    + DatabricksStep Step için support instance_pool_id ve cluster_log_dbfs_path Parameters eklendi.
+    + DatabricksStep adımında işlem hattı parametreleri için destek eklendi.
+  + **azureml-eğitme-oto ml**
+    + İlişkili dosyalar için docstrings eklendi.
+    + Belgeler, ve için `max_cores_per_iteration` daha uygun dile güncelleştirildi`max_concurrent_iterations`
+    + Uzak çalışmalarla ilgili tahmin görevlerinin günlüğe kaydedilmesi, çalışma başarısız olursa, artık kullanıcı kapsamlı bir hata iletisiyle sunulmaktadır.
+    + Get_Data, ardışık düzen AutoSize Not defterinden kaldırıldı.
+    + Oto mlstep 'te dataprep desteği başlatıldı.
+
+### <a name="azure-machine-learning-data-prep-sdk-v1110"></a>Azure Machine Learning Data Prep SDK v 1.1.10
+
++ **Yeni Özellikler**
+  + Artık belirli bir sütunda belirli Denetçiler (örn. histogram, dağılım çizimi vb.) yürütmeyi isteyebilirsiniz.
+  + İçin `append_columns`bir paralel hale getirmek bağımsız değişkeni eklendi. Doğru ise, veriler belleğe yüklenir ancak yürütme paralel olarak çalıştırılır; Yanlış ise, yürütme akış, ancak tek iş parçacıklı olur.
 
 ## <a name="2019-07-23"></a>2019-07-23
 
@@ -352,7 +409,7 @@ Azure portal, şimdi şunları yapabilirsiniz:
 ### <a name="notebook-virtual-machine"></a>Not defteri sanal makinesi 
 
 Machine Learning denemeleri 'i programtabileceğiniz, modelleri Web uç noktaları olarak dağıtmak ve Python kullanarak Azure Machine Learning SDK tarafından desteklenen tüm diğer işlemleri gerçekleştirmek için bir not defteri VM 'yi, Jupyter Not defterleri için güvenli, kurumsal kullanıma yönelik bir barındırma ortamı olarak kullanın. Çeşitli yetenekler sağlar:
-+ [](quickstart-run-cloud-notebook.md) Azure Machine Learning SDK ve ilgili paketlerin en son sürümüne sahip olan önceden yapılandırılmış bir not defteri VM 'sini hızlıca çalıştırın.
++ [](tutorial-1st-experiment-sdk-setup.md) Azure Machine Learning SDK ve ilgili paketlerin en son sürümüne sahip olan önceden yapılandırılmış bir not defteri VM 'sini hızlıca çalıştırın.
 + Erişim, HTTPS, Azure Active Directory kimlik doğrulaması ve yetkilendirme gibi kanıtlanmış teknolojiler aracılığıyla güvenli hale getirilir.
 + Azure Machine Learning Çalışma Alanı BLOB depolama hesabınızda Not defterlerinin ve kodun güvenilir bulut depolaması. Çalışmanızı kaybetmeden Not defteri sanal makinenizin güvenli bir şekilde silinmesini sağlayabilirsiniz.
 + Azure Machine Learning hizmeti özelliklerini incelemek ve denemek için önceden yüklenmiş örnek Not defterleri.

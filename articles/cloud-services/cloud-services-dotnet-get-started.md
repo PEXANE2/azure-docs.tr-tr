@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: gwallace
-ms.openlocfilehash: 802ece106099e8a475b83c820130c3c238d330d2
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 3f2c60be29d679d0b0d30b6bf471f083c66ba93f
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359218"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827663"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Azure Cloud Services ve ASP.NET kullanmaya başlama
 
@@ -514,7 +514,7 @@ var imagesQueue = queueClient.GetQueueReference("images");
 imagesQueue.CreateIfNotExists();
 ```
 
-### <a name="contosoadsweb---layoutcshtml"></a>ContosoAdsWeb - \_Layout.cshtml
+### <a name="contosoadsweb---_layoutcshtml"></a>ContosoAdsWeb - \_Layout.cshtml
 *_Layout.cshtml* dosyası üst bilgi ve alt bilgide uygulama adını ayarlar ve bir "Reklamlar" menü girişi oluşturur.
 
 ### <a name="contosoadsweb---viewshomeindexcshtml"></a>ContosoAdsWeb - Görünümler\Giriş\Dizin.cshtml
@@ -696,7 +696,7 @@ public override void Run()
 }
 ```
 
-Döngünün her yinelemesinden sonra herhangi bir kuyruk iletisi bulunmazsa program bir saniye için uyku moduna geçer. Bunun yapılması çalışan rolünün aşırı CPU süresi ve depolama işlem maliyetleri doğurmasını engeller. Microsoft Müşteri Danışma Ekibi bunu dahil etmeyi unutan, üretime dağıtan ve tatile giden bir geliştiricinin hikayesini anlatır. Geri döndüğünde gözetim maliyeti tatilin maliyetini aşmıştı.
+Döngünün her yinelemesinden sonra herhangi bir kuyruk iletisi bulunmazsa program bir saniye için uyku moduna geçer. Bunun yapılması çalışan rolünün aşırı CPU süresi ve depolama işlem maliyetleri doğurmasını engeller. Microsoft Müşteri Danışma Ekibi bunu dahil etmeyi unutan, üretime dağıtan ve tatile giden bir geliştiricinin hikayesini anlatır. Geri geldiğinde, daha fazla bakış maliyeti tatilden daha fazla.
 
 Bazı durumlarda bir kuyruk iletisinin içeriği işlemede hataya neden olur. Buna *zehir iletisi* adı verilir ve bir hatayı günlüğe kaydedip döngüyü yeniden başlatırsanız bu iletiyi sonu gelmez bir şekilde işlemeye çalışabilirsiniz.  Bu nedenle, yakalama bloğu uygulamanın geçerli iletiyi işlemeyi kaç kez denediğini denetleyen bir if deyimi içerir ve 5’ten fazla kez denediyse ileti kuyruktan silinir.
 

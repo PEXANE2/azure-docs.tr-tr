@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/24/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 514905bf2db1c0c58faa131eeb916af033b2c830
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 991fbe97582279fdeb996ddebe8e982c4adf3036
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640850"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827276"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Hyper-V VM 'lerinin Azure 'a değerlendirmesi ve geçirilmesi için hazırlanma
 
@@ -77,7 +77,7 @@ Buna dikkat edin:
 
 Kiracı/Genel yönetici, izinleri aşağıdaki gibi verebilir:
 
-1. Azure AD 'de, kiracı/genel yönetici **Azure Active Directory** >  ****  > Kullanıcı**Kullanıcı ayarları**' na gitmelidir.
+1. Azure AD 'de, kiracı/genel yönetici **Azure Active Directory** >  > Kullanıcı**Kullanıcı ayarları**' na gitmelidir.
 2. Yönetici **uygulama kayıtları** **Evet**olarak ayarlanmalıdır.
 
     ![Azure AD izinleri](./media/tutorial-prepare-hyper-v/aad.png)
@@ -143,7 +143,7 @@ Betiği aşağıdaki gibi çalıştırın:
     Karma | Value
     --- | ---
     **MD5 karması** | 0ef418f31915d01f896ac42a80dc414e
-    **SHA256 karması** | 0ef418f31915d01f896ac42a80dc414e0ad60e7299925eff4d1ae9f1c7db485dc9316ef45b0964148a3c07c80761ade2
+    **SHA256 karması** | 0ad60e7299925eff4d1ae9f1c7db485dc9316ef45b0964148a3c07c80761ade2
 
 
 4.  Betik bütünlüğünü doğruladıktan sonra, bu PowerShell komutuyla her Hyper-V konağında betiği çalıştırın:
@@ -194,7 +194,7 @@ Sonraki öğreticide Azure geçişi gerecini ve değerlendirmeyi ayarlamadan ön
 1. Gereç gereksinimlerini [doğrulayın](migrate-support-matrix-hyper-v.md#assessment-appliance-requirements) .
 2. Gerecin erişmesi gereken Azure URL 'Lerini [gözden geçirin](migrate-support-matrix-hyper-v.md#assessment-appliance-url-access) .
 3. Bulma ve değerlendirme sırasında gereç tarafından toplanacak verileri gözden geçirin.
-4. Gereç [için bağlantı noktası](migrate-support-matrix-hyper-v.md#assessment-port-requirements) erişim gereksinimleri.
+4. [](migrate-support-matrix-hyper-v.md#assessment-port-requirements) Gereç için bağlantı noktası erişim gereksinimleri.
 
 
 ### <a name="set-up-an-account-for-vm-discovery"></a>VM bulma için bir hesap ayarlama

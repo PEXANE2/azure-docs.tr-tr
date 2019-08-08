@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 45b28b4d88c670a8b2ec34b93a342f06b80e02d7
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
-ms.translationtype: MT
+ms.openlocfilehash: efe5829ffbe4db304f9ffab0a259ab9d10279b27
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668474"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68772700"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Azure Machine Learning için bir geliştirme ortamı yapılandırma
 
@@ -72,11 +72,11 @@ Not defteri VM 'si:
 
   Kodunuz varsa, sanal makine Azure Machine Learning hizmetini keşfetmenize ve nasıl kullanacağınızı öğrenmenize yardımcı olacak öğreticiler ve örnekler içerir. Örnek Not defterleri, çalışma alanınızın Azure Blob depolama hesabında depolanır ve bunları VM 'lerde paylaşılabilir hale getirir. Çalıştırıldığında, çalışma alanınızın veri depolarına ve işlem kaynaklarına erişimi de vardır.
 
-+ **Basit kurulum**: Azure Machine Learning çalışma alanınızın içinden dilediğiniz zaman oluşturun. Yalnızca bir ad girin ve Azure VM türünü belirtin. Şimdi bu [hızlı başlangıç ile deneyin: Azure Machine Learning](quickstart-run-cloud-notebook.md)kullanmaya başlamak için bulut tabanlı bir not defteri sunucusu kullanın.
++ **Basit kurulum**: Azure Machine Learning çalışma alanınızın içinden dilediğiniz zaman oluşturun. Yalnızca bir ad girin ve Azure VM türünü belirtin. Şimdi bu [öğreticiyi deneyin: Kurulum ortamı ve çalışma](tutorial-1st-experiment-sdk-setup.md)alanı.
 
 + **Özelleştirilebilir**. Yönetilen ve güvenli bir VM teklifi olsa da, donanım özelliklerine tam erişim sağlar ve bunu sizin için istediğiniz gibi özelleştirebilirsiniz. Örneğin, nolevel sinir ağ mimarisinin adım adım hata ayıklamasını gerçekleştirmek için en son NVIDIA V100 yönetimli VM 'yi hızlıca oluşturun.
 
-Not defteri VM 'si ücretlerini durdurmak için, [Not defteri VM 'yi durdurun](quickstart-run-cloud-notebook.md#stop-the-notebook-vm).
+Not defteri VM 'si ücretlerini durdurmak için, [Not defteri VM 'yi durdurun](tutorial-1st-experiment-sdk-setup.md#stop-the-notebook-vm). 
 
 ## <a id="dsvm"></a>Veri bilimi sanal makinesi
 

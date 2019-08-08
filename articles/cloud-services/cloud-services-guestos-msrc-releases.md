@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 7/26/2019
+ms.date: 8/2/2019
 ms.author: raiye
-ms.openlocfilehash: dd0adbe7cc27389e3b1d6533b038042824daea22
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 534a77ad29338ca1cdba22a3adeb8113521a6246
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68592434"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780085"
 ---
 # <a name="azure-guest-os"></a>Azure Konuk işletim sistemi
 Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güvenlik Yanıt Merkezi (MSRC) güncelleştirmeleri gösterilmektedir. Belirli bir güncelleştirmenin kullanmakta olduğunuz Konuk işletim sistemi için geçerli olup olmadığını öğrenmek için bu makaleye arama yapın. Güncelleştirmeler her zaman üzerinde tanıtılan belirli bir [Aile][family-explain] için ileri doğru şekilde devam ederler.
@@ -28,7 +28,6 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 | Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
 |  Rel 19-07   |  [4507434]  |  Internet Explorer   |  2,88, 3,75, 4,68  |  9 Temmuz 2019  |
-|  Rel 19-07   |  [4506621]  |  Windows güvenliği   |  2,88, 3,75, 4,68  |  9 Temmuz 2019  |
 |  Rel 19-07   |  [4506966]  |  .NET 4.5.2 güvenliği   |  2,88  |  9 Temmuz 2019  |
 |  Rel 19-07   |  [4506976]  |  .NET 3.5.1 güvenliği   |  2,88  |  9 Temmuz 2019  |
 |  Rel 19-07   |  [4507456]  |  Windows güvenliği   |  2,88  |  9 Temmuz 2019  |

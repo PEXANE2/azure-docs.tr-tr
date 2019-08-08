@@ -1,6 +1,6 @@
 ---
-title: Azure güvenlik ve uyumluluk planı - UK resmi iş yükleri için barındırma PaaS Web uygulaması
-description: Azure güvenlik ve uyumluluk planı - UK resmi iş yükleri için barındırma PaaS Web uygulaması
+title: UK RESMI Iş yükleri için Azure Güvenlik ve Uyumluluk Şeması PaaS Web uygulaması barındırma
+description: UK RESMI Iş yükleri için Azure Güvenlik ve Uyumluluk Şeması PaaS Web uygulaması barındırma
 services: security
 author: jomolesk
 ms.assetid: 446105ad-a863-44f5-a964-6ead1dac4787
@@ -8,246 +8,246 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: e3ee5a0aa22d1231dca7d02a77d39e0a2b569314
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 54bf4512785941ae1d09ae1436deefc032ec0037
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66753824"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780671"
 ---
-# <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure güvenlik ve uyumluluk planı: UK resmi iş yükleri için barındırma PaaS Web uygulaması
+# <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure Güvenliği ve Uyumluluğu Şeması: Birleşik Krallık RESMI Iş yükleri için PaaS Web uygulaması barındırma
 
 ## <a name="azure-security-and-compliance-blueprints"></a>Azure Güvenlik ve Uyumluluk Şemaları
 
-Azure bir Blueprint'i Kılavuzu belgeleri ve akreditasyon veya uyumluluk gereksinimlerine sahip senaryolar için çözümler sunmak için bulut tabanlı mimariler dağıtın Otomasyon şablonları oluşur. Azure şemaları, Microsoft Azure müşterilerine iş hedeflerine aracılığıyla herhangi bir gereksinimi karşılamak için genişletilmiş bir foundation mimarisi sağlama sürecini hızlandırmaya izni Kılavuzu ve Otomasyon şablonu koleksiyonlarıdır.
+Azure şemaları, acize veya uyumluluk gereksinimlerine sahip senaryolara çözüm sunmak için bulut tabanlı mimariler dağıtan rehberlik belgelerinden ve otomasyon şablonlarından oluşur. Azure şemaları, Microsoft Azure müşterilerin daha fazla gereksinimi karşılamak üzere genişletilebilen bir temel mimari sağlayarak iş hedeflerinin teslimini hızlandırmasına imkan tanıyan rehberlik ve otomasyon şablonu koleksiyonlarıdır.
 
 ## <a name="overview"></a>Genel Bakış
 
-Azure güvenlik ve uyumluluk planı sağlayan bir Microsoft Azure sunmak için rehberlik ve Otomasyon betikleri [(PaaS) hizmet olarak platform](https://azure.microsoft.com/overview/what-is-paas/) barındırılan sınıflandırılmış iş yüklerini işlemek için uygun web uygulaması mimarisi olarak [UK-OFFICIAL](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/715778/May-2018_Government-Security-Classifications-2.pdf). Bu güvenlik sınıflandırmasının oluşturulan veya Kamu sektörü tarafından işlenebilir bilgiler çoğunu kapsar. Bu yordamı işle ilgili işlemler ve hangi if kaybolur veya çalınırsa medya bazıları zararlı sonuçları olabilir, yayımlanan hizmetleri içerir. Tipik iş parçacığı profil resmi sınıflandırma için çok değerli bilgiler ve hizmetleri sağlayan özel bir iş aynıdır. UK resmi İngiltere veri ya da hizmetleri tehdit veya ile saldırganlar tarafından tehlikeye karşı korumak için gereken özellikleri ve kaynakları gibi sınırlanmış düşünmektedir (ancak bunlarla sınırlı değil) hactivists, single-issue baskısı grupları araştırma gazetecilerin, yetkin bireysel saldırganların ve çoğu cezai bireyler ve gruplar.
+Bu Azure Güvenlik ve Uyumluluk Şeması, UK RESMI olarak sınıflandırılan iş yüklerini işlemek için uygun Microsoft Azure bir [hizmet olarak platform (PaaS)](https://azure.microsoft.com/overview/what-is-paas/) barındırılan Web uygulaması mimarisi sunmak üzere rehberlik ve otomasyon betikleri sağlar [ ](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/715778/May-2018_Government-Security-Classifications-2.pdf). Bu güvenlik sınıflandırması, genel sektör tarafından oluşturulan veya işlenen bilgilerin çoğunu kapsar. Bu, bazıları zarar verebilecek, çalındığı veya medyada yayımlanmış olan rutin iş işlemlerini ve hizmetlerini içerir. RESMI sınıflandırma için tipik tehdit profili, değerli bilgiler ve hizmetler sağlayan özel bir işletme ile çok daha aynıdır. UK RESMI anticipates, UK kamu verileri veya hizmetleri ile saldırganlar tarafından, (ancak bunlarla sınırlı olmamak üzere), tek sorun basınç grupları, araştırma Journalists, bireysel saldırganlar ve kişilerin bireyleri ve gruplarının çoğunluğu.
 
-Bu plan, Birleşik Krallık Ulusal siber Güvenlik Merkezi (NCSC tarafından) Gözden geçirildi ve NCSC 14 bulut güvenliği prensipleri hizalar.
+Bu şema, UK National Cyber Güvenlik Merkezi (NCSC) tarafından incelendi ve NCSC 14 bulut güvenlik ilkelerine hizalanır.
 
-Mimaride, Azure [bir hizmet olarak platform](https://azure.microsoft.com/overview/what-is-paas/) gider ve satın yazılım lisanslarını, uygulama altyapının yönetme karmaşasından kaçınmak müşterilerin izin veren bir ortam sunmak için bileşenleri ve ara yazılım veya geliştirme araçları ve diğer kaynaklar. Müşteriyi yönetiyorsanız geliştirme, hizmetleri ve uygulamaları Microsoft Azure sanal makineler, depolama gibi diğer Azure kaynaklarını yöneten artırabileceksiniz Kurumsal değer sunmaya ve ağ, daha fazla yerleştirme odaklanarak [bölümü Sorumluluk](https://docs.microsoft.com/azure/security/security-paas-deployments#division-of-responsibility) için altyapı yönetimi, Azure platformu açın. [Azure uygulama hizmetleri](https://azure.microsoft.com/services/app-service/) otomatik ölçeklendirme, yüksek kullanılabilirlik sunar, Windows ve Linux'ı destekler ve GitHub, Azure DevOps ya da herhangi bir Git deposu varsayılan Hizmetleri olarak otomatik dağıtımlar sağlar. Uygulama hizmetleri kullanarak aracılığıyla geliştiricilerin altyapı yönetme yükü olmadan Kurumsal değer sunmaya odaklanabilirsiniz. Sıfırdan yeni Java, PHP, Node.js, Python, HTML veya C# web uygulamaları oluşturun veya var olan bir buluta geçirmek için olası veya şirket içi web uygulamaları için Azure uygulama Hizmetleri (kapsamlı rağmen dikkatli olmanızı ve test nedeniyle performans gerekli olup olmadığını onaylamak için).
+Mimaride, müşterilerin, temel uygulama altyapısını ve ara yazılımı yönetme ve BT 'nin yazılım lisansları satın alma masraflarından ve karmaşıklığına engel olmasını sağlayan bir ortam sunmak için [bir hizmet bileşeni olarak Azure platformu](https://azure.microsoft.com/overview/what-is-paas/) kullanılır. geliştirme araçları ve diğer kaynaklar. Müşteriler, geliştirdikleri uygulama ve Hizmetleri yönettiğinden, iş Microsoft Azure değeri sunmaya odaklanarak, sanal makineler, depolama ve ağ gibi diğer Azure kaynaklarını yönettiğinden [ ](https://docs.microsoft.com/azure/security/security-paas-deployments#division-of-responsibility)Azure platformunda altyapı yönetimi sorumluluğu. [Azure Uygulama Hizmetleri](https://azure.microsoft.com/services/app-service/) otomatik ölçeklendirme, yüksek kullanılabilirlik, Windows ve Linux 'u destekler ve GitHub, Azure DevOps veya herhangi bir git deposundan otomatik dağıtımları varsayılan hizmet olarak sağlar. Geliştiriciler, uygulama hizmetlerini kullanarak altyapıyı yönetme ek yükü olmadan iş değeri sunmaya yoğunlaşmasını sağlayabilir. Yeni Java, PHP, Node. js, Python, HTML veya C# Web uygulamaları oluşturmak veya var olan bulutu ya da şirket içi Web uygulamalarını Azure App Services 'a geçirmek (Ayrıca, performansı doğrulamak için kapsamlı ve test gerekli).
 
-Bu plan güvenli bir temel sağlama üzerinde odaklanır [bir hizmet olarak platform](https://azure.microsoft.com/overview/what-is-paas/) genel ve de arka ofis kullanıcıları için web tabanlı arabirim. Bu şema tasarım senaryosu burada genel bir kullanıcı güvenli bir şekilde gönderme, görüntüleyebilir ve hassas verileri yönetmek, Hizmetleri web tabanlı Azure kullanımını barındırılan olarak kabul eder; Ayrıca arka ofis veya kamu işleci ortak kullanıcı gönderdiği hassas verileri güvenli bir şekilde işleyebilir. Bu senaryo için kullanım örnekleri içerebilir:
+Bu şema, genel ve ayrıca arka ofis kullanıcıları için [bir hizmet](https://azure.microsoft.com/overview/what-is-paas/) Web tabanlı arabirim olarak güvenli bir Foundation platformunun sağlanmasına odaklanır. Bu şema tasarım senaryosunda, genel bir kullanıcının hassas verileri güvenli bir şekilde gönderebildiği, görüntüleyebileceği ve yönetebileceği Azure 'da barındırılan Web tabanlı hizmetlerin kullanımı göz önünde bulundurulmalıdır; Ayrıca, bir arka ofis veya kamu işlecinin, ortak kullanıcı tarafından gönderilen hassas verileri güvenli bir şekilde işlemesini sağlayabilirsiniz. Bu senaryo için kullanım örnekleri şunları içerebilir:
 
-- Bir kullanıcı bir vergi iadesi gönderim işleme kamu işleciyle gönderiliyor;
-- Web tabanlı bir uygulama üzerinden hizmeti doğrulanıyor ve hizmet sunmaya arka ofis kullanıcıyla isteyen bir kullanıcı; veya
-- Bir kullanıcı arama ve genel etki alanı görüntüleme kamu hizmeti ile ilgili bilgiler yardımcı olur.
+- Gönderimi işleyen bir kamu operatörü ile vergi dönüşü gönderen bir Kullanıcı;
+- Web tabanlı bir uygulama aracılığıyla hizmet isteyen, bir arka ofis kullanıcısı hizmeti doğrulayan ve teslim eden bir Kullanıcı; veya
+- Bir kamu hizmeti ile ilgili genel etki alanını arayan ve görüntüleyen Kullanıcı yardım bilgileri.
 
-Kullanarak [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) şema şablonları ve Azure komut satırı arabirimi betikleri, Birleşik Krallık Ulusal siber Güvenlik Merkezi (NCSC için) 14 uygun bir ortam dağıtır [bulut güvenliği prensipleri](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles) ve Internet güvenliği (CIS) için merkezi [kritik güvenlik denetimleri](https://www.cisecurity.org/critical-controls.cfm). Hizmeti güvenlik özelliklerini değerlendirmek ve Sorumluluk müşteri ve sağlayıcı arasında bölme anlamanıza yardımcı olmak için kendi bulut güvenliği prensipleri müşteriler tarafından kullanılabilir NCSC önerir. Microsoft sorumlulukları bölme daha iyi anlamanıza yardımcı olması için bu ilkelerin her biri karşı bilgiler sağlamıştır. Bu mimari, karşılık gelen Azure Resource Manager şablonları ve Microsoft teknik incelemeyi tarafından desteklenen [UK için 14 bulut güvenlik denetimleri kullanarak Microsoft Azure bulut](https://gallery.technet.microsoft.com/14-Cloud-Security-Controls-670292c1). Bu mimari, NCSC tarafından gözden geçirilir ve UK NCSC 14 bulut güvenlik Hızlı Gönderim yeteneklerini genel ve Birleşik Krallık'ta bir üzerinde bulut tabanlı hizmetler kullanarak uyumluluk yükümlülükler karşılamak Kamu sektörü kuruluşları bu nedenle Etkinleştirme ilkeleri ile uyumludur Microsoft Azure bulut. Bu şablon, iş yükü için altyapıyı dağıtır. Uygulama kodu ve iş katmanı ve veri katmanı yazılım destekleyen yüklenmeli ve müşteriler tarafından yapılandırılır. Ayrıntılı dağıtım yönergeleri [burada](https://aka.ms/ukofficial-paaswa-repo/).
+[Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) şablonları ve Azure komut satırı arabirim betikleri kullanılarak, şema, UK National Cyber Güvenlik Merkezi (NCSC) 14 [bulut güvenlik ilkelerine](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles) ve Internet merkezine göre hizalanan bir ortam dağıtır Güvenlik (CIS) [kritik güvenlik denetimleri](https://www.cisecurity.org/critical-controls.cfm). NCSC, müşteriler tarafından hizmetin güvenlik özelliklerini değerlendirmek ve müşteri ile tedarikçi arasındaki sorumluluk bölümünü anlamanıza yardımcı olmak için bulut güvenlik Ilkelerinin kullanılmasını önerir. Microsoft, sorumlulukların bölünmesini daha iyi anlamanıza yardımcı olması için bu ilkelerin her birine karşı bilgi sağlamıştır. Bu mimari ve karşılık gelen Azure Resource Manager şablonları, [Microsoft Azure kullanılarak Birleşik Krallık bulutu için 14 bulut güvenlik denetimleri](https://gallery.technet.microsoft.com/14-Cloud-Security-Controls-670292c1)Microsoft teknik incelemesi tarafından desteklenir. Bu mimari, NCSC tarafından incelendi ve UK NCSC 14 bulut güvenlik Ilkelerine göre hizalandığından, kamu sektörü kuruluşların, bulut tabanlı Hizmetleri kullanan uyumluluk yükümlülüklerini, genel olarak ve içindeki UK Microsoft Azure bulutu. Bu şablon, iş yükü için altyapıyı dağıtır. Uygulama kodu ve destekleyici iş katmanı ve veri katmanı yazılımlarının müşteriler tarafından yüklenip yapılandırılması gerekir. Ayrıntılı dağıtım yönergelerine [buradan](https://aka.ms/ukofficial-paaswa-repo/)ulaşabilirsiniz.
 
-Bu şema foundation mimaridir. Müşterilerimiz, bu şema resmi sınıflandırma web tabanlı iş yüklerini için temel olarak kullanın ve şablonları ve kaynakları kendi gereksinimler ile genişletin. Bu şema yapıları ilkeleri üzerinde [UK OFFICAL üç katmanlı Iaas Web uygulamaları blueprint](https://aka.ms/ukofficial-iaaswa) müşterilerimize hem sunmaya [altyapı (ıaas) olarak](https://azure.microsoft.com/overview/what-is-iaas/) ve PaaS uygulama seçenekleri Web tabanlı iş yüklerini barındırmak için.
+Bu şema bir temel mimaridir. Müşterilerimiz, bu şemayı RESMI sınıflandırma Web tabanlı iş yükleri için bir temel olarak kullanabilir ve şablonlar ve kaynakları kendi gereksinimlerine göre genişletebilir. Bu şema, Web tabanlı iş yüklerini barındırmak için müşterilerimize [hizmet olarak altyapı (IaaS)](https://azure.microsoft.com/overview/what-is-iaas/) ve PaaS uygulama seçenekleri sunmak üzere [UK-Offik üç katmanlı IaaS Web uygulamalarına](https://aka.ms/ukofficial-iaaswa) ilişkin ilkeler oluşturur.
 
-Bu şema dağıtmak için bir Azure aboneliği gereklidir. Azure aboneliğiniz yoksa, hızlı ve kolay bir şekilde ücretsiz olarak kaydolabilirsiniz: Azure'u kullanmaya başlayın. Tıklayın [burada](https://aka.ms/ukofficial-paaswa-repo/) dağıtım yönergeleri.
+Bu Blueprint 'i dağıtmak için bir Azure aboneliği gereklidir. Azure aboneliğiniz yoksa ücretsiz olarak hızlı ve kolay bir şekilde kaydolabilirsiniz: Azure 'ı kullanmaya başlayın. Dağıtım yönergeleri için [buraya](https://aka.ms/ukofficial-paaswa-repo/) tıklayın.
 
-## <a name="architecture-and-components"></a>Mimarisi ve bileşenleri
+## <a name="architecture-and-components"></a>Mimari ve bileşenler
 
-Bu şema barındırma çözümünüzü UK resmi iş yüklerini destekleyen bir Azure bulut ortamında bir web uygulaması sağlar. Mimari, bir hizmet özellikleri Azure platformundan yararlanır güvenli bir ortam sunar. Ortam içinde iki App Service web apps dağıtılan (genel kullanıcılar için bir) ve bir web ön ucu için iş hizmetleri sağlamak arka ofis kullanıcıları için bir API uygulaması katmanla var. Azure SQL veritabanı, uygulama için yönetilen ilişkisel bir veri deposu olarak dağıtılır. Bu bileşenlerden platformu dışında olan ve bu bileşenler arasındaki bağlantı, Azure Active Directory tarafından kimliği doğrulanmış erişim ile veri taşıma gizlilik emin olmak için TLS 1.2 ile şifrelenir.
+Bu şema, bir Azure bulut ortamında UK resmi iş yüklerini destekleyen bir Web uygulaması barındırma çözümü sağlar. Mimari, hizmet özelliği olarak Azure platformundan yararlanan güvenli bir ortam sunar. Ortamda, Web ön ucuna yönelik iş hizmetleri sağlamak için bir API uygulama katmanıyla birlikte iki App Service Web uygulaması dağıtılır (bir tane ortak kullanıcılar ve diğeri arka ofis kullanıcıları için). Azure SQL veritabanı, uygulama için yönetilen bir ilişkisel veri deposu olarak dağıtılır. Bu bileşenlere platformun dışından ve tüm bu bileşenler arasında bağlantı, Azure Active Directory tarafından kimliği doğrulanmış erişim ile aktarım gizliliğiyle ilgili verileri sağlamak için TLS 1,2 ile şifrelenir.
 
-![PaaS Web uygulama barındırma başvuru mimarisi diyagramı UK resmi iş yükleri için](images/ukofficial-paaswa-architecture.png?raw=true "PaaS Web uygulama barındırma başvuru mimarisi diyagramı UK resmi iş yükleri için")
+![Birleşik KRALLıK resmi Iş yükleri başvuru mimarisi diyagramı Için PaaS Web uygulaması barındırma](images/ukofficial-paaswa-architecture.png?raw=true "Birleşik KRALLıK resmi Iş yükleri başvuru mimarisi diyagramı Için PaaS Web uygulaması barındırma")
 
-Dağıtım mimarisi, güvenli depolama sağlama, izleme ve günlüğe kaydetme, Birleşik güvenlik yönetimi & Gelişmiş tehdit koruması ve Yönetimi kapsamında özellikleri de müşteriler için gereken tüm araçları olmasını sağlamak için dağıtılır güvenli ve bu çözümü kendi ortamlarından izleyin.
+Dağıtım mimarisi kapsamında, güvenli depolama sağlama, izleme & günlüğü, birleştirilmiş güvenlik yönetimi & Gelişmiş tehdit koruması ve yönetim özellikleri, müşterilerin için gereken tüm araçlara sahip olmasını sağlamak için de dağıtılır. Bu çözüm için ortamlarını güvenli hale getirin ve izleyin.
 
-Bu çözüm, aşağıdaki Azure hizmetlerini kullanır. Ayrıntılar için bkz dağıtım mimarisi [dağıtım mimarisi](#deployment-architecture) bölümü.
+Bu çözüm aşağıdaki Azure hizmetlerini kullanır. Dağıtım mimarisinin ayrıntıları [dağıtım mimarisi](#deployment-architecture) bölümünde bulunur.
 
 - Azure Active Directory
 - App Service
 - Web Uygulaması
-- API App
+- API Uygulaması
 - Azure DNS
 - Key Vault
-- Azure İzleyici (günlük)
+- Azure Izleyici (Günlükler)
 - Application Insights
 - Azure Resource Manager
 - Azure Güvenlik Merkezi
-- Azure SQL Veritabanı
+- Azure SQL Database
 - Azure Storage
 
 ## <a name="deployment-architecture"></a>Dağıtım mimarisi
 
-Aşağıdaki bölümde dağıtım ve uygulama öğeleri ayrıntılı olarak açıklanmaktadır.
+Aşağıdaki bölümde dağıtım ve uygulama öğelerinin ayrıntıları verilmiştir.
 
 ### <a name="security"></a>Güvenlik
 
-#### <a name="identity-and-authentication"></a>Kimlik ve kimlik doğrulaması
+#### <a name="identity-and-authentication"></a>Kimlik ve kimlik doğrulama
 
-Bu plan, kaynaklara erişimi dizin ve Kimlik Yönetimi Hizmetleri aracılığıyla korunmasını sağlar. Bu mimari tam olarak kullanmayı sağlar [kimlik güvenlik çevresi olarak](https://docs.microsoft.com/azure/security/security-paas-deployments). 
+Bu şema, kaynaklara erişimin dizin ve kimlik yönetimi hizmetleri aracılığıyla korunmasını sağlar. Bu mimari [, güvenlik çevresi olarak kimliğin](https://docs.microsoft.com/azure/security/security-paas-deployments)tam kullanımını sağlar. 
 
-Aşağıdaki teknolojileri kimlik yönetimi özellikleri Azure ortamında sağlar:
+Aşağıdaki teknolojiler Azure ortamında kimlik yönetimi özellikleri sağlar:
 
-- [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) Microsoft'un çok kiracılı bulut tabanlı dizin ve kimlik yönetimi hizmetidir. Çözüm için tüm kullanıcılar Azure Active SQL veritabanına erişen kullanıcılar dahil olmak üzere Directory'de oluşturuldu.
-- Azure AD kullanarak web uygulaması ve erişim yönetimini Azure kaynakları için yan yana işleci kimlik doğrulaması gerçekleştirilir. Daha fazla bilgi için [uygulamaları Azure Active Directory ile tümleştirme](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).
-- Veritabanı sütun şifreleme, Azure SQL veritabanı uygulamaya kimlik doğrulaması için Azure AD kullanır. Daha fazla bilgi için [Always Encrypted: SQL veritabanındaki hassas verileri korumaya](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault).
-- Web uygulaması karşılıklı Vatandaşlık genel erişim için yapılandırılır. Hesap oluşturma ve kimlik doğrulaması active directory aracılığıyla veya sosyal kimlik sağlayıcıları ağ için izin veren [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) gerekirse tümleştirilebilir.
-- [Azure Active Directory kimlik koruması](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) algılar olası güvenlik açıklarını ve riskli hesapları kuruluşunuzun kimliklerini güvenlik duruşunu geliştirmek için öneriler, otomatik yanıtları algılanan yapılandırır kuşkulu eylemleri için kuruluşunuzun kimliklerini, ilgili ve şüpheli olaylar araştırır ve bunları gidermek için uygun tedbiri alır.
-- [Azure rol tabanlı erişim denetimi (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) tam olarak Azure için odaklanmış erişim yönetimi sağlar. Abonelik erişimi için abonelik yöneticisine sınırlıdır ve anahtar yönetimi erişmesi gereken kullanıcılar için Azure anahtar kasası erişimi sınırlıdır.
-- Yararlanarak aracılığıyla [Azure Active Directory koşullu erişim](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) müşteriler, ek güvenlik denetimleri uygulamalara veya kullanıcılara ortamlarında konum, cihaz, durum ve oturum gibi belirli koşullara göre erişim zorunlu risk.
-- [Azure DDoS koruması](https://docs.microsoft.com/azure/security/security-paas-deployments#security-advantages-of-a-paas-cloud-service-model) uygulama tasarım en iyi yöntemleri ile birlikte, her zaman açık trafik izleme, DDoS saldırılarına ve gerçek zamanlı azaltma ortak ağ düzeyinde saldırı karşı koruma sağlar. PaaS mimarisi ile platform düzeyi DDoS koruması müşteriye saydam ve platform içine eklenen ancak uygulama güvenlik tasarım sorumluluk müşteriyle kaynaklandığını dikkat edin önemlidir.
+- [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) , Microsoft 'un çok kiracılı bulut tabanlı dizin ve kimlik yönetimi hizmetidir. Çözüme yönelik tüm kullanıcılar SQL veritabanına erişen kullanıcılar da dahil olmak üzere Azure Active Directory oluşturulmuştur.
+- Operatör 'e yönelik Web uygulamasına yönelik kimlik doğrulaması ve Azure kaynaklarının yönetimine yönelik erişim, Azure AD kullanılarak gerçekleştirilir. Daha fazla bilgi için bkz. [uygulamaları Azure Active Directory tümleştirme](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).
+- Veritabanı sütun şifrelemesi, Azure SQL veritabanı 'nda uygulamanın kimliğini doğrulamak için Azure AD 'yi kullanır. Daha fazla bilgi için bkz [. Always Encrypted: SQL veritabanında](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault)hassas verileri koruyun.
+- Vatandaşlık 'e yönelik Web uygulaması, genel erişim için yapılandırılmıştır. Active Directory veya sosyal ağ kimlik sağlayıcıları aracılığıyla hesap oluşturmaya ve kimlik doğrulamaya izin vermek için [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) gerekirse tümleştirilebilirler.
+- [Azure Active Directory kimlik koruması](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) , olası güvenlik açıklarını algılar ve riskli hesaplar, kuruluşunuzun kimliklerinin güvenlik duruşunu geliştirmeye yönelik öneriler sağlar, algılanan şüpheli için otomatikleştirilmiş yanıtları yapılandırır Kuruluşunuzun kimlikleriyle ilgili eylemler ve şüpheli olayları araştırır ve bunları çözmek için uygun işlemleri gerçekleştirir.
+- [Azure rol tabanlı Access Control (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) , Azure için tam olarak odaklanmış erişim yönetimine izin verebilir. Abonelik erişimi, abonelik yöneticisiyle sınırlıdır ve Azure Key Vault erişim yalnızca anahtar yönetimi erişimi gerektiren kullanıcılarla kısıtlıdır.
+- [Azure Active Directory Koşullu erişim](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) müşterileri sayesinde, konum, cihaz, durum ve oturum açma riski gibi belirli koşullara bağlı olarak, ortamınızdaki uygulamalara veya kullanıcılara erişim üzerinde ek güvenlik denetimleri uygulayabilir.
+- Uygulama tasarımı en iyi uygulamalarıyla birleştirilmiş [Azure DDoS koruması](https://docs.microsoft.com/azure/security/security-paas-deployments#security-advantages-of-a-paas-cloud-service-model) , DDoS saldırılarına karşı, her zaman açık trafik izlemeyle ve ortak ağ düzeyi saldırılarına karşı gerçek zamanlı Azaltmaların savunması sağlar. PaaS mimarisi sayesinde platform düzeyi DDoS koruması, müşteriye saydamdır ve platforma eklenir, ancak uygulama güvenlik tasarımı sorumluluğunun müşteriyle yer aldığı unutulmamalıdır.
 
 #### <a name="data-in-transit"></a>Aktarım durumundaki veriler
 
-Veriler aktarım sırasında dışında ve Azure bileşenleri arasında kullanılarak korunan [Aktarım Katmanı Güvenliği/Güvenli Yuva Katmanı (TLS/SSL)](https://www.microsoft.com/TrustCenter/Security/Encryption), olarak iletişimleri şifrelemek için simetrik şifreleme paylaşılan bir parolaya dayanan kullanır ağ üzerinden yolculuk ediyor. Varsayılan olarak, TLS 1.2 kullanarak ağ trafiği güvenlik altına alınır.
+Veriler dışarıdan ve Azure bileşenleri arasında geçiş, ağ üzerinden seyahat ederken iletişimleri şifrelemek için paylaşılan bir gizliliğe dayalı simetrik şifreleme kullanan [Aktarım Katmanı Güvenliği/Güvenli Yuva Katmanı (TLS/SSL)](https://www.microsoft.com/TrustCenter/Security/Encryption)kullanılarak korunur. Varsayılan olarak, ağ trafiği TLS 1,2 kullanılarak güvenli hale getirilir.
 
 #### <a name="security-and-malware-protection"></a>Güvenlik ve kötü amaçlı yazılımdan koruma
 
-[Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/) tüm Azure kaynaklarınızın güvenlik durumunu merkezi bir görünümünü sağlar. Bir bakışta, uygun güvenlik denetimlerinin uygulandığını ve doğru bir şekilde yapılandırıldığını ve ilgilenmenizi gerektiren tüm kaynakları hızla tanımlayın doğrulayabilirsiniz.
+[Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/) , tüm Azure kaynaklarınızın güvenlik durumuna ilişkin merkezi bir görünüm sağlar. Bir bakışta, uygun güvenlik denetimlerinin yerinde olduğunu ve doğru şekilde yapılandırıldığını doğrulayabilirsiniz ve dikkat gerektiren kaynakları hızlıca belirleyebilirsiniz.
 
-[Azure Danışmanı](https://docs.microsoft.com/azure/advisor/advisor-overview) olan yardımcı olan kişiselleştirilmiş bulut Danışmanı, Azure dağıtımlarınızın iyileştirilmesine yönelik en iyi uygulamaları izleyin. Danışman, kaynak yapılandırmanızı ve kullanım telemetrinizi analiz ederek Azure kaynaklarınızın maliyet verimliliğini, performansını, yüksek kullanılabilirliğini ve güvenliğini geliştirmenize yardımcı olabilecek çözümler önerir.
+[Azure Danışmanı](https://docs.microsoft.com/azure/advisor/advisor-overview) , Azure dağıtımlarınızı iyileştirmek için en iyi yöntemleri izlemenize yardımcı olan kişiselleştirilmiş bir bulut danışmanıdır. Danışman, kaynak yapılandırmanızı ve kullanım telemetrinizi analiz ederek Azure kaynaklarınızın maliyet verimliliğini, performansını, yüksek kullanılabilirliğini ve güvenliğini geliştirmenize yardımcı olabilecek çözümler önerir.
 
-[Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) belirlenmesi ve virüslerin, casus yazılımların ve diğer kötü amaçlı yazılım kaldırılmasına yardımcı olan bir gerçek zamanlı koruma özelliğidir. Bu varsayılan olarak, temel alınan PaaS sanal makine altyapısı üzerinde yüklü ve şeffaf bir şekilde müşteriye Azure fabric tarafından yönetilir.
+[Microsoft Antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware) , virüslerin, casus yazılımların ve diğer kötü amaçlı yazılımların tanımlanmasına ve kaldırılmasına yardımcı olan gerçek zamanlı bir koruma özelliğidir. Bu, varsayılan olarak temel PaaS sanal makine altyapısına yüklenir ve Azure yapısı tarafından, müşteriler tarafından saydam olarak yönetilir.
 
-### <a name="paas-services-in-this-blueprint"></a>Bu şema PaaS Hizmetleri
+### <a name="paas-services-in-this-blueprint"></a>Bu şema içinde PaaS hizmetleri
 
 #### <a name="azure-app-service"></a>Azure uygulama hizmeti
 
-Azure App Service barındırma ortamı geliştirilen Java, PHP, Node.js, Python, HTML web uygulaması için tam olarak yönetilen bir web sağlar ve C# altyapıyı yönetmek zorunda kalmadan. Otomatik ölçeklendirme sunar ve yüksek kullanılabilirlik, hem Windows hem de Linux destekler ve otomatik dağıtımlar sağlar [Azure DevOps](https://azure.microsoft.com/services/visual-studio-team-services/) veya herhangi bir Git tabanlı deposundan.
+Azure App Service, Java, PHP, Node. js Python, HTML ve C# altyapıyı yönetmek zorunda kalmadan Web uygulaması için tam olarak yönetilen bir Web barındırma ortamı sağlar. Otomatik ölçeklendirme ve yüksek kullanılabilirlik sunar, hem Windows hem de Linux destekler ve [Azure DevOps](https://azure.microsoft.com/services/visual-studio-team-services/) veya git tabanlı depolardan otomatik dağıtımlar sağlar.
 
-App Service, [ISO, SOC ve PCI uyumlu](https://www.microsoft.com/TrustCenter/) ve ile kullanıcıların kimliklerini doğrulayabilirsiniz [Azure Active Directory](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad) veya sosyal oturum açma ([Google](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-google), [Facebook](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-facebook), [Twitter](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-twitter), ve [Microsoft kimlik doğrulama](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-microsoft).
+App Service [ISO, SOC ve PCI uyumludur](https://www.microsoft.com/TrustCenter/) ve [Azure Active Directory](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad) veya sosyal oturum açma ([Google](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-google), [Facebook](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-facebook), [Twitter](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-twitter)ve [Microsoft kimlik doğrulaması](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-microsoft)) ile kullanıcıların kimliğini doğrulayabilir.
 
-Temel, standart ve Premium planlar, üretim iş yüklerine yöneliktir ve adanmış sanal makine örneklerinde çalıştırılır. Her örnek, birden çok uygulama ve etki alanlarını destekleyebilir. Uygulama Hizmetleri ayrıca Destek [IP adresi sınırlamaları](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions) gerekirse güvenilen IP adreslerine trafiği güvenli hale getirmek için ve ayrıca [kimliklerini Azure kaynakları için yönetilen](https://docs.microsoft.com/azure/app-service/overview-managed-identity) güvenli bağlantı için diğer PaaS Hizmetleri gibi [anahtar kasası](https://azure.microsoft.com/services/key-vault/) ve [Azure SQL veritabanı](https://azure.microsoft.com/services/sql-database/). Ek güvenlik gerekli olduğu yalıtılmış planımız, uygulamaları özel, adanmış bir Azure ortamında barındırır ve şirket içi ağa veya ek performans ve ölçek ile güvenli bağlantılar gerektiren uygulamalar için idealdir.
+Temel, standart ve Premium planlar, üretim iş yüklerine yöneliktir ve adanmış sanal makine örneklerinde çalıştırılır. Her örnek, birden çok uygulamayı ve etki alanını destekleyebilir. Uygulama Hizmetleri ayrıca, [Key Vault](https://azure.microsoft.com/services/key-vault/) ve Azure SQL gibi diğer PaaS hizmetlerine güvenli bağlantı sağlamak üzere [Azure kaynakları](https://docs.microsoft.com/azure/app-service/overview-managed-identity) için gerektiğinde ve ayrıca yönetilen kimliklerden gelen trafiğin güvenliğini sağlamak için [IP adresi kısıtlamalarını](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions) destekler [ Veritabanı](https://azure.microsoft.com/services/sql-database/). Yalıtılmış planımız için ek güvenlik gerektiğinde uygulamalarınızın özel ve adanmış bir Azure ortamında barındırdığı ve şirket içi ağınızla güvenli bağlantılar gerektiren uygulamalar için ideal olması veya ek performans ve ölçek olması gerekir.
 
-Bu şablon, aşağıdaki App Service özellikleri dağıtır:
+Bu şablon aşağıdaki App Service özelliklerini dağıtır:
 
-- [Standart](https://docs.microsoft.com/azure/app-service/overview-hosting-plans) App Service planı katmanı
-- Birden fazla App Service [dağıtım yuvalarını](https://docs.microsoft.com/azure/app-service/deploy-staging-slots): Geliştirme, Önizleme, QA, UAT ve Elbette üretim (varsayılan yuva).
-- [Kimlikler Azure kaynakları için yönetilen](https://docs.microsoft.com/azure/app-service/overview-managed-identity) bağlanmak için [Azure anahtar kasası](https://azure.microsoft.com/services/key-vault/) (Bu erişimi sağlamak için de kullanılabilir [Azure SQL veritabanı](https://azure.microsoft.com/services/sql-database/) 
-- İle tümleştirme [Azure Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-azure-web-apps) performansını izlemek için
+- [Standart](https://docs.microsoft.com/azure/app-service/overview-hosting-plans) Plan katmanını App Service
+- Birden çok App Service [dağıtım yuvası](https://docs.microsoft.com/azure/app-service/deploy-staging-slots): Geliştirme, önizleme, QA, UAT ve kurs üretimi (varsayılan yuva).
+- [Azure kaynakları Için Yönetilen kimlikler](https://docs.microsoft.com/azure/app-service/overview-managed-identity) [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) bağlanır (Bu ayrıca [Azure SQL veritabanı](https://azure.microsoft.com/services/sql-database/) 'na erişim sağlamak için de kullanılabilir) 
+- Performansı izlemek için [Azure Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-azure-web-apps) tümleştirme
 - [Tanılama Günlükleri](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) 
 - Ölçüm [uyarıları](https://docs.microsoft.com/azure/application-insights/app-insights-alerts) 
 - [Azure API Apps](https://azure.microsoft.com/services/app-service/api/) 
 
-#### <a name="azure-sql-database"></a>Azure SQL Veritabanı
+#### <a name="azure-sql-database"></a>Azure SQL Database
 
-SQL Veritabanı, Microsoft Azure'da yer alan ve ilişkisel veri, JSON, uzamsal ve XML gibi yapıları destekleyen çok amaçlı ilişkisel veritabanı yönetilen hizmetidir. SQL veritabanı teklifler yönetilen tek SQL veritabanları, içinde yönetilen SQL veritabanları bir [elastik havuz](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool)ve SQL [yönetilen örnekler](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) (genel önizlemede). [Dinamik olarak ölçeklenebilir performans](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers) sunan bu hizmet çok büyük ölçekli analitik analiz ve raporlama için [columnstore dizinleri](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) gibi seçenekler, raporlama ve çok büyük ölçekli işlemler için [bellek içi OLTP](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory) özelliklerine sahiptir. Microsoft, SQL kod tabanıyla ilgili tüm düzeltme ve güncelleştirme işlerini sorunsuz olarak yaparak altyapı yönetimini tamamen soyutlar.
+SQL Veritabanı, Microsoft Azure'da yer alan ve ilişkisel veri, JSON, uzamsal ve XML gibi yapıları destekleyen çok amaçlı ilişkisel veritabanı yönetilen hizmetidir. SQL veritabanı, yönetilen tek SQL veritabanları, bir [elastik havuzda](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool)yönetilen SQL VERITABANLARı ve SQL [yönetilen örnekler](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) (genel önizlemede) sağlar. [Dinamik olarak ölçeklenebilir performans](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers) sunan bu hizmet çok büyük ölçekli analitik analiz ve raporlama için [columnstore dizinleri](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) gibi seçenekler, raporlama ve çok büyük ölçekli işlemler için [bellek içi OLTP](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory) özelliklerine sahiptir. Microsoft, SQL kod tabanıyla ilgili tüm düzeltme ve güncelleştirme işlerini sorunsuz olarak yaparak altyapı yönetimini tamamen soyutlar.
 
-Azure SQL veritabanı'nda bu şema
+Bu şema içindeki Azure SQL veritabanı
 
 Azure SQL veritabanı örneği aşağıdaki veritabanı güvenlik önlemlerini kullanır:
 
-- [Sunucu düzeyinde ve veritabanı düzeyinde güvenlik duvarı kuralları](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure), aracılığıyla veya [sanal ağ hizmet uç noktaları](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) kullanarak [sanal ağ kuralları](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview).
-- [Saydam veri şifrelemesi](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) yardımcı olur, kötü amaçlı etkinlik tehdide karşı Azure SQL veritabanı ve Azure veri ambarı koruyun. Bu gerçek zamanlı şifreleme ve şifre çözme veritabanını, ilişkili yedeklemeler ve işlem günlük dosyaları bekleme sırasında uygulamada değişiklik gerektirmeden gerçekleştirir.
-- [Azure AD kimlik doğrulaması](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication), veritabanı kullanıcıları ve tek bir merkezi konumda diğer Microsoft Hizmetleri kimliklerini merkezi olarak yönetebilir. Merkezi kimlik yönetimi, veritabanı kullanıcıları yönetmek için tek bir yerde sağlar ve izin yönetimini kolaylaştırır.
-- Veritabanı yönetimi için Azure Active Directory kullanın
-- [Denetim günlükleri](https://docs.microsoft.com/azure/sql-database/sql-database-auditing) depolama hesaplarına
-- Ölçüm [uyarılar](https://docs.microsoft.com/azure/application-insights/app-insights-alerts) için DB bağlantıları başarısız oldu
+- [Sanal ağ kuralları](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)kullanılarak [sunucu düzeyinde ve veritabanı düzeyinde güvenlik duvarı kuralları](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)veya [sanal ağ hizmet uç noktaları](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) aracılığıyla.
+- [Saydam veri şifrelemesi](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) , Azure SQL veritabanı ve Azure veri ambarını kötü amaçlı etkinlik tehditlerine karşı korumanıza yardımcı olur. Uygulamada değişiklik gerektirmeden, bekleyen veritabanı, ilişkili yedeklemeler ve işlem günlüğü dosyaları için gerçek zamanlı şifreleme ve şifre çözme işlemleri gerçekleştirir.
+- [Azure AD kimlik doğrulaması](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication), veritabanı kullanıcılarının ve diğer Microsoft hizmetlerinin kimliklerini tek bir merkezi konumda merkezi olarak yönetebilirsiniz. Merkezi KIMLIK yönetimi, veritabanı kullanıcılarını yönetmek ve izin yönetimini basitleştireceğinizi sağlayan tek bir yer sağlar.
+- Veritabanı yönetimi için Azure Active Directory kullanımı
+- [Günlükleri](https://docs.microsoft.com/azure/sql-database/sql-database-auditing) depolama hesaplarına denetleme
+- Başarısız VERITABANı bağlantıları için ölçüm [uyarıları](https://docs.microsoft.com/azure/application-insights/app-insights-alerts)
 - [SQL tehdit algılama](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection)
-- [Her zaman şifrelenmiş sütunlar](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault)
+- [Always Encrypted sütunları](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault)
 
 ### <a name="azure-storage"></a>Azure Storage
 
-Microsoft [Azure depolama](https://azure.microsoft.com/services/storage/) yüksek oranda kullanılabilir, güvenli, dayanıklı, ölçeklenebilir ve yedekli depolama sağlayan bir Microsoft tarafından yönetilen bir bulut hizmetidir. Azure Depolama; Blob depolama, Dosya Depolama ve Kuyruk depolama hizmetlerinden oluşur.
+Microsoft [Azure depolama](https://azure.microsoft.com/services/storage/) , yüksek oranda kullanılabilir, güvenli, dayanıklı, ölçeklenebilir ve yedekli depolama sağlayan, Microsoft tarafından yönetilen bir bulut hizmetidir. Azure Depolama; Blob depolama, Dosya Depolama ve Kuyruk depolama hizmetlerinden oluşur.
 
-#### <a name="azure-storage-in-this-blueprint"></a>Azure depolama alanında bu şema
+#### <a name="azure-storage-in-this-blueprint"></a>Bu şema içinde Azure depolama
 
-Bu şablon aşağıdaki Azure depolama bileşenleri kullanır:
+Bu şablon aşağıdaki Azure depolama bileşenlerini kullanır:
 
-- [Depolama hizmeti şifrelemesi](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) 
+- [Depolama Hizmeti Şifrelemesi](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) 
 - Yalnızca HTTPS bağlantılarına izin ver
 
 #### <a name="data-at-rest"></a>Bekleyen veriler
 
-Aracılığıyla [depolama hizmeti şifrelemesi](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) 256 bit AES şifreleme en güçlü blok şifreleme özelliklerinden biri Azure Depolama'ya yazılan tüm veriler şifrelenir. SSE ile kullanabileceğiniz Microsoft tarafından yönetilen bir şifreleme anahtarları veya kullanabileceğiniz [kendi şifreleme anahtarlarınızı](https://docs.microsoft.com/azure/storage/common/storage-service-encryption-customer-managed-keys).
+[Depolama hizmeti şifrelemesi](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) aracılığıyla Azure depolama 'ya yazılan tüm veriler 256 bit AES şifrelemesi aracılığıyla şifrelenir, bu da en güçlü blok şifrelemeleri mevcuttur. Microsoft tarafından yönetilen şifreleme anahtarlarını SSE ile kullanabilir veya [kendi şifreleme anahtarlarınızı](https://docs.microsoft.com/azure/storage/common/storage-service-encryption-customer-managed-keys)kullanabilirsiniz.
 
-Depolama hesapları güvenli aracılığıyla [sanal ağ hizmet uç noktaları](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) kullanarak [sanal ağ kuralları](https://docs.microsoft.com/azure/storage/common/storage-network-security).
+Depolama hesapları, sanal ağ [kuralları](https://docs.microsoft.com/azure/storage/common/storage-network-security)kullanılarak [sanal ağ hizmeti uç noktaları](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) aracılığıyla güvenli hale getirilir.
 
-Azure depolama güvenliğini sağlama hakkında ayrıntılı bilgi bulunabilir [Güvenlik Kılavuzu](https://docs.microsoft.com/azure/storage/common/storage-security-guide).
+Azure Storage 'ın güvenliğini sağlama hakkında ayrıntılı bilgiler [güvenlik kılavuzunda](https://docs.microsoft.com/azure/storage/common/storage-security-guide)bulunabilir.
 
 
-### <a name="secrets-management"></a>Gizlilik Yönetimi
+### <a name="secrets-management"></a>Gizli dizi yönetimi
 
 #### <a name="azure-key-vault"></a>Azure Key Vault
 
-[Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) üçüncü tarafların uygulama anahtarları ve gizli anahtarları erişilebilir olduklarını değil emin olmak için güvenli hale getirmek için kullanılır. Key Vault, kullanıcı parolaları için depo olarak kullanılmaya yönelik değildir. Kasa adlı birden fazla güvenli kapsayıcı oluşturmanıza imkan tanır. Bu kasalar, donanım güvenlik modülleri (HSM) tarafından desteklenir. Kasalar, uygulama gizli dizilerinin depolanmasını merkezi hale getirerek güvenlik bilgilerini kazayla kaybetme olasılığını azaltmaya yardımcı olur. Anahtar Kasaları ayrıca içlerinde depolanmış her şeye erişimi denetler ve günlüğe kaydeder. Azure Key Vault, sağlam bir sertifika yaşam döngüsü yönetim çözümü için gereken özellikleri sağlayarak Aktarım Katmanı Güvenliği (TLS) sertifikalarını isteme ve yenileme işlemlerini gerçekleştirebilir.
+[Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) , üçüncü taraflar tarafından erişilemediğinden emin olmak için uygulama anahtarları ve gizli dizileri güvenli hale getirmek için kullanılır. Key Vault, kullanıcı parolaları için depo olarak kullanılmaya yönelik değildir. Kasa olarak adlandırılan birden fazla güvenli kapsayıcı oluşturmanıza olanak sağlar. Bu kasalar, donanım güvenlik modülleri (HSM) tarafından desteklenir. Kasalar, uygulama gizli dizilerinin depolanmasını merkezi hale getirerek güvenlik bilgilerini kazayla kaybetme olasılığını azaltmaya yardımcı olur. Anahtar Kasaları ayrıca içlerinde depolanmış her şeye erişimi denetler ve günlüğe kaydeder. Azure Key Vault, sağlam bir sertifika yaşam döngüsü yönetim çözümü için gereken özellikleri sağlayarak Aktarım Katmanı Güvenliği (TLS) sertifikalarını isteme ve yenileme işlemlerini gerçekleştirebilir.
 
-#### <a name="azure-key-vault-in-this-blueprint"></a>Azure anahtar Kasası'nda bu şema
+#### <a name="azure-key-vault-in-this-blueprint"></a>Bu şema içindeki Azure Key Vault
 
-- Verilen okuma erişimli depolama erişim anahtarı tutan [yönetilen kimliği](https://docs.microsoft.com/azure/app-service/overview-managed-identity) müşteriye dönük web uygulaması
-- SQL Server DBA parolası (içinde ayrı bir kasa) tutar.
-- Tanılama günlükleri
+- , Müşteriye yönelik Web uygulamasının [yönetilen kimliğine](https://docs.microsoft.com/azure/app-service/overview-managed-identity) okuma erişimiyle verilen depolama erişim anahtarını barındırır
+- SQL Server DBA parolasını tutar (ayrı bir kasada)
+- Tanılama günlüğü
 
-### <a name="monitoring-logging-and-audit"></a>İzleme, günlüğe kaydetme ve Denetim
+### <a name="monitoring-logging-and-audit"></a>İzleme, günlüğe kaydetme ve denetim
 
 #### <a name="azure-monitor-logs"></a>Azure İzleyici günlükleri
 
-[Azure İzleyici günlüklerine](https://azure.microsoft.com/services/log-analytics/) ve şirket içi Ortamlarınızdaki bulutunuzdaki kaynaklar tarafından oluşturulan verileri toplayıp analiz yardımcı olan bir Azure hizmetidir.
+[Azure izleyici günlükleri](https://azure.microsoft.com/services/log-analytics/) , bulut ve şirket içi ortamlarınızdaki kaynaklar tarafından oluşturulan verileri toplayıp analiz etmenize yardımcı olan bir Azure hizmetidir.
 
-#### <a name="azure-monitor-logs-in-this-blueprint"></a>Azure İzleyici, bu blueprint'te günlüğe kaydeder
+#### <a name="azure-monitor-logs-in-this-blueprint"></a>Bu şema içindeki Azure Izleyici günlükleri
 
 - SQL Değerlendirmesi
-- Anahtar kasası tanılama
-- Application Insights bağlantı
+- Key Vault tanılama
+- Application Insights bağlantısı
 - Azure etkinlik günlüğü
 
 #### <a name="application-insights"></a>Application Insights
 
-[Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) birden çok platformlardaki web geliştiricilerine yönelik genişletilebilir bir uygulama performans yönetimi (APM) hizmetidir. Bunu otomatik olarak performans anomalilerini algılamayı, performansı çözümleyebilir, tanılama canlı web uygulamaları izlemek için sorunları ve anlamak için kullanıcıların uygulamayla etkileşimini kullanılır. .NET, Node.js gibi platformlarda Application Insights dağıtılabilir ve Java EE barındırılan şirket içinde veya bulutta. DevOps işleminizle tümleştirilir ve çeşitli geliştirme araçlarıyla bağlantı noktaları vardır.
+[Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) , birden çok platformda Web geliştiricileri için genişletilebilir bir uygulama performans YÖNETIMI (APM) hizmetidir. Canlı Web uygulamalarını izlemek için kullanılan performans sorunlarını otomatik olarak algılar, performansı analiz eder, sorunları tanılayabilir ve kullanıcıların uygulamayla nasıl etkileşime gireceğini anlayacaktır. Application Insights, şirket içinde veya bulutta barındırılan .NET, Node. js ve Java EE dahil platformlarda dağıtılabilir. DevOps işleminizle tümleştirilir ve çeşitli geliştirme araçlarıyla bağlantı noktaları vardır.
 
-#### <a name="application-insights-in-this-blueprint"></a>Bu plan, Application Insights
+#### <a name="application-insights-in-this-blueprint"></a>Bu şema içindeki Application Insights
 
-Bu şablon, aşağıdaki Application Insights bileşenlerini kullanır:
+Bu şablon aşağıdaki Application Insights bileşenlerini kullanır:
 
-- Application Insights Panosu (işleç, müşteri ve API) site başına
+- Site başına Application Insights panosu (operatör, müşteri ve API)
 
 #### <a name="azure-activity-logs"></a>Azure etkinlik günlükleri
 
-[Azure etkinlik günlüğü](https://docs.microsoft.com/azure/azure-monitor/platform/activity-logs-overview) Abonelikleriniz için Denetim düzlemi olaylarını denetler. Etkinlik günlüğü'nü kullanarak belirleyebilirsiniz ' ne, kim ve ne zaman ' işlemlerini (PUT, POST, DELETE), aboneliğinizdeki kaynaklar üzerinde gerçekleştirilen herhangi bir yazma için. Ayrıca, işlemi ve ilgili diğer özellikleri durumunu anlayabilirsiniz.
+[Azure etkinlik günlüğü](https://docs.microsoft.com/azure/azure-monitor/platform/activity-logs-overview) , abonelikleriniz için denetim düzlemi olaylarını denetler. Etkinlik günlüğünü kullanarak, aboneliğinizdeki kaynaklar üzerinde herhangi bir yazma işlemi (PUT, POST, SILME) için ' ne, kim ve ne zaman ' i belirleyebilirsiniz. Ayrıca, işlemi ve ilgili diğer özellikleri durumunu anlayabilirsiniz.
 
 #### <a name="azure-monitor"></a>Azure İzleyici
 
-[Azure İzleyici](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor) ölçümler, etkinlik günlükleri ve tanılama günlükleri koleksiyonunu sağlayarak Azure Hizmetleri için çekirdek izleme sağlar. Azure İzleyici, çoğu Microsoft Azure’daki çoğu hizmet için temel düzey altyapı ölçümleri ve günlükleri sağlar.
+[Azure izleyici](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor) , ölçümler, etkinlik günlükleri ve tanılama günlükleri koleksiyonuna Izin vererek Azure hizmetleri için çekirdek izlemeye olanak tanır. Azure İzleyici, çoğu Microsoft Azure’daki çoğu hizmet için temel düzey altyapı ölçümleri ve günlükleri sağlar.
 
 ## <a name="threat-model"></a>Tehdit modeli
 
-Bu başvuru mimarisine yönelik veri akış diyagramı kullanılabilir [indirme](https://aka.ms/ukofficial-paaswa-tm) veya altında bulunabilir. Bu model, değişiklikler yaparken sistemi altyapısında potansiyel risk puanları anlamasına yardımcı olabilir.
+Bu başvuru mimarisi için veri akışı diyagramı [indirilebilir](https://aka.ms/ukofficial-paaswa-tm) veya aşağıda bulunabilir. Bu model, müşterilerin değişiklik yaparken sistem altyapısında olası risk noktalarını anlamasına yardımcı olabilir.
 
-![PaaS Web uygulamasını barındıran UK resmi iş yükleri tehdit modeli için](images/ukofficial-paaswa-threat-model.png?raw=true "PaaS Web uygulamasını barındıran tehdit modeli UK resmi iş yükleri için")
+![Birleşik KRALLıK resmi Iş yükleri tehdit modeli Için PaaS Web uygulaması barındırma](images/ukofficial-paaswa-threat-model.png?raw=true "Birleşik KRALLıK resmi Iş yükleri tehdit modeli Için PaaS Web uygulaması barındırma")
 
-## <a name="ncsc-cloud-security-principles-compliance-documentation"></a>Bulut güvenliği prensipleri NCSC uyumluluk belgeleri
+## <a name="ncsc-cloud-security-principles-compliance-documentation"></a>NCSC bulutu güvenlik Ilkeleri uyumluluk belgeleri
 
-Dama yapma ticari hizmeti (ticari ve tedarik etkinliği tarafından kamu artırmak için çalışan Aracısı) resmi düzeyinde tüm teklifleri kapsayan Microsoft kapsamındaki Kurumsal bulut hizmetlerine G-Cloud v6 sınıflandırmasını yenilendi. Azure G-Cloud ve ayrıntıları bulunabilir [Azure UK G-Cloud güvenlik değerlendirme özeti](https://www.microsoft.com/trustcenter/compliance/uk-g-cloud).
+Crown Commercial Service (kamu ile ticari ve tedarik etkinliklerini geliştirmek için kullanılan bir acenteler), Microsoft 'un kapsam içi Kurumsal bulut hizmetleri 'nin, tüm tekliflerini RESMI düzeyde kapsayan G-Cloud V6 ile yeniledi. Azure ve G-Cloud ayrıntıları [Azure UK g-Cloud Security değerlendirmesi özetinde](https://www.microsoft.com/trustcenter/compliance/uk-g-cloud)bulunabilir.
 
-Bu şema içinde NCSC belgelenen 14 bulut güvenliği prensipleri hizalar [bulut güvenliği prensipleri](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles) UK resmi sınıflandırılan iş yüklerini destekleyen bir ortam sağlamak için.
+Bu şema, UK RESMI olarak sınıflandırılan iş yüklerini destekleyen bir ortamın sağlanmasına yardımcı olmak için NCSC [bulut güvenlik ilkelerine](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles) göre belgelenen 14 bulut güvenlik ilkelerine hizalanır.
 
-[Azure güvenlik ve uyumluluk planı - UK resmi müşteri sorumluluk matris](https://aka.ms/ukofficial-crm) (Excel çalışma kitabı) tüm 14 bulut güvenliği prensipleri listeler ve her ilke (veya ilke Altbölüm) gösterir, ilke Uygulama, Microsoft, müşterinin sorumluluğundadır veya ikisi arasında paylaşılan.
+[Azure Güvenlik ve uyumluluk şeması-UK resmi müşteri sorumluluğu matrisi](https://aka.ms/ukofficial-crm) (Excel çalışma kitabı), tüm 14 bulut güvenlik ilkelerini listeler ve her bir ilke (veya ilke alt bölümü) için, ilke uygulamasının Microsoft, müşteri veya ikisi arasında paylaşılan sorumluluk.
 
-[Azure güvenlik ve uyumluluk planı - UK resmi ilke uygulaması matris PaaS Web uygulaması](https://aka.ms/ukofficial-paaswa-pim) (Excel çalışma kitabı) tüm 14 bulut güvenliği prensipleri listeler ve her ilke (veya ilke Altbölüm) gösterir tasarlanmış bir müşteri sorumluluk müşteri sorumlulukları Matristeki, 1) ilke ve uygulama ile İlkesi gereksinimlerin nasıl hizalandığını 2) bir açıklama blueprint uygular.  
+[UK resmi Ilke uygulama matrisi (Excel çalışma kitabı) için Azure Güvenlik ve uyumluluk şeması-PaaS Web uygulaması](https://aka.ms/ukofficial-paaswa-pim) , her bir ilke (veya ilke alt bölümü) için tüm 14 bulut güvenlik ilkelerini listeler ve belirtir Müşteri sorumlulukları matrisinde, 1) şema ilkeyi uyguluyorsa ve 2) uygulamanın, ilke gereksinimlerle nasıl hizalanacağını gösteren bir açıklama.  
 
-Ayrıca, bulut güvenliği İttifakı (CSA) bulut denetim matrisi bulut sağlayıcılarının veriyi değerlendirmede müşterileri desteklemek ve bulut Hizmetleri taşımadan önce yanıtlanması soru tanımlamak için yayımladı. Yanıt olarak, Microsoft Azure CSA fikir birliğine varılmış değerlendirme girişimi anketi yanıtlanmış ([CSA CAIQ](https://www.microsoft.com/TrustCenter/Compliance/CSA)), Microsoft önerilen ilkeler nasıl ele açıklar.
+Ayrıca, bulut güvenlik Birliği (CSA) bulut sağlayıcılarının değerlendirmesinde müşterileri desteklemek ve bulut hizmetlerine geçmeden önce yanıtlanması gereken soruları belirlemek için bulut denetimi matrisini yayımladı. Yanıt olarak Microsoft Azure, Microsoft 'un önerilen ilkeleri nasıl ele aldığı hakkında CSA Consensus değerlendirmesi girişim girişimi anketini ([CSA CAIQ](https://www.microsoft.com/TrustCenter/Compliance/CSA)) yanıtladı.
 
 ## <a name="third-party-assessment"></a>Üçüncü taraf değerlendirmesi
 
-Bu plan, Birleşik Krallık Ulusal siber Güvenlik Merkezi (NCSC tarafından) Gözden ve NCSC 14 bulut güvenliği prensipleri hizalar
+Bu şema, UK National Cyber Güvenlik Merkezi (NCSC) tarafından incelendi ve NCSC 14 bulut güvenlik ilkelerine hizalanmıştır
 
-Otomasyon şablonları bizim Microsoft iş ortağı ve UK müşteri başarı birim Azure bulut çözümü Mimarı takım tarafından test edilmiştir [Ampliphae](https://www.ampliphae.com/).
+Otomasyon şablonları, UK müşteri başarısı birimi Azure bulut çözümü mimarı ekibi ve Microsoft iş ortağımız tarafından, [yükseltilmiş Phae](https://www.ampliphae.com/)tarafından test edilmiştir.
 
 
 ## <a name="deploy-the-solution"></a>Çözümü dağıtma
 
-Azure güvenlik ve uyumluluk şema Otomasyon JSON yapılandırma dosyaları ve kaynakları azure'da dağıtmak için Azure Resource Manager'ın API hizmeti tarafından işlenen PowerShell betikleri oluşur. Ayrıntılı dağıtım yönergeleri [burada](https://aka.ms/ukofficial-paaswa-repo).
+Bu Azure Güvenlik ve Uyumluluk Şeması Otomasyonu, Azure 'da kaynak dağıtmak üzere Azure Resource Manager API hizmeti tarafından işlenen JSON yapılandırma dosyalarından ve PowerShell betiklerinden oluşur. Ayrıntılı dağıtım yönergelerine [buradan](https://aka.ms/ukofficial-paaswa-repo)ulaşabilirsiniz.
 
-Dağıtım için üç yaklaşımları sağlanmadı; Basit bir "express" [Azure CLI 2](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) hızla bir test oluşturmak için uygun ortam; bir parametreli [Azure CLI 2](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) yaklaşım ve bir Azure portalında iş yükü ortamlarında için; büyük yapılandırması sağlama Azure portal aracılığıyla dağıtım parametreleri işleci belirleyebileceğiniz dağıtım temel. 
+Dağıtım için üç yaklaşım sunulmaktadır; Hızlı bir şekilde test ortamı oluşturmak için uygun olan basit bir "hızlı" [Azure CLI 2](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) ; iş yükü ortamları için daha fazla yapılandırma sağlayan parametreli bir [Azure CLI 2](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) yaklaşımı; ve işlecin Azure portal aracılığıyla dağıtım parametrelerini belirtebileceğiniz Azure portal tabanlı bir dağıtım. 
 
-1.  Kopyala veya indir [bu](https://aka.ms/ukofficial-paaswa-repo) yerel iş istasyonunuzu GitHub deposuna.
-2.  Gözden geçirme [1. yöntem: Azure CLI 2 (Express sürüm)](https://aka.ms/ukofficial-paaswa-repo/#method-1-azure-cli-2-express-version) ve sağlanan komutları yürütün.
-3.  Gözden geçirme [yöntemi 1a: Azure CLI (komut bağımsız değişkenleri yoluyla dağıtımı yapılandırma) 2](https://aka.ms/ukofficial-paaswa-repo/#method-1a-azure-cli-2-configuring-the-deployment-via-script-arguments) ve sağlanan komutları yürütme
-4.  Gözden geçirme [yöntem 2: Azure portalında dağıtım işlemi](https://aka.ms/ukofficial-paaswa-repo/#method-2-azure-portal-deployment-process) ve listelenen komutları yürütme
+1.  [Bu](https://aka.ms/ukofficial-paaswa-repo) GitHub deposunu yerel iş istasyonunuza kopyalayın veya indirin.
+2.  İnceleme [yöntemi 1: Azure CLI 2 (Express sürümü)](https://aka.ms/ukofficial-paaswa-repo/#method-1-azure-cli-2-express-version) ve sunulan komutları yürütün.
+3.  İnceleme [yöntemi 1a: Azure CLI 2 (dağıtımı betik bağımsız değişkenleri aracılığıyla yapılandırma)](https://aka.ms/ukofficial-paaswa-repo/#method-1a-azure-cli-2-configuring-the-deployment-via-script-arguments) ve sunulan komutları yürütme
+4.  İnceleme [yöntemi 2: Dağıtım işlemini](https://aka.ms/ukofficial-paaswa-repo/#method-2-azure-portal-deployment-process) Azure Portal ve listelenen komutları yürütün
 
-## <a name="guidance-and-recommendations"></a>Yönerge ve öneriler
+## <a name="guidance-and-recommendations"></a>Kılavuz ve öneriler
 
 ### <a name="api-management"></a>API Management
 
-[Azure API Management](https://azure.microsoft.com/services/api-management/) önünde API App Service, ek güvenlik katmanları, azaltma ve kullanıma sunmak, proxy ve API'ların korunması için denetimleri sağlamak için kullanılabilir.
+[Azure API Management](https://azure.microsoft.com/services/api-management/) , API App Service önünde kullanılabilir ve API 'leri göstermek, proxy ve koruma sağlamak için ek güvenlik, azaltma ve denetim katmanları sağlamak üzere kullanılabilir.
 
 ### <a name="azure-b2c"></a>Azure B2C
 
-[Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) kaydetmek kullanıcılara izin vermek için bir denetim bir kimlik oluşturmak ve etkinleştirme yetkilendirme ve erişim denetimi için genel bir web uygulaması olarak uygulanabilir.
+[Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) , kullanıcıların kaydetmesine, bir kimlik oluşturmasına ve genel Web uygulaması için yetkilendirme ve erişim denetimini etkinleştirmesine izin veren bir denetim olarak uygulanabilir.
 
-## <a name="disclaimer"></a>Bildirim
+## <a name="disclaimer"></a>Sorumluluk Reddi
 
-- Bu belgede yalnızca bilgilendirme amaçlıdır. MICROSOFT HİÇBİR EXPRESS, ZIMNİ VEYA YASAL BU BELGEDEKİ BİLGİLER GARANTİDE BULUNMAZ. Bu belgede sağlanan "olarak-olduğundan." Bilgi ve URL ve diğer Internet Web sitesi referansları da dahil olmak üzere bu belgede, bildirilmeksizin değiştirilebilir. Müşteriler bu belgeyi okuma KULLANIMLARDAN doğacak riskler size aittir.
-- Bu belge, müşterilerle herhangi bir Microsoft ürünü veya çözümler üzerinde hiçbir fikri mülkiyet hakkı sağlamaz.
-- Müşteriler kopyalayabilir ve dahili başvuru amacıyla bu belgeyi kullanın.
-- Bu belgedeki bazı öneriler artan veri, ağ veya azure'da işlem kaynağı kullanımına neden olabilir ve bir müşterinin Azure lisans ya da abonelik maliyetlerinizi artırabilir.
-- Bu mimari, müşterilerin kendi belirli gereksinimlerine ayarlamak bir temel olarak hizmet vermek için tasarlanmıştır ve olarak kullanılmamalıdır-üretim ortamıdır.
-- Bu belge, bir başvuru olarak geliştirilir ve tüm anlamına gelir, bir müşteri özel uyumluluk gereksinimlerini ve düzenlemeleri karşılayabilecek tanımlamak için kullanılmamalıdır. Müşterilerin onaylı müşteri uygulamaları kuruluşları yasal Destek'ten arama.
+- Bu belge yalnızca bilgilendirme amaçlıdır. MICROSOFT BU BELGEDEKI BILGILERE GÖRE HIÇBIR GARANTI VERMEZ, AÇIK, ZIMNI VEYA YASAL DEĞILDIR. Bu belge "olduğu gibi" verilmiştir. Bu belgede ifade edilen, URL ve diğer Internet Web sitesi başvuruları dahil olmak üzere bilgiler ve görünümler bildirimde bulunmaksızın değiştirilebilir. Bu belgeyi okuyan müşteriler bunu kullanmanın riskini de taşır.
+- Bu belge, müşterilere herhangi bir Microsoft ürün veya çözümünden hiçbir fikri mülkiyet hakkı sağlamaz.
+- Müşteriler bu belgeyi, iç başvuru amaçları için kopyalayabilir ve kullanabilir.
+- Bu belgedeki bazı öneriler, Azure 'da veri, ağ veya işlem kaynağı kullanımının artmasına neden olabilir ve bir müşterinin Azure lisansını veya abonelik maliyetlerini artırabilir.
+- Bu mimarinin, müşterilerin belirli gereksinimlerine göre ayarlanmalarına yönelik bir temel işlevi görmesi ve bir üretim ortamında olduğu gibi kullanılmamalıdır.
+- Bu belge bir başvuru olarak geliştirilmiştir ve bir müşterinin belirli uyumluluk gereksinimlerini ve düzenlemeleri karşılayabileceği tüm yolları tanımlamak için kullanılmamalıdır. Müşteriler, onaylı müşteri uygulamalarında organizasyonlarından yasal destek almalıdır.

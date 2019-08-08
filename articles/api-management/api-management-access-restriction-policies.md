@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 8ee7db3ade594958729deeb12007f528376d5179
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 4f06e579e8548f4220d8f3fb4b618902f18b538e
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442409"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774800"
 ---
 # <a name="api-management-access-restriction-policies"></a>API Management erişim kısıtlama ilkeleri
 
@@ -34,6 +34,9 @@ Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. �
 -   [Kullanım kotasını aboneliğe göre ayarla](api-management-access-restriction-policies.md#SetUsageQuota) -yenilenebilir bir veya yaşam süresi araması hacmi ve/veya bant genişliği kotasını abonelik başına temelinde zorlamanıza olanak sağlar.
 -   [Anahtar temelinde kullanım kotasını ayarlama](#SetUsageQuotaByKey) -bir yenilenebilir veya yaşam süresi çağrı hacmi ve/veya bant genişliği kotasını anahtar başına temelinde zorlamanıza olanak sağlar.
 -   [JWT 'Yi doğrula](api-management-access-restriction-policies.md#ValidateJWT) -BELIRTILEN bir http üst bilgisinden veya belirtilen sorgu parametresinden AYıKLANAN bir JWT 'ın varlığını ve geçerliliğini zorlar.
+
+> [!TIP]
+> Farklı amaçlar için farklı kapsamlarda erişim kısıtlama ilkeleri kullanabilirsiniz. Örneğin, `validate-jwt` ilkeyi API düzeyine uygulayarak tüm API 'yi AAD kimlik doğrulamasıyla güvenli hale getirebilirsiniz veya API işlem düzeyine uygulayabilir ve daha ayrıntılı denetim için kullanabilirsiniz `claims` .
 
 ## <a name="CheckHTTPHeader"></a>HTTP üstbilgisini denetle
 

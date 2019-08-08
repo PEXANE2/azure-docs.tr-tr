@@ -1,37 +1,42 @@
 ---
-title: Azure VMware çözümüyle CloudSimple özel bulut oluşturma
-description: İşletimsel esneklik ve devamlılığı ile VMware iş yüklerini buluta genişletmek için CloudSimple özel bulut oluşturma işlemini açıklar
+title: CloudSimple özel bulutu tarafından Azure VMware çözümü oluşturma
+description: İşlem esnekliği ve sürekliliği ile VMware iş yüklerini buluta genişletmek için CloudSimple özel bulutu oluşturmayı açıklar
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 06/10/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e5c03c1d8a865b792ce79e3e2b576a629b71e02c
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 02a2bd311ea1e89a49eb12ef57a167a08eea5f98
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67333087"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812259"
 ---
-# <a name="create-a-cloudsimple-private-cloud"></a>CloudSimple özel bulut oluşturma
+# <a name="create-a-cloudsimple-private-cloud"></a>CloudSimple özel bulutu oluşturma
 
-Özel bulut oluşturmaya yönelik çeşitli ağ altyapısı için ortak gereksinimlerini yardımcı olur:
+Özel bir bulut oluşturmak, ağ altyapısının çeşitli yaygın ihtiyaçlarını ele almanıza yardımcı olur:
 
-* **Büyüme**. Var olan altyapınız için bir donanım yenileme noktası ulaştınız, özel bulut, gerekli hiçbir yeni donanım yatırımı ile genişletmek sağlar.
+* **Büyüme**. Mevcut altyapınız için bir donanım yenileme noktasına ulaştıysanız, özel bir bulut gerekli yeni donanım yatırımı olmadan genişletmenizi sağlar.
 
-* **Hızlı genişletme**. Herhangi bir geçici veya planlanmamış kapasite gereksinimleri ortaya çıktığında, bir özel bulut, ek kapasite ile gecikme oluşturmanıza olanak sağlar.
+* **Hızlı genişletme**. Geçici veya plansız bir kapasite olması halinde bir özel bulut, gecikme olmadan ek kapasite oluşturmanıza olanak sağlar.
 
-* **Artırılmış koruma**. Üç veya daha fazla düğümden oluşan bir özel Bulutla otomatik yedeklilik ve yüksek kullanılabilirlik koruma alın.
+* **Daha fazla koruma**. Üç veya daha fazla düğümden oluşan özel bir bulutla, otomatik artıklık ve yüksek kullanılabilirlik koruması alırsınız.
 
-* **Uzun vadeli altyapı için gerekirse**. Veri merkezleri kapasitesine olan veya maliyetlerinizi düşürmek için yapılandırılacak istiyorsanız özel bir bulut veri merkezleri devre dışı bırakma ve kalan çalışırken bir bulut tabanlı bir çözüm, işletme işlemleri ile uyumlu geçiş olanak sağlar.
+* **Uzun süreli altyapı ihtiyaçları**. Veri merkezleriniz kapasiteniz varsa veya maliyetlerinizi düşürmek için yeniden yapılandırmak istiyorsanız, özel bir bulut, veri merkezlerini devre dışı bırakmanıza ve bulut tabanlı bir çözüme geçiş yaparken Kurumsal işlemleriniz ile uyumlu bir çözüm yapmanıza olanak sağlar.
 
-Bir özel bulut oluşturduğunuzda, bir tek vSphere kümesi ve tüm yönetim kümedeki oluşturulan VM'ler alın.
+Özel bir bulut oluşturduğunuzda, tek bir vSphere kümesi ve bu kümede oluşturulan tüm yönetim VM 'Leri alırsınız.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Özel bulut oluşturmadan önce düğümleri sağlanması gerekir.  Düğümleri sağlama ile ilgili daha fazla bilgi için bkz: [düğümleri CloudSimple - Azure ile VMware çözümü için sağlama](create-nodes.md) makalesi.
+Özel bulutunuzu oluşturabilmeniz için önce düğümlerin sağlanması gerekir.  Düğüm sağlama hakkında daha fazla bilgi için bkz. [CloudSimple-Azure Ile VMware çözümü için düğüm sağlama](create-nodes.md) .
+
+Özel bulut için vSphere/vSAN alt ağları için bir CıDR aralığı ayırın. Özel bulut, bir vCenter sunucusu tarafından yönetilen yalıtılmış bir VMware yığını (ESXi Konakları, vCenter, vSAN ve NSX) ortamı olarak oluşturulur. Yönetim bileşenleri, vSphere/vSAN alt ağları CıDR için seçilen ağda dağıtılır. Ağ CıDR aralığı, dağıtım sırasında farklı alt ağlara bölünmüştür.  VSphere/vSAN alt ağ adresi alanı benzersiz olmalıdır. CloudSimple ortamıyla iletişim kuran herhangi bir ağla çakışmamalıdır.  CloudSimple ile iletişim kuran ağlarda şirket içi ağlar ve Azure sanal ağları bulunur.  VSphere/vSAN alt ağları hakkında daha fazla bilgi için bkz. [VLAN ve alt ağlara genel bakış](cloudsimple-vlans-subnets.md).
+
+* Minimum vSphere/vSAN alt ağları CıDR aralığı ön eki:/24 
+* Maksimum vSphere/vSAN alt ağları CıDR aralığı ön eki:/21
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
@@ -39,39 +44,39 @@ Bir özel bulut oluşturduğunuzda, bir tek vSphere kümesi ve tüm yönetim kü
 
 ## <a name="access-the-cloudsimple-portal"></a>CloudSimple portalına erişim
 
-Erişim [CloudSimple portalı](access-cloudsimple-portal.md).
+[Cloudsimple portalına](access-cloudsimple-portal.md)erişin.
 
-## <a name="create-a-new-private-cloud"></a>Yeni bir özel bulut oluşturma
+## <a name="create-a-new-private-cloud"></a>Yeni bir özel bulut oluşturun
 
-1. Üzerinde **kaynakları** sayfasında **yeni özel bulut**.
+1. **Kaynaklar** sayfasında, **Yeni özel bulut**' a tıklayın.
 
-    ![Create a Private Cloud - başlatma](media/create-pc-button.png)
+    ![Özel bulut oluşturma-nasıl başlatılır](media/create-pc-button.png)
 
-2. Özel bulut kaynakları barındıracak konumu seçin.
+2. Özel bulut kaynaklarını barındıracak konumu seçin.
 
-3. Özel bulut için sağlanan CS28 veya CS36 düğüm türü you'ev seçin. İkinci seçeneği, en fazla işlem ve bellek kapasitesini içerir.
+3. Özel bulut için sağladığınız CS28 veya CS36 node türünü seçin. İkinci seçenek, en yüksek işlem ve bellek kapasitesini içerir.
 
-4. Özel bulut için düğüm sayısını seçin. En fazla kullanılabilir düğüm sayısını, you'ev seçebilirsiniz [sağlanan](create-nodes.md).
+4. Özel bulut için düğüm sayısını seçin. En fazla kullanılabilir düğüm sayısını seçebilirsiniz. [](create-nodes.md)
 
-    ![Create a Private Cloud - temel ayarları](media/create-private-cloud-basic-info.png)
+    ![Özel bulut oluşturma-temel ayarlar](media/create-private-cloud-basic-info.png)
 
-5. Tıklayın **sonraki: Gelişmiş Seçenekleri**.
+5. İleri **' ye tıklayın: Gelişmiş Seçenekler**.
 
-6. VSphere/vSAN alt ağ için CIDR aralığı girin. CIDR aralığı herhangi bir şirket içi veya Azure diğer alt ağlara (sanal ağlar) veya ağ geçidi alt ağı ile çakışmayacak emin olun.  Azure sanal ağları üzerinde tanımlı herhangi bir CIDR aralığı kullanmayın.
+6. VSphere/vSAN alt ağları için CıDR aralığını girin. CıDR aralığının şirket içi veya diğer Azure alt ağlarınızdan (sanal ağlar) veya ağ geçidi alt ağıyla çakışmadığından emin olun.  Azure sanal ağlarında tanımlı bir CıDR aralığı kullanmayın.
     
-    **CIDR aralığı seçenekleri:** /24, /23, /22 veya /21. Bir/24 CIDR aralığı desteklediği en çok dokuz düğümleri, bir /23 CIDR aralığı desteklediği en fazla 41 düğümleri ve bir /22 ve /21 CIDR aralığı en fazla 64 düğüm (en fazla sayı düğümü özel bulut) destekler.
+    **CIDR aralığı seçenekleri:** /24,/23,/22 veya/21. A/24 CıDR aralığı en fazla dokuz düğüm destekler, a/23 CıDR aralığı en fazla 41 düğümü destekler ve/22 ve/21 CıDR aralığı en fazla 64 düğümü destekler (bir özel buluttaki en fazla düğüm sayısı).
 
     > [!CAUTION]
-    > VSphere/vSAN CIDR aralığı IP adresleri, kullanım için özel bulut altyapısı tarafından ayrılır.  Herhangi bir sanal makinede bu aralıktaki IP adresini kullanmayın.
+    > VSphere/vSAN CıDR aralığındaki IP adresleri özel bulut altyapısı tarafından kullanılmak üzere ayrılmıştır.  Bu aralıkta IP adresini herhangi bir sanal makinede kullanmayın.
 
-7. Tıklayın **sonraki: Gözden geçir ve Oluştur**.
+7. İleri **' ye tıklayın: Gözden geçirin ve**oluşturun.
 
-8. Ayarları gözden geçirin. Herhangi bir ayarı değiştirmeniz gerekiyorsa, tıklayın **önceki**.
+8. Ayarları gözden geçirin. Herhangi bir ayarı değiştirmeniz gerekiyorsa, **önceki**' ye tıklayın.
 
-9. **Oluştur**’a tıklayın.
+9.           **Oluştur**'a tıklayın.
 
-Özel bulut sağlama, tıkladığınızda başlayacak oluşturun.  İlerlemesini izleyebilirsiniz [görevleri](https://docs.azure.cloudsimple.com/activity/#tasks) CloudSimple portalı sayfasında.  Sağlama iki saatten 30 dakika sürebilir.  Sağlama tamamlandığında bir e-posta alırsınız.
+Özel bulut sağlama, Oluştur ' a tıkladığınızda başlayacaktır.  CloudSimple portalındaki [Tasks](https://docs.azure.cloudsimple.com/activity/#tasks) sayfasından ilerlemeyi izleyebilirsiniz.  Sağlama işlemi 30 dakika ila iki saat arasında olabilir.  Sağlama tamamlandıktan sonra bir e-posta alacaksınız.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Özel buluta genişletin](expand-private-cloud.md)
+* [Özel bulutu Genişlet](expand-private-cloud.md)

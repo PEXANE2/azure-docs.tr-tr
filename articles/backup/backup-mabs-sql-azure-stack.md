@@ -8,14 +8,14 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 6/8/2018
 ms.author: dacurwin
-ms.openlocfilehash: 3b116e25635873429dd164288c2764fd76c8f7a7
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 3dcf2188fd4fed211c96d4cc5241044d32ab6577
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688992"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68737164"
 ---
-# <a name="back-up-sql-server-on-stack"></a>Yığında SQL Server yedekleme
+# <a name="back-up-sql-server-on-azure-stack"></a>Azure Stack SQL Server yedekleme
 Azure Stack SQL Server veritabanlarını korumak için Microsoft Azure Backup sunucusu (MABS) yapılandırmak için bu makaleyi kullanın.
 
 Azure 'da SQL Server veritabanı yedeklemenin yönetimi ve Azure 'da kurtarma işlemleri üç adımdan oluşur:
@@ -31,7 +31,7 @@ Azure 'da SQL Server veritabanı yedeklemenin yönetimi ve Azure 'da kurtarma i�
 ## <a name="create-a-backup-policy-to-protect-sql-server-databases-to-azure"></a>SQL Server veritabanlarını Azure 'da korumak için bir yedekleme ilkesi oluşturma
 1. Azure Backup Sunucusu Kullanıcı arabiriminde, **koruma** çalışma alanına tıklayın.
 
-2. Araç şeridinde **Yeni ' ye** tıklayarak yeni bir koruma grubu oluşturun.
+2. Araç şeridinde yeni ' ye tıklayarak yeni bir koruma grubu oluşturun.
 
     ![Koruma grubu oluştur](./media/backup-azure-backup-sql/protection-group.png)
 

@@ -1,74 +1,74 @@
 ---
-title: Azure HDInsight'ı kullanarak HBase sorunlarını giderme
-description: Azure HDInsight ile HBase ile çalışma hakkında sık sorulan soruların yanıtlarını alın.
+title: Azure HDInsight kullanarak HBase sorunlarını giderme
+description: HBase ve Azure HDInsight ile çalışma hakkında sık sorulan soruların yanıtlarını alın.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.custom: hdinsightactive, seodec18
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: 6ba17a3839390ed5fe503a6fe57b63d8fb119138
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 13a4831d946eb7e25e586cafae4cae51b49fd8a7
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64713488"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780768"
 ---
-# <a name="troubleshoot-apache-hbase-by-using-azure-hdinsight"></a>Azure HDInsight'ı kullanarak Apache HBase sorunlarını giderme
+# <a name="troubleshoot-apache-hbase-by-using-azure-hdinsight"></a>Azure HDInsight kullanarak Apache HBase sorunlarını giderme
 
-Apache Ambari yüklerde Apache HBase ile çalışırken sık karşılaşılan sorunlar ve çözümleri hakkında bilgi edinin.
+Apache ambarı 'nda Apache HBase yükleri ile çalışırken en popüler sorunlar ve çözümleri hakkında bilgi edinin.
 
-## <a name="how-do-i-run-hbck-command-reports-with-multiple-unassigned-regions"></a>Atanmamış birden fazla bölgeye nasıl hbck komut raporları çalıştırabilir?
+## <a name="how-do-i-run-hbck-command-reports-with-multiple-unassigned-regions"></a>Nasıl yaparım? birden çok atanmamış bölgeyle hbck komut raporları çalıştırmak istiyor musunuz?
 
-Çalıştırdığınızda görebileceğiniz genel bir hata iletisi `hbase hbck` komuttur "birden çok atanmamış bölge veya bölgeler zincirindeki boşluklarını."
+`hbase hbck` Komutu çalıştırdığınızda görebileceğiniz yaygın bir hata iletisi, "birden fazla bölge atanmakta veya bölge zincirindeki delikler." şeklindedir.
 
-HBase Master kullanıcı Arabirimi içinde tüm bölge sunucuları arasında dengesiz bölge sayısı görebilirsiniz. Daha sonra çalıştırabileceğiniz `hbase hbck` bölge zincirindeki boşluklarını görmek için komutu.
+HBase Master Kullanıcı arabiriminde, tüm bölge sunucularında dengesiz olan bölge sayısını görebilirsiniz. Ardından, bölge zincirindeki delikleri `hbase hbck` görmek için komutunu çalıştırabilirsiniz.
 
-Açıkları olabilir çevrimdışı bölgeleri nedeni, bu nedenle atamaları önce düzeltin. 
+Delik, çevrimdışı bölgelerden kaynaklanıyor olabilir, bu nedenle öncelikle atamaları düzeltir. 
 
-Atanmamış bölgeleri normal bir duruma getirmek için aşağıdaki adımları tamamlayın:
+Atanmamış bölgeleri normal duruma getirmek için aşağıdaki adımları izleyin:
 
-1. SSH kullanarak HDInsight HBase kümesi için oturum açın.
-2. Apache ZooKeeper Kabuk ile bağlanmak için çalıştırın `hbase zkcli` komutu.
-3. Çalıştırma `rmr /hbase/regions-in-transition` komutu veya `rmr /hbase-unsecure/regions-in-transition` komutu.
-4. Alanından çıkmak için `hbase zkcli` kullanın, Kabuk `exit` komutu.
-5. Apache Ambari UI'ı açın ve ardından etkin HBase Master hizmetini yeniden başlatın.
-6. Çalıştırma `hbase hbck` komutunu tekrar (hiçbir seçenek olmadan). Tüm bölgeler atanan emin olmak için bu komutun çıktısı denetleyin.
+1. SSH kullanarak HDInsight HBase kümesinde oturum açın.
+2. Apache ZooKeeper Shell ile bağlanmak için `hbase zkcli` komutunu çalıştırın.
+3. `rmr /hbase/regions-in-transition` Komutunu`rmr /hbase-unsecure/regions-in-transition` veya komutunu çalıştırın.
+4. `hbase zkcli` Kabuktan çıkmak için `exit` komutunu kullanın.
+5. Apache ambarı Kullanıcı arabirimini açın ve ardından etkin HBase Master hizmetini yeniden başlatın.
+6. `hbase hbck` Komutu yeniden çalıştırın (herhangi bir seçenek olmadan). Tüm bölgelerin atandığından emin olmak için bu komutun çıkışını kontrol edin.
 
 
-## <a name="how-do-i-fix-timeout-issues-with-hbck-commands-for-region-assignments"></a>Zaman aşımı sorunlarını nasıl hbck komutları için bölge atamaları kullanırken düzeltebilirim?
+## <a name="how-do-i-fix-timeout-issues-with-hbck-commands-for-region-assignments"></a>Bölge atamaları için hbck komutları kullanılırken zaman aşımı sorunlarını gidermek Nasıl yaparım? mı?
 
 ### <a name="issue"></a>Sorun
 
-Kullandığınız zaman zaman aşımı sorunlarıyla ilgili olası bir neden `hbck` komutu, çeşitli bölgeleri uzun bir süredir "geçiş içinde" durumda olmadığından emin olabilir. Bu bölgeler, HBase Master kullanıcı Arabirimi çevrimdışı olarak görebilirsiniz. Çok sayıda bölgede geçiş denediğinizden HBase Master zaman aşımı olabilir ve bu bölgelerde tekrar çevrimiçi duruma alınamıyor.
+`hbck` Komutu kullandığınızda zaman aşımı sorunları için olası bir neden, "geçiş sürüyor" durumunda birkaç bölgenin uzun bir süre olması olabilir. Bu bölgeleri HBase Master Kullanıcı arabiriminde çevrimdışı olarak görebilirsiniz. Çok sayıda bölge geçişe çalıştığından HBase Master zaman aşımına uğrayabilir ve bu bölgeleri yeniden çevrimiçi hale getiremeyebilir.
 
 ### <a name="resolution-steps"></a>Çözüm adımları
 
-1. SSH kullanarak HDInsight HBase kümesi için oturum açın.
-2. Apache ZooKeeper Kabuk ile bağlanmak için çalıştırın `hbase zkcli` komutu.
-3. Çalıştırma `rmr /hbase/regions-in-transition` veya `rmr /hbase-unsecure/regions-in-transition` komutu.
-4. Çıkmak için `hbase zkcli` kullanın, Kabuk `exit` komutu.
-5. Ambari UI içinde etkin HBase Master hizmetini yeniden başlatın.
-6. Çalıştırma `hbase hbck -fixAssignments` yeniden komutu.
+1. SSH kullanarak HDInsight HBase kümesinde oturum açın.
+2. Apache ZooKeeper Shell ile bağlanmak için `hbase zkcli` komutunu çalıştırın.
+3. `rmr /hbase/regions-in-transition` Veya`rmr /hbase-unsecure/regions-in-transition` komutunu çalıştırın.
+4. `hbase zkcli` Kabuktan çıkmak için `exit` komutunu kullanın.
+5. Ambarı Kullanıcı arabiriminde, etkin HBase Master hizmetini yeniden başlatın.
+6. `hbase hbck -fixAssignments` Komutu yeniden çalıştırın.
 
-## <a name="how-do-i-force-disable-hdfs-safe-mode-in-a-cluster"></a>Nasıl miyim zorla-HDFS güvenli bir küme modunda devre dışı?
+## <a name="how-do-i-force-disable-hdfs-safe-mode-in-a-cluster"></a>Nasıl yaparım?, bir kümede ne tür kullanımı zorla modu devre dışı bırakılır?
 
 ### <a name="issue"></a>Sorun
 
-Yerel Apache Hadoop dağıtılmış dosya sistemi (HDFS), HDInsight kümesinde güvenli modda takıldı.
+Yerel Apache Hadoop Dağıtılmış Dosya Sistemi (bir) HDInsight kümesinde güvenli modda takılmış.
 
 ### <a name="detailed-description"></a>Ayrıntılı bir açıklaması
 
-Aşağıdaki HDFS komutu çalıştırdığınızda bu hata, bir hatadan kaynaklanıyor:
+Bu hata, aşağıdaki bir işlem komutunu çalıştırdığınızda bir hatadan kaynaklanıyor olabilir:
 
 ```apache
 hdfs dfs -D "fs.default.name=hdfs://mycluster/" -mkdir /temp
 ```
 
-Komutu çalıştırmayı denediğinizde görebileceğiniz hata şöyle görünür:
+Komutu çalıştırmaya çalıştığınızda görebileceğiniz hata şöyle görünür:
 
 ```apache
-hdiuser@hn0-spark2:~$ hdfs dfs -D "fs.default.name=hdfs://mycluster/" -mkdir /temp
+hdfs dfs -D "fs.default.name=hdfs://mycluster/" -mkdir /temp
 17/04/05 16:20:52 WARN retry.RetryInvocationHandler: Exception while invoking ClientNamenodeProtocolTranslatorPB.mkdirs over hn0-spark2.2oyzcdm4sfjuzjmj5dnmvscjpg.dx.internal.cloudapp.net/10.0.0.22:8020. Not retrying because try once and fail.
 org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.hdfs.server.namenode.SafeModeException): Cannot create directory /temp. Name node is in safe mode.
 It was turned on manually. Use "hdfs dfsadmin -safemode leave" to turn safe mode off.
@@ -121,18 +121,18 @@ mkdir: Cannot create directory /temp. Name node is in safe mode.
 
 ### <a name="probable-cause"></a>Olası neden
 
-HDInsight küme aşağı ölçeklendirilebilir bir çok az sayıda düğüm. Aşağıda veya HDFS çoğaltma faktörü yakın düğümler sayısıdır.
+HDInsight kümesi çok az sayıda düğüme göre ölçeklendirildi. Düğüm sayısı, aşağıdaki veya daha fazla.
 
 ### <a name="resolution-steps"></a>Çözüm adımları 
 
-1. HDFS durumunu, HDInsight kümesinde aşağıdaki komutları çalıştırarak alın:
+1. Aşağıdaki komutları çalıştırarak HDInsight kümesindeki bir durum durumunu alın:
 
    ```apache
    hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -report
    ```
 
    ```apache
-   hdiuser@hn0-spark2:~$ hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -report
+   hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -report
    Safe mode is ON
    Configured Capacity: 3372381241344 (3.07 TB)
    Present Capacity: 3138625077248 (2.85 TB)
@@ -166,10 +166,10 @@ HDInsight küme aşağı ölçeklendirilebilir bir çok az sayıda düğüm. Aş
    ...
 
    ```
-2. Ayrıca, aşağıdaki komutları kullanarak HDInsight kümesinde HDFS bütünlüğünü denetleyebilirsiniz:
+2. Ayrıca, aşağıdaki komutları kullanarak HDInsight kümesinde TBU öğesinin bütünlüğünü de denetleyebilirsiniz:
 
    ```apache
-   hdiuser@hn0-spark2:~$ hdfs fsck -D "fs.default.name=hdfs://mycluster/" /
+   hdfs fsck -D "fs.default.name=hdfs://mycluster/" /
    ```
 
    ```apache
@@ -199,19 +199,19 @@ HDInsight küme aşağı ölçeklendirilebilir bir çok az sayıda düğüm. Aş
    The filesystem under path '/' is HEALTHY
    ```
 
-3. Belirlerseniz vardır, bozuk, eksik veya under-çoğaltılmış blokları veya söz konusu bloklar göz ardı edilebilir olduğunu, ad düğümü güvenli mod dışında olması için aşağıdaki komutu çalıştırın:
+3. Eksik, bozuk veya bir çoğaltılan blok olmadığını veya bu blokların yoksayılabileceğini belirlerseniz, ad düğümünü güvenli moddan almak için aşağıdaki komutu çalıştırın:
 
    ```apache
    hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -safemode leave
    ```
 
 
-## <a name="how-do-i-fix-jdbc-or-sqlline-connectivity-issues-with-apache-phoenix"></a>Nasıl JDBC veya SQLLine bağlantı düzeltirim Apache Phoenix ile ilgili sorunlar?
+## <a name="how-do-i-fix-jdbc-or-sqlline-connectivity-issues-with-apache-phoenix"></a>Apache Phoenix ile JDBC veya SQLLine bağlantı sorunlarını giderin Nasıl yaparım??
 
 ### <a name="resolution-steps"></a>Çözüm adımları
 
-Apache Phoenix ile bağlantı için etkin bir Apache ZooKeeper düğümü IP adresini sağlamanız gerekir. Hangi sqlline.PY üzerinden ZooKeeper hizmete bağlanmaya çalışan ve çalışıyor olduğundan emin olun.
-1. HDInsight kümesine SSH kullanarak oturum açın.
+Apache Phoenix ile bağlantı kurmak için, etkin bir Apache ZooKeeper düğümünün IP adresini sağlamanız gerekir. Sqlline.py 'in bağlamaya çalıştığı ZooKeeper hizmetinin çalışır ve çalışıyor olduğundan emin olun.
+1. SSH kullanarak HDInsight kümesinde oturum açın.
 2. Aşağıdaki komutu girin:
                 
    ```apache
@@ -219,21 +219,21 @@ Apache Phoenix ile bağlantı için etkin bir Apache ZooKeeper düğümü IP adr
    ```
 
    > [!Note] 
-   > Ambari Arabiriminden, etkin ZooKeeper düğümü IP adresini alabilirsiniz. Git **HBase** > **hızlı bağlantılar** > **ZK\* (etkin)**  > **Zookeeper bilgisi**. 
+   > Active ZooKeeper düğümünün IP adresini, ambarı kullanıcı arabiriminden alabilirsiniz. **HBase** > **hızlı**Bağlantılar > **ZK(\* etkin)**  > **Zookeeper Info**sayfasına gidin. 
 
-3. Sqlline.PY üzerinden Phoenix ile bağlanır ve zaman aşımına oluşturmazsa, Phoenix durumunu ve kullanılabilirliğini doğrulamak için aşağıdaki komutu çalıştırın:
+3. Sqlline.py, Phoenix 'e bağlanırsa ve zaman aşımına uğramaz, Phoenix 'in kullanılabilirliğini ve sistem durumunu doğrulamak için şu komutu çalıştırın:
 
    ```apache
            !tables
            !quit
    ```      
-4. Bu komut işe yararsa, hiçbir sorun yoktur. Kullanıcı tarafından sağlanan IP adresi yanlış olabilir. Bununla birlikte, komut uzun bir süre boyunca duraklayacak ve şu hatayı görüntüler, 5. adıma geçin.
+4. Bu komut çalışırsa, sorun yoktur. Kullanıcı tarafından girilen IP adresi yanlış olabilir. Ancak, komut uzun bir süre durakladığında ve aşağıdaki hatayı görüntülüyorsa, 5. adımdan devam edin.
 
    ```apache
            Error while connecting to sqlline.py (Hbase - phoenix) Setting property: [isolation, TRANSACTION_READ_COMMITTED] issuing: !connect jdbc:phoenix:10.2.0.7 none none org.apache.phoenix.jdbc.PhoenixDriver Connecting to jdbc:phoenix:10.2.0.7 SLF4J: Class path contains multiple SLF4J bindings. 
    ```
 
-5. Phoenix sistem durumunun tanılamak için baş düğümünden (hn0) aşağıdaki komutları çalıştırın. KATALOG tablosu:
+5. Phoenix SISTEMININ koşulunu tanılamak için baş düğümden (hn0) aşağıdaki komutları çalıştırın. Katalog tablosu:
 
    ```apache
             hbase shell
@@ -241,57 +241,57 @@ Apache Phoenix ile bağlantı için etkin bir Apache ZooKeeper düğümü IP adr
            count 'SYSTEM.CATALOG'
    ```
 
-   Komut aşağıdakine benzer bir hata döndürmelidir: 
+   Komut şuna benzer bir hata döndürmelidir: 
 
    ```apache
            ERROR: org.apache.hadoop.hbase.NotServingRegionException: Region SYSTEM.CATALOG,,1485464083256.c0568c94033870c517ed36c45da98129. is not online on 10.2.0.5,16020,1489466172189) 
    ```
-6. Apache Ambari UI içinde tüm ZooKeeper düğümleri HMaster hizmetini yeniden başlatmak için aşağıdaki adımları tamamlayın:
+6. Apache ambarı Kullanıcı arabiriminde, tüm ZooKeeper düğümlerinde HMaster hizmetini yeniden başlatmak için aşağıdaki adımları izleyin:
 
-    1. İçinde **özeti** HBase bölümüne gidin **HBase** > **etkin HBase Master**. 
-    2. İçinde **bileşenleri** bölümünde, HBase Master hizmetini yeniden başlatın.
-    3. Tüm kalan için bu adımları tekrarlayarak **bekleme HBase Master** Hizmetleri. 
+    1. HBase 'in **Özet** bölümünde **HBase** > **etkin HBase Master**' a gidin. 
+    2. **Bileşenler** bölümünde HBase Master hizmetini yeniden başlatın.
+    3. Kalan tüm **bekleme HBase Master** Hizmetleri için bu adımları yineleyin. 
 
-Bu, HBase Master hizmeti Sabitle ve kurtarma işlemini tamamlamak beş dakikaya kadar sürebilir. Birkaç dakika sonra sistem sqlline.PY üzerinden komutları onaylamak için yineleyin. Yedekleme KATALOĞU tablodur ve BT'nin sorgulanabilir. 
+HBase Master hizmetinin kurtarma sürecini sabitmesi ve tamamlaması beş dakikaya kadar sürebilir. Birkaç dakika sonra, SISTEMI doğrulamak için sqlline.py komutlarını tekrarlayın. Katalog tablosu çalışıyor ve sorgulanabilecek. 
 
-Zaman sistem. KATALOG tablo normal olarak, Phoenix bağlantısı sorunu otomatik olarak çözülmesi gerekir.
+SISTEM. Katalog tablosu normal 'e geri döndüğünüzde, Phoenix 'e yönelik bağlantı sorununun otomatik olarak çözülmesi gerekir.
 
 
-## <a name="what-causes-a-master-server-to-fail-to-start"></a>Ana sunucu başlayamaz nedeni nedir?
+## <a name="what-causes-a-master-server-to-fail-to-start"></a>Ana sunucunun başlatılmasına neden olan ne olur?
 
 ### <a name="error"></a>Hata 
 
-Atomik bir yeniden adlandırma hatası oluşur.
+Atomik yeniden adlandırma hatası oluşur.
 
 ### <a name="detailed-description"></a>Ayrıntılı bir açıklaması
 
-Başlatma işlemi sırasında birçok başlatma adımları HMaster tamamlar. Bunlar, verileri veri klasörü karalama (.tmp) klasöründen taşıma içerir. HMaster da herhangi bir yanıt vermeyen bölge sunucusu olup olmadığını görmek için tamamlanan yazma günlükleri (WALs) klasörde bakar ve benzeri. 
+Başlangıç işlemi sırasında, HMaster birçok başlatma adımını tamamlar. Bunlar, verileri karalama (. tmp) klasöründen veri klasörüne taşımayı içerir. HMaster Ayrıca, yanıt vermeyen bölge sunucuları olup olmadığını görmek için yazma günlükleri (WALs) klasörüne de bakar. 
 
-Başlatma sırasında temel bir HMaster mu `list` bu klasörlerdeki komutu. Herhangi bir zamanda bu klasörlerden birine beklenmeyen bir dosya HMaster görürse, bir özel durum oluşturur ve başlamaz.  
+Başlangıç sırasında, hmaster bu klasörlerde temel `list` bir komut yapar. Her zaman, HMaster bu klasörlerin hiçbirinde beklenmeyen bir dosya görür ve bir özel durum oluşturur ve başlamaz.  
 
 ### <a name="probable-cause"></a>Olası neden
 
-Dosya oluşturma zaman çizelgesini belirleyin ve ardından dosyanın oluşturulduğu zaman geçici bir işlem kilitlenmesi olup olmadığını görmek bölge sunucusu günlükleri'ni deneyin. (Bunun yapılması yardımcı olmak için HBase desteğine başvurun.) Böylece bu hatayı ulaşmaktan kaçınmak ve normal işlem kapatmalar sağlamak daha güçlü mekanizmalar sağlayın. Bu yardımcı olur.
+Bölge sunucusu günlüklerinde, dosya oluşturma zaman çizelgesini belirlemeyi deneyin ve sonra dosyanın oluşturulduğu sırada bir işlem kilitlenmesinin olup olmadığını görün. (Bunu yaparken size yardımcı olmak için HBase desteğine başvurun.) Bu, bu hataya ulaşmaktan kaçınmak ve düzgün işlem kapanmalarının sağlanması için daha güçlü mekanizmalar sağlamamıza yardımcı olur.
 
 ### <a name="resolution-steps"></a>Çözüm adımları
 
-Çağrı yığınını kontrol edin ve klasörü soruna neden belirlemeye çalışın (örneğin, WALs veya .tmp klasörü olabilir). Ardından, sorunu dosyayı bulmak Cloud Explorer içinde veya HDFS komutlarını kullanarak deneyin. Genellikle bu, bir \*-renamePending.json dosya. ( \*-RenamePending.json dosyasıdır WASB sürücü Atomik yeniden adlandırma işlemi uygulamak için kullanılan bir günlük dosyası. Bu uygulamada hataları nedeniyle, bu dosyalar işlem çökmesi ve benzeri sonra bırakılabilir.) Cloud Explorer veya HDFS komutlarını kullanarak bu dosyayı zorla silme. 
+Çağrı yığınını denetleyin ve soruna neden olabilecek klasörü belirlemeyi deneyin (örneğin, WALs klasörü veya. tmp klasörü olabilir). Ardından, Cloud Explorer 'da veya,,, sorun dosyasını bulmaya çalışın. Genellikle bu bir \*-renamepending. JSON dosyasıdır. \*(-Renamepending. JSON dosyası, IDB sürücüsünde atomik yeniden adlandırma işlemini uygulamak için kullanılan bir günlük dosyasıdır. Bu uygulamadaki hatalar nedeniyle, bu dosyalar işlem kilitlenmelerinden sonra bırakılabilir ve bu şekilde devam eder.) Zorla-bu dosyayı bulut Gezgini ' nde veya bir. 
 
-Bazı durumlarda da olabilir gibi adlı geçici bir dosya *$$$. $$$* bu konumda. HDFS kullanmak zorunda `ls` bu dosyayı görmek için komut; bulut Gezgini'nde göremiyorum. Bu dosyayı silmek için HDFS komutunu `hdfs dfs -rm /\<path>\/\$\$\$.\$\$\$`.  
+Bazen, bu konumda *$ $ $. $ $ $* gibi bir ad olarak adlandırılan geçici bir dosya da olabilir. Bu dosyayı görmek için, `ls` bu dosyayı kullanmanız gerekir; dosyayı Cloud Explorer 'da göremezsiniz. Bu dosyayı silmek için, `hdfs dfs -rm /\<path>\/\$\$\$.\$\$\$`.  
 
-Bu komutları çalıştırdıktan sonra HMaster hemen başlamanız gerekir. 
+Bu komutları çalıştırdıktan sonra, HMaster hemen başlamalıdır. 
 
 ### <a name="error"></a>Hata
 
-Hiç sunucu adresi listelenir *hbase: meta* bölge xxx için.
+Xxx bölgesi için *HBase: meta* öğesinde hiçbir sunucu adresi listelenmez.
 
 ### <a name="detailed-description"></a>Ayrıntılı bir açıklaması
 
-Linux kümenizde bildiren bir ileti görebilirsiniz *hbase: meta* tabloda çevrimiçi değil. Çalışan `hbck` rapor edebilir "hbase: meta tablo ReplicaID 0 üzerinde herhangi bir bölge bulunamadı." HBase yeniden sonra HMaster başlatılamadı sorun olabilir. HMaster günlükleri aşağıdaki iletiyi görebilirsiniz: "Hbase'de hiç sunucu adresi listelenen: bölge hbase için meta: Yedekleme \<bölge adı\>".  
+Linux kümenizde *HBase: meta* tablosunun çevrimiçi olmadığını belirten bir ileti görebilirsiniz. Çalıştırmak `hbck` , "HBase: meta tablo yineleme kimliği 'ni hiçbir bölgede bulunamadığını" bildirebilir. Bu sorun, HBase 'i yeniden başlattıktan sonra HMaster 'nin başlatılamadığından hata olabilir. HMaster günlüklerinde şu iletiyi görebilirsiniz: "HBase için sunucu adresi listelenmedi: bölge HBase için meta: yedek \<bölge adı\>".  
 
 ### <a name="resolution-steps"></a>Çözüm adımları
 
-1. HBase Kabuğu'nda (değişiklik gerçek değerler uygunsa) aşağıdaki komutları girin:  
+1. HBase kabuğunda, aşağıdaki komutları girin (gerçek değerleri uygun olarak değiştirin):  
 
    ```apache
    > scan 'hbase:meta'  
@@ -301,11 +301,11 @@ Linux kümenizde bildiren bir ileti görebilirsiniz *hbase: meta* tabloda çevri
    > delete 'hbase:meta','hbase:backup <region name>','<column name>'  
    ```
 
-2. Silme *hbase: ad alanı* girişi. Bu giriş, yüklenmekte olan aynı hata olabilir raporlandığını *hbase: ad alanı* tablo taranır.
+2. *HBase: Namespace* girdisini silin. Bu giriş, *HBase: Namespace* tablosu tarandığında bildirilen aynı hata olabilir.
 
-3. HBase çalışır durumda, Ambari UI içinde ortaya çıkarmak için etkin HMaster hizmetini yeniden başlatın.  
+3. Çalışan bir durumda HBase 'i getirmek için, ambarı Kullanıcı arabiriminde, etkin HMaster hizmetini yeniden başlatın.  
 
-4. HBase Kabuğu'nda tüm tabloları çevrimdışı duruma getirmek için aşağıdaki komutu çalıştırın:
+4. HBase kabuğunda tüm çevrimdışı tabloları görüntülemek için aşağıdaki komutu çalıştırın:
 
    ```apache 
    hbase hbck -ignorePreCheckPermission -fixAssignments 
@@ -313,46 +313,46 @@ Linux kümenizde bildiren bir ileti görebilirsiniz *hbase: meta* tabloda çevri
 
 ### <a name="additional-reading"></a>Ek okuma
 
-[HBase tablosuyla işlenemiyor](https://stackoverflow.com/questions/4794092/unable-to-access-hbase-table)
+[HBase tablosu işlenemiyor](https://stackoverflow.com/questions/4794092/unable-to-access-hbase-table)
 
 
 ### <a name="error"></a>Hata
 
-Benzer şekilde önemli özel durum ile HMaster zaman aşımına "java.io.IOException: Zaman aşımına uğradı ad alanı tablosu için bekleyen atanacak 300000ms."
+HMaster, "Java. IO. IOException:" şuna benzer önemli bir özel durumla zaman aşımına uğrar: Ad alanı tablosunun atanmasını bekleyen 300000ms zaman aşımına uğradı. "
 
 ### <a name="detailed-description"></a>Ayrıntılı bir açıklaması
 
-Birçok tabloları ve HMaster hizmetlerinizi yeniden başlattığınızda temizlenmiş olmayan bölgeleri varsa bu sorunla karşılaşabilirsiniz. Yeniden başlatma başarısız olabilir ve önceki bir hata iletisi görürsünüz.  
+Bu sorunla, HMaster hizmetlerinizi yeniden başlattığınızda temizlenen çok sayıda tablonuz ve bölgesi varsa karşılaşabilirsiniz. Yeniden başlatma başarısız olabilir ve yukarıdaki hata iletisini görürsünüz.  
 
 ### <a name="probable-cause"></a>Olası neden
 
-Bu, HMaster hizmeti ile bilinen bir sorundur. Küme genel başlangıç görevleri, uzun bir zaman alabilir. Ad alanı tablo henüz atanmadığından HMaster kapanır. Bu yalnızca, büyük senaryolarda oluşur unflushed veri miktarı var ve beş dakikalık bir zaman aşımı yeterli değildir.
+Bu, HMaster hizmetinde bilinen bir sorundur. Genel küme başlangıç görevleri uzun zaman alabilir. Ad alanı tablosu henüz atanmadığından HMaster kapanıyor. Bu, yalnızca büyük miktarda temizlenen verilerin bulunduğu senaryolarda ve beş dakikalık bir zaman aşımı süresinin yetersiz olması durumunda oluşur.
   
 ### <a name="resolution-steps"></a>Çözüm adımları
 
-1. Apache Ambari UI'nızda Git **HBase** > **yapılandırmaları**. Özel hbase-site.xml dosyasında aşağıdaki ayarı ekleyin: 
+1. Apache ambarı Kullanıcı arabiriminde, **HBase** > **configs**' a gidin. Özel HBase-site. xml dosyasında aşağıdaki ayarı ekleyin: 
 
    ```apache
    Key: hbase.master.namespace.init.timeout Value: 2400000  
    ```
 
-2. Gerekli hizmetler (HMaster ve büyük olasılıkla diğer HBase Hizmetleri) yeniden başlatın.  
+2. Gerekli hizmetleri (HMaster ve belki de diğer HBase hizmetlerini) yeniden başlatın.  
 
 
-## <a name="what-causes-a-restart-failure-on-a-region-server"></a>Bir yeniden başlatma hatası bir bölge sunucusu üzerinde nedeni nedir?
+## <a name="what-causes-a-restart-failure-on-a-region-server"></a>Bir bölge sunucusunda yeniden başlatma hatasına neden olur?
 
 ### <a name="issue"></a>Sorun
 
-Bir bölge sunucusu üzerinde bir yeniden başlatma hatası aşağıdaki en iyi yöntemleri tarafından engellenebilir. HBase bölge sunucuları yeniden başlatmak planlama yaparken ağır iş yükü etkinlik duraklatma öneririz. Shutdown devam ederken bölge sunucuları ile bağlanmak bir uygulama devam ederse, bölge sunucusu yeniden başlatma işlemi birkaç dakika daha yavaş olur. Ayrıca, önce tüm tabloları Temizle iyi bir fikirdir. Tablolarını temizlemek nasıl bir başvuru için bkz: [HDInsight HBase: Apache HBase kümesi yeniden başlatma zamanı tabloları temizlenerek geliştirmek nasıl](https://web.archive.org/web/20190112153155/https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/).
+Bir bölge sunucusunda yeniden başlatma hatası, en iyi yöntemler aşağıdaki şekilde engellenebilir. HBase bölge sunucularını yeniden başlatmayı planlarken ağır iş yükü etkinliğini duraklamanızı öneririz. Bir uygulama, kapatmadan önce bölge sunucularıyla bağlanmaya devam ediyorsa, bölge sunucusu yeniden başlatma işlemi birkaç dakika daha yavaş olur. Ayrıca, ilk olarak tüm tabloları temizlemek iyi bir fikirdir. Tabloları temizleme hakkında bir başvuru için bkz [. HDInsight HBase: Tabloları](https://web.archive.org/web/20190112153155/https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/)reçeteye göre Apache HBase kümesi yeniden başlatma süresini geliştirme.
 
-HBase bölge Apache Ambari UI sunuculardan üzerinde yeniden başlatma işlemi'ı başlattığınızda, bölge sunucuları kapanmış, ancak hemen yeniden başlatma anında görün. 
+Apache ambarı kullanıcı arabiriminden HBase bölge sunucularında yeniden başlatma işlemini başlatırsanız, bölge sunucularının hemen bir yere gittiğini, ancak doğrudan yeniden başlatmayınızı görürsünüz. 
 
-Arka planda neler olduğunu aşağıda verilmiştir: 
+Arka planda neler oluyordu: 
 
-1. Ambari aracı için bölge sunucusu bir durdurma isteği gönderir.
-2. Ambari aracı 30 düzgün biçimde kapatılamadı saniye için bölge sunucusu için bekler. 
-3. Bölge sunucusu ile bağlanmak uygulamanızı devam ederse, sunucuyu hemen kapatıldı olmaz. Kapatma gerçekleşmeden önce 30 saniyelik zaman aşımı süresi dolar. 
-4. 30 saniye sonra Ambari zorla KILL gönderir (`kill -9`) bölge sunucusu komutu. Ambari Aracısı günlüğünde (ilgili çalışan düğümü /var/log/dizin) görebilirsiniz:
+1. Ambarı Aracısı bölge sunucusuna bir durdurma isteği gönderir.
+2. Ambarı Aracısı bölge sunucusunun düzgün şekilde kapanması için 30 saniye bekler. 
+3. Uygulamanız bölge sunucusuna bağlanmaya devam ederse, sunucu hemen kapatılmaz. 30 saniyelik zaman aşımı, kapatmadan önce sona erer. 
+4. 30 saniye sonra, ambarı Aracısı bölge sunucusuna bir zorla-KILL (`kill -9`) komutu gönderir. Bunu, ambarı Aracısı günlüğünde (ilgili çalışan düğümünün/var/log/dizininde) görebilirsiniz:
 
    ```apache
            2017-03-21 13:22:09,171 - Execute['/usr/hdp/current/hbase-regionserver/bin/hbase-daemon.sh --config /usr/hdp/current/hbase-regionserver/conf stop regionserver'] {'only_if': 'ambari-sudo.sh  -H -E t
@@ -366,7 +366,7 @@ Arka planda neler olduğunu aşağıda verilmiştir:
            2017-03-21 13:22:40,285 - File['/var/run/hbase/hbase-hbase-regionserver.pid'] {'action': ['delete']}
            2017-03-21 13:22:40,285 - Deleting File['/var/run/hbase/hbase-hbase-regionserver.pid']
    ```
-   Bölge sunucusu işlem durdurulmuş olsa bile ani kapatma nedeniyle, işlemle ilişkili bağlantı noktası, serbest bırakılmayabilir. Bölge sunucusu başlatıldığında, bu durum aşağıdaki günlüklere gösterildiği bir AddressBindException için açabilir. Bu, burada başlatmak için bölge sunucusu başarısız çalışan düğümlerinin /var/log/hbase dizininde bölge server.log de doğrulayabilirsiniz. 
+   Ani kapatmadan, bölge sunucusu işlemi durdurulmuş olsa bile işlemle ilişkili bağlantı noktası yayımlanmayabilir. Bu durum, aşağıdaki günlüklerde gösterildiği gibi, bölge sunucusu başlatıldığında bir AddressBindException 'ye yol açabilir. Bu işlemi, bölge sunucusunun başlayabileceği çalışan düğümlerdeki/var/log/HBase dizininde bulunan Region-Server. log dosyasında doğrulayabilirsiniz. 
 
    ```apache
 
@@ -408,8 +408,8 @@ Arka planda neler olduğunu aşağıda verilmiştir:
 
 ### <a name="resolution-steps"></a>Çözüm adımları
 
-1. Yeniden başlatmadan önce HBase bölge sunucuları üzerindeki yükü azaltmak bu seçeneği deneyin. 
-2. Alternatif olarak (1. adım yardımcı olmaz,), aşağıdaki komutları kullanarak çalışan düğümleri üzerinde bölge sunucuları el ile yeniden başlatmayı deneyin:
+1. Yeniden başlatma işlemini başlatmadan önce HBase bölge sunucularındaki yükü azaltmayı deneyin. 
+2. Alternatif olarak (1. adım yardım yoksa) aşağıdaki komutları kullanarak çalışan düğümlerinde bölge sunucularını el ile yeniden başlatmayı deneyin:
 
    ```apache
    sudo su - hbase -c "/usr/hdp/current/hbase-regionserver/bin/hbase-daemon.sh stop regionserver"

@@ -11,12 +11,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: dapine
-ms.openlocfilehash: f658e8d0f820ccec513b5665fc1ce94c083c3b3e
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: ddbe586c03d9f722d844d06968aa25e4b4a5aac0
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68703537"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815301"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Metin Analizi kapsayıcıları yükleyip çalıştırma
 
@@ -52,8 +52,7 @@ Aşağıdaki tabloda açıklanmıştır en düşük ve önerilen CPU çekirdekle
 |-----------|---------|-------------|--|
 |Anahtar İfade Ayıklama | 1 çekirdek, 2 GB bellek | 1 çekirdek, 4 GB bellek |15, 30|
 |Dil Algılama | 1 çekirdek, 2 GB bellek | 1 çekirdek, 4 GB bellek |15, 30|
-|Yaklaşım Analizi 2. x | 1 çekirdek, 2 GB bellek | 1 çekirdek, 4 GB bellek |15, 30|
-|Yaklaşım Analizi 3. x | 1 çekirdek, 2 GB bellek | 4 çekirdek, 4 GB bellek |15, 30|
+|Duygu Analizi | 1 çekirdek, 2 GB bellek | 1 çekirdek, 4 GB bellek |15, 30|
 
 * Her çekirdek en az 2,6 gigahertz (GHz) veya daha hızlı olmalıdır.
 * TPS-saniye başına işlem
@@ -68,8 +67,7 @@ Microsoft kapsayıcı kayıt defterinden kapsayıcı görüntülerini metin anal
 |-----------|------------|
 |Anahtar İfade Ayıklama | `mcr.microsoft.com/azure-cognitive-services/keyphrase` |
 |Dil Algılama | `mcr.microsoft.com/azure-cognitive-services/language` |
-|Yaklaşım Analizi 2. x| `mcr.microsoft.com/azure-cognitive-services/sentiment` |
-|Yaklaşım Analizi 3. x| `containerpreview.azurecr.io/microsoft/cognitive-services-sentiment-v3.0` |
+|Duygu Analizi| `mcr.microsoft.com/azure-cognitive-services/sentiment` |
 
 Microsoft Container Registry bir kapsayıcı görüntüsünü indirmek için [komutunukullanın.`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/)
 
@@ -93,16 +91,10 @@ docker pull mcr.microsoft.com/azure-cognitive-services/keyphrase:latest
 docker pull mcr.microsoft.com/azure-cognitive-services/language:latest
 ```
 
-### <a name="docker-pull-for-the-sentiment-2x-container"></a>Yaklaşım 2. x kapsayıcısı için Docker Pull
+### <a name="docker-pull-for-the-sentiment-container"></a>Yaklaşım kapsayıcısı için Docker çekme
 
 ```
 docker pull mcr.microsoft.com/azure-cognitive-services/sentiment:latest
-```
-
-### <a name="docker-pull-for-the-sentiment-3x-container"></a>Yaklaşım 3. x kapsayıcısı için Docker Pull
-
-```
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-sentiment-v3.0:latest
 ```
 
 [!INCLUDE [Tip for using docker list](../../../../includes/cognitive-services-containers-docker-list-tip.md)]
@@ -112,7 +104,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-sentiment-v
 Kapsayıcı [ana bilgisayardan](#the-host-computer)olduktan sonra, kapsayıcında çalışmak için aşağıdaki işlemi kullanın.
 
 1. [Kapsayıcıyı](#run-the-container-with-docker-run)gerekli faturalandırma ayarlarıyla çalıştırın. `docker run` Komuta daha fazla [örnek](../text-analytics-resource-container-config.md#example-docker-run-commands) kullanılabilir.
-1. Kapsayıcının, [v2](#query-the-containers-v2-prediction-endpoint) veya [v3](#query-the-containers-v3-prediction-endpoint)için tahmin uç noktasını sorgulayın.
+1. [Kapsayıcının tahmin uç noktasını sorgulayın](#query-the-containers-prediction-endpoint).
 
 ## <a name="run-the-container-with-docker-run"></a>Kapsayıcıyı ile çalıştırma`docker run`
 
@@ -120,7 +112,7 @@ Kapsayıcı [ana bilgisayardan](#the-host-computer)olduktan sonra, kapsayıcınd
 
 Komut örnekleri mevcuttur. [](../text-analytics-resource-container-config.md#example-docker-run-commands) `docker run`
 
-### <a name="run-v2-container-example-of-docker-run-command"></a>Docker Run komutunun v2 kapsayıcısını çalıştırma örneği
+### <a name="run-container-example-of-docker-run-command"></a>Docker Run komutunun kapsayıcı örneğini Çalıştır
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
@@ -137,134 +129,17 @@ Bu komut:
 * 5000 numaralı TCP bağlantı noktasını kullanıma sunar ve sahte TTY için kapsayıcı ayırır.
 * Kapsayıcıyı çıktıktan sonra otomatik olarak kaldırır. Kapsayıcı görüntüsü hala ana bilgisayarda kullanılabilir.
 
-### <a name="run-v3-container-example-of-docker-run-command"></a>Docker Run komutu için v3 kapsayıcı örneğini Çalıştır
-
-```bash
-docker run --rm -it -p 5000:5000 --memory 4g --cpus 4 \
-containerpreview.azurecr.io/microsoft/cognitive-services-sentiment-v3.0 \
-Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY}
-```
-
-Bu komut:
-
-* Kapsayıcı görüntüsünden bir anahtar tümceciği kapsayıcısı çalıştırır
-* 4 CPU çekirdeği ve 4 gigabayt (GB) bellek ayırır
-* 5000 numaralı TCP bağlantı noktasını kullanıma sunar ve sahte TTY için kapsayıcı ayırır.
-* Kapsayıcıyı çıktıktan sonra otomatik olarak kaldırır. Kapsayıcı görüntüsü hala ana bilgisayarda kullanılabilir.
 
 > [!IMPORTANT]
 > `Eula`, `Billing`, Ve `ApiKey` kapsayıcıyı çalıştırmak için seçenekler belirtilmelidir; Aksi takdirde, kapsayıcı başlatılamıyor.  Daha fazla bilgi için [faturalama](#billing).
 
 [!INCLUDE [Running multiple containers on the same host](../../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
-## <a name="query-the-containers-v2-prediction-endpoint"></a>Kapsayıcının v2 tahmin uç noktasını sorgulama
+## <a name="query-the-containers-prediction-endpoint"></a>Kapsayıcının tahmin uç noktasını sorgulama
 
 Kapsayıcı, REST tabanlı sorgu tahmin uç noktası API 'Leri sağlar.
 
 Kapsayıcı API 'leri için `https://localhost:5000`Konağı kullanın.
-
-## <a name="query-the-containers-v3-prediction-endpoint"></a>Kapsayıcının v3 tahmin uç noktasını sorgulama
-
-Kapsayıcı, REST tabanlı sorgu tahmin uç noktası API 'Leri sağlar.
-
-Kapsayıcı API 'leri için `https://localhost:5000`Konağı kullanın.
-
-### <a name="v3-api-request-post-body"></a>V3 API isteği GÖNDERI gövdesi
-
-Aşağıdaki JSON, bir v3 API isteğinin GÖNDERI gövdesi örneğidir:
-
-```json
-{
-  "documents": [
-    {
-      "language": "en",
-      "id": "1",
-      "text": "Hello world. This is some input text that I love."
-    },
-    {
-      "language": "en",
-      "id": "2",
-      "text": "It's incredibly sunny outside! I'm so happy."
-    }
-  ]
-}
-```
-
-### <a name="v3-api-response-body"></a>V3 API yanıt gövdesi
-
-Aşağıdaki JSON, bir v3 API isteğinin GÖNDERI gövdesi örneğidir:
-
-```json
-{
-    "documents": [
-        {
-            "id": "1",
-            "sentiment": "positive",
-            "documentScores": {
-                "positive": 0.98570585250854492,
-                "neutral": 0.0001625834556762,
-                "negative": 0.0141316400840878
-            },
-            "sentences": [
-                {
-                    "sentiment": "neutral",
-                    "sentenceScores": {
-                        "positive": 0.0785155147314072,
-                        "neutral": 0.89702343940734863,
-                        "negative": 0.0244610067456961
-                    },
-                    "offset": 0,
-                    "length": 12
-                },
-                {
-                    "sentiment": "positive",
-                    "sentenceScores": {
-                        "positive": 0.98570585250854492,
-                        "neutral": 0.0001625834556762,
-                        "negative": 0.0141316400840878
-                    },
-                    "offset": 13,
-                    "length": 36
-                }
-            ]
-        },
-        {
-            "id": "2",
-            "sentiment": "positive",
-            "documentScores": {
-                "positive": 0.89198976755142212,
-                "neutral": 0.103382371366024,
-                "negative": 0.0046278294175863
-            },
-            "sentences": [
-                {
-                    "sentiment": "positive",
-                    "sentenceScores": {
-                        "positive": 0.78401315212249756,
-                        "neutral": 0.2067587077617645,
-                        "negative": 0.0092281140387058
-                    },
-                    "offset": 0,
-                    "length": 30
-                },
-                {
-                    "sentiment": "positive",
-                    "sentenceScores": {
-                        "positive": 0.99996638298034668,
-                        "neutral": 0.0000060341349126,
-                        "negative": 0.0000275444017461
-                    },
-                    "offset": 31,
-                    "length": 13
-                }
-            ]
-        }
-    ],
-    "errors": []
-}
-```
 
 <!--  ## Validate container is running -->
 

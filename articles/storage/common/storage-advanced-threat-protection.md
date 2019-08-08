@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: bb2d5733704b0b31dc010cec2a90e99e1be07b56
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 7d4f36be51591d6be2b4c42eb8a8950ab52a0258
+ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68592021"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68782575"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Azure Depolama için Gelişmiş Tehdit Koruması
 
@@ -117,62 +117,7 @@ Azure Güvenlik Merkezi 'nin [güvenlik uyarıları kutucuğunda](../../security
 
 ## <a name="protection-alerts"></a>Koruma uyarıları
 
-Uyarılar, depolama hesaplarına erişmeye veya açıktan yararlanmaya yönelik olağan dışı ve potansiyel olarak zararlı denemelere göre oluşturulur. Bu olaylar aşağıdaki uyarıları tetikleyebilir:
-
-### <a name="anomalous-access-pattern-alerts"></a>Anormal erişim deseninin uyarıları
-
-* **Olağan dışı konumdan erişim**: Bu uyarı, bir kullanıcı olağan dışı bir coğrafi konumdan bir depolama hesabına eriştiğinde tetiklenir.
-Olası nedenler:
-   * Bir saldırgan depolama hesabınıza erişti
-   * Yasal bir Kullanıcı, depolama hesabınıza yeni bir konumdan erişti
- 
-* **Uygulama anomali**: Bu uyarı, olağan dışı bir uygulamanın bu depolama hesabına eriştiğini gösterir. Olası nedenler:
-   * Bir saldırgan, depolama hesabınıza yeni bir uygulama kullanarak erişmiştir.
-   * Yasal bir Kullanıcı, depolama hesabınıza erişmek için yeni bir uygulama/tarayıcı kullanmıştır.
-
-* **Anonim erişim**: Bu uyarı, bu hesabın anonim olarak erişildiğine (yani herhangi bir kimlik doğrulaması olmadan), bu hesaptaki son erişim düzeniyle karşılaştırıldığında beklenmeyen bir şekilde erişildiğini belirtir.
-Olası nedenler:
-   * Bir saldırgan bir kapsayıcıya genel okuma erişiminin yararlanmıştır.
-   * Meşru bir kullanıcı veya uygulama, bir kapsayıcıya genel okuma erişimi kullandı.
-
-* **Tor anomali**: Bu uyarı, bu hesaba Tor 'ın etkin çıkış düğümü olarak bilinen bir IP adresinden başarıyla erişildiğini belirtir (bir anonim proxy). Bu uyarının önem derecesi, kullanılan (varsa) kimlik doğrulaması türünü ve bu erişimin ilk olması durumunda olup olmadığını dikkate alır.
-Olası nedenler:
-   * Bir saldırgan, depolama hesabınıza Tor kullanarak erişti.
-   * Yasal bir Kullanıcı, Tor kullanarak depolama hesabınıza erişti.
-
-
-### <a name="anomalous-extractupload-alerts"></a>Anormal uyarıları Ayıkla/karşıya yükle
-
-* **Veri tanımı**: Bu uyarı, bu depolama kapsayıcısındaki en son etkinliğe kıyasla alışılmadık büyük miktarda verilerin ayıklandığını gösterir. Olası nedenler:
-   * Bir saldırgan, bir kapsayıcıdan büyük miktarda veri ayıklamıştır. (Örneğin: veri ayıklanma/ihlal, yetkisiz veri aktarımı)
-   * Yasal bir kullanıcı veya uygulama bir kapsayıcıdan olağan dışı miktarda veri ayıklamıştır. (Örneğin: bakım etkinliği)
-
-* **Beklenmeyen silme**: Bu uyarı, bir depolama hesabında bir veya daha fazla beklenmeyen silme işlemi gerçekleştiğini, bu hesaptaki en son etkinlikle karşılaştırıldığında olduğunu gösterir. Olası nedenler:
-   * Bir saldırgan depolama hesabınızdan veri sildi.
-   * Meşru bir kullanıcı olağan dışı bir silme işlemi gerçekleştirmiştir.
-
-* **Azure bulut hizmeti paketini karşıya yükle**: Bu uyarı, bir Azure bulut hizmeti paketinin (. cspkg dosyasının), bu hesaptaki en son etkinlikle karşılaştırıldığında, alışılmadık bir şekilde bir depolama hesabına yüklendiğini belirtir. Olası nedenler: 
-   * Bir saldırgan, depolama hesabınızdan bir Azure bulut hizmetine kötü amaçlı kod dağıtmaya hazırlanmıştır.
-   * Meşru bir Kullanıcı, meşru bir hizmet dağıtımı için hazırlanmıştır.
-
-### <a name="suspicious-storage-activities-alerts"></a>Şüpheli depolama etkinlikleri uyarıları
-
-* **Erişim izni değişikliği**: Bu uyarı, bu depolama kapsayıcısının erişim izinlerinin olağan dışı bir şekilde değiştirildiğini belirtir. Olası nedenler: 
-   * Saldırgan, güvenlik düzeyini yumuşatmak için kapsayıcı izinlerini değiştirdi.
-   * Meşru bir Kullanıcı kapsayıcı izinlerini değiştirdi.
-
-* **Erişim incelemesi**: Bu uyarı, bir depolama hesabının erişim izinlerinin, bu hesaptaki en son etkinlikle karşılaştırıldığında olağan dışı bir şekilde incelenebileceğini belirtir. Olası nedenler: 
-   * Saldırgan, gelecekteki bir saldırı için keşif gerçekleştirdi.
-   * Yasal bir kullanıcı depolama hesabında bakım gerçekleştirdi.
-
-* **Veri araştırması**: Bu uyarı, bir depolama hesabındaki Blobların veya kapsayıcıların, bu hesaptaki en son etkinlikle karşılaştırıldığında alışılmadık bir şekilde numaralandırıldığını gösterir. Olası nedenler: 
-   * Saldırgan, gelecekteki bir saldırı için keşif gerçekleştirdi.
-   * Yasal bir kullanıcı veya uygulama mantığı, depolama hesabı içinde verileri araştırmıştır.
-
-
-
-
-
+Uyarılar, depolama hesaplarına erişmeye veya açıktan yararlanmaya yönelik olağan dışı ve potansiyel olarak zararlı denemelere göre oluşturulur. Bu uyarıların bir listesi için bkz. [Azure depolama](../../security-center/security-center-alerts-data-services.md#azure-storage) uyarıları
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
