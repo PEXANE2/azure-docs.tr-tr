@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: b2670ec844df192bb73e8b1e76b1ebf611b2539e
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: ab573d1d9ca9d9db39135ea76e555bb0720d7b68
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619382"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68878783"
 ---
 # <a name="supported-languages"></a>Desteklenen diller
 
@@ -57,4 +57,4 @@ ms.locfileid: "68619382"
 * [Akış Analizi](../../azure-monitor/app/export-power-bi.md)
 
 ## <a name="unsupported-sdks"></a>Desteklenmeyen SDK 'lar
-Diğer topluluk tarafından desteklenen birkaç SDK 'nın var olduğunu ve bunlara dahil ettiğimiz bazı Bu SDK 'ların bulunduğunu biliyoruz. Ancak, Azure Izleyici yalnızca bu sayfada listelenen desteklenen SDK 'Ları kullanırken destek sağlar. Diğer dillere yönelik desteğimizi genişletmeyi sürekli olarak değerlendirdik, bu nedenle en son SDK haberlerini almak için [GitHub duyuruları](https://github.com/microsoft/ApplicationInsights-Announcements/issues) sayfamızı izleyin.
+Diğer topluluk tarafından desteklenen birkaç SDK 'nın mevcut olduğunu biliyoruz. Ancak, Azure Izleyici yalnızca bu sayfada listelenen desteklenen SDK 'Ları kullanırken destek sağlar. Diğer dillere yönelik desteğimizi genişletmeyi sürekli olarak değerlendirdik, bu nedenle en son SDK haberlerini almak için [GitHub duyuruları](https://github.com/microsoft/ApplicationInsights-Announcements/issues) sayfamızı izleyin. 

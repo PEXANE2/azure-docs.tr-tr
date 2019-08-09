@@ -65,13 +65,19 @@
       href: detailed-troubleshoot-ssh-connection.md
 - name: Genel hata iletileri
   href: error-messages.md
-- name: Windows VM’leriyle ilgili performans sorunları
+- name: VM’lerle ilgili performans sorunları
   href: performance-diagnostics.md
   items:
-    - name: PerfInsights’ı kullanma
-      href: how-to-use-perfInsights.md
-    - name: Performans tanılama uzantısı
-      href: performance-diagnostics-vm-extension.md
+    - name: Windows
+      items:
+        - name: PerfInsights’ı kullanma
+          href: how-to-use-perfinsights.md
+        - name: Performans tanılama uzantısı
+          href: performance-diagnostics-vm-extension.md
+    - name: Linux
+      items:
+        - name: PerfInsights’ı kullanma
+          href: how-to-use-perfinsights-linux.md
 - name: Windows VM aracısını çevrimdışı olarak yükleme
   href: install-vm-agent-offline.md
 - name: Bir VM’yi yeniden dağıtma

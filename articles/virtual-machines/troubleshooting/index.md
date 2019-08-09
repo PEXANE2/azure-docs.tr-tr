@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 10/3/2018
 ms.author: genli
-ms.openlocfilehash: 47db174042f7dd2e9d1bd1503c8e8b8f635b4dbe
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 1db5829abd52a1b010d38dd8e9151ab2df3f1de5
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705742"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854399"
 ---
 # <a name="troubleshooting-azure-virtual-machines"></a>Azure sanal makineleriyle ilgili sorunları giderme
 
@@ -34,10 +34,14 @@ ms.locfileid: "67705742"
     - [SSH sorunlarını giderme](troubleshoot-ssh-connection.md)
     - [SSH sorunlarını gidermeyle ilgili ayrıntılar](detailed-troubleshoot-ssh-connection.md)
     - [Genel hata iletileri](error-messages.md)
-    - [Windows VM’leriyle ilgili performans sorunları](performance-diagnostics.md  )
-    - [PerfInsights’ı kullanma](how-to-use-perfInsights.md)
-    - [Performans tanılama uzantısı](performance-diagnostics-vm-extension.md)
 - [Windows VM aracısını çevrimdışı olarak yükleme](install-vm-agent-offline.md)
+- VM performans sorunlarını giderme
+    - [VM’lerle ilgili performans sorunları](performance-diagnostics.md)
+    - Windows
+        - [PerfInsights’ı kullanma](how-to-use-perfinsights.md)
+        - [Performans tanılama uzantısı](performance-diagnostics-vm-extension.md)
+    - Linux
+        - [PerfInsights’ı kullanma](how-to-use-perfinsights-linux.md)
 - Bir VM’yi yeniden dağıtma
     - [Linux](redeploy-to-new-node-linux.md)
     - [Windows](redeploy-to-new-node-windows.md)

@@ -234,7 +234,7 @@
         - name: Başlarken
           href: automation-dsc-getting-started.md
           displayName: DSC
-        - name: DSC yapılandırması oluşturma
+        - name: Linux yapılandırmasını yönetme
           href: automation-quickstart-dsc-configuration.md
           displayName: 'DSC, state configuration, config, node configuration, node'
     - name: Ekleme
