@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/02/2019
+ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 833d0d0b17f7cc22b2ab37b4e225c1a8cce9c592
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 9dcc5fa201c08ca4b1e65b8aae88118731eba427
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385552"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881064"
 ---
 # <a name="outbound-connections-in-azure"></a>Azure 'da giden bağlantılar
 
@@ -66,7 +66,7 @@ Yük dengeli VM bir giden akış oluşturduğunda, Azure giden akışın özel k
 
 Yük dengeleyicinin genel IP adresi ön ucu için kısa ömürlü bağlantı noktaları, VM 'nin kaynaklandığı bireysel akışları ayırt etmek için kullanılır. SNAT, giden akışlar oluşturulduğunda, [önceden ayrılmış kısa ömürlü bağlantı noktalarını](#preallocatedports) dinamik olarak kullanır. Bu bağlamda, SNAT için kullanılan kısa ömürlü bağlantı noktaları SNAT bağlantı noktaları olarak adlandırılır.
 
-SNAT bağlantı noktaları, [SNAT ve Pat 'ı anlama](#snat) bölümünde açıklandığı gibi önceden ayrılır. Bu, tükenebilir sınırlı bir kaynaktır. Bunların nasıl kullanıldığını anlamak [önemlidir.](#pat) Bu tüketim için nasıl tasarlanacağını ve gerekirse etkisini anlamak için, [SNAT tükenmesi yönetimini](#snatexhaust)gözden geçirin.
+SNAT bağlantı noktaları, [SNAT ve Pat 'ı anlama](#snat) bölümünde açıklandığı gibi önceden ayrılır. Bu, tükenebilir sınırlı bir kaynaktır. Bunların nasıl kullanıldığını anlamak önemlidir. [](#pat) Bu tüketim için nasıl tasarlanacağını ve gerekirse etkisini anlamak için, [SNAT tükenmesi yönetimini](#snatexhaust)gözden geçirin.
 
 [Birden çok genel IP adresi Load Balancer temel ile ilişkilendirildiğinde](load-balancer-multivip-overview.md), bu genel IP adreslerinden herhangi biri giden akışlar için aday olur ve rastgele bir seçilir.  
 
@@ -81,7 +81,7 @@ Bu senaryoda, VM ortak bir Load Balancer havuzunun parçası değildir (bir iç 
 
 Azure, bu işlevi gerçekleştirmek için bağlantı noktası geçici ([Pat](#pat)) ile SNAT 'yi kullanır. Bu senaryo, kullanılan IP adresi üzerinde denetim olmaması dışında [Senaryo 2](#lb)' ye benzer. Bu senaryo 1 ve 2 ' nin bulunmadığı durumlarda için bir geri dönüş senaryosudur. Giden adres üzerinde denetim istiyorsanız bu senaryoyu önermiyoruz. Giden bağlantılar uygulamanızın önemli bir parçasıysa, başka bir senaryo seçmeniz gerekir.
 
-SNAT bağlantı noktaları, [SNAT ve Pat 'ı anlama](#snat) bölümünde açıklandığı gibi önceden ayrılır.  Bir kullanılabilirlik kümesini paylaşan VM 'lerin sayısı, hangi ön ayırma katmanının uygulanacağını belirler.  Kullanılabilirlik kümesi olmayan tek başına VM, ön ayırmayı belirleme (1024 SNAT bağlantı noktası) amaçları için etkin bir şekilde 1 havuzu olur. SNAT bağlantı noktaları, tükenebilir sınırlı bir kaynaktır. Bunların nasıl kullanıldığını anlamak [önemlidir.](#pat) Bu tüketim için nasıl tasarlanacağını ve gerekirse etkisini anlamak için, [SNAT tükenmesi yönetimini](#snatexhaust)gözden geçirin.
+SNAT bağlantı noktaları, [SNAT ve Pat 'ı anlama](#snat) bölümünde açıklandığı gibi önceden ayrılır.  Bir kullanılabilirlik kümesini paylaşan VM 'lerin sayısı, hangi ön ayırma katmanının uygulanacağını belirler.  Kullanılabilirlik kümesi olmayan tek başına VM, ön ayırmayı belirleme (1024 SNAT bağlantı noktası) amaçları için etkin bir şekilde 1 havuzu olur. SNAT bağlantı noktaları, tükenebilir sınırlı bir kaynaktır. Bunların nasıl kullanıldığını anlamak önemlidir. [](#pat) Bu tüketim için nasıl tasarlanacağını ve gerekirse etkisini anlamak için, [SNAT tükenmesi yönetimini](#snatexhaust)gözden geçirin.
 
 ### <a name="combinations"></a>Çoklu, Birleşik senaryolar
 
@@ -133,6 +133,10 @@ Her biri farklı bir hedef IP adresi, bağlantı noktası ve protokole birden ç
 
 UDP SNAT bağlantı noktaları, TCP SNAT bağlantı noktalarından farklı bir algoritma tarafından yönetilir.  Load Balancer, UDP için "bağlantı noktası kısıtlanmış koni NAT" olarak bilinen bir algoritma kullanır.  Hedef IP adresi, bağlantı noktasından bağımsız olarak her akış için bir SNAT bağlantı noktası kullanılır.
 
+#### <a name="snat-port-reuse"></a>SNAT bağlantı noktası yeniden kullanımı
+
+Bağlantı noktası yayımlandıktan sonra, bağlantı noktası gerektiğinde yeniden kullanılabilir.  SNAT bağlantı noktalarını, belirli bir senaryo için en düşük ve en yüksek olan kullanılabilir bir sıra olarak düşünebilirsiniz ve yeni bağlantılar için kullanılabilir ilk SNAT bağlantı noktası kullanılır. 
+ 
 #### <a name="exhaustion"></a>Tüken
 
 SNAT bağlantı noktası kaynakları tükendiğinde, mevcut akışlar SNAT bağlantı noktalarını yayınlana kadar giden akışlar başarısız olur. Flow kapandığında geri kazanır SNAT bağlantı noktalarını Load Balancer ve boştaki akışlardan geri kazanma SNAT bağlantı noktaları için [4 dakikalık bir boşta kalma zaman aşımı süresi](#idletimeout) kullanır.

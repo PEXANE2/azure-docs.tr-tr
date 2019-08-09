@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 0696eba4f3cca7beedc2efcda0182ab82b3d69d9
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 377cfbf93e45872e34242f9cd2432195b6ba6f92
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638702"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68849111"
 ---
 # <a name="add-a-shape-to-a-map"></a>Haritaya şekil ekleme
 
@@ -46,6 +46,9 @@ Bu örnek, haritada bir çizgi üzerinde ok simgelerinin nasıl ekleneceğini g�
 <iframe height="500" style="width: 100%;" scrolling="no" title="Oku çizgi üzerinde göster" src="//codepen.io/azuremaps/embed/drBJwX/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 <a href='https://codepen.io'>Codepen</a>üzerinde Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) ile birlikte, kalemin <a href='https://codepen.io/azuremaps/pen/drBJwX/'>göster okuna</a> bakın.
 </iframe>
+
+> [!TIP]
+> Azure Haritalar Web SDK 'Sı, sembol katmanıyla birlikte kullanabileceğiniz çeşitli özelleştirilebilir görüntü şablonları sağlar. Daha fazla bilgi için bkz. [görüntü şablonlarını kullanma](how-to-use-image-templates-web-sdk.md) belgesi.
 
 ### <a name="line-stroke-gradient"></a>Çizgiye vuruş gradyanı ekleme
 
@@ -113,6 +116,10 @@ Bir görüntüyü renklerle bir çokgen doldurmanın yanı sıra, bir resim dese
 <a href='https://codepen.io'>Codepen</a>üzerinde Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/JzQpYX/'>Çokgen dolgusu düzenine</a> bakın.
 </iframe>
 
+
+> [!TIP]
+> Azure Haritalar Web SDK 'Sı, Fill desenleri olarak kullanabileceğiniz çeşitli özelleştirilebilir görüntü şablonları sağlar. Daha fazla bilgi için bkz. [görüntü şablonlarını kullanma](how-to-use-image-templates-web-sdk.md) belgesi.
+
 ### <a name="customize-a-polygon-layer"></a>Çokgen katmanını özelleştirme
 
 Çokgen katmanın yalnızca birkaç stil seçeneği vardır. İşte deneyebileceğiniz bir araç.
@@ -126,7 +133,7 @@ Bir görüntüyü renklerle bir çokgen doldurmanın yanı sıra, bir resim dese
 
 ## <a name="add-a-circle-to-the-map"></a>Haritaya daire ekleme
 
-Azure Maps, coğrafi olarak gösterildiği gibi daireler için bir tanım sağlayan GeoJSON şemasının genişletilmiş bir sürümünü kullanır [.](extend-geojson.md#circle) Bir daire `Point` , değerine sahip bir `subType` `"Circle"` özelliği ve `radius` ölçü cinsinden yarıçapı temsil eden bir sayı olan bir özelliği oluşturarak haritada oluşturulabilir. Örneğin:
+Azure Maps, coğrafi olarak gösterildiği gibi daireler için bir tanım sağlayan GeoJSON şemasının genişletilmiş bir sürümünü kullanır [](extend-geojson.md#circle). Bir daire `Point` , değerine sahip bir `subType` `"Circle"` özelliği ve `radius` ölçü cinsinden yarıçapı temsil eden bir sayı olan bir özelliği oluşturarak haritada oluşturulabilir. Örneğin:
 
 ```javascript
 {
@@ -179,3 +186,6 @@ Haritalarınıza eklenecek daha fazla kod örneği için aşağıdaki makalelere
 
 > [!div class="nextstepaction"]
 > [Veri tabanlı stil ifadeleri kullanın](data-driven-style-expressions-web-sdk.md)
+
+> [!div class="nextstepaction"]
+> [Görüntü şablonlarını kullanma](how-to-use-image-templates-web-sdk.md)

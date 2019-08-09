@@ -7,12 +7,12 @@ ms.date: 07/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 5e707fb004af7bbce915baf4b059514fcae8e52b
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 7dd053e3a9824ac0817db528b8b053666e1ded04
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725937"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881809"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Konuk yapılandırma ilkeleri oluşturma
 
@@ -321,6 +321,14 @@ Azure 'da oluşturulan ilke ve girişim tanımlarıyla, son adım girişimi atay
 
 Güncelleştirilmiş bir paketi yayımlamanın en kolay yolu, bu makalede açıklanan süreci tekrarlamanız ve güncelleştirilmiş bir sürüm numarası sağlamaktır.
 Bu, tüm özelliklerin doğru şekilde güncelleştirildiğinden emin olacak.
+
+## <a name="converting-windows-group-policy-content-to-azure-policy-guest-configuration"></a>Windows grup ilkesi içeriğini Azure Ilke Konuk yapılandırması 'na dönüştürme
+
+Konuk yapılandırması, Windows makinelerini denetlerken, PowerShell Istenen durum yapılandırması sözdiziminin bir uygulamasıdır.
+DSC topluluğu, içe aktarılmış grup ilkesi şablonlarını DSC biçimine dönüştürmek için araç yayımladı.
+Yukarıda açıklanan Konuk yapılandırma cmdlet 'leriyle birlikte bu aracı kullanarak Windows grup ilkesi içeriğini ve paketini dönüştürebilir/Azure Ilkesi için onu denetlemek üzere yayımlayabilirsiniz.
+Aracı kullanma hakkında ayrıntılı bilgi için hızlı başlangıç makalesine [bakın: Grup ilkesi DSC](/powershell/dsc/quickstarts/gpo-quickstart)'ye dönüştürün.
+İçerik dönüştürüldükten sonra, bir pakcage oluşturmak ve Azure Ilkesi olarak yayımlamak için yukarıdaki adımlar, her DSC içeriğiyle aynı olacaktır.
 
 ## <a name="optional-signing-guest-configuration-packages"></a>SEÇIM Konuk yapılandırma paketleri imzalanıyor
 

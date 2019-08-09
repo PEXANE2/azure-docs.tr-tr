@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
-ms.date: 11/07/2019
-ms.openlocfilehash: 19a7f749ffb1af4f712d23abcd52d91653ad4544
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 07/11/2019
+ms.openlocfilehash: 9508ce927ef03c83f1c4ef7bf28d2fc02b831a99
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567383"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879934"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Azure SQL veritabanı yönetilen örneğine örnek geçişi SQL Server
 
@@ -190,7 +190,7 @@ Tam olarak yönetilen bir platformda olduğunuzda ve iş yükü performansların
 Geçiş sırasında yönetilen örnekte bazı değişiklikler yapmasanız bile, en son veritabanı altyapısı geliştirmelerinden faydalanmak için örneğinizi çalıştırırken yeni özelliklerden bazılarını açmanıza çok daha yüksek bir şansınız vardır. Bazı değişiklikler yalnızca [veritabanı uyumluluk düzeyi değiştirildikten](https://docs.microsoft.com/sql/relational-databases/databases/view-or-change-the-compatibility-level-of-a-database)sonra etkinleştirilir.
 
 
-Örneğin, yönetilen örnek üzerinde yedeklemeler oluşturmanız gerekmez; hizmet yedeklemeleri sizin için otomatik olarak gerçekleştirir. Yedeklemeleri zamanlama, alma ve yönetme konusunda artık endişelenmeniz gerekmez. Yönetilen örnek, bu bekletme döneminde zaman içindeki herhangi bir noktaya geri yükleme olanağını, zaman içindeki bir [noktaya kurtarma (sür)](sql-database-recovery-using-backups.md#point-in-time-restore)kullanarak sağlar. Ayrıca, yüksek kullanılabilirlik [yerleşik olarak ayarlanması](sql-database-high-availability.md) konusunda endişelenmeniz gerekmez.
+Örneğin, yönetilen örnek üzerinde yedeklemeler oluşturmanız gerekmez; hizmet yedeklemeleri sizin için otomatik olarak gerçekleştirir. Yedeklemeleri zamanlama, alma ve yönetme konusunda artık endişelenmeniz gerekmez. Yönetilen örnek, bu bekletme döneminde zaman içindeki herhangi bir noktaya geri yükleme olanağını, zaman içindeki bir [noktaya kurtarma (sür)](sql-database-recovery-using-backups.md#point-in-time-restore)kullanarak sağlar. Ayrıca, yüksek kullanılabilirlik yerleşik olarak ayarlanması konusunda endişelenmeniz gerekmez. [](sql-database-high-availability.md)
 
 Güvenliği güçlendirin, [Azure Active Directory kimlik doğrulaması](sql-database-security-overview.md), [Denetim](sql-database-managed-instance-auditing.md), [tehdit algılama](sql-database-advanced-data-security.md), [satır düzeyi güvenlik](https://docs.microsoft.com/sql/relational-databases/security/row-level-security)ve [dinamik veri maskeleme](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking) kullanmayı düşünün.
 

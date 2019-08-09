@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: b7bf9943afa2a79f98fd28d15e5ea46fa63af732
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 6a929359c0e4e0a5c64eadbf41f565dfeb56a233
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688638"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854106"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Azure VM’lerinde SQL Server veritabanlarını yedekleme
 
@@ -177,7 +177,7 @@ VM üzerinde çalışan veritabanlarını bulma:
 
     ![Always on kullanılabilirlik grubu için otomatik korumayı etkinleştir](./media/backup-azure-sql-database/enable-auto-protection.png)
 
-5. **Yedekleme ilkesi**' nde bir ilke seçin ve ardından **Tamam**' ı seçin.
+5. **Yedekleme ilkesi**' nde bir ilke seçin ve ardından **Tamam**' ı seçin.
 
    - Varsayılan ilkeyi HourlyLogBackup olarak seçin.
    - Daha önce SQL için oluşturulmuş mevcut bir yedekleme ilkesi seçin.
@@ -185,11 +185,11 @@ VM üzerinde çalışan veritabanlarını bulma:
 
      ![Yedekleme ilkesi seçin](./media/backup-azure-sql-database/select-backup-policy.png)
 
-6.  **Yedekleme**'de **yedeklemeyi etkinleştir**' i seçin.
+6. **Yedekleme**'de **yedeklemeyi etkinleştir**' i seçin.
 
     ![Seçilen yedekleme ilkesini etkinleştir](./media/backup-azure-sql-database/enable-backup-button.png)
 
-7. Portalın **Bildirimler** alanındaki yapılandırma ilerlemesini izleyin.
+7. Portalın **Bildirimler** alanındaki yapılandırma ilerlemesini izleyin.
 
     ![Bildirim alanı](./media/backup-azure-sql-database/notifications-area.png)
 
@@ -215,7 +215,7 @@ Bir yedekleme ilkesi oluşturmak için:
 
    - **Günlük**için, yedekleme işinin başladığı saat ve saat dilimini seçin.
    - **Haftalık**olarak, yedekleme işinin başladığı hafta, saat ve saat diliminin gününü seçin.
-   - Tam **Yedekleme seçeneğini** kapatamadığı için tam yedekleme çalıştırın.
+   - Tam yedekleme seçeneğini kapatamadığı için tam yedekleme çalıştırın.
    - İlkeyi görüntülemek için **tam yedekleme** ' yi seçin.
    - Günlük tam yedeklemeler için fark yedeklemeleri oluşturamazsınız.
 
@@ -273,7 +273,7 @@ Otomatik korumayı, tüm mevcut ve gelecekteki veritabanlarını tek başına bi
 
 - Tek seferde otomatik koruma için seçebileceğiniz veritabanı sayısı için bir sınır yoktur.
 - Otomatik korumayı etkinleştirdiğiniz sırada bir örnekteki veritabanlarını seçmeli olarak koruyamazsınız veya dışlayabilirsiniz.
-- Örneğiniz zaten bazı korumalı veritabanları içeriyorsa, otomatik korumayı etkinleştirdikten sonra bile kendi ilkeleri altında korunmaları gerekir. Daha sonra eklenen tüm korumasız veritabanları, otomatik korumayı etkinleştirme sırasında, **yedeklemeyi Yapılandır**altında listelenen tek bir ilkeye sahip olacaktır. Ancak, bir otomatik korumalı veritabanıyla ilişkili ilkeyi daha sonra değiştirebilirsiniz.  
+- Örneğiniz zaten bazı korumalı veritabanları içeriyorsa, otomatik korumayı etkinleştirdikten sonra bile kendi ilkeleri altında korunmaları gerekir. Daha sonra eklenen tüm korumasız veritabanları, otomatik korumayı etkinleştirme sırasında, **yedeklemeyi Yapılandır**altında listelenen tek bir ilkeye sahip olacaktır. Ancak, bir otomatik korumalı veritabanıyla ilişkili ilkeyi daha sonra değiştirebilirsiniz.  
 
 Otomatik korumayı etkinleştirmek için:
 
@@ -288,7 +288,7 @@ Otomatik korumayı devre dışı bırakmanız gerekirse, **yedeklemeyi Yapıland
 
 ![Bu örnekte otomatik korumayı devre dışı bırak](./media/backup-azure-sql-database/disable-auto-protection.png)
 
- 
+ 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Şunları nasıl yapacağınızı öğrenin:

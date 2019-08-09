@@ -4,14 +4,14 @@ description: Azure geçişi hakkında sık sorulan soruları adresleyen
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 08/07/2019
 ms.author: snehaa
-ms.openlocfilehash: 0708502087ae6880d9559cf17f0ba9982b2ba040
-ms.sourcegitcommit: 57a7d4f67635212f5bf0c56e58fd87c8ec366f2c
+ms.openlocfilehash: bf591306220b2c8c1e6c8166686836d96432fc7d
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68372478"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856271"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure geçişi-sık sorulan sorular (SSS)
 
@@ -43,7 +43,7 @@ Azure geçişi gereci için gereken iletişim ve güvenlik duvarı kuralları ol
 
 ### <a name="what-data-is-collected-by-azure-migrate-appliance"></a>Azure geçişi gereci hangi verileri toplamıştır?
 
-Azure geçiş gereci tarafından toplanan veriler hakkında ayrıntılı bilgi [edinebilirsiniz.](https://docs.microsoft.com/azure/migrate/migrate-appliance#collected-performance-data-vmware)
+Azure geçiş gereci tarafından toplanan veriler hakkında ayrıntılı bilgi edinebilirsiniz. [](https://docs.microsoft.com/azure/migrate/migrate-appliance#collected-performance-data-vmware)
 
 ### <a name="is-there-any-performance-impact-on-the-analyzed-vmware-or-hyper-v-environment"></a>Çözümlenen VMware veya Hyper-V ortamında herhangi bir performans etkisi var mı?
 
@@ -71,7 +71,8 @@ Gereç, gereci ayarlarken belirtilen kimlik bilgilerini kullanarak vCenter Serve
 
 ### <a name="can-i-connect-the-same-appliance-to-multiple-vcenter-servers"></a>Aynı gereci birden çok vCenter sunucusuna bağlanabilir miyim?
 
-Evet, tek bir Azure geçişi gereci birden çok vCenter sunucusunu (eşzamanlı değil) keşfetmesi için kullanılabilir. Bulmalar ' dan sonra bir tane çalıştırmanız gerekir.
+Hayır. Bir gereç ve vCenter Server arasında bire bir eşleme vardır. Birden çok vCenter Server üzerinde VM 'Leri bulmanız gerekiyorsa, birden çok gereç dağıtmanız gerekir. 
+
 
 ### <a name="i-changed-my-machine-size-can-i-rerun-an-assessment"></a>Makine boyutumu değiştirdim. Bir değerlendirmeyi yeniden çalıştırabilir miyim?
 

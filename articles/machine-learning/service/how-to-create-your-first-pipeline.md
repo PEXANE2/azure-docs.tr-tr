@@ -11,16 +11,20 @@ ms.author: sanpil
 author: sanpil
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3f0b764b16c1b550c9afa4107449c1b02815e8d1
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 497c4d9708a7b67bf0b5433c455d90dd277297d7
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668496"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68873604"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-by-using-azure-machine-learning-sdk"></a>Azure Machine Learning SDK kullanarak makine öğrenimi işlem hattı oluşturma ve çalıştırma
 
-Bu makalede, [Azure MACHINE LEARNING SDK](https://aka.ms/aml-sdk)kullanarak [makine öğrenimi ardışık düzeni](concept-ml-pipelines.md) oluşturmayı, yayımlamayı, çalıştırmayı ve izlemeyi öğreneceksiniz.  Bu komut zincirleri oluşturmak ve çeşitli makine öğrenme aşamaları birleştirmek iş akışlarını yönetme yardımcı olur. Veri hazırlama ve modeli eğitimi gibi bir Ardışık düzenin her aşaması, bir veya daha fazla adım ekleyebilirsiniz.
+Bu makalede, [Azure MACHINE LEARNING SDK](https://aka.ms/aml-sdk)kullanarak [makine öğrenimi ardışık düzeni](concept-ml-pipelines.md) oluşturmayı, yayımlamayı, çalıştırmayı ve izlemeyi öğreneceksiniz.  Çeşitli ML aşamalarını içeren bir iş akışı oluşturmak için **ml işlem hatlarını** kullanın ve ardından bu işlem hattını daha sonra erişmek veya diğer kişilerle paylaşmak için Azure Machine Learning çalışma alanınıza yayımlayın.  
+
+(CI/CD) ml görevlerini de otomatikleştirmek için bir [Azure Işlem hattı](https://docs.microsoft.com/en-us/azure/devops/pipelines/targets/azure-machine-learning?context=azure%2Fmachine-learning%2Fservice%2Fcontext%2Fml-context&view=azure-devops&tabs=yaml) kullanabilirsiniz, ancak bu işlem hattı türü çalışma alanınızda depolanmaz. [Bu işlem hattı türlerini karşılaştırın](concept-ml-pipelines.md#which-azure-pipeline-technology-should-i-use).
+
+Veri hazırlama ve modeli eğitimi gibi bir Ardışık düzenin her aşaması, bir veya daha fazla adım ekleyebilirsiniz.
 
 Oluşturduğunuz işlem hattı, Azure Machine Learning hizmeti üyelerine görünür [çalışma](how-to-manage-workspace.md). 
 

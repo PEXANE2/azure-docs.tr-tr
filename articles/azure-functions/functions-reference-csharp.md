@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 12/12/2017
 ms.author: glenga
-ms.openlocfilehash: 3ac9d8d64e4f16a4d6268606e723b14e32d8c16e
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: e4460dd7131e35ee8b3f3112977099276da2d4ce
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68261778"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68849415"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Işlevleri C# betiği (. CSX) geliştirici başvurusu
 
@@ -206,10 +206,10 @@ public class Order
     public override String ToString()
     {
         return "\n{\n\torderId : " + orderId +
-                  "\n\tcustName : " + custName +             
-                  "\n\tcustAddress : " + custAddress +             
-                  "\n\tcustEmail : " + custEmail +             
-                  "\n\tcartId : " + cartId + "\n}";             
+                  "\n\tcustName : " + custName +
+                  "\n\tcustAddress : " + custAddress +
+                  "\n\tcustEmail : " + custEmail +
+                  "\n\tcartId : " + cartId + "\n}";
     }
 }
 ```
@@ -220,7 +220,7 @@ public class Order
 * `#load "loadedfiles\mylogger.csx"`işlev klasöründeki bir klasörde bulunan bir dosyayı yükler.
 * `#load "..\shared\mylogger.csx"`bir klasörde bulunan bir dosyayı işlev klasörüyle aynı düzeyde, yani doğrudan *Wwwroot*altında yükler.
 
-Yönergesi. cs dosyalarıyla değil yalnızca *. CSX* dosyaları ile birlikte kullanılabilir. ** `#load`
+Yönergesi. cs dosyalarıyla değil yalnızca *. CSX* dosyaları ile birlikte kullanılabilir. `#load`
 
 ## <a name="binding-to-method-return-value"></a>Metot dönüş değerine bağlama
 
@@ -383,19 +383,19 @@ NuGet paketlerini bir 2. x C# işlevinde kullanmak için işlev uygulamasının 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
     </PropertyGroup>
-    
+
     <ItemGroup>
         <PackageReference Include="Microsoft.ProjectOxford.Face" Version="1.1.0" />
     </ItemGroup>
 </Project>
 ```
 
-Özel bir NuGet akışı kullanmak için, akışı İşlev Uygulaması kökündeki bir *NuGet. config* dosyasında belirtin. Daha fazla bilgi için bkz. [NuGet davranışını yapılandırma](/nuget/consume-packages/configuring-nuget-behavior). 
+Özel bir NuGet akışı kullanmak için, akışı İşlev Uygulaması kökündeki bir *NuGet. config* dosyasında belirtin. Daha fazla bilgi için bkz. [NuGet davranışını yapılandırma](/nuget/consume-packages/configuring-nuget-behavior).
 
 > [!NOTE]
 > 1\. x C# Işlevlerinde, NuGet paketlerine bir *function. proj* dosyası yerine bir *Project. JSON* dosyası ile başvurulur.
 
-1\. x işlevleri için bunun yerine bir *Project. JSON* dosyası kullanın. Örnek bir *Project. JSON* dosyası aşağıda verilmiştir: 
+1\. x işlevleri için bunun yerine bir *Project. JSON* dosyası kullanın. Örnek bir *Project. JSON* dosyası aşağıda verilmiştir:
 
 ```json
 {
@@ -446,7 +446,7 @@ public static string GetEnvironmentVariable(string name)
 }
 ```
 
-<a name="imperative-bindings"></a> 
+<a name="imperative-bindings"></a>
 
 ## <a name="binding-at-runtime"></a>Çalışma zamanında bağlama
 
@@ -454,7 +454,7 @@ Ve diğer .NET dillerinde, *function. JSON*içindeki [bildirim temelli](https://
 
 Zorunlu bir bağlamayı aşağıdaki gibi tanımlayın:
 
-- İstediğiniz kesinlik bağlamalarınız için *function. JSON* içine bir **giriş eklemeyin.**
+- İstediğiniz kesinlik bağlamalarınız için *function. JSON* içine bir giriş eklemeyin.
 - Bir giriş parametresi [`Binder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs) veya [`IBinder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs)olarak geçirin.
 - Veri bağlamayı gerçekleştirmek C# için aşağıdaki kalıbı kullanın.
 
@@ -465,7 +465,7 @@ using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
 }
 ```
 
-`BindingTypeAttribute`, bağlamalarınızı tanımlayan ve `T` bu bağlama türü tarafından desteklenen bir giriş veya çıkış türü olan .net özniteliğidir. `T`bir `out` parametre türü ( `out JObject`gibi) olamaz. Örneğin, Mobile Apps tablo çıkış bağlaması [altı çıkış türünü](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22)destekler, ancak için `T`yalnızca [\<ICollector T >](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) veya [ıasynccollector\<T >](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) kullanabilirsiniz.
+`BindingTypeAttribute`, bağlamalarınızı tanımlayan ve `T` bu bağlama türü tarafından desteklenen bir giriş veya çıkış türü olan .net özniteliğidir. `T`bir `out` parametre türü ( `out JObject`gibi) olamaz. Örneğin, Mobile Apps tablo çıkış bağlaması [altı çıkış türünü](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22)destekler, ancak yalnızca [\<ICollector T >](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) veya [`IAsyncCollector<T>`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) için `T`kullanabilirsiniz.
 
 ### <a name="single-attribute-example"></a>Tek öznitelik örneği
 
@@ -497,7 +497,7 @@ using Microsoft.Azure.WebJobs.Host.Bindings.Runtime;
 public static async Task Run(string input, Binder binder)
 {
     var attributes = new Attribute[]
-    {    
+    {
         new BlobAttribute("samples-output/path"),
         new StorageAccountAttribute("MyStorageAccount")
     };
@@ -520,7 +520,7 @@ Aşağıdaki tabloda, her bir bağlama türü ve tanımlandıkları paketler iç
 > | Notification Hubs | [`Microsoft.Azure.WebJobs.NotificationHubAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.NotificationHubs/NotificationHubAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.NotificationHubs"` |
 > | Service Bus | [`Microsoft.Azure.WebJobs.ServiceBusAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAttribute.cs), [`Microsoft.Azure.WebJobs.ServiceBusAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAccountAttribute.cs) | `#r "Microsoft.Azure.WebJobs.ServiceBus"` |
 > | Depolama kuyruğu | [`Microsoft.Azure.WebJobs.QueueAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueAttribute.cs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
-> | Depolama Blobu | [`Microsoft.Azure.WebJobs.BlobAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
+> | Depolama blob'u | [`Microsoft.Azure.WebJobs.BlobAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
 > | Depolama tablosu | [`Microsoft.Azure.WebJobs.TableAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
 > | Twilio | [`Microsoft.Azure.WebJobs.TwilioSmsAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.Twilio"` |
 

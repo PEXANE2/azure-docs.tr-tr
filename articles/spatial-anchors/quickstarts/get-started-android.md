@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: f7387b210c1499ff0a19fe17667090be0c2c0933
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 40969362e339770f18374ff22af5b3fe63908e65
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561407"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68845740"
 ---
 # <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>Hızlı Başlangıç: Azure uzamsal bağlayıcılarla bir Android uygulaması oluşturma
 
@@ -37,6 +37,7 @@ Bu hızlı başlangıcı tamamlamak için aşağıdakileri yaptığınızdan emi
   - MacOS üzerinde çalışıyorsa, HomeBrew aracılığıyla Git ' i alın. Terminalin tek bir satırına şu komutu girin: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Ardından, öğesini `brew install git`çalıştırın.
   - NDK örneğini oluşturmak için, Android Studio ' de NDK ve CMake 3,6 veya daha büyük SDK Tools yüklemeniz gerekir.
 - <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">Geliştirici etkin</a> ve <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">korumalı</a> bir Android cihaz.
+  - Bilgisayarınızın Android cihazından iletişim kurması için ek cihaz sürücüleri gerekebilir. Ek bilgi ve yönergeler için [buraya](https://developer.android.com/studio/run/device.html) bakın.
 - Uygulamanızın ARCore **1,8**' i hedeflemesi gerekir.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]

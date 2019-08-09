@@ -1,22 +1,22 @@
 ---
-title: Azure dosyaları için SMB üzerinden Azure Active Directory kimlik doğrulamasına genel bakış (Önizleme)-Azure depolama
-description: Azure dosyaları, Azure Active Directory (Azure AD) etki alanı Hizmetleri aracılığıyla SMB (sunucu Ileti bloğu) (Önizleme) üzerinden kimlik tabanlı kimlik doğrulamasını destekler. Etki alanına katılmış Windows sanal makineleriniz (VM), Azure AD kimlik bilgilerini kullanarak Azure dosya paylaşımlarına erişebilir.
+title: Azure dosyaları için SMB üzerinden Azure Active Directory kimlik doğrulamasına genel bakış-Azure depolama
+description: Azure dosyaları, Azure Active Directory (Azure AD) etki alanı Hizmetleri aracılığıyla SMB (sunucu Ileti bloğu) üzerinden kimlik tabanlı kimlik doğrulamasını destekler. Etki alanına katılmış Windows sanal makineleriniz (VM), Azure AD kimlik bilgilerini kullanarak Azure dosya paylaşımlarına erişebilir.
 author: roygara
 ms.service: storage
-ms.topic: conceptual
-ms.date: 06/18/2019
+ms.topic: article
+ms.date: 07/30/2019
 ms.author: rogarana
-ms.openlocfilehash: b1bc7385751fbd1829b4aee2713621448f8aa505
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 604cf2bbe0cf8ab036c76ee9223d1ee34fd4bd3d
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699731"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854565"
 ---
-# <a name="overview-of-azure-files-azure-active-directory-domain-service-aad-ds-authentication-support-for-smb-access-preview"></a>SMB erişimi için Azure Active Directory etki alanı hizmeti (AAD DS) kimlik doğrulama desteğiyle Azure dosyalarına genel bakış (Önizleme)
+# <a name="overview-of-azure-files-azure-active-directory-domain-service-azure-ad-ds-authentication-support-for-smb-access"></a>SMB erişimi için Azure dosyalarına Azure Active Directory etki alanı hizmeti (Azure AD DS) kimlik doğrulama desteği 'ne genel bakış
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
 
-Azure dosyaları için AAD DS kimlik doğrulamasını etkinleştirme hakkında bilgi edinmek için bkz. [Azure dosyaları IÇIN SMB üzerinden Azure Active Directory etki alanı hizmeti kimlik doğrulamasını etkinleştirme (Önizleme)](storage-files-active-directory-enable.md).
+Azure dosyaları için Azure AD DS kimlik doğrulamasını etkinleştirme hakkında bilgi edinmek için bkz. [Azure dosyaları IÇIN SMB üzerinden Azure Active Directory etki alanı hizmeti kimlik doğrulamasını etkinleştirme](storage-files-active-directory-enable.md).
 
 ## <a name="glossary"></a>Sözlük 
 Azure dosyaları için SMB üzerinden Azure AD etki alanı hizmet kimlik doğrulamasıyla ilgili bazı önemli koşulları anlamak yararlı olabilir:
@@ -41,7 +41,7 @@ Azure dosyaları için SMB üzerinden Azure AD etki alanı hizmet kimlik doğrul
 Azure dosyaları için Azure AD etki alanı hizmeti kimlik doğrulaması, paylaşılan anahtar kimlik doğrulamasını kullanarak çeşitli avantajlar sunar:
 
 -   **Azure AD ve Azure AD etki alanı hizmeti ile geleneksel kimlik tabanlı dosya paylaşma erişim deneyimini buluta genişletin**  
-    Uygulamanızı buluta "kaldırma ve kaydırma" planlıyorsanız, geleneksel dosya sunucularını Azure dosyaları ile değiştirerek, uygulamanızın dosya verilerine erişmek için Azure AD kimlik bilgileriyle kimlik doğrulaması yapmasını isteyebilirsiniz. Azure dosyaları, Azure dosyalarına AAD DS etki alanına katılmış Windows VM 'lerinden SMB üzerinden erişmek için Azure AD kimlik bilgilerini kullanmayı destekler. Ayrıca, Kullanıcı adlarını, parolaları ve diğer grup atamalarını korumak için tüm şirket içi Active Directory nesnelerinizi Azure AD 'ye eşitlemeyi tercih edebilirsiniz.
+    Uygulamanızı buluta "kaldırma ve kaydırma" planlıyorsanız, geleneksel dosya sunucularını Azure dosyaları ile değiştirerek, uygulamanızın dosya verilerine erişmek için Azure AD kimlik bilgileriyle kimlik doğrulaması yapmasını isteyebilirsiniz. Azure dosyaları, Azure AD DS etki alanına katılmış Windows VM 'lerinden SMB üzerinden Azure dosyalarına erişmek için Azure AD kimlik bilgilerinin kullanılmasını destekler. Ayrıca, Kullanıcı adlarını, parolaları ve diğer grup atamalarını korumak için tüm şirket içi Active Directory nesnelerinizi Azure AD 'ye eşitlemeyi tercih edebilirsiniz.
 
 -   **Azure dosya paylaşımlarında ayrıntılı erişim denetimi uygulayın**  
     Paylaşıma, dizine veya dosya düzeyinde belirli bir kimliğe izin verebilirsiniz. Örneğin, proje işbirliği için tek bir Azure dosya paylaşımının kullanıldığı birkaç ekibin olduğunu varsayalım. Tüm takımlara hassas olmayan dizinlere erişim izni verebilirsiniz, ancak gizli finansal verileri içeren dizinlere erişimi yalnızca finans ekibinize kısıtlar. 
@@ -61,18 +61,15 @@ Bir VM üzerinde çalışan bir uygulamayla ilişkili bir kimlik, Azure dosyalar
 
 Bu özelliği etkinleştirmeden önce, depolama hesabınızın ilişkilendirildiği birincil Azure AD kiracısı için Azure AD Domain Services dağıtıldığını doğrulayın. Azure AD Domain Services henüz ayarlanmamışsa, [Azure Portal kullanarak Azure Active Directory Domain Services etkinleştir](../../active-directory-domain-services/create-instance.md)bölümünde sunulan adım adım yönergeleri izleyin.
 
-Azure AD Domain Services dağıtımı genellikle 10 ila 15 dakika sürer. Azure AD Domain Services dağıtıldıktan sonra, Azure dosyaları için SMB üzerinden Azure AD kimlik doğrulamasını etkinleştirebilirsiniz. Daha fazla bilgi için bkz. [Azure dosyaları IÇIN SMB üzerinden Azure Active Directory etki alanı hizmeti kimlik doğrulamasını etkinleştirme (Önizleme)](storage-files-active-directory-enable.md). 
+Azure AD Domain Services dağıtımı genellikle 10 ila 15 dakika sürer. Azure AD Domain Services dağıtıldıktan sonra, Azure dosyaları için SMB üzerinden Azure AD kimlik doğrulamasını etkinleştirebilirsiniz. Daha fazla bilgi için bkz. [Azure dosyaları IÇIN SMB üzerinden Azure Active Directory etki alanı hizmeti kimlik doğrulamasını etkinleştirme](storage-files-active-directory-enable.md). 
 
 ### <a name="configure-share-level-permissions-for-azure-files"></a>Azure dosyaları için paylaşma düzeyi izinleri yapılandırma
 Azure AD etki alanı hizmeti kimlik doğrulaması etkinleştirildikten sonra, Azure AD kimlikleri için özel RBAC rolleri yapılandırabilir ve depolama hesabındaki herhangi bir dosya paylaşımına erişim hakları atayabilirsiniz.
 
-Etki alanına katılmış bir VM üzerinde çalışan bir uygulama bir Azure dosya paylaşımının bağlamaya veya bir dizin ya da dosyaya erişmeye çalıştığında, doğru bir paylaşımın düzeyi izinlerinin ve NTFS izinlerinin olduğundan emin olmak için uygulamanın Azure AD kimlik bilgileri doğrulanır. Paylaşma düzeyi izinlerini yapılandırma hakkında daha fazla bilgi için bkz. [SMB üzerinden Azure Active Directory etki alanı hizmeti kimlik doğrulamasını etkinleştirme (Önizleme)](storage-files-active-directory-enable.md).
+Etki alanına katılmış bir VM üzerinde çalışan bir uygulama bir Azure dosya paylaşımının bağlamaya veya bir dizin ya da dosyaya erişmeye çalıştığında, doğru bir paylaşımın düzeyi izinlerinin ve NTFS izinlerinin olduğundan emin olmak için uygulamanın Azure AD kimlik bilgileri doğrulanır. Paylaşma düzeyi izinlerini yapılandırma hakkında daha fazla bilgi için bkz. [SMB üzerinden Azure Active Directory etki alanı hizmeti kimlik doğrulamasını etkinleştirme](storage-files-active-directory-enable.md).
 
 ### <a name="configure-directory--or-file-level-permissions-for-azure-files"></a>Azure dosyaları için dizin veya dosya düzeyi izinlerini yapılandırma 
-Azure dosyaları, kök dizine dahil olmak üzere dizin ve dosya düzeyinde standart NTFS dosya izinlerini zorlar. Dizin veya dosya düzeyi izinlerinin yapılandırılması yalnızca SMB üzerinden desteklenir. Hedef dosya paylaşımının VM 'nizden bağlama ve Windows [ıacl](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) veya [set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-acl) komutunu kullanarak izinleri yapılandırma. 
-
-> [!NOTE]
-> Windows Dosya Gezgini aracılığıyla NTFS izinlerini yapılandırma önizlemede desteklenmez.
+Azure dosyaları, kök dizine dahil olmak üzere dizin ve dosya düzeyinde standart NTFS dosya izinlerini zorlar. Dizin veya dosya düzeyi izinlerinin yapılandırılması yalnızca SMB üzerinden desteklenir. Hedef dosya paylaşımının VM 'nizden bağlama ve Windows Dosya Gezgini, Windows [ıccacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) veya [set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-acl) komutunu kullanarak izinleri yapılandırma. 
 
 ### <a name="use-the-storage-account-key-for-superuser-permissions"></a>Süper Kullanıcı izinleri için depolama hesabı anahtarını kullan 
 Depolama hesabı anahtarını taşıyan bir Kullanıcı, Azure dosyalarına Süper Kullanıcı izinleriyle erişebilir. Süper Kullanıcı izinleri, paylaşılan düzeyinde yapılandırılmış tüm erişim denetimi kısıtlamalarını RBAC ve Azure AD tarafından zorlanan şekilde iletir. Azure dosya paylaşımının bağlanması için süper kullanıcı izinleri gerekir. 
@@ -86,9 +83,9 @@ Azure dosyaları artık Azure dosya paylaşımlarına veri kopyaladığınızda 
 ## <a name="pricing"></a>Fiyatlandırma
 Depolama hesabınızda SMB üzerinden Azure AD kimlik doğrulamasını etkinleştirmek için başka bir hizmet ücreti yoktur. Fiyatlandırma hakkında daha fazla bilgi için bkz. [Azure dosyaları fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/files/) ve [Azure AD Domain Services fiyatlandırma](https://azure.microsoft.com/pricing/details/active-directory-ds/) sayfaları.
 
-## <a name="next-steps"></a>Sonraki Adımlar
+## <a name="next-steps"></a>Sonraki adımlar
 SMB üzerinden Azure dosyaları ve Azure AD kimlik doğrulaması hakkında daha fazla bilgi için şu kaynaklara bakın:
 
 - [Azure dosyaları 'na giriş](storage-files-introduction.md)
-- [Azure dosyaları için SMB üzerinden Azure Active Directory kimlik doğrulamasını etkinleştirme (Önizleme)](storage-files-active-directory-enable.md)
+- [Azure dosyaları için SMB üzerinden Azure Active Directory kimlik doğrulamasını etkinleştirme](storage-files-active-directory-enable.md)
 - [SSS](storage-files-faq.md)

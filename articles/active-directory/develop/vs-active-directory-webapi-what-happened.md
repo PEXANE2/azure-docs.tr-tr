@@ -1,26 +1,23 @@
 ---
 title: Azure AD 'ye bağlandığınızda bir WebAPI projesinde yapılan değişiklikler
 description: Visual Studio kullanarak Azure AD 'ye bağlandığınızda, WebAPI projenizde ne olacağını açıklar.
-services: active-directory
 author: ghogen
-manager: douge
-ms.service: active-directory
-ms.subservice: develop
+manager: jillfra
 ms.assetid: 57630aee-26a2-4326-9dbb-ea2a66daa8b0
-ms.prod: visual-studio-dev15
-ms.technology: vs-azure
 ms.workload: azure-vs
+ms.prod: visual-studio-windows
+ms.technology: vs-azure
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19a36ca4b194d8031b4a263a092ecb52be74cdd0
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 32fc72d22d3f739018df22c315d7a1a3124c8823
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68324282"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851797"
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>WebAPI projem 'e ne oldu (Visual Studio Azure Active Directory bağlı hizmeti)
 
@@ -30,7 +27,7 @@ ms.locfileid: "68324282"
 
 Bu makalede, [Visual Studio kullanarak Azure Active Directory bağlı hizmeti](vs-active-directory-add-connected-service.md)eklenirken ASP.net WebAPI, ASP.net tek sayfalı uygulama ve ASP.net Azure API projelerinde yapılan tam değişiklikler tanımlanmaktadır. Visual Studio 2015 ' de ASP.NET Azure mobil hizmet projeleri için de geçerlidir.
 
-Bağlı hizmetle çalışma hakkında daha fazla bilgi için [bkz. Başlarken](vs-active-directory-webapi-getting-started.md).
+Bağlı hizmetle çalışma hakkında daha fazla bilgi için bkz. [](vs-active-directory-webapi-getting-started.md)Başlarken.
 
 ## <a name="added-references"></a>Eklenen başvurular
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 65777a87cd042a4d8b3b14255dbf99241cd42e18
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: f8777a3d0eb9b97fff6f492f181a432d98d9341c
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638758"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68849301"
 ---
 # <a name="add-html-markers-to-the-map"></a>Haritaya HTML işaretçileri ekleyin
 
@@ -37,7 +37,7 @@ Htmlişaretleyici sınıfının varsayılan bir stili vardır. İşaretin renk v
 
 Yukarıdaki kodda, ilk kod bloğu bir harita nesnesi oluşturur. Yönergeler için [bir harita oluşturma](./map-create.md) ' ya bakabilirsiniz.
 
-İkinci kod bloğu [harita sınıfının](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) [işaretçiler](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#markers) özelliğini kullanarak haritaya bir [htmlişaretleyici](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker?view=azure-iot-typescript-latest) ekler. , Eşleme tam olarak yüklendikten sonra görüntülendiğinden emin olmak için, [olay dinleyicisi](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) işlevi Içindeki haritaya htmlişaretleyici eklenir.
+İkinci kod bloğu harita sınıfının [işaretçiler](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#markers) özelliğini kullanarak haritaya bir [htmlişaretleyici](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker?view=azure-iot-typescript-latest) ekler. [](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) , Eşleme tam olarak yüklendikten sonra görüntülendiğinden emin olmak için, [olay dinleyicisi](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) işlevi Içindeki haritaya htmlişaretleyici eklenir.
 
 ## <a name="create-svg-templated-html-marker"></a>SVG şablonu oluşturma HTML işaretleyicisi
 
@@ -47,6 +47,9 @@ HTML işaretleyicisinin varsayılan değer `htmlContent` , yer klasörleri `{col
 
 <iframe height='500' scrolling='no' title='Özel SVG şablonuyla HTML Işaretleyicisi' src='//codepen.io/azuremaps/embed/LXqMWx/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>'da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) ile <a href='https://codepen.io/azuremaps/pen/LXqMWx/'>özel SVG şablonuyla kalem HTML işaretine</a> bakın.
 </iframe>
+
+> [!TIP]
+> Azure Haritalar Web SDK 'Sı, HTML işaretçileri ile kullanılabilecek çeşitli SVG resim şablonları sağlar. Daha fazla bilgi için bkz. [görüntü şablonlarını kullanma](how-to-use-image-templates-web-sdk.md) belgesi.
 
 ## <a name="add-a-css-styled-html-marker"></a>CSS stilli HTML işaretleyicisi ekleme
 
@@ -89,6 +92,9 @@ Bu makalede kullanılan sınıflar ve yöntemler hakkında daha fazla bilgi edin
 > [HtmlMarkerManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkermanager?view=azure-iot-typescript-latest)
 
 Haritalarınıza eklenecek daha fazla kod örneği için aşağıdaki makalelere bakın:
+
+> [!div class="nextstepaction"]
+> [Görüntü şablonlarını kullanma](how-to-use-image-templates-web-sdk.md)
 
 > [!div class="nextstepaction"]
 > [Sembol katmanı ekleme](./map-add-pin.md)

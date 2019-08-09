@@ -122,8 +122,8 @@ CUDA uygulamalarını bir Windows NC düğümü havuzunda çalıştırmak için 
 CUDA uygulamalarını bir Linux NC düğümü havuzunda çalıştırmak için, CUDA araç setinde gerekli NVıDıA Tesla GPU sürücülerini yüklemeniz gerekir. Aşağıdaki örnek adımlarda, GPU sürücüleriyle özel bir Ubuntu 16,04 LTS görüntüsü oluşturulur ve dağıtılır:
 
 1. Ubuntu 16,04 LTS çalıştıran bir Azure NC serisi VM dağıtın. Örneğin, ABD Orta Güney bölgesinde sanal makineyi oluşturun. 
-2. Azure Portal, Azure aboneliğine bağlanan bir](../virtual-machines/extensions/hpccompute-gpu-linux.md
-) istemci bilgisayarı veya Azure Cloud Shell kullanarak NVIDIAGPUsürücüleriuzantısınısanalmakineyeekleyin.[ Alternatif olarak, sanal makineye bağlanma ve [CUDA sürücülerini](../virtual-machines/linux/n-series-driver-setup.md) el ile yüklemek için adımları izleyin.
+2. [Azure Portal, Azure aboneliğine bağlanan bir](../virtual-machines/extensions/hpccompute-gpu-linux.md
+) istemci bilgisayarı veya Azure Cloud Shell kullanarak NVIDIAGPUsürücüleriuzantısınısanalmakineyeekleyin. Alternatif olarak, sanal makineye bağlanma ve [CUDA sürücülerini](../virtual-machines/linux/n-series-driver-setup.md) el ile yüklemek için adımları izleyin.
 3. Batch için bir [anlık görüntü ve özel LINUX VM görüntüsü](batch-custom-images.md) oluşturma adımlarını izleyin.
 4. NC VM 'Leri destekleyen bir bölgede Batch hesabı oluşturun.
 5. Batch API 'Lerini veya Azure portal kullanarak, [özel görüntüyü kullanarak](batch-custom-images.md) ve istenen sayıda düğüm ve ölçeğe sahip bir havuz oluşturun. Aşağıdaki tabloda görüntünün örnek havuz ayarları gösterilmektedir:

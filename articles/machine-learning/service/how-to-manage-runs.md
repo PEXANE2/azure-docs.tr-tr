@@ -11,12 +11,12 @@ author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/12/2019
-ms.openlocfilehash: a33ed7e5584e216fac07c5ad6b38d3754b9bca0f
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 701c266705c16198f35cddc36cdf1d431331c2d2
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868856"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847951"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Python 'da eğitim çalıştırmalarını başlatın, izleyin ve iptal edin
 
@@ -35,7 +35,7 @@ Aşağıdaki öğeler gerekir:
 
 * Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning Service 'in ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
-* Bir [Azure Machine Learning hizmet çalışma alanı](setup-create-workspace.md).
+* Bir [Azure Machine Learning hizmet çalışma alanı](how-to-manage-workspace.md).
 
 * Python için Azure Machine Learning SDK (sürüm 1.0.21 veya üzeri). SDK 'nın en son sürümünü yüklemek veya güncelleştirmek için bkz. [SDK 'Yı yüklemek veya güncelleştirmek](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
 
@@ -51,7 +51,7 @@ Aşağıdaki öğeler gerekir:
 
 ### <a name="using-the-sdk"></a>SDK’yı kullanarak
 
-[Çalışma alanını](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py), [denemeyi,](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) [çalıştırmayı](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py)ve [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) sınıflarını [azureml. Core](https://docs.microsoft.com/python/api/azureml-core/azureml.core?view=azure-ml-py) paketinden içeri aktararak denemenizin kurulumunu yapın.
+[Çalışma alanını](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py), denemeyi, [çalıştırmayı](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py)ve [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) sınıflarını [](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) [azureml. Core](https://docs.microsoft.com/python/api/azureml-core/azureml.core?view=azure-ml-py) paketinden içeri aktararak denemenizin kurulumunu yapın.
 
 ```python
 import azureml.core

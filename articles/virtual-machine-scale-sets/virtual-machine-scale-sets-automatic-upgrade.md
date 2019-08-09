@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/16/2019
 ms.author: manayar
-ms.openlocfilehash: eeb689f90197830dad98c213849b2e82ba43bbf1
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: ac754acd61700dc39ebc633da4274c74d8463824
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68296346"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884176"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Azure sanal makine ölçek kümesi otomatik işletim sistemi görüntüsü yükseltmeleri
 
@@ -128,7 +128,7 @@ az vmss update --name myScaleSet --resource-group myResourceGroup --set UpgradeP
 
 Bir işletim sistemi yükseltmesi sırasında, bir ölçek kümesindeki sanal makine örnekleri aynı anda bir toplu iş yükseltilir. Yükseltmenin yalnızca, yükseltilen sanal makine örneklerinde müşteri uygulaması sağlıklı olması durumunda devam etmesi gerekir. Uygulamanın, ölçek kümesi işletim sistemi yükseltme altyapısına sistem durumu sinyalleri sunmalarını öneririz. Varsayılan olarak, işletim sistemi yükseltmeleri sırasında platform VM güç durumu ve uzantı sağlama durumunu değerlendirir ve bir VM örneğinin bir yükseltmeden sonra sağlıklı olup olmadığını tespit eder. Bir VM örneğinin işletim sistemi yükseltmesi sırasında, bir sanal makine örneğindeki işletim sistemi diski, en son görüntü sürümüne göre yeni bir diskle değiştirilmiştir. İşletim sistemi yükseltmesi tamamlandıktan sonra, yapılandırılan uzantılar bu VM 'lerde çalıştırılır. Uygulama, yalnızca örnekteki tüm uzantılar başarıyla sağlandığında sağlıklı olarak değerlendirilir.
 
-Bir ölçek kümesi, isteğe bağlı olarak uygulamanın devam eden durumu hakkında doğru bilgiler sağlamak için uygulama durumu araştırmaları ile yapılandırılabilir. Uygulama durumu araştırmaları, sistem durumu sinyali olarak kullanılan özel Load Balancer araştırmalar. Ölçek kümesi VM örneğinde çalışan uygulama, sağlıklı olup olmadığını gösteren dış HTTP veya TCP isteklerine yanıt verebilir. Özel Load Balancer araştırmalarının nasıl çalıştığı hakkında daha fazla bilgi için bkz. [yük dengeleyici araştırmalarını anlamak](../load-balancer/load-balancer-custom-probe-overview.md)için. Service Fabric ölçek kümeleri için bir uygulama durumu araştırması gerekli değildir, ancak önerilir. Service Fabric olmayan ölçek kümeleri, Load Balancer uygulama durumu araştırmaları ya da [uygulama sistem durumu uzantısı](virtual-machine-scale-sets-health-extension.md)gerektirir.
+Bir ölçek kümesi, isteğe bağlı olarak uygulamanın devam eden durumu hakkında doğru bilgiler sağlamak için uygulama durumu araştırmaları ile yapılandırılabilir. Uygulama durumu araştırmaları, sistem durumu sinyali olarak kullanılan özel Load Balancer araştırmalar. Ölçek kümesi VM örneğinde çalışan uygulama, sağlıklı olup olmadığını gösteren dış HTTP veya TCP isteklerine yanıt verebilir. Özel Load Balancer araştırmalarının nasıl çalıştığı hakkında daha fazla bilgi için bkz. [yük dengeleyici araştırmalarını anlamak](../load-balancer/load-balancer-custom-probe-overview.md)için. Uygulama durumu araştırmaları Service Fabric ölçek kümeleri için desteklenmez. Service Fabric olmayan ölçek kümeleri, Load Balancer uygulama durumu araştırmaları ya da [uygulama sistem durumu uzantısı](virtual-machine-scale-sets-health-extension.md)gerektirir.
 
 Ölçek kümesi birden çok yerleştirme grubu kullanacak şekilde yapılandırıldıysa, [Standart Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) kullanan yoklamaların kullanılması gerekir.
 

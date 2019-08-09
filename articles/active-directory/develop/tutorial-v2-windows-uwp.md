@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2019
 ms.author: jmprieur
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dae3f9f2f4a9f6966d3453123773887c244cf4e2
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 519a86bed6a3a09b476bce6435ae666d655dbe03
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68334062"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68852257"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Evrensel Windows Platformu uygulamasından Microsoft Graph API çağrısı (XAML)
 
@@ -32,7 +32,7 @@ Bu kılavuzda, yerel bir Evrensel Windows Platformu (UWP) uygulamasının bir er
 Bu kılavuzun sonunda, uygulamanız kişisel hesapları kullanarak korumalı bir API çağırır. Örnekler şunlardır outlook.com, live.com ve diğerleri. Uygulamanız Ayrıca, Azure Active Directory (Azure AD) olan herhangi bir şirketten veya kuruluştan iş ve okul hesaplarını da çağırır.
 
 >[!NOTE]
-> Bu kılavuzda Evrensel Windows Platformu geliştirme yüklü Visual Studio 2017 gerekir. Evrensel Windows Platformu uygulamalar geliştirmek için Visual Studio 'Yu indirme ve yapılandırma [yönergeleri bölümüne bakın](https://docs.microsoft.com/windows/uwp/get-started/get-set-up) .
+> Bu kılavuzda Evrensel Windows Platformu geliştirme yüklü Visual Studio 2017 gerekir. Evrensel Windows Platformu [](https://docs.microsoft.com/windows/uwp/get-started/get-set-up) uygulamalar geliştirmek Için Visual Studio 'yu indirme ve yapılandırma yönergeleri bölümüne bakın.
 
 ## <a name="how-this-guide-works"></a>Bu kılavuz nasıl çalışır?
 
@@ -320,7 +320,7 @@ Bu örnekteki uygulama, tek bir kullanıcıyı destekler. Ancak MSAL, aynı anda
 
 **OpenID Connect** aracılığıyla alınan kimlik belirteçleri, kullanıcıya yönelik bir bilgi alt kümesini de içerir. `DisplayBasicTokenInfo`belirteçte bulunan temel bilgileri görüntüler. Kullanıcının görünen adı ve KIMLIĞI, belirtecin sona erme tarihi ve erişim belirtecinin kendisini temsil eden dize verilebilir. **MICROSOFT Graph API** düğmesini birkaç kez çağır ' ı seçerseniz, sonraki istekler için aynı belirtecin yeniden kullanılmış olduğunu görürsünüz. Ayrıca MSAL, belirtecin yenileme zamanına karar verdiğinde, süre sonu genişletilmiş tarihini de görebilirsiniz.
 
-## <a name="register-your-application"></a>Uygulamanızı kaydetme
+## <a name="register-your-application"></a>Uygulamanızı kaydedin
 
 Şimdi uygulamanızı Microsoft uygulama kayıt portalı 'na kaydetmeniz gerekir:
 
@@ -368,7 +368,7 @@ Sınamaya hazırsanız **MICROSOFT Graph API çağrısı**' nı seçin. Ardında
 
 ![Oturum açma sayfası](./media/tutorial-v2-windows-uwp/sign-in-page.png)
 
-### <a name="consent"></a>İzniniz
+### <a name="consent"></a>Onayla
 
 Uygulamanızda ilk kez oturum açtığınızda aşağıdakine benzer bir izin ekranı sunulur. Erişime açık olarak izin vermek için **Evet** ' i seçin:
 

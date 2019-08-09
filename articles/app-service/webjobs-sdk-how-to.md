@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 3ba8a8e5922c012b93ab19a5859aab5c31d35b2b
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 88664238fa7cf21381ad6f95e77e02ad89103556
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424157"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68850857"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Olay odaklı arka plan işleme için Azure Web Işleri SDK 'sını kullanma
 
@@ -837,12 +837,12 @@ Bir `ILogger` örnek tarafından oluşturulan her günlük ilişkili `Category` 
 |LogLevel    |Kod|
 |------------|---|
 |İzleme       | 0 |
-|Hata ayıklama       | 1 |
+|Hata ayıklama       | 1\. |
 |Information | 2 |
 |Uyarı     | 3 |
 |Hata       | 4 |
 |Kritik    | 5 |
-|None        | 6 |
+|Yok.        | 6 |
 
 Her kategoriyi bağımsız olarak belirli [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel)bir şekilde filtreleyebilirsiniz. Örneğin, diğer her şey için yalnızca `Error` ve üzeri blob tetikleyici işleme için tüm günlükleri görmek isteyebilirsiniz.
 
@@ -1009,7 +1009,7 @@ config.LoggerFactory = new LoggerFactory()
 
 ## <a id="nextsteps"></a> Sonraki adımlar
 
-Bu makale, Web Işleri SDK 'Sı ile çalışmaya yönelik yaygın senaryoları nasıl işleyeceğinizi gösteren kod parçacıkları sağlamıştır. Tam örnekler için bkz. [Azure-WebJobs-SDK-Samples](https://github.com/Azure/azure-webjobs-sdk-samples).
+Bu makale, Web Işleri SDK 'Sı ile çalışmaya yönelik yaygın senaryoları nasıl işleyeceğinizi gösteren kod parçacıkları sağlamıştır. Tam örnekler için bkz. [Azure-WebJobs-SDK-Samples](https://github.com/Azure/azure-webjobs-sdk/tree/dev/sample/SampleHost).
 
 [ExecutionContext]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Core/ExecutionContext.cs
 [TelemetryClient]: /dotnet/api/microsoft.applicationinsights.telemetryclient

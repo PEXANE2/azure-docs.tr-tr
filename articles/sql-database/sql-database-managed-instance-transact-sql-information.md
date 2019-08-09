@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 07/07/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: fd029c1e7b67d308e3e1fdbedbdc90ea430b4f5b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 822b8bd1d0f5be854b6d345d68fcdb680b2ef1c4
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567251"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882558"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL veritabanı yönetilen örnek T-SQL Server 'den SQL farklılıkları
 
@@ -25,7 +25,7 @@ Bu makalede, Azure SQL veritabanı yönetilen örneği ve şirket içi SQL Serve
 - [Kullanılabilirlik](#availability) , [her zaman açık](#always-on-availability) ve yedeklemelerdeki farkları [](#backup)içerir.
 - [Güvenlik](#security) , [Denetim](#auditing), [sertifika](#certificates), [kimlik bilgileri](#credential), [şifreleme sağlayıcıları](#cryptographic-providers), [oturum açmalar ve kullanıcılar](#logins-and-users)ve [hizmet anahtarı ile hizmet ana anahtarı](#service-key-and-service-master-key)arasındaki farkları içerir.
 - [Yapılandırma](#configuration) , [arabellek havuzu genişletme](#buffer-pool-extension), [harmanlama](#collation), [Uyumluluk düzeyleri](#compatibility-levels), [veritabanı yansıtma](#database-mirroring), [veritabanı seçenekleri](#database-options), [SQL Server Agent](#sql-server-agent)ve [tablo seçeneklerindeki](#tables)farklılıkları içerir.
-- [İşlevler](#functionalities) [bulk INSERT/OPENROWSET](#bulk-insert--openrowset), [clr](#clr), [DBCC](#dbcc), [Dağıtılmış işlemler](#distributed-transactions), [genişletilmiş olaylar](#extended-events), [dış kitaplıklar](#external-libraries), [FILESTREAM ve FileTable](#filestream-and-filetable), [tam metin içerir Anlamsal arama](#full-text-semantic-search), [bağlı sunucular](#linked-servers), [PolyBase](#polybase), [çoğaltma](#replication), [geri yükleme](#restore-statement), [Hizmet Aracısı](#service-broker), [saklı yordamlar, işlevler ve Tetikleyiciler](#stored-procedures-functions-and-triggers).
+- [İşlevler](#functionalities) şunlardır [bulk INSERT/OPENROWSET](#bulk-insert--openrowset), [clr](#clr), [DBCC](#dbcc), [Dağıtılmış işlemler](#distributed-transactions), [genişletilmiş olaylar](#extended-events), [dış kitaplıklar](#external-libraries), [FILESTREAM ve FileTable](#filestream-and-filetable), [tam metin Anlamsal arama](#full-text-semantic-search), [bağlı sunucular](#linked-servers), [PolyBase](#polybase), [çoğaltma](#replication), [geri yükleme](#restore-statement), [Hizmet Aracısı](#service-broker), [saklı yordamlar, işlevler ve Tetikleyiciler](#stored-procedures-functions-and-triggers).
 - Sanal ağlar ve alt ağ yapılandırması gibi [ortam ayarları](#Environment) .
 - [Yönetilen örneklerde farklı davranışları olan özellikler](#Changes).
 - [Geçici sınırlamalar ve bilinen sorunlar](#Issues).
@@ -399,13 +399,44 @@ Yönetilen örneklerdeki bağlı sunucular sınırlı sayıda hedef destekler:
 
 ### <a name="replication"></a>Çoğaltma
 
-[Işlem çoğaltma](sql-database-managed-instance-transactional-replication.md) , yönetilen örnek üzerinde bazı kısıtlamalarla genel önizleme için kullanılabilir:
-- Çoğaltma katılımcılarının (yayımcı, dağıtıcı, çekme abonesi ve Itme abonesi) Al türleri yönetilen örneğe yerleştirilebilir, ancak yayımcı ve dağıtıcı farklı örneklere yerleştirilemez.
-- İşlem, anlık görüntü ve Iki yönlü çoğaltma türleri desteklenir. Birleştirme çoğaltması, eşler arası çoğaltma ve güncellenebilir abonelikler desteklenmez.
-- Yönetilen örnek SQL Server son sürümleriyle iletişim kurabilir. Desteklenen sürümlere [buradan](sql-database-managed-instance-transactional-replication.md#supportability-matrix-for-instance-databases-and-on-premises-systems)bakın.
-- İşlemsel çoğaltma bazı [ek ağ gereksinimlerine](sql-database-managed-instance-transactional-replication.md#requirements)sahiptir.
+- Anlık görüntü ve çift yönlü çoğaltma türleri desteklenir. Birleştirme çoğaltması, eşler arası çoğaltma ve güncelleştirilebilir abonelikler desteklenmez.
+- [Işlem çoğaltma](sql-database-managed-instance-transactional-replication.md) , yönetilen örnek üzerinde bazı kısıtlamalarla genel önizleme için kullanılabilir:
+    - Tüm çoğaltma katılımcıları türleri (yayımcı, dağıtıcı, çekme abonesi ve anında Iletme abonesi) yönetilen örneklere yerleştirilebilecek, ancak yayımcı ve dağıtıcı farklı örneklere yerleştirilemez.
+    - Yönetilen örnekler SQL Server son sürümleriyle iletişim kurabilir. Desteklenen sürümlere [buradan](sql-database-managed-instance-transactional-replication.md#supportability-matrix-for-instance-databases-and-on-premises-systems)bakın.
+    - İşlemsel çoğaltma bazı [ek ağ gereksinimlerine](sql-database-managed-instance-transactional-replication.md#requirements)sahiptir.
 
 Çoğaltmayı yapılandırma hakkında daha fazla bilgi için bkz. [çoğaltma öğreticisi](replication-with-sql-database-managed-instance.md).
+
+
+[Yük devretme grubundaki](sql-database-auto-failover-group.md)bir veritabanında çoğaltma etkinleştirilirse, yönetilen örnek yöneticisinin eski birincil üzerindeki tüm yayınları temizlemesi ve yük devretme gerçekleştikten sonra yeni birincil üzerinde yeniden yapılandırması gerekir. Bu senaryoda aşağıdaki etkinlikler gereklidir:
+
+1. Varsa, veritabanında çalışan tüm çoğaltma işlerini durdurun.
+2. Yayımcı veritabanında aşağıdaki betiği çalıştırarak, yayımcıdan abonelik meta verilerini bırakın:
+
+   ```sql
+   EXEC sp_dropsubscription @publication='<name of publication>', @article='all',@subscriber='<name of subscriber>'
+   ```             
+ 
+1. Abonelik meta verilerini aboneden bırakın. Abone örneğindeki abonelik veritabanında aşağıdaki betiği çalıştırın:
+
+   ```sql
+   EXEC sp_subscription_cleanup
+      @publisher = N'<full DNS of publisher, e.g. example.ac2d23028af5.database.windows.net>', 
+      @publisher_db = N'<publisher database>', 
+      @publication = N'<name of publication>'; 
+   ```                
+
+1. Yayımlanan veritabanında aşağıdaki betiği çalıştırarak tüm çoğaltma nesnelerini yayımcıya zorla bırakın:
+
+   ```sql
+   EXEC sp_removedbreplication
+   ```
+
+1. Eski dağıtıcıyı orijinal birincil örnekten zorla bırakma (dağıtıcıya sahip olmak için kullanılan eski bir birincili geri yük devreder). Aşağıdaki betiği, eski dağıtımcı yönetilen örneğindeki ana veritabanında çalıştırın:
+
+   ```sql
+   EXEC sp_dropdistributor 1,1
+   ```
 
 ### <a name="restore-statement"></a>RESTORE ekstresi 
 
@@ -467,7 +498,7 @@ Algılan
 ## <a name="Environment"></a>Ortam kısıtlamaları
 
 ### <a name="subnet"></a>Subnet
-- Yönetilen örneğiniz için ayrılan alt ağda başka hiçbir kaynak (örneğin, sanal makineler) yerleştirebilirsiniz. Bu kaynakları diğer alt ağlara yerleştirin.
+-  Yönetilen örneğinizi dağıttığınız alt ağa başka herhangi bir kaynak (örneğin, sanal makineler) yerleştirebilirsiniz. Bu kaynakları farklı bir alt ağ kullanarak dağıtın.
 - Alt ağda yeterli sayıda kullanılabilir [IP adresi](sql-database-managed-instance-connectivity-architecture.md#network-requirements)olmalıdır. En az 16, ancak öneri alt ağda en az 32 IP adresine sahip olur.
 - [Hizmet uç noktaları, yönetilen örneğin alt ağıyla ilişkilendirilemez](sql-database-managed-instance-connectivity-architecture.md#network-requirements). Sanal ağı oluştururken hizmet uç noktaları seçeneğinin devre dışı olduğundan emin olun.
 - Bir bölgede dağıtabileceğiniz sanal çekirdek sayısı ve örnek türleri bazı [kısıtlamalar ve sınırlara](sql-database-managed-instance-resource-limits.md#regional-resource-limitations)sahiptir.
@@ -476,7 +507,7 @@ Algılan
 ### <a name="vnet"></a>VNET
 - VNet, kaynak modeli kullanılarak dağıtılabilir-sanal ağ için klasik model desteklenmez.
 - Yönetilen bir örnek oluşturulduktan sonra, yönetilen örneği veya VNet 'i başka bir kaynak grubuna veya aboneliğe taşımak desteklenmez.
-- App Service ortamları, Logic Apps ve yönetilen örnekler (coğrafi çoğaltma, Işlemsel çoğaltma veya bağlı sunucular aracılığıyla kullanılan) gibi bazı hizmetler, sanal ağları küresel olarak bağlandığında farklı bölgelerdeki yönetilen örneklere erişemez [ eşleme](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). VNet ağ geçitleri üzerinden ExpressRoute veya VNet-VNet aracılığıyla bu kaynağa bağlanabilirsiniz.
+- App Service ortamları, Logic Apps ve yönetilen örnekler (coğrafi çoğaltma, Işlemsel çoğaltma veya bağlı sunucular aracılığıyla kullanılan) gibi bazı hizmetler, sanal ağları küresel olarak bağlandığında farklı bölgelerdeki yönetilen örneklere erişemez [ eşleme](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). Sanal ağ geçitleri aracılığıyla ExpressRoute veya VNet-VNet aracılığıyla bu kaynaklara bağlanabilirsiniz.
 
 ## <a name="Changes"></a>Davranış değişiklikleri
 
@@ -494,11 +525,11 @@ Aşağıdaki değişkenler, işlevler ve görünümler farklı sonuçlar döndü
 
 ### <a name="tempdb-size"></a>TEMPDB boyutu
 
-Genel amaçlı katmanındaki en büyük dosya `tempdb` boyutu, çekirdek başına 24 GB 'den büyük olamaz. İş açısından kritik katmanındaki `tempdb` en büyük boyut, örnek depolama boyutuyla sınırlıdır. `tempdb`günlük dosyası boyutu, Genel Amaçlı ve İş Açısından Kritik katmanlarında 120 GB ile sınırlıdır. `tempdb` Veritabanı her zaman 12 veri dosyasına bölünür. Dosya başına bu en büyük boyut değiştirilemez ve yeni dosyalar ' a eklenemez `tempdb`. Bazı sorgular, üzerinde `tempdb` çekirdek başına 24 GB 'den daha fazlasına ihtiyaç duyduklarında veya 12 GB 'tan fazla günlük üretiklerinde bir hata döndürebilir. `tempdb`, örnek başladığında veya yük devretmek ve ' de `tempdb` yapılan herhangi bir değişiklik korunacağından boş bir veritabanı olarak her zaman yeniden oluşturulur. 
+Genel amaçlı katmanındaki en büyük dosya `tempdb` boyutu, çekirdek başına 24 GB 'den büyük olamaz. İş açısından kritik katmanındaki `tempdb` en büyük boyut, örnek depolama boyutuyla sınırlıdır. `Tempdb`günlük dosyası boyutu, Genel Amaçlı ve İş Açısından Kritik katmanlarında 120 GB ile sınırlıdır. `tempdb` Veritabanı her zaman 12 veri dosyasına bölünür. Dosya başına bu en büyük boyut değiştirilemez ve yeni dosyalar ' a eklenemez `tempdb`. Bazı sorgular, üzerinde `tempdb` çekirdek başına 24 GB 'den fazla gereksinim duyduklarında veya 120 GB 'den fazla günlük verisi ürettiklerinde bir hata döndürebilir. `Tempdb`örnek başlatıldığında veya başarısız olduğunda her zaman boş bir veritabanı olarak yeniden oluşturulur ve ' de `tempdb` yapılan tüm değişiklikler korunmaz. 
 
 ### <a name="cant-restore-contained-database"></a>Kapsanan veritabanı geri yüklenemiyor
 
-Yönetilen örnek [içerilen veritabanlarını](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases)geri yükleyemiyor. Mevcut kapsanan veritabanlarının zaman içinde geri yüklenmesi yönetilen örnek üzerinde çalışmıyor. Bu sorun yakında çözülecektir. Bu sırada, yönetilen örneğe yerleştirilmiş veritabanlarınızdan kapsama seçeneğini kaldırmanızı öneririz. Üretim veritabanları için içerme seçeneğini kullanmayın. 
+Yönetilen örnek [içerilen veritabanlarını](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases)geri yükleyemiyor. Mevcut kapsanan veritabanlarının zaman içinde geri yüklenmesi yönetilen örnek üzerinde çalışmıyor. Bu sırada, yönetilen örneğe yerleştirilmiş veritabanlarınızdan kapsama seçeneğini kaldırmanızı öneririz. Üretim veritabanları için içerme seçeneğini kullanmayın. 
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>Küçük veritabanı dosyalarıyla depolama alanını aşma
 
@@ -506,7 +537,7 @@ Yönetilen örnek [içerilen veritabanlarını](https://docs.microsoft.com/sql/r
 
 Her Genel Amaçlı yönetilen örnek, Azure Premium disk alanı için ayrılan 35 TB 'a kadar depolama alanı içerir. Her veritabanı dosyası ayrı bir fiziksel diske yerleştirilir. Disk boyutları 128 GB, 256 GB, 512 GB, 1 TB veya 4 TB olabilir. Diskteki kullanılmayan alan ücretlendirilmez, ancak Azure Premium disk boyutlarının toplam toplamı 35 TB 'yi aşamaz. Bazı durumlarda, toplam olarak 8 TB 'lık bir yönetilen örnek, iç parçalanma nedeniyle depolama boyutu 35 TB Azure sınırını aşabilir.
 
-Örneğin, Genel Amaçlı yönetilen bir örnek, 4 TB 'lık bir diske yerleştirilmiş boyutu 1,2 TB olan bir dosyaya sahip olabilir. Ayrıca, ayrı 128 GB disklere yerleştirilmiş boyutu 1 GB olan 248 dosya olabilir. Bu örnekte:
+Örneğin, Genel Amaçlı yönetilen bir örnek, 4 TB 'lık bir diske yerleştirilmiş boyutu 1,2 TB olan bir büyük dosyaya sahip olabilir. Ayrıca, her biri ayrı 128 GB disklere yerleştirilmiş 248 dosya 1 GB dosyasına sahip olabilir. Bu örnekte:
 
 - Ayrılan toplam disk depolama boyutu 1 x 4 TB + 248 x 128 GB = 35 TB 'tır.
 - Örnekteki veritabanları için ayrılan toplam alan 1 x 1,2 TB + 248 x 1 GB = 1,4 TB 'tır.
@@ -547,7 +578,7 @@ Yönetilen örnekte kullanılabilen hata günlükleri kalıcı değil ve boyutu 
 
 ### <a name="error-logs-are-verbose"></a>Hata günlükleri ayrıntılı
 
-Yönetilen bir örnek, ayrıntılı bilgileri hata günlüklerine koyar ve bunların çoğu ilgili değildir. Hata günlüklerindeki bilgi miktarı gelecekte azalır.
+Yönetilen bir örnek, ayrıntılı bilgileri hata günlüklerine koyar ve bunların çoğu ilgili değildir. 
 
 **Sorunu** İlgisiz bazı girdilerin filtrelediğini belirten hata günlüklerini okumak için özel bir yordam kullanın. Daha fazla bilgi için bkz. [yönetilen örnek – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/).
 

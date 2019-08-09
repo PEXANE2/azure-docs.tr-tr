@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: 5bddcb89d26566bd2024cbde086b6e35ddaf94ef
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: a630ceb1748f38dc169a4ebabcbb4e021de4273c
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567188"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881570"
 ---
 # <a name="monitoring-performance-azure-sql-database-using-dynamic-management-views"></a>Dinamik yönetim görünümlerini kullanarak performans Azure SQL veritabanı 'nı izleme
 
@@ -28,7 +28,7 @@ SQL veritabanı, dinamik yönetim görünümlerinin üç kategorisini kısmen de
 - Yürütmeye ilişkin dinamik yönetim görünümleri.
 - İşlemle ilgili dinamik yönetim görünümleri.
 
-Dinamik yönetim görünümleri hakkında ayrıntılı bilgi için SQL Server Books Online 'da [dinamik yönetim görünümleri ve işlevleri (Transact-SQL)](https://msdn.microsoft.com/library/ms188754.aspx) konusuna bakın.
+Dinamik yönetim görünümleri hakkında ayrıntılı bilgi için SQL Server Books Online 'da [dinamik yönetim görünümleri ve işlevleri (Transact-SQL)](https://msdn.microsoft.com/library/ms188754.aspx) konusuna bakın. 
 
 ## <a name="permissions"></a>İzinler
 
@@ -334,7 +334,7 @@ ORDER BY start_time ASC;
 
 En iyi bekleme türü ise `RESOURCE_SEMAHPORE` ve yüksek CPU kullanım sorununuz yoksa, bekleyen bir bellek verme sorunu olabilir.
 
-### <a name="determine-if-a-resourcesemahpore-wait-is-a-top-wait"></a>`RESOURCE_SEMAHPORE` Bekleme en çok bekleme olup olmadığını belirleme
+### <a name="determine-if-a-resource_semahpore-wait-is-a-top-wait"></a>`RESOURCE_SEMAHPORE` Bekleme en çok bekleme olup olmadığını belirleme
 
 `RESOURCE_SEMAHPORE` Bekleme en çok bekleme olup olmadığını anlamak için aşağıdaki sorguyu kullanın
 
@@ -512,7 +512,7 @@ Ayrıca, bu iki görünümü kullanarak kullanımı izleyebilirsiniz:
 - [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx)
 - [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx)
 
-### <a name="sysdmdbresourcestats"></a>sys.dm_db_resource_stats
+### <a name="sysdm_db_resource_stats"></a>sys.dm_db_resource_stats
 
 Her SQL veritabanında [sys. DM _db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) görünümünü kullanabilirsiniz. **Sys. DM _db_resource_stats** görünümü, hizmet katmanına göre son kaynak kullanım verilerini gösterir. CPU, veri GÇ, günlük yazma ve bellek için Ortalama yüzdeler, 15 saniyede bir kaydedilir ve 1 saat boyunca sürdürülür.
 
@@ -533,7 +533,7 @@ FROM sys.dm_db_resource_stats;
 
 Diğer sorgular için, [sys. DM _db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx)içindeki örneklere bakın.
 
-### <a name="sysresourcestats"></a>sys.resource_stats
+### <a name="sysresource_stats"></a>sys.resource_stats
 
 **Ana** veritabanındaki [sys. RESOURCE_STATS](https://msdn.microsoft.com/library/dn269979.aspx) görünümü, SQL veritabanınızın performansını belirli hizmet katmanında ve işlem boyutuyla izlemenize yardımcı olabilecek ek bilgiler içerir. Veriler her 5 dakikada bir toplanır ve yaklaşık 14 gün boyunca korunur. Bu görünüm, SQL veritabanınızın kaynakları nasıl kullandığını daha uzun vadeli bir geçmiş analizi için yararlıdır.
 

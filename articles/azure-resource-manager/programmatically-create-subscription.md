@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 04/10/2019
 ms.author: jureid
-ms.openlocfilehash: 701b35d99cb98009ec0116c23eaeab94ff967f51
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: d6ae863aed629f5f5b1497d5a6e0f8108f4703c8
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678945"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848706"
 ---
 # <a name="programmatically-create-azure-enterprise-subscriptions-preview"></a>Programlı olarak Azure Enterprise abonelikleri oluşturma (Önizleme)
 
@@ -69,7 +69,7 @@ Azure, erişiminiz olan tüm kayıt hesaplarının bir listesi ile yanıt verir:
 }
 ```
 
-Aboneliklerinin faturalandırılması istediğiniz hesabı belirlemek için özelliğinikullanın.`principalName` `name` Bu hesabın öğesini kopyalayın. Örneğin, SignUpEngineering@contoso.com kayıt hesabı altında abonelik oluşturmak isterseniz, ' yi kopyalamanız ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```gerekir. Bu, kayıt hesabının nesne KIMLIĞIDIR. Bir sonraki adımda `enrollmentAccountObjectId`kullanabilmeniz için bu değeri bir yere yapıştırın.
+Aboneliklerinin faturalandırılması istediğiniz hesabı belirlemek için özelliğinikullanın.`principalName` `name` Bu hesabın öğesini kopyalayın. Örneğin, SignUpEngineering@contoso.com kayıt hesabı altında abonelik oluşturmak isterseniz, ' yi kopyalamanız ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```gerekir. Bu tanımlayıcı, kayıt hesabının nesne KIMLIĞIDIR. Bir sonraki adımda `enrollmentAccountObjectId`kullanabilmeniz için bu değeri bir yere yapıştırın.
 
 ## <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -117,7 +117,7 @@ Azure, erişim sahibi olduğunuz kayıt hesaplarının bir listesi ile yanıt ve
 ]
 ```
 
-Aboneliklerinin faturalandırılması istediğiniz hesabı belirlemek için özelliğinikullanın.`principalName` `name` Bu hesabın öğesini kopyalayın. Örneğin, SignUpEngineering@contoso.com kayıt hesabı altında abonelik oluşturmak isterseniz, ' yi kopyalamanız ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```gerekir. Bu, kayıt hesabının nesne KIMLIĞIDIR. Bir sonraki adımda `enrollmentAccountObjectId`kullanabilmeniz için bu değeri bir yere yapıştırın.
+Aboneliklerinin faturalandırılması istediğiniz hesabı belirlemek için özelliğinikullanın.`principalName` `name` Bu hesabın öğesini kopyalayın. Örneğin, SignUpEngineering@contoso.com kayıt hesabı altında abonelik oluşturmak isterseniz, ' yi kopyalamanız ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```gerekir. Bu tanımlayıcı, kayıt hesabının nesne KIMLIĞIDIR. Bir sonraki adımda `enrollmentAccountObjectId`kullanabilmeniz için bu değeri bir yere yapıştırın.
 
 ---
 
@@ -201,7 +201,7 @@ Tüm parametrelerin tam listesini görmek için, bkz. [az Account Create](/cli/a
 ## <a name="limitations-of-azure-enterprise-subscription-creation-api"></a>Azure Kurumsal abonelik oluşturma API 'SI sınırlamaları
 
 - Yalnızca Azure Enterprise abonelikleri bu API kullanılarak oluşturulabilir.
-- Kayıt hesabı başına 200 aboneliklerin sınırı vardır. Bundan sonra, abonelikler yalnızca hesap Merkezi aracılığıyla oluşturulabilir. API aracılığıyla daha fazla abonelik oluşturmak istiyorsanız, başka bir kayıt hesabı oluşturun.
+- Kayıt hesabı başına 200 aboneliklerin sınırı vardır. Bundan sonra hesap için daha fazla abonelik yalnızca hesap Merkezi aracılığıyla oluşturulabilir. API aracılığıyla daha fazla abonelik oluşturmak istiyorsanız, başka bir kayıt hesabı oluşturun.
 - Hesap sahibi olmayan, ancak RBAC aracılığıyla bir kayıt hesabına eklenen kullanıcılar, hesap merkezini kullanarak abonelikler oluşturamaz.
 - İçinde oluşturulacak abonelik için kiracıyı seçemezsiniz. Abonelik, her zaman hesap sahibinin giriş kiracısında oluşturulur. Aboneliği farklı bir kiracıya taşımak için bkz. [abonelik kiracısını değiştirme](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
