@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure, Oracle bulut altyapısıyla tümleştirme | Microsoft Docs
-description: Veritabanları Oracle bulut altyapısı (OCI) ile Microsoft Azure üzerinde çalışan Oracle uygulamalarını tümleştirme çözümleri hakkında bilgi edinin.
+title: Microsoft Azure Oracle bulut altyapısıyla tümleştirin | Microsoft Docs
+description: Microsoft Azure üzerinde çalışan Oracle uygulamalarını Oracle bulut altyapısı 'ndaki (OCı) veritabanları ile tümleştiren çözümler hakkında bilgi edinin.
 services: virtual-machines-linux
 documentationcenter: ''
 author: romitgirdhar
@@ -15,66 +15,66 @@ ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
 ms.custom: ''
-ms.openlocfilehash: fcdd46ea60ea53088ffacd7d13693b16a208d527
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 309c481c0ebf0e6061524a12356e67394e5db8d2
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707463"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880823"
 ---
-# <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>Oracle uygulama çözümlerini Microsoft Azure'da ve Oracle bulut altyapısı (Önizleme) ile tümleştirme
+# <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>Microsoft Azure ve Oracle bulut altyapısını tümleştirerek Oracle uygulama çözümleri (Önizleme)
 
-Microsoft ve Oracle düşük gecikme süreli, yüksek aktarım hızı Bulutlar arası bağlantı sağlamak için her iki bulut en iyi şekilde yararlanmak sağlayarak iş ortaklığı kurdu. 
+Microsoft ve Oracle, düşük gecikme süresi, yüksek aktarım hızı arası bağlantı sağlamaya ve her iki bulutdan en iyi şekilde yararlanmanıza olanak tanıyacak. 
 
-Bu Bulutlar arası bağlantı kullanarak, veritabanı katmanı Oracle bulut altyapısı (OCI) üzerinde çalıştırmak için çok katmanlı bir uygulama ve uygulama ve diğer Katmanlar Microsoft Azure üzerinde bölümleyebilirsiniz. Tüm çözüm yığın tek bir bulutta çalıştırmaya benzer deneyimidir. 
+Bu platformlar arası bağlantıyı kullanarak, veritabanı katmanınızı Oracle bulut altyapısında (OCı), uygulama ve Microsoft Azure üzerindeki diğer katmanlara çalıştırmak için çok katmanlı bir uygulamayı bölümleyebilirsiniz. Deneyim, tüm çözüm yığınını tek bir bulutta çalıştırmaya benzer. 
 
 > [!IMPORTANT]
-> Bu Bulutlar arası şu anda önizlemededir ve bazı özelliktir [sınırlamalar uygulanır](#preview-limitations). Önizlemeler, [ek kullanım koşullarını](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) kabul etmeniz şartıyla kullanımınıza sunulur. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir.
+> Bu platformlar arası özellik şu anda önizleme aşamasındadır ve bazı [sınırlamalar geçerlidir](#preview-limitations). Azure ile OCı arasında düşük gecikme süresi bağlantısını etkinleştirmek için, bu özellik için önce Azure aboneliğinin beyaz listelenmesi gerekir. Abonelik Kimliğinizle bir e-posta oracleconnect@microsoft.com göndererek önizlemeye kaydolmalısınız. Aboneliğiniz kaydedildiğinde siz de bir e-posta alırsınız. Onay e-postası alınana kadar özelliği kullanamazsınız. Ayrıca, bu önizleme için etkinleştirilecek Microsoft temsilcinize de başvurabilirsiniz. Bu önizleme, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için kullanılmamalıdır. Belirli özellikler desteklenmiyor olabilir, kısıtlı yeteneklere sahip olabilir veya tüm Azure konumlarında mevcut olmayabilir. Ayrıntılar için Microsoft Azure önizlemeleri için [ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) bölümüne bakın. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir.
 
-Tamamen Azure altyapı üzerinde Oracle çözümleri dağıtırken ilgileniyorsanız bkz [Oracle VM görüntüsü ve dağıtım Microsoft Azure üzerinde](oracle-vm-solutions.md).
+Oracle çözümlerini tamamen Azure altyapısına dağıtmaya ilgileniyorsanız, [Microsoft Azure Oracle VM görüntüleri ve bunların dağıtımı](oracle-vm-solutions.md)' na bakın.
 
 ## <a name="scenario-overview"></a>Senaryoya genel bakış
 
-Bulutlar arası bağlantı, Azure sanal makinelerinde barındırılan veritabanı hizmetlerinde OCI avantajların tadını sırasında Oracle'nın sektör lideri uygulamaları ve kendi özel uygulamalarınızı çalıştırmanız için bir çözüm sağlar. 
+Platformlar arası bağlantı, Oracle 'ın sektör lideri uygulamalarını ve kendi özel uygulamalarınızı, OCı 'daki barındırılan veritabanı hizmetlerinin avantajlarından faydalanarak Azure sanal makinelerinde çalıştırmanıza yönelik bir çözüm sağlar. 
 
-Bulutlar arası yapılandırmasında çalıştırabileceğiniz uygulamalar şunlardır:
+Platformlar arası yapılandırmada çalıştırabileceğiniz uygulamalar şunlardır:
 
-* E-Business Suite
-* JD Edwards EnterpriseOne
+* E-Iş paketi
+* JD edi EnterpriseOne
 * PeopleSoft
 * Oracle perakende uygulamaları
-* Oracle Hyperion Finans Yönetimi
+* Oracle Hyperion finans yönetimi
 
-Aşağıdaki diyagramda bağlı çözüme üst düzey bir genel bakış ' dir. Kolaylık olması için yalnızca uygulama katmanı ve veri katmanı diyagramda gösterilmektedir. Uygulama Mimarisi bağlı olarak, Azure'da bir web katmanı gibi ek katmanları çözümünüzü dahil olabilir. Daha fazla bilgi için aşağıdaki bölümlere bakın.
+Aşağıdaki diyagramda bağlı çözüme üst düzey bir genel bakış sunulmaktadır. Basitlik için diyagram yalnızca bir uygulama katmanını ve bir veri katmanını gösterir. Uygulama mimarisine bağlı olarak, çözümünüz Azure 'da Web katmanı gibi ek katmanlar içerebilir. Daha fazla bilgi için aşağıdaki bölümlere bakın.
 
-![Azure OCI çözümüne genel bakış](media/oracle-oci-overview/crosscloud.png)
+![Azure OCı çözümüne genel bakış](media/oracle-oci-overview/crosscloud.png)
 
 ## <a name="preview-limitations"></a>Önizleme sınırlamaları
 
-* Bulutlar arası bağlantı önizlemesinde, Azure Doğu ABD (myresourcegroup) bölgesi ve OCI Ashburn (ABD-ashburn-1) bölge ile sınırlıdır.
+* Önizlemede çapraz bulut bağlantısı, Azure Doğu ABD (eastus) bölgesi ve OCı Ashyakma (US-Ashburn-1) bölgesiyle sınırlandırılmıştır.
 
 ## <a name="networking"></a>Ağ
 
-Kurumsal müşteriler, genellikle farklılaştır ve çeşitli iş ve işletimsel nedeniyle birden çok bulut üzerinden iş yükleri dağıtmak seçin. Farklılaştır için müşterilerin internet, IPSec VPN veya şirket içi ağınız üzerinden bulut sağlayıcısının doğrudan bir bağlantı çözümüdür kullanarak bulut ağlarındaki bağlantı. Bulut ağlarındaki interconnecting önemli bir yatırım zamanı, para, tasarım, tedarik, yükleme, test ve işlemleri gerektirebilir. 
+Kurumsal müşteriler genellikle çeşitli iş ve işletimsel nedenlerle birden fazla bulutta iş yüklerini birbirinden ayırmak ve dağıtmak için seçer. Sıfy, müşteriler Internet, IPSec VPN 'i kullanarak bulut ağları ve şirket içi ağınız aracılığıyla bulut sağlayıcısının doğrudan bağlantı çözümünü kullanarak bağlantı sağlar. Bulut ağlarının birbirine bağlanması, zaman, para, tasarım, tedarik, yükleme, test ve işlemler için önemli yatırımlar gerektirebilir. 
 
-Bu müşteri sorunları gidermek üzere, Oracle ve Microsoft tümleşik bir çoklu bulut deneyimi etkinleştirdiniz. Bulutlar arası ağlar arasında bağlantı kurarak oluşturulduğunda bir [ExpressRoute](../../../expressroute/expressroute-introduction.md) devre ile Microsoft azure'da bir [FastConnect](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm) bağlantı hattı OCI içinde. Bu bağlantı, bir Azure ExpressRoute eşleme konumuna yakınlığını veya aynı konumda eşleme OCI FastConnect olduğu mümkündür. Bu kurulum, bir ara hizmet sağlayıcısı gerek kalmadan iki bulut arasındaki güvenli ve hızlı bağlantı sağlar.
+Oracle ve Microsoft, bu müşteri sorunlarını gidermek için tümleşik bir çoklu bulut deneyimini etkinleştirdi. Platformlar arası ağ, Microsoft Azure ' de bir [ExpressRoute](../../../expressroute/expressroute-introduction.md) bağlantı hattı, OCI 'Daki [FastConnect](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm) devresine bağlanarak oluşturulur. Bu bağlantı, bir Azure ExpressRoute eşleme konumunun, OCı FastConnect ile aynı eşleme konumuna eşit veya daha yakın olduğu durumlarda mümkündür. Bu kurulum, bir ara hizmet sağlayıcısına gerek olmadan iki bulut arasında güvenli ve hızlı bağlantı sağlar.
 
-Özel IP adresi alanını çakışmaması şartıyla FastConnect ExpressRoute kullanarak, azure'da bir sanal ağ OCI, bir bulut sanal ağ ile müşteriler eşleyebilirsiniz. İki ağ eşlemesi, sanal ağdaki her ikisi de aynı ağda gibi bir kaynak OCI bulut sanal ağ arasında iletişim kurmak için bir kaynak sağlar.
+ExpressRoute ve FastConnect kullanarak, müşteriler, özel IP adresi alanının çakışmadığından, OCı 'daki sanal bir bulut ağıyla Azure 'daki sanal bir ağı eşleyebilir. İki ağı eşleme, sanal ağdaki bir kaynağın, her ikisi de aynı ağda olduğu gibi, OCı sanal bulut ağındaki bir kaynakla iletişim kurmasına izin verir.
 
 ## <a name="network-security"></a>Ağ güvenliği
 
-Ağ güvenliği herhangi bir kurumsal uygulamanın önemli bir bileşendir ve bu çok bulut çözümü için önemlidir. ExpressRoute ve FastConnect üzerinden giden tüm trafiği, özel bir ağ üzerinden geçirir. Bu yapılandırma, bir Azure sanal ağı ve bir Oracle bulut sanal ağ arasında güvenli iletişim için sağlar. Azure'daki tüm sanal makineler için genel bir IP adresini belirtmeniz gerekmez. Benzer şekilde, bir internet ağ geçidi OCI gerekmez. Tüm iletişimi makineler özel IP adresi gerçekleşir.
+Ağ güvenliği, tüm kurumsal uygulamaların önemli bir bileşenidir ve bu çoklu bulut çözümüne yönelik olarak tasarlanmıştır. ExpressRoute ve FastConnect üzerinden geçen tüm trafik özel bir ağ üzerinden geçer. Bu yapılandırma, bir Azure sanal ağı ile Oracle sanal bulut ağı arasında güvenli iletişim sağlar. Azure 'daki tüm sanal makinelere genel IP adresi sağlamanız gerekmez. Benzer şekilde, OCı 'da internet ağ geçidine gerek kalmaz. Tüm iletişimler, makinelerin özel IP adresi aracılığıyla yapılır.
 
-Ayrıca, ayarlayabilirsiniz [güvenlik listelerini](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/securitylists.htm) OCI bulut sanal ağ ve güvenlik kuralları (Azure'a bağlı [ağ güvenlik grupları](../../../virtual-network/security-overview.md)). Bu kurallar sanal ağlarda bulunan makineler arasında akan trafiği denetlemek için kullanın. Ağ güvenlik kuralları, bir makine düzeyinde, bir alt ağ düzeyinde yanı sıra sanal ağ düzeyinde eklenebilir.
+Ayrıca, OCı sanal bulut ağınız ve güvenlik kurallarınız (Azure [ağ güvenlik grupları](../../../virtual-network/security-overview.md)'na bağlı) üzerinde [güvenlik listelerini](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/securitylists.htm) de ayarlayabilirsiniz. Sanal ağlardaki makineler arasında akan trafiği denetlemek için bu kuralları kullanın. Ağ güvenlik kuralları bir makine düzeyinde, alt ağ düzeyinde ve sanal ağ düzeyinde eklenebilir.
  
 ## <a name="identity"></a>Kimlik
 
-Kimlik, Oracle ile Microsoft arasındaki iş ortaklığı temel yapı taşları biridir. Önemli iş tümleştirmek için yapıldığını [Oracle kimlik bulut hizmeti](https://docs.oracle.com/en/cloud/paas/identity-cloud/index.html) (IDCS) ile [Azure Active Directory](../../../active-directory/index.yml) (Azure AD). Azure AD Microsoft'un bulut tabanlı kimlik ve erişim yönetimi hizmetidir. Bu, kullanıcılarınızın oturum açın ve çeşitli kaynaklara yardımcı olur. Azure AD, kullanıcıları ve izinlerini yönetmenize olanak sağlar.
+Kimlik, Microsoft ve Oracle arasındaki iş ortaklığının temel sıra sayısının biridir. [Oracle kimlik bulut hizmeti](https://docs.oracle.com/en/cloud/paas/identity-cloud/index.html) 'ni (ıdcs) [Azure ACTIVE DIRECTORY](../../../active-directory/index.yml) (Azure AD) ile bütünleştirmek için önemli çalışmalar yapıldı. Azure AD, Microsoft 'un bulut tabanlı kimlik ve erişim yönetimi hizmetidir. Kullanıcılarınızın oturum açmasını ve çeşitli kaynaklara erişmesini sağlar. Azure AD Ayrıca kullanıcılarınızı ve bunların izinlerini yönetmenizi sağlar.
 
-Şu anda, bu tümleştirme, Azure Active Directory olan bir merkezi konumda yönetmenize olanak sağlar. Azure AD dizinindeki herhangi bir değişiklik karşılık gelen bir Oracle dizin ile senkrondur ve çoklu oturum açma için Bulutlar arası Oracle çözümleri için kullanılır.
+Şu anda bu tümleştirme, Azure Active Directory tek bir merkezi konumda yönetmenizi sağlar. Azure AD, dizindeki tüm değişiklikleri karşılık gelen Oracle diziniyle eşitler ve platformlar arası Oracle çözümlerinde çoklu oturum açma için kullanılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kullanmaya başlama bir [Bulutlar arası ağ](configure-azure-oci-networking.md) OCI ile Azure arasındaki. 
+Azure ile OCı arasında [platformlar arası bir ağ](configure-azure-oci-networking.md) kullanmaya başlayın. 
 
-Daha fazla bilgi ve teknik incelemeler OCI hakkında bkz [Oracle bulut](https://docs.cloud.oracle.com/iaas/Content/home.htm) belgeleri.
+OCı hakkında daha fazla bilgi ve teknik bilgiler için bkz. [Oracle bulut](https://docs.cloud.oracle.com/iaas/Content/home.htm) belgeleri.

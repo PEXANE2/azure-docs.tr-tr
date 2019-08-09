@@ -11,18 +11,18 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/05/2019
+ms.date: 08/07/2019
 ms.author: magoedte
-ms.openlocfilehash: d2fadf6d0bf9b7422b6dbf7597a024d22b5d733f
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 1c2416d9fb1d45116bb6594b29863c1fe8f524a3
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839334"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883214"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Azure Izleyici günlükleri dağıtımınızı tasarlama
 
-Azure Izleyici, [günlük](data-platform-logs.md) verilerini bir Azure kaynağı olan bir Log Analytics çalışma alanında ve verilerin toplandığı, toplandığı ve yönetim sınırı olarak hizmet verdiği bir kapsayıcı olarak depolar. Azure aboneliğinizde bir veya daha fazla çalışma alanı dağıtabilmeniz sırasında, ilk dağıtımınızın size uygun maliyetli, yönetilebilir ve ölçeklenebilir bir ücret sunmak için yönergelerimizi takip etmek üzere anlamanız gereken birkaç önemli noktalar vardır. kurumlarınızın ihtiyacı olan dağıtım toplantısı.
+Azure Izleyici, [günlük](data-platform-logs.md) verilerini bir Azure kaynağı olan bir Log Analytics çalışma alanında ve verilerin toplandığı, toplandığı ve yönetim sınırı olarak hizmet verdiği bir kapsayıcı olarak depolar. Azure aboneliğinizde bir veya daha fazla çalışma alanı dağıtabilmeniz sırasında, ilk dağıtımınızın size uygun maliyetli, yönetilebilir ve ölçeklenebilir bir ücret sunmak için yönergelerimizi takip etmeniz için anlamanız gereken birkaç önemli noktalar vardır. kurumlarınızın ihtiyacı olan dağıtım toplantısı.
 
 Çalışma alanındaki veriler, her biri farklı veri türlerini depolayan ve verileri oluşturan kaynağı temel alan kendi benzersiz özellik kümesine sahip olan tablolar halinde düzenlenir. Çoğu veri kaynağı, Log Analytics çalışma alanında kendi tablolarına yazar.
 
@@ -32,7 +32,7 @@ Bir Log Analytics çalışma alanı şunları sağlar:
 
 * Veri depolama için coğrafi bir konum.
 * Önerilen tasarım stratejilerimizden birini izleyerek farklı kullanıcılara erişim hakları vererek veri yalıtımı.
-* [Fiyatlandırma katmanı](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#changing-pricing-tier), [bekletme](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period) ve [veri dönüşü](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#daily-cap)gibi ayarların yapılandırılması için kapsam.
+* [Fiyatlandırma katmanı](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#changing-pricing-tier), [bekletme](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)ve [veri dönüşü](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#daily-cap)gibi ayarların yapılandırılması için kapsam.
 
 Bu makalede, tasarım ve geçiş konuları, erişim denetimine genel bakış ve BT kuruluşunuz için önerdiğimiz tasarım uygulamalarının anlaşılmasına ilişkin ayrıntılı bir genel bakış sunulmaktadır.
 
@@ -63,7 +63,7 @@ System Center Operations Manager 2012 R2 veya sonraki bir sürümünü kullanıy
 
 ## <a name="access-control-overview"></a>Erişim denetimine genel bakış
 
-Rol tabanlı erişim denetimi (RBAC) sayesinde kullanıcılara ve yalnızca çalışma alanındaki izleme verileriyle çalışmak için ihtiyaç duydukları erişim miktarını verebilirsiniz. Bu, tüm kaynaklarınız üzerinde etkin olan toplanan verileri depolamak için tek bir çalışma alanı kullanarak BT kuruluşunuzun işletim modeliyle uyum kurmanıza olanak tanır. Örneğin, ekibinize Azure sanal makinelerinde (VM 'Ler) barındırılan altyapı hizmetlerinden sorumlu erişim verirsiniz ve bu nedenle yalnızca VM 'Ler tarafından oluşturulan günlüklere erişim elde edersiniz. Bu, yeni kaynak bağlamı günlük modelimizi takip eden bir kaynaktır. Bu modelin temeli, bir Azure kaynağı tarafından oluşturulan tüm günlük kayıtları bu kaynakla otomatik olarak ilişkilendirilir. Günlükler, kaynaklara göre kapsamı ve RBAC sağlayan bir merkezi çalışma alanına iletilir.
+Rol tabanlı erişim denetimi (RBAC) sayesinde kullanıcılara ve yalnızca çalışma alanındaki izleme verileriyle çalışmak için ihtiyaç duydukları erişim miktarını verebilirsiniz. Bu, tüm kaynaklarınız üzerinde etkin olan toplanan verileri depolamak için tek bir çalışma alanı kullanarak BT kuruluşunuzun işletim modeliyle uyum kurmanıza olanak tanır. Örneğin, ekibinize Azure sanal makinelerinde (VM 'Ler) barındırılan altyapı hizmetlerinden sorumlu erişim verirsiniz ve bu nedenle yalnızca VM 'Ler tarafından oluşturulan günlüklere erişim elde edersiniz. Bu, yeni kaynak bağlamı günlük modelimizi takip eden bir kaynaktır. Bu modelin temeli bir Azure kaynağı tarafından oluşturulan her günlük kaydına yöneliktir ve bu kaynakla otomatik olarak ilişkilendirilir. Günlükler, kaynaklara göre kapsamı ve RBAC sağlayan bir merkezi çalışma alanına iletilir.
 
 Bir kullanıcının erişimi olan veriler, aşağıdaki tabloda listelenen faktörlerin birleşimiyle belirlenir. Her biri aşağıdaki bölümlerde açıklanmıştır.
 
@@ -80,11 +80,11 @@ Bir kullanıcının erişimi olan veriler, aşağıdaki tabloda listelenen fakt�
 
 Kullanıcılara verilere erişim için iki seçenek vardır:
 
-* **Çalışma alanı bağlamı**: İzninizin olduğu çalışma alanındaki tüm günlükleri görüntüleyebilirsiniz. Bu moddaki sorgular, çalışma alanındaki tüm tablolardaki tüm verilerin kapsamına alınır. Bu, Azure portal **Azure izleyici** menüsünden **Günlükler** ' i seçerken olduğu gibi, kapsam olarak çalışma alanıyla erişildiğinde kullanılan erişim modudur.
+* **Çalışma alanı bağlamı**: İzniniz olan çalışma alanındaki tüm günlükleri görüntüleyebilirsiniz. Bu moddaki sorgular, çalışma alanındaki tüm tablolardaki tüm verilerin kapsamına alınır. Bu, Azure portal **Azure izleyici** menüsünden **Günlükler** ' i seçerken olduğu gibi, kapsam olarak çalışma alanıyla erişildiğinde kullanılan erişim modudur.
 
     ![Çalışma alanından Log Analytics bağlamı](./media/design-logs-deployment/query-from-workspace.png)
 
-* **Kaynak bağlamı**: Belirli bir kaynak, kaynak grubu veya abonelik için çalışma alanına eriştiğinizde, örneğin, Azure portal bir kaynak menüsünden **Günlükler** ' i seçtiğinizde, yalnızca bu kaynak için erişimi olan tüm tablolardaki günlükleri görüntüleyebilirsiniz. Bu moddaki sorgular yalnızca söz konusu kaynakla ilişkili verilere göre kapsamlandırılır. Bu mod, ayrıntılı RBAC de sunar.
+* **Kaynak bağlamı**: Belirli bir kaynak, kaynak grubu veya abonelik için çalışma alanına eriştiğinizde, örneğin Azure portal bir kaynak menüsünden **Günlükler** ' i seçtiğinizde, yalnızca erişiminiz olan tüm tablolardaki kaynakların günlüklerini görüntüleyebilirsiniz. Bu moddaki sorgular yalnızca söz konusu kaynakla ilişkili verilere göre kapsamlandırılır. Bu mod, ayrıntılı RBAC de sunar.
 
     ![Kaynaktan Log Analytics bağlamı](./media/design-logs-deployment/query-from-resource.png)
 
@@ -106,16 +106,16 @@ Aşağıdaki tabloda erişim modları özetlenmektedir:
 |:---|:---|:---|
 | Her bir model kim içindir? | Yönetim Merkezi. Veri toplamayı ve çok çeşitli kaynaklara erişmesi gereken kullanıcıları yapılandırması gereken yöneticiler. Şu anda Azure dışındaki kaynaklar için günlüklere erişmesi gereken kullanıcılar için de gereklidir. | Uygulama takımları. İzlenmekte olan Azure kaynaklarının yöneticileri. |
 | Kullanıcı günlükleri görüntülemek için ne gerekir? | Çalışma alanı izinleri. Bkz. [hesapları ve kullanıcıları yönetme](manage-access.md#manage-accounts-and-users)Içindeki **çalışma alanı izinleri** . | Kaynağa yönelik okuma erişimi. Bkz. [hesapları ve kullanıcıları yönetme](manage-access.md#manage-accounts-and-users)içindeki **kaynak izinleri** . İzinler devralınabilir (örneğin, kapsayan kaynak grubundan) veya doğrudan kaynağa atanabilir. Kaynak için günlüklere izin verilecek izinler otomatik olarak atanır. |
-| İzinlerin kapsamı nedir? | Alanında. Çalışma alanına erişimi olan kullanıcılar, bu çalışma alanındaki tüm günlükleri izinleri olan tablolardan sorgulayabilir. Bkz. [tablo erişim denetimi](manage-access.md#table-level-rbac) | Azure kaynağı. Kullanıcı herhangi bir çalışma alanından erişimi olan belirli kaynaklar, kaynak grupları veya abonelikler için günlükleri sorgulayabilir, ancak diğer kaynakların günlüklerini sorgulayamaz. |
+| İzinlerin kapsamı nedir? | Alanında. Çalışma alanına erişimi olan kullanıcılar, çalışma alanındaki tüm günlükleri izinleri olan tablolardan sorgulayabilir. Bkz. [tablo erişim denetimi](manage-access.md#table-level-rbac) | Azure kaynağı. Kullanıcı herhangi bir çalışma alanından erişimi olan belirli kaynaklar, kaynak grupları veya abonelikler için günlükleri sorgulayabilir, ancak diğer kaynakların günlüklerini sorgulayamaz. |
 | Kullanıcı günlüklere nasıl erişebilir? | <ul><li>**Günlükleri** **Azure izleyici** menüsünden başlatın.</li></ul> <ul><li>**Log Analytics çalışma alanlarından** **günlükleri** başlatın.</li></ul> <ul><li>Azure Izleyici [çalışma kitaplarından](../visualizations.md#workbooks).</li></ul> | <ul><li>Azure kaynağı menüsündeki **günlükleri** Başlat</li></ul> <ul><li>**Günlükleri** **Azure izleyici** menüsünden başlatın.</li></ul> <ul><li>**Log Analytics çalışma alanlarından** **günlükleri** başlatın.</li></ul> <ul><li>Azure Izleyici [çalışma kitaplarından](../visualizations.md#workbooks).</li></ul> |
 
 ## <a name="access-control-mode"></a>Erişim denetimi modu
 
-*Erişim denetimi modu* , her çalışma alanı için izinlerin nasıl belirlendiğini tanımlayan bir ayardır.
+*Erişim denetimi modu* , çalışma alanı için izinlerin nasıl belirlendiğini tanımlayan her çalışma alanındaki bir ayardır.
 
 * **Çalışma alanı Izinleri iste**: Bu denetim modu parçalı RBAC 'e izin vermiyor. Bir kullanıcının çalışma alanına erişmesi için, çalışma alanına veya belirli tablolara izin verilmesi gerekir.
 
-    Bir kullanıcı çalışma alanı bağlam modundan sonra çalışma alanına eriştiğinde, erişim izni verilen herhangi bir tablodaki tüm verilere erişebilirler. Bir Kullanıcı, kaynak bağlamı modundan sonra çalışma alanına eriştiğinde, erişim izni verilen herhangi bir tabloda yalnızca o kaynağa yönelik verilere erişebilirler.
+    Bir kullanıcı çalışma alanına, çalışma alanı bağlamı modundan sonra erişirse, erişim izni verilen herhangi bir tablodaki tüm verilere erişebilirler. Bir Kullanıcı, kaynak bağlamı modundan sonra çalışma alanına eriştiğinde, erişim izni verilen her tabloda yalnızca o kaynağa yönelik verilere erişebilirler.
 
     Bu, 2019 Mart 'tan önce oluşturulan tüm çalışma alanları için varsayılan ayardır.
 
@@ -127,6 +127,8 @@ Aşağıdaki tabloda erişim modları özetlenmektedir:
 
     > [!NOTE]
     > Bir kullanıcının çalışma alanında yalnızca kaynak izinleri varsa, çalışma alanına yalnızca çalışma alanı erişim modunun **kaynak veya çalışma alanı Izinlerini kullanacak**şekilde ayarlandığını varsayarak kaynak bağlam modunu kullanarak erişebilirler.
+
+Portalda erişim denetimi modunu değiştirme hakkında bilgi edinmek için, PowerShell ile veya Kaynak Yöneticisi şablonu kullanarak bkz. [erişim denetimi modunu tanımlama](manage-access.md#define-access-control-mode).
 
 ## <a name="recommendations"></a>Öneriler
 

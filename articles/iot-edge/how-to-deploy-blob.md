@@ -3,25 +3,22 @@ title: Azure Blob Storage modülünü cihazlara dağıtma-Azure IoT Edge | Micro
 description: IOT Edge cihazınıza uçta veri depolamak için bir Azure Blob Depolama modülü dağıtın.
 author: arduppal
 ms.author: arduppal
-ms.date: 06/19/2019
+ms.date: 08/07/2019
 ms.topic: article
 ms.service: iot-edge
 ms.custom: seodec18
 ms.reviewer: arduppal
 manager: mchad
-ms.openlocfilehash: 86040020c8f9163a327b2029008e3648723b14ec
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 6cb50270eff779d7302a4676dab328046b1d50b4
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839678"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883184"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>IoT Edge modülünde Azure Blob Storage 'ı cihazınıza dağıtma
 
 IoT Edge bir cihaza modül dağıtmanın birkaç yolu vardır ve bunların hepsi IoT Edge modüllerde Azure Blob depolama için çalışır. Visual Studio kod şablonları ve Azure Portalı'nı kullanmak için iki basit yöntemler şunlardır.
-
-> [!NOTE]
-> IOT Edge üzerinde Azure Blob Depolama, içinde [genel Önizleme](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -58,7 +55,7 @@ Bir dağıtım bildirimi dağıtmak için modülleri ve modül ikizlerini istene
    > [!IMPORTANT]
    > Modüller için çağrılar yaptığınızda büyük/küçük harfe duyarlı Azure IoT Edge ve depolama SDK 'Sı varsayılan olarak küçük harfe duyarlıdır. [Azure Marketi](how-to-deploy-modules-portal.md#deploy-modules-from-azure-marketplace) 'ndeki modülün adı **AzureBlobStorageonIoTEdge**olsa da, adın küçük harfe değiştirilmesi IoT Edge modüldeki Azure Blob depolama ile olan bağlantılarınızın kesilmemesini sağlamaya yardımcı olur.
 
-1. Varsayılan **kapsayıcı oluşturma seçenekleri** değerleri, kapsayıcınıza ait bağlantı noktası bağlamalarını tanımlar, ancak depolama hesabı bilgilerinizi ve cihazınızda depolama dizini için bir bağlama eklemeniz gerekir. Portalda varsayılan JSON değerini aşağıdaki JSON ile değiştirin:
+1. Varsayılan **kapsayıcı oluşturma seçenekleri** değerleri, kapsayıcınıza ait bağlantı noktası bağlamalarını tanımlar, ancak depolama hesabı bilgilerinizi ve cihazınızda depolama için bir bağlama eklemeniz gerekir. Portalda varsayılan JSON değerini aşağıdaki JSON ile değiştirin:
 
    ```json
    {
@@ -68,10 +65,10 @@ Bir dağıtım bildirimi dağıtmak için modülleri ve modül ikizlerini istene
      ],
      "HostConfig":{
        "Binds":[
-           "<storage directory bind>"
+           "<storage mount>"
        ],
-     "PortBindings":{
-       "11002/tcp":[{"HostPort":"11002"}]
+       "PortBindings":{
+         "11002/tcp":[{"HostPort":"11002"}]
        }
      }
    }
@@ -83,13 +80,18 @@ Bir dağıtım bildirimi dağıtmak için modülleri ve modül ikizlerini istene
 
    - 64 `<your storage account key>` baytlık bir Base64 anahtarıyla değiştirin. Bir anahtar gibi araçlarla oluşturabilirsiniz [GeneratePlus](https://generate.plus/en/base64?gp_base64_base[length]=64). Diğer modüllerden blob depolamaya erişmek için bu kimlik bilgilerini kullanacaksınız.
 
-   - Öğesini `<storage directory bind>` kapsayıcı işletim sisteminize göre değiştirin. Adını sağlayın bir [birim](https://docs.docker.com/storage/volumes/) veya istediğiniz verileri depolamak için blob modülü IOT Edge Cihazınızda dizinine mutlak yolu. Depolama Dizin bağlaması, cihazınızdaki bir konumu modüldeki bir küme konumuna eşler.
+   - Öğesini `<storage mount>` kapsayıcı işletim sisteminize göre değiştirin. Adını sağlayın bir [birim](https://docs.docker.com/storage/volumes/) veya istediğiniz verileri depolamak için blob modülü IOT Edge Cihazınızda dizinine mutlak yolu. Depolama alanı, cihazınızdaki bir konumu modüldeki bir konum kümesine eşler.
 
-     - Linux kapsayıcıları için, biçim  *\<depolama yolu >:/blobroot*. Örneğin, **/SRV/containerdata:/blobroot** veya **My-Volume:/blobroot**.
-     - Windows kapsayıcıları için, biçim  *\<>: C:/blobroot depolama yoludur*. Örneğin, **c:/containerdata: c:/blobroot** veya **My-Volume: c:/blobroot**. Yerel sürücünüzü kullanmak yerine, SMB ağ konumunuzu eşleyebilirsiniz, daha fazla bilgi için bkz. [yerel depolama alanı olarak SMB paylaşımının kullanımı](how-to-store-data-blob.md#using-smb-share-as-your-local-storage)
+     - Linux kapsayıcıları için, biçim  *\<depolama yolu veya birim >:/blobroot*. Örneğin:
+         - [birim bağlama](https://docs.docker.com/storage/volumes/)kullan: **My-Volume:/blobroot** 
+         - [bağlama bağlama](https://docs.docker.com/storage/bind-mounts/): **/SRV/containerdata:/blobroot**kullanın. [Kapsayıcı kullanıcısına dizin erişimi sağlamak](how-to-store-data-blob.md#granting-directory-access-to-container-user-on-linux) için adımları izlediğinizden emin olun
+     - Windows kapsayıcıları için, biçim  *\<depolama yolu veya birim >: C:/blobroot*. Örneğin:
+         - [birim bağlama](https://docs.docker.com/storage/volumes/): **My-Volume: C:/blobroot**kullanın. 
+         - [bağlama bağlama](https://docs.docker.com/storage/bind-mounts/)kullan: **C:/containerdata: c:/BlobRoot**.
+         - Yerel sürücünüzü kullanmak yerine, SMB ağ konumunuzu eşleyebilirsiniz, daha fazla bilgi için bkz. [yerel depolama alanı olarak SMB paylaşımının kullanımı](how-to-store-data-blob.md#using-smb-share-as-your-local-storage)
 
      > [!IMPORTANT]
-     > Depolama dizini bağlama değerinin, modüldeki belirli bir konuma işaret eden ikinci yarısını değiştirmeyin. Depolama dizini bağlaması her zaman şu şekilde bitmelidir: Linux kapsayıcıları için **/blobroot** ve: Windows kapsayıcıları için **C:/blobroot** .
+     > Depolama bağlama değerinin, modüldeki belirli bir konuma işaret eden ikinci yarısını değiştirmeyin. Depolama alanı, Linux kapsayıcıları için: **/blobroot** ve Windows kapsayıcıları için **C:/blobroot** ile her zaman bitmelidir.
 
 1. Modülünüzün [Devicetoclouduploadproperties](how-to-store-data-blob.md#devicetoclouduploadproperties) ve [deviceoto deleteproperties](how-to-store-data-blob.md#deviceautodeleteproperties) özelliklerini ayarlayarak aşağıdaki JSON 'yi kopyalayıp, **set Module ikizi 'in istenen özellikler** kutusuna yapıştırın. Her bir özelliği uygun bir değerle yapılandırın, kaydedin ve dağıtıma devam edin.
 
@@ -178,7 +180,7 @@ Azure IOT Edge, uç çözümleri geliştirmenize yardımcı olması için Visual
        "LOCAL_STORAGE_ACCOUNT_KEY=<your storage account key>"
       ],
       "HostConfig":{
-        "Binds": ["<storage directory bind>"],
+        "Binds": ["<storage mount>"],
         "PortBindings":{
           "11002/tcp": [{"HostPort":"11002"}]
         }
@@ -191,13 +193,19 @@ Azure IOT Edge, uç çözümleri geliştirmenize yardımcı olması için Visual
 
 1. 64 `<your storage account key>` baytlık bir Base64 anahtarıyla değiştirin. Bir anahtar gibi araçlarla oluşturabilirsiniz [GeneratePlus](https://generate.plus/en/base64?gp_base64_base[length]=64). Diğer modüllerden blob depolamaya erişmek için bu kimlik bilgilerini kullanacaksınız.
 
-1. Öğesini `<storage directory bind>` kapsayıcı işletim sisteminize göre değiştirin. Adını sağlayın bir [birim](https://docs.docker.com/storage/volumes/) veya istediğiniz verileri depolamak için blob modülü IOT Edge Cihazınızda dizinine mutlak yolu. Depolama Dizin bağlaması, cihazınızdaki bir konumu modüldeki bir küme konumuna eşler.  
+1. Öğesini `<storage mount>` kapsayıcı işletim sisteminize göre değiştirin. Adını sağlayın bir [birim](https://docs.docker.com/storage/volumes/) veya istediğiniz verileri depolamak için blob modülü IOT Edge Cihazınızda dizinine mutlak yolu. Depolama alanı, cihazınızdaki bir konumu modüldeki bir konum kümesine eşler.  
 
-      - Linux kapsayıcıları için, biçim  *\<depolama yolu >:/blobroot*. Örneğin, **/SRV/containerdata:/blobroot** veya **My-Volume:/blobroot**.
-      - Windows kapsayıcıları için, biçim  *\<>: C:/blobroot depolama yoludur*. Örneğin, **c:/containerdata: c:/blobroot** veya **My-Volume: c:/blobroot**.  Yerel sürücünüzü kullanmak yerine, SMB ağ konumunuzu eşleyebilirsiniz, daha fazla bilgi için bkz. [yerel depolama alanı olarak SMB paylaşımının kullanımı](how-to-store-data-blob.md#using-smb-share-as-your-local-storage)
+      
+     - Linux kapsayıcıları için, biçim  *\<depolama yolu veya birim >:/blobroot*. Örneğin:
+         - [birim bağlama](https://docs.docker.com/storage/volumes/)kullan: **My-Volume:/blobroot** 
+         - [bağlama bağlama](https://docs.docker.com/storage/bind-mounts/): **/SRV/containerdata:/blobroot**kullanın. [Kapsayıcı kullanıcısına dizin erişimi sağlamak](how-to-store-data-blob.md#granting-directory-access-to-container-user-on-linux) için adımları izlediğinizden emin olun
+     - Windows kapsayıcıları için, biçim  *\<depolama yolu veya birim >: C:/blobroot*. Örneğin:
+         - [birim bağlama](https://docs.docker.com/storage/volumes/): **My-Volume: C:/blobroot**kullanın. 
+         - [bağlama bağlama](https://docs.docker.com/storage/bind-mounts/)kullan: **C:/containerdata: c:/BlobRoot**.
+         - Yerel sürücünüzü kullanmak yerine, SMB ağ konumunuzu eşleyebilirsiniz, daha fazla bilgi için bkz. [yerel depolama alanı olarak SMB paylaşımının kullanımı](how-to-store-data-blob.md#using-smb-share-as-your-local-storage)
 
-      > [!IMPORTANT]
-      > Depolama dizini bağlama değerinin, modüldeki belirli bir konuma işaret eden ikinci yarısını değiştirmeyin. Depolama dizini bağlaması her zaman şu şekilde bitmelidir: Linux kapsayıcıları için **/blobroot** ve: Windows kapsayıcıları için **C:/blobroot** .
+     > [!IMPORTANT]
+     > Depolama bağlama değerinin, modüldeki belirli bir konuma işaret eden ikinci yarısını değiştirmeyin. Depolama alanı, Linux kapsayıcıları için: **/blobroot** ve Windows kapsayıcıları için **C:/blobroot** ile her zaman bitmelidir.
 
 1. Aşağıdaki JSON 'ı *Deployment. Template. JSON* dosyasına ekleyerek modülünüzün [Devicetoclouduploadproperties](how-to-store-data-blob.md#devicetoclouduploadproperties) ve [deviceoto deleteproperties özelliklerini](how-to-store-data-blob.md#deviceautodeleteproperties) yapılandırın. Her bir özelliği uygun bir değerle yapılandırın ve dosyayı kaydedin.
 
@@ -250,7 +258,5 @@ Ek blob depolama modüllerini bağladığınızda, uç nokta güncel ana bilgisa
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [IoT Edge Azure Blob depolama](how-to-store-data-blob.md) hakkında daha fazla bilgi edinin
-
-[IoT Edge blogundaki Azure Blob depolamada](https://aka.ms/abs-iot-blogpost) en son güncelleştirmeler ve duyuru ile güncel kalın
 
 Nasıl iş dağıtım bildirimleri ve bunların nasıl oluşturulacağı hakkında daha fazla bilgi için bkz. [nasıl IOT Edge modülleri, yapılandırılmış, yeniden kaldırılabilir ve anlamak](module-composition.md).

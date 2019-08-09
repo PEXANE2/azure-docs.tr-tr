@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory Domain Services yönetilen etki alanınıza güvenli | Microsoft Docs
+title: Azure Active Directory Domain Services yönetilen etki alanınızı güvenli hale getirin | Microsoft Docs
 description: Yönetilen etki alanınızın güvenliğini sağlama
 services: active-directory-ds
 documentationcenter: ''
@@ -15,30 +15,33 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2019
 ms.author: iainfou
-ms.openlocfilehash: e94cd9ca049cfdfd2321ce046714506ed1f23390
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 923ecae9dc649b8f5cdcfd447b78fdec0805927a
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67483270"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879160"
 ---
-# <a name="secure-your-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services yönetilen etki alanınıza güvenli
-Bu makale, yönetilen etki alanınıza güvenli hale getirmenize yardımcı olur. Zayıf şifre paketleri kullanımını devre dışı'ı açın ve NTLM kimlik bilgisi karması eşitleme devre dışı bırakın.
+# <a name="secure-your-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services yönetilen etki alanınızı güvenli hale getirin
+Bu makale, yönetilen etki alanınızı güvenli hale getirmeye yardımcı olur. Zayıf şifre paketlerinin kullanımını kapatabilir ve NTLM kimlik bilgisi karma eşitlemesini devre dışı bırakabilirsiniz.
 
-## <a name="install-the-required-powershell-modules"></a>Gerekli PowerShell modüllerini yükleyin
+## <a name="install-the-required-powershell-modules"></a>Gerekli PowerShell modüllerini yükler
 
-### <a name="install-and-configure-azure-ad-powershell"></a>Azure AD PowerShell'i yükleme ve yapılandırma
-İçin makaledeki yönergeleri [Azure AD PowerShell modülünü yüklemek ve Azure AD'ye bağlanma](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?toc=%2fazure%2factive-directory-domain-services%2ftoc.json).
+### <a name="install-and-configure-azure-ad-powershell"></a>Azure AD PowerShell 'i yükleyip yapılandırma
+[Azure AD PowerShell modülünü yüklemek ve Azure AD 'ye bağlanmak](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?toc=%2fazure%2factive-directory-domain-services%2ftoc.json)için makalesindeki yönergeleri izleyin.
 
 ### <a name="install-and-configure-azure-powershell"></a>Azure PowerShell'i yükleyip yapılandırma
-İçin makaledeki yönergeleri [Azure PowerShell modülünü yüklemek ve Azure aboneliğinize bağlayın](https://docs.microsoft.com/powershell/azure/install-az-ps?toc=%2fazure%2factive-directory-domain-services%2ftoc.json).
+[Azure PowerShell modülünü yüklemek ve Azure aboneliğinize bağlanmak](https://docs.microsoft.com/powershell/azure/install-az-ps?toc=%2fazure%2factive-directory-domain-services%2ftoc.json)için makalesindeki yönergeleri izleyin.
 
 
-## <a name="disable-weak-cipher-suites-and-ntlm-credential-hash-synchronization"></a>Zayıf şifre paketleri ve NTLM kimlik bilgisi karması eşitleme devre dışı bırak
-Aşağıdaki PowerShell betiğini kullanın:
+## <a name="disable-weak-cipher-suites-and-ntlm-credential-hash-synchronization"></a>Zayıf şifre paketlerini ve NTLM kimlik bilgisi karma eşitlemesini devre dışı bırak
+İçin aşağıdaki PowerShell betiğini kullanın:
+
 1. Yönetilen etki alanında NTLM v1 desteğini devre dışı bırakın.
-2. NTLM, şirket içi parola karmalarının eşitlenmesini devre dışı bırakmak AD.
+2. Şirket içi AD 'nizden NTLM parola karmalarının eşitlemesini devre dışı bırakın.
 3. Yönetilen etki alanında TLS v1’i devre dışı bırakın.
+
+*Microsoft. AAD/DomainServices* kaynağının `Get-AzResource` mevcut olmadığı komutla ilgili bir hata alırsanız, [tüm Azure aboneliklerini ve Yönetim gruplarını yönetmek için erişiminizi](../role-based-access-control/elevate-access-global-admin.md)yükseltin.
 
 ```powershell
 // Login to your Azure AD tenant
@@ -58,9 +61,9 @@ Set-AzResource -Id $DomainServicesResource.ResourceId -Properties $securitySetti
 ```
 
 > [!IMPORTANT]
-> Azure AD Domain Services örneğinizin NTLM parola karması eşitleme devre dışı, kullanıcıların (ve hizmet hesapları) LDAP basit bağlamaları gerçekleştirilemiyor.  NTLM parola karması eşitleme devre dışı bırakma hakkında daha fazla bilgi için okuma [Azure AD DOmain Services yönetilen etki alanınıza güvenli](secure-your-domain.md).
+> Azure AD Domain Services örneğiniz üzerinde NTLM parola karması eşitlemesini devre dışı bırakmış kullanıcılar (ve hizmet hesapları) LDAP basit bağlamalar gerçekleştiremez.  NTLM parola karma eşitlemesini devre dışı bırakma hakkında daha fazla bilgi için [Azure AD etki alanı Hizmetleri tarafından yönetilen etki alanınızı](secure-your-domain.md)okuyun.
 >
 >
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Azure AD Etki Alanı Hizmetleri'nde eşitleme anlama](synchronization.md)
+* [Azure AD Domain Services eşitlemeyi anlama](synchronization.md)

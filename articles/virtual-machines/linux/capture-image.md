@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: ed9eb990fff3a0901f3fa26526b30e8cb8a2fe66
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 328748b9dd81834b9c69f81bc0bda60c9ad12cb0
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779413"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879966"
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>Bir sanal makinenin veya VHD 'nin görüntüsünü oluşturma
 
@@ -40,9 +40,9 @@ Görüntü oluşturmadan önce aşağıdaki öğelere sahip olmanız gerekir:
 
 * En son [Azure CLI](/cli/azure/install-az-cli2) yüklü ve [az oturum açma](/cli/azure/reference-index#az-login)ile bir Azure hesabında oturum açmış olmalıdır.
 
-## <a name="quick-commands"></a>Hızlı komutlar
+## <a name="prefer-a-tutorial-instead"></a>Bunun yerine bir öğretici tercih edilsin mi?
 
-Bu makalenin basitleştirilmiş bir sürümü ve Azure 'da VM 'Ler hakkında sınama, değerlendirme veya öğrenme için bkz. [CLI kullanarak Azure VM 'nin özel bir görüntüsünü oluşturma](tutorial-custom-images.md).
+Bu makalenin basitleştirilmiş bir sürümü ve Azure 'da VM 'Ler hakkında sınama, değerlendirme veya öğrenme için bkz. [CLI kullanarak Azure VM 'nin özel bir görüntüsünü oluşturma](tutorial-custom-images.md).  Aksi takdirde, tam resmi almak için burada okumayı sürdürün.
 
 
 ## <a name="step-1-deprovision-the-vm"></a>1\. adım: VM’nin sağlamasını kaldırma
@@ -58,7 +58,7 @@ Bu makalenin basitleştirilmiş bir sürümü ve Azure 'da VM 'Ler hakkında sı
    > Bu komutu yalnızca görüntü olarak yakaladığınız bir VM üzerinde çalıştırın. Bu komut görüntünün tüm hassas bilgilerin temizlenme veya yeniden dağıtım için uygun olduğunu garanti etmez. Parametresi `+user` , sağlanan son kullanıcı hesabını da kaldırır. Kullanıcı hesabı kimlik bilgilerini VM 'de tutmak için yalnızca `-deprovision`kullanın.
  
 3. Devam etmek için **y** girin. Bu onay adımından `-force` kaçınmak için parametresini ekleyebilirsiniz.
-4. Komut tamamlandıktan sonra SSH istemcisini kapatmak için **Çıkış** ' ı girin.
+4. Komut tamamlandıktan sonra SSH istemcisini kapatmak için **Çıkış** ' ı girin.  VM hala bu noktada çalışmaya devam edecektir.
 
 ## <a name="step-2-create-vm-image"></a>2\. adım: VM görüntüsü oluştur
 VM 'yi Genelleştirilmiş olarak işaretlemek ve görüntüyü yakalamak için Azure CLı 'yi kullanın. Aşağıdaki örneklerde, örnek parametre adlarını kendi değerlerinizle değiştirin. Örnek parametre adları *Myresourcegroup*, *Myvnet*ve *myvm*' i içerir.
@@ -71,7 +71,7 @@ VM 'yi Genelleştirilmiş olarak işaretlemek ve görüntüyü yakalamak için A
       --name myVM
     ```
     
-    Üzerinde geçiş yapmadan önce VM 'nin tamamen serbest olmasını bekleyin. Bu işlem birkaç dakika sürebilir.
+    Üzerinde geçiş yapmadan önce VM 'nin tamamen serbest olmasını bekleyin. Bu işlem birkaç dakika sürebilir.  VM, ayırmayı kaldırma sırasında kapatılır.
 
 2. [Az VM generalize](/cli/azure/vm)komutunu kullanarak VM 'yi Genelleştirilmiş olarak işaretleyin. Aşağıdaki örnek, Myresourcegroup adlı kaynak grubunda *Myvm* adlı VM 'yi Genelleştirilmiş olarak işaretler.
    
@@ -80,6 +80,8 @@ VM 'yi Genelleştirilmiş olarak işaretlemek ve görüntüyü yakalamak için A
       --resource-group myResourceGroup \
       --name myVM
     ```
+
+    Genelleştirilmiş bir VM artık yeniden başlatılamaz.
 
 3. [Az Image Create](/cli/azure/image#az-image-create)komutuyla VM kaynağının bir görüntüsünü oluşturun. Aşağıdaki örnek *Myresourcegroup* adlı kaynak grubunda MYVM adlı VM kaynağını kullanarak MyImage adlı bir görüntü oluşturur.
    
@@ -93,6 +95,8 @@ VM 'yi Genelleştirilmiş olarak işaretlemek ve görüntüyü yakalamak için A
    > Görüntü, kaynak VM 'niz ile aynı kaynak grubunda oluşturulur. Bu görüntüden, aboneliğinizdeki herhangi bir kaynak grubunda VM 'Ler oluşturabilirsiniz. Yönetim açısından, VM kaynaklarınız ve görüntüleriniz için belirli bir kaynak grubu oluşturmak isteyebilirsiniz.
    >
    > Görüntünüzü bölge dayanıklı depolamada depolamak isterseniz, bunu [kullanılabilirlik bölgelerini](../../availability-zones/az-overview.md) destekleyen bir bölgede oluşturmanız ve `--zone-resilient true` parametresini eklemeniz gerekir.
+   
+Bu komut, VM görüntüsünü açıklayan JSON döndürür. Bu çıktıyı daha sonra başvurmak üzere kaydedin.
 
 ## <a name="step-3-create-a-vm-from-the-captured-image"></a>3\. adım: Yakalanan görüntüden VM oluşturma
 [Az VM Create](/cli/azure/vm)ile oluşturduğunuz görüntüyü kullanarak bir VM oluşturun. Aşağıdaki örnek, *MyImage*adlı görüntüden *dağıtılan myvmadlı* bir VM oluşturur.

@@ -1,27 +1,27 @@
 ---
-title: Linux Azure VM boyutlarını - bellek | Microsoft Docs
-description: Azure'da Linux sanal makineleri için kullanılabilen farklı bellek için iyileştirilmiş boyutlarını listeler. Vcpu, veri diskleri ve NIC yanı sıra bu serideki boyutları için depolama aktarım hızı ve ağ bant sayısı hakkında bilgiler listelenir.
+title: Linux Azure VM boyutları-bellek | Microsoft Docs
+description: Azure 'da Linux sanal makineleri için kullanılabilen farklı bellek için iyileştirilmiş boyutları listeler. Bu serideki boyutlarda vCPU sayısı, veri diskleri ve NIC 'lerin yanı sıra depolama aktarım hızı ve ağ bant genişliği hakkındaki bilgileri listeler.
 services: virtual-machines-linux
 documentationcenter: ''
 author: jonbeck7
 manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
-keywords: Yalıtılmış VM, yalıtım, yalıtılmış VM yalıtım
+keywords: VM yalıtımı, yalıtılmış VM, yalıtım, yalıtılmış
 ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 05/16/2019
+ms.date: 08/08/2019
 ms.author: jonbeck
-ms.openlocfilehash: fdcfe2f78177dba7810c668d280f4f3f5127deb7
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 1ca122a9a160901aa27c53faa2ab1da7a1c740dd
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708816"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881588"
 ---
 # <a name="memory-optimized-virtual-machine-sizes"></a>Bellek için iyileştirilmiş sanal makine boyutları
 
@@ -31,16 +31,16 @@ ms.locfileid: "67708816"
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../../includes/virtual-machines-common-sizes-table-defs.md)]
 
 
-## <a name="other-sizes"></a>Diğer boyutları
+## <a name="other-sizes"></a>Diğer boyutlar
 - [Genel amaçlı](sizes-general.md)
 - [İşlem için iyileştirilmiş](sizes-compute.md)
 - [Depolama için iyileştirilmiş](sizes-storage.md)
 - [GPU](../windows/sizes-gpu.md)
 - [Yüksek performanslı işlem](sizes-hpc.md)
-- [Önceki nesil](sizes-previous-gen.md)
+- [Önceki nesiller](sizes-previous-gen.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Hakkında daha fazla bilgi [Azure işlem birimleri (ACU)](acu.md) Azure SKU'ları arasında işlem performansını karşılaştırmanıza yardımcı olabilir.
+* Azure [işlem birimlerinin (ACU)](acu.md) Azure SKU 'ları genelinde işlem performansını karşılaştırmanıza nasıl yardımcı olabileceğini öğrenin.
 
-* Bilgi edinmek için nasıl [Azure CLI ile Linux Vm'leri oluşturma ve yönetme](tutorial-manage-vm.md)
+* [Azure CLI Ile Linux VM 'Leri oluşturma ve yönetme](tutorial-manage-vm.md) hakkında bilgi edinin

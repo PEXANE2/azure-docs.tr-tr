@@ -5,54 +5,53 @@ author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: include
-ms.date: 11/02/2018
+ms.date: 08/07/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: cc83d94acd25914ee57473de53afbc018f310887
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 795e805e4629a4f4674c296e555ece6230cf66f1
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67188471"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883133"
 ---
-Bu bölümde bir IOT hub'ı kullanarak oluşturmayı açıklar [Azure portalında](https://portal.azure.com).
+Bu bölümde [Azure Portal](https://portal.azure.com)kullanarak IoT Hub 'ı oluşturma açıklanmaktadır.
 
-1. [Azure Portal](https://portal.azure.com)’da oturum açın. 
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
-2. Seçin +**kaynak Oluştur**, ardından *markette Ara* için **IOT hub'ı**.
+1. **Kaynak oluştur**' u seçin ve ardından Market ' i **Ara** alanına *IoT Hub* girin.
 
-3. Seçin **IOT hub'ı** tıklatıp **Oluştur** düğmesi. IOT hub'ı oluşturmak için ilk ekran görürsünüz.
+1. Arama sonuçlarından **IoT Hub** seçin ve ardından **Oluştur**' u seçin.
 
-   ![Azure portalında oluşturma](./media/iot-hub-include-create-hub/iot-hub-create-screen-basics.png)
+1. **Temel bilgiler** sekmesinde, alanları aşağıdaki gibi doldurun:
 
-   Alanları doldurun.
+   - **Abonelik**: Hub 'ınız için kullanılacak aboneliği seçin.
 
-   **Abonelik**: IOT hub'ınız için kullanılacak aboneliği seçin.
+   - **Kaynak grubu**: Bir kaynak grubu seçin veya yeni bir tane oluşturun. Yeni bir tane oluşturmak için **Yeni oluştur** ' u seçin ve kullanmak istediğiniz adı girin. Var olan bir kaynak grubunu kullanmak için bu kaynak grubunu seçin. Daha fazla bilgi için bkz. [Azure Resource Manager kaynak gruplarını yönetme](../articles/azure-resource-manager/manage-resource-groups-portal.md).
 
-   **Kaynak grubu**: Yeni bir kaynak grubu oluşturun veya var olanı kullanın. Yeni bir tane oluşturmak için tıklayın **Yeni Oluştur** ve kullanmak istediğiniz adı girin. Mevcut bir kaynak grubunu kullanmak için **var olanı kullan** ve açılır listeden kaynak grubunu seçin. Daha fazla bilgi için [yönetme Azure Resource Manager kaynak grupları](../articles/azure-resource-manager/manage-resource-groups-portal.md).
+   - **Bölge**: Hub 'ınızın bulunmasını istediğiniz bölgeyi seçin. Size en yakın konumu seçin.
 
-   **Bölge**: Bu hub'ınıza yer almasını istediğiniz bölgedir. Açılır listeden size en yakın konumu seçin.
-
-   **IOT hub'ı adı**: IOT Hub'ınızın adını yerleştirin. Bu adın küresel olarak benzersiz olması gerekir. Girdiğiniz ad kullanılabilir durumdaysa yeşil bir onay işareti görünür.
+   - **IoT Hub adı**: Hub 'ınız için bir ad girin. Bu adın küresel olarak benzersiz olması gerekir. Girdiğiniz ad kullanılabilir durumdaysa yeşil bir onay işareti görünür.
 
    [!INCLUDE [iot-hub-pii-note-naming-hub](iot-hub-pii-note-naming-hub.md)]
 
-4. Tıklayın **sonraki: Boyut ve ölçek** IOT hub'ınıza oluşturmaya devam etmek için.
+   ![Azure portal hub oluşturma](./media/iot-hub-include-create-hub/iot-hub-create-screen-basics-vs2019.png)
 
-   ![Boyutu ve Azure portalını kullanarak yeni bir IOT hub için ölçek kümesi](./media/iot-hub-include-create-hub/iot-hub-create-screen-size-scale.png)
+1. İleri **' yi seçin: Hub 'ınızı oluşturmaya** devam etmek için boyut ve ölçek.
 
-   Bu ekranda varsayılan değerleri alabilir ve tıklamanız yeterli **gözden geçir + Oluştur** altındaki. 
+   ![Azure portal kullanarak yeni bir hub için boyut ve ölçek ayarlama](./media/iot-hub-include-create-hub/iot-hub-create-screen-size-scale.png)
 
-   **Fiyatlandırma ve ölçek katmanı**: Bağlı olarak kaç özellikleri birkaç katmanı arasından seçim yapabilirsiniz istediğiniz ve kaç iletileri gönder günde çözümünüz aracılığıyla. Ücretsiz katman, test ve değerlendirme için tasarlanmıştır. Günlük ileti 8000'en fazla ve IOT hub'ına bağlanması 500 CİHAZDAN sağlar. Her Azure aboneliğinin bir IOT Hub ücretsiz katmanında oluşturabilirsiniz. 
+    Bu ekran aşağıdaki değerleri ayarlamanıza olanak sağlar:
 
-   **IOT Hub birimlerinin**: Günlük birim başına izin verilen ileti sayısı, hub'ın fiyatlandırma katmanına bağlıdır. Örneğin, IOT hub'ı 700.000 iletilerinin giriş desteklemek için isterseniz, iki adet S1 katmanı birimi seçin.
+    - **Fiyatlandırma ve ölçek katmanı**: Seçtiğiniz katman. İstediğiniz sayıda özelliğe ve her gün çözümünüz aracılığıyla kaç tane ileti gönderdiğinize bağlı olarak çeşitli katmanlardan seçim yapabilirsiniz. Ücretsiz katman, test ve değerlendirme için tasarlanmıştır. 500 cihazların hub 'a ve günde en fazla 8.000 iletiye bağlanmasını sağlar. Her Azure aboneliği ücretsiz katmanda bir IoT Hub oluşturabilir.
 
-   Bir katman seçenekleri hakkında daha fazla ayrıntı için bkz: [doğru IOT Hub katmanını seçme](../articles/iot-hub/iot-hub-scaling.md).
+    - **IoT Hub birimleri**: Günlük birim başına izin verilen ileti sayısı, hub 'ın fiyatlandırma katmanına bağlıdır. Örneğin, hub 'ın 700.000 ileti girişini desteklemesini istiyorsanız iki adet S1 katmanı birimi seçersiniz.
+    Diğer katman seçenekleri hakkında daha fazla bilgi için, bkz. [doğru IoT Hub katmanını seçme](../articles/iot-hub/iot-hub-scaling.md).
 
-   **Gelişmiş / CİHAZDAN buluta bölümler**: Bu özellik, CİHAZDAN buluta iletileri iletilerin eşzamanlı okuyucu sayısıyla ilgilidir. Çoğu IOT hub'ları, yalnızca dört bölüm gerekir. 
+    - Gelişmiş > **cihazdan buluta bölümler**: Bu özellik cihazdan buluta iletileri, iletilerin eşzamanlı okuyucu sayısıyla ilişkilendirir. Çoğu hub 'da yalnızca dört bölüm olması gerekir.
 
-5. Tıklayın **gözden + Oluştur** seçimlerinizi gözden geçirmek için. Bu ekranda gösterilene benzer bir şey görürsünüz.
+1. Bu öğreticide, varsayılan seçimleri kabul edin ve ardından seçimlerinizi gözden geçirmek için **gözden geçir + oluştur** ' u seçin. Bu ekrana benzer bir şey görürsünüz.
 
-   ![Yeni IOT hub'ı oluşturmak için bilgileri gözden geçirin](./media/iot-hub-include-create-hub/iot-hub-create-review.png)
+   ![Yeni hub oluşturma bilgilerini gözden geçirin](./media/iot-hub-include-create-hub/iot-hub-create-review-vs2019.png)
 
-6. Tıklayın **Oluştur** yeni IOT hub'ınızı oluşturmak için. Hub'ı oluşturuluyor, birkaç dakika sürer.
+1. Yeni hub 'ınızı oluşturmak için **Oluştur** ' u seçin. Hub 'ın oluşturulması birkaç dakika sürer.

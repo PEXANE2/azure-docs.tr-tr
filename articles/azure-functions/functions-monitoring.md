@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: glenga
-ms.openlocfilehash: cfdc28486cf254c4dd808824ab167489818376ab
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 582e4d81851d570f99d25d626a1db8a9f5e98231
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619603"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881322"
 ---
 # <a name="monitor-azure-functions"></a>Azure İşlevlerini İzleme
 
@@ -607,14 +607,21 @@ Işlevlerde Application Insights tümleştirmeyle ilgili bir sorun bildirmek vey
 
 ## <a name="streaming-logs"></a>Akış Günlükleri
 
-Bir uygulama geliştirirken genellikle günlük bilgileri neredeyse gerçek zamanlı olarak görmeniz yararlı olur. İşlevleriniz tarafından oluşturulan günlük dosyalarının akışını, Azure portal veya yerel bilgisayarınızdaki bir komut satırı oturumunda görüntüleyebilirsiniz.
+Bir uygulama geliştirirken genellikle Azure 'da çalışırken neredeyse gerçek zamanlı olarak günlüklere yazılmakta olan öğeleri istersiniz.
 
-Bu, [yerel geliştirme](functions-develop-local.md)sırasında işlevlerinizi hata ayıkladığınızda görülen çıkışın eşdeğeridir. Daha fazla bilgi için bkz. [günlüklerin akışı](../app-service/troubleshoot-diagnostic-logs.md#streamlogs).
+İşlev yürütmeleri tarafından oluşturulan günlük dosyalarının akışını görüntülemenin iki yolu vardır.
 
-> [!NOTE]
-> Akış günlükleri, Işlevlerin yalnızca tek bir örneğini destekler. İşleviniz birden çok örneğe ölçeklenirse, diğer örneklerden gelen veriler günlük akışında gösterilmez. Application Insights [canlı ölçüm akışı](../azure-monitor/app/live-stream.md) birden çok örnek destekliyordu. Ayrıca, neredeyse gerçek zamanlı olarak, Akış Analizi [örneklenmiş verileri](#configure-sampling)de temel alır.
+* **Yerleşik günlük akışı**: App Service platformu, uygulama günlüğü dosyalarınızın akışını görüntülemenize olanak sağlar. Bu, [yerel geliştirme](functions-develop-local.md) sırasında işlevlerinizi hata ayıkladığınızda ve portalda **Test** sekmesini kullandığınızda görülen çıkış ile eşdeğerdir. Günlük tabanlı tüm bilgiler görüntülenir. Daha fazla bilgi için bkz. [günlüklerin akışı](../app-service/troubleshoot-diagnostic-logs.md#streamlogs). Bu akış yöntemi yalnızca tek bir örneği destekler ve bir tüketim planında Linux üzerinde çalışan bir uygulamayla birlikte kullanılamaz.
+
+* **Canlı ölçüm akışı**: işlev uygulamanız [Application Insights bağlandığında](#enable-application-insights-integration), [canlı ölçüm akışı](../azure-monitor/app/live-stream.md)kullanarak Azure Portal neredeyse gerçek zamanlı olarak günlük verilerini ve diğer ölçümleri görüntüleyebilirsiniz. Bir tüketim planında birden çok örnek veya Linux üzerinde çalışan işlevleri izlerken bu yöntemi kullanın. Bu yöntem [örneklenmiş verileri](#configure-sampling)kullanır.
+
+Günlük akışları hem portalda hem de birçok yerel geliştirme ortamında görüntülenebilir. 
 
 ### <a name="portal"></a>Portal
+
+Portalda her iki tür günlük akışı görüntüleyebilirsiniz.
+
+#### <a name="built-in-log-streaming"></a>Yerleşik günlük akışı
 
 Portalda akış günlüklerini görüntülemek için, işlev uygulamanızda **platform özellikleri** sekmesini seçin. Ardından, **izleme**altında **günlük akışı**' nı seçin.
 
@@ -624,9 +631,21 @@ Bu, uygulamanızı günlük akış hizmetine bağlar ve uygulama günlükleri pe
 
 ![Portalda akış günlüklerini görüntüleme](./media/functions-monitoring/streaming-logs-window.png)
 
+#### <a name="live-metrics-stream"></a>Canlı Ölçüm Akışı
+
+Uygulamanızın Canlı Ölçüm Akışı görüntülemek için, işlev uygulamanızın **genel bakış** sekmesini seçin. Application Insights etkinleştirdiğinizde, **yapılandırılmış özellikler**altında bir **Application Insights** bağlantısı görürsünüz. Bu bağlantı sizi uygulamanızın Application Insights sayfasına götürür.
+
+Application Insights ' de **canlı ölçüm akışı**' ı seçin. [Örneklenir günlük girişleri](#configure-sampling) **örnek telemetri**altında görüntülenir.
+
+![Portalda Canlı Ölçüm Akışı görüntüleme](./media/functions-monitoring/live-metrics-stream.png) 
+
 ### <a name="visual-studio-code"></a>Visual Studio Code
 
 [!INCLUDE [functions-enable-log-stream-vs-code](../../includes/functions-enable-log-stream-vs-code.md)]
+
+### <a name="core-tools"></a>Temel araçlar
+
+[!INCLUDE [functions-streaming-logs-core-tools](../../includes/functions-streaming-logs-core-tools.md)]
 
 ### <a name="azure-cli"></a>Azure CLI
 

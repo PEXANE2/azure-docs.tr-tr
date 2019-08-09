@@ -6,15 +6,14 @@ manager: jlembicz
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 07/11/2019
+ms.date: 08/08/2019
 ms.author: jlembicz
-ms.custom: seodec2018
-ms.openlocfilehash: 403febfcb54194602051aaebe2952265c0675e9d
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 5383ad44f665ce809772143e23817932c3e2b7e6
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854410"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883882"
 ---
 # <a name="how-to-create-an-index-for-multiple-languages-in-azure-search"></a>Azure Search birden çok dil için dizin oluşturma
 
@@ -35,7 +34,7 @@ Bir alan oluşturulduğunda dil Çözümleyicisi belirtilir. Var olan bir alan t
 
 ![Alan tanımı sırasında dil Çözümleyicileri atama](media/search-language-support/select-analyzer.png "Alan tanımı sırasında dil Çözümleyicileri atama")
 
-Varsayılan olarak, tüm aranabilir alanlar, dilden bağımsız olan [Standart Lucene çözümleyici](https://lucene.apache.org/core/4_10_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) 'yi kullanır. Desteklenen çözümleyiciler listesinin tam listesini görüntülemek için bkz. [bir Azure Search dizinine dil Çözümleyicileri ekleme](index-add-language-analyzers.md).
+Varsayılan olarak, tüm aranabilir alanlar, dilden bağımsız olan [Standart Lucene çözümleyici](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) 'yi kullanır. Desteklenen çözümleyiciler listesinin tam listesini görüntülemek için bkz. [bir Azure Search dizinine dil Çözümleyicileri ekleme](index-add-language-analyzers.md).
 
 Portalda, çözümleyiciler olduğu gibi kullanılmak üzere tasarlanmıştır. Özelleştirmeler veya filtre ve belirteçlerin belirli bir yapılandırmasına ihtiyacınız varsa, kodda [özel bir çözümleyici oluşturmanız](index-add-custom-analyzers.md) gerekir. Portal özel Çözümleyicileri seçmeyi veya yapılandırmayı desteklemez.
 

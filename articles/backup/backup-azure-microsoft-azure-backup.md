@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: f5367e1ca3e950126766e788323cb1d4749e9b0c
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: d815b471b0a1d7842118c7ac0b5e1665b8fb3c1e
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688397"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879952"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Sunucusu yükleyip yükseltin
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ Bu makalede, Microsoft Azure Backup sunucusu (MABS) kullanarak iş yüklerini ye
 >
 >
 
-Azure VM 'de dağıtılan MABS, VM 'leri Azure 'da yedekleyebilir, ancak yedekleme işlemini etkinleştirmek için aynı etki alanında olmaları gerekir. Azure VM 'yi geri yükleme işlemi, şirket içi VM 'Leri yedeklemeye benzer kalır, ancak Azure 'da MABS dağıtımı bazı sınırlamalara sahiptir. Sınırlamalar hakkında daha fazla bilgi için bkz. [Azure sanal makinesi olarak DPM](https://docs.microsoft.com/system-center/dpm/install-dpm?view=sc-dpm-1807#setup-prerequisites)
+Azure VM 'de dağıtılan MABS, Azure 'daki VM 'Leri yedekleyebilir, ancak yedekleme işlemini etkinleştirmek için aynı etki alanında olmaları gerekir. Azure VM 'yi geri yükleme işlemi, şirket içi VM 'Leri yedeklemeye benzer kalır, ancak Azure 'da MABS dağıtımı bazı sınırlamalara sahiptir. Sınırlamalar hakkında daha fazla bilgi için bkz. [Azure sanal makinesi olarak DPM](https://docs.microsoft.com/system-center/dpm/install-dpm?view=sc-dpm-1807#setup-prerequisites)
 
 > [!NOTE]
 > Azure 'da kaynak oluşturmak ve bunlarla çalışmak için iki dağıtım modeli vardır: [Kaynak Yöneticisi ve klasik](../azure-resource-manager/resource-manager-deployment-model.md). Bu makalede, Kaynak Yöneticisi modeli kullanılarak dağıtılan VM 'Leri geri yüklemeyle ilgili bilgi ve yordamlar sağlanmaktadır.
@@ -78,12 +78,14 @@ Depolama çoğaltma seçeneği, coğrafi olarak yedekli depolama ve yerel olarak
 
 Depolama çoğaltma ayarını düzenlemek için:
 
-1. Kasa panosunu ve Ayarlar menüsünü açmak için kasanızı seçin. **Ayarlar** menüsü açılmazsa, kasa panosunda **Tüm ayarlar** ' a tıklayın.
-2. **Ayarlar** menüsünde, yedekleme **yapılandırma** dikey penceresini açmak için **altyapıyı** > yedekle**yedekleme yapılandırması** ' na tıklayın. **Yedekleme yapılandırması** menüsünde, kasanızın depolama çoğaltma seçeneğini belirleyin.
+1. **Kurtarma Hizmetleri kasaları** dikey penceresinden yeni kasaya tıklayın. **Ayarlar** bölümünde, **Özellikler**' e tıklayın.
+2. **Özellikler**' de, **yedekleme yapılandırması**altında **Güncelleştir**' e tıklayın.
 
-    ![Yedekleme kasalarının listesi](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
+3. Depolama çoğaltma türünü seçin ve **Kaydet**' e tıklayın.
 
-    Kasanız için depolama seçeneğini belirledikten sonra, VM'yi kasa ile ilişkilendirmek için hazır duruma gelirsiniz. İlişkilendirmeyi başlatmak için Azure sanal makinelerini bulmanız ve kaydetmeniz gerekir.
+     ![Yeni kasa için depolama yapılandırması ayarlama](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
+
+ 
 
 ## <a name="software-package"></a>Yazılım paketi
 ### <a name="downloading-the-software-package"></a>Yazılım paketi indiriliyor
@@ -127,7 +129,7 @@ Depolama çoğaltma ayarını düzenlemek için:
 
     ![Başlarken Sihirbazı değişikliği](./media/backup-azure-microsoft-azure-backup/getting-started-prep-infra.png)
 
-6. Açılan **altyapıyı hazırla** dikey penceresinde, Yükle Azure Backup sunucusu **yükleme bağlantıları '** na tıklayın ve kasa kimlik bilgilerini indirin. Kurtarma Hizmetleri kasasına Azure Backup Sunucusu kayıt sırasında kasa kimlik bilgilerini kullanırsınız. Bağlantılar sizi yazılım paketinin indirilebileceği Indirme merkezine götürür.
+6. Açılan **altyapıyı hazırla** dikey penceresinde, Yükle Azure Backup sunucusu yükleme bağlantıları ' na tıklayın ve kasa kimlik bilgilerini indirin. Kurtarma Hizmetleri kasasına Azure Backup Sunucusu kayıt sırasında kasa kimlik bilgilerini kullanırsınız. Bağlantılar sizi yazılım paketinin indirilebileceği Indirme merkezine götürür.
 
     ![Altyapıyı Azure Backup Sunucusu için hazırla](./media/backup-azure-microsoft-azure-backup/azure-backup-server-prep-infra.png)
 
@@ -135,7 +137,7 @@ Depolama çoğaltma ayarını düzenlemek için:
 
     ![İndirme Merkezi 1](./media/backup-azure-microsoft-azure-backup/downloadcenter.png)
 
-    Tüm dosyaların karşıdan yükleme boyutu > 3G olduğundan, bir 10Mb/sn indirme bağlantısında indirme işleminin tamamlanması 60 dakika kadar sürebilir.
+    Tüm dosyaların karşıdan yükleme boyutu > 3G olduğundan, 10 Mbps bir indirme bağlantısında, indirme işleminin tamamlanması 60 dakika kadar sürebilir.
 
 ### <a name="extracting-the-software-package"></a>Yazılım paketi ayıklanıyor
 Tüm dosyaları indirdikten sonra, **MicrosoftAzureBackupInstaller. exe**' ye tıklayın. Bu işlem, kurulum dosyalarını sizin tarafınızdan belirtilen bir konuma ayıklamak için **Microsoft Azure Backup Kurulum Sihirbazı 'nı** başlatır. Sihirbazdan ilerleyin ve ayıklama işlemine başlamak için **Ayıkla** düğmesine tıklayın.
@@ -160,7 +162,7 @@ Ayıklama işlemi tamamlandıktan sonra, Microsoft Azure Backup sunucusunu yükl
 
     ![Azure Backup Sunucusu-SQL denetimi](./media/backup-azure-microsoft-azure-backup/sql/01.png)
 
-    Makineyi yeniden başlatma önerisiyle ilgili bir hata oluşursa, bunu yapın ve **yeniden denetle**' ye tıklayın. Herhangi bir SQL yapılandırma sorunu olması durumunda SQL yönergelerini her SQL 'e göre yeniden yapılandırın ve var olan SQL örneğini kullanarak MABS 'i yüklemeyi/yükseltmeyi yeniden deneyin.
+    Makineyi yeniden başlatma önerisiyle ilgili bir hata oluşursa, bunu yapın ve **yeniden denetle**' ye tıklayın. Herhangi bir SQL yapılandırma sorunu varsa, SQL yönergeleri başına SQL 'i yeniden yapılandırın ve mevcut SQL örneğini kullanarak MABS 'i yüklemeyi/yükseltmeyi yeniden deneyin.
 
    > [!NOTE]
    > Azure Backup Sunucusu, uzak bir SQL Server örneğiyle çalışmayacak. Azure Backup Sunucusu tarafından kullanılan örneğin yerel olması gerekir. Mabs için mevcut bir SQL Server kullanıyorsanız, MABS kurulumu yalnızca SQL Server 'ın *adlandırılmış örneklerinin* kullanılmasını destekler.
@@ -268,7 +270,7 @@ Depolama alanını korurken MABS 'i yeni bir sunucuya taşımanız gerekiyorsa b
     DPM depolama havuzuna eski olanları taşımak yerine yenı diskler eklediyseniz DPMSYNC-Reallocatereplica çalıştırın
 
 ## <a name="network-connectivity"></a>Ağ bağlantısı
-Azure Backup Sunucusu, ürünün başarıyla çalışması için Azure Backup hizmetine bağlantı kurulmasını gerektirir. Makinenin Azure bağlantısına sahip olup olmadığını doğrulamak için Azure Backup sunucusu PowerShell konsolundaki ```Get-DPMCloudConnection``` cmdlet 'ini kullanın. Cmdlet 'in çıktısı TRUE ise, bağlantı var demektir, aksi durumda bağlantı yok demektir.
+Azure Backup Sunucusu, ürünün başarıyla çalışması için Azure Backup hizmetine bağlantı kurulmasını gerektirir. Makinenin Azure bağlantısına sahip olup olmadığını doğrulamak için Azure Backup sunucusu PowerShell konsolundaki ```Get-DPMCloudConnection``` cmdlet 'ini kullanın. Cmdlet 'in çıktısı TRUE ise, bağlantı var, aksi durumda bağlantı yok.
 
 Aynı zamanda Azure aboneliğinin sağlıklı bir durumda olması gerekir. Aboneliğinizin durumunu öğrenmek ve yönetmek için [abonelik portalında](https://account.windowsazure.com/Subscriptions)oturum açın.
 

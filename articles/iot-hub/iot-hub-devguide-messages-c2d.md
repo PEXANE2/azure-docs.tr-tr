@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: b0057815bee46d6708886302ff5b598c89b47e8f
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 4b8df538110f6c0b17a1ed37a2a6063a5b89a6e4
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335740"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880992"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>IoT Hub 'ından buluttan cihaza iletileri gönderme
 
@@ -81,6 +81,10 @@ Buluttan cihaza bir ileti gönderdiğinizde, hizmet iletinin son durumu hakkınd
 | tam     | IoT Hub 'ı her iki durumda da bir geri bildirim iletisi oluşturur. |
 
 **ACK** değeri *doluysa*ve geri bildirim iletisi almazsanız, geri bildirim iletisinin süresi sona ermediği anlamına gelir. Hizmet özgün iletiye ne olduğunu bilmez. Uygulamada, bir hizmet, geri bildirimin süresi dolmadan önce işleyebilmesi gerekir. En uzun süre sonu süresi iki gündür ve bir hata oluşursa hizmetin yeniden çalıştırılması zaman alır.
+
+> [!NOTE]
+> Cihaz silindiğinde, bekleyen geri bildirimler de silinir.
+>
 
 [Uç noktalar](iot-hub-devguide-endpoints.md)bölümünde açıklandığı gibi, IoT Hub, hizmet 'e yönelik bir uç nokta, */ileti/servicebound/feedback*ile ileti olarak geri bildirimde bulunun. Geri bildirim alma semantiği, buluttan cihaza iletiler için aynıdır. Mümkün olduğunda ileti geri bildirimi, aşağıdaki biçimde tek bir ileti halinde toplu olarak oluşturulur:
 

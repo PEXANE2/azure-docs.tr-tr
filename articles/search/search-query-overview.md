@@ -1,6 +1,6 @@
 ---
-title: Sorgu türleri ve oluşturma - Azure Search
-description: Filtre uygulamak için parametreleri kullanarak Azure Search, arama sorgusu oluşturmak için temel bilgileri seçin ve sonuçları sıralamak.
+title: Sorgu türleri ve birleşim-Azure Search
+description: Sonuçları filtrelemek, seçmek ve sıralamak için parametreleri kullanarak Azure Search bir arama sorgusu oluşturmaya yönelik temel bilgiler.
 author: HeidiSteen
 manager: cgronlun
 ms.author: heidist
@@ -9,33 +9,33 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 422e9209609eac19b7952557674c99789d9f6088
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: c2d40865857bc3ea8367199ed29e0220a0e7c557
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485182"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882590"
 ---
-# <a name="how-to-compose-a-query-in-azure-search"></a>Azure Search'te bir sorgu oluşturmak nasıl
+# <a name="how-to-compose-a-query-in-azure-search"></a>Azure Search bir sorgu oluşturma
 
-Azure Search'te bir sorgu tam bir gidiş dönüş işlemi belirtimi ' dir. İstekte parametreler belgelere dizin, yürütme yönergeleriyle altyapısı ve yanıt şekillendirmek için yönergeler için bulmak için eşleştirme ölçütü belirtin. 
+Azure Search, bir sorgu gidiş dönüş işleminin tam belirtimidir. İstekteki parametreler, dizinde belge bulmak için eşleşme ölçütlerini, altyapıya yönelik yürütme yönergelerini ve yanıtı şekillendirmeye yönelik yönergeleri sağlar. 
 
-Bir sorgu isteği kapsam, arama yapma, sıralama veya filtreleme için iade vb. için hangi alanların hangi alanların olduğunu belirten zengin bir yapıdır. Belirtilmezse, rastgele sırayla kümesi puanlanmayan bir sonuç döndüren bir tam metin arama işlemi olarak tüm aranabilir alanları karşı bir sorgu çalıştırır.
+Sorgu isteği, hangi alanların kapsam içinde olduğunu, nasıl aranacağını, hangi alanların dönemeyeceğini, sıralama veya filtreleme yapıp yapamayacağını belirten zengin bir yapıdır. Belirtilmemişse, bir sorgu tam metin arama işlemi olarak aranabilir tüm alanlara karşı çalışır ve rastgele bir sonuç kümesi rastgele sırada döner.
 
-## <a name="apis-and-tools-for-testing"></a>API'ler ve test araçları
+## <a name="apis-and-tools-for-testing"></a>Test için API 'Ler ve araçlar
 
-Aşağıdaki tabloda sorguları gönderme aracı tabanlı yaklaşımlar ve API'ları listeler.
+Aşağıdaki tabloda sorguları göndermek için API 'Ler ve araç tabanlı yaklaşımlar listelenmektedir.
 
 | Yöntemi | Açıklama |
 |-------------|-------------|
-| [Arama Gezgini (portal)](search-explorer.md) | Arama çubuğu ve dizin ve API sürümü seçimleri için seçenekler sağlar. Sonuçlar, JSON belgeleri olarak döndürülür. <br/>[Daha fazla bilgi edinin.](search-get-started-portal.md#query-index) | 
-| [Postman veya fiddler'ı](search-get-started-postman.md) | Web test araçları, REST çağrılarını formulating için harika bir seçenektir. REST API, Azure arama'yı olası her işlemi destekler. Bu makalede, bir HTTP isteği üst bilgisi ve gövdesi istekleri Azure Search'e göndermek için ayarlama konusunda bilgi edinin.  |
-| [Searchındexclient (.NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Bir Azure Search dizinini sorgulama için kullanılan istemci.  <br/>[Daha fazla bilgi edinin.](search-howto-dotnet-sdk.md#core-scenarios)  |
-| [Search belgeleri (REST API'si)](https://docs.microsoft.com/rest/api/searchservice/search-documents) | GET veya POST yöntemleri için ek giriş sorgu parametrelerini kullanarak, bir dizin üzerinde.  |
+| [Arama Gezgini (portal)](search-explorer.md) | Dizin ve API-sürüm seçimleri için bir arama çubuğu ve seçenekler sağlar. Sonuçlar JSON belgeleri olarak döndürülür. <br/>[Daha fazla bilgi edinin.](search-get-started-portal.md#query-index) | 
+| [Postman veya Fiddler](search-get-started-postman.md) | Web test araçları, REST çağrılarını formülletmenin çok iyi bir seçimdir. REST API, Azure Search tüm olası işlemleri destekler. Bu makalede, Azure Search istek göndermek için HTTP istek üst bilgisini ve gövdesini ayarlamayı öğrenin.  |
+| [Searchındexclient (.NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Bir Azure Search dizinini sorgulamak için kullanılabilen istemci.  <br/>[Daha fazla bilgi edinin.](search-howto-dotnet-sdk.md#core-scenarios)  |
+| [Belgelerde ara (REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) | Ek giriş için sorgu parametrelerini kullanarak bir dizinde GET veya POST yöntemleri.  |
 
-## <a name="a-first-look-at-query-requests"></a>Sorgu istekleri ilk göz
+## <a name="a-first-look-at-query-requests"></a>Sorgu isteklerine ilk bakış
 
-Örnekler, yeni kavramları tanıtımı için kullanışlıdır. Temsili bir sorgu oluşturulmuş gibi [REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents), bu örnek hedefleri [Emlak tanıtım dizin](search-get-started-portal.md) ve ortak parametreleri içerir.
+Örnekler, yeni kavramlara giriş için faydalıdır. [REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)oluşturulan temsili bir sorgu olarak, bu örnek [gerçek emlak demo dizinini](search-get-started-portal.md) hedefler ve ortak parametreleri içerir.
 
 ```
 {
@@ -49,62 +49,62 @@ Aşağıdaki tabloda sorguları gönderme aracı tabanlı yaklaşımlar ve API'l
 }
 ```
 
-+ **`queryType`** Azure Search'te olabilir ve Ayrıştırıcıyı ayarlar [varsayılan Basit Sorgu ayrıştırıcı](search-query-simple-examples.md) (tam metin araması için ideal), veya [tam Lucene sorgu ayrıştırıcısına](search-query-lucene-examples.md) normal ifadeler gibi gelişmiş sorgu yapıları için kullanılan , yakınlık araması, belirsiz ve joker karakter search.
++ **`queryType`** Azure Search, [varsayılan basit sorgu ayrıştırıcı](search-query-simple-examples.md) (tam metin araması için en uygun) veya normal ifadeler, yakınlık araması, benzer ve joker karakter gibi gelişmiş sorgu yapıları için kullanılan [tam Lucene sorgu ayrıştırıcısının](search-query-lucene-examples.md) kullanılabileceği ayrıştırıcısı ayarlar. birkaç tane olacak şekilde arama yapın.
 
-+ **`search`** eşleşme ölçütlerini, genellikle metnin genellikle eşlik Boole işleçleri tarafından sağlar. Tek tek başına koşulları *terimi* sorgular. Tırnak işareti içine alınmış çok parçalı sorgular *anahtar tümcecik* sorgular. Arama olarak tanımlanmamış olabilir **`search=*`** , ancak büyük olasılıkla koşulları, ifadeler ve işleçler örnekte görünen ne benzer oluşur.
++ **`search`** eşleşme ölçütlerini genellikle metin olan ancak genellikle Boolean işleçlerle birlikte sağlar. Tek başına terimler, *terim* sorgulardır. Tırnak içine alınmış çok parçalı sorgular *anahtar tümceciği* sorgulardır. Arama, içinde **`search=*`** olduğu gibi tanımsız olabilir, ancak büyük olasılıkla örnekte gösterilene benzer hüküm, tümcecik ve işleçlerden oluşur.
 
-+ **`searchFields`** sorgu yürütme belirli alanlarla sınırlandırmak için isteğe bağlı, kullanılır.
++ **`searchFields`** , sorgu yürütmesini belirli alanlara kısıtlamak için kullanılır.
 
-Yanıtlar aynı zamanda sorguya dahil parametreleri şeklinde. Örnekte, sonuç kümesi yer alandan oluşur **`select`** deyimi. Bu sorguda yalnızca en üst 10 isabet sayısı döndürülür ancak **`count`** kaç belgeler genel eşleşen söyler. Bu sorgu, satırlar daysOnMarket göre sıralanır.
+Yanıtlar Ayrıca sorguya dahil ettiğiniz parametrelere göre şekillendirilir. Örnekte, sonuç kümesi, **`select`** bildiriminde listelenen alanlardan oluşur. Bu sorguda yalnızca ilk 10 eşleşme döndürülür, ancak **`count`** her bir kaç belgenin genel olarak eşleştiğini söyler. Bu sorguda, satırlar daysOnMarket 'e göre sıralanır.
 
-Azure arama'yı istekte sağlanan bir API anahtarı kullanılarak kimlik doğrulaması bir dizini karşı sorgu yürütme her zaman olur. İstek üst bilgilerinde, KALAN her ikisi de sağlanır.
+Azure Search, sorgu yürütmesi her zaman bir dizine göre belirlenir ve istekte belirtilen bir API anahtarı kullanılarak kimlik doğrulaması yapılır. REST 'de, her ikisi de istek üst bilgilerinde sağlanır.
 
-### <a name="how-to-run-this-query"></a>Bu sorgu çalıştırma
+### <a name="how-to-run-this-query"></a>Bu sorgu nasıl çalıştırılır
 
-Bu sorguyu çalıştırmak için kullanın [arama Gezgini ve tanıtım Emlak dizini](search-get-started-portal.md). 
+Bu sorguyu yürütmek için [Arama Gezgini 'ni ve gerçek emlak tanıtım dizinini](search-get-started-portal.md)kullanın. 
 
-Bu sorgu dizesi explorer'ın arama çubuğuna yapıştırabilirsiniz: `search=seattle townhouse +lake&searchFields=description, city&$count=true&$select=listingId, street, status, daysOnMarket, description&$top=10&$orderby=daysOnMarket`
+Bu sorgu dizesini gezgin 'in arama çubuğuna yapıştırabilirsiniz:`search=seattle townhouse +lake&searchFields=description, city&$count=true&$select=listingId, street, status, daysOnMarket, description&$top=10&$orderby=daysOnMarket`
 
-## <a name="how-query-operations-are-enabled-by-the-index"></a>Dizine göre sorgu işlemleri nasıl etkinleştirilir
+## <a name="how-query-operations-are-enabled-by-the-index"></a>Sorgu işlemleri dizin tarafından nasıl etkinleştirilir
 
-Dizin tasarımı ve tasarım Azure Search'te sıkıca sorgu. Önden bilmek önemli bir olgu olan *dizin şeması*, her bir alan özniteliklerinde ile sorgu yapı türünü belirler. 
+Dizin tasarımı ve sorgu tasarımı Azure Search sıkı bir şekilde bağlanmış. En baştan haberdar olmak için önemli bir olgu, *dizin şemasının*her bir alanda bulunan özniteliklerle, oluşturabileceğiniz sorgu türünü belirler. 
 
-Bir alan olup olmadığını bir alanda dizin özniteliklerini ayarlayın - izin verilen işlemler *aranabilir* dizinde *alınabilir* sonuçlarında *sıralanabilir*,  *filtrelenebilir*ve böyle devam eder. Örnek Sorgu dizesinde `"$orderby": "daysOnMarket"` daysOnMarket alan olarak işaretlendiğinden yalnızca çalışır *sıralanabilir* dizin şemasında. 
+Bir alandaki dizin öznitelikleri, izin verilen işlemleri ayarlar; bir alanın dizinde *aranabilir* olup olmadığı, sonuçlarda *alınabilir* , *sıralanabilir*, *filtrelenebilir*ve benzeri. Örnek sorgu dizesinde, `"$orderby": "daysOnMarket"` yalnızca daysonmarket alanı dizin şemasında *sıralanabilir* olarak işaretlendiğinden geçerlidir. 
 
-![Dizin tanımı Emlak örnek](./media/search-query-overview/realestate-sample-index-definition.png "dizin tanımı Emlak örnek")
+![Emlak örneği Için Dizin tanımı](./media/search-query-overview/realestate-sample-index-definition.png "Emlak örneği Için Dizin tanımı")
 
-Yukarıdaki ekran görüntüsünde, Emlak örneği için dizin özniteliklerini, kısmi bir listesidir. Portalda tüm dizin şemasını görüntüleyebilirsiniz. Dizin öznitelikleri hakkında daha fazla bilgi için bkz: [dizin REST API oluşturma](https://docs.microsoft.com/rest/api/searchservice/create-index).
+Yukarıdaki ekran görüntüsü, gerçek emlak örneğine ait dizin özniteliklerinin kısmi bir listesidir. Tüm Dizin şemasını portalda görüntüleyebilirsiniz. Dizin öznitelikleri hakkında daha fazla bilgi için bkz. [Create ındex REST API](https://docs.microsoft.com/rest/api/searchservice/create-index).
 
 > [!Note]
-> Bazı sorgu işlevselliği, dizin genelinde yerine alan başına temelinde etkinleştirilir. Bu özellikler şunları içerir: [eş anlamlı eşler](search-synonyms.md), [özel çözümleyiciler](index-add-custom-analyzers.md), [öneri aracı oluşturur (otomatik tamamlama ve önerilen sorgular)](index-add-suggesters.md), [mantıksal Puanlama Sonuçları sıralama için](index-add-scoring-profiles.md).
+> Bazı sorgu işlevleri, her alan temelinde değil, Dizin genelinde etkindir. Bu yetenekler şunlardır: [eş anlamlı haritalar](search-synonyms.md), [özel çözümleyiciler](index-add-custom-analyzers.md), [öneri aracı yapıları (otomatik tamamlama ve önerilen sorgular için)](index-add-suggesters.md), [sıralama sonuçları için Puanlama mantığı](index-add-scoring-profiles.md).
 
 ## <a name="elements-of-a-query-request"></a>Bir sorgu isteği öğeleri
 
-Sorgular, her zaman tek bir dizinde yönlendirilir. Dizinleri katamaz veya bir sorgu hedefi olarak özel veya geçici veri yapılarını oluşturun. 
+Sorgular her zaman tek bir dizine yönlendirilir. Bir sorgu hedefi olarak dizinlere katılamaz veya özel veya geçici veri yapıları oluşturamazsınız. 
 
-Gerekli bir sorgu isteği öğelerinde bulunan aşağıdaki bileşenleri içerir:
+Bir sorgu isteğindeki gerekli öğeler aşağıdaki bileşenleri içerir:
 
-+ Sabit ve kullanıcı tanımlı bileşenlerini içeren bir URL ifade edilen hizmet uç noktası ve dizin belge koleksiyonu: **`https://<your-service-name>.search.windows.net/indexes/<your-index-name>/docs`**
-+ **`api-version`** (Yalnızca REST) API'ın birden fazla sürümü her zaman kullanılabilir olduğu için gereklidir. 
-+ **`api-key`** , bir sorgu veya yönetici api anahtarını hizmetiniz için istek kimliğini doğrular.
-+ **`queryType`** , basit veya tam yerleşik varsayılan basit söz dizimi kullanılıyorsa, atlanabilir.
-+ **`search`** veya **`filter`** eşleşme ölçütlerini boş bir arama gerçekleştirmek istiyorsanız, belirtilmemiş olabilen sağlar. Her iki sorgu türleri basit ayrıştırıcının açısından ele alınmıştır, ancak daha gelişmiş sorgular, karmaşık sorgu ifadeleri geçirmek için arama parametresi gerektirir.
++ Sabit ve Kullanıcı tanımlı bileşenleri içeren bir URL olarak ifade edilen hizmet uç noktası ve Dizin belgeleri koleksiyonu: **`https://<your-service-name>.search.windows.net/indexes/<your-index-name>/docs`**
++ **`api-version`** (Yalnızca REST), API 'nin birden fazla sürümü her zaman kullanılabilir olduğundan gereklidir. 
++ **`api-key`** ya bir sorgu ya da yönetici API anahtarı, hizmetinize yönelik isteğin kimliğini doğrular.
++ **`queryType`** , basit veya tam, yerleşik varsayılan basit sözdizimi kullanıyorsanız atlanabilir.
++ **`search`** ya **`filter`** da boş bir arama gerçekleştirmek istiyorsanız bu parametre belirtilmeyen bir eşleşme ölçütü sağlar. Her iki sorgu türü de basit ayrıştırıcı açısından ele alınmıştır ancak gelişmiş sorgular bile karmaşık sorgu ifadelerini geçirmek için arama parametresi gerektirir.
 
-Diğer tüm arama parametreleri isteğe bağlıdır. Öznitelikleri tam listesi için bkz. [dizin oluşturma (REST)](https://docs.microsoft.com/rest/api/searchservice/create-index). İşleme sırasında parametre nasıl kullanıldığı bir daha yakından bakış için bkz: [Azure Search'te tam metin araması nasıl çalışır](search-lucene-query-architecture.md).
+Diğer tüm arama parametreleri isteğe bağlıdır. Özniteliklerin tam listesi için bkz. [Dizin oluşturma (REST)](https://docs.microsoft.com/rest/api/searchservice/create-index). İşlemler sırasında parametrelerin nasıl kullanıldığına daha yakından bakmak için, bkz. [tam metin aramasının Azure Search nasıl çalıştığı](search-lucene-query-architecture.md).
 
-## <a name="choose-a-parser-simple--full"></a>Bir Ayrıştırıcı seçin: Basit | tam
+## <a name="choose-a-parser-simple--full"></a>Ayrıştırıcı seçin: basit | tümünü
 
-Azure Search, Apache Lucene en üstünde yer alan ve genel ve özel sorguları işlemek için iki sorgu Çözümleyicileri arasında seçmenizi sağlar. Basit Ayrıştırıcıyı kullanarak istekleri şeklide kullanarak [Basit Sorgu söz dizimi](query-simple-syntax.md), serbest biçimli metin sorgularda verimliliği ve hızı için varsayılan olarak seçili. Bu söz dizimi AND, OR, NOT dahil olmak üzere ortak arama işleçlerini, tümcecik, sonek ve öncelik işleçleri destekler.
+Azure Search Apache Lucene üzerinde bulunur ve tipik ve özelleştirilmiş sorguları işlemek için iki sorgu ayrıştırıcıları arasında seçim sağlar. Basit ayrıştırıcı kullanan istekler [basit sorgu söz dizimi](query-simple-syntax.md)kullanılarak formüle sahiptir ve ücretsiz form metin sorgularında kendi hızı ve verimliliği için varsayılan olarak seçilidir. Bu sözdizimi, AND, OR, NOT, tümcecik, sonek ve öncelik işleçlerini içeren bir dizi yaygın arama işlecini destekler.
 
-[Tam Lucene sorgu söz dizimi](query-Lucene-syntax.md#bkmk_syntax), eklediğinizde, etkin `queryType=full` isteğine bir parçası olarak geliştirilen yaygın olarak benimsenen ve açıklayıcı sorgu dilini kullanıma sunan [Apache Lucene](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html). Tam sözdizimi basit söz dizimi genişletir. Basit sözdizimi için yazdığınız herhangi bir sorgu tam Lucene çözümleyici altında çalışır. 
+İsteğe eklerken `queryType=full` etkinleştirilen [tam Lucene sorgu söz dizimi](query-Lucene-syntax.md#bkmk_syntax), [Apache Lucene](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html)'in bir parçası olarak geliştirilen, yaygın olarak benimsenen ve ifade eden sorgu dilini kullanıma sunar. Tam sözdizimi basit sözdizimini genişletir. Basit sözdizimi için yazdığınız herhangi bir sorgu, tam Lucene ayrıştırıcısı altında çalışır. 
 
-Aşağıdaki örnekler noktası gösterir: aynı sorgu, ancak farklı queryType ayarlarla farklı sonuçlar getirebilir. İlk sorgu `^3` arama teriminin bir parçası olarak kabul edilir.
+Aşağıdaki örneklerde nokta gösterilmektedir: aynı sorgu, ancak farklı queryType ayarları ile farklı sonuçlar elde edin. İlk sorguda `^3` , arama teriminin bir parçası olarak kabul edilir.
 
 ```
 queryType=simple&search=mountain beach garden ranch^3&searchFields=description&$count=true&$select=listingId, street, status, daysOnMarket, description&$top=10&$orderby=daysOnMarket
 ```
 
-Aynı sorgu tam Lucene Ayrıştırıcıyı kullanarak bu belirli terimini içeren sonuçlarının arama sıralamasını artırıyor "ranch" üzerinde alan boost yorumlar.
+Tam Lucene ayrıştırıcısı kullanılarak aynı sorgu, bu belirli terimi içeren sonuçların arama derecesini artıran "Ranch" üzerinde alan içi artışı yorumlar.
 
 ```
 queryType=full&search=mountain beach garden ranch^3&searchFields=description&$count=true&$select=listingId, street, status, daysOnMarket, description&$top=10&$orderby=daysOnMarket
@@ -114,57 +114,57 @@ queryType=full&search=mountain beach garden ranch^3&searchFields=description&$co
 
 ## <a name="types-of-queries"></a>Sorgu türleri
 
-Sorgu türleri geniş bir Azure Search'ü destekler. 
+Azure Search, çok çeşitli sorgu türlerini destekler. 
 
 | Sorgu türü | Kullanım | Örnekler ve daha fazla bilgi |
 |------------|--------|-------------------------------|
-| Serbest biçimli metin arama | Arama parametresi ve iki ayrıştırıcı| Bir veya daha çok terimi tüm tam metin araması tarar *aranabilir* dizininizdeki alanları ve çalışmak için Google veya Bing gibi bir arama motoru beklediğiniz gibi çalışır. Tam metin araması giriş örnektir.<br/><br/>Tam metin araması (varsayılan) standart olarak Lucene çözümleyici kullanarak metin analizi gibi "" remove durdurma sözcükleri olan tüm koşulları için küçük uygulanır. Varsayılan geçersiz kılma [İngilizce olmayan Çözümleyicileri](index-add-language-analyzers.md#language-analyzer-list) veya [özelleştirilmiş dilden Çözümleyicileri](index-add-custom-analyzers.md#AnalyzerTable) metin analizi değiştirin. Bir örnek [anahtar sözcüğü](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) bir alanın tüm içeriği tek bir belirteç kabul eder. Bu, posta kodları, kimlikleri ve bazı ürün adları gibi veriler için kullanışlıdır. | 
-| Filtrelenen arama | [OData filtre ifadesinin](query-odata-filter-orderby-syntax.md) ve ya da çözümleyici | Filtre sorgularını tüm üzerinde bir boolean ifadesinin değerlendirme *filtrelenebilir* dizin alanları. Arama, bir filtre sorgusu büyük küçük harf duyarlılığı dize alanları dahil olmak üzere, bir alanın tam içeriğini eşleştirir. Filtre sorgularını OData söz diziminde ifade edilen başka bir farktır. <br/>[Filtre ifadesi örneği](search-query-simple-examples.md#example-3-filter-queries) |
-| Coğrafi arama | [Edm.GeographyPoint türü](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) alanda, filtre ifadesi ve ya da çözümleyici | "Yakınımda Bul" için kullanılan ya da harita tabanlı bir Edm.GeographyPoint sahip bir alanda depolanmış koordinatları arama denetimleri. <br/>[Coğrafi arama örneği](search-query-simple-examples.md#example-5-geo-search)|
-| Aralık arama | Filtre ifadesi ve basit ayrıştırıcı | Azure Search'te, aralık sorguları, filtre parametresi kullanılarak oluşturulur. <br/>[Aralık filtresi örnek](search-query-simple-examples.md#example-4-range-filters) | 
-| [Fielded arama](query-lucene-syntax.md#bkmk_fields) | Arama parametresi ve tam ayrıştırıcı | Tek bir alan hedefleyen bir bileşik sorgu ifadesi oluşturun. <br/>[Fielded arama örneği](search-query-lucene-examples.md#example-2-fielded-search) |
-| [Belirsiz arama](query-lucene-syntax.md#bkmk_fuzzy) | Arama parametresi ve tam ayrıştırıcı | Üzerinde benzer bir yapı olması veya yazım koşulları eşleşir. <br/>[Belirsiz arama örneği](search-query-lucene-examples.md#example-3-fuzzy-search) |
-| [Yakınlık araması](query-lucene-syntax.md#bkmk_proximity) | Arama parametresi ve tam ayrıştırıcı | Birbirine yakın olan bir belgede bulur koşulları. <br/>[Yakınlık araması örneği](search-query-lucene-examples.md#example-4-proximity-search) |
-| [Terim artırma](query-lucene-syntax.md#bkmk_termboost) | Arama parametresi ve tam ayrıştırıcı | Başkalarının içermeyen göreli artırmalı terimi içeriyorsa, daha yüksek bir belge sıralar. <br/>[Terim artırma örneği](search-query-lucene-examples.md#example-5-term-boosting) |
-| [Normal ifade araması](query-lucene-syntax.md#bkmk_regex) | Arama parametresi ve tam ayrıştırıcı | Normal bir ifadenin içeriğine göre eşleşir. <br/>[Normal ifade örneği](search-query-lucene-examples.md#example-6-regex) |
-|  [joker karakter veya önek arama](query-lucene-syntax.md#bkmk_wildcard) | Arama parametresi ve tam ayrıştırıcı | Eşleşme tabanlı bir ön ek ve tilde (`~`) veya tek bir karakter (`?`). <br/>[Joker karakter araması örneği](search-query-lucene-examples.md#example-7-wildcard-search) |
+| Serbest form metin araması | Arama parametresi ve ayrıştırıcı| Tam metin arama, dizininizdeki tüm *aranabilir* alanlarda bir veya daha fazla terimi tarar ve Google veya Bing gibi bir arama altyapısının çalışmasını istediğiniz şekilde çalışır. Giriş bölümündeki örnek tam metin aramadır.<br/><br/>Tam metin araması, standart Lucene Çözümleyicisi (varsayılan olarak), tüm terimleri düşürmek için "The" gibi durdurma sözcüklerini kullanarak metin analizinden daha az gider. Varsayılan ayarı, [İngilizce olmayan çözümleyiciler](index-add-language-analyzers.md#language-analyzer-list) veya metin analizini değiştiren [özel dilden bağımsız çözümleyiciler](index-add-custom-analyzers.md#AnalyzerTable) ile geçersiz kılabilirsiniz. Bir alanın tüm içeriğini tek bir belirteç olarak ele alan bir [anahtar sözcük](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) örneğidir. Bu, ZIP kodları, kimlikler ve bazı ürün adları gibi veriler için yararlıdır. | 
+| Filtrelenmiş arama | [OData filtre ifadesi](query-odata-filter-orderby-syntax.md) ve her iki ayrıştırıcı | Filtre sorguları bir dizin içindeki tüm *filtrelenebilir* alanlar üzerinde bir Boole ifadesi değerlendirir. Aramanın aksine, bir filtre sorgusu, dize alanlarında büyük/küçük harf duyarlılığı dahil olmak üzere bir alanın tam içeriğiyle eşleşir. Farklı bir farklılık, filtre sorgularının OData sözdiziminde ifade edildiği bir farktır. <br/>[Filtre ifadesi örneği](search-query-simple-examples.md#example-3-filter-queries) |
+| Coğrafi arama | Alan, filtre ifadesi ve herhangi bir ayrıştırıcıda [Edm. Geographon noktası türü](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) | EDM. Geographi noktası bulunan bir alanda depolanan koordinatlar "yakın ben bul" veya harita tabanlı arama denetimleri için kullanılır. <br/>[Coğrafi arama örneği](search-query-simple-examples.md#example-5-geo-search)|
+| Aralık araması | Filtre ifadesi ve basit ayrıştırıcı | Azure Search, Aralık sorguları filtre parametresi kullanılarak oluşturulur. <br/>[Aralık filtresi örneği](search-query-simple-examples.md#example-4-range-filters) | 
+| [Parçalı arama](query-lucene-syntax.md#bkmk_fields) | Arama parametresi ve tam ayrıştırıcı | Tek bir alanı hedefleyen bir bileşik sorgu ifadesi oluşturun. <br/>[Parçalı arama örneği](search-query-lucene-examples.md#example-2-fielded-search) |
+| [benzer arama](query-lucene-syntax.md#bkmk_fuzzy) | Arama parametresi ve tam ayrıştırıcı | Benzer bir yapım veya yazım denetimi olan koşullara göre eşleşir. <br/>[Benzer arama örneği](search-query-lucene-examples.md#example-3-fuzzy-search) |
+| [yakınlık araması](query-lucene-syntax.md#bkmk_proximity) | Arama parametresi ve tam ayrıştırıcı | Belgedeki birbirini yakın terimleri bulur. <br/>[Yakınlık arama örneği](search-query-lucene-examples.md#example-4-proximity-search) |
+| [terim artırma](query-lucene-syntax.md#bkmk_termboost) | Arama parametresi ve tam ayrıştırıcı | Bir belgeyi, daha fazla olmayan diğerlerine göre, daha yüksek bir dönem içeriyorsa, daha yüksek bir şekilde derecelendirir. <br/>[Terim artırma örneği](search-query-lucene-examples.md#example-5-term-boosting) |
+| [normal ifade arama](query-lucene-syntax.md#bkmk_regex) | Arama parametresi ve tam ayrıştırıcı | Normal bir ifadenin içeriğine göre eşleşir. <br/>[Normal ifade örneği](search-query-lucene-examples.md#example-6-regex) |
+|  [joker karakter veya ön ek arama](query-lucene-syntax.md#bkmk_wildcard) | Arama parametresi ve tam ayrıştırıcı | Bir önek ve tilde (`~`) veya tek karakter (`?`) temelinde eşleşir. <br/>[Joker karakter arama örneği](search-query-lucene-examples.md#example-7-wildcard-search) |
 
-## <a name="manage-search-results"></a>Arama sonuçlarını yönetme 
+## <a name="manage-search-results"></a>Arama sonuçlarını Yönet 
 
-.NET API kullanırsanız, serileştirme yerleşik olan ancak sorgu sonuçları REST API'si, JSON belgeleri olarak aktarılır. Sonuçları yanıtı için belirli alanları seçerek sorgu parametreleri ayarlayarak biçimlendirebilirsiniz.
+Sorgu sonuçları REST API JSON belgeleri olarak akışlardır, ancak .NET API 'Lerini kullanıyor olsanız da serileştirme yerleşiktir. Sorgudaki parametreleri ayarlayarak, yanıt için belirli alanlar seçerek sonuçları şekillendirebilirsiniz.
 
-Sorgu parametreleri, sonuç aşağıdaki yollarla kümesi yapısı için kullanılabilir:
+Sorgudaki parametreler, sonuç kümesini aşağıdaki yollarla yapılandırmak için kullanılabilir:
 
-+ Sınırlama veya sonuçları (varsayılan olarak 50) belge sayısı toplu işleme
-+ Sonuçların dahil edileceği alanları seçme
-+ Sıralama düzenini ayarlama
-+ Arama sonuçlarını gövdesinde koşulları eşleştirme dikkat çekmek için ekleme isabet vurgular.
++ Sonuçlarda belge sayısını sınırlama veya toplu işleme (varsayılan olarak 50)
++ Sonuçlara dahil edilecek alanları seçme
++ Sıralama düzeni ayarlama
++ Arama sonuçlarının gövdesinde, eşleşen koşullara dikkat çekmek için isabet vurgulamaları ekleme
 
-### <a name="tips-for-unexpected-results"></a>Beklenmeyen sonuçlar için ipuçları
+### <a name="tips-for-unexpected-results"></a>Beklenmeyen sonuçlara yönelik ipuçları
 
-Bazen, madde temini ve sonuçları yapısı beklenmeyen. Sorgu sonuçlarını görmek beklediğiniz değil olduğunda sonuçlarını iyileştirmek için bu sorgu değişiklikleri deneyebilirsiniz:
+Kimi zaman, sonuçların yapısını değil, her zaman için. Sorgu sonuçları görmeyi beklediğiniz gibi değilse sonuçların iyileştirediğini görmek için bu sorgu değişikliklerini deneyebilirsiniz:
 
-+ Değişiklik **`searchMode=any`** (varsayılan) **`searchMode=all`** ölçütlerden herhangi birine yerine tüm ölçütleri eşleşme istemek için. Boole işleçleri eklendiğinde bu özellikle doğrudur sorgu.
++ Ölçütlerin **`searchMode=any`** herhangi biri yerine tüm **`searchMode=all`** ölçütlerde eşleşme gerektirmek için (varsayılan) öğesini olarak değiştirin. Bu, Boolean işleçleri sorguyu dahil edildiğinde özellikle doğrudur.
 
-+ Sorgu tekniği, metin veya sözcük temelli analize gereklidir, ancak sorgu türünü dil işleme ışığının değiştirin. Tam metin araması, metin veya yazım hataları, tekil çoğul sözcük biçimlerini ve hatta düzensiz fiilleri veya isimleri için sözcük analizi autocorrects. Bazı sorgular gibi belirsiz veya joker karakter araması, metin analizi değil, işlem hattı ayrıştırma sorgunun parçası. Bazı senaryolarda, normal ifadeler geçici bir çözüm olarak kullanılır. 
++ Metin veya sözcük temelli analiz gerekliyse sorgu tekniğini değiştirin, ancak sorgu türü, dil işlemesini önceden halizler. Tam metin aramasında, yazım hataları, tekil çoğul sözcük formları ve hatta düzensiz fiiller ya da isimler için metin veya sözlü analizler oto düzeltir. Benzer veya joker karakter araması gibi bazı sorgular için, metin Analizi sorgu ayrıştırma işlem hattının bir parçası değildir. Bazı senaryolarda, normal ifadeler geçici bir çözüm olarak kullanılmıştır. 
 
 ### <a name="paging-results"></a>Disk belleği sonuçları
-Azure Search, arama sonuçlarının sayfalanması uygulamasını kolaylaştırır. Kullanarak **`top`** ve **`skip`** parametreleri, arama sonuçları kümesini, yönetilebilir almanıza olanak, alt kümeler, sipariş arama isteklerini sorunsuz verebilir iyi arama kullanıcı Arabirimi uygulamalarını kolayca etkinleştirin. Bu daha küçük sonuç alt kümelerini alırken, tüm arama sonuçları kümesindeki belge sayısını da alabilirsiniz.
+Azure Search, arama sonuçlarının sayfalanması uygulamasını kolaylaştırır. **`top`** **Ve`skip`** parametrelerini kullanarak, iyi arama kullanıcı arabirimi uygulamalarını kolayca etkinleştiren, yönetilebilir, sıralı alt kümeler halinde toplam arama sonuçları kümesini almanızı sağlayan arama isteklerini sorunsuz bir şekilde oluşturabilirsiniz. Bu daha küçük sonuç alt kümelerini alırken, tüm arama sonuçları kümesindeki belge sayısını da alabilirsiniz.
 
 [Azure Search'te arama sonuçlarını numaralandırma](search-pagination-page-layout.md) makalesinde arama sonuçlarının numaralanması hakkında daha fazla bilgi alabilirsiniz.
 
 ### <a name="ordering-results"></a>Sonuçları sıralama
 Bir arama sorgusunun sonuçları alınırken, Azure Search'ün sonuçları belirli bir alandaki değerlere göre sıralayarak sunmasını isteyebilirsiniz. Varsayılan olarak Azure Search, her bir belgenin [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)'den türetilen arama puanı sıralamasını temel alarak arama sonuçlarını sıralar.
 
-Azure Search arama puanı dışında bir değere göre sıralı kullanabileceğiniz sonuçlarınızı döndürmek isterseniz **`orderby`** arama parametresi. Değerini belirtebileceğiniz **`orderby`** alan adları ve çağrıları dahil etmek için parametre [  **`geo.distance()` işlevi** ](query-odata-filter-orderby-syntax.md) Jeo-uzamsal değerler için. Her deyim tarafından izlenebilir `asc` sonuçları artan sırada istendiğini belirtmek için ve **`desc`** sonuçları azalan sırada istendiğini belirtmek için. Artan sıralama varsayılandır.
+Azure Search, arama puanından farklı bir değere göre sıralanmış sonuçlarınızı döndürmesini istiyorsanız **`orderby`** arama parametresini kullanabilirsiniz. Alan adlarını ve jeo-uzamsal değerler **`orderby`** [ **`geo.distance()` işlevine**](query-odata-filter-orderby-syntax.md) çağrıları dahil etmek için parametresinin değerini belirtebilirsiniz. Sonuçların artan sırada istendiğini belirtmek ve `asc` **`desc`** sonuçların azalan sırada istendiğini belirtmek için, her ifadeye sonra gelebilir. Artan sıralama varsayılandır.
 
 
 ### <a name="hit-highlighting"></a>İsabet vurgulama
-Azure Search'te arama sonuçlarının arama sorgusuyla eşleşen tam bölümü vurgulama kullanarak kolaylaştırılmıştır **`highlight`** , **`highlightPreTag`** , ve **`highlightPostTag`** parametreleri. Hangi *aranabilir* alanların eşleşen metninin vurgulanacağının yanı sıra Azure Search'ün döndürdüğü eşleşen metnin başına ve sonuna eklenecek dize etiketlerini tam olarak belirtebilirsiniz.
+Azure Search ' de arama sorgusuyla eşleşen arama sonuçlarının tam bölümünü vurgulayarak **`highlight`** , **`highlightPreTag`** , ve **`highlightPostTag`** parametreleri kullanılarak kolayca yapılır. Hangi *aranabilir* alanların eşleşen metninin vurgulanacağının yanı sıra Azure Search'ün döndürdüğü eşleşen metnin başına ve sonuna eklenecek dize etiketlerini tam olarak belirtebilirsiniz.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-+ [Nasıl tam metin araması (sorgu mimarisi ayrıştırma) Azure Search'te çalışır](search-lucene-query-architecture.md)
++ [Tam metin aramasının Azure Search nasıl çalıştığı (sorgu ayrıştırma mimarisi)](search-lucene-query-architecture.md)
 + [Arama Gezgini](search-explorer.md)
-+ [. NET'te sorgulama](search-query-dotnet.md)
-+ [KALAN sorgulama](search-create-index-rest-api.md)
++ [.NET 'te sorgulama](search-query-dotnet.md)
++ [REST 'te sorgulama](search-create-index-rest-api.md)

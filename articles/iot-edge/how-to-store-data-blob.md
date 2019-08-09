@@ -5,26 +5,27 @@ author: arduppal
 manager: mchad
 ms.author: arduppal
 ms.reviewer: arduppal
-ms.date: 06/19/2019
+ms.date: 08/07/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 5932d51ecaca3c827ae6de268711c7f4d1b28d0a
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: a40389ca378826aef1b6aa136f8f5d69783c638e
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640661"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881230"
 ---
-# <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>IOT Edge (Önizleme) Azure Blob Depolama ile uçta veri Store
+# <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>IoT Edge Azure Blob Storage ile verileri kenarda depolayın
 
 IOT Edge üzerinde Azure Blob Depolama sağlayan bir [blok blobu](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs) uçta depolama çözümü. IoT Edge cihazınızdaki BLOB depolama modülü bir Azure Blok Blobu hizmeti gibi davranır, ancak blok Blobları IoT Edge cihazınızda yerel olarak depolanır. Aynı Azure depolama SDK'ın yöntemleri kullanarak bloblarınızın erişebilir veya zaten kullanılan blob API çağrılarını engelle. Bu makalede, IoT Edge cihazınızda bir blob hizmeti çalıştıran IoT Edge kapsayıcısında Azure Blob depolama ile ilgili kavramlar açıklanmaktadır.
 
-Bu modül, verilerin işlenene veya buluta aktarılıncaya kadar yerel olarak depolanması gereken senaryolarda yararlıdır. Bu veriler, videolar, resimler, Finans verileri, barındırma verileri veya diğer yapılandırılmamış veriler olabilir.
-
-> [!NOTE]
-> IOT Edge üzerinde Azure Blob Depolama, içinde [genel Önizleme](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Bu modül senaryolarda yararlı olur:
+* verilerin işlenebilmesi veya buluta aktarılıncaya kadar yerel olarak depolanması gereken durumlar. Bu veriler, videolar, resimler, Finans verileri, barındırma verileri veya diğer yapılandırılmamış veriler olabilir.
+* cihazlar sınırlı bağlantı içeren bir yerde bulunduğunda.
+* verilere düşük gecikme süreli erişim sağlamak için verileri yerel olarak işlemek istediğinizde, mümkün olduğunca hızlı bir şekilde yanıt verebilirseniz.
+* bant genişliği maliyetlerini azaltmak istediğinizde ve terabayt verisi buluta aktarılmaktan kaçının. Verileri yerel olarak işleyebilir ve yalnızca işlenen verileri buluta gönderebilirsiniz.
 
 Hızlı giriş için videoyu izleyin
 > [!VIDEO https://www.youtube.com/embed/QhCYCvu3tiM]
@@ -60,16 +61,11 @@ Bir Azure IoT Edge cihazı:
 
 - [Linux](quickstart-linux.md) veya [Windows cihazları](quickstart.md)için Hızlı Başlangıç bölümündeki adımları izleyerek geliştirme makinenizi veya bir sanal makineyi IoT Edge bir cihaz olarak kullanabilirsiniz.
 
-- IOT Edge modülü Azure Blob Depolama, aşağıdaki cihaz yapılandırmalarını destekler:
-
-  | İşletim sistemi | AMD64 | ARM32v7 | ARM64 |
-  | ---------------- | ----- | ----- | ---- |
-  | Raspbian Uzat | Hayır | Evet | Hayır |  
-  | Ubuntu Server 16.04 | Evet | Hayır | Evet |
-  | Ubuntu Server 18.04 | Evet | Hayır | Evet |
-  | Windows 10 IoT Enterprise, derleme 17763 | Evet | Hayır | Hayır |
-  | Windows Server 2019, derleme 17763 | Evet | Hayır | Hayır |
-  
+- Desteklenen işletim sistemleri ve mimarilerin bir listesi için [desteklenen Azure IoT Edge sistemleri](support.md#operating-systems) bölümüne bakın. IoT Edge modülündeki Azure Blob depolama, aşağıdaki mimarilere destek sunar:
+    - Windows AMD64
+    - Linux AMD64
+    - Linux ARM32
+    - Linux ARM64 (Önizleme)
 
 Bulut kaynakları:
 
@@ -104,7 +100,10 @@ Bu ayarın adı`deviceAutoDeleteProperties`
 
 ## <a name="using-smb-share-as-your-local-storage"></a>Yerel depolama alanı olarak SMB paylaşımının kullanımı
 Windows konakta Bu modülün Windows kapsayıcısını dağıtırken, yerel depolama yolunuz olarak SMB paylaşma sağlayabilirsiniz.
-Windows çalıştıran IoT `New-SmbGlobalMapping` cihazında SMB paylaşımından yerel olarak eşleme yapmak için PowerShell komutunu çalıştırabilirsiniz. IoT cihazının uzak SMB paylaşımında okuma/yazma yapaabilmesini sağlayın.
+
+SMB paylaşımının ve IoT cihazının karşılıklı güvenilen etki alanlarında bulunduğundan emin olun.
+
+Windows çalıştıran IoT `New-SmbGlobalMapping` cihazında SMB paylaşımından yerel olarak eşleme yapmak için PowerShell komutunu çalıştırabilirsiniz.
 
 Yapılandırma adımları aşağıda verilmiştir:
 ```PowerShell
@@ -112,12 +111,44 @@ $creds = Get-Credential
 New-SmbGlobalMapping -RemotePath <remote SMB path> -Credential $creds -LocalPath <Any available drive letter>
 ```
 Örnek: <br>
-`$creds = Get-Credentials` <br>
+`$creds = Get-Credential` <br>
 `New-SmbGlobalMapping -RemotePath \\contosofileserver\share1 -Credential $creds -LocalPath G: `
 
 Bu komut, uzak SMB sunucusunda kimlik doğrulamak için kimlik bilgilerini kullanır. Ardından, uzak paylaşımın yolunu G: sürücü harfi ile eşleyin (kullanılabilir başka herhangi bir sürücü harfi olabilir). IoT cihazında artık G: sürücüsündeki bir yola eşlenen veri hacmi vardır. 
 
-Dağıtımınız için değeri `<storage directory bind>` **G:/containerdata: C:/blobroot**olabilir.
+IoT cihazındaki kullanıcının uzak SMB paylaşımında okuma/yazma yapaabilmesini sağlayın.
+
+Dağıtımınız için değeri `<storage mount>` **G:/containerdata: C:/blobroot**olabilir. 
+
+## <a name="granting-directory-access-to-container-user-on-linux"></a>Linux 'ta kapsayıcı kullanıcısına dizin erişimi verme
+Linux kapsayıcıları için oluşturma seçeneklerinizde depolama için [birim bağlama](https://docs.docker.com/storage/volumes/) kullandıysanız, ek adımlar yapmanız gerekmez, ancak [bağlama bağlama](https://docs.docker.com/storage/bind-mounts/) kullandıysanız, hizmeti doğru bir şekilde çalıştırmak için bu adımlar gereklidir.
+
+Kullanıcıların, çalışmalarını gerçekleştirmesi gereken minimum izinleri en düşük izinlerle sınırlamak için en az ayrıcalık ilkesini takip eden, bu modül bir Kullanıcı (ad: Abe, ID:) içerir. 11000) ve bir Kullanıcı grubu (ad: Abe, KIMLIK: 11000). Kapsayıcı **kök** olarak başlatılırsa (varsayılan kullanıcı **kök**ise) hizmetimiz düşük ayrıcalıklı bir kullanıcı olarak başlatılır. 
+
+Bu davranış, hizmetin düzgün çalışması için konak yolu izinlerin yapılandırılmasını sağlar, aksi takdirde hizmet erişim reddedildi hatalarıyla çöker. Dizin bağlamasında kullanılan yolun kapsayıcı kullanıcı tarafından erişilebilir olması gerekir (örnek: absı1 11000). Konakta aşağıdaki komutları yürüterek kapsayıcı kullanıcıya dizin erişimi verebilirsiniz:
+
+```terminal
+sudo chown -R 11000:11000 <blob-dir> 
+sudo chmod -R 700 <blob-dir> 
+```
+
+Örnek:<br>
+`sudo chown -R 11000:11000 /srv/containerdata` <br>
+`sudo chmod -R 700 /srv/containerdata `
+
+
+Hizmeti, bir kullanıcı olarak bir kullanıcı olarak çalıştırmanız gerekiyorsa, dağıtımbildiriminizde "Kullanıcı" özelliği altındaki createOptions içinde özel kullanıcı kimliğinizi belirtebilirsiniz. Bu durumda, varsayılan veya kök Grup KIMLIĞI `0`kullanmanız gerekir.
+
+```json
+“createOptions”: { 
+  “User”: “<custom user ID>:0” 
+} 
+```
+Şimdi, kapsayıcı kullanıcısına dizine erişim izni verin
+```terminal
+sudo chown -R <user ID>:<group ID> <blob-dir> 
+sudo chmod -R 700 <blob-dir> 
+```
 
 ## <a name="configure-log-files"></a>Günlük dosyalarını yapılandırma
 
@@ -142,9 +173,9 @@ Azure Blob depolama belgeleri, birkaç dilde hızlı başlangıç örnek kodunu 
 Aşağıdaki hızlı başlangıç örnekleri, IoT Edge tarafından da desteklenen dilleri kullanır, bu nedenle bunları BLOB depolama modülünün yanı sıra IoT Edge modüller olarak dağıtabilirsiniz:
 
 - [.NET](../storage/blobs/storage-quickstart-blobs-dotnet.md)
-- [Java](../storage/blobs/storage-quickstart-blobs-java.md)
+- [Java](../storage/blobs/storage-quickstart-blobs-java-v10.md)
 - [Python](../storage/blobs/storage-quickstart-blobs-python.md)
-- [Node.js](../storage/blobs/storage-quickstart-blobs-nodejs.md)
+- [Node.js](../storage/blobs/storage-quickstart-blobs-nodejs-v10.md)
 
 ## <a name="connect-to-your-local-storage-with-azure-storage-explorer"></a>Azure Depolama Gezgini ile yerel depolamaya bağlanma
 
@@ -239,3 +270,5 @@ Bize şu adresten ulaşabilirsiniz:absiotfeedback@microsoft.com
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [IoT Edge Azure Blob Storage 'ı dağıtmayı](how-to-deploy-blob.md) öğrenin
+
+[IoT Edge blogundaki Azure Blob depolamada](https://aka.ms/abs-iot-blogpost) en son güncelleştirmeler ve duyuru ile güncel kalın

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 287902c149fd3a8732ce9ce95b05b0d9fa36147b
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: eece1520a4b7e3bf37e1d209c58b5019921fdb98
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816613"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884374"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Dosyaları dağıtımı planlama
 
@@ -26,7 +26,7 @@ ms.locfileid: "68816613"
 
 * **Depolama hesabı**: Tüm Azure depolama erişimi bir depolama hesabı üzerinden yapılır. Depolama hesabı kapasitesi hakkında ayrıntılı bilgi için, [Ölçeklenebilirlik ve Performans Hedefleri](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) konusuna bakın.
 
-* **Paylaşma**: Bir dosya depolama payı, Azure 'da bir SMB dosya paylaşımıdır. Tüm dizinler ve dosyalar üst paylaşımda oluşturulmalıdır. Bir hesap sınırsız sayıda paylaşım içerebilir ve dosya paylaşımının toplam kapasitesi olan 5 TiB 'a kadar bir paylaşım sınırsız sayıda dosya depolayabilirler.
+* **Paylaşma**: Bir dosya depolama payı, Azure 'da bir SMB dosya paylaşımıdır. Tüm dizinler ve dosyalar üst paylaşımda oluşturulmalıdır. Hesap sınırsız sayıda paylaşım içerebilir ve bir paylaşım, dosya paylaşımının toplam kapasitesine kadar sınırsız sayıda dosyayı depolayabilirler. Standart dosya paylaşımları için toplam kapasite en fazla 5 TiB (GA) veya 100 TiB (Önizleme), Premium dosya paylaşımları için ise toplam kapasite 100 TiB 'ye kadar olur.
 
 * **Dizin**: İsteğe bağlı bir dizin hiyerarşisi.
 

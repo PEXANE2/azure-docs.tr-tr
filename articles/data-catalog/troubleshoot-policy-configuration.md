@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: troubleshooting
 ms.date: 08/01/2019
-ms.openlocfilehash: f37110138ae62272e56b155b7e8a9aac2f80cdf8
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 84bd14f8ae18527b4f6e9d8509a12555baec8771
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68734596"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879547"
 ---
 # <a name="troubleshooting-azure-data-catalog"></a>Azure Veri Kataloğu sorunlarını giderme
 
@@ -21,7 +21,7 @@ Bu makalede, Azure Veri Kataloğu kaynaklarıyla ilgili genel sorun giderme soru
 
 Azure Veri Kataloğu kullanırken aşağıdaki işlev sınırlıdır:
 
-- **Konuk rolü** türündeki hesaplar desteklenmez. Konuk hesaplarını Azure Veri Kataloğu 'nun kullanıcıları olarak ekleyemez ve Konuk kullanıcılar portalı www.azuredatacatalog.com adresinde kullanamaz.
+- **Konuk rolü** türündeki hesaplar desteklenmez. Konuk hesaplarını Azure Veri Kataloğu 'nun kullanıcıları olarak ekleyemez ve Konuk kullanıcılar bu portalı üzerinde [https://www.azuredatacatalog.com](https://www.azuredatacatalog.com)kullanamaz.
 
 - Azure Resource Manager şablonlarını veya Azure PowerShell komutlarını kullanarak Azure Veri Kataloğu kaynakları oluşturma desteklenmez.
 

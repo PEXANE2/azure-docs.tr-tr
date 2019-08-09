@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 02/08/2019
-ms.openlocfilehash: db295f7644cae96eb00670cecf6e4eeba9bb6bed
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 86bd479eff48a7feb42557eb1d175345728f0a69
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567234"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879050"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Azure SQL veritabanı 'nda tek, havuza alınmış ve örnek veritabanlarıyla işlem çoğaltması
 
@@ -96,8 +96,10 @@ Farklı [çoğaltma türleri](https://docs.microsoft.com/sql/relational-database
 - Azure dosya paylaşımının erişebilmesi için, yönetilen örnek alt ağının güvenlik kurallarında bağlantı noktası 445 (TCP Giden) açık olması gerekir. 
 - Yayımcı/dağıtıcı yönetilen bir örnekte ise ve abone şirket içi ise, bağlantı noktası 1433 (TCP Giden) açılması gerekir.
 
-  >[!NOTE]
-  > Dağıtıcı bir örnek veritabanı olduğunda ve abone şirket içinde olduğunda giden ağ güvenlik grubu (NSG) bağlantı noktası 445 ' i engellenirse, bir Azure depolama dosyasına bağlanırken 53 hatasıyla karşılaşabilirsiniz. Bu sorunu çözmek için [vNet NSG 'Yi güncelleştirin](/azure/storage/files/storage-troubleshoot-windows-file-connection-problems) . 
+
+>[!NOTE]
+> - Dağıtıcı bir örnek veritabanı olduğunda ve abone şirket içinde olduğunda giden ağ güvenlik grubu (NSG) bağlantı noktası 445 ' i engellenirse, bir Azure depolama dosyasına bağlanırken 53 hatasıyla karşılaşabilirsiniz. Bu sorunu çözmek için [vNet NSG 'Yi güncelleştirin](/azure/storage/files/storage-troubleshoot-windows-file-connection-problems) . 
+> - Yönetilen bir örnekteki yayımcı ve dağıtıcı veritabanları [otomatik yük devretme grupları](sql-database-auto-failover-group.md)kullanıyorsa, yönetilen örnek yöneticisinin [eski birincil üzerindeki tüm yayınları silmesi ve yük devretme gerçekleştikten sonra yeni birincil üzerinde yeniden yapılandırması](sql-database-managed-instance-transact-sql-information.md#replication)gerekir.
 
 ### <a name="compare-data-sync-with-transactional-replication"></a>Veri eşitlemesini Işlemsel çoğaltma ile karşılaştırın
 
@@ -115,7 +117,7 @@ Genellikle, yayımcı ve dağıtıcı bulutta ya da şirket içinde olmalıdır.
 
 ![Yayımcı ve dağıtıcı olarak tek örnek](media/replication-with-sql-database-managed-instance/01-single-instance-asdbmi-pubdist.png)
 
-Yayımcı ve dağıtıcı tek bir yönetilen örnek içinde yapılandırılır ve değişiklikleri diğer yönetilen örneğe, tek veritabanına, havuza alınmış veritabanına veya şirket içi SQL Server dağıtmaya dağıtılır. Bu yapılandırmada, yayımcı/dağıtıcı yönetilen örneği, [coğrafi çoğaltma ve otomatik yük devretme grupları](sql-database-auto-failover-group.md)ile yapılandırılamaz.
+Yayımcı ve dağıtıcı tek bir yönetilen örnek içinde yapılandırılır ve değişiklikleri diğer yönetilen örneğe, tek veritabanına, havuza alınmış veritabanına veya şirket içi SQL Server dağıtmaya dağıtılır. 
 
 ### <a name="publisher-with-remote-distributor-on-a-managed-instance"></a>Yönetilen bir örnek üzerinde uzak dağıtıcıya sahip Yayımcı
 
@@ -123,11 +125,11 @@ Bu yapılandırmada, bir yönetilen örnek, çok sayıda kaynak yönetilen örne
 
 ![Yayımcı ve dağıtıcı için ayrı örnekler](media/replication-with-sql-database-managed-instance/02-separate-instances-asdbmi-pubdist.png)
 
-Yayımcı ve dağıtıcı iki yönetilen örnek üzerinde yapılandırılır. Bu yapılandırmada
+Yayımcı ve dağıtıcı iki yönetilen örnek üzerinde yapılandırılır. Bu yapılandırmayla bazı kısıtlamalar vardır: 
 
 - Her iki yönetilen örnek de aynı vNet üzerinde.
 - Her iki yönetilen örnek de aynı konumdadır.
-- Yayımlanan ve dağıtıcı veritabanlarını barındıran yönetilen örnekler [otomatik yük devretme grupları kullanılarak coğrafi](sql-database-auto-failover-group.md)olarak çoğaltılamıyor.
+
 
 ### <a name="publisher-and-distributor-on-premises-with-a-subscriber-on-a-single-pooled-and-instance-database"></a>Tek, havuza alınmış ve örnek veritabanında bir abone ile şirket içi yayımcı ve dağıtıcı 
 
@@ -141,11 +143,13 @@ Bu yapılandırmada, bir Azure SQL veritabanı (tek, havuza alınmış ve örnek
 1. [İki yönetilen örnek arasında çoğaltmayı yapılandırın](replication-with-sql-database-managed-instance.md). 
 1. [Bir yayın oluşturun](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication).
 1. Abone olarak Azure SQL veritabanı sunucu adını ( `N'azuresqldbdns.database.windows.net` Örneğin, hedef veritabanı olarak Azure SQL veritabanı adı (örneğin **AdventureWorks**) kullanarak [bir anında iletme aboneliği oluşturun](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription) . )
+1. [Yönetilen bir örnek Için işlemsel çoğaltmanın sınırlamaları](sql-database-managed-instance-transact-sql-information.md#replication) hakkında bilgi edinin
 
 
 
 ## <a name="see-also"></a>Ayrıca Bkz.  
 
+- [Mı ve bir yük devretme grubuyla çoğaltma](sql-database-managed-instance-transact-sql-information.md#replication)
 - [SQL Veritabanına Çoğaltma](replication-to-sql-database.md)
 - [Yönetilen örneğe çoğaltma](replication-with-sql-database-managed-instance.md)
 - [Yayın oluşturma](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)

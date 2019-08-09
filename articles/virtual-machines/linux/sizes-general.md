@@ -1,6 +1,6 @@
 ---
-title: Azure Linux VM boyutları - genel amaçlı | Microsoft Docs
-description: Azure'da Linux sanal makineleri için kullanılabilen farklı genel amaçlı boyutlarını listeler. Vcpu, veri diskleri ve NIC yanı sıra bu serideki boyutları için depolama aktarım hızı ve ağ bant sayısı hakkında bilgiler listelenir.
+title: Azure Linux VM boyutları-genel amaçlı | Microsoft Docs
+description: Azure 'da Linux sanal makineleri için kullanılabilen farklı genel amaçlı boyutları listeler. Bu serideki boyutlarda vCPU sayısı, veri diskleri ve NIC 'lerin yanı sıra depolama aktarım hızı ve ağ bant genişliği hakkındaki bilgileri listeler.
 services: virtual-machines-linux
 documentationcenter: ''
 author: jonbeck7
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 10/01/2018
+ms.date: 08/08/2019
 ms.author: jonbeck
-ms.openlocfilehash: 47b651d9fa3134a5fec7e42cc17c8612cd8f98c3
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 283786706747b1ceebdc1618861f8c8eaa4380b2
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708853"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881626"
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>Genel amaçlı sanal makine boyutları
 
@@ -30,14 +30,14 @@ ms.locfileid: "67708853"
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../../includes/virtual-machines-common-sizes-table-defs.md)]
 
 
-## <a name="other-sizes"></a>Diğer boyutları
+## <a name="other-sizes"></a>Diğer boyutlar
 - [İşlem için iyileştirilmiş](../windows/sizes-compute.md)
 - [Bellek için iyileştirilmiş](sizes-memory.md)
 - [Depolama için iyileştirilmiş](sizes-storage.md)
 - [GPU](sizes-gpu.md)
 - [Yüksek performanslı işlem](sizes-hpc.md)
-- [Önceki nesil](sizes-previous-gen.md)
+- [Önceki nesiller](sizes-previous-gen.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Hakkında daha fazla bilgi [Azure işlem birimleri (ACU)](acu.md) Azure SKU'ları arasında işlem performansını karşılaştırmanıza yardımcı olabilir.
+Azure [işlem birimlerinin (ACU)](acu.md) Azure SKU 'ları genelinde işlem performansını karşılaştırmanıza nasıl yardımcı olabileceğini öğrenin.
 

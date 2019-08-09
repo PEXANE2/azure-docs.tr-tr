@@ -13,17 +13,17 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: 382f43156ab450600ff0d2e5e2db763cd6bd94df
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: fe71f4e89fb7e1b6ff3e4f59894a933fbb011692
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875044"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881406"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>ApplicationInsights.config veya .xml ile Application Insights SDK yapılandırma
 Application Insights .NET SDK 'Sı bazı NuGet paketlerinden oluşur. [Çekirdek paket](https://www.nuget.org/packages/Microsoft.ApplicationInsights) , Application Insights telemetri göndermek için API sağlar. [Ek paketler](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) , uygulama ve bağlamınızdan Telemetriyi otomatik olarak izlemek için telemetri *modülleri* ve *başlatıcılar* sağlar. Yapılandırma dosyasını ayarlayarak telemetri modüllerini ve başlatıcıları etkinleştirebilir veya devre dışı bırakabilir ve bunların bazıları için parametreler ayarlayabilirsiniz.
 
-Yapılandırma dosyası, uygulamanızın türüne `ApplicationInsights.config` göre `ApplicationInsights.xml`veya olarak adlandırılır. [SDK 'nın birçok sürümünü yüklediğinizde][start]projenize otomatik olarak eklenir. Ayrıca bir [IIS sunucusundaki durum İzleyicisi][redfield]tarafından bir Web uygulamasına da eklenir. Azure [Web sitesi için uzantı](azure-web-apps.md) veya [Azure VM için uzantı ve sanal makine ölçek kümesi](azure-vm-vmss-apps.md) kullanılıyorsa yapılandırma dosyası yok sayılır.
+Yapılandırma dosyası, uygulamanızın türüne `ApplicationInsights.config` göre `ApplicationInsights.xml`veya olarak adlandırılır. [SDK 'nın birçok sürümünü yüklediğinizde][start]projenize otomatik olarak eklenir. SDK, `ApplicationInsights.config` dosyayı proje kök klasöründe oluşturur ve ne zaman bin klasörüne kopyalanır. Ayrıca bir [IIS sunucusundaki durum İzleyicisi][redfield]tarafından bir Web uygulamasına da eklenir. Azure [Web sitesi için uzantı](azure-web-apps.md) veya [Azure VM için uzantı ve sanal makine ölçek kümesi](azure-vm-vmss-apps.md) kullanılıyorsa yapılandırma dosyası yok sayılır.
 
 [Bir Web sayfasında SDK 'yı][client]denetlemek için eşdeğer bir dosya yok.
 
@@ -186,7 +186,7 @@ SDK 'nın bellek içi depolamada depolanabilecek telemetri öğelerinin sayısı
 
 * Min 1.
 * Biçimlendir 1000
-* Varsayılanını 500
+* Varsayılan: 500
 
 ```
 
@@ -202,9 +202,9 @@ SDK 'nın bellek içi depolamada depolanabilecek telemetri öğelerinin sayısı
 #### <a name="flushintervalinseconds"></a>Flushıntervalınseconds
 Bellek içi depolamada depolanan verilerin ne sıklıkta temizlendiğinden (Application Insights gönderilmesi) belirler.
 
-* Min 1
+* Min 1.
 * Biçimlendir 300
-* Varsayılanını 5
+* Varsayılan: 5
 
 ```
 
@@ -220,9 +220,9 @@ Bellek içi depolamada depolanan verilerin ne sıklıkta temizlendiğinden (Appl
 #### <a name="maxtransmissionstoragecapacityinmb"></a>MaxTransmissionStorageCapacityInMB
 Yerel diskteki kalıcı depolamaya ayrılan, MB cinsinden en büyük boyutu belirler. Bu depolama Application Insights uç noktasına aktarılamayan kalıcı telemetri öğeleri için kullanılır. Depolama boyutu karşılandığında yeni telemetri öğeleri atılır.
 
-* Min 1
+* Min 1.
 * Biçimlendir 100
-* Varsayılanını 10
+* Varsayılan: 10
 
 ```
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 16e12021a65a09376293f28efe9a6e9ef74ef5c2
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: f0f00745f2f7781bda0e636167b1cf1a4045f7cd
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839556"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881367"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools çalışın
 
@@ -446,11 +446,25 @@ Aşağıdaki özel kapsayıcı dağıtım seçenekleri kullanılabilir:
 
 ## <a name="monitoring-functions"></a>İzleme işlevleri
 
-İşlevlerinizin yürütülmesini izlemek için önerilen yol, Azure Application Insights ile tümleştirilmesine göre yapılır. Azure portal bir işlev uygulaması oluşturduğunuzda, bu tümleştirme varsayılan olarak sizin için yapılır. Ancak, Azure CLı kullanarak işlev uygulamanızı oluşturduğunuzda, Azure 'daki işlev uygulamanızda tümleştirme yapılmaz.
+İşlevlerinizin yürütülmesini izlemek için önerilen yol, Azure Application Insights ile tümleştirilmesine göre yapılır. Ayrıca, yürütme günlüklerini yerel bilgisayarınıza da akışla aktarabilirsiniz. Daha fazla bilgi için bkz. [Azure Işlevlerini izleme](functions-monitoring.md).
+
+### <a name="enable-application-insights-integration"></a>Application Insights tümleştirmeyi etkinleştir
+
+Azure portal bir işlev uygulaması oluşturduğunuzda, Application Insights tümleştirmesi varsayılan olarak sizin için yapılır. Ancak, Azure CLı kullanarak işlev uygulamanızı oluşturduğunuzda, Azure 'daki işlev uygulamanızda tümleştirme yapılmaz.
 
 [!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
 
-Daha fazla bilgi için bkz. [Azure Işlevlerini izleme](functions-monitoring.md).
+### <a name="enable-streaming-logs"></a>Akış günlüklerini etkinleştir
+
+İşlevleriniz tarafından oluşturulan günlük dosyalarının akışını, yerel bilgisayarınızdaki bir komut satırı oturumunda görüntüleyebilirsiniz. 
+
+#### <a name="native-streaming-logs"></a>Yerel akış günlükleri
+
+[!INCLUDE [functions-streaming-logs-core-tools](../../includes/functions-streaming-logs-core-tools.md)]
+
+Bu tür akış günlükleri, işlev uygulamanız için [Application Insights tümleştirmeyi etkinleştirmenizi](#enable-application-insights-integration) gerektirir.   
+
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure Functions Core Tools [açık kaynaktır ve GitHub üzerinde barındırılır](https://github.com/azure/azure-functions-cli).  

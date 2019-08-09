@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 0a71c7ffe9040c3002b1f5378ce298a047554b15
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 079a0721e77174215c7256eecbe9bc522256f0b8
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640196"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881472"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Azure Data Factory kullanarak verileri ve Oracle 'a kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -208,7 +208,7 @@ Oracle 'dan veri kopyalamak için kopyalama etkinliğindeki kaynak türünü ola
 | partitionNames | Kopyalanması gereken fiziksel bölümlerin listesi. <br>Bölüm seçeneği `PhysicalPartitionsOfTable`olduğunda uygulayın. Kaynak verileri almak için bir sorgu kullanırsanız, WHERE yan tümcesinde kanca `?AdfTabularPartitionName` . Örnek için [Oracle 'Dan paralel kopyalama](#parallel-copy-from-oracle) bölümüne bakın. | Hayır |
 | partitionColumnName | Paralel kopya için Aralık bölümleme tarafından kullanılacak, **tamsayı türünde** kaynak sütunun adını belirtin. Belirtilmemişse, tablonun birincil anahtarı otomatik olarak algılanır ve bölüm sütunu olarak kullanılır. <br>Bölüm seçeneği `DynamicRange`olduğunda uygulayın. Kaynak verileri almak için bir sorgu kullanırsanız, WHERE yan tümcesinde kanca `?AdfRangePartitionColumnName` . Örnek için [Oracle 'Dan paralel kopyalama](#parallel-copy-from-oracle) bölümüne bakın. | Hayır |
 | partitionüstsınırı | Verilerin kopyalanacağı bölüm sütununun en büyük değeri. <br>Bölüm seçeneği `DynamicRange`olduğunda uygulayın. Kaynak verileri almak için bir sorgu kullanırsanız, WHERE yan tümcesinde kanca `?AdfRangePartitionUpbound` . Örnek için [Oracle 'Dan paralel kopyalama](#parallel-copy-from-oracle) bölümüne bakın. | Hayır |
-| partitionalme sınırı | Verilerin kopyalanacağı bölüm sütununun en küçük değeri. <br>Bölüm seçeneği `DynamicRange`olduğunda uygulayın. Kaynak verileri almak için bir sorgu kullanırsanız, WHERE yan tümcesinde kanca `?AdfRangePartitionLowbound` . Örnek için [Oracle 'Dan paralel kopyalama](#parallel-copy-from-oracle) bölümüne bakın. | Hayır |
+| Partitionalme sınırı | Verilerin kopyalanacağı bölüm sütununun en küçük değeri. <br>Bölüm seçeneği `DynamicRange`olduğunda uygulayın. Kaynak verileri almak için bir sorgu kullanırsanız, WHERE yan tümcesinde kanca `?AdfRangePartitionLowbound` . Örnek için [Oracle 'Dan paralel kopyalama](#parallel-copy-from-oracle) bölümüne bakın. | Hayır |
 
 **Örnek: bölüm olmadan temel sorgu kullanarak veri kopyalama**
 

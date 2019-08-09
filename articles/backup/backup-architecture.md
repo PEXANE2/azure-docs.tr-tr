@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: dacurwin
-ms.openlocfilehash: 3165183d4a5e0dcfecee62b128ee8cfa9d94209b
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 9e67e063ed37c706ba172703f0a5483d8d4f68ca
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736715"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881863"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup mimarisi ve bileşenler
 
@@ -120,7 +120,7 @@ Yinelenenleri kaldırılmış diskleri yedekleme | | | ![Kısmi][yellow]<br/><br
     - Yalnızca son yedeklemeden bu yana değiştirilen veri blokları.
     - Veriler şifrelenmedi. Azure Backup, Azure disk şifrelemesi kullanılarak şifrelenmiş Azure VM 'Leri yedekleyebilir.
     - Anlık görüntü verileri hemen kasaya kopyalanmayabilir. Yoğun saatlerde yedekleme birkaç saat sürebilir. Bir VM için toplam Yedekleme süresi, günlük yedekleme ilkeleri için 24 saatten daha az olacaktır.
-1. Veriler kasaya gönderildikten sonra, anlık görüntü kaldırılır ve bir kurtarma noktası oluşturulur.
+1. Veriler kasaya gönderildikten sonra bir kurtarma noktası oluşturulur. Varsayılan olarak, anlık görüntüler silinmeden önce iki gün boyunca tutulur. Bu özellik bu anlık görüntülerden geri yükleme işlemine izin verir ve bu sayede geri yükleme sürelerini kapatır. Verileri kasadan geri dönüştürmek ve kopyalamak için gereken süreyi azaltır. Bkz. [Azure Backup Instant Restore özelliği](https://docs.microsoft.com/en-us/azure/backup/backup-instant-restore-capability).
 
 Azure VM 'lerinin denetim komutlarına internet erişimi olması gerekir. VM içindeki iş yüklerini yedekliyorsanız (örneğin, veritabanı yedeklemeleri SQL Server), arka uç verilerinde de internet erişimi gerekir. 
 

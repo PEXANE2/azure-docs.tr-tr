@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/03/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 02d993d760338356fa29ee58a03215e14d6583f1
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 7cd1d451b49faf2f8e3ad38f4ff780256ef2dc5d
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295600"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883595"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Azure Güvenlik Merkezi tarafından desteklenen platformlar ve Özellikler
 
@@ -88,14 +88,14 @@ Bulut hizmetinde çalışan VM 'Ler de desteklenir. Yalnızca üretim yuvaların
 |Eksik düzeltme ekleri|✔|✔|✔|✔|✔|✔|Boş|
 |Güvenlik yapılandırmaları|✔|✔|✔|✔|✔|✔|Boş|
 |Endpoint Protection değerlendirmesi|✔|✔|✔|X|X|X|Boş|
-|JıT VM erişimi|✔|X|X|✔|X|X|Standart|
+|JIT VM erişimi|✔|X|X|✔|X|X|Standart|
 |Uyarlamalı uygulama denetimleri|✔|X|✔|✔|X|✔|Standart|
 |FIM|✔|✔|✔|✔|✔|✔|Standart|
 |Disk şifrelemesi değerlendirmesi|✔|✔|X|✔|✔|X|Boş|
 |Üçüncü taraf dağıtımı|✔|X|X|✔|X|X|Boş|
 |NSG değerlendirmesi|✔|✔|X|✔|✔|X|Boş|
 |Dosya daha az tehdit algılama|✔|✔|✔|X|X|X|Standart|
-|Ağ eşlemesi|✔|✔|X|✔|✔|X|Standart|
+|Ağ haritası|✔|✔|X|✔|✔|X|Standart|
 |Uyarlamalı ağ denetimleri|✔|✔|X|✔|✔|X|Standart|
 |Mevzuat uyumluluk panosu & raporları|✔|✔|✔|✔|✔|✔|Standart|
 |Docker tarafından barındırılan IaaS kapsayıcılarında öneriler ve tehdit algılama|X|X|X|✔|✔|✔|Standart|
@@ -108,15 +108,17 @@ Aşağıdaki tabloda bir matrisi verilmiştir:
 
 Bu korumaların her biri için önerilerin ne zaman oluşturulduğu hakkında bilgi için bkz. [Endpoint Protection değerlendirme ve öneriler](security-center-endpoint-protection.md).
 
-| Uç Nokta Koruması| Platformlar | Güvenlik Merkezi Yüklemesi | Güvenlik Merkezi Bulma |
+| Endpoint Protection| Platformlar | Güvenlik Merkezi Yüklemesi | Güvenlik Merkezi Bulma |
 |------|------|-----|-----|
 | Windows Defender (Microsoft Kötü Amaçlı Yazılım Koruması)| Windows Server 2016| Hayır, işletim sisteminde yerleşik| Evet |
 | System Center Endpoint Protection (Microsoft Kötü Amaçlı Yazılım Koruması) | Windows Server 2012 R2, 2012, 2008 R2 (aşağıdaki nota bakın) | Uzantı ile | Evet |
 | Trend Micro – Tüm sürümler | Windows Server Ailesi  | Hayır | Evet |
 | Symantec v12.1.1100+| Windows Server Ailesi  | Hayır | Evet |
 | McAfee v10+ | Windows Server Ailesi  | Hayır | Evet |
-| Kaspersky| Windows Server Ailesi  | Hayır | Hayır  |
-| Sophos| Windows Server Ailesi  | Hayır | Hayır  |
+| McAfee v10+ | Linux sunucu ailesi  | Hayır | Yes **\*** |
+| Sophos v9 +| Linux sunucu ailesi  | Hayır | Yes **\***  |
+
+ **\*** Kapsam durumu ve destekleyici veriler şu anda yalnızca korunan aboneliklerinizle ilişkili Log Analytics çalışma alanında kullanılabilir ve Azure Güvenlik Merkezi portalında yansıtılmamaktadır.
 
 > [!NOTE]
 > - Windows Server 2008 R2 sanal makinesi üzerinde System Center Endpoint Protection (SCEP) algılama, PowerShell 3,0 (veya bir üst sürüm) sonrasında SCEP 'in yüklenmesini gerektirir.
@@ -132,24 +134,24 @@ Bu korumaların her biri için önerilerin ne zaman oluşturulduğu hakkında bi
 |Azure Blob depolama hesapları|✔| ✔|
 |Uygulama hizmetleri|✔| ✔|
 |Cloud Services|✔| X|
-|Sanal ağlar|✔| NA|
+|Sanal Ağlar|✔| NA|
 |Alt ağlar|✔| NA|
 |NIC’ler|✔| NA|
-|NSG'ler|✔| NA|
+|NSG|✔| NA|
 |Subscription|✔ * *| ✔|
 |Batch|✔| NA|
 |Service Fabric|✔| NA|
 |Otomasyon hesabı|✔| NA|
 |Yük dengeleyici|✔| NA|
 |Ara|✔| NA|
-|Service Bus|✔| NA|
+|Service bus|✔| NA|
 |Stream Analytics|✔| NA|
 |Olay hub'ı|✔| NA|
-|Mantıksal uygulamalar|✔| NA|
+|Logic Apps|✔| NA|
 |Depolama hesabı|✔| NA|
 |Redis|✔| NA|
 |Data Lake Analytics|✔| NA|
-|Key Vault|✔| NA|
+|Anahtar kasası|✔| NA|
 
 
 

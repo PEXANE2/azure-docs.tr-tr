@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ccefec9e548b7981f696712bb4a983f4b577a9b
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 8ece7f93b5397db16e03c1eab1d2dc1e568113d9
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779642"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879254"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Şirket içi Azure AD parola koruması-sık sorulan sorular
 
@@ -33,6 +33,8 @@ Microsoft 'un bu konuyla ilgili geçerli Kılavuzu aşağıdaki bağlantıda bul
 **S: Şirket içi Azure AD parola koruması, genel olmayan bulutlarda destekleniyor mu?**
 
 Şirket içi Azure AD parola koruması yalnızca genel bulutta desteklenir. Genel olmayan bulut kullanılabilirliği için hiçbir tarih duyurulmamıştır.
+
+Azure AD portalı, genel olmayan bulutlarda bile olsa, şirket içi "Windows Server Active Directory parola koruması" yapılandırması için değişiklik yapılmasına izin verir; Bu değişiklikler kalıcı hale getirilir, aksi takdirde hiçbir zaman etkili olmayacaktır. Genel olmayan bulut kimlik bilgileri kullanıldığında şirket içi proxy aracılarının veya ormanlarının kaydı desteklenmez ve bu tür kayıt denemeleri her zaman başarısız olur.
 
 **S: Azure AD parola koruma avantajlarını şirket içi kullanıcılarınızın bir alt kümesine nasıl uygulayabilirim?**
 
@@ -64,7 +66,7 @@ Desteklenmiyor. Azure AD parola koruması, şirket içi Active Directory ortamı
 
 **S: Active Directory düzeyinde ilkenin içeriğini nasıl değiştirebilirim?**
 
-Desteklenmiyor. İlke yalnızca Azure AD Yönetim Portalı kullanılarak yönetilebilir. Ayrıca önceki soruya bakın.
+Desteklenmiyor. İlke yalnızca Azure AD Portalı kullanılarak yönetilebilir. Ayrıca önceki soruya bakın.
 
 **S: SYSVOL çoğaltma için neden DFSR gereklidir?**
 
@@ -118,15 +120,15 @@ Hayır. Bir kullanıcının parolası, belirli bir PDC olmayan etki alanı denet
 
 **S: Aracılar şirket içi Active Directory ortamımı yükledikten sonra bile özel akıllı kilitleme çalışmıyor mu?**
 
-Özel akıllı kilitleme yalnızca Azure 'da desteklenir. Azure yönetim portalı 'ndaki özel akıllı kilitleme ayarları üzerinde yapılan değişiklikler, aracıların yüklü olduğu hatta şirket içi Active Directory ortamında hiçbir etkiye sahip değildir.
+Özel akıllı kilitleme yalnızca Azure AD 'de desteklenir. Azure AD portalındaki özel akıllı kilitleme ayarlarında yapılan değişiklikler, aracıların yüklü olduğu hatta şirket içi Active Directory ortamı üzerinde hiçbir etkiye sahip değildir.
 
 **S: Azure AD parola koruması için kullanılabilir bir System Center Operations Manager yönetim paketi var mı?**
 
 Hayır.
 
-**S: İlkeyi denetim modunda olacak şekilde yapılandırdığım halde Azure neden zayıf parolaların reddettiği halde kalıyor?**
+**S: İlkeyi denetim modunda olacak şekilde yapılandırdığım halde Azure AD neden hala zayıf parolaları reddediyor?**
 
-Denetim modu yalnızca şirket içi Active Directory ortamında desteklenir. Azure, parolaları değerlendirdiğinde "zorla" modunda her zaman örtülü olarak gerçekleştirilir.
+Denetim modu yalnızca şirket içi Active Directory ortamında desteklenir. Azure AD, parolaları değerlendirdiğinde örtülü olarak her zaman "zorla" modunda yapılır.
 
 ## <a name="additional-content"></a>Ek içerik
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: magoedte
-ms.openlocfilehash: 05b022be3bd460809de77945710ed0bdcd275648
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: c6fa4df1fb2fc7559f706d81621ea198f5ca7cdc
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839303"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881421"
 ---
 # <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>Azure Izleyici 'de günlük verilerini ve çalışma alanlarını yönetme
 
@@ -32,7 +32,17 @@ Bu makalede, aşağıdaki gibi, günlüklere erişimin nasıl yönetileceği ve 
 
 * Azure RBAC kullanarak çalışma alanındaki belirli bir tablodaki günlük verilerine erişmesi gereken kullanıcılara erişim verme.
 
-## <a name="define-access-control-mode-in-azure-portal"></a>Azure portal erişim denetimi modunu tanımlama
+## <a name="define-access-control-mode"></a>Erişim denetimi modunu tanımlama
+
+Bir çalışma alanında yapılandırılan erişim denetimi modunu Azure portal veya Azure PowerShell ile görüntüleyebilirsiniz.  Bu ayarı, aşağıdaki desteklenen yöntemlerden birini kullanarak değiştirebilirsiniz:
+
+* Azure portal
+
+* Azure PowerShell
+
+* Azure Resource Manager şablonu
+
+### <a name="configure-from-the-azure-portal"></a>Azure portal yapılandırma
 
 **Log Analytics çalışma** alanı menüsündeki çalışma alanının **genel bakış** sayfasında geçerli çalışma alanı erişim denetimi modunu görüntüleyebilirsiniz. 
 
@@ -45,7 +55,7 @@ Bu ayarı, çalışma alanının **Özellikler** sayfasından değiştirebilirsi
 
 ![Çalışma alanı erişim modunu değiştir](media/manage-access/change-access-control-mode.png)
 
-## <a name="define-access-control-mode-using-powershell"></a>PowerShell kullanarak erişim denetimi modunu tanımlama
+### <a name="configure-using-powershell"></a>PowerShell 'i kullanarak yapılandırma
 
 Abonelikteki tüm çalışma alanları için erişim denetimi modunu incelemek üzere aşağıdaki komutu kullanın:
 
@@ -89,7 +99,7 @@ else
 Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
 ```
 
-## <a name="define-access-mode-using-resource-manager-template"></a>Kaynak Yöneticisi şablonu kullanarak erişim modunu tanımlama
+### <a name="configure-using-a-resource-manager-template"></a>Kaynak Yöneticisi şablonu kullanarak yapılandırma
 
 Azure Resource Manager şablonunda erişim modunu yapılandırmak için, çalışma alanında **Enablelogaccessusingonlyresourcepermissions** Özellik bayrağını aşağıdaki değerlerden birine ayarlayın.
 

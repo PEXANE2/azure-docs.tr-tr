@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 150c41dce06c81f2e9e07605ab6d5afa9e424453
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: a836e4cf66bf1e957f7b3779e21ec6a0296f7abe
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494497"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881436"
 ---
 # <a name="multi-step-web-tests"></a>Çok adımlı web testleri
 
@@ -48,7 +48,7 @@ Test araçlarını önkoşul olarak belirlemek için. **Hata ayıklama ve** > **
 
 Web oturumu kaydetmek için Visual Studio Enterprise kullanın.
 
-1. Web performansı ve yük testi projesi oluşturun. **Dosya** > **Yeni**  projegörseltesti >  >   > **C#**
+1. Web performansı ve yük testi projesi oluşturun. **Dosya** > **Yeni**projegörseltesti >  >   > **C#**
 
     ![Visual Studio yeni proje Kullanıcı arabirimi](./media/availability-multistep/vs-web-performance-and-load-test.png)
 
@@ -136,7 +136,18 @@ Her durumda, uygulamanızda yalnızca test amacıyla bir hesap oluşturmalısın
 
 **Basit Kullanıcı adı ve parola** Bir Web testini her zamanki şekilde kaydedin. Önce tanımlama bilgilerini silin.
 
-**SAML kimlik doğrulaması** Web testleri için kullanılabilen SAML eklentisini kullanın. Eklentiye erişim...
+**SAML kimlik doğrulaması**
+
+|Özellik adı| Açıklama|
+|----|-----|
+| Hedef kitle Uri 'Si | SAML belirteci için hedef kitle URI 'SI.  Bu, ACS ad alanı ve ana bilgisayar adı da dahil olmak üzere Access Control Service (ACS) URI 'sidir. |
+| Sertifika parolası | Katıştırılmış özel anahtara erişim sağlayacak istemci sertifikası parolası. |
+| İstemci Sertifikası  | Base64 kodlamalı biçimde özel anahtara sahip istemci sertifikası değeri. |
+| Ad tanımlayıcısı | Belirtecin ad tanımlayıcısı |
+| Sonra değil | Belirtecin geçerli olacağı TimeSpan.  Varsayılan değer 5 dakikadır. |
+| Önce değil | Geçmişte oluşturulan belirtecin geçerli olacağı TimeSpan değeri geçerli olacaktır (zaman eğilerini gidermek için).  Varsayılan değer (negatif) 5 dakikadır. |
+| Hedef bağlam parametresi adı | Oluşturulan onayı alacak bağlam parametresi. |
+
 
 **İstemci parolası** Uygulamanızda, bir istemci gizli anahtarı içeren bir oturum açma yolu varsa, bu yolu kullanın. Azure Active Directory (AAD), gizli anahtarla oturum açmayı sağlayan bir hizmet örneğidir. AAD’de gizli anahtar, Uygulama Anahtarı’dır.
 

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: ebb1723a9a2b2d069a1766d4f78151f2b684c5b9
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 797caae3caaca14c10481cb58654c45b4bed55ae
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68464673"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884311"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Küme yapılandırmaları için ayrıntılı rol tabanlı erişime geçme
 
@@ -155,14 +155,14 @@ Kesintileri önlemek için [az PowerShell Version 2.0.0](https://www.powershellg
 
 ## <a name="add-the-hdinsight-cluster-operator-role-assignment-to-a-user"></a>Kullanıcıya HDInsight küme Işletmeni rolü atamasını ekleme
 
-[Katkıda](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) bulunan veya [sahip](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) rolüne sahip bir Kullanıcı, hassas HDInsight küme yapılandırma değerlerine (küme ağ geçidi kimlik bilgileri gibi) okuma/yazma erişimi olmasını Istediğiniz kullanıcılara [HDInsight küme işletmeni](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) rolünü atayabilir ve depolama hesabı anahtarları).
+[Sahip](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) rolüne sahip bir Kullanıcı, gizli HDInsight küme yapılandırma değerlerine (küme ağ geçidi kimlik bilgileri ve depolama hesabı anahtarları gibi) okuma/yazma erişimi olmasını Istediğiniz kullanıcılara [HDInsight küme işletmeni](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) rolünü atayabilir.
 
 ### <a name="using-the-azure-cli"></a>Azure CLI kullanma
 
 Bu rol atamasını `az role assignment create` eklemenin en kolay yolu, Azure CLI 'deki komutunu kullanmaktır.
 
 > [!NOTE]
-> Bu komut, katkıda bulunan veya sahip rolleri olan bir kullanıcı tarafından yalnızca bu izinleri verebileceği için çalıştırılmalıdır. , `--assignee` HDInsight küme işletmeni rolünü atamak istediğiniz kullanıcının e-posta adresidir.
+> Bu komut, yalnızca bu izinleri verebileceği için sahip rolüne sahip bir kullanıcı tarafından çalıştırılmalıdır. , `--assignee` HDInsight küme işletmeni rolünü atamak istediğiniz kullanıcının hizmet sorumlusu veya e-posta adresi adıdır. Yetersiz izinler hatası alırsanız aşağıdaki SSS bölümüne bakın.
 
 #### <a name="grant-role-at-the-resource-cluster-level"></a>Kaynak (küme) düzeyinde rol verme
 
@@ -185,3 +185,23 @@ az role assignment create --role "HDInsight Cluster Operator" --assignee user@do
 ### <a name="using-the-azure-portal"></a>Azure portalını kullanma
 
 Alternatif olarak, bir kullanıcıya HDInsight küme operatörü rolü atamasını eklemek için Azure portal kullanabilirsiniz. [RBAC kullanarak Azure kaynaklarına erişimi yönetme ve Azure Portal bir rol ataması ekleme](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment)hakkında bilgi için belgelere bakın.
+
+## <a name="faq"></a>SSS
+
+### <a name="why-am-i-seeing-a-403-forbidden-response-after-updating-my-api-requests-andor-tool"></a>API isteklerimi ve/veya araçlarından güncelleştirdikten sonra neden 403 (yasak) yanıtını görüyorum?
+
+Küme yapılandırmalarının artık ayrıntılı rol tabanlı erişim denetimi gerisinde ve bunlara erişim `Microsoft.HDInsight/clusters/configurations/*` izni olması gerekir. Bu izni almak için, yapılandırmalara erişmeye çalışan kullanıcıya veya hizmet sorumlusuna HDInsight küme Işletmeni, katkıda bulunan veya sahip rolü atayın.
+
+### <a name="why-do-i-see-insufficient-privileges-to-complete-the-operation-when-running-the-azure-cli-command-to-assign-the-hdinsight-cluster-operator-role-to-another-user-or-service-principal"></a>HDInsight kümesi operatörü rolünü başka bir kullanıcıya veya hizmet sorumlusuna atamak için Azure CLı komutunu çalıştırırken "işlemi tamamlamaya yetecek ayrıcalıklara" neden görmüyorum?
+
+Sahip rolüne sahip olmanın yanı sıra, komutu yürüten Kullanıcı veya hizmet sorumlusu, atanan kişinin nesne kimliklerini aramak için yeterli AAD iznine sahip olmalıdır. Bu ileti, AAD izinlerinin yetersiz olduğunu gösterir. `-–assignee` Bağımsız değişkenini ile `–assignee-object-id` değiştirmeyi deneyin ve adı (ya da yönetilen bir kimlik söz konusu olduğunda asıl kimliği) yerine parametre olarak atanan e ' nin nesne kimliğini sağlayın. Daha fazla bilgi için [az role atama oluşturma belgelerinin](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) isteğe bağlı parametreler bölümüne bakın.
+
+Bu hala işe yaramazsa, doğru izinleri almak için AAD yöneticinize başvurun.
+
+### <a name="what-will-happen-if-i-take-no-action"></a>Hiçbir işlem gerçekleşdiğimde ne olur?
+
+Ve artık herhangi bir bilgi `GET /configurations/{configurationName}` döndürmez ve çağrı artık depolama hesabı anahtarı veya küme parolası gibi hassas parametreleri döndürmez. `POST /configurations/gateway` `GET /configurations` Aynı, karşılık gelen SDK yöntemleri ve PowerShell cmdlet 'leri için de geçerlidir.
+
+Yukarıda bahsedilen Visual Studio, VSCode, IntelliJ veya çakışan küreler araçlarından birinin daha eski bir sürümünü kullanıyorsanız, güncelleştirene kadar artık çalışmaz.
+
+Daha ayrıntılı bilgi için, senaryonuza yönelik bu belgenin ilgili bölümüne bakın.

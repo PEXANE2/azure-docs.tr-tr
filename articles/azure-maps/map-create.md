@@ -9,47 +9,74 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 8a4f67290e93d8b296added9023fe9b6947ba02c
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 9f1188fcf2aa24791ca5181f5c94a1b0f6b15dc1
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638689"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882076"
 ---
 # <a name="create-a-map"></a>Harita oluşturma
 
 Bu makalede harita oluşturma ve Haritayı canlandırma yolları gösterilmektedir.  
 
-## <a name="understand-the-code"></a>Kodu anlama
+## <a name="loading-a-map"></a>Harita yükleme
 
-Bir harita oluşturabileceğiniz iki yol vardır. Orta nokta ve yakınlaştırma düzeyini belirterek haritanın kamerasını ayarlayabilir veya Güney ve kuzeydoğu sınırlayıcı noktalarını belirterek haritanın kamera sınırlarını ayarlayabilirsiniz.
+Eşleme yüklemek için, [Map sınıfının](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)yeni bir örneğini oluşturun. Eşleme başlatılırken Haritayı işlemek için bir DIV öğe KIMLIĞI ve eşleme yüklenirken kullanılacak bir seçenek kümesi geçirilir. `atlas` Ad alanında varsayılan kimlik doğrulama bilgileri belirtilmemişse, eşleme yüklenirken bu bilgilerin eşleme seçeneklerinde belirtilmesi gerekir. Eşleme, performans için birkaç kaynağı zaman uyumsuz olarak yükler. Bu nedenle, eşleme örneğini oluşturduktan sonra haritaya bir `ready` veya `load` olayı ekleyin ve ardından bu olay işleyicisindeki eşlemele etkileşim kuran ek kodu ekleyin. Bu `ready` olay, haritada programlı olarak bir şekilde etkileşim altına almak için yeterli miktarda kaynak yüklendiği anda ateşlenir. İlk harita görünümü tamamen yüklemeyi tamamladıktan sonra olayateşlenir.`load` 
+
+<br/>
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="Temel harita yüklemesi" src="//codepen.io/azuremaps/embed/rXdBXx/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<a href='https://codepen.io'>Codepen</a>üzerinde Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/rXdBXx/'>temel haritasını</a> inceleyin.
+</iframe>
+
+> [!TIP]
+> Aynı sayfada birden çok eşleme yüklenebilir ve her biri aynı veya farklı kimlik doğrulama ve dil ayarlarını kullanabilir.
+
+## <a name="show-a-single-copy-of-the-world"></a>Dünyanın tek bir kopyasını göster
+
+Harita geniş bir ekranda yakınlaştırıldığında dünyanın birden fazla kopyası yatay olarak görünür. Bu çoğu senaryo için idealdir, ancak bazı uygulamalarda yalnızca dünyanın tek bir kopyasını görmek istenebilir. Bu, haritalar `renderWorldCopies` seçeneği olarak `false`ayarlanarak yapılabilir.
+
+<br/>
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="Renderworldkopyaları = false" src="//codepen.io/azuremaps/embed/eqMYpZ/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<a href='https://codepen.io'>Codepen</a>üzerinde Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) için bkz. <a href='https://codepen.io/azuremaps/pen/eqMYpZ/'>renderworldkopyaların = false</a> .
+</iframe>
+
+## <a name="controlling-the-map-camera"></a>Harita kamerasını denetleme
+
+Kamerayı kullanarak haritanın görüntülenen alanını ayarlayabileceğiniz iki yol vardır. Haritayı yüklerken merkez ve yakınlaştırma gibi kamera seçeneklerini ayarlayabilir veya eşleme görünümünü programlı bir şekilde güncelleştirmek için Map yüklendikten sonra `setCamera` istediğiniz zaman çağrı yapabilirsiniz.  
 
 <a id="setCameraOptions"></a>
 
 ### <a name="set-the-camera"></a>Kamerayı ayarlama
 
+Aşağıdaki kodda bir [harita nesnesi](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) oluşturulur ve Ortala ve Yakınlaştır seçenekleri ayarlanır. Merkez ve yakınlaştırma düzeyi gibi harita özellikleri [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions)'in bir parçasıdır.
+
+<br/>
+
 <iframe height='500' scrolling='no' title='CameraOptions aracılığıyla harita oluşturma' src='//codepen.io/azuremaps/embed/qxKBMN/?height=543&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>'da Azure konum tabanlı hizmetler (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) ile <a href='https://codepen.io/azuremaps/pen/qxKBMN/'>bir harita `CameraOptions` oluşturma </a>kalemine bakın.
 </iframe>
-
-Yukarıdaki kodda, ile bir [harita nesnesi](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) oluşturulur `new atlas.Map()` ve merkez ve yakınlaştırma ayarlanır. Merkez ve yakınlaştırma düzeyi gibi harita özellikleri [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions)'in bir parçasıdır.
 
 <a id="setCameraBoundsOptions"></a>
 
 ### <a name="set-the-camera-bounds"></a>Kamera sınırlarını ayarlama
 
+Aşağıdaki kodda, ile `new atlas.Map()`bir [Map nesnesi](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) oluşturulur. Gibi eşleme özellikleri `CameraBoundsOptions` , Map sınıfının [setcamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) işlevi aracılığıyla tanımlanabilir. Sınırlar ve doldurma özellikleri kullanılarak `setCamera`ayarlanır.
+
+<br/>
+
 <iframe height='500' scrolling='no' title='CameraBoundsOptions aracılığıyla harita oluşturma' src='//codepen.io/azuremaps/embed/ZrRbPg/?height=543&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>'da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) ile <a href='https://codepen.io/azuremaps/pen/ZrRbPg/'>bir harita `CameraBoundsOptions` oluşturma </a>kalemine bakın.
 </iframe>
 
-Yukarıdaki kodda, ile `new atlas.Map()`bir [Map nesnesi](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) oluşturulur. Gibi eşleme özellikleri `CameraBoundsOptions` , Map sınıfının [setcamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) işlevi aracılığıyla tanımlanabilir. Sınırlar ve doldurma özellikleri kullanılarak `setCamera`ayarlanır.
-
 ### <a name="animate-map-view"></a>Harita görünümüne animasyon ekleme
+
+Aşağıdaki kodda, ilk kod bloğu bir harita oluşturur ve harita stilini, merkezi ve yakınlaştırma değerlerini ayarlar. İkinci kod bloğunda, animasyon düğmesi için bir tıklama olayı işleyicisi oluşturulur. Bu düğmeye tıklandığında, setCamera işlevi [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions), [animationoptions](/javascript/api/azure-maps-control/atlas.animationoptions)için bazı rastgele değerlerle çağırılır.
+
+<br/>
 
 <iframe height='500' scrolling='no' title='Harita görünümüne animasyon ekleme' src='//codepen.io/azuremaps/embed/WayvbO/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>'da Azure haritalar (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) ile ilgili <a href='https://codepen.io/azuremaps/pen/WayvbO/'>harita görünümü</a> kalemine bakın.
 </iframe>
-
-Yukarıdaki kodda, ilk kod bloğu aracılığıyla `new atlas.Map()`bir [harita nesnesi](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) oluşturur. Merkez ve yakınlaştırma düzeyi gibi harita özellikleri [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions)'in bir parçasıdır. `CameraOptions`Map oluşturucusunun veya Map sınıfının [Setcamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) aracılığıyla tanımlanabilir. [Harita stili](https://docs.microsoft.com/azure/azure-maps/supported-map-styles) olarak `road`ayarlanır.
-
-İkinci kod bloğu, [Setcamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) Işlevi aracılığıyla [animasyon seçeneklerini](/javascript/api/azure-maps-control/atlas.animationoptions) tanımlayarak harita görünümündeki değişikliği canlandıran bir animasyon ekleme işlevi oluşturur. İşlev, her tıklama üzerinde rastgele bir yakınlaştırma düzeyi oluşturmak için ' Haritayı canlandır ' düğmesi tarafından tetiklenir.
 
 ## <a name="try-out-the-code"></a>Kodu deneyin
 
@@ -64,10 +91,16 @@ Bu makalede kullanılan sınıflar ve yöntemler hakkında daha fazla bilgi edin
 > [!div class="nextstepaction"]
 > [Harita](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
+> [!div class="nextstepaction"]
+> [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions)
+
+> [!div class="nextstepaction"]
+> [AnimationOptions](/javascript/api/azure-maps-control/atlas.animationoptions)
+
 Uygulamanıza işlevsellik eklemek için bkz. kod örnekleri:
 
 > [!div class="nextstepaction"]
-> [Harita stili seçin](choose-map-style.md)
+> [Haritanın stilini değiştir](choose-map-style.md)
 
 > [!div class="nextstepaction"]
-> [Harita denetimleri Ekle](map-add-controls.md)
+> [Haritaya denetim ekleme](map-add-controls.md)

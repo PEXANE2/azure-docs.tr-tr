@@ -6,21 +6,24 @@ author: asgang
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 04/08/2019
+ms.date: 08/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: f00ad898ea45700b75607f89bc2c8e71288357c2
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 1bb94b70510be30d676ad707ab2fbfbbcbf50833
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847563"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884121"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Azure disk şifrelemesi etkinleştirilmiş sanal makineleri başka bir Azure bölgesine çoğaltma
 
 Bu makalede, Azure Disk Şifrelemesi etkin VM 'lerinin bir Azure bölgesinden diğerine nasıl çoğaltılacağı açıklanır.
 
 >[!NOTE]
->Azure Site Recovery Şu anda yalnızca bir Windows işletim sistemi çalıştıran Azure disk şifrelemesi özellikli VM 'Leri desteklemektedir.
+>Azure Site Recovery Şu anda yalnızca bir Windows işletim sistemi çalıştıran Azure disk şifrelemesi özellikli VM 'Leri desteklemektedir. Azure AD uygulaması olmayan Azure Disk Şifrelemesi etkin VM 'Ler, yalnızca yönetilen diskler kullanılıyorsa desteklenir. Yönetilmeyen disklere sahip VM 'Ler desteklenmez.
+
+>[!NOTE]
+>Ade v1 'den (Azure AD uygulaması ile), ADE v2 'ye (Azure AD uygulaması olmadan) geçiş yaparsanız, ADE v2 'yi etkinleştirdikten sonra çoğaltmayı devre dışı bırakmanız ve çoğaltmayı etkinleştirmeniz gerekir.
 
 ## <a id="required-user-permissions"></a>Gerekli Kullanıcı izinleri
 Site Recovery, kullanıcının hedef bölgede anahtar kasasını oluşturma ve kaynak bölgesi anahtar kasasından anahtarları hedef bölgeye anahtar kasasına kopyalama izinlerine sahip olmasını gerektirir.

@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 05/08/2019
+ms.date: 08/08/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6972c91a18f9deb240871d8c64a14647474d9d78
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.openlocfilehash: 4cbaa8f22335da083506a76ad1a791576b109a00
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377265"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879780"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Oturum açma Etkinliği raporu hata kodları 
 
@@ -127,6 +127,7 @@ Ayrıca, [Raporlama API](concept-reporting-api.md)'sini kullanarak oturum açma 
 |50177|Dışarıdan sınama, geçiş kullanıcıları için desteklenmez.|
 |50178|Geçiş kullanıcıları için oturum denetimi desteklenmez.|
 |50180|Windows Tümleşik kimlik doğrulaması gerekli. Sorunsuz SSO için kiracıyı etkinleştirin.|
+|50201|Bu ileti istemi kesmesi, kullanıcıya ek bilgi sağlanması gerektiğinde oturum açma sırasında kullanıcıya gösterilir.|
 |51001|Şirket içi güvenlik tanımlayıcısı-şirket Içi UPN ile etki alanı Ipucu yok.|
 |51004|Kullanıcı hesabı dizinde yok.|
 |51006|Windows Tümleşik kimlik doğrulaması gerekli. Kullanıcı, talep aracılığıyla eksik olan oturum belirtecini kullanarak oturum açtı. Kullanıcıdan yeniden oturum açmasını isteyin.|
@@ -181,6 +182,9 @@ Ayrıca, [Raporlama API](concept-reporting-api.md)'sini kullanarak oturum açma 
 |500121| Tanımlayıcı kimlik doğrulama isteği sırasında kimlik doğrulaması başarısız oldu.|
 |500133| Onaylama işlemi geçerli zaman aralığı içinde değil. Kullanıcı onayı için kullanılmadan önce erişim belirtecinin dolmadığından emin olun veya yeni bir belirteç isteyin.|
 |530021|Uygulama, koşullu erişim onaylı uygulama gereksinimlerini karşılamıyor.|
+|530032|Güvenlik ilkesi tarafından engellendi.| 
+|700016|' {Appıdentifier} ' tanımlayıcılı uygulama ' {tenantName} ' dizininde bulunamadı. Bu durum, uygulama kiracının Yöneticisi tarafından yüklenmediyse veya kiracının kiracısındaki herhangi bir kullanıcı tarafından ' a onaylı olması durumunda gerçekleşebilir. Kimlik doğrulama isteğinizi yanlış kiracıya göndermiş olabilirsiniz.|
+|900432|Çapraz bulut isteğinde gizli Istemci desteklenmez.|
 |7000218|İstek gövdesi şu parametreyi içermelidir: ' client_assertion ' veya ' client_secret '.|
 
 

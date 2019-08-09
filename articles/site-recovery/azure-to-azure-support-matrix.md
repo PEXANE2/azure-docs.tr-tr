@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/06/2019
 ms.author: raynew
-ms.openlocfilehash: d0e24d7621218ccac23842072a5f08be94c80d9d
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 92bd53fd0426f896eff8dc63b690167db3ee700b
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840593"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884117"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Azure VM'lerini bir bölgeden diğerine çoğaltma için destek matrisi
 
@@ -197,7 +197,7 @@ Yedeklilik | LRS ve GRS desteklenir.<br/><br/> ZRS desteklenmez.
 Seyrek erişimli ve sık erişimli depolama | Desteklenmiyor | Seyrek erişimli ve sık erişimli depolamada VM diskleri desteklenmez
 Depolama alanları | Desteklenen |
 Bekleyen şifreleme (SSE) | Desteklenen | SSE, depolama hesaplarında varsayılan ayardır.   
-Windows işletim sistemi için Azure disk şifrelemesi (ADE) | Desteklenen |
+Windows işletim sistemi için Azure disk şifrelemesi (ADE) | Yönetilen disklere sahip VM 'Ler için desteklenir. Yönetilmeyen diskleri kullanan VM 'Ler desteklenmez |
 Linux işletim sistemi için Azure disk şifrelemesi (ADE) | Desteklenmiyor |
 Sık erişimli ekleme | Desteklenen | Çoğaltılan bir Azure VM 'ye eklediğiniz bir veri diski için çoğaltmanın etkinleştirilmesi, yönetilen diskleri kullanan VM 'Ler için desteklenir.
 Diski sık erişimli kaldır | Desteklenmiyor | SANAL makinede veri diski kaldırırsanız, çoğaltmayı devre dışı bırakmanız ve VM için çoğaltmayı yeniden etkinleştirmeniz gerekir.

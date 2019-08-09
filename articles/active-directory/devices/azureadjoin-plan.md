@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5dc1c3fb7ae12c36a8c1fe383290435c03ee0c4
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 906ab4da941c6a0e1bc98f2f724141c719d04b89
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741381"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879433"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Nasıl yapılır: Azure AD katılımınızı uygulamayı planlama
 
@@ -75,6 +75,10 @@ AD FS kullanırken, aşağıdaki WS-Trust uç noktalarını etkinleştirmeniz ge
  `/adfs/services/trust/13/certificatemixed`
 
 Kimlik sağlayıcınız bu protokolleri desteklemiyorsa Azure AD katılımı yerel olarak çalışmaz. Windows 10 1809 ' den başlayarak, kullanıcılarınız [Windows 10 ' da Web oturumu açma](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10)yoluyla SAML tabanlı bir kimlik sağlayıcısı Ile BIR Azure AD 'ye katılmış cihazda oturum açabilirler. Şu anda, Web oturumu açma bir önizleme özelliğidir ve üretim dağıtımları için önerilmez.
+
+>[!NOTE]
+> Şu anda Azure AD JOIN, [birincil kimlik doğrulama yöntemi olarak dış kimlik doğrulama sağlayıcılarıyla yapılandırılmış AD FS 2019](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/additional-authentication-methods-ad-fs#enable-external-authentication-methods-as-primary)ile çalışmıyor. Azure AD JOIN, birincil yöntem olarak parola kimlik doğrulaması varsayılan olarak, bu senaryoda kimlik doğrulama hatalarıyla sonuçlanır
+
 
 ### <a name="smartcards-and-certificate-based-authentication"></a>Smartcards ve sertifika tabanlı kimlik doğrulaması
 

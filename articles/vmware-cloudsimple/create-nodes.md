@@ -8,18 +8,23 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 9eb02f04b5873e5906782a27ce833a724ceecfe3
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 898b07d05abf3bfad644fb590d90c7a90c5a1c0d
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812372"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883219"
 ---
 # <a name="provision-nodes-for-vmware-solution-by-cloudsimple---azure"></a>CloudSimple-Azure tarafından VMware çözümü için düğüm sağlama
 
 Azure portal düğümleri sağlayın. Daha sonra, CloudSimple özel bulut ortamınız için Kullandıkça Öde kapasitesini ayarlayabilirsiniz.
 
-## <a name="add-a-provisioned-node-to-your-cloudsimple-private-cloud"></a>CloudSimple özel buluta sağlanan bir düğüm ekleyin
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+
+[https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
+
+
+## <a name="add-a-node-to-your-cloudsimple-private-cloud"></a>CloudSimple özel buluta bir düğüm ekleyin
 
 1. **Tüm Hizmetler**’i seçin.
 2. **Cloudsimple düğümleri**için arama yapın.
@@ -44,4 +49,4 @@ Azure portal düğümleri sağlayın. Daha sonra, CloudSimple özel bulut ortam�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Özel bulut oluştur](https://docs.azure.cloudsimple.com/create-private-cloud/)
+* [Özel bulut oluştur](create-private-cloud.md)

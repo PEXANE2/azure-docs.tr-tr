@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/01/2019
-ms.openlocfilehash: a482e599914e8b91a237f4395e9c0c47ea84ad59
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 61bf9d53b5ceda9420ae594680466a70b1e3d0cd
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68846065"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882328"
 ---
 # <a name="release-notes-for-sql-server-on-azure-virtual-machines"></a>Azure sanal makinelerinde SQL Server için sürüm notları
 
@@ -41,7 +41,7 @@ Azure, içinde yerleşik SQL Server bir görüntü ile sanal makine (VM) dağıt
 | --- | --- |
 | **Yeni SQL IaaS yükleme modları** | SQL Server hizmetinin yeniden başlatılmasını önlemek için SQL Server IaaS uzantısını [hafif modda](virtual-machines-windows-sql-server-agent-extension.md) yüklemek mümkündür.  |
 | **SQL Server sürümü değişikliği** | Artık SQL Server VM için [sürüm özelliğini](virtual-machines-windows-sql-change-edition.md) değiştirebilirsiniz. |
-| **SQL VM kaynak sağlayıcısında yapılan değişiklikler** | [SQL VM kaynak sağlayıcısı ile SQL Server VM](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-the-sql-vm-resource-provider) yeni SQL IaaS modlarını kullanarak kaydedebilirsiniz. Bu özellik [Windows 2008 görüntülerini](virtual-machines-windows-sql-register-with-resource-provider.md#register-sql-server-2008-or-2008-r2-on-windows-server-2008-vms)içerir.|
+| **SQL VM kaynak sağlayıcısında yapılan değişiklikler** | [SQL VM kaynak sağlayıcısı ile SQL Server VM](virtual-machines-windows-sql-register-with-resource-provider.md) yeni SQL IaaS modlarını kullanarak kaydedebilirsiniz. Bu özellik [Windows 2008 görüntülerini](virtual-machines-windows-sql-register-with-resource-provider.md#register-sql-server-2008-or-2008-r2-on-windows-server-2008-vms)içerir.|
 | **Azure Hibrit Avantajı kullanarak kendi lisans görüntülerini getirin** | Azure Marketi 'nden dağıtılan kendi lisans görüntülerini getir, şimdi de [Lisans türlerini Kullandıkça Öde olarak](virtual-machines-windows-sql-ahb.md#remarks)değiştirebilir.| 
 | &nbsp; | &nbsp; |
 

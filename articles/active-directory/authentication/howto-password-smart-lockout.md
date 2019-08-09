@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd03e2b98b1fd1a2a45b5feecc963bcfc7bfe83c
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 489ff1824c4bc45ee7ed31e9c96377975a32baa4
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499889"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879235"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Akıllı kilitleme Azure Active Directory
 
@@ -31,7 +31,7 @@ Akıllı kilitleme, aynı parolanın kilitleme sayacını arttırmaktan kaçınm
 
 AD FS 2016 ve AF FS 2019 kullanan Federasyon dağıtımları, [AD FS Extranet kilitleme ve extranet akıllı kilitleme](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection)kullanarak benzer avantajları etkinleştirebilir.
 
-Akıllı kilitleme, güvenlik ve kullanışlılığın doğru karışımını sunan bu varsayılan ayarlarla tüm Azure AD müşterileri için her zaman açıktır. Akıllı kilitleme ayarlarının kuruluşunuza özgü değerlerle özelleştirilmesi, kullanıcılarınız için Azure AD Temel veya daha yüksek lisanslar gerektirir.
+Akıllı kilitleme, güvenlik ve kullanışlılığın doğru karışımını sunan bu varsayılan ayarlarla tüm Azure AD müşterileri için her zaman açıktır. Akıllı kilitleme ayarlarının kuruluşunuza özgü değerlerle özelleştirilmesi, kullanıcılarınız için ücretli Azure AD lisanslarına ihtiyaç duyar.
 
 Akıllı kilitleme kullanmak, orijinal bir kullanıcının hiçbir şekilde kilitlenmeyeceğini garanti etmez. Akıllı kilitleme bir kullanıcı hesabını kilitlediğinde, orijinal kullanıcıyı kilitlemeleri için en iyi şekilde deneme yaptık. Kilitleme hizmeti, kötü aktörlerin orijinal bir kullanıcı hesabına erişmesini sağlamaya çalışır.  
 
@@ -63,7 +63,7 @@ Akıllı kilitleme karma dağıtımlarla tümleştirilebilir, şirket içi Activ
 
 ## <a name="manage-azure-ad-smart-lockout-values"></a>Azure AD akıllı kilitleme değerlerini yönetme
 
-Kuruluş gereksinimlerinize bağlı olarak, akıllı kilitleme değerlerinin özelleştirilmesi gerekebilir. Akıllı kilitleme ayarlarının kuruluşunuza özgü değerlerle özelleştirilmesi, kullanıcılarınız için Azure AD Temel veya daha yüksek lisanslar gerektirir.
+Kuruluş gereksinimlerinize bağlı olarak, akıllı kilitleme değerlerinin özelleştirilmesi gerekebilir. Akıllı kilitleme ayarlarının kuruluşunuza özgü değerlerle özelleştirilmesi, kullanıcılarınız için ücretli Azure AD lisanslarına ihtiyaç duyar.
 
 Kuruluşunuzun akıllı kilitleme değerlerini denetlemek veya değiştirmek için aşağıdaki adımları kullanın:
 

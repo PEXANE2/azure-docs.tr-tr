@@ -11,10 +11,10 @@ ms.date: 07/23/2018
 ms.author: anjangsh
 ms.reviewer: jrasnick
 ms.openlocfilehash: 4348a634fd5b2b33f36d8e79f28caf659b82ccf4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 08/09/2019
 ms.locfileid: "67626145"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-june-2018"></a>Azure SQL veri ambarı 'ndaki yenilikler nelerdir? Haziran 2018
@@ -51,7 +51,7 @@ Msg 230, Level 14, State 1, Line 12
 The SELECT permission was denied on the column 'SSN' of the object 'Membership', database 'CLS_TestDW', schema 'dbo'.
 ```
 
-## <a name="objectschemaname"></a>OBJECT_SCHEMA_NAME
+## <a name="object_schema_name"></a>OBJECT_SCHEMA_NAME
 [OBJECT_SCHEMA_NAME ()](https://docs.microsoft.com/sql/t-sql/functions/object-schema-name-transact-sql) işlevi, şema kapsamlı nesneler için veritabanı şeması adını döndürür. Bu işlev, nesne şeması doğrulaması yapılırken ETL araçlarında yaygın hale geldi. 
 
 ```sql
@@ -72,7 +72,7 @@ dbo               nation
 dbo               orders
 ```
 
-## <a name="support-for-the-systimezoneinfo-view"></a>Sys. time_zone_info görünümü desteği
+## <a name="support-for-the-systime_zone_info-view"></a>Sys. time_zone_info görünümü desteği
 [Sys. time_zone_info](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) görünümü, Azure SQL veri ambarı 'nda desteklenen Saat dilimleriyle ilgili bilgileri döndürür.
 
 ```sql
@@ -89,7 +89,7 @@ Mountain Standard Time (Mexico)   -06:00               1
 Central Standard Time             -05:00               1
 ```
 
-## <a name="auto-stats-operations-appear-in-sysdmpdwexecrequests-behavior-change"></a>Otomatik Istatistikler işlemleri sys. DM _pdw_exec_requests (davranış değişikliği) içinde görünür
+## <a name="auto-stats-operations-appear-in-sysdm_pdw_exec_requests-behavior-change"></a>Otomatik Istatistikler işlemleri sys. DM _pdw_exec_requests (davranış değişikliği) içinde görünür
 
 [Otomatik oluşturma istatistiklerinin](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic)kullanıma sunulmasıyla birlikte, Azure SQL veri ambarı sorgu yürütmeyi iyileştirmek için istatistikler oluşturacaktır. Haziran 2018 sürümü, her bir [Istatistik oluşturma](https://docs.microsoft.com/sql/t-sql/statements/create-statistics-transact-sql) işlemi yürütüldüğünde [sys. DM _pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) görünümüne bir kayıt eklenerek istatistiklerin otomatik olarak ne zaman oluşturulduğunu izleme özelliği ekler.
 

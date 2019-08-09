@@ -1,6 +1,6 @@
 ---
-title: Lisans Self Servis parola sıfırlama - Azure Active Directory
-description: Azure AD Self Servis parola sıfırlama lisans gereksinimleri
+title: Lisans self servis parola sıfırlama-Azure Active Directory
+description: Azure AD self servis parola sıfırlama lisanslama gereksinimleri
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,53 +11,53 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56b74e6a9f1d83798b557c48eb78242d70e85dfc
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 7463b86ea20a712937b8ccba7997c2551aae5be6
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612623"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879103"
 ---
-# <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Lisans gereksinimleri için Azure AD Self Servis parola sıfırlama
+# <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Azure AD self servis parola sıfırlama için lisans gereksinimleri
 
-Azure Active Directory'nin (Azure AD) dört sürümü vardır: Ücretsiz, Temel, Premium P1 ve Premium P2. Yaptığınız değişikliği de dahil olmak üzere, Self Servis parola sıfırlamayı sıfırlama, kilidini birçok farklı özelliği ve Azure AD'ye farklı sürümlerde kullanılabilir olan geri yazma vardır. Bu makalede farklar açıklanmaktadır dener. Her Azure AD sürümünde bulunan özellikler hakkında daha fazla ayrıntı bulunabilir [Azure Active Directory fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/active-directory/).
+Azure Active Directory (Azure AD) çeşitli sürümlerde gelir: Ücretsiz, Premium P1 ve Premium P2. Farklı Azure AD sürümlerinde bulunan değişiklik, sıfırlama, kilit açma ve geri yazma dahil olmak üzere, self servis parola sıfırlamayı oluşturan farklı özelliklerden bazıları vardır. Bu makale farklılıkları açıklamaya çalışır. Her Azure AD sürümüne dahil olan özellikler hakkında daha fazla ayrıntı [Azure Active Directory fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/active-directory/)bulunabilir.
 
-## <a name="compare-editions-and-features"></a>Sürümleri ve özellikleri karşılaştırın
+## <a name="compare-editions-and-features"></a>Sürümleri ve özellikleri karşılaştırma
 
-Azure AD Self Servis parola sıfırlama, kullanıcı başına lisanslanır, uyum sağlamak için kuruluşlar, kullanıcılara uygun lisansları atamak için gereklidir.
+Azure AD self servis parola sıfırlama Kullanıcı başına lisanslıdır, uyumluluk kuruluşları sağlamak için kullanıcılara uygun lisansı atamanız gerekir.
 
 * Bulut kullanıcıları için Self Servis Parola Değiştirme
-   * Ben bir **yalnızca bulut kullanıcı** ve parolamı biliyorum.
-      * İstiyorum **değiştirme** parolamı yeni bir şey.
-   * Bu işlev, Azure AD tüm sürümlerinde dahildir.
+   * **Yalnızca bulutta** bulunan bir Kullanıcı ve parolamı öğrendim.
+      * Parolamı yeni bir şekilde **değiştirmek** istiyorum.
+   * Bu işlevsellik tüm Azure AD sürümlerinde bulunur.
 
 * Bulut kullanıcıları için Self Servis Parola Sıfırlama
-   * Ben bir **yalnızca bulut kullanıcı** ve parolamı unutmuş.
-      * İstiyorum **sıfırlama** parolamı biliyorum bir şey.
-   * Bu işlev, Azure AD temel, Premium P1 veya P2 veya Microsoft 365 iş dahil edilir.
+   * **Yalnızca bulutta bir Kullanıcı** ve parolamı unutdum.
+      * Bilindiğim bir şeye Parolamı **sıfırlamak** istiyorum.
+   * Bu işlevsellik Azure AD Premium P1 veya P2 ya da Microsoft 365 İş dahil edilmiştir.
 
-* Self Servis parola sıfırlama/değiştirme/kilidini açma **ile şirket içi geri yazma**
-   * Ben bir **karma kullanıcı** my şirket içi Active Directory kullanıcı hesabı Azure AD Connect kullanarak Azure AD hesabımla eşitlenir. Parolamı değiştirme, parolamı unuttunuz veya kilitli istiyorum.
-      * Parolamı değiştirme veya bir şeye miyim bilmiyorsanız veya Hesabımı kilidini sıfırlama istiyorum **ve** geri eşitlenmiş değişiklik Active Directory şirket olduğunu.
-   * Bu işlev, Azure AD Premium P1 veya P2 ya da Microsoft 365 iş dahildir.
+* **Şirket içi geri yazma ile** self servis parola sıfırlama/değiştirme/kilit açma
+   * Bir **Karma Kullanıcı** olan şirket içi Active Directory Kullanıcı hesabı, Azure AD Connect KULLANıLARAK Azure AD hesabım ile eşitlenir. Parolamı değiştirmek istiyorum, parolamı unutdum veya kilitlendim.
+      * Parolamı değiştirmek veya bunu bildiğiniz bir şeye sıfırlamak ya da hesabımın kilidini açmak istiyorum **ve** değişikliğin şirket içi Active Directory geri eşitlendiğinden emin olmak istiyorum.
+   * Bu işlevsellik Azure AD Premium P1 veya P2 ya da Microsoft 365 İş dahil edilmiştir.
 
 > [!WARNING]
-> Tek başına Office 365 planları lisanslama *"Self Servis parola sıfırlama/değiştirme/kilidini açma şirket içi geri yazma ile" desteklemeyen* ve Azure AD Premium P1, Premium P2 veya Microsoft 365 iş bu içeren bir planı gerekir çalışmak için işlev.
+> Tek başına Office 365 lisans planları, *"Şirket içi geri yazma Ile self servis parola sıfırlama/değiştirme/kilit açma" desteği vermez* ve bu işlevin çalışması Için Azure AD Premium P1, Premium P2 veya Microsoft 365 iş içeren bir plan gerektirir.
 >
 
-Maliyetleri de dahil olmak üzere ek lisans bilgileri şu sayfalarda yer bulunabilir:
+Aşağıdaki sayfalarda maliyet dahil ek lisans bilgileri bulunabilir:
 
-* [Site fiyatlandırma Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/)
-* [Azure Active Directory özellikleri ve yetenekleri](https://www.microsoft.com/cloud-platform/azure-active-directory-features)
+* [Azure Active Directory fiyatlandırma sitesi](https://azure.microsoft.com/pricing/details/active-directory/)
+* [Azure Active Directory özellikleri ve özellikleri](https://www.microsoft.com/cloud-platform/azure-active-directory-features)
 * [Enterprise Mobility + Security](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)
 * [Microsoft 365 Kurumsal](https://www.microsoft.com/microsoft-365/enterprise)
-* [Microsoft 365 iş hizmet açıklaması](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)
+* [Microsoft 365 İş hizmet açıklaması](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)
 
-## <a name="enable-group-or-user-based-licensing"></a>Grup veya kullanıcı tabanlı lisanslama etkinleştir
+## <a name="enable-group-or-user-based-licensing"></a>Grup veya Kullanıcı tabanlı lisanslamayı etkinleştirme
 
-Artık Azure AD grup tabanlı lisanslama destekler. Yöneticiler, bir kerede atamak yerine kullanıcılar bir grup toplu lisansları atayabilir. Daha fazla bilgi için [atamak, doğrulamak ve lisans sorunları çözmeniz](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses).
+Azure AD artık grup tabanlı lisanslamayı desteklemektedir. Yöneticiler, lisansları tek seferde atamak yerine bir kullanıcı grubuna toplu olarak atayabilirler. Daha fazla bilgi için bkz. [lisanslarla ilgili sorunları atama, doğrulama ve çözme](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses).
 
-Bazı Microsoft hizmetleri tüm konumlarda kullanılamaz. Yönetici bir kullanıcıya lisans atanabilmesi için önce belirtmelisiniz **kullanım konumu** kullanıcı özelliği. Lisans atama altında yapılabilir **kullanıcı** > **profili** > **ayarları** bölümünde Azure portalında. *Kullanım konumu belirtilmemiş olmadan herhangi bir kullanıcı, Grup lisans ataması kullandığınızda, dizin konumunu devralır.*
+Bazı Microsoft hizmetleri tüm konumlarda kullanılamaz. Bir lisansın bir kullanıcıya atanabilmesi için, yöneticinin kullanıcı üzerinde **Kullanım konumu** özelliğini belirtmesi gerekir. Lisansların atanması Azure Portal **Kullanıcı** > **profili** > **ayarları** bölümünde yapılabilir. *Grup lisansı atamasını kullandığınızda, kullanım konumu belirtilmemiş tüm kullanıcılar dizinin konumunu alır.*
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

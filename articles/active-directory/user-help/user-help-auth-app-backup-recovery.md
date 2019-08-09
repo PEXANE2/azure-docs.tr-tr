@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4148d8a3b44336677ba028807aadbae424b7223
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: ba99001159277d9d221910cafa4f5165ae2bd812
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382513"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880764"
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulamayla hesap kimlik bilgilerini yedekleme ve kurtarma
 
@@ -93,6 +93,8 @@ Kişisel Microsoft hesapları için parolanızı, alternatif bir e-posta veya te
     ![Microsoft Authenticator, QR kodunuzu taramanızı sağlar](./media/user-help-auth-app-backup-recovery/backup-and-recovery-scan-qr-code.png)
 
     >[!NOTE]
+    >Microsoft Authenticator uygulamasını ilk kez ayarlıyorsanız, uygulamanın kameranıza erişmesine izin verip vermeyeceğinizi (iOS) veya uygulamanın resim almasına ve video (Android) kaydetmesine izin verip vermeyeceğinizi soran bir istem alabilirsiniz. Bir sonraki adımda QR kodunun bir resmini almak için, kimlik doğrulayıcı uygulamasının kameranıza erişebilmesi için **Izin ver** ' i seçmeniz gerekir. Kameraya izin vermezseniz, kimlik doğrulayıcı uygulamasını ayarlamaya devam edebilirsiniz, ancak kod bilgilerini el ile eklemeniz gerekir. Kodu el ile ekleme hakkında daha fazla bilgi için bkz. [uygulamaya el ile hesap ekleme](user-help-auth-app-add-account-manual.md).
+    >
     >QR kodu alma hakkında daha fazla bilgi için bkz. [Microsoft Authenticator uygulamasına başlama](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install) veya güvenlik bilgilerini, yöneticinizin güvenlik bilgilerine sahip olup olmadığına bağlı olarak [bir doğrulayıcı uygulaması kullanacak şekilde ayarlama](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-auth-app).
 
 ## <a name="troubleshooting-backup-and-recovery-problems"></a>Yedekleme ve kurtarma sorunlarını giderme

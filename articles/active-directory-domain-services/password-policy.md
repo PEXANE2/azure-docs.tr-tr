@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2019
 ms.author: iainfou
-ms.openlocfilehash: 8829f16e580d0b926781ce0a3e9f8e6a63cf3110
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 30f4558339bbfddd2296cd1cb918c6ef8999b67e
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853768"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879189"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Yönetilen etki alanlarında parola ve hesap kilitleme ilkeleri
 Bu makalede, yönetilen bir etki alanında varsayılan parola ilkeleri açıklanmaktadır. Ayrıca, bu ilkeleri nasıl yapılandırabileceğini de ele alır.
@@ -38,7 +38,8 @@ FGPP kullanarak aşağıdaki parola ayarlarını yapılandırabilirsiniz:
     * Hesap kilitleme süresi
     * İzin verilen başarısız oturum açma denemesi sayısı
     * Sonrasında başarısız oturum açma denemesi sayısını Sıfırla
-
+    
+FGPP yalnızca doğrudan Azure AD DS 'da oluşturulan kullanıcıları etkiler. Azure AD 'de Azure AD DS yönetilen etki alanı ile eşitlenen bulut kullanıcıları ve etki alanı kullanıcıları, parola karmaşıklığı ayarlarından etkilenmez. FGPP, Azure AD DS yönetilen etki alanındaki gruplar ilişkisi aracılığıyla dağıtılır ve yaptığınız tüm değişiklikler sonraki Kullanıcı oturumu sırasında uygulanır. İlkenin değiştirilmesi, zaten kilitlenen bir kullanıcı hesabının kilidini açmıyor.
 
 ## <a name="default-fine-grained-password-policy-settings-on-a-managed-domain"></a>Yönetilen bir etki alanında varsayılan hassas parola ilkesi ayarları
 Aşağıdaki ekran görüntüsünde, Azure AD Domain Services yönetilen bir etki alanında yapılandırılan varsayılan hassas parola ilkesi gösterilmektedir.

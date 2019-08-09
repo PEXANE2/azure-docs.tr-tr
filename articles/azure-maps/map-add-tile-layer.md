@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: e288e03b9e2c02ba963595f192dea7225c6d5762
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: d872cd78b3fd04512fcaee706e54bffa1cf9fcc1
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638995"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882097"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>Haritaya kutucuk katmanı ekleme
 
 Bu makalede, haritada bir kutucuk katmanının nasıl kaplamasıyla ilgili yönergeler verilmektedir. Döşeme katmanları, Azure Maps temel harita kutucuklarının üzerine görüntü eklemenize olanak tanır. Azure haritalar döşeme sistemi hakkında daha fazla bilgi [yakınlaştırma düzeyleri ve kutucuk Kılavuzu](zoom-levels-and-tile-grid.md) belgelerinde bulunabilir.
 
-Bir sunucudan kutucuklarda kutucuk katmanı yükü. Bu görüntüler, kutucuk katmanının anladığı bir adlandırma kuralına veya anında görüntüleri oluşturan dinamik bir hizmete sahip bir sunucu üzerindeki herhangi bir görüntü gibi önceden işlenmiş ve depolanmış olabilir. Azure haritalar [Tilelayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) sınıfı tarafından desteklenen üç farklı kutucuk hizmeti adlandırma kuralı vardır; 
+Döşeme katmanı bir sunucudan kutucukları yükler. Bu görüntüler, kutucuk katmanının anladığı bir adlandırma kuralına veya anında görüntüleri oluşturan dinamik bir hizmete sahip bir sunucu üzerindeki herhangi bir görüntü gibi önceden işlenmiş ve depolanmış olabilir. Azure haritalar [Tilelayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) sınıfı tarafından desteklenen üç farklı kutucuk hizmeti adlandırma kuralı vardır: 
 
 * X, Y, yakınlaştırma gösterimi-yakınlaştırma düzeyine göre x, sütun ise döşeme kılavuzundaki döşemenin satır konumudur.
 * Quadkey gösterimi-x, y, zoom bilgilerini bir kutucuk için benzersiz bir tanımlayıcı olan tek bir dize değerine birleşimi.
@@ -40,7 +40,7 @@ Döşeme katmanına geçirilen kutucuk URL 'si, bir TileJSON kaynağına veya a�
 
 ## <a name="add-a-tile-layer"></a>Kutucuk katmanı ekleme
 
- Bu örnek, x, y, yakınlaştırma döşeme sistemi kullanan bir kutucuk kümesini işaret eden döşeme katmanının nasıl oluşturulacağını gösterir. Bu kutucuk katmanının kaynağı, [Iowa çevresel Mesonet 'in Iowa çevre](https://mesonet.agron.iastate.edu/ogc/)bir hava durumu radar kaplamasıyla.
+ Bu örnek, x, y, yakınlaştırma döşeme sistemi kullanan bir kutucuk kümesini işaret eden döşeme katmanının nasıl oluşturulacağını gösterir. Bu kutucuk katmanının kaynağı, [Iowa çevresel Mesonet 'in Iowa çevre](https://mesonet.agron.iastate.edu/ogc/)bir hava durumu radar kaplamasıyla. 
 
 <br/>
 
@@ -53,7 +53,7 @@ Yukarıdaki kodda, ilk kod bloğu bir harita nesnesi oluşturur. Yönergeler iç
 
 ## <a name="customize-a-tile-layer"></a>Döşeme katmanını özelleştirme
 
-Döşeme katmanının yalnızca birçok stil seçeneği vardır. İşte deneyebileceğiniz bir araç.
+Döşeme katmanı sınıfının birçok stil seçeneği vardır. İşte deneyebileceğiniz bir araç.
 
 <br/>
 

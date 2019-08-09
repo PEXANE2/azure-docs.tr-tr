@@ -4,15 +4,15 @@ description: AzCopy, depolama hesaplarına veri kopyalamak için kullanabileceğ
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/25/2019
+ms.date: 08/08/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 9dc53867cb780b2c40e76cc6f24f7e6cf882b407
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 0c30225e9b5412fe1515e8503d1134dcad44871f
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68844870"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879974"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy’i kullanmaya başlama
 
@@ -259,7 +259,9 @@ Kimliğinizi doğruladıktan veya bir SAS belirteci edindikten sonra, dosyaları
 
 ## <a name="use-azcopy-in-a-script"></a>Betikte AzCopy kullanma
 
-Zaman içinde, AzCopy [indirme bağlantısı](#download-and-install-azcopy) , AzCopy 'in yeni sürümlerini işaret edecektir. Betiğinizin AzCopy 'i İndirmeleri durumunda AzCopy 'in daha yeni bir sürümü betiğinizin bağımlı olduğu özellikleri değiştirirse betik çalışmayı durdurabilir. 
+### <a name="obtain-a-static-download-link"></a>Statik indirme bağlantısı alma
+
+Zaman içinde, AzCopy [indirme bağlantısı](#download-and-install-azcopy) , AzCopy 'in yeni sürümlerini işaret edecektir. Betiğinizin AzCopy 'i İndirmeleri durumunda AzCopy 'in daha yeni bir sürümü betiğinizin bağımlı olduğu özellikleri değiştirirse betik çalışmayı durdurabilir.
 
 Bu sorunlardan kaçınmak için, AzCopy 'in geçerli sürümüne bir statik (değişiklik kaldırma) bağlantısı alın. Bu şekilde, komut dosyası her çalıştığında AzCopy 'in aynı tam sürümünü indirir.
 
@@ -280,9 +282,13 @@ URL Bu komutun çıktısında görüntülenir. Komut dosyası daha sonra bu URL 
 | **Linux** | `wget -O azcopyv10.tar https://azcopyvnext.azureedge.net/release20190301/azcopy_linux_amd64_10.0.8.tar.gz tar -xf azcopyv10.tar --strip-components=1 ./azcopy` |
 | **Windows** | `Invoke-WebRequest https://azcopyvnext.azureedge.net/release20190517/azcopy_windows_amd64_10.1.2.zip -OutFile azcopyv10.zip <<Unzip here>>` |
 
+### <a name="escape-special-characters-in-sas-tokens"></a>SAS belirteçlerinde kaçış özel karakterleri
+
+`.cmd` Uzantısı olan toplu iş dosyalarında SAS belirteçlerinde görünen `%` karakterleri atlamanız gerekir. Bunu, SAS belirteç dizesindeki mevcut `%` `%` karakterlerin yanına bir ekleme karakteri ekleyerek yapabilirsiniz.
+
 ## <a name="use-azcopy-in-storage-explorer"></a>Depolama Gezgini AzCopy kullanın
 
-AzCopy 'in performans avantajlarından yararlanmak istiyorsanız, ancak dosyalarınıza etkileşimde bulunmak için komut satırı yerine Depolama Gezgini kullanmayı tercih ediyorsanız, Depolama Gezgini AzCopy özelliğini etkinleştirin. 
+AzCopy 'in performans avantajlarından yararlanmak istiyorsanız, ancak dosyalarınıza etkileşimde bulunmak için komut satırı yerine Depolama Gezgini kullanmayı tercih ediyorsanız, Depolama Gezgini AzCopy özelliğini etkinleştirin.
 
 Depolama Gezgini,**Gelişmiş blob karşıya yükleme ve indirme için AzCopy kullan**' ı seçin.->
 

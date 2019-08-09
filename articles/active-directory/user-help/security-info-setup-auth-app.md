@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 912bda010ddcf9b02506df14f06fb0650271a53b
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 20d5131c773e2a9f7b6830725ccd934786d6dd67
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382988"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880944"
 ---
 # <a name="set-up-security-info-preview-to-use-an-authenticator-app"></a>Kimlik doğrulayıcı uygulaması kullanmak için güvenlik bilgilerini ayarlama (Önizleme)
 
@@ -65,7 +65,10 @@ Kuruluşunuzun ayarlarına bağlı olarak, güvenlik bilgileri yöntemlerinizin 
 
 6. Microsoft Authenticator uygulamasını açın, bildirimlere izin ver ' i seçin (istenirse), sağ üst köşedeki **Özelleştir ve denetim** simgesinden **Hesap Ekle** ' yi seçin ve sonra **iş veya okul hesabı**' nı seçin.
 
-7. **Hesabınız üzerinde hesabınızı ayarlama** sayfasına dönün ve sonra **İleri**' yi seçin.
+    >[!Note]
+    >Microsoft Authenticator uygulamasını ilk kez ayarlıyorsanız, uygulamanın kameranıza erişmesine izin verip vermeyeceğinizi (iOS) veya uygulamanın resim almasına ve video (Android) kaydetmesine izin verip vermeyeceğinizi soran bir istem alabilirsiniz. Bir sonraki adımda QR kodunun bir resmini almak için, kimlik doğrulayıcı uygulamasının kameranıza erişebilmesi için **Izin ver** ' i seçmeniz gerekir. Kameraya izin vermezseniz, kimlik doğrulayıcı uygulamasını ayarlamaya devam edebilirsiniz, ancak kod bilgilerini el ile eklemeniz gerekir. Kodu el ile ekleme hakkında daha fazla bilgi için bkz. [uygulamaya el ile hesap ekleme](user-help-auth-app-add-account-manual.md).
+
+7. Bilgisayarınızda **hesabınızı ayarlama** sayfasına dönün ve sonra **İleri**' yi seçin.
 
     **QR kodunu Tara** sayfası görüntülenir.
 

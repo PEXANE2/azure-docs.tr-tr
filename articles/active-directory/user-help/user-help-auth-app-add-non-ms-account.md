@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: effe48c859e711f0efc41c1a4d651e5d15d5ada9
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 8d7a039f25339d91d77d5b6924674ea36a16c15b
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382616"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880809"
 ---
 # <a name="add-your-non-microsoft-accounts"></a>Microsoft dışı hesaplarınızı ekleyin
 
@@ -168,6 +168,9 @@ Facebook, Google, GitHub ve Amazon hesaplarınız için bu işlemi burada sunuyo
     Sayfa, bir QR kodu gösterecek şekilde değişir. Bu sayfayı kapatmayın.
 
 5. Microsoft Authenticator uygulamasını açın, sağ üstteki **Özelleştir ve denetim** simgesinden **Hesap Ekle** ' yi seçin ve ardından **diğer hesap (Google, Facebook vb.)** seçeneğini belirleyin.
+
+    >[!Note]
+    >Microsoft Authenticator uygulamasını ilk kez ayarlıyorsanız, uygulamanın kameranıza erişmesine izin verip vermeyeceğinizi (iOS) veya uygulamanın resim almasına ve video (Android) kaydetmesine izin verip vermeyeceğinizi soran bir istem alabilirsiniz. Bir sonraki adımda QR kodunun bir resmini almak için, kimlik doğrulayıcı uygulamasının kameranıza erişebilmesi için **Izin ver** ' i seçmeniz gerekir. Kameraya izin vermezseniz, kimlik doğrulayıcı uygulamasını ayarlamaya devam edebilirsiniz, ancak kod bilgilerini el ile eklemeniz gerekir. Kodu el ile ekleme hakkında daha fazla bilgi için bkz. [uygulamaya el ile hesap ekleme](user-help-auth-app-add-account-manual.md).
 
 6. Bilgisayarınızda kod **alma yöntemini seçin** sayfasında QR kodunu taramak için cihazınızın kamerasını kullanın.
 

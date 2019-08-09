@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 5c156e30f4fa0270082cd1108958c3472130a460
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 1401e378daa0c0a9258858840653899e76c9421c
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640824"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881783"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Ağ güvenlik grupları için akış günlüğüne giriş
 
@@ -57,14 +57,14 @@ Akış günlükleri aşağıdaki özellikleri içerir:
             * **akışlar** -akış koleksiyonu
                 * **Mac** -AKıŞıN toplandığı VM için NIC 'in MAC adresi
                 * **flowtuple** -akış kayıt düzeni için virgülle ayrılmış biçimde birden çok özellik içeren bir dize
-                    * **Zaman damgası** -bu değer, AKıŞıN UNIX dönem biçiminde gerçekleştiği zaman damgasıdır
+                    * **Zaman damgası** -bu değer, akışın UNIX dönem biçiminde gerçekleştiği zaman damgasıdır
                     * **Kaynak IP** -kaynak IP 'si
                     * **Hedef IP** -hedef IP
                     * **Kaynak bağlantı noktası** -kaynak bağlantı noktası
                     * **Hedef bağlantı noktası** -hedef bağlantı noktası
                     * **Protokol** -akışın protokolü. Geçerli değerler TCP için **T** ve UDP için **U**
-                    * **Trafik akışı** -trafik akışının yönü. Giden **ve çıkış** için geçerli değerler **ı** .
-                    * **Trafik kararı** -trafiğe izin verilip verilmediğini belirtir. Geçerli **değerler, izin** verilen ve **D** için için geçerlidir.
+                    * **Trafik akışı** -trafik akışının yönü. Giden ve çıkış için geçerli değerler **ı** .
+                    * **Trafik kararı** -trafiğe izin verilip verilmediğini belirtir. Geçerli değerler, izin verilen ve **D** için için geçerlidir.
                     * **Flow durumu-yalnızca sürüm 2** -akışın durumunu yakalar. Olası durumlar **B**: Bir akış oluşturulduğunda başlar. İstatistikler sağlanmamış. **C**: Devam eden bir akış için devam edin. İstatistikler 5 dakikalık aralıklarla sağlanır. **E**: Bir akış sonlandırıldığında bitiş. İstatistikler sağlanır.
                     * **Paketler-kaynak-yalnızca hedef sürüm 2** Son güncelleştirmeden bu yana kaynaktan hedefe gönderilen TCP veya UDP paketlerinin toplam sayısı.
                     * **Gönderilen bayt-kaynak-yalnızca hedef sürüm 2 ' ye** Son güncelleştirmeden bu yana kaynaktan hedefe gönderilen TCP veya UDP paket baytlarının toplam sayısıdır. Paket baytları paket üst bilgisini ve yükünü içerir.

@@ -1,5 +1,5 @@
 ---
-title: 'İşlem hatları: machine learning iş akışı en iyi duruma getirme'
+title: 'İşlem hatları: makine öğrenimi iş akışlarını iyileştirme'
 titleSuffix: Azure Machine Learning service
 description: Bu makalede, makine öğrenimi işlem hatları için Python ve işlem hatlarını kullanmanın avantajları Azure Machine Learning SDK ile birlikte derleme hakkında bilgi edinin. Machine learning (ML) işlem hatları oluşturmak, en iyi duruma getirmek ve makine öğrenimi iş akışları yönetmek için veri uzmanları tarafından kullanılır.
 services: machine-learning
@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: sanpil
 author: sanpil
-ms.date: 05/14/2019
+ms.date: 08/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: f49b384f6f943e8c6767a6133a835011bc1e6bac
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a9965dbbca939f566048312af921061a188ee50d
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059335"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884234"
 ---
 # <a name="build-reusable-ml-pipelines-in-azure-machine-learning-service"></a>Azure Machine Learning hizmetinde yeniden kullanılabilir ML işlem hatları oluşturun
 
-Bu makalede, makine öğrenimi işlem hatları Python için Azure Machine Learning SDK ve işlem hatlarını kullanmanın avantajları oluşturabileceğinizi öğrenin.
+Bu makalede, Python için Azure Machine Learning SDK ile oluşturabileceğiniz makine öğrenimi ardışık düzenleri ve işlem hatları kullanmanın avantajları hakkında bilgi edinin.
 
 ## <a name="what-are-machine-learning-pipelines"></a>Machine learning işlem hatlarını nelerdir?
 
@@ -28,62 +28,63 @@ Machine learning (ML) işlem hatları, veri bilimcileri, veri mühendisleri ve B
 + Normalizations ve dönüştürmeler gibi veri hazırlama
 + Modeli eğitimi
 + Modeli değerlendirme
-+ Dağıtım 
++ Dağıtım
 
-Aşağıdaki diyagramda bir örnek işlem hattı gösterilmektedir:
+Aşağıdaki diyagramda örnek bir işlem hattı işlemi gösterilmektedir:
 
-![Machine learning hizmetinde Azure Machine Learning işlem hatları](./media/concept-ml-pipelines/pipelines.png)
+![Azure Machine Learning hizmetinde makine öğrenimi ardışık düzenleri](./media/concept-ml-pipelines/pipeline-flow.png)
 
 <a name="compare"></a>
-### <a name="which-azure-pipeline-technology-should-i-use"></a>Hangi Azure işlem hattı teknoloji kullanmalıyım?
+### <a name="which-azure-pipeline-technology-should-i-use"></a>Hangi Azure ardışık düzen teknolojisini kullanmalıyım?
 
-Azure bulut birkaç diğer işlem hatlarında, her biri farklı bir amaç sağlar. Aşağıdaki tabloda, farklı işlem hatları ve ne için kullanıldıkları listelenmektedir:
+Azure bulutu, her biri farklı bir amaca sahip birkaç farklı işlem hattı sağlar. Aşağıdaki tabloda, farklı işlem hatları ve bunların kullanıldıkları özellikler listelenmiştir:
 
-| İşlem hattı | Ne yapar? | Kurallı kanal |
+| İşlem hattı | Ne yapar? | Kurallı Kanal |
 | ---- | ---- | ---- |
-| Azure Machine Learning işlem hatları | Yeniden kullanılabilir makine öğrenme makineniz senaryoları öğrenmek için bir şablon olarak kullanılabilecek iş akışlarını tanımlar. | Veri modeli -> |
-| [Azure Data Factory işlem hatları](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) | Grupları veri taşıma ve dönüştürme gibi aynı denetim etkinlikleri bir görevi gerçekleştirmek gerekli.  | Verileri veri -> |
-| [Azure işlem hatları](https://azure.microsoft.com/services/devops/pipelines/) | Sürekli tümleştirme ve teslim uygulamanızın herhangi bir platform/any bulut  | Kod -> uygulama/hizmet |
+| Azure Machine Learning işlem hatları | Makine öğrenimi senaryolarınız için şablon olarak kullanılabilen yeniden kullanılabilir makine öğrenimi iş akışlarını tanımlar. | Veri > modeli |
+| [Azure Data Factory işlem hatları](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) | Bir görevi gerçekleştirmek için gereken veri taşıma, dönüştürme ve denetim etkinliklerini gruplandırır.  | Veri > verileri |
+| [Azure işlem hatları](https://azure.microsoft.com/services/devops/pipelines/) | Uygulamanızın herhangi bir platforma/buluta yönelik sürekli tümleştirme ve teslim  | Kod-> uygulaması/hizmeti |
 
 ## <a name="why-build-pipelines-with-azure-machine-learning"></a>Neden Azure Machine Learning ile işlem hatları oluşturabilir?
 
-Kullanabileceğiniz [Python için Azure Machine Learning SDK](#the-python-sdk-for-pipelines) gönderin ve tek bir işlem hattı çalıştırmaları izlemek için farklı ML işlem hatları, de oluşturmak için.
+Aynı zamanda tek tek işlem hattı çalıştırmalarını göndermek ve izlemek için [Python için Azure Machine Learning SDK 'sını](#the-python-sdk-for-pipelines) kullanabilirsiniz.
 
-İşlem hattı ile akışınızı Basitlik, hız, taşınabilirlik ve yeniden iyileştirebilirsiniz. İşlem hattı Azure Machine Learning ile derleme yaparken, makine öğrenimi, uzmanlığınızı yerine altyapısı üzerinde odaklanabilirsiniz.
+İşlem hattı ile akışınızı Basitlik, hız, taşınabilirlik ve yeniden iyileştirebilirsiniz. Azure Machine Learning ile işlem hatları oluştururken, altyapı ve otomasyon yerine uzmanınıza ve makine öğrenmenize odaklanırsınız.
 
-Farklı adımları kullanarak, yalnızca ince ve test iş akışınızı, gereken adımlarını yeniden çalıştıracaktır mümkün kılar. İşlem hattındaki bir hesaplama biriminde bir adımdır. Yukarıdaki şemada gösterildiği gibi veri hazırlama görevini birçok adımı gerektirebilir. Aşağıdaki adımları içerir ancak normalleştirme, dönüştürme, doğrulama ve özellik kazandırma sayesinde için sınırlı değildir. Veri kaynakları ve Ara verilerin hangi kaydeder zamandan ve kaynaklardan işlem işlem hattının arasında yeniden kullanılır. 
+İşlem hatları, işlem hattının farklı hesaplama birimleri olan birden çok **adımdan**oluşturulur. Her adım bağımsız olarak çalıştırılabilir ve yalıtılmış işlem kaynakları kullanabilir. Bu, birden çok veri bilimcilerinin aynı işlem hattı üzerinde, yoğun bilgi işlem kaynakları olmadan aynı anda çalışmasına olanak tanır ve ayrıca her adım için farklı işlem türleri/boyutları kullanmayı kolaylaştırır.
 
-İşlem hattı tasarlandıktan sonra genellikle işlem hattının eğitim döngüsü daha ince ayar yoktur. Ne zaman bir işlem hattı, bir güncelleştirilmiş bir eğitim betiği gibi yeniden çalıştırmanız adımları çalışma atlar yeniden çalıştırın ve hangi değişmediğinden atlar. Aynı paradigma adımının yürütülmesi için kullanılan aynı komut için geçerlidir. 
+İşlem hattı tasarlandıktan sonra, işlem hattının eğitim döngüsü etrafında genellikle daha fazla ince ayar yapılır. Bir işlem hattını yeniden çalıştırdığınızda, çalıştırma, güncelleştirilmiş bir eğitim betiği gibi yeniden çalıştırılması gereken ayrı adımlara atlar ve nelerin değiştirilmediğini atlar. Aynı paradigma adımının yürütülmesi için kullanılan aynı komut için geçerlidir. Bu işlevsellik, temel alınan veriler değişmemişse veri alma ve dönüştürme gibi maliyetli ve zaman uyumlu adımların çalıştırılmasına engel olmaya yardımcı olur.
 
-Azure Machine Learning sayesinde, işlem hattındaki her adım için çeşitli araç setleri ve PyTorch veya TensorFlow, gibi çerçeveleri kullanabilirsiniz. Çeşitli arasında Azure koordinatları [hedefleri işlem](concept-azure-machine-learning-architecture.md) aşağı akış işlem hedefleriyle Ara verilerinizi kolayca paylaşılabilir böylece, kullanın. 
+Azure Machine Learning, işlem hattınızdaki her adım için PyTorch veya TensorFlow gibi çeşitli araç setleri ve çerçeveler kullanabilirsiniz. Ara verilerinizin aşağı akış işlem hedefleri ile kolayca paylaşılabilmesi için, kullandığınız çeşitli [işlem hedefleri](concept-azure-machine-learning-architecture.md) arasında Azure koordinatları.
 
-Yapabilecekleriniz [Ölçümleriyle için işlem hattı denemelerinizi](https://docs.microsoft.com/azure/machine-learning/service/how-to-track-experiments) doğrudan Azure portalında. 
+Yapabilecekleriniz [Ölçümleriyle için işlem hattı denemelerinizi](https://docs.microsoft.com/azure/machine-learning/service/how-to-track-experiments) doğrudan Azure portalında. İşlem hattı yayımlandıktan sonra, herhangi bir platform veya yığından işlem hattını yeniden çalıştırmanıza olanak sağlayan bir REST uç noktası yapılandırabilirsiniz.
 
 ## <a name="key-advantages"></a>Başlıca avantajları
 
-Makine öğrenimi iş akışları için işlem hatları oluşturmaya önemli avantajlar şunlardır:
+Machine Learning iş akışlarınız için işlem hatlarını kullanmanın temel avantajları şunlardır:
 
 |Önemli bir avantajı|Açıklama|
 |:-------:|-----------|
-|**Katılımsız&nbsp;çalıştırır**|Paralel veya sıralı güvenilir ve katılımsız bir şekilde çalışması için birkaç adım zamanlayın. Çünkü veri hazırlığı ve model için son günler veya haftalar, işlem hattınızı çalışırken diğer görevlere artık odaklanabilirsiniz. |
-|**Karışık ve çok çeşitli bilgi işlem**|Heterojen ve ölçeklenebilir hesaplar ve depolamayı arasında güvenilir bir şekilde koordine edilen birden çok işlem hatlarını kullanın. HDInsight, GPU veri bilimi Vm'lerini ve Databricks gibi farklı işlem hedeflerde tek bir işlem hattı adımları çalıştırabilirsiniz. Bu, kullanılabilir işlem seçenekleri verimli bir şekilde kullanılmasını sağlar.|
-|**Yeniden kullanılırlığı**|Yeniden eğitme ve toplu Puanlama gibi belirli senaryoları için işlem hatları templatize. Basit REST çağrılarını aracılığıyla dış sistemlerden bunları tetikler.|
-|**İzleme ve sürüm oluşturma**|Yineleme verileri ve sonuç el ile izlemek yerine yolları SDK işlem hatları açıkça adlandırmak için kullanın ve sürüm verilerinizi kaynakları, giriş ve çıkışları. Ayrıca, betikleri ve verileri üretkenliğinizi artırmak için ayrı olarak yönetebilir.|
+|**Katılımsız&nbsp;çalıştırır**|Adımları güvenilir ve katılımsız bir şekilde paralel veya sırayla çalışacak şekilde zamanlayın. Veri hazırlama ve modelleme son günler veya haftadır ve işlem hatları, işlem çalışırken diğer görevlere odaklanabilmenize olanak tanır. |
+|**Heterojen işlem**|Heterojen ve ölçeklenebilir işlem kaynakları ve depolama konumları genelinde güvenilir bir şekilde koordine edilen birden çok işlem hattı kullanın. HDInsight, GPU veri bilimi VM 'Leri ve Databricks gibi farklı işlem hedeflerinde tek tek ardışık düzen adımlarını çalıştırın. Bu, kullanılabilir işlem seçeneklerinin verimli bir şekilde kullanılmasını sağlar.|
+|**Yeniden kullanılırlığı**|Yeniden eğitme ve Batch Puanlama gibi belirli senaryolar için ardışık düzen şablonları oluşturun. Dış sistemlerden yayınlanan işlem hatlarını basit REST çağrıları aracılığıyla tetikleyin.|
+|**İzleme ve sürüm oluşturma**|Yineleme sırasında verileri ve sonuç yollarını el ile izlemek yerine, veri kaynaklarınızı, girdilerlerinizi ve çıkışları açıkça adlandırmak ve sürümüne eklemek için işlem hatları SDK 'sını kullanın. Ayrıca, daha fazla üretkenlik için betikleri ve verileri ayrı olarak yönetebilirsiniz.|
+|**İş**|İşlem hatları, veri bilimcilerinin makine öğrenimi tasarım sürecinin tüm alanlarında işbirliği yapmasına olanak sağlarken işlem hattı adımlarında eşzamanlı olarak çalışabiliyor.|
 
 ## <a name="the-python-sdk-for-pipelines"></a>İşlem hatları için Python SDK'sı
 
-ML işlem hatlarınızı oluşturmak için Python kullanın. Azure Machine Learning SDK'sı, sıralama ve hiçbir veri bağımlılık mevcut olduğunda işlem hatlarınızı adımları paralelleştirmek için zorunlu yapıları sunar. İle Jupyter not defterlerinde veya başka bir tercih ettiğiniz tümleşik geliştirme ortamında etkileşim kurabilir. 
+ML işlem hatlarınızı oluşturmak için Python kullanın. Azure Machine Learning SDK'sı, sıralama ve hiçbir veri bağımlılık mevcut olduğunda işlem hatlarınızı adımları paralelleştirmek için zorunlu yapıları sunar. Jupyıter not defterlerinde veya başka bir tercih edilen IDE 'de onunla etkileşime geçebilirsiniz.
 
-Bildirim temelli veriler bağımlılıkları kullanarak, görevlerinizi en iyi duruma getirebilirsiniz. Veri aktarımı ve modeli yayımlama gibi ortak görevler için önceden oluşturulmuş modüllerinin bir çerçeve SDK'sı içerir. İşlem hatları üzerinde yeniden kullanılabilir özel adımları uygulayarak kendi kurallarınız model için framework genişletebilirsiniz. Ayrıca doğrudan SDK'dan işlem hedefleri ve depolama kaynaklarını yönetebilirsiniz.
+Bildirim temelli veriler bağımlılıkları kullanarak, görevlerinizi en iyi duruma getirebilirsiniz. SDK, veri aktarımı ve model yayımlama gibi ortak görevler için önceden oluşturulmuş modüller çerçevesini içerir. İşlem hatları arasında yeniden kullanılabilir olan özel adımları uygulayarak kendi kurallarınızı modellemek için çerçeveyi genişletebilirsiniz. İşlem hedeflerini ve depolama kaynaklarını doğrudan SDK 'dan da yönetebilirsiniz.
 
-İşlem hatları şablon olarak kaydedin ve toplu Puanlama veya yeniden eğitme işleri zamanlamak için de bunları bir REST uç noktasına dağıtın.
+İşlem hatlarını şablon olarak kaydedebilir ve toplu Puanlama veya yeniden eğitim işleri zamanlayabilmeniz için bunları bir REST uç noktasına dağıtabilirsiniz.
 
-Kendi yapı öğrenmek için [işlem hatları için Python SDK başvuru belgeleri](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) ve sonraki bölümde Not.
+Kendinizinkini nasıl derulacağını görmek için, sonraki bölümde işlem hatları ve Not defteri [Için Python SDK başvurusu belgelerine](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) bakın.
 
 ## <a name="example-notebooks"></a>Örnek Not Defterleri
- 
+
 Azure Machine Learning işlem hatlarında aşağıdaki not defterlerini göstermektedir: [how-to-use-azureml/machine-learning-pipelines](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines).
- 
+
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar

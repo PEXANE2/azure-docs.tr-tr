@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 81e17e1e450e45e4c163ca8231a47deeb8b9ed2c
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 21b7c4e17d976a0a4099a926823f51eab1dba98d
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68734695"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879069"
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Azure Veri Kataloğu geliştirici kavramları
 Microsoft **Azure Veri Kataloğu** , veri kaynağı bulma ve veri kaynağı meta verilerini alma için yetenekler sağlayan, tam olarak yönetilen bir bulut hizmetidir. Geliştiriciler hizmeti REST API 'Leri aracılığıyla kullanabilir. Hizmette uygulanan kavramların anlaşılmasına, geliştiricilerin **Azure Veri Kataloğu**ile başarıyla tümleştirileceği önemli bir öneme sahiptir.
@@ -19,7 +19,7 @@ Microsoft **Azure Veri Kataloğu** , veri kaynağı bulma ve veri kaynağı meta
 ## <a name="key-concepts"></a>Önemli kavramlar
 **Azure Veri Kataloğu** kavramsal modeli, dört temel kavramı temel alır: **Katalog**, **Kullanıcılar**, **varlıklar**ve **ek açıklamalar**.
 
-![prototip][1]
+![Veri Kataloğu kavramları](./media/data-catalog-developer-concepts/concept2.png)
 
 *Şekil 1-Azure Veri Kataloğu Basitleştirilmiş kavramsal model*
 
@@ -286,7 +286,7 @@ Varsayılan olarak, tüm kimliği doğrulanmış kullanıcılar, görünürlük 
 > 
 
 **Gövde**
-
+```json
     {
         "roles": [
             {
@@ -299,9 +299,11 @@ Varsayılan olarak, tüm kimliği doğrulanmış kullanıcılar, görünürlük 
             }
         ]
     }
+```
 
   **Mevcut bir kök öğe için sahipleri ata ve görünürlüğü kısıtla**: Https 'yi yerleştir\/:/api.azuredatacatalog.com/catalogs/default/views/Tables/042297b0...1be45ecd462a?api-Version=2016-03-30
 
+```json
     {
         "roles": [
             {
@@ -343,11 +345,8 @@ Varsayılan olarak, tüm kimliği doğrulanmış kullanıcılar, görünürlük 
             }
         ]
     }
+```
 
 > [!NOTE]
 > Bu, gövdesinde bir öğe yükü belirtmek için gerekli değildir: PUT, yalnızca rolleri ve/veya izinleri güncelleştirmek için kullanılabilir.
 > 
-> 
-
-<!--Image references-->
-[1]: ./media/data-catalog-developer-concepts/concept2.png

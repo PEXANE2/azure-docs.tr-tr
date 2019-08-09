@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 46e3780c7fc6e6a2481e774b89bfb69510865db3
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 5c0bc97e5a5b362ea78f82ea99bb967a9607093a
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68734623"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882501"
 ---
 # <a name="document-data-sources"></a>Veri kaynaklarını belgelendirme
 ## <a name="introduction"></a>Giriş
@@ -23,7 +23,7 @@ Bir veri kaynağı **Azure Veri Kataloğu 'na**kaydedildiğinde, meta verileri h
 
 Etiketler ve açıklamalar basit ek açıklamalar için harika. Bununla birlikte, veri tüketicilerinin kullanımını ve veri kaynağı için iş senaryolarını daha iyi anlamasına yardımcı olmak için uzman, ayrıntılı belgeler sağlayabilir. Bir veri kaynağını belgelemek kolaydır. Bir veri varlığı veya kapsayıcısı seçip **Belgeler**' i seçin.
 
-![](media/data-catalog-documentation/data-catalog-documentation.png)
+![Veri kataloğunda belge sekmesi](media/data-catalog-documentation/data-catalog-documentation.png)
 
 ## <a name="documenting-data-assets"></a>Veri varlıklarını belgeleme
 **Azure Veri Kataloğu** belgelerinin avantajı, veri varlıklarınızın tamamını bir anlatım oluşturmak Için veri kataloğunuzu bir içerik deposu olarak kullanmanıza olanak tanır. Kapsayıcıları ve tabloları açıklayan ayrıntılı içeriği inceleyebilirsiniz. SharePoint veya dosya paylaşma gibi başka bir içerik deposunda içeriğiniz zaten varsa, bu var olan içeriğe başvurmak için varlık belgeleri bağlantılarına ekleyebilirsiniz. Bu özellik, mevcut belgelerinizi daha fazla bulunabilir hale getirir.
@@ -31,9 +31,8 @@ Etiketler ve açıklamalar basit ek açıklamalar için harika. Bununla birlikte
 > [!NOTE]
 > Belgeler arama dizinine dahil değildir.
 >
->
 
-![](media/data-catalog-documentation/data-catalog-documentation2.png)
+![Belge sekmesi ve Web bağlantısına köprü](media/data-catalog-documentation/data-catalog-documentation2.png)
 
 Belge düzeyi, bir veri varlığı kapsayıcısının özelliklerini ve değerini, bir kapsayıcı içindeki tablo şemasının ayrıntılı açıklamasıyla açıklayarak değişebilir. Sağlanan belgelerin düzeyi iş gereksinimlerinize göre yönlendirilmelidir. Ancak genel olarak, veri varlıklarının belgelenme ve diğer dezavantajları aşağıda verilmiştir:
 
