@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 182b9da402e633033411f85eb59b31f76749f3cd
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 776a73f8a20a3f5ad4e97a08ff3871e805a61eb3
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68666246"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879129"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Bulut tabanlı bir Azure Multi-Factor Authentication dağıtımını planlama
 
@@ -177,9 +177,6 @@ Kullanıcılarınız Kullanıcı başına etkin ve zorunlu Azure Multi-Factor Au
 # Disable MFA for all users, keeping their MFA methods intact
 Get-MsolUser -All | Disable-MFA -KeepMethods
 
-# Enforce MFA for all users
-Get-MsolUser -All | Set-MfaState -State Enforced
-
 # Wrapper to disable MFA with the option to keep the MFA methods (to avoid having to proof-up again later)
 function Disable-MFA {
 
@@ -300,7 +297,7 @@ Dağıtılmış ve zaten kullanımda olan bir NPS örneğiniz varsa, [mevcut NPS
 
 MFA ile kayıtlı olmayan kullanıcılar kimlik doğrulamaya çalıştığında ne olacağını seçin. Özellik davranışını denetlemek için `REQUIRE_USER_MATCH` kayıt defteri yolundaki `HKLM\Software\Microsoft\AzureMFA` kayıt defteri ayarını kullanın. Bu ayarın tek bir yapılandırma seçeneği vardır.
 
-| Anahtar | Value | Varsayılan |
+| Anahtar | Değer | Varsayılan |
 | --- | --- | --- |
 | `REQUIRE_USER_MATCH` | DOĞRU/YANLIŞ | Ayarlanmadı (TRUE değerine denktir) |
 

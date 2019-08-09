@@ -14,7 +14,6 @@
     - name: Apache Spark kümesi oluşturma - Azure CLI
       href: apache-spark-create-cluster-cli.md
     - name: Apache Spark kümesi oluşturma - Şablon
-      displayName: 'resource manager template, arm template, resource manager group'
       href: apache-spark-jupyter-spark-sql.md
 - name: Öğreticiler
   items:
@@ -50,30 +49,6 @@
       href: ../hdinsight-version-release.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
     - name: Ambari ve Azure İzleyici günlükleriyle küme kullanılabilirliğini izleme
       href: ../hdinsight-cluster-availability.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
-    - name: Sorun giderme
-      items:
-        - name: OutOfMemoryError özel durumu
-          href: ./apache-spark-troubleshoot-outofmemory.md
-        - name: Apache Spark iş başarısızlıkları - NoClassDefFoundError
-          href: ./apache-spark-troubleshoot-job-fails-noclassdeffounderror.md
-        - name: Apache Spark iş başarısızlıkları - InvalidClassException
-          href: ./apache-spark-troubleshoot-job-fails-invalidclassexception.md
-        - name: Yavaş Apache Spark işleri - listStatus
-          href: ./apache-spark-troubleshoot-job-slowness-liststatus.md
-        - name: Yavaş Apache Spark işleri - depolama kapsayıcısı
-          href: ./apache-spark-troubleshoot-job-slowness-container.md
-        - name: IllegalArgumentException özel durumu
-          href: ./apache-spark-troubleshoot-illegalargumentexception.md
-        - name: Apache Spark Akış uygulaması duraklıyor
-          href: ./apache-spark-troubleshoot-application-stops.md
-        - name: RpcTimeoutException özel durumu
-          href: ./apache-spark-troubleshoot-rpctimeoutexception.md
-        - name: Çıkış Noktaları Arası API’sini engelleme
-          href: ./apache-spark-troubleshoot-blocking-cross-origin.md
-        - name: Kryo serileştirme işlemi başarısız oldu
-          href: ./apache-spark-troubleshoot-sparkexception-kryo-serialization-failed.md
-        - name: Apache Spark olay günlüğü - RequestBodyTooLarge
-          href: ./apache-spark-troubleshoot-event-log-requestbodytoolarge.md
 - name: Nasıl yapılır
   items:
     - name: Küme depolama alanını kullanma
@@ -226,7 +201,6 @@
                 - name: Azure portalı kullanma
                   href: ../hdinsight-hadoop-create-linux-clusters-portal.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
                 - name: Azure Resource Manager şablonlarını kullanma
-                  displayName: 'resource manager template, arm template, resource manager group'
                   href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
                 - name: .NET için SDK’yı kullanma
                   href: 'https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet#create-a-cluster'
@@ -329,6 +303,30 @@
                   href: ../hdinsight-hadoop-hive-out-of-memory-error-oom.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
                 - name: Apache Hive sorgularını iyileştirme
                   href: ../hdinsight-hadoop-optimize-hive-query.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
+    - name: Sorun giderme
+      items:
+        - name: OutOfMemoryError özel durumu
+          href: ./apache-spark-troubleshoot-outofmemory.md
+        - name: Apache Spark iş başarısızlıkları - NoClassDefFoundError
+          href: ./apache-spark-troubleshoot-job-fails-noclassdeffounderror.md
+        - name: Apache Spark iş başarısızlıkları - InvalidClassException
+          href: ./apache-spark-troubleshoot-job-fails-invalidclassexception.md
+        - name: Yavaş Apache Spark işleri - listStatus
+          href: ./apache-spark-troubleshoot-job-slowness-liststatus.md
+        - name: Yavaş Apache Spark işleri - depolama kapsayıcısı
+          href: ./apache-spark-troubleshoot-job-slowness-container.md
+        - name: IllegalArgumentException özel durumu
+          href: ./apache-spark-troubleshoot-illegalargumentexception.md
+        - name: Apache Spark Akış uygulaması duraklıyor
+          href: ./apache-spark-troubleshoot-application-stops.md
+        - name: RpcTimeoutException özel durumu
+          href: ./apache-spark-troubleshoot-rpctimeoutexception.md
+        - name: Çıkış Noktaları Arası API’sini engelleme
+          href: ./apache-spark-troubleshoot-blocking-cross-origin.md
+        - name: Kryo serileştirme işlemi başarısız oldu
+          href: ./apache-spark-troubleshoot-sparkexception-kryo-serialization-failed.md
+        - name: Apache Spark olay günlüğü - RequestBodyTooLarge
+          href: ./apache-spark-troubleshoot-event-log-requestbodytoolarge.md
 - name: Başvuru
   items:
     - name: Kod örnekleri
@@ -350,7 +348,6 @@
     - name: REST API (Apache Spark)
       href: /rest/api/hdinsightspark/
     - name: Resource Manager şablonu
-      displayName: 'resource manager template, arm template, resource manager group'
       href: /azure/templates/microsoft.hdinsight/allversions
 - name: Kaynaklar
   items:

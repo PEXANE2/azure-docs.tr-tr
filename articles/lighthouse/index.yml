@@ -53,6 +53,8 @@ sections:
         style: cards
         className: cardsD
         items:
+          - title: Komut Satırı
+            html: '<p><a href="https://docs.microsoft.com/cli/azure/managedservices?view=azure-cli-latest">Azure CLI</a></p><p><a href="https://docs.microsoft.com/powershell/module/az.managedservices/?view=azps-2.4.0#managed_services">Azure PowerShell</a></p>'
           - title: Diller
             html: '<p><a href="/dotnet/api/Microsoft.Azure.Management.ManagedServices">.NET için Azure SDK</a></p><p><a href="https://www.nuget.org/packages/Microsoft.Azure.Management.ManagedServices/">.NET için Azure SDK (NuGet)</a></p><p><a href="https://docs.microsoft.com/python/api/azure-mgmt-managedservices">Python için Azure SDK</a></p><p><a href="https://pypi.org/project/azure-mgmt-managedservices/">Python için Azure SDK (PyPi)</a></p>'
           - title: REST

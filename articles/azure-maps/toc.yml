@@ -133,12 +133,14 @@
       items:
         - name: Android harita denetimini kullanmaya başlama
           href: how-to-use-android-map-control-library.md
+        - name: Haritanın stilini değiştirme
+          href: set-android-map-styles.md
         - name: Sembol katmanı ekleme
           href: how-to-add-symbol-to-android-map.md
         - name: Şekil ekleme
           href: how-to-add-shapes-to-android-map.md
-        - name: Haritanın stilini değiştirme
-          href: set-android-map-styles.md
+        - name: Kutucuk katmanı ekleme
+          href: how-to-add-tile-layer-android-map.md
 - name: Başvuru
   items:
     - name: API ve parametre uzantıları

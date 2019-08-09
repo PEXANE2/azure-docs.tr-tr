@@ -16,12 +16,12 @@ ms.date: 10/16/2018
 ms.author: glenga
 ms.reviewer: msangapu;david.ebbo;suwatch;pbatum;naren.soni
 ms.custom: seodec18
-ms.openlocfilehash: 47a068ac6a7941c8ce71cf5c6745d2958c75fe74
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
-ms.translationtype: HT
+ms.openlocfilehash: 55d040e96b92f73a632fd415220f9cf135335736
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736589"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851002"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Azure App Service Web Işleri ile arka plan görevleri çalıştırma
 
@@ -90,7 +90,7 @@ when making changes in one don't forget the other two.
    | **Türüyle** | Sürekli | [WebJob türleri](#webjob-types) Bu makalenin önceki kısımlarında açıklanmıştır. |
    | **Ölçeklendirme** | Çoklu örnek | Yalnızca sürekli WebJobs için kullanılabilir. Programın veya betiğin tüm örneklerde mı yoksa yalnızca bir örnek üzerinde mi çalışacağını belirler. Birden çok örnek üzerinde çalıştırma seçeneği ücretsiz veya paylaşılan [fiyatlandırma katmanlarına](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)uygulanmaz. | 
 
-4. **Tamam** düğmesine tıklayın.
+4.           **Tamam**'ı tıklatın.
 
    Yeni WebJob, **WebJobs** sayfasında görünür.
 
@@ -167,15 +167,15 @@ when making changes in one don't forget the other two.
    | **Tetikleyiciler** | Zamanlanmış | Zamanlamanın güvenilir bir şekilde çalışması için Always On özelliğini etkinleştirin. Her zaman açık, yalnızca temel, standart ve Premium fiyatlandırma katmanlarında kullanılabilir.|
    | **CRON Ifadesi** | 0 0/20 * * * * | [Cron ifadeleri](#cron-expressions) aşağıdaki bölümde açıklanmıştır. |
 
-4. **Tamam** düğmesine tıklayın.
+4. **Tamam**'ı tıklatın.
 
    Yeni WebJob, **WebJobs** sayfasında görünür.
 
    ![Web Işleri listesi](./media/web-sites-create-web-jobs/listallwebjobs.png)
 
-## <a name="cron-expressions"></a>CRON ifadeleri
+## <a name="ncrontab-expressions"></a>NCRONTAB ifadeleri
 
-Portala bir [cron ifadesi](../azure-functions/functions-bindings-timer.md#ncrontab-expressions) girebilir veya aşağıdaki örnekte olduğu gibi WebJob `settings.job` *. zip* dosyanızın köküne bir dosya dahil edebilirsiniz:
+Portala bir [ncronrampaifadesi](../azure-functions/functions-bindings-timer.md#ncrontab-expressions) girebilir veya aşağıdaki örnekte olduğu gibi WebJob `settings.job` *. zip* dosyanızın köküne bir dosya ekleyebilirsiniz:
 
 ```json
 {

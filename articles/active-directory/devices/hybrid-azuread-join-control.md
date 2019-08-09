@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5d8cd7799dd23dabc2cbb423e82b8c7203b7bed
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
-ms.translationtype: HT
+ms.openlocfilehash: c897d52c10efdb8824f676d7640dcc7275915a9e
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834637"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851786"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>Hibrit Azure AD’ye katılıma yönelik denetimli doğrulama
 
@@ -72,7 +72,7 @@ Cihazlarınızın kayıt defterinde bir SCP girişi yapılandırmak için bir ka
       1. Anahtar yolu: **SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD**
       1. Değer adı: **TenantName**
       1. Değer türü: **REG_SZ**
-      1. Değer verisi: AD FS gibi federe ortam kullanıyorsanız, doğrulanmış **etki alanı adınız** . Yönetilen ortam kullanıyorsanız, `contoso.onmicrosoft.com` * * etki alanı adı "" veya onmicrosoft.com etki alanı adınızı doğruladınız.
+      1. Değer verisi: AD FS gibi federe ortam kullanıyorsanız, doğrulanmış **etki alanı adınız** . Yönetilen ortam kullanıyorsanız, `contoso.onmicrosoft.com` doğrulanmış **etki alanı adınız** veya onmicrosoft.com etki alanı adınız
    1.           **Tamam**’a tıklayın.
 1. Yeni oluşturulan GPO için Düzenleyiciyi Kapat
 1. Yeni oluşturulan GPO 'YU, denetimli dağıtım popülasyona ait olan, etki alanına katılmış bilgisayarları içeren istenen OU 'ya bağlayın

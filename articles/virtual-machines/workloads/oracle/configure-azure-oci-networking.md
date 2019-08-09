@@ -14,19 +14,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2019
 ms.author: rogirdh
-ms.openlocfilehash: 3b901f7aba40f3548a259d36b83fedca0ff2a5c2
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 18dbc60c1a29fbc26f4bbc73faa58aeafc66c32f
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68781284"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880108"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Azure ile Oracle bulut altyapısı arasında doğrudan bir iç bağlantı kurma  
 
 [Tümleşik bir çok kiracılı deneyim](oracle-oci-overview.md) (Önizleme) oluşturmak için Microsoft ve Oracle, [ExpressRoute](../../../expressroute/expressroute-introduction.md) ve [FastConnect](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm)aracılığıyla Azure ile Oracle bulut altyapısı (OCI) arasında doğrudan bağlantı sağlar. ExpressRoute ve FastConnect bağlantısı aracılığıyla müşteriler, iki bulut arasında düşük gecikme süresi, yüksek aktarım hızı, özel doğrudan bağlantı ile karşılaşabilir.
 
 > [!IMPORTANT]
-> Microsoft Azure ile OCı arasındaki bağlantı önizleme aşamasındadır. Azure ile OCı arasında düşük gecikme süresi bağlantısını etkinleştirmek için, bu özellik için önce Azure aboneliğinin beyaz listelenmesi gerekir.
+> Microsoft Azure ile OCı arasındaki bağlantı önizleme aşamasındadır. Azure ile OCı arasında düşük gecikme süresi bağlantısını etkinleştirmek için, bu özellik için önce Azure aboneliğinin beyaz listelenmesi gerekir. Abonelik Kimliğinizle bir e-posta oracleconnect@microsoft.com göndererek önizlemeye kaydolmalısınız. Aboneliğiniz kaydedildiğinde siz de bir e-posta alırsınız. Onay e-postası alınana kadar özelliği kullanamazsınız. Ayrıca, bu önizleme için etkinleştirilecek Microsoft temsilcinize de başvurabilirsiniz. Bu önizleme, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için kullanılmamalıdır. Belirli özellikler desteklenmiyor olabilir, kısıtlı yeteneklere sahip olabilir veya tüm Azure konumlarında mevcut olmayabilir. Ayrıntılar için Microsoft Azure önizlemeleri için [ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) bölümüne bakın.
 
 Aşağıdaki görüntüde, iç bağlantı için üst düzey bir genel bakış gösterilmektedir:
 
@@ -38,7 +38,7 @@ Aşağıdaki görüntüde, iç bağlantı için üst düzey bir genel bakış g�
 
 * Yalnızca bir Azure ExpressRoute eşleme konumunun, OCı FastConnect ile aynı eşleme konumuna eşit olduğu durumlarda bağlantı kurulabilir. Bkz. [Önizleme sınırlamaları](oracle-oci-overview.md#preview-limitations).
 
-* Azure aboneliğiniz bu önizleme özelliği için beyaz listeye eklenmelidir. Aboneliğinizde bu özelliği etkinleştirmek için Microsoft temsilcinize başvurun.
+* Azure aboneliğiniz bu önizleme özelliği için beyaz listeye eklenmelidir.
 
 ## <a name="configure-direct-connectivity-between-expressroute-and-fastconnect"></a>ExpressRoute ve FastConnect arasında doğrudan bağlantı yapılandırma
 

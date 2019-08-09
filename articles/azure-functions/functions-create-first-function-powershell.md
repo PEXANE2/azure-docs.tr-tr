@@ -144,5 +144,5 @@ Basit bir HTTP ile tetiklenen işlevi ile bir PowerShell işlev uygulaması olu�
 
 [Azure portal]: https://portal.azure.com
 [Azure Functions Core Tools]: functions-run-local.md
-[Visual Studio Code için Azure İşlevleri uzantısı]: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions
+[Visual Studio Code için Azure işlevleri uzantısı]: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions
 ['Wait-Hata Ayıklayıcı']: /powershell/module/microsoft.powershell.utility/wait-debugger?view=powershell-6

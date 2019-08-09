@@ -7,12 +7,12 @@ ms.service: lighthouse
 ms.topic: sample
 ms.date: 07/11/2019
 ms.author: jenhayes
-ms.openlocfilehash: c0266bd3c88dccc8b0413e617bb4a5fcadbf3720
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: b363fcdb752522db07642e625837e03429244f47
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67971343"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884302"
 ---
 # <a name="azure-lighthouse-samples"></a>Azure Lighthouse örnekleri
 
@@ -27,7 +27,7 @@ Aşağıdaki tablo, Azure Lighthouse için önemli Azure Resource Manager şablo
 | [deploy-azure-mgmt-services](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/deploy-azure-mgmt-services) | Azure yönetim hizmetlerini oluşturur, bunları birbirine bağlar ve ek çözümler dağıtır. |
 | [deploy-azure-security-center](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/deploy-azure-security-center) | Hedeflenen Azure aboneliğinde Azure Güvenlik Merkezi’ni etkinleştirir ve yapılandırır. |
 | [marketplace-delegated-resource-management](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/marketplace-delegated-resource-management) | Market’te yayımlanan yönetilen hizmet teklifine göre bir müşterinin aboneliğini, Azure tarafından atanan temsilcinin kaynak yönetimine ekler. |
-| [rg-delegated-resource-management](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management) | Bir veya daha fazla müşterinin kaynak grubunu Azure tarafından atanan temsilcinin kaynak yönetimine ekler. |
+| [rg-delegated-resource-management](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management) | Bir veya daha fazla müşterinin kaynak grubunu Azure tarafından atanan temsilcinin kaynak yönetimine ekler. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

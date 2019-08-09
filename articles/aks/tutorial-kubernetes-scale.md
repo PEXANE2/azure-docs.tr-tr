@@ -70,7 +70,7 @@ azure-vote-front-3309479140-qphz8   1/1       Running   0          3m
 
 ## <a name="autoscale-pods"></a>Pod’ları otomatik ölçeklendirme
 
-Kubernetes destekler [yatay pod otomatik ölçeklendirmeyi][kubernetes-hpa] to adjust the number of pods in a deployment depending on CPU utilization or other select metrics. The [Metrics Server][metrics-server] Kubernetes için kaynak kullanımını sağlamak için kullanılır ve AKS küme 1.10 ve üzeri sürümleri otomatik olarak dağıtılır. AKS kümenizi sürümünü görmek için [az aks show][az aks show] aşağıdaki örnekte gösterildiği gibi komut:
+Kubernetes destekler [yatay pod otomatik ölçeklendirmeyi][kubernetes-hpa] to adjust the number of pods in a deployment depending on CPU utilization or other select metrics. The [Metrics Server][metrics-server] Kubernetes için kaynak kullanımını sağlamak için kullanılır ve AKS küme 1.10 ve üzeri sürümleri otomatik olarak dağıtılır. AKS kümenizi sürümünü görmek için [az aks show] [az aks show] aşağıdaki örnekte gösterildiği gibi komut:
 
 ```azurecli
 az aks show --resource-group myResourceGroup --name myAKSCluster --query kubernetesVersion

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 4/3/2019
 ms.author: dacurwin
-ms.openlocfilehash: 71a33b7263cd7a3b2f5e39ce9d24df11a7d6283c
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 5c6e3ef74ea2d77ba03526e05145fe6faa61c050
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688612"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882052"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Şifrelenmiş Azure VM 'yi yedekleme ve geri yükleme
 
@@ -140,7 +140,7 @@ Azure VM, anahtar ve gizli dizileri, ilişkili VM 'lerle birlikte yedeklemek iç
 
     ![Azure Backup seçimi](./media/backup-azure-vms-encryption/select-backup-template.png)
 
-6. **Tamam**'ı tıklatın. **Yedekleme yönetimi hizmeti** **erişim ilkelerine**eklenir.
+6.           **Tamam**'ı tıklatın. **Yedekleme yönetimi hizmeti** **erişim ilkelerine**eklenir.
 
     ![Erişim ilkeleri](./media/backup-azure-vms-encryption/backup-service-access-policy.png)
 
@@ -154,10 +154,11 @@ Azure VM, anahtar ve gizli dizileri, ilişkili VM 'lerle birlikte yedeklemek iç
 2. Ardından aşağıdakilerden birini yapın:
     - VM ayarlarını özelleştirmek için geri yükleme işlemi sırasında oluşturulan şablonu kullanın ve VM dağıtımını tetikleyin. [Daha fazla bilgi edinin](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm).
     - PowerShell kullanarak geri yüklenen disklerden yeni bir VM oluşturun. [Daha fazla bilgi edinin](backup-azure-vms-automation.md#create-a-vm-from-restored-disks).
+    - Linux VM 'Ler için, veri disklerinin açık ve bağlanmış olması için ADE uzantısını sıfırlayın. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Herhangi bir sorunla karşılaşırsanız, gözden geçirin
+Herhangi bir sorunla karşılaşırsanız, şu makaleleri gözden geçirin:
 
 - Şifrelenmiş Azure sanal makinelerini yedekleme ve geri yükleme sırasında [sık karşılaşılan hatalar](backup-azure-vms-troubleshoot.md) .
 - [Azure VM Aracısı/yedekleme uzantısı](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md) sorunları.
