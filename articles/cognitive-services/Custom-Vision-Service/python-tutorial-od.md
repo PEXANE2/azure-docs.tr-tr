@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 07/03/2019
+ms.date: 08/08/2019
 ms.author: areddish
-ms.openlocfilehash: 2994d696f463c32ed05fd42b694f29fa2035b9d2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e5de456cb4f5779cbef58ffaf0ccb89e9e9134e0
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564162"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946109"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-python-sdk"></a>Hızlı Başlangıç: Python SDK Özel Görüntü İşleme bir nesne algılama projesi oluşturma
 
@@ -46,7 +46,7 @@ Tercih ettiğiniz proje dizininde *sample.py* adlı yeni bir dosya oluşturun.
 
 ### <a name="create-the-custom-vision-service-project"></a>Özel Görüntü İşleme hizmeti projesi oluşturma
 
-Yeni bir Özel Görüntü İşleme hizmeti projesi oluşturmak için betiğinize aşağıdaki kodu ekleyin. Abonelik anahtarlarınızı uygun tanımlara ekleyin. Nesne algılama ve görüntü sınıflandırma projesi oluşturma arasındaki fark, **create_project** çağrısında belirtilen etki alanıdır.
+Yeni bir Özel Görüntü İşleme hizmeti projesi oluşturmak için betiğinize aşağıdaki kodu ekleyin. Abonelik anahtarlarınızı uygun tanımlara ekleyin. Projenizi oluştururken diğer seçenekleri belirtmek için [create_project](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.custom_vision_training_client.customvisiontrainingclient?view=azure-python#create-project-name--description-none--domain-id-none--classification-type-none--target-export-platforms-none--custom-headers-none--raw-false----operation-config- ) yöntemine bakın ( [bir algılayıcı derleme](get-started-build-detector.md) Web portalı kılavuzunda açıklanmıştır).  
 
 ```Python
 from azure.cognitiveservices.vision.customvision.training import CustomVisionTrainingClient
@@ -135,7 +135,7 @@ scissors_image_regions = {
 }
 ```
 
-Ardından her örnek görüntüyü bölge koordinatlarıyla karşıya yüklemek için bu ilişki haritasını kullanın. Aşağıdaki kodu ekleyin.
+Ardından, her bir örnek görüntüsünü bölge koordinatları ile karşıya yüklemek için bu ilişkilerin haritasını kullanın (tek bir toplu işte en fazla 64 görüntü yükleyebilirsiniz). Aşağıdaki kodu ekleyin.
 
 ```Python
 # Update this with the path to where you downloaded the images.

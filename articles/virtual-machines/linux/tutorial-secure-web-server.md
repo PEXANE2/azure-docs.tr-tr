@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 04/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 069a0310d1baca4f1be3b5cda0d1e75fbcdfa4c4
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 74f0a3c9c2d93eda35a364c9bac9d3aff7115312
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67703478"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68947269"
 ---
-# <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>Öğretici: Key Vault'ta depolanan bir SSL sertifikalarını kullanarak azure'da bir Linux sanal makinesi bir web sunucusunda güvenli hale getirme
+# <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>Öğretici: Azure 'daki bir Linux sanal makinesindeki bir Web sunucusunun güvenliğini sağlamak Key Vault depolanan SSL sertifikaları
 Web sunucularının güvenliğini sağlamak için, web trafiğini şifrelemek üzere Güvenli Yuva Katmanı (SSL) sertifikası kullanılabilir. SSL sertifikaları Azure Key Vault’ta depolanabilir ve sertifikaların Azure’daki Linux sanal makinelerine (VM’ler) güvenli bir şekilde dağıtılabilmesini sağlar. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
@@ -50,7 +50,7 @@ Key Vault ve sertifikalarını oluşturabilmek için [az group create](/cli/azur
 az group create --name myResourceGroupSecureWeb --location eastus
 ```
 
-Ardından, [az keyvault create](/cli/azure/keyvault) ile bir Key Vault oluşturun ve bu anahtarın VM dağıtırken kullanılmasını etkinleştirin. Her Key Vault için benzersiz bir ad gerekir ve tüm harfler küçük olmalıdır. Değiştirin  *\<mykeyvault >* kendi benzersiz Key Vault adınızla aşağıdaki örnekte:
+Ardından, [az keyvault create](/cli/azure/keyvault) ile bir Key Vault oluşturun ve bu anahtarın VM dağıtırken kullanılmasını etkinleştirin. Her Key Vault için benzersiz bir ad gerekir ve tüm harfler küçük olmalıdır. Aşağıdaki örnekteki  *\<mykeykasası >* kendi benzersiz Key Vault adınızla değiştirin:
 
 ```azurecli-interactive 
 keyvault_name=<mykeyvault>
@@ -78,7 +78,7 @@ secret=$(az keyvault secret list-versions \
           --vault-name $keyvault_name \
           --name mycert \
           --query "[?attributes.enabled].id" --output tsv)
-vm_secret=$(az vm secret format --secrets "$secret")
+vm_secret=$(az vm secret format --secrets "$secret" -g myResourceGroup --keyvault $keyvault_name)
 ```
 
 ### <a name="create-a-cloud-init-config-to-secure-nginx"></a>NGINX’in güvenliğini sağlamak için cloud-init yapılandırması oluşturma
@@ -137,7 +137,7 @@ az vm open-port \
 
 
 ### <a name="test-the-secure-web-app"></a>Güvenli web uygulamasını sınama
-Artık bir web tarayıcısı açın ve girin *https:\/\/\<Publicıpaddress >* adres çubuğundaki. VM oluşturma işleminden kendi herkese açık IP adresinizi sağlayın. Otomatik olarak imzalanan sertifika kullanıyorsanız güvenlik uyarısını kabul edin:
+Artık bir Web tarayıcısı açıp adres çubuğuna *https:\/\/\<publicıpaddress >* girebilirsiniz. VM oluşturma işleminden kendi herkese açık IP adresinizi sağlayın. Otomatik olarak imzalanan sertifika kullanıyorsanız güvenlik uyarısını kabul edin:
 
 ![Web tarayıcısı güvenlik uyarısını kabul edin](./media/tutorial-secure-web-server/browser-warning.png)
 

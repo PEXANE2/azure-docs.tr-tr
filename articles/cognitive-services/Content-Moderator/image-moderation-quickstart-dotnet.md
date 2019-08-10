@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 07/03/2019
+ms.date: 08/08/2019
 ms.author: sajagtap
-ms.openlocfilehash: 9bfe5f21da6418f82b2099a5da4ba8c3c32c25f3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2a4726357e35fa123355d9ba450f7c6d8624fe78
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564489"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946226"
 ---
 # <a name="quickstart-analyze-images-for-objectionable-content-in-c"></a>Hızlı Başlangıç: ' Deki sakıncalı içerik için görüntüleri analiz etmeC#
 
@@ -49,22 +49,22 @@ Ardından, temel bir içerik moderasyonu senaryosu uygulamak için kodu bu kıla
 
 Aşağıdaki `using` deyimlerini *Program.cs* dosyanızın en üstüne ekleyin.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=1-8)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=1-7)]
 
 ### <a name="create-the-content-moderator-client"></a>Content Moderator istemcisini oluşturma
 
 Aboneliğinize bir Content Moderator istemci sağlayıcısı oluşturmak için aşağıdaki kodu *Program.cs* dosyanıza ekleyin. Aynı ad alanına **Program** sınıfıyla birlikte kodu ekleyin. **AzureRegion** ve **CMSubscriptionKey** alanlarını bölge tanımlayıcınızın ve abonelik anahtarınızın değerleriyle güncelleştirmeniz gerekecektir.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=84-107)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=83-106)]
 
 
 ### <a name="set-up-input-and-output-targets"></a>Giriş ve çıkış hedeflerini ayarlama
 
 Aşağıdaki statik alanları _Program.cs_ dosyasındaki **Program** sınıfına ekleyin. Bu alanlar, giriş görüntüsü içeriği ve çıkış JSON içeriği için dosyaları belirtir.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=49-53)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=48-52)]
 
-*_ImageFiles.txt* giriş dosyasını oluşturmanız ve yolunu uygun şekilde güncelleştirmeniz gerekir (göreli yollar, yürütme dizinine göre belirlenir). _ImageFiles.txt_ dosyasını açın ve denetlenecek görüntülerin URL'lerini ekleyin. Bu hızlı başlangıçta örnek giriş olarak aşağıdaki URL'ler kullanılır.
+*Imagefiles. txt* giriş dosyasını oluşturmanız ve yolunu uygun şekilde güncelleştirmeniz gerekir (göreli yollar yürütme dizinine görelidir). _ImageFiles.txt_ dosyasını açın ve denetlenecek görüntülerin URL'lerini ekleyin. Bu hızlı başlangıçta örnek giriş olarak aşağıdaki URL'ler kullanılır.
 
 ```
 https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg
@@ -75,20 +75,20 @@ https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
 
 Aynı ad alanında *Program* sınıfıyla birlikte **Program.cs** dosyasına aşağıdaki kodu ekleyin. Gözden geçirilen görüntülerin her birinin denetim sonuçlarını kaydetmek için bu sınıfın bir örneğini kullanacaksınız.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=109-124)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=108-123)]
 
 
 ### <a name="define-the-image-evaluation-method"></a>Görüntü değerlendirme yöntemini tanımlama
 
 **Program** sınıfına aşağıdaki yöntemi ekleyin. Bu yöntem, tek bir görüntüyü üç farklı yoldan değerlendirir ve değerlendirme sonuçlarını döndürür. Bu tek tek işlemlerin ne yaptığı hakkında daha fazla bilgi edinmek istiyorsanız, [Sonraki adımlar](#next-steps) bölümündeki bağlantıyı izleyin.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=55-81)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=54-80)]
 
 ### <a name="load-the-input-images"></a>Giriş görüntülerini yükleme
 
 Aşağıdaki kodu **Program** sınıfındaki **Main** yöntemine ekleyin. Bu kod, giriş dosyasındaki her bir görüntü URL 'SI için değerlendirme verilerini almak üzere programı ayarlar. Ardından bu verileri tek bir çıkış dosyasına yazar.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=17-46)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=16-45)]
 
 ## <a name="run-the-program"></a>Programı çalıştırma
 

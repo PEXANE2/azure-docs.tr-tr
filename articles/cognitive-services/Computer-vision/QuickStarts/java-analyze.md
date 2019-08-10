@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Bir uzak resmi - REST, Java çözümleme'
+title: 'Hızlı Başlangıç: REST API ve Java ile uzak görüntüyü çözümleme'
 titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıçta, Java ile Görüntü İşleme API’si kullanarak bir görüntüyü analiz edeceksiniz.
 services: cognitive-services
@@ -10,15 +10,15 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.custom: seodec18
-ms.openlocfilehash: eadf3aca848f1b8ad24cd387e1988cdf8ea55580
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.custom: seodec18, seo-java-august2019
+ms.openlocfilehash: 69d14b3ce84ddd1fbd54ab8a0f6f0c9e24ebac1e
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604433"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946323"
 ---
-# <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-and-java"></a>Hızlı Başlangıç: Görüntü işleme REST API'si ve Java kullanarak uzak bir resmi çözümleme
+# <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-and-java"></a>Hızlı Başlangıç: Görüntü İşleme REST API ve Java kullanarak uzak görüntüyü çözümleme
 
 Bu hızlı başlangıçta, Görüntü İşleme’nin REST API’sini kullanarak görsel özellikleri ayıklamak için uzakta depolanan bir görüntüyü analiz edeceksiniz. [Görüntü Analizi](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) yöntemi ile, görüntü içeriğini temel alarak görsel özellikleri ayıklayabilirsiniz.
 
@@ -27,7 +27,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 ## <a name="prerequisites"></a>Önkoşullar
 
 - [Java&trade; Platform, Standard Edition Geliştirme Seti 7 veya 8](https://aka.ms/azure-jdks) (JDK 7 veya 8) yüklü olmalıdır.
-- Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Ücretsiz bir deneme anahtarından alabilirsiniz [Bilişsel Hizmetler'i deneyin](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Veya yönergeleri [Bilişsel Hizmetler hesabı oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) görüntü işleme için abone ve anahtarınızı alın.
+- Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Deneme bilişsel [Hizmetler](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)'den ücretsiz bir deneme anahtarı edinebilirsiniz. Ya da Görüntü İşleme abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin.
 
 ## <a name="create-and-run-the-sample-application"></a>Örnek uygulamayı oluşturma ve çalıştırma
 
@@ -129,15 +129,15 @@ public class Main {
 1. Kaydedin, ardından Java projesini derleyin.
 1. Bir IDE kullanıyorsanız, `Main` yöntemini çalıştırın.
 
-Alternatif olarak, bir komut satırı penceresinde program çalıştırıyorsanız, aşağıdaki komutları çalıştırın. Bu komutlar Kitaplıklarınızı olan adlı bir klasörde varsayın `libs` aynı klasörde olan `Main.java`; değilse, değiştirin gerekir `libs` Kitaplıklarınızı yoluyla.
+Alternatif olarak, programı bir komut satırı penceresinden çalıştırıyorsanız, aşağıdaki komutları çalıştırın. Bu komutlar, kitaplıklarınız aynı `libs` `Main.java`klasörde olan adlı bir klasörde yer alır; Aksi takdirde, kitaplıklarınızın yoluyla değiştirmeniz `libs` gerekir.
 
-1. Dosyanın derleme `Main.java`.
+1. Dosyayı `Main.java`derleyin.
 
     ```bash
     javac -cp ".;libs/*" Main.java
     ```
 
-1. Programı çalıştırın. Soru-Cevap Oluşturma API'sine KB oluşturma isteği gönderir ve 30 saniyede bir sonucu yoklar. Her yanıt için komut satırı penceresinde yazdırılır.
+1. Programı çalıştırın. Soru-Cevap Oluşturma API'sine KB oluşturma isteği gönderir ve 30 saniyede bir sonucu yoklar. Her yanıt komut satırı penceresine yazdırılır.
 
     ```bash
     java -cp ".;libs/*" Main

@@ -1,7 +1,7 @@
 ---
-title: Yetişkinlere yönelik ve müstehcen içeriğin - görüntü işleme açıklayın
+title: Yetişkin ve kcy içeriği-Görüntü İşleme
 titleSuffix: Azure Cognitive Services
-description: Görüntü işleme API'sini kullanarak resimlerdeki yetişkinlere yönelik ve müstehcen içerikleri algılama için ilgili kavramları.
+description: Görüntü İşleme API 'sini kullanarak görüntülerde yetişkinlere ve kçsi içerikleri algılamayla ilgili kavramlar.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,32 +11,32 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 69a4c136e9c210dd40e004b8d5e1c1a2a8fceaa7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ca5f35ab47822d74de556671c38886942d23d9ff
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60368365"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946274"
 ---
-# <a name="detect-adult-and-racy-content"></a>Yetişkinlere yönelik ve müstehcen içerikleri algılama
+# <a name="detect-adult-and-racy-content"></a>Yetişkin ve kcy içeriğini algılama
 
-Böylece geliştiriciler kendi yazılım görüntüleri görüntülenmesini kısıtlayabilirsiniz görüntü işleme görüntülerde yetişkinlere yönelik malzeme algılayabilir. Böylece geliştiriciler kendi tercihleri göre sonuçları çevirebilir içerik bayrakları arasında sıfır ve tek bir puanı ile uygulanır. 
+Görüntü İşleme, geliştiricilerin yazılımında bu görüntülerin görüntülenmesini kısıtlayabilmeleri için resimlerde yetişkinlere yönelik malzemeleri algılayabilir. İçerik bayrakları, geliştiricilerin sonuçları kendi tercihlerine göre yorumlayabilmesi için sıfır ile diğeri arasında bir puan ile uygulanır. 
 
 > [!NOTE]
-> Bu özellik ayrıca tarafından sunulan [Azure Content Moderator](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview) hizmeti. Bu alternatif çözümler için metin denetimi ve insan tarafından inceleme iş akışları gibi daha ayrıntılı içerik denetleme senaryolarına bakın.
+> Bu özellik [Azure Content moderator](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview) hizmeti tarafından da sunulur. Metin denetleme ve insan incelemesi iş akışları gibi daha ayrıntılı içerik denetleme senaryolarına yönelik çözümler için bu alternatif bölümüne bakın.
 
-## <a name="content-flag-definitions"></a>İçeriği bayrağı tanımları
+## <a name="content-flag-definitions"></a>İçerik bayrağı tanımları
 
-**Yetişkin** görüntüleri hangi doğası ve genellikle pornografik çıplaklık ve cinsel eylem tarif olarak tanımlanır. 
+**Yetişkinlere yönelik** görüntüler, pornografik olarak tanımlananlar ve genellikle çıplaklık ve cinsel işlemler belirleyen bir şekilde tanımlanır. 
 
-**Müstehcen** görüntüleri doğası ve genellikle cinsel müstehcen resimleri görüntüleri olarak etiketlenmiş cinsel içerikli daha az içerik olarak tanımlanmış **yetişkinlere yönelik**. 
+Kışkırtıcı görüntüler, açık cinsel içerikli görüntüler olarak tanımlanır ve genellikle **yetişkin**olarak etiketlenen görüntülerden daha az cinsel içerikli içerik içerir. 
 
-## <a name="identify-adult-and-racy-content"></a>Yetişkinlere yönelik ve müstehcen içeriği tanımlayın
+## <a name="identify-adult-and-racy-content"></a>Yetişkin ve kcy içeriğini tanımla
 
-[Analiz](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API.
+[Analiz](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 'si.
 
-İki boolean özelliği, analiz görüntüsü yöntemini döndürür `isAdultContent` ve `isRacyContent`, JSON yanıtındaki yöntemin yetişkinlere yönelik ve müstehcen içerik sırasıyla olduğunu gösterir. Yöntemi iki özellik de döndürür `adultScore` ve `racyScore`, yetişkinlere yönelik ve müstehcen içeriğin sırasıyla tanımlamak için güven puanları temsil eder.
+Görüntüyü çözümle yöntemi, iki Boole özelliği, `isAdultContent` ve `isRacyContent`sırasıyla yetişkin ve kcy içeriğini göstermek için yönteminin JSON yanıtında. Yöntemi, Ayrıca, Yetişkin ve kcy `racyScore`içeriğini belirlemek için güven puanlarını temsil eden iki özellik `adultScore` de döndürür.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kavramları hakkında bilgi edinin [etki alanına özgü içerik algılama](concept-detecting-domain-content.md) ve [yüzleri algılama](concept-detecting-faces.md).
+[Etki alanına özgü içeriği algılama](concept-detecting-domain-content.md) ve [yüzeyleri algılama](concept-detecting-faces.md)hakkında kavramlar öğrenin.

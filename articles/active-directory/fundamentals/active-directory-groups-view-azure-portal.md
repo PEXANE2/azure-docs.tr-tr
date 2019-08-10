@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd3719e63b19066d61647b90ccae03ed841f3c6c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9b4f2f6e86ce076e7c0464609252b027499a8307
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561890"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68942877"
 ---
 <!--As a brand-new Azure AD administrator, I need to view my organization’s groups along with the assigned members, so I can manage permissions to apps and services for people in my organization-->
 
@@ -53,20 +53,20 @@ _MDM ilkesi - Batı_ adlı yeni bir grup oluşturun. Grup oluşturma hakkında d
 3. **Oluştur**’u seçin.
 
 ## <a name="create-a-new-user"></a>Yeni kullanıcı oluşturma
-_Alain Charon_ adı yeni bir kullanıcı oluşturun. Bir kullanıcı grup üyesi olarak eklenmeden önce mevcut olmalıdır. Kullanıcı oluşturma hakkında daha fazla bilgi için, bkz. [Kullanıcı ekleme veya silme](add-users-azure-active-directory.md).
+_Alain Charon_ adı yeni bir kullanıcı oluşturun. Bir kullanıcı grup üyesi olarak eklenmeden önce mevcut olmalıdır. Kullanıcıların oluşturulacağı doğrulanmış etki alanı adını almak için önce "özel etki alanı adları" sekmesini kontrol edin. Kullanıcı oluşturma hakkında daha fazla bilgi için, bkz. [Kullanıcı ekleme veya silme](add-users-azure-active-directory.md).
 
 1. **Azure Active Directory**’yi, **Kullanıcılar**’ı ve ardından **Yeni kullanıcı**’yı seçin.
 
 2. **Kullanıcı** sayfasını tamamlayın:
 
-    - **Ada** _Charon_yazın.
+    - **Ada** _Charon_ yazın.
 
     - **Kullanıcı adı:** Contoso.com yazın. *\@*
 
 3. **Parola** kutusunda sağlanan otomatik olarak oluşturulmuş parolayı kopyalayın ve ardından **Oluştur** seçeneğini belirleyin.
 
 ## <a name="add-a-group-member"></a>Grup üyesi ekleme
-Şimdi bir grubunuz ve kullanıcınız olduğuna göre, _Alain Charon_’u _MDM ilkesi - Batı_ grubuna üye olarak ekleyebilirsiniz. Grup üyelerini ekleme hakkında daha fazla bilgi için, bkz. [Grup üyelerini ekleme veya kaldırma](active-directory-groups-members-azure-portal.md).
+Şimdi bir grubunuz ve kullanıcınız olduğuna göre, _Alain Charon_ ’u _MDM ilkesi - Batı_ grubuna üye olarak ekleyebilirsiniz. Grup üyelerini ekleme hakkında daha fazla bilgi için, bkz. [Grup üyelerini ekleme veya kaldırma](active-directory-groups-members-azure-portal.md).
 
 1. **Azure Active Directory** > **Gruplar**'ı seçin.
 

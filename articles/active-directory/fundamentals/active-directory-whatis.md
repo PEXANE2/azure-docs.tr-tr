@@ -10,16 +10,16 @@ ms.date: 07/31/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eda457747a6a3e374e7fdea571f64446e15ded21
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: a52b9ee26aac20d95356db6a280c5feb40023fed
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774168"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68942800"
 ---
 # <a name="what-is-azure-active-directory"></a>Azure Active Directory nedir?
 
-Azure Active Directory (Azure AD), Microsoft 'un bulut tabanlı kimlik ve erişim yönetimi hizmetidir ve bu, şirketinizin oturum açmasını ve kaynaklarına erişmelerine yardımcı olur:
+Azure Active Directory (Azure AD), Microsoft 'un bulut tabanlı kimlik ve erişim yönetimi hizmeti olduğundan, çalışanlarınızın ' de oturum açmasını ve kaynaklara erişmesini sağlar.
 
 - Microsoft Office 365, Azure portalı ve diğer SaaS uygulamalarına binlerce gibi dış kaynaklar.
 
@@ -50,9 +50,9 @@ Azure AD uygulamanızı geliştirmek için, Azure Active Directory Premium P1 ve
 
 - **Ücretsiz Azure Active Directory.** Kullanıcı ve Grup Yönetimi, şirket içi dizin eşitleme, temel raporlar, bulut kullanıcıları için self servis parola değişikliği ve Azure, Office 365 ve birçok popüler SaaS uygulamasında çoklu oturum açma sağlar.
 
-- **Azure Active Directory Premium P1.** Ücretsiz ve temel özelliklerine ek olarak, P1 ayrıca hem şirket içi ve bulut kaynaklarında karma olanak tanır. Gelişmiş yönetimini de destekler, dinamik gruplar, Self Servis Grup Yönetimi, Microsoft Identity Manager (bir şirket içi kimlik ve erişim Yönetim Paketi) ve bulut geri yazma özellikleri gibi Self Servis parola sıfırlama için ver Şirket içi kullanıcılarınızın.
+- **Azure Active Directory Premium P1.** P1, ücretsiz özelliklere ek olarak, karma kullanıcılarınızın hem şirket içi hem de bulut kaynaklarına erişmesine imkan tanır. Gelişmiş yönetimini de destekler, dinamik gruplar, Self Servis Grup Yönetimi, Microsoft Identity Manager (bir şirket içi kimlik ve erişim Yönetim Paketi) ve bulut geri yazma özellikleri gibi Self Servis parola sıfırlama için ver Şirket içi kullanıcılarınızın.
 
-- **Azure Active Directory Premium P2.** P2, ücretsiz, temel ve P1 özelliklerine ek olarak, uygulamalarınıza ve kritik şirket verilerinize riske dayalı koşullu erişim sağlamaya yardımcı olmak için [Azure Active Directory kimlik koruması](../identity-protection/enable.md) sunar [Privileged Identity Management](../privileged-identity-management/pim-getting-started.md) ve Yöneticiler ve kaynaklara erişimleri ve gerektiğinde tam zamanında erişim sağlamak için yöneticileri ve bunların kaynaklarını kısıtlayın ve izleyin.
+- **Azure Active Directory Premium P2.** P2, ücretsiz ve P1 özelliklerine ek olarak, uygulamalarınıza ve kritik şirket verilerinize riske dayalı koşullu erişim sağlamaya yardımcı olmak için [Azure Active Directory kimlik koruması](../identity-protection/enable.md) sunar [Privileged Identity Management](../privileged-identity-management/pim-getting-started.md) ve yöneticileri ve bunların kaynaklarına erişimini kısıtlayın ve izleyin ve gerektiğinde tam zamanında erişim sağlayın.
 
 - **"Kullandıkça Öde" özelliği lisanslar.** Ayrıca, Azure Active Directory iş müşteriye (B2C) gibi ek özellik lisans alabilirsiniz. B2C kimlik sağlama ve erişim yönetimi çözümleri, müşteriye dönük uygulamalarınız için yardımcı olabilir. Daha fazla bilgi için [Azure Active Directory B2C belgeleri](../../active-directory-b2c/index.yml).
 

@@ -1,5 +1,5 @@
 ---
-title: Yazdırılan/el yazısı metin, Görüntü İşleme tanıma
+title: Yazılı, el yazısı metin tanıma-Görüntü İşleme
 titleSuffix: Azure Cognitive Services
 description: Görüntü İşleme API'si kullanarak görüntülerde yazdırılmış ve el yazısı metinleri tanıma ile ilgili kavramlar.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: cfbbd0b353699c4b04ede07df0450e66bd59612f
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: e37b4c02692575f76582e8f62c3aff00b57424ed
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311957"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946297"
 ---
 # <a name="recognize-printed-and-handwritten-text"></a>Yazdırılmış ve el yazısı ile yazılan metinleri tanıma
 
