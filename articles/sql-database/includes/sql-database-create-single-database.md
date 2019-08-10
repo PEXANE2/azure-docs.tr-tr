@@ -5,12 +5,12 @@ ms.subservice: single-database
 ms.topic: include
 ms.date: 06/19/2019
 ms.author: mathoma
-ms.openlocfilehash: dd511375c6b007222185f25610aecbd9931a742b
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: ffa48d55703347883edf96a0a27ee52d19189976
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640068"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935034"
 ---
 Bu adımda, kaynak grubunuzu ve tek bir Azure SQL veritabanı veritabanını oluşturacaksınız.
 
@@ -19,12 +19,12 @@ Bu adımda, kaynak grubunuzu ve tek bir Azure SQL veritabanı veritabanını olu
 >
 > Bilgi için bkz. [veritabanı düzeyinde güvenlik duvarı kuralı oluşturma](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) veya bilgisayarınızın sunucu düzeyinde güvenlik duvarı kuralı IÇIN kullanılan IP adresini belirleme bkz. [sunucu düzeyinde güvenlik duvarı oluşturma](../sql-database-server-level-firewall-rule.md).  
 
-# <a name="azure-portaltabazure-portal"></a>[Azure portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
 Azure portal kullanarak kaynak grubunuzu ve tek veritabanınızı oluşturun.
 
 1. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** öğesini seçin.
-2. **Veritabanları** ' nı seçin ve SQL veritabanı ' **nı seçerek** **SQL veritabanı oluştur** sayfasını açın.
+2. **Veritabanları** ' nı seçin ve SQL VERITABANı ' nı seçerek **SQL veritabanı oluştur** sayfasını açın.
 
    ![Tek veritabanı oluşturma](../media/sql-database-get-started-portal/create-database-1.png)
 
@@ -75,7 +75,7 @@ Azure portal kullanarak kaynak grubunuzu ve tek veritabanınızı oluşturun.
 
 9. Kaynak grubunu, sunucuyu ve veritabanını dağıtmak ve sağlamak için **SQL veritabanı** formunda **Oluştur** ' u seçin.
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -141,7 +141,7 @@ PowerShell kullanarak kaynak grubunuzu ve tek bir veritabanınızı oluşturun.
    $database
    ```
 
-# <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 AZ CLı kullanarak kaynak grubunuzu ve tek veritabanınızı oluşturun.
 

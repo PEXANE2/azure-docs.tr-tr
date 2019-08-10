@@ -17,12 +17,12 @@ ms.date: 07/25/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 946eb0343c2858e275e40b7a581fd48e1713accd
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 507758831885bff7f61677ebae0224cc828dcb2e
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853526"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879283"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>Kimlik doğrulama akışları ve uygulama senaryoları
 
@@ -143,7 +143,7 @@ Daha fazla bilgi için, [Web API 'lerini çağıran mobil uygulamayı](scenario-
 
 ### <a name="protected-web-api"></a>Korumalı Web API 'SI
 
-Uygulamanızın daha fazla Web API 'SI gibi Web hizmetlerini güvenli hale getirmek için Microsoft Identity platform uç noktasını kullanabilirsiniz. Korumalı bir Web API 'SI, verilerini güvenli hale getirmek ve gelen isteklerin kimliğini doğrulamak için bir erişim belirteciyle çağırılır. Bir Web API 'SI çağıran, bir HTTP isteğinin yetkilendirme üstbilgisine bir erişim belirteci ekler. ASP.NET veya Web API 'SI ASP.NET Core korumak istiyorsanız, erişim belirtecini doğrulamanız gerekir. Bunun için ASP.NET JWT ara yazılımını kullanacaksınız. Bu işlem, MSAL.NET değil, [.NET kitaplığı Için IdentityModel uzantıları](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) tarafından yapılır.
+Uygulamanızın daha fazla Web API 'SI gibi Web hizmetlerini güvenli hale getirmek için Microsoft Identity platform uç noktasını kullanabilirsiniz. Korumalı bir Web API 'SI, verilerini güvenli hale getirmek ve gelen isteklerin kimliğini doğrulamak için bir erişim belirteciyle çağırılır. Bir Web API 'SI çağıran, bir HTTP isteğinin yetkilendirme üstbilgisine bir erişim belirteci ekler. ASP.NET veya ASP.NET Core Web API 'nizi korumak istiyorsanız, erişim belirtecini doğrulamanız gerekir. Bunun için ASP.NET JWT ara yazılımını kullanacaksınız. Bu işlem, MSAL.NET değil, [.NET kitaplığı Için IdentityModel uzantıları](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) tarafından yapılır.
 
 Daha fazla bilgi için, [korumalı Web API 'sini](scenario-protected-web-api-overview.md)okuyun.
 

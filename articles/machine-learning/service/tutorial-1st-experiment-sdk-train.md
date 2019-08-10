@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: 66a0c625d300a74787e3640992675d5a3f31610c
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: a3db70925d59f9d0e2793b04824b2e8606719dd4
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828574"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934228"
 ---
 # <a name="tutorial-train-your-first-model"></a>Öğretici: İlk modelinizi eğitme
 
@@ -23,6 +23,7 @@ Bu öğretici, **iki bölümden oluşan bir öğretici serisinin ikinci bölüm�
 
 Bu öğreticide, aşağıdaki görevleri öğreneceksiniz:
 
+> [!div class="checklist"]
 > * Çalışma alanınızı bağlayın ve bir deneme oluşturun
 > * Veri yükleme ve scikit 'i eğitme-modelleri öğrenme
 > * Portalda Eğitim sonuçlarını görüntüleme

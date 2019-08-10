@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/06/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 7bd18ab0cedf94f0ecc08c3523a608a8d554e6b2
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 2ef207a14582e6ba0d9f8a25c0314c5ec639c7cb
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827927"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882855"
 ---
 # <a name="what-is-azure-security-center"></a>Azure Güvenlik Merkezi nedir?
 
@@ -32,9 +32,9 @@ Azure Güvenlik Merkezi, en çok üç acil güvenlik sorunlarını giderir:
 
 -   **İş yüklerini hızla değiştirme** : Bu, bulutun gücü ve bir zorluktur. Tek bir yandan, son kullanıcıların daha fazla bilgi almak için güç vardır. Diğer bir deyişle, herkesin kullandığı ve oluşturmakta olduğu sürekli değişen hizmetlerin güvenlik standartlarınıza kadar ve en iyi güvenlik uygulamalarını takip ettiğinizden nasıl emin olabilirsiniz?
 
--   **Giderek daha karmaşık saldırılar** -iş yüklerinizi çalıştırdığınız her yerde saldırı daha karmaşık hale getirmeye devam edersiniz. En iyi güvenlik uygulamalarını takip etmezseniz, daha savunmasız bırakabilen Internet 'e yönelik bir iş yükünüz olan genel bulut iş yüklerinizi güvenli hale getirebilirsiniz.
+-   **Giderek daha karmaşık saldırılar** -iş yüklerinizi çalıştırdığınız her yerde saldırı daha karmaşık hale getirmeye devam edersiniz. En iyi güvenlik uygulamalarını takip etmezseniz, daha savunmasız bırakabilen Internet 'e yönelik bir iş yükünüz olan genel bulut iş yüklerinizi güvenli hale getirebilirsiniz.
 
--   **Güvenlik becerileri kısa bir arz** içinde, ortamların korunduğundan emin olmak için gerekli arka plan ve deneyimle yönetici sayısını ve uyarı sistemi sayısını en az bir şekilde numaralandırır. En son saldırılarla güncel kalmak, güvenlikle ilgili bir ön değişiklik olduğu sürece sürekli bir zorluk sergilemektir.
+-   **Güvenlik becerileri kısa bir arz içinde** , ortamların korunduğundan emin olmak için gerekli arka plan ve deneyimle yönetici sayısını ve uyarı sistemi sayısını en az bir şekilde numaralandırır. En son saldırılarla güncel kalmak, güvenlikle ilgili bir ön değişiklik olduğu sürece sürekli bir zorluk sergilemektir.
 
 Bu güçlüklere karşı kendinizi korumanıza yardımcı olmak için, güvenlik merkezi şunları yapmak üzere araçlar sağlar:
 
@@ -60,15 +60,15 @@ Azure Güvenlik Merkezi, güvenlik duruşunuzu güçlendirin. Bu, en iyi güvenl
 
 ### <a name="manage-organization-security-policy-and-compliance"></a>Kuruluş güvenlik ilkesini ve uyumluluğunu yönetme
 
-Bu bir güvenlik temel olanıdır ve iş yüklerinizin güvende olduğundan emin olur ve özel güvenlik ilkelerine sahip olmaya başlar. Güvenlik Merkezi 'ndeki tüm ilkeler Azure ilke denetimleri üzerine oluşturulduğundan, birinci **sınıf bir ilke çözümünün**tam aralığını ve esnekliğini elde edersiniz. Güvenlik Merkezi 'nde ilkelerinize yönetim gruplarında, aboneliklerde ve hatta tüm kiracı için çalışacak şekilde ayarlayabilirsiniz.
+Bu bir güvenlik temel olanıdır ve iş yüklerinizin güvende olduğundan emin olur ve özel güvenlik ilkelerine sahip olmaya başlar. Güvenlik Merkezi 'ndeki tüm ilkeler Azure ilke denetimleri üzerine oluşturulduğundan, birinci **sınıf bir ilke çözümünün**tam aralığını ve esnekliğini elde edersiniz. Güvenlik Merkezi 'nde ilkelerinize yönetim gruplarında, aboneliklerde ve hatta tüm kiracı için çalışacak şekilde ayarlayabilirsiniz.
 
 ![Güvenlik Merkezi panosu](media/security-center-intro/sc-dashboard.png)
 
-Güvenlik Merkezi, **Gölge BT aboneliklerini belirlemenize**yardımcı olur. Panonuzda **kapsanmayan** etiketli aboneliklere bakarak, yeni oluşturulan abonelikler olduğunda hemen haberdar edebilir ve ilkeleriniz kapsamında olduklarından ve Azure Güvenlik Merkezi tarafından korunduğunuzdan emin olabilirsiniz.
+Güvenlik Merkezi, **Gölge BT aboneliklerini belirlemenize**yardımcı olur. Panonuzda **kapsanmayan** etiketli aboneliklere bakarak, yeni oluşturulan abonelikler olduğunda hemen haberdar edebilir ve ilkeleriniz kapsamında olduklarından ve Azure Güvenlik Merkezi tarafından korunduğunuzdan emin olabilirsiniz.
 
 ![Güvenlik Merkezi ilke panosu](media/security-center-intro/sc-policy-dashboard.png)
 
-Güvenlik Merkezi 'ndeki Gelişmiş izleme özellikleri, **zaman içinde uyumluluğu ve idare izlemenizi ve yönetmenizi**sağlar.  **Genel uyumluluk** size, aboneliklerinizin iş yüklerinizle ilişkili ilkelerle ne kadar uyumlu olduğunu size sağlar. 
+Güvenlik Merkezi 'ndeki Gelişmiş izleme özellikleri, **zaman içinde uyumluluğu ve idare izlemenizi ve yönetmenizi**sağlar. **Genel uyumluluk** size, aboneliklerinizin iş yüklerinizle ilişkili ilkelerle ne kadar uyumlu olduğunu size sağlar. 
 
 ![Zamana göre güvenlik merkezi ilkesi](media/security-center-intro/sc-policy-time.png)
 
@@ -76,11 +76,11 @@ Güvenlik Merkezi 'ndeki Gelişmiş izleme özellikleri, **zaman içinde uyumlu
 
 Güvenlik Merkezi, iş yükleriniz genelinde dağıtılan yeni kaynakları sürekli olarak bulur ve bunların en iyi güvenlik uygulamalarına göre yapılandırılıp yapılandırılmadığını değerlendirir, bunlar bayrak eklenmiş olup makinelerinizi korumak için ' i çözmeniz gerekir.
 
-En güçlü araçlardan biri olan Güvenlik Merkezi, ağınızın güvenlik durumunu sürekli olarak izlemek için tarafından sağlanan **ağ haritadır**. Eşleme, iş yüklerinizin topolojisini görmenizi sağlar, böylece her bir düğümün düzgün şekilde yapılandırılıp yapılandırılmadığını görebilirsiniz. Düğümlerinizin nasıl bağlandığını görebilirsiniz. Bu, bir saldırganın ağınızı daha kolay bir şekilde yayılmasını sağlamak için istenmeyen bağlantıları engellemenize yardımcı olur.
+En güçlü araçlardan biri olan Güvenlik Merkezi, ağınızın güvenlik durumunu sürekli olarak izlemek için tarafından sağlanan **ağ haritadır**. Eşleme, iş yüklerinizin topolojisini görmenizi sağlar, böylece her bir düğümün düzgün şekilde yapılandırılıp yapılandırılmadığını görebilirsiniz. Düğümlerinizin nasıl bağlandığını görebilirsiniz. Bu, bir saldırganın ağınızı daha kolay bir şekilde yayılmasını sağlamak için istenmeyen bağlantıları engellemenize yardımcı olur.
 
 ![Güvenlik Merkezi ağ haritası](media/security-center-intro/sc-net-map.png)
 
-Güvenlik Merkezi, **güvenli bir puan**ekleyerek güvenlik uyarılarınızı bir adım daha kolay hale getirir. Güvenli puanlar, her bir önerinin genel güvenlik duruşumıza ne kadar önemli olduğunu anlamanıza yardımcı olmak için, aldığınız her öneriye göre ilişkilendirilir. Bu, **güvenlik çalışmalarınızı önceliklendirmenize olanak tanımak**için önemlidir.
+Güvenlik Merkezi, **güvenli bir puan**ekleyerek güvenlik uyarılarınızı bir adım daha kolay hale getirir. Güvenli puanlar, her bir önerinin genel güvenlik duruşumıza ne kadar önemli olduğunu anlamanıza yardımcı olmak için, aldığınız her öneriye göre ilişkilendirilir. Bu, **güvenlik çalışmalarınızı önceliklendirmenize olanak tanımak**için önemlidir.
 
 ![Güvenlik Merkezi güvenli puanı](media/security-center-intro/sc-secure-score.png)
 

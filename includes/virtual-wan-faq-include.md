@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 07/22/2019
+ms.date: 08/06/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c46c11ead645b93d7710d1e11636037e4dcaf8e7
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 8a4bbe92cc1b34801abffa1e905d873d4382025a
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444559"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68912523"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpngateway"></a>Azure sanal ağ geçidi (VPN Gateway) ile Azure Sanal WAN vpngateway arasında ne fark vardır?
 
@@ -103,7 +103,7 @@ Tek bir hub ve bir vpnsite içeren bir sanal WAN 'ın basit bir yapılandırmas�
 
 Evet, daldan dala bağlantı VPN için Sanal WAN’da ve VPN ile ExpressRoute arasında kullanılabilir. VPN siteden siteye GA olduğunda ExpressRoute Şu anda önizleme aşamasındadır.
 
-### <a name="does-branch-to-branch-traffic-traverse-through-the-azure-virtual-wan"></a>Daldan dala trafik Azure Sanal WAN üzerinden geçiş yapar mı?
+### <a name="does-branch-to-branch-traffic-traverse-through-the-azure-virtual-wan"></a>Azure sanal WAN aracılığıyla daldan dala trafiği çapraz geçiş yapar mi?
 
 Evet.
 
@@ -122,6 +122,10 @@ Hayır, Sanal WAN her siteden ExpressRoute alınmasını gerektirmez. Cihazdan A
 ### <a name="is-there-a-network-throughput-limit-when-using-azure-virtual-wan"></a>Azure Sanal WAN kullanırken bir ağ aktarım hızı sınırı var mı?
 
 Dal sayısı hub/bölge başına 1000 bağlantıyla ve hub 'da toplam 20 Gbps ile sınırlıdır.
+
+### <a name="i-dont-see-the-20-gbps-setting-for-the-virtual-hub-in-the-portal-how-do-i-configure-that"></a>Portalda sanal hub için 20 Gbps ayarı görmüyorum. Nasıl yaparım? yapılandırmak mı istiyorsunuz?
+
+Şu anda, [Update-AzVpnGateway](https://docs.microsoft.com/powershell/module/az.network/update-azvpngateway) cmdlet 'ini kullanarak 20 Gbps için ağ geçidi ölçek birimlerini yapılandırabilirsiniz. Bu ayar, portalda kullanılabilir olacak yol haritasında bulunur.
 
 ### <a name="how-many-vpn-connections-does-a-virtual-wan-hub-support"></a>Bir sanal WAN hub 'ı kaç VPN bağlantısı destekliyor?
 

@@ -6,15 +6,15 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: 36d87ee9db68c47ee96519cb6b04ff24478427d6
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 9030d85ff5bc83bb54f4a67a9f319a1670a6c2ad
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423410"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881856"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Bing yerel Iş Arama API 'SI v7 başvurusu
 
@@ -70,7 +70,7 @@ Bir istek ve yanıtın içerebilme üstbilgileri aşağıda verilmiştir.
 İstek aşağıdaki sorgu parametrelerini içerebilir. Gerekli parametreler için gereken sütuna bakın. Sorgu parametrelerini URL kodlamanız gerekir.  
   
   
-|Ad|Değer|Type|Gerekli|  
+|Ad|Value|Type|Gerekli|  
 |----------|-----------|----------|--------------|
 |<a name="count" />biriktirme|`offset` Parametresi tarafından belirtilen dizinden başlayarak döndürülecek sonuç sayısı.|Dize|Hayır|   
 |<a name="localCategories" />Yerel Kategoriler|İş kategorisine göre arama tanımlayan seçeneklerin listesi.  Bkz. [Yerel Iş kategorileri arama](local-categories.md)|Dize|Hayır|  
@@ -150,7 +150,7 @@ Bir yayımcının adlarını veya Web sitelerini veya her ikisini de sağlayabil
 ### <a name="place"></a>Yerleştir  
 Restoran veya otel gibi yerel bir işletme hakkındaki bilgileri tanımlar.  
   
-|Ad|Değer|Type|  
+|Ad|Value|Type|  
 |----------|-----------|----------|  
 |_tür|Aşağıdakilerden birine ayarlanmış olabilecek tür İpucu:<br /><br /><ul><li>Otel</li><li>Yerel Iş<br /></li><li>Restoran</ul><li>|Dize|  
 |adres|Varlığın bulunduğu posta adresi.|PostalAddress|  
@@ -188,7 +188,7 @@ Mainline gibi bir arama sonuçları grubunu tanımlar.
 ### <a name="rankingitem"></a>Rankingıtem
 Görüntülenecek bir arama sonuç öğesi tanımlar.
 
-|Ad|Değer|Type|  
+|Ad|Value|Type|  
 |-------------|-----------------|----------|
 |Resultındex|Görüntülenecek cevap içindeki öğenin sıfır tabanlı dizini. Öğe bu alanı içermiyorsa, yanıtdaki tüm öğeleri görüntüleyin. Örneğin, haber yanıtında tüm haber makalelerini görüntüleyin.|Tamsayı|
 |answerType|Görüntülenecek öğeyi içeren yanıt. Örneğin, Haberler.<br /><br />SearchResponse nesnesinde yanıtı bulmak için türü kullanın. Tür, SearchResponse alanının adıdır.<br /><br /> Ancak, yanıt türünü yalnızca bu nesne değer alanını içeriyorsa kullanın; Aksi takdirde, yoksayabilirsiniz.|Dize|
@@ -212,7 +212,7 @@ Hizmet bir hizmet reddi saldırısından şüpheleniyorsa, isteğin başarılı 
 |Ad|Value|Type|  
 |----------|-----------|----------|  
 |_tür|SearchResponse olarak ayarlanan tip ipucu.|Dize|  
-|Yer|Arama sorgusuyla ilgili varlıkların listesi.|JSON nesnesi|  
+|yer|Arama sorgusuyla ilgili varlıkların listesi.|JSON nesnesi|  
 |queryContext|İstek için Bing tarafından kullanılan sorgu dizesini içeren bir nesne.<br /><br /> Bu nesne, Kullanıcı tarafından girildiği şekilde sorgu dizesini içerir. Sorgu dizesi yazım hatası içeriyorsa sorgu için kullanılan değiştirilmiş bir sorgu dizesi de içerebilir.|[QueryContext](#querycontext)|  
 
 

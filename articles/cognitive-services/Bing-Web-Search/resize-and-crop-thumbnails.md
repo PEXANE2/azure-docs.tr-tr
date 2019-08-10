@@ -1,130 +1,130 @@
 ---
-title: Yeniden boyutlandırma ve görüntüyü küçük resim - Bing Web araması API'si kırpma
+title: Görüntü küçük resimlerini yeniden boyutlandırma ve kırpma-Bing Web Araması API'si
 titleSuffix: Azure Cognitive Services
-description: Yeniden boyutlandırma ve Bing arama API'leri tarafından sağlanan küçük resimleri kırpma hakkında bilgi edinin.
+description: Bing Arama API'leri tarafından sunulan küçük resimleri yeniden boyutlandırmayı ve kırpmayı öğrenin.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.assetid: 05A08B01-89FF-4781-AFE7-08DA92F25047
 ms.service: cognitive-services
 ms.subservice: bing-web-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: aahi
-ms.openlocfilehash: 6a5b2dada254a0bfc7fa60172f56221ba67ad279
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: ecc6eb86e7115143fa63b44f9191b1fe8d3703b8
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67867969"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881793"
 ---
-# <a name="resize-and-crop-thumbnail-images"></a>Yeniden boyutlandırma ve küçük resim görüntüleri kırpma
+# <a name="resize-and-crop-thumbnail-images"></a>Küçük resimleri yeniden boyutlandır ve Kırp
 
-Bing arama API'leri bazı yanıtlardan masaüstünün yeniden Bing ve kırpma tarafından sunulan URL'leri ve sorgu parametreleri içerebilir. Örneğin:
+Bing Arama API'leri bazı yanıtlar Bing tarafından sunulan küçük resim görüntülerinin URL 'Lerini içerir ve bu, yeniden boyutlandırabilir ve kırpabilir ve sorgu parametreleri içerebilir. Örneğin:
 
 `https://<host>/th?id=AMMS_92772df988...&w=110&h=73&rs=1&qlt=80&cdv=1&pid=16.1`
 
-Bu küçük bir alt kümesi görüntülerseniz, kalan resimleri görüntülemek için bir seçenek sağlar.
+Bu küçük resimlerin bir alt kümesini görüntülediğinizde, kalan görüntüleri görüntülemek için bir seçenek belirtin.
 
 > [!NOTE]
-> Kırpma ve küçük resim görüntüleri yeniden boyutlandırmayı Bing arama API'si gerektirdiği gibi üçüncü taraf haklarını uyar bir arama senaryo sağladığınızdan emin olun [kullanın ve gereksinimlerini görüntülemek](use-display-requirements.md).
+> Küçük resim görüntülerinin kırpılması ve yeniden boyutlandırılması, Bing Arama API [kullanımı ve görüntüleme gereksinimlerinin](use-display-requirements.md)gerektirdiği şekilde üçüncü taraf haklarını karşılayan bir arama senaryosu sunduğunuzdan emin olun.
 
-## <a name="resize-a-thumbnail"></a>Bir küçük resim yeniden boyutlandırma 
+## <a name="resize-a-thumbnail"></a>Küçük resmi yeniden boyutlandırma 
 
-Bir küçük resim yeniden boyutlandırmak için Bing yalnızca birini belirtebilirsiniz önerir `w` (genişlik) veya `h` küçük 's URL (yükseklik) sorgu parametreleri. Yalnızca enlerini veya boylarını belirtme, özgün resmin en boy korumak Bing olanak tanır. Genişlik ve yükseklik piksel cinsinden belirtin. 
+Bir küçük resmi yeniden boyutlandırmak için Bing, küçük resmin URL 'sinde yalnızca `w` bir (Width) `h` veya (Height) sorgu parametrelerini belirtmenizi önerir. Yalnızca yükseklik veya Genişlik belirtme, Bing 'in görüntünün özgün en boy oranını korumasını sağlar. Genişliği ve yüksekliği piksel cinsinden belirtin. 
 
-Örneğin, özgün küçük 480 x 620 ise:
+Örneğin, özgün küçük resim 480x620 ise:
 
 `https://<host>/th?id=JN.5l3yzwy%2f%2fHj59U6XhssIQ&pid=Api&w=480&h=620`
 
-Ve boyutunu küçültmek, ayarlamak istediğiniz `w` yeni bir değer parametresini (örneğin `336`) ve Kaldır `h` parametresi:
+Ve boyutunu azaltmak istiyorsanız, `w` parametreyi yeni bir değere ayarlayın (örneğin `336` `h` ) ve parametresini kaldırın:
 
 `https://<host>/th?id=JN.5l3yzwy%2f%2fHj59U6XhssIQ&pid=Api&w=336`
 
-Yalnızca yükseklik veya bir küçük resim genişliğini belirtirseniz, görüntünün özgün en boy oranı korunur. Her iki parametre belirtmeniz ve en boy oranı korunur değil, Bing kenarlık görüntüsünün beyaz doldurma ekler.
+Küçük resmin yalnızca yüksekliğini veya genişliğini belirtirseniz, resmin özgün en boy oranı korunur. Her iki parametreyi de belirtirseniz ve en boy oranı korunmazsa, Bing görüntünün kenarlığına beyaz doldurma ekler.
 
-Örneğin, kırpma olmadan 200 x 200 480 x 359 görüntüye yeniden boyutlandırırsanız, tam genişlikli görüntü içerir ancak üst ve alt görüntüsünün doldurma beyaz 25 piksel yüksekliği içerir. Görüntü 359 x 480 olduysa, sol ve sağ kenarlık beyaz doldurma içerecektir. Görüntü kırpma, beyaz dolgu eklenmez.  
+Örneğin, bir 480x359 görüntüsünü kırpmadan 200x200 ' e yeniden boyutlandırırsanız, tam genişlik görüntüyü içerir, ancak yükseklik görüntünün üst ve alt kısmında 25 piksel beyaz doldurma içerecektir. Görüntü 359x480 ise, sol ve sağ kenarlıklar beyaz doldurma içerecektir. Görüntüyü kırpmanız halinde beyaz doldurma eklenmez.  
 
-Aşağıdaki resimde, bir küçük resim (480 x 300) özgün boyutunu gösterir.  
+Aşağıdaki resimde, küçük resim görüntüsünün orijinal boyutu gösterilmektedir (480x300).  
   
-![Özgün yatay görüntü](./media/resize-crop/bing-resize-crop-landscape.png)  
+![Orijinal yatay görüntü](./media/resize-crop/bing-resize-crop-landscape.png)  
   
-Aşağıdaki resimde, 200 x 200'e yeniden boyutlandırılmış görüntüyü gösterir. En boy oranı korunur ve üst ve alt kenarlıklarına beyaz (burada siyah kenarlığa doldurmayı göstermek için dahil edilmiştir) ile doldurulur.  
+Aşağıdaki resimde, 200x200 olarak yeniden boyutlandırılmış görüntü gösterilmektedir. En boy oranı korunur ve üst ve alt kenarlıklar beyaz ile doldurulur (Bu, doldurmayı göstermek için buradaki siyah kenarlık dahil edilir).  
   
-![Yeniden boyutlandırılan yatay görüntü](./media/resize-crop/bing-resize-crop-landscape-resized.png)  
+![Yatay görüntü yeniden boyutlandırılmış](./media/resize-crop/bing-resize-crop-landscape-resized.png)  
 
-Görüntünün özgün genişliği ve yüksekliği büyük boyutlar belirtirseniz, Bing beyaz doldurma için sol ve üst kenarlık ekleyin.  
+Görüntünün orijinal genişlik ve yüksekliğinden daha büyük boyutlar belirtirseniz, Bing sol ve üst kenarlıklara beyaz doldurma ekler.  
 
-## <a name="request-different-thumbnail-sizes"></a>İstek farklı bir küçük resim boyutları
+## <a name="request-different-thumbnail-sizes"></a>Farklı küçük resim boyutları isteme
 
-Farklı bir küçük resim boyutu istemek için dışında küçük 's URL'den tüm sorgu parametreleri Kaldır `id` ve `pid` parametreleri. Ya da ekleme `&w` (genişlik) veya `&h` istediğiniz görüntüyü boyutunu piksel ancak ikisini birden sorgu parametresi (yükseklik). Bing görüntü özgün en boy oranını korur. 
+Farklı bir küçük resim resmi boyutu istemek için, `id` ve `pid` parametreleri dışında, küçük resmin URL 'sindeki tüm sorgu parametrelerini kaldırın. Daha sonra, istenen `&w` görüntü boyutu olan ( `&h` Width) veya (Height) sorgu parametresini her ikisi de değil, piksel olarak ekleyin. Bing görüntünün özgün en boy oranını koruyacaktır. 
 
-Yukarıdaki URL'ye 165 piksel tarafından belirtilen resmin genişliğini artırmak için aşağıdaki URL kullanırsınız:
+Yukarıdaki URL ile belirtilen görüntünün genişliğini 165 piksel olarak artırmak için aşağıdaki URL 'YI kullanın:
 
 `https://<host>/th?id=AMMS_92772df988...&w=165&pid=16.1`
 
-Görüntünün orijinal boyuttan daha büyük bir görüntü istemesi durumunda, Bing görüntünün çevresine beyaz doldurma gerektiğinde ekler. Örneğin, görüntünün özgün boyutudur 474 x 316 ve ayarladığınız `&w` Bing 500 x 333 görüntü 500'e döndürür. Bu görüntü, üst ve alt kenarları ve 13 piksel doldurma sağ ve sol kenarlarında beyaz doldurma 8,5 piksel sahip olur.
+Görüntünün özgün boyutundan daha büyük bir görüntü isteğinde bulunmanız, Bing görüntünün etrafında beyaz doldurma ekler. Örneğin, görüntünün özgün boyutu 474x316 ise ve 500 olarak ayarlarsanız `&w` , Bing 500 x333 görüntüsünü döndürür. Bu görüntüde, üst ve alt kenarlar üzerinde 8,5 piksel beyaz doldurma ve sol ve sağ kenarlar üzerinde 13 piksel doldurma olacaktır.
 
-İstenen boyut görüntünün özgün boyutundan büyükse, beyaz doldurma ekleme Bing önleyecek şekilde ayarlanmış `&p` sorgu parametresi 0. Örneğin, eklerseniz `&p=0` Bing yukarıdaki URL'deki parametresi 500 x 333 görüntüsü yerine bir 474 x 316 görüntüsünü döndürür:
+İstenen boyut görüntünün özgün boyutundan büyükse Bing 'in beyaz doldurma eklemesini engellemek için `&p` sorgu parametresini 0 olarak ayarlayın. Örneğin, `&p=0` parametreyi yukarıdaki URL 'ye eklerseniz, Bing 500 x333 görüntüsü yerine 474x316 görüntüsünü döndürür:
 
 `https://<host>/th?id=AMMS_92772df988...&w=500&p=0&pid=16.1`
 
-Her ikisini de belirtirseniz `&w` ve `&h` sorgu parametreleri, Bing görüntünün en boy oranını korur ve gerektiğinde beyaz doldurma ekler. Örneğin, görüntünün özgün boyutudur 474 x 316 ve genişlik ve yükseklik parametrelerini 200 x 200'e ayarlayın (`&w=200&h=200`), Bing, üst ve alt üzerinde beyaz doldurma 33 piksel içeren bir görüntü döndürür. Eklerseniz `&p` sorgu parametresi, Bing, 200 x 134 görüntüyü döndürür.
+Hem hem de `&w` `&h` sorgu parametrelerini belirtirseniz, Bing görüntünün en boy oranını korur ve gerektiğinde beyaz doldurma ekler. Örneğin, görüntünün özgün boyutu 474x316 ise ve Width ve Height parametrelerini 200x200 (`&w=200&h=200`) olarak ayarlarsanız, Bing, üst ve alt üzerinde 33 piksel beyaz doldurma içeren bir görüntü döndürür. `&p` Sorgu parametresini eklerseniz, Bing bir 200x134 görüntüsü döndürür.
 
-## <a name="crop-a-thumbnail"></a>Bir küçük resim kırpma 
+## <a name="crop-a-thumbnail"></a>Küçük resim kırpma 
 
-Görüntü kırpma için dahil `c` (kırpma) sorgu parametresi. Aşağıdaki değerleri kullanabilirsiniz:
+Bir görüntüyü kırpmak için `c` (Kırp) sorgu parametresini ekleyin. Aşağıdaki değerleri kullanabilirsiniz:
   
-- `4` &mdash; Görme engelli oranı  
-- `7` &mdash; Akıllı oranı  
+- `4`&mdash; Kör oran  
+- `7`&mdash; Akıllı oran  
 
-### <a name="smart-ratio-cropping"></a>Akıllı kırpma oranı
+### <a name="smart-ratio-cropping"></a>Akıllı oran kırpma
 
-Akıllı oranı kırpma istemesi durumunda (ayarlayarak `c` parametresi `7`), Bing kırpma kendi ilgi bölgesi merkezi bir görüntüden dışa doğru görüntünün en boy oranını koruyarak. İlgi bölgesi çoğu alma kısımları içeren Bing belirleyen görüntü alanıdır. Aşağıda bir örnek ilgi bölgesi gösterilmektedir.  
+Akıllı oran kırpma isteğinde bulunursa ( `c` parametresini öğesine `7`ayarlayarak), Bing, görüntünün en boy oranını koruyarak bir görüntüyü dışarıya doğru ilgi alanına göre kırpacaktır. İlgilendiğiniz bölge, görüntünün en fazla içeri aktarma bölümünü içerdiğini belirleyen görüntüdür. Aşağıda, ilgilendiğiniz örnek bir bölge gösterilmektedir.  
   
-![İlgi bölgesi](./media/resize-crop/bing-resize-crop-regionofinterest.png)
+![İlgilendiğiniz bölge](./media/resize-crop/bing-resize-crop-regionofinterest.png)
 
-Görüntüyü yeniden boyutlandırma ve akıllı oranı kırpma isteği, Bing en boy oranını korurken görüntünün istenen boyuta azaltır. Bing, ardından yeniden boyutlandırılan boyutlarına göre resmi kırpar. Örneğin, yeniden boyutlandırılan genişliği veya yüksekliği eşit azsa, Bing sola ve sağa ilgi bölgesi merkezinin resmi kırpar. Aksi takdirde, Bing, üst ve alt bölgeyi merkezinin kırpma.  
+Bir görüntüyü yeniden boyutlandırabilir ve akıllı oran kırpma isteğinde bulunursa, Bing en boy oranını koruyarak görüntüyü istenen boyuta küçültür. Bing daha sonra yeniden boyutlandırılmış boyutlara göre görüntüyü kırpar. Örneğin, yeniden boyutlandırılan genişlik yükseklikten küçükse veya yüksekliğe eşitse, Bing resmi ilgilendiğiniz bölgenin merkezinin soluna ve sağına kırpar. Aksi halde, Bing onu ilgilendiğiniz bölgenin merkezine ve sonuna kırpar.  
   
  
-200 x oranı akıllı kırpma kullanarak 200'e azalır görüntüyü gösterir. Sol üst köşedeki görüntüden Bing ölçer nedeniyle görüntünün alt kısmında kırpılır. 
+Aşağıda, akıllı oran kırpma kullanılarak 200x200 ' e küçültülmüş olan görüntü gösterilmektedir. Bing, görüntüyü sol üst köşesinden ölçtüğünden görüntünün alt kısmı kırpılır. 
   
-![200 x 200 kırpılmış yatay görüntü](./media/resize-crop/bing-resize-crop-landscape200x200c7.png) 
+![200 X200 ' e kırpılan yatay görüntü](./media/resize-crop/bing-resize-crop-landscape200x200c7.png) 
   
-200 x oranı akıllı kırpma kullanarak 100 azaltılmış görüntüyü gösterir. Sol üst köşedeki görüntüden Bing ölçer nedeniyle görüntünün alt kısmında kırpılır. 
+Aşağıda, akıllı oran kırpılması kullanılarak 200x100 ' e küçültülmüş olan görüntü gösterilmektedir. Bing, görüntüyü sol üst köşesinden ölçtüğünden görüntünün alt kısmı kırpılır. 
    
-![200 x 100 kırpılmış yatay görüntü](./media/resize-crop/bing-resize-crop-landscape200x100c7.png)
+![200 x100 ' e kırpılan yatay görüntü](./media/resize-crop/bing-resize-crop-landscape200x100c7.png)
   
-100 x oranı akıllı kırpma kullanarak 200'e azalır görüntüyü gösterir. Bing görüntü Merkezi'nden ölçer olduğundan, sol ve sağ bölümleri kırpılır.
+Aşağıda, akıllı oran kırpılması kullanılarak 100x200 ' e küçültülmüş görüntü gösterilmektedir. Bing görüntüyü merkezden ölçtiğinden görüntünün sol ve sağ kısımları kırpılır.
   
-![100 x 200 kırpılmış yatay görüntü](./media/resize-crop/bing-resize-crop-landscape100x200c7.png) 
+![100x200 ' e kırpılan yatay resim](./media/resize-crop/bing-resize-crop-landscape100x200c7.png) 
 
-Bing görüntü ilgi bölgesi belirleyemiyorsa, hizmet görme oranı kırpma kullanın.  
+Bing görüntünün ilgilendiğiniz bölgesini belirleyeleyemiyorsa, hizmet, kör oran kırpmadan önce kullanılır.  
 
-### <a name="blind-ratio-cropping"></a>Görme engelli oranı kırpma
+### <a name="blind-ratio-cropping"></a>Kör oran kırpma
 
-Görme oranı kırpma istemesi durumunda (ayarlayarak `c` parametresi `4`), Bing, görüntü kırpma için aşağıdaki kuralları kullanır.  
+Görünmeyen oran kırpma isteğinde bulunursa ( `c` parametresini olarak `4`ayarlayarak), Bing Görüntüyü kırpmak için aşağıdaki kuralları kullanır.  
   
-- Varsa `(Original Image Width / Original Image Height) < (Requested Image Width / Requested Image Height)`, görüntü sol üst köşesinden ölçülür ve altındaki kırpılır.  
-- Varsa `(Original Image Width / Original Image Height) > (Requested Image Width / Requested Image Height)`, görüntünün merkezden ölçülür ve sağa ve sola kırpılmış.  
+- Eğer `(Original Image Width / Original Image Height) < (Requested Image Width / Requested Image Height)`görüntü, sol üst köşeden ölçülür ve alt kısımdaki kırpılır.  
+- `(Original Image Width / Original Image Height) > (Requested Image Width / Requested Image Height)`, Görüntü merkezden ölçülür ve sola ve sağa kırpılır.  
 
-225 x 300 bir dikey görüntü gösterir.  
+Aşağıda, 225x300 olan dikey bir görüntü gösterilmektedir.  
   
-![Özgün Ay Çiçeği görüntüsü](./media/resize-crop/bing-resize-crop-sunflower.png)
+![Orijinal güneş çiçeği resmi](./media/resize-crop/bing-resize-crop-sunflower.png)
   
-200 x görme oranı kırpma kullanarak 200'e azalır görüntüyü gösterir. Resim kırpılmış görüntünün alt kısmında kaynaklanan sol üst köşedeki ölçülür.  
+Aşağıda, görüntü, görme oranından sonra 200x200 ' e indirgenecek şekilde gösterilmiştir. Resim, kırpılmakta olan görüntünün alt kısmına neden olan sol üst köşesinden ölçülür.  
   
-![200 x 200 kırpılmış Ay Çiçeği görüntüsü](./media/resize-crop/bing-resize-crop-sunflower200x200c4.png)
+![200 X200 ' e kırpılan güneş çiçeği resmi](./media/resize-crop/bing-resize-crop-sunflower200x200c4.png)
   
-200 x görme oranı kırpma kullanarak 100 azaltılmış görüntüyü gösterir. Resim kırpılmış görüntünün alt kısmında kaynaklanan sol üst köşedeki ölçülür.  
+Aşağıda, görme oranının kırpılması kullanılarak 200x100 ' e küçültülmüş olan görüntü gösterilmektedir. Resim, kırpılmakta olan görüntünün alt kısmına neden olan sol üst köşesinden ölçülür.  
   
-![200 x 100 kırpılmış Ay Çiçeği görüntüsü](./media/resize-crop/bing-resize-crop-sunflower200x100c4.png)
+![200 x100 ' e kırpılmış sunçiçeği resmi](./media/resize-crop/bing-resize-crop-sunflower200x100c4.png)
   
-100 x görme oranı kırpma kullanarak 200'e azalır görüntüyü gösterir. Resim kırpılmış resmin sol ve sağ bölümlerinde kaynaklanan Merkezi'nden ölçülür.  
+Aşağıda, görme oranının kırpılması kullanılarak 100x200 ' e küçültülmüş görüntü gösterilmektedir. Görüntü, kırpılmakta olan görüntünün sol ve sağ bölümlerine neden olan merkezden ölçülür.  
   
-![100 x 200 kırpılmış Ay Çiçeği görüntüsü](./media/resize-crop/bing-resize-crop-sunflower100x200c4.png)
+![100 X200 ' e kırpılan güneş çiçeği resmi](./media/resize-crop/bing-resize-crop-sunflower100x200c4.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Bing arama API'leri nelerdir?](bing-api-comparison.md)
-* [Bing arama API'si kullanın ve gereksinimleri görüntüleme](use-display-requirements.md)
+* [Bing Arama API'leri nedir?](bing-api-comparison.md)
+* [API kullanımı ve görüntüleme gereksinimlerini Bing Arama](use-display-requirements.md)

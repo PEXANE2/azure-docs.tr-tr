@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c9de4a9b72e446a7d2b6687af380ee910b58980
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: a56fcc45d4efb21c4904380d731d9e95584c39fd
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741281"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879407"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Öğretici: Karma Azure Active Directory katılmış cihazları el ile yapılandırma
 
@@ -71,6 +71,8 @@ Kuruluşunuz şirket içi Active Directory ile yönetilen (Federe olmayan) kurul
 Sürüm 1703 veya önceki sürümlerde Windows 10 cihazlarında, kuruluşunuz giden bir ara sunucu üzerinden internet erişimi gerektiriyorsa, Windows 10 bilgisayarlarının Azure AD 'ye kaydolmasının etkinleştirilmesi için Web proxy otomatik bulma (WPAD) uygulamanız gerekir.
 
 Windows 10 1803 ile başlayarak, Federasyon etki alanındaki bir cihaz tarafından AD FS aracılığıyla bir karma Azure AD katılımı denemesi başarısız olur ve Azure AD Connect bilgisayar/cihaz nesnelerini Azure AD 'ye eşitlemek üzere yapılandırılmışsa, cihaz, hibrit Azure AD JOIN 'i bizimle tamamlamaya çalışır eşitlenen bilgisayar/cihaz alınıyor.
+
+Cihazın sistem hesabı altında yukarıdaki Microsoft kaynaklarına erişip erişemediğinizi doğrulamak için, [test cihazı kayıt bağlantı](https://gallery.technet.microsoft.com/Test-Device-Registration-3dc944c0) betiği ' ni kullanabilirsiniz.
 
 ## <a name="verify-configuration-steps"></a>Yapılandırma adımlarını doğrulama
 

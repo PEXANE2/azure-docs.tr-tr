@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 05/20/2019
 ms.author: mlearned
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 2079144cf6cb36870645d3182aabdecccfcbadd0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 8a5fb9313fca2a8d787d0fbde47401f6d3e1d229
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67615086"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880674"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Hızlı Başlangıç: Azure CLı kullanarak bir Azure Kubernetes hizmeti (AKS) kümesi dağıtma
 
@@ -91,7 +91,7 @@ Kümenize bağlantıyı doğrulamak için [kubectl get][kubectl-get] komutunu ku
 kubectl get nodes
 ```
 
-Aşağıdaki örnekte önceki adımlarda oluşturulan tek düğüm gösterilmiştir. Düğüm durumunun olduğundan emin *olun:*
+Aşağıdaki örnekte önceki adımlarda oluşturulan tek düğüm gösterilmiştir. Düğüm durumunun olduğundan emin olun:
 
 ```output
 NAME                       STATUS   ROLES   AGE     VERSION
@@ -242,16 +242,16 @@ Azure oyları için geçerli durumu, çalışma süresini ve kaynak kullanımın
 
 1. Azure portal [https://portal.azure.com][azure-portal]bir Web tarayıcısı açın.
 1. *myResourceGroup* gibi bir kaynak grubunu ve *myAKSCluster* gibi bir AKS kümesini seçin.
-1. Sol taraftaki **izleme** altında **Öngörüler** ' i seçin.
-1. Üst taraftan **+ Filtre Ekle**'yi seçin
-1. *Ad alanı* özelliğini ve ardından *\<kube-system hariç tümünü\> seçin*
-1. **Kapsayıcılar** bölümünü görüntüleyin.
+1. Sol taraftaki **izleme** altında **Öngörüler**' i seçin.
+1. Üst kısımda **+ Filtre Ekle**' yi seçin.
+1. Özellik olarak *ad alanı* ' nı ve ardından  *\<kuas\>-sistem*' i seçin.
+1. **Kapsayıcıları**seçin.
 
 Aşağıdaki örnekte olduğu gibi *azure-vote-back* ve *azure-vote-front* kapsayıcıları görüntülenir:
 
 ![AKS'de çalışan kapsayıcıların durumunu görüntüleme](media/kubernetes-walkthrough/monitor-containers.png)
 
-`azure-vote-back` Pod 'un günlüklerini görmek için analizler ' **de görüntüleme**seçeneğini belirleyin ve ardından kapsayıcılar listesinin sağ tarafındaki **kapsayıcı günlüklerini görüntüle** bağlantısına tıklayın. Bu günlükler, kapsayıcıdaki *stdout* ve *stderr* akışlarını içerir.
+`azure-vote-back` Pod 'un günlüklerini görmek için analizler ' **de görüntüleme**seçeneğini belirleyin ve ardından kapsayıcılar listesinin sağ tarafındaki **kapsayıcı günlüklerini görüntüle** bağlantısını seçin. Bu günlükler, kapsayıcıdaki *stdout* ve *stderr* akışlarını içerir.
 
 ![AKS'deki kapsayıcı günlüklerini görüntüleme](media/kubernetes-walkthrough/monitor-container-logs.png)
 

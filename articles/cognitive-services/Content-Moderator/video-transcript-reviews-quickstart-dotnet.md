@@ -7,15 +7,15 @@ author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: sajagtap
-ms.openlocfilehash: 7bbdfb995ab6c819b0782a30e2ade4df4e5e0551
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f3f93824eb021e0fb75e1a6b81935292379d50e5
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564235"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883066"
 ---
 # <a name="create-video-transcript-reviews-using-net"></a>.NET kullanarak video dökümü oluşturma İncelemeleri oluşturun
 
@@ -376,7 +376,7 @@ Press any key to close the application.
 
 ## <a name="navigate-to-your-video-transcript-review"></a>Video dökümü gözden geçirme 'nize gidin
 
-**Video**> dökümünü>gözden geçir ekranında Content moderator gözden geçirme aracındayken video dökümü inceleme sayfasına gidin.
+**Video**>dökümünü>gözden geçir ekranında Content moderator gözden geçirme aracındayken video dökümü inceleme sayfasına gidin.
 
 Aşağıdaki özellikleri görürsünüz:
 - Eklediğiniz iki satır dökümü

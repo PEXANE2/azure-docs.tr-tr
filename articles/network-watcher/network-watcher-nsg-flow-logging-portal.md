@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 3bc06a8903fbc431d991e6ef2a4aad8fbaff2365
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: f254572f5c26a809f401e99f527ccd3d30451c3d
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736862"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68931580"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak bir sanal makineye gelen ve giden ağ trafiğini günlüğe kaydet
 
@@ -108,6 +108,11 @@ NSG akış günlüğü kaydı için **Microsoft.Insights** sağlayıcısı gerek
    ![Akış günlükleri sürümünü seçin](./media/network-watcher-nsg-flow-logging-portal/select-flow-log-version.png)
 
 9. 3\. adımda oluşturduğunuz depolama hesabını seçin.
+   > [!NOTE]
+   > NSG akış günlükleri şu durumlarda depolama hesaplarıyla çalışmaz:
+   > * Depolama hesaplarında güvenlik duvarı etkinleştirilmiştir.
+   > * Depolama hesaplarında [hiyerarşik ad alanı](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) etkindir.
+1. Portalın sol üst köşesinde **Tüm hizmetler**’i seçin. **Filtre** kutusuna *Ağ İzleyicisi* yazın. **Ağ İzleyicisi**, arama sonuçlarında görüntülendiğinde seçin.
 10. **Bekletme (gün)** değerini 5 olarak ayarlayın ve **Kaydet**’i seçin.
 
 ## <a name="download-flow-log"></a>Akış günlüğünü indirme
@@ -212,7 +217,7 @@ Aşağıdaki json, verileri günlüğe kaydedilen her akış için PT1H.json dos
 | A            | Action                 | Trafiğe izin mi verildiği (A) yoksa trafiğin ret mi edildiği (D).  
 | C            | Yalnızca akış durumu **sürüm 2** | Akışın durumunu yakalar. Olası durumlar **B**: Bir akış oluşturulduğunda başlar. İstatistikler sağlanmamış. **C**: Devam eden bir akış için devam edin. İstatistikler 5 dakikalık aralıklarla sağlanır. **E**: Bir akış sonlandırıldığında bitiş. İstatistikler sağlanır. |
 | 30 | Kaynak gönderilen paketler **yalnızca hedef sürüm 2** ' ye | Son güncelleştirmeden bu yana kaynaktan hedefe gönderilen TCP veya UDP paketlerinin toplam sayısı. |
-| 16978 | Gönderilen bayt-kaynak yalnızca hedef **sürüm 2** | Son güncelleştirmeden bu yana kaynaktan hedefe gönderilen TCP veya UDP paket baytlarının toplam sayısıdır. Paket baytları paket üst bilgisini ve yükünü içerir. | 
+| 16978 | Gönderilen bayt-kaynak yalnızca hedef **sürüm 2** | Son güncelleştirmeden bu yana kaynaktan hedefe gönderilen TCP veya UDP paket baytlarının toplam sayısıdır. Paket baytları paket üst bilgisini ve yükünü içerir. |
 | 24 | Gönderilen paketler-hedef yalnızca kaynak **sürüm 2** ' ye | Son güncelleştirmeden bu yana hedefin kaynağına Gönderilen TCP veya UDP paketlerinin toplam sayısı. |
 | 14008| Gönderilen bayt-hedef yalnızca kaynak **sürüm 2** ' ye | Son güncelleştirmeden bu yana, hedefin kaynağına Gönderilen TCP ve UDP paket baytlarının toplam sayısıdır. Paket baytları paket üst bilgisini ve yükünü içerir.|
 

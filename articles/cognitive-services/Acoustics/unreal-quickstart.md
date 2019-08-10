@@ -11,19 +11,19 @@ ms.topic: quickstart
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8809c80f2ecba4ea2b3e3d280be0c4ad81d78d37
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 927ce403130460c302f546038ff3a0c3a16e0368
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854842"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933010"
 ---
 # <a name="project-acoustics-unrealwwise-quickstart"></a>Proje Acoustics Unreal/Wwise hızlı başlangıç
 Bu hızlı başlangıçta, Unreal Engine ve Wwise için sunulan örnek içeriği kullanarak Project Acoustics tasarım denetimleriyle denemeler yapacaksınız.
 
-Yazılım gereksinimleri:
-* [Unreal Engine](https://www.unrealengine.com/) 4,21
-* [Audiokinetik Wwise](https://www.audiokinetic.com/products/wwise/) 2018.1.6
+Örnek içerik kullanımı için yazılım gereksinimleri:
+* [Unreal Engine](https://www.unrealengine.com/) 4,22
+* [Audiokinetik Wwise](https://www.audiokinetic.com/products/wwise/) 2019.1.2
 
 ## <a name="download-the-sample-package"></a>Örnek paketi indirin
 [Project Acoustics Unreal + Wwise örnek paketini](https://www.microsoft.com/download/details.aspx?id=58090)indirin. Örnek paket gerçek olmayan bir altyapı projesi, gerçek olmayan projenin Wwise projesi ve Project Acoustics Wwise eklentisi içerir.
@@ -55,12 +55,16 @@ Project Acoustics Unreal eklentisi, Wwise Unreal Plugin API 'sinden ek davranı�
 
     ![DXSDK açıklamalı açıklaması gösteren kod Düzenleyicisi ekran görüntüsü](media/directx-sdk-comment.png)
 
+* Visual Studio 2019 ile derlerseniz, bir bağlama hatasını Wwise ile geçici olarak çözmek için, ' `VSVersion` `vc150`de `AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs` varsayılan değeri el ile düzenleyin:
+
+    ![VSVersion öğesinin vc150 olarak değiştirildiğini gösteren kod düzenleyicisinin ekran görüntüsü](media/vsversion-comment.png)
+
 ### <a name="open-the-unreal-project"></a>Gerçek olmayan projeyi açın. 
 Bu, modülleri yeniden oluşturmanız istenir; Evet ' e tıklayın.
 
 >Projeyi açmak derleme hatalarıyla başarısız olursa, Project Acoustics Wwise eklentisini Project Acoustics örnek projesinde kullanılan Wwise sürümüne yüklediğinizden emin olun.
 
->[Audiokinetic Wwise](https://www.audiokinetic.com/products/wwise/) 2018.1.6 kullanmıyorsanız, ses bankalarını, örnek projede sesçmadan önce yeniden oluşturmanız gerekecektir.
+>2019,1 'den önceki bir [Audiokinetik Wwise](https://www.audiokinetic.com/products/wwise/) sürümü kullanıyorsanız, Project Acoustics örnek projesi ile ses bankalarını oluşturabilemeyeceksiniz.  Doğru kullanım için, Wwise sürüm 2019,1 ' i örnek projeye tümleştirmeniz gerekir.
 
 ## <a name="experiment-with-project-acoustics-design-controls"></a>Project Acoustics tasarım denetimleriyle deneyin
 Gerçek olmayan düzenleyicideki Oynat düğmesine tıklayarak sahnenin nasıl seslere dinleyebildiğini dinleyin. Masaüstünde, gezinmek için W, A, S, D ve fare kullanın. Diğer denetimlerin klavye kısayollarını görmek için **F1** tuşuna basın. Deneyebileceğiniz bazı tasarım etkinlikleri aşağıda verilmiştir:

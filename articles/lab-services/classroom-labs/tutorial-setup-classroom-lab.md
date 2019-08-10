@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/11/2019
 ms.author: spelluru
-ms.openlocfilehash: 0c50a321cbeb0d07a5039038ff796df00463ac8a
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 964ecca015e440439885bbbd85cb720a3abd10a9
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385661"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883508"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Öğretici: Bir sınıf laboratuvarı ayarlama 
 Bu öğreticide, sınıftaki öğrenciler tarafından kullanılan sanal makinelerle bir sınıf laboratuvarı ayarlayacaksınız.  
@@ -43,7 +43,7 @@ Laboratuvar sahibi, başka kullanıcıları **Laboratuvar Oluşturucu** rolüne 
 2. **Oturum aç**’ı seçip kimlik bilgilerinizi girin. Azure Lab Services, kuruluş hesaplarını ve Microsoft hesaplarını destekler. 
 3. **Yeni Laboratuvar** penceresinde aşağıdaki eylemleri gerçekleştirin: 
     1. Laboratuvarınız için bir **ad** belirtin. 
-    2. Laboratuvardaki en fazla **sanal makine sayısını** belirtin. Laboratuvar oluşturduktan sonra veya var olan bir laboratuvarda sanal makine sayısını artırabilir veya oluşturabilirsiniz. Daha fazla bilgi için bkz. [bir laboratuvarda sanal makine sayısını güncelleştirme](how-to-configure-student-usage.md#update-number-of-virtual-machines-in-lab)
+    2. Laboratuvardaki en fazla **sanal makine sayısını** belirtin. Laboratuvar oluşturduktan sonra veya var olan bir laboratuvarda sanal makine sayısını artırabilir veya azaltabilirsiniz. Daha fazla bilgi için bkz. [bir laboratuvarda sanal makine sayısını güncelleştirme](how-to-configure-student-usage.md#update-number-of-virtual-machines-in-lab)
     6. **Kaydet**’i seçin.
 
         ![Sınıf laboratuvarı oluşturma](../media/tutorial-setup-classroom-lab/new-lab-window.png)

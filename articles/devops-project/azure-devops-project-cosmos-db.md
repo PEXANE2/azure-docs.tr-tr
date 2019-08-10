@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure DevOps projeleri ile Azure Cosmos DB tarafından desteklenen Node.js uygulamaları dağıtma'
-description: Azure DevOps projeleri, Azure'da kullanmaya başlamak kolaylaştırır. DevOps projeleri ile birkaç Hızlı adımda azure'da güçlendirilmiş Windows Web uygulaması için Azure Cosmos DB Node.js uygulamanızın dağıtabilirsiniz.
+title: 'Öğretici: Azure DevOps Projeleri ile Azure Cosmos DB tarafından desteklenen Node. js uygulamalarını dağıtın'
+description: Azure DevOps projeleri, Azure'da kullanmaya başlamak kolaylaştırır. DevOps Projeleri ile, birkaç hızlı adımda Windows Web App 'e Azure Cosmos DB desteklenen Node. js uygulamanızı dağıtabilirsiniz.
 ms.author: mlearned
 ms.manager: douge
 ms.prod: devops
@@ -9,162 +9,166 @@ ms.topic: tutorial
 ms.date: 07/11/2019
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: 4310807423600b96078ee48a04a5ad6dab68cd7e
-ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
+ms.openlocfilehash: 38fc4aa04269924ad0acd529e961dd3228ec236e
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67813069"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884411"
 ---
-# <a name="deploy-nodejs-apps-powered-by-azure-cosmos-db-with-devops-projects"></a>DevOps projeleri ile Azure Cosmos DB tarafından desteklenen Node.js uygulamaları dağıtma
+# <a name="deploy-nodejs-apps-powered-by-azure-cosmos-db-with-devops-projects"></a>DevOps Projeleri ile Azure Cosmos DB tarafından desteklenen Node. js uygulamalarını dağıtın
 
-Azure DevOps projeleri, mevcut kodunuzu ve Git deposuna taşıyın veya sürekli tümleştirme (CI) ve azure'a sürekli teslim (CD) işlem hattı oluşturmak için örnek bir uygulama seçin kolaylaştırılmış bir deneyim sunar.
+Azure DevOps Projeleri, Azure 'da sürekli tümleştirme (CI) ve sürekli dağıtım (CD) işlem hattı oluşturabileceğiniz kolaylaştırılmış bir deneyim sunar. Bunu, mevcut kodunuzu ve git deponuzu (Depoyu) kullanarak veya örnek bir uygulama seçerek yapabilirsiniz.
 
-DevOps projeleri ayrıca:
+Ayrıca DevOps Projeleri:
 
-* Azure kaynaklarını otomatik olarak Azure Cosmos DB, Application Insights, App Service ve App Service gibi oluşturun.
+* Azure Cosmos DB, Azure Application Insights, Azure App Service ve App Service planları gibi Azure kaynaklarını otomatik olarak oluşturur
 
-* Oluşturur ve yayın işlem hattı, Azure DevOps için CI/CD yapılandırır.
+* Azure DevOps 'da bir CI/CD yayın işlem hattı oluşturur ve yapılandırır
 
 Bu öğreticide şunları yapacaksınız:
 
 > [!div class="checklist"]
-> * Azure Cosmos DB tarafından desteklenen bir Node.js uygulamasını dağıtmak için DevOps projeleri'ni kullanın
+> * Azure Cosmos DB tarafından desteklenen bir Node. js uygulamasını dağıtmak için DevOps Projeleri kullanın
 > * Azure DevOps ve Azure aboneliğinin yapılandırın
 > * Azure Cosmos DB inceleyin
 > * CI işlem hattını inceleme
 > * CD işlem hattını inceleme
-> * Değişiklikleri Git'e kaydedin ve otomatik olarak Azure'a dağıtın
-> * Kaynakları temizleme
+> * Değişiklikleri git 'e işleyin ve Azure 'a otomatik olarak dağıtın
+> * Kaynakları Temizleme
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Azure aboneliği. Aracılığıyla ücretsiz edinebilirsiniz [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/)
+[Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) ücretsiz olarak alabileceğiniz bir Azure aboneliğine ihtiyacınız vardır.
 
-## <a name="use-devops-projects-to-deploy-nodejs-app"></a>Node.js uygulamasını dağıtmak için DevOps projeleri'ni kullanın
+## <a name="use-devops-projects-to-deploy-nodejs-app"></a>Node. js uygulamasını dağıtmak için DevOps Projeleri kullanma
 
-DevOps projeleri, Azure işlem hatlarında bir CI/CD işlem hattı oluşturur. Yeni bir Azure DevOps kuruluş oluşturun veya mevcut bir kuruluşa kullanın. DevOps projeleri, tercih ettiğiniz bir Azure aboneliği, Azure Cosmos DB, Application Insights, App Service ve App Service planı gibi Azure kaynaklarının da oluşturur.
+DevOps Projeleri, Azure Pipelines bir CI/CD işlem hattı oluşturur. Yeni bir Azure DevOps kuruluşu oluşturabilir veya var olan bir kuruluşu kullanabilirsiniz. DevOps Projeleri ayrıca, tercih ettiğiniz Azure aboneliğinde Azure Cosmos DB, Application Insights, App Service ve App Service planları gibi Azure kaynakları da oluşturur.
 
-1. [Azure portalda](https://portal.azure.com) oturum açma
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
-1. Sol bölmede bölümü seçin **kaynak Oluştur**.
+1. Sol bölmede **kaynak oluştur**' u seçin.
 
-1. Arama kutusuna **DevOps projeleri**ve ardından **Ekle**.
+1. Arama kutusuna **DevOps Projeleri**girin ve ardından **Ekle**' yi seçin.
 
-   ![DevOps Projeleri](_img/azure-devops-project-cosmos-db/devops-project.png)
+   ![DevOps Projeleri bölmesi](_img/azure-devops-project-cosmos-db/devops-project.png)
 
-1. Seçin **Node.js** çalışma zamanı ve ardından olarak **sonraki**. Altında **uygulama çerçevesini seçin**seçin **Express.js**.
+1. Çalışma zamanı olarak **Node. js** ' yi seçin ve ardından **İleri**' yi seçin. **Uygulama çerçevesi seçin**altında **Express. js**' yi seçin.
 
-1. Bölüm etkinleştirme **bir veritabanı Ekle** için **Cosmos DB** tıklayın **sonraki**.
+1. **Cosmos DB**Için **veritabanı ekleme** bölümünü etkinleştirin ve sonra **İleri**' yi seçin.
 
     ![Veritabanı Ekle](_img/azure-devops-project-cosmos-db/add-database.png)
 
-    Cosmos DB gibi çeşitli uygulama çerçeveleri destekler **Express.js**, **örnek Node.js uygulamasını**, ve **Sail.js**. Bu öğreticide göz önünde bulundurun sağlar **Express.js**.
+    Azure DevOps Projeleri, **Express. js**, **örnek Node. js uygulaması**ve **SAIL. js**gibi çeşitli uygulama çerçevelerini destekler. Bu öğreticide **Express. js**kullanıyoruz.
 
-1. Uygulamayı dağıtmak için bir Azure hizmeti seçin. Kapsayıcılar için Windows Web uygulaması, Kubernetes hizmeti ve Web uygulaması gibi farklı hizmetler var. Bu öğreticide, kullanacağız **Windows Web uygulama**. Tıklayarak **sonraki**.
+1. Uygulamayı dağıtmak için bir Azure hizmeti seçin ve ardından **İleri**' yi seçin. Seçenekleriniz Windows Web uygulaması, Azure Kubernetes hizmeti ve Azure Kapsayıcılar için Web App içerir. Bu öğreticide, **Windows Web App**kullanıyoruz.
 
-## <a name="configure-azure-devops-and-azure-subscription"></a>Azure DevOps ve Azure aboneliği yapılandırma
+## <a name="configure-azure-devops-and-azure-subscription"></a>Azure DevOps ve Azure aboneliğini yapılandırma
 
 1. Azure DevOps projeniz için bir ad girin.
 
-1. Yeni bir Azure DevOps kuruluş oluşturun veya mevcut bir kuruluşa seçin.
+1. Yeni bir Azure DevOps organizasyonu oluşturun veya var olan bir kuruluşu seçin.
 
 1. Azure aboneliğinizi seçin.
 
-1. Ek Azure yapılandırma ayarlarını görüntülemek ve fiyatlandırma katmanı ve konumunu tanımlamak için ek ayarları'nı tıklatın. Bu bölme fiyatlandırma katmanı konumunu ve Azure hizmetlerini yapılandırmak için çeşitli seçenekleri görüntüler.
+1. Ek Azure yapılandırma ayarlarını görüntülemek veya fiyatlandırma katmanını ve konumunu tanımlamak için **ek ayarlar**' ı seçin. Bu bölmede, fiyatlandırma katmanını ve Azure hizmetlerinin konumunu yapılandırmaya yönelik çeşitli seçenekler gösterilir.
 
-1. Azure yapılandırma alanı çıkın ve ardından **Bitti**.
+1. Azure yapılandırma alanından çıkıp **bitti**' yi seçin.
 
-1. Birkaç dakika sonra işlemi tamamlandı. Azure DevOps kuruluşunuzdaki Git deposunda bir örnek Node.js uygulamasını ayarlayın, bir Azure Cosmos DB, App Service, App Service planı ve Application Insights oluşturulur, CI/CD işlem hattı yürütülür ve uygulamanız Azure'a dağıtılır.
+1. İşlem birkaç dakika sonra tamamlanır. Azure DevOps kuruluşunuzda bir git deposunda örnek Node. js uygulaması ayarlanır. Daha sonra, Azure Cosmos DB, App Service, App Service planı ve Application Insights kaynakların yanı sıra CI/CD işlem hattı da oluşturulur. Uygulamanız daha sonra Azure 'a dağıtılır.
 
-   Azure DevOps projesi Pano, tüm bu tamamlandıktan sonra Azure portalında görüntülenir. DevOps projeleri panoya doğrudan gidebilirsiniz **tüm kaynakları** Azure portalında.
+   Tüm bu işlemler bittikten sonra, Azure DevOps proje panosu Azure portal görüntülenir. Ayrıca, artık Azure portal **tüm kaynaklardan** DevOps Projeleri panosuna gidebilirsiniz.
 
-   Bu pano, Azure DevOps kod deposu, CI/CD işlem hattı ve Azure Cosmos DB görünürlük sağlar. Azure DevOps işlem hattınızı içinde ek CI/CD seçenekleri yapılandırabilirsiniz. Sağ taraftaki seçin **Azure Cosmos DB** görüntülemek için.
+   Bu Pano, Azure DevOps kod deponuza, CI/CD işlem hattınızla ve Azure Cosmos DB veritabanınıza yönelik görünürlük sağlar. Azure DevOps işlem hattınızda ek CI/CD seçenekleri yapılandırabilirsiniz. Panonun sağ tarafında, bu seçenekleri görüntülemek için **Azure Cosmos DB** ' yi seçin.
 
-## <a name="examine-the-azure-cosmos-db"></a>Azure Cosmos DB inceleyin
+## <a name="examine-azure-cosmos-db"></a>Azure Cosmos DB inceleyin
 
-DevOps projeleri'ni keşfedin ve özelleştirebileceğiniz, Cosmos DB, otomatik olarak yapılandırır. Cosmos DB ile kendinizi alıştırın için aşağıdakileri yapın:
+DevOps Projeleri Azure Cosmos DB otomatik olarak yapılandırır, bu, keşfedebileceğiniz ve özelleştirebileceğiniz. Azure Cosmos DB hakkında bilgi edinmek için aşağıdakileri yapın:
 
-1. DevOps projeleri panosuna gidin.
+1. DevOps Projeleri panosuna gidin.
 
-    ![DevOps projeleri Panosu](_img/azure-devops-project-cosmos-db/devops-project-dashboard.png)
+    ![DevOps Projeleri panosu](_img/azure-devops-project-cosmos-db/devops-project-dashboard.png)
 
-1. Sağ tarafta, Cosmos DB seçin. Cosmos DB için bir bölme açılır. Bu görünümden, izleme ve günlük arama işlemleri gibi çeşitli eylemler gerçekleştirebilirsiniz.
+1. Sağ tarafta Azure Cosmos DB ' yi seçin. Azure Cosmos DB için bir bölme açılır. Bu görünümden, işlemleri izleme ve günlükleri arama gibi çeşitli eylemler gerçekleştirebilirsiniz.
 
-    ![İşlev Uygulaması](_img/azure-devops-project-cosmos-db/cosmos-db.png)
+    ![Azure Cosmos DB bölmesi](_img/azure-devops-project-cosmos-db/cosmos-db.png)
 
 ## <a name="examine-the-ci-pipeline"></a>CI işlem hattını inceleme
 
-DevOps projeleri, bir CI/CD işlem hattı, Azure DevOps kuruluşunuzda otomatik olarak yapılandırır. İşlem hattını inceleyebilir ve özelleştirebilirsiniz. Kendisiyle tanımak için aşağıdakileri yapın:
+DevOps Projeleri, Azure DevOps kuruluşunuzda bir CI/CD işlem hattını otomatik olarak yapılandırır. İşlem hattını inceleyebilir ve özelleştirebilirsiniz. Bunu öğrenmek için aşağıdakileri yapın:
 
-1. DevOps projeleri panosuna gidin.
+1. DevOps Projeleri panosuna gidin.
 
-1. Altında köprüye tıklayın **yapı**. Derleme işlem hattı yeni projeniz için bir tarayıcı sekmesi görüntülenir.
+1. **Build**altındaki köprüyü seçin. Bir tarayıcı sekmesi, yeni projeniz için derleme işlem hattını görüntüler.
 
-    ![Oluşturma](_img/azure-devops-project-cosmos-db/build.png)
+    ![Derleme bölmesi](_img/azure-devops-project-cosmos-db/build.png)
 
-1. **Düzenle**’yi seçin. Bu bölmede, derleme işlem hattı için çeşitli görevleri inceleyebilirsiniz. Birim testleri çalıştırma ve yayımlama uygulaması oluşturma, Git deposundan getirilirken kaynak kodu, dağıtımları için kullanılan çıkarır gibi yapı çeşitli görevleri gerçekleştirir.
+1. **Düzenle**’yi seçin. Bu bölmede, derleme işlem hattı için çeşitli görevleri inceleyebilirsiniz. Derleme, git deposundan kaynak kodu getirme, uygulamayı oluşturma, birim testlerini çalıştırma ve dağıtımlar için kullanılan yayınlama çıkışları gibi çeşitli görevleri gerçekleştirir.
 
-1. **Tetikleyiciler**’i seçin. DevOps projeleri CI tetikleyicisini otomatik olarak oluşturur ve depoya her işleme, yeni bir derleme başlar. İsteğe bağlı olarak, dahil etmek veya dallar CI işleminden hariç tutmak seçim yapabilirsiniz.
+1. **Tetikleyiciler**’i seçin. DevOps Projeleri otomatik olarak bir CI tetikleyicisi oluşturur ve depoya yapılan her bir işleme yeni bir derleme başlatır. CI işlemindeki dalları dahil etmek veya hariç tutmak seçebilirsiniz.
 
 1. **Saklama**’yı seçin. Senaryonuza bağlı olarak, saklamak veya belirli bir sayıda derlemeleri kaldırmak için ilkeleri belirtebilirsiniz.
 
 1. Derleme işlem hattı üstünde derleme işlem hattı adı seçin.
 
-1. Derleme işlem hattınızı adını daha açıklayıcı bir şeyle değiştirin ve ardından **Kaydet** gelen **Kaydet ve kuyruğa** açılır.
+1. Derleme işlem hattınızı daha açıklayıcı bir şekilde değiştirin ve ardından **& kuyruğu kaydet** açılan listesinden **Kaydet** ' i seçin.
 
-1. Derleme işlem hattı adınızın altında **Geçmiş**’i seçin. Bu bölme bir denetim kaydı derleme için en son değişikliği görüntüler. Azure DevOps derleme işlem hattı için yapılan değişiklikleri izler ve sürümleri karşılaştırmanızı sağlar.
+1. Derleme işlem hattı adınızın altında **Geçmiş**’i seçin. Bu bölme, derleme için son değişikliklerinizin denetim izini görüntüler. Azure DevOps, derleme ardışık düzeninde yapılan tüm değişiklikleri izler ve sürümleri karşılaştırmanızı sağlar.
 
-## <a name="examine-the-cd-release-pipeline"></a>CD yayın ardışık düzeni inceleyin
+## <a name="examine-the-cd-release-pipeline"></a>CD sürümü ardışık düzenini inceleyin
 
-DevOps projeleri, otomatik olarak oluşturur ve Azure DevOps kuruluşunuzdan Azure aboneliğinize dağıtmak için gerekli adımları yapılandırır. Bu adımlar, Azure DevOps, Azure aboneliğiniz için kimlik doğrulaması için bir Azure hizmet bağlantısı yapılandırmayı içerir. Otomasyon, ayrıca Azure'da CD sağlayan bir yayın ardışık düzeni oluşturur. Yayın ardışık düzeni hakkında daha fazla bilgi için aşağıdakileri yapın:
+DevOps Projeleri, Azure DevOps kuruluşunuzdan Azure aboneliğinize dağıtmak için gerekli adımları otomatik olarak oluşturur ve yapılandırır. Bu adımlar, Azure aboneliğinizdeki Azure DevOps kimlik doğrulaması için bir Azure hizmet bağlantısı yapılandırmayı içerir. Otomasyon Ayrıca CD 'yi Azure 'a sağlayan bir yayın işlem hattı oluşturur. Yayın işlem hattı hakkında daha fazla bilgi edinmek için aşağıdakileri yapın:
 
-1. Gidin **işlem hatları | Yayınları**.
+1. İşlem **hatları** ' na gidin ve **yayınlar**' ı seçin.
 
-1. Tıklayarak **Düzenle**.
+1. **Düzenle**’yi seçin.
 
-1. **Yapıtlar**’ın altında **Bırak**’ı seçin. Önceki adımlarda incelenirken derleme işlem hattı yapıt için kullanılan bir çıktı üretir.
+1. **Yapıtlar**’ın altında **Bırak**’ı seçin. Önceki adımlarda inceettiğiniz derleme işlem hattı, yapıt için kullanılan çıktıyı üretir.
 
-1. Sağ tarafında **bırak** simgesini seçme **sürekli dağıtım tetikleyicisi**. Bu yayın işlem hattı, her seferinde yeni bir derleme yapıtının kullanılabilir bir dağıtımın yürüttüğü CD tetikleyicisi etkinleştirdi. İsteğe bağlı olarak, el ile yürütme dağıtımlarınızı gerektirir böylece tetikleyiciyi devre dışı bırakabilirsiniz.
+1. **Bırakma** simgesinin sağında **sürekli dağıtım tetikleyicisi**' ni seçin. Bu yayın işlem hattı, her yeni derleme yapısı kullanılabilir olduğunda bir dağıtımı yürüten sürekli dağıtım tetikleyicisini etkinleştirdi. Dağıtımlarınızın el ile yürütülmesi için tetikleyiciyi devre dışı bırakabilirsiniz.
 
-1. Sağ taraftaki bölümü seçin **yayınları görüntüleyebilir** yayınlar geçmişini görüntülemek için.
+1. Sağ tarafta, sürümlerin geçmişini görüntülemek için bölüm **görünümü** ' nü seçin.
 
-1. İşlem hattı görüntüler sürüm üzerinde tıklayın. Sürümü denetlemek için herhangi bir ortamda tıklayın **özeti, işlemeler**, ilişkili **iş öğelerini**.
+1. İşlem hattını görüntüleyen yayını seçin. Sürüm özetini, yürütmeleri veya ilişkili iş öğelerini denetlemek için herhangi bir ortam seçin.
 
-1. **İşlemeler**'i seçin. Bu görünüm, bu dağıtımla ilişkilendirilmiş kodu yürütmeleri gösterir. Dağıtımlar arasındaki işleme farklılıklarını görmek için yayınları karşılaştırın.
+1. **İşlemeler**'i seçin. Bu görünüm, bu dağıtımla ilişkili kod işlemelerini gösterir. Dağıtımlar arasındaki işleme farklılıklarını görmek için yayınları karşılaştırın.
 
-1. Seçin **günlükleri görüntüleyebilir**. Günlüklerde, dağıtım işlemiyle ilgili yararlı bilgiler bulunur. Bunları, sırasında ve sonrasında dağıtımları görüntüleyebilirsiniz.
+1. **Günlükleri görüntüle**' yi seçin. Günlüklerde, dağıtım işlemiyle ilgili yararlı bilgiler bulunur. Bunları, dağıtımları sırasında ve sonrasında görüntüleyebilirsiniz.
 
-## <a name="commit-code-changes-and-execute-cicd"></a>Kod değişikliklerini işleme ve CI/CD’yi yürütme
+## <a name="commit-code-changes-and-execute-the-cicd-pipeline"></a>Kod değişikliklerini işleme ve CI/CD işlem hattını yürütme
 
 > [!NOTE]
-> Aşağıdaki yordam, CI/CD işlem hattı basit metin değişikliği yaparak test eder.
+> Aşağıdaki yordam, bir basit metin değişikliği yaparak CI/CD işlem hattını sınar.
 
-Artık otomatik olarak Azure App Service için en son iş dağıtan bir CI/CD işlem kullanarak uygulamanızı bir ekip ile işbirliği yapmaya hazır. Her değişiklik Git deposu için Azure DevOps bir yapı başlatır ve Azure'a dağıtılacak bir CD işlem hattı yürütür. Bu bölümdeki yordamı izleyin veya değişiklikleri deponuza işlemek için başka bir teknik kullanın. Örneğin, en sevdiğiniz aracı veya IDE Git deposunda kopyalayabilirsiniz ve ardından bu depoya itme değiştirir.
+Artık App Service en son çalışmalarınızı dağıtan bir CI/CD işlemi kullanarak uygulamanızdaki bir takımla işbirliği yapmaya hazırsınız. Git deposunda yapılan her değişiklik Azure DevOps 'da bir derleme başlatır ve bir CD işlem hattı Azure 'a bir dağıtım yürütür. Bu bölümdeki yordamı izleyin veya değişiklikleri deponuzda uygulamak için başka bir teknik kullanın. Örneğin, git deposunu en sevdiğiniz araçta veya IDE 'de kopyalayabilir ve sonra değişiklikleri bu depoya gönderebilirsiniz.
 
-1. Azure DevOps menüde **depoları | Dosyaları**, deponuza gidin.
+1. Azure DevOps menüsünde, **Repos** ve ardından **dosyalar**' ı seçin. Sonra depoya gidin.
 
-1. Oluşturma işleminde seçtiğiniz uygulama diline göre kod deposu zaten var. Açık **Application/views/index.pug** dosya.
+1. Depo, oluşturma işleminde seçtiğiniz uygulama diline bağlı olarak zaten kod içeriyor. **Uygulama/görünümler/index. Pug** dosyasını açın.
 
-1. Seçin **Düzenle**ve ardından değişiklik **satır numarası 15** . Örneğin, kendisine güncelleştirebilirsiniz **My ilk Azure Cosmos DB tarafından desteklenen Azure App Service dağıtımı**
+1. **Düzenle**' yi seçin ve ardından **15 numaralı satırda**bir değişiklik yapın. Örneğin, bunu "Ilk dağıtımma Azure App Service Azure Cosmos DB tarafından desteklenen olarak değiştirebilirsiniz.
 
-1. Sağ üst kısımdaki seçin **işleme**ve ardından **işleme** değişikliğiniz yeniden göndermek için.
+1. Sağ üst köşede, **Kaydet**' i seçin ve sonra da değişiklerinizi göndermek Için yeniden **Yürüt** ' ü seçin.
 
-     Birkaç dakika sonra Azure DevOps bir yapı başlatır ve değişiklikleri dağıtmak için bir yayın yürütür. DevOps projeleri Panoda veya tarayıcı Azure DevOps kuruluşunuz ile derleme durumunu izleyin.
+     Birkaç saniye sonra, bir derleme Azure DevOps 'da başlar ve değişiklikleri dağıtmak için bir yayın yürütülür. DevOps Projeleri panosunda veya Azure DevOps kuruluşunuzla tarayıcıda derleme durumunu izleyin.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekmediğinde, oluşturduğunuz ilgili kaynakları silebilirsiniz. Kullanım **Sil** DevOps projeleri Pano işlevselliği.
+Artık ihtiyaç duymadığınızda oluşturduğunuz ilgili kaynakları silin. Kullanım **Sil** DevOps projeleri Pano işlevselliği.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ekibinizin gereksinimlerine uygun olarak bu derleme ve yayın işlem hatlarını istediğiniz gibi değiştirebilirsiniz. Ayrıca bu CI/CD desenini diğer işlem hatlarınızda şablon olarak kullanabilirsiniz. Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
+Ekibinizin ihtiyaçlarını karşılamak için bu derleme ve yayın işlem hatlarını değiştirebilirsiniz. Ayrıca bu CI/CD desenini diğer işlem hatlarınızda şablon olarak kullanabilirsiniz. Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 
 > [!div class="checklist"]
-> * Azure Cosmos DB tarafından desteklenen bir Node.js uygulamasını dağıtmak için DevOps projeleri'ni kullanın
+> * Azure Cosmos DB tarafından desteklenen bir Node. js uygulamasını dağıtmak için DevOps Projeleri kullanın
 > * Azure DevOps ve Azure aboneliğinin yapılandırın 
 > * Azure Cosmos DB inceleyin
 > * CI işlem hattını inceleme
 > * CD işlem hattını inceleme
-> * Değişiklikleri Git'e kaydedin ve otomatik olarak Azure'a dağıtın
+> * Git 'e değişiklikleri işleyin ve Azure 'a otomatik olarak dağıtın
 > * Kaynakları temizleme
+
+Daha fazla bilgi ve sonraki adımlar için bkz. [Multi-Stage sürekli dağıtımı (CD) ardışık düzenini tanımlama](https://docs.microsoft.com/en-us/azure/devops/pipelines/release/define-multistage-release-process?view=azure-devops&viewFallbackFrom=vsts) .
+
+

@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 06/26/2019
 ms.author: aahi
-ms.openlocfilehash: ab3d1e71515df80b5bdba1edf8cd16ba3ed6b0a9
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 786302b882fbd59932af17ccc6a390fa41b30ac9
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68500128"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932966"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-nodejs"></a>Hızlı Başlangıç: Bing Video Arama REST API ve Node. js kullanarak video arayın
 
@@ -75,7 +75,7 @@ Bing Video Arama API'si ilk çağrısını yapmak ve JSON yanıtından bir arama
        });
        ```
 
-# <a name="create-and-send-the-search-request"></a>Arama isteği oluştur ve Gönder
+## <a name="create-and-send-the-search-request"></a>Arama isteği oluştur ve Gönder
 
 1. Adlı `bing_video_search()`bir işlev oluşturun. İsteğiniz için ana bilgisayar adınızı ve üst bilgileri de içeren parametreleri ekleyin. Arama teriminizi kodlayın ve `?q=` parametresi ile Path parametresine ekleyin. Sonra isteği ile `req.end()`gönderin.
 

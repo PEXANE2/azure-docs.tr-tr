@@ -8,22 +8,22 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: ce043e23a0384a74fd5d2c9dd514045578ef836d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6e701396191ec8bf66ece0e2858b9f32857e7b17
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563453"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933597"
 ---
 # <a name="prebuilt-domain-reference-for-your-luis-app"></a>LUSıS uygulamanız için önceden oluşturulmuş etki alanı başvurusu
 Bu başvuru, hakkında bilgi sağlar. [önceden oluşturulmuş etki alanları](luis-how-to-use-prebuilt-domains.md), önceden oluşturulmuş koleksiyon hedefleri ve LUIS sunan varlıkların olduğu.
 
 [Özel etki alanları](luis-how-to-start-new-app.md), aksine, hiçbir hedefleri ve modelleri başlayın. Herhangi bir önceden oluşturulmuş etki alanı hedefleri ve varlıklar için özel bir model ekleyebilirsiniz.
 
-# <a name="supported-domains-across-cultures"></a>Kültürler genelinde desteklenen etki alanları
+## <a name="supported-domains-across-cultures"></a>Kültürler genelinde desteklenen etki alanları
 
 Desteklenen tek kültür İngilizce 'dir. 
 
@@ -54,7 +54,7 @@ The table below summarizes the currently supported domains. Support for English 
 
 |Varlık türü|description|
 |--|--|
-|Takvim|Takvim, kişisel toplantılar ve randevular hakkında (Dünya  fincanı zamanlamaları, Seattle olay takvimleri gibi) veya genel takvimler (Bugün günün ne olduğu, işçilik günü ne kadar sürer).|
+|Takvim|Takvim, kişisel toplantılar ve randevular hakkında (Dünya fincanı zamanlamaları, Seattle olay takvimleri gibi) veya genel takvimler (Bugün günün ne olduğu, işçilik günü ne kadar sürer).|
 |İletişim|Çağrı yapma, metin veya anlık ileti gönderme, kişileri bulma ve ekleme ve diğer iletişimle ilgili istekleri (genellikle giden) bulma istekleri. Kişi adı yalnızca sorgular Iletişim etki alanına ait değildir.|
 |Email|E-posta, Iletişim etki alanının bir alt etki alanıdır. Genellikle e-posta yoluyla ileti gönderme ve alma isteklerini içerir.|
 |HomeAutomation|HomeAutomation etki alanı, akıllı giriş cihazlarını denetleme ile ilgili amaçlar ve varlıklar sağlar. Genellikle ışıklar ve hava koşullayıcı ile ilgili denetim komutunu destekler, ancak diğer elektrik gereçlerine yönelik bazı Genelleştirme becerileri vardır.|

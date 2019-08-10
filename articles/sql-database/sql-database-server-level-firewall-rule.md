@@ -11,12 +11,12 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: vanto, carlrab
 ms.date: 02/11/2019
-ms.openlocfilehash: 7adced4088b1e155d6776f71e8f23a9eceae2297
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d13ee8c46df9433530df1d26a86978daab709a52
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566788"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883061"
 ---
 # <a name="quickstart-create-a-server-level-firewall-rule-for-single-and-pooled-databases-using-the-azure-portal"></a>Hızlı Başlangıç: Azure portal kullanarak tek ve havuza alınmış veritabanları için sunucu düzeyinde bir güvenlik duvarı kuralı oluşturma
 
@@ -37,7 +37,7 @@ SQL veritabanı hizmeti, tek ve havuza alınmış veritabanları için veritaban
 > [!NOTE]
 > SQL Veritabanı 1433 numaralı bağlantı noktası üzerinden iletişim kurar. Bir kurumsal ağ içinden bağlanmaya çalışıyorsanız, ağınızın güvenlik duvarı tarafından 1433 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu durumda, BT departmanınız 1433 numaralı bağlantı noktasını açmadığı takdirde Azure SQL veritabanı sunucunuza bağlanamazsınız.
 > [!IMPORTANT]
-> 0\.0.0.0 güvenlik duvarı kuralı, tüm Azure hizmetlerinin sunucu düzeyinde güvenlik duvarı kuralı üzerinden geçmesini ve sunucu üzerinden tek veya havuza alınmış bir veritabanına bağlanmayı denemesini sağlar. Sanal ağ kurallarını kullanma hakkında bilgi edinmek için, bkz. [sanal ağ KURALLARı IP kuralları alternatifleri](sql-database-firewall-configure.md#virtual-network-rules-as-alternatives-to-ip-rules).
+> 0\.0.0.0 güvenlik duvarı kuralı, tüm Azure hizmetlerinin sunucu düzeyinde güvenlik duvarı kuralı üzerinden geçmesini ve sunucu üzerinden tek veya havuza alınmış bir veritabanına bağlanmayı denemesini sağlar. 
 
 İstemci IP adresi için sunucu düzeyinde bir IP güvenlik duvarı kuralı oluşturmak ve yalnızca IP adresiniz için SQL veritabanı güvenlik duvarı üzerinden dış bağlantıyı etkinleştirmek için bu adımları izleyin.
 

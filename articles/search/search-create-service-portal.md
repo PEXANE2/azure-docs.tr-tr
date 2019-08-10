@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 08/09/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 9de7a6fdddf732f13c8dc7ab50fd151d9f90dc20
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 0649fea0b598ffaaaf2611c9d1324174105ee5d4
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855811"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68931531"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>Portalda Azure Search hizmeti oluşturma
 
@@ -44,7 +44,7 @@ Alternatif olarak, [MSDN abone avantajlarınızı etkinleştirin](https://azure.
 
 Birden fazla aboneliğiniz varsa, veri veya dosya depolama hizmetleri de içeren bir abonelik seçin. Azure Search, Dizin [*oluşturucular*](search-indexer-overview.md)aracılığıyla Dizin oluşturma Için Azure Tablo ve BLOB depolama, SQL veritabanı ve Azure Cosmos DB otomatik olarak açabilir, ancak yalnızca aynı abonelikteki hizmetler için.
 
-## <a name="select-a-resource-group"></a>Kaynak grubu seç
+## <a name="set-a-resource-group"></a>Kaynak grubu ayarlama
 
 Kaynak grubu gereklidir ve maliyet yönetimi dahil olmak üzere kaynakları yönetmek için faydalıdır. Bir kaynak grubu, bir hizmetten veya birlikte kullanılan birden fazla hizmetten oluşabilir. Örneğin, bir Azure Cosmos DB veritabanının dizinini oluşturmak için Azure Search kullanıyorsanız, her iki hizmeti de yönetim amaçlarıyla aynı kaynak grubunun bir parçası yapabilirsiniz. 
 
@@ -57,7 +57,7 @@ Hizmeti kullanırken, geçerli ve tasarlanan maliyetleri (ekran görüntüsünde
 > [!TIP]
 > Bir kaynak grubu silindiğinde, o kaynak grubunun içindeki hizmetler de silinir. Birden fazla hizmet kullanan prototip projeler için, tüm bunların aynı kaynak grubuna yerleştirilmesi, proje bittikten sonra temizleme işlemini kolaylaştırır.
 
-## <a name="name-the-service-and-url-endpoint"></a>Hizmet ve URL uç noktasını adlandırma
+## <a name="name-the-service"></a>Hizmeti adlandırın
 
 Örnek ayrıntıları ' nda **URL** alanında bir hizmet adı belirtin. Ad, API çağrılarının verildiği URL uç noktasının bir parçasıdır: `https://your-service-name.search.windows.net`. Örneğin, uç noktanın olmasını `https://myservice.search.windows.net`istiyorsanız, girmeniz `myservice`gerekir.
 
@@ -72,7 +72,7 @@ Hizmet adı gereksinimleri:
 > [!TIP]
 > Birden çok hizmet kullandığınızı düşünüyorsanız, hizmet adına bölge (veya konum) bir adlandırma kuralı olarak dahil etmenizi öneririz. Aynı bölgedeki hizmetler ücretsiz olarak verileri değiş tokuş edebilir, bu nedenle Azure Search Batı ABD ve diğer hizmetleriniz Batı ABD de varsa, gibi `mysearchservice-westus` bir ad, kaynakları birleştirme veya iliştirme konusunda karar verirken Özellikler sayfasına seyahat edebilir.
 
-## <a name="select-a-location"></a>Konum seçin
+## <a name="choose-a-location"></a>Konum seçin
 
 Azure hizmeti olarak Azure Search, dünyanın dört bir yanındaki veri merkezlerinde barındırılabilir. Desteklenen bölgelerin listesi [fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/search/)bulunabilir. 
 
@@ -83,11 +83,11 @@ Ek olarak, bilişsel arama AI 'nin zenginleştirme kullanıyorsanız, hizmetiniz
 > [!Note]
 > Orta Hindistan, yeni hizmetler için şu anda kullanılamıyor. Zaten Orta Hindistan olan hizmetler için, kısıtlama olmadan ölçeği ölçeklendirebilirsiniz ve hizmetiniz bu bölgede tam olarak desteklenmektedir. Bu bölgedeki kısıtlama geçicidir ve yalnızca yeni hizmetlerle sınırlıdır. Kısıtlama artık geçerli olmadığında bu notun kaldırılması gerekir.
 
-## <a name="select-a-pricing-tier-sku"></a>Fiyatlandırma katmanı (SKU) seçme
+## <a name="choose-a-pricing-tier-sku"></a>Fiyatlandırma Katmanı (SKU) seçin
 
 [Azure Search Şu anda birden çok fiyatlandırma katmanlarında sunulmaktadır](https://azure.microsoft.com/pricing/details/search/): Ücretsiz, temel veya standart. Her katmanın kendi [kapasitesi ve sınırları](search-limits-quotas-capacity.md) vardır. Yönergeler için [Fiyatlandırma katmanı veya SKU seçme](search-sku-tier.md) bölümüne bakın.
 
-Temel ve standart, üretim iş yükleri için en yaygın seçimlerdir, ancak çoğu müşteri ücretsiz hizmetle başlar.
+Temel ve standart, üretim iş yükleri için en yaygın seçimlerdir, ancak çoğu müşteri ücretsiz hizmetle başlar. Katmanlar arasındaki temel farklılıklar bölüm boyutu ve hız, oluşturabileceğiniz nesne sayısı için sınırlar olur.
 
 Hizmet oluşturulduktan sonra bir fiyatlandırma katmanının değiştirilemeyeceğini unutmayın. Daha yüksek veya daha düşük bir katmana ihtiyacınız olursa, hizmeti yeniden oluşturmanız gerekir.
 

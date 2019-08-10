@@ -7,15 +7,15 @@ author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: sajagtap
-ms.openlocfilehash: c6f3d9c1605dc97b315550d8b7e3fdf08144c1bc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: af636deaafc05238c287d095e644588ed8c5f26d
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561237"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880041"
 ---
 # <a name="define-and-use-moderation-jobs-rest"></a>Denetleme işlerini tanımlama ve kullanma (REST)
 
@@ -61,7 +61,7 @@ REST çağrınızın gövdesi bir alan, **Contentvalue**içeriyor. Metni moderor
 
 ![İş-bölge seçimini al](images/test-drive-region.png)
 
-REST çağrı parametrelerini yukarıdaki bölümde olduğu gibi girin. Bu adım için iş  kimliği, işi oluştururken aldığınız benzersiz kimlik dizesidir. **Gönder**’i seçin. İşlem başarılı olursa, **yanıt durumu** olur `200 OK`ve **yanıt içeriği** kutusu, işi aşağıdaki gibi JSON biçiminde görüntüler:
+REST çağrı parametrelerini yukarıdaki bölümde olduğu gibi girin. Bu adım için iş kimliği, işi oluştururken aldığınız benzersiz kimlik dizesidir. **Gönder**’i seçin. İşlem başarılı olursa, **yanıt durumu** olur `200 OK`ve **yanıt içeriği** kutusu, işi aşağıdaki gibi JSON biçiminde görüntüler:
 
 ```json
 {  
@@ -115,7 +115,7 @@ REST çağrı parametrelerini yukarıdaki bölümde olduğu gibi girin. Bu adım
 
 ### <a name="examine-the-new-reviews"></a>Yeni Gözden geçirme (ler) i inceleyin
 
-İçerik işiniz bir gözden geçirme oluşturma işlemi ile sonuçlanmasıyla, [Gözden geçirme aracında](https://contentmoderator.cognitive.microsoft.com)görüntüleyebilirsiniz.  > **Görüntü** metni/videosunu gözden geçir ' i seçin (kullandığınız içeriğe bağlı olarak)./ İçerik, insan gözden geçirmesi için hazırlanmalıdır. İnsan aracı otomatik olarak atanan etiketleri ve tahmin verilerini gözden geçirdikten ve son bir denetleme kararı gönderdikten sonra, işler API 'SI tüm bu bilgileri belirtilen geri çağırma uç noktası uç noktasına gönderir.
+İçerik işiniz bir gözden geçirme oluşturma işlemi ile sonuçlanmasıyla, [Gözden geçirme aracında](https://contentmoderator.cognitive.microsoft.com)görüntüleyebilirsiniz.  > **Görüntü**metni/videosunu gözden geçir ' i seçin (kullandığınız içeriğe bağlı olarak)./ İçerik, insan gözden geçirmesi için hazırlanmalıdır. İnsan aracı otomatik olarak atanan etiketleri ve tahmin verilerini gözden geçirdikten ve son bir denetleme kararı gönderdikten sonra, işler API 'SI tüm bu bilgileri belirtilen geri çağırma uç noktası uç noktasına gönderir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 382d4febed98b53a469ac2788e6e8c8cbf064c23
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f0685b65ce9204221e93a1ea4aa47a5e09eaac9f
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854806"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932974"
 ---
 # <a name="what-is-project-acoustics"></a>Project Acoustics nedir?
 Project Acoustics, 3B etkileşimli deneyimler için bir Wave Acoustics altyapısıdır. El ile bölge işaretlemesi gerektirmeden, karmaşık sahnelerde oylama, portallama ve yankı etkileri gibi dalga efektlerini modellemez. Ayrıca oyun altyapısı ve ses ara yazılım tümleştirmesi de içerir. Project Acoustics ' fanlar, statik aydınlatmaya benzerdir: fiziksel bir taban çizgisi sağlamak için bakmalı ve daha ayrıntılı tasarım denetimleriyle sanatsal hedeflerinizi karşılamak için basit bir çalışma zamanı kullanın.
@@ -40,11 +40,17 @@ Project Acoustics ' önemli yeniliği, geleneksel ses tasarımı kavramlarıyla 
 * **Hazırlama** Bir çözümleme adımı yerel olarak çalıştırılır, bu, yukarıdaki seçimlere bağlı olarak sahne üzerinde voxelileştirme ve diğer geometrik analizler yapar. Sonuçlar, sahne kurulumunun doğrulanması için düzenleyicide görselleştirilir. Hazırlama gönderimi sırasında, Voxel verileri Azure 'a gönderilir ve bir Acoustics oyun varlığını geri alırsınız.
 * **Çalışma zamanı** Varlığı, düzeyinize yükleyin ve Acoustics dinlemek için hazırsınız demektir. Kaynak başına ayrıntılı denetimleri kullanarak Acoustics canlı düzenleyici 'yi tasarlayın. Denetimler Ayrıca düzey komut dosyası içinden de yönetilebilir.
 
-## <a name="platforms"></a>Platformlar
+## <a name="runtime-platforms"></a>Çalışma zamanı platformları
 Project Acoustics çalışma zamanı eklentileri şu anda aşağıdaki platformlara dağıtılabilir:
 * Windows
+* macOS
 * Android
 * Xbox One
+
+## <a name="editor-platforms"></a>Düzenleyici platformları
+Project Acoustics Düzenleyicisi eklentisi aşağıdaki platformlar için kullanılabilir:
+* Windows
+* MacOS (yalnızca Unity)
 
 ## <a name="download"></a>İndirme
 * [Project Acoustics Unity eklentisi ve örnekleri](https://www.microsoft.com/en-us/download/details.aspx?id=57346)

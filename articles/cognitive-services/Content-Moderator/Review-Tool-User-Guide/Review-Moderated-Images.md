@@ -7,15 +7,15 @@ author: sanjeev3
 manager: mikemcca
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: sajagtap
-ms.openlocfilehash: 5b73436153427019a7d0d2c641f50592a385f19c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 065d3cd80f93753eb91571d4ada4fe7151258ec0
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564549"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882672"
 ---
 # <a name="create-human-reviews"></a>İnsan incelemeleri oluşturma
 
@@ -46,7 +46,7 @@ Bu kılavuzda Inceleme Aracı Web sitesinde [İncelemeleri](../review-api.md#rev
 
     ![Ayrı bir bölmede, denetleme ayrıntıları içeren bir görüntü](images/review-images-4.png)
 
-1. Etiket atamalarını gerektiğinde inceledikten ve güncelleştirdikten sonra, gözden geçirlerinizi göndermek için **İleri** ' ye tıklayın. ' İ gönderdikten sonra, önceki ekrana dönüp görüntüleri yeniden gözden geçirmek  için beş saniyelik bir süre daha görürsünüz. Bundan sonra, görüntüler artık gönderme kuyruğunda değildir ve **önceki** düğmesi artık kullanılamaz.
+1. Etiket atamalarını gerektiğinde inceledikten ve güncelleştirdikten sonra, gözden geçirlerinizi göndermek için **İleri** ' ye tıklayın. ' İ gönderdikten sonra, önceki ekrana dönüp görüntüleri yeniden gözden geçirmek için beş saniyelik bir süre daha görürsünüz. Bundan sonra, görüntüler artık gönderme kuyruğunda değildir ve **önceki** düğmesi artık kullanılamaz.
 
 ## <a name="text-reviews"></a>Metin incelemeleri
 

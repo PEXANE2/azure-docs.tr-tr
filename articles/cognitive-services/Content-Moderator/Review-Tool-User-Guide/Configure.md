@@ -7,15 +7,15 @@ author: sanjeev3
 manager: mikemcca
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: sajagtap
-ms.openlocfilehash: 70bc2c9f457aba09f3d3220061b2fd31d0923906
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5e12806aca7c53c254cc43c8ff5bb8d314f9993e
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565670"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882732"
 ---
 # <a name="configure-the-review-tool"></a>Gözden Geçirme aracını yapılandırma
 
@@ -66,7 +66,7 @@ Birden fazla alt ekibin üyesiyseniz, sizin için görüntülenen içerik incele
 
 ## <a name="tags"></a>Tags
 
-**Etiketler** sekmesi, iki&mdash;varsayılan**Denetim etiketlerinin (** **a**) ve **isracy** (**r**) yanı sıra özel denetleme etiketleri tanımlamanıza olanak sağlar. Özel bir etiket oluşturduğunuzda, bu, varsayılan etiketlerin yanı sıra incelemelerde kullanılabilir hale gelir. Görünürlük ayarlarını değiştirerek, gözden geçirmeler halinde hangi etiketlerin gösterileceğini değiştirebilirsiniz.
+**Etiketler** sekmesi, iki varsayılan&mdash;denetim etiketlerinin (**a**) ve **isracy** ( **r**) yanı sıra özel denetleme etiketleri tanımlamanıza olanak sağlar. Özel bir etiket oluşturduğunuzda, bu, varsayılan etiketlerin yanı sıra incelemelerde kullanılabilir hale gelir. Görünürlük ayarlarını değiştirerek, gözden geçirmeler halinde hangi etiketlerin gösterileceğini değiştirebilirsiniz.
 
 !["Görünür" onay kutuları dahil olmak üzere etiket görünümü](images/tags-4-disable.png)
 
@@ -90,7 +90,7 @@ Etiketler listesindeki girişlerinin yanındaki çöp kutusu simgesini seçerek 
 
 **Bağlayıcılar** sekmesi, içerik [iş akışlarının](../review-api.md#workflows)bir parçası olarak farklı yollarla içeriği işleyebilen, hizmete özgü eklentiler olan bağlayıcılarınızı yönetmenizi sağlar.
 
-Bir iş akışı oluşturduğunuzda varsayılan bağlayıcı Content Moderator bağlayıcıdır. Bu, içeriği **yetişkin** veya korklık olarak işaretleyebilir , küfür bulun vb. Bununla birlikte, burada listelenen diğer bağlayıcıları, ilgili hizmetlerinin kimlik bilgileriniz olduğu sürece (örneğin, Yüz Tanıma API'si bağlayıcısını kullanmak için) kullanabilirsiniz. bu şekilde, [Yüz Tanıma API'si](https://docs.microsoft.com/azure/cognitive-services/face/overview) bir abonelik anahtarı almanız gerekir.
+Bir iş akışı oluşturduğunuzda varsayılan bağlayıcı Content Moderator bağlayıcıdır. Bu, içeriği **yetişkin** veya korklık olarak işaretleyebilir, küfür bulun vb. Bununla birlikte, burada listelenen diğer bağlayıcıları, ilgili hizmetlerinin kimlik bilgileriniz olduğu sürece (örneğin, Yüz Tanıma API'si bağlayıcısını kullanmak için) kullanabilirsiniz. bu şekilde, [Yüz Tanıma API'si](https://docs.microsoft.com/azure/cognitive-services/face/overview) bir abonelik anahtarı almanız gerekir.
 
 [İnceleme aracında](./human-in-the-loop.md) aşağıdaki bağlayıcılar bulunur:
 

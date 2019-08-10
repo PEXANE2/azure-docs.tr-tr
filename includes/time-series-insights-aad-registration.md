@@ -7,57 +7,66 @@ services: time-series-insights
 ms.service: time-series-insights
 author: kingdomofends
 ms.author: adgera
-ms.date: 07/02/2019
-ms.openlocfilehash: a463e3cf475909c34054717460dc10dbba4ad8f0
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.date: 08/08/2019
+ms.openlocfilehash: ed5cd9424630a90b989b8a4d76959961f82a53ec
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67543914"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935245"
 ---
 > [!IMPORTANT]
-> * Yeni **Azure Active Directory** > **uygulama kayıtları** dikey penceresinde eski değiştirir **Azure Active Directory** > **uygulama kayıtlar (eski)** dikey Mayıs 2019.
-> * Oluşturulan veya eski dikey pencerede gösterilen uygulama kayıtları otomatik olarak yeni dikey pencerede görüntülenir.
-> * Yeni Azure uygulama kayıt deneyimi için geçiş hakkında kapsamlı bilgi için okuma [Kılavuzu eğitim Azure uygulama kayıtları](https://docs.microsoft.com/azure/active-directory/develop/app-registrations-training-guide) ve [Azure Active Directory hızlı](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app).
+> * Yeni **Azure Active Directory** > **uygulama kayıtları** dikey penceresi, eski **Azure Active Directory** > **uygulama kayıtları (eski)** dikey pencerenin yerini 2019 olabilir.
+> * Eski dikey pencerede oluşturulan veya görüntülenen Uygulama kayıtları, otomatik olarak yeni dikey pencerede görüntülenir.
+> * Yeni Azure uygulama kayıt deneyimine geçiş hakkında kapsamlı bilgi için [azure uygulama kayıtları Eğitim Kılavuzu](https://docs.microsoft.com/azure/active-directory/develop/app-registrations-training-guide) ' nu okuyun ve [hızlı başlangıç Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app).
 
-1. İçinde [Azure portalında](https://ms.portal.azure.com/)seçin **Azure Active Directory** > **uygulama kayıtları** > **yeni kayıt**.
+1. [Azure Portal](https://ms.portal.azure.com/)**Yeni kayıt** **uygulama kayıtları** > AzureActiveDirectory > seçin.
 
-   [![Azure Active Directory'de yeni uygulama kaydı](media/time-series-insights-aad-registration/active-directory-new-application-registration.png)](media/time-series-insights-aad-registration/active-directory-new-application-registration.png#lightbox)
+   [![Azure Active Directory yeni uygulama kaydı](media/time-series-insights-aad-registration/active-directory-new-application-registration.png)](media/time-series-insights-aad-registration/active-directory-new-application-registration.png#lightbox)
 
    > [!TIP]
-   > Yeni Azure Active Directory uygulaması kayıt paneli seçerek görüntülenen uygulamaları filtrelemenize olanak tanır **uygulamaları ait**.
+   > Yeni Azure Active Directory uygulama kayıt bölmesi, **sahip olunan uygulamaları**seçerek, görüntülenecek uygulamaları filtrelemenize olanak tanır.
 
-    Uygulamanızı kaydettikten sonra burada listelenir.
+    Uygulamanız kaydedildikten sonra burada listelenecektir.
 
-1. Uygulama adı ve select vermek **hesapları yalnızca kuruluş bu dizinde** belirtmek için **desteklenen hesap türleri** API erişebilir. Bunlar, ardından kimlik doğrulama işleminden sonra kullanıcılara yönlendirmek için geçerli bir URI seçin **kaydetme**.
+1. Uygulamaya bir ad verin ve yalnızca API 'ye erişebilen **Desteklenen hesap türlerini** belirtmek için **bu kuruluş dizinindeki hesapları** seçin. Kullanıcıları kimlik doğrulamasından sonra yeniden yönlendirmek için geçerli bir URI seçin, sonra **kaydolun**.
 
-   [![Azure Active Directory'de uygulama oluşturma](media/time-series-insights-aad-registration/active-directory-registration.png)](media/time-series-insights-aad-registration/active-directory-registration.png#lightbox)
+   [![Uygulamayı Azure Active Directory oluşturma](media/time-series-insights-aad-registration/active-directory-registration.png)](media/time-series-insights-aad-registration/active-directory-registration.png#lightbox)
 
-1. Önemli Azure Active Directory Uygulama bilgileri listelenen uygulamanızın içinde görüntülenen **genel bakış** dikey penceresi. Uygulamanızı altında seçin **uygulamaları ait**, ardından **genel bakış**.
+1. Önemli Azure Active Directory uygulama bilgileri, listelenen uygulamanızın **genel bakış** dikey penceresinde görüntülenir. **Sahip olunan uygulamalar**altında uygulamanızı seçin ve **genel bakış**' a tıklayın.
 
-   [![Uygulama Kimliğini kopyalama](media/time-series-insights-aad-registration/active-directory-copy-application-id.png)](media/time-series-insights-aad-registration/active-directory-copy-application-id.png#lightbox)
+   [![Uygulama KIMLIĞINI kopyalama](media/time-series-insights-aad-registration/active-directory-copy-application-id.png)](media/time-series-insights-aad-registration/active-directory-copy-application-id.png#lightbox)
 
-   Kopyalama, **uygulama (istemci) kimliği** istemci uygulamanızda kullanılacak.
+   İstemci uygulamanızda kullanmak için **uygulamanızın (istemci) kimliğini** kopyalayın.
 
-1. **Kimlik doğrulaması** dikey önemli kimlik doğrulaması yapılandırma ayarlarını belirtir. 
+1. **Kimlik doğrulama** dikey penceresi, önemli kimlik doğrulama yapılandırma ayarlarını belirtir. 
 
-    1. **Yeniden yönlendirme URI'leri** kimlik doğrulaması istek tarafından sağlanan adres ile eşleşmesi gerekir:
+    1. **Yeniden yönlendirme URI 'leri** , kimlik doğrulama isteği tarafından sağlanan adresle eşleşmelidir:
 
-        * Yerel geliştirme ortamı'nda barındırılan uygulamaları için **genel istemci (Mobil ve Masaüstü)** . Ayarladığınızdan emin olun **varsayılan istemci türü** Evet.
-        * Azure App Service üzerinde barındırılan tek sayfa uygulamaları için **Web**.
+        * Yerel bir geliştirme ortamında barındırılan uygulamalar için **ortak istemci (mobil & Masaüstü)** öğesini seçin. **Varsayılan istemci türünü** Evet olarak ayarladığınızdan emin olun.
+        * Azure App Service barındırılan tek sayfalı uygulamalar için **Web**' i seçin.
 
-    1. Örtük verme akışı kontrol ederek etkinleştirme **kimlik belirteçlerini**.
+    1. **Kimlik belirteçlerini**denetleyerek örtük izin akışını etkinleştirin.
 
-   [![Yeni bir gizli anahtarı oluşturma](media/time-series-insights-aad-registration/active-directory-auth-blade.png)](media/time-series-insights-aad-registration/active-directory-auth-blade.png#lightbox)
+   [![Yeni bir istemci parolası oluştur](media/time-series-insights-aad-registration/active-directory-auth-blade.png)](media/time-series-insights-aad-registration/active-directory-auth-blade.png#lightbox)
 
    **Kaydet**’e tıklayın.
 
-1. Azure Active Directory uygulaması Azure TIme Series Insights ilişkilendirin. Seçin **API izinleri** > **bir izin eklemek** > **Kuruluşum kullandığı API'leri**. 
+1. Sertifikaların kimliğini kanıtlamak için kullanabileceği bir uygulama parolası oluşturmak için **sertifikalar & gizlilikler** ' ı ve sonra **yeni istemci gizli** anahtarını seçin.
 
-    [![Bir API uygulamanızı Azure Active Directory ile ilişkilendirme](media/time-series-insights-aad-registration/active-directory-app-api-permission.png)](media/time-series-insights-aad-registration/active-directory-app-api-permission.png#lightbox)
+   [![Yeni bir istemci parolası oluştur](media/time-series-insights-aad-registration/active-directory-application-keys-save.png)](media/time-series-insights-aad-registration/active-directory-application-keys-save.png#lightbox)
 
-   Tür `Azure Time Series Insights` seçip çubuğu Ara `Azure Time Series Insights`.
+   Daha sonra, istemci gizli parolanız görüntülenir. Anahtarı en sevdiğiniz metin düzenleyiciye kopyalayın.
 
-1. Ardından, uygulamanız için gerekli API izin türü belirtin. Varsayılan olarak, **temsilci izinleri** vurgulanır. Ardından bir izin türünü seçin, **izinleri eklemek**.
+   > [!NOTE]
+   > Bunun yerine bir sertifikayı içeri aktarma olanağınız vardır. Gelişmiş güvenlik için bir sertifika önerilir. Bir sertifika kullanmak için **sertifikayı karşıya yükle**' yi seçin.
 
-    [![Uygulamanız için gerekli API izin türünü belirtin](media/time-series-insights-aad-registration/active-directory-app-permission-grant.png)](media/time-series-insights-aad-registration/active-directory-app-permission-grant.png#lightbox)
+1. Azure Active Directory uygulamanızı Azure zaman serisi öngörülerini ilişkilendirin. **API izinlerini** > seçin**Kuruluşumun kullandığı** **izin** > API 'leri ekleyin. 
+
+    [![Azure Active Directory uygulamanızla bir API 'YI ilişkilendirme](media/time-series-insights-aad-registration/active-directory-app-api-permission.png)](media/time-series-insights-aad-registration/active-directory-app-api-permission.png#lightbox)
+
+   Arama `Azure Time Series Insights` çubuğuna yazın ve ardından öğesini seçin `Azure Time Series Insights`.
+
+1. Ardından, uygulamanızın gerektirdiği tür API iznini belirtin. Varsayılan olarak, **temsilci izinleri** vurgulanacaktır. Bir izin türü seçin, sonra **Izin Ekle**' yi seçin.
+
+    [![Uygulamanızın gerektirdiği API izninin türünü belirtin](media/time-series-insights-aad-registration/active-directory-app-permission-grant.png)](media/time-series-insights-aad-registration/active-directory-app-permission-grant.png#lightbox)

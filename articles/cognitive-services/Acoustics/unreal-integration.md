@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3fe9a28a99ea8becbfc40e1e64d1f5b109caace3
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 47f39e8dcd96ea3bdba564df348e9b89a6b036ba
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854364"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933189"
 ---
 # <a name="project-acoustics-unreal-and-wwise-integration"></a>Proje Acoustics Unreal ve Wwise tümleştirmesi
 Bu nasıl yapılır, mevcut olmayan ve Wwise oyun projenize Project Acoustics eklenti paketinin ayrıntılı tümleştirme adımlarını sağlar. 
 
 Yazılım gereksinimleri:
-* [Unreal Engine](https://www.unrealengine.com/) 4,20 veya 4,21
+* [Unreal Engine](https://www.unrealengine.com/) 4.20 +
 * [Audiokinetik Wwise](https://www.audiokinetic.com/products/wwise/) 2018,1.\*
 * [Gerçek olmayan için Wwise eklentisi](https://www.audiokinetic.com/library/?source=UE4&id=index.html)
   * Wwise Unreal eklentileri kullanmak yerine Wwise SDK 'sının doğrudan tümleştirmesini kullanıyorsanız, Project Acoustics Unreal Plugin 'e başvurun ve Wwise API çağrılarını ayarlayın.
@@ -52,7 +52,7 @@ Paketi yüklemeye ve oyununuza dağıtmaya yönelik bu temel adımlar vardır.
 
 * İndirdiğiniz pakette bulunan dizini seçin. `AcousticsWwisePlugin\ProjectAcoustics` Wwise karıştırıcı eklenti paketini içerir.
 
-* Wwise, eklentiyi yükleyecek. Project Acoustics artık Wwise 'daki yüklü eklentiler listesinde görünür.
+* Wwise, eklentiyi yükleyecek. Project Acoustics artık Wwise 'daki yüklü eklentiler listesinde görünür.  
 ![Project Acoustics yüklemesinden sonra, Wwise yüklü eklenti listesinin ekran görüntüsü](media/unreal-integration-post-mixer-plugin-install.png)
 
 ## <a name="2-redeploy-wwise-into-your-game"></a>2. (Yeniden) oyununuza Wwise dağıtma
@@ -81,9 +81,13 @@ Wwise 'ı zaten tümleştirmiş olsanız bile oyununuza yeniden dağıtın. Bu, 
 
     ![Wwise 'a düzeltme eki uygulama komut dosyasını vurgulayan Windows Gezgini penceresi ekran görüntüsü](media/patch-wwise-script.png)
 
-* DirectX SDK yüklü değilse, DXSDK_DIR içeren satırı açıklama olarak ayarlamanız gerekir.`[UProject]\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs`
+* DirectX SDK yüklü değilse, kullanmakta olduğunuz Wwise sürümüne bağlı olarak, `DXSDK_DIR` içinde `AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs`yer alan satırı açıklamanız gerekebilir:
 
     ![DXSDK açıklamalı açıklaması gösteren kod Düzenleyicisi ekran görüntüsü](media/directx-sdk-comment.png)
+
+* Visual Studio 2019 ile derlerseniz, bir bağlama hatasını Wwise ile geçici olarak çözmek için, ' `VSVersion` `vc150`de `AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs` varsayılan değeri el ile düzenleyin:
+
+    ![VSVersion öğesinin vc150 olarak değiştirildiğini gösteren kod düzenleyicisinin ekran görüntüsü](media/vsversion-comment.png)
 
 ## <a name="5-build-game-and-check-python-is-enabled"></a>5. Oyun oluştur ve Python denetimi etkinleştirildi
 
@@ -159,7 +163,7 @@ Ne yazık ki, diğer nesne tabanlı spatializer eklentileri, karıştırıcı ek
 
 * Şimdi, Acoustics veri yuvasını, daha önce Acoustics Space aktör üzerinde bulunan veri yuvasına atayın. Sahnede artık Acoustics vardır!
 
-    ![Gerçek olmayan düzenleyicinin Acoustics varlık atamasının ekran görüntüsü](media/acoustics-asset-assign.png)
+    ![Acoustics varlık atamasını gösteren gerçek olmayan düzenleyicinin ekran görüntüsü](media/acoustics-asset-assign.png)
 
 * Şimdi boş bir aktör ekleyin ve şunları yapın:
 
@@ -167,7 +171,7 @@ Ne yazık ki, diğer nesne tabanlı spatializer eklentileri, karıştırıcı ek
 
 1. Aktör için Acoustics ses bileşeni ekleyin. Bu bileşen, Wwise ses bileşenini proje Acoustics işlevselliği ile genişletir.
 2. Başlangıçta çal kutusu varsayılan olarak denetlenir ve bu işlem, düzey başlangıcında ilişkili Wwise olayını tetikler.
-3. Kaynakla ilgili ekran hata ayıklama bilgilerini yazdırmak için Acoustics parametrelerini göster onay kutusunu kullanın.
+3. Kaynakla ilgili ekran hata ayıklama bilgilerini yazdırmak için Acoustics parametrelerini göster onay kutusunu kullanın.  
     ![Hata ayıklama değerleri etkin olan ses kaynağında gerçek olmayan düzenleyici Acoustics panelinin ekran görüntüsü](media/debug-values.png)
 4. Her zamanki Wwise iş akışı başına bir Wwise olayı atama
 5. Uzamsal ses kullan özelliğinin kapalı olduğundan emin olun. Şu anda, belirli bir ses bileşeni için Project Acoustics kullanıyorsanız, Acoustics için Wwise 'ın uzamsal ses altyapısını aynı anda kullanamazsınız.

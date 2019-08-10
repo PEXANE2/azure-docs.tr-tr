@@ -1,71 +1,112 @@
 ---
-title: "Hızlı Başlangıç: Python SDK 'sını kullanarak Metin Analizi hizmetini çağırma"
+title: 'Hızlı Başlangıç: Python için Metin Analizi istemci kitaplığı | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
-description: Azure bilişsel hizmetler 'de Metin Analizi API'si kullanmaya hızlı bir şekilde başlamanıza yardımcı olması için bilgi ve kod örnekleri alın.
+description: Azure bilişsel hizmetler 'den Metin Analizi API'si kullanmaya başlamak için bu hızlı başlangıcı kullanın.
 services: cognitive-services
 author: ctufts
 manager: assafi
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 07/30/2019
+ms.date: 08/05/2019
 ms.author: aahi
-ms.openlocfilehash: 82f0313a237358fcaa1ae52e92821abef2b52af7
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 1d7ad19a58327ba508ccb4e47d12d3d0f50465f4
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697313"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884015"
 ---
-# <a name="quickstart-call-the-text-analytics-service-using-the-python-sdk"></a>Hızlı Başlangıç: Python SDK 'sını kullanarak Metin Analizi hizmetini çağırma 
+# <a name="quickstart-text-analytics-client-library-for-python"></a>Hızlı Başlangıç: Python için metin analizi istemci kitaplığı
 <a name="HOLTop"></a>
 
-Python için Metin Analizi SDK ile dili çözümlemeye başlamak için bu hızlı başlangıcı kullanın. Metin Analizi REST API çoğu programlama dili ile uyumlu olsa da SDK, JSON serileştirilmeden ve seri durumdan çıkarılırken hizmeti uygulamalarınıza tümleştirmenin kolay bir yolunu sunar. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/language/text_analytics_samples.py)' da bulunabilir.
+Python için Metin Analizi istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin. 
+
+Şunları yapmak için Python için Metin Analizi istemci kitaplığını kullanın:
+
+* Yaklaşım analizi
+* Dil algılama
+* Varlık tanıma
+* Anahtar tümcecik ayıklama
+
+
+[Başvuru belge](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-textanalytics) | [paketi (pipy)](https://pypi.org/project/azure-cognitiveservices-language-textanalytics/) | [örnekleri](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/)
+
 
 ## <a name="prerequisites"></a>Önkoşullar
 
+* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 * [Python 3. x](https://www.python.org/)
 
-* [Python için metin analizi SDK 'sı](https://pypi.org/project/azure-cognitiveservices-language-textanalytics/) ile paketi yükleyebilirsiniz:
+## <a name="setting-up"></a>Ayarlanıyor
 
-    `pip install --upgrade azure-cognitiveservices-language-textanalytics`
+### <a name="create-a-text-analytics-azure-resource"></a>Metin Analizi Azure kaynağı oluşturma
 
-[!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
+Azure bilişsel hizmetler, abone olduğunuz Azure kaynakları tarafından temsil edilir. Yerel makinenizde [Azure Portal](../../cognitive-services-apis-create-account.md) veya [Azure CLI](../../cognitive-services-apis-create-account-cli.md) kullanarak metin analizi için bir kaynak oluşturun. Aşağıdakileri de yapabilirsiniz:
 
-## <a name="create-a-new-python-application"></a>Yeni Python uygulaması oluşturma
+* [Deneme anahtarını](https://azure.microsoft.com/try/cognitive-services/#decision) ücretsiz olarak 7 gün boyunca geçerli olacak şekilde öğrenin. Kaydolduktan sonra [Azure Web sitesinde](https://azure.microsoft.com/try/cognitive-services/my-apis/)mevcut olacaktır.  
+* [Azure Portal](https://portal.azure.com/) kaynağı görüntüleyin
 
-En sevdiğiniz düzenleyicide veya IDE 'de yeni bir Python uygulaması oluşturun. Ardından, dosyanıza aşağıdaki import deyimlerini ekleyin.
+Deneme aboneliğinizden veya kaynağından bir anahtar aldıktan sonra adlı `TEXT_ANALYTICS_SUBSCRIPTION_KEY`anahtar için [bir ortam değişkeni oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
+
+### <a name="install-the-client-library"></a>İstemci kitaplığını yükler
+
+Python yükledikten sonra, ile istemci kitaplığını yükleyebilirsiniz:
+
+```console
+pip install --upgrade azure-cognitiveservices-language-textanalytics
+```
+
+### <a name="create-a-new-python-application"></a>Yeni bir Python uygulaması oluşturma
+
+Tercih ettiğiniz düzenleyicide veya IDE 'de yeni bir Python uygulaması oluşturun. Ardından aşağıdaki kitaplıkları içeri aktarın.
 
 ```python
 from azure.cognitiveservices.language.textanalytics import TextAnalyticsClient
 from msrest.authentication import CognitiveServicesCredentials
 ```
 
-## <a name="authenticate-your-credentials"></a>Kimlik bilgilerinizi doğrulama
+Kaynağınızın Azure uç noktası ve anahtarı için değişkenler oluşturun. Uygulamayı başlattıktan sonra ortam değişkenini oluşturduysanız, değişkene erişmek için onu çalıştıran düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir.
 
-> [!Tip]
-> Üretim sistemlerinde parolaların güvenli dağıtımı için [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-net)kullanmanızı öneririz.
->
-
-Metin analizi abonelik anahtarınız için bir değişken oluşturduktan sonra, onunla bir `CognitiveServicesCredentials` nesne örneğini oluşturun.
+[!INCLUDE [text-analytics-find-resource-information](../includes/find-azure-resource-info.md)]
 
 ```python
-subscription_key = "enter-your-key-here"
-credentials = CognitiveServicesCredentials(subscription_key)
-```
-
-## <a name="create-a-text-analytics-client"></a>Metin Analizi istemcisi oluşturma
-
-Parametresi olarak ve `TextAnalyticsClient` `credentials` ile`text_analytics_url` yeni bir nesne oluşturun. Metin Analizi aboneliğiniz için doğru Azure bölgesini kullanın (örneğin `westcentralus`).
-
-```
+# replace this endpoint with the correct one for your Azure resource. 
 text_analytics_url = "https://westcentralus.api.cognitive.microsoft.com/"
+# This sample assumes you have created an environment variable for your key
+key = os.environ["TEXT_ANALYTICS_SUBSCRIPTION_KEY"]
+credentials = CognitiveServicesCredentials(key)
+```
+
+## <a name="object-model"></a>Nesne modeli
+
+Metin Analizi istemcisi, anahtarınızı kullanarak Azure 'da kimlik doğrulaması yapan bir [TextAnalyticsClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python) nesnesidir. İstemci, tek bir dize veya bir toplu iş olarak metin çözümlemek için çeşitli yöntemler sağlar. 
+
+Metin, kullanılan yöntemine bağlı olarak `documents` `id`, `dictionary` `text` ve`language` özniteliklerinin bir birleşimini içeren nesneler olan bir listesi olarak API 'ye gönderilir. Özniteliği, kaynak `language`olarak çözümlenecek metni depolar ve `id` herhangi bir değer olabilir. `text` 
+
+Yanıt nesnesi, her belge için analiz bilgilerini içeren bir listesidir. 
+
+## <a name="code-examples"></a>Kod örnekleri
+
+Bu kod parçacıkları, Python için Metin Analizi istemci kitaplığı ile aşağıdakilerin nasıl yapılacağını gösterir:
+
+* [İstemcinin kimliğini doğrulama](#authenticate-the-client)
+* [Yaklaşım analizi](#sentiment-analysis)
+* [Dil algılama](#language-detection)
+* [Varlık tanıma](#entity-recognition)
+* [Anahtar tümceciği ayıklama](#key-phrase-extraction)
+
+## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
+
+Parametresi olarak ve [](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python) `credentials` `text_analytics_url` ile yeni bir TextAnalyticsClient nesnesi oluşturun. Metin Analizi aboneliğiniz için doğru Azure bölgesini kullanın (örneğin `westcentralus`).
+
+```python
 text_analytics = TextAnalyticsClient(endpoint=text_analytics_url, credentials=credentials)
 ```
 
 ## <a name="sentiment-analysis"></a>Yaklaşım analizi
 
-API 'nin yükü, bir `documents` `id` ve `text` özniteliği içeren sözlükler olan bir listesinden oluşur. Özniteliği çözümlenecek metni depolar `id` ve herhangi bir değer olabilir. `text` 
+[Sentiment ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python#sentiment-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) işlevini çağırın ve sonucu elde edin. Ardından sonuçları yineleyin ve her belge KIMLIĞINI ve yaklaşım Puanını yazdırın. 0 ' a yakın bir puan negatif bir yaklaşım gösterir, 1 ' e yaklaşarak pozitif bir yaklaşım gösterilir.
 
 ```python
 documents = [
@@ -73,28 +114,8 @@ documents = [
         "id": "1",
         "language": "en",
         "text": "I had the best day of my life."
-    },
-    {
-        "id": "2",
-        "language": "en",
-        "text": "This was a waste of my time. The speaker put me to sleep."
-    },
-    {
-        "id": "3",
-        "language": "es",
-        "text": "No tengo dinero ni nada que dar..."
-    },
-    {
-        "id": "4",
-        "language": "it",
-        "text": "L'hotel veneziano era meraviglioso. È un bellissimo pezzo di architettura."
     }
 ]
-```
-
-`sentiment()` İşlevi çağırın ve sonucu alın. Ardından sonuçları yineleyin ve her belge KIMLIĞINI ve yaklaşım Puanını yazdırın. 0 ' a yakın bir puan negatif bir yaklaşım gösterir, 1 ' e yaklaşarak pozitif bir yaklaşım gösterilir.
-
-```python
 response = text_analytics.sentiment(documents=documents)
 for document in response.documents:
     print("Document Id: ", document.id, ", Sentiment Score: ",
@@ -105,35 +126,19 @@ for document in response.documents:
 
 ```console
 Document Id:  1 , Sentiment Score:  0.87
-Document Id:  2 , Sentiment Score:  0.11
-Document Id:  3 , Sentiment Score:  0.44
-Document Id:  4 , Sentiment Score:  1.00
 ```
 
 ## <a name="language-detection"></a>Dil algılama
 
-Her biri çözümlemek istediğiniz belgeyi içeren sözlüklerin bir listesini oluşturun. Özniteliği çözümlenecek metni depolar `id` ve herhangi bir değer olabilir. `text` 
+Daha önce oluşturulan istemciyi kullanarak [detect_language ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python#detect-language-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) öğesini çağırın ve sonucu alın. Sonra sonuçlar arasında yineleme yapın ve her belgenin KIMLIĞINI ve ilk döndürülen dili yazdırın.
 
 ```python
 documents = [
     {
         'id': '1',
         'text': 'This is a document written in English.'
-    },
-    {
-        'id': '2',
-        'text': 'Este es un document escrito en Español.'
-    },
-    {
-        'id': '3',
-        'text': '这是一个用中文写的文件'
     }
 ]
-```
-
-Daha önce oluşturulan istemciyi kullanarak, sonucunu `detect_language()` çağırın ve elde edin. Sonra sonuçlar arasında yineleme yapın ve her belgenin KIMLIĞINI ve ilk döndürülen dili yazdırın.
-
-```python
 response = text_analytics.detect_language(documents=documents)
 for document in response.documents:
     print("Document Id: ", document.id, ", Language: ",
@@ -144,14 +149,11 @@ for document in response.documents:
 
 ```console
 Document Id:  1 , Language:  English
-Document Id:  2 , Language:  Spanish
-Document Id:  3 , Language:  Chinese_Simplified
 ```
 
 ## <a name="entity-recognition"></a>Varlık tanıma
 
-Çözümlemek istediğiniz belgeleri içeren sözlüklerin bir listesini oluşturun. Özniteliği çözümlenecek metni depolar `id` ve herhangi bir değer olabilir. `text` 
-
+Daha önce oluşturulan istemciyi kullanarak, [Entities ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python#entities-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) işlevini çağırın ve sonucu alın. Sonra sonuçlar arasında yineleme yapın ve her belgenin KIMLIĞINI ve içerdiği varlıkları yazdırın.
 
 ```python
 documents = [
@@ -159,18 +161,8 @@ documents = [
         "id": "1",
         "language": "en",
         "text": "Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, to develop and sell BASIC interpreters for the Altair 8800."
-    },
-    {
-        "id": "2",
-        "language": "es",
-        "text": "La sede principal de Microsoft se encuentra en la ciudad de Redmond, a 21 kilómetros de Seattle."
     }
 ]
-```
-
-Daha önce oluşturulan istemciyi kullanarak işlevini çağırın `entities()` ve sonucu alın. Sonra sonuçlar arasında yineleme yapın ve her belgenin KIMLIĞINI ve içerdiği varlıkları yazdırın.
-
-```python
 response = text_analytics.entities(documents=documents)
 
 for document in response.documents:
@@ -183,7 +175,6 @@ for document in response.documents:
             print("\t\t\tOffset: ", match.offset, "\tLength: ", match.length, "\tScore: ",
                   "{:.2f}".format(match.entity_type_score))
 ```
-
 
 ### <a name="output"></a>Output
 
@@ -204,51 +195,20 @@ Document Id:  1
             Offset:  89     Length:  5  Score:  0.80
          NAME:  Altair 8800     Type:  Other    Sub-type:  None
             Offset:  116    Length:  11     Score:  0.80
-Document Id:  2
-    Key Entities:
-         NAME:  Microsoft   Type:  Organization     Sub-type:  None
-            Offset:  21     Length:  9  Score:  1.00
-         NAME:  Redmond (Washington)    Type:  Location     Sub-type:  None
-            Offset:  60     Length:  7  Score:  0.99
-         NAME:  21 kilómetros   Type:  Quantity     Sub-type:  Dimension
-            Offset:  71     Length:  13     Score:  0.80
-         NAME:  Seattle     Type:  Location     Sub-type:  None
-            Offset:  88     Length:  7  Score:  1.00
 ```
 
 ## <a name="key-phrase-extraction"></a>Anahtar tümcecik ayıklama
 
-Çözümlemek istediğiniz belgeleri içeren sözlüklerin bir listesini oluşturun. Özniteliği çözümlenecek metni depolar `id` ve herhangi bir değer olabilir. `text` 
-
+Daha önce oluşturulan istemciyi kullanarak, [key_phrases ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python#key-phrases-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) işlevini çağırın ve sonucu alın. Sonra sonuçlar arasında yineleme yapın, her belge KIMLIĞINI ve içerdiği anahtar tümceleri yazdırın.
 
 ```python
 documents = [
     {
         "id": "1",
-        "language": "ja",
-        "text": "猫は幸せ"
-    },
-    {
-        "id": "2",
-        "language": "de",
-        "text": "Fahrt nach Stuttgart und dann zum Hotel zu Fu."
-    },
-    {
-        "id": "3",
         "language": "en",
         "text": "My cat might need to see a veterinarian."
-    },
-    {
-        "id": "4",
-        "language": "es",
-        "text": "A mi me encanta el fútbol!"
     }
 ]
-```
-
-Daha önce oluşturulan istemciyi kullanarak işlevini çağırın `key_phrases()` ve sonucu alın. Sonra sonuçlar arasında yineleme yapın, her belge KIMLIĞINI ve içerdiği anahtar tümceleri yazdırın.
-
-```python
 response = text_analytics.key_phrases(documents=documents)
 
 for document in response.documents:
@@ -258,34 +218,32 @@ for document in response.documents:
         print("\t\t", phrase)
 ```
 
+
 ### <a name="output"></a>Output
 
 ```console
-Document Id:  1
-    Phrases:
-         幸せ
-Document Id:  2
-    Phrases:
-         Stuttgart
-         Hotel
-         Fahrt
-         Fu
 Document Id:  3
     Phrases:
          cat
          veterinarian
-Document Id:  4
-    Phrases:
-         fútbol
 ```
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağı veya kaynak grubunu silebilirsiniz. Kaynak grubunun silinmesi, kaynak grubuyla ilişkili diğer tüm kaynakları da siler.
+
+* [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
 > [Power BI ile Metin Analizi](../tutorials/tutorial-power-bi-key-phrases.md)
 
-## <a name="see-also"></a>Ayrıca bkz.
 
-* [Metin Analizi API'si nedir?](../overview.md)
-* [Örnek kullanıcı senaryoları](../text-analytics-user-scenarios.md)
-* [Sık sorulan sorular (SSS)](../text-analytics-resource-faq.md)
+* [Metin Analizine genel bakış](../overview.md)
+* [Yaklaşım Analizi](../how-tos/text-analytics-how-to-sentiment-analysis.md)
+* [Varlık tanıma](../how-tos/text-analytics-how-to-entity-linking.md)
+* [Dili algıla](../how-tos/text-analytics-how-to-keyword-extraction.md)
+* [Dil tanıma](../how-tos/text-analytics-how-to-language-detection.md)
+* Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/language/text_analytics_samples.py)' da bulunabilir.

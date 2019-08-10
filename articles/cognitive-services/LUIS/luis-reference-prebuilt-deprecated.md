@@ -8,20 +8,20 @@ ms.custom: seodec18
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: bbd86ab2ffa55903715da05b0120442f300a1702
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 8c15ebacd0fd959fe789d7f3a9b33b16ee29a1b2
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68637844"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933619"
 ---
 # <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>Bir LUSıS uygulamasında kullanımdan kaldırılan önceden oluşturulmuş varlıklar
 Aşağıdaki önceden oluşturulmuş varlıklar kullanım dışıdır ve yeni LUIS uygulamalara eklenemez.
 
-* **Tarih saat**: Tarih **saat kullanan var** olan lusıs uygulamaları **datetimeV2**'e geçirilmelidir, ancak DateTime varlığı onu kullanan önceden var olan uygulamalarda çalışmaya devam eder.
+* **Tarih saat**: Tarih saat kullanan var olan LUSıS uygulamaları **datetimeV2**'e geçirilmelidir, ancak DateTime varlığı onu kullanan önceden var olan uygulamalarda çalışmaya devam eder.
 * **Coğrafya**: **Coğrafya** kullanan mevcut Lua uygulamaları, Aralık 2018 ' ye kadar desteklenir.
 * **Ansiklopedi**: **Ansiklopedi** kullanan mevcut Lua uygulamaları, Aralık 2018 ' ye kadar desteklenir.
 

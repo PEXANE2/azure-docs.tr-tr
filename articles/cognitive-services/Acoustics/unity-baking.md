@@ -11,18 +11,18 @@ ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: e26df58de08d0941b5e3165852ed0b26f8890f66
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: b7249c3048ba3af3adbaac01f43770482a0d38ad
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854928"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933249"
 ---
 # <a name="project-acoustics-unity-bake-tutorial"></a>Project Acoustics Unity Bake öğreticisi
 Bu öğreticide, Unity 'de Project Acoustics ile Acoustics fırlama açıklanmaktadır.
 
 Yazılım gereksinimleri:
-* Windows için [Unity 2018.2 +](https://unity3d.com)
+* Windows veya MacOS için [Unity 2018.2 +](https://unity3d.com)
 * Unity projenizde veya [Project Acoustics Unity örnek içeriğinde](unity-quickstart.md) [Tümleşik proje Acoustics eklentisi](unity-integration.md)
 * İsteğe bağlı: Bulut bilgi işlem kullanarak bakışları hızlandırmak için [Azure Batch bir hesap](create-azure-account.md)
 
@@ -179,6 +179,25 @@ Bir Bake başladıktan sonra Unity 'yi kapatabilirsiniz. Projeye, düğüm tür�
 
 Azure kimlik bilgileri yerel makinenizde güvenli bir şekilde depolanır ve Unity düzenleyicinizle ilişkilendirilir. Yalnızca Azure ile güvenli bir bağlantı kurmak için kullanılır.
 
+## <a name="to-find-the-status-of-a-running-job-on-the-azure-portal"></a>Azure portal çalışan bir işin durumunu bulmak için
+
+1. Hazırlama sekmesinde hazırlama iş kimliğini bulun:
+
+![Unity hazırlama iş kimliğinin ekran görüntüsü](media/unity-job-id.png)  
+
+2. [Azure Portal](https://portal.azure.com)açın, hazırlama ve iş için kullanılan Batch hesabına gidin ve **işleri** seçin
+
+![Işler bağlantısının ekran görüntüsü](media/azure-batch-jobs.png)  
+
+3. İş listesinden iş kimliğini arayın
+
+![Hazırlama iş durumunun ekran görüntüsü](media/azure-bake-job-status.png)  
+
+4. İlgili görevlerin durumunu ve genel iş durumunu görmek için iş kimliğine tıklayın
+
+![Hazırlama görev durumunun ekran görüntüsü](media/azure-batch-task-state.png)  
+
+
 ### <a name="Estimating-bake-cost"></a>Azure hazırlama maliyeti tahmini
 
 Belirli bir fırt 'in maliyet olacağını tahmin etmek için, **Tahmini Işlem maliyeti**için gösterilen değeri alın ve bu süre, seçtiğiniz **VM düğüm türünün** yerel para birimindeki saatlik maliyet ile çarpın. Sonuç, düğümlerin çalışır duruma getirmek için gereken düğüm süresini içermez. Örneğin, düğüm türü için $0.40/sa maliyeti olan **Standard_F8s_v2** ' u seçerseniz ve tahmini işlem maliyeti 3 saat ve 57 dakika ise, işi çalıştırmak için tahmini maliyet $0,40 * ~ 4 saat = ~ $1,60 olur. Düğümlerin başlatılması, daha fazla zaman kaplamasından kaynaklanabilir. Saatlik düğüm maliyetini [Azure Batch fiyatlandırma](https://azure.microsoft.com/pricing/details/virtual-machines/linux) sayfasında bulabilirsiniz (kategori Için "işlem için iyileştirilmiş" veya "yüksek performanslı işlem" seçeneğini belirleyebilirsiniz).
@@ -188,6 +207,7 @@ Sahninizi kendi bilgisayarınızda bulabilirsiniz. Bu, bir Azure Batch hesabı o
 
 ### <a name="minimum-hardware-requirements"></a>En düşük donanım gereksinimleri
 * En az 8 çekirdeğe ve 32 GB RAM 'e sahip bir x86-64 işlemcisi
+* Docker 'ı çalıştırmak için [Hyper-V etkinleştirildi](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v)
 
 Örnek olarak, Intel Xeon E5-1660 @ 3 GHz ve 32 GB RAM 'e sahip 8 çekirdekli bir makinede sınamamız sırasında
 * 100 yoklamaların bulunduğu küçük bir sahne, ince bir fırt veya 32 saat boyunca yaklaşık 2 saat sürebilir.
@@ -195,13 +215,15 @@ Sahninizi kendi bilgisayarınızda bulabilirsiniz. Bu, bir Azure Batch hesabı o
 
 ### <a name="setup-docker"></a>Docker 'ı ayarlama
 Simülasyonu işleyecek BILGISAYAR üzerinde Docker 'ı yükleyip yapılandırma
-1. [Docker araç takımını](https://www.docker.com/products/docker-desktop)yükler.
-2. Docker ayarlarını başlatın, "Gelişmiş" seçeneklerine gidin ve kaynakları en az 8 GB RAM 'e sahip olacak şekilde yapılandırın. Docker 'a ayırabileceğiniz CPU sayısı ne kadar yüksekse, fırt daha hızlı tamamlanır. ![Örnek Docker ayarlarının ekran görüntüsü](media/docker-settings.png)
-3. "Paylaşılan sürücüler" e gidin ve işlenmek üzere kullanılan sürücü için paylaşımı açın.![Docker paylaşılan sürücü seçeneklerinin ekran görüntüsü](media/docker-shared-drives.png)
+1. [Docker Desktop](https://www.docker.com/products/docker-desktop)'ı yükler.
+2. Docker ayarlarını başlatın, "Gelişmiş" seçeneklerine gidin ve kaynakları en az 8 GB RAM 'e sahip olacak şekilde yapılandırın. Docker 'a ayırabileceğiniz CPU sayısı ne kadar yüksekse, fırt daha hızlı tamamlanır.  
+![Örnek Docker ayarlarının ekran görüntüsü](media/docker-settings.png)
+1. "Paylaşılan sürücüler" e gidin ve işlenmek üzere kullanılan sürücü için paylaşımı açın.  
+![Docker paylaşılan sürücü seçeneklerinin ekran görüntüsü](media/docker-shared-drives.png)
 
 ### <a name="run-local-bake"></a>Yerel hazırlama Çalıştır
 1. **Bake** sekmesinde "yerel Bake hazırla" düğmesine tıklayın ve giriş dosyalarının ve yürütme betiklerinin kaydedileceği bir klasör seçin. Daha sonra, en düşük donanım gereksinimlerini karşılayan ve klasörü o makineye kopyalayarak Docker 'ın yüklü olduğu sürece herhangi bir makinede FIRE 'yi çalıştırabilirsiniz.
-2. "Runlocalbake. bat" betiğini kullanarak benzetimi başlatın. Bu betik, proje Acoustics Docker görüntüsünü benzetim işleme için gereken araç kümesiyle getirecek ve benzetimi başlatacak. 
+2. Windows 'ta "runlocalbake. bat" betiğini kullanarak veya MacOS 'ta "runlocalbake.sh" betiğini kullanarak simülasyonu başlatın. Bu betik, proje Acoustics Docker görüntüsünü benzetim işleme için gereken araç kümesiyle getirecek ve benzetimi başlatacak. 
 3. Simülasyon bittikten sonra, elde edilen. ACE dosyasını Unity projenize geri kopyalayın. Unity 'nin bunu bir ikili dosya olarak tanımasını sağlamak için dosya uzantısına ". Bytes" ekleyin (örneğin, "scene1. Ace. Bytes"). Benzetim için ayrıntılı Günlükler "AcousticsLog. txt" içinde depolanır. Herhangi bir sorunla karşılaşırsanız, bu dosyayı tanılamada yardımcı olacak şekilde paylaşabilirsiniz.
 
 ## <a name="Data-Files"></a>Hazırlama işlemi tarafından eklenen veri dosyaları

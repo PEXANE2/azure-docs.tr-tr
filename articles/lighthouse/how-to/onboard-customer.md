@@ -1,48 +1,48 @@
 ---
-title: Yerleşik bir müşteri Azure kaynak yönetimi - Azure Deniz temsilcisi
-description: Nasıl ekleme bir müşteri Azure kaynak yönetimi erişilebilecek ve kendi kiracınızı yönetilen kaynaklarını izin verme temsilcisi öğrenin.
+title: Azure tarafından atanan kaynak yönetimine müşteri ekleme-Azure açık Thouse
+description: Azure 'un Temsilcili kaynak yönetimine nasıl bir müşteri ekleneceğini ve bunların kendi kiracınız aracılığıyla kaynaklarına erişilmesine ve yönetilmesine izin vermeyi öğrenin.
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
 ms.date: 07/11/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 1885a6220f14de234710b6980b5d3b6a6172bb7e
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: d1876977d819b50569b6f07242af91fb1d6832ee
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67809865"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934328"
 ---
-# <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Yerleşik bir müşteri Azure kaynak yönetimi temsilcisi
+# <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Bir müşteriyi Azure tarafından atanan temsilcinin kaynak yönetimine ekleme
 
-Bu makalede, nasıl, bir hizmet sağlayıcısı olarak temsil edilen Azure kaynak yönetimi, müşteriye temsilci kaynaklarını (abonelikler ve/veya kaynak grupları) erişilebilen ve kendi Azure Active Directory (yönetilen için izin verme ekleyebilir açıklanmaktadır. Azure AD) kiracısı. Hizmet sağlayıcıları ve burada müşterileri diyoruz, ancak birden çok kiracının yönetme kuruluşların yönetim deneyimlerinden birleştirmek için aynı işlem kullanabilirsiniz.
+Bu makalede, bir hizmet sağlayıcı olarak, bir müşteriyi Azure tarafından atanan kaynak yönetimine ekleme, temsilcili kaynakların (abonelikler ve/veya kaynak grupları) kendi Azure Active Directory erişilebilir ve yönetilme olanağı ( Azure AD) kiracısı. Burada hizmet sağlayıcılarına ve müşterilere başvuracağız. birden çok kiracıyı yöneten kuruluşlar, yönetim deneyimlerini birleştirmek için aynı süreci kullanabilir.
 
-Kaynaklar için birden çok müşteriyi yönetiyorsanız, bu işlemi yineleyebilirsiniz. Kiracınız için yetkili bir kullanıcı oturum açtığında, daha sonra kullanıcı müşteri kiralama kapsamlarda her müşterinin kiracısına oturum açmak zorunda kalmadan yönetim işlemlerini gerçekleştirmek için yetkilendirilebilir.
+Birden çok müşteri için kaynakları yönetiyorsanız, bu işlemi yineleyebilirsiniz. Daha sonra, yetkili bir Kullanıcı kiracınızda oturum açtığında, bu kullanıcı, her müşteri kiracısında oturum açmaya gerek kalmadan yönetim işlemlerini gerçekleştirmek üzere müşteri kiracı kapsamları genelinde yetkilendiribiliyor olabilir.
 
-Eklenen aboneliklerinizi, etki müşterilerle yaşadığımız izlemek için Microsoft iş ortağı ağı (MPN) Kimliğiniz ilişkilendirebilirsiniz. Daha fazla bilgi için bkz. [şekilde Azure hesaplarınızı için bir iş ortağı kimliği Bağla](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started).
+Müşteri görevlendirmeleri genelinde etkileri izlemek için, Microsoft İş Ortağı Ağı (MPN) KIMLIĞINIZI eklendi aboneliklerinizle ilişkilendirebilirsiniz. Daha fazla bilgi için bkz. [Azure hesaplarınıza bir iş ortağı kimliği bağlama](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started).
 
 > [!NOTE]
-> Bunlar Azure Market'te yayımlanan yönetilen Hizmetleri teklifi (genel veya özel) satın aldığınızda müşteriler otomatik olarak eklenen olabilir. Daha fazla bilgi için bkz. [yayımlama yönetilen hizmetler sunan Azure Marketi'nde](publish-managed-services-offers.md). Azure Market'te yayımlanan bir teklifi ile burada açıklanan ekleme işlemi de kullanabilirsiniz.
+> Müşteriler, Azure Marketi 'Nde yayımladığınız bir yönetilen hizmet teklifi (genel veya özel) satın alındığında otomatik olarak eklendi. Daha fazla bilgi için bkz. [yönetilen hizmet tekliflerini Azure Marketi 'Nde yayımlama](publish-managed-services-offers.md). Burada açıklanan ekleme işlemini Azure Marketi 'Nde yayınlanan bir teklifle birlikte kullanabilirsiniz.
 
-Onboarding işlemi her iki hizmet sağlayıcısının Kiracı içinde ve müşteri kiracısında alınacağı işlemleri gerektirir. Bu makaledeki tüm adımları açıklanmaktadır.
+Ekleme işlemi, eylemlerin hem hizmet sağlayıcının kiracısından hem de müşterinin kiracısından alınması gerekir. Bu adımların tümü bu makalede açıklanmıştır.
 
 > [!IMPORTANT]
-> Şu anda ekleme yapamazsınız bir aboneliği (veya bir abonelik içindeki kaynak grubu) için Azure aboneliği, Azure Databricks kullanıyorsa kaynak yönetimi temsilcisi. Benzer şekilde, bir abonelik ile yetiştirme kaydedilmişse **Microsoft.ManagedServices** kaynak sağlayıcısı, olmayacaktır şu anda bu abonelik için bir Databricks çalışma alanı oluşturabilirsiniz.
+> Şu anda, abonelik Azure Databricks kullanıyorsa, Azure tarafından atanan kaynak yönetimi için abonelik (veya bir abonelik içinde kaynak grubu) ekleyemezsiniz. Benzer şekilde, **Microsoft. ManagedServices** kaynak sağlayıcısı ile ekleme için bir abonelik kaydedilmişse, bu abonelik için şu anda bir Databricks çalışma alanı oluşturamazsınız.
 
-## <a name="gather-tenant-and-subscription-details"></a>Kiracı ve abonelik ayrıntılarını toplama
+## <a name="gather-tenant-and-subscription-details"></a>Kiracı ve abonelik ayrıntılarını toplayın
 
-İçin yerleşik bir müşterinin Kiracı olmalıdır bir etkin Azure aboneliği. Aşağıdakileri bilmeniz gerekir:
+Bir müşterinin kiracısını eklemek için etkin bir Azure aboneliğine sahip olması gerekir. Şunları bilmeniz gerekir:
 
-- Hizmet sağlayıcısının Kiracı (burada müşterinin kaynakları yöneteceğiniz) Kiracı kimliği
-- (Hizmet sağlayıcısı tarafından yönetilen kaynaklar gerekir) müşterinin kiracısına Kiracı kimliği
-- Hizmet sağlayıcısı tarafından yönetilecek (veya hizmet sağlayıcısı tarafından yönetilecek kaynak gruplarını içeren), müşterinin kiracısındaki belirli her abonelik için abonelik kimlikleri
+- Hizmet sağlayıcısının kiracının kiracı KIMLIĞI (müşterinin kaynaklarını yönettiğiniz yer)
+- Müşterinin kiracının kiracı KIMLIĞI (hizmet sağlayıcısı tarafından yönetilen kaynaklar olacaktır)
+- Müşterinin kiracısındaki, hizmet sağlayıcısı tarafından yönetilecek (veya hizmet sağlayıcısı tarafından yönetilecek kaynak gruplarını içeren) her bir abonelik için abonelik kimlikleri
 
-Bu bilgiler yoksa, aşağıdaki yollardan biriyle alabilirsiniz.
+Bu bilgileri zaten yoksa, aşağıdaki yollarla alabilirsiniz.
 
 ### <a name="azure-portal"></a>Azure portal
 
-Kiracı Kimliğinizi Azure portalının sağ üst taraftaki hesap adınızın üzerine gelin veya seçerek görülebilir **dizini Değiştir**. Seçin ve Kiracı Kimliğinizi kopyalamak için portalın içinde aramak için "Azure Active Directory'den" ve ardından **özellikleri** ve gösterilen değerini kopyalayın **dizin kimliği** alan. Bir aboneliğin Kimliğini bulmak için "Abonelikler" için arama yapın ve ardından uygun bir abonelik kimliğini seçin
+Kiracı KIMLIĞINIZ, Azure portal sağ üst tarafındaki hesap adınızın üzerine gelerek veya **Dizin Değiştir**' i seçerek görülebilir. Kiracı KIMLIĞINIZI seçmek ve kopyalamak için Portal içinden "Azure Active Directory" araması yapın, ardından **Özellikler** ' i seçin ve **dizin kimliği** alanında gösterilen değeri kopyalayın. Bir aboneliğin KIMLIĞINI bulmak için, "abonelikler" araması yapın ve ardından uygun abonelik KIMLIĞINI seçin.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -62,17 +62,17 @@ az account show
 ```
 
 
-## <a name="ensure-the-customers-subscription-is-registered-for-onboarding"></a>Müşterinin hizmet aboneliği ekleme için kayıtlı olduğundan emin olun
+## <a name="ensure-the-customers-subscription-is-registered-for-onboarding"></a>Müşterinin aboneliğinin ekleme için kayıtlı olduğundan emin olun
 
-Her abonelik için onboarding el ile kaydederek yetkilendirilmelidir **Microsoft.ManagedServices** kaynak sağlayıcısı. Müşteri özetlenen adımları izleyerek bir abonelik kaydedebilirsiniz [Azure kaynak sağlayıcıları ve türleri](../../azure-resource-manager/resource-manager-supported-services.md).
+Her aboneliğin, **Microsoft. ManagedServices** kaynak sağlayıcısını el ile kaydederek ekleme için yetkilendirilmiş olması gerekir. Müşteri, [Azure kaynak sağlayıcıları ve türleri](../../azure-resource-manager/resource-manager-supported-services.md)bölümünde özetlenen adımları izleyerek bir abonelik kaydedebilir.
 
-Müşteri, abonelik aşağıdaki yollardan biriyle hazırlanması için hazır olduğunu doğrulayabilirsiniz.
+Müşteri, aboneliğin ekleme için aşağıdaki yollarla hazırlandığından emin olabilir.
 
 ### <a name="azure-portal"></a>Azure portal
 
-1. Azure portalında aboneliği seçin.
-1. Seçin **kaynak sağlayıcıları**.
-1. Onaylayın **Microsoft.ManagedServices** olarak gösterir **kayıtlı**.
+1. Azure portal aboneliği seçin.
+1. **Kaynak sağlayıcıları**' nı seçin.
+1. **Microsoft. ManagedServices** 'ın **kayıtlı**olarak görüntülendiğini doğrulayın.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -83,7 +83,7 @@ Set-AzContext -Subscription <subscriptionId>
 Get-AzResourceProvider -ProviderNameSpace 'Microsoft.ManagedServices'
 ```
 
-Bu sonuç aşağıdakine benzer döndürülmesi gerekir:
+Bu, aşağıdakine benzer sonuçlar döndürmelidir:
 
 ```output
 ProviderNamespace : Microsoft.ManagedServices
@@ -108,10 +108,10 @@ Locations         : {}
 # Log in first with az login if you're not using Cloud Shell
 
 az account set –subscription <subscriptionId>
-az provider show –namespace "Microsoft.ManagedServices" –-output table
+az provider show --namespace "Microsoft.ManagedServices" --output table
 ```
 
-Bu sonuç aşağıdakine benzer döndürülmesi gerekir:
+Bu, aşağıdakine benzer sonuçlar döndürmelidir:
 
 ```output
 Namespace                  RegistrationState
@@ -121,14 +121,14 @@ Microsoft.ManagedServices  Registered
 
 ## <a name="define-roles-and-permissions"></a>Rolleri ve izinleri tanımlama
 
-Bir hizmet sağlayıcısı olarak, farklı erişmesi için farklı kapsamlar, tek bir müşteriye sahip birden çok teklife kullanmak isteyebilirsiniz.
+Hizmet sağlayıcı olarak, farklı kapsamlar için farklı erişim gerektiren tek bir müşteriyle birden çok teklif kullanmak isteyebilirsiniz.
 
-Yönetimini kolaylaştırmak için her rol için Azure AD kullanıcı gruplarını kullanarak doğrudan o kullanıcıya izin atamak yerine, gruba bireysel kullanıcı eklemek veya kaldırmak izin verme öneririz. Rolleri bir hizmet sorumlusu atamak isteyebilirsiniz. Böylece yalnızca kullanıcıların yanlışlıkla hata olasılığını azaltmaya yardımcı olur, işi tamamlamak için gerekli izinlere sahip en az ayrıcalık ilkesini uygulayın emin olun. Daha fazla bilgi için bkz. [önerilen güvenlik uygulamaları](../concepts/recommended-security-practices.md).
+Yönetimi kolaylaştırmak için, her rol için Azure AD Kullanıcı grupları kullanmanızı öneririz. böylece, izinleri doğrudan bu kullanıcıya atamak yerine gruba bireysel kullanıcı ekleyebilir veya kaldırabilirsiniz. Ayrıca, bir hizmet sorumlusuna roller atamak isteyebilirsiniz. Kullanıcıların yalnızca işini tamamlaması için gerekli izinlere sahip olması için en az ayrıcalık ilkesini izlediğinizden emin olun, böylece yanlışlıkla oluşan hatalar olasılığını azaltmaya yardımcı olur. Daha fazla bilgi için bkz. [Önerilen güvenlik uygulamaları](../concepts/recommended-security-practices.md).
 
 > [!NOTE]
-> Rol atamaları, rol tabanlı erişim denetimi (RBAC) kullanmalıdır [yerleşik roller](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles). Tüm yerleşik roller sahibi ve herhangi bir yerleşik rolü ile temsil edilen Azure kaynak yönetimi ile şu anda desteklenen [DataActions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) izni. Yerleşik kullanıcı erişimi yöneticisi rolü, aşağıda açıklandığı gibi sınırlı kullanım için desteklenir. Özel roller ve [Klasik Abonelik Yöneticisi rolleri](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators) da desteklenmez.
+> Rol atamalarının rol tabanlı erişim denetimi (RBAC) [yerleşik rollerini](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)kullanması gerekir. Tüm yerleşik roller Şu anda, sahip ve [Dataactions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) iznine sahip yerleşik roller hariç Azure tarafından yetkilendirilen kaynak yönetimi ile desteklenmektedir. Kullanıcı erişimi Yöneticisi yerleşik rolü, aşağıda açıklandığı gibi sınırlı kullanım için desteklenir. Özel roller ve [Klasik abonelik yöneticisi rolleri](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators) de desteklenmez.
 
-Yetkilendirmeleri tanımlamak için her bir kullanıcı, kullanıcı grubu veya erişim vermek istediğiniz bir hizmet sorumlusu kimliği değerlerini bilmeniz gerekir. Ayrıca, atamak istediğiniz yerleşik her rol için rol tanımı kimliği gerekir. Zaten yoksa, bunları aşağıdaki yollardan biriyle alabilirsiniz.
+Yetkilendirmeleri tanımlamak için, erişim vermek istediğiniz her Kullanıcı, Kullanıcı grubu veya hizmet sorumlusu için KIMLIK değerlerini bilmeniz gerekir. Ayrıca, atamak istediğiniz her bir yerleşik rol için rol tanımı KIMLIĞI gerekir. Henüz yoksa, bunları aşağıdaki yollarla alabilirsiniz.
 
 
 
@@ -156,44 +156,44 @@ Yetkilendirmeleri tanımlamak için her bir kullanıcı, kullanıcı grubu veya 
 # Log in first with az login if you're not using Cloud Shell
 
 # To retrieve the objectId for an Azure AD group
-az ad group list –-query "[?displayName == '<yourGroupName>'].objectId" –-output tsv
+az ad group list --query "[?displayName == '<yourGroupName>'].objectId" --output tsv
 
 # To retrieve the objectId for an Azure AD user
-az ad user show –-upn-or-object-id "<yourUPN>" –-query "objectId" –-output tsv
+az ad user show --upn-or-object-id "<yourUPN>" –-query "objectId" --output tsv
 
 # To retrieve the objectId for an SPN
-az ad sp list –-query "[?displayName == '<spDisplayName>'].objectId" –-output tsv
+az ad sp list --query "[?displayName == '<spDisplayName>'].objectId" --output tsv
 
 # To retrieve role definition IDs
-az role definition list –-name "<roleName>" | grep name
+az role definition list --name "<roleName>" | grep name
 ```
 
 ## <a name="create-an-azure-resource-manager-template"></a>Bir Azure Resource Manager şablonu oluşturma
 
-İçin yerleşik müşterinizin oluşturmak ihtiyacınız bir [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/) şablon şunları içerir:
+Müşteriyi eklemek için aşağıdakileri içeren bir [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/) şablonu oluşturmanız gerekir:
 
 |Alan  |Tanım  |
 |---------|---------|
-|**mspName**     |Hizmet sağlayıcısı adı         |
-|**mspOfferDescription**     |Teklifinizi (örneğin, "Contoso VM Yönetimi teklifi") kısa bir açıklaması      |
-|**managedByTenantId**     |Kiracı Kimliğiniz         |
-|**Yetkilendirmeleri**     |**Principalıd** kullanıcılar/gruplar/SPN'ler kiracınızdan, her biri için değerler bir **principalIdDisplayName** müşterinizin yetkilendirme amacını anlamalarına yardımcı olmak için ve bir yerleşik eşlendi**Roledefinitionıd** erişim düzeyini belirtmek için değer         |
+|**mspName**     |Hizmet sağlayıcı adı         |
+|**mspOfferDescription**     |Teklifinizin kısa bir açıklaması (örneğin, "contoso VM yönetimi teklifi")      |
+|**Managedbytenantıd**     |Kiracı KIMLIĞINIZ         |
+|**yetkilendirmeleri**     |Kiracınızdaki kullanıcılar/gruplar/SPN 'Ler için **PrincipalId** değerleri, müşterinizin yetkilendirmesinin amacını anlamasına ve bir yerleşik **roledefinitionıd** değeriyle eşleştirilmesine yardımcı olacak şekilde erişim düzeyi         |
 
-Eklenecek bir müşterinin aboneliğini içinde sağlarız uygun bir Azure Resource Manager şablonu kullanma bizim [depo örnekleri](https://github.com/Azure/Azure-Lighthouse-samples/), yapılandırmanızla eşleşecek ve tanımlamak için değiştirme karşılık gelen bir parametre dosyasıyla birlikte, Yetkilendirme. Ayrı şablonları ekleme olmanıza bağlı olarak bir aboneliğin tümü, bir kaynak grubu veya abonelik içinde birden fazla kaynak grubu sağlanır. Ayrıca, yerleşik kendi aboneliklerinizi bu şekilde tercih ederseniz, Azure Market'te yayımlanmış bir yönetilen hizmet teklifi satın alan müşteriler için kullanılabilir bir şablonu sunuyoruz.
+Bir müşterinin aboneliğini eklemek için, örneklerimizde sağladığımız uygun Azure Resource Manager şablonunu, yapılandırmanızla eşleşecek [](https://github.com/Azure/Azure-Lighthouse-samples/)şekilde değiştirdiğiniz karşılık gelen bir parametre dosyası ile birlikte kullanın ve yetkilendirmeleri tanımlayın. Ayrı şablonlar, abonelik içindeki bir aboneliğin, bir kaynak grubunun veya birden çok kaynak grubunun tamamını ekleme yönteminize bağlı olarak sağlanır. Ayrıca, aboneliklerini bu şekilde eklemek isterseniz, Azure Marketi 'Nde yayımladığınız yönetilen hizmet teklifini satın alan müşteriler için kullanılabilecek bir şablon sunuyoruz.
 
-|**Eklemek için bu**  |**Bu Azure Resource Manager şablonu kullanma**  |**Ve bu parametre dosyasını değiştirme** |
+|**Bunu eklemek için**  |**Bu Azure Resource Manager şablonunu kullan**  |**Ve bu parametre dosyasını Değiştir** |
 |---------|---------|---------|
-|Subscription   |[delegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management/delegatedResourceManagement.json)  |[delegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management/delegatedResourceManagement.parameters.json)    |
-|Resource group   |[rgDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)  |[rgDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)    |
-|Bir abonelik içindeki birden fazla kaynak grubu   |[multipleRgDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.json)  |[multipleRgDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.parameters.json)    |
-|(Bir teklif kullanarak Azure Marketi'nde yayımlandığında) aboneliği   |[marketplaceDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[marketplaceDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
+|Subscription   |[delegatedResourceManagement. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management/delegatedResourceManagement.json)  |[delegatedResourceManagement. Parameters. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management/delegatedResourceManagement.parameters.json)    |
+|Resource group   |[rgDelegatedResourceManagement. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)  |[rgDelegatedResourceManagement. Parameters. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)    |
+|Abonelik içindeki birden fazla kaynak grubu   |[Çoğullergdelegatedresourcemanagement. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.json)  |[multipleRgDelegatedResourceManagement. Parameters. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.parameters.json)    |
+|Abonelik (Azure Marketi 'Nde yayınlanan bir teklifi kullanırken)   |[marketplaceDelegatedResourceManagement. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[marketplaceDelegatedResourceManagement. Parameters. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
 
 > [!IMPORTANT]
-> Burada açıklanan işlemi eklenen olan her abonelik için ayrı bir dağıtım gerektirir.
+> Burada açıklanan işlem, eklendi olan her abonelik için ayrı bir dağıtım gerektirir.
 > 
-> Ayrı dağıtımları da farklı Aboneliklerde içinde birden çok kaynak gruplarını ekleme kullanıyorsanız gereklidir. Ancak, ekleme, bir dağıtımda birden çok kaynak grupları tek bir abonelik içinde yapılabilir.
+> Farklı abonelikler içinde birden fazla kaynak grubu eklediğinizde ayrı dağıtımlar da gereklidir. Ancak, tek bir abonelik içinde birden çok kaynak grubu ekleme işlemi tek bir dağıtımda yapılabilir.
 
-Aşağıdaki örnek, bir değişiklik gösterir. **resourceProjection.parameters.json** olacak bir dosya eklemek için kullanılan bir abonelik. Kaynak grubu parametresi dosyaları (bulunan [rg temsilci kaynak yönetimi](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management) klasör) benzerdir, ancak de dahil bir **rgName** parametresi olmasını belirli kaynak gruplarını tanımlayın eklenmedi.
+Aşağıdaki örnek, bir aboneliği eklemek için kullanılacak olan değiştirilmiş **Resourceprojection. Parameters. JSON** dosyasını gösterir. Kaynak grubu parametre dosyaları ( [RG-Temsilcili-kaynak-yönetim](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management) klasöründe bulunur) benzerdir, ancak aynı zamanda eklendi olacak belirli kaynak gruplarını belirlemek Için bir **RgName** parametresi de içerir.
 
 ```json
 {
@@ -245,14 +245,14 @@ Aşağıdaki örnek, bir değişiklik gösterir. **resourceProjection.parameters
     }
 }
 ```
-Yukarıdaki örnekte son yetkilendirme ekler bir **Principalıd** kullanıcı erişimi yöneticisi rolü (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9). Bu rol atamasını yaparken içermelidir **delegatedRoleDefinitionIds** özelliği ve bir veya daha fazla yerleşik roller. Bu yetkilendirme oluşturulan kullanıcılar bu yerleşik rollerde yönetilen kimlikleri atayın. Normalde kullanıcı erişimi yöneticisi rolü ile ilişkili hiçbir diğer izinler bu kullanıcı için geçerli olduğunu unutmayın.
+Yukarıdaki örnekteki en son yetkilendirme, Kullanıcı erişimi yönetici rolü (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9) ile bir **PrincipalId** ekliyor. Bu rolü atarken, **Delegatedrotadefinitionıds** özelliğini ve bir veya daha fazla yerleşik rolü de eklemeniz gerekir. Bu yetkilendirmede oluşturulan kullanıcı bu yerleşik rolleri yönetilen kimliklere atayabilecektir. Normalde Kullanıcı erişimi Yöneticisi rolüyle ilişkili başka hiçbir izin bu kullanıcı için uygulanmayacak şekilde unutmayın.
 
 ## <a name="deploy-the-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarını dağıtma
 
-Müşteri, parametre dosyanıza güncelleştirdikten sonra kaynak yönetimi şablonu, müşteri kiracısında bir abonelik düzeyinde dağıtım dağıtmanız gerekir. Ayrı bir dağıtım temsil edilen Azure kaynak yönetimi (veya eklemek istediğiniz kaynak gruplarını içeren her bir abonelik için) eklemek istediğiniz her bir abonelik için gereklidir.
+Parametre dosyanızı güncelleştirdikten sonra, müşteri, kaynak yönetimi şablonunu kendi müşterilerinin kiracısında abonelik düzeyinde bir dağıtım olarak dağıtmalıdır. Azure 'un Temsilcili kaynak yönetimine eklemek istediğiniz her abonelik için ayrı bir dağıtım gerekir (veya eklemek istediğiniz kaynak gruplarını içeren her abonelik için).
 
 > [!IMPORTANT]
-> Dağıtımı olan bir müşterinin Kiracı Konuk içi hesabında gerçekleştirilmelidir [sahip yerleşik rolü](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) eklenen olan abonelik (veya eklenen olan kaynak grupları içeriyor).
+> Dağıtım, müşterinin kiracısında, eklendi olan abonelik (veya eklendi olan kaynak gruplarını içeren) için [sahip yerleşik rolüne](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) sahip konuk olmayan bir hesap tarafından yapılmalıdır.
 
 ```azurepowershell-interactive
 # Log in first with Connect-AzAccount if you're not using Cloud Shell
@@ -292,26 +292,26 @@ az deployment create –-name <deploymentName \
                      --verbose
 ```
 
-## <a name="confirm-successful-onboarding"></a>Başarıyla Hazırlanmanız onaylayın
+## <a name="confirm-successful-onboarding"></a>Başarılı ekleme Onayla
 
-Bir müşteri aboneliğinde başarıyla temsil edilen Azure kaynak yönetimi için eklendi, hizmet sağlayıcısının kiracısındaki kullanıcılar (bunlar yukarıdaki sürecinde ona erişim izniniz abonelik ve kaynaklarını görebilirsiniz. tek tek veya uygun izinlere sahip bir Azure AD grubunun bir üyesi olarak). Bunu doğrulamak için aşağıdaki yollardan birinde abonelik göründüğünden emin olmak için denetleyin.  
+Bir müşteri aboneliği Azure tarafından atanan kaynak yönetimine başarıyla eklendi, hizmet sağlayıcı kiracısındaki kullanıcılar aboneliği ve kaynaklarını görebilir (Yukarıdaki işlem aracılığıyla bu hizmete erişim verildiyse, ayrı ayrı veya bir Azure AD grubunun üyesi olarak uygun izinlere sahip olmalıdır). Bunu onaylamak için, aboneliğin aşağıdaki yollarla göründüğünden emin olun.  
 
 ### <a name="azure-portal"></a>Azure portal
 
-Hizmet sağlayıcısının Kiracı:
+Hizmet sağlayıcısının kiracısında:
 
-1. Gidin [müşteriler sayfam](view-manage-customers.md).
-2. Seçin **müşteriler**.
-3. Resource Manager şablonunda belirtilen teklif adı ile yapılan abonelik(ler) gördüğünüzü onaylayın.
+1. [Müşterilerimiz sayfasına](view-manage-customers.md)gidin.
+2. **Müşteriler**' i seçin.
+3. Kaynak Yöneticisi şablonunda verdiğiniz teklif adı ile abonelik (ler) i görmek istediğinizi onaylayın.
 
-Müşteri kiracısında:
+Müşterinin kiracısında:
 
-1. Gidin [hizmet sağlayıcıları sayfası](view-manage-service-providers.md).
-2. Seçin **hizmet sağlayıcısı teklifler**.
-3. Resource Manager şablonunda belirtilen teklif adı ile yapılan abonelik(ler) gördüğünüzü onaylayın.
+1. [Hizmet sağlayıcıları sayfasına](view-manage-service-providers.md)gidin.
+2. **Hizmet sağlayıcısı tekliflerini**seçin.
+3. Kaynak Yöneticisi şablonunda verdiğiniz teklif adı ile abonelik (ler) i görmek istediğinizi onaylayın.
 
 > [!NOTE]
-> Bu güncelleştirmeler, Azure portalında yansıtılır önce dağıtımınız tamamlandıktan sonra birkaç dakika sürebilir.
+> Güncelleştirmeler Azure portal yansıtılmadan önce dağıtımınızın tamamlanması birkaç dakika sürebilir.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -331,5 +331,5 @@ az account list
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Hakkında bilgi edinin [kiracılar arası yönetim deneyimleri](../concepts/cross-tenant-management-experience.md).
-- [Görüntüleme ve yönetme müşteriler](view-manage-customers.md) giderek **müşterilerimin** Azure portalında.
+- [Çapraz kiracı yönetim deneyimleri](../concepts/cross-tenant-management-experience.md)hakkında bilgi edinin.
+- Azure portal **müşterilerime** giderek [müşterileri görüntüleyin ve yönetin](view-manage-customers.md) .

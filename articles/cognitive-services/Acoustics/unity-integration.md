@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: dffef5062e89ef725abcfda187f5e6159c676b9c
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 54bc98e0ddba0292c6a5dbb07f2bbdfce6a1cb45
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854317"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933153"
 ---
 # <a name="project-acoustics-unity-integration"></a>Project Acoustics Unity tümleştirmesi
 Bu nasıl yapılır-proje Acoustics Unity eklentisinin Unity projenize tümleştirilmesini açıklar.
@@ -32,6 +32,10 @@ Acoustics UnityPackage 'ı projenize aktarın.
     ![Unity Içeri aktarma paketi menüsünün ekran görüntüsü](media/import-package.png)  
 
 * **Projectacoustiği. unitypackage** seçin
+
+* Unity paketini projenizle bütünleştirmek için **Içeri aktar** düğmesine tıklayın  
+
+    ![Unity Içeri aktarma paketi iletişim kutusunun ekran görüntüsü](media/import-dialog.png)  
 
 Eklentiyi var olan bir projeye aktardıysanız, projeniz proje kökünde bir **MCS. rsp** dosyasına sahip olabilir ve bu, C# derleyicinin seçeneklerini belirtir. Bu dosyanın içeriğini Project Acoustics eklentisi ile birlikte gelen MCS. rsp dosyası ile birleştirmeniz gerekir.
 

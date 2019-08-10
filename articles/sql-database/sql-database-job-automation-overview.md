@@ -10,12 +10,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 01/25/2019
-ms.openlocfilehash: 1b8d4965edb446235e28f47a0226c82b89c73e0b
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f4d2afd65ec06c331498ce974e933fe08c8e67dd
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845045"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935182"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Veritabanı işlerini kullanarak yönetim görevlerini otomatikleştirme
 
@@ -44,7 +44,7 @@ Bir iş, hedef veritabanında oturum açma görevini işler. Ayrıca, Azure SQL 
 Aşağıdaki iş zamanlama teknolojileri Azure SQL veritabanı 'nda kullanılabilir:
 
 - **SQL Aracısı işleri** , yönetilen örnekte kullanılabilen, klasik ve bir test SQL Server iş zamanlama bileşenidir. SQL Aracısı Işleri tek veritabanlarında kullanılamaz.
-- **Elastik veritabanı işleri** , bir veya birden çok Azure SQL veritabanında özel Işler çalıştıran iş zamanlama hizmetlerdir.
+- **Elastik veritabanı işleri (Önizleme)** bir veya birden çok Azure SQL veritabanında özel Işler çalıştıran iş zamanlama hizmetlerdir.
 
 SQL Aracısı (Şirket içi ve SQL veritabanı yönetilen örneği 'nin bir parçası olarak kullanılabilir) ve veritabanı elastik Iş Aracısı (Azure SQL veritabanı ve SQL veri ambarı 'ndaki veritabanları için kullanılabilir) arasında birkaç farklılık olduğunu belirtmekte bir değer.
 
@@ -168,7 +168,7 @@ SQL Server ' de kullanılabilir olan SQL Aracısı özelliklerinden bazıları y
 
 SQL Server Agent hakkında bilgi için bkz. [SQL Server Agent](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent).
 
-## <a name="elastic-database-jobs"></a>Elastik Veritabanı İşleri
+## <a name="elastic-database-jobs-preview"></a>Elastik Veritabanı İşleri (Önizleme)
 
 **Elastik Veritabanı İşleri**, bir zaman çizelgesine veya istek üzerine çok sayıda veritabanı arasında bir veya daha fazla T-SQL betiğinin paralel olarak çalıştırılmasını sağlar.
 

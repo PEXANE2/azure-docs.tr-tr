@@ -1,5 +1,5 @@
 ---
-title: Azure SignalR hizmeti sunucusuz hızlı başlangıç - JavaScript
+title: Azure SignalR hizmeti sunucusuz hızlı başlangıç-JavaScript
 description: Azure SignalR Hizmetini ve Azure İşlevlerini kullanarak bir sohbet odası oluşturmaya yönelik hızlı başlangıç.
 author: sffamily
 ms.service: signalr
@@ -7,14 +7,14 @@ ms.devlang: javascript
 ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: zhshang
-ms.openlocfilehash: b096a6c7bb5b1fedaa5d2963dddae03df9fe6954
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: c234324bf76f9d944037a411ed8bb3b7e4841cbe
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66494050"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882539"
 ---
-# <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-javascript"></a>Hızlı Başlangıç: SignalR JavaScript kullanarak hizmeti ve Azure işlevleri ile sohbet odası oluşturamadı.
+# <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-javascript"></a>Hızlı Başlangıç: JavaScript kullanarak Azure Işlevleri ve SignalR hizmeti ile sohbet odası oluşturma
 
 Azure SignalR hizmeti uygulamanıza kolayca gerçek zamanlı işlevsellik eklemenizi sağlar. Azure İşlevleri, herhangi bir altyapı yönetimine gerek kalmadan kodunuzu çalıştırmanıza olanak tanıyan sunucusuz bir platformdur. Bu hızlı başlangıçta, SignalR Hizmeti ve İşlevlerini sunucusuz ve gerçek zamanlı bir sohbet uygulaması oluşturmak için kullanmayı öğrenin.
 
@@ -25,6 +25,8 @@ Bu hızlı başlangıç; macOS, Windows veya Linux üzerinde çalıştırılabil
 [Visual Studio Code](https://code.visualstudio.com/) gibi bir kod editörünün yüklü olduğundan emin olun.
 
 Azure İşlevleri uygulamalarını yerel olarak çalıştırmak için [Azure İşlevleri Çekirdek Araçları (v2)](https://github.com/Azure/azure-functions-core-tools#installing) öğesini yükleyin.
+
+Azure Işlevleri için [Node. js](https://nodejs.org/en/download/) sürüm 8 veya 10 gerekir.
 
 Azure İşlevleri Çekirdek Araçları, uzantı yüklemek için [.NET Core SDK'sının](https://www.microsoft.com/net/download) yüklü olmasını gerektirir. Ancak JavaScript Azure İşlev uygulamaları oluşturmak için .NET bilgisi gerekmemektedir.
 
@@ -50,7 +52,7 @@ Azure hesabınızla Azure portalında <https://portal.azure.com/> sayfasında ot
 
     ![SignalR Hizmeti Oluşturma](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
 
-1. Kod düzenleyicisinde açın *src/sohbet/javascript* kopyalanmış bir depoda klasör.
+1. Kod Düzenleyicinizde, kopyalanmış depodaki *src/chat/JavaScript* klasörünü açın.
 
 1. *local.settings.sample.json* dosyasını *local.settings.json* olarak yeniden adlandırın.
 
@@ -61,7 +63,7 @@ Azure hesabınızla Azure portalında <https://portal.azure.com/> sayfasında ot
     - **negotiate** - Geçerli bağlantı bilgileri döndürmek için *SignalRConnectionInfo* giriş bağlamasını kullanır.
     - **messages** - İstek gövdesinde bir sohbet iletisi alır ve iletiyi bağlı olan tüm istemci uygulamalara yaymak için *SignalR* çıkış bağlamasını kullanır.
 
-1. Terminalde, içinde olduğundan emin olun *src/sohbet/javascript* klasör. Azure İşlevleri Çekirdek Araçlarını kullanarak uygulamayı çalıştırmak için gereken uzantıları yükleyin.
+1. Terminalde, *src/chat/JavaScript* klasöründe olduğunuzdan emin olun. Azure İşlevleri Çekirdek Araçlarını kullanarak uygulamayı çalıştırmak için gereken uzantıları yükleyin.
 
     ```bash
     func extensions install
@@ -81,7 +83,7 @@ Azure hesabınızla Azure portalında <https://portal.azure.com/> sayfasında ot
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, oluşturulan ve gerçek zamanlı bir sunucusuz uygulama VS Code'da çalıştı. Bir sonraki adımda Azure İşlevlerini nasıl VS Code’dan dağıtacağınızı öğrenin.
+Bu hızlı başlangıçta, VS Code ' de gerçek zamanlı sunucusuz bir uygulama oluşturup çalıştırdınız. Bir sonraki adımda Azure İşlevlerini nasıl VS Code’dan dağıtacağınızı öğrenin.
 
 > [!div class="nextstepaction"]
-> [VS Code ile Azure İşlevlerini dağıtma](https://docs.microsoft.com/azure/azure-functions/tutorial-javascript-vscode-get-started)
+> [VS Code ile Azure İşlevlerini dağıtma](https://code.visualstudio.com/tutorials/functions-extension/getting-started)

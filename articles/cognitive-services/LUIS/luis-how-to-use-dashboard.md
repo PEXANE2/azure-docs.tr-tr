@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: diberry
-ms.openlocfilehash: 42dfe4af56149e4305d076b0427f15038a01fadc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: a5c60a4c7d4f1b441ec5e8444b10594a1e67d7db
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563633"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932728"
 ---
 # <a name="how-to-use-the-dashboard-to-improve-your-app"></a>Uygulamanızı geliştirmek için panoyu kullanma
 
@@ -32,7 +32,7 @@ Panoda giderilen üç sorun şunlardır:
 
 |Sorun|Grafik rengi|Açıklama|
 |--|--|--|
-|Veri dengesizliği|-|Bu durum, örnek sayısı önemli ölçüde farklılık gösterdiği zaman oluşur. Tüm Amaçlar, her türlü örnek _utde aynı_ sayıda örneğe sahip olmalıdır; hiçbiri hariç. Bu, uygulamadaki toplam kullanım miktarının% 10 ' dan% 15 ' e sahip olmalıdır.<br><br> Veriler imlenebilir ancak amaç doğruluğu belirli bir eşiğin üzerinde ise, bu dengesizliği bir sorun olarak bildirilmemiştir.<br><br>**Bu sorunla başlayın-diğer sorunların temel nedeni olabilir.**|
+|Veri dengesizliği|-|Bu durum, örnek sayısı önemli ölçüde farklılık gösterdiği zaman oluşur. Tüm Amaçlar, her türlü örnek utde aynı sayıda örneğe sahip olmalıdır; hiçbiri hariç. Bu, uygulamadaki toplam kullanım miktarının% 10 ' dan% 15 ' e sahip olmalıdır.<br><br> Veriler imlenebilir ancak amaç doğruluğu belirli bir eşiğin üzerinde ise, bu dengesizliği bir sorun olarak bildirilmemiştir.<br><br>**Bu sorunla başlayın-diğer sorunların temel nedeni olabilir.**|
 |Belirsiz tahmin|Turuncu|Bu durum, en üstteki amaç ve sonraki amaç puanlarının, bir sonraki eğitimin üzerinde tulabilecekleri, [negatif örnekleme](luis-how-to-train.md#train-with-all-data) veya daha fazla örnek ekleme amacına bağlı olarak yakın olduğu durumlarda meydana gelir. |
 |Yanlış tahminler|Kırmızı|Bu durum, etiketlenmiş amaç (içinde olduğu amaç) için bir örnek bir tahmin olmadığında oluşur.|
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: a70d9ea1090f1c518f804dd28f3461918af965cd
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 37084480423de90f50beced187eda202b39f8bf1
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854276"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933059"
 ---
 # <a name="project-acoustics-known-issues"></a>Project Acoustics bilinen sorunlar
 Project Acoustics için tasarımcı önizlemesi kullanırken aşağıdaki bilinen sorunlarla karşılaşabilirsiniz.
@@ -24,10 +24,6 @@ Project Acoustics için tasarımcı önizlemesi kullanırken aşağıdaki biline
 ## <a name="acoustic-parameters-are-lost-when-you-rename-a-scene"></a>Bir sahneyi yeniden adlandırdığınızda Akustik parametreler kayboluyor
 
 Bir sahneyi yeniden adlandırırsanız, söz konusu sahneye ait olan tüm Akustik parametreler yeni sahneye otomatik olarak aktarılmaz. Ancak, hala eski varlık dosyasında mevcut olacaktır. Sahne dosyanızın yanındaki **Düzenleyici** dizini içindeki **SceneName_AcousticParameters. varlık** dosyasını bulun. Dosyanızı yeni sahnenin adını yansıtacak şekilde yeniden adlandırın.
-
-## <a name="unity-crashes-when-closing-project"></a>Proje kapatılırken Unity kilitleniyor
-
-Unity 'nin en son sürümlerinde (2018.2 +), projenizi kapattığınızda Unity 'nin çökmesine neden olan bilinen bir hata vardır. Bu, [Bu Unity sorunu](https://issuetracker.unity3d.com/issues/crash-on-assetdatabase-getassetimporterversions-when-closing-a-specific-unity-project)tarafından izlenir.
 
 ## <a name="deploying-to-android-from-some-unity-versions"></a>Bazı Unity sürümlerinden Android 'e dağıtım
 
