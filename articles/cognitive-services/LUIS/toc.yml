@@ -25,6 +25,10 @@
           href: sdk-csharp-quickstart-authoring-app.md
         - name: Sorgu tahmin uç noktası
           href: sdk-csharp-quickstart-query-prediction-endpoint.md
+    - name: Python SDK’yı kullanma
+      items:
+        - name: Uygulama oluşturma ve yönetme
+          href: sdk-python-quickstart-authoring-app.md
     - name: REST API'lerini kullanma
       items:
         - name: Amaç alma

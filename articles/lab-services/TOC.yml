@@ -247,11 +247,11 @@
               href: devtest-lab-mandatory-artifacts.md
         - name: CI/CD ile tümleştirme
           items:
-            - name: Azure DevOps CI/CD ardışık düzeninizi laboratuvarlarla tümleştirme
-              href: devtest-lab-integrate-ci-cd-vsts.md
-            - name: Azure DevOps CI/CD ardışık düzeninizi ortamlarla tümleştirme
+            - name: Azure Pipelines CI/CD ardışık düzeninizi laboratuvarlarla tümleştirme
+              href: devtest-lab-integrate-ci-cd.md
+            - name: Azure Pipelines CI/CD ardışık düzeninizi ortamlarla tümleştirme
               href: integrate-environments-devops-pipeline.md
-            - name: Azure DevOps derleme ve yayın işlem hatlarında DevTest Labs’i kullanma
+            - name: Azure Pipelines derleme ve yayın işlem hatlarında DevTest Labs’i kullanma
               href: use-devtest-labs-build-release-pipelines.md
         - name: Laboratuvarların kullanımını bildirme
           href: report-usage-across-multiple-labs-subscriptions.md

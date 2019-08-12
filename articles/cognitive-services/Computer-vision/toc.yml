@@ -107,25 +107,25 @@
       href: Tutorials/storage-lab-tutorial.md
 - name: Kavramlar
   items:
-    - name: Resimleri etiketleme
+    - name: İçerik etiketleri
       href: concept-tagging-images.md
-    - name: Nesneleri seçme
+    - name: Nesne algılama
       href: concept-object-detection.md
     - name: Marka algılama
       href: concept-brand-detection.md
-    - name: Resimleri kategorilere ayırma
+    - name: Görüntü kategorilendirmesi
       href: concept-categorizing-images.md
-    - name: Resimleri açıklama
+    - name: Görüntü açıklamaları
       href: concept-describing-images.md
     - name: Yüz algılama
       href: concept-detecting-faces.md
-    - name: Görüntü türünü algılama
+    - name: Görüntü türü algılama
       href: concept-detecting-image-types.md
-    - name: Etki alanına özgü içeriği algılama
+    - name: Alana özgü içerik
       href: concept-detecting-domain-content.md
-    - name: Renk şemalarını algılama
+    - name: Renk düzeni algılama
       href: concept-detecting-color-schemes.md
-    - name: Küçük resimler oluşturma
+    - name: Akıllı kırpılan küçük resimler
       href: concept-generating-thumbnails.md
     - name: Yazdırılmış ve el yazısı ile yazılan metinleri tanıma
       href: concept-recognizing-text.md

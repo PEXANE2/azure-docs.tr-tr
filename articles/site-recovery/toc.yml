@@ -155,6 +155,8 @@
           items:
             - name: Azure VM’lerinde olağanüstü durum kurtarma için ağı hazırlama
               href: azure-to-azure-about-networking.md
+            - name: Hedef Azure VM’nin ağ yapılandırmalarını özelleştirme
+              href: azure-to-azure-customize-networking.md
             - name: Yük devretme sonrasında ağ eşlemesini ayarlama ve IP adreslerini koruma
               href: azure-to-azure-network-mapping.md
             - name: Yük devretme sonrasında IP adreslerini korumaya yönelik örnekler

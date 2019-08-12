@@ -166,6 +166,8 @@
       items:
         - name: Veri fabrikalarını görsel olarak yazma
           href: author-visually.md
+        - name: Kaynak denetimi
+          href: source-control.md
         - name: Sürekli tümleştirme ve teslim
           href: continuous-integration-deployment.md
         - name: Yinelemeli geliştirme ve hata ayıklama

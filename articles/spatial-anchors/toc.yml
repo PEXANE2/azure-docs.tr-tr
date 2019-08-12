@@ -23,6 +23,12 @@
       href: quickstarts/get-started-android.md
     - name: HoloLens uygulaması oluşturma
       href: quickstarts/get-started-hololens.md
+    - name: Xamarin uygulaması oluşturma
+      items:
+        - name: Android
+          href: quickstarts/get-started-xamarin-android.md
+        - name: iOS
+          href: quickstarts/get-started-xamarin-ios.md
 - name: Öğreticiler
   items:
     - name: Unity’de paylaşım

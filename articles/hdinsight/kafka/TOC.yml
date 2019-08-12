@@ -159,6 +159,8 @@
     - name: Sorun giderme
       href: ../hdinsight-troubleshoot-guide.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
       items:
+        - name: Yetersiz hata etki alanları
+          href: ./kafka-troubleshoot-insufficient-domains.md
         - name: Yavaş ya da başarısız olan bir HDInsight kümesinde sorun giderme
           href: ../hdinsight-troubleshoot-failed-cluster.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: Apache Hadoop HDFS sorunlarını giderme

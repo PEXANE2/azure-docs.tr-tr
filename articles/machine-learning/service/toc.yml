@@ -6,7 +6,7 @@
     - name: Azure Machine Learning hizmeti nedir?
       displayName: 'AML, services, overview, introduction'
       href: overview-what-is-azure-ml.md
-    - name: Bu hizmet nasıl çalışır?
+    - name: Mimari ve koşullar
       displayName: 'architecture, concepts, definitions, glossary'
       href: concept-azure-machine-learning-architecture.md
 - name: Öğreticiler
@@ -216,6 +216,8 @@
         - name: Dağıtım nereye ve nasıl yapılır?
           displayName: 'publish, web, service, operationalize, aks, kubernetes, aci, container, cli, consume, docker'
           href: how-to-deploy-and-where.md
+        - name: Not Defteri Sanal Makineleri
+          href: how-to-deploy-local-container-notebook-vm.md
         - name: Azure Container Instances
           href: how-to-deploy-azure-container-instance.md
         - name: Azure Kubernetes Service
@@ -256,9 +258,9 @@
     - name: Yeniden kullanılabilir iş akışları oluşturma
       displayName: pipelines
       items:
-        - name: Bir ML işlem hattı oluşturma
+        - name: 'ML işlem hatları: toplu iş, hesaplama, yeniden kullanma, paylaşma'
           href: how-to-create-your-first-pipeline.md
-        - name: Azure Pipelines ile ML iş akışlarına yönelik CI/CD
+        - name: CI/CD için Azure işlem hatları
           displayName: 'continuous, integration, delivery'
           href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/service/context/ml-context
     - name: Kaynak kotalarını yönetme

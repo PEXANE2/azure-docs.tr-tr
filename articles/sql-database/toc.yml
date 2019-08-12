@@ -2,9 +2,9 @@
   href: index.yml
 - name: SQL Veritabanı Hizmeti
   items:
-    - name: SQL Veritabanı nedir?
+    - name: SQL Database nedir?
       href: sql-database-technical-overview.md
-    - name: Azure SQL sürümünü seçme
+    - name: Hangi SQL seçeneğini belirlemeliyim?
       href: sql-database-paas-vs-sql-server-iaas.md
     - name: Sürüm notları
       href: sql-database-release-notes.md
@@ -280,14 +280,18 @@
               href: sql-vulnerability-assessment.md
             - name: Gelişmiş Tehdit Koruması
               href: sql-database-threat-detection-overview.md
-        - name: Sunucu düzeyinde IP güvenlik duvarı kuralları
+        - name: Ağ güvenliği
           items:
-            - name: Oluşturma ve yönetme
+            - name: Ağ erişim denetimlerine genel bakış
+              href: sql-database-networkaccess-overview.md
+            - name: IP tabanlı güvenlik duvarı
               href: sql-database-firewall-configure.md
-            - name: Sanal ağ uç noktaları
-              href: sql-database-vnet-service-endpoint-rule-overview.md
-            - name: Sanal ağ uç noktaları - PowerShell
-              href: sql-database-vnet-service-endpoint-rule-powershell.md
+            - name: Sanal ağ güvenlik duvarı kuralları
+              items:
+                - name: Sanal ağ uç noktaları
+                  href: sql-database-vnet-service-endpoint-rule-overview.md
+                - name: Sanal ağ uç noktaları - PowerShell
+                  href: sql-database-vnet-service-endpoint-rule-powershell.md
         - name: Erişim denetimi
           items:
             - name: Erişim denetimi

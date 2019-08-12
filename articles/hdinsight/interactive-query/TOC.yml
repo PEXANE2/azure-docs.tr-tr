@@ -19,20 +19,6 @@
       href: ../hdinsight-apps-install-applications.md?toc=/azure/hdinsight/interactive-query/toc.json&bc=/azure/hdinsight/interactive-query/breadcrumb/toc.json
     - name: Kapasite planlaması
       href: ../hdinsight-capacity-planning.md?toc=/azure/hdinsight/interactive-query/toc.json&bc=/azure/hdinsight/interactive-query/breadcrumb/toc.json
-    - name: Sorun giderme
-      items:
-        - name: GC ek yük sınırı aşıldı
-          href: ./interactive-query-troubleshoot-outofmemory-overhead-exceeded.md
-        - name: Apache Ambari Tez Görünümü yavaş yükleniyor
-          href: ./interactive-query-troubleshoot-tez-view-slow.md
-        - name: Apache Hive Görünümünde hata iletisi gösterilmiyor
-          href: ./interactive-query-troubleshoot-error-message-hive-view.md
-        - name: Apache Hive Görünümüne erişilemiyor
-          href: ./interactive-query-troubleshoot-inaccessible-hive-view.md
-        - name: ZooKeeperHiveClientException - HiveServer2 yapılandırmaları
-          href: ./interactive-query-troubleshoot-zookeeperhiveclientexception-hiveserver-configs.md
-        - name: Apache Hive LLAP sorgu performansı
-          href: ./interactive-query-troubleshoot-query-performance.md
 - name: Nasıl yapılır
   items:
     - name: Hive iş yüklerini HDInsight 4.0 sürümüne geçirme
@@ -204,10 +190,31 @@
           href: ../hdinsight-os-patching.md?toc=/azure/hdinsight/interactive-query/toc.json&bc=/azure/hdinsight/interactive-query/breadcrumb/toc.json
     - name: Sorun giderme
       href: ../hdinsight-troubleshoot-guide.md?toc=/azure/hdinsight/interactive-query/toc.json&bc=/azure/hdinsight/interactive-query/breadcrumb/toc.json
-      maintainContext: true
       items:
+        - name: Apache Hive Görünümünde zaman aşımı
+          href: ./interactive-query-troubleshoot-view-time-out.md
+        - name: Tablo oluşturma izin hatası
+          href: ./interactive-query-troubleshoot-permission-error-create-table.md
+        - name: GC ek yük sınırı aşıldı
+          href: ./interactive-query-troubleshoot-outofmemory-overhead-exceeded.md
+        - name: Apache Ambari Tez Görünümü yavaş yükleniyor
+          href: ./interactive-query-troubleshoot-tez-view-slow.md
+        - name: Apache Hive Görünümünde hata iletisi gösterilmiyor
+          href: ./interactive-query-troubleshoot-error-message-hive-view.md
+        - name: Apache Hive Görünümüne erişilemiyor
+          href: ./interactive-query-troubleshoot-inaccessible-hive-view.md
+        - name: ZooKeeperHiveClientException - HiveServer2 yapılandırmaları
+          href: ./interactive-query-troubleshoot-zookeeperhiveclientexception-hiveserver-configs.md
+        - name: Apache Hive LLAP sorgu performansı
+          href: ./interactive-query-troubleshoot-query-performance.md
         - name: Yavaş ya da başarısız olan bir HDInsight kümesinde sorun giderme
-          href: ../hdinsight-troubleshoot-failed-cluster.md?toc=/azure/hdinsight/interactive-query/toc.json&bc=/azure/hdinsight/interactive-query/breadcrumb/toc.json
+          href: ../hdinsight-troubleshoot-failed-cluster.md
+        - name: Apache Hadoop HDFS sorunlarını giderme
+          href: ../hdinsight-troubleshoot-hdfs.md
+        - name: Apache HIVE sorunlarını giderme
+          href: ../hdinsight-troubleshoot-hive.md
+        - name: Apache Hadoop YARN sorunlarını giderme
+          href: ../hdinsight-troubleshoot-yarn.md
         - name: Apache Hadoop HDFS sorunlarını giderme
           href: ../hdinsight-troubleshoot-hdfs.md?toc=/azure/hdinsight/interactive-query/toc.json&bc=/azure/hdinsight/interactive-query/breadcrumb/toc.json
         - name: Apache HIVE sorunlarını giderme

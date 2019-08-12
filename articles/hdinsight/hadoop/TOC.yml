@@ -41,30 +41,6 @@
       href: ../hdinsight-hadoop-compare-storage-options.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
     - name: Yönetilen kimlikleri anlama
       href: ../hdinsight-managed-identities.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
-    - name: Sorun giderme
-      items:
-        - name: Küme oluşturma sorunları
-          href: ./hdinsight-troubleshoot-cluster-creation-fails.md
-        - name: Diskte yer yok
-          href: ./hdinsight-troubleshoot-out-disk-space.md
-        - name: Yazılım kilitlemesi - CPU
-          href: ./hdinsight-troubleshoot-soft-lockup-cpu.md
-        - name: InvalidNetworkConfigurationErrorCode - küme oluşturulamıyor
-          href: ./troubleshoot-invalidnetworkconfigurationerrorcode-cluster-creation-fails.md
-        - name: InvalidNetworkSecurityGroupSecurityRules - küme oluşturulamıyor
-          href: ./hdinsight-troubleshoot-invalidnetworksecuritygroupsecurityrules-cluster-creation-fails.md
-        - name: HDInsight kümesinde oturum açılamıyor
-          href: ./hdinsight-troubleshoot-unable-log-in-cluster.md
-        - name: HDInsight kümesine düğümler eklenemiyor
-          href: ./hdinsight-troubleshoot-unable-add-nodes.md
-        - name: Hizmet sorumlusu sertifikasını dönüştürme
-          href: ./hdinsight-troubleshoot-converting-service-principal-certificate.md
-        - name: Yerel HDFS güvenli modda takılıyor
-          href: ./hdinsight-hdfs-troubleshoot-safe-mode.md
-        - name: Apache Ambari sinyal sorunları
-          href: ./apache-ambari-troubleshoot-heartbeat-issues.md
-        - name: Apache Ambari ana bilgisayarları ve hizmetleri yavaşlatıyor
-          href: ./apache-ambari-troubleshoot-down-hosts-services.md
 - name: Nasıl yapılır
   items:
     - name: Apache Hadoop korumalı alanını kullanma
@@ -310,6 +286,30 @@
     - name: Sorun giderme
       href: ../hdinsight-troubleshoot-guide.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
       items:
+        - name: Küme oluşturma sorunları
+          href: ./hdinsight-troubleshoot-cluster-creation-fails.md
+        - name: Diskte yer yok
+          href: ./hdinsight-troubleshoot-out-disk-space.md
+        - name: Yazılım kilitlemesi - CPU
+          href: ./hdinsight-troubleshoot-soft-lockup-cpu.md
+        - name: InvalidNetworkConfigurationErrorCode - küme oluşturulamıyor
+          href: ./troubleshoot-invalidnetworkconfigurationerrorcode-cluster-creation-fails.md
+        - name: InvalidNetworkSecurityGroupSecurityRules - küme oluşturulamıyor
+          href: ./hdinsight-troubleshoot-invalidnetworksecuritygroupsecurityrules-cluster-creation-fails.md
+        - name: HDInsight kümesinde oturum açılamıyor
+          href: ./hdinsight-troubleshoot-unable-log-in-cluster.md
+        - name: HDInsight kümesine düğümler eklenemiyor
+          href: ./hdinsight-troubleshoot-unable-add-nodes.md
+        - name: Hizmet sorumlusu sertifikasını dönüştürme
+          href: ./hdinsight-troubleshoot-converting-service-principal-certificate.md
+        - name: Yerel HDFS güvenli modda takılıyor
+          href: ./hdinsight-hdfs-troubleshoot-safe-mode.md
+        - name: Apache Ambari sinyal sorunları
+          href: ./apache-ambari-troubleshoot-heartbeat-issues.md
+        - name: Apache Ambari kullanıcı arabirimi 502 hatası
+          href: ./apache-ambari-troubleshoot-fivezerotwo-error.md
+        - name: Apache Ambari ana bilgisayarları ve hizmetleri yavaşlatıyor
+          href: ./apache-ambari-troubleshoot-down-hosts-services.md
         - name: Yavaş ya da başarısız olan bir HDInsight kümesinde sorun giderme
           href: ../hdinsight-troubleshoot-failed-cluster.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: Apache Hadoop HDFS sorunlarını giderme

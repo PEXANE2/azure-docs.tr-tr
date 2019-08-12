@@ -25,14 +25,6 @@
       href: ../hdinsight-component-versioning.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
     - name: HDInsight 4.0
       href: ../hdinsight-version-release.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
-    - name: Sorun giderme
-      items:
-        - name: Apache HBase REST yanıt vermiyor
-          href: ./hbase-troubleshoot-rest-not-spending.md
-        - name: Bölge sunucusu üzerinde ilişkilendirilmiş CPU
-          href: ./hbase-troubleshoot-pegged-cpu-region-server.md
-        - name: '''hbase hbck'' komutuyla zaman aşımları'
-          href: ./hbase-troubleshoot-timeouts-hbase-hbck.md
 - name: Nasıl yapılır
   items:
     - name: Küme depolama alanını kullanma
@@ -167,8 +159,25 @@
         - name: HDInsight kümesi için işletim sistemi düzeltme eki uygulama
           href: ../hdinsight-os-patching.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
     - name: Sorun giderme
-      href: ../hdinsight-troubleshoot-guide.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
       items:
+        - name: Kaynak sorunlarını giderme
+          href: ../hdinsight-troubleshoot-guide.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
+        - name: Apache Phoenix görünümlerinde veri yok
+          href: ./hbase-troubleshoot-phoenix-no-data.md
+        - name: BindException - Adres kullanımda
+          href: ./hbase-troubleshoot-bindexception-address-use.md
+        - name: Apache HBase başlatılamıyor
+          href: ./hbase-troubleshoot-start-fails.md
+        - name: Bölge sunucularıyla ilgili sorunlar
+          href: ./hbase-troubleshoot-unassigned-regions.md
+        - name: Apache Phoenix bağlantı sorunları
+          href: ./hbase-troubleshoot-phoenix-connectivity.md
+        - name: Apache HBase REST yanıt vermiyor
+          href: ./hbase-troubleshoot-rest-not-spending.md
+        - name: Bölge sunucusu üzerinde ilişkilendirilmiş CPU
+          href: ./hbase-troubleshoot-pegged-cpu-region-server.md
+        - name: '''hbase hbck'' komutuyla zaman aşımları'
+          href: ./hbase-troubleshoot-timeouts-hbase-hbck.md
         - name: Yavaş ya da başarısız olan bir HDInsight kümesinde sorun giderme
           href: ../hdinsight-troubleshoot-failed-cluster.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
         - name: Apache Hadoop HDFS sorunlarını giderme
