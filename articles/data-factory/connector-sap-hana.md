@@ -58,7 +58,7 @@ SAP HANA bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Type özelliği şu şekilde ayarlanmalıdır: **SapHana** | Evet |
+| type | Type özelliği şu şekilde ayarlanmalıdır: **SapHana** | Evet |
 | connectionString | **Temel kimlik doğrulaması** veya **Windows kimlik doğrulaması**kullanarak SAP HANA bağlanmak için gereken bilgileri belirtin. Aşağıdaki örneklere bakın.<br>Bağlantı dizesinde, sunucu/bağlantı noktası zorunludur (varsayılan bağlantı noktası 30015 ' dir), temel kimlik doğrulaması kullanılırken Kullanıcı adı ve parola zorunludur. Ek Gelişmiş ayarlar için [SAP HANA ODBC bağlantı özellikleri](<https://help.sap.com/viewer/0eec0d68141541d1b07893a39944924e/2.0.02/en-US/7cab593774474f2f8db335710b2f5c50.html>) ' ne bakın.<br/>Parolayı Azure Key Vault de yerleştirebilir ve parola yapılandırmasını bağlantı dizesinin dışına çekebilirsiniz. Daha ayrıntılı bilgi için [Azure Key Vault makalesinde mağaza kimlik bilgilerini](store-credentials-in-key-vault.md) inceleyin. | Evet |
 | userName | Windows kimlik doğrulaması kullanırken kullanıcı adını belirtin. Örnek: `user@domain.com` | Hayır |
 | password | Kullanıcı hesabı için parola belirtin. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Hayır |
@@ -139,7 +139,7 @@ SAP HANA verileri kopyalamak için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **SapHanaTable** | Evet |
+| type | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **SapHanaTable** | Evet |
 | schema | SAP HANA veritabanındaki şemanın adı. | Hayır (etkinlik kaynağı "sorgu" belirtilmişse) |
 | table | SAP HANA veritabanındaki tablonun adı. | Hayır (etkinlik kaynağı "sorgu" belirtilmişse) |
 
@@ -175,7 +175,7 @@ SAP HANA verileri kopyalamak için, etkinlik **kaynağını** kopyalama bölüm�
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **SapHanaSource** | Evet |
+| type | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **SapHanaSource** | Evet |
 | query | SAP HANA örneğinden verileri okumak için SQL sorgusunu belirtir. | Evet |
 | packetSize | Verilerin birden çok bloğuyla bölüneceği ağ paketi boyutunu (kilobayt olarak) belirtir. Kopyalanacak büyük miktarda veriniz varsa, paket boyutunu artırmak çoğu durumda SAP HANA okuma hızını artırabilir. Paket boyutu ayarlanırken performans testi önerilir. | Hayır.<br>Varsayılan değer 2048 ' dir (2MB). |
 
@@ -219,33 +219,33 @@ SAP HANA verileri kopyalarken, SAP HANA veri türlerinden aşağıdaki eşlemele
 
 | SAP HANA veri türü | Veri Fabrikası geçici veri türü |
 | ------------------ | ------------------------------ |
-| ALPHANUM           | Dize                         |
+| ALPHANUM           | String                         |
 | BIGINT             | Int64                          |
-| Ý             | Byte[]                         |
-| BINTEXT            | Dize                         |
-| BUN               | Byte[]                         |
+| BINARY             | Byte[]                         |
+| BINTEXT            | String                         |
+| BLOB               | Byte[]                         |
 | BOOL               | Byte                           |
-| CLOB               | Dize                         |
-| DATE               | Datetime                       |
-| KATEGORI            | Decimal                        |
+| CLOB               | String                         |
+| DATE               | DateTime                       |
+| DECIMAL            | Decimal                        |
 | DOUBLE             | Double                         |
 | FLOAT              | Double                         |
-| GIR            | Int32                          |
-| NCLOB              | Dize                         |
-| NVARCHAR           | Dize                         |
+| INTEGER            | Int32                          |
+| NCLOB              | String                         |
+| NVARCHAR           | String                         |
 | REAL               | Single                         |
-| SECONDDATE         | Datetime                       |
-| SHORTTEXT          | Dize                         |
+| SECONDDATE         | DateTime                       |
+| SHORTTEXT          | String                         |
 | SMALLDECIMAL       | Decimal                        |
 | SMALLINT           | Int16                          |
 | STGEOMETRYTYPE     | Byte[]                         |
 | STPOINTTYPE        | Byte[]                         |
-| TEXT               | Dize                         |
-| ZAMAN               | TimeSpan                       |
+| TEXT               | String                         |
+| TIME               | TimeSpan                       |
 | TINYINT            | Byte                           |
-| VARCHAR            | Dize                         |
-| TIMESTAMP          | Datetime                       |
-| IKILI          | Byte[]                         |
+| VARCHAR            | String                         |
+| TIMESTAMP          | DateTime                       |
+| VARBINARY          | Byte[]                         |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Azure Data Factory kopyalama etkinliği tarafından kaynak ve havuz olarak desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats).
