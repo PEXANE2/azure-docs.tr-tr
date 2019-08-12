@@ -156,8 +156,8 @@ Müşteri için SAP bulutuna veri kopyalamak için kopyalama etkinliğindeki hav
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Type özelliği şu şekilde ayarlanmalıdır: **SapCloudForCustomerSink**  | Evet |
-| writeBehavior | İşlemin yazma davranışı. "Insert", "Update" olabilir. | Hayır. Varsayılan "Insert". |
+| type | Type özelliği şu şekilde ayarlanmalıdır: **SapCloudForCustomerSink**  | Evet |
+| writeBehavior | İşlemin yazma davranışı. "INSERT", "Update" olabilir. | Hayır. Varsayılan "Ekle". |
 | writeBatchSize | Yazma işleminin toplu iş boyutu. En iyi performansı elde etmek için toplu iş boyutu, farklı tablo veya sunucu için farklı olabilir. | Hayır. Varsayılan 10. |
 
 **Örnek:**
@@ -205,20 +205,20 @@ Müşteri için SAP bulutlarından veri kopyalarken aşağıdaki eşlemeler, ist
 
 | SAP C4C OData veri türü | Veri Fabrikası geçici veri türü |
 |:--- |:--- |
-| EDM.Binary | Byte[] |
+| EDM. Binary | Byte[] |
 | Edm.Boolean | Bool |
-| EDM.Byte | Byte[] |
+| EDM. Byte | Byte[] |
 | Edm.DateTime | Datetime |
-| EDM.Decimal | Decimal |
+| EDM. Decimal | Decimal |
 | Edm.Double | Double |
-| EDM.Single | Single |
-| EDM.Guid | Guid |
-| EDM.Int16 | Int16 |
+| EDM. Single | Single |
+| EDM. Guid | Guid |
+| EDM. Int16 | Int16 |
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |
-| EDM.SByte | Int16 |
+| EDM. SByte | Int16 |
 | Edm.String | String |
-| EDM.Time | TimeSpan |
+| EDM. Time | TimeSpan |
 | Edm.DateTimeOffset | DateTimeOffset |
 
 

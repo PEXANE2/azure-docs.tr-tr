@@ -182,7 +182,7 @@ Kendisinden ölçümleri toplamak için Prometheus sahip izinleri prometheus pro
 
 ## <a name="optional-deploy-example-application"></a>İsteğe bağlı: Örnek uygulamayı dağıtma
 
-Her şeyin çalıştığından, ancak ölçüm kaynağı yok. Prometheus URL'ye gidin (https://prom-prometheus-project.apps. *rastgele bir kimlik*. *Bölge*.azmosa.io/). Aşağıdaki komutu kullanarak bulabilirsiniz:
+Her şeyin çalıştığından, ancak ölçüm kaynağı yok. Prometheus URL'ye gidin (https://prom-prometheus-project.apps.*rastgele bir kimlik*.*Bölge*.azmosa.io/). Aşağıdaki komutu kullanarak bulabilirsiniz:
 
 ```
 oc get route prom -n prometheus-project

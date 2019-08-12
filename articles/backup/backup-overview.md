@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/24/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: a4fbfeb96d2316ce6af100cb16fcbf0d13f230f2
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 526c60916854d4918607a1fd1b887ac9d27cd1c7
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737128"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950022"
 ---
 # <a name="what-is-the-azure-backup-service"></a>Azure Backup hizmeti nedir?
 
@@ -55,7 +55,7 @@ BCDR ihtiyaçlarınızı anlamak için tablo noktalarını kullanın.
 
 **Hedefi** | **Ayrıntılar** | **Il**
 --- | --- | ---
-**Veri yedekleme/bekletme** | Yedekleme verileri, bir uyumluluk perspektifinden gerekliyse gün, ay veya hatta yıllar için korunabilir ve depolanabilir. | Azure Backup gibi yedekleme çözümleri, yedeklemek istediğiniz verileri en iyi şekilde seçmenizi ve yedekleme ve bekletme ilkelerini ayarlamayı de ayarlamanıza olanak sağlar.<br/><br/> Site Recovery, aynı ince ayarlamaya izin vermez.
+**Veri yedekleme/bekletme** | Yedekleme verileri, bir uyumluluk perspektifinden gerekirse gün, ay veya hatta yıllar için korunabilir ve depolanabilir. | Azure Backup gibi yedekleme çözümleri, yedeklemek istediğiniz verileri en iyi şekilde seçmenizi ve yedekleme ve bekletme ilkelerini ayarlamayı de ayarlamanıza olanak sağlar.<br/><br/> Site Recovery, aynı ince ayarlamaya izin vermez.
 **Kurtarma noktası hedefi (RPO)** | Kurtarma işleminin gerekli olduğu durumlarda kabul edilebilir veri kaybı miktarı. | Yedekler için daha fazla değişken RPO vardır.<br/><br/> VM yedeklemeleri genellikle günde bir RPO 'ya sahiptir ve veritabanı yedeklemeleri, RPOs 'u 15 dakika kadar düşük olur.<br/><br/> Site Recovery, çoğaltma sürekli veya sık olduğundan, kaynak ve çoğaltma kopyası arasındaki Delta küçük olacak şekilde düşük bir RPO sağlar.
 **Kurtarma süresi hedefi (RTO)** |Bir geri yükleme veya kurtarma işlemini tamamlamak için geçen süre. | Daha büyük RPO nedeniyle, bir yedekleme çözümünün işlemesi gereken veri miktarı genellikle çok daha yüksektir; bu da daha uzun RTO'lara yol açar. Örneğin, bandın şirket dışı bir konumdan taşınması için harcanan süreye bağlı olarak, bantlardan veri geri yükleme işlemi birkaç gün sürebilir.
 
@@ -66,7 +66,7 @@ Azure Backup hem şirket içi makineleri hem de Azure VM 'lerini yedekleyebilir.
 **Makin** | **Yedekleme senaryosu**
 --- | ---
 **Şirket içi yedekleme** |  1) tek tek dosyaları ve sistem durumunu yedeklemek için şirket içi Windows makinelerde Azure Backup Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı 'nı çalıştırın. <br/><br/>2) Şirket içi makineleri bir yedekleme sunucusuna yedekleyin (System Center Data Protection Manager (DPM) veya Microsoft Azure Backup sunucusu (MABS)) ve ardından yedekleme sunucusunu Azure 'da bir Azure Backup kurtarma hizmetleri kasasına yedekleyecek şekilde yapılandırın.
-**Azure VM 'Leri** | 1) bireysel Azure VM 'Leri için yedeklemeyi etkinleştirin. Yedeklemeyi etkinleştirdiğinizde, Azure Backup VM üzerinde çalışan Azure VM aracısına bir uzantı yüklenir. Aracı tüm VM 'yi yedekler.<br/><br/> 2) MARS aracısını bir Azure VM üzerinde çalıştırın. Bu, sanal makinede ayrı dosya ve klasörleri yedeklemek istiyorsanız yararlıdır.<br/><br/> 3) bir Azure VM 'yi Azure 'da çalışan bir DPM sunucusuna veya MABS 'a yedekleyin. Ardından Azure Backup kullanarak DPM sunucusunu/MABS 'yi bir kasaya yedekleyin.
+**Azure VM 'Leri** | 1) bireysel Azure VM 'Leri için yedeklemeyi etkinleştirin. Yedeklemeyi etkinleştirdiğinizde, Azure Backup VM üzerinde çalışan Azure VM aracısına bir uzantı yüklenir. Aracı tüm VM 'yi yedekler.<br/><br/> 2) MARS aracısını bir Azure VM üzerinde çalıştırın. Bu, sanal makinede ayrı dosya ve klasörleri yedeklemek istiyorsanız yararlıdır.<br/><br/> 
 
 
 ## <a name="why-use-a-backup-server"></a>Yedekleme sunucusu neden kullanılmalıdır?
@@ -116,7 +116,7 @@ Azure Backup’ta, *korumalı örnek* başına 9999 kurtarma noktası (yedekleme
 - Korumalı örnek, verileri Azure’a yedeklemek için yapılandırılmış bir bilgisayar, sunucu (fiziksel veya sanal) veya iş yüküdür. Verilerin yedek kopyası kaydedildiğinde örnek, korumalı hale gelir.
 - Verilerin yedek kopyası, korumayı oluşturur. Kaynak veriler, kaybolmaları veya bozulmaları durumunda yedek kopya kullanılarak geri yüklenebilir.
 
-Aşağıdaki tabloda her bileşen için en fazla yedekleme sıklığı gösterilmektedir. Yedekleme İlkesi yapılandırmanız, kurtarma noktalarını ne kadar hızlı tüketiğiniz belirler. Örneğin, her gün bir kurtarma noktası oluşturursanız; kurtarma noktalarınızı 27 yıl boyunca bitmeden tutabilirsiniz. Aylık kurtarma noktası alırsanız, kurtarma noktalarınızı 833 yıl süreyle saklayabilirsiniz. Backup hizmeti, kurtarma noktası üzerinde bir sona erme süresi ayarlamaz.
+Aşağıdaki tablo, her bileşen için en fazla yedekleme sıklığını gösterir. Kurtarma noktalarını hangi hızla tükettiğiniz, yedekleme ilkesi yapılandırmanız tarafından belirlenir. Örneğin, her gün bir kurtarma noktası oluşturursanız; kurtarma noktalarınızı 27 yıl boyunca bitmeden tutabilirsiniz. Aylık kurtarma noktası alırsanız, kurtarma noktalarınızı 833 yıl süreyle saklayabilirsiniz. Backup hizmeti, kurtarma noktası üzerinde bir sona erme süresi ayarlamaz.
 
 |  | Azure Backup aracısı | System Center DPM | Azure Backup Sunucusu | Azure IaaS VM Backup |
 | --- | --- | --- | --- | --- |

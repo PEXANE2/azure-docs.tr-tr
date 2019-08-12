@@ -14,7 +14,7 @@ ms.date: 02/24/2019
 ms.author: glenga
 ms.openlocfilehash: 9a7c186f7c5fb46078eaa5729e79fdcc256ecc6d
 ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 06/28/2019
 ms.locfileid: "67460209"
@@ -453,7 +453,7 @@ module.exports = function(context) {
 
 
 ### <a name="using-kudu"></a>Kudu kullanarak
-1. [https://linkedinselectedusermigration.azurewebsites.net/](`https://<function_app_name>.scm.azurewebsites.net`) kısmına gidin.
+1. `https://<function_app_name>.scm.azurewebsites.net` kısmına gidin.
 
 2. Tıklayın **konsol hata ayıklama** > **CMD**.
 

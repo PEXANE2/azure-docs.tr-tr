@@ -140,7 +140,7 @@ Ve Salesforce 'tan verileri kopyalamak için, veri kümesinin Type özelliğini 
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Type özelliği **Salesforceobject**olarak ayarlanmalıdır.  | Evet |
+| type | Type özelliği **Salesforceobject**olarak ayarlanmalıdır.  | Evet |
 | objectApiName | Verilerin alınması için Salesforce nesne adı. | Kaynak, havuz için Evet Hayır |
 
 > [!IMPORTANT]
@@ -172,7 +172,7 @@ Ve Salesforce 'tan verileri kopyalamak için, veri kümesinin Type özelliğini 
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Veri kümesinin Type özelliği **Relationaltable**olarak ayarlanmalıdır. | Evet |
+| type | Veri kümesinin Type özelliği **Relationaltable**olarak ayarlanmalıdır. | Evet |
 | tableName | Salesforce 'daki tablonun adı. | Hayır (etkinlik kaynağında "sorgu" belirtilmişse) |
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
@@ -185,7 +185,7 @@ Salesforce 'tan veri kopyalamak için kopyalama etkinliğindeki kaynak türünü
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Kopyalama etkinliği kaynağının Type özelliği **Salesforcesource**olarak ayarlanmalıdır. | Evet |
+| type | Kopyalama etkinliği kaynağının Type özelliği **Salesforcesource**olarak ayarlanmalıdır. | Evet |
 | query |Verileri okumak için özel sorguyu kullanın. [Salesforce nesne sorgu dili (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) SORGUSUNU veya SQL-92 sorgusunu kullanabilirsiniz. [Sorgu ipuçları](#query-tips) bölümünde daha fazla ipucu görüntüleyin. Sorgu belirtilmemişse, veri kümesindeki "objectApiName" içinde belirtilen Salesforce nesnesinin tüm verileri alınır. | Hayır (veri kümesindeki "objectApiName" belirtilmişse) |
 | readBehavior | Mevcut kayıtların sorgulanıp sorgulanmayacağını veya silinen kayıtlar dahil olmak üzere tüm kayıtları sorganıp sorgulanmayacağını gösterir. Belirtilmemişse, varsayılan davranış eski ' dir. <br>İzin verilen değerler: **sorgu** (varsayılan), **queryall**.  | Hayır |
 
@@ -235,7 +235,7 @@ Verileri Salesforce 'a kopyalamak için kopyalama etkinliğindeki havuz türün�
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Kopyalama etkinliği havuzunun Type özelliği **Salesforcesink**olarak ayarlanmalıdır. | Evet |
+| type | Kopyalama etkinliği havuzunun Type özelliği **Salesforcesink**olarak ayarlanmalıdır. | Evet |
 | writeBehavior | İşlem için yazma davranışı.<br/>İzin verilen değerler **Insert** ve **upsert**. | Hayır (varsayılan değer ekler) |
 | externalIdFieldName | Upsert işlem için dış KIMLIK alanının adı. Belirtilen alanın Salesforce nesnesinde "dış kimlik alanı" olarak tanımlanması gerekir. Karşılık gelen giriş verilerinde NULL değer bulunamaz. | "Upsert" için Evet |
 | writeBatchSize | Her toplu işte Salesforce 'a yazılan verilerin satır sayısı. | Hayır (varsayılan değer 5.000) |
@@ -306,7 +306,7 @@ SOQL veya SQL sorgusu belirttiğinizde, tarih saat biçimi farklılığı ile il
 * **Soql örneği**:`SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= @{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-ddTHH:mm:ssZ')} AND LastModifiedDate < @{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-ddTHH:mm:ssZ')}`
 * **SQL örneği**:`SELECT * FROM Account WHERE LastModifiedDate >= {ts'@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}'} AND LastModifiedDate < {ts'@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'}`
 
-### <a name="error-of-malformedquerytruncated"></a>MALFORMED_QUERY hatası: kesildi
+### <a name="error-of-malformed_querytruncated"></a>MALFORMED_QUERY hatası: kesildi
 
 "MALFORMED_QUERY" hatası alırsanız: Kesildi ", normalde bu, verilerde Junctionıdlist türünde sütununuzu ve Salesforce 'ın çok sayıda satır ile bu tür verileri desteklemeye yönelik sınırlamalara sahip olmasından kaynaklanır. Azaltmak için, Junctionıdlist sütununu dışlamanızı veya Kopyalanacak satır sayısını sınırlamayı deneyin (birden çok kopyalama etkinliği çalışmasına bölüm oluşturabilirsiniz).
 
