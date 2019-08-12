@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0725988ff88baea2458f0a5e459440874e66088
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 579a553f151cf34215af3188cfddada6da42e691
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596429"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68943623"
 ---
 # <a name="tutorial-integrate-oracle-cloud-infrastructure-console-with-azure-active-directory"></a>Öğretici: Oracle bulut altyapısı konsolunu Azure Active Directory ile tümleştirme
 
@@ -101,11 +101,11 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
    ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
-1. Oracle Cloud Infrastructure konsol uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir. Kullanıcı öznitelikleri iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+1. Oracle Cloud Infrastructure konsol uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir. Kullanıcı öznitelikleri iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
    ![image](common/edit-attribute.png)
 
-1. Daha fazlasına ek olarak, Oracle bulut altyapısı konsol uygulaması, SAML yanıtına daha fazla öznitelik geçirilmesini bekler.  **Grup talepleri (Önizleme)**  iletişim kutusundaki **Kullanıcı öznitelikleri & talepler** bölümünde aşağıdaki adımları uygulayın:
+1. Daha fazlasına ek olarak, Oracle bulut altyapısı konsol uygulaması, SAML yanıtına daha fazla öznitelik geçirilmesini bekler. **Grup talepleri (Önizleme)** Iletişim kutusundaki **Kullanıcı öznitelikleri & talepler** bölümünde aşağıdaki adımları uygulayın:
 
    1. **Ad tanımlayıcı değeri**' nin yanındaki **kaleme** tıklayın.
 
@@ -145,7 +145,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
    ![Yapılandırma](./media/oracle-cloud-tutorial/config01.png)
 
-1. **Bu belgeyi indir** bağlantısını tıklatıp Azure Portal  **temel SAML yapılandırması** bölümüne yükleyin ve ardından **kimlik sağlayıcısı ekle**' ye tıklayın.
+1. **Bu belgeyi indir** bağlantısını tıklatıp Azure Portal **temel SAML yapılandırması** bölümüne yükleyin ve ardından **kimlik sağlayıcısı ekle**' ye tıklayın.
 
    ![Yapılandırma](./media/oracle-cloud-tutorial/config02.png)
 

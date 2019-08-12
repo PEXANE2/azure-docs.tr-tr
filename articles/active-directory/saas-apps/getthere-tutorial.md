@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory Tümleştirmesi ile GetThere | Microsoft Docs'
-description: Azure Active Directory ve GetThere arasında çoklu oturum açmayı yapılandırmayı öğrenin.
+title: 'Öğretici: Getorada tümleştirmesi Azure Active Directory | Microsoft Docs'
+description: Azure Active Directory ve Getorada arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,49 +14,49 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 499b7f5761c97f6986ca0291af2242d694b609d2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a7c1a59e3b0650badd75a1170a4daaa6561bd23c
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67101748"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945059"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-getthere"></a>Öğretici: GetThere ile Azure Active Directory Tümleştirme
+# <a name="tutorial-azure-active-directory-integration-with-getthere"></a>Öğretici: Getorada tümleştirmesi Azure Active Directory
 
-Bu öğreticide, Azure Active Directory (Azure AD) ile GetThere tümleştirme konusunda bilgi edinin.
-Azure AD ile GetThere tümleştirme ile aşağıdaki avantajları sağlar:
+Bu öğreticide, Getburada Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
+Getburada Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 
-* GetThere erişimi, Azure AD'de kontrol edebilirsiniz.
-* Otomatik olarak (çoklu oturum açma) GetThere için kendi Azure AD hesapları ile oturum açmış, kullanıcıların etkinleştirebilirsiniz.
+* Azure AD 'de, Getburaya erişimi olan denetim yapabilirsiniz.
+* Kullanıcılarınızın Azure AD hesaplarıyla Getorada (çoklu oturum açma) otomatik olarak oturum açmasını sağlayabilirsiniz.
 * Hesaplarınız bir merkezi konumda - Azure portalında yönetebilir.
 
-Azure AD SaaS uygulama tümleştirmesi hakkında daha fazla ayrıntı bilmek istiyorsanız, bkz. [uygulama erişimi ve Azure Active Directory ile çoklu oturum açma nedir](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Azure AD Tümleştirmesi ile GetThere yapılandırmak için aşağıdaki öğeler gerekir:
+Azure AD tümleştirmesini Getorada yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Azure AD aboneliğiniz. Bir Azure AD ortamını yoksa, bir aylık deneme alabilirsiniz [burada](https://azure.microsoft.com/pricing/free-trial/)
-* Abonelik GetThere çoklu oturum açma etkin
+* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü edinebilirsiniz
+* Geton çoklu oturum açma etkin abonelik
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, yapılandırma ve Azure AD çoklu oturum açma bir test ortamında test edin.
+Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
 
-* GetThere destekler **IDP** tarafından başlatılan
+* Getno, **IDP** tarafından başlatılan SSO 'yu destekler
 
-## <a name="adding-getthere-from-the-gallery"></a>Galeriden GetThere ekleme
+## <a name="adding-getthere-from-the-gallery"></a>Galeriden Getorada ekleme
 
-Azure AD'de GetThere tümleştirmesini yapılandırmak için GetThere Galeriden yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
+Azure AD 'de Getorada tümleştirmesini yapılandırmak için, Galeriden, yönetilen SaaS uygulamaları listenize Getburadan eklemeniz gerekir.
 
-**Galeriden GetThere eklemek için aşağıdaki adımları gerçekleştirin:**
+**Galeriden Getorada eklemek için aşağıdaki adımları uygulayın:**
 
 1. İçinde **[Azure portalında](https://portal.azure.com)** , sol gezinti panelinde tıklayın **Azure Active Directory** simgesi.
 
     ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. Gidin **kurumsal uygulamalar** seçip **tüm uygulamaları** seçeneği.
+2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -64,54 +64,54 @@ Azure AD'de GetThere tümleştirmesini yapılandırmak için GetThere Galeriden 
 
     ![Yeni Uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **GetThere**seçin **GetThere** sonucu panelinden ardından **Ekle** uygulama eklemek için Ekle düğmesine.
+4. Arama kutusuna **getorada**yazın, sonuç panelinde getno ' ı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
-     ![Sonuç listesinde GetThere](common/search-new-app.png)
+     ![Sonuçlar listesinde Getorada](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
 
-Bu bölümde, yapılandırma ve Azure AD çoklu oturum açma GetThere adlı bir test kullanıcı tabanlı test **Britta Simon**.
-Tek iş için oturum açma için bir Azure AD kullanıcısının GetThere ilgili kullanıcı arasında bir bağlantı ilişkisi kurulması gerekir.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre getburada yapılandırıp test edersiniz.
+Çoklu oturum açma için, bir Azure AD kullanıcısı ve geton içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
-Yapılandırma ve Azure AD çoklu oturum açma GetThere ile test etmek için aşağıdaki yapı taşlarını tamamlanması gerekir:
+Azure AD çoklu oturum açmayı, geton ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açmayı yapılandırmayı](#configure-azure-ad-single-sign-on)**  - bu özelliği kullanmak, kullanıcılarınızın etkinleştirmek için.
-2. **[GetThere çoklu oturum açmayı yapılandırma](#configure-getthere-single-sign-on)**  - uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[geton çoklu oturum açmayı yapılandırın](#configure-getthere-single-sign-on)** .
 3. **[Bir Azure AD test kullanıcısı oluşturma](#create-an-azure-ad-test-user)**  - Azure AD çoklu oturum açma Britta Simon ile test etmek için.
 4. **[Azure AD test kullanıcı atama](#assign-the-azure-ad-test-user)**  - Azure AD çoklu oturum açmayı kullanmak Britta Simon etkinleştirmek için.
-5. **[GetThere test kullanıcısı oluşturma](#create-getthere-test-user)**  - kullanıcı Azure AD gösterimini bağlı GetThere Britta simon'un bir karşılığı vardır.
+5. Kullanıcının Azure AD gösterimine bağlı olan, pon 'da pon 'a ait bir **[test kullanıcısı oluşturun](#create-getthere-test-user)** .
 6. **[Çoklu oturum açmayı test](#test-single-sign-on)**  - yapılandırma çalışıp çalışmadığını doğrulayın.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırın
 
-Bu bölümde, Azure AD çoklu oturum açma Azure portalında etkinleştirin.
+Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
 
-Azure AD çoklu oturum açma ile GetThere yapılandırmak için aşağıdaki adımları gerçekleştirin:
+Azure AD çoklu oturum açmayı Getorada yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. İçinde [Azure portalında](https://portal.azure.com/), **GetThere** uygulama tümleştirme sayfasında **çoklu oturum açma**.
+1. [Azure Portal](https://portal.azure.com/), getno uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
 
     ![Çoklu oturum açma bağlantısı yapılandırma](common/select-sso.png)
 
-2. Üzerinde **tek bir oturum açma yönteminizi seçmeniz** iletişim kutusunda, **SAML/WS-Federasyon** modu, çoklu oturum açmayı etkinleştirmek için.
+2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
 
-    ![Çoklu oturum açma seçim modu](common/select-saml-option.png)
+    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
 3. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **Düzenle** açmak için simgeyi **temel SAML yapılandırma** iletişim.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında, aşağıdaki adımları gerçekleştirin:
+4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, aşağıdaki adımları uygulayın:
 
-    ![GetThere etki alanı ve URL'ler tek oturum açma bilgileri](common/idp-intiated.png)
+    ![GetDomain etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-intiated.png)
 
-    a. İçinde **tanımlayıcı** metin kutusuna bir URL yazın:
+    a. **Tanımlayıcı** metin kutusuna bir URL yazın:
 
     | |
     |--|
     | `getthere.com` |
     | `http://idp.getthere.com` |
 
-    b. İçinde **yanıt URL'si** metin kutusuna, birini yazın URL'leri aşağıda:
+    b. **Yanıt URL 'si** metin kutusuna aşağıdaki URL 'lerden birini yazın:
     
     | |
     |--|
@@ -120,52 +120,52 @@ Azure AD çoklu oturum açma ile GetThere yapılandırmak için aşağıdaki ad�
     | `https://gtx2-gcte2.getthere.net/login/saml/ssoaasvalidate.act` |
     | `https://wx1.getthere.net/login/saml/ssoaavalidate.act` |
 
-5. GetThere uygulama, özel öznitelik eşlemelerini SAML belirteci öznitelikleri yapılandırmanıza ekleyin gerektiren belirli bir biçimde SAML onaylamalarını bekler. Aşağıdaki ekran görüntüsünde, varsayılan öznitelikler listesinde gösterilmiştir. Tıklayın **Düzenle** kullanıcı öznitelikleri iletişim kutusunu açmak için simge.
+5. Getorada uygulama, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir. Kullanıcı öznitelikleri iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![image](common/edit-attribute.png)
 
-6. Yukarıdaki için ayrıca GetThere uygulama SAML yanıtta geçirilecek birkaç daha fazla öznitelik bekliyor. İçinde **kullanıcı taleplerini** bölümünde **kullanıcı öznitelikleri** iletişim kutusunda gösterildiği gibi SAML belirteci özniteliği eklemek için aşağıdaki adımları gerçekleştirin tablonun altındaki:
+6. Daha fazlasına ek olarak, Getorada uygulama daha fazla özniteliğin SAML yanıtına geri geçirilmesini bekler. **Kullanıcı öznitelikleri** Iletişim kutusundaki **Kullanıcı talepleri** bölümünde AŞAĞıDAKI tabloda gösterildiği gibi SAML belirteci özniteliği eklemek için aşağıdaki adımları gerçekleştirin:
 
     | Ad |  Kaynak özniteliği |  Ad Alanı |
     | ---------------| --------------- | --------------- |
-    | Site adı | "Kuruluşunuz göre değeri sağla" | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/sitename |
-    | Kullanıcı adı |  User.Mail | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/username |
+    | SiteName | "Değeri kuruluşunuzun uyarınca belirtin" | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/sitename |
+    | Kullanıcı Adı |  Kullanıcı. Mail | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/username |
 
-    a. Tıklayın **Ekle yeni talep** açmak için **yönetmek, kullanıcı talepleri** iletişim.
+    a. **Kullanıcı taleplerini Yönet** iletişim kutusunu açmak için **yeni talep Ekle** ' ye tıklayın.
 
     ![image](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
-    b. İçinde **adı** metin kutusuna, bu satır için gösterilen öznitelik adı yazın.
+    b. **Ad** metin kutusuna, bu satır için gösterilen öznitelik adını yazın.
 
-    c. İçinde **Namespace** metin kutusuna, bu satır için gösterilen öznitelik ad alanı yazın.
+    c. **Ad alanı** metin kutusuna, bu satır için gösterilen öznitelik ad alanını yazın.
 
-    d. Kaynağı olarak **özniteliği**.
+    d. **Öznitelik**olarak kaynak seçin.
 
-    e. Gelen **kaynak özniteliği** listesinde, ilgili satır için gösterilen öznitelik değeri yazın.
+    e. **Kaynak özniteliği** listesinde, bu satır için gösterilen öznitelik değerini yazın.
 
     f. Tıklayın **Tamam**
 
     g. **Kaydet**’e tıklayın.
 
-7. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **SAML imzalama sertifikası** bölümünde **indirme** indirmek için **sertifika (Base64)** bilgisayarınızdaki belirli seçenekler ihtiyacınıza göre ve kaydedin.
+7. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-8. Üzerinde **GetThere kümesi** bölümünde, ihtiyacınıza göre uygun URL'lerini kopyalayın.
+8. **Getorada ayarla** bölümünde uygun URL 'leri gereksiniminize göre kopyalayın.
 
-    ![Yapılandırma URL'leri kopyalayın](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
     a. Oturum Açma URL'si:
 
-    b. Azure Ad tanımlayıcısı
+    b. Azure AD tanımlayıcısı
 
     c. Oturum Kapatma URL'si
 
-### <a name="configure-getthere-single-sign-on"></a>GetThere tek oturum açmayı yapılandırın
+### <a name="configure-getthere-single-sign-on"></a>Geton çoklu oturum açmayı yapılandırma
 
-Çoklu oturum açmayı yapılandırma **GetThere** tarafı, indirilen göndermek için ihtiyacınız **sertifika (Base64)** ve uygun Azure portalına kopyalanan URL'lerden [GetThere Destek ekibine](mailto:dataintegration@sabre.com). Bunlar, her iki kenarı da düzgün ayarlandığından SAML SSO bağlantı sağlamak için bu ayarı ayarlayın.
+Geton tarafında çoklu oturum açmayı yapılandırmak için, indirilen **sertifikayı (Base64)** ve Azure Portal ' den uygun kopyalanmış URL 'leri [Geta desteği ekibine](mailto:dataintegration@sabre.com)göndermeniz gerekir. Bunlar, her iki kenarı da düzgün ayarlandığından SAML SSO bağlantı sağlamak için bu ayarı ayarlayın.
 
 ### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma 
 
@@ -177,7 +177,7 @@ Bu bölümün amacı, Britta Simon adlı Azure portalında bir test kullanıcıs
 
 2. Seçin **yeni kullanıcı** ekranın üstünde.
 
-    ![Yeni kullanıcı düğmesi](common/new-user.png)
+    ![Yeni Kullanıcı düğmesi](common/new-user.png)
 
 3. Kullanıcı özellikleri, aşağıdaki adımları gerçekleştirin.
 
@@ -185,48 +185,48 @@ Bu bölümün amacı, Britta Simon adlı Azure portalında bir test kullanıcıs
 
     a. İçinde **adı** alanına **BrittaSimon**.
   
-    b. İçinde **kullanıcı adı** alanına **brittasimon\@yourcompanydomain.extension**  
+    b. **Kullanıcı adı** alanına **brittasıon\@yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
-    c. Seçin **Show parola** onay kutusunu işaretleyin ve ardından parola kutusunda görüntülenen değeri yazın.
+    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d.           **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
-Bu bölümde, Azure çoklu oturum açma kullanmak için GetThere erişim vererek Britta Simon etkinleştirin.
+Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak Getorada erişim izni vererek Britta Simon 'u etkinleştirin.
 
-1. Azure portalında **kurumsal uygulamalar**seçin **tüm uygulamaları**, ardından **GetThere**.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **getorada**' i seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **GetThere**.
+2. Uygulamalar listesinde, **Getorada**öğesini seçin.
 
-    ![Uygulamalar listesinde GetThere bağlantı](common/all-applications.png)
+    ![Uygulamalar listesinde Getorada bağlantısı](common/all-applications.png)
 
-3. Soldaki menüde **kullanıcılar ve gruplar**.
+3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
 
     !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
 
-4. Tıklayın **Kullanıcı Ekle** düğmesine ve ardından **kullanıcılar ve gruplar** içinde **atama Ekle** iletişim.
+4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Atama Ekle bölmesi](common/add-assign-user.png)
 
-5. İçinde **kullanıcılar ve gruplar** iletişim kutusunda **Britta Simon** 'a tıklayın kullanıcı listesinde **seçin** ekranın alt kısmındaki düğmesi.
+5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinden **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-6. SAML onaylaması ardından içinde herhangi bir rolü değer bekleniyor durumunda **rolü Seç** iletişim kutusunda, listeden bir kullanıcı için uygun rolü seçin ve ardından'a tıklayın **seçin** ekranın alt kısmındaki düğmesi.
+6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-7. İçinde **atama Ekle** iletişim kutusunda, tıklayın **atama** düğmesi.
+7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-### <a name="create-getthere-test-user"></a>GetThere test kullanıcısı oluşturma
+### <a name="create-getthere-test-user"></a>Getorada test kullanıcısı oluştur
 
-Bu bölümde, Britta Simon GetThere içinde adlı bir kullanıcı oluşturun. Çalışmak [GetThere Destek ekibine](mailto:dataintegration@sabre.com) GetThere platform kullanıcıları eklemek için. Kullanıcı oluşturulmalı ve çoklu oturum açma kullanmadan önce etkinleştirildi.
+Bu bölümde, geton 'da Britta Simon adlı bir Kullanıcı oluşturacaksınız. Geta platformunda kullanıcıları eklemek için [Geta destek ekibi](mailto:dataintegration@sabre.com) ile çalışın. Kullanıcı oluşturulmalı ve çoklu oturum açma kullanmadan önce etkinleştirildi.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
 
-Erişim paneli GetThere kutucuğa tıkladığınızda, size otomatik olarak SSO'yu ayarlama GetThere için oturum açmanız. Erişim paneli hakkında daha fazla bilgi için bkz: [erişim Paneli'ne giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde Getorada öğesine tıkladığınızda, SSO 'yu ayarladığınız Getburada otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
@@ -234,5 +234,5 @@ Erişim paneli GetThere kutucuğa tıkladığınızda, size otomatik olarak SSO'
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
