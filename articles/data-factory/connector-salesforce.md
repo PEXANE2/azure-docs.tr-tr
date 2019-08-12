@@ -62,11 +62,11 @@ Salesforce bağlantılı hizmeti için aşağıdaki özellikler desteklenir.
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü |Type özelliği **Salesforce**olarak ayarlanmalıdır. |Evet |
+| type |Type özelliği **Salesforce**olarak ayarlanmalıdır. |Evet |
 | environmentUrl | Salesforce örneğinin URL 'sini belirtin. <br> -Varsayılan değer `"https://login.salesforce.com"`. <br> -Korumalı verileri veri kopyalamak için belirtin `"https://test.salesforce.com"`. <br> -Özel etki alanından veri kopyalamak için, örneğin, `"https://[domain].my.salesforce.com"`. |Hayır |
 | username |Kullanıcı hesabı için bir Kullanıcı adı belirtin. |Evet |
 | password |Kullanıcı hesabı için bir parola belirtin.<br/><br/>Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). |Evet |
-| Belirtilmedi |Kullanıcı hesabı için bir güvenlik belirteci belirtin. Bir güvenlik belirtecini sıfırlama ve alma hakkında yönergeler için bkz. [güvenlik belirteci alma](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm). Genel olarak güvenlik belirteçleri hakkında daha fazla bilgi edinmek için bkz. [güvenlik ve API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm).<br/><br/>Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). |Evet |
+| securityToken |Kullanıcı hesabı için bir güvenlik belirteci belirtin. Bir güvenlik belirtecini sıfırlama ve alma hakkında yönergeler için bkz. [güvenlik belirteci alma](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm). Genel olarak güvenlik belirteçleri hakkında daha fazla bilgi edinmek için bkz. [güvenlik ve API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm).<br/><br/>Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). |Evet |
 | connectVia | [Integration runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. Belirtilmezse, varsayılan Azure Integration Runtime kullanır. | Kaynak için Hayır, kaynak bağlı hizmette tümleştirme çalışma zamanı yoksa, havuz için Evet |
 
 >[!IMPORTANT]
