@@ -102,7 +102,7 @@ SAP Business Warehouse açık bağlı Hub hizmeti için aşağıdaki özellikler
 | server | SAP BW örneği yer aldığı sunucunun adı. | Evet |
 | systemNumber | SAP BW sisteminin sistem numarası.<br/>İzin verilen değer: bir dize olarak temsil edilen iki basamaklı ondalık sayı. | Evet |
 | clientId | SAP W sisteminde istemcinin istemci kimliği.<br/>İzin verilen değer: bir dize olarak temsil edilen üç basamaklı ondalık sayı. | Evet |
-| language | SAP sisteminin kullandığı dil. | Hayır (varsayılan değer **tr**)|
+| language | SAP sisteminin kullandığı dil. | Hayır (varsayılan değer **EN**)|
 | userName | SAP sunucusuna erişimi olan kullanıcı adı. | Evet |
 | password | Kullanıcının parolası. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Evet |
 | connectVia | [Integration Runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. Belirtildiği gibi bir şirket içinde barındırılan tümleştirme çalışma zamanı gereklidir [önkoşulları](#prerequisites). |Evet |
@@ -211,14 +211,14 @@ SAP BW Open Hub'ından veri kopyalama işlemi sırasında aşağıdaki eşlemele
 
 | SAP ABAP türü | Veri Fabrikası geçici veri türü |
 |:--- |:--- |
-| C (dize) | String |
-| Ben (tamsayı) | Int32 |
-| F (kayan nokta) | Double |
-| D (tarih) | String |
-| T (saat) | String |
-| P (BCD paketlenmiş, para birimi, Decimal, miktar) | Decimal |
+| C (String) | String |
+| I (integer) | Int32 |
+| F (Float) | Double |
+| D (Date) | String |
+| T (Time) | String |
+| P (BCD Packed, Currency, Decimal, Qty) | Decimal |
 | N (Numc) | String |
-| (İkili ve ham) X | String |
+| X (Binary and Raw) | String |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Azure Data Factory kopyalama etkinliği tarafından kaynak ve havuz olarak desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats).
