@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory Tümleştirmesi ile TextMagic | Microsoft Docs'
-description: Azure Active Directory ve TextMagic arasında çoklu oturum açmayı yapılandırmayı öğrenin.
+title: 'Öğretici: TextMagic ile tümleştirme Azure Active Directory | Microsoft Docs'
+description: Azure Active Directory ve TextMagic arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,50 +15,50 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 1184e282c8dc52cb616bcc47068d96fe61651da9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 53711a80f35177c911b754a0ce3f189ac106adb2
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67088874"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68943315"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-textmagic"></a>Öğretici: TextMagic ile Azure Active Directory Tümleştirme
+# <a name="tutorial-azure-active-directory-integration-with-textmagic"></a>Öğretici: TextMagic ile tümleştirme Azure Active Directory
 
-Bu öğreticide, Azure Active Directory (Azure AD) ile TextMagic tümleştirme konusunda bilgi edinin.
-Azure AD ile TextMagic tümleştirme ile aşağıdaki avantajları sağlar:
+Bu öğreticide, TextMagic 'i Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
+TextMagic 'i Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 
-* TextMagic erişimi, Azure AD'de kontrol edebilirsiniz.
-* Otomatik olarak (çoklu oturum açma) TextMagic için kendi Azure AD hesapları ile oturum açmış, kullanıcıların etkinleştirebilirsiniz.
+* TextMagic 'e erişimi olan Azure AD 'de denetim yapabilirsiniz.
+* Kullanıcılarınızın Azure AD hesaplarıyla TextMagic (çoklu oturum açma) ile otomatik olarak oturum açmasını sağlayabilirsiniz.
 * Hesaplarınız bir merkezi konumda - Azure portalında yönetebilir.
 
-Azure AD SaaS uygulama tümleştirmesi hakkında daha fazla ayrıntı bilmek istiyorsanız, bkz. [uygulama erişimi ve Azure Active Directory ile çoklu oturum açma nedir](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Azure AD Tümleştirmesi ile TextMagic yapılandırmak için aşağıdaki öğeler gerekir:
+TextMagic ile Azure AD tümleştirmesini yapılandırmak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliğiniz. Bir Azure AD ortamını yoksa, bir aylık deneme alabilirsiniz [burada](https://azure.microsoft.com/pricing/free-trial/)
-* Abonelik TextMagic çoklu oturum açma etkin
+* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü edinebilirsiniz
+* TextMagic çoklu oturum açma etkin aboneliği
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, yapılandırma ve Azure AD çoklu oturum açma bir test ortamında test edin.
+Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
 
-* TextMagic destekler **IDP** tarafından başlatılan
-* TextMagic destekler **zamanında** kullanıcı sağlama
+* TextMagic, **IDP** tarafından başlatılan SSO 'yu destekler
+* TextMagic **, tam zamanında** Kullanıcı sağlamayı destekler
 
 ## <a name="adding-textmagic-from-the-gallery"></a>Galeriden TextMagic ekleme
 
-Azure AD'de TextMagic tümleştirmesini yapılandırmak için TextMagic Galeriden yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
+TextMagic 'in Azure AD 'ye tümleştirilmesini yapılandırmak için galerideki TextMagic 'i yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-**Galeriden TextMagic eklemek için aşağıdaki adımları gerçekleştirin:**
+**Galeriden TextMagic eklemek için aşağıdaki adımları uygulayın:**
 
 1. İçinde **[Azure portalında](https://portal.azure.com)** , sol gezinti panelinde tıklayın **Azure Active Directory** simgesi.
 
     ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. Gidin **kurumsal uygulamalar** seçip **tüm uygulamaları** seçeneği.
+2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -66,87 +66,87 @@ Azure AD'de TextMagic tümleştirmesini yapılandırmak için TextMagic Galeride
 
     ![Yeni Uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **TextMagic**seçin **TextMagic** sonucu panelinden ardından **Ekle** uygulama eklemek için Ekle düğmesine.
+4. Arama kutusuna **textmagic**yazın, sonuç panelinden **textmagic** ' i seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
      ![Sonuç listesinde TextMagic](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
 
-Bu bölümde, yapılandırma ve Azure AD çoklu oturum açma TextMagic adlı bir test kullanıcı tabanlı test **Britta Simon**.
-Tek iş için oturum açma için bir Azure AD kullanıcısının TextMagic ilgili kullanıcı arasında bir bağlantı ilişkisi kurulması gerekir.
+Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre textmagic Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
+Çoklu oturum açma için, bir Azure AD kullanıcısı ve TextMagic 'teki ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
-Yapılandırma ve Azure AD çoklu oturum açma TextMagic ile test etmek için aşağıdaki yapı taşlarını tamamlanması gerekir:
+TextMagic ile Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açmayı yapılandırmayı](#configure-azure-ad-single-sign-on)**  - bu özelliği kullanmak, kullanıcılarınızın etkinleştirmek için.
-2. **[TextMagic çoklu oturum açmayı yapılandırma](#configure-textmagic-single-sign-on)**  - uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+2. **[TextMagic çoklu oturum açmayı yapılandırma](#configure-textmagic-single-sign-on)** uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
 3. **[Bir Azure AD test kullanıcısı oluşturma](#create-an-azure-ad-test-user)**  - Azure AD çoklu oturum açma Britta Simon ile test etmek için.
 4. **[Azure AD test kullanıcı atama](#assign-the-azure-ad-test-user)**  - Azure AD çoklu oturum açmayı kullanmak Britta Simon etkinleştirmek için.
-5. **[TextMagic test kullanıcısı oluşturma](#create-textmagic-test-user)**  - kullanıcı Azure AD gösterimini bağlı TextMagic Britta simon'un bir karşılığı vardır.
+5. Textmagic **[test kullanıcısı oluşturun](#create-textmagic-test-user)** -textmagic 'Te kullanıcının Azure AD gösterimine bağlanmış Britta Simon 'a sahip olmak için.
 6. **[Çoklu oturum açmayı test](#test-single-sign-on)**  - yapılandırma çalışıp çalışmadığını doğrulayın.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırın
 
-Bu bölümde, Azure AD çoklu oturum açma Azure portalında etkinleştirin.
+Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
 
-Azure AD çoklu oturum açma ile TextMagic yapılandırmak için aşağıdaki adımları gerçekleştirin:
+TextMagic ile Azure AD çoklu oturum açmayı yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. İçinde [Azure portalında](https://portal.azure.com/), **TextMagic** uygulama tümleştirme sayfasında **çoklu oturum açma**.
+1. [Azure Portal](https://portal.azure.com/), **textmagic** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
 
     ![Çoklu oturum açma bağlantısı yapılandırma](common/select-sso.png)
 
-2. Üzerinde **tek bir oturum açma yönteminizi seçmeniz** iletişim kutusunda, **SAML/WS-Federasyon** modu, çoklu oturum açmayı etkinleştirmek için.
+2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
 
-    ![Çoklu oturum açma seçim modu](common/select-saml-option.png)
+    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
 3. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **Düzenle** açmak için simgeyi **temel SAML yapılandırma** iletişim.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. Üzerinde **temel SAML yapılandırma** bölümünde, aşağıdaki adımları gerçekleştirin:
+4. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![TextMagic etki alanı ve URL'ler tek oturum açma bilgileri](common/idp-identifier.png)
+    ![TextMagic etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-identifier.png)
 
-    İçinde **tanımlayıcı** metin kutusuna bir URL yazın:  `https://my.textmagic.com/saml/metadata`
+    **Tanımlayıcı** metin kutusuna bir URL yazın:`https://my.textmagic.com/saml/metadata`
 
-5. TextMagic uygulamanız SAML onaylamalarını özel öznitelik eşlemelerini SAML belirteci öznitelikleri yapılandırmanıza ekleyin gerektiren belirli bir biçimde bekliyor. Varsayılan öznitelikler listesinde aşağıdaki ekran görüntüsünde gösterilmektedir oysa **NameIdentifier** ile eşlenmiş **user.userprincipalname**. TextMagic uygulama bekliyor **NameIdentifier** ile eşlenecek **user.mail**tıklayarak özellik eşlemesi düzenlemeniz gerekir böylece **Düzenle** simgesi ve değişiklik öznitelik eşlemesi.
+5. TextMagic uygulamanız, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde, **NameIdentifier** 'ın **User. UserPrincipalName**ile eşlendiği varsayılan özniteliklerin listesi gösterilmektedir. TextMagic uygulaması **NameIdentifier** 'ın **User. Mail**ile eşlenmesini bekler, bu nedenle, **Düzenle** simgesine tıklayarak ve öznitelik eşlemesini değiştirerek öznitelik eşlemesini düzenlemeniz gerekir.
 
     ![image](common/edit-attribute.png)
 
-6. Yukarıdaki için ayrıca TextMagic uygulama SAML yanıtta geçirilecek birkaç daha fazla öznitelik bekliyor. İçinde **kullanıcı taleplerini** bölümünde **kullanıcı öznitelikleri** iletişim kutusunda gösterildiği gibi SAML belirteci özniteliği eklemek için aşağıdaki adımları gerçekleştirin tablonun altındaki:
+6. TextMagic uygulaması, yukarıdakine ek olarak, SAML yanıtına daha fazla özniteliğin geri geçirilmesini bekler. **Kullanıcı öznitelikleri** Iletişim kutusundaki **Kullanıcı talepleri** bölümünde AŞAĞıDAKI tabloda gösterildiği gibi SAML belirteci özniteliği eklemek için aşağıdaki adımları gerçekleştirin:
 
     | Ad |   Kaynak özniteliği| Ad Alanı  |
     | --------------- | --------------- | --------------- |
-    | Şirket | User.CompanyName | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | FirstName               | User.givenName |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | Soyadı            | User.surname |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | Telefon               | User.telephoneNumber |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | Şirket | User. CompanyName | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | firstName               | Kullanıcı. |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | lastName            | User. soyadı |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | telefon               | Kullanıcı. telephoneNumber |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
     | | |
 
-    a. Tıklayın **Ekle yeni talep** açmak için **yönetmek, kullanıcı talepleri** iletişim.
+    a. **Kullanıcı taleplerini Yönet** iletişim kutusunu açmak için **yeni talep Ekle** ' ye tıklayın.
 
     ![image](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
-    b. İçinde **adı** metin kutusuna, bu satır için gösterilen öznitelik adı yazın.
+    b. **Ad** metin kutusuna, bu satır için gösterilen öznitelik adını yazın.
 
-    c. İçinde **Namespace** metin kutusuna, bu satır için gösterilen ad alanı değeri yazın.
+    c. **Ad alanı** metin kutusuna, bu satır için gösterilen ad alanı değerini yazın.
 
-    d. Kaynağı olarak **özniteliği**.
+    d. **Öznitelik**olarak kaynak seçin.
 
-    e. Gelen **kaynak özniteliği** listesinde, ilgili satır için gösterilen öznitelik değeri yazın.
+    e. **Kaynak özniteliği** listesinde, bu satır için gösterilen öznitelik değerini yazın.
 
     f. Tıklayın **Tamam**
 
     g. **Kaydet**’e tıklayın.
 
-7. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **SAML imzalama sertifikası** bölümünde **indirme** indirmek için **sertifika (Base64)** bilgisayarınızdaki belirli seçenekler ihtiyacınıza göre ve kaydedin.
+7. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-8. Üzerinde **TextMagic kümesi** bölümünde, ihtiyacınıza göre uygun URL'lerini kopyalayın.
+8. **TextMagic 'ı ayarlama** bölümünde uygun URL 'leri gereksiniminize göre kopyalayın.
 
-    ![Yapılandırma URL'leri kopyalayın](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
     a. Oturum Açma URL'si:
 
@@ -154,25 +154,25 @@ Azure AD çoklu oturum açma ile TextMagic yapılandırmak için aşağıdaki ad
 
     c. Oturum Kapatma URL'si
 
-### <a name="configure-textmagic-single-sign-on"></a>TextMagic tek oturum açmayı yapılandırın
+### <a name="configure-textmagic-single-sign-on"></a>TextMagic çoklu oturum açmayı yapılandırma
 
-1. Farklı bir web tarayıcı penceresinde TextMagic şirketinizin sitesi için bir yönetici olarak oturum açın.
+1. Farklı bir Web tarayıcısı penceresinde, TextMagic şirket sitenizde yönetici olarak oturum açın.
 
-2. Seçin **hesap ayarları** kullanıcı adı altında.
+2. Kullanıcı adı altında **Hesap ayarları** ' nı seçin.
 
-    ![TextMagic yapılandırma](./media/textmagic-tutorial/config1.png)
+    ![TextMagic yapılandırması](./media/textmagic-tutorial/config1.png)
 
-3. Tıklayarak **çoklu oturum açma (SSO)** sekmesini ve aşağıdaki alanları doldurun:  
+3. **Çoklu oturum açma (SSO)** sekmesine tıklayın ve aşağıdaki alanları girin:  
 
-    ![TextMagic yapılandırma](./media/textmagic-tutorial/config2.png)
+    ![TextMagic yapılandırması](./media/textmagic-tutorial/config2.png)
 
-    a. İçinde **kimlik sağlayıcısı varlık Tanıtıcısı:**  metin değerini yapıştırın **Azure AD tanımlayıcısı**, hangi Azure Portalı'ndan kopyaladığınız.
+    a. **Kimlik sağlayıcısı VARLıK kimliği:** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının**değerini yapıştırın.
 
-    b. İçinde **kimlik sağlayıcısı SSO URL:**  metin değerini yapıştırın **oturum açma URL'si**, hangi Azure Portalı'ndan kopyaladığınız.
+    b. **Kimlik sağlayıcısı SSO URL 'si:** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
 
-    c. İçinde **kimlik sağlayıcısı SLO URL:**  metin değerini yapıştırın **oturum kapatma URL'si**, hangi Azure Portalı'ndan kopyaladığınız.
+    c. **Kimlik sağlayıcısı SLO URL 'si:** metin kutusunda, Azure Portal kopyaladığınız **Logout URL 'si**değerini yapıştırın.
 
-    d. Açık, **base-64 kodlamalı sertifika** Azure portalından indirdiğiniz Not Defteri'nde, içeriğini, panoya kopyalayın ve yapıştırın kendisine **x509 ortak sertifika:**  metin.
+    d. Azure portal 'den indirilen Not defteri 'nde **Base-64 kodlu sertifikanızı** açın, bu içeriği panonuza kopyalayın ve ardından **genel x509 sertifikası:** TextBox ' a yapıştırın.
 
     e. **Kaydet**’e tıklayın.
 
@@ -186,56 +186,56 @@ Bu bölümün amacı, Britta Simon adlı Azure portalında bir test kullanıcıs
 
 2. Seçin **yeni kullanıcı** ekranın üstünde.
 
-    ![Yeni kullanıcı düğmesi](common/new-user.png)
+    ![Yeni Kullanıcı düğmesi](common/new-user.png)
 
 3. Kullanıcı özellikleri, aşağıdaki adımları gerçekleştirin.
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. İçinde **adı** alana **BrittaSimon**.
+    a. **Ad** alanına **Brittasıon**girin.
   
-    b. İçinde **kullanıcı adı** alan türü **brittasimon@yourcompanydomain.extension** . Örneğin, BrittaSimon@contoso.com
+    b. **Kullanıcı adı** alanına yazın **brittasimon@yourcompanydomain.extension** . Örneğin, BrittaSimon@contoso.com
 
-    c. Seçin **Show parola** onay kutusunu işaretleyin ve ardından parola kutusunda görüntülenen değeri yazın.
+    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d.           **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
-Bu bölümde, Azure çoklu oturum açma kullanmak için TextMagic erişim vererek Britta Simon etkinleştirin.
+Bu bölümde, TextMagic 'e erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
 
-1. Azure portalında **kurumsal uygulamalar**seçin **tüm uygulamaları**, ardından **TextMagic**.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin, sonra **textmagic**' i seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **TextMagic**.
+2. Uygulamalar listesinde **Textmagic**' i seçin.
 
-    ![Uygulamalar listesinde TextMagic bağlantı](common/all-applications.png)
+    ![Uygulamalar listesindeki TextMagic bağlantısı](common/all-applications.png)
 
-3. Soldaki menüde **kullanıcılar ve gruplar**.
+3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
 
     !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
 
-4. Tıklayın **Kullanıcı Ekle** düğmesine ve ardından **kullanıcılar ve gruplar** içinde **atama Ekle** iletişim.
+4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Atama Ekle bölmesi](common/add-assign-user.png)
 
 5. İçinde **kullanıcılar ve gruplar** iletişim kutusunda **Britta Simon** 'a tıklayın kullanıcı listesinde **seçin** ekranın alt kısmındaki düğmesi.
 
-6. SAML onaylaması ardından içinde herhangi bir rolü değer bekleniyor durumunda **rolü Seç** 'a tıklayın listeden bir kullanıcı için uygun rolü Seç iletişim kutusu **seçin** ekranın alt kısmındaki düğmesi.
+6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-7. İçinde **atama Ekle** iletişim tıklatın **atama** düğmesi.
+7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
 ### <a name="create-textmagic-test-user"></a>TextMagic test kullanıcısı oluşturma
 
-Uygulamanızın desteklediği **zaman kullanıcı hazırlama, sadece** ve sonra kimlik doğrulama kullanıcıları uygulama içinde otomatik olarak oluşturulur. Sisteme alt hesabını etkinleştirmek için bir kez ilk oturum açma bilgileri doldurmanız gerekir.
-Bu bölümde, hiçbir eylem öğesini yoktur.
+Uygulama **tam zamanında Kullanıcı sağlamayı** ve kimlik doğrulama kullanıcılarının uygulamada otomatik olarak oluşturulmasını destekler. Alt hesabı sisteme etkinleştirmek için ilk oturum açmada bilgileri bir kez daha doldurmanız gerekir.
+Bu bölümde sizin için herhangi bir eylem öğesi yok.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
 
-Erişim paneli TextMagic kutucuğa tıkladığınızda, size otomatik olarak SSO'yu ayarlama TextMagic için oturum açmanız. Erişim paneli hakkında daha fazla bilgi için bkz: [erişim Paneli'ne giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde TextMagic kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız TextMagic 'te otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
@@ -243,4 +243,4 @@ Erişim paneli TextMagic kutucuğa tıkladığınızda, size otomatik olarak SSO
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

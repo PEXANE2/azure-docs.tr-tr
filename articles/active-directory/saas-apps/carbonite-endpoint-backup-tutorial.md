@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/30/2019
+ms.date: 08/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf5bf49538823ea50bca197a78ec54d4ddcae1ff
-ms.sourcegitcommit: 6ad03fa28a0f60cb6dce6144f728c2ceb56ff6e2
+ms.openlocfilehash: e078cb7daa787b9fe5e8bc996b36f0fef198f41c
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68708287"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879699"
 ---
 # <a name="tutorial-integrate-carbonite-endpoint-backup-with-azure-active-directory"></a>Öğretici: Carbonite uç nokta yedeklemesini Azure Active Directory ile tümleştirme
 
@@ -125,27 +125,35 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 ### <a name="configure-carbonite-endpoint-backup-sso"></a>Carbonite uç nokta yedekleme SSO 'SU yapılandırma
 
-1. Farklı bir Web tarayıcısı penceresinde, Carbonite uç nokta yedekleme şirket sitenizde yönetici olarak oturum açın.
+1. Carbonite uç noktası yedeklemesiyle yapılandırmayı otomatikleştirmek için, **uzantıyı yüklemeniz**' ne tıklayarak **uygulamalarımı güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
 
-1. Sol bölmeden **Şirket** ' e tıklayın.
+    ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
+
+2. Tarayıcıya Uzantı eklendikten sonra, **Kurulum Carbonite uç noktası yedeklemesi** ' ne tıklayın, sizi Carbonite uç noktası yedekleme uygulamasına yönlendirir. Buradan, Carbonite uç noktası yedeklemesi 'nde oturum açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-7 adımlarını otomatikleştirecektir.
+
+    ![Kurulum yapılandırması](common/setup-sso.png)
+
+3. Carbonite uç noktası yedeklemesini el ile ayarlamak isterseniz, yeni bir Web tarayıcısı penceresi açın ve Carbonite uç noktası yedeklemesi şirket sitenizde yönetici olarak oturum açın ve aşağıdaki adımları gerçekleştirin:
+
+4. Sol bölmeden **Şirket** ' e tıklayın.
 
     ![Carbonite uç noktası yedekleme yapılandırması ](media/carbonite-endpoint-backup-tutorial/configure1.png)
 
-1. **Çoklu oturum**açma ' ya tıklayın.
+5. **Çoklu oturum**açma ' ya tıklayın.
 
     ![Carbonite uç noktası yedekleme yapılandırması ](media/carbonite-endpoint-backup-tutorial/configure2.png)
 
-1. **Etkinleştir** ' e tıklayın ve ardından yapılandırmak Için **Ayarları Düzenle** ' ye tıklayın.
+6. **Etkinleştir** ' e tıklayın ve ardından yapılandırmak Için **Ayarları Düzenle** ' ye tıklayın.
 
     ![Carbonite uç noktası yedekleme yapılandırması ](media/carbonite-endpoint-backup-tutorial/configure3.png)
 
-1. **Çoklu oturum açma** ayarları sayfasında, aşağıdaki adımları uygulayın:
+7. **Çoklu oturum açma** ayarları sayfasında, aşağıdaki adımları uygulayın:
 
     ![Carbonite uç noktası yedekleme yapılandırması ](media/carbonite-endpoint-backup-tutorial/configure4.png)
 
-    1. **Kimlik sağlayıcısı adı** metin kutusuna **Microsoft Azure AD**gibi kimlik sağlayıcısının adını girin.
+    1. **Kimlik sağlayıcısı adı** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcı** değerini yapıştırın.
 
-    1. **Kimlik sağlayıcısı URL** metin kutusuna, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcı** değerini yapıştırın.
+    1. **Kimlik sağlayıcısı URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
     1. Azure portal indirilen **sertifika (base64)** dosyasını karşıya yüklemek Için **Dosya Seç** ' e tıklayın.
 

@@ -1,6 +1,6 @@
 ---
-title: Öğretici - Azure Analysis Services Yönetici ve kullanıcı rolleri yapılandırmak | Microsoft Docs
-description: Azure Analysis Services rolleri yapılandırmayı öğrenin.
+title: Öğretici-yönetici ve Kullanıcı rollerini Azure Analysis Services yapılandırma | Microsoft Docs
+description: Azure Analysis Services rollerinin nasıl yapılandırılacağını öğrenin.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 4c1a3f52c37dcaad4bc2f84d6d2fa04b61376cf1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b36541cde457b7faf8b3a020cdde01f049ceb652
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60788031"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932206"
 ---
-# <a name="tutorial-configure-server-administrator-and-user-roles"></a>Öğretici: Sunucu Yönetici ve kullanıcı rollerini yapılandırma
+# <a name="tutorial-configure-server-administrator-and-user-roles"></a>Öğretici: Sunucu yönetici ve kullanıcı rollerini yapılandırma
 
- Bu öğreticide, sunucu yöneticisi ve model veritabanı rollerini yapılandırmak üzere Azure sunucunuza bağlanmak için SQL Server Management Studio (SSMS) kullanacaksınız. Ayrıca [Tabular Model Scripting Language (TMSL)](https://docs.microsoft.com/sql/analysis-services/tabular-model-programming-compatibility-level-1200/tabular-model-programming-for-compatibility-level-1200) ile tanışacaksınız. TMSL, 1200 ve daha yüksek uyumluluk düzeylerindeki tablo modelleri için JSON tabanlı bir betik dilidir. Pek çok tablo modelleme görevini otomatikleştirmek için kullanılabilir. TMSL çoğunlukla PowerShell ile kullanılır, ancak bu öğreticide SSMS'deki XMLA sorgu düzenleyicisini kullanacaksınız. Bu öğreticide aşağıdaki görevleri tamamlayacaksınız: 
+ Bu öğreticide, sunucu yöneticisi ve model veritabanı rollerini yapılandırmak üzere Azure sunucunuza bağlanmak için SQL Server Management Studio (SSMS) kullanacaksınız. Ayrıca [Tabular Model Scripting Language (TMSL)](https://docs.microsoft.com/analysis-services/tabular-model-programming-compatibility-level-1200/tabular-model-programming-for-compatibility-level-1200) ile tanışacaksınız. TMSL, 1200 ve daha yüksek uyumluluk düzeylerindeki tablo modelleri için JSON tabanlı bir betik dilidir. Pek çok tablo modelleme görevini otomatikleştirmek için kullanılabilir. TMSL çoğunlukla PowerShell ile kullanılır, ancak bu öğreticide SSMS'deki XMLA sorgu düzenleyicisini kullanacaksınız. Bu öğreticide aşağıdaki görevleri tamamlayacaksınız: 
   
 > [!div class="checklist"]
 > * Portaldan sunucu adınızı alma
@@ -83,7 +83,7 @@ Bu görevde, Azure AD'nizden sunucu yöneticisi rolüne bir kullanıcı veya gru
 
 ## <a name="add-a-user-to-the-model-database-administrator-role"></a>Model veritabanı yöneticisi rolüne bir kullanıcı ekleme
 
-Bu görevde, Internet Satış Yöneticisi modelde zaten var olan bir kullanıcı veya grup hesabı rolü ekleyeceksiniz. Bu rol, adventureworks örnek model veritabanı için Tam denetim (Yönetici) izinlerine sahiptir. Bu görev, kendi oluşturduğunuz bir betikte [CreateOrReplace](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/createorreplace-command-tmsl) TMSL komutunu kullanmaktadır.
+Bu görevde, Internet Satış Yöneticisi modelde zaten var olan bir kullanıcı veya grup hesabı rolü ekleyeceksiniz. Bu rol, adventureworks örnek model veritabanı için Tam denetim (Yönetici) izinlerine sahiptir. Bu görev, kendi oluşturduğunuz bir betikte [CreateOrReplace](https://docs.microsoft.com/bi-reference/tmsl/createorreplace-command-tmsl) TMSL komutunu kullanmaktadır.
 
 1. **Nesne Gezgini**'nde **Veritabanları** > **adventureworks** > **Roller**'i genişletin. 
 2. **Internet Satış Yöneticisi**'ne sağ tıklayın, sonra **Rol Betiği** > **CREATE OR REPLACE** > **Yeni Sorgu Düzenleyicisi Penceresi**'ne tıklayın.
@@ -99,7 +99,7 @@ Bu görevde, Internet Satış Yöneticisi modelde zaten var olan bir kullanıcı
 
 ## <a name="add-a-new-model-database-role-and-add-a-user-or-group"></a>Yeni bir model veritabanı rolü ekleme ve bir kullanıcı veya grup ekleme
 
-Bu görevde yeni bir Internet Satış Genel rolü oluşturmak için bir TMSL betiğinde [Oluştur](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/create-command-tmsl?view=sql-analysis-services-2017) komutunu kullanacak, role *okuma* izinleri verecek ve Azure AD'nizden bir kullanıcı veya grup hesabı ekleyeceksiniz.
+Bu görevde yeni bir Internet Satış Genel rolü oluşturmak için bir TMSL betiğinde [Oluştur](https://docs.microsoft.com/bi-reference/tmsl/create-command-tmsl) komutunu kullanacak, role *okuma* izinleri verecek ve Azure AD'nizden bir kullanıcı veya grup hesabı ekleyeceksiniz.
 
 1. **Nesne Gezgini**'nde **adventureworks**'e sağ tıklayın, sonra **Yeni Sorgu** > **XMLA**'ya tıklayın. 
 2. Aşağıdaki TMSL betiğini kopyalayın ve sorgu düzenleyicisine yapıştırın:
@@ -144,5 +144,5 @@ Artık gerekmediğinde, kullanıcı ve grup hesaplarını ve rolleri silin. Bunu
 Bu öğreticide Azure AS sunucunuza bağlanmayı ve SSMS'de adventureworks örnek model veritabanlarını ve özelliklerini keşfetmeyi öğrendiniz. Ayrıca var olan ve yeni rollere kullanıcı veya grup eklemek için SSMS ve TMSL betiklerini kullanmayı öğrendiniz. Artık sunucunuz ve örnek model veritabanınız için izinleri yapılandırdığınıza göre, size ve başka kullanıcılar Power BI gibi istemci uygulamalarını kullanarak veritabanına bağlanabilir. Daha fazla bilgi edinmek için sonraki öğreticiye devam edin. 
 
 > [!div class="nextstepaction"]
-> [Öğretici: Power BI Desktop ile bağlanma](analysis-services-tutorial-pbid.md)
+> [Öğretici: Power BI Desktop bağlanma](analysis-services-tutorial-pbid.md)
 
