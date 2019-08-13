@@ -63,8 +63,6 @@
       href: samples-resource-manager-templates.md
 - name: Kavramlar
   items:
-    - name: App Service nasıl çalışır?
-      href: app-service-how-works-readme.md
     - name: App Service planları
       href: overview-hosting-plans.md
     - name: İşletim sistemi işlevi

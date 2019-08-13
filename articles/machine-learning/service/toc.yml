@@ -258,7 +258,7 @@
     - name: Yeniden kullanılabilir iş akışları oluşturma
       displayName: pipelines
       items:
-        - name: 'ML işlem hatları: toplu iş, hesaplama, yeniden kullanma, paylaşma'
+        - name: ML işlem hatları
           href: how-to-create-your-first-pipeline.md
         - name: CI/CD için Azure işlem hatları
           displayName: 'continuous, integration, delivery'

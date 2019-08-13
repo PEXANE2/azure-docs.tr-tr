@@ -7,12 +7,12 @@ ms.date: 07/29/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: c2e78f6925ae8ff72e7f603c886376b32e40cd94
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 03b65c71201ba125cb3924a52e8760a088374aa6
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737252"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954728"
 ---
 # <a name="back-up-and-restore-azure-file-shares"></a>Azure dosya paylaşımlarını yedekleme ve geri yükleme
 Bu makalede, Azure portalını kullanarak [Azure dosya paylaşımlarını](../storage/files/storage-files-introduction.md) yedekleme ve geri yükleme işlemlerinin nasıl yapılacağı açıklanmaktadır.
@@ -188,7 +188,7 @@ Dosya paylaşımının korumasını sürdürmek için Yedekleme Öğesi'ne gidin
 
 ### <a name="delete-backup-data"></a>Yedekleme verilerini silme
 
-Dosya paylaşımının yedeklemesini, Yedeklemeyi durdurma işi sırasında veya korumayı durdurduktan sonra istediğiniz zaman silebilirsiniz. Hatta kurtarma noktalarını silmeden önce birkaç gün veya birkaç hafta beklemek yararlı olabilir. Kurtarma noktalarını geri yüklemekten farklı olarak, yedekleme verilerini silerken belirli kurtarma noktalarının silinmesini seçemezsiniz. Yedekleme verilerinizi silmeyi seçtiyseniz, öğeye ilişkilendirilmiş tüm kurtarma noktalarını silersiniz.
+Yedeklemeyi durdurma işi sırasında veya korumayı durdurduktan sonra bir dosya paylaşımının yedeklemesini silebilirsiniz. Hatta kurtarma noktalarını silmeden önce birkaç gün veya birkaç hafta beklemek yararlı olabilir. Kurtarma noktalarını geri yüklemekten farklı olarak, yedekleme verilerini silerken belirli kurtarma noktalarının silinmesini seçemezsiniz. Yedekleme verilerinizi silmeyi seçtiyseniz, öğeye ilişkilendirilmiş tüm kurtarma noktalarını silersiniz.
 
 Aşağıdaki yordamda sanal makine için Yedekleme işinin durdurulmuş olduğu varsayılır. Yedekleme işi durdurulduktan sonra, Yedekleme öğesi panosunda Yedeklemeyi Sürdür ve Yedekleme Verilerini Sil seçenekleri sağlanır. Yedekleme Verilerini Sil'e tıklayın ve silme işlemini onaylamak için Dosya paylaşımının adını yazın. İsteğe bağlı olarak, silmek için bir Neden veya Açıklama sağlayın.
 

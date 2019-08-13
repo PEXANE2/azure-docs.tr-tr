@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 07/31/2019
-ms.openlocfilehash: 7be5b0dbe4bbfba30ea469eec662877c1ef56c7c
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 0a497ce506e1aa3b0f9afc47bf1ab8382c9c0405
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689614"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68951456"
 ---
 1. Kullandığınız Azure aboneliğine ait kimlik bilgilerini kullanarak [Azure Portal](https://portal.azure.com/) oturum açın. 
 
@@ -30,7 +30,7 @@ ms.locfileid: "68689614"
 
     ![Çalışma alanı oluşturma](./media/aml-create-in-portal/workspace-create-main-tab.png)
 
-   Alan|Açıklama
+   Alan|Açıklama 
    ---|---
    Çalışma alanı adı |Çalışma alanınızı tanımlayan benzersiz bir ad girin. Bu örnekte **docs-WS**kullanıyoruz. Adlar, kaynak grubu genelinde benzersiz olmalıdır. Başkaları tarafından oluşturulan çalışma alanlarını birbirinden ayırmak ve geri çekmek için kolay bir ad kullanın.  
    Subscription |Kullanmak istediğiniz Azure aboneliğini seçin.
@@ -44,3 +44,11 @@ ms.locfileid: "68689614"
    İşlem tamamlandığında, bir dağıtım başarı iletisi görüntülenir. Ayrıca Bildirimler bölümünde de bulunur. Yeni çalışma alanını görüntülemek için **Kaynağa Git**' i seçin.
 
    ![Çalışma alanı oluşturma durumu](./media/aml-create-in-portal/notifications.png)
+
+1. Kodunuz yerel ortamınızdan bu çalışma alanına başvuruyorsa, çalışma alanının **genel bakış** bölümünde **config. json dosyasını indir** ' i seçin.  
+
+   ![Config.json dosyasını indir](./media/aml-create-in-portal/configure.png)
+
+    Bu JSON dosyasını Python betiklerinizi veya Jupyıter not defterlerini içeren dizin yapısına yerleştirin. Aynı dizinde, *. azureml*adlı bir alt dizin veya bir üst dizin içinde olabilir.
+
+   Bir [Not defteri sanal makinesi](../articles/machine-learning/service/tutorial-1st-experiment-sdk-setup.md#azure) kullanacaksanız, bu dosyayı indirmeniz gerekmez, sanal makine üzerinde doğru dizine eklenir.

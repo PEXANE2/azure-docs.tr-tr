@@ -1,5 +1,5 @@
 ---
-title: Güvenilirlik puanı - soru-cevap Oluşturucu
+title: Güvenirlik puanı-Soru-Cevap Oluşturma
 titleSuffix: Azure Cognitive Services
 description: Güvenilirlik puanı güvenle yanıt verilen kullanıcı sorgusu için doğru eşleşme olduğunu gösterir.
 services: cognitive-services
@@ -7,16 +7,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: c14c607e4c563bbeeaff02b2c2478cc4b4d96ee5
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: afc50a5adb591550f6e988a572d1ac9a8c4439cb
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165130"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68955195"
 ---
 # <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>Soru-cevap Oluşturucu Bilgi Bankası güvenilirlik puanı
 Kullanıcı sorgusu karşı Bilgi Bankası eşleştiğinde, soru-cevap Oluşturucu bir güven puanı yanı sıra ilgili yanıt verir. Bu puanı güvenle yanıt verilen kullanıcı sorgusu için doğru eşleşme olduğunu gösterir. 
@@ -38,7 +38,7 @@ Aşağıdaki tabloda tipik güvenilirlik için belirli bir puan ilişkili göste
 
 |Puanı değeri|Puan anlama|Örnek sorgu|
 |--|--|--|
-|90 - 100|Bir kullanıcı sorgu KB soru ve tam eşleşme yakın|"Değişikliklerimi KB güncelleştirmeyen yayımlama sonrasında"|
+|90 - 100|Bir kullanıcı sorgu KB soru ve tam eşleşme yakın|"Değişiklikler yayımladıktan sonra KB olarak güncelleştirilmiyor"|
 |70 >|Yüksek güvenle - tamamen kullanıcının sorgu yanıt veren genellikle iyi bir cevap|"BB'mi yayımladım ancak değil güncelleştirildi"|
 |50 - 70|Orta güven - genellikle bir kullanıcı sorgusu ana amacı yanıt oldukça iyi yanıt|"I BB'mi yayımlamadan önce güncelleştirmelerim kaydetmeliyim?"|
 |30 - 50|Düşük güven - kullanıcının amacı kısmen yanıtladığı genellikle bir ilgili yanıt|"Kaydet ve eğitme ne yapar?"|
@@ -46,25 +46,25 @@ Aşağıdaki tabloda tipik güvenilirlik için belirli bir puan ilişkili göste
 |0|Yanıt alınmadı için hiç eşleşme.|"Hizmet maliyeti"|
 
 ## <a name="choose-a-score-threshold"></a>Bir puan eşiği seçin
-Yukarıdaki tabloda, çoğu KB'leri üzerinde beklenen puanları gösterilmektedir. Bu yana her KB farklı olduğunu ve farklı türde sözcükler, amaçlarını ve hedefleri-test etme ve eşiği seçin öneririz ancak bu sizin için en uygun. Böylece tüm olası yanıt döndürülür varsayılan Eşik 0 olarak ayarlanır. Çoğu KB'leri için çalışmalıdır önerilen eşiğin **50**.
+Yukarıdaki tabloda, çoğu KB'leri üzerinde beklenen puanları gösterilmektedir. Ancak, her KB farklı olduğundan ve farklı türlerde sözcüklere, amaçlara ve hedeflere sahip olduğundan, test etmenizi ve sizin için en iyi işe yarar olan eşiği seçmenizi öneririz. Varsayılan olarak, eşik 0 olarak ayarlanır, böylece tüm olası yanıtlar döndürülür. En fazla KBs için çalışması gereken önerilen eşik **50**' dir.
 
 Eşiğine seçerken, doğruluk ve kapsamı arasındaki dengeyi göz önünde bulundurun ve gereksinimlerinize göre eşiğine ince ayar.
 
 - Varsa **doğruluğu** (veya duyarlık) senaryonuz için daha önemlidir ve ardından, eşiğini yükseltin. Bu şekilde bir yanıt döndürür her zaman büyük/küçük harf ve yanıt kullanıcılar aradığınız olması olası çok daha fazlasını bir kişiye olacaktır. Bu durumda, daha fazla yanıtlanmamış soruları bırakarak yukarı bitiş. *Örneğin:* eşiği yaparsanız **70**, "nedir kaydedin ve eğitme?" bazı belirsiz örnekler beğenilerin kaçırabilirsiniz.
 
-- Varsa **kapsamı** (veya geri çağırma) daha önemli olduğu ve yalnızca kısmi bir ilişkisi için kullanıcının soru - olsa bile kadar fazla soruyu mümkün olduğunca ardından alt olarak eşiği yanıt istiyorsanız. Bu gösterir, burada yanıt kullanıcının gerçek sorgu yanıt vermezse, ancak bazı diğer biraz ilgili yanıt verir daha fazla durumda olabilir. *Örneğin:* eşiği yaparsanız **30**, ister sorgular için yanıt verebilir "Nerede miyim düzenleyebilir BB'mi?"
+- Varsa **kapsamı** (veya geri çağırma) daha önemli olduğu ve yalnızca kısmi bir ilişkisi için kullanıcının soru - olsa bile kadar fazla soruyu mümkün olduğunca ardından alt olarak eşiği yanıt istiyorsanız. Bu gösterir, burada yanıt kullanıcının gerçek sorgu yanıt vermezse, ancak bazı diğer biraz ilgili yanıt verir daha fazla durumda olabilir. *Örneğin:* **30**EŞIĞINI yaparsanız, "KB 'umu düzenleyebilirim?" gibi sorgular için yanıt verebilirsiniz.
 
 > [!NOTE]
 > Soru-cevap Oluşturucu daha yeni sürümlerini Puanlama mantığı için geliştirmeler içerir ve eşiğine etkileyebilir. İstediğiniz zaman hizmet güncelleştirmesi, test edin ve gerekiyorsa eşik ince emin olun. Soru-cevap hizmet sürümü denetleyebilirsiniz [burada](https://www.qnamaker.ai/UserSettings)ve son gelişmeleri öğrenin [burada](../How-To/troubleshooting-runtime.md).
 
-## <a name="set-threshold"></a>Ayarlanan eşiği 
+## <a name="set-threshold"></a>Eşiği ayarla 
 
-Bir özelliği olarak eşiği puanını belirlemek [GenerateAnswer API JSON gövdesi](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration). Başka bir deyişle, her çağrı için GenerateAnswer ayarlayın. 
+Eşik Puanını [Generateanswer API JSON gövdesinin](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration)bir özelliği olarak ayarlayın. Bu, her GenerateAnswer çağrısı için ayarladığınız anlamına gelir. 
 
-Bot Framework'ten puanı ile seçenekleri nesnesinin bir parçası olarak ayarlayın. [ C# ](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-c) veya [Node.js](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-nodejs).
+Bot çerçevesinden, veya [C#](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-c) [Node. js](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-nodejs)ile Options nesnesinin bir parçası olarak puanı ayarlayın.
 
 ## <a name="improve-confidence-scores"></a>Güven puanlarını geliştirmeleri
-Belirli bir kullanıcı sorgu yanıt güvenilirlik puanı geliştirmek için alternatif bir soru, yanıt olarak Bilgi Bankası'na kullanıcı sorgusu ekleyebilirsiniz. Ayrıca büyük/küçük harfe kullanabilirsiniz [word değişiklikleri](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) , KB anahtar sözcükleri eş anlamlılar eklemek için.
+Belirli bir kullanıcı sorgu yanıt güvenilirlik puanı geliştirmek için alternatif bir soru, yanıt olarak Bilgi Bankası'na kullanıcı sorgusu ekleyebilirsiniz. Büyük/küçük harf duyarsız [sözcük değişikliklerini](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) , KB 'inizdeki anahtar sözcüklere eşanlamlı eklemek için de kullanabilirsiniz.
 
 
 ## <a name="similar-confidence-scores"></a>Benzer güven puanları
@@ -72,13 +72,13 @@ Birden çok yanıtı benzer bir güvenilirlik puanı varsa, sorgu çok geneldir 
 
 
 ## <a name="confidence-score-differences"></a>Güvenilirlik puanı farkları
-İçeriği aynı olsa bile bir yanıt güvenilirlik puanı negligibly test ve Bilgi Bankası yayımlanmış sürümü arasında değişebilir. Test ve yayımlanan Bilgi Bankası içeriğini bulunur farklı Azure Search dizinlerini olmasıdır. Bilgi Bankası yayımladığınızda, bilgi bankanızı soru ve yanıt içeriğini taşır test dizini Azure Search'te bir üretim dizini. Bkz. nasıl [yayımlama](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) işlemi çalışır.
+İçeriği aynı olsa bile bir yanıt güvenilirlik puanı negligibly test ve Bilgi Bankası yayımlanmış sürümü arasında değişebilir. Test ve yayımlanan Bilgi Bankası içeriğini bulunur farklı Azure Search dizinlerini olmasıdır. Bir Bilgi Bankası yayımladığınızda, bilgi Bankalarınızın sorusu ve yanıt içerikleri, test dizininden Azure Search 'teki bir üretim dizinine gider. [Yayımla](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) işleminin nasıl çalıştığını görün.
 
-Bilgi Bankası farklı bölgelerde varsa, her bölgede Azure Search dizinini kullanır. Farklı bir dizin kullanıldığından, puanları tam olarak aynı olmayacaktır. 
+Farklı bölgelerde bilgi tabanınız varsa, her bölge kendi Azure Search dizinini kullanır. Farklı dizinler kullanıldığından, puanlar tam olarak aynı olmayacaktır. 
 
 
 ## <a name="no-match-found"></a>Eşleşme bulunamadı
-Derecelendiricisini tarafından iyi bir eşleşme bulunduğunda 0.0 ya da "None" güven puanı döndürülür ve "iyi eşleşme KB bulunamadı" varsayılan yanıttır. Bu geçersiz kılma [varsayılan yanıt](#change-default-answer) bot veya uygulamanın koddaki uç noktasını çağırma. Alternatif olarak, geçersiz kılma yanıt Azure'da ayarlayabilirsiniz ve bu belirli bir soru-cevap Oluşturucu hizmeti dağıtılan tüm bilgi bankaları için varsayılan değiştirir.
+Derecelendiricisini tarafından iyi bir eşleşme bulunduğunda 0.0 ya da "None" güven puanı döndürülür ve "iyi eşleşme KB bulunamadı" varsayılan yanıttır. Uç noktayı çağıran bot veya Application kodundaki bu [varsayılan yanıtı](#change-default-answer) geçersiz kılabilirsiniz. Alternatif olarak, geçersiz kılma yanıt Azure'da ayarlayabilirsiniz ve bu belirli bir soru-cevap Oluşturucu hizmeti dağıtılan tüm bilgi bankaları için varsayılan değiştirir.
 
 ## <a name="change-default-answer"></a>Varsayılan yanıt değiştirme
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/24/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 991fbe97582279fdeb996ddebe8e982c4adf3036
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 87df37cc6baa863bb0b068bdfeb9cde873e38836
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827276"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68952073"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Hyper-V VM 'lerinin Azure 'a değerlendirmesi ve geçirilmesi için hazırlanma
 
@@ -142,8 +142,8 @@ Betiği aşağıdaki gibi çalıştırın:
     Karma değerleri şunlardır:
     Karma | Value
     --- | ---
-    **MD5 karması** | 0ef418f31915d01f896ac42a80dc414e
-    **SHA256 karması** | 0ad60e7299925eff4d1ae9f1c7db485dc9316ef45b0964148a3c07c80761ade2
+    **MD5** | 0ef418f31915d01f896ac42a80dc414e
+    **SHA256** | 0ad60e7299925eff4d1ae9f1c7db485dc9316ef45b0964148a3c07c80761ade2
 
 
 4.  Betik bütünlüğünü doğruladıktan sonra, bu PowerShell komutuyla her Hyper-V konağında betiği çalıştırın:
