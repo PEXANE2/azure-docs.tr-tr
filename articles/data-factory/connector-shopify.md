@@ -44,7 +44,7 @@ Aşağıdaki özellikler, Shopify bağlı hizmeti için desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Type özelliği şu şekilde ayarlanmalıdır: **Shopify** | Evet |
+| type | Type özelliği şu şekilde ayarlanmalıdır: **Shopify** | Evet |
 | host | Shopify sunucu uç noktası. (diğer bir deyişle, mystore.myshopify.com)  | Evet |
 | accessToken | Shopify'nın verilere erişmek için kullanılan API erişim belirteci. Çevrimdışı modda ise belirteç süresi dolmaz. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Evet |
 | useEncryptedEndpoints | Veri kaynağı uç noktaları HTTPS kullanılarak şifrelenmiş olup olmadığını belirtir. Varsayılan değer true olur.  | Hayır |
@@ -77,7 +77,7 @@ Shopify veri kopyalamak için dataset öğesinin type özelliği ayarlamak **Sho
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **ShopifyObject** | Evet |
+| type | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **ShopifyObject** | Evet |
 | tableName | Tablonun adı. | Hayır (etkinlik kaynağı "sorgu" belirtilmişse) |
 
 **Örnek**
@@ -107,7 +107,7 @@ Shopify veri kopyalamak için kopyalama etkinliği için kaynak türünü ayarla
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **ShopifySource** | Evet |
+| type | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **ShopifySource** | Evet |
 | query | Verileri okumak için özel bir SQL sorgusu kullanın. Örneğin: `"SELECT * FROM "Products" WHERE Product_Id = '123'"`. | Yok (veri kümesinde "TableName" değeri belirtilmişse) |
 
 **Örnek:**
