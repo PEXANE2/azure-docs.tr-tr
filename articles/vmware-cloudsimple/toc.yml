@@ -58,6 +58,8 @@
           href: create-cloudsimple-service.md
         - name: CloudSimple portalına erişim
           href: access-cloudsimple-portal.md
+        - name: Şirket içi güvenlik duvarı yapılandırması
+          href: on-premises-firewall-configuration.md
         - name: Düğümleri yönetme
           items:
             - name: Sağlama düğümleri

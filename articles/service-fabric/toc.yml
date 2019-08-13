@@ -197,6 +197,8 @@
       items:
         - name: Uygulama modeli
           href: service-fabric-application-model.md
+        - name: Uygulama modeli şablonları oluşturma
+          href: service-fabric-concept-resource-model.md
         - name: Uygulama ve hizmet bildirimleri
           href: service-fabric-application-and-service-manifests.md
         - name: Uygulama ve hizmet bildirimi örnekleri
@@ -350,6 +352,10 @@
           href: service-fabric-diagnostics-partners.md
     - name: API Management ile tümleştirme
       href: service-fabric-api-management-overview.md
+    - name: Uygulama Kaynağı modeli
+      href: service-fabric-concept-resource-model.md
+    - name: Yönetilen Kimlik
+      href: concepts-managed-identity.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Geliştirme ortamınızı kurma
@@ -741,6 +747,26 @@
           href: service-fabric-reverse-proxy-diagnostics.md
         - name: Yerel kümenizde sorun giderme
           href: service-fabric-troubleshoot-local-cluster-setup.md
+    - name: Service Fabric uygulamaları için Yönetilen Kimlik kullanma
+      items:
+        - name: Küme kurulumu
+          items:
+            - name: Mevcut kümeyi yönetilen kimlikle yapılandırma
+              href: configure-existing-cluster-enable-managed-identity-token-service.md
+            - name: Yeni Azure Service Fabric kümesini yönetilen kimlikle yapılandırma
+              href: configure-new-azure-service-fabric-enable-managed-identity.md
+        - name: Uygulama kurulumu
+          items:
+            - name: Yönetilen kimlikle uygulama dağıtma
+              items:
+                - name: Sistem tarafından atanan bir yönetilen kimlikle uygulama dağıtma
+                  href: how-to-deploy-service-fabric-application-system-assigned-managed-identity.md
+                - name: Kullanıcı tarafından atanan bir yönetilen kimlikle uygulama dağıtma
+                  href: how-to-deploy-service-fabric-application-user-assigned-managed-identity.md
+        - name: Service Fabric uygulama koduyla MITS kullanma
+          href: how-to-managed-identity-service-fabric-app-code.md
+        - name: Diğer Azure kaynaklarına erişim izni verme
+          href: how-to-grant-access-other-resources.md
 - name: Başvuru
   items:
     - name: Azure PowerShell

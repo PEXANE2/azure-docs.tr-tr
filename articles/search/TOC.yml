@@ -11,7 +11,7 @@
       href: search-create-service-portal.md
     - name: Portal
       items:
-        - name: Dizini yükleme ve sorgulama
+        - name: Dizin oluşturma ve kullanma
           href: search-get-started-portal.md
         - name: AI ile zenginleştirme (bilişsel arama)
           href: cognitive-search-quickstart-blob.md

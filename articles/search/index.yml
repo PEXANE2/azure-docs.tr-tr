@@ -11,10 +11,10 @@ metadata:
   ms.service: search
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 05/02/2019
+  ms.date: 08/12/2019
   ms.author: heidist
 abstract:
-  description: 'Azure Search kullanarak özel ve heterojen içerikler üzerinde kurumsal arama çözümü oluşturmayı öğrenin. Öğreticiler, API başvuruları ve diğer belgeler; aratılabilir içeriği, çeşitli senaryolarda basitten gelişmişe söz dizimleri kullanılarak sorgulanabilen tek bir hızlı dizinde toplamayı gösterir. <p/><a href="/azure/search/cognitive-search-concept-intro"><b>Bilişsel arama</b></a> üretim senaryoları tarafından desteklenen Yapay Zeka zenginleştirmeleri ile genel kullanıma sunuldu.<p/><a href="/azure/search/knowledge-store-concept-intro"><b>Bilgi deposu (Önizleme)</b> </a> bilişsel aramayı genişletir. Yapay Zeka zenginleştirmelerini, Azure Search’ün yanı sıra diğer uygulamalarda görüntüleyebileceğiniz, yeniden şekillendirebileceğiniz ve kullanabileceğiniz depolama alanına kaydedin. <a href="/azure/search/knowledge-store-howto"><b>Bugün kullanmaya başlayın</b></a>.'
+  description: 'Azure Search kullanarak özel ve heterojen içerikler üzerinde kurumsal arama çözümü oluşturmayı öğrenin. Öğreticiler, API başvuruları ve diğer belgeler; aratılabilir içeriği, çeşitli senaryolarda basitten gelişmişe söz dizimleri kullanılarak sorgulanabilen tek bir hızlı dizinde toplamayı gösterir. <p/>Azure Search özelliklerinden biri olan <a href="/azure/search/cognitive-search-concept-intro"><b>bilişsel arama</b></a> dizin oluşturma, görüntü dosyalarındaki metinleri ve karakteristik özellikleri algılama ve yapılandırılmamış metinlerden oluşan büyük parçalardaki desenleri bulma süreçlerine yapay zeka işlemleri ekler.<p/><a href="/azure/search/knowledge-store-concept-intro"><b>Bilgi deposu (Önizleme)</b> </a> bilişsel aramayı genişletir. Yapar zeka zenginleştirmelerini istemci uygulamalarında veya aşağı akış işlemlerinde görüntüleyebileceğiniz, yeniden şekillendirebileceğiniz ve kullanabileceğiniz depolama alanına kaydedin. <a href="/azure/search/knowledge-store-howto"><b>Bugün kullanmaya başlayın</b></a>.'
   aside:
     image:
       alt: null

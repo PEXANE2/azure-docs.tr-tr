@@ -1,28 +1,33 @@
 - name: Uygulama Yönetimi Belgeleri
   href: index.yml
-- name: Uygulama yönetimi ve çoklu oturum açma
+- name: Genel Bakış
   expanded: true
   items:
-    - name: Genel Bakış
-      expanded: true
+    - name: Bulut uygulaması yönetimi ve çoklu oturum açma nedir?
+      href: what-is-application-management.md
+    - name: Otomatik kullanıcı sağlama nedir?
+      href: user-provisioning.md
+    - name: Şirket içi uygulamalar için Uygulama Ara Sunucusu nedir?
+      href: what-is-application-proxy.md
+- name: Hızlı Başlangıçlar
+  items:
+    - name: Galeriden bulut uygulaması ekleme
+      href: add-application-portal.md
+    - name: Kurumsal uygulamalarınızı görüntüleme
+      href: view-applications-portal.md
+- name: Öğreticiler
+  items:
+    - name: SaaS uygulama öğreticileri
+      href: /azure/active-directory/saas-apps/
+    - name: Uygulama Ara Sunucusu üzerinden şirket içi uygulama ekleme
+      href: application-proxy-add-on-premises-application.md
+- name: Kavramlar
+  items:
+    - name: Bulut uygulamaları ve çoklu oturum açma
       items:
-        - name: Uygulama yönetimi nedir?
-          href: what-is-application-management.md
-    - name: Hızlı Başlangıçlar
-      items:
-        - name: Galeri uygulaması ekleme - portal
-          href: add-application-portal.md
-        - name: Kiracı uygulamalarını görüntüleme - portal
-          href: view-applications-portal.md
-    - name: Öğreticiler
-      items:
-        - name: SaaS uygulaması öğreticileri
-          href: /azure/active-directory/saas-apps/
-    - name: Kavramlar
-      items:
-        - name: Bulut uygulaması tümleştirme işlemi planlama
+        - name: Bulut uygulaması tümleştirmesi planlama
           items:
-            - name: Uygulama eklediğinizde ne olur?
+            - name: Uygulama tümleştirmesini kullanmaya başlama
               href: plan-an-application-integration.md
             - name: Geliştiriciler için rehberlik
               href: developer-guidance-for-integrating-applications.md
@@ -56,9 +61,34 @@
               href: tenant-restrictions.md
             - name: SAML belirteci şifrelemesini yapılandırma (Önizleme)
               href: howto-saml-token-encryption.md
-        - name: Son kullanıcı portalları
-          href: end-user-experiences.md
-    - name: Nasıl yapılır kılavuzları
+            - name: Son kullanıcı portalları
+              href: end-user-experiences.md
+    - name: Otomatik kullanıcı sağlama
+      items:
+        - name: SCIM etkin uygulamalar için otomatik sağlama
+          href: use-scim-to-provision-users-and-groups.md
+    - name: Şirket içi uygulamalar için Uygulama Ara Sunucusu
+      items:
+        - name: Uygulama Ara Sunucusu
+          href: application-proxy.md
+        - name: Uygulama Ara Sunucusu dağıtımını planlama
+          href: application-proxy-deployment-plan.md
+        - name: Bağlayıcılar
+          href: application-proxy-connectors.md
+        - name: Bağlayıcı grupları
+          href: application-proxy-connector-groups.md
+        - name: Güvenlik
+          href: application-proxy-security.md
+        - name: Ağ topolojisi
+          href: application-proxy-network-topology.md
+        - name: Yüksek kullanılabilirlik ve yük dengeleme
+          href: application-proxy-high-availability-load-balancing.md
+        - name: Uzaktan erişim çözümlerini karşılaştırma
+          href: application-proxy-migration.md
+- name: Nasıl yapılır kılavuzları
+  expanded: true
+  items:
+    - name: Bulut uygulamaları ve çoklu oturum açma
       items:
         - name: Bulut uygulaması ekleme
           items:
@@ -182,36 +212,7 @@
                   href: access-panel-extension-problem-installing.md
                 - name: Self servis uygulama erişiminin kullanırken hata oluşuyor
                   href: access-panel-troubleshoot-self-service-access.md
-    - name: Kaynaklar
-      items:
-        - name: Azure geri bildirim forumu
-          href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
-        - name: MSDN forumu
-          href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
-        - name: Fiyatlandırma
-          href: 'https://azure.microsoft.com/pricing/details/active-directory'
-        - name: Hizmet güncelleştirmeleri
-          href: 'https://azure.microsoft.com/updates/?product=active-directory'
-        - name: Stack Overflow
-          href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
-        - name: Videolar
-          href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'
-- name: Otomatik kullanıcı sağlama
-  items:
-    - name: Genel Bakış
-      expanded: true
-      items:
-        - name: Sağlama nedir?
-          href: user-provisioning.md
-    - name: Öğreticiler
-      items:
-        - name: SaaS uygulaması öğreticileri
-          href: /azure/active-directory/saas-apps/
-    - name: Kavramlar
-      items:
-        - name: SCIM etkin uygulamalar için otomatik sağlama
-          href: use-scim-to-provision-users-and-groups.md
-    - name: Nasıl yapılır kılavuzları
+    - name: Otomatik kullanıcı sağlama
       items:
         - name: Kullanıcı sağlamayı yapılandırma
           items:
@@ -223,8 +224,6 @@
               href: configure-automatic-user-provisioning-portal.md
             - name: Uygulama özniteliklerini özelleştirme
               href: Customize-application-attributes.md
-            - name: Öznitelik eşlemeleri için ifadeler yazma
-              href: functions-for-customizing-application-data.md
             - name: Kapsam belirleme filtreleri
               href: define-conditional-rules-for-provisioning-user-accounts.md
             - name: Sağlama durumunu denetleme
@@ -245,50 +244,7 @@
               href: application-provisioning-config-problem-no-users-provisioned.md
             - name: Yanlış kullanıcılar sağlanıyor - galeri uygulaması
               href: application-provisioning-config-problem-wrong-users-provisioned.md
-    - name: Kaynaklar
-      items:
-        - name: Azure geri bildirim forumu
-          href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
-        - name: MSDN forumu
-          href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
-        - name: Fiyatlandırma
-          href: 'https://azure.microsoft.com/pricing/details/active-directory'
-        - name: Hizmet güncelleştirmeleri
-          href: 'https://azure.microsoft.com/updates/?product=active-directory'
-        - name: Stack Overflow
-          href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
-        - name: Videolar
-          href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'
-- name: Şirket içi uygulamalar için uygulama ara sunucusu
-  items:
-    - name: Genel Bakış
-      expanded: true
-      items:
-        - name: Uygulama Ara Sunucusu nedir?
-          href: what-is-application-proxy.md
-    - name: Öğreticiler
-      items:
-        - name: Şirket içi uygulaması ekleme - portal
-          href: application-proxy-add-on-premises-application.md
-    - name: Kavramlar
-      items:
-        - name: Uygulama Ara Sunucusu
-          href: application-proxy.md
-        - name: Uygulama Ara Sunucusu dağıtımını planlama
-          href: application-proxy-deployment-plan.md
-        - name: Bağlayıcılar
-          href: application-proxy-connectors.md
-        - name: Bağlayıcı grupları
-          href: application-proxy-connector-groups.md
-        - name: Güvenlik
-          href: application-proxy-security.md
-        - name: Ağ topolojisi
-          href: application-proxy-network-topology.md
-        - name: Yüksek kullanılabilirlik ve yük dengeleme
-          href: application-proxy-high-availability-load-balancing.md
-        - name: Uzaktan erişim çözümlerini karşılaştırma
-          href: application-proxy-migration.md
-    - name: Nasıl yapılır kılavuzları
+    - name: Şirket içi uygulamalar için Uygulama Ara Sunucusu
       items:
         - name: Bağlayıcıları yapılandırma
           items:
@@ -376,21 +332,27 @@
               href: application-sign-in-problem-on-premises-application-proxy.md
             - name: Uygulama Ara Sunucusunda CORS sorunları
               href: application-proxy-understand-cors-issues.md
-    - name: Başvuru
+- name: Başvuru
+  items:
+    - name: Otomatik kullanıcı sağlama
+      items:
+        - name: Öznitelik eşlemeleri için ifadeler yazma
+          href: functions-for-customizing-application-data.md
+    - name: Şirket içi uygulamalar için Uygulama Ara Sunucusu
       items:
         - name: Uygulama Proxy’si sürüm geçmişi
           href: application-proxy-release-version-history.md
-    - name: Kaynaklar
-      items:
-        - name: Azure geri bildirim forumu
-          href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
-        - name: MSDN forumu
-          href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
-        - name: Fiyatlandırma
-          href: 'https://azure.microsoft.com/pricing/details/active-directory'
-        - name: Hizmet güncelleştirmeleri
-          href: 'https://azure.microsoft.com/updates/?product=active-directory'
-        - name: Stack Overflow
-          href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
-        - name: Videolar
-          href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'
+- name: Kaynaklar
+  items:
+    - name: Azure geri bildirim forumu
+      href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
+    - name: MSDN forumu
+      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
+    - name: Fiyatlandırma
+      href: 'https://azure.microsoft.com/pricing/details/active-directory'
+    - name: Hizmet güncelleştirmeleri
+      href: 'https://azure.microsoft.com/updates/?product=active-directory'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
+    - name: Videolar
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

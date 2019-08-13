@@ -11,7 +11,7 @@ metadata:
   manager: jhubbard
   author: j-martens
   ms.author: jmartens
-  ms.date: 05/14/2019
+  ms.date: 08/13/2019
   ms.custom: seodec18
   ms.tgt_pltfrm: na
   ms.devlang: na
@@ -46,6 +46,7 @@ sections:
           - html: <a href="tutorial-1st-experiment-sdk-setup">Ortamınızı ayarlama ve ilk ML denemenizi eğitme.</a>
           - html: <a href="tutorial-train-models-with-aml">Resim sınıflandırma modellerini eğitme ve dağıtma</a>.
           - html: <a href="tutorial-data-prep">Taksi ücretlerini tahmin etmek için verileri hazırlayın ve otomatik ML kullanın</b>.</a>
+          - html: <a href="how-to-run-batch-predictions">Büyük veri kümelerinde ML işlem hatlarıyla toplu tahminler çalıştırma</b>.</a>
   - title: Örnekler
     items:
       - type: paragraph

@@ -137,6 +137,8 @@
           items:
             - name: Erişim katmanları
               href: storage-blob-storage-tiers.md
+            - name: Arşiv Depolama’dan verileri yeniden doldurma
+              href: storage-blob-rehydration.md
             - name: Azure Blob Depolama Yaşam Döngüsünü yönetme
               href: storage-lifecycle-management-concepts.md
         - name: Performans ve ölçeklenebilirlik

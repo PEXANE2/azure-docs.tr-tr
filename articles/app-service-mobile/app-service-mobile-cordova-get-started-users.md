@@ -64,7 +64,7 @@ Ardından, uygulamayı bir mobil uygulama arka ucundan kaynakları istemeden ön
         <meta http-equiv="Content-Security-Policy" content="default-src 'self'
             data: gap: https://login.microsoftonline.com https://yourapp.azurewebsites.net; style-src 'self'">
 
-    Değiştirin `https://login.microsoftonline.com` önceki tabloda OAuth konaktan ile.  İçerik Güvenliği İlkesi meta etiketi hakkında daha fazla bilgi için bkz: [içerik Güvenliği İlkesi belgeleri].
+    Değiştirin `https://login.microsoftonline.com` önceki tabloda OAuth konaktan ile.  İçerik Güvenliği İlkesi meta etiketi hakkında daha fazla bilgi için bkz: [İçerik Güvenliği İlkesi belgeleri].
 
     Bazı kimlik doğrulama sağlayıcıları, kullanıma uygun mobil cihazlarda içerik güvenliği ilkesi değişiklikleri gerektirmez.  Örneğin, bir Android cihazında Google kimlik doğrulaması kullanırken, içerik güvenliği ilkesi değişiklik gerekmez.
 
@@ -99,7 +99,7 @@ Ardından, uygulamayı bir mobil uygulama arka ucundan kaynakları istemeden ön
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 * Daha fazla bilgi edinin [Kimlik doğrulaması hakkında] Azure App Service ile.
-* Öğreticiye devam etmek ekleyerek [anında iletme bildirimleri] Apache Cordova uygulamanıza.
+* Öğreticiye devam etmek ekleyerek [Anında İletme Bildirimleri] Apache Cordova uygulamanıza.
 
 SDK'ları kullanmayı öğrenin.
 
