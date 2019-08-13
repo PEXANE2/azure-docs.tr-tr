@@ -45,7 +45,7 @@ Bu makalede, Azure işlevleri uzantı işlevleri geliştirmek ve bunları Azure'
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Yükleme ve çalıştırmadan önce [Azure işlevleri uzantısı][Visual Studio Code için Azure işlevleri uzantısı], aşağıdaki gereksinimleri karşılaması gerekir:
+Yükleme ve çalıştırmadan önce [Azure işlevleri uzantısı] [Visual Studio Code için Azure işlevleri uzantısı], aşağıdaki gereksinimleri karşılaması gerekir:
 
 * [Visual Studio Code](https://code.visualstudio.com/) birinde yüklü [desteklenen platformlar](https://code.visualstudio.com/docs/supporting/requirements#_platforms).
 
@@ -432,5 +432,5 @@ Azure işlevleri çekirdek araçları hakkında daha fazla bilgi için bkz: [kod
 
 .NET sınıf kitaplıkları olarak işlevleri geliştirme hakkında daha fazla bilgi için bkz. [Azure işlevleri C# Geliştirici Başvurusu](functions-dotnet-class-library.md). Bu makalede ayrıca bağlamaları Azure işlevleri tarafından desteklenen çeşitli türlerde bildirmek için öznitelikleri kullanma örnekleri bağlantılarını içerir.    
 
-[Visual Studio Code için Azure İşlevleri uzantısı]: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions
+[Visual Studio Code için Azure işlevleri uzantısı]: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions
 [Azure işlevleri temel araçları]: functions-run-local.md
