@@ -1,6 +1,6 @@
 ---
-title: "Hızlı Başlangıç: .NET web uygulaması - Azure Key Vault kullanarak Azure Key Vault'tan bir gizli dizi alma ve ayarlama | Microsoft Docs"
-description: Bu hızlı başlangıçta, ayarlayın ve .NET web uygulaması kullanarak Azure Key Vault'tan bir gizli dizi alma
+title: 'Hızlı Başlangıç: .NET Web App kullanarak Azure Key Vault bir gizli dizi ayarlama ve alma-Azure Key Vault | Microsoft Docs'
+description: Bu hızlı başlangıçta, bir .NET Web uygulaması kullanarak Azure Key Vault bir gizli dizi ayarlama ve alma
 services: key-vault
 author: msmbaldwin
 manager: sumedhb
@@ -9,16 +9,16 @@ ms.topic: quickstart
 ms.date: 01/02/2019
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 4f9fff41e4b9043c271d656583fb8b9a11ff3a7a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9ddb1db9b39ac942a3476f50aad39c98198b2a18
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67052793"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68958604"
 ---
-# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-net-web-app"></a>Hızlı Başlangıç: .NET web uygulaması kullanarak Azure Key Vault'tan bir gizli dizi alma ve ayarlama
+# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-net-web-app"></a>Hızlı Başlangıç: .NET Web uygulaması kullanarak Azure Key Vault bir gizli dizi ayarlama ve alma
 
-Bu hızlı başlangıçta, Azure kaynakları için yönetilen kimliklerle bilgilerini Azure Key Vault'tan okumak için bir Azure web uygulaması alma adımlarını izleyin. Anahtar kasasını kullanarak, bilgilerin güvende tutulmasına yardımcı olur. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
+Bu hızlı başlangıçta, Azure kaynakları için Yönetilen kimlikler kullanarak Azure Key Vault bilgi okumak üzere Azure Web uygulaması alma adımlarını izleyeceğinizi görürsünüz. Key Vault kullanmak, bilgilerin güvenli kalmasına yardımcı olur. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
 * Bir anahtar kasası oluşturma.
 * Anahtar kasasına bir gizli dizi depolama.
@@ -27,19 +27,19 @@ Bu hızlı başlangıçta, Azure kaynakları için yönetilen kimliklerle bilgil
 * Web uygulaması için [yönetilen hizmet kimliğini](../active-directory/managed-identities-azure-resources/overview.md) etkinleştirin.
 * Web uygulamasının anahtar kasasından verileri okuması için gereken izinleri verme.
 
-Size daha fazla ayrıntıya önce okuyun [Key Vault için temel kavramlar](key-vault-whatis.md#basic-concepts).
+Daha fazla ilerleyebilmemiz [için lütfen Key Vault temel kavramlarını](key-vault-whatis.md#basic-concepts)okuyun.
 
 >[!NOTE]
->Key Vault, gizli dizilerin program aracılığıyla depolandığı merkezi bir depodur. Ancak bunun için uygulamaların ve kullanıcıların bir Key Vault'a kimlik doğrulaması yapması, yani gizli dizi sunması gerekir. Mantığıyla en iyi güvenlik uygulamaları, ilk bu gizli dizinin düzenli aralıklarla döndürülmesi gerekir. 
+>Key Vault, gizli dizilerin program aracılığıyla depolandığı merkezi bir depodur. Ancak bunun için uygulamaların ve kullanıcıların bir Key Vault'a kimlik doğrulaması yapması, yani gizli dizi sunması gerekir. En iyi güvenlik uygulamaları ile, bu ilk parolanın düzenli aralıklarla döndürülmesi gerekir. 
 >
->İle [yönetilen hizmet kimliklerini Azure kaynakları için](../active-directory/managed-identities-azure-resources/overview.md), Azure'da çalışan uygulamalar otomatik olarak Azure tarafından yönetilen bir kimlik alın. Bu, *gizli dizi belirleme sorununu* çözerek kullanıcıların ve uygulamaların en iyi yöntemleri uygulayabilmesini ve ilk gizli diziyi döndürme konusunda endişelenmemesini sağlar.
+>Azure [kaynakları için yönetilen hizmet kimlikleri](../active-directory/managed-identities-azure-resources/overview.md)sayesinde Azure 'da çalışan uygulamalar, Azure 'un otomatik olarak yönettiği bir kimlik alır. Bu, *gizli dizi belirleme sorununu* çözerek kullanıcıların ve uygulamaların en iyi yöntemleri uygulayabilmesini ve ilk gizli diziyi döndürme konusunda endişelenmemesini sağlar.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Windows'da:
-  * [Visual Studio 2019](https://www.microsoft.com/net/download/windows) aşağıdaki iş yükleri ile:
+  * Aşağıdaki iş yükleriyle [Visual Studio 2019](https://www.microsoft.com/net/download/windows) :
     * ASP.NET ve web geliştirme
     * .NET core platformlar arası geliştirme
   * [.NET Core 2.1 SDK veya üzeri](https://www.microsoft.com/net/download/windows)
@@ -78,7 +78,7 @@ Az önce oluşturduğunuz kaynak grubu bu makale boyunca kullanılır.
 
 Ardından, önceki adımda oluşturduğunuz kaynak grubunda bir anahtar kasası oluşturursunuz. Şu bilgileri belirtin:
 
-* Anahtar kasası adı: Ad 3-24 karakter dizesi olmalı ve yalnızca 0-9, içermelidir a-z, A-Z ve tire (-).
+* Anahtar Kasası adı: Ad 3-24 karakterden oluşan bir dize olmalıdır ve yalnızca 0-9, a-z, A-Z ve tire (-) içermelidir.
 * Kaynak grubu adı.
 * Konum: **Doğu ABD**.
 
@@ -119,14 +119,14 @@ git clone https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart.git
 Belirlediğiniz anahtar kasanızın adıyla örneği çalıştırmak için program.cs dosyasını düzenleyin:
 
 1. key-vault-dotnet-core-quickstart klasörüne gidin.
-2. Visual Studio 2019 içinde key-vault-dotnet-core-quickstart.sln dosyasını açın.
-3. Program.cs dosyasını açın ve yer tutucu güncelleştirme *YourKeyVaultName* daha önce oluşturduğunuz anahtar kasasının adı.
+2. Visual Studio 2019 ' de Key-Vault-DotNet-Core-QuickStart. sln dosyasını açın.
+3. Program.cs dosyasını açın ve *Keyvaultname* yer tutucusunu, daha önce oluşturduğunuz anahtar kasasının adıyla güncelleştirin.
 
 Bu çözümde [AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) ve [KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet kitaplıkları kullanılır.
 
 ## <a name="run-the-app"></a>Uygulamayı çalıştırma
 
-Visual Studio 2019 ana menüden seçin **hata ayıklama** > **ayıklamadan Başlat**. Tarayıcı görüntülendiğinde **Hakkında** sayfasına gidin. **AppSecret** değeri görüntülenir.
+Visual Studio 2019 ' in ana menüsünde hata ayıklama**olmadan Başlat**' ı seçin. >  Tarayıcı görüntülendiğinde **Hakkında** sayfasına gidin. **AppSecret** değeri görüntülenir.
 
 ## <a name="publish-the-web-application-to-azure"></a>Web uygulamasını Azure’a yayımlama
 
@@ -144,7 +144,7 @@ Canlı web uygulaması olarak görüntülemek için bu uygulamayı Azure'da yay�
 
 Azure Key Vault kimlik bilgilerini ve diğer anahtarlarla gizli dizileri güvenle depolamak için bir yol sağlar, ama bunları alabilmek için kodunuzun Key Vault'ta kimlik doğrulaması yapması gerekir. [Azure kaynakları için yönetilen kimliklere genel bakış](../active-directory/managed-identities-azure-resources/overview.md), Azure hizmetlerine Azure Active Directory (Azure AD) üzerinde otomatik olarak yönetilen bir kimlik vererek bu soruna daha basit bir çözüm getirir. Bu kimliği kullanarak, Key Vault da dahil olmak üzere Azure AD kimlik doğrulamasını destekleyen tüm hizmetlerde kodunuzda kimlik bilgileri bulunmasına gerek kalmadan kimlik doğrulaması yapabilirsiniz.
 
-Azure CLI, bu uygulama için kimlik oluşturmak için Ata kimlik komutu çalıştırın:
+Azure CLı 'de, bu uygulamanın kimliğini oluşturmak için Assign-Identity komutunu çalıştırın:
 
    ```azurecli
    az webapp identity assign --name "keyvaultdotnetcorequickstart" --resource-group "<YourResourceGroupName>"
@@ -171,12 +171,12 @@ az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --s
 
 ```
 
-Uygulamayı çalıştırdığınızda gizli dizi değerinizin alındığını görürsünüz. Önceki komutta hizmet izinleri yapmak için uygulama kimliğini yaparken **alma** ve **listesi** anahtar kasanıza operations.
+Uygulamayı çalıştırdığınızda gizli dizi değerinizin alındığını görürsünüz. Yukarıdaki komutta, Anahtar Kasanızda **Get** ve **list** işlemlerini yapmak için App Service izinlerinin kimliğini vermiş olursunuz.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
-Artık ihtiyacınız kalmadığında kaynak grubunu, sanal makine ve tüm ilgili kaynakları silin. Bunu yapmak için anahtar kasası için kaynak grubunu seçin ve seçin **Sil**.
+Artık ihtiyaç kalmadığında kaynak grubunu, sanal makineyi ve tüm ilgili kaynakları silin. Bunu yapmak için, Anahtar Kasası için kaynak grubunu seçin ve **Sil**' i seçin.
 
-Anahtar kasasını kullanarak silme [az keyvault delete](https://docs.microsoft.com/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-delete) komutu:
+[Az keykasadelete](https://docs.microsoft.com/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-delete) komutunu kullanarak anahtar kasasını silin:
 
 ```azurecli
 az keyvault delete --name
@@ -187,4 +187,4 @@ az keyvault delete --name
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Key Vault hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)
+> [Key Vault hakkında daha fazla bilgi edinin](key-vault-whatis.md)

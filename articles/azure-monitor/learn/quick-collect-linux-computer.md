@@ -15,16 +15,16 @@ ms.date: 06/14/2019
 ms.author: magoedte
 ms.custom: mvc
 ms.openlocfilehash: 4484269194aa3d637101a6a0b83eacb268d4c16e
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67147279"
 ---
 # <a name="configure-log-analytics-agent-for-linux-computers-in-a-hybrid-environment"></a>Log Analytics aracısını hibrit ortamlardaki Linux bilgisayarlar için yapılandırma
 [Azure Log Analytics](../platform/agent-windows.md), doğrudan veri merkezinizdeki veya diğer bulut ortamlarındaki fiziksel veya sanal Linux bilgisayarlarınızda bulunan verileri ayrıntılı analiz ve bağıntı için tek bir depoda toplayabilir. Bu hızlı başlangıçta birkaç kolay adımda Linux bilgisayarınızı nasıl yapılandırabileceğiniz ve veri toplayabileceğiniz gösterilmektedir.  Azure Linux VM’leri için [Azure Sanal Makineler hakkında veri toplama](quick-collect-azurevm.md) konusuna bakın.  
 
-Devam etmeden önce Log Analytics Aracısı'nı gözden geçirmeniz [genel bakış](../platform/log-analytics-agent.md) hangi yapılandırmaları desteklenir, anlamak için makaleyi [desteklenen Linux işletim sistemleri](../platform/log-analytics-agent.md#supported-linux-operating-systems) ve [ Ağ güvenlik duvarı yapılandırması](../platform/log-analytics-agent.md#network-firewall-requirements). 
+Devam etmeden önce, hangi yapılandırmaların desteklendiğini, [desteklenen Linux işletim sistemlerini](../platform/log-analytics-agent.md#supported-linux-operating-systems) ve [ağ güvenlik duvarı yapılandırmasını](../platform/log-analytics-agent.md#network-firewall-requirements)anlamak için öncelikle Log Analytics aracısına [genel bakış](../platform/log-analytics-agent.md) makalesini gözden geçirmeniz gerekir. 
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
