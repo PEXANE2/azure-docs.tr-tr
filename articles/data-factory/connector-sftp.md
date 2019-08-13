@@ -66,7 +66,7 @@ Temel kimlik doğrulamasını kullanmak için, "authenticationType" özelliğini
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | userName | SFTP sunucusuna erişimi olan kullanıcı. |Evet |
-| password | Kullanıcı için parola (Kullanıcı adı). Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Evet |
+| password | Kullanıcı için parola (userName). Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Evet |
 
 **Örnek:**
 
