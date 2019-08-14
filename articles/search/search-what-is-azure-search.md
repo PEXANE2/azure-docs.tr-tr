@@ -1,33 +1,44 @@
 ---
 title: Azure Search giriş Azure Search
-description: Azure Search, Microsoft 'un tam olarak yönetilen bir barındırılan bulut arama hizmetidir. Özellik açıklamalarını, bir geliştirme iş akışını, Azure Search diğer Microsoft arama ürünleriyle nasıl Karşılaştırıldığı ve nasıl başlatılacağınız hakkında gözden geçirin.
-manager: cgronlun
+description: Azure Search, Microsoft 'un tam olarak yönetilen bir barındırılan bulut arama hizmetidir. Özellik açıklamalarını, geliştirme iş akışını, diğer Microsoft arama ürünleriyle karşılaştırmaları ve nasıl başladığına bakın.
+manager: nitinme
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: overview
-ms.date: 05/02/2019
+ms.date: 08/13/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 7a12c9153332e9d6fc70512bc55fe0a53f7c78fc
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: a48e4026ee3d7108f3b8e77dcb482d9904891cd4
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827162"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69014475"
 ---
 # <a name="what-is-azure-search"></a>Azure Search nedir?
-Azure Search, geliştiricilere, web uygulamalarındaki, mobil uygulamalardaki ve kurumsal uygulamalardaki özel, heterojen içeriğe yönelik zengin arama deneyimi ekleme araçlarını ve API’lerini sunan, hizmet olarak arama bulut çözümüdür. Sorgu yürütme işlemi, kullanıcı tarafından tanımlanan bir dizine göre gerçekleştirilir.
 
-+ Birden çok içerik türünden ve platformlardan kaynaklıdır ve yalnızca verilerinizi içeren bir arama dizini oluşturun. 
+Azure Search, geliştiricilere, web uygulamalarındaki, mobil uygulamalardaki ve kurumsal uygulamalardaki özel, heterojen içeriğe yönelik zengin arama deneyimi ekleme araçlarını ve API’lerini sunan, hizmet olarak arama bulut çözümüdür. Özel kodunuz veri alımı (Dizin oluşturma) çağırır, sorgu istekleri yayınlar ve yanıtları işler. Arama deneyimi, oluşturduğunuz ve sahip olduğunuz kalıcı bir dizin üzerinde sorgu yürütme ile Azure Search işlevleri kullanılarak istemci kodunuzda tanımlanmıştır. 
 
-+ Resim dosyalarından metin ve özellikleri, ham metinden varlık ve anahtar tümceciklerinden çıkarmak için AI zenginleştirmelerinin yararlanın.
+![Azure Search mimarisi](media/search-what-is-azure-search/azure-search-diagram.png "Azure Search mimarisi")
 
-+ Model gezintisi ve filtreler, eş anlamlılar, otomatik tamamlama ve metin analizi ile "sizin için otomatik olarak düzeltildi" arama terimleriyle sezgisel arama deneyimleri oluşturun. İşlevler ve yükseltme mantığı aracılığıyla ilgi ayarlamayı öğrenin.
-
-+ Belirli kullanım örnekleri için arama uygulamaları oluşturun. Coğrafi arama "yakın beni bul" deneyimini destekler. Çok dilli arama, Ingilizce olmayan tam metin araması için dil Çözümleyicileri aracılığıyla desteklenir.
+<!-- + Build a search index containing only your data, sourced from multiple content types and platforms. 
++ Leverage AI enrichments to extract text and features from image files, or entities and key phrases from raw text.
++ Create intuitive search experiences with facet navigation and filters, synonyms, autocomplete, and text analysis for "did you mean" autocorrected search terms. Get relevance tuning through functions and boosting logic.
++ Create search apps for specific use-cases. Geo-search supports a "find near me" experience. Multi-lingual search is supported through language analyzers for non-English full text search. -->
 
 Bilgi alma sürecinin karmaşıklığını maskeleyen basit bir [REST API’si](/rest/api/searchservice/) veya [.NET SDK’sı](search-howto-dotnet-sdk.md) aracılığıyla bu işlev sunulur. Azure portalı, API’lere ek olarak dizinlerinizin prototipini oluşturma ve dizinlerinizi sorgulama araçlarıyla birlikte yönetim ve içerik yönetimi desteği sağlar. Hizmet bulutta çalıştığından, altyapı ve kullanılabilirlik Microsoft tarafından yönetilir.
+
+## <a name="when-to-use-azure-search"></a>Ne zaman kullanılacağı Azure Search
+
+Azure Search aşağıdaki uygulama senaryoları için uygundur:
+
++ Heterojen içerik türlerini özel, tek ve aranabilir bir dizine birleştirme. Sorgular her zaman, belgeler ile oluşturduğunuz ve yüklediğiniz bir dizinin üzerinde bulunur ve Dizin Azure Search hizmetinizde her zaman bulutta bulunur. Bir dizini, herhangi bir kaynak veya platformun JSON belgelerinin akışlarıyla doldurabilirsiniz. Alternatif olarak, Azure 'da kaynak olan içerik için bir dizin *Oluşturucu* kullanarak bir dizine veri çekebilirsiniz. Dizin tanımı ve yönetimi/sahipliği Azure Search kullanmanın önemli bir nedenidir.
+
++ Aramayla ilgili özelliklerin kolay uygulanması. Azure Search API 'Ler sorgu oluşturma, çok yönlü gezinme, filtreleri (coğrafi uzamsal arama dahil), eş anlamlı eşleme, typeahead sorguları ve ilgi ayarlamayı basitleştirir. Yerleşik özellikleri kullanarak, ticari Web araması altyapılarına benzer bir arama deneyimine yönelik son kullanıcı beklentilerini karşılamasını sağlayabilirsiniz.
+
++ Yapılandırılmamış metinleri dizine ekleme veya görüntü dosyalarından metin ve bilgi ayıklama. Azure Search bilişsel arama özelliği, bir dizin oluşturma işlem hattına AI işleme ekliyor. Bazı yaygın kullanım örnekleri, taranmış belge üzerinde OCR, büyük belgeler üzerinden varlık tanıma ve anahtar tümceciği ayıklama, dil algılama ve metin çevirisi ve yaklaşım analizi içerir.
+
++ Dil gereksinimleri, Azure Search özel ve dil Çözümleyicileri kullanılarak karşılanır. Ingilizce olmayan içeriğiniz varsa Azure Search hem Lucene Çözümleyicileri hem de Microsoft 'un doğal dil işlemcilerini destekler. Ayrıca, vurguları, aksanların filtrelenmesi gibi ham içeriğin özel işlemesini elde etmek için de yapılandırabilirsiniz.
 
 <a name="feature-drilldown"></a>
 
@@ -101,6 +112,7 @@ Temel güçlü yönleri şunlardır:
 + Dizin oluşturma katmanında Azure veri tümleştirmesi (gezginler)
 + Merkezi yönetim için Azure portalı
 + Azure ölçekleme, güvenilirlik ve birinci sınıf kullanılabilirlik
++ Resimlerin metin veya yapılandırılmamış içerikte desenler bulma dahil olmak üzere, ham verileri daha fazla aranabilir hale getirmek için AI işleme.
 + 56 dilde güçlü metin araması için çözümleyicilerle birlikte linguistik ve özel analiz
 + [Arama odaklı uygulamalarda ortak olan temel özellikler](#feature-drilldown): puanlama, modelleme, öneriler, eş anlamlılar, coğrafi arama ve daha fazlası.
 
