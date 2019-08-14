@@ -5,47 +5,56 @@ services: digital-twins
 author: dsk-2015
 ms.service: digital-twins
 ms.topic: include
-ms.date: 06/28/2019
+ms.date: 08/12/2019
 ms.author: dkshir
 ms.custom: include file
-ms.openlocfilehash: 324f41055cf333081f308a3ff533ff7df6b33038
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: fc2e2fc05de66de6f428e6b8ca7c94f82003ba2a
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "67479260"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "69012308"
 ---
 >[!NOTE]
->Yönergeler için bu bölümde [yeni Azure AD uygulama kaydı](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app). Hala eski yerel uygulama kayıt varsa, bu desteklenir mi sürece kullanabilir. Ayrıca, herhangi bir nedenden dolayı uygulama işlese yeni yolu kurulumunuzda çalışmıyorsa yerel eski bir AAD uygulaması oluşturmak deneyebilirsiniz. Okuma [ile Azure Active Directory eski Azure dijital İkizlerini uygulamanızı kaydetmeniz](../articles/digital-twins/how-to-use-legacy-aad.md) daha fazla yönerge için. 
+>Bu bölüm, [yeni Azure AD uygulama kaydı](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)için yönergeler sağlar. Hala eski bir yerel uygulama kaydınız varsa, desteklenmiş olduğu sürece bu dosyayı kullanabilirsiniz. Ek olarak, bazı nedenlerle uygulama kayıt defteri 'nin yeni yolu kurulumda çalışmadıysanız, eski bir yerel AAD uygulaması oluşturmayı deneyebilirsiniz. Daha fazla yönerge için [Azure dijital Twins uygulamanızı Azure Active Directory eski adıyla kaydet](../articles/digital-twins/how-to-use-legacy-aad.md) bölümünü okuyun. 
 
-1. İçinde [Azure portalında](https://portal.azure.com)açın **Azure Active Directory** sol bölmeden ve ardından açık **uygulama kayıtları** bölmesi. Seçin **yeni kayıt** düğmesi.
+1. [Azure Portal](https://portal.azure.com)sol bölmeden **Azure Active Directory** açın ve **uygulama kayıtları** bölmesini açın. **Yeni kayıt** düğmesini seçin.
 
-    ![Kayıtlı uygulama](./media/digital-twins-permissions/aad-app-register.png)
+    ![Uygulama kaydedildi](./media/digital-twins-permissions/aad-app-register.png)
 
-1. Bu uygulama kaydında için kolay bir ad verin **adı** kutusu. Altında **yeniden yönlendirme URI'si (isteğe bağlı)** bölümünde, seçin **genel istemci (Mobil ve Masaüstü)** sol taraftaki açılan girin `https://microsoft.com` metin kutusuna sağ. **Kaydol**’u seçin.
+1. **Ad** kutusuna bu uygulama kaydı için kolay bir ad verin. **Yeniden yönlendirme URI 'si (isteğe bağlı)** bölümünde, sol taraftaki açılan kutuda **ortak istemci (mobil & Masaüstü)** öğesini seçin ve sağdaki metin kutusuna girin `https://microsoft.com` . **Kaydol**’u seçin.
 
-    ![Bölmesinde oluşturma](./media/digital-twins-permissions/aad-app-reg-create.png)
+    ![Bölme oluştur](./media/digital-twins-permissions/aad-app-reg-create.png)
 
-1. Emin olmak için [uygulama olarak kaydedilmiş bir *yerel uygulama*](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-registration)açın **kimlik doğrulaması** bölmesi için uygulama kaydı ve bu bölmedeki aşağı kaydırın. İçinde **varsayılan istemci türü** bölümünde, seçin **Evet** için **uygulama genel bir istemci kabul**. 
+1. [Uygulamanın *yerel bir uygulama*olarak kaydedildiğinden](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-registration)emin olmak için, uygulama kaydlarınızın **kimlik doğrulama** bölmesini açın ve bu bölmeyi aşağı kaydırın. **Varsayılan istemci türü** bölümünde, **uygulamayı ortak istemci olarak değerlendir**için **Evet** ' i seçin. 
 
     ![Varsayılan yerel](./media/digital-twins-permissions/aad-app-default-native.png)
 
-1.  Açık **genel bakış** kayıtlı uygulamanızın bölmesi ve aşağıdaki varlık değerleri geçici bir dosyaya kopyalayın. Aşağıdaki bölümlerde örnek Uygulamanızı yapılandırmak için bu değerleri kullanacaksınız.
+1.  Kayıtlı uygulamanızın **genel bakış** bölmesini açın ve aşağıdaki varlıkların değerlerini geçici bir dosyaya kopyalayın. Aşağıdaki bölümlerde örnek uygulamanızı yapılandırmak için bu değerleri kullanacaksınız.
 
-    - **Uygulama (istemci) kimliği**
-    - **(Kiracı) dizin kimliği**
+    - **Uygulama (istemci) KIMLIĞI**
+    - **Dizin (kiracı) KIMLIĞI**
 
-    ![Azure Active Directory Uygulama Kimliği](./media/digital-twins-permissions/aad-app-reg-app-id.png)
+    ![Azure Active Directory uygulama KIMLIĞI](./media/digital-twins-permissions/aad-app-reg-app-id.png)
 
-1. Açık **API izinleri** uygulama kaydınızı bölmesi. Seçin **bir izin eklemek** düğmesi. İçinde **istek API izinleri** bölmesinde **Kuruluşum kullandığı API'leri** sekmesine ve ardından arama **Azure akıllı alanları**. Seçin **Azure akıllı hizmet alanları** API.
+1. Uygulama kaydınız için **API izinleri** bölmesini açın. **Izin Ekle** düğmesini seçin. **API Izinleri iste** bölmesinde **Kuruluşumun kullandığı API 'leri** seçin ve ardından şunu arayın:
+    
+    1. **Azure dijital TWINS**. **Azure dijital TWINS** API 'sini seçin.
 
-    ![Arama API’si](./media/digital-twins-permissions/aad-app-search-api.png)
+        ![Arama API 'SI veya Azure dijital TWINS](./media/digital-twins-permissions/aad-aap-search-api-dt.png)
 
-1. Seçili API olarak gösterilir **Azure dijital İkizlerini** aynı **istek API izinleri** bölmesi. Seçin **okuma (1)** açılan menü ve ardından **Read.Write** onay kutusu. Seçin **izinleri eklemek** düğmesi.
+    1. Alternatif olarak, **Azure akıllı alanları**için arama yapın. **Azure akıllı boşluklar hizmeti** API 'sini seçin.
+
+        ![Azure akıllı alanları için API arama](./media/digital-twins-permissions/aad-app-search-api.png)
+
+    > [!NOTE]
+    > Arama sırasında görüntülenecek tam ad, ait olduğunuz Azure kiracısına göre farklılık gösterebilir.
+
+1. Seçilen API, aynı **istek API 'si izinleri** bölmesinde **Azure dijital TWINS** olarak gösterilir. **Oku (1)** açılır öğesini seçin ve ardından **oku. yazma** onay kutusunu seçin. **Izin Ekle** düğmesini seçin.
 
     ![API izinleri ekleme](./media/digital-twins-permissions/aad-app-req-permissions.png)
 
-1. Kuruluşunuzun ayarlara bağlı olarak, yönetici bu API'ye erişim için ek adımlar gerekebilir. Daha fazla bilgi için yöneticinize başvurun. Yönetici erişimi onaylandıktan sonra **yönetici onayı gerekli** sütununda **API izinleri** bölmesinde Apı'leriniz için aşağıdakine benzer gösterir:
+1. Kuruluşunuzun ayarlarına bağlı olarak, bu API 'ye yönetici erişimi sağlamak için ek adımlar gerçekleştirmeniz gerekebilir. Daha fazla bilgi için yöneticinize başvurun. Yönetici erişimi onaylandıktan sonra **API izinleri** BÖLMESINDEKI **yönetici onayı gerekli** sütunu, API 'leriniz için aşağıdakine benzer şekilde görünür:
 
     ![API izinleri ekleme](./media/digital-twins-permissions/aad-app-admin-consent.png)
 
