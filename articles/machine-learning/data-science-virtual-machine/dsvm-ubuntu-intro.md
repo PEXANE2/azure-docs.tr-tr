@@ -15,13 +15,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/16/2018
-ms.openlocfilehash: 8a19f414f31c307111edad876ed973ff4027d907
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.date: 08/13/2019
+ms.openlocfilehash: 6d79bfa8f390d145bfd963b40497030140a3d135
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68591922"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69013578"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Linux (Ubuntu) için veri bilimi sanal makinesi sağlama
 
@@ -86,32 +86,35 @@ Linux için veri bilimi sanal makinesi oluşturmadan önce bir Azure aboneliğin
 Linux için veri bilimi sanal makinesi örneğini oluşturmak için adımlar şunlardır:
 
 1. Sanal makine üzerinde listeleme gidin [Azure portalında](https://portal.azure.com/#create/microsoft-dsvm.linux-data-science-vm-ubuntulinuxdsvmubuntu). Henüz oturum açmadıysanız Azure hesabınızda oturum açmanız istenebilir. 
-1. Tıklayın **Oluştur** (altındaki) Kurma Sihirbazı getirilecek.![ Yapılandırma-data-bilimi-vm](./media/dsvm-ubuntu-intro/configure-data-science-virtual-machine.png)
-1. Aşağıdaki bölümler, Microsoft Veri bilimi sanal makinesi oluşturmak için kullanılan girişleri her (önceki şekilde sağ tarafındaki numaralandırılan) sihirbazdaki adımları sağlar. Bu adımların her biri yapılandırmak için gerekli girişleri şunlardır:
+1. Sihirbazı açmak için **Oluştur** ' a tıklayın.
+    ![Configure-Data-Science-VM](./media/dsvm-ubuntu-intro/configure-data-science-virtual-machine.png)
+1. Aşağıdaki bölümlerde, sihirbazın Microsoft Veri Bilimi Sanal Makinesi oluşturmak için kullanılan adımların her biri için girişler sağlanmaktadır. Bu adımların her biri yapılandırmak için gerekli girişleri şunlardır:
 
-   a. **Temel**:
-
-   * **Ad**: Oluşturmakta olduğunuz veri bilimi sunucunuzun adı.
-   * **VM disk türü**: Bir katı hal sürücüsü (SSD) tercih ediyorsanız **Premium SSD** seçin. Aksi takdirde seçin **standart HDD**. 
-   * **Kullanıcı adı**: İlk hesap oturum açma KIMLIĞI.
-   * **Parola**: İlk hesap parolası (parola yerine SSH ortak anahtarını kullanabilirsiniz).
-   * **Abonelik**: Birden fazla aboneliğiniz varsa, bir makine oluşturulması ve fatura olduğu seçin. Bu abonelikte kaynak oluşturma ayrıcalıklarına sahip olmanız gerekir.
-   * **Kaynak grubu**: Yeni bir tane oluşturabilir veya varolan bir grubu kullanın.
-   * **Konum**: En uygun veri merkezini seçin. Genellikle, verilerinizden en iyi sahip veya bu fiziksel konumunuza en hızlı ağ erişimi için en yakın veri merkezi bulunur.
-
-   b. **Boyutu**:
-
-   * Maliyet kısıtlamaları ve işlevsel bir gereksinimi karşılayan sunucusu türlerinden birini seçin. GPU tabanlı VM örnekleri için bir NC veya ND sınıfı VM seçin. [Bölgelere göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/) sayfasında gpu'larla bölgeler listelenir.
-
-   c. **Ayarları**:
-
-   * Çoğu durumda, yalnızca varsayılan değerleri kullanabilirsiniz. Varsayılan olmayan değerleri dikkate alınması gereken belirli alanlar hakkında Yardım için bilgi bağlantı üzerine gelin.
-
-   d. **Özet**:
-
-   * Girdiğiniz tüm bilgilerin doğru olduğunu doğrulayın. Kullanım koşulları için bir bağlantı sağlanır. VM, seçtiğiniz sunucu boyutu için işlem ötesinde herhangi bir ek ücreti yok **boyutu** adım. Sağlama başlatmak için tıklatın **Oluştur**. 
-
-Sağlama, yaklaşık 5 dakika sürer. Sağlama durumunu Azure portalında görüntülenir.
+    a. **Temel**:
+    
+    * **Abonelik**: Birden fazla aboneliğiniz varsa, bir makine oluşturulması ve fatura olduğu seçin. Bu abonelikte kaynak oluşturma ayrıcalıklarına sahip olmanız gerekir.
+    * **Kaynak grubu**: Yeni bir tane oluşturabilir veya varolan bir grubu kullanın.
+    * **Sanal makine adı**: Oluşturmakta olduğunuz veri bilimi sunucunuzun adı.
+    * **Bölge**: En uygun veri merkezini seçin. Genellikle, verilerinizden en iyi sahip veya bu fiziksel konumunuza en hızlı ağ erişimi için en yakın veri merkezi bulunur.
+    * **Kullanılabilirlik seçenekleri**: Bu VM 'yi kullanılabilirlik kümelerinde/bölgelerde kullanmak istiyorsanız bunu ayarlayın, varsayılan olarak bırakın.
+    * **Görüntü**: Varsayılan değeri bırakın
+    * **Boyutu**: Maliyet kısıtlamaları ve işlevsel bir gereksinimi karşılayan sunucusu türlerinden birini seçin. GPU tabanlı VM örnekleri için bir NC veya ND serisi VM seçin. 
+    * **Kullanıcı adı**: Yönetici Kullanıcı adı
+    * **SSH ortak anahtarı**: Tek satır biçiminde RSA ortak anahtarı (SSH anahtarı yerine parola kullanabilirsiniz).
+    
+    b. **Diskler**:
+    
+    * **Işletim sistemi diski türü**: Bir katı hal sürücüsü (SSD) tercih ediyorsanız **Premium SSD** seçin. Aksi takdirde seçin **standart HDD**.
+    
+    c. Ayarların geri kalanı için yalnızca varsayılan değerleri kullanabilirsiniz. Varsayılan olmayan değerleri dikkate alınması gereken belirli alanlar hakkında Yardım için bilgi bağlantı üzerine gelin.
+    
+    Son olarak, **gözden geçir + oluştur** ' u seçin
+    
+    d. **Gözden geçir + oluştur**:
+    
+    * Doğrulama geçtikten sonra girdiğiniz tüm bilgilerin doğru olduğundan emin olun. Kullanım koşulları için bir bağlantı sağlanır. VM 'de, boyut girişinde seçtiğiniz sunucu boyutu için işlem dışında ek ücret yoktur. Sağlama başlatmak için tıklatın **Oluştur**.
+    
+    Sağlama, yaklaşık 5 dakika sürer. Sağlama durumunu Azure portalında görüntülenir.
 
 ## <a name="how-to-access-the-data-science-virtual-machine-for-linux"></a>Linux için veri bilimi sanal makinesi erişme
 
