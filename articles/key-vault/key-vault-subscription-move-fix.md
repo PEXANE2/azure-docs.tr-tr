@@ -1,20 +1,20 @@
 ---
-title: Abonelik taşıma işlemi sonrasında - Azure Key Vault anahtar kasası Kiracı Kimliğini değiştirme | Microsoft Docs
+title: Abonelik taşıma-Azure Key Vault sonrasında Anahtar Kasası kiracı KIMLIĞINI değiştirme | Microsoft Docs
 description: Abonelik farklı bir kiracıya taşındıktan sonra anahtar kasasına ilişkin kiracı kimliğini nasıl değiştireceğinizi öğrenin
 services: key-vault
 author: amitbapat
-manager: barbkess
+manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
-ms.topic: conceptual
-ms.date: 01/07/2019
+ms.topic: tutorial
+ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: f32146697be234a8a288ff991b1f7adf6e76dc7e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2159b5b515e22458edf3ba0eb5b6f23f3f37ce95
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64724482"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990115"
 ---
 # <a name="change-a-key-vault-tenant-id-after-a-subscription-move"></a>Abonelik taşıma işlemi sonrasında anahtar kasası kiracı kimliğini değiştirme
 
@@ -31,17 +31,19 @@ Abonelikte yeni bir anahtar kasası oluşturduğunuzda, kasa bu abonelik için v
 Örneğin, bir abonelikte A kiracısından B kiracısına taşınan 'myvault' adlı bir anahtar kasanız varsa bu anahtar kasası için kiracı kimliğini nasıl değiştireceğiniz ve eski erişim ilkelerini nasıl kaldıracağınız aşağıda gösterilmiştir.
 
 <pre>
-Select-AzSubscription -SubscriptionId YourSubscriptionID
-$vaultResourceId = (Get-AzKeyVault -VaultName myvault).ResourceId
-$vault = Get-AzResource –ResourceId $vaultResourceId -ExpandProperties
-$vault.Properties.TenantId = (Get-AzContext).Tenant.TenantId
-$vault.Properties.AccessPolicies = @()
-Set-AzResource -ResourceId $vaultResourceId -Properties $vault.Properties
+Select-AzSubscription -SubscriptionId YourSubscriptionID                   # Select your Azure Subscription
+$vaultResourceId = (Get-AzKeyVault -VaultName myvault).ResourceId          # Get your Keyvault's Resource ID 
+$vault = Get-AzResource –ResourceId $vaultResourceId -ExpandProperties     # Get the properties for your Keyvault
+$vault.Properties.TenantId = (Get-AzContext).Tenant.TenantId               # Change the Tenant that your Keyvault resides in
+$vault.Properties.AccessPolicies = @()                                     # Accesspolicies can be updated with real
+                                                                           # applications/users/rights so that it does not need to be                                                                              # done after this whole activity. Here we are not setting 
+                                                                           # any access policies. 
+Set-AzResource -ResourceId $vaultResourceId -Properties $vault.Properties  # Modifies the kevault's properties.
 </pre>
 
-Bu kasa A kiracısında taşıma işlemi, özgün değeri önce olduğundan **$vault. Properties.TenantId** Kiracı bir while **(Get-AzContext). Tenant.TenantId** olan b kiracısı
+Bu kasa taşımadan önce kiracıda olduğundan, $vault özgün değeri **. Properties. Tenantıd** kiracı A, while **(Get-azcontext). Tenant. Tenantıd** , B kiracısıdır.
 
-Artık kasanız doğru Kiracı Kimliğiyle ilişkilendirildiğine ve eski erişim ilkesi girdileri kaldırıldığına göre yeni erişim ilkesi girdileri ile ayarlama [kümesi AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/Set-azKeyVaultAccessPolicy).
+Artık kasanız doğru kiracı KIMLIĞIYLE ilişkilendirildiğinden ve eski erişim ilkesi girdileri kaldırıldığına göre, [set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/Set-azKeyVaultAccessPolicy)ile yeni erişim ilkesi girdileri ayarlayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 06/24/2019
+ms.date: 08/13/2019
 ms.author: diberry
-ms.openlocfilehash: 1960856ce2f15945d1b1bfa093f349771d481ffc
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: db54a71a6bd252c1ca60ae356cbf340bc660d142
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663835"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989097"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Özellikler, Eylemler ve bağlamla ilgili bilgiler
 
@@ -25,7 +25,7 @@ Kişiselleştirici, en iyi **eylemi**seçmek için **geçerli bağlamla** ilgili
 
 Örneğin, şu **özelliklere** sahip olabilirsiniz:
 
-* Gibi bir `UserID`Kullanıcı. 
+* Kullanıcı`Sports_Shopper`gibi. Bu, tek bir kullanıcı KIMLIĞI olmamalıdır. 
 * Bir video `Documentary`, `Movie`bir veya bir `TV Series`veya bir perakende öğesinin mağaza 'da kullanılabilir olup olmadığı gibi içerikler.
 * Haftanın günün saati gibi _geçerli_ süre.
 
@@ -150,7 +150,7 @@ Gibi diğer birçok Azure bilişsel [hizmeti](https://www.microsoft.com/cognitiv
 
 Her eylem:
 
-* KIMLIĞI vardır.
+* _Olay_ kimliği vardır. Zaten bir olay KIMLIĞINIZ varsa, bunu göndermeniz gerekir. Bir olay KIMLIĞINIZ yoksa, bir tane göndermeyin, kişiselleştirici sizin için bir tane oluşturur ve bu dosyayı sıralama isteğinin yanıtında döndürür. KIMLIK, Kullanıcı değil, sıralama olayı ile ilişkilendirilir. Bir KIMLIK oluşturursanız, bir GUID en iyi şekilde kullanılır. 
 * Özelliklerin bir listesini içerir.
 * Özellikler listesi büyük (yüzlerce) olabilir, ancak bir yandan elde etmeyen özellikleri kaldırmak için özellik verimliliğini değerlendirmeyi öneririz. 
 * Eylemlerdeki özellikler, kişiselleştirici tarafından kullanılan bağlamdaki özelliklerle bağıntılı olabilir veya olmayabilir.

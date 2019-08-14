@@ -7,12 +7,12 @@ ms.topic: sample
 ms.date: 08/05/2019
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 79302fc0f9addc70461d21c03b02416d15a6fa6c
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 45f5e21e05cf627d418cb66418cf305833a73891
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68814934"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68965102"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>PowerShell kullanarak Azure Cosmos DB SQL API kaynaklarını yönetme
 
@@ -87,7 +87,7 @@ Azure Cosmos hesapları, IP güvenlik duvarı ve sanal ağ hizmeti uç noktalar�
 
 ### <a id="list-accounts"></a>Bir abonelikteki tüm Azure Cosmos hesaplarını listeleme
 
-Bu komut, tüm Azure Cosmos hesabını bir abonelikte listeetmenize olanak tanır.
+Bu komut, bir abonelikteki tüm Azure Cosmos hesaplarını listeetmenize olanak tanır.
 
 ```azurepowershell-interactive
 # List Azure Cosmos Accounts
@@ -116,16 +116,15 @@ Bu komut, Azure Cosmos DB veritabanı hesabı özelliklerinizi güncelleştirmen
 
 * Bölge ekleme veya kaldırma
 * Varsayılan tutarlılık ilkesini değiştirme
-* Yük devretme ilkesini değiştirme
 * IP aralığı filtresini değiştirme
 * Sanal ağ yapılandırmasını değiştirme
 * Çoklu yönetici etkinleştiriliyor
 
 > [!NOTE]
-> Bu komut bölgeleri ekleyip izin verir, ancak yük devretme önceliklerini değiştirmeye izin vermez. Yük devretme önceliğini değiştirmek için bkz. [Azure Cosmos hesabı için yük devretme önceliğini değiştirme](#modify-failover-priority).
+> Bu komut, bölgeleri eklemenize ve kaldırmanıza olanak tanır ancak yük devretme önceliklerini değiştirmenize veya bölgeyi ile `failoverPriority=0`değiştirmenize izin vermez. Yük devretme önceliğini değiştirmek için bkz. [Azure Cosmos hesabı için yük devretme önceliğini değiştirme](#modify-failover-priority).
 
 ```azurepowershell-interactive
-# Update an Azure Cosmos Account and set Consistency level to Session
+# Get an Azure Cosmos Account (assume it has two regions currently West US 2 and East US 2) and add a third region
 
 $resourceGroupName = "myResourceGroup"
 $accountName = "myaccountname"
@@ -133,9 +132,13 @@ $accountName = "myaccountname"
 $account = Get-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
     -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName -Name $accountName
 
-$consistencyPolicy = @{ "defaultConsistencyLevel"="Session" }
+$locations = @(
+    @{ "locationName"="West US 2"; "failoverPriority"=0 },
+    @{ "locationName"="East US 2"; "failoverPriority"=1 },
+    @{ "locationName"="South Central US"; "failoverPriority"=2 }
+)
 
-$account.Properties.consistencyPolicy = $consistencyPolicy
+$account.Properties.locations = $locations
 $CosmosDBProperties = $account.Properties
 
 Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
@@ -235,9 +238,9 @@ Select-Object $keys
 
 ### <a id="modify-failover-priority"></a>Yük devretme önceliğini değiştirme
 
-Çok bölgeli veritabanı hesaplarında, Cosmos hesabının ikincil okuma çoğaltmalarını yükseltebileceği sırayı değiştirerek birincil yazma çoğaltmasında bölgesel bir yük devretme gerçekleşmelidir. İle olan `failoverPriority=0` bölge değiştirildiğinde, bu komut olağanüstü durum kurtarma planlamasına test etmek için bir olağanüstü durum kurtarma detayına da uygulanabilir.
+Çok bölgeli veritabanı hesaplarında, Cosmos hesabının ikincil okuma çoğaltmalarını yükseltebileceği sırayı değiştirerek birincil yazma çoğaltmasında bölgesel bir yük devretme gerçekleşmelidir. Ayrıca `failoverPriority=0` , olağanüstü durum kurtarma planlamasının test bir olağanüstü durum kurtarma detayına karşı değiştirme de kullanılabilir.
 
-Aşağıdaki örnekte, hesabın westus = 0 ve eastus = 1 ' in geçerli yük devretme önceliğine sahip olduğunu ve bölgeleri çevireceğini varsayalım.
+Aşağıdaki örnekte, hesabının geçerli bir yük devretme önceliğine `West US 2 = 0` `East US 2 = 1` sahip olduğunu ve bölgeleri çevireceğini varsayalım.
 
 > [!CAUTION]
 > `locationName` İçin`failoverPriority=0` değiştirmek, bir Azure Cosmos hesabı için el ile yük devretmeyi tetikler. Başka herhangi bir öncelik değişikliği, yük devretmeyi tetiklemez.
@@ -248,10 +251,14 @@ Aşağıdaki örnekte, hesabın westus = 0 ve eastus = 1 ' in geçerli yük devr
 $resourceGroupName = "myResourceGroup"
 $accountName = "mycosmosaccount"
 
-$failoverPolicies = @(
-    @{ "locationName"="East US"; "failoverPriority"=0 },
-    @{ "locationName"="West US"; "failoverPriority"=1 }
+$failoverRegions = @(
+    @{ "locationName"="East US 2"; "failoverPriority"=0 },
+    @{ "locationName"="West US 2"; "failoverPriority"=1 }
 )
+
+$failoverPolicies = @{
+    "failoverPolicies"= $failoverRegions
+}
 
 Invoke-AzResourceAction -Action failoverPriorityChange `
     -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" `

@@ -11,12 +11,12 @@ ms.reviewer: seguler
 ms.date: 05/20/2019
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: 742e270ae84604e8d5389c0b2982642f56105fcc
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: ea5dfe2261be4512d4ba8edda1e7fbd5219a50c0
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828216"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68986874"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -59,7 +59,7 @@ Bundan sonra, Azure Cloud Shell hizmetini kullanarak bir güvenlik belirteci olu
 
 ## <a name="create-a-shared-access-signature"></a>Paylaşılan erişim imzası oluşturma
 
-Paylaşılan erişim imzası (SAS), Blob depolama alanına gönderilen isteklerini yetkilendirmek için tarayıcıda çalışan kod tarafından kullanılır. İstemci, SAS kullanarak hesap erişim anahtarı veya bağlantı dizesi kullanmadan depolama kaynaklarına erişimi yetkilendirebilir. SAS hakkında daha fazla bilgi edinmek için bkz. [Paylaşılan erişim imzaları (SAS) kullanma](../common/storage-dotnet-shared-access-signature-part-1.md).
+Paylaşılan erişim imzası (SAS), Blob depolama alanına gönderilen isteklerini yetkilendirmek için tarayıcıda çalışan kod tarafından kullanılır. İstemci, SAS kullanarak hesap erişim anahtarı veya bağlantı dizesi kullanmadan depolama kaynaklarına erişimi yetkilendirebilir. SAS hakkında daha fazla bilgi edinmek için bkz. [Paylaşılan erişim imzaları (SAS) kullanma](../common/storage-sas-overview.md).
 
 Azure Cloud Shell aracılığıyla veya Azure portal ya da Azure Depolama Gezgini ile Azure CLı kullanarak bir SAS oluşturabilirsiniz. Aşağıdaki tabloda CLı ile SAS oluşturmak için değer sağlamanız gereken parametreler açıklanmaktadır.
 

@@ -1,6 +1,6 @@
 ---
-title: -Tek bir sunucu PostgreSQL için Azure veritabanı'na bağlanmak için node.js kullanma
-description: Bu hızlı başlangıçta, bağlanıp - tek bir sunucu PostgreSQL için Azure veritabanı'ndan veri sorgulamak için kullanabileceğiniz bir Node.js kod örneği sağlanmıştır.
+title: PostgreSQL için Azure veritabanı 'na bağlanmak için Node. js kullanma-tek sunucu
+description: Bu hızlı başlangıç, PostgreSQL için Azure veritabanı 'na bağlanmak ve bu verileri sorgulamak için kullanabileceğiniz bir Node. js kod örneği sağlar-tek sunucu.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -8,14 +8,14 @@ ms.custom: mvc, devcenter
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: 5ebcb3151bf9b6eaca4a726553a3c8f1d93c08aa
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 7e59e9b53143dcbea1c78f4c6131080ec8e9ea2c
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65067123"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966742"
 ---
-# <a name="azure-database-for-postgresql---single-server-use-nodejs-to-connect-and-query-data"></a>PostgreSQL - tek bir sunucu için Azure veritabanı: Bağlanmak ve veri sorgulamak için node.js kullanma
+# <a name="azure-database-for-postgresql---single-server-use-nodejs-to-connect-and-query-data"></a>PostgreSQL için Azure veritabanı-tek sunucu: Bağlanmak ve veri sorgulamak için Node. js kullanma
 Bu hızlı başlangıçta, [Node.js](https://nodejs.org/) uygulaması kullanılarak PostgreSQL için Azure Veritabanı'na nasıl bağlanılacağı gösterilmiştir. Hızlı başlangıçta, veritabanında verileri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerinin nasıl kullanılacağı da gösterilmiştir. Bu makaledeki adımlarda, Node.js kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve PostgreSQL için Azure Veritabanı ile çalışmaya yeni başladığınız varsayılır.
 
 ## <a name="prerequisites"></a>Önkoşullar
@@ -43,8 +43,8 @@ npm list
 PostgreSQL için Azure Veritabanı'na bağlanmak üzere gereken bağlantı bilgilerini alın. Tam sunucu adına ve oturum açma kimlik bilgilerine ihtiyacınız vardır.
 
 1. [Azure Portal](https://portal.azure.com/)’da oturum açın.
-2. Azure portalında sol taraftaki menüden **Tüm kaynaklar**'a tıklayın ve oluşturduğunuz sunucuyu (örneğin, **mydemoserver**) arayın.
-3. Sunucunun adına tıklayın.
+2. Azure Portal sol taraftaki menüden **tüm kaynaklar**' ı seçin ve oluşturduğunuz sunucuyu (örneğin, **demosunucum**) arayın.
+3. Sunucu adını seçin.
 4. Sunucunun **Genel Bakış** panelinden **Sunucu adı** ile **Sunucu yöneticisi oturum açma adı**’nı not alın. Parolanızı unutursanız, bu panelden parolayı da sıfırlayabilirsiniz.
  ![PostgreSQL için Azure Veritabanı sunucu adı](./media/connect-nodejs/1-connection-string.png)
 

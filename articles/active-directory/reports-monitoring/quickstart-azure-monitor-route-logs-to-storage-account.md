@@ -1,9 +1,9 @@
 ---
-title: Öğretici - arşiv Azure Active Directory günlükleri bir depolama hesabına | Microsoft Docs
-description: Bir depolama hesabı için Azure Active Directory günlükleri göndermek için Azure Tanılama'yı ayarlama hakkında bilgi edinin
+title: Öğretici-depolama hesabına Azure Active Directory günlüklerini arşivleme | Microsoft Docs
+description: Azure Active Directory günlüklerini depolama hesabına göndermek için Azure Tanılama ayarlamayı öğrenin
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: 045f94b3-6f12-407a-8e9c-ed13ae7b43a3
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 04/18/2019
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0198fe1ce61c8f78e315d1166a7ea03aae20d592
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d98fb0677b864fccfb5abd2b08381db1bd1c9c8f
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60437560"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989731"
 ---
-# <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account"></a>Öğretici: Bir Azure depolama hesabı için Azure AD günlüklerini arşivleme
+# <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account"></a>Öğretici: Azure AD günlüklerini bir Azure depolama hesabına arşivleme
 
 Bu öğreticide bir Azure depolama hesabına Azure Active Directory (Azure AD) günlüğü yönlendirme amacıyla Azure İzleyici tanılama ayarlarını yapmayı öğreneceksiniz.
 

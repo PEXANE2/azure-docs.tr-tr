@@ -7,16 +7,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b9be1db9be1d4dd57994e101c07ed430425a5912
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: b0b82f37b76a6bca6d84a05bc48b7ae9986fb76b
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447432"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967678"
 ---
 # <a name="how-to-manage-keys-in-qna-maker"></a>Soru-cevap Oluşturucu anahtarlarını yönetme
 
@@ -24,9 +24,9 @@ Soru-cevap Oluşturucu hizmetinizi anahtarları, iki tür ile ilgilenen **Abonel
 
 ![Anahtar Yönetimi](../media/qnamaker-how-to-key-management/key-management.png)
 
-1. **Abonelik anahtarları**: Bu anahtarlar kullanılır erişimi [soru-cevap Oluşturucu yönetim hizmeti API'leri](https://go.microsoft.com/fwlink/?linkid=2092179). Bu API'ler gerçekleştirmenize olanak tanır, Bilgi Bankası'nı düzenleyin.  
+1. **Abonelik anahtarları**: Bu anahtarlar [soru-cevap oluşturma Management Service API 'lerine](https://go.microsoft.com/fwlink/?linkid=2092179)erişmek için kullanılır. Bu API 'Ler, bilgi tabanınızı düzenleme gerçekleştirmenize olanak tanır.  
 
-2. **Uç nokta anahtarları**: Bu anahtarlar, kullanıcı soru için yanıt almak için Bilgi Bankası uç noktasına erişmek için kullanılır. Genellikle, bu uç nokta sohbet Robotu veya soru-cevap Oluşturucu hizmeti istemci uygulaması kodu kullanmanız gerekir.
+2. **Uç nokta anahtarları**: Bu anahtarlar, bir Kullanıcı sorusuna yanıt almak için Bilgi Bankası uç noktasına erişmek üzere kullanılır. Bu uç noktayı genellikle sohbet bot 'unuza veya Soru-Cevap Oluşturma hizmetini kullanan istemci uygulaması koduna kullanacaksınız.
  
 ## <a name="subscription-keys"></a>Abonelik anahtarları
 Görüntüleyebilir ve soru-cevap Oluşturucu kaynağın oluşturulduğu Azure portalından abonelik anahtarlarınızı sıfırlayın. 
@@ -42,7 +42,7 @@ Görüntüleyebilir ve soru-cevap Oluşturucu kaynağın oluşturulduğu Azure p
 
 Uç nokta anahtarları alanından yönetilebilir [soru-cevap Oluşturucu portalı](https://qnamaker.ai).
 
-1. Oturum [soru-cevap Oluşturucu portalı](https://qnamaker.ai)profilinize gidin ve ardından **hizmet ayarları**.
+1. [Soru-cevap oluşturma portalında](https://qnamaker.ai)oturum açın, profilinize gidin ve ardından **hizmet ayarları**' na tıklayın.
 
     ![Uç noktası anahtarı](../media/qnamaker-how-to-key-management/Endpoint-keys.png)
 
@@ -51,7 +51,7 @@ Uç nokta anahtarları alanından yönetilebilir [soru-cevap Oluşturucu portal�
     ![uç nokta Anahtar Yöneticisi](../media/qnamaker-how-to-key-management/Endpoint-keys1.png)
 
     >[!NOTE]
-    >Anahtarlarınızı tehlikeye girmiş düşünüyorsanız yenileyin. Bu, istemci uygulamanız ya da bot kod karşılık gelen değişiklikler gerektirebilir.
+    >Anahtarlarınızı tehlikeye girmiş düşünüyorsanız yenileyin. Bu, istemci uygulamanızda veya bot kodunuzda ilgili değişiklikleri gerektirebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

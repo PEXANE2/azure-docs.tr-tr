@@ -9,18 +9,18 @@ ms.subservice: immersive-reader
 ms.topic: quickstart
 ms.date: 08/01/2019
 ms.author: t-meroa
-ms.openlocfilehash: 4b2bdc1a2babadbe5cb7f12135de0eaef8557a97
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 64b3cab857a541d0bede88e7fdf21c00526b9a43
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950803"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68965159"
 ---
 # <a name="quickstart-create-an-ios-app-that-launches-the-immersive-reader-swift"></a>Hızlı Başlangıç: Tam ekran okuyucuyu (Swift) başlatan bir iOS uygulaması oluşturma
 
 [Tam ekran okuyucu](https://www.onenote.com/learningtools) , okuma kavramasını geliştirmek için kendini kanıtlamış teknikler uygulayan, ve dahil tasarlanmış bir araçtır.
 
-Bu hızlı başlangıçta, sıfırdan bir iOS uygulaması oluşturacaksınız ve modern Okuyucu SDK 'sını kullanarak tam ekran okuyucuyu tümleştirirsiniz. Bu hızlı başlangıç için tam bir çalışma örneğine [buradan](https://github.com/microsoft/immersive-reader-sdk/iOS/samples/quickstart-swift)ulaşabilirsiniz.
+Bu hızlı başlangıçta, sıfırdan bir iOS uygulaması oluşturacaksınız ve modern Okuyucu SDK 'sını kullanarak tam ekran okuyucuyu tümleştirirsiniz. Bu hızlı başlangıç için tam bir çalışma örneğine [buradan](https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS/samples/quickstart-swift)ulaşabilirsiniz.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -43,7 +43,7 @@ Xcode 'da yeni bir proje oluşturun.
 Tam ekran okuyucu SDK 'sını kullanmanın en kolay yolu CocoaPods aracılığıyla yapılır. Cocoapods aracılığıyla yüklemek için:
 1. [Install Cocoapods](http://guides.cocoapods.org/using/getting-started.html) -Cocoapods yüklemek için Başlarken Kılavuzunu izleyin.
 2. Xcode projenizin kök dizininde çalıştırarak `pod init` bir pod dosyası oluşturun.
-3.  CocoaPod öğesini ekleyerek `pod 'immersive-reader-sdk', :path => 'https://github.com/microsoft/immersive-reader-sdk/iOS/immersive-reader-sdk'`Pod dosyanıza ekleyin. Aşağıdaki gibi görünmelidir ve hedefin adı, hızlı başlangıç-Swift ' ı değiştiriyor:
+3.  CocoaPod öğesini ekleyerek `pod 'immersive-reader-sdk', :path => 'https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS/immersive-reader-sdk'`Pod dosyanıza ekleyin. Aşağıdaki gibi görünmelidir ve hedefin adı, hızlı başlangıç-Swift ' ı değiştiriyor:
  ```ruby
   platform :ios, '9.0'
 
@@ -102,4 +102,4 @@ Uygulamanızda şunları görmeniz gerekir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Modern okuyucu IOS SDK 'sını](https://github.com/microsoft/immersive-reader-sdk/iOS) ve [tam ekran okuyucu iOS SDK başvurusunu](./ios-reference.md) keşfet
+* [Modern okuyucu IOS SDK 'sını](https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS) ve [tam ekran okuyucu iOS SDK başvurusunu](./ios-reference.md) keşfet

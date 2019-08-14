@@ -1,5 +1,5 @@
 ---
-title: Web API'leri - Microsoft kimlik platformu kullanıma sunmak için uygulama yapılandırma
+title: Web API 'Leri kullanıma sunmak için bir uygulama yapılandırma-Microsoft Identity platform
 description: Yeni bir izni/kapsamı ve rolü kullanıma sunmak ve uygulamayı istemci uygulamaları için kullanılabilir hale getirmek üzere bir uygulamayı yapılandırmayı öğrenin.
 services: active-directory
 documentationcenter: ''
@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/08/2019
+ms.date: 08/14/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f770539e2f60a960a52a877dd4eaa79c60a1af4a
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: f9c8e4a2e5dadf64312481f33993911177c90bc7
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482665"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989283"
 ---
-# <a name="quickstart-configure-an-application-to-expose-web-apis"></a>Hızlı Başlangıç: Web API'leri kullanıma sunmak için uygulama yapılandırma
+# <a name="quickstart-configure-an-application-to-expose-web-apis"></a>Hızlı Başlangıç: Web API 'Lerini kullanıma sunmak için uygulama yapılandırma
 
 Bir web API'si geliştirip [izinleri/kapsamları](developer-glossary.md#scopes) ve [rolleri](developer-glossary.md#roles) kullanıma sunarak istemci uygulamaları tarafından kullanılmasını sağlayabilirsiniz. Doğru şekilde yapılandırılmış olan bir web API'sini kullanıma sunmak için yapılması gereken işlemler Graph API ve Office 365 API'leri gibi diğer Microsoft web API'leri için yapılması gerekenlerle aynıdır.
 
@@ -44,7 +44,7 @@ Uygulamayı yapılandırmadan önce, aşağıdaki adımları izleyin:
 
 1. Bir iş veya okul hesabı ya da kişisel Microsoft hesabınızı kullanarak [Azure portalında](https://portal.azure.com) oturum açın.
 1. Hesabınız size birden fazla Azure AD kiracısına erişim sunuyorsa sağ üst köşeden hesabınızı seçin ve portal oturumunuzu istediğiniz Azure AD kiracısına ayarlayın.
-1. Sol gezinti bölmesinde seçin **Azure Active Directory** hizmet ve ardından **uygulama kayıtları**.
+1. Sol taraftaki Gezinti bölmesinde **Azure Active Directory** hizmetini seçin ve **uygulama kayıtları**' i seçin.
 1. Yapılandırmak istediğiniz uygulamayı bulun ve seçin. Uygulamayı seçtiğinizde, uygulamanın **Genel Bakış** veya ana kayıt sayfasını görürsünüz.
 1. Yeni bir kapsamı kullanıma sunmak için kullanıcı birimi veya uygulama bildirimi arasından kullanmak istediğiniz yöntemi seçin:
     * [Kullanıcı arabirimi aracılığıyla yeni bir kapsamı kullanıma sunma](#expose-a-new-scope-through-the-ui)
@@ -52,7 +52,7 @@ Uygulamayı yapılandırmadan önce, aşağıdaki adımları izleyin:
 
 ## <a name="expose-a-new-scope-through-the-ui"></a>Kullanıcı arabirimi aracılığıyla yeni bir kapsamı kullanıma sunma
 
-[![Kullanıcı arabirimini kullanarak bir API'yi kullanıma sunmak nasıl gösterir](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png)](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png#lightbox)
+[![Kullanıcı arabirimini kullanarak bir API 'yi kullanıma sunma](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png)](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png#lightbox)
 
 Kullanıcı arabirimi aracılığıyla yeni bir kapsamı kullanıma sunmak için:
 
@@ -66,7 +66,7 @@ Kullanıcı arabirimi aracılığıyla yeni bir kapsamı kullanıma sunmak için
 
     | Alan | Açıklama |
     |-------|-------------|
-    | **Kapsam adı** | Kapsamınız için anlamlı bir ad girin.<br><br>Örneğin, `Employees.Read.All`. |
+    | **Kapsam adı** | Kapsamınız için anlamlı bir ad girin.<br><br>Örneğin: `Employees.Read.All`. |
     | **Kimler onaylayabilir** | Bu kapsama kullanıcılar tarafından onay verilip verilemeyeceğini veya yönetici onayının gerekli olup olmadığını seçin. Daha yüksek ayrıcalıklı izinler için **Yalnızca yöneticiler**’i seçin. |
     | **Yönetici onayı görünen adı** | Kapsamınız için yöneticilerin göreceği anlamlı bir açıklama girin.<br><br>Örneğin, `Read-only access to Employee records` |
     | **Yönetici onayı açıklaması** | Kapsamınız için yöneticilerin göreceği anlamlı bir açıklama girin.<br><br>Örneğin, `Allow the application to have read-only access to all Employee data.` |
@@ -116,8 +116,9 @@ Uygulama bildirimi aracılığıyla yeni bir kapsamı kullanıma sunmak için:
 ## <a name="verify-the-web-api-is-exposed-to-other-applications"></a>Web API'sinin diğer uygulamaların kullanımına sunulduğunu doğrulama
 
 1. Azure AD kiracınıza geri dönün, **Uygulama kayıtları**'nı seçin ve yapılandırmak istediğiniz istemci uygulamasını seçin.
-1. Adımları bir istemci uygulamanın web API'lerine erişimi Yapılandır özetlenen yineleyin.
-1. **Bir API seçin** adımına geldiğinizde, kaynağınızı seçin. İstemci izin istekleri için kullanılabilir durumdaki yeni kapsamı görmeniz gerekir.
+1. [Bir istemci uygulamasını web API'lerine erişecek şekilde yapılandırma](quickstart-configure-app-access-web-apis.md) bölümünde belirtilen adımları tekrarlayın.
+1. Bir API [](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis
+)seçme adımına geldiğinizde, kaynağı seçin. İstemci izin istekleri için kullanılabilir durumdaki yeni kapsamı görmeniz gerekir.
 
 ## <a name="more-on-the-application-manifest"></a>Uygulama bildirimi hakkında daha fazla bilgi
 

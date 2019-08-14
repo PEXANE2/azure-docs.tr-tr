@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 08/05/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86c9368785bb28f27df599c8b9cbe09c1fa5dee2
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 705e3818aef0338d9b34da7b0320b99594573fca
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880787"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985976"
 ---
 # <a name="set-up-your-security-info-preview-from-the-sign-in-page-prompt"></a>Oturum açma sayfası isteminden güvenlik bilgilerinizi (Önizleme) ayarlama
 
@@ -68,7 +68,7 @@ Bu istemi yalnızca kuruluşunuz için gereken güvenlik bilgilerini ayarlamadı
 
 6. 5\. adımda iş veya okul hesabınızı oluşturduktan sonra mobil cihazınızda görünen Microsoft Authenticator App QR kod okuyucusu ile belirtilen kodu tarayın.
 
-    Kimlik doğrulayıcı uygulaması, size herhangi bir ek bilgi gerekmeden iş veya okul hesabınızı başarıyla eklememelidir. Ancak, QR kod okuyucusu kodu okuyaamazsa **QR kodu bağlantısını tarayamaz** ve kodu ve URL 'yi Microsoft Authenticator uygulamasına el ile girebilirsiniz. Kodu el ile ekleme hakkında daha fazla bilgi için bkz. [uygulamaya el ile hesap ekleme](user-help-auth-app-add-account-manual.md).
+    Kimlik doğrulayıcı uygulaması, size herhangi bir ek bilgi gerekmeden iş veya okul hesabınızı başarıyla eklememelidir. Ancak, QR kod okuyucusu kodu okuyaamazsa, **QR görüntüsünü tarayamaz** ve Microsoft Authenticator uygulamasına kodu ve URL 'yi el ile girebilirsiniz. Kodu el ile ekleme hakkında daha fazla bilgi için bkz. [uygulamaya el ile hesap ekleme](user-help-auth-app-add-account-manual.md).
 
 7. Bilgisayarınızdaki **QR kodunu Tara** sayfasında **İleri ' yi** seçin.
 

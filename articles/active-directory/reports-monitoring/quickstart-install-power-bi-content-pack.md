@@ -3,7 +3,7 @@ title: Azure AD Power BI içerik paketini yükleme | Microsoft Docs
 description: Azure AD Power BI içerik paketini yüklemeyi öğrenin
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 ms.assetid: fd5604eb-1334-4bd8-bfb5-41280883e2b5
 ms.service: active-directory
@@ -13,24 +13,24 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 11/13/2018
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69a69732d8cb42c248fa954ef9047e5876f40837
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f088c8b49fa6485a21b630738149078b7ff45b7d
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60285913"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68988098"
 ---
-# <a name="quickstart-install-azure-active-directory-power-bi-content-pack"></a>Hızlı Başlangıç: Azure Active Directory Power BI içerik paketi yükleyin
+# <a name="quickstart-install-azure-active-directory-power-bi-content-pack"></a>Hızlı Başlangıç: Azure Active Directory Power BI Içerik paketini yükler
 
 |  |
 |--|
 |Azure AD Power BI içerik paketi şu anda Azure AD kiracınızdaki verileri almak için Azure AD Graph API'lerini kullanmaktadır. Sonuç olarak içerik paketinde mevcut olan verilerle [raporlama için Microsoft Graph API'lerini](concept-reporting-api.md) kullanarak aldığınız veriler arasında farklılık olabilir. |
 |  |
 
-Power BI İçerik Paketi için Azure Active Directory (Azure AD) ortamınızı raporlama verileri görselleştirme olanağı sağlar. Önceden oluşturulmuş içerik paketini indirip Power BI tarafından sunulan zengin görselleştirme deneyiminden faydalanarak dizininizdeki tüm etkinlikleri raporlayabilirsiniz. Ayrıca kendi panonuzu oluşturabilir ve kuruluşunuzdaki herkesle kolayca paylaşabilirsiniz. 
+Azure Active Directory (Azure AD) için Power BI içerik paketi, ortamınızdaki raporlama verilerini görselleştirmenize olanak tanır. Önceden oluşturulmuş içerik paketini indirip Power BI tarafından sunulan zengin görselleştirme deneyiminden faydalanarak dizininizdeki tüm etkinlikleri raporlayabilirsiniz. Ayrıca kendi panonuzu oluşturabilir ve kuruluşunuzdaki herkesle kolayca paylaşabilirsiniz. 
 
 Bu hızlı başlangıçta içerik paketini yüklemeyi öğreneceksiniz.
 
@@ -40,7 +40,7 @@ Bu hızlı başlangıcı tamamlamak için şunlar gerekir:
 
 * Power BI hesabı. O365 veya Azure AD hesabınızı kullanabilirsiniz. 
 * Azure AD kiracınızın kimliği. Dizininizi tanımlayan bu **Dizin Kimliği** değerine Azure portalın [özellikler sayfasından](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties) erişebilirsiniz.
-* Azure AD Premium (P1/P2) lisansı. Bkz: [Azure Active Directory Premium ile çalışmaya başlama](../fundamentals/active-directory-get-started-premium.md) , Azure Active Directory sürümünü yükseltmek için.
+* Azure AD Premium (P1/P2) lisansı. Azure Active Directory sürümünüzü yükseltmek için bkz. [Azure Active Directory Premium kullanmaya](../fundamentals/active-directory-get-started-premium.md) başlama.
 
 ## <a name="install-azure-ad-power-bi-content-pack"></a>Azure AD Power BI içerik paketini yükleme 
 

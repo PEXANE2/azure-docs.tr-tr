@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: 5a03c377a275fff489f1fb8371f9905411b67960
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: e4b792a04b4926fdb56f37c089e73b90cde905d3
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881539"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990135"
 ---
 # <a name="use-azure-active-directory-azure-ad-authentication-with-the-immersive-reader-service"></a>Tam ekran okuyucu hizmeti ile Azure Active Directory (Azure AD) kimlik doğrulamasını kullanma
 
@@ -134,5 +134,7 @@ Alternatif olarak, hizmet sorumlusu bir sertifikayla kimlik doğrulaması yapabi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Modern Okuyucu SDK 'Sı ile neler yapabileceğinizi görmek için [öğreticiyi](./tutorial.md) görüntüleyin
+* Node. js kullanarak modern Okuyucu SDK 'Sı ile neler yapabileceğinizi öğrenmek için [Node. js öğreticisini](./tutorial-nodejs.md) görüntüleyin
+* Python kullanarak modern Okuyucu SDK 'Sı ile neler yapabileceğinizi öğrenmek için [Python öğreticisini](./tutorial-python.md) görüntüleyin
+* Swift [öğreticisini](./tutorial-ios-picture-immersive-reader.md) kullanarak tam ekran okuyucu SDK 'sı ile neler yapabileceğinizi görün.
 * [Modern Okuyucu SDK 'sını](https://github.com/microsoft/immersive-reader-sdk) ve [tam ekran okuyucu SDK başvurusunu](./reference.md) keşfet

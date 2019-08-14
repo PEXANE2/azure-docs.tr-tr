@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: quickstart
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 978b56f5c38a154c79544c7deb5d49396b1deff9
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 0d67385975db13539c28745eede4fb288a0daedd
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688856"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989136"
 ---
 # <a name="quickstart-create-a-web-app-that-launches-the-immersive-reader-c"></a>Hızlı Başlangıç: Tam ekran okuyucu (C#) başlatan bir Web uygulaması oluşturma
 
@@ -223,5 +223,7 @@ Tarayıcınızda şunları görmeniz gerekir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Modern Okuyucu SDK 'Sı ile neler yapabileceğinizi görmek için [öğreticiyi](./tutorial.md) görüntüleyin
+* Node. js kullanarak modern Okuyucu SDK 'Sı ile neler yapabileceğinizi öğrenmek için [Node. js öğreticisini](./tutorial-nodejs.md) görüntüleyin
+* Python kullanarak modern Okuyucu SDK 'Sı ile neler yapabileceğinizi öğrenmek için [Python öğreticisini](./tutorial-python.md) görüntüleyin
+* Swift kullanarak tam ekran okuyucu SDK 'Sı ile neler yapabileceğinizi öğrenmek için [iOS öğreticisini](./tutorial-ios-picture-immersive-reader.md) görüntüleyin
 * [Modern Okuyucu SDK 'sını](https://github.com/microsoft/immersive-reader-sdk) ve [tam ekran okuyucu SDK başvurusunu](./reference.md) keşfet

@@ -1,41 +1,41 @@
 ---
-title: Çok sayıda uygulamaya bir Azure key vault - Azure anahtar kasası erişim izni verme | Microsoft Docs
-description: Çok sayıda uygulamaya bir anahtar kasasına erişim izni vermeyi öğreneceksiniz
+title: Azure Anahtar Kasası 'na erişmek için birçok uygulamaya izin verme-Azure Key Vault | Microsoft Docs
+description: Birçok uygulamaya bir anahtar kasasına erişmek için izin verme hakkında bilgi edinin
 services: key-vault
 author: amitbapat
-manager: barbkess
+manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
-ms.topic: conceptual
-ms.date: 01/07/2019
+ms.topic: tutorial
+ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: b1d0b0948e089d41f460ac2a54150ee51333f87c
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 07ee544057ffeb0a5859cc771b124523ec79c9c0
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "64721985"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976395"
 ---
-# <a name="grant-several-applications-access-to-a-key-vault"></a>Bir anahtar kasasına çeşitli uygulamaları erişimi verme
+# <a name="grant-several-applications-access-to-a-key-vault"></a>Birçok uygulamaya bir Anahtar Kasası erişimi verme
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Erişim denetimi İlkesi, bir anahtar kasası çeşitli uygulamalar erişim vermek için kullanılabilir. Bir erişim denetimi ilkesi en fazla 1024 uygulamaları destekler ve aşağıdaki gibi yapılandırılır:
+Erişim denetimi ilkesi, çeşitli uygulamalara bir Anahtar Kasası erişimi vermek için kullanılabilir. Bir erişim denetim ilkesi en fazla 1024 uygulamayı destekleyebilir ve aşağıdaki şekilde yapılandırılır:
 
-1. Bir Azure Active Directory güvenlik grubu oluşturun. 
-2. Hizmet sorumlularını güvenlik grubunun ilişkili tüm uygulamalar ekleyin.
-3. Güvenlik grubu, anahtar Kasası'na erişim.
+1. Azure Active Directory bir güvenlik grubu oluşturun. 
+2. Tüm uygulamaların ilişkili hizmet sorumlularını güvenlik grubuna ekleyin.
+3. Key Vault güvenlik grubuna erişim izni verin.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 Önkoşullar şunlardır:
 * [Azure PowerShell'i yükleme](/powershell/azure/overview).
-* [Azure Active Directory V2 PowerShell modülünü yükleme](https://www.powershellgallery.com/packages/AzureAD).
-* Azure Active Directory kiracısı grupları oluştur/Düzenle için izinler. İzinleriniz yoksa, Azure Active Directory yöneticinize başvurmanız gerekebilir. Bkz: [Azure Key Vault hakkında anahtarlara, parolalara ve sertifikalara](about-keys-secrets-and-certificates.md) Key Vault hakkında ayrıntılı bilgi için erişim ilkesi izinleri.
+* [Azure Active Directory v2 PowerShell modülünü yükler](https://www.powershellgallery.com/packages/AzureAD).
+* Azure Active Directory kiracısında Grup oluşturma/düzenleme izinleri. İzinleriniz yoksa Azure Active Directory yöneticinize başvurmanız gerekebilir. Key Vault erişim ilkesi izinleri hakkında ayrıntılar için bkz. [Azure Key Vault anahtarlar, gizlilikler ve sertifikalar hakkında](about-keys-secrets-and-certificates.md) .
 
-## <a name="granting-key-vault-access-to-applications"></a>Uygulamalar için Key Vault erişim izni verme
+## <a name="granting-key-vault-access-to-applications"></a>Uygulamalara Key Vault erişim verme
 
-PowerShell'de aşağıdaki komutları çalıştırın:
+PowerShell 'de aşağıdaki komutları çalıştırın:
 
 ```powershell
 # Connect to Azure AD 
@@ -60,8 +60,8 @@ Set-AzKeyVaultAccessPolicy –VaultName ContosoVault –ObjectId $aadGroup.Objec
 # Of course you can adjust the permissions as required 
 ```
 
-Farklı bir uygulama grubu için izin kümesi vermek gerekirse, bu tür uygulamalar için ayrı bir Azure Active Directory güvenlik grubu oluşturun.
+Bir uygulama grubuna farklı bir izin kümesi vermeniz gerekiyorsa, bu gibi uygulamalar için ayrı bir Azure Active Directory güvenlik grubu oluşturun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kullanma hakkında daha fazla bilgi edinin [anahtar kasanızın güvenliğini sağlama](key-vault-secure-your-key-vault.md).
+[Anahtar kasanızın güvenliğini sağlama](key-vault-secure-your-key-vault.md)hakkında daha fazla bilgi edinin.

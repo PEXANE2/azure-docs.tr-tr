@@ -1,5 +1,5 @@
 ---
-title: Azure'da Service Fabric üzerinde bir Java uygulaması oluşturma | Microsoft Docs
+title: 'Hızlı Başlangıç: Azure Service Fabric bir Java uygulaması oluşturma'
 description: Bu hızlı başlangıçta, bir Service Fabric güvenilir hizmetler örnek uygulaması kullanarak Azure için Java uygulaması oluşturursunuz.
 services: service-fabric
 documentationcenter: java
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/29/2019
 ms.author: suhuruli
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 656ebed78aab1ad078eb7e9410cb01876159cf13
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.custom: mvc, devcenter, seo-java-august2019
+ms.openlocfilehash: a69590adc329361ac1c2191e7a984757af4f69af
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845795"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68977101"
 ---
 # <a name="quickstart-deploy-a-java-reliable-services-application-to-service-fabric"></a>Hızlı Başlangıç: Service Fabric için Java güvenilir Hizmetleri uygulaması dağıtma
 

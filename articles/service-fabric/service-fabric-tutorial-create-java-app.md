@@ -1,5 +1,5 @@
 ---
-title: Azure'da Service Fabric üzerinde bir Java uygulaması oluşturma | Microsoft Docs
+title: 'Öğretici: Azure Service Fabric bir Java uygulaması oluşturma'
 description: Bu öğreticide, bir ön uçla güvenilir hizmet Java uygulamasının nasıl oluşturulacağını, durum bilgisi olan güvenilir hizmet arka ucunun nasıl oluşturulacağını ve uygulamanın kümeye nasıl dağıtılacağını öğreneceksiniz.
 services: service-fabric
 documentationcenter: java
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/01/2018
 ms.author: suhuruli
-ms.custom: mvc
-ms.openlocfilehash: 0a937fcb3b603a6bed97ba12533ebc965c2c8089
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.custom: mvc, seo-java-august2019
+ms.openlocfilehash: 3601bcfbb812dc9f8ee893cc1c88eb8eebce485f
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847632"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68963958"
 ---
 # <a name="tutorial-create-an-application-with-a-java-web-api-front-end-service-and-a-stateful-back-end-service-on-service-fabric"></a>Öğretici: Service Fabric üzerinde bir Java Web API ön uç hizmeti ve durum bilgisi olan bir arka uç hizmetiyle uygulama oluşturma
 

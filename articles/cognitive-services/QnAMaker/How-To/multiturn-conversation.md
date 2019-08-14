@@ -8,19 +8,19 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/26/2019
 ms.author: diberry
-ms.openlocfilehash: 264d9e89d22b30b83821f691e134d032eb4220f5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 585dc03503a61ff6666d3da3374586287e24283f
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563140"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966692"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Bir konuşmanın birden çok kümesini oluşturmak için izleme istemleri kullanın
 
-Botunuzun bir sorudan diğerine kadar olan birden çok dönüşi yönetmek için izleme komut istemlerini ve bağlamını kullanın.
+Botunuzun bir sorudan diğerine kadar olan birden çok dönüşi yönetmek için izlemekomut istemlerini ve bağlamını kullanın.
 
 Çoklu açma işlevinin nasıl çalıştığını görmek için aşağıdaki tanıtım videosunu görüntüleyin:
 
@@ -159,7 +159,7 @@ Bilgi Bankası 'na yeni bir soru-cevap çifti eklediğinizde, her bir çiftin bi
 1. Bu sorunun **Yanıt** sütununda, **izleme istemi Ekle**' yi seçin. 
 1. **İzleme istemi (Önizleme)** altında, aşağıdaki değerleri girerek yeni bir izleme istemi oluşturun: 
 
-    |Alan|Değer|
+    |Alan|Value|
     |--|--|
     |Metni görüntüle|*Bir Windows hesabı oluşturun*. İzleme isteminde görüntülenecek özel metin.|
     |Yalnızca bağlam|Bu onay kutusunu seçin. Bu yanıt yalnızca soru bağlam belirttiğinde döndürülür.|

@@ -1,50 +1,50 @@
 ---
-title: İngilizce olmayan Bilgi Bankası - soru-cevap Oluşturucu
+title: İngilizce olmayan Bilgi Bankası-Soru-Cevap Oluşturma
 titleSuffix: Azure Cognitive Services
-description: Soru-cevap Oluşturucu, Bilgi Bankası içerikleri birçok dilde gösterilmesini destekler. Ancak her soru-cevap Oluşturucu hizmetini tek bir dil için ayrılmış olması. Belirli bir soru-cevap Oluşturucu hizmetini hedefleyen oluşturulan ilk Bilgi Bankası hizmet dili ayarlar.
+description: Soru-Cevap Oluşturma birçok dilde Bilgi Bankası içeriğini destekler. Ancak, her bir Soru-Cevap Oluşturma Hizmeti tek bir dil için ayrılmalıdır. Belirli bir Soru-Cevap Oluşturma hizmetini hedeflemek için oluşturulan ilk bilgi tabanı, bu hizmetin dilini ayarlar.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/14/2019
 ms.author: diberry
-ms.openlocfilehash: 1203748b43ea5911d4717f451bca2cbe82753386
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 26792246267ced6d9fff50fe4fea11cc8d280d6a
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447411"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966682"
 ---
-# <a name="language-support-of-knowledge-base-content-for-qna-maker"></a>Bilgi Bankası içerikleri soru-cevap Oluşturucu için dil desteği
-Soru-cevap Oluşturucu, Bilgi Bankası içerikleri birçok dilde gösterilmesini destekler. Ancak her soru-cevap Oluşturucu hizmetini tek bir dil için ayrılmış olması. Belirli bir soru-cevap Oluşturucu hizmetini hedefleyen oluşturulan ilk Bilgi Bankası hizmet dili ayarlar. Bkz: [burada](../Overview/languages-supported.md) desteklenen dillerin listesi.
+# <a name="language-support-of-knowledge-base-content-for-qna-maker"></a>Soru-Cevap Oluşturma için Bilgi Bankası içeriğinin dil desteği
+Soru-Cevap Oluşturma birçok dilde Bilgi Bankası içeriğini destekler. Ancak, her bir Soru-Cevap Oluşturma Hizmeti tek bir dil için ayrılmalıdır. Belirli bir Soru-Cevap Oluşturma hizmetini hedeflemek için oluşturulan ilk bilgi tabanı, bu hizmetin dilini ayarlar. Desteklenen dillerin listesi için [buraya](../Overview/languages-supported.md) bakın.
 
-Dil ayıklanırken veri kaynaklarının içeriği otomatik olarak kabul edilir. Bu hizmet yeni bir soru-cevap Oluşturucu hizmetini ve yeni Bilgi Bankası oluşturduktan sonra dil doğru şekilde ayarlandığını doğrulayabilirsiniz.
+Dil, ayıklanan veri kaynaklarının içeriğinden otomatik olarak tanınır. Yeni bir Soru-Cevap Oluşturma Hizmeti ve bu hizmette yeni bir Bilgi Bankası oluşturduktan sonra, dilin doğru şekilde ayarlandığını doğrulayabilirsiniz.
 
-1. Gidin [Azure portalında](https://portal.azure.com/).
+1. [Azure Portal](https://portal.azure.com/)' a gidin.
 
-2. Seçin **kaynak grupları** ve soru-cevap Oluşturucu hizmeti, dağıtılmış ve seçin kaynak grubuna gidin **Azure Search** kaynak.
+2. **Kaynak grupları** ' nı seçin ve soru-cevap oluşturma hizmetinin dağıtıldığı kaynak grubuna gidin ve **Azure Search** kaynağını seçin.
 
-    ![Azure Search kaynağı seçin](../media/qnamaker-how-to-language-kb/select-azsearch.png)
+    ![Azure Search kaynak seçin](../media/qnamaker-how-to-language-kb/select-azsearch.png)
 
-3. Seçin **testkb** dizini. Bu Azure Search dizini her zaman oluşturulan ilk hesaptır ve bu hizmet, tüm bilgi bankalarından kaydedilmiş içeriğini içerir. 
+3. **Testkb** dizinini seçin. Bu Azure Search Dizin her zaman ilk oluşturulur ve bu hizmette bulunan tüm bilgi temellerine ait kaydedilen içeriği içerir. 
 
-    ![KB Test seçin](../media/qnamaker-how-to-language-kb/select-testkb.png)
+    ![Sınama KB 'sini seçin](../media/qnamaker-how-to-language-kb/select-testkb.png)
 
-4. Seçin **alanları** testkb ayrıntılarını gösteren bölüm.
+4. Testkb ayrıntılarının gösterildiği **alanlar** bölümünü seçin.
 
-    ![Alanları seçin](../media/qnamaker-how-to-language-kb/selectfields.png)
+    ![Alanları Seçin](../media/qnamaker-how-to-language-kb/selectfields.png)
 
-5. İçin kutuyu **Çözümleyicisi** dil ayrıntılarını görmek için.
+5. Dil ayrıntılarını görmek için **çözümleyici** kutusunu işaretleyin.
 
-    ![Çözümleyici seçin](../media/qnamaker-how-to-language-kb/select-analyzer.png)
+    ![Çözümleyici 'yi seçin](../media/qnamaker-how-to-language-kb/select-analyzer.png)
 
-6. Belirli bir dil Çözümleyicisi ayarlandığını bulmanız gerekir. Bu dil, Bilgi Bankası Oluşturma adımı sırasında otomatik olarak algılandı. Bu dil, kaynak oluşturulduktan sonra değiştirilemez.
+6. Çözümleyicisinin belirli bir dile ayarlandığını bulmalısınız. Bu dil, Bilgi Bankası oluşturma adımı sırasında otomatik olarak algılandı. Bu dil, kaynak oluşturulduktan sonra değiştirilemez.
 
-    ![Seçili Çözümleyicisi](../media/qnamaker-how-to-language-kb/selected-analyzer.png)
+    ![Seçili çözümleyici](../media/qnamaker-how-to-language-kb/selected-analyzer.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure Bot hizmeti ile bir soru-cevap Robotu oluşturun](../Tutorials/create-qna-bot.md)
+> [Azure bot hizmeti ile bir QnA bot oluşturma](../Tutorials/create-qna-bot.md)
