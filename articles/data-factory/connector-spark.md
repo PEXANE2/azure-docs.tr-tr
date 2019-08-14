@@ -42,12 +42,12 @@ Bağlı bir Spark hizmeti için aşağıdaki özellikleri destekler:
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | type | Type özelliği ayarlanmalıdır: **Spark** | Evet |
-| konak | Spark sunucusunun IP adresi veya ana bilgisayar adı  | Evet |
+| host | Spark sunucusunun IP adresi veya ana bilgisayar adı  | Evet |
 | port | Spark sunucusunun istemci bağlantıları için dinlemek üzere kullandığı TCP bağlantı noktası. Azure Hdınsights bağlarsanız, bağlantı noktası 443 belirtin. | Evet |
-| Sunucu türü | Spark sunucusu türü. <br/>İzin verilen değerler şunlardır: **SharkServer**, **SharkServer2**, **SparkThriftServer** | Hayır |
+| serverType | Spark sunucusu türü. <br/>İzin verilen değerler şunlardır: **SharkServer**, **SharkServer2**, **SparkThriftServer** | Hayır |
 | thriftTransportProtocol | Thrift katmanda kullanılacak taşıma protokol. <br/>İzin verilen değerler şunlardır: **İkili**, **SASL**, **HTTP** | Hayır |
 | authenticationType | Spark sunucuya erişmek için kullanılan kimlik doğrulama yöntemi. <br/>İzin verilen değerler şunlardır: **Anonim**, **kullanıcıadı**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Evet |
-| kullanıcı adı | Spark sunucusuna erişmek için kullandığınız kullanıcı adı.  | Hayır |
+| username | Spark sunucusuna erişmek için kullandığınız kullanıcı adı.  | Hayır |
 | password | Kullanıcıya karşılık gelen parola. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Hayır |
 | httpPath | Spark sunucuya karşılık gelen kısmi URL.  | Hayır |
 | enableSsl | Sunucusuna bağlantılarda SSL kullanarak şifrelenip şifrelenmeyeceğini belirtir. Varsayılan değer false'tur.  | Hayır |
