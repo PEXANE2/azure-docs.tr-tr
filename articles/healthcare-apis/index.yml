@@ -22,7 +22,7 @@ sections:
   - title: 5 Dakikalık Hızlı Başlangıçlar
     items:
       - type: paragraph
-        text: Ok bağlantısını seçerek FHIR için Azure API Önizlemesinin Azure’da sağlık hizmetlerinin birlikte çalışma olanaklarına nasıl katkıda bulunabileceğini öğrenin <img src="media/index/link.jpg" height="15" width="15"></img>.
+        text: Ok bağlantısını seçerek FHIR için Azure API Önizlemesinin Azure’da sağlık hizmetlerinin birlikte çalışma olanaklarına nasıl katkıda bulunabileceğini öğrenin <img src="media/index/link.jpg" height="15" width="15"></img>arasında yetersiz alanla karşılaştı.
       - type: table
         style: dataMatrix
         columns:

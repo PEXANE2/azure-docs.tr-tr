@@ -51,7 +51,9 @@ sections:
       - type: list
         style: unordered
         items:
-          - html: <a href="tutorial.md">Node.js kullanarak Tam Ekran Okuyucu’yu başlatma</a>
+          - html: <a href="tutorial-nodejs.md">Node.js kullanarak Tam Ekran Okuyucu’yu başlatma</a>
+          - html: <a href="tutorial-python.md">Python kullanarak Tam Ekran Okuyucu’yu başlatma</a>
+          - html: <a href="tutorial-ios-picture-immersive-reader.md">Swift kullanarak Tam Ekran Okuyucu’yu başlatma</a>
   - title: Başvuru
     items:
       - type: list

@@ -98,9 +98,6 @@
     - name: Model yorumlanabilirliği
       displayName: explainability
       href: machine-learning-interpretability-explainability.md
-    - name: FPGA ile CPU GPU ASIC
-      displayName: 'field, programmable, arrays'
-      href: concept-accelerate-with-fpgas.md
     - name: ONNX
       href: concept-onnx.md
     - name: Güvenlik
@@ -260,7 +257,7 @@
       items:
         - name: ML işlem hatları
           href: how-to-create-your-first-pipeline.md
-        - name: CI/CD için Azure işlem hatları
+        - name: CI/CD için Azure Pipelines
           displayName: 'continuous, integration, delivery'
           href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/service/context/ml-context
     - name: Kaynak kotalarını yönetme

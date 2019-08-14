@@ -14,9 +14,11 @@
 - name: Öğreticiler
   items:
     - name: Tam Ekran Okuyucu’yu Başlatma (Node.js)
-      href: tutorial.md
+      href: tutorial-nodejs.md
+    - name: Tam Ekran Okuyucu’yu Başlatma (Python)
+      href: tutorial-python.md
     - name: Tam Ekran Okuyucu’ya görüntü aktarma (Swift)
-      href: ios-picture-immersive-reader-tutorial.md
+      href: tutorial-ios-picture-immersive-reader.md
 - name: Nasıl Yapılır
   items:
     - name: Azure Active Directory kimlik doğrulaması

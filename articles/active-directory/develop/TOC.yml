@@ -295,6 +295,8 @@
               href: v2-oauth2-device-code.md
             - name: OAuth 2.0 kaynak sahibi parola kimlik bilgilerini verme
               href: v2-oauth-ropc.md
+            - name: OAuth 2.0 SAML taşıyıcı onaylama akışı
+              href: v2-saml-bearer-assertion.md
             - name: İmzalama anahtarı geçiş işlemi
               href: active-directory-signing-key-rollover.md
             - name: Kimlik belirteçleri

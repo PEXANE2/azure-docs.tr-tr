@@ -162,6 +162,8 @@
       items:
         - name: Kaynak sorunlarını giderme
           href: ../hdinsight-troubleshoot-guide.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
+        - name: hbase hbck tutarsızlıklar döndürüyor
+          href: ./hbase-troubleshoot-hbase-hbck-inconsistencies.md
         - name: Bağlantı sıfırlandıktan sonra depolama özel durumu
           href: ./hbase-troubleshoot-storage-exception-reset.md
         - name: Apache Phoenix görünümlerinde veri yok

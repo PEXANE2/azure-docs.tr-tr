@@ -60,34 +60,48 @@ sections:
               src: media/index/logo_go.svg
             title: Başlayın
         rows:
-          - title: Metni bir dilden başka bir dile çevirin
+          - title: Metin çevirme
             values:
-              - href: quickstart-csharp-translate
-              - href: quickstart-java-translate
-              - href: quickstart-nodejs-translate
-              - href: quickstart-python-translate
-              - href: quickstart-go-translate
+              - href: quickstart-translate?pivots=programming-language-csharp
+              - href: quickstart-translate?pivots=programming-language-java
+              - href: quickstart-translate?pivots=programming-language-nodejs
+              - href: quickstart-translate?pivots=programming-language-python
+              - href: quickstart-translate?pivots=programming-language-go
           - title: Metni bir betikten başka bir betiğe dönüştürün
             values:
-              - href: quickstart-csharp-transliterate
-              - href: quickstart-java-transliterate
-              - href: quickstart-nodejs-transliterate
-              - href: quickstart-python-transliterate
-              - href: quickstart-go-transliterate
-          - title: Metnin dilini tanımlayın
+              - href: quickstart-transliterate?pivots=programming-language-csharp
+              - href: quickstart-transliterate?pivots=programming-language-java
+              - href: quickstart-transliterate?pivots=programming-language-nodejs
+              - href: quickstart-transliterate?pivots=programming-language-python
+              - href: quickstart-transliterate?pivots=programming-language-go
+          - title: Metin dilini algılama
             values:
-              - href: quickstart-csharp-detect
-              - href: quickstart-java-detect
-              - href: quickstart-nodejs-detect
-              - href: quickstart-python-detect
-              - href: quickstart-go-detect
+              - href: quickstart-detect?pivots=programming-language-csharp
+              - href: quickstart-detect?pivots=programming-language-java
+              - href: quickstart-detect?pivots=programming-language-nodejs
+              - href: quickstart-detect?pivots=programming-language-python
+              - href: quickstart-detect?pivots=programming-language-go
           - title: Alternatif çeviri ve kullanım örnekleri edinin
             values:
-              - href: quickstart-csharp-dictionary
-              - href: quickstart-java-dictionary
-              - href: quickstart-nodejs-dictionary
-              - href: quickstart-python-dictionary
-              - href: quickstart-go-dictionary
+              - href: quickstart-dictionary?pivots=programming-language-csharp
+              - href: quickstart-dictionary?pivots=programming-language-java
+              - href: quickstart-dictionary?pivots=programming-language-nodejs
+              - href: quickstart-dictionary?pivots=programming-language-python
+              - href: quickstart-dictionary?pivots=programming-language-go
+          - title: Tümce uzunluğu belirleme
+            values:
+              - href: quickstart-sentences?pivots=programming-language-csharp
+              - href: quickstart-sentences?pivots=programming-language-java
+              - href: quickstart-sentences?pivots=programming-language-nodejs
+              - href: quickstart-sentences?pivots=programming-language-python
+              - href: quickstart-sentences?pivots=programming-language-go
+          - title: Desteklenen dillerin tam listesini alma
+            values:
+              - href: quickstart-languages?pivots=programming-language-csharp
+              - href: quickstart-languages?pivots=programming-language-java
+              - href: quickstart-languages?pivots=programming-language-nodejs
+              - href: quickstart-languages?pivots=programming-language-python
+              - href: quickstart-languages?pivots=programming-language-go
   - title: Adım Adım Öğreticiler
     items:
       - type: paragraph

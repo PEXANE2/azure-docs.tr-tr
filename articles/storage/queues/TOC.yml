@@ -38,12 +38,12 @@
         - name: Yetkilendirme
           href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
           items:
-            - name: Azure AD ile kimlik doğrulaması
+            - name: Azure AD ile kimlik doğrulama ve yetkilendirme
               href: ../common/storage-auth-aad.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
             - name: Paylaşılan Anahtar ile yetkilendirme
               href: /rest/api/storageservices/authorize-with-shared-key
             - name: SAS ile yetkilendirme
-              href: ../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+              href: ../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Gelişmiş tehdit koruması
           href: ../common/storage-advanced-threat-protection.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Azure ortak güvenlik öznitelikleri
@@ -118,11 +118,11 @@
                   href: ../common/storage-auth-aad-rbac-powershell.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
                 - name: Azure CLI
                   href: ../common/storage-auth-aad-rbac-cli.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-            - name: Azure AD ile kimlik doğrulaması
+            - name: Azure AD ile kimlik doğrulama ve yetkilendirme
               items:
-                - name: Yönetilen kimlikle kimlik doğrulaması
+                - name: Yönetilen kimlikle yetkilendirme
                   href: ../common/storage-auth-aad-msi.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-                - name: Uygulamadan kimlik doğrulaması yapma
+                - name: Bir uygulamadan yetkilendirme
                   href: ../common/storage-auth-aad-app.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
             - name: Paylaşılan Anahtar ile yetkilendirme
               items:
