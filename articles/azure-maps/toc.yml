@@ -91,23 +91,27 @@
               href: choose-map-style.md
             - name: Haritaya denetim ekleme
               href: map-add-controls.md
+            - name: Veri kaynağı oluşturma
+              href: create-data-source-web-sdk.md
             - name: Sembol katmanı ekleme
               href: map-add-pin.md
-            - name: Açılır pencere ekleme
-              href: map-add-popup.md
             - name: Baloncuk katmanı ekleme
               href: map-add-bubble-layer.md
-            - name: Şekil ekleme
+            - name: Çizgi katmanı ekleme
+              href: map-add-line-layer.md
+            - name: Çokgen katmanı ekleme
               href: map-add-shape.md
             - name: Isı haritası katmanı ekleme
               href: map-add-heat-map-layer.md
+            - name: Açılır pencere ekleme
+              href: map-add-popup.md
             - name: Küme noktası verileri
               href: clustering-point-data-web-sdk.md
             - name: Veri temelli stil ifadeleri kullanma
               href: data-driven-style-expressions-web-sdk.md
             - name: Görüntü şablonlarını kullanma
               href: how-to-use-image-templates-web-sdk.md
-            - name: Resme katman ekleme
+            - name: Görüntü katmanı ekleme
               href: map-add-image-layer.md
             - name: Kutucuk katmanları ekleme
               href: map-add-tile-layer.md
@@ -139,6 +143,8 @@
           href: how-to-add-symbol-to-android-map.md
         - name: Şekil ekleme
           href: how-to-add-shapes-to-android-map.md
+        - name: Özellik bilgilerini görüntüleme
+          href: display-feature-information-android.md
         - name: Kutucuk katmanı ekleme
           href: how-to-add-tile-layer-android-map.md
 - name: Başvuru
