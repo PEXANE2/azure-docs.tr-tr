@@ -1,5 +1,5 @@
 ---
-title: İş Akışı Tasarımcısı ile gelişmiş kodlama iş akışları oluşturma | Microsoft Docs
+title: İş Akışı Tasarımcısı ile gelişmiş kodlama Iş akışları oluşturun | Microsoft Docs
 description: İş Akışı Tasarımcısı ile gelişmiş kodlama iş akışları oluşturma hakkında bilgi edinin.
 services: media-services
 documentationcenter: ''
@@ -13,65 +13,66 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
-ms.author: juliako;johndeu;anilmur
-ms.openlocfilehash: 0ade52d3ae9714f2b370308253e455bcde7ac7a5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: anilmur
+ms.reviewer: juliako;johndeu
+ms.openlocfilehash: 246a1461973dba129a5b1d12be8a09703eb99267
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60825141"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "69015967"
 ---
 # <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>İş Akışı Tasarımcısı ile Gelişmiş Kodlama İş Akışları Oluşturma  
 ## <a name="overview"></a>Genel Bakış
-**İş akışı Tasarımcısı** tasarım ve kodlama ile için özel iş akışlarını oluşturmak için kullanılan bir Windows Masaüstü aracı olan **Media Encoder Premium iş akışı**.
-İş Akışı Tasarımcısı araç gücünü kullanarak, tasarım ve çalışacak karmaşık iş akışları oluşturmak **Medya Kodlayıcısı Premium**.  
+**İş akışı Tasarımcısı** , **Media Encoder Premium Workflow**kodlamaya yönelik özel iş akışlarını tasarlamak ve derlemek için kullanılan bir Windows Masaüstü aracıdır.
+İş akışı Tasarımcısı aracının gücünü kullanarak, **Medya Kodlayıcısı Premium**'da çalışacak karmaşık iş akışları tasarlayabilir ve oluşturabilirsiniz.  
 
-Giriş kaynak dosyanın özelliklerine bağlı dallanma ve iş akışları müşteri kararı mantığına içerebilir. Geçersiz kılınabilir özellikleri ve hatta en karmaşık kodlama görevleri yineleyin ve bulutta özelleştirmek kolay hale getirmek için dinamik değerler ile iş akışları oluşturabilirsiniz.
+İş akışları, giriş kaynak dosyasının özelliklerine göre müşteri karar mantığını ve dallanmayı içerebilir. En karmaşık kodlama görevlerinin bulutta tekrarlanmasını ve özelleştirmeyi kolay hale getirmek için geçersiz kılınabilir özelliklerle ve dinamik değerlerle iş akışları oluşturabilirsiniz.
 
-Örnek iş akışları oluşturabileceğiniz şunlardır:
+Oluşturabileceğiniz örnek iş akışları şunlardır:
 
-* Çözüm için kaynak içeriği inceleyin ve istenen çıkış parçaları kodlama iş akışları karar temel.  Kaynak içeriği yanlışlıkla upscaling tarafından oluşturulacak harcanan parçaları ortadan kaldırarak bu yararlı olur.
-* Birden fazla giriş dosyası, açıklamalı alt yazılar, yer paylaşımları ve birleştirme birlikte içeriği desteklemek için kullanılabilir. 
+* Çözümleme için kaynak içeriğini denetleyen ve yalnızca istenen çıktıyı izleyen karar tabanlı iş akışları.  Bu, kaynak içeriğin yanlışlıkla ölçeklendirilmesi tarafından üretilecek olan harcanan parçaları ortadan kaldırarak yararlı olur.
+* Birden çok giriş dosyası, açıklamalı alt yazıları, yer paylaşımlarını ve içeriği bir araya getirebilirsiniz. 
 
-Bu araç herhangi birini değiştirmek için de kullanılabilir bizim [iş akışları yayımlanan](media-services-workflow-designer.md#existing_workflows). 
+Bu araç, [yayımlanan iş](media-services-workflow-designer.md#existing_workflows)akışlarımızdan herhangi birini değiştirmek için de kullanılabilir. 
 
 > [!NOTE]
-> İş Akışı Tasarımcısı araç kopyasını almak için lütfen başvurun mepd@microsoft.com.
+> İş Akışı Tasarımcısı aracı kopyanızı almak için lütfen iletişim kurun mepd@microsoft.com.
 
-Bir iş akışı dosyası oluşturulduktan sonra bir varlık yüklenebilir ve ardından medya dosyalarını kodlama için kullanılabilir. İle kodlama hakkında bilgi için **Media Encoder Premium iş akışı** kullanarak **.NET**, bkz: [Gelişmiş Media Encoder Premium iş akışı ile kodlama](media-services-encode-with-premium-workflow.md).
+Bir iş akışı dosyası oluşturulduktan sonra bir varlık olarak karşıya yüklenebilir ve ardından medya dosyalarını kodlamak için kullanılabilir. **.Net**kullanarak **Media Encoder Premium Workflow** ile kodlama hakkında daha fazla bilgi için bkz. [Media Encoder Premium Workflow ile gelişmiş kodlama](media-services-encode-with-premium-workflow.md).
 
-## <a id="existing_workflows"></a>Mevcut iş akışlarını değiştirin
-Varsayılan [iş akışları yayımlanan](media-services-workflow-designer.md#existing_workflows) tasarımcı araç kullanılarak değiştirilebilir. Varsayılan iş akışı dosyalarını alabilirsiniz [burada](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows). Klasör, bu dosyaların açıklaması da içerir.
+## <a id="existing_workflows"></a>Mevcut iş akışlarını değiştirme
+Varsayılan [yayımlanan iş akışları](media-services-workflow-designer.md#existing_workflows) tasarımcı aracı kullanılarak değiştirilebilir. Varsayılan iş akışı dosyalarını [buradan](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)edinebilirsiniz. Klasör Ayrıca bu dosyaların açıklamasını içerir.
 
-Aşağıdaki videolarda tasarımcısının nasıl kullanılacağını göstermektedir.
+Aşağıdaki videolar tasarımcı 'nın nasıl kullanılacağını göstermektedir.
 
-### <a name="day-1--getting-started"></a>Günlük 1 – kullanmaya başlama
-1\. gün video kapsar:
+### <a name="day-1--getting-started"></a>Gün 1 – başlangıç
+Gün 1 video şunları içerir:
 
-* Tasarımcı genel bakış
-* Temel iş akışları – "Hello World"
-* Çıkış MP4 dosyalarını Azure Media Services akış ile kullanım için birden çok oluşturma
+* Tasarımcıya genel bakış
+* Temel Iş akışları – "Merhaba Dünya"
+* Azure Media Services akışı ile kullanmak için birden çok çıkış MP4 dosyası oluşturma
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Premium-Encoder-Workflow-Designer-Training-Videos-Day-1/player]
 > 
 > 
 
 ### <a name="day-2"></a>2\. gün
-2\. gün video kapsar:
+Gün 2 video şunları içerir:
 
-* Kaynak dosya senaryoları değişen – ses işleme
-* Gelişmiş mantık ile iş akışları
-* Graf aşamaları
+* Değişen kaynak dosya senaryoları – ses işleme
+* Gelişmiş Logic ile iş akışları
+* Grafik aşamaları
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Premium-Encoder-Workflow-Designer-Training-Videos-Day-2/player]
 > 
 > 
 
-### <a name="day-3"></a>3\. günde
-3\. günde video kapsar:
+### <a name="day-3"></a>Gün 3
+Gün 3 video şunları içerir:
 
-* İş akışları/şemaları içinde betik oluşturma
-* Geçerli Kodlayıcı ile kısıtlamaları
+* Iş akışları/planlar içinde betik oluşturma
+* Geçerli kodlayıcıyla ilgili kısıtlamalar
 * SORU- CEVAP
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Premium-Encoder-Workflow-Designer-Training-Videos-Day-3/player]
@@ -86,8 +87,8 @@ Media Services öğrenme yollarını gözden geçirin.
 ## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-Destek ihtiyaç veya özel iş akışlarını iş akışı Tasarımcısı aracında oluşturma hakkında sorularınız varsa lütfen e-posta gönderin mepd@microsoft.com.
+Iş akışı Tasarımcısı aracında desteğe ihtiyacınız varsa veya özel iş akışları oluşturma hakkında sorularınız varsa, lütfen adresine mepd@microsoft.come-posta gönderin.
 
 ## <a name="see-also"></a>Ayrıca Bkz.
-[Azure Premium Kodlayıcı iş akışı Tasarımcısı eğitim videoları](http://johndeutscher.com/2015/07/06/azure-premium-encoder-workflow-designer-training-videos/)
+[Azure Premium Kodlayıcısı İş Akışı Tasarımcısı eğitim videoları](http://johndeutscher.com/2015/07/06/azure-premium-encoder-workflow-designer-training-videos/)
 

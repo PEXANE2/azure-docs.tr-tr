@@ -1,7 +1,7 @@
 ---
 title: Mimari & temel kavramlar
 titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning hizmeti oluşturan mimari, hüküm, kavramlar ve iş akışı hakkında bilgi edinin.
+description: Azure Machine Learning hizmetini oluşturan mimari, hüküm, kavramlar ve iş akışları hakkında bilgi edinin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: e6f6c41e5de4f4a053748dfb08dc57e8acac32e5
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: ea5e476680b07a6a7ba2b57e94f1f0b99cc10987
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848232"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990095"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Azure Machine Learning hizmeti nasıl kullanılır: Mimari ve kavramlar
 
@@ -49,12 +49,16 @@ Bu araçları Azure Machine Learning için kullanın:
 + [Azure Machine Learning vs Code uzantılı](how-to-vscode-tools.md) Visual Studio Code kod yazma
 + Kod yazmadan iş akışı adımlarını gerçekleştirmek için [Azure Machine Learning hizmeti için görsel arabirimi (Önizleme)](ui-concept-visual-interface.md) kullanın.
 
-## <a name="glossary-of-concepts"></a>Kavramların sözlüğü
+> [!NOTE]
+> Bu makalede Azure Machine Learning hizmeti tarafından kullanılan hüküm ve kavramlar tanımlanmakla birlikte, Azure platformu için hüküm ve kavramlar tanımlamaz. Azure platform terminolojisi hakkında daha fazla bilgi için [Microsoft Azure sözlüğü](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology)bölümüne bakın.
+
+## <a name="glossary"></a>Sözlük
 
 + <a href="#workspaces">Alanında</a>
 + <a href="#experiments">Denemeler</a>
 + <a href="#models">Modelde</a>
 + <a href="#run-configurations">Yapılandırmayı Çalıştır</a>
++ [Tahmini](#estimators)
 + <a href="#datasets-and-datastores">Veri kümesi & veri depoları</a>
 + <a href="#compute-targets">İşlem hedefleri</a>
 + <a href="#training-scripts">Eğitim betiği</a>
@@ -69,19 +73,9 @@ Bu araçları Azure Machine Learning için kullanın:
 + <a href="#ml-pipelines">ML işlem hatları</a>
 + <a href="#logging">Logging</a>
 
-> [!NOTE]
-> Bu makalede Azure Machine Learning hizmeti tarafından kullanılan hüküm ve kavramlar tanımlanmakla birlikte, Azure platformu için hüküm ve kavramlar tanımlamaz. Azure platform terminolojisi hakkında daha fazla bilgi için [Microsoft Azure sözlüğü](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology)bölümüne bakın.
-
-
 ### <a name="workspaces"></a>Çalışma Alanı
 
-[Çalışma alanı](concept-workspace.md) Azure Machine Learning hizmeti için en üst düzey kaynaktır. Azure Machine Learning hizmeti kullandığınızda oluşturduğunuz tüm yapıtlarla çalışmak için merkezi bir yer sağlar.
-
-Çalışma alanının bir sınıflandırması aşağıdaki diyagramda gösterilmiştir:
-
-[![Çalışma alanı sınıflandırma](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
-
-Çalışma alanları hakkında daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanı nedir?](concept-workspace.md).
+[Çalışma alanı](concept-workspace.md) Azure Machine Learning hizmeti için en üst düzey kaynaktır. Azure Machine Learning hizmeti kullandığınızda oluşturduğunuz tüm yapıtlarla çalışmak için merkezi bir yer sağlar. Çalışma alanını başkalarıyla paylaşabilirsiniz. Çalışma alanlarının ayrıntılı bir açıklaması için bkz. [Azure Machine Learning çalışma alanı nedir?](concept-workspace.md).
 
 ### <a name="experiments"></a>Denemeler
 
@@ -97,7 +91,7 @@ Bir model, Azure Machine learning'de bir çalıştırma tarafından oluşturulur
 
 Azure Machine Learning hizmeti Framework 'ün agstik. Bir model oluşturduğunuzda, Scikit-öğren, XGBoost, PyTorch, TensorFlow ve Chainer gibi popüler Machine Learning çerçevesini kullanabilirsiniz.
 
-Bir modele eğitim verme örneği için bkz [. Öğretici: Azure Machine Learning hizmeti](tutorial-train-models-with-aml.md)ile görüntü sınıflandırma modeli eğitme.
+Scikit-öğrenme ve bir Estimator kullanarak bir modele eğitim verme örneği için bkz [. Öğretici: Azure Machine Learning hizmeti](tutorial-train-models-with-aml.md)ile görüntü sınıflandırma modeli eğitme.
 
 **Model kayıt defteri** , Azure Machine Learning hizmeti çalışma alanınızdaki tüm modelleri izler.
 
@@ -120,11 +114,24 @@ Bir modeli kaydetme örneği için bkz. [Azure Machine Learning görüntü sın�
 
 Örneğin, çalışma yapılandırması için bkz. [modelinizi eğitme için bir işlem hedefi seçme ve kullanma](how-to-set-up-training-targets.md).
 
+### <a name="estimators"></a>Tahmini
+
+Popüler çerçeveler ile model eğitimi kolaylaştırmak için, tahmin aracı sınıfı kolayca çalışma yapılandırması oluşturmanıza olanak sağlar. Seçtiğiniz herhangi bir öğrenme çerçevesini kullanan eğitim betikleri göndermek için genel bir [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) oluşturabilir ve kullanabilirsiniz (örneğin, scikit-öğren).
+
+Pytorch, TensorFlow ve Chainer görevleri için Azure Machine Learning Ayrıca bu çerçeveleri kullanmayı basitleştirmek için, ilgili [pytorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)ve [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) tahmini 'ı da sağlar.
+
+Daha fazla bilgi için aşağıdaki makalelere bakın:
+
+* Tüm [ml modellerini tahmini ile eğitme](how-to-train-ml-models.md).
+* [Pytorch derin öğrenme modellerini Azure Machine Learning ölçeklendirirken eğitme](how-to-train-pytorch.md).
+* [Azure Machine Learning hizmeti ile, TensorFlow modellerini eğitme ve kaydetme](how-to-train-tensorflow.md).
+* [Azure Machine Learning hizmeti Ile Chainer modellerini eğitme ve kaydetme](how-to-train-chainer.md).
+
 ### <a name="datasets-and-datastores"></a>Veri kümeleri ve veri depoları
 
 **Azure Machine Learning veri kümeleri** (Önizleme), erişiminizi ve verilerinize çalışmayı kolaylaştırır. Veri kümeleri, model eğitimi ve işlem hattı oluşturma gibi çeşitli senaryolarda verileri yönetir. Azure Machine Learning SDK 'yı kullanarak, temel depolamaya erişebilir, verileri inceleyebilir ve hazırlayabilir, farklı veri kümesi tanımlarının yaşam döngüsünü yönetebilir ve eğitiminde ve üretimde kullanılan veri kümeleri arasında karşılaştırma yapabilirsiniz.
 
-Veri kümeleri, veya `from_delimited_files()` `to_pandas_dataframe()`kullanma gibi popüler biçimlerdeki verilerle çalışmak için yöntemler sağlar.
+Veri kümeleri, veya `from_delimited_files()` `to_pandas_dataframe()`kullanma gibi popüler biçimlerdeki verilerle çalışmaya yönelik yöntemler sağlar.
 
 Daha fazla bilgi için bkz. [Azure Machine Learning veri kümeleri oluşturma ve kaydetme](how-to-create-register-datasets.md).  Veri kümelerini kullanarak daha fazla örnek için bkz. [örnek Not defterleri](https://github.com/Azure/MachineLearningNotebooks/tree/master/work-with-data/datasets).
 
@@ -152,7 +159,6 @@ Aşağıdaki bilgileri içeren bir kaydı bir çalıştırmadır:
 * Bir anlık görüntüsünü çalıştırma önce komut dosyalarınızı içeren dizine
 
 Bir modeli eğitme için bir komut dosyası gönderdiğinizde bir çalıştırma oluşturursunuz. Bir çalıştırma, sıfır veya daha fazla alt çalıştırma olabilir. Örneğin, en üst düzey çalıştırmanın iki alt çalıştırması olabilir ve bunların her biri kendi alt öğesi olabilir.
-
 
 ### <a name="github-tracking-and-integration"></a>GitHub izleme ve Tümleştirme
 

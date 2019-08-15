@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: peterlu
 ms.date: 06/01/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 710d64b445953ae3124830931c8cbb9315d32b83
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 3594d9670e8fb94b053479352fb88997caa16db6
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875721"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016485"
 ---
 # <a name="execute-r-script"></a>R Betiği yürütme
 
@@ -76,8 +76,7 @@ Visual Interface 'e depolanmış veri kümeleri, bu modülle yüklendiğinde oto
 
 1.  Deneme bilgisayarınıza **R betiği Yürüt** modülünü ekleyin.
 
-    > [!NOTE]
-    > **Yürütme r betiği** modülüne geçirilen tüm veriler R `data.frame` biçimine dönüştürülür.
+  
 
 1. Betiği için gereken tüm girdileri bağlayın. Girişler isteğe bağlıdır ve veri ve ek R kodu içerebilir.
 
@@ -90,10 +89,33 @@ Visual Interface 'e depolanmış veri kümeleri, bu modülle yüklendiğinde oto
 1. **R betiği** metin kutusuna geçerli R betiği yazın veya yapıştırın.
 
     Başlamanıza yardımcı olmak için **R betiği** metin kutusu, düzenlenebilir veya değiştirilebilir örnek kodla önceden doldurulur.
+    
+```R
+# R version: 3.5.1
+# The script MUST contain a function named azureml_main
+# which is the entry point for this module.
 
-    * Betik, Bu modülün giriş noktası olan `azureml_main`adlı bir işlev içermelidir.
+# The entry point function can contain up to two input arguments:
+#   Param<dataframe1>: a R DataFrame
+#   Param<dataframe2>: a R DataFrame
+azureml_main <- function(dataframe1, dataframe2){
+  print("R script run.")
 
-    * Giriş noktası işlevi, en fazla iki giriş bağımsız değişkeni içerebilir: `Param<dataframe1>` ve`Param<dataframe2>`
+  # If a zip file is connected to the third input port, it is
+  # unzipped under "./Script Bundle". This directory is added
+  # to sys.path.
+
+  # Return datasets as a Named List
+  return(list(dataset1=dataframe1, dataset2=dataframe2))
+}
+```
+
+ * Betik, Bu modülün giriş noktası olan `azureml_main`adlı bir işlev içermelidir.
+
+ * Giriş noktası işlevi, en fazla iki giriş bağımsız değişkeni içerebilir: `Param<dataframe1>` ve`Param<dataframe2>`
+ 
+   > [!NOTE]
+    > **Execute R betiği** modülüne geçirilen verilere ve `dataframe2`Azure Machine Learning Studio (Studio başvurusu `dataset1`, `dataframe1` , `dataset2`) ' den farklı olarak başvurulur. Giriş verilerinin betiğe doğru şekilde yazıldığından emin olmak için lütfen kontrol edin.  
  
     > [!NOTE]
     >  Var olan R kodunun, bir görsel arabirim deneortamında çalışması için küçük değişikliklere ihtiyacı olabilir. Örneğin, CSV biçiminde sağladığınız giriş verileri, kodunuzda kullanabilmeniz için açıkça bir veri kümesine dönüştürülmelidir. R dilinde kullanılan veri ve sütun türleri de görsel arabirimde kullanılan veri ve sütun türlerinden bazı yollarla farklılık gösterir.
@@ -108,7 +130,7 @@ Visual Interface 'e depolanmış veri kümeleri, bu modülle yüklendiğinde oto
 
 R 'deki standart iletiler ve hatalar modülün günlüğüne döndürülür.
 
-## <a name="sample-scripts"></a>Örnek komut dosyaları
+## <a name="sample-scripts"></a>Örnek betikler
 
 Özel R betiği kullanarak denemenizi genişletebilmeniz için birçok yol vardır.  Bu bölüm ortak görevler için örnek kod sağlar.
 
@@ -243,7 +265,7 @@ Kullanılabilecek önceden yüklenmiş R paketlerinin geçerli listesi:
 | bindr        | 0.1.1      | 
 | bindrcpp     | 0.2.2      | 
 | iki kez       | 1.0-6      | 
-| başlatma         | 1.3-22     | 
+| önyükleme         | 1.3-22     | 
 | Brob        | 0.5.2      | 
 | callr        | 3.2.0      | 
 | kar        | 6.0-84     | 
@@ -252,7 +274,7 @@ Kullanılabilecek önceden yüklenmiş R paketlerinin geçerli listesi:
 | sınıf        | 7.3-15     | 
 | CLI          | 1.1.0      | 
 | Clipr        | 0.6.0      | 
-| içi      | 2.0.7-1    | 
+| küme      | 2.0.7-1    | 
 | codetools    | 0.2-16     | 
 | colorspace   | 1.4-1      | 
 | Derleyici     | 3.5.1      | 
@@ -280,7 +302,7 @@ Kullanılabilecek önceden yüklenmiş R paketlerinin geçerli listesi:
 | gplotlar       | 3.0.1.1    | 
 | grafik     | 3.5.1      | 
 | grDevices    | 3.5.1      | 
-| çizgisi         | 3.5.1      | 
+| kılavuz         | 3.5.1      | 
 | gtable       | 0.3.0      | 
 | gtools       | 3.8.1      | 
 | Haven        | 2.1.0      | 

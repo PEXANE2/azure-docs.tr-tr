@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/05/2019
 ms.author: dacurwin
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 5fde581f322504c7e329da7fa153671b8a91183d
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: bae05e890ef76ada9f775293c673cb8baa82c8bf
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688372"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954577"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Azure Backup iş yüklerini izleme
 
@@ -87,6 +87,9 @@ Bir uyarı ortaya çıktığında kullanıcılara bildirilir. Azure Backup, e-po
 
 ![RS Kasası yerleşik e-posta bildirimi](media/backup-azure-monitoring-laworkspace/rs-vault-inbuiltnotification.png)
 
+> [!NOTE]
+> SQL yedeklemeleriyle ilgili uyarılar birleştirilir ve e-posta yalnızca ilk oluşum için gönderilir. Ancak, uyarı Kullanıcı tarafından devre dışı bırakılırsa, bir sonraki oluşum başka bir e-posta tetikleyecektir.
+
 Bildirim yapılandırıldığında, bir hoş geldiniz veya tanıtım e-postası alırsınız. Bu, bir uyarı ortaya çıktığında Azure Backup bu adreslere e-posta gönderebileceğinizi onaylar.<br>
 
 Sıklık bir saatlik Özet olarak ayarlandıysa ve bir süre içinde bir uyarı harekete geçirilir ve çözümlenirse, yaklaşan saatlik Özet 'in bir parçası olmayacaktır.
@@ -95,6 +98,14 @@ Sıklık bir saatlik Özet olarak ayarlandıysa ve bir süre içinde bir uyarı 
 >
 > * **Verileri silme ile korumayı durdur** gibi bir bozucu işlem gerçekleştirilirse, kurtarma hizmeti Kasası için bildirimler yapılandırılmadığı halde bir uyarı oluşturulur ve abonelik sahiplerine, yöneticilerine ve ortak yöneticilerine bir e-posta gönderilir.
 > * Başarılı işlerin bildirimini yapılandırmak için [Log Analytics](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-workspace)kullanın.
+
+## <a name="inactivating-alerts"></a>Uyarıları etkinleştirme
+
+Etkin bir uyarıyı devre dışı bırakmak/çözümlemek için, devre dışı bırakmak istediğiniz uyarıya karşılık gelen liste öğesine tıklayabilirsiniz. Bu, en üstteki ' devre dışı ' düğmesi ile uyarı hakkında ayrıntılı bilgi görüntüleyen bir ekran açar. Bu düğmeye tıkladığınızda, uyarının durumu ' etkin değil ' olarak değişir. Ayrıca, bu uyarıya karşılık gelen liste öğesine sağ tıklayıp ' devre dışı bırak ' seçeneğini belirleyerek bir uyarıyı devre dışı bırakabilirsiniz.
+
+![RS Kasası uyarısı intivasyonu](media/backup-azure-monitoring-laworkspace/vault-alert-inactivation.png)
+
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

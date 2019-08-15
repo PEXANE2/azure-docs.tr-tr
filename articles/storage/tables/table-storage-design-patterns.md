@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: tamram
 ms.subservice: tables
-ms.openlocfilehash: 40f760ab054154a02bea9eb341bda33bb879d824
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 82910bf5c42629c2d4f077ad6df2adbfc9dcf021
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249569"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989985"
 ---
 # <a name="table-design-patterns"></a>Tablo tasarımı desenleri
 Bu makalede, tablo hizmeti çözümleriyle kullanım için uygun bazı desenler açıklanmaktadır. Ayrıca, diğer tablo depolama Tasarım makalelerinde ele alınan bazı sorunları ve ilgili konuları nasıl uygulayakullanabileceğinizi öğreneceksiniz. Aşağıdaki diyagramda, farklı düzenlerinin arasındaki ilişkileri özetlenmektedir:  
@@ -24,7 +24,7 @@ Bu makalede, tablo hizmeti çözümleriyle kullanım için uygun bazı desenler 
 Yukarıdaki desen eşleme desenleri (mavi) ve bu kılavuzda belirtilmiştir ters desenler (turuncu) bazı ilişkiler vurgular. Dikkate değer veren birçok diğer desen vardır. Örneğin, tablo hizmeti için ana senaryoları biri kullanmaktır [gerçekleştirilmiş görünüm düzeni](https://msdn.microsoft.com/library/azure/dn589782.aspx) gelen [komut sorgu sorumluluğu ayrımı (CQRS)](https://msdn.microsoft.com/library/azure/jj554200.aspx) deseni.  
 
 ## <a name="intra-partition-secondary-index-pattern"></a>İçi bölüm ikincil dizin düzeni
-Her varlık kullanan birden çok kopyalarını farklı Store **RowKey** değerlerini (aynı bölüme) etkinleştirmek hızlı ve verimli aramalar ve alternatif sıralama düzenleri kullanarak farklı **RowKey** değerleri. Kopyalar arasındaki Güncelleştirmeler EGT 'ler kullanılarak tutarlı tutulabilirler.  
+Her varlık kullanan birden çok kopyalarını farklı Store **RowKey** değerlerini (aynı bölüme) etkinleştirmek hızlı ve verimli aramalar ve alternatif sıralama düzenleri kullanarak farklı **RowKey** değerleri. Kopya arasında güncelleştirmeleri saklanır tutarlı EGTs kullanma.  
 
 ### <a name="context-and-problem"></a>Bağlam ve sorun
 Tablo hizmetini kullanarak varlıkları otomatik olarak dizinleyen **PartitionKey** ve **RowKey** değerleri. Bu, verimli bir şekilde bu değerleri kullanarak bir varlığı almak bir istemci uygulaması sağlar. Örneğin, aşağıda gösterilen tablo yapısını kullanarak, bir istemci uygulaması, departman adı ve çalışan KIMLIĞI ( **partitionkey** ve **rowkey** değerleri) kullanarak bireysel bir çalışan varlığı almak için bir nokta sorgusu kullanabilir. Ayrıca, bir istemci her bir departman içindeki çalışan KIMLIĞINE göre sıralanmış varlıkları alabilir.
@@ -34,7 +34,7 @@ Tablo hizmetini kullanarak varlıkları otomatik olarak dizinleyen **PartitionKe
 Ayrıca e-posta adresi gibi başka bir özelliğin değerini temel alan bir çalışan varlık bulamaz istiyorsanız bir eşleşme bulmak için daha az verimli bir bölüm tarama kullanmanız gerekir. Tablo hizmeti, ikincil dizinler sağlamaz olmasıdır. Ayrıca, çalışanların farklı bir düzende sıralanmış bir listesini istemek için bir seçenek yoktur **RowKey** sırası.  
 
 ### <a name="solution"></a>Çözüm
-İkincil dizinler eksikliği geçici olarak çözmek için farklı bir kullanarak her kopya her varlığın birden çok kopyasını depolayabilirsiniz **RowKey** değeri. Aşağıda gösterilen yapılarla bir varlık depoluysanız, e-posta adresini veya çalışan KIMLIĞINI temel alarak çalışan varlıklarını etkin bir şekilde alabilirsiniz. Ön ek değerleri **RowKey**, "empid_" ve "email_" tek bir çalışan veya çalışan bir dizi için bir dizi e-posta adresleri veya çalışan kimlikleri kullanarak sorgulamak etkinleştirin.  
+İkincil dizinler eksikliği geçici olarak çözmek için farklı bir kullanarak her kopya her varlığın birden çok kopyasını depolayabilirsiniz **RowKey** değeri. Aşağıda gösterilen yapılarla bir varlık depoluysanız, e-posta adresini veya çalışan KIMLIĞINI temel alarak çalışan varlıklarını etkin bir şekilde alabilirsiniz. **Rowkey**, "empid_" ve "email_" için önek değerleri, bir dizi e-posta adresini veya çalışan kimliklerini kullanarak tek bir çalışan veya bir dizi çalışanı sorgulamanızı sağlar.  
 
 ![Çalışan varlıkları](media/storage-table-design-guide/storage-table-design-IMAGE07.png)
 
@@ -48,7 +48,7 @@ Bir dizi çalışan varlığı için sorgulama yaparsanız, **Rowkey**içinde uy
 * Satış departmanındaki tüm çalışanları 000100:000199 ' de aralığında bir çalışan KIMLIĞI ile bulmak için: $filter = (PartitionKey EQ ' Sales ') ve (rowkey Ge ' empid_000100 ') ve (RowKey Le ' empid_000199 ')  
 * Satış departmanındaki tüm çalışanlar ' bir ' harfi ile başlayan bir e-posta adresiyle bulunacak: $filter = (PartitionKey eq 'Satış') ve (RowKey ge 'email_a') ve (RowKey lt 'email_b')  
   
-  Yukarıdaki örneklerde kullanılan filtre sözdiziminin tablo hizmeti REST API olduğunu unutmayın. daha fazla bilgi için bkz. [Sorgu varlıkları](https://msdn.microsoft.com/library/azure/dd179421.aspx).  
+  Yukarıdaki örneklerde kullanılan filtre söz dizimi hakkında daha fazla bilgi için REST API, tablo hizmetinden olup [varlıkları sorgulayın](https://msdn.microsoft.com/library/azure/dd179421.aspx).  
 
 ### <a name="issues-and-considerations"></a>Sorunlar ve dikkat edilmesi gerekenler
 Bu düzenin nasıl uygulanacağına karar verirken aşağıdaki noktaları göz önünde bulundurun:  
@@ -58,12 +58,12 @@ Bu düzenin nasıl uygulanacağına karar verirken aşağıdaki noktaları göz 
 * Varlığın iki kopyasını atomik olarak güncelleştirmek için EGTs kullanarak yinelenen varlıklarınızı birbiriyle tutarlı kalmasını sağlayabilirsiniz. Bu, bir varlığın tüm kopyaları aynı bölümde saklamalısınız anlamına gelir. Daha fazla bilgi için konudaki [varlık grubu işlemleri kullanılarak](table-storage-design.md#entity-group-transactions).  
 * İçin kullanılan değer **RowKey** her varlık için benzersiz olmalıdır. Bileşik anahtar değerleri kullanmayı düşünün.  
 * **Rowkey** 'teki sayısal değerleri doldurma (örneğin, çalışan kimliği 000223), üst ve alt sınırlara göre doğru sıralamayı ve filtrelemeyi sunar.  
-* Mutlaka varlığınızın tüm özelliklerini yinelenen gerekmez. Örneğin, sorgular, arama, e-posta kullanarak varlıkları adres **RowKey** hiçbir zaman çalışanın yaş'ı gerekir, bu varlıkları aşağıdaki yapıya sahip olabilir:
+* Mutlaka varlığınızın tüm özelliklerini yinelenen gerekmez. Örneğin, e-posta kullanarak varlıkları bir şekilde sorguları içinde adresi **RowKey** hiçbir zaman çalışanın yaş'ı gerekir, bu varlıkları aşağıdaki yapıya sahip olabilir:
 
    ![Çalışan varlık yapısı](media/storage-table-design-guide/storage-table-design-IMAGE08.png)
 
 
-* Yinelenen verileri depolamak ve bir varlık bulmak için bir sorgu kullanmak ve gerekli verileri aramak için tek bir sorgu ile ihtiyacınız olan tüm verileri almanızı sağlamak genellikle daha iyidir.  
+* Yinelenen verileri depolamak ve bir varlık ile diğer gerekli verileri aramak için bulmak için bir sorgu kullanımı çok tek bir sorgu ile ihtiyacınız olan tüm verileri alabilirsiniz emin olmak genellikle iyidir.  
 
 ### <a name="when-to-use-this-pattern"></a>Bu düzenin kullanılacağı durumlar
 Farklı anahtarlar, çeşitli istemci farklı sıralamalar varlıkları alma gerektiğinde kullanarak varlıkları almak istemci uygulamanız gerektiğinde ve benzersiz değerler çeşitli kullanarak her bir varlık tanımlayabilirsiniz bu düzeni kullanın. Ancak, farklı kullanarak varlık aramaları gerçekleştirilirken bölüm ölçeklenebilirlik sınırları aşmadığından emin olmalıdır **RowKey** değerleri.  
@@ -82,11 +82,11 @@ Her varlık kullanan birden çok kopyalarını farklı Store **RowKey** değerle
 ### <a name="context-and-problem"></a>Bağlam ve sorun
 Tablo hizmetini kullanarak varlıkları otomatik olarak dizinleyen **PartitionKey** ve **RowKey** değerleri. Bu, verimli bir şekilde bu değerleri kullanarak bir varlığı almak bir istemci uygulaması sağlar. Örneğin, aşağıda gösterilen tablo yapısını kullanarak, bir istemci uygulaması, departman adı ve çalışan KIMLIĞI ( **partitionkey** ve **rowkey** değerleri) kullanarak bireysel bir çalışan varlığı almak için bir nokta sorgusu kullanabilir. Ayrıca, bir istemci her bir departman içindeki çalışan KIMLIĞINE göre sıralanmış varlıkları alabilir.  
 
-![Çalışan KIMLIĞI](media/storage-table-design-guide/storage-table-design-IMAGE09.png)
+![Çalışan Kimliği](media/storage-table-design-guide/storage-table-design-IMAGE09.png)
 
 Ayrıca e-posta adresi gibi başka bir özelliğin değerini temel alan bir çalışan varlık bulamaz istiyorsanız bir eşleşme bulmak için daha az verimli bir bölüm tarama kullanmanız gerekir. Tablo hizmeti, ikincil dizinler sağlamaz olmasıdır. Ayrıca, çalışanların farklı bir düzende sıralanmış bir listesini istemek için bir seçenek yoktur **RowKey** sırası.  
 
-Bu varlıklara karşı çok yüksek işlem hacmi benimsemeyi bekleme ve tablo hizmeti 'nin istemcinizi azaltma riskini en aza indirmek istiyorsunuz.  
+Bu varlıklara yönelik yüksek hacimli işlemlere benimsemeyi bekleme olursunuz ve tablo hizmeti 'nin istemcinizi azaltma riskini en aza indirmek istersiniz.  
 
 ### <a name="solution"></a>Çözüm
 İkincil dizinler eksikliği geçici olarak çözmek için her kopya kullanarak her varlık, birden çok kopyasının farklı depolayabilirsiniz **PartitionKey** ve **RowKey** değerleri. Aşağıda gösterilen yapılarla bir varlık depoluysanız, e-posta adresini veya çalışan KIMLIĞINI temel alarak çalışan varlıklarını etkin bir şekilde alabilirsiniz. Ön ek değerleri **PartitionKey**, "empid_" ve "email_" bir sorgu için kullanmak istediğiniz hangi dizini belirlemek etkinleştirin.  
@@ -104,7 +104,7 @@ Bir dizi çalışan varlığı için sorgulama yaparsanız, **Rowkey**içinde uy
 * Satış departmanındaki tüm çalışanları, çalışan KIMLIĞI sırasına göre **000100** ile **000199** arasında bir çalışan kimliği ile bulmak için: $Filter = (Partitionkey EQ ' empid_Sales ') ve (rowkey Ge ' 000100 ') ve (rowkey Le ' 000199 ')  
 * E-posta adresi kullanmak sıralanmış 'a' ile başlayan bir e-posta adresiyle Satış departmanındaki tüm çalışanlar bulmak için: $filter = (PartitionKey eq ' email_Sales') ve (RowKey ge 'bir') ve (RowKey lt 'b')  
 
-Yukarıdaki örneklerde kullanılan filtre sözdiziminin tablo hizmeti REST API olduğunu unutmayın. daha fazla bilgi için bkz. [Sorgu varlıkları](https://msdn.microsoft.com/library/azure/dd179421.aspx).  
+Yukarıdaki örneklerde kullanılan filtre söz dizimi hakkında daha fazla bilgi için REST API, tablo hizmetinden olup [varlıkları sorgulayın](https://msdn.microsoft.com/library/azure/dd179421.aspx).  
 
 ### <a name="issues-and-considerations"></a>Sorunlar ve dikkat edilmesi gerekenler
 Bu düzenin nasıl uygulanacağına karar verirken aşağıdaki noktaları göz önünde bulundurun:  
@@ -113,11 +113,11 @@ Bu düzenin nasıl uygulanacağına karar verirken aşağıdaki noktaları göz 
 * Tablo depolama, yinelenen veri depolamanın maliyeti yükü büyük kaygısı olmaması gerekir kullanmak görece ucuz. Ancak, her zaman öngörülen depolama gereksinimlerinize göre tasarımınızı maliyetini değerlendirmek ve yalnızca istemci uygulamanızı yürütecek sorguları desteklemek için yinelenen varlıkları ekleyin.  
 * İçin kullanılan değer **RowKey** her varlık için benzersiz olmalıdır. Bileşik anahtar değerleri kullanmayı düşünün.  
 * **Rowkey** 'teki sayısal değerleri doldurma (örneğin, çalışan kimliği 000223), üst ve alt sınırlara göre doğru sıralamayı ve filtrelemeyi sunar.  
-* Mutlaka varlığınızın tüm özelliklerini yinelenen gerekmez. Örneğin, sorgular, arama, e-posta kullanarak varlıkları adres **RowKey** hiçbir zaman çalışanın yaş'ı gerekir, bu varlıkları aşağıdaki yapıya sahip olabilir:
+* Mutlaka varlığınızın tüm özelliklerini yinelenen gerekmez. Örneğin, e-posta kullanarak varlıkları bir şekilde sorguları içinde adresi **RowKey** hiçbir zaman çalışanın yaş'ı gerekir, bu varlıkları aşağıdaki yapıya sahip olabilir:
   
    ![Çalışan varlığı (ikincil dizin)](media/storage-table-design-guide/storage-table-design-IMAGE11.png)
 
-* Yinelenen verileri depolamak ve ikincil dizin ve başka bir arama gerekli verileri birincil dizin kullanarak bir varlık bulmak için bir sorgu kullanımı çok tek bir sorgu ile ihtiyacınız olan tüm verileri alabilirsiniz emin olmak genellikle iyidir.  
+* Yinelenen verileri depolamak ve tek bir sorgu ile ihtiyacınız olan tüm verileri, ikincil dizini kullanarak bir varlığı bulmak için bir sorgu kullanmaktan, diğeri ise birincil dizinde gerekli verileri aramak için bir sorgu kullanmak zorunda olduğunuzdan emin olmak için daha iyi bir seçenektir.  
 
 ### <a name="when-to-use-this-pattern"></a>Bu düzenin kullanılacağı durumlar
 Farklı anahtarlar, çeşitli istemci farklı sıralamalar varlıkları alma gerektiğinde kullanarak varlıkları almak istemci uygulamanız gerektiğinde ve benzersiz değerler çeşitli kullanarak her bir varlık tanımlayabilirsiniz bu düzeni kullanın. Farklı kullanarak varlık aramaları gerçekleştirilirken bölüm ölçeklenebilirlik sınırlarını aşmamak istediğinizde bu düzeni kullanın **RowKey** değerleri.  
@@ -144,7 +144,7 @@ EGTs atomik işlemler aynı bölüm anahtarı paylaşan birden fazla varlıkta e
 
 ### <a name="solution"></a>Çözüm
 Azure kuyrukları kullanılarak, son tutarlılık bölümler veya depolama sistemleri arasında iki veya daha fazla sunan bir çözüm uygulayabilirsiniz.
-Bu yaklaşım göstermek için eski çalışan varlıkları arşivlemek için gereksinim varsayılır. Eski çalışan varlıkları nadiren sorgulanan ve geçerli çalışanlar ile ilgili herhangi bir etkinlik dışında tutulacak. Bu gereksinimin uygulanması için etkin depolamak **geçerli** tablo ve eski çalışanları **arşiv** tablo. Bir çalışan arşivleme, gerektirir varlıktan silmenize **geçerli** tablo ve varlığa ekleme **arşiv** tablosu, ancak bir EGT iki bu işlemleri gerçekleştirmek için kullanamazsınız. Bir hata görünür bir varlık veya hiçbir tablolarında neden riskini önlemek için arşiv işlemi sonunda tutarlı olması gerekir. Aşağıdaki sıralama diyagramı, bu işlem adımları açıklanmaktadır. Metin aşağıdaki özel durum yolları için daha fazla ayrıntı sağlanır.  
+Bu yaklaşım göstermek için eski çalışan varlıkları arşivlemek için gereksinim varsayılır. Eski çalışan varlıkları nadiren sorgulanan ve geçerli çalışanlar ile ilgili herhangi bir etkinlik dışında tutulacak. Bu gereksinimi uygulamak için, **geçerli** tablodaki etkin çalışanları ve **Arşiv** tablosunda eski çalışanları depolarlar. Bir çalışan arşivleme, gerektirir varlıktan silmenize **geçerli** tablo ve varlığa ekleme **arşiv** tablosu, ancak bir EGT iki bu işlemleri gerçekleştirmek için kullanamazsınız. Bir hata görünür bir varlık veya hiçbir tablolarında neden riskini önlemek için arşiv işlemi sonunda tutarlı olması gerekir. Aşağıdaki sıralama diyagramı, bu işlem adımları açıklanmaktadır. Metin aşağıdaki özel durum yolları için daha fazla ayrıntı sağlanır.  
 
 ![Azure Kuyrukları çözümü](media/storage-table-design-guide/storage-table-design-IMAGE12.png)
 
@@ -162,7 +162,7 @@ Geçici hatalar tablo ve kuyruk hizmetlerine bazı hataları olan ve istemci uyg
 ### <a name="issues-and-considerations"></a>Sorunlar ve dikkat edilmesi gerekenler
 Bu düzenin nasıl uygulanacağına karar verirken aşağıdaki noktaları göz önünde bulundurun:  
 
-* Bu çözüm, işlem yalıtım için sağlamaz. Örneğin, bir istemci okuyabilir **geçerli** ve **arşiv** tablolar adımları çalışan rolü olduğu zaman **4** ve **5**ve bir Veri Görünümü tutarsız. Verilerin sonunda tutarlı olacağını unutmayın.  
+* Bu çözüm, işlem yalıtım için sağlamaz. Örneğin, bir istemci okuyabilir **geçerli** ve **arşiv** tablolar adımları çalışan rolü olduğu zaman **4** ve **5**ve bir Veri Görünümü tutarsız. Veri sonunda tutarlı olur.  
 * Adım 4 ve 5 nihai tutarlılığı sağlamak için etkili olduğundan emin olması gerekir.  
 * Çözüm, birden fazla kuyruk ve çalışan rolü örnekleri kullanarak ölçeklendirebilirsiniz.  
 
@@ -191,7 +191,7 @@ Tablo hizmetini kullanarak varlıkları otomatik olarak dizinleyen **PartitionKe
 Ayrıca, son kullanıcıların adı gibi başka bir benzersiz olmayan özelliği değere göre çalışan varlıkların listesini almak istiyorsanız doğrudan aramak için bir dizini kullanmak yerine eşleşme bulmak için daha az verimli bir bölüm tarama kullanmanız gerekir. Tablo hizmeti, ikincil dizinler sağlamaz olmasıdır.  
 
 ### <a name="solution"></a>Çözüm
-Yukarıda gösterilen varlık yapısı ile soyadına göre aramasını etkinleştirmek için çalışan kimlikleri listesi sürdürmeniz gerekir. Jones gibi belirli bir son adı ile çalışan varlıkları almak istiyorsanız önce Jones, son adı olarak olan çalışanlar için çalışan kimlikleri listesini bulmak ve ardından bu çalışan varlıkları alma gerekir. Çalışan kimliklerinin listelerini depolamak için üç ana seçeneğiniz vardır:  
+Yukarıda gösterilen varlık yapısıyla, son ada göre aramayı etkinleştirmek için, çalışan kimliklerinin listesini korumanız gerekir. Can gibi belirli bir soyadı olan çalışan varlıklarını almak isterseniz, ilk adı olarak Jones ile çalışanlar için çalışan kimlikleri listesini bulmanız ve ardından bu çalışan varlıklarını almanız gerekir. Çalışan kimliklerinin listesini depolamak için üç ana seçenek vardır:  
 
 * BLOB Depolama kullanır.  
 * Çalışan varlıklar aynı bölümde dizin varlıklar oluşturun.  
@@ -199,7 +199,7 @@ Yukarıda gösterilen varlık yapısı ile soyadına göre aramasını etkinleş
 
 <u>Seçenek #1: Blob depolamayı kullanma</u>  
 
-İlk seçenek için, her benzersiz soyadı için bir blob oluşturun ve her bir blob 'da bu soyadı olan çalışanların **Partitionkey** (departman) ve **rowkey** (çalışan kimliği) değerlerinin bir listesini depolar. Bir çalışanı eklediğinizde veya sildiğinizde, ilgili Blob içeriğinin son olarak çalışan varlıklarıyla tutarlı olduğundan emin olmanız gerekir.  
+İlk seçenek için, her benzersiz soyadı için bir blob oluşturun ve her bir blob 'da bu soyadı olan çalışanların **Partitionkey** (departman) ve **rowkey** (çalışan kimliği) değerlerinin bir listesini depolar. Ekleme ya da bir çalışan silme ilgili blobun içeriğini çalışan varlıklarla sonunda tutarlı olduğundan emin olmanız gerekir.  
 
 <u>Seçenek #2:</u> Aynı bölümde Dizin varlıkları oluşturma  
 
@@ -207,9 +207,9 @@ Yukarıda gösterilen varlık yapısı ile soyadına göre aramasını etkinleş
 
 ![Çalışan dizini varlığı](media/storage-table-design-guide/storage-table-design-IMAGE14.png)
 
-**EmployeeIDs** özelliği depolanan Soyadı ile çalışanlar için çalışan kimlikleri listesini içeren **RowKey**.  
+**Employeeids** özelliği, **rowkey**içinde depolanan son ada sahip çalışanlar için çalışan kimliklerinin bir listesini içerir.  
 
-Aşağıdaki adımlar, ikinci seçenek kullanıyorsanız yeni bir çalışan ekleme yapıyorsanız izlemeniz gereken işlem özetlemektedir. Bu örnekte, bir çalışan kimliği 000152 ve satış departmanında son adı Jones ekliyoruz:  
+Aşağıdaki adımlar, ikinci seçenek kullanıyorsanız yeni bir çalışan ekleme yapıyorsanız izlemeniz gereken işlem özetlemektedir. Bu örnekte, KIMLIĞI 000152 olan bir çalışan ve satış departmanında soyadı Jones olan bir ad veriyoruz:  
 
 1. Dizin varlıkla almak bir **PartitionKey** "Sales" değerini ve **RowKey** değeri "Jones." Bu varlık Etag'i 2. adımda kullanmak üzere kaydedin.  
 2. Yeni çalışan varlığını (**partitionkey** value "Sales" ve **rowkey** değeri "000152") ekleyen bir varlık grubu işlemi (bir toplu işlem) oluşturun ve Dizin varlığını (**partitionkey** değeri "Sales" ve **rowkey) güncelleştirir** "can"), yeni çalışan kimliğini Employeıdds alanındaki listeye ekleyerek. Varlık grubu işlemleri hakkında daha fazla bilgi için bkz. varlık grubu Işlemleri.  
@@ -230,21 +230,21 @@ Aşağıdaki veri depolayan dizin varlıklar için üçüncü bir seçenek olara
 ![Ayrı bir bölümde çalışan dizini varlığı](media/storage-table-design-guide/storage-table-design-IMAGE15.png)
 
 
-**EmployeeIDs** özelliği depolanan Soyadı ile çalışanlar için çalışan kimlikleri listesini içeren **RowKey**.  
+**Employeeids** özelliği, **rowkey**içinde depolanan son ada sahip çalışanlar için çalışan kimliklerinin bir listesini içerir.  
 
-Üçüncü seçenek ayrı bir bölüme çalışan varlıklardaki dizin varlık olduğundan tutarlılık sağlamak için EGTs kullanamazsınız. Dizin varlıkları çalışan varlıklarla sonunda tutarlı olduğundan emin olmanız gerekir.  
+Üçüncü seçenek ayrı bir bölüme çalışan varlıklardaki dizin varlık olduğundan tutarlılık sağlamak için EGTs kullanamazsınız. Dizin varlıklarının en sonunda çalışan varlıklarıyla tutarlı olduğundan emin olun.  
 
 ### <a name="issues-and-considerations"></a>Sorunlar ve dikkat edilmesi gerekenler
 Bu düzenin nasıl uygulanacağına karar verirken aşağıdaki noktaları göz önünde bulundurun:  
 
 * Bu çözüm eşleşen varlıkları almak için en az iki sorgular gerekir: bir listesini almak için dizin varlıklarını sorgulamak için **RowKey** değerleri ve her varlıkta bir listesini almak için sorgular.  
-* Tek bir varlığın en büyük boyutu 1 MB olduğunda, çözümde #3 seçenek #2 ve seçenek, herhangi bir son ad için çalışan kimliği listesinin 1 MB 'tan fazla olmadığı varsayılır. Çalışan kimliklerinin listesi boyutu 1 MB'tan büyük olması olasılığı varsa, #1. seçenek kullanın ve dizin verileri blob depolama alanında depolayın.  
+* Tek bir varlığın en büyük boyutu 1 MB olduğunda, çözümde #3 seçenek #2 ve seçenek, herhangi bir son ad için çalışan kimliği listesinin 1 MB 'tan fazla olmadığı varsayılır. Çalışan kimlikleri listesinin boyutu 1 MB 'tan büyükse, seçenek #1 kullanın ve dizin verilerini BLOB depolama alanında depolayın.  
 * Seçenek #2 kullanıyorsanız işlemlerinin belli bir bölüm ölçeklenebilirlik sınırları yaklaşımını, (bir çalışanın soyadı değiştirme ekleme ve çalışanlar silme işlemek için EGTs kullanarak), değerlendirilmesi gerekir. Bu durumda, ayrı bir bölüme çalışan varlıklardaki dizin varlıklarınızı depolamanızı sağlar ve güncelleştirme isteklerini işlemek için kuyrukları kullanan bir son tutarlılık çözümü (#1. seçenek veya seçenek #3) dikkate almanız gerekir.  
 * Bu çözüm #2 seçeneğinde varsayar, bir bölümdeki son adına göre aramak istediğiniz: Örneğin, bir soyadı Jones Satış departmanındaki çalışanlara listesini almak istediğiniz. Tüm kuruluş çapında Jones son ada sahip tüm çalışanlar aramak istiyorsanız, #1. seçenek veya seçenek #3 kullanın.
 * Son tutarlılık sunan kuyruk tabanlı bir çözüm uygulayabilirsiniz (bkz [sonunda tutarlı işlemler deseni](#eventually-consistent-transactions-pattern) daha fazla ayrıntı için).  
 
 ### <a name="when-to-use-this-pattern"></a>Bu düzenin kullanılacağı durumlar
-Bir dizi Soyadı Jones sahip bütün çalışanlarla gibi ortak bir özellik değeri herkes varlık arama istediğinizde bu düzeni kullanın.  
+Tüm çalışanlar gibi ortak bir özellik değerini paylaşan bir varlık kümesini (can soyadı Jones olan tüm çalışanlar gibi) aramak istediğinizde bu stili kullanın.  
 
 ### <a name="related-patterns-and-guidance"></a>İlgili düzenler ve kılavuzlar
 Bu düzeni uygularken aşağıdaki düzenler ve yönergeler de yararlı olabilir:  
@@ -286,10 +286,10 @@ Bu düzeni uygularken aşağıdaki düzenler ve yönergeler de yararlı olabilir
 * [Heterojen varlık türleri ile çalışma](#working-with-heterogeneous-entity-types)
 
 ## <a name="compound-key-pattern"></a>Bileşik anahtar deseni
-Kullanım bileşik **RowKey** tek nokta sorgu ile ilgili verileri aramak bir istemci etkinleştirmek için değerler.  
+Bir istemcinin tek nokta sorgusuyla ilgili verileri araması için bileşik **Rowkey** değerlerini kullanın.  
 
 ### <a name="context-and-problem"></a>Bağlam ve sorun
-İlişkisel bir veritabanında, tek bir sorgudaki ilgili veri parçalarını istemciye döndürmek için sorgularda birleştirmeleri kullanmak oldukça doğal bir veritabanıdır. Örneğin, ilgili varlıkların bir listesini aramak ve bu çalışana yönelik verileri gözden geçirmek için çalışan KIMLIĞINI kullanabilirsiniz.  
+İlişkisel bir veritabanında tek bir sorguda istemciye ilgili veri parçasını döndürülecek sorguları birleştirme kullanılacak doğaldır. Örneğin, ilgili varlıkların bir listesini aramak ve bu çalışana yönelik verileri gözden geçirmek için çalışan KIMLIĞINI kullanabilirsiniz.  
 
 Çalışan varlıkları şu yapıyı kullanarak tablo hizmetinde depolanması varsayın:  
 
@@ -333,12 +333,12 @@ Bu düzeni uygularken aşağıdaki düzenler ve yönergeler de yararlı olabilir
 Alma *n* varlıkları kullanarak bir bölüm için en son eklenen bir **RowKey** geriye doğru tarih ve saat sipariş sıralar değeri.  
 
 ### <a name="context-and-problem"></a>Bağlam ve sorun
-Yaygın bir gereksinim, en son oluşturulan varlıkları (örneğin, bir çalışan tarafından gönderilen en son gider taleplerini) alabiliyor. Tablo sorguları destek bir **$top** sorgulama işlemi ilk döndürülecek *n* bir kümesindeki varlıkların: küme içindeki son n varlıkları döndürülecek eşdeğer sorgu işlemi yok.  
+Yaygın bir gereksinim, en son oluşturulan varlıkları (örneğin, bir çalışan tarafından gönderilen en son 10 gider talebi) alabilmiştir. Tablo sorguları destek bir **$top** sorgulama işlemi ilk döndürülecek *n* bir kümesindeki varlıkların: küme içindeki son n varlıkları döndürülecek eşdeğer sorgu işlemi yok.  
 
 ### <a name="solution"></a>Çözüm
 Store kullanarak varlıkları bir **RowKey** doğal olarak bu nedenle en son giriş kullanarak ters tarih/saat sırada sıralar olduğunu her zaman Birinci tablodaki.  
 
-Örneğin, bir çalışan tarafından gönderilen en son on gider talep alabilmesi için geçerli tarih/saat türetilmiş bir ters değer çizgisi değeri kullanabilirsiniz. Aşağıdaki C# kod örneği "ticks ters" için uygun bir değer oluşturmak için bir yol gösteren bir **RowKey** , en son sıralar Yeniye:  
+Örneğin, bir çalışan tarafından gönderilen en son 10 gider talebini alabilmesi için geçerli tarih/saatten türetilmiş bir ters değer değeri kullanabilirsiniz. Aşağıdaki C# kod örneği "ticks ters" için uygun bir değer oluşturmak için bir yol gösteren bir **RowKey** , en son sıralar Yeniye:  
 
 `string invertedTicks = string.Format("{0:D19}", DateTime.MaxValue.Ticks - DateTime.UtcNow.Ticks);`  
 
@@ -369,13 +369,13 @@ Bu düzeni uygularken aşağıdaki düzenler ve yönergeler de yararlı olabilir
 Silme işlemini varlıkları yüksek hacimli eşzamanlı silinmesi için tüm varlıkları kendi ayrı bir tabloda depolamak tarafından etkinleştirme; varlıklar, tablonun silerek silin.  
 
 ### <a name="context-and-problem"></a>Bağlam ve sorun
-Birçok uygulama, artık bir istemci uygulaması için kullanılabilir olmayan eski verileri siler veya uygulamanın başka bir depolama ortamına arşivlendi. Genellikle bu verileri bir tarih ile belirlersiniz: Örneğin, 60 günden daha eski olan tüm oturum açma isteklerinin kayıtlarını silme gereksinimleriniz vardır.  
+Birçok uygulama, artık bir istemci uygulaması için kullanılabilir olması gerekir veya uygulamayı başka bir depolama ortamına arşivlenmiş eski verileri silin. Genellikle bu verileri bir tarih ile belirlersiniz: Örneğin, 60 günden daha eski olan tüm oturum açma isteklerinin kayıtlarını silme gereksinimleriniz vardır.  
 
 Olası bir tasarım, **Rowkey**içindeki oturum açma isteğinin tarih ve saatini kullanmaktır:  
 
 ![Oturum açma girişiminin tarih ve saati](media/storage-table-design-guide/storage-table-design-IMAGE21.png)
 
-Bu yaklaşım, uygulama ayrı bir bölümdeki her bir kullanıcı için oturum açma varlıkları ekleyip silebildiğinden, bölüm etkin noktalarını önler. Ancak, bu yaklaşım, pahalı ve zaman alıcı ilk silmek tüm varlıkları tanımlamak için bir tablo taraması gerçekleştirmeniz gerekir ve ardından eski her varlık silmeniz gerekir çünkü çok sayıda varlık varsa olabilir. Birden çok Delete isteğini bölümlere ayırarak eski varlıkları silmek için gereken sunucuya gidiş dönüş sayısını azaltabileceğinizi unutmayın.  
+Bu yaklaşım, uygulama ayrı bir bölümdeki her bir kullanıcı için oturum açma varlıkları ekleyip silebildiğinden, bölüm etkin noktalarını önler. Ancak, bu yaklaşım, pahalı ve zaman alıcı ilk silmek tüm varlıkları tanımlamak için bir tablo taraması gerçekleştirmeniz gerekir ve ardından eski her varlık silmeniz gerekir çünkü çok sayıda varlık varsa olabilir. EGTs birden fazla delete isteğinin toplu işleme eski varlıkları silmek için gerekli sunucuya gidiş dönüş sayısını azaltabilir.  
 
 ### <a name="solution"></a>Çözüm
 Her gün oturum açma girişimi için ayrı bir tablo kullanın. Varlıkları eklerken etkin noktalara engel olmak için yukarıdaki varlık tasarımını kullanabilirsiniz ve eski varlıkları silmek, yüzlerce ve binlerce bireyi bulmak ve silmek yerine yalnızca bir tablonun her gün (tek bir depolama işlemi) silinmesine yönelik bir sorudır. Her gün oturum açma varlıkları.  
@@ -441,7 +441,7 @@ Tablo hizmeti kullanarak, birden çok 252 özellik tek bir büyük iş nesnesiyl
 
 ![Birden çok varlık](media/storage-table-design-guide/storage-table-design-IMAGE24.png)
 
-Her iki varlığın de güncelleştirilmesini gerektiren bir değişiklik yapmanız gerekiyorsa, bir EGT kullanabilirsiniz. Aksi takdirde, ileti sayısı için belirli bir günde güncelleştirileceği tek birleştirme işlemi kullanabilirsiniz. Tek bir çalışan için tüm verileri almak için her ikisi de kullanan iki verimli istekleri yapabileceğiniz iki varlıkları almak bir **PartitionKey** ve **RowKey** değeri.  
+Bunları birbirleri ile eşitlenmiş tutmak için iki varlıkları güncelleştirme gerektiren bir değişiklik yapmanız gerekirse, bir EGT kullanabilirsiniz. Aksi takdirde, ileti sayısı için belirli bir günde güncelleştirileceği tek birleştirme işlemi kullanabilirsiniz. Tek bir çalışan için tüm verileri almak için her ikisi de kullanan iki verimli istekleri yapabileceğiniz iki varlıkları almak bir **PartitionKey** ve **RowKey** değeri.  
 
 ### <a name="issues-and-considerations"></a>Sorunlar ve dikkat edilmesi gerekenler
 Bu düzenin nasıl uygulanacağına karar verirken aşağıdaki noktaları göz önünde bulundurun:  
@@ -489,7 +489,7 @@ Bu düzeni uygularken aşağıdaki düzenler ve yönergeler de yararlı olabilir
 Birden çok bölümde ekler yayarak ekler yüksek hacimli olduğunda ölçeklenebilirliği artırabilirsiniz.  
 
 ### <a name="context-and-problem"></a>Bağlam ve sorun
-Bölümler bir dizi ilk veya son bölümü için yeni varlıklar ekleme uygulama eklenmesini ya da saklı varlıklarınızı varlıklar ekleme, genellikle sonuçlanır. Bu durumda, belirli bir zaman içindeki tüm ekler aynı bölümde gerçekleşirken, tablo hizmetinin yük dengelemesinden birden çok düğüme eklemeleri ve muhtemelen uygulamanızın ölçeklenebilirlik hedeflerine ulaşmasına neden olan bir etkin nokta oluşturulması gerekir. bölümünüzün. Günlükleri ağ ve kaynak çalışanlar tarafından erişen bir uygulamanız varsa, örneğin, ardından aşağıda gösterildiği gibi bir varlık yapısı bir etkin nokta işlemlerinin ölçeklenebilirlik hedefi ulaşırsa olma geçerli saat bölüm neden olabilir bir tek tek bölüm:  
+Bölümler bir dizi ilk veya son bölümü için yeni varlıklar ekleme uygulama eklenmesini ya da saklı varlıklarınızı varlıklar ekleme, genellikle sonuçlanır. Bu durumda, tüm eklemeleri verilen herhangi bir zamanda gerçekleşen birden fazla düğüme ve büyük olasılıkla uygulamanız için ölçeklenebilirlik hedefleri isabet neden aynı bölümde ekler Tablo hizmeti Yük Dengeleme dan engelleyen bir etkin nokta oluşturma bölüm. Günlükleri ağ ve kaynak çalışanlar tarafından erişen bir uygulamanız varsa, örneğin, ardından aşağıda gösterildiği gibi bir varlık yapısı bir etkin nokta işlemlerinin ölçeklenebilirlik hedefi ulaşırsa olma geçerli saat bölüm neden olabilir bir tek tek bölüm:  
 
 ![Varlık yapısı](media/storage-table-design-guide/storage-table-design-IMAGE26.png)
 
@@ -703,9 +703,9 @@ foreach (var e in entities)
 Bildirim nasıl **RowKey** değeri, özellikleri almak için listede eklenmemiş olsa bile kullanılabilir.  
 
 ## <a name="modifying-entities"></a>Varlıkları değiştirme
-Depolama istemcisi kitaplığı, ekleme, silme ve varlıkları güncelleştirme tablo hizmetinde depolanan varlıklarınızı değiştirmenize olanak sağlar. Gerekli gidiş dönüş sayısını azaltmak ve çözümünüzün performansını artırmak için birden çok çoklu ekleme, güncelleştirme ve silme işlemini birlikte toplu olarak kullanabilirsiniz.  
+Depolama istemcisi kitaplığı, ekleme, silme ve varlıkları güncelleştirme tablo hizmetinde depolanan varlıklarınızı değiştirmenize olanak sağlar. Birden çok ekleme, güncelleştirme ve silme işlemleri birlikte gerekli gidiş dönüş sayısını azaltmak için batch ve çözümünüzün performansını EGTs kullanabilirsiniz.  
 
-Depolama Istemci kitaplığı bir EGT çalıştırdığında oluşturulan özel durumların tipik olarak, toplu işin başarısız olmasına neden olan varlığın dizinini içermesi gerektiğini unutmayın. EGTs kullanan kod hata ayıklaması yapıyorsanız, bu yararlıdır.  
+Depolama istemcisi kitaplığı bir EGT genellikle yürütüldüğünde oluşturulan özel durumlar, batch başarısız olmasına neden olan varlık dizinini içerir. EGTs kullanan kod hata ayıklaması yapıyorsanız, bu yararlıdır.  
 
 Ayrıca, istemci uygulamanızın eşzamanlılık ve güncelleştirme işlemlerinin nasıl işlediğini tasarımınıza nasıl etkilediğini dikkate almalısınız.  
 
@@ -812,7 +812,7 @@ Tablo hizmeti bir *şemasız* tablo deposu, tek bir tabloyu tasarımınızda bü
 </tr>
 </table>
 
-Her varlığın **partitionkey**, **Rowkey**ve **timestamp** değerlerinin olması gerektiğini, ancak herhangi bir özellik kümesine sahip olabileceğini unutmayın. Ayrıca, hiçbir şey yoktur yere bu bilgileri depolamak seçmediğiniz sürece, bir varlık türünü belirtmek için. Varlık türü tanımlamak için iki seçenek vardır:  
+Her varlığın hala olmalıdır **PartitionKey**, **RowKey**, ve **zaman damgası** değerleri, ancak herhangi bir özellikler kümesi olabilir. Ayrıca, hiçbir şey yoktur yere bu bilgileri depolamak seçmediğiniz sürece, bir varlık türünü belirtmek için. Varlık türü tanımlamak için iki seçenek vardır:  
 
 * Varlık türü için önüne ekleyin **RowKey** (veya büyük olasılıkla **PartitionKey**). Örneğin, **EMPLOYEE_000123** veya **DEPARTMENT_SALES** olarak **RowKey** değerleri.  
 * Aşağıdaki tabloda gösterildiği gibi kayıt varlık türü için ayrı bir özelliğini kullanın.  
@@ -914,7 +914,7 @@ Her varlığın **partitionkey**, **Rowkey**ve **timestamp** değerlerinin olmas
 
 İlk seçenek, varlık eklenmesini türünü **RowKey**, farklı türden iki varlık aynı anahtar değerine sahip olabileceğiniz bir olasılık varsa yararlı olur. Ayrıca, aynı türde birlikte bölümündeki varlıkları gruplandırır.  
 
-Bu bölümde ele alınan teknikler özellikle bu kılavuzda daha önce açıklanan tartışma [Devralma ilişkilerle](table-storage-design-modeling.md#inheritance-relationships) [ilgilidir.](table-storage-design-modeling.md)  
+Bu bölümde ele alınan teknikler özellikle bu kılavuzda daha önce açıklanan tartışma [Devralma ilişkilerle](table-storage-design-modeling.md#inheritance-relationships) ilgilidir. [](table-storage-design-modeling.md)  
 
 > [!NOTE]
 > İstemci uygulamaların POCO nesneleri gelişmesine ve farklı sürümleri ile çalışmasını sağlamak için varlık türü değeri bir sürüm numarası dahil olmak üzere düşünmelisiniz.  
@@ -926,7 +926,7 @@ Bu bölümün geri kalanında bazı depolama istemci Kitaplığı'nda aynı tabl
 ### <a name="retrieving-heterogeneous-entity-types"></a>Heterojen varlık türleri alınıyor
 Depolama istemci kitaplığı kullanıyorsanız, birden çok varlık türleriyle çalışmak için üç seçeneğiniz vardır.  
 
-Belirli bir **rowkey** ve **partitionkey** değerleriyle depolanan varlığın türünü biliyorsanız, bu durumda, varlığı, employeeentity türünde varlıklar alan önceki iki örnekte gösterildiği gibi belirtebilirsiniz. : [Depolama Istemci kitaplığını kullanarak bir nokta sorgusu yürütme](#executing-a-point-query-using-the-storage-client-library) ve [LINQ kullanarak birden çok varlık alma](#retrieving-multiple-entities-using-linq).  
+Belirli bir **rowkey** ve **partitionkey** değerleriyle depolanan varlığın türünü biliyorsanız, bu durumda, varlığı, employeeentity türünde varlıklar alan önceki iki örnekte gösterildiği gibi belirtebilirsiniz.: [Depolama Istemci kitaplığını kullanarak bir nokta sorgusu yürütme](#executing-a-point-query-using-the-storage-client-library) ve [LINQ kullanarak birden çok varlık alma](#retrieving-multiple-entities-using-linq).  
 
 İkinci seçenek kullanmaktır **DynamicTableEntity** türü (bir özellik paketi) yerine (Bu seçenek ayrıca artırabilir performans .NET türlerine varlık seri hale getrime ve gerek olmadığından) somut bir POCO varlık türü. Aşağıdaki C# kodu potansiyel olarak farklı türlerde birden çok varlık tablosundan alır, ancak tüm varlıklar olarak döndürür **DynamicTableEntity** örnekleri. Ardından kullanır **EntityType** özelliği her varlık türünü belirlemek için:  
 
@@ -959,7 +959,7 @@ foreach (var e in entities)
 }  
 ```
 
-Diğer özellikleri almak için, **Dynamictableentity** sınıfının **Properties** özelliğinde **TryGetValue** yöntemini kullanmanız gerektiğini unutmayın.  
+Diğer özellikleri almak için, **Dynamictableentity** sınıfının **Properties** özelliğinde **TryGetValue** yöntemini kullanmanız gerekir.  
 
 Kullanan birleştirileceğini üçüncü seçenek olmasına **DynamicTableEntity** türü ve bir **EntityResolver** örneği. Bu, aynı sorguda birden çok POCO türleri çözümlemeye sağlar. Bu örnekte, **EntityResolver** temsilci kullanarak **EntityType** iki sorgunun döndürdüğü varlık türleri arasında ayrım yapmak için özellik. **Çözmek** yöntemi kullanan **çözümleyici** çözmek için temsilci **DynamicTableEntity** için örnekler **TableEntity** örnekleri.  
 
@@ -1030,7 +1030,7 @@ Depolama hesabı anahtarınızı kodunuza dahil etmek zorunda kalmadan, istemci 
 * Web ve çalışan rolleri varlıklarınızı son kullanıcı bilgisayarlar gibi istemci cihazları ve mobil cihazları yönetme konusunda gerçekleştiren işinin bir kısmını boşaltabilirsiniz.  
 * Kısıtlanmış bir atayabilir ve saat (örneğin, belirli kaynaklara salt okunur erişime izin verme) istemciye izinler kümesini sınırlıdır.  
 
-Tablo hizmeti ile SAS belirteçlerini kullanma hakkında daha fazla bilgi için bkz. [paylaşılan erişim imzaları (SAS) kullanma](../../storage/common/storage-dotnet-shared-access-signature-part-1.md).  
+Tablo hizmeti ile SAS belirteçlerini kullanma hakkında daha fazla bilgi için bkz. [paylaşılan erişim imzaları (SAS) kullanma](../../storage/common/storage-sas-overview.md).  
 
 Ancak, yine de tablo hizmetindeki varlıklara bir istemci uygulaması veren SAS belirteçlerini oluşturmanız gerekir: bunu, depolama hesabı Anahtarlarınıza güvenli erişim sağlayan bir ortamda yapmanız gerekir. Genellikle, SAS belirteçleri oluşturmak ve varlıklarınızın erişmesi gereken istemci uygulamaları sunmak için bir web veya çalışan rolü kullanın. Olduğundan hala bir ek yük oluşturma ve SAS belirteçlerini istemciler için en iyi şekilde nasıl dikkate almanız gereken yüksek hacimli senaryolarda özellikle bu yükünü azaltmak için teslim katılan.  
 
@@ -1091,7 +1091,7 @@ Bu zaman uyumsuz bir örnekte, zaman uyumlu bir sürümünü aşağıdaki deği�
 
 İstemci uygulaması bu yöntem, birden çok kez çağırabilir (için farklı değerlerle **departmanı** parametresi), ve her sorgu ayrı bir iş parçacığında çalışır.  
 
-**IEnumerable** arabirimi zaman uyumsuz numaralandırmayı desteklemediğinden **Tablequery** sınıfında **Execute** yönteminin zaman uyumsuz bir sürümü olmadığını unutmayın.  
+Hiçbir zaman uyumsuz sürümü **yürütme** yönteminde **TableQuery** çünkü **IEnumerable** arabirimi, zaman uyumsuz numaralandırma desteklemez.  
 
 Ekleme, güncelleştirme ve zaman uyumsuz olarak varlıkları silin. Aşağıdaki C# örneği eklemek veya çalışan varlığı değiştirmek için basit, zaman uyumlu bir yöntemi gösterir:  
 

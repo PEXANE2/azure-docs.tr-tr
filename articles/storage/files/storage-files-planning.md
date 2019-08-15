@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: eece1520a4b7e3bf37e1d209c58b5019921fdb98
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 7591cefddd6e7217c885293a2f5c878d7a82e158
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884374"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69015958"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Dosyaları dağıtımı planlama
 
@@ -155,7 +155,7 @@ Yeni dosya paylaşımları, veri bloğu demetini içinde tam kredi sayısı ile 
 
 ## <a name="file-share-redundancy"></a>Dosya paylaşma artıklığı
 
-Azure dosyaları standart paylaşımları üç veri artıklığı seçeneğini destekler: yerel olarak yedekli depolama (LRS), bölgesel olarak yedekli depolama (ZRS) ve coğrafi olarak yedekli depolama (GRS).
+Azure dosyaları standart paylaşımları üç veri artıklığı seçeneğini destekler: yerel olarak yedekli depolama (LRS), bölgesel olarak yedekli depolama (ZRS), coğrafi olarak yedekli depolama (GRS) ve coğrafi bölge yedekli depolama (GZRS) (Önizleme).
 
 Azure dosyaları Premium paylaşımları yalnızca yerel olarak yedekli depolamayı (LRS) destekler.
 
@@ -186,6 +186,7 @@ Birincil ve ikincil bölgeler, ayrı hata etki alanları genelinde çoğaltmalar
 
 Hangi çoğaltma seçeneğinin kullanılacağına karar verirken bu noktaları göz önünde bulundurun:
 
+* Coğrafi bölge yedekli depolama (GZRS) (Önizleme), üç Azure kullanılabilirlik alanında verileri eşzamanlı olarak çoğaltarak ve ardından verileri zaman uyumsuz olarak ikincil bölgeye çoğaltırken maksimum dayanıklılık ile birlikte yüksek kullanılabilirlik sağlar. İkincil bölgeye okuma erişimini de etkinleştirebilirsiniz. GZRS belirli bir yıl boyunca nesnelerin en az% 99.99999999999999 (16 9) oranında dayanıklılığını sağlamak üzere tasarlanmıştır. GZRS hakkında daha fazla bilgi için bkz. [coğrafi bölge yedekli depolama, yüksek oranda kullanılabilirlik ve en yüksek dayanıklılık (Önizleme) için](../common/storage-redundancy-gzrs.md).
 * Bölgesel olarak yedekli depolama (ZRS), zaman uyumlu çoğaltma ile yüksek kullanılabilirlik sağlar ve GRS 'den bazı senaryolar için daha iyi bir seçenek olabilir. ZRS hakkında daha fazla bilgi için bkz. [ZRS](../common/storage-redundancy-zrs.md).
 * Zaman uyumsuz çoğaltma, verilerin birincil bölgeye yazıldığı zamandan, ikincil bölgeye çoğaltılmasıyla ilgili bir gecikme içerir. Bölgesel bir olağanüstü durum durumunda, bu veriler birincil bölgeden kurtarılamazsa, ikincil bölgeye henüz çoğaltılmamış değişiklikler kaybolabilir.
 * GRS ile Microsoft, ikincil bölgede bir yük devretme işlemi başlatmadığı takdirde okuma veya yazma erişimi için kullanılamaz. Yük devretme durumunda, yük devretme tamamlandıktan sonra bu verilere okuma ve yazma erişiminiz olacaktır. Daha fazla bilgi için lütfen bkz. [olağanüstü durum kurtarma Kılavuzu](../common/storage-disaster-recovery-guidance.md).
@@ -198,7 +199,7 @@ Bu bölüm yalnızca standart dosya paylaşımları için geçerlidir. Tüm Prem
 
 - Azure Önizleme [Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) , Azure dosya eşitleme dağıtımlarıyla birlikte kullanıldığında, önizleme sırasında büyük dosya paylaşımları için de geçerlidir.
 - Yeni bir genel amaçlı depolama hesabı oluşturmanızı gerektirir (mevcut depolama hesapları genişletilemiyor).
-- LRS/ZRS 'den GRS 'ye, abonelik daha büyük dosya paylaşımları önizlemesine kabul edildikten sonra oluşturulan tüm yeni depolama hesapları için izin verilmez.
+- LRS/ZRS 'den GRS/GZRS hesabı dönüştürmesi, abonelik daha büyük dosya paylaşımları önizlemesine kabul edildikten sonra oluşturulan yeni bir depolama hesabında mümkün olmayacaktır.
 
 
 ### <a name="regional-availability"></a>Bölgesel kullanılabilirlik
@@ -214,7 +215,7 @@ Standart dosya paylaşımları, 5 TiB 'ye kadar tüm bölgelerde kullanılabilir
 |Batı Avrupa     |LRS, ZRS|Hayır    |Evet|
 |Batı ABD 2       |LRS, ZRS|Hayır    |Evet|
 
-\* Portal desteği olmayan bölgelerde, 5 ' ten büyük bir paylaşım oluşturmak için PowerShell veya Azure komut satırı arabirimi 'ni (CLı) kullanmaya devam edebilirsiniz. , Kota belirtmeden Portal aracılığıyla yeni bir paylaşma oluşturun. Bu, daha sonra PowerShell veya Azure CLı aracılığıyla güncelleştirilebilen 100 TiB varsayılan boyutuyla bir paylaşma oluşturur.
+\* Portal desteği olmayan bölgelerde, 5 ' ten büyük bir paylaşım oluşturmak için PowerShell veya Azure komut satırı arabirimi 'ni (CLı) kullanmaya devam edebilirsiniz. Alternatif olarak, kota belirtmeden Portal aracılığıyla yeni bir paylaşma oluşturun. Bu, daha sonra PowerShell veya Azure CLı aracılığıyla güncelleştirilebilen 100 TiB varsayılan boyutuyla bir paylaşma oluşturur.
 
 Yeni bölgelerin ve özelliklerin önceliklendirmemize yardımcı olmak için lütfen bu [anketi](https://aka.ms/azurefilesatscalesurvey)doldurun.
 

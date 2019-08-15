@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: a007e3adb72148cfde1590e996f7df9082159445
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 873f45a6cce85669581037c4c398a52b1ebd6d68
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840506"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966851"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Bir web hizmeti olarak bir Azure Machine Learning modeli kullanma
 
@@ -80,6 +80,7 @@ Azure Machine Learning, Web hizmetlerinizi erişimi denetlemek için iki yol sa�
 |---|---|---|
 |Anahtar|Varsayılan olarak devre dışı| Varsayılan olarak etkin|
 |Belirteç| Kullanılamaz| Varsayılan olarak devre dışı |
+
 #### <a name="authentication-with-keys"></a>Anahtarlar ile kimlik doğrulama
 
 Bir dağıtım için kimlik doğrulamasını etkinleştirdiğinizde, otomatik olarak kimlik doğrulama anahtarları oluşturursunuz.
@@ -98,7 +99,6 @@ print(primary)
 
 > [!IMPORTANT]
 > Bir anahtarı yeniden oluşturmak ihtiyacınız varsa [ `service.regen_key` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py).
-
 
 #### <a name="authentication-with-tokens"></a>Belirteçlerle kimlik doğrulama
 
@@ -155,50 +155,17 @@ REST API isteği aşağıdaki yapıya sahip bir JSON belge gövdesinin bekliyor:
             ]
         ]
 }
-``` 
+```
 
 Web hizmeti, birden çok bir istekteki veri kümelerini kabul edebilir. Yanıt bir dizi içeren bir JSON belgesini döndürür.
 
 ### <a name="binary-data"></a>İkili veriler
 
-Bir görüntü gibi ikili veri modelinizi kabul ediyorsa değiştirmelisiniz `score.py` dağıtımınız için ham HTTP isteklerini kabul etmek için kullanılan dosya. İkili verileri kabul eden bir `score.py` örneği aşağıda verilmiştir:
+Hizmetinize ikili veri desteğini etkinleştirme hakkında daha fazla bilgi için bkz. [ikili veriler](how-to-deploy-and-where.md#binary).
 
-```python
-from azureml.contrib.services.aml_request import AMLRequest, rawhttp
-from azureml.contrib.services.aml_response import AMLResponse
+### <a name="cross-origin-resource-sharing-cors"></a>Çıkış noktaları arası kaynak paylaşımı (CORS)
 
-
-def init():
-    print("This is init()")
-
-
-@rawhttp
-def run(request):
-    print("This is run()")
-    print("Request: [{0}]".format(request))
-    if request.method == 'GET':
-        # For this example, just return the URL for GETs
-        respBody = str.encode(request.full_path)
-        return AMLResponse(respBody, 200)
-    elif request.method == 'POST':
-        reqBody = request.get_data(False)
-        # For a real world solution, you would load the data from reqBody
-        # and send to the model. Then return the response.
-
-        # For demonstration purposes, this example just returns the posted data as the response.
-        return AMLResponse(reqBody, 200)
-    else:
-        return AMLResponse("bad request", 500)
-```
-
-> [!IMPORTANT]
-> Hizmeti geliştirmekle çalışırken ad alanı sıklıkla değişir. `azureml.contrib` Bu nedenle, bu ad alanındaki her şey Microsoft tarafından tam olarak desteklenmez ve önizleme olarak değerlendirilmelidir.
->
-> Bunu yerel geliştirme ortamınızda test etmeniz gerekirse, aşağıdaki komutu kullanarak bu bileşenleri `contrib` ad alanına yükleyebilirsiniz:
-> 
-> ```shell
-> pip install azureml-contrib-services
-> ```
+Hizmetinizde CORS desteğini etkinleştirme hakkında bilgi için bkz. çıkış noktaları [arası kaynak paylaşımı](how-to-deploy-and-where.md#cors).
 
 ## <a name="call-the-service-c"></a>Hizmet çağrısı (C#)
 
@@ -528,3 +495,7 @@ Power BI, Power BI verileri tahmine dayalı olarak zenginleştirmek için Azure 
 Power BI, tüketim için desteklenen bir Web hizmeti oluşturmak için, şemanın Power BI gereken biçimi desteklemesi gerekir. [Power BI tarafından desteklenen bir şema oluşturmayı öğrenin](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where#example-script-with-dictionary-input-support-consumption-from-power-bi).
 
 Web hizmeti dağıtıldıktan sonra, Power BI veri akışlarından tüketilebilir. [Power BI bir Azure Machine Learning Web hizmeti kullanmayı öğrenin](https://docs.microsoft.com/power-bi/service-machine-learning-integration).
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Python ve derin öğrenme modellerinin gerçek zamanlı Puanlama için başvuru mimarisini görüntülemek için [Azure mimari merkezi](/azure/architecture/reference-architectures/ai/realtime-scoring-python)' ne gidin.

@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 07/15/2019
+ms.date: 07/18/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 2d0697567bfd2fcf95a1fe6ebf246646af5650c3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0f1c66126a1aa9a6ebf6f78ac6fb1ba37ba41829
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564892"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985421"
 ---
 # <a name="authorize-access-to-blobs-and-queues-with-azure-active-directory-and-managed-identities-for-azure-resources"></a>Azure kaynakları için Azure Active Directory ve yönetilen kimlikler ile bloblara ve kuyruklara erişim yetkisi verme
 
@@ -50,17 +50,7 @@ RBAC rolleri atama hakkında daha fazla bilgi için aşağıdaki makalelerden bi
 
 Kod örneği, Azure AD 'den bir OAuth 2,0 belirtecinin nasıl alınacağını ve bir blok blobu oluşturma isteğine yetki vermek için nasıl kullanılacağını gösterir. Bu örneğin çalışmasını sağlamak için, önce önceki bölümlerde özetlenen adımları izleyin.
 
-.NET için [Microsoft Azure uygulama kimlik doğrulaması](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) istemci kitaplığı (Önizleme), kodunuzun bir belirtecini alma ve yenileme sürecini basitleştirir. Uygulama kimlik doğrulaması istemci kitaplığı, kimlik doğrulamasını otomatik olarak yönetir. Kitaplık, yerel geliştirme sırasında kimlik doğrulaması yapmak için geliştiricinin kimlik bilgilerini kullanır. Geliştirici kimlik bilgilerini yerel geliştirme sırasında kullanmak daha güvenlidir çünkü Azure AD kimlik bilgileri oluşturmanız veya kimlik bilgilerini geliştiriciler arasında paylaşmanız gerekmez. Çözüm daha sonra Azure 'a dağıtıldığında, kitaplık otomatik olarak uygulama kimlik bilgilerini kullanarak geçiş yapar.
-
-### <a name="install-packages"></a>Paketleri yükleme
-
-Uygulama kimlik doğrulama kitaplığını bir Azure depolama uygulamasında kullanmak için, [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication)'den en son önizleme paketini ve [.NET için Azure Storage ortak Istemci kitaplığının](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/) ve [Azure Blob depolama istemci Kitaplığı ' nın en son sürümünü yüklemek için .NET için](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/). Aşağıdaki **using** deyimlerini kodunuza ekleyin:
-
-```csharp
-using Microsoft.Azure.Services.AppAuthentication;
-using Microsoft.Azure.Storage.Auth;
-using Microsoft.Azure.Storage.Blob;
-```
+[!INCLUDE [storage-app-auth-lib-include](../../../includes/storage-app-auth-lib-include.md)]
 
 ### <a name="add-the-callback-method"></a>Geri çağırma yöntemini ekleyin
 

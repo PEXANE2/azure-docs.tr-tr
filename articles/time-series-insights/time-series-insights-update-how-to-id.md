@@ -1,6 +1,6 @@
 ---
 title: Azure zaman serisi öngörüleri önizlemesinde bir zaman serisi kimliği seçmek için en iyi yöntemler | Microsoft Docs
-description: Azure zaman serisi öngörüleri önizlemesinde bir zaman serisi kimliği seçtiğinizde en iyi yöntemleri anlama.
+description: Azure Time Series Insights önizlemede bir zaman serisi KIMLIĞI seçtiğinizde en iyi uygulamaları anlama.
 author: ashannon7
 ms.author: dpalled
 ms.workload: big-data
@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 05/08/2019
+ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: af540267e4afc1b248b66b1c6f4989b832c38b58
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7057ce27cbbba8d70835493fc91a88ad823369bb
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66237573"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68947192"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>Zaman serisi kimliği seçmeye yönelik en iyi uygulamalar
 
@@ -48,7 +48,7 @@ Aşağıdaki senaryolarda, birden fazla anahtar özellik, zaman serisi Kimliğin
 * Örneğin, bir fleet özelliği tarafından benzersiz şekilde tanımlanır *DeviceID* ve başka bir benzersiz özelliği olduğu *objectID*. Hiçbiri fleet diğer filonun benzersiz özellik içerir. Bu örnekte, iki anahtar, cihaz kimliği ve objectID, benzersiz anahtarlar olarak seçersiniz.
 * Biz null değerleri kabul edin ve olay yükü bir özelliğin bulunması eksikliği sayar olarak bir `null` değeri. Ayrıca her bir olay kaynağı verilerdeki benzersiz bir zaman serisi kimliği sahip olduğu iki farklı olay kaynakları için gönderme verileri işlemek için en uygun yolu budur
 
-### <a name="scenario-two"></a>Senaryo iki
+### <a name="scenario-two"></a>İki senaryo
 
 * Birden çok özellik varlıklar aynı filosundan içinde benzersiz olması gerekir. 
 * Örneğin, bir akıllı yapı üretici olduğunuz ve her bir odada sensörlerden dağıtma varsayalım. Her bir odada genellikle aynı olduğundan *sensorId*, gibi *sensor1*, *sensor2*, ve *sensor3*.

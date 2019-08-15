@@ -7,12 +7,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: gwallace
-ms.openlocfilehash: 10d919b21e05195e8a7b6b351a742a4f9a57ee2b
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: ae9d124391a1b17187ca98964874f681352498da
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360714"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945346"
 ---
 # <a name="how-to-update-a-cloud-service"></a>Bulut hizmetini güncelleştirme
 
@@ -21,7 +21,7 @@ Hem rollerinin hem de konuk işletim sisteminin dahil olduğu bir bulut hizmetin
 ## <a name="update-an-azure-service"></a>Azure hizmetini güncelleştirme
 Azure, rol örneklerinizi yükseltme etki alanları (UD) adlı mantıksal gruplandırmalar halinde düzenler. Yükseltme etki alanları (UD), Grup olarak güncellenen rol örneklerinin mantıksal kümeleridir.  Azure, bir tek seferde bir UD hizmeti güncelleyen ve diğer UDs 'deki örneklerin trafiğe hizmet vermeye devam etmesine olanak tanır.
 
-Varsayılan yükseltme etki alanı sayısı 5 ' tir. Hizmetin tanım dosyasına (. csdef) upgradeDomainCount özniteliğini ekleyerek, farklı sayıda yükseltme etki alanı belirtebilirsiniz. UpgradeDomainCount özniteliği hakkında daha fazla bilgi için bkz. [WebRole Schema](/previous-versions/azure/reference/gg557553(v=azure.100)) veya [workerrole Schema](/previous-versions/azure/reference/gg557552(v=azure.100)).
+Varsayılan yükseltme etki alanı sayısı 5 ' tir. Hizmetin tanım dosyasına (. csdef) upgradeDomainCount özniteliğini ekleyerek, farklı sayıda yükseltme etki alanı belirtebilirsiniz. UpgradeDomainCount özniteliği hakkında daha fazla bilgi için bkz. [Azure Cloud Services Tanım Şeması (. csdef dosyası)](https://docs.microsoft.com/azure/cloud-services/schema-csdef-file).
 
 Hizmetinizdeki bir veya daha fazla rolün yerinde güncelleştirilmesini gerçekleştirdiğinizde, Azure Updates, ait oldukları yükseltme etki alanına göre rol örnekleri kümesi sağlar. Azure, belirli bir yükseltme etki alanındaki tüm örnekleri güncelliyor, bunları güncelleştirirken, bunları çevrimiçi olarak geri getiren bir sonraki etki alanına taşınıyor. Azure, yalnızca geçerli yükseltme etki alanında çalışan örnekleri durdurarak, çalışan hizmete en az etkisi olan bir güncelleştirmenin meydana geldiğinden emin olur. Daha fazla bilgi için bu makalenin sonraki kısımlarında bulunan [güncelleştirme](#howanupgradeproceeds) bölümüne bakın.
 

@@ -1,9 +1,9 @@
 ---
-title: Kullanım ve öngörüleri Azure Active Directory Portalı'nda rapor | Microsoft Docs
-description: Azure Active Directory portalındaki kullanım bilgilerini ve öngörüleri rapor giriş
+title: Azure Active Directory portalında kullanım ve Öngörüler raporu | Microsoft Docs
+description: Azure Active Directory portalındaki Kullanım ve Öngörüler raporuna giriş
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: 3fba300d-18fc-4355-9924-d8662f563a1f
@@ -14,49 +14,49 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 05/13/2019
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 3fe1e72d277bffd4bc9b38ac377e33b341967e17
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0c6723c28bf6ab8af112763a6485bc89b46409c6
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65806364"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989852"
 ---
-# <a name="usage-and-insights-report-in-the-azure-active-directory-portal"></a>Azure Active Directory portalındaki kullanım bilgilerini ve öngörüleri raporu
+# <a name="usage-and-insights-report-in-the-azure-active-directory-portal"></a>Azure Active Directory portalındaki Kullanım ve Öngörüler raporu
 
-Kullanım ve öngörüleri raporunu kullanarak, uygulama odaklı bir oturum açma verilerinizin görünümünü alabilirsiniz. Aşağıdaki soruların yanıtlarını bulabilirsiniz:
+Kullanım ve Öngörüler raporuyla, oturum açma verilerinizin uygulama odaklı bir görünümünü elde edebilirsiniz. Aşağıdaki sorulara cevaplar bulabilirsiniz:
 
-*   Üst nelerdir uygulamaları Kuruluşumdaki kullanılan?
-*   Hangi uygulamaların en çok başarısız oturum açma işlemleri var mı? 
-*   Her uygulama için en çok oturum açma hataları nelerdir?
+*   Kuruluşumdaki en iyi kullanılan uygulamalar nelerdir?
+*   En fazla oturum açma işlemi başarısız olan uygulamalar nelerdir? 
+*   Her uygulama için en iyi oturum açma hataları nelerdir?
 
 ## <a name="prerequisites"></a>Önkoşullar 
 
-Kullanım ve öngörüleri rapordan verilere erişmek için gerekir:
+Kullanım ve Öngörüler raporundan verilere erişmek için şunlar gerekir:
 
-* Azure AD kiracısı
-* Oturum açma verilerini görüntülemek için bir Azure AD premium (ö1/ö2) lisansı
-* Bir kullanıcı genel yönetici, Güvenlik Yöneticisi, güvenlik okuyucu veya rapor okuyucu rolleri. Ayrıca, herhangi bir kullanıcı (Yönetici olmayanlar) kendi oturum açma etkinliklerine erişebilir. 
+* Bir Azure AD kiracısı
+* Oturum açma verilerini görüntülemek için bir Azure AD Premium (P1/P2) lisansı
+* Genel yönetici, Güvenlik Yöneticisi, güvenlik okuyucusu veya rapor okuyucu rollerinde bir kullanıcı. Ayrıca, herhangi bir Kullanıcı (yönetici olmayanlar) kendi oturum açma işlemleri için de erişebilir. 
 
-## <a name="access-the-usage-and-insights-report"></a>Kullanım ve öngörüleri rapor erişimi
+## <a name="access-the-usage-and-insights-report"></a>Kullanım ve Öngörüler raporuna erişin
 
 1. [Azure portalına](https://portal.azure.com) gidin.
-2. Doğru dizini seçin ve ardından **Azure Active Directory** ve **kurumsal uygulamalar**.
-3. Gelen **etkinlik** bölümünden **kullanım & ınsights** seçerek raporu açın. 
+2. Doğru dizini seçin ve **Azure Active Directory** seçin ve **Kurumsal uygulamalar**' ı seçin.
+3. **Etkinlik** bölümünde, raporu açmak için **kullanım & Öngörüler** ' i seçin. 
 
 ![Kullanım ve İçgörüler raporu](./media/concept-usage-insights-report/main-menu.png)
                                      
 
-## <a name="use-the-report"></a>Kullanım Raporu
+## <a name="use-the-report"></a>Raporu kullanma
 
-Kullanım ve öngörüleri rapor denemesi bir veya daha fazla oturum uygulamaların listesini gösterir ve oturum açma başarılı ve başarısız oturum açma başarı oranı sayısına göre sıralamak sağlar.
+Kullanım ve Öngörüler raporu, bir veya daha fazla oturum açma girişiminde bulunan uygulamaların listesini gösterir ve başarılı oturum açma sayısı, başarısız oturum açma işlemleri ve başarı oranı ile sıralama yapmanıza olanak sağlar.
 
-Daha fazla bilgi için listenin tıklayarak yük ek uygulamalar sayfasında görüntülemenize olanak sağlar. Aralıkta kullanılan tüm uygulamaları görüntülemek için tarih aralığını seçebilirsiniz.
+Listenin en altında bulunan Yükle ' ye tıklamak sayfada ek uygulamalar görüntülemenize olanak sağlar. Aralık içinde kullanılmış olan tüm uygulamaları görüntülemek için tarih aralığını seçebilirsiniz.
 
-Belirli bir uygulama odağı de ayarlayabilirsiniz. Seçin **görüntülemek oturum açma etkinliği** en önemli hatalar yanı sıra, uygulama için zaman içinde etkinlik oturum görmek için.  
+Odağı belirli bir uygulama için de ayarlayabilirsiniz. Uygulamanın zaman içindeki oturum açma etkinliğini ve en üstteki hataları görmek için **oturum açma etkinliğini görüntüle** ' yi seçin.  
 
-Uygulama kullanımı grafiğinde bir gün seçtiğinizde, uygulama için oturum açma etkinliklerinin ayrıntılı bir listesini alın.  
+Uygulama kullanımı grafiğinde bir gün seçtiğinizde, uygulama için oturum açma etkinliklerinin ayrıntılı bir listesini alırsınız.  
 
 ![Kullanım ve İçgörüler raporu](./media/concept-usage-insights-report/usage-and-insights-report.png)
 

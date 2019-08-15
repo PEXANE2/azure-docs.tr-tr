@@ -9,12 +9,12 @@ ms.author: mbaldwin
 ms.date: 07/06/2019
 ms.topic: conceptual
 ms.service: key-vault
-ms.openlocfilehash: d34c94ccca47d29afc4f3d83bec58db737be270c
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: f6a95f56b7b617b42c1cec9f64aae73b88b813da
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840424"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934333"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>.NET kullanarak Azure Key Vault için hizmetten hizmete kimlik doğrulaması
 
@@ -270,21 +270,21 @@ Azure CLı kullanarak, varsayılan aboneliği kullanmak istediğiniz hesabı iç
 
 #### <a name="unauthorized-access-access-denied-forbidden-etc-error"></a>Yetkisiz erişim, erişim engellendi, yasak, vb. hata
  
-Kullanılan sorumlunun erişmeye çalıştığı kaynağa erişimi yok. Örneği yerel geliştirme makinenizde çalıştırıp çalıştırdığınıza veya Azure 'da App Service Azure 'da dağıtılmış olmasına bağlı olarak, istenen kaynağa kullanıcı hesabınızı veya App Service MSI "katkıda bulunan" erişimini verin. Anahtar kasaları gibi bazı kaynaklarda ayrıca, sorumlulara (kullanıcılar, uygulamalar, gruplar vb.) erişim izni vermek için kullandığınız kendi [erişim ilkeleri](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-secure-your-key-vault#data-plane-and-access-policies) de vardır.
+Kullanılan sorumlunun erişmeye çalıştığı kaynağa erişimi yok. Örneği yerel geliştirme makinenizde çalıştırıp çalıştırdığınıza veya Azure 'da App Service Azure 'da dağıtılmış olmasına bağlı olarak, istenen kaynağa kullanıcı hesabınızı veya App Service MSI "katkıda bulunan" erişimini verin. Anahtar kasaları gibi bazı kaynaklarda ayrıca, sorumlulara (kullanıcılar, uygulamalar, gruplar vb.) erişim izni vermek için kullandığınız kendi [erişim ilkeleri](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault#data-plane-and-access-policies) de vardır.
 
 ### <a name="common-issues-when-deployed-to-azure-app-service"></a>Azure App Service dağıtılan yaygın sorunlar
 
 #### <a name="managed-identity-is-not-setup-on-the-app-service"></a>Yönetilen kimlik App Service ayarlanmadı
  
-MSI_ENDPOINT ve MSI_SECRET ortam değişkenlerini [kudu hata ayıklama konsolunu](https://azure.microsoft.com/en-us/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/)kullanarak denetleyin. Bu ortam değişkenleri yoksa, App Service yönetilen kimlik etkinleştirilmez. 
+MSI_ENDPOINT ve MSI_SECRET ortam değişkenlerini [kudu hata ayıklama konsolunu](https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/)kullanarak denetleyin. Bu ortam değişkenleri yoksa, App Service yönetilen kimlik etkinleştirilmez. 
  
 ### <a name="common-issues-when-deployed-locally-with-iis"></a>IIS ile yerel olarak dağıtılan yaygın sorunlar
 
 #### <a name="cant-retrieve-tokens-when-debugging-app-in-iis"></a>IIS 'de uygulamada hata ayıklarken belirteçler alınamıyor
 
 Varsayılan olarak, AppAuth, IIS 'de farklı bir kullanıcı bağlamında çalışır ve bu nedenle, erişim belirteçlerini almak için geliştirici kimliğinizi kullanma erişimine sahip değildir. Aşağıdaki iki adımla IIS 'yi Kullanıcı bağlamla çalışacak şekilde yapılandırabilirsiniz:
-- Web uygulaması için uygulama havuzunu geçerli kullanıcı hesabınız olarak çalışacak şekilde yapılandırın. Daha fazla bilgi için [buraya](https://docs.microsoft.com/en-us/iis/manage/configuring-security/application-pool-identities#configuring-iis-application-pool-identities) bakın
-- "SetProfileEnvironment" öğesini "true" olarak yapılandırın. Daha fazla bilgi için [buraya](https://docs.microsoft.com/en-us/iis/configuration/system.applicationhost/applicationpools/add/processmodel#configuration)bakın. 
+- Web uygulaması için uygulama havuzunu geçerli kullanıcı hesabınız olarak çalışacak şekilde yapılandırın. Daha fazla bilgi için [buraya](https://docs.microsoft.com/iis/manage/configuring-security/application-pool-identities#configuring-iis-application-pool-identities) bakın
+- "SetProfileEnvironment" öğesini "true" olarak yapılandırın. Daha fazla bilgi için [buraya](https://docs.microsoft.com/iis/configuration/system.applicationhost/applicationpools/add/processmodel#configuration)bakın. 
 
     - %Windir%\System32\inetsrv\config\applicationHost,config adresine gidin
     - "SetProfileEnvironment" araması yapın. "False" olarak ayarlanırsa, "true" olarak değiştirin. Mevcut değilse, processModel öğesine (/configuration/system.applicationHost/applicationPools/applicationPoolDefaults/processModel/@setProfileEnvironment) bir özniteliği olarak ekleyin ve bunu "true" olarak ayarlayın.

@@ -5,25 +5,25 @@ services: digital-twins
 author: kingdomofends
 ms.service: digital-twins
 ms.topic: include
-ms.date: 12/20/2018
-ms.author: adgera
+ms.date: 08/12/2019
+ms.author: v-adgera
 ms.custom: include file
-ms.openlocfilehash: 40ab53c941a7ac619ebb09d381a4ae0450f26e8b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 94baeb3d459b700cc95d88fb82f995957640aab6
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67189004"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "69012315"
 ---
-`objectIdType` (Veya **nesne tanımlayıcı türü**) bir role verilen kimlik türünü ifade eder. Gelen apart `DeviceId` ve `UserDefinedFunctionId` türleri, nesne tanımlayıcısı türleri için Azure Active Directory nesnelerin özelliklerini karşılık gelir.
+( `objectIdType` Veya **nesne tanımlayıcı türü**), bir role verilen kimliğin türünü ifade eder. `DeviceId` Ve`UserDefinedFunctionId` türleri dışında, nesne tanımlayıcı türleri Azure Active Directory nesnelerinin özelliklerine karşılık gelir.
 
-Aşağıdaki tabloda Azure dijital İkizlerini desteklenen nesne tanımlayıcı türlerini içerir:
+Aşağıdaki tabloda, Azure dijital TWINS 'de desteklenen nesne tanımlayıcı türleri yer almaktadır:
 
-| Tür | Açıklama |
+| Type | Açıklama |
 | --- | --- |
-| UserId | Bir rol, bir kullanıcıya atar. |
-| DeviceId | Bir rol için bir cihaz atar. |
-| DomainName | Bir rol için bir etki alanı adı atar. Her kullanıcı belirtilen etki alanı adına karşılık gelen rolü erişim haklarına sahiptir. |
-| TenantId | Bir rol için bir kiracı atar. Belirtilen ait her kullanıcının Azure AD Kiracı kimliği, karşılık gelen rolü erişim haklarına sahip. |
-| ServicePrincipalId | Bir rol için bir hizmet sorumlusu nesne kimliği atar. |
-| UserDefinedFunctionId | Bir rol, kullanıcı tanımlı bir işlev için (UDF) atar. |
+| UserId | Bir kullanıcıya bir rol atar. |
+| DeviceId | Cihaza bir rol atar. |
+| Etki | Bir etki alanı adına bir rol atar. Belirtilen etki alanı adına sahip her Kullanıcı ilgili rolün erişim haklarına sahiptir. |
+| TenantId | Bir kiracıya bir rol atar. Belirtilen Azure AD kiracı KIMLIĞINE ait olan her Kullanıcı ilgili rolün erişim haklarına sahiptir. |
+| Serviceprincipalıd | Hizmet sorumlusu nesne KIMLIĞINE bir rol atar. |
+| Userdefinedfunctionıd | Kullanıcı tanımlı bir işleve (UDF) bir rol atar. |

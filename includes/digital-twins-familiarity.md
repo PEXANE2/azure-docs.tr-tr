@@ -5,17 +5,17 @@ services: digital-twins
 author: kingdomofends
 ms.service: digital-twins
 ms.topic: include
-ms.date: 01/09/2019
-ms.author: adgera
+ms.date: 08/12/2019
+ms.author: v-adgera
 ms.custom: include file
-ms.openlocfilehash: 0d5f483f074f90c51f500e8f8142bb54f9f6bb1e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 3531d00825cfd866c81039ce9d97522a2088f5f7
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67189014"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "69012313"
 ---
-Bu makalede, bazı alışkın olduğunuz Azure dijital İkizlerini yönetim API'leri ile kimlik doğrulaması varsayılır.
+Bu makalede, Azure Digital TWINS yönetim API 'lerinizle ilgili bazı benzerlik kimlik doğrulaması varsayılmaktadır.
 
-* Yönetim API'leri ile kimlik doğrulama hakkında daha fazla bilgi için bkz. [Azure dijital İkizlerini API'leri ile kimlik doğrulaması](../articles/digital-twins/security-authenticating-apis.md).
-* Postman REST istemcisi kullanarak yönetim API'leri ile kimlik doğrulamak için okuma [Postman yapılandırma](../articles/digital-twins/how-to-configure-postman.md).
+* Yönetim API 'lerinizle kimlik doğrulama hakkında daha fazla bilgi edinmek için bkz. [Azure Digital TWINS API 'Lerinde kimlik doğrulama](../articles/digital-twins/security-authenticating-apis.md).
+* Postman REST istemcisini kullanarak yönetim API 'lerinizle kimlik doğrulaması yapmak için [Postman yapılandırma](../articles/digital-twins/how-to-configure-postman.md)makalesini okuyun.

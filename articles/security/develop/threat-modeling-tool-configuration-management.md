@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: dbe3526444bc35815dd4323a3a5290696619e3f9
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 986bed758229d639bb40d0803f7be4a89a0f6e49
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728340"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934820"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>Güvenlik çerçevesi: Yapılandırma yönetimi | Karşı 
 | Ürün/hizmet | Makale |
@@ -563,7 +563,7 @@ Bir denetleyici veya eylem için CORS 'yi devre dışı bırakmak için [Disable
 | **SDL aşaması**               | Oluşturma |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Ağ Geçidi seçimi-Azure IoT Hub |
-| **Başvur**              | [Cihaz yönetimine genel bakış IoT Hub](https://azure.microsoft.com/documentation/articles/iot-hub-device-management-overview/) [cihaz üretici yazılımını güncelleştirme](https://docs.microsoft.com/azure/iot-hub/tutorial-firmware-update) |
+| **Başvur**              | [Cihaz yönetimine genel bakış IoT Hub](https://azure.microsoft.com/documentation/articles/iot-hub-device-management-overview/) [cihaz üretici yazılımını güncelleştirme](../../iot-hub/tutorial-firmware-update.md) |
 | **Adımları** | LWM2M, IoT cihaz yönetimi için Open Mobile Alliance 'dan bir protokoldür. Azure IoT cihaz yönetimi, cihaz işlerini kullanarak fiziksel cihazlarla etkileşime geçmesini sağlar. Bulut ağ geçidinin, Azure IoT Hub cihaz yönetimi 'ni kullanarak cihazı ve diğer yapılandırma verilerini düzenli olarak güncel tutmasına yönelik bir işlem uyguladığından emin olun. |
 
 ## <a id="controls-policies"></a>Cihazların kuruluş ilkelerine göre yapılandırılmış uç nokta güvenlik denetimlerine sahip olduğundan emin olun

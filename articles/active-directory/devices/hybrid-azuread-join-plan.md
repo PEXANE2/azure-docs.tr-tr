@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49f8d0e418f43648665b95f5bf1f672e9f9dae28
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: cad2568702909274030d3c7c6469a7e4cbf670c4
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779448"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989251"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Nasıl Yapılır: Hibrit Azure Active Directory JOIN Uygulamanızı planlayın
 
@@ -101,7 +101,7 @@ Kuruluşlar, karma Azure AD JOIN 'in tüm kuruluşları genelinde tek seferde et
 
 ## <a name="select-your-scenario-based-on-your-identity-infrastructure"></a>Kimlik altyapınıza göre senaryonuzu seçin
 
-Karma Azure AD katılımı, hem yönetilen hem de Federasyon ortamlarında çalışmaktadır.  
+Karma Azure AD katılımı, UPN 'nin yönlendirilebilir veya yönlendirilemeyen olmasına bağlı olarak hem yönetilen hem de Federasyon ortamları ile birlikte kullanılabilir. Desteklenen senaryolarda tablo için sayfanın alt bölümüne bakın.  
 
 ### <a name="managed-environment"></a>Yönetilen ortam
 

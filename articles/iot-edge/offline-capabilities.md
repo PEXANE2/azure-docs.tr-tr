@@ -2,19 +2,18 @@
 title: Azure IOT Edge cihazları çevrimdışı - çalışması | Microsoft Docs
 description: IOT Edge cihazları ve modülleri uzun süre için internet bağlantısı olmadan nasıl çalışabilir ve IOT Edge çevrimdışı çok çalışması normal bir IOT cihazları nasıl olanak sağlayabileceğiniz anlayın.
 author: kgremban
-manager: philmea
 ms.author: kgremban
-ms.date: 06/04/2019
+ms.date: 08/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 4a46128d3b0e77ff7921e1f4875c318a95309769
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 6d82b353f8b485b4441853b7ff8e70e7d69f4d6a
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598611"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68986979"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>IoT Edge cihazları, modülleri ve alt cihazları için genişletilmiş çevrimdışı özellikleri anlayın
 
@@ -137,43 +136,71 @@ Bu ayar, ikizi modülünde depolanan IoT Edge hub 'ının istenen bir özelliği
 }
 ```
 
-### <a name="additional-offline-storage"></a>Çevrimdışı ek depolama alanı
+### <a name="host-storage-for-system-modules"></a>Sistem modülleri için konak depolaması
 
-İletiler, IoT Edge merkezinin kapsayıcı FileSystem 'ında varsayılan olarak depolanır. Bu depolama miktarını çevrimdışı gereksinimleriniz için yeterli değilse, IOT Edge cihazı yerel depolamada ayırabilirsiniz. Kapsayıcıda bir depolama klasörünü işaret eden IoT Edge hub 'ı için bir ortam değişkeni oluşturun. Ardından, bu depolama klasörü konak makinedeki bir klasöre bağlamak için oluşturma seçenekleri kullanın. 
+Mesajlar ve modül durumu bilgileri, varsayılan olarak IoT Edge hub 'ının yerel kapsayıcı dosya sisteminde depolanır. Özellikle çevrimdışı çalışırken, daha iyi güvenilirlik sağlamak için, konak IoT Edge cihazında depolamayı da ayırabilirsiniz.
 
-**Gelişmiş Edge çalışma zamanı ayarlarını yapılandırma** bölümünde Azure Portal IoT Edge hub modülünün oluşturma seçeneklerini ve ortam değişkenlerini yapılandırabilirsiniz. Veya doğrudan dağıtım bildiriminde yapılandırabilirsiniz. 
+Konak sisteminde depolamayı ayarlamak için, IoT Edge hub ve kapsayıcıda bir depolama klasörünü işaret eden IoT Edge Aracısı için ortam değişkenleri oluşturun. Ardından, bu depolama klasörü konak makinedeki bir klasöre bağlamak için oluşturma seçenekleri kullanın. 
+
+**Gelişmiş Edge çalışma zamanı ayarlarını yapılandırma** bölümünde Azure Portal IoT Edge hub modülünün oluşturma seçeneklerini ve ortam değişkenlerini yapılandırabilirsiniz. 
+
+1. IoT Edge hub ve IoT Edge Aracısı için, modüldeki bir dizini işaret eden **StorageFolder** adlı bir ortam değişkeni ekleyin.
+1. IoT Edge hub ve IoT Edge Aracısı için, konak makinedeki yerel bir dizini modüldeki bir dizine bağlamak üzere bağlamalar ekleyin. Örneğin: 
+
+   ![Yerel depolama için oluşturma seçenekleri ve ortam değişkenleri ekleme](./media/offline-capabilities/offline-storage.png)
+
+Ya da, yerel depolamayı doğrudan dağıtım bildiriminde yapılandırabilirsiniz. Örneğin: 
 
 ```json
-"edgeHub": {
-    "type": "docker",
-    "settings": {
-        "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
-        "createOptions": {
-            "HostConfig": {
-                "Binds": ["<HostStoragePath>:<ModuleStoragePath>"],
-                "PortBindings": {
-                    "8883/tcp": [{"HostPort":"8883"}],
-                    "443/tcp": [{"HostPort":"443"}],
-                    "5671/tcp": [{"HostPort":"5671"}]
+"systemModules": {
+    "edgeAgent": {
+        "settings": {
+            "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
+            "createOptions": {
+                "HostConfig": {
+                    "Binds":["<HostStoragePath>:<ModuleStoragePath>"]
                 }
+            }
+        },
+        "type": "docker",
+        "env": {
+            "storageFolder": {
+                "value": "<ModuleStoragePath>"
             }
         }
     },
-    "env": {
-        "storageFolder": {
-            "value": "<ModuleStoragePath>"
-        }
-    },
-    "status": "running",
-    "restartPolicy": "always"
+    "edgeHub": {
+        "settings": {
+            "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+            "createOptions": {
+                "HostConfig": {
+                    "Binds":["<HostStoragePath>:<ModuleStoragePath"],
+                    "PortBindings":{"5671/tcp":[{"HostPort":"5671"}],"8883/tcp":[{"HostPort":"8883"}],"443/tcp":[{"HostPort":"443"}]}}}
+        },
+        "type": "docker",
+        "env": {
+            "storageFolder": {
+                "value": "<ModuleStoragePath>"
+            }
+        },
+        "status": "running",
+        "restartPolicy": "always"
+    }
 }
 ```
 
-Değiştirin `<HostStoragePath>` ve `<ModuleStoragePath>` konak ve modül depolama ile yolu; hem konak hem modülü depolama yolu mutlak bir yol olmalıdır. Oluşturma seçeneklerinde, konak ve modül depolama yollarını birlikte bağlayın. Ardından, modül depolama yolunu işaret eden bir ortam değişkeni oluşturun.  
+Ve `<HostStoragePath>` ' `<ModuleStoragePath>` i konak ve modüllü depolama yolunuza göre değiştirin; her iki değer de mutlak bir yol olmalıdır. 
 
 Örneğin, `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` ana bilgisayar sisteminizdeki **/etc/ıotedge/Storage** dizininin, kapsayıcıda **/iotedge/Storage/** dizinine eşlendiği anlamına gelir. Veya Windows sistemleri için başka bir örnek `"Binds":["C:\\temp:C:\\contemp"]` olan, ana bilgisayar sisteminizdeki **c\\: Temp** dizininin, kapsayıcıda **c\\: Contemp** dizinine eşlendiği anlamına gelir. 
 
-Ayrıca, [Docker belgelerinden](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate)oluşturma seçenekleri hakkında daha fazla ayrıntı bulabilirsiniz.
+Linux cihazlarda, IoT Edge hub 'ın Kullanıcı profilinin, UID 1000 ' ın konak sistem dizini için okuma, yazma ve yürütme izinlerine sahip olduğundan emin olun. IoT Edge hub 'ının iletileri dizinde depolayabilmesi ve daha sonra alabilmesi için bu izinler gereklidir. (IoT Edge Aracısı kök olarak çalışır, bu nedenle ek izin gerektirmez.) Linux sistemlerinde dizin izinlerini yönetmenin birkaç yolu vardır. Bu, `chown` Dizin sahibini değiştirmek ve sonra `chmod` izinleri değiştirmek için kullanılır. Örneğin:
+
+```bash
+sudo chown 1000 <HostStoragePath>
+sudo chmod 700 <HostStoragePath>
+```
+
+[Docker belgelerinden](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate)oluşturma seçenekleri hakkında daha fazla ayrıntı bulabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

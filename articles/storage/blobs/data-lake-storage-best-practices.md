@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: sachins
-ms.openlocfilehash: 630d8f64b39888533aff4847dec64fa50fc43d7e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: a5bfc664c412c93bbf3e522b01528e8247be3291
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855601"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016063"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. kullanmak için en iyi uygulamalar
 
@@ -49,7 +49,7 @@ Data Lake Storage 2. veya herhangi bir bulut hizmeti ile bir sistemi mimarmaya �
 
 ### <a name="high-availability-and-disaster-recovery"></a>Yüksek kullanılabilirlik ve olağanüstü durum kurtarma
 
-Yüksek kullanılabilirlik (HA) ve olağanüstü durum kurtarma (DR) bazen birlikte birleştirilebilir, ancak özellikle de verilere geldiklerinde, her birinin biraz farklı bir stratejisi vardır. Data Lake Storage 2., yerelleştirilmiş donanım hatalarıyla karşı koruma kapsamında 3x çoğaltmasını zaten işliyor. Ayrıca, ZRS gibi diğer çoğaltma seçenekleri de GRS & RA-GRS, DR 'yi geliştirir. Bir HA planı oluştururken, hizmet kesintisi durumunda iş yükünün, ayrı olarak çoğaltılan bir örneğe yerel olarak veya yeni bir bölgede geçiş yaparak en son verilere en kısa sürede erişmesi gerekir.
+Yüksek kullanılabilirlik (HA) ve olağanüstü durum kurtarma (DR) bazen birlikte birleştirilebilir, ancak özellikle de verilere geldiklerinde, her birinin biraz farklı bir stratejisi vardır. Data Lake Storage 2., yerelleştirilmiş donanım hatalarıyla karşı koruma kapsamında 3x çoğaltmasını zaten işliyor. Ayrıca, ZRS veya GZRS (Önizleme) gibi diğer çoğaltma seçenekleri, GRS & RA-GRS, DR 'yi iyileştirirken HA 'yi geliştirir. Bir HA planı oluştururken, hizmet kesintisi durumunda iş yükünün, ayrı olarak çoğaltılan bir örneğe yerel olarak veya yeni bir bölgede geçiş yaparak en son verilere en kısa sürede erişmesi gerekir.
 
 Bir DR stratejisinde, bir bölgenin çok önemli bir hatasının olası bir olayına hazırlanmak için, GRS veya RA-GRS çoğaltmasını kullanarak verilerin farklı bir bölgeye çoğaltılması da önemlidir. Ayrıca, geri dönebileceğiniz düzenli anlık görüntüler oluşturmak isteyebileceğiniz veri bozulması gibi kenar durumları için gereksinimlerinizi de göz önünde bulundurmanız gerekir. Verilerin önem ve boyutuna bağlı olarak, 1-, 6 ve 24 saatlik dönemlerin Delta anlık görüntülerini, risk toleransları uyarınca göz önünde bulundurun.
 

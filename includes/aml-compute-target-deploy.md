@@ -9,18 +9,19 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 05/30/2019
-ms.openlocfilehash: 05082544830bad543d6743d016a91ef8565767f4
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: c5a6f957cd3f799f9d7eff1df22df2200779ac30
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67331663"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946030"
 ---
 | Hedef işlem | Kullanım | GPU desteği | FPGA desteği | Açıklama |
 | ----- | ----- | ----- | ----- | ----- |
-| [Yerel&nbsp;web&nbsp;hizmeti](../articles/machine-learning/service/how-to-deploy-and-where.md#local) | Test/hata ayıklama | Belki de | &nbsp; | Sınırlı test etme ve sorun giderme için uygundur. Donanım hızlandırma yerel sistemde kitaplıkları kullanarak bağlıdır.
-| [Azure Kubernetes Service'i (AKS)](../articles/machine-learning/service/how-to-deploy-and-where.md#aks) | Gerçek zamanlı çıkarımı |  [Evet](../articles/machine-learning/service/how-to-deploy-inferencing-gpus.md)  | [Evet](../articles/machine-learning/service/how-to-deploy-fpga-web-service.md)   |Büyük ölçekli üretim dağıtımları için idealdir. Hızlı yanıt süresi ve dağıtılan hizmetin otomatik ölçeklendirme sağlar. Küme otomatik ölçeklendirme, Azure Machine Learning SDK aracılığıyla desteklenmiyor. AKS kümesindeki düğümlere değiştirmek için Azure portalında AKS kümenizin kullanıcı arabirimini kullanın. AKS için görsel arabirim kullanılabilir tek seçenektir. |
-| [Azure Container Instances (ACI)](../articles/machine-learning/service/how-to-deploy-and-where.md#aci) | Test veya geliştirme | &nbsp;  | &nbsp; | Düşük ölçek gerektiren CPU tabanlı iş yükleri için iyi < 48 GB RAM |
-| [Azure Machine Learning işlem](../articles/machine-learning/service/how-to-run-batch-predictions.md) | (Önizleme) Batch&nbsp;çıkarımı | evet | &nbsp;  | Toplu Puanlama sunucusuz bir işlem üzerinde çalıştırın. Normal veya düşük öncelikli sanal makineleri destekler. |
-| [Azure IoT Edge](../articles/machine-learning/service/how-to-deploy-and-where.md#iotedge) | (Önizleme) IOT&nbsp;Modülü |  &nbsp; | &nbsp; | Dağıtma ve IOT cihazlarında ML modelleri hizmet. |
-| [Azure Data Box Edge](../articles/databox-online/data-box-edge-overview.md)   | IOT Edge ile |  &nbsp; | evet | Dağıtma ve IOT cihazlarında ML modelleri hizmet. |
+| [Yerel&nbsp;Web&nbsp;hizmeti](../articles/machine-learning/service/how-to-deploy-and-where.md#local) | Test/hata ayıklama | Belki | &nbsp; | Sınırlı test ve sorun giderme için iyi. Donanım hızlandırma, yerel sistemdeki kitaplıkların kullanılmasına bağlıdır.
+| [Not defteri&nbsp;VM&nbsp;Web hizmeti](../articles/machine-learning/service/how-to-deploy-and-where.md#notebookvm) | Test/hata ayıklama | Belki | &nbsp; | Sınırlı test ve sorun giderme için iyi. 
+| [Azure Kubernetes Service'i (AKS)](../articles/machine-learning/service/how-to-deploy-and-where.md#aks) | Gerçek zamanlı çıkarım |  [Yes](../articles/machine-learning/service/how-to-deploy-inferencing-gpus.md)  | [Yes](../articles/machine-learning/service/how-to-deploy-fpga-web-service.md)   |Büyük ölçekli üretim dağıtımları için idealdir. Dağıtılan hizmetin hızlı yanıt süresini ve otomatik ölçeklendirilmesini sağlar. Küme otomatik ölçeklendirme, Azure Machine Learning SDK aracılığıyla desteklenmez. AKS kümesindeki düğümleri değiştirmek için Azure portal AKS kümeniz için Kullanıcı arabirimini kullanın. AKS, görsel arabirim için kullanılabilen tek seçenektir. |
+| [Azure Container Instances (ACI)](../articles/machine-learning/service/how-to-deploy-and-where.md#aci) | Test veya geliştirme | &nbsp;  | &nbsp; | 48 GB RAM < gerektiren düşük ölçekli, CPU tabanlı iş yükleri için iyi |
+| [Azure Machine Learning işlem](../articles/machine-learning/service/how-to-run-batch-predictions.md) | Önizle Toplu&nbsp;çıkarım | evet | &nbsp;  | Batch Puanlama 'nı sunucusuz işlem üzerinde çalıştırın. Normal ve düşük öncelikli VM 'Leri destekler. |
+| [Azure IoT Edge](../articles/machine-learning/service/how-to-deploy-and-where.md#iotedge) | Önizle IoT&nbsp;modülü |  &nbsp; | &nbsp; | Dağıtım & IoT cihazlarında ML modellerini sunar. |
+| [Azure Data Box Edge](../articles/databox-online/data-box-edge-overview.md)   | IoT Edge aracılığıyla |  &nbsp; | evet | Dağıtım & IoT cihazlarında ML modellerini sunar. |

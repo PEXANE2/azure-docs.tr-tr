@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 07/11/2019
+ms.date: 08/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: de068563e50da4510343572fd641aadd93157073
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 4ea0ceed80875018ee4f6e4bbcdc2548a232e9e0
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868653"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989954"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure kaynakları için yerleşik roller
 
@@ -35,129 +35,133 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 
 | Yerleşik rol | Açıklama |
 | --- | --- |
-| [Sahip](#owner) | Kaynaklara erişim de dahil olmak üzere her şeyi yönetmenizi sağlar. |
-| [Katılımcı](#contributor) | Kaynaklara erişim hariç her şeyi yönetmenizi sağlar. |
-| [Okuyucu](#reader) | Her şeyi görüntülemenize izin verir, ancak hiçbir değişiklik yapmamalıdır. |
+| [Sahip](#owner) | Kaynaklara erişim dahil olmak üzere her şeyi yönetmenizi sağlar. |
+| [Katılımcı](#contributor) | Kaynaklara erişim hariç olmak üzere her şeyi yönetmenizi sağlar. |
+| [Okuyucu](#reader) | Her şeyi görüntülemenizi sağlar ancak değişiklik yapmanıza izin vermez. |
 | [AcrDelete](#acrdelete) | ACR silme |
-| [Acrimageimzalayan](#acrimagesigner) | ACR görüntü imzalayan |
+| [Acrimageimzalayan](#acrimagesigner) | acr görüntüsü imzalayan |
 | [AcrPull](#acrpull) | ACR çekme |
-| [AcrPush](#acrpush) | ACR gönderimi |
-| [Acrquaranınereader](#acrquarantinereader) | ACR karantina veri okuyucusu |
-| [AcrQuarantineWriter](#acrquarantinewriter) | ACR karantina veri yazıcısı |
-| [API Management hizmet Katılımcısı](#api-management-service-contributor) | Hizmeti ve API 'Leri yönetebilir |
-| [Hizmet Işletmeni rolü API Management](#api-management-service-operator-role) | Hizmeti yönetebilir, ancak API 'Leri yönetemez |
-| [API Management hizmeti okuyucu rolü](#api-management-service-reader-role) | Hizmet ve API 'lere salt okuma erişimi |
+| [AcrPush](#acrpush) | ACR gönderme |
+| [Acrquaranınereader](#acrquarantinereader) | acr karantina veri okuyucu |
+| [AcrQuarantineWriter](#acrquarantinewriter) | acr karantina veri yazıcı |
+| [API Management hizmet Katılımcısı](#api-management-service-contributor) | Hizmeti ve API'leri yönetebilir |
+| [Hizmet Işletmeni rolü API Management](#api-management-service-operator-role) | Hizmeti yönetebilir, ancak API'leri yönetemez |
+| [API Management hizmeti okuyucu rolü](#api-management-service-reader-role) | Hizmet ve API'lere salt okunur erişim |
 | [Application Insights bileşeni Katılımcısı](#application-insights-component-contributor) | Application Insights bileşenlerini yönetebilir |
 | [Application Insights Snapshot Debugger](#application-insights-snapshot-debugger) | Application Insights Snapshot Debugger ile toplanan hata ayıklama anlık görüntülerini görüntülemek ve indirmek için kullanıcıya izin verir. Bu izinlerin [sahip](#owner) veya [katkıda](#contributor) bulunan rollerine dahil edilmediğini unutmayın. |
-| [Automation Iş Işleci](#automation-job-operator) | Otomasyon Runbook 'Larını kullanarak Iş oluşturun ve yönetin. |
-| [Automation Işleci](#automation-operator) | Automation Işleçleri, işleri başlatabilir, durdurabilir, askıya alabilir ve sürdürebilir |
-| [Otomasyon Runbook Işleci](#automation-runbook-operator) | Runbook 'un Işlerini oluşturabilmek için Runbook özelliklerini okuyun. |
+| [Automation Iş Işleci](#automation-job-operator) | Otomasyon Runbook'larını kullanarak İş oluşturun ve yönetin. |
+| [Automation Işleci](#automation-operator) | Otomasyon Operatörleri, işleri başlatabilir, durdurabilir, askıya alabilir ve sürdürebilir |
+| [Otomasyon Runbook Işleci](#automation-runbook-operator) | Runbook'un İşlerini oluşturabilmek için Runbook özelliklerini okuyun. |
 | [Avere Katılımcısı](#avere-contributor) | , Bir avere vFXT kümesi oluşturabilir ve yönetebilir. |
 | [Avere Işleci](#avere-operator) | Kümeyi yönetmek için avere vFXT kümesi tarafından kullanılır |
 | [Azure Event Hubs veri sahibi (Önizleme)](#azure-event-hubs-data-owner-preview) | Azure Event Hubs kaynaklarına tam erişim sağlar. |
 | [Azure Event Hubs veri alıcısı (Önizleme)](#azure-event-hubs-data-receiver-preview) | Azure Event Hubs kaynaklarına erişim izni verir. |
 | [Azure Event Hubs veri gönderici (Önizleme)](#azure-event-hubs-data-sender-preview) | Azure Event Hubs kaynaklarına erişim gönderilmesine izin verir. |
-| [Azure Kubernetes hizmet kümesi yönetici rolü](#azure-kubernetes-service-cluster-admin-role) | Küme Yöneticisi kimlik bilgisi eylemini listeleyin. |
-| [Azure Kubernetes hizmet kümesi Kullanıcı rolü](#azure-kubernetes-service-cluster-user-role) | Küme kullanıcı kimlik bilgilerini Listele eylemi. |
-| [Azure haritalar veri okuyucu (Önizleme)](#azure-maps-data-reader-preview) | Azure haritalar hesabından ilgili harita okuma verilerine erişim izni verir. |
+| [Azure Kubernetes hizmet kümesi yönetici rolü](#azure-kubernetes-service-cluster-admin-role) | Küme yöneticisi kimlik bilgileri eylemini listele. |
+| [Azure Kubernetes hizmet kümesi Kullanıcı rolü](#azure-kubernetes-service-cluster-user-role) | Küme kullanıcısı kimlik bilgileri eylemini listele. |
+| [Azure haritalar veri okuyucu (Önizleme)](#azure-maps-data-reader-preview) | Bir Azure eşlemeleri hesabından eşlemelerle ilgili verileri okuma erişimi verir. |
 | [Veri sahibini Azure Service Bus (Önizleme)](#azure-service-bus-data-owner-preview) | Azure Service Bus kaynaklara tam erişim sağlar. |
 | [Azure Service Bus veri alıcısı (Önizleme)](#azure-service-bus-data-receiver-preview) | Azure Service Bus kaynaklarına erişim izni verir. |
 | [Azure Service Bus veri gönderici (Önizleme)](#azure-service-bus-data-sender-preview) | Azure Service Bus kaynaklarına erişim izni verir. |
-| [Kayıt sahibini Azure Stack](#azure-stack-registration-owner) | Azure Stack kayıtlarını yönetmenizi sağlar. |
+| [Kayıt sahibini Azure Stack](#azure-stack-registration-owner) | Azure Stack kayıtlarını yönetmenize imkan sağlar. |
 | [Yedek Katılımcısı](#backup-contributor) | Yedekleme hizmetini yönetmenizi sağlar, ancak kasaların oluşturamaz ve başkalarına erişim izni verebilir |
-| [Yedekleme Işletmeni](#backup-operator) | Yedekleme kaldırma, kasa oluşturma ve başkalarına erişim verme dışında yedekleme hizmetlerini yönetmenizi sağlar |
-| [Yedekleme okuyucusu](#backup-reader) | Yedekleme hizmetlerini görüntüleyebilir, ancak değişiklik yapamaz |
-| [Faturalama okuyucusu](#billing-reader) | Faturalandırma verilerine okuma erişimi sağlar |
-| [BizTalk Katılımcısı](#biztalk-contributor) | BizTalk hizmetlerini yönetmenizi sağlar ancak onlara erişim izni vermez. |
-| [Blok zinciri üye düğümü erişimi (Önizleme)](#blockchain-member-node-access-preview) | Blok zinciri üye düğümlerine erişim sağlar |
+| [Yedekleme Işletmeni](#backup-operator) | Yedekleme kaldırma, kasa oluşturma ve diğer kullanıcılara erişim verme dışındaki yedekleme hizmetlerini yönetmenize olanak sağlar |
+| [Yedekleme okuyucusu](#backup-reader) | Yedekleme hizmetlerini görüntüleyebilir ancak değişiklik yapamaz |
+| [Faturalama okuyucusu](#billing-reader) | Faturalandırma verilerine okuma erişimi verir |
+| [BizTalk Katılımcısı](#biztalk-contributor) | BizTalk hizmetlerini yönetmenizi sağlar ancak onlara yönelik erişimi yönetme izni vermez. |
+| [Blok zinciri üye düğümü erişimi (Önizleme)](#blockchain-member-node-access-preview) | Blok Zinciri Üye düğümlerine erişim izni verir |
 | [CDN uç noktası Katılımcısı](#cdn-endpoint-contributor) | CDN uç noktalarını yönetebilir, ancak diğer kullanıcılara erişim izni veremez. |
 | [CDN uç nokta okuyucusu](#cdn-endpoint-reader) | CDN uç noktalarını görüntüleyebilir, ancak değişiklik yapamaz. |
 | [CDN profili Katılımcısı](#cdn-profile-contributor) | CDN profillerini ve uç noktalarını yönetebilir, ancak diğer kullanıcılara erişim izni veremez. |
 | [CDN profili okuyucu](#cdn-profile-reader) | CDN profillerini ve uç noktalarını görüntüleyebilir, ancak değişiklik yapamaz. |
-| [Klasik Ağ Katılımcısı](#classic-network-contributor) | Klasik ağları yönetmenize izin verir, ancak bunlara erişemez. |
-| [Klasik depolama hesabı Katılımcısı](#classic-storage-account-contributor) | Klasik depolama hesaplarını yönetmenize izin verir, ancak bunlara erişimi kalmaz. |
-| [Klasik depolama hesabı anahtar operatörü hizmet rolü](#classic-storage-account-key-operator-service-role) | Klasik depolama hesabı anahtar Işleçleri klasik depolama hesaplarında anahtarları listeleme ve yeniden oluşturma izni verilir |
-| [Klasik sanal makine Katılımcısı](#classic-virtual-machine-contributor) | Klasik sanal makineleri yönetmenizi sağlar ancak bunlara yönelik erişimi, bağlı oldukları sanal ağ veya depolama hesabı için değil. |
-| [Bilişsel hizmetler Katılımcısı](#cognitive-services-contributor) | Bilişsel hizmetler için anahtar oluşturma, okuma, güncelleştirme, silme ve yönetme olanağı sağlar. |
-| [Bilişsel hizmetler veri okuyucu (Önizleme)](#cognitive-services-data-reader-preview) | Bilişsel hizmetler verilerini okumanızı sağlar. |
-| [Bilişsel hizmetler kullanıcısı](#cognitive-services-user) | Bilişsel hizmetler 'in anahtarlarını okuyup listelemenizi sağlar. |
+| [Klasik Ağ Katılımcısı](#classic-network-contributor) | Klasik ağları yönetmenizi sağlar ancak onlara yönelik erişimi yönetme izni vermez. |
+| [Klasik depolama hesabı Katılımcısı](#classic-storage-account-contributor) | Klasik depolama hesaplarını yönetmenize izin verir ancak bu hesaplara erişim hakkı vermez. |
+| [Klasik depolama hesabı anahtar operatörü hizmet rolü](#classic-storage-account-key-operator-service-role) | Klasik Depolama Hesabı Anahtarı İşleçlerine, Klasik Depolama Hesaplarında anahtarları listeleme ve yeniden oluşturma izni verilir |
+| [Klasik sanal makine Katılımcısı](#classic-virtual-machine-contributor) | Klasik sanal makineleri yönetmenizi sağlar ancak bunlara veya bağlı oldukları sanal ağ ya da depolama hesaplarına yönelik erişimi yönetme izni vermez. |
+| [Bilişsel hizmetler Katılımcısı](#cognitive-services-contributor) | Bilişsel Hizmetler anahtarlarını oluşturmanıza, okumanıza, güncelleştirmenize, silmenize ve yönetmenize olanak sağlar. |
+| [Bilişsel hizmetler veri okuyucu (Önizleme)](#cognitive-services-data-reader-preview) | Bilişsel Hizmetler verilerini okumanıza olanak sağlar. |
+| [Bilişsel hizmetler kullanıcısı](#cognitive-services-user) | Bilişsel Hizmetler anahtarlarını okumanıza ve listelemenize olanak sağlar. |
 | [Cosmos DB hesabı okuyucu rolü](#cosmos-db-account-reader-role) | Azure Cosmos DB hesabı verilerini okuyabilir. Azure Cosmos DB hesaplarını yönetmek için [DocumentDB hesabı katılımcısı](#documentdb-account-contributor) konusuna bakın. |
 | [Cosmos DB Işleci](#cosmos-db-operator) | Azure Cosmos DB hesaplarını yönetmenizi sağlar ancak içerdikleri verilere erişemez. Hesap anahtarlarına ve bağlantı dizelerine erişimi engeller. |
-| [CosmosBackupOperator](#cosmosbackupoperator) | Bir Cosmos DB veritabanı veya bir hesabın kapsayıcısı için geri yükleme isteği gönderebilir |
-| [Maliyet yönetimi Katılımcısı](#cost-management-contributor) | Maliyetleri görüntüleyebilir ve maliyet yapılandırmasını yönetebilir (örn. bütçeler, dışarı aktarmalar) |
-| [Maliyet yönetimi okuyucusu](#cost-management-reader) | Maliyet verilerini ve yapılandırmayı görüntüleyebilir (örneğin, bütçeler, dışarı aktarmalar) |
-| [Katkıda bulunan Data Box](#data-box-contributor) | , Diğer kullanıcılara erişim izni hariç Data Box hizmeti altındaki her şeyi yönetmenizi sağlar. |
-| [Data Box okuyucu](#data-box-reader) | Sipariş oluşturma veya düzenleme sırası ayrıntıları ve başkalarına erişim verme dışında Data Box hizmetini yönetmenizi sağlar. |
-| [Katkıda bulunan Data Factory](#data-factory-contributor) | Veri fabrikalarının yanı sıra bunların içindeki alt kaynakları oluşturun ve yönetin. |
-| [Data Lake Analytics geliştirici](#data-lake-analytics-developer) | Kendi işlerinizi göndermenize, izlemenize ve yönetmenize izin verir, ancak Data Lake Analytics Hesapları oluşturamaz veya silemezsiniz. |
-| [Veri Takiger](#data-purger) | Analiz verilerini temizedebilir |
-| [DevTest Labs kullanıcısı](#devtest-labs-user) | Azure DevTest Labs sanal makinelerinizi bağlamanıza, başlatmanıza, yeniden başlatmanıza ve kapatımanıza olanak sağlar. |
-| [DNS bölgesi Katılımcısı](#dns-zone-contributor) | Azure DNS, DNS bölgelerini ve kayıt kümelerini yönetmenizi sağlar, ancak bunlara kimlerin erişebileceğini denetlemenize izin vermez. |
+| [CosmosBackupOperator](#cosmosbackupoperator) | Bir Cosmos DB veritabanı veya bir hesaba ilişkin bir kapsayıcı için geri yükleme isteği gönderebilir |
+| [Maliyet yönetimi Katılımcısı](#cost-management-contributor) | Maliyetleri görüntüleyebilir ve maliyet yapılandırmasını yönetebilir (örneğin bütçeler, dışarı aktarmalar) |
+| [Maliyet yönetimi okuyucusu](#cost-management-reader) | Maliyet verileri ve yapılandırmasını (örneğin bütçeler, dışarı aktarmalar) görüntüleyebilir |
+| [Katkıda bulunan Data Box](#data-box-contributor) | Başkalarına erişim izni verme hariç Veri Kutusu Hizmeti altındaki her şeyi yönetmenize olanak sağlar. |
+| [Data Box okuyucu](#data-box-reader) | Sipariş oluşturma veya sipariş ayrıntılarını düzenleme ve başkalarına erişim izni verme hariç Veri Kutusu Hizmeti özelliklerini yönetmenize olanak sağlar. |
+| [Katkıda bulunan Data Factory](#data-factory-contributor) | Veri fabrikaları ile birlikte bunların alt kaynaklarını oluşturup yönetin. |
+| [Data Lake Analytics geliştirici](#data-lake-analytics-developer) | İşlerinizi göndermenize, izlemenize ve yönetmenize izin verir, ancak Data Lake Analytics hesabı oluşturmanıza veya silmenize izin vermez. |
+| [Veri Takiger](#data-purger) | Analiz verilerini temizleyebilir |
+| [DevTest Labs kullanıcısı](#devtest-labs-user) | Azure DevTest Labs'teki tüm sanal makinelerinize bağlanmanıza, bu makineleri başlatmanıza, yeniden başlatmanıza ve kapatmanıza izin verir. |
+| [DNS bölgesi Katılımcısı](#dns-zone-contributor) | Azure DNS'te, DNS bölgelerini ve kayıt kümelerini yönetmenize izin verir, ancak bunlara kimlerin erişebildiğini denetlemenize izin vermez. |
 | [DocumentDB hesabı Katılımcısı](#documentdb-account-contributor) | , Azure Cosmos DB hesaplarını yönetebilir. Azure Cosmos DB daha önce DocumentDB olarak bilinirdi. |
-| [EventGrid EventSubscription Katılımcısı](#eventgrid-eventsubscription-contributor) | EventGrid olay aboneliği işlemlerini yönetmenizi sağlar. |
-| [EventGrid EventSubscription okuyucusu](#eventgrid-eventsubscription-reader) | EventGrid olay aboneliklerini okumanızı sağlar. |
+| [EventGrid EventSubscription Katılımcısı](#eventgrid-eventsubscription-contributor) | EventGrid olay aboneliği işlemlerini yönetmenize olanak sağlar. |
+| [EventGrid EventSubscription okuyucusu](#eventgrid-eventsubscription-reader) | EventGrid olay aboneliklerini okumanıza olanak sağlar. |
 | [HDInsight küme operatörü](#hdinsight-cluster-operator) | HDInsight küme yapılandırmasını okuyup değiştirmenize izin verir. |
-| [HDInsight etki alanı Hizmetleri Katılımcısı](#hdinsight-domain-services-contributor) | HDInsight için gereken etki alanı Hizmetleri ile ilgili işlemleri okuyabilir, oluşturabilir, değiştirebilir ve silebilir Kurumsal Güvenlik Paketi |
-| [Intelligent Systems hesabı Katılımcısı](#intelligent-systems-account-contributor) | Akıllı sistem hesaplarını yönetmenizi sağlar ancak onlara yönelik erişimleri vermez. |
-| [Katkıda bulunan Key Vault](#key-vault-contributor) | Anahtar kasalarını yönetmenize izin verir, ancak bunlara erişim sağlamaz. |
-| [Laboratuvar Oluşturucu](#lab-creator) | Azure Laboratuvar hesaplarınız kapsamında yönetilen Laboratuvarlarınızı oluşturmanıza, yönetmenize ve silmenize olanak sağlar. |
+| [HDInsight etki alanı Hizmetleri Katılımcısı](#hdinsight-domain-services-contributor) | Okuyabilir oluşturma, değiştirme ve etki alanı Hizmetleri Sil ilgili işlemler için HDInsight Kurumsal Güvenlik Paketi için gereken Etki Alanı Hizmetleriyle ilgili işlemleri Okuyabilir, Oluşturabilir, Değiştirebilir ve Silebilir |
+| [Intelligent Systems hesabı Katılımcısı](#intelligent-systems-account-contributor) | Akıllı Sistemler hesaplarını yönetmenizi sağlar ancak onlara yönelik erişimi yönetme izni vermez. |
+| [Katkıda bulunan Key Vault](#key-vault-contributor) | Anahtar kasalarını yönetmenize izin verir, ancak bunlara erişmenize izin vermez. |
+| [Laboratuvar Oluşturucu](#lab-creator) | Azure Laboratuvar Hesaplarınız altında yönetilen laboratuvarları oluşturmanıza, yönetmenize ve silmenize olanak sağlar. |
 | [Katkıda bulunan Log Analytics](#log-analytics-contributor) | Log Analytics katkı, tüm izleme verilerini okuyabilir ve izleme ayarlarını düzenleyebilir. İzleme ayarlarını düzenlediğinizde VM 'lere VM uzantısının eklenmesi dahildir; Azure depolama 'dan günlüklerin toplanmasını yapılandırabilmek için depolama hesabı anahtarlarını okuma; Otomasyon hesapları oluşturma ve yapılandırma; çözümler ekleme; ve Azure tanılama 'yı tüm Azure kaynaklarında yapılandırma. |
-| [Log Analytics okuyucu](#log-analytics-reader) | Log Analytics okuyucu tüm izleme verilerini görüntüleyip arayabilir ve tüm Azure kaynaklarında Azure tanılama 'nın yapılandırılmasını görüntüleme dahil olmak üzere izleme ayarlarını görüntüleyebilir. |
+| [Log Analytics okuyucu](#log-analytics-reader) | Log Analytics Okuyucusu, tüm izleme verilerinin görüntüleme ve aramanın yanı sıra izleme ayarlarını da (tüm Azure kaynaklarındaki Azure tanılama yapılandırmalarını görüntüleme dahil) görüntüleyebilir. |
 | [Mantıksal uygulama Katılımcısı](#logic-app-contributor) | Mantıksal uygulamaları yönetmenize izin verir, ancak bunlara erişimi değiştirmeyin. |
 | [Logic App Işleci](#logic-app-operator) | Logic Apps 'i okumanızı, etkinleştirmenizi ve devre dışı bırakmanızı sağlar, ancak bunları düzenleyemez veya güncelleştiremez. |
-| [Yönetilen uygulama Işletmeni rolü](#managed-application-operator-role) | Yönetilen uygulama kaynakları üzerinde işlemleri okuyup gerçekleştirmenize olanak tanır |
-| [Yönetilen uygulamalar okuyucusu](#managed-applications-reader) | Yönetilen bir uygulamadaki kaynakları okumanızı ve JıT erişimi isteğinizi yapmanızı sağlar. |
-| [Yönetilen kimlik Katılımcısı](#managed-identity-contributor) | Kullanıcı tarafından atanan kimlik oluşturma, okuma, güncelleştirme ve silme |
-| [Yönetilen kimlik Işleci](#managed-identity-operator) | Kullanıcı tarafından atanan kimliği okuma ve atama |
-| [Yönetim grubu Katılımcısı](#management-group-contributor) | Yönetim grubu katılımcısı rolü |
-| [Yönetim grubu okuyucusu](#management-group-reader) | Yönetim grubu okuyucusu rolü |
+| [Yönetilen uygulama Işletmeni rolü](#managed-application-operator-role) | Yönetilen Uygulama kaynakları üzerinde eylemleri okumanıza ve gerçekleştirmenize olanak sağlar |
+| [Yönetilen uygulamalar okuyucusu](#managed-applications-reader) | Yönetilen bir uygulama içinde kaynakları okumanıza ve JIT erişimi isteğinde bulunmanıza olanak sağlar. |
+| [Yönetilen kimlik Katılımcısı](#managed-identity-contributor) | Kullanıcı Tarafından Atanan Kimliği Oluşturma, Okuma, Güncelleştirme ve Silme |
+| [Yönetilen kimlik Işleci](#managed-identity-operator) | Kullanıcı Tarafından Atanan Kimliği Oku ve Ata |
+| [Yönetim grubu Katılımcısı](#management-group-contributor) | Yönetim Grubu Katkıda Bulunanı Rolü |
+| [Yönetim grubu okuyucusu](#management-group-reader) | Yönetim Grubu Okuyucusu Rolü |
 | [Katkıda bulunan izleniyor](#monitoring-contributor) | Tüm izleme verilerini okuyabilir ve izleme ayarlarını düzenleyebilir. Ayrıca bkz. [Azure izleyici ile roller, izinler ve güvenlik ile çalışmaya başlama](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles). |
-| [Ölçüm yayımcısını izleme](#monitoring-metrics-publisher) | Azure kaynaklarında ölçüm yayımlamaya izin vermez |
+| [Ölçüm yayımcısını izleme](#monitoring-metrics-publisher) | Azure kaynaklarına karşı ölçümleri yayımlamayı etkinleştirir |
 | [İzleme okuyucusu](#monitoring-reader) | Tüm izleme verilerini okuyabilir (ölçümler, Günlükler vb.). Ayrıca bkz. [Azure izleyici ile roller, izinler ve güvenlik ile çalışmaya başlama](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles). |
-| [Ağ Katılımcısı](#network-contributor) | Ağları yönetmenizi sağlar ancak onlara yönelik erişimleri vermez. |
-| [Yeni relik APM hesabı Katılımcısı](#new-relic-apm-account-contributor) | New Relic Application Performance Management hesaplarını ve uygulamaları yönetmenize izin verir, ancak bunlara erişimi kalmaz. |
+| [Ağ Katılımcısı](#network-contributor) | Ağları yönetmenizi sağlar ancak onlara yönelik erişimi yönetme izni vermez. |
+| [Yeni relik APM hesabı Katılımcısı](#new-relic-apm-account-contributor) | New Relic Application Performance Management hesaplarını ve uygulamalarını yönetmenizi sağlar ancak onlara yönelik erişimi yönetme izni vermez. |
 | [Okuyucu ve veri erişimi](#reader-and-data-access) | Her şeyi görüntülemenize izin verir, ancak bir depolama hesabını veya kapsanan kaynağı silmenize veya oluşturmanıza izin vermez. Ayrıca depolama hesabı anahtarlarına erişim aracılığıyla bir depolama hesabında bulunan tüm verilere okuma/yazma erişimi de sağlar. |
-| [Katkıda bulunan Redis Cache](#redis-cache-contributor) | Redsıs önbellekler yönetmenize izin verir, ancak bunlara erişimi olmaz. |
-| [Kaynak Ilkesi katılımcısı (Önizleme)](#resource-policy-contributor-preview) | Önizle Kaynak ilkesi oluşturma/değiştirme, destek bileti oluşturma ve kaynakları/hiyerarşiyi okuma haklarıyla EA 'dan Kullanıcı geri alma. |
-| [Zamanlayıcı Iş koleksiyonları Katılımcısı](#scheduler-job-collections-contributor) | Zamanlayıcı iş koleksiyonlarını yönetmenizi sağlar, ancak bunlara erişimi kalmaz. |
-| [Katkıda bulunan Arama Hizmeti](#search-service-contributor) | Arama hizmetlerini yönetmenize izin verir, ancak bunlara erişim izni vermez. |
+| [Katkıda bulunan Redis Cache](#redis-cache-contributor) | Redis Cache'leri yönetmenizi sağlar ancak onlara yönelik erişimi yönetme izni vermez. |
+| [Kaynak Ilkesi katılımcısı (Önizleme)](#resource-policy-contributor-preview) | (Önizleme) Kaynak ilkesi oluşturma/değiştirme, destek bileti oluşturma ve kaynakları/hiyerarşiyi okuma haklarıyla EA’dan kullanıcılar geri dolduruldu. |
+| [Zamanlayıcı Iş koleksiyonları Katılımcısı](#scheduler-job-collections-contributor) | Zamanlayıcı iş koleksiyonlarını yönetmenizi sağlar ancak onlara yönelik erişimi yönetme izni vermez. |
+| [Katkıda bulunan Arama Hizmeti](#search-service-contributor) | Search hizmetlerini yönetmenizi sağlar ancak onlara yönelik erişimi yönetme izni vermez. |
 | [Güvenlik Yöneticisi](#security-admin) | Yalnızca güvenlik merkezi 'nde: Güvenlik ilkelerini görüntüleyebilir, güvenlik durumlarını görüntüleyebilir, güvenlik ilkelerini düzenleyebilir, uyarıları ve önerileri görüntüleyebilir, uyarıları ve önerileri kapatabilir |
 | [Güvenlik Yöneticisi (eski)](#security-manager-legacy) | Bu eski bir roldür. Lütfen bunun yerine Güvenlik Yöneticisi 'ni kullanın |
 | [Güvenlik okuyucusu](#security-reader) | Yalnızca güvenlik merkezi 'nde: Önerileri ve uyarıları görüntüleyebilir, güvenlik ilkelerini görüntüleyebilir, güvenlik durumlarını görüntüleyebilir, ancak değişiklik yapamaz |
-| [Katkıda bulunan Site Recovery](#site-recovery-contributor) | Kasa oluşturma ve rol atama dışında Site Recovery hizmetini yönetmenizi sağlar |
-| [Site Recovery Işleci](#site-recovery-operator) | Yük devretme ve yeniden çalışma ve diğer Site Recovery yönetim işlemlerini gerçekleştirmenize izin verir |
+| [Katkıda bulunan Site Recovery](#site-recovery-contributor) | Kasa oluşturma ve rol atama işlemleri dışında Site Recovery hizmetini yönetmenize imkan sağlar |
+| [Site Recovery Işleci](#site-recovery-operator) | Yük devretme ve yeniden çalışma dışındaki Site Recovery yönetimi işlemlerini gerçekleştirmenize izin vermez |
 | [Site Recovery okuyucu](#site-recovery-reader) | Site Recovery durumunu görüntülemenize izin verir, ancak diğer yönetim işlemlerini gerçekleştirmenize izin vermez |
-| [Uzamsal bağlayıcı hesabı Katılımcısı](#spatial-anchors-account-contributor) | Hesabınızdaki uzamsal bağlantıları yönetmenizi sağlar, ancak onları silmez |
-| [Uzamsal bağlayıcı hesap sahibi](#spatial-anchors-account-owner) | Hesabınızdaki uzamsal bağlayıcıları, silme dahil olmak üzere yönetmenizi sağlar |
-| [Uzamsal bağlayıcı hesap okuyucu](#spatial-anchors-account-reader) | Hesabınızdaki uzamsal Tutturucuların özelliklerini bulmanıza ve okumanızı sağlar |
+| [Uzamsal bağlayıcı hesabı Katılımcısı](#spatial-anchors-account-contributor) | Hesabınızdaki uzamsal sabit noktaları yönetmenize olanak sağlar, ancak silmenize izin vermez |
+| [Uzamsal bağlayıcı hesap sahibi](#spatial-anchors-account-owner) | Silme de dahil olmak üzere hesabınızdaki uzamsal sabit noktaları yönetmenize olanak sağlar |
+| [Uzamsal bağlayıcı hesap okuyucu](#spatial-anchors-account-reader) | Hesabınızdaki uzamsal sabit noktaları bulup bunların özelliklerini okumanıza olanak sağlar |
 | [SQL DB Katılımcısı](#sql-db-contributor) | SQL veritabanlarını yönetmenizi sağlar ancak onlara yönelik erişimleri vermez. Ayrıca, güvenlikle ilgili ilkeleri veya bunların üst SQL sunucularını yönetemezsiniz. |
 | [SQL yönetilen örnek Katılımcısı](#sql-managed-instance-contributor) | SQL yönetilen örnekleri ve gerekli ağ yapılandırmasını yönetmenizi sağlar, ancak başkalarına erişim izni veremeyiz. |
-| [SQL Güvenlik Yöneticisi](#sql-security-manager) | , SQL Server ve veritabanlarının güvenlikle ilgili ilkelerini yönetmenizi sağlar, ancak bunlara erişemez. |
-| [Katkıda bulunan SQL Server](#sql-server-contributor) | SQL Server ve veritabanlarını yönetmenizi sağlar, ancak bunlara yönelik erişimleri ve güvenlikle ilgili ilkeleri yönetemez. |
+| [SQL Güvenlik Yöneticisi](#sql-security-manager) | SQL sunucularının ve veritabanlarının güvenlikle ilgili ilkelerini yönetmenizi sağlar ancak onlara erişimi yönetme izni vermez. |
+| [Katkıda bulunan SQL Server](#sql-server-contributor) | SQL sunucularını ve veritabanlarını yönetmenizi sağlar ancak güvenlikle ilgili ilkelerini yönetmenize izin vermez. |
 | [Depolama Hesabı Katılımcısı](#storage-account-contributor) | Depolama hesaplarının yönetimine izin verir. Paylaşılan anahtar yetkilendirmesi aracılığıyla verilere erişmek için kullanılabilen hesap anahtarına erişim sağlar. |
 | [Depolama hesabı anahtar operatörü hizmet rolü](#storage-account-key-operator-service-role) | Depolama hesabı erişim anahtarlarının listelenmesi ve yeniden oluşturulmasına izin verir. |
 | [Depolama Blobu veri Katılımcısı](#storage-blob-data-contributor) | Azure depolama kapsayıcıları ve bloblarını okuyun, yazın ve silin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). |
 | [Depolama Blobu veri sahibi](#storage-blob-data-owner) | , POSIX erişim denetimi atama dahil olmak üzere Azure depolama blob kapsayıcılarına ve verilerine tam erişim sağlar. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). |
 | [Depolama Blobu veri okuyucusu](#storage-blob-data-reader) | Azure depolama kapsayıcıları ve bloblarını okuyun ve listeleyin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). |
+| [Depolama Blobu Delegator](#storage-blob-delegator) | Azure AD kimlik bilgileriyle imzalanan bir kapsayıcı veya blob için paylaşılan erişim imzası oluşturmak üzere kullanılabilecek Kullanıcı temsili anahtarını alın. Daha fazla bilgi için bkz. [Kullanıcı TEMSILI SAS oluşturma](https://docs.microsoft.com/rest/api/storageservices/create-a-user-delegation-sas). |
+| [Depolama dosyası veri SMB paylaşımında katkıda bulunan](#storage-file-data-smb-share-contributor) | SMB üzerinden Azure depolama dosya paylaşımlarında okuma, yazma ve silme erişimine izin verir |
+| [Depolama dosyası veri SMB paylaşımında yükseltilmiş katkıda bulunan](#storage-file-data-smb-share-elevated-contributor) | SMB üzerinden Azure depolama dosya paylaşımlarında NTFS izin erişimini okuma, yazma, silme ve değiştirme sağlar |
+| [Depolama dosyası veri SMB paylaşma okuyucusu](#storage-file-data-smb-share-reader) | SMB üzerinden Azure dosya paylaşımında okuma erişimine izin verir |
 | [Depolama kuyruğu verileri Katılımcısı](#storage-queue-data-contributor) | Azure depolama kuyruklarını ve sıra iletilerini okuyun, yazın ve silin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). |
 | [Depolama kuyruğu veri Iletisi Işlemcisi](#storage-queue-data-message-processor) | Azure depolama kuyruğundan bir iletiyi göz atın, alın ve silin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). |
 | [Depolama kuyruğu veri Iletisi gönderici](#storage-queue-data-message-sender) | Bir Azure depolama kuyruğuna ileti ekleyin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). |
 | [Depolama kuyruğu veri okuyucusu](#storage-queue-data-reader) | Azure depolama kuyruklarını ve sıra iletilerini okuyun ve listeleyin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). |
-| [Destek Isteği Katılımcısı](#support-request-contributor) | Destek istekleri oluşturmanızı ve yönetmenizi sağlar |
-| [Katkıda bulunan Traffic Manager](#traffic-manager-contributor) | Traffic Manager profillerini yönetmenizi sağlar, ancak bunlara kimlerin erişebileceğini denetlemenize izin vermez. |
-| [Kullanıcı Erişimi Yöneticisi](#user-access-administrator) | Azure kaynaklarına Kullanıcı erişimini yönetmenizi sağlar. |
-| [Sanal Makine Yöneticisi oturum açma](#virtual-machine-administrator-login) | Portalda sanal makineleri görüntüleme ve yönetici olarak oturum açma |
-| [Sanal Makine Katılımcısı](#virtual-machine-contributor) | Sanal makineleri yönetmenize izin verir, ancak bunlara bağlı oldukları sanal ağ veya depolama hesabına erişemez. |
-| [Sanal makine Kullanıcı oturumu açma](#virtual-machine-user-login) | Portalda sanal makineleri görüntüleyin ve normal bir kullanıcı olarak oturum açın. |
-| [Web planı Katılımcısı](#web-plan-contributor) | Web siteleri için Web planlarını yönetmenizi sağlar, ancak bunlara erişemez. |
-| [Web sitesi Katılımcısı](#website-contributor) | Web sitelerini yönetmenizi sağlar, ancak bunlara erişemez. |
+| [Destek Isteği Katılımcısı](#support-request-contributor) | Destek istekleri oluşturmanıza ve bunları yönetmenize olanak sağlar |
+| [Katkıda bulunan Traffic Manager](#traffic-manager-contributor) | Traffic Manager profillerini yönetmenize izin verir, ancak bunlara kimlerin erişebildiğini denetlemenize izin vermez. |
+| [Kullanıcı Erişimi Yöneticisi](#user-access-administrator) | Azure kaynaklarına yönelik kullanıcı erişimini yönetmenizi sağlar. |
+| [Sanal Makine Yöneticisi oturum açma](#virtual-machine-administrator-login) | Portalda Sanal Makineleri görüntüleyin ve yönetici olarak oturum açın |
+| [Sanal Makine Katılımcısı](#virtual-machine-contributor) | Sanal makineleri yönetmenizi sağlar ancak bu sanal makinelere ve bağlı oldukları sanal ağ veya depolama hesaplarına yönelik erişimi yönetme izni vermez. |
+| [Sanal makine Kullanıcı oturumu açma](#virtual-machine-user-login) | Portalda Sanal Makineleri görüntüleyin ve normal bir kullanıcı olarak oturum açın. |
+| [Web planı Katılımcısı](#web-plan-contributor) | Web siteleri için web planlarını yönetmenizi sağlar ancak onlara yönelik erişimi yönetme izni vermez. |
+| [Web sitesi Katılımcısı](#website-contributor) | Web sitelerini (web planlarını değil) yönetmenizi sağlar ancak onlara yönelik erişimi yönetme izni vermez. |
 
 
 ## <a name="owner"></a>Sahip
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Kaynaklara erişim de dahil olmak üzere her şeyi yönetmenizi sağlar. |
+> | **Açıklama** | Kaynaklara erişim dahil olmak üzere her şeyi yönetmenizi sağlar. |
 > | **Kimlik** | 8e3af657-a8ff-443c-a75c-2fe8c4bcb635 |
 > | **Eylemler** |  |
 > | * | Tüm türlerin kaynaklarını oluşturma ve yönetme |
@@ -172,16 +176,16 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Kaynaklara erişim hariç her şeyi yönetmenizi sağlar. |
+> | **Açıklama** | Kaynaklara erişim hariç olmak üzere her şeyi yönetmenizi sağlar. |
 > | **Kimlik** | b24988ac-6180-42a0-ab88-20f7382dd24c |
 > | **Eylemler** |  |
 > | * | Tüm türlerin kaynaklarını oluşturma ve yönetme |
 > | **NotActions** |  |
 > | Microsoft. Authorization/*/Delete | Rolleri ve rol atamalarını silme |
 > | Microsoft. Authorization/*/Write | Roller ve rol atamaları oluşturma |
-> | Microsoft.Authorization/elevateAccess/Action | Arayan kullanıcının kiracı kapsamındaki Kullanıcı erişimi yöneticisi erişimine izin verir |
-> | Microsoft. Blueprint/Blueprintasbir/Write | Herhangi bir şema yapıtı oluşturun veya güncelleştirin |
-> | Microsoft. Blueprint/Blueprintasbir/Delete | Tüm şema yapıtları silme |
+> | Microsoft.Authorization/elevateAccess/Action | Çağırana kiracı kapsamında Kullanıcı Erişim Yöneticisi erişimi verir |
+> | Microsoft. Blueprint/Blueprintasbir/Write | Herhangi bir şema yapıtını oluşturun veya güncelleştirin |
+> | Microsoft. Blueprint/Blueprintasbir/Delete | Herhangi bir şema yapıtını silin |
 > | **Veri eylemleri** |  |
 > | *seçim* |  |
 > | **NotDataActions** |  |
@@ -191,7 +195,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Her şeyi görüntülemenize izin verir, ancak hiçbir değişiklik yapmamalıdır. |
+> | **Açıklama** | Her şeyi görüntülemenizi sağlar ancak değişiklik yapmanıza izin vermez. |
 > | **Kimlik** | acdd72a7-3385-48ef-bd42-f606fba81ae7 |
 > | **Eylemler** |  |
 > | */Read | Gizli dizileri hariç tüm türlerin kaynaklarını okuyun. |
@@ -217,11 +221,11 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="acrimagesigner"></a>Acrimageimzalayan
+## <a name="acrimagesigner"></a>AcrImageSigner
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | ACR görüntü imzalayan |
+> | **Açıklama** | acr görüntüsü imzalayan |
 > | **Kimlik** | 6cef56e8-d556-48e5-a04f-b8e64114680f |
 > | **Eylemler** |  |
 > | Microsoft. ContainerRegistry/kayıt defterleri/imzala/yaz | Kapsayıcı kayıt defteri için gönderme/çekme içeriği güven meta verileri. |
@@ -251,7 +255,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | ACR gönderimi |
+> | **Açıklama** | ACR gönderme |
 > | **Kimlik** | 8311e382-0749-4cb8-b61a-304f252e45ec |
 > | **Eylemler** |  |
 > | Microsoft. ContainerRegistry/kayıt defterleri/çekme/okuma | Bir kapsayıcı kayıt defterinden görüntüleri çekin veya alın. |
@@ -263,11 +267,11 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="acrquarantinereader"></a>Acrquaranınereader
+## <a name="acrquarantinereader"></a>AcrQuarantineReader
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | ACR karantina veri okuyucusu |
+> | **Açıklama** | acr karantina veri okuyucu |
 > | **Kimlik** | cdda3590-29a3-44f6-95f2-9f980659eb04 |
 > | **Eylemler** |  |
 > | Microsoft. ContainerRegistry/kayıt defterleri/Quarantıneread/okuma | Kapsayıcı kayıt defterinden karantinaya alınmış görüntüleri çekme veya alma |
@@ -282,7 +286,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | ACR karantina veri yazıcısı |
+> | **Açıklama** | acr karantina veri yazıcı |
 > | **Kimlik** | c8d4ff99-41c3-41a8-9f60-21dfdad59608 |
 > | **Eylemler** |  |
 > | Microsoft. ContainerRegistry/kayıt defterleri/Quarantıneread/okuma | Kapsayıcı kayıt defterinden karantinaya alınmış görüntüleri çekme veya alma |
@@ -294,17 +298,17 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="api-management-service-contributor"></a>API Management hizmet Katılımcısı
+## <a name="api-management-service-contributor"></a>API Yönetimi Hizmeti Katılımcısı
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Hizmeti ve API 'Leri yönetebilir |
+> | **Açıklama** | Hizmeti ve API'leri yönetebilir |
 > | **Kimlik** | 312a565d-c81f-4fd8-895a-4e21e48d571c |
 > | **Eylemler** |  |
 > | Microsoft.ApiManagement/service/* | API Management hizmeti oluşturma ve yönetme |
 > | Microsoft. Authorization/*/Read | Yetkilendirmeyi oku |
 > | Microsoft.Insights/alertRules/* | Uyarı kuralları oluşturma ve yönetme |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için kullanılabilirlik durumlarını alır |
 > | Microsoft. resources/dağıtımlar/* | Kaynak grubu dağıtımlarını oluşturma ve yönetme |
 > | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
 > | Microsoft. support/* | Destek biletleri oluşturma ve yönetme |
@@ -315,11 +319,11 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="api-management-service-operator-role"></a>Hizmet Işletmeni rolü API Management
+## <a name="api-management-service-operator-role"></a>API Management Hizmet Operatörü Rolü
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Hizmeti yönetebilir, ancak API 'Leri yönetemez |
+> | **Açıklama** | Hizmeti yönetebilir, ancak API'leri yönetemez |
 > | **Kimlik** | e022efe7-F5BA-4159-bbe4-b44f577e9b61 |
 > | **Eylemler** |  |
 > | Microsoft. Apimanayönetimi/hizmeti/*/Read | API Management hizmeti örneklerini oku |
@@ -333,7 +337,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | Microsoft.ApiManagement/service/write | API Management hizmeti 'nin yeni bir örneğini oluşturma |
 > | Microsoft. Authorization/*/Read | Yetkilendirmeyi oku |
 > | Microsoft.Insights/alertRules/* | Uyarı kuralları oluşturma ve yönetme |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için kullanılabilirlik durumlarını alır |
 > | Microsoft. resources/dağıtımlar/* | Kaynak grubu dağıtımlarını oluşturma ve yönetme |
 > | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
 > | Microsoft. support/* | Destek biletleri oluşturma ve yönetme |
@@ -344,18 +348,18 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="api-management-service-reader-role"></a>API Management hizmeti okuyucu rolü
+## <a name="api-management-service-reader-role"></a>API Management Hizmet Okuyucusu Rolü
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Hizmet ve API 'lere salt okuma erişimi |
+> | **Açıklama** | Hizmet ve API'lere salt okunur erişim |
 > | **Kimlik** | 71522526-b88f-4d52-b57f-d31fc3546d0d |
 > | **Eylemler** |  |
 > | Microsoft. Apimanayönetimi/hizmeti/*/Read | API Management hizmeti örneklerini oku |
 > | Microsoft.ApiManagement/service/read | API Management hizmet örneği için meta verileri oku |
 > | Microsoft. Authorization/*/Read | Yetkilendirmeyi oku |
 > | Microsoft.Insights/alertRules/* | Uyarı kuralları oluşturma ve yönetme |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için kullanılabilirlik durumlarını alır |
 > | Microsoft. resources/dağıtımlar/* | Kaynak grubu dağıtımlarını oluşturma ve yönetme |
 > | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
 > | Microsoft. support/* | Destek biletleri oluşturma ve yönetme |
@@ -366,7 +370,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="application-insights-component-contributor"></a>Application Insights bileşeni Katılımcısı
+## <a name="application-insights-component-contributor"></a>Application Insights Bileşeni Katılımcısı
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -377,7 +381,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | Microsoft.Insights/alertRules/* | Uyarı kuralları oluşturma ve yönetme |
 > | Microsoft. Insights/bileşenler/* | Öngörüler bileşenleri oluşturma ve yönetme |
 > | Microsoft.Insights/webtests/* | Web testleri oluşturma ve yönetme |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için kullanılabilirlik durumlarını alır |
 > | Microsoft. resources/dağıtımlar/* | Kaynak grubu dağıtımlarını oluşturma ve yönetme |
 > | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
 > | Microsoft. support/* | Destek biletleri oluşturma ve yönetme |
@@ -408,11 +412,11 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="automation-job-operator"></a>Automation Iş Işleci
+## <a name="automation-job-operator"></a>Otomasyon İşi İşleci
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Otomasyon Runbook 'Larını kullanarak Iş oluşturun ve yönetin. |
+> | **Açıklama** | Otomasyon Runbook'larını kullanarak İş oluşturun ve yönetin. |
 > | **Kimlik** | 4fe576fe-1146-4730-92eb-48519fa6bf9f |
 > | **Eylemler** |  |
 > | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
@@ -439,7 +443,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Automation Işleçleri, işleri başlatabilir, durdurabilir, askıya alabilir ve sürdürebilir |
+> | **Açıklama** | Otomasyon Operatörleri, işleri başlatabilir, durdurabilir, askıya alabilir ve sürdürebilir |
 > | **Kimlik** | d3881f73-407A-4167-8283-e981cbba0404 |
 > | **Eylemler** |  |
 > | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
@@ -458,7 +462,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | Microsoft. Automation/automationAccounts/zamanlamalar/okuma | Bir Azure Otomasyonu zamanlama varlığını alır |
 > | Microsoft. Automation/automationAccounts/zamanlamalar/yazma | Bir Azure Otomasyonu zamanlama varlığı oluşturur veya güncelleştirir |
 > | Microsoft.Insights/alertRules/* | Öngörüler uyarı kuralları oluşturma ve yönetme |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için kullanılabilirlik durumlarını alır |
 > | Microsoft. resources/dağıtımlar/* | Kaynak grubu dağıtımlarını oluşturma ve yönetme |
 > | Microsoft. Automation/automationAccounts/Jobs/output/Read | Bir işin çıkışını alır |
 > | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
@@ -470,11 +474,11 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="automation-runbook-operator"></a>Otomasyon Runbook Işleci
+## <a name="automation-runbook-operator"></a>Otomasyon Runbook'u İşleci
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Runbook 'un Işlerini oluşturabilmek için Runbook özelliklerini okuyun. |
+> | **Açıklama** | Runbook'un İşlerini oluşturabilmek için Runbook özelliklerini okuyun. |
 > | **Kimlik** | 5fb5aef8-1081-4b8e-bb16-9d5d0385bab5 |
 > | **Eylemler** |  |
 > | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
@@ -515,13 +519,13 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | Microsoft. Storage/*/Read |  |
 > | Microsoft. Storage/storageAccounts/* |  |
 > | Microsoft. support/* | Destek biletleri oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/kaynaklar/okuma | Kaynak grubunun kaynaklarını alır. |
+> | Microsoft. resources/abonelikler/resourceGroups/kaynaklar/okuma | Kaynak grubun kaynaklarını alır. |
 > | **NotActions** |  |
 > | *seçim* |  |
 > | **Veri eylemleri** |  |
-> | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/Sil | Bir blobu silmenin sonucunu döndürür |
-> | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/blob/okuma | Blob veya Blobların listesini döndürür |
-> | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/yazma | Blob yazma sonucunu döndürür |
+> | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/Sil | Bir blobun silinmesinin sonucunu döndürür |
+> | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/blob/okuma | Bir blobu veya blob listesini döndürür |
+> | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/yazma | Bir blobu yazmanın sonucunu döndürür |
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
@@ -532,7 +536,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **Açıklama** | Kümeyi yönetmek için avere vFXT kümesi tarafından kullanılır |
 > | **Kimlik** | c025889f-8102-4ebf-b32c-fc0c6f0c6bd9 |
 > | **Eylemler** |  |
-> | Microsoft. COMPUTE/virtualMachines/okuma | Bir sanal makinenin özelliklerini al |
+> | Microsoft. COMPUTE/virtualMachines/okuma | Bir sanal makinenin özelliklerini alır |
 > | Microsoft. Network/NetworkInterfaces/Read | Bir ağ arabirimi tanımını alır.  |
 > | Microsoft.Network/networkInterfaces/write | Ağ arabirimi oluşturur veya var olan bir ağ arabirimini güncelleştirir.  |
 > | Microsoft. Network/virtualNetworks/Read | Sanal ağ tanımını al |
@@ -540,15 +544,15 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | Microsoft. Network/virtualNetworks/alt ağlar/JOIN/Action | Bir sanal ağı birleştirir. Alertable değil. |
 > | Microsoft.Network/networkSecurityGroups/join/action | Bir ağ güvenlik grubuna katılır. Alertable değil. |
 > | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Delete | Bir kapsayıcıyı silmenin sonucunu döndürür |
-> | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/okuma | Kapsayıcıların listesini döndürür |
+> | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Delete | Bir kapsayıcının silinmesinin sonucunu döndürür |
+> | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/okuma | Kapsayıcı listesini döndürür |
 > | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Write | Put blob kapsayıcısının sonucunu döndürür |
 > | **NotActions** |  |
 > | *seçim* |  |
 > | **Veri eylemleri** |  |
-> | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/Sil | Bir blobu silmenin sonucunu döndürür |
-> | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/blob/okuma | Blob veya Blobların listesini döndürür |
-> | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/yazma | Blob yazma sonucunu döndürür |
+> | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/Sil | Bir blobun silinmesinin sonucunu döndürür |
+> | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/blob/okuma | Bir blobu veya blob listesini döndürür |
+> | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/yazma | Bir blobu yazmanın sonucunu döndürür |
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
@@ -597,14 +601,14 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="azure-kubernetes-service-cluster-admin-role"></a>Azure Kubernetes hizmet kümesi yönetici rolü
+## <a name="azure-kubernetes-service-cluster-admin-role"></a>Azure Kubernetes Hizmet Kümesi Yönetici Rolü
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Küme Yöneticisi kimlik bilgisi eylemini listeleyin. |
+> | **Açıklama** | Küme yöneticisi kimlik bilgileri eylemini listele. |
 > | **Kimlik** | 0ab0b1a8-8aac-4efd-b8c2-3ee1fb270be8 |
 > | **Eylemler** |  |
-> | Microsoft. ContainerService/Managedkümeler/listClusterAdminCredential/ACTION | Yönetilen kümenin clusterAdmin kimlik bilgisini listeleyin |
+> | Microsoft. ContainerService/Managedkümeler/listClusterAdminCredential/ACTION | Yönetilen bir kümenin clusterAdmin kimlik bilgilerini listele |
 > | **NotActions** |  |
 > | *seçim* |  |
 > | **Veri eylemleri** |  |
@@ -612,14 +616,14 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="azure-kubernetes-service-cluster-user-role"></a>Azure Kubernetes hizmet kümesi Kullanıcı rolü
+## <a name="azure-kubernetes-service-cluster-user-role"></a>Azure Kubernetes Hizmet Kümesi Kullanıcı Rolü
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Küme kullanıcı kimlik bilgilerini Listele eylemi. |
+> | **Açıklama** | Küme kullanıcısı kimlik bilgileri eylemini listele. |
 > | **Kimlik** | 4abbcc35-e782-43d8-92c5-2d3f1bd2253f |
 > | **Eylemler** |  |
-> | Microsoft. ContainerService/Managedkümeler/listClusterUserCredential/Action | Yönetilen kümenin clusterUser kimlik bilgisini listeleyin |
+> | Microsoft. ContainerService/Managedkümeler/listClusterUserCredential/Action | Yönetilen bir kümenin clusterUser kimlik bilgilerini listele |
 > | **NotActions** |  |
 > | *seçim* |  |
 > | **Veri eylemleri** |  |
@@ -627,11 +631,11 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="azure-maps-data-reader-preview"></a>Azure haritalar veri okuyucu (Önizleme)
+## <a name="azure-maps-data-reader-preview"></a>Azure Eşleme Verileri Okuyucusu (Önizleme)
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Azure haritalar hesabından ilgili harita okuma verilerine erişim izni verir. |
+> | **Açıklama** | Bir Azure eşlemeleri hesabından eşlemelerle ilgili verileri okuma erişimi verir. |
 > | **Kimlik** | 423170ca-a8f6-4b0f-8487-9e4eb8f49bfa |
 > | **Eylemler** |  |
 > | *seçim* |  |
@@ -691,14 +695,14 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="azure-stack-registration-owner"></a>Kayıt sahibini Azure Stack
+## <a name="azure-stack-registration-owner"></a>Azure Stack Kayıt Sahibi
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Azure Stack kayıtlarını yönetmenizi sağlar. |
+> | **Açıklama** | Azure Stack kayıtlarını yönetmenize imkan sağlar. |
 > | **Kimlik** | 6f12a6df-dd06-4f3e-bcb1-ce8be600526a |
 > | **Eylemler** |  |
-> | Microsoft.AzureStack/registrations/products/listDetails/action | Azure Stack Market ürünü için genişletilmiş ayrıntıları alır |
+> | Microsoft. AzureStack/kayıtlar/ürünler/*/Action |  |
 > | Microsoft.AzureStack/registrations/products/read | Azure Stack Market ürününün özelliklerini alır |
 > | Microsoft.AzureStack/registrations/read | Azure Stack kaydın özelliklerini alır |
 > | **NotActions** |  |
@@ -708,7 +712,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="backup-contributor"></a>Yedek Katılımcısı
+## <a name="backup-contributor"></a>Yedekleme Katılımcısı
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -764,11 +768,11 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="backup-operator"></a>Yedekleme Işletmeni
+## <a name="backup-operator"></a>Yedekleme İşleci
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Yedekleme kaldırma, kasa oluşturma ve başkalarına erişim verme dışında yedekleme hizmetlerini yönetmenizi sağlar |
+> | **Açıklama** | Yedekleme kaldırma, kasa oluşturma ve diğer kullanıcılara erişim verme dışındaki yedekleme hizmetlerini yönetmenize olanak sağlar |
 > | **Kimlik** | 00c29273-979b-4161-815c-10b084fb9324 |
 > | **Eylemler** |  |
 > | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
@@ -835,11 +839,11 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="backup-reader"></a>Yedekleme okuyucusu
+## <a name="backup-reader"></a>Yedekleme Okuyucusu
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Yedekleme hizmetlerini görüntüleyebilir, ancak değişiklik yapamaz |
+> | **Açıklama** | Yedekleme hizmetlerini görüntüleyebilir ancak değişiklik yapamaz |
 > | **Kimlik** | a795c7a0-d4a2-40c1-ae25-d81f01202912 |
 > | **Eylemler** |  |
 > | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
@@ -891,7 +895,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Faturalandırma verilerine okuma erişimi sağlar |
+> | **Açıklama** | Faturalandırma verilerine okuma erişimi verir |
 > | **Kimlik** | fa23ad8b-c56e-40d8-ac0c-ce449e1d2c64 |
 > | **Eylemler** |  |
 > | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
@@ -912,13 +916,13 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | BizTalk hizmetlerini yönetmenizi sağlar ancak onlara erişim izni vermez. |
+> | **Açıklama** | BizTalk hizmetlerini yönetmenizi sağlar ancak onlara yönelik erişimi yönetme izni vermez. |
 > | **Kimlik** | 5e3c6656-6cfa-4708-81fe-0de47ac73342 |
 > | **Eylemler** |  |
 > | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
 > | Microsoft.BizTalkServices/BizTalk/* | BizTalk Hizmetleri oluşturma ve yönetme |
 > | Microsoft.Insights/alertRules/* | Uyarı kuralları oluşturma ve yönetme |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için kullanılabilirlik durumlarını alır |
 > | Microsoft. resources/dağıtımlar/* | Kaynak grubu dağıtımlarını oluşturma ve yönetme |
 > | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
 > | Microsoft. support/* | Destek biletleri oluşturma ve yönetme |
@@ -929,11 +933,11 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="blockchain-member-node-access-preview"></a>Blok zinciri üye düğümü erişimi (Önizleme)
+## <a name="blockchain-member-node-access-preview"></a>Blok Zinciri Üye Düğümü Erişimi (Önizleme)
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Blok zinciri üye düğümlerine erişim sağlar |
+> | **Açıklama** | Blok Zinciri Üye düğümlerine erişim izni verir |
 > | **Kimlik** | 31a002a1-acaf-453E-8a5b-297c9ca1ea24 |
 > | **Eylemler** |  |
 > | Microsoft. Blockzincirini/blockchainMembers/transactionNodes/Read | Varolan blok zinciri üye Işlem düğümlerini alır veya listeler. |
@@ -944,7 +948,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="cdn-endpoint-contributor"></a>CDN uç noktası Katılımcısı
+## <a name="cdn-endpoint-contributor"></a>CDN Uç Noktası Katkıda Bulunanı
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -966,7 +970,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="cdn-endpoint-reader"></a>CDN uç nokta okuyucusu
+## <a name="cdn-endpoint-reader"></a>CDN Uç Nokta Okuyucusu
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -988,7 +992,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="cdn-profile-contributor"></a>CDN profili Katılımcısı
+## <a name="cdn-profile-contributor"></a>CDN Profili Katkıda Bulunanı
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -1010,7 +1014,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="cdn-profile-reader"></a>CDN profili okuyucu
+## <a name="cdn-profile-reader"></a>CDN Profil Okuyucusu
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -1032,17 +1036,17 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="classic-network-contributor"></a>Klasik ağ katılımcısı
+## <a name="classic-network-contributor"></a>Klasik Ağ Katılımcısı
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Klasik ağları yönetmenize izin verir, ancak bunlara erişemez. |
+> | **Açıklama** | Klasik ağları yönetmenizi sağlar ancak onlara yönelik erişimi yönetme izni vermez. |
 > | **Kimlik** | b34d265f-36f7-4a0d-a4d4-e158ca92e90f |
 > | **Eylemler** |  |
 > | Microsoft. Authorization/*/Read | Yetkilendirmeyi oku |
 > | Microsoft. ClassicNetwork/* | Klasik ağları oluşturma ve yönetme |
 > | Microsoft.Insights/alertRules/* | Öngörüler uyarı kuralları oluşturma ve yönetme |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için kullanılabilirlik durumlarını alır |
 > | Microsoft. resources/dağıtımlar/* | Kaynak grubu dağıtımlarını oluşturma ve yönetme |
 > | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
 > | Microsoft. support/* | Destek biletleri oluşturma ve yönetme |
@@ -1053,17 +1057,17 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="classic-storage-account-contributor"></a>Klasik depolama hesabı Katılımcısı
+## <a name="classic-storage-account-contributor"></a>Klasik Depolama Hesabı Katılımcısı
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Klasik depolama hesaplarını yönetmenize izin verir, ancak bunlara erişimi kalmaz. |
+> | **Açıklama** | Klasik depolama hesaplarını yönetmenize izin verir ancak bu hesaplara erişim hakkı vermez. |
 > | **Kimlik** | 86e8f5dc-a6e9-4c67-9d15-de283e8eac25 |
 > | **Eylemler** |  |
 > | Microsoft. Authorization/*/Read | Yetkilendirmeyi oku |
 > | Microsoft.ClassicStorage/storageAccounts/* | Depolama hesapları oluşturma ve yönetme |
 > | Microsoft.Insights/alertRules/* | Öngörüler uyarı kuralları oluşturma ve yönetme |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için kullanılabilirlik durumlarını alır |
 > | Microsoft. resources/dağıtımlar/* | Kaynak grubu dağıtımlarını oluşturma ve yönetme |
 > | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
 > | Microsoft. support/* | Destek biletleri oluşturma ve yönetme |
@@ -1074,15 +1078,15 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="classic-storage-account-key-operator-service-role"></a>Klasik depolama hesabı anahtar operatörü hizmet rolü
+## <a name="classic-storage-account-key-operator-service-role"></a>Klasik Depolama Hesabı Anahtarı İşleci Hizmet Rolü
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Klasik depolama hesabı anahtar Işleçleri klasik depolama hesaplarında anahtarları listeleme ve yeniden oluşturma izni verilir |
+> | **Açıklama** | Klasik Depolama Hesabı Anahtarı İşleçlerine, Klasik Depolama Hesaplarında anahtarları listeleme ve yeniden oluşturma izni verilir |
 > | **Kimlik** | 985d6b00-f706-48f5-a6fe-d0ca12fb668d |
 > | **Eylemler** |  |
 > | Microsoft.ClassicStorage/storageAccounts/listkeys/action | Depolama hesaplarının erişim anahtarlarını listeler. |
-> | Microsoft.ClassicStorage/storageAccounts/regeneratekey/action | Depolama hesabı için mevcut erişim anahtarlarını yeniden oluşturur. |
+> | Microsoft.ClassicStorage/storageAccounts/regeneratekey/action | Depolama hesabı için var olan erişim anahtarlarını yeniden oluşturur. |
 > | **NotActions** |  |
 > | *seçim* |  |
 > | **Veri eylemleri** |  |
@@ -1090,27 +1094,27 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="classic-virtual-machine-contributor"></a>Klasik sanal makine Katılımcısı
+## <a name="classic-virtual-machine-contributor"></a>Klasik Sanal Makine Katılımcısı
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Klasik sanal makineleri yönetmenizi sağlar ancak bunlara yönelik erişimi, bağlı oldukları sanal ağ veya depolama hesabı için değil. |
+> | **Açıklama** | Klasik sanal makineleri yönetmenizi sağlar ancak bunlara veya bağlı oldukları sanal ağ ya da depolama hesaplarına yönelik erişimi yönetme izni vermez. |
 > | **Kimlik** | d73bb868-a0df-4d4d-bd69-98a00b01fccb |
 > | **Eylemler** |  |
 > | Microsoft. Authorization/*/Read | Yetkilendirmeyi oku |
 > | Microsoft. ClassicCompute/domainNames/* | Klasik işlem etki alanı adları oluşturma ve yönetme |
 > | Microsoft.ClassicCompute/virtualMachines/* | Sanal makineler oluşturma ve yönetme |
 > | Microsoft.ClassicNetwork/networkSecurityGroups/join/action |  |
-> | Microsoft.ClassicNetwork/reservedIps/link/action | Ayrılmış bir IP 'yi bağlama |
-> | Microsoft.ClassicNetwork/reservedIps/read | Ayrılmış IP 'Leri alır |
-> | Microsoft.ClassicNetwork/virtualNetworks/join/action | Sanal ağı birleştirir. |
+> | Microsoft.ClassicNetwork/reservedIps/link/action | Ayrılmış bir IP'ye bağlantı oluşturun |
+> | Microsoft.ClassicNetwork/reservedIps/read | Ayrılmış IP'leri alır |
+> | Microsoft.ClassicNetwork/virtualNetworks/join/action | Sanal ağa katılır. |
 > | Microsoft. ClassicNetwork/virtualNetworks/Read | Sanal ağı alın. |
 > | Microsoft.ClassicStorage/storageAccounts/disks/read | Depolama hesabı diskini döndürür. |
 > | Microsoft.ClassicStorage/storageAccounts/images/read | Depolama hesabı görüntüsünü döndürür. Kullanım dışı. ' Microsoft. ClassicStorage/storageAccounts/Vmımages ' kullanın) |
 > | Microsoft.ClassicStorage/storageAccounts/listKeys/action | Depolama hesaplarının erişim anahtarlarını listeler. |
-> | Microsoft.ClassicStorage/storageAccounts/read | Verilen hesaba sahip depolama hesabını döndürün. |
+> | Microsoft.ClassicStorage/storageAccounts/read | Belirli bir hesaba yönelik depolama hesabını döndürün. |
 > | Microsoft.Insights/alertRules/* | Öngörüler uyarı kuralları oluşturma ve yönetme |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için kullanılabilirlik durumlarını alır |
 > | Microsoft. resources/dağıtımlar/* | Kaynak grubu dağıtımlarını oluşturma ve yönetme |
 > | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
 > | Microsoft. support/* | Destek biletleri oluşturma ve yönetme |
@@ -1121,26 +1125,26 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="cognitive-services-contributor"></a>Bilişsel hizmetler Katılımcısı
+## <a name="cognitive-services-contributor"></a>Bilişsel Hizmetler Katılımcısı
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Bilişsel hizmetler için anahtar oluşturma, okuma, güncelleştirme, silme ve yönetme olanağı sağlar. |
+> | **Açıklama** | Bilişsel Hizmetler anahtarlarını oluşturmanıza, okumanıza, güncelleştirmenize, silmenize ve yönetmenize olanak sağlar. |
 > | **Kimlik** | 25fbc0a9-bd7c-42a3-aa1a-3b75d497ee68 |
 > | **Eylemler** |  |
 > | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
 > | Microsoft. Biliveservices/* |  |
 > | Microsoft. Features/Features/Read | Bir aboneliğin özelliklerini alır. |
-> | Microsoft. Özellikler/sağlayıcılar/Özellikler/okuma | Belirli bir kaynak sağlayıcısındaki bir aboneliğin özelliğini alır. |
+> | Microsoft. Özellikler/sağlayıcılar/Özellikler/okuma | Belirli bir kaynak sağlayıcısındaki bir abonelik özelliğini alır. |
 > | Microsoft.Insights/alertRules/* | Öngörüler uyarı kuralları oluşturma ve yönetme |
 > | Microsoft. Insights/diagnosticSettings/* | Analiz Sunucusu için tanılama ayarını oluşturur, güncelleştirir veya okur |
 > | Microsoft. Insights/logDefinitions/okuma | Günlük tanımlarını oku |
 > | Microsoft. Insights/MetricDefinitions/okuma | Ölçüm tanımlarını oku |
-> | Microsoft. Insights/ölçümler/okuma | Ölçümleri oku |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | Microsoft. Insights/ölçümler/okuma | Ölçümleri okuma |
+> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için kullanılabilirlik durumlarını alır |
 > | Microsoft. resources/dağıtımlar/* | Kaynak grubu dağıtımlarını oluşturma ve yönetme |
 > | Microsoft. resources/dağıtımlar/işlemler/okuma | Dağıtım işlemlerini alır veya listeler. |
-> | Microsoft. resources/abonelikler/operationresults/Read | Abonelik işlem sonuçlarını alın. |
+> | Microsoft. resources/abonelikler/operationresults/Read | Abonelik işlem sonuçlarını alır. |
 > | Microsoft. resources/abonelikler/okuma | Aboneliklerin listesini alır. |
 > | Microsoft. resources/abonelikler/ResourceGroups/dağıtımlar/* |  |
 > | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
@@ -1152,11 +1156,11 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="cognitive-services-data-reader-preview"></a>Bilişsel hizmetler veri okuyucu (Önizleme)
+## <a name="cognitive-services-data-reader-preview"></a>Bilişsel Hizmetler Veri Okuyucusu (Önizleme)
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Bilişsel hizmetler verilerini okumanızı sağlar. |
+> | **Açıklama** | Bilişsel Hizmetler verilerini okumanıza olanak sağlar. |
 > | **Kimlik** | b59867f0-fa02-499b-be73-45a86b5b3e1c |
 > | **Eylemler** |  |
 > | *seçim* |  |
@@ -1167,23 +1171,23 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="cognitive-services-user"></a>Bilişsel hizmetler kullanıcısı
+## <a name="cognitive-services-user"></a>Bilişsel Hizmetler Kullanıcısı
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Bilişsel hizmetler 'in anahtarlarını okuyup listelemenizi sağlar. |
+> | **Açıklama** | Bilişsel Hizmetler anahtarlarını okumanıza ve listelemenize olanak sağlar. |
 > | **Kimlik** | a97b65f3-24c7-4388-baec-2e87135dc908 |
 > | **Eylemler** |  |
 > | Microsoft. Biliveservices/*/Read |  |
 > | Microsoft. Biliveservices/accounts/ListKeys/Action | Anahtarları Listele |
-> | Microsoft. Insights/alertRules/Read | Klasik ölçüm uyarısını okuyun |
-> | Microsoft. Insights/diagnosticSettings/Read | Kaynak tanılama ayarını oku |
+> | Microsoft. Insights/alertRules/Read | Bir klasik ölçüm uyarısını okuyun |
+> | Microsoft. Insights/diagnosticSettings/Read | Bir kaynak tanılama ayarını okuyun |
 > | Microsoft. Insights/logDefinitions/okuma | Günlük tanımlarını oku |
 > | Microsoft. Insights/MetricDefinitions/okuma | Ölçüm tanımlarını oku |
-> | Microsoft. Insights/ölçümler/okuma | Ölçümleri oku |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | Microsoft. Insights/ölçümler/okuma | Ölçümleri okuma |
+> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için kullanılabilirlik durumlarını alır |
 > | Microsoft. resources/dağıtımlar/işlemler/okuma | Dağıtım işlemlerini alır veya listeler. |
-> | Microsoft. resources/abonelikler/operationresults/Read | Abonelik işlem sonuçlarını alın. |
+> | Microsoft. resources/abonelikler/operationresults/Read | Abonelik işlem sonuçlarını alır. |
 > | Microsoft. resources/abonelikler/okuma | Aboneliklerin listesini alır. |
 > | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
 > | Microsoft. support/* | Destek biletleri oluşturma ve yönetme |
@@ -1194,7 +1198,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="cosmos-db-account-reader-role"></a>Cosmos DB hesabı okuyucu rolü
+## <a name="cosmos-db-account-reader-role"></a>Cosmos DB Hesabı Okuyucusu Rolü
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -1205,7 +1209,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | Microsoft. DocumentDB/*/Read | Tüm koleksiyonları okuyun |
 > | Microsoft.DocumentDB/databaseAccounts/readonlykeys/action | Veritabanı hesabı salt okunur anahtarlarını okur. |
 > | Microsoft. Insights/MetricDefinitions/okuma | Ölçüm tanımlarını oku |
-> | Microsoft. Insights/ölçümler/okuma | Ölçümleri oku |
+> | Microsoft. Insights/ölçümler/okuma | Ölçümleri okuma |
 > | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
 > | Microsoft. support/* | Destek biletleri oluşturma ve yönetme |
 > | **NotActions** |  |
@@ -1225,7 +1229,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | Microsoft. DocumentDb/databaseAccounts/* |  |
 > | Microsoft.Insights/alertRules/* | Öngörüler uyarı kuralları oluşturma ve yönetme |
 > | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için kullanılabilirlik durumlarını alır |
 > | Microsoft. resources/dağıtımlar/* | Kaynak grubu dağıtımlarını oluşturma ve yönetme |
 > | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
 > | Microsoft. support/* | Destek biletleri oluşturma ve yönetme |
@@ -1243,7 +1247,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Bir Cosmos DB veritabanı veya bir hesabın kapsayıcısı için geri yükleme isteği gönderebilir |
+> | **Açıklama** | Bir Cosmos DB veritabanı veya bir hesaba ilişkin bir kapsayıcı için geri yükleme isteği gönderebilir |
 > | **Kimlik** | db7b14f2-5adf-42da-9f96-f2ee17bab5cb |
 > | **Eylemler** |  |
 > | Microsoft. DocumentDB/databaseAccounts/Backup/Action | Yedeklemeyi yapılandırmak için bir istek gönder |
@@ -1255,11 +1259,11 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="cost-management-contributor"></a>Maliyet yönetimi Katılımcısı
+## <a name="cost-management-contributor"></a>Maliyet Yönetimi Katkıda Bulunanı
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Maliyetleri görüntüleyebilir ve maliyet yapılandırmasını yönetebilir (örn. bütçeler, dışarı aktarmalar) |
+> | **Açıklama** | Maliyetleri görüntüleyebilir ve maliyet yapılandırmasını yönetebilir (örneğin bütçeler, dışarı aktarmalar) |
 > | **Kimlik** | 434105ed-43f6-45c7-a02f-909b2ba83430 |
 > | **Eylemler** |  |
 > | Microsoft. tüketim/* |  |
@@ -1278,11 +1282,11 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="cost-management-reader"></a>Maliyet yönetimi okuyucusu
+## <a name="cost-management-reader"></a>Maliyet Yönetimi Okuyucusu
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Maliyet verilerini ve yapılandırmayı görüntüleyebilir (örneğin, bütçeler, dışarı aktarmalar) |
+> | **Açıklama** | Maliyet verileri ve yapılandırmasını (örneğin bütçeler, dışarı aktarmalar) görüntüleyebilir |
 > | **Kimlik** | 72fafb9e-0641-4937-9268-a91bfd8191a3 |
 > | **Eylemler** |  |
 > | Microsoft. tüketim/*/Read |  |
@@ -1301,15 +1305,15 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="data-box-contributor"></a>Katkıda bulunan Data Box
+## <a name="data-box-contributor"></a>Veri Kutusu Katılımcısı
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | , Diğer kullanıcılara erişim izni hariç Data Box hizmeti altındaki her şeyi yönetmenizi sağlar. |
+> | **Açıklama** | Başkalarına erişim izni verme hariç Veri Kutusu Hizmeti altındaki her şeyi yönetmenize olanak sağlar. |
 > | **Kimlik** | add466c9-e687-43fc-8d98-dfcf8d720be5 |
 > | **Eylemler** |  |
 > | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için kullanılabilirlik durumlarını alır |
 > | Microsoft. resources/dağıtımlar/* | Kaynak grubu dağıtımlarını oluşturma ve yönetme |
 > | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
 > | Microsoft. support/* | Destek biletleri oluşturma ve yönetme |
@@ -1321,20 +1325,20 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="data-box-reader"></a>Data Box okuyucu
+## <a name="data-box-reader"></a>Veri Kutusu Okuyucusu
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Sipariş oluşturma veya düzenleme sırası ayrıntıları ve başkalarına erişim verme dışında Data Box hizmetini yönetmenizi sağlar. |
+> | **Açıklama** | Sipariş oluşturma veya sipariş ayrıntılarını düzenleme ve başkalarına erişim izni verme hariç Veri Kutusu Hizmeti özelliklerini yönetmenize olanak sağlar. |
 > | **Kimlik** | 028f4ed7-e2a9-465E-a8f4-9c0ffdfdc027 |
 > | **Eylemler** |  |
 > | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
 > | Microsoft. databox/*/Read |  |
 > | Microsoft. databox/Jobs/listgizlilikler/Action |  |
 > | Microsoft. databox/Jobs/listcredentials/Action | Siparişle ilgili şifrelenmemiş kimlik bilgilerini listeler. |
-> | Microsoft. databox/Locations/Availablesku 'Lar/eylem | Bu yöntem, kullanılabilir SKU 'ların listesini döndürür. |
-> | Microsoft. databox/Locations/validateAddress/Action | Sevkiyat adresini doğrular ve varsa alternatif adresler sağlar. |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | Microsoft. databox/Locations/Availablesku 'Lar/eylem | Bu yöntem, kullanılabilen SKU'ların listesini döndürür. |
+> | Microsoft. databox/Locations/validateAddress/Action | Teslimat adresini doğrular ve varsa alternatif adresler sağlar. |
+> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için kullanılabilirlik durumlarını alır |
 > | Microsoft. support/* | Destek biletleri oluşturma ve yönetme |
 > | **NotActions** |  |
 > | *seçim* |  |
@@ -1343,18 +1347,18 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="data-factory-contributor"></a>Katkıda bulunan Data Factory
+## <a name="data-factory-contributor"></a>Data Factory Katılımcısı
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Veri fabrikalarının yanı sıra bunların içindeki alt kaynakları oluşturun ve yönetin. |
+> | **Açıklama** | Veri fabrikaları ile birlikte bunların alt kaynaklarını oluşturup yönetin. |
 > | **Kimlik** | 673868aa-7521-48A0-acc6-0f60742d39f5 |
 > | **Eylemler** |  |
 > | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
 > | Microsoft. DataFactory/DataFactory/* | Veri fabrikaları ve bunların içinde alt kaynaklar oluşturun ve yönetin. |
 > | Microsoft. DataFactory/Factory/* | Veri fabrikaları ve bunların içinde alt kaynaklar oluşturun ve yönetin. |
 > | Microsoft.Insights/alertRules/* | Uyarı kuralları oluşturma ve yönetme |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için kullanılabilirlik durumlarını alır |
 > | Microsoft. resources/dağıtımlar/* | Kaynak grubu dağıtımlarını oluşturma ve yönetme |
 > | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
 > | Microsoft. support/* | Destek biletleri oluşturma ve yönetme |
@@ -1365,18 +1369,18 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="data-lake-analytics-developer"></a>Data Lake Analytics geliştirici
+## <a name="data-lake-analytics-developer"></a>Data Lake Analytics Geliştiricisi
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Kendi işlerinizi göndermenize, izlemenize ve yönetmenize izin verir, ancak Data Lake Analytics Hesapları oluşturamaz veya silemezsiniz. |
+> | **Açıklama** | İşlerinizi göndermenize, izlemenize ve yönetmenize izin verir, ancak Data Lake Analytics hesabı oluşturmanıza veya silmenize izin vermez. |
 > | **Kimlik** | 47b7735b-770e-4598-a7da-8b91488b4c88 |
 > | **Eylemler** |  |
 > | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
 > | Microsoft. BigAnalytics/accounts/* |  |
 > | Microsoft.DataLakeAnalytics/accounts/* |  |
 > | Microsoft.Insights/alertRules/* | Öngörüler uyarı kuralları oluşturma ve yönetme |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için kullanılabilirlik durumlarını alır |
 > | Microsoft. resources/dağıtımlar/* | Kaynak grubu dağıtımlarını oluşturma ve yönetme |
 > | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
 > | Microsoft. support/* | Destek biletleri oluşturma ve yönetme |
@@ -1400,15 +1404,15 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="data-purger"></a>Veri Takiger
+## <a name="data-purger"></a>Veri Temizleyici
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Analiz verilerini temizedebilir |
+> | **Açıklama** | Analiz verilerini temizleyebilir |
 > | **Kimlik** | 150f5e0c-0603-4f03-8C7F-cf70034c4e90 |
 > | **Eylemler** |  |
 > | Microsoft. Insights/bileşenler/*/Read |  |
-> | Microsoft. Insights/bileşenler/Temizleme/eylem | Application Insights verileri temizleme |
+> | Microsoft. Insights/bileşenler/Temizleme/eylem | Application Insights verilerini temizleme |
 > | Microsoft. Operationalınsights/çalışma alanları/*/Read |  |
 > | Microsoft. Operationalınsights/çalışma alanları/temizleme/eylem | Belirtilen verileri çalışma alanından Sil |
 > | **NotActions** |  |
@@ -1418,18 +1422,18 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="devtest-labs-user"></a>DevTest Labs kullanıcısı
+## <a name="devtest-labs-user"></a>DevTest Labs Kullanıcısı
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Azure DevTest Labs sanal makinelerinizi bağlamanıza, başlatmanıza, yeniden başlatmanıza ve kapatımanıza olanak sağlar. |
+> | **Açıklama** | Azure DevTest Labs'teki tüm sanal makinelerinize bağlanmanıza, bu makineleri başlatmanıza, yeniden başlatmanıza ve kapatmanıza izin verir. |
 > | **Kimlik** | 76283e04-6283-4c54-8F91-bcf1374a3c64 |
 > | **Eylemler** |  |
 > | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
 > | Microsoft. COMPUTE/kullanılabilirliği Bilitysets/Read | Bir kullanılabilirlik kümesinin özelliklerini al |
 > | Microsoft. COMPUTE/virtualMachines/*/Read | Bir sanal makinenin özelliklerini okuyun (VM boyutları, çalışma zamanı durumu, VM uzantıları vb.) |
-> | Microsoft. COMPUTE/virtualMachines/serbest bırakma/eylem | Sanal makineyi güçlendirir ve işlem kaynaklarını serbest bırakır |
-> | Microsoft. COMPUTE/virtualMachines/okuma | Bir sanal makinenin özelliklerini al |
+> | Microsoft. COMPUTE/virtualMachines/serbest bırakma/eylem | Sanal makineyi kapatır ve işlem kaynaklarını serbest bırakır |
+> | Microsoft. COMPUTE/virtualMachines/okuma | Bir sanal makinenin özelliklerini alır |
 > | Microsoft. COMPUTE/virtualMachines/yeniden Başlat/eylem | Sanal makineyi yeniden başlatır |
 > | Microsoft. COMPUTE/virtualMachines/Başlat/eylem | Sanal makineyi başlatır |
 > | Microsoft. DevTestLab/*/Read | Laboratuvarın özelliklerini okuyun |
@@ -1456,25 +1460,25 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | Microsoft. resources/dağıtımlar/işlemler/okuma | Dağıtım işlemlerini alır veya listeler. |
 > | Microsoft. resources/dağıtımlar/okuma | Dağıtımları alır veya listeler. |
 > | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft.Storage/storageAccounts/listKeys/action | Belirtilen depolama hesabı için erişim anahtarlarını döndürür. |
+> | Microsoft.Storage/storageAccounts/listKeys/action | Belirtilen depolama hesabının erişim anahtarlarını döndürür. |
 > | **NotActions** |  |
-> | Microsoft.Compute/virtualMachines/vmSizes/read | Sanal makinenin güncelleştirileceği kullanılabilir boyutları listeler |
+> | Microsoft.Compute/virtualMachines/vmSizes/read | Sanal makineyi güncelleştirmek için kullanılabilir boyutları listeler |
 > | **Veri eylemleri** |  |
 > | *seçim* |  |
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="dns-zone-contributor"></a>DNS bölgesi Katılımcısı
+## <a name="dns-zone-contributor"></a>DNS Bölgesi Katkıda Bulunanı
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Azure DNS, DNS bölgelerini ve kayıt kümelerini yönetmenizi sağlar, ancak bunlara kimlerin erişebileceğini denetlemenize izin vermez. |
+> | **Açıklama** | Azure DNS'te, DNS bölgelerini ve kayıt kümelerini yönetmenize izin verir, ancak bunlara kimlerin erişebildiğini denetlemenize izin vermez. |
 > | **Kimlik** | befefa01-2a29-4197-83a8-272ff33ce314 |
 > | **Eylemler** |  |
 > | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
 > | Microsoft.Insights/alertRules/* | Uyarı kuralları oluşturma ve yönetme |
 > | Microsoft.Network/dnsZones/* | DNS bölgeleri ve kayıtları oluşturma ve yönetme |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için kullanılabilirlik durumlarını alır |
 > | Microsoft. resources/dağıtımlar/* | Kaynak grubu dağıtımlarını oluşturma ve yönetme |
 > | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
 > | Microsoft. support/* | Destek biletleri oluşturma ve yönetme |
@@ -1485,7 +1489,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="documentdb-account-contributor"></a>DocumentDB hesabı Katılımcısı
+## <a name="documentdb-account-contributor"></a>DocumentDB Hesabı Katılımcısı
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -1495,7 +1499,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
 > | Microsoft. DocumentDb/databaseAccounts/* | Azure Cosmos DB hesapları oluşturma ve yönetme |
 > | Microsoft.Insights/alertRules/* | Uyarı kuralları oluşturma ve yönetme |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için kullanılabilirlik durumlarını alır |
 > | Microsoft. resources/dağıtımlar/* | Kaynak grubu dağıtımlarını oluşturma ve yönetme |
 > | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
 > | Microsoft. support/* | Destek biletleri oluşturma ve yönetme |
@@ -1506,11 +1510,11 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="eventgrid-eventsubscription-contributor"></a>EventGrid EventSubscription Katılımcısı
+## <a name="eventgrid-eventsubscription-contributor"></a>EventGrid EventSubscription Katkıda Bulunanı
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | EventGrid olay aboneliği işlemlerini yönetmenizi sağlar. |
+> | **Açıklama** | EventGrid olay aboneliği işlemlerini yönetmenize olanak sağlar. |
 > | **Kimlik** | 428e0ff0-5e57-4d9c-a221-2c70d0e0a443 |
 > | **Eylemler** |  |
 > | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
@@ -1529,11 +1533,11 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="eventgrid-eventsubscription-reader"></a>EventGrid EventSubscription okuyucusu
+## <a name="eventgrid-eventsubscription-reader"></a>EventGrid EventSubscription Okuyucusu
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | EventGrid olay aboneliklerini okumanızı sağlar. |
+> | **Açıklama** | EventGrid olay aboneliklerini okumanıza olanak sağlar. |
 > | **Kimlik** | 2414bbcf-6497-4FAF-8c65-045460748405 |
 > | **Eylemler** |  |
 > | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
@@ -1572,11 +1576,11 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="hdinsight-domain-services-contributor"></a>HDInsight etki alanı Hizmetleri Katılımcısı
+## <a name="hdinsight-domain-services-contributor"></a>HDInsight Etki Alanı Hizmetleri Katılımcısı
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | HDInsight için gereken etki alanı Hizmetleri ile ilgili işlemleri okuyabilir, oluşturabilir, değiştirebilir ve silebilir Kurumsal Güvenlik Paketi |
+> | **Açıklama** | Okuyabilir oluşturma, değiştirme ve etki alanı Hizmetleri Sil ilgili işlemler için HDInsight Kurumsal Güvenlik Paketi için gereken Etki Alanı Hizmetleriyle ilgili işlemleri Okuyabilir, Oluşturabilir, Değiştirebilir ve Silebilir |
 > | **Kimlik** | 8d8d5a11-05d3-4bdav-A417-a08778121c7c |
 > | **Eylemler** |  |
 > | Microsoft. AAD/*/Read |  |
@@ -1589,17 +1593,17 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="intelligent-systems-account-contributor"></a>Intelligent Systems hesabı Katılımcısı
+## <a name="intelligent-systems-account-contributor"></a>Akıllı Sistemler Hesap Katılımcısı
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Akıllı sistem hesaplarını yönetmenizi sağlar ancak onlara yönelik erişimleri vermez. |
+> | **Açıklama** | Akıllı Sistemler hesaplarını yönetmenizi sağlar ancak onlara yönelik erişimi yönetme izni vermez. |
 > | **Kimlik** | 03a6d094-3444-4b3d-88af-7477090a9e5e |
 > | **Eylemler** |  |
 > | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
 > | Microsoft.Insights/alertRules/* | Uyarı kuralları oluşturma ve yönetme |
 > | Microsoft.IntelligentSystems/accounts/* | Akıllı sistem hesapları oluşturma ve yönetme |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için kullanılabilirlik durumlarını alır |
 > | Microsoft. resources/dağıtımlar/* | Kaynak grubu dağıtımlarını oluşturma ve yönetme |
 > | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
 > | Microsoft. support/* | Destek biletleri oluşturma ve yönetme |
@@ -1610,11 +1614,11 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="key-vault-contributor"></a>Katkıda bulunan Key Vault
+## <a name="key-vault-contributor"></a>Key Vault Katkıda Bulunanı
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Anahtar kasalarını yönetmenize izin verir, ancak bunlara erişim sağlamaz. |
+> | **Açıklama** | Anahtar kasalarını yönetmenize izin verir, ancak bunlara erişmenize izin vermez. |
 > | **Kimlik** | f25e0fa2-a7c8-4377-a976-54943a77a395 |
 > | **Eylemler** |  |
 > | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
@@ -1624,18 +1628,18 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
 > | Microsoft. support/* | Destek biletleri oluşturma ve yönetme |
 > | **NotActions** |  |
-> | Microsoft. Keykasası/konumlar/Silinkaults/Temizleme/eylem | Geçici olarak silinen bir anahtar kasasını temizle |
+> | Microsoft. Keykasası/konumlar/Silinkaults/Temizleme/eylem | Geçici silinen bir anahtar kasasını temizleyin |
 > | Microsoft.KeyVault/hsmPools/* |  |
 > | **Veri eylemleri** |  |
 > | *seçim* |  |
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="lab-creator"></a>Laboratuvar Oluşturucu
+## <a name="lab-creator"></a>Laboratuvar Oluşturan
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Azure Laboratuvar hesaplarınız kapsamında yönetilen Laboratuvarlarınızı oluşturmanıza, yönetmenize ve silmenize olanak sağlar. |
+> | **Açıklama** | Azure Laboratuvar Hesaplarınız altında yönetilen laboratuvarları oluşturmanıza, yönetmenize ve silmenize olanak sağlar. |
 > | **Kimlik** | b97fb8bc-a8b2-4522-a38b-dd33c7e65ead |
 > | **Eylemler** |  |
 > | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
@@ -1670,7 +1674,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | Microsoft.OperationsManagement/* |  |
 > | Microsoft. resources/dağıtımlar/* | Kaynak grubu dağıtımlarını oluşturma ve yönetme |
 > | Microsoft. resources/abonelikler/ResourceGroups/dağıtımlar/* |  |
-> | Microsoft.Storage/storageAccounts/listKeys/action | Belirtilen depolama hesabı için erişim anahtarlarını döndürür. |
+> | Microsoft.Storage/storageAccounts/listKeys/action | Belirtilen depolama hesabının erişim anahtarlarını döndürür. |
 > | Microsoft. support/* | Destek biletleri oluşturma ve yönetme |
 > | **NotActions** |  |
 > | *seçim* |  |
@@ -1683,7 +1687,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Log Analytics okuyucu tüm izleme verilerini görüntüleyip arayabilir ve tüm Azure kaynaklarında Azure tanılama 'nın yapılandırılmasını görüntüleme dahil olmak üzere izleme ayarlarını görüntüleyebilir. |
+> | **Açıklama** | Log Analytics Okuyucusu, tüm izleme verilerinin görüntüleme ve aramanın yanı sıra izleme ayarlarını da (tüm Azure kaynaklarındaki Azure tanılama yapılandırmalarını görüntüleme dahil) görüntüleyebilir. |
 > | **Kimlik** | 73c42c96-874c-492b-b04d-ab87d138a893 |
 > | **Eylemler** |  |
 > | */Read | Gizli dizileri hariç tüm türlerin kaynaklarını okuyun. |
@@ -1697,7 +1701,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="logic-app-contributor"></a>Mantıksal uygulama Katılımcısı
+## <a name="logic-app-contributor"></a>Mantıksal Uygulama Katkıda Bulunanı
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -1706,16 +1710,16 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **Eylemler** |  |
 > | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
 > | Microsoft.ClassicStorage/storageAccounts/listKeys/action | Depolama hesaplarının erişim anahtarlarını listeler. |
-> | Microsoft.ClassicStorage/storageAccounts/read | Verilen hesaba sahip depolama hesabını döndürün. |
+> | Microsoft.ClassicStorage/storageAccounts/read | Belirli bir hesaba yönelik depolama hesabını döndürün. |
 > | Microsoft.Insights/alertRules/* | Öngörüler uyarı kuralları oluşturma ve yönetme |
 > | Microsoft. Insights/diagnosticSettings/* | Analiz Sunucusu için tanılama ayarını oluşturur, güncelleştirir veya okur |
 > | Microsoft.Insights/logdefinitions/* | Bu izin, Portal aracılığıyla etkinlik günlüklerine erişmesi gereken kullanıcılar için gereklidir. Etkinlik günlüğündeki günlük kategorilerini listeleyin. |
 > | Microsoft. Insights/metricDefinitions/* | Ölçüm tanımlarını oku (bir kaynak için kullanılabilen ölçüm türlerinin listesi). |
 > | Microsoft.Logic/* | Logic Apps kaynaklarını yönetir. |
 > | Microsoft. resources/dağıtımlar/* | Kaynak grubu dağıtımlarını oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/operationresults/Read | Abonelik işlem sonuçlarını alın. |
+> | Microsoft. resources/abonelikler/operationresults/Read | Abonelik işlem sonuçlarını alır. |
 > | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. Storage/storageAccounts/ListKeys/Action | Belirtilen depolama hesabı için erişim anahtarlarını döndürür. |
+> | Microsoft. Storage/storageAccounts/ListKeys/Action | Belirtilen depolama hesabının erişim anahtarlarını döndürür. |
 > | Microsoft. Storage/storageAccounts/Read | Depolama hesaplarının listesini döndürür veya belirtilen depolama hesabının özelliklerini alır. |
 > | Microsoft. support/* | Destek biletleri oluşturma ve yönetme |
 > | Microsoft. Web/Connectiongateway/* | Bir bağlantı ağ geçidi oluşturun ve yönetir. |
@@ -1731,7 +1735,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="logic-app-operator"></a>Logic App Işleci
+## <a name="logic-app-operator"></a>Mantıksal Uygulama Operatörü
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -1744,10 +1748,10 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | Microsoft. Insights/metricDefinitions/*/Read | Logic Apps için kullanılabilir ölçümleri alır. |
 > | Microsoft. Logic/*/Read | Logic Apps kaynaklarını okur. |
 > | Microsoft. Logic/iş akışları/devre dışı bırakma/eylem | İş akışını devre dışı bırakır. |
-> | Microsoft. Logic/iş akışları/etkinleştir/eylem | İş akışını izin vermez. |
+> | Microsoft. Logic/iş akışları/etkinleştir/eylem | İş akışını etkinleştirir. |
 > | Microsoft.Logic/workflows/validate/action | İş akışını doğrular. |
 > | Microsoft. resources/dağıtımlar/işlemler/okuma | Dağıtım işlemlerini alır veya listeler. |
-> | Microsoft. resources/abonelikler/operationresults/Read | Abonelik işlem sonuçlarını alın. |
+> | Microsoft. resources/abonelikler/operationresults/Read | Abonelik işlem sonuçlarını alır. |
 > | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
 > | Microsoft. support/* | Destek biletleri oluşturma ve yönetme |
 > | Microsoft. Web/Connectiongateway/*/Read | Bağlantı ağ geçitlerini okuyun. |
@@ -1761,15 +1765,15 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="managed-application-operator-role"></a>Yönetilen uygulama Işletmeni rolü
+## <a name="managed-application-operator-role"></a>Yönetilen Uygulama İşletmeni Rolü
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Yönetilen uygulama kaynakları üzerinde işlemleri okuyup gerçekleştirmenize olanak tanır |
+> | **Açıklama** | Yönetilen Uygulama kaynakları üzerinde eylemleri okumanıza ve gerçekleştirmenize olanak sağlar |
 > | **Kimlik** | c7393b34-138c-406f-901b-d8cf2b17e6ae |
 > | **Eylemler** |  |
 > | */Read | Gizli dizileri hariç tüm türlerin kaynaklarını okuyun. |
-> | Microsoft. Solutions/Applications/Read | Uygulamaların bir listesini alır. |
+> | Microsoft. Solutions/Applications/Read | Uygulama listesi alır. |
 > | Microsoft. Solutions/*/Action |  |
 > | **NotActions** |  |
 > | *seçim* |  |
@@ -1778,11 +1782,11 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="managed-applications-reader"></a>Yönetilen uygulamalar okuyucusu
+## <a name="managed-applications-reader"></a>Yönetilen Uygulamalar Okuyucusu
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Yönetilen bir uygulamadaki kaynakları okumanızı ve JıT erişimi isteğinizi yapmanızı sağlar. |
+> | **Açıklama** | Yönetilen bir uygulama içinde kaynakları okumanıza ve JIT erişimi isteğinde bulunmanıza olanak sağlar. |
 > | **Kimlik** | b9331d33-8a36-4f8c-b097-4f54124fdb44 |
 > | **Eylemler** |  |
 > | */Read | Gizli dizileri hariç tüm türlerin kaynaklarını okuyun. |
@@ -1795,11 +1799,11 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="managed-identity-contributor"></a>Yönetilen kimlik Katılımcısı
+## <a name="managed-identity-contributor"></a>Yönetilen Kimlik Katılımcısı
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Kullanıcı tarafından atanan kimlik oluşturma, okuma, güncelleştirme ve silme |
+> | **Açıklama** | Kullanıcı Tarafından Atanan Kimliği Oluşturma, Okuma, Güncelleştirme ve Silme |
 > | **Kimlik** | e40ec5ca-96e0-45a2-b4ff-59039f2c2b59 |
 > | **Eylemler** |  |
 > | Microsoft. Managedıdentity/Useratandıdentities/Read | Mevcut kullanıcı tarafından atanan kimliği alır |
@@ -1817,11 +1821,11 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="managed-identity-operator"></a>Yönetilen kimlik Işleci
+## <a name="managed-identity-operator"></a>Yönetilen Kimlik İşleci
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Kullanıcı tarafından atanan kimliği okuma ve atama |
+> | **Açıklama** | Kullanıcı Tarafından Atanan Kimliği Oku ve Ata |
 > | **Kimlik** | f1a07417-d97a-45cb-824c-7a7467783830 |
 > | **Eylemler** |  |
 > | Microsoft. Managedıdentity/Useratandıdentities/*/Read |  |
@@ -1838,11 +1842,11 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="management-group-contributor"></a>Yönetim grubu Katılımcısı
+## <a name="management-group-contributor"></a>Yönetim Grubu Katkıda Bulunanı
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Yönetim grubu katılımcısı rolü |
+> | **Açıklama** | Yönetim Grubu Katkıda Bulunanı Rolü |
 > | **Kimlik** | 5d58bcaf-24a5-4b20-bdb6-eed9f69fbe4c |
 > | **Eylemler** |  |
 > | Microsoft. Management/managementGroups/Delete | Yönetim grubunu silin. |
@@ -1857,11 +1861,11 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="management-group-reader"></a>Yönetim grubu okuyucusu
+## <a name="management-group-reader"></a>Yönetim Grubu Okuyucusu
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Yönetim grubu okuyucusu rolü |
+> | **Açıklama** | Yönetim Grubu Okuyucusu Rolü |
 > | **Kimlik** | ac63b705-f282-497d-ac71-919bf39d939d |
 > | **Eylemler** |  |
 > | Microsoft. Management/managementGroups/Read | Kimliği doğrulanmış kullanıcı için Yönetim gruplarını listeleyin. |
@@ -1872,7 +1876,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="monitoring-contributor"></a>Katkıda bulunan izleniyor
+## <a name="monitoring-contributor"></a>İzleme Katkıda Bulunanı
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -1911,11 +1915,11 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="monitoring-metrics-publisher"></a>Ölçüm yayımcısını izleme
+## <a name="monitoring-metrics-publisher"></a>İzleme Ölçüm Yayımcısı
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Azure kaynaklarında ölçüm yayımlamaya izin vermez |
+> | **Açıklama** | Azure kaynaklarına karşı ölçümleri yayımlamayı etkinleştirir |
 > | **Kimlik** | 3913510d-42F4-4E42-8A64-420c390055eb |
 > | **Eylemler** |  |
 > | Microsoft.Insights/Register/Action | Microsoft Insights sağlayıcısını kaydedin |
@@ -1928,7 +1932,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="monitoring-reader"></a>İzleme okuyucusu
+## <a name="monitoring-reader"></a>İzleme Okuyucusu
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -1945,17 +1949,17 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="network-contributor"></a>Ağ katılımcısı
+## <a name="network-contributor"></a>Ağ Katılımcısı
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Ağları yönetmenizi sağlar ancak onlara yönelik erişimleri vermez. |
+> | **Açıklama** | Ağları yönetmenizi sağlar ancak onlara yönelik erişimi yönetme izni vermez. |
 > | **Kimlik** | 4d97b98b-1d4f-4787-A291-c67834d212e7 |
 > | **Eylemler** |  |
 > | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
 > | Microsoft.Insights/alertRules/* | Uyarı kuralları oluşturma ve yönetme |
 > | Microsoft. Network/* | Ağ oluşturma ve yönetme |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için kullanılabilirlik durumlarını alır |
 > | Microsoft. resources/dağıtımlar/* | Kaynak grubu dağıtımlarını oluşturma ve yönetme |
 > | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
 > | Microsoft. support/* | Destek biletleri oluşturma ve yönetme |
@@ -1966,16 +1970,16 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="new-relic-apm-account-contributor"></a>Yeni relik APM hesabı Katılımcısı
+## <a name="new-relic-apm-account-contributor"></a>New Relic APM Hesap Katılımcısı
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | New Relic Application Performance Management hesaplarını ve uygulamaları yönetmenize izin verir, ancak bunlara erişimi kalmaz. |
+> | **Açıklama** | New Relic Application Performance Management hesaplarını ve uygulamalarını yönetmenizi sağlar ancak onlara yönelik erişimi yönetme izni vermez. |
 > | **Kimlik** | 5d28c62d-5b37-4476-8438-e587778df237 |
 > | **Eylemler** |  |
 > | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
 > | Microsoft.Insights/alertRules/* | Öngörüler uyarı kuralları oluşturma ve yönetme |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için kullanılabilirlik durumlarını alır |
 > | Microsoft. resources/dağıtımlar/* | Kaynak grubu dağıtımlarını oluşturma ve yönetme |
 > | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
 > | Microsoft. support/* | Destek biletleri oluşturma ve yönetme |
@@ -1987,15 +1991,15 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="reader-and-data-access"></a>Okuyucu ve veri erişimi
+## <a name="reader-and-data-access"></a>Okuyucu ve Veri Erişimi
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
 > | **Açıklama** | Her şeyi görüntülemenize izin verir, ancak bir depolama hesabını veya kapsanan kaynağı silmenize veya oluşturmanıza izin vermez. Ayrıca depolama hesabı anahtarlarına erişim aracılığıyla bir depolama hesabında bulunan tüm verilere okuma/yazma erişimi de sağlar. |
 > | **Kimlik** | c12c1c16-33a1-487b-954d-41c89c60f349 |
 > | **Eylemler** |  |
-> | Microsoft.Storage/storageAccounts/listKeys/action | Belirtilen depolama hesabı için erişim anahtarlarını döndürür. |
-> | Microsoft. Storage/storageAccounts/ListAccountSas/eylem | Belirtilen depolama hesabı için hesap SAS belirtecini döndürür. |
+> | Microsoft.Storage/storageAccounts/listKeys/action | Belirtilen depolama hesabının erişim anahtarlarını döndürür. |
+> | Microsoft. Storage/storageAccounts/ListAccountSas/eylem | Belirtilen depolama hesabı için Hesap SAS belirtecini döndürür. |
 > | Microsoft. Storage/storageAccounts/Read | Depolama hesaplarının listesini döndürür veya belirtilen depolama hesabının özelliklerini alır. |
 > | **NotActions** |  |
 > | *seçim* |  |
@@ -2004,17 +2008,17 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="redis-cache-contributor"></a>Katkıda bulunan Redis Cache
+## <a name="redis-cache-contributor"></a>Redis Cache Katılımcısı
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Redsıs önbellekler yönetmenize izin verir, ancak bunlara erişimi olmaz. |
+> | **Açıklama** | Redis Cache'leri yönetmenizi sağlar ancak onlara yönelik erişimi yönetme izni vermez. |
 > | **Kimlik** | e0f68234-74aa-48ed-b826-c38b57376e17 |
 > | **Eylemler** |  |
 > | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
 > | Microsoft.Cache/redis/* | Redsıs önbellekler oluşturma ve yönetme |
 > | Microsoft.Insights/alertRules/* | Uyarı kuralları oluşturma ve yönetme |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için kullanılabilirlik durumlarını alır |
 > | Microsoft. resources/dağıtımlar/* | Kaynak grubu dağıtımlarını oluşturma ve yönetme |
 > | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
 > | Microsoft. support/* | Destek biletleri oluşturma ve yönetme |
@@ -2025,11 +2029,11 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="resource-policy-contributor-preview"></a>Kaynak Ilkesi katılımcısı (Önizleme)
+## <a name="resource-policy-contributor-preview"></a>Kaynak İlkesine Katkıda Bulunan (Önizleme)
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Önizle Kaynak ilkesi oluşturma/değiştirme, destek bileti oluşturma ve kaynakları/hiyerarşiyi okuma haklarıyla EA 'dan Kullanıcı geri alma. |
+> | **Açıklama** | (Önizleme) Kaynak ilkesi oluşturma/değiştirme, destek bileti oluşturma ve kaynakları/hiyerarşiyi okuma haklarıyla EA’dan kullanıcılar geri dolduruldu. |
 > | **Kimlik** | 36243c78-bf99-498c-9df9-86d9f8d28608 |
 > | **Eylemler** |  |
 > | */Read | Gizli dizileri hariç tüm türlerin kaynaklarını okuyun. |
@@ -2045,16 +2049,16 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="scheduler-job-collections-contributor"></a>Zamanlayıcı Iş koleksiyonları Katılımcısı
+## <a name="scheduler-job-collections-contributor"></a>Zamanlayıcı İş Koleksiyonları Katılımcısı
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Zamanlayıcı iş koleksiyonlarını yönetmenizi sağlar, ancak bunlara erişimi kalmaz. |
+> | **Açıklama** | Zamanlayıcı iş koleksiyonlarını yönetmenizi sağlar ancak onlara yönelik erişimi yönetme izni vermez. |
 > | **Kimlik** | 188a0f2f-5c9e-469b-ae67-2aa5ce574b94 |
 > | **Eylemler** |  |
 > | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
 > | Microsoft.Insights/alertRules/* | Uyarı kuralları oluşturma ve yönetme |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için kullanılabilirlik durumlarını alır |
 > | Microsoft. resources/dağıtımlar/* | Kaynak grubu dağıtımlarını oluşturma ve yönetme |
 > | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
 > | Microsoft. Scheduler/jobcollections/* | İş koleksiyonları oluşturma ve yönetme |
@@ -2066,16 +2070,16 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="search-service-contributor"></a>Katkıda bulunan Arama Hizmeti
+## <a name="search-service-contributor"></a>Search Hizmeti Katılımcısı
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Arama hizmetlerini yönetmenize izin verir, ancak bunlara erişim izni vermez. |
+> | **Açıklama** | Search hizmetlerini yönetmenizi sağlar ancak onlara yönelik erişimi yönetme izni vermez. |
 > | **Kimlik** | 7ca78c08-252a-4471-8644-bb5ff32d4ba0 |
 > | **Eylemler** |  |
 > | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
 > | Microsoft.Insights/alertRules/* | Uyarı kuralları oluşturma ve yönetme |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için kullanılabilirlik durumlarını alır |
 > | Microsoft. resources/dağıtımlar/* | Kaynak grubu dağıtımlarını oluşturma ve yönetme |
 > | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
 > | Microsoft.Search/searchServices/* | Arama Hizmetleri oluşturma ve yönetme |
@@ -2112,7 +2116,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="security-manager-legacy"></a>Güvenlik Yöneticisi (eski)
+## <a name="security-manager-legacy"></a>Güvenlik Yöneticisi (Eski)
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -2124,7 +2128,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | Microsoft.ClassicCompute/virtualMachines/*/write | Klasik sanal makineler için yazma yapılandırması |
 > | Microsoft. ClassicNetwork/*/Read | Klasik ağla ilgili yapılandırma bilgilerini okuyun |
 > | Microsoft.Insights/alertRules/* | Uyarı kuralları oluşturma ve yönetme |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için kullanılabilirlik durumlarını alır |
 > | Microsoft. resources/dağıtımlar/* | Kaynak grubu dağıtımlarını oluşturma ve yönetme |
 > | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
 > | Microsoft.Security/* | Güvenlik bileşenleri ve ilkeleri oluşturma ve yönetme |
@@ -2136,7 +2140,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="security-reader"></a>Güvenlik okuyucusu
+## <a name="security-reader"></a>Güvenlik Okuyucusu
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -2158,11 +2162,11 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="site-recovery-contributor"></a>Katkıda bulunan Site Recovery
+## <a name="site-recovery-contributor"></a>Site Recovery Katkıda Bulunanı
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Kasa oluşturma ve rol atama dışında Site Recovery hizmetini yönetmenizi sağlar |
+> | **Açıklama** | Kasa oluşturma ve rol atama işlemleri dışında Site Recovery hizmetini yönetmenize imkan sağlar |
 > | **Kimlik** | 6670b86e-a3f7-4917-AC9B-5d6ab1be4567 |
 > | **Eylemler** |  |
 > | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
@@ -2187,7 +2191,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | Microsoft.RecoveryServices/Vaults/vaultTokens/read | Kasa düzeyi arka uç işlemlerine ait kasa belirteci almak için kasa belirteci işlemi kullanılabilir. |
 > | Microsoft.RecoveryServices/Vaults/monitoringAlerts/* | Kurtarma Hizmetleri Kasası için uyarıları okuyun |
 > | Microsoft. RecoveryServices/Vaults/monitoringConfigurations/notificationConfiguration/Read |  |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için kullanılabilirlik durumlarını alır |
 > | Microsoft. resources/dağıtımlar/* | Kaynak grubu dağıtımlarını oluşturma ve yönetme |
 > | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
 > | Microsoft. Storage/storageAccounts/Read | Depolama hesaplarının listesini döndürür veya belirtilen depolama hesabının özelliklerini alır. |
@@ -2199,11 +2203,11 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="site-recovery-operator"></a>Site Recovery Işleci
+## <a name="site-recovery-operator"></a>Site Recovery Operatörü
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Yük devretme ve yeniden çalışma ve diğer Site Recovery yönetim işlemlerini gerçekleştirmenize izin verir |
+> | **Açıklama** | Yük devretme ve yeniden çalışma dışındaki Site Recovery yönetimi işlemlerini gerçekleştirmenize izin vermez |
 > | **Kimlik** | 494ae006-db33-4328-bf46-533a6560a3ca |
 > | **Eylemler** |  |
 > | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
@@ -2228,14 +2232,14 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/Replicationkorunabilir | Korunabilir öğeleri oku |
 > | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/Replicationkorunabilir/applyRecoveryPoint/Action | Kurtarma noktası Uygula |
 > | Microsoft. RecoveryServices/Vaults/Replicationdokuları/replicationProtectionContainers/Replicationkorunabilir/işlem | Yük devretme yürütmesi |
-> | Microsoft. RecoveryServices/Vaults/Replicationdokuların/replicationProtectionContainers/Replicationkorunabilir/Plannedyük devretme/eylem | Planlı Yük devretme |
+> | Microsoft. RecoveryServices/Vaults/Replicationdokuların/replicationProtectionContainers/Replicationkorunabilir/Plannedyük devretme/eylem | Planlanan Yük Devretme |
 > | Microsoft. RecoveryServices/Vaults/Replicationdokuların/replicationProtectionContainers/Replicationkorunabilir/Read | Tüm korumalı öğeleri okuyun |
 > | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/Replicationkorunabilir/recoveryPoints/Read | Tüm çoğaltma kurtarma noktalarını okuyun |
 > | Microsoft. RecoveryServices/Vaults/Replicationdokuların/replicationProtectionContainers/Replicationkorunabilir/\ çoğaltma/eylem | Çoğaltmayı Onar |
 > | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/Replicationkorudıtems/reProtect/ACTION | Korumalı öğeyi yeniden koru |
-> | Microsoft. RecoveryServices/Vaults/Replicationdokuları/replicationProtectionContainers/Replicationkorunabilir/TEMS/testFailover/ACTION | Yük devretme testi |
+> | Microsoft. RecoveryServices/Vaults/Replicationdokuları/replicationProtectionContainers/Replicationkorunabilir/TEMS/testFailover/ACTION | Test Yük Devretmesi |
 > | Microsoft. RecoveryServices/Vaults/Replicationdokuları/replicationProtectionContainers/Replicationkorunabilir/test Failovercleanup/Action | Yük devretme sınamasını Temizleme |
-> | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/Replicationkorunabilir/unplannedFailover/ACTION | Yük devretme |
+> | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/Replicationkorunabilir/unplannedFailover/ACTION | Yük devret |
 > | Microsoft. RecoveryServices/Vaults/Replicationdokuların/replicationProtectionContainers/Replicationkorunabilir/Updatebir Dıtems/Update, Ityservice/Action | Mobility hizmetini Güncelleştir |
 > | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/replicationProtectionContainerMappings/Read | Tüm koruma kapsayıcısı eşlemelerini okuyun |
 > | Microsoft. RecoveryServices/Vaults/Replicationdokuların/replicationRecoveryServicesProviders/Read | Tüm kurtarma hizmetleri sağlayıcılarını okuyun |
@@ -2258,7 +2262,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | Microsoft.RecoveryServices/Vaults/tokenInfo/read |  |
 > | Microsoft.RecoveryServices/Vaults/usages/read | Bir Kurtarma Hizmetleri Kasası için kullanım ayrıntılarını döndürür. |
 > | Microsoft.RecoveryServices/Vaults/vaultTokens/read | Kasa düzeyi arka uç işlemlerine ait kasa belirteci almak için kasa belirteci işlemi kullanılabilir. |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için kullanılabilirlik durumlarını alır |
 > | Microsoft. resources/dağıtımlar/* | Kaynak grubu dağıtımlarını oluşturma ve yönetme |
 > | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
 > | Microsoft. Storage/storageAccounts/Read | Depolama hesaplarının listesini döndürür veya belirtilen depolama hesabının özelliklerini alır. |
@@ -2270,7 +2274,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="site-recovery-reader"></a>Site Recovery okuyucu
+## <a name="site-recovery-reader"></a>Site Recovery Okuyucusu
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -2315,11 +2319,11 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="spatial-anchors-account-contributor"></a>Uzamsal bağlayıcı hesabı Katılımcısı
+## <a name="spatial-anchors-account-contributor"></a>Spatial Anchors Hesabı Katkıda Bulunanı
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Hesabınızdaki uzamsal bağlantıları yönetmenizi sağlar, ancak onları silmez |
+> | **Açıklama** | Hesabınızdaki uzamsal sabit noktaları yönetmenize olanak sağlar, ancak silmenize izin vermez |
 > | **Kimlik** | 8bbe83f1-e2a6-4df7-8cb4-4e04d4e5c827 |
 > | **Eylemler** |  |
 > | *seçim* |  |
@@ -2335,11 +2339,11 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="spatial-anchors-account-owner"></a>Uzamsal bağlayıcı hesap sahibi
+## <a name="spatial-anchors-account-owner"></a>Spatial Anchors Hesabı Sahibi
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Hesabınızdaki uzamsal bağlayıcıları, silme dahil olmak üzere yönetmenizi sağlar |
+> | **Açıklama** | Silme de dahil olmak üzere hesabınızdaki uzamsal sabit noktaları yönetmenize olanak sağlar |
 > | **Kimlik** | 70bbe301-9835-447d-afdd-19eb3167307c |
 > | **Eylemler** |  |
 > | *seçim* |  |
@@ -2356,11 +2360,11 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="spatial-anchors-account-reader"></a>Uzamsal bağlayıcı hesap okuyucu
+## <a name="spatial-anchors-account-reader"></a>Spatial Anchors Hesabı Okuyucusu
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Hesabınızdaki uzamsal Tutturucuların özelliklerini bulmanıza ve okumanızı sağlar |
+> | **Açıklama** | Hesabınızdaki uzamsal sabit noktaları bulup bunların özelliklerini okumanıza olanak sağlar |
 > | **Kimlik** | 5d51204f-EB77-4B1C-b86a-2ec626c49413 |
 > | **Eylemler** |  |
 > | *seçim* |  |
@@ -2383,14 +2387,14 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **Eylemler** |  |
 > | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
 > | Microsoft.Insights/alertRules/* | Uyarı kuralları oluşturma ve yönetme |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için kullanılabilirlik durumlarını alır |
 > | Microsoft. resources/dağıtımlar/* | Kaynak grubu dağıtımlarını oluşturma ve yönetme |
 > | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
 > | Microsoft. SQL/konumlar/*/Read |  |
 > | Microsoft. SQL/Servers/veritabanları/* | SQL veritabanlarını oluşturma ve yönetme |
 > | Microsoft. SQL/Servers/Read | Sunucu listesini döndürün veya belirtilen sunucunun özelliklerini alır. |
 > | Microsoft. support/* | Destek biletleri oluşturma ve yönetme |
-> | Microsoft. Insights/ölçümler/okuma | Ölçümleri oku |
+> | Microsoft. Insights/ölçümler/okuma | Ölçümleri okuma |
 > | Microsoft. Insights/metricDefinitions/okuma | Ölçüm tanımlarını oku |
 > | **NotActions** |  |
 > | Microsoft. SQL/ManagedInstances/Databases/currentSensitivityLabels/* |  |
@@ -2429,7 +2433,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **Açıklama** | SQL yönetilen örnekleri ve gerekli ağ yapılandırmasını yönetmenizi sağlar, ancak başkalarına erişim izni veremeyiz. |
 > | **Kimlik** | 4939a1f6-9ae0-4e48-a1e0-f2cbe897382d |
 > | **Eylemler** |  |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için kullanılabilirlik durumlarını alır |
 > | Microsoft. resources/dağıtımlar/* | Kaynak grubu dağıtımlarını oluşturma ve yönetme |
 > | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
 > | Microsoft. Network/networkSecurityGroups/* |  |
@@ -2441,7 +2445,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | Microsoft. Network/virtualNetworks/* |  |
 > | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
 > | Microsoft.Insights/alertRules/* | Öngörüler uyarı kuralları oluşturma ve yönetme |
-> | Microsoft. Insights/ölçümler/okuma | Ölçümleri oku |
+> | Microsoft. Insights/ölçümler/okuma | Ölçümleri okuma |
 > | Microsoft. Insights/metricDefinitions/okuma | Ölçüm tanımlarını oku |
 > | **NotActions** |  |
 > | *seçim* |  |
@@ -2454,13 +2458,13 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | , SQL Server ve veritabanlarının güvenlikle ilgili ilkelerini yönetmenizi sağlar, ancak bunlara erişemez. |
+> | **Açıklama** | SQL sunucularının ve veritabanlarının güvenlikle ilgili ilkelerini yönetmenizi sağlar ancak onlara erişimi yönetme izni vermez. |
 > | **Kimlik** | 056cd41c-7e88-42e1-933e-88ba6a50c9c3 |
 > | **Eylemler** |  |
 > | Microsoft. Authorization/*/Read | Microsoft yetkilendirmesini okuyun |
 > | Microsoft.Insights/alertRules/* | Öngörüler uyarı kuralları oluşturma ve yönetme |
 > | Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action | Depolama hesabı veya SQL veritabanı gibi kaynağı bir alt ağa birleştirir. Alertable değil. |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için kullanılabilirlik durumlarını alır |
 > | Microsoft. resources/dağıtımlar/* | Kaynak grubu dağıtımlarını oluşturma ve yönetme |
 > | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
 > | Microsoft. SQL/ManagedInstances/Databases/currentSensitivityLabels/* |  |
@@ -2505,22 +2509,22 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="sql-server-contributor"></a>Katkıda bulunan SQL Server
+## <a name="sql-server-contributor"></a>SQL Server Katılımcısı
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | SQL Server ve veritabanlarını yönetmenizi sağlar, ancak bunlara yönelik erişimleri ve güvenlikle ilgili ilkeleri yönetemez. |
+> | **Açıklama** | SQL sunucularını ve veritabanlarını yönetmenizi sağlar ancak güvenlikle ilgili ilkelerini yönetmenize izin vermez. |
 > | **Kimlik** | 6d8ee4ec-f05a-4a1d-8b00-a9b17e38b437 |
 > | **Eylemler** |  |
 > | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
 > | Microsoft.Insights/alertRules/* | Öngörüler uyarı kuralları oluşturma ve yönetme |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için kullanılabilirlik durumlarını alır |
 > | Microsoft. resources/dağıtımlar/* | Kaynak grubu dağıtımlarını oluşturma ve yönetme |
 > | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
 > | Microsoft. SQL/konumlar/*/Read |  |
 > | Microsoft. SQL/Servers/* | SQL Server 'lar oluşturma ve yönetme |
 > | Microsoft. support/* | Destek biletleri oluşturma ve yönetme |
-> | Microsoft. Insights/ölçümler/okuma | Ölçümleri oku |
+> | Microsoft. Insights/ölçümler/okuma | Ölçümleri okuma |
 > | Microsoft. Insights/metricDefinitions/okuma | Ölçüm tanımlarını oku |
 > | **NotActions** |  |
 > | Microsoft. SQL/ManagedInstances/Databases/currentSensitivityLabels/* |  |
@@ -2556,7 +2560,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="storage-account-contributor"></a>Depolama hesabı Katılımcısı
+## <a name="storage-account-contributor"></a>Depolama Hesabı Katılımcısı
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -2567,7 +2571,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | Microsoft.Insights/alertRules/* | Öngörüler uyarı kuralları oluşturma ve yönetme |
 > | Microsoft. Insights/diagnosticSettings/* | Tanılama ayarlarını yönetme |
 > | Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action | Depolama hesabı veya SQL veritabanı gibi kaynağı bir alt ağa birleştirir. Alertable değil. |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için kullanılabilirlik durumlarını alır |
 > | Microsoft. resources/dağıtımlar/* | Kaynak grubu dağıtımlarını oluşturma ve yönetme |
 > | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
 > | Microsoft. Storage/storageAccounts/* | Depolama hesapları oluşturma ve yönetme |
@@ -2579,15 +2583,15 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="storage-account-key-operator-service-role"></a>Depolama hesabı anahtar operatörü hizmet rolü
+## <a name="storage-account-key-operator-service-role"></a>Depolama Hesabı Anahtarı İşleci Hizmet Rolü
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
 > | **Açıklama** | Depolama hesabı erişim anahtarlarının listelenmesi ve yeniden oluşturulmasına izin verir. |
 > | **Kimlik** | 81a9662b-bebf-436f-a333-f67b29880f12 |
 > | **Eylemler** |  |
-> | Microsoft. Storage/storageAccounts/ListKeys/Action | Belirtilen depolama hesabı için erişim anahtarlarını döndürür. |
-> | Microsoft. Storage/storageAccounts/RegenerateKey/ACTION | Belirtilen depolama hesabı için erişim anahtarlarını yeniden oluşturur. |
+> | Microsoft. Storage/storageAccounts/ListKeys/Action | Belirtilen depolama hesabının erişim anahtarlarını döndürür. |
+> | Microsoft. Storage/storageAccounts/RegenerateKey/ACTION | Belirtilen depolama hesabının erişim anahtarlarını yeniden oluşturur. |
 > | **NotActions** |  |
 > | *seçim* |  |
 > | **Veri eylemleri** |  |
@@ -2595,7 +2599,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="storage-blob-data-contributor"></a>Depolama Blobu veri Katılımcısı
+## <a name="storage-blob-data-contributor"></a>Depolama Blob Verileri Katkıda Bulunanı
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -2605,6 +2609,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Delete | Kapsayıcıyı silin. |
 > | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/okuma | Bir kapsayıcı veya kapsayıcıların listesini döndürün. |
 > | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Write | Kapsayıcının meta verilerini veya özelliklerini değiştirin. |
+> | Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey/Action | Blob hizmeti için Kullanıcı temsili anahtarını döndürür. |
 > | **NotActions** |  |
 > | *seçim* |  |
 > | **Veri eylemleri** |  |
@@ -2614,7 +2619,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="storage-blob-data-owner"></a>Depolama Blobu veri sahibi
+## <a name="storage-blob-data-owner"></a>Depolama Blob Verileri Sahibi
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -2622,6 +2627,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **Kimlik** | b7e6dc6d-f1e8-4753-8033-0f276bb0955b |
 > | **Eylemler** |  |
 > | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/* | Kapsayıcılarda tam izinler. |
+> | Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey/Action | Blob hizmeti için Kullanıcı temsili anahtarını döndürür. |
 > | **NotActions** |  |
 > | *seçim* |  |
 > | **Veri eylemleri** |  |
@@ -2629,7 +2635,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="storage-blob-data-reader"></a>Depolama Blobu veri okuyucusu
+## <a name="storage-blob-data-reader"></a>Depolama Blob Verileri Okuyucusu
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -2637,6 +2643,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **Kimlik** | 2a2b9908-6ea1-4ae2-8e65-a410df84e7d1 |
 > | **Eylemler** |  |
 > | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/okuma | Bir kapsayıcı veya kapsayıcıların listesini döndürün. |
+> | Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey/Action | Blob hizmeti için Kullanıcı temsili anahtarını döndürür. |
 > | **NotActions** |  |
 > | *seçim* |  |
 > | **Veri eylemleri** |  |
@@ -2644,7 +2651,72 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="storage-queue-data-contributor"></a>Depolama kuyruğu verileri Katılımcısı
+## <a name="storage-blob-delegator"></a>Depolama Blobu Delegator
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Açıklama** | Azure AD kimlik bilgileriyle imzalanan bir kapsayıcı veya blob için paylaşılan erişim imzası oluşturmak üzere kullanılabilen bir Kullanıcı temsili anahtarı alın. Daha fazla bilgi için bkz. [Kullanıcı TEMSILI SAS oluşturma](https://docs.microsoft.com/rest/api/storageservices/create-a-user-delegation-sas). |
+> | **Kimlik** | db58b8e5-c6ad-4a2a-8342-4190687cbf4a |
+> | **Eylemler** |  |
+> | Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey/Action | Blob hizmeti için Kullanıcı temsili anahtarını döndürür. |
+> | **NotActions** |  |
+> | *seçim* |  |
+> | **Veri eylemleri** |  |
+> | *seçim* |  |
+> | **NotDataActions** |  |
+> | *seçim* |  |
+
+## <a name="storage-file-data-smb-share-contributor"></a>Depolama dosyası veri SMB paylaşımında katkıda bulunan
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Açıklama** | SMB üzerinden Azure depolama dosya paylaşımlarında okuma, yazma ve silme erişimine izin verir |
+> | **Kimlik** | 0c867c2a-1d8c-454a-a3db-ab2ea1bdc8bb |
+> | **Eylemler** |  |
+> | *seçim* |  |
+> | **NotActions** |  |
+> | *seçim* |  |
+> | **Veri eylemleri** |  |
+> | Microsoft. Storage/storageAccounts/fileServices/fileshares/Files/Read | Dosya/klasör veya dosya/klasör listesini döndürür. |
+> | Microsoft. Storage/storageAccounts/fileServices/fileshares/Files/Write | Bir dosya yazmanın veya bir klasör oluşturmanın sonucunu döndürür. |
+> | Microsoft. Storage/storageAccounts/fileServices/fileshares/Files/Delete | Dosya/klasör silmenin sonucunu döndürür. |
+> | **NotDataActions** |  |
+> | *seçim* |  |
+
+## <a name="storage-file-data-smb-share-elevated-contributor"></a>Depolama dosyası veri SMB paylaşımında yükseltilmiş katkıda bulunan
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Açıklama** | SMB üzerinden Azure depolama dosya paylaşımlarında NTFS izin erişimini okuma, yazma, silme ve değiştirme sağlar |
+> | **Kimlik** | a7264617-510b-434b-a828-9731dc254ea7 |
+> | **Eylemler** |  |
+> | *seçim* |  |
+> | **NotActions** |  |
+> | *seçim* |  |
+> | **Veri eylemleri** |  |
+> | Microsoft. Storage/storageAccounts/fileServices/fileshares/Files/Read | Dosya/klasör veya dosya/klasör listesini döndürür. |
+> | Microsoft. Storage/storageAccounts/fileServices/fileshares/Files/Write | Bir dosya yazmanın veya bir klasör oluşturmanın sonucunu döndürür. |
+> | Microsoft. Storage/storageAccounts/fileServices/fileshares/Files/Delete | Dosya/klasör silmenin sonucunu döndürür. |
+> | Microsoft. Storage/storageAccounts/fileServices/fileshares/Files/modifypermissions/Action | Bir dosya/klasör üzerinde izin değiştirme sonucunu döndürür. |
+> | **NotDataActions** |  |
+> | *seçim* |  |
+
+## <a name="storage-file-data-smb-share-reader"></a>Depolama dosyası veri SMB paylaşma okuyucusu
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Açıklama** | SMB üzerinden Azure dosya paylaşımında okuma erişimine izin verir |
+> | **Kimlik** | aba4ae5f-2193-4029-9191-0cb91df5e314 |
+> | **Eylemler** |  |
+> | *seçim* |  |
+> | **NotActions** |  |
+> | *seçim* |  |
+> | **Veri eylemleri** |  |
+> | Microsoft. Storage/storageAccounts/fileServices/fileshares/Files/Read | Dosya/klasör veya dosya/klasör listesini döndürür. |
+> | **NotDataActions** |  |
+> | *seçim* |  |
+
+## <a name="storage-queue-data-contributor"></a>Depolama Kuyruk Verileri Katkıda Bulunanı
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -2663,7 +2735,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="storage-queue-data-message-processor"></a>Depolama kuyruğu veri Iletisi Işlemcisi
+## <a name="storage-queue-data-message-processor"></a>Depolama Kuyruk Verileri İleti İşleyicisi
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -2679,7 +2751,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="storage-queue-data-message-sender"></a>Depolama kuyruğu veri Iletisi gönderici
+## <a name="storage-queue-data-message-sender"></a>Depolama Kuyruk Verileri İleti Göndericisi
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -2694,14 +2766,14 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="storage-queue-data-reader"></a>Depolama kuyruğu veri okuyucusu
+## <a name="storage-queue-data-reader"></a>Depolama Kuyruk Verileri Okuyucusu
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
 > | **Açıklama** | Azure depolama kuyruklarını ve sıra iletilerini okuyun ve listeleyin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). |
 > | **Kimlik** | 19e7f393-937e-4F77-808e-94535e297925 |
 > | **Eylemler** |  |
-> | Microsoft. Storage/storageAccounts/queueServices/kuyrukları/okuma | Kuyruğu veya kuyruk listesini döndürür. |
+> | Microsoft. Storage/storageAccounts/queueServices/kuyrukları/okuma | Bir kuyruğu veya kuyruk listesini döndürür. |
 > | **NotActions** |  |
 > | *seçim* |  |
 > | **Veri eylemleri** |  |
@@ -2709,11 +2781,11 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="support-request-contributor"></a>Destek Isteği Katılımcısı
+## <a name="support-request-contributor"></a>Destek İsteğine Katkıda Bulunan
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Destek istekleri oluşturmanızı ve yönetmenizi sağlar |
+> | **Açıklama** | Destek istekleri oluşturmanıza ve bunları yönetmenize olanak sağlar |
 > | **Kimlik** | cfd33db0-3dd1-45e3-aa9d-cdbdf3b6f24e |
 > | **Eylemler** |  |
 > | Microsoft. Authorization/*/Read | Yetkilendirmeyi oku |
@@ -2726,17 +2798,17 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="traffic-manager-contributor"></a>Katkıda bulunan Traffic Manager
+## <a name="traffic-manager-contributor"></a>Traffic Manager Katkıda Bulunanı
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Traffic Manager profillerini yönetmenizi sağlar, ancak bunlara kimlerin erişebileceğini denetlemenize izin vermez. |
+> | **Açıklama** | Traffic Manager profillerini yönetmenize izin verir, ancak bunlara kimlerin erişebildiğini denetlemenize izin vermez. |
 > | **Kimlik** | a4b10055-b0c7-44c2-b00f-c7b5b3550cf7 |
 > | **Eylemler** |  |
 > | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
 > | Microsoft.Insights/alertRules/* | Öngörüler uyarı kuralları oluşturma ve yönetme |
 > | Microsoft.Network/trafficManagerProfiles/* |  |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için kullanılabilirlik durumlarını alır |
 > | Microsoft. resources/dağıtımlar/* | Kaynak grubu dağıtımlarını oluşturma ve yönetme |
 > | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
 > | Microsoft. support/* | Destek biletleri oluşturma ve yönetme |
@@ -2751,7 +2823,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Azure kaynaklarına Kullanıcı erişimini yönetmenizi sağlar. |
+> | **Açıklama** | Azure kaynaklarına yönelik kullanıcı erişimini yönetmenizi sağlar. |
 > | **Kimlik** | 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9 |
 > | **Eylemler** |  |
 > | */Read | Gizli dizileri hariç tüm türlerin kaynaklarını okuyun. |
@@ -2764,11 +2836,11 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="virtual-machine-administrator-login"></a>Sanal Makine Yöneticisi oturum açma
+## <a name="virtual-machine-administrator-login"></a>Sanal Makine Yöneticisi Oturum Açma
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Portalda sanal makineleri görüntüleme ve yönetici olarak oturum açma |
+> | **Açıklama** | Portalda Sanal Makineleri görüntüleyin ve yönetici olarak oturum açın |
 > | **Kimlik** | 1c0163c0-47e6-4577-8991-ea5c82e286e4 |
 > | **Eylemler** |  |
 > | Microsoft.Network/publicIPAddresses/read | Genel IP adresi tanımını alır. |
@@ -2779,16 +2851,16 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotActions** |  |
 > | *seçim* |  |
 > | **Veri eylemleri** |  |
-> | Microsoft.Compute/virtualMachines/login/action | Bir sanal makinede normal kullanıcı olarak oturum açın |
-> | Microsoft.Compute/virtualMachines/loginAsAdmin/action | Windows yönetici veya Linux kök kullanıcı ayrıcalıklarına sahip bir sanal makinede oturum açma |
+> | Microsoft.Compute/virtualMachines/login/action | Bir sanal makinede normal bir kullanıcı olarak oturum açın |
+> | Microsoft.Compute/virtualMachines/loginAsAdmin/action | Windows yöneticisi veya Linux kök kullanıcı ayrıcalıklarıyla bir sanal makinede oturum açın |
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="virtual-machine-contributor"></a>Sanal makine Katılımcısı
+## <a name="virtual-machine-contributor"></a>Sanal Makine Katılımcısı
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Sanal makineleri yönetmenize izin verir, ancak bunlara bağlı oldukları sanal ağ veya depolama hesabına erişemez. |
+> | **Açıklama** | Sanal makineleri yönetmenizi sağlar ancak bu sanal makinelere ve bağlı oldukları sanal ağ veya depolama hesaplarına yönelik erişimi yönetme izni vermez. |
 > | **Kimlik** | 9980e02c-c2be-4d73-94e8-173b1dc7cf3c |
 > | **Eylemler** |  |
 > | Microsoft. Authorization/*/Read | Yetkilendirmeyi oku |
@@ -2822,11 +2894,11 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | Microsoft.RecoveryServices/Vaults/read | Kasayı al işlemi, ' kasa ' türündeki Azure kaynağını temsil eden bir nesneyi alır |
 > | Microsoft.RecoveryServices/Vaults/usages/read | Bir Kurtarma Hizmetleri Kasası için kullanım ayrıntılarını döndürür. |
 > | Microsoft.RecoveryServices/Vaults/write | Kasa Oluştur işlemi, 'vault' türünde bir Azure kaynağı oluşturur |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için kullanılabilirlik durumlarını alır |
 > | Microsoft. resources/dağıtımlar/* | Kaynak grubu dağıtımlarını oluşturma ve yönetme |
 > | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
 > | Microsoft. SqlVirtualMachine/* |  |
-> | Microsoft.Storage/storageAccounts/listKeys/action | Belirtilen depolama hesabı için erişim anahtarlarını döndürür. |
+> | Microsoft.Storage/storageAccounts/listKeys/action | Belirtilen depolama hesabının erişim anahtarlarını döndürür. |
 > | Microsoft. Storage/storageAccounts/Read | Depolama hesaplarının listesini döndürür veya belirtilen depolama hesabının özelliklerini alır. |
 > | Microsoft. support/* | Destek biletleri oluşturma ve yönetme |
 > | **NotActions** |  |
@@ -2836,11 +2908,11 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="virtual-machine-user-login"></a>Sanal makine Kullanıcı oturumu açma
+## <a name="virtual-machine-user-login"></a>Sanal Makine Kullanıcı Oturum Açma
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Portalda sanal makineleri görüntüleyin ve normal bir kullanıcı olarak oturum açın. |
+> | **Açıklama** | Portalda Sanal Makineleri görüntüleyin ve normal bir kullanıcı olarak oturum açın. |
 > | **Kimlik** | fb879df8-f326-4884-b1cf-06f3ad86be52 |
 > | **Eylemler** |  |
 > | Microsoft.Network/publicIPAddresses/read | Genel IP adresi tanımını alır. |
@@ -2851,20 +2923,20 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotActions** |  |
 > | *seçim* |  |
 > | **Veri eylemleri** |  |
-> | Microsoft.Compute/virtualMachines/login/action | Bir sanal makinede normal kullanıcı olarak oturum açın |
+> | Microsoft.Compute/virtualMachines/login/action | Bir sanal makinede normal bir kullanıcı olarak oturum açın |
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="web-plan-contributor"></a>Web planı Katılımcısı
+## <a name="web-plan-contributor"></a>Web Planı Katılımcısı
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Web siteleri için Web planlarını yönetmenizi sağlar, ancak bunlara erişemez. |
+> | **Açıklama** | Web siteleri için web planlarını yönetmenizi sağlar ancak onlara yönelik erişimi yönetme izni vermez. |
 > | **Kimlik** | 2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
 > | **Eylemler** |  |
 > | Microsoft. Authorization/*/Read | Yetkilendirmeyi oku |
 > | Microsoft.Insights/alertRules/* | Öngörüler uyarı kuralları oluşturma ve yönetme |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için kullanılabilirlik durumlarını alır |
 > | Microsoft. resources/dağıtımlar/* | Kaynak grubu dağıtımlarını oluşturma ve yönetme |
 > | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
 > | Microsoft. support/* | Destek biletleri oluşturma ve yönetme |
@@ -2877,17 +2949,17 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="website-contributor"></a>Web sitesi Katılımcısı
+## <a name="website-contributor"></a>Web Sitesi Katılımcısı
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Açıklama** | Web sitelerini yönetmenizi sağlar, ancak bunlara erişemez. |
+> | **Açıklama** | Web sitelerini (web planlarını değil) yönetmenizi sağlar ancak onlara yönelik erişimi yönetme izni vermez. |
 > | **Kimlik** | de139f84-1756-47ae-9be6-808fbbe84772 |
 > | **Eylemler** |  |
 > | Microsoft. Authorization/*/Read | Yetkilendirmeyi oku |
 > | Microsoft.Insights/alertRules/* | Öngörüler uyarı kuralları oluşturma ve yönetme |
 > | Microsoft. Insights/bileşenler/* | Öngörüler bileşenleri oluşturma ve yönetme |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için kullanılabilirlik durumlarını alır |
 > | Microsoft. resources/dağıtımlar/* | Kaynak grubu dağıtımlarını oluşturma ve yönetme |
 > | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
 > | Microsoft. support/* | Destek biletleri oluşturma ve yönetme |

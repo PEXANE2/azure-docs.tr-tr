@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 08/07/2019
+ms.date: 08/08/2019
 ms.author: alkohli
-ms.openlocfilehash: 309dc8e1fd15ae4088ed6ee87bdbb8aa4d636951
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 8fecc00a970f0e706dc6240eaec593fd54968ff8
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848566"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934217"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box ve Azure Data Box Heavy için izleme ve olay günlüğü
 
@@ -197,7 +197,7 @@ Bu, veriler Data Box Blok Blobu paylaşımında kopyalandığında oluşturulan 
 
 Azure 'a veri yükleme sırasında bir kopyalama günlüğü oluşturulur.
 
-### <a name="copylog"></a>Copylog
+### <a name="copy-log"></a>Günlüğü Kopyala
 
 İşlenen her sıra için, Data Box hizmeti ilişkili depolama hesabında kopyalama günlüğü oluşturur. Kopyalama günlüğü, karşıya yüklenen toplam dosya sayısını ve veri kopyalama sırasında hatalı giden dosya sayısını Azure depolama hesabınıza Data Box.
 
@@ -252,6 +252,8 @@ Karşıya yüklemenin hatalarla tamamlandığı bir kopyalama günlüğü örne�
 ### <a name="upload-completed-with-warnings"></a>Karşıya yükleme uyarılarla tamamlandı
 
 Verileriniz Azure adlandırma kurallarına uymayan kapsayıcı/BLOB/dosya adları içeriyorsa ve Azure 'a karşıya yükleme, verileri Azure 'a yüklemek üzere değiştirilseydi, Azure 'a yükleme işlemi uyarılarla tamamlanır.
+
+![Uyarılar ile tamamlandığında genel bakış dikey penceresine günlük kopyalama yolu](media/data-box-logs/copy-log-path-3.png)
 
 Azure 'a veri yükleme sırasında Azure adlandırma kurallarıyla uyumlu olmayan kapsayıcıların yeniden adlandırılmadığı bir kopya günlüğü örneği aşağıda verilmiştir.
 

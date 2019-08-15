@@ -9,14 +9,14 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
-ms.date: 07/07/2019
+ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 822b8bd1d0f5be854b6d345d68fcdb680b2ef1c4
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 1581a62f0999cf502feaad31d2c884f4d171e770
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882558"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019672"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL veritabanı yönetilen örnek T-SQL Server 'den SQL farklılıkları
 
@@ -309,12 +309,12 @@ SQL Server Agent hakkında bilgi için bkz. [SQL Server Agent](https://docs.micr
 
 ### <a name="tables"></a>Tablolar
 
-Aşağıdaki tablolar desteklenmez:
+Aşağıdaki tablo türleri desteklenmez:
 
-- `FILESTREAM`
-- `FILETABLE`
-- `EXTERNAL TABLE`
-- `MEMORY_OPTIMIZED` 
+- [AKIŞI](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server)
+- [FILETABLE](https://docs.microsoft.com/sql/relational-databases/blob/filetables-sql-server)
+- [dış tablo](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql) PolyBase
+- [MEMORY_OPTIMIZED](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables) (yalnızca Genel Amaçlı katmanında desteklenmez)
 
 Tablo oluşturma ve değiştirme hakkında daha fazla bilgi için bkz. [Create Table](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql) ve [alter table](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql).
 
@@ -468,10 +468,13 @@ Aşağıdaki veritabanı seçenekleri ayarlanır veya geçersiz kılınır ve da
 
 Algılan 
 
+- Bozulan veritabanlarının yedeklemeleri, bozulmanın türüne bağlı olarak geri yüklenebilir, ancak bozulma düzeltilinceye kadar otomatik yedeklemeler alınmaz. Bu sorunu engellemek için kaynak `DBCC CHECKDB` örneği üzerinde çalıştırdığınızdan ve yedeklemeyi `WITH CHECKSUM` kullandığınızdan emin olun.
+- Bu belgede (örneğin, `FILESTREAM` veya `FILETABLE` nesneler) açıklanan herhangi bir kısıtlamayı içeren bir veritabanının dosyasınıngeriyüklenmesiyönetilenörneküzerindegeriyüklenemez.`.BAK`
 - `.BAK`birden çok yedekleme kümesi içeren dosyalar geri yüklenemez. 
 - `.BAK`birden çok günlük dosyası içeren dosyalar geri yüklenemez.
-- . Bak veri içeriyorsa `FILESTREAM` geri yükleme başarısız olur.
-- Etkin bellek içi nesneleri olan veritabanları içeren yedeklemeler bir Genel Amaçlı örneğine geri yüklenemez. Restore deyimleri hakkında daha fazla bilgi için bkz. [restore deyimleri](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql).
+- 8 TB 'den büyük veritabanları, etkin bellek içi OLTP nesneleri veya 280 'den fazla dosya içeren yedeklemeler Genel Amaçlı örneğine geri yüklenemez. 
+- 4TB 'den büyük veya bellek içi OLTP nesnelerinden daha büyük olan veritabanları içeren yedeklemeler, İş Açısından Kritik örneğine geri yüklenemez. [](sql-database-managed-instance-resource-limits.md)
+Restore deyimleri hakkında daha fazla bilgi için bkz. [restore deyimleri](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql).
 
 ### <a name="service-broker"></a>Hizmet Aracısı
 
@@ -548,11 +551,6 @@ Bu örnekte, mevcut veritabanları çalışmaya devam eder ve yeni dosyalar ekle
 
 [Kalan dosyaların sayısını](https://medium.com/azure-sqldb-managed-instance/how-many-files-you-can-create-in-general-purpose-azure-sql-managed-instance-e1c7c32886c1) sistem görünümlerini kullanarak belirleyebilirsiniz. Bu sınıra ulaştıysanız, [DBCC SHRINKFILE ifadesini kullanarak daha küçük bir dosyayı boş ve silmeyi](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql#d-emptying-a-file) deneyin veya [Bu sınıra sahip olmayan iş açısından kritik katmanına](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics)geçin.
 
-### <a name="incorrect-configuration-of-the-sas-key-during-database-restore"></a>Veritabanı geri yükleme sırasında SAS anahtarının yanlış yapılandırması
-
-`RESTORE DATABASE`Bu,. bak dosyasını okuyan,. bak dosyasını okumayı sürekli olarak yeniden deniyor olabilir ve içindeki `CREDENTIAL` paylaşılan erişim imzası yanlışsa uzun bir süre sonra bir hata döndürebilir. SAS anahtarının doğru olduğundan emin olmak için bir veritabanını geri yüklemeden önce RESTORE HEADERYÜRÜTÜN.
-Azure Portal kullanarak oluşturulan SAS anahtarından önde gelen `?` öğesini kaldırdığınızdan emin olun.
-
 ### <a name="tooling"></a>Araçları
 
 SQL Server Management Studio ve SQL Server Veri Araçları yönetilen bir örneğe erişirken bazı sorunlar olabilir.
@@ -624,11 +622,6 @@ Yönetilen bir örneğe yerleştirilmiş olan CLR modülleri veya geçerli örne
 Hizmet tarafından yönetilen `BACKUP DATABASE ... WITH COPY_ONLY` saydam veri şifrelemesi (tde) ile şifrelenmiş bir veritabanında yürütemezsiniz. Hizmet tarafından yönetilen TDE, yedeklemelerin dahili bir TDE anahtarla şifrelenmesini zorlar. Anahtar verilemiyor, bu nedenle yedeklemeyi geri alamazsınız.
 
 **Sorunu** Otomatik yedeklemeler ve zaman içinde geri yükleme kullanın veya bunun yerine [müşteri tarafından yönetilen (BYOK) TDE](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#customer-managed-transparent-data-encryption---bring-your-own-key) kullanın. Ayrıca, veritabanında şifrelemeyi devre dışı bırakabilirsiniz.
-
-### <a name="point-in-time-restore-follows-time-by-the-time-zone-set-on-the-source-instance"></a>Kaynak örneğinde ayarlanan zaman dilimine göre zaman içindeki bir noktaya geri yükleme
-
-Bir noktadan sonra geri yükleme şu anda, kaynak Örneğin saat dilimini takip eden UTC 'yi takip eden zamana göre ' ye geri yükleme süresini yorumlar.
-Daha fazla ayrıntı için [yönetilen örnek saat diliminden bilinen sorunları](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-timezone#known-issues) denetleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

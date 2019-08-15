@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: c91c09da31e4ecf42257b8f9c86f25c6ec39b9df
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 1190a0f34206004b72730a6af85bbe5db7d9961a
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68734633"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976779"
 ---
 # <a name="how-to-connect-to-data-sources"></a>Veri kaynaklarına bağlanma
 ## <a name="introduction"></a>Giriş
@@ -28,7 +28,7 @@ Varsayılan kutucuk görünümü kullanılırken, bu menü her kutucukta kullan�
 
 Liste görünümü kullanılırken, menü, Portal penceresinin üst kısmındaki arama çubuğunda bulunur.
 
- ![Arama çubuğundan Rapor Yöneticisi bir SQL Server Reporting Services raporu açma](./media/data-catalog-how-to-connect/data-catalog-how-to-connect2.png)
+ ![Rapor Yöneticisi bir SQL Server Reporting Services raporu açma](./media/data-catalog-how-to-connect/data-catalog-how-to-connect2.png)
 
 ## <a name="supported-client-applications"></a>Desteklenen Istemci uygulamaları
 "İçinde aç..." Azure Veri Kataloğu portalındaki veri kaynakları için menü, istemci bilgisayarda doğru istemci uygulaması yüklü olmalıdır.

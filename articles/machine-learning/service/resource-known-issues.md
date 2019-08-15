@@ -9,14 +9,14 @@ ms.reviewer: mldocs
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 04/30/2019
+ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7d1bce7575272b7df185c4e261685d989f49436c
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 4e7b3905295e619c5a9500f80b5c43126b919e2f
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716544"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946470"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Bilinen sorunlar ve sorun giderme Azure Machine Learning hizmeti
 
@@ -71,7 +71,7 @@ Tensor Flow otomatik makine öğrenimi Şu anda Tensor Flow sürüm 1,13 ' i des
 
 ### <a name="experiment-charts"></a>Deneme grafikleri
 
-Otomatik ML denemesi yinelemeleriyle gösterilen ikili sınıflandırma grafikleri (Precision-hatırla, ROC, kazanç eğrisi vb.), 4/12 ' den beri Kullanıcı arabiriminde corectly işlenmemektedir. Grafik çizimleri Şu anda daha iyi şekilde uygulanan modellerin daha düşük sonuçlarla gösterildiği ters sonuçları gösteriyor. Bir çözüm, araştırma aşamasındadır.
+Otomatik ML denemesi yinelemeleriyle gösterilen ikili sınıflandırma grafikleri (duyarlık-hatırla, ROC, kazanç eğrisi vb.), 4/12 ' den beri Kullanıcı arabiriminde doğru işlenmemektedir. Grafik çizimleri Şu anda daha iyi şekilde uygulanan modellerin daha düşük sonuçlarla gösterildiği ters sonuçları gösteriyor. Bir çözüm, araştırma aşamasındadır.
 
 ## <a name="databricks"></a>Databricks
 
@@ -134,6 +134,15 @@ Doğrudan paylaşım bağlantısı SDK veya portalından çalışma alanınızda
 
 Bazen Yardım isteme, tanılama bilgilerini sağlarsanız, yararlı olabilir. Bazı günlükleri görmek için [Azure Portal](https://portal.azure.com) ziyaret edin ve çalışma alanınıza gidin ve **> günlüklerini çalıştırmak > deneyin > çalışma alanı**' nı seçin.
 
+> [!NOTE]
+> Azure Machine Learning hizmeti, eğitim sırasında, eğitim işini çalıştıran oto veya Docker kapsayıcısı gibi çeşitli kaynaklardan bilgileri günlüğe kaydeder. Bu günlüklerin birçoğu açıklanmamıştır. Sorunlarla karşılaşırsanız ve Microsoft Destek ile iletişime geçerek, sorun giderme sırasında bu günlükleri kullanabiliyor olabilirler.
+
+## <a name="activity-logs"></a>Etkinlik günlükleri
+
+Azure Machine Learning çalışma alanındaki bazı eylemler __etkinlik günlüğüne__bilgi vermez. Örneğin, bir eğitimi başlatma veya bir modeli kaydetme.
+
+Bu eylemlerden bazıları, çalışma alanınızın __Etkinlikler__ alanında görünür, ancak aktiviteyi kimin başlattığını göstermez.
+
 ## <a name="resource-quotas"></a>Kaynak kotaları
 
 Hakkında bilgi edinin [kaynak kotaları](how-to-manage-quotas.md) Azure Machine Learning'i kullanmaya çalışırken hatalarla karşılaşabilirsiniz.
@@ -154,6 +163,6 @@ Uzak bir işten bir işlem hedefinde yönetim işlemi gerçekleştirirseniz, aş
 
 ## <a name="overloaded-azurefile-storage"></a>Aşırı yüklenmiş AzureFile depolama
 
-"Depolama aşırı yüklendiği için proje dosyaları AzureFile içinde çalışma dizinine yüklenemiyor" hatası alırsanız, aşağıdaki geçici çözümleri uygulayın.
+Bir hata `Unable to upload project files to working directory in AzureFile because the storage is overloaded`alırsanız, aşağıdaki geçici çözümleri uygulayın.
 
 Veri aktarımı gibi diğer iş yükleri için dosya paylaşma 'yı kullanıyorsanız, dosya paylaşımının çalıştırmaları için kullanılabilmesi için blob 'ları kullanmak, bu nedenle söz konusu çalışma. İş yükünü iki farklı çalışma alanı arasında da bölebilirsiniz.

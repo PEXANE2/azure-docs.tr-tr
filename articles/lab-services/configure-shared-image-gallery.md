@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 80610168e0d293b65626da71ee349f25e456576b
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 93b3c7671a5beb4b3a451fe0efd13b9f48e00436
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774562"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68941814"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>Azure DevTest Labs’de paylaşılan resim galerisi yapılandırma
 DevTest Labs artık [paylaşılan görüntü Galerisi](../virtual-machines/windows/shared-image-galleries.md) özelliğini desteklemektedir. Laboratuvar kullanıcılarının, laboratuvar kaynakları oluştururken paylaşılan bir konumdan görüntülere erişmesine imkan tanıyor. Ayrıca, özel olarak yönetilen sanal makine görüntülerinizle birlikte yapı ve organizasyon oluşturmanıza yardımcı oluyor. Paylaşılan görüntü Galerisi özelliği şunları destekler:
@@ -36,7 +36,7 @@ Muhafaza etmek istediğiniz çok sayıda yönetilen görüntünüz varsa ve bunl
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
 - Tek seferde laboratuvara yalnızca bir paylaşılan görüntü Galerisi ekleyebilirsiniz. Başka bir galeri eklemek istiyorsanız, var olan birini ayırmanız ve bir tane eklemeniz gerekir. 
 - DevTest Labs Şu anda laboratuvar aracılığıyla galeriye görüntü yüklemeyi desteklemiyor. 
-- Paylaşılan görüntü Galerisi görüntüsünü kullanarak bir sanal makine oluştururken, DevTest Labs her zaman bu görüntünün yayımlanan en son sürümünü kullanır.
+- Paylaşılan görüntü Galerisi görüntüsünü kullanarak bir sanal makine oluştururken, DevTest Labs her zaman bu görüntünün yayımlanan en son sürümünü kullanır. Ancak görüntüde birden çok sürüm varsa, Kullanıcı sanal makine oluşturma sırasında Gelişmiş Ayarlar sekmesine giderek önceki bir sürümden makine oluşturmayı tercih edebilir.  
 - DevTest Labs, paylaşılan görüntü galerisinin görüntüleri laboratuvarın bulunduğu bölgeye çoğaltmasına rağmen her zaman mümkün değildir. Kullanıcıların bu görüntülerden VM 'Ler oluştururken sorun yaşamamasını önlemek için görüntülerin zaten laboratuvarın bölgesine çoğaltıldığından emin olun. "
 
 ## <a name="use-azure-portal"></a>Azure portalı kullanma

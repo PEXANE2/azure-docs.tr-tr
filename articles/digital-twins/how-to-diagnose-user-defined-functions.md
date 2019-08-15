@@ -6,15 +6,15 @@ manager: deshner
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 06/05/2019
+ms.date: 08/12/2019
 ms.author: stegaw
 ms.custom: seodec18
-ms.openlocfilehash: 577467a6322b7f6d3cd7f199d80963f2f1a98ed6
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 61c3f033fbe3febe7b0d048b247cc1fe8d597698
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849320"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69014183"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Azure dijital TWINS 'de Kullanıcı tanımlı işlevlerde hata ayıklama
 
@@ -45,7 +45,7 @@ Algılayıcı telemetrisini izlemek için, Azure dijital TWINS örneğiniz için
 
 Bir algılayıcı telemetri iletisini ilgili günlükleriyle eşleştirmek için, gönderilmekte olan olay verileri üzerinde bir bağıntı KIMLIĞI belirtebilirsiniz. Bunu yapmak için, `x-ms-client-request-id` özelliği bir GUID olarak ayarlayın.
 
-Telemetri gönderdikten sonra, set bağıntı KIMLIĞINI kullanarak günlükleri sorgulamak için Log Analytics 'i açın:
+Telemetri gönderdikten sonra, set bağıntı KIMLIĞINI kullanarak günlükleri sorgulamak için Azure Izleyici Log Analytics 'i açın:
 
 ```Kusto
 AzureDiagnostics

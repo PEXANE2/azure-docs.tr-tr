@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services topluluğu genel bakış | Microsoft Docs
-description: Bu Azure Media Services topluluğu sayfası soru sorun, görüşlerinizi ve medya hizmetleri hakkında güncelleştirmeler almak farklı yolları açıklanmaktadır.
+title: Azure Media Services topluluğa genel bakış | Microsoft Docs
+description: Bu Azure Media Services topluluk sayfasında, soru sorabileceğiniz, geri bildirimde bulunmak ve Media Services ilgili güncelleştirmeler alabileceğiniz farklı yollar açıklanmaktadır.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -11,20 +11,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 04/19/2019
+ms.date: 08/08/2019
 ms.author: juliako
-ms.openlocfilehash: 6a3c02c1f14c37317a03cb6ebe63bcddc92f3253
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b8d3a26d015c129a04e54ba9633aa5d1ccfcacf8
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64710171"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "69016101"
 ---
 # <a name="azure-media-services-community"></a>Azure Media Services Topluluğu  
 
-Bu Azure Media Services topluluğu sayfası soru sorun, görüşlerinizi ve medya hizmetleri hakkında güncelleştirmeler almak farklı yolları açıklanmaktadır.
+Bu Azure Media Services topluluk sayfasında, soru sorabileceğiniz, geri bildirimde bulunmak ve Media Services ilgili güncelleştirmeler alabileceğiniz farklı yollar açıklanmaktadır.
 
-## <a name="provide-feedback-and-make-suggestions"></a>Önerilerde bulunmak ve geri bildirim sağlayın
+## <a name="provide-feedback-and-make-suggestions"></a>Geri bildirim sağlayın ve öneri yapın
 
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
@@ -32,33 +32,24 @@ Bu Azure Media Services topluluğu sayfası soru sorun, görüşlerinizi ve medy
 
 ### <a name="twitter"></a>Twitter
 
-Kullanabileceğiniz [ @MSFTAzureMedia ](https://twitter.com/MSFTAzureMedia) twitter tanıtıcısı bizimle iletişim kurun veya güncelleştirmeleri Twitter'da takip edin. Kullanım [ @AzureSupport ](https://twitter.com/azuresupport) Twitter'da destek istemek için twitter tanıtıcısı.  
+Twitter tanıtıcısını kullanarak [@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia) bizimle iletişim kurun veya Twitter 'daki güncelleştirmeleri takip edebilirsiniz. Twitter 'da destek istemek için [Twittertanıtıcısınıkullanın.@AzureSupport](https://twitter.com/azuresupport)  
 
 ### <a name="online-forums"></a>Çevrimiçi forumlar
 
-Aşağıdaki forumları geçerli ürünleri ve özellikleri hakkında sorular sormak için kullanılabilir.
+Aşağıdaki Forumlar, geçerli ürünler ve özellikler hakkında sorular sormak için kullanılabilir.
 
-Şu anda, MSDN, Media Services takımın birincil Topluluk Forumu aşamasındadır.
+Şu anda, MSDN Media Services ekibin birincil topluluk Forumu ' dur.
 
 [![MSDN](./media/media-services-community/msdn.png)](https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices) 
 
-Takım, Stack Overflow sitesinde 'azure-media-services ile' etiketli sorular da izler.
+Ekip, ' Azure-Media-Services ' ile Stack Overflow etiketli soruları de izler.
 
 [![StackOverflow](./media/media-services-community/stack-overflow.png)](https://stackoverflow.com/questions/tagged/azure-media-services) 
 
 ## <a name="contact-the-team"></a>Ekibe ulaşın
 
-Azure Media Services birincil destek e-posta: **amshelp\@microsoft.com**.
-
-Aşağıdaki tabloda, e-posta özelliği alt takımlar listelenmektedir:
-
-| Özellik | Email |
-| --- | --- |
-| Azure Media Player |ampinfo@microsoft.com |
-| Azure Medya Gezgini |amse@microsoft.com |
-| İş Akışı Tasarımcısı |mepd@microsoft.com |
-| Canlı akış ve paketleme |amslived@microsoft.com |
+Azure Media Services birincil destek e-postası **:\@amshelp Microsoft.com**.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Media Services'a Genel Bakış](media-services-overview.md)
+[Azure Media Services genel bakış](media-services-overview.md)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: db3f5aca0240c19f67d5d0775148d5eec76daa03
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 3c4bdb3d46e4630257c2567cf2003ebede00b71e
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726981"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934779"
 ---
 # <a name="azure-network-security"></a>Azure ağ güvenliği
 
@@ -55,9 +55,9 @@ Microsoft Azure, uygulamanızı ve hizmet bağlantı gereksinimlerinizi destekle
 
 ![Azure ağ büyük resmi](./media/network-security/azure-network-security-fig-1.png)
 
-[Azure ağ altyapısı](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-networking-guidelines) , sanal ağlar (VNet) ile Azure kaynaklarını birbirine güvenli bir şekilde bağlamanıza olanak sağlar. VNet, buluttaki kendi ağınızın bir gösterimidir. VNet, aboneliğiniz için ayrılmış olan Azure bulut ağının mantıksal bir yalıtımına sahiptir. VNET 'leri şirket içi ağlarınıza bağlayabilirsiniz.
+[Azure ağ altyapısı](../../virtual-machines/windows/infrastructure-example.md) , sanal ağlar (VNet) ile Azure kaynaklarını birbirine güvenli bir şekilde bağlamanıza olanak sağlar. VNet, buluttaki kendi ağınızın bir gösterimidir. VNet, aboneliğiniz için ayrılmış olan Azure bulut ağının mantıksal bir yalıtımına sahiptir. VNET 'leri şirket içi ağlarınıza bağlayabilirsiniz.
 
-Azure, şirket içi ağınız ve [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)Ile bir Azure sanal ağı IÇIN adanmış WAN bağlantısı bağlantısını destekler. Azure ile siteniz arasındaki bağlantı, genel Internet üzerinden gitmeyecek özel bir bağlantı kullanır. Azure uygulamanız birden çok veri merkezinde çalışıyorsa, kullanıcılardan gelen istekleri uygulama örnekleri arasında akıllıca yönlendirmek için [azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-overview) kullanabilirsiniz. Internet 'ten erişilebiliyorsa, trafiği Azure 'da çalıştırmayan hizmetlere de yönlendirebilirsiniz.
+Azure, şirket içi ağınız ve [ExpressRoute](../../expressroute/expressroute-introduction.md)Ile bir Azure sanal ağı IÇIN adanmış WAN bağlantısı bağlantısını destekler. Azure ile siteniz arasındaki bağlantı, genel Internet üzerinden gitmeyecek özel bir bağlantı kullanır. Azure uygulamanız birden çok veri merkezinde çalışıyorsa, kullanıcılardan gelen istekleri uygulama örnekleri arasında akıllıca yönlendirmek için [azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) kullanabilirsiniz. Internet 'ten erişilebiliyorsa, trafiği Azure 'da çalıştırmayan hizmetlere de yönlendirebilirsiniz.
 
 ## <a name="enterprise-view-of-azure-networking-components"></a>Azure ağ bileşenlerinin kurumsal görünümü
 Azure 'da ağ güvenliği tartışmalarına uygun birçok ağ bileşeni vardır. Bu ağ bileşenlerini anladık ve bunlarla ilgili güvenlik sorunlarına odaklanıyoruz.
@@ -77,11 +77,11 @@ Bu yazıda, aşağıdaki Azure ağı kurumsal özellikleri ele alınacaktır:
 
 ### <a name="basic-network-connectivity"></a>Temel ağ bağlantısı
 
-[Azure sanal ağ](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) hizmeti, sanal ağlar (VNet) ile Azure kaynaklarını birbirine güvenli bir şekilde bağlamanıza olanak sağlar. VNet, buluttaki kendi ağınızın bir gösterimidir. VNet, aboneliğinize adanmış Azure ağ altyapısının mantıksal yalıtımına sahiptir. Sanal ağlar birbirlerine ve siteden siteye VPN kullanarak şirket içi ağlarınız da bağlanabilirsiniz ve ayrılmış [WAN bağlantıları](https://docs.microsoft.com/azure/expressroute/expressroute-introduction).
+[Azure sanal ağ](../../virtual-network/virtual-networks-overview.md) hizmeti, sanal ağlar (VNet) ile Azure kaynaklarını birbirine güvenli bir şekilde bağlamanıza olanak sağlar. VNet, buluttaki kendi ağınızın bir gösterimidir. VNet, aboneliğinize adanmış Azure ağ altyapısının mantıksal yalıtımına sahiptir. Sanal ağlar birbirlerine ve siteden siteye VPN kullanarak şirket içi ağlarınız da bağlanabilirsiniz ve ayrılmış [WAN bağlantıları](../../expressroute/expressroute-introduction.md).
 
 ![Temel ağ bağlantısı](./media/network-security/azure-network-security-fig-2.png)
 
-Azure 'da sunucuları barındırmak için VM 'Leri kullanacağınızı anlamak için bu VM 'Lerin bir ağa nasıl bağlanacağını görürsünüz. Yanıt, VM 'Lerin bir [Azure sanal ağına](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)bağlanmasını sağlar.
+Azure 'da sunucuları barındırmak için VM 'Leri kullanacağınızı anlamak için bu VM 'Lerin bir ağa nasıl bağlanacağını görürsünüz. Yanıt, VM 'Lerin bir [Azure sanal ağına](../../virtual-network/virtual-networks-overview.md)bağlanmasını sağlar.
 
 Azure sanal ağları, Microsoft Hyper-V veya VMware gibi kendi sanallaştırma platformu çözümlerinizle şirket içinde kullandığınız sanal ağlara benzer.
 
@@ -89,7 +89,7 @@ Azure sanal ağları, Microsoft Hyper-V veya VMware gibi kendi sanallaştırma p
 
 VNet 'ler genelinde birbirleriyle iletişim kurmak için VNet 'e bağlı kaynakları etkinleştirerek, sanal ağları birbirlerine bağlayabilirsiniz. VNET 'leri birbirine bağlamak için aşağıdaki seçeneklerden birini veya her ikisini birden kullanabilirsiniz:
 
-- **Eşleme** Aynı Azure konumunda bulunan farklı Azure sanal ağlarına bağlı kaynakların birbirleriyle iletişim kurmasını sağlar. Sanal ağ genelindeki bant genişliği ve gecikme süresi, kaynakların aynı VNet 'e bağlıymış ile aynıdır. Eşleme hakkında daha fazla bilgi edinmek için [sanal ağ eşlemesi](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)makalesini okuyun.
+- **Eşleme** Aynı Azure konumunda bulunan farklı Azure sanal ağlarına bağlı kaynakların birbirleriyle iletişim kurmasını sağlar. Sanal ağ genelindeki bant genişliği ve gecikme süresi, kaynakların aynı VNet 'e bağlıymış ile aynıdır. Eşleme hakkında daha fazla bilgi edinmek için [sanal ağ eşlemesi](../../virtual-network/virtual-network-peering-overview.md)makalesini okuyun.
 
   ![Eşleme](./media/network-security/azure-network-security-fig-3.png)
 
@@ -120,7 +120,7 @@ Görebileceğiniz gibi, bir Azure sanal ağı, sanal makinelerin ağa bağlanmas
 
 **Yalıtımı**
 
-VNET 'ler diğerinden [yalıtılmıştır](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) . Geliştirme, test ve üretim için aynı [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) adres bloklarını kullanan ayrı sanal ağlar oluşturabilirsiniz. Buna karşılık, farklı CıDR adres blokları kullanan ve ağları birbirine bağlayan birden fazla sanal ağ oluşturabilirsiniz. VNet 'i birden çok alt ağa segmentleyebilirsiniz.
+VNET 'ler diğerinden [yalıtılmıştır](../../virtual-network/virtual-networks-overview.md) . Geliştirme, test ve üretim için aynı [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) adres bloklarını kullanan ayrı sanal ağlar oluşturabilirsiniz. Buna karşılık, farklı CıDR adres blokları kullanan ve ağları birbirine bağlayan birden fazla sanal ağ oluşturabilirsiniz. VNet 'i birden çok alt ağa segmentleyebilirsiniz.
 
 Azure, sanal makineler ve sanal ağa bağlı [Cloud Services](https://azure.microsoft.com/services/cloud-services/) rol örnekleri için iç ad çözümlemesi sağlar. İsteğe bağlı olarak, Azure iç ad çözümlemesi kullanmak yerine kendi DNS sunucularınızı kullanmak üzere bir sanal ağ yapılandırabilirsiniz.
 
@@ -130,35 +130,35 @@ Her bir Azure [aboneliği](https://docs.microsoft.com/azure/azure-glossary-cloud
 
 -   VNet 'i bir veya daha fazla alt ağda segmentlere ayırın ve her alt ağa VNet adres alanının bir kısmını ayırın.
 
--   Azure tarafından sağlanmış ad çözümlemesini kullanın veya bir sanal ağa bağlı kaynaklar tarafından kullanılmak üzere kendi DNS sunucunuzu belirtin. VNET 'lerde ad çözümlemesi hakkında daha fazla bilgi edinmek için, [VM 'ler Için ad çözümlemesini ve Cloud Services](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances)okuyun.
+-   Azure tarafından sağlanmış ad çözümlemesini kullanın veya bir sanal ağa bağlı kaynaklar tarafından kullanılmak üzere kendi DNS sunucunuzu belirtin. VNET 'lerde ad çözümlemesi hakkında daha fazla bilgi edinmek için, [VM 'ler Için ad çözümlemesini ve Cloud Services](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)okuyun.
 
 **İnternet bağlantısı**
 
-Bir sanal ağa bağlı tüm [Azure sanal makineleri (VM)](https://docs.microsoft.com/azure/virtual-machines/windows/) ve Cloud Services rol örnekleri, varsayılan olarak Internet erişimine sahiptir. Gerektiğinde belirli kaynaklara gelen erişimi de etkinleştirebilirsiniz. (VM) ve bir sanal ağa bağlı Cloud Services rol örnekleri, varsayılan olarak Internet erişimine sahiptir. Gerektiğinde belirli kaynaklara gelen erişimi de etkinleştirebilirsiniz.
+Bir sanal ağa bağlı tüm [Azure sanal makineleri (VM)](../../virtual-machines/windows/index.yml) ve Cloud Services rol örnekleri, varsayılan olarak Internet erişimine sahiptir. Gerektiğinde belirli kaynaklara gelen erişimi de etkinleştirebilirsiniz. (VM) ve bir sanal ağa bağlı Cloud Services rol örnekleri, varsayılan olarak Internet erişimine sahiptir. Gerektiğinde belirli kaynaklara gelen erişimi de etkinleştirebilirsiniz.
 
 Bir sanal ağa bağlı tüm kaynakların varsayılan olarak Internet 'e giden bağlantısı vardır. Kaynağın özel IP adresi, Azure altyapısı tarafından genel bir IP adresine çevrilen kaynak ağ adresidir (SNAT). Özel yönlendirme ve trafik filtrelemeyi uygulayarak varsayılan bağlantıyı değiştirebilirsiniz. Giden Internet bağlantısı hakkında daha fazla bilgi edinmek için [Azure 'da giden bağlantıları anlama](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections?toc=%2fazure%2fvirtual-network%2ftoc.json)konusunu okuyun.
 
-Internet 'ten gelen Azure kaynaklarıyla iletişim kurmak veya SNAT olmadan Internet 'e giden iletişim kurmak için bir kaynağa genel bir IP adresi atanmalıdır. Genel IP adresleri hakkında daha fazla bilgi edinmek için [genel IP adreslerini](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)okuyun.
+Internet 'ten gelen Azure kaynaklarıyla iletişim kurmak veya SNAT olmadan Internet 'e giden iletişim kurmak için bir kaynağa genel bir IP adresi atanmalıdır. Genel IP adresleri hakkında daha fazla bilgi edinmek için [genel IP adreslerini](../../virtual-network/virtual-network-public-ip-address.md)okuyun.
 
 **Azure kaynak bağlantısı**
 
-Cloud Services ve sanal makineler gibi [Azure kaynakları](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) aynı VNET 'e bağlanabilir. Kaynaklar, farklı alt ağlarda olsalar bile, özel IP adresleri kullanarak birbirlerine bağlanabilir. Azure, alt ağlar, VNET 'ler ve şirket içi ağlar arasında varsayılan yönlendirme sağlar, bu sayede rotaları yapılandırmanız ve yönetmeniz gerekmez.
+Cloud Services ve sanal makineler gibi [Azure kaynakları](../../virtual-network/virtual-networks-overview.md) aynı VNET 'e bağlanabilir. Kaynaklar, farklı alt ağlarda olsalar bile, özel IP adresleri kullanarak birbirlerine bağlanabilir. Azure, alt ağlar, VNET 'ler ve şirket içi ağlar arasında varsayılan yönlendirme sağlar, bu sayede rotaları yapılandırmanız ve yönetmeniz gerekmez.
 
-Çeşitli Azure kaynaklarını sanal makineler (VM), Cloud Services, App Service ortamları ve sanal makine ölçek kümeleri gibi bir VNet 'e bağlayabilirsiniz. VM 'Ler bir ağ arabirimi (NIC) aracılığıyla bir sanal ağ içindeki bir alt ağa bağlanır. NIC 'ler hakkında daha fazla bilgi edinmek için [ağ arabirimlerini](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface)okuyun.
+Çeşitli Azure kaynaklarını sanal makineler (VM), Cloud Services, App Service ortamları ve sanal makine ölçek kümeleri gibi bir VNet 'e bağlayabilirsiniz. VM 'Ler bir ağ arabirimi (NIC) aracılığıyla bir sanal ağ içindeki bir alt ağa bağlanır. NIC 'ler hakkında daha fazla bilgi edinmek için [ağ arabirimlerini](../../virtual-network/virtual-network-network-interface.md)okuyun.
 
 **VNet bağlantısı**
 
-[Sanal](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) ağlar birbirine bağlanabilir ve herhangi bir VNET 'e bağlı kaynakların diğer tüm sanal ağlardaki herhangi bir kaynakla iletişim kurmasını sağlar.
+[Sanal](../../virtual-network/virtual-networks-overview.md) ağlar birbirine bağlanabilir ve herhangi bir VNET 'e bağlı kaynakların diğer tüm sanal ağlardaki herhangi bir kaynakla iletişim kurmasını sağlar.
 
 VNet 'ler genelinde birbirleriyle iletişim kurmak için VNet 'e bağlı kaynakları etkinleştirerek, sanal ağları birbirlerine bağlayabilirsiniz. VNET 'leri birbirine bağlamak için aşağıdaki seçeneklerden birini veya her ikisini birden kullanabilirsiniz:
 
-- **Eşleme** Aynı Azure konumunda bulunan farklı Azure sanal ağlarına bağlı kaynakların birbirleriyle iletişim kurmasını sağlar. Sanal ağlar arasındaki bant genişliği ve gecikme süresi, kaynakların aynı VNet.To bağlı olup olmadığı ile aynıdır. eşleme hakkında daha fazla bilgi edinmek için [sanal ağ eşlemesini](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)okuyun.
+- **Eşleme** Aynı Azure konumunda bulunan farklı Azure sanal ağlarına bağlı kaynakların birbirleriyle iletişim kurmasını sağlar. Sanal ağlar arasındaki bant genişliği ve gecikme süresi, kaynakların aynı VNet.To bağlı olup olmadığı ile aynıdır. eşleme hakkında daha fazla bilgi edinmek için [sanal ağ eşlemesini](../../virtual-network/virtual-network-peering-overview.md)okuyun.
 
 - **VNet-VNet bağlantısı:** Aynı veya farklı Azure konumlarında farklı Azure VNet 'e bağlı kaynakları sağlar. Eşlemenin aksine, trafiğin bir Azure VPN Gateway ile akışı gerektiğinden sanal ağlar arasında bant genişliği sınırlıdır. VNet 'ten VNet 'e bağlantı ile sanal ağları bağlama hakkında daha fazla bilgi edinmek için. Daha fazla bilgi edinmek için, [VNET-VNET bağlantısını yapılandırma](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal?toc=%2fazure%2fvirtual-network%2ftoc.json) makalesini okuyun.
 
 **Şirket içi bağlantı**
 
-VNET 'ler, ağınız ve Azure arasında özel ağ bağlantıları aracılığıyla veya Internet üzerinden siteden siteye VPN bağlantısı aracılığıyla [Şirket içi](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) ağlara bağlanabilir.
+VNET 'ler, ağınız ve Azure arasında özel ağ bağlantıları aracılığıyla veya Internet üzerinden siteden siteye VPN bağlantısı aracılığıyla [Şirket içi](../../virtual-network/virtual-networks-overview.md) ağlara bağlanabilir.
 
 Aşağıdaki seçeneklerin birleşimini kullanarak şirket içi ağınızı bir sanal ağa bağlayabilirsiniz:
 
@@ -166,15 +166,15 @@ Aşağıdaki seçeneklerin birleşimini kullanarak şirket içi ağınızı bir 
 
 - **Siteden siteye VPN:** VPN cihazınız ile Azure VPN Gateway arasında oluşturulmuştur. Bu bağlantı türü, yetkilendirdiğiniz şirket içi kaynakların VNet 'e erişmesine olanak sağlar. Bağlantı, şirket içi cihazınız ile Azure VPN ağ geçidi arasında Internet üzerinden şifreli iletişim sağlayan bir IPSec/ıKE VPN 'dir. Trafik Internet 'Ten geçiş yaptığından siteden siteye bağlantı gecikmesi tahmin edilemez.
 
-- **Azure ExpressRoute:** Bir ExpressRoute iş ortağı aracılığıyla ağınız ve Azure arasında oluşturulmuştur. Bu bağlantı özeldir. Trafik Internet 'e çapraz geçiş yapmaz. Trafik Internet 'Te geçiş yaptığından ExpressRoute bağlantısı gecikmesi tahmin edilebilir. Önceki tüm bağlantı seçenekleri hakkında daha fazla bilgi edinmek için [bağlantı topolojisi diyagramlarını](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways?toc=%2fazure%2fvirtual-network%2ftoc.json)okuyun.
+- **Azure ExpressRoute:** Bir ExpressRoute iş ortağı aracılığıyla ağınız ve Azure arasında oluşturulmuştur. Bu bağlantı özeldir. Trafik Internet 'e çapraz geçiş yapmaz. Trafik Internet 'Te geçiş yaptığından ExpressRoute bağlantısı gecikmesi tahmin edilebilir. Önceki tüm bağlantı seçenekleri hakkında daha fazla bilgi edinmek için [bağlantı topolojisi diyagramlarını](../../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json)okuyun.
 
 **Trafik filtreleme**
 
-VM ve Cloud Services rol örnekleri [ağ trafiğine](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) kaynak IP adresi ve bağlantı noktası, hedef IP adresi ve bağlantı noktası ve protokol tarafından gelen ve giden filtreleme yapılabilir.
+VM ve Cloud Services rol örnekleri [ağ trafiğine](../../virtual-network/virtual-networks-overview.md) kaynak IP adresi ve bağlantı noktası, hedef IP adresi ve bağlantı noktası ve protokol tarafından gelen ve giden filtreleme yapılabilir.
 
 Aşağıdaki seçeneklerden birini veya her ikisini de kullanarak alt ağlar arasındaki ağ trafiğini filtreleyebilirsiniz:
 
-- **Ağ güvenlik grupları (NSG):** Her NSG, trafiği kaynak ve hedef IP adresi, bağlantı noktası ve protokole göre filtrelemenize olanak tanıyan birden fazla gelen ve giden güvenlik kuralı içerebilir. Bir VM 'deki her NIC 'ye bir NSG uygulayabilirsiniz. Ayrıca, bir NIC 'e veya diğer Azure kaynaklarına bağlı olan alt ağa bir NSG de uygulayabilirsiniz. NSG 'ler hakkında daha fazla bilgi edinmek için [ağ güvenlik gruplarını](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)okuyun.
+- **Ağ güvenlik grupları (NSG):** Her NSG, trafiği kaynak ve hedef IP adresi, bağlantı noktası ve protokole göre filtrelemenize olanak tanıyan birden fazla gelen ve giden güvenlik kuralı içerebilir. Bir VM 'deki her NIC 'ye bir NSG uygulayabilirsiniz. Ayrıca, bir NIC 'e veya diğer Azure kaynaklarına bağlı olan alt ağa bir NSG de uygulayabilirsiniz. NSG 'ler hakkında daha fazla bilgi edinmek için [ağ güvenlik gruplarını](../../virtual-network/virtual-network-vnet-plan-design-arm.md)okuyun.
 
 - **Sanal ağ gereçleri:** Sanal ağ gereci, güvenlik duvarı gibi bir ağ işlevi gerçekleştiren bir VM çalıştıran yazılımdır. Azure Marketi 'nde kullanılabilir NVA 'lar listesini görüntüleyin. WAN iyileştirmesi ve diğer ağ trafiği işlevlerini sağlayan NVA 'lar de mevcuttur. NVA 'lar genellikle Kullanıcı tanımlı veya BGP rotalarıyla kullanılır. VNET 'ler arasındaki trafiği filtrelemek için de bir NVA kullanabilirsiniz.
 
@@ -184,7 +184,7 @@ Aşağıdaki seçeneklerden birini veya her ikisini de kullanarak alt ağlar ara
 
 Azure, her VNet 'teki herhangi bir alt ağa bağlı kaynakların varsayılan olarak birbirleriyle iletişim kurmasını sağlayan rota tabloları oluşturur. Azure’ın oluşturduğu varsayılan rotaları geçersiz kılmak için aşağıdaki seçeneklerden birini veya her ikisini uygulayabilirsiniz:
 
-- **Kullanıcı tanımlı rotalar:** Her alt ağ için trafiğin nereye yönlendirildiğini denetleyen yollarla özel yol tabloları oluşturabilirsiniz. Kullanıcı tanımlı rotalar hakkında daha fazla bilgi edinmek için [Kullanıcı tanımlı yolları](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)okuyun.
+- **Kullanıcı tanımlı rotalar:** Her alt ağ için trafiğin nereye yönlendirildiğini denetleyen yollarla özel yol tabloları oluşturabilirsiniz. Kullanıcı tanımlı rotalar hakkında daha fazla bilgi edinmek için [Kullanıcı tanımlı yolları](../../virtual-network/virtual-networks-udr-overview.md)okuyun.
 
 - **BGP yolları:** VNet 'i Azure VPN Gateway veya ExpressRoute bağlantısı kullanarak şirket içi ağınıza bağladığınızda, BGP yollarını sanal ağlarınızı yayabilirsiniz.
 
@@ -201,12 +201,12 @@ Aşağıdaki seçeneklerin birleşimini kullanarak şirket içi ağınızı bir 
 
 #### <a name="internet-connectivity"></a>Internet bağlantısı
 
-Adından da anlaşılacağı gibi, Internet bağlantısı, sanal ağ içinde canlı olan iş yükleri için farklı genel uç noktaları kullanıma sunarak iş yüklerinizi Internet 'ten erişilebilir hale getirir. Bu iş yükleri, [Internet 'e yönelik Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-internet-overview) veya yalnızca VM 'ye genel bir IP adresi atayarak gösterilebilir. Bu şekilde, Internet üzerindeki herhangi bir şeyin, bir ana bilgisayar güvenlik duvarı, [ağ güvenlik grupları (NSG)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)ve [Kullanıcı tanımlı yolların gerçekleşmelerinin](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) gerçekleşmesini sağlamak için bu sanal makineye erişebilmesi mümkün olur.
+Adından da anlaşılacağı gibi, Internet bağlantısı, sanal ağ içinde canlı olan iş yükleri için farklı genel uç noktaları kullanıma sunarak iş yüklerinizi Internet 'ten erişilebilir hale getirir. Bu iş yükleri, [Internet 'e yönelik Load Balancer](../../load-balancer/load-balancer-overview.md#publicloadbalancer) veya yalnızca VM 'ye genel bir IP adresi atayarak gösterilebilir. Bu şekilde, Internet üzerindeki herhangi bir şeyin, bir ana bilgisayar güvenlik duvarı, [ağ güvenlik grupları (NSG)](../../virtual-network/virtual-network-vnet-plan-design-arm.md)ve [Kullanıcı tanımlı yolların gerçekleşmelerinin](../../virtual-network/virtual-networks-udr-overview.md) gerçekleşmesini sağlamak için bu sanal makineye erişebilmesi mümkün olur.
 
 Bu senaryoda, Internet 'e genel olması gereken ve iş yüklerinizin yapılandırmasına bağlı olarak herhangi bir yerden veya belirli konumlardan bağlanabilir bir uygulamayı kullanıma sunabileceksiniz.
 
 #### <a name="point-to-site-vpn-or-site-to-site-vpn"></a>Noktadan siteye VPN veya siteden siteye VPN
-Bu iki ikisi de aynı kategoriye denk gelir. Her ikisi de sanal ağınızın bir VPN Gateway sahip olmasını gerektirir ve bu sunucuya, [Noktadan siteye yapılandırmanın](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal) bir parçası olarak iş Istasyonunuzun VPN istemcisini kullanarak bağlanabilir ya da şirket içi [VPN cihazınızı](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices) siteden siteye sonlandırabilecek şekilde yapılandırabilirsiniz Sanal. Bu şekilde, şirket içi cihazlar VNet içindeki kaynaklara bağlanabilir.
+Bu iki ikisi de aynı kategoriye denk gelir. Her ikisi de sanal ağınızın bir VPN Gateway sahip olmasını gerektirir ve bu sunucuya, [Noktadan siteye yapılandırmanın](../../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md) bir parçası olarak iş Istasyonunuzun VPN istemcisini kullanarak bağlanabilir ya da şirket içi [VPN cihazınızı](../../vpn-gateway/vpn-gateway-about-vpn-devices.md) siteden siteye sonlandırabilecek şekilde yapılandırabilirsiniz Sanal. Bu şekilde, şirket içi cihazlar VNet içindeki kaynaklara bağlanabilir.
 
 Noktadan Siteye (P2S) yapılandırması, ayrı bir istemci bilgisayardan bir sanal ağa yönelik güvenli bağlantı oluşturmanıza olanak sağlar. P2S, SSTP (Güvenli Yuva Tünel Protokolü) aracılığıyla gerçekleşen bir VPN bağlantısıdır.
 
@@ -219,7 +219,7 @@ P2S bağlantılarının bir VPN cihazına veya genel kullanıma yönelik bir IP 
 ![Siteden siteye VPN](./media/network-security/azure-network-security-fig-6.png)
 
 > [!Note]
-> Noktadan siteye bağlantılar hakkında daha fazla bilgi için bkz. [noktadan sıteye FA v Q](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal).
+> Noktadan siteye bağlantılar hakkında daha fazla bilgi için bkz. [noktadan sıteye FA v Q](../../vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md).
 
 Siteden Siteye VPN ağ geçidi bağlantısı, şirket içi ağınızı bir IPsec/IKE (IKEv1 veya IKEv2) tüneli üzerinden Azure sanal ağına bağlamak için kullanılır.
 
@@ -230,7 +230,7 @@ Siteden siteye VPN güvenilen, güvenilir ve yerleşik bir teknolojide, tünelde
 Şirketler arası bağlantılarınız için olağanüstü düzeyde güvenlik veya performans istiyorsanız şirket içi bağlantınız için Azure ExpressRoute kullanmanızı öneririz. ExpressRoute, şirket içi konumunuz veya bir Exchange barındırma sağlayıcısı arasında adanmış bir WAN bağlantıdır. Bu bir telekomünikasyon bağlantısı olduğundan, verileriniz Internet üzerinden hareket etmez ve bu nedenle Internet iletişimlerinde bulunan olası risklere maruz değildir.
 
 > [!Note]
-> VPN ağ geçitleri hakkında daha fazla bilgi için bkz. [VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)hakkında.
+> VPN ağ geçitleri hakkında daha fazla bilgi için bkz. [VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md)hakkında.
 
 #### <a name="dedicated-wan-link"></a>Adanmış WAN bağlantısı
 Microsoft Azure ExpressRoute, şirket içi ağlarınızı bir bağlantı sağlayıcısı tarafından kolaylaştırarak adanmış bir özel bağlantı üzerinden Azure 'a genişletmenizi sağlar.
@@ -240,9 +240,9 @@ ExpressRoute bağlantıları ortak İnternet üzerinden geçmemektedir. Bu, Expr
 ![ Adanmış WAN bağlantısı](./media/network-security/azure-network-security-fig-7.png)
 
 > [!Note]
-> ExpressRoute kullanarak ağınızı Microsoft 'a bağlama hakkında bilgi için bkz. [ExpressRoute bağlantı modelleri](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) ve [ExpressRoute teknik genel bakış](https://docs.microsoft.com/azure/expressroute/expressroute-introduction).
+> ExpressRoute kullanarak ağınızı Microsoft 'a bağlama hakkında bilgi için bkz. [ExpressRoute bağlantı modelleri](../../vpn-gateway/vpn-gateway-about-vpngateways.md) ve [ExpressRoute teknik genel bakış](../../expressroute/expressroute-introduction.md).
 
-Siteden siteye VPN seçeneklerinde olduğu gibi, ExpressRoute da yalnızca bir VNet 'te olması gerekmeyen kaynaklara bağlanmanızı sağlar. Aslında, SKU 'ya bağlı olarak, 10 VNET 'e bağlanabilirsiniz. [Premium eklentiye](https://docs.microsoft.com/azure/expressroute/expressroute-faqs)sahipseniz, bant genişliğine bağlı olarak 100 VNET 'e kadar bağlantı kurulabilir. Bu bağlantı türlerinin ne gibi göründüğünü öğrenmek için [bağlantı topolojisi diyagramlarını](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways?toc=%2fazure%2fvirtual-network%2ftoc.json)okuyun.
+Siteden siteye VPN seçeneklerinde olduğu gibi, ExpressRoute da yalnızca bir VNet 'te olması gerekmeyen kaynaklara bağlanmanızı sağlar. Aslında, SKU 'ya bağlı olarak, 10 VNET 'e bağlanabilirsiniz. [Premium eklentiye](../../expressroute/expressroute-faqs.md)sahipseniz, bant genişliğine bağlı olarak 100 VNET 'e kadar bağlantı kurulabilir. Bu bağlantı türlerinin ne gibi göründüğünü öğrenmek için [bağlantı topolojisi diyagramlarını](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways?toc=%2fazure%2fvirtual-network%2ftoc.json)okuyun.
 
 ### <a name="security-controls"></a>Güvenlik denetimleri
 Azure sanal ağ, diğer sanal ağlardan yalıtılmış güvenli, mantıksal bir ağ sağlar ve şirket içi ağlarınızda kullandığınız birçok güvenlik denetimini destekler. Müşteriler, iş yüklerini bulutta çalıştırmak için kendi özel IP adresi aralığını kullanır, rota tabloları, ağ güvenlik grupları, erişim denetim listeleri (ACL 'Ler), ağ geçitleri ve sanal gereçler kullanarak kendi yapılarını oluşturur.
@@ -309,11 +309,11 @@ Bu iletişim akışının mümkün olmasını sağlayan şey, Azure'ın IP trafi
 
 -   Bir VPN ağ geçidi yoluyla bir sanal ağdan başka bir sanal ağa.
 
--   VNET eşlemesi ([hizmet zinciri](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)) aracılığıyla VNET 'ten başka bir sanal ağa.
+-   VNET eşlemesi ([hizmet zinciri](../../virtual-network/virtual-network-peering-overview.md)) aracılığıyla VNET 'ten başka bir sanal ağa.
 
 -   Bir VPN ağ geçidi yoluyla bir sanal ağdan şirket içi ağınıza.
 
-Birçok kuruluş, belirli ilkeleri zorlamak üzere tüm ağ paketlerinin şirket içi incelemesini gerektiren katı güvenlik ve uyumluluk gereksinimlerine sahiptir. Azure, ExpressRoute veya VPN aracılığıyla özel bir yol veya [Sınır Ağ Geçidi Protokolü (BGP)](https://docs.microsoft.com/windows-server/remote/remote-access/bgp/border-gateway-protocol-bgp) reklamları oluşturarak sanal makinelerden şirket içine trafiği yönlendiren [Zorlamalı tünel](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-forced-tunneling) adlı bir mekanizma sağlar.
+Birçok kuruluş, belirli ilkeleri zorlamak üzere tüm ağ paketlerinin şirket içi incelemesini gerektiren katı güvenlik ve uyumluluk gereksinimlerine sahiptir. Azure, ExpressRoute veya VPN aracılığıyla özel bir yol veya [Sınır Ağ Geçidi Protokolü (BGP)](https://docs.microsoft.com/windows-server/remote/remote-access/bgp/border-gateway-protocol-bgp) reklamları oluşturarak sanal makinelerden şirket içine trafiği yönlendiren [Zorlamalı tünel](../../vpn-gateway/vpn-gateway-about-forced-tunneling.md) adlı bir mekanizma sağlar.
 
 Zorlamalı tünel Azure'da sanal ağ kullanıcı tanımlı yollar (UDR) yapılandırılır. Bir şirket içi siteye trafik yönlendirme Azure VPN ağ geçidi için varsayılan bir yol olarak ifade edilir.
 
@@ -369,7 +369,7 @@ Azure ağ güvenlik araçları, VNet güvenlik ve ağ işlevlerini geliştirir v
 
 #### <a name="application-gateway"></a>Uygulama ağ geçidi
 
-[Microsoft Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) , bir hizmet olarak uygulama teslim DENETLEYICISI (ADC) sağlayan ayrılmış bir sanal gereç.
+[Microsoft Azure Application Gateway](../../application-gateway/overview.md) , bir hizmet olarak uygulama teslim DENETLEYICISI (ADC) sağlayan ayrılmış bir sanal gereç.
 
  ![Application Gateway](./media/network-security/azure-network-security-fig-11.png)
 
@@ -384,13 +384,13 @@ Application Gateway, uygulama ağ geçidine (SSL-boşaltma) CPU yoğun SSL sonla
 -   Tek bir Application Gateway arkasında birden fazla Web sitesi barındırma yeteneği
 
 
-Application Gateway 'in bir parçası olarak bir [Web uygulaması güvenlik duvarı (WAF)](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-overview) de sağlanır. Bu, yaygın web güvenlik açıklarına ve açıklardan yararlanan Web uygulamalarına yönelik koruma sağlar. Application Gateway Internet 'e yönelik ağ geçidi, yalnızca dahili ağ geçidi veya her ikisinin bir birleşimi olarak yapılandırılabilir.
+Application Gateway 'in bir parçası olarak bir [Web uygulaması güvenlik duvarı (WAF)](../../application-gateway/waf-overview.md) de sağlanır. Bu, yaygın web güvenlik açıklarına ve açıklardan yararlanan Web uygulamalarına yönelik koruma sağlar. Application Gateway Internet 'e yönelik ağ geçidi, yalnızca dahili ağ geçidi veya her ikisinin bir birleşimi olarak yapılandırılabilir.
 
 Application Gateway WAF, algılama veya önleme modunda çalıştırılabilir. Yaygın kullanım durumu, yöneticilerin kötü amaçlı desenlerdeki trafiği gözlemlemek için algılama modunda çalışmasına yöneliktir. Kötü amaçlı yazılımlar algılandığında önleme modunu açmak şüpheli gelen trafiği engeller.
 
  ![Application Gateway](./media/network-security/azure-network-security-fig-12.png)
 
-Ayrıca, WAF Application Gateway, WAF uyarılarını izlemek ve eğilimleri kolayca izlemek üzere [Azure izleyici](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview) ve [Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/) ile tümleştirilmiş gerçek zamanlı bir WAF günlüğü kullanarak saldırılara karşı Web uygulamalarını izlemenize yardımcı olur.
+Ayrıca, WAF Application Gateway, WAF uyarılarını izlemek ve eğilimleri kolayca izlemek üzere [Azure izleyici](../../azure-monitor/overview.md) ve [Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/) ile tümleştirilmiş gerçek zamanlı bir WAF günlüğü kullanarak saldırılara karşı Web uygulamalarını izlemenize yardımcı olur.
 
 JSON biçimli günlük doğrudan müşterinin depolama hesabına gider. Bu Günlükler üzerinde tam denetime sahipsiniz ve kendi bekletme ilkelerinizi uygulayacaksınız.
 
@@ -402,7 +402,7 @@ Web uygulamaları, SQL ekleme, siteler arası komut dosyası saldırıları ve [
 
  ![Azure Web uygulaması güvenlik duvarı (WAF)](./media/network-security/azure-network-security-fig-13.png)
 
-Merkezi bir [Web uygulaması güvenlik duvarı (WAF)](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-overview) Web saldırılarına karşı koruma sağlayabilir ve herhangi bir uygulama değişikliğine gerek duymadan güvenlik yönetimini basitleştirir.
+Merkezi bir [Web uygulaması güvenlik duvarı (WAF)](../../application-gateway/waf-overview.md) Web saldırılarına karşı koruma sağlayabilir ve herhangi bir uygulama değişikliğine gerek duymadan güvenlik yönetimini basitleştirir.
 
 Bir WAF çözümü, bilinen bir güvenlik açığına merkezi bir konumda düzeltme eki uygulayarak güvenlik tehdidine karşı, web uygulamalarının her birinin güvenliğini sağlamaya göre daha hızlı tepki verebilir. Var olan uygulama ağ geçitleri, web uygulaması güvenlik duvarı bulunan bir uygulama ağ geçidine kolaylıkla dönüştürülebilir.
 
@@ -427,9 +427,9 @@ Uygulamalarınıza yüksek düzeyde kullanılabilirlik ve ağ performansı sunar
 
 Azure Load Balancer, şu şekilde yapılandırılabilir:
 
--   Sanal makinelere gelen Internet trafiğinin yükünü dengeleyin. Bu yapılandırma [Internet 'e yönelik yük dengeleme](https://docs.microsoft.com/azure/load-balancer/load-balancer-internet-overview)olarak bilinir.
+-   Sanal makinelere gelen Internet trafiğinin yükünü dengeleyin. Bu yapılandırma [Internet 'e yönelik yük dengeleme](../../load-balancer/load-balancer-overview.md#publicloadbalancer)olarak bilinir.
 
--   Bir sanal ağ içindeki sanal makineler arasında, bulut hizmetlerindeki sanal makineler arasında veya şirket içi bilgisayarlar ile şirketler arası bir sanal ağdaki sanal makineler arasında yük dengeleme trafiği. Bu yapılandırma, [İç Yük Dengeleme](https://docs.microsoft.com/azure/load-balancer/load-balancer-internal-overview)olarak bilinir.
+-   Bir sanal ağ içindeki sanal makineler arasında, bulut hizmetlerindeki sanal makineler arasında veya şirket içi bilgisayarlar ile şirketler arası bir sanal ağdaki sanal makineler arasında yük dengeleme trafiği. Bu yapılandırma, [İç Yük Dengeleme](../../load-balancer/load-balancer-overview.md#internalloadbalancer)olarak bilinir.
 
 -   Dış trafiği belirli bir sanal makineye ilet.
 
@@ -443,15 +443,15 @@ Buluttaki tüm kaynakların Internet 'ten erişilebilen genel bir IP adresi olma
 
 Microsoft Azure Traffic Manager, farklı veri merkezlerindeki hizmet uç noktaları için Kullanıcı trafiğinin dağıtımını denetlemenize olanak tanır. Traffic Manager tarafından desteklenen hizmet uç noktaları, Azure VM 'Leri, Web Apps ve bulut hizmetlerini içerir. Traffic Manager’ı harici, Azure dışı uç noktalar için de kullanabilirsiniz.
 
-Traffic Manager, istemci isteklerini bir [trafik yönlendirme yöntemine](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods) ve uç noktaların sistem durumuna göre en uygun uç noktaya yönlendirmek Için etki alanı adı sistemi 'NI (DNS) kullanır. Traffic Manager, farklı uygulama ihtiyaçlarına, uç nokta durumuna [izlemeye](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring)ve otomatik yük devretmeye uyacak bir dizi trafik yönlendirme yöntemi sağlar. Traffic Manager, bir Azure bölgesinin tamamının devre dışı kalması dahil olmak üzere hatalara dayanıklıdır.
+Traffic Manager, istemci isteklerini bir [trafik yönlendirme yöntemine](../../traffic-manager/traffic-manager-routing-methods.md) ve uç noktaların sistem durumuna göre en uygun uç noktaya yönlendirmek Için etki alanı adı sistemi 'NI (DNS) kullanır. Traffic Manager, farklı uygulama ihtiyaçlarına, uç nokta durumuna [izlemeye](../../traffic-manager/traffic-manager-monitoring.md)ve otomatik yük devretmeye uyacak bir dizi trafik yönlendirme yöntemi sağlar. Traffic Manager, bir Azure bölgesinin tamamının devre dışı kalması dahil olmak üzere hatalara dayanıklıdır.
 
 Azure Traffic Manager, uygulama uç noktalarınız genelinde trafiğin dağıtımını denetlemenize olanak sağlar. Uç nokta, Azure içinde veya dışında barındırılan İnternet'e yönelik bir hizmettir.
 
 Traffic Manager iki temel avantaj sağlar:
 
--   Trafiğin birkaç [trafik yönlendirme yönteminden](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods)birine göre dağıtılması.
+-   Trafiğin birkaç [trafik yönlendirme yönteminden](../../traffic-manager/traffic-manager-routing-methods.md)birine göre dağıtılması.
 
--   Uç noktalar başarısız olduğunda, [uç nokta durumunu](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring) ve otomatik yük devretmeyi sürekli izleme.
+-   Uç noktalar başarısız olduğunda, [uç nokta durumunu](../../traffic-manager/traffic-manager-monitoring.md) ve otomatik yük devretmeyi sürekli izleme.
 
 Bir istemci bir hizmete bağlanmaya çalıştığında, önce hizmetin DNS adını bir IP adresine çözümlemelidir. İstemci daha sonra hizmete erişmek için o IP adresine bağlanır. Traffic Manager, istemcileri trafik yönlendirme yönteminin kurallarına göre belirli hizmet uç noktalarına yönlendirmek için DNS kullanır. İstemciler seçili uç noktaya doğrudan bağlanır. Traffic Manager bir proxy veya ağ geçidi değil. Traffic Manager istemci ile hizmet arasında geçen trafiği görmez.
 
@@ -461,11 +461,11 @@ Azure ağ doğrulaması, Azure ağının yapılandırıldığı gibi çalıştı
 
 Azure operasyonel güvenlik, kullanıcıların verilerini, uygulamalarını ve diğer varlıklarını Microsoft Azure korumak için kullanıcılara sunulan hizmetleri, denetimleri ve özellikleri ifade eder. Azure operasyonel güvenlik, Microsoft güvenlik geliştirme yaşam döngüsü (SDL), Microsoft Güvenlik Yanıt Merkezi programı da dahil olmak üzere Microsoft 'a özgü çeşitli yetenekler aracılığıyla elde edilen bilgileri içeren bir çerçeve üzerine kurulmuştur. ve siber güvenlik tehdidi yatay olarak ayrıntılı bir şekilde tanıma.
 
--   [Azure Güvenlik Merkezi](https://docs.microsoft.com/azure/security-center/security-center-intro)
+-   [Azure Güvenlik Merkezi](../../security-center/security-center-intro.md)
 
--   [Azure İzleyici](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview)
+-   [Azure İzleyici](../../azure-monitor/overview.md)
 
--   [Azure Ağ İzleyicisi](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)
+-   [Azure Ağ İzleyicisi](../../network-watcher/network-watcher-monitoring-overview.md)
 
 -   [Azure depolama Analizi](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)
 
@@ -498,7 +498,7 @@ Resource Manager çeşitli avantajlar sunar:
 -   Bir grup kaynak paylaşımı etiketi için maliyetleri görüntüleyerek kuruluşunuzun faturalandırmasını açıklığa kavuşturun.
 
 > [!Note]
-> Resource Manager çözümlerinizi dağıtmanın ve yönetmenin yeni bir yolunu sunar. Önceki dağıtım modelini kullandıysanız ve değişiklikler hakkında bilgi edinmek isterseniz, bkz. [Resource Manager dağıtımını ve klasik dağıtımı anlama](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model)
+> Resource Manager çözümlerinizi dağıtmanın ve yönetmenin yeni bir yolunu sunar. Önceki dağıtım modelini kullandıysanız ve değişiklikler hakkında bilgi edinmek isterseniz, bkz. [Resource Manager dağıtımını ve klasik dağıtımı anlama](../../azure-resource-manager/resource-manager-deployment-model.md)
 
 ## <a name="azure-network-logging-and-monitoring"></a>Azure ağ günlüğü ve izleme
 
@@ -512,7 +512,7 @@ Azure, ağ güvenliği olaylarını izlemek, engellemek, algılamak ve yanıtlam
 
 ### <a name="network-watcher"></a>Ağ izleyicisi
 
-[Ağ İzleyicisi](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) -senaryo tabanlı Izleme, ağ izleyicisinden özelliklerle sağlanır. Bu hizmet, paket yakalama, sonraki atlama, IP akışı doğrulama, güvenlik grubu görünümü, NSG akış günlükleri içerir. Senaryo düzeyi izleme, tek tek ağ kaynağı izlemeye karşılık olarak ağ kaynaklarının uçtan uca bir görünümünü sağlar.
+[Ağ İzleyicisi](../../network-watcher/network-watcher-monitoring-overview.md) -senaryo tabanlı Izleme, ağ izleyicisinden özelliklerle sağlanır. Bu hizmet, paket yakalama, sonraki atlama, IP akışı doğrulama, güvenlik grubu görünümü, NSG akış günlükleri içerir. Senaryo düzeyi izleme, tek tek ağ kaynağı izlemeye karşılık olarak ağ kaynaklarının uçtan uca bir görünümünü sağlar.
 
  ![Ağ İzleyicisi](./media/network-security/azure-network-security-fig-15.png)
 
@@ -522,7 +522,7 @@ Ağ Izleyicisi Şu anda aşağıdaki yeteneklere sahiptir:
 
 #### <a name="topology"></a>Topoloji
 
-[Topoloji](https://docs.microsoft.com/azure/network-watcher/network-watcher-topology-overview) , bir sanal ağdaki ağ kaynaklarının bir grafiğini döndürür. Grafik, uçtan uca ağ bağlantısını temsil edecek kaynaklar arasındaki bağlantıyı gösterir. Portalda topoloji, sanal ağ bazında kaynak nesnelerini döndürür. İlişkiler, kaynak grubu gösterilmese bile, ağ Izleyicisi bölgesinin dışındaki kaynaklar arasındaki satırlara göre gösterilmiştir. Portal görünümünde döndürülen kaynaklar, grafiği oluşturulan ağ bileşenlerinin bir alt kümesidir. Ağ kaynaklarının tam listesini görmek için [PowerShell](https://docs.microsoft.com/azure/network-watcher/network-watcher-topology-powershell) veya [rest](https://docs.microsoft.com/azure/network-watcher/network-watcher-topology-rest)kullanabilirsiniz.
+[Topoloji](../../network-watcher/view-network-topology.md) , bir sanal ağdaki ağ kaynaklarının bir grafiğini döndürür. Grafik, uçtan uca ağ bağlantısını temsil edecek kaynaklar arasındaki bağlantıyı gösterir. Portalda topoloji, sanal ağ bazında kaynak nesnelerini döndürür. İlişkiler, kaynak grubu gösterilmese bile, ağ Izleyicisi bölgesinin dışındaki kaynaklar arasındaki satırlara göre gösterilmiştir. Portal görünümünde döndürülen kaynaklar, grafiği oluşturulan ağ bileşenlerinin bir alt kümesidir. Ağ kaynaklarının tam listesini görmek için [PowerShell](../../network-watcher/view-network-topology.md) veya [rest](../../network-watcher/view-network-topology.md)kullanabilirsiniz.
 
 Kaynaklar, bu bağlantı, iki ilişki altında modellenir.
 
@@ -532,49 +532,49 @@ Kaynaklar, bu bağlantı, iki ilişki altında modellenir.
 
 #### <a name="variable-packet-capture"></a>Değişken paket yakalama
 
-Ağ Izleyicisi [değişken paket yakalama](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview) , bir sanal makineden gelen ve giden trafiği izlemek için paket yakalama oturumları oluşturmanıza olanak sağlar. Paket yakalama, hem yeniden etkin hem de Proactivity ağ anormallarını tanılamaya yardımcı olur. Diğer kullanımlar, istemci-sunucu iletişimlerinde hata ayıklamak ve çok daha fazlasını yapmak için ağ istatistiklerini toplamayı, ağ izinsiz kullanım hakkında bilgi kazanmanızı içerir.
+Ağ Izleyicisi [değişken paket yakalama](../../network-watcher/network-watcher-packet-capture-overview.md) , bir sanal makineden gelen ve giden trafiği izlemek için paket yakalama oturumları oluşturmanıza olanak sağlar. Paket yakalama, hem yeniden etkin hem de Proactivity ağ anormallarını tanılamaya yardımcı olur. Diğer kullanımlar, istemci-sunucu iletişimlerinde hata ayıklamak ve çok daha fazlasını yapmak için ağ istatistiklerini toplamayı, ağ izinsiz kullanım hakkında bilgi kazanmanızı içerir.
 
 Paket yakalama, ağ Izleyicisi aracılığıyla uzaktan başlatılan bir sanal makine uzantısıdır. Bu özellik, bir paket yakalamanın, istenen sanal makinede el ile çalıştırılması yükünü kolaylaştırır ve bu da değerli süreyi kaydeder. Paket yakalama, Portal, PowerShell, CLı veya REST API aracılığıyla tetiklenebilir. Paket yakalamanın tetiklenebilecek bir örnek sanal makine uyarılarıyla birlikte.
 
 #### <a name="ip-flow-verify"></a>IP akışı doğrulama
 
-[IP akışları](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview) , 5 demet bilgilerine göre bir sanal makineye ya da bir pakete izin verilip verilmediğini denetler. Bu bilgiler yön, protokol, yerel IP, uzak IP, yerel bağlantı noktası ve uzak bağlantı noktasından oluşur. Paket bir güvenlik grubu tarafından reddedilirse, paketi reddeden kuralın adı döndürülür. Herhangi bir kaynak veya hedef IP 'si seçilebilir, bu özellik yöneticilerin internet 'ten veya şirket içi ortamdan gelen bağlantı sorunlarını hızla tanılamasına yardımcı olur.
+[IP akışları](../../network-watcher/network-watcher-ip-flow-verify-overview.md) , 5 demet bilgilerine göre bir sanal makineye ya da bir pakete izin verilip verilmediğini denetler. Bu bilgiler yön, protokol, yerel IP, uzak IP, yerel bağlantı noktası ve uzak bağlantı noktasından oluşur. Paket bir güvenlik grubu tarafından reddedilirse, paketi reddeden kuralın adı döndürülür. Herhangi bir kaynak veya hedef IP 'si seçilebilir, bu özellik yöneticilerin internet 'ten veya şirket içi ortamdan gelen bağlantı sorunlarını hızla tanılamasına yardımcı olur.
 
 IP akışları, bir sanal makinenin ağ arabirimini hedeflemesini doğrular. Trafik akışı daha sonra bu ağ arabiriminden veya bu arabirimden yapılandırılan ayarlara göre doğrulanır. Bu özellik, bir ağ güvenlik grubundaki bir kuralın bir sanal makineye giriş veya çıkış trafiğini engelleyip engellemediğini onaylamadığında yararlıdır.
 
 #### <a name="next-hop"></a>Sonraki atlama
 
-Azure ağ dokusunda yönlendirilmekte olan paketlerin bir [sonraki atlamasını](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview) belirler ve bu, Kullanıcı tanımlı hatalı yapılandırılmış yolların tanılanmasına olanak tanır. Bir VM 'den gelen trafik, bir NIC ile ilişkili etkin yollara göre bir hedefe gönderilir. Sonraki atlama, belirli bir sanal makineden ve NIC 'den bir paketin sonraki atlama türünü ve IP adresini alır. Bu, paketin hedefe yönlendirilip yönlendirilmeyeceğini veya trafiğin siyah bir şekilde mi olduğunu belirlemenize yardımcı olur.
+Azure ağ dokusunda yönlendirilmekte olan paketlerin bir [sonraki atlamasını](../../network-watcher/network-watcher-next-hop-overview.md) belirler ve bu, Kullanıcı tanımlı hatalı yapılandırılmış yolların tanılanmasına olanak tanır. Bir VM 'den gelen trafik, bir NIC ile ilişkili etkin yollara göre bir hedefe gönderilir. Sonraki atlama, belirli bir sanal makineden ve NIC 'den bir paketin sonraki atlama türünü ve IP adresini alır. Bu, paketin hedefe yönlendirilip yönlendirilmeyeceğini veya trafiğin siyah bir şekilde mi olduğunu belirlemenize yardımcı olur.
 
 Sonraki atlama Ayrıca sonraki atlama ile ilişkili yol tablosunu da döndürür. Yol Kullanıcı tanımlı bir yol olarak tanımlanmışsa bir sonraki durak sorgulanırken, bu yol döndürülür. Aksi halde sonraki atlama "sistem rotası" döndürür.
 
 #### <a name="security-group-view"></a>Güvenlik grubu görünümü
 
-Bir VM 'ye uygulanan geçerli ve uygulanan güvenlik kurallarını alır. Ağ güvenlik grupları bir alt ağ düzeyiyle veya NIC düzeyinde ilişkilendirilir. Alt ağ düzeyinde ilişkilendirildiğinde, alt ağdaki tüm VM örnekleri için geçerli olur. Ağ [güvenlik grubu görünümü](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview) , yapılandırma hakkında bilgi sağlayan bir sanal makıne için NIC ve alt ağ düzeyinde ilişkili tüm yapılandırılmış NSG 'leri ve kuralları döndürür. Ayrıca, etkin güvenlik kuralları bir VM 'deki her NIC için döndürülür. Ağ güvenlik grubu görünümünü kullanarak, açık bağlantı noktaları gibi ağ güvenlik açıkları için bir sanal makineyi değerlendirebilirsiniz. Ayrıca, [yapılandırılmış ve etkin güvenlik kuralları arasındaki bir karşılaştırmaya](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-auditing-powershell)göre ağ güvenlik grubunuzun beklenen şekilde çalışıp çalışmadığını doğrulayabilirsiniz.
+Bir VM 'ye uygulanan geçerli ve uygulanan güvenlik kurallarını alır. Ağ güvenlik grupları bir alt ağ düzeyiyle veya NIC düzeyinde ilişkilendirilir. Alt ağ düzeyinde ilişkilendirildiğinde, alt ağdaki tüm VM örnekleri için geçerli olur. Ağ [güvenlik grubu görünümü](../../network-watcher/network-watcher-security-group-view-overview.md) , yapılandırma hakkında bilgi sağlayan bir sanal makıne için NIC ve alt ağ düzeyinde ilişkili tüm yapılandırılmış NSG 'leri ve kuralları döndürür. Ayrıca, etkin güvenlik kuralları bir VM 'deki her NIC için döndürülür. Ağ güvenlik grubu görünümünü kullanarak, açık bağlantı noktaları gibi ağ güvenlik açıkları için bir sanal makineyi değerlendirebilirsiniz. Ayrıca, [yapılandırılmış ve etkin güvenlik kuralları arasındaki bir karşılaştırmaya](../../network-watcher/network-watcher-nsg-auditing-powershell.md)göre ağ güvenlik grubunuzun beklenen şekilde çalışıp çalışmadığını doğrulayabilirsiniz.
 
 #### <a name="nsg-flow-logging"></a>NSG akış günlüğü
 
  Ağ güvenlik grupları için akış günlükleri, gruptaki güvenlik kuralları tarafından izin verilen veya reddedilen trafikle ilgili günlükleri yakalamanızı sağlar. Akış, 5 demet bilgi ile tanımlanır: kaynak IP, hedef IP, kaynak bağlantı noktası, hedef bağlantı noktası ve protokol.
 
-[Ağ güvenlik grubu akış günlükleri](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview) , bir ağ güvenlik grubu üzerinden giriş ve çıkış IP trafiği hakkındaki bilgileri görüntülemenize olanak tanıyan bir ağ izleyicisi özelliğidir.
+[Ağ güvenlik grubu akış günlükleri](../../network-watcher/network-watcher-nsg-flow-logging-overview.md) , bir ağ güvenlik grubu üzerinden giriş ve çıkış IP trafiği hakkındaki bilgileri görüntülemenize olanak tanıyan bir ağ izleyicisi özelliğidir.
 
 #### <a name="virtual-network-gateway-and-connection-troubleshooting"></a>Sanal ağ geçidi ve bağlantı sorunlarını giderme
 
-Ağ Izleyicisi, Azure 'daki ağ kaynaklarınızı kavramak üzere birçok özellik sağlar. Bu yeteneklerden biri kaynak sorun gidermeye sahiptir. [Kaynak sorunlarını giderme](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest) , POWERSHELL, clı veya REST API tarafından çağrılabilir. Çağrıldığında, ağ Izleyicisi bir sanal ağ geçidinin veya bir bağlantının sistem durumunu inceler ve bulgularını döndürür.
+Ağ Izleyicisi, Azure 'daki ağ kaynaklarınızı kavramak üzere birçok özellik sağlar. Bu yeteneklerden biri kaynak sorun gidermeye sahiptir. [Kaynak sorunlarını giderme](../../network-watcher/network-watcher-troubleshoot-manage-rest.md) , POWERSHELL, clı veya REST API tarafından çağrılabilir. Çağrıldığında, ağ Izleyicisi bir sanal ağ geçidinin veya bir bağlantının sistem durumunu inceler ve bulgularını döndürür.
 
 Bu bölüm, kaynak sorun giderme için şu anda kullanılabilir olan farklı yönetim görevlerinde size kılavuzluk eden bir görev gerçekleştirir.
 
--   [Sanal ağ geçidi sorunlarını giderme](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest)
+-   [Sanal ağ geçidi sorunlarını giderme](../../network-watcher/network-watcher-troubleshoot-manage-rest.md)
 
--   [Bağlantı sorunlarını giderme](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest)
+-   [Bağlantı sorunlarını giderme](../../network-watcher/network-watcher-troubleshoot-manage-rest.md)
 
 #### <a name="network-subscription-limits"></a>Ağ abonelik limitleri
 
-[Ağ abonelik limitleri](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) , bir bölgedeki bir abonelikte bulunan her bir ağ kaynağının kullanımının ayrıntılarını, kullanılabilir maksimum kaynak sayısına göre sağlar.
+[Ağ abonelik limitleri](../../network-watcher/network-watcher-monitoring-overview.md) , bir bölgedeki bir abonelikte bulunan her bir ağ kaynağının kullanımının ayrıntılarını, kullanılabilir maksimum kaynak sayısına göre sağlar.
 
 #### <a name="configuring-diagnostics-log"></a>Tanılama günlüğünü yapılandırma
 
-Ağ Izleyicisi bir [tanılama günlükleri](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) görünümü sağlar. Bu görünüm, tanılama günlüğünü destekleyen tüm ağ kaynaklarını içerir. Bu görünümden, ağ kaynaklarını kolay ve hızlı bir şekilde etkinleştirebilir ve devre dışı bırakabilirsiniz.
+Ağ Izleyicisi bir [tanılama günlükleri](../../network-watcher/network-watcher-monitoring-overview.md) görünümü sağlar. Bu görünüm, tanılama günlüğünü destekleyen tüm ağ kaynaklarını içerir. Bu görünümden, ağ kaynaklarını kolay ve hızlı bir şekilde etkinleştirebilir ve devre dışı bırakabilirsiniz.
 
 ### <a name="network-resource-level-monitoring"></a>Ağ kaynak düzeyinde izleme
 
@@ -585,7 +585,7 @@ Kaynak düzeyinde izleme için aşağıdaki özellikler mevcuttur:
 Ağ yapılandırmasının bir parçası olarak gerçekleştirilen işlemler günlüğe kaydedilir. Bu denetim günlükleri, çeşitli karmaşıkların kurulabilmesi için gereklidir. Bu Günlükler Azure portal görüntülenebilir veya Power BI ya da üçüncü taraf araçları gibi Microsoft araçları kullanılarak alınabilir. Denetim günlükleri Portal, PowerShell, CLı ve REST API aracılığıyla kullanılabilir.
 
 > [!Note]
-> Denetim günlükleri hakkında daha fazla bilgi için bkz. [Kaynak Yöneticisi Ile denetim işlemleri](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
+> Denetim günlükleri hakkında daha fazla bilgi için bkz. [Kaynak Yöneticisi Ile denetim işlemleri](../../azure-resource-manager/resource-group-audit.md).
 Denetim günlükleri tüm ağ kaynaklarında yapılan işlemler için kullanılabilir.
 
 
@@ -594,19 +594,19 @@ Denetim günlükleri tüm ağ kaynaklarında yapılan işlemler için kullanıla
 Ölçümler, bir dönemde toplanan performans ölçümleri ve sayaçlardır. Ölçümler Şu anda Application Gateway için kullanılabilir. Ölçümler, eşiğe göre uyarıları tetiklemek için kullanılabilir. Azure Application Gateway, arka uç havuzundaki tüm kaynakların sistem durumunu izler ve havuzdan sağlıksız olarak kabul edilen kaynakları otomatik olarak kaldırır. Application Gateway, sağlıksız örnekleri izlemeye devam eder ve mevcut olduktan sonra sistem durumu araştırmalarını yanıtladıktan sonra yeniden sağlıklı arka uç havuzuna ekler. Application Gateway, arka uç HTTP ayarlarında tanımlanan aynı bağlantı noktasıyla sistem durumu araştırmalarını gönderir. Bu yapılandırma, araştırmanın, müşterilerin arka uca bağlanmak için kullandığı bağlantı noktasını test edilmesini sağlar.
 
 > [!Note]
-> Ölçümlerin uyarı oluşturmak için nasıl kullanılabileceğini görüntülemek için bkz. [Application Gateway tanılama](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview) .
+> Ölçümlerin uyarı oluşturmak için nasıl kullanılabileceğini görüntülemek için bkz. [Application Gateway tanılama](../../application-gateway/application-gateway-probe-overview.md) .
 
 #### <a name="diagnostic-logs"></a>Tanılama günlükleri
 
-Düzenli ve Spontaneous olayları, ağ kaynakları tarafından oluşturulur ve depolama hesaplarında günlüğe kaydedilir, bir olay hub 'ına veya Azure Izleyici günlüklerine gönderilir. Bu günlükler bir kaynağın sistem durumuna ilişkin öngörüler sağlar. Bu Günlükler, Power BI ve Azure Izleyici günlükleri gibi araçlarla görüntülenebilir. Tanılama günlüklerini görüntülemeyi öğrenmek için [Azure izleyici günlüklerini](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics)ziyaret edin.
+Düzenli ve Spontaneous olayları, ağ kaynakları tarafından oluşturulur ve depolama hesaplarında günlüğe kaydedilir, bir olay hub 'ına veya Azure Izleyici günlüklerine gönderilir. Bu günlükler bir kaynağın sistem durumuna ilişkin öngörüler sağlar. Bu Günlükler, Power BI ve Azure Izleyici günlükleri gibi araçlarla görüntülenebilir. Tanılama günlüklerini görüntülemeyi öğrenmek için [Azure izleyici günlüklerini](../../azure-monitor/insights/azure-networking-analytics.md)ziyaret edin.
 
-Tanılama günlükleri [Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-monitor-log), [ağ güvenlik grupları](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log), rotalar ve [Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)için kullanılabilir.
+Tanılama günlükleri [Load Balancer](../../load-balancer/load-balancer-monitor-log.md), [ağ güvenlik grupları](../../virtual-network/virtual-network-nsg-manage-log.md), rotalar ve [Application Gateway](../../application-gateway/application-gateway-diagnostics.md)için kullanılabilir.
 
 Ağ Izleyicisi bir tanılama günlükleri görünümü sağlar. Bu görünüm, tanılama günlüğünü destekleyen tüm ağ kaynaklarını içerir. Bu görünümden, ağ kaynaklarını kolay ve hızlı bir şekilde etkinleştirebilir ve devre dışı bırakabilirsiniz.
 
 ### <a name="azure-monitor-logs"></a>Azure İzleyici günlükleri
 
-[Azure izleyici günlükleri](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) , Azure 'da bulut ve şirket içi ortamlarınızı izleyen ve kullanılabilirlik ve performanslarını koruyacak bir hizmettir. Birden fazla kaynak arasında analiz sağlamak üzere bulut ve şirket içi ortamlarınızdaki kaynaklar ile diğer izleme araçları tarafından oluşturulan verileri toplar.
+[Azure izleyici günlükleri](../../log-analytics/log-analytics-queries.md) , Azure 'da bulut ve şirket içi ortamlarınızı izleyen ve kullanılabilirlik ve performanslarını koruyacak bir hizmettir. Birden fazla kaynak arasında analiz sağlamak üzere bulut ve şirket içi ortamlarınızdaki kaynaklar ile diğer izleme araçları tarafından oluşturulan verileri toplar.
 
 Azure Izleyici günlükleri, ağlarınızı izlemek için aşağıdaki çözümleri sunar:
 
@@ -617,7 +617,7 @@ Azure Izleyici günlükleri, ağlarınızı izlemek için aşağıdaki çözüml
 -   Azure ağ güvenlik grubu Analizi
 
 #### <a name="network-performance-monitor-npm"></a>Ağ Performansı İzleyicisi (NPM)
-[Ağ performansı İzleyicisi](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor) yönetim çözümü, ağların sistem durumunu, kullanılabilirliğini ve erişilebilirliğini izleyen bir ağ izleme çözümüdür.
+[Ağ performansı İzleyicisi](../../azure-monitor/insights/network-performance-monitor.md) yönetim çözümü, ağların sistem durumunu, kullanılabilirliğini ve erişilebilirliğini izleyen bir ağ izleme çözümüdür.
 
 Arasındaki bağlantıyı izlemek için kullanılır:
 
@@ -644,7 +644,7 @@ Uygulama ağ geçitleri için aşağıdaki ölçümler desteklenir:
 
 #### <a name="azure-network-security-group-analytics-in-azure-monitor-logs"></a>Azure Izleyici günlüklerinde Azure ağ güvenlik grubu Analizi
 
-Aşağıdaki Günlükler [ağ güvenlik grupları](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)için desteklenir:
+Aşağıdaki Günlükler [ağ güvenlik grupları](../../virtual-network/virtual-network-nsg-manage-log.md)için desteklenir:
 
 - **NetworkSecurityGroupEvent:** VM 'lere ve MAC adresine göre örnek rollere uygulanan NSG kurallarının girdilerini içerir. Bu kuralların durumu her 60 saniyede toplanır.
 
@@ -653,7 +653,7 @@ Aşağıdaki Günlükler [ağ güvenlik grupları](https://docs.microsoft.com/az
 ## <a name="next-steps"></a>Sonraki adımlar
 Ayrıntılı güvenlik konularımızın bazılarını okuyarak güvenlik hakkında daha fazla bilgi edinin:
 
--   [Ağ güvenlik grupları (NSG 'ler) için Azure Izleyici günlükleri](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)
+-   [Ağ güvenlik grupları (NSG 'ler) için Azure Izleyici günlükleri](../../virtual-network/virtual-network-nsg-manage-log.md)
 
 -   [Bulut kesintisini sağlayan ağ yenilikleri](https://azure.microsoft.com/blog/networking-innovations-that-drive-the-cloud-disruption/)
 

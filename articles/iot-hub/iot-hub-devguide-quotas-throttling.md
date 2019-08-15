@@ -2,18 +2,17 @@
 title: Azure IoT Hub kotalarını ve azaltmayı anlayın | Microsoft Docs
 description: Geliştirici Kılavuzu-IoT Hub için uygulanan kotaların açıklaması ve beklenen daraltma davranışı.
 author: robinsh
-manager: philmea
 ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 07/17/2019
-ms.openlocfilehash: 1c19696b10584bc55989b9270978486d7f5aa157
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.date: 08/08/2019
+ms.openlocfilehash: 184cdaddc638461d50f322292d5cfaf28ab93093
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326734"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950538"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Başvuru IoT Hub kotaları ve azaltma
 
@@ -66,7 +65,7 @@ Aşağıdaki tabloda zorlanan kısıtlar gösterilmektedir. Değerler tek bir hu
 
 *  **Kota** , *her gün*hub 'ınızda gönderebilmeniz için toplam ileti sayısıdır. Hub 'ın kota sınırını [IoT Hub fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/iot-hub/) **toplam ileti sayısı/gün** sütununda bulabilirsiniz.
 
-*  Buluttan cihaza ve cihazdan buluta, iletileri gönderebilmeniz için, 4 KB 'lık öbekten bağımsız  olarak ileti sayısını belirleme. Her ileti en fazla 256 KB olabilir ve bu [en fazla ileti boyutudur](iot-hub-devguide-quotas-throttling.md#other-limits).
+*  Buluttan cihaza ve cihazdan buluta, iletileri gönderebilmeniz için, 4 KB 'lık öbekten bağımsız olarak ileti sayısını belirleme. Her ileti en fazla 256 KB olabilir ve bu [en fazla ileti boyutudur](iot-hub-devguide-quotas-throttling.md#other-limits).
 
 *  Azaltma sınırlarını vurmadan/aşmamak için aramalarınızı kısıtlamak iyi bir uygulamadır. Sınıra ulaşırsanız, IoT Hub 429 hata koduyla yanıt verir ve istemci yeniden denenmelidir. Bu sınırlar hub başına (veya hub/birim başına bazı durumlarda). Daha fazla bilgi için bkz. [bağlantı ve güvenilir mesajlaşma/yeniden deneme düzenlerini yönetme](iot-hub-reliability-features-in-sdks.md#retry-patterns).
 
@@ -96,7 +95,8 @@ IoT Hub diğer işlem sınırlarını zorlar:
 | Dosya yüklemeleri | cihaz başına 10 eşzamanlı dosya karşıya yüklemesi. |
 | İşler<sup>1</sup> | Maksimum eşzamanlı iş 1 (ücretsiz ve S1 için), 5 (S2 için) ve 10 (S3 için). Ancak, tüm katmanlar için maksimum eşzamanlı [cihaz içeri/dışarı aktarma işi](iot-hub-bulk-identity-mgmt.md) 1 ' dir. <br/>İş geçmişi 30 güne kadar tutulur. |
 | Ek uç noktalar | Ücretli SKU hub 'ları 10 ek uç nokta içerebilir. Ücretsiz SKU hub 'ları, ek bir uç noktaya sahip olabilir. |
-| İleti yönlendirme kuralları | Ücretli SKU hub 'ları 100 yönlendirme kuralına sahip olabilir. Ücretsiz SKU hub 'ları beş yönlendirme kuralına sahip olabilir. |
+| İleti yönlendirme sorguları | Ücretli SKU hub 'ları 100 yönlendirme sorgusuna sahip olabilir. Ücretsiz SKU hub 'ları beş yönlendirme sorgusuna sahip olabilir. |
+| İleti zenginleştirmeleri | Ücretli SKU hub 'ları en fazla 10 ileti zenginleştirme olabilir. Ücretsiz SKU hub 'ları en fazla 2 ileti zenginleştirme olabilir.|
 | Cihazdan buluta mesajlaşma | En büyük ileti boyutu 256 KB |
 | Buluttan cihaza mesajlaşma<sup>1</sup> | En büyük ileti boyutu 64 KB. Dağıtım için maksimum bekleyen ileti sayısı, cihaz başına 50 ' dir. |
 | Doğrudan yöntem<sup>1</sup> | En yüksek doğrudan Yöntem yük boyutu 128 KB 'tır. |

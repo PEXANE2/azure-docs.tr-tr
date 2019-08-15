@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 1fc5e83c2c46a7da2a4b56879a2d596405fd8bee
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 8038b7bd60ac771c798a1a8645022b0bf9e142a9
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68718320"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934841"
 ---
 # <a name="frequently-asked-questions"></a>Sık sorulan sorular
 Sorularınız mı var? Daha fazla bilgi için aşağıdaki SSS bölümüne bakın.
@@ -137,12 +137,12 @@ Geçerli gizleme kuralları:
 
 #### <a name="what-are-recommended-secrets-management-guidelines"></a>Önerilen gizli dizi yönetimi yönergeleri nelerdir? 
 Sabit kodlanmış gizli dizileri zamanında algılarken, riskleri azaltmak çok daha iyi bir şekilde tespit edilirken, bir parola, parolaların tamamen iade edilme zorunluluğunu ortadan kaldırsa bile daha iyidir. Bu şekilde, Microsoft, Visual Studio için [Microsoft DevLabs uzantısının](https://marketplace.visualstudio.com/items?itemName=VSIDEDevOpsMSFT.ContinuousDeliveryToolsforVisualStudio) bir parçası olarak Credscan Code Analyzer ' ı yayımlamıştır. Erken önizlemede, geliştiricilere bu sorunların gerçek zamanlı olarak düzeltilmesi için olası gizli dizileri algılamaya yönelik bir satır içi deneyim sağlar. Daha fazla bilgi için lütfen bulutta güvenli şekilde gizli anahtarları yönetirken [Bu](https://devblogs.microsoft.com/visualstudio/managing-secrets-securely-in-the-cloud/) bloga başvurun. Aşağıda, gizliliklerinizi yönetmenize ve gizli bilgilere uygulamalarınızın içinden güvenli bir şekilde erişmenize yardımcı olacak birkaç ek kaynak verilmiştir: 
- - [Azure Anahtar Kasası.](https://docs.microsoft.com/azure/key-vault/)
- - [Azure Active Directory](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication)
+ - [Azure Anahtar Kasası.](../../key-vault/index.yml)
+ - [Azure Active Directory](../../sql-database/sql-database-aad-authentication.md)
  - [Azure AD Yönetilen Hizmet Kimliği](https://azure.microsoft.com/blog/keep-credentials-out-of-code-introducing-azure-ad-managed-service-identity/)
- - [Azure kaynakları için Yönetilen Hizmet Kimliği (MSI)](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
- - [Azure Yönetilen Hizmet Kimliği](https://docs.microsoft.com/azure/app-service/overview-managed-identity)
- - [AppAuthentication kitaplığı](https://docs.microsoft.com/azure/key-vault/service-to-service-authentication)
+ - [Azure kaynakları için Yönetilen Hizmet Kimliği (MSI)](../../active-directory/managed-identities-azure-resources/overview.md)
+ - [Azure Yönetilen Hizmet Kimliği](../../app-service/overview-managed-identity.md)
+ - [AppAuthentication kitaplığı](../../key-vault/service-to-service-authentication.md)
 
 #### <a name="can-i-write-my-own-custom-searchers"></a>Kendi özel aramalarımı yazabilir miyim?
 

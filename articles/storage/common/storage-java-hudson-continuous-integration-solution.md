@@ -6,15 +6,15 @@ author: seguler
 ms.service: storage
 ms.devlang: Java
 ms.topic: article
-ms.date: 02/28/2017
+ms.date: 08/13/2019
 ms.author: tarcher
 ms.subservice: common
-ms.openlocfilehash: 54e91d4df1109b9ece1150f8b44665789e4dfce1
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 10bfc3ce4666ee1653110099a3c8d22a58d80f35
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875879"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985294"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Hudson Sürekli Tümleştirme çözümüyle Azure Depolama'yı kullanma
 ## <a name="overview"></a>Genel Bakış
@@ -73,11 +73,11 @@ Blob hizmetini Hudson ile kullanmak için Azure Storage eklentisini yüklemeniz,
 2. **Hudson sayfasını yönet** sayfasında **sistemi Yapılandır**' a tıklayın.
 3. **Microsoft Azure depolama hesap yapılandırması** bölümünde:
    
-    a. [Azure portalından](https://portal.azure.com)edinebilmeniz için depolama hesabınızın adını girin.
+    a. [Azure Portal](https://portal.azure.com)edinebilmeniz için depolama hesabınızın adını girin.
    
-    b. Depolama hesabı anahtarınızı, [Azure portalından](https://portal.azure.com)de bilgiler kişilerden girin.
+    b. Depolama hesabı anahtarınızı, ayrıca [Azure Portal](https://portal.azure.com)bilgiler kişilerden girin.
    
-    c. Genel Azure bulutu kullanıyorsanız, **BLOB hizmeti uç nokta URL 'si** için varsayılan değeri kullanın. Farklı bir Azure bulutu kullanıyorsanız, depolama hesabınız için [Azure portalında](https://portal.azure.com) belirtilen bitiş noktasını kullanın.
+    c. Genel Azure bulutu kullanıyorsanız, **BLOB hizmeti uç nokta URL 'si** için varsayılan değeri kullanın. Farklı bir Azure bulutu kullanıyorsanız, depolama hesabınız için [Azure Portal](https://portal.azure.com) belirtilen uç noktayı kullanın.
    
     d. Depolama hesabınızı doğrulamak için **depolama kimlik bilgilerini doğrula** ' ya tıklayın.
    
@@ -107,8 +107,8 @@ Yönergeler için, ilk olarak birkaç dosya oluşturacak bir iş oluşturmalı v
    
     **İpucu**
    
-    **Windows Batch komutu yürütme** için bir betik girdiğiniz **komut** bölümünün altında, Hudson tarafından tanınan ortam değişkenlerine yönelik bir bağlantı bulunur. Ortam değişkeni adlarını ve açıklamalarını öğrenmek için bu bağlantıya tıklayın. **BUILD_URL** ortam değişkeni gibi özel karakterler içeren ortam değişkenlerine kapsayıcı adı veya ortak sanal yol olarak izin verilmeyeceğini unutmayın.
-8. Bu örnek için **Varsayılan olarak yeni kapsayıcıyı genel yap** ' a tıklayın. (Özel bir kapsayıcı kullanmak istiyorsanız, erişime izin vermek için paylaşılan erişim imzası oluşturmanız gerekir. Bu makalenin kapsamı dışındadır. Paylaşılan erişim imzaları [(SAS) kullanarak](../storage-dotnet-shared-access-signature-part-1.md), paylaşılan erişim imzaları hakkında daha fazla bilgi edinebilirsiniz.)
+    **Windows Batch komutu yürütme** için bir betik girdiğiniz **komut** bölümünün altında, Hudson tarafından tanınan ortam değişkenlerine yönelik bir bağlantı bulunur. Ortam değişkeni adlarını ve açıklamalarını öğrenmek için bu bağlantıya tıklayın. **BUILD_URL** ortam değişkeni gibi özel karakterler içeren ortam değişkenlerine kapsayıcı adı veya ortak sanal yol olarak izin verilmez.
+8. Bu örnek için **Varsayılan olarak yeni kapsayıcıyı genel yap** ' a tıklayın. (Özel bir kapsayıcı kullanmak istiyorsanız, erişime izin vermek için paylaşılan erişim imzası oluşturmanız gerekir. Bu makalenin kapsamı dışındadır. Paylaşılan erişim imzaları [(SAS) kullanarak](storage-sas-overview.md), paylaşılan erişim imzaları hakkında daha fazla bilgi edinebilirsiniz.)
 9. Seçim Kapsayıcının, derleme yapıtları karşıya yüklenmeden önce içeriğin temizlenmesini istiyorsanız **karşıya yüklemeden önce kapsayıcıyı temizle** ' ye tıklayın (kapsayıcının içeriğini temizlemek istemiyorsanız işaretini işaretsiz bırakın).
 10. **Karşıya yüklenecek yapıtların listesi**için **metin/*. txt**yazın.
 11. **Karşıya yüklenen yapıtlar için ortak sanal yol**için, **$ {\_Build ID}/$ {\_BUILD Number}** girin.
@@ -116,7 +116,7 @@ Yönergeler için, ilk olarak birkaç dosya oluşturacak bir iş oluşturmalı v
 13. Hudson panosunda, **Myjob**'u çalıştırmak Için **Şimdi Oluştur** ' a tıklayın. Durum için konsol çıkışını inceleyin. Oluşturma sonrası eylemi, derleme yapılarını karşıya yüklemeye başladığında, Azure depolama için durum iletileri konsol çıktısına dahil edilir.
 14. İşi başarılı bir şekilde tamamladıktan sonra, genel blobu açarak derleme yapıtlarını inceleyebilirsiniz.
     
-    a. [Azure Portal](https://portal.azure.com)’da oturum açın.
+    a. [Azure Portal](https://portal.azure.com) oturum açın.
     
     b. **Depolama**' ya tıklayın.
     
@@ -126,7 +126,7 @@ Yönergeler için, ilk olarak birkaç dosya oluşturacak bir iş oluşturmalı v
     
     e. Hudson işini oluşturduğunuzda atadığınız iş adının küçük harfli sürümü olan **myjob**adlı kapsayıcıya tıklayın. Azure depolama 'da kapsayıcı adları ve BLOB adları küçük harfle (ve büyük/küçük harfe duyarlıdır). **Myjob** adlı kapsayıcının blob listesi içinde **Hello. txt** ve **date. txt**' i görmeniz gerekir. Bu öğelerin her biri için URL 'YI kopyalayın ve tarayıcınızda açın. Derleme yapıtı olarak karşıya yüklenen metin dosyasını görürsünüz.
 
-İş başına yapıtları Azure Blob depolamaya yükleyen bir oluşturma sonrası eylem oluşturulabilir. Yapıtları Azure Blob depolamaya yüklemeye yönelik tek derleme sonrası eyleminin, bir ayırıcı olarak noktalı virgül kullanarak **karşıya yüklemek için** farklı dosyalar (joker karakterler dahil) ve yapıt listesi içindeki dosyalara yollar belirtmesi gerektiğini unutmayın. Örneğin, Hudson derlemeniz, çalışma alanınızın **derleme** klasöründe jar dosyaları ve txt dosyaları üretirse ve her ikisini de Azure Blob depolamaya yüklemek istiyorsanız, şu değeri **yükleyecek yapıtların listesi** için aşağıdakileri kullanın: **Build/\*. jar; Build/\*. txt**. Blob adı içinde kullanılacak yolu belirtmek için çift iki nokta sözdizimini de kullanabilirsiniz. Örneğin, blob yolundaki **bildirimleri** kullanarak karşıya yüklemek için blob yolundaki **ikili** dosyaları ve txt dosyalarını kullanarak jars 'ın karşıya yüklenmesini istiyorsanız, şu değeri **yükleyecek yapıtların listesi** için şunu kullanın: **Build/\*. jar: : ikililer; Build\*/. txt:: bildirimler**.
+İş başına yapıtları Azure Blob depolamaya yükleyen bir oluşturma sonrası eylem oluşturulabilir. Yapıtları Azure Blob depolamaya yüklemeye yönelik tek derleme sonrası eylemi, ayırıcı olarak noktalı virgül kullanarak **karşıya yüklenecek yapıt listesi** içinde farklı dosyalar (joker karakterler dahil) ve dosya yolları belirtebilir. Örneğin, Hudson derlemeniz, çalışma alanınızın **derleme** klasöründe jar dosyaları ve txt dosyaları üretirse ve her ikisini de Azure Blob depolamaya yüklemek istiyorsanız, şu değeri **yükleyecek yapıtların listesi** için aşağıdakileri kullanın: **Build/\*. jar; Build/\*. txt**. Blob adı içinde kullanılacak yolu belirtmek için çift iki nokta sözdizimini de kullanabilirsiniz. Örneğin, blob yolundaki **bildirimleri** kullanarak karşıya yüklemek için blob yolundaki **ikili** dosyaları ve txt dosyalarını kullanarak jars 'ın karşıya yüklenmesini istiyorsanız, şu değeri **yükleyecek yapıtların listesi** için şunu kullanın: **Build/\*. jar: : ikililer; Build\*/. txt:: bildirimler**.
 
 ## <a name="how-to-create-a-build-step-that-downloads-from-azure-blob-storage"></a>Azure Blob depolamadan indirilen bir derleme adımı oluşturma
 Aşağıdaki adımlarda, Azure Blob depolamadan öğeleri indirmek için bir derleme adımının nasıl yapılandırılacağı gösterilmektedir. Bu, derlemenize öğe eklemek istiyorsanız (örneğin, Azure Blob depolamada tutacağınız), yararlı olabilir.
@@ -151,7 +151,7 @@ Aşağıdakiler blob hizmeti bileşenlerine genel bir bakış sağlar.
   
     `http://storageaccount.blob.core.windows.net/container_name/blob_name`
   
-    (Yukarıdaki biçim Genel Azure bulutu için geçerlidir. Farklı bir Azure bulutu kullanıyorsanız, URL uç noktanızı öğrenmek için [Azure portalındaki](https://portal.azure.com) uç noktayı kullanın.)
+    (Yukarıdaki biçim Global Azure bulutu için geçerlidir. Farklı bir Azure bulutu kullanıyorsanız, URL uç noktanızı öğrenmek için [Azure Portal](https://portal.azure.com) içindeki uç noktayı kullanın.)
   
     Yukarıdaki biçimde, `storageaccount` depolama hesabınızın adını temsil eder, `container_name` kapsayıcının adını temsil eder ve `blob_name` sırasıyla Blobun adını temsil eder. Kapsayıcı adı içinde, eğik çizgiyle **/** ayırarak birden çok yola sahip olabilirsiniz. Bu öğreticideki örnek kapsayıcı adı **myjob**idi ve ortak sanal yol için **$\_{BUILD ID}/$\_{BUILD Number}** kullanılmıştır ve bu, Blobun aşağıdaki formun URL 'sine sahip olur:
   

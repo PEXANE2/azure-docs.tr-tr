@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/26/2019
 ms.author: bwren
-ms.openlocfilehash: 836a17051aee4e6a9ac3089f60da30673783e408
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: a80f99bc37d3a92a794a78f1f47ce32fbaae75a3
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875976"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989180"
 ---
 # <a name="azure-monitor-overview"></a>Azure İzleyiciye Genel Bakış
 
@@ -83,7 +83,7 @@ Azure Izleyici, [veri TOPLAYıCı API](platform/data-collector-api.md)'sini kull
 [VM'ler için Azure izleyici](insights/vminsights-overview.md) , Windows ve Linux sanal makinelerinizin farklı işlemleri ve diğer kaynaklardaki ve dış bağlantılı bağımlılıklar dahil olmak üzere, Windows ve Linux VM 'lerinizin performansını ve sistem durumunu analiz ederek, Azure sanal makinelerinizi (VM) lerse. Çözüm, şirket içinde veya başka bir bulut sağlayıcısında barındırılan VM 'Ler için performans ve uygulama bağımlılıklarını izleme desteği içerir.  
 
 
-![VM öngörüleri](media/overview/vm-insights.png)
+![VM Insights](media/overview/vm-insights.png)
 
 ### <a name="monitoring-solutions"></a>İzleme çözümleri
 Azure Izleyici 'de [izleme çözümleri](insights/solutions.md) , belirli bir uygulama veya hizmet için Öngörüler sağlayan paketlenmiş bir mantık kümesidir. Bunlar uygulama veya hizmete ilişkin izleme verilerini toplama mantığını, verileri çözümlemek için [sorguları](log-query/log-query-overview.md) ve görselleştirme için [görünümleri](../log-analytics/log-analytics-view-designer.md) içerir. Çeşitli Azure hizmetleri ve diğer uygulamalar için izleme sağlamak üzere Microsoft ve iş ortakları [tarafından sağlanan](insights/solutions-inventory.md) izleme çözümleri vardır.
@@ -146,3 +146,4 @@ Daha fazla bilgi:
 * Azure Izleyici tarafından toplanan veriler için [ölçümler ve Günlükler](platform/data-platform.md) .
 * Uygulamanızın farklı bileşenlerinin telemetri gönderme yöntemi için [veri kaynakları](platform/data-sources.md) .
 * Toplanan verileri çözümlemek için [günlük sorguları](log-query/log-query-overview.md) .
+* Bulut uygulamalarını ve hizmetlerini izlemeye yönelik [en iyi uygulamalar](https://docs.microsoft.com/azure/architecture/best-practices/monitoring) .
