@@ -1,6 +1,6 @@
 ---
 title: Azure Anahtar Kasası nedir? | Microsoft Docs
-description: Azure Key Vault, şifreleme anahtarlarını koruma sağlar ve bulut uygulamaları ve Hizmetleri gizli dizileri kullanmak nasıl öğrenin.
+description: Bulut uygulamalarının ve hizmetlerinin kullandığı şifreleme anahtarlarını ve gizli dizileri Azure Key Vault nasıl korutuını öğrenin.
 services: key-vault
 author: barclayn
 manager: barbkess
@@ -9,69 +9,69 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: barclayn
-ms.openlocfilehash: 43794b8ef4e0272362c7695eda75f5af36a77d1e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2786ec387d528e1593e2687d906060f8a2673a8c
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64683471"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934471"
 ---
 # <a name="what-is-azure-key-vault"></a>Azure Anahtar Kasası nedir?
 
-Bulut uygulamaları ve Hizmetleri şifreleme anahtarları kullanır ve bilgi tutmaya yardımcı olmak için gizli dizileri koruyun. Bu anahtarları ve gizli anahtarları Azure Key Vault korur. Anahtar Kasası'nı kullandığınızda, kimlik doğrulaması anahtarları, depolama hesabı anahtarları, veri şifreleme anahtarları, .pfx dosyaları ve parolalar, donanım güvenlik modülleri (HSM'ler) tarafından korunan anahtarları kullanarak şifreleme de yapabilirsiniz.
+Bulut uygulamaları ve Hizmetleri, bilgileri güvende tutmaya yardımcı olmak için şifreleme anahtarları ve gizli dizileri kullanır. Bu anahtarları ve gizli dizileri Azure Key Vault korur. Key Vault kullandığınızda, donanım güvenlik modülleri (HSM 'ler) tarafından korunan anahtarları kullanarak kimlik doğrulama anahtarlarını, depolama hesabı anahtarlarını, veri şifreleme anahtarlarını,. pfx dosyalarını ve parolaları şifreleyebilirsiniz.
 
-Key Vault, aşağıdaki sorunları çözmenize yardımcı olur:
+Key Vault aşağıdaki sorunları çözmeye yardımcı olur:
 
-- **Gizli dizi Yönetimi**: Güvenli bir şekilde saklayın ve sıkı bir şekilde erişim belirteçleri, parolaları, sertifikaları, API anahtarlarını ve diğer gizli dizileri denetleyebilirsiniz.
-- **Anahtar Yönetimi**: Oluşturun ve verilerinizi şifrelemek için şifreleme anahtarları denetleyebilirsiniz. 
-- **Sertifika yönetimi**: Sağlama, yönetme ve Azure ve iç bağlı kaynaklarınız ile kullanılmak üzere ortak ve özel Güvenli Yuva Katmanı/Aktarım Katmanı Güvenliği (SSL/TLS) sertifikalarını dağıtma. 
-- **Gizli dizileri Hsm'leri tarafından desteklenen Store**: Yazılım veya FIPS 140-2 Düzey 2 doğrulanmasına HSM'ler gizli dizileri ve anahtarları korunmasına yardımcı olmak için kullanın.
+- **Gizli dizi yönetimi**: Belirteçlere, parolalara, sertifikalara, API anahtarlarına ve diğer gizli anahtarlara erişimi güvenli bir şekilde depolayın ve sıkı bir şekilde denetleyin.
+- **Anahtar yönetimi**: Verilerinizi şifreleyen şifreleme anahtarlarını oluşturun ve denetleyin. 
+- **Sertifika yönetimi**: Azure ve iç bağlı kaynaklarınızla kullanım için ortak ve özel Güvenli Yuva Katmanı/Aktarım Katmanı Güvenliği (SSL/TLS) sertifikaları sağlayın, yönetin ve dağıtın. 
+- **HSM 'ler tarafından desteklenen gizli**dizileri: Gizli dizileri ve anahtarları korumaya yardımcı olmak için yazılım veya FIPS 140-2 düzey 2 doğrulanan HSM 'leri kullanın.
 
 ## <a name="basic-concepts"></a>Temel kavramlar
 
-Azure Key Vault, gizli dizilerin güvenli bir şekilde depolanması ve bunlara erişim sağlanması için tasarlanmış bir araçtır. Gizli dizi; API anahtarları, parolalar veya sertifikalar gibi erişimi sıkı bir şekilde denetlemek istediğiniz tüm öğelerdir. Bir kasa gizli dizilerinin mantıksal grubudur.
+Azure Key Vault, gizli dizilerin güvenli bir şekilde depolanması ve bunlara erişim sağlanması için tasarlanmış bir araçtır. Gizli dizi; API anahtarları, parolalar veya sertifikalar gibi erişimi sıkı bir şekilde denetlemek istediğiniz tüm öğelerdir. Kasa, mantıksal gizli dizi grubudur.
 
-Diğer önemli koşullar şunlardır:
+Diğer önemli terimler şunlardır:
 
-- **Kiracı**: Bir kiracının sahip olduğu ve belirli bir Microsoft bulut Hizmetleri örneği yöneten kuruluştur. Genellikle, bir kuruluş için Azure ve Office 365 Hizmetleri kümesi başvurmak için kullanılır.
+- **Kiracı**: Kiracı, belirli bir Microsoft bulut hizmetleri örneğini sahip olan ve yöneten kuruluştur. Genellikle bir kuruluşun Azure ve Office 365 hizmetleri kümesine başvurmak için kullanılır.
 
-- **Kasasının sahibine**: Kasasının sahibine, anahtar kasası oluşturma ve tam erişime ve denetime ele elde edebilirsiniz. Kasa sahibi, gizli dizilere ve anahtarlara kimlerin eriştiğini günlüğe kaydetmek için belirli denetim özellikleri de ayarlayabilir. Yöneticiler anahtarların yaşam döngüsünü kontrol edebilir. Anahtarı yeni sürüme geçirebilir, yedekleyebilir ve ilgili görevleri gerçekleştirebilirler.
+- **Kasa sahibi**: Bir kasa sahibi, bir Anahtar Kasası oluşturabilir ve tam erişim elde edebilir ve üzerinde denetim sağlayabilir. Kasa sahibi, gizli dizilere ve anahtarlara kimlerin eriştiğini günlüğe kaydetmek için belirli denetim özellikleri de ayarlayabilir. Yöneticiler anahtarların yaşam döngüsünü kontrol edebilir. Anahtarı yeni sürüme geçirebilir, yedekleyebilir ve ilgili görevleri gerçekleştirebilirler.
 
-- **Kasa tüketici**: Tüketici erişim kasasının sahibine verdiğinde kasa tüketici anahtar kasasının içine varlıklar üzerinde eylemler gerçekleştirebilirsiniz. Kullanılabilen eylemler verilen izinlere bağlıdır.
+- **Kasa tüketicisi**: Kasa tüketicisi, kasa sahibi tüketici erişimi verdiğinde anahtar kasasının içindeki varlıklar üzerinde eylemler gerçekleştirebilir. Kullanılabilen eylemler verilen izinlere bağlıdır.
 
-- **Kaynak**: Azure ile kullanılabilen yönetilebilir bir öğe bir kaynaktır. Sanal makine, depolama hesabı, web uygulaması, veritabanı ve sanal ağ ortak örnek verilebilir. Vardır çok daha fazlası.
+- **Kaynak**: Kaynak, Azure aracılığıyla kullanılabilen yönetilebilir bir öğedir. Sanal makine, depolama hesabı, Web uygulaması, veritabanı ve sanal ağ örnekleri yaygın olarak verilebilir. Birçok daha vardır.
 
 - **Kaynak grubu**: Kaynak grubu, bir Azure çözümü için ilgili kaynakları bir arada tutan kapsayıcıdır. Kaynak grubu bir çözümün tüm kaynaklarını veya yalnızca grup olarak yönetmek istediğiniz kaynakları içerebilir. Kuruluş için önemli olan faktörleri temel alarak kaynakları kaynak gruplarına nasıl ayıracağınıza siz karar verirsiniz.
 
-- **Hizmet sorumlusu**: Bir Azure hizmet sorumlusu, kullanıcı tarafından oluşturulan uygulamalar, hizmetler ve Otomasyon araçlarının belirli Azure kaynaklarına erişmek için kullanan bir güvenlik kimliğidir. "Kullanıcı kimliği" olarak düşünebilirsiniz (kullanıcı adı ve parola veya sertifika) belirli bir rolü ve sıkı bir şekilde denetlenen ile. Genel kullanıcı kimliğinin aksine, hizmet sorumlusunun yalnızca belirli şeyleri yapabilmesi gerekir. Hizmet sorumlusuna yönetim görevlerini gerçekleştirmek için gereken en düşük izin düzeyini atamanız, güvenliği geliştirir.
+- **Hizmet sorumlusu**: Azure hizmet sorumlusu, Kullanıcı tarafından oluşturulan uygulamaların, hizmetlerin ve otomasyon araçlarının belirli Azure kaynaklarına erişmek için kullandığı bir güvenlik kimliğidir. Bunu belirli bir role sahip "Kullanıcı kimliği" (Kullanıcı adı ve parola veya sertifika) olarak düşünebilirsiniz ve sıkı denetimli izinlere sahip olmanız gerekir. Genel kullanıcı kimliğinin aksine, hizmet sorumlusunun yalnızca belirli şeyleri yapabilmesi gerekir. Yalnızca, yönetim görevlerini gerçekleştirmesi için ihtiyacı olan en düşük izin düzeyini verirseniz güvenliği geliştirir.
 
-- [Azure Active Directory (Azure AD)](../active-directory/active-directory-whatis.md): Azure AD, bir kiracı için Active Directory hizmetidir. Her dizinde bir veya daha fazla etki alanı vardır. Dizinde birden fazla abonelik bulunabilir ancak tek bir kiracı olur.
+- [Azure Active Directory (Azure AD)](../active-directory/active-directory-whatis.md): Azure AD, bir kiracının Active Directory hizmetidir. Her dizinde bir veya daha fazla etki alanı vardır. Dizinde birden fazla abonelik bulunabilir ancak tek bir kiracı olur.
 
-- **Azure Kiracı kimliği**: Kiracı kimliği, bir Azure aboneliğinde bir Azure AD örneğini tanımlamak için benzersiz bir yoldur.
+- **Azure KIRACı kimliği**: Kiracı KIMLIĞI, bir Azure aboneliği içinde Azure AD örneğini belirlemenin benzersiz bir yoludur.
 
-- **Yönetilen kimlik**: Azure Key Vault kimlik bilgilerini ve diğer anahtarlarla gizli dizileri güvenle depolamak için bir yol sağlar, ama bunları alabilmek için kodunuzun Key Vault'ta kimlik doğrulaması yapması gerekir. Yönetilen kimlik kullanarak Azure hizmetleri otomatik olarak yönetilen bir kimlik sağlayarak Azure AD'de basit bu sorunu çözme yapar. Bu kimliği kullanarak, Key Vault veya Azure AD kimlik doğrulamasını destekleyen tüm hizmetler için kodunuzda kimlik bilgileri bulunmasına gerek kalmadan kimlik doğrulaması yapabilirsiniz. Daha fazla bilgi için aşağıdaki resme bakın ve [Azure kaynakları için yönetilen kimlikleri bakış](../active-directory/managed-identities-azure-resources/overview.md).
+- **Yönetilen kimlikler**: Azure Key Vault kimlik bilgilerini ve diğer anahtarlarla gizli dizileri güvenle depolamak için bir yol sağlar, ama bunları alabilmek için kodunuzun Key Vault'ta kimlik doğrulaması yapması gerekir. Yönetilen bir kimlik kullanmak, Azure hizmetlerine Azure AD 'de otomatik olarak yönetilen bir kimlik vererek bu sorunu daha kolay bir şekilde çözmesini sağlar. Bu kimliği kullanarak, Key Vault veya Azure AD kimlik doğrulamasını destekleyen tüm hizmetler için kodunuzda kimlik bilgileri bulunmasına gerek kalmadan kimlik doğrulaması yapabilirsiniz. Daha fazla bilgi için, aşağıdaki görüntüye ve [Azure kaynakları için yönetilen kimliklere genel bakış](../active-directory/managed-identities-azure-resources/overview.md)bölümüne bakın.
 
-    ![Azure kaynaklarını iş için yönetilen kimlikleri diyagramı](./media/key-vault-whatis/msi.png)
+    ![Azure kaynakları için yönetilen kimliklerin nasıl çalıştığı diyagramı](./media/key-vault-whatis/msi.png)
 
-## <a name="authentication"></a>Kimlik Doğrulaması
-Key Vault ile herhangi bir işlemi yapmak için önce için kimlik doğrulaması yapması gerekir. Anahtar Kasası'na kimlik doğrulaması için üç yolu vardır:
+## <a name="authentication"></a>Authentication
+Key Vault tüm işlemleri yapmak için önce bu kimlik doğrulaması yapmanız gerekir. Key Vault doğrulamak için üç yol vardır:
 
-- [Kimlikler Azure kaynakları için yönetilen](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview): Azure'da bir sanal makinede bir uygulamayı dağıttığınızda, sanal makinenize Key Vault erişimi olan bir kimlik atayabilirsiniz. Kimlikleri de atayabilirsiniz [diğer Azure kaynakları](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). Bu yaklaşımın avantajı uygulama veya hizmetin ilk gizli döndürmesini yönetme değil ' dir. Azure, otomatik olarak kimliğini döndürür. En iyi uygulama bu yaklaşım önerilir. 
-- **Hizmet sorumlusu ve sertifika**: Bir hizmet sorumlusu ve anahtar kasası erişimi olan ilişkili bir sertifika kullanabilirsiniz. Uygulama sahibi veya Geliştirici sertifika döndürme gerekir çünkü bu yaklaşım önerilmemektedir.
-- **Hizmet sorumlusu ve gizli dizi**: Anahtar Kasası'na kimlik doğrulaması için bir hizmet sorumlusu ve bir gizli dizi kullanabilirsiniz, ancak bunu önermiyoruz. Anahtar Kasası'na kimliğini doğrulamak için kullanılan önyükleme gizli dizi otomatik olarak döndürmek zordur.
+- [Azure kaynakları Için Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md): Bir uygulamayı Azure 'daki bir sanal makinede dağıttığınızda, sanal makinenize Key Vault erişimi olan bir kimlik atayabilirsiniz. Ayrıca, [diğer Azure kaynaklarına](../active-directory/managed-identities-azure-resources/overview.md)kimlik de atayabilirsiniz. Bu yaklaşımın avantajı, uygulamanın veya hizmetin ilk gizli dizi dönüşünü yönetmediğinde. Azure, kimliği otomatik olarak döndürür. En iyi uygulama olarak bu yaklaşımı öneririz. 
+- **Hizmet sorumlusu ve sertifikası**: Hizmet sorumlusu ve Key Vault erişimi olan ilişkili bir sertifika kullanabilirsiniz. Uygulama sahibi veya geliştiricinin sertifikayı döndürmelerinden dolayı bu yaklaşımı önermiyoruz.
+- **Hizmet sorumlusu ve gizli**dizi: Key Vault kimlik doğrulaması yapmak için bir hizmet sorumlusu ve gizli dizi kullanabilseniz de bunu önermiyoruz. Key Vault için kimlik doğrulaması yapmak üzere kullanılan önyükleme gizliliğini otomatik olarak döndürmek zordur.
 
 
 ## <a name="key-vault-roles"></a>Key Vault rolleri
 
 Geliştiricilerin ve güvenlik yöneticilerinin ihtiyaçlarını karşılamaya Anahtar Kasası'nın nasıl yardımcı olabileceğini daha iyi anlamak için aşağıdaki tabloyu kullanın.
 
-| Rol | Sorun bildirimi | Azure Anahtar Kasası tarafından çözüldü |
+| Role | Sorun bildirimi | Azure Anahtar Kasası tarafından çözüldü |
 | --- | --- | --- |
-| Bir Azure uygulaması geliştiricisi |"İmzalama ve şifreleme için anahtarları kullanan Azure'a yönelik bir uygulama yazmak istiyorum. Ancak, bu anahtarlar, çözümün coğrafi olarak dağıtılmış bir uygulama için uygun olacak şekilde benim uygulamamın dışında olmasını istiyorum. <br/><br/>Kodu kendim yazmak zorunda kalmadan bu anahtarların ve parolaların korunmasını istiyorum. Ayrıca bu anahtarları ve parolaları uygulamamdan en iyi performans ile kolayca kullanabilmek istiyorum." |√ Anahtarlar bir kasada depolanır ve gerektiğinde URI tarafından çağrılır.<br/><br/> √ Anahtarlar, endüstri standardında algoritmalar, anahtar uzunlukları ve donanım güvenliği modülleri kullanılarak Azure tarafından korunur.<br/><br/> √ Anahtarlar uygulamalarla aynı Azure veri merkezinde bulunan HSM'lerde işlenir. Bu yöntem, şirket içi gibi ayrı konumlarda bulunan anahtarlardan daha fazla güvenilirlik ve daha az gecikme sağlar. |
-| Hizmet olarak yazılım (SaaS) geliştiricisi |"Müşterilerimin kiracı anahtarları ve gizli anahtarları için sorumluluk veya olası bir yükümlülük almak istemiyorum. <br/><br/>Müşterilerin kendi anahtarlarına sahip olmalarını ve bunları yönetmelerini istiyorum; böylece en iyi yaptığım şeye, yani çekirdek yazılım özelliklerini sağlamaya odaklanabilirim." |√ Müşteriler kendi anahtarları Azure'a aktarabilir ve bunları yönetebilir. Bir SaaS uygulamasının müşterilerin anahtarlarını kullanarak şifreleme işlemleri gerçekleştirmesi gerektiğinde, anahtar kasası uygulama adına bu işlemleri yapar. Uygulama, müşterilerin anahtarlarını görmez. |
+| Bir Azure uygulaması geliştiricisi |"İmzalama ve şifreleme için anahtarları kullanan bir Azure uygulaması yazmak istiyorum. Ancak, çözümün coğrafi olarak dağıtılan bir uygulamaya uygun olması için bu anahtarların uygulamamın dışında olmasını istiyorum. <br/><br/>Kodu kendim yazmak zorunda kalmadan bu anahtarların ve parolaların korunmasını istiyorum. Ayrıca bu anahtarları ve parolaları uygulamamdan en iyi performans ile kolayca kullanabilmek istiyorum." |√ Anahtarlar bir kasada depolanır ve gerektiğinde URI tarafından çağrılır.<br/><br/> √ Anahtarlar, endüstri standardında algoritmalar, anahtar uzunlukları ve donanım güvenliği modülleri kullanılarak Azure tarafından korunur.<br/><br/> √ Anahtarlar uygulamalarla aynı Azure veri merkezinde bulunan HSM'lerde işlenir. Bu yöntem, şirket içi gibi ayrı konumlarda bulunan anahtarlardan daha fazla güvenilirlik ve daha az gecikme sağlar. |
+| Hizmet olarak yazılım (SaaS) geliştiricisi |"Müşterilerimin kiracı anahtarları ve gizli anahtarları için sorumluluk veya olası bir yükümlülük almak istemiyorum. <br/><br/>Müşterilerin kendi anahtarlarına sahip olmalarını ve bunları yönetmelerini istiyorum; böylece en iyi yaptığım şeye, yani çekirdek yazılım özelliklerini sağlamaya odaklanabilirim." |√ Müşteriler kendi anahtarları Azure'a aktarabilir ve bunları yönetebilir. SaaS uygulamasının, müşterilerin anahtarlarını kullanarak şifreleme işlemleri gerçekleştirmesi gerektiğinde, Key Vault bu işlemleri uygulama adına yapar. Uygulama, müşterilerin anahtarlarını görmez. |
 | Güvenlik başkanı (CSO) |"Uygulamalarımızın güvenli anahtar yönetimi için FIPS 140-2 Düzey 2 HSM'lerle uyumlu olduğunu bilmek istiyorum. <br/><br/>Kuruluşumun anahtar yaşam döngüsü denetimine sahip olduğundan ve anahtar kullanımını izleyebildiğinden emin olmak istiyorum. <br/><br/>Ayrıca, birden çok Azure hizmeti ve kaynağı kullanıyor olsak da, anahtarları Azure'da tek bir konumdan yönetmek istiyorum." |√ HSM'ler, FIPS 140-2 Düzey 2 doğrulanmasına sahiptir.<br/><br/>√ Anahtar Kasası, Microsoft anahtarlarınızı görmeyecek ve ayıklamayacak şekilde tasarlanmıştır.<br/><br/>√ Anahtar kullanımı neredeyse gerçek zamanlı olarak günlüğe kaydedilir.<br/><br/>√ Kasa, Azure'da kaç kasanız olduğuna, bunların hangi bölgeleri desteklediğine ve hangi uygulamaların bunları kullandığına bakmaksızın tek bir arabirim sağlar. |
 
-Bir Azure aboneliği olan herhangi biri, anahtar kasalarını oluşturabilir ve kullanabilir. Anahtar kasası geliştiricilere ve güvenlik yöneticilerine avantaj sağlasa da, uygulanan ve diğer Azure hizmetlerini yöneten bir kuruluşun Yöneticisi tarafından yönetilir. Örneğin, bu yönetici bir Azure aboneliği ile oturum açın, oturum anahtarlarını depolamak ve ardından bunlar gibi işletimsel görevleri sorumlu kuruluş için bir kasa oluşturun:
+Bir Azure aboneliği olan herhangi biri, anahtar kasalarını oluşturabilir ve kullanabilir. Key Vault, geliştiricilerin ve güvenlik yöneticilerinin avantajları olsa da, diğer Azure hizmetlerini yöneten bir kuruluşun yöneticisi tarafından uygulanabilir ve yönetilebilir. Örneğin, bu yönetici bir Azure aboneliğiyle oturum açabilir, anahtar depolayabileceği kuruluş için bir kasa oluşturabilir ve ardından bunlar gibi işletimsel görevlerden sorumludur:
 
 - Bir anahtar veya gizli anahtarı oluşturma veya içeri aktarma
 - Bir anahtar veya gizli anahtarı iptal etme veya silme
@@ -79,15 +79,15 @@ Bir Azure aboneliği olan herhangi biri, anahtar kasalarını oluşturabilir ve 
 - Anahtar kullanımını (örneğin, imzalama veya şifreleme) yapılandırma
 - Anahtar kullanımını izleme
 
-Bu yönetici, geliştiricilerin uygulamalarından çağırmaları için bir URI'leri ardından sağlar. Bu yönetici, ayrıca güvenlik yöneticisine anahtar kullanımı günlüğü bilgilerini sağlar. 
+Bu yönetici daha sonra geliştiricilerin uygulamalarından çağrı oluşturmasını sağlar. Bu yönetici ayrıca güvenlik yöneticisine anahtar kullanım günlüğü bilgileri verir. 
 
-![Azure Key Vault nasıl çalıştığına ilişkin genel bakış][1]
+![Azure Key Vault nasıl çalıştığına genel bakış][1]
 
 Geliştiriciler ayrıca anahtarları doğrudan API'lerini kullanarak yönetebilir. Daha fazla bilgi için bkz. [Anahtar Kasası geliştirici kılavuzu](key-vault-developers-guide.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bilgi edinmek için nasıl [kasanızın güvenliğini sağlama](key-vault-secure-your-key-vault.md).
+[Kasalarınızın güvenliğini](key-vault-secure-your-key-vault.md)nasıl sağlayacağınızı öğrenin.
 
 <!--Image references-->
 [1]: ./media/key-vault-whatis/AzureKeyVault_overview.png

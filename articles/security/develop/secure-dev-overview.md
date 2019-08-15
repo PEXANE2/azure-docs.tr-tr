@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 4df8ff8abfeb7a6ba96ec3344407e95e0a9a3b3d
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: c4314a0dcbbcb907ef4d6de0a2788cf04dfe1641
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728712"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934860"
 ---
 # <a name="secure-development-best-practices-on-azure"></a>Azure 'da güvenli geliştirme en iyi uygulamaları
 Bu makale serisi, bulut için uygulama geliştirirken göz önünde bulundurmanız gereken güvenlik etkinliklerini ve denetimleri sunar. Yaşam döngüsünün her aşamasında dikkate alınması gereken Microsoft güvenlik geliştirme yaşam döngüsü (SDL) ve güvenlik sorusu ve kavramların aşamaları ele alınmıştır. Amaç, daha güvenli bir uygulama tasarlamak, geliştirmek ve dağıtmak için yaşam döngüsünün her aşamasında kullanabileceğiniz etkinlikleri ve Azure hizmetlerini tanımlamanıza yardımcı olmaktır.
@@ -69,7 +69,7 @@ Güvenli uygulamalar geliştirme ve uygulamalarınızın güvenliğini sağlamay
 
 [Bir patron gibi sola itim,](https://code.likeagirl.io/pushing-left-like-a-boss-part-1-80f1f007da95?WT.mc_id=docs-blog-tajanca) geliştiricilerin daha güvenli kod oluşturmak için tamamlaması gereken farklı türlerdeki uygulama güvenliği etkinliklerini özetleyen bir dizi çevrimiçi makale.
 
-[Microsoft](https://docs.microsoft.com/azure/active-directory/develop/) Identity Platform – Microsoft Identity platformu, Azure AD kimlik hizmeti ve geliştirici platformunun bir evrimi. Bu, bir kimlik doğrulama hizmeti, açık kaynak kitaplıkları, uygulama kaydı ve yapılandırma, tam geliştirici belgeleri, kod örnekleri ve diğer geliştirici içeriğinden oluşan tam özellikli bir platformdur. Microsoft Identity platformu, OAuth 2,0 ve OpenID Connect gibi sektör standardı protokolleri destekler.
+[Microsoft](../../active-directory/develop/index.yml) Identity Platform – Microsoft Identity platformu, Azure AD kimlik hizmeti ve geliştirici platformunun bir evrimi. Bu, bir kimlik doğrulama hizmeti, açık kaynak kitaplıkları, uygulama kaydı ve yapılandırma, tam geliştirici belgeleri, kod örnekleri ve diğer geliştirici içeriğinden oluşan tam özellikli bir platformdur. Microsoft Identity platformu, OAuth 2,0 ve OpenID Connect gibi sektör standardı protokolleri destekler.
 
 [Azure çözümleri için En Iyi güvenlik uygulamaları](https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions/) : Azure kullanarak bulut çözümlerini tasarlarken, dağıtırken ve yönetirken en iyi güvenlik uygulamalarının bir koleksiyonu. Bu kağıdın BT profesyonelleri için bir kaynak olması amaçlanmıştır. Bu, güvenli Azure çözümleri oluşturup dağıtan tasarımcılar, mimarlar, geliştiriciler ve test ediciler içerebilir.
 
