@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: b3ebd8b6f65ec86d338932579f5d4ccec6a90be3
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: e92c2e58122556f90b25f070fff9e6e6616b0257
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68704742"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976842"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB tablo .NET Standard API 'SI: Notları indir ve serbest bırak
 > [!div class="op_single_selector"]
@@ -31,8 +31,13 @@ ms.locfileid: "68704742"
 |**Hızlı Başlangıç**|[Hızlı Başlangıç](create-table-dotnet.md)|
 |**Öğretici**|[Öğretici](tutorial-develop-table-dotnet.md)|
 |**Geçerli desteklenen çerçevesi**|[Microsoft .NET Standart 2,0](https://www.nuget.org/packages/NETStandard.Library)|
+|**Sorun bildir**|[Sorun bildir](https://github.com/Azure/azure-cosmos-table-dotnet/issues)|
 
 ## <a name="release-notes"></a>Sürüm notları
+
+### <a name="a-name104104"></a><a name="1.0.4"/>1.0.4
+* Hata düzeltmeleri
+* RestExecutorConfiguration için HttpClientTimeout seçeneğini belirtin.
 
 ### <a name="a-name104-preview104-preview"></a><a name="1.0.4-preview"/>1.0.4-Önizleme
 * Hata düzeltmeleri
@@ -71,6 +76,7 @@ Bu platformlar arası .NET Standard Kitaplığı [Microsoft. Azure. Cosmos. Tabl
 
 | Version | Yayınlanma Tarihi | Sona erme tarihi |
 | --- | --- | --- |
+| [1.0.4](#1.0.4) |Auguest 12, 2019 |--- |
 | [1.0.4-Önizleme](#1.0.4-preview) |26 Temmuz 2019 |--- |
 | 1.0.2-preview |2 Mayıs 2019 |--- |
 | [1.0.1](#1.0.1) |19 Nisan 2019 |--- |
@@ -86,4 +92,4 @@ Bu platformlar arası .NET Standard Kitaplığı [Microsoft. Azure. Cosmos. Tabl
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Ayrıca bkz.
-Azure Cosmos DB Tablo API'si hakkında daha fazla bilgi edinmek için bkz. [Azure Cosmos DB tanıtım tablo API'si](table-introduction.md). 
+Azure Cosmos DB Tablo API'si hakkında daha fazla bilgi edinmek için bkz. [Azure Cosmos DB tanıtım tablo API'si](table-introduction.md).

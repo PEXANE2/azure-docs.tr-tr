@@ -1,9 +1,9 @@
 ---
-title: Azure Active Directory rapor ile ilgili SSS | Microsoft Docs
-description: Azure Active Directory raporlarını geçici quesitons sık sorulan.
+title: Azure Active Directory raporları SSS | Microsoft Docs
+description: Azure Active Directory raporlarının etrafında sık sorulan sorular.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 ms.assetid: 534da0b1-7858-4167-9986-7a62fbd10439
 ms.service: active-directory
@@ -13,55 +13,55 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09270d89ecaff02716d9916527d21ba2c5d30716
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0a9b1144e3ef1f1a49c39d694f465653da5881cb
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67107544"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68987912"
 ---
-# <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Sık sorulan sorular Azure Active Directory raporlarını geçici bir çözüm
+# <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Azure Active Directory raporlarının etrafında sık sorulan sorular
 
-Bu makale, Azure Active Directory (Azure AD) hakkında sık sorulan sorular raporlama yanıtlarını içerir. Daha fazla bilgi için bkz. [Azure Active Directory raporlaması](overview-reports.md). 
+Bu makale Azure Active Directory (Azure AD) raporlama hakkında sık sorulan soruların yanıtlarını içerir. Daha fazla bilgi için bkz. [Azure Active Directory raporlaması](overview-reports.md). 
 
 ## <a name="getting-started"></a>Başlarken 
 
-**S: Şu anda kullanın `https://graph.windows.net/<tenant-name>/reports/` API'leri çekme Azure AD denetim ve tümleşik uygulama kullanım için Raporlar Raporlama sistemlerimizde programlı olarak uç nokta. Ne için geçiş miyim?**
+**S: Şu anda `https://graph.windows.net/<tenant-name>/reports/` Azure AD Audit ve tümleşik uygulama kullanım raporlarını raporlama sistemlerimize programlı bir şekilde çekmek için Endpoint API 'leri kullanıyorum. Ne geçiş yapmam gerekir?**
 
-**C:** Arama [API Başvurusu](https://developer.microsoft.com/graph/) öğrenmek için [etkinliği raporlarına erişmek için API'leri kullanan](concept-reporting-api.md). Bu uç noktaya sahip iki rapor (**denetim** ve **oturum açma işlemleri**) eski API uç noktası aldığınız tüm verileri sağlar. Bu yeni uç nokta da, uygulama kullanımını, Aygıt kullanımı ve kullanıcı oturum açma bilgilerini almak için kullanabileceğiniz bir Azure AD Premium lisansına sahip bir oturum açma işlemleri raporu vardır.
-
----
-
-**S: Şu anda kullanın `https://graph.windows.net/<tenant-name>/reports/` Azure AD güvenlik raporları (belirli tür algılamadan dışlanmasını, sızan kimlik bilgileri veya anonim IP adreslerinden oturum açma işlemleri gibi) program aracılığıyla raporlama sistemlerimizde çekmek için API uç noktası. Ne için geçiş miyim?**
-
-**C:** Kullanabileceğiniz [kimlik koruması risk olayları API](../identity-protection/graph-get-started.md) Microsoft Graph üzerinden erişim güvenlik algılamaları için. Bu yeni biçim, Gelişmiş filtreleme, alan seçimi ve diğer verileri nasıl Sorgulayabileceğiniz büyük esneklik sağlar ve daha kolay tümleştirmeye Sıem'lerden ve diğer veri toplama araçları için bir tür içinde risk olayları standartlaştırır. Verileri farklı bir biçimde olduğundan, yeni bir sorgu için eski sorgularınızı yerine geçemez. Ancak, [Microsoft Graph yeni API'yi kullanan](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent), olduğu gibi API'ler olarak O365 veya Azure AD için Microsoft standart. MS Graph mevcut yatırımlarınızdan veya Yardım ya da genişletebilirsiniz iş gerekli şekilde bu yeni standart platformu geçişinizi başlayın.
+**C:** [Etkinlik raporlarına erişmek için API 'leri nasıl kullanabileceğinizi](concept-reporting-api.md)görmek için [API başvurusunu](https://developer.microsoft.com/graph/) bulun. Bu uç noktanın, eski API uç noktasında aldığınız tüm verileri sağlayan iki raporu (**Denetim** ve **oturum açma**) vardır. Bu yeni uç noktanın Ayrıca uygulama kullanımını, cihaz kullanımını ve Kullanıcı oturum açma bilgilerini almak için kullanabileceğiniz Azure AD Premium lisansıyla bir oturum açma raporu bulunur.
 
 ---
 
-**S: Bir premium lisansı nasıl alabilirim?**
+**S: Şu anda `https://graph.windows.net/<tenant-name>/reports/` Azure AD güvenlik raporlarını (IP adreslerinden gelen kimlik bilgileri veya anonim IP adreslerinden oturum açma işlemleri gibi), raporlama sistemlerimize programlama yoluyla çekmek için uç nokta API 'lerini kullanıyorum. Ne geçiş yapmam gerekir?**
 
-**C:** Bkz: [Azure Active Directory Premium ile çalışmaya başlama](../fundamentals/active-directory-get-started-premium.md) , Azure Active Directory sürümünü yükseltmek için.
-
----
-
-**S: Ne kadar kısa sürede etkinliği verileri bir premium lisansı aldıktan sonra görüyorum?**
-
-**C:** Etkinlikler verileri ücretsiz lisans olarak zaten varsa, daha sonra bunu hemen görebilirsiniz. Herhangi bir veri yoksa, veriler raporlarda görünmesi için bir veya iki gün sürebilir.
+**C:** Güvenlik algılamalarını Microsoft Graph aracılığıyla erişmek için [kimlik koruması risk olayları API](../identity-protection/graph-get-started.md) 'sini kullanabilirsiniz. Bu yeni biçim, Gelişmiş filtreleme, alan seçimi ve daha fazlası ile verileri nasıl sorgulayabilme ve risk olaylarını bir tür halinde kullanarak Sıems ve diğer veri toplama araçlarına daha kolay tümleştirme için daha fazla esneklik sağlar. Veriler farklı bir biçimde olduğundan eski sorgularınız için yeni bir sorgu yerine kullanamazsınız. Ancak, [yenı API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent), O365 veya Azure AD gibi bu API 'Ler için Microsoft standard olan Microsoft Graph kullanır. Bu nedenle, gereken iş, geçerli MS Graf yatırımlarınızı genişletebilir veya bu yeni standart platforma geçişinizi başlamanıza yardımcı olabilir.
 
 ---
 
-**S: Son aya ilişkin verileri bir Azure AD premium lisansı aldıktan sonra görebilir miyim?**
+**S: Premium lisans almak Nasıl yaparım??**
 
-**C:** Yakın zamanda (deneme sürümü dahil) bir Premium sürümüne çalıştıysanız, veri yedekleme 7 gün için başlangıçta görebilirsiniz. Verileri toplanır, son 30 güne ilişkin verileri görebilirsiniz.
+**C:** Azure Active Directory sürümünüzü yükseltmek için bkz. [Azure Active Directory Premium kullanmaya](../fundamentals/active-directory-get-started-premium.md) başlama.
 
 ---
 
-**S: Azure portalında etkinlik oturum açma işlemleri görmek veya API üzerinden veri almak için genel yönetici olmanız gerekiyor mu?**
+**S: Premium lisans aldıktan sonra etkinlik verilerini ne kadar yakında görmem gerekir?**
 
-**C:** Eğer Hayır, da raporlama verileri portalı veya API üzerinden erişebilirsiniz bir **güvenlik okuyucusu** veya **Güvenlik Yöneticisi** Kiracı. Elbette, **genel Yöneticiler** de bu verilere erişebilir.
+**C:** Zaten ücretsiz bir lisans olarak Etkinlikler verileriniz varsa, bunu hemen görebilirsiniz. Hiçbir veriniz yoksa, verilerin raporlarda görünmesi bir veya iki gün sürer.
+
+---
+
+**S: Bir Azure AD Premium lisansı aldıktan sonra geçen aya ait verileri görebilir miyim?**
+
+**C:** Yakın zamanda bir premium sürüme (deneme sürümü dahil) geçiş yaptıysanız, başlangıçta en fazla 7 güne kadar verileri görebilirsiniz. Veriler birikme sırasında son 30 güne ait verileri görebilirsiniz.
+
+---
+
+**S: Azure portal etkinlik oturum açma işlemlerini görmek veya API aracılığıyla veri almak için genel yönetici olmam gerekir mi?**
+
+**C:** Hayır, raporlama verilerine Portal üzerinden veya kiracı için **güvenlik okuyucunuz** veya **güvenlik yöneticisiyseniz** API aracılığıyla da erişebilirsiniz. Kuşkusuz, **genel yöneticilerin** bu verilere erişimi de olur.
 
 ---
 
@@ -69,9 +69,9 @@ Bu makale, Azure Active Directory (Azure AD) hakkında sık sorulan sorular rapo
 ## <a name="activity-logs"></a>Etkinlik günlükleri
 
 
-**S: Azure portalında etkinlik günlüklerini (Denetim ve oturum açma) için veri saklama nedir?** 
+**S: Azure portal etkinlik günlükleri (denetim ve oturum açma işlemleri) için veri saklama nedir?** 
 
-**C:** Veri saklama süresi etkinlik günlükleri için aşağıdaki tabloda listelenmektedir. Daha fazla bilgi için [veri bekletme ilkeleri için Azure AD raporlar](reference-reports-data-retention.md).
+**C:** Aşağıdaki tabloda, etkinlik günlükleri için veri saklama süresi listelenmektedir. Daha fazla bilgi için bkz. [Azure AD raporları için veri saklama ilkeleri](reference-reports-data-retention.md).
 
 | Rapor                 | Azure AD Ücretsiz | Azure AD Premium P1 | Azure AD Premium P2 |
 | :--                    | :--           | :--                 | :--                 |
@@ -81,91 +81,91 @@ Bu makale, Azure Active Directory (Azure AD) hakkında sık sorulan sorular rapo
 
 ---
 
-**S: My görevi tamamladığınızda etkinlik verileri görene kadar ne kadar sürer?**
+**S: Görevimi tamamladıktan sonra etkinlik verilerini görediğimde ne kadar sürer?**
 
-**C:** Denetim günlükleri, 15 dakika veya saat arasında bir gecikme süresine sahiptir. Oturum açma etkinlik günlüklerini 15 dakika veya bazı kayıtları 2 saate kadar sürebilir.
-
----
-
-**S: Azure Portalı aracılığıyla Office 365 etkinlik günlüğü bilgilerini alabilir miyim?**
-
-**C:** Olsa da Office 365 ve Azure AD etkinlik günlükleri dizin kaynaklarının çoğunu paylaşır, Office 365 etkinlik günlüklerinin tam bir görünümünü istiyorsanız, Git [Microsoft 365 Yönetim merkezini](https://admin.microsoft.com) Office 365 etkinlik günlüğü almak için bilgiler.
+**C:** Denetim günlükleri 15 dakikadan bir saate kadar gecikme süresine sahiptir. Oturum açma etkinliği günlükleri, bazı kayıtlar için 15 dakikadan 2 saate kadar sürebilir.
 
 ---
 
-**S: Office 365 etkinlik günlükleri hakkında daha fazla bilgi almak için hangi API'leri kullanabilir?**
+**S: Azure portal aracılığıyla Office 365 etkinlik günlüğü bilgilerini alabilir miyim?**
 
-**C:** Kullanım [Office 365 Yönetim API'leri](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview) bir API aracılığıyla Office 365 etkinlik günlüklerine erişmek için.
+**C:** Office 365 etkinliği ve Azure AD etkinlik günlükleri birçok dizin kaynağını paylaşsa da, Office 365 etkinlik günlüklerinin tam bir görünümünü istiyorsanız, Office 365 etkinlik günlüğü bilgilerini almak için [Microsoft 365 yönetim merkezine](https://admin.microsoft.com) gitmeniz gerekir.
 
 ---
 
-**S: Kaç tane kayıtlarını Azure portalından indirebilirim?**
+**S: Office 365 etkinlik günlükleri hakkında bilgi almak için hangi API 'Leri kullanmalıyım?**
 
-**C:** En fazla 5000 kayıtlarını Azure portalından indirebilirsiniz. Kayıtları göre sıralanır *en son* ve varsayılan olarak, en son 5000 kayıtları alın.
+**C:** Office 365 etkinlik günlüklerine bir API aracılığıyla erişmek için [office 365 Yönetim API 'lerini](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview) kullanın.
+
+---
+
+**S: Azure portal kaç kayıt indirebilirim?**
+
+**C:** Azure portal en fazla 5000 kaydı indirebilirsiniz. Kayıtlar en *güncel* olarak sıralanır ve varsayılan olarak en son 5000 kayıtları alırsınız.
 
 ---
 
 ## <a name="risky-sign-ins"></a>Riskli oturum açma işlemleri
 
-**S: Kimlik koruması risk olayı yoktur, ancak karşılık gelen oturum açma, oturum açma işlemleri raporu görüyorum değil. Bu beklenen bir durumdur?**
+**S: Kimlik koruması 'nda bir risk olayı var, ancak oturum açma raporlarında ilgili oturum açma raporuna bakmıyorum. Bu beklensin mi?**
 
-**C:** Evet, kimlik koruması, etkileşimli veya etkileşimli olmayan tüm kimlik doğrulama akışları için risk değerlendirir. Ancak, tüm oturum açma işlemleri yalnızca rapor yalnızca etkileşimli oturum açma işlemleri gösterir.
-
----
-
-**S: Neden bir oturum açma veya bir kullanıcıya Azure portalında riskli bayrak eklenmiş olan olduğunu nasıl öğrenebilirim?**
-
-**C:** Varsa bir **Azure AD Premium** abonelik edinebilirsiniz temel risk olayları hakkında daha fazla kullanıcı seçerek **risk için işaretlenen kullanıcılar** veya bir kaydı seçmesini **riskli oturum açma işlemleri** rapor. Varsa bir **ücretsiz** veya **temel** abonelik olduktan sonra kullanıcılar, risk ve riskli oturum açma işlemleri raporları görüntüleyebilir, ancak temel alınan risk olayı bilgilerini göremez.
+**C:** Evet, kimlik koruması etkileşimli veya etkileşimli olmayan tüm kimlik doğrulama akışları için risk değerlendirir. Ancak, yalnızca oturum açma işlemleri raporu yalnızca etkileşimli oturum açma işlemlerini gösterir.
 
 ---
 
-**S: IP adresleri oturum açma ve riskli oturum açma işlemleri raporu nasıl hesaplanır?**
+**S: Nasıl yaparım?, Azure portal bir oturum açma veya kullanıcının neden riskli olarak işaretlendiğinden emin misiniz?**
 
-**C:** IP adresleri, bir IP adresi ve bilgisayarın bu adresine sahip fiziksel olarak bulunduğu yeri arasında kesin bağlantı yoktur şekilde verilir. IP adreslerini eşleme daha fazla mobil sağlayıcıları ve VPN istemci cihaz gerçekten kullanıldığı gölgeden uzak IP adresleri merkezi havuzlarından genellikle çok verme gibi faktörlere tarafından karmaşık. Şu anda Azure AD raporlarında, IP adresi fiziksel bir konuma dönüştürme izlemeleri, kayıt defteri verisi, geriye doğru arama ve diğer bilgilere göre en iyi çaba ilkesi var. 
+**C:** Bir **Azure AD Premium** aboneliğiniz varsa, risk altında Kullanıcı olarak **işaretlenen kullanıcıları** seçerek veya **riskli oturum açma** işlemleri raporundaki bir kaydı seçerek temeldeki risk olayları hakkında daha fazla bilgi edinebilirsiniz. **Ücretsiz** veya **temel** aboneliğiniz varsa, kullanıcılar risk ve riskli oturum açma işlemleri raporlarında görüntülenebilir, ancak temel risk olay bilgilerini göremezsiniz.
 
 ---
 
-**S: "Oturum açma algılandı ek risk içeren" geldiğiniz risk olayı nedir?**
+**S: Oturum açma ve riskli oturum açma işlemleri raporunda IP adresleri nasıl hesaplanır?**
 
-**C:** Oturum açma işlemleri için Azure AD kimlik koruması aboneleri için özel olan algılama için yer tutucu olarak ortamınızda riskli oturum açma işlemleri, "Oturum açma algılandı ek risk içeren" işlevleri hakkında bilgi vermek için.
+**C:** IP adresleri, bir IP adresi arasında kesin bir bağlantı olmaması ve bu adrese sahip bilgisayarın fiziksel olarak bulunduğu bir şekilde verilir. IP adreslerini eşleme, mobil sağlayıcılar ve VPN 'lerin IP adreslerini istemci cihazının gerçekten kullanıldığı yerden çok büyük bir şekilde veren, mobil sağlayıcılar ve VPN 'Ler gibi faktörlerle daha karmaşıktır. Şu anda Azure AD raporlarında, IP adresi fiziksel bir konuma dönüştürülürken izlemeler, kayıt defteri verileri, ters aramalar ve diğer bilgiler temel alınarak en iyi çaba vardır. 
+
+---
+
+**S: "Risk olayı" ek risk ile oturum açma "," işaret ediyor "olarak mı?**
+
+**C:** Ortamınızdaki tüm riskli oturum açma bilgileri hakkında bilgi vermek için, "ek risk algılandı" işlevleri, Azure AD Kimlik Koruması abonelere özel algılamalar için oturum açma işlemleri için yer tutucu olarak çalışır.
 
 ---
 
 ## <a name="conditional-access"></a>Koşullu Erişim
 
-**S: Bu özellik ile yenilikler nelerdir?**
+**S: Bu özellikle ilgili yenilikler nelerdir?**
 
-**C:** Müşteriler artık tüm oturum açma işlemleri raporu koşullu erişim ilkeleriyle giderebilirsiniz. Müşteriler, oturum açma ve sonucu her ilke için uygulanan tüm ilkeler ayrıntılarını inceleyin ve koşullu erişim durumunu gözden geçirebilirsiniz.
+**C:** Müşteriler artık tüm oturum açma raporları aracılığıyla koşullu erişim ilkelerini giderebilirler. Müşteriler, koşullu erişim durumunu gözden geçirebilir ve oturum açma için uygulanan ilkelerin ayrıntılarını ve her bir ilkenin sonucunu inceler.
 
-**S: Nasıl kullanmaya başlarım?**
+**S: Nasıl yaparım? başlamak istiyor musunuz?**
 
 **C:** Kullanmaya başlamak için:
 
-* Oturum açma işlemleri raporu gidin [Azure portalında](https://portal.azure.com).
-* Sorun giderme istediğiniz oturum üzerinde tıklayın.
-* Gidin **koşullu erişim** sekmesi. Burada, oturum açma ve her ilke için sonucu etkilenen tüm ilkelerde görüntüleyebilirsiniz. 
+* [Azure Portal](https://portal.azure.com)oturum açma raporuna gidin.
+* Sorun gidermek istediğiniz oturum açma seçeneğine tıklayın.
+* **Koşullu erişim** sekmesine gidin. Buradan, her ilke için oturum açma ve sonucu etkileyen tüm ilkeleri görüntüleyebilirsiniz. 
     
-**S: Koşullu erişim durumu için tüm olası değerler nelerdir?**
+**S: Koşullu erişim durumu için olası tüm değerler nelerdir?**
 
-**C:** Koşullu erişim durumu, aşağıdaki değerlere sahip olabilir:
+**C:** Koşullu erişim durumu aşağıdaki değerlere sahip olabilir:
 
-* **Uygulanmamış**: Bu, CA ilke kullanıcı ve uygulamanın kapsamında olduğu anlamına gelir. 
-* **Başarı**: Bu kullanıcı ve uygulamanın kapsamında olan bir CA ilke vardı ve CA ilkeleri başarıyla karşılandı anlamına gelir. 
-* **Hata**: Bu kullanıcı ve uygulamanın kapsamında olan bir CA ilke vardı ve CA ilkeleri karşılanmadı anlamına gelir. 
+* **Uygulanmadı**: Bu, kapsamdaki Kullanıcı ve uygulamayla bir CA ilkesi olmadığı anlamına gelir. 
+* **Başarı**: Bu, kapsamdaki Kullanıcı ve uygulamayla bir CA ilkesi olduğu ve CA ilkelerinin başarıyla karşılanmadığı anlamına gelir. 
+* **Hata**: Bu, kapsamdaki Kullanıcı ve uygulamayla bir CA ilkesi olduğu ve CA ilkelerinin karşılanmadığı anlamına gelir. 
     
-**S: Koşullu erişim ilkesi sonucu için tüm olası değerler nelerdir?**
+**S: Koşullu erişim ilkesi sonucu için olası tüm değerler nelerdir?**
 
-**C:** Koşullu erişim ilkesi, aşağıdaki sonuçları olabilir:
+**C:** Koşullu erişim ilkesi aşağıdaki sonuçlara sahip olabilir:
 
-* **Başarı**: İlke başarıyla gerçekleşmiş.
+* **Başarı**: İlke başarıyla karşılanmadı.
 * **Hata**: İlke karşılanmadı.
-* **Uygulanmamış**: İlke koşullarını karşılamıyor, çünkü bu olabilir.
-* **Etkin**: Bu ilkeyi devre dışı durumda kaynaklanır. 
+* **Uygulanmadı**: Bunun nedeni, ilke koşullarının uymamaları olabilir.
+* **Etkin değil**: Bunun nedeni ilke devre dışı durumda. 
     
-**S: Rapordaki tüm oturum açma ilke adını, CA ilkesi adı eşleşmiyor. Neden?**
+**S: Tüm oturum açma raporundaki ilke adı, CA 'daki ilke adı ile eşleşmiyor. Neden?**
 
-**C:** Rapordaki tüm oturum açma ilkesi adı, oturum açma zaman CA ilke adına bağlıdır. İlke adına daha sonra diğer bir deyişle, oturum açma işleminden sonra güncelleştirdiyseniz bu CA ilkesi adı ile tutarsız olabilir.
+**C:** Tüm oturum açma raporundaki ilke adı, oturum açma sırasında CA ilkesi adını temel alır. İlke adını daha sonra (oturum açma işleminden sonra) güncelleştirdiyseniz, bu, CA 'daki ilke adı ile tutarsız olabilir.
 
-**S: Koşullu erişim ilkesi nedeniyle My oturum açma engellendi, ancak oturum açma etkinliği raporunu, oturum açma başarılı olduğunu gösterir. Neden?**
+**S: Oturum açma, koşullu erişim ilkesi nedeniyle engellendi, ancak oturum açma Etkinliği raporu, oturum açma işlemi başarılı olduğunu gösteriyor. Neden?**
 
-**C:** Şu anda oturum açma raporu, koşullu erişim uygulandığında, Exchange ActiveSync senaryoları için daha doğru sonuçlar gösterilmeyebilir. Bir oturum açma başarılı oturum açma sonuç raporunda gösterdiği durumlarda durumları olabilir, ancak oturum açma aslında bir koşullu erişim ilkesi nedeniyle başarısız oldu. 
+**C:** Şu anda oturum açma raporu, koşullu erişim uygulandığında Exchange ActiveSync senaryolarına doğru sonuçları göstermeyebilir. Raporda, oturum açma işleminin başarılı bir oturum açma gösterdiği durumlarda, ancak oturum açma işlemi aslında bir koşullu erişim ilkesi nedeniyle başarısız olduysa, bu durum oluşabilir. 

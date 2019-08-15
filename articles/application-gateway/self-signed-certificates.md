@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: 9966164ec1b6a37538a24d2ef8cb80007e6f6d29
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 659c4cb3a6f0d50176875b76eeb2784c711eafd1
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698238"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967136"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Özel kök CA ile otomatik olarak imzalanan bir Azure Application Gateway sertifikası oluşturma
 
@@ -150,7 +150,7 @@ Aşağıdaki yapılandırma, Apache 'de [SSL için yapılandırılmış örnek b
 
 ### <a name="nginx"></a>NGINX
 
-Aşağıdaki yapılandırma, SSL yapılandırmasına sahip bir [NGINX sunucu bloğu](http://nginx.org/docs/http/configuring_https_servers.html) örneğidir:
+Aşağıdaki yapılandırma, SSL yapılandırmasına sahip bir [NGINX sunucu bloğu](https://nginx.org/docs/http/configuring_https_servers.html) örneğidir:
 
 ![SSL ile NGıNX](media/self-signed-certificates/nginx-ssl.png)
 

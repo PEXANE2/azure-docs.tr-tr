@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: mlearned
-ms.openlocfilehash: 09610782f211b4cfb80a1291b73ab543328376a3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ef3e9a9c68ca524b7f7f86c92130a10952a9f065
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68424186"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68949614"
 ---
 # <a name="preview---automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Önizleme-Azure Kubernetes Service (AKS) üzerinde uygulama taleplerini karşılamak üzere bir kümeyi otomatik olarak ölçeklendirme
 
@@ -102,7 +102,7 @@ AKS kümesi oluşturmanız gerekiyorsa, [az aks Create][az-aks-create] komutunu 
 > [!IMPORTANT]
 > Küme otomatik yüklemesi, bir Kubernetes bileşenidir. AKS kümesi düğümler için bir sanal makine ölçek kümesi kullansa da, Azure portal ölçek kümesi otomatik ölçek ayarlarını el ile etkinleştirmeyin veya Azure CLı kullanarak ayarları düzenleyin. Kubernetes kümesi otomatik olarak gerekli ölçek ayarlarını yönetmesine izin verin. Daha fazla bilgi için bkz. [düğüm kaynak grubundaki AKS kaynaklarını değiştirebilir miyim?](faq.md#can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-node-resource-group)
 
-Aşağıdaki örnek, sanal makine ölçek kümesi ile bir AKS kümesi oluşturur. Ayrıca küme için düğüm havuzunda küme otomatik Scaler 'ı ve en az *1* ve en fazla *3* düğüm ayarlar:
+Aşağıdaki örnek, bir sanal makine ölçek kümesi tarafından desteklenen tek düğümlü havuz içeren bir AKS kümesi oluşturur. Ayrıca küme için düğüm havuzunda küme otomatik Scaler 'ı ve en az *1* ve en fazla *3* düğüm ayarlar:
 
 ```azurecli-interactive
 # First create a resource group
@@ -124,9 +124,24 @@ az aks create \
 
 Kümeyi oluşturmak ve küme otomatik Scaler ayarlarını yapılandırmak birkaç dakika sürer.
 
-### <a name="enable-the-cluster-autoscaler-on-an-existing-node-pool-in-an-aks-cluster"></a>AKS kümesindeki mevcut bir düğüm havuzunda küme otomatik Scaler özelliğini etkinleştirme
+### <a name="update-the-cluster-autoscaler-on-an-existing-node-pool-in-a-cluster-with-a-single-node-pool"></a>Tek düğümlü havuz içeren bir kümede bulunan mevcut düğüm havuzunda küme otomatik Scaler 'ı güncelleştirme
 
-[Başlangıç](#before-you-begin) bölümünde belirtilen bir aks kümesi içindeki düğüm havuzunda küme otomatik Scaler 'ı etkinleştirebilirsiniz. Düğüm havuzunuzdaki küme otomatik Scaler özelliğini etkinleştirmek için [az aks nodepool Update][az-aks-nodepool-update] komutunu kullanın.
+Önceki küme otomatik Scaler ayarlarını, [başlamadan önce](#before-you-begin) önceki bölümünde özetlenen gereksinimleri karşılayan bir kümede güncelleştirebilirsiniz. Kümenizdeki küme otomatik listesini *tek* bir düğüm havuzuyla etkinleştirmek için [az aks Update][az-aks-update] komutunu kullanın.
+
+```azurecli-interactive
+az aks update \
+  --resource-group myResourceGroup \
+  --name myAKSCluster \
+  --update-cluster-autoscaler \
+  --min-count 1 \
+  --max-count 5
+```
+
+Daha sonra küme otomatik, `az aks update --enable-cluster-autoscaler` veya `az aks update --disable-cluster-autoscaler` komutlarıyla etkinleştirilebilir veya devre dışı bırakılabilir.
+
+### <a name="enable-the-cluster-autoscaler-on-an-existing-node-pool-in-a-cluster-with-multiple-node-pools"></a>Birden çok düğüm havuzu içeren bir kümede var olan düğüm havuzunda küme otomatik Scaler özelliğini etkinleştirme
+
+Küme otomatik [izleme özelliği, birden çok düğüm havuzları önizleme özelliği](use-multiple-node-pools.md) etkinleştirilmiş olarak da kullanılabilir. Birden çok düğüm havuzu tutan bir AKS kümesi içindeki tek düğüm havuzlarında küme otomatik Scaler 'ı etkinleştirebilir ve [başlamadan önce, başlamadan önce](#before-you-begin) bölümünde açıklandığı gibi gereksinimleri karşılarlar. Tek bir düğüm havuzunda küme otomatik Scaler özelliğini etkinleştirmek için [az aks nodepool Update][az-aks-nodepool-update] komutunu kullanın.
 
 ```azurecli-interactive
 az aks nodepool update \
@@ -138,7 +153,7 @@ az aks nodepool update \
   --max-count 3
 ```
 
-Yukarıdaki örnek, *Myakscluster* içindeki *mynodepool* düğüm havuzunda küme otomatik Scaler 'ı ve en az *1* ve en fazla *3* düğüm ayarlar. En düşük düğüm sayısı düğüm havuzundaki mevcut düğüm sayısından büyükse, ek düğümlerin oluşturulması birkaç dakika sürer.
+Daha sonra küme otomatik, `az aks nodepool update --enable-cluster-autoscaler` veya `az aks nodepool update --disable-cluster-autoscaler` komutlarıyla etkinleştirilebilir veya devre dışı bırakılabilir.
 
 ## <a name="change-the-cluster-autoscaler-settings"></a>Küme otomatik Scaler ayarlarını değiştirme
 

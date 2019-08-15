@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 2b961b855c7a0bb08c31b4e7ea8deb7f82ebb77c
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: fb13cd65142214ccf852c591ae081e7e633e1a4d
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68846198"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935321"
 ---
 # <a name="change-the-license-model-for-a-sql-server-virtual-machine-in-azure"></a>Azure 'da SQL Server bir sanal makine için lisans modelini değiştirme
 Bu makalede, Azure 'daki bir SQL Server sanal makinesi (VM) için lisans modelinin, **Microsoft. SqlVirtualMachine**ADLı yenı SQL VM kaynak sağlayıcısı kullanılarak nasıl değiştirileceği açıklanır.
@@ -52,7 +52,7 @@ SQL VM kaynak sağlayıcısı 'nın kullanımı, SQL Server IaaS uzantısını g
 
 ## <a name="change-the-license-for-vms-already-registered-with-the-resource-provider"></a>Kaynak sağlayıcısıyla zaten kayıtlı olan VM 'Lerin lisansını değiştirme 
 
-# <a name="azure-portaltabazure-portal"></a>[Azure portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
@@ -66,7 +66,7 @@ Lisans modelini doğrudan portaldan değiştirebilirsiniz:
 ![Portalda Azure Hibrit Avantajı](media/virtual-machines-windows-sql-ahb/ahb-in-portal.png)
 
 
-# <a name="azure-clitabbash"></a>[Azure CLI](#tab/bash)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Azure CLı 'yi, lisans modelinizi değiştirmek için kullanabilirsiniz.  
 
@@ -88,7 +88,7 @@ Aşağıdaki kod parçacığı, kendi lisans modelinizi Kullandıkça Öde için
 az sql vm update -n <VMName> -g <ResourceGroupName> --license-type PAYG
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 PowerShell 'i, lisans modelinizi değiştirmek için kullanabilirsiniz.
 
 Aşağıdaki kod parçacığı, kendi lisansını getir (veya Azure Hibrit Avantajı kullanarak) Kullandıkça Öde lisans modelinize geçiş yapar:

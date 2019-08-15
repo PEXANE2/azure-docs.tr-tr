@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/10/2019
 ms.author: juergent
-ms.openlocfilehash: 754eb063f82344e72bece8fb0ac5708dbc8ab791
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 0da426a9302ce72b5359df15d3f8e244fc1766a0
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249127"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935352"
 ---
 [1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [2015553]: https://launchpad.support.sap.com/#/notes/2015553
@@ -133,7 +133,7 @@ Dağıtımı yürütmeden önce planlama işlemini doldurun. Planlama, Azure 'da
 | Sanal ağ/alt ağ tanımı | IBM DB2 ve Azure Load Balancer VM 'lerinin dağıtıldığı yer. Var olan veya yeni oluşturulmuş olabilir. |
 | IBM DB2 LUW barındıran sanal makineler | VM boyutu, depolama, ağ, IP adresi. |
 | IBM DB2 veritabanı için sanal ana bilgisayar adı ve sanal IP| SAP uygulama sunucularının bağlantısında kullanılan sanal IP veya ana bilgisayar adı. **DB-vırt-hostname**, **DB-vırt-IP**. |
-| Azure ile sınırlama | Azure sınırlama veya SBD sınırlama (önemle önerilir). Bölünmüş beyinden kaçınmaya yönelik Yöntem engellenir. |
+| Azure ile sınırlama | Azure sınırlama veya SBD sınırlama (önemle önerilir). Bölünmüş beyinli durumların önüne geçmek için yöntem. |
 | SBD SANAL MAKINESI | SBD sanal makine boyutu, depolama, ağ. |
 | Azure Load Balancer | Temel veya standart (önerilir) kullanımı, DB2 veritabanı için yoklama bağlantı noktası (öneri 62500) **araştırma-bağlantı noktasıdır**. |
 | Ad çözümlemesi| Ad çözümlemenin ortamda nasıl çalıştığı. DNS hizmeti önemle önerilir. Yerel ana bilgisayarlar dosyası kullanılabilir. |
@@ -202,7 +202,7 @@ Birincil IBM DB2 LUW veritabanı örneğini ayarlamak için:
 
 SAP homojen sistem kopyalama yordamını kullanarak bekleme veritabanı sunucusunu ayarlamak için aşağıdaki adımları yürütün:
 
-1. **Hedef sistemler**  **Dağıtılmış veritabanı örneği**> Sistem kopyalama seçeneğini belirleyin. >  > 
+1. **Hedef sistemler** **Dağıtılmış veritabanı örneği**> Sistem kopyalama seçeneğini belirleyin. >  > 
 1. Bir kopyalama yöntemi olarak, yedek sunucu örneğindeki bir yedeği geri yüklemek için yedekleme kullanabilmeniz için **homojen sistemi** ' ni seçin.
 1. Homojen sistem kopyası için veritabanını geri yüklemek üzere çıkış adımına ulaştığınızda yükleyiciden çıkın. Veritabanını birincil ana bilgisayarın yedeğinden geri yükleyin. Sonraki yükleme aşamaları, birincil veritabanı sunucusunda zaten yürütüldü.
 1. IBM DB2 için HADR 'yi ayarlayın.
@@ -404,10 +404,10 @@ sudo crm configure property maintenance-mode=false</pre></code>
 # <a name="full-list-of-resources"></a>Kaynakların tam listesi:
 
 #  <a name="stonith-sbd----stonithexternalsbd-started-azibmdb02"></a>stonith-SBD (stonith: dış/SBD): Started azibmdb02
-#  <a name="resource-group-gipdb2ptrptr"></a>Kaynak grubu: g_ip_db2ptr_PTR
-#      <a name="rscipdb2ptrptr--ocfheartbeatipaddr2-------started-azibmdb02"></a>rsc_ip_db2ptr_PTR (OCF:: sinyal: IPaddr2):       Started azibmdb02
-#      <a name="rscncdb2ptrptr--ocfheartbeatanything------started-azibmdb02"></a>rsc_nc_db2ptr_PTR (OCF:: sinyal: herhangi bir şey):      Started azibmdb02
-#  <a name="masterslave-set-msldb2db2ptrptr-rscdb2db2ptrptr"></a>Ana/bağımlı kümesi: msl_Db2_db2ptr_PTR [rsc_Db2_db2ptr_PTR]
+#  <a name="resource-group-g_ip_db2ptr_ptr"></a>Kaynak grubu: g_ip_db2ptr_PTR
+#      <a name="rsc_ip_db2ptr_ptr--ocfheartbeatipaddr2-------started-azibmdb02"></a>rsc_ip_db2ptr_PTR (OCF:: sinyal: IPaddr2):       Started azibmdb02
+#      <a name="rsc_nc_db2ptr_ptr--ocfheartbeatanything------started-azibmdb02"></a>rsc_nc_db2ptr_PTR (OCF:: sinyal: herhangi bir şey):      Started azibmdb02
+#  <a name="masterslave-set-msl_db2_db2ptr_ptr-rsc_db2_db2ptr_ptr"></a>Ana/bağımlı kümesi: msl_Db2_db2ptr_PTR [rsc_Db2_db2ptr_PTR]
 #      <a name="masters--azibmdb02-"></a>Ana bilgisayarlar: [azibmdb02]
 #      <a name="slaves--azibmdb01-"></a>SLA 'lar: [azibmdb01]
 </pre>

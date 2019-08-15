@@ -1,35 +1,35 @@
 ---
-title: Daha yüksek kullanılabilirlik ve Azure Cosmos DB'de performans için en iyi duruma getirmek için özel eşitlemeyi uygulama
-description: Daha yüksek kullanılabilirlik ve Azure Cosmos DB'de performans için en iyi duruma getirmek için özel bir eşitleme uygulamayı öğrenin.
+title: Azure Cosmos DB ' de daha yüksek kullanılabilirlik ve performans için iyileştirmek üzere özel eşitleme uygulama
+description: Azure Cosmos DB ' de daha yüksek kullanılabilirlik ve performans için iyileştirmek üzere özel eşitleme uygulamayı öğrenin.
 author: rimman
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 05/23/2019
 ms.author: rimman
-ms.openlocfilehash: de66149a2ea3e01e62aa8e33ea5a99121a21524f
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 0f630c2139d1d7d391d6c5578e5e7f378e56dcb4
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67986074"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69013779"
 ---
-# <a name="implement-custom-synchronization-to-optimize-for-higher-availability-and-performance"></a>Daha yüksek kullanılabilirlik ve performansı iyileştirmek için özel eşitlemesi uygulama
+# <a name="implement-custom-synchronization-to-optimize-for-higher-availability-and-performance"></a>Daha yüksek kullanılabilirlik ve performans için iyileştirmek üzere özel eşitleme uygulayın
 
-Azure Cosmos DB sunar [beş iyi tanımlanmış tutarlılık düzeyi](consistency-levels.md) , tutarlılık, performans ve kullanılabilirlik etmekten dengelemek, içinden seçim yapabileceğiniz için. Güçlü tutarlılık, verileri zaman uyumlu olarak çoğaltılan ve Azure Cosmos hesabı kullanılabilir olduğu her bölgede arızaya kalıcı emin olun yardımcı olur. Bu yapılandırma, en yüksek dayanıklılık düzeyini sağlar, ancak performans ve kullanılabilirlik karşılığında sunulur. Uygulamanızın olasılığına karşı veri dayanıklılığını hafifletin veya denetim istiyorsanız gereksinimlerine kullanılabilirlik ödün vermeden uygulama uyacak şekilde, kullanabileceğiniz *özel eşitleme* dayanıklılık düzeyine ulaşmak için uygulama katmanında, istersiniz.
+Azure Cosmos DB, tutarlılık, performans ve kullanılabilirlik arasında zorunluluğunu getirir dengelemek üzere arasından seçim yapabileceğiniz [beş iyi tanımlanmış tutarlılık düzeyi](consistency-levels.md) sunar. Güçlü tutarlılık, Azure Cosmos hesabının kullanılabildiği her bölgede verilerin zaman uyumlu olarak çoğaltılmasını ve sürekli olarak kalıcı olmasını sağlamaya yardımcı olur. Bu yapılandırma en yüksek düzeyde dayanıklılık sağlar, ancak performans ve kullanılabilirlik maliyetlerine gelir. Uygulamanızın, kullanılabilirliği tehlikeye atmadan uygulama gereksinimlerini karşılayacak şekilde denetlemesini veya rahatlılığını istiyorsanız, istediğiniz dayanıklılık düzeyini elde etmek için uygulama katmanında *özel eşitleme* kullanabilirsiniz.
 
-Aşağıdaki görüntüde, görsel olarak özel bir eşitleme modelini göstermektedir:
+Aşağıdaki görüntüde özel eşitleme modeli görsel olarak gösterilmiştir:
 
 ![Özel eşitleme](./media/how-to-custom-synchronization/custom-synchronization.png)
 
-Bu senaryoda, bir Azure Cosmos kapsayıcı birden çok kıtadaki üzerinde birçok bölgede küresel olarak çoğaltılır. Bu senaryoda tüm bölgeler için güçlü tutarlılık kullanarak performansı etkiler. Ödün yazma olmadan gecikme süresi yüksek veri dayanıklılık düzeyi sağlamak için uygulamanın aynı paylaşan iki istemciler'i kullanabilir [Oturum belirteci](how-to-manage-consistency.md#utilize-session-tokens).
+Bu senaryoda, bir Azure Cosmos kapsayıcısı, birden çok kıtadaki çeşitli bölgelerde küresel olarak çoğaltılır. Bu senaryodaki tüm bölgeler için güçlü tutarlılık kullanılması performansı etkiler. Yazma gecikmesinden ödün vermeden daha yüksek düzeyde veri dayanıklılığı sağlamak için, uygulama aynı [oturum belirtecini](how-to-manage-consistency.md#utilize-session-tokens)paylaşan iki istemci kullanabilir.
 
-İlk istemci, yerel bölge (örneğin, ABD Batı) veri yazabilirsiniz. İkinci bir istemci (örneğin, ABD Doğu'daki) eşitleme sağlamak için kullanılan salt okunur bir istemcidir. Thread.CurrentPrincipal z tokenu relace aşağıdaki okuma yazma yanıtını akan tarafından salt okunur ABD Doğu Yazar eşitlenmesini sağlar. Azure Cosmos DB yazma en az bir bölgeye göre görüldüğünde sağlar. Özgün yazma bölgesi kalırsa bölgesel bir kesinti varlığını sürdürmesi için sağlanır. Bu senaryoda, ABD Doğu, güçlü tutarlılık kullanan tüm bölgeler arasında gecikme süresini azaltma her yazma eşitlenir. Burada her bölgede yazma işlemleri meydana, çok yöneticili bir senaryoda, bu model, birden çok bölgede paralel eşitlenecek genişletebilirsiniz.
+İlk istemci, verileri yerel bölgeye yazabilir (örneğin, ABD Batı). İkinci istemci (örneğin, ABD Doğu) eşitlemeyi sağlamak için kullanılan bir okuma istemcinin olması gerekir. Yazma yanıtından oturum belirtecini aşağıdaki okumaya ayırarak, okuma ABD Doğu yazma eşitlemesini sağlar. Azure Cosmos DB, yazma işlemlerinin en az bir bölge tarafından görülmesini sağlar. Özgün yazma bölgesi kapalıysa, bölgesel kesintiden etkilenmeleri garanti edilir. Bu senaryoda her yazma işlemi ABD Doğu eşitlenir ve tüm bölgelerde güçlü tutarlılık sağlamak için gecikme süresini azaltır. Her bölgede yazma gerçekleştiği çok yöneticili bir senaryoda bu modeli, paralel olarak birden çok bölgeye eşitlemek için genişletebilirsiniz.
 
-## <a name="configure-the-clients"></a>İstemcilerini yapılandırma
+## <a name="configure-the-clients"></a>İstemcileri yapılandırma
 
-Aşağıdaki örnek iki özel eşitleme istemcilerde örnekleyen bir veri erişim katmanı gösterir:
+Aşağıdaki örnek, özel eşitleme için iki istemciyi örnekleyen bir veri erişim katmanını gösterir:
 
-### <a name="net-v2-sdk"></a>V2 .net SDK'sı
+### <a name="net-v2-sdk"></a>.Net v2 SDK
 ```csharp
 class MyDataAccessLayer
 {
@@ -65,7 +65,7 @@ class MyDataAccessLayer
 }
 ```
 
-### <a name="net-v3-sdk"></a>.NET V3 SDK'sı
+### <a name="net-v3-sdk"></a>.Net v3 SDK
 ```csharp
 class MyDataAccessLayer
 {
@@ -84,16 +84,16 @@ class MyDataAccessLayer
 
 
         writeClient = new CosmosClient(accountEndpoint, key, writeConnectionOptions);
-        writeClient = new CosmosClient(accountEndpoint, key, writeConnectionOptions);
+        readClient = new CosmosClient(accountEndpoint, key, readConnectionOptions);
     }
 }
 ```
 
 ## <a name="implement-custom-synchronization"></a>Özel eşitlemeyi uygulama
 
-İstemcilerin başlatıldıktan sonra uygulama yazma işlemlerini ABD Doğu gibi yerel bölge (ABD Batı) ve zorla eşitleme yazma işlemlerini gerçekleştirebilirsiniz.
+İstemciler başlatıldıktan sonra, uygulama yerel bölgeye (ABD Batı) yazma işlemleri gerçekleştirebilir ve yazma işlemlerini ABD Doğu için aşağıdaki gibi zorunlu hale getirebilirsiniz.
 
-### <a name="net-v2-sdk"></a>V2 .net SDK'sı
+### <a name="net-v2-sdk"></a>.Net v2 SDK
 ```csharp
 class MyDataAccessLayer
 {
@@ -108,7 +108,7 @@ class MyDataAccessLayer
 }
 ```
 
-### <a name="net-v3-sdk"></a>.NET V3 SDK'sı
+### <a name="net-v3-sdk"></a>.Net v3 SDK
 ```csharp
 class MyDataAccessLayer
 {
@@ -127,13 +127,13 @@ class MyDataAccessLayer
 }
 ```
 
-Birden çok bölgede paralel eşitlenecek model genişletebilirsiniz.
+Modeli, paralel olarak birden çok bölgeye eşitlenecek şekilde genişletebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Genel dağıtım ve Azure Cosmos DB tutarlılık hakkında daha fazla bilgi edinmek için bu makaleleri okuyun:
+Azure Cosmos DB genel dağıtım ve tutarlılık hakkında daha fazla bilgi edinmek için şu makaleleri okuyun:
 
-* [Azure Cosmos DB'de doğru tutarlılık düzeyi seçin](consistency-levels-choosing.md)
-* [Azure Cosmos DB'deki tutarlılık, kullanılabilirlik ve performans seçenekleri](consistency-levels-tradeoffs.md)
-* [Azure Cosmos DB'deki tutarlılık yönetme](how-to-manage-consistency.md)
-* [Azure Cosmos DB'de bölümleme ve veri dağıtım](partition-data.md)
+* [Azure Cosmos DB doğru tutarlılık düzeyini seçin](consistency-levels-choosing.md)
+* [Azure Cosmos DB tutarlılık, kullanılabilirlik ve performans avantajları](consistency-levels-tradeoffs.md)
+* [Azure Cosmos DB tutarlılığı yönetme](how-to-manage-consistency.md)
+* [Azure Cosmos DB bölümlendirme ve veri dağıtımı](partition-data.md)

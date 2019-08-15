@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/04/2019
+ms.date: 08/11/2019
 ms.author: v-mohabe
-ms.openlocfilehash: b8d27178a75cb39c7d7769f2db6a193292a3f9f1
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: d6b5b528c3021bfb62bc30ad5910524db36e7e95
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782518"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950544"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>Güvenlik Merkezi 'nde çapraz Kiracı Yönetimi
 
@@ -27,9 +27,7 @@ ms.locfileid: "68782518"
 
 - Hizmet sağlayıcıları, birden çok müşteri için kaynakların güvenlik duruşunu kendi kiracılarının içinden yönetebilir.
 
-- Birden çok kiracıya sahip kuruluşların güvenlik ekipleri, güvenlik duruşlarını tek bir konumdan görüntüleyebilir ve yönetebilir
-
-  ![Çapraz kiracılar yönetimi](./media/security-center-cross-tenant-management/cross-tenant-security-center.png)
+- Birden çok kiracıya sahip kuruluşların güvenlik ekipleri, güvenlik duruşunu tek bir konumdan görüntüleyebilir ve yönetebilir.
 
 ## <a name="set-up-cross-tenant-management"></a>Çapraz kiracı yönetimini ayarlama
 
@@ -48,22 +46,13 @@ Birden çok Kiracıdaki abonelikleri, tek bir kiracıda birden çok aboneliği y
 
 Görünümler ve eylemler temelde aynıdır. Bazı örnekler şunlardır:
 
-- **Güvenlik Ilkelerini yönetme**: Tek bir görünümden, [ilkeler](tutorial-security-policy.md)içeren çok sayıda kaynağın güvenlik duruşunu yönetin, güvenlik önerileri ile eylemler gerçekleştirin ve güvenlikle ilgili verileri toplayın ve yönetin. Örneğin, aşağıdaki görüntüde dört farklı kiracının dizini vardır (Doug. Lora, Microsoft, SSO, SOLDE şirketi) ve her kiracının abonelikleri vardır. Farklı kiracılardan seçilen abonelikler bu Ilke yönetimi listesinde listelenmiştir.
-
-     ![İlkelerin çapraz Kiracı Yönetimi](./media/security-center-cross-tenant-management/cross-tenant-policy.png)
-
-- **Güvenli puanı ve uyumluluk**duruşunu artırma: Çapraz kiracı görünürlüğü, tüm Kiracılarınızın genel güvenlik duruşunu ve aşağıdaki görüntüde görüldüğü gibi bunların her biri için [güvenli puan](security-center-secure-score.md) ve [Uyumluluk](security-center-compliance-dashboard.md) duruşunu görüntülemenize olanak sağlar.
-
-     ![Güvenlik puanı](./media/security-center-cross-tenant-management/cross-tenant-secure-score.png)
-
-- **Önerileri düzeltin**: Tek seferde çeşitli kiracılardan çok sayıda kaynağın [önerisini](security-center-recommendations.md) izleyin ve düzeltin (aşağıdaki görüntüde görüldüğü gibi). Daha sonra tüm kiracılar genelinde en yüksek riski sunan güvenlik açıklarını hemen ekleyebilirsiniz.
-
-  ![Önerilerin çapraz Kiracı Yönetimi](./media/security-center-cross-tenant-management/cross-tenant-recommendation.png)
-
+- **Güvenlik Ilkelerini yönetme**: Tek bir görünümden, [ilkeler](tutorial-security-policy.md)içeren çok sayıda kaynağın güvenlik duruşunu yönetin, güvenlik önerileri ile eylemler gerçekleştirin ve güvenlikle ilgili verileri toplayın ve yönetin.
+- **Güvenli puanı ve uyumluluk**duruşunu artırma: Çapraz kiracı görünürlüğü, tüm Kiracılarınızın genel güvenlik duruşunu ve bunların her biri için [güvenli puan](security-center-secure-score.md) ve [Uyumluluk](security-center-compliance-dashboard.md) duruşunu en iyi şekilde nasıl iyileştirebileceğinizi görüntülemenize olanak sağlar.
+- **Önerileri düzeltin**: Aynı anda çeşitli kiracılardan çok sayıda kaynağın [önerisini](security-center-recommendations.md) izleyin ve düzeltin. Daha sonra tüm kiracılar genelinde en yüksek riski sunan güvenlik açıklarını hemen ekleyebilirsiniz.
 - **Uyarıları Yönet**: Farklı kiracılar genelinde [uyarıları](security-center-alerts-overview.md) tespit edin. Eyleme dönüştürülebilir [Düzeltme adımlarıyla](security-center-managing-and-responding-alerts.md)uyumlu olmayan kaynaklar üzerinde işlem yapın.
 
 - **Gelişmiş bulut savunma özelliklerini ve daha fazlasını yönetin**: [Tam zamanında (JIT) VM erişimi](security-center-just-in-time.md), [Uyarlamalı ağ sağlamlaştırma](security-center-adaptive-network-hardening.md), [Uyarlamalı uygulama denetimleri](security-center-adaptive-application.md)ve daha fazlası gibi çeşitli tehdit algılama ve koruma hizmetlerini yönetin.
-
+ 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu makalede, çapraz kiracı yönetiminin güvenlik merkezi 'nde nasıl çalıştığı açıklanmaktadır. Güvenlik Merkezi hakkında daha fazla bilgi edinmek için şunlara bakın:
 
