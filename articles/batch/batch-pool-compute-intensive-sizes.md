@@ -140,8 +140,8 @@ CUDA uygulamalarını bir Linux NC düğümü havuzunda çalıştırmak için, C
 Windows MPı uygulamalarını bir Azure H16r VM düğümü havuzunda çalıştırmak için, HpcVmDrivers uzantısını yapılandırmanız ve [MICROSOFT MPI](https://docs.microsoft.com/message-passing-interface/microsoft-mpi)yüklemeniz gerekir. Gerekli sürücüler ve yazılımlarla özel bir Windows Server 2016 görüntüsünü dağıtmak için örnek adımlar aşağıda verilmiştir:
 
 1. Windows Server 2016 çalıştıran bir Azure H16r VM dağıtın. Örneğin, ABD Batı bölgesinde sanal makineyi oluşturun. 
-2. Azure aboneliğinize bağlanan bir istemci bilgisayarından bir Azure PowerShell komutu [](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances
-) çalıştırarak veya Azure Cloud Shell kullanarak, hpcvmdrivers uzantısını sanal makineye ekleyin. 
+2. hpcvmdrivers uzantısını sanal makineye ekleyin [Azure aboneliğinize bağlanan bir istemci bilgisayarından bir Azure PowerShell komutu ](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances
+) çalıştırarak veya Azure Cloud Shell kullanarak, 
 1. SANAL makineye Uzak Masaüstü bağlantısı oluşturun.
 1. Microsoft MPı 'nin en son sürümü için [Kurulum paketini](https://www.microsoft.com/download/details.aspx?id=57467) (msmpisetup. exe) Indirin ve Microsoft MPI 'yi yükleyin.
 1. Toplu Iş için bir [anlık görüntü ve özel WINDOWS VM görüntüsü](batch-custom-images.md) oluşturma adımlarını izleyin.
