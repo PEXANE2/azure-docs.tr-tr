@@ -16,12 +16,12 @@ ms.date: 04/19/2019
 ms.author: ajburnle
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d33b4751b421f5af1536af9a88d15e060ab59bdb
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 2420fc25795ec74939649fb8a17ead7c8cfdd1df
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489071"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69032453"
 ---
 # <a name="view-reports-and-logs-in-azure-ad-entitlement-management-preview"></a>Azure AD Yetkilendirme Yönetimi 'nde raporları ve günlükleri görüntüleme (Önizleme)
 
@@ -29,6 +29,12 @@ ms.locfileid: "68489071"
 > Azure Active Directory (Azure AD) yetkilendirme yönetimi şu anda genel önizleme aşamasındadır.
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
 > Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Kullanıcı atamaları raporu ve Azure Active Directory Denetim günlüğü, dizininizdeki kullanıcılar hakkında ek ayrıntılar sağlar. Yönetici olarak, bir kullanıcının denetim amaçlarıyla istek günlüklerine erişimi olan kaynakları görüntüleyebilir ve Kullanıcı isteğinin durumunu belirleyebilirsiniz. Bu makalede, Kullanıcı atamaları raporunun ve Azure AD denetim günlüklerinin nasıl kullanılacağı açıklanır.
+
+Azure Active Directory 'de kullanıcıların erişimini yönetmek için Yetkilendirme Yönetimi 'ni nasıl kullanacağınızı öğrenmek için aşağıdaki videoyu izleyin:
+
+>[!VIDEO https://www.youtube.com/embed/omtNJ7ySjS0]
 
 ## <a name="view-resources-a-user-has-access-to"></a>Kullanıcının erişimi olan kaynakları görüntüleme
 
@@ -52,7 +58,7 @@ Bir kullanıcının erişim paketine erişim isteği ve erişimi alma hakkında 
 
 1. **Azure Active Directory** ' a ve sonra **Denetim günlükleri**' ne tıklayın.
 
-1. En üstte, aradığınız denetim kaydına  bağlı olarak kategoriyi `EntitlementManagement` veya `UserManagement`ya da olarak değiştirin.  
+1. En üstte, aradığınız denetim kaydına bağlı olarak kategoriyi `EntitlementManagement` veya `UserManagement`ya da olarak değiştirin.  
 
 1. **Uygula**'ya tıklayın.
 

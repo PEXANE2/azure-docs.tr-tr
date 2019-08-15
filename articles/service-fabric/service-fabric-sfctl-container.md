@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric CLI - sfctl kapsayıcı | Microsoft Docs
-description: Service Fabric CLI'sını sfctl kapsayıcı komutlarını açıklamaktadır.
+title: Azure Service Fabric CLı-sfctl kapsayıcısı | Microsoft Docs
+description: Service Fabric CLı sfctl kapsayıcı komutlarını açıklar.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
@@ -8,83 +8,82 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: a5037c535737946a50d8af6fa60d0815120276d9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0ce6cf7c627657cf757b0c1ef9aa22428c17a7e7
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60837341"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036477"
 ---
 # <a name="sfctl-container"></a>sfctl container
-Kapsayıcı çalıştırma komutları bir küme düğümünde ilgili.
+Kapsayıcı ile ilgili komutları bir küme düğümünde çalıştırın.
 
 ## <a name="commands"></a>Komutlar
 
 |Komut|Açıklama|
 | --- | --- |
-| API çağırma | Belirli bir kod paketi için bir Service Fabric düğüm dağıtılan bir kapsayıcı kapsayıcı API'sini çağırır. |
-| logs | Kapsayıcı günlükleri için kapsayıcı bir Service Fabric düğüm belirli bir kod paketi için dağıtılan alır. |
+| Invoke-API | Verilen kod paketi için bir Service Fabric düğümüne dağıtılan bir kapsayıcıda kapsayıcı API 'sini çağırma. |
+| logs | Verilen kod paketi için bir Service Fabric düğümüne dağıtılan kapsayıcının kapsayıcı günlüklerini alır. |
 
-## <a name="sfctl-container-invoke-api"></a>çağırma sfctl container-API
-Belirli bir kod paketi için bir Service Fabric düğüm dağıtılan bir kapsayıcı kapsayıcı API'sini çağırır.
+## <a name="sfctl-container-invoke-api"></a>sfctl kapsayıcısı çağırma-API
+Verilen kod paketi için bir Service Fabric düğümüne dağıtılan bir kapsayıcıda kapsayıcı API 'sini çağırma.
 
 ### <a name="arguments"></a>Bağımsız Değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --Uygulama-kimliği [gerekli] | Uygulama kimliği. <br><br> Bu genellikle uygulamayı olmadan tam adı, ' fabric\:' URI düzeni. Sürüm 6. 0 ' başlayarak, hiyerarşik adları ile ayrılmış "\~" karakter. Örneğin, uygulama adı ise "fabric\:/myapp/app1", uygulama kimliği olur "myapp\~app1" 6.0 + ve "myapp/app1" önceki sürümlerinde. |
-| --kod-paketi-örnek-[gerekli] kimliği | Bir kod paketi örneği üzerinde bir service fabric düğümünü dağıtılan benzersiz olarak tanımlayan kimliği. <br><br> 'Hizmet kod-paketi-listesi tarafından' alınabilir. |
-| --kod-paketi-name [gerekli] | Bir Service Fabric kümesindeki bir uygulama türünün bir parçası olarak kayıtlı hizmet bildiriminde belirtilen kod paketi adı. |
-| --container-API-uri-[gerekli] yolu | Kapsayıcı REST API URI yolu, '{id}' kapsayıcı adı/kimliği yerine kullanın. |
-| --[gerekli] düğüm adı | Düğümün adı. |
-| --service-bildirim-name [gerekli] | Bir Service Fabric kümesindeki bir uygulama türünün bir parçası olarak kayıtlı bir hizmet bildiriminin adı. |
-| --container-API-gövde | Kapsayıcı REST API için HTTP istek gövdesi. |
-| --container-api-content-type | Kapsayıcı REST API için içerik türü varsayılan olarak 'application/json'. |
-| --container-api-http-verb | GET için varsayılan olarak HTTP fiili kapsayıcısı, REST API için. |
-| --zaman aşımı -t | Sunucu zaman aşımı saniye.  Varsayılan\: 60. |
+| --Uygulama kimliği [gerekli] | Uygulamanın kimliği. <br><br> Bu genellikle uygulamanın ' Fabric\:' URI şeması olmadan tam adıdır. Sürüm 6,0 ' den başlayarak, hiyerarşik adlar "\~" karakteriyle sınırlandırılmıştır. Örneğin, uygulama adı "Fabric\:/MyApp/APP1" ise, uygulama kimliği önceki sürümlerde "MyApp\~APP1" ve 6.0 + "MyApp/APP1" şeklinde olur. |
+| --Code-Package-Instance-id [gerekli] | Service Fabric düğümüne dağıtılan bir kod paketi örneğini benzersiz bir şekilde tanımlayan KIMLIK. <br><br> ' Service Code-Package-List ' tarafından alınabilir. |
+| --Code-Package-Name [gerekli] | Hizmet bildiriminde belirtilen kod paketinin adı Service Fabric kümesindeki bir uygulama türünün bir parçası olarak kaydedilir. |
+| --Container-api-Uri-Path [gerekli] | Kapsayıcı REST API URI yolu, kapsayıcı adı/kimliği yerine ' {id} ' kullanın. |
+| --Node-Name [gerekli] | Düğümün adı. |
+| --hizmet-bildirim-adı [gerekli] | Service Fabric kümesinde uygulama türünün bir parçası olarak kaydedilmiş bir hizmet bildiriminin adı. |
+| --Container-api-Body | Kapsayıcı REST API için HTTP istek gövdesi. |
+| --Container-api-Content-Type | Kapsayıcı REST API için içerik türü, varsayılan olarak ' Application/JSON ' olarak belirlenmiştir. |
+| --Container-api-http-fiil | Kapsayıcı REST API için HTTP fiili, varsayılan olarak al. |
+| --timeout-t | Saniye cinsinden sunucu zaman aşımı.  Varsayılan\: 60. |
 
-### <a name="global-arguments"></a>Genel bağımsız değişkenleri
+### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --hata ayıklama | Tüm hata ayıklama günlüklerini göster için günlüğün ayrıntı düzeyini artırır. |
-| ---h Yardım | Bu yardım iletisini ve çıkış gösterir. |
-| --Çıktı -o | Çıkış biçimi.  İzin verilen değerler\: json, jsonc, tablo, tsv.  Varsayılan\: json. |
-| --Sorgu | JMESPath sorgu dizesi. HTTP bkz\://jmespath.org/ daha fazla bilgi ve örnekler. |
-| --verbose | Günlüğün ayrıntı düzeyini artırır. Kullanımı--tam hata ayıklama günlükleri için hata ayıklama. |
+| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
+| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
 ## <a name="sfctl-container-logs"></a>sfctl kapsayıcı günlükleri
-Kapsayıcı günlükleri için kapsayıcı bir Service Fabric düğüm belirli bir kod paketi için dağıtılan alır.
+Verilen kod paketi için bir Service Fabric düğümüne dağıtılan kapsayıcının kapsayıcı günlüklerini alır.
 
 ### <a name="arguments"></a>Bağımsız Değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --Uygulama-kimliği [gerekli] | Uygulama kimliği. <br><br> Bu genellikle uygulamayı olmadan tam adı, ' fabric\:' URI düzeni. Sürüm 6. 0 ' başlayarak, hiyerarşik adları ile ayrılmış "\~" karakter. Örneğin, uygulama adı ise "fabric\:/myapp/app1", uygulama kimliği olur "myapp\~app1" 6.0 + ve "myapp/app1" önceki sürümlerinde. |
-| --kod-paketi-örnek-[gerekli] kimliği | 'Hizmet kod-paketi-listesi tarafından' alınabilir paket örnek kimliği kod. |
-| --kod-paketi-name [gerekli] | Bir Service Fabric kümesindeki bir uygulama türünün bir parçası olarak kayıtlı hizmet bildiriminde belirtilen kod paketi adı. |
-| --[gerekli] düğüm adı | Düğümün adı. |
-| --service-bildirim-name [gerekli] | Bir Service Fabric kümesindeki bir uygulama türünün bir parçası olarak kayıtlı bir hizmet bildiriminin adı. |
-| --tail | Günlükleri sonundan gösterilecek satırların sayısı. Varsayılan 100'dür. 'tüm' günlüklerin tamamını göstermek için. |
-| --zaman aşımı -t | Sunucu zaman aşımı saniye.  Varsayılan\: 60. |
+| --Uygulama kimliği [gerekli] | Uygulamanın kimliği. <br><br> Bu genellikle uygulamanın ' Fabric\:' URI şeması olmadan tam adıdır. Sürüm 6,0 ' den başlayarak, hiyerarşik adlar "\~" karakteriyle sınırlandırılmıştır. Örneğin, uygulama adı "Fabric\:/MyApp/APP1" ise, uygulama kimliği önceki sürümlerde "MyApp\~APP1" ve 6.0 + "MyApp/APP1" şeklinde olur. |
+| --Code-Package-Instance-id [gerekli] | ' Hizmet kodu-paket-listesi ' tarafından alınabilecek kod paketi örnek KIMLIĞI. |
+| --Code-Package-Name [gerekli] | Hizmet bildiriminde belirtilen kod paketinin adı Service Fabric kümesindeki bir uygulama türünün bir parçası olarak kaydedilir. |
+| --Node-Name [gerekli] | Düğümün adı. |
+| --hizmet-bildirim-adı [gerekli] | Service Fabric kümesinde uygulama türünün bir parçası olarak kaydedilmiş bir hizmet bildiriminin adı. |
+| --Tail | Günlüklerin sonundan gösterilecek satır sayısı. Varsayılan değer 100 ' dir. Tüm günlükleri göstermek için ' All '. |
+| --timeout-t | Saniye cinsinden sunucu zaman aşımı.  Varsayılan\: 60. |
 
-### <a name="global-arguments"></a>Genel bağımsız değişkenleri
+### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --hata ayıklama | Tüm hata ayıklama günlüklerini göster için günlüğün ayrıntı düzeyini artırır. |
-| ---h Yardım | Bu yardım iletisini ve çıkış gösterir. |
-| --Çıktı -o | Çıkış biçimi.  İzin verilen değerler\: json, jsonc, tablo, tsv.  Varsayılan\: json. |
-| --Sorgu | JMESPath sorgu dizesi. HTTP bkz\://jmespath.org/ daha fazla bilgi ve örnekler. |
-| --verbose | Günlüğün ayrıntı düzeyini artırır. Kullanımı--tam hata ayıklama günlükleri için hata ayıklama. |
+| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
+| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Ayarlanan](service-fabric-cli.md) Service Fabric CLI.
-- Service Fabric CLI kullanarak kullanmayı öğrenin [örnek betikleri](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- Service Fabric CLı 'yi [ayarlayın](service-fabric-cli.md) .
+- [Örnek betikleri](/azure/service-fabric/scripts/sfctl-upgrade-application)kullanarak Service Fabric CLI 'nın nasıl kullanılacağını öğrenin.

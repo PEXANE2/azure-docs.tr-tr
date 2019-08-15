@@ -1,21 +1,21 @@
 ---
 title: Azure Container Registry resim kaynaklarını silme
-description: Kapsayıcı görüntüsü verilerini silerek kayıt defteri boyutunu etkin bir şekilde yönetme hakkında ayrıntılı bilgi.
+description: Azure CLı komutları kullanılarak kapsayıcı görüntüsü verilerini silerek kayıt defteri boyutunu etkin bir şekilde yönetme hakkında ayrıntılar.
 services: container-registry
 author: dlepow
 manager: gwallace
 ms.service: container-registry
 ms.topic: article
-ms.date: 06/17/2019
+ms.date: 07/31/2019
 ms.author: danlep
-ms.openlocfilehash: eaf3b3e591ca2ddbd29fd5547d334ef90b24fc5e
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 12c1b5f9fa9620622b31f22c701d58ae237bcbf2
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68309652"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035141"
 ---
-# <a name="delete-container-images-in-azure-container-registry"></a>Azure Container Registry kapsayıcı görüntülerini silme
+# <a name="delete-container-images-in-azure-container-registry-using-the-azure-cli"></a>Azure CLı kullanarak Azure Container Registry kapsayıcı görüntülerini silme
 
 Azure Container Registry 'nizin boyutunu korumak için eski görüntü verilerini düzenli aralıklarla silmelisiniz. Üretime dağıtılan bazı kapsayıcı görüntüleri, daha uzun süreli depolama gerektirebilir, ancak diğerleri genellikle daha hızlı silinebilir. Örneğin, bir otomatik derleme ve test senaryosunda, kayıt defteriniz hiçbir şekilde dağıtılmayan görüntülerle hızla doldurabilir ve derleme ve test geçişini tamamladıktan sonra kısa bir süre sonra temizlenir.
 
@@ -113,7 +113,7 @@ az acr repository show-manifests --name <acrName> --repository <repositoryName> 
 Eski bildirim dallarını tanımladıktan sonra, belirtilen zaman damgasından daha eski bildirim bildirimlerini silmek için aşağıdaki Bash betiğini çalıştırabilirsiniz. Azure CLı ve **xargs**gerektirir. Varsayılan olarak, komut dosyası silme işlemini gerçekleştirir. Görüntüyü silme işlemini etkinleştirmek `true` için değeriniolarakdeğiştirin.`ENABLE_DELETE`
 
 > [!WARNING]
-> Aşağıdaki örnek betiği dikkatle kullanın--silinen görüntü verileri KURTARıLAMAZ. Bildirim özetine (görüntü adından farklı olarak) görüntüleri çeken sistemleriniz varsa, bu betikleri çalıştırmamalıdır. Bildirim özetleri silindiğinde, bu sistemlerin Kayıt defterinizden görüntüleri çekmesini engeller. Bildirime göre çekmek yerine, [Önerilen en iyi yöntem][tagging-best-practices]olan *benzersiz etiketleme* düzenini benimsede düşünün. 
+> Aşağıdaki örnek betiği dikkatle kullanın--silinen görüntü verileri KURTARıLAMAZ. Bildirim özetine (görüntü adından farklı olarak) görüntüleri çeken sistemleriniz varsa, bu betikleri çalıştırmamalıdır. Bildirim özetleri silindiğinde, bu sistemlerin Kayıt defterinizden görüntüleri çekmesini engeller. Bildirime göre çekmek yerine, [Önerilen en iyi yöntem](container-registry-image-tag-version.md)olan *benzersiz etiketleme* düzenini benimsede düşünün. 
 
 ```bash
 #!/bin/bash
@@ -201,7 +201,7 @@ az acr repository show-manifests --name <acrName> --repository <repositoryName> 
 Bu komutu bir betikte kullanarak, bir depodaki tüm etiketlenmemiş görüntüleri silebilirsiniz.
 
 > [!WARNING]
-> Aşağıdaki örnek komut dosyalarını dikkatli bir şekilde kullanın--silinen görüntü verileri KURTARıLAMAZ. Bildirim özetine (görüntü adından farklı olarak) görüntüleri çeken sistemleriniz varsa, bu betikleri çalıştırmamalıdır. Etiketlenmemiş görüntüleri silmek, bu sistemlerin Kayıt defterinizden görüntüleri çekmesini engeller. Bildirime göre çekmek yerine, [Önerilen en iyi yöntem][tagging-best-practices]olan *benzersiz etiketleme* düzenini benimsede düşünün.
+> Aşağıdaki örnek komut dosyalarını dikkatli bir şekilde kullanın--silinen görüntü verileri KURTARıLAMAZ. Bildirim özetine (görüntü adından farklı olarak) görüntüleri çeken sistemleriniz varsa, bu betikleri çalıştırmamalıdır. Etiketlenmemiş görüntüleri silmek, bu sistemlerin Kayıt defterinizden görüntüleri çekmesini engeller. Bildirime göre çekmek yerine, [Önerilen en iyi yöntem](container-registry-image-tag-version.md)olan *benzersiz etiketleme* düzenini benimsede düşünün.
 
 **Bash 'de Azure CLı**
 
@@ -260,6 +260,10 @@ if ($enableDelete) {
 }
 ```
 
+## <a name="automatically-purge-tags-and-manifests-preview"></a>Etiketleri ve bildirimleri otomatik olarak temizle (Önizleme)
+
+Azure CLı komutlarını komut dosyası oluşturmaya alternatif olarak, belirli bir süreden daha eski olan veya belirtilen bir ad filtresiyle eşleşen tüm etiketleri silmek için isteğe bağlı veya zamanlanmış bir ACR görevi çalıştırın. Daha fazla bilgi için bkz. [Azure Container Registry 'den görüntüleri otomatik olarak temizleme](container-registry-auto-purge.md).
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure Container Registry görüntü depolama hakkında daha fazla bilgi için bkz. [Azure Container Registry Içindeki kapsayıcı görüntü depolaması](container-registry-storage.md).
@@ -270,7 +274,6 @@ Azure Container Registry görüntü depolama hakkında daha fazla bilgi için bk
 <!-- LINKS - External -->
 [docker-manifest-inspect]: https://docs.docker.com/edge/engine/reference/commandline/manifest/#manifest-inspect
 [portal]: https://portal.azure.com
-[tagging-best-practices]: https://stevelasker.blog/2018/03/01/docker-tagging-best-practices-for-tagging-and-versioning-docker-images/
 
 <!-- LINKS - Internal -->
 [az-acr-repository-delete]: /cli/azure/acr/repository#az-acr-repository-delete

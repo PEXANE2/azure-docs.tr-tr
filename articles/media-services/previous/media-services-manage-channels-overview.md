@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 45089c77ff2fed7ea5903333514f4d4edbad7cb3
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 5ab4a6b96df964497e20b2b93c59febb0e24393c
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "69015554"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035889"
 ---
 # <a name="overview-of-live-streaming-using-media-services"></a>Media Services kullanarak canlı akışa genel bakış
 
@@ -118,7 +118,7 @@ Bir kanal oluştururken, izin verilen IP adreslerini aşağıdaki biçimlerden b
 Bir [Program](https://docs.microsoft.com/rest/api/media/operations/program) canlı bir akışta parçaların yayımlanmasını ve depolanmasını denetlemenize olanak sağlar. Kanallar, Programları yönetir. Kanal ve Program arasındaki ilişki, kanalın sürekli bir içerik akışının bulunduğu ve programın bu kanalda zamanlanmış bir olayı kapsadığı geleneksel medyadaki ilişkiye benzer.
 **ArchiveWindowLength** özelliğini ayarlayarak program için kaydedilen içeriği bekletmek istediğiniz saat sayısını belirtebilirsiniz. Bu değer en az 5 dakika, en çok 25 saat olarak ayarlanabilir.
 
-ArchiveWindowLength Ayrıca, istemcilerin geçerli canlı konumdan zaman içinde arayamayacak maksimum süreyi belirler. Olaylar belirtilen süre miktarından uzun sürebilir, ancak pencere uzunluğunun gerisine düşen içerik sürekli olarak atılır. Bu özelliğin bu değeri, istemci bildiriminin ne kadar uzayabileceğini de belirler.
+ArchiveWindowLength Ayrıca, istemcilerin geçerli canlı konumdan zaman içinde arayamayacak maksimum süreyi belirler. Olaylar belirtilen süre miktarından uzun sürebilir, ancak pencere uzunluğunun gerisine düşen içerik sürekli olarak atılır. Bu özelliğin değeri, istemci bildirimlerinin ne kadar büyüyeceğini de belirler.
 
 Her program bir Varlık ile ilişkilidir. Programı yayımlamak için ilişkili varlık için bir bulucu oluşturmanız gerekir. Bu bulucuya sahip olmak, istemcilerinize sağlayabileceğiniz bir akış URL’si oluşturmanıza olanak tanır.
 

@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 07/08/2019
-ms.openlocfilehash: c5484c37d89cc9ae880bbe17987bb47f3114b8a4
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: b9593a5802300da8baa1e518f14885637db2068f
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847886"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036187"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' e dağıtılan modellerdeki veri kayması 'nı (Önizleme) Algıla
 
@@ -162,9 +162,9 @@ Veri drörü algılayıcısının yapılandırması, Azure portal model ayrınt�
 
 ![Azure portal veri DRFT yapılandırması](media/how-to-monitor-data-drift/drift_config.png)
 
-## <a name="view-results-in-azure-ml-workspace-ui"></a>Azure ML Çalışma Alanı Kullanıcı arabirimindeki sonuçları görüntüleme
+## <a name="view-results-in-azure-portal"></a>Sonuçları Azure portal görüntüle
 
-Azure ML Çalışma Alanı Kullanıcı arabirimindeki sonuçları görüntülemek için model sayfasına gidin. Modelin Ayrıntılar sekmesinde, veri DRI yapılandırması gösterilir. ' Veri kayması (Önizleme) ' sekmesi artık veri Drın ölçümlerinin görselleştirilmesi için kullanılabilir. 
+[Azure Portal](https://portal.azure.com)çalışma alanınızdaki sonuçları görüntülemek için model sayfasına gidin. Modelin Ayrıntılar sekmesinde, veri DRI yapılandırması gösterilir. ' Veri kayması (Önizleme) ' sekmesi artık veri Drın ölçümlerinin görselleştirilmesi için kullanılabilir. 
 
 ![Azure portal veri kayması](media/how-to-monitor-data-drift/drift_ui.png)
 

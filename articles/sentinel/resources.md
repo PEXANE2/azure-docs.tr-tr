@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/20/2019
+ms.date: 8/14/2019
 ms.author: rkarlin
-ms.openlocfilehash: b5aae5f8e7195cfea7817b9e40e6f28d47fc3eff
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 138efd7cba80e288c4f8831b45272f4e46c8ee3f
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780415"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036233"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel-preview"></a>Azure Sentinel önizleme ile çalışmaya yönelik faydalı kaynaklar
 
@@ -41,8 +41,12 @@ Azure Logic Apps bağlayıcılar:<https://docs.microsoft.com/connectors/>
 | PaloAlto| CEF 'yi yapılandırma| <https://www.paloaltonetworks.com/documentation/misc/cef.html>|
 | PluralSight | Kusto sorgu dili Kursu| [https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch](https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch)|
 
+## <a name="blogs-and-forums"></a>Bloglar ve Forumlar
+
+Sorularınızı Azure Sentinel için [Techcommunity alanına](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bd-p/AzureSentinel) gönderin.
+
+[Techcommunity](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog) ve [Microsoft Azure](https://azure.microsoft.com/blog/tag/azure-sentinel/)Azure Sentinel blog yayınlarını görüntüleyin.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu belgede, Azure Sentinel ile çalışırken yararlı olan kaynakların bir listesini aldınız. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdakilere bakın:
-
-* [Azure Güvenlik Blogu](https://blogs.msdn.com/b/azuresecurity/). Azure güvenliği ve uyumluluğu ile ilgili blog yazılarını bulun.
+Bu belgede, Azure Sentinel ile çalışırken yararlı olan kaynakların bir listesini aldınız. [Microsoft Azure Güvenlik ve uyumluluk blogunu](https://blogs.msdn.com/b/azuresecurity/)Azure Güvenlik ve uyumluluğu hakkında daha fazla bilgi bulacaksınız.

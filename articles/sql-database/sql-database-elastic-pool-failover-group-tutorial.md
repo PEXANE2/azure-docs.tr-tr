@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 06/19/2019
-ms.openlocfilehash: 0507b3cb64b4b12bac92cc6bc90120ab4ec56dee
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5dd241fed757669cf8bccd96a1de948e8d73a021
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568741"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69033260"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Öğretici: Yük devretme grubuna Azure SQL veritabanı elastik havuzu ekleme
 
@@ -76,11 +76,11 @@ Bu adımda, mevcut bir Azure SQL sunucusu ile başka bir bölgedeki yeni bir Azu
 1. **SQL Server** ' ı seçin ve Bölüm 1 ' de oluşturduğunuz sunucuyu seçin.
 1. **Ayarlar** bölmesinde **Yük devretme grupları** ' nı seçin ve sonra yeni bir yük devretme grubu oluşturmak için **Grup Ekle** ' yi seçin. 
 
-    ![Yeni Yük devretme grubu Ekle](media/sql-database-elastic-pool-create-failover-group-tutorial/add-elastic-pool-to-failover-group.png)
+    ![Yeni Yük devretme grubu Ekle](media/sql-database-single-database-create-failover-group-tutorial/sqldb-add-new-failover-group.png)
 
 1. **Yük devretme grubu** sayfasında, aşağıdaki değerleri girin veya seçin ve ardından **Oluştur**' u seçin:
     - **Yük devretme grubu adı**: Benzersiz bir yük devretme grubu adı (örneğin `failovergrouptutorial`,) yazın. 
-    - **İkincil sunucu**: *Gerekli ayarları yapılandırma* seçeneğini belirleyin ve ardından **Yeni bir sunucu oluşturmayı**seçin. Alternatif olarak, zaten var olan bir sunucuyu ikincil sunucu olarak seçebilirsiniz. Aşağıdaki değerleri girdikten sonra **Seç**' i seçin. 
+    - **İkincil sunucu**: *Gerekli ayarları yapılandırma* seçeneğini belirleyin ve ardından **Yeni bir sunucu oluşturmayı**seçin. Alternatif olarak, zaten var olan bir sunucuyu ikincil sunucu olarak seçebilirsiniz. Yeni ikincil sunucunuz için aşağıdaki değerleri girdikten sonra **Seç**' i seçin. 
         - **Sunucu adı**: İkincil sunucu için, `mysqlsecondary`gibi benzersiz bir ad yazın. 
         - **Sunucu Yöneticisi oturum açma**: Türüyle`azureuser`
         - **Parola**: Parola gereksinimlerini karşılayan karmaşık bir parola yazın.
@@ -91,9 +91,9 @@ Bu adımda, mevcut bir Azure SQL sunucusu ile başka bir bölgedeki yeni bir Azu
     
        ![Yük devretme grubu için ikincil sunucu oluşturma](media/sql-database-single-database-create-failover-group-tutorial/create-secondary-failover-server.png)
 
-1. İkincil bir sunucu seçildikten sonra, Grup seçeneği **Içindeki veritabanlarının** kilidi açılır. **Eklenecek veritabanlarını seçmek** için seçin ve ardından Bölüm 2 ' de oluşturduğunuz elastik havuzu seçin. İkincil sunucuda bir elastik havuz oluşturmanızı isteyen bir uyarı görüntülenmelidir. Uyarıyı seçin ve ardından ikincil sunucuda elastik havuzu oluşturmak için **Tamam** ' ı seçin. 
+1. **Grup Içindeki veritabanları** ' nı seçin ve ardından Bölüm 2 ' de oluşturduğunuz elastik havuzu seçin. İkincil sunucuda bir elastik havuz oluşturmanızı isteyen bir uyarı görüntülenmelidir. Uyarıyı seçin ve ardından ikincil sunucuda elastik havuzu oluşturmak için **Tamam** ' ı seçin. 
         
-    ![SQL DB 'yi yük devretme grubuna ekle](media/sql-database-single-database-create-failover-group-tutorial/add-sqldb-to-failover-group.png)
+    ![Esnek havuzu yük devretme grubuna ekle](media/sql-database-elastic-pool-create-failover-group-tutorial/add-elastic-pool-to-failover-group.png)
         
 1. Elastik havuz ayarlarınızı yük devretme grubuna uygulamak için **Seç** ' i seçin ve ardından yük devretme grubunuzu oluşturmak için **Oluştur** ' u seçin. Elastik havuzun yük devretme grubuna eklenmesi, coğrafi çoğaltma işlemini otomatik olarak başlatır. 
 

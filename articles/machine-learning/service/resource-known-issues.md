@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4e7b3905295e619c5a9500f80b5c43126b919e2f
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 74d345249e1cbaeb45a1a35d3c3d2f61a4c0b9cf
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946470"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69032975"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Bilinen sorunlar ve sorun giderme Azure Machine Learning hizmeti
 
@@ -48,6 +48,14 @@ Python için SDK Azure Machine Learning: PyYAML, yüklenmiş bir proje. Bu neden
 ```Python
 pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
 ```
+
+**Hata iletisi:`ERROR: No matching distribution found for azureml-dataprep-native`**
+
+Anaconda 'nın Python 3.7.4 dağıtımında, azureml-SDK yüklemesini kesen bir hata vardır. Bu sorun, bu [GitHub sorunu](https://github.com/ContinuumIO/anaconda-issues/issues/11195) ile tartışılır ve bu komut kullanılarak yeni bir Conda ortamı oluşturulabilir:
+```bash
+conda create -n <env-name> python=3.7.3
+```
+Bu, 3.7.4 içinde bir Install sorunu bulunmayan Python 3.7.3 kullanarak bir Conda ortamı oluşturur.
 
 ## <a name="trouble-creating-azure-machine-learning-compute"></a>Azure Machine Learning işlem oluştururken sorun
 

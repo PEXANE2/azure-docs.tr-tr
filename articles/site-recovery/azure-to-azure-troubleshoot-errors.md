@@ -8,35 +8,35 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
 ms.author: asgang
-ms.openlocfilehash: 1e0450554597d99aa99d6df51f22bfc90c0d92ad
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 4d8ba44cdd5161a1a5ff108837cb57af4cd98835
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798573"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69034777"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Azure'dan Azure'a VM çoğaltmayla sorunları giderme
 
 Bu makalede Azure Site Recovery çoğaltma ve Azure sanal makineleri bir bölgesinden başka bir bölgeye kurtarma giren yaygın sorunların ve bunları nasıl giderebileceğinizden açıklar. Desteklenen yapılandırmalar hakkında daha fazla bilgi için bkz. [Azure Vm'lerini çoğaltma için destek matrisi](site-recovery-support-matrix-azure-to-azure.md).
 
 ## <a name="list-of-errors"></a>Hata listesi
-- **[Azure kaynak kotası sorunları (hata kodu 150097)](#azure-resource-quota-issues-error-code-150097)**
-- **[Güvenilen kök sertifika (hata kodu 151066)](#trusted-root-certificates-error-code-151066)**
-- **[Site Recovery (hata kodu 151195) için giden bağlantı](#issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br)**
+- **[Azure Kaynak kotası sorunları (hata kodu 150097)](#azure-resource-quota-issues-error-code-150097)**
+- **[Güvenilen kök sertifikalar (hata kodu 151066)](#trusted-root-certificates-error-code-151066)**
+- **[Site Recovery için giden bağlantı (hata kodu 151195)](#issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br)**
 
-## <a name="azure-resource-quota-issues-error-code-150097"></a>Azure kaynak kotası sorunları (hata kodu 150097)
+## <a name="azure-resource-quota-issues-error-code-150097"></a>Azure Kaynak kotası sorunları (hata kodu 150097)
 Azure Vm'lerinde olağanüstü durum kurtarma bölgeniz olarak kullanmayı planlıyorsanız hedef bölgede oluşturmak için aboneliğinizi yeniden etkinleştirilmesi gerekir. Ayrıca, aboneliğinizi yeterli kotası belirli boyut sanal makineler oluşturmak için etkinleştirilmiş olması gerekir. Varsayılan olarak, Site Recovery, hedef sanal makine için aynı boyutta VM kaynağı olarak seçer. Eşleşen boyutu kullanılabilir değilse, en yakın olası boyutu otomatik olarak seçilir. Kaynak VM yapılandırması destekleyen hiçbir eşleşen boyutu varsa, bu hata iletisi görüntülenir:
 
 **Hata kodu** | **Olası nedenler** | **Öneri**
 --- | --- | ---
-150097<br></br>**İleti**: VmName sanal makinesi için çoğaltma etkinleştirilemedi. | -Abonelik Kimliğinizi hedef bölge konumda herhangi bir VM oluşturmak için etkinleştirilmemiş olabilir.</br></br>-Abonelik Kimliğinizi etkinleştirilmemiş veya hedef bölge konumunda belirli VM boyutları oluşturmak için yeterli kotası yok.</br></br>-Bir uygun bir hedef kaynak VM NIC sayısı (2) eşleşen bir VM boyutu için abonelik Kimliğini hedef bölge konumunda bulunan değil.| İlgili kişi [Azure fatura desteğine](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) gereken hedef konum aboneliğinizde VM boyutları için VM oluşturmayı etkinleştirmek için. Etkinleştirildikten sonra başarısız olan işlemi yeniden deneyin.
+150097<br></br>**İleti**: VM VmName sanal makinesi için çoğaltma etkinleştirilemedi. | -Abonelik Kimliğinizi hedef bölge konumda herhangi bir VM oluşturmak için etkinleştirilmemiş olabilir.</br></br>-Abonelik Kimliğinizi etkinleştirilmemiş veya hedef bölge konumunda belirli VM boyutları oluşturmak için yeterli kotası yok.</br></br>-Bir uygun bir hedef kaynak VM NIC sayısı (2) eşleşen bir VM boyutu için abonelik Kimliğini hedef bölge konumunda bulunan değil.| İlgili kişi [Azure fatura desteğine](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) gereken hedef konum aboneliğinizde VM boyutları için VM oluşturmayı etkinleştirmek için. Etkinleştirildikten sonra başarısız olan işlemi yeniden deneyin.
 
 ### <a name="fix-the-problem"></a>Sorunu
 Sizinle iletişim [Azure fatura desteğine](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) hedef konumda gerekli boyutlardaki Vm'leri oluşturmak aboneliğinizi etkinleştirmek için.
 
 Hedef konumu bir kapasite kısıtlaması varsa, çoğaltmayı devre dışı bırakın ve gerekli boyutlardaki Vm'leri oluşturmak için yeterli kotası aboneliğinizin bulunduğu farklı bir konuma etkinleştirin.
 
-## <a name="trusted-root-certificates-error-code-151066"></a>Güvenilen kök sertifika (hata kodu 151066)
+## <a name="trusted-root-certificates-error-code-151066"></a>Güvenilen kök sertifikalar (hata kodu 151066)
 
 Sanal makinede mevcut en yeni güvenilen kök sertifikalar mevcut değilse, "çoğaltmayı etkinleştir" işi başarısız olabilir. Sertifikaları olmadan, Site Recovery hizmeti çağrıları VM'den yetkilendirme ve kimlik doğrulaması başarısız. Başarısız "çoğaltmayı etkinleştir" Site kurtarma işi için hata iletisi görüntülenir:
 
@@ -154,9 +154,9 @@ SuSE Linux sertifika listesini korumak için çözümlemeyin kullandığından, 
 
 Site Recovery çoğaltması için iş, giden bağlantı için özel URL veya IP aralıkları VM'den gerekli. Sanal makinenize bir güvenlik duvarının arkasındaysa ya da giden bağlantıyı denetlemek için ağ güvenlik grubu (NSG) kuralları kullanıyorsa bu sorunlardan biri karşılaşıyor.
 
-### <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br"></a>1 sorunu: Azure sanal makinesi (151195) Site Recovery ile kayıt olamadı </br>
+### <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br"></a>Sorun 1: Site Recovery ile Azure sanal makinesi kaydedilemedi (151195) </br>
 - **Olası nedeni** </br>
-  - DNS çözümleme hatası nedeniyle Site Recovery uç noktalarına bağlantı kurulamıyor.
+  - DNS çözümleme hatası nedeniyle Site Recovery uç noktalara bağlantı sağlanamadı.
   - Bu daha sık yeniden koruma sırasında sanal makine üzerinde başarısız oldu, ancak DR bölgesindeki DNS sunucusu erişilebilir değil görülür.
 
 - **Çözümleme**
@@ -175,9 +175,9 @@ Site Recovery çoğaltması için iş, giden bağlantı için özel URL veya IP 
       - Azure Active Directory (AAD) gelecekte yeni adresler eklenir, yeni NSG kuralları oluşturmak gerekir.
 
 > [!NOTE]
-> Sanal makineler arkasında olsa **standart** iç yük dengeleyici sonra O365 IP'ler yani erişimi sahip değil Varsayılan olarak Login.microsoftonline.com. Olarak değiştirin ya da **temel** iç yük dengeleyici türü veya dışarı bağlanan erişime belirtildiği gibi oluşturma [makale](https://aka.ms/lboutboundrulescli).
+> Sanal makineler **Standart** iç yük dengeleyici 'nin arkasındaysa O365 IP 'lerine erişimi olmaz, yani Varsayılan olarak login.microsoftonline.com. **Temel** iç yük dengeleyici türüne değiştirin veya [makalede](https://aka.ms/lboutboundrulescli)belirtildiği gibi, bağlantılı erişim oluşturun.
 
-### <a name="issue-3-site-recovery-configuration-failed-151197"></a>3\. sorun: Site Recovery yapılandırması başarısız oldu (151197)
+### <a name="issue-3-site-recovery-configuration-failed-151197"></a>Sorun 3: Site Recovery yapılandırması başarısız oldu (151197)
 - **Olası nedeni** </br>
   - Azure Site Recovery Hizmeti uç noktalarına bağlantı kurulamıyor.
 
@@ -185,25 +185,25 @@ Site Recovery çoğaltması için iş, giden bağlantı için özel URL veya IP 
   - Azure Site Recovery gerekli erişim [Site kurtarma IP aralıkları](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges) bölgeye bağlı olarak. Bu gerekli IP aralıkları sanal makineden erişilebilir olduğundan emin olun.
 
 
-### <a name="issue-4-a2a-replication-failed-when-the-network-traffic-goes-through-on-premises-proxy-server-151072"></a>4\. sorun: Ağ trafiği şirket içi proxy sunucusu üzerinden (151072) çıktığında A2A çoğaltması başarısız oldu.
+### <a name="issue-4-a2a-replication-failed-when-the-network-traffic-goes-through-on-premises-proxy-server-151072"></a>Sorun 4: A2A çoğaltma, ağ trafiği şirket içi ara sunucu üzerinden geçtiğinde başarısız oldu (151072)
 - **Olası nedeni** </br>
-  - Özel ara sunucu ayarlarını geçersiz ve Azure Site Recovery Mobility Hizmeti Aracısı otomatik-IE proxy ayarları algılamadı
+  - Özel ara sunucu ayarları geçersiz ve Azure Site Recovery Mobility hizmeti Aracısı IE 'den proxy ayarlarını otomatik olarak algılamadı
 
 
 - **Çözümleme**
   1. Mobility hizmeti aracısı için proxy ayarlarını Windows üzerinde IE ve Linux'ta /etc/environment algılar.
-  2. Yalnızca Azure Site Recovery Mobility hizmeti için proxy ayarlamak isterseniz, konumundaki ProxyInfo.conf proxy ayrıntıları sağlayabilirsiniz:</br>
+  2. Proxy 'yi yalnızca Azure Site Recovery Mobility hizmeti için ayarlamayı tercih ediyorsanız, şu adreste bulunan ProxyInfo. conf dosyasında proxy ayrıntılarını sağlayabilirsiniz:</br>
      - ``/usr/local/InMage/config/`` üzerinde ***Linux***
      - ``C:\ProgramData\Microsoft Azure Site Recovery\Config`` üzerinde ***Windows***
   3. ProxyInfo.conf proxy ayarlarını aşağıdaki INI biçiminde olmalıdır.</br>
                 *[proxy]*</br>
                 *Adres =http://1.2.3.4*</br>
                 *Bağlantı noktası 567 =*</br>
-  4. Azure Site Recovery Mobility Hizmeti Aracısı destekler yalnızca ***kimliği doğrulanmamış proxy***.
+  4. Azure Site Recovery Mobility hizmeti Aracısı yalnızca ***kimliği doğrulanmamış proxy 'leri***destekler.
 
 
 ### <a name="fix-the-problem"></a>Sorunu
-İzin vermek için [gerekli URL'leri](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) veya [gerekli IP aralıkları](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges), adımları [ağ rehberi belgesi](site-recovery-azure-to-azure-networking-guidance.md).
+[Gerekli URL 'lere](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) veya [gerekli IP aralıklarına](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)izin vermek için [Ağ Kılavuzu belgesindeki](site-recovery-azure-to-azure-networking-guidance.md)adımları izleyin.
 
 ## <a name="disk-not-found-in-the-machine-error-code-150039"></a>Disk (hata kodu 150039) makinede bulunamadı
 
@@ -211,63 +211,63 @@ VM'ye yeni bir disk başlatılmalıdır.
 
 **Hata kodu** | **Olası nedenler** | **Öneriler**
 --- | --- | ---
-150039<br></br>**İleti**: Mantıksal birim numarası (LUN) (LUNValue) ile (DiskName) (DiskURI) Azure veri diski, aynı LUN değerine sahip VM içinden bildirilen ilgili disk eşlenmedi. | -Yeni veri diski VM'ye bağlı, ancak başlatılmamış değildi.</br></br>-VM içindeki veri diski diski VM'ye bağlı LUN değerini doğru şekilde bildirmiyor.| Veri disklerini başlatılır ve ardından işlemi yeniden deneyin emin olun.</br></br>Windows için: [Ekleme ve yeni bir disk başlatma](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal).</br></br>Linux için: [Linux'ta yeni bir veri diski başlatın](https://docs.microsoft.com/azure/virtual-machines/linux/add-disk).
+150039<br></br>**İleti**: Mantıksal birim numarası (LUN) (LUNValue) olan Azure veri diski (DiskName) (DiskURI), aynı LUN değerine sahip VM içinden bildirilen karşılık gelen bir diskle eşleştirilmedi. | -Yeni veri diski VM'ye bağlı, ancak başlatılmamış değildi.</br></br>-VM içindeki veri diski diski VM'ye bağlı LUN değerini doğru şekilde bildirmiyor.| Veri disklerini başlatılır ve ardından işlemi yeniden deneyin emin olun.</br></br>Windows için: [Yeni bir disk ekleyin ve başlatın](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal).</br></br>Linux için: [Linux 'ta yeni bir veri diski başlatın](https://docs.microsoft.com/azure/virtual-machines/linux/add-disk).
 
 ### <a name="fix-the-problem"></a>Sorunu
 Veri disklerinin başlatıldığından ve sonra işlemi yeniden deneyin emin olun:
 
-- Windows için: [Ekleme ve yeni bir disk başlatma](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal).
+- Windows için: [Yeni bir disk ekleyin ve başlatın](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal).
 - Linux: [Linux'ta yeni bir veri diski ekleme](https://docs.microsoft.com/azure/virtual-machines/linux/add-disk).
 
 Sorun devam ederse desteğe başvurun.
 
-## <a name="one-or-more-disks-are-available-for-protectionerror-code-153039"></a>Bir veya daha fazla diskler (hata kodu 153039) koruma için kullanılabilir
+## <a name="one-or-more-disks-are-available-for-protectionerror-code-153039"></a>Bir veya daha fazla disk, koruma için kullanılabilir (hata kodu 153039)
 - **Olası nedeni** </br>
-  - bir veya daha fazla disklerin yakın zamanda sanal makineye sonra koruma eklenmişse. 
-  - bir veya daha fazla disklerin hazırlaması başlatılmış sanal makine korumayı daha sonra ise.
+  - bir veya daha fazla disk, yakın zamanda sanal makineye korumadan sonra eklendiyse. 
+  - bir veya daha fazla disk, sanal makinenin korumasından sonra başlatıldıktan sonra.
 
 ### <a name="fix-the-problem"></a>Sorunu
-Diskleri korumak veya sanal Makinenin çoğaltma durumu yeniden sağlam hale getirmek için bir uyarıyı yoksaymak ya da seçebilirsiniz.</br>
-1. Disklerin korumak için. Çoğaltılan öğeler için gidin > VM > diskler > korumasız diskte tıklayın > çoğaltmayı etkinleştirme.
+Diskleri korumayı seçebilir ya da sanal makinenin çoğaltma durumunu sağlıklı bir şekilde yeniden yapmak için uyarıyı yoksayabilirsiniz.</br>
+1. Diskleri korumak için. Çoğaltılan öğeler > VM > disklere gidin > korumasız diske tıklayın > çoğaltmayı etkinleştirin.
  ![add_disks](./media/azure-to-azure-troubleshoot-errors/add-disk.png)
-2. Uyarıyı kapatmak için. Çoğaltılan öğeler gidin > VM > Genel Bakış bölümünde Kapat uyarıyı tıklatın.
+2. Uyarıyı kapatmak için. Çoğaltılan öğeler > VM 'ye gidin > genel bakış bölümünde uyarıyı Kapat ' a tıklayın.
 ![dismiss_warning](./media/azure-to-azure-troubleshoot-errors/dismiss-warning.png)
 
 
-## <a name="remove-the-virtual-machine-from-the-vault-completed-with-information--error-code-150225"></a>Sanal makineyi (hata kodu 150225) bilgilerle tamamlandı kasasından kaldırın
-Sanal makine korumayı sırasında Azure Site Recovery, kaynak sanal makinede bazı bağlantılar oluşturur. Korumayı kaldırma olarak ya da çoğaltma devre dışı Azure Site Recovery Temizleme işinin bir parçası olarak bu bağlantıları kaldırın. Sanal makine kaynak kilidi olması durumunda iş bilgi ile tamamlandı. Bu, sanal makine, Kurtarma Hizmetleri kasasından kaldırıldı, ancak kaynak makineden bazı eski bağlantılar temizlenemedi söyler.
+## <a name="remove-the-virtual-machine-from-the-vault-completed-with-information--error-code-150225"></a>Sanal makineyi kasadan kaldır ile tamamlandı (hata kodu 150225)
+Sanal makineyi koruma sırasında Azure Site Recovery kaynak sanal makinede bazı bağlantılar oluşturur. Korumayı kaldırdığınızda veya çoğaltmayı devre dışı bıraktığınızda, temizleme işinin bir parçası olarak bu bağlantıları kaldırın Azure Site Recovery. Sanal makinenin kaynak kilidi varsa, iş bilgilerle tamamlanır. Sanal makinenin kurtarma hizmetleri kasasından kaldırıldığını, ancak eski bağlantıların bazılarının kaynak makineden temizlendiğinden emin olduğunu söyler.
 
-Bu sanal makineyi yeniden gelecekte korumak istiyorsanız, bu uyarıyı yoksayabilirsiniz. Daha sonra bu sanal makineyi korumak varsa, ancak daha sonra bağlantıları aşağıdaki adımlarda belirtildiği gibi temizlemeniz gerekir. 
+Daha sonra bu sanal makineyi daha sonra korumayı düşünmüyorsanız, bu uyarıyı yoksayabilirsiniz. Ancak, bu sanal makineyi daha sonra korumanız gerekiyorsa aşağıdaki adımlarda bahsedilen bağlantıları temizlemeniz gerekir. 
 
-**Temiz ardından yapmazsanız:**
+**Temizleme yapmadıysanız:**
 
-1.  Kurtarma Hizmetleri kasası çoğaltmayı etkinleştirme olduğu süre boyunca sanal makine listelenmez. 
-2.  Aracılığıyla VM'yi korumayı denerseniz **sanal makine > Ayarlar > olağanüstü durum kurtarma** olacak hatasıyla başarısız oldu "*çoğaltma nedeniyle var olan eski kaynak bağlantılarıVMüzerindeetkinleştirilemez*".
+1.  Kurtarma Hizmetleri Kasası aracılığıyla çoğaltmayı etkinleştirme sırasında sanal makine listelenmez. 
+2.  VM 'yi **sanal makine > ayarları aracılığıyla korumaya çalışırsanız, olağanüstü durum kurtarma >** , "*VM 'deki mevcut eski kaynak bağlantıları nedeniyle çoğaltma etkinleştirilemiyor*" hatasıyla başarısız olur.
 
 
 ### <a name="fix-the-problem"></a>Sorunu
 
 >[!NOTE]
 >
->Azure Site Recovery, kaynak sanal makineyi silme değil veya aşağıdaki adımları gerçekleştirirken herhangi bir şekilde etkileyebilir.
+>Azure Site Recovery kaynak sanal makineyi silmez veya aşağıdaki adımları gerçekleştirirken herhangi bir şekilde etkilemez.
 >
 
-1. VM veya VM kilidi kaldırmak kaynak grubu. Örneğin: VM adı "MoveDemo" silinmesi gereken kaynak kilidi var.
+1. Kilidi VM veya VM kaynak grubundan kaldırın. Örneğin: "MoveDemo" adlı VM adının altında silinmesi gereken kaynak kilidi vardır.
 
    ![Network_Selection_greyed_out](./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png)
-2. Komut dosyası indir [eski Azure Site Recovery yapılandırma Kaldır](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1).
-3. Bu betiği yürütün *Cleanup-stale-asr-config-Azure-VM.ps1*.
-4. Abonelik kimliği, VM kaynak grubu ve VM adı, parametre olarak sağlayın.
-5. Azure kimlik bilgileri istenirse, lütfen sağlayan ve kodun hatalarını yürütülen denetleyin. 
+2. Betiği indir [eski Azure Site Recovery yapılandırmasını kaldır](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1).
+3. *Cleanup-Stale-ASR-config-Azure-VM. ps1*betiğini yürütün.
+4. Abonelik KIMLIĞI, VM kaynak grubu ve VM adını bir parametre olarak belirtin.
+5. Azure kimlik bilgileri sorulursa lütfen bunu sağlayın ve betiğin herhangi bir hatadan dolayı yürütüldüğünü kontrol edin. 
 
 
-## <a name="replication-cannot-be-enabled-because-of-the-existing-stale-resource-links-on-the-vm-error-code-150226"></a>(Hata kodu 150226) sanal makinesi üzerinde var olan eski kaynak bağlantıları nedeniyle çoğaltma etkinleştirilemez.
+## <a name="replication-cannot-be-enabled-because-of-the-existing-stale-resource-links-on-the-vm-error-code-150226"></a>VM 'deki mevcut eski kaynak bağlantıları nedeniyle çoğaltma etkinleştirilemiyor (hata kodu 150226)
 
-**Neden: Sanal makinenin önceki Site Recovery korumadan sol eski yapılandırma var.**
+**Neden: Sanal makinede eski yapılandırma, önceki Site Recovery korumadan kalmadı**
 
 Eski yapılandırmayı aşağıdaki durumlarda bir Azure sanal makinesinde kalmış olabilir:
 
-- Site Recovery kullanarak Azure VM için çoğaltma etkin ve çoğaltmayı devre dışı bırak ancak **VM kaynağı olan bir kaynak kilidi**.
+- Site Recovery kullanarak Azure VM için çoğaltmayı etkinleştirdiniz ve sonra çoğaltmayı devre dışı bıraktığınızda, ancak **kaynak VM 'nin bir kaynak kilidi vardı**.
 - Site Recovery kullanarak Azure VM için çoğaltma etkin ve ardından Site Recovery kasası açıkça bir VM üzerinde çoğaltmayı devre dışı bırakmadan silinir.
 - Site Recovery kullanarak Azure VM için çoğaltma etkin ve sonra açıkça bir VM üzerinde çoğaltmayı devre dışı bırakmadan Site Recovery kasasını içeren kaynak grubu silindi.
 
@@ -275,57 +275,57 @@ Eski yapılandırmayı aşağıdaki durumlarda bir Azure sanal makinesinde kalm�
 
 >[!NOTE]
 >
->Azure Site Recovery, kaynak sanal makineyi silme değil veya aşağıdaki adımları gerçekleştirirken herhangi bir şekilde etkileyebilir.
+>Azure Site Recovery kaynak sanal makineyi silmez veya aşağıdaki adımları gerçekleştirirken herhangi bir şekilde etkilemez.
 
 
-1. VM veya VM kilidi kaldırmak varsa kaynak grubu. *Örneğin:* VM adı "MoveDemo" silinmesi gereken kaynak kilidi var.
+1. Varsa, VM veya VM kaynak grubundan kilidi kaldırın. *Örneğin:* "MoveDemo" adlı VM adının altında silinmesi gereken kaynak kilidi vardır.
    
    ![Network_Selection_greyed_out](./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png)
-2. Komut dosyası indir [eski Azure Site Recovery yapılandırma Kaldır](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1).
-3. Bu betiği yürütün *Cleanup-stale-asr-config-Azure-VM.ps1*.
-4. Abonelik kimliği, VM kaynak grubu ve VM adı, parametre olarak sağlayın.
-5. Azure kimlik bilgileri istenirse, lütfen sağlayan ve kodun hatalarını yürütülen denetleyin.  
+2. Betiği indir [eski Azure Site Recovery yapılandırmasını kaldır](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1).
+3. *Cleanup-Stale-ASR-config-Azure-VM. ps1*betiğini yürütün.
+4. Abonelik KIMLIĞI, VM kaynak grubu ve VM adını bir parametre olarak belirtin.
+5. Azure kimlik bilgileri sorulursa lütfen bunu sağlayın ve betiğin herhangi bir hatadan dolayı yürütüldüğünü kontrol edin.  
 
-## <a name="unable-to-see-the-azure-vm-or-resource-group--for-selection-in-enable-replication"></a>Azure VM veya kaynak grubu için "çoğaltmayı etkinleştir" seçimi görülemiyor
+## <a name="unable-to-see-the-azure-vm-or-resource-group--for-selection-in-enable-replication"></a>"Çoğaltmayı etkinleştir" bölümünde seçim için Azure VM veya kaynak grubu görüntülenemiyor
 
- **1. neden:  Kaynak grubu ve kaynak sanal makine farklı konumlarda**
+ **Neden 1:  Kaynak grubu ve kaynak sanal makine farklı bir konumda**
  
-Azure Site Recovery, şu anda kaynak bölge kaynak grubunu ve sanal makineler mandates aynı konumda olmalıdır. Böyle değilse, ardından, koruma süresi sırasında sanal makine veya kaynak grubunu bulamadı olmaz. 
+Kaynak bölgesinin kaynak grubu ve sanal makinelerin aynı konumda olması gereken şu anda Azure Site Recovery. Böyle bir durum söz konusu değilse, koruma sırasında sanal makineyi veya kaynak grubunu bulamamanız mümkün değildir. 
 
-**Geçici çözüm olarak**, Kurtarma Hizmetleri kasası yerine VM'den çoğaltmayı etkinleştirebilirsiniz. Kaynak VM gidin > Özellikler > olağanüstü durum kurtarma ve çoğaltmayı etkinleştirin.
+**Geçici bir çözüm olarak**, kurtarma hizmetleri KASASı yerine VM 'Den çoğaltmayı etkinleştirebilirsiniz. Kaynak VM > Özellikler > olağanüstü durum kurtarma ' ya gidin ve çoğaltmayı etkinleştirin.
 
-**2. neden: Kaynak grubu, seçili abonelik parçası değil**
+**Neden 2: Kaynak grubu, seçili aboneliğin bir parçası değil**
 
 Belirtilen abonelik bir parçası değilse, kaynak grubunu koruma süresi bulmak mümkün olmayabilir. Kaynak grubu kullanılıyor aboneliğe ait olduğundan emin olun.
 
- **3. neden: Eski yapılandırma**
+ **Neden 3: Eski yapılandırma**
  
 VM için çoğaltmayı etkinleştirmek istediğiniz görmüyorsanız, Azure sanal makinesinde eski bir Site Recovery yapılandırması nedeniyle kalmayabilir. Eski yapılandırmayı aşağıdaki durumlarda bir Azure sanal makinesinde kalmış olabilir:
 
 - Site Recovery kullanarak Azure VM için çoğaltma etkin ve ardından Site Recovery kasası açıkça bir VM üzerinde çoğaltmayı devre dışı bırakmadan silinir.
 - Site Recovery kullanarak Azure VM için çoğaltma etkin ve sonra açıkça bir VM üzerinde çoğaltmayı devre dışı bırakmadan Site Recovery kasasını içeren kaynak grubu silindi.
 
-- Site Recovery kullanarak Azure VM için çoğaltma etkin ve çoğaltmayı devre dışı bırak ancak kaynak VM kaynak kilidi vardı.
+- Site Recovery kullanarak Azure VM için çoğaltmayı etkinleştirdiniz ve sonra çoğaltmayı devre dışı bıraktığınızda, ancak kaynak VM 'nin bir kaynak kilidi vardı.
 
 ### <a name="fix-the-problem"></a>Sorunu
 
 > [!NOTE]
 >
-> "" AzureRM.Resources"" modülü kullanmadan önce güncelleştirdiğinizden emin olun aşağıdaki betiği. Azure Site Recovery, kaynak sanal makineyi silme değil veya aşağıdaki adımları gerçekleştirirken herhangi bir şekilde etkileyebilir.
+> Aşağıdaki betiği kullanmadan önce "" Azurere. resources "" modülünü güncelleştirdiğinizden emin olun. Azure Site Recovery kaynak sanal makineyi silmez veya aşağıdaki adımları gerçekleştirirken herhangi bir şekilde etkilemez.
 >
 
-1. VM veya VM kilidi kaldırmak varsa kaynak grubu. *Örneğin:* VM adı "MoveDemo" silinmesi gereken kaynak kilidi var.
+1. Varsa, VM veya VM kaynak grubundan kilidi kaldırın. *Örneğin:* "MoveDemo" adlı VM adının altında silinmesi gereken kaynak kilidi vardır.
 
    ![Network_Selection_greyed_out](./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png)
-2. Komut dosyası indir [eski yapılandırma Kaldır](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1).
-3. Bu betiği yürütün *Cleanup-stale-asr-config-Azure-VM.ps1*.
-4. Abonelik kimliği, VM kaynak grubu ve VM adı, parametre olarak sağlayın.
-5. Azure kimlik bilgileri istenirse, lütfen sağlayan ve kodun hatalarını yürütülen denetleyin.
+2. Betiği indir [eski yapılandırmayı kaldır](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1).
+3. *Cleanup-Stale-ASR-config-Azure-VM. ps1*betiğini yürütün.
+4. Abonelik KIMLIĞI, VM kaynak grubu ve VM adını bir parametre olarak belirtin.
+5. Azure kimlik bilgileri sorulursa lütfen bunu sağlayın ve betiğin herhangi bir hatadan dolayı yürütüldüğünü kontrol edin.
 
 ## <a name="unable-to-select-virtual-machine-for-protection"></a>Sanal makine koruma için işaretleyin yapılamıyor
- **1. neden:  Sanal makine başarısız veya yanıt vermeyen bir durumda yüklü bazı uzantılı** <br>
+ **Neden 1:  Sanal makinede bir uzantı başarısız veya yanıt vermeyen bir durumda yüklü** <br>
  Sanal makineler gidin > ayarı > Uzantılar ve başarısız durumda herhangi bir uzantısı var olup olmadığını denetleyin. Başarısız uzantının yüklemesini kaldırmak ve sanal makine korumayı yeniden deneyin.<br>
- **2. neden:  [VM'in sağlama durumu geçerli değil](#vms-provisioning-state-is-not-valid-error-code-150019)**
+ **Neden 2:  [VM 'nin sağlama durumu geçerli değil](#vms-provisioning-state-is-not-valid-error-code-150019)**
 
 ## <a name="vms-provisioning-state-is-not-valid-error-code-150019"></a>VM'in sağlama durumu geçerli değil (hata kodu 150019)
 
@@ -344,12 +344,12 @@ VM üzerinde çoğaltmayı etkinleştirmek için sağlama durumu olmalıdır **b
 
 ## <a name="unable-to-select-target-virtual-network---network-selection-tab-is-grayed-out"></a>Sanal ağ - ağ seçimi sekmesi gri renkte hedefi seçmek yüklenemiyor.
 
-**1. neden: Sanal makinenizin 'hedef ağ' için zaten eşlenmiş bir ağa bağlıysa.**
+**Neden 1: VM 'niz zaten bir ' hedef ağ ' ile eşlenmiş bir ağa eklenmişse.**
 - Kaynak VM sanal ağ bir parçasıdır ve hedef kaynak grubunda bir ağ ile aynı sanal ağdaki başka bir VM'den zaten eşlenmiş, ardından tarafından varsayılan ağ seçimi açılan menüsü devre dışı bırakılır.
 
 ![Network_Selection_greyed_out](./media/site-recovery-azure-to-azure-troubleshoot/unabletoselectnw.png)
 
-**2. neden: Varsa daha önce Azure Site Recovery kullanarak VM'yi korumalı ve çoğaltma devre dışı.**
+**Neden 2: Daha önce Azure Site Recovery kullanarak VM 'yi koruduysanız ve çoğaltmayı devre dışı bırakmış olursunuz.**
  - Sanal Makinenin çoğaltmasını devre dışı bırakma ağ eşlemesi silmez. Burada VM korunan kurtarma Hizmetleri kasası silinmesi gerekir. </br>
  Kurtarma hizmeti Kasası'na gidin > Site Recovery altyapısı > Ağ eşlemesi. </br>
  ![Delete_NW_Mapping](./media/site-recovery-azure-to-azure-troubleshoot/delete_nw_mapping.png)
@@ -362,40 +362,40 @@ VM üzerinde çoğaltmayı etkinleştirmek için sağlama durumu olmalıdır **b
 
 **Hata kodu** | **Olası nedenler** | **Öneriler**
 --- | --- | ---
-151025<br></br>**İleti**: Site kurtarma uzantısı yüklenemedi | -'COM + Sistem uygulaması' hizmeti devre dışı.</br></br>-'Birim gölge kopyası' hizmeti devre dışı bırakıldı.| 'COM + Sistem uygulaması' ve 'Birim gölge kopyası' hizmetlerini otomatik veya el ile başlatma moduna ayarlayın.
+151025<br></br>**İleti**: Site Recovery uzantısı yüklenemedi | -'COM + Sistem uygulaması' hizmeti devre dışı.</br></br>-'Birim gölge kopyası' hizmeti devre dışı bırakıldı.| 'COM + Sistem uygulaması' ve 'Birim gölge kopyası' hizmetlerini otomatik veya el ile başlatma moduna ayarlayın.
 
 ### <a name="fix-the-problem"></a>Sorunu
 
 'Hizmetler' konsolunu açın ve 'COM + Sistem uygulaması' emin olun ve 'Birim gölge kopyası', 'Başlangıç türü' 'Devre dışı' olarak ayarlanmamış.
   ![COM hatası](./media/azure-to-azure-troubleshoot-errors/com-error.png)
 
-## <a name="unsupported-managed-disk-size-error-code-150172"></a>Desteklenmeyen yönetilen Disk boyutu (hata kodu 150172)
+## <a name="unsupported-managed-disk-size-error-code-150172"></a>Desteklenmeyen yönetilen disk boyutu (hata kodu 150172)
 
 
 **Hata kodu** | **Olası nedenler** | **Öneriler**
 --- | --- | ---
-150172<br></br>**İleti**: Desteklenen en küçük boyutu (DiskSize) ile (DiskName) içerdiğinden, sanal makine boyutu için 1024 MB koruma etkinleştirilemedi. | -Disk desteklenen boyut 1024 MB değerinden küçük| Disk boyutlarının desteklenen boyut aralıkları içinde olduğundan ve işlemi yeniden deneyin emin olun.
+150172<br></br>**İleti**: Desteklenen en düşük boyut olan 1024 MB 'tan küçük olan sanal makine (DiskName) boyutu (DiskSize) olduğundan, koruma etkinleştirilemedi. | -Disk desteklenen boyut olan 1024 MB 'tan küçük| Disk boyutlarının desteklenen boyut aralığında olduğundan emin olun ve işlemi yeniden deneyin.
 
-## <a name="enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-error-code-151126"></a>GRUB yapılandırması UUID (hata kodu 151126) yerine belirtilen bir cihaz adı olarak koruma etkinleştirilemedi
+## <a name="enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-error-code-151126"></a>Koruma etkinleştirme, (hata kodu 151126), GRUB yapılandırmasında belirtilen cihaz adı olarak başarısız oldu.
 
 **Olası neden:** </br>
-GRUB yapılandırma dosyaları ("/ boot/grub/menu.lst", "/ boot/grub/grub.cfg", "/ boot/grub2/grub.cfg" veya "/ varsayılan/etc/grub") parametre değeri içerebilir **kök** ve **sürdürme** olarak UUID yerine gerçek cihaz adları. Site Recovery VM gelen aynı ada sahip sorunları kaynaklanan yük devretmede büyütme gibi değil aygıtlarını adı VM yeniden başlatma arasında değişiklik gösterebileceği UUID yaklaşım zorunlu kılar. Örneğin: </br>
+GRUB yapılandırma dosyaları ("/boot/grub/menu.lst", "/boot/grub/grub.cfg", "/Boot/GRUB2/grub.cfg" veya "/etc/default/grub"), parametre **kökünün** değerini IÇEREBILIR ve UUID yerine gerçek cihaz adları olarak **sürdürülür** . VM 'nin yeniden başlatılması sırasında cihaz adı değişebilir, çünkü yük devretme sırasında sorun ortaya çıkan aynı ada sahip sanal makine aynı ada sahip olmayabilir. Site Recovery Örneğin: </br>
 
 
-- GRUB dosyasıdır aşağıdaki satırı **/boot/grub2/grub.cfg**. <br>
-  *Linux /boot/vmlinuz-3.12.49-11-default **kök = / dev/sda2** ${extra_cmdline} **= / dev/sda1 sürdürme** splash sessiz sessiz showopts =*
+- Aşağıdaki satır, GRUB dosyası **/Boot/GRUB2/grub.cfg**. <br>
+  *Linux/Boot/vmlinuz-3.12.49-11-Default **root =/dev/sda2** $ {extra_cmdline} **özgeçmişi =/dev/sda1** Splash = sessiz sessiz showopts*
 
 
 - GRUB dosyasıdır aşağıdaki satırı **/boot/grub/menu.lst**
   *çekirdek /boot/vmlinuz-3.0.101-63-default **kök = / dev/sda2** **= / dev/sda1 Sürdür** splash sessiz crashkernel = 256M-:128M showopts vga = 0x314 =*
 
-Yukarıdaki kalın dize gözlemlerseniz, GRUB parametreleri "root" ve "Devam" UUID yerine gerçek cihaz adları vardır.
+Yukarıdaki kalın dizeyi gözlemlerseniz, GRUB 'nin UUID yerine "root" ve "özgeçmişi" parametrelerinin gerçek cihaz adları vardır.
 
-**Nasıl:**<br>
-Cihaz adları, karşılık gelen UUID ile değiştirilmelidir.<br>
+**Nasıl düzeltilir:**<br>
+Cihaz adları karşılık gelen UUID ile değiştirilmelidir.<br>
 
 
-1. Komutunu yürüterek cihazı UUID'si Bul "blkid \<cihaz adı >". Örneğin:<br>
+1. "Blkıd \<cihaz adı >" komutunu yürüterek cihazın UUID 'sini bulun. Örneğin:<br>
    ```
    blkid /dev/sda1
    ```<br>
@@ -403,43 +403,43 @@ Cihaz adları, karşılık gelen UUID ile değiştirilmelidir.<br>
    ```blkid /dev/sda2```<br>
    ```/dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3"
    ```<br>
+   ```
 
 
 
-1. Now replace the device name with its UUID in the format like "root=UUID=\<UUID>". For example, if we replace the device names with UUID for root and resume parameter mentioned above in the files "/boot/grub2/grub.cfg", "/boot/grub2/grub.cfg" or "/etc/default/grub: then the lines in the files looks like. <br>
-   *kernel /boot/vmlinuz-3.0.101-63-default **root=UUID=62927e85-f7ba-40bc-9993-cc1feeb191e4** **resume=UUID=6f614b44-433b-431b-9ca1-4dd2f6f74f6b** splash=silent crashkernel=256M-:128M showopts vga=0x314*
-1. Restart the protection again
+1. Şimdi, cihaz adını "root = UUID =\<UUID >" biçimindeki biçimde UUID ile değiştirin. Örneğin, "/Boot/GRUB2/grub.cfg", "/Boot/GRUB2/grub.cfg" veya "/etc/default/grub" dosyalarında yukarıda bahsedilen root ve özgeçmişi parametresi için, cihaz adlarını UUID ile değiştirdiğinizden, dosyalardaki satırlar benzer şekilde görünür. <br>
+   *çekirdek/Boot/vmlinuz-3.0.101-63-Default **root = UUID = 62927e85-f7ba-40bc-9993-cc1feeb191e4** **özgeçmişi = UUID = 6f614b44-433b-431b-9ca1-4dd2f6f74f6b** tanıtım = sessiz crashkernel = 256D-: 128mshowopts VGA = 0x314*
+1. Korumayı yeniden başlatın
 
-## Enable protection failed as device mentioned in the GRUB configuration doesn't exist(error code 151124)
-**Possible Cause:** </br>
-The GRUB configuration files ("/boot/grub/menu.lst", "/boot/grub/grub.cfg", "/boot/grub2/grub.cfg" or "/etc/default/grub") may contain the parameters "rd.lvm.lv" or "rd_LVM_LV" to indicate the LVM device that should be discovered at the time of booting. If these LVM devices doesn't exist, then the protected system itself will not boot and stuck in the boot process. Even the same will be observed with the failover VM. Below are few examples:
+## <a name="enable-protection-failed-as-device-mentioned-in-the-grub-configuration-doesnt-existerror-code-151124"></a>GRUB yapılandırmasında belirtilen cihaz mevcut olmadığından korumayı etkinleştirme başarısız oldu (hata kodu 151124)
+**Olası neden:** </br>
+GRUB yapılandırma dosyaları ("/boot/grub/menu.lst", "/boot/grub/grub.cfg", "/Boot/GRUB2/grub.cfg" veya "/etc/default/grub"), önyükleme sırasında bulunması gereken LVM cihazını göstermek için "rd.lvm.lv" veya "rd_LVM_LV" parametrelerini içerebilir. Bu LVM cihazları yoksa, korunan sistem önyükleme sürecine önyükleme yapmaz ve takılmaz. Aynı bile yük devretme VM 'si ile de izlenir. Aşağıda birkaç örnek verilmiştir:
 
-Few examples: </br>
+Birkaç örnek: </br>
 
-1. The following line is from the GRUB file **"/boot/grub2/grub.cfg"** on RHEL7. </br>
-   *linux16 /vmlinuz-3.10.0-957.el7.x86_64 root=/dev/mapper/rhel_mup--rhel7u6-root ro crashkernel=128M\@64M **rd.lvm.lv=rootvg/root rd.lvm.lv=rootvg/swap** rhgb quiet LANG=en_US.UTF-8*</br>
-   Here the highlighted portion shows that the GRUB has to detect two LVM devices with names **"root"** and **"swap"** from the volume group "rootvg".
-1. The following line is from the GRUB file **"/etc/default/grub"** on RHEL7 </br>
-   *GRUB_CMDLINE_LINUX="crashkernel=auto **rd.lvm.lv=rootvg/root rd.lvm.lv=rootvg/swap** rhgb quiet"*</br>
-   Here the highlighted portion shows that the GRUB has to detect two LVM devices with names **"root"** and **"swap"** from the volume group "rootvg".
-1. The following line is from the GRUB file **"/boot/grub/menu.lst"** on RHEL6 </br>
-   *kernel /vmlinuz-2.6.32-754.el6.x86_64 ro root=UUID=36dd8b45-e90d-40d6-81ac-ad0d0725d69e rd_NO_LUKS LANG=en_US.UTF-8 rd_NO_MD SYSFONT=latarcyrheb-sun16 crashkernel=auto rd_LVM_LV=rootvg/lv_root  KEYBOARDTYPE=pc KEYTABLE=us rd_LVM_LV=rootvg/lv_swap rd_NO_DM rhgb quiet* </br>
-   Here the highlighted portion shows that the GRUB has to detect two LVM devices with names **"root"** and **"swap"** from the volume group "rootvg".<br>
+1. Aşağıdaki satır, RHEL7 üzerinde **"/Boot/GRUB2/grub.cfg"** grub dosyasından aşağıda verilmiştir. </br>
+   *linux16/vmlinuz-3.10.0-957.EL7.x86_64 root =/dev/mapper/rhel_mup--rhel7u6-root ro crashkernel = 128gb\@64D **RD. LVM. lv = rootvg/root Rd. LVM. lv = rootvg/takas** rhgb quiet lang = en_US. UTF-8*</br>
+   Burada vurgulanan bölüm, GRUB 'nin "rootvg" birim grubundan **"root"** ve **"swap"** adlarına sahip iki LVM cihazını algılaması gerektiğini gösterir.
+1. Aşağıdaki satır, RHEL7 üzerindeki **"/etc/default/grub"** adlı grub dosyasından </br>
+   *GRUB_CMDLINE_LINUX = "crashkernel = Auto **RD. LVM. lv = rootvg/root Rd. LVM. lv = rootvg/takas** rhgb quiet"*</br>
+   Burada vurgulanan bölüm, GRUB 'nin "rootvg" birim grubundan **"root"** ve **"swap"** adlarına sahip iki LVM cihazını algılaması gerektiğini gösterir.
+1. Aşağıdaki satır, RHEL6 üzerinde **"/boot/grub/menu.lst"** grub dosyasından </br>
+   *çekirdek/vmlinuz-2.6.32-754.el6.x86_64 ro root = UUID = 36dd8b45-E90D-40d6-81ac-ad0d0725d69e rd_NO_LUKS LANG = en_US. UTF-8 rd_NO_MD SYSFONT = latarcyrheb-sun16 crashkernel = Auto rd_LVM_LV = rootvg/lv_root KEYBOARDTYPE = PC KEYTABLE = US rd_LVM_LV = rootvg/lv_swap rd_NO_DM rhgb quiet* </br>
+   Burada vurgulanan bölüm, GRUB 'nin "rootvg" birim grubundan **"root"** ve **"swap"** adlarına sahip iki LVM cihazını algılaması gerektiğini gösterir.<br>
 
-**How to Fix:**<br>
+**Nasıl düzeltilir:**<br>
 
-If the LVM device doesn't exist, fix either by creating it or remove the parameter for the same from the GRUB configuration files and then retry the enable protection. </br>
+LVM cihazı yoksa, oluşturarak ya da GRUB yapılandırma dosyalarından aynı için parametreyi kaldırıp, ardından korumayı etkinleştir ' i yeniden deneyin. </br>
 
-## Site Recovery mobility service update completed with warnings ( error code 151083)
-Site Recovery mobility service has many components, one of which is called filter driver. Filter driver gets loaded into system memory only at a time of system reboot. Whenever there are  Site Recovery mobility service updates that has filter driver changes, we update the machine but still gives you warning that some fixes require a reboot. It means that the filter driver fixes can only be realized when a new filter driver is loaded which can happen only at the time of system reboot.<br>
-**Please note** that this is just a warning and existing replication keeps on working even after the new agent update. You can choose to reboot anytime you want to get the benefits of new filter driver but if you don't reboot than also old filter driver keeps on working. Apart from filter driver, **benefits of  any other enhancements and fixes in mobility service get realized without any reboot when the agent gets updated.**  
+## <a name="site-recovery-mobility-service-update-completed-with-warnings--error-code-151083"></a>Site Recovery Mobility hizmeti güncelleştirmesi uyarılarla tamamlandı (hata kodu 151083)
+Site Recovery Mobility hizmetinde, biri filtre sürücüsü olarak adlandırılan birçok bileşen vardır. Filtre sürücüsü sistem belleğine yalnızca sistem yeniden başlatma sırasında yüklenir. Filtre sürücüsü değişiklikleri olan Site Recovery Mobility hizmeti güncelleştirmesi olduğunda, makineyi güncelleştiririz, ancak yine de bazı düzeltmelerin yeniden başlatma gerektirdiğini belirten bir uyarı verir. Bu, filtre sürücüsü düzeltmelerinin yalnızca sistemin yeniden başlatılması sırasında gerçekleşebilecek yeni bir filtre sürücüsü yüklendiğinde gerçekleştirilme anlamına gelir.<br>
+**Lütfen** bu yalnızca bir uyarı olduğunu ve yeni aracı güncelleştirmesinden sonra bile devam eden çoğaltmanın çalıştığını unutmayın. Yeni filtre sürücüsünün avantajlarından yararlanmak istediğiniz zaman yeniden başlatmayı seçebilirsiniz, ancak yeniden başlatma sonrasında eski filtre sürücüsü çalışmaya devam eder. Filtre sürücüsünden ayrı olarak, **Mobility hizmetindeki diğer geliştirmelerin ve düzeltmelerin avantajları, aracı güncelleştirildiği zaman herhangi bir yeniden başlatma olmadan gerçekleştirilir.**  
 
 
-## Protection couldn't be enabled as replica managed disk 'diskname-replica' already exists without expected tags in the target resource group( error code 150161
+## <a name="protection-couldnt-be-enabled-as-replica-managed-disk-diskname-replica-already-exists-without-expected-tags-in-the-target-resource-group-error-code-150161"></a>' Diskname-Replica ' çoğaltma yönetilen diski hedef kaynak grubunda beklenen Etiketler olmadan zaten var olduğundan koruma etkinleştirilemedi (hata kodu 150161
 
-**Cause**: It can occur if the  virtual machine was protected earlier in the past and during disabling the replication, replica disk was not cleaned due to some reason.</br>
-**How to fix:**
-Delete the mentioned replica disk in the error message and restart the failed protection job again.
+**Neden**: Sanal makine geçmişte daha önce korunmuşsa ve çoğaltmayı devre dışı bırakırken bu durum oluşabilir. çoğaltma diski bir nedenden dolayı temizlenmez.</br>
+**Nasıl düzeltilir:** Hata iletisindeki belirtilen çoğaltma diskini silin ve başarısız koruma işini yeniden başlatın.
 
-## Next steps
-[Replicate Azure virtual machines](site-recovery-replicate-azure-to-azure.md)
+## <a name="next-steps"></a>Sonraki adımlar
+[Azure sanal makinelerini çoğaltma](site-recovery-replicate-azure-to-azure.md)

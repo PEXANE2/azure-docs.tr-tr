@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: fdecc34b49b853c34624cabf4688e0387c303a16
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 81d19552b56de540f235960c498c64e7b276320c
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985809"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69030964"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IOT Edge desteklenen sistemleri
 
@@ -70,7 +70,7 @@ Aşağıdaki tabloda listelenen sistemler Microsoft tarafından desteklenir, gen
 | Windows 10 IoT Core, derleme 17763 | ![Windows IoT Core + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
 
 
-Yukarıda listelenen Windows işletim sistemleri, Windows üzerinde Windows kapsayıcıları çalıştıran cihazlara yönelik gereksinimlerdir. Bu yapılandırma, üretim için desteklenen tek yapılandırmadır. Windows için Azure IoT Edge yükleme paketleri Windows üzerinde Linux kapsayıcılarının kullanılmasına izin verir; Ancak, bu yapılandırma yalnızca geliştirme ve test içindir. Windows üzerinde Linux kapsayıcıları kullanımı, üretim için desteklenen bir yapılandırma değildir. Bu geliştirme senaryosunda herhangi bir Windows 10 Build 14393 veya daha yeni sürümü ve Windows Server 2016 ya da daha yeni sürümü kullanılabilir.
+Yukarıda listelenen Windows işletim sistemleri, üretim için desteklenen tek yapılandırma olan Windows kapsayıcıları çalıştıran cihazlara yönelik gereksinimlerdir. Windows için Azure IoT Edge yükleme paketleri Windows üzerinde Linux kapsayıcılarının kullanılmasına izin verir; Ancak, bu yapılandırma yalnızca geliştirme ve test içindir. Daha fazla bilgi için bkz. [Linux kapsayıcılarını çalıştırmak Için Windows 'ta IoT Edge kullanma](how-to-install-iot-edge-windows-with-linux.md).
 
 ### <a name="tier-2"></a>Katman 2
 

@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: kgremban
-ms.openlocfilehash: 7d3586c571c2d70034f10cb3e1efd9242d6a1023
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 9e9028d0c9aeff19dc221b81defa5e2057927fa6
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986972"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69034191"
 ---
 # <a name="use-iot-edge-on-windows-to-run-linux-containers"></a>Linux kapsayıcılarını çalıştırmak için Windows üzerinde IoT Edge kullanma
 
@@ -30,9 +30,7 @@ Windows cihazınızın IoT Edge destekleyip desteklemediğini gözden geçirmek 
 
 ### <a name="supported-windows-versions"></a>Desteklenen Windows sürümleri
 
-Linux kapsayıcılarıyla Azure IoT Edge, Windows 'un aşağıdaki sürümlerinde çalıştırılabilir: 
-* Windows 10 yıldönümü Güncelleştirmesi (derleme 14393) veya üzeri
-* Windows Server 2016 veya daha yenisi
+Linux kapsayıcılarıyla Azure IoT Edge, [Docker Desktop gereksinimlerini](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install) karşılayan herhangi bir Windows sürümünde çalıştırılabilir
 
 IoT Edge en son sürümüne nelerin dahil olduğu hakkında daha fazla bilgi için bkz. [Azure IoT Edge yayınlar](https://github.com/Azure/azure-iotedge/releases).
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: iainfou
-ms.openlocfilehash: b3fb5d665380bc15b61d3b4b7913a992915f9afb
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 35211d6f832033a2bb16c495ebab839b7f740445
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853837"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69031041"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Azure AD Uygulama Ara Sunucusu Azure AD Domain Services yönetilen bir etki alanında dağıtma
 Azure Active Directory (AD) uygulama proxy 'Si, internet üzerinden erişilecek şirket içi uygulamaları yayımlayarak uzak çalışanları desteklemenize yardımcı olur. Azure AD Domain Services ile, artık şirket içinde çalışan eski uygulamaları Azure altyapı hizmetleri 'ne açabilir ve taşıyabilirsiniz. Böylece, kuruluşunuzdaki kullanıcılara güvenli uzaktan erişim sağlamak için Azure AD Uygulama Ara Sunucusu kullanarak bu uygulamaları yayımlayabilirsiniz.
@@ -34,7 +34,7 @@ Bu makalede listelenen görevleri gerçekleştirmek için şunlar gerekir:
 
 1. Geçerli bir **Azure aboneliği**.
 2. Bir **Azure ad dizini** -şirket içi bir dizinle veya yalnızca bulut diziniyle eşitlenir.
-3. Azure AD Uygulama Ara Sunucusu kullanmak için bir **Azure AD temel veya Premium lisans** gerekir.
+3. Azure AD Uygulama Ara Sunucusu kullanmak için bir **Azure AD Premium Lisansı** gerekir.
 4. Azure AD dizini için **Azure AD Domain Services** etkinleştirilmelidir. Bunu yapmadıysanız, [Başlarken kılavuzunda](create-instance.md)özetlenen tüm görevleri izleyin.
 
 <br>

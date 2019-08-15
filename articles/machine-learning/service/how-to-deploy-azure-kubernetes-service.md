@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
-ms.openlocfilehash: 4a0aab2ca2f0bbcee07f09124e68c3623d16004d
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 6949f46345a5520ec3e09508b6d81994f9a7deb5
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848145"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036198"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes hizmet kümesine model dağıtma
 
@@ -212,12 +212,56 @@ az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json 
 
 Daha fazla bilgi için, [az ml model dağıtım](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) başvurusuna bakın. 
 
-## <a name="using-vs-code"></a>VS Code kullanma
+### <a name="using-vs-code"></a>VS Code kullanma
 
 VS Code kullanımı hakkında bilgi için bkz. [vs Code uzantısı aracılığıyla AKS 'e dağıtma](how-to-vscode-tools.md#deploy-and-manage-models).
 
 > [!IMPORTANT] 
 > VS Code aracılığıyla dağıtmak, AKS kümesinin önceden oluşturulmasını veya çalışma alanınıza eklenmesini gerektirir.
+
+## <a name="web-service-authentication"></a>Web hizmeti kimlik doğrulaması
+
+Azure Kubernetes hizmetine dağıtım yaparken, __anahtar tabanlı__ kimlik doğrulaması varsayılan olarak etkindir. __Belirteç__ kimlik doğrulamasını da etkinleştirebilirsiniz. Belirteç kimlik doğrulaması, istemcilerin dağıtılan hizmette istek yapmak için kullanılan bir kimlik doğrulama belirteci istemek için bir Azure Active Directory hesabı kullanmasını gerektirir.
+
+Kimlik doğrulamasını __devre dışı bırakmak__ için `auth_enabled=False` , dağıtım yapılandırmasını oluştururken parametresini ayarlayın. Aşağıdaki örnek, SDK 'Yı kullanarak kimlik doğrulamasını devre dışı bırakır:
+
+```python
+deployment_config = AksWebservice.deploy_configuration(cpu_cores=1, memory_gb=1, auth_enabled=False)
+```
+
+İstemci uygulamasından kimlik doğrulama hakkında daha fazla bilgi için, [Web hizmeti olarak dağıtılan Azure Machine Learning modelini](how-to-consume-web-service.md)kullanma konusuna bakın.
+
+### <a name="authentication-with-keys"></a>Anahtarlar ile kimlik doğrulama
+
+Anahtar kimlik doğrulaması etkinleştirilirse, birincil ve ikincil kimlik doğrulama `get_keys` anahtarını almak için yöntemini kullanabilirsiniz:
+
+```python
+primary, secondary = service.get_keys()
+print(primary)
+```
+
+> [!IMPORTANT]
+> Bir anahtarı yeniden oluşturmanız gerekiyorsa, şunu kullanın[`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py)
+
+### <a name="authentication-with-tokens"></a>Belirteçlerle kimlik doğrulama
+
+Belirteç kimlik doğrulamasını etkinleştirmek için, bir `token_auth_enabled=True` dağıtımı oluştururken veya güncelleştirirken parametreyi ayarlayın. Aşağıdaki örnek SDK kullanarak belirteç kimlik doğrulamasını mümkün bir şekilde sunar:
+
+```python
+deployment_config = AksWebservice.deploy_configuration(cpu_cores=1, memory_gb=1, token_auth_enabled=True)
+```
+
+Belirteç kimlik doğrulaması etkinleştirilirse, bir JWT belirteci almak için `get_token` yöntemini ve bu belirtecin sona erme süresini kullanabilirsiniz:
+
+```python
+token, refresh_by = service.get_token()
+print(token)
+```
+
+> [!IMPORTANT]
+> Belirtecin `refresh_by` zamanından sonra yeni bir belirteç istemeniz gerekir.
+>
+> Microsoft, Azure Machine Learning çalışma alanınızı Azure Kubernetes hizmet kümeniz ile aynı bölgede oluşturmanızı kesinlikle önerir. Bir belirteçle kimlik doğrulaması yapmak için Web hizmeti, Azure Machine Learning çalışma alanınızın oluşturulduğu bölgeye bir çağrı yapar. Çalışma alanınızın bölgesi kullanılamıyorsa, kümeniz çalışma alanınızdan farklı bir bölgedeyse, Web hizmetiniz için de bir belirteç getirimeyeceksiniz. Bu, çalışma alanınızın bölgesi yeniden kullanılabilir olana kadar Azure AD kimlik doğrulamasının kullanılamamasına neden olur. Ayrıca, kümenizin bölgesi ve çalışma alanınızın bölgesi arasındaki mesafe ne kadar fazlaysa bir belirteci getirmek için bu daha uzun sürer.
 
 ## <a name="update-the-web-service"></a>Web hizmetini güncelleştirmek
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 968ee4c8bb5d7e09ef3c345c46f6c7b839e0e25a
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 2eab6fa75e4adbbde7bcf20f18301a1e516235c2
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67990044"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035355"
 ---
 # <a name="how-to-view-logs-and-events-in-real-time-preview"></a>Günlükleri ve olayları gerçek zamanlı görüntüleme (Önizleme)
 Kapsayıcılar için Azure Izleyici, şu anda önizleme aşamasında olan ve kubectl komutlarını çalıştırmaya gerek kalmadan Azure Kubernetes Service (AKS) kapsayıcı günlüklerine (stdout/stderr) ve olaylara canlı bir görünüm sağlayan bir özelliği içerir. İki seçenekten birini seçtiğinizde **düğümler**, **denetleyiciler**ve **kapsayıcılar** görünümündeki performans verileri tablosunun altında yeni bir bölme belirir. Gerçek zamanlı sorun giderme sorunları konusunda daha fazla yardım almak için kapsayıcı altyapısı tarafından oluşturulan canlı günlüğe kaydetme ve olayları gösterir.
@@ -72,7 +72,7 @@ Kubernetes RBAC yetkilendirme etkinleştirilirse, küme rolü bağlama uygulamak
 
 AKS, Azure Active Directory (AD) kullanıcı kimlik doğrulaması için kullanmak üzere yapılandırılabilir. İlk kez yapılandırıyorsanız, bkz. [Azure Kubernetes hizmeti ile Azure Active Directory tümleştirme](../../aks/azure-ad-integration.md). [İstemci uygulamasını](../../aks/azure-ad-integration.md#create-the-client-application)oluşturma adımları sırasında, aşağıdakileri belirtin:
 
-- **Yeniden yönlendirme URI 'si (isteğe bağlı)** : Bu bir **Web** uygulaması türüdür ve temel URL değeri olmalıdır `https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`.
+-  **Yeniden yönlendirme URI 'si**: İki **Web** uygulaması türünün oluşturulması gerekir. İlk temel URL değeri `https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` olmalıdır ve ikinci taban URL değeri olmalıdır. `https://monitoring.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`
 - Uygulamayı kaydettikten sonra, **genel bakış** sayfasından sol bölmedeki **kimlik doğrulaması** ' nı seçin. **Kimlik doğrulama** sayfasında, **Gelişmiş ayarlar** ' ın altında, **erişim belirteçleri** ve **Kimlik belirteçleri** ' ni örtülü olarak verin ve ardından değişikliklerinizi kaydedin.
 
 >[!NOTE]
@@ -94,7 +94,7 @@ Günlük ve olay iletileri, görünümde seçilen kaynak türüne göre sınırl
 | Düğümler | Düğüm | Olay | Düğüm seçildiğinde olaylar filtrelenmez ve küme genelinde Kubernetes olaylarını gösterir. Bölme başlığı, kümenin adını gösterir. |
 | Düğümler | Pod | Olay | Pod seçildiğinde olaylar ad alanına filtrelenir. Bölme başlığı, Pod 'un ad alanını gösterir. | 
 | Denetleyiciler | Pod | Olay | Pod seçildiğinde olaylar ad alanına filtrelenir. Bölme başlığı, Pod 'un ad alanını gösterir. |
-| Denetleyiciler | Kumandasını | Olay | Bir denetleyici seçildiğinde olaylar ad alanına filtrelenir. Bölme başlığı denetleyicinin ad alanını gösterir. |
+| Denetleyiciler | Denetleyici | Olay | Bir denetleyici seçildiğinde olaylar ad alanına filtrelenir. Bölme başlığı denetleyicinin ad alanını gösterir. |
 | Düğümler/denetleyiciler/kapsayıcılar | Kapsayıcı | Günlükler | Bölme başlığı, kapsayıcının gruplandırıldığı Pod 'ın adını gösterir. |
 
 AKS kümesi ile SSO AAD kullanılarak yapılandırıldıysa, ilk kez kullanıldığında, tarayıcı oturumu sırasında kimlik doğrulaması istenir. Hesabınızı ve Azure ile kimlik doğrulamasını tamamlamak seçin.  

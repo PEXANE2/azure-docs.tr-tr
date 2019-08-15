@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 7dcf962345a2453fca52825c4be33a439d25df54
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 5049a35b943c68d1a05d1435113226d83dc5ecf4
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68740928"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69031773"
 ---
 # <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' de yetkili IP adresi aralıklarını kullanarak API sunucusuna önizleme-güvenli erişim
 
@@ -21,7 +21,7 @@ Kubernetes 'de, API sunucusu, küme içinde kaynak oluşturmak veya düğüm say
 Bu makalede, API sunucusu tarafından yetkilendirilmiş IP adresi aralıklarının, düzlemi denetlemek için istekleri sınırlamak üzere nasıl kullanılacağı gösterilir. Bu özellik şu anda önizleme sürümündedir.
 
 > [!IMPORTANT]
-> AKS Önizleme özellikleri self servis, kabul etme özellikleridir. Topluluğumuza geri bildirim ve hata toplamak için sağlanırlar. Önizlemede, bu özellikler üretim kullanımı için tasarlanmamıştır. Genel önizlemede bulunan Özellikler ' en iyi çaba ' desteği altına düşmektedir. AKS teknik destek ekiplerinden yardım yalnızca çalışma saatleri Pasifik saat dilimi (PST) sırasında kullanılabilir. Ek bilgi için lütfen aşağıdaki destek makalelerine bakın:
+> AKS Önizleme özellikleri self servis kabul etme sürecindedir. Önizlemeler, "olduğu gibi" ve "kullanılabilir olarak" verilmiştir ve hizmet düzeyi sözleşmelerinden ve sınırlı garantiden çıkarılır. AKS önizlemeleri, müşteri desteğinin en iyi çaba temelinde kısmen ele alınmıştır. Bu nedenle, bu özellikler üretim kullanımı için tasarlanmamıştır. Ek bilgi için lütfen aşağıdaki destek makalelerine bakın:
 >
 > * [AKS destek Ilkeleri][aks-support-policies]
 > * [Azure desteği SSS][aks-faq]

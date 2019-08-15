@@ -1,5 +1,5 @@
 ---
-title: SSS - Azure Active Directory etki alanı Hizmetleri | Microsoft Docs
+title: SSS-Azure Active Directory Domain Services | Microsoft Docs
 description: Azure Active Directory Domain Services hakkında sık sorulan sorular
 services: active-directory-ds
 documentationcenter: ''
@@ -15,93 +15,93 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 10131ad306a8a24cb5835e55a02f1b502b20bea4
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 3d44937c977ba264d671f2053d387470651af68a
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67473379"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69030875"
 ---
-# <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Azure Active Directory etki alanı Hizmetleri: Sık Sorulan Sorular (SSS)
-Bu sayfa, Azure Active Directory Domain Services hakkında sık sorulan sorular yanıtlanmaktadır. Geri güncelleştirmeleri kontrol etmeyi unutmayın.
+# <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Azure Active Directory Domain Services: Sık Sorulan Sorular (SSS)
+Bu sayfa Azure Active Directory Domain Services hakkında sık sorulan soruları yanıtlar. Güncelleştirmeleri yeniden denetlemeye devam edin.
 
 ## <a name="troubleshooting-guide"></a>Sorun giderme kılavuzu
-Başvurmak [sorun giderme kılavuzu](troubleshoot.md) yapılandırma veya Azure AD Domain Services'ı yönetme ile sık karşılaşılan sorunlara çözümler için.
+Azure AD Domain Services yapılandırma veya yönetme ile ilgili sık karşılaşılan sorunların çözümleri için [sorun giderme kılavuzuna](troubleshoot.md) bakın.
 
 ## <a name="configuration"></a>Yapılandırma
-### <a name="can-i-create-multiple-managed-domains-for-a-single-azure-ad-directory"></a>Tek bir yönetilen birden çok etki alanı oluşturmak Azure AD directory?
-Hayır. Tek bir Azure AD Domain Services tarafından hizmet verilen tek bir yönetilen etki alanı oluşturabilmeniz için Azure AD dizini.  
+### <a name="can-i-create-multiple-managed-domains-for-a-single-azure-ad-directory"></a>Tek bir Azure AD dizini için birden çok yönetilen etki alanı oluşturabilir miyim?
+Hayır. Tek bir Azure AD dizini için yalnızca Azure AD Domain Services tarafından hizmet verilen tek bir yönetilen etki alanı oluşturabilirsiniz.  
 
-### <a name="can-i-enable-azure-ad-domain-services-in-an-azure-resource-manager-virtual-network"></a>Azure AD Domain Services, Azure Resource Manager sanal ağında etkinleştirebilirim?
-Evet. Azure AD etki alanı Hizmetleri, bir Azure Resource Manager sanal ağında etkinleştirilebilir. Klasik Azure sanal ağları yeni yönetilen etki alanları oluşturmak için artık desteklenmemektedir.
+### <a name="can-i-enable-azure-ad-domain-services-in-an-azure-resource-manager-virtual-network"></a>Azure Resource Manager bir sanal ağda Azure AD Domain Services etkinleştirebilir miyim?
+Evet. Azure AD Domain Services, Azure Resource Manager bir sanal ağda etkinleştirilebilir. Klasik Azure sanal ağları artık yeni yönetilen etki alanları oluşturmak için desteklenmez.
 
-### <a name="can-i-migrate-my-existing-managed-domain-from-a-classic-virtual-network-to-a-resource-manager-virtual-network"></a>Mevcut yönetilen etki alanım klasik bir sanal ağdan bir Resource Manager sanal ağına geçişini sağlayabilir miyim?
-Şu anda değil. Microsoft bir Resource Manager sanal ağı klasik bir sanal ağdan mevcut yönetilen etki alanınızı gelecekte geçirmek için bir mekanizma sunar.
+### <a name="can-i-migrate-my-existing-managed-domain-from-a-classic-virtual-network-to-a-resource-manager-virtual-network"></a>Mevcut yönetilen etki alanını klasik bir sanal ağdan Kaynak Yöneticisi sanal ağa geçirebilir miyim?
+Şu anda değil. Microsoft, mevcut yönetilen etki alanınızı klasik bir sanal ağdan gelecekte Kaynak Yöneticisi bir sanal ağa geçirmeye yönelik bir mekanizma sunar.
 
-### <a name="can-i-enable-azure-ad-domain-services-in-an-azure-csp-cloud-solution-provider-subscription"></a>Bir Azure CSP (bulut çözümü sağlayıcısı) aboneliği Azure AD Etki Alanı Hizmetleri'nde etkinleştirebilirim?
-Evet. Nasıl imkan tanıdığını öğrenin [Azure CSP aboneliklerinde Azure AD Etki Alanı Hizmetleri'nde](csp.md).
+### <a name="can-i-enable-azure-ad-domain-services-in-an-azure-csp-cloud-solution-provider-subscription"></a>Azure CSP (bulut çözümü sağlayıcısı) aboneliğindeki Azure AD Domain Services etkinleştirebilir miyim?
+Evet. Bkz. [Azure CSP aboneliklerinde Azure AD Domain Services](csp.md)nasıl etkinleştirebilirim.
 
-### <a name="can-i-enable-azure-ad-domain-services-in-a-federated-azure-ad-directory-i-do-not-synchronize-password-hashes-to-azure-ad-can-i-enable-azure-ad-domain-services-for-this-directory"></a>Azure AD Domain Services Federasyon azure'da etkinleştirebilirim AD directory? Parola karmalarının Azure AD'ye eşitlenmez. Bu dizin için Azure AD Domain Services etkinleştirebilirim?
-Hayır. Azure AD etki alanı Hizmetleri üzerinden NTLM veya Kerberos kullanıcı kimlik doğrulaması için kullanıcı hesaplarının, parola karmaları erişmesi gerekir. Bir Federasyon dizinde parola karmalarının Azure AD dizininde depolanmaz. Bu nedenle, Azure AD Domain Services çalışmıyor gibi Azure AD dizin.
+### <a name="can-i-enable-azure-ad-domain-services-in-a-federated-azure-ad-directory-i-do-not-synchronize-password-hashes-to-azure-ad-can-i-enable-azure-ad-domain-services-for-this-directory"></a>Azure AD Domain Services federe bir Azure AD dizininde etkinleştirebilir miyim? Parola karmalarını Azure AD ile eşitleyemiyorum. Bu dizin için Azure AD Domain Services etkinleştirebilir miyim?
+Hayır. Azure AD Domain Services NTLM veya Kerberos aracılığıyla kullanıcıların kimliğini doğrulamak için Kullanıcı hesaplarının parola karmalarını erişmesi gerekir. Bir Federasyon dizininde, parola karmaları Azure AD dizininde depolanmaz. Bu nedenle Azure AD Domain Services, bu Azure AD dizinlerinde çalışmaz.
 
-### <a name="can-i-make-azure-ad-domain-services-available-in-multiple-virtual-networks-within-my-subscription"></a>Azure AD Domain Services birden çok sanal ağlarda kullanılabilir Aboneliğim dahilindeki oluşturabilir miyim?
-Hizmet, bu senaryo doğrudan desteklemez. Yönetilen etki alanınızla aynı anda yalnızca bir sanal ağda kullanılabilir. Ancak, diğer sanal ağlara Azure AD Domain Services'ı göstermek için birden çok sanal ağlar arasında bağlantı yapılandırabilirsiniz. Öğrenmek [azure'da sanal ağları birbirine bağlama](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md).
+### <a name="can-i-make-azure-ad-domain-services-available-in-multiple-virtual-networks-within-my-subscription"></a>Azure AD Domain Services Aboneliğimde birden çok sanal ağda kullanılabilir yapabilir miyim?
+Hizmetin kendisi bu senaryoyu doğrudan desteklemez. Yönetilen etki alanınız tek seferde yalnızca bir sanal ağda kullanılabilir. Ancak, diğer sanal ağlara Azure AD Domain Services göstermek için birden çok sanal ağ arasında bağlantı yapılandırabilirsiniz. [Azure 'da sanal ağları](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)nasıl bağlayabileceğini öğrenin.
 
-### <a name="can-i-enable-azure-ad-domain-services-using-powershell"></a>PowerShell kullanarak Azure AD Domain Services etkinleştirebilirim?
-Evet. Bkz: [PowerShell kullanarak Azure AD etki alanı hizmetleri nasıl](powershell-create-instance.md).
+### <a name="can-i-enable-azure-ad-domain-services-using-powershell"></a>PowerShell 'i kullanarak Azure AD Domain Services etkinleştirebilir miyim?
+Evet. Bkz. [PowerShell kullanarak Azure AD Domain Services etkinleştirme](powershell-create-instance.md).
 
-### <a name="can-i-enable-azure-ad-domain-services-using-a-resource-manager-template"></a>Resource Manager şablonu kullanarak Azure AD Domain Services etkinleştirebilirim?
-Hayır, bir şablon kullanarak Azure AD Domain Services'ı etkinleştirmek şu anda mümkün değildir. Bunun yerine PowerShell kullanmak, bkz: [PowerShell kullanarak Azure AD etki alanı hizmetleri nasıl](powershell-create-instance.md).
+### <a name="can-i-enable-azure-ad-domain-services-using-a-resource-manager-template"></a>Kaynak Yöneticisi şablonu kullanarak Azure AD Domain Services etkinleştirebilir miyim?
+Hayır, şu anda Azure AD Domain Services şablon kullanarak etkinleştirmek mümkün değildir. Bunun yerine PowerShell 'i kullanın, bkz. [PowerShell kullanarak Azure AD Domain Services etkinleştirme](powershell-create-instance.md).
 
-### <a name="can-i-add-domain-controllers-to-an-azure-ad-domain-services-managed-domain"></a>Bir Azure AD Domain Services yönetilen etki alanına etki alanı denetleyicileri ekleyebilir miyim?
-Hayır. Azure AD Domain Services tarafından sağlanan etki alanı, yönetilen bir etki alanıdır. Bu yönetim etkinlikleri, sağlama, yapılandırma veya etki alanı denetleyicileri bu etki alanı - yönetmek gerekmez Microsoft tarafından bir hizmet olarak sağlanır. Bu nedenle, yönetilen etki alanınız için ek etki alanı denetleyicileri (salt okunur veya salt okunur) ekleyemezsiniz.
+### <a name="can-i-add-domain-controllers-to-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services yönetilen bir etki alanına etki alanı denetleyicileri ekleyebilir miyim?
+Hayır. Azure AD Domain Services tarafından belirtilen etki alanı, yönetilen bir etki alanıdır. Bu etki alanı için etki alanı denetleyicileri sağlamanız, yapılandırmanız veya başka bir şekilde yönetmeniz gerekmez-bu yönetim etkinlikleri Microsoft tarafından bir hizmet olarak sağlanır. Bu nedenle, yönetilen etki alanı için ek etki alanı denetleyicileri (salt okuma-yazma veya salt okuma) ekleyemezsiniz.
 
-### <a name="can-guest-users-invited-to-my-directory-use-azure-ad-domain-services"></a>Konuk kullanıcıları davet için Dizinimi Azure AD Domain Services ile kullanabilir miyim?
-Hayır. Konuk kullanıcıları davet kullanarak, Azure AD directory [Azure AD B2B](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md) davet işlemi, Azure AD Domain Services yönetilen etki alanına eşitlenir. Ancak, bu kullanıcıların parolalarını Azure AD dizininizde depolanmaz. Bu nedenle, Azure AD etki alanı Hizmetleri NTLM eşitlemeye hiçbir yolu yoktur ve Kerberos, yönetilen etki alanına bu kullanıcılar için karma hale getirir. Sonuç olarak, bu kullanıcılar yönetilen etki alanına oturum açın veya bilgisayarların yönetilen etki alanına katılmasını sağlamak.
+### <a name="can-guest-users-invited-to-my-directory-use-azure-ad-domain-services"></a>Konuk kullanıcıların dizinme Azure AD Domain Services kullanmasına davet edilebilir mi?
+Hayır. Azure [AD B2B](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md) davet Işlemi KULLANıLARAK Azure AD dizininize davet edilen konuk kullanıcılar Azure AD Domain Services yönetilen etki alanınız ile eşitlenir. Ancak, bu kullanıcıların parolaları Azure AD dizininizde depolanmaz. Bu nedenle Azure AD Domain Services, bu kullanıcılar için NTLM ve Kerberos karmalarını yönetilen etki alanınız içinde eşitlemeye yönelik bir yol yoktur. Sonuç olarak, bu tür kullanıcılar yönetilen etki alanında oturum açabilir veya bilgisayarları yönetilen etki alanına katılamaz.
 
-## <a name="administration-and-operations"></a>Yönetim ve işlemler
-### <a name="can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop"></a>Uzak Masaüstü kullanarak yönetilen etki alanım için etki alanı denetleyicisine bağlanabilir miyim?
-Hayır. Uzak Masaüstü aracılığıyla yönetilen etki alanı için etki alanı denetleyicisine bağlanmak için gerekli izinlere sahip değil. 'AAD DC Administrators' grubunun üyeleri, yönetilen etki alanı AD yönetim araçları gibi Active Directory Yönetim Merkezi (ADAC) veya AD PowerShell kullanarak yönetebilirsiniz. Bu araçlar, yönetilen etki alanına katılmış bir Windows server üzerinde 'Uzak sunucu Yönetim Araçları' özelliği kullanılarak yüklenir.
+## <a name="administration-and-operations"></a>Yönetim ve Işlemler
+### <a name="can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop"></a>Yönetilen etki alanım için Uzak Masaüstü 'Nü kullanarak etki alanı denetleyicisine bağlanabilir miyim?
+Hayır. Uzak Masaüstü aracılığıyla yönetilen etki alanı için etki alanı denetleyicilerine bağlanma izniniz yok. ' AAD DC Administrators ' grubunun üyeleri, Active Directory Yönetim Merkezi (ADAC) veya AD PowerShell gibi AD Yönetim araçlarını kullanarak yönetilen etki alanını yönetebilir. Bu araçlar, yönetilen etki alanına katılmış bir Windows Server 'daki ' Uzak Sunucu Yönetim Araçları ' özelliği kullanılarak yüklenir.
 
-### <a name="ive-enabled-azure-ad-domain-services-what-user-account-do-i-use-to-domain-join-machines-to-this-domain"></a>Ben Azure AD Etki Alanı Hizmetleri'ni etkinleştirdiniz. Bu etki alanı için etki alanı katılma makinelere hangi kullanıcı hesabı kullanabilir?
-Yönetim 'AAD DC Administrators' grubunun üyeleri, etki alanına katılım makineler olabilir. Ayrıca, bu grubun üyeleri, etki alanına katılmış makinelerde Uzak Masaüstü erişimi verilir.
+### <a name="ive-enabled-azure-ad-domain-services-what-user-account-do-i-use-to-domain-join-machines-to-this-domain"></a>Azure AD Domain Services etkinleştirdim. Makinelere bu etki alanına katılması için hangi kullanıcı hesabını kullanabilirim?
+' AAD DC Administrators ' yönetim grubunun üyeleri, etki alanına katılabilir makinelere sahip olabilir. Ayrıca, bu grubun üyelerine, etki alanına katılmış makinelere uzak masaüstü erişimi verilir.
 
-### <a name="do-i-have-domain-administrator-privileges-for-the-managed-domain-provided-by-azure-ad-domain-services"></a>Azure AD Domain Services tarafından sağlanan yönetilen etki alanı için etki alanı yöneticisi ayrıcalıkları var mı?
-Hayır. Yönetilen etki alanı üzerinde yönetim ayrıcalıkları verilmez. Hem ' etki alanı Yöneticisi ' ve ' Kurumsal Yönetici ' ayrıcalıkları, etki alanı içinde kullanmanız için kullanılamaz. Etki alanı yönetici veya şirket içi Active directory'nizde Kurumsal Yönetici gruplarından üyeler de yönetilen etki alanındaki etki alanı/Kurumsal Yönetici ayrıcalıkları verilmez.
+### <a name="do-i-have-domain-administrator-privileges-for-the-managed-domain-provided-by-azure-ad-domain-services"></a>Azure AD Domain Services tarafından belirtilen yönetilen etki alanı için etki alanı yöneticisi ayrıcalıklarına sahip mıyım?
+Hayır. Yönetilen etki alanında yönetim ayrıcalıkları verilmemiş. Etki alanı içinde kullanabileceğiniz ' etki alanı Yöneticisi ' ve ' Kuruluş Yöneticisi ' ayrıcalıkları kullanılamaz. Şirket içi Active Directory etki alanı yöneticisinin veya kurumsal yönetici gruplarının üyelerine, yönetilen etki alanında etki alanı/kuruluş yöneticisi ayrıcalıkları de verilmez.
 
-### <a name="can-i-modify-group-memberships-using-ldap-or-other-ad-administrative-tools-on-managed-domains"></a>Yönetilen etki alanlarında LDAP veya AD yönetim araçlarını kullanarak grup üyeliklerini değiştirebilir miyim?
-Hayır. Azure AD Domain Services tarafından hizmet verilen etki alanlarında grup üyeliği değiştirilemez. Aynı kullanıcı öznitelikleri için geçerlidir. Azure AD'de ya da şirket içi etki alanınızdaki grup üyelikleri veya kullanıcı öznitelikleri ancak değişebilir. Bu tür değişiklikler Azure AD Domain Services için otomatik olarak eşitlenir.
+### <a name="can-i-modify-group-memberships-using-ldap-or-other-ad-administrative-tools-on-managed-domains"></a>Yönetilen etki alanlarında LDAP veya diğer AD Yönetim araçlarını kullanarak grup üyeliklerini değiştirebilir miyim?
+Hayır. Grup üyelikleri, Azure AD Domain Services tarafından hizmet verilen etki alanlarında değiştirilemez. Aynı Kullanıcı öznitelikleri için de geçerlidir. Ancak, Azure AD 'de ya da şirket içi etki alanında Grup üyeliklerini veya Kullanıcı özniteliklerini değiştirebilirsiniz. Bu değişiklikler Azure AD Domain Services ile otomatik olarak eşitlenir.
 
-### <a name="how-long-does-it-take-for-changes-i-make-to-my-azure-ad-directory-to-be-visible-in-my-managed-domain"></a>Ne kadar süreyle sürer değişiklikleri miyim yönetilen etki alanım görünür olması için Azure AD directory dizinimde olun?
-Azure AD kullanıcı Arabirimi veya PowerShell kullanarak Azure AD dizininizde yapılan değişiklikler, yönetilen Etki Alanınızla eşitlenir. Bu eşitleme işlemi arka planda çalışır. İlk eşitleme tamamlandıktan sonra genellikle yönetilen etki alanınızda yansıtılması için Azure AD'de yapılan değişiklikler için yaklaşık 20 dakika sürer.
+### <a name="how-long-does-it-take-for-changes-i-make-to-my-azure-ad-directory-to-be-visible-in-my-managed-domain"></a>Azure AD dizinimde, yönetilen etki alanım 'da görünür hale gelen değişiklikler için ne kadar sürer?
+Azure AD Kullanıcı arabirimi veya PowerShell kullanılarak Azure AD dizininizde yapılan değişiklikler, yönetilen etki alanınız ile eşitlenir. Bu eşitleme işlemi arka planda çalışır. İlk eşitleme tamamlandıktan sonra, Azure AD 'de yönetilen etki alanına yansıtılmalıdır ve bu değişiklikler genellikle yaklaşık 20 dakika sürer.
 
-### <a name="can-i-extend-the-schema-of-the-managed-domain-provided-by-azure-ad-domain-services"></a>Ben Azure AD Domain Services tarafından sağlanan yönetilen etki alanında şemasını uzatabilir miyim?
-Hayır. Şema, yönetilen etki alanı için Microsoft tarafından yönetilir. Şema uzantıları, Azure AD Domain Services tarafından desteklenmez.
+### <a name="can-i-extend-the-schema-of-the-managed-domain-provided-by-azure-ad-domain-services"></a>Azure AD Domain Services tarafından belirtilen yönetilen etki alanının şemasını genişletebilir miyim?
+Hayır. Şema, yönetilen etki alanı için Microsoft tarafından yönetilir. Şema uzantıları Azure AD Domain Services tarafından desteklenmez.
 
-### <a name="can-i-modify-or-add-dns-records-in-my-managed-domain"></a>Ben değiştirebilir veya my yönetilen etki alanında DNS kayıtları eklemek?
-Evet. 'AAD DC Administrators' grubunun üyeleri, yönetilen etki alanında DNS kayıtları değiştirmek için ' DNS Yöneticisi ' ayrıcalıklarını verilir. DNS Yöneticisi konsolunu çalıştıran Windows Server'ın yönetilen etki alanına katılmış bir makinede DNS yönetmek için kullanabilirler. DNS Yöneticisi konsolunu kullanmak için 'DNS sunucusu sunucuda 'Uzak sunucu Yönetim Araçları' isteğe bağlı özelliği parçası olan Araçlar','i yükleyin. Daha fazla bilgi [yönetme, izleme ve DNS sorun giderme için yardımcı programlar](https://technet.microsoft.com/library/cc753579.aspx) TechNet üzerindeki kullanılabilir.
+### <a name="can-i-modify-or-add-dns-records-in-my-managed-domain"></a>Yönetilen etki alanım 'da DNS kayıtlarını değiştirebilir veya ekleyebilir miyim?
+Evet. ' AAD DC Administrators ' grubunun üyelerine, yönetilen etki alanındaki DNS kayıtlarını değiştirmek için ' DNS Yöneticisi ' ayrıcalıkları verilir. DNS Yöneticisi konsolunu, DNS yönetimi için, yönetilen etki alanına katılmış Windows Server çalıştıran bir makinede kullanabilirler. DNS Yöneticisi konsolunu kullanmak için, sunucuda ' Uzak Sunucu Yönetim Araçları ' isteğe bağlı özelliğinin bir parçası olan ' DNS sunucu Araçları ' nı ' nı () kullanın. [DNS 'yi yönetme, izleme ve sorun giderme için yardımcı programlar](https://technet.microsoft.com/library/cc753579.aspx) hakkında daha fazla bilgiyi TechNet 'te bulabilirsiniz.
 
-### <a name="what-is-the-password-lifetime-policy-on-a-managed-domain"></a>Yönetilen etki alanında Parola ömrü ilkesi nedir?
-Azure AD etki alanı üzerinde varsayılan Parola ömrü Services yönetilen etki alanında 90 gündür. Bu parola yaşam süresi Azure AD'de yapılandırılmış Parola ömrü ile eşitlenmemiş. Bu nedenle, burada kullanıcıların parolalarını yönetilen etki alanınızda süresi dolacak, ancak Azure AD'de hala geçerli bir durum olabilir. Böyle senaryolarda, kullanıcıların Azure AD'de parola değiştirmesi gerekmez ve yeni parolayı yönetilen Etki Alanınızla eşitleme yapar. Ayrıca, 'parola-mu-not-zaman aşımı' ve 'user-must-change-password-at-next-logon' öznitelikleri kullanıcı hesapları için yönetilen Etki Alanınızla eşitlenmez.
+### <a name="what-is-the-password-lifetime-policy-on-a-managed-domain"></a>Yönetilen bir etki alanında parola ömrü ilkesi nedir?
+Azure AD Domain Services yönetilen bir etki alanında varsayılan parola ömrü 90 gündür. Bu parola ömrü, Azure AD 'de yapılandırılan parola ömrü ile eşitlenmez. Bu nedenle, kullanıcıların parolalarının yönetilen etki alanında sona ereceği, ancak Azure AD 'de hala geçerli olduğu bir durum olabilir. Bu senaryolarda, kullanıcıların Azure AD 'de parolasını değiştirmesi ve yeni parolanın yönetilen etki alanınız ile eşitlenmesi gerekir. Ayrıca, Kullanıcı hesapları için ' parola-a-süre sonu ' ve ' Kullanıcı--değiştirme-parola-oturum açma ' öznitelikleri, yönetilen etki alanınız ile eşitlenmez.
 
-### <a name="does-azure-ad-domain-services-provide-ad-account-lockout-protection"></a>Azure AD Domain Services AD hesap kilitleme korumasına sağlar?
-Evet. Yönetilen etki alanındaki beş geçersiz parola denemelerinin 2 dakika içinde bir kullanıcı hesabı, 30 dakika boyunca kilitlenmesine neden. 30 dakika sonra kullanıcı hesabının kilidi otomatik olarak. Yönetilen etki alanındaki geçersiz parola denemelerinin Azure AD'de kullanıcı hesabının kilitleneceği değil. Kullanıcı hesabı yalnızca Azure AD Domain Services yönetilen etki alanı içinde kilitli.
+### <a name="does-azure-ad-domain-services-provide-ad-account-lockout-protection"></a>Azure AD Domain Services AD hesabı kilitleme koruması sağlar mi?
+Evet. Yönetilen etki alanında 2 dakika içinde 5 geçersiz parola denemesi, bir kullanıcı hesabının 30 dakika boyunca kilitlenmesine neden olur. 30 dakika sonra, Kullanıcı hesabı otomatik olarak kilidi açılır. Yönetilen etki alanında geçersiz parola denemeleri, Azure AD 'de Kullanıcı hesabını kilitlemez. Kullanıcı hesabı yalnızca Azure AD Domain Services yönetilen etki alanı içinde kilitlenir.
 
-## <a name="billing-and-availability"></a>Faturalandırma ve kullanılabilirliği
-### <a name="is-azure-ad-domain-services-a-paid-service"></a>Azure AD etki alanı Hizmetleri Ücretli bir hizmet mi?
+## <a name="billing-and-availability"></a>Faturalandırma ve kullanılabilirlik
+### <a name="is-azure-ad-domain-services-a-paid-service"></a>Ücretli bir hizmet Azure AD Domain Services mı?
 Evet. Daha fazla bilgi edinmek için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/active-directory-ds/).
 
-### <a name="is-there-a-free-trial-for-the-service"></a>Hizmeti için ücretsiz deneme sürümü var mı?
-Bu hizmet, Azure için ücretsiz deneme bulunmaktadır. Oturum açabileceğiniz bir [ücretsiz bir aylık deneme sürümü Azure](https://azure.microsoft.com/pricing/free-trial/).
+### <a name="is-there-a-free-trial-for-the-service"></a>Hizmet için ücretsiz deneme sürümü var mı?
+Bu hizmet, Azure için ücretsiz denemeye dahildir. [Azure 'un ücretsiz bir aylık deneme sürümüne](https://azure.microsoft.com/pricing/free-trial/)kaydolabilirsiniz.
 
-### <a name="can-i-pause-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services yönetilen etki alanı duraklatarak miyim? 
-Hayır. Bir Azure AD Domain Services yönetilen etki alanı etkinleştirildikten sonra devre dışı bırak/Sil yönetilen etki alanı kadar hizmet seçilen sanal ağda kullanılabilir. Hizmeti duraklatma hiçbir yolu yoktur. Yönetilen etki alanı silene kadar faturalama, saatlik olarak devam eder.
+### <a name="can-i-pause-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services yönetilen bir etki alanını duraklatabilir miyim? 
+Hayır. Azure AD Domain Services yönetilen bir etki alanını etkinleştirdikten sonra, yönetilen etki alanını devre dışı bırakana veya silme işlemi yapılıncaya kadar hizmet seçtiğiniz sanal ağınız dahilinde kullanılabilir. Hizmeti duraklatmanın bir yolu yoktur. Faturalandırma, yönetilen etki alanını silene kadar saatlik olarak devam eder.
 
-### <a name="can-i-failover-azure-ad-domain-services-to-another-region-for-a-dr-event"></a>Alabilirim DR olay için Azure AD Domain Services için başka bir bölgeye yük devretme?
-Hayır.  Azure AD etki alanı Hizmetleri şu anda sağlamaz coğrafi olarak yedekli dağıtım modeli. Bir Azure bölgesi içinde tek bir sanal ağ için sınırlıdır. Birden fazla Azure bölgesini kullanmak istiyorsanız, Active Directory etki alanı denetleyicilerinizi Azure Iaas Vm'lerinde çalıştırmak gerekir.  Mimari Kılavuzu bulunabilir [burada](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/adds-extend-domain).
+### <a name="can-i-failover-azure-ad-domain-services-to-another-region-for-a-dr-event"></a>Azure AD Domain Services bir DR olayı için başka bir bölgeye yük devreder miyim?
+Hayır.  Azure AD Domain Services Şu anda coğrafi olarak yedekli bir dağıtım modeli sağlamıyor. Azure bölgesindeki tek bir sanal ağla sınırlıdır. Birden çok Azure bölgesini kullanmak istiyorsanız, Azure IaaS VM 'lerinde Active Directory Etki Alanı denetleyicilerinizi çalıştırmanız gerekir.  Mimari kılavuzumuzu [burada](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/adds-extend-domain)bulabilirsiniz.
 
-### <a name="can-i-get-azure-ad-domain-services-as-part-of-enterprise-mobility-suite-ems-do-i-need-azure-ad-premium-to-use-azure-ad-domain-services"></a>Enterprise Mobility Suite (EMS) bir parçası olarak Azure AD Domain Services alabilir miyim? Azure AD Domain Services'ı kullanmak için Azure AD Premium ihtiyacım var?
-Hayır. Azure AD etki alanı Hizmetleri, bir Kullandıkça Öde Azure hizmeti olan ve EMS'nin parçası değildir. Azure AD etki alanı Hizmetleri ile Azure AD'nin tüm sürümleri kullanılabilir (ücretsiz, temel ve, Premium). Kullanımına bağlı olarak bir saatlik olarak faturalandırılırsınız.
+### <a name="can-i-get-azure-ad-domain-services-as-part-of-enterprise-mobility-suite-ems-do-i-need-azure-ad-premium-to-use-azure-ad-domain-services"></a>Enterprise Mobility Suite 'in (EMS) bir parçası olarak Azure AD Domain Services alabilir miyim? Azure AD Domain Services kullanmak için Azure AD Premium ihtiyacım var mı?
+Hayır. Azure AD Domain Services, Kullandıkça Öde Azure hizmetidir ve EMS 'nin bir parçası değildir. Azure AD Domain Services, tüm Azure AD sürümleriyle (ücretsiz ve Premium) kullanılabilir. Kullanıma bağlı olarak saatlik olarak faturalandırılırsınız.
 
-### <a name="what-azure-regions-is-the-service-available-in"></a>Hangi Azure bölgeleri kullanılabilir hizmet?
-Başvurmak [bölgeye göre Azure Hizmetleri](https://azure.microsoft.com/regions/#services/) Azure AD Domain Services'in kullanılabildiği Azure bölgelerini listesini görmek için sayfayı.
+### <a name="what-azure-regions-is-the-service-available-in"></a>Hizmet hangi Azure bölgelerini kullanabilir?
+Azure AD Domain Services kullanılabildiği Azure bölgelerinin bir listesini görmek için [bölgeye göre Azure hizmetleri](https://azure.microsoft.com/regions/#services/) sayfasına bakın.

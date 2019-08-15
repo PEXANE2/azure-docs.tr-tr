@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric CLI - sfctl kafes gateway | Microsoft Docs
-description: Service Fabric CLI'sını sfctl kafes ağ geçidi komutlarını açıklamaktadır.
+title: Azure Service Fabric CLı-sfctl ağı ağ geçidi | Microsoft Docs
+description: Service Fabric CLı sfctl ağı ağ geçidi komutlarını açıklar.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
@@ -8,88 +8,87 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 27cfe380e5988f17ca79c430cde7defc7f7bc440
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b8acb23b274e6062ae3c50ab80220ab93297037e
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60839088"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036422"
 ---
 # <a name="sfctl-mesh-gateway"></a>sfctl mesh gateway
-Alın ve ağ geçidi kaynakları silin.
+Ağ Geçidi kaynaklarını alın ve silin.
 
 ## <a name="commands"></a>Komutlar
 
 |Komut|Açıklama|
 | --- | --- |
-| delete | Ağ geçidi kaynağı siler. |
-| list | Tüm ağ geçidi kaynakları listeler. |
-| göster | Belirtilen ada sahip bir ağ geçidi kaynağı alır. |
+| sil | Ağ Geçidi kaynağını siler. |
+| list | Tüm ağ geçidi kaynaklarını listeler. |
+| göster | Belirtilen ada sahip ağ geçidi kaynağını alır. |
 
-## <a name="sfctl-mesh-gateway-delete"></a>sfctl kafes ağ geçidini Sil
-Ağ geçidi kaynağı siler.
+## <a name="sfctl-mesh-gateway-delete"></a>sfctl ağı ağ geçidi silme
+Ağ Geçidi kaynağını siler.
 
-Ada göre tanımlanan ağ geçidi kaynağı siler.
-
-### <a name="arguments"></a>Bağımsız Değişkenler
-
-|Bağımsız Değişken|Açıklama|
-| --- | --- |
-| --ad -n [gerekli] | Ağ geçidi kaynağının adı. |
-
-### <a name="global-arguments"></a>Genel bağımsız değişkenleri
-
-|Bağımsız Değişken|Açıklama|
-| --- | --- |
-| --hata ayıklama | Tüm hata ayıklama günlüklerini göster için günlüğün ayrıntı düzeyini artırır. |
-| ---h Yardım | Bu yardım iletisini ve çıkış gösterir. |
-| --Çıktı -o | Çıkış biçimi.  İzin verilen değerler\: json, jsonc, tablo, tsv.  Varsayılan\: json. |
-| --Sorgu | JMESPath sorgu dizesi. HTTP bkz\://jmespath.org/ daha fazla bilgi ve örnekler. |
-| --verbose | Günlüğün ayrıntı düzeyini artırır. Kullanımı--tam hata ayıklama günlükleri için hata ayıklama. |
-
-## <a name="sfctl-mesh-gateway-list"></a>sfctl kafes ağ geçidi listesi
-Tüm ağ geçidi kaynakları listeler.
-
-Belirtilen kaynak grubunda tüm ağ geçidi kaynakları hakkında bilgi alır. Bilgi, açıklama ve diğer ağ geçidi özelliklerini içerir.
-
-### <a name="global-arguments"></a>Genel bağımsız değişkenleri
-
-|Bağımsız Değişken|Açıklama|
-| --- | --- |
-| --hata ayıklama | Tüm hata ayıklama günlüklerini göster için günlüğün ayrıntı düzeyini artırır. |
-| ---h Yardım | Bu yardım iletisini ve çıkış gösterir. |
-| --Çıktı -o | Çıkış biçimi.  İzin verilen değerler\: json, jsonc, tablo, tsv.  Varsayılan\: json. |
-| --Sorgu | JMESPath sorgu dizesi. HTTP bkz\://jmespath.org/ daha fazla bilgi ve örnekler. |
-| --verbose | Günlüğün ayrıntı düzeyini artırır. Kullanımı--tam hata ayıklama günlükleri için hata ayıklama. |
-
-## <a name="sfctl-mesh-gateway-show"></a>sfctl kafes gateway show
-Belirtilen ada sahip bir ağ geçidi kaynağı alır.
-
-Belirtilen ada sahip bir ağ geçidi kaynağı hakkındaki bilgileri alır. Bilgi, açıklama ve diğer ağ geçidi özelliklerini içerir.
+Ad tarafından tanımlanan ağ geçidi kaynağını siler.
 
 ### <a name="arguments"></a>Bağımsız Değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --ad -n [gerekli] | Ağ geçidi kaynağının adı. |
+| --Name-n [gerekli] | Ağ Geçidi kaynağının adı. |
 
-### <a name="global-arguments"></a>Genel bağımsız değişkenleri
+### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --hata ayıklama | Tüm hata ayıklama günlüklerini göster için günlüğün ayrıntı düzeyini artırır. |
-| ---h Yardım | Bu yardım iletisini ve çıkış gösterir. |
-| --Çıktı -o | Çıkış biçimi.  İzin verilen değerler\: json, jsonc, tablo, tsv.  Varsayılan\: json. |
-| --Sorgu | JMESPath sorgu dizesi. HTTP bkz\://jmespath.org/ daha fazla bilgi ve örnekler. |
-| --verbose | Günlüğün ayrıntı düzeyini artırır. Kullanımı--tam hata ayıklama günlükleri için hata ayıklama. |
+| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
+| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
+
+## <a name="sfctl-mesh-gateway-list"></a>sfctl ağı ağ geçidi listesi
+Tüm ağ geçidi kaynaklarını listeler.
+
+Belirli bir kaynak grubundaki tüm ağ geçidi kaynaklarıyla ilgili bilgileri alır. Bilgiler, ağ geçidinin açıklamasını ve diğer özelliklerini içerir.
+
+### <a name="global-arguments"></a>Genel bağımsız değişkenler
+
+|Bağımsız Değişken|Açıklama|
+| --- | --- |
+| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
+| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
+
+## <a name="sfctl-mesh-gateway-show"></a>sfctl ağı ağ geçidi Show
+Belirtilen ada sahip ağ geçidi kaynağını alır.
+
+Belirtilen ada sahip ağ geçidi kaynağıyla ilgili bilgileri alır. Bilgiler, ağ geçidinin açıklamasını ve diğer özelliklerini içerir.
+
+### <a name="arguments"></a>Bağımsız Değişkenler
+
+|Bağımsız Değişken|Açıklama|
+| --- | --- |
+| --Name-n [gerekli] | Ağ Geçidi kaynağının adı. |
+
+### <a name="global-arguments"></a>Genel bağımsız değişkenler
+
+|Bağımsız Değişken|Açıklama|
+| --- | --- |
+| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
+| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Ayarlanan](service-fabric-cli.md) Service Fabric CLI.
-- Service Fabric CLI kullanarak kullanmayı öğrenin [örnek betikleri](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- Service Fabric CLı 'yi [ayarlayın](service-fabric-cli.md) .
+- [Örnek betikleri](/azure/service-fabric/scripts/sfctl-upgrade-application)kullanarak Service Fabric CLI 'nın nasıl kullanılacağını öğrenin.

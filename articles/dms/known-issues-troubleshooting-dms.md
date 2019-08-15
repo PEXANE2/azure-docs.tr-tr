@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 06/18/2019
-ms.openlocfilehash: a35e0496c7e36d42e28a64fef438fe56713d3c78
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: a72a0e26c2af34942faaa6a7e62feef86082e196
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854992"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69034822"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Yaygın Azure veritabanı geçiş hizmeti sorunlarını ve hatalarını giderme
 
@@ -98,9 +98,9 @@ Azure Veritabanı Geçiş Hizmeti proje sihirbazında kaynağa bağlanmayı dene
 | ------------- | ------------- |
 | [ExpressRoute](https://azure.microsoft.com/services/expressroute/)kullanılırken, Azure veritabanı geçiş hizmeti, hizmetle Ilişkili sanal ağ alt ağında üç hizmet uç noktası sağlanması [gerekir](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online) :<br> --Service Bus uç noktası<br> --Depolama uç noktası<br> --Hedef veritabanı uç noktası (örneğin, SQL uç noktası, Cosmos DB uç noktası)<br><br><br><br><br> | Kaynak ve Azure veritabanı geçiş hizmeti arasında ExpressRoute bağlantısı için gerekli hizmet uç noktalarını [etkinleştirin](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online) . <br><br><br><br><br><br><br><br> |
 
-## <a name="timeout-error-when-migrating-a-mysql-database-to-azure-db-for-mysql"></a>MySQL veritabanını MySQL için Azure DB 'ye geçirirken zaman aşımı hatası
+## <a name="lock-wait-timeout-error-when-migrating-a-mysql-database-to-azure-db-for-mysql"></a>MySQL için Azure DB 'ye bir MySQL veritabanını geçirirken kilit bekleme zaman aşımı hatası
 
-Azure veritabanı geçiş hizmeti aracılığıyla bir MySQL veritabanını MySQL için Azure veritabanı örneğine geçirdiğinizde, geçiş aşağıdaki zaman aşımı hatasıyla başarısız olur:
+Azure veritabanı geçiş hizmeti aracılığıyla bir MySQL veritabanını MySQL için Azure veritabanı örneğine geçirdiğinizde, geçiş aşağıdaki kilit bekleme zaman aşımı hatasıyla başarısız olur:
 
 * **Hata**: Veritabanı geçiş hatası-dosya yüklenemedi-' n ' dosyası için yükleme işlemi başlatılamadı recode: SQL_ERROR SqlState: HY000 NativeError: 1205 iletisi: [MySQL] [ODBC sürücüsü] [mysqld] kilit bekleme zaman aşımı aşıldı; işlemi yeniden başlatmayı deneyin
 

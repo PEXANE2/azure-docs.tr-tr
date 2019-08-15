@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e5ff6755f1391ff19e65df669fb51967a904f4f
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 99f31c5928273973a9089ae9ef1fd184cdb78bbb
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68707571"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69033428"
 ---
 # <a name="application-registration-subtypes-and-permissions-in-azure-active-directory"></a>Azure Active Directory 'de uygulama kaydı alt türleri ve izinleri
 
@@ -46,12 +46,12 @@ Tüm okuma ve Güncelleştirme izinlerinin yanı sıra Silme iznini de olan uygu
 
 ### <a name="create-and-delete"></a>Oluştur ve Sil
 
-Uygulama kayıtları oluşturma özelliği için iki izin mevcuttur:
+Her biri farklı davranışa sahip olan uygulama kayıtları oluşturma özelliği için iki izin mevcuttur:
 
-- **Microsoft. Directory/Applications/createAsOwner**
-- **Microsoft. Directory/uygulamalar/oluşturma**
+- **Microsoft. Directory/Applications/createAsOwner**: Bu iznin atanması, Oluşturucu oluşturulan uygulama kaydının ilk sahibi olarak eklenmekte ve oluşturulan uygulama kaydı, oluşturucunun 250 tarafından oluşturulan nesne kotasına göre sayılır.
+- **Microsoft. Directory/applicationPolicies/oluşturma**: Bu iznin atanması, oluşturan uygulama kaydının ilk sahibi olarak eklenmeyecektir ve oluşturulan uygulama kaydı, oluşturucunun 250 tarafından oluşturulan nesneler kotasına göre sayılmaz. Bu izni dikkatle kullanın çünkü dizin düzeyi kotasına ulaşılana kadar atanan uygulama kaydı oluşturulmasını hiçbir şey yok. Her iki izin atanırsa, bu izin önceliklidir.
 
-Her iki izin atanırsa, oluşturma izni öncelikli olur. CreateAsOwner izni oluşturucuyu ilk sahip olarak otomatik olarak eklememese de, Graph API 'Leri veya PowerShell cmdlet 'leri kullanılırken uygulama kaydı oluşturma sırasında sahipler belirtilebilir.
+Her iki izin atanırsa,/Create izni öncelikli olur. Bu,/createAsOwner izni oluşturucuyu ilk sahip olarak otomatik eklemez, ancak grafik API 'Leri veya PowerShell cmdlet 'leri kullanılırken uygulama kaydı oluşturma sırasında sahipler belirtilebilir.
 
 İzin oluştur **Yeni kayıt** komutuna erişim izni verir.
 

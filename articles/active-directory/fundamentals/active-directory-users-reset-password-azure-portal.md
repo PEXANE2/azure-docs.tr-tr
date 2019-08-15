@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 382ffab090613a2b14ce710a45be10b4c36e5222
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b4fdbbd4d71a9c97259678413cd9e59ee8aeae6b
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561751"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69032667"
 ---
 # <a name="reset-a-users-password-using-azure-active-directory"></a>Azure Active Directory'yi kullanarak bir kullanıcının parolasını sıfırlama
 
@@ -43,7 +43,8 @@ Yönetici olarak, kullanıcı bir cihaz dışında kilitli, parolasını unuturs
 
 3. İçinde **parolayı Sıfırla** sayfasında **parolayı Sıfırla**.
 
-    Kullanıcı için otomatik olarak oluşturulan geçici bir parola.
+    > [!Note]
+    > Azure Active Directory kullanırken, Kullanıcı için geçici bir parola otomatik olarak oluşturulur. Şirket içi Active Directory kullanırken, kullanıcının parolasını oluşturursunuz.
 
 4. Parolayı kopyalayın ve kullanıcıya verin. Kullanıcı, sonraki oturum açma işlemi sırasında parolasını değiştirmeye gerekir.
 

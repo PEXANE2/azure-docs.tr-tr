@@ -16,12 +16,12 @@ ms.date: 08/12/2019
 ms.author: cephalin
 ms.reviewer: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 12ad82b0dda628c3a8cef7712322500c7a33517c
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: d01994dc4d01baed71bb3de56e069fac5597dc77
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68953813"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69030844"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Azure Uygulama Hizmeti’nde kimlik doğrulaması ve yetkilendirme
 
@@ -136,6 +136,9 @@ Bu seçenek, anonim istekleri işlemek için daha fazla esneklik sağlar. Örne�
 Seçenek,  **\<sağlayıcı > oturum açın**. App Service, tüm anonim istekleri `/.auth/login/<provider>` seçtiğiniz sağlayıcıya yönlendirir. Anonim istek yerel bir mobil uygulamadan geliyorsa, döndürülen yanıt bir `HTTP 401 Unauthorized`olur.
 
 Bu seçenekle, uygulamanızda herhangi bir kimlik doğrulama kodu yazmanız gerekmez. Role özgü yetkilendirme gibi daha ayrıntılı yetkilendirme, kullanıcının taleplerini inceleyerek (bkz. [erişim kullanıcı talepleri](app-service-authentication-how-to.md#access-user-claims)) işlenebilir.
+
+> [!CAUTION]
+> Erişimin bu şekilde kısıtlanması, uygulamanıza yönelik tüm çağrılar için geçerlidir. Bu, birçok tek sayfalı uygulamalarda olduğu gibi genel kullanıma açık bir giriş sayfası gerektiren uygulamalar için istenmeyebilir.
 
 ## <a name="more-resources"></a>Daha fazla kaynak
 

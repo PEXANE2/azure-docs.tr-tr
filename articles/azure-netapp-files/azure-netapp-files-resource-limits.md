@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: b-juche
-ms.openlocfilehash: 763b3961bfd621f05ab5cd021526b0d6d109c020
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
-ms.translationtype: MT
+ms.openlocfilehash: b9dd89e38f5cab6dceca36201695c068e0521943
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881718"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69034857"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp Files için kaynak sınırları
 
@@ -40,11 +40,8 @@ Aşağıdaki tabloda Azure NetApp Files için kaynak sınırları açıklanmakta
 |  Tek bir kapasite havuzunun en küçük boyutu   |  4 TiB     |    Hayır  |
 |  Tek bir kapasite havuzunun en büyük boyutu    |  500 TiB   |   Hayır   |
 |  Tek bir birimin en küçük boyutu    |    100 GiB    |    Hayır    |
-|  Tek bir birim için en fazla atanan kota *   |   92 TiB   |    Hayır   |
-|  Tek bir birimin en büyük boyutu *     |    100 TiB    |    Hayır       |
+|  Tek bir birimin en büyük boyutu     |    100 TiB    |    Hayır       |
 |  Birim başına en fazla dosya sayısı (ınomdes)     |    50.000.000    |    Hayır    |    
-
-\* Bir birim, el ile oluşturulabilir veya en düşük düzeyde 92 TiB olarak yeniden boyutlandırılabilir. Ancak, bir birim fazla kullanım senaryosunda 100 TiB 'ye kadar büyüyebilir. Kapasite fazla kullanımı hakkındaki ayrıntılar için bkz. [maliyet modeli Azure NetApp Files](azure-netapp-files-cost-model.md) . 
 
 ## <a name="request-limit-increase"></a>İstek sınırı artışı 
 

@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
-ms.date: 08/12/2019
-ms.openlocfilehash: 515e971214244cdd14955cc269a5f005cb93734f
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.date: 08/14/2019
+ms.openlocfilehash: a02709ffde144e7bd5e4d05fcd0e07c5d84a15fb
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967914"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035821"
 ---
 # <a name="time-zones-in-azure-sql-database-managed-instance"></a>Azure SQL veritabanı yönetilen örneği 'nde saat dilimleri
 
@@ -83,7 +83,10 @@ Bir yedekleme dosyasını geri yükleyebilir veya verileri yönetilen bir örne�
 
 ### <a name="point-in-time-restore"></a>Belirli bir noktaya geri yükleme
 
-Bir zaman içinde geri yükleme gerçekleştirdiğinizde geri yükleme süresi UTC saati olarak yorumlanır. Bu şekilde, gün ışığından yararlanma süresi ve olası değişiklikleri nedeniyle herhangi bir belirsizlikleri kaçınılmaz.
+<del>Bir zaman içinde geri yükleme gerçekleştirdiğinizde geri yükleme süresi UTC saati olarak yorumlanır. Bu şekilde, gün ışığından yararlanma süresi ve olası değişiklikleri nedeniyle herhangi bir belirsizlikleri kaçınılmaz.<del>
+
+ >[!WARNING]
+  > Geçerli davranış yukarıdaki ifadeye sahip değildir ve geri yükleme saati, otomatik veritabanı yedeklerinin alındığı kaynak yönetilen Örneğin saat dilimine göre yorumlanır. Belirli bir zamanı UTC saatine göre yorumlamak için bu davranışı düzeltmede çalışıyoruz.
 
 ### <a name="auto-failover-groups"></a>Otomatik yük devretme grupları
 

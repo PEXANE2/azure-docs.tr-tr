@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: b088b4d0e21819411c7329f3cb1e6ca9761665fd
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: ebb9028aab8626554d0f5fede15129c141d441cb
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610193"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035341"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure sanal ağ hakkında sık sorulan sorular (SSS)
 
@@ -67,9 +67,11 @@ Evet. Genel IP adresi aralıkları hakkında daha fazla bilgi için bkz. [sanal 
 Evet. Ayrıntılar için bkz. [Azure Limitleri](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) . Alt ağ adres alanları bir diğerinden çakışamaz.
 
 ### <a name="are-there-any-restrictions-on-using-ip-addresses-within-these-subnets"></a>Bu alt ağlar içindeki IP adreslerini kullanma konusunda herhangi bir kısıtlama var mı?
-Evet. Azure, her alt ağ içindeki 5 IP adresini ayırır. Bunlar x. x. x. 0-x. x. x. 3 ve alt ağın son adresidir.    
-- x. x. x. 0 ve alt ağın son adresi protokol uyumluluğu için ayrılmıştır.
-- x. x. x. 1-x. x. x. 3, Azure hizmetleri için her alt ağda ayrılmıştır.
+Evet. Azure, her alt ağ içindeki 5 IP adresini ayırır. Bunlar x. x. x. 0-x. x. x. 3 ve alt ağın son adresidir. x. x. x. 1-x. x. x. 3, Azure hizmetleri için her alt ağda ayrılmıştır.   
+- x. x. x. 0: Ağ adresi
+- x. x. x. 1: Varsayılan ağ geçidi için Azure tarafından ayrılmış
+- x. x. x. 2, x. x. x. 3: Azure DNS IP 'lerini VNet alanı ile eşlemek için Azure tarafından ayrılmış
+- x. x. x. 255: Ağ yayını adresi
 
 ### <a name="how-small-and-how-large-can-vnets-and-subnets-be"></a>Ne kadar küçük, sanal ağlar ve alt ağlar olabilir?
 En küçük desteklenen alt ağ/29 ve en büyük değer/8 ' dir (CıDR alt ağ tanımları kullanılarak).

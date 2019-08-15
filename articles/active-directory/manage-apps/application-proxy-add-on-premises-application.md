@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/21/2019
+ms.date: 08/14/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c890288539a8abebe688ca4571ffa6c152e992ee
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: aefa6d21488b617b26ddefe5fa4fc61cdd203f96
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68694050"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69032539"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Öğretici: Azure Active Directory içindeki uygulama proxy 'Si aracılığıyla uzaktan erişim için şirket içi uygulama ekleme
 
@@ -96,7 +96,7 @@ Aşağıdaki URL 'Lere erişime izin ver:
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Azure, sertifikaları doğrulamak için bu URL 'Leri kullanır. |
 | login.windows.net<br>login.microsoftonline.com<br>secure.aadcdn.microsoftonline-p.com  | Bağlayıcı, kayıt işlemi sırasında bu URL 'Leri kullanır. |
 
-Güvenlik duvarınız veya proxy 'niz \*DNS izin verilenler \*listelerine yapılandırmanıza izin veriyor. msappproxy.net ve. ServiceBus.Windows.net bağlantılarına izin verebilirsiniz. Aksi takdirde, [Azure veri MERKEZI IP aralıklarına](https://www.microsoft.com/download/details.aspx?id=41653)erişime izin vermeniz gerekir. IP aralıkları her hafta güncellenir.
+Güvenlik duvarınız veya proxy 'niz \*DNS izin verilenler \*listelerine yapılandırmanıza izin veriyor. msappproxy.net ve. ServiceBus.Windows.net bağlantılarına izin verebilirsiniz. Aksi takdirde, [Azure IP aralıklarına ve hizmet etiketlerine genel buluta](https://www.microsoft.com/download/details.aspx?id=56519)erişime izin vermeniz gerekir. IP aralıkları her hafta güncellenir.
 
 ## <a name="install-and-register-a-connector"></a>Bağlayıcı yükleyip kaydetme
 
@@ -147,7 +147,7 @@ Bağlayıcının yüklenmesiyle ilgili daha fazla yardım için bkz. [uygulama p
 
 Bağlayıcının yüklendiğini ve doğru şekilde kaydedildiğini doğrulamak için:
 
-1. Windows **anahtarı '** nı ve *Services. msc*' yi girerek Windows Hizmetleri Yöneticisi 'ni açın.
+1. Windows anahtarı ' nı ve *Services. msc*' yi girerek Windows Hizmetleri Yöneticisi 'ni açın.
 1. Aşağıdaki iki hizmetin durumunun **çalışır**durumda olup olmadığını denetleyin.
    - **MICROSOFT AAD uygulama proxy Bağlayıcısı** bağlantı imkanı sunar.
    - **Microsoft AAD uygulama ara sunucusu bağlayıcı güncelleştiricisi** , otomatik bir güncelleştirme hizmetidir. Güncelleştirici, bağlayıcının yeni sürümlerini denetler ve bağlayıcıyı gerektiği şekilde güncelleştirir.

@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric CLI - sfctl kafes secretvalue | Microsoft Docs
-description: Service Fabric CLI'sını sfctl kafes secretvalue komutlarını açıklamaktadır.
+title: Azure Service Fabric CLı-sfctl ağ secretvalue | Microsoft Docs
+description: Service Fabric CLı sfctl ağ secretvalue komutlarını açıklar.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
@@ -8,95 +8,94 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 3f8e46f063d3e725e2174fd907169f3e0167586a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5200c40afe62ce3a236a3a16b59b64deb8d24ced
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60836964"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035935"
 ---
 # <a name="sfctl-mesh-secretvalue"></a>sfctl mesh secretvalue
-Alın ve kafes secretvalue kaynakları silin.
+Ağ secretvalue kaynaklarını alın ve silin.
 
 ## <a name="commands"></a>Komutlar
 
 |Komut|Açıklama|
 | --- | --- |
-| delete | Adlandırılmış gizli kaynağı için belirtilen değer siler. |
-| list | Tüm değerlerin belirtilen gizli kaynak adlarını listeler. |
-| göster | Gizli bir kaynağın belirtilen bir sürümünü değerini alın. |
+| sil | Adlandırılmış gizli kaynağın belirtilen değerini siler. |
+| list | Belirtilen gizli kaynağın tüm değerlerinin adlarını listeleyin. |
+| göster | Gizli bir kaynağın belirtilen sürümünün değerini alır. |
 
-## <a name="sfctl-mesh-secretvalue-delete"></a>sfctl kafes secretvalue Sil
-Adlandırılmış gizli kaynağı için belirtilen değer siler.
+## <a name="sfctl-mesh-secretvalue-delete"></a>sfctl ağ secretvalue Delete
+Adlandırılmış gizli kaynağın belirtilen değerini siler.
 
-Ada göre tanımlanan gizli değer Kaynak siler. Kaynak adı, genellikle bu değeriyle ilişkili sürümüdür. Belirtilen değer kullanılıyorsa silme işlemi başarısız olur.
-
-### <a name="arguments"></a>Bağımsız Değişkenler
-
-|Bağımsız Değişken|Açıklama|
-| --- | --- |
-| --Gizli-name - n [gerekli] | Gizli kaynağının adı. |
-| --[gerekli] sürümü - v | Gizli dizi sürümü adı. |
-
-### <a name="global-arguments"></a>Genel bağımsız değişkenleri
-
-|Bağımsız Değişken|Açıklama|
-| --- | --- |
-| --hata ayıklama | Tüm hata ayıklama günlüklerini göster için günlüğün ayrıntı düzeyini artırır. |
-| ---h Yardım | Bu yardım iletisini ve çıkış gösterir. |
-| --Çıktı -o | Çıkış biçimi.  İzin verilen değerler\: json, jsonc, tablo, tsv.  Varsayılan\: json. |
-| --Sorgu | JMESPath sorgu dizesi. HTTP bkz\://jmespath.org/ daha fazla bilgi ve örnekler. |
-| --verbose | Günlüğün ayrıntı düzeyini artırır. Kullanımı--tam hata ayıklama günlükleri için hata ayıklama. |
-
-## <a name="sfctl-mesh-secretvalue-list"></a>sfctl kafes secretvalue listesi
-Tüm değerlerin belirtilen gizli kaynak adlarını listeler.
-
-Belirtilen gizli kaynağın tüm gizli değer kaynaklar hakkında bilgi alır. Bilgi, gizli değer kaynakları, ancak gerçek değerlerin değil adlarını içerir.
+Ad tarafından tanımlanan gizli değer kaynağını siler. Kaynağın adı genellikle bu değerle ilişkili sürümdür. Belirtilen değer kullanımda olduğunda silme işlemi başarısız olur.
 
 ### <a name="arguments"></a>Bağımsız Değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --Gizli-name - n [gerekli] | Gizli kaynağının adı. |
+| --Secret-adı-n [gerekli] | Gizli kaynağın adı. |
+| --sürüm-v [gerekli] | Gizli dizi sürümünün adı. |
 
-### <a name="global-arguments"></a>Genel bağımsız değişkenleri
+### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --hata ayıklama | Tüm hata ayıklama günlüklerini göster için günlüğün ayrıntı düzeyini artırır. |
-| ---h Yardım | Bu yardım iletisini ve çıkış gösterir. |
-| --Çıktı -o | Çıkış biçimi.  İzin verilen değerler\: json, jsonc, tablo, tsv.  Varsayılan\: json. |
-| --Sorgu | JMESPath sorgu dizesi. HTTP bkz\://jmespath.org/ daha fazla bilgi ve örnekler. |
-| --verbose | Günlüğün ayrıntı düzeyini artırır. Kullanımı--tam hata ayıklama günlükleri için hata ayıklama. |
+| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
+| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
-## <a name="sfctl-mesh-secretvalue-show"></a>sfctl kafes secretvalue Göster
-Gizli bir kaynağın belirtilen bir sürümünü değerini alın.
+## <a name="sfctl-mesh-secretvalue-list"></a>sfctl ağ secretvalue listesi
+Belirtilen gizli kaynağın tüm değerlerinin adlarını listeleyin.
+
+Belirtilen gizli kaynağın tüm gizli değer kaynakları hakkında bilgi alır. Bilgiler, gizli değer kaynaklarının adlarını içerir, ancak gerçek değerleri içermez.
 
 ### <a name="arguments"></a>Bağımsız Değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --Gizli-name - n [gerekli] | Gizli kaynağının adı. |
-| --[gerekli] sürümü - v | Gizli dizi sürümü adı. |
-| --değer Göster | Gizli dizi sürümü gerçek değeri gösterir. |
+| --Secret-adı-n [gerekli] | Gizli kaynağın adı. |
 
-### <a name="global-arguments"></a>Genel bağımsız değişkenleri
+### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --hata ayıklama | Tüm hata ayıklama günlüklerini göster için günlüğün ayrıntı düzeyini artırır. |
-| ---h Yardım | Bu yardım iletisini ve çıkış gösterir. |
-| --Çıktı -o | Çıkış biçimi.  İzin verilen değerler\: json, jsonc, tablo, tsv.  Varsayılan\: json. |
-| --Sorgu | JMESPath sorgu dizesi. HTTP bkz\://jmespath.org/ daha fazla bilgi ve örnekler. |
-| --verbose | Günlüğün ayrıntı düzeyini artırır. Kullanımı--tam hata ayıklama günlükleri için hata ayıklama. |
+| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
+| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
+
+## <a name="sfctl-mesh-secretvalue-show"></a>sfctl ağı secretvalue Show
+Gizli bir kaynağın belirtilen sürümünün değerini alır.
+
+### <a name="arguments"></a>Bağımsız Değişkenler
+
+|Bağımsız Değişken|Açıklama|
+| --- | --- |
+| --Secret-adı-n [gerekli] | Gizli kaynağın adı. |
+| --sürüm-v [gerekli] | Gizli dizi sürümünün adı. |
+| --değer göster | Gizli sürümün gerçek değerini gösterir. |
+
+### <a name="global-arguments"></a>Genel bağımsız değişkenler
+
+|Bağımsız Değişken|Açıklama|
+| --- | --- |
+| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
+| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Ayarlanan](service-fabric-cli.md) Service Fabric CLI.
-- Service Fabric CLI kullanarak kullanmayı öğrenin [örnek betikleri](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- Service Fabric CLı 'yi [ayarlayın](service-fabric-cli.md) .
+- [Örnek betikleri](/azure/service-fabric/scripts/sfctl-upgrade-application)kullanarak Service Fabric CLI 'nın nasıl kullanılacağını öğrenin.

@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/28/2019
+ms.date: 08/13/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 312f6746cb02aa66b0e7f8b47cb10e52558fa542
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 118a36587667c815489ddad03426b5cfcfee7382
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323170"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036676"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch hizmet kotaları ve limitleri
 
@@ -54,7 +54,7 @@ Havuz boyutu sınırları Batch hizmeti tarafından ayarlanır. [Kaynak kotalar�
 | Batch hizmeti havuz ayırma modu | 100 |
 | Batch abonelik havuzu ayırma modu | 80 |
 | **[Özel VM görüntüsüyle oluşturulan havuzdaki](batch-custom-images.md) işlem düğümleri** <sup>1</sup> ||
-| Ayrılmış düğümler | 2000 |
+| Adanmış düğümler | 2000 |
 | Düşük öncelikli düğümler | 1000 |
 
 düğüm içi iletişim olmayan havuzlar için <sup>1</sup> .
@@ -70,6 +70,7 @@ Batch hizmeti tarafından ayarlanan ek sınırlar. [Kaynak kotalarından](#resou
 | Uygulama başına uygulama paketleri | 40 |
 | Havuz başına uygulama paketleri | 10 |
 | En fazla görev ömrü | 180 gün<sup>1</sup> |
+| İşlem düğümü başına [bağlama](virtual-file-mount.md) | 10 |
 
 <sup>1</sup> bir görevin, ne zaman tamamlandığında işe eklendiği zaman, 180 gün olur. Tamamlanan görevler yedi gün boyunca devam ederse; Maksimum yaşam süresi içinde tamamlanmayan görevlere yönelik verilere erişilemiyor.
 

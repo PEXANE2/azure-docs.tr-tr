@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/18/2019
-ms.openlocfilehash: 5d79edc4db07a2c5916725efc312d9f94fe985dc
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 05e16a67e6b01ce3bd1f03f0649baa1358414ea7
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640094"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035071"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Birden çok veritabanının saydam ve koordine edilmiş yük devretmesini etkinleştirmek için otomatik yük devretme gruplarını kullanın
 
@@ -133,9 +133,13 @@ Yük devretme grubu yükünü devretmek için, yeni birincil sunucu veya yöneti
 
 ## <a name="best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools"></a>Tek veritabanları ve elastik havuzlarla yük devretme grupları kullanmanın en iyi yöntemleri
 
-Otomatik yük devretme grubu, birincil SQL veritabanı sunucusunda yapılandırılmalı ve bunu farklı bir Azure bölgesindeki ikincil SQL veritabanı sunucusuna bağlayacaktır.  Gruplar, bu sunuculardaki tüm veya bazı veritabanlarını içerebilir. Aşağıdaki diyagramda birden çok veritabanı ve otomatik yük devretme grubu kullanılarak coğrafi olarak yedekli bir bulut uygulamasının tipik bir yapılandırması gösterilmektedir.
+Otomatik yük devretme grubu, birincil SQL veritabanı sunucusunda yapılandırılmalı ve bunu farklı bir Azure bölgesindeki ikincil SQL veritabanı sunucusuna bağlayacaktır. Gruplar, bu sunuculardaki tüm veya bazı veritabanlarını içerebilir. Aşağıdaki diyagramda birden çok veritabanı ve otomatik yük devretme grubu kullanılarak coğrafi olarak yedekli bir bulut uygulamasının tipik bir yapılandırması gösterilmektedir.
 
 ![otomatik yük devretme](./media/sql-database-auto-failover-group/auto-failover-group.png)
+
+> [!NOTE]
+> Yük devretme grubuna tek bir veritabanı ekleme hakkında ayrıntılı adım adım öğretici için bkz. bir [Yük devretme grubuna tek veritabanı ekleme](sql-database-single-database-failover-group-tutorial.md) . 
+
 
 İş sürekliliği ile bir hizmet tasarlarken aşağıdaki genel yönergeleri izleyin:
 
@@ -167,12 +171,17 @@ Otomatik yük devretme grubu, birincil SQL veritabanı sunucusunda yapılandır�
 
 ## <a name="best-practices-of-using-failover-groups-with-managed-instances"></a>Yönetilen örneklerle yük devretme grupları kullanmanın en iyi yöntemleri
 
-Otomatik yük devretme grubu birincil örnekte yapılandırılmalı ve bunu farklı bir Azure bölgesindeki ikincil örneğe bağlayacaktır.  Örnekteki tüm veritabanları ikincil örneğe çoğaltılır. Aşağıdaki diyagramda, yönetilen örnek ve otomatik yük devretme grubu kullanılarak coğrafi olarak yedekli bir bulut uygulamasının tipik bir yapılandırması gösterilmektedir.
+> [!IMPORTANT]
+> Yönetilen örnek için otomatik yük devretme grupları genel önizlemede.
+
+Otomatik yük devretme grubu birincil örnekte yapılandırılmalı ve bunu farklı bir Azure bölgesindeki ikincil örneğe bağlayacaktır.  Örnekteki tüm veritabanları ikincil örneğe çoğaltılır. 
+
+Aşağıdaki diyagramda, yönetilen örnek ve otomatik yük devretme grubu kullanılarak coğrafi olarak yedekli bir bulut uygulamasının tipik bir yapılandırması gösterilmektedir.
 
 ![otomatik yük devretme](./media/sql-database-auto-failover-group/auto-failover-group-mi.png)
 
-> [!IMPORTANT]
-> Yönetilen örnek için otomatik yük devretme grupları genel önizlemede.
+> [!NOTE]
+> Yük devretme grubunu kullanmak için yönetilen bir örnek ekleme hakkında ayrıntılı adım adım öğretici için bkz. [Yük devretme grubuna yönetilen örnek ekleme](sql-database-managed-instance-failover-group-tutorial.md) . 
 
 Uygulamanız veri katmanı olarak yönetilen örnek kullanıyorsa, iş sürekliliği için tasarlarken aşağıdaki genel yönergeleri izleyin:
 
@@ -202,7 +211,7 @@ Uygulamanız veri katmanı olarak yönetilen örnek kullanıyorsa, iş süreklil
   Verilerin belirli bir şekilde kullanılması için dayanıklı bir mantıksal olarak yalıtılmış salt okunurdur, uygulamadaki ikincil veritabanını kullanabilirsiniz. Coğrafi olarak çoğaltılan ikinciye doğrudan bağlanmak için sunucu URL 'si `server.secondary.zone_id.database.windows.net` olarak kullanın ve bağlantı doğrudan coğrafi çoğaltılan ikincil öğesine yapılır.
 
   > [!NOTE]
-  > Belirli hizmet katmanlarında Azure SQL veritabanı, salt okunurdur ve salt okuma sorgusu iş yüklerini yalnızca bir salt okunurdur ve `ApplicationIntent=ReadOnly` bağlantı dizesindeki parametresini kullanarak yük dengelemesi için destekler. [](sql-database-read-scale-out.md) Coğrafi olarak çoğaltılan bir ikincil yapılandırdığınız zaman, birincil konumdaki veya coğrafi olarak çoğaltılan konumdaki salt okunurdur bir kopyaya bağlanmak için bu özelliği kullanabilirsiniz.
+  > Belirli hizmet katmanlarında Azure SQL veritabanı, salt okunurdur ve salt okuma [](sql-database-read-scale-out.md) sorgusu iş yüklerini yalnızca bir salt okunurdur ve `ApplicationIntent=ReadOnly` bağlantı dizesindeki parametresini kullanarak yük dengelemesi için destekler. Coğrafi olarak çoğaltılan bir ikincil yapılandırdığınız zaman, birincil konumdaki veya coğrafi olarak çoğaltılan konumdaki salt okunurdur bir kopyaya bağlanmak için bu özelliği kullanabilirsiniz.
   > - Birincil konumdaki bir salt okuma çoğaltmasına bağlanmak için kullanın `<fog-name>.zone_id.database.windows.net`.
   > - İkincil konumdaki bir salt okuma çoğaltmasına bağlanmak için kullanın `<fog-name>.secondary.zone_id.database.windows.net`.
 
@@ -367,6 +376,10 @@ Daha önce anlatıldığı gibi otomatik yük devretme grupları ve etkin coğra
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+- Ayrıntılı öğreticiler için bkz.
+    - [Yük devretme grubuna tek veritabanı ekleme](sql-database-single-database-failover-group-tutorial.md)
+    - [Bir yük devretme grubuna elastik havuz ekleme](sql-database-elastic-pool-failover-group-tutorial.md)
+    - [Bir yük devretme grubuna yönetilen örnek ekleme](sql-database-managed-instance-failover-group-tutorial.md)
 - Örnek betikler için bkz.:
   - [Azure SQL veritabanı 'nda tek bir veritabanı için etkin Coğrafi çoğaltmayı yapılandırmak üzere PowerShell 'i kullanma](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
   - [Azure SQL veritabanı 'nda havuza alınmış bir veritabanı için etkin Coğrafi çoğaltmayı yapılandırmak için PowerShell 'i kullanma](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)

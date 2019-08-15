@@ -9,12 +9,12 @@ ms.date: 08/12/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 5412b83d8dfe92c6a24e717fb371c8963b808566
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 86b5e4b6bcf65c2174fa3d3743551813ce2f8b1b
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990799"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69034738"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell-preview"></a>PowerShell ile bir kapsayıcı veya blob için Kullanıcı temsili SAS oluşturma (Önizleme)
 
@@ -32,11 +32,6 @@ PowerShell kullanarak bir Kullanıcı temsili SAS oluşturmak için, önce az. S
 
     - **Ayarlar**altındaki **uygulamalar & Özellikler** ayarını kullanarak Windows 'un önceki Azure PowerShell yüklemelerini kaldırın.
     - Tüm **Azure** modüllerini ' den `%Program Files%\WindowsPowerShell\Modules`kaldırın.
-    - PowerShell en son az. Storage modülünü varsayılan olarak yüklediği için, konsolunu başlattığınızda 1.3.1-Preview modülünü açıkça yüklemeniz gerekebilir. Önizleme modülünü açıkça yüklemek için [Import-Module](/powershell/module/microsoft.powershell.core/import-module) komutunu çalıştırın:
-
-        ```powershell
-        Import-Module Az.Storage -RequiredVersion 1.3.1
-        ```
 
 1. PowerShellGet 'in en son sürümüne sahip olduğunuzdan emin olun. Bir Windows PowerShell penceresi açın ve en son sürümü yüklemek için aşağıdaki komutu çalıştırın:
 
@@ -55,10 +50,21 @@ PowerShell kullanarak bir Kullanıcı temsili SAS oluşturmak için, önce az. S
 1. Kullanıcı temsili SAS 'yi destekleyen bir Azure depolama önizleme modülü yükler:
 
     ```powershell
-    Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.3.1-preview –AllowPrerelease –AllowClobber –Force
+    Install-Module Az.Storage `
+        –Repository PSGallery `
+        -RequiredVersion 1.3.1-preview `
+        –AllowPrerelease `
+        –AllowClobber `
+        –Force
     ```
 
 1. PowerShell penceresini kapatıp yeniden açın.
+
+PowerShell en son az. Storage modülünü varsayılan olarak yüklediği için, konsolunu başlattığınızda 1.3.1-Preview modülünü açıkça yüklemeniz gerekebilir. Önizleme modülünü açıkça yüklemek için [Import-Module](/powershell/module/microsoft.powershell.core/import-module) komutunu çalıştırın:
+
+```powershell
+Import-Module Az.Storage -RequiredVersion 1.3.1
+```
 
 Azure PowerShell yükleme hakkında daha fazla bilgi için bkz. [PowerShellGet Ile yükleme Azure PowerShell](/powershell/azure/install-az-ps).
 
@@ -142,8 +148,7 @@ New-AzStorageBlobSASToken -Context $ctx `
 Döndürülen Kullanıcı temsili SAS URI 'SI şuna benzer olacaktır:
 
 ```
-https://storagesamples.blob.core.windows.net/sample-container/blob1.txt?sv=2018-11-09&sr=b&sig=4f6QzTteEZmrEMXWn7iEeI27vHrX13zVmL6rk2MbiyA%3D&skoid=e5981635-dcf0-4279-ab7b-ca1cbdf4a5c7&sktid=72f988bf-86f1-41af-91ab
--2d7cd011db47&skt=2019-08-06T21%3A16%3A54Z&ske=2019-08-07T07%3A00%3A00Z&sks=b&skv=2018-11-09&se=2019-08-07T07%3A00%3A00Z&sp=racwd
+https://storagesamples.blob.core.windows.net/sample-container/blob1.txt?sv=2018-11-09&sr=b&sig=<sig>&skoid=<skoid>&sktid=<sktid>&skt=2019-08-06T21%3A16%3A54Z&ske=2019-08-07T07%3A00%3A00Z&sks=b&skv=2018-11-09&se=2019-08-07T07%3A00%3A00Z&sp=racwd
 ```
 
 > [!NOTE]
@@ -160,7 +165,7 @@ Revoke-AzStorageAccountUserDelegationKeys -ResourceGroupName <resource-group> `
     -StorageAccountName <storage-account>
 ```
 
-## <a name="see-also"></a>Ayrıca bkz.
+## <a name="next-steps"></a>Sonraki adımlar
 
 - [Kullanıcı temsilciliğini oluşturma SAS (REST API)](/rest/api/storageservices/create-a-user-delegation-sas)
 - [Kullanıcı temsilciyi anahtar işlemi al](/rest/api/storageservices/get-user-delegation-key)

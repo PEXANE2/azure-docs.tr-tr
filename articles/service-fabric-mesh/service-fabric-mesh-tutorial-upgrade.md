@@ -1,6 +1,6 @@
 ---
-title: Öğretici - Azure Service Fabric Mesh uygulama yükseltme | Microsoft Docs
-description: Visual Studio kullanarak Service Fabric uygulaması yükseltme hakkında bilgi edinin
+title: Öğretici-Azure Service Fabric kafes uygulamasını yükseltme | Microsoft Docs
+description: Visual Studio kullanarak Service Fabric uygulamasını nasıl yükselteceğinizi öğrenin
 services: service-fabric-mesh
 documentationcenter: .net
 author: dkkapur
@@ -8,34 +8,33 @@ manager: chakdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric-mesh
-ms.devlang: azure-cli
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/29/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 23809abd06d626eb87e5d5d15d265f1769b97b66
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 20aa65f0a8e47485e71fd03d73ff144f5290bcb7
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60809095"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036078"
 ---
-# <a name="tutorial-learn-how-to-upgrade-a-service-fabric-application-using-visual-studio"></a>Öğretici: Visual Studio kullanarak Service Fabric uygulaması yükseltme hakkında bilgi edinin
+# <a name="tutorial-learn-how-to-upgrade-a-service-fabric-application-using-visual-studio"></a>Öğretici: Visual Studio kullanarak Service Fabric uygulamasını nasıl yükselteceğinizi öğrenin
 
-Bu öğretici bir serinin dördüncü bölümüdür ve, doğrudan Visual Studio'dan Azure Service Fabric Mesh uygulama yükseltme işlemini göstermektedir. Yükseltmesi hem kod güncelleştirmesi hem de yapılandırma güncelleştirme içerir. Yükseltme ve Visual Studio içinden yayımlamakta adımları aynı olduğunu görürsünüz.
+Bu öğretici bir serinin dördüncü bölümüdür ve bir Azure Service Fabric kafes uygulamasının doğrudan Visual Studio 'dan nasıl yükseltileceğini gösterir. Yükseltme hem bir kod güncelleştirmesi hem de bir yapılandırma güncelleştirmesi içerir. Visual Studio içinden yükseltme ve yayımlama adımlarının aynı olduğunu görürsünüz.
 
 Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > [!div class="checklist"]
-> * Visual Studio kullanarak bir Service Fabric Mesh hizmet yükseltme
+> * Visual Studio 'Yu kullanarak Service Fabric bir kafes hizmetini yükseltme
 
 Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 > [!div class="checklist"]
 > * [Visual Studio’da Service Fabric Mesh uygulaması oluşturma](service-fabric-mesh-tutorial-create-dotnetcore.md)
 > * [Yerel geliştirme kümenizde çalışan bir Service Fabric Mesh uygulamasının hatalarını ayıklama](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
 > * [Service Fabric Mesh uygulaması dağıtma](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
-> * Bir Service Fabric kafes yükseltme uygulama
+> * Service Fabric kafes uygulamasını yükseltme
 > * [Service Fabric Mesh kaynaklarını temizleme](service-fabric-mesh-tutorial-cleanup-resources.md)
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
@@ -46,35 +45,35 @@ Bu öğreticiye başlamadan önce:
 
 * To-Do uygulamasını dağıtmadıysanız, [Service Fabric Mesh web uygulamasını yayımlama](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md) başlığı altında verilen yönergeleri izleyin.
 
-## <a name="upgrade-a-service-fabric-mesh-service-by-using-visual-studio"></a>Visual Studio kullanarak bir Service Fabric Mesh hizmet yükseltme
+## <a name="upgrade-a-service-fabric-mesh-service-by-using-visual-studio"></a>Visual Studio 'Yu kullanarak Service Fabric bir kafes hizmetini yükseltme
 
-Bu makalede bir mikro hizmet uygulama içinde sürümüne yükseltme yapmayı gösterir. Bu örnekte biz değiştireceksiniz `WebFrontEnd` görev Kategorisi'ne görüntülemek ve bunu verildiğinde CPU miktarını artırmak için hizmet. Daha sonra size dağıtılmış hizmet yükseltmeniz.
+Bu makalede bir uygulamanın içindeki bir mikro hizmetin nasıl yükseltileceğini gösterir. Bu örnekte, `WebFrontEnd` hizmeti bir görev kategorisi görüntüleyecek ve verilen CPU miktarını artıracak şekilde değiştireceksiniz. Sonra dağıtılan hizmeti yükseltiyoruz.
 
-## <a name="modify-the-config"></a>Yapılandırma değiştirme
+## <a name="modify-the-config"></a>Yapılandırmayı değiştirme
 
-Bir Service Fabric Mesh uygulaması oluşturduğunuzda, Visual studio ekler bir **parameters.yaml** her dağıtım ortamı (Bulut ve yerel) dosyası. Bu dosyalarda, parametreler ve ardından service.yaml veya network.yaml gibi kafes *.yaml dosyanızdan başvurulan değerleri tanımlayabilirsiniz.  Visual Studio bazı değişkenler, hizmeti ne kadar CPU gibi sağlar.
+Service Fabric bir kafes uygulaması oluşturduğunuzda, Visual Studio her dağıtım ortamı (bulut ve yerel) için bir **Parameters. YAML** dosyası ekler. Bu dosyalarda, Service. YAML veya Network. YAML gibi ağ *. YAML dosyalarından başvurulabilen parametreleri ve değerlerini tanımlayabilirsiniz.  Visual Studio, hizmetin ne kadar CPU kullanabileceği gibi bazı değişkenler sağlar.
 
-Güncelleştireceğiz `WebFrontEnd_cpu` cpu kaynakları güncelleştirmek için parametre `1.5` olasılığına, **WebFrontEnd** hizmet daha yoğun bir şekilde kullanılır.
+**Web ön uç** hizmetinin `WebFrontEnd_cpu` daha yoğun bir şekilde `1.5` kullanılması için CPU kaynaklarını olasılığına olarak güncelleştirmek üzere parametresini güncelleştireceğiz.
 
-1. İçinde **todolistapp** altında proje **ortamları** > **bulut**açın **parameters.yaml** dosya. Değiştirme `WebFrontEnd_cpu`, değerini `1.5`. Parametre adı, hizmet adıyla başında `WebFrontEnd_` aynı ada sahip farklı hizmetler için geçerli parametreler ayırmak için en iyi uygulama olarak.
+1. **Todolistapp** projesinde, **ortamlar** > **bulutu**altında **Parameters. YAML** dosyasını açın. `WebFrontEnd_cpu`Değerini olarak`1.5`değiştirin. Parametre adı, farklı hizmetlere uygulanan aynı ada sahip parametrelerden `WebFrontEnd_` ayırt edilebilmesi için en iyi uygulama olarak hizmet adı ile önceden başlatılacaktır.
 
     ```xml
     WebFrontEnd_cpu: 1.5
     ```
 
-2. Açık **WebFrontEnd** projenin **service.yaml** altında dosya **WebFrontEnd** > **hizmet kaynakları**.
+2. Webön uç**hizmeti kaynakları** > altında **webön uç** projesinin **Service. YAML** dosyasını açın.
 
-    Unutmayın, `resources:` bölümünde `cpu:` ayarlanır `"[parameters('WebFrontEnd_cpu')]"`. Bulut değeri için proje oluşturulduğunda, `'WebFrontEnd_cpu` alınır **ortamları** > **bulut** > **parameters.yaml** dosya ve olacak `1.5`. Projeyi yerel olarak çalıştırmak için oluşturuluyorsa, değer alınır **ortamları** > **yerel** > **parameters.yaml** dosyası ve '0,5' olacaktır.
+    İçindeki `resources:` bölümünün`cpu:` olarak ayarlandığını`"[parameters('WebFrontEnd_cpu')]"`unutmayın. Proje bulut için `'WebFrontEnd_cpu` derleniyorsa, için değeri,**bulut** > **parametreleri. YAML** dosyası `1.5` **ortamlarından** > alınır ve olur. Proje yerel olarak çalışmak üzere derleniyorsa, bu değer **ortamlar** > **Yerel** > **Parametreler. YAML** dosyasından alınır ve ' 0,5 ' olur.
 
 > [!Tip]
-> Varsayılan olarak, bir eş profile.yaml dosyanın parametre dosyasını profile.yaml dosyanın değerlerini sağlamak için kullanılır.
-> Örneğin, ortamları > bulut > parameters.yaml ortamları için parametre değerlerini sağlar > bulut > profile.yaml.
+> Varsayılan olarak, profile. YAML dosyasının bir eşi olan parametre dosyası, bu profile. YAML dosyasının değerlerini sağlamak için kullanılacaktır.
+> Örneğin, bulut > parametreleri > ortamlar. YAML, bulut > profili. YAML > ortamları için parametre değerleri sağlar.
 >
-> Bu aşağıdaki profile.yaml dosyasına ekleyerek geçersiz kılabilirsiniz:`parametersFilePath=”relative or full path to the parameters file”` Örneğin, `parametersFilePath=”C:\MeshParms\CustomParameters.yaml”` veya `parametersFilePath=”..\CommonParameters.yaml”`
+> Profile. YAML dosyasına aşağıdakini ekleyerek bunu geçersiz kılabilirsiniz:`parametersFilePath=”relative or full path to the parameters file”` Örneğin, `parametersFilePath=”C:\MeshParms\CustomParameters.yaml”` veya `parametersFilePath=”..\CommonParameters.yaml”`
 
-## <a name="modify-the-model"></a>Modeli Değiştir
+## <a name="modify-the-model"></a>Modeli değiştirme
 
-Bir kod değişikliği tanıtmak için ekleme bir `Category` özelliğini `ToDoItem` sınıfını `ToDoItem.cs` dosya.
+Bir kod değişikliği tanıtmak için, `Category` `ToDoItem.cs` dosyadaki `ToDoItem` sınıfına bir özellik ekleyin.
 
 ```csharp
 public class ToDoItem
@@ -84,7 +83,7 @@ public class ToDoItem
 }
 ```
 
-Ardından update `Load()` kategori varsayılan dize olarak ayarlamak için aynı dosyada yöntemi:
+Sonra, kategoriyi `Load()` varsayılan bir dizeye ayarlamak için aynı dosyada yöntemi güncelleştirin:
 
 ```csharp
 public static ToDoItem Load(string description, int index, bool completed)
@@ -100,9 +99,9 @@ public static ToDoItem Load(string description, int index, bool completed)
 }
 ```
 
-## <a name="modify-the-service"></a>Hizmet değiştirme
+## <a name="modify-the-service"></a>Hizmeti değiştirme
 
-`WebFrontEnd` Bir ASP.NET Core uygulaması Yapılacaklar listesi öğelerini gösteren bir web sayfasıyla projesidir. İçinde `WebFrontEnd` projesini açarsanız `Index.cshtml` ve görev kategorisi görüntülemek için aşağıda belirtilen şu iki satırı ekleyin:
+`WebFrontEnd` Proje, yapılacaklar listesi öğelerini gösteren bir Web sayfası olan ASP.NET Core bir uygulamadır. Projede, görevin kategorisini göstermek `Index.cshtml` için aşağıda gösterildiği gibi aşağıdaki iki satırı açın ve ekleyin: `WebFrontEnd`
 
 ```HTML
 <div>
@@ -128,43 +127,43 @@ public static ToDoItem Load(string description, int index, bool completed)
 </div>
 ```
 
-Derleme ve görevleri listeler web sayfasında yeni bir kategori sütunu gördüğünüzü doğrulamak için uygulamayı çalıştırın.
+Görevleri listeleyen Web sayfasında yeni bir kategori sütunu gördiğinizi doğrulamak için uygulamayı derleyin ve çalıştırın.
 
-## <a name="upgrade-the-app-from-visual-studio"></a>Uygulamayı Visual Studio'dan yükseltme
+## <a name="upgrade-the-app-from-visual-studio"></a>Uygulamayı Visual Studio 'dan yükseltme
 
-Olup, yapmadan bir kod yükseltme veya bir yapılandırma yükseltme (Bu durumda düşünüyorsunuz her ikisi de), Service Fabric Mesh uygulamanızı azure'da sağ tıklayarak yükseltin **todolistapp** Visual Studio ve ardından **Yayımla...**
+Bir kod yükseltmesi veya bir yapılandırma yükseltmesi yapıyor musunuz (Bu durumda her ikisini de yaptığımız), Visual Studio 'da **todolistapp** ' ye sağ tıklayıp **Yayımla...** öğesini seçerek Azure 'da Service Fabric kafes uygulamanızı yükseltin.
 
 Ardından **Service Fabric Uygulamasını Yayımla** iletişim kutusunu göreceksiniz.
 
-Kullanma **hedef profil** bu dağıtım için kullanılacak profile.yaml dosyasını seçmek için açılır. U seçiyoruz bulutta uygulama Yükseltmekte olduğunuz **cloud.yaml** açılır menüde, kullanacağınız `WebFrontEnd_cpu` bu dosyada tanımlanan 1.0 değeri.
+Bu dağıtım için kullanılacak profile. YAML dosyasını seçmek için **hedef profili** açılan listesini kullanın. Uygulamayı bulutta yükseltiyoruz, bu nedenle açılan menüde, bu dosyada tanımlanan 1,0 `WebFrontEnd_cpu` değerini kullanacak olan **Cloud. YAML** 'yi seçeceğiz.
 
 ![Visual Studio Service Fabric Mesh yayımla iletişim kutusu](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-dialog.png)
 
-Azure hesabınızı ve aboneliğinizi seçin. Ayarlama **konumu** Yapılacaklar uygulamayı Azure'a ilk yayımlandığında, kullandığınız konuma. Bu makalede kullanılan **Doğu ABD**.
+Azure hesabınızı ve aboneliğinizi seçin. **Konumu** , Ilk olarak Azure 'da yapılacak-do uygulamasını yayımladığınızda kullandığınız konuma ayarlayın. Bu makale **Doğu ABD**kullanıldı.
 
-Ayarlama **kaynak grubu** Yapılacaklar uygulamayı Azure'a ilk yayımlandığında, kullandığınız kaynak grubu.
+**Kaynak grubunu** , ilk olarak yapılacak BT uygulamasını Azure 'a yayımladığınızda kullandığınız kaynak grubuna ayarlayın.
 
-Ayarlama **Azure Container Registry** Yapılacaklar uygulamayı Azure'a ilk yayımlandığında, oluşturduğunuz azure kapsayıcı kayıt defteri adı için.
+Azure 'da yapılacak do uygulamasını ilk kez yayımladığınızda oluşturduğunuz Azure Container Registry adına **Azure Container Registry** ayarlayın.
 
-Yayımla iletişim kutusunda basın **Yayımla** azure'da Yapılacaklar uygulama yükseltme düğmesi.
+Yayımla iletişim kutusunda, Azure 'da Yapılacaklar uygulamasını yükseltmek için **Yayımla** düğmesine basın.
 
-Seçerek yükseltmesinin ilerleme durumunu izlemek **Service Fabric Araçları** bölmesinde Visual Studio **çıkış** penceresi. 
+Visual Studio **çıktı** penceresinde **Service Fabric araçları** bölmesini seçerek yükseltmenin ilerlemesini izleyin. 
 
-Görüntü oluşturulur ve Azure Container Registry'ye gönderildi sonra bir **durumu** bağlantı Azure portalında dağıtımı izlemek için tıklayabileceği çıktıda görünür.
+Görüntü oluşturulup Azure Container Registry gönderildikten sonra, çıktıda Azure portal dağıtımı izlemek için tıklabileceğiniz çıktıda bir **durum** bağlantısı görüntülenir.
 
-Yükseltme tamamlandıktan sonra **Service Fabric Araçları** çıkış IP adresini ve bağlantı noktası, uygulamanızın bir URL biçiminde görüntülenir.
+Yükseltme tamamlandıktan sonra, **Service Fabric araçları** çıktısı uygulamanızın IP adresini ve bağlantı noktasını bir URL biçiminde görüntüler.
 
 ```json
 The application was deployed successfully and it can be accessed at http://10.000.38.000:20000.
 ```
 
-Bir web tarayıcısı açıp URL'ye giderek Azure'da çalışan web sitenizi görebilirsiniz. Artık bir kategori sütunu içeren bir web sayfasını görmeniz gerekir.
+Bir web tarayıcısı açıp URL'ye giderek Azure'da çalışan web sitenizi görebilirsiniz. Artık Kategori sütunu içeren bir Web sayfası görmeniz gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Öğreticinin bu bölümünde şunları öğrendiniz:
 > [!div class="checklist"]
-> * Visual Studio kullanarak bir Service Fabric Mesh uygulaması yükseltme
+> * Service Fabric bir kafes uygulamasını Visual Studio kullanarak yükseltme
 
 Sonraki öğreticiye ilerleyin:
 > [!div class="nextstepaction"]

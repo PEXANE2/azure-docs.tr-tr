@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2019
 ms.author: barclayn
-ms.openlocfilehash: c91c8de35dcf3f1bc8fd5f41bd2356336c3fe450
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 89acc86526d1017e97efbf1812e02cfb6a240953
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927961"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035418"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure veri şifreleme-Rest
 
@@ -298,7 +298,7 @@ Azure SQL veritabanı verilerinin istemci tarafı şifrelemesi [Always Encrypted
 | Event Grid                       | Evet                | -                  | -                  |
 | API Management                   | Evet                | -                  | -                  |
 | **IoT Hizmetleri**                 |                    |                    |                    |
-| IoT Hub                          | -                  | -                  | Evet                |
+| IoT Hub                          | Evet                | -                  | Evet                |
 | **Yönetim ve Idare**    |                    |                    |                    |
 | Azure Site Recovery              | Evet                | Evet, RSA 2048 bit  | Evet                |
 | **Medyasını**                        |                    |                    |                    |

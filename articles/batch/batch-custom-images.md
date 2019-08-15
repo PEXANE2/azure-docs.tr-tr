@@ -1,21 +1,21 @@
 ---
-title: Özel görüntüden Azure Batch havuzu sağlama | Microsoft Docs
-description: Uygulamanız için ihtiyaç duyduğunuz yazılım ve verileri içeren işlem düğümlerini sağlamak için özel görüntüden bir Batch havuzu oluşturun. Özel görüntüler, işlem düğümlerini toplu iş yüklerinizi çalıştıracak şekilde yapılandırmanın etkili bir yoludur.
+title: Havuz oluşturmak için paylaşılan görüntü galerisini kullanın-Azure Batch | Microsoft Docs
+description: Uygulamanız için ihtiyaç duyduğunuz yazılımı ve verileri içeren işlem düğümlerine özel görüntüler sağlamak için paylaşılan görüntü Galerisi ile bir Batch havuzu oluşturun. Özel görüntüler, işlem düğümlerini toplu iş yüklerinizi çalıştıracak şekilde yapılandırmanın etkili bir yoludur.
 services: batch
 author: laurenhughes
 manager: gwallace
 ms.service: batch
 ms.topic: article
-ms.date: 08/07/2019
+ms.date: 08/14/2019
 ms.author: lahugh
-ms.openlocfilehash: d8bda817231ec0a5a733d5e586e49639c62ea177
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 00da17512cbc2e713955ea83c7d9fa7517958169
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882836"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036698"
 ---
-# <a name="use-a-custom-image-to-create-a-pool-of-virtual-machines"></a>Bir sanal makine havuzu oluşturmak için özel görüntü kullanma
+# <a name="use-the-shared-image-gallery-to-create-a-pool"></a>Bir havuz oluşturmak için paylaşılan görüntü galerisini kullanma
 
 Sanal makine yapılandırmasını kullanarak bir Azure Batch havuzu oluşturduğunuzda, havuzdaki her bir işlem düğümü için işletim sistemini sağlayan bir VM görüntüsü belirtirsiniz. Desteklenen bir Azure Marketi görüntüsüne sahip bir sanal makine havuzu oluşturabilir veya [paylaşılan görüntü Galerisi](../virtual-machines/windows/shared-image-galleries.md)ile özel bir görüntü oluşturabilirsiniz.
 

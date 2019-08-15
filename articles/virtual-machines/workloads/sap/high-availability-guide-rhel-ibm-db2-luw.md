@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/10/2019
 ms.author: juergent
-ms.openlocfilehash: 232468d9b3466759d7af2b7be68a1f553ced6e6d
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: c649b93284a48df705d389f4de728d83f793af04
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68348649"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036651"
 ---
 [1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [2015553]: https://launchpad.support.sap.com/#/notes/2015553
@@ -517,11 +517,11 @@ DB2 HADR yapılandırmasını oluşturmadan önce yüklemeyi gerçekleştirdiyse
 JDBC URL 'sini denetlemek veya güncelleştirmek için J2EE yapılandırma aracını kullanın. J2EE yapılandırma aracı bir grafik araç olduğundan, X sunucusunun yüklü olması gerekir:
  
 1. J2EE örneğinin birincil uygulama sunucusunda oturum açın ve yürütün:
-     <pre><code>sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh</code></pre>
+     <pre><code>sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh</code></pre>  
 1.Sol çerçevede **Güvenlik deposu**' nu seçin.
 1.Sağ çerçevede, anahtar JDBC/havuz/\<SAPSID>/URL ' yi seçin.
 1.JDBC URL 'sindeki ana bilgisayar adını sanal ana bilgisayar adıyla değiştirin.
-     <pre><code>jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0</code></pre>
+     <pre><code>jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0</code></pre>  
 1.**Ekle**' yi seçin.
 1.Değişikliklerinizi kaydetmek için sol üst köşedeki disk simgesini seçin.
 1.Yapılandırma aracını kapatın.

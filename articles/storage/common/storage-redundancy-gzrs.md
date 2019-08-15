@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 1b5a9eb9f91469e6e25c5d90bfeb4aa0213009bc
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
-ms.translationtype: MT
+ms.openlocfilehash: 2e97a734a4730e4341614019e3ca1ecaa81420a7
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69017302"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035982"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Coğrafi bölge yedekli depolama (GZRS) ile yüksek oranda kullanılabilir Azure depolama uygulamaları oluşturun (Önizleme)
 
@@ -30,7 +30,6 @@ GZRS ve RA-GZRS desteği yalnızca genel amaçlı v2 depolama hesaplarıdır. De
 GZRS ve RA-GZRS Şu anda şu bölgelerde önizleme için kullanılabilir:
 
 - ABD Doğu
-- Batı Avrupa
 
 Microsoft, ek Azure bölgelerinde GZRS ve RA-GZRS etkinleştirmesine devam etmektedir. Desteklenen bölgeler hakkında bilgi için [Azure hizmet güncelleştirmeleri](https://azure.microsoft.com/updates/) sayfasını düzenli olarak denetleyin.
 

@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
-ms.openlocfilehash: cbab92c85e5791e43e9d7f60de975c27a77c62d3
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: aa9752cdc2148036b3edff8a6002dc81ebff6312
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013797"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036307"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB tablosu .NET API 'SI: Notları indir ve serbest bırak
 
@@ -27,7 +27,6 @@ ms.locfileid: "69013797"
 |   |   |
 |---|---|
 |**SDK'sını indirme**|[NuGet](https://aka.ms/acdbtablenuget)|
-|**API belgeleri**|[.NET API başvuru belgeleri](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table?view=azure-dotnet)|
 |**Hızlı Başlangıç**|[Azure Cosmos DB: .NET ve Tablo API'si bir uygulama oluşturun](create-table-dotnet.md)|
 |**Öğretici**|[Azure Cosmos DB: .NET ' te Tablo API'si geliştirin](tutorial-develop-table-dotnet.md)|
 |**Geçerli desteklenen çerçevesi**|[Microsoft .NET Framework 4.5.1](https://www.microsoft.com/en-us/download/details.aspx?id=40779)|
