@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 08/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 80a04333260b7aa710c1598b64a414ce53a1037a
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 1dea5e174c66685f889595ab15b3edf57dd02493
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883302"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018240"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Azure Machine Learning hizmeti nedir?
 
@@ -49,15 +49,15 @@ Kodu yazarken veya görsel arabirimini kullandığınızda, en iyi çözümü bu
 
 SDK kullanarak [model eğitimi ve ayarlamayı otomatik hale](tutorial-auto-train-models.md) getirebilirsiniz.
 
-### <a name="code-free--low-code-experience"></a>Kod-ücretsiz/düşük kod deneyimi
+### <a name="ui-based-low-code-experience"></a>UI tabanlı, düşük kodlu deneyim
 
 Kod ücretsiz eğitim için şunu deneyin:
 
-+ Sürükleme-n bırakma deneme ve dağıtım için görsel arabirim
++ Kullanımı kolay arabirimde [OTOMATIK ml denemeleri](tutorial-first-experiment-automated-ml.md) oluşturma.
++ [Görsel arabirimde Sürükle-n-Bırak deneme](ui-tutorial-automobile-price-train-score.md).
+  ![Azure Machine Learning hizmeti için görsel arabirim](media/overview-what-is-azure-ml/visual-interface.png)
 
-    ![Azure Machine Learning hizmeti için görsel arabirim](media/overview-what-is-azure-ml/visual-interface.png)
 
-+ Otomatikml denemeleri için Azure portal seçeneği
 
 ### <a name="operationalization-mlops"></a>Operationalization (MLOps)
 
@@ -69,10 +69,10 @@ Bu modeller tüketilebilir ve [gerçek zamanlı](how-to-consume-web-service.md) 
 
 Gelişmiş [makine öğrenimi ardışık düzenleri](concept-ml-pipelines.md)sayesinde, dağıtım aracılığıyla veri hazırlama, model eğitimi ve değerlendirmede her bir adımla işbirliği yapabilirsiniz. İşlem hatları şunları yapmanıza olanak sağlar:
 
-* bulutta uçtan uca makine öğrenimi işlemini otomatikleştirin
-* bileşenleri yeniden kullanın ve yalnızca gerektiğinde adımları yeniden çalıştırın
-* her adımda farklı işlem kaynakları kullanın
-* toplu Puanlama görevlerini Çalıştır
+* Bulutta uçtan uca makine öğrenimi işlemini otomatikleştirin
+* Bileşenleri yeniden kullan ve yalnızca gerektiğinde adımları yeniden çalıştır
+* Her adımda farklı işlem kaynakları kullanın
+* Toplu Puanlama görevlerini Çalıştır
 
 Azure Machine Learning hizmetini kullanmaya başlamak için bkz. [sonraki adımlar](#next-steps).
 

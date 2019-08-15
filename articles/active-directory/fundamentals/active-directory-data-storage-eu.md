@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33704c3392726ccd12ca0fd74f26465a54697e11
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 178f81cf42e5c57be4a0b69ada6560d46951a3a3
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722139"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68942855"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Kimlik Azure Active Directory'de Avrupalı müşteriler için veri depolama
 Kimlik verileri, Azure AD tarafından, Office 365 ve Azure gibi bir Microsoft Online hizmetine abone olurken kuruluşunuzun verdiği adrese bağlı olarak coğrafi bir konumda depolanır. Kimlik verilerinizin nerede depolandığı hakkında bilgi için, Microsoft Güven Merkezi ' nin [veri konumunu nerede bulabilirsiniz?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) bölümünde bulabilirsiniz.
@@ -43,6 +43,15 @@ Azure AD B2B, ve ABD veri merkezlerinde yeniden yönlendirme URL 'SI bilgileriyl
 ## <a name="microsoft-azure-active-directory-domain-services-azure-ad-ds"></a>Microsoft Azure Active Directory etki alanı Hizmetleri (Azure AD DS)
 
 Azure AD DS, kullanıcı verilerini müşterinin seçtiği Azure Sanal Ağı ile aynı konumda depolar. Ağınız Avrupa dışındaysa veriler Avrupa dışında çoğaltılır ve depolanır.
+
+## <a name="federation-in-microsoft-exchange-server-2013"></a>Microsoft Exchange Server 2013 ' de Federasyon
+    
+- Uygulama tanımlayıcısı (AppID)-Exchange kuruluşlarını belirlemek için Azure Active Directory kimlik doğrulama sistemi tarafından oluşturulan benzersiz bir sayıdır.
+- Uygulama için onaylanan Federasyon etki alanları listesi
+- Uygulamanın belirteç imzalama ortak anahtarı 
+
+Microsoft Exchange Server 'da Federasyon hakkında daha fazla bilgi için bkz [. Federasyon: Exchange 2013 yardım](https://docs.microsoft.com/exchange/federation-exchange-2013-help) makalesi.
+
 
 ## <a name="other-considerations"></a>Dikkat edilecek diğer noktalar
 

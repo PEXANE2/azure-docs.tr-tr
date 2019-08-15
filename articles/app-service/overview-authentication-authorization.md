@@ -4,7 +4,7 @@ description: Azure App Service için kimlik doğrulama/yetkilendirme özelliğin
 services: app-service
 documentationcenter: ''
 author: cephalin
-manager: erikre
+manager: gwallace
 editor: ''
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.service: app-service
@@ -12,16 +12,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 08/24/2018
+ms.date: 08/12/2019
 ms.author: cephalin
 ms.reviewer: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 53733774968f94ac95d9b3fea6d8fcb422b4e02c
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 12ad82b0dda628c3a8cef7712322500c7a33517c
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68515180"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68953813"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Azure Uygulama Hizmeti’nde kimlik doğrulaması ve yetkilendirme
 
@@ -119,29 +119,23 @@ Aşağıdaki tabloda, kimlik doğrulama akışı adımları gösterilmektedir.
 
 ## <a name="authorization-behavior"></a>Yetkilendirme davranışı
 
-[Azure Portal](https://portal.azure.com), bir dizi davranışta App Service yetkilendirme yapılandırabilirsiniz.
+[Azure Portal](https://portal.azure.com), gelen isteğin kimliği doğrulanmamış bir dizi davranışla App Service yetkilendirmeyi yapılandırabilirsiniz.
 
 ![](media/app-service-authentication-overview/authorization-flow.png)
 
 Aşağıdaki başlıklar seçenekleri anlatmaktadır.
 
-### <a name="allow-all-requests-default"></a>Tüm isteklere izin ver (varsayılan)
+### <a name="allow-anonymous-requests-no-action"></a>Anonim isteklere izin ver (eylem yok)
 
-Kimlik doğrulama ve yetkilendirme App Service (kapalı) tarafından yönetilmez. 
+Bu seçenek, uygulama kodunuza kimliği doğrulanmamış trafik yetkilendirmesini erteler. Kimliği doğrulanmış istekler için, App Service HTTP üstbilgilerinde kimlik doğrulama bilgileri boyunca de geçirilir. 
 
-Kimlik doğrulama ve yetkilendirme gerekmiyorsa veya kendi kimlik doğrulama ve yetkilendirme kodunuzu yazmak istiyorsanız bu seçeneği belirleyin.
+Bu seçenek, anonim istekleri işlemek için daha fazla esneklik sağlar. Örneğin, kullanıcılarınıza [birden çok oturum açma sağlayıcısı sunmanıza](app-service-authentication-how-to.md#use-multiple-sign-in-providers) olanak tanır. Ancak, kod yazmanız gerekir. 
 
 ### <a name="allow-only-authenticated-requests"></a>Yalnızca kimliği doğrulanmış isteklere izin ver
 
 Seçenek,  **\<sağlayıcı > oturum açın**. App Service, tüm anonim istekleri `/.auth/login/<provider>` seçtiğiniz sağlayıcıya yönlendirir. Anonim istek yerel bir mobil uygulamadan geliyorsa, döndürülen yanıt bir `HTTP 401 Unauthorized`olur.
 
 Bu seçenekle, uygulamanızda herhangi bir kimlik doğrulama kodu yazmanız gerekmez. Role özgü yetkilendirme gibi daha ayrıntılı yetkilendirme, kullanıcının taleplerini inceleyerek (bkz. [erişim kullanıcı talepleri](app-service-authentication-how-to.md#access-user-claims)) işlenebilir.
-
-### <a name="allow-all-requests-but-validate-authenticated-requests"></a>Tüm isteklere izin ver, ancak kimliği doğrulanmış istekleri doğrula
-
-Seçeneği **anonim Isteklere Izin verir**. Bu seçenek App Service kimlik doğrulaması ve yetkilendirmeyi etkinleştirir, ancak uygulama kodunuza yetkilendirme kararlarını erteler. Kimliği doğrulanmış istekler için, App Service HTTP üstbilgilerinde kimlik doğrulama bilgileri boyunca de geçirilir. 
-
-Bu seçenek, anonim istekleri işlemek için daha fazla esneklik sağlar. Örneğin, kullanıcılarınıza [birden çok oturum açma sağlayıcısı sunmanıza](app-service-authentication-how-to.md#use-multiple-sign-in-providers) olanak tanır. Ancak, kod yazmanız gerekir. 
 
 ## <a name="more-resources"></a>Daha fazla kaynak
 

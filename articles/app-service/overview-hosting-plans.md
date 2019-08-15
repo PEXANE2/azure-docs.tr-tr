@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: fef509d705d0b904586a86b7dc58decc54e7023d
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 4ea983255463080592181cda321ef6b6d1ff147f
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716632"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932352"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure App Service plana genel bakış
 
@@ -32,14 +32,13 @@ Belirli bir bölgede bir App Service planı oluşturduğunuzda (örneğin, Batı
 - Bölge (Batı ABD, Doğu ABD, vb.)
 - Sanal makine örneği sayısı
 - VM örneklerinin boyutu (küçük, orta, büyük)
-- Fiyatlandırma Katmanı (ücretsiz, paylaşılan, temel, standart, Premium, PremiumV2, yalıtılmış, tüketim)
+- Fiyatlandırma Katmanı (ücretsiz, paylaşılan, temel, standart, Premium, PremiumV2, yalıtılmış)
 
 Bir App Service planının _fiyatlandırma katmanı_ , aldığınız App Service özelliklerini ve plan için ne kadar ücret ödersiniz belirler. Fiyatlandırma katmanlarının birkaç kategorisi vardır:
 
 - **Paylaşılan işlem**: **Ücretsiz** ve **paylaşılan**iki temel katman, diğer müşterilerin uygulamaları da dahil olmak üzere diğer App SERVICE uygulamalarla aynı Azure VM üzerinde bir uygulamayı çalıştırır. Bu katmanlar, paylaşılan kaynaklarda çalışan her bir uygulamaya CPU kotaları ayırır ve kaynaklar ölçeklenmez.
 - **Adanmış işlem**: **Temel**, **Standart**, **Premium**ve **PremiumV2** katmanları, uygulamaları adanmış Azure VM 'lerinde çalıştırır. Yalnızca aynı App Service planındaki uygulamalar aynı işlem kaynaklarını paylaşır. Katman arttıkça, daha fazla sanal makine örneği, ölçek genişletme için kullanılabilir.
-- **Yalıtılmış**: Bu katman adanmış Azure sanal ağlarında, uygulamalarınıza işlem yalıtımının en üstünde ağ yalıtımı sağlayan adanmış Azure VM 'Leri çalıştırır. En büyük genişleme özelliklerini sağlar.
-- **Tüketim**: Bu katman yalnızca [işlev uygulamaları](../azure-functions/functions-overview.md)tarafından kullanılabilir. İş yüküne bağlı olarak işlevleri dinamik olarak ölçeklendirir. Daha fazla bilgi için bkz. [Azure işlevleri barındırma planları karşılaştırması](../azure-functions/functions-scale.md).
+- **Yalıtılmış**: Bu katman adanmış Azure sanal ağlarında adanmış Azure VM 'Leri çalıştırır. Uygulamalarınıza işlem yalıtımının en üstünde ağ yalıtımı sağlar. En büyük genişleme özelliklerini sağlar.
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
@@ -80,8 +79,7 @@ Bu bölümde App Service uygulamalar nasıl faturalandırılır açıklanmaktad�
 
 - **Paylaşılan** katmanda, her uygulama bir CPU dakikası kotası alır, bu nedenle _her uygulama_ CPU kotası için saatlik olarak ücretlendirilir.
 - Adanmış işlem katmanlarında (**temel**, **Standart**, **Premium**, **PremiumV2**) App Service planı, uygulamaların ölçeklendiği sanal makine örneklerinin sayısını tanımlar, böylece App Service planındaki _her sanal makine örneği_ saatlik ücretlendirilir. Bu sanal makine örnekleri, üzerinde kaç uygulama çalıştığını dikkate almaksızın aynı şekilde ücretlendirilir. Beklenmeyen ücretlerden kaçınmak için bkz. [App Service planını Temizleme](app-service-plan-manage.md#delete).
-- **Yalıtılmış** katmanda App Service ortamı, uygulamalarınızı çalıştıran yalıtılmış çalışanların sayısını tanımlar ve _her çalışan_ saatlik olarak ücretlendirilir. Ayrıca, App Service Ortamı çalıştırmak için saatlik temel bir ücret de vardır. 
-- (Yalnızca Azure Işlevleri) **Tüketim** katmanı, bir işlev uygulamasının iş yüküne hizmet vermek için VM örneklerini dinamik olarak ayırır ve Azure tarafından saniyede dinamik olarak ücretlendirilir. Daha fazla bilgi için [Azure işlevleri fiyatlandırması](https://azure.microsoft.com/pricing/details/functions/).
+- **Yalıtılmış** katmanda App Service ortamı, uygulamalarınızı çalıştıran yalıtılmış çalışanların sayısını tanımlar ve _her çalışan_ saatlik olarak ücretlendirilir. Ayrıca, App Service Ortamı çalıştırmak için saatlik temel bir ücret de vardır.
 
 Kullanabileceğiniz App Service Özellikleri (özel etki alanları, SSL sertifikaları, dağıtım yuvaları, yedeklemeler vb.) kullanmak için ücretlendirilmezsiniz. Özel durumlar şunlardır:
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 4df024f9ff37121df4d9be51ae1fa540028ddd3d
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 83b4f2fce3dbae2168627194a45e62a2d4479936
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727425"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934741"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Azure veri güvenliği ve şifreleme için en iyi yöntemler
 Bu makalede veri güvenliği ve şifreleme için en iyi uygulamalar açıklanmaktadır.
@@ -97,7 +97,7 @@ Veri şifrelemeyi zorlayamayan kuruluşlar, veri gizliliği sorunlarına daha fa
 
 Yoldaki verilerin korunması, veri koruma stratejinizin önemli bir parçası olmalıdır. Veriler birçok konumdan geri ve ileri hareket ettiğinden, genellikle farklı konumlarda veri alışverişi yapmak için her zaman SSL/TLS protokollerini kullanmanızı öneririz. Bazı durumlarda, VPN kullanarak şirket içi ve bulut altyapılarınız arasında iletişim kanalının tamamını yalıtmak isteyebilirsiniz.
 
-Şirket içi altyapınız ve Azure arasında geçiş yapmak için, HTTPS veya VPN gibi uygun korumaları göz önünde bulundurun. Bir Azure sanal ağı ile şirket içi bir konum arasında, genel İnternet üzerinden şifrelenmiş trafik gönderirken [Azure VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/)kullanın.
+Şirket içi altyapınız ve Azure arasında geçiş yapmak için, HTTPS veya VPN gibi uygun korumaları göz önünde bulundurun. Bir Azure sanal ağı ile şirket içi bir konum arasında, genel İnternet üzerinden şifrelenmiş trafik gönderirken [Azure VPN Gateway](../../vpn-gateway/index.yml)kullanın.
 
 Azure VPN Gateway, SSL/TLS ve HTTPS kullanımına özgü en iyi uygulamalar aşağıda verilmiştir.
 

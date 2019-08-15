@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: dacurwin
-ms.openlocfilehash: 1cbd0f649bd5e89c1ed424604697afa179964175
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 23492133035f27aa3e1217269022565e0ff217a9
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689014"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018767"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>PowerShell ile Azure VM 'lerini yedekleme ve geri yükleme
 
@@ -279,7 +279,7 @@ Koruma ilkesini değiştirmek için, SchedulePolicy veya RetentionPolicy nesnele
 
 #### <a name="modifying-scheduled-time"></a>Zamanlanan saati değiştirme
 
-Bir koruma ilkesi oluşturduğunuzda, varsayılan olarak bir başlangıç zamanı atanır. Aşağıdaki örneklerde, koruma ilkesinin başlangıç zamanının nasıl değiştirileceği gösterilmektedir.
+Bir koruma ilkesi oluşturduğunuzda, varsayılan olarak bir başlangıç zamanı atanır. Aşağıdaki örneklerde, bir koruma ilkesinin başlangıç zamanının nasıl değiştirileceği gösterilmektedir.
 
 ````powershell
 $SchPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM"
@@ -340,7 +340,7 @@ V2VM              Backup              InProgress          4/23/2016             
 
 ### <a name="change-policy-for-backup-items"></a>Yedekleme öğeleri için ilkeyi değiştirme
 
-Kullanıcı var olan ilkeyi değiştirebilir veya Policy1 ' den Policy2 ' ye yedeklenmiş öğenin ilkesini değiştirebilir. Yedeklenmiş bir öğeye yönelik ilkeleri değiştirmek için, ilgili ilkeyi ve yedekleme öğesini getirip parametre olarak Backup öğesi olan [Enable-AzRecoveryServices](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) komutunu kullanın.
+Kullanıcı var olan ilkeyi değiştirebilir veya Policy1 ' den Policy2 ' ye yedeklenmiş öğenin ilkesini değiştirebilir. Yedeklenen bir öğeye yönelik ilkeleri değiştirmek için ilgili ilkeyi ve yedekleme öğesini getirin ve parametresi olarak Backup öğesiyle [Enable-AzRecoveryServices](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) komutunu kullanın.
 
 ````powershell
 $TargetPol1 = Get-AzRecoveryServicesBackupProtectionPolicy -Name <PolicyName>
@@ -720,7 +720,7 @@ Aşağıdaki bölümde, "VMConfig" dosyasını kullanarak bir VM oluşturmak iç
 
    * **Azure AD olmayan VM için** -veri disklerinin şifrelemesini el ile etkinleştirmek için aşağıdaki komutu kullanın.
 
-     Komut yürütmesi sırasında Aadclientıd istediğinde, bu durumda Azure PowerShell güncelleştirmeniz gerekir.
+     Komut yürütme sırasında Aadclientıd istediğinde, Azure PowerShell güncelleştirmeniz gerekir.
 
      **Yalnızca BEK**
 

@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.reviewer: sdgilley
 ms.date: 08/02/2019
-ms.openlocfilehash: 91ac8b596373963aeba00c1932dfde5d76f27bd0
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: bc14ba2bcaa80236717c062abd1dc8a63b58305c
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856037"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966841"
 ---
 # <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning-service"></a>Azure Machine Learning hizmeti ile Chainer modellerini eğitme ve kaydetme
 
@@ -214,3 +214,5 @@ Bu makalede, Azure Machine Learning hizmetinde Chainer kullanarak derin bir öğ
 * [Hiperparametreleri ayarlama](how-to-tune-hyperparameters.md)
 
 * [İzleme ölçümlerini eğitim sırasında çalıştırın](how-to-track-experiments.md)
+
+* [Azure 'da dağıtılmış derin öğrenme eğitimi için başvuru mimarimizi görüntüleyin](/azure/architecture/reference-architectures/ai/training-deep-learning)

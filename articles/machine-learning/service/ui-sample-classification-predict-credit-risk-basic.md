@@ -1,5 +1,5 @@
 ---
-title: Sınıflandırmaya Kredi riski tahmini
+title: 'Görsel arabirim örnek #3: Kredi riskini tahmin etmek için sınıflandırma'
 titleSuffix: Azure Machine Learning service
 description: Görsel arabirimi kullanarak tek bir kod satırı yazmadan makine öğrenimi sınıflandırıcısını oluşturmayı öğrenin.
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: d1b3b8fa61492f3cf18e44e3e3046f32ea9c9b03
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 7565f94910d0e926682a72af42b02059fe7295ea
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855980"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990064"
 ---
 # <a name="sample-3---classification-predict-credit-risk"></a>Örnek 3-sınıflandırma: Kredi riski tahmini
 

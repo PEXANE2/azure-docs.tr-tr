@@ -5,21 +5,23 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 06/28/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 5fefe469bfac4816a67c6ceb344f12c1e52de60c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f4e36edf86823453e663ed875c7d5e4ffdc2e524
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68550457"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016423"
 ---
-# <a name="zone-redundant-storage-zrs-highly-available-azure-storage-applications"></a>Bölgesel olarak yedekli depolama (ZRS): Yüksek oranda kullanılabilir Azure depolama uygulamaları
+# <a name="zone-redundant-storage-zrs-for-building-highly-available-azure-storage-applications"></a>Yüksek oranda kullanılabilir Azure depolama uygulamaları oluşturmak için bölge yedekli depolama (ZRS)
+
 [!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-zrs.md)]
 
 ## <a name="support-coverage-and-regional-availability"></a>Destek kapsamı ve bölgesel kullanılabilirlik
+
 ZRS Şu anda standart genel amaçlı v2 hesap türlerini desteklemektedir. Depolama hesabı türleri hakkında daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](storage-account-overview.md).
 
 ZRS, blok Blobları, disk olmayan sayfa Blobları, dosyalar, tablolar ve kuyruklar için kullanılabilir.
@@ -45,6 +47,7 @@ Microsoft, ek Azure bölgelerinde ZRS 'yi etkinleştirmeye devam etmektedir. Yen
 - Yönetilen diskler ZRS 'yi desteklemez. Standart SSD yönetilen disklerin anlık görüntülerini ve görüntülerini Standart HDD depolamada saklayabilir ve [LRS ve ZRS seçenekleri arasında seçim](https://azure.microsoft.com/pricing/details/managed-disks/)yapabilirsiniz.
 
 ## <a name="what-happens-when-a-zone-becomes-unavailable"></a>Bir bölge kullanılamaz duruma geldiğinde ne olur?
+
 Bir bölge kullanılamaz duruma gelirse bile verilerinize hem okuma hem de yazma işlemleri için erişilebilir. Microsoft, geçici hata işleme için uygulamaları izlemeye devam etmeniz önerilir. Bu uygulamalar, yeniden deneme ilkelerini üstel geri ile uygulamayı içerir.
 
 Bir bölge kullanılamadığında Azure, DNS yeniden işaretleme gibi ağ güncelleştirmelerini alır. Güncelleştirmeler tamamlanmadan önce verilerinize erişiyorsanız, bu güncelleştirmeler uygulamanızı etkileyebilir.
@@ -52,6 +55,7 @@ Bir bölge kullanılamadığında Azure, DNS yeniden işaretleme gibi ağ günce
 ZRS, verileri birden çok bölgenin kalıcı olarak etkilediği bölgesel bir olağanüstü duruma karşı koruyamayabilir. Bunun yerine, ZRS geçici olarak kullanılamaz duruma gelirse verileriniz için dayanıklılık sağlar. Bölgesel felate karşı koruma için Microsoft, coğrafi olarak yedekli depolama (GRS) kullanmanızı önerir. GRS hakkında daha fazla bilgi için bkz [. coğrafi olarak yedekli depolama (GRS): Azure depolama](storage-redundancy-grs.md)için çapraz bölgesel çoğaltma.
 
 ## <a name="converting-to-zrs-replication"></a>ZRS çoğaltmaya dönüştürme
+
 LRS, GRS ve RA-GRS 'ye veya sürümünden geçiş basittir. Hesabınızın artıklık türünü değiştirmek için Azure portal veya depolama kaynak sağlayıcısı API 'sini kullanın. Azure daha sonra verilerinizi buna göre çoğaltacaktır. 
 
 ZRS 'ye veri geçirmek farklı bir strateji gerektirir. ZRS geçişi, tek bir depolama damgasından bir bölgedeki birden çok damgaya verilerin fiziksel hareketini içerir.
@@ -61,14 +65,14 @@ ZRS 'ye geçiş için iki birincil seçenek vardır:
 - Mevcut bir hesaptan verileri el ile yeni bir ZRS hesabına kopyalayın veya taşıyın.
 - Dinamik geçiş isteyin.
 
-Microsoft, el ile geçiş gerçekleştirmenizi kesinlikle önerir. El ile geçiş, dinamik geçişten daha fazla esneklik sağlar. El ile geçiş ile zamanlama denetimi olursunuz.
+Geçişin belirli bir tarihten sonra tamamlanmasını istiyorsanız el ile geçiş yapmayı deneyin. El ile geçiş, dinamik geçişten daha fazla esneklik sağlar. El ile geçiş ile zamanlama denetimi olursunuz.
 
 El ile geçiş yapmak için seçenekleriniz vardır:
 - AzCopy gibi mevcut araçları, Azure Storage istemci kitaplıklarından birini veya güvenilir üçüncü taraf araçlarından birini kullanın.
 - Hadoop veya HDInsight hakkında bilginiz varsa, kümenize hem kaynak hem de hedef (ZRS) hesabı ekleyin. Daha sonra, paralel hale getirmek gibi bir araçla veri kopyalama işlemini yapın.
 - Azure depolama istemci kitaplıklarından birini kullanarak kendi araç yapınızı oluşturun.
 
-El ile geçiş, uygulama kapalı kalma süresine yol açabilir. Uygulamanız yüksek kullanılabilirlik gerektiriyorsa, Microsoft canlı bir geçiş seçeneği de sağlar. Dinamik geçiş bir yerinde geçişdir. 
+El ile geçiş, uygulama kapalı kalma süresine yol açabilir. Uygulamanız yüksek kullanılabilirlik gerektiriyorsa, Microsoft canlı bir geçiş seçeneği de sağlar. Dinamik geçiş, kapalı kalma süresi olmayan bir yerinde geçişdir. 
 
 Dinamik geçiş sırasında, verileriniz kaynak ve hedef depolama damgaları arasında geçirildiğinde depolama hesabınızı kullanabilirsiniz. Geçiş işlemi sırasında, normalde yaptığınız şekilde aynı düzeyde dayanıklılık ve kullanılabilirlik SLA 'sına sahip olursunuz.
 
@@ -137,9 +141,9 @@ ZRS klasik, yalnızca genel amaçlı v1 (GPv1) depolama hesaplarında **blok Blo
 
 ZRS hesabı verilerini LRS, ZRS klasik, GRS veya RA-GRS hesabına el ile geçirmek için aşağıdaki araçlardan birini kullanın: AzCopy, Azure Depolama Gezgini, Azure PowerShell veya Azure CLı. Ayrıca, Azure depolama istemci kitaplıklarından biriyle kendi geçiş çözümünüzü oluşturabilirsiniz.
 
-Ayrıca, ZRS Classic hesabınızı portalda ZRS 'ye veya ZRS 'nin kullanılabildiği bölgelerde Azure PowerShell veya Azure CLı 'yi kullanarak yükseltebilirsiniz.
+Ayrıca, ZRS Classic hesabınızı portalda ZRS 'ye veya ZRS 'nin kullanılabildiği bölgelerde Azure PowerShell veya Azure CLı 'yi kullanarak yükseltebilirsiniz. Azure portal ZRS 'ye yükseltmek için, hesabın **yapılandırma** bölümüne gidin ve **Yükselt**' i seçin:
 
-Portalda ZRS 'ye yükseltmek için hesabın yapılandırma bölümüne gidin ve Yükselt ' i seçin:![Portalda ZRS Classic 'i ZRS 'ye yükseltme](media/storage-redundancy-zrs/portal-zrs-classic-upgrade.jpg)
+![Portalda ZRS Classic 'i ZRS 'ye yükseltme](media/storage-redundancy-zrs/portal-zrs-classic-upgrade.png)
 
 PowerShell kullanarak ZRS 'ye yükseltmek için aşağıdaki komutu çağırın:
 ```powershell

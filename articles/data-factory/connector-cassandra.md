@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: d0e8881607fe4dc84a7d533855dc2b9c48e5366d
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: b42313a83be413a9c34a45fca946ea165f8fc9a3
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726178"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967036"
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Azure Data Factory kullanarak Cassandra 'dan veri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -40,7 +40,9 @@ Cassandra veritabanından desteklenen herhangi bir havuz veri deposuna veri kopy
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Herkese açık olmayan bir Cassandra veritabanından veri kopyalamak için, kendinden konak Integration Runtime ayarlamanız gerekir. Ayrıntıları öğrenmek için [Şirket içinde barındırılan Integration Runtime](create-self-hosted-integration-runtime.md) makalesine bakın. Integration Runtime, yerleşik bir Cassandra sürücüsü sağlar. bu nedenle,/sürümünden Cassandra 'dan veri kopyalarken herhangi bir sürücüyü el ile yüklemeniz gerekmez.
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+
+Integration Runtime, yerleşik bir Cassandra sürücüsü sağlar. bu nedenle,/sürümünden Cassandra 'dan veri kopyalarken herhangi bir sürücüyü el ile yüklemeniz gerekmez.
 
 ## <a name="getting-started"></a>Başlarken
 
@@ -54,13 +56,13 @@ Cassandra bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü |Type özelliği şu şekilde ayarlanmalıdır: **Cassandra** |Evet |
+| type |Type özelliği şu şekilde ayarlanmalıdır: **Cassandra** |Evet |
 | host |Cassandra sunucularının bir veya daha fazla IP adresi veya ana bilgisayar adı.<br/>Aynı anda tüm sunuculara bağlanmak için IP adreslerinin veya ana bilgisayar adlarının virgülle ayrılmış bir listesini belirtin. |Evet |
 | port |Cassandra sunucusunun istemci bağlantılarını dinlemek için kullandığı TCP bağlantı noktası. |Hayır (varsayılan değer 9042) |
 | authenticationType | Cassandra veritabanına bağlanmak için kullanılan kimlik doğrulaması türü.<br/>İzin verilen değerler şunlardır: **Temel**ve **anonim**. |Evet |
 | username |Kullanıcı hesabı için Kullanıcı adını belirtin. |Evet, authenticationType temel olarak ayarlandıysa. |
 | password |Kullanıcı hesabı için parola belirtin. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). |Evet, authenticationType temel olarak ayarlandıysa. |
-| connectVia | [Integration Runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. (Veri deponuz genel olarak erişilebilir değilse), şirket içinde barındırılan tümleştirme çalışma zamanı veya Azure Integration Runtime kullanabilirsiniz. Belirtilmezse, varsayılan Azure Integration Runtime kullanır. |Hayır |
+| connectVia | [Integration Runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmezse, varsayılan Azure Integration Runtime kullanır. |Hayır |
 
 >[!NOTE]
 >Şu anda Cassandra ile SSL kullanarak bağlantı desteklenmiyor.
@@ -97,7 +99,7 @@ Cassandra 'dan veri kopyalamak için veri kümesinin Type özelliğini **Cassand
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **CassandraTable** | Evet |
+| type | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **CassandraTable** | Evet |
 | keySpace |Cassandra veritabanında anahtar alanının veya şemanın adı. |Hayır ("CassandraSource" için "sorgu" belirtilmişse) |
 | tableName |Cassandra veritabanındaki tablonun adı. |Hayır ("CassandraSource" için "sorgu" belirtilmişse) |
 
@@ -128,11 +130,11 @@ Bölümleri ve etkinlikleri tanımlamak için mevcut özelliklerin tam listesi i
 
 ### <a name="cassandra-as-source"></a>Kaynak olarak Cassandra
 
-Cassandra 'dan veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **Cassandrasource**olarak ayarlayın. Kopyalama etkinliği aşağıdaki özellikler desteklenir **kaynak** bölümü:
+Cassandra 'dan veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **Cassandrasource**olarak ayarlayın. Kopyalama etkinliği aşağıdaki özellikler desteklenir **source** bölümü:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **CassandraSource** | Evet |
+| type | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **CassandraSource** | Evet |
 | query |Verileri okumak için özel sorguyu kullanın. SQL-92 sorgusu veya CQL sorgusu. Bkz. [CQL başvurusu](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html). <br/><br/>SQL sorgusu kullanırken, sorgulamak istediğiniz tabloyu temsil etmek için **anahtar alanı Name. Table adını** belirtin. |Hayır (veri kümesinde "tableName" ve "keyspace" belirtilmişse). |
 | Bu düzey |Tutarlılık düzeyi, istemci uygulamasına veri döndürmeden önce bir okuma isteğine kaç yinelemenin yanıt vereceğini belirtir. Cassandra, okuma isteğini karşılamak üzere verilerin belirtilen sayıda çoğaltmasını denetler. Ayrıntılar için bkz. [veri tutarlılığını yapılandırma](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) .<br/><br/>İzin verilen değerler şunlardır: **One**, **iki**, **üç**, **çekirdek**, **All**, **LOCAL_QUORUM**, **EACH_QUORUM**ve **LOCAL_ONE**. |Hayır (varsayılan değer `ONE`) |
 
@@ -176,15 +178,15 @@ Cassandra 'dan veri kopyalarken, Cassandra veri türlerinden aşağıdaki eşlem
 |:--- |:--- |
 | ASCII |Dize |
 | BIGINT |Int64 |
-| BUN |Byte[] |
+| BLOB |Byte[] |
 | BOOLEAN |Boole değeri |
-| KATEGORI |Decimal |
+| DECIMAL |Decimal |
 | DOUBLE |Double |
 | FLOAT |Single |
 | INET |Dize |
 | INT |Int32 |
 | TEXT |Dize |
-| TIMESTAMP |Datetime |
+| TIMESTAMP |DateTime |
 | TIMEUUID |Guid |
 | EDIN |Guid |
 | VARCHAR |Dize |
@@ -237,7 +239,7 @@ Aşağıdaki tablolarda, List, Map ve StringSet sütunlarından verileri yeniden
 | 1\. |1\. |2 |
 | 1\. |2 |3 |
 | 3 |0 |100 |
-| 3 |1 |101 |
+| 3 |1\. |101 |
 | 3 |2 |102 |
 | 3 |3 |103 |
 

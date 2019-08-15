@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/09/2019
-ms.openlocfilehash: 4b1a551ea2dd62d428fee6a7be475472235a3994
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 131333f140518f6fb2f63f17d0aa72692dc7d49a
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569606"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935065"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>Etkin coğrafi çoğaltma oluşturma ve kullanma
 
@@ -76,7 +76,7 @@ Gerçek iş sürekliliği sağlamak için, veri merkezleri arasında veritabanı
 > [!NOTE]
 > Birincil üzerinde şema güncelleştirmeleri varsa, ikincil veritabanında günlük yeniden yürütme gecikiyor. İkinci, ikincil veritabanında bir şema kilidi gerektirir.
 > [!IMPORTANT]
-> Birincil ile aynı bölgede ikincil bir veritabanı oluşturmak için Coğrafi çoğaltmayı kullanabilirsiniz. Aynı bölgedeki bir salt okunurdur iş yüklerini yük dengelemek için bu ikincili kullanabilirsiniz. Ancak, aynı bölgedeki bir ikincil veritabanı ek hata esnekliği sağlamaz ve bu nedenle olağanüstü durum kurtarma için uygun bir yük devretme hedefi değildir. Ayrıca, kullanılabilir bölge yalıtımını garanti etmez. Kullanılabilir bölge yalıtımına ulaşmak için Iş açısından kritik veya Premium hizmet katmanını [bölge yedekli yapılandırmasıyla](sql-database-high-availability.md#zone-redundant-configuration) kullanın.   
+> Birincil ile aynı bölgede ikincil bir veritabanı oluşturmak için Coğrafi çoğaltmayı kullanabilirsiniz. Aynı bölgedeki bir salt okunurdur iş yüklerini yük dengelemek için bu ikincili kullanabilirsiniz. Ancak, aynı bölgedeki bir ikincil veritabanı ek hata esnekliği sağlamaz ve bu nedenle olağanüstü durum kurtarma için uygun bir yük devretme hedefi değildir. Ayrıca, kullanılabilirlik alanı yalıtımının garanti etmez. Kullanılabilirlik alanı yalıtımına ulaşmak için Iş açısından kritik veya Premium hizmet katmanını [bölge yedekli yapılandırmasıyla](sql-database-high-availability.md#zone-redundant-configuration) kullanın.   
 >
 
 - **Planlı Yük devretme**

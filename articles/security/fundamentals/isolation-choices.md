@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 0c07cbd9fef865f3fc7b782210ef44094df9f629
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 9ab09c7215827369b3e1fc449af68be307881f51
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779825"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68928007"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure genel bulutunda yalıtım
 ##  <a name="introduction"></a>Giriş
@@ -54,7 +54,7 @@ Bulutun etkin olduğu çalışma alanında kiracı, bulut hizmetinin belirli bir
 Her Azure AD dizini, diğer Azure AD dizinlerinden farklı ve ayrıdır. Kurumsal ofis binasının yalnızca kuruluşunuza özel güvenilir bir varlık olması gibi, Azure AD dizini de yalnızca sizin kuruluşunuz tarafından kullanılmak üzere tasarlanan güvenilir bir varlıktır. Azure AD mimarisi, müşteri verilerini ve kimlik bilgilerini ortak karıştırma alanından yalıtır. Bu, bir Azure AD dizinindeki kullanıcıların ve yöneticilerin yanlışlıkla veya kötü amaçlı olarak başka bir dizindeki verilere erişemeyeceği anlamına gelir.
 
 ### <a name="azure-tenancy"></a>Azure Kiralama
-Azure Kiralama (Azure aboneliği), [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)bir "müşteri/Faturalandırma" ilişkisine ve benzersiz bir [kiracıya](https://docs.microsoft.com/azure/active-directory/develop/active-directory-howto-tenant) başvurur. Microsoft Azure kiracı düzeyi yalıtımı, BT tarafından sunulan Azure Active Directory ve [rol tabanlı denetimler](https://docs.microsoft.com/azure/role-based-access-control/overview) kullanılarak elde edilir. Her Azure aboneliği bir Azure Active Directory (AD) diziniyle ilişkilendirilir.
+Azure Kiralama (Azure aboneliği), [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)bir "müşteri/Faturalandırma" ilişkisine ve benzersiz bir [kiracıya](../../active-directory/develop/quickstart-create-new-tenant.md) başvurur. Microsoft Azure kiracı düzeyi yalıtımı, BT tarafından sunulan Azure Active Directory ve [rol tabanlı denetimler](../../role-based-access-control/overview.md) kullanılarak elde edilir. Her Azure aboneliği bir Azure Active Directory (AD) diziniyle ilişkilendirilir.
 
 Bu dizindeki kullanıcılar, gruplar ve uygulamalar, Azure aboneliğindeki kaynakları yönetebilir. Azure portal, Azure komut satırı araçları ve Azure Yönetim API 'Lerini kullanarak bu erişim haklarını atayabilirsiniz. Bir Azure AD kiracısı güvenlik sınırları kullanılarak mantıksal olarak yalıtılmıştır; böylece hiçbir müşteri kötü amaçlı olarak veya yanlışlıkla, ortak kiracılara erişemez veya bunları tehlikeye atabilir. Azure AD, ana bilgisayar düzeyindeki paket filtrelemesinin ve Windows güvenlik duvarının istenmeyen bağlantıları ve trafiği engelleyebildiği, ayrılmış bir ağ segmentinde yalıtılmış olan "çıplak" sunucularda çalışır.
 
@@ -71,7 +71,7 @@ Bu dizindeki kullanıcılar, gruplar ve uygulamalar, Azure aboneliğindeki kayna
 
 - Azure AD kullanıcılarının fiziksel varlıklar veya konumlara erişimi yoktur ve bu nedenle, aşağıda belirtilen mantıksal RBAC ilke denetimlerini atlamak mümkün değildir.
 
-Tanılama ve bakım ihtiyaçları için, tam zamanında ayrıcalık yükseltme sistemini kullanan bir işlem modeli gereklidir ve kullanılır. Azure AD Privileged Identity Management (PıM) uygun bir yönetici kavramını tanıtır. [Uygun yöneticiler](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) , her gün değil, ayrıcalıklı erişime ihtiyacı olan kullanıcılar olmalıdır. Bu rol, kullanıcı erişime ihtiyaç duyana kadar devre dışıdır ancak kullanıcı bir etkinleştirme işlemini tamamladıktan sonra önceden belirlenen süre boyunca etkin bir yönetici olur.
+Tanılama ve bakım ihtiyaçları için, tam zamanında ayrıcalık yükseltme sistemini kullanan bir işlem modeli gereklidir ve kullanılır. Azure AD Privileged Identity Management (PıM) uygun bir yönetici kavramını tanıtır. [Uygun yöneticiler](../../active-directory/privileged-identity-management/pim-configure.md) , her gün değil, ayrıcalıklı erişime ihtiyacı olan kullanıcılar olmalıdır. Bu rol, kullanıcı erişime ihtiyaç duyana kadar devre dışıdır ancak kullanıcı bir etkinleştirme işlemini tamamladıktan sonra önceden belirlenen süre boyunca etkin bir yönetici olur.
 
 ![Azure AD Privileged Identity Management](./media/isolation-choices/azure-isolation-fig2.png)
 
@@ -82,7 +82,7 @@ Kiracı kapsayıcıları kavramı, portallardan ve kalıcı depolamaya kadar her
 Birden çok Azure Active Directory kiracısından gelen meta veriler aynı fiziksel diskte depolandığında bile, dizin hizmeti tarafından tanımlandıkları dışındaki kapsayıcılar arasında hiçbir ilişki yoktur, bu da kiracı yöneticisi tarafından belirlenir.
 
 ### <a name="azure-role-based-access-control-rbac"></a>Azure rol tabanlı Access Control (RBAC)
-Azure [rol tabanlı Access Control (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) , Azure için ayrıntılı erişim yönetimi sağlayarak bir Azure aboneliğinde bulunan çeşitli bileşenleri paylaşmanıza yardımcı olur. Azure RBAC, kuruluşunuzdaki görevleri ayırabilirsiniz ve kullanıcıların işlerini gerçekleştirmesi için ihtiyaç duyduğu kullanıcılara göre erişim izni vermenizi sağlar. Azure aboneliğinde veya kaynaklarında herkes için sınırsız izin vermek yerine yalnızca belirli eylemlere izin verebilirsiniz.
+Azure [rol tabanlı Access Control (RBAC)](../../role-based-access-control/overview.md) , Azure için ayrıntılı erişim yönetimi sağlayarak bir Azure aboneliğinde bulunan çeşitli bileşenleri paylaşmanıza yardımcı olur. Azure RBAC, kuruluşunuzdaki görevleri ayırabilirsiniz ve kullanıcıların işlerini gerçekleştirmesi için ihtiyaç duyduğu kullanıcılara göre erişim izni vermenizi sağlar. Azure aboneliğinde veya kaynaklarında herkes için sınırsız izin vermek yerine yalnızca belirli eylemlere izin verebilirsiniz.
 
 Azure RBAC, tüm kaynak türleri için uygulanan üç temel role sahiptir:
 
@@ -96,16 +96,16 @@ Azure RBAC, tüm kaynak türleri için uygulanan üç temel role sahiptir:
 
 Azure 'daki RBAC rollerinin geri kalanı belirli Azure kaynaklarının yönetimine izin verir. Örneğin, sanal makine katılımcısı rolü, kullanıcının sanal makineler oluşturmasına ve yönetmesine izin verir. Azure sanal ağına veya sanal makinenin bağlandığı alt ağa erişim vermez.
 
-[RBAC yerleşik rolleri](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) , Azure 'da kullanılabilen rolleri listeler. Her yerleşik rolün kullanıcılara verdiği işlemleri ve kapsamı belirtir. Daha da fazla denetim için kendi rollerinizi tanımlamak istiyorsanız bkz. [Azure RBAC 'de özel roller](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)oluşturma.
+[RBAC yerleşik rolleri](../../role-based-access-control/built-in-roles.md) , Azure 'da kullanılabilen rolleri listeler. Her yerleşik rolün kullanıcılara verdiği işlemleri ve kapsamı belirtir. Daha da fazla denetim için kendi rollerinizi tanımlamak istiyorsanız bkz. [Azure RBAC 'de özel roller](../../role-based-access-control/custom-roles.md)oluşturma.
 
 Azure Active Directory için bazı diğer yetenekler şunlardır:
 - Azure AD, nerede barındırıldığını fark etmeksizin bağımsız olarak, SaaS uygulamalarına yönelik SSO 'yu sağlar. Bazı uygulamalar Azure AD federasyonu kullanırken diğerleri parola SSO hizmetinden yararlanır. Federasyon uygulamaları, Kullanıcı hazırlama ve [parola](https://www.techopedia.com/definition/31415/password-vault)oluşturma işlemlerini de destekleyebilir.
 
-- [Azure Storage](https://azure.microsoft.com/services/storage/) verilerine erişim, kimlik doğrulaması ile denetlenir. Her depolama hesabında birincil anahtar ([depolama hesabı anahtarı](https://docs.microsoft.com/azure/storage/storage-create-storage-account)veya sak) ve ikincil gizli anahtar (paylaşılan erişim IMZASı veya SAS) bulunur.
+- [Azure Storage](https://azure.microsoft.com/services/storage/) verilerine erişim, kimlik doğrulaması ile denetlenir. Her depolama hesabında birincil anahtar ([depolama hesabı anahtarı](../../storage/common/storage-create-storage-account.md)veya sak) ve ikincil gizli anahtar (paylaşılan erişim IMZASı veya SAS) bulunur.
 
-- Azure AD, şirket içi dizinlerle [Active Directory Federasyon Hizmetleri (AD FS)](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-azure-adfs), eşitleme ve çoğaltma kullanarak Federasyon aracılığıyla bir hizmet olarak kimlik sağlar.
+- Azure AD, şirket içi dizinlerle [Active Directory Federasyon Hizmetleri (AD FS)](../../active-directory/hybrid/how-to-connect-fed-azure-adfs.md), eşitleme ve çoğaltma kullanarak Federasyon aracılığıyla bir hizmet olarak kimlik sağlar.
 
-- [Azure Multi-Factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication) , kullanıcıların oturum açma işlemlerini bir mobil uygulama, telefon araması veya kısa mesaj kullanarak doğrulamasını gerektiren Multi-Factor Authentication hizmetidir. Azure Multi-Factor Authentication sunucusu ile şirket içi kaynakları güvenli hale getirmek ve ayrıca SDK 'Yı kullanan özel uygulamalar ve dizinler ile Azure AD ile birlikte kullanılabilir.
+- [Azure Multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md) , kullanıcıların oturum açma işlemlerini bir mobil uygulama, telefon araması veya kısa mesaj kullanarak doğrulamasını gerektiren Multi-Factor Authentication hizmetidir. Azure Multi-Factor Authentication sunucusu ile şirket içi kaynakları güvenli hale getirmek ve ayrıca SDK 'Yı kullanan özel uygulamalar ve dizinler ile Azure AD ile birlikte kullanılabilir.
 
 - [Azure AD Domain Services](https://azure.microsoft.com/services/active-directory-ds/) , Azure sanal makinelerini etki alanı denetleyicilerini dağıtmaya gerek kalmadan bir Active Directory etki alanına aktarmanıza olanak tanır. Şirket Active Directory kimlik bilgilerinizle bu sanal makinelerde oturum açabilir ve tüm Azure sanal makinelerinizde güvenlik temellerini zorlamak için grup ilkesi kullanarak etki alanına katılmış sanal makineleri yönetebilirsiniz.
 
@@ -140,7 +140,7 @@ Yalıtılmış bir boyut kullanılması, sanal makinenizin o belirli sunucu örn
 * Standard_D15_v2
 * Standard_F72s_v2
 
-[Burada](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory)kullanılabilen her bir yalıtılmış boyut hakkında daha fazla bilgi edinebilirsiniz.
+[Burada](../../virtual-machines/windows/sizes-memory.md)kullanılabilen her bir yalıtılmış boyut hakkında daha fazla bilgi edinebilirsiniz.
 
 ### <a name="hyper-v--root-os-isolation-between-root-vm--guest-vms"></a>Hyper-V & kök VM & Konuk VM 'Ler arasında kök işletim sistemi yalıtımı
 Azure 'un işlem platformu, makine sanallaştırmaya dayalıdır; yani tüm müşteri kodu bir Hyper-V sanal makinesinde yürütülür. Her bir Azure düğümünde (veya ağ uç noktası), doğrudan donanım üzerinde çalışan ve bir düğümü değişken sayıda konuk sanal makineye (VM) ayıran bir hiper yönetici vardır.
@@ -215,12 +215,12 @@ Bu nedenle, Azure Storage mantıksal dışında Azure Işlem ile ağ bağlantıs
 
 ![Depolama erişim denetimi kullanarak yalıtım](./media/isolation-choices/azure-isolation-fig9.png)
 
-**Azure depolama verilerine (tablolar dahil) erişim** , kapsamlı erişim veren bir [SAS (paylaşılan erişim imzası)](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1) belirteci aracılığıyla denetlenebilir. SAS, [sak (depolama hesabı anahtarı)](https://msdn.microsoft.com/library/azure/ee460785.aspx)ile imzalanmış bir sorgu şablonu (URL) ile oluşturulur. Bu [IMZALı URL](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1) , başka bir işleme (yani, temsilcili) verilebilir, bu, daha sonra sorgunun ayrıntılarını doldurabilir ve depolama hizmeti isteğini oluşturabilir. SAS, depolama hesabının gizli anahtarını göstermeden istemcilere zaman tabanlı erişim sağlamanıza olanak sağlar.
+**Azure depolama verilerine (tablolar dahil) erişim** , kapsamlı erişim veren bir [SAS (paylaşılan erişim imzası)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) belirteci aracılığıyla denetlenebilir. SAS, [sak (depolama hesabı anahtarı)](https://msdn.microsoft.com/library/azure/ee460785.aspx)ile imzalanmış bir sorgu şablonu (URL) ile oluşturulur. Bu [IMZALı URL](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) , başka bir işleme (yani, temsilcili) verilebilir, bu, daha sonra sorgunun ayrıntılarını doldurabilir ve depolama hizmeti isteğini oluşturabilir. SAS, depolama hesabının gizli anahtarını göstermeden istemcilere zaman tabanlı erişim sağlamanıza olanak sağlar.
 
 SAS, belirli bir süre boyunca ve belirli bir izin kümesiyle, bir istemci sınırlı izinleri, depolama hesabımızda bulunan nesnelere sağlayabilmemiz anlamına gelir. Hesap erişim anahtarlarınızı paylaşmak zorunda kalmadan bu sınırlı izinleri sağlayabiliriz.
 
 ### <a name="ip-level-storage-isolation"></a>IP düzeyi depolama yalıtımı
-Güvenlik duvarları oluşturabilir ve güvenilen istemcileriniz için bir IP adresi aralığı tanımlayabilirsiniz. Bir IP adresi aralığı ile yalnızca tanımlı aralıkta bir IP adresi olan istemciler [Azure depolama](https://docs.microsoft.com/azure/storage/storage-security-guide)'ya bağlanabilir.
+Güvenlik duvarları oluşturabilir ve güvenilen istemcileriniz için bir IP adresi aralığı tanımlayabilirsiniz. Bir IP adresi aralığı ile yalnızca tanımlı aralıkta bir IP adresi olan istemciler [Azure depolama](../../storage/common/storage-security-guide.md)'ya bağlanabilir.
 
 IP depolama verileri yetkisiz kullanıcılardan, IP depolama alanına adanmış veya adanmış bir trafik tüneli ayırmak için kullanılan bir ağ mekanizması aracılığıyla korunabilir.
 
@@ -233,23 +233,23 @@ Azure, verileri korumak için aşağıdaki şifreleme türlerini sunar:
 #### <a name="encryption-in-transit"></a>Aktarım sırasında şifreleme
 Aktarım sırasında şifreleme, ağlar arasında iletilirken verilerin korunmasında bir mekanizmadır. Azure depolama ile, aşağıdakileri kullanarak verileri güvenli hale getirebilirsiniz:
 
--   Azure depolama içine veya dışına veri aktarırken HTTPS gibi [Aktarım düzeyi şifreleme](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-in-transit).
+-   Azure depolama içine veya dışına veri aktarırken HTTPS gibi [Aktarım düzeyi şifreleme](../../storage/common/storage-security-guide.md).
 
 -   Azure dosya paylaşımları için SMB 3,0 Şifrelemesi gibi bir [hat şifreleme](../../storage/common/storage-security-guide.md#using-encryption-during-transit-with-azure-file-shares).
 
--   Depolama alanına aktarılmadan önce verileri şifrelemek ve depolama alanı dışına aktarıldıktan sonra verilerin şifresini çözmek için [istemci tarafı şifreleme](https://docs.microsoft.com/azure/storage/storage-security-guide#using-client-side-encryption-to-secure-data-that-you-send-to-storage).
+-   Depolama alanına aktarılmadan önce verileri şifrelemek ve depolama alanı dışına aktarıldıktan sonra verilerin şifresini çözmek için [istemci tarafı şifreleme](../../storage/common/storage-security-guide.md).
 
 #### <a name="encryption-at-rest"></a>Bekleyen şifreleme
-Birçok kuruluş için, [bekleyen veri şifreleme](https://docs.microsoft.com/azure/security/fundamentals/isolation-choices) , veri gizliliği, uyumluluk ve veri egemenlik 'e yönelik zorunlu bir adımdır. "Bekleyen" veri şifrelemesini sağlayan üç Azure özelliği vardır:
+Birçok kuruluş için, [bekleyen veri şifreleme](isolation-choices.md) , veri gizliliği, uyumluluk ve veri egemenlik 'e yönelik zorunlu bir adımdır. "Bekleyen" veri şifrelemesini sağlayan üç Azure özelliği vardır:
 
--   [Depolama hizmeti şifrelemesi](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-at-rest) , depolama hizmetinin verileri Azure depolama 'ya yazarken otomatik olarak şifrelemesine olanak tanır.
+-   [Depolama hizmeti şifrelemesi](../../storage/common/storage-security-guide.md) , depolama hizmetinin verileri Azure depolama 'ya yazarken otomatik olarak şifrelemesine olanak tanır.
 
--   [İstemci tarafı şifreleme](https://docs.microsoft.com/azure/storage/storage-security-guide#client-side-encryption) , bekleyen şifreleme özelliğini de sağlar.
+-   [İstemci tarafı şifreleme](../../storage/common/storage-security-guide.md) , bekleyen şifreleme özelliğini de sağlar.
 
--   [Azure disk şifrelemesi](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) , bir IaaS sanal makinesi tarafından kullanılan işletim sistemi disklerini ve veri disklerini şifrelemenizi sağlar.
+-   [Azure disk şifrelemesi](../azure-security-disk-encryption-overview.md) , bir IaaS sanal makinesi tarafından kullanılan işletim sistemi disklerini ve veri disklerini şifrelemenizi sağlar.
 
 #### <a name="azure-disk-encryption"></a>Azure Disk Şifrelemesi
-Sanal makineler için [Azure disk şifrelemesi](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) (VM 'ler), [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)DENETLEDIĞINIZ anahtarlar ve ilkelerle VM disklerini (önyükleme ve veri diskleri dahil) şifreleyerek kurumsal güvenlik ve uyumluluk gereksinimlerini sağlamanıza yardımcı olur.
+Sanal makineler için [Azure disk şifrelemesi](../azure-security-disk-encryption-overview.md) (VM 'ler), [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)DENETLEDIĞINIZ anahtarlar ve ilkelerle VM disklerini (önyükleme ve veri diskleri dahil) şifreleyerek kurumsal güvenlik ve uyumluluk gereksinimlerini sağlamanıza yardımcı olur.
 
 Windows için disk şifreleme çözümü, [Microsoft BitLocker Sürücü Şifrelemesi](https://technet.microsoft.com/library/cc732774.aspx)tabanlıdır ve Linux çözümü [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt)' i temel alır.
 
@@ -293,7 +293,7 @@ SQL Veritabanı, piyasa lideri Microsoft SQL Server altyapısını temel alan ve
 
 ### <a name="sql-azure-application-model"></a>SQL Azure uygulama modeli
 
-[Microsoft SQL Azure](https://docs.microsoft.com/azure/sql-database/sql-database-get-started) Veritabanı, SQL Server teknolojileri üzerinde oluşturulmuş bulut tabanlı bir ilişkisel veritabanı hizmetidir. Microsoft tarafından bulutta barındırılan, yüksek oranda kullanılabilir, ölçeklenebilir, çok kiracılı bir veritabanı hizmeti sağlar.
+[Microsoft SQL Azure](../../sql-database/sql-database-single-database-get-started.md) Veritabanı, SQL Server teknolojileri üzerinde oluşturulmuş bulut tabanlı bir ilişkisel veritabanı hizmetidir. Microsoft tarafından bulutta barındırılan, yüksek oranda kullanılabilir, ölçeklenebilir, çok kiracılı bir veritabanı hizmeti sağlar.
 
 Bir uygulama perspektifinden SQL Azure aşağıdaki hiyerarşiyi sağlar: Her düzey aşağıda bir-çok düzeyi kapsama sahiptir.
 
@@ -344,9 +344,9 @@ Azure dağıtımında birden çok ağ yalıtımı katmanı vardır. Aşağıdaki
 
 ![Ağ yalıtımı](./media/isolation-choices/azure-isolation-fig13.png)
 
-**Trafik yalıtımı:** [Sanal ağ](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) , Azure platformunda trafik yalıtımı sınırıdır. Tek bir sanal ağdaki sanal makineler (VM), aynı müşteri tarafından her iki sanal ağ da oluşturulsa bile, farklı bir sanal ağdaki VM 'Ler ile doğrudan iletişim kuramaz. Yalıtım, bir sanal ağ içinde müşteri VM 'lerinin ve iletişimin özel kalmasını sağlayan kritik bir özelliktir.
+**Trafik yalıtımı:** [Sanal ağ](../../virtual-network/virtual-networks-overview.md) , Azure platformunda trafik yalıtımı sınırıdır. Tek bir sanal ağdaki sanal makineler (VM), aynı müşteri tarafından her iki sanal ağ da oluşturulsa bile, farklı bir sanal ağdaki VM 'Ler ile doğrudan iletişim kuramaz. Yalıtım, bir sanal ağ içinde müşteri VM 'lerinin ve iletişimin özel kalmasını sağlayan kritik bir özelliktir.
 
-[Alt ağ](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) , IP aralığına göre sanal ağ ile ek bir yalıtım katmanı sunar. Sanal ağdaki IP adresleri, bir sanal ağı kuruluş ve güvenlik için birden çok alt ağa bölebilirsiniz. Bir sanal ağ içindeki alt ağlara (aynı veya farklı) dağıtılan VM'ler ve PaaS rolü örnekleri, ek bir yapılandırma gerektirmeden birbirleriyle iletişim kurabilir. Ayrıca, NSG erişim denetim listesi 'nde (ACL) yapılandırılan kurallara göre bir VM örneğine ağ trafiğine izin vermek veya reddetmek için [ağ güvenlik grubu (NSG 'ler)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) yapılandırabilirsiniz. NSG'ler alt ağlarla veya bu alt ağların içindeki tekil VM örnekleriyle ilişkili olabilir. NSG bir alt ağ ile ilişkili olduğunda ACL kuralları bu alt ağdaki tüm VM örnekleri için geçerli olur.
+[Alt ağ](../../virtual-network/virtual-networks-overview.md) , IP aralığına göre sanal ağ ile ek bir yalıtım katmanı sunar. Sanal ağdaki IP adresleri, bir sanal ağı kuruluş ve güvenlik için birden çok alt ağa bölebilirsiniz. Bir sanal ağ içindeki alt ağlara (aynı veya farklı) dağıtılan VM'ler ve PaaS rolü örnekleri, ek bir yapılandırma gerektirmeden birbirleriyle iletişim kurabilir. Ayrıca, NSG erişim denetim listesi 'nde (ACL) yapılandırılan kurallara göre bir VM örneğine ağ trafiğine izin vermek veya reddetmek için [ağ güvenlik grubu (NSG 'ler)](../../virtual-network/virtual-networks-overview.md) yapılandırabilirsiniz. NSG'ler alt ağlarla veya bu alt ağların içindeki tekil VM örnekleriyle ilişkili olabilir. NSG bir alt ağ ile ilişkili olduğunda ACL kuralları bu alt ağdaki tüm VM örnekleri için geçerli olur.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 

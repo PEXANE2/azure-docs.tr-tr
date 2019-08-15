@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2019
 ms.author: barclayn
-ms.openlocfilehash: 46850ad430aa5fb8ad25a71515bdd640855350c2
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 371c3b9fde17bba33fb6f2526be68fe89aec6b01
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727253"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934702"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure kimlik yönetimi ve erişim denetimi en iyi güvenlik uygulamaları
 Bu makalede, bir Azure kimlik yönetimi ve erişim denetimi güvenliği en iyi yöntemleri koleksiyonu ele alınmaktadır. Bu en iyi uygulamalar, [Azure AD](../../active-directory/fundamentals/active-directory-whatis.md) ile deneyimimizden ve bizim gibi müşterilerin deneyimlerinden türetilir.
@@ -51,7 +51,7 @@ Bu makalede ele alınan Azure kimlik yönetimi ve erişim denetimi güvenlik en 
 
 ## <a name="treat-identity-as-the-primary-security-perimeter"></a>Kimliği birincil güvenlik çevre birimi olarak değerlendir
 
-Çok sayıda kimliği, güvenliğin güvenliği için birincil çevre olarak kabul etmeyi düşünün. Bu, ağ güvenliğine ilişkin geleneksel odadan bir kaydırmadır. Ağ duvarlar daha fazla bilgi edinmeleri ve bu çevre savunması, KCG [cihazlarının ve](https://aka.ms/byodcg) bulut uygulamalarının açılımına daha önce olduğu kadar etkili olamaz.
+Çok sayıda kimliği, güvenliğin güvenliği için birincil çevre olarak kabul etmeyi düşünün. Bu, ağ güvenliğine ilişkin geleneksel odadan bir kaydırmadır. Ağ duvarlar daha fazla bilgi edinmeleri ve bu çevre savunması, KCG cihazlarının ve bulut uygulamalarının açılımına daha önce [](https://aka.ms/byodcg) olduğu kadar etkili olamaz.
 
 [Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) , kimlik ve erişim yönetimi için Azure çözümüdür. Azure AD, Microsoft 'tan çok kiracılı, bulut tabanlı bir dizin ve kimlik yönetimi hizmetidir. Temel Dizin Hizmetleri, uygulama erişim yönetimi ve kimlik korumasını tek bir çözümde birleştirir.
 
@@ -84,8 +84,8 @@ Daha fazla bilgi için bkz. [Azure AD Connect eşitleme ile parola karması eşi
 **Ayrıntı**: Kimlik doğrulamasını desteklemek için doğru özellikleri kullanın:
 
   - Çalışanlar için Azure AD
-  - Konuk kullanıcılar ve dış iş ortakları için [Azure AD B2B](https://docs.microsoft.com/azure/active-directory/b2b/)
-  - Uygulamalarınızın, uygulamalarınızı kullandıklarında, oturum açma ve profillerini yönetme şeklini denetlemek için [Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/)
+  - Konuk kullanıcılar ve dış iş ortakları için [Azure AD B2B](../../active-directory/b2b/index.yml)
+  - Uygulamalarınızın, uygulamalarınızı kullandıklarında, oturum açma ve profillerini yönetme şeklini denetlemek için [Azure AD B2C](../../active-directory-b2c/index.yml)
 
 Şirket içi kimliklerini bulut kimliğiyle tümleştirmeyin kuruluşlar, hesapların yönetiminde daha fazla yüke neden olabilir. Bu ek yük, hataların ve güvenlik ihlallerinin olasılığını artırır.
 

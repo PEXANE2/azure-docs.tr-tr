@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: dacurwin
-ms.openlocfilehash: 4ce6ef67c24bd623a4162329442693ed1628dae2
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 7e7312f942103125217c1f61ae8fe8007a49529b
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639871"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954756"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Kurtarma Hizmetleri kasalarını izleme ve yönetme
 
@@ -175,9 +175,9 @@ Sanal makinelerin listesi yardımcı verilere sahiptir: ilişkili kaynak grubu, 
 
 Kasa panosundaki **yedekleme işleri** kutucuğu, son 24 saat içinde sürmekte olan veya başarısız olan işlerin sayısını gösterir. Kutucuk, yedekleme Işleri menüsüne bir göz atmak sağlar.
 
-![Ayarlardan öğeleri Yedekle](./media/backup-azure-manage-windows-server/backup-jobs-tile.png)
+![Öğeleri ayarlardan yedekleme](./media/backup-azure-manage-windows-server/backup-jobs-tile.png)
 
-İşlerle ilgili ek ayrıntıları görmek için **devam** ' a **tıklayın veya bu** durum için filtrelenmiş yedekleme işleri menüsünü açamadı.
+İşlerle ilgili ek ayrıntıları görmek için **devam** ' a tıklayın veya bu durum için filtrelenmiş yedekleme işleri menüsünü açamadı.
 
 ### <a name="backup-jobs-menu"></a>Yedekleme işleri menüsü
 
@@ -185,11 +185,11 @@ Kasa panosundaki **yedekleme işleri** kutucuğu, son 24 saat içinde sürmekte 
 
 Yedekleme Işleri menüsünü açmak için kasanın ana menüsünde **yedekleme işleri**' ne tıklayın.
 
-![Ayarlardan öğeleri Yedekle](./media/backup-azure-manage-windows-server/backup-jobs-menu-item.png)
+![Öğeleri ayarlardan yedekleme](./media/backup-azure-manage-windows-server/backup-jobs-menu-item.png)
 
 Yedekleme işlerinin listesi açılır.
 
-![Ayarlardan öğeleri Yedekle](./media/backup-azure-manage-windows-server/backup-jobs-list.png)
+![Öğeleri ayarlardan yedekleme](./media/backup-azure-manage-windows-server/backup-jobs-list.png)
 
 Yedekleme Işleri menüsü, son 24 saat için tüm yedekleme türlerinde tüm işlemlerin durumunu gösterir. Filtreleri değiştirmek için **filtreyi** kullanın. Filtreler aşağıdaki bölümlerde açıklanmıştır.
 
@@ -197,11 +197,11 @@ Filtreleri değiştirmek için:
 
 1. Kasa yedekleme Işleri menüsünde **filtre**' ye tıklayın.
 
-   ![Ayarlardan öğeleri Yedekle](./media/backup-azure-manage-windows-server/vault-backup-job-menu-filter.png)
+   ![Öğeleri ayarlardan yedekleme](./media/backup-azure-manage-windows-server/vault-backup-job-menu-filter.png)
 
     Filtre menüsü açılır.
 
-   ![Ayarlardan öğeleri Yedekle](./media/backup-azure-manage-windows-server/filter-menu-backup-jobs.png)
+   ![Öğeleri ayarlardan yedekleme](./media/backup-azure-manage-windows-server/filter-menu-backup-jobs.png)
 
 2. Filtre ayarlarını seçin ve **bitti**' ye tıklayın. Filtrelenmiş liste, yeni ayarlara göre yenilenir.
 

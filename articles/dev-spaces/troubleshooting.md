@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Azure’da kapsayıcılar ve mikro hizmetlerle hızlı Kubernetes geliştirme
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
-ms.openlocfilehash: 2434507ac89d631bb96ae9633403075801879a37
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 6ab2e0866c4e6c5cc8f89cb490504f6ca6a076fc
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277412"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019639"
 ---
 # <a name="troubleshooting-guide"></a>Sorun giderme kılavuzu
 
@@ -169,7 +169,7 @@ Bu hata azds.exe yüklü değil veya doğru bir şekilde yapılandırıldığın
 ## <a name="warning-dockerfile-could-not-be-generated-due-to-unsupported-language"></a>Uyarı 'Dockerfile nedeniyle desteklenmeyen dil üretilemedi'
 Azure geliştirme alanları, C# ve Node.js için yerel destek sağlar. Çalıştırdığınızda *azds hazırlığı* bu dillerden birinde yazılan kod içeren bir dizinde Azure geliştirme alanları otomatik olarak uygun bir Dockerfile sizin için oluşturur.
 
-Azure Dev Spaces başka dillerde yazılmış kodla kullanmaya devam edebilirsiniz, ancak ilk kez azları çalıştırmadan önce Dockerfile 'ı el ile oluşturmanız gerekir  .
+Azure Dev Spaces başka dillerde yazılmış kodla kullanmaya devam edebilirsiniz, ancak ilk kez azları çalıştırmadan önce Dockerfile 'ı el ile oluşturmanız gerekir .
 
 ### <a name="try"></a>Deneyin:
 Uygulamanız, Azure Dev Spaces yerel olarak desteklenmeyen bir dilde yazılmışsa, kodunuzu çalıştıran bir kapsayıcı görüntüsü oluşturmak için uygun bir Dockerfile sağlamanız gerekir. Docker, Dockerfiles ve gereksinimlerinize uygun bir Dockerfile başvurusu yazmanıza yardımcı olabilecek bir [dockerfile başvurusu](https://docs.docker.com/engine/reference/builder/) [yazmak için en iyi yöntemlerin bir listesini](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/) sağlar.
@@ -311,7 +311,7 @@ Aynı AKS kümesinde hem HELI komutları hem de dev Spaces komutlarının kullan
 AKS kümenizde bir ad alanı üzerinde geliştirme alanları etkinleştirdiğinizde, ek bir kapsayıcı olarak adlandırılan _mindaro proxy_ her biri, ad alanı içinde çalışan pod'ların yüklenir. Bu kapsayıcı Pod 'daki hizmetlere yapılan çağrıları karşılar ve bu, dev Spaces 'ın takım geliştirme özelliklerine integral olur. Ancak, bu FID 'ler üzerinde çalışan belirli hizmetlerden herhangi bir engel olabilir. Redde için Azure önbelleği çalıştıran bir pod 'nin, birincil/ikincil iletişimde bağlantı hatalarına ve hatalara yol açmasından dolayı, bu bir hata oluşması bilinmektedir.
 
 ### <a name="try"></a>Deneyin:
-Etkilenen Pod 'yi, geliştirme alanları etkin olmayan küme içindeki bir ad alanına taşıyabilirsiniz  . Uygulamanızın geri kalanı, dev Spaces özellikli bir ad alanı içinde çalışmaya devam edebilir. Geliştirme alanları yüklemez _mindaro proxy_ kapsayıcı geliştirme olmayan alanları içinde etkin ad alanları.
+Etkilenen Pod 'yi, geliştirme alanları etkin olmayan küme içindeki bir ad alanına taşıyabilirsiniz . Uygulamanızın geri kalanı, dev Spaces özellikli bir ad alanı içinde çalışmaya devam edebilir. Geliştirme alanları yüklemez _mindaro proxy_ kapsayıcı geliştirme olmayan alanları içinde etkin ad alanları.
 
 ## <a name="azure-dev-spaces-doesnt-seem-to-use-my-existing-dockerfile-to-build-a-container"></a>Azure geliştirme alanları bir kapsayıcı oluşturmak için var olan my Dockerfile kullanmak gibi görünüyor
 
@@ -419,7 +419,7 @@ Linux 'lerin bir Windows düğümünde çalıştırılmak üzere zamanlanmadığ
 
 ### <a name="reason"></a>Reason
 
-Azure dev Spaces, aks kümenizde bir denetleyici oluşturamadı, çünkü Pod 'yi zamanlamak için serbest *bir durumda olmayan* bir düğüm bulunamıyor. Azure Dev Spaces, kullanım sürelerinin toleranlarını belirtmeden zamanlamaya izin veren, *Ready* durumunda en az bir Linux düğümü gerektirir.
+Azure dev Spaces, aks kümenizde bir denetleyici oluşturamadı, çünkü Pod 'yi zamanlamak için serbest bir durumda olmayan bir düğüm bulunamıyor. Azure Dev Spaces, kullanım sürelerinin toleranlarını belirtmeden zamanlamaya izin veren, *Ready* durumunda en az bir Linux düğümü gerektirir.
 
 ### <a name="try"></a>Deneme
 En az bir Linux düğümünün tolerans belirtmeden zamanlamalara izin verdiğinden emin olmak için AKS kümenizde [taınt yapılandırmanızı güncelleştirin](../aks/operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations) . Ayrıca, tolerans belirtmeden düğüm zamanlamaya izin veren en az bir Linux düğümünün, *Ready* durumunda olduğundan emin olun. Düğümünüz, *hazırlık* durumuna ulaşmak uzun sürüyorsa, düğümünüz yeniden başlatmayı deneyebilirsiniz.
@@ -445,7 +445,14 @@ azure-cli                         2.0.60 *
 
 ### <a name="reason"></a>Reason
 
-Bir hizmeti bir geliştirme alanında çalıştırdığınızda, bu hizmetin Pod 'ı, [izleme için ek kapsayıcılarla birlikte](how-dev-spaces-works.md#prepare-your-aks-cluster)eklenir. Bu kapsayıcıların, pod için yatay Pod otomatik Scaler 'ın devre dışı bırakılmasına neden olan kaynak istekleri veya limitleri tanımlı değildir.
+Bir hizmeti bir geliştirme alanında çalıştırdığınızda, bu hizmetin Pod 'ı, [izleme için ek kapsayıcılarla birlikte](how-dev-spaces-works.md#prepare-your-aks-cluster) eklenir ve pod içindeki tüm kapsayıcılar, yatay Pod otomatik ölçeklendirme için kaynak limitlerinin ve isteklerin ayarlanmış olması gerekir. 
+
+
+Pod belirtilerinize `azds.io/proxy-resources` ek açıklama eklenerek, eklenen kapsayıcı (devspaces-proxy) için kaynak istekleri ve sınırları uygulanabilir. Değer, proxy için kapsayıcı belirtiminin kaynaklar bölümünü temsil eden bir JSON nesnesi olarak ayarlanmalıdır.
 
 ### <a name="try"></a>Deneme
-Geliştirme alanları etkin olmayan bir ad alanında yatay Pod otomatik Scaler öğesini çalıştırın.
+
+Pod belirtimde uygulanacak bir proxy kaynakları ek açıklamasına örnek aşağıda verilmiştir.
+```
+azds.io/proxy-resources: "{\"Limits\": {\"cpu\": \"300m\",\"memory\": \"400Mi\"},\"Requests\": {\"cpu\": \"150m\",\"memory\": \"200Mi\"}}"
+```

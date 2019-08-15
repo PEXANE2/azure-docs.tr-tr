@@ -8,12 +8,12 @@ ms.date: 02/07/2019
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: rugopala
-ms.openlocfilehash: 554a77b65b1baab980d765c69a5bffaeacb483d9
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 850d580d4eb1ca41932a28005d3375ced709db60
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855412"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016386"
 ---
 # <a name="upgrade-your-big-data-analytics-solutions-from-azure-data-lake-storage-gen1-to-azure-data-lake-storage-gen2"></a>Büyük veri analizi Çözümlerinizi Azure Data Lake Storage 1. Azure Data Lake Storage 2. ' dan yükseltin
 
@@ -82,7 +82,7 @@ Bu bölümde, Data Lake depolama 2. nesil'deki şu anda kullanılabilir hangi Da
 | |Paralel analiz iş yükleri için iyileştirilmiş performans. Yüksek aktarım hızı ve IOPS. | Paralel analiz iş yükleri için iyileştirilmiş performans. Yüksek aktarım hızı ve IOPS. | *Kullanıma sunuldu* |
 | Sanal ağ (VNet) desteği  | [Sanal ağ tümleştirmesini kullanma](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-network-security)  | [Azure depolama için hizmet uç noktası kullanma](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) | *Kullanıma sunuldu* |
 | Boyutu sınırları | Hesap boyutları, dosya boyutları veya dosya sayısı üst sınırı yoktur | Sınırsız hesap boyutları veya dosya sayısı. Dosya boyutu 5 TB ile sınırlıdır. | *Kullanıma sunuldu*|
-| Coğrafi yedeklilik| Yerel olarak yedekli (LRS) | Yerel olarak yedekli (LRS) bölgesel olarak yedekli (ZRS) genel olarak yedekli (GRS) okuma erişimi genel olarak yedekli (RA-GRS) bakın [burada](https://docs.microsoft.com/azure/storage/common/storage-redundancy) daha fazla bilgi için| *Kullanıma sunuldu* |
+| Coğrafi yedeklilik| Yerel olarak yedekli (LRS) | Yerel olarak yedekli (LRS) bölge yedekli (ZRS) coğrafi olarak yedekli (GRS) Okuma Erişimli Coğrafi olarak yedekli (RA-GRS) daha fazla bilgi için [buraya](https://docs.microsoft.com/azure/storage/common/storage-redundancy) bakın| *Kullanıma sunuldu* |
 | Bölgesel kullanılabilirlik | Bkz: [burada](https://azure.microsoft.com/regions/) | Tüm [Azure bölgeleri](https://azure.microsoft.com/global-infrastructure/regions/)                                                                                                                                                                                                                                                                                                                                       | *Kullanıma sunuldu*                                                                                                                           |
 | Fiyat                                       | Bkz: [fiyatlandırması](https://azure.microsoft.com/pricing/details/data-lake-store/)                                                                            | Bkz: [fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/data-lake/)                                                                                                                                                                                                                                                                                                                                         |                                                                                                                                           |
 | Kullanılabilirlik Hizmet Düzeyi Anlaşması                            | [SLA bakın](https://azure.microsoft.com/support/legal/sla/data-lake-store/v1_0/)                                                                   | [SLA bakın](https://azure.microsoft.com/support/legal/sla/storage/v1_3/)                                                                                                                                                                                                                                                                                                                                                | *Kullanıma sunuldu*                                                                                                                           |

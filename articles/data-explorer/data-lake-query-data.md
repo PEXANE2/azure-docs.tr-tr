@@ -7,12 +7,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: cd53e1386d9d6f2a38beb1661554c8cc9116169d
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: ef4dfc4370c71eac1978a6f3535b571a5e6009b5
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494858"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950132"
 ---
 # <a name="query-data-in-azure-data-lake-using-azure-data-explorer-preview"></a>Azure Data Lake Azure Veri Gezgini kullanarak verileri sorgulama (Önizleme)
 
@@ -45,8 +45,11 @@ Azure Veri Gezgini, Azure Blob depolama ve Azure Data Lake Storage 2. tümleşti
     dataformat=csv (h@'http://storageaccount.blob.core.windows.net/container1;secretKey') 
     with (compressed = true)  
     ```
-
-    Bu sorgu günlük bölümleri oluşturur *kapsayıcı1/yyyy/aa/gg/all_exported_blobs. csv*. Daha ayrıntılı bölümlendirme ile artan performans beklenir. Örneğin, yukarıdaki gibi günlük bölümlerle dış tablolar üzerinde sorgular, aylık bölümlenmiş tablolarla bu sorgulardan daha iyi performansa sahip olur.
+    
+    > [!NOTE]
+    > * Daha ayrıntılı bölümlendirme ile artan performans beklenir. Örneğin, günlük bölümleri olan dış tablolar üzerinde sorgular, aylık bölümlenmiş tablolarla bu sorgulardan daha iyi performansa sahip olacaktır.
+    > * Bölümler içeren bir dış tablo tanımladığınızda, depolama yapısının aynı olması beklenir.
+Örneğin, tablo YYYY/AA/GG biçiminde bir tarih saat bölümüyle tanımlanmışsa (varsayılan), URI depolama dosya yolu *kapsayıcı1/yyyy/aa/gg/all_exported_blobs*olmalıdır. 
 
 1. Dış tablo, Web Kullanıcı arabiriminin sol bölmesinde görünür
 

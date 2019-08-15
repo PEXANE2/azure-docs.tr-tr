@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 21b7c4e17d976a0a4099a926823f51eab1dba98d
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 80adc98255cfc9145d583ac775bbc490d599234e
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879069"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976821"
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Azure Veri Kataloğu geliştirici kavramları
 Microsoft **Azure Veri Kataloğu** , veri kaynağı bulma ve veri kaynağı meta verilerini alma için yetenekler sağlayan, tam olarak yönetilen bir bulut hizmetidir. Geliştiriciler hizmeti REST API 'Leri aracılığıyla kullanabilir. Hizmette uygulanan kavramların anlaşılmasına, geliştiricilerin **Azure Veri Kataloğu**ile başarıyla tümleştirileceği önemli bir öneme sahiptir.
@@ -19,7 +19,7 @@ Microsoft **Azure Veri Kataloğu** , veri kaynağı bulma ve veri kaynağı meta
 ## <a name="key-concepts"></a>Önemli kavramlar
 **Azure Veri Kataloğu** kavramsal modeli, dört temel kavramı temel alır: **Katalog**, **Kullanıcılar**, **varlıklar**ve **ek açıklamalar**.
 
-![Veri Kataloğu kavramları](./media/data-catalog-developer-concepts/concept2.png)
+![Azure Veri Kataloğu kavramsal model çizimi](./media/data-catalog-developer-concepts/concept2.png)
 
 *Şekil 1-Azure Veri Kataloğu Basitleştirilmiş kavramsal model*
 
@@ -76,7 +76,7 @@ UX daha sonra birleşiminin nasıl görüntüleneceğini seçebilir. Görüntül
 Temel kavramlar bölümünde sunulan **Azure Veri Kataloğu** nesne modeli, varlıklar veya ek açıklamalar içerebilen öğeleri içerir. Öğelerin özellikleri vardır, bu, isteğe bağlı veya gerekli olabilir. Bazı özellikler tüm öğeler için geçerlidir. Bazı özellikler tüm varlıklar için geçerlidir. Bazı özellikler yalnızca belirli varlık türlerine uygulanır.
 
 ### <a name="system-properties"></a>Sistem özellikleri
-<table><tr><td><b>Özellik adı</b></td><td><b>Veri türü</b></td><td><b>Yorumlar</b></td></tr><tr><td>timestamp</td><td>Datetime</td><td>Öğenin son değiştirildiği zaman. Bu alan, bir öğe eklendiğinde ve bir öğe her güncelleştirildiği zaman sunucu tarafından oluşturulur. Bu özelliğin değeri, yayımlama işlemleri girişi sırasında yok sayılır.</td></tr><tr><td>id</td><td>Uri</td><td>Öğenin mutlak URL 'si (salt okunurdur). Bu öğe için benzersiz adreslenebilir URI 'dir.  Bu özelliğin değeri, yayımlama işlemleri girişi sırasında yok sayılır.</td></tr><tr><td>türü</td><td>Dize</td><td>Varlığın türü (salt okunurdur).</td></tr><tr><td>etag</td><td>Dize</td><td>Katalogdaki öğeleri güncelleştiren işlemler gerçekleştirilirken iyimser eşzamanlılık denetimi için kullanılabilen öğenin sürümüne karşılık gelen bir dize. "*", herhangi bir değeri eşleştirmek için kullanılabilir.</td></tr></table>
+<table><tr><td><b>Özellik adı</b></td><td><b>Veri türü</b></td><td><b>Yorumlar</b></td></tr><tr><td>timestamp</td><td>DateTime</td><td>Öğenin son değiştirildiği zaman. Bu alan, bir öğe eklendiğinde ve bir öğe her güncelleştirildiği zaman sunucu tarafından oluşturulur. Bu özelliğin değeri, yayımlama işlemleri girişi sırasında yok sayılır.</td></tr><tr><td>id</td><td>Uri</td><td>Öğenin mutlak URL 'si (salt okunurdur). Bu öğe için benzersiz adreslenebilir URI 'dir.  Bu özelliğin değeri, yayımlama işlemleri girişi sırasında yok sayılır.</td></tr><tr><td>türü</td><td>Dize</td><td>Varlığın türü (salt okunurdur).</td></tr><tr><td>etag</td><td>Dize</td><td>Katalogdaki öğeleri güncelleştiren işlemler gerçekleştirilirken iyimser eşzamanlılık denetimi için kullanılabilen öğenin sürümüne karşılık gelen bir dize. "*", herhangi bir değeri eşleştirmek için kullanılabilir.</td></tr></table>
 
 ### <a name="common-properties"></a>Ortak özellikler
 Bu özellikler tüm kök varlık türleri ve tüm ek açıklama türleri için geçerlidir.

@@ -10,19 +10,19 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 08/05/2019
 ms.author: assafi
-ms.openlocfilehash: 4373cd8da8d302722c5edbe3ee716eec96e6419f
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: deb8c742161d59c8926c1ec139978d15b891bd4a
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881057"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019485"
 ---
 # <a name="quickstart-text-analytics-client-library-for-net"></a>Hızlı Başlangıç: .NET için metin analizi istemci kitaplığı
 <a name="HOLTop"></a>
 
 .NET için Metin Analizi istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin. 
 
-Şunları yapmak için Python için Metin Analizi istemci kitaplığını kullanın:
+.NET için Metin Analizi istemci kitaplığı 'nı kullanarak şunları yapın:
 
 * Yaklaşım analizi
 * Dil algılama
@@ -97,10 +97,16 @@ Uygulamanın `Main` yönteminde, kaynağınızın Azure uç noktası ve anahtar�
 static void Main(string[] args)
 {
     // replace this endpoint with the correct one for your Azure resource. 
-    string endpoint = $"https://westus2.api.cognitive.microsoft.com";
+    string endpoint = $"https://westus.api.cognitive.microsoft.com";
     //This sample assumes you have created an environment variable for your key
     string key = Environment.GetEnvironmentVariable("TEXT_ANALYTICS_SUBSCRIPTION_KEY");
-    ITextAnalyticsClient client = new TextAnalyticsClient(new ApiKeyServiceClientCredentials(key));
+
+    var credentials = new ApiKeyServiceClientCredentials(key);
+    TextAnalyticsClient client = new TextAnalyticsClient(credentials)
+    {
+        Endpoint = endpoint
+    };
+
     Console.OutputEncoding = System.Text.Encoding.UTF8;
     SentimentAnalysisExample(client);
     // languageDetectionExample(client);
@@ -159,10 +165,14 @@ class ApiKeyServiceClientCredentials : ServiceClientCredentials
 }
 ```
 
-`main()` Yönteminde, istemcisini örneğini oluşturun.
+`main()` Yönteminde, anahtar ve uç noktanızla istemci örneğini oluşturun.
 
 ```csharp
-ITextAnalyticsClient client = new TextAnalyticsClient(new ApiKeyServiceClientCredentials(key));
+var credentials = new ApiKeyServiceClientCredentials(key);
+TextAnalyticsClient client = new TextAnalyticsClient(credentials)
+{
+    Endpoint = endpoint
+};
 ```
 
 ## <a name="sentiment-analysis"></a>Yaklaşım analizi
@@ -172,7 +182,7 @@ Daha önce oluşturduğunuz istemciyi alan `SentimentAnalysisExample()` çağrı
 0 ' a yakın olan bir puan negatif bir yaklaşımı gösterir, 1 ' e yakın bir puan pozitif bir yaklaşımı gösterir.
 
 ```csharp
-static void SentimentAnalysisExample(ITextAnalyticsClient client){
+static void SentimentAnalysisExample(TextAnalyticsClient client){
     var result = client.Sentiment("I had the best day of my life.", "en");
     Console.WriteLine($"Sentiment Score: {result.Score:0.00}");
 }
@@ -192,7 +202,7 @@ Daha önce oluşturduğunuz istemciyi alıp `languageDetectionExample()` [Detect
 > Bazı durumlarda, girişi temel alarak dilleri ayırt etmek zor olabilir. `countryHint` Parametresini 2 harfli bir ülke kodu belirtmek için kullanabilirsiniz. Varsayılan olarak, API varsayılan Countryipucu olarak "US" kullanıyor, bu davranışı kaldırmak için bu değeri boş dize `countryHint = ""` olarak ayarlayarak bu parametreyi sıfırlayabilirsiniz.
 
 ```csharp
-static void languageDetectionExample(ITextAnalyticsClient client){
+static void languageDetectionExample(TextAnalyticsClient client){
     var result = client.DetectLanguage("This is a document written in English.");
     Console.WriteLine($"Language: {result.DetectedLanguages[0].Name}");
 }
@@ -212,7 +222,7 @@ Language: English
 Daha önce oluşturduğunuz istemciyi alan `RecognizeEntitiesExample()` adlı yeni bir işlev oluşturun ve [varlıklarını ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclientextensions.entities?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Language_TextAnalytics_TextAnalyticsClientExtensions_Entities_Microsoft_Azure_CognitiveServices_Language_TextAnalytics_ITextAnalyticsClient_System_String_System_String_System_Nullable_System_Boolean__System_Threading_CancellationToken_) işlevini çağırın. Sonuçlar arasında yineleme yapın. Döndürülen [entitiesresult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.models.entitiesresult?view=azure-dotnet) nesnesi, `Entities` `errorMessage` başarılı olursa ' de algılanan varlıkların listesini içerir ve bunu değildir. Algılanan her varlık için, türünü, alt türünü, Viseı adını (varsa) ve özgün metindeki konumları yazdırın.
 
 ```csharp
-static void entityRecognitionExample(ITextAnalyticsClient client){
+static void entityRecognitionExample(TextAnalyticsClient client){
 
     var result = client.Entities("Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, to develop and sell BASIC interpreters for the Altair 8800.");
     Console.WriteLine("Entities:");

@@ -1,58 +1,58 @@
 ---
-title: Azure anahtar kasası yönetilen depolama hesabı - PowerShell sürümü
-description: Yönetilen depolama hesabı Özelliği Azure anahtar kasası ve Azure depolama hesabınız arasında bir seemless tümleştirme sağlar.
+title: Azure Key Vault yönetilen depolama hesabı-PowerShell sürümü
+description: Yönetilen depolama hesabı özelliği, Azure Key Vault ile Azure depolama hesabı arasında çok daha az bir tümleştirme sağlar.
 ms.topic: conceptual
 ms.service: key-vault
 author: msmbaldwin
 ms.author: mbaldwin
 manager: barbkess
 ms.date: 03/01/2019
-ms.openlocfilehash: 9b6089aa828b5667f100c1a8cbff3e69345e4512
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 708c34347966eee7817ca04e0552dcba233765cb
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66150419"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934507"
 ---
-# <a name="azure-key-vault-managed-storage-account---powershell"></a>Azure anahtar kasası yönetilen depolama hesabı - PowerShell
+# <a name="azure-key-vault-managed-storage-account---powershell"></a>Azure Key Vault yönetilen depolama hesabı-PowerShell
 
 > [!NOTE]
-> [Azure Active Directory (Azure AD) ile Azure depolama tümleştirme şu anda Önizleme aşamasındadır](https://docs.microsoft.com/azure/storage/common/storage-auth-aad). Azure AD kimlik doğrulaması ve yetkilendirme, Azure Key Vault gibi Azure depolama OAuth2 belirteç tabanlı erişim sağlayan kullanmanızı öneririz. Bu, sağlar:
-> - Depolama hesabı kimlik bilgileri yerine bir uygulama veya kullanıcıya kimlik kullanarak istemci uygulamanızın kimlik doğrulaması. 
-> - Kullanım bir [Azure AD kimlik yönetilen](/azure/active-directory/managed-identities-azure-resources/) Azure'da çalıştırırken. Kimlikleri Kaldır hep birlikte istemci kimlik doğrulaması için gereken ve depolama kimlik bilgileri veya uygulamanız ile yönetilir.
-> - Key Vault tarafından da desteklenen, yetkilendirme için rol tabanlı erişim denetimi (RBAC) kullanın.
+> [Azure Active Directory (Azure AD) Ile Azure depolama tümleştirmesi şimdi önizlemededir](../storage/common/storage-auth-aad.md). Azure Key Vault gibi Azure depolama 'ya OAuth2 belirteç tabanlı erişim sağlayan kimlik doğrulama ve yetkilendirme için Azure AD kullanmanızı öneririz. Bu sayede şunları yapabilirsiniz:
+> - Depolama hesabı kimlik bilgileri yerine bir uygulama veya Kullanıcı kimliği kullanarak istemci uygulamanızın kimliğini doğrulayın. 
+> - Azure 'da çalışırken bir [Azure ad yönetilen kimliği](/azure/active-directory/managed-identities-azure-resources/) kullanın. Yönetilen kimlikler, istemci kimlik doğrulaması gereksinimini tamamen kaldırır ve uygulamanızda veya uygulamanızdaki kimlik bilgilerini depolar.
+> - Key Vault tarafından da desteklenen yetkilendirmeyi yönetmek için rol tabanlı Access Control (RBAC) kullanın.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Bir [Azure depolama hesabı](/azure/storage/storage-create-storage-account) bir hesap adı ve anahtar oluşan bir kimlik bilgisi kullanır. Bu anahtar, otomatik olarak oluşturulan ve daha farklı bir şifreleme anahtarı "parola" olarak görev yapar. Key Vault depolayarak bunları olarak bu depolama hesabı anahtarları yönetebilir [Key Vault gizli dizileri](/azure/key-vault/about-keys-secrets-and-certificates#key-vault-secrets). 
+[Azure depolama hesabı](/azure/storage/storage-create-storage-account) , hesap adı ve anahtar içeren bir kimlik bilgisi kullanır. Anahtar otomatik olarak oluşturulur ve şifreleme anahtarının aksine "parola" olarak daha fazla hizmet verir. Key Vault, bu depolama hesabı anahtarlarını [Key Vault gizli](/azure/key-vault/about-keys-secrets-and-certificates#key-vault-secrets)dizileri olarak depolayarak yönetebilir. 
 
 ## <a name="overview"></a>Genel Bakış
 
-Key Vault depolama hesabı özelliği birkaç yönetim işlevlerini sizin adınıza gerçekleştirdiği yönetilen:
+Key Vault yönetilen depolama hesabı özelliği sizin adınıza çeşitli yönetim işlevleri gerçekleştirir:
 
-- Bir Azure depolama hesabı anahtarları listeleri (eşitlemeler).
-- Yeniden oluşturur (döndürür) anahtarlarını düzenli aralıklarla.
-- Depolama hesapları hem de klasik depolama hesapları için anahtarları yönetir.
-- Anahtar değerler hiçbir zaman yanıt arayana döndürülür.
+- Bir Azure depolama hesabı ile anahtarları (eşitlemeler) listeler.
+- Anahtarları düzenli olarak yeniden oluşturur (döndürür).
+- Hem depolama hesapları hem de klasik depolama hesapları için anahtarları yönetir.
+- Anahtar değerleri, çağırana yanıt olarak hiçbir şekilde döndürülmez.
 
-Yönetilen depolama hesabı anahtar özelliğini kullanırken:
+Yönetilen depolama hesabı anahtar özelliğini kullandığınızda:
 
-- **Yalnızca depolama hesap anahtarlarınızı yönetmek Key Vault izin verir.** Key Vault'un işlemlerle engel şekilde kendiniz yönetmek denemeyin.
-- **Depolama hesabı anahtarları birden fazla anahtar kasası nesne tarafından yönetilecek izin verme**.
-- **Depolama hesabı anahtarlarınızı el ile yeniden yoksa**. Key Vault aracılığıyla bunları yeniden öneririz.
+- **Depolama hesabı anahtarlarınızı yalnızca Key Vault yönetmesine izin verin.** Key Vault süreçleriyle karışabileceksiniz, bunları kendiniz yönetmeye çalışmayın.
+- **Depolama hesabı anahtarlarının birden fazla Key Vault nesnesi tarafından yönetilmesine izin verme**.
+- **Depolama hesabı anahtarlarınızı el ile yeniden üretme**. Key Vault aracılığıyla yeniden oluşturmanız önerilir.
 
-Aşağıdaki örnek, depolama hesabı anahtarlarını yönetmek Key Vault kullanmasının nasıl sağlanacağını gösterir.
+Aşağıdaki örnek, depolama hesabı anahtarlarınızı Key Vault nasıl yönetebileceğinizi gösterir.
 
-## <a name="authorize-key-vault-to-access-to-your-storage-account"></a>Key Vault, depolama hesabınıza erişimi yetkilendirin
+## <a name="authorize-key-vault-to-access-to-your-storage-account"></a>Depolama hesabınıza erişmek için Key Vault yetkilendirme
 
 > [!IMPORTANT]
-> Azure AD kiracısı ile kayıtlı her uygulama sağlayan bir  **[hizmet sorumlusu](/azure/active-directory/develop/developer-glossary#service-principal-object)** , uygulama kimliği olarak görev yapar. Hizmet sorumlusunun uygulama kimliği, rol tabanlı erişim denetimi (RBAC) diğer Azure kaynaklarına erişmek için yetki verirken kullanılır. Key Vault Microsoft uygulama olduğundan, tüm Azure AD kiracılarıyla aynı uygulama kimliği, her Azure bulut içinde altında önceden kaydedilir:
-> - Azure kamu bulutunda Azure AD kiracıları kullanmak uygulama kimliği `7e7c393b-45d0-48b1-a35e-2905ddf8183c`.
-> - Azure genel bulutunda ve diğer tüm Azure AD kiracıları kullanmak uygulama kimliği `cfa8b339-82a2-471a-a3c9-0fc0be7a4093`.
+> Bir Azure AD kiracısı, kayıtlı her uygulamayı bir **[hizmet sorumlusu](/azure/active-directory/develop/developer-glossary#service-principal-object)** sağlar ve bu da uygulamanın kimliği olarak işlev görür. Hizmet sorumlusunun uygulama KIMLIĞI, rol tabanlı erişim denetimi (RBAC) aracılığıyla diğer Azure kaynaklarına erişim yetkisi verirken kullanılır. Key Vault bir Microsoft uygulaması olduğundan, her bir Azure bulutu dahilinde aynı uygulama KIMLIĞI altındaki tüm Azure AD kiracılarına önceden kaydedilir:
+> - Azure Kamu bulutundaki Azure AD kiracılar uygulama KIMLIĞINI `7e7c393b-45d0-48b1-a35e-2905ddf8183c`kullanır.
+> - Azure genel bulutundaki Azure AD kiracılar ve tüm diğerleri uygulama KIMLIĞINI `cfa8b339-82a2-471a-a3c9-0fc0be7a4093`kullanır.
 
-Key Vault erişimi ve depolama hesap anahtarlarınızı yönetme önce depolama hesabınıza erişimini yetkilendirmesi gerekecektir. Anahtar kasası uygulama izinleri bulunmalıdır *listesi* ve *yeniden* anahtarları, depolama hesabınız için. Bu izinleri yerleşik RBAC rolü etkinleştirilir [depolama hesabı anahtarı işleci hizmet rolü](/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role). 
+Key Vault depolama hesabı Anahtarlarınıza erişip yönetebilmeniz için depolama hesabınıza erişim yetkisi vermelisiniz. Key Vault uygulama, depolama hesabınıza yönelik anahtarları *listelemek* ve yeniden *oluşturmak* için izinler gerektirir. Bu izinler, yerleşik RBAC rol [depolama hesabı anahtar operatörü hizmeti rolü](/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role)aracılığıyla etkinleştirilir. 
 
-Bu rol, aşağıdaki adımları kullanarak depolama hesabınıza kapsamı sınırlayarak Key Vault hizmet sorumlusuna atayın. Güncelleştirdiğinizden emin olun `$resourceGroupName`, `$storageAccountName`, `$storageAccountKey`, ve `$keyVaultName` betiği çalıştırmadan önce değişkenleri:
+Aşağıdaki adımları kullanarak bu rolü, kapsamı depolama hesabınızla sınırlayan Key Vault hizmet sorumlusuna atayın. Betiği çalıştırmadan önce,, `$resourceGroupName`ve `$storageAccountName` `$keyVaultName` değişkenlerini `$storageAccountKey`güncelleştirdiğinizden emin olun:
 
 ```azurepowershell-interactive
 # TODO: Update with the resource group where your storage account resides, your storage account name, the name of your active storage account key, and your Key Vault instance name
@@ -72,7 +72,7 @@ $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -St
 New-AzRoleAssignment -ApplicationId $keyVaultSpAppId -RoleDefinitionName 'Storage Account Key Operator Service Role' -Scope $storageAccount.Id
 ```
 
-Başarılı bir rol ataması sırasında aşağıdaki örneğe benzer bir çıktı görmeniz gerekir:
+Başarılı rol atamasından sonra, aşağıdaki örneğe benzer bir çıktı görmeniz gerekir:
 
 ```console
 RoleAssignmentId   : /subscriptions/03f0blll-ce69-483a-a092-d06ea46dfb8z/resourceGroups/rgContoso/providers/Microsoft.Storage/storageAccounts/sacontoso/providers/Microsoft.Authorization/roleAssignments/189cblll-12fb-406e-8699-4eef8b2b9ecz
@@ -86,14 +86,14 @@ ObjectType         : ServicePrincipal
 CanDelegate        : False
 ```
 
-Key Vault, depolama hesabınızın rolüne zaten eklenmiş durumunda alırsınız bir *"rol ataması zaten var."* Bir hata oluştu. Rol ataması, Azure portalında depolama hesabı "Erişim denetimi (IAM)" sayfasını kullanarak da doğrulayabilirsiniz.  
+Depolama hesabınızdaki role Key Vault zaten eklendiyse *"rol ataması zaten var."* hatayla. Rol atamasını, Azure portal depolama hesabı "erişim denetimi (ıAM)" sayfasını kullanarak da doğrulayabilirsiniz.  
 
-## <a name="give-your-user-account-permission-to-managed-storage-accounts"></a>Yönetilen depolama hesapları, kullanıcı hesabı izni verin
+## <a name="give-your-user-account-permission-to-managed-storage-accounts"></a>Yönetilen depolama hesaplarına kullanıcı hesabınıza izin verin
 
 >[!TIP] 
-> Azure AD sağlar gibi bir **hizmet sorumlusu** uygulamanın kimliği için bir **kullanıcı asıl** bir kullanıcı kimliği için sağlanan. Kullanıcı asıl ardından Key Vault ile anahtar kasası erişim ilkesi izinleri erişim yetkisi verilebilir.
+> Azure AD, uygulamanın kimliği için bir **hizmet sorumlusu** sağladığından, kullanıcının kimliği için bir **Kullanıcı sorumlusu** sağlanır. Daha sonra Kullanıcı sorumlusuna, Key Vault erişim ilkesi izinleri aracılığıyla Key Vault erişim yetkisi verilebilir.
 
-Aynı PowerShell oturumunda kullanarak, yönetilen depolama hesapları için anahtar kasası erişim ilkesini güncelleştirin. Bu adım, kullanıcı hesabınıza yönetilen depolama hesabı özellikleri eriştiğinden emin olun, depolama hesabı izinleri geçerlidir: 
+Aynı PowerShell oturumunu kullanarak, yönetilen depolama hesapları için Key Vault erişim ilkesini güncelleştirin. Bu adım, Kullanıcı hesabınıza, yönetilen depolama hesabı özelliklerine erişebildiğinizden emin olmak için depolama hesabı izinlerini uygular: 
 
 ```azurepowershell-interactive
 # Give your user principal access to all storage account permissions, on your Key Vault instance
@@ -101,18 +101,18 @@ Aynı PowerShell oturumunda kullanarak, yönetilen depolama hesapları için ana
 Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -UserPrincipalName $azureProfile.Context.Account.Id -PermissionsToStorage get, list, listsas, delete, set, update, regeneratekey, recover, backup, restore, purge
 ```
 
-Depolama hesapları için izinleri Azure portalında depolama hesabı "Erişim ilkeleri" sayfasında kullanılabilir olmadığını unutmayın.
+Depolama hesapları için izinler, Azure portal depolama hesabı "erişim ilkeleri" sayfasında kullanılamaz.
 
-## <a name="add-a-managed-storage-account-to-your-key-vault-instance"></a>Key Vault Örneğinize bir yönetilen depolama hesabı ekleme
+## <a name="add-a-managed-storage-account-to-your-key-vault-instance"></a>Key Vault örneğinize yönetilen bir depolama hesabı ekleyin
 
-Aynı PowerShell oturumunda kullanarak Key Vault Örneğinizde bir yönetilen depolama hesabı oluşturun. `-DisableAutoRegenerateKey` Anahtar depolama hesabı anahtarlarını yeniden değil belirtir.
+Aynı PowerShell oturumunu kullanarak, Key Vault Örneğinizde yönetilen bir depolama hesabı oluşturun. `-DisableAutoRegenerateKey` Anahtar, depolama hesabı anahtarlarını yeniden üretmemelidir.
 
 ```azurepowershell-interactive
 # Add your storage account to your Key Vault's managed storage accounts
 Add-AzKeyVaultManagedStorageAccount -VaultName $keyVaultName -AccountName $storageAccountName -AccountResourceId $storageAccount.Id -ActiveKeyName $storageAccountKey -DisableAutoRegenerateKey
 ```
 
-Hiçbir anahtarını yeniden üretme depolama hesabıyla başarılı eklenmesi sırasında aşağıdaki örneğe benzer bir çıktı görmeniz gerekir:
+Anahtar yeniden oluşturma olmadan depolama hesabının başarılı bir şekilde eklenmesiyle, aşağıdaki örneğe benzer bir çıktı görmeniz gerekir:
 
 ```console
 Id                  : https://kvcontoso.vault.azure.net:443/storage/sacontoso
@@ -128,16 +128,16 @@ Updated             : 11/19/2018 11:54:47 PM
 Tags                : 
 ```
 
-### <a name="enable-key-regeneration"></a>Anahtarı yeniden üretme etkinleştir
+### <a name="enable-key-regeneration"></a>Anahtar yeniden oluşturmayı etkinleştir
 
-Key Vault, depolama hesabı anahtarlarınızı düzenli aralıklarla yeniden oluşturmak istiyorsanız, bir oluşturma süresini ayarlayabilirsiniz. Aşağıdaki örnekte, bir oluşturma süresini üç gün ayarladık. Üç gün sonra Key Vault yeniden 'anahtar1' ve 'anahtar1' active 'anahtar2' anahtarını değiştirme.
+Depolama hesabı anahtarlarınızı düzenli aralıklarla yeniden oluşturmak Key Vault isterseniz, yeniden oluşturma dönemi ayarlayabilirsiniz. Aşağıdaki örnekte, üç günün yeniden oluşturma dönemini ayarlayacağız. Üç gün sonra, Key Vault ' KEY1 ' öğesini yeniden oluşturacak ve etkin anahtarı ' key2 ' iken ' KEY1 ' olarak takas edecek.
 
 ```azurepowershell-interactive
 $regenPeriod = [System.Timespan]::FromDays(3)
 Add-AzKeyVaultManagedStorageAccount -VaultName $keyVaultName -AccountName $storageAccountName -AccountResourceId $storageAccount.Id -ActiveKeyName $storageAccountKey -RegenerationPeriod $regenPeriod
 ```
 
-Depolama hesabı anahtarını yeniden üretme sırasında başarılı eklenmesi için aşağıdaki örneğe benzer bir çıktı görmeniz gerekir:
+Anahtar yeniden oluşturma ile depolama hesabının başarılı bir şekilde eklenmesiyle, aşağıdaki örneğe benzer bir çıktı görmeniz gerekir:
 
 ```console
 Id                  : https://kvcontoso.vault.azure.net:443/storage/sacontoso
@@ -157,4 +157,4 @@ Tags                :
 
 - [Yönetilen depolama hesabı anahtar örnekleri](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=key+vault+storage&type=&language=)
 - [Anahtarlar, gizli diziler ve sertifikalar hakkında](about-keys-secrets-and-certificates.md)
-- [Anahtar kasası PowerShell başvurusu](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)
+- [PowerShell başvurusunu Key Vault](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)

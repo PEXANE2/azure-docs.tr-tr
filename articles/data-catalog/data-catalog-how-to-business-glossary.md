@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 6ecb481245484332221e45b8f27c776291ea532d
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 1065abecb1f0ef57eb13b1ec3f194f07ae01eaee
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736404"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976803"
 ---
 # <a name="set-up-the-business-glossary-for-governed-tagging"></a>Yönetilen etiketleme için iş sözlüğünü ayarlama
 
@@ -36,11 +36,11 @@ Bir kuruluş, veri kataloğu iş sözlüğünü kullanarak, ortak bir iş sözl�
 
 Veri Kataloğu portalının gezinti menüsündeki **Sözlük** seçeneği aracılığıyla iş sözlüğü 'ne erişebilirsiniz.  
 
-![İş sözlüğü 'ne erişme](./media/data-catalog-how-to-business-glossary/01-portal-menu.png)
+![Veri Kataloğu-iş sözlüğü 'ne erişin](./media/data-catalog-how-to-business-glossary/01-portal-menu.png)
 
 Veri Kataloğu yöneticileri ve sözlük yöneticileri rolünün üyeleri iş sözlükte Sözlük terimleri oluşturabilir, düzenleyebilir ve silebilir. Tüm veri kataloğu kullanıcıları terim tanımlarını görüntüleyebilir ve varlıkları sözlük koşullarına göre etiketleyebilir.
 
-![Yeni sözlük terimi ekleme](./media/data-catalog-how-to-business-glossary/02-new-term.png)
+![Veri Kataloğu-yeni bir sözlük terimi ekleyin](./media/data-catalog-how-to-business-glossary/02-new-term.png)
 
 ## <a name="creating-glossary-terms"></a>Sözlük terimleri oluşturma
 

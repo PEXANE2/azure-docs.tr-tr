@@ -5,30 +5,30 @@ services: digital-twins
 author: kingdomofends
 ms.service: digital-twins
 ms.topic: include
-ms.date: 12/28/2018
-ms.author: adgera
+ms.date: 08/12/2019
+ms.author: v-adgera
 ms.custom: include file
-ms.openlocfilehash: e81b8fb06240d566e46ca0b45a0910e014dee329
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: fa88bf7f8db9b4fea63429dbfd18f84ee84ccda1
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67189005"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "69012317"
 ---
-Rol tabanlı erişim denetimi, erişim izinleri ve rolleri yönetmek için bir devralma temelli güvenlik stratejisidir. Bloğun rolleri üst rollerden izinleri devralır. Üst rolden devralınan olmadan izinler de atanabilir. Bir rol gerektiği şekilde özelleştirmek için de atanabilir.
+Rol tabanlı erişim denetimi, erişimi, izinleri ve rolleri yönetmeye yönelik devralma temelli bir güvenlik stratejisidir. Alt roller, üst rollerden izinleri devralınır. İzinler, üst rolden devralınmaksızın da atanabilir. Ayrıca, gerektiğinde bir rolü özelleştirmek için de atanabilir.
 
-Örneğin, bir alanı yöneticisi, belirtilen bir alan için tüm işlemleri çalıştırmak için küresel erişim gerekebilir. Tüm düğümleri altında veya alanı içinde erişim içerir. Cihaz yükleyici yalnızca ihtiyaç duyabilirsiniz *okuma* ve *güncelleştirme* cihazlardan ve sensörlerden izinleri.
+Örneğin, bir alan yöneticisinin belirtilen bir alana yönelik tüm işlemleri çalıştırmak için genel erişime ihtiyacı vardır. Erişim, alanın altındaki veya içindeki tüm düğümleri içerir. Cihaz yükleyicisinin, cihazlar ve sensörler için yalnızca *okuma* ve *güncelleştirme* izinlerine ihtiyacı bulunabilir.
 
-Her durumda da, rolleri verilen *en fazla ve tam olarak gerekli erişim* ilkesine en düşük öncelik ilkesini başına görevlerini yerine getirmek için. Bu ilkeye göre bir kimlik verilir *yalnızca*:
+Her durumda, roller tam olarak verilir ve en az ayrıcalık Ilkesi başına görevlerini yerine getirmek için *gereken erişimden daha fazla olmaz* . Bu ilkeye göre *yalnızca*bir kimlik verilir:
 
-* İşini tamamlamak için gereken erişim miktarı.
-* Rol uygun ve kendi işlemi gerçekleştirirken sınırlıdır.
+* İşini tamamlaması için gereken erişim miktarı.
+* Bir rol, işini gerçekleştirme ile ilgili ve sınırlı.
 
 >[!IMPORTANT]
-> Her zaman ilkesine en düşük öncelik ilkesini uygulayın.
+> Her zaman en az ayrıcalık Ilkesini izleyin.
 
-İzlemek için iki diğer önemli rol tabanlı erişim denetimi uygulamalar:
+Aşağıdaki iki önemli rol tabanlı erişim denetimi uygulaması:
 
 > [!div class="checklist"]
-> * Rol atamaları, her rol için doğru izinlere sahip olduğunu doğrulamak için düzenli aralıklarla denetleyin.
-> * Kişiler rolleri veya atamaları değiştirdiğinizde rollerini ve atamalarını temizleyin.
+> * Her rolün doğru izinlere sahip olduğunu doğrulamak için rol atamalarını düzenli olarak denetleyin.
+> * Bireyler rolleri veya atamaları değiştirirken rolleri ve atamaları temizleyin.

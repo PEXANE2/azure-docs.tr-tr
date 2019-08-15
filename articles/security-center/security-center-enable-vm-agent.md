@@ -1,6 +1,6 @@
 ---
-title: Azure Güvenlik Merkezi'nde VM aracısını etkinleştirin | Microsoft Docs
-description: Bu belge Azure Güvenlik Merkezi önerinin nasıl uygulanacağını gösterir **VM aracısını etkinleştirme**.
+title: Azure Güvenlik Merkezi 'nde VM aracısını etkinleştirme | Microsoft Docs
+description: Bu belgede, Azure Güvenlik Merkezi önerisi **VM aracısını etkinleştirme**' nin nasıl uygulanacağı gösterilmektedir.
 services: security-center
 documentationcenter: na
 author: rkarlin
@@ -15,14 +15,14 @@ ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
 ms.openlocfilehash: 12934ad53050d16b89dd5b4175ca19a24d1ec4d9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "60916302"
 ---
-# <a name="enable-vm-agent-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde VM aracısını etkinleştirin
-VM Aracısı sanal makinelerinde (VM'ler) için yüklenmelidir [veri toplama özelliğini etkinleştirmeyi](security-center-enable-data-collection.md).  Azure Güvenlik Merkezi, hangi VM'lerin VM Aracısı gerektirir ve bu vm'lerdeki VM Aracısı etkinleştirmenizi önerir görmenize olanak sağlar.
+# <a name="enable-vm-agent-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde VM aracısını etkinleştirme
+[Veri toplamayı etkinleştirmek](security-center-enable-data-collection.md)Için VM aracısının sanal makinelerde (VM) yüklü olması gerekir.  Azure Güvenlik Merkezi, VM Aracısı gerektiren VM 'Leri görmenizi sağlar ve VM aracısını bu VM 'lerde etkinleştirmenizi önerir.
 
 VM Aracısı, Azure Marketi’nden dağıtılan VM’ler için varsayılan olarak yüklüdür. [VM Aracısı ve Uzantılar – 2. Kısım](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/) makalesinde VM Aracısının nasıl yüklendiğine ilişkin bilgiler verilmektedir.
 
@@ -31,10 +31,10 @@ VM Aracısı, Azure Marketi’nden dağıtılan VM’ler için varsayılan olara
 >
 >
 
-## <a name="implement-the-recommendation"></a>Önerisini uygulama
-1. İçinde **öneriler dikey**seçin **VM aracısını etkinleştirme**.
+## <a name="implement-the-recommendation"></a>Öneriyi uygulayın
+1. **Öneriler dikey**penceresinde **VM Aracısını Etkinleştir**' i seçin.
    ![VM Aracısını etkinleştirin][1]
-2. Bu dikey pencereyi açar **VM Aracısı eksik veya yanıt vermiyor**. Bu dikey pencere, VM Aracısı gerektiren Vm'leri listeler. Dikey penceresinde VM Aracısı'nı yüklemek için yönergeleri izleyin.
+2. Bu açılan pencere **VM Aracısı eksik veya yanıt vermiyor**. Bu dikey pencere, VM Aracısı gerektiren VM 'Leri listeler. VM aracısını yüklemek için dikey penceredeki yönergeleri izleyin.
    ![VM Aracısı eksik][2]
 
 ## <a name="see-also"></a>Ayrıca bkz.

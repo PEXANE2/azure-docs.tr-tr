@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: zarhoads
-ms.openlocfilehash: a9cf3db3a15fab5a2f067a146950e02923a20379
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 4e234d3849e09bd8c57a8c33bb378ab801ce0f6d
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "67476803"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019460"
 ---
 # <a name="preview---use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Önizleme-Azure Kubernetes Service (AKS) ' de standart SKU yük dengeleyici kullanma
 
@@ -92,6 +92,7 @@ az provider register --namespace Microsoft.ContainerService
 
 * Yük Dengeleyici için *Standart* SKU kullanırken, genel adreslere izin vermenız ve IP oluşturma ile ilgili herhangi bir Azure ilkesinin oluşturulmaması gerekir. AKS kümesi, genellikle *Mc_* ile adlandırılan aks kümesi için aynı kaynak grubunda oluşturulan *Standart* SKU genel IP 'yi otomatik olarak oluşturur. AKS, genel IP 'yi *Standart* SKU yük dengeleyicisine atar. AKS kümesinden giden trafiğe izin vermek için genel IP gereklidir. Bu genel IP Ayrıca, denetim düzlemi ve aracı düğümleri arasındaki bağlantının yanı sıra önceki AKS sürümleriyle uyumluluğu sürdürmek için de gereklidir.
 * Yük Dengeleyici için *Standart* SKU kullanırken, Kubernetes sürüm 1.13.5 veya üstünü kullanmanız gerekir.
+* [Düğüm genel IP özelliğini](use-multiple-node-pools.md#assign-a-public-ip-per-node-in-a-node-pool) standart yük dengeleyiciler ile birlikte kullanıyorsanız, düğüm IÇIN bir SLB giden kuralı ya da genel IP ayarlayabilirsiniz. Bir sanal makine hem SLB giden kuralına hem de genel IP 'ye aynı anda iliştirilemediğinden bir veya başka birini seçmeniz gerekir.
 
 Bu özellik önizlemedeyken aşağıdaki ek sınırlamalar geçerlidir:
 
@@ -135,7 +136,6 @@ az aks create \
     --name myAKSCluster \
     --enable-vmss \
     --node-count 1 \
-    --kubernetes-version 1.14.0 \
     --load-balancer-sku standard \
     --generate-ssh-keys
 ```
@@ -166,7 +166,7 @@ Aşağıdaki örnekte önceki adımlarda oluşturulan tek düğüm gösterilmiş
 
 ```
 NAME                       STATUS   ROLES   AGE     VERSION
-aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.14.0
+aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.13.9
 ```
 
 ## <a name="verify-your-cluster-uses-the-standard-sku"></a>Kümenizin *Standart* SKU 'yu kullandığını doğrulama

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91cc2707034eabf85afae70278f2448b77d3ee14
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 413df402d5acc878130a47821efd5fa3a512257d
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608080"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68931946"
 ---
 # <a name="baseline-policy-block-legacy-authentication-preview"></a>Temel ilke: Eski kimlik doğrulamasını engelle (Önizleme)
 
@@ -37,7 +37,7 @@ Dizininizde eski kimlik doğrulamasını engelleyebilmeniz için önce, kullanı
 
 1. **Azure Portal** > Azure Active Directoryoturum > **açma**işlemleri ' ne gidin.
 1. **Sütunlar** > **istemci uygulaması**' na tıklanarak gösterilmezse, istemci uygulaması sütununu ekleyin.
-1. **İstemci uygulaması** > **diğer istemcilerine** göre filtreleyin ve **Uygula**' ya tıklayın.
+1. Filtre > ekleme**istemci uygulaması** > **diğer istemciler** için tüm seçenekleri belirleyip **Uygula**' ya tıklayın.
 
 Filtreleme yalnızca eski kimlik doğrulama protokolleri tarafından yapılan oturum açma girişimlerini gösterir. Her bir bireysel oturum açma girişimine tıkladığınızda ek ayrıntılar gösterilecektir. **Temel bilgi** sekmesindeki **istemci uygulaması** alanı, hangi eski kimlik doğrulama protokolünün kullanıldığını gösterir.
 
@@ -109,7 +109,7 @@ Bu ilkeyi etkinleştirmek ve kuruluşunuzu korumak için:
 1.  **** AzurePortal genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
 1. **Koşullu erişimi** **Azure Active Directory** > için gidin.
 1. İlke listesinde temel ilke ' yi seçin **: Eski kimlik doğrulamasını engelleyin (Önizleme**).
-1. İlkeyi **ilkeyi hemen kullanacak** **şekilde ayarlayın** .
+1. İlkeyi **ilkeyi hemen kullanacak**şekilde ayarlayın.
 1.  **Kaydet**' e tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar

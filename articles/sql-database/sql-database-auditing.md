@@ -12,10 +12,10 @@ ms.author: arib
 ms.reviewer: vanto
 ms.date: 04/16/2019
 ms.openlocfilehash: 69fe3287083523a3a47975a3db51d7241681f5c4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "68569501"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL veritabanı denetimini kullanmaya başlayın
@@ -58,7 +58,7 @@ Belirli bir veritabanı veya varsayılan sunucu ilkesi olarak bir denetim ilkesi
 
 - *Sunucu blobu denetimi etkinse*, *her zaman veritabanına uygulanır*. Veritabanı denetim ayarlarından bağımsız olarak veritabanını denetlenecektir.
 
-- Veritabanı veya veri ambarında blob denetimini etkinleştirmek, sunucuda etkinleştirilmesinin yanı sıra sunucu blob denetimi ayarlarından *hiçbirini geçersiz kılmaz* veya değiştirmez. Her iki denetim de yan yana bulunur. Diğer bir deyişle, veritabanı paralel olarak iki kez denetlenir; sunucu ilkesi tarafından bir kez ve veritabanı ilkesi tarafından bir kez.
+- Veritabanı veya veri ambarında blob denetimini etkinleştirmek, sunucuda etkinleştirilmesinin yanı sıra sunucu blob denetimi ayarlarından hiçbirini geçersiz kılmaz veya değiştirmez. Her iki denetim de yan yana bulunur. Diğer bir deyişle, veritabanı paralel olarak iki kez denetlenir; sunucu ilkesi tarafından bir kez ve veritabanı ilkesi tarafından bir kez.
 
    > [!NOTE]
    > Her iki sunucu blob denetimi ve veritabanı blobu denetimini birlikte etkinleştirmemeye özen gösterin:
@@ -225,7 +225,7 @@ Coğrafi olarak çoğaltılan veritabanları ile birincil veritabanında denetim
 
     [Azure PowerShell kullanarak SQL veritabanı denetimini yönetme](#subheading-7) bölümünde açıklandığı gibi, PowerShell kullanarak farklı türlerde eylemler ve eylem grupları için denetimi yapılandırabilirsiniz.
 
-- AAD kimlik doğrulaması kullanılırken, başarısız oturum açma kayıtları SQL denetim *günlüğünde görünmez.* Başarısız oturum açma denetim kayıtlarını görüntülemek için, bu olayların ayrıntılarını günlüğe kaydeden [Azure Active Directory portalını]( ../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)ziyaret etmeniz gerekir.
+- AAD kimlik doğrulaması kullanılırken, başarısız oturum açma kayıtları SQL denetim günlüğünde görünmez. Başarısız oturum açma denetim kayıtlarını görüntülemek için, bu olayların ayrıntılarını günlüğe kaydeden [Azure Active Directory portalını]( ../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)ziyaret etmeniz gerekir.
 
 
 ## <a id="subheading-7"></a>Azure PowerShell kullanarak SQL veritabanı denetimini yönetme

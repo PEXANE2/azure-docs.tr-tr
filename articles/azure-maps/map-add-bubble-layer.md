@@ -1,6 +1,6 @@
 ---
 title: Azure haritalar 'a balon katmanı ekleme | Microsoft Docs
-description: JavaScript eşlemesine kabarcık katmanı ekleme
+description: Azure Maps web SDK 'sına bir kabarcık katmanı ekleme.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 516e4f35c88ae9c0e2d63e8a4ee40eb57c05ac29
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 5cc5dbdc89f629c09d47ef683b7ff7fff61d2f49
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639047"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976568"
 ---
 # <a name="add-a-bubble-layer-to-a-map"></a>Haritaya kabarcık katmanı ekleme
 
@@ -25,31 +25,49 @@ Bu makalede, bir veri kaynağındaki nokta verilerini haritada kabarcık katman�
 
 ## <a name="add-a-bubble-layer"></a>Baloncuk katmanı ekleme
 
+Aşağıdaki kod bir veri kaynağına bir işaret dizisi yükler ve bunu bir [kabarcık katmanına](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)bağlar. Kabarcık katmanına, her kabarcığun yarıçapını beş piksel, bir beyaz dolgulu renk, mavi renkli bir kontur rengi ve altı pikselin kontur genişliği olarak işlemek için seçenekler verilmiştir. 
+
+```javascript
+//Add point locations.
+var points = [
+    new atlas.data.Point([-73.985708, 40.75773]),
+    new atlas.data.Point([-73.985600, 40.76542]),
+    new atlas.data.Point([-73.985550, 40.77900]),
+    new atlas.data.Point([-73.975550, 40.74859]),
+    new atlas.data.Point([-73.968900, 40.78859])
+];
+
+//Create a data source and add it to the map.
+var dataSource = new atlas.source.DataSource();
+map.sources.add(dataSource);
+
+//Add multiple points to the data source.
+dataSource.add(points);
+
+//Create a bubble layer to render the filled in area of the circle, and add it to the map.
+map.layers.add(new atlas.layer.BubbleLayer(dataSource, null, {
+    radius: 5,
+    strokeColor: "#4288f7",
+    strokeWidth: 6, 
+    color: "white" 
+}));
+```
+
+Aşağıda, yukarıdaki işlevselliğin tamamen çalışan kod örneği verilmiştir.
+
+<br/>
+
 <iframe height='500' scrolling='no' title='BubbleLayer veri kaynağı' src='//codepen.io/azuremaps/embed/mzqaKB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>üzerinde Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/mzqaKB/'>BubbleLayer veri kaynağına</a> bakın.
 </iframe>
 
-Yukarıdaki kodda, ilk kod bloğu bir harita nesnesi oluşturur. Yönergeler için [bir harita oluşturma](./map-create.md) ' ya bakabilirsiniz.
-
-İkinci kod bloğunda, bir [nokta](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) nesneleri dizisi tanımlanır ve [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) nesnesine eklenir.
-
-[Kabarcık katmanı](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest) , [veri kaynağında](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) , haritada daire olarak Sarmalanan nokta tabanlı verileri işler. Son kod bloğu bir kabarcık katmanı oluşturur ve haritaya ekler. [BubbleLayerOptions](/javascript/api/azure-maps-control/atlas.bubblelayeroptions)adresindeki kabarcık katmanının özelliklerine bakın.
-
-Nokta nesneleri dizisi, veri kaynağı ve kabarcık katmanı oluşturulur ve eşleme tam yüklendikten sonra dairenin görüntülendiğinden emin olmak için [olay dinleyicisi](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) işlevi içindeki haritaya eklenir.
-
 ## <a name="show-labels-with-a-bubble-layer"></a>Kabarcık katmanı içeren etiketleri göster
+
+Aşağıdaki kod, bir etiket işlemek için bir kabarcık katmanını haritada ve sembol katmanının üzerine işlemek için nasıl kullanacağınızı gösterir. Sembol katmanının simgesini gizlemek için, simge seçeneklerinin `image` özelliğini olarak `'none'`ayarlayın.
+
+<br/>
 
 <iframe height='500' scrolling='no' title='Çoklu katman veri kaynağı' src='//codepen.io/azuremaps/embed/rqbQXy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>üzerinde Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/rqbQXy/'>Multilayer veri kaynağına</a> bakın.
 </iframe>
-
-Yukarıdaki kod, haritada verileri görselleştirmeyi ve etiketlemesini gösterir. Yukarıdaki ilk kod bloğu bir harita nesnesi oluşturur. Yönergeler için [bir harita oluşturma](./map-create.md) ' ya bakabilirsiniz.
-
-İkinci kod bloğu, bir [nokta](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) nesnesi oluşturur. Daha sonra veri [kaynağı sınıfını kullanarak](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) bir veri kaynağı nesnesi oluşturur ve noktayı veri kaynağına ekler.
-
-[Kabarcık katmanı](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest) , [veri kaynağında](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) , haritada daire olarak Sarmalanan nokta tabanlı verileri işler. Üçüncü kod bloğu bir kabarcık katmanı oluşturup haritaya ekler. [BubbleLayerOptions](/javascript/api/azure-maps-control/atlas.bubblelayeroptions)adresindeki kabarcık katmanının özelliklerine bakın.
-
-Bir [sembol katmanı](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) , [veri kaynağında](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) kaydırılan nokta tabanlı verileri haritada semboller olarak oluşturmak için metin veya simgeleri kullanır. Son kod bloğu, kabarcık için metin etiketini oluşturan haritaya bir sembol katmanı oluşturur ve ekler. Bkz. [Symbollayeroptions](/javascript/api/azure-maps-control/atlas.symbollayeroptions)'da bir sembol katmanının özelliklerine bakın.
-
-Veri kaynağı ve Katmanlar oluşturulur ve eşleme tam olarak yüklendikten sonra verilerin görüntülenmesini sağlamak için [olay dinleyicisi](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) işlevi içindeki haritaya eklenir.
 
 ## <a name="customize-a-bubble-layer"></a>Balon katmanını özelleştirme
 
@@ -73,7 +91,13 @@ Bu makalede kullanılan sınıflar ve yöntemler hakkında daha fazla bilgi edin
 Haritalarınıza eklemek için daha fazla kod örneği için aşağıdaki makalelere bakın:
 
 > [!div class="nextstepaction"]
+> [Veri kaynağı oluşturma](create-data-source-web-sdk.md)
+
+> [!div class="nextstepaction"]
 > [Sembol katmanı ekleme](map-add-pin.md)
 
 > [!div class="nextstepaction"]
 > [Veri tabanlı stil ifadeleri kullanın](data-driven-style-expressions-web-sdk.md)
+
+> [!div class="nextstepaction"]
+> [Kod örnekleri](https://docs.microsoft.com/samples/browse/?products=azure-maps)

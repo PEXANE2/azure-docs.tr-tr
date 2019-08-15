@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 3/01/2019
 ms.author: dacurwin
-ms.openlocfilehash: 524d0854e8691428738cee321e394f572ea80112
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 67ba9ba9bc85213ec479a90d205ed9570c62bf8c
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689186"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954601"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure sanal makine yedeklemesinden dosyaları kurtarma
 
@@ -261,7 +261,7 @@ Betiği çalıştırmak için, tek yapmanız gereken, Azure portal veya PowerShe
 
 #### <a name="browse-files-and-folders"></a>Dosyalara ve klasörlere gözatmaya
 
-Betik, dosyalara ve klasörlere gözatabileceği için makinede Iscsı Başlatıcısı 'nı kullanır ve Iscsı hedefi olarak yapılandırılan kurtarma noktasına bağlanır. Burada, biri/tüm bileşenleri taklit edilmeye çalıştığı senaryolar ele alalım.
+Betik, dosyalara ve klasörlere gözatabiliyor olması için makinedeki Iscsı Başlatıcısı 'nı kullanır ve Iscsı hedefi olarak yapılandırılan kurtarma noktasına bağlanır. Burada, biri/tüm bileşenleri taklit edilmeye çalıştığı senaryolar ele alalım.
 
 Her bileşenin kimliğini doğrulayabilmesi için karşılıklı CHAP kimlik doğrulama mekanizmasını kullanıyoruz. Bu, sahte bir başlatıcısının Iscsı hedefine bağlanması ve sahte bir hedefin betiğin çalıştırıldığı makineye bağlanması için son derece zor olduğu anlamına gelir.
 

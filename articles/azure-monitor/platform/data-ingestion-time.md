@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/18/2019
 ms.author: bwren
-ms.openlocfilehash: cdd1c8348acac37acbe8ad15199f3953bfe95a8e
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: e07a436ee18a216bab569d299e534e729996db19
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68370667"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990165"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Azure Izleyici 'de günlük verisi alma süresi
 Azure Izleyici, her ay büyüyen bir hızda çok sayıda müşteriye hizmet veren binlerce müşteriyi sunan yüksek ölçekli bir veri hizmetidir. Genellikle günlük verilerinin toplandıktan sonra kullanılabilir hale gelmesi için geçen süre hakkında sık sorulan sorular vardır. Bu makalede, bu gecikmeyi etkileyen farklı faktörler açıklanmaktadır.
@@ -90,7 +90,7 @@ Alım süresi farklı koşullarda farklı kaynaklar için farklılık gösterebi
 ### <a name="ingestion-latency-delays"></a>Alma gecikmesi gecikme gecikmeleri
 [İngestion_time ()](/azure/kusto/query/ingestiontimefunction) Işlevinin sonucunu _TimeGenerated_ özelliği ile karşılaştırarak belirli bir kaydın gecikmesini ölçebilirsiniz. Bu veriler, alma gecikmesini nasıl davranacağını bulmak için çeşitli toplamalar ile birlikte kullanılabilir. Büyük miktarda veri için Öngörüler elde etmek üzere alma süresinin bazı yüzdelerini inceleyin. 
 
-Örneğin, aşağıdaki sorgu, geçerli gün içinde hangi bilgisayarların en yüksek alım zamanına sahip olduğunu gösterir: 
+Örneğin, aşağıdaki sorgu, son 8 saat içinde hangi bilgisayarların en yüksek alım zamanına sahip olduğunu gösterir: 
 
 ``` Kusto
 Heartbeat
@@ -101,7 +101,7 @@ Heartbeat
 | top 20 by percentile_E2EIngestionLatency_95 desc
 ```
  
-Belirli bir bilgisayar için belirli bir süre içinde alım zamanında detaya gitmek isterseniz, bir grafikteki verileri görselleştirerek aşağıdaki sorguyu kullanın: 
+Belirli bir bilgisayar için belirli bir süre içinde alma sırasında detaya gitmek isterseniz, bir grafikteki son günden verileri görselleştirerek aşağıdaki sorguyu kullanın: 
 
 ``` Kusto
 Heartbeat 

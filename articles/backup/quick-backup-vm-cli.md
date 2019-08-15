@@ -1,5 +1,5 @@
 ---
-title: Azure Hızlı Başlangıç - Azure CLI ile sanal makine yedekleme
+title: Azure hızlı başlangıç-Azure CLı ile sanal makine yedekleme
 description: Azure CLI ile sanal makinelerinizi nasıl yedekleyeceğinizi öğrenin
 author: dcurwin
 manager: carmonm
@@ -10,17 +10,17 @@ ms.topic: quickstart
 ms.date: 01/31/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 21178c3b8555879f13686164a4eee922997933dd
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 38e18a79888853383e7966464402408087817f01
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688487"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019008"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-the-cli"></a>CLI ile Azure'daki bir sanal makineyi yedekleme
 Azure CLI, komut satırından veya betik içindeki Azure kaynaklarını oluşturmak ve yönetmek için kullanılır. Düzenli aralıklarla yedekleme yaparak verilerinizi koruyabilirsiniz. Azure Backup, coğrafi olarak yedekli kurtarma kasalarında saklanabilecek kurtarma noktaları oluşturur. Bu makalede Azure CLI ile Azure'daki bir sanal makinenin nasıl yedekleneceği anlatılmaktadır. Bu adımları [Azure PowerShell](quick-backup-vm-powershell.md) veya [Azure portalı](quick-backup-vm-portal.md) ile de gerçekleştirebilirsiniz.
 
-Bu hızlı başlangıç belgesi var olan bir Azure sanal makinesinde yedeklemeyi etkinleştirir. Bir sanal makine oluşturmanız gerekiyorsa [Azure CLI ile sanal makine oluşturabilirsiniz](../virtual-machines/linux/quick-create-cli.md).
+Bu hızlı başlangıç belgesi var olan bir Azure VM'de yedeklemeyi etkinleştirir. Bir sanal makine oluşturmanız gerekiyorsa [Azure CLI ile sanal makine oluşturabilirsiniz](../virtual-machines/linux/quick-create-cli.md).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

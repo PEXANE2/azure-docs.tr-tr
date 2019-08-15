@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: 9b1f0042f501cefc99343d53bbf2ad39f0ae1f4c
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 9a6b3a538304f2d09941650e3087130c21422dc0
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640476"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946355"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>MQTT protokolünü kullanarak IoT Hub 'ınız ile iletişim kurma
 
@@ -77,7 +77,7 @@ Bir cihaz, cihaz SDK 'larını kullanalamazsanız, bağlantı noktası 8883 üze
   `SharedAccessSignature sig={signature-string}&se={expiry}&sr={URL-encoded-resourceURI}`
 
   > [!NOTE]
-  > X. 509.952 sertifikası kimlik doğrulamasını kullanıyorsanız SAS belirteç parolaları gerekmez. Daha fazla bilgi için bkz. [Azure IoT Hub 'Da X. 509.440 güvenliğini ayarlama](iot-hub-security-x509-get-started.md)
+  > X. 509.952 sertifikası kimlik doğrulamasını kullanıyorsanız SAS belirteç parolaları gerekmez. Daha fazla bilgi için bkz. [Azure IoT Hub 'Da X. 509.440 güvenliğini ayarlama](iot-hub-security-x509-get-started.md) ve [aşağıdaki](#tlsssl-configuration)kod yönergelerini izleyin.
 
   SAS belirteçleri oluşturma hakkında daha fazla bilgi için [IoT Hub güvenlik belirteçlerini kullanma](iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)konusunun cihaz bölümüne bakın.
 
@@ -133,7 +133,7 @@ Modül kimliğini kullanarak MQTT üzerinden IoT Hub bağlantı, cihaza benzerdi
 
 ## <a name="tlsssl-configuration"></a>TLS/SSL yapılandırması
 
-MQTT protokolünü doğrudan kullanmak için *, ISTEMCINIZ TLS* /SSL üzerinden bağlanmalıdır. Bu adımı atlama denemeleri bağlantı hatalarıyla başarısız olur.
+MQTT protokolünü doğrudan kullanmak için, istemciniz TLS/ SSL üzerinden bağlanmalıdır. Bu adımı atlama denemeleri bağlantı hatalarıyla başarısız olur.
 
 Bir TLS bağlantısı kurmak için DigiCert Baltidaha daha fazla kök sertifikasını indirmeniz ve başvurmanız gerekebilir. Bu sertifika, Azure 'un bağlantıyı güvenli hale getirmek için kullandığı bir sertifikadır. Bu sertifikayı [Azure-IoT-SDK-c](https://github.com/Azure/azure-iot-sdk-c/blob/master/certs/certs.c) deposunda bulabilirsiniz. Bu sertifikalar hakkında daha fazla bilgi, [DigiCert 'ın Web sitesinde](https://www.digicert.com/digicert-root-certificates.htm)bulunabilir.
 
@@ -159,7 +159,7 @@ Ardından, istemcisini bir Python betiğine uygulayın. Yer tutucuları aşağı
 from paho.mqtt import client as mqtt
 import ssl
 
-path_to_root_cert = "<local path to digicert.cer>"
+path_to_root_cert = "<local path to digicert.cer file>"
 device_id = "<device id from device registry>"
 sas_token = "<generated SAS token>"
 iot_hub_name = "<iot hub name>"
@@ -199,6 +199,26 @@ client.loop_forever()
 Önkoşullar için yükleme yönergeleri aşağıda verilmiştir.
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
+
+Bir cihaz sertifikası kullanarak kimlik doğrulaması yapmak için yukarıdaki kod parçacığını aşağıdaki değişikliklerle güncelleştirin (bkz. sertifika tabanlı kimlik doğrulamasına hazırlanma hakkında [bir X. 509.952 CA sertifikası alma](./iot-hub-x509ca-overview.md#how-to-get-an-x509-ca-certificate) ):
+
+```python
+# Create the client as before
+# ...
+
+# Set the username but not the password on your client
+client.username_pw_set(username=iot_hub_name+".azure-devices.net/" +
+                       device_id + "/?api-version=2018-06-30", password=None)
+
+# Set the certificate and key paths on your client
+cert_file = "<local path to your certificate file>"
+key_file = "<local path to your device key file>"
+client.tls_set(ca_certs=path_to_root_cert, certfile=cert_file, keyfile=key_file,
+               cert_reqs=ssl.CERT_REQUIRED, tls_version=ssl.PROTOCOL_TLSv1, ciphers=None)
+
+# Connect as before
+client.connect(iot_hub_name+".azure-devices.net", port=8883)
+```
 
 ## <a name="sending-device-to-cloud-messages"></a>Cihazdan buluta iletiler gönderme
 

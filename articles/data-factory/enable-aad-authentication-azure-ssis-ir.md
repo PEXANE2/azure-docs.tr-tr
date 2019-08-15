@@ -12,16 +12,20 @@ ms.date: 5/14/2019
 author: swinarko
 ms.author: sawinark
 manager: craigg
-ms.openlocfilehash: 1e55d1878b1a5616d467f2fa27b1b20132d5e77c
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 51f67667caa9e0e564709de40c145b107c619b59
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516996"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016002"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Azure-SSIS Integration Runtime için Azure Active Directory kimlik doğrulamasını etkinleştirme
 
-Bu makalede, Azure Data Factory (ADF) için yönetilen kimlikle Azure Active Directory (Azure AD) kimlik doğrulamasının nasıl etkinleştirileceği ve SQL kimlik doğrulaması yerine bunu kullanarak, sağlaması yapılacak bir Azure-SSIS Integration Runtime (IR) oluşturma işlemi gösterilmektedir Azure SQL veritabanı sunucusunda/yönetilen örnekte, SSIS Katalog veritabanı (SSıSDB).
+Bu makalede, Azure Active Directory (Azure AD) kimlik doğrulamasının Azure Data Factory (ADF) için yönetilen kimlikle nasıl etkinleştirileceği ve geleneksel kimlik doğrulama yöntemleri yerine (SQL kimlik doğrulaması gibi) kullanılması gösterilmektedir:
+
+- Sizin adınıza Azure SQL veritabanı sunucusu/yönetilen örneği 'nde SSIS Katalog veritabanı 'nı (SSıSDB) sağlayacak bir Azure-SSIS Integration Runtime (IR) oluşturun.
+
+- Azure-SSIS IR üzerinde SSIS paketlerini çalıştırırken çeşitli Azure kaynaklarına bağlanın.
 
 ADF 'nizin yönetilen kimliği hakkında daha fazla bilgi için bkz. [Managed identiy for Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity).
 
@@ -214,4 +218,14 @@ Azure-SSIS IR 'nizi PowerShell ile sağlamak için aşağıdaki işlemleri yapı
     Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
                                                  -DataFactoryName $DataFactoryName `
                                                  -Name $AzureSSISName
-   ```
+    ```
+
+## <a name="run-ssis-packages-with-managed-identity-authentication"></a>SSIS paketlerini yönetilen kimlik doğrulaması ile çalıştırma
+
+Azure-SSIS IR üzerinde SSIS paketlerini çalıştırdığınızda, çeşitli Azure kaynaklarına bağlanmak için yönetilen kimlik kimlik doğrulaması kullanabilirsiniz. Şu anda aşağıdaki bağlantı yöneticilerinde yönetilen kimlik kimlik doğrulamasını zaten destekliyoruz.
+
+- [OLE DB bağlantı Yöneticisi](https://docs.microsoft.com/sql/integration-services/connection-manager/ole-db-connection-manager#managed-identities-for-azure-resources-authentication)
+
+- [ADO.NET Bağlantı Yöneticisi](https://docs.microsoft.com/sql/integration-services/connection-manager/ado-net-connection-manager#managed-identities-for-azure-resources-authentication)
+
+- [Azure depolama bağlantı Yöneticisi](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-storage-connection-manager#managed-identities-for-azure-resources-authentication)

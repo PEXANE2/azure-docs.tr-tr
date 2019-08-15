@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: dacurwin
-ms.openlocfilehash: e3d38e9b5e1b9b9f827476acf7e2e2ecab632424
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 0a6d1fd73d99cf15137e937dbfe2336d49a63d90
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688809"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68955055"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>Azure Backup Sunucusu’ndan veri kurtarma
 Kurtarma Hizmetleri kasasına yedeklediğiniz verileri kurtarmak için Azure Backup Sunucusu kullanabilirsiniz. Bunu yapma işlemi Azure Backup Sunucusu Yönetim Konsolu ile tümleşiktir ve diğer Azure Backup bileşenleri için kurtarma iş akışına benzer.

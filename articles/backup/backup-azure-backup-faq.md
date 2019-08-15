@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/07/2019
 ms.author: dacurwin
-ms.openlocfilehash: c41381dd3e53c80e74da3dc0d0a08e1ac83daec6
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 415a25dbe63b8942509827cd8434cc0f50fde87a
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827624"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954806"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup-sık sorulan sorular
 Bu makalede Azure Backup hizmetiyle ilgili sık sorulan sorular yanıtlanmaktadır.
@@ -36,7 +36,7 @@ Her kasa için yalnızca 200 ilke olabilir.
 Birlikte kurtarmak istediğiniz sunucu verileri, yedeklemeyi ayarlarken aynı parolayı kullanmalıdır. Kurtarmayı belirli bir sunucu veya sunuculara yalıtmak istiyorsanız, yalnızca o sunucu veya sunucular için bir parola kullanın. Örneğin, insan kaynakları sunucuları bir şifreleme parolası kullanırken, muhasebe sunucuları ve depolama sunucuları farklı birer şifreleme parolası kullanabilir.
 
 ### <a name="can-i-move-my-vault-between-subscriptions"></a>Kasayımı abonelikler arasında taşıyabilir miyim?
-Evet. Kurtarma Hizmetleri kasasını taşımak için bu [makaleye](backup-azure-move-recovery-services-vault.md) başvurun
+Evet. Kurtarma Hizmetleri kasasını taşımak için, bu [makaleye](backup-azure-move-recovery-services-vault.md) bakın
 
 ### <a name="can-i-move-backup-data-to-another-vault"></a>Yedekleme verilerini başka bir kasaya taşıyabilir miyim?
 Hayır. Bir kasada depolanan yedekleme verileri farklı bir kasaya taşınamaz.
@@ -125,7 +125,7 @@ Hayır. Yedekleme işi iptal edilmeden önce kasaya aktarılan tüm veriler kasa
 
 - Azure Backup, yedekleme işlemi sırasında yedekleme verilerine zaman zaman denetim noktaları eklemek üzere bir denetim noktası mekanizması kullanır.
 - Yedekleme verilerinde denetim noktaları bulunduğundan, sonraki yedekleme işlemi dosyaların bütünlüğünü doğrulayabilir.
-- Bir sonraki yedekleme işi, daha önce yedeklenen verilerin üzerine artımlı olarak gerçekleşir. Artımlı yedekleme işlemlerinin yalnızca yeni veya değiştirilmiş verileri aktarması, bant genişliğinin daha iyi kullanılması anlamına gelir.
+- Bir sonraki yedekleme işi, daha önce yedeklenen verilerin üzerine artımlı olarak gerçekleşir. Artımlı yedeklemeler yalnızca yeni veya değiştirilmiş verileri aktarır ve bu da bant genişliğinin daha iyi kullanımını sağlar.
 
 Bir Azure VM’ye yönelik bir yedekleme işini iptal ederseniz aktarılan tüm veriler yoksayılır. Bir sonraki yedekleme işi, son başarılı yedekleme işinden artımlı verileri aktarır.
 
@@ -138,7 +138,7 @@ Evet, her ikisi de günlük, haftalık, aylık ve yıllık bekletme ilkelerine s
 Evet, ilkeleri özelleştirin. Örneğin, haftalık ve aylık saklama gereksinimlerini yapılandırabilirsiniz, ancak yıllık ve aylık olarak kullanamazsınız.
 
 ### <a name="can-i-use-different-times-for-backup-scheduling-and-retention-policies"></a>Yedekleme zamanlaması ve bekletme ilkeleri için farklı zamanlar kullanabilir miyim?
-Hayır. Bekletme ilkeleri, yalnızca yedekleme noktalarında uygulanabilir. Örneğin, bu görüntüler 12:00 ve 6pm 'de gerçekleştirilen yedeklemeler için bir bekletme ilkesi gösterir.
+Hayır. Bekletme ilkeleri, yalnızca yedekleme noktalarında uygulanabilir. Örneğin, bu görüntüde, saat 12:00:00 ve 6pm 'de gerçekleştirilen yedeklemeler için bir bekletme ilkesi gösterilmektedir.
 
 ![Yedeklemeyi ve Bekletmeyi Zamanlama](./media/backup-azure-backup-faq/Schedule.png)
 

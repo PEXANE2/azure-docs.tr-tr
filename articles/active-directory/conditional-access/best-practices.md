@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08be09f7bee3aa17ff9d1baae4271e994fa235cb
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 3b7265f8d5ec4b7336253787e9cb881900a52b79
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68248874"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68963458"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Azure Active Directory 'de koşullu erişim için en iyi yöntemler
 
@@ -35,7 +35,7 @@ Yeni bir ilke oluşturduğunuzda, hiçbir Kullanıcı, Grup, uygulama veya eriş
 
 İlkenizi çalışır hale getirmek için şunları yapılandırmanız gerekir:
 
-| Nesne           | Oluşturulacağı                                  | Kaydol |
+| Ne:           | Oluşturulacağı                                  | Kaydol |
 | :--            | :--                                  | :-- |
 | **Bulut uygulamaları** |Bir veya daha fazla uygulama seçin.  | Koşullu erişim ilkesinin hedefi, yetkili kullanıcıların bulut uygulamalarına nasıl erişebileceğini denetlemenize olanak sağlamaktır.|
 | **Kullanıcılar ve gruplar** | Seçtiğiniz bulut uygulamalarınıza erişim yetkisi olan en az bir kullanıcı veya grup seçin. | Hiçbir Kullanıcı ve grup atanmamış koşullu erişim ilkesi hiçbir şekilde tetiklenmez. |
@@ -50,7 +50,8 @@ Bir bulut uygulamasına eriştiğinizde, birden fazla koşullu erişim ilkesi uy
 Tüm ilkeler iki aşamada zorlanır:
 
 - **İlk** aşamada, tüm ilkeler değerlendirilir ve karşılanmayan tüm erişim denetimleri toplanır. 
-- **İkinci** aşamada, karşılamadığınız gereksinimleri karşılamanız istenir. İlkelerden herhangi biri erişimi engellediyse, engellenir ve diğer ilke denetimlerini karşılamanız istenmez. İlkeler sizi engellerseniz, diğer ilke denetimlerini aşağıdaki sırayla karşılamanız istenir:
+
+- **İkinci** aşamada, karşılamadığınız gereksinimleri karşılamanız istenir. İlkelerden herhangi biri erişimi engellediyse, engellenir ve diğer ilke denetimlerini karşılamanız istenmez. İlkelerden hiçbiri sizi engelliyorsa, diğer ilke denetimlerini aşağıdaki sırayla karşılamanız istenir:
 
    ![Sipariş verme](./media/best-practices/06.png)
     
@@ -58,7 +59,7 @@ Tüm ilkeler iki aşamada zorlanır:
 
 ### <a name="how-are-assignments-evaluated"></a>Atamalar nasıl değerlendirilir?
 
-Tüm **atamalar mantıksal olarak**da kullanılır. Birden çok atama yapılandırdıysanız, bir ilkenin tetiklenmesi için tüm atamaların karşılanması gerekir.  
+Tüm atamalar mantıksal olarakda kullanılır. Birden çok atama yapılandırdıysanız, bir ilkenin tetiklenmesi için tüm atamaların karşılanması gerekir.  
 
 Kuruluşunuzun ağı dışından yapılan tüm bağlantılara uygulanan bir konum koşulu yapılandırmanız gerekirse:
 

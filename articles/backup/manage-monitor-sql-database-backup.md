@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: dacurwin
-ms.openlocfilehash: 7cd916c8e52b40dee3ce2d63d43dc88f09001b32
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 1d50f239a0ef4de02c9f0c87a28b0f5092d9c529
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827567"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019027"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Yedeklenen SQL Server veritabanlarını yönetme ve izleme
 
@@ -92,9 +92,9 @@ Bir veritabanının korumasını durdurmak için:
 
 > [!NOTE]
 >
-Verileri Sil seçeneği hakkında daha fazla bilgi için aşağıdaki SSS bölümüne bakın:
-* [Bir veritabanını bir yeniden korunan örnekten silersem, yedeklemelere ne olur?](faq-backup-sql-server.md#if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups)
-* [Otomatik korumalı bir veritabanının yedekleme işlemini durdurdum, davranışı ne olur?](faq-backup-sql-server.md#if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior)
+>Verileri Sil seçeneği hakkında daha fazla bilgi için aşağıdaki SSS bölümüne bakın:
+>* [Bir veritabanını bir yeniden korunan örnekten silersem, yedeklemelere ne olur?](faq-backup-sql-server.md#if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups)
+>* [Otomatik korumalı bir veritabanının yedekleme işlemini durdurdum, davranışı ne olur?](faq-backup-sql-server.md#if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior)
 >
 >
 
@@ -145,7 +145,7 @@ Korumayı devre dışı bıraktıktan sonra ancak kasayı silmeden önce bir SQL
 
 Bazen, VM 'deki iş yükü uzantısı bir neden veya diğer bir nedenden dolayı etkilenebilir. Bu gibi durumlarda, VM 'de tetiklenen tüm işlemler başarısız olur. Ardından, uzantıyı VM 'de yeniden kaydetmeniz gerekebilir. **Yeniden kaydetme** işlemi devam etmek için VM 'de iş yükü yedekleme uzantısını yeniden yükler.  <br>
 
-Bu seçeneği dikkatli bir şekilde kullanmanız önerilir; zaten sağlıklı bir uzantıya sahip bir VM 'de tetiklendiğinde, bu işlem uzantının yeniden başlatılmasına neden olur. Bu, tüm sürmekte olan işlerin başarısız olmasına neden olabilir. Yeniden kaydetme işlemini tetiklemeden önce bir veya daha fazla [belirtiyle](backup-sql-server-azure-troubleshoot.md#re-registration-failures) ilgili bir veya daha fazla belirti olup olmadığını denetleyin.
+Bu seçeneği dikkatli bir şekilde kullanın; zaten sağlıklı bir uzantıya sahip bir VM 'de tetiklendiğinde, bu işlem uzantının yeniden başlatılmasına neden olur. Bu, tüm sürmekte olan işlerin başarısız olmasına neden olabilir. Yeniden kaydetme işlemini tetiklemeden önce bir veya daha fazla [belirtiyle](backup-sql-server-azure-troubleshoot.md#re-registration-failures) ilgili bir veya daha fazla belirti olup olmadığını denetleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

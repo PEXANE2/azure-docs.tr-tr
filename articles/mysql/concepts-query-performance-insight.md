@@ -6,18 +6,18 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 05d6de31dbc3ff5bbf9365098ceae4c840bf116b
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: f6c74582760d77ae4318739c74f77d0bcd0501fe
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882804"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950355"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda Sorgu Performansı İçgörüleri
 
 **Şunlara uygulanır:** MySQL için Azure veritabanı 5,7
 
-> [!NOTE]
+> [!IMPORTANT]
 > Sorgu Performansı İçgörüleri önizlemededir.
 
 Sorgu Performansı İçgörüleri, en uzun çalışan sorguların ne olduğunu, zaman içinde nasıl değişdiklerinizi ve neleri etkilemeyi beklediğini hızlı bir şekilde tanımanıza yardımcı olur.

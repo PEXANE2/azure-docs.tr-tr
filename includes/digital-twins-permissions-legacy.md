@@ -5,44 +5,44 @@ services: digital-twins
 author: alinamstanciu
 ms.service: digital-twins
 ms.topic: include
-ms.date: 06/26/2019
+ms.date: 08/12/2019
 ms.author: alinast
 ms.custom: include file
-ms.openlocfilehash: 9a5b3b04287a8b732d01bd8fe4610e073332da0d
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 9f4bf6fb92b590e274e8880b5f900e5469f85727
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478972"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "69012312"
 ---
-1. İçinde [Azure portalında](https://portal.azure.com)açın **Azure Active Directory** sol bölmeden ve ardından açık **özellikleri** bölmesi. **Dizin Kimliğini** geçici bir dosyaya kopyalayın. Sonraki bölümde örnek bir uygulama yapılandırmak için bu değeri kullanacaksınız.
+1. [Azure Portal](https://portal.azure.com)sol bölmeden **Azure Active Directory** açın ve ardından **Özellikler** bölmesini açın. **Dizin Kimliğini** geçici bir dosyaya kopyalayın. Bu değeri bir sonraki bölümde örnek bir uygulama yapılandırmak için kullanacaksınız.
 
-    ![Azure Active Directory dizin kimliği](./media/digital-twins-permissions-legacy/aad-app-reg-tenant.png)
+    ![Azure Active Directory Directory KIMLIĞI](./media/digital-twins-permissions-legacy/aad-app-reg-tenant.png)
 
-1. İçinde [Azure portalında](https://portal.azure.com)açın **Azure Active Directory** sol bölmeden ve ardından açık **uygulama kayıtları (eski)** bölmesi. Seçin **yeni uygulama kaydı** düğmesi.
+1. [Azure Portal](https://portal.azure.com)sol bölmeden **Azure Active Directory** açın ve sonra **uygulama kayıtları (eski)** bölmesini açın. **Yeni uygulama kaydı** düğmesini seçin.
 
-1. Bu uygulama kaydında için kolay bir ad verin **adı** kutusu. Seçin **uygulama türü** olarak **yerel**, ve **yeniden yönlendirme URI'si** olarak `https://microsoft.com`. **Oluştur**’u seçin.
+1. **Ad** kutusuna bu uygulama kaydı için kolay bir ad verin. **Uygulama türünü** **Yerel**olarak seçin ve URI 'yi olarak `https://microsoft.com` **yeniden yönlendirin** . **Oluştur**’u seçin.
 
-    ![Bölmesinde oluşturma](./media/digital-twins-permissions-legacy/aad-app-reg-create.png)
+    ![Bölme oluştur](./media/digital-twins-permissions-legacy/aad-app-reg-create.png)
 
-1.  Kayıtlı uygulama açın ve değerini kopyalayın **uygulama kimliği** geçici bir dosya alanı. Bu değer, Azure Active Directory uygulamanızı tanımlar. Uygulama kimliği, örnek uygulamanızı aşağıdaki bölümlerde yapılandırmak için kullanırsınız.
+1.  Kayıtlı uygulamayı açın ve **uygulama kimliği** alanının değerini geçici bir dosyaya kopyalayın. Bu değer Azure Active Directory uygulamanızı tanımlar. Uygulama KIMLIĞINI aşağıdaki bölümlerde örnek uygulamanızı yapılandırmak için kullanacaksınız.
 
-    ![Azure Active Directory Uygulama Kimliği](./media/digital-twins-permissions-legacy/aad-app-reg-app-id.png)
+    ![Azure Active Directory uygulama KIMLIĞI](./media/digital-twins-permissions-legacy/aad-app-reg-app-id.png)
 
-1. Uygulamanızı uygulama kayıt bölmesini açın. Seçin **ayarları** > **gerekli izinler**ve ardından:
+1. Uygulama kayıt bölmenizi açın. **Ayarlar** > **gerekli izinler**' i seçin ve ardından:
 
-   a. Seçin **Ekle** açmak için üst sol taraftaki **API erişimi Ekle** bölmesi.
+   a. Sol üstteki **Ekle** ' yı seçerek **API erişimi ekle** bölmesini açın.
 
-   b. Seçin **bir API seçin** araması **Azure dijital İkizlerini**. Arama sonucunda API görüntülenmezse **Azure Smart Spaces** araması yapın.
+   b. **BIR API seçin** ' i seçin ve **Azure dijital TWINS**'i arayın. Arama sonucunda API görüntülenmezse **Azure Smart Spaces** araması yapın.
 
-   c. Seçin **Azure dijital İkizlerini (Azure akıllı alanları Service)** seçenek ve **seçin**.
+   c. **Azure dijital TWINS (Azure akıllı boşluklar hizmeti)** seçeneğini belirleyin ve **Seç**' i seçin.
 
-   d. Seçin **izinleri seçin**. Seçin **okuma/yazma erişimi** temsilci izinleri kutusunu işaretleyin ve **seçin**.
+   d. **Izinleri Seç ' i**seçin. **Okuma/yazma erişimi** temsilcisi izinleri onay kutusunu seçin ve **Seç**' i seçin.
 
-   e. Seçin **Bitti** içinde **API erişimi Ekle** bölmesi.
+   e. **API erişimi ekle** bölmesinde **bitti** ' yi seçin.
 
-   f. İçinde **gerekli izinler** bölmesinde **izinleri verin** düğmesine ve görüntülenen bildirim kabul edin. Bu API için izin verilmezse, yöneticinize başvurun.
+   f. **Gerekli izinler** bölmesinde, **izin ver** düğmesini seçin ve görüntülenen onayı kabul edin. Bu API için izin verilmezse yöneticinize başvurun.
 
-      ![Gerekli izinler bölmesinde](./media/digital-twins-permissions-legacy/aad-app-req-permissions.png)
+      ![Gerekli izinler bölmesi](./media/digital-twins-permissions-legacy/aad-app-req-permissions.png)
 
  

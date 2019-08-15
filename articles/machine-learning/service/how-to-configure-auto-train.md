@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: adca67152c33f4c6a3ec272b63c4c8157a777f36
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 6e29e0f89d9270a143d48cf6e85b479813e19d9d
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856184"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69013656"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python 'da otomatik ML denemeleri yapılandırma
 
@@ -72,6 +72,11 @@ automl_config = AutoMLConfig(task="classification")
 Otomatik machine learning, yerel masaüstüne veya Azure Blob Depolama gibi bulutta bulunan verileri destekler. Verilerin scikit okunacağı-desteklenen veri biçimlerinden öğrenin. Verileri okuyabilirsiniz:
 * Numpy diziler X (özellikleri) ve y (hedef değişkeni veya olarak da bilinen etiket)
 * Pandas dataframe
+
+>[!Important]
+> Eğitim verileri için gereksinimler:
+>* Verilerin tablolu biçimde olması gerekir.
+>* Tahmin etmek istediğiniz değer (hedef sütun) verilerde bulunmalıdır.
 
 Örnekler:
 

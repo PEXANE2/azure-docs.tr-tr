@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/05/2019
 ms.author: wgries
 ms.custom: include file
-ms.openlocfilehash: 46bf9851ccf8877885d9f98a023aa95ebdc533bc
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: e7aa2b4389fe60eed80b15aff04d6f7fcbc7b013
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68857517"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68968952"
 ---
 | Resource | Hedef | Sabit sınır |
 |----------|--------------|------------|
@@ -23,7 +23,7 @@ ms.locfileid: "68857517"
 | Eşitleme grubu başına bulut uç noktaları | 1 bulut uç noktası | Evet |
 | Eşitleme grubu başına sunucu uç noktaları | 50 sunucu uç noktaları | Hayır |
 | Sunucu başına sunucu uç noktaları | 30 sunucu uç noktası | Evet |
-| Eşitleme grubu başına dosya sistemi nesneleri (dizinler ve dosyalar) | 25.000.000 nesneleri | Hayır |
+| Eşitleme grubu başına dosya sistemi nesneleri (dizinler ve dosyalar) | 50.000.000 nesneleri | Hayır |
 | Bir dizindeki en fazla dosya sistemi nesnesi (Dizin ve dosya) sayısı | 5\.000.000 nesneleri | Evet |
 | En fazla nesne (dizinler ve dosyalar) güvenlik tanımlayıcısı boyutu | 64 KiB | Evet |
 | Dosya boyutu | 100 GiB | Hayır |

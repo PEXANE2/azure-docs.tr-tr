@@ -6,18 +6,18 @@ author: JasonWHowell
 ms.author: jasonh
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: cdf90029d02680de4ce55e33b3ed0fe810d70b4c
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 7d0e27802745dda62f87e412053650907e9b812c
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775241"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950150"
 ---
 # <a name="azure-data-catalog-developer-samples"></a>Azure Veri Kataloğu geliştirici örnekleri
 
 Veri Kataloğu REST API kullanarak Azure Veri Kataloğu uygulamaları geliştirmeye başlayın. Veri Kataloğu REST API, veri varlıklarını programlı bir şekilde kaydetmek, bunlara açıklama eklemek ve aramak için veri kataloğu kaynaklarına programlı erişim sağlayan REST tabanlı bir API 'dir.
 
-GitHub 'da yaptığımız örnekler şunlardır:
+## <a name="samples-available-on-githubcom"></a>GitHub.com üzerinde kullanılabilir örnekler
 
 * [Azure Veri Kataloğu ile çalışmaya başlama](https://github.com/Azure-Samples/data-catalog-dotnet-get-started/)
   

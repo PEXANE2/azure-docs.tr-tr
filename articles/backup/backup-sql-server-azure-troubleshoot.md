@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: article
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 323470adfe56ee20fe0fb64aeba38b6af4330351
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: c456dfec72f98dc4ae06f1d7d5d9fb461182d579
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827592"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018992"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Azure Backup kullanarak SQL Server veritabanı yedeklemesi sorunlarını giderme
 
@@ -163,7 +163,7 @@ Yukarıdaki senaryolarda, VM 'de bir yeniden kaydetme işlemi tetiklemeniz öner
 
 Dosyaların toplam dize boyutu yalnızca dosya sayısına ve ayrıca adlarına ve yollarına göre değişir. Her veritabanı dosyası için, mantıksal dosya adını ve fiziksel yolu alın. Bu SQL sorgusunu kullanabilirsiniz:
 
-```
+```sql
 SELECT mf.name AS LogicalName, Physical_Name AS Location FROM sys.master_files mf
                INNER JOIN sys.databases db ON db.database_id = mf.database_id
                WHERE db.name = N'<Database Name>'"
@@ -171,13 +171,13 @@ SELECT mf.name AS LogicalName, Physical_Name AS Location FROM sys.master_files m
 
 Şimdi aşağıdaki biçimde düzenleyin:
 
-```
+```json
 [{"path":"<Location>","logicalName":"<LogicalName>","isDir":false},{"path":"<Location>","logicalName":"<LogicalName>","isDir":false}]}
 ```
 
 Bir örneği aşağıda verilmiştir:
 
-```
+```json
 [{"path":"F:\\Data\\TestDB12.mdf","logicalName":"TestDB12","isDir":false},{"path":"F:\\Log\\TestDB12_log.ldf","logicalName":"TestDB12_log","isDir":false}]}
 ```
 
@@ -188,7 +188,7 @@ Bir örneği aşağıda verilmiştir:
 Geri yükleme işlemi sırasında hedef geri yükleme dosya yolunu, veritabanı dosyasının hedef geri yükleme yoluna eşlemesini içeren bir JSON dosyası yerleştirerek geçersiz kılabilirsiniz. Bir `database_name.json` dosya oluşturun ve *C:\Program files\azure iş yükü backup\bin\plugins\sql*konumuna yerleştirin.
 
 Dosyanın içeriği şu biçimde olmalıdır:
-```
+```json
 [
   {
     "Path": "<Restore_Path>",
@@ -205,7 +205,7 @@ Dosyanın içeriği şu biçimde olmalıdır:
 
 Bir örneği aşağıda verilmiştir:
 
-```
+```json
 [
   {
    "Path": "F:\\Data\\testdb2_1546408741449456.mdf",
@@ -222,7 +222,7 @@ Bir örneği aşağıda verilmiştir:
 
 Önceki içerikte, aşağıdaki SQL sorgusunu kullanarak veritabanı dosyasının mantıksal adını alabilirsiniz:
 
-```
+```sql
 SELECT mf.name AS LogicalName FROM sys.master_files mf
                 INNER JOIN sys.databases db ON db.database_id = mf.database_id
                 WHERE db.name = N'<Database Name>'"

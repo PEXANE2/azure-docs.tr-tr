@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/07/2019
 ms.author: hrasheed
-ms.openlocfilehash: 301ad4f940e6bd4eedb3a4df64e4740d29effe03
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 5836dda186c7bd9baeafa193052b0b75d63e291b
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68406227"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019615"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>Apache ambarı 'nı kullanarak HDInsight kümelerini yönetme REST API
 
@@ -42,6 +42,8 @@ Apache ambarı REST API kullanarak Azure HDInsight 'ta Apache Hadoop kümelerini
 ## <a name="authentication"></a>Authentication
 
 HDInsight üzerinde ambarı 'na bağlanmak için HTTPS gerekir. Küme oluşturma sırasında verdiğiniz yönetici hesabı adını (varsayılan **yönetici**) ve parolayı kullanın.
+
+Yerine `admin`kurumsal güvenlik paketi kümeleri için, gibi `username@domain.onmicrosoft.com`tam bir Kullanıcı adı kullanın.
 
 ## <a name="examples"></a>Örnekler
 

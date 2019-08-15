@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/12/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 23386139364a72b0275936cdc458c8cd2a5771c9
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 0e3f996ab2a42057198368759c75f10e911d5f54
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68386995"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68936919"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>BGP tüm Azure VPN Gateway SKU'larında destekleniyor mu?
 Hayır, BGP Azure **VpnGw1**, **VpnGw2**, **VpnGw3**, **Standard** ve **HighPerformance** VPN ağ geçitlerinde desteklenir. **Temel** SKU DESTEKLENMEZ.
@@ -39,6 +39,13 @@ Bu ASN’leri Azure VPN ağ geçitlerine bağlanırken şirket içi VPN cihazlar
 Evet, aşağıdaki ASN'ler [IANA tarafından ayrılmıştır](http://www.iana.org/assignments/iana-as-numbers-special-registry/iana-as-numbers-special-registry.xhtml) ve Azure VPN ağ geçidinizde yapılandırılamaz:
 
 23456, 64496-64511, 65535-65551 and 429496729
+
+### <a name="what-private-asns-can-i-use"></a>Hangi özel ASNs 'yi kullanabilirim?
+Kullanılabilecek kullanılabilir özel ASNs aralığı şunlardır:
+
+* 64512-65514, 65521-65534
+
+Bu ASNs 'ler ıANA veya Azure tarafından kullanılmak üzere ayrılmamıştır ve bu nedenle Azure VPN Gateway atamak için kullanılabilir.
 
 ### <a name="can-i-use-the-same-asn-for-both-on-premises-vpn-networks-and-azure-vnets"></a>Aynı ASN’yi hem şirket içi VPN ağlarında, hem de Azure VNet'lerde kullanabilir miyim?
 Hayır, BGP’yle bunlara birlikte bağlanıyorsanız, şirket içi ağlar ve Azure VNet'ler arasında farklı ASN’ler atamanız gerekir. Şirket içi ve dışı karışık bağlantınız için BGP'nin etkin olup olmamasından bağımsız olarak Azure VPN Ağ Geçitlerine varsayılan 65515 ASN'si atanmıştır. VPN Gateway oluştururken farklı ASN atayarak bu varsayılan değeri geçersiz kılabilir veya ağ geçidini oluşturduktan sonra ASN’yi değiştirebilirsiniz. Şirket içi ASN’lerinizi ilgili Azure Yerel Ağ Geçitlerine atamanız gerekir.
@@ -88,7 +95,7 @@ Evet.
 Azure VPN ağ geçidi, etkin-etkin VPN ağ geçitleri için GatewaySubnet aralığından tek bir IP adresi ayırır veya etkin-etkin VPN ağ geçitleri için iki IP adresi ayırır. PowerShell (Get-AzVirtualNetworkGateway) kullanarak ayrılan gerçek BGP IP adreslerini alabilir, "bgpPeeringAddress" özelliğini arayabilir) veya Azure portal (ağ geçidi yapılandırma sayfasında "BGP ASN 'yi Yapılandır" özelliğinin altında).
 
 ### <a name="what-are-the-requirements-for-the-bgp-peer-ip-addresses-on-my-vpn-device"></a>VPN cihazımdaki BGP Eşdeğer IP adreslerinin gereksinimleri nelerdir?
-Şirket içi BGP **eş adresiniz,** VPN CIHAZıNıZıN genel IP adresi veya VPN Gateway VNET adres alanı ile aynı olmamalıdır. BGP Eşdeğer IP’si için VPN cihazında farklı bir IP adresi kullanın. Bu, cihaz üzerindeki geri döngü arabirimine atanmış bir adres olabilir, ancak bir APIPA (169.254.x.x) adresi olamayacağını da hatırlatmak isteriz. Bu adresi, konumu temsil eden ilgili Yerel Ağ Geçidi’nde belirtin.
+Şirket içi BGP eş adresiniz, VPN CIHAZıNıZıN genel IP adresi veya VPN Gateway VNET adres alanı ile aynı olmamalıdır. BGP Eşdeğer IP’si için VPN cihazında farklı bir IP adresi kullanın. Bu, cihaz üzerindeki geri döngü arabirimine atanmış bir adres olabilir, ancak bir APIPA (169.254.x.x) adresi olamayacağını da hatırlatmak isteriz. Bu adresi, konumu temsil eden ilgili Yerel Ağ Geçidi’nde belirtin.
 
 ### <a name="what-should-i-specify-as-my-address-prefixes-for-the-local-network-gateway-when-i-use-bgp"></a>BGP kullandığımda Yerel Ağ Geçidi için adres önekim olarak ne belirtmeliyim?
 Azure Yerel Ağ Geçidi, şirket içi ağ için başlangıç adresi öneklerini belirtir. BGP ile, BGP Eşdeğer IP adresinizin konak önekini (/32 önek) bu şirket içi ağın adres alanı olarak ayırmalısınız. BGP Eşdeğer IP’niz 10.52.255.254 olursa, bu şirket içi ağda temsil edilen Yerel Ağ Geçidine ait "10.52.255.254/32" olarak belirtmelisiniz. Azure VPN Gateway’in S2S VPN tüneli aracılığıyla BGP oturumunu başlatmasını sağlamak içindir.

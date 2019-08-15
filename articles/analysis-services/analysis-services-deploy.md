@@ -1,5 +1,5 @@
 ---
-title: Visual Studio (SSDT) kullanarak Azure Analysis Services'e dağıtma | Microsoft Docs
+title: Visual Studio 'Yu (SSDT) kullanarak Azure Analysis Services dağıtma | Microsoft Docs
 description: SSDT kullanarak bir tablo modelini Azure Analysis Services sunucusuna dağıtma hakkında bilgi edinin.
 author: minewiskan
 manager: kfile
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b9740d74a25964286ea92b4238684db81a64c9e2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2811685df678730b90f2fdb28d472f8fa268ec6a
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60497514"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932447"
 ---
 # <a name="deploy-a-model-from-visual-studio"></a>Visual Studio üzerinden model dağıtma
 
@@ -24,7 +24,7 @@ Azure aboneliğinizde bir sunucu oluşturduktan sonra, aboneliğinize bir tablo 
 Başlamak için gerekli olanlar:
 
 * Azure’da **Analysis Services sunucusu**. Daha fazla bilgi için bkz. [Azure Analysis Services sunucusu oluşturma](analysis-services-create-server.md).
-* SSDT’deki **tablosal model projesi** ya da 1200 veya üzeri uyumluluk düzeyine sahip mevcut bir tablosal model. Daha önce hiç oluşturmadınız mı? [Adventure Works İnternet satışı tablosal modelleme öğreticisini](/sql/analysis-services/tabular-modeling-adventure-works-tutorial) deneyin.
+* SSDT’deki **tablosal model projesi** ya da 1200 veya üzeri uyumluluk düzeyine sahip mevcut bir tablosal model. Daha önce hiç oluşturmadınız mı? [Adventure Works İnternet satışı tablosal modelleme öğreticisini](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial) deneyin.
 * **Şirket içi ağ geçidi** - Bir veya daha fazla veri kaynağı kuruluşunuzun ağında şirket içi olarak bulunuyorsa bir [Şirket içi veri ağ geçidi](analysis-services-gateway.md) yüklemeniz gerekir. Ağ geçidi, buluttaki sunucunuzun modeldeki verileri işlemek ve yenilemek üzere şirket içi veri kaynaklarınıza bağlanması için gereklidir.
 
 > [!TIP]
@@ -32,13 +32,13 @@ Başlamak için gerekli olanlar:
 > 
 > 
 
-## <a name="get-the-server-name"></a>Sunucu adını alma
+## <a name="get-the-server-name"></a>Sunucu adını al
 
 **Azure portalı** > sunucu > **Genel Bakış** > **Sunucu adı** menüsünde sunucu adını kopyalayın.
    
 ![Azure'da sunucu adını alma](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
 
-## <a name="to-deploy-from-ssdt"></a>SSDT'den dağıtmak için
+## <a name="to-deploy-from-ssdt"></a>SSDT 'den dağıtmak için
 
 1. SSDT > **Çözüm Gezgini** menüsünde projeye sağ tıklayın > **Özellikler**’e tıklayın. Ardından **Dağıtım** > **Sunucu** alanına sunucu adını yapıştırın.   
    

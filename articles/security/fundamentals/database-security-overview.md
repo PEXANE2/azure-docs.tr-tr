@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: TomSh
-ms.openlocfilehash: dc4c36735ade8a094acbf897ee040a239a1bed48
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 9053866b76ec1cc409c3f00d0af59bf3761d3936
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727407"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68927973"
 ---
 # <a name="azure-database-security-overview"></a>Azure veritabanı güvenliğine genel bakış
 
@@ -206,7 +206,7 @@ SQL Gelişmiş tehdit koruması (ATP), veri bulma & sınıflandırması, güvenl
 
 [Azure Güvenlik Merkezi](https://azure.microsoft.com/documentation/services/security-center/), tehditleri önlemenize, algılamanıza ve yanıtlamanıza yardımcı olur. Azure abonelikleriniz genelinde tümleşik güvenlik izleme ve ilke yönetimi sağlar. Başka türlü fark edilmemiş tehditleri algılamaya yardımcı olur ve güvenlik çözümlerinin geniş bir ekosistemiyle birlikte çalışabilir.
 
-[Güvenlik Merkezi](https://docs.microsoft.com/azure/security-center/security-center-sql-database) , tüm sunucularınızın ve veritabanlarınızın güvenliğine ilişkin görünürlük sağlayarak SQL veritabanındaki verileri korumanıza yardımcı olur. Güvenlik Merkezi ile şunları yapabilirsiniz:
+[Güvenlik Merkezi](../../security-center/security-center-sql-database.md) , tüm sunucularınızın ve veritabanlarınızın güvenliğine ilişkin görünürlük sağlayarak SQL veritabanındaki verileri korumanıza yardımcı olur. Güvenlik Merkezi ile şunları yapabilirsiniz:
 
 - SQL veritabanı şifreleme ve denetleme ilkelerini tanımlayın.
 - Tüm aboneliklerinizde SQL veritabanı kaynaklarının güvenliğini izleyin.

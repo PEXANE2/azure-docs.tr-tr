@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: f0f00745f2f7781bda0e636167b1cf1a4045f7cd
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 481e6c5f2271651627577af3d03f9dd4da725146
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881367"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68949918"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools çalışın
 
@@ -93,7 +93,7 @@ Aşağıdaki adımlarda, macOS 'a çekirdek araçları yüklemek için homebrew 
 
 Aşağıdaki adımlarda, Ubuntu/de, Linux dağıtımına çekirdek araçları yüklemek için [apt](https://wiki.debian.org/Apt) kullanılır. Diğer Linux dağıtımları için bkz. [temel araçlar Benioku dosyası](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux).
 
-1. Microsoft ürün anahtarını güvenilir olarak Kaydet:
+1. Paket bütünlüğünü doğrulamak için Microsoft paket deposu GPG anahtarını yükler:
 
     ```bash
     curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
@@ -135,15 +135,19 @@ func init MyFunctionProj
 ```
 
 Bir proje adı sağladığınızda, bu ada sahip yeni bir klasör oluşturulur ve başlatılır. Aksi takdirde, geçerli klasör başlatılır.  
-Sürüm 2. x içinde, komutunu çalıştırdığınızda projeniz için bir çalışma zamanı seçmeniz gerekir. JavaScript işlevleri geliştirmeyi planlıyorsanız **düğüm**' yi seçin:
+Sürüm 2. x içinde, komutunu çalıştırdığınızda projeniz için bir çalışma zamanı seçmeniz gerekir. 
 
 ```output
 Select a worker runtime:
 dotnet
 node
+python (preview)
+powershell (preview)
 ```
 
-Yukarı/aşağı ok tuşlarını kullanarak bir dil seçin ve ENTER tuşuna basın. Çıktı bir JavaScript projesi için aşağıdaki örneğe benzer şekilde görünür:
+Yukarı/aşağı ok tuşlarını kullanarak bir dil seçin ve ENTER tuşuna basın. JavaScript veya TypeScript işlevleri geliştirmeyi planlıyorsanız **düğüm**' yi seçin ve ardından dili seçin. TypeScript [bazı ek gereksinimlere](functions-reference-node.md#typescript)sahiptir. 
+
+Çıktı bir JavaScript projesi için aşağıdaki örneğe benzer şekilde görünür:
 
 ```output
 Select a worker runtime: node
@@ -269,15 +273,40 @@ func new --template "Queue Trigger" --name QueueTriggerJS
 
 ## <a name="start"></a>İşlevleri yerel olarak çalıştır
 
-Bir Işlevler projesi çalıştırmak için, Işlevler ana bilgisayarını çalıştırın. Konak, projedeki tüm işlevler için Tetikleyicileri etkinleştirilir:
+Bir Işlevler projesi çalıştırmak için, Işlevler ana bilgisayarını çalıştırın. Konak, projedeki tüm işlevler için Tetikleyicileri mümkün. 
 
-```bash
+### <a name="version-2x"></a>Sürüm 2. x
+
+Çalışma zamanının 2. x sürümünde, başlangıç komutu Proje dilinize bağlı olarak değişir.
+
+#### <a name="c"></a>C\#
+
+```command
+func start --build
+```
+
+#### <a name="javascript"></a>JavaScript
+
+```command
+func start
+```
+
+#### <a name="typescript"></a>TypeScript
+
+```command
+npm install
+npm start     
+```
+
+### <a name="version-1x"></a>Sürüm 1. x
+
+İşlevler çalışma zamanının sürüm 1. x, aşağıdaki örnekte `host` olduğu gibi komutunu gerektirir:
+
+```command
 func host start
 ```
 
-`host` Komut yalnızca 1. x sürümünde gereklidir.
-
-`func host start`Aşağıdaki seçenekleri destekler:
+`func start`Aşağıdaki seçenekleri destekler:
 
 | Seçenek     | Açıklama                            |
 | ------------ | -------------------------------------- |
@@ -293,8 +322,6 @@ func host start
 | **`--script-root --prefix`** | Çalıştırılacak veya dağıtılacak işlev uygulamasının köküne ait yolu belirtmek için kullanılır. Bu, bir alt klasöre proje dosyaları üreten derlenmiş projeler için kullanılır. Örneğin, bir C# sınıf kitaplığı projesi oluşturduğunuzda, Host. JSON, Local. Settings. JSON ve function. JSON dosyaları gibi `MyProject/bin/Debug/netstandard2.0`bir yol içeren bir *kök* alt klasörde oluşturulur. Bu durumda, önekini olarak `--script-root MyProject/bin/Debug/netstandard2.0`ayarlayın. Bu, Azure 'da çalışırken işlev uygulamasının köküdür. |
 | **`--timeout -t`** | Işlevlerin başlaması için gereken zaman aşımı (saniye cinsinden). Varsayılan: 20 saniye.|
 | **`--useHttps`** | `https://localhost:{port}` Yerine öğesine`http://localhost:{port}`bağlayın. Varsayılan olarak, bu seçenek bilgisayarınızda güvenilir bir sertifika oluşturur.|
-
-Bir C# sınıf kitaplığı projesi (. csproj) için, Library. dll dosyasını `--build` oluşturma seçeneğini de eklemeniz gerekir.
 
 Işlevler ana bilgisayarı başlatıldığında, HTTP ile tetiklenen işlevlerin URL 'sini verir:
 

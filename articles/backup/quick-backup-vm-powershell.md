@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 04/16/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 67e539d3c0d906685f5d05e37a6d9a838e4a014d
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: b5c800e1b07fab2026ab74209a41bc07cc56238f
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951821"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019486"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>PowerShell ile Azure'daki bir sanal makineyi yedekleme
 
@@ -157,7 +157,7 @@ Geçici yedekleme işini aşağıdaki şekilde çalıştırın:
 ## <a name="clean-up-the-deployment"></a>Dağıtımı temizle
 
 Artık VM 'yi yedeklemeniz gerekmiyorsa, temizleyebilirsiniz.
-- VM 'yi geri yüklemeyi denemek istiyorsanız temizleme işlemini atlayın.
+- VM 'yi geri yüklemeyi denemek istiyorsanız, temizleme işlemini atlayın.
 - Var olan bir VM kullandıysanız, kaynak grubunu ve VM 'yi yerinde bırakmak için son [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) cmdlet 'ini atlayabilirsiniz.
 
 Korumayı devre dışı bırakın, geri yükleme noktalarını ve kasasını kaldırın. Daha sonra kaynak grubunu ve ilişkili VM kaynaklarını aşağıdaki gibi silin:

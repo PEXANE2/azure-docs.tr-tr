@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: dacurwin
-ms.openlocfilehash: c53e2c383739b717a5ce94c872b4616bbd1b3f26
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 9ae21e2bf71789d0b0dd19e3dd7a65ad10fae241
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639946"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018963"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Azure Backup Sunucusu ile VMware VM 'lerini yedekleme
 
@@ -38,7 +38,7 @@ Varsayılan olarak, Azure Backup Sunucusu HTTPS üzerinden VMware sunucularıyla
 
 ### <a name="before-you-start"></a>Başlamadan önce
 
-- HTTPS 'yi kullanmak istemiyorsanız, [Tüm VMware sunucuları IÇIN HTTPS sertifika doğrulamasını devre dışı](backup-azure-backup-server-vmware.md#disable-https-certificate-validation)bırakabilirsiniz.
+- HTTPS kullanmak istemiyorsanız, [Tüm VMware sunucuları IÇIN HTTPS sertifika doğrulamasını devre dışı](backup-azure-backup-server-vmware.md#disable-https-certificate-validation)bırakabilirsiniz.
 - Genellikle Azure Backup Sunucusu makinesindeki bir tarayıcıdan vSphere Web Istemcisini kullanarak vCenter/ESXi sunucusuna bağlanırsınız. Bunu ilk yaptığınızda bağlantı güvenli olmaz ve şunları gösterir.
 - Azure Backup Sunucusu yedeklemeleri nasıl işlediğini anlamanız önemlidir.
     - İlk adım olarak, verileri yerel disk depolama alanına yedekler Azure Backup Sunucusu. Azure Backup Sunucusu, korunan veriler için Azure Backup Sunucusu disk kurtarma noktalarını depolayan bir depolama havuzu, bir dizi disk ve birim kullanır. Depolama havuzu doğrudan bağlı depolama (DAS), bir Fiber Kanal SAN veya Iscsı depolama cihazı veya SAN olabilir. VMware VM verilerinizin yerel yedeklemesi için yeterli depolama alanı olduğundan emin olmanız önemlidir.
@@ -102,10 +102,10 @@ Güvenli bir kanalı aşağıdaki şekilde ayarlayın:
 
 ### <a name="disable-https-certificate-validation"></a>HTTPS sertifika doğrulamasını devre dışı bırak
 
-Kuruluşunuz dahilinde güvenli sınırlarınız varsa ve VMware sunucuları ile Azure Backup Sunucusu makine arasında HTTPS protokolünü kullanmak istemiyorsanız, HTTPS 'yi şu şekilde devre dışı bırakın: u
+Kuruluşunuz dahilinde güvenli sınırlarınız varsa ve VMware sunucuları ile Azure Backup Sunucusu makine arasında HTTPS protokolünü kullanmak istemiyorsanız, HTTPS 'yi şu şekilde devre dışı bırakın: 
 1. Aşağıdaki metni kopyalayıp bir. txt dosyasına yapıştırın.
 
-      ```
+      ```text
       Windows Registry Editor Version 5.00
       [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager\VMWare]
       "IgnoreCertificateValidation"=dword:00000001
@@ -188,7 +188,7 @@ VirtualMachine. State. RemoveSnapshot | VirtualMachine. State. RemoveSnapshot
     ![Genel Izinler paneli](./media/backup-azure-backup-server-vmware/vmware-add-new-perms.png)
 
 
-5. **Küresel Izin kökü**' nde, Kullanıcı veya grup ' u seçmek Için izin Ekle ' **ye tıklayın.**
+5. **Küresel Izin kökü**' nde, Kullanıcı veya grup ' u seçmek için izin Ekle ' ye tıklayın.
 
     ![Kullanıcı veya grup seçin](./media/backup-azure-backup-server-vmware/vmware-add-new-global-perm.png)
 
@@ -221,7 +221,7 @@ VirtualMachine. State. RemoveSnapshot | VirtualMachine. State. RemoveSnapshot
 
     ![Kimlik bilgilerini Azure Backup Sunucusu Yönet iletişim kutusu](./media/backup-azure-backup-server-vmware/mabs-manage-credentials-dialog.png)
 
-4. **Kimlik bilgisi ekle** ' de, yeni kimlik bilgisi için bir ad ve açıklama girin ve VMware sunucusunda tanımladığınız Kullanıcı adını ve parolayı belirtin. Ad, *contoso vCenter kimlik bilgisi* , bu yordamdaki kimlik bilgisini belirlemek için kullanılır. VMware sunucusu ve Azure Backup Sunucusu aynı etki alanında değilse, Kullanıcı adında etki alanını belirtin.
+4. **Kimlik bilgisi ekle**' de, yeni kimlik bilgisi için bir ad ve açıklama girin ve VMware sunucusunda tanımladığınız Kullanıcı adını ve parolayı belirtin. Ad, *contoso vCenter kimlik bilgisi* , bu yordamdaki kimlik bilgisini belirlemek için kullanılır. VMware sunucusu ve Azure Backup Sunucusu aynı etki alanında değilse, Kullanıcı adında etki alanını belirtin.
 
     ![Kimlik bilgisi Ekle iletişim kutusu Azure Backup Sunucusu](./media/backup-azure-backup-server-vmware/mabs-add-credential-dialog2.png)
 
@@ -286,10 +286,10 @@ Yedekleme için VMware VM 'Leri ekleyin. Koruma grupları birden çok VM toplar 
 
 1. **Koruma grubu türünü seçin** sayfasında **sunucular** ' ı seçin ve ardından **İleri**' ye tıklayın. **Grup üyelerini seçin** sayfası görüntülenir.
 
-1. **Grup üyelerini seçin** > yedeklemek Istediğiniz VM 'leri (veya VM klasörlerini) seçin. Ardından **İleri**'ye tıklayın.
+1. **Grup üyelerini seçin**bölümünde yedeklemek Istediğiniz VM 'leri (veya VM klasörlerini) seçin. Ardından **İleri**'ye tıklayın.
 
     - Bir klasör seçtiğinizde veya bu klasörün içindeki VM 'Ler veya klasörler yedekleme için de seçilir. Yedeklemek istemediğiniz klasörlerin veya VM 'Lerin işaretini kaldırabilirsiniz.
-1. Bir VM veya klasör zaten yedekleniyorsa, onu seçemezsiniz. Bu, bir VM için yinelenen kurtarma noktalarının oluşturulmadığından emin olun. .
+1. Bir VM veya klasör zaten yedekleniyorsa, onu seçemezsiniz. Bu, bir VM için yinelenen kurtarma noktalarının oluşturulmamasını sağlar.
 
      ![Grup üyelerini seçin](./media/backup-azure-backup-server-vmware/server-add-selected-members.png)
 
@@ -354,7 +354,7 @@ Yedekleme için VMware VM 'Leri ekleyin. Koruma grupları birden çok VM toplar 
 
 ## <a name="vmware-vsphere-67"></a>VMWare vSphere 6,7
 
-VSphere 6,7 yedeklemesi için aşağıdakileri yapın:
+VSphere 6,7 'yi yedeklemek için aşağıdakileri yapın:
 
 - DPM sunucusunda TLS 1,2 'yi etkinleştirme
   >[!Note]

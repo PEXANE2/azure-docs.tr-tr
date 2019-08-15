@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 8e2a98748f4fef69b4fd6e3b32d15560641a6336
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: a8545939fd027989519e0f7a161f750ec676749a
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737051"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976813"
 ---
 # <a name="save-searches-and-pin-data-assets-in-azure-data-catalog"></a>Azure Veri Kataloğu 'nda aramaları kaydetme ve veri varlıklarını sabitleme
 ## <a name="introduction"></a>Giriş
@@ -37,7 +37,7 @@ Kayıtlı bir arama oluşturmak için aşağıdakileri yapın:
 ### <a name="manage-saved-searches"></a>Kayıtlı aramaları yönetme
 Bir veya daha fazla aramayı kaydettikten sonra, **geçerli arama** kutusunun altında **kaydedilmiş aramalar** seçeneği görüntülenir. Liste genişletildiğinde, tüm kayıtlı aramalar görüntülenir.
 
- ![Kayıtlı aramaların listesi](./media/data-catalog-how-to-save-pin/03-list.png)
+ ![Veri Kataloğu-kayıtlı aramaların listesi](./media/data-catalog-how-to-save-pin/03-list.png)
 
 Aşağıdakilerden birini yapın:
 
@@ -56,18 +56,18 @@ Aşağıdakilerden birini yapın:
 ### <a name="organizational-saved-searches"></a>Kurumsal kayıtlı aramalar
 Kuruluşunuzdaki tüm kullanıcılar, kendi kullanımları için aramaları kaydedebilir. Veri Kataloğu yöneticileri Ayrıca, kuruluştaki tüm kullanıcılar için aramaları kaydedebilir. Yöneticiler bir arama kaydederken, **Şirket seçeneği içinde bir paylaşımda** sunulur. Bu seçeneğin belirlenmesi, kuruluştaki tüm kullanıcılar için kayıtlı aramayı paylaşır.
 
- ![Kurumsal kayıtlı aramalar](./media/data-catalog-how-to-save-pin/08-organizational-saved-search.png)
+ ![Veri Kataloğu-kurumsal kayıtlı aramalar](./media/data-catalog-how-to-save-pin/08-organizational-saved-search.png)
 
 ## <a name="pinned-data-assets"></a>Sabitlenmiş veri varlıkları
 Kayıtlı aramalarla arama tanımlarını kaydedebilir ve yeniden kullanabilirsiniz. Arama tarafından döndürülen veri varlıkları, kataloğun içeriği değiştikçe zaman içinde değişebilir. Veri varlıklarını sabitlemeyi yaparken, bir arama kullanmaya gerek kalmadan kolayca erişim sağlamak için belirli veri varlıklarını açıkça tanımlayabilirsiniz.
 
 Veri varlığını sabitleme basittir. Veri varlığını sabitlenmiş listenize eklemek için **sabitle** simgesine tıklamanız yeterlidir. Simge, kutucuk görünümündeki varlık kutucuğunun köşesinde ve Azure Veri Kataloğu portalındaki liste görünümünde bulunan en soldaki sütunda görüntülenir.
 
-![Veri varlık PIN simgesi](./media/data-catalog-how-to-save-pin/05-pinning.png)
+![Veri Kataloğu-veri-varlık PIN simgesi](./media/data-catalog-how-to-save-pin/05-pinning.png)
 
 Veri varlığının sabitlenmesi eşit ölçüde basittir. Seçili varlık için ayarı değiştirmek üzere **Ayır** simgesine tıklamanız yeterlidir.
 
-![Veri varlık sabitleme simgesi](./media/data-catalog-how-to-save-pin/06-unpinning.png)
+![Veri Kataloğu-veri varlık sabitleme simgesi](./media/data-catalog-how-to-save-pin/06-unpinning.png)
 
 ## <a name="the-my-assets-section"></a>Varlıklarım bölümü
 Veri Kataloğu Portalı giriş sayfası, geçerli kullanıcıya ilgilendiğiniz varlıkları görüntüleyen **varlıklarım** bölümünü içerir. Bu bölüm hem sabitlenmiş varlıkları hem de kaydedilmiş aramaları içerir.

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 928b0bcfb32d1a319c811d00fc84a37f85702895
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: c163e3cce862640d43f8696dca4eeef29f2ae12a
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68857518"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68912521"
 ---
 Aşağıdaki tabloda [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)'a özgü kotalar ve sınırlar listelenmektedir. Event Hubs fiyatlandırması hakkında daha fazla bilgi için bkz. [Event Hubs fiyatlandırması](https://azure.microsoft.com/pricing/details/event-hubs/).
 
@@ -36,6 +36,8 @@ Aşağıdaki tabloda [Azure Event Hubs](https://azure.microsoft.com/services/eve
 | Olay Hub 'ı başına Tüketici grubu sayısı |Varlık | - |1\. |20 |
 | Ad alanı başına AMQP bağlantısı sayısı |Ad Alanı |Daha sonraki ek bağlantı istekleri reddedilir ve çağıran kod tarafından bir özel durum alınır. |100 |5,000|
 | Olay verilerinin maksimum bekletme süresi |Varlık | - |1 gün |1-7 gün |
+|Apache Kafka etkin ad alanı|Ad Alanı |Event Hubs ad alanı, uygulamaları Kafka protokolünü kullanarak akışlar |Hayır | Evet |
+|Capture |Varlık | Etkinleştirildiğinde, aynı akışta mikro toplu işler |Hayır |Evet |
 
 
 ### <a name="event-hubs-dedicated---quotas-and-limits"></a>Event Hubs Ayrılmış-kotalar ve sınırlar

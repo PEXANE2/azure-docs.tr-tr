@@ -11,14 +11,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: b819a990b9f607aaf70bf2e16a5857de3f7306cc
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 320e92e45f319e394b5a38b3f1e8ef3f314920b8
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827501"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966336"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Azure Data Factory meta veri Al etkinliği
 
@@ -138,8 +138,8 @@ Aşağıdaki meta veri türleri, alınacak GetMetadata etkinlik alanı listesind
 -------- | ----------- | --------
 fieldList | Gerekli meta veri bilgisi türlerini listeler. Desteklenen meta verilerde [meta veri seçenekleri](#metadata-options) bölümünde ayrıntılara bakın. | Evet 
 veri kümesi | Meta veri etkinliği GetMetadata etkinliği tarafından alınacak olan başvuru veri kümesi. Desteklenen bağlayıcılar bölümünde [desteklenen yetenekler](#supported-capabilities) bölümüne bakın ve veri kümesi sözdizimi ayrıntılarında bağlayıcı konusuna başvurun. | Evet
-formatSettings | Biçim türü veri kümesi (Parquet, DelimitedText) kullanılırken geçerlidir. | Hayır
-storeSettings | Biçim türü veri kümesi (Parquet, DelimitedText) kullanılırken geçerlidir. | Hayır
+formatSettings | Biçim türü veri kümesi kullanırken uygulayın. | Hayır
+storeSettings | Biçim türü veri kümesi kullanırken uygulayın. | Hayır
 
 ## <a name="sample-output"></a>Örnek çıktı
 

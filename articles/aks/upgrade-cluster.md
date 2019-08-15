@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
-ms.openlocfilehash: 2ed58846b9e7816092f0fc0787204921071d75e9
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 4cf959c5218160a8fe341e6ffdfdf459c1a19247
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498550"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019164"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes hizmeti (AKS) kümesini yükseltme
 
@@ -36,26 +36,26 @@ az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --outpu
 ```
 
 > [!NOTE]
-> Bir AKS kümesini yükselttiğinizde Kubernetes ikincil sürümleri atlanamaz. Örneğin, *1.11. x* -> *1.12. x* veya *1.12. x* -> *1.13. x* arasındaki yükseltmelere izin verilir, ancak *1.11. x* -> *1.13. x* değildir.
+> Bir AKS kümesini yükselttiğinizde Kubernetes ikincil sürümleri atlanamaz. Örneğin, *1.12. x* -> *1.13. x* veya *1.13. x* -> *1.14. x* arasındaki yükseltmelere izin verilir, ancak *1.12. x* -> *1.14. x* değildir.
 >
-> Yükseltmek için, *1.11. x* -> *1.13. x*sürümünden önce *1.11. x* -> *1.12. x*sürümünden yükseltme yapın ve ardından *1.12. x* -> *1.13. x*'den yükseltme yapın.
+> Yükseltmek için, *1.12. x* -> *1.14. x*sürümünden önce *1.12. x* -> *1.13. x*sürümünden yükseltme yapın ve ardından *1.13. x* -> *1.14. x*'den yükseltme yapın.
 
-Aşağıdaki örnek çıktı, kümenin *1.12.7* veya *1.12.8*sürümüne yükseltildiğini gösterir:
+Aşağıdaki örnek çıktı, kümenin *1.13.9*sürümüne yükseltildiğini gösterir:
 
 ```console
-Name     ResourceGroup    MasterVersion  NodePoolVersion  Upgrades
--------  ---------------  -------------  ---------------  --------------
-default  myResourceGroup  1.11.9         1.11.9           1.12.7, 1.12.8
+Name     ResourceGroup    MasterVersion    NodePoolVersion    Upgrades
+-------  ---------------  ---------------  -----------------  --------------
+default  myResourceGroup  1.12.8           1.12.8             1.13.9
 ```
 
 ## <a name="upgrade-an-aks-cluster"></a>AKS kümesini yükseltme
 
 AKS kümeniz için kullanılabilir sürümlerin bir listesi ile yükseltmek için [az aks Upgrade][az-aks-upgrade] komutunu kullanın. Yükseltme işlemi sırasında, AKS, belirtilen Kubernetes sürümünü çalıştıran kümeye yeni bir düğüm ekler, ardından çalışan uygulamaların kesintiye uğramasını azaltmak için eski düğümlerden birini dikkatle indirin [ve][kubernetes-drain] kapatın. Yeni düğüm çalışan uygulama yığınlarını onayladığı zaman, eski düğüm silinir. Bu işlem, kümedeki tüm düğümler yükseltilene kadar yinelenir.
 
-Aşağıdaki örnek, bir kümeyi *1.12.8*sürümüne yükseltir:
+Aşağıdaki örnek, bir kümeyi *1.13.9*sürümüne yükseltir:
 
 ```azurecli-interactive
-az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.12.8
+az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.13.9
 ```
 
 Kaç tane düğüme sahip olduğunuza bağlı olarak, kümeyi yükseltmek birkaç dakika sürer.
@@ -66,12 +66,12 @@ Yükseltmenin başarılı olduğunu doğrulamak için [az aks Show][az-aks-show]
 az aks show --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-Aşağıdaki örnek çıktıda, kümenin artık *1.12.8*çalıştığını gösterilmektedir:
+Aşağıdaki örnek çıktıda, kümenin artık *1.13.9*çalıştığını gösterilmektedir:
 
 ```json
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
 ------------  ----------  ---------------  -------------------  -------------------  ---------------------------------------------------------------
-myAKSCluster  eastus      myResourceGroup  1.12.8               Succeeded            myaksclust-myresourcegroup-19da35-90efab95.hcp.eastus.azmk8s.io
+myAKSCluster  eastus      myResourceGroup  1.13.9               Succeeded            myaksclust-myresourcegroup-19da35-90efab95.hcp.eastus.azmk8s.io
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

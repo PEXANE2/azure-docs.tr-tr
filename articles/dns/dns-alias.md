@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 07/19/2019
+ms.date: 08/09/2019
 ms.author: victorh
-ms.openlocfilehash: 89b50cff2d46f8c92c09653aeaac49551c97e9c6
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: 9a3cdb846921c2d73dd2cca5d679663c1ba9e192
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314464"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946893"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Azure DNS diğer ad kayıtlarına genel bakış
 
@@ -29,7 +29,7 @@ Bir Azure DNS bölgesindeki aşağıdaki kayıt türleri için bir diğer ad kay
 
 ## <a name="capabilities"></a>Özellikler
 
-- **DNS A/AAAA kayıt kümesinden ortak bir IP kaynağını işaret edin.** A/AAAA kayıt kümesi oluşturabilir ve bunu bir genel IP kaynağını işaret etmek üzere bir diğer ad kayıt kümesi yapabilirsiniz. Genel IP adresi değişirse veya silinirse DNS kayıt kümesi otomatik olarak değişir. Hatalı IP adreslerine işaret eden, salyaze DNS kayıtları kaçınılmaz.
+- **DNS A/AAAA kayıt kümesinden ortak bir IP kaynağını işaret edin.** A/AAAA kayıt kümesi oluşturabilir ve bunu bir genel IP kaynağını işaret etmek üzere bir diğer ad kaydı kümesi (Standart veya temel) yapabilirsiniz. Genel IP adresi değişirse veya silinirse DNS kayıt kümesi otomatik olarak değişir. Hatalı IP adreslerine işaret eden, salyaze DNS kayıtları kaçınılmaz.
 
    Kaynak başına 20 diğer ad kaydı kümesi geçerli bir sınırı vardır.
 

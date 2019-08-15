@@ -6,18 +6,18 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: cb12d80756c88c8e24dbec41a31c15c2133615ec
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 709428d420c7d5f725d1b7df85e4860aec765b48
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882585"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950672"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda Sorgu Performansı İçgörüleri
 
 **Şunlara uygulanır:** MariaDB için Azure veritabanı 10,2
 
-> [!NOTE]
+> [!IMPORTANT]
 > Sorgu Performansı İçgörüleri önizlemededir.
 
 Sorgu Performansı İçgörüleri, en uzun çalışan sorguların ne olduğunu, zaman içinde nasıl değişdiklerinizi ve neleri etkilemeyi beklediğini hızlı bir şekilde tanımanıza yardımcı olur.

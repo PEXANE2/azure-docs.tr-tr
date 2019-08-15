@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: sukishen
-ms.openlocfilehash: 62f73f17d598cb2a22ef57d3ec0bcf91b8852298
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 77f04b9688be2a7b7343bac05b24a3fcd4e0fcde
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728781"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019693"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Azure ağ MSP iş ortakları hakkında
 
@@ -24,9 +24,11 @@ Azure ağ MSPs, bulut ve hibrit ağın tüm yönleri genelinde Kurumsal bulut a�
 
 Müşteriler, Azure Market 'te veya doğrudan MSP 'den MSP ile yönetilen hizmet teklifleri satın alabilir. MSPs 'ler, Azure athouse kullanarak müşterilerin abonelikleri ve kaynak gruplarında Azure ağ kaynaklarını dağıtabilir ve yönetebilir.
 
-## <a name="msp"></a>MSP iş ortakları
+## <a name="msp"></a>Azure ağ MSP iş ortakları
 
 Azure ağ MSP iş ortakları tarafından sunulan yönetilen bulut ağı hizmetleri hakkında daha fazla bilgi için bu bölümdeki bağlantıları kullanın. Bulut ağ hizmetleri ortağınız aşağıdaki bölümde listelenmiyorsa, sağlayıcının bizimle iletişim kurun. E-posta ManagedVirtualWAN@microsoft.comgöndererek bizimle iletişim kurabilirler. 
+
+[ANS grubu UK](https://www.ans.co.uk/)
 
 [Aryaka ağları](https://www.aryaka.com/)
 
@@ -43,6 +45,8 @@ Azure ağ MSP iş ortakları tarafından sunulan yönetilen bulut ağı hizmetle
 [ixreach](https://www.ixreach.com/)
 
 [Megaport](https://www.megaport.com/)
+
+[Oncore Cloud Services]( https://www.oncore.cloud/services/ue-for-expressroute/)
 
 [Tata Iletişimleri](https://www.tatacommunications.com/)
 

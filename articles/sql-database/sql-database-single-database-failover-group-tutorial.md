@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 06/19/2019
-ms.openlocfilehash: d11dd72c65ea32fb5a262f325bdcad0b5a8ab863
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6cf688750ac73763c7f0da4eea152cf6bf0c8285
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566655"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935012"
 ---
 # <a name="tutorial-add-an-azure-sql-database-single-database-to-a-failover-group"></a>Öğretici: Bir yük devretme grubuna Azure SQL veritabanı tek veritabanı ekleme
 
@@ -29,20 +29,20 @@ Azure SQL veritabanı tek veritabanı için bir yük devretme grubu yapılandır
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-# <a name="azure-portaltabazure-portal"></a>[Azure portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 Bu öğreticiyi tamamlamak için şunlar sahip olduğunuzdan emin olun: 
 
 - Azure aboneliği. Henüz bir [hesabınız yoksa ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 Öğreticiyi tamamlayabilmeniz için aşağıdaki öğelerin bulunduğundan emin olun:
 
 - Azure aboneliği. Henüz bir [hesabınız yoksa ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 - [Azure PowerShell](/powershell/azureps-cmdlets-docs)
 
 
-# <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 Öğreticiyi tamamlayabilmeniz için aşağıdaki öğelerin bulunduğundan emin olun:
 
 - Azure aboneliği. Henüz bir [hesabınız yoksa ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
@@ -57,7 +57,7 @@ Bu öğreticiyi tamamlamak için şunlar sahip olduğunuzdan emin olun:
 ## <a name="2---create-the-failover-group"></a>2-yük devretme grubu oluşturma 
 Bu adımda, mevcut bir Azure SQL sunucusu ile başka bir bölgedeki yeni bir Azure SQL sunucusu arasında bir [Yük devretme grubu](sql-database-auto-failover-group.md) oluşturacaksınız. Ardından örnek veritabanını yük devretme grubuna ekleyin. 
 
-# <a name="azure-portaltabazure-portal"></a>[Azure portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 Yük devretme grubunuzu oluşturun ve Azure portal kullanarak tek veritabanınızı veritabanına ekleyin. 
 
 
@@ -90,7 +90,7 @@ Yük devretme grubunuzu oluşturun ve Azure portal kullanarak tek veritabanını
     ![SQL DB 'yi yük devretme grubuna ekle](media/sql-database-single-database-create-failover-group-tutorial/add-sqldb-to-failover-group.png)
         
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 Yük devretme grubunuzu oluşturun ve PowerShell kullanarak tek veritabanınızı buna ekleyin. 
 
    > [!NOTE]
@@ -146,7 +146,7 @@ Yük devretme grubunuzu oluşturun ve PowerShell kullanarak tek veritabanınız�
    Write-host "Successfully added the database to the failover group..." 
    ```
 
-# <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 Yük devretme grubunuzu oluşturun ve AZ CLı kullanarak tek veritabanınızı ona ekleyin. 
 
    > [!NOTE]
@@ -182,6 +182,7 @@ Yük devretme grubunuzu oluşturun ve AZ CLı kullanarak tek veritabanınızı o
       --partner-server $drServerName \
       --resource-group $resourceGroupName \
       --server $serverName \
+      --add-db $databaseName
       --failover-policy Automatic
    ```
 
@@ -190,7 +191,7 @@ Yük devretme grubunuzu oluşturun ve AZ CLı kullanarak tek veritabanınızı o
 ## <a name="3---test-failover"></a>3-yük devretme testi 
 Bu adımda, yük devretme grubunuzu ikincil sunucuya devreder ve sonra Azure portal kullanarak yeniden başarısız olursunuz. 
 
-# <a name="azure-portaltabazure-portal"></a>[Azure portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 Azure portal kullanarak yük devretmeyi test edin. 
 
 1. [Azure Portal](https://portal.azure.com)içindeki **SQL** Server sunucunuza gidin. 
@@ -207,7 +208,7 @@ Azure portal kullanarak yük devretmeyi test edin.
 1. Hangi sunucunun artık birincil olduğunu ve hangi sunucunun ikincil olduğunu gözden geçirin. Yük devretme başarılı olursa iki sunucu, bulunan rolleri değiştirmiş olmalıdır. 
 1. Sunucuları ilk rollerine geri dönmek için **Yük devretmeyi** yeniden seçin. 
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 PowerShell kullanarak yük devretmeyi test etme. 
 
 
@@ -262,7 +263,7 @@ Yük devretme grubunu birincil sunucuya geri çevir:
    Write-host "Failed failover group to successfully to back to" $serverName
    ```
 
-# <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 AZ CLı kullanarak yük devretmeyi test edin. 
 
 
@@ -319,7 +320,7 @@ Yük devretme grubunu birincil sunucuya geri çevir:
 ## <a name="clean-up-resources"></a>Kaynakları temizleme 
 Kaynak grubunu silerek kaynakları temizleyin. 
 
-# <a name="azure-portaltabazure-portal"></a>[Azure portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 Azure portal kullanarak kaynak grubunu silin. 
 
 
@@ -327,7 +328,7 @@ Azure portal kullanarak kaynak grubunu silin.
 1. Gruptaki tüm kaynakların yanı sıra kaynak grubunun kendisini silmek için **kaynak grubunu sil** ' i seçin. 
 1. Kaynak grubunun adını `myResourceGroup`, metin kutusuna yazın ve ardından **Sil** ' i seçerek kaynak grubunu silin.  
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 PowerShell kullanarak kaynak grubunu silin. 
 
 
@@ -341,7 +342,7 @@ PowerShell kullanarak kaynak grubunu silin.
    Write-host "Resource group removed =" $resourceGroupName
    ```
 
-# <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 AZ CLı kullanarak kaynak grubunu silin. 
 
 
@@ -361,15 +362,15 @@ AZ CLı kullanarak kaynak grubunu silin.
 
 ## <a name="full-scripts"></a>Tam betikler
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!code-powershell-interactive[main](../../powershell_scripts/sql-database/failover-groups/add-single-db-to-failover-group-az-ps.ps1 "Add single database to a failover group")]
 
-# <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 [!code-azurecli-interactive[main](../../cli_scripts/sql-database/failover-groups/add-single-db-to-failover-group-az-cli.sh "Create SQL Database")]
 
-# <a name="azure-portaltabazure-portal"></a>[Azure portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 Azure portal için kullanılabilir komut yok.
  
 ---

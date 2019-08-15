@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 5a942aa10f36df55ac232defa610102700e3995b
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 9bccd826a37b66f7f89e70c57260a0db08342421
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67614189"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019181"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>Öğretici: Azure Kubernetes hizmeti 'nde (AKS) uygulamaları ölçeklendirme
 
@@ -76,12 +76,13 @@ Kubernetes, bir dağıtımdaki pod’ların sayısını CPU kullanımı ve diğe
 az aks show --resource-group myResourceGroup --name myAKSCluster --query kubernetesVersion
 ```
 
-AKS kümesi *1.10* sürümünden eskiyse Ölçüm Sunucusu'nu yükleyin. Aksi takdirde bu adımı atlayın. Yüklemek için `metrics-server` GitHub deposunu kopyalayın ve örnek kaynak tanımlarını yükler. Bu YAML tanımlarının içeriğini görüntülemek için bkz. [Kuberenetes 1.8 + Için ölçüm sunucusu][metrics-server-github].
-
-```console
-git clone https://github.com/kubernetes-incubator/metrics-server.git
-kubectl create -f metrics-server/deploy/1.8+/
-```
+> [!NOTE]
+> AKS kümeniz *1,10*'den küçükse, ölçüm sunucusu otomatik olarak yüklenmez. Yüklemek için `metrics-server` GitHub deposunu kopyalayın ve örnek kaynak tanımlarını yükler. Bu YAML tanımlarının içeriğini görüntülemek için bkz. [Kuberenetes 1.8 + Için ölçüm sunucusu][metrics-server-github].
+> 
+> ```console
+> git clone https://github.com/kubernetes-incubator/metrics-server.git
+> kubectl create -f metrics-server/deploy/1.8+/
+> ```
 
 Otomatik Scaler 'yi kullanmak için, yığınlarınızdaki tüm kapsayıcılar ve yığınlarınızın CPU istekleri ve sınırları tanımlı olmalıdır. `azure-vote-front` Dağıtımda, ön uç kapsayıcısı, 0,5 CPU sınırlaması ile 0,25 CPU talep ediyor. Bu kaynak istekleri ve limitleri aşağıdaki örnek kod parçacığında gösterildiği gibi tanımlanmıştır:
 

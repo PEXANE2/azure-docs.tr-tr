@@ -8,16 +8,16 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 06/27/2019
 ms.author: danlep
-ms.openlocfilehash: 680f0268e85d41f8061dc96db1779ab6c22b944a
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 6237b8056262abe1f8cea28bebd6b3bad97e0f7e
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310556"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967576"
 ---
 # <a name="run-an-acr-task-on-a-defined-schedule"></a>Tanımlı bir zamanlamaya göre bir ACR görevi çalıştırma
 
-Bu makalede bir [ACR görevinin](container-registry-tasks-overview.md) zamanlamaya göre nasıl çalıştırılacağı gösterilmektedir. Bir veya daha fazla *Zamanlayıcı tetikleyicisi*ayarlayarak bir görev zamanlayın. 
+Bu makalede bir [ACR görevinin](container-registry-tasks-overview.md) zamanlamaya göre nasıl çalıştırılacağı gösterilmektedir. Bir veya daha fazla *Zamanlayıcı tetikleyicisi*ayarlayarak bir görev zamanlayın.
 
 Bir görevin zamanlanması aşağıdakiler gibi senaryolar için yararlıdır:
 
@@ -29,18 +29,18 @@ Bu makaledeki örnekleri çalıştırmak için Azure CLı 'nın Azure Cloud Shel
 
 ## <a name="about-scheduling-a-task"></a>Görev zamanlama hakkında
 
-* **Cron Ifadesiyle Tetikle** -bir görevin zamanlayıcı tetikleyicisi bir *cron ifadesi*kullanır. İfade, görevin tetiklenmesi için dakika, saat, gün, ay ve haftanın gününü belirten beş alanı olan bir dizedir. Dakikada bir defa kadar olan sıklık desteklenir. 
+* **Cron Ifadesiyle Tetikle** -bir görevin zamanlayıcı tetikleyicisi bir *cron ifadesi*kullanır. İfade, görevin tetiklenmesi için dakika, saat, gün, ay ve haftanın gününü belirten beş alanı olan bir dizedir. Dakikada bir defa kadar olan sıklık desteklenir.
 
   Örneğin, ifade `"0 12 * * Mon-Fri"` her gün gece UTC tarihinde bir görevi tetikler. Bu makalenin ilerleyen kısımlarında [ayrıntılara](#cron-expressions) bakın.
-* **Birden çok süreölçer tetikleyicisi** -zamanlamalar farklı olduğu sürece bir göreve birden fazla Zamanlayıcı ekleme izni verilir. 
+* **Birden çok süreölçer tetikleyicisi** -zamanlamalar farklı olduğu sürece bir göreve birden fazla Zamanlayıcı ekleme izni verilir.
     * Görevi oluştururken birden fazla Zamanlayıcı tetikleyicisi belirtin veya daha sonra ekleyin.
     * İsteğe bağlı olarak daha kolay yönetim için Tetikleyicileri adlandırın veya ACR görevleri varsayılan tetikleyici adlarını sağlar.
-    * Zamanlayıcı zamanlamaları aynı anda çakışırsa ACR görevleri her Zamanlayıcı için zamanlanmış saatte görevi tetikler. 
+    * Zamanlayıcı zamanlamaları aynı anda çakışırsa ACR görevleri her Zamanlayıcı için zamanlanmış saatte görevi tetikler.
 * **Diğer görev Tetikleyicileri** -Zamanlayıcı tarafından tetiklenen bir görevde, Tetikleyicileri [kaynak kodu işlemeye](container-registry-tutorial-build-task.md) veya [temel görüntü güncelleştirmelerine](container-registry-tutorial-base-image-update.md)göre de etkinleştirebilirsiniz. Diğer ACR görevleri gibi, zamanlanmış bir görevi de [el ile tetikleyebilirsiniz][az-acr-task-run] .
 
 ## <a name="create-a-task-with-a-timer-trigger"></a>Zamanlayıcı tetikleyicisiyle görev oluşturma
 
-[Az ACR Task Create][az-acr-task-create] komutuyla bir görev oluşturduğunuzda, isteğe bağlı olarak bir Zamanlayıcı tetikleyicisi ekleyebilirsiniz. `--schedule` Parametresini ekleyin ve Zamanlayıcı için bir cron ifadesi geçirin. 
+[Az ACR Task Create][az-acr-task-create] komutuyla bir görev oluşturduğunuzda, isteğe bağlı olarak bir Zamanlayıcı tetikleyicisi ekleyebilirsiniz. `--schedule` Parametresini ekleyin ve Zamanlayıcı için bir cron ifadesi geçirin.
 
 Basit bir örnek olarak, aşağıdaki komut, `hello-world` görüntüyü Docker Hub 'dan her gün 21:00 UTC 'den çalıştırmayı tetikler. Görev, kaynak kodu bağlamı olmadan çalışır.
 
@@ -86,8 +86,8 @@ This message shows that your installation appears to be working correctly.
 Zamanlanan zamandan sonra, zamanlayıcının görevi beklendiği gibi tetiklediğini doğrulamak için [az ACR görev listesi-çalıştırmaları][az-acr-task-list-runs] komutunu çalıştırın:
 
 ```azurecli
-az acr task list runs --name mytask --registry myregistry --output table
-``` 
+az acr task list-runs --name mytask --registry myregistry --output table
+```
 
 Süreölçer başarılı olduğunda, çıkış aşağıdakine benzer:
 
@@ -98,7 +98,7 @@ RUN ID    TASK     PLATFORM    STATUS     TRIGGER    STARTED               DURAT
 cf2b      mytask   linux       Succeeded  Timer      2019-06-28T21:00:23Z  00:00:06
 cf2a      mytask   linux       Succeeded  Manual     2019-06-28T20:53:23Z  00:00:06
 ```
-            
+
 ## <a name="manage-timer-triggers"></a>Zamanlayıcı tetikleyicilerini yönetme
 
 ACR görevinin Zamanlayıcı tetikleyicilerini yönetmek için [az ACR Görev Zamanlayıcı][az-acr-task-timer] komutlarını kullanın.
@@ -150,7 +150,7 @@ az acr task timer list --name mytask --registry myregistry
 ]
 ```
 
-### <a name="remove-a-timer-trigger"></a>Zamanlayıcı tetikleyicisini kaldır 
+### <a name="remove-a-timer-trigger"></a>Zamanlayıcı tetikleyicisini kaldır
 
 Bir görevden bir Zamanlayıcı tetikleyicisini kaldırmak için [az ACR Task Timer Remove][az-acr-task-timer-remove] komutunu kullanın. Aşağıdaki örnek *MyTask* *Timer2* tetikleyicisini kaldırır:
 
@@ -178,7 +178,7 @@ Her alan aşağıdaki değer türlerinden birine sahip olabilir:
 |---------|---------|---------|
 |Belirli bir değer |<nobr>"5 * * * *"</nobr>|saatte 5 dakikada bir saat geçti|
 |Tüm değerler (`*`)|<nobr>"* 5 * * *"</nobr>|saatin her dakikası, 5:00 UTC (günde 60 kez)|
-|Bir Aralık (`-` işleç)|<nobr>"0 1-3 * * *"</nobr>|gün başına 3 kez, 1:00, 2:00 ve 3:00 UTC|  
+|Bir Aralık (`-` işleç)|<nobr>"0 1-3 * * *"</nobr>|gün başına 3 kez, 1:00, 2:00 ve 3:00 UTC|
 |Bir değerler kümesi (`,` işleç)|<nobr>"20, 30, 40 * * * *"</nobr>|saatte 3 kez, 20 dakika, 30 dakika ve 40 dakika geçmiş|
 |Bir Aralık değeri (`/` işleç)|<nobr>"*/10 * * * *"</nobr>|Saat başına 6 kez, 10 dakika, 20 dakika, vb. saat geçti
 

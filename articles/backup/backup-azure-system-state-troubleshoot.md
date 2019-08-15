@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: dacurwin
-ms.openlocfilehash: 55af6d17f18efd11fe2d6f89b9b87ca9f407ec25
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 26ba811eba1a25dacddd04814f8e0d2805360920
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688651"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018772"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Sistem durumu yedeklemesi sorunlarını giderme
 
@@ -36,7 +36,7 @@ Sistem durumu yedeklemesine sorun gidermeye başlamadan önce aşağıdaki doğr
 - **Sunucunuzu bir kasaya yeniden kaydetmeye** çalışıyorsanız: <br>
   - Aracının sunucudan kaldırıldığından ve portaldan silindiğinden emin olun <br>
   - Sunucu kaydedilirken kullanılan parolayı kullanın <br>
-- Çevrimdışı yedekleme işlemine başlamadan önce çevrimdışı yedekleme Azure PowerShell sürüm 3.7.0 'nin hem kaynak hem de kopya bilgisayara yüklendiğinden emin olun
+- Çevrimdışı yedekleme durumunda, çevrimdışı yedekleme işlemine başlamadan önce Azure PowerShell Version 3.7.0 'in hem kaynak hem de kopya bilgisayara yüklendiğinden emin olun
 - [Azure sanal makinesinde Yedekleme aracısının ne zaman çalıştığını göz önünde bulundurun](https://aka.ms/AB-AA4dwtr)
 
 ### <a name="limitation"></a>Sınırlama
@@ -45,14 +45,14 @@ Sistem durumu yedeklemesine sorun gidermeye başlamadan önce aşağıdaki doğr
 
 ## <a name="pre-requisite"></a>Önkoşul
 
-Azure Backup ile sistem durumu yedeklemesine sorun gidermeye başlamadan önce, aşağıdaki ön koşul denetimini önceden oluşturduğunuzdan emin olun.  
+Azure Backup ile sistem durumu yedeklemesine sorun gidermeye başlamadan önce, aşağıdaki önkoşulların denetimini gerçekleştirin.  
 
 ### <a name="verify-windows-server-backup-is-installed"></a>Windows Server Yedekleme yüklendiğini doğrulama
 
-Windows Server Yedekleme sunucuda yüklü ve etkin olduğundan emin olun. Yükleme durumunu denetlemek için aşağıdaki PowerShell komutunu çalıştırın:
+Windows Server Yedekleme sunucuda yüklü ve etkin olduğundan emin olun. Yükleme durumunu denetlemek için şu PowerShell komutunu çalıştırın:
 
- ```
- PS C:\> Get-WindowsFeature Windows-Server-Backup
+ ```powershell
+Get-WindowsFeature Windows-Server-Backup
  ```
 Çıkış, **yükleme durumunu** **kullanılabilir**olarak görüntülüyorsa, Windows Server yedekleme özelliğinin yükleme için kullanılabilir ancak sunucuda yüklü olmadığı anlamına gelir. Ancak Windows Server Yedekleme yüklenmemişse, yüklemek için aşağıdaki yöntemlerden birini kullanın.
 
@@ -60,15 +60,15 @@ Windows Server Yedekleme sunucuda yüklü ve etkin olduğundan emin olun. Yükle
 
 PowerShell kullanarak Windows Server Yedekleme yüklemek için aşağıdaki komutu çalıştırın:
 
-  ```
-  PS C:\> Install-WindowsFeature -Name Windows-Server-Backup
+  ```powershell
+  Install-WindowsFeature -Name Windows-Server-Backup
   ```
 
 **Yöntem 2: Sunucu Yöneticisi kullanarak Windows Server Yedekleme yüklemesi**
 
-Sunucu Yöneticisi kullanarak Windows Server Yedekleme yüklemek için aşağıdaki işlemi gerçekleştirin:
+Sunucu Yöneticisi kullanarak Windows Server Yedekleme yüklemek için aşağıdaki adımları uygulayın:
 
-1. **Sunucu Yöneticisi** 'nde **rol ve Özellik Ekle**' ye tıklayın. **Rol ve Özellik Ekleme Sihirbazı** görünür.
+1. **Sunucu Yöneticisi**'nde **rol ve Özellik Ekle**' ye tıklayın. **Rol ve Özellik Ekleme Sihirbazı** görünür.
 
     ![Pano](./media/backup-azure-system-state-troubleshoot/server_management.jpg)
 
@@ -114,7 +114,7 @@ Windows Server Yedekleme durumunu doğrulamak için aşağıdaki işlemleri ger�
     > [!WARNING]
     > Get-WBJob: ' Get-WBJob ' terimi bir cmdlet, işlev, betik dosyası veya çalıştırılabilir program adı olarak tanınmıyor. Adın yazımını denetleyin veya bir yol içerilip yolun doğru olduğundan emin olun ve yeniden deneyin.
 
-    -   Bu hatayla başarısız olursa, 1. adım önyüklede belirtildiği gibi Windows Server Yedekleme özelliğini sunucu makinesine yeniden yüklersiniz.
+    -   Bu hatayla başarısız olursa, 1. adım önkoşullardan bahsedildiği gibi Windows Server Yedekleme özelliğini sunucu makinesine yeniden yükleyin.
 
   * Yükseltilmiş komut isteminden aşağıdaki komutu çalıştırarak WSB yedeğinin düzgün çalıştığından emin olun:
 
@@ -141,7 +141,7 @@ Windows Server Yedekleme durumunu doğrulamak için aşağıdaki işlemleri ger�
 
 | Belirti | Çözüm
 | -- | --
-| -MARS Aracısı şu hata iletisiyle başarısız oluyor: Gölge kopya birimi sistem dosyalarını içeren birimlerde yetersiz disk alanı nedeniyle büyütülemediğinden yedekleme başarısız oldu <br/><br/> -Volsnap sistem olay günlüklerinde şu hata/uyarı günlüğü mevcuttur: "C birimi üzerinde yeterli disk alanı yoktu: Bu hata nedeniyle c: biriminin gölge kopyalarının gölge kopya depolama alanını büyütmek için | -Yedekleme devam ederken gölge kopyaların büyümesine yetecek kadar alan olması için olay günlüğündeki vurgulanan birimde yer açın <br/><br/> -Gölge kopya alanı yapılandırılırken, gölge kopya için kullanılan alan miktarını kısıtlayabiliriz. daha fazla bilgi için bu [makaleye](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc788050(v=ws.11)#syntax) bakın
+| -MARS Aracısı şu hata iletisiyle başarısız oluyor: Gölge kopya birimi sistem dosyalarını içeren birimlerde yetersiz disk alanı nedeniyle büyütülemediğinden yedekleme başarısız oldu <br/><br/> -Volsnap sistem olay günlüklerinde şu hata/uyarı günlüğü mevcuttur: "C birimi üzerinde yeterli disk alanı yoktu: Bu hata nedeniyle c: biriminin gölge kopyalarının gölge kopya depolama alanını büyütmek için | -Yedekleme devam ederken gölge kopyaların büyümesine yetecek kadar alan olması için olay günlüğündeki vurgulanan birimde yer açın <br/><br/> -Gölge kopya alanı yapılandırılırken, gölge kopya için kullanılan alan miktarını kısıtlayabiliriz. Daha fazla bilgi için bu [makaleye](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc788050(v=ws.11)#syntax) bakın
 
 
 ### <a name="efi-partition-locked"></a>EFı bölümü kilitli

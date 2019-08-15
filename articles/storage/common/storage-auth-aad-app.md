@@ -1,21 +1,21 @@
 ---
-title: İstemci uygulamanızdan blob ve kuyruk verilerine erişmek için Azure Active Directory ile kimlik doğrulama
+title: İstemci uygulamasındaki Azure Active Directory blob 'lara ve kuyruklara erişim yetkisi verme-Azure depolama
 description: İstemci uygulama içinden kimlik doğrulamak, bir OAuth 2,0 belirteci edinmek ve Azure Blob depolama ve kuyruk depolama 'ya istekleri yetkilendirmek için Azure Active Directory kullanın.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 07/15/2019
+ms.date: 07/18/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ffae7467e9f94c68cf004b74c9791f2d9cda3171
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 5138fb6338f4ade322414619f8785d77550a91d1
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249999"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68986795"
 ---
-# <a name="authenticate-with-azure-active-directory-from-an-application-for-access-to-blobs-and-queues"></a>Bloblara ve kuyruklara erişim sağlamak için bir uygulamadan Azure Active Directory kimlik doğrulaması yapın
+# <a name="authorize-access-to-blobs-and-queues-with-azure-active-directory-from-a-client-application"></a>İstemci uygulamasından Azure Active Directory blob ve kuyruklara erişim yetkisi verme
 
 Azure Blob depolama veya kuyruk depolama ile Azure Active Directory (Azure AD) kullanmanın önemli bir avantajı, kimlik bilgilerinizin artık kodunuzda depolanmasına gerek kalmaz. Bunun yerine, Microsoft Identity platform (eski adıyla Azure AD) için bir OAuth 2,0 erişim belirteci isteyebilirsiniz. Azure AD, uygulamayı çalıştıran güvenlik sorumlusu (bir Kullanıcı, Grup veya hizmet sorumlusu) kimliğini doğrular. Kimlik doğrulaması başarılı olursa, Azure AD uygulamaya erişim belirtecini döndürür ve uygulama, istekleri Azure Blob depolama veya kuyruk depolama alanına yetkilendirmek için erişim belirtecini kullanabilir.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c38b11ceda010c122e17a7fad3df1684e0a1cf42
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 2a6c63c4ae58079c79a9d344f1e2550e4768088f
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68696282"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932251"
 ---
 # <a name="manage-database-roles-and-users"></a>Veritabanı rollerini ve kullanıcılarını yönetme
 
@@ -26,7 +26,7 @@ Rol izinleri şunları içerir:
 *  **İşlem** -kullanıcılar, veritabanında işlem işlemlerine bağlanabilir ve bu işlemleri gerçekleştirebilir ve model veritabanı verilerini analiz edebilir.
 *  **Okuma** -kullanıcılar, model veritabanı verilerine bağlanmak ve analiz etmek için bir istemci uygulaması kullanabilir.
 
-Tablosal model projesi oluştururken, roller oluşturur ve SQL Server Veri Araçları (SSDT) içindeki Rol Yöneticisi 'ni kullanarak bu rollere kullanıcı veya grup ekleyebilirsiniz. Bir sunucuya dağıtıldığında, rol ve Kullanıcı üyeleri eklemek veya kaldırmak için SQL Server Management Studio (SSMS), [Analysis Services PowerShell cmdlet 'leri](/sql/analysis-services/powershell/analysis-services-powershell-reference)veya [tablo modeli komut dosyası dili](https://msdn.microsoft.com/library/mt614797.aspx) (tmsl) kullanırsınız.
+Tablosal model projesi oluştururken, roller oluşturur ve SQL Server Veri Araçları (SSDT) içindeki Rol Yöneticisi 'ni kullanarak bu rollere kullanıcı veya grup ekleyebilirsiniz. Bir sunucuya dağıtıldığında, rol ve Kullanıcı üyeleri eklemek veya kaldırmak için SQL Server Management Studio (SSMS), [Analysis Services PowerShell cmdlet 'leri](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference)veya [tablo modeli komut dosyası dili](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference) (tmsl) kullanırsınız.
 
 **Güvenlik gruplarının** , `MailEnabled` özelliği olarak ayarlanmış şekilde `True` [posta etkin](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups) olması gerekir. E-posta adresi kullanımı `obj:groupid@tenantid`ile bir grup belirtirken.
 
@@ -86,7 +86,7 @@ Dağıtılan bir model veritabanına roller ve kullanıcılar eklemek için sunu
 
 ## <a name="to-add-roles-and-users-by-using-a-tmsl-script"></a>Bir TMSL betiği kullanarak rol ve Kullanıcı eklemek için
 
-Bir TMSL betiğini SSMS içindeki XMLA penceresinde veya PowerShell kullanarak çalıştırabilirsiniz. [Createorreplace](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/createorreplace-command-tmsl) komutunu ve [Roller](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-objects/roles-object-tmsl) nesnesini kullanın.
+Bir TMSL betiğini SSMS içindeki XMLA penceresinde veya PowerShell kullanarak çalıştırabilirsiniz. [Createorreplace](https://docs.microsoft.com/bi-reference/tmsl/createorreplace-command-tmsl) komutunu ve [Roller](https://docs.microsoft.com/bi-reference/tmsl/roles-object-tmsl) nesnesini kullanın.
 
 **Örnek TMSL betiği**
 
@@ -120,13 +120,13 @@ Bu örnekte, B2B dış kullanıcısı ve bir grubu, satış bı veritabanı içi
 
 ## <a name="to-add-roles-and-users-by-using-powershell"></a>PowerShell kullanarak rol ve Kullanıcı eklemek için
 
-[SqlServer](/sql/analysis-services/powershell/analysis-services-powershell-reference) modülü, göreve özgü veritabanı yönetim cmdlet 'Leri ve tablosal model betik DILI (tmsl) sorgusu veya betiği kabul eden genel amaçlı Invoke-ASCmd cmdlet 'ini sağlar. Aşağıdaki cmdlet 'ler veritabanı rollerini ve kullanıcılarını yönetmek için kullanılır.
+[SqlServer](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) modülü, göreve özgü veritabanı yönetim cmdlet 'Leri ve tablosal model betik DILI (tmsl) sorgusu veya betiği kabul eden genel amaçlı Invoke-ASCmd cmdlet 'ini sağlar. Aşağıdaki cmdlet 'ler veritabanı rollerini ve kullanıcılarını yönetmek için kullanılır.
   
 |Cmdlet|Açıklama|
 |------------|-----------------| 
-|[Add-Rolemebir](/sql/analysis-services/powershell/analysis-services-powershell-reference)|Bir veritabanı rolüne üye ekleyin.| 
-|[Remove-Rolemeoda](/sql/analysis-services/powershell/analysis-services-powershell-reference)|Bir üyeyi veritabanı rolünden kaldırın.|   
-|[Invoke-ASCmd](/sql/analysis-services/powershell/analysis-services-powershell-reference)|Bir TMSL betiği yürütün.|
+|[Add-Rolemebir](https://docs.microsoft.com/powershell/module/sqlserver/Add-RoleMember)|Bir veritabanı rolüne üye ekleyin.| 
+|[Remove-Rolemeoda](https://docs.microsoft.com/powershell/module/sqlserver/remove-rolemember)|Bir üyeyi veritabanı rolünden kaldırın.|   
+|[Invoke-ASCmd](https://docs.microsoft.com/powershell/module/sqlserver/invoke-ascmd)|Bir TMSL betiği yürütün.|
 
 ## <a name="row-filters"></a>Satır filtreleri  
 
@@ -152,5 +152,5 @@ Satır filtreleri belirtilen satırlar ve ilgili satırlar için geçerlidir. Bi
 
   [Sunucu yöneticilerini yönetme](analysis-services-server-admins.md)   
   [PowerShell ile Azure Analysis Services yönetme](analysis-services-powershell.md)  
-  [Tablosal model betik dili (TMSL) başvurusu](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference)
+  [Tablosal model betik dili (TMSL) başvurusu](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference)
 

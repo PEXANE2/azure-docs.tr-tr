@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: ormaoz
 ms.custom: ''
-ms.openlocfilehash: 05e2375998b3bce4320b2d66ab7fce44cd911dcc
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 6767644e037c6abb3e3044c8707e923a9137a01c
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479137"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019542"
 ---
 # <a name="manage-aws-costs-and-usage-in-azure"></a>Azure 'da AWS maliyetlerini ve kullanımını yönetme
 
@@ -138,7 +138,7 @@ AWS bağlı hesap maliyetlerine erişim izinleri almanın iki yolu vardır:
 
 Varsayılan olarak AWS Bağlayıcısı Oluşturucu, bağlayıcının oluşturduğu tüm nesnelerin sahibidir. Dahil olmak üzere, AWS birleştirilmiş hesabı ve AWS bağlantılı hesabı.
 
-Bağlayıcı ayarlarını doğrulayabilmek için en az bir katılımcısı rolüne ihtiyacınız olacaktır, okuyucu bağlayıcı ayarlarını doğrulayamaz
+Bağlayıcı ayarlarını doğrulayabilmek için en az bir katkıda bulunan rolüne ihtiyacınız olacaktır, okuyucu bağlayıcı ayarlarını doğrulayamaz
 
 ### <a name="collection-failed-with-assumerole"></a>Koleksiyon AssumeRole ile başarısız oldu
 
